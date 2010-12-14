@@ -75,8 +75,8 @@ amethyst AmethystParser < Amethyst{
       	| "<" (~">" eChar)+:x  ">"                            ->  Apply["regch",quote(x)]
 		    | "(" expression:x ")"                                ->  x
 
-	application = name:klas '::' name:rule argsOpt(40.chr,41.chr):arg @Foreign
-  	      		| name:rule argsOpt(40.chr,41.chr):arg -> Apply[rule,arg]
+	application = name:klas '::' name:rule argsOpt('(',')'):arg @Foreign
+  	      		| name:rule argsOpt('(',')'):arg -> Apply[rule,arg]
 
 	key         = "@" className:name  argsOpt('[',']'):args   @Resul
               | "@" name:name ("=>" term  | empty  {Apply["anything"]}):expr    @Key
@@ -85,7 +85,7 @@ amethyst AmethystParser < Amethyst{
   	  	| _args('#{','}')
 				| char
 
-	ruleargs = argsOpt(40.chr,41.chr)
+	ruleargs = argsOpt('(',')')
 	
 	nr = ~(name ruleargs "=")
 	
@@ -99,7 +99,7 @@ amethyst AmethystParser < Amethyst{
 	__args(o,c) = seq(o) rubyarg*:r seq(c) -> r
 		
 	rubyarg  = '`' expression:e '`' -> Exp[e]
-           | _args(40.chr,41.chr)
+           | _args('(',')')
 					 | _args('[',']')
 					 | _args('{','}')
 					 | '"' (~'"'   eChar)*:s '"'  -> ['"']+ s+['"']

@@ -15,7 +15,6 @@ amethyst AmethystTranslator < Amethyst {
   			| Lookahead[trans:t ] -> failwrap("_lookahead{#{t}}")
         | Comment[:c] -> ""
 				| Many[trans:t] -> "_many{#{t}}"
-        | Many1[trans:t] -> failwrap("_many1{#{t}}")
 				| Apply[ :name arg*:args] -> failwrap("#{name}(#{args})")
         | Set[@name:name @expr=>trans:expr] -> "#{name} = #{expr}"
 				| Append[@name:name @expr=>trans:expr] -> "#{name}||=[];_append(#{name},#{expr})"

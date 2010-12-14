@@ -228,9 +228,9 @@ def application() br{klas=nil;rule=nil;arg=nil
  (it=_or(proc{klas = (it=name();next FAIL if it==FAIL;it)
 (it=seq("::");next FAIL if it==FAIL;it)
 rule = (it=name();next FAIL if it==FAIL;it)
-arg = (it=argsOpt(40.chr,41.chr);next FAIL if it==FAIL;it)
+arg = (it=argsOpt('(',')');next FAIL if it==FAIL;it)
 Foreign[ {:klas=>klas,:rule=>rule,:arg=>arg }] },proc{rule = (it=name();next FAIL if it==FAIL;it)
-arg = (it=argsOpt(40.chr,41.chr);next FAIL if it==FAIL;it)
+arg = (it=argsOpt('(',')');next FAIL if it==FAIL;it)
  Apply[rule,arg] });next FAIL if it==FAIL;it) 
 } end
 def key() br{name=nil;args=nil;expr=nil
@@ -250,7 +250,7 @@ c = (it=char();next FAIL if it==FAIL;it)
  "\\#{c}" },proc{(it=_args('#{','}');next FAIL if it==FAIL;it)},proc{(it=char();next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it) 
 } end
 def ruleargs() br{
- (it=argsOpt(40.chr,41.chr);next FAIL if it==FAIL;it) 
+ (it=argsOpt('(',')');next FAIL if it==FAIL;it) 
 } end
 def nr() br{
  (it=_not{(it=name();next FAIL if it==FAIL;it)
@@ -280,7 +280,7 @@ def rubyarg() br{e=nil;s=nil;k=nil
  (it=_or(proc{(it=seq("`");next FAIL if it==FAIL;it)
 e = (it=expression();next FAIL if it==FAIL;it)
 (it=seq("`");next FAIL if it==FAIL;it)
- Exp[e] },proc{(it=_args(40.chr,41.chr);next FAIL if it==FAIL;it)},proc{(it=_args('[',']');next FAIL if it==FAIL;it)},proc{(it=_args('{','}');next FAIL if it==FAIL;it)},proc{(it=seq("\"");next FAIL if it==FAIL;it)
+ Exp[e] },proc{(it=_args('(',')');next FAIL if it==FAIL;it)},proc{(it=_args('[',']');next FAIL if it==FAIL;it)},proc{(it=_args('{','}');next FAIL if it==FAIL;it)},proc{(it=seq("\"");next FAIL if it==FAIL;it)
 s = _many{(it=_not{(it=seq("\"");next FAIL if it==FAIL;it)};next FAIL if it==FAIL;it)
 (it=eChar();next FAIL if it==FAIL;it) }
 (it=seq("\"");next FAIL if it==FAIL;it)
@@ -355,9 +355,7 @@ Lookahead[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:a
 (it=_enter{ary = _many{(it=anything();next FAIL if it==FAIL;it)}};next FAIL if it==FAIL;it)
 Comment[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:ary=>ary,:expr=>expr,:klas=>klas }] },proc{(it=clas(Many);next FAIL if it==FAIL;it)
 (it=_enter{ary||=[];_append(ary,(it=trans();next FAIL if it==FAIL;it))};next FAIL if it==FAIL;it)
-Many[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:ary=>ary,:expr=>expr,:klas=>klas }] },proc{(it=clas(Many1);next FAIL if it==FAIL;it)
-(it=_enter{ary||=[];_append(ary,(it=trans();next FAIL if it==FAIL;it))};next FAIL if it==FAIL;it)
-Many1[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:ary=>ary,:expr=>expr,:klas=>klas }] },proc{(it=clas(Apply);next FAIL if it==FAIL;it)
+Many[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:ary=>ary,:expr=>expr,:klas=>klas }] },proc{(it=clas(Apply);next FAIL if it==FAIL;it)
 (it=_enter{ary||=[];_append(ary,(it=anything();next FAIL if it==FAIL;it))
 ary||=[];_append(ary,_many{(it=arg();next FAIL if it==FAIL;it)}) };next FAIL if it==FAIL;it)
 Apply[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:ary=>ary,:expr=>expr,:klas=>klas }] },proc{(it=clas(Set);next FAIL if it==FAIL;it)
@@ -468,9 +466,7 @@ body = _key(:body){ (it=trans();next FAIL if it==FAIL;it) } };next FAIL if it==F
 (it=_enter{c = (it=anything();next FAIL if it==FAIL;it)};next FAIL if it==FAIL;it)
  "" },proc{(it=clas(Many);next FAIL if it==FAIL;it)
 (it=_enter{t = (it=trans();next FAIL if it==FAIL;it)};next FAIL if it==FAIL;it)
- "_many{#{t}}" },proc{(it=clas(Many1);next FAIL if it==FAIL;it)
-(it=_enter{t = (it=trans();next FAIL if it==FAIL;it)};next FAIL if it==FAIL;it)
- failwrap("_many1{#{t}}") },proc{(it=clas(Apply);next FAIL if it==FAIL;it)
+ "_many{#{t}}" },proc{(it=clas(Apply);next FAIL if it==FAIL;it)
 (it=_enter{name = (it=anything();next FAIL if it==FAIL;it)
 args = _many{(it=arg();next FAIL if it==FAIL;it)} };next FAIL if it==FAIL;it)
  failwrap("#{name}(#{args})") },proc{(it=clas(Set);next FAIL if it==FAIL;it)

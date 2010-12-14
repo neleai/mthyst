@@ -11,7 +11,6 @@ amethyst AmethystOptimizer < Amethyst {
   			| Lookahead[trans:ary ]  @Lookahead
         | Comment[anything*:ary]  @Comment
 				| Many[trans:ary[]] @Many
-				| Many1[trans:ary[]] @Many1
 				| Apply[ :ary[] arg*:ary[]] @Apply
         | Set[@name:name @expr=>trans:expr] @Set
 				| Append[@name:name @expr=>trans:expr] @Append
