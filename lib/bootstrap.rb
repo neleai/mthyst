@@ -79,6 +79,10 @@ def token(s) br{
  (it=spaces();next FAIL if it==FAIL;it)
 (it=seq(s);next FAIL if it==FAIL;it)  
 } end
+def many1(s) br{a=nil
+ a||=[];_append(a,(it=apply(s);next FAIL if it==FAIL;it))
+a||=[];_append(a,_many{(it=apply(s);next FAIL if it==FAIL;it)})  
+} end
 
 end
 
@@ -175,18 +179,19 @@ c = _many{(it=_not{(it=endline();next FAIL if it==FAIL;it)};next FAIL if it==FAI
 def optIter(t) br{
  (it=_or(proc{(it=token("*");next FAIL if it==FAIL;it)
  Many[t] },proc{(it=token("+");next FAIL if it==FAIL;it)
- Many1[t] },proc{(it=token("?");next FAIL if it==FAIL;it)
+ Apply["many1",Args[Exp[t]]] },proc{(it=token("?");next FAIL if it==FAIL;it)
  Or[t,Apply["empty"]] },proc{(it=empty();next FAIL if it==FAIL;it)
  t });next FAIL if it==FAIL;it) 
 } end
-def binding(expr) br{name=nil;e=nil
- (it=_or(proc{(it=token(":");next FAIL if it==FAIL;it)
+def binding(exp) br{expr=nil;name=nil;e=nil
+ (it=_or(proc{expr = exp
+(it=token(":");next FAIL if it==FAIL;it)
 name = (it=name();next FAIL if it==FAIL;it)
 (it=_or(proc{(it=seq("[]");next FAIL if it==FAIL;it)
-Append[ {:name=>name,:expr=>expr }] },proc{(it=empty();next FAIL if it==FAIL;it)
-Set[ {:name=>name,:expr=>expr }] });next FAIL if it==FAIL;it) },proc{(it=token(":");next FAIL if it==FAIL;it)
+Append[ {:expr=>expr,:name=>name,:e=>e }] },proc{(it=empty();next FAIL if it==FAIL;it)
+Set[ {:expr=>expr,:name=>name,:e=>e }] });next FAIL if it==FAIL;it) },proc{(it=token(":");next FAIL if it==FAIL;it)
 e = (it=inlineHostExpr();next FAIL if it==FAIL;it)
- And[ Set[{:name=>"it", :expr=>expr}] , Act[e] ] });next FAIL if it==FAIL;it) 
+ And[ Set[{:name=>"it", :expr=>exp}] , Act[e] ] });next FAIL if it==FAIL;it) 
 } end
 def term() br{cls=nil;expr=nil;x=nil;s=nil;it=nil
  (it=_or(proc{cls = (it=_or(proc{(it=className();next FAIL if it==FAIL;it)},proc{(it=token("");next FAIL if it==FAIL;it)
@@ -211,8 +216,8 @@ s = _many{(it=_not{(it=seq("\'");next FAIL if it==FAIL;it)};next FAIL if it==FAI
 (it=seq("\'");next FAIL if it==FAIL;it)
  Apply["seq",quote(s)] },proc{it = (it=number();next FAIL if it==FAIL;it)
 Apply["exactly",it] },proc{(it=token("<");next FAIL if it==FAIL;it)
-x = (it=_many1{(it=_not{(it=token(">");next FAIL if it==FAIL;it)};next FAIL if it==FAIL;it)
-(it=eChar();next FAIL if it==FAIL;it) };next FAIL if it==FAIL;it)
+x = (it=many1(proc{(it=_not{(it=token(">");next FAIL if it==FAIL;it)};next FAIL if it==FAIL;it)
+(it=eChar();next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it)
 (it=token(">");next FAIL if it==FAIL;it)
   Apply["regch",quote(x)] },proc{(it=token("(");next FAIL if it==FAIL;it)
 x = (it=expression();next FAIL if it==FAIL;it)
@@ -309,7 +314,7 @@ def inlineHostExpr() br{
  (it=args('{','}');next FAIL if it==FAIL;it) 
 } end
 def number() br{
- (it=_many1{(it=regch("0-9");next FAIL if it==FAIL;it)};next FAIL if it==FAIL;it) 
+ (it=many1(proc{(it=regch("0-9");next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it) 
 } end
 def atomicHostExpr() br{s=nil
  s = _many{(it=_not{(it=endline();next FAIL if it==FAIL;it)};next FAIL if it==FAIL;it)
