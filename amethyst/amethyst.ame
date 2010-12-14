@@ -42,7 +42,7 @@ amethyst Amethyst < AmethystCore {
 
   exactly(wanted) = :got &{wanted == got} -> wanted
 
-  clas(cls) = :a &{a.is_a?(cls)}
+  clas(cls) = &{@@input.item.is_a?(cls)}
 
 	token(s) = spaces seq(s)
 }

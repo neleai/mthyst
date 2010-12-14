@@ -25,6 +25,11 @@ makeclasses(Object,
     [:Grammar,:name,:parent,:rules]
 )
 
+def quote(s)
+  s=s*""
+  '"'+s.gsub('\\"','"').gsub('"','\\"')+'"'
+end
+
 
 
 amethyst AmethystParser < Amethyst{
@@ -64,10 +69,10 @@ amethyst AmethystParser < Amethyst{
 		 	  | application
  			  | key
 			  | ("->" atomicHostExpr | "" inlineHostExpr):x    ->  Act[x]
-				| "\"" (~'"' eChar)*:s '"' -> Apply["token" ,(s*"").inspect]
-		 	  | "'"  (~'\''  eChar)*:s '\''  -> Apply["seq",(s*"").inspect]
+				| "\"" (~'"' eChar)*:s '"' -> Apply["token" ,quote(s)]
+		 	  | "'"  (~'\''  eChar)*:s '\''  -> Apply["seq",quote(s)]
  			  | number:{Apply["exactly",it]}
-      	| "<" (~">" eChar)+:x  ">"                            ->  Apply["regch",(x*"").inspect]
+      	| "<" (~">" eChar)+:x  ">"                            ->  Apply["regch",quote(x)]
 		    | "(" expression:x ")"                                ->  x
 
 	application = name:klas '::' name:rule argsOpt(40.chr,41.chr):arg @Foreign
@@ -99,8 +104,9 @@ amethyst AmethystParser < Amethyst{
 					 | _args('{','}')
 					 | '"' (~'"'   eChar)*:s '"'  -> ['"']+ s+['"']
 					 | '\''(~'\''  eChar)*:s '\'' -> ['\'']+s+['\'']
+					 | "@@" -> "@"
 					 | key:k -> ExpKey[k] 
-					 | <^`{}()'"\[\]>
+					 | <^`{}()'"\\[\\]>
 
 	nameFirst      = <_$.^> | letter
 
