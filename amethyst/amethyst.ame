@@ -45,4 +45,6 @@ amethyst Amethyst < AmethystCore {
   clas(cls) = &{@@input.item.is_a?(cls)}
 
 	token(s) = spaces seq(s)
+	
+	many1(s) = apply(s):a[] apply(s)*:a[]
 }
