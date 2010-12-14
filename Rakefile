@@ -1,7 +1,6 @@
+require 'rake/testtask'
 $:.unshift 'lib'
-require 'amethyst'
 
 desc " "
-task :bootstrap {
-
-}
+task :bootstrap do
+end
