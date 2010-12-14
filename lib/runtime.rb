@@ -104,10 +104,10 @@ class AmethystCore
 		a
 	end
 	
-	def _enter(klas)		
-		oldInput=@input.succ
+	def _enter()		
+		oldInput=@input
 		@input=@input.child
-		return FAIL unless @input!=FAIL && @input.src.is_a?(klas)
+		return FAIL if @input==FAIL 
 		r=yield
 		@input=oldInput
 		return r

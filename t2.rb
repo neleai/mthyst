@@ -2,6 +2,8 @@ $:.unshift 'lib'
 require 'amethyst'
 
 p=AmethystParser.new
-puts p.parse("igrammar","amethyst Ame {aoe = a  b = b c = c }").inspect
-
-
+par=p.parse("igrammar","amethyst Ame {aoe = a  b = b(e) c = c }")
+puts par.inspect
+o=AmethystOptimizer.new
+opt=o.parse("trans",par)
+puts opt.inspect

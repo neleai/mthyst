@@ -95,8 +95,8 @@ got=nil
  wanted  
 } end
 def clas(cls) br{
-
- (it=_pred{input.stream.src.is_a? Class.const_get(cls)};next FAIL if it==FAIL;it) 
+	a= anything
+ (it=_pred{a.is_a?(cls)};next FAIL if it==FAIL;it) 
 } end
 def token(s) br{
 
@@ -324,7 +324,7 @@ s = _many{(it=_not{(it=seq("\\'");next FAIL if it==FAIL;it)};next FAIL if it==FA
 (it=eChar();next FAIL if it==FAIL;it) }
 (it=seq("\\'");next FAIL if it==FAIL;it)
  ['\'']+s+['\''] },proc{k = (it=key();next FAIL if it==FAIL;it)
- ExpKey[k]  },proc{(it=regch("^`{}()'\"\\\\[\\\\]");next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it) 
+ ExpKey[k]  },proc{(it=regch("^`{}()'\"\\[\\]");next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it) 
 } end
 def nameFirst() br{
 
