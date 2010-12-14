@@ -1,0 +1,48 @@
+amethyst Amethyst < AmethystCore {
+	_ = space
+
+	. = anything
+
+  regch(regex) = char:c &{Regexp.new("[#{regex}]").match(c)} -> c
+
+  eof= ~.
+
+  empty = -> nil
+
+  char= .:c &{c.is_a? String } -> c
+
+  endline=  ('\r\n' ) | '\r' | '\n'
+
+  space = <\s\t\r\n\f>
+
+  spaces= space*
+
+	_     = space
+
+  digit=<0-9>
+
+  lower=<a-z>
+
+  upper=<A-Z>
+
+  letter=lower | upper
+
+  letterOrDigit=letter | digit
+
+  alpha = letter
+
+  alnum = letterOrDigit
+
+  xdigit = <0-9a-fA-F>
+
+  word = alpha | '_'
+
+  listOf(rule,delim) =  apply(rule):f[] (apply(delim) apply(rule))*:f[] -> f
+                         | empty -> []
+
+  exactly(wanted) = :got &{wanted == got} -> wanted
+
+  clas(cls) = &{input.stream.src.is_a? Class.const_get(cls)}
+
+	token(s) = spaces seq(s)
+}

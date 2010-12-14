@@ -1,0 +1,12 @@
+amethyst AmethystOptimizer2 < AmethystOptimizer {	
+trans = Rule[{locals=[]} @name:name @args=>trans:args @body=>trans:body] {@locals.uniq}:locals @Rule
+        | Set[@name:name @expr=>trans:expr] {@locals<<name} @Set
+				| Append[@name:name @expr=>trans:expr] {@locals<<name} @Append
+				| Or[transfn*:ary ]
+          {ary=ary.map{|o| (o.is_a?(Or)) ? o.ary : o}.flatten}
+          (&{ary.size==1} {ary[0]} | @Or)
+        | And[trans*:ary ]
+          {ary=ary.map{|a| (a.is_a?(And)) ? a.ary : a}.flatten}
+				  (&{ary.size==1} {ary[0]} | @And)
+				| {super}
+}

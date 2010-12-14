@@ -1,0 +1,118 @@
+makeclasses(Object,
+    [:Args,:o,:c,:r],
+    [:Key,:name,:expr,:args],
+    [:Resul,:name,:expr,:args],
+    [:Enter,:name,:cls,:expr],
+    :Apply,
+    :Nested,
+    :Exp,
+    :ExpKey,
+    :Foreign,
+    [:Append,:name,:expr],
+    [:Set,:name,:expr],
+    :Many,
+    :Many1,
+    :Comment,
+    :Act,
+    :Pred,
+    :Lookahead,
+    :Not,
+    :Seq,
+    :Or,
+    :And,
+    [:Enter,:klas],
+    [:Rule,:name,:args,:body],
+    [:Grammar,:name,:parent,:rules]
+)
+
+
+
+amethyst AmethystParser < Amethyst{
+	igrammar = (~'amethyst' . | grammar)*:a -> a
+
+	grammar = "amethyst" name:name ("<" name:parent |empty {parent="Amethyst"} ) 
+"{" rule*:rules "}"  @Grammar
+	
+	rule = name:name ruleargs:args "=" expression:body @Rule
+
+	expression = choice
+	
+	choice = listOf('sequence',`"|"`):ary @Or
+	
+	sequence =  (nr prefixed)*:ary  @And
+
+  prefixed   = "~" modifier:m -> Not[m]
+             | "&" inlineHostExpr:expr  -> Pred[expr]
+             | "&" ~inlineHostExpr:expr  modifier:m -> Lookahead[m]
+             | modifier
+
+ 		modifier = term:t optIter(t):t  (~space binding(t) | empty {t})
+             | binding(Apply["anything"])
+             | "#" (~endline .)*:c -> Comment[c]
+ 
+	 optIter(t) = "*"  -> Many[t]
+              | "+"   -> Many1[t]
+              | "?"   -> Or[t,Apply["empty"]]
+              | empty -> t
+  
+	binding(expr) = ":" name:name ('[]' @Append | empty @Set )
+                 | ":" inlineHostExpr:e -> And[ Set[{:name=>"it", :expr=>expr}] , Act[e] ]
+
+
+	term  = (className | "" {"Object"}):cls '[' expression:expr "]"  @Enter
+				| "nested" '(' expression:expr ")" -> Nested[expr]
+		 	  | application
+ 			  | key
+			  | ("->" atomicHostExpr | "" inlineHostExpr):x    ->  Act[x]
+				| "\"" (~'"' eChar)*:s '"' -> Apply["token" ,(s*"").inspect]
+		 	  | "'"  (~'\''  eChar)*:s '\''  -> Apply["seq",(s*"").inspect]
+ 			  | number:{Apply["exactly",it]}
+      	| "<" (~">" eChar)+:x  ">"                            ->  Apply["regch",(x*"").inspect]
+		    | "(" expression:x ")"                                ->  x
+
+	application = name:klas '::' name:rule argsOpt(40.chr,41.chr):arg @Foreign
+  	      		| name:rule argsOpt(40.chr,41.chr):arg -> Apply[rule,arg]
+
+	key         = "@" className:name  argsOpt('[',']'):args   @Resul
+              | "@" name:name ("=>" term  | empty  {Apply["anything"]}):expr    @Key
+
+	eChar = '\\' char:c   -> "\\#{c}"
+  	  	| _args('#{','}')
+				| char
+
+	ruleargs = argsOpt(40.chr,41.chr)
+	
+	nr = ~(name ruleargs "=")
+	
+	argsOpt(o,c) = args(o,c) 
+                | empty -> Args[""]
+
+	args(o,c) = __args(o,c):ary {ary= ary.flatten} @Args
+
+	_args(o,c) = __args(o,c):r -> [o]+r+[c]
+
+	__args(o,c) = seq(o) rubyarg*:r seq(c) -> r
+		
+	rubyarg  = '`' expression:e '`' -> Exp[e]
+           | _args(40.chr,41.chr)
+					 | _args('[',']')
+					 | _args('{','}')
+					 | '"' (~'"'   eChar)*:s '"'  -> ['"']+ s+['"']
+					 | '\''(~'\''  eChar)*:s '\'' -> ['\'']+s+['\'']
+					 | key:k -> ExpKey[k] 
+					 | <^`{}()'"\\[\\]>
+
+	nameFirst      = <_$.^> | letter
+
+  nameRest       = nameFirst | digit
+
+  className      = spaces upper:s[] nameRest*:s[]                   -> leterize(s*"")
+	
+	name = spaces nameFirst:s[] nameRest*:s[] -> leterize(s*"")
+
+	inlineHostExpr = args('{','}')
+
+	number = <0-9>+
+
+	atomicHostExpr = (~endline .)*:s -> Args[s*""]
+}

@@ -1,0 +1,194 @@
+<html>
+  <style>
+    h3 { margin:2}
+    code {margin:2}
+    pre {margin:2} 
+    td { padding:2}
+  </style>
+  <head>
+    <title>  Amethyst in examples </title>
+  </head>
+  <body >
+    <h3>introduction</h3>
+      Amethyst is tool for parsing strings and much more.
+    <h3>Hello World</h3>
+			Create file hello.ame with following example
+and use it from ruby by calling Amethyst::load('hello')
+<pre> <code>#amethyst file can be viewed as ruby file with ame{pattern} and ame Class{rules} expanded
+h=ame{ 'Hello World' } # 'str' matches exactly string str
+puts "Hello too" if h.match(gets)
+
+ame Goodbye { #We create class Goodbye
+	goodbye = bye _ galaxy # _ matches exactly one whitespace
+	
+	bye     = 'Goodbye'    # rules are separated by newline
+	galaxy  = 'Galaxy'
+}
+puts "goodbye" if Goodbye.matchwith(:goodbye,gets)
+
+puts "enter two numbers"
+ame{ number:a number:b }.match(gets) #ame{pattern} acts as closure so we can bind local variables there
+puts "sum is #{a+b}"
+
+puts "Say goodbye"
+ame{ Goodbye:bye }.match(gets) # You can match rules from another grammar with Grammar:rule syntax
+
+ame Amethyst{ #You can extend amethyst grammar from which all grammars inherit
+	#-&gt; statement uses ruby statement as result
+	sum = number:a '+' sum:b -&gt; a+b
+			| empty -gt; 0
+}
+puts "enter numbers separated by +"
+puts ame{ sum }.match(gets)
+</code></pre>
+<h3>Amethyst extends regular expressions </h3>
+
+<ul>
+<pre><li>  name           # matches result of rule with name name.
+<li>  (expression)   # matches amethyst expression. Usefull for precedence
+<li>  {statement}    # execute ruby statement
+<li>  -&gt; statement end of line # shortcut for {statement}
+<li>  'string'       # matches exactly string
+<li>  "string"       # matches string that can be preceeded by whitespaces(by default and <a href="#token">can be redefined</a>)
+<li>  &lt;range&gt;        # matches characters in range as [range] in ruby regular expression</pre>
+</ul>
+Meaning of rule can be changed with following modifiers
+<ul>
+<pre><li> rule? , rule* , rule+  # repetition - greedily match rule with ? 0-1 times ,with * 0 or more times and with + 1 or more times
+<li> ~rule                  # negative lookahead - succeeds iff rule fails consuming no input
+<li> &amp;rule                  # lookahead -succeeds iff rule succeeds consuming no input
+<li> &amp;{statement}           # special case of lookahead which succeeds iff ruby statement is true</pre>
+</ul>
+Amethyst expresions can be composed from rules in following ways
+<ul>
+<pre><li> expr1 | expr2 ... # Priorized choice - Try match with in order expr1,expr2... until we can match rest of input with this choice.
+<li> rule1 rule2 ...   # Composion - match rule1 and then match rule2 on text after text consumed by rule1 and so on</pre>
+</ul>
+We show example amethyst expressions
+<code><pre>
+  &lt;aA&gt; 'hoy'  #matches ahoy and Ahoy
+  &lt;aA&gt; "hoy"  #watch out as this matches also A   hoy
+  ("hello" | "goodbye") ("world" | "galaxy")?      #also watch out this as it matches also helloworld
+  ("hello" | "goodbye") ( _ ("world" | "galaxy"))? #for example we can use buildin rule space to match one whitespace.
+  ("yes" | "no")+ # matches for example yes yes yes  no yes no yes no yesyes
+  '"' &lt;^"&gt;* '"'   # matches double-quoted string
+</pre></code>
+<h3> result of rule</h3>
+Each amethyst expression returns its result. Results are obtaned in way similar to ruby. Result of:
+<ul>
+<pre><li> application of rule is result of body of rule
+<li> rule1 rule2    is result of rule2.
+<li> expr1 | expr2  is result of expression which succeed.
+<li> { statement}   is result of corresponding ruby statement.
+<li> rule+ , rule*  is array of results of rule applications
+<li> rule?          is result of rule or nil if it wasnt matched
+<li> "string",'string',&lt;range&gt; is matched string.
+<li> ~rule , &amp;rule is result of rule</pre>
+</ul>
+<h3> binding  </h3>
+ To make results usefull we bind them to variables
+ <ul>
+ <pre>
+<li> rule 
+    If subrule occurs at most once in rule we bind its result to variable with name of subrule. 
+		If it occurs more times we collect result in array subrules. Also we define shortcuts subrule1,...,subrule9
+<li> rule:variable 
+    We bind result of rule to corresponding local variable 
+ <li> rule:variable.key
+    If variable has method key= we use variable.key=result . Otherwise we try to assign result by variable[:key]=result .
+    We can chain keys by rule:variable.key1.key2
+ <li>rule:{statement} 
+		We assign result of rule to local variable it and you can manipulate it in ruby statement.</pre>
+ </ul>
+ We can use :binding as shortcut for anything:binding<br>
+
+
+    <h4> append operator</h4>
+    We use syntax rule:binding[]. This operator takes result of rule and appends it to binding. 
+		It appends it in following way
+		<ul>
+			<li>  If variable was string it converts result to string and conceates these strings.
+			<li>  If variable was array and result was array then it conceates these arrays.
+			<li>  If variable was array and result was not array then it appends result to array.
+		</ul>
+      At begining of rule variable is automaticaly initalized as empty array
+ Here are examples
+ <code><pre> ( "dog" | "cat" |"horse"):animal " " ("barks" |"meows):voice {animal+" "+voice} #return for example cat barks
+ &lt;aA&gt;:s[] 'hoy':s[] # returns ['a','hoy'] or ['A','hoy']
+ &lt;aA&gt;:s  'hoy':s[] # returns 'ahoy' or 'Ahoy'
+ {""}:s &lt;aA&gt;*:s[] 'hoy':s[] # return for example 'aAaAahoy'
+ conv = &lt;a-z&gt;+:{x=it*""} ( " " &lt;a-z&gt;+:{it*""})*:{x+","+it*","} # convert space separated list of words to comma separated list
+ word =  &lt;a-z&gt;+:{it*""} # previous example can be simplified as
+ conv = word:x (" " word)*:{x+","+it*","}</pre></code>
+    <h3>Returning objects</h3>
+		It is common that in parsing we construct some tree of objects. Most elegant way is use @Class<br>
+		This creates new object of given class and sets local variables bound in rule to instance variables of created object.<br>
+		As example we can parse binary trees with rule<br>
+<code><pre>makeclasses(Object,[:tree,:value,:left,:right]) #creates class Tree which inherits from object and defines accessors
+ame Tre{  
+  tree = "(" number:value tree?:left tree?:right ")" @Tree
+}</pre></code><br>
+<h3> backtracking and persistence</h3>
+We use semi-persistence library. Imagine we log all changes of variables and object and if we fail to match we undo corresponding changes.
+As example if we match [1,2] with
+<code>anything:x[] ( anything:x[] &amp;{false} | anything:y)</code><br>
+Array x will contain 1, then 1 and 2, then we fail and revert x back to 1 and then we set y to 2.
+<h3></h3>
+    <h3> Parsing objects </h3>
+			[ rules ]
+        Enter object and parse there
+        You can use Class[ rules ] which in addition checks if entered object had class Class
+      @method=&gt;rule
+        take result of method called on entered object and match it by rule
+      anything,. matches any object
+			number matches number
+    <h3>parametrized rules</h3>  
+      Rules can take parameters. Syntax is
+      rule(pattern) = body
+      Where pattern and body are amethyst expressions. You can match multiple patterns by
+      rule(pattern1) = body1
+          (pattern2) = body2
+      You can use parametrized rule by rule(args) syntax.
+      args can use any ruby expresion with following conversions
+      `expr` is converted to proc that matches amethyst expression expr
+			@method is converted to call of method on entered object
+			Examples 
+			<code><pre>times( :n :r ) = -&lt; n.times{r.call }        #this is parametrized rule which takes n and r as arguments
+			bye = times(3, `"cya" | "bye"`)          #we call rule here. `rules` in rule call returns proc whose call matches rules.
+			token( :s ) = ' ' seq(s)                    #we redefine token rule so now "text" matches text preceded by exactly one space.</pre></code>
+
+		<h3>Grammars are objective</h3>
+			Amethyst grammars support inherance with syntax similar to ruby
+			amethyst Grammar &lt; Parent
+			super(args)
+				matches by same rule in parent grammar
+			Grammar::rule(args)
+				Matches by rule rule from grammar Grammar
+		<h3>read standard prologue</h3>
+			Amethyst defines handy rules at standard prologue
+			This is its context
+		<h3>code completition and error handling</h3>
+Code completition and error handling are similar concepts. In error handling we try to discover why we didn't consume more of text.<br>
+Also syntax is almost same. We specify rules with error/completition handling as
+<table><tr><td>
+<pre>completition Grammar {
+	rules
+}</pre>
+<td><pre>error Grammar{
+	rules
+}
+}</pre></table>
+When completition/error occurs in rule we handle it by 
+<table><tr><td>
+rule:part{block}
+<td>rule:error{block}
+<table>
+
+<h3>standards</h3> 
+Different people have different tastes and it is naive to think that language won't evolve. Moreover one of programmer favourite activities are formatting wars.
+We try to solve this problem by standard support. We can mix all versions of amethyst as long as underlying AST wont change.<br>
+To support standard write as first line<br>
+#standard version,format<br>
+where version is amethyst version and format are formating rules you want to use.<br>
+  </body>
+</html> 
