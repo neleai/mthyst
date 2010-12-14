@@ -109,7 +109,7 @@ class AmethystCore
 		@input=@input.child
 		return FAIL if @input==FAIL 
 		r=yield
-		@input=oldInput
+		@input=oldInput.succ
 		return r
 	end
 

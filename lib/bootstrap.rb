@@ -95,8 +95,7 @@ got=nil
  wanted  
 } end
 def clas(cls) br{
-	a= anything
- (it=_pred{a.is_a?(cls)};next FAIL if it==FAIL;it) 
+ (it=_pred{@input.item.is_a?(cls)};next FAIL if it==FAIL;it) 
 } end
 def token(s) br{
 
@@ -212,8 +211,8 @@ name=nil;e=nil
  (it=_or(proc{(it=token(":");next FAIL if it==FAIL;it)
 name = (it=name();next FAIL if it==FAIL;it)
 (it=_or(proc{(it=seq("[]");next FAIL if it==FAIL;it)
-Append[ {:name=>name,:e=>e }] },proc{(it=empty();next FAIL if it==FAIL;it)
-Set[ {:name=>name,:e=>e }] });next FAIL if it==FAIL;it) },proc{(it=token(":");next FAIL if it==FAIL;it)
+Append[ {:name=>name,:expr=>expr }] },proc{(it=empty();next FAIL if it==FAIL;it)
+Set[ {:name=>name,:expr=>expr }] });next FAIL if it==FAIL;it) },proc{(it=token(":");next FAIL if it==FAIL;it)
 e = (it=inlineHostExpr();next FAIL if it==FAIL;it)
  And[ Set[{:name=>"it", :expr=>expr}] , Act[e] ] });next FAIL if it==FAIL;it) 
 } end
@@ -368,7 +367,7 @@ end
 class AmethystOptimizer < Amethyst
 def itrans() br{
 r=nil
- (it=clas(Object);next FAIL if it==FAIL;it)
+(it=clas(Object);next FAIL if it==FAIL;it)
 (it=_enter{r = _many{(it=_or(proc{(it=char();next FAIL if it==FAIL;it)},proc{(it=trans();next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it)}};next FAIL if it==FAIL;it)
  r  
 } end
@@ -452,19 +451,19 @@ class AmethystOptimizer2 < AmethystOptimizer
 def trans() br{
 name=nil;args=nil;body=nil;locals=nil;expr=nil;ary=nil
  (it=_or(proc{(it=clas(Rule);next FAIL if it==FAIL;it)
-(it=_enter{locals=[]
+(it=_enter{@locals=[]
 name = _key(:name){ (it=anything();next FAIL if it==FAIL;it) }
 args = _key(:args){ (it=trans();next FAIL if it==FAIL;it) }
 body = _key(:body){ (it=trans();next FAIL if it==FAIL;it) } };next FAIL if it==FAIL;it)
-locals = _key(:locals_dot_uniq){ (it=anything();next FAIL if it==FAIL;it) }
+locals = @locals.uniq
 Rule[ {:name=>name,:args=>args,:body=>body,:locals=>locals,:expr=>expr,:ary=>ary }] },proc{(it=clas(Set);next FAIL if it==FAIL;it)
 (it=_enter{name = _key(:name){ (it=anything();next FAIL if it==FAIL;it) }
 expr = _key(:expr){ (it=trans();next FAIL if it==FAIL;it) } };next FAIL if it==FAIL;it)
-_key(:locals){ (it=anything();next FAIL if it==FAIL;it) }<<name
+@locals<<name
 Set[ {:name=>name,:args=>args,:body=>body,:locals=>locals,:expr=>expr,:ary=>ary }] },proc{(it=clas(Append);next FAIL if it==FAIL;it)
 (it=_enter{name = _key(:name){ (it=anything();next FAIL if it==FAIL;it) }
+@locals<<name
 expr = _key(:expr){ (it=trans();next FAIL if it==FAIL;it) } };next FAIL if it==FAIL;it)
-_key(:locals){ (it=anything();next FAIL if it==FAIL;it) }<<name
 Append[ {:name=>name,:args=>args,:body=>body,:locals=>locals,:expr=>expr,:ary=>ary }] },proc{(it=clas(Or);next FAIL if it==FAIL;it)
 (it=_enter{ary = _many{(it=transfn();next FAIL if it==FAIL;it)}};next FAIL if it==FAIL;it)
 ary=ary.map{|o| (o.is_a?(Or)) ? o.ary : o}.flatten
@@ -477,6 +476,9 @@ ary[0] },proc{And[ {:name=>name,:args=>args,:body=>body,:locals=>locals,:expr=>e
 } end
 
 end
+def failwrap(s)
+  "(it=#{s};next FAIL if it==FAIL;it)"
+end
 
 class AmethystTranslator < Amethyst
 def itrans() br{
@@ -486,7 +488,7 @@ r=nil
  r*""  
 } end
 def trans() br{
-name=nil;parent=nil;body=nil;it=nil;args=nil;expr=nil;ors=nil;t=nil;c=nil;klas=nil;a=nil
+name=nil;parent=nil;body=nil;it=nil;args=nil;expr=nil;ors=nil;t=nil;c=nil;klas=nil;a=nil;locals=nil
  (it=_or(proc{(it=clas(Grammar);next FAIL if it==FAIL;it)
 (it=_enter{name = _key(:name){ (it=anything();next FAIL if it==FAIL;it) }
 parent = _key(:parent){ (it=anything();next FAIL if it==FAIL;it) }
@@ -497,7 +499,7 @@ it = _key(:locals){ (it=anything();next FAIL if it==FAIL;it) }
 locals=it
 args = _key(:args){ (it=trans();next FAIL if it==FAIL;it) }
 body = _key(:body){ (it=trans();next FAIL if it==FAIL;it) } };next FAIL if it==FAIL;it)
- "def #{name}(#{args}) br{\n #{body} \n} end\n" },proc{(it=clas(Enter);next FAIL if it==FAIL;it)
+ "def #{name}(#{args}) br{#{locals.map{|l|l+"=nil"}*";"}\n #{body} \n} end\n" },proc{(it=clas(Enter);next FAIL if it==FAIL;it)
 (it=_enter{expr = (it=trans();next FAIL if it==FAIL;it)};next FAIL if it==FAIL;it)
  failwrap("_enter{#{expr}}") },proc{(it=clas(Or);next FAIL if it==FAIL;it)
 (it=_enter{ors = _many{(it=transfn();next FAIL if it==FAIL;it)}};next FAIL if it==FAIL;it)

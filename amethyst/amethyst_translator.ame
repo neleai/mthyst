@@ -1,3 +1,7 @@
+def failwrap(s)
+  "(it=#{s};next FAIL if it==FAIL;it)"
+end
+
 amethyst AmethystTranslator < Amethyst {
 	itrans = [ (char | trans)*:r ] -> r*""
 
