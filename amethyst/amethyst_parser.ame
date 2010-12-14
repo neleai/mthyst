@@ -56,7 +56,7 @@ amethyst AmethystParser < Amethyst{
              | "#" (~endline .)*:c -> Comment[c]
  
 	 optIter(t) = "*"  -> Many[t]
-              | "+"   -> Many1[t]
+              | "+"   -> Apply["many1",t]
               | "?"   -> Or[t,Apply["empty"]]
               | empty -> t
   
@@ -64,7 +64,7 @@ amethyst AmethystParser < Amethyst{
                  | ":" inlineHostExpr:e -> And[ Set[{:name=>"it", :expr=>exp}] , Act[e] ]
 
 
-	term  = (className | "" {"Object"}):cls '[' expression:expr "]"  @Enter
+	term  = (className | "" {"Object"}):cls '[' expression:expr "]" -> And[Apply["clas",cls], Enter[expr]]
 				| "nested" '(' expression:expr ")" -> Nested[expr]
 		 	  | application
  			  | key
