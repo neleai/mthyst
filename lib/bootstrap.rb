@@ -194,7 +194,7 @@ def term() br{cls=nil;expr=nil;x=nil;s=nil;it=nil
 (it=seq("[");next FAIL if it==FAIL;it)
 expr = (it=expression();next FAIL if it==FAIL;it)
 (it=token("]");next FAIL if it==FAIL;it)
-Enter[ {:cls=>cls,:expr=>expr,:x=>x,:s=>s,:it=>it }] },proc{(it=token("nested");next FAIL if it==FAIL;it)
+ And[Apply["clas",cls], Enter[expr]] },proc{(it=token("nested");next FAIL if it==FAIL;it)
 (it=seq("(");next FAIL if it==FAIL;it)
 expr = (it=expression();next FAIL if it==FAIL;it)
 (it=token(")");next FAIL if it==FAIL;it)

@@ -60,8 +60,8 @@ amethyst AmethystParser < Amethyst{
               | "?"   -> Or[t,Apply["empty"]]
               | empty -> t
   
-	binding(expr) = ":" name:name ('[]' @Append | empty @Set )
-                 | ":" inlineHostExpr:e -> And[ Set[{:name=>"it", :expr=>expr}] , Act[e] ]
+	binding(exp) = {exp}:expr ":" name:name ('[]' @Append | empty @Set )
+                 | ":" inlineHostExpr:e -> And[ Set[{:name=>"it", :expr=>exp}] , Act[e] ]
 
 
 	term  = (className | "" {"Object"}):cls '[' expression:expr "]"  @Enter
