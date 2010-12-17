@@ -52,6 +52,9 @@ class StreamEnd < Stream
 end
 
 class AmethystCore
+	def cachestream(obj)
+		@cachestream[obj]
+	end
   def _pred()
 		b=yield
     if (b)
@@ -105,9 +108,12 @@ class AmethystCore
 	end
 
 	def _pass(expr)
+		puts expr.inspect
 		oldInput=@input
     @input=cachestream(expr)
+		puts @input.inspect
 		r=yield
+		puts r.inspect
 		@input=oldInput
 		r
 	end
@@ -187,6 +193,7 @@ class AmethystCore
 	def initialize( mems=Hash.new{|h,k| h[k]={}},mema=Hash.new{|h,k| h[k]={}})
 		@memos=mems
 		@memoa=mema
+		@cachestream=Hash.new{|h,k| h[k]=Stream.create(k)}
 	end	
 
 	def parse(rule,input)

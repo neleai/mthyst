@@ -76,7 +76,7 @@ def clas(cls) br{
  (it=_pred{@input.item.is_a?(cls)};next FAIL if it==FAIL;it) 
 } end
 def is_a(cls) br{
- (it=_pred{@input.item.is_a?(cls)};next FAIL if it==FAIL;it) 
+ (it=_pred{@input.src.is_a?(cls)};next FAIL if it==FAIL;it) 
 } end
 def token(s) br{
  (it=spaces();next FAIL if it==FAIL;it)
