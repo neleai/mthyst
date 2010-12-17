@@ -188,24 +188,4 @@ class AmethystCore
 end
 
 require 'utils'
-  makeclasses(Object,
-    :Key,
-		:Apply,
-    :Nested,
-    :Foreign,
-    :Append,
-    :Set,
-    :Many,
-    :Many1,
-    :Comment,
-    :Act,
-		:Pred,
-    :Lookahead,
-    :Not,
-    :Seq,
-    :Or,
-		[:Enter,:klas],
-    [:Rule,:name,:args,:body],
-    [:Grammar,:name,:parent,:rules]
-  )
 

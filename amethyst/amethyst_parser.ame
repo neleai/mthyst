@@ -20,6 +20,7 @@ makeclasses(Object,
     :Seq,
     :Or,
     :And,
+		[:Pass,:from,:to]
     [:Enter,:klas],
     [:Rule,:name,:args,:body],
     [:Grammar,:name,:parent,:rules]
