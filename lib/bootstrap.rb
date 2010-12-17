@@ -111,7 +111,7 @@ makeclasses(Object,
     :Seq,
     :Or,
     :And,
-		[:Pass,:from,:to]
+		[:Pass,:from,:to],
     [:Enter,:klas],
     [:Rule,:name,:args,:body],
     [:Grammar,:name,:parent,:rules]
@@ -160,7 +160,7 @@ def sequence() br{ary=nil
 (it=prefixed();next FAIL if it==FAIL;it) }
 And[ {:ary=>ary }]  
 } end
-def prefixed() br{m=nil;expr=nil
+def prefixed() br{m=nil;expr=nil;from=nil;to=nil
  (it=_or(proc{(it=token("~");next FAIL if it==FAIL;it)
 m = (it=modifier();next FAIL if it==FAIL;it)
  Not[m] },proc{(it=token("&");next FAIL if it==FAIL;it)
@@ -168,7 +168,10 @@ expr = (it=inlineHostExpr();next FAIL if it==FAIL;it)
  Pred[expr] },proc{(it=token("&");next FAIL if it==FAIL;it)
 (it=_not{expr = (it=inlineHostExpr();next FAIL if it==FAIL;it)};next FAIL if it==FAIL;it)
 m = (it=modifier();next FAIL if it==FAIL;it)
- Lookahead[m] },proc{(it=modifier();next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it) 
+ Lookahead[m] },proc{from = (it=modifier();next FAIL if it==FAIL;it)
+(it=token(">>");next FAIL if it==FAIL;it)
+to = (it=modifier();next FAIL if it==FAIL;it)
+And[Set[{:name=>"it",:expr=>from}] ,Pass[{:to=>to}]] },proc{(it=modifier();next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it) 
 } end
 def modifier() br{t=nil;c=nil
  (it=_or(proc{t = (it=term();next FAIL if it==FAIL;it)
@@ -336,13 +339,13 @@ def itrans() br{r=nil
 } end
 def trans() br{name=nil;parent=nil;rules=nil;args=nil;body=nil;ary=nil;expr=nil;klas=nil;from=nil;to=nil
  (it=_or(proc{(it=clas(Grammar);next FAIL if it==FAIL;it)
-(it=_enter{name = _key(:name)
-parent = _key(:parent)
-rules = _key(:rules) };next FAIL if it==FAIL;it)
+(it=_enter{name = _key(:name){(it=anything();next FAIL if it==FAIL;it)}
+parent = _key(:parent){(it=anything();next FAIL if it==FAIL;it)}
+rules = _key(:rules){(it=transs();next FAIL if it==FAIL;it)} };next FAIL if it==FAIL;it)
 Grammar[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:ary=>ary,:expr=>expr,:klas=>klas,:from=>from,:to=>to }] },proc{(it=clas(Rule);next FAIL if it==FAIL;it)
-(it=_enter{name = _key(:name)
-args = _key(:args)
-body = _key(:body) };next FAIL if it==FAIL;it)
+(it=_enter{name = _key(:name){(it=anything();next FAIL if it==FAIL;it)}
+args = _key(:args){(it=trans();next FAIL if it==FAIL;it)}
+body = _key(:body){(it=trans();next FAIL if it==FAIL;it)} };next FAIL if it==FAIL;it)
 Rule[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:ary=>ary,:expr=>expr,:klas=>klas,:from=>from,:to=>to }] },proc{(it=clas(Enter);next FAIL if it==FAIL;it)
 (it=_enter{ary||=[];_append(ary,(it=trans();next FAIL if it==FAIL;it))};next FAIL if it==FAIL;it)
 Enter[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:ary=>ary,:expr=>expr,:klas=>klas,:from=>from,:to=>to }] },proc{(it=clas(Or);next FAIL if it==FAIL;it)
@@ -363,28 +366,28 @@ Many[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:ary=>a
 (it=_enter{ary||=[];_append(ary,(it=anything();next FAIL if it==FAIL;it))
 ary||=[];_append(ary,_many{(it=arg();next FAIL if it==FAIL;it)}) };next FAIL if it==FAIL;it)
 Apply[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:ary=>ary,:expr=>expr,:klas=>klas,:from=>from,:to=>to }] },proc{(it=clas(Set);next FAIL if it==FAIL;it)
-(it=_enter{name = _key(:name)
-expr = _key(:expr) };next FAIL if it==FAIL;it)
+(it=_enter{name = _key(:name){(it=anything();next FAIL if it==FAIL;it)}
+expr = _key(:expr){(it=trans();next FAIL if it==FAIL;it)} };next FAIL if it==FAIL;it)
 Set[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:ary=>ary,:expr=>expr,:klas=>klas,:from=>from,:to=>to }] },proc{(it=clas(Append);next FAIL if it==FAIL;it)
-(it=_enter{name = _key(:name)
-expr = _key(:expr) };next FAIL if it==FAIL;it)
+(it=_enter{name = _key(:name){(it=anything();next FAIL if it==FAIL;it)}
+expr = _key(:expr){(it=trans();next FAIL if it==FAIL;it)} };next FAIL if it==FAIL;it)
 Append[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:ary=>ary,:expr=>expr,:klas=>klas,:from=>from,:to=>to }] },proc{(it=clas(Act);next FAIL if it==FAIL;it)
 (it=_enter{ary||=[];_append(ary,(it=trans();next FAIL if it==FAIL;it))};next FAIL if it==FAIL;it)
 Act[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:ary=>ary,:expr=>expr,:klas=>klas,:from=>from,:to=>to }] },proc{(it=clas(Resul);next FAIL if it==FAIL;it)
-(it=_enter{name = _key(:name)
-args = _key(:args) };next FAIL if it==FAIL;it)
+(it=_enter{name = _key(:name){(it=anything();next FAIL if it==FAIL;it)}
+args = _key(:args){(it=arg();next FAIL if it==FAIL;it)} };next FAIL if it==FAIL;it)
 Resul[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:ary=>ary,:expr=>expr,:klas=>klas,:from=>from,:to=>to }] },proc{(it=clas(Foreign);next FAIL if it==FAIL;it)
-(it=_enter{klas = _key(:klas)
-_key(:rule)
-args = _key(:args) };next FAIL if it==FAIL;it)
+(it=_enter{klas = _key(:klas){(it=anything();next FAIL if it==FAIL;it)}
+_key(:rule){(it=rule();next FAIL if it==FAIL;it)}
+args = _key(:args){(it=arg();next FAIL if it==FAIL;it)} };next FAIL if it==FAIL;it)
 Foreign[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:ary=>ary,:expr=>expr,:klas=>klas,:from=>from,:to=>to }] },proc{(it=clas(Args);next FAIL if it==FAIL;it)
 (it=_enter{ary = _many{(it=arg();next FAIL if it==FAIL;it)}};next FAIL if it==FAIL;it)
 Args[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:ary=>ary,:expr=>expr,:klas=>klas,:from=>from,:to=>to }] },proc{(it=clas(Key);next FAIL if it==FAIL;it)
-(it=_enter{name = _key(:name)
-expr = _key(:expr) };next FAIL if it==FAIL;it)
+(it=_enter{name = _key(:name){(it=anything();next FAIL if it==FAIL;it)}
+expr = _key(:expr){(it=trans();next FAIL if it==FAIL;it)} };next FAIL if it==FAIL;it)
 Key[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:ary=>ary,:expr=>expr,:klas=>klas,:from=>from,:to=>to }] },proc{(it=clas(Pass);next FAIL if it==FAIL;it)
-(it=_enter{from = _key(:from)
-to = _key(:to) };next FAIL if it==FAIL;it)
+(it=_enter{from = _key(:from){(it=trans();next FAIL if it==FAIL;it)}
+to = _key(:to){(it=trans();next FAIL if it==FAIL;it)} };next FAIL if it==FAIL;it)
 Pass[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:ary=>ary,:expr=>expr,:klas=>klas,:from=>from,:to=>to }] });next FAIL if it==FAIL;it) 
 } end
 def transfn() br{
@@ -411,17 +414,17 @@ class AmethystOptimizer2 < AmethystOptimizer
 def trans() br{name=nil;args=nil;body=nil;locals=nil;expr=nil;ary=nil
  (it=_or(proc{(it=clas(Rule);next FAIL if it==FAIL;it)
 (it=_enter{@locals=[]
-name = _key(:name)
-args = _key(:args)
-body = _key(:body) };next FAIL if it==FAIL;it)
+name = _key(:name){(it=anything();next FAIL if it==FAIL;it)}
+args = _key(:args){(it=trans();next FAIL if it==FAIL;it)}
+body = _key(:body){(it=trans();next FAIL if it==FAIL;it)} };next FAIL if it==FAIL;it)
 locals = @locals.uniq
 Rule[ {:name=>name,:args=>args,:body=>body,:locals=>locals,:expr=>expr,:ary=>ary }] },proc{(it=clas(Set);next FAIL if it==FAIL;it)
-(it=_enter{name = _key(:name)
-expr = _key(:expr) };next FAIL if it==FAIL;it)
+(it=_enter{name = _key(:name){(it=anything();next FAIL if it==FAIL;it)}
+expr = _key(:expr){(it=trans();next FAIL if it==FAIL;it)} };next FAIL if it==FAIL;it)
 @locals<<name
 Set[ {:name=>name,:args=>args,:body=>body,:locals=>locals,:expr=>expr,:ary=>ary }] },proc{(it=clas(Append);next FAIL if it==FAIL;it)
-(it=_enter{name = _key(:name)
-expr = _key(:expr) };next FAIL if it==FAIL;it)
+(it=_enter{name = _key(:name){(it=anything();next FAIL if it==FAIL;it)}
+expr = _key(:expr){(it=trans();next FAIL if it==FAIL;it)} };next FAIL if it==FAIL;it)
 @locals<<name
 Append[ {:name=>name,:args=>args,:body=>body,:locals=>locals,:expr=>expr,:ary=>ary }] },proc{(it=clas(Or);next FAIL if it==FAIL;it)
 (it=_enter{ary = _many{(it=transfn();next FAIL if it==FAIL;it)}};next FAIL if it==FAIL;it)
@@ -446,17 +449,17 @@ def itrans() br{r=nil
 (it=_enter{r = _many{(it=_or(proc{(it=char();next FAIL if it==FAIL;it)},proc{(it=trans();next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it)}};next FAIL if it==FAIL;it)
  r*""  
 } end
-def trans() br{name=nil;parent=nil;body=nil;it=nil;args=nil;expr=nil;ors=nil;t=nil;c=nil;klas=nil;a=nil;from=nil;to=nil
+def trans() br{name=nil;parent=nil;body=nil;it=nil;args=nil;expr=nil;ors=nil;t=nil;c=nil;klas=nil;a=nil;to=nil
  (it=_or(proc{(it=clas(Grammar);next FAIL if it==FAIL;it)
-(it=_enter{name = _key(:name)
-parent = _key(:parent)
-body = _key(:rules) };next FAIL if it==FAIL;it)
+(it=_enter{name = _key(:name){(it=anything();next FAIL if it==FAIL;it)}
+parent = _key(:parent){(it=anything();next FAIL if it==FAIL;it)}
+body = _key(:rules){(it=transs();next FAIL if it==FAIL;it)} };next FAIL if it==FAIL;it)
  "class #{name} < #{parent}\n#{body}\nend\n" },proc{(it=clas(Rule);next FAIL if it==FAIL;it)
-(it=_enter{name = _key(:name)
-it = _key(:locals)
+(it=_enter{name = _key(:name){(it=anything();next FAIL if it==FAIL;it)}
+it = _key(:locals){(it=anything();next FAIL if it==FAIL;it)}
 @locals=it
-args = _key(:args)
-body = _key(:body) };next FAIL if it==FAIL;it)
+args = _key(:args){(it=trans();next FAIL if it==FAIL;it)}
+body = _key(:body){(it=trans();next FAIL if it==FAIL;it)} };next FAIL if it==FAIL;it)
  "def #{name}(#{args}) br{#{@locals.map{|l|l+"=nil"}*";"}\n #{body} \n} end\n" },proc{(it=clas(Enter);next FAIL if it==FAIL;it)
 (it=_enter{expr = (it=trans();next FAIL if it==FAIL;it)};next FAIL if it==FAIL;it)
  failwrap("_enter{#{expr}}") },proc{(it=clas(Or);next FAIL if it==FAIL;it)
@@ -477,28 +480,28 @@ body = _key(:body) };next FAIL if it==FAIL;it)
 (it=_enter{name = (it=anything();next FAIL if it==FAIL;it)
 args = _many{(it=arg();next FAIL if it==FAIL;it)} };next FAIL if it==FAIL;it)
  failwrap("#{name}(#{args})") },proc{(it=clas(Set);next FAIL if it==FAIL;it)
-(it=_enter{name = _key(:name)
-expr = _key(:expr) };next FAIL if it==FAIL;it)
+(it=_enter{name = _key(:name){(it=anything();next FAIL if it==FAIL;it)}
+expr = _key(:expr){(it=trans();next FAIL if it==FAIL;it)} };next FAIL if it==FAIL;it)
  "#{name} = #{expr}" },proc{(it=clas(Append);next FAIL if it==FAIL;it)
-(it=_enter{name = _key(:name)
-expr = _key(:expr) };next FAIL if it==FAIL;it)
+(it=_enter{name = _key(:name){(it=anything();next FAIL if it==FAIL;it)}
+expr = _key(:expr){(it=trans();next FAIL if it==FAIL;it)} };next FAIL if it==FAIL;it)
  "#{name}||=[];_append(#{name},#{expr})" },proc{(it=clas(Act);next FAIL if it==FAIL;it)
 (it=_enter{t = (it=trans();next FAIL if it==FAIL;it)};next FAIL if it==FAIL;it)
  t },proc{(it=clas(Resul);next FAIL if it==FAIL;it)
-(it=_enter{name = _key(:name)
-args = _key(:args) };next FAIL if it==FAIL;it)
+(it=_enter{name = _key(:name){(it=anything();next FAIL if it==FAIL;it)}
+args = _key(:args){(it=arg();next FAIL if it==FAIL;it)} };next FAIL if it==FAIL;it)
  "#{name}[#{args} {#{@locals.map{|l| ":#{l}=>#{l}"}*","} }]" },proc{(it=clas(Foreign);next FAIL if it==FAIL;it)
-(it=_enter{klas = _key(:klas)
-_key(:rule)
-args = _key(:args) };next FAIL if it==FAIL;it)
+(it=_enter{klas = _key(:klas){(it=anything();next FAIL if it==FAIL;it)}
+_key(:rule){(it=rule();next FAIL if it==FAIL;it)}
+args = _key(:args){(it=arg();next FAIL if it==FAIL;it)} };next FAIL if it==FAIL;it)
 failwrap("_foreign(#{klas}).#{rule}(#{args})") },proc{(it=clas(Args);next FAIL if it==FAIL;it)
 (it=_enter{a = _many{(it=arg();next FAIL if it==FAIL;it)}};next FAIL if it==FAIL;it)
  a*"" },proc{(it=clas(Key);next FAIL if it==FAIL;it)
-(it=_enter{name = _key(:name)};next FAIL if it==FAIL;it)
- "_key(:#{name})" },proc{(it=clas(Pass);next FAIL if it==FAIL;it)
-(it=_enter{from = _key(:from)
-to = _key(:to) };next FAIL if it==FAIL;it)
-(it=token("_pass(#{from}){#{to}}");next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it) 
+(it=_enter{name = _key(:name){(it=anything();next FAIL if it==FAIL;it)}
+expr = _key(:expr){(it=trans();next FAIL if it==FAIL;it)} };next FAIL if it==FAIL;it)
+ "_key(:#{name}){#{expr}}" },proc{(it=clas(Pass);next FAIL if it==FAIL;it)
+(it=_enter{to = _key(:to){(it=trans();next FAIL if it==FAIL;it)}};next FAIL if it==FAIL;it)
+(it=failwrap("_pass(it){#{to}}");next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it) 
 } end
 def transfn() br{t=nil
  t = (it=trans();next FAIL if it==FAIL;it)

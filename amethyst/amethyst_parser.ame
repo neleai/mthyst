@@ -20,7 +20,7 @@ makeclasses(Object,
     :Seq,
     :Or,
     :And,
-		[:Pass,:from,:to]
+		[:Pass,:from,:to],
     [:Enter,:klas],
     [:Rule,:name,:args,:body],
     [:Grammar,:name,:parent,:rules]
@@ -50,7 +50,8 @@ amethyst AmethystParser < Amethyst{
   prefixed   = "~" modifier:m -> Not[m]
              | "&" inlineHostExpr:expr  -> Pred[expr]
              | "&" ~inlineHostExpr:expr  modifier:m -> Lookahead[m]
-             | modifier
+             | modifier:from ">>" modifier:to ->And[Set[{:name=>"it",:expr=>from}] ,Pass[{:to=>to}]]
+						 | modifier
 
  		modifier = term:t optIter(t):t  (~space binding(t) | empty {t})
              | binding(Apply["anything"])

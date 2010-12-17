@@ -22,8 +22,8 @@ amethyst AmethystTranslator < Amethyst {
 				| Resul[@name:name @args=>arg:args] -> "#{name}[#{args} {#{@locals.map{|l| ":#{l}=>#{l}"}*","} }]"
 				| Foreign[@klas:klas @rule=>rule @args=>arg:args] ->failwrap("_foreign(#{klas}).#{rule}(#{args})")
 				| Args[ arg*:a ] -> a*""
-				| Key[@name:name] -> "_key(:#{name})"
-				| Pass[@from=>trans:from @to=>trans:to] "_pass(#{from}){#{to}}"
+				| Key[@name:name @expr=>trans:expr] -> "_key(:#{name}){#{expr}}"
+				| Pass[@to=>trans:to] failwrap("_pass(it){#{to}}")
 
 	transfn = trans:t -> "proc{#{t}}" 
 	

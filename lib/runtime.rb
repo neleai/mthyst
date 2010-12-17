@@ -103,7 +103,15 @@ class AmethystCore
 		return FAIL if a==[]
 		a
 	end
-	
+
+	def _pass(expr)
+		oldInput=@input
+    @input=cachestream(expr)
+		r=yield
+		@input=oldInput
+		r
+	end
+		
 	def _enter()		
 		oldInput=@input
 		@input=@input.child
