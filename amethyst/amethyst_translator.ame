@@ -1,16 +1,16 @@
 amethyst AmethystTranslator < Amethyst {	
 	itrans = [ (char | trans)*:r ] -> r*""
-
-	trans = Grammar[@name:name @parent:parent @rules=>transs:body] -> "class #{name} < #{parent}\n#{body}\nend\n"
-				| Rule[@name:name @locals:{@@locals=it} @args=>trans:args @body=>trans:body] -> "def #{name}(#{args}) br{#{@locals.map{|l|l+"=nil"}*";"}\n #{body} \n} end\n"
+	
+	trans = Grammar[rw('return',`@name:name @parent:parent @rules=>transs:body`)] -> "class #{name} < #{parent}\n#{body}\nend\n"
+				| Rule[@name:name @locals:{@@locals=it} @args=>trans:args @body=>trans:body] -> "def #{name}(#{args}) \n#{@locals.map{|l|l+"=nil"}*";"}\n #{body} \n end\n"
 				| Enter[trans:expr] failwrap("_enter{#{expr}}")
-				| Or[transfn*:ors]  failwrap("_or(#{ors*","})")
+				| Or[rw('next', `transfn*:ors`)]  failwrap("_or(#{ors*","})")
 				| And[trans*:t ] -> "#{t*"\n"} "
-				| Not[trans:t ]  failwrap("_not{#{t}}")
+				| Not[rw('next',`trans:t`) ]  failwrap("_not{#{t}}")
 				| Pred[trans:t ]  failwrap("(#{t})||FAIL")
-  			| Lookahead[trans:t ]  failwrap("_lookahead{#{t}}")
+  			| Lookahead[rw('next',`trans:t`) ]  failwrap("_lookahead{#{t}}")
         | Comment[:c] -> ""
-				| Many[trans:t] -> "_many{#{t}}"
+				| Many[rw('next', `trans:t` )] -> "_many{#{t}}"
 				| Apply[ :name arg*:args]  failwrap("#{name}(#{args})")
         | Set[@name:name @expr=>trans:expr] -> "#{name} = (#{expr})"
 				| Append[@name:name @expr=>trans:expr] -> "it=#{expr}\n #{name}||=[];_append(#{name},it)"
@@ -29,6 +29,8 @@ amethyst AmethystTranslator < Amethyst {
 			| Exp[transfn:t ] -> t
 		  | ExpKey[ trans:t] -> t
 			| anything
+	
+	rw(word,prc) = {rwo=@@returnword;@@returnword=word} apply(prc):x {@@returnword=rwo;x}
 
-	failwrap(s) = {  "(it=#{s};next FAIL if it==FAIL;it)" }
+	failwrap(s) = {  "(it=#{s};#{@@returnword} FAIL if it==FAIL;it)" }
 }
