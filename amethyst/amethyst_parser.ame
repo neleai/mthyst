@@ -13,8 +13,8 @@ makeclasses(Object,
     :Many,
     :Many1,
     :Comment,
-    :Act,
-    :Pred,
+    [:Act,:uses]
+    [:Pred,:uses]
     :Lookahead,
     :Not,
     :Seq,
