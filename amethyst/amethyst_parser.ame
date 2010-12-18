@@ -80,13 +80,16 @@ amethyst AmethystParser < Amethyst{
 		 	  | "'"  (~'\''  eChar)*:s '\''  -> Apply["seq",quote(s)]
  			  | number:{Apply["exactly",it]}
       	| "<" (~">" eChar)+:x  ">"                            ->  Apply["regch",quote(x)]
-		    | "(" expression:x ")"                                ->  x
+		    | "(" expression:x ")[]"															collect(x)
+				| "(" expression:x ")"                                ->  x
 
 	application = name:klas '::' name:rule argsOpt('(',')'):arg @Foreign
   	      		| name:rule argsOpt('(',')'):arg -> Apply[rule,arg]
 
 	key         = "@" className:name  argsOpt('[',']'):args   @Resul
               | "@" name:name ("=>" term  | empty  {Apply["anything"]}):expr    @Key
+
+	collect(ors) = -> a=autovar; And[Or[{:ary=>ors.ary.map{|ands| And[{:ary=>ands.ary.map{|expr| Append[{:name=>a,:expr=>expr}]}}]}}],Act[Args[a]]]
 
 	eChar = '\\' char:c   -> "\\#{c}"
   	  	| _args('#{','}')

@@ -336,6 +336,9 @@ avar23 )
 (it=(token(">"));next FAIL if it==FAIL;it)
   Apply["regch",quote(x)] },proc{(it=(token("("));next FAIL if it==FAIL;it)
 x = ((it=(expression());next FAIL if it==FAIL;it))
+(it=(token(")[]"));next FAIL if it==FAIL;it)
+(it=(collect(x));next FAIL if it==FAIL;it) },proc{(it=(token("("));next FAIL if it==FAIL;it)
+x = ((it=(expression());next FAIL if it==FAIL;it))
 (it=(token(")"));next FAIL if it==FAIL;it)
   x }));return FAIL if it==FAIL;it) 
  end
@@ -360,6 +363,10 @@ expr = ((it=(_or(proc{(it=(token("=>"));next FAIL if it==FAIL;it)
 (it=(term());next FAIL if it==FAIL;it) },proc{(it=(empty());next FAIL if it==FAIL;it)
 Apply["anything"] }));next FAIL if it==FAIL;it))
 Key[ {:name=>name,:args=>args,:expr=>expr }] }));return FAIL if it==FAIL;it) 
+ end
+def collect(ors) 
+
+  a=autovar; And[Or[{:ary=>ors.ary.map{|ands| And[{:ary=>ands.ary.map{|expr| Append[{:name=>a,:expr=>expr}]}}]}}],Act[Args[a]]] 
  end
 def eChar() 
 c=nil
