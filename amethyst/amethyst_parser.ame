@@ -61,7 +61,7 @@ amethyst AmethystParser < Amethyst{
              | binding(Apply["anything"])
              | "#" (~endline .)*:c -> Comment[c]
  
-	 optIter(t) = "*"  -> Many[t]
+	 optIter(t) = "*"  -> a=autovar; And[Act[Args[a+"=[]"]], Many[Append[{:name=>a,:expr=>t}]],Act[Args[a]]]
               | "+"   -> a=autovar; And[Act[Args[a+"=[]"]], Append[{:name=>a,:expr=>t}], Many[Append[{:name=>a,:expr=>t}]],Act[Args[a]]]
               | "?"   -> Or[t,Apply["empty"]]
               | empty -> t
