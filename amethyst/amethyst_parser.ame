@@ -31,7 +31,11 @@ def quote(s)
   '"'+s.gsub('\\"','"').gsub('"','\\"')+'"'
 end
 
-
+$av=0
+def autovar
+	$av+=1
+	"avar"+$av.to_s
+end
 
 amethyst AmethystParser < Amethyst{
 	igrammar = (~'amethyst' . | grammar)*:a -> a
@@ -58,7 +62,7 @@ amethyst AmethystParser < Amethyst{
              | "#" (~endline .)*:c -> Comment[c]
  
 	 optIter(t) = "*"  -> Many[t]
-              | "+"   -> Apply["many1",Args[Exp[t]]]
+              | "+"   -> a=autovar; And[Act[Args[a+"=[]"]], Append[{:name=>a,:expr=>t}], Many[Append[{:name=>a,:expr=>t}]],Act[Args[a]]]
               | "?"   -> Or[t,Apply["empty"]]
               | empty -> t
   
@@ -67,6 +71,7 @@ amethyst AmethystParser < Amethyst{
 
 
 	term  = (className | "" {"Object"}):cls '[' expression:expr "]" -> And[Apply["clas",cls], Enter[expr]]
+				| className:cls -> Apply["is_a",cls]
 				| "nested" '(' expression:expr ")" -> Nested[expr]
 		 	  | application
  			  | key

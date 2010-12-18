@@ -1,26 +1,22 @@
-def failwrap(s)
-  "(it=#{s};next FAIL if it==FAIL;it)"
-end
-
-amethyst AmethystTranslator < Amethyst {
+amethyst AmethystTranslator < Amethyst {	
 	itrans = [ (char | trans)*:r ] -> r*""
 
 	trans = Grammar[@name:name @parent:parent @rules=>transs:body] -> "class #{name} < #{parent}\n#{body}\nend\n"
 				| Rule[@name:name @locals:{@@locals=it} @args=>trans:args @body=>trans:body] -> "def #{name}(#{args}) br{#{@locals.map{|l|l+"=nil"}*";"}\n #{body} \n} end\n"
-				| Enter[trans:expr] -> failwrap("_enter{#{expr}}")
-				| Or[transfn*:ors] -> failwrap("_or(#{ors*","})")
+				| Enter[trans:expr] failwrap("_enter{#{expr}}")
+				| Or[transfn*:ors]  failwrap("_or(#{ors*","})")
 				| And[trans*:t ] -> "#{t*"\n"} "
-				| Not[trans:t ] -> failwrap("_not{#{t}}")
-				| Pred[trans:t ] -> failwrap("_pred{#{t}}")
-  			| Lookahead[trans:t ] -> failwrap("_lookahead{#{t}}")
+				| Not[trans:t ]  failwrap("_not{#{t}}")
+				| Pred[trans:t ]  failwrap("(#{t})||FAIL")
+  			| Lookahead[trans:t ]  failwrap("_lookahead{#{t}}")
         | Comment[:c] -> ""
 				| Many[trans:t] -> "_many{#{t}}"
-				| Apply[ :name arg*:args] -> failwrap("#{name}(#{args})")
-        | Set[@name:name @expr=>trans:expr] -> "#{name} = #{expr}"
-				| Append[@name:name @expr=>trans:expr] -> "#{name}||=[];_append(#{name},#{expr})"
+				| Apply[ :name arg*:args]  failwrap("#{name}(#{args})")
+        | Set[@name:name @expr=>trans:expr] -> "#{name} = (#{expr})"
+				| Append[@name:name @expr=>trans:expr] -> "it=#{expr}\n #{name}||=[];_append(#{name},it)"
 				| Act[trans:t ] -> t
 				| Resul[@name:name @args=>arg:args] -> "#{name}[#{args} {#{@locals.map{|l| ":#{l}=>#{l}"}*","} }]"
-				| Foreign[@klas:klas @rule=>rule @args=>arg:args] ->failwrap("_foreign(#{klas}).#{rule}(#{args})")
+				| Foreign[@klas:klas @rule=>rule @args=>arg:args] failwrap("_foreign(#{klas}).#{rule}(#{args})")
 				| Args[ arg*:a ] -> a*""
 				| Key[@name:name @expr=>trans:expr] -> "_key(:#{name}){#{expr}}"
 				| Pass[@to=>trans:to] failwrap("_pass(it){#{to}}")
@@ -33,4 +29,6 @@ amethyst AmethystTranslator < Amethyst {
 			| Exp[transfn:t ] -> t
 		  | ExpKey[ trans:t] -> t
 			| anything
+
+	failwrap(s) = {  "(it=#{s};next FAIL if it==FAIL;it)" }
 }
