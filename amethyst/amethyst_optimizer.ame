@@ -10,7 +10,7 @@ amethyst AmethystOptimizer < Amethyst {
 				| Pred[trans:ary[] ]  @Pred
   			| Lookahead[trans:ary ]  @Lookahead
         | Comment[anything*:ary]  @Comment
-				| Many[trans:ary[]] @Many
+				| Many[trans:ary[] @o:o] @Many
 				| Apply[ :ary[] arg*:ary[]] @Apply
         | Set[@name:name @expr=>trans:expr] @Set
 				| Append[@name:name @expr=>trans:expr] @Append

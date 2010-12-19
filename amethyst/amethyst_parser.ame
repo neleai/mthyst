@@ -10,7 +10,7 @@ makeclasses(Object,
     :Foreign,
     [:Append,:name,:expr],
     [:Set,:name,:expr],
-    :Many,
+    [:Many,:o],
     :Many1,
     :Comment,
     [:Act,:uses],
@@ -62,8 +62,8 @@ amethyst AmethystParser < Amethyst{
              | binding(Apply["anything"])
              | "#" (~endline .)*:c -> Comment[c]
  
-	 optIter(t) = "*"  -> a=autovar; And[Act[Args[a+"=[]"]], Many[Append[{:name=>a,:expr=>t}]],Act[Args[a]]]
-              | "+"   -> a=autovar; And[Act[Args[a+"=[]"]], Append[{:name=>a,:expr=>t}], Many[Append[{:name=>a,:expr=>t}]],Act[Args[a]]]
+	 optIter(t) = "*"  -> a=autovar; And[Act[Args[a+"=[]"]], Many[{:ary=>[Append[{:name=>a,:expr=>t}]],:o=>autovar}],Act[Args[a]]]
+              | "+"   -> a=autovar; And[Act[Args[a+"=[]"]], Append[{:name=>a,:expr=>t}], Many[{:ary=>[Append[{:name=>a,:expr=>t}]],:o=>autovar}],Act[Args[a]]]
               | "?"   -> Or[t,Apply["empty"]]
               | empty -> t
   
