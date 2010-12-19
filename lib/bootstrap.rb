@@ -151,8 +151,8 @@ makeclasses(Object,
     :Many,
     :Many1,
     :Comment,
-    :Act,
-    :Pred,
+    [:Act,:uses],
+    [:Pred,:uses],
     :Lookahead,
     :Not,
     :Seq,
@@ -334,7 +334,7 @@ avar44=@input;r=it=((it=(_not{(it=(token(">"));next FAIL if it==FAIL;it)});break
 end;@input=avar44
 avar23 )
 (it=(token(">"));next FAIL if it==FAIL;it)
-  Apply["regch",quote(x)] },proc{(it=(token("("));next FAIL if it==FAIL;it)
+  Apply["regch","/[#{x}]/"] },proc{(it=(token("("));next FAIL if it==FAIL;it)
 x = ((it=(expression());next FAIL if it==FAIL;it))
 (it=(token(")[]"));next FAIL if it==FAIL;it)
 (it=(collect(x));next FAIL if it==FAIL;it) },proc{(it=(token("("));next FAIL if it==FAIL;it)

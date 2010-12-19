@@ -13,8 +13,8 @@ makeclasses(Object,
     :Many,
     :Many1,
     :Comment,
-    [:Act,:uses]
-    [:Pred,:uses]
+    [:Act,:uses],
+    [:Pred,:uses],
     :Lookahead,
     :Not,
     :Seq,
@@ -79,7 +79,7 @@ amethyst AmethystParser < Amethyst{
 				| "\"" (~'"' eChar)*:s '"' -> Apply["token" ,quote(s)]
 		 	  | "'"  (~'\''  eChar)*:s '\''  -> Apply["seq",quote(s)]
  			  | number:{Apply["exactly",it]}
-      	| "<" (~">" eChar)+:x  ">"                            ->  Apply["regch",quote(x)]
+      	| "<" (~">" eChar)+:x  ">"                            ->  Apply["regch","/[#{x}]/"]
 		    | "(" expression:x ")[]"															collect(x)
 				| "(" expression:x ")"                                ->  x
 
