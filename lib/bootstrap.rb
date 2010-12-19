@@ -2,39 +2,39 @@ class Amethyst < AmethystCore
 def _() 
 
  (it=(space());return FAIL if it==FAIL;it) 
- end
+end
 def _dot_() 
 
  (it=(anything());return FAIL if it==FAIL;it) 
- end
+end
 def regch(regex) 
 c=nil
  c = ((it=(char());return FAIL if it==FAIL;it))
 (it=((regex.match(c))||FAIL);return FAIL if it==FAIL;it)
  c  
- end
+end
 def eof() 
 
  (it=(_not{(it=(_dot_());next FAIL if it==FAIL;it)});return FAIL if it==FAIL;it) 
- end
+end
 def empty() 
 
   nil 
- end
+end
 def char() 
 c=nil
  c = ((it=(_dot_());return FAIL if it==FAIL;it))
 (it=((c.is_a? String )||FAIL);return FAIL if it==FAIL;it)
  c  
- end
+end
 def endline() 
 
  (it=(_or(proc{(it=(seq("\r\n"));next FAIL if it==FAIL;it)},proc{(it=(seq("\r"));next FAIL if it==FAIL;it)},proc{(it=(seq("\n"));next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it) 
- end
+end
 def space() 
 
  (it=(regch(/[\s\t\r\n\f]/));return FAIL if it==FAIL;it) 
- end
+end
 def spaces() 
 
  avar3=[]
@@ -44,47 +44,47 @@ avar4=@input;r=it=((it=(space());break FAIL if it==FAIL;it))
  break FAIL if r==FAIL
 end;@input=avar4
 avar3  
- end
+end
 def _() 
 
  (it=(space());return FAIL if it==FAIL;it) 
- end
+end
 def digit() 
 
  (it=(regch(/[0-9]/));return FAIL if it==FAIL;it) 
- end
+end
 def lower() 
 
  (it=(regch(/[a-z]/));return FAIL if it==FAIL;it) 
- end
+end
 def upper() 
 
  (it=(regch(/[A-Z]/));return FAIL if it==FAIL;it) 
- end
+end
 def letter() 
 
  (it=(_or(proc{(it=(lower());next FAIL if it==FAIL;it)},proc{(it=(upper());next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it) 
- end
+end
 def letterOrDigit() 
 
  (it=(_or(proc{(it=(letter());next FAIL if it==FAIL;it)},proc{(it=(digit());next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it) 
- end
+end
 def alpha() 
 
  (it=(letter());return FAIL if it==FAIL;it) 
- end
+end
 def alnum() 
 
  (it=(letterOrDigit());return FAIL if it==FAIL;it) 
- end
+end
 def xdigit() 
 
  (it=(regch(/[0-9a-fA-F]/));return FAIL if it==FAIL;it) 
- end
+end
 def word() 
 
  (it=(_or(proc{(it=(alpha());next FAIL if it==FAIL;it)},proc{(it=(seq("_"));next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it) 
- end
+end
 def listOf(rule,delim) 
 f=nil
  (it=(_or(proc{it=((it=(apply(rule));next FAIL if it==FAIL;it))
@@ -100,26 +100,26 @@ avar3 )
  f||=[];_append(f,it)
  f },proc{(it=(empty());next FAIL if it==FAIL;it)
  [] }));return FAIL if it==FAIL;it) 
- end
+end
 def exactly(wanted) 
 got=nil
  got = ((it=(anything());return FAIL if it==FAIL;it))
 (it=((wanted == got)||FAIL);return FAIL if it==FAIL;it)
  wanted  
- end
+end
 def clas(cls) 
 
  (it=((@input.item.is_a?(cls))||FAIL);return FAIL if it==FAIL;it) 
- end
+end
 def is_a(cls) 
 
  (it=((@input.src.is_a?(cls))||FAIL);return FAIL if it==FAIL;it) 
- end
+end
 def token(s) 
 
  (it=(spaces());return FAIL if it==FAIL;it)
 (it=(seq(s));return FAIL if it==FAIL;it)  
- end
+end
 def many1(s) 
 a=nil
  it=((it=(apply(s));return FAIL if it==FAIL;it))
@@ -132,7 +132,7 @@ avar4=@input;r=it=((it=(apply(s));break FAIL if it==FAIL;it))
 end;@input=avar4
 avar3 )
  a||=[];_append(a,it)  
- end
+end
 
 end
 
@@ -158,6 +158,7 @@ makeclasses(Object,
     :Seq,
     :Or,
     :And,
+		[:Variable,:number],
 		[:Shadow,:name,:expr],
 		[:Pass,:from,:to],
     [:Enter,:klas],
@@ -188,7 +189,7 @@ avar4=@input;r=it=((it=(_or(proc{(it=(_not{(it=(seq("amethyst"));next FAIL if it
 end;@input=avar4
 avar3 )
  a  
- end
+end
 def grammar() 
 name=nil;parent=nil;rules=nil
  (it=(token("amethyst"));return FAIL if it==FAIL;it)
@@ -206,7 +207,7 @@ end;@input=avar4
 avar3 )
 (it=(token("}"));return FAIL if it==FAIL;it)
 Grammar[ {:name=>name,:parent=>parent,:rules=>rules }]  
- end
+end
 def rule() 
 name=nil;args=nil;body=nil;locals=nil
  @locals=[]
@@ -217,16 +218,16 @@ body = ((it=(expression());return FAIL if it==FAIL;it))
 $av=0
 locals = (@locals.uniq)
 Rule[ {:name=>name,:args=>args,:body=>body,:locals=>locals }]  
- end
+end
 def expression() 
 
  (it=(choice());return FAIL if it==FAIL;it) 
- end
+end
 def choice() 
 ary=nil
  ary = ((it=(listOf('sequence',proc{(it=(token("|"));return FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it))
 Or[ {:ary=>ary }]  
- end
+end
 def sequence() 
 ary=nil
  ary = (avar3=[]
@@ -238,7 +239,7 @@ avar4=@input;r=it=((it=(nr());break FAIL if it==FAIL;it)
 end;@input=avar4
 avar3 )
 And[ {:ary=>ary }]  
- end
+end
 def prefixed() 
 m=nil;expr=nil;from=nil;to=nil
  (it=(_or(proc{(it=(token("~"));next FAIL if it==FAIL;it)
@@ -252,7 +253,7 @@ m = ((it=(modifier());next FAIL if it==FAIL;it))
 (it=(token(">>"));next FAIL if it==FAIL;it)
 to = ((it=(modifier());next FAIL if it==FAIL;it))
 And[Set[{:name=>"it",:expr=>from}] ,Pass[{:to=>to}]] },proc{(it=(modifier());next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it) 
- end
+end
 def modifier() 
 t=nil;c=nil
  (it=(_or(proc{t = ((it=(term());next FAIL if it==FAIL;it))
@@ -269,7 +270,7 @@ avar4=@input;r=it=((it=(_not{(it=(endline());next FAIL if it==FAIL;it)});break F
 end;@input=avar4
 avar3 )
  Comment[c] }));return FAIL if it==FAIL;it) 
- end
+end
 def optIter(t) 
 
  (it=(_or(proc{(it=(token("*"));next FAIL if it==FAIL;it)
@@ -277,7 +278,7 @@ def optIter(t)
  a=autovar; And[Act[Args[a+"=[]"]], Append[{:name=>a,:expr=>t}], Many[{:ary=>[Append[{:name=>a,:expr=>t}]],:o=>autovar}],Act[Args[a]]] },proc{(it=(token("?"));next FAIL if it==FAIL;it)
  Or[t,Apply["empty"]] },proc{(it=(empty());next FAIL if it==FAIL;it)
  t }));return FAIL if it==FAIL;it) 
- end
+end
 def binding(exp) 
 expr=nil;name=nil;e=nil
  (it=(_or(proc{expr = (exp)
@@ -289,7 +290,7 @@ Append[ {:expr=>expr,:name=>name }] },proc{(it=(empty());next FAIL if it==FAIL;i
 Set[ {:expr=>expr,:name=>name }] }));next FAIL if it==FAIL;it) },proc{(it=(token(":"));next FAIL if it==FAIL;it)
 e = ((it=(inlineHostExpr());next FAIL if it==FAIL;it))
  And[ Set[{:name=>"it", :expr=>exp}] , Act[e] ] }));return FAIL if it==FAIL;it) 
- end
+end
 def term() 
 cls=nil;expr=nil;x=nil;s=nil
  (it=(_or(proc{cls = ((it=(_or(proc{(it=(className());next FAIL if it==FAIL;it)},proc{(it=(token(""));next FAIL if it==FAIL;it)
@@ -346,7 +347,7 @@ x = ((it=(expression());next FAIL if it==FAIL;it))
 x = ((it=(expression());next FAIL if it==FAIL;it))
 (it=(token(")"));next FAIL if it==FAIL;it)
   x }));return FAIL if it==FAIL;it) 
- end
+end
 def application() 
 klas=nil;rule=nil;arg=nil
  (it=(_or(proc{klas = ((it=(name());next FAIL if it==FAIL;it))
@@ -356,7 +357,7 @@ arg = ((it=(argsOpt('(',')'));next FAIL if it==FAIL;it))
 Foreign[ {:klas=>klas,:rule=>rule,:arg=>arg }] },proc{rule = ((it=(name());next FAIL if it==FAIL;it))
 arg = ((it=(argsOpt('(',')'));next FAIL if it==FAIL;it))
  Apply[rule,arg] }));return FAIL if it==FAIL;it) 
- end
+end
 def key() 
 name=nil;args=nil;vars=nil;expr=nil
  (it=(_or(proc{(it=(token("@"));next FAIL if it==FAIL;it)
@@ -369,43 +370,43 @@ expr = ((it=(_or(proc{(it=(token("=>"));next FAIL if it==FAIL;it)
 (it=(term());next FAIL if it==FAIL;it) },proc{(it=(empty());next FAIL if it==FAIL;it)
 Apply["anything"] }));next FAIL if it==FAIL;it))
 Key[ {:name=>name,:args=>args,:vars=>vars,:expr=>expr }] }));return FAIL if it==FAIL;it) 
- end
+end
 def collect(ors) 
 
   a=autovar; And[Or[{:ary=>ors.ary.map{|ands| And[{:ary=>ands.ary.map{|expr| Append[{:name=>a,:expr=>expr}]}}]}}],Act[Args[a]]] 
- end
+end
 def eChar() 
 c=nil
  (it=(_or(proc{(it=(seq("\\"));next FAIL if it==FAIL;it)
 c = ((it=(char());next FAIL if it==FAIL;it))
  "\\#{c}" },proc{(it=(_args('#{','}'));next FAIL if it==FAIL;it)},proc{(it=(char());next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it) 
- end
+end
 def ruleargs() 
 
  (it=(argsOpt('(',')'));return FAIL if it==FAIL;it) 
- end
+end
 def nr() 
 
  (it=(_not{(it=(name());next FAIL if it==FAIL;it)
 (it=(ruleargs());next FAIL if it==FAIL;it)
 (it=(token("="));next FAIL if it==FAIL;it) });return FAIL if it==FAIL;it) 
- end
+end
 def argsOpt(o,c) 
 
  (it=(_or(proc{(it=(args(o,c));next FAIL if it==FAIL;it)},proc{(it=(empty());next FAIL if it==FAIL;it)
  Args[""] }));return FAIL if it==FAIL;it) 
- end
+end
 def args(o,c) 
 ary=nil
  ary = ((it=(__args(o,c));return FAIL if it==FAIL;it))
 ary= ary.flatten
 Args[ {:ary=>ary }]  
- end
+end
 def _args(o,c) 
 r=nil
  r = ((it=(__args(o,c));return FAIL if it==FAIL;it))
  [o]+r+[c]  
- end
+end
 def __args(o,c) 
 r=nil
  (it=(seq(o));return FAIL if it==FAIL;it)
@@ -418,7 +419,7 @@ end;@input=avar4
 avar3 )
 (it=(seq(c));return FAIL if it==FAIL;it)
  r  
- end
+end
 def rubyarg() 
 e=nil;s=nil;n=nil;k=nil
  (it=(_or(proc{(it=(seq("`"));next FAIL if it==FAIL;it)
@@ -458,15 +459,15 @@ avar11 )
  n||=[];_append(n,it)
  n*"" },proc{k = ((it=(key());next FAIL if it==FAIL;it))
  ExpKey[k]  },proc{(it=(regch(/[^`{}()'"\[\]]/));next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it) 
- end
+end
 def nameFirst() 
 
  (it=(_or(proc{(it=(regch(/[_$.^]/));next FAIL if it==FAIL;it)},proc{(it=(letter());next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it) 
- end
+end
 def nameRest() 
 
  (it=(_or(proc{(it=(nameFirst());next FAIL if it==FAIL;it)},proc{(it=(digit());next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it) 
- end
+end
 def className() 
 s=nil
  (it=(spaces());return FAIL if it==FAIL;it)
@@ -481,7 +482,7 @@ end;@input=avar4
 avar3 )
  s||=[];_append(s,it)
  leterize(s*"")  
- end
+end
 def name() 
 s=nil
  (it=(spaces());return FAIL if it==FAIL;it)
@@ -496,11 +497,11 @@ end;@input=avar4
 avar3 )
  s||=[];_append(s,it)
  leterize(s*"")  
- end
+end
 def inlineHostExpr() 
 
  (it=(args('{','}'));return FAIL if it==FAIL;it) 
- end
+end
 def number() 
 
  avar3=[]
@@ -512,7 +513,7 @@ avar4=@input;r=it=((it=(regch(/[0-9]/));break FAIL if it==FAIL;it))
  break FAIL if r==FAIL
 end;@input=avar4
 avar3  
- end
+end
 def atomicHostExpr() 
 s=nil
  s = (avar3=[]
@@ -524,7 +525,7 @@ avar4=@input;r=it=((it=(_not{(it=(endline());next FAIL if it==FAIL;it)});break F
 end;@input=avar4
 avar3 )
  Args[s*""]  
- end
+end
 
 end
 
@@ -540,7 +541,7 @@ avar8=@input;r=it=((it=(_or(proc{(it=(char());next FAIL if it==FAIL;it)},proc{(i
 end;@input=avar8
 avar7 )});return FAIL if it==FAIL;it)
  r  
- end
+end
 def trans() 
 name=nil;parent=nil;rules=nil;args=nil;body=nil;locals=nil;ary=nil;o=nil;expr=nil;vars=nil;klas=nil;from=nil;to=nil
  (it=(_or(proc{(it=(clas(Grammar));next FAIL if it==FAIL;it)
@@ -637,11 +638,11 @@ Pass[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:locals
 (it=(_enter{name = (_key(:name){(it=(anything());next FAIL if it==FAIL;it)})
 expr = (_key(:expr){(it=(trans());next FAIL if it==FAIL;it)}) });next FAIL if it==FAIL;it)
 Shadow[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:locals=>locals,:ary=>ary,:o=>o,:expr=>expr,:vars=>vars,:klas=>klas,:from=>from,:to=>to }] }));return FAIL if it==FAIL;it) 
- end
+end
 def transfn() 
 
  (it=(trans());return FAIL if it==FAIL;it) 
- end
+end
 def transs() 
 t=nil
  (it=(clas(Object));return FAIL if it==FAIL;it)
@@ -653,7 +654,7 @@ avar8=@input;r=it=((it=(trans());break FAIL if it==FAIL;it))
 end;@input=avar8
 avar7 )});return FAIL if it==FAIL;it)
  t  
- end
+end
 def arg() 
 ary=nil
  (it=(_or(proc{(it=(clas(Args));next FAIL if it==FAIL;it)
@@ -671,7 +672,7 @@ Exp[ {:ary=>ary }] },proc{(it=(clas(ExpKey));next FAIL if it==FAIL;it)
 (it=(_enter{it=((it=(trans());next FAIL if it==FAIL;it))
  ary||=[];_append(ary,it)});next FAIL if it==FAIL;it)
 ExpKey[ {:ary=>ary }] },proc{(it=(anything());next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it) 
- end
+end
 
 end
 
@@ -699,7 +700,7 @@ avar15 )});next FAIL if it==FAIL;it)
 ary=ary.map{|a| (a.is_a?(And)) ? a.ary : a}.flatten
 (it=(_or(proc{(it=((ary.size==1)||FAIL);next FAIL if it==FAIL;it)
 ary[0] },proc{And[ {:ary=>ary }]}));next FAIL if it==FAIL;it) },proc{super}));return FAIL if it==FAIL;it) 
- end
+end
 
 end
 
@@ -715,7 +716,7 @@ avar8=@input;r=it=((it=(_or(proc{(it=(char());next FAIL if it==FAIL;it)},proc{(i
 end;@input=avar8
 avar7 )});return FAIL if it==FAIL;it)
  r*""  
- end
+end
 def trans() 
 name=nil;parent=nil;body=nil;args=nil;expr=nil;ors=nil;t=nil;c=nil;o=nil;vars=nil;klas=nil;a=nil;to=nil
  (it=(_or(proc{(it=(clas(Grammar));next FAIL if it==FAIL;it)
@@ -728,7 +729,7 @@ it = (_key(:locals){(it=(anything());next FAIL if it==FAIL;it)})
 @locals=it
 args = (_key(:args){(it=(trans());next FAIL if it==FAIL;it)})
 body = (_key(:body){(it=(trans());next FAIL if it==FAIL;it)}) });next FAIL if it==FAIL;it)
- "def #{name}(#{args}) \n#{@locals.map{|l|l+"=nil"}*";"}\n #{body} \n end\n" },proc{(it=(clas(Enter));next FAIL if it==FAIL;it)
+ "def #{name}(#{args}) \n#{@locals.map{|l|l+"=nil"}*";"}\n #{body} \nend\n" },proc{(it=(clas(Enter));next FAIL if it==FAIL;it)
 (it=(_enter{expr = ((it=(trans());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
 (it=(failwrap("_enter{#{expr}}"));next FAIL if it==FAIL;it) },proc{(it=(clas(Or));next FAIL if it==FAIL;it)
 (it=(_enter{(it=(rw('next', proc{ors = (avar23=[]
@@ -799,12 +800,12 @@ expr = (_key(:expr){(it=(trans());next FAIL if it==FAIL;it)}) });next FAIL if it
 (it=(_enter{_key(:name){(it=(name());next FAIL if it==FAIL;it)}
 expr = (_key(:expr){(it=(trans());next FAIL if it==FAIL;it)}) });next FAIL if it==FAIL;it)
   "#{@a}=#{name} ;#{@r}=(#{expr});#{name}=#{@a};#{@r}" }));return FAIL if it==FAIL;it) 
- end
+end
 def transfn() 
 t=nil
  t = ((it=(trans());return FAIL if it==FAIL;it))
  "proc{#{t}}"   
- end
+end
 def transs() 
 t=nil
  (it=(clas(Object));return FAIL if it==FAIL;it)
@@ -816,7 +817,7 @@ avar8=@input;r=it=((it=(trans());break FAIL if it==FAIL;it))
 end;@input=avar8
 avar7 )});return FAIL if it==FAIL;it)
  t  
- end
+end
 def arg() 
 a=nil;t=nil
  (it=(_or(proc{(it=(clas(Args));next FAIL if it==FAIL;it)
@@ -832,17 +833,17 @@ avar7 )});next FAIL if it==FAIL;it)
  t },proc{(it=(clas(ExpKey));next FAIL if it==FAIL;it)
 (it=(_enter{t = ((it=(trans());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
  t },proc{(it=(anything());next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it) 
- end
+end
 def rw(word,prc) 
 x=nil
  rwo=@returnword;@returnword=word
 x = ((it=(apply(prc));return FAIL if it==FAIL;it))
 @returnword=rwo;x  
- end
+end
 def failwrap(s) 
 
    "(it=(#{s});#{@returnword} FAIL if it==FAIL;it)"  
- end
+end
 
 end
 
