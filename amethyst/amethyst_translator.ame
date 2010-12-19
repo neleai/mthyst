@@ -20,6 +20,7 @@ amethyst AmethystTranslator < Amethyst {
 				| Args[ arg*:a ] -> a*""
 				| Key[@name:name @expr=>trans:expr] -> "_key(:#{name}){#{expr}}"
 				| Pass[@to=>trans:to] failwrap("_pass(it){#{to}}")
+				| Shadow[@name=>name @expr=>trans:expr] -> a=autovar; r=autovar; "#{a}=#{name} ;#{r}=(#{expr});#{name}=#{a};#{r}"
 
 	transfn = trans:t -> "proc{#{t}}" 
 	

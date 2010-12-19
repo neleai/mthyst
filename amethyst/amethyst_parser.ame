@@ -20,6 +20,7 @@ makeclasses(Object,
     :Seq,
     :Or,
     :And,
+		[:Shadow,:name,:expr],
 		[:Pass,:from,:to],
     [:Enter,:klas],
     [:Rule,:name,:args,:body],
@@ -43,7 +44,7 @@ amethyst AmethystParser < Amethyst{
 	grammar = "amethyst" name:name ("<" name:parent |empty {parent="Amethyst"} ) 
 "{" rule*:rules "}"  @Grammar
 	
-	rule = name:name ruleargs:args "=" expression:body @Rule
+	rule = name:name ruleargs:args "=" expression:body {$av=0} @Rule
 
 	expression = choice
 	
@@ -114,7 +115,7 @@ amethyst AmethystParser < Amethyst{
 					 | _args('{','}')
 					 | '"' (~'"'   eChar)*:s '"'  -> ['"']+ s+['"']
 					 | '\''(~'\''  eChar)*:s '\'' -> ['\'']+s+['\'']
-					 | "@@" -> "@"
+					 | ('@@' {n=["@"]}|empty) <a-zA-Z_>+:n[] -> n*""
 					 | key:k -> ExpKey[k] 
 					 | <^`{}()'"\[\]>
 
