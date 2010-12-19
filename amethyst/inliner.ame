@@ -1,0 +1,13 @@
+def shadow(body,args)
+	args.each{|arg| a=autovar; body=And[Set[{:name=>a,:expr=>Act[Args[arg]]}],body,Set[{:name=>arg,:expr=>Act[Args[a]]}]]}
+	body
+end
+amethyst Inliner < AmethystOptimizer {
+
+ inline(rule)= {[rule]}>>Rule[@name:name @args:args @locals:locals @body:body]  {@@name=name;@@args=args;@@body=shadow(body,locals)} itrans
+ 
+ trans = Apply[:name &{name==@@name} arg*:args] -> puts "inlining"; body=@body; args.each_index{|i| body=And[Set[{:name=>@args[i],:expr=>args[i]}],body] } ; shadow(body,@args)
+       | {super}
+
+ test= inline(Rule[{:name=>"a",:locals=>["a","b"],:args=>["x"],:body=>And[Act[Args["aueo"]],Act[Args["aueo"]]]}])
+}

@@ -20,7 +20,7 @@ amethyst AmethystOptimizer < Amethyst {
 				| Args[ arg*:ary ] @Args
 				| Key[@name:name @expr=>trans:expr] @Key
 				| Pass[@from=>trans:from @to=>trans:to] @Pass
-				| Shadow[@name:name @expr=>trans:expr] @Shadow
+				| Shadow[@name:name @expr=>trans:expr @a:a] @Shadow
 	transfn = trans 
 	
 	transs = [ trans*:t ] -> t

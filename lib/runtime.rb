@@ -108,12 +108,9 @@ class AmethystCore
 	end
 
 	def _pass(expr)
-		puts expr.inspect
 		oldInput=@input
     @input=cachestream(expr)
-		puts @input.inspect
 		r=yield
-		puts r.inspect
 		@input=oldInput
 		r
 	end

@@ -543,7 +543,7 @@ avar7 )});return FAIL if it==FAIL;it)
  r  
 end
 def trans() 
-name=nil;parent=nil;rules=nil;args=nil;body=nil;locals=nil;ary=nil;o=nil;expr=nil;vars=nil;klas=nil;from=nil;to=nil
+name=nil;parent=nil;rules=nil;args=nil;body=nil;locals=nil;ary=nil;o=nil;expr=nil;vars=nil;klas=nil;from=nil;to=nil;a=nil
  (it=(_or(proc{(it=(clas(Grammar));next FAIL if it==FAIL;it)
 (it=(_enter{name = (_key(:name){(it=(anything());next FAIL if it==FAIL;it)})
 parent = (_key(:parent){(it=(anything());next FAIL if it==FAIL;it)})
@@ -636,8 +636,9 @@ Key[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:locals=
 to = (_key(:to){(it=(trans());next FAIL if it==FAIL;it)}) });next FAIL if it==FAIL;it)
 Pass[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:locals=>locals,:ary=>ary,:o=>o,:expr=>expr,:vars=>vars,:klas=>klas,:from=>from,:to=>to }] },proc{(it=(clas(Shadow));next FAIL if it==FAIL;it)
 (it=(_enter{name = (_key(:name){(it=(anything());next FAIL if it==FAIL;it)})
-expr = (_key(:expr){(it=(trans());next FAIL if it==FAIL;it)}) });next FAIL if it==FAIL;it)
-Shadow[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:locals=>locals,:ary=>ary,:o=>o,:expr=>expr,:vars=>vars,:klas=>klas,:from=>from,:to=>to }] }));return FAIL if it==FAIL;it) 
+expr = (_key(:expr){(it=(trans());next FAIL if it==FAIL;it)})
+a = (_key(:a){(it=(anything());next FAIL if it==FAIL;it)}) });next FAIL if it==FAIL;it)
+Shadow[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:locals=>locals,:ary=>ary,:o=>o,:expr=>expr,:vars=>vars,:klas=>klas,:from=>from,:to=>to,:a=>a }] }));return FAIL if it==FAIL;it) 
 end
 def transfn() 
 
@@ -797,9 +798,10 @@ expr = (_key(:expr){(it=(trans());next FAIL if it==FAIL;it)}) });next FAIL if it
  "_key(:#{name}){#{expr}}" },proc{(it=(clas(Pass));next FAIL if it==FAIL;it)
 (it=(_enter{to = (_key(:to){(it=(trans());next FAIL if it==FAIL;it)})});next FAIL if it==FAIL;it)
 (it=(failwrap("_pass(it){#{to}}"));next FAIL if it==FAIL;it) },proc{(it=(clas(Shadow));next FAIL if it==FAIL;it)
-(it=(_enter{_key(:name){(it=(name());next FAIL if it==FAIL;it)}
-expr = (_key(:expr){(it=(trans());next FAIL if it==FAIL;it)}) });next FAIL if it==FAIL;it)
-  "#{@a}=#{name} ;#{@r}=(#{expr});#{name}=#{@a};#{@r}" }));return FAIL if it==FAIL;it) 
+(it=(_enter{name = (_key(:name){(it=(anything());next FAIL if it==FAIL;it)})
+expr = (_key(:expr){(it=(trans());next FAIL if it==FAIL;it)})
+a = (_key(:a){(it=(anything());next FAIL if it==FAIL;it)}) });next FAIL if it==FAIL;it)
+  "#{a}=#{name} ;it=(#{expr});#{name}=#{a};it" }));return FAIL if it==FAIL;it) 
 end
 def transfn() 
 t=nil
