@@ -116,7 +116,7 @@ amethyst AmethystParser < Amethyst{
 					 | '\''(~'\''  eChar)*:s '\'' -> ['\'']+s+['\'']
 					 | "@@" -> "@"
 					 | key:k -> ExpKey[k] 
-					 | <^`{}()'"\\[\\]>
+					 | <^`{}()'"\[\]>
 
 	nameFirst      = <_$.^> | letter
 

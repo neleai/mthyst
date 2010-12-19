@@ -10,7 +10,7 @@ def _dot_()
 def regch(regex) 
 c=nil
  c = ((it=(char());return FAIL if it==FAIL;it))
-(it=((Regexp.new("[#{regex}]").match(c))||FAIL);return FAIL if it==FAIL;it)
+(it=((regex.match(c))||FAIL);return FAIL if it==FAIL;it)
  c  
  end
 def eof() 
@@ -33,7 +33,7 @@ def endline()
  end
 def space() 
 
- (it=(regch("\s\t\r\n\f"));return FAIL if it==FAIL;it) 
+ (it=(regch(/[\s\t\r\n\f]/));return FAIL if it==FAIL;it) 
  end
 def spaces() 
 avar2=nil
@@ -51,15 +51,15 @@ def _()
  end
 def digit() 
 
- (it=(regch("0-9"));return FAIL if it==FAIL;it) 
+ (it=(regch(/[0-9]/));return FAIL if it==FAIL;it) 
  end
 def lower() 
 
- (it=(regch("a-z"));return FAIL if it==FAIL;it) 
+ (it=(regch(/[a-z]/));return FAIL if it==FAIL;it) 
  end
 def upper() 
 
- (it=(regch("A-Z"));return FAIL if it==FAIL;it) 
+ (it=(regch(/[A-Z]/));return FAIL if it==FAIL;it) 
  end
 def letter() 
 
@@ -79,7 +79,7 @@ def alnum()
  end
 def xdigit() 
 
- (it=(regch("0-9a-fA-F"));return FAIL if it==FAIL;it) 
+ (it=(regch(/[0-9a-fA-F]/));return FAIL if it==FAIL;it) 
  end
 def word() 
 
@@ -440,11 +440,11 @@ avar29 )
 (it=(seq("\'"));next FAIL if it==FAIL;it)
  ['\'']+s+['\''] },proc{(it=(token("@@"));next FAIL if it==FAIL;it)
  "@" },proc{k = ((it=(key());next FAIL if it==FAIL;it))
- ExpKey[k]  },proc{(it=(regch("^`{}()'\"\\[\\]"));next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it) 
+ ExpKey[k]  },proc{(it=(regch(/[^`{}()'"\[\]]/));next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it) 
  end
 def nameFirst() 
 
- (it=(_or(proc{(it=(regch("_$.^"));next FAIL if it==FAIL;it)},proc{(it=(letter());next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it) 
+ (it=(_or(proc{(it=(regch(/[_$.^]/));next FAIL if it==FAIL;it)},proc{(it=(letter());next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it) 
  end
 def nameRest() 
 
@@ -487,10 +487,10 @@ def inlineHostExpr()
 def number() 
 avar35=nil
  avar35=[]
-it=((it=(regch("0-9"));return FAIL if it==FAIL;it))
+it=((it=(regch(/[0-9]/));return FAIL if it==FAIL;it))
  avar35||=[];_append(avar35,it)
 while true
-avar50=@input;r=it=((it=(regch("0-9"));break FAIL if it==FAIL;it))
+avar50=@input;r=it=((it=(regch(/[0-9]/));break FAIL if it==FAIL;it))
  avar35||=[];_append(avar35,it)
  break FAIL if r==FAIL
 end;@input=avar50

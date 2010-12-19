@@ -3,7 +3,7 @@ amethyst Amethyst < AmethystCore {
 
 	. = anything
 
-  regch(regex) = char:c &{Regexp.new("[#{regex}]").match(c)} -> c
+  regch(regex) = char:c &{regex.match(c)} -> c
 
   eof= ~.
 
