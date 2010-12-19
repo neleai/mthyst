@@ -1,7 +1,7 @@
 makeclasses(Object,
     [:Args,:o,:c,:r],
     [:Key,:name,:expr,:args],
-    [:Resul,:name,:expr,:args],
+    [:Resul,:name,:expr,:args,:vars],
     [:Enter,:name,:cls,:expr],
     :Apply,
     :Nested,
@@ -23,7 +23,7 @@ makeclasses(Object,
 		[:Shadow,:name,:expr],
 		[:Pass,:from,:to],
     [:Enter,:klas],
-    [:Rule,:name,:args,:body],
+    [:Rule,:name,:args,:locals,:body],
     [:Grammar,:name,:parent,:rules]
 )
 
@@ -44,7 +44,7 @@ amethyst AmethystParser < Amethyst{
 	grammar = "amethyst" name:name ("<" name:parent |empty {parent="Amethyst"} ) 
 "{" rule*:rules "}"  @Grammar
 	
-	rule = name:name ruleargs:args "=" expression:body {$av=0} @Rule
+	rule = {@@locals=[]} name:name ruleargs:args "=" expression:body {$av=0} {@@locals.uniq}:locals @Rule
 
 	expression = choice
 	
@@ -67,7 +67,7 @@ amethyst AmethystParser < Amethyst{
               | "?"   -> Or[t,Apply["empty"]]
               | empty -> t
   
-	binding(exp) = {exp}:expr ":" name:name ('[]' @Append | empty @Set )
+	binding(exp) = {exp}:expr ":" name:name {@@locals<<name} ('[]' @Append | empty @Set )
                  | ":" inlineHostExpr:e -> And[ Set[{:name=>"it", :expr=>exp}] , Act[e] ]
 
 
@@ -87,7 +87,7 @@ amethyst AmethystParser < Amethyst{
 	application = name:klas '::' name:rule argsOpt('(',')'):arg @Foreign
   	      		| name:rule argsOpt('(',')'):arg -> Apply[rule,arg]
 
-	key         = "@" className:name  argsOpt('[',']'):args   @Resul
+	key         = "@" className:name  argsOpt('[',']'):args {@@locals.uniq}:vars  @Resul
               | "@" name:name ("=>" term  | empty  {Apply["anything"]}):expr    @Key
 
 	collect(ors) = -> a=autovar; And[Or[{:ary=>ors.ary.map{|ands| And[{:ary=>ands.ary.map{|expr| Append[{:name=>a,:expr=>expr}]}}]}}],Act[Args[a]]]
