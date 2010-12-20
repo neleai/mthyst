@@ -102,13 +102,13 @@ amethyst AmethystParser < Amethyst{
 	nr = ~(name ruleargs "=")
 	
 	argsOpt(o,c) = args(o,c) 
-                | empty -> Args[""]
+                | empty -> Args[]
 
-	args(o,c) = __args(o,c):ary {ary= ary.flatten} @Args
+	args(o,c) = __args(o,c):ary @Args
 
 	_args(o,c) = __args(o,c):r -> [o]+r+[c]
 
-	__args(o,c) = seq(o) rubyarg*:r seq(c) -> r
+	__args(o,c) = seq(o) "" rubyarg*:r seq(c) -> r
 		
 	rubyarg  = '`' expression:e '`' -> Exp[e]
            | _args('(',')')

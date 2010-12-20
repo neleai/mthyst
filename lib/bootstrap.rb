@@ -394,12 +394,11 @@ end
 def argsOpt(o,c) 
 
  (it=(_or(proc{(it=(args(o,c));next FAIL if it==FAIL;it)},proc{(it=(empty());next FAIL if it==FAIL;it)
- Args[""] }));return FAIL if it==FAIL;it) 
+ Args[] }));return FAIL if it==FAIL;it) 
 end
 def args(o,c) 
 ary=nil
  ary = ((it=(__args(o,c));return FAIL if it==FAIL;it))
-ary= ary.flatten
 Args[ {:ary=>ary }]  
 end
 def _args(o,c) 
@@ -410,6 +409,7 @@ end
 def __args(o,c) 
 r=nil
  (it=(seq(o));return FAIL if it==FAIL;it)
+(it=(token(""));return FAIL if it==FAIL;it)
 r = (avar3=[]
 while true
 avar4=@input;r=it=((it=(rubyarg());break FAIL if it==FAIL;it))
@@ -844,7 +844,7 @@ x = ((it=(apply(prc));return FAIL if it==FAIL;it))
 end
 def failwrap(s) 
 
-   "(it=(#{s});#{@returnword} FAIL if it==FAIL;it)"  
+ "(it=(#{s});#{@returnword} FAIL if it==FAIL;it)"  
 end
 
 end
