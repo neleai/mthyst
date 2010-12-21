@@ -109,11 +109,23 @@ amethyst AmethystParser < Amethyst{
 	nr = ~(name ruleargs "=")
 	
 	argsOpt(o,c) = args(o,c) 
-                | empty -> Args[]
+                | empty -> []
 
-	args(o,c) = __args(o,c):ary @Args
+	args(o,c) = __args(o,c):r {
+							r<< ','
+							ary=[]
+							tmp=[]
+							r.each{|a|
+								if a==','
+									ary<<Args[{:ary=>tmp}];tmp=[]
+								else
+									tmp<<a
+								end
+							}
+							ary
+						}
 
-	_args(o,c) = __args(o,c):r -> [o]+r+[c]
+	_args(o,c) = __args(o,c):r -> Args[{:ary=>([o]+r+[c])}]
 
 	__args(o,c) = seq(o) "" rubyarg*:r seq(c) -> r
 		

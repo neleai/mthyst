@@ -9,5 +9,5 @@ amethyst Inliner < AmethystOptimizer {
  trans = Apply[:name &{name==@@name} arg*:args] -> puts "inlining"; body=@body; args.each_index{|i| body=And[Set[{:name=>@args[i],:expr=>Act[args[i]]}],body] } ; shadow(body,@args)
        | {super}
 
- test= inline(Rule[{:name=>"a",:locals=>["a","b"],:args=>["x"],:body=>And[Act["aueo"],Act["aueo"]]}])
+ test= inline(Rule[{:name=>"a",:locals=>["a","b"],:args=>["x"],:body=>And[Act["aueo"],Set[{:name=>autovar,:expr=>Act["a"]}],Many[{:ary=>[Act["aueo"]],:o=>autovar}]]}])
 }

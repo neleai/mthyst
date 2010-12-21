@@ -25,10 +25,10 @@ amethyst AmethystTranslator < Amethyst {
 	
 	transs = [ trans*:t ] -> t
 	
-	args = Array[arg*:a] -> a*""
-       |  arg*:a -> a*""
+	args = Array[arg*:a] -> a*","
+       |  arg*:a -> a*","
 	
-	arg = Args[arg*:a] -> a
+	arg = Args[arg*:a] -> a*""
 			| Exp[transfn:t ] -> t
 		  | ExpKey[ trans:t] -> t
 			| anything

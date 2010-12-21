@@ -401,17 +401,28 @@ end
 def argsOpt(o,c) 
 
  (it=(_or(proc{(it=(args(o,c));next FAIL if it==FAIL;it)},proc{(it=(empty());next FAIL if it==FAIL;it)
- Args[] }));return FAIL if it==FAIL;it) 
+ [] }));return FAIL if it==FAIL;it) 
 end
 def args(o,c) 
-ary=nil
- ary = ((it=(__args(o,c));return FAIL if it==FAIL;it))
-Args[ {:ary=>ary }]  
+r=nil
+ r = ((it=(__args(o,c));return FAIL if it==FAIL;it))
+r<< ','
+							ary=[]
+							tmp=[]
+							r.each{|a|
+								if a==','
+									ary<<Args[{:ary=>tmp}];tmp=[]
+								else
+									tmp<<a
+								end
+							}
+							ary
+						  
 end
 def _args(o,c) 
 r=nil
  r = ((it=(__args(o,c));return FAIL if it==FAIL;it))
- [o]+r+[c]  
+ Args[{:ary=>([o]+r+[c])}]  
 end
 def __args(o,c) 
 r=nil
@@ -833,14 +844,14 @@ avar10=@input;r=it=((it=(arg());break FAIL if it==FAIL;it))
  break FAIL if r==FAIL
 end;@input=avar10
 avar9 )});next FAIL if it==FAIL;it)
- a*"" },proc{a = (avar11 = ([])
+ a*"," },proc{a = (avar11 = ([])
 while true
 avar12=@input;r=it=((it=(arg());break FAIL if it==FAIL;it))
  avar11||=[];_append(avar11,it)
  break FAIL if r==FAIL
 end;@input=avar12
 avar11 )
- a*"" }));return FAIL if it==FAIL;it) 
+ a*"," }));return FAIL if it==FAIL;it) 
 end
 def arg() 
 a=nil;t=nil
@@ -852,7 +863,7 @@ avar14=@input;r=it=((it=(arg());break FAIL if it==FAIL;it))
  break FAIL if r==FAIL
 end;@input=avar14
 avar13 )});next FAIL if it==FAIL;it)
- a },proc{(it=(clas(Exp));next FAIL if it==FAIL;it)
+ a*"" },proc{(it=(clas(Exp));next FAIL if it==FAIL;it)
 (it=(_enter{t = ((it=(transfn());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
  t },proc{(it=(clas(ExpKey));next FAIL if it==FAIL;it)
 (it=(_enter{t = ((it=(trans());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
