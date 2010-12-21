@@ -63,8 +63,8 @@ amethyst AmethystParser < Amethyst{
              | binding(Apply["anything"])
              | "#" (~endline .)*:c -> Comment[c]
  
-	 optIter(t) = "*"  -> a=autovar; And[Act[Args[a+"=[]"]], Many[{:ary=>[Append[{:name=>a,:expr=>t}]],:o=>autovar}],Act[Args[a]]]
-              | "+"   -> a=autovar; And[Act[Args[a+"=[]"]], Append[{:name=>a,:expr=>t}], Many[{:ary=>[Append[{:name=>a,:expr=>t}]],:o=>autovar}],Act[Args[a]]]
+	 optIter(t) = "*"  -> a=autovar; And[Act[a+"=[]"], Many[{:ary=>[Append[{:name=>a,:expr=>t}]],:o=>autovar}],Act[a]]
+              | "+"   -> a=autovar; And[Act[a+"=[]"], Append[{:name=>a,:expr=>t}], Many[{:ary=>[Append[{:name=>a,:expr=>t}]],:o=>autovar}],Act[a]]
               | "?"   -> Or[t,Apply["empty"]]
               | empty -> t
   
@@ -91,7 +91,7 @@ amethyst AmethystParser < Amethyst{
 	key         = "@" className:name  argsOpt('[',']'):args {@@locals.uniq}:vars  @Resul
               | "@" name:name ("=>" term  | empty  {Apply["anything"]}):expr    @Key
 
-	collect(ors) = -> a=autovar; And[Or[{:ary=>ors.ary.map{|ands| And[{:ary=>ands.ary.map{|expr| Append[{:name=>a,:expr=>expr}]}}]}}],Act[Args[a]]]
+	collect(ors) = -> a=autovar; And[Or[{:ary=>ors.ary.map{|ands| And[{:ary=>ands.ary.map{|expr| Append[{:name=>a,:expr=>expr}]}}]}}],Act[a]]
 
 	eChar = '\\' char:c   -> "\\#{c}"
   	  	| _args('#{','}')
@@ -132,5 +132,5 @@ amethyst AmethystParser < Amethyst{
 
 	number = <0-9>+
 
-	atomicHostExpr = (~endline .)*:s -> Args[s*""]
+	atomicHostExpr = (~endline .)*:s -> s*""
 }

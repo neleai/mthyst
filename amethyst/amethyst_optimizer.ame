@@ -2,28 +2,32 @@ amethyst AmethystOptimizer < Amethyst {
 	itrans = [ (char | trans)*:r ] -> r
 
 	trans = Grammar[@name:name @parent:parent @rules=>transs:rules] @Grammar
-				| Rule[@name:name @args=>trans:args @body=>trans:body @locals:locals] @Rule
+				| Rule[@name:name @args=>args:args @body=>trans:body @locals:locals] @Rule
 				| Enter[trans:ary[] ]  @Enter
 				| Or[transfn*:ary]  @Or
 				| And[trans*:ary ]  @And
 				| Not[trans:ary[] ] @Not
-				| Pred[trans:ary[] ]  @Pred
   			| Lookahead[trans:ary ]  @Lookahead
         | Comment[anything*:ary]  @Comment
 				| Many[trans:ary[] @o:o] @Many
-				| Apply[ :ary[] arg*:ary[]] @Apply
+				| Apply[ :ary[] args:ary[]] @Apply
         | Set[@name:name @expr=>trans:expr] @Set
 				| Append[@name:name @expr=>trans:expr] @Append
-				| Act[trans:ary[] ] @Act
-				| Resul[@name:name @args=>arg:args @vars:vars] @Resul
-				| Foreign[@klas:klas @rule=>rule @args=>arg:args] @Foreign
+				| Pred[ args:ary ]  @Pred
+				| Act[  args:ary ] @Act
+				| Resul[@name:name @args=>args:args @vars:vars] @Resul
+				| Foreign[@klas:klas @rule=>rule @args=>args:args] @Foreign
 				| Args[ arg*:ary ] @Args
 				| Key[@name:name @expr=>trans:expr] @Key
 				| Pass[@from=>trans:from @to=>trans:to] @Pass
 				| Shadow[@name:name @expr=>trans:expr @a:a] @Shadow
+
 	transfn = trans 
 	
 	transs = [ trans*:t ] -> t
+
+	args = Array[ arg*:a ] -> a
+       | arg*
 	
 	arg = Args[arg*:ary]  @Args
 			| Exp[transfn:ary[] ] @Exp
