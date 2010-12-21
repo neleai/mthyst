@@ -37,13 +37,13 @@ def space()
 end
 def spaces() 
 
- avar3=[]
+ avar1 = ([])
 while true
-avar4=@input;r=it=((it=(space());break FAIL if it==FAIL;it))
- avar3||=[];_append(avar3,it)
+avar2=@input;r=it=((it=(space());break FAIL if it==FAIL;it))
+ avar1||=[];_append(avar1,it)
  break FAIL if r==FAIL
-end;@input=avar4
-avar3  
+end;@input=avar2
+avar1  
 end
 def _() 
 
@@ -89,7 +89,7 @@ def listOf(rule,delim)
 f=nil
  (it=(_or(proc{it=((it=(apply(rule));next FAIL if it==FAIL;it))
  f||=[];_append(f,it)
-it=(avar3=[]
+it=(avar3 = ([])
 while true
 avar4=@input;r=it=((it=(apply(delim));break FAIL if it==FAIL;it)
 (it=(apply(rule));break FAIL if it==FAIL;it) )
@@ -124,13 +124,13 @@ def many1(s)
 a=nil
  it=((it=(apply(s));return FAIL if it==FAIL;it))
  a||=[];_append(a,it)
-it=(avar3=[]
+it=(avar5 = ([])
 while true
-avar4=@input;r=it=((it=(apply(s));break FAIL if it==FAIL;it))
- avar3||=[];_append(avar3,it)
+avar6=@input;r=it=((it=(apply(s));break FAIL if it==FAIL;it))
+ avar5||=[];_append(avar5,it)
  break FAIL if r==FAIL
-end;@input=avar4
-avar3 )
+end;@input=avar6
+avar5 )
  a||=[];_append(a,it)  
 end
 
@@ -172,22 +172,29 @@ def quote(s)
 end
 
 $av=0
+class Autovar
+	def to_s
+		return "avar"+@no.to_s if @no
+		$av+=1
+		@no=$av
+		to_s
+	end
+end
 def autovar
-	$av+=1
-	"avar"+$av.to_s
+	Autovar.new
 end
 
 class AmethystParser < Amethyst
 def igrammar() 
 a=nil
- a = (avar3=[]
+ a = (avar1 = ([])
 while true
-avar4=@input;r=it=((it=(_or(proc{(it=(_not{(it=(seq("amethyst"));next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it)
+avar2=@input;r=it=((it=(_or(proc{(it=(_not{(it=(seq("amethyst"));next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it)
 (it=(_dot_());next FAIL if it==FAIL;it) },proc{(it=(grammar());next FAIL if it==FAIL;it)}));break FAIL if it==FAIL;it))
- avar3||=[];_append(avar3,it)
+ avar1||=[];_append(avar1,it)
  break FAIL if r==FAIL
-end;@input=avar4
-avar3 )
+end;@input=avar2
+avar1 )
  a  
 end
 def grammar() 
@@ -198,7 +205,7 @@ name = ((it=(name());return FAIL if it==FAIL;it))
 parent = ((it=(name());next FAIL if it==FAIL;it)) },proc{(it=(empty());next FAIL if it==FAIL;it)
 parent="Amethyst" }));return FAIL if it==FAIL;it)
 (it=(token("{"));return FAIL if it==FAIL;it)
-rules = (avar3=[]
+rules = (avar3 = ([])
 while true
 avar4=@input;r=it=((it=(rule());break FAIL if it==FAIL;it))
  avar3||=[];_append(avar3,it)
@@ -230,14 +237,14 @@ Or[ {:ary=>ary }]
 end
 def sequence() 
 ary=nil
- ary = (avar3=[]
+ ary = (avar5 = ([])
 while true
-avar4=@input;r=it=((it=(nr());break FAIL if it==FAIL;it)
+avar6=@input;r=it=((it=(nr());break FAIL if it==FAIL;it)
 (it=(prefixed());break FAIL if it==FAIL;it) )
- avar3||=[];_append(avar3,it)
+ avar5||=[];_append(avar5,it)
  break FAIL if r==FAIL
-end;@input=avar4
-avar3 )
+end;@input=avar6
+avar5 )
 And[ {:ary=>ary }]  
 end
 def prefixed() 
@@ -261,21 +268,21 @@ t = ((it=(optIter(t));next FAIL if it==FAIL;it))
 (it=(_or(proc{(it=(_not{(it=(space());next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it)
 (it=(binding(t));next FAIL if it==FAIL;it) },proc{(it=(empty());next FAIL if it==FAIL;it)
 t }));next FAIL if it==FAIL;it) },proc{(it=(binding(Apply["anything"]));next FAIL if it==FAIL;it)},proc{(it=(token("#"));next FAIL if it==FAIL;it)
-c = (avar3=[]
+c = (avar7 = ([])
 while true
-avar4=@input;r=it=((it=(_not{(it=(endline());next FAIL if it==FAIL;it)});break FAIL if it==FAIL;it)
+avar8=@input;r=it=((it=(_not{(it=(endline());next FAIL if it==FAIL;it)});break FAIL if it==FAIL;it)
 (it=(_dot_());break FAIL if it==FAIL;it) )
- avar3||=[];_append(avar3,it)
+ avar7||=[];_append(avar7,it)
  break FAIL if r==FAIL
-end;@input=avar4
-avar3 )
+end;@input=avar8
+avar7 )
  Comment[c] }));return FAIL if it==FAIL;it) 
 end
 def optIter(t) 
 
  (it=(_or(proc{(it=(token("*"));next FAIL if it==FAIL;it)
- a=autovar; And[Act[a+"=[]"], Many[{:ary=>[Append[{:name=>a,:expr=>t}]],:o=>autovar}],Act[a]] },proc{(it=(token("+"));next FAIL if it==FAIL;it)
- a=autovar; And[Act[a+"=[]"], Append[{:name=>a,:expr=>t}], Many[{:ary=>[Append[{:name=>a,:expr=>t}]],:o=>autovar}],Act[a]] },proc{(it=(token("?"));next FAIL if it==FAIL;it)
+ a=autovar; And[Set[{:name=>a, :expr=> Act["[]"]}], Many[{:ary=>[Append[{:name=>a,:expr=>t}]],:o=>autovar}],Act[a]] },proc{(it=(token("+"));next FAIL if it==FAIL;it)
+ a=autovar; And[Set[{:name=>a, :expr=> Act["[]"]}], Append[{:name=>a,:expr=>t}], Many[{:ary=>[Append[{:name=>a,:expr=>t}]],:o=>autovar}],Act[a]] },proc{(it=(token("?"));next FAIL if it==FAIL;it)
  Or[t,Apply["empty"]] },proc{(it=(empty());next FAIL if it==FAIL;it)
  t }));return FAIL if it==FAIL;it) 
 end
@@ -307,38 +314,38 @@ expr = ((it=(expression());next FAIL if it==FAIL;it))
 (it=(atomicHostExpr());next FAIL if it==FAIL;it) },proc{(it=(token(""));next FAIL if it==FAIL;it)
 (it=(inlineHostExpr());next FAIL if it==FAIL;it) }));next FAIL if it==FAIL;it))
   Act[x] },proc{(it=(token("\""));next FAIL if it==FAIL;it)
-s = (avar3=[]
+s = (avar9 = ([])
 while true
-avar4=@input;r=it=((it=(_not{(it=(seq("\""));next FAIL if it==FAIL;it)});break FAIL if it==FAIL;it)
+avar10=@input;r=it=((it=(_not{(it=(seq("\""));next FAIL if it==FAIL;it)});break FAIL if it==FAIL;it)
 (it=(eChar());break FAIL if it==FAIL;it) )
- avar3||=[];_append(avar3,it)
+ avar9||=[];_append(avar9,it)
  break FAIL if r==FAIL
-end;@input=avar4
-avar3 )
+end;@input=avar10
+avar9 )
 (it=(seq("\""));next FAIL if it==FAIL;it)
  Apply["token" ,quote(s)] },proc{(it=(token("'"));next FAIL if it==FAIL;it)
-s = (avar7=[]
+s = (avar11 = ([])
 while true
-avar8=@input;r=it=((it=(_not{(it=(seq("\'"));next FAIL if it==FAIL;it)});break FAIL if it==FAIL;it)
-(it=(eChar());break FAIL if it==FAIL;it) )
- avar7||=[];_append(avar7,it)
- break FAIL if r==FAIL
-end;@input=avar8
-avar7 )
-(it=(seq("\'"));next FAIL if it==FAIL;it)
- Apply["seq",quote(s)] },proc{it = ((it=(number());next FAIL if it==FAIL;it))
-Apply["exactly",it] },proc{(it=(token("<"));next FAIL if it==FAIL;it)
-x = (avar11=[]
-it=((it=(_not{(it=(token(">"));next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it)
-(it=(eChar());next FAIL if it==FAIL;it) )
- avar11||=[];_append(avar11,it)
-while true
-avar12=@input;r=it=((it=(_not{(it=(token(">"));next FAIL if it==FAIL;it)});break FAIL if it==FAIL;it)
+avar12=@input;r=it=((it=(_not{(it=(seq("\'"));next FAIL if it==FAIL;it)});break FAIL if it==FAIL;it)
 (it=(eChar());break FAIL if it==FAIL;it) )
  avar11||=[];_append(avar11,it)
  break FAIL if r==FAIL
 end;@input=avar12
 avar11 )
+(it=(seq("\'"));next FAIL if it==FAIL;it)
+ Apply["seq",quote(s)] },proc{it = ((it=(number());next FAIL if it==FAIL;it))
+Apply["exactly",it] },proc{(it=(token("<"));next FAIL if it==FAIL;it)
+x = (avar13 = ([])
+it=((it=(_not{(it=(token(">"));next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it)
+(it=(eChar());next FAIL if it==FAIL;it) )
+ avar13||=[];_append(avar13,it)
+while true
+avar14=@input;r=it=((it=(_not{(it=(token(">"));next FAIL if it==FAIL;it)});break FAIL if it==FAIL;it)
+(it=(eChar());break FAIL if it==FAIL;it) )
+ avar13||=[];_append(avar13,it)
+ break FAIL if r==FAIL
+end;@input=avar14
+avar13 )
 (it=(token(">"));next FAIL if it==FAIL;it)
   Apply["regch","/[#{x}]/"] },proc{(it=(token("("));next FAIL if it==FAIL;it)
 x = ((it=(expression());next FAIL if it==FAIL;it))
@@ -410,13 +417,13 @@ def __args(o,c)
 r=nil
  (it=(seq(o));return FAIL if it==FAIL;it)
 (it=(token(""));return FAIL if it==FAIL;it)
-r = (avar3=[]
+r = (avar15 = ([])
 while true
-avar4=@input;r=it=((it=(rubyarg());break FAIL if it==FAIL;it))
- avar3||=[];_append(avar3,it)
+avar16=@input;r=it=((it=(rubyarg());break FAIL if it==FAIL;it))
+ avar15||=[];_append(avar15,it)
  break FAIL if r==FAIL
-end;@input=avar4
-avar3 )
+end;@input=avar16
+avar15 )
 (it=(seq(c));return FAIL if it==FAIL;it)
  r  
 end
@@ -426,36 +433,36 @@ e=nil;s=nil;n=nil;k=nil
 e = ((it=(expression());next FAIL if it==FAIL;it))
 (it=(seq("`"));next FAIL if it==FAIL;it)
  Exp[e] },proc{(it=(_args('(',')'));next FAIL if it==FAIL;it)},proc{(it=(_args('[',']'));next FAIL if it==FAIL;it)},proc{(it=(_args('{','}'));next FAIL if it==FAIL;it)},proc{(it=(seq("\""));next FAIL if it==FAIL;it)
-s = (avar3=[]
+s = (avar17 = ([])
 while true
-avar4=@input;r=it=((it=(_not{(it=(seq("\""));next FAIL if it==FAIL;it)});break FAIL if it==FAIL;it)
+avar18=@input;r=it=((it=(_not{(it=(seq("\""));next FAIL if it==FAIL;it)});break FAIL if it==FAIL;it)
 (it=(eChar());break FAIL if it==FAIL;it) )
- avar3||=[];_append(avar3,it)
+ avar17||=[];_append(avar17,it)
  break FAIL if r==FAIL
-end;@input=avar4
-avar3 )
+end;@input=avar18
+avar17 )
 (it=(seq("\""));next FAIL if it==FAIL;it)
  ['"']+ s+['"'] },proc{(it=(seq("\'"));next FAIL if it==FAIL;it)
-s = (avar7=[]
+s = (avar19 = ([])
 while true
-avar8=@input;r=it=((it=(_not{(it=(seq("\'"));next FAIL if it==FAIL;it)});break FAIL if it==FAIL;it)
+avar20=@input;r=it=((it=(_not{(it=(seq("\'"));next FAIL if it==FAIL;it)});break FAIL if it==FAIL;it)
 (it=(eChar());break FAIL if it==FAIL;it) )
- avar7||=[];_append(avar7,it)
+ avar19||=[];_append(avar19,it)
  break FAIL if r==FAIL
-end;@input=avar8
-avar7 )
+end;@input=avar20
+avar19 )
 (it=(seq("\'"));next FAIL if it==FAIL;it)
  ['\'']+s+['\''] },proc{(it=(_or(proc{(it=(seq("@@"));next FAIL if it==FAIL;it)
 n=["@"] },proc{(it=(empty());next FAIL if it==FAIL;it)}));next FAIL if it==FAIL;it)
-it=(avar11=[]
+it=(avar21 = ([])
 it=((it=(regch(/[a-zA-Z_]/));next FAIL if it==FAIL;it))
- avar11||=[];_append(avar11,it)
+ avar21||=[];_append(avar21,it)
 while true
-avar12=@input;r=it=((it=(regch(/[a-zA-Z_]/));break FAIL if it==FAIL;it))
- avar11||=[];_append(avar11,it)
+avar22=@input;r=it=((it=(regch(/[a-zA-Z_]/));break FAIL if it==FAIL;it))
+ avar21||=[];_append(avar21,it)
  break FAIL if r==FAIL
-end;@input=avar12
-avar11 )
+end;@input=avar22
+avar21 )
  n||=[];_append(n,it)
  n*"" },proc{k = ((it=(key());next FAIL if it==FAIL;it))
  ExpKey[k]  },proc{(it=(regch(/[^`{}()'"\[\]]/));next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it) 
@@ -473,13 +480,13 @@ s=nil
  (it=(spaces());return FAIL if it==FAIL;it)
 it=((it=(upper());return FAIL if it==FAIL;it))
  s||=[];_append(s,it)
-it=(avar3=[]
+it=(avar23 = ([])
 while true
-avar4=@input;r=it=((it=(nameRest());break FAIL if it==FAIL;it))
- avar3||=[];_append(avar3,it)
+avar24=@input;r=it=((it=(nameRest());break FAIL if it==FAIL;it))
+ avar23||=[];_append(avar23,it)
  break FAIL if r==FAIL
-end;@input=avar4
-avar3 )
+end;@input=avar24
+avar23 )
  s||=[];_append(s,it)
  leterize(s*"")  
 end
@@ -488,13 +495,13 @@ s=nil
  (it=(spaces());return FAIL if it==FAIL;it)
 it=((it=(nameFirst());return FAIL if it==FAIL;it))
  s||=[];_append(s,it)
-it=(avar3=[]
+it=(avar25 = ([])
 while true
-avar4=@input;r=it=((it=(nameRest());break FAIL if it==FAIL;it))
- avar3||=[];_append(avar3,it)
+avar26=@input;r=it=((it=(nameRest());break FAIL if it==FAIL;it))
+ avar25||=[];_append(avar25,it)
  break FAIL if r==FAIL
-end;@input=avar4
-avar3 )
+end;@input=avar26
+avar25 )
  s||=[];_append(s,it)
  leterize(s*"")  
 end
@@ -504,26 +511,26 @@ def inlineHostExpr()
 end
 def number() 
 
- avar3=[]
+ avar27 = ([])
 it=((it=(regch(/[0-9]/));return FAIL if it==FAIL;it))
- avar3||=[];_append(avar3,it)
+ avar27||=[];_append(avar27,it)
 while true
-avar4=@input;r=it=((it=(regch(/[0-9]/));break FAIL if it==FAIL;it))
- avar3||=[];_append(avar3,it)
+avar28=@input;r=it=((it=(regch(/[0-9]/));break FAIL if it==FAIL;it))
+ avar27||=[];_append(avar27,it)
  break FAIL if r==FAIL
-end;@input=avar4
-avar3  
+end;@input=avar28
+avar27  
 end
 def atomicHostExpr() 
 s=nil
- s = (avar3=[]
+ s = (avar29 = ([])
 while true
-avar4=@input;r=it=((it=(_not{(it=(endline());next FAIL if it==FAIL;it)});break FAIL if it==FAIL;it)
+avar30=@input;r=it=((it=(_not{(it=(endline());next FAIL if it==FAIL;it)});break FAIL if it==FAIL;it)
 (it=(_dot_());break FAIL if it==FAIL;it) )
- avar3||=[];_append(avar3,it)
+ avar29||=[];_append(avar29,it)
  break FAIL if r==FAIL
-end;@input=avar4
-avar3 )
+end;@input=avar30
+avar29 )
  s*""  
 end
 
@@ -533,13 +540,13 @@ class AmethystOptimizer < Amethyst
 def itrans() 
 r=nil
  (it=(clas(Object));return FAIL if it==FAIL;it)
-(it=(_enter{r = (avar7=[]
+(it=(_enter{r = (avar1 = ([])
 while true
-avar8=@input;r=it=((it=(_or(proc{(it=(char());next FAIL if it==FAIL;it)},proc{(it=(trans());next FAIL if it==FAIL;it)}));break FAIL if it==FAIL;it))
- avar7||=[];_append(avar7,it)
+avar2=@input;r=it=((it=(_or(proc{(it=(char());next FAIL if it==FAIL;it)},proc{(it=(trans());next FAIL if it==FAIL;it)}));break FAIL if it==FAIL;it))
+ avar1||=[];_append(avar1,it)
  break FAIL if r==FAIL
-end;@input=avar8
-avar7 )});return FAIL if it==FAIL;it)
+end;@input=avar2
+avar1 )});return FAIL if it==FAIL;it)
  r  
 end
 def trans() 
@@ -557,34 +564,34 @@ Rule[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:locals
 (it=(_enter{it=((it=(trans());next FAIL if it==FAIL;it))
  ary||=[];_append(ary,it)});next FAIL if it==FAIL;it)
 Enter[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:locals=>locals,:ary=>ary }] },proc{(it=(clas(Or));next FAIL if it==FAIL;it)
-(it=(_enter{ary = (avar7=[]
+(it=(_enter{ary = (avar3 = ([])
 while true
-avar8=@input;r=it=((it=(transfn());break FAIL if it==FAIL;it))
- avar7||=[];_append(avar7,it)
+avar4=@input;r=it=((it=(transfn());break FAIL if it==FAIL;it))
+ avar3||=[];_append(avar3,it)
  break FAIL if r==FAIL
-end;@input=avar8
-avar7 )});next FAIL if it==FAIL;it)
+end;@input=avar4
+avar3 )});next FAIL if it==FAIL;it)
 Or[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:locals=>locals,:ary=>ary }] },proc{(it=(clas(And));next FAIL if it==FAIL;it)
-(it=(_enter{ary = (avar15=[]
+(it=(_enter{ary = (avar5 = ([])
 while true
-avar16=@input;r=it=((it=(trans());break FAIL if it==FAIL;it))
- avar15||=[];_append(avar15,it)
+avar6=@input;r=it=((it=(trans());break FAIL if it==FAIL;it))
+ avar5||=[];_append(avar5,it)
  break FAIL if r==FAIL
-end;@input=avar16
-avar15 )});next FAIL if it==FAIL;it)
+end;@input=avar6
+avar5 )});next FAIL if it==FAIL;it)
 And[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:locals=>locals,:ary=>ary }] },proc{(it=(clas(Not));next FAIL if it==FAIL;it)
 (it=(_enter{it=((it=(trans());next FAIL if it==FAIL;it))
  ary||=[];_append(ary,it)});next FAIL if it==FAIL;it)
 Not[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:locals=>locals,:ary=>ary }] },proc{(it=(clas(Lookahead));next FAIL if it==FAIL;it)
 (it=(_enter{ary = ((it=(trans());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
 Lookahead[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:locals=>locals,:ary=>ary }] },proc{(it=(clas(Comment));next FAIL if it==FAIL;it)
-(it=(_enter{ary = (avar23=[]
+(it=(_enter{ary = (avar7 = ([])
 while true
-avar24=@input;r=it=((it=(anything());break FAIL if it==FAIL;it))
- avar23||=[];_append(avar23,it)
+avar8=@input;r=it=((it=(anything());break FAIL if it==FAIL;it))
+ avar7||=[];_append(avar7,it)
  break FAIL if r==FAIL
-end;@input=avar24
-avar23 )});next FAIL if it==FAIL;it)
+end;@input=avar8
+avar7 )});next FAIL if it==FAIL;it)
 Comment[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:locals=>locals,:ary=>ary }] },proc{(it=(clas(Many));next FAIL if it==FAIL;it)
 (it=(_enter{it=((it=(trans());next FAIL if it==FAIL;it))
  ary||=[];_append(ary,it)
@@ -613,13 +620,13 @@ Resul[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:local
 _key(:rule){(it=(rule());next FAIL if it==FAIL;it)}
 args = (_key(:args){(it=(args());next FAIL if it==FAIL;it)}) });next FAIL if it==FAIL;it)
 Foreign[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:locals=>locals,:ary=>ary,:o=>o,:expr=>expr,:vars=>vars,:klas=>klas }] },proc{(it=(clas(Args));next FAIL if it==FAIL;it)
-(it=(_enter{ary = (avar31=[]
+(it=(_enter{ary = (avar9 = ([])
 while true
-avar32=@input;r=it=((it=(arg());break FAIL if it==FAIL;it))
- avar31||=[];_append(avar31,it)
+avar10=@input;r=it=((it=(arg());break FAIL if it==FAIL;it))
+ avar9||=[];_append(avar9,it)
  break FAIL if r==FAIL
-end;@input=avar32
-avar31 )});next FAIL if it==FAIL;it)
+end;@input=avar10
+avar9 )});next FAIL if it==FAIL;it)
 Args[ {:name=>name,:parent=>parent,:rules=>rules,:args=>args,:body=>body,:locals=>locals,:ary=>ary,:o=>o,:expr=>expr,:vars=>vars,:klas=>klas }] },proc{(it=(clas(Key));next FAIL if it==FAIL;it)
 (it=(_enter{name = (_key(:name){(it=(anything());next FAIL if it==FAIL;it)})
 expr = (_key(:expr){(it=(trans());next FAIL if it==FAIL;it)}) });next FAIL if it==FAIL;it)
@@ -639,43 +646,43 @@ end
 def transs() 
 t=nil
  (it=(clas(Object));return FAIL if it==FAIL;it)
-(it=(_enter{t = (avar7=[]
+(it=(_enter{t = (avar11 = ([])
 while true
-avar8=@input;r=it=((it=(trans());break FAIL if it==FAIL;it))
- avar7||=[];_append(avar7,it)
+avar12=@input;r=it=((it=(trans());break FAIL if it==FAIL;it))
+ avar11||=[];_append(avar11,it)
  break FAIL if r==FAIL
-end;@input=avar8
-avar7 )});return FAIL if it==FAIL;it)
+end;@input=avar12
+avar11 )});return FAIL if it==FAIL;it)
  t  
 end
 def args() 
 a=nil
  (it=(_or(proc{(it=(clas(Array));next FAIL if it==FAIL;it)
-(it=(_enter{a = (avar7=[]
+(it=(_enter{a = (avar13 = ([])
 while true
-avar8=@input;r=it=((it=(arg());break FAIL if it==FAIL;it))
- avar7||=[];_append(avar7,it)
+avar14=@input;r=it=((it=(arg());break FAIL if it==FAIL;it))
+ avar13||=[];_append(avar13,it)
  break FAIL if r==FAIL
-end;@input=avar8
-avar7 )});next FAIL if it==FAIL;it)
- a },proc{avar11=[]
+end;@input=avar14
+avar13 )});next FAIL if it==FAIL;it)
+ a },proc{avar15 = ([])
 while true
-avar12=@input;r=it=((it=(arg());break FAIL if it==FAIL;it))
- avar11||=[];_append(avar11,it)
+avar16=@input;r=it=((it=(arg());break FAIL if it==FAIL;it))
+ avar15||=[];_append(avar15,it)
  break FAIL if r==FAIL
-end;@input=avar12
-avar11 }));return FAIL if it==FAIL;it) 
+end;@input=avar16
+avar15 }));return FAIL if it==FAIL;it) 
 end
 def arg() 
 ary=nil
  (it=(_or(proc{(it=(clas(Args));next FAIL if it==FAIL;it)
-(it=(_enter{ary = (avar7=[]
+(it=(_enter{ary = (avar17 = ([])
 while true
-avar8=@input;r=it=((it=(arg());break FAIL if it==FAIL;it))
- avar7||=[];_append(avar7,it)
+avar18=@input;r=it=((it=(arg());break FAIL if it==FAIL;it))
+ avar17||=[];_append(avar17,it)
  break FAIL if r==FAIL
-end;@input=avar8
-avar7 )});next FAIL if it==FAIL;it)
+end;@input=avar18
+avar17 )});next FAIL if it==FAIL;it)
 Args[ {:ary=>ary }] },proc{(it=(clas(Exp));next FAIL if it==FAIL;it)
 (it=(_enter{it=((it=(transfn());next FAIL if it==FAIL;it))
  ary||=[];_append(ary,it)});next FAIL if it==FAIL;it)
@@ -691,23 +698,23 @@ class AmethystOptimizer2 < AmethystOptimizer
 def trans() 
 ary=nil
  (it=(_or(proc{(it=(clas(Or));next FAIL if it==FAIL;it)
-(it=(_enter{ary = (avar7=[]
+(it=(_enter{ary = (avar1 = ([])
 while true
-avar8=@input;r=it=((it=(transfn());break FAIL if it==FAIL;it))
- avar7||=[];_append(avar7,it)
+avar2=@input;r=it=((it=(transfn());break FAIL if it==FAIL;it))
+ avar1||=[];_append(avar1,it)
  break FAIL if r==FAIL
-end;@input=avar8
-avar7 )});next FAIL if it==FAIL;it)
+end;@input=avar2
+avar1 )});next FAIL if it==FAIL;it)
 ary=ary.map{|o| (o.is_a?(Or)) ? o.ary : o}.flatten
 (it=(_or(proc{(it=((ary.size==1)||FAIL);next FAIL if it==FAIL;it)
 ary[0] },proc{Or[ {:ary=>ary }]}));next FAIL if it==FAIL;it) },proc{(it=(clas(And));next FAIL if it==FAIL;it)
-(it=(_enter{ary = (avar15=[]
+(it=(_enter{ary = (avar3 = ([])
 while true
-avar16=@input;r=it=((it=(trans());break FAIL if it==FAIL;it))
- avar15||=[];_append(avar15,it)
+avar4=@input;r=it=((it=(trans());break FAIL if it==FAIL;it))
+ avar3||=[];_append(avar3,it)
  break FAIL if r==FAIL
-end;@input=avar16
-avar15 )});next FAIL if it==FAIL;it)
+end;@input=avar4
+avar3 )});next FAIL if it==FAIL;it)
 ary=ary.map{|a| (a.is_a?(And)) ? a.ary : a}.flatten
 (it=(_or(proc{(it=((ary.size==1)||FAIL);next FAIL if it==FAIL;it)
 ary[0] },proc{And[ {:ary=>ary }]}));next FAIL if it==FAIL;it) },proc{super}));return FAIL if it==FAIL;it) 
@@ -719,13 +726,13 @@ class AmethystTranslator < Amethyst
 def itrans() 
 r=nil
  (it=(clas(Object));return FAIL if it==FAIL;it)
-(it=(_enter{r = (avar7=[]
+(it=(_enter{r = (avar1 = ([])
 while true
-avar8=@input;r=it=((it=(_or(proc{(it=(char());next FAIL if it==FAIL;it)},proc{(it=(trans());next FAIL if it==FAIL;it)}));break FAIL if it==FAIL;it))
- avar7||=[];_append(avar7,it)
+avar2=@input;r=it=((it=(_or(proc{(it=(char());next FAIL if it==FAIL;it)},proc{(it=(trans());next FAIL if it==FAIL;it)}));break FAIL if it==FAIL;it))
+ avar1||=[];_append(avar1,it)
  break FAIL if r==FAIL
-end;@input=avar8
-avar7 )});return FAIL if it==FAIL;it)
+end;@input=avar2
+avar1 )});return FAIL if it==FAIL;it)
  r*""  
 end
 def trans() 
@@ -743,21 +750,21 @@ body = (_key(:body){(it=(trans());next FAIL if it==FAIL;it)}) });next FAIL if it
  "def #{name}(#{argss}) \n#{@locals.map{|l|l+"=nil"}*";"}\n #{body} \nend\n" },proc{(it=(clas(Enter));next FAIL if it==FAIL;it)
 (it=(_enter{expr = ((it=(trans());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
 (it=(failwrap("_enter{#{expr}}"));next FAIL if it==FAIL;it) },proc{(it=(clas(Or));next FAIL if it==FAIL;it)
-(it=(_enter{(it=(rw('next', proc{ors = (avar23=[]
+(it=(_enter{(it=(rw('next', proc{ors = (avar3 = ([])
 while true
-avar24=@input;r=it=((it=(transfn());break FAIL if it==FAIL;it))
- avar23||=[];_append(avar23,it)
+avar4=@input;r=it=((it=(transfn());break FAIL if it==FAIL;it))
+ avar3||=[];_append(avar3,it)
  break FAIL if r==FAIL
-end;@input=avar24
-avar23 )}));next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it)
+end;@input=avar4
+avar3 )}));next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it)
 (it=(failwrap("_or(#{ors*","})"));next FAIL if it==FAIL;it) },proc{(it=(clas(And));next FAIL if it==FAIL;it)
-(it=(_enter{t = (avar31=[]
+(it=(_enter{t = (avar5 = ([])
 while true
-avar32=@input;r=it=((it=(trans());break FAIL if it==FAIL;it))
- avar31||=[];_append(avar31,it)
+avar6=@input;r=it=((it=(trans());break FAIL if it==FAIL;it))
+ avar5||=[];_append(avar5,it)
  break FAIL if r==FAIL
-end;@input=avar32
-avar31 )});next FAIL if it==FAIL;it)
+end;@input=avar6
+avar5 )});next FAIL if it==FAIL;it)
  "#{t*"\n"} " },proc{(it=(clas(Not));next FAIL if it==FAIL;it)
 (it=(_enter{(it=(rw('next',proc{t = ((it=(trans());next FAIL if it==FAIL;it))}));next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it)
 (it=(failwrap("_not{#{t}}"));next FAIL if it==FAIL;it) },proc{(it=(clas(Pred));next FAIL if it==FAIL;it)
@@ -777,7 +784,7 @@ argss = ((it=(args());next FAIL if it==FAIL;it)) });next FAIL if it==FAIL;it)
 (it=(failwrap("#{name}(#{argss})"));next FAIL if it==FAIL;it) },proc{(it=(clas(Set));next FAIL if it==FAIL;it)
 (it=(_enter{name = (_key(:name){(it=(anything());next FAIL if it==FAIL;it)})
 expr = (_key(:expr){(it=(trans());next FAIL if it==FAIL;it)}) });next FAIL if it==FAIL;it)
- "#{name} = (#{expr})" },proc{(it=(clas(Append));next FAIL if it==FAIL;it)
+ "#{name.to_s} = (#{expr})" },proc{(it=(clas(Append));next FAIL if it==FAIL;it)
 (it=(_enter{name = (_key(:name){(it=(anything());next FAIL if it==FAIL;it)})
 expr = (_key(:expr){(it=(trans());next FAIL if it==FAIL;it)}) });next FAIL if it==FAIL;it)
  "it=(#{expr})\n #{name}||=[];_append(#{name},it)" },proc{(it=(clas(Resul));next FAIL if it==FAIL;it)
@@ -807,7 +814,7 @@ end
 def transs() 
 t=nil
  (it=(clas(Object));return FAIL if it==FAIL;it)
-(it=(_enter{t = (avar7=[]
+(it=(_enter{t = (avar7 = ([])
 while true
 avar8=@input;r=it=((it=(trans());break FAIL if it==FAIL;it))
  avar7||=[];_append(avar7,it)
@@ -819,14 +826,14 @@ end
 def args() 
 a=nil
  (it=(_or(proc{(it=(clas(Array));next FAIL if it==FAIL;it)
-(it=(_enter{a = (avar7=[]
+(it=(_enter{a = (avar9 = ([])
 while true
-avar8=@input;r=it=((it=(arg());break FAIL if it==FAIL;it))
- avar7||=[];_append(avar7,it)
+avar10=@input;r=it=((it=(arg());break FAIL if it==FAIL;it))
+ avar9||=[];_append(avar9,it)
  break FAIL if r==FAIL
-end;@input=avar8
-avar7 )});next FAIL if it==FAIL;it)
- a*"" },proc{a = (avar11=[]
+end;@input=avar10
+avar9 )});next FAIL if it==FAIL;it)
+ a*"" },proc{a = (avar11 = ([])
 while true
 avar12=@input;r=it=((it=(arg());break FAIL if it==FAIL;it))
  avar11||=[];_append(avar11,it)
@@ -838,13 +845,13 @@ end
 def arg() 
 a=nil;t=nil
  (it=(_or(proc{(it=(clas(Args));next FAIL if it==FAIL;it)
-(it=(_enter{a = (avar7=[]
+(it=(_enter{a = (avar13 = ([])
 while true
-avar8=@input;r=it=((it=(arg());break FAIL if it==FAIL;it))
- avar7||=[];_append(avar7,it)
+avar14=@input;r=it=((it=(arg());break FAIL if it==FAIL;it))
+ avar13||=[];_append(avar13,it)
  break FAIL if r==FAIL
-end;@input=avar8
-avar7 )});next FAIL if it==FAIL;it)
+end;@input=avar14
+avar13 )});next FAIL if it==FAIL;it)
  a },proc{(it=(clas(Exp));next FAIL if it==FAIL;it)
 (it=(_enter{t = ((it=(transfn());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
  t },proc{(it=(clas(ExpKey));next FAIL if it==FAIL;it)

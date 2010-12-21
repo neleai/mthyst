@@ -34,9 +34,16 @@ def quote(s)
 end
 
 $av=0
+class Autovar
+	def to_s
+		return "avar"+@no.to_s if @no
+		$av+=1
+		@no=$av
+		to_s
+	end
+end
 def autovar
-	$av+=1
-	"avar"+$av.to_s
+	Autovar.new
 end
 
 amethyst AmethystParser < Amethyst{
@@ -63,8 +70,8 @@ amethyst AmethystParser < Amethyst{
              | binding(Apply["anything"])
              | "#" (~endline .)*:c -> Comment[c]
  
-	 optIter(t) = "*"  -> a=autovar; And[Act[a+"=[]"], Many[{:ary=>[Append[{:name=>a,:expr=>t}]],:o=>autovar}],Act[a]]
-              | "+"   -> a=autovar; And[Act[a+"=[]"], Append[{:name=>a,:expr=>t}], Many[{:ary=>[Append[{:name=>a,:expr=>t}]],:o=>autovar}],Act[a]]
+	 optIter(t) = "*"  -> a=autovar; And[Set[{:name=>a, :expr=> Act["[]"]}], Many[{:ary=>[Append[{:name=>a,:expr=>t}]],:o=>autovar}],Act[a]]
+              | "+"   -> a=autovar; And[Set[{:name=>a, :expr=> Act["[]"]}], Append[{:name=>a,:expr=>t}], Many[{:ary=>[Append[{:name=>a,:expr=>t}]],:o=>autovar}],Act[a]]
               | "?"   -> Or[t,Apply["empty"]]
               | empty -> t
   
