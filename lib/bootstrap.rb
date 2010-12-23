@@ -738,6 +738,43 @@ end
 
 end
 
+def shadow(body,args)
+	args.each{|arg| a=autovar; body=And[Set[{:name=>a,:expr=>Act[arg]}],body,Set[{:name=>arg,:expr=>Act[a]}]]}
+	body
+end
+class Inliner < AmethystOptimizer
+def inline(rule) 
+name=nil;args=nil;locals=nil;body=nil
+ it = (rule)
+(it=(_pass(it){(it=(clas(Rule));return FAIL if it==FAIL;it)
+(it=(_enter{name = (_key(:name))
+args = (_key(:args))
+locals = (_key(:locals))
+body = (_key(:body)) });return FAIL if it==FAIL;it) });return FAIL if it==FAIL;it)
+@name=name;@args=args;@body=shadow(body,locals)
+(it=(itrans());return FAIL if it==FAIL;it)  
+end
+def trans() 
+name=nil;args=nil
+ (it=(_or(proc{(it=(clas(Apply));next FAIL if it==FAIL;it)
+(it=(_enter{name = ((it=(anything());next FAIL if it==FAIL;it))
+(it=((name==@name)||FAIL);next FAIL if it==FAIL;it)
+args = (avar1 = ([])
+while true
+avar2=@input;r=it=((it=(arg());break FAIL if it==FAIL;it))
+ avar1||=[];_append(avar1,it)
+ break FAIL if r==FAIL
+end;@input=avar2
+avar1 ) });next FAIL if it==FAIL;it)
+ puts "inlining"; body=@body; args.each_index{|i| body=And[Set[{:name=>@args[i],:expr=>Act[args[i]]}],body] } ; shadow(body,@args) },proc{super}));return FAIL if it==FAIL;it) 
+end
+def test() 
+
+ (it=(inline(Rule[{:name=>"a",:locals=>["a","b"],:args=>["x"],:body=>And[Act["aueo"],Set[{:name=>autovar,:expr=>Act["a"]}],Many[{:ary=>[Act["aueo"]],:o=>autovar}]]}]));return FAIL if it==FAIL;it) 
+end
+
+end
+
 class AmethystTranslator < Amethyst
 def itrans() 
 r=nil

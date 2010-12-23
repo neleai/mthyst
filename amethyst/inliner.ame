@@ -4,7 +4,7 @@ def shadow(body,args)
 end
 amethyst Inliner < AmethystOptimizer {
 
- inline(rule)= {[rule]}>>Rule[@name:name @args:args @locals:locals @body:body]  {@@name=name;@@args=args;@@body=shadow(body,locals)} itrans
+ inline(rule)= {rule}=>Rule[@name:name @args:args @locals:locals @body:body]  {@@name=name;@@args=args;@@body=shadow(body,locals)} itrans
  
  trans = Apply[:name &{name==@@name} arg*:args] -> puts "inlining"; body=@body; args.each_index{|i| body=And[Set[{:name=>@args[i],:expr=>Act[args[i]]}],body] } ; shadow(body,@args)
        | {super}
