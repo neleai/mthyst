@@ -742,7 +742,7 @@ def shadow(body,args)
 	body
 end
 class Inliner < AmethystOptimizer
-def inline(rule) 
+def inline(rule,grammar) 
 name=nil;args=nil;locals=nil;body=nil
  it = (rule)
 (it=(_pass(it){(it=(clas(Rule));return FAIL if it==FAIL;it)
@@ -751,7 +751,8 @@ args = (_key(:args))
 locals = (_key(:locals))
 body = (_key(:body)) });return FAIL if it==FAIL;it) });return FAIL if it==FAIL;it)
 @name=name;@args=args;@body=shadow(body,locals)
-(it=(itrans());return FAIL if it==FAIL;it)  
+it = (grammar)
+(it=(_pass(it){(it=(itrans());return FAIL if it==FAIL;it)});return FAIL if it==FAIL;it)  
 end
 def trans() 
 name=nil;args=nil
@@ -772,8 +773,10 @@ def test()
  (it=(inline(Rule[{:name=>"a",:locals=>["a","b"],:args=>["x"],:body=>And[Act["aueo"],Set[{:name=>autovar,:expr=>Act["a"]}],Many[{:ary=>[Act["aueo"]],:o=>autovar}]]}]));return FAIL if it==FAIL;it) 
 end
 def inlineit() 
-
- (it=(inline());return FAIL if it==FAIL;it) 
+name=nil;grammar=nil
+ name = ((it=(anything());return FAIL if it==FAIL;it))
+grammar = ((it=(anything());return FAIL if it==FAIL;it))
+(it=(inline(name,grammar));return FAIL if it==FAIL;it)  
 end
 
 end
