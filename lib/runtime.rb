@@ -130,7 +130,9 @@ class AmethystCore
     v=src.instance_variable_get("@#{key}")
     v||=src.send(key) if src.respond_to? key
     #v||=src[key] if src.respond_to? "[]"
-    @input = Stream::create([v])
+		puts v.inspect
+		return v   
+ @input = Stream::create([v])
     r =block.call
     @input = oldInput
     r
@@ -190,7 +192,7 @@ class AmethystCore
 	def initialize( mems=Hash.new{|h,k| h[k]={}},mema=Hash.new{|h,k| h[k]={}})
 		@memos=mems
 		@memoa=mema
-		@cachestream=Hash.new{|h,k| h[k]=Stream.create(k)}
+		@cachestream=Hash.new{|h,k| h[k]=Stream.create([k])}
 	end	
 
 	def parse(rule,input)
