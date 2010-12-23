@@ -547,14 +547,13 @@ end
 class AmethystOptimizer < Amethyst
 def itrans() 
 r=nil
- (it=(clas(Object));return FAIL if it==FAIL;it)
-(it=(_enter{r = (avar1 = ([])
+ r = (avar1 = ([])
 while true
 avar2=@input;r=it=((it=(_or(proc{(it=(char());next FAIL if it==FAIL;it)},proc{(it=(trans());next FAIL if it==FAIL;it)}));break FAIL if it==FAIL;it))
  avar1||=[];_append(avar1,it)
  break FAIL if r==FAIL
 end;@input=avar2
-avar1 )});return FAIL if it==FAIL;it)
+avar1 )
  r  
 end
 def trans() 
@@ -772,20 +771,23 @@ def test()
 
  (it=(inline(Rule[{:name=>"a",:locals=>["a","b"],:args=>["x"],:body=>And[Act["aueo"],Set[{:name=>autovar,:expr=>Act["a"]}],Many[{:ary=>[Act["aueo"]],:o=>autovar}]]}]));return FAIL if it==FAIL;it) 
 end
+def inlineit() 
+
+ (it=(inline());return FAIL if it==FAIL;it) 
+end
 
 end
 
 class AmethystTranslator < Amethyst
 def itrans() 
 r=nil
- (it=(clas(Object));return FAIL if it==FAIL;it)
-(it=(_enter{r = (avar1 = ([])
+ r = (avar1 = ([])
 while true
 avar2=@input;r=it=((it=(_or(proc{(it=(char());next FAIL if it==FAIL;it)},proc{(it=(trans());next FAIL if it==FAIL;it)}));break FAIL if it==FAIL;it))
  avar1||=[];_append(avar1,it)
  break FAIL if r==FAIL
 end;@input=avar2
-avar1 )});return FAIL if it==FAIL;it)
+avar1 )
  r*""  
 end
 def trans() 

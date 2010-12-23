@@ -10,4 +10,6 @@ amethyst Inliner < AmethystOptimizer {
        | {super}
 
  test= inline(Rule[{:name=>"a",:locals=>["a","b"],:args=>["x"],:body=>And[Act["aueo"],Set[{:name=>autovar,:expr=>Act["a"]}],Many[{:ary=>[Act["aueo"]],:o=>autovar}]]}])
+
+	inlineit = inline
 }
