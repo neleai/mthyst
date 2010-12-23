@@ -88,25 +88,6 @@ class AmethystCore
 		FAIL
 	end
 
-  def _many()
-		ans=[]
-    while true
-      oldInput = @input
-      r = yield
-			if r==FAIL
-				@input=oldInput
-				return ans
-			else
-				ans << r
-			end
-    end
-  end
-	def _many1(&prc)
-		a=_many( &prc)	
-		return FAIL if a==[]
-		a
-	end
-
 	def _pass(expr)
 		oldInput=@input
     @input=cachestream(expr)
@@ -130,12 +111,7 @@ class AmethystCore
     v=src.instance_variable_get("@#{key}")
     v||=src.send(key) if src.respond_to? key
     #v||=src[key] if src.respond_to? "[]"
-		puts v.inspect
-		return v   
- @input = Stream::create([v])
-    r =block.call
-    @input = oldInput
-    r
+	 v   
   end
 
 	
