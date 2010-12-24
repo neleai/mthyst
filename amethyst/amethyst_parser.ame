@@ -151,5 +151,5 @@ amethyst AmethystParser < Amethyst{
 
 	number = <0-9>+
 
-	atomicHostExpr = (~endline .)*:s -> s*""
+	atomicHostExpr = (~endline .)*:s   {"{#{s*""}}"}=>[ inlineHostExpr ]
 }
