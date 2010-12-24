@@ -143,9 +143,9 @@ amethyst AmethystParser < Amethyst{
 
   nameRest       = nameFirst | digit
 
-  className      = spaces upper:s[] nameRest*:s[]                   -> leterize(s*"")
+  className      = _* (upper nameRest* )[]:{leterize(it*"")}
 	
-	name = spaces nameFirst:s[] nameRest*:s[] -> leterize(s*"")
+	name = _* (nameFirst nameRest*)[]:{leterize(it*"")}
 
 	inlineHostExpr = args('{','}')
 

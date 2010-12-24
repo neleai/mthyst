@@ -484,34 +484,48 @@ def nameRest()
  (it=(_or(proc{(it=(nameFirst());next FAIL if it==FAIL;it)},proc{(it=(digit());next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it) 
 end
 def className() 
-s=nil
- (it=(spaces());return FAIL if it==FAIL;it)
-it=((it=(upper());return FAIL if it==FAIL;it))
- s||=[];_append(s,it)
-it=(avar23 = ([])
+
+ avar23 = ([])
 while true
-avar24=@input;r=it=((it=(nameRest());break FAIL if it==FAIL;it))
+avar24=@input;r=it=((it=(_());break FAIL if it==FAIL;it))
  avar23||=[];_append(avar23,it)
  break FAIL if r==FAIL
 end;@input=avar24
-avar23 )
- s||=[];_append(s,it)
- leterize(s*"")  
+avar23
+it = (it=((it=(upper());return FAIL if it==FAIL;it))
+ avar25||=[];_append(avar25,it)
+it=(avar26 = ([])
+while true
+avar27=@input;r=it=((it=(nameRest());break FAIL if it==FAIL;it))
+ avar26||=[];_append(avar26,it)
+ break FAIL if r==FAIL
+end;@input=avar27
+avar26 )
+ avar25||=[];_append(avar25,it)
+avar25 )
+leterize(it*"")  
 end
 def name() 
-s=nil
- (it=(spaces());return FAIL if it==FAIL;it)
-it=((it=(nameFirst());return FAIL if it==FAIL;it))
- s||=[];_append(s,it)
-it=(avar25 = ([])
+
+ avar28 = ([])
 while true
-avar26=@input;r=it=((it=(nameRest());break FAIL if it==FAIL;it))
- avar25||=[];_append(avar25,it)
+avar29=@input;r=it=((it=(_());break FAIL if it==FAIL;it))
+ avar28||=[];_append(avar28,it)
  break FAIL if r==FAIL
-end;@input=avar26
-avar25 )
- s||=[];_append(s,it)
- leterize(s*"")  
+end;@input=avar29
+avar28
+it = (it=((it=(nameFirst());return FAIL if it==FAIL;it))
+ avar30||=[];_append(avar30,it)
+it=(avar31 = ([])
+while true
+avar32=@input;r=it=((it=(nameRest());break FAIL if it==FAIL;it))
+ avar31||=[];_append(avar31,it)
+ break FAIL if r==FAIL
+end;@input=avar32
+avar31 )
+ avar30||=[];_append(avar30,it)
+avar30 )
+leterize(it*"")  
 end
 def inlineHostExpr() 
 
@@ -519,26 +533,26 @@ def inlineHostExpr()
 end
 def number() 
 
- avar27 = ([])
+ avar33 = ([])
 it=((it=(regch(/[0-9]/));return FAIL if it==FAIL;it))
- avar27||=[];_append(avar27,it)
+ avar33||=[];_append(avar33,it)
 while true
-avar28=@input;r=it=((it=(regch(/[0-9]/));break FAIL if it==FAIL;it))
- avar27||=[];_append(avar27,it)
+avar34=@input;r=it=((it=(regch(/[0-9]/));break FAIL if it==FAIL;it))
+ avar33||=[];_append(avar33,it)
  break FAIL if r==FAIL
-end;@input=avar28
-avar27  
+end;@input=avar34
+avar33  
 end
 def atomicHostExpr() 
 s=nil
- s = (avar29 = ([])
+ s = (avar35 = ([])
 while true
-avar30=@input;r=it=((it=(_not{(it=(endline());next FAIL if it==FAIL;it)});break FAIL if it==FAIL;it)
+avar36=@input;r=it=((it=(_not{(it=(endline());next FAIL if it==FAIL;it)});break FAIL if it==FAIL;it)
 (it=(_dot_());break FAIL if it==FAIL;it) )
- avar29||=[];_append(avar29,it)
+ avar35||=[];_append(avar35,it)
  break FAIL if r==FAIL
-end;@input=avar30
-avar29 )
+end;@input=avar36
+avar35 )
  s*""  
 end
 
