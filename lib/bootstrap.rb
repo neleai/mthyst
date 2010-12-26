@@ -10,7 +10,12 @@ def _dot_()
 end
 def regch(regex) 
 c=nil
- c = ((it=(char());return FAIL if it==FAIL;it))
+ c = (avar2 = (c)
+avar3 = (c = ((it=(_dot_());return FAIL if it==FAIL;it))
+(it=((c.is_a? String )||FAIL);return FAIL if it==FAIL;it)
+c )
+c = (avar2)
+avar3 )
 (it=((regex.match(c))||FAIL);return FAIL if it==FAIL;it)
 c  
 end
@@ -38,14 +43,14 @@ def space()
 end
 def spaces() 
 
- avar2 = ([])
+ avar4 = ([])
 while true
-avar3=@input;r=it=(avar1 = ((it=(regch(/[\s\t\r\n\f]/));break FAIL if it==FAIL;it))
+avar5=@input;r=it=(avar1 = ((it=(regch(/[\s\t\r\n\f]/));break FAIL if it==FAIL;it))
 avar1 )
- avar2||=[];_append(avar2,it)
+ avar4||=[];_append(avar4,it)
  break FAIL if r==FAIL
-end;@input=avar3
-avar2  
+end;@input=avar5
+avar4  
 end
 def _() 
 
@@ -92,14 +97,14 @@ def listOf(rule,delim)
 f=nil
  (it=(_or(proc{it=((it=(apply(rule));next FAIL if it==FAIL;it))
  f||=[];_append(f,it)
-it=(avar4 = ([])
+it=(avar6 = ([])
 while true
-avar5=@input;r=it=((it=(apply(delim));break FAIL if it==FAIL;it)
+avar7=@input;r=it=((it=(apply(delim));break FAIL if it==FAIL;it)
 (it=(apply(rule));break FAIL if it==FAIL;it) )
- avar4||=[];_append(avar4,it)
+ avar6||=[];_append(avar6,it)
  break FAIL if r==FAIL
-end;@input=avar5
-avar4 )
+end;@input=avar7
+avar6 )
  f||=[];_append(f,it)
 f },proc{(it=(empty());next FAIL if it==FAIL;it)
 [] }));return FAIL if it==FAIL;it) 
@@ -120,28 +125,28 @@ def is_a(cls)
 end
 def token(s) 
 
- avar6 = (avar2 = ([])
+ avar8 = (avar4 = ([])
 while true
-avar3=@input;r=it=(avar1 = ((it=(regch(/[\s\t\r\n\f]/));break FAIL if it==FAIL;it))
+avar5=@input;r=it=(avar1 = ((it=(regch(/[\s\t\r\n\f]/));break FAIL if it==FAIL;it))
 avar1 )
- avar2||=[];_append(avar2,it)
+ avar4||=[];_append(avar4,it)
  break FAIL if r==FAIL
-end;@input=avar3
-avar2 )
-avar6 
+end;@input=avar5
+avar4 )
+avar8
 (it=(seq(s));return FAIL if it==FAIL;it)  
 end
 def many1(s) 
 a=nil
  it=((it=(apply(s));return FAIL if it==FAIL;it))
  a||=[];_append(a,it)
-it=(avar7 = ([])
+it=(avar9 = ([])
 while true
-avar8=@input;r=it=((it=(apply(s));break FAIL if it==FAIL;it))
- avar7||=[];_append(avar7,it)
+avar10=@input;r=it=((it=(apply(s));break FAIL if it==FAIL;it))
+ avar9||=[];_append(avar9,it)
  break FAIL if r==FAIL
-end;@input=avar8
-avar7 )
+end;@input=avar10
+avar9 )
  a||=[];_append(a,it)  
 end
 
@@ -778,7 +783,7 @@ name=nil;args=nil;locals=nil;body=nil
 args = (_key(:args))
 locals = (_key(:locals))
 body = (_key(:body)) });return FAIL if it==FAIL;it) });return FAIL if it==FAIL;it)
-@result=autovar;@name=name;@args=args;@body=shadow(Set[{:name=>@result,:expr=>body}],locals) 
+@result=autovar;@name=name;@args=args;@body=shadow(Set[{:name=>@result,:expr=>body}],locals.map{|a| Args[a]}) 
 it = (grammar)
 (it=(_pass(it){(it=(clas(Object));return FAIL if it==FAIL;it)
 (it=(_enter{(it=(itrans());return FAIL if it==FAIL;it)});return FAIL if it==FAIL;it) });return FAIL if it==FAIL;it)  
@@ -796,11 +801,6 @@ avar2=@input;r=it=((it=(arg());break FAIL if it==FAIL;it))
 end;@input=avar2
 avar1 ) });next FAIL if it==FAIL;it)
 body=@body; args.each_index{|i| body=And[Set[{:name=>@args[i][0],:expr=>Act[args[i]]}],body] } ; And[shadow(body,@args),Act[@result]] },proc{super}));return FAIL if it==FAIL;it) 
-end
-def test() 
-g=nil
- g = ((it=(anything());return FAIL if it==FAIL;it))
-(it=(inline(Rule[{:name=>"a",:locals=>["a","b"],:args=>["x"],:body=>And[Act["aueo"],Set[{:name=>autovar,:expr=>Act["a"]}],Many[{:ary=>[Act["aueo"]],:o=>autovar}]]}],g));return FAIL if it==FAIL;it)  
 end
 def inlineit() 
 name=nil;grammar=nil;rule=nil

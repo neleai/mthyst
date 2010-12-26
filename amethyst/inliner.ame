@@ -5,12 +5,10 @@ end
 
 amethyst Inliner < AmethystOptimizer {
 
- inline(rule,grammar)= {rule}=>Rule[@name:name @args:args @locals:locals @body:body]  {@@result=autovar;@@name=name;@@args=args;@@body=shadow(Set[{:name=>@@result,:expr=>body}],locals) } {grammar}=>[itrans]
+ inline(rule,grammar)= {rule}=>Rule[@name:name @args:args @locals:locals @body:body]  {@@result=autovar;@@name=name;@@args=args;@@body=shadow(Set[{:name=>@@result,:expr=>body}],locals.map{|a| Args[a]}) } {grammar}=>[itrans]
  
  trans = Apply[:name &{name==@@name} arg*:args] ->  body=@@body; args.each_index{|i| body=And[Set[{:name=>@@args[i][0],:expr=>Act[args[i]]}],body] } ; And[shadow(body,@@args),Act[@@result]]
        | {super}
-
- test= :g  inline(Rule[{:name=>"a",:locals=>["a","b"],:args=>["x"],:body=>And[Act["aueo"],Set[{:name=>autovar,:expr=>Act["a"]}],Many[{:ary=>[Act["aueo"]],:o=>autovar}]]}],g)
 
 	inlineit = :name :grammar  getrule(name,grammar):rule inline(rule,grammar)
 
