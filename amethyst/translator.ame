@@ -2,7 +2,7 @@ amethyst AmethystTranslator < Amethyst {
 	itrans =  (char | trans)*:r  -> r*""
 	
 	trans = Grammar[rw('return',`@name:name @parent:parent @rules=>transs:body`)] -> "class #{name} < #{parent}\n#{body}\nend\n"
-				| Rule[@name:name @locals:locals @args=>args:argss @body=>trans:body] -> "def #{name}(#{argss}) \n#{locals.map{|l| "#{l}=nil"}*";"}\n #{body} \nend\n"
+				| Rule[@name:name @locals:locals @args=>args:argss @body=>trans:body] -> "def #{name}(#{argss})\n #{body} \nend\n"
 				| Enter[trans:expr] failwrap("_enter{#{expr}}")
 				| Or[rw('next', `transfn*:ors`)]  failwrap("_or(#{ors*","})")
 				| And[trans*:t ] -> "#{t*"\n"} "
@@ -16,9 +16,9 @@ amethyst AmethystTranslator < Amethyst {
 				| Foreign[@klas:klas @rule=>rule @args=>args:argss] failwrap("_foreign(#{klas}).#{rule}(#{argss})")
         | Set[@name=>arg:name @expr=>trans:expr] -> "#{name.to_s} = (#{expr})"
 				| Append[@name=>arg:name @expr=>trans:expr] -> "it=(#{expr})\n #{name}||=[];_append(#{name},it)"
-				| Resul[@name:name @args=>args:argss @vars:vars] -> "#{name}[#{argss} {#{vars.map{|l| ":#{l}=>#{l}"}*","} }]"
+				| Resul[@name:name @args=>args:argss @vars:vars] -> "#{name}[#{argss} {#{vars.map{|l| ":#{l[0]}=>#{l[0]}_#{l.number}" }*","} }]"
 				| Key[@name:name] -> "_key(:#{name})"
-				| Pass[@to=>trans:to] failwrap("_pass(it){#{to}}")
+				| Pass[@to=>trans:to] failwrap("_pass(it_){#{to}}")
 
 	transfn = trans:t -> "proc{#{t}}" 
 	
@@ -28,9 +28,10 @@ amethyst AmethystTranslator < Amethyst {
        |  arg*:a -> a*","
 	
 	arg = Args[arg*:a] -> a*""
+			| Strin[arg*:a] -> a*""
 			| Exp[transfn:t ] -> t
 		  | ExpKey[ trans:t] -> t
-			| Variable[:name @number:number] -> puts "#{name}"; "#{name}_#{number}"
+			| Variable[:name @number:number] -> "#{name}_#{number}"
 			| anything
 				
 	rw(word,prc) = {rwo=@@returnword;@@returnword=word} apply(prc):x {@@returnword=rwo;x}

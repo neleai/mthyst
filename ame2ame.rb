@@ -23,8 +23,11 @@ def a2ruby(s)
 #	inl=i.parse(:inlineit,["space",inl])
 #	inl=i.parse(:inlineit,["char",inl])
 #	inl=i.parse(:inlineit,["regch",inl])
-#	inl=d.parse(:itrans,inl)
-#	inl=a.parse(:itrans,inl)
+#pp par
+	inl=d.parse(:itrans,inl)
+#pp inl
+	inl=a.parse(:itrans,inl)
+#pp inl
 time("inlining")
 	inl=opt if inl==FAIL
 	opt=o.parse(:itrans,inl)

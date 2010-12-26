@@ -29,6 +29,7 @@ amethyst AmethystOptimizer < Amethyst {
        | arg*
 	
 	arg = Args[arg*:ary]  @Args
+			| Strin[(char |arg)*:ary ] @Strin
 			| Exp[transfn:ary[] ] @Exp
 		  | ExpKey[ trans:ary[] ] @ExpKey
 			| Variable[:ary[] @number:number] @Variable
