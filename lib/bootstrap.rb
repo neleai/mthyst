@@ -753,6 +753,75 @@ end
 
 end
 
+class Detect_Variables < AmethystOptimizer
+def trans() 
+argnames=nil;name=nil;args=nil;body=nil;locals=nil;vars=nil;expr=nil
+ (it=(_or(proc{(it=(clas(Rule));next FAIL if it==FAIL;it)
+(it=(_enter{argnames = (@argnames=[])
+@locals=[]
+name = (_key(:name))
+it = (_key(:args))
+(it=(_pass(it){args = ((it=(clas(Object));next FAIL if it==FAIL;it)
+(it=(_enter{(it=(addargs());next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it) )});next FAIL if it==FAIL;it)
+it = (_key(:body))
+(it=(_pass(it){body = ((it=(trans());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
+locals = (@locals.uniq)
+puts locals.inspect; locals.each{|l| body=And[Set[{:name=>l,:expr=>Act["nil"] }],body] };puts body.inspect });next FAIL if it==FAIL;it)
+Rule[ {:argnames=>argnames,:name=>name,:args=>args,:body=>body,:locals=>locals }] },proc{(it=(clas(Resul));next FAIL if it==FAIL;it)
+(it=(_enter{name = (_key(:name))
+it = (_key(:args))
+(it=(_pass(it){args = ((it=(args());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
+vars = (@locals.clone) });next FAIL if it==FAIL;it)
+Resul[ {:argnames=>argnames,:name=>name,:args=>args,:body=>body,:locals=>locals,:vars=>vars }] },proc{(it=(clas(Set));next FAIL if it==FAIL;it)
+(it=(_enter{name = (_key(:name))
+@locals<<name
+it = (_key(:expr))
+(it=(_pass(it){expr = ((it=(trans());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it)
+Set[ {:argnames=>argnames,:name=>name,:args=>args,:body=>body,:locals=>locals,:vars=>vars,:expr=>expr }] },proc{(it=(clas(Append));next FAIL if it==FAIL;it)
+(it=(_enter{name = (_key(:name))
+@locals<<name
+it = (_key(:expr))
+(it=(_pass(it){expr = ((it=(trans());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it)
+Append[ {:argnames=>argnames,:name=>name,:args=>args,:body=>body,:locals=>locals,:vars=>vars,:expr=>expr }] },proc{(it=(super());next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it) 
+end
+def addargs() 
+name=nil;result=nil
+ avar1 = ([])
+while true
+avar2=@input;r=it=((it=(clas(Args));break FAIL if it==FAIL;it)
+(it=(_enter{name = ((it=(anything());break FAIL if it==FAIL;it))
+it=(@argnames<<name;Variable[name] )
+ result||=[];_append(result,it) });break FAIL if it==FAIL;it) )
+ avar1||=[];_append(avar1,it)
+ break FAIL if r==FAIL
+end;@input=avar2
+avar1
+result  
+end
+
+end
+
+class Analyze_Variables < AmethystOptimizer
+def trans() 
+name=nil;locals=nil;args=nil;body=nil
+ (it=(_or(proc{(it=(clas(Rule));next FAIL if it==FAIL;it)
+(it=(_enter{name = (_key(:name))
+locals = (_key(:locals))
+@variables=locals.clone
+args = (_key(:args))
+it = (_key(:body))
+(it=(_pass(it){body = ((it=(trans());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it)
+Rule[ {:name=>name,:locals=>locals,:args=>args,:body=>body }] },proc{(it=(super());next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it) 
+end
+def arg() 
+name=nil
+ (it=(_or(proc{name = ((it=(char());next FAIL if it==FAIL;it))
+(it=((@variables.include? name)||FAIL);next FAIL if it==FAIL;it)
+Variable[name] },proc{(it=(super());next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it) 
+end
+
+end
+
 def shadow(body,args)
 	args.each{|arg|arg=arg[0]; a=autovar; body=And[Set[{:name=>a,:expr=>Act[arg]}],body,Set[{:name=>arg,:expr=>Act[a]}]]}
 	body
@@ -834,7 +903,7 @@ avar1 )
 r*""  
 end
 def trans() 
-name=nil;parent=nil;body=nil;argss=nil;expr=nil;ors=nil;t=nil;c=nil;o=nil;klas=nil;vars=nil;to=nil
+name=nil;parent=nil;body=nil;locals=nil;argss=nil;expr=nil;ors=nil;t=nil;c=nil;o=nil;klas=nil;vars=nil;to=nil
  (it=(_or(proc{(it=(clas(Grammar));next FAIL if it==FAIL;it)
 (it=(_enter{(it=(rw('return',proc{name = (_key(:name))
 parent = (_key(:parent))
@@ -842,13 +911,12 @@ it = (_key(:rules))
 (it=(_pass(it){body = ((it=(transs());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it) }));next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it)
 "class #{name} < #{parent}\n#{body}\nend\n" },proc{(it=(clas(Rule));next FAIL if it==FAIL;it)
 (it=(_enter{name = (_key(:name))
-it = (_key(:locals))
-@locals=it
+locals = (_key(:locals))
 it = (_key(:args))
 (it=(_pass(it){argss = ((it=(args());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
 it = (_key(:body))
 (it=(_pass(it){body = ((it=(trans());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it)
-"def #{name}(#{argss}) \n#{@locals.map{|l| "#{l}=nil"}*";"}\n #{body} \nend\n" },proc{(it=(clas(Enter));next FAIL if it==FAIL;it)
+"def #{name}(#{argss}) \n#{locals.map{|l| "#{l}=nil"}*";"}\n #{body} \nend\n" },proc{(it=(clas(Enter));next FAIL if it==FAIL;it)
 (it=(_enter{expr = ((it=(trans());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
 (it=(failwrap("_enter{#{expr}}"));next FAIL if it==FAIL;it) },proc{(it=(clas(Or));next FAIL if it==FAIL;it)
 (it=(_enter{(it=(rw('next', proc{ors = (avar3 = ([])
