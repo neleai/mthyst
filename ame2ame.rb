@@ -16,10 +16,12 @@ def a2ruby(s)
 	par=p.parse(:igrammar,s)
 	time("parsing")
 #	opt=o.parse(:itrans,par)
-	opt=par
-	inl=i.parse(:inlineit,["spaces",opt])
-	inl=i.parse(:inlineit,["space",inl])
-	inl=i.parse(:inlineit,["char",inl])
+	inl=par
+#	inl=i.parse(:inlineit,["spaces",inl])
+#	inl=i.parse(:inlineit,["space",inl])
+#	inl=i.parse(:inlineit,["char",inl])
+#	inl=i.parse(:inlineit,["regch",inl])
+
 time("inlining")
 	inl=opt if inl==FAIL
 	opt=o.parse(:itrans,inl)
@@ -29,7 +31,7 @@ time("ruby")
 	ruby
 end
 o=File.open("bootstrap.rb","w")
-["amethyst.ame","amethyst_parser.ame","amethyst_optimizer.ame","amethyst_optimizer2.ame","inliner.ame","amethyst_translator.ame"].each{|file|
+["amethyst.ame","parser.ame","optimizer_null.ame","optimizer_and_or.ame","inliner.ame","translator.ame"].each{|file|
 o.puts a2ruby(File.new("amethyst/#{file}").read)
 }
 o.close
