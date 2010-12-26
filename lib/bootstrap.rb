@@ -1,7 +1,8 @@
 class Amethyst < AmethystCore
 def _() 
 
- (it=(space());return FAIL if it==FAIL;it) 
+ avar1 = ((it=(regch(/[\s\t\r\n\f]/));return FAIL if it==FAIL;it))
+avar1  
 end
 def _dot_() 
 
@@ -37,17 +38,19 @@ def space()
 end
 def spaces() 
 
- avar1 = ([])
+ avar2 = ([])
 while true
-avar2=@input;r=it=((it=(space());break FAIL if it==FAIL;it))
- avar1||=[];_append(avar1,it)
+avar3=@input;r=it=(avar1 = ((it=(regch(/[\s\t\r\n\f]/));break FAIL if it==FAIL;it))
+avar1 )
+ avar2||=[];_append(avar2,it)
  break FAIL if r==FAIL
-end;@input=avar2
-avar1  
+end;@input=avar3
+avar2  
 end
 def _() 
 
- (it=(space());return FAIL if it==FAIL;it) 
+ avar1 = ((it=(regch(/[\s\t\r\n\f]/));return FAIL if it==FAIL;it))
+avar1  
 end
 def digit() 
 
@@ -89,14 +92,14 @@ def listOf(rule,delim)
 f=nil
  (it=(_or(proc{it=((it=(apply(rule));next FAIL if it==FAIL;it))
  f||=[];_append(f,it)
-it=(avar3 = ([])
+it=(avar4 = ([])
 while true
-avar4=@input;r=it=((it=(apply(delim));break FAIL if it==FAIL;it)
+avar5=@input;r=it=((it=(apply(delim));break FAIL if it==FAIL;it)
 (it=(apply(rule));break FAIL if it==FAIL;it) )
- avar3||=[];_append(avar3,it)
+ avar4||=[];_append(avar4,it)
  break FAIL if r==FAIL
-end;@input=avar4
-avar3 )
+end;@input=avar5
+avar4 )
  f||=[];_append(f,it)
 f },proc{(it=(empty());next FAIL if it==FAIL;it)
 [] }));return FAIL if it==FAIL;it) 
@@ -117,27 +120,28 @@ def is_a(cls)
 end
 def token(s) 
 
- avar5 = (avar1 = ([])
+ avar6 = (avar2 = ([])
 while true
-avar2=@input;r=it=((it=(space());break FAIL if it==FAIL;it))
- avar1||=[];_append(avar1,it)
- break FAIL if r==FAIL
-end;@input=avar2
+avar3=@input;r=it=(avar1 = ((it=(regch(/[\s\t\r\n\f]/));break FAIL if it==FAIL;it))
 avar1 )
-avar5 
+ avar2||=[];_append(avar2,it)
+ break FAIL if r==FAIL
+end;@input=avar3
+avar2 )
+avar6 
 (it=(seq(s));return FAIL if it==FAIL;it)  
 end
 def many1(s) 
 a=nil
  it=((it=(apply(s));return FAIL if it==FAIL;it))
  a||=[];_append(a,it)
-it=(avar6 = ([])
+it=(avar7 = ([])
 while true
-avar7=@input;r=it=((it=(apply(s));break FAIL if it==FAIL;it))
- avar6||=[];_append(avar6,it)
+avar8=@input;r=it=((it=(apply(s));break FAIL if it==FAIL;it))
+ avar7||=[];_append(avar7,it)
  break FAIL if r==FAIL
-end;@input=avar7
-avar6 )
+end;@input=avar8
+avar7 )
  a||=[];_append(a,it)  
 end
 
