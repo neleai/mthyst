@@ -11,15 +11,14 @@ amethyst AmethystTranslator < Amethyst {
 				| Act[args:t ] -> t
   			| Lookahead[rw('next',`trans:t`) ]  failwrap("_lookahead{#{t}}")
         | Comment[:c] -> ""
-				| Many[rw('break', `trans:t` ) @o:o] -> "while true\n#{o}=@input;r=#{t}\n break FAIL if r==FAIL\nend;@input=#{o}"
+				| Many[rw('break', `trans:t` ) @o=>arg:o] -> "while true\n#{o}=@input;r=#{t}\n break FAIL if r==FAIL\nend;@input=#{o}"
 				| Apply[ :name args:argss]  failwrap("#{name}(#{argss})")
-        | Set[@name:name @expr=>trans:expr] -> "#{name.to_s} = (#{expr})"
-				| Append[@name:name @expr=>trans:expr] -> "it=(#{expr})\n #{name}||=[];_append(#{name},it)"
-				| Resul[@name:name @args=>args:argss @vars:vars] -> "#{name}[#{argss} {#{vars.map{|l| ":#{l}=>#{l}"}*","} }]"
 				| Foreign[@klas:klas @rule=>rule @args=>args:argss] failwrap("_foreign(#{klas}).#{rule}(#{argss})")
+        | Set[@name=>arg:name @expr=>trans:expr] -> "#{name.to_s} = (#{expr})"
+				| Append[@name=>arg:name @expr=>trans:expr] -> "it=(#{expr})\n #{name}||=[];_append(#{name},it)"
+				| Resul[@name:name @args=>args:argss @vars:vars] -> "#{name}[#{argss} {#{vars.map{|l| ":#{l}=>#{l}"}*","} }]"
 				| Key[@name:name] -> "_key(:#{name})"
 				| Pass[@to=>trans:to] failwrap("_pass(it){#{to}}")
-				| Shadow[@name:name @expr=>trans:expr @a:a] ->  "#{a}=#{name} ;it=(#{expr});#{name}=#{a};it"
 
 	transfn = trans:t -> "proc{#{t}}" 
 	
@@ -31,8 +30,9 @@ amethyst AmethystTranslator < Amethyst {
 	arg = Args[arg*:a] -> a*""
 			| Exp[transfn:t ] -> t
 		  | ExpKey[ trans:t] -> t
+			| Variable[name:name @number:number] -> "#{name}_#{number}"
 			| anything
-	
+				
 	rw(word,prc) = {rwo=@@returnword;@@returnword=word} apply(prc):x {@@returnword=rwo;x}
 
 	failwrap(s) = {  "(it=(#{s});#{@@returnword} FAIL if it==FAIL;it)" }

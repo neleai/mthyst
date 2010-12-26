@@ -20,7 +20,6 @@ amethyst AmethystOptimizer < Amethyst {
 				| Args[ arg*:ary ] @Args
 				| Key[@name:name] @Key
 				| Pass[ @to=>trans:to] @Pass
-				| Shadow[@name:name @expr=>trans:expr @a:a] @Shadow
 
 	transfn = trans 
 	
@@ -32,5 +31,6 @@ amethyst AmethystOptimizer < Amethyst {
 	arg = Args[arg*:ary]  @Args
 			| Exp[transfn:ary[] ] @Exp
 		  | ExpKey[ trans:ary[] ] @ExpKey
+			| Variable[name:ary[] @number:number] @Variable
 			| anything
 }
