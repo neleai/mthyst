@@ -9,7 +9,8 @@ def a2ruby(s)
 	par=p.parse(:igrammar,s)
 	opt=o.parse(:itrans,par)
 	inl=i.parse(:inlineit,["spaces",opt])
-	ruby=t.parse(:itrans,opt)
+	inl=opt if inl==FAIL
+	ruby=t.parse(:itrans,inl)
 end
 o=File.open("bootstrap.rb","w")
 ["amethyst.ame","amethyst_parser.ame","amethyst_optimizer.ame","amethyst_optimizer2.ame","inliner.ame","amethyst_translator.ame"].each{|file|
