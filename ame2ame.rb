@@ -13,6 +13,8 @@ def a2ruby(s)
 	o=AmethystOptimizer2.new
 	t=AmethystTranslator.new
 	i=Inliner.new
+	d=Detect_Variables.new
+	a=Analyze_Variables.new
 	par=p.parse(:igrammar,s)
 	time("parsing")
 #	opt=o.parse(:itrans,par)
@@ -21,7 +23,8 @@ def a2ruby(s)
 #	inl=i.parse(:inlineit,["space",inl])
 #	inl=i.parse(:inlineit,["char",inl])
 #	inl=i.parse(:inlineit,["regch",inl])
-
+#	inl=d.parse(:itrans,inl)
+#	inl=a.parse(:itrans,inl)
 time("inlining")
 	inl=opt if inl==FAIL
 	opt=o.parse(:itrans,inl)

@@ -134,7 +134,7 @@ amethyst AmethystParser < Amethyst{
 					 | _args('{','}')
 					 | '"' (~'"'   eChar)*:s '"'  -> ['"']+ s+['"']
 					 | '\''(~'\''  eChar)*:s '\'' -> ['\'']+s+['\'']
-					 | ('@@' {n=["@"]}|empty) <a-zA-Z_>+:n[] -> n*""
+					 | ('@@' {"@"}:n[] | ':':n[] | empty) <a-zA-Z_>+:n[] -> n*""
 					 | key:k -> ExpKey[k] 
 					 | <^`{}()'"\[\]>
 
