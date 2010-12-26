@@ -1,15 +1,19 @@
 def shadow(body,args)
-	args.each{|arg| a=autovar; body=And[Set[{:name=>a,:expr=>Act[arg]}],body,Set[{:name=>arg,:expr=>Act[a]}]]}
+	puts args.inspect
+	args.each{|arg|arg=arg[0]; a=autovar; body=And[Set[{:name=>a,:expr=>Act[arg]}],body,Set[{:name=>arg,:expr=>Act[a]}]]}
 	body
 end
+
 amethyst Inliner < AmethystOptimizer {
 
- inline(rule,grammar)= {rule}=>Rule[@name:name @args:args @locals:locals @body:body]  {@@name=name;@@args=args;@@body=shadow(body,locals)} {grammar}=>itrans
+ inline(rule,grammar)= {rule}=>Rule[@name:name @args:args @locals:locals @body:body]  {@@result=autovar;@@name=name;@@args=args;@@body=shadow(Set[{:name=>@@result,:expr=>body}],locals) ;puts args.inspect} {grammar}=>[itrans]
  
- trans = Apply[:name &{name==@@name} arg*:args] -> puts "inlining"; body=@body; args.each_index{|i| body=And[Set[{:name=>@args[i],:expr=>Act[args[i]]}],body] } ; shadow(body,@args)
+ trans = Apply[:name &{name==@@name} arg*:args] ->  body=@@body; args.each_index{|i| body=And[Set[{:name=>@@args[i][0],:expr=>Act[args[i]]}],body] } ; And[shadow(body,@@args),Act[@@result]]
        | {super}
 
- test= inline(Rule[{:name=>"a",:locals=>["a","b"],:args=>["x"],:body=>And[Act["aueo"],Set[{:name=>autovar,:expr=>Act["a"]}],Many[{:ary=>[Act["aueo"]],:o=>autovar}]]}])
+ test= :g  inline(Rule[{:name=>"a",:locals=>["a","b"],:args=>["x"],:body=>And[Act["aueo"],Set[{:name=>autovar,:expr=>Act["a"]}],Many[{:ary=>[Act["aueo"]],:o=>autovar}]]}],g)
 
-	inlineit = :name :grammar inline(name,grammar)
+	inlineit = :name :grammar  getrule(name,grammar):rule inline(rule,grammar)
+
+	getrule(name,grammar) = {grammar}=>[ Grammar[ @rules=>[ Rule[@name:n &{n==name} @this:rule ]* ] ] ]   -> rule
 }

@@ -27,6 +27,9 @@ module Result
 	def [](a)
 		ary[a]
 	end
+	def this
+		self
+	end
 end
 def makeclasses(parent,*ary)
 	ary.each{|a| 

@@ -754,9 +754,11 @@ end
 end
 
 def shadow(body,args)
-	args.each{|arg| a=autovar; body=And[Set[{:name=>a,:expr=>Act[arg]}],body,Set[{:name=>arg,:expr=>Act[a]}]]}
+	puts args.inspect
+	args.each{|arg|arg=arg[0]; a=autovar; body=And[Set[{:name=>a,:expr=>Act[arg]}],body,Set[{:name=>arg,:expr=>Act[a]}]]}
 	body
 end
+
 class Inliner < AmethystOptimizer
 def inline(rule,grammar) 
 name=nil;args=nil;locals=nil;body=nil
@@ -766,9 +768,10 @@ name=nil;args=nil;locals=nil;body=nil
 args = (_key(:args))
 locals = (_key(:locals))
 body = (_key(:body)) });return FAIL if it==FAIL;it) });return FAIL if it==FAIL;it)
-@name=name;@args=args;@body=shadow(body,locals)
+@result=autovar;@name=name;@args=args;@body=shadow(Set[{:name=>@result,:expr=>body}],locals) ;puts args.inspect
 it = (grammar)
-(it=(_pass(it){(it=(itrans());return FAIL if it==FAIL;it)});return FAIL if it==FAIL;it)  
+(it=(_pass(it){(it=(clas(Object));return FAIL if it==FAIL;it)
+(it=(_enter{(it=(itrans());return FAIL if it==FAIL;it)});return FAIL if it==FAIL;it) });return FAIL if it==FAIL;it)  
 end
 def trans() 
 name=nil;args=nil
@@ -782,17 +785,38 @@ avar2=@input;r=it=((it=(arg());break FAIL if it==FAIL;it))
  break FAIL if r==FAIL
 end;@input=avar2
 avar1 ) });next FAIL if it==FAIL;it)
-puts "inlining"; body=_key(:body); args.each_index{|i| body=And[Set[{:name=>_key(:args)[i],:expr=>Act[args[i]]}],body] } ; shadow(body,_key(:args)) },proc{super}));return FAIL if it==FAIL;it) 
+body=@body; args.each_index{|i| body=And[Set[{:name=>@args[i][0],:expr=>Act[args[i]]}],body] } ; And[shadow(body,@args),Act[@result]] },proc{super}));return FAIL if it==FAIL;it) 
 end
 def test() 
-
- (it=(inline(Rule[{:name=>"a",:locals=>["a","b"],:args=>["x"],:body=>And[Act["aueo"],Set[{:name=>autovar,:expr=>Act["a"]}],Many[{:ary=>[Act["aueo"]],:o=>autovar}]]}]));return FAIL if it==FAIL;it) 
+g=nil
+ g = ((it=(anything());return FAIL if it==FAIL;it))
+(it=(inline(Rule[{:name=>"a",:locals=>["a","b"],:args=>["x"],:body=>And[Act["aueo"],Set[{:name=>autovar,:expr=>Act["a"]}],Many[{:ary=>[Act["aueo"]],:o=>autovar}]]}],g));return FAIL if it==FAIL;it)  
 end
 def inlineit() 
-name=nil;grammar=nil
+name=nil;grammar=nil;rule=nil
  name = ((it=(anything());return FAIL if it==FAIL;it))
 grammar = ((it=(anything());return FAIL if it==FAIL;it))
-(it=(inline(name,grammar));return FAIL if it==FAIL;it)  
+rule = ((it=(getrule(name,grammar));return FAIL if it==FAIL;it))
+(it=(inline(rule,grammar));return FAIL if it==FAIL;it)  
+end
+def getrule(name,grammar) 
+n=nil;rule=nil
+ it = (grammar)
+(it=(_pass(it){(it=(clas(Object));return FAIL if it==FAIL;it)
+(it=(_enter{(it=(clas(Grammar));return FAIL if it==FAIL;it)
+(it=(_enter{it = (_key(:rules))
+(it=(_pass(it){(it=(clas(Object));return FAIL if it==FAIL;it)
+(it=(_enter{avar3 = ([])
+while true
+avar4=@input;r=it=((it=(clas(Rule));break FAIL if it==FAIL;it)
+(it=(_enter{n = (_key(:name))
+(it=((n==name)||FAIL);break FAIL if it==FAIL;it)
+rule = (_key(:this)) });break FAIL if it==FAIL;it) )
+ avar3||=[];_append(avar3,it)
+ break FAIL if r==FAIL
+end;@input=avar4
+avar3 });return FAIL if it==FAIL;it) });return FAIL if it==FAIL;it) });return FAIL if it==FAIL;it) });return FAIL if it==FAIL;it) });return FAIL if it==FAIL;it)
+rule  
 end
 
 end
