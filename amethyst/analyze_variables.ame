@@ -1,0 +1,7 @@
+amethyst Analyze_Variables < AmethystOptimizer {
+  trans = Rule[@name:name @locals:locals {@@variables=locals.clone}  @args:args  @body=>trans:body] @Rule
+        | super
+
+	arg = char:name &{@@variables.include? name}  -> Variable[name]
+			| super
+}
