@@ -30,7 +30,7 @@ amethyst AmethystTranslator < Amethyst {
 	arg = Args[arg*:a] -> a*""
 			| Exp[transfn:t ] -> t
 		  | ExpKey[ trans:t] -> t
-			| Variable[:name ] -> puts "#{name}"; "#{name}_#{1}"
+			| Variable[:name @number:number] -> puts "#{name}"; "#{name}_#{number}"
 			| anything
 				
 	rw(word,prc) = {rwo=@@returnword;@@returnword=word} apply(prc):x {@@returnword=rwo;x}

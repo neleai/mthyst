@@ -948,7 +948,7 @@ avar11 )
 a*"," }));return FAIL if it==FAIL;it) 
 end
 def arg() 
-a=nil;t=nil;name=nil
+a=nil;t=nil;name=nil;number=nil
  (it=(_or(proc{(it=(clas(Args));next FAIL if it==FAIL;it)
 (it=(_enter{a = (avar13 = ([])
 while true
@@ -962,8 +962,9 @@ a*"" },proc{(it=(clas(Exp));next FAIL if it==FAIL;it)
 t },proc{(it=(clas(ExpKey));next FAIL if it==FAIL;it)
 (it=(_enter{t = ((it=(trans());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
 t },proc{(it=(clas(Variable));next FAIL if it==FAIL;it)
-(it=(_enter{name = ((it=(anything());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
-puts "#{name}"; "#{name}_#{1}" },proc{(it=(anything());next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it) 
+(it=(_enter{name = ((it=(anything());next FAIL if it==FAIL;it))
+number = (_key(:number)) });next FAIL if it==FAIL;it)
+puts "#{name}"; "#{name}_#{number}" },proc{(it=(anything());next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it) 
 end
 def rw(word,prc) 
 x=nil
