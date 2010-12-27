@@ -92,6 +92,7 @@ class AmethystCore
 		oldInput=@input
     @input=cachestream(expr)
 		r=yield
+		eof
 		@input=oldInput
 		r
 	end
@@ -101,6 +102,7 @@ class AmethystCore
 		@input=@input.child
 		return FAIL if @input==FAIL 
 		r=yield
+		eof
 		@input=oldInput.succ
 		return r
 	end
