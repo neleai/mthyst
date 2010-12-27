@@ -19,7 +19,7 @@ amethyst AmethystOptimizer < Amethyst {
 				| Foreign[@klas:klas @rule=>rule @args=>args:args] @Foreign
 				| Args[ arg*:ary ] @Args
 				| Key[@name:name] @Key
-				| Pass[ @to=>trans:to] @Pass
+				| Pass[ @to=>trans:to @var=>arg:var] @Pass
 
 	transfn = trans 
 	

@@ -143,7 +143,7 @@ makeclasses(Object,
     :And,
 		[:Strin],
 		[:Variable,:number],
-		[:Pass,:from,:to],
+		[:Pass,:var,:to],
     [:Enter,:klas],
     [:Rule,:name,:args,:locals,:body],
     [:Grammar,:name,:parent,:rules]
@@ -203,18 +203,15 @@ avar3 )
 Grammar[ {:name=>name_,:parent=>parent_,:rules=>rules_ }]  
 end
 def rule()
- locals_ = (nil)
-body_ = (nil)
+ body_ = (nil)
 args_ = (nil)
 name_ = (nil)
-@locals=[]
 name_ = ((it=(name());return FAIL if it==FAIL;it))
 args_ = ((it=(ruleargs());return FAIL if it==FAIL;it))
 (it=(token("="));return FAIL if it==FAIL;it)
 body_ = ((it=(expression());return FAIL if it==FAIL;it))
 $av=0
-locals_ = (@locals.uniq)
-Rule[ {:name=>name_,:args=>args_,:body=>body_,:locals=>locals_ }]  
+Rule[ {:name=>name_,:args=>args_,:body=>body_ }]  
 end
 def expression()
  (it=(choice());return FAIL if it==FAIL;it) 
@@ -252,7 +249,7 @@ m_ = ((it=(modifier());next FAIL if it==FAIL;it))
 Lookahead[m_] },proc{from_ = ((it=(modifier());next FAIL if it==FAIL;it))
 (it=(token("=>"));next FAIL if it==FAIL;it)
 to_ = ((it=(modifier());next FAIL if it==FAIL;it))
-And[Set[{:name=>"it",:expr=>from_}] ,Pass[{:to=>to_}]] },proc{(it=(modifier());next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it)  
+And[Set[{:name=>"it",:expr=>from_}] ,Pass[{:to=>to_, :var=>Variable["it"]}]] },proc{(it=(modifier());next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it)  
 end
 def modifier()
  avar7 = (nil)
@@ -287,7 +284,6 @@ expr_ = (nil)
 (it=(_or(proc{expr_ = (exp_)
 (it=(token(":"));next FAIL if it==FAIL;it)
 name_ = ((it=(name());next FAIL if it==FAIL;it))
-@locals<<name_
 (it=(_or(proc{(it=(seq("[]"));next FAIL if it==FAIL;it)
 Append[ {:expr=>expr_,:name=>name_ }] },proc{(it=(empty());next FAIL if it==FAIL;it)
 Set[ {:expr=>expr_,:name=>name_ }] }));next FAIL if it==FAIL;it) },proc{(it=(token(":"));next FAIL if it==FAIL;it)
@@ -371,16 +367,14 @@ arg_ = ((it=(argsOpt('(',')'));next FAIL if it==FAIL;it))
 Apply[rule_,arg_] }));return FAIL if it==FAIL;it)  
 end
 def key()
- vars_ = (nil)
-args_ = (nil)
+ args_ = (nil)
 name_ = (nil)
 (it=(_or(proc{(it=(token("@"));next FAIL if it==FAIL;it)
 name_ = ((it=(className());next FAIL if it==FAIL;it))
 args_ = ((it=(argsOpt('[',']'));next FAIL if it==FAIL;it))
-vars_ = (@locals.uniq)
-Resul[ {:name=>name_,:args=>args_,:vars=>vars_ }] },proc{(it=(token("@"));next FAIL if it==FAIL;it)
+Resul[ {:name=>name_,:args=>args_ }] },proc{(it=(token("@"));next FAIL if it==FAIL;it)
 name_ = ((it=(name());next FAIL if it==FAIL;it))
-Key[ {:name=>name_,:args=>args_,:vars=>vars_ }] }));return FAIL if it==FAIL;it)  
+Key[ {:name=>name_,:args=>args_ }] }));return FAIL if it==FAIL;it)  
 end
 def collect(ors_)
  a=autovar; And[Or[{:ary=>ors_.ary.map{|ands| And[{:ary=>ands.ary.map{|expr| Append[{:name=>a,:expr=>expr}]}}]}}],Act[a]] 
@@ -591,7 +585,8 @@ avar1 )
 r_  
 end
 def trans()
- to_ = (nil)
+ var_ = (nil)
+to_ = (nil)
 avar3 = (nil)
 klas_ = (nil)
 vars_ = (nil)
@@ -699,8 +694,10 @@ Args[ {:name=>name_,:parent=>parent_,:it=>it_,:rules=>rules_,:args=>args_,:body=
 (it=(_enter{name_ = (_key(:name))});next FAIL if it==FAIL;it)
 Key[ {:name=>name_,:parent=>parent_,:it=>it_,:rules=>rules_,:args=>args_,:body=>body_,:locals=>locals_,:ary=>ary_,:o=>o_,:expr=>expr_,:vars=>vars_,:klas=>klas_ }] },proc{(it=(clas(Pass));next FAIL if it==FAIL;it)
 (it=(_enter{it_ = (_key(:to))
-(it=(_pass(it_){to_ = ((it=(trans());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it)
-Pass[ {:name=>name_,:parent=>parent_,:it=>it_,:rules=>rules_,:args=>args_,:body=>body_,:locals=>locals_,:ary=>ary_,:o=>o_,:expr=>expr_,:vars=>vars_,:klas=>klas_,:to=>to_ }] }));return FAIL if it==FAIL;it)  
+(it=(_pass(it_){to_ = ((it=(trans());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
+it_ = (_key(:var))
+(it=(_pass(it_){var_ = ((it=(arg());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it)
+Pass[ {:name=>name_,:parent=>parent_,:it=>it_,:rules=>rules_,:args=>args_,:body=>body_,:locals=>locals_,:ary=>ary_,:o=>o_,:expr=>expr_,:vars=>vars_,:klas=>klas_,:to=>to_,:var=>var_ }] }));return FAIL if it==FAIL;it)  
 end
 def transfn()
  (it=(trans());return FAIL if it==FAIL;it) 
@@ -980,7 +977,8 @@ avar1 )
 r_*""  
 end
 def trans()
- to_ = (nil)
+ var_ = (nil)
+to_ = (nil)
 vars_ = (nil)
 klas_ = (nil)
 o_ = (nil)
@@ -1068,8 +1066,10 @@ vars_ = (_key(:vars)) });next FAIL if it==FAIL;it)
 (it=(_enter{name_ = (_key(:name))});next FAIL if it==FAIL;it)
 "_key(:#{name_})" },proc{(it=(clas(Pass));next FAIL if it==FAIL;it)
 (it=(_enter{it_ = (_key(:to))
-(it=(_pass(it_){to_ = ((it=(trans());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it)
-(it=(failwrap("_pass(it_){#{to_}}"));next FAIL if it==FAIL;it) }));return FAIL if it==FAIL;it)  
+(it=(_pass(it_){to_ = ((it=(trans());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
+it_ = (_key(:var))
+(it=(_pass(it_){var_ = ((it=(arg());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it)
+(it=(failwrap("_pass(#{var_}){#{to_}}"));next FAIL if it==FAIL;it) }));return FAIL if it==FAIL;it)  
 end
 def transfn()
  t_ = (nil)
