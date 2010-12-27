@@ -1,0 +1,20 @@
+amethyst Dead_Code_Detector < AmethystOptimizer {
+
+	trans = Rule[  ]
+				|	Pred[]
+				| Act[]
+				| Set[]
+				| Append[]
+				| Result[]
+				| super 
+}
+
+amethyst Move_Assignments < AmethystOptimizer {
+	trans = Set[@name:name @expr=>move(Set,name) ]
+				| Append[@name:name @expr=>move(Append,name) ]
+				| super
+
+	move(tp,name) = Or[ move(tp,name)*:ary ] @Or
+								| And[ (:el (&eof {el}=>move(tp,name) | {el}) )*:ary ] @And
+								| anything:{tp[{:name=>name,:expr=>it}]}
+}
