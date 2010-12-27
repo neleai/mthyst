@@ -7,7 +7,7 @@ amethyst AmethystOptimizer < Amethyst {
 				| Or[transfn*:ary]  @Or
 				| And[trans*:ary ]  @And
 				| Not[trans:ary[] ] @Not
-  			| Lookahead[trans:ary ]  @Lookahead
+  			| Lookahead[trans:ary[] ]  @Lookahead
         | Comment[anything*:ary]  @Comment
 				| Many[trans:ary[] @o:o] @Many
 				| Apply[ :ary[] args:ary[]] @Apply

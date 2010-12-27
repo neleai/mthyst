@@ -638,7 +638,8 @@ And[ {:name=>name_,:parent=>parent_,:it=>it_,:rules=>rules_,:args=>args_,:body=>
 (it=(_enter{it=((it=(trans());next FAIL if it==FAIL;it))
  ary_||=[];_append(ary_,it)});next FAIL if it==FAIL;it)
 Not[ {:name=>name_,:parent=>parent_,:it=>it_,:rules=>rules_,:args=>args_,:body=>body_,:locals=>locals_,:ary=>ary_ }] },proc{(it=(clas(Lookahead));next FAIL if it==FAIL;it)
-(it=(_enter{ary_ = ((it=(trans());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
+(it=(_enter{it=((it=(trans());next FAIL if it==FAIL;it))
+ ary_||=[];_append(ary_,it)});next FAIL if it==FAIL;it)
 Lookahead[ {:name=>name_,:parent=>parent_,:it=>it_,:rules=>rules_,:args=>args_,:body=>body_,:locals=>locals_,:ary=>ary_ }] },proc{(it=(clas(Comment));next FAIL if it==FAIL;it)
 (it=(_enter{ary_ = (avar4 = ([])
 while true
