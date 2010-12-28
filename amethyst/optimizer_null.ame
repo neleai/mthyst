@@ -11,8 +11,7 @@ amethyst AmethystOptimizer < Amethyst {
         | Comment[anything*:ary]  @Comment
 				| Many[trans:ary[] @o:o] @Many
 				| Apply[ :ary[] args:ary[]] @Apply
-        | Set[@name=>arg:name @expr=>trans:expr] @Set
-				| Append[@name=>arg:name @expr=>trans:expr] @Append
+        | Set[@name=>arg:name @expr=>trans:expr @append:append] @Set
 				| Pred[ args:ary ]  @Pred
 				| Act[  args:ary ] @Act
 				| Resul[@name:name @args=>args:args @vars=>args:vars] @Resul

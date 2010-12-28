@@ -15,8 +15,7 @@ amethyst Communize_Or < AmethystOptimizer {
 }
 
 amethyst Move_Assignments < AmethystOptimizer {
-	trans = Set[@name:name @expr=>move(Set,name) ]
-				| Append[@name:name @expr=>move(Append,name) ]
+	trans = Set[@name:name @append:append @expr=>move(append,name) ]
 				| super
 
 	move(tp,name) = Or[ move(tp,name)*:ary ] @Or

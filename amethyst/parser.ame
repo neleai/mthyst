@@ -8,8 +8,7 @@ makeclasses(Object,
     :Exp,
     :ExpKey,
     :Foreign,
-    [:Append,:name,:expr],
-    [:Set,:name,:expr],
+    [:Set,:name,:expr,:append],
     [:Many,:o],
     :Many1,
     :Comment,
@@ -61,9 +60,7 @@ def _Set(name,expr,append=false)
   Set[{:name=>name,:expr=>expr,:append=>append}]
 end
 def _Append(name,expr)
-  #_Set(name,expr,true)
-	append=true
-  Append[{:name=>name,:expr=>expr,:append=>append}]
+  _Set(name,expr,true)
 end
 
 def _Many(expr,many1=false)
@@ -111,7 +108,7 @@ amethyst AmethystParser < Amethyst{
               | "?"   -> Or[t,Apply["empty"]]
               | empty -> t
   
-	binding(exp) = {exp}:expr ":" name:name ('[]' @Append | empty @Set )
+	binding(exp) = {exp}:expr ":" name:name ('[]' {true} | empty {false} ):append ->_Set(name,expr,append)
                | ":" inlineHostExpr:e -> And[ _Set("it",exp) , _Act(e) ]
 
 
