@@ -1,4 +1,4 @@
-
+require 'yaml'
 def leterize(s)
 	trans={"."=>"_dot_","_"=>"_","-"=>"_minus_","="=>"_equal_","<" => "_less_",">"=>"_greater_","$"=>"_dollar_"}
 	s2=""
@@ -29,6 +29,9 @@ module Result
 	end
 	def this
 		self
+	end
+	def isomorphic(that)
+		this.to_yaml==that.to_yaml
 	end
 end
 def makeclasses(parent,*ary)

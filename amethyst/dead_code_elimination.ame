@@ -9,6 +9,11 @@ amethyst Dead_Code_Detector < AmethystOptimizer {
 				| super 
 }
 
+amethyst Communize_Or < AmethystOptimizer {
+	trans = Or[ &(And[ trans:first  .*] ) And[ trans:fst &{first.isomorphic(fst)} trans*:rest {And[{:ary=>rest}]}:ary[]  ]* ] -> And[first ,Or[{:ary=>ary}] ]
+	| super
+}
+
 amethyst Move_Assignments < AmethystOptimizer {
 	trans = Set[@name:name @expr=>move(Set,name) ]
 				| Append[@name:name @expr=>move(Append,name) ]
@@ -16,5 +21,7 @@ amethyst Move_Assignments < AmethystOptimizer {
 
 	move(tp,name) = Or[ move(tp,name)*:ary ] @Or
 								| And[ (:el (&eof {el}=>move(tp,name) | {el}) )*:ary ] @And
+								| Enter[ move(tp,name):ary[] ] @Enter
+								| Pass[ @var:var @to=>move(tp,name):to] @Pass
 								| anything:{tp[{:name=>name,:expr=>it}]}
 }
