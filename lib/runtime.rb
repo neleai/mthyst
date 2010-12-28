@@ -174,8 +174,12 @@ class AmethystCore
 	end	
 
 	def parse(rule,input)
+		time=Time.new
+		print self.class
 		@input=Stream::create(input)
-		self.apply(rule)
+		r=self.apply(rule)
+		puts "	#{Time.new-time}"
+		r
 	end
 end
 

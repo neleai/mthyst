@@ -78,7 +78,7 @@ def _Pred(expr)
 end
 
 amethyst AmethystParser < Amethyst{
-	igrammar = (~'amethyst' . | grammar)*:a -> a
+	igrammar = ((~'amethyst' .)+:{it*""} | grammar)*:a -> a
 
 	grammar = "amethyst" name:name ("<" name:parent |empty {parent="Amethyst"} ) 
 "{" rule*:rules "}"  @Grammar

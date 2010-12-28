@@ -251,16 +251,28 @@ end
 class AmethystParser < Amethyst
 def igrammar()
  avar1 = (nil)
+it_ = (nil)
+avar2 = (nil)
 a_ = (nil)
 _result_ = (nil)
-_result_ = (a_ = (avar1 = ([])
+_result_ = (a_ = (avar2 = ([])
 while true
-avar2=@input;r=it=((it=(_or(proc{(it=(_not{(it=(seq("amethyst"));next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it)
-(it=(_dot_());next FAIL if it==FAIL;it) },proc{(it=(grammar());next FAIL if it==FAIL;it)}));break FAIL if it==FAIL;it))
+avar4=@input;r=it=((it=(_or(proc{it_ = (avar1 = ([])
+it=((it=(_not{(it=(seq("amethyst"));next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it)
+(it=(_dot_());next FAIL if it==FAIL;it) )
+ avar1||=[];_append(avar1,it)
+while true
+avar3=@input;r=it=((it=(_not{(it=(seq("amethyst"));next FAIL if it==FAIL;it)});break FAIL if it==FAIL;it)
+(it=(_dot_());break FAIL if it==FAIL;it) )
  avar1||=[];_append(avar1,it)
  break FAIL if r==FAIL
-end;@input=avar2
+end;@input=avar3
 avar1 )
+it_*"" },proc{(it=(grammar());next FAIL if it==FAIL;it)}));break FAIL if it==FAIL;it))
+ avar2||=[];_append(avar2,it)
+ break FAIL if r==FAIL
+end;@input=avar4
+avar2 )
 a_ )
 _result_  
 end
@@ -1045,7 +1057,7 @@ _result_ = (nil)
 _result_ = ((it=(_or(proc{(it=(clas(Rule));next FAIL if it==FAIL;it)
 (it=(_enter{name_ = (_key(:name))
 locals_ = (_key(:locals))
-@variables=locals_+_key(:argnames)
+@variables={} ;(locals_+_key(:argnames)).each{|v| @variables[v]=true}
 args_ = (_key(:args))
 it_ = (_key(:body))
 (it=(_pass(it_){body_ = ((it=(trans());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it)
@@ -1056,7 +1068,7 @@ def arg()
  name_ = (nil)
 _result_ = (nil)
 _result_ = ((it=(_or(proc{name_ = ((it=(char());next FAIL if it==FAIL;it))
-(it=((@variables.include? name_)||FAIL);next FAIL if it==FAIL;it)
+(it=((@variables[name_])||FAIL);next FAIL if it==FAIL;it)
 Variable[name_] },proc{(it=(super());next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it))
 _result_  
 end
