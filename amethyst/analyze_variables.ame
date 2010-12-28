@@ -1,7 +1,0 @@
-amethyst Analyze_Variables < AmethystOptimizer {
-  trans = Rule[@name:name @locals:locals {@@variables={} ;(locals+@argnames).each{|v| @@variables[v]=true}}  @args:args  @body=>trans:body] @Rule
-        | super
-
-	arg = char:name &{@@variables[name]}  -> Variable[name]
-			| super
-}

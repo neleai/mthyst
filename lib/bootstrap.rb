@@ -1046,6 +1046,7 @@ end
 
 end
 
+
 class Analyze_Variables < AmethystOptimizer
 def trans()
  body_ = (nil)

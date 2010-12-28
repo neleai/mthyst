@@ -29,7 +29,7 @@ def a2ruby(s)
 	ruby
 end
 o=File.open("bootstrap.rb","w")
-["amethyst.ame","parser.ame","optimizer_null.ame","optimizer_and_or.ame","detect_variables.ame","analyze_variables.ame","dead_code_elimination.ame","inliner.ame","translator.ame"].each{|file|
+["amethyst.ame","parser.ame","optimizer_null.ame","optimizer_and_or.ame","detect_variables.ame","dead_code_elimination.ame","inliner.ame","translator.ame"].each{|file|
 puts file
 o.puts a2ruby(File.new("amethyst/#{file}").read)
 }
