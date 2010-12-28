@@ -2,7 +2,7 @@ amethyst AmethystTranslator < Amethyst {
 	itrans =  (char | trans)*:r  -> r*""
 	
 	trans = Grammar[rw('return',`@name:name @parent:parent @rules=>transs:body`)] -> "class #{name} < #{parent}\n#{body}\nend\n"
-				| Rule[@name:name @locals:locals @args=>args:argss @body=>trans:body] -> "def #{name}(#{argss})\n #{body} \nend\n"
+				| Rule[{$av=0} @name:name @locals:locals @args=>args:argss @body=>trans:body] -> "def #{name}(#{argss})\n #{body} \nend\n"
 				| Enter[trans:expr] failwrap("_enter{#{expr}}")
 				| Or[rw('next', `transfn*:ors`)]  failwrap("_or(#{ors*","})")
 				| And[trans*:t ] -> "#{t*"\n"} "

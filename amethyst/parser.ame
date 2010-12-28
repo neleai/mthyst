@@ -66,7 +66,7 @@ amethyst AmethystParser < Amethyst{
              | modifier:from "=>" modifier:to ->And[Set[{:name=>"it",:expr=>from}] ,Pass[{:to=>to, :var=>Variable["it"]}]]
 						 | modifier
 
- 		modifier = term:t optIter(t):t  (~space binding(t) | empty {t})
+ 		modifier = term:t optIter(t):t  (~space binding(t):t)* -> t
              | binding(Apply["anything"])
              | "#" (~endline .)*:c -> Comment[c]
  
