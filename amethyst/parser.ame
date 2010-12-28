@@ -46,6 +46,30 @@ def autovar
 	Autovar.new
 end
 
+def _Set(name,expr,append=false)
+  Set[{:name=>name,:expr=>expr,:append=>append}]
+end
+def _Append(name,expr)
+  #_Set(name,expr,true)
+	append=true
+  Append[{:name=>name,:expr=>expr,:append=>append}]
+end
+
+def _Many(expr,many1=false)
+  a=autovar
+  And[{:ary=>( [_Set(a, _Act("[]"))]+(many1 ? [_Append(a,expr)] : [])+[Many[{:ary=>[_Append(a,expr)],:o=>autovar}],_Act(a)])}]
+end
+def _Many1(expr)
+  _Many(expr,true)
+end
+def _Act(expr,pred=false)
+  Act[{:ary=>[expr],:pred=>pred}]
+end
+def _Pred(expr)
+  #_Act(expr,true)
+	Pred[expr]
+end
+
 amethyst AmethystParser < Amethyst{
 	igrammar = (~'amethyst' . | grammar)*:a -> a
 
@@ -69,9 +93,9 @@ amethyst AmethystParser < Amethyst{
  		modifier = term:t optIter(t):t  (~space binding(t):t)* -> t
              | binding(Apply["anything"])
              | "#" (~endline .)*:c -> Comment[c]
- 
-	 optIter(t) = "*"  -> a=autovar; And[Set[{:name=>a, :expr=> Act["[]"]}], Many[{:ary=>[Append[{:name=>a,:expr=>t}]],:o=>autovar}],Act[a]]
-              | "+"   -> a=autovar; And[Set[{:name=>a, :expr=> Act["[]"]}], Append[{:name=>a,:expr=>t}], Many[{:ary=>[Append[{:name=>a,:expr=>t}]],:o=>autovar}],Act[a]]
+
+   optIter(t) = "*"  -> _Many(t)
+              | "+"  -> _Many1(t)
               | "?"   -> Or[t,Apply["empty"]]
               | empty -> t
   

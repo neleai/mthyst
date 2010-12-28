@@ -217,6 +217,30 @@ def autovar
 	Autovar.new
 end
 
+def _Set(name,expr,append=false)
+  Set[{:name=>name,:expr=>expr,:append=>append}]
+end
+def _Append(name,expr)
+  #_Set(name,expr,true)
+	append=true
+  Append[{:name=>name,:expr=>expr,:append=>append}]
+end
+
+def _Many(expr,many1=false)
+  a=autovar
+  And[{:ary=>( [_Set(a, _Act("[]"))]+(many1 ? [_Append(a,expr)] : [])+[Many[{:ary=>[_Append(a,expr)],:o=>autovar}],_Act(a)])}]
+end
+def _Many1(expr)
+  _Many(expr,true)
+end
+def _Act(expr,pred=false)
+  Act[{:ary=>[expr],:pred=>pred}]
+end
+def _Pred(expr)
+  #_Act(expr,true)
+	Pred[expr]
+end
+
 class AmethystParser < Amethyst
 def igrammar()
  avar1 = (nil)
@@ -346,8 +370,8 @@ end
 def optIter(t_)
  _result_ = (nil)
 _result_ = ((it=(_or(proc{(it=(token("*"));next FAIL if it==FAIL;it)
-a=autovar; And[Set[{:name=>a, :expr=> Act["[]"]}], Many[{:ary=>[Append[{:name=>a,:expr=>t_}]],:o=>autovar}],Act[a]] },proc{(it=(token("+"));next FAIL if it==FAIL;it)
-a=autovar; And[Set[{:name=>a, :expr=> Act["[]"]}], Append[{:name=>a,:expr=>t_}], Many[{:ary=>[Append[{:name=>a,:expr=>t_}]],:o=>autovar}],Act[a]] },proc{(it=(token("?"));next FAIL if it==FAIL;it)
+_Many(t_) },proc{(it=(token("+"));next FAIL if it==FAIL;it)
+_Many1(t_) },proc{(it=(token("?"));next FAIL if it==FAIL;it)
 Or[t_,Apply["empty"]] },proc{(it=(empty());next FAIL if it==FAIL;it)
 t_ }));return FAIL if it==FAIL;it))
 _result_  
