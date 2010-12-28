@@ -217,6 +217,17 @@ def autovar
 	Autovar.new
 end
 
+def _Enter(to ,from=Apply["anything"],enter=true)
+#  And[_Set("it",from), Enter[{:to=>to,:enter=>enter,:var=>Variable["it"]}]]
+Enter[to]
+end
+def _Pass(from,to)
+#  _Enter(to,from,false)
+	enter=false
+	And[_Set("it",from), Pass[{:to=>to,:enter=>enter,:var=>Variable["it"]}]]
+end
+
+
 def _Set(name,expr,append=false)
   Set[{:name=>name,:expr=>expr,:append=>append}]
 end
@@ -233,6 +244,7 @@ end
 def _Many1(expr)
   _Many(expr,true)
 end
+
 def _Act(expr,pred=false)
   Act[{:ary=>[expr],:pred=>pred}]
 end
@@ -336,7 +348,7 @@ m_ = ((it=(modifier());next FAIL if it==FAIL;it))
 Lookahead[m_] },proc{from_ = ((it=(modifier());next FAIL if it==FAIL;it))
 (it=(token("=>"));next FAIL if it==FAIL;it)
 to_ = ((it=(modifier());next FAIL if it==FAIL;it))
-And[Set[{:name=>"it",:expr=>from_}] ,Pass[{:to=>to_, :var=>Variable["it"]}]] },proc{(it=(modifier());next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it))
+_Pass(from_,to_) },proc{(it=(modifier());next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it))
 _result_  
 end
 def modifier()
@@ -406,7 +418,7 @@ _result_ = ((it=(_or(proc{cls_ = ((it=(_or(proc{(it=(className());next FAIL if i
 (it=(seq("["));next FAIL if it==FAIL;it)
 expr_ = ((it=(expression());next FAIL if it==FAIL;it))
 (it=(token("]"));next FAIL if it==FAIL;it)
-And[Apply["clas",cls_], Enter[expr_]] },proc{cls_ = ((it=(className());next FAIL if it==FAIL;it))
+And[Apply["clas",cls_], _Enter(expr_)] },proc{cls_ = ((it=(className());next FAIL if it==FAIL;it))
 Apply["is_a",cls_] },proc{(it=(token("nested"));next FAIL if it==FAIL;it)
 (it=(seq("("));next FAIL if it==FAIL;it)
 expr_ = ((it=(expression());next FAIL if it==FAIL;it))

@@ -46,6 +46,17 @@ def autovar
 	Autovar.new
 end
 
+def _Enter(to ,from=Apply["anything"],enter=true)
+#  And[_Set("it",from), Enter[{:to=>to,:enter=>enter,:var=>Variable["it"]}]]
+Enter[to]
+end
+def _Pass(from,to)
+#  _Enter(to,from,false)
+	enter=false
+	And[_Set("it",from), Pass[{:to=>to,:enter=>enter,:var=>Variable["it"]}]]
+end
+
+
 def _Set(name,expr,append=false)
   Set[{:name=>name,:expr=>expr,:append=>append}]
 end
@@ -62,6 +73,7 @@ end
 def _Many1(expr)
   _Many(expr,true)
 end
+
 def _Act(expr,pred=false)
   Act[{:ary=>[expr],:pred=>pred}]
 end
@@ -87,7 +99,7 @@ amethyst AmethystParser < Amethyst{
   prefixed   = "~" modifier:m -> Not[m]
              | "&" inlineHostExpr:expr  -> _Pred(expr)
              | "&" ~inlineHostExpr:expr  modifier:m -> Lookahead[m]
-             | modifier:from "=>" modifier:to ->And[Set[{:name=>"it",:expr=>from}] ,Pass[{:to=>to, :var=>Variable["it"]}]]
+             | modifier:from "=>" modifier:to ->_Pass(from,to)
 						 | modifier
 
  		modifier = term:t optIter(t):t  (~space binding(t):t)* -> t
@@ -103,7 +115,7 @@ amethyst AmethystParser < Amethyst{
                | ":" inlineHostExpr:e -> And[ _Set("it",exp) , _Act(e) ]
 
 
-	term  = (className | "" {"Object"}):cls '[' expression:expr "]" -> And[Apply["clas",cls], Enter[expr]]
+	term  = (className | "" {"Object"}):cls '[' expression:expr "]" -> And[Apply["clas",cls], _Enter(expr)]
 				| className:cls -> Apply["is_a",cls]
 				| "nested" '(' expression:expr ")" -> Nested[expr]
 		 	  | application
@@ -154,9 +166,7 @@ amethyst AmethystParser < Amethyst{
 	__args(o,c) = seq(o) "" rubyarg*:r seq(c) -> r
 		
 	rubyarg  = '`' expression:e '`' -> Exp[e]
-           | _args('(',')')
-					 | _args('[',']')
-					 | _args('{','}')
+           | _args('(',')')					 | _args('[',']')					 | _args('{','}')
 					 | '"' (~'"'   eChar)*:s '"'  -> Strin[['"']+ s+['"']]
 					 | '\''(~'\''  eChar)*:s '\'' -> Strin[['\'']+s+['\'']]
 					 | ('@@' {"@"}:n[] | <.:>:n[] | empty) <a-zA-Z_>+:n[] -> n*""
