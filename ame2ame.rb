@@ -11,6 +11,7 @@ require 'amethyst'
 def a2ruby(s)
 	p=AmethystParser.new
 	o=AmethystOptimizer2.new
+	c=Communize_Or.new
 	t=AmethystTranslator.new
 	i=Inliner.new
 	d=Detect_Variables.new
@@ -30,6 +31,7 @@ def a2ruby(s)
 #pp inl
 time("inlining")
 	inl=opt if inl==FAIL
+#	opt=c.parse(:itrans,inl)
 	opt=o.parse(:itrans,inl)
 time("andor")
 	ruby=t.parse(:itrans,opt)
@@ -37,7 +39,7 @@ time("ruby")
 	ruby
 end
 o=File.open("bootstrap.rb","w")
-["amethyst.ame","parser.ame","optimizer_null.ame","optimizer_and_or.ame","detect_variables.ame","analyze_variables.ame","inliner.ame","translator.ame"].each{|file|
+["amethyst.ame","parser.ame","optimizer_null.ame","optimizer_and_or.ame","detect_variables.ame","analyze_variables.ame","dead_code_elimination.ame","inliner.ame","translator.ame"].each{|file|
 o.puts a2ruby(File.new("amethyst/#{file}").read)
 }
 o.close

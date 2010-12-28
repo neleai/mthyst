@@ -52,7 +52,7 @@ amethyst AmethystParser < Amethyst{
 	grammar = "amethyst" name:name ("<" name:parent |empty {parent="Amethyst"} ) 
 "{" rule*:rules "}"  @Grammar
 	
-	rule = name:name ruleargs:args "=" expression:body {$av=0} @Rule
+	rule = name:name ruleargs:args "=" expression:body  {And[Set[{:name=>"_result",:expr=>body}] ,Act["_result"]]}:body  @Rule
 
 	expression = choice
 	
