@@ -15,7 +15,7 @@ amethyst AmethystTranslator < Amethyst {
 				| Foreign[@klas:klas @rule=>rule @args=>args:argss] failwrap("_foreign(#{klas}).#{rule}(#{argss})")
 				| Set[@name=>arg:name @expr=>trans:expr @append:append] -> append ? "it=(#{expr})\n #{name}||=[];_append(#{name},it)" : "#{name} = (#{expr})"
 				| Resul[@name:name @args=>args:argss @vars:vars] -> "#{name}[#{argss} {#{vars.map{|l| ":#{l[0]}=>#{l[0]}_#{l.number}" }*","} }]"
-				| Key[@name:name] -> "_key(:#{name})"
+				| Key[@name:name] -> " _key(:#{name})"
 				| Pass[@to=>trans:to @var=>arg:var] failwrap("_pass(#{var}){#{to}}")
 
 	transfn = trans:t -> "proc{#{t}}" 
