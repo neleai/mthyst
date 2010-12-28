@@ -12,8 +12,7 @@ amethyst AmethystOptimizer < Amethyst {
 				| Many[trans:ary[] @o:o] @Many
 				| Apply[ :ary[] args:ary[]] @Apply
         | Set[@name=>arg:name @expr=>trans:expr @append:append] @Set
-				| Pred[ args:ary ]  @Pred
-				| Act[  args:ary ] @Act
+				| Act[  args:ary @pred:pred] @Act
 				| Resul[@name:name @args=>args:args @vars=>args:vars] @Resul
 				| Foreign[@klas:klas @rule=>rule @args=>args:args] @Foreign
 				| Args[ arg*:ary ] @Args

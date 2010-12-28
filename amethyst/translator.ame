@@ -7,8 +7,7 @@ amethyst AmethystTranslator < Amethyst {
 				| Or[rw('next', `transfn*:ors`)]  failwrap("_or(#{ors*","})")
 				| And[trans*:t ] -> "#{t*"\n"} "
 				| Not[rw('next',`trans:t`) ]  failwrap("_not{#{t}}")
-				| Pred[args:t ]  failwrap("(#{t})||FAIL")
-				| Act[args:t ] -> t
+				| Act[args:t @pred:pred] -> pred ?  failwrap("(#{t})||FAIL") : t
   			| Lookahead[rw('next',`trans:t`) ]  failwrap("_lookahead{#{t}}")
         | Comment[:c] -> ""
 				| Many[rw('break', `trans:t` ) @o=>arg:o] -> "while true\n#{o}=@input;r=#{t}\n break FAIL if r==FAIL\nend;@input=#{o}"

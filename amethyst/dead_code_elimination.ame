@@ -1,7 +1,6 @@
 amethyst Dead_Code_Detector < AmethystOptimizer {
 
 	trans = Rule[  ]
-				|	Pred[]
 				| Act[]
 				| Set[]
 				| Append[]

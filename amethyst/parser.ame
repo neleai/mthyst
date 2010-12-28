@@ -12,8 +12,7 @@ makeclasses(Object,
     [:Many,:o],
     :Many1,
     :Comment,
-    [:Act,:uses],
-    [:Pred,:uses],
+    [:Act,:uses,:pred],
     :Lookahead,
     :Not,
     :Seq,
@@ -75,8 +74,7 @@ def _Act(expr,pred=false)
   Act[{:ary=>[expr],:pred=>pred}]
 end
 def _Pred(expr)
-  #_Act(expr,true)
-	Pred[expr]
+  _Act(expr,true)
 end
 
 amethyst AmethystParser < Amethyst{
