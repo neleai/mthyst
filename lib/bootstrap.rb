@@ -289,7 +289,7 @@ _result_ = (name_ = ((it=(name());return FAIL if it==FAIL;it))
 args_ = ((it=(ruleargs());return FAIL if it==FAIL;it))
 (it=(token("="));return FAIL if it==FAIL;it)
 body_ = ((it=(expression());return FAIL if it==FAIL;it))
-body_ = (And[Set[{:name=>"_result",:expr=>body_}] ,Act["_result"]])
+body_ = (And[_Set("_result",body_) ,_Act("_result")])
 Rule[ {:_result=>_result_,:name=>name_,:args=>args_,:body=>body_ }] )
 _result_  
 end
@@ -330,7 +330,7 @@ _result_ = ((it=(_or(proc{(it=(token("~"));next FAIL if it==FAIL;it)
 m_ = ((it=(modifier());next FAIL if it==FAIL;it))
 Not[m_] },proc{(it=(token("&"));next FAIL if it==FAIL;it)
 expr_ = ((it=(inlineHostExpr());next FAIL if it==FAIL;it))
-Pred[expr_] },proc{(it=(token("&"));next FAIL if it==FAIL;it)
+_Pred(expr_) },proc{(it=(token("&"));next FAIL if it==FAIL;it)
 (it=(_not{expr_ = ((it=(inlineHostExpr());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
 m_ = ((it=(modifier());next FAIL if it==FAIL;it))
 Lookahead[m_] },proc{from_ = ((it=(modifier());next FAIL if it==FAIL;it))
@@ -388,7 +388,7 @@ name_ = ((it=(name());next FAIL if it==FAIL;it))
 Append[ {:_result=>_result_,:expr=>expr_,:name=>name_ }] },proc{(it=(empty());next FAIL if it==FAIL;it)
 Set[ {:_result=>_result_,:expr=>expr_,:name=>name_ }] }));next FAIL if it==FAIL;it) },proc{(it=(token(":"));next FAIL if it==FAIL;it)
 e_ = ((it=(inlineHostExpr());next FAIL if it==FAIL;it))
-And[Set[{:name=>"it", :expr=>exp_}] , Act[e_] ] }));return FAIL if it==FAIL;it))
+And[_Set("it",exp_) , _Act(e_) ] }));return FAIL if it==FAIL;it))
 _result_  
 end
 def term()
@@ -414,7 +414,7 @@ expr_ = ((it=(expression());next FAIL if it==FAIL;it))
 Nested[expr_] },proc{(it=(application());next FAIL if it==FAIL;it)},proc{(it=(key());next FAIL if it==FAIL;it)},proc{x_ = ((it=(_or(proc{(it=(token("->"));next FAIL if it==FAIL;it)
 (it=(atomicHostExpr());next FAIL if it==FAIL;it) },proc{(it=(token(""));next FAIL if it==FAIL;it)
 (it=(inlineHostExpr());next FAIL if it==FAIL;it) }));next FAIL if it==FAIL;it))
-Act[x_] },proc{(it=(token("\""));next FAIL if it==FAIL;it)
+_Act(x_) },proc{(it=(token("\""));next FAIL if it==FAIL;it)
 s_ = (avar3 = ([])
 while true
 avar4=@input;r=it=((it=(_not{(it=(seq("\""));next FAIL if it==FAIL;it)});break FAIL if it==FAIL;it)
@@ -485,7 +485,7 @@ _result_
 end
 def collect(ors_)
  _result_ = (nil)
-_result_ = (a=autovar; And[Or[{:ary=>ors_.ary.map{|ands| And[{:ary=>ands.ary.map{|expr| Append[{:name=>a,:expr=>expr}]}}]}}],Act[a]])
+_result_ = (a=autovar; And[Or[{:ary=>ors_.ary.map{|ands| And[{:ary=>ands.ary.map{|expr| _Append(a,expr)}}]}}],_Act(a)])
 _result_  
 end
 def eChar()

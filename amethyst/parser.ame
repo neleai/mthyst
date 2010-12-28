@@ -76,7 +76,7 @@ amethyst AmethystParser < Amethyst{
 	grammar = "amethyst" name:name ("<" name:parent |empty {parent="Amethyst"} ) 
 "{" rule*:rules "}"  @Grammar
 	
-	rule = name:name ruleargs:args "=" expression:body  {And[Set[{:name=>"_result",:expr=>body}] ,Act["_result"]]}:body  @Rule
+  rule = name:name ruleargs:args "=" expression:body  {And[_Set("_result",body) ,_Act("_result")]}:body  @Rule
 
 	expression = choice
 	
@@ -85,7 +85,7 @@ amethyst AmethystParser < Amethyst{
 	sequence =  (nr prefixed)*:ary  @And
 
   prefixed   = "~" modifier:m -> Not[m]
-             | "&" inlineHostExpr:expr  -> Pred[expr]
+             | "&" inlineHostExpr:expr  -> _Pred(expr)
              | "&" ~inlineHostExpr:expr  modifier:m -> Lookahead[m]
              | modifier:from "=>" modifier:to ->And[Set[{:name=>"it",:expr=>from}] ,Pass[{:to=>to, :var=>Variable["it"]}]]
 						 | modifier
@@ -100,7 +100,7 @@ amethyst AmethystParser < Amethyst{
               | empty -> t
   
 	binding(exp) = {exp}:expr ":" name:name ('[]' @Append | empty @Set )
-                 | ":" inlineHostExpr:e -> And[ Set[{:name=>"it", :expr=>exp}] , Act[e] ]
+               | ":" inlineHostExpr:e -> And[ _Set("it",exp) , _Act(e) ]
 
 
 	term  = (className | "" {"Object"}):cls '[' expression:expr "]" -> And[Apply["clas",cls], Enter[expr]]
@@ -108,7 +108,7 @@ amethyst AmethystParser < Amethyst{
 				| "nested" '(' expression:expr ")" -> Nested[expr]
 		 	  | application
  			  | key
-			  | ("->" atomicHostExpr | "" inlineHostExpr):x    ->  Act[x]
+			  | ("->" atomicHostExpr | "" inlineHostExpr):x    ->  _Act(x)
 				| "\"" (~'"' eChar)*:s '"' -> Apply["token" ,quote(s)]
 		 	  | "'"  (~'\''  eChar)*:s '\''  -> Apply["seq",quote(s)]
  			  | number:{Apply["exactly",it]}
@@ -122,7 +122,7 @@ amethyst AmethystParser < Amethyst{
 	key         = "@" className:name  argsOpt('[',']'):args  @Resul
               | "@" name:name   @Key
 
-	collect(ors) = -> a=autovar; And[Or[{:ary=>ors.ary.map{|ands| And[{:ary=>ands.ary.map{|expr| Append[{:name=>a,:expr=>expr}]}}]}}],Act[a]]
+  collect(ors) = -> a=autovar; And[Or[{:ary=>ors.ary.map{|ands| And[{:ary=>ands.ary.map{|expr| _Append(a,expr)}}]}}],_Act(a)]
 
 	eChar = '\\' char:c   -> "\\#{c}"
   	  	| _args('#{','}')
