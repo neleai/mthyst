@@ -23,8 +23,8 @@ def a2ruby(s)
 #pp inl
 
 par= Move_Assignments.new.parse(:itrans,par)
-#par=Dead_Code_Detector.new.parse(:itrans,par)
-#par=Dead_Code_Deleter.new.parse(:itrans,par)
+par=Dead_Code_Detector.new.parse(:itrans,par)
+par=Dead_Code_Deleter.new.parse(:itrans,par)
 
 #	opt=c.parse(:itrans,inl)
 	par=o.parse(:itrans,par)

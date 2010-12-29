@@ -13,6 +13,7 @@ amethyst Dead_Code_Detector < AmethystOptimizer {
 				vars_in = {ary=[]} 
 								( Variable[ @this:ary[] .*]
 								| Act[ @this:ary[] .*]
+								| Exp[ trans ]
 								| Resul[ @this:ary[] ]
 								| Strin[ vars_in:ary[] ]
 								| Args[ vars_in:ary[] ]
