@@ -4,7 +4,7 @@ amethyst AmethystTranslator < Amethyst {
 	
 	trans = Grammar[rw('return',`@name:name @parent:parent @rules=>transs:body`)] -> "class #{name} < #{parent}\n#{body}\nend\n"
 				| Rule[ { @@varhash=Hash.new{|h,k| h[k]={}}  } 
-								@name:name @locals:locals @args=>args:argss @body=>trans:body] -> "def #{name}(#{argss})\n #{body} \nend\n"
+								@name:name @args=>args:argss @body=>trans:body] -> "def #{name}(#{argss})\n #{body} \nend\n"
 				| Enter[trans:expr] failwrap("_enter{#{expr}}")
 				| Or[rw('next', `transfn*:ors`)]  failwrap("_or(#{ors*","})")
 				| And[trans*:t ] -> "#{t*"\n"} "

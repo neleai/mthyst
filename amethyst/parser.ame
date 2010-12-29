@@ -71,6 +71,9 @@ end
 def _Pred(expr)
   _Act(expr,true)
 end
+def _body(body)
+	And[_Set("_result",body), _Act("_result")]
+end
 
 $varhash=Hash.new{|h,k| h[k]=Variable[{:ary=>[k],:number=>1}]}
 def _Variable(name)
@@ -82,7 +85,7 @@ amethyst AmethystParser < Amethyst{
 	grammar = "amethyst" name:name ("<" name:parent |empty {parent="Amethyst"} ) 
 "{" rule*:rules "}"  @Grammar
 	
-  rule = name:name ruleargs:args "=" expression:body  {And[_Set("_result",body) ,_Act("_result")]}:body  @Rule
+  rule = name:name ruleargs:args "=" expression:body  {_body(body)}:body  @Rule
 
 	expression = choice
 	
@@ -159,7 +162,7 @@ amethyst AmethystParser < Amethyst{
 
 	__args(o,c) = seq(o) "" rubyarg*:r seq(c) -> r
 		
-	rubyarg  = '`' expression:e '`' -> Exp[e]
+	rubyarg  = '`' expression:e '`' -> Exp[_body(e)]
            | _args('(',')')					 | _args('[',']')					 | _args('{','}')
 					 | '"' (~'"'   eChar)*:s '"'  -> Strin[['"']+ s+['"']]
 					 | '\''(~'\''  eChar)*:s '\'' -> Strin[['\'']+s+['\'']]
