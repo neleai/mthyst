@@ -1,6 +1,6 @@
 amethyst Detect_Variables < AmethystOptimizer {
   trans = Rule[{@@argnames=[]}:argnames {@@locals=[]} @name:name  @args=>[addargs]:args  @body=>trans:body {@@locals.uniq}:locals {locals.each{|l| body=And[Set[{:name=>l,:expr=>Act["nil"] }],body] };} ] @Rule
-				| Or[ {l=@@locals;r=[] } ( {@@locals=l.clone} trans:ary[] {r=(r+@@locals).uniq}   )* {@@locals=r} ] @Or
+				| Or[ {@@locals}:l {[]}:r ( {@@locals=l.clone} trans:ary[] {r=(r+@@locals).uniq}   )* {@@locals=r} ] @Or
         | Resul[@name:name @args=>args:args {@@locals.select{|a| a[0]!= "autovar"}.uniq-["it","_result"]}:vars] @Resul
 				| Set[   @name:name {@@locals<<name} @expr=>trans:expr @append:append] @Set
         | super
