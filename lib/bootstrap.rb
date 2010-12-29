@@ -307,7 +307,7 @@ autovar_24=@input;r=it=((it=(rule());break FAIL if it==FAIL;it))
 end;@input=autovar_24
 autovar_23 )
 (it=(token("}"));return FAIL if it==FAIL;it)
-Grammar[ {:name=>name_,:parent=>parent_,:rules=>rules_,:autovar=>autovar_23 }] )
+Grammar[ {:name=>name_,:parent=>parent_,:rules=>rules_ }] )
 _result_  
 end
 def rule()
@@ -347,7 +347,7 @@ autovar_28=@input;r=it=((it=(nr());break FAIL if it==FAIL;it)
  break FAIL if r==FAIL
 end;@input=autovar_28
 autovar_27 )
-And[ {:ary=>ary_,:autovar=>autovar_27 }] )
+And[ {:ary=>ary_ }] )
 _result_  
 end
 def prefixed()
@@ -802,7 +802,7 @@ autovar_12=@input;r=it=((it=(transfn());break FAIL if it==FAIL;it))
  break FAIL if r==FAIL
 end;@input=autovar_12
 autovar_11 )});next FAIL if it==FAIL;it)
-Or[ {:ary=>ary_,:autovar=>autovar_11 }] },proc{(it=(clas(And));next FAIL if it==FAIL;it)
+Or[ {:ary=>ary_ }] },proc{(it=(clas(And));next FAIL if it==FAIL;it)
 (it=(_enter{ary_ = (autovar_19 = ([])
 while true
 autovar_20=@input;r=it=((it=(trans());break FAIL if it==FAIL;it))
@@ -810,7 +810,7 @@ autovar_20=@input;r=it=((it=(trans());break FAIL if it==FAIL;it))
  break FAIL if r==FAIL
 end;@input=autovar_20
 autovar_19 )});next FAIL if it==FAIL;it)
-And[ {:ary=>ary_,:autovar=>autovar_19 }] },proc{(it=(clas(Not));next FAIL if it==FAIL;it)
+And[ {:ary=>ary_ }] },proc{(it=(clas(Not));next FAIL if it==FAIL;it)
 (it=(_enter{it=((it=(trans());next FAIL if it==FAIL;it))
  ary_||=[];_append(ary_,it)});next FAIL if it==FAIL;it)
 Not[ {:ary=>ary_ }] },proc{(it=(clas(Lookahead));next FAIL if it==FAIL;it)
@@ -824,7 +824,7 @@ autovar_28=@input;r=it=((it=(anything());break FAIL if it==FAIL;it))
  break FAIL if r==FAIL
 end;@input=autovar_28
 autovar_27 )});next FAIL if it==FAIL;it)
-Comment[ {:ary=>ary_,:autovar=>autovar_27 }] },proc{(it=(clas(Many));next FAIL if it==FAIL;it)
+Comment[ {:ary=>ary_ }] },proc{(it=(clas(Many));next FAIL if it==FAIL;it)
 (it=(_enter{it=((it=(trans());next FAIL if it==FAIL;it))
  ary_||=[];_append(ary_,it)
 o_ = ( _key(:o)) });next FAIL if it==FAIL;it)
@@ -862,14 +862,16 @@ autovar_36=@input;r=it=((it=(arg());break FAIL if it==FAIL;it))
  break FAIL if r==FAIL
 end;@input=autovar_36
 autovar_35 )});next FAIL if it==FAIL;it)
-Args[ {:ary=>ary_,:autovar=>autovar_35 }] },proc{(it=(clas(Key));next FAIL if it==FAIL;it)
+Args[ {:ary=>ary_ }] },proc{(it=(clas(Key));next FAIL if it==FAIL;it)
 (it=(_enter{name_ = ( _key(:name))});next FAIL if it==FAIL;it)
 Key[ {:name=>name_ }] },proc{(it=(clas(Pass));next FAIL if it==FAIL;it)
 (it=(_enter{it_ = ( _key(:to))
 (it=(_pass(it_){to_ = ((it=(trans());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
 it_ = ( _key(:var))
 (it=(_pass(it_){var_ = ((it=(arg());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it)
-Pass[ {:to=>to_,:var=>var_ }] }));return FAIL if it==FAIL;it))
+Pass[ {:to=>to_,:var=>var_ }] },proc{(it=(clas(Variable));next FAIL if it==FAIL;it)
+(it=(_enter{it_ = ( _key(:this))
+(it=(_pass(it_){(it=(arg());next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it) }));return FAIL if it==FAIL;it))
 _result_  
 end
 def transfn()
@@ -928,7 +930,7 @@ autovar_64=@input;r=it=((it=(arg());break FAIL if it==FAIL;it))
  break FAIL if r==FAIL
 end;@input=autovar_64
 autovar_63 )});next FAIL if it==FAIL;it)
-Args[ {:ary=>ary_,:autovar=>autovar_63 }] },proc{(it=(clas(Strin));next FAIL if it==FAIL;it)
+Args[ {:ary=>ary_ }] },proc{(it=(clas(Strin));next FAIL if it==FAIL;it)
 (it=(_enter{ary_ = (autovar_71 = ([])
 while true
 autovar_72=@input;r=it=((it=(_or(proc{(it=(char());next FAIL if it==FAIL;it)},proc{(it=(arg());next FAIL if it==FAIL;it)}));break FAIL if it==FAIL;it))
@@ -936,7 +938,7 @@ autovar_72=@input;r=it=((it=(_or(proc{(it=(char());next FAIL if it==FAIL;it)},pr
  break FAIL if r==FAIL
 end;@input=autovar_72
 autovar_71 )});next FAIL if it==FAIL;it)
-Strin[ {:ary=>ary_,:autovar=>autovar_71 }] },proc{(it=(clas(Exp));next FAIL if it==FAIL;it)
+Strin[ {:ary=>ary_ }] },proc{(it=(clas(Exp));next FAIL if it==FAIL;it)
 (it=(_enter{it=((it=(transfn());next FAIL if it==FAIL;it))
  ary_||=[];_append(ary_,it)});next FAIL if it==FAIL;it)
 Exp[ {:ary=>ary_ }] },proc{(it=(clas(ExpKey));next FAIL if it==FAIL;it)
@@ -968,7 +970,7 @@ end;@input=autovar_8
 autovar_7 )});next FAIL if it==FAIL;it)
 ary_=ary_.map{|o| (o.is_a?(Or)) ? o.ary : o}.flatten
 (it=(_or(proc{(it=((ary_.size==1)||FAIL);next FAIL if it==FAIL;it)
-ary_[0] },proc{Or[ {:ary=>ary_,:autovar=>autovar_7 }]}));next FAIL if it==FAIL;it) },proc{(it=(clas(And));next FAIL if it==FAIL;it)
+ary_[0] },proc{Or[ {:ary=>ary_ }]}));next FAIL if it==FAIL;it) },proc{(it=(clas(And));next FAIL if it==FAIL;it)
 (it=(_enter{ary_ = (autovar_15 = ([])
 while true
 autovar_16=@input;r=it=((it=(trans());break FAIL if it==FAIL;it))
@@ -978,7 +980,7 @@ end;@input=autovar_16
 autovar_15 )});next FAIL if it==FAIL;it)
 ary_=ary_.map{|a| (a.is_a?(And)) ? a.ary : a}.flatten
 (it=(_or(proc{(it=((ary_.size==1)||FAIL);next FAIL if it==FAIL;it)
-ary_[0] },proc{And[ {:ary=>ary_,:autovar=>autovar_15 }]}));next FAIL if it==FAIL;it) },proc{super}));return FAIL if it==FAIL;it))
+ary_[0] },proc{And[ {:ary=>ary_ }]}));next FAIL if it==FAIL;it) },proc{super}));return FAIL if it==FAIL;it))
 _result_  
 end
 
@@ -1022,11 +1024,11 @@ r=(r+@locals).uniq )
 end;@input=autovar_8
 autovar_7
 @locals=r });next FAIL if it==FAIL;it)
-Or[ {:autovar=>autovar_7,:ary=>ary_ }] },proc{(it=(clas(Resul));next FAIL if it==FAIL;it)
+Or[ {:ary=>ary_ }] },proc{(it=(clas(Resul));next FAIL if it==FAIL;it)
 (it=(_enter{name_ = ( _key(:name))
 it_ = ( _key(:args))
 (it=(_pass(it_){args_ = ((it=(args());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
-vars_ = (@locals.select{|a| !a.is_a? Autovar}.uniq-["it","_result"]) });next FAIL if it==FAIL;it)
+vars_ = (@locals.select{|a| a[0]!= "autovar"}.uniq-["it","_result"]) });next FAIL if it==FAIL;it)
 Resul[ {:name=>name_,:args=>args_,:vars=>vars_ }] },proc{(it=(clas(Set));next FAIL if it==FAIL;it)
 (it=(_enter{name_ = ( _key(:name))
 @locals<<name_
@@ -1221,6 +1223,23 @@ autovar_123 });next FAIL if it==FAIL;it)
 And[first_ ,Or[{:ary=>ary_}] ] },proc{(it=(super());next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it))
 _result_  
 end
+def arg()
+ autovar_139 = (nil)
+var_ = (nil)
+_result_ = (nil)
+_result_ = ((it=(_or(proc{(it=(clas(Args));next FAIL if it==FAIL;it)
+(it=(_enter{(it=(clas(Variable));next FAIL if it==FAIL;it)
+(it=(_enter{var_ = ( _key(:this))
+autovar_139 = ([])
+while true
+autovar_140=@input;r=it=((it=(_dot_());break FAIL if it==FAIL;it))
+ autovar_139||=[];_append(autovar_139,it)
+ break FAIL if r==FAIL
+end;@input=autovar_140
+autovar_139 });next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it)
+var_ },proc{(it=(super());next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it))
+_result_  
+end
 
 end
 
@@ -1245,30 +1264,30 @@ to_ = (nil)
 var_ = (nil)
 it_ = (nil)
 el_ = (nil)
-autovar_139 = (nil)
-autovar_131 = (nil)
+autovar_155 = (nil)
+autovar_147 = (nil)
 ary_ = (nil)
 _result_ = (nil)
 _result_ = ((it=(_or(proc{(it=(clas(Or));next FAIL if it==FAIL;it)
-(it=(_enter{ary_ = (autovar_131 = ([])
+(it=(_enter{ary_ = (autovar_147 = ([])
 while true
-autovar_132=@input;r=it=((it=(move(append_,name_));break FAIL if it==FAIL;it))
- autovar_131||=[];_append(autovar_131,it)
+autovar_148=@input;r=it=((it=(move(append_,name_));break FAIL if it==FAIL;it))
+ autovar_147||=[];_append(autovar_147,it)
  break FAIL if r==FAIL
-end;@input=autovar_132
-autovar_131 )});next FAIL if it==FAIL;it)
-Or[ {:ary=>ary_,:autovar=>autovar_131 }] },proc{(it=(clas(And));next FAIL if it==FAIL;it)
-(it=(_enter{ary_ = (autovar_139 = ([])
+end;@input=autovar_148
+autovar_147 )});next FAIL if it==FAIL;it)
+Or[ {:ary=>ary_ }] },proc{(it=(clas(And));next FAIL if it==FAIL;it)
+(it=(_enter{ary_ = (autovar_155 = ([])
 while true
-autovar_140=@input;r=it=(el_ = ((it=(anything());break FAIL if it==FAIL;it))
+autovar_156=@input;r=it=(el_ = ((it=(anything());break FAIL if it==FAIL;it))
 (it=(_or(proc{(it=(_lookahead{(it=(eof());next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it)
 it_ = (el_)
 (it=(_pass(it_){(it=(move(append_,name_));next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it) },proc{el_}));break FAIL if it==FAIL;it) )
- autovar_139||=[];_append(autovar_139,it)
+ autovar_155||=[];_append(autovar_155,it)
  break FAIL if r==FAIL
-end;@input=autovar_140
-autovar_139 )});next FAIL if it==FAIL;it)
-And[ {:ary=>ary_,:autovar=>autovar_139,:el=>el_ }] },proc{(it=(clas(Enter));next FAIL if it==FAIL;it)
+end;@input=autovar_156
+autovar_155 )});next FAIL if it==FAIL;it)
+And[ {:ary=>ary_,:el=>el_ }] },proc{(it=(clas(Enter));next FAIL if it==FAIL;it)
 (it=(_enter{var_ = ( _key(:var))
 it_ = ( _key(:to))
 (it=(_pass(it_){to_ = ((it=(move(append_,name_));next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
@@ -1475,7 +1494,9 @@ vars_ = ( _key(:vars)) });next FAIL if it==FAIL;it)
 (it=(_pass(it_){to_ = ((it=(trans());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
 it_ = ( _key(:var))
 (it=(_pass(it_){var_ = ((it=(arg());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it)
-(it=(failwrap("_pass(#{var_}){#{to_}}"));next FAIL if it==FAIL;it) }));return FAIL if it==FAIL;it))
+(it=(failwrap("_pass(#{var_}){#{to_}}"));next FAIL if it==FAIL;it) },proc{(it=(clas(Variable));next FAIL if it==FAIL;it)
+(it=(_enter{it_ = ( _key(:this))
+(it=(_pass(it_){(it=(arg());next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it) }));return FAIL if it==FAIL;it))
 _result_  
 end
 def transfn()

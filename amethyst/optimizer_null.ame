@@ -18,6 +18,7 @@ amethyst AmethystOptimizer < Amethyst {
 				| Args[ arg*:ary ] @Args
 				| Key[@name:name] @Key
 				| Pass[ @to=>trans:to @var=>arg:var] @Pass
+				| Variable[@this=>arg] 
 
 	transfn = trans 
 	

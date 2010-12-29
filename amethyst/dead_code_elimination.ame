@@ -27,6 +27,9 @@ amethyst Dead_Code_Detector < AmethystOptimizer {
 amethyst Communize_Or < AmethystOptimizer {
 	trans = Or[ &(And[ trans:first  .*] ) And[ trans:fst &{first.isomorphic(fst)} trans*:rest {And[{:ary=>rest}]}:ary[]  ]* ] -> And[first ,Or[{:ary=>ary}] ]
 	| super
+	 
+	arg = Args[Variable[@this:var .*]] -> var
+			| super
 }
 
 amethyst Move_Assignments < AmethystOptimizer {
