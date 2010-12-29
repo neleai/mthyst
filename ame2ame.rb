@@ -1,5 +1,5 @@
 $:.unshift 'lib'
-
+require 'graph'
 require 'pp'
 require 'amethyst'
 def a2ruby(s)
@@ -8,24 +8,27 @@ def a2ruby(s)
 	c=Communize_Or.new
 	t=AmethystTranslator.new
 	i=Inliner.new
-	d=Detect_Variables.new
-	a=Analyze_Variables.new
 	par=p.parse(:igrammar,s)
 #	par=o.parse(:itrans,par)
-	inl=par
 #	inl=i.parse(:inlineit,["spaces",inl])
 #	inl=i.parse(:inlineit,["space",inl])
 #	inl=i.parse(:inlineit,["char",inl])
 #	inl=i.parse(:inlineit,["regch",inl])
 #pp par
-	inl=d.parse(:itrans,inl)
 #pp inl
-	inl=a.parse(:itrans,inl)
+	d=Detect_Variables.new
+	a=Analyze_Variables.new
+	par=d.parse(:itrans,par)
+	par=a.parse(:itrans,par)
 #pp inl
-	inl=opt if inl==FAIL
+
+#par= Move_Assignments.new.parse(:itrans,par)
+#par=Dead_Code_Detector.new.parse(:itrans,par)
+#par=Dead_Code_Deleter.new.parse(:itrans,par)
+
 #	opt=c.parse(:itrans,inl)
-	opt=o.parse(:itrans,inl)
-	ruby=t.parse(:itrans,opt)
+	par=o.parse(:itrans,par)
+	ruby=t.parse(:itrans,par)
 	ruby
 end
 o=File.open("bootstrap.rb","w")

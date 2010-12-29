@@ -40,6 +40,7 @@ amethyst Move_Assignments < AmethystOptimizer {
 
 	move(append,name) = Or[ move(append,name)*:ary ] @Or
 								| And[ (:el (&eof {el}=>move(append,name) | {el}) )*:ary ] @And
-								| Enter[@var:var @to=>move(append,name):to @enter:enter] @Enter
+								| Enter[ move(append,name):ary[] ] @Enter
+								| Pass[@var:var @to=>move(append,name):to @enter:enter] @Pass
 								| anything:{_Set(name,it,append)}
 }
