@@ -1140,7 +1140,7 @@ var_1 = ((it=(vars_in());next FAIL if it==FAIL;it)) });next FAIL if it==FAIL;it)
 (it=(_enter{this_1 = ( _key(:this))
 @marked<<this_1 if _key(:pred)
 var_1 = ((it=(vars_in());next FAIL if it==FAIL;it)) });next FAIL if it==FAIL;it)
-var_1.each{|v_1| @edges.add(v_1,this_1); @edges.add(this_1,v_1)} },proc{(it=(clas(Set));next FAIL if it==FAIL;it)
+var_1.each{|v_1| @edges.add(v_1,this_1); @edges.add(this_1,v_1); @marked<<this_1 if v_1.is_a? Local} },proc{(it=(clas(Set));next FAIL if it==FAIL;it)
 (it=(_enter{v_1 = ( _key(:name))
 autovar_3 = ( _key(:expr))
 (it=(_pass(autovar_3){(it=(trans());next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it)
@@ -1155,7 +1155,8 @@ var_1.each{|w| @edges.add(v_1,w) } },proc{(it=(super());next FAIL if it==FAIL;it
 _result_1  
 end
 def vars_in()
- autovar_1 = (nil)
+ name_1 = (nil)
+autovar_1 = (nil)
 autovar_2 = (nil)
 autovar_3 = (nil)
 ary_1 = (nil)
@@ -1191,7 +1192,10 @@ autovar_2 });next FAIL if it==FAIL;it) },proc{(it=(clas(Resul));next FAIL if it=
  ary_1||=[];_append(ary_1,it)});next FAIL if it==FAIL;it) },proc{(it=(clas(Set));next FAIL if it==FAIL;it)
 (it=(_enter{autovar_1 = ( _key(:name))
 (it=(_pass(autovar_1){it=((it=(vars_in());next FAIL if it==FAIL;it))
- ary_1||=[];_append(ary_1,it)});next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it) },proc{(it=(anything());next FAIL if it==FAIL;it)}));break FAIL if it==FAIL;it))
+ ary_1||=[];_append(ary_1,it)});next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it) },proc{(it=(clas(Local));next FAIL if it==FAIL;it)
+(it=(_enter{name_1 = ((it=(anything());next FAIL if it==FAIL;it))
+it=( _key(:this))
+ ary_1||=[];_append(ary_1,it) });next FAIL if it==FAIL;it) },proc{(it=(anything());next FAIL if it==FAIL;it)}));break FAIL if it==FAIL;it))
  autovar_4||=[];_append(autovar_4,it)
  break FAIL if r==FAIL
 end;@input=autovar_7
