@@ -1,22 +1,24 @@
 class Oriented_Graph
 	def add(v,w)
-		puts ("#{v} #{w}")
+		puts ("#{v.inspect} #{w.inspect}")
 	end
 end
 
 amethyst Dead_Code_Detector < AmethystOptimizer {
 
-	trans = Rule[@name:name {@@edges=Oriented_Graph.new ; @@marked=[Variable["result"]]}  @args=>args:args @body=>trans:body @locals:locals {puts @@marked.inspect}] @Rule
+	trans = Rule[@name:name {@@edges=Oriented_Graph.new ; @@marked=[Variable["_result"]]}  @args=>args:args @body=>trans:body @locals:locals {puts @@marked.inspect}] @Rule
 				| Apply[:name vars_in:var ] -> @@marked +=var
-				| Act[ @pred=>_false vars_in:var] -> var.each{|v| var.each{|w| @@edges.add(v,w)}}
-				|	Act[ @pred=>_true  vars_in:var] -> @@marked+=var
+				| Act[ @this:this {@@marked<<this if @pred} 
+							 vars_in:var ] -> var.each{|v| @@edges.add(v,this); @@edges.add(this,v)}
 				| Set[@name:v   @expr=>trans @expr=>vars_in:var  ] -> var.each{|w| @@edges.add(v,w)}
+				| Resul[@vars=>vars_in:var @this:v] -> var.each{|w| @@edges.add(v,w) }
 				| super 
 				
 				vars_in = {ary=[];puts @@input.item.inspect} 
-								(Variable[ @this:ary[] .*]
+								( Variable[ @this:ary[] .*]
+								| Act[ @this:ary[] .*]
+								| Resul[ @this:ary[] ]
 								| Args[ vars_in:ary[] ]
-								| Act[ vars_in:ary[] ]
 								| Set[ @name=>vars_in:ary[] ]
 								| anything
 								)* -> ary
@@ -28,7 +30,7 @@ amethyst Communize_Or < AmethystOptimizer {
 }
 
 amethyst Move_Assignments < AmethystOptimizer {
-	trans = Set[{puts @@input.src.inspect} @name:name @expr=>trans:expr {expr}=>move(@append,name) ]
+	trans = Set[@name:name @expr=>trans:expr {expr}=>move(@append,name) ]
 				| super
 
 	move(append,name) = Or[ move(append,name)*:ary ] @Or

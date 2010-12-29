@@ -41,7 +41,8 @@ class Autovar
 	end
 end
 def autovar
-	Autovar.new
+	$av+=1
+	Variable[{:ary=>["autovar"],:number=>$av}]
 end
 
 def _Enter(to ,from=Apply["anything"],enter=true)
