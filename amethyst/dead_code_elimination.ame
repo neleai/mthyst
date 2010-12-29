@@ -1,12 +1,6 @@
-class Oriented_Graph
-	def add(v,w)
-		puts ("#{v.inspect} #{w.inspect}")
-	end
-end
-
 amethyst Dead_Code_Detector < AmethystOptimizer {
 
-	trans = Rule[@name:name {@@edges=Oriented_Graph.new ; @@marked=[_Variable("_result")]}  @args=>args:args @body=>trans @body:body @locals:locals {puts @@marked.inspect}] @Rule
+	trans = Rule[@name:name {@@edges=Oriented_Graph.new ; @@marked=[_Variable("_result")]}  @args=>args:args @body=>trans @body:body @locals:locals {@@edges.reachable(@@marked)}:reachable] @Rule
 				| Apply[:name vars_in:var ] -> @@marked +=var
 				| Act[ @this:this {@@marked<<this if @pred} 
 							 vars_in:var ] -> var.each{|v| @@edges.add(v,this); @@edges.add(this,v)}
@@ -14,7 +8,7 @@ amethyst Dead_Code_Detector < AmethystOptimizer {
 				| Resul[@vars=>vars_in:var @this:v] -> var.each{|w| @@edges.add(v,w) }
 				| super 
 				
-				vars_in = {ary=[];puts @@input.item.inspect} 
+				vars_in = {ary=[]} 
 								( Variable[ @this:ary[] .*]
 								| Act[ @this:ary[] .*]
 								| Resul[ @this:ary[] ]
@@ -22,6 +16,14 @@ amethyst Dead_Code_Detector < AmethystOptimizer {
 								| Set[ @name=>vars_in:ary[] ]
 								| anything
 								)* -> ary
+}
+
+amethyst Dead_Code_Deleter < AmethystOptimizer{
+		trans = Rule[ @name:name  @reachable:{@@reachable=it;puts @@reachable} @args=>args:args @body=>trans:body  @locals:locals ] @Rule
+					| Act[@this:this .*] -> @@reachable[this] ? this : Act[]
+					| Set[@name:name @expr=>trans:expr @append:append] -> @@reachable[name] ? _Set(name,expr,append) : expr
+					| Resul[@this:this] ->@@reachable[this] ? this : Act[]
+					| super
 }
 
 amethyst Communize_Or < AmethystOptimizer {

@@ -1092,12 +1092,6 @@ end
 
 end
 
-class Oriented_Graph
-	def add(v,w)
-		puts ("#{v.inspect} #{w.inspect}")
-	end
-end
-
 class Dead_Code_Detector < AmethystOptimizer
 def trans()
  autovar_1 = (nil)
@@ -1122,7 +1116,7 @@ autovar_4 = ( _key(:body))
 (it=(_pass(autovar_4){(it=(trans());next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it)
 body_1 = ( _key(:body))
 locals_1 = ( _key(:locals))
-puts @marked.inspect });next FAIL if it==FAIL;it)
+puts @edges.reachable(@marked).inspect });next FAIL if it==FAIL;it)
 Rule[ {:name=>name_1,:args=>args_1,:body=>body_1,:locals=>locals_1 }] },proc{(it=(clas(Apply));next FAIL if it==FAIL;it)
 (it=(_enter{name_1 = ((it=(anything());next FAIL if it==FAIL;it))
 var_1 = ((it=(vars_in());next FAIL if it==FAIL;it)) });next FAIL if it==FAIL;it)
