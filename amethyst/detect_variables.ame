@@ -5,13 +5,13 @@ amethyst Detect_Variables < AmethystOptimizer {
 				| Set[   @name:name {@@locals<<name} @expr=>trans:expr @append:append] @Set
         | super
 
-	addargs= Args[ :name {@@argnames<<name;Variable[name] }:result[] ]* -> result
+	addargs= Args[ :name {@@argnames<<name;_Variable(name) }:result[] ]* -> result
 }
 
 amethyst Analyze_Variables < AmethystOptimizer {
   trans = Rule[@name:name @locals:locals {@@variables={} ;(locals+@argnames).each{|v| @@variables[v]=true}}  @args:args  @body=>trans:body] @Rule
         | super
 
-	arg = char:name &{@@variables[name]}  -> Variable[name]
+	arg = char:name &{@@variables[name]}  -> _Variable(name)
 			| super
 }

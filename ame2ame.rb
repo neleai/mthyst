@@ -11,7 +11,7 @@ def a2ruby(s)
 	d=Detect_Variables.new
 	a=Analyze_Variables.new
 	par=p.parse(:igrammar,s)
-#	opt=o.parse(:itrans,par)
+#	par=o.parse(:itrans,par)
 	inl=par
 #	inl=i.parse(:inlineit,["spaces",inl])
 #	inl=i.parse(:inlineit,["space",inl])

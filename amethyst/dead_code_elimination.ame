@@ -6,7 +6,7 @@ end
 
 amethyst Dead_Code_Detector < AmethystOptimizer {
 
-	trans = Rule[@name:name {@@edges=Oriented_Graph.new ; @@marked=[Variable["_result"]]}  @args=>args:args @body=>trans:body @locals:locals {puts @@marked.inspect}] @Rule
+	trans = Rule[@name:name {@@edges=Oriented_Graph.new ; @@marked=[_Variable("_result")]}  @args=>args:args @body=>trans @body:body @locals:locals {puts @@marked.inspect}] @Rule
 				| Apply[:name vars_in:var ] -> @@marked +=var
 				| Act[ @this:this {@@marked<<this if @pred} 
 							 vars_in:var ] -> var.each{|v| @@edges.add(v,this); @@edges.add(this,v)}
@@ -27,9 +27,6 @@ amethyst Dead_Code_Detector < AmethystOptimizer {
 amethyst Communize_Or < AmethystOptimizer {
 	trans = Or[ &(And[ trans:first  .*] ) And[ trans:fst &{first.isomorphic(fst)} trans*:rest {And[{:ary=>rest}]}:ary[]  ]* ] -> And[first ,Or[{:ary=>ary}] ]
 	| super
-	 
-	arg = Args[Variable[@this:var .*]] -> var
-			| super
 }
 
 amethyst Move_Assignments < AmethystOptimizer {

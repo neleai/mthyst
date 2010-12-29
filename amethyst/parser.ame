@@ -32,14 +32,6 @@ def quote(s)
 end
 
 $av=0
-class Autovar
-	def to_s
-		return "avar"+@no.to_s if @no
-		$av+=1
-		@no=$av
-		to_s
-	end
-end
 def autovar
 	$av+=1
 	Variable[{:ary=>["autovar"],:number=>$av}]
@@ -52,7 +44,8 @@ end
 def _Pass(from,to)
 #  _Enter(to,from,false)
 	enter=false
-	And[_Set("it",from), Pass[{:to=>to,:enter=>enter,:var=>Variable["it"]}]]
+	a=autovar
+	And[_Set(a,from), Pass[{:to=>to,:enter=>enter,:var=>a}]]
 end
 
 
@@ -78,6 +71,10 @@ def _Pred(expr)
   _Act(expr,true)
 end
 
+$varhash=Hash.new{|h,k| h[k]=Variable[{:ary=>[k],:number=>1}]}
+def _Variable(name)
+ $varhash[name]
+end
 amethyst AmethystParser < Amethyst{
 	igrammar = ((~'amethyst' .)+:{it*""} | grammar)*:a -> a
 
