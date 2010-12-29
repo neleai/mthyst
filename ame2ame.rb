@@ -22,7 +22,7 @@ def a2ruby(s)
 	par=a.parse(:itrans,par)
 #pp inl
 
-#par= Move_Assignments.new.parse(:itrans,par)
+par= Move_Assignments.new.parse(:itrans,par)
 #par=Dead_Code_Detector.new.parse(:itrans,par)
 #par=Dead_Code_Deleter.new.parse(:itrans,par)
 
