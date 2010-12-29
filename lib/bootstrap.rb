@@ -204,7 +204,8 @@ makeclasses(Object,
 		[:Pass,:var,:to],
     [:Enter,:klas],
     [:Rule,:name,:args,:locals,:body],
-    [:Grammar,:name,:parent,:rules]
+    [:Grammar,:name,:parent,:rules],
+		:Local
 )
 
 def quote(s)
@@ -588,9 +589,10 @@ end
 def rubyarg()
  k_1 = (nil)
 autovar_1 = (nil)
-n_1 = (nil)
 autovar_2 = (nil)
+n_1 = (nil)
 autovar_3 = (nil)
+autovar_4 = (nil)
 s_1 = (nil)
 e_1 = (nil)
 _result_1 = (nil)
@@ -598,40 +600,49 @@ _result_1 = ((it=(_or(proc{(it=(seq("`"));next FAIL if it==FAIL;it)
 e_1 = ((it=(expression());next FAIL if it==FAIL;it))
 (it=(seq("`"));next FAIL if it==FAIL;it)
 Exp[e_1] },proc{(it=(_args('(',')'));next FAIL if it==FAIL;it)},proc{(it=(_args('[',']'));next FAIL if it==FAIL;it)},proc{(it=(_args('{','}'));next FAIL if it==FAIL;it)},proc{(it=(seq("\""));next FAIL if it==FAIL;it)
+s_1 = (autovar_4 = ([])
+while true
+autovar_5=@input;r=it=((it=(_not{(it=(seq("\""));next FAIL if it==FAIL;it)});break FAIL if it==FAIL;it)
+(it=(eChar());break FAIL if it==FAIL;it) )
+ autovar_4||=[];_append(autovar_4,it)
+ break FAIL if r==FAIL
+end;@input=autovar_5
+autovar_4 )
+(it=(seq("\""));next FAIL if it==FAIL;it)
+Strin[['"']+ s_1+['"']] },proc{(it=(seq("\'"));next FAIL if it==FAIL;it)
 s_1 = (autovar_3 = ([])
 while true
-autovar_4=@input;r=it=((it=(_not{(it=(seq("\""));next FAIL if it==FAIL;it)});break FAIL if it==FAIL;it)
+autovar_6=@input;r=it=((it=(_not{(it=(seq("\'"));next FAIL if it==FAIL;it)});break FAIL if it==FAIL;it)
 (it=(eChar());break FAIL if it==FAIL;it) )
  autovar_3||=[];_append(autovar_3,it)
  break FAIL if r==FAIL
-end;@input=autovar_4
+end;@input=autovar_6
 autovar_3 )
-(it=(seq("\""));next FAIL if it==FAIL;it)
-Strin[['"']+ s_1+['"']] },proc{(it=(seq("\'"));next FAIL if it==FAIL;it)
-s_1 = (autovar_2 = ([])
+(it=(seq("\'"));next FAIL if it==FAIL;it)
+Strin[['\'']+s_1+['\'']] },proc{(it=(_or(proc{it=((it=(regch(/[$.:]/));next FAIL if it==FAIL;it))
+ n_1||=[];_append(n_1,it)},proc{(it=(empty());next FAIL if it==FAIL;it)}));next FAIL if it==FAIL;it)
+it=(autovar_2 = ([])
+it=((it=(regch(/[a-zA-Z_]/));next FAIL if it==FAIL;it))
+ autovar_2||=[];_append(autovar_2,it)
 while true
-autovar_5=@input;r=it=((it=(_not{(it=(seq("\'"));next FAIL if it==FAIL;it)});break FAIL if it==FAIL;it)
-(it=(eChar());break FAIL if it==FAIL;it) )
+autovar_7=@input;r=it=((it=(regch(/[a-zA-Z_]/));break FAIL if it==FAIL;it))
  autovar_2||=[];_append(autovar_2,it)
  break FAIL if r==FAIL
-end;@input=autovar_5
+end;@input=autovar_7
 autovar_2 )
-(it=(seq("\'"));next FAIL if it==FAIL;it)
-Strin[['\'']+s_1+['\'']] },proc{(it=(_or(proc{(it=(seq("@@"));next FAIL if it==FAIL;it)
-it=("@")
- n_1||=[];_append(n_1,it) },proc{it=((it=(regch(/[.:]/));next FAIL if it==FAIL;it))
- n_1||=[];_append(n_1,it)},proc{(it=(empty());next FAIL if it==FAIL;it)}));next FAIL if it==FAIL;it)
+ n_1||=[];_append(n_1,it)
+n_1*"" },proc{(it=(seq("@@"));next FAIL if it==FAIL;it)
 it=(autovar_1 = ([])
 it=((it=(regch(/[a-zA-Z_]/));next FAIL if it==FAIL;it))
  autovar_1||=[];_append(autovar_1,it)
 while true
-autovar_6=@input;r=it=((it=(regch(/[a-zA-Z_]/));break FAIL if it==FAIL;it))
+autovar_8=@input;r=it=((it=(regch(/[a-zA-Z_]/));break FAIL if it==FAIL;it))
  autovar_1||=[];_append(autovar_1,it)
  break FAIL if r==FAIL
-end;@input=autovar_6
+end;@input=autovar_8
 autovar_1 )
  n_1||=[];_append(n_1,it)
-n_1*"" },proc{k_1 = ((it=(key());next FAIL if it==FAIL;it))
+Local[n_1*""] },proc{k_1 = ((it=(key());next FAIL if it==FAIL;it))
 ExpKey[k_1]  },proc{(it=(regch(/[^`{}()'"\[\]]/));next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it))
 _result_1  
 end
@@ -1099,28 +1110,33 @@ autovar_2 = (nil)
 autovar_3 = (nil)
 v_1 = (nil)
 this_1 = (nil)
+autovar_4 = (nil)
 var_1 = (nil)
+reachable_1 = (nil)
 locals_1 = (nil)
 body_1 = (nil)
-autovar_4 = (nil)
-args_1 = (nil)
 autovar_5 = (nil)
+args_1 = (nil)
+autovar_6 = (nil)
 name_1 = (nil)
 _result_1 = (nil)
 _result_1 = ((it=(_or(proc{(it=(clas(Rule));next FAIL if it==FAIL;it)
 (it=(_enter{name_1 = ( _key(:name))
 @edges=Oriented_Graph.new ; @marked=[_Variable("_result")]
-autovar_5 = ( _key(:args))
-(it=(_pass(autovar_5){args_1 = ((it=(args());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
-autovar_4 = ( _key(:body))
-(it=(_pass(autovar_4){(it=(trans());next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it)
+autovar_6 = ( _key(:args))
+(it=(_pass(autovar_6){args_1 = ((it=(args());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
+autovar_5 = ( _key(:body))
+(it=(_pass(autovar_5){(it=(trans());next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it)
 body_1 = ( _key(:body))
 locals_1 = ( _key(:locals))
-puts @edges.reachable(@marked).inspect });next FAIL if it==FAIL;it)
-Rule[ {:name=>name_1,:args=>args_1,:body=>body_1,:locals=>locals_1 }] },proc{(it=(clas(Apply));next FAIL if it==FAIL;it)
+reachable_1 = (@edges.reachable(@marked)) });next FAIL if it==FAIL;it)
+Rule[ {:name=>name_1,:args=>args_1,:body=>body_1,:locals=>locals_1,:reachable=>reachable_1 }] },proc{(it=(clas(Apply));next FAIL if it==FAIL;it)
 (it=(_enter{name_1 = ((it=(anything());next FAIL if it==FAIL;it))
 var_1 = ((it=(vars_in());next FAIL if it==FAIL;it)) });next FAIL if it==FAIL;it)
-@marked +=var_1 },proc{(it=(clas(Act));next FAIL if it==FAIL;it)
+@marked +=var_1 },proc{(it=(clas(Pass));next FAIL if it==FAIL;it)
+(it=(_enter{autovar_4 = ( _key(:var))
+(it=(_pass(autovar_4){var_1 = ((it=(vars_in());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it)
+@marked += var_1 },proc{(it=(clas(Act));next FAIL if it==FAIL;it)
 (it=(_enter{this_1 = ( _key(:this))
 @marked<<this_1 if _key(:pred)
 var_1 = ((it=(vars_in());next FAIL if it==FAIL;it)) });next FAIL if it==FAIL;it)
@@ -1132,7 +1148,8 @@ autovar_2 = ( _key(:expr))
 (it=(_pass(autovar_2){var_1 = ((it=(vars_in());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it)
 var_1.each{|w| @edges.add(v_1,w)} },proc{(it=(clas(Resul));next FAIL if it==FAIL;it)
 (it=(_enter{autovar_1 = ( _key(:vars))
-(it=(_pass(autovar_1){var_1 = ((it=(vars_in());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
+(it=(_pass(autovar_1){var_1 = ((it=(clas(Object));next FAIL if it==FAIL;it)
+(it=(_enter{(it=(vars_in());next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it) )});next FAIL if it==FAIL;it)
 v_1 = ( _key(:this)) });next FAIL if it==FAIL;it)
 var_1.each{|w| @edges.add(v_1,w) } },proc{(it=(super());next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it))
 _result_1  
@@ -1144,7 +1161,7 @@ autovar_3 = (nil)
 ary_1 = (nil)
 autovar_4 = (nil)
 _result_1 = (nil)
-_result_1 = (ary_1=[];puts @input.item.inspect
+_result_1 = (ary_1=[]
 autovar_4 = ([])
 while true
 autovar_7=@input;r=it=((it=(_or(proc{(it=(clas(Variable));next FAIL if it==FAIL;it)
@@ -1167,6 +1184,8 @@ autovar_6=@input;r=it=((it=(_dot_());break FAIL if it==FAIL;it))
 end;@input=autovar_6
 autovar_2 });next FAIL if it==FAIL;it) },proc{(it=(clas(Resul));next FAIL if it==FAIL;it)
 (it=(_enter{it=( _key(:this))
+ ary_1||=[];_append(ary_1,it)});next FAIL if it==FAIL;it) },proc{(it=(clas(Strin));next FAIL if it==FAIL;it)
+(it=(_enter{it=((it=(vars_in());next FAIL if it==FAIL;it))
  ary_1||=[];_append(ary_1,it)});next FAIL if it==FAIL;it) },proc{(it=(clas(Args));next FAIL if it==FAIL;it)
 (it=(_enter{it=((it=(vars_in());next FAIL if it==FAIL;it))
  ary_1||=[];_append(ary_1,it)});next FAIL if it==FAIL;it) },proc{(it=(clas(Set));next FAIL if it==FAIL;it)
@@ -1178,6 +1197,53 @@ autovar_2 });next FAIL if it==FAIL;it) },proc{(it=(clas(Resul));next FAIL if it=
 end;@input=autovar_7
 autovar_4
 ary_1 )
+_result_1  
+end
+
+end
+
+
+class Dead_Code_Deleter < AmethystOptimizer
+def trans()
+ append_1 = (nil)
+expr_1 = (nil)
+autovar_1 = (nil)
+autovar_2 = (nil)
+this_1 = (nil)
+locals_1 = (nil)
+body_1 = (nil)
+autovar_3 = (nil)
+args_1 = (nil)
+autovar_4 = (nil)
+it_1 = (nil)
+name_1 = (nil)
+_result_1 = (nil)
+_result_1 = ((it=(_or(proc{(it=(clas(Rule));next FAIL if it==FAIL;it)
+(it=(_enter{name_1 = ( _key(:name))
+it_1 = ( _key(:reachable))
+@reachable=it_1;puts @reachable
+autovar_4 = ( _key(:args))
+(it=(_pass(autovar_4){args_1 = ((it=(args());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
+autovar_3 = ( _key(:body))
+(it=(_pass(autovar_3){body_1 = ((it=(trans());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
+locals_1 = ( _key(:locals)) });next FAIL if it==FAIL;it)
+Rule[ {:name=>name_1,:args=>args_1,:body=>body_1,:locals=>locals_1 }] },proc{(it=(clas(Act));next FAIL if it==FAIL;it)
+(it=(_enter{this_1 = ( _key(:this))
+autovar_2 = ([])
+while true
+autovar_5=@input;r=it=((it=(_dot_());break FAIL if it==FAIL;it))
+ autovar_2||=[];_append(autovar_2,it)
+ break FAIL if r==FAIL
+end;@input=autovar_5
+autovar_2 });next FAIL if it==FAIL;it)
+@reachable[this_1] ? this_1 : Act[] },proc{(it=(clas(Set));next FAIL if it==FAIL;it)
+(it=(_enter{name_1 = ( _key(:name))
+autovar_1 = ( _key(:expr))
+(it=(_pass(autovar_1){expr_1 = ((it=(trans());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
+append_1 = ( _key(:append)) });next FAIL if it==FAIL;it)
+@reachable[name_1] ? _Set(name_1,expr_1,append_1) : expr_1 },proc{(it=(clas(Resul));next FAIL if it==FAIL;it)
+(it=(_enter{this_1 = ( _key(:this))});next FAIL if it==FAIL;it)
+@reachable[this_1] ? this_1 : Act[] },proc{(it=(super());next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it))
 _result_1  
 end
 
@@ -1232,6 +1298,7 @@ end
 class Move_Assignments < AmethystOptimizer
 def trans()
  autovar_1 = (nil)
+append_1 = (nil)
 expr_1 = (nil)
 autovar_2 = (nil)
 name_1 = (nil)
@@ -1240,8 +1307,9 @@ _result_1 = ((it=(_or(proc{(it=(clas(Set));next FAIL if it==FAIL;it)
 (it=(_enter{name_1 = ( _key(:name))
 autovar_2 = ( _key(:expr))
 (it=(_pass(autovar_2){expr_1 = ((it=(trans());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
+append_1 = ( _key(:append))
 autovar_1 = (expr_1)
-(it=(_pass(autovar_1){(it=(move( _key(:append),name_1));next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it) },proc{(it=(super());next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it))
+(it=(_pass(autovar_1){(it=(move(append_1,name_1));next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it) },proc{(it=(super());next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it))
 _result_1  
 end
 def move(append_1,name_1)
@@ -1573,7 +1641,9 @@ t_1 },proc{(it=(clas(ExpKey));next FAIL if it==FAIL;it)
 t_1 },proc{(it=(clas(Variable));next FAIL if it==FAIL;it)
 (it=(_enter{name_1 = ((it=(anything());next FAIL if it==FAIL;it))
 number_1 = ( _key(:number)) });next FAIL if it==FAIL;it)
-@varhash[name_1][number_1]=@varhash[name_1].size+1 if !@varhash[name_1][number_1]  ; "#{name_1}_#{@varhash[name_1][number_1]}" },proc{(it=(anything());next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it))
+@varhash[name_1][number_1]=@varhash[name_1].size+1 if !@varhash[name_1][number_1]  ; "#{name_1}_#{@varhash[name_1][number_1]}" },proc{(it=(clas(Local));next FAIL if it==FAIL;it)
+(it=(_enter{name_1 = ((it=(anything());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
+"@#{name_1}" },proc{(it=(anything());next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it))
 _result_1  
 end
 def rw(word_1,prc_1)

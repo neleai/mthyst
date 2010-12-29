@@ -32,6 +32,7 @@ amethyst AmethystTranslator < Amethyst {
 			| Exp[transfn:t ] -> t
 		  | ExpKey[ trans:t] -> t
 			| Variable[:name @number:number] -> @@varhash[name][number]=@@varhash[name].size+1 if !@@varhash[name][number]  ; "#{name}_#{@@varhash[name][number]}"
+			| Local[:name] -> "@#{name}"
 			| anything
 				
 	rw(word,prc) = {rwo=@@returnword;@@returnword=word} apply(prc):x {@@returnword=rwo;x}

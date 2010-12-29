@@ -2,16 +2,18 @@ amethyst Dead_Code_Detector < AmethystOptimizer {
 
 	trans = Rule[@name:name {@@edges=Oriented_Graph.new ; @@marked=[_Variable("_result")]}  @args=>args:args @body=>trans @body:body @locals:locals {@@edges.reachable(@@marked)}:reachable] @Rule
 				| Apply[:name vars_in:var ] -> @@marked +=var
+				| Pass[@var=>vars_in:var ] -> @@marked += var
 				| Act[ @this:this {@@marked<<this if @pred} 
 							 vars_in:var ] -> var.each{|v| @@edges.add(v,this); @@edges.add(this,v)}
 				| Set[@name:v   @expr=>trans @expr=>vars_in:var  ] -> var.each{|w| @@edges.add(v,w)}
-				| Resul[@vars=>vars_in:var @this:v] -> var.each{|w| @@edges.add(v,w) }
+				| Resul[@vars=>[vars_in]:var @this:v] -> var.each{|w| @@edges.add(v,w) }
 				| super 
 				
 				vars_in = {ary=[]} 
 								( Variable[ @this:ary[] .*]
 								| Act[ @this:ary[] .*]
 								| Resul[ @this:ary[] ]
+								| Strin[ vars_in:ary[] ]
 								| Args[ vars_in:ary[] ]
 								| Set[ @name=>vars_in:ary[] ]
 								| anything
@@ -32,7 +34,7 @@ amethyst Communize_Or < AmethystOptimizer {
 }
 
 amethyst Move_Assignments < AmethystOptimizer {
-	trans = Set[@name:name @expr=>trans:expr {expr}=>move(@append,name) ]
+	trans = Set[@name:name @expr=>trans:expr @append:append {expr}=>move(append,name) ]
 				| super
 
 	move(append,name) = Or[ move(append,name)*:ary ] @Or

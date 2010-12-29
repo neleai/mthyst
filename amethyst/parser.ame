@@ -23,7 +23,8 @@ makeclasses(Object,
 		[:Pass,:var,:to],
     [:Enter,:klas],
     [:Rule,:name,:args,:locals,:body],
-    [:Grammar,:name,:parent,:rules]
+    [:Grammar,:name,:parent,:rules],
+		:Local
 )
 
 def quote(s)
@@ -162,7 +163,8 @@ amethyst AmethystParser < Amethyst{
            | _args('(',')')					 | _args('[',']')					 | _args('{','}')
 					 | '"' (~'"'   eChar)*:s '"'  -> Strin[['"']+ s+['"']]
 					 | '\''(~'\''  eChar)*:s '\'' -> Strin[['\'']+s+['\'']]
-					 | ('@@' {"@"}:n[] | <.:>:n[] | empty) <a-zA-Z_>+:n[] -> n*""
+					 | ( <$.:>:n[] | empty) <a-zA-Z_>+:n[] -> n*""
+					 | '@@' <a-zA-Z_>+:n[] -> Local[n*""]
 					 | key:k -> ExpKey[k] 
 					 | <^`{}()'"\[\]>
 
