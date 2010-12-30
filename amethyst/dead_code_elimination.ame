@@ -31,6 +31,9 @@ amethyst Dead_Code_Deleter < AmethystOptimizer{
 					| super
 }
 
+amethyst Constant_Propagator < AmethystOptimizer {
+}
+
 amethyst Communize_Or < AmethystOptimizer {
 	trans = Or[ &(And[ trans:first  .*] ) And[ trans:fst &{first.isomorphic(fst)} trans*:rest {And[{:ary=>rest}]}:ary[]  ]* ] -> And[first ,Or[{:ary=>ary}] ]
 	| super

@@ -6,7 +6,6 @@ makeclasses(Object,
     :Apply,
     :Nested,
     :Exp,
-    :ExpKey,
     :Foreign,
     [:Set,:name,:expr,:append],
     [:Many,:o],
@@ -108,7 +107,7 @@ amethyst AmethystParser < Amethyst{
               | "?"   -> Or[t,Apply["empty"]]
               | empty -> t
   
-	binding(exp) = {exp}:expr ":" name:name ('[]' {true} | empty {false} ):append ->_Set(name,expr,append)
+	binding(exp) = {exp}:expr ":" (key | name):name ('[]' {true} | empty {false} ):append ->_Set(name,expr,append)
                | ":" inlineHostExpr:e -> And[ _Set("it",exp) , _Act(e) ]
 
 
@@ -168,7 +167,7 @@ amethyst AmethystParser < Amethyst{
 					 | '\''(~'\''  eChar)*:s '\'' -> Strin[['\'']+s+['\'']]
 					 | ( <$.:>:n[] | empty) <a-zA-Z_>+:n[] -> n*""
 					 | '@@' <a-zA-Z_>+:n[] -> Local[n*""]
-					 | key:k -> ExpKey[k] 
+					 | key:k -> Key[k] 
 					 | <^`{}()'"\[\]>
 
 	nameFirst      = <_$.^> | letter

@@ -30,7 +30,7 @@ amethyst AmethystTranslator < Amethyst {
 	arg = Args[arg*:a] -> a*""
 			| Strin[arg*:a] -> a*""
 			| Exp[transfn:t ] -> t
-		  | ExpKey[ trans:t] -> t
+		  | Key[ trans:t] -> t
 			| Variable[:name @number:number] -> @@varhash[name][number]=@@varhash[name].size+1 if !@@varhash[name][number]  ; "#{name}_#{@@varhash[name][number]}"
 			| Local[:name] -> "@#{name}"
 			| anything

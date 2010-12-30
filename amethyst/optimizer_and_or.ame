@@ -7,3 +7,14 @@ trans = Or[transfn*:ary ]
 				  (&{ary.size==1} {ary[0]} | @And)
 				| {super}
 }
+
+
+amethyst Amethyst_And_Or_Optimizer < AmethystVisitor {
+	visit = Or[	.*:ary]
+					  {ary=ary.map{|o| (o.is_a?(Or)) ? o.ary : o}.flatten}
+	          (&{ary.size==1} {ary[0]} | @Or)
+     	  | And[.*:ary ]
+      	    {ary=ary.map{|a| (a.is_a?(And)) ? a.ary : a}.flatten}
+        	  (&{ary.size==1} {ary[0]} | @And)
+
+}
