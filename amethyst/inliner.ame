@@ -1,8 +1,3 @@
-def shadow(body,args)
-	args.each{|arg|arg=arg[0]; a=autovar; body=And[Set[{:name=>a,:expr=>Act[arg]}],body,Set[{:name=>arg,:expr=>Act[a]}]]}
-	body
-end
-
 amethyst Inliner < AmethystOptimizer {
 
  inline(rule,grammar)= {rule}=>Rule[@name:name @args:args @locals:locals @body:body]  {@@result=autovar;@@name=name;@@args=args;@@body=shadow(Set[{:name=>@@result,:expr=>body}],locals.map{|a| Args[a]}) } {grammar}=>[itrans]
@@ -11,6 +6,8 @@ amethyst Inliner < AmethystOptimizer {
        | {super}
 
 	inlineit = :name :grammar  getrule(name,grammar):rule inline(rule,grammar)
-
+	
+	rename_variables =a  
+	
 	getrule(name,grammar) = {grammar}=>[ (Grammar[ @rules=>[ Rule[@name:n (&{ n==name} @this:rule | empty ) ]* ] ] |anything)* ]   -> rule
 }

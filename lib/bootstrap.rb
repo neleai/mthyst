@@ -214,11 +214,11 @@ end
 $av=0
 def autovar
 	$av+=1
-	Variable[{:ary=>["autovar"],:number=>$av}]
+	_Variable("autovar",$av)
 end
 
 def _Enter(to ,from=Apply["anything"],enter=true)
-#  And[_Set("it",from), Enter[{:to=>to,:enter=>enter,:var=>Variable["it"]}]]
+#  And[_Set("it",from), Enter[{:to=>to,:enter=>enter,:var=>_Variable("it")}]]
 Enter[to]
 end
 def _Pass(from,to)
@@ -254,10 +254,16 @@ def _body(body)
 	And[_Set("_result",body), _Act("_result")]
 end
 
-$varhash=Hash.new{|h,k| h[k]=Variable[{:ary=>[k],:number=>1}]}
-def _Variable(name)
- $varhash[name]
-end
+$varhash=Hash.new{|h,k| h[k]={}}
+	def _Variable(name,number=1)
+		if var=$varhash[name][number]
+		#instance_eval{	@locals << var if @locals}
+			var
+		else
+			$varhash[name][number]=Variable[{:ary=>[name],:number=>number}]
+			_Variable(name,number)
+		end
+	end
 class AmethystParser < Amethyst
 def igrammar()
  autovar_1 = ((nil))
@@ -1262,7 +1268,7 @@ autovar_4 = ( _key(:args))
 autovar_3 = ( _key(:body))
 (it=(_pass(autovar_3){body_1 = ((it=(trans());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
 locals_1 = ((@locals.uniq))
-(locals_1.each{|l_1| body_1=And[Set[{:name=>l_1,:expr=>Act["nil"] }],body_1] };) });next FAIL if it==FAIL;it)
+((locals_1-argnames_1).each{|l_1| body_1=And[Set[{:name=>l_1,:expr=>Act["nil"] }],body_1] };) });next FAIL if it==FAIL;it)
 _result_1 = (Rule[ {:argnames=>argnames_1,:name=>name_1,:args=>args_1,:body=>body_1,:locals=>locals_1 }]) },proc{(it=(clas(Or));next FAIL if it==FAIL;it)
 (it=(_enter{l_1 = ((@locals))
 r_1 = (([]))
@@ -1280,7 +1286,7 @@ _result_1 = (Or[ {:l=>l_1,:r=>r_1,:ary=>ary_1 }]) },proc{(it=(clas(Result));next
 (it=(_enter{name_1 = ( _key(:name))
 autovar_2 = ( _key(:args))
 (it=(_pass(autovar_2){args_1 = ((it=(args());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
-vars_1 = ((@locals.select{|a| a[0]!= "autovar"}.uniq-["it","_result"])) });next FAIL if it==FAIL;it)
+vars_1 = ((@locals.select{|a| a[0]!= "autovar"&&a!="_result"&&a!="it"}.uniq)) });next FAIL if it==FAIL;it)
 _result_1 = (Result[ {:name=>name_1,:args=>args_1,:vars=>vars_1 }]) },proc{(it=(clas(Set));next FAIL if it==FAIL;it)
 (it=(_enter{name_1 = ( _key(:name))
 (@locals<<name_1)
@@ -1604,11 +1610,6 @@ end
 
 end
 
-def shadow(body,args)
-	args.each{|arg|arg=arg[0]; a=autovar; body=And[Set[{:name=>a,:expr=>Act[arg]}],body,Set[{:name=>arg,:expr=>Act[a]}]]}
-	body
-end
-
 class Inliner < AmethystOptimizer
 def inline(rule_1,grammar_1)
  autovar_1 = ((nil))
@@ -1657,6 +1658,11 @@ name_1 = ((it=(anything());return FAIL if it==FAIL;it))
 grammar_1 = ((it=(anything());return FAIL if it==FAIL;it))
 rule_1 = ((it=(getrule(name_1,grammar_1));return FAIL if it==FAIL;it))
 _result_1 = ((it=(inline(rule_1,grammar_1));return FAIL if it==FAIL;it))
+(_result_1)  
+end
+def rename_variables()
+ _result_1 = ((nil))
+_result_1 = ((it=(a());return FAIL if it==FAIL;it))
 (_result_1)  
 end
 def getrule(name_1,grammar_1)

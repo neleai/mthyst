@@ -49,7 +49,7 @@ end
 
 
 def _Set(name,expr,append=false)
-  Set[{:name=>_Variable[name],:expr=>expr,:append=>append}]
+  Set[{:name=>name,:expr=>expr,:append=>append}]
 end
 def _Append(name,expr)
   _Set(name,expr,true)
@@ -74,27 +74,23 @@ def _body(body)
 end
 
 $varhash=Hash.new{|h,k| h[k]={}}
-class AmethystParser
 	def _Variable(name,number=1)
 		if var=$varhash[name][number]
-			@@locals << var
+		#instance_eval{	@locals << var if @locals}
 			var
 		else
 			$varhash[name][number]=Variable[{:ary=>[name],:number=>number}]
 			_Variable(name,number)
 		end
 	end
-end
 amethyst AmethystParser < Amethyst{
 	igrammar = ((~'amethyst' .)+:{it*""} | grammar)*:a -> a
 
 	grammar = "amethyst" name:name ("<" name:parent |empty {parent="Amethyst"} ) 
 "{" rule*:rules "}"  @Grammar
 	
-  rule = {@@locals=[] ;@@argnames=[]} 
-			   name:name ruleargs:args "=" expression:body  
-	   		 {@@locals.uniq}:locals {@@argnames.uniq}:argnames {_body(body)}:body {locals.each{|l| body=And[Set[{:name=>l,:expr=>Act["nil"] }],body] }}
-				 @Rule
+  rule = name:name ruleargs:args "=" expression:body  
+	   		 {_body(body)}:body 				 @Rule
 
 	expression = choice
 	
@@ -145,7 +141,7 @@ amethyst AmethystParser < Amethyst{
   	  	| _args('#{','}')
 				| char
 
-	ruleargs = argsOpt('(',')')=>(Args[ :name {@@argnames<<_Variable(name);_Variable(name) }:result[] ]*) -> result
+	ruleargs = argsOpt('(',')')
 
 	
 	nr = ~(name ruleargs "=")

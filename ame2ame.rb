@@ -16,10 +16,8 @@ def a2ruby(s)
 #	inl=i.parse(:inlineit,["regch",inl])
 #pp par
 #pp inl
-	d=Detect_Variables.new
-	a=Analyze_Variables.new
-	par=d.parse(:itrans,par)
-	par=a.parse(:itrans,par)
+	par=Detect_Variables.new.parse(:itrans,par)
+	par=Analyze_Variables.new.parse(:itrans,par)
 #pp inl
 
 par= Move_Assignments.new.parse(:itrans,par)
