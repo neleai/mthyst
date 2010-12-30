@@ -962,19 +962,17 @@ end
 
 
 class AmethystVisitor < Amethyst
-def visit(v_1)
+def modify()
  _result_1 = ((nil))
-_result_1 = ((w))
+_result_1 = ((it=(empty());return FAIL if it==FAIL;it))
 (_result_1)  
 end
 def avisit(v_1)
  autovar_1 = ((nil))
-w_1 = ((nil))
 _result_1 = ((nil))
-w_1 = ((v_1.clone))
 (it=(_or(proc{autovar_1 = ((v_1))
-(it=(_pass(autovar_1){(it=(visit(w_1));next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it)
-_result_1 = ((w_1)) },proc{_result_1 = ((w_1))}));return FAIL if it==FAIL;it)
+(it=(_pass(autovar_1){(it=(modify());next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it)
+_result_1 = ((v_1)) },proc{_result_1 = ((v_1))}));return FAIL if it==FAIL;it)
 (_result_1)  
 end
 def itrans()
@@ -1610,11 +1608,44 @@ end
 
 end
 
+class Renamer < AmethystOptimizer
+def trans()
+ body_1 = ((nil))
+autovar_1 = ((nil))
+locals_1 = ((nil))
+args_1 = ((nil))
+autovar_2 = ((nil))
+name_1 = ((nil))
+_result_1 = ((nil))
+(it=(_or(proc{(it=(clas(Rule));next FAIL if it==FAIL;it)
+(it=(_enter{(@newvars={})
+name_1 = ( _key(:name))
+autovar_2 = ( _key(:args))
+(it=(_pass(autovar_2){args_1 = ((it=(args());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
+locals_1 = ( _key(:locals))
+autovar_1 = ( _key(:body))
+(it=(_pass(autovar_1){body_1 = ((it=(trans());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it)
+_result_1 = (Rule[ {:name=>name_1,:args=>args_1,:locals=>locals_1,:body=>body_1 }]) },proc{_result_1 = ((it=(super());next FAIL if it==FAIL;it))}));return FAIL if it==FAIL;it)
+(_result_1)  
+end
+def arg()
+ this_1 = ((nil))
+name_1 = ((nil))
+_result_1 = ((nil))
+(it=(_or(proc{(it=(clas(Variable));next FAIL if it==FAIL;it)
+(it=(_enter{name_1 = ((it=(anything());next FAIL if it==FAIL;it))
+this_1 = ( _key(:this)) });next FAIL if it==FAIL;it)
+_result_1 = ((@newvars[this_1] ? @newvars[this_1] : ($av+=1; @newvars[this_1]=_Variable(name_1,$av) ;@newvars[this_1] ))) },proc{_result_1 = ((it=(super());next FAIL if it==FAIL;it))}));return FAIL if it==FAIL;it)
+(_result_1)  
+end
+
+end
+
 class Inliner < AmethystOptimizer
 def inline(rule_1,grammar_1)
  autovar_1 = ((nil))
 body_1 = ((nil))
-locals_1 = ((nil))
+()
 args_1 = ((nil))
 name_1 = ((nil))
 autovar_2 = ((nil))
@@ -1623,9 +1654,9 @@ autovar_2 = ((rule_1))
 (it=(_pass(autovar_2){(it=(clas(Rule));return FAIL if it==FAIL;it)
 (it=(_enter{name_1 = ( _key(:name))
 args_1 = ( _key(:args))
-locals_1 = ( _key(:locals))
+ _key(:locals)
 body_1 = ( _key(:body)) });return FAIL if it==FAIL;it) });return FAIL if it==FAIL;it)
-(@result=autovar;@name=name_1;@args=args_1;@body=shadow(Set[{:name=>@result,:expr=>body_1}],locals_1.map{|a| Args[a]}) )
+(@result=autovar;@name=name_1;@args=args_1;@body=Set[{:name=>@result ,:expr=>body_1}] )
 autovar_1 = ((grammar_1))
 (it=(_pass(autovar_1){(it=(clas(Object));return FAIL if it==FAIL;it)
 (it=(_enter{_result_1 = ((it=(itrans());return FAIL if it==FAIL;it))});return FAIL if it==FAIL;it) });return FAIL if it==FAIL;it)
@@ -1646,7 +1677,7 @@ autovar_2=@input;r=it=((it=(arg());break FAIL if it==FAIL;it))
  break FAIL if r==FAIL
 end;@input=autovar_2
 args_1 = ((autovar_1)) });next FAIL if it==FAIL;it)
-_result_1 = ((body=@body; args_1.each_index{|i| body=And[Set[{:name=>@args[i][0],:expr=>Act[args_1[i]]}],body] } ; And[shadow(body,@args),Act[@result]])) },proc{_result_1 = ((super))}));return FAIL if it==FAIL;it)
+_result_1 = ((body=@body; args_1.each_index{|i| body=And[Set[{:name=>@args[i],:expr=>Act[args_1[i]]}],body] } ; And[body,Act[@result]])) },proc{_result_1 = ((super))}));return FAIL if it==FAIL;it)
 (_result_1)  
 end
 def inlineit()
@@ -1658,11 +1689,6 @@ name_1 = ((it=(anything());return FAIL if it==FAIL;it))
 grammar_1 = ((it=(anything());return FAIL if it==FAIL;it))
 rule_1 = ((it=(getrule(name_1,grammar_1));return FAIL if it==FAIL;it))
 _result_1 = ((it=(inline(rule_1,grammar_1));return FAIL if it==FAIL;it))
-(_result_1)  
-end
-def rename_variables()
- _result_1 = ((nil))
-_result_1 = ((it=(a());return FAIL if it==FAIL;it))
 (_result_1)  
 end
 def getrule(name_1,grammar_1)
@@ -1692,7 +1718,7 @@ end;@input=autovar_3
  break FAIL if r==FAIL
 end;@input=autovar_4
 () });return FAIL if it==FAIL;it) });return FAIL if it==FAIL;it)
-_result_1 = ((rule_1))
+_result_1 = ((Renamer.new.parse(:trans, [rule_1])))
 (_result_1)  
 end
 

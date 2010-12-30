@@ -84,7 +84,7 @@ $varhash=Hash.new{|h,k| h[k]={}}
 		end
 	end
 amethyst AmethystParser < Amethyst{
-	igrammar = ((~'amethyst' .)+:{it*""} | grammar)*:a -> a
+	igrammar = ((~'amethyst'   . )+:{it*""} | grammar)*:a -> a
 
 	grammar = "amethyst" name:name ("<" name:parent |empty {parent="Amethyst"} ) 
 "{" rule*:rules "}"  @Grammar

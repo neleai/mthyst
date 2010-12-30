@@ -32,9 +32,9 @@ amethyst AmethystOptimizer < Amethyst {
 }
 
 amethyst AmethystVisitor < Amethyst {
-	visit(v) = {w}
+	modify = empty
 	
-	avisit(v) = {v.clone}:w ({v}=>visit(w) {w} | {w})
+	avisit(v) = {v}=>modify {v} | {v}
 
 	itrans =  (char | trans)*:r  -> r
 

@@ -16,6 +16,8 @@ def a2ruby(s)
 #	inl=i.parse(:inlineit,["regch",inl])
 #pp par
 #pp inl
+	par=o.parse(:itrans,par)
+
 	par=Detect_Variables.new.parse(:itrans,par)
 	par=Analyze_Variables.new.parse(:itrans,par)
 #pp inl
