@@ -15,7 +15,7 @@ amethyst AmethystTranslator < Amethyst {
 				| Many[rw('break', `trans:t` ) @o=>arg:o] -> "while true\n#{o}=@input;r=#{t}\n break FAIL if r==FAIL\nend;@input=#{o}"
 				| Apply[ :name args:argss]  failwrap("#{name}(#{argss})")
 				| Set[@name=>arg:name @expr=>trans:expr @append:append] -> append ? "it=(#{expr})\n #{name}||=[];_append(#{name},it)" : "#{name} = (#{expr})"
-				| Resul[@name:name @args=>args:argss @vars:vars] -> "#{name}[#{argss} {#{vars.map{|l| ":#{l[0]}=>#{l[0]}_#{l.number}" }*","} }]"
+				| Result[@name:name @args=>args:argss @vars:vars] -> "#{name}[#{argss} {#{vars.map{|l| ":#{l[0]}=>#{l[0]}_#{l.number}" }*","} }]"
 				| Key[@name:name] -> " _key(:#{name})"
 				| Pass[@to=>trans:to @var=>arg:var] failwrap("_pass(#{var}){#{to}}")
 

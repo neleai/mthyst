@@ -19,7 +19,7 @@ module Populate
 		s
 	end
 end
-module Result
+module AmethystAST
 	attr_accessor :ary
 	def size
 		ary.size
@@ -39,7 +39,7 @@ def makeclasses(parent,*ary)
 		a=[a] unless a.is_a? Array
 		eval " class #{a[0]} < #{parent}
 						attr_accessor *#{a[1..-1].inspect}
-						include Result
+						include AmethystAST
 						extend Populate
 					end"
 	}

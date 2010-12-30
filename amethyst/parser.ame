@@ -1,7 +1,7 @@
 makeclasses(Object,
     [:Args,:o,:c,:r],
     [:Key,:name,:expr,:args],
-    [:Resul,:name,:expr,:args,:vars],
+    [:Result,:name,:expr,:args,:vars],
     [:Enter,:name,:cls,:expr],
     :Apply,
     :Nested,
@@ -33,11 +33,11 @@ end
 $av=0
 def autovar
 	$av+=1
-	Variable[{:ary=>["autovar"],:number=>$av}]
+	_Variable("autovar",$av)
 end
 
 def _Enter(to ,from=Apply["anything"],enter=true)
-#  And[_Set("it",from), Enter[{:to=>to,:enter=>enter,:var=>Variable["it"]}]]
+#  And[_Set("it",from), Enter[{:to=>to,:enter=>enter,:var=>_Variable("it")}]]
 Enter[to]
 end
 def _Pass(from,to)
@@ -49,7 +49,7 @@ end
 
 
 def _Set(name,expr,append=false)
-  Set[{:name=>name,:expr=>expr,:append=>append}]
+  Set[{:name=>_Variable[name],:expr=>expr,:append=>append}]
 end
 def _Append(name,expr)
   _Set(name,expr,true)
@@ -73,9 +73,17 @@ def _body(body)
 	And[_Set("_result",body), _Act("_result")]
 end
 
-$varhash=Hash.new{|h,k| h[k]=Variable[{:ary=>[k],:number=>1}]}
-def _Variable(name)
- $varhash[name]
+$varhash=Hash.new{|h,k| h[k]={}}
+class AmethystParser
+	def _Variable(name,number=1)
+		if var=$varhash[name][number]
+			@@locals << var
+			var
+		else
+			$varhash[name][number]=Variable[{:ary=>[name],:number=>number}]
+			_Variable(name,number)
+		end
+	end
 end
 amethyst AmethystParser < Amethyst{
 	igrammar = ((~'amethyst' .)+:{it*""} | grammar)*:a -> a
@@ -83,7 +91,10 @@ amethyst AmethystParser < Amethyst{
 	grammar = "amethyst" name:name ("<" name:parent |empty {parent="Amethyst"} ) 
 "{" rule*:rules "}"  @Grammar
 	
-  rule = name:name ruleargs:args "=" expression:body  {_body(body)}:body  @Rule
+  rule = {@@locals=[] ;@@argnames=[]} 
+			   name:name ruleargs:args "=" expression:body  
+	   		 {@@locals.uniq}:locals {@@argnames.uniq}:argnames {_body(body)}:body {locals.each{|l| body=And[Set[{:name=>l,:expr=>Act["nil"] }],body] }}
+				 @Rule
 
 	expression = choice
 	
@@ -125,7 +136,7 @@ amethyst AmethystParser < Amethyst{
 
 	application =  (name:klas '::' name:rule {"#{klas}::#{rule}"} | name):rule argsOpt('(',')'):arg -> Apply[rule,arg]
 
-	key         = "@" className:name  argsOpt('[',']'):args  @Resul
+	key         = "@" className:name  argsOpt('[',']'):args  @Result
               | "@" name:name   @Key
 
   collect(ors) = -> a=autovar; And[Or[{:ary=>ors.ary.map{|ands| And[{:ary=>ands.ary.map{|expr| _Append(a,expr)}}]}}],_Act(a)]
@@ -134,7 +145,8 @@ amethyst AmethystParser < Amethyst{
   	  	| _args('#{','}')
 				| char
 
-	ruleargs = argsOpt('(',')')
+	ruleargs = argsOpt('(',')')=>(Args[ :name {@@argnames<<_Variable(name);_Variable(name) }:result[] ]*) -> result
+
 	
 	nr = ~(name ruleargs "=")
 	
