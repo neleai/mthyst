@@ -3,7 +3,6 @@ amethyst AmethystOptimizer < Amethyst {
 
 	trans = Grammar[@name:name @parent:parent @rules=>transs:rules] @Grammar
 				| Rule[@name:name @args=>args:args @body=>trans:body @locals:locals] @Rule
-				| Enter[trans:ary[] ]  @Enter
 				| Or[transfn*:ary]  @Or
 				| And[trans*:ary ]  @And
 				| Not[trans:ary[] ] @Not
@@ -16,7 +15,7 @@ amethyst AmethystOptimizer < Amethyst {
 				| Result[@name:name @args=>args:args @vars=>args:vars] @Result
 				| Args[ arg*:ary ] @Args
 				| Key[@name:name] @Key
-				| Pass[ @to=>trans:to @var=>arg:var] @Pass
+				| Pass[ @to=>trans:to @var=>arg:var @enter:enter] @Pass
 
 	transfn = trans 
 	
@@ -40,7 +39,6 @@ amethyst AmethystVisitor < Amethyst {
 
 	trans = (	Grammar[@name:name @parent:parent @rules=>[ trans* ]:rules] @Grammar
 						| Rule[@name:name @args=>args:args @body=>trans:body @locals:locals] @Rule
-						| Enter[trans:ary[] ]  @Enter
 						| Or[trans*:ary]  @Or
 						| And[trans*:ary ]  @And
 						| Not[trans:ary[] ] @Not
@@ -53,7 +51,7 @@ amethyst AmethystVisitor < Amethyst {
 						| Result[@name:name @args=>args:args @vars=>args:vars] @Result
 						| Args[ arg*:ary ] @Args
 						| Key[@name:name] @Key
-						| Pass[ @to=>trans:to @var=>arg:var] @Pass 
+						| Pass[ @to=>trans:to @var=>arg:var @enter:enter] @Pass 
 				):v avisit(v) 
 
 	args = Array[ arg*:a ] -> a

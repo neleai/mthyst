@@ -45,9 +45,10 @@ amethyst Amethyst < AmethystCore {
 	_true = exactly(true)
 	_false= exactly(false)	
 
-  clas(cls) = &{@@input.item.is_a?(cls)}
+	aclas(cls) = &{@@input.item.is_a? cls}
+
+  clas(cls) = .:i &{i.is_a?(cls)} {i}
 	
-	is_a(cls) = &{@@input.src.is_a?(cls)}
 
 	token(s) = spaces seq(s)
 	

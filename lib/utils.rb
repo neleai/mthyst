@@ -13,7 +13,7 @@ module Populate
 		if hsh.is_a? Hash
 			args.pop	
 			args=hsh[:ary] + args if hsh[:ary]
-			hsh.each{|k,v| s.instance_variable_set("@"+k.to_s,v) if v} 
+			hsh.each{|k,v| s.instance_variable_set("@"+k.to_s,v) if v!=nil} 
 		end
 		s.instance_variable_set(:@ary,args)
 		s

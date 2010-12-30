@@ -52,8 +52,8 @@ class StreamEnd < Stream
 end
 
 class AmethystCore
-	def cachestream(obj)
-		@cachestream[obj]
+	def cachestream(enter,obj)
+		enter ? @cachestream_enter[obj] : @cachestream[obj]
 	end
   def _pred()
 		b=yield
@@ -88,32 +88,22 @@ class AmethystCore
 		FAIL
 	end
 
-	def _pass(expr)
+	def _pass(enter,expr)
 		oldInput=@input
-    @input=cachestream(expr)
+    @input=cachestream(enter,expr)
 		r=yield
 		return FAIL if eof==FAIL
 		@input=oldInput
 		r
 	end
 		
-	def _enter()		
-		oldInput=@input
-		@input=@input.child
-		return FAIL if @input==FAIL 
-		r=yield
-		return FAIL if eof==FAIL
-		@input=oldInput.succ
-		return r
-	end
+
 
 	def _key(key,&block)
-    oldInput = @input
 		src=@input.src
     v=src.instance_variable_get("@#{key}")
     v||=src.send(key) if src.respond_to? key
-    #v||=src[key] if src.respond_to? "[]"
-	 v   
+	 	v   
   end
 
 	
@@ -171,6 +161,7 @@ class AmethystCore
 		@memos=mems
 		@memoa=mema
 		@cachestream=Hash.new{|h,k| h[k]=Stream.create([k])}
+		@cachestream_enter=Hash.new{|h,k| h[k]=Stream.create(k)}
 	end	
 
 	def parse(rule,input)

@@ -2,7 +2,6 @@ makeclasses(Object,
     [:Args,:o,:c,:r],
     [:Key,:name,:expr,:args],
     [:Result,:name,:expr,:args,:vars],
-    [:Enter,:name,:cls,:expr],
     :Apply,
     :Nested,
     :Exp,
@@ -19,7 +18,6 @@ makeclasses(Object,
 		[:Strin],
 		[:Variable,:number],
 		[:Pass,:var,:to],
-    [:Enter,:klas],
     [:Rule,:name,:args,:locals,:body],
     [:Grammar,:name,:parent,:rules],
 		:Local
@@ -36,13 +34,10 @@ def autovar
 	_Variable("autovar",$av)
 end
 
-def _Enter(to ,from=Apply["anything"],enter=true)
-#  And[_Set("it",from), Enter[{:to=>to,:enter=>enter,:var=>_Variable("it")}]]
-Enter[to]
+def _Enter(to ,from)
+	_Pass(from,to,true)
 end
-def _Pass(from,to)
-#  _Enter(to,from,false)
-	enter=false
+def _Pass(from,to,enter=false)
 	a=autovar
 	And[_Set(a,from), Pass[{:to=>to,:enter=>enter,:var=>a}]]
 end
@@ -117,8 +112,8 @@ amethyst AmethystParser < Amethyst{
                | ":" inlineHostExpr:e -> And[ _Set("it",exp) , _Act(e) ]
 
 
-	term  = (className | "" {"Object"}):cls '[' expression:expr "]" -> And[Apply["clas",cls], _Enter(expr)]
-				| className:cls -> Apply["is_a",cls]
+	term  = (className | "" {"Object"}):cls '[' expression:expr "]" ->  _Enter(expr,Apply["clas",cls])
+				| className:cls -> Apply["clas",cls]
 				| "nested" '(' expression:expr ")" -> Nested[expr]
 		 	  | application
  			  | key
