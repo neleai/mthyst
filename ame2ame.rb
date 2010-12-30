@@ -10,10 +10,6 @@ def a2ruby(s)
 	i=Inliner.new
 	par=p.parse(:igrammar,s)
 #	par=o.parse(:itrans,par)
-#	inl=i.parse(:inlineit,["spaces",inl])
-#	inl=i.parse(:inlineit,["space",inl])
-#	inl=i.parse(:inlineit,["char",inl])
-#	inl=i.parse(:inlineit,["regch",inl])
 #pp par
 #pp inl
 	par=o.parse(:itrans,par)
@@ -25,7 +21,18 @@ def a2ruby(s)
 par= Move_Assignments.new.parse(:itrans,par)
 par=Dead_Code_Detector.new.parse(:itrans,par)
 par=Dead_Code_Deleter.new.parse(:itrans,par)
-
+inl = par
+	inl=i.parse(:inlineit,["spaces",inl])
+	inl=i.parse(:inlineit,["space",inl])
+	inl=i.parse(:inlineit,["char",inl])
+	inl=i.parse(:inlineit,["regch",inl])
+	inl=i.parse(:inlineit,["_dot_",inl])
+if inl!=FAIL
+	par =inl
+par= Move_Assignments.new.parse(:itrans,par)
+	par=Dead_Code_Detector.new.parse(:itrans,par)
+	par=Dead_Code_Deleter.new.parse(:itrans,par)
+end
 #	opt=c.parse(:itrans,inl)
 	par=o.parse(:itrans,par)
 	ruby=t.parse(:itrans,par)
