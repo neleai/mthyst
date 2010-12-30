@@ -6,7 +6,6 @@ makeclasses(Object,
     :Apply,
     :Nested,
     :Exp,
-    :Foreign,
     [:Set,:name,:expr,:append],
     [:Many,:o],
     :Many1,
@@ -107,7 +106,7 @@ amethyst AmethystParser < Amethyst{
               | "?"   -> Or[t,Apply["empty"]]
               | empty -> t
   
-	binding(exp) = {exp}:expr ":" (key | name):name ('[]' {true} | empty {false} ):append ->_Set(name,expr,append)
+	binding(exp) = {exp}:expr ":"  name:name ('[]' {true} | empty {false} ):append ->_Set(name,expr,append)
                | ":" inlineHostExpr:e -> And[ _Set("it",exp) , _Act(e) ]
 
 
@@ -124,8 +123,7 @@ amethyst AmethystParser < Amethyst{
 		    | "(" expression:x ")[]"															collect(x)
 				| "(" expression:x ")"                                ->  x
 
-	application = name:klas '::' name:rule argsOpt('(',')'):arg @Foreign
-  	      		| name:rule argsOpt('(',')'):arg -> Apply[rule,arg]
+	application =  (name:klas '::' name:rule {"#{klas}::#{rule}"} | name):rule argsOpt('(',')'):arg -> Apply[rule,arg]
 
 	key         = "@" className:name  argsOpt('[',']'):args  @Resul
               | "@" name:name   @Key

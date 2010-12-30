@@ -1,0 +1,169 @@
+mthys(amethyst) is tool for pattern matching
+<h3> amethyst and ruby</h3>
+We start with hello world checker  <a href='hello.ame'> hello.ame </a>
+<code><pre>
+a=mthys{ "Hello" "world" }
+# "string" matches string preceded by any number of whitespaces so a matches strings Hello world,Hello  world,Hello\r\nworld and Helloworld
+
+mthys Byer { #grammar consist from rules separated by newline
+	gbye = "Goodbye"
+	gxy = "galaxy"
+	bye = gbye gxy
+}
+
+begin
+  a.match(gets)  
+  puts "Hello too" 
+  Byer.parse(:bye,gets) #match and parse are synonyms
+  puts "Goodbye too"
+rescue NoMatch
+	puts "be polite"
+end</pre></code>
+You can use any ruby code in amethyst code. Amethyst will expand mthys { expression } to proc matching given expression and mthys class { rules } to corresponding ruby class.<br>
+If matching fails we throw exception.<br>
+This allows you use closure as <a href='sum.ame'> sum.ame </a>
+<code><pre>	puts "enter two numbers"
+mthys{ number:a number:b }.match(gets)
+puts "sum is #{a+b}"</pre></code>
+You can match by using rules you define
+<code><pre>#rules defined in module are accessible from anywhere. See <a href='#classes'>amethyst and classes</a>.
+mthys module Abbr {
+  a = "abbreviation"
+}
+
+puts "say 3 times abbreviation"
+mthys{ a a a }.match(gets)</pre></code>
+<h3> Amethyst extends regular expressions </h3>
+We describe how regular expresions translate to amethyst
+
+Amethyst expression consists of
+<code> mthys { pattern } </code>
+where we pattern is described below.
+
+Grammar consists of
+<code> mthyst name (&lt; parent)? { rules } </code>
+	where name is grammar name, optionaly we can specify parent and rules is list of rules separated by newlines.
+
+Rule consists of
+<code> name= pattern </code>
+Where name is name of rule and pattern is specified below.
+
+Pattern cosists of sequences separated by |
+Meaning of this is priorized choice. We first try match first sequence and if rest of pattern cant match rest of input we move to second choice and so on.
+So with pattern ("a" | "ab") "x"  againist string abx we first successfully match "a". But we fail to match b againist x. So we backtrack and succesfully match ab and then x.
+
+Sequence consist of list of terms. 
+We match terms sequentialy. 
+So "a" "b" "c" matches string abc
+
+Term is atom with possible modifiers. Modifiers are
+<table>
+<tr><td>atom* 
+repetition- match atom 0 and more times. We match maximal number of times such that rest of pattern can match rest of input.
+So in "a"* "ab" with string "aaaab" "a"* consumes only 3 times "a" for "ab" to succeed.
+<tr><td>atom+ 
+shortcut for atom atom*
+<tr><td>atom? 
+voluntary- shortcut for  (atom | empty)
+<tr><td>~atom 
+negative lookahead- succeed if and only if atom fails
+<tr><td>&amp;atom 
+positive lookahead -succeeds if atom succeed but consumes no input
+</li>
+Atom can be
+<table>
+<tr><td>( pattern )
+	force precedence
+<tr><td> "string"
+	matches string possibly preceded by whitespaces
+<tr><td> &lt;range&gt; 
+	Same meaning as [range] in regular expressions
+<tr><td>	name
+	Matches by name with given rule.
+<h3>ruby and amethyst</h3>
+Now you can decide if your language is syntaxticaly correct and little else. First we need to say that every rule gives result in natural way.
+result of
+<table>
+	<tr><td>	sequence1 | sequence2 ... is result of matched sequence
+	<tr><td>term1 term2 ...  is result of last term
+	<tr><td>atom*,atom+ Collects results of atom to array(see <a href='#append'>append</a>).
+	<tr><td>atom? is result of atom or nil if it wasnt matched
+	<tr><td>&amp;atom is result of atom
+	<tr><td>( pattern ) is result of pattern
+	<tr><td>( term1 term2 ... termk )[] collect results of invidual terms to array(see <a href='#append'>append</a>)
+	<tr><td>"string" is string
+	<tr><td> &lt;range&gt; is matched character
+	<tr><td>name is result of calling rule with given name.
+</table>
+Now when we have results we can bind them to variables
+<table>
+<tr><td>	atom:variable assigns result of atom 
+<tr><td>	:variable     shortcut for .:variable
+<tr><td> 	<a name='append'> atom:variable[]</a> appends result of atom to variable. If result was array concatenate them.
+<tr><td>  Additionaly we can refer to called rule by its name if it was called once. If it was called more times results are collected to array name+'s'. Additionaly you can access occurences as name1,name2,...
+<tr><td>  atom:{ruby statement} shortcut for atom:it {ruby statement}
+</table>
+And use them in semantic action and predicate. Atom can also be
+<table>
+<tr><td>{ ruby statements } execute ruby statements. Result of this atom is result of execution.
+<tr><td>&amp;{ ruby expression } Fail if given ruby expression is false
+</table>
+<h3> parametrized rules</h3>
+	Rules can be parametrized. Syntax for parametrized rule is 
+rule(arg1,args2...) = pattern 
+and syntax for calling parametrized rule is
+rule(exp1,exp2...) 
+where exp1,exp2... are ruby expressions. Inside arguments we expand `pattern` to proc which matches pattern.
+<h3> amethyst and objects</h3>
+Until now we only parsed strings. Amethyst can traverse arbitrary ruby objects. By current object we mean object we work with. Atom can also be<br>
+<code>@method </code> 
+Which calls method on current object and its result is methods result. This is also expanded in semantic actions and parametrized rule calls.<br>
+To access instance variables of parser you need to write<br>
+<code>@@variable</code>
+To traverse objects we have term<br>
+<code>term=&gt;atom</code>
+Which matches result of term againinst atom. <br>
+Another syntax is<br>
+<code>class[ pattern ]</code> which is shortcut for is_a(class)=&gt;(pattern)<br>
+with special case<br>
+<code>[ pattern ]</code> which is shortcut for is_a(Object)=&gt;(pattern)
+
+<h3> amethyst and classes</h3>
+You can inherit grammar by
+<code>amethyst Class &lt; Parent {
+	rules
+}</code>
+You can use super in same way as ruby.
+
+<h3> left recursion,rigth recursion and well nested recursion</h3>
+Rules to be left/rigth recursive. A rule is left recursive if it has form
+X = X Y 
+This coresponds to left asociativity ((((Y) Y) Y) Y)
+And rigth recursive if it has form
+X = Y X
+this corresponds to rigth asociativity (Y (Y (Y (Y))))
+It is clearer rewrite recursive rule as iteration where asociativity does not matter.
+X = Y*
+and handle it as array.
+Left and rigth recursions can be indirect like for example X = Y A , Y = X B
+Any other recursion must have form (with possible indirections)
+Y = X Y Z
+Which we forbid to use directly. It must be explicitly enclosed by keyword nested. It is recomanded to enclose from starting to ending tag by nested. So we can write arithmetic parser as
+<code><pre>summand=listOf(`multiplicand`,`'+'|'-'`)
+multiplicand=listOf(`value`,`'*'|'/'`)
+value = number
+		  | nested( '(' summand ')' )</pre></code>
+There are several reasons. First is error detection. If you misplace brackets you get following error messages 
+<code><pre>Error: superflows ')'
+2+(3-(4+4))+5 )
+  ^       ^   ^
+  from    to  |
+              superflows
+Error: unmatched '('
+(2+3+(5*(6-2)-(5+3))
+^    ^             ^
+|    from         to
+unmatched </pre></code>
+Second reason is to parse in linear time as we dont backtrack through nested boundary.
+<h3></h3>
+
