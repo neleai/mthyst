@@ -20,7 +20,8 @@ makeclasses(Object,
 		[:Pass,:var,:to],
     [:Rule,:name,:args,:locals,:body],
     [:Grammar,:name,:parent,:rules],
-		:Local
+		:Local,
+		:Memo
 )
 
 def quote(s)
