@@ -122,9 +122,8 @@ class AmethystCore
 	end
 	
 	def foreign(grammar,rule,*args)
-		#TODO use same grammar even in cyclic invocation
-		@grammars||={}
-		g=@grammars[grammar]||=grammar.new
+		#share @grammars in case of multiple indirect invocations
+		g=@grammars[grammar]||=grammar.new(@grammars)
 		g.input=@input
 		r=g.call(rule,*args)
 		@input=r.input
@@ -157,9 +156,8 @@ class AmethystCore
     end
   end
 
-	def initialize( mems=Hash.new{|h,k| h[k]={}},mema=Hash.new{|h,k| h[k]={}})
-		@memos=mems
-		@memoa=mema
+	def initialize(grammars={})
+		@rammars=grammars
 		@cachestream=Hash.new{|h,k| h[k]=Stream.create([k])}
 		@cachestream_enter=Hash.new{|h,k| h[k]=Stream.create(k)}
 	end	
