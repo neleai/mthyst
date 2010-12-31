@@ -45,8 +45,6 @@ amethyst Amethyst < AmethystCore {
 	_true = exactly(true)
 	_false= exactly(false)	
 
-	aclas(cls) = &{@@input.item.is_a? cls}
-
   clas(cls) = .:i &{i.is_a?(cls)} {i}
 	
 

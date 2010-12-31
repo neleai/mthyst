@@ -12,7 +12,7 @@ amethyst AmethystTranslator < Amethyst {
   			| Lookahead[rw('next',`trans:t`) ]  failwrap("_lookahead{#{t}}")
         | Comment[:c] -> ""
 				| Many[rw('break', `trans:t` ) @o=>arg:o] -> "while true\n#{o}=@input;r=#{t}\n break FAIL if r==FAIL\nend;@input=#{o}"
-				| Apply[ [:klas :name] args:argss]  failwrap("_foreign(:#{ name } #{ argss!=[] ? ",#{argss}" : "" })")
+				| Apply[ Array[:klas :name] args:argss]  failwrap("_foreign(:#{ name } #{ argss!=[] ? ",#{argss}" : "" })")
 				| Apply[ :name args:argss]  failwrap("#{name}(#{argss})")
 				| Set[@name=>arg:name @expr=>trans:expr @append:append] -> append ? "it=(#{expr})\n #{name}||=[];_append(#{name},it)" : "#{name} = (#{expr})"
 				| Result[@name:name @args=>args:argss @vars:vars] -> "#{name}[#{argss} {#{vars.map{|l| ":#{l[0]}=>#{l[0]}_#{l.number}" }*","} }]"
