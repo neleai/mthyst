@@ -1,68 +1,12 @@
-EOS=Object.new
 FAIL=Object.new
-def EOS.inspect
-	"EOS"
-end
 def FAIL.inspect
 	"FAIL"
 end
-class Stream
-	def self.create(src)
-		if src.size==0
-			return StreamEnd.new(src,0)
-		elsif src.is_a? String
-			return StringStream.new(src,0)
-		else
-			return Stream.new(src,0)
-		end
-	end
-	attr_reader :src,:pos
-	def initialize(src,ps)
-		@src,@pos=src,ps
-	end	
-	def item
-		@src[@pos]
-	end
-	def child
-		return @child if @child
-		@child=Stream::create(item)
-	end
-	def succ
-		return @next if @next
-		if src.size>pos+1
-			@next=self.class.new(src,pos+1)
-		else
-			@next=StreamEnd.new(src,pos+1)	
-		end
-		@next
-	end	
-end
-class StringStream < Stream
-	def item
-		@src[@pos].chr
-	end
-end
-class StreamEnd < Stream
-	def item
-		FAIL
-	end
-	def child
-		FAIL
-	end
-end
-
 class AmethystCore
-	def cachestream(enter,obj)
-		enter ? @cachestream_enter[obj] : @cachestream[obj]
+	def cachestream(obj)
+		@src=obj
+		@input=0
 	end
-  def _pred()
-		b=yield
-    if (b)
-      return true
-    else
-    	return FAIL
-		end
-  end
 
   def _not
     oldInput = @input
@@ -89,27 +33,38 @@ class AmethystCore
 	end
 
 	def _pass(enter,expr)
-		oldInput=@input
-    @input=cachestream(enter,expr)
+		expr = [expr] unless enter
+		oldSrc,oldInput=@src,@input
+    cachestream(expr)
 		r=yield
-		return FAIL if eof==FAIL
-		@input=oldInput
+		if eof==FAIL
+			@src,@input=oldSrc,oldInput
+			return FAIL 
+		end
+		@src,@input=oldSrc,oldInput
 		r
 	end
 		
 
 
 	def _key(key,&block)
-		src=@input.src
-    v=src.instance_variable_get("@#{key}")
-    v||=src.send(key) if src.respond_to? key
+    v=@src.instance_variable_get("@#{key}")
+    v||=@src.send(key) if @src.respond_to? key
 	 	v   
   end
 
+	def item
+		return FAIL unless @src.respond_to?(:size) && @input<@src.size
+		if @src.is_a? String
+			@src[@input,1]
+		else
+			@src[@input]
+		end
+	end
 	
 	def anything
-		i=@input.item
-		@input=@input.succ
+		i=item
+		@input+=1
 		i
 	end
 	
@@ -124,16 +79,17 @@ class AmethystCore
 	def foreign(grammar,rule,*args)
 		#share @grammars in case of multiple indirect invocations
 		g=@grammars[grammar]||=grammar.new(@grammars)
+		g.src=@src
 		g.input=@input
 		r=g.call(rule,*args)
-		@input=r.input
+		@input=g.input
 		return r
 	end
 
   def seq(str)
-		if @input.is_a? StringStream
-			if str==@input.src[@input.pos,str.size] 
-				str.size.times{@input=@input.succ}
+		if @src.is_a? String
+			if str==@src[@input,str.size]
+				@input+=str.size
 				return str
 			else
 				return FAIL
@@ -158,16 +114,15 @@ class AmethystCore
 
 	def initialize(grammars={})
 		@rammars=grammars
-		@cachestream=Hash.new{|h,k| h[k]=Stream.create([k])}
-		@cachestream_enter=Hash.new{|h,k| h[k]=Stream.create(k)}
 	end	
 
 	def parse(rule,input)
-		time=Time.new
 		print self.class
-		@input=Stream::create(input)
+		cachestream(input)	
+		time=Time.new
 		r=self.apply(rule)
 		puts "	#{Time.new-time}"
+		
 		r
 	end
 end
