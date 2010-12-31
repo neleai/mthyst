@@ -1,11 +1,9 @@
 amethyst Detect_Variables < AmethystOptimizer {
-  trans = Rule[{@@argnames=[]}:argnames {@@locals=[]} @name:name  @args=>[addargs]:args  @body=>trans:body {@@locals.uniq}:locals {(locals-argnames).each{|l| body=And[Set[{:name=>l,:expr=>Act["nil"] }],body] };} ] @Rule
+  trans = Rule[{@@argnames=[]}:argnames {@@locals=[]} @name:name  @args:args {args.each{|v| @@argnames<<v[0]}}  @body=>trans:body {@@locals.uniq}:locals {(locals-argnames).each{|l| body=And[Set[{:name=>l,:expr=>Act["nil"] }],body] };} ] @Rule
 				| Or[ {@@locals}:l {[]}:r ( {@@locals=l.clone} trans:ary[] {r=(r+@@locals).uniq}   )* {@@locals=r} ] @Or
         | Result[@name:name @args=>args:args {@@locals.select{|a| a[0]!= "autovar"&&a!="_result"&&a!="it"}.uniq}:vars] @Result
 				| Set[   @name:name {@@locals<<name} @expr=>trans:expr @append:append] @Set
         | super
-
-	addargs= Args[ :name {@@argnames<<name;_Variable(name) }:result[] ]* -> result
 }
 
 amethyst Analyze_Variables < AmethystOptimizer {

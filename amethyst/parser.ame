@@ -136,7 +136,9 @@ amethyst AmethystParser < Amethyst{
   	  	| _args('#{','}')
 				| char
 
-	ruleargs = argsOpt('(',')')
+	ruleargs = (argsOpt('(',')'))=>[addargs]
+
+	addargs= Args[ :name {_Variable(name) }:result[] ]* -> result || []
 
 	
 	nr = ~(name ruleargs "=")
