@@ -26,7 +26,6 @@ inl = par
 	inl=i.parse(:inlineit,["space",inl])
 	inl=i.parse(:inlineit,["char",inl])
 	inl=i.parse(:inlineit,["regch",inl])
-	inl=i.parse(:inlineit,["_dot_",inl])
 if inl!=FAIL
 	par =inl
 par= Move_Assignments.new.parse(:itrans,par)

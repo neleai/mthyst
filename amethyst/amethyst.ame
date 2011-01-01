@@ -1,7 +1,6 @@
 amethyst Amethyst < AmethystCore {
 	_ = space
 
-	. = anything
 
   regch(regex) = char:c &{regex.match(c)} -> c
 
