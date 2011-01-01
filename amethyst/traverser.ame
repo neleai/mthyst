@@ -1,0 +1,8 @@
+amethyst Traverser {
+	traverse(rule) = [ @this:this (apply(rule):r {@@changed=true;r}  | . )*:ary  {@this.instance_variable_set(:ary,ary)}
+								 	   {(@this.instance_variables-'@ary').map{|v| [v,this.instance_variable_get(v)] }}=>[
+										   [ :key  :item ( {item}=>(apply(rule)):a { @@changed=true; @this.instance_variable_set(key,a)}  | empty ) ]* 
+                     ] 
+									 ] @this
+}
+

@@ -21,7 +21,8 @@ makeclasses(Object,
     [:Rule,:name,:args,:locals,:body],
     [:Grammar,:name,:parent,:rules],
 		:Local,
-		:Memo
+		:Memo,
+		:Break
 )
 
 def quote(s)
