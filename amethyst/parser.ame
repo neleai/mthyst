@@ -35,7 +35,7 @@ def autovar
 	_Variable("autovar",$av)
 end
 
-def _Enter(to ,from)
+def _Enter(from,to)
 	_Pass(from,to,true)
 end
 def _Pass(from,to,enter=false)
@@ -97,8 +97,9 @@ amethyst AmethystParser < Amethyst{
   prefixed   = "~" modifier:m -> Not[m]
              | "&" inlineHostExpr:expr  -> _Pred(expr)
              | "&" ~inlineHostExpr:expr  modifier:m -> Lookahead[m]
-             | modifier:from "=>" modifier:to ->_Pass(from,to)
-						 | modifier
+						 | modifier:from (  '=>' modifier:{from=_Pass(from,it)}      optIter(from):from
+												     | '[' expression:{from=_Enter(from,it)} "]" optIter(from):from
+														 )* {from}
 
  		modifier = term:t optIter(t):t  (~space binding(t):t)* -> t
              | binding(Apply["anything"])
@@ -113,8 +114,7 @@ amethyst AmethystParser < Amethyst{
                | ":" inlineHostExpr:e -> And[ _Set("it",exp) , _Act(e) ]
 
 
-	term  = (className | "" {"Object"}):cls '[' expression:expr "]" ->  _Enter(expr,Apply["clas",cls])
-				| className:cls -> Apply["clas",cls]
+	term  =  className:cls -> Apply["clas",cls]
 				| "nested" '(' expression:expr ")" -> Nested[expr]
 		 	  | application
  			  | key
@@ -123,8 +123,8 @@ amethyst AmethystParser < Amethyst{
 		 	  | "'"  (~'\''  eChar)*:s '\''  -> Apply["seq",quote(s)]
  			  | number:{Apply["exactly",it]}
       	| "<" (~">" eChar)+:x  ">"                            ->  Apply["regch","/[#{x}]/"]
-		    | "(" expression:x ")[]"															collect(x)
-				| "(" expression:x ")"                                ->  x
+        | "[" expression:to "]" -> _Enter(Apply["anything"],to)
+		    | "(" expression:x ")" ( '[]'	collect(x) | empty {x} )
 
 	application =  "." -> Apply["anything"]
                  | (name:klas '::' name:rule {[klas,rule]} | name):rule argsOpt('(',')'):arg -> Apply[rule,arg]
