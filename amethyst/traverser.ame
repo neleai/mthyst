@@ -1,8 +1,19 @@
 amethyst Traverser {
-	traverse(rule) = [ @this:this (apply(rule):r {@@changed=true;r}  | . )*:ary  {@this.instance_variable_set(:ary,ary)}
-								 	   {(@this.instance_variables-'@ary').map{|v| [v,this.instance_variable_get(v)] }}=>[
-										   [ :key  :item ( {item}=>(apply(rule)):a { @@changed=true; @this.instance_variable_set(key,a)}  | empty ) ]* 
-                     ] 
-									 ] @this
+	traverse_item(rule) = apply(rule):a  {@@changed=true} {a}
+                      | Array[ traverse_item(rule)* ]
+											| AmethystAST[ traverse(rule) ]
+											| .
+	traverse(rule) = 
+					{puts @this.inspect}
+        	{(@this.instance_variables).map{|v| [v,@this.instance_variable_get(v)] }}=>[
+			  		[ :key  traverse_item(rule):r {@this.instance_variable_set(key,r)} ]* 
+		  		]
+					@this
 }
 
+
+amethyst Test < Traverser {
+	test = traverse('visit')
+	
+	visit = Act[ traverse('visit') {@ary<<";"}  @this]
+}

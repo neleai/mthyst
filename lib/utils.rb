@@ -19,6 +19,7 @@ module Populate
 		s
 	end
 end
+
 module AmethystAST
 	attr_accessor :ary
 	def size
@@ -27,11 +28,11 @@ module AmethystAST
 	def [](a)
 		ary[a]
 	end
-	def this
-		self
-	end
 	def isomorphic(that)
 		this.to_yaml==that.to_yaml
+	end
+	def this
+		self
 	end
 end
 def makeclasses(parent,*ary)
@@ -43,7 +44,5 @@ def makeclasses(parent,*ary)
 						extend Populate
 					end"
 	}
-end
-def br #you cant break from begin end block
-	yield
+
 end
