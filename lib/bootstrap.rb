@@ -491,32 +491,48 @@ _result_1 = (And[ {:ary=>ary_1 }])
 (_result_1)  
 end
 def prefixed()
- it_1 = ((nil))
+ ()
+()
+it_1 = ((nil))
 ()
 from_1 = ((nil))
 expr_1 = ((nil))
 m_1 = ((nil))
 _result_1 = ((nil))
 (it=(_or(proc{(it=(token("~"));next FAIL if it==FAIL;it)
-m_1 = ((it=(modifier());next FAIL if it==FAIL;it))
+m_1 = ((it=(prefixed());next FAIL if it==FAIL;it))
 _result_1 = ((Not[m_1])) },proc{(it=(token("&"));next FAIL if it==FAIL;it)
 expr_1 = ((it=(inlineHostExpr());next FAIL if it==FAIL;it))
 _result_1 = ((_Pred(expr_1))) },proc{(it=(token("&"));next FAIL if it==FAIL;it)
 (it=(_not{expr_1 = ((it=(inlineHostExpr());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
-m_1 = ((it=(modifier());next FAIL if it==FAIL;it))
+m_1 = ((it=(prefixed());next FAIL if it==FAIL;it))
 _result_1 = ((Lookahead[m_1])) },proc{from_1 = ((it=(modifier());next FAIL if it==FAIL;it))
 ()
 while true
-autovar_1=@input;r=(it=(_or(proc{(it=(seq("=>"));next FAIL if it==FAIL;it)
+autovar_3=@input;r=(it=(_or(proc{(it=(seq("=>"));next FAIL if it==FAIL;it)
 it_1 = ((it=(modifier());next FAIL if it==FAIL;it))
 (from_1=_Pass(from_1,it_1))
-from_1 = ((it=(optIter(from_1));next FAIL if it==FAIL;it)) },proc{(it=(seq("["));next FAIL if it==FAIL;it)
+from_1 = ((it=(optIter(from_1));next FAIL if it==FAIL;it))
+()
+while true
+autovar_1=@input;r=(it=(_not{(it=(space());next FAIL if it==FAIL;it)});break FAIL if it==FAIL;it)
+from_1 = ((it=(binding(from_1));break FAIL if it==FAIL;it)) 
+ break FAIL if r==FAIL
+end;@input=autovar_1
+() },proc{(it=(seq("["));next FAIL if it==FAIL;it)
 it_1 = ((it=(expression());next FAIL if it==FAIL;it))
 (from_1=_Enter(from_1,it_1))
 (it=(token("]"));next FAIL if it==FAIL;it)
-from_1 = ((it=(optIter(from_1));next FAIL if it==FAIL;it)) }));break FAIL if it==FAIL;it)
+from_1 = ((it=(optIter(from_1));next FAIL if it==FAIL;it))
+()
+while true
+autovar_2=@input;r=(it=(_not{(it=(space());next FAIL if it==FAIL;it)});break FAIL if it==FAIL;it)
+from_1 = ((it=(binding(from_1));break FAIL if it==FAIL;it)) 
  break FAIL if r==FAIL
-end;@input=autovar_1
+end;@input=autovar_2
+() }));break FAIL if it==FAIL;it)
+ break FAIL if r==FAIL
+end;@input=autovar_3
 ()
 _result_1 = ((from_1)) }));return FAIL if it==FAIL;it)
 (_result_1)  

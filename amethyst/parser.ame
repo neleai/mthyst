@@ -94,11 +94,11 @@ amethyst AmethystParser < Amethyst{
 	
 	sequence =  (nr prefixed)*:ary  @And
 
-  prefixed   = "~" modifier:m -> Not[m]
+  prefixed   = "~" prefixed:m -> Not[m]
              | "&" inlineHostExpr:expr  -> _Pred(expr)
-             | "&" ~inlineHostExpr:expr  modifier:m -> Lookahead[m]
-						 | modifier:from (  '=>' modifier:{from=_Pass(from,it)}      optIter(from):from
-												     | '[' expression:{from=_Enter(from,it)} "]" optIter(from):from
+             | "&" ~inlineHostExpr:expr  prefixed:m -> Lookahead[m]
+						 | modifier:from (  '=>' modifier:{from=_Pass(from,it)}      optIter(from):from (~space binding(from):from)*
+												     | '[' expression:{from=_Enter(from,it)} "]" optIter(from):from (~space binding(from):from)*
 														 )* {from}
 
  		modifier = term:t optIter(t):t  (~space binding(t):t)* -> t
