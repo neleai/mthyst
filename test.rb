@@ -21,7 +21,7 @@ o.puts a2ruby(File.new("amethyst/traverser.ame").read)
 
 o.close
 require 'inliner.rb'
-t = And[Act["aaa"],Act["bbb"],And[Act["ccc"]]]
+t = And[And[Act["aaa"],Act["bbb"],And[Act["ccc"],Or[Or[And[And[[Act['a']]]]]]]]]
 pp t
-res= Test.new.parse(:test,t)
+res= And_Or_Optimizer.new.parse(:opt,t)
 pp res

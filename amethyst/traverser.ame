@@ -3,11 +3,11 @@ amethyst Traverser {
                       | Array[ traverse_item(rule)* ]
 											| AmethystAST[ traverse(rule) ]
 											| .
-	traverse(rule) = 
-					{puts @this.inspect}
-        	{(@this.instance_variables).map{|v| [v,@this.instance_variable_get(v)] }}=>[
-			  		[ :key  traverse_item(rule):r {@this.instance_variable_set(key,r)} ]* 
-		  		]
+	traverse(rule) = .*
+        	@this:this
+					{(@this.instance_variables).map{|v| [v,@this.instance_variable_get(v)] }}=>[
+			  		[ :key  traverse_item(rule):r {this.instance_variable_set(key,r)} ]* 
+					]
 					@this
 }
 
@@ -16,4 +16,11 @@ amethyst Test < Traverser {
 	test = traverse('visit')
 	
 	visit = Act[ traverse('visit') {@ary<<";"}  @this]
+}
+
+amethyst And_Or_Optimizer < Traverser{
+	opt = traverse('visit')
+	
+	visit = And[ traverse('visit') {@this.ary=@ary.map{|i| (i.is_a?(And)) ? i.ary : i}.flatten} {(@ary.size==1) ? @ary[0] : @this} ]
+				| Or[ traverse('visit') {@this.ary=@ary.map{|i| (i.is_a?(Or)) ? i.ary : i}.flatten}  {(@ary.size==1) ? @ary[0] : @this} ]
 }
