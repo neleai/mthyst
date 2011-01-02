@@ -34,6 +34,9 @@ module AmethystAST
 	def this
 		self
 	end
+	def inspect
+		"#{self.class}[#{(ary.map{|a| a.inspect}+["{#{(instance_variables-['@ary']).map{|v| ":#{v[1..-1]}=>#{instance_variable_get(v).inspect}" }*', '}}"] )*"," }]"
+	end
 end
 def makeclasses(parent,*ary)
 	ary.each{|a| 

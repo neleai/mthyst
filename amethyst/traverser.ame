@@ -1,26 +1,20 @@
 amethyst Traverser {
-	traverse_item(rule) = apply(rule):a  {@@changed=true} {a}
-                      | Array[ traverse_item(rule)* ]
-											| AmethystAST[ traverse(rule) ]
+	traverse_item = visit:a  {@@changed=true} {a}
+                      | Array[ traverse_item* ]
+											| AmethystAST[ traverse ]
 											| .
-	traverse(rule) = .*
+	traverse = .*
         	@this:this
 					{(@this.instance_variables).map{|v| [v,@this.instance_variable_get(v)] }}=>[
-			  		[ :key  traverse_item(rule):r {this.instance_variable_set(key,r)} ]* 
+			  		[ :key  traverse_item:{this.instance_variable_set(key,it)} ]* 
 					]
 					@this
 }
 
 
-amethyst Test < Traverser {
-	test = traverse('visit')
-	
-	visit = Act[ traverse('visit') {@ary<<";"}  @this]
-}
-
 amethyst And_Or_Optimizer < Traverser{
-	opt = traverse('visit')
+	root = traverse
 	
-	visit = And[ traverse('visit') {@this.ary=@ary.map{|i| (i.is_a?(And)) ? i.ary : i}.flatten} {(@ary.size==1) ? @ary[0] : @this} ]
-				| Or[ traverse('visit') {@this.ary=@ary.map{|i| (i.is_a?(Or)) ? i.ary : i}.flatten}  {(@ary.size==1) ? @ary[0] : @this} ]
+	visit = And[ traverse {@this.ary=@ary.map{|i| (i.is_a?(And)) ? i.ary : i}.flatten} {(@ary.size==1) ? @ary[0] : @this} ]
+				| Or[  traverse {@this.ary=@ary.map{|i| (i.is_a?(Or )) ? i.ary : i}.flatten} {(@ary.size==1) ? @ary[0] : @this} ]
 }

@@ -3,9 +3,24 @@ class Gram
 		@name,@parent=grammar.name,grammar.parent
 		@rules={}
 		grammar.rules.each{|r| 
-			r=And_Or_Optimizer.new.parse(:opt,r)
+			r=And_Or_Optimizer.new.parse(:root,r)
+			r=Move_Assignments2.new.parse(:root,r)
+			r=And_Or_Optimizer.new.parse(:root,r)
+			r=Communize_Or2.new.parse(:root,r)
+			r=And_Or_Optimizer.new.parse(:root,r)
+
+#			r=.new.parse(:root,r)
 			@rules[r.name]=r
 		}
+	end
+	def inline(from,to)
+		fromrule,nm=@name,self
+		begin
+			raise "cant find #{from} to inline" if nm=="AmethystCore"
+			fromrule= Compiler.grammars[nm].rules[from]
+			nm=Compiler.grammars[nm].parent
+		end until fromrule
+		@rules[to]=Inliner2.new.parse(:opt,@rules[to])
 	end
 end
 class Compiler
