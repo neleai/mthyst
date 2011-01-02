@@ -1,0 +1,5 @@
+amethyst Analyze_Variables2 < Traverser {
+  root = Rule[  {@@variables=Hash.new{|k,v| k[v]=v} ;(@locals+@args).each{|v| @@variables[v]=_Variable(v)}} traverse('visit')  @this] 
+
+	visit = Args[ traverse('visit') {@this.ary=@ary.map{|a| @@variables[a] }}  @this]
+}

@@ -1,0 +1,6 @@
+amethyst AmethystTranslator2 < Amethyst {	
+
+	trans = Rule[]
+				| And[trans*:{it*'\n'} ] 
+				| Or[ ]	
+}
