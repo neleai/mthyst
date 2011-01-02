@@ -1,10 +1,10 @@
 amethyst Dead_Code_Detector2 < Traverser {
-	root = @this=>Rule[{puts @this.inspect} {@@edges=Oriented_Graph.new ; @@marked=[_Variable("_result")]}  traverse {@@edges.reachable(@@marked)}:reachable {@this.reachable=reachable} @this]
+	root = @this=>Rule[{@@edges=Oriented_Graph.new ; @@marked=[_Variable("_result")]}  traverse {@@edges.reachable(@@marked)}:reachable {@this.reachable=reachable} @this]
 	
 	visit = Apply[:name vars_in:var traverse:this] ->  @@marked +=var;this
 				| Pass[@var=>vars_in:var {@@marked+=var} traverse]
 				| Act[ traverse:this {@@marked<<this if @pred} 
-							 vars_in:var ] -> var.each{|v| @@edges.add(v,this); @@edges.add(this,v); @@marked<<this if v.is_a? Local};this
+							 @ary=>[vars_in]:var ] -> var.each{|v| @@edges.add(v,this); @@edges.add(this,v);} ;@@marked<<this if v.is_a? Local; this
 				| Set[@name:v   traverse:this @expr=>vars_in:var ] -> var.each{|w| @@edges.add(v,w)};this
 				| Result[@vars=>[vars_in]:var traverse:this] -> var.each{|w| @@edges.add(this,w) } ; this
 				
@@ -21,10 +21,9 @@ amethyst Dead_Code_Detector2 < Traverser {
 }
 
 amethyst Dead_Code_Deleter2 < Traverser{
-		root = @this=>traverse
+		root = @this=>Rule[ @reachable:{@@reachable=it} traverse]
 
-		visit = Rule[ @reachable:{@@reachable=it} traverse]
-	        | Act[@this:this .*] -> @@reachable[this] ? this : Act[]
+		visit = Act[@this:this .*] -> @@reachable[this] ? this : Act[]
 					| Set[@name:name traverse @expr:expr @this:this] -> @@reachable[name] ? this : expr
 					| Result[@this:this] ->@@reachable[this] ? this : Act[]
 }

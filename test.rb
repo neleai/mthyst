@@ -10,8 +10,9 @@ def a2ruby(s)
 	a=Analyze_Variables.new
 	par=p.parse(:igrammar,s)
 	opt=o.parse(:itrans,par)
-	opt=d.parse(:itrans,opt)
+#	opt=d.parse(:itrans,opt)
 	opt=a.parse(:itrans,opt)
+	
 	ruby=t.parse(:itrans,opt)
 end
 o=File.open("inliner.rb","w")

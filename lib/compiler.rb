@@ -9,8 +9,8 @@ class Gram
 			r=And_Or_Optimizer.new.parse(:root,r)
 			r=Communize_Or2.new.parse(:root,r)
 			r=And_Or_Optimizer.new.parse(:root,r)
-#			r=Dead_Code_Detector2.new.parse(:root,r)
-#			r=Dead_Code_Deleter2.new.parse(:root,r)
+			r=Dead_Code_Detector2.new.parse(:root,r)
+			r=Dead_Code_Deleter2.new.parse(:root,r)
 			
 #			r=.new.parse(:root,r)
 			@rules[r.name]=r
