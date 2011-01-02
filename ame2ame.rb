@@ -8,29 +8,26 @@ def a2ruby(s)
 	c=Communize_Or.new
 	t=AmethystTranslator.new
 	i=Inliner.new
-	par=p.parse(:igrammar,s)
-#	par=o.parse(:itrans,par)
-#pp par
-#pp inl
-	par=o.parse(:itrans,par)
+	par=AmethystParser.new.parse(:igrammar,s)
+	par=AmethystOptimizer2.new.parse(:itrans,par)
 
-	par=Detect_Variables.new.parse(:itrans,par)
+#	par=Detect_Variables.new.parse(:itrans,par)
 	par=Analyze_Variables.new.parse(:itrans,par)
 #pp inl
 
 par= Move_Assignments.new.parse(:itrans,par)
-par=Dead_Code_Detector.new.parse(:itrans,par)
-par=Dead_Code_Deleter.new.parse(:itrans,par)
+#par=Dead_Code_Detector.new.parse(:itrans,par)
+#par=Dead_Code_Deleter.new.parse(:itrans,par)
 inl = par
-	inl=i.parse(:inlineit,["spaces",inl])
-	inl=i.parse(:inlineit,["space",inl])
-	inl=i.parse(:inlineit,["char",inl])
-	inl=i.parse(:inlineit,["regch",inl])
+#	inl=i.parse(:inlineit,["spaces",inl])
+#	inl=i.parse(:inlineit,["space",inl])
+#	inl=i.parse(:inlineit,["char",inl])
+#	inl=i.parse(:inlineit,["regch",inl])
 if inl!=FAIL
 	par =inl
-par= Move_Assignments.new.parse(:itrans,par)
-	par=Dead_Code_Detector.new.parse(:itrans,par)
-	par=Dead_Code_Deleter.new.parse(:itrans,par)
+#par= Move_Assignments.new.parse(:itrans,par)
+#	par=Dead_Code_Detector.new.parse(:itrans,par)
+#	par=Dead_Code_Deleter.new.parse(:itrans,par)
 end
 #	opt=c.parse(:itrans,inl)
 	par=o.parse(:itrans,par)

@@ -37,7 +37,7 @@ amethyst Communize_Or2 < Traverser {
 	
 	visit = Or[ And[traverse]+:ands eof
 							{common=ands[0].size
-								ands.each{|a| 0.upto(common){|n| (common=n ;next) if a[n].to_yaml!=ands[0][n].to_yaml}}
+								ands.each{|a| 0.upto(common){|n| (common=[common,n].min ;next) if a[n].to_yaml!=ands[0][n].to_yaml}}
 								commn=ands[0].ary[0,common]
 								o=[]
 								ands.each{|a| o<< And[{:ary=>a.ary[common,a.size-common]}] unless common==a.size	}

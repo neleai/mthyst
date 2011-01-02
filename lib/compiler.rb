@@ -3,16 +3,18 @@ class Gram
 		@name,@parent=grammar.name,grammar.parent
 		@rules={}
 		grammar.rules.each{|r| 
+			r=Analyze_Variables2.new.parse(:root,r)
 			r=And_Or_Optimizer.new.parse(:root,r)
 			r=Move_Assignments2.new.parse(:root,r)
 			r=And_Or_Optimizer.new.parse(:root,r)
 			r=Communize_Or2.new.parse(:root,r)
 			r=And_Or_Optimizer.new.parse(:root,r)
-			r=Dead_Code_Detector2.new.parse(:root,r)
+#			r=Dead_Code_Detector2.new.parse(:root,r)
 #			r=Dead_Code_Deleter2.new.parse(:root,r)
-
+			
 #			r=.new.parse(:root,r)
 			@rules[r.name]=r
+			puts AmethystTranslator.new.parse(:itrans,[r])
 		}
 	end
 	def inline(from,to)
