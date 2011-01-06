@@ -1,5 +1,5 @@
 amethyst Dead_Code_Detector2 < Traverser {
-	root = @this=>Rule[{@@edges=Oriented_Graph.new ; @@marked=[_Variable("_result")]}  traverse {@@edges.reachable(@@marked)}:reachable {@this.reachable=reachable} @this]
+	root = @this=>Rule[{@@edges=Oriented_Graph.new ; @@marked=[_Variable("_result")]}  traverse {@@edges.reachable(@@marked)}:reachable {@reachable=reachable} @this]
 	
 	visit = Apply[:name vars_in:var traverse:this] ->  @@marked +=var;this
 				| Pass[@var=>vars_in:var {@@marked+=var} traverse]
