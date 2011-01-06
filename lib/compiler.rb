@@ -24,7 +24,7 @@ class Gram
 			fromrule= Compiler.grammars[nm].rules[from]
 			nm=Compiler.grammars[nm].parent
 		end until fromrule
-		@rules[to]=Inliner2.new.parse(:opt,@rules[to])
+		@rules[to]=Inliner2.new.parse(:opt,[fromrule, @rules[to]])
 	end
 end
 class Compiler

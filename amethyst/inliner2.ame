@@ -1,18 +1,13 @@
-amethyst Renamer < AmethystOptimizer {
-	trans = Rule[{@@newvars={}} @name:name @args=>args:args @locals:locals @body=>trans:body ] @Rule	
-				| super
+amethyst Renamer < Traverser {
+	root = Rule[{@@newvars={}} traverse]
 	
-	arg = Variable[ :name @this:this ]  -> @@newvars[this] ? @@newvars[this] : ($av+=1; @@newvars[this]=_Variable(name,$av) ;@@newvars[this] )
-			| super
+	visit = Variable[ :name @this:this ]  -> @@newvars[this] ? @@newvars[this] : ($av+=1; @@newvars[this]=_Variable(name,$av) ;@@newvars[this] )
 }
-amethyst Inliner < AmethystOptimizer {
 
- inline(rule,grammar)= {rule}=>Rule[@name:name @args:args @locals:locals @body:body]  {@@result=autovar;@@name=name;@@args=args;@@body=Set[{:name=>@@result ,:expr=>body}] } {grammar}=>[itrans]
- 
- trans = Apply[:name &{name==@@name} arg*:args] ->  body=@@body; args.each_index{|i| body=And[Set[{:name=>@@args[i],:expr=>Act[args[i]]}],body] } ; And[body,Act[@@result]]
-       | {super}
-
-	inlineit = :name :grammar  getrule(name,grammar):rule inline(rule,grammar)
+amethyst Inliner2 < Traverser {
 	
-	getrule(name,grammar) = {grammar}=>[ (Grammar[ @rules=>[ Rule[@name:n (&{ n==name} @this:rule | empty ) ]* ] ] |anything)* ]   -> Renamer.new.parse(:trans, [rule])
+	root = :from :to {Renamer.new.parse(:root, [from])}=>Rule[@name:name @args:args @locals:locals @body:body]  {@@result=autovar;@@name=name;@@args=args;@@body=Set[{:name=>@@result ,:expr=>body}] } 
+				 {to}=>Rule[traverse]
+ 
+ visit = Apply[:name &{name==@@name} arg*:args] ->  body=@@body; args.each_index{|i| body=And[Set[{:name=>@@args[i],:expr=>Act[args[i]]}],body] } ; And[body,Act[@@result]]
 }
