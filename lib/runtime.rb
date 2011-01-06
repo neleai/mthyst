@@ -45,13 +45,13 @@ class AmethystCore
 		r
 	end
 		
+	def [](key)
+		@src.send(key) if @src.respond_to? key
+	end
 
-
-	def _key(key,&block)
-    v=@src.instance_variable_get("@#{key}")
-    v||=@src.send(key) if @src.respond_to? key
-	 	v   
-  end
+	def []=(key,value)
+	 @src.send(key+"=",value)
+	end
 
 	def item
 		return FAIL unless @src.respond_to?(:size) && @input<@src.size
