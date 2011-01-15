@@ -1,6 +1,17 @@
-amethyst AmethystTranslator2 < Amethyst {	
+amethyst AmethystRBTranslator < Traverser{
+	root = Grammar[  {@@rbcode="";@@rbno=0} traverse  {@rbcode=@@rbcode} @this]
 
-	trans = Rule[]
-				| And[trans*:{it*'\n'} ] 
-				| Or[ ]	
+	visit = Act[:a {@@rbno+=1; @@rbcode<<"def callback#{@@rbno}\n #{a}\nend\n"; @actno=@@rbno }   traverse]
+}
+amethyst AmethystCTranslator < Amethyst {	
+	trans = Grammar[ @rules=>trans ]
+			  | Rule[{@@labelno=0; @@faillabel="fail"} @name:name  @body=>trans:body ] -> "int #{name}(cstruct *ptr){ #{body} \n return 0; \n fail:return 1; }"
+				| And[trans*:t ] -> "#{t*"\n"} "
+				| Or[{@@labelno+=1}:ln {0}:on rw('',`({on+=1} rw("or#{ln}_#{on+1}",`trans`) )*:t`) ] {on=0; "{ int oldlen=ptr->len;\n#{(t+["goto #{@@faillabel};"]).map{|i| on+=1;"or#{ln_1}_#{on_1}: ptr->len=oldlen;#{i}; goto success#{ln_1};\n" }*""} success#{ln}:; }"}
+				| Act[trans:act @pred:pred @actno:actno] -> f="rb_funcall(ptr->obj,callback#{actno},0)"; pred ? "if (!RTEST(#{f})) goto #{@@faillabel};" : f+";"
+				| Many[ rw('many',`trans:t`)  ] ->  "while(!stop){\n #{t} \n}"
+				| Apply[:name ] -> "if (#{name}(ptr)) goto #{@@faillabel};"
+				| String
+
+	  rw(word,prc) = {@@faillabel}:rwo {@@faillabel=word } apply(prc):x {@@faillabel=rwo; x }
 }

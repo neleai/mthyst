@@ -186,7 +186,7 @@ makeclasses(Object,
     [:Many,:o],
     :Many1,
     :Comment,
-    [:Act,:uses,:pred],
+    [:Act,:uses,:pred,:actno],
     :Lookahead,
     :Not,
     :Seq,
@@ -196,10 +196,12 @@ makeclasses(Object,
 		[:Variable,:number],
 		[:Pass,:var,:to,:enter],
     [:Rule,:name,:args,:locals,:body,:reachable],
-    [:Grammar,:name,:parent,:rules],
+    [:Grammar,:name,:parent,:rules,:rbcode],
 		:Local,
 		:Memo,
-		:Break
+		:Break,
+		:Cut,
+		:Stop
 )
 
 def quote(s)
