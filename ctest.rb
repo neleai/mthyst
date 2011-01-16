@@ -27,7 +27,10 @@ require 'ctranslator.rb'
 t= [Grammar[{:rules=>Rule[{:name=>"ada",:body=>And[Act["aaa"],Act[{:ary=>["bbb"],:pred=>true}],Or[Act["a"],Act[{:ary=>["bbb"],:pred=>true}]],Many[Act[{:ary=>["bbb"],:pred=>true}]] ]  }]}]]
 t=[Grammar[{:name=>"Test", :rules=>[Rule[{:name=>"ada",:body=>And[Apply['ee'],Char["a"],Or[And[Char["b"],Act["puts 42"]],And[Char["c"],Act["puts 43"]]]]  }],Rule[{:name=>"ee",:body=>And[Char["f"],Act["puts 23"]]}]]}]]
 t= AmethystRBTranslator.new.parse(:root,t)
-puts t.rbcode
+File.open("cthyst/test.rb","w"){|f|
+	f.puts t.rbcode
+}
 res= AmethystCTranslator.new.parse(:trans,[t])
-puts res.inspect
-puts res
+File.open("cthyst/test.c","w"){|f|
+f.puts res
+}
