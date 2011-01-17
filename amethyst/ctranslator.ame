@@ -7,11 +7,12 @@ amethyst AmethystCTranslator < Amethyst {
 	trans = Grammar[ @name:name @rules=>[trans*]:t @rbno:rbno ] -> s="#include \"cthyst.h\"\nVALUE cls_#{name}"; rbno.times{|i| s<<",callback#{i}"}; s<<";"; s<<(t*"\n") ; s<<"\nvoid Init_#{name}(){ cls_#{name}=rb_define_class(\"#{name}\",rb_cObject); "; rbno.times{|i| s<<"callback#{i}=rb_intern(\"callback#{i}\");"};s<<" rb_define_method(cls_#{name},\"parse\",t_parse,1); }"; s
 			  | Rule[{@@labelno=0; @@faillabel="fail"} @name:name  @body=>trans:body ] -> "int #{name}(cstruct *ptr){ #{body} \n return 0; \n fail:return 1; }"
 				| And[trans*:t ] -> "#{t*"\n"} "
-				| Or[{@@labelno+=1}:ln {0}:on rw('',`({on+=1} rw("or#{ln}_#{on+1}",`trans`) )*:t`) ] {on=0; "{ int oldpos=ptr->pos;\n#{(t+["goto #{@@faillabel};"]).map{|i| on+=1;"or#{ln_1}_#{on_1}: ptr->pos=oldpos;#{i}; goto success#{ln_1};\n" }*""} success#{ln}:; }"}
+				| Or[{@@labelno+=1}:ln {0}:on rw('',`({on+=1} rw("or#{ln}_#{on+1}",`trans`) )*:t`) ] {on=0; "{ int oldpos=ptr->pos;int cut=0;\n#{(t+["goto #{@@faillabel};"]).map{|i| on+=1;"or#{ln_1}_#{on_1}: ptr->pos=oldpos; if(cut) goto #{@@faillabel}; #{i}; goto success#{ln_1};\n" }*""} success#{ln}:; }"}
 				| Act[:act @pred:pred @actno:actno] -> f="rb_funcall(ptr->obj,callback#{actno},0)"; pred ? "if (!RTEST(#{f})) goto #{@@faillabel};" : f+";"
 				| Many[ rw('many',`trans:t`)  ] ->  "while(!stop){\n #{t} \n}"
 				| Apply[:name ] -> "if (#{name}(ptr)) goto #{@@faillabel};"
 				| Char[:c] -> "if (ptr->str[ptr->pos]!='#{c}') goto #{@@faillabel};ptr->pos++;"
-			
+				| Cut -> "cut=1;"
+				| Stop ->	"stop=1;"
 	  rw(word,prc) = {@@faillabel}:rwo {@@faillabel=word } apply(prc):x {@@faillabel=rwo; x }
 }
