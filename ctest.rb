@@ -25,8 +25,8 @@ o.close
 require 'ctranslator.rb'
 #t = Seq[Seq[Act["aaa"],Act["bbb"],Seq[Act["ccc"],Or[Or[Seq[Seq[[Act['a']]]]]]]]]
 #t= [Grammar[{:rules=>Rule[{:name=>"ada",:body=>Seq[Act["aaa"],Act[{:ary=>["bbb"],:pred=>true}],Or[Act["a"],Act[{:ary=>["bbb"],:pred=>true}]],Many[Act[{:ary=>["bbb"],:pred=>true}]] ]  }]}]]
-t=[Grammar[{:name=>"Test", :rules=>[Rule[{:name=>"ada",:body=>Seq[Apply['ee'],Char["a"],Or[Seq[Char["b"],Act["puts 42"]],Seq[Char["c"],Act["puts 43"]]]]  }],
-Rule[{:name=>"ee",:body=>Seq[Char["f"],Act["puts 23"],Many[Or[Char['s'],Stop[]]]]}]]}],
+t=[Grammar[{:name=>"Test", :rules=>[Rule[{:name=>"ada",:locals=>[],:body=>Seq[Apply['ee'],Char["a"],Or[Seq[Char["b"],Act["puts 42"]],Seq[Char["c"],Act["puts 43"]]]]  }],
+Rule[{:name=>"ee",:locals=>["a","b"],:body=>Seq[Char["f"],Act["puts 23"],Many[Or[Char['s'],Stop[]]]]}]]}],
 
 ]
 t= AmethystRBTranslator.new.parse(:root,t)
