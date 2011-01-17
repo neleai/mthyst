@@ -3,10 +3,10 @@ amethyst AmethystRBTranslator < Traverser{
 
 	visit = Act[rbtrans:a {@@rbcode<<"def callback#{@@rbno}\n #{a}\nend\n"; @actno=@@rbno;@@rbno+=1 }   traverse]
 
-	rbtrans =  Args[arg*:a] -> a*""
-		      | Strin[arg*:a] -> a*""
-					| Key[ :name] 									 -> " key[#{number}]"
-    		  | Variable[:name @number:number] -> " self[#{number}]"
+	rbtrans =  Args[rbtrans*:a] -> a*""
+		      | Strin[rbtrans*:a] -> a*""
+					| Key[ :name] 									 -> " key[#{name}]"
+    		  | Local[:number] -> " self[#{number}]"
      			| Global[:name] 								 -> " @name"
 					| String
 }
