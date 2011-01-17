@@ -24,8 +24,11 @@ o.puts a2ruby(File.new("amethyst/ctranslator.ame").read)
 o.close
 require 'ctranslator.rb'
 #t = And[And[Act["aaa"],Act["bbb"],And[Act["ccc"],Or[Or[And[And[[Act['a']]]]]]]]]
-t= [Grammar[{:rules=>Rule[{:name=>"ada",:body=>And[Act["aaa"],Act[{:ary=>["bbb"],:pred=>true}],Or[Act["a"],Act[{:ary=>["bbb"],:pred=>true}]],Many[Act[{:ary=>["bbb"],:pred=>true}]] ]  }]}]]
-t=[Grammar[{:name=>"Test", :rules=>[Rule[{:name=>"ada",:body=>And[Apply['ee'],Char["a"],Or[And[Char["b"],Act["puts 42"]],And[Char["c"],Act["puts 43"]]]]  }],Rule[{:name=>"ee",:body=>And[Char["f"],Act["puts 23"]]}]]}]]
+#t= [Grammar[{:rules=>Rule[{:name=>"ada",:body=>And[Act["aaa"],Act[{:ary=>["bbb"],:pred=>true}],Or[Act["a"],Act[{:ary=>["bbb"],:pred=>true}]],Many[Act[{:ary=>["bbb"],:pred=>true}]] ]  }]}]]
+t=[Grammar[{:name=>"Test", :rules=>[Rule[{:name=>"ada",:body=>And[Apply['ee'],Char["a"],Or[And[Char["b"],Act["puts 42"]],And[Char["c"],Act["puts 43"]]]]  }],
+Rule[{:name=>"ee",:body=>And[Char["f"],Act["puts 23"],Many[Or[Char['s'],Stop[]]]]}]]}],
+
+]
 t= AmethystRBTranslator.new.parse(:root,t)
 File.open("cthyst/test.rb","w"){|f|
 	f.puts t.rbcode
