@@ -15,18 +15,21 @@ static VALUE t_new(VALUE clas){
 	return Data_Wrap_Struct(clas,0,0,ptr);
 }
 
-static void movebinding(cstruct *ptr,int no){ptr->curscope+=no;}
-
+static void addbinding(cstruct *ptr,int no){int i;
+	for(i=0;i<no;i++){ ptr->curscope[i]=Qnil;} 
+	ptr->curscope+=no;}
+static void rmbinding(cstruct *ptr,int no){
+	ptr->curscope-=no;}
 
 static VALUE getlocal(VALUE self,VALUE no){
 	cstruct  *ptr;
 	Data_Get_Struct(self,cstruct,ptr);
-	return ptr->curscope[FIX2INT(no)];
+	return ptr->curscope[-FIX2INT(no)];
 }
 static VALUE setlocal(VALUE self,VALUE no,VALUE val){
 	cstruct  *ptr;
 	Data_Get_Struct(self,cstruct,ptr);
- return ptr->curscope[FIX2INT(no)]=val;
+ return ptr->curscope[-FIX2INT(no)]=val;
 }
 
 
