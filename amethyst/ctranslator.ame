@@ -5,13 +5,13 @@ amethyst AmethystRBTranslator < Traverser{
 
 	rbtrans =  Args[arg*:a] -> a*""
 		      | Strin[arg*:a] -> a*""
-					| Key[ :name] 									 -> " key['#{name}']"
-    		  | Variable[:name @number:number] -> " variable['#{name}_#{number}']"
-     			| Global[:name] 								 -> " global['#{name}']"
+					| Key[ :name] 									 -> " key[#{number}]"
+    		  | Variable[:name @number:number] -> " self[#{number}]"
+     			| Global[:name] 								 -> " @name"
 					| String
 }
 amethyst AmethystCTranslator < Amethyst {	
-	trans = Grammar[ @name:name @rules=>[trans*]:t @rbno:rbno ] -> s="#include \"cthyst.h\"\nVALUE cls_#{name}"; rbno.times{|i| s<<",callback#{i}"}; s<<";"; s<<(t*"\n") ; s<<"\nvoid Init_#{name}(){ cls_#{name}=rb_define_class(\"#{name}\",rb_cObject); "; rbno.times{|i| s<<"callback#{i}=rb_intern(\"callback#{i}\");"};s<<" rb_define_method(cls_#{name},\"parse\",t_parse,1); }"; s
+	trans = Grammar[ @name:name @rules=>[trans*]:t @rbno:rbno ] -> s="#include \"cthyst.h\"\nVALUE cls_#{name}"; rbno.times{|i| s<<",callback#{i}"}; s<<";"; s<<(t*"\n") ; s<<"\nvoid Init_#{name}(){ cls_#{name}=rb_define_class(\"#{name}\",rb_cObject); "; rbno.times{|i| s<<"callback#{i}=rb_intern(\"callback#{i}\");"};s<<" init_clas(cls_#{name}); }"; s
 			  | Rule[{@@labelno=0; @@faillabel="fail"} @name:name  @body=>trans:body ] -> "int #{name}(cstruct *ptr){ #{body} \n return 0; \n fail:return 1; }"
 				| Seq[trans*:t ] -> "#{t*"\n"} "
 
