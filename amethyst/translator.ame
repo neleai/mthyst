@@ -6,7 +6,7 @@ amethyst AmethystTranslator < Amethyst {
 				| Rule[ { @@varhash=Hash.new{|h,k| h[k]={}}  } 
 								@name:name @args=>args:argss @body=>trans:body] -> "def #{name}(#{argss})\n #{body} \nend\n"
 				| Or[rw('next', `transfn*:ors`)]  failwrap("_or(#{ors*","})")
-				| And[trans*:t ] -> "#{t*"\n"} "
+				| Seq[trans*:t ] -> "#{t*"\n"} "
 				| Not[rw('next',`trans:t`) ]  failwrap("_not{#{t}}")
 				| Act[args:t @pred:pred] -> pred ?  failwrap("(#{t})||FAIL") : "(#{t})"
   			| Lookahead[rw('next',`trans:t`) ]  failwrap("_lookahead{#{t}}")

@@ -4,7 +4,7 @@ amethyst AmethystOptimizer < Amethyst {
 	trans = Grammar[@name:name @parent:parent @rules=>transs:rules] @Grammar
 				| Rule[@name:name @args=>args:args @body=>trans:body @locals:locals] @Rule
 				| Or[transfn*:ary]  @Or
-				| And[trans*:ary ]  @And
+				| Seq[trans*:ary ]  @Seq
 				| Not[trans:ary[] ] @Not
   			| Lookahead[trans:ary[] ]  @Lookahead
         | Comment[anything*:ary]  @Comment

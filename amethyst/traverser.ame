@@ -12,9 +12,9 @@ amethyst Traverser {
 }
 
 
-amethyst And_Or_Optimizer < Traverser{
+amethyst Seq_Or_Optimizer < Traverser{
 	root = traverse
 	
-	visit = And[ traverse {@this.ary=@ary.map{|i| (i.is_a?(And)) ? i.ary : i}.flatten} {(@ary.size==1) ? @ary[0] : @this} ]
+	visit = Seq[ traverse {@this.ary=@ary.map{|i| (i.is_a?(Seq)) ? i.ary : i}.flatten} {(@ary.size==1) ? @ary[0] : @this} ]
 				| Or[  traverse {@this.ary=@ary.map{|i| (i.is_a?(Or )) ? i.ary : i}.flatten} {(@ary.size==1) ? @ary[0] : @this} ]
 }

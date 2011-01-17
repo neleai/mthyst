@@ -12,15 +12,15 @@ makeclasses(Object,
     [:Act,:uses,:pred,:actno],
     :Lookahead,
     :Not,
-    :Seq,
-    :Or,
     :And,
+    :Or,
+    :Seq,
 		[:Strin],
 		[:Variable,:number],
 		[:Pass,:var,:to,:enter],
     [:Rule,:name,:args,:locals,:body,:reachable],
     [:Grammar,:name,:parent,:rules,:rbcode,:rbno],
-		:Local,
+		:Local,:Global,
 		:Memo,
 		:Break,
 		:Cut,
@@ -43,7 +43,7 @@ def _Enter(from,to)
 end
 def _Pass(from,to,enter=false)
 	a=autovar
-	And[_Set(a,from), Pass[{:to=>to,:enter=>enter,:var=>a}]]
+	Seq[_Set(a,from), Pass[{:to=>to,:enter=>enter,:var=>a}]]
 end
 
 
@@ -56,7 +56,7 @@ end
 
 def _Many(expr,many1=false)
   a=autovar
-  And[{:ary=>( [_Set(a, _Act("[]"))]+(many1 ? [_Append(a,expr)] : [])+[Many[{:ary=>[_Append(a,expr)],:o=>autovar}],_Act(a)])}]
+  Seq[{:ary=>( [_Set(a, _Act("[]"))]+(many1 ? [_Append(a,expr)] : [])+[Many[{:ary=>[_Append(a,expr)],:o=>autovar}],_Act(a)])}]
 end
 def _Many1(expr)
   _Many(expr,true)
@@ -69,7 +69,7 @@ def _Pred(expr)
   _Act(expr,true)
 end
 def _body(body)
-	And[_Set("_result",body), _Act(_Variable("_result"))]
+	Seq[_Set("_result",body), _Act(_Variable("_result"))]
 end
 
 $varhash=Hash.new{|h,k| h[k]={}}
@@ -97,7 +97,7 @@ amethyst AmethystParser < Amethyst{
 	
 	choice = listOf('sequence',`"|"`):ary @Or
 	
-	sequence =  (nr prefixed)*:ary  @And
+	sequence =  (nr prefixed)*:ary  @Seq
 
   prefixed   = "~" prefixed:m -> Not[m]
              | "&" inlineHostExpr:expr  -> _Pred(expr)
@@ -116,7 +116,7 @@ amethyst AmethystParser < Amethyst{
               | empty -> t
   
 	binding(exp) = {exp}:expr ":"  name:name ('[]' {true} | empty {false} ):append ->_Set(name,expr,append)
-               | ":" inlineHostExpr:e -> And[ _Set("it",exp) , _Act(e) ]
+               | ":" inlineHostExpr:e -> Seq[ _Set("it",exp) , _Act(e) ]
 
 
 	term  =  className:cls -> Apply["clas",cls]
@@ -137,7 +137,7 @@ amethyst AmethystParser < Amethyst{
 	key         = "@" className:name  argsOpt('[',']'):args  @Result
               | "@" name:name   @Key
 
-  collect(ors) = -> a=autovar; And[Or[{:ary=>ors.ary.map{|ands| And[{:ary=>ands.ary.map{|expr| _Append(a,expr)}}]}}],_Act(a)]
+  collect(ors) = -> a=autovar; Seq[Or[{:ary=>ors.ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| _Append(a,expr)}}]}}],_Act(a)]
 
 	eChar = '\\' char:c   -> "\\#{c}"
   	  	| _args('#{','}')

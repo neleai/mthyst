@@ -34,7 +34,7 @@ amethyst Constant_Propagator < AmethystOptimizer {
 }
 
 amethyst Communize_Or < AmethystOptimizer {
-	trans = Or[ &(And[ trans:first  .*] ) And[ trans:fst &{first.isomorphic(fst)} trans*:rest {And[{:ary=>rest}]}:ary[]  ]* ] -> And[first ,Or[{:ary=>ary}] ]
+	trans = Or[ &(Seq[ trans:first  .*] ) Seq[ trans:fst &{first.isomorphic(fst)} trans*:rest {Seq[{:ary=>rest}]}:ary[]  ]* ] -> Seq[first ,Or[{:ary=>ary}] ]
 	| super
 }
 
@@ -43,7 +43,7 @@ amethyst Move_Assignments < AmethystOptimizer {
 				| super
 
 	move(append,name) = Or[ move(append,name)*:ary ] @Or
-								| And[ (:el (&eof {el}=>move(append,name) | {el}) )*:ary ] @And
+								| Seq[ (:el (&eof {el}=>move(append,name) | {el}) )*:ary ] @Seq
 								| Pass[@var:var @to=>move(append,name):to @enter:enter] @Pass
 								| anything:{_Set(name,it,append)}
 }

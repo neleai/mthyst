@@ -2,9 +2,9 @@ amethyst AmethystOptimizer2 < AmethystOptimizer {
 trans = Or[transfn*:ary ]
           {ary=ary.map{|o| (o.is_a?(Or)) ? o.ary : o}.flatten}
           (&{ary.size==1} {ary[0]} | @Or)
-        | And[trans*:ary ]
-          {ary=ary.map{|a| (a.is_a?(And)) ? a.ary : a}.flatten}
-				  (&{ary.size==1} {ary[0]} | @And)
+        | Seq[trans*:ary ]
+          {ary=ary.map{|a| (a.is_a?(Seq)) ? a.ary : a}.flatten}
+				  (&{ary.size==1} {ary[0]} | @Seq)
 				| {super}
 }
 
