@@ -2,6 +2,7 @@ amethyst AmethystRBTranslator < Traverser{
 	root = Grammar[  {@@rbcode="require '#{@name}'\nclass #{@name}\n";@@rbno=0} traverse  {@rbcode=@@rbcode+"\nend";@rbno=@@rbno} @this]
 
 	visit = Act[rbtrans:a {@@rbcode<<"def callback#{@@rbno}\n #{a}\nend\n"; @actno=@@rbno;@@rbno+=1 }   traverse]
+				| Set[@name=>rbtrans:name  @expr=>(   ) ] ->
 
 	rbtrans =  Args[rbtrans*:a] -> a*""
 		      | Strin[rbtrans*:a] -> a*""
@@ -22,9 +23,12 @@ amethyst AmethystCTranslator < Amethyst {
 				
 				| Stop ->	"stop=1;"
 				| Many[ trans:t ] ->  "{int stop=0; while(!stop){\n #{t} \n} }"
-				
+		
+				| Result
+		
 				| Apply[:name ] -> "if (#{name}(ptr)) goto #{@@faillabel};"
 
 				| Char[:c] -> "if (ptr->str[ptr->pos]!='#{c}') goto #{@@faillabel};ptr->pos++;"
+
 	  rw(word,prc) = {@@faillabel}:rwo {@@faillabel=word } apply(prc):x {@@faillabel=rwo; x }
 }
