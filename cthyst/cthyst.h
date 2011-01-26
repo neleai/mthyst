@@ -21,15 +21,27 @@ static void addbinding(cstruct *ptr,int no){int i;
 static void rmbinding(cstruct *ptr,int no){
 	ptr->curscope-=no;}
 
+static VALUE cgetlocal(cstruct *ptr,int no){
+ return ptr->curscope[-no];
+}
+
+static VALUE csetlocal(cstruct *ptr,int no,VALUE val){
+ return ptr->curscope[-no]=val;
+}
+
 static VALUE getlocal(VALUE self,VALUE no){
 	cstruct  *ptr;
 	Data_Get_Struct(self,cstruct,ptr);
-	return ptr->curscope[-FIX2INT(no)];
+	return cgetlocal(ptr,FIX2INT(no));
 }
 static VALUE setlocal(VALUE self,VALUE no,VALUE val){
 	cstruct  *ptr;
 	Data_Get_Struct(self,cstruct,ptr);
- return ptr->curscope[-FIX2INT(no)]=val;
+	return csetlocal(ptr,FIX2INT(no),val);
+}
+
+static VALUE result_of_apply(cstruct *ptr){
+
 }
 
 
