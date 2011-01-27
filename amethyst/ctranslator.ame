@@ -24,7 +24,7 @@ amethyst AmethystCTranslator < Amethyst {
 				| Stop ->	"stop=1;"
 				| Many[ trans:t ] ->  "{int stop=0; while(!stop){\n #{t} \n} }"
 		
-				| Apply[:name ] -> "if (#{name}(ptr)) goto #{@@faillabel};result=result_of_apply(ptr);"
+				| Apply[:name trans*:args ] -> s="";args.each_with_index{|a,i| s<<"#{a} csetarg(ptr,#{i+1},result);" };   s+"if (#{name}(ptr)) goto #{@@faillabel};result=result_of_apply(ptr);"
 
 				| Char[:c] -> "if (ptr->str[ptr->pos]!='#{c}') goto #{@@faillabel};ptr->pos++;"
 

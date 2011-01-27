@@ -16,7 +16,7 @@ static VALUE t_new(VALUE clas){
 }
 
 static void addbinding(cstruct *ptr,int no){int i;
-	for(i=0;i<no;i++){ ptr->curscope[i]=Qnil;} 
+//	for(i=0;i<no;i++){ ptr->curscope[i]=Qnil;} 
 	ptr->curscope+=no;}
 static void rmbinding(cstruct *ptr,int no){
 	ptr->curscope-=no;}
@@ -41,7 +41,10 @@ static VALUE setlocal(VALUE self,VALUE no,VALUE val){
 }
 
 static VALUE result_of_apply(cstruct *ptr){
-
+	return cgetlocal(ptr,0);
+}
+static VALUE csetarg(cstruct *ptr,int no,VALUE val){
+	return csetlocal(ptr,-no,val);
 }
 
 
