@@ -33,9 +33,9 @@ require 'ctranslator.rb'
 #}]]
 
 p= AmethystParser.new.parse(:igrammar, File.new("amethyst/amethyst.ame").read)
-p=p[0].rules[0]
+p=p[0].rules[1,1]
 pp p
-t=[Grammar[{:rules=>[p]}]]
+t=[Grammar[{:rules=>p}]]
 
 t= AmethystRBTranslator.new.parse(:root,t)
 File.open("cthyst/test.rb","w"){|f|
