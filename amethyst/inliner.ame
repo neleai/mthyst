@@ -2,7 +2,7 @@ amethyst Renamer < AmethystOptimizer {
 	trans = Rule[{@@newvars={}} @name:name @args=>args:args @locals:locals @body=>trans:body ] @Rule	
 				| super
 	
-	arg = Variable[ :name @this:this ]  -> @@newvars[this] ? @@newvars[this] : ($av+=1; @@newvars[this]=_Variable(name,$av) ;@@newvars[this] )
+	arg = Local[ :name @this:this ]  -> @@newvars[this] ? @@newvars[this] : ($av+=1; @@newvars[this]=_Local(name,$av) ;@@newvars[this] )
 			| super
 }
 amethyst Inliner < AmethystOptimizer {

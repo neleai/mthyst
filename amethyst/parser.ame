@@ -16,7 +16,7 @@ makeclasses(Object,
     :Or,
     :Seq,
 		[:Strin],
-		[:Variable,:number],
+		[:Local,:number],
 		[:Pass,:var,:to,:enter],
     [:Rule,:name,:args,:locals,:body,:reachable],
     [:Grammar,:name,:parent,:rules,:rbcode,:rbno],
@@ -35,7 +35,7 @@ end
 $av=0
 def autovar
 	$av+=1
-	_Variable("autovar",$av)
+	_Local("autovar",$av)
 end
 
 def _Enter(from,to)
@@ -48,7 +48,7 @@ end
 
 
 def _Set(name,expr,append=false)
-  Set[{:name=>_Variable(name),:expr=>expr,:append=>append}]
+  Set[{:name=>_Local(name),:expr=>expr,:append=>append}]
 end
 def _Append(name,expr)
   _Set(name,expr,true)
@@ -69,20 +69,22 @@ def _Pred(expr)
   _Act(expr,true)
 end
 def _body(body)
-	Seq[_Set("_result",body), _Act(_Variable("_result"))]
+	Seq[_Set("_result",body), _Act(_Local("_result"))]
 end
 
 $varhash=Hash.new{|h,k| h[k]={}}
-	def _Variable(name,number=1)
-		return name if name.is_a? Variable
+	def _Local(name,number=1)
+		return name if name.is_a? Local
 		if var=$varhash[name][number]
 			instance_eval{	@locals << var if @locals}
 			var
 		else
-			$varhash[name][number]=Variable[{:ary=>[name],:number=>number}]
-			_Variable(name,number)
+			$varhash[name][number]=Local[{:ary=>[name],:number=>number}]
+			_Local(name,number)
 		end
 	end
+
+
 amethyst AmethystParser < Amethyst{
 	igrammar = ((~'amethyst'   . )+:{it*""} | grammar)*:a -> a
 
@@ -145,7 +147,7 @@ amethyst AmethystParser < Amethyst{
 
 	ruleargs = (argsOpt('(',')'))=>[addargs]
 
-	addargs= Args[ :name {_Variable(name) }:result[] ]* -> result || []
+	addargs= Args[ :name {_Local(name) }:result[] ]* -> result || []
 
 	
 	nr = ~(name argsOpt('(',')') "=")
@@ -176,7 +178,7 @@ amethyst AmethystParser < Amethyst{
 					 | '"' (~'"'   eChar)*:s '"'  -> Strin[['"']+ s+['"']]
 					 | '\''(~'\''  eChar)*:s '\'' -> Strin[['\'']+s+['\'']]
 					 | ( <$.:>:n[] | empty) <a-zA-Z_>+:n[] -> n*""
-					 | '@@' <a-zA-Z_>+:n[] -> Local[n*""]
+					 | '@@' <a-zA-Z_>+:n[] -> Global[n*""]
 					 | key:k -> Key[k] 
 					 | <^`{}()'"\[\]>
 

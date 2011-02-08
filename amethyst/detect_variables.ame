@@ -11,6 +11,6 @@ amethyst Analyze_Variables < AmethystOptimizer {
         | Result[@name:name @args=>args:args {@@locals.select{|a| a[0]!= "autovar"&&a[0]!="_result"&&a[0]!="it"}.uniq}:vars] @Result
         | super
 
-	arg = char:name &{@@variables[name]}  -> _Variable(name)
+	arg = char:name &{@@variables[name]}  -> _Local(name)
 			| super
 }

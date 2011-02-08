@@ -1,15 +1,15 @@
 amethyst Dead_Code_Detector2 < Traverser {
-	root = @this=>Rule[{@@edges=Oriented_Graph.new ; @@marked=[_Variable("_result")]}  traverse {@@edges.reachable(@@marked)}:reachable {@reachable=reachable} @this]
+	root = @this=>Rule[{@@edges=Oriented_Graph.new ; @@marked=[_Local("_result")]}  traverse {@@edges.reachable(@@marked)}:reachable {@reachable=reachable} @this]
 	
 	visit = Apply[:name vars_in:var traverse:this] ->  @@marked +=var;this
 				| Pass[@var=>vars_in:var {@@marked+=var} traverse]
 				| Act[ traverse:this {@@marked<<this if @pred} 
-							 @ary=>[vars_in]:var ] -> var.each{|v| @@edges.add(v,this); @@edges.add(this,v);} ;@@marked<<this if v.is_a? Local; this
+							 @ary=>[vars_in]:var ] -> var.each{|v| @@edges.add(v,this); @@edges.add(this,v);} ;@@marked<<this if v.is_a? Global; this
 				| Set[@name:v   traverse:this @expr=>vars_in:var ] -> var.each{|w| @@edges.add(v,w)};this
 				| Result[@vars=>[vars_in]:var traverse:this] -> var.each{|w| @@edges.add(this,w) } ; this
 				
 				vars_in={ary=[]}
-								( Variable[ @this:ary[] .*]
+								( Global[ @this:ary[] .*]
 								| Act[ @this:ary[] .*]
 								| Result[ @this:ary[] ]
 								| Strin[ vars_in:ary[] ]

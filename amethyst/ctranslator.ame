@@ -11,9 +11,20 @@ amethyst AmethystRBTranslator < Traverser{
      			| Global[:name] 								 -> " @name"
 					| String
 }
+
 amethyst AmethystCTranslator < Amethyst {	
-	trans = Grammar[ @name:name @rules=>[trans*]:t @rbno:rbno ] -> s="#include \"cthyst.h\"\nVALUE cls_#{name}"; rbno.times{|i| s<<",callback#{i}"}; s<<";"; s<<(t*"\n") ; s<<"\nvoid Init_#{name}(){ cls_#{name}=rb_define_class(\"#{name}\",rb_cObject); "; rbno.times{|i| s<<"callback#{i}=rb_intern(\"callback#{i}\");"};s<<" init_clas(cls_#{name}); }"; s
-			  | Rule[{@@labelno=0; @@faillabel="fail"} @name:name  @body=>trans:body {@locals.size}:bindings] -> "int #{name}(cstruct *ptr){VALUE result; addbinding(ptr,#{bindings}); #{body} \n rmbinding(ptr,#{bindings}); return 0; \n fail: rmbinding(ptr,#{bindings}); return 1; }"
+	trans = Grammar[ @name:name @rules=>[trans*]:t @rbno:rbno ] 
+				{ s="#include \"cthyst.h\"\nVALUE cls_#{name}"; 
+          rbno.times{|i| s<<",callback#{i}"}; s<<";"; s<<(t*"\n") ; 
+          s<<"\nvoid Init_#{name}(){ cls_#{name}=rb_define_class(\"#{name}\",rb_cObject); "; 
+          rbno.times{|i| s<<"callback#{i}=rb_intern(\"callback#{i}\");"};
+          s<<" init_clas(cls_#{name}); }"; s }
+			  | Rule[{@@labelno=0; @@faillabel="fail"} @name:name @body=>trans:body {@locals.size}:bindings {bindings-@args.size}:lvars ] 
+          { "int #{name}(cstruct *ptr){VALUE result; 
+                         addbinding(ptr,#{bindings});initbinding(ptr,#{lvars}); 
+                         #{body} \n 
+                         rmbinding(ptr,#{bindings}); return 0; \n 
+                         fail: rmbinding(ptr,#{bindings}); return 1; }" }
 				| Seq[trans*:t ] -> "#{t*"\n"} "
 
 				| Cut -> "cut=1;"

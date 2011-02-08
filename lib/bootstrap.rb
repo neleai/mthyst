@@ -179,7 +179,7 @@ makeclasses(Object,
     [:Args,:o,:c,:r],
     [:Key,:name,:expr,:args],
     [:Result,:name,:expr,:args,:vars],
-    :Apply,
+    :Apply,:Char,
     :Nested,
     :Exp,
     [:Set,:name,:expr,:append],
@@ -191,9 +191,9 @@ makeclasses(Object,
     :Not,
     :And,
     :Or,
-    :Seq,:Char,
+    :Seq,
 		[:Strin],
-		[:Variable,:number],
+		[:Local,:number],
 		[:Pass,:var,:to,:enter],
     [:Rule,:name,:args,:locals,:body,:reachable],
     [:Grammar,:name,:parent,:rules,:rbcode,:rbno],
@@ -212,7 +212,7 @@ end
 $av=0
 def autovar
 	$av+=1
-	_Variable("autovar",$av)
+	_Local("autovar",$av)
 end
 
 def _Enter(from,to)
@@ -225,7 +225,7 @@ end
 
 
 def _Set(name,expr,append=false)
-  Set[{:name=>_Variable(name),:expr=>expr,:append=>append}]
+  Set[{:name=>_Local(name),:expr=>expr,:append=>append}]
 end
 def _Append(name,expr)
   _Set(name,expr,true)
@@ -246,20 +246,22 @@ def _Pred(expr)
   _Act(expr,true)
 end
 def _body(body)
-	Seq[_Set("_result",body), _Act(_Variable("_result"))]
+	Seq[_Set("_result",body), _Act(_Local("_result"))]
 end
 
 $varhash=Hash.new{|h,k| h[k]={}}
-	def _Variable(name,number=1)
-		return name if name.is_a? Variable
+	def _Local(name,number=1)
+		return name if name.is_a? Local
 		if var=$varhash[name][number]
 			instance_eval{	@locals << var if @locals}
 			var
 		else
-			$varhash[name][number]=Variable[{:ary=>[name],:number=>number}]
-			_Variable(name,number)
+			$varhash[name][number]=Local[{:ary=>[name],:number=>number}]
+			_Local(name,number)
 		end
 	end
+
+
 class AmethystParser < Amethyst
 def igrammar()
  autovar_1 = ((nil))
@@ -591,7 +593,7 @@ _result_1 = ((nil))
 while true
 autovar_2=@input;r=autovar_1 = ((it=(clas(Args));break FAIL if it==FAIL;it))
 (it=(_pass(true,autovar_1){name_1 = ((it=(anything());next FAIL if it==FAIL;it))
-it=((_Variable(name_1) ))
+it=((_Local(name_1) ))
  result_1||=[];_append(result_1,it) });break FAIL if it==FAIL;it) 
  break FAIL if r==FAIL
 end;@input=autovar_2
@@ -715,7 +717,7 @@ autovar_8=@input;r=it=((it=(regch(/[a-zA-Z_]/));break FAIL if it==FAIL;it))
 end;@input=autovar_8
 it=((autovar_4))
  n_1||=[];_append(n_1,it)
-_result_1 = ((Local[n_1*""])) },proc{k_1 = ((it=(key());next FAIL if it==FAIL;it))
+_result_1 = ((Global[n_1*""])) },proc{k_1 = ((it=(key());next FAIL if it==FAIL;it))
 _result_1 = ((Key[k_1] )) },proc{_result_1 = ((it=(regch(/[^`{}()'"\[\]]/));next FAIL if it==FAIL;it))}));return FAIL if it==FAIL;it)
 (_result_1)  
 end
@@ -1200,7 +1202,7 @@ def arg()
 _result_1 = ((nil))
 (it=(_or(proc{name_1 = ((it=(char());next FAIL if it==FAIL;it))
 (it=((@variables[name_1])||FAIL);next FAIL if it==FAIL;it)
-_result_1 = ((_Variable(name_1))) },proc{_result_1 = ((it=(super());next FAIL if it==FAIL;it))}));return FAIL if it==FAIL;it)
+_result_1 = ((_Local(name_1))) },proc{_result_1 = ((it=(super());next FAIL if it==FAIL;it))}));return FAIL if it==FAIL;it)
 (_result_1)  
 end
 
@@ -1233,7 +1235,7 @@ autovar_14 = ((nil))
 _result_1 = ((nil))
 (it=(_or(proc{autovar_3 = ((it=(clas(Rule));next FAIL if it==FAIL;it))
 (it=(_pass(true,autovar_3){name_1 = ( self['name'])
-(@edges=Oriented_Graph.new ; @marked=[_Variable("_result")])
+(@edges=Oriented_Graph.new ; @marked=[_Local("_result")])
 autovar_1 = ( self['args'])
 (it=(_pass(false,autovar_1){args_1 = ((it=(args());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
 autovar_2 = ( self['body'])
@@ -1253,7 +1255,7 @@ autovar_6 = ( self['to'])
 (it=(_pass(true,autovar_8){this_1 = ( self['this'])
 (@marked<<this_1 if self['pred'])
 var_1 = ((it=(vars_in());next FAIL if it==FAIL;it)) });next FAIL if it==FAIL;it)
-_result_1 = ((var_1.each{|v_1| @edges.add(v_1,this_1); @edges.add(this_1,v_1); @marked<<this_1 if v_1.is_a? Local})) },proc{autovar_11 = ((it=(clas(Set));next FAIL if it==FAIL;it))
+_result_1 = ((var_1.each{|v_1| @edges.add(v_1,this_1); @edges.add(this_1,v_1); @marked<<this_1 if v_1.is_a? Global})) },proc{autovar_11 = ((it=(clas(Set));next FAIL if it==FAIL;it))
 (it=(_pass(true,autovar_11){v_1 = ( self['name'])
 autovar_9 = ( self['expr'])
 (it=(_pass(false,autovar_9){(it=(trans());next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it)
@@ -1289,7 +1291,7 @@ _result_1 = ((nil))
 (ary_1=[])
 ()
 while true
-autovar_12=@input;r=(it=(_or(proc{autovar_1 = ((it=(clas(Variable));next FAIL if it==FAIL;it))
+autovar_12=@input;r=(it=(_or(proc{autovar_1 = ((it=(clas(Global));next FAIL if it==FAIL;it))
 (it=(_pass(true,autovar_1){it=( self['this'])
  ary_1||=[];_append(ary_1,it)
 ()
@@ -1527,10 +1529,10 @@ def arg()
 this_1 = ((nil))
 autovar_1 = ((nil))
 _result_1 = ((nil))
-(it=(_or(proc{autovar_1 = ((it=(clas(Variable));next FAIL if it==FAIL;it))
+(it=(_or(proc{autovar_1 = ((it=(clas(Local));next FAIL if it==FAIL;it))
 (it=(_pass(true,autovar_1){name_1 = ((it=(anything());next FAIL if it==FAIL;it))
 this_1 = ( self['this']) });next FAIL if it==FAIL;it)
-_result_1 = ((@newvars[this_1] ? @newvars[this_1] : ($av+=1; @newvars[this_1]=_Variable(name_1,$av) ;@newvars[this_1] ))) },proc{_result_1 = ((it=(super());next FAIL if it==FAIL;it))}));return FAIL if it==FAIL;it)
+_result_1 = ((@newvars[this_1] ? @newvars[this_1] : ($av+=1; @newvars[this_1]=_Local(name_1,$av) ;@newvars[this_1] ))) },proc{_result_1 = ((it=(super());next FAIL if it==FAIL;it))}));return FAIL if it==FAIL;it)
 (_result_1)  
 end
 
@@ -1862,10 +1864,10 @@ _result_1 = ((a_1*"")) },proc{autovar_5 = ((it=(clas(Exp));next FAIL if it==FAIL
 (it=(_pass(true,autovar_5){t_1 = ((it=(transfn());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
 _result_1 = ((t_1)) },proc{autovar_6 = ((it=(clas(Key));next FAIL if it==FAIL;it))
 (it=(_pass(true,autovar_6){t_1 = ((it=(trans());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
-_result_1 = ((t_1)) },proc{autovar_7 = ((it=(clas(Variable));next FAIL if it==FAIL;it))
+_result_1 = ((t_1)) },proc{autovar_7 = ((it=(clas(Local));next FAIL if it==FAIL;it))
 (it=(_pass(true,autovar_7){name_1 = ((it=(anything());next FAIL if it==FAIL;it))
 number_1 = ( self['number']) });next FAIL if it==FAIL;it)
-_result_1 = ((@varhash[name_1][number_1]=@varhash[name_1].size+1 if !@varhash[name_1][number_1]  ; "#{name_1}_#{@varhash[name_1][number_1]}")) },proc{autovar_8 = ((it=(clas(Local));next FAIL if it==FAIL;it))
+_result_1 = ((@varhash[name_1][number_1]=@varhash[name_1].size+1 if !@varhash[name_1][number_1]  ; "#{name_1}_#{@varhash[name_1][number_1]}")) },proc{autovar_8 = ((it=(clas(Global));next FAIL if it==FAIL;it))
 (it=(_pass(true,autovar_8){name_1 = ((it=(anything());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
 _result_1 = (("@#{name_1}")) },proc{_result_1 = ((it=(anything());next FAIL if it==FAIL;it))}));return FAIL if it==FAIL;it)
 (_result_1)  

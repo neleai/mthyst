@@ -1,7 +1,7 @@
 amethyst Renamer < Traverser {
 	root = Rule[{@@newvars={}} traverse]
 	
-	visit = Variable[ :name @this:this ]  -> @@newvars[this] ? @@newvars[this] : ($av+=1; @@newvars[this]=_Variable(name,$av) ;@@newvars[this] )
+	visit = Local[ :name @this:this ]  -> @@newvars[this] ? @@newvars[this] : ($av+=1; @@newvars[this]=_Local(name,$av) ;@@newvars[this] )
 }
 
 amethyst Inliner2 < Traverser {

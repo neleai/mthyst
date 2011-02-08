@@ -16,8 +16,7 @@ def a2ruby(s)
 	ruby=t.parse(:itrans,opt)
 end
 
-p= AmethystParser.new.parse(:igrammar, File.new("amethyst/amethyst.ame").read)
-pp p
+
 o=File.open("ctranslator.rb","w")
 o.puts a2ruby(File.new("amethyst/detect_variables.ame").read)
 o.puts a2ruby(File.new("amethyst/traverser.ame").read)
@@ -29,15 +28,22 @@ o.close
 require 'ctranslator.rb'
 #t = Seq[Seq[Act["aaa"],Act["bbb"],Seq[Act["ccc"],Or[Or[Seq[Seq[[Act['a']]]]]]]]]
 #t= [Grammar[{:rules=>Rule[{:name=>"ada",:body=>Seq[Act["aaa"],Act[{:ary=>["bbb"],:pred=>true}],Or[Act["a"],Act[{:ary=>["bbb"],:pred=>true}]],Many[Act[{:ary=>["bbb"],:pred=>true}]] ]  }]}]]
-t=[Grammar[{:name=>"Test", :rules=>[Rule[{:name=>"ada",:locals=>[],:body=>Seq[Apply['ee',Act["44"]],Char["a"],Or[Seq[Char["b"],Act["puts 42"]],Seq[Char["c"],Act["puts 43"]]]]  }],
-Rule[{:name=>"ee",:locals=>["a","b"],:body=>Seq[Set[{ :name=>Local[0],:expr=>Act["4"] }],Char["f"],Act[Args["puts ",Local[0]]],Many[Or[Char['s'],Stop[]]]]}]]
-}]]
+#t=[Grammar[{:name=>"Test", :rules=>[Rule[{:name=>"ada",:args=>[],:locals=>[],:body=>Seq[Apply['ee',Act["44"]],Char["a"],Or[Seq[Char["b"],Act["puts 42"]],Seq[Char["c"],Act["puts 43"]]]]  }],
+#Rule[{:name=>"ee",:args=>["a"],:locals=>["a","b"],:body=>Seq[Set[{ :name=>Local[0],:expr=>Act["4"] }],Char["f"],Act[Args["puts ",Local[0]]],Many[Or[Char['s'],Stop[]]]]}]]
+#}]]
+
+p= AmethystParser.new.parse(:igrammar, File.new("amethyst/amethyst.ame").read)
+p=p[0].rules[0]
+pp p
+t=[Grammar[{:rules=>[p]}]]
 
 t= AmethystRBTranslator.new.parse(:root,t)
 File.open("cthyst/test.rb","w"){|f|
+puts t.rbcode
 	f.puts t.rbcode
 }
 res= AmethystCTranslator.new.parse(:trans,[t])
 File.open("cthyst/test.c","w"){|f|
+puts res
 f.puts res
 }

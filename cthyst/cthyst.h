@@ -18,6 +18,11 @@ static VALUE t_new(VALUE clas){
 static void addbinding(cstruct *ptr,int no){int i;
 //	for(i=0;i<no;i++){ ptr->curscope[i]=Qnil;} 
 	ptr->curscope+=no;}
+
+static void initbinding(cstruct *ptr,int no){int i;
+ for(i=0;i<no;i++){ ptr->curscope[-i]=Qnil;}
+}
+
 static void rmbinding(cstruct *ptr,int no){
 	ptr->curscope-=no;}
 
