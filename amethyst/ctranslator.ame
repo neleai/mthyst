@@ -7,7 +7,7 @@ amethyst AmethystRBTranslator < Traverser{
 	rbtrans =  Args[rbtrans*:a] -> a*""
 		      | Strin[rbtrans*:a] -> a*""
 					| Key[ :name] 									 -> " key[#{name}]"
-    		  | Local[:number] -> " self[#{number}]"
+    		  | Local[:name @no:number] -> " self[#{number}]"
      			| Global[:name] 								 -> " @name"
 					| String
 					| Array[ rbtrans*:a ] -> a*""
@@ -31,7 +31,7 @@ amethyst AmethystCTranslator < Amethyst {
 				| Cut -> "cut=1;"
 				| Or[{@@labelno+=1}:ln {0}:on rw('',`({on+=1} rw("or#{ln}_#{on+1}",`trans`) )*:t`) ] {on=0; "{ int oldpos=ptr->pos;int cut=0;\n#{(t+["goto #{@@faillabel};"]).map{|i| on+=1;"or#{ln_1}_#{on_1}: ptr->pos=oldpos; if(cut) goto #{@@faillabel}; #{i}; goto success#{ln_1};\n" }*""} success#{ln}:; }"}
 
-				| Act[:act @pred:pred @actno:actno] -> "result=rb_funcall(ptr->obj,callback#{actno},0);" + ( pred ? "if (!RTEST(result) goto #{@@faillabel};" : "" ) 
+				| Act[:act @pred:pred @actno:actno] -> "result=rb_funcall(ptr->obj,callback#{actno},0);" + ( pred ? "if (!RTEST(result)) goto #{@@faillabel};" : "" ) 
 				
 				| Stop ->	"stop=1;"
 				| Many[ trans:t ] ->  "{int stop=0; while(!stop){\n #{t} \n} }"
@@ -40,7 +40,7 @@ amethyst AmethystCTranslator < Amethyst {
 
 				| Char[:c] -> "if (ptr->str[ptr->pos]!='#{c}') goto #{@@faillabel};ptr->pos++;"
 
-				| Set[ @name=>Local[ :number] @expr=>trans:expr ] -> "#{expr} csetlocal(ptr,#{number},result);"
+				| Set[ @name=>Local[ :number @no:number] @expr=>trans:expr ] -> "#{expr} csetlocal(ptr,#{number},result);"
 
 			  rw(word,prc) = {@@faillabel}:rwo {@@faillabel=word } apply(prc):x {@@faillabel=rwo; x }
 }

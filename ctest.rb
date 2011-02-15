@@ -20,6 +20,7 @@ end
 o=File.open("ctranslator.rb","w")
 o.puts a2ruby(File.new("amethyst/detect_variables.ame").read)
 o.puts a2ruby(File.new("amethyst/traverser.ame").read)
+o.puts a2ruby(File.new("amethyst/detect_variables2.ame").read)
 o.puts a2ruby(File.new("amethyst/dead_code_elimination2.ame").read)
 o.puts a2ruby(File.new("amethyst/ctranslator.ame").read)
 
@@ -33,9 +34,12 @@ require 'ctranslator.rb'
 #}]]
 
 p= AmethystParser.new.parse(:igrammar, File.new("amethyst/amethyst.ame").read)
-p=p[0].rules[1,1]
+
+p=p[0].rules[1]
 pp p
-t=[Grammar[{:rules=>p}]]
+p= Analyze_Variables2.new.parse(:root, p)
+pp p
+t=[Grammar[{:rules=>[p]}]]
 
 t= AmethystRBTranslator.new.parse(:root,t)
 File.open("cthyst/test.rb","w"){|f|
