@@ -33,14 +33,15 @@ require 'ctranslator.rb'
 #Rule[{:name=>"ee",:args=>["a"],:locals=>["a","b"],:body=>Seq[Set[{ :name=>Local[0],:expr=>Act["4"] }],Char["f"],Act[Args["puts ",Local[0]]],Many[Or[Char['s'],Stop[]]]]}]]
 #}]]
 
-p= AmethystParser.new.parse(:igrammar, File.new("amethyst/amethyst.ame").read)
-
-p=p[0].rules[1]
-pp p
-p= Analyze_Variables2.new.parse(:root, p)
-pp p
-t=[Grammar[{:rules=>[p]}]]
-
+par= AmethystParser.new.parse(:igrammar, File.new("amethyst/amethyst.ame").read)
+	o=AmethystOptimizer2.new
+	t=AmethystTranslator.new
+	a=Analyze_Variables.new
+	opt=o.parse(:itrans,par)
+	opt=a.parse(:itrans,opt)
+opt[0].rules=opt[0].rules[0,2]
+t=opt
+pp t
 t= AmethystRBTranslator.new.parse(:root,t)
 File.open("cthyst/test.rb","w"){|f|
 puts t.rbcode
@@ -48,6 +49,6 @@ puts t.rbcode
 }
 res= AmethystCTranslator.new.parse(:trans,[t])
 File.open("cthyst/test.c","w"){|f|
-puts res
+puts res.inspect
 f.puts res
 }

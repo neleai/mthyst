@@ -203,7 +203,11 @@ makeclasses(Object,
 		:Cut,
 		:Stop
 )
-
+class Local
+	def inspect
+		"#{ary[0]}_#{number}"
+	end
+end
 def quote(s)
   s=s*""
   '"'+s.gsub('\\"','"').gsub('"','\\"')+'"'
