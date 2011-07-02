@@ -36,10 +36,10 @@ require 'ctranslator.rb'
 par= AmethystParser.new.parse(:igrammar, File.new("amethyst/amethyst.ame").read)
 	o=AmethystOptimizer2.new
 	t=AmethystTranslator.new
-	a=Analyze_Variables.new
+	a=Analyze_Variables2.new
 	opt=o.parse(:itrans,par)
-	opt=a.parse(:itrans,opt)
-opt[0].rules=opt[0].rules[0,2]
+opt[0].rules=[a.parse(:root,opt[0].rules[2])]
+#	opt=a.parse(:root,opt)
 t=opt
 pp t
 t= AmethystRBTranslator.new.parse(:root,t)
@@ -49,6 +49,6 @@ puts t.rbcode
 }
 res= AmethystCTranslator.new.parse(:trans,[t])
 File.open("cthyst/test.c","w"){|f|
-puts res.inspect
+puts res
 f.puts res
 }
