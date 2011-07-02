@@ -45,5 +45,7 @@ amethyst AmethystCTranslator < Amethyst {
 
 				| Set[ @name=>Local[ :number @no:number] @expr=>trans:expr ] -> "#{expr} csetlocal(ptr,#{number},result);"
 
+				| String:s -> "result = rb_str_new2(\"#{s}\");"
+
 			  rw(word,prc) = {@@faillabel}:rwo {@@faillabel=word } apply(prc):x {@@faillabel=rwo; x }
 }

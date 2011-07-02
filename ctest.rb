@@ -38,7 +38,8 @@ par= AmethystParser.new.parse(:igrammar, File.new("amethyst/amethyst.ame").read)
 	t=AmethystTranslator.new
 	a=Analyze_Variables2.new
 	opt=o.parse(:itrans,par)
-opt[0].rules=[a.parse(:root,opt[0].rules[2])]
+	opt[0].rules=opt[0].rules[5,1]
+	opt[0].rules=opt[0].rules.map{|r| a.parse(:root,r)}
 #	opt=a.parse(:root,opt)
 t=opt
 pp t
