@@ -176,7 +176,7 @@ end
 end
 
 makeclasses(Object,
-    [:Args,:o,:c,:r],
+    [:Args,:o,:c,:r,:actno],
     [:Key,:name,:expr,:args],
     [:Result,:name,:expr,:args,:vars],
     :Apply,:Char,

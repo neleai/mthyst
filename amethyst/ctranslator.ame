@@ -2,6 +2,7 @@ amethyst AmethystRBTranslator < Traverser{
 	root = Grammar[  {@@rbcode="require '#{@name}'\nclass #{@name}\n";@@rbno=0} traverse  {@rbcode=@@rbcode+"\nend";@rbno=@@rbno} @this]
 
 	visit = Act[rbtrans:a {@@rbcode<<"def callback#{@@rbno}\n #{a}\nend\n"; @actno=@@rbno;@@rbno+=1 }   traverse]
+				| Args[rbtrans:a {@@rbcode<<"def callback#{@@rbno}\n #{a}\nend\n"; @actno=@@rbno;@@rbno+=1 }   traverse]
 				| Result[]
 
 	rbtrans =  Args[rbtrans*:a] -> a*""
@@ -35,6 +36,8 @@ amethyst AmethystCTranslator < Amethyst {
 				| Or[{@@labelno+=1}:ln {0}:on rw('',`({on+=1} rw("or#{ln}_#{on+1}",`trans`) )*:t`) ] {on=0; "{ int oldpos=ptr->pos;int cut=0;\n#{(t+["goto #{@@faillabel};"]).map{|i| on+=1;"or#{ln_1}_#{on_1}: ptr->pos=oldpos; if(cut) goto #{@@faillabel}; #{i}; goto success#{ln_1};\n" }*""} success#{ln}:; }"}
 
 				| Act[:act @pred:pred @actno:actno] -> "result=rb_funcall(ptr->obj,callback#{actno},0);" + ( pred ? "if (!RTEST(result)) goto #{@@faillabel};" : "" ) 
+	
+				| Args[:act @pred:pred @actno:actno] -> "result=rb_funcall(ptr->obj,callback#{actno},0);" + ( pred ? "if (!RTEST(result)) goto #{@@faillabel};" : "" ) 
 				
 				| Stop ->	"stop=1;"
 				| Many[ trans:t ] ->  "{int stop=0; while(!stop){\n #{t} \n} }"
@@ -47,7 +50,6 @@ amethyst AmethystCTranslator < Amethyst {
 
 				| String:s -> "result = rb_str_new2(\"#{s}\");"
 				
-				| Args[ Local[:number @no:number] {" result= cgetlocal(ptr,#{number}); "} ] 
 
 			  rw(word,prc) = {@@faillabel}:rwo {@@faillabel=word } apply(prc):x {@@faillabel=rwo; x }
 }
