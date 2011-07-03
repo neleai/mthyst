@@ -1,7 +1,8 @@
 amethyst AmethystRBTranslator < Traverser{
 	root = Grammar[  {@@rbcode="require '#{@name}'\nclass #{@name}\n";@@rbno=0} traverse  {@rbcode=@@rbcode+"\nend";@rbno=@@rbno} @this]
 
-	visit = Act[rbtrans:a {@@rbcode<<"def callback#{@@rbno}\n #{a}\nend\n"; @actno=@@rbno;@@rbno+=1 }   traverse]
+	visit = Apply[:name  .*:{@ary= [name]+it.map{|a| a.is_a?(String) ? Act[a] : a }} traverse]
+				| Act[rbtrans:a {@@rbcode<<"def callback#{@@rbno}\n #{a}\nend\n"; @actno=@@rbno;@@rbno+=1 }   traverse]
 				| Args[rbtrans:a {@@rbcode<<"def callback#{@@rbno}\n #{a}\nend\n"; @actno=@@rbno;@@rbno+=1 }   traverse]
 				| Result[]
 
@@ -15,14 +16,14 @@ amethyst AmethystRBTranslator < Traverser{
 }
 
 amethyst AmethystCTranslator < Amethyst {	
-	trans = Grammar[ @name:name @rules=>[trans*]:t @rbno:rbno ] 
+	trans = Grammar[ @name:name {@@grammar=name} @rules=>[trans*]:t @rbno:rbno ] 
 				{ s="#include \"cthyst.h\"\nVALUE cls_#{name}"; 
           rbno.times{|i| s<<",callback#{i}"}; s<<";"; s<<(t*"\n") ; 
           s<<"\nvoid Init_#{name}(){ cls_#{name}=rb_define_class(\"#{name}\",rb_cObject); "; 
           rbno.times{|i| s<<"callback#{i}=rb_intern(\"callback#{i}\");"};
           s<<" init_clas(cls_#{name}); }"; s }
 			  | Rule[{@@labelno=0; @@faillabel="fail"} @name:name @body=>trans:body {@locals.size}:bindings {bindings-@args.size}:lvars ] 
-          { "int #{name}(cstruct *ptr){VALUE result; 
+          { "int #{@@grammar}_#{name}(cstruct *ptr){VALUE result; 
                          addbinding(ptr,#{bindings});initbinding(ptr,#{lvars}); 
                          #{body} \n 
                          rmbinding(ptr,#{bindings}); return 0; \n 
@@ -42,14 +43,12 @@ amethyst AmethystCTranslator < Amethyst {
 				| Stop ->	"stop=1;"
 				| Many[ trans:t ] ->  "{int stop=0; while(!stop){\n #{t} \n} }"
 		
-				| Apply[:name trans*:args ] -> s="";args.each_with_index{|a,i| s<<"#{a} csetarg(ptr,#{i+1},result);" };   s+"if (#{name}(ptr)) goto #{@@faillabel};result=result_of_apply(ptr);"
+				| Apply[:name trans*:args ] -> s="";args.each_with_index{|a,i| s<<"#{a} csetarg(ptr,#{i+1},result);" };   s+"if (#{@@grammar}_#{name}(ptr)) goto #{@@faillabel};result=result_of_apply(ptr);"
 
 				| Char[:c] -> "if (ptr->str[ptr->pos]!='#{c}') goto #{@@faillabel};ptr->pos++;"
 
 				| Set[ @name=>Local[ :number @no:number] @expr=>trans:expr ] -> "#{expr} csetlocal(ptr,#{number},result);"
 
-				| String:s -> "result = rb_str_new2(\"#{s}\");"
-				
 
 			  rw(word,prc) = {@@faillabel}:rwo {@@faillabel=word } apply(prc):x {@@faillabel=rwo; x }
 }
