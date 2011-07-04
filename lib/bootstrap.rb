@@ -1,9 +1,4 @@
 class Amethyst < AmethystCore
-def _()
- _result_1 = ((nil))
-_result_1 = ((it=(space());return FAIL if it==FAIL;it))
-(_result_1)  
-end
 def regch(regex_1)
  c_1 = ((nil))
 _result_1 = ((nil))
@@ -176,7 +171,6 @@ end
 end
 
 makeclasses(Object,
-    [:Args,:o,:c,:r,:actno],
     [:Key,:name,:expr,:args],
     [:Result,:name,:expr,:args,:vars],
     :Apply,:Char,
@@ -184,8 +178,8 @@ makeclasses(Object,
     :Exp,
     [:Set,:name,:expr,:append],
     [:Many,:o],
-    :Many1,
     :Comment,
+    [:Args,:o,:c,:r,:actno],
     [:Act,:uses,:pred,:actno],
     :Lookahead,
     :Not,
@@ -205,7 +199,7 @@ makeclasses(Object,
 )
 class Local
 	def inspect
-		"#{ary[0]}_#{number}"
+		"Local[#{ary[0]}_#{number}]"
 	end
 end
 def quote(s)
