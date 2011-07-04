@@ -41,6 +41,10 @@ class Apply
 		[nod,nod]
 	end
 end
+class Many
+	def cfgnodes
+	end
+end
 x=Or[Seq[Apply["a"],Apply["b"]],Seq[Apply["c"],Apply["d"]]]
 y= x.cfgnodes
 puts y.inspect
