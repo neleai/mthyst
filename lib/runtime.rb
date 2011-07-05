@@ -15,7 +15,7 @@ class AmethystCore
 		(r==FAIL) ? true : FAIL
   end
 
-  def _lookahead
+  def _lookahead(neg=false)
     oldInput = @input
     r = yield
     @input = oldInput
