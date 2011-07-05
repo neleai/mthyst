@@ -8,17 +8,15 @@ class AmethystCore
 		@input=0
 	end
 
-  def _not
-    oldInput = @input
-		r=yield
-    @input = oldInput
-		(r==FAIL) ? true : FAIL
+  def _not(&p)
+		_lookahead(true,&p)
   end
 
   def _lookahead(neg=false)
     oldInput = @input
     r = yield
     @input = oldInput
+		r=(r==FAIL) ? true : FAIL	if neg
     r
   end
 

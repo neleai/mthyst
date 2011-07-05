@@ -7,7 +7,7 @@ amethyst AmethystTranslator < Amethyst {
 								@name:name @args=>args:argss @body=>trans:body] -> "def #{name}(#{argss})\n #{body} \nend\n"
 				| Or[rw('next', `transfn*:ors`)]  failwrap("_or(#{ors*","})")
 				| Seq[trans*:t ] -> "#{t*"\n"} "
-				| Not[rw('next',`trans:t`) ]  failwrap("_not{#{t}}")
+				| Not[rw('next',`trans:t`) ]  failwrap("_lookahead(true){#{t}}")
 				| Act[args:t @pred:pred] -> pred ?  failwrap("(#{t})||FAIL") : "(#{t})"
   			| Lookahead[rw('next',`trans:t`) ]  failwrap("_lookahead{#{t}}")
         | Comment[:c] -> ""
