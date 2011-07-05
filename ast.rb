@@ -63,14 +63,11 @@ class <<Append
 		_Set(name,expr,true)
 	end
 end
-def _Append(name,expr)
-  _Set(name,expr,true)
-end
 
 class <<Many
 	def [](expr,many1=false)
 	  a=autovar
-		Seq[{:ary=>( [_Set(a, Act["[]"])]+(many1 ? [_Append(a,expr)] : [])+[Many.create({:ary=>[_Append(a,expr)],:o=>autovar}),Act[a]])}]
+		Seq[{:ary=>( [_Set(a, Act["[]"])]+(many1 ? [Append[a,expr]] : [])+[Many.create({:ary=>[Append[a,expr]],:o=>autovar}),Act[a]])}]
 	end
 end
 
