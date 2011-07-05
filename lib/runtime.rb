@@ -1,3 +1,4 @@
+require 'utils'
 FAIL=Object.new
 def FAIL.inspect
 	"FAIL"
@@ -7,10 +8,6 @@ class AmethystCore
 		@src=obj
 		@input=0
 	end
-
-  def _not(&p)
-		_lookahead(true,&p)
-  end
 
   def _lookahead(neg=false)
     oldInput = @input
@@ -111,7 +108,7 @@ class AmethystCore
   end
 
 	def initialize(grammars={})
-		@rammars=grammars
+		@grammars=grammars
 	end	
 
 	def parse(rule,input)
@@ -125,5 +122,4 @@ class AmethystCore
 	end
 end
 
-require 'utils'
 

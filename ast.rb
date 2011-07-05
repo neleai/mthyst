@@ -43,8 +43,9 @@ end
 def _Enter(from,to)
 	_Pass(from,to,true)
 end
-class Enter
-	def self.[](from,to)
+class Enter;end
+class <<Enter
+	def [](from,to)
 		_Pass(from,to,true)
 	end
 end
@@ -53,12 +54,12 @@ def _Pass(from,to,enter=false)
 	Seq[_Set(a,from), Pass[{:to=>to,:enter=>enter,:var=>a}]]
 end
 
-
 def _Set(name,expr,append=false)
   Set[{:name=>_Local(name),:expr=>expr,:append=>append}]
 end
-class Append
-	def self.[](name,expr)
+class Append;end
+class <<Append
+	def [](name,expr)
 		_Set(name,expr,true)
 	end
 end

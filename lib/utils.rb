@@ -18,6 +18,7 @@ module Populate
 		s.instance_variable_set(:@ary,args)
 		s
 	end
+	alias_method :create,:[]
 end
 
 module AmethystAST
