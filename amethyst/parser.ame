@@ -16,7 +16,7 @@ amethyst AmethystParser < Amethyst{
 	
 	sequence =  (nr prefixed)*:ary  @Seq
 
-  prefixed   = "&" inlineHostExpr:expr  -> _Pred(expr)
+  prefixed   = "&" inlineHostExpr:expr  -> Pred[expr]
              | ("&" | "~"):neg  prefixed:m -> Lookahead[m,neg=="~"]
 						 | modifier:from (  '=>' modifier:{from=_Pass(from,it)}      optIter(from):from (~space binding(from):from)*
 												     | '[' expression:{from=Enter[from,it]} "]" optIter(from):from (~space binding(from):from)*
@@ -31,14 +31,14 @@ amethyst AmethystParser < Amethyst{
               | empty -> t
   
 	binding(exp) = {exp}:expr ":"  name:name ('[]' {true} | empty {false} ):append ->_Set(name,expr,append)
-               | ":" inlineHostExpr:e -> Seq[ _Set("it",exp) , _Act(e) ]
+               | ":" inlineHostExpr:e -> Seq[ _Set("it",exp) , Act[e] ]
 
 
 	term  =  className:cls -> Apply["clas",cls]
 				| "nested" '(' expression:expr ")" -> Nested[expr]
 		 	  | application
  			  | key
-			  | ("->" atomicHostExpr | "" inlineHostExpr):x    ->  _Act(x)
+			  | ("->" atomicHostExpr | "" inlineHostExpr):x    ->  Act[x]
 				| "\"" (~'"' eChar)*:s '"' -> Apply["token" ,quote(s)]
 		 	  | "'"  (~'\''  eChar)*:s '\''  -> Apply["seq",quote(s)]
  			  | number:{Apply["exactly",it]}
@@ -52,7 +52,7 @@ amethyst AmethystParser < Amethyst{
 	key         = "@" className:name  argsOpt('[',']'):args  @Result
               | "@" name:name   @Key
 
-  collect(ors) = -> a=autovar; Seq[Or[{:ary=>ors.ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],_Act(a)]
+  collect(ors) = -> a=autovar; Seq[Or[{:ary=>ors.ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],Act[a]]
 
 	eChar = '\\' char:c   -> "\\#{c}"
   	  	| _args('#{','}')

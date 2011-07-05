@@ -70,18 +70,27 @@ end
 class <<Many
 	def [](expr,many1=false)
 	  a=autovar
-		Seq[{:ary=>( [_Set(a, _Act("[]"))]+(many1 ? [_Append(a,expr)] : [])+[Many.create({:ary=>[_Append(a,expr)],:o=>autovar}),_Act(a)])}]
+		Seq[{:ary=>( [_Set(a, Act["[]"])]+(many1 ? [_Append(a,expr)] : [])+[Many.create({:ary=>[_Append(a,expr)],:o=>autovar}),Act[a]])}]
 	end
 end
 
-def _Act(expr,pred=false)
-  Act[{:ary=>[expr],:pred=>pred}]
+class <<Act
+	def [](expr=nil,pred=false)
+		return Act.create({:pred=>pred}) if expr==nil
+		Act.create(expr,{:pred=>pred})
+	end
 end
-def _Pred(expr)
-  _Act(expr,true)
+class Pred;end
+class <<Pred
+def [](e)
+	Act[e,true]
+end
+end
+def _Pred(e)
+	Pred[e]
 end
 def _body(body)
-	Seq[_Set("_result",body), _Act(_Local("_result"))]
+	Seq[_Set("_result",body), Act[_Local("_result")]]
 end
 def _Lookahead(e,neg=false)
 	l=Lookahead[e]
