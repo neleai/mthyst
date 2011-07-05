@@ -10,7 +10,6 @@ makeclasses(Object,
     [:Args,:o,:c,:r,:actno],
     [:Act,:uses,:pred,:actno],
     [:Lookahead,:neg],
-    :Not,
     :And,
     :Or,
     :Seq,
@@ -90,8 +89,7 @@ def _Lookahead(e,neg=false)
 	l
 end
 def _Not(e)
-	puts _Lookahead(e,true).inspect
-	Not[e]
+	_Lookahead(e,true)
 end
 
 $varhash=Hash.new{|h,k| h[k]={}}

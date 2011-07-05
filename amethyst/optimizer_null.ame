@@ -5,8 +5,7 @@ amethyst AmethystOptimizer < Amethyst {
 				| Rule[@name:name @args=>args:args @body=>trans:body @locals:locals] @Rule
 				| Or[transfn*:ary]  @Or
 				| Seq[trans*:ary ]  @Seq
-				| Not[trans:ary[] ] @Not
-  			| Lookahead[trans:ary[] ]  @Lookahead
+  			| Lookahead[trans:ary[] @neg:neg ]  @Lookahead
         | Comment[anything*:ary]  @Comment
 				| Many[trans:ary[] @o:o] @Many
 				| Apply[ :ary[] args:ary[]] @Apply
