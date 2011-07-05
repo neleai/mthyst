@@ -26,8 +26,7 @@ amethyst AmethystParser < Amethyst{
              | binding(Apply["anything"])
              | "#" (~endline .)*:c -> Comment[c]
 
-   optIter(t) = "*"  -> _Many(t)
-              | "+"  -> _Many1(t)
+   optIter(t) = ("*"| "+"):s  -> Many[t,s=="+"]
               | "?"   -> Or[t,Apply["empty"]]
               | empty -> t
   
