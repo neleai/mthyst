@@ -86,17 +86,10 @@ def [](e)
 	Act[e,true]
 end
 end
-def _Pred(e)
-	Pred[e]
-end
 def _body(body)
 	Seq[_Set("_result",body), Act[_Local("_result")]]
 end
-def _Lookahead(e,neg=false)
-	l=Lookahead[e]
-	l.neg=neg
-	l
-end
+
 class <<Lookahead
   def [](e,neg=false)
     l=Lookahead.create(e)
