@@ -18,17 +18,18 @@ amethyst AmethystParser < Amethyst{
 
   prefixed   = "&" inlineHostExpr:expr  -> Pred[expr]
              | ("&" | "~"):neg  prefixed:m -> Lookahead[m,neg=="~"]
-						 | modifier:from (  '=>' modifier:{from=_Pass(from,it)}      optIter(from):from (~space binding(from):from)*
-												     | '[' expression:{from=Enter[from,it]} "]" optIter(from):from (~space binding(from):from)*
+						 | modifier:from (  '=>' modifier:{from=_Pass(from,it)} 
+												     | '[' expression:{from=Enter[from,it]} "]" 
+														 | optIter(from):from
+														 | ~space binding(from):from
 														 )* {from}
 
- 		modifier = term:t optIter(t):t  (~space binding(t):t)* -> t
+ 		modifier = term
              | binding(Apply["anything"])
              | "#" (~endline .)*:c -> Comment[c]
 
    optIter(t) = ("*"| "+"):s  -> Many[t,s=="+"]
               | "?"   -> Or[t,Apply["empty"]]
-              | empty -> t
   
 	binding(exp) = {exp}:expr ":"  name:name ('[]' {true} | empty {false} ):append ->_Set(name,expr,append)
                | ":" inlineHostExpr:e -> Seq[ _Set("it",exp) , Act[e] ]
