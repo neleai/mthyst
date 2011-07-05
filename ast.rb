@@ -89,8 +89,12 @@ def _Lookahead(e,neg=false)
 	l.neg=neg
 	l
 end
-def _Not(e)
-	_Lookahead(e,true)
+class <<Lookahead
+  def [](e,neg=false)
+    l=Lookahead.create(e)
+    l.neg=neg
+    l
+  end
 end
 
 $varhash=Hash.new{|h,k| h[k]={}}

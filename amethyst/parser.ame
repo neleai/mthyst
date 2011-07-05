@@ -16,9 +16,8 @@ amethyst AmethystParser < Amethyst{
 	
 	sequence =  (nr prefixed)*:ary  @Seq
 
-  prefixed   = "~" prefixed:m -> _Not(m)
-             | "&" inlineHostExpr:expr  -> _Pred(expr)
-             | "&" ~inlineHostExpr:expr  prefixed:m -> _Lookahead(m)
+  prefixed   = "&" inlineHostExpr:expr  -> _Pred(expr)
+             | ("&" | "~"):neg  prefixed:m -> Lookahead[m,neg=="~"]
 						 | modifier:from (  '=>' modifier:{from=_Pass(from,it)}      optIter(from):from (~space binding(from):from)*
 												     | '[' expression:{from=Enter[from,it]} "]" optIter(from):from (~space binding(from):from)*
 														 )* {from}
