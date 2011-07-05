@@ -9,7 +9,7 @@ amethyst AmethystTranslator < Amethyst {
 				| Seq[trans*:t ] -> "#{t*"\n"} "
 				| Not[rw('next',`trans:t`) ]  failwrap("_lookahead(true){#{t}}")
 				| Act[args:t @pred:pred] -> pred ?  failwrap("(#{t})||FAIL") : "(#{t})"
-  			| Lookahead[rw('next',`trans:t`) ]  failwrap("_lookahead{#{t}}")
+  			| Lookahead[ @neg:neg rw('next',`trans:t`) ]  failwrap("_lookahead(#{neg}){#{t}}")
         | Comment[:c] -> ""
 				| Many[rw('break', `trans:t` ) @o=>arg:o] -> "while true\n#{o}=@input;r=#{t}\n break FAIL if r==FAIL\nend;@input=#{o}"
 				| Apply[ Array[:klas :name] args:argss]  failwrap("_foreign(:#{ name } #{ argss!=[] ? ",#{argss}" : "" })")

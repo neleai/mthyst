@@ -9,7 +9,7 @@ makeclasses(Object,
     :Comment,
     [:Args,:o,:c,:r,:actno],
     [:Act,:uses,:pred,:actno],
-    :Lookahead,
+    [:Lookahead,:neg],
     :Not,
     :And,
     :Or,
@@ -84,10 +84,13 @@ end
 def _body(body)
 	Seq[_Set("_result",body), _Act(_Local("_result"))]
 end
-def _Lookahead(e)
-	Lookahead[e]
+def _Lookahead(e,neg=false)
+	l=Lookahead[e]
+	l.neg=neg
+	l
 end
 def _Not(e)
+	puts _Lookahead(e,true).inspect
 	Not[e]
 end
 
