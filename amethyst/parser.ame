@@ -20,7 +20,8 @@ amethyst AmethystParser < Amethyst{
              | ("&" | "~"):neg  prefixed:m -> Lookahead[m,neg=="~"]
 						 | modifier:from (  '=>' modifier:{from=_Pass(from,it)} 
 												     | '[' expression:{from=Enter[from,it]} "]" 
-														 | optIter(from):from
+		 												 | ("*"| "+"):one  { Many[from,one=="+"]}:from
+                             | "?"  {Or[from,Apply["empty"]]}:from
 														 | ~space binding(from):from
 														 )* {from}
 
@@ -28,9 +29,7 @@ amethyst AmethystParser < Amethyst{
              | binding(Apply["anything"])
              | "#" (~endline .)*:c -> Comment[c]
 
-   optIter(t) = ("*"| "+"):s  -> Many[t,s=="+"]
-              | "?"   -> Or[t,Apply["empty"]]
-  
+    
 	binding(exp) = {exp}:expr ":"  name:name ('[]' {true} | empty {false} ):append ->_Set(name,expr,append)
                | ":" inlineHostExpr:e -> Seq[ _Set("it",exp) , Act[e] ]
 
