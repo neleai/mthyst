@@ -18,7 +18,7 @@ amethyst AmethystParser < Amethyst{
 
   prefixed   = "&" inlineHostExpr:expr  -> Pred[expr]
              | ("&" | "~"):neg  prefixed:m -> Lookahead[m,neg=="~"]
-						 | (modifier | &(":"| "[") "" {Apply["anything"]}):from 
+						 | (modifier | "" &<.:\[> "."? {Apply["anything"]}):from 
 										(~space (	 "=>" prefixed:{from=_Pass(from,it)} 
 												     | "[" expression:{from=Enter[from,it]} "]" 
 		 												 | ("*"| "+"):one  { Many[from,one=="+"]}:from
@@ -41,8 +41,7 @@ amethyst AmethystParser < Amethyst{
       	| "<" (~">" eChar)+:x  ">"                            ->  Apply["regch","/[#{x}]/"]
 		    | "(" expression:x ")" ( '[]'	collect(x) | empty {x} )
 
-	application =  "." -> Apply["anything"]
-                 | (name:klas '::' name:rule {[klas,rule]} | name):rule argsOpt('(',')'):arg -> Apply[rule,arg]
+	application = (name:klas '::' name:rule {[klas,rule]} | name):rule argsOpt('(',')'):arg -> Apply[rule,arg]
 
 	key         = "@" className:name  argsOpt('[',']'):args  @Result
               | "@" name:name   @Key
@@ -85,18 +84,18 @@ amethyst AmethystParser < Amethyst{
            | _args('(',')')					 | _args('[',']')					 | _args('{','}')
 					 | '"' (~'"'   eChar)*:s '"'  -> Strin[['"']+ s+['"']]
 					 | '\''(~'\''  eChar)*:s '\'' -> Strin[['\'']+s+['\'']]
-					 | ( <$.:>:n[] | empty) <a-zA-Z_>+:n[] -> n*""
-					 | '@@' <a-zA-Z_>+:n[] -> Global[n*""]
+					 | ( <$.:>:n | empty) ~_ name:n[] -> n
+					 | '@@' ~_ name:n -> Global[n]
 					 | key:k -> Key[k] 
 					 | <^`{}()'"\[\]>
 
-	nameFirst      = <_$^> | letter
+	nameFirst      = letter | '_'
 
   nameRest       = nameFirst | digit
 
-  className      = _* (upper nameRest* )[]:{leterize(it*"")}
+  className      = "" (upper nameRest* )[]:{leterize(it*"")}
 	
-	name = _* (nameFirst nameRest*)[]:{leterize(it*"")}
+	name = "" (nameFirst nameRest*)[]:{leterize(it*"")}
 
 	inlineHostExpr = args('{','}')
 
