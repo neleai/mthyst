@@ -18,8 +18,8 @@ amethyst AmethystParser < Amethyst{
 
   prefixed   = "&" inlineHostExpr:expr  -> Pred[expr]
              | ("&" | "~"):neg  prefixed:m -> Lookahead[m,neg=="~"]
-						 | (modifier | &":" "" {Apply["anything"]}):from 
-													 	(	 '=>' modifier:{from=_Pass(from,it)} 
+						 | (modifier | &(":"| "[") "" {Apply["anything"]}):from 
+													 	(	 '=>' prefixed:{from=_Pass(from,it)} 
 												     | '[' expression:{from=Enter[from,it]} "]" 
 		 												 | ("*"| "+"):one  { Many[from,one=="+"]}:from
     		                     | "?"  {Or[from,Apply["empty"]]}:from
@@ -39,7 +39,6 @@ amethyst AmethystParser < Amethyst{
 		 	  | "'"  (~'\''  eChar)*:s '\''  -> Apply["seq",quote(s)]
  			  | number:{Apply["exactly",it]}
       	| "<" (~">" eChar)+:x  ">"                            ->  Apply["regch","/[#{x}]/"]
-        | "[" expression:to "]" -> Enter[Apply["anything"],to]
 		    | "(" expression:x ")" ( '[]'	collect(x) | empty {x} )
 
 	application =  "." -> Apply["anything"]
