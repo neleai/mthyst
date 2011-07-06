@@ -19,13 +19,13 @@ amethyst AmethystParser < Amethyst{
   prefixed   = "&" inlineHostExpr:expr  -> Pred[expr]
              | ("&" | "~"):neg  prefixed:m -> Lookahead[m,neg=="~"]
 						 | (modifier | &(":"| "[") "" {Apply["anything"]}):from 
-													 	(	 '=>' prefixed:{from=_Pass(from,it)} 
-												     | '[' expression:{from=Enter[from,it]} "]" 
+										(~space (	 "=>" prefixed:{from=_Pass(from,it)} 
+												     | "[" expression:{from=Enter[from,it]} "]" 
 		 												 | ("*"| "+"):one  { Many[from,one=="+"]}:from
     		                     | "?"  {Or[from,Apply["empty"]]}:from
-													 	 | ~space ":" name:name ('[]' {true} | empty {false} ):append {_Set(name,from,append)}:from
-            		   					 | ~space ":" inlineHostExpr:e  {Seq[ _Set("it",from) , Act[e] ]}:from
-														)* {from}
+													 	 |  ":" name:name ('[]' {true} | empty {false} ):append {_Set(name,from,append)}:from
+            		   					 |  ":" inlineHostExpr:e  {Seq[ _Set("it",from) , Act[e] ]}:from
+										)				)* {from}
 
  		modifier = term
              | "#" (~endline .)*:c -> Comment[c]
