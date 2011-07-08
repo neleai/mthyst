@@ -17,7 +17,8 @@ def a2ruby(s)
 end
 o=File.open("inliner.rb","w")
 p=AmethystParser.new
-puts p.parse(:igrammar,"amethyst Foo{ a = ~b }").inspect
+r=p.parse(:igrammar,"amethyst Foo{ a = ~b }")
+puts Analyze_Variables2.new.parse(:itrans,r).inspect
 #o.puts a2ruby(File.new("amethyst/detect_variables.ame").read)
 o.puts a2ruby(File.new("amethyst/traverser.ame").read)
 o.puts a2ruby(File.new("amethyst/dead_code_elimination2.ame").read)
