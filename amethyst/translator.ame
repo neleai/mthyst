@@ -14,7 +14,7 @@ amethyst AmethystTranslator < Amethyst {
 				| Apply[ Array[:klas :name] args:argss]  failwrap("_foreign(:#{ name } #{ argss!=[] ? ",#{argss}" : "" })")
 				| Apply[ :name args:argss]  failwrap("#{name}(#{argss})")
 				| Set[@name=>arg:name @expr=>trans:expr @append:append] -> append ? "it=(#{expr})\n #{name}||=[];_append(#{name},it)" : "#{name} = (#{expr})"
-				| Result[@name:name @args=>args:argss @vars:vars] -> "#{name}.create(#{argss} {#{vars.map{|l| ":#{l[0]}=>#{l[0]}_#{l.number}" }*","} })"
+				| Result[@name:name @args=>args:argss @vars:vars] -> vars=Object.const_get(name).intersect(vars); "#{name}.create(#{argss} {#{vars.map{|l| ":#{l[0]}=>#{l[0]}_#{l.number}" }*","} })"
 				| Key[@name:name] -> " self['#{name}']"
 				| Pass[rw('next',`@to=>trans:to @var=>arg:var @enter:enter`)] failwrap("_pass(#{enter},#{var}){#{to}}")
 

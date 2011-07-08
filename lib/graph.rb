@@ -25,7 +25,7 @@ class Oriented_Graph
 		changed=true
 		while changed
 			changed=false
-			@edges.each{||v,ary|
+			@edges.each{|v,ary|
 				if !consts[v]
 					ary.each{|c| 
 						if consts[c]
@@ -35,7 +35,7 @@ class Oriented_Graph
 					}
 				end
 			}
-			@edges.each{||v,ary|
+			@edges.each{|v,ary|
         if consts[v]
           ary.each{|c| 
             if consts[c]!=consts[v]

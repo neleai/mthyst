@@ -18,11 +18,13 @@ module Populate
 		s.instance_variable_set(:@ary,args)
 		s
 	end
+	def intersect ary
+		ary.reject{|a| !@attrs.include? a[0].to_sym}
+	end
 	alias_method :create,:[]
 end
 
 module AmethystAST
-	attr_accessor :ary
 	def size
 		ary.size
 	end
@@ -43,7 +45,8 @@ def makeclasses(parent,*ary)
 	ary.each{|a| 
 		a=[a] unless a.is_a? Array
 		eval " class #{a[0]} < #{parent}
-						attr_accessor *#{a[1..-1].inspect}
+						@attrs=#{(a[1..-1]+[:ary]).inspect}
+						attr_accessor *@attrs
 						include AmethystAST
 						extend Populate
 					end"
