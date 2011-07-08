@@ -1013,23 +1013,26 @@ class Analyze_Variables2 < Traverser
 def itrans()
  ()
 autovar_1 = ((nil))
-ary_1 = ((nil))
 _result_1 = ((nil))
-(it=(_or(proc{autovar_2 = ((it=(clas(Grammar));next FAIL if it==FAIL;it))
-(it=(_pass(true,autovar_2){autovar_1 = ( self['rules'])
-(it=(_pass(false,autovar_1){autovar_3 = ((it=(anything());next FAIL if it==FAIL;it))
-(it=(_pass(true,autovar_3){()
+autovar_2 = (([]))
 while true
-autovar_5=@input;r=autovar_4 = ((it=(clas(Rule));break FAIL if it==FAIL;it))
-(it=(_pass(true,autovar_4){(it=(root());next FAIL if it==FAIL;it)});break FAIL if it==FAIL;it) 
+autovar_7=@input;r=(it=(_or(proc{autovar_3 = ((it=(clas(Grammar));next FAIL if it==FAIL;it))
+(it=(_pass(true,autovar_3){autovar_1 = ( self['rules'])
+(it=(_pass(false,autovar_1){autovar_4 = ((it=(anything());next FAIL if it==FAIL;it))
+(it=(_pass(true,autovar_4){()
+while true
+autovar_6=@input;r=autovar_5 = ((it=(clas(Rule));break FAIL if it==FAIL;it))
+(it=(_pass(true,autovar_5){(it=(root());next FAIL if it==FAIL;it)});break FAIL if it==FAIL;it) 
  break FAIL if r==FAIL
-end;@input=autovar_5
+end;@input=autovar_6
 () });next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it)
 ()
 it=( self['this'])
- ary_1||=[];_append(ary_1,it) });next FAIL if it==FAIL;it) },proc{it=((it=(anything());next FAIL if it==FAIL;it))
- ary_1||=[];_append(ary_1,it)}));return FAIL if it==FAIL;it)
-_result_1 = ((ary_1))
+ autovar_2||=[];_append(autovar_2,it) });next FAIL if it==FAIL;it) },proc{it=((it=(anything());next FAIL if it==FAIL;it))
+ autovar_2||=[];_append(autovar_2,it)}));break FAIL if it==FAIL;it)
+ break FAIL if r==FAIL
+end;@input=autovar_7
+_result_1 = ((autovar_2))
 (_result_1)  
 end
 def root()
@@ -1040,7 +1043,7 @@ autovar_1 = ( self['this'])
 (it=(_pass(true,autovar_2){(@variables=Hash.new{|k,v| k[v]=v} ;i=0;( self['locals']+ self['args']).each{|v| v.no=i;i+=1;@variables[v[0]]=v})
 (@locals= self['locals'])
 (it=(traverse());next FAIL if it==FAIL;it)
-(puts @locals.inspect; self['body']=Seq[{:ary=>(( self['locals']- self['args']).map{|v| Set[{:name=>v,:expr=>Act["nil"],:append=>false}]}+[ self['body']]) }])
+()
 _result_1 = ( self['this']) });next FAIL if it==FAIL;it) });return FAIL if it==FAIL;it)
 (_result_1)  
 end
