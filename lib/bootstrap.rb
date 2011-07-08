@@ -1051,8 +1051,8 @@ def visit()
 (it=(_pass(true,autovar_1){(it=(traverse());next FAIL if it==FAIL;it)
 ( self['ary']= self['ary'].map{|a| @variables[a] })
 _result_1 = ( self['this']) });next FAIL if it==FAIL;it) },proc{autovar_2 = ((it=(clas(Result));next FAIL if it==FAIL;it))
-(it=(_pass(true,autovar_2){( self['vars']=@locals.select{|a| a[0]!= "autovar"&&a[0]!="_result"&&a[0]!="it"}.uniq)
-_result_1 = ((it=(traverse());next FAIL if it==FAIL;it)) });next FAIL if it==FAIL;it) }));return FAIL if it==FAIL;it)
+(it=(_pass(true,autovar_2){( self['vars']=@locals.select{|a| self['vars'].include? a[0].to_sym}.uniq)
+_result_1 = ( self['this']) });next FAIL if it==FAIL;it) }));return FAIL if it==FAIL;it)
 (_result_1)  
 end
 

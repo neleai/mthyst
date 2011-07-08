@@ -3,5 +3,5 @@ amethyst Analyze_Variables2 < Traverser {
   root = @this=>Rule[  {@@variables=Hash.new{|k,v| k[v]=v} ;i=0;(@locals+@args).each{|v| v.no=i;i+=1;@@variables[v[0]]=v}} {@@locals=@locals} traverse  {@body=Seq[{:ary=>((@locals-@args).map{|v| Set[{:name=>v,:expr=>Act["nil"],:append=>false}]}+[@body]) }]} @this]
 
 	visit = Args[ traverse {@ary=@ary.map{|a| @@variables[a] }}  @this]
-				|  Result[ {@vars=@@locals.select{|a| a[0]!= "autovar"&&a[0]!="_result"&&a[0]!="it"}.uniq} traverse]
+				|  Result[ {@vars=@@locals.select{|a| @vars.include? a[0].to_sym}.uniq} @this]
 }
