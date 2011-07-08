@@ -940,6 +940,124 @@ end
 
 end
 
+class Traverser < Amethyst
+def traverse_item()
+ a_1 = ((nil))
+_result_1 = ((nil))
+(it=(_or(proc{a_1 = ((it=(visit());next FAIL if it==FAIL;it))
+(@changed=true)
+_result_1 = ((a_1)) },proc{autovar_1 = ((it=(clas(Array));next FAIL if it==FAIL;it))
+(it=(_pass(true,autovar_1){autovar_2 = (([]))
+while true
+autovar_3=@input;r=it=((it=(traverse_item());break FAIL if it==FAIL;it))
+ autovar_2||=[];_append(autovar_2,it)
+ break FAIL if r==FAIL
+end;@input=autovar_3
+_result_1 = ((autovar_2)) });next FAIL if it==FAIL;it) },proc{autovar_4 = ((it=(clas(AmethystAST));next FAIL if it==FAIL;it))
+(it=(_pass(true,autovar_4){_result_1 = ((it=(traverse());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it) },proc{_result_1 = ((it=(anything());next FAIL if it==FAIL;it))}));return FAIL if it==FAIL;it)
+(_result_1)  
+end
+def traverse()
+ ()
+()
+()
+autovar_1 = ((nil))
+_result_1 = ((nil))
+()
+while true
+autovar_2=@input;r=(it=(anything());break FAIL if it==FAIL;it)
+ break FAIL if r==FAIL
+end;@input=autovar_2
+()
+ self['this']
+autovar_1 = ((( self['this'].instance_variables).map{|v| [v, self['this'].instance_variable_get(v)] }))
+(it=(_pass(false,autovar_1){autovar_3 = ((it=(anything());next FAIL if it==FAIL;it))
+(it=(_pass(true,autovar_3){()
+while true
+autovar_5=@input;r=autovar_4 = ((it=(anything());break FAIL if it==FAIL;it))
+(it=(_pass(true,autovar_4){(it=(anything());next FAIL if it==FAIL;it)
+(it=(traverse_item());next FAIL if it==FAIL;it)
+() });break FAIL if it==FAIL;it) 
+ break FAIL if r==FAIL
+end;@input=autovar_5
+() });next FAIL if it==FAIL;it) });return FAIL if it==FAIL;it)
+_result_1 = ( self['this'])
+(_result_1)  
+end
+
+end
+
+
+
+class Seq_Or_Optimizer < Traverser
+def root()
+ _result_1 = ((nil))
+_result_1 = ((it=(traverse());return FAIL if it==FAIL;it))
+(_result_1)  
+end
+def visit()
+ _result_1 = ((nil))
+(it=(_or(proc{autovar_1 = ((it=(clas(Seq));next FAIL if it==FAIL;it))
+(it=(_pass(true,autovar_1){(it=(traverse());next FAIL if it==FAIL;it)
+()
+_result_1 = ((( self['ary'].size==1) ? self['ary'][0] : self['this'])) });next FAIL if it==FAIL;it) },proc{autovar_2 = ((it=(clas(Or));next FAIL if it==FAIL;it))
+(it=(_pass(true,autovar_2){(it=(traverse());next FAIL if it==FAIL;it)
+()
+_result_1 = ((( self['ary'].size==1) ? self['ary'][0] : self['this'])) });next FAIL if it==FAIL;it) }));return FAIL if it==FAIL;it)
+(_result_1)  
+end
+
+end
+
+class Analyze_Variables2 < Traverser
+def igrammar()
+ ()
+autovar_1 = ((nil))
+ary_1 = ((nil))
+_result_1 = ((nil))
+autovar_2 = ((it=(anything());return FAIL if it==FAIL;it))
+(it=(_pass(true,autovar_2){(it=(_or(proc{autovar_3 = ((it=(clas(Grammar));next FAIL if it==FAIL;it))
+(it=(_pass(true,autovar_3){autovar_1 = ( self['rules'])
+(it=(_pass(false,autovar_1){autovar_4 = ((it=(anything());next FAIL if it==FAIL;it))
+(it=(_pass(true,autovar_4){()
+while true
+autovar_6=@input;r=autovar_5 = ((it=(clas(Rule));break FAIL if it==FAIL;it))
+(it=(_pass(true,autovar_5){(it=(root());next FAIL if it==FAIL;it)});break FAIL if it==FAIL;it) 
+ break FAIL if r==FAIL
+end;@input=autovar_6
+() });next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it)
+()
+it=( self['this'])
+ ary_1||=[];_append(ary_1,it) });next FAIL if it==FAIL;it) },proc{it=((it=(anything());next FAIL if it==FAIL;it))
+ ary_1||=[];_append(ary_1,it)}));next FAIL if it==FAIL;it)});return FAIL if it==FAIL;it)
+_result_1 = ((ary_1))
+(_result_1)  
+end
+def root()
+ autovar_1 = ((nil))
+_result_1 = ((nil))
+autovar_1 = ( self['this'])
+(it=(_pass(false,autovar_1){autovar_2 = ((it=(clas(Rule));next FAIL if it==FAIL;it))
+(it=(_pass(true,autovar_2){(@variables=Hash.new{|k,v| k[v]=v} ;i=0;( self['locals']+ self['args']).each{|v| v.no=i;i+=1;@variables[v[0]]=v})
+(@locals= self['locals'])
+(it=(traverse());next FAIL if it==FAIL;it)
+()
+_result_1 = ( self['this']) });next FAIL if it==FAIL;it) });return FAIL if it==FAIL;it)
+(_result_1)  
+end
+def visit()
+ _result_1 = ((nil))
+(it=(_or(proc{autovar_1 = ((it=(clas(Args));next FAIL if it==FAIL;it))
+(it=(_pass(true,autovar_1){(it=(traverse());next FAIL if it==FAIL;it)
+( self['ary']= self['ary'].map{|a| @variables[a] })
+_result_1 = ( self['this']) });next FAIL if it==FAIL;it) },proc{autovar_2 = ((it=(clas(Result));next FAIL if it==FAIL;it))
+(it=(_pass(true,autovar_2){( self['vars']=@locals.select{|a| a[0]!= "autovar"&&a[0]!="_result"&&a[0]!="it"}.uniq)
+_result_1 = ((it=(traverse());next FAIL if it==FAIL;it)) });next FAIL if it==FAIL;it) }));return FAIL if it==FAIL;it)
+(_result_1)  
+end
+
+end
+
 class Dead_Code_Detector < AmethystOptimizer
 def trans()
  name_1 = ((nil))

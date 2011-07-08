@@ -3,11 +3,6 @@ require 'graph'
 require 'pp'
 require 'amethyst'
 def a2ruby(s)
-	p=AmethystParser.new
-	o=AmethystOptimizer2.new
-	c=Communize_Or.new
-	t=AmethystTranslator.new
-	i=Inliner.new
 	par=AmethystParser.new.parse(:igrammar,s)
 	par=AmethystOptimizer2.new.parse(:itrans,par)
 
@@ -30,12 +25,12 @@ if inl!=FAIL
 #	par=Dead_Code_Deleter.new.parse(:itrans,par)
 end
 #	opt=c.parse(:itrans,inl)
-	par=o.parse(:itrans,par)
-	ruby=t.parse(:itrans,par)
+	par=AmethystOptimizer2.new.parse(:itrans,par)
+	ruby=AmethystTranslator.new.parse(:itrans,par)
 	ruby
 end
 o=File.open("bootstrap.rb","w")
-["amethyst.ame","parser.ame","optimizer_null.ame","optimizer_and_or.ame","detect_variables.ame","dead_code_elimination.ame","inliner.ame","translator.ame"].each{|file|
+["amethyst.ame","parser.ame","optimizer_null.ame","optimizer_and_or.ame","detect_variables.ame","traverser.ame","detect_variables2.ame","dead_code_elimination.ame","inliner.ame","translator.ame"].each{|file|
 puts file
 o.puts a2ruby(File.new("amethyst/#{file}").read)
 }
