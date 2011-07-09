@@ -23,6 +23,7 @@ class AmethystCore
         @input = oldInput
         r= arg.call
 				return r unless r==FAIL
+				(@cut=nil;return FAIL) if @cut
 		}
 		FAIL
 	end
