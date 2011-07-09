@@ -17,8 +17,8 @@ amethyst AmethystTranslator < Amethyst {
 				| Result[@name:name @args=>args:argss @vars:vars] -> "#{name}.create(#{argss} {#{vars.map{|l| ":#{l[0]}=>#{l[0]}_#{l.number}" }*","} })"
 				| Key[@name:name] -> " self['#{name}']"
 				| Pass[rw('next',`@to=>trans:to @var=>arg:var @enter:enter`)] failwrap("_pass(#{!!enter},#{var}){#{to}}")
-				| Cut[] ->  "@cut=true"
-				| Stop[] -> "@stop=true"
+				| Cut[] ->  "@cut=true;it"
+				| Stop[] -> "@stop=true;it"
 
 	transfn = trans:t -> "proc{#{t}}" 
 	

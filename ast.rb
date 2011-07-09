@@ -30,6 +30,7 @@ class Local
 	end
 end
 def quote(s)
+	s=[] if s==nil
   s=s*""
   '"'+s.gsub('\\"','"').gsub('"','\\"')+'"'
 end

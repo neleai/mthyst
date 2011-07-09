@@ -36,7 +36,7 @@ amethyst AmethystParser < Amethyst{
   prefixed   = "&" inlineHostExpr:expr  -> Pred[expr]
              | ("&" | "~"):neg  prefixed:m -> Lookahead[m,neg=="~"]
 						 | (modifier | "" &<.:\[> "."? {Apply["anything"]}):from 
-										(~space (	 "=>" prefixed:{from=_Pass(from,it)} 
+										(~_     (	 "=>" prefixed:{from=_Pass(from,it)} 
 												     | "[" expression:{from=Enter[from,it]} "]" 
 		 												 | ("*"| "+"):one  { Many[from,one=="+"]}:from
     		                     | "?"  {Or[from,Apply["empty"]]}:from
@@ -53,10 +53,10 @@ amethyst AmethystParser < Amethyst{
 		 	  | application
  			  | key
 			  | ("->" atomicHostExpr | "" inlineHostExpr):x    ->  Act[x]
-				| "\"" (~'"' eChar)*:s '"' -> Apply["token" ,quote(s)]
-		 	  | "'"  (~'\''  eChar)*:s '\''  -> Apply["seq",quote(s)]
+				| "\"" ('"'  break| eChar:s[])*  -> Apply["token" ,quote(s)]
+		 	  | "'"  ('\'' break|  eChar:s[])* -> Apply["seq"   ,quote(s)]
  			  | number:{Apply["exactly",it]}
-      	| "<" (~">" eChar)+:x  ">"                            ->  Apply["regch","/[#{x}]/"]
+      	| "<" (">" break | eChar:x[])*                            ->  Apply["regch","/[#{x}]/"]
 		    | "(" expression:x ")" ( '[]'	collect(x) | empty {x} )
 
 	application = (name:klas '::' name:rule {[klas,rule]} | name):rule argsOpt('(',')'):arg -> Apply[rule,arg]
@@ -89,8 +89,8 @@ amethyst AmethystParser < Amethyst{
 		
 	rubyarg  = '`' expression:e '`' -> Exp[_body(e)]
            | _args('(',')')					 | _args('[',']')					 | _args('{','}')
-					 | '"' ('"' break |  eChar)*:s   -> Strin[connectstring(['"']+ s+['"'])]
-					 | '\''(~'\''  eChar)*:s '\'' -> Strin[connectstring(['\'']+s+['\''])]
+					 | '"':s[]  ('"'  break |  eChar)*:s[]  -> Strin[connectstring(s)]
+					 | '\'':s[] ('\'' break |  eChar)*:s[]  -> Strin[connectstring(s)]
 					 | ( ":@":n | <$.:>:n | empty) ~_ name:n[] -> n
 					 | '@@' ~_ name:n -> Global[n]
 					 | key:k -> Key[k] 
