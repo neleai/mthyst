@@ -49,12 +49,12 @@ class <<Enter
 		_Pass(from,to,true)
 	end
 end
-def _Pass(from,to,enter=false)
+def _Pass(from,to,enter=nil)
 	a=autovar
 	Seq[_Set(a,from), Pass[{:to=>to,:enter=>enter,:var=>a}]]
 end
 
-def _Set(name,expr,append=false)
+def _Set(name,expr,append=nil)
   Set[{:name=>_Local(name),:expr=>expr,:append=>append}]
 end
 class Append;end
@@ -65,14 +65,14 @@ class <<Append
 end
 
 class <<Many
-	def [](expr,many1=false)
+	def [](expr,many1=nil)
 	  a=autovar
 		Seq[{:ary=>( [_Set(a, Act["[]"])]+(many1 ? [Append[a,expr]] : [])+[Many.create({:ary=>[Append[a,expr]],:o=>autovar}),Act[a]])}]
 	end
 end
 
 class <<Act
-	def [](expr=nil,pred=false)
+	def [](expr=nil,pred=nil)
 		return Act.create({:pred=>pred}) if expr==nil
 		Act.create(expr,{:pred=>pred})
 	end
@@ -88,7 +88,7 @@ def _body(body)
 end
 
 class <<Lookahead
-  def [](e,neg=false)
+  def [](e,neg=nil)
     l=Lookahead.create(e)
     l.neg=neg
     l

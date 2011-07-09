@@ -8,7 +8,7 @@ amethyst AmethystTranslator < Amethyst {
 				| Or[rw('next', `transfn*:ors`)]  failwrap("_or(#{ors*","})")
 				| Seq[trans*:t ] -> "#{t*"\n"} "
 				| Act[args:t @pred:pred] -> pred ?  failwrap("(#{t})||FAIL") : "(#{t})"
-  			| Lookahead[ @neg:neg rw('next',`trans:t`) ]  failwrap("_lookahead(#{neg}){#{t}}")
+  			| Lookahead[ @neg:neg rw('next',`trans:t`) ]  failwrap("_lookahead(#{!!neg}){#{t}}")
         | Comment[:c] -> ""
 				| Many[rw('break', `trans:t` ) @o=>arg:o] -> "while true\n#{o}=@input;r=#{t}\n break FAIL if r==FAIL\nend;@input=#{o}"
 				| Apply[ Array[:klas :name] args:argss]  failwrap("_foreign(:#{ name } #{ argss!=[] ? ",#{argss}" : "" })")
@@ -16,7 +16,7 @@ amethyst AmethystTranslator < Amethyst {
 				| Set[@name=>arg:name @expr=>trans:expr @append:append] -> append ? "it=(#{expr})\n #{name}||=[];_append(#{name},it)" : "#{name} = (#{expr})"
 				| Result[@name:name @args=>args:argss @vars:vars] -> "#{name}.create(#{argss} {#{vars.map{|l| ":#{l[0]}=>#{l[0]}_#{l.number}" }*","} })"
 				| Key[@name:name] -> " self['#{name}']"
-				| Pass[rw('next',`@to=>trans:to @var=>arg:var @enter:enter`)] failwrap("_pass(#{enter},#{var}){#{to}}")
+				| Pass[rw('next',`@to=>trans:to @var=>arg:var @enter:enter`)] failwrap("_pass(#{!!enter},#{var}){#{to}}")
 
 	transfn = trans:t -> "proc{#{t}}" 
 	
