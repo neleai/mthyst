@@ -1,17 +1,20 @@
 require 'ast'
-def processargs(r)
-	r<< ','
-	ary=[]
-	tmp=[]
-	r.each{|a|
-		puts a.inspect
-		if a==','
-			ary<<Args[{:ary=>tmp}];tmp=[]
+
+def connectstring(ary)
+	r=[]
+	s=nil
+	ary.each{|a|
+		if a.is_a? String
+			s||=""
+			s+=a
 		else
-			tmp<<a
+			r<<s if s
+			s=nil
+			r<<a
 		end
 	}
-	ary
+	r<<s if s
+	r
 end
 
 amethyst AmethystParser < Amethyst{
@@ -85,20 +88,21 @@ amethyst AmethystParser < Amethyst{
 		
 	rubyarg  = '`' expression:e '`' -> Exp[_body(e)]
            | _args('(',')')					 | _args('[',']')					 | _args('{','}')
-					 | '"' (~'"'   eChar)*:s '"'  -> Strin[['"']+ s+['"']]
-					 | '\''(~'\''  eChar)*:s '\'' -> Strin[['\'']+s+['\'']]
+					 | '"' (~'"'   eChar)*:s '"'  -> Strin[connectstring(['"']+ s+['"'])]
+					 | '\''(~'\''  eChar)*:s '\'' -> Strin[connectstring(['\'']+s+['\''])]
 					 | ( ":@":n | <$.:>:n | empty) ~_ name:n[] -> n
 					 | '@@' ~_ name:n -> Global[n]
 					 | key:k -> Key[k] 
 					 | <^`{}()'"\[\]>
 
 	procargs = {@@ary=[];@@tmp=[]}
-						 ( ',' {puts @@tmp; @@ary<<Args[{:ary=>@@tmp}];@@tmp=[]}
+						 ( [','] {@@ary<<Args[{:ary=>@@tmp}];@@tmp=[]}
 							 | procargs2
 						 )*
-						 {@@ary}
+						 {puts @@ary.inspect;@@ary}
 	
-	procargs2 =	.:a {@@tmp<<a}
+	procargs2 =	Args[ procargs2* ]
+						| .:a {@@tmp<<a}
 
 	nameFirst      = letter | '_'
 

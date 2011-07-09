@@ -165,19 +165,22 @@ end
 end
 
 require 'ast'
-def processargs(r)
-	r<< ','
-	ary=[]
-	tmp=[]
-	r.each{|a|
-		puts a.inspect
-		if a==','
-			ary<<Args[{:ary=>tmp}];tmp=[]
+
+def connectstring(ary)
+	r=[]
+	s=nil
+	ary.each{|a|
+		if a.is_a? String
+			s||=""
+			s+=a
 		else
-			tmp<<a
+			r<<s if s
+			s=nil
+			r<<a
 		end
 	}
-	ary
+	r<<s if s
+	r
 end
 
 class AmethystParser < Amethyst
@@ -516,7 +519,7 @@ it=((it=(eChar());break FAIL if it==FAIL;it))
 end;@input=autovar_2
 s_1 = ((autovar_1))
 (it=(seq("\""));next FAIL if it==FAIL;it)
-_result_1 = ((Strin[['"']+ s_1+['"']])) },proc{(it=(seq("\'"));next FAIL if it==FAIL;it)
+_result_1 = ((Strin[connectstring(['"']+ s_1+['"'])])) },proc{(it=(seq("\'"));next FAIL if it==FAIL;it)
 autovar_3 = (([]))
 while true
 autovar_4=@input;r=(it=(_lookahead(true){(it=(seq("\'"));next FAIL if it==FAIL;it)});break FAIL if it==FAIL;it)
@@ -526,7 +529,7 @@ it=((it=(eChar());break FAIL if it==FAIL;it))
 end;@input=autovar_4
 s_1 = ((autovar_3))
 (it=(seq("\'"));next FAIL if it==FAIL;it)
-_result_1 = ((Strin[['\'']+s_1+['\'']])) },proc{(it=(_or(proc{n_1 = ((it=(token(":@"));next FAIL if it==FAIL;it))},proc{n_1 = ((it=(regch(/[$.:]/));next FAIL if it==FAIL;it))},proc{(it=(empty());next FAIL if it==FAIL;it)}));next FAIL if it==FAIL;it)
+_result_1 = ((Strin[connectstring(['\'']+s_1+['\''])])) },proc{(it=(_or(proc{n_1 = ((it=(token(":@"));next FAIL if it==FAIL;it))},proc{n_1 = ((it=(regch(/[$.:]/));next FAIL if it==FAIL;it))},proc{(it=(empty());next FAIL if it==FAIL;it)}));next FAIL if it==FAIL;it)
 (it=(_lookahead(true){(it=(_());next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it)
 it=((it=(name());next FAIL if it==FAIL;it))
  n_1||=[];_append(n_1,it)
@@ -542,19 +545,27 @@ def procargs()
 (@ary=[];@tmp=[])
 ()
 while true
-autovar_1=@input;r=(it=(_or(proc{(it=(seq(","));next FAIL if it==FAIL;it)
-(puts @tmp; @ary<<Args[{:ary=>@tmp}];@tmp=[]) },proc{(it=(procargs2());next FAIL if it==FAIL;it)}));break FAIL if it==FAIL;it)
+autovar_2=@input;r=(it=(_or(proc{autovar_1 = ((it=(anything());next FAIL if it==FAIL;it))
+(it=(_pass(true,autovar_1){(it=(seq(","));next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it)
+(@ary<<Args[{:ary=>@tmp}];@tmp=[]) },proc{(it=(procargs2());next FAIL if it==FAIL;it)}));break FAIL if it==FAIL;it)
  break FAIL if r==FAIL
-end;@input=autovar_1
+end;@input=autovar_2
 ()
-_result_1 = ((@ary))
+_result_1 = ((puts @ary.inspect;@ary))
 (_result_1)  
 end
 def procargs2()
  a_1 = ((nil))
 _result_1 = ((nil))
-a_1 = ((it=(anything());return FAIL if it==FAIL;it))
-_result_1 = ((@tmp<<a_1))
+(it=(_or(proc{autovar_1 = ((it=(clas(Args));next FAIL if it==FAIL;it))
+(it=(_pass(true,autovar_1){autovar_2 = (([]))
+while true
+autovar_3=@input;r=it=((it=(procargs2());break FAIL if it==FAIL;it))
+ autovar_2||=[];_append(autovar_2,it)
+ break FAIL if r==FAIL
+end;@input=autovar_3
+_result_1 = ((autovar_2)) });next FAIL if it==FAIL;it) },proc{a_1 = ((it=(anything());next FAIL if it==FAIL;it))
+_result_1 = ((@tmp<<a_1)) }));return FAIL if it==FAIL;it)
 (_result_1)  
 end
 def nameFirst()
