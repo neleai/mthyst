@@ -76,7 +76,7 @@ amethyst AmethystParser < Amethyst{
 	argsOpt(o,c) = args(o,c) 
                 | empty -> []
 
-	args(o,c) = __args(o,c):r { processargs(r)}
+	args(o,c) = __args(o,c):r { r+[',']}=>[procargs]
 						
 
 	_args(o,c) = __args(o,c):r -> Args[{:ary=>([o]+r+[c])}]
@@ -93,9 +93,9 @@ amethyst AmethystParser < Amethyst{
 					 | <^`{}()'"\[\]>
 
 	procargs = {@@ary=[];@@tmp=[]}
-						 ( ',' {@@ary<<Args[{:ary=>@@tmp}];@@tmp=[]}
+						 ( ',' {puts @@tmp; @@ary<<Args[{:ary=>@@tmp}];@@tmp=[]}
 							 | procargs2
-						 )
+						 )*
 						 {@@ary}
 	
 	procargs2 =	.:a {@@tmp<<a}

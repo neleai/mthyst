@@ -466,9 +466,12 @@ _result_1 = (([])) }));return FAIL if it==FAIL;it)
 end
 def args(o_1,c_1)
  r_1 = ((nil))
+autovar_1 = ((nil))
 _result_1 = ((nil))
 r_1 = ((it=(__args(o_1,c_1));return FAIL if it==FAIL;it))
-_result_1 = ((processargs(r_1)))
+autovar_1 = ((r_1+[',']))
+(it=(_pass(false,autovar_1){autovar_2 = ((it=(anything());next FAIL if it==FAIL;it))
+(it=(_pass(true,autovar_2){_result_1 = ((it=(procargs());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it) });return FAIL if it==FAIL;it)
 (_result_1)  
 end
 def _args(o_1,c_1)
@@ -537,8 +540,13 @@ end
 def procargs()
  _result_1 = ((nil))
 (@ary=[];@tmp=[])
-(it=(_or(proc{(it=(seq(","));next FAIL if it==FAIL;it)
-(@ary<<Args[{:ary=>@tmp}];@tmp=[]) },proc{(it=(procargs2());next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it)
+()
+while true
+autovar_1=@input;r=(it=(_or(proc{(it=(seq(","));next FAIL if it==FAIL;it)
+(puts @tmp; @ary<<Args[{:ary=>@tmp}];@tmp=[]) },proc{(it=(procargs2());next FAIL if it==FAIL;it)}));break FAIL if it==FAIL;it)
+ break FAIL if r==FAIL
+end;@input=autovar_1
+()
 _result_1 = ((@ary))
 (_result_1)  
 end
