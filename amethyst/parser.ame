@@ -49,6 +49,7 @@ amethyst AmethystParser < Amethyst{
 
 	term  =  className:cls -> Apply["clas",cls]
 				| "nested" '(' expression:expr ")" -> Nested[expr]
+				| "break" -> Seq[Cut[],Stop[]]
 		 	  | application
  			  | key
 			  | ("->" atomicHostExpr | "" inlineHostExpr):x    ->  Act[x]
