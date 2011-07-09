@@ -6,8 +6,7 @@ def a2ruby(s)
 	p=AmethystParser.new
 	o=AmethystOptimizer2.new
 	t=AmethystTranslator.new
-	d=Detect_Variables.new
-	a=Analyze_Variables.new
+	a=Analyze_Variables2.new
 	par=p.parse(:igrammar,s)
 	opt=o.parse(:itrans,par)
 #	opt=d.parse(:itrans,opt)
@@ -23,10 +22,11 @@ puts Analyze_Variables2.new.parse(:itrans,r).inspect
 o.puts a2ruby(File.new("amethyst/traverser.ame").read)
 o.puts a2ruby(File.new("amethyst/dead_code_elimination2.ame").read)
 o.puts a2ruby(File.new("amethyst/detect_variables2.ame").read)
+o.puts a2ruby(File.new("amethyst/inliner2.ame").read)
 
 o.close
 require 'inliner.rb'
 t = And[And[Act["aaa"],Act["bbb"],And[Act["ccc"],Or[Or[And[And[[Act['a']]]]]]]]]
 pp t
-res= AmethystTranslator.new.parse(:opt,t)
+res= AmethystTranslator.new.parse(:itrans,t)
 pp res
