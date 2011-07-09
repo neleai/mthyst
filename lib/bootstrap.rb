@@ -545,13 +545,12 @@ def procargs()
 (@ary=[];@tmp=[])
 ()
 while true
-autovar_2=@input;r=(it=(_or(proc{autovar_1 = ((it=(anything());next FAIL if it==FAIL;it))
-(it=(_pass(true,autovar_1){(it=(seq(","));next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it)
+autovar_1=@input;r=(it=(_or(proc{(it=(seq(","));next FAIL if it==FAIL;it)
 (@ary<<Args[{:ary=>@tmp}];@tmp=[]) },proc{(it=(procargs2());next FAIL if it==FAIL;it)}));break FAIL if it==FAIL;it)
  break FAIL if r==FAIL
-end;@input=autovar_2
+end;@input=autovar_1
 ()
-_result_1 = ((puts @ary.inspect;@ary))
+_result_1 = ((@ary))
 (_result_1)  
 end
 def procargs2()
@@ -967,9 +966,18 @@ _result_1 = (Result.create( {:name=>name_1,:args=>args_1,:vars=>vars_1 })) },pro
 (_result_1)  
 end
 def arg()
- name_1 = ((nil))
+ a_1 = ((nil))
+name_1 = ((nil))
 _result_1 = ((nil))
-(it=(_or(proc{name_1 = ((it=(char());next FAIL if it==FAIL;it))
+(it=(_or(proc{autovar_1 = ((it=(clas(Args));next FAIL if it==FAIL;it))
+(it=(_pass(true,autovar_1){autovar_2 = (([]))
+while true
+autovar_3=@input;r=it=((it=(arg());break FAIL if it==FAIL;it))
+ autovar_2||=[];_append(autovar_2,it)
+ break FAIL if r==FAIL
+end;@input=autovar_3
+a_1 = ((autovar_2)) });next FAIL if it==FAIL;it)
+_result_1 = ((Args[{:ary=>connectstrings(a_1)}])) },proc{name_1 = ((it=(char());next FAIL if it==FAIL;it))
 (it=((@variables[name_1])||FAIL);next FAIL if it==FAIL;it)
 _result_1 = ((_Local(name_1))) },proc{_result_1 = ((it=(super());next FAIL if it==FAIL;it))}));return FAIL if it==FAIL;it)
 (_result_1)  
@@ -1089,7 +1097,7 @@ def visit()
  _result_1 = ((nil))
 (it=(_or(proc{autovar_1 = ((it=(clas(Args));next FAIL if it==FAIL;it))
 (it=(_pass(true,autovar_1){(it=(traverse());next FAIL if it==FAIL;it)
-( self['ary']= self['ary'].map{|a| @variables[a] })
+( self['ary']= self['ary'].map{|a| @variables[a] }; self['ary']=connectstring( self['ary']))
 _result_1 = ( self['this']) });next FAIL if it==FAIL;it) },proc{autovar_2 = ((it=(clas(Result));next FAIL if it==FAIL;it))
 (it=(_pass(true,autovar_2){( self['vars']=@locals.select{|a| self['vars'].include? a[0].to_sym}.uniq)
 _result_1 = ( self['this']) });next FAIL if it==FAIL;it) }));return FAIL if it==FAIL;it)

@@ -96,10 +96,10 @@ amethyst AmethystParser < Amethyst{
 					 | <^`{}()'"\[\]>
 
 	procargs = {@@ary=[];@@tmp=[]}
-						 ( [','] {@@ary<<Args[{:ary=>@@tmp}];@@tmp=[]}
+						 ( ',' {@@ary<<Args[{:ary=>@@tmp}];@@tmp=[]}
 							 | procargs2
 						 )*
-						 {puts @@ary.inspect;@@ary}
+						 {@@ary}
 	
 	procargs2 =	Args[ procargs2* ]
 						| .:a {@@tmp<<a}
