@@ -527,15 +527,17 @@ e_1 = ((it=(expression());next FAIL if it==FAIL;it))
 _result_1 = ((Exp[_body(e_1)])) },proc{_result_1 = ((it=(_args('(',')'));next FAIL if it==FAIL;it))},proc{_result_1 = ((it=(_args('[',']'));next FAIL if it==FAIL;it))},proc{_result_1 = ((it=(_args('{','}'));next FAIL if it==FAIL;it))},proc{(it=(seq("\""));next FAIL if it==FAIL;it)
 autovar_1 = (([]))
 while true
-autovar_2=@input;r=(it=(_lookahead(true){(it=(seq("\""));next FAIL if it==FAIL;it)});break FAIL if it==FAIL;it)
-it=((it=(eChar());break FAIL if it==FAIL;it))
- autovar_1||=[];_append(autovar_1,it) 
+autovar_2=@input;r=(it=(_or(proc{(it=(seq("\""));next FAIL if it==FAIL;it)
+@cut=true
+it=(@stop=true)
+it="\""
+ autovar_1||=[];_append(autovar_1,it) },proc{it=((it=(eChar());next FAIL if it==FAIL;it))
+ autovar_1||=[];_append(autovar_1,it)}));break FAIL if it==FAIL;it)
  break FAIL if r==FAIL
- (@stop=nil;break FAIL) if @stop==true
+ (autovar_2=@input;@stop=nil;break FAIL) if @stop==true
 end;@input=autovar_2
 s_1 = ((autovar_1))
-(it=(seq("\""));next FAIL if it==FAIL;it)
-_result_1 = ((Strin[connectstring(['"']+ s_1+['"'])])) },proc{(it=(seq("\'"));next FAIL if it==FAIL;it)
+_result_1 = ((Strin[connectstring(['"']+ s_1)])) },proc{(it=(seq("\'"));next FAIL if it==FAIL;it)
 autovar_3 = (([]))
 while true
 autovar_4=@input;r=(it=(_lookahead(true){(it=(seq("\'"));next FAIL if it==FAIL;it)});break FAIL if it==FAIL;it)
@@ -1572,7 +1574,7 @@ _result_1 = (("")) },proc{autovar_21 = ((it=(clas(Many));next FAIL if it==FAIL;i
 (_result_1) } ));next FAIL if it==FAIL;it)
 autovar_4 = ( self['o'])
 (it=(_pass(false,autovar_4){o_1 = ((it=(arg());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it)
-_result_1 = (("while true\n#{o_1}=@input;r=#{t_1}\n break FAIL if r==FAIL\n (@stop=nil;break FAIL) if @stop==true\nend;@input=#{o_1}")) },proc{autovar_22 = ((it=(clas(Apply));next FAIL if it==FAIL;it))
+_result_1 = (("while true\n#{o_1}=@input;r=#{t_1}\n break FAIL if r==FAIL\n (#{o_1}=@input;@stop=nil;break FAIL) if @stop==true\nend;@input=#{o_1}")) },proc{autovar_22 = ((it=(clas(Apply));next FAIL if it==FAIL;it))
 (it=(_pass(true,autovar_22){autovar_23 = ((it=(clas(Array));next FAIL if it==FAIL;it))
 (it=(_pass(true,autovar_23){(it=(anything());next FAIL if it==FAIL;it)
 name_1 = ((it=(anything());next FAIL if it==FAIL;it)) });next FAIL if it==FAIL;it)

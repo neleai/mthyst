@@ -89,7 +89,7 @@ amethyst AmethystParser < Amethyst{
 		
 	rubyarg  = '`' expression:e '`' -> Exp[_body(e)]
            | _args('(',')')					 | _args('[',']')					 | _args('{','}')
-					 | '"' (~'"'   eChar)*:s '"'  -> Strin[connectstring(['"']+ s+['"'])]
+					 | '"' ('"' break |  eChar)*:s   -> Strin[connectstring(['"']+ s+['"'])]
 					 | '\''(~'\''  eChar)*:s '\'' -> Strin[connectstring(['\'']+s+['\''])]
 					 | ( ":@":n | <$.:>:n | empty) ~_ name:n[] -> n
 					 | '@@' ~_ name:n -> Global[n]
