@@ -1,4 +1,18 @@
 require 'ast'
+def processargs(r)
+	r<< ','
+	ary=[]
+	tmp=[]
+	r.each{|a|
+		puts a.inspect
+		if a==','
+			ary<<Args[{:ary=>tmp}];tmp=[]
+		else
+			tmp<<a
+		end
+	}
+	ary
+end
 
 amethyst AmethystParser < Amethyst{
 	igrammar = ((~'amethyst'   . )+:{it*""} | grammar)*:a -> a
@@ -62,19 +76,8 @@ amethyst AmethystParser < Amethyst{
 	argsOpt(o,c) = args(o,c) 
                 | empty -> []
 
-	args(o,c) = __args(o,c):r {
-							r<< ','
-							ary=[]
-							tmp=[]
-							r.each{|a|
-								if a==','
-									ary<<Args[{:ary=>tmp}];tmp=[]
-								else
-									tmp<<a
-								end
-							}
-							ary
-						}
+	args(o,c) = __args(o,c):r { processargs(r)}
+						
 
 	_args(o,c) = __args(o,c):r -> Args[{:ary=>([o]+r+[c])}]
 
@@ -88,6 +91,14 @@ amethyst AmethystParser < Amethyst{
 					 | '@@' ~_ name:n -> Global[n]
 					 | key:k -> Key[k] 
 					 | <^`{}()'"\[\]>
+
+	procargs = {@@ary=[];@@tmp=[]}
+						 ( ',' {@@ary<<Args[{:ary=>@@tmp}];@@tmp=[]}
+							 | procargs2
+						 )
+						 {@@ary}
+	
+	procargs2 =	.:a {@@tmp<<a}
 
 	nameFirst      = letter | '_'
 

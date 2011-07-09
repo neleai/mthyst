@@ -165,6 +165,20 @@ end
 end
 
 require 'ast'
+def processargs(r)
+	r<< ','
+	ary=[]
+	tmp=[]
+	r.each{|a|
+		puts a.inspect
+		if a==','
+			ary<<Args[{:ary=>tmp}];tmp=[]
+		else
+			tmp<<a
+		end
+	}
+	ary
+end
 
 class AmethystParser < Amethyst
 def igrammar()
@@ -454,18 +468,7 @@ def args(o_1,c_1)
  r_1 = ((nil))
 _result_1 = ((nil))
 r_1 = ((it=(__args(o_1,c_1));return FAIL if it==FAIL;it))
-_result_1 = ((r_1<< ','
-							ary=[]
-							tmp=[]
-							r_1.each{|a|
-								if a==','
-									ary<<Args[{:ary=>tmp}];tmp=[]
-								else
-									tmp<<a
-								end
-							}
-							ary
-						))
+_result_1 = ((processargs(r_1)))
 (_result_1)  
 end
 def _args(o_1,c_1)
@@ -529,6 +532,21 @@ _result_1 = ((n_1)) },proc{(it=(seq("@@"));next FAIL if it==FAIL;it)
 n_1 = ((it=(name());next FAIL if it==FAIL;it))
 _result_1 = ((Global[n_1])) },proc{k_1 = ((it=(key());next FAIL if it==FAIL;it))
 _result_1 = ((Key[k_1] )) },proc{_result_1 = ((it=(regch(/[^`{}()'"\[\]]/));next FAIL if it==FAIL;it))}));return FAIL if it==FAIL;it)
+(_result_1)  
+end
+def procargs()
+ _result_1 = ((nil))
+(@ary=[];@tmp=[])
+(it=(_or(proc{(it=(seq(","));next FAIL if it==FAIL;it)
+(@ary<<Args[{:ary=>@tmp}];@tmp=[]) },proc{(it=(procargs2());next FAIL if it==FAIL;it)}));return FAIL if it==FAIL;it)
+_result_1 = ((@ary))
+(_result_1)  
+end
+def procargs2()
+ a_1 = ((nil))
+_result_1 = ((nil))
+a_1 = ((it=(anything());return FAIL if it==FAIL;it))
+_result_1 = ((@tmp<<a_1))
 (_result_1)  
 end
 def nameFirst()
