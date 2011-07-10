@@ -9,12 +9,12 @@ def a2ruby(s)
 	par=AmethystOptimizer2.new.parse(:itrans,par)
 
 #	par=Detect_Variables.new.parse(:itrans,par)
-	par=Analyze_Variables.new.parse(:itrans,par)
+	par=Analyze_Variables2.new.parse(:itrans,par)
 #pp inl
 
 par= Move_Assignments.new.parse(:itrans,par)
-par=Dead_Code_Detector.new.parse(:itrans,par)
-par=Dead_Code_Deleter.new.parse(:itrans,par)
+#par=Dead_Code_Detector.new.parse(:itrans,par)
+#par=Dead_Code_Deleter.new.parse(:itrans,par)
 inl = par
 #	inl=i.parse(:inlineit,["spaces",inl])
 #	inl=i.parse(:inlineit,["space",inl])

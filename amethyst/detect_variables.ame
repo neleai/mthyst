@@ -1,5 +1,5 @@
 amethyst Analyze_Variables < AmethystOptimizer {
-  trans = Rule[@name:name @locals:locals {@@variables={}; @@locals=locals ;(locals+@args).each{|v| @@variables[v[0]]=true}}  @args:args  @body=>trans:body   
+  trans = Rule[@name:name @locals:locals {@@variables={}; @@locals=locals ;(locals+@args).each{|v| @@variables[v[0]]=true}}  {@args.map{|a| @@variables[a]}}:args  @body=>trans:body   
 							 {body=Seq[{:ary=>((@locals-@args).uniq.map{|v| Set[{:name=>v,:expr=>Act["nil"]}]}+[body]) }]} ] @Rule
         | Result[@name:name @args=>args:args {@@locals.select{|a| @vars.include? a[0].to_sym}.uniq}:vars] @Result
         | super

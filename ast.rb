@@ -14,16 +14,22 @@ makeclasses(Object,
     :Or,
     :Seq,
 		[:Strin],
-		[:Local,:number,:no],
+		[:Local,:number,:no,:bind],
 		[:Pass,:var,:to,:enter],
     [:Rule,:name,:args,:locals,:body,:reachable],
     [:Grammar,:name,:parent,:rules,:rbcode,:rbno],
-		:Local,:Global,
+		:Global,
 		:Memo,
 		:Break,
 		:Cut,
-		:Stop
+		:Stop,
+		[:Variable,:bind,:global,:key]
 )
+class <<Variable
+	def [](name,bind)
+		Variable.create({:name=>name,:bind=>bind})
+	end
+end
 class Local
 	def inspect
 		"Local[#{ary[0]}_#{number}]"
@@ -38,7 +44,7 @@ end
 $av=0
 def autovar
 	$av+=1
-	_Local("autovar",$av)
+	Local["autovar",$av]
 end
 
 def _Enter(from,to)
@@ -85,7 +91,7 @@ def [](e)
 end
 end
 def _body(body)
-	Seq[_Set("_result",body), Act[_Local("_result")]]
+	Seq[_Set("_result",body), Act[Args["_result"]]]
 end
 
 class <<Lookahead
@@ -98,14 +104,8 @@ end
 
 $varhash=Hash.new{|h,k| h[k]={}}
 def _Local(name,number=1)
-	return name if name.is_a? Local
-	if var=$varhash[name][number]
-		instance_eval{	@locals << var if @locals}
-		var
-	else
-		$varhash[name][number]=Local[{:ary=>[name],:number=>number}]
-		_Local(name,number)
-	end
+		instance_eval{	@locals << name if @locals}
+		name
 end
 
 
