@@ -1,10 +1,10 @@
 amethyst Dead_Code_Detector < AmethystOptimizer {
 
-	trans = Rule[@name:name {@@edges=Oriented_Graph.new ; @@marked=[_Local("_result")]}  @args=>args:args @body=>trans @body:body @locals:locals {@@edges.reachable(@@marked)}:reachable ] @Rule
+	trans = Rule[@name:name {@@edges=Oriented_Graph.new ; @@marked=[]}  @args=>args:args @body=>trans @body:body @locals:locals {@@edges.reachable(@@marked)}:reachable ] @Rule
 				| Apply[:name vars_in:var ] ->  @@marked +=var
 				| Pass[@var=>vars_in:var {@@marked+=var} @to=>trans]
 				| Act[ @this:this {@@marked<<this if @pred} 
-							 vars_in:var ] -> var.each{|v| @@edges.add(v,this); @@edges.add(this,v); @@marked<<this if v.is_a?(Global) || v.is_a?(Key)}
+							 vars_in:var ] -> var.each{|v| @@edges.add(v,this); @@edges.add(this,v); @@marked<<this if v.is_a?(Global) || v.is_a?(Key) || v[0]=="_result"}
 				| Set[@name:v   @expr=>trans @expr=>vars_in:var  ] -> var.each{|w| @@edges.add(v,w)}
 				| Result[@vars=>[vars_in]:var @this:v] -> var.each{|w| @@edges.add(v,w) }
 				| super 
