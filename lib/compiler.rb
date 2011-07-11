@@ -4,12 +4,11 @@ class Gram
 		@name,@parent=grammar.name,grammar.parent
 		@rules={}
 		grammar.rules.each{|r| 
-			opt(r)
+			@rules[r.name]=r
 		}
 	end
 	def opt(r)
-      debug=false
-      puts r.inspect if debug
+      debug=true
       puts r.inspect if debug
       r=Seq_Or_Optimizer.new.parse(:root,r)
       puts r.inspect if debug
@@ -47,12 +46,14 @@ class <<Compiler
 		@grammars[grammar.name]=Gram.new(grammar)
 		outs.puts "class #{grammar.name}"+ (grammar.parent ? " < #{grammar.parent}" : "")
 		@grammars[grammar.name].rules.each{|name,code|
-			#puts @grammars[grammar.name].rules[name].inspect
-			#puts AmethystTranslator.new.parse(:itrans,[@grammars[grammar.name].rules[name]])
-			 @grammars[grammar.name].inline("token" ,name)
-			 @grammars[grammar.name].opt(@grammars[grammar.name].rules[name])
-			#puts @grammars[grammar.name].rules[name].inspect
-			#
+			puts @grammars[grammar.name].rules[name].inspect
+				@grammars[grammar.name].opt(@grammars[grammar.name].rules[name])
+				puts @grammars[grammar.name].rules[name].inspect
+				@grammars[grammar.name].inline("token" ,name)
+				puts @grammars[grammar.name].rules[name].inspect
+				@grammars[grammar.name].opt(@grammars[grammar.name].rules[name])
+				puts @grammars[grammar.name].rules[name].inspect
+#
 
 
 			outs.puts AmethystTranslator.new.parse(:itrans,[@grammars[grammar.name].rules[name]])
@@ -63,7 +64,7 @@ class <<Compiler
 		outs=File.new(out,"w")
 		source=File.new(file).read
 		tree=AmethystParser.new.parse(:igrammar,source)
-		tree=Analyze_Variables.new.parse(:itrans,tree)
+		tree=Analyze_Variables2.new.parse(:itrans,tree)
 		tree.each{|a|	
 			if a.is_a? Grammar
 				add_grammar(a,outs)
