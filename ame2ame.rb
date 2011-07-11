@@ -9,7 +9,10 @@ def a2ruby(s)
 	par=AmethystOptimizer2.new.parse(:itrans,par)
 
 #	par=Detect_Variables.new.parse(:itrans,par)
+	puts par.inspect
 	par=Analyze_Variables2.new.parse(:itrans,par)
+	puts par.inspect
+
 #pp inl
 
 par= Move_Assignments.new.parse(:itrans,par)
@@ -32,7 +35,7 @@ end
 	ruby
 end
 o=File.open("bootstrap.rb","w")
-["amethyst.ame","parser.ame","optimizer_null.ame","optimizer_and_or.ame","detect_variables.ame","traverser.ame","detect_variables2.ame","dead_code_elimination.ame","inliner.ame","translator.ame"].each{|file|
+["amethyst.ame","parser.ame","optimizer_null.ame","optimizer_and_or.ame","traverser.ame","detect_variables2.ame","dead_code_elimination.ame","inliner.ame","translator.ame"].each{|file|
 puts file
 o.puts a2ruby(File.new("amethyst/#{file}").read)
 }

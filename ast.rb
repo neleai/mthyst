@@ -23,7 +23,8 @@ makeclasses(Object,
 		:Break,
 		:Cut,
 		:Stop,
-		[:Variable,:bind,:global,:key]
+		[:Variable,:bind,:global,:key],
+		:Bnding
 )
 class <<Variable
 	def [](name,bind)
@@ -103,9 +104,13 @@ class <<Lookahead
 end
 
 $varhash=Hash.new{|h,k| h[k]={}}
-def _Local(name,number=1)
-		instance_eval{	@locals << name if @locals}
-		name
+def _Local(name)
+		return name if !name.is_a?(String)
+		bnding=instance_eval{@bnding}
+		return $varhash[name][bnding] if $varhash[name][bnding]
+		$varhash[name][bnding]=Local[name,bnding]
+		instance_eval{	@locals << $varhash[name][bnding] if @locals}
+		$varhash[name][bnding]
 end
 
 
