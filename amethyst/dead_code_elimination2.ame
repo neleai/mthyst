@@ -21,7 +21,7 @@ amethyst Dead_Code_Detector2 < Traverser {
 }
 
 amethyst Dead_Code_Deleter2 < Traverser{
-		root = @this=>Rule[ @reachable:{@@reachable=it} traverse]
+		root = @this=>Rule[ @reachable:{@@reachable=it} traverse {@reachable=nil} @this]
 
 		visit = Act[@this:this .*] -> @@reachable[this] ? this : Act[]
 					| Set[@name:name traverse @expr:expr @this:this] -> @@reachable[name] ? this : expr

@@ -2,16 +2,16 @@ $:.unshift 'lib'
 require 'graph'
 require 'pp'
 require 'amethyst'
-#require 'compiled/amethyst'
-#require 'compiled/parser'
+require 'compiled/amethyst'
+require 'compiled/parser'
 def a2ruby(s)
 	par=AmethystParser.new.parse(:igrammar,s)
 	par=AmethystOptimizer2.new.parse(:itrans,par)
 
 #	par=Detect_Variables.new.parse(:itrans,par)
-	puts par.inspect
+	#puts par.inspect
 	par=Analyze_Variables2.new.parse(:itrans,par)
-	puts par.inspect
+	#puts par.inspect
 
 #pp inl
 

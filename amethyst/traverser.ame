@@ -15,6 +15,6 @@ amethyst Traverser {
 amethyst Seq_Or_Optimizer < Traverser{
 	root = traverse
 	
-	visit = Seq[ traverse {@this.ary=@ary.map{|i| (i.is_a?(Seq)) ? i.ary : i}.flatten} {(@ary.size==1) ? @ary[0] : @this} ]
-				| Or[  traverse {@this.ary=@ary.map{|i| (i.is_a?(Or )) ? i.ary : i}.flatten} {(@ary.size==1) ? @ary[0] : @this} ]
+	visit = Seq[ traverse {@this.ary=@ary.map{|i| (i.is_a?(Seq)) ? i.ary : i}.flatten.select{|e| !(e.is_a?(Act) && e.ary.size==0)}} {(@ary.size==1) ? @ary[0] : @this} ]
+				| Or[  traverse {@this.ary=@ary.map{|i| (i.is_a?(Or )) ? i.ary : i}.flatten.select{|e| !(e.is_a?(Act) && e.ary.size==0)}} {(@ary.size==1) ? @ary[0] : @this} ]
 }
