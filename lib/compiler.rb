@@ -23,6 +23,8 @@ class Gram
       r=Dead_Code_Detector2.new.parse(:root,r)
       puts r.inspect if debug
       r=Dead_Code_Deleter2.new.parse(:root,r)
+      puts r.inspect if debug
+      r=Seq_Or_Optimizer.new.parse(:root,r)
       @rules[r.name]=r 
 	end
 	def inline(from,to)
@@ -50,6 +52,8 @@ class <<Compiler
 				@grammars[grammar.name].opt(@grammars[grammar.name].rules[name])
 				puts @grammars[grammar.name].rules[name].inspect
 				@grammars[grammar.name].inline("token" ,name)
+				@grammars[grammar.name].inline("char" ,name)
+				@grammars[grammar.name].inline("space" ,name)
 				puts @grammars[grammar.name].rules[name].inspect
 				@grammars[grammar.name].opt(@grammars[grammar.name].rules[name])
 				puts @grammars[grammar.name].rules[name].inspect

@@ -19,11 +19,14 @@ def spaces()
  _result_1 = ((nil))
 autovar_1 = (([]))
 while true
-autovar_2=@input;r=it=((it=(space());break FAIL if it==FAIL;it))
- autovar_1||=[];_append(autovar_1,it)
+autovar_3=@input;r=_result_2 = ((nil))
+_result_2 = ((it=(regch(/[\s\t\r\n\f]/));break FAIL if it==FAIL;it))
+autovar_2 = ((_result_2))
+it=((autovar_2))
+ autovar_1||=[];_append(autovar_1,it) 
  break FAIL if r==FAIL
- (autovar_2=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_2
+ (autovar_3=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_3
 _result_1 = ((autovar_1))
 (_result_1)  
 end
@@ -134,7 +137,13 @@ end
 def regch(regex_1)
  c_1 = ((nil))
 _result_1 = ((nil))
-c_1 = ((it=(char());return FAIL if it==FAIL;it))
+c_2 = ((nil))
+_result_2 = ((nil))
+c_2 = ((it=(anything());return FAIL if it==FAIL;it))
+(it=((c_2.is_a? String )||FAIL);return FAIL if it==FAIL;it)
+_result_2 = ((c_2))
+autovar_1 = ((_result_2))
+c_1 = ((autovar_1))
 (it=((regex_1.match(c_1))||FAIL);return FAIL if it==FAIL;it)
 _result_1 = ((c_1))
 (_result_1)  
@@ -151,7 +160,10 @@ def letter()
 end
 def _()
  _result_1 = ((nil))
-_result_1 = ((it=(space());return FAIL if it==FAIL;it))
+_result_2 = ((nil))
+_result_2 = ((it=(regch(/[\s\t\r\n\f]/));return FAIL if it==FAIL;it))
+autovar_1 = ((_result_2))
+_result_1 = ((autovar_1))
 (_result_1)  
 end
 def xdigit()
