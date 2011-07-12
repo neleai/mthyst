@@ -51,7 +51,16 @@ class <<Compiler
 	def add_grammar(grammar,outs)
 		@grammars[grammar.name]=Gram.new(grammar)
 		outs.puts "class #{grammar.name}"+ (grammar.parent ? " < #{grammar.parent}" : "")
+
+		callg=Oriented_Graph.new
 		@grammars[grammar.name].rules.each{|name,code|
+			calls= DetectCalls.new.parse(:root,[@grammars[grammar.name].rules[name]])
+			calls.each{|c,t|callg.add(name,c)}
+		}
+		topo= callg.topo_order
+		puts callg.inspect
+		puts topo.inspect
+		topo.each{|name|if @grammars[grammar.name].rules[name]
 #			puts @grammars[grammar.name].rules[name].inspect
 				@grammars[grammar.name].opt(@grammars[grammar.name].rules[name])
 #				puts @grammars[grammar.name].rules[name].inspect
@@ -71,7 +80,7 @@ class <<Compiler
 #		puts AmethystTranslator.new.parse(:itrans,[@grammars[grammar.name].rules[name]]).inspect
 
 			outs.puts AmethystTranslator.new.parse(:itrans,[@grammars[grammar.name].rules[name]])
-		}
+		end}
 		outs.puts "end"
 	end
 	def compile(file,out)

@@ -19,6 +19,18 @@ class Oriented_Graph
 		}
 		reach
 	end
+	def topo_order2(v,visited,order)
+		return if visited[v]
+    visited[v]=true
+    @edges[v].each{|w| topo_order2(w,visited,order) }
+		order<<v
+	end
+	def topo_order
+		o=[]
+		r={}
+			@edges.clone.each{|v,a| topo_order2(v,r,o)}
+		o
+	end
 	def constant_propagation(consts)
 		cnst={}
 		consts.each{|c| cnst[c]=c}
