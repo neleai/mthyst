@@ -1,7 +1,7 @@
 amethyst Analyze_Variables2 < Traverser {
 	itrans =   (Grammar[ @rules=>[ Rule[root]*:rules ] {@rules=rules} @this] | .)*
   root = @this=>Rule[  {@@variables=Hash.new{|k,v| k[v]=v} ;(@locals+@args).each{|v| @@variables[v[0]]=v}} {@@locals=@locals} traverse 
-				{@body=Seq[{:ary=>((@@locals-@args).map{|v| Set[{:name=>v,:expr=>Act["nil"]}]}+[@body]) }]} @this]
+				{@body=Seq[{:ary=>[@body] }]} @this]
 
 	visit = Args[ traverse {@ary.map{|a| @@variables[a] }}=>[flat:a]  {@ary=connectstring(a.flatten)}  @this]
 				| Result[ {@vars=@@locals.select{|a| @vars.include? a[0].to_sym}.uniq} @this]

@@ -1,10 +1,14 @@
+def varname(vh,name,number)
+	 vh[name][number]=vh[name].size+1 if !vh[name][number]
+	 "#{name}_#{vh[name][number]}"
+end
 amethyst AmethystTranslator < Amethyst {	
 	
 	itrans =  (char | trans)*:r  -> r*""
 	
 	trans = Grammar[@name:name @parent:parent @rules=>transs:body] -> "class #{name} < #{parent}\n#{body}\nend\n"
 				| Rule[ { @@varhash=Hash.new{|h,k| h[k]={}}  } 
-								rw('return',`@name:name @args=>args:argss @body=>trans:body`) { "def #{name}(#{argss})\n #{@@varhash.select{|nam,b| !@args.map{|l| l[0]}.include?(nam)}.map{|nam,b| b.map{|bi,no| "_#{nam}_#{no}=nil\n"}}*""} #{body} \nend\n"}]
+								rw('return',`@name:name @args=>args:argss @body=>trans:body`) { "def #{name}(#{argss})\n #{@@varhash.select{|nam,b| (nam!="autovar") && (!@args.map{|l| l[0]}.include?(nam))}.map{|nam,b| b.map{|bi,no| "#{varname(@@varhash,nam,bi)}=nil\n"}}*""} #{body} \nend\n"}]
 				| Or[rw('next', `transfn*:ors`)]  failwrap("_or(#{ors*","})")
 				| Seq[trans*:t ] -> "#{t*"\n"} "
 				| Act[args:t @pred:pred] -> pred ?  failwrap("(#{t})||FAIL") : "(#{t})"
@@ -14,7 +18,7 @@ amethyst AmethystTranslator < Amethyst {
 				| Apply[ Array[:klas :name] args:argss]  failwrap("_foreign(:#{ name } #{ argss!=[] ? ",#{argss}" : "" })")
 				| Apply[ :name args:argss]  failwrap("#{name}(#{argss})")
 				| Set[@name=>arg:name @expr=>trans:expr @append:append] -> append ? "it=(#{expr})\n #{name}||=[];_append(#{name},it)" : "#{name} = (#{expr})"
-				| Result[@name:name @args=>args:argss @vars:vars] -> "#{name}.create(#{argss} {#{vars.map{|l| ":#{l[0]}=>#{l[0]}_#{@@varhash[l[0]][l[1]]}" }*","} })"
+				| Result[@name:name @args=>args:argss @vars:vars] -> "#{name}.create(#{argss} {#{vars.map{|l| ":#{l[0]}=>#{varname(@@varhash,l[0],l[1])}" }*","} })"
 				| Key[@name:name] -> " self['#{name}']"
 				| Pass[rw('next',`@to=>trans:to @var=>arg:var @enter:enter`)] failwrap("_pass(#{!!enter},#{var}){#{to}}")
 				| Cut[] ->  "@cut=true;it"
@@ -31,7 +35,7 @@ amethyst AmethystTranslator < Amethyst {
 			| Strin[arg*:a] -> a*""
 			| Exp[transfn:t ] -> t
 		  | Key[ trans:t] -> t
-			| Local[:name :number] -> @@varhash[name][number]=@@varhash[name].size+1 if !@@varhash[name][number]  ; "#{name}_#{@@varhash[name][number]}"
+			| Local[:name :number] -> varname(@@varhash,name,number)
 			| Global[:name] -> "@#{name}"
 			| anything
 				
