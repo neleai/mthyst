@@ -16,7 +16,7 @@ class Gram
       puts r.inspect if debug
       r=Seq_Or_Optimizer.new.parse(:root,r)
       puts r.inspect if debug
-      r=Communize_Or2.new.parse(:root,r)
+      r=Communize_Or3.new.parse(:root,r)
       puts r.inspect if debug
       r=Seq_Or_Optimizer.new.parse(:root,r)
       puts r.inspect if debug

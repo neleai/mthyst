@@ -44,6 +44,24 @@ amethyst Communize_Or2 < Traverser {
 							}
             ]
 }
+amethyst Communize_Or3 < Traverser {
+	root = traverse
+	visit = Or[ Seq[traverse]+:ands eof {
+							com=[]
+							last=ands.shift
+							ands.each{|a|
+								if last[0].to_yaml==a[0].to_yaml
+									last=Seq[last[0],Or[Seq[*last[1..(-1)]],Seq[*a[1..(-1)]]]]
+								else
+									com<<last
+									last=a
+								end
+							}
+							com<<last
+							@ary=com
+							@this
+					} ]
+}
 
 amethyst Move_Assignments2 < Traverser {
 	root=traverse 
