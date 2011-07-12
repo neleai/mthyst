@@ -15,5 +15,5 @@ amethyst Inliner2 < Traverser {
 	root = :from :to {from}=>Rule[@name:name @args:args @locals:locals @body:body]  {@@result=autovar;@@name=name;@@args=args;@@body=Set[{:name=>@@result ,:expr=>body}] } 
 				 {to}=>Rule[traverse]
  
- visit = Apply[:name &{name==@@name} .*:args] ->  body=@@body; args.each_index{|i| body=Seq[Set[{:name=>@@args[i],:expr=>Act[args[i]]}],body] } ; Seq[body,Act[@@result]]
+ visit = Apply[:name &{name==@@name} .*:args] ->  body=@@body;puts args.inspect; args.each_index{|i| body=Seq[Set[{:name=>@@args[i],:expr=>Act[args[i]]}],body] } ; Seq[body,Act[@@result]]
 }

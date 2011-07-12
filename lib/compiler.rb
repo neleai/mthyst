@@ -52,23 +52,23 @@ class <<Compiler
 		@grammars[grammar.name]=Gram.new(grammar)
 		outs.puts "class #{grammar.name}"+ (grammar.parent ? " < #{grammar.parent}" : "")
 		@grammars[grammar.name].rules.each{|name,code|
-			puts @grammars[grammar.name].rules[name].inspect
+#			puts @grammars[grammar.name].rules[name].inspect
 				@grammars[grammar.name].opt(@grammars[grammar.name].rules[name])
-				puts @grammars[grammar.name].rules[name].inspect
+#				puts @grammars[grammar.name].rules[name].inspect
 				calls= DetectCalls.new.parse(:root,[@grammars[grammar.name].rules[name]])
 				calls.each{|nm,v|
 					r=@grammars[grammar.name].getrule(nm)
-					@grammars[grammar.name].inline(nm,name) if r && r.args.size>0
+					@grammars[grammar.name].inline(nm,name) if r && r.args.size>0 && !(/arg/=~r.name)
 				}
 				@grammars[grammar.name].inline("char" ,name)
 				@grammars[grammar.name].inline("space" ,name)
 
-				puts @grammars[grammar.name].rules[name].inspect
+#				puts @grammars[grammar.name].rules[name].inspect
 				@grammars[grammar.name].opt(@grammars[grammar.name].rules[name])
-				puts @grammars[grammar.name].rules[name].inspect
+#				puts @grammars[grammar.name].rules[name].inspect
 #
 
-		puts AmethystTranslator.new.parse(:itrans,[@grammars[grammar.name].rules[name]]).inspect
+#		puts AmethystTranslator.new.parse(:itrans,[@grammars[grammar.name].rules[name]]).inspect
 
 			outs.puts AmethystTranslator.new.parse(:itrans,[@grammars[grammar.name].rules[name]])
 		}

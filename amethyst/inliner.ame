@@ -9,7 +9,7 @@ amethyst Inliner < AmethystOptimizer {
 
  inline(rule,grammar)= {rule}=>Rule[@name:name @args:args @locals:locals @body:body]  {@@result=autovar;@@name=name;@@args=args;@@body=Set[{:name=>@@result ,:expr=>body}] } {grammar}=>[itrans]
  
- trans = Apply[:name &{name==@@name} arg*:args] ->  body=@@body; args.each_index{|i| body=Seq[Set[{:name=>@@args[i],:expr=>Act[args[i]]}],body] } ; Seq[body,Act[@@result]]
+ trans = Apply[:name &{name==@@name} arg*:args] ->  body=@@body;puts args.inspect; args.each_index{|i| body=Seq[Set[{:name=>@@args[i],:expr=>Act[args[i]]}],body] } ; Seq[body,Act[@@result]]
        | {super}
 
 	inlineit = :name :grammar  getrule(name,grammar):rule inline(rule,grammar)

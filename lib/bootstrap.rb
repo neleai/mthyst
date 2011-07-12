@@ -1337,7 +1337,7 @@ autovar_3=@input;r=it=((it=(arg());break FAIL if it==FAIL;it))
  (autovar_3=@input;@stop=nil;break FAIL) if @stop==true
 end;@input=autovar_3
 args_1 = ((autovar_2)) });next FAIL if it==FAIL;it)
-_result_1 = ((body=@body; args_1.each_index{|i| body=Seq[Set[{:name=>@args[i],:expr=>Act[args_1[i]]}],body] } ; Seq[body,Act[@result]])) },proc{_result_1 = ((super))}));return FAIL if it==FAIL;it)
+_result_1 = ((body=@body;puts args_1.inspect; args_1.each_index{|i| body=Seq[Set[{:name=>@args[i],:expr=>Act[args_1[i]]}],body] } ; Seq[body,Act[@result]])) },proc{_result_1 = ((super))}));return FAIL if it==FAIL;it)
 (_result_1)  
 end
 def inlineit()
