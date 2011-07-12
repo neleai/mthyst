@@ -8,7 +8,7 @@ class Gram
 		}
 	end
 	def opt(r)
-      debug=true
+      debug=false
       puts r.inspect if debug
       r=Seq_Or_Optimizer.new.parse(:root,r)
       puts r.inspect if debug
@@ -37,6 +37,7 @@ class Gram
 		fromrule
 	end
 	def inline(from,to)
+		puts from
 		@rules[to]=Inliner2.new.parse(:root,[getrule(from), @rules[to]])
 	end
 end
@@ -54,12 +55,13 @@ class <<Compiler
 			puts @grammars[grammar.name].rules[name].inspect
 				@grammars[grammar.name].opt(@grammars[grammar.name].rules[name])
 				puts @grammars[grammar.name].rules[name].inspect
-				puts DetectCalls.new.parse(:root,[@grammars[grammar.name].rules[name]]).inspect
-				@grammars[grammar.name].inline("token" ,name)
+				calls= DetectCalls.new.parse(:root,[@grammars[grammar.name].rules[name]])
+				calls.each{|nm,v|
+					r=@grammars[grammar.name].getrule(nm)
+					@grammars[grammar.name].inline(nm,name) if r && r.args.size>0
+				}
 				@grammars[grammar.name].inline("char" ,name)
 				@grammars[grammar.name].inline("space" ,name)
-				@grammars[grammar.name].inline("regch" ,name)
-				@grammars[grammar.name].inline("listOf" ,name)
 
 				puts @grammars[grammar.name].rules[name].inspect
 				@grammars[grammar.name].opt(@grammars[grammar.name].rules[name])
