@@ -27,14 +27,17 @@ class Gram
       r=Seq_Or_Optimizer.new.parse(:root,r)
       @rules[r.name]=r 
 	end
+	def getrule(from)
+		fromrule,nm=nil,self.name
+    begin
+     	return nil if nm=="AmethystCore"
+      fromrule= Compiler.grammars[nm].rules[from]
+      nm=Compiler.grammars[nm].parent
+    end until fromrule
+		fromrule
+	end
 	def inline(from,to)
-		fromrule,nm=@name,self.name
-		begin
-			raise "cant find #{from} to inline" if nm=="AmethystCore"
-			fromrule= Compiler.grammars[nm].rules[from]
-			nm=Compiler.grammars[nm].parent
-		end until fromrule
-		@rules[to]=Inliner2.new.parse(:root,[fromrule, @rules[to]])
+		@rules[to]=Inliner2.new.parse(:root,[getrule(from), @rules[to]])
 	end
 end
 class Compiler
@@ -51,6 +54,7 @@ class <<Compiler
 			puts @grammars[grammar.name].rules[name].inspect
 				@grammars[grammar.name].opt(@grammars[grammar.name].rules[name])
 				puts @grammars[grammar.name].rules[name].inspect
+				puts DetectCalls.new.parse(:root,[@grammars[grammar.name].rules[name]]).inspect
 				@grammars[grammar.name].inline("token" ,name)
 				@grammars[grammar.name].inline("char" ,name)
 				@grammars[grammar.name].inline("space" ,name)
@@ -62,6 +66,7 @@ class <<Compiler
 				puts @grammars[grammar.name].rules[name].inspect
 #
 
+		puts AmethystTranslator.new.parse(:itrans,[@grammars[grammar.name].rules[name]]).inspect
 
 			outs.puts AmethystTranslator.new.parse(:itrans,[@grammars[grammar.name].rules[name]])
 		}
