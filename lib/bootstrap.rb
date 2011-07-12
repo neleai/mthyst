@@ -1,5 +1,7 @@
 class Amethyst < AmethystCore
 def regch(regex_1)
+ _c_1=nil
+__result_1=nil
  c_1 = ((nil))
 _result_1 = ((nil))
 c_1 = ((it=(char());return FAIL if it==FAIL;it))
@@ -8,16 +10,20 @@ _result_1 = ((c_1))
 (_result_1)  
 end
 def eof()
+ __result_1=nil
  _result_1 = ((nil))
 _result_1 = ((it=(_lookahead(true){(it=(anything());next FAIL if it==FAIL;it)});return FAIL if it==FAIL;it))
 (_result_1)  
 end
 def empty()
+ __result_1=nil
  _result_1 = ((nil))
 _result_1 = ((nil))
 (_result_1)  
 end
 def char()
+ _c_1=nil
+__result_1=nil
  c_1 = ((nil))
 _result_1 = ((nil))
 c_1 = ((it=(anything());return FAIL if it==FAIL;it))
@@ -26,16 +32,21 @@ _result_1 = ((c_1))
 (_result_1)  
 end
 def endline()
+ __result_1=nil
  _result_1 = ((nil))
 (it=(_or(proc{_result_1 = ((it=(seq("\r\n"));next FAIL if it==FAIL;it))},proc{_result_1 = ((it=(seq("\r"));next FAIL if it==FAIL;it))},proc{_result_1 = ((it=(seq("\n"));next FAIL if it==FAIL;it))}));return FAIL if it==FAIL;it)
 (_result_1)  
 end
 def space()
+ __result_1=nil
  _result_1 = ((nil))
 _result_1 = ((it=(regch(/[\s\t\r\n\f]/));return FAIL if it==FAIL;it))
 (_result_1)  
 end
 def spaces()
+ _autovar_1=nil
+_autovar_2=nil
+__result_1=nil
  _result_1 = ((nil))
 autovar_1 = (([]))
 while true
@@ -48,56 +59,70 @@ _result_1 = ((autovar_1))
 (_result_1)  
 end
 def _()
+ __result_1=nil
  _result_1 = ((nil))
 _result_1 = ((it=(space());return FAIL if it==FAIL;it))
 (_result_1)  
 end
 def digit()
+ __result_1=nil
  _result_1 = ((nil))
 _result_1 = ((it=(regch(/[0-9]/));return FAIL if it==FAIL;it))
 (_result_1)  
 end
 def lower()
+ __result_1=nil
  _result_1 = ((nil))
 _result_1 = ((it=(regch(/[a-z]/));return FAIL if it==FAIL;it))
 (_result_1)  
 end
 def upper()
+ __result_1=nil
  _result_1 = ((nil))
 _result_1 = ((it=(regch(/[A-Z]/));return FAIL if it==FAIL;it))
 (_result_1)  
 end
 def letter()
+ __result_1=nil
  _result_1 = ((nil))
 (it=(_or(proc{_result_1 = ((it=(lower());next FAIL if it==FAIL;it))},proc{_result_1 = ((it=(upper());next FAIL if it==FAIL;it))}));return FAIL if it==FAIL;it)
 (_result_1)  
 end
 def letterOrDigit()
+ __result_1=nil
  _result_1 = ((nil))
 (it=(_or(proc{_result_1 = ((it=(letter());next FAIL if it==FAIL;it))},proc{_result_1 = ((it=(digit());next FAIL if it==FAIL;it))}));return FAIL if it==FAIL;it)
 (_result_1)  
 end
 def alpha()
+ __result_1=nil
  _result_1 = ((nil))
 _result_1 = ((it=(letter());return FAIL if it==FAIL;it))
 (_result_1)  
 end
 def alnum()
+ __result_1=nil
  _result_1 = ((nil))
 _result_1 = ((it=(letterOrDigit());return FAIL if it==FAIL;it))
 (_result_1)  
 end
 def xdigit()
+ __result_1=nil
  _result_1 = ((nil))
 _result_1 = ((it=(regch(/[0-9a-fA-F]/));return FAIL if it==FAIL;it))
 (_result_1)  
 end
 def word()
+ __result_1=nil
  _result_1 = ((nil))
 (it=(_or(proc{_result_1 = ((it=(alpha());next FAIL if it==FAIL;it))},proc{_result_1 = ((it=(seq("_"));next FAIL if it==FAIL;it))}));return FAIL if it==FAIL;it)
 (_result_1)  
 end
 def listOf(rule_1,delim_1)
+ _autovar_1=nil
+_autovar_2=nil
+_f_1=nil
+__result_1=nil
  f_1 = ((nil))
 _result_1 = ((nil))
 (it=(_or(proc{it=((it=(apply(rule_1));next FAIL if it==FAIL;it))
@@ -117,6 +142,8 @@ _result_1 = (([])) }));return FAIL if it==FAIL;it)
 (_result_1)  
 end
 def exactly(wanted_1)
+ _got_1=nil
+__result_1=nil
  got_1 = ((nil))
 _result_1 = ((nil))
 got_1 = ((it=(anything());return FAIL if it==FAIL;it))
@@ -125,16 +152,20 @@ _result_1 = ((wanted_1))
 (_result_1)  
 end
 def _true()
+ __result_1=nil
  _result_1 = ((nil))
 _result_1 = ((it=(exactly(true));return FAIL if it==FAIL;it))
 (_result_1)  
 end
 def _false()
+ __result_1=nil
  _result_1 = ((nil))
 _result_1 = ((it=(exactly(false));return FAIL if it==FAIL;it))
 (_result_1)  
 end
 def clas(cls_1)
+ __result_1=nil
+_i_1=nil
  i_1 = ((nil))
 _result_1 = ((nil))
 i_1 = ((it=(anything());return FAIL if it==FAIL;it))
@@ -143,12 +174,17 @@ _result_1 = ((i_1))
 (_result_1)  
 end
 def token(s_1)
+ __result_1=nil
  _result_1 = ((nil))
 (it=(spaces());return FAIL if it==FAIL;it)
 _result_1 = ((it=(seq(s_1));return FAIL if it==FAIL;it))
 (_result_1)  
 end
 def many1(s_1)
+ _a_1=nil
+_autovar_1=nil
+_autovar_2=nil
+__result_1=nil
  a_1 = ((nil))
 _result_1 = ((nil))
 it=((it=(apply(s_1));return FAIL if it==FAIL;it))
@@ -188,6 +224,13 @@ end
 
 class AmethystParser < Amethyst
 def igrammar()
+ _it_1=nil
+_a_1=nil
+_autovar_2=nil
+_autovar_3=nil
+_autovar_1=nil
+_autovar_4=nil
+__result_1=nil
  it_1 = ((nil))
 a_1 = ((nil))
 _result_1 = ((nil))
@@ -216,6 +259,12 @@ _result_1 = ((a_1))
 (_result_1)  
 end
 def grammar()
+ _name_1=nil
+_parent_1=nil
+_rules_1=nil
+_autovar_1=nil
+_autovar_2=nil
+__result_1=nil
  name_1 = ((nil))
 parent_1 = ((nil))
 rules_1 = ((nil))
@@ -239,6 +288,12 @@ _result_1 = (Grammar.create( {:name=>name_1,:parent=>parent_1,:rules=>rules_1 })
 (_result_1)  
 end
 def rule()
+ _args_1=nil
+_name_1=nil
+_locals_1=nil
+_body_1=nil
+__result_1=nil
+_bnding_1=nil
  bnding_1 = ((nil))
 name_1 = ((nil))
 args_1 = ((nil))
@@ -257,11 +312,14 @@ _result_1 = (Rule.create( {:bnding=>bnding_1,:name=>name_1,:args=>args_1,:body=>
 (_result_1)  
 end
 def expression()
+ __result_1=nil
  _result_1 = ((nil))
 _result_1 = ((it=(choice());return FAIL if it==FAIL;it))
 (_result_1)  
 end
 def choice()
+ _ary_1=nil
+__result_1=nil
  _result_1 = ((nil))
 ary_1 = ((nil))
 ary_1 = ((it=(listOf('sequence',proc{_result_1 = ((it=(token("|"));return FAIL if it==FAIL;it))
@@ -270,6 +328,10 @@ _result_1 = (Or.create( {:ary=>ary_1 }))
 (_result_1)  
 end
 def sequence()
+ _autovar_1=nil
+_autovar_2=nil
+__result_1=nil
+_ary_1=nil
  ary_1 = ((nil))
 _result_1 = ((nil))
 autovar_1 = (([]))
@@ -285,6 +347,17 @@ _result_1 = (Seq.create( {:ary=>ary_1 }))
 (_result_1)  
 end
 def prefixed()
+ _name_1=nil
+_it_1=nil
+_expr_1=nil
+_m_1=nil
+_from_1=nil
+_autovar_1=nil
+_e_1=nil
+_neg_1=nil
+_append_1=nil
+_one_1=nil
+__result_1=nil
  expr_1 = ((nil))
 neg_1 = ((nil))
 m_1 = ((nil))
@@ -327,6 +400,10 @@ _result_1 = ((from_1)) }));return FAIL if it==FAIL;it)
 (_result_1)  
 end
 def modifier()
+ _c_1=nil
+_autovar_1=nil
+_autovar_2=nil
+__result_1=nil
  c_1 = ((nil))
 _result_1 = ((nil))
 (it=(_or(proc{_result_1 = ((it=(term());next FAIL if it==FAIL;it))},proc{(it=(token("#"));next FAIL if it==FAIL;it)
@@ -343,6 +420,15 @@ _result_1 = ((Comment[c_1])) }));return FAIL if it==FAIL;it)
 (_result_1)  
 end
 def term()
+ _it_1=nil
+_expr_1=nil
+_x_1=nil
+_autovar_2=nil
+_autovar_3=nil
+_autovar_1=nil
+__result_1=nil
+_s_1=nil
+_cls_1=nil
  cls_1 = ((nil))
 expr_1 = ((nil))
 x_1 = ((nil))
@@ -395,6 +481,10 @@ _result_1 = ((x_1)) }));next FAIL if it==FAIL;it) }));return FAIL if it==FAIL;it
 (_result_1)  
 end
 def application()
+ _arg_1=nil
+__result_1=nil
+_rule_1=nil
+_klas_1=nil
  klas_1 = ((nil))
 rule_1 = ((nil))
 arg_1 = ((nil))
@@ -408,6 +498,10 @@ _result_1 = ((Apply[rule_1,arg_1]))
 (_result_1)  
 end
 def key()
+ _args_1=nil
+_name_1=nil
+_vars_1=nil
+__result_1=nil
  name_1 = ((nil))
 args_1 = ((nil))
 vars_1 = ((nil))
@@ -422,11 +516,14 @@ _result_1 = (Key.create( {:name=>name_1,:args=>args_1 })) }));return FAIL if it=
 (_result_1)  
 end
 def collect(ors_1)
+ __result_1=nil
  _result_1 = ((nil))
 _result_1 = ((a=autovar; Seq[Or[{:ary=>ors_1.ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],Act[a]]))
 (_result_1)  
 end
 def eChar()
+ _c_1=nil
+__result_1=nil
  c_1 = ((nil))
 _result_1 = ((nil))
 (it=(_or(proc{(it=(seq("\\"));next FAIL if it==FAIL;it)
@@ -435,6 +532,9 @@ _result_1 = (("\\#{c_1}")) },proc{_result_1 = ((it=(_args('#{','}'));next FAIL i
 (_result_1)  
 end
 def ruleargs()
+ _autovar_2=nil
+_autovar_1=nil
+__result_1=nil
  _result_1 = ((nil))
 autovar_1 = ((it=(argsOpt('(',')'));return FAIL if it==FAIL;it))
 (it=(_pass(false,autovar_1){autovar_2 = ((it=(anything());next FAIL if it==FAIL;it))
@@ -442,6 +542,11 @@ autovar_1 = ((it=(argsOpt('(',')'));return FAIL if it==FAIL;it))
 (_result_1)  
 end
 def addargs()
+ _result_1=nil
+_name_1=nil
+_autovar_1=nil
+_autovar_2=nil
+__result_1=nil
  name_1 = ((nil))
 result_1 = ((nil))
 _result_1 = ((nil))
@@ -457,6 +562,7 @@ _result_1 = ((result_1 || []))
 (_result_1)  
 end
 def nr()
+ __result_1=nil
  _result_1 = ((nil))
 _result_1 = ((it=(_lookahead(true){(it=(name());next FAIL if it==FAIL;it)
 (it=(argsOpt('(',')'));next FAIL if it==FAIL;it)
@@ -464,12 +570,17 @@ _result_1 = ((it=(_lookahead(true){(it=(name());next FAIL if it==FAIL;it)
 (_result_1)  
 end
 def argsOpt(o_1,c_1)
+ __result_1=nil
  _result_1 = ((nil))
 (it=(_or(proc{_result_1 = ((it=(args(o_1,c_1));next FAIL if it==FAIL;it))},proc{(it=(empty());next FAIL if it==FAIL;it)
 _result_1 = (([])) }));return FAIL if it==FAIL;it)
 (_result_1)  
 end
 def args(o_1,c_1)
+ _autovar_2=nil
+_autovar_1=nil
+_r_1=nil
+__result_1=nil
  r_1 = ((nil))
 _result_1 = ((nil))
 r_1 = ((it=(__args(o_1,c_1));return FAIL if it==FAIL;it))
@@ -479,6 +590,8 @@ autovar_1 = ((r_1+[',']))
 (_result_1)  
 end
 def _args(o_1,c_1)
+ _r_1=nil
+__result_1=nil
  r_1 = ((nil))
 _result_1 = ((nil))
 r_1 = ((it=(__args(o_1,c_1));return FAIL if it==FAIL;it))
@@ -486,6 +599,10 @@ _result_1 = ((Args[{:ary=>([o_1]+r_1+[c_1])}]))
 (_result_1)  
 end
 def __args(o_1,c_1)
+ _autovar_2=nil
+_autovar_1=nil
+_r_1=nil
+__result_1=nil
  r_1 = ((nil))
 _result_1 = ((nil))
 (it=(seq(o_1));return FAIL if it==FAIL;it)
@@ -503,6 +620,15 @@ _result_1 = ((r_1))
 (_result_1)  
 end
 def rubyarg()
+ _k_1=nil
+_n_1=nil
+_autovar_1=nil
+_autovar_2=nil
+_autovar_3=nil
+_autovar_4=nil
+_e_1=nil
+__result_1=nil
+_s_1=nil
  e_1 = ((nil))
 s_1 = ((nil))
 n_1 = ((nil))
@@ -551,6 +677,8 @@ _result_1 = ((Key[k_1] )) },proc{_result_1 = ((it=(regch(/[^`{}()'"\[\]]/));next
 (_result_1)  
 end
 def procargs()
+ _autovar_1=nil
+__result_1=nil
  _result_1 = ((nil))
 (@ary=[];@tmp=[])
 while true
@@ -563,6 +691,11 @@ _result_1 = ((@ary))
 (_result_1)  
 end
 def procargs2()
+ _a_1=nil
+_autovar_2=nil
+_autovar_3=nil
+_autovar_1=nil
+__result_1=nil
  a_1 = ((nil))
 _result_1 = ((nil))
 (it=(_or(proc{autovar_1 = ((it=(clas(Args));next FAIL if it==FAIL;it))
@@ -578,16 +711,23 @@ _result_1 = ((@tmp<<a_1)) }));return FAIL if it==FAIL;it)
 (_result_1)  
 end
 def nameFirst()
+ __result_1=nil
  _result_1 = ((nil))
 (it=(_or(proc{_result_1 = ((it=(letter());next FAIL if it==FAIL;it))},proc{_result_1 = ((it=(seq("_"));next FAIL if it==FAIL;it))}));return FAIL if it==FAIL;it)
 (_result_1)  
 end
 def nameRest()
+ __result_1=nil
  _result_1 = ((nil))
 (it=(_or(proc{_result_1 = ((it=(nameFirst());next FAIL if it==FAIL;it))},proc{_result_1 = ((it=(digit());next FAIL if it==FAIL;it))}));return FAIL if it==FAIL;it)
 (_result_1)  
 end
 def className()
+ _it_1=nil
+_autovar_3=nil
+_autovar_1=nil
+_autovar_2=nil
+__result_1=nil
  it_1 = ((nil))
 _result_1 = ((nil))
 (it=(token(""));return FAIL if it==FAIL;it)
@@ -607,6 +747,11 @@ _result_1 = ((leterize(it_1*"")))
 (_result_1)  
 end
 def name()
+ _it_1=nil
+_autovar_2=nil
+_autovar_3=nil
+_autovar_1=nil
+__result_1=nil
  it_1 = ((nil))
 _result_1 = ((nil))
 (it=(token(""));return FAIL if it==FAIL;it)
@@ -626,11 +771,15 @@ _result_1 = ((leterize(it_1*"")))
 (_result_1)  
 end
 def inlineHostExpr()
+ __result_1=nil
  _result_1 = ((nil))
 _result_1 = ((it=(args('{','}'));return FAIL if it==FAIL;it))
 (_result_1)  
 end
 def number()
+ _autovar_1=nil
+_autovar_2=nil
+__result_1=nil
  _result_1 = ((nil))
 autovar_1 = (([]))
 it=((it=(regch(/[0-9]/));return FAIL if it==FAIL;it))
@@ -645,6 +794,12 @@ _result_1 = ((autovar_1))
 (_result_1)  
 end
 def atomicHostExpr()
+ _autovar_1=nil
+_autovar_2=nil
+_autovar_4=nil
+_autovar_3=nil
+__result_1=nil
+_s_1=nil
  s_1 = ((nil))
 _result_1 = ((nil))
 autovar_1 = (([]))
@@ -666,6 +821,10 @@ end
 
 class AmethystOptimizer < Amethyst
 def itrans()
+ _autovar_1=nil
+_autovar_2=nil
+_r_1=nil
+__result_1=nil
  r_1 = ((nil))
 _result_1 = ((nil))
 autovar_1 = (([]))
@@ -681,6 +840,56 @@ _result_1 = ((r_1))
 (_result_1)  
 end
 def trans()
+ _args_1=nil
+_name_1=nil
+_expr_1=nil
+_locals_1=nil
+_parent_1=nil
+_enter_1=nil
+_body_1=nil
+_vars_1=nil
+_pred_1=nil
+_rules_1=nil
+_autovar_27=nil
+_autovar_13=nil
+_autovar_5=nil
+_autovar_32=nil
+_autovar_21=nil
+_autovar_11=nil
+_autovar_25=nil
+_autovar_16=nil
+_autovar_3=nil
+_autovar_33=nil
+_autovar_23=nil
+_autovar_9=nil
+_autovar_28=nil
+_autovar_17=nil
+_autovar_7=nil
+_autovar_24=nil
+_autovar_12=nil
+_autovar_2=nil
+_autovar_30=nil
+_autovar_19=nil
+_autovar_8=nil
+_autovar_22=nil
+_autovar_14=nil
+_autovar_1=nil
+_autovar_31=nil
+_autovar_20=nil
+_autovar_6=nil
+_autovar_26=nil
+_autovar_15=nil
+_autovar_4=nil
+_autovar_29=nil
+_autovar_18=nil
+_autovar_10=nil
+_o_1=nil
+_to_1=nil
+_neg_1=nil
+_append_1=nil
+_var_1=nil
+__result_1=nil
+_ary_1=nil
  name_1 = ((nil))
 parent_1 = ((nil))
 rules_1 = ((nil))
@@ -790,11 +999,17 @@ _result_1 = (Stop.create( {:ary=>ary_1 })) }));return FAIL if it==FAIL;it)
 (_result_1)  
 end
 def transfn()
+ __result_1=nil
  _result_1 = ((nil))
 _result_1 = ((it=(trans());return FAIL if it==FAIL;it))
 (_result_1)  
 end
 def transs()
+ _autovar_2=nil
+_autovar_3=nil
+_autovar_1=nil
+__result_1=nil
+_t_1=nil
  t_1 = ((nil))
 _result_1 = ((nil))
 autovar_1 = ((it=(anything());return FAIL if it==FAIL;it))
@@ -810,6 +1025,13 @@ _result_1 = ((t_1))
 (_result_1)  
 end
 def args()
+ _a_1=nil
+_autovar_2=nil
+_autovar_3=nil
+_autovar_1=nil
+_autovar_4=nil
+_autovar_5=nil
+__result_1=nil
  a_1 = ((nil))
 _result_1 = ((nil))
 (it=(_or(proc{autovar_1 = ((it=(clas(Array));next FAIL if it==FAIL;it))
@@ -832,6 +1054,15 @@ _result_1 = ((autovar_4)) }));return FAIL if it==FAIL;it)
 (_result_1)  
 end
 def arg()
+ _autovar_7=nil
+_autovar_3=nil
+_autovar_1=nil
+_autovar_5=nil
+_autovar_6=nil
+_autovar_4=nil
+_autovar_2=nil
+__result_1=nil
+_ary_1=nil
  ary_1 = ((nil))
 _result_1 = ((nil))
 (it=(_or(proc{autovar_1 = ((it=(clas(Args));next FAIL if it==FAIL;it))
@@ -866,6 +1097,14 @@ end
 
 class AmethystOptimizer2 < AmethystOptimizer
 def trans()
+ _autovar_4=nil
+_autovar_2=nil
+_autovar_3=nil
+_autovar_1=nil
+_autovar_5=nil
+_autovar_6=nil
+__result_1=nil
+_ary_1=nil
  ary_1 = ((nil))
 _result_1 = ((nil))
 (it=(_or(proc{autovar_1 = ((it=(clas(Or));next FAIL if it==FAIL;it))
@@ -901,6 +1140,12 @@ end
 
 class Traverser < Amethyst
 def traverse_item()
+ _a_1=nil
+_autovar_2=nil
+_autovar_3=nil
+_autovar_1=nil
+_autovar_4=nil
+__result_1=nil
  a_1 = ((nil))
 _result_1 = ((nil))
 (it=(_or(proc{a_1 = ((it=(visit());next FAIL if it==FAIL;it))
@@ -918,6 +1163,12 @@ _result_1 = ((autovar_2)) });next FAIL if it==FAIL;it) },proc{autovar_4 = ((it=(
 (_result_1)  
 end
 def traverse()
+ _autovar_2=nil
+_autovar_1=nil
+_autovar_4=nil
+_autovar_5=nil
+_autovar_3=nil
+__result_1=nil
  _result_1 = ((nil))
 while true
 autovar_1=@input;r=(it=(anything());break FAIL if it==FAIL;it)
@@ -944,11 +1195,15 @@ end
 
 class Seq_Or_Optimizer < Traverser
 def root()
+ __result_1=nil
  _result_1 = ((nil))
 _result_1 = ((it=(traverse());return FAIL if it==FAIL;it))
 (_result_1)  
 end
 def visit()
+ _autovar_1=nil
+_autovar_2=nil
+__result_1=nil
  _result_1 = ((nil))
 (it=(_or(proc{autovar_1 = ((it=(clas(Seq));next FAIL if it==FAIL;it))
 (it=(_pass(true,autovar_1){(it=(traverse());next FAIL if it==FAIL;it)
@@ -964,6 +1219,16 @@ end
 
 class Analyze_Variables2 < Traverser
 def itrans()
+ _rules_1=nil
+_autovar_7=nil
+_autovar_4=nil
+_autovar_3=nil
+_autovar_2=nil
+_autovar_6=nil
+_autovar_1=nil
+_autovar_5=nil
+_autovar_8=nil
+__result_1=nil
  rules_1 = ((nil))
 _result_1 = ((nil))
 autovar_1 = (([]))
@@ -991,6 +1256,9 @@ _result_1 = ((autovar_1))
 (_result_1)  
 end
 def root()
+ _autovar_2=nil
+_autovar_1=nil
+__result_1=nil
  _result_1 = ((nil))
 autovar_1 = ( self['this'])
 (it=(_pass(false,autovar_1){autovar_2 = ((it=(clas(Rule));next FAIL if it==FAIL;it))
@@ -1002,6 +1270,12 @@ _result_1 = ( self['this']) });next FAIL if it==FAIL;it) });return FAIL if it==F
 (_result_1)  
 end
 def visit()
+ _a_1=nil
+_autovar_4=nil
+_autovar_3=nil
+_autovar_2=nil
+_autovar_1=nil
+__result_1=nil
  a_1 = ((nil))
 _result_1 = ((nil))
 (it=(_or(proc{autovar_1 = ((it=(clas(Args));next FAIL if it==FAIL;it))
@@ -1016,6 +1290,11 @@ _result_1 = ( self['this']) });next FAIL if it==FAIL;it) }));return FAIL if it==
 (_result_1)  
 end
 def flat()
+ _autovar_2=nil
+_autovar_3=nil
+_autovar_1=nil
+_autovar_4=nil
+__result_1=nil
  _result_1 = ((nil))
 autovar_1 = (([]))
 while true
@@ -1036,6 +1315,29 @@ end
 
 class Dead_Code_Detector < AmethystOptimizer
 def trans()
+ _v_1=nil
+_args_1=nil
+_name_1=nil
+_locals_1=nil
+_body_1=nil
+_autovar_5=nil
+_autovar_13=nil
+_autovar_3=nil
+_autovar_8=nil
+_autovar_12=nil
+_autovar_1=nil
+_autovar_10=nil
+_autovar_4=nil
+_autovar_11=nil
+_autovar_6=nil
+_autovar_9=nil
+_autovar_7=nil
+_autovar_14=nil
+_autovar_2=nil
+_reachable_1=nil
+_var_1=nil
+__result_1=nil
+_this_1=nil
  name_1 = ((nil))
 args_1 = ((nil))
 body_1 = ((nil))
@@ -1082,6 +1384,22 @@ _result_1 = ((var_1.each{|w| @edges.add(v_1,w) })) },proc{_result_1 = ((it=(supe
 (_result_1)  
 end
 def vars_in()
+ _autovar_11=nil
+_autovar_7=nil
+_autovar_13=nil
+_autovar_4=nil
+_autovar_8=nil
+_autovar_3=nil
+_autovar_9=nil
+_autovar_14=nil
+_autovar_10=nil
+_autovar_2=nil
+_autovar_6=nil
+_autovar_12=nil
+_autovar_1=nil
+_autovar_5=nil
+__result_1=nil
+_ary_1=nil
  ary_1 = ((nil))
 _result_1 = ((nil))
 (ary_1=[])
@@ -1133,6 +1451,23 @@ end
 
 class Dead_Code_Deleter < AmethystOptimizer
 def trans()
+ _args_1=nil
+_it_1=nil
+_name_1=nil
+_expr_1=nil
+_locals_1=nil
+_body_1=nil
+_autovar_6=nil
+_autovar_1=nil
+_autovar_8=nil
+_autovar_5=nil
+_autovar_4=nil
+_autovar_2=nil
+_autovar_7=nil
+_autovar_3=nil
+_append_1=nil
+__result_1=nil
+_this_1=nil
  name_1 = ((nil))
 it_1 = ((nil))
 args_1 = ((nil))
@@ -1179,6 +1514,18 @@ end
 
 class Communize_Or < AmethystOptimizer
 def trans()
+ _rest_1=nil
+_autovar_6=nil
+_autovar_4=nil
+_autovar_3=nil
+_autovar_7=nil
+_autovar_2=nil
+_autovar_1=nil
+_autovar_5=nil
+_fst_1=nil
+_first_1=nil
+__result_1=nil
+_ary_1=nil
  first_1 = ((nil))
 fst_1 = ((nil))
 rest_1 = ((nil))
@@ -1218,6 +1565,13 @@ end
 
 class Move_Assignments < AmethystOptimizer
 def trans()
+ _name_1=nil
+_expr_1=nil
+_autovar_2=nil
+_autovar_3=nil
+_autovar_1=nil
+_append_1=nil
+__result_1=nil
  name_1 = ((nil))
 expr_1 = ((nil))
 append_1 = ((nil))
@@ -1232,6 +1586,22 @@ autovar_3 = ((expr_1))
 (_result_1)  
 end
 def move(append_1,name_1)
+ _it_1=nil
+_enter_1=nil
+_autovar_8=nil
+_autovar_6=nil
+_autovar_5=nil
+_autovar_7=nil
+_autovar_2=nil
+_autovar_4=nil
+_autovar_3=nil
+_autovar_9=nil
+_autovar_1=nil
+_to_1=nil
+_var_1=nil
+_el_1=nil
+__result_1=nil
+_ary_1=nil
  ary_1 = ((nil))
 el_1 = ((nil))
 var_1 = ((nil))
@@ -1275,6 +1645,14 @@ end
 
 class Renamer < AmethystOptimizer
 def trans()
+ _args_1=nil
+_name_1=nil
+_locals_1=nil
+_body_1=nil
+_autovar_2=nil
+_autovar_3=nil
+_autovar_1=nil
+__result_1=nil
  name_1 = ((nil))
 args_1 = ((nil))
 locals_1 = ((nil))
@@ -1292,6 +1670,10 @@ _result_1 = (Rule.create( {:name=>name_1,:args=>args_1,:locals=>locals_1,:body=>
 (_result_1)  
 end
 def arg()
+ _name_1=nil
+_autovar_1=nil
+__result_1=nil
+_this_1=nil
  name_1 = ((nil))
 this_1 = ((nil))
 _result_1 = ((nil))
@@ -1306,6 +1688,14 @@ end
 
 class Inliner < AmethystOptimizer
 def inline(rule_1,grammar_1)
+ _args_1=nil
+_name_1=nil
+_body_1=nil
+_autovar_1=nil
+_autovar_4=nil
+_autovar_3=nil
+_autovar_2=nil
+__result_1=nil
  name_1 = ((nil))
 args_1 = ((nil))
 body_1 = ((nil))
@@ -1323,6 +1713,12 @@ autovar_3 = ((grammar_1))
 (_result_1)  
 end
 def trans()
+ _args_1=nil
+_name_1=nil
+_autovar_1=nil
+_autovar_2=nil
+_autovar_3=nil
+__result_1=nil
  name_1 = ((nil))
 args_1 = ((nil))
 _result_1 = ((nil))
@@ -1341,6 +1737,10 @@ _result_1 = ((body=@body;puts args_1.inspect; args_1.each_index{|i| body=Seq[Set
 (_result_1)  
 end
 def inlineit()
+ _grammar_1=nil
+_name_1=nil
+__result_1=nil
+_rule_1=nil
  name_1 = ((nil))
 grammar_1 = ((nil))
 rule_1 = ((nil))
@@ -1352,6 +1752,17 @@ _result_1 = ((it=(inline(rule_1,grammar_1));return FAIL if it==FAIL;it))
 (_result_1)  
 end
 def getrule(name_1,grammar_1)
+ _n_1=nil
+_autovar_3=nil
+_autovar_6=nil
+_autovar_8=nil
+_autovar_7=nil
+_autovar_2=nil
+_autovar_5=nil
+_autovar_1=nil
+_autovar_4=nil
+__result_1=nil
+_rule_1=nil
  n_1 = ((nil))
 rule_1 = ((nil))
 _result_1 = ((nil))
@@ -1380,6 +1791,10 @@ end
 
 class AmethystTranslator < Amethyst
 def itrans()
+ _autovar_1=nil
+_autovar_2=nil
+_r_1=nil
+__result_1=nil
  r_1 = ((nil))
 _result_1 = ((nil))
 autovar_1 = (([]))
@@ -1395,6 +1810,52 @@ _result_1 = ((r_1*""))
 (_result_1)  
 end
 def trans()
+ _name_1=nil
+_expr_1=nil
+_parent_1=nil
+_enter_1=nil
+_argss_1=nil
+_body_1=nil
+_vars_1=nil
+_pred_1=nil
+_autovar_27=nil
+_autovar_18=nil
+_autovar_7=nil
+_autovar_24=nil
+_autovar_12=nil
+_autovar_4=nil
+_autovar_28=nil
+_autovar_17=nil
+_autovar_8=nil
+_autovar_23=nil
+_autovar_13=nil
+_autovar_5=nil
+_autovar_26=nil
+_autovar_19=nil
+_autovar_6=nil
+_autovar_2=nil
+_autovar_25=nil
+_autovar_14=nil
+_autovar_3=nil
+_autovar_29=nil
+_autovar_21=nil
+_autovar_10=nil
+_autovar_1=nil
+_autovar_16=nil
+_autovar_30=nil
+_autovar_22=nil
+_autovar_11=nil
+_autovar_15=nil
+_autovar_20=nil
+_autovar_9=nil
+_o_1=nil
+_to_1=nil
+_neg_1=nil
+_ors_1=nil
+_append_1=nil
+_var_1=nil
+__result_1=nil
+_t_1=nil
  name_1 = ((nil))
 parent_1 = ((nil))
 body_1 = ((nil))
@@ -1423,8 +1884,8 @@ autovar_4 = ( self['args'])
 (it=(_pass(false,autovar_4){argss_1 = ((it=(args());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
 autovar_5 = ( self['body'])
 (it=(_pass(false,autovar_5){_result_1 = (body_1 = ((it=(trans());next FAIL if it==FAIL;it)))});next FAIL if it==FAIL;it)
-(_result_1) }));next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it)
-_result_1 = (("def #{name_1}(#{argss_1})\n #{body_1} \nend\n")) },proc{autovar_6 = ((it=(clas(Or));next FAIL if it==FAIL;it))
+(_result_1) }));next FAIL if it==FAIL;it)
+_result_1 = (("def #{name_1}(#{argss_1})\n #{@varhash.select{|nam,b| ! self['args'].map{|l| l[0]}.include?(nam)}.map{|nam,b| b.map{|bi,no| "_#{nam}_#{no}=nil\n"}}*""} #{body_1} \nend\n")) });next FAIL if it==FAIL;it) },proc{autovar_6 = ((it=(clas(Or));next FAIL if it==FAIL;it))
 (it=(_pass(true,autovar_6){(it=(rw('next', proc{autovar_7 = (([]))
 while true
 autovar_8=@input;r=it=((it=(transfn());break FAIL if it==FAIL;it))
@@ -1493,6 +1954,8 @@ _result_1 = (("@stop=true;it")) }));return FAIL if it==FAIL;it)
 (_result_1)  
 end
 def transfn()
+ __result_1=nil
+_t_1=nil
  t_1 = ((nil))
 _result_1 = ((nil))
 t_1 = ((it=(trans());return FAIL if it==FAIL;it))
@@ -1500,6 +1963,11 @@ _result_1 = (("proc{#{t_1}}" ))
 (_result_1)  
 end
 def transs()
+ _autovar_3=nil
+_autovar_1=nil
+_autovar_2=nil
+__result_1=nil
+_t_1=nil
  t_1 = ((nil))
 _result_1 = ((nil))
 autovar_1 = ((it=(anything());return FAIL if it==FAIL;it))
@@ -1515,6 +1983,13 @@ _result_1 = ((t_1))
 (_result_1)  
 end
 def args()
+ _a_1=nil
+_autovar_4=nil
+_autovar_5=nil
+_autovar_2=nil
+_autovar_3=nil
+_autovar_1=nil
+__result_1=nil
  a_1 = ((nil))
 _result_1 = ((nil))
 (it=(_or(proc{autovar_1 = ((it=(clas(Array));next FAIL if it==FAIL;it))
@@ -1538,6 +2013,21 @@ _result_1 = ((a_1*",")) }));return FAIL if it==FAIL;it)
 (_result_1)  
 end
 def arg()
+ _number_1=nil
+_name_1=nil
+_a_1=nil
+_autovar_10=nil
+_autovar_6=nil
+_autovar_4=nil
+_autovar_2=nil
+_autovar_7=nil
+_autovar_3=nil
+_autovar_8=nil
+_autovar_1=nil
+_autovar_9=nil
+_autovar_5=nil
+__result_1=nil
+_t_1=nil
  a_1 = ((nil))
 t_1 = ((nil))
 name_1 = ((nil))
@@ -1574,6 +2064,8 @@ _result_1 = (("@#{name_1}")) },proc{_result_1 = ((it=(anything());next FAIL if i
 (_result_1)  
 end
 def rw(word_1,prc_1)
+ _x_1=nil
+__result_1=nil
  x_1 = ((nil))
 _result_1 = ((nil))
 (rwo=@returnword;@returnword=word_1)
@@ -1582,6 +2074,7 @@ _result_1 = ((@returnword=rwo;x_1))
 (_result_1)  
 end
 def failwrap(s_1)
+ __result_1=nil
  _result_1 = ((nil))
 _result_1 = (("(it=(#{s_1});#{@returnword} FAIL if it==FAIL;it)" ))
 (_result_1)  

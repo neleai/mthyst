@@ -8,7 +8,7 @@ class Gram
 		}
 	end
 	def opt(r)
-      debug=false
+      debug=true
       puts r.inspect if debug
       r=Seq_Or_Optimizer.new.parse(:root,r)
       puts r.inspect if debug
