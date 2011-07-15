@@ -410,6 +410,7 @@ end
 def key()
  args_1=nil
 name_1=nil
+n_1=nil
 vars_1=nil
 _result_1=nil
  (it=(_or(proc{(it=(token("@"));next FAIL if it==FAIL;it)
@@ -418,7 +419,9 @@ args_1 = ((it=(argsOpt('[',']'));next FAIL if it==FAIL;it))
 vars_1 = ((Object.const_get(name_1).instance_variable_get(:@attrs)))
 _result_1 = (Result.create( {:name=>name_1,:args=>args_1,:vars=>vars_1 })) },proc{(it=(token("@"));next FAIL if it==FAIL;it)
 name_1 = ((it=(name());next FAIL if it==FAIL;it))
-_result_1 = (Key.create( {:name=>name_1,:args=>args_1 })) }));return FAIL if it==FAIL;it)
+_result_1 = (Key.create( {:name=>name_1,:args=>args_1 })) },proc{(it=(token("@@"));next FAIL if it==FAIL;it)
+n_1 = ((it=(name());next FAIL if it==FAIL;it))
+_result_1 = ((Global[n_1])) }));return FAIL if it==FAIL;it)
 (_result_1)  
 end
 def collect(ors_1)
@@ -503,8 +506,7 @@ _result_1 = ((r_1))
 (_result_1)  
 end
 def rubyarg()
- k_1=nil
-n_1=nil
+ n_1=nil
 e_1=nil
 s_1=nil
 _result_1=nil
@@ -543,11 +545,8 @@ _result_1 = ((Strin[connectstring(s_1)])) },proc{(it=(_or(proc{n_1 = ((it=(token
 (it=(_lookahead(true){(it=(_());next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it)
 it=((it=(name());next FAIL if it==FAIL;it))
  n_1||=[];_append(n_1,it)
-_result_1 = ((n_1)) },proc{(it=(seq("@@"));next FAIL if it==FAIL;it)
-(it=(_lookahead(true){(it=(_());next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it)
-n_1 = ((it=(name());next FAIL if it==FAIL;it))
-_result_1 = ((Global[n_1])) },proc{k_1 = ((it=(key());next FAIL if it==FAIL;it))
-_result_1 = ((Key[k_1] )) },proc{_result_1 = ((it=(regch(/[^`{}()'"\[\]]/));next FAIL if it==FAIL;it))}));return FAIL if it==FAIL;it)
+_result_1 = ((n_1)) },proc{(it=(_lookahead(true){(it=(_());next FAIL if it==FAIL;it)});next FAIL if it==FAIL;it)
+_result_1 = ((it=(key());next FAIL if it==FAIL;it)) },proc{_result_1 = ((it=(regch(/[^`{}()'"\[\]]/));next FAIL if it==FAIL;it))}));return FAIL if it==FAIL;it)
 (_result_1)  
 end
 def procargs()
@@ -953,10 +952,10 @@ def visit()
  (it=(_or(proc{autovar_1 = ((it=(clas(Seq));next FAIL if it==FAIL;it))
 (it=(_pass(true,autovar_1){(it=(traverse());next FAIL if it==FAIL;it)
 ( self['this'].ary= self['ary'].map{|i| (i.is_a?(Seq)) ? i.ary : i}.flatten.select{|e| !(e.is_a?(Act) && e.ary.size==0)})
-_result_1 = ((( self['ary'].size==1) ? self['ary'][0] : self['this'])) });next FAIL if it==FAIL;it) },proc{autovar_2 = ((it=(clas(Or));next FAIL if it==FAIL;it))
+_result_1 = ((( self['ary'].size==1) ?  self['ary'][0] :  self['this'])) });next FAIL if it==FAIL;it) },proc{autovar_2 = ((it=(clas(Or));next FAIL if it==FAIL;it))
 (it=(_pass(true,autovar_2){(it=(traverse());next FAIL if it==FAIL;it)
 ( self['this'].ary= self['ary'].map{|i| (i.is_a?(Or )) ? i.ary : i}.flatten.select{|e| !(e.is_a?(Act) && e.ary.size==0)})
-_result_1 = ((( self['ary'].size==1) ? self['ary'][0] : self['this'])) });next FAIL if it==FAIL;it) }));return FAIL if it==FAIL;it)
+_result_1 = ((( self['ary'].size==1) ?  self['ary'][0] :  self['this'])) });next FAIL if it==FAIL;it) }));return FAIL if it==FAIL;it)
 (_result_1)  
 end
 
@@ -1011,7 +1010,7 @@ autovar_2 = (( self['ary'].map{|a_1| @variables[a_1] }))
 (it=(_pass(true,autovar_3){a_1 = ((it=(flat());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it)
 ( self['ary']=connectstring(a_1.flatten))
 _result_1 = ( self['this']) });next FAIL if it==FAIL;it) },proc{autovar_4 = ((it=(clas(Result));next FAIL if it==FAIL;it))
-(it=(_pass(true,autovar_4){( self['vars']=@locals.select{|a_1| self['vars'].include? a_1[0].to_sym}.uniq)
+(it=(_pass(true,autovar_4){( self['vars']=@locals.select{|a_1|  self['vars'].include? a_1[0].to_sym}.uniq)
 _result_1 = ( self['this']) });next FAIL if it==FAIL;it) }));return FAIL if it==FAIL;it)
 (_result_1)  
 end
@@ -1065,7 +1064,7 @@ _result_1 = ((@marked +=var_1)) },proc{autovar_5 = ((it=(clas(Pass));next FAIL i
 autovar_7 = ( self['to'])
 (it=(_pass(false,autovar_7){_result_1 = ((it=(trans());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it) },proc{autovar_8 = ((it=(clas(Act));next FAIL if it==FAIL;it))
 (it=(_pass(true,autovar_8){this_1 = ( self['this'])
-(@marked<<this_1 if self['pred'])
+(@marked<<this_1 if  self['pred'])
 var_1 = ((it=(vars_in());next FAIL if it==FAIL;it)) });next FAIL if it==FAIL;it)
 _result_1 = ((var_1.each{|v_1| @edges.add(v_1,this_1); @edges.add(this_1,v_1); @marked<<this_1 if v_1.is_a?(Global) || v_1.is_a?(Key) || v_1[0]=="_result"})) },proc{autovar_9 = ((it=(clas(Set));next FAIL if it==FAIL;it))
 (it=(_pass(true,autovar_9){v_1 = ( self['name'])
@@ -1568,8 +1567,8 @@ a_1 = ((autovar_5)) });next FAIL if it==FAIL;it)
 _result_1 = ((a_1*"")) },proc{autovar_7 = ((it=(clas(Exp));next FAIL if it==FAIL;it))
 (it=(_pass(true,autovar_7){t_1 = ((it=(transfn());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
 _result_1 = ((t_1)) },proc{autovar_8 = ((it=(clas(Key));next FAIL if it==FAIL;it))
-(it=(_pass(true,autovar_8){t_1 = ((it=(trans());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
-_result_1 = ((t_1)) },proc{autovar_9 = ((it=(clas(Local));next FAIL if it==FAIL;it))
+(it=(_pass(true,autovar_8){name_1 = ( self['name'])});next FAIL if it==FAIL;it)
+_result_1 = ((" self['#{name_1}']")) },proc{autovar_9 = ((it=(clas(Local));next FAIL if it==FAIL;it))
 (it=(_pass(true,autovar_9){name_1 = ((it=(anything());next FAIL if it==FAIL;it))
 number_1 = ((it=(anything());next FAIL if it==FAIL;it)) });next FAIL if it==FAIL;it)
 _result_1 = ((varname(@varhash,name_1,number_1))) },proc{autovar_10 = ((it=(clas(Global));next FAIL if it==FAIL;it))

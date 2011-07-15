@@ -34,7 +34,7 @@ amethyst AmethystTranslator < Amethyst {
 	arg = Args[arg*:a] -> a*""
 			| Strin[arg*:a] -> a*""
 			| Exp[transfn:t ] -> t
-		  | Key[ trans:t] -> t
+			| Key[@name:name] -> " self['#{name}']"
 			| Local[:name :number] -> varname(@@varhash,name,number)
 			| Global[:name] -> "@#{name}"
 			| anything
