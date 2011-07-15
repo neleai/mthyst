@@ -313,13 +313,12 @@ it_1 = ((it=(expression());next FAIL if it==FAIL;it))
 (it=(token("]"));next FAIL if it==FAIL;it) },proc{(it=(_or(proc{one_1 = ((it=(token("*"));next FAIL if it==FAIL;it))},proc{one_1 = ((it=(token("+"));next FAIL if it==FAIL;it))}));next FAIL if it==FAIL;it)
 from_1 = ((Many[from_1,one_1=="+"])) },proc{(it=(token("?"));next FAIL if it==FAIL;it)
 from_1 = ((Or[from_1,Apply["empty"]])) },proc{(it=(token(":"));next FAIL if it==FAIL;it)
-name_1 = ((it=(name());next FAIL if it==FAIL;it))
+(it=(_or(proc{(it=(_or(proc{name_1 = ((it=(key());next FAIL if it==FAIL;it))},proc{name_1 = ((it=(name());next FAIL if it==FAIL;it))}));next FAIL if it==FAIL;it)
 (it=(_or(proc{(it=(seq("[]"));next FAIL if it==FAIL;it)
 append_1 = ((true)) },proc{(it=(empty());next FAIL if it==FAIL;it)
 append_1 = ((nil)) }));next FAIL if it==FAIL;it)
-from_1 = ((_Set(name_1,from_1,append_1))) },proc{(it=(token(":"));next FAIL if it==FAIL;it)
-e_1 = ((it=(inlineHostExpr());next FAIL if it==FAIL;it))
-from_1 = ((Seq[_Set("it",from_1) , Act[e_1] ])) }));break FAIL if it==FAIL;it) 
+from_1 = ((_Set(name_1,from_1,append_1))) },proc{e_1 = ((it=(inlineHostExpr());next FAIL if it==FAIL;it))
+from_1 = ((Seq[_Set("it",from_1) , Act[e_1] ])) }));next FAIL if it==FAIL;it) }));break FAIL if it==FAIL;it) 
  break FAIL if r==FAIL
  (autovar_1=@input;@stop=nil;break FAIL) if @stop==true
 end;@input=autovar_1
