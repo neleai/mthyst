@@ -97,14 +97,10 @@ class AmethystCore
   end
 
   def _append(ar,it)
-    if ar.is_a? String
-      ar.concat(it.to_s)
+    if it.is_a? Array
+      ar.concat(it)
     else
-      if it.is_a? Array
-        ar.concat(it)
-      else
-        ar << it
-      end
+      ar << it
     end
   end
 
