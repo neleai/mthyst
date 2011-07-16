@@ -3,6 +3,7 @@ amethyst Dead_Code_Detector2 < Traverser {
 	
 	visit = Apply[:name vars_in:var{@@marked+=var} traverse]
 				| Pass[@var=>vars_in:var {@@marked+=var} traverse]
+				| Many[  @o=>vars_in:var {@@marked+=var} traverse]
 				| Act[ traverse:this {@@marked<<this if @pred} 
 							 @ary=>[vars_in]:var ] -> var.each{|v| @@edges.add(v,this); @@edges.add(this,v);}; this
 				| Set[@name=>vars_in:v {v=v[0]}   traverse:this @expr=>vars_in:var ] -> var.each{|w| @@edges.add(v,w)};this
