@@ -4,7 +4,7 @@ amethyst Analyze_Variables2 < Traverser {
 				{@body=Seq[{:ary=>[@body] }]} @this]
 
 	visit = Args[ traverse {@ary.map{|a| @@variables[a] }}=>[flat:a]  {@ary=connectstring(a.flatten)}  {(@ary.size==1&&(@ary[0].is_a?(Local)||@ary[0].is_a?(Global)||@ary[0].is_a?(Key))) ? @ary[0] : @this}]
-				| Act[ ( Local | Key | Global) ]
+				| Act[ traverse @ary=>[( Local | Key | Global)] ]
 				| Result[ {@vars=@@locals.select{|a| @vars.include? a[0].to_sym}.uniq} @this]
 
 	flat= (Args[flat] | Strin[flat] |	. )*
