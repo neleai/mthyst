@@ -9,22 +9,11 @@ class Gram
 	end
 	def opt(r)
       debug=true
-      puts r.inspect if debug
-      r=Seq_Or_Optimizer.new.parse(:root,r)
-      puts r.inspect if debug
-      r=Move_Assignments2.new.parse(:root,r)
-      puts r.inspect if debug
-      r=Seq_Or_Optimizer.new.parse(:root,r)
-      puts r.inspect if debug
-      r=Communize_Or3.new.parse(:root,r)
-      puts r.inspect if debug
-      r=Seq_Or_Optimizer.new.parse(:root,r)
-      puts r.inspect if debug
-      r=Dead_Code_Detector2.new.parse(:root,r)
-      puts r.inspect if debug
-      r=Dead_Code_Deleter2.new.parse(:root,r)
-      puts r.inspect if debug
-      r=Seq_Or_Optimizer.new.parse(:root,r)
+			pipeline=[Seq_Or_Optimizer,Move_Assignments2,Seq_Or_Optimizer,Communize_Or3,Seq_Or_Optimizer,Dead_Code_Detector2,Dead_Code_Deleter2,Seq_Or_Optimizer]
+			pipeline.each{|o|
+	      puts r.inspect if debug
+      	r=o.new.parse(:root,r)
+			}
       @rules[r.name]=r 
 	end
 	def getrule(from)
