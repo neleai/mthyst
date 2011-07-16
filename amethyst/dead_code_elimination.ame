@@ -28,6 +28,7 @@ amethyst Dead_Code_Deleter < AmethystOptimizer{
 					| Act[@this:this .*] -> @@reachable[this] ? this : Act[]
 					| Set[@name:name @expr=>trans:expr @append:append] ->@@reachable[name] ? _Set(name,expr,append) : expr
 					| Result[@this:this] ->@@reachable[this] ? this : Act[]
+					| Local[.* @this:this] ->@@reachable[this] ? this : Act[]
 					| super
 }
 

@@ -9,9 +9,9 @@ def a2ruby(s)
 	par=AmethystOptimizer2.new.parse(:itrans,par)
 
 #	par=Detect_Variables.new.parse(:itrans,par)
-	#puts par.inspect
+	puts par.inspect
 	par=Analyze_Variables2.new.parse(:itrans,par)
-	#puts par.inspect
+	puts par.inspect
 
 #pp inl
 
