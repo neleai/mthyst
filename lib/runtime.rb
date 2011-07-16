@@ -49,17 +49,13 @@ class AmethystCore
 	 @src.send(key+"=",value)
 	end
 
-	def item
+	def anything
 		return FAIL unless @input<@src.size
 		if @src.is_a? String
-			@src[@input,1]
+			i=@src[@input,1]
 		else
-			@src[@input]
+			i=@src[@input]
 		end
-	end
-	
-	def anything
-		i=item
 		@input+=1
 		i
 	end
