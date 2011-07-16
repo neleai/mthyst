@@ -1001,7 +1001,7 @@ def root()
 (it=(_pass(true,autovar_2){(@variables=Hash.new{|k,v| k[v]=v} ;( self['locals']+ self['args']).each{|v| @variables[v[0]]=v})
 (@locals= self['locals'])
 (it=(traverse());next FAIL if it==FAIL;it)
-( self['body']=Seq[{:ary=>[ self['body']] }])
+( self['body']=Seq[{:ary=>[ self['body']] }]; self['locals']=nil)
 _result_1 = ( self['this']) });next FAIL if it==FAIL;it) });return FAIL if it==FAIL;it)
 _result_1  
 end

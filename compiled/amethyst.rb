@@ -8,10 +8,10 @@ _result_1 = (c_1)
 _result_1  
 end
 def regch(regex_1)
- c_1=nil
-c_2=nil
-_result_1=nil
+ c_2=nil
+c_1=nil
 _result_2=nil
+_result_1=nil
  c_1 = ((it=(anything());return FAIL if it==FAIL;it))
 (it=((c_1.is_a? String )||FAIL);return FAIL if it==FAIL;it)
 _result_1 = (c_1)
@@ -23,11 +23,11 @@ _result_2
 end
 def space()
  regex_1=nil
-c_1=nil
 c_2=nil
-_result_1=nil
+c_1=nil
 _result_3=nil
 _result_2=nil
+_result_1=nil
  regex_1 = ((/[\s\t\r\n\f]/))
 c_1 = ((it=(anything());return FAIL if it==FAIL;it))
 (it=((c_1.is_a? String )||FAIL);return FAIL if it==FAIL;it)
@@ -42,12 +42,12 @@ _result_3
 end
 def spaces()
  regex_1=nil
-c_1=nil
 c_2=nil
-_result_1=nil
+c_1=nil
 _result_3=nil
 _result_4=nil
 _result_2=nil
+_result_1=nil
  autovar_1 = (([]))
 while true
 autovar_5=@input;r=regex_1 = ((/[\s\t\r\n\f]/))
@@ -95,11 +95,11 @@ _result_1
 end
 def lower()
  regex_1=nil
-c_1=nil
 c_2=nil
-_result_1=nil
+c_1=nil
 _result_3=nil
 _result_2=nil
+_result_1=nil
  regex_1 = ((/[a-z]/))
 c_1 = ((it=(anything());return FAIL if it==FAIL;it))
 (it=((c_1.is_a? String )||FAIL);return FAIL if it==FAIL;it)
@@ -114,11 +114,11 @@ _result_3
 end
 def digit()
  regex_1=nil
-c_1=nil
 c_2=nil
-_result_1=nil
+c_1=nil
 _result_2=nil
 _result_3=nil
+_result_1=nil
  regex_1 = ((/[0-9]/))
 c_1 = ((it=(anything());return FAIL if it==FAIL;it))
 (it=((c_1.is_a? String )||FAIL);return FAIL if it==FAIL;it)
@@ -133,11 +133,11 @@ _result_3
 end
 def upper()
  regex_1=nil
-c_1=nil
 c_2=nil
-_result_1=nil
-_result_2=nil
+c_1=nil
 _result_3=nil
+_result_2=nil
+_result_1=nil
  regex_1 = ((/[A-Z]/))
 c_1 = ((it=(anything());return FAIL if it==FAIL;it))
 (it=((c_1.is_a? String )||FAIL);return FAIL if it==FAIL;it)
@@ -187,8 +187,8 @@ end
 def _false()
  got_1=nil
 wanted_1=nil
-_result_1=nil
 _result_2=nil
+_result_1=nil
  wanted_1 = ((false))
 got_1 = ((it=(anything());return FAIL if it==FAIL;it))
 (it=((wanted_1 == got_1)||FAIL);return FAIL if it==FAIL;it)
@@ -223,8 +223,8 @@ end
 def _true()
  got_1=nil
 wanted_1=nil
-_result_1=nil
 _result_2=nil
+_result_1=nil
  wanted_1 = ((true))
 got_1 = ((it=(anything());return FAIL if it==FAIL;it))
 (it=((wanted_1 == got_1)||FAIL);return FAIL if it==FAIL;it)
@@ -235,12 +235,12 @@ _result_2
 end
 def _()
  regex_1=nil
-c_1=nil
 c_2=nil
-_result_1=nil
+c_1=nil
 _result_3=nil
 _result_4=nil
 _result_2=nil
+_result_1=nil
  regex_1 = ((/[\s\t\r\n\f]/))
 c_1 = ((it=(anything());return FAIL if it==FAIL;it))
 (it=((c_1.is_a? String )||FAIL);return FAIL if it==FAIL;it)
@@ -257,11 +257,11 @@ _result_4
 end
 def xdigit()
  regex_1=nil
-c_1=nil
 c_2=nil
-_result_1=nil
-_result_3=nil
+c_1=nil
 _result_2=nil
+_result_3=nil
+_result_1=nil
  regex_1 = ((/[0-9a-fA-F]/))
 c_1 = ((it=(anything());return FAIL if it==FAIL;it))
 (it=((c_1.is_a? String )||FAIL);return FAIL if it==FAIL;it)

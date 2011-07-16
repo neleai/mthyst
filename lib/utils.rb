@@ -38,7 +38,8 @@ module AmethystAST
 		self
 	end
 	def inspect
-		"#{self.class}[#{(ary.map{|a| a.inspect}+((instance_variables-['@ary']).size>0 ? ["{#{(instance_variables-['@ary']).select{|v| instance_variable_get(v)!=nil}.map{|v| ":#{v[1..-1]}=>#{instance_variable_get(v).inspect}" }*', '}}"]:[]) )*"," }]"
+		attrs=self.class.instance_variable_get(:@attrs)-[:ary]
+		"#{self.class}[#{(ary.map{|a| a.inspect}+(attrs.size>0 ? ["{#{(attrs).select{|v| send(v)!=nil}.map{|v| ":#{v}=>#{send(v).inspect}" }*', '}}"]:[]) )*"," }]"
 	end
 end
 def makeclasses(parent,*ary)
