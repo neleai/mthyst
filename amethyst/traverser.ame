@@ -6,7 +6,7 @@ amethyst Traverser {
 	traverse = .*
         	@this:this
 					{(@this.instance_variables).map{|v| [v,@this.instance_variable_get(v)] }}=>[
-			  		[ :key  traverse_item:{@this; this.instance_variable_set(key,it)} ]* 
+			  		[ :key  traverse_item:{@@x; this.instance_variable_set(key,it)} ]* 
 					]
 					@this
 }

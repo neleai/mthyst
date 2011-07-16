@@ -42,7 +42,7 @@ class AmethystCore
 	end
 		
 	def [](key)
-		@src.send(key) if @src.respond_to? key
+		@src.send(key) 
 	end
 
 	def []=(key,value)

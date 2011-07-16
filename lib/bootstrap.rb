@@ -950,7 +950,7 @@ autovar_2 = ((( self['this'].instance_variables).map{|v| [v, self['this'].instan
 autovar_5=@input;r=autovar_4 = ((it=(anything());break FAIL if it==FAIL;it))
 (it=(_pass(true,autovar_4){key_1 = ((it=(anything());next FAIL if it==FAIL;it))
 it_1 = ((it=(traverse_item());next FAIL if it==FAIL;it))
-( self['this']; this_1.instance_variable_set(key_1,it_1)) });break FAIL if it==FAIL;it) 
+(@x; this_1.instance_variable_set(key_1,it_1)) });break FAIL if it==FAIL;it) 
  break FAIL if r==FAIL
  (autovar_5=@input;@stop=nil;break FAIL) if @stop==true
 end;@input=autovar_5});next FAIL if it==FAIL;it) });return FAIL if it==FAIL;it)
