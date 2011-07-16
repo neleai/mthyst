@@ -1065,8 +1065,8 @@ locals_1 = ( self['locals'])
 reachable_1 = ((@edges.reachable(@marked))) });next FAIL if it==FAIL;it)
 _result_1 = (Rule.create( {:name=>name_1,:args=>args_1,:body=>body_1,:locals=>locals_1,:reachable=>reachable_1 })) },proc{autovar_4 = ((it=(clas(Apply));next FAIL if it==FAIL;it))
 (it=(_pass(true,autovar_4){name_1 = ((it=(anything());next FAIL if it==FAIL;it))
-var_1 = ((it=(vars_in());next FAIL if it==FAIL;it)) });next FAIL if it==FAIL;it)
-_result_1 = ((@marked +=var_1)) },proc{autovar_5 = ((it=(clas(Pass));next FAIL if it==FAIL;it))
+var_1 = ((it=(vars_in());next FAIL if it==FAIL;it))
+_result_1 = ((@marked+=var_1)) });next FAIL if it==FAIL;it) },proc{autovar_5 = ((it=(clas(Pass));next FAIL if it==FAIL;it))
 (it=(_pass(true,autovar_5){autovar_6 = ( self['var'])
 (it=(_pass(false,autovar_6){var_1 = ((it=(vars_in());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
 (@marked+=var_1)
@@ -1289,111 +1289,6 @@ autovar_9 = ( self['to'])
 enter_1 = ( self['enter']) });next FAIL if it==FAIL;it)
 _result_1 = (Pass.create( {:ary=>ary_1,:var=>var_1,:to=>to_1,:enter=>enter_1 })) },proc{it_1 = ((it=(anything());next FAIL if it==FAIL;it))
 _result_1 = ((_Set(name_1,it_1,append_1))) }));return FAIL if it==FAIL;it)
-_result_1  
-end
-
-end
-
-class Renamer < AmethystOptimizer
-def trans()
- args_1=nil
-name_1=nil
-locals_1=nil
-body_1=nil
-_result_1=nil
- (it=(_or(proc{autovar_1 = ((it=(clas(Rule));next FAIL if it==FAIL;it))
-(it=(_pass(true,autovar_1){(@newvars={})
-name_1 = ( self['name'])
-autovar_2 = ( self['args'])
-(it=(_pass(false,autovar_2){args_1 = ((it=(args());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it)
-locals_1 = ( self['locals'])
-autovar_3 = ( self['body'])
-(it=(_pass(false,autovar_3){body_1 = ((it=(trans());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it)
-_result_1 = (Rule.create( {:name=>name_1,:args=>args_1,:locals=>locals_1,:body=>body_1 })) },proc{_result_1 = ((it=(super());next FAIL if it==FAIL;it))}));return FAIL if it==FAIL;it)
-_result_1  
-end
-def arg()
- name_1=nil
-_result_1=nil
-this_1=nil
- (it=(_or(proc{autovar_1 = ((it=(clas(Local));next FAIL if it==FAIL;it))
-(it=(_pass(true,autovar_1){name_1 = ((it=(anything());next FAIL if it==FAIL;it))
-this_1 = ( self['this']) });next FAIL if it==FAIL;it)
-_result_1 = ((@newvars[this_1] ? @newvars[this_1] : ($av+=1; @newvars[this_1]=_Local(name_1,$av) ;@newvars[this_1] ))) },proc{_result_1 = ((it=(super());next FAIL if it==FAIL;it))}));return FAIL if it==FAIL;it)
-_result_1  
-end
-
-end
-
-class Inliner < AmethystOptimizer
-def inline(rule_1,grammar_1)
- args_1=nil
-name_1=nil
-body_1=nil
-_result_1=nil
- autovar_1 = (rule_1)
-(it=(_pass(false,autovar_1){autovar_2 = ((it=(clas(Rule));next FAIL if it==FAIL;it))
-(it=(_pass(true,autovar_2){name_1 = ( self['name'])
-args_1 = ( self['args'])
- self['locals']
-body_1 = ( self['body']) });next FAIL if it==FAIL;it) });return FAIL if it==FAIL;it)
-(@result=autovar;@name=name_1;@args=args_1;@body=Set[{:name=>@result ,:expr=>body_1}] )
-autovar_3 = (grammar_1)
-(it=(_pass(false,autovar_3){autovar_4 = ((it=(anything());next FAIL if it==FAIL;it))
-(it=(_pass(true,autovar_4){_result_1 = ((it=(itrans());next FAIL if it==FAIL;it))});next FAIL if it==FAIL;it) });return FAIL if it==FAIL;it)
-_result_1  
-end
-def trans()
- args_1=nil
-name_1=nil
-_result_1=nil
- (it=(_or(proc{autovar_1 = ((it=(clas(Apply));next FAIL if it==FAIL;it))
-(it=(_pass(true,autovar_1){name_1 = ((it=(anything());next FAIL if it==FAIL;it))
-(it=((name_1==@name)||FAIL);next FAIL if it==FAIL;it)
-autovar_2 = (([]))
-while true
-autovar_3=@input;r=it=((it=(arg());break FAIL if it==FAIL;it))
- autovar_2||=[];_append(autovar_2,it)
- break FAIL if r==FAIL
- (autovar_3=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_3
-args_1 = (autovar_2) });next FAIL if it==FAIL;it)
-_result_1 = ((body=@body;puts args_1.inspect; args_1.each_index{|i| body=Seq[Set[{:name=>@args[i],:expr=>Act[args_1[i]]}],body] } ; Seq[body,Act[@result]])) },proc{_result_1 = ((super))}));return FAIL if it==FAIL;it)
-_result_1  
-end
-def inlineit()
- grammar_1=nil
-name_1=nil
-_result_1=nil
-rule_1=nil
- name_1 = ((it=(anything());return FAIL if it==FAIL;it))
-grammar_1 = ((it=(anything());return FAIL if it==FAIL;it))
-rule_1 = ((it=(getrule(name_1,grammar_1));return FAIL if it==FAIL;it))
-_result_1 = ((it=(inline(rule_1,grammar_1));return FAIL if it==FAIL;it))
-_result_1  
-end
-def getrule(name_1,grammar_1)
- n_1=nil
-_result_1=nil
-rule_1=nil
- autovar_1 = (grammar_1)
-(it=(_pass(false,autovar_1){autovar_2 = ((it=(anything());next FAIL if it==FAIL;it))
-(it=(_pass(true,autovar_2){while true
-autovar_8=@input;r=(it=(_or(proc{autovar_3 = ((it=(clas(Grammar));next FAIL if it==FAIL;it))
-(it=(_pass(true,autovar_3){autovar_4 = ( self['rules'])
-(it=(_pass(false,autovar_4){autovar_5 = ((it=(anything());next FAIL if it==FAIL;it))
-(it=(_pass(true,autovar_5){while true
-autovar_7=@input;r=autovar_6 = ((it=(clas(Rule));break FAIL if it==FAIL;it))
-(it=(_pass(true,autovar_6){n_1 = ( self['name'])
-(it=(_or(proc{(it=((n_1==name_1)||FAIL);next FAIL if it==FAIL;it)
-rule_1 = ( self['this']) },proc{(it=(empty());next FAIL if it==FAIL;it)}));next FAIL if it==FAIL;it) });break FAIL if it==FAIL;it) 
- break FAIL if r==FAIL
- (autovar_7=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_7});next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it) });next FAIL if it==FAIL;it) },proc{(it=(anything());next FAIL if it==FAIL;it)}));break FAIL if it==FAIL;it)
- break FAIL if r==FAIL
- (autovar_8=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_8});next FAIL if it==FAIL;it) });return FAIL if it==FAIL;it)
-_result_1 = ((Renamer.new.parse(:trans, [rule_1])))
 _result_1  
 end
 

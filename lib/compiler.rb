@@ -60,6 +60,7 @@ class <<Compiler
 				}
 				@grammars[grammar.name].inline("char" ,name)
 				@grammars[grammar.name].inline("space" ,name)
+#				@grammars[grammar.name].inline("spaces" ,name)
 
 #				puts @grammars[grammar.name].rules[name].inspect
 				@grammars[grammar.name].opt(@grammars[grammar.name].rules[name])

@@ -14,6 +14,19 @@ def a2ruby(s)
 	
 	ruby=t.parse(:itrans,opt)
 end
+def a2ruby(s)
+	par=AmethystParser.new.parse(:igrammar,s)
+	par=AmethystOptimizer2.new.parse(:itrans,par)
+
+	par=Analyze_Variables2.new.parse(:itrans,par)
+	par= Move_Assignments.new.parse(:itrans,par)
+	par=Dead_Code_Detector.new.parse(:itrans,par)
+	par=Dead_Code_Deleter.new.parse(:itrans,par)
+	par=AmethystOptimizer2.new.parse(:itrans,par)
+	ruby=AmethystTranslator.new.parse(:itrans,par)
+	ruby
+end
+
 o=File.open("inliner.rb","w")
 p=AmethystParser.new
 r=p.parse(:igrammar,"amethyst Foo{ a = ~b a:vars @Result } foo bla")

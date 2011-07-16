@@ -20,10 +20,10 @@ end
 class AmethystParser < Amethyst
 def number()
  regex_1=nil
-c_2=nil
 c_1=nil
-_result_2=nil
+c_2=nil
 _result_1=nil
+_result_2=nil
 _result_3=nil
  autovar_1 = (([]))
 regex_1 = ((/[0-9]/))
@@ -67,8 +67,8 @@ _result_1
 end
 def name()
  it_1=nil
-_result_1=nil
 _result_2=nil
+_result_1=nil
 s_1=nil
  s_1 = ((""))
 (it=(spaces());return FAIL if it==FAIL;it)
@@ -97,10 +97,10 @@ _result_1 = ((Args[{:ary=>([o_1]+r_1+[c_1])}]))
 _result_1  
 end
 def eChar()
- c_2=nil
-c_1=nil
-_result_2=nil
+ c_1=nil
+c_2=nil
 _result_1=nil
+_result_2=nil
  (it=(_or(proc{(it=(seq("\\"));next FAIL if it==FAIL;it)
 c_1 = ((it=(anything());next FAIL if it==FAIL;it))
 (it=((c_1.is_a? String )||FAIL);next FAIL if it==FAIL;it)
@@ -118,8 +118,8 @@ def choice()
  delim_1=nil
 f_1=nil
 ary_1=nil
-_result_1=nil
 _result_2=nil
+_result_1=nil
 rule_1=nil
  delim_1 = ((proc{_result_1 = ((it=(token("|"));return FAIL if it==FAIL;it))
 _result_1 }))
@@ -183,8 +183,8 @@ def key()
 name_1=nil
 n_1=nil
 vars_1=nil
-_result_1=nil
 _result_2=nil
+_result_1=nil
 s_1=nil
  (it=(_or(proc{s_1 = (("@"))
 (it=(spaces());next FAIL if it==FAIL;it)
@@ -204,16 +204,16 @@ _result_2
 end
 def rubyarg()
  regex_1=nil
-c_2=nil
 c_1=nil
+c_2=nil
 n_1=nil
 e_1=nil
-s_2=nil
 s_1=nil
-_result_4=nil
-_result_2=nil
+s_2=nil
 _result_3=nil
 _result_1=nil
+_result_2=nil
+_result_4=nil
  (it=(_or(proc{(it=(seq("`"));next FAIL if it==FAIL;it)
 e_1 = ((it=(expression());next FAIL if it==FAIL;it))
 (it=(seq("`"));next FAIL if it==FAIL;it)
@@ -299,8 +299,8 @@ _result_2
 end
 def procargs2()
  a_1=nil
-_result_1=nil
 _result_2=nil
+_result_1=nil
 i_1=nil
 cls_1=nil
  (it=(_or(proc{cls_1 = ((Args))
@@ -381,8 +381,8 @@ def rule()
 name_1=nil
 locals_1=nil
 body_1=nil
-_result_1=nil
 _result_2=nil
+_result_1=nil
 s_1=nil
 bnding_1=nil
  (@locals=[];@bnding=Bnding[])
@@ -438,8 +438,8 @@ _result_2
 end
 def nr()
  s_1=nil
-_result_2=nil
 _result_1=nil
+_result_2=nil
  _result_1 = ((it=(_lookahead(true){(it=(name());next FAIL if it==FAIL;it)
 (it=(argsOpt('(',')'));next FAIL if it==FAIL;it)
 s_1 = (("="))
@@ -578,8 +578,8 @@ end
 def modifier()
  c_1=nil
 s_1=nil
-_result_2=nil
 _result_1=nil
+_result_2=nil
  (it=(_or(proc{_result_1 = ((it=(term());next FAIL if it==FAIL;it))},proc{s_1 = (("#"))
 (it=(spaces());next FAIL if it==FAIL;it)
 _result_2 = ((it=(seq(s_1));next FAIL if it==FAIL;it))
@@ -602,17 +602,17 @@ it_1=nil
 regex_1=nil
 expr_1=nil
 m_1=nil
-c_2=nil
 c_1=nil
+c_2=nil
 from_1=nil
 e_1=nil
 neg_1=nil
 append_1=nil
 one_1=nil
-_result_4=nil
-_result_1=nil
 _result_3=nil
 _result_2=nil
+_result_1=nil
+_result_4=nil
 s_1=nil
  (it=(_or(proc{s_1 = (("&"))
 (it=(spaces());next FAIL if it==FAIL;it)
