@@ -50,7 +50,7 @@ class AmethystCore
 	end
 
 	def item
-		return FAIL unless @src.respond_to?(:size) && @input<@src.size
+		return FAIL unless @input<@src.size
 		if @src.is_a? String
 			@src[@input,1]
 		else
