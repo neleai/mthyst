@@ -46,6 +46,4 @@ amethyst Amethyst < AmethystCore {
 	
 
 	token(s) = spaces seq(s)
-	
-	many1(s) = apply(s):a[] apply(s)*:a[]
 }

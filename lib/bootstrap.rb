@@ -148,22 +148,6 @@ def token(s_1)
 _result_1 = ((it=(seq(s_1));return FAIL if it==FAIL;it))
 _result_1  
 end
-def many1(s_1)
- a_1=nil
-_result_1=nil
- it=((it=(apply(s_1));return FAIL if it==FAIL;it))
- a_1||=[];_append(a_1,it)
-autovar_1 = (([]))
-while true
-autovar_2=@input;r=it=((it=(apply(s_1));break FAIL if it==FAIL;it))
- autovar_1||=[];_append(autovar_1,it)
- break FAIL if r==FAIL
- (autovar_2=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_2
-_result_1 = (it=(autovar_1)
- a_1||=[];_append(a_1,it))
-_result_1  
-end
 
 end
 
