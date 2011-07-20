@@ -17,7 +17,7 @@ amethyst AmethystTranslator < Amethyst {
 				| Many[rw('break', `trans:t` ) @o=>arg:o] -> "while true\n#{o}=@input;r=#{t}\n break FAIL if r==FAIL\n (#{o}=@input;@stop=nil;break FAIL) if @stop==true\nend;@input=#{o}"
 				| Apply[ Array[:klas :name] args:argss]  failwrap("it=_foreign(:#{ name } #{ argss!=[] ? ",#{argss}" : "" })")
 				| Apply[ :name args:argss]  failwrap("it=#{name}(#{argss})")
-				| Set[@name=>arg:name @expr=>trans:expr @append:append] -> "it=(#{expr})\n" + (append ? "#{name}||=[];_append(#{name},it)" : "#{name} = it")
+				| Set[@name=>arg:name @expr=>trans:expr @append:append] -> "#{expr}\n" + (append ? "#{name}||=[];_append(#{name},it)" : "#{name} = it")
 				| Result[@name:name @args=>args:argss @vars:vars] -> "it=#{name}.create(#{argss} {#{vars.map{|l| ":#{l[0]}=>#{varname(@@varhash,l[0],l[1])}" }*","} })"
 				| Key[@name:name] -> "it=self['#{name}']"
 				| Local[:name :number] ->"it="+ varname(@@varhash,name,number)
@@ -43,5 +43,5 @@ amethyst AmethystTranslator < Amethyst {
 				
 	rw(word,prc) = {rwo=@@returnword;@@returnword=word} apply(prc):x {@@returnword=rwo;x}
 
-	failwrap(s) = {  "(#{s};#{@@returnword} FAIL if it==FAIL;it)" }
+	failwrap(s) = {  "#{s};#{@@returnword} FAIL if it==FAIL" }
 }
