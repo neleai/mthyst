@@ -9,10 +9,10 @@ amethyst AmethystTranslator < Amethyst {
 	trans = Grammar[@name:name @parent:parent @rules=>transs:body] -> "class #{name} < #{parent}\n#{body}\nend\n"
 				| Rule[ { @@varhash=Hash.new{|h,k| h[k]={}}  } 
 								rw('return',`@name:name @args=>args:argss @body=>trans:body`) { "def #{name}(#{argss})\n #{@@varhash.select{|nam,b| (nam!="autovar") && (!@args.map{|l| l[0]}.include?(nam))}.map{|nam,b| b.map{|bi,no| "#{varname(@@varhash,nam,bi)}=nil\n"}}*""} it=nil\n#{body} \nend\n"}]
-				| Or[rw('next', `transfn*:ors`)]  failwrap("_or(#{ors*","})")
+				| Or[rw('next', `transfn*:ors`)]  failwrap("it=_or(#{ors*","})")
 				| Seq[trans*:t ] -> "#{t*"\n"} "
 				| Act[args:t @pred:pred] -> pred ?  failwrap("it=(#{t})||FAIL") : "it=(#{t})"
-  			| Lookahead[ @neg:neg rw('next',`trans:t`) ]  failwrap("_lookahead(#{!!neg}){#{t}}")
+  			| Lookahead[ @neg:neg rw('next',`trans:t`) ]  failwrap("it=_lookahead(#{!!neg}){#{t}}")
         | Comment[:c] -> ""
 				| Many[rw('break', `trans:t` ) @o=>arg:o] -> "while true\n#{o}=@input;r=#{t}\n break FAIL if r==FAIL\n (#{o}=@input;@stop=nil;break FAIL) if @stop==true\nend;@input=#{o}"
 				| Apply[ Array[:klas :name] args:argss]  failwrap("it=_foreign(:#{ name } #{ argss!=[] ? ",#{argss}" : "" })")
