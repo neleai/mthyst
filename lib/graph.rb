@@ -20,6 +20,11 @@ class Oriented_Graph
 		}
 		reach
 	end
+	def reverse
+		g=Oriented_Graph.new
+		@edges.each{|v,a| a.each{|w| g.add(w,v)}}
+		g
+	end
 	def topo_order2(v,visited,order)
 		return if visited[v]
     visited[v]=true
