@@ -4,10 +4,6 @@ def FAIL.inspect
 	"FAIL"
 end
 class AmethystCore
-	def cachestream(obj)
-		@src=obj
-		@input=0
-	end
 
   def _lookahead(neg=false)
     oldInput = @input
@@ -31,7 +27,7 @@ class AmethystCore
 	def _pass(enter,expr)
 		expr = [expr] unless enter
 		oldSrc,oldInput=@src,@input
-    cachestream(expr)
+		@src,@input=expr,0
 		r=yield
 		if eof==FAIL
 			@src,@input=oldSrc,oldInput
@@ -107,7 +103,7 @@ class AmethystCore
 
 	def parse(rule,input)
 		print self.class
-		cachestream(input)	
+		@src,@input=input,0
 		time=Time.new
 		r=self.apply(rule)
 		puts "	#{Time.new-time}"
