@@ -38,7 +38,6 @@ class AmethystCore
 	end
 		
 	def [](key)
-		return @src if key=="self"
 		@src.send(key) 
 	end
 

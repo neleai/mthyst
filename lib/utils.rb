@@ -31,6 +31,9 @@ module AmethystAST
 	def [](a)
 		ary[a]
 	end
+	def self
+		self
+	end
 	def isomorphic(that)
 		this.to_yaml==that.to_yaml
 	end
