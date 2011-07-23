@@ -1,7 +1,7 @@
 class Amethyst < AmethystCore
 def char()
- c_1=nil
-_result_1=nil
+ _result_1=nil
+c_1=nil
  it=nil
 it=anything();return FAIL if it==FAIL
 c_1 = it
@@ -11,10 +11,10 @@ _result_1 = it
 it=_result_1  
 end
 def regch(regex_1)
- c_2=nil
-c_1=nil
+ _result_1=nil
 _result_2=nil
-_result_1=nil
+c_1=nil
+c_2=nil
  it=nil
 it=anything();return FAIL if it==FAIL
 c_1 = it
@@ -31,12 +31,12 @@ _result_2 = it
 it=_result_2  
 end
 def space()
- regex_1=nil
-c_2=nil
-c_1=nil
-_result_2=nil
+ _result_1=nil
 _result_3=nil
-_result_1=nil
+_result_2=nil
+c_1=nil
+c_2=nil
+regex_1=nil
  it=nil
 it=(/[\s\t\r\n\f]/)
 regex_1 = it
@@ -59,13 +59,13 @@ _result_3 = it
 it=_result_3  
 end
 def spaces()
- regex_1=nil
-c_2=nil
-c_1=nil
-_result_2=nil
-_result_3=nil
-_result_1=nil
+ _result_1=nil
 _result_4=nil
+_result_3=nil
+_result_2=nil
+c_1=nil
+c_2=nil
+regex_1=nil
  it=nil
 it=([])
 autovar_1 = it
@@ -107,8 +107,8 @@ _result_1 = it
 it=_result_1  
 end
 def listOf(rule_1,delim_1)
- f_1=nil
-_result_1=nil
+ _result_1=nil
+f_1=nil
  it=nil
 it=_or(proc{it=apply(rule_1);next FAIL if it==FAIL
 f_1||=[];_append(f_1,it)
@@ -130,12 +130,12 @@ _result_1 = it });return FAIL if it==FAIL
 it=_result_1  
 end
 def lower()
- regex_1=nil
-c_2=nil
-c_1=nil
-_result_2=nil
+ _result_1=nil
 _result_3=nil
-_result_1=nil
+_result_2=nil
+c_1=nil
+c_2=nil
+regex_1=nil
  it=nil
 it=(/[a-z]/)
 regex_1 = it
@@ -158,12 +158,12 @@ _result_3 = it
 it=_result_3  
 end
 def digit()
- regex_1=nil
-c_2=nil
-c_1=nil
-_result_2=nil
+ _result_1=nil
 _result_3=nil
-_result_1=nil
+_result_2=nil
+c_1=nil
+c_2=nil
+regex_1=nil
  it=nil
 it=(/[0-9]/)
 regex_1 = it
@@ -186,12 +186,12 @@ _result_3 = it
 it=_result_3  
 end
 def upper()
- regex_1=nil
-c_2=nil
-c_1=nil
-_result_2=nil
-_result_1=nil
+ _result_1=nil
 _result_3=nil
+_result_2=nil
+c_1=nil
+c_2=nil
+regex_1=nil
  it=nil
 it=(/[A-Z]/)
 regex_1 = it
@@ -253,8 +253,8 @@ _result_1 = it});return FAIL if it==FAIL
 it=_result_1  
 end
 def exactly(wanted_1)
- got_1=nil
-_result_1=nil
+ _result_1=nil
+got_1=nil
  it=nil
 it=anything();return FAIL if it==FAIL
 got_1 = it
@@ -264,10 +264,10 @@ _result_1 = it
 it=_result_1  
 end
 def _false()
- got_1=nil
-wanted_1=nil
-_result_2=nil
+ _result_2=nil
 _result_1=nil
+got_1=nil
+wanted_1=nil
  it=nil
 it=(false)
 wanted_1 = it
@@ -317,10 +317,10 @@ _result_1 = it
 it=_result_1  
 end
 def _true()
- got_1=nil
-wanted_1=nil
-_result_2=nil
+ _result_2=nil
 _result_1=nil
+got_1=nil
+wanted_1=nil
  it=nil
 it=(true)
 wanted_1 = it
@@ -336,13 +336,13 @@ _result_2 = it
 it=_result_2  
 end
 def _()
- regex_1=nil
-c_2=nil
-c_1=nil
-_result_2=nil
+ _result_1=nil
 _result_3=nil
-_result_1=nil
 _result_4=nil
+_result_2=nil
+c_1=nil
+c_2=nil
+regex_1=nil
  it=nil
 it=(/[\s\t\r\n\f]/)
 regex_1 = it
@@ -369,12 +369,12 @@ _result_4 = it
 it=_result_4  
 end
 def xdigit()
- regex_1=nil
-c_2=nil
-c_1=nil
+ _result_1=nil
 _result_3=nil
 _result_2=nil
-_result_1=nil
+c_1=nil
+c_2=nil
+regex_1=nil
  it=nil
 it=(/[0-9a-fA-F]/)
 regex_1 = it

@@ -1,7 +1,7 @@
 class Amethyst < AmethystCore
 def regch(regex_1)
- c_1=nil
-_result_1=nil
+ _result_1=nil
+c_1=nil
  it=nil
 it=char();return FAIL if it==FAIL
 c_1 = it
@@ -25,8 +25,8 @@ _result_1 = it
 it=_result_1  
 end
 def char()
- c_1=nil
-_result_1=nil
+ _result_1=nil
+c_1=nil
  it=nil
 it=anything();return FAIL if it==FAIL
 c_1 = it
@@ -140,8 +140,8 @@ _result_1 = it});return FAIL if it==FAIL
 it=_result_1  
 end
 def listOf(rule_1,delim_1)
- f_1=nil
-_result_1=nil
+ _result_1=nil
+f_1=nil
  it=nil
 it=_or(proc{it=apply(rule_1);next FAIL if it==FAIL
 f_1||=[];_append(f_1,it)
@@ -163,8 +163,8 @@ _result_1 = it });return FAIL if it==FAIL
 it=_result_1  
 end
 def exactly(wanted_1)
- got_1=nil
-_result_1=nil
+ _result_1=nil
+got_1=nil
  it=nil
 it=anything();return FAIL if it==FAIL
 got_1 = it
@@ -230,9 +230,9 @@ end
 
 class AmethystParser < Amethyst
 def igrammar()
- it_1=nil
+ _result_1=nil
 a_1=nil
-_result_1=nil
+it_1=nil
  it=nil
 it=([])
 autovar_1 = it
@@ -264,10 +264,10 @@ _result_1 = it
 it=_result_1  
 end
 def grammar()
- name_1=nil
+ _result_1=nil
+name_1=nil
 parent_1=nil
 rules_1=nil
-_result_1=nil
  it=nil
 it=token("amethyst");return FAIL if it==FAIL
 it=name();return FAIL if it==FAIL
@@ -293,12 +293,12 @@ _result_1 = it
 it=_result_1  
 end
 def rule()
- args_1=nil
-name_1=nil
-locals_1=nil
-body_1=nil
-_result_1=nil
+ _result_1=nil
+args_1=nil
 bnding_1=nil
+body_1=nil
+locals_1=nil
+name_1=nil
  it=nil
 it=(@locals=[];@bnding=Bnding[])
 it=@bnding
@@ -357,16 +357,16 @@ _result_1 = it
 it=_result_1  
 end
 def prefixed()
- name_1=nil
-it_1=nil
-expr_1=nil
-m_1=nil
-from_1=nil
-e_1=nil
-neg_1=nil
+ _result_1=nil
 append_1=nil
+e_1=nil
+expr_1=nil
+from_1=nil
+it_1=nil
+m_1=nil
+name_1=nil
+neg_1=nil
 one_1=nil
-_result_1=nil
  it=nil
 it=_or(proc{it=token("&");next FAIL if it==FAIL
 it=inlineHostExpr();next FAIL if it==FAIL
@@ -421,8 +421,8 @@ _result_1 = it });return FAIL if it==FAIL
 it=_result_1  
 end
 def modifier()
- c_1=nil
-_result_1=nil
+ _result_1=nil
+c_1=nil
  it=nil
 it=_or(proc{it=term();next FAIL if it==FAIL
 _result_1 = it},proc{it=token("#");next FAIL if it==FAIL
@@ -442,12 +442,12 @@ _result_1 = it });return FAIL if it==FAIL
 it=_result_1  
 end
 def term()
- it_1=nil
-expr_1=nil
-x_1=nil
-s_1=nil
-_result_1=nil
+ _result_1=nil
 cls_1=nil
+expr_1=nil
+it_1=nil
+s_1=nil
+x_1=nil
  it=nil
 it=_or(proc{it=className();next FAIL if it==FAIL
 cls_1 = it
@@ -513,10 +513,10 @@ _result_1 = it });next FAIL if it==FAIL });return FAIL if it==FAIL
 it=_result_1  
 end
 def application()
- arg_1=nil
-_result_1=nil
-rule_1=nil
+ _result_1=nil
+arg_1=nil
 klas_1=nil
+rule_1=nil
  it=nil
 it=_or(proc{it=name();next FAIL if it==FAIL
 klas_1 = it
@@ -533,11 +533,11 @@ _result_1 = it
 it=_result_1  
 end
 def key()
- args_1=nil
-name_1=nil
+ _result_1=nil
+args_1=nil
 n_1=nil
+name_1=nil
 vars_1=nil
-_result_1=nil
  it=nil
 it=_or(proc{it=token("@");next FAIL if it==FAIL
 it=className();next FAIL if it==FAIL
@@ -566,8 +566,8 @@ _result_1 = it
 it=_result_1  
 end
 def eChar()
- c_1=nil
-_result_1=nil
+ _result_1=nil
+c_1=nil
  it=nil
 it=_or(proc{it=seq("\\");next FAIL if it==FAIL
 it=char();next FAIL if it==FAIL
@@ -590,9 +590,9 @@ _result_1 = it};next FAIL if it==FAIL };return FAIL if it==FAIL
 it=_result_1  
 end
 def addargs()
- result_1=nil
+ _result_1=nil
 name_1=nil
-_result_1=nil
+result_1=nil
  it=nil
 while true
 autovar_2=@input;r=it=clas(Args);break FAIL if it==FAIL
@@ -627,8 +627,8 @@ _result_1 = it });return FAIL if it==FAIL
 it=_result_1  
 end
 def args(o_1,c_1)
- r_1=nil
-_result_1=nil
+ _result_1=nil
+r_1=nil
  it=nil
 it=__args(o_1,c_1);return FAIL if it==FAIL
 r_1 = it
@@ -641,8 +641,8 @@ _result_1 = it};next FAIL if it==FAIL };return FAIL if it==FAIL
 it=_result_1  
 end
 def _args(o_1,c_1)
- r_1=nil
-_result_1=nil
+ _result_1=nil
+r_1=nil
  it=nil
 it=__args(o_1,c_1);return FAIL if it==FAIL
 r_1 = it
@@ -651,8 +651,8 @@ _result_1 = it
 it=_result_1  
 end
 def __args(o_1,c_1)
- r_1=nil
-_result_1=nil
+ _result_1=nil
+r_1=nil
  it=nil
 it=seq(o_1);return FAIL if it==FAIL
 it=token("");return FAIL if it==FAIL
@@ -672,10 +672,10 @@ _result_1 = it
 it=_result_1  
 end
 def rubyarg()
- n_1=nil
+ _result_1=nil
 e_1=nil
+n_1=nil
 s_1=nil
-_result_1=nil
  it=nil
 it=_or(proc{it=seq("`");next FAIL if it==FAIL
 it=expression();next FAIL if it==FAIL
@@ -732,10 +732,13 @@ it=_result_1
 end
 def procargs()
  _result_1=nil
+c_1=nil
  it=nil
 it=(@ary=[];@tmp=[])
 while true
-autovar_1=@input;r=it=_or(proc{it=seq(",");next FAIL if it==FAIL
+autovar_1=@input;r=it=_or(proc{it=anything();next FAIL if it==FAIL
+c_1 = it
+it=(c_1==',')||FAIL;next FAIL if it==FAIL
 it=(@ary<<Args[{:ary=>@tmp}];@tmp=[]) },proc{it=procargs2();next FAIL if it==FAIL});break FAIL if it==FAIL
  break FAIL if r==FAIL
  (autovar_1=@input;@stop=nil;break FAIL) if @stop==true
@@ -745,8 +748,8 @@ _result_1 = it
 it=_result_1  
 end
 def procargs2()
- a_1=nil
-_result_1=nil
+ _result_1=nil
+a_1=nil
  it=nil
 it=_or(proc{it=clas(Args);next FAIL if it==FAIL
 autovar_1 = it
@@ -782,8 +785,8 @@ _result_1 = it});return FAIL if it==FAIL
 it=_result_1  
 end
 def className()
- it_1=nil
-_result_1=nil
+ _result_1=nil
+it_1=nil
  it=nil
 it=token("");return FAIL if it==FAIL
 it=upper();return FAIL if it==FAIL
@@ -805,8 +808,8 @@ _result_1 = it
 it=_result_1  
 end
 def name()
- it_1=nil
-_result_1=nil
+ _result_1=nil
+it_1=nil
  it=nil
 it=token("");return FAIL if it==FAIL
 it=nameFirst();return FAIL if it==FAIL
@@ -879,8 +882,8 @@ end
 
 class AmethystOptimizer < Amethyst
 def itrans()
- r_1=nil
-_result_1=nil
+ _result_1=nil
+r_1=nil
  it=nil
 it=([])
 autovar_1 = it
@@ -898,23 +901,23 @@ _result_1 = it
 it=_result_1  
 end
 def trans()
- args_1=nil
-name_1=nil
+ _result_1=nil
+append_1=nil
+args_1=nil
+ary_1=nil
+body_1=nil
+enter_1=nil
 expr_1=nil
 locals_1=nil
+name_1=nil
+neg_1=nil
+o_1=nil
 parent_1=nil
-enter_1=nil
-body_1=nil
-vars_1=nil
 pred_1=nil
 rules_1=nil
-o_1=nil
 to_1=nil
-neg_1=nil
-append_1=nil
 var_1=nil
-ary_1=nil
-_result_1=nil
+vars_1=nil
  it=nil
 it=_or(proc{it=clas(Grammar);next FAIL if it==FAIL
 autovar_1 = it
@@ -1129,8 +1132,8 @@ _result_1 = it
 it=_result_1  
 end
 def args()
- a_1=nil
-_result_1=nil
+ _result_1=nil
+a_1=nil
  it=nil
 it=_or(proc{it=clas(Array);next FAIL if it==FAIL
 autovar_1 = it
@@ -1251,8 +1254,8 @@ end
 
 class Traverser < Amethyst
 def traverse_item()
- a_1=nil
-_result_1=nil
+ _result_1=nil
+a_1=nil
  it=nil
 it=_or(proc{it=visit();next FAIL if it==FAIL
 a_1 = it
@@ -1277,8 +1280,8 @@ _result_1 = it});return FAIL if it==FAIL
 it=_result_1  
 end
 def traverse()
- it_1=nil
-_result_1=nil
+ _result_1=nil
+it_1=nil
 key_1=nil
 this_1=nil
  it=nil
@@ -1342,8 +1345,8 @@ end
 
 class Analyze_Variables2 < Traverser
 def itrans()
- rules_1=nil
-_result_1=nil
+ _result_1=nil
+rules_1=nil
  it=nil
 it=([])
 autovar_1 = it
@@ -1393,8 +1396,8 @@ _result_1 = it };next FAIL if it==FAIL };return FAIL if it==FAIL
 it=_result_1  
 end
 def visit()
- a_1=nil
-_result_1=nil
+ _result_1=nil
+a_1=nil
  it=nil
 it=_or(proc{it=clas(Args);next FAIL if it==FAIL
 autovar_1 = it
@@ -1450,15 +1453,15 @@ end
 
 class Dead_Code_Detector < AmethystOptimizer
 def trans()
- v_1=nil
+ _result_1=nil
 args_1=nil
-name_1=nil
-locals_1=nil
 body_1=nil
+locals_1=nil
+name_1=nil
 reachable_1=nil
-var_1=nil
-_result_1=nil
 this_1=nil
+v_1=nil
+var_1=nil
  it=nil
 it=_or(proc{it=clas(Rule);next FAIL if it==FAIL
 autovar_1 = it
@@ -1535,9 +1538,9 @@ _result_1 = it});return FAIL if it==FAIL
 it=_result_1  
 end
 def vars_in()
- name_1=nil
-_result_1=nil
+ _result_1=nil
 ary_1=nil
+name_1=nil
  it=nil
 it=(ary_1=[])
 while true
@@ -1603,14 +1606,14 @@ end
 
 class Dead_Code_Deleter < AmethystOptimizer
 def trans()
- args_1=nil
-it_1=nil
-name_1=nil
-expr_1=nil
-locals_1=nil
-body_1=nil
+ _result_1=nil
 append_1=nil
-_result_1=nil
+args_1=nil
+body_1=nil
+expr_1=nil
+it_1=nil
+locals_1=nil
+name_1=nil
 this_1=nil
  it=nil
 it=_or(proc{it=clas(Rule);next FAIL if it==FAIL
@@ -1678,11 +1681,11 @@ end
 
 class Communize_Or < AmethystOptimizer
 def trans()
- rest_1=nil
-fst_1=nil
-first_1=nil
-_result_1=nil
+ _result_1=nil
 ary_1=nil
+first_1=nil
+fst_1=nil
+rest_1=nil
  it=nil
 it=_or(proc{it=clas(Or);next FAIL if it==FAIL
 autovar_1 = it
@@ -1727,10 +1730,10 @@ end
 
 class Move_Assignments < AmethystOptimizer
 def trans()
- name_1=nil
-expr_1=nil
+ _result_1=nil
 append_1=nil
-_result_1=nil
+expr_1=nil
+name_1=nil
  it=nil
 it=_or(proc{it=clas(Set);next FAIL if it==FAIL
 autovar_1 = it
@@ -1750,13 +1753,13 @@ _result_1 = it});return FAIL if it==FAIL
 it=_result_1  
 end
 def move(append_1,name_1)
- it_1=nil
+ _result_1=nil
+ary_1=nil
+el_1=nil
 enter_1=nil
+it_1=nil
 to_1=nil
 var_1=nil
-el_1=nil
-_result_1=nil
-ary_1=nil
  it=nil
 it=_or(proc{it=clas(Or);next FAIL if it==FAIL
 autovar_1 = it
@@ -1816,8 +1819,8 @@ def varname(vh,name,number)
 end
 class AmethystTranslator < Amethyst
 def itrans()
- r_1=nil
-_result_1=nil
+ _result_1=nil
+r_1=nil
  it=nil
 it=([])
 autovar_1 = it
@@ -1835,23 +1838,23 @@ _result_1 = it
 it=_result_1  
 end
 def trans()
- number_1=nil
-name_1=nil
-expr_1=nil
-parent_1=nil
-enter_1=nil
+ _result_1=nil
+append_1=nil
 argss_1=nil
 body_1=nil
-vars_1=nil
-pred_1=nil
-o_1=nil
-to_1=nil
+enter_1=nil
+expr_1=nil
+name_1=nil
 neg_1=nil
+number_1=nil
+o_1=nil
 ors_1=nil
-append_1=nil
-var_1=nil
-_result_1=nil
+parent_1=nil
+pred_1=nil
 t_1=nil
+to_1=nil
+var_1=nil
+vars_1=nil
  it=nil
 it=_or(proc{it=clas(Grammar);next FAIL if it==FAIL
 autovar_1 = it
@@ -1879,7 +1882,7 @@ it=_pass(false,autovar_5){it=trans();next FAIL if it==FAIL
 body_1 = it
 _result_1 = it};next FAIL if it==FAIL
 it=_result_1 });next FAIL if it==FAIL
-it=("def #{name_1}(#{argss_1})\n #{@varhash.select{|nam,b| (nam!="autovar") && (!@src.args.map{|l| l[0]}.include?(nam))}.map{|nam,b| b.map{|bi,no| "#{varname(@varhash,nam,bi)}=nil\n"}}*""} it=nil\n#{body_1} \nend\n")
+it=("def #{name_1}(#{argss_1})\n #{@varhash.select{|nam,b| (nam!="autovar") && (!@src.args.map{|l| l[0]}.include?(nam))}.map{|nam,b| b.map{|bi,no| "#{varname(@varhash,nam,bi)}=nil\n"}}.sort*""} it=nil\n#{body_1} \nend\n")
 _result_1 = it };next FAIL if it==FAIL },proc{it=clas(Or);next FAIL if it==FAIL
 autovar_6 = it
 it=_pass(true,autovar_6){it=rw('next', proc{it=([])
@@ -2054,8 +2057,8 @@ _result_1 = it
 it=_result_1  
 end
 def args()
- a_1=nil
-_result_1=nil
+ _result_1=nil
+a_1=nil
  it=nil
 it=_or(proc{it=clas(Array);next FAIL if it==FAIL
 autovar_1 = it
@@ -2085,10 +2088,10 @@ _result_1 = it });return FAIL if it==FAIL
 it=_result_1  
 end
 def arg()
- number_1=nil
-name_1=nil
+ _result_1=nil
 a_1=nil
-_result_1=nil
+name_1=nil
+number_1=nil
 t_1=nil
  it=nil
 it=_or(proc{it=clas(Args);next FAIL if it==FAIL
@@ -2144,8 +2147,8 @@ _result_1 = it});return FAIL if it==FAIL
 it=_result_1  
 end
 def rw(word_1,prc_1)
- x_1=nil
-_result_1=nil
+ _result_1=nil
+x_1=nil
  it=nil
 it=(rwo=@returnword;@returnword=word_1)
 it=apply(prc_1);return FAIL if it==FAIL

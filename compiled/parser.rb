@@ -19,12 +19,12 @@ end
 
 class AmethystParser < Amethyst
 def number()
- regex_1=nil
-c_2=nil
-c_1=nil
-_result_2=nil
+ _result_1=nil
 _result_3=nil
-_result_1=nil
+_result_2=nil
+c_1=nil
+c_2=nil
+regex_1=nil
  it=nil
 it=([])
 autovar_1 = it
@@ -89,9 +89,9 @@ _result_1 = it});return FAIL if it==FAIL
 it=_result_1  
 end
 def name()
- it_1=nil
+ _result_1=nil
 _result_2=nil
-_result_1=nil
+it_1=nil
 s_1=nil
  it=nil
 it=("")
@@ -119,8 +119,8 @@ _result_2 = it
 it=_result_2  
 end
 def _args(o_1,c_1)
- r_1=nil
-_result_1=nil
+ _result_1=nil
+r_1=nil
  it=nil
 it=__args(o_1,c_1);return FAIL if it==FAIL
 r_1 = it
@@ -129,10 +129,10 @@ _result_1 = it
 it=_result_1  
 end
 def eChar()
- c_1=nil
-c_2=nil
-_result_1=nil
+ _result_1=nil
 _result_2=nil
+c_1=nil
+c_2=nil
  it=nil
 it=_or(proc{it=seq("\\");next FAIL if it==FAIL
 it=anything();next FAIL if it==FAIL
@@ -158,11 +158,11 @@ _result_2 = it });return FAIL if it==FAIL
 it=_result_2  
 end
 def choice()
- delim_1=nil
-f_1=nil
-ary_1=nil
+ _result_1=nil
 _result_2=nil
-_result_1=nil
+ary_1=nil
+delim_1=nil
+f_1=nil
 rule_1=nil
  it=nil
 it=(proc{it=token("|");return FAIL if it==FAIL
@@ -213,9 +213,9 @@ _result_1 = it });return FAIL if it==FAIL
 it=_result_1  
 end
 def className()
- it_1=nil
+ _result_2=nil
 _result_1=nil
-_result_2=nil
+it_1=nil
 s_1=nil
  it=nil
 it=("")
@@ -243,13 +243,13 @@ _result_2 = it
 it=_result_2  
 end
 def key()
- args_1=nil
-name_1=nil
-n_1=nil
-vars_1=nil
-_result_1=nil
+ _result_1=nil
 _result_2=nil
+args_1=nil
+n_1=nil
+name_1=nil
 s_1=nil
+vars_1=nil
  it=nil
 it=_or(proc{it=("@")
 s_1 = it
@@ -280,17 +280,17 @@ _result_2 = it });return FAIL if it==FAIL
 it=_result_2  
 end
 def rubyarg()
- regex_1=nil
-c_2=nil
-c_1=nil
-n_1=nil
-e_1=nil
-s_2=nil
-s_1=nil
-_result_4=nil
-_result_3=nil
-_result_2=nil
+ _result_3=nil
 _result_1=nil
+_result_2=nil
+_result_4=nil
+c_1=nil
+c_2=nil
+e_1=nil
+n_1=nil
+regex_1=nil
+s_1=nil
+s_2=nil
  it=nil
 it=_or(proc{it=seq("`");next FAIL if it==FAIL
 it=expression();next FAIL if it==FAIL
@@ -385,9 +385,9 @@ _result_1 = it });return FAIL if it==FAIL
 it=_result_1  
 end
 def __args(o_1,c_1)
- r_1=nil
+ _result_2=nil
 _result_1=nil
-_result_2=nil
+r_1=nil
 s_1=nil
  it=nil
 it=seq(o_1);return FAIL if it==FAIL
@@ -413,11 +413,11 @@ _result_2 = it
 it=_result_2  
 end
 def procargs2()
- a_1=nil
+ _result_1=nil
 _result_2=nil
-_result_1=nil
-i_1=nil
+a_1=nil
 cls_1=nil
+i_1=nil
  it=nil
 it=_or(proc{it=(Args)
 cls_1 = it
@@ -447,10 +447,13 @@ it=_result_2
 end
 def procargs()
  _result_1=nil
+c_1=nil
  it=nil
 it=(@ary=[];@tmp=[])
 while true
-autovar_1=@input;r=it=_or(proc{it=seq(",");next FAIL if it==FAIL
+autovar_1=@input;r=it=_or(proc{it=anything();next FAIL if it==FAIL
+c_1 = it
+it=(c_1==',')||FAIL;next FAIL if it==FAIL
 it=(@ary<<Args[{:ary=>@tmp}];@tmp=[]) },proc{it=procargs2();next FAIL if it==FAIL});break FAIL if it==FAIL
  break FAIL if r==FAIL
  (autovar_1=@input;@stop=nil;break FAIL) if @stop==true
@@ -460,8 +463,8 @@ _result_1 = it
 it=_result_1  
 end
 def args(o_1,c_1)
- r_1=nil
-_result_1=nil
+ _result_1=nil
+r_1=nil
  it=nil
 it=__args(o_1,c_1);return FAIL if it==FAIL
 r_1 = it
@@ -481,12 +484,12 @@ _result_1 = it
 it=_result_1  
 end
 def addargs()
- result_1=nil
-name_1=nil
-_result_2=nil
+ _result_2=nil
 _result_1=nil
-i_1=nil
 cls_1=nil
+i_1=nil
+name_1=nil
+result_1=nil
  it=nil
 while true
 autovar_3=@input;r=it=(Args)
@@ -523,14 +526,14 @@ _result_1 = it};next FAIL if it==FAIL };return FAIL if it==FAIL
 it=_result_1  
 end
 def rule()
- args_1=nil
-name_1=nil
-locals_1=nil
-body_1=nil
+ _result_1=nil
 _result_2=nil
-_result_1=nil
-s_1=nil
+args_1=nil
 bnding_1=nil
+body_1=nil
+locals_1=nil
+name_1=nil
+s_1=nil
  it=nil
 it=(@locals=[];@bnding=Bnding[])
 it=@bnding
@@ -556,11 +559,11 @@ _result_2 = it
 it=_result_2  
 end
 def grammar()
- name_1=nil
+ _result_1=nil
+_result_2=nil
+name_1=nil
 parent_1=nil
 rules_1=nil
-_result_2=nil
-_result_1=nil
 s_1=nil
  it=nil
 it=("amethyst")
@@ -607,9 +610,9 @@ _result_2 = it
 it=_result_2  
 end
 def nr()
- s_1=nil
-_result_1=nil
+ _result_1=nil
 _result_2=nil
+s_1=nil
  it=nil
 it=_lookahead(true){it=name();next FAIL if it==FAIL
 it=argsOpt('(',')');next FAIL if it==FAIL
@@ -630,10 +633,10 @@ _result_1 = it
 it=_result_1  
 end
 def application()
- arg_1=nil
-_result_1=nil
-rule_1=nil
+ _result_1=nil
+arg_1=nil
 klas_1=nil
+rule_1=nil
  it=nil
 it=_or(proc{it=name();next FAIL if it==FAIL
 klas_1 = it
@@ -673,16 +676,16 @@ _result_1 = it};next FAIL if it==FAIL };return FAIL if it==FAIL
 it=_result_1  
 end
 def term()
- it_1=nil
-expr_1=nil
-x_1=nil
-ors_1=nil
-s_1=nil
-s_2=nil
+ _result_1=nil
 _result_3=nil
 _result_2=nil
-_result_1=nil
 cls_1=nil
+expr_1=nil
+it_1=nil
+ors_1=nil
+s_2=nil
+s_1=nil
+x_1=nil
  it=nil
 it=_or(proc{it=className();next FAIL if it==FAIL
 cls_1 = it
@@ -809,10 +812,10 @@ _result_1 = it });next FAIL if it==FAIL });return FAIL if it==FAIL
 it=_result_1  
 end
 def modifier()
- c_1=nil
-s_1=nil
-_result_2=nil
+ _result_2=nil
 _result_1=nil
+c_1=nil
+s_1=nil
  it=nil
 it=_or(proc{it=term();next FAIL if it==FAIL
 _result_1 = it},proc{it=("#")
@@ -837,22 +840,22 @@ _result_1 = it });return FAIL if it==FAIL
 it=_result_1  
 end
 def prefixed()
- name_1=nil
-it_1=nil
-regex_1=nil
-expr_1=nil
-m_1=nil
-c_2=nil
-c_1=nil
-from_1=nil
-e_1=nil
-neg_1=nil
-append_1=nil
-one_1=nil
-_result_4=nil
+ _result_3=nil
 _result_2=nil
-_result_3=nil
 _result_1=nil
+_result_4=nil
+append_1=nil
+c_1=nil
+c_2=nil
+e_1=nil
+expr_1=nil
+from_1=nil
+it_1=nil
+m_1=nil
+name_1=nil
+neg_1=nil
+one_1=nil
+regex_1=nil
 s_1=nil
  it=nil
 it=_or(proc{it=("&")
@@ -1025,9 +1028,9 @@ _result_1 = it
 it=_result_1  
 end
 def igrammar()
- it_1=nil
+ _result_1=nil
 a_1=nil
-_result_1=nil
+it_1=nil
  it=nil
 it=([])
 autovar_1 = it

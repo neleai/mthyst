@@ -98,7 +98,7 @@ amethyst AmethystParser < Amethyst{
 					 | <^`{}()'"\[\]>
 
 	procargs = {@@ary=[];@@tmp=[]}
-						 ( ',' {@@ary<<Args[{:ary=>@@tmp}];@@tmp=[]}
+						 ( .:c &{c==','} {@@ary<<Args[{:ary=>@@tmp}];@@tmp=[]}
 							 | procargs2
 						 )*
 						 {@@ary}
