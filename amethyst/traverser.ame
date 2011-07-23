@@ -4,17 +4,17 @@ amethyst Traverser {
 											| AmethystAST[ traverse ]
 											| .
 	traverse = .*
-        	@this:this
-					{(@this.instance_variables).map{|v| [v,@this.instance_variable_get(v)] }}=>[
+        	@self:this
+					{(@self.instance_variables).map{|v| [v,@self.instance_variable_get(v)] }}=>[
 			  		[ :key  traverse_item:{@@x; this.instance_variable_set(key,it)} ]* 
 					]
-					@this
+					@self
 }
 
 
 amethyst Seq_Or_Optimizer < Traverser{
 	root = traverse
 	
-	visit = Seq[ traverse {@this.ary=@ary.map{|i| (i.is_a?(Seq)) ? i.ary : i}.flatten.select{|e| !(e.is_a?(Act) && e.ary.size==0)}} {(@ary.size==1) ? @ary[0] : @this} ]
-				| Or[  traverse {@this.ary=@ary.map{|i| (i.is_a?(Or )) ? i.ary : i}.flatten.select{|e| !(e.is_a?(Act) && e.ary.size==0)}} {(@ary.size==1) ? @ary[0] : @this} ]
+	visit = Seq[ traverse {@self.ary=@ary.map{|i| (i.is_a?(Seq)) ? i.ary : i}.flatten.select{|e| !(e.is_a?(Act) && e.ary.size==0)}} {(@ary.size==1) ? @ary[0] : @self} ]
+				| Or[  traverse {@self.ary=@ary.map{|i| (i.is_a?(Or )) ? i.ary : i}.flatten.select{|e| !(e.is_a?(Act) && e.ary.size==0)}} {(@ary.size==1) ? @ary[0] : @self} ]
 }

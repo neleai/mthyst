@@ -1,5 +1,5 @@
 amethyst Dead_Code_Detector2 < Traverser {
-	root = @this=>Rule[{@@edges=Oriented_Graph.new ; @@marked=[]} {@@bnding=@bnding} traverse {@@edges.reachable(@@marked)}:reachable {@reachable=reachable} @this]
+	root = @self=>Rule[{@@edges=Oriented_Graph.new ; @@marked=[]} {@@bnding=@bnding} traverse {@@edges.reachable(@@marked)}:reachable {@reachable=reachable} @self]
 	
 	visit = Apply[:name vars_in:var{@@marked+=var} traverse]
 				| Pass[@var=>vars_in:var {@@marked+=var} traverse]
@@ -10,25 +10,25 @@ amethyst Dead_Code_Detector2 < Traverser {
 				| Result[@vars=>[vars_in]:var traverse:this] -> var.each{|w| @@edges.add(this,w) } ; this
 				
 				vars_in={ary=[]}
-								( Global[ @this:ary[]  {@@marked<<@this} .*]								
-								| Act[ @this:ary[] .*]
-                | Key[ @this:ary[]    {@@marked<<@this} .*]
-								| Result[ @this:ary[] ]
+								( Global[ @self:ary[]  {@@marked<<@self} .*]								
+								| Act[ @self:ary[] .*]
+                | Key[ @self:ary[]    {@@marked<<@self} .*]
+								| Result[ @self:ary[] ]
 								| Strin[ vars_in:ary[] ]
 								| Args[ vars_in:ary[] ]
 								| Set[ @name=>vars_in:ary[] ]
-								| Local[:name {@@marked<<@this if name=="_result"} @this:ary[] ]
+								| Local[:name {@@marked<<@self if name=="_result"} @self:ary[] ]
 								| anything
 								)* -> ary
 }
 
 amethyst Dead_Code_Deleter2 < Traverser{
-		root = @this=>Rule[ @reachable:{@@reachable=it} traverse {@reachable=nil} @this]
+		root = @self=>Rule[ @reachable:{@@reachable=it} traverse {@reachable=nil} @self]
 
-		visit = Act[@this:this .*] -> @@reachable[this] ? this : Act[]
-					| Set[@name:name traverse @expr:expr @this:this] -> @@reachable[name] ? this : expr
-					| Result[@this:this] ->@@reachable[this] ? this : Act[]
-          | Local[.* @this:this] ->@@reachable[this] ? this : Act[]
+		visit = Act[@self:this .*] -> @@reachable[this] ? this : Act[]
+					| Set[@name:name traverse @expr:expr @self:this] -> @@reachable[name] ? this : expr
+					| Result[@self:this] ->@@reachable[this] ? this : Act[]
+          | Local[.* @self:this] ->@@reachable[this] ? this : Act[]
 }
 
 amethyst Constant_Propagator2 < Traverser {
@@ -62,7 +62,7 @@ amethyst Communize_Or3 < Traverser {
 							}
 							com<<last
 							@ary=com
-							@this
+							@self
 					} ]
 }
 

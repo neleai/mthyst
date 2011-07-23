@@ -1,5 +1,5 @@
 amethyst AmethystRBTranslator < Traverser{
-	root = Grammar[  {@@rbcode="require '#{@name}'\nclass #{@name}\n";@@rbno=0} traverse  {@rbcode=@@rbcode+"\nend";@rbno=@@rbno} @this]
+	root = Grammar[  {@@rbcode="require '#{@name}'\nclass #{@name}\n";@@rbno=0} traverse  {@rbcode=@@rbcode+"\nend";@rbno=@@rbno} @self]
 
 	visit = Apply[:name  .*:{@ary= [name]+it.map{|a| a.is_a?(String) ? Act[a] : a }} traverse]
 				| Act[rbtrans:a {@@rbcode<<"def callback#{@@rbno}\n #{a}\nend\n"; @actno=@@rbno;@@rbno+=1 }   traverse]

@@ -1,11 +1,11 @@
 amethyst Analyze_Variables2 < Traverser {
-	itrans =   (Grammar[ @rules=>[ Rule[root]*:rules ] {@rules=rules} @this] | .)*
-  root = @this=>Rule[  {@@variables=Hash.new{|k,v| k[v]=v} ;(@locals+@args).each{|v| @@variables[v[0]]=v}} {@@locals=@locals} traverse 
-				{@body=Seq[{:ary=>[@body] }];@locals=nil} @this]
+	itrans =   (Grammar[ @rules=>[ Rule[root]*:rules ] {@rules=rules} @self] | .)*
+  root = @self=>Rule[  {@@variables=Hash.new{|k,v| k[v]=v} ;(@locals+@args).each{|v| @@variables[v[0]]=v}} {@@locals=@locals} traverse 
+				{@body=Seq[{:ary=>[@body] }];@locals=nil} @self]
 
-	visit = Args[ traverse {@ary.map{|a| @@variables[a] }}=>[flat:a]  {@ary=connectstring(a.flatten)}  {(@ary.size==1&&(@ary[0].is_a?(Local)||@ary[0].is_a?(Global)||@ary[0].is_a?(Key))) ? @ary[0] : @this}]
+	visit = Args[ traverse {@ary.map{|a| @@variables[a] }}=>[flat:a]  {@ary=connectstring(a.flatten)}  {(@ary.size==1&&(@ary[0].is_a?(Local)||@ary[0].is_a?(Global)||@ary[0].is_a?(Key))) ? @ary[0] : @self}]
 				| Act[ traverse @ary=>[( Local | Key | Global)] ]
-				| Result[ {@vars=@@locals.select{|a| @vars.include? a[0].to_sym}.uniq} @this]
+				| Result[ {@vars=@@locals.select{|a| @vars.include? a[0].to_sym}.uniq} @self]
 
 	flat= (Args[flat] | Strin[flat] |	. )*
 }

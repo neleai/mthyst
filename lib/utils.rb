@@ -34,9 +34,6 @@ module AmethystAST
 	def isomorphic(that)
 		this.to_yaml==that.to_yaml
 	end
-	def this
-		self
-	end
 	def inspect
 		attrs=self.class.instance_variable_get(:@attrs)-[:ary]
 		"#{self.class}[#{(ary.map{|a| a.inspect}+(attrs.select{|v| send(v)!=nil}.size>0 ? ["{#{(attrs).select{|v| send(v)!=nil}.map{|v| ":#{v}=>#{send(v).inspect}" }*', '}}"]:[]) )*"," }]"

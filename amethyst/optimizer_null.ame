@@ -17,9 +17,9 @@ amethyst AmethystOptimizer < Amethyst {
 				| Pass[ @to=>trans:to @var=>arg:var @enter:enter] @Pass
 				| Cut[] @Cut
 				| Stop[] @Stop
-				| Local[ .* @this]
-				| Global[ .* @this]
-				| Key[ .* @this]
+				| Local[ .* @self]
+				| Global[ .* @self]
+				| Key[ .* @self]
 
 	transfn = trans 
 	

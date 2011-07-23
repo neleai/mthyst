@@ -1,13 +1,13 @@
 amethyst Renamer2 < Traverser {
 	root = Rule[{@@newvars={}} traverse]
 	
-	visit = Local[ :name @this:this ]  -> @@newvars[this] ? @@newvars[this] : ($av+=1; @@newvars[this]=_Local(name,$av) ;@@newvars[this] )
+	visit = Local[ :name @self:this ]  -> @@newvars[this] ? @@newvars[this] : ($av+=1; @@newvars[this]=_Local(name,$av) ;@@newvars[this] )
 }
 
 amethyst DetectCalls < Traverser {
 	root = Rule[{@@calls={}} traverse {@@calls} ]
 	
-	visit = Apply[:name .*:args {@@calls[name]=true } @this]
+	visit = Apply[:name .*:args {@@calls[name]=true } @self]
 }
 
 amethyst Inliner2 < Traverser {
