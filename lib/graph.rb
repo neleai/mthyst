@@ -1,5 +1,6 @@
 Top=Object.new
 class Oriented_Graph
+	attr_accessor :edges
 	def initialize
 		@edges=Hash.new{|h,k| h[k]=[]}
 	end
@@ -30,33 +31,5 @@ class Oriented_Graph
 		r={}
 			@edges.clone.each{|v,a| topo_order2(v,r,o)}
 		o
-	end
-	def constant_propagation(consts)
-		cnst={}
-		consts.each{|c| cnst[c]=c}
-		changed=true
-		while changed
-			changed=false
-			@edges.each{|v,ary|
-				if !consts[v]
-					ary.each{|c| 
-						if consts[c]
-							consts[v]=consts[c] 
-							changed=true
-						end
-					}
-				end
-			}
-			@edges.each{|v,ary|
-        if consts[v]
-          ary.each{|c| 
-            if consts[c]!=consts[v]
-              consts[v]=Top
-              changed=true
-            end
-          }
-        end
-			}
-		end
 	end
 end
