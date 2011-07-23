@@ -1,3 +1,5 @@
+amethyst Detect_Implicit_Variables < Traverser {
+}
 amethyst Add_Implicit_Variables < Traverser {
 	root = .:@@name .:@@many Rule[ traverse ]
 	visit =		Apply[ :name traverse &{@@name[name]} {Set[{:name=>@@name[name],:expr=>@this,:append=>@@many[name]}]}]
