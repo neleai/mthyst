@@ -75,16 +75,11 @@ class AmethystCore
 	end
 
   def seq(str)
-		if @src.is_a? String
-			if str==@src[@input,str.size]
-				@input+=str.size
-				return str
-			else
-				return FAIL
-			end
+		if str==@src[@input,str.size]
+			@input+=str.size
+			return str
 		else
-			s=anything
-			return s==str ? str : FAIL
+			return FAIL
 		end
   end
 
