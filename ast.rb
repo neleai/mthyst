@@ -24,7 +24,8 @@ makeclasses(Object,
 		:Cut,
 		:Stop,
 		[:Variable,:bind,:global,:key],
-		:Bnding
+		:Bnding,
+		[:Phi,:merges,:result]
 )
 class <<Variable
 	def [](name,bind)
