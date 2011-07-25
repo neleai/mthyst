@@ -6,7 +6,7 @@ amethyst AmethystTranslator < Amethyst {
 	
 	itrans =  (char | trans)*:r  -> r*""
 	
-	trans = Grammar[@name:name @parent:parent @rules=>transs:body] -> "class #{name} < #{parent}\n#{body}\nend\n"
+	trans = Grammar[@name:name @parent:parent @rules=>transs:body] -> "class #{name} < #{parent}\n#{body.sort}\nend\n"
 				| Rule[ { @@varhash=Hash.new{|h,k| h[k]={}}  } 
 								rw('return',`@name:name @args=>args:argss @body=>trans:body`) { "def #{name}(#{argss})\n #{@@varhash.select{|nam,b| (nam!="autovar") && (!@args.map{|l| l[0]}.include?(nam))}.map{|nam,b| b.map{|bi,no| "#{varname(@@varhash,nam,bi)}=nil\n"}}.sort*""} it=nil\n#{body} \nend\n"}]
 				| Or[rw('next', `transfn*:ors`)]  failwrap("it=_or(#{ors*","})")
@@ -18,7 +18,7 @@ amethyst AmethystTranslator < Amethyst {
 				| Apply[ Array[:klas :name] args:argss]  failwrap("it=_foreign(:#{ name } #{ argss!=[] ? ",#{argss}" : "" })")
 				| Apply[ :name args:argss]  failwrap("it=#{name}(#{argss})")
 				| Set[@name=>arg:name @expr=>trans:expr @append:append] -> "#{expr}\n" + (append ? "#{name}||=[];_append(#{name},it)" : "#{name} = it")
-				| Result[@name:name @args=>args:argss @vars:vars] -> "it=#{name}.create(#{argss} {#{vars.map{|l| ":#{l[0]}=>#{varname(@@varhash,l[0],l[1])}" }*","} })"
+				| Result[@name:name @args=>args:argss @vars:vars] -> "it=#{name}.create(#{argss} {#{vars.map{|l| ":#{l[0]}=>#{varname(@@varhash,l[0],l[1])}" }.sort*","} })"
 				| Key[@name:name] -> "it=self['#{name}']"
 				| Local[:name :number] ->"it="+ varname(@@varhash,name,number)
 				| Global[:name] -> "it=@#{name}"

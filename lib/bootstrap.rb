@@ -1,26 +1,36 @@
 class Amethyst < AmethystCore
-def regch(regex_1)
+def _()
  _result_1=nil
-c_1=nil
  it=nil
-it=char();return FAIL if it==FAIL
-c_1 = it
-it=(regex_1.match(c_1))||FAIL;return FAIL if it==FAIL
-it=c_1
+it=space();return FAIL if it==FAIL
 _result_1 = it
 it=_result_1  
 end
-def eof()
+def _false()
  _result_1=nil
  it=nil
-it=_lookahead(true){it=anything();next FAIL if it==FAIL};return FAIL if it==FAIL
+it=exactly(false);return FAIL if it==FAIL
 _result_1 = it
 it=_result_1  
 end
-def empty()
+def _true()
  _result_1=nil
  it=nil
-it=(nil)
+it=exactly(true);return FAIL if it==FAIL
+_result_1 = it
+it=_result_1  
+end
+def alnum()
+ _result_1=nil
+ it=nil
+it=letterOrDigit();return FAIL if it==FAIL
+_result_1 = it
+it=_result_1  
+end
+def alpha()
+ _result_1=nil
+ it=nil
+it=letter();return FAIL if it==FAIL
 _result_1 = it
 it=_result_1  
 end
@@ -35,41 +45,14 @@ it=c_1
 _result_1 = it
 it=_result_1  
 end
-def endline()
+def clas(cls_1)
  _result_1=nil
+i_1=nil
  it=nil
-it=_or(proc{it=seq("\r\n");next FAIL if it==FAIL
-_result_1 = it},proc{it=seq("\r");next FAIL if it==FAIL
-_result_1 = it},proc{it=seq("\n");next FAIL if it==FAIL
-_result_1 = it});return FAIL if it==FAIL
-it=_result_1  
-end
-def space()
- _result_1=nil
- it=nil
-it=regch(/[\s\t\r\n\f]/);return FAIL if it==FAIL
-_result_1 = it
-it=_result_1  
-end
-def spaces()
- _result_1=nil
- it=nil
-it=([])
-autovar_1 = it
-while true
-autovar_2=@input;r=it=space();break FAIL if it==FAIL
-autovar_1||=[];_append(autovar_1,it)
- break FAIL if r==FAIL
- (autovar_2=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_2
-it=autovar_1
-_result_1 = it
-it=_result_1  
-end
-def _()
- _result_1=nil
- it=nil
-it=space();return FAIL if it==FAIL
+it=anything();return FAIL if it==FAIL
+i_1 = it
+it=(i_1.is_a?(cls_1))||FAIL;return FAIL if it==FAIL
+it=i_1
 _result_1 = it
 it=_result_1  
 end
@@ -80,17 +63,37 @@ it=regch(/[0-9]/);return FAIL if it==FAIL
 _result_1 = it
 it=_result_1  
 end
-def lower()
+def empty()
  _result_1=nil
  it=nil
-it=regch(/[a-z]/);return FAIL if it==FAIL
+it=(nil)
 _result_1 = it
 it=_result_1  
 end
-def upper()
+def endline()
  _result_1=nil
  it=nil
-it=regch(/[A-Z]/);return FAIL if it==FAIL
+it=_or(proc{it=seq("\r\n");next FAIL if it==FAIL
+_result_1 = it},proc{it=seq("\r");next FAIL if it==FAIL
+_result_1 = it},proc{it=seq("\n");next FAIL if it==FAIL
+_result_1 = it});return FAIL if it==FAIL
+it=_result_1  
+end
+def eof()
+ _result_1=nil
+ it=nil
+it=_lookahead(true){it=anything();next FAIL if it==FAIL};return FAIL if it==FAIL
+_result_1 = it
+it=_result_1  
+end
+def exactly(wanted_1)
+ _result_1=nil
+got_1=nil
+ it=nil
+it=anything();return FAIL if it==FAIL
+got_1 = it
+it=(wanted_1 == got_1)||FAIL;return FAIL if it==FAIL
+it=wanted_1
 _result_1 = it
 it=_result_1  
 end
@@ -107,35 +110,6 @@ def letterOrDigit()
  it=nil
 it=_or(proc{it=letter();next FAIL if it==FAIL
 _result_1 = it},proc{it=digit();next FAIL if it==FAIL
-_result_1 = it});return FAIL if it==FAIL
-it=_result_1  
-end
-def alpha()
- _result_1=nil
- it=nil
-it=letter();return FAIL if it==FAIL
-_result_1 = it
-it=_result_1  
-end
-def alnum()
- _result_1=nil
- it=nil
-it=letterOrDigit();return FAIL if it==FAIL
-_result_1 = it
-it=_result_1  
-end
-def xdigit()
- _result_1=nil
- it=nil
-it=regch(/[0-9a-fA-F]/);return FAIL if it==FAIL
-_result_1 = it
-it=_result_1  
-end
-def word()
- _result_1=nil
- it=nil
-it=_or(proc{it=alpha();next FAIL if it==FAIL
-_result_1 = it},proc{it=seq("_");next FAIL if it==FAIL
 _result_1 = it});return FAIL if it==FAIL
 it=_result_1  
 end
@@ -162,39 +136,43 @@ it=([])
 _result_1 = it });return FAIL if it==FAIL
 it=_result_1  
 end
-def exactly(wanted_1)
+def lower()
  _result_1=nil
-got_1=nil
  it=nil
-it=anything();return FAIL if it==FAIL
-got_1 = it
-it=(wanted_1 == got_1)||FAIL;return FAIL if it==FAIL
-it=wanted_1
+it=regch(/[a-z]/);return FAIL if it==FAIL
 _result_1 = it
 it=_result_1  
 end
-def _true()
+def regch(regex_1)
  _result_1=nil
+c_1=nil
  it=nil
-it=exactly(true);return FAIL if it==FAIL
+it=char();return FAIL if it==FAIL
+c_1 = it
+it=(regex_1.match(c_1))||FAIL;return FAIL if it==FAIL
+it=c_1
 _result_1 = it
 it=_result_1  
 end
-def _false()
+def space()
  _result_1=nil
  it=nil
-it=exactly(false);return FAIL if it==FAIL
+it=regch(/[\s\t\r\n\f]/);return FAIL if it==FAIL
 _result_1 = it
 it=_result_1  
 end
-def clas(cls_1)
+def spaces()
  _result_1=nil
-i_1=nil
  it=nil
-it=anything();return FAIL if it==FAIL
-i_1 = it
-it=(i_1.is_a?(cls_1))||FAIL;return FAIL if it==FAIL
-it=i_1
+it=([])
+autovar_1 = it
+while true
+autovar_2=@input;r=it=space();break FAIL if it==FAIL
+autovar_1||=[];_append(autovar_1,it)
+ break FAIL if r==FAIL
+ (autovar_2=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_2
+it=autovar_1
 _result_1 = it
 it=_result_1  
 end
@@ -203,6 +181,28 @@ def token(s_1)
  it=nil
 it=spaces();return FAIL if it==FAIL
 it=seq(s_1);return FAIL if it==FAIL
+_result_1 = it
+it=_result_1  
+end
+def upper()
+ _result_1=nil
+ it=nil
+it=regch(/[A-Z]/);return FAIL if it==FAIL
+_result_1 = it
+it=_result_1  
+end
+def word()
+ _result_1=nil
+ it=nil
+it=_or(proc{it=alpha();next FAIL if it==FAIL
+_result_1 = it},proc{it=seq("_");next FAIL if it==FAIL
+_result_1 = it});return FAIL if it==FAIL
+it=_result_1  
+end
+def xdigit()
+ _result_1=nil
+ it=nil
+it=regch(/[0-9a-fA-F]/);return FAIL if it==FAIL
 _result_1 = it
 it=_result_1  
 end
@@ -229,6 +229,213 @@ def connectstring(ary)
 end
 
 class AmethystParser < Amethyst
+def __args(o_1,c_1)
+ _result_1=nil
+r_1=nil
+ it=nil
+it=seq(o_1);return FAIL if it==FAIL
+it=token("");return FAIL if it==FAIL
+it=([])
+autovar_1 = it
+while true
+autovar_2=@input;r=it=rubyarg();break FAIL if it==FAIL
+autovar_1||=[];_append(autovar_1,it)
+ break FAIL if r==FAIL
+ (autovar_2=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_2
+it=autovar_1
+r_1 = it
+it=seq(c_1);return FAIL if it==FAIL
+it=r_1
+_result_1 = it
+it=_result_1  
+end
+def _args(o_1,c_1)
+ _result_1=nil
+r_1=nil
+ it=nil
+it=__args(o_1,c_1);return FAIL if it==FAIL
+r_1 = it
+it=(Args[{:ary=>([o_1]+r_1+[c_1])}])
+_result_1 = it
+it=_result_1  
+end
+def addargs()
+ _result_1=nil
+name_1=nil
+result_1=nil
+ it=nil
+while true
+autovar_2=@input;r=it=clas(Args);break FAIL if it==FAIL
+autovar_1 = it
+it=_pass(true,autovar_1){it=anything();next FAIL if it==FAIL
+name_1 = it
+it=(_Local(name_1) )
+result_1||=[];_append(result_1,it) };break FAIL if it==FAIL 
+ break FAIL if r==FAIL
+ (autovar_2=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_2
+it=(result_1 || [])
+_result_1 = it
+it=_result_1  
+end
+def application()
+ _result_1=nil
+arg_1=nil
+klas_1=nil
+rule_1=nil
+ it=nil
+it=_or(proc{it=name();next FAIL if it==FAIL
+klas_1 = it
+it=seq("::");next FAIL if it==FAIL
+it=name();next FAIL if it==FAIL
+rule_1 = it
+it=([klas_1,rule_1])
+rule_1 = it },proc{it=name();next FAIL if it==FAIL
+rule_1 = it});return FAIL if it==FAIL
+it=argsOpt('(',')');return FAIL if it==FAIL
+arg_1 = it
+it=(Apply[rule_1,arg_1])
+_result_1 = it
+it=_result_1  
+end
+def args(o_1,c_1)
+ _result_1=nil
+r_1=nil
+ it=nil
+it=__args(o_1,c_1);return FAIL if it==FAIL
+r_1 = it
+it=(r_1+[','])
+autovar_1 = it
+it=_pass(false,autovar_1){it=anything();next FAIL if it==FAIL
+autovar_2 = it
+it=_pass(true,autovar_2){it=procargs();next FAIL if it==FAIL
+_result_1 = it};next FAIL if it==FAIL };return FAIL if it==FAIL
+it=_result_1  
+end
+def argsOpt(o_1,c_1)
+ _result_1=nil
+ it=nil
+it=_or(proc{it=args(o_1,c_1);next FAIL if it==FAIL
+_result_1 = it},proc{it=empty();next FAIL if it==FAIL
+it=([])
+_result_1 = it });return FAIL if it==FAIL
+it=_result_1  
+end
+def atomicHostExpr()
+ _result_1=nil
+s_1=nil
+ it=nil
+it=([])
+autovar_1 = it
+while true
+autovar_2=@input;r=it=_lookahead(true){it=endline();next FAIL if it==FAIL};break FAIL if it==FAIL
+it=anything();break FAIL if it==FAIL
+autovar_1||=[];_append(autovar_1,it) 
+ break FAIL if r==FAIL
+ (autovar_2=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_2
+it=autovar_1
+s_1 = it
+it=("{#{s_1*""}}")
+autovar_3 = it
+it=_pass(false,autovar_3){it=anything();next FAIL if it==FAIL
+autovar_4 = it
+it=_pass(true,autovar_4){it=inlineHostExpr();next FAIL if it==FAIL
+_result_1 = it};next FAIL if it==FAIL };return FAIL if it==FAIL
+it=_result_1  
+end
+def choice()
+ _result_1=nil
+ary_1=nil
+ it=nil
+it=listOf('sequence',proc{it=token("|");return FAIL if it==FAIL
+_result_1 = it
+it=_result_1 });return FAIL if it==FAIL
+ary_1 = it
+it=Or.create( {:ary=>ary_1 })
+_result_1 = it
+it=_result_1  
+end
+def className()
+ _result_1=nil
+it_1=nil
+ it=nil
+it=token("");return FAIL if it==FAIL
+it=upper();return FAIL if it==FAIL
+autovar_1||=[];_append(autovar_1,it)
+it=([])
+autovar_2 = it
+while true
+autovar_3=@input;r=it=nameRest();break FAIL if it==FAIL
+autovar_2||=[];_append(autovar_2,it)
+ break FAIL if r==FAIL
+ (autovar_3=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_3
+it=autovar_2
+autovar_1||=[];_append(autovar_1,it)
+it=autovar_1
+it_1 = it
+it=(leterize(it_1*""))
+_result_1 = it
+it=_result_1  
+end
+def collect(ors_1)
+ _result_1=nil
+ it=nil
+it=(a=autovar; Seq[Or[{:ary=>ors_1.ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],Act[a]])
+_result_1 = it
+it=_result_1  
+end
+def eChar()
+ _result_1=nil
+c_1=nil
+ it=nil
+it=_or(proc{it=seq("\\");next FAIL if it==FAIL
+it=char();next FAIL if it==FAIL
+c_1 = it
+it=("\\#{c_1}")
+_result_1 = it },proc{it=_args('#{','}');next FAIL if it==FAIL
+_result_1 = it},proc{it=char();next FAIL if it==FAIL
+_result_1 = it});return FAIL if it==FAIL
+it=_result_1  
+end
+def expression()
+ _result_1=nil
+ it=nil
+it=choice();return FAIL if it==FAIL
+_result_1 = it
+it=_result_1  
+end
+def grammar()
+ _result_1=nil
+name_1=nil
+parent_1=nil
+rules_1=nil
+ it=nil
+it=token("amethyst");return FAIL if it==FAIL
+it=name();return FAIL if it==FAIL
+name_1 = it
+it=_or(proc{it=token("<");next FAIL if it==FAIL
+it=name();next FAIL if it==FAIL
+parent_1 = it },proc{it=empty();next FAIL if it==FAIL
+it=(parent_1="Amethyst") });return FAIL if it==FAIL
+it=token("{");return FAIL if it==FAIL
+it=([])
+autovar_1 = it
+while true
+autovar_2=@input;r=it=rule();break FAIL if it==FAIL
+autovar_1||=[];_append(autovar_1,it)
+ break FAIL if r==FAIL
+ (autovar_2=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_2
+it=autovar_1
+rules_1 = it
+it=token("}");return FAIL if it==FAIL
+it=Grammar.create( {:name=>name_1,:parent=>parent_1,:rules=>rules_1 })
+_result_1 = it
+it=_result_1  
+end
 def igrammar()
  _result_1=nil
 a_1=nil
@@ -263,96 +470,122 @@ it=a_1
 _result_1 = it
 it=_result_1  
 end
-def grammar()
+def inlineHostExpr()
  _result_1=nil
-name_1=nil
-parent_1=nil
-rules_1=nil
  it=nil
-it=token("amethyst");return FAIL if it==FAIL
-it=name();return FAIL if it==FAIL
-name_1 = it
-it=_or(proc{it=token("<");next FAIL if it==FAIL
-it=name();next FAIL if it==FAIL
-parent_1 = it },proc{it=empty();next FAIL if it==FAIL
-it=(parent_1="Amethyst") });return FAIL if it==FAIL
-it=token("{");return FAIL if it==FAIL
-it=([])
-autovar_1 = it
-while true
-autovar_2=@input;r=it=rule();break FAIL if it==FAIL
-autovar_1||=[];_append(autovar_1,it)
- break FAIL if r==FAIL
- (autovar_2=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_2
-it=autovar_1
-rules_1 = it
-it=token("}");return FAIL if it==FAIL
-it=Grammar.create( {:name=>name_1,:parent=>parent_1,:rules=>rules_1 })
+it=args('{','}');return FAIL if it==FAIL
 _result_1 = it
 it=_result_1  
 end
-def rule()
+def key()
  _result_1=nil
 args_1=nil
-bnding_1=nil
-body_1=nil
-locals_1=nil
+n_1=nil
 name_1=nil
+vars_1=nil
  it=nil
-it=(@locals=[];@bnding=Bnding[])
-it=@bnding
-bnding_1 = it
-it=name();return FAIL if it==FAIL
+it=_or(proc{it=token("@");next FAIL if it==FAIL
+it=className();next FAIL if it==FAIL
 name_1 = it
-it=ruleargs();return FAIL if it==FAIL
+it=argsOpt('[',']');next FAIL if it==FAIL
 args_1 = it
-it=token("=");return FAIL if it==FAIL
-it=expression();return FAIL if it==FAIL
-body_1 = it
-it=(_body(body_1))
-body_1 = it
-it=(@locals.uniq)
-locals_1 = it
-it=Rule.create( {:bnding=>bnding_1,:name=>name_1,:args=>args_1,:body=>body_1,:locals=>locals_1 })
-_result_1 = it
+it=(Object.const_get(name_1).instance_variable_get(:@attrs))
+vars_1 = it
+it=Result.create( {:args=>args_1,:name=>name_1,:vars=>vars_1 })
+_result_1 = it },proc{it=token("@");next FAIL if it==FAIL
+it=name();next FAIL if it==FAIL
+name_1 = it
+it=Key.create( {:args=>args_1,:name=>name_1 })
+_result_1 = it },proc{it=token("@@");next FAIL if it==FAIL
+it=name();next FAIL if it==FAIL
+n_1 = it
+it=(Global[n_1])
+_result_1 = it });return FAIL if it==FAIL
 it=_result_1  
 end
-def expression()
+def modifier()
  _result_1=nil
+c_1=nil
  it=nil
-it=choice();return FAIL if it==FAIL
-_result_1 = it
-it=_result_1  
-end
-def choice()
- _result_1=nil
-ary_1=nil
- it=nil
-it=listOf('sequence',proc{it=token("|");return FAIL if it==FAIL
-_result_1 = it
-it=_result_1 });return FAIL if it==FAIL
-ary_1 = it
-it=Or.create( {:ary=>ary_1 })
-_result_1 = it
-it=_result_1  
-end
-def sequence()
- _result_1=nil
-ary_1=nil
- it=nil
+it=_or(proc{it=term();next FAIL if it==FAIL
+_result_1 = it},proc{it=token("#");next FAIL if it==FAIL
 it=([])
 autovar_1 = it
 while true
-autovar_2=@input;r=it=nr();break FAIL if it==FAIL
-it=prefixed();break FAIL if it==FAIL
+autovar_2=@input;r=it=_lookahead(true){it=endline();next FAIL if it==FAIL};break FAIL if it==FAIL
+it=anything();break FAIL if it==FAIL
 autovar_1||=[];_append(autovar_1,it) 
  break FAIL if r==FAIL
  (autovar_2=@input;@stop=nil;break FAIL) if @stop==true
 end;@input=autovar_2
 it=autovar_1
-ary_1 = it
-it=Seq.create( {:ary=>ary_1 })
+c_1 = it
+it=(Comment[c_1])
+_result_1 = it });return FAIL if it==FAIL
+it=_result_1  
+end
+def name()
+ _result_1=nil
+it_1=nil
+ it=nil
+it=token("");return FAIL if it==FAIL
+it=nameFirst();return FAIL if it==FAIL
+autovar_1||=[];_append(autovar_1,it)
+it=([])
+autovar_2 = it
+while true
+autovar_3=@input;r=it=nameRest();break FAIL if it==FAIL
+autovar_2||=[];_append(autovar_2,it)
+ break FAIL if r==FAIL
+ (autovar_3=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_3
+it=autovar_2
+autovar_1||=[];_append(autovar_1,it)
+it=autovar_1
+it_1 = it
+it=(leterize(it_1*""))
+_result_1 = it
+it=_result_1  
+end
+def nameFirst()
+ _result_1=nil
+ it=nil
+it=_or(proc{it=letter();next FAIL if it==FAIL
+_result_1 = it},proc{it=seq("_");next FAIL if it==FAIL
+_result_1 = it});return FAIL if it==FAIL
+it=_result_1  
+end
+def nameRest()
+ _result_1=nil
+ it=nil
+it=_or(proc{it=nameFirst();next FAIL if it==FAIL
+_result_1 = it},proc{it=digit();next FAIL if it==FAIL
+_result_1 = it});return FAIL if it==FAIL
+it=_result_1  
+end
+def nr()
+ _result_1=nil
+ it=nil
+it=_lookahead(true){it=name();next FAIL if it==FAIL
+it=argsOpt('(',')');next FAIL if it==FAIL
+it=token("=");next FAIL if it==FAIL };return FAIL if it==FAIL
+_result_1 = it
+it=_result_1  
+end
+def number()
+ _result_1=nil
+ it=nil
+it=([])
+autovar_1 = it
+it=regch(/[0-9]/);return FAIL if it==FAIL
+autovar_1||=[];_append(autovar_1,it)
+while true
+autovar_2=@input;r=it=regch(/[0-9]/);break FAIL if it==FAIL
+autovar_1||=[];_append(autovar_1,it)
+ break FAIL if r==FAIL
+ (autovar_2=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_2
+it=autovar_1
 _result_1 = it
 it=_result_1  
 end
@@ -420,25 +653,157 @@ it=from_1
 _result_1 = it });return FAIL if it==FAIL
 it=_result_1  
 end
-def modifier()
+def procargs()
  _result_1=nil
 c_1=nil
  it=nil
-it=_or(proc{it=term();next FAIL if it==FAIL
-_result_1 = it},proc{it=token("#");next FAIL if it==FAIL
+it=(@ary=[];@tmp=[])
+while true
+autovar_1=@input;r=it=_or(proc{it=anything();next FAIL if it==FAIL
+c_1 = it
+it=(c_1==',')||FAIL;next FAIL if it==FAIL
+it=(@ary<<Args[{:ary=>@tmp}];@tmp=[]) },proc{it=procargs2();next FAIL if it==FAIL});break FAIL if it==FAIL
+ break FAIL if r==FAIL
+ (autovar_1=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_1
+it=@ary
+_result_1 = it
+it=_result_1  
+end
+def procargs2()
+ _result_1=nil
+a_1=nil
+ it=nil
+it=_or(proc{it=clas(Args);next FAIL if it==FAIL
+autovar_1 = it
+it=_pass(true,autovar_1){it=([])
+autovar_2 = it
+while true
+autovar_3=@input;r=it=procargs2();break FAIL if it==FAIL
+autovar_2||=[];_append(autovar_2,it)
+ break FAIL if r==FAIL
+ (autovar_3=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_3
+it=autovar_2
+_result_1 = it };next FAIL if it==FAIL },proc{it=anything();next FAIL if it==FAIL
+a_1 = it
+it=(@tmp<<a_1)
+_result_1 = it });return FAIL if it==FAIL
+it=_result_1  
+end
+def rubyarg()
+ _result_1=nil
+e_1=nil
+n_1=nil
+s_1=nil
+ it=nil
+it=_or(proc{it=seq("`");next FAIL if it==FAIL
+it=expression();next FAIL if it==FAIL
+e_1 = it
+it=seq("`");next FAIL if it==FAIL
+it=(Exp[_body(e_1)])
+_result_1 = it },proc{it=_args('(',')');next FAIL if it==FAIL
+_result_1 = it},proc{it=_args('[',']');next FAIL if it==FAIL
+_result_1 = it},proc{it=_args('{','}');next FAIL if it==FAIL
+_result_1 = it},proc{it=seq("\"");next FAIL if it==FAIL
+s_1||=[];_append(s_1,it)
 it=([])
 autovar_1 = it
 while true
-autovar_2=@input;r=it=_lookahead(true){it=endline();next FAIL if it==FAIL};break FAIL if it==FAIL
-it=anything();break FAIL if it==FAIL
+autovar_2=@input;r=it=_or(proc{it=seq("\"");next FAIL if it==FAIL
+@cut=true;it
+@stop=true;it
+autovar_1||=[];_append(autovar_1,it) },proc{it=eChar();next FAIL if it==FAIL
+autovar_1||=[];_append(autovar_1,it)});break FAIL if it==FAIL
+ break FAIL if r==FAIL
+ (autovar_2=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_2
+it=autovar_1
+s_1||=[];_append(s_1,it)
+it=(Strin[connectstring(s_1)])
+_result_1 = it },proc{it=seq("\'");next FAIL if it==FAIL
+s_1||=[];_append(s_1,it)
+it=([])
+autovar_3 = it
+while true
+autovar_4=@input;r=it=_or(proc{it=seq("\'");next FAIL if it==FAIL
+@cut=true;it
+@stop=true;it
+autovar_3||=[];_append(autovar_3,it) },proc{it=eChar();next FAIL if it==FAIL
+autovar_3||=[];_append(autovar_3,it)});break FAIL if it==FAIL
+ break FAIL if r==FAIL
+ (autovar_4=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_4
+it=autovar_3
+s_1||=[];_append(s_1,it)
+it=(Strin[connectstring(s_1)])
+_result_1 = it },proc{it=_or(proc{it=token(":@");next FAIL if it==FAIL
+n_1 = it},proc{it=regch(/[$.:]/);next FAIL if it==FAIL
+n_1 = it},proc{it=empty();next FAIL if it==FAIL});next FAIL if it==FAIL
+it=_lookahead(true){it=_();next FAIL if it==FAIL};next FAIL if it==FAIL
+it=name();next FAIL if it==FAIL
+n_1||=[];_append(n_1,it)
+it=n_1
+_result_1 = it },proc{it=_lookahead(true){it=_();next FAIL if it==FAIL};next FAIL if it==FAIL
+it=key();next FAIL if it==FAIL
+_result_1 = it },proc{it=regch(/[^`{}()'"\[\]]/);next FAIL if it==FAIL
+_result_1 = it});return FAIL if it==FAIL
+it=_result_1  
+end
+def rule()
+ _result_1=nil
+args_1=nil
+bnding_1=nil
+body_1=nil
+locals_1=nil
+name_1=nil
+ it=nil
+it=(@locals=[];@bnding=Bnding[])
+it=@bnding
+bnding_1 = it
+it=name();return FAIL if it==FAIL
+name_1 = it
+it=ruleargs();return FAIL if it==FAIL
+args_1 = it
+it=token("=");return FAIL if it==FAIL
+it=expression();return FAIL if it==FAIL
+body_1 = it
+it=(_body(body_1))
+body_1 = it
+it=(@locals.uniq)
+locals_1 = it
+it=Rule.create( {:args=>args_1,:bnding=>bnding_1,:body=>body_1,:locals=>locals_1,:name=>name_1 })
+_result_1 = it
+it=_result_1  
+end
+def ruleargs()
+ _result_1=nil
+ it=nil
+it=argsOpt('(',')');return FAIL if it==FAIL
+autovar_1 = it
+it=_pass(false,autovar_1){it=anything();next FAIL if it==FAIL
+autovar_2 = it
+it=_pass(true,autovar_2){it=addargs();next FAIL if it==FAIL
+_result_1 = it};next FAIL if it==FAIL };return FAIL if it==FAIL
+it=_result_1  
+end
+def sequence()
+ _result_1=nil
+ary_1=nil
+ it=nil
+it=([])
+autovar_1 = it
+while true
+autovar_2=@input;r=it=nr();break FAIL if it==FAIL
+it=prefixed();break FAIL if it==FAIL
 autovar_1||=[];_append(autovar_1,it) 
  break FAIL if r==FAIL
  (autovar_2=@input;@stop=nil;break FAIL) if @stop==true
 end;@input=autovar_2
 it=autovar_1
-c_1 = it
-it=(Comment[c_1])
-_result_1 = it });return FAIL if it==FAIL
+ary_1 = it
+it=Seq.create( {:ary=>ary_1 })
+_result_1 = it
 it=_result_1  
 end
 def term()
@@ -512,375 +877,79 @@ it=x_1
 _result_1 = it });next FAIL if it==FAIL });return FAIL if it==FAIL
 it=_result_1  
 end
-def application()
- _result_1=nil
-arg_1=nil
-klas_1=nil
-rule_1=nil
- it=nil
-it=_or(proc{it=name();next FAIL if it==FAIL
-klas_1 = it
-it=seq("::");next FAIL if it==FAIL
-it=name();next FAIL if it==FAIL
-rule_1 = it
-it=([klas_1,rule_1])
-rule_1 = it },proc{it=name();next FAIL if it==FAIL
-rule_1 = it});return FAIL if it==FAIL
-it=argsOpt('(',')');return FAIL if it==FAIL
-arg_1 = it
-it=(Apply[rule_1,arg_1])
-_result_1 = it
-it=_result_1  
+
 end
-def key()
+
+class AmethystOptimizer < Amethyst
+def arg()
  _result_1=nil
-args_1=nil
-n_1=nil
-name_1=nil
-vars_1=nil
- it=nil
-it=_or(proc{it=token("@");next FAIL if it==FAIL
-it=className();next FAIL if it==FAIL
-name_1 = it
-it=argsOpt('[',']');next FAIL if it==FAIL
-args_1 = it
-it=(Object.const_get(name_1).instance_variable_get(:@attrs))
-vars_1 = it
-it=Result.create( {:name=>name_1,:args=>args_1,:vars=>vars_1 })
-_result_1 = it },proc{it=token("@");next FAIL if it==FAIL
-it=name();next FAIL if it==FAIL
-name_1 = it
-it=Key.create( {:name=>name_1,:args=>args_1 })
-_result_1 = it },proc{it=token("@@");next FAIL if it==FAIL
-it=name();next FAIL if it==FAIL
-n_1 = it
-it=(Global[n_1])
-_result_1 = it });return FAIL if it==FAIL
-it=_result_1  
-end
-def collect(ors_1)
- _result_1=nil
- it=nil
-it=(a=autovar; Seq[Or[{:ary=>ors_1.ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],Act[a]])
-_result_1 = it
-it=_result_1  
-end
-def eChar()
- _result_1=nil
-c_1=nil
- it=nil
-it=_or(proc{it=seq("\\");next FAIL if it==FAIL
-it=char();next FAIL if it==FAIL
-c_1 = it
-it=("\\#{c_1}")
-_result_1 = it },proc{it=_args('#{','}');next FAIL if it==FAIL
-_result_1 = it},proc{it=char();next FAIL if it==FAIL
-_result_1 = it});return FAIL if it==FAIL
-it=_result_1  
-end
-def ruleargs()
- _result_1=nil
- it=nil
-it=argsOpt('(',')');return FAIL if it==FAIL
-autovar_1 = it
-it=_pass(false,autovar_1){it=anything();next FAIL if it==FAIL
-autovar_2 = it
-it=_pass(true,autovar_2){it=addargs();next FAIL if it==FAIL
-_result_1 = it};next FAIL if it==FAIL };return FAIL if it==FAIL
-it=_result_1  
-end
-def addargs()
- _result_1=nil
-name_1=nil
-result_1=nil
- it=nil
-while true
-autovar_2=@input;r=it=clas(Args);break FAIL if it==FAIL
-autovar_1 = it
-it=_pass(true,autovar_1){it=anything();next FAIL if it==FAIL
-name_1 = it
-it=(_Local(name_1) )
-result_1||=[];_append(result_1,it) };break FAIL if it==FAIL 
- break FAIL if r==FAIL
- (autovar_2=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_2
-it=(result_1 || [])
-_result_1 = it
-it=_result_1  
-end
-def nr()
- _result_1=nil
- it=nil
-it=_lookahead(true){it=name();next FAIL if it==FAIL
-it=argsOpt('(',')');next FAIL if it==FAIL
-it=token("=");next FAIL if it==FAIL };return FAIL if it==FAIL
-_result_1 = it
-it=_result_1  
-end
-def argsOpt(o_1,c_1)
- _result_1=nil
- it=nil
-it=_or(proc{it=args(o_1,c_1);next FAIL if it==FAIL
-_result_1 = it},proc{it=empty();next FAIL if it==FAIL
-it=([])
-_result_1 = it });return FAIL if it==FAIL
-it=_result_1  
-end
-def args(o_1,c_1)
- _result_1=nil
-r_1=nil
- it=nil
-it=__args(o_1,c_1);return FAIL if it==FAIL
-r_1 = it
-it=(r_1+[','])
-autovar_1 = it
-it=_pass(false,autovar_1){it=anything();next FAIL if it==FAIL
-autovar_2 = it
-it=_pass(true,autovar_2){it=procargs();next FAIL if it==FAIL
-_result_1 = it};next FAIL if it==FAIL };return FAIL if it==FAIL
-it=_result_1  
-end
-def _args(o_1,c_1)
- _result_1=nil
-r_1=nil
- it=nil
-it=__args(o_1,c_1);return FAIL if it==FAIL
-r_1 = it
-it=(Args[{:ary=>([o_1]+r_1+[c_1])}])
-_result_1 = it
-it=_result_1  
-end
-def __args(o_1,c_1)
- _result_1=nil
-r_1=nil
- it=nil
-it=seq(o_1);return FAIL if it==FAIL
-it=token("");return FAIL if it==FAIL
-it=([])
-autovar_1 = it
-while true
-autovar_2=@input;r=it=rubyarg();break FAIL if it==FAIL
-autovar_1||=[];_append(autovar_1,it)
- break FAIL if r==FAIL
- (autovar_2=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_2
-it=autovar_1
-r_1 = it
-it=seq(c_1);return FAIL if it==FAIL
-it=r_1
-_result_1 = it
-it=_result_1  
-end
-def rubyarg()
- _result_1=nil
-e_1=nil
-n_1=nil
-s_1=nil
- it=nil
-it=_or(proc{it=seq("`");next FAIL if it==FAIL
-it=expression();next FAIL if it==FAIL
-e_1 = it
-it=seq("`");next FAIL if it==FAIL
-it=(Exp[_body(e_1)])
-_result_1 = it },proc{it=_args('(',')');next FAIL if it==FAIL
-_result_1 = it},proc{it=_args('[',']');next FAIL if it==FAIL
-_result_1 = it},proc{it=_args('{','}');next FAIL if it==FAIL
-_result_1 = it},proc{it=seq("\"");next FAIL if it==FAIL
-s_1||=[];_append(s_1,it)
-it=([])
-autovar_1 = it
-while true
-autovar_2=@input;r=it=_or(proc{it=seq("\"");next FAIL if it==FAIL
-@cut=true;it
-@stop=true;it
-autovar_1||=[];_append(autovar_1,it) },proc{it=eChar();next FAIL if it==FAIL
-autovar_1||=[];_append(autovar_1,it)});break FAIL if it==FAIL
- break FAIL if r==FAIL
- (autovar_2=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_2
-it=autovar_1
-s_1||=[];_append(s_1,it)
-it=(Strin[connectstring(s_1)])
-_result_1 = it },proc{it=seq("\'");next FAIL if it==FAIL
-s_1||=[];_append(s_1,it)
-it=([])
-autovar_3 = it
-while true
-autovar_4=@input;r=it=_or(proc{it=seq("\'");next FAIL if it==FAIL
-@cut=true;it
-@stop=true;it
-autovar_3||=[];_append(autovar_3,it) },proc{it=eChar();next FAIL if it==FAIL
-autovar_3||=[];_append(autovar_3,it)});break FAIL if it==FAIL
- break FAIL if r==FAIL
- (autovar_4=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_4
-it=autovar_3
-s_1||=[];_append(s_1,it)
-it=(Strin[connectstring(s_1)])
-_result_1 = it },proc{it=_or(proc{it=token(":@");next FAIL if it==FAIL
-n_1 = it},proc{it=regch(/[$.:]/);next FAIL if it==FAIL
-n_1 = it},proc{it=empty();next FAIL if it==FAIL});next FAIL if it==FAIL
-it=_lookahead(true){it=_();next FAIL if it==FAIL};next FAIL if it==FAIL
-it=name();next FAIL if it==FAIL
-n_1||=[];_append(n_1,it)
-it=n_1
-_result_1 = it },proc{it=_lookahead(true){it=_();next FAIL if it==FAIL};next FAIL if it==FAIL
-it=key();next FAIL if it==FAIL
-_result_1 = it },proc{it=regch(/[^`{}()'"\[\]]/);next FAIL if it==FAIL
-_result_1 = it});return FAIL if it==FAIL
-it=_result_1  
-end
-def procargs()
- _result_1=nil
-c_1=nil
- it=nil
-it=(@ary=[];@tmp=[])
-while true
-autovar_1=@input;r=it=_or(proc{it=anything();next FAIL if it==FAIL
-c_1 = it
-it=(c_1==',')||FAIL;next FAIL if it==FAIL
-it=(@ary<<Args[{:ary=>@tmp}];@tmp=[]) },proc{it=procargs2();next FAIL if it==FAIL});break FAIL if it==FAIL
- break FAIL if r==FAIL
- (autovar_1=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_1
-it=@ary
-_result_1 = it
-it=_result_1  
-end
-def procargs2()
- _result_1=nil
-a_1=nil
+ary_1=nil
  it=nil
 it=_or(proc{it=clas(Args);next FAIL if it==FAIL
 autovar_1 = it
 it=_pass(true,autovar_1){it=([])
 autovar_2 = it
 while true
-autovar_3=@input;r=it=procargs2();break FAIL if it==FAIL
+autovar_3=@input;r=it=arg();break FAIL if it==FAIL
 autovar_2||=[];_append(autovar_2,it)
  break FAIL if r==FAIL
  (autovar_3=@input;@stop=nil;break FAIL) if @stop==true
 end;@input=autovar_3
 it=autovar_2
-_result_1 = it };next FAIL if it==FAIL },proc{it=anything();next FAIL if it==FAIL
-a_1 = it
-it=(@tmp<<a_1)
+ary_1 = it };next FAIL if it==FAIL
+it=Args.create( {:ary=>ary_1 })
+_result_1 = it },proc{it=clas(Strin);next FAIL if it==FAIL
+autovar_4 = it
+it=_pass(true,autovar_4){it=([])
+autovar_5 = it
+while true
+autovar_6=@input;r=it=_or(proc{it=char();next FAIL if it==FAIL
+autovar_5||=[];_append(autovar_5,it)},proc{it=arg();next FAIL if it==FAIL
+autovar_5||=[];_append(autovar_5,it)});break FAIL if it==FAIL
+ break FAIL if r==FAIL
+ (autovar_6=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_6
+it=autovar_5
+ary_1 = it };next FAIL if it==FAIL
+it=Strin.create( {:ary=>ary_1 })
+_result_1 = it },proc{it=clas(Exp);next FAIL if it==FAIL
+autovar_7 = it
+it=_pass(true,autovar_7){it=transfn();next FAIL if it==FAIL
+ary_1||=[];_append(ary_1,it)};next FAIL if it==FAIL
+it=Exp.create( {:ary=>ary_1 })
+_result_1 = it },proc{it=anything();next FAIL if it==FAIL
+_result_1 = it});return FAIL if it==FAIL
+it=_result_1  
+end
+def args()
+ _result_1=nil
+a_1=nil
+ it=nil
+it=_or(proc{it=clas(Array);next FAIL if it==FAIL
+autovar_1 = it
+it=_pass(true,autovar_1){it=([])
+autovar_2 = it
+while true
+autovar_3=@input;r=it=arg();break FAIL if it==FAIL
+autovar_2||=[];_append(autovar_2,it)
+ break FAIL if r==FAIL
+ (autovar_3=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_3
+it=autovar_2
+a_1 = it };next FAIL if it==FAIL
+it=a_1
+_result_1 = it },proc{it=([])
+autovar_4 = it
+while true
+autovar_5=@input;r=it=arg();break FAIL if it==FAIL
+autovar_4||=[];_append(autovar_4,it)
+ break FAIL if r==FAIL
+ (autovar_5=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_5
+it=autovar_4
 _result_1 = it });return FAIL if it==FAIL
 it=_result_1  
 end
-def nameFirst()
- _result_1=nil
- it=nil
-it=_or(proc{it=letter();next FAIL if it==FAIL
-_result_1 = it},proc{it=seq("_");next FAIL if it==FAIL
-_result_1 = it});return FAIL if it==FAIL
-it=_result_1  
-end
-def nameRest()
- _result_1=nil
- it=nil
-it=_or(proc{it=nameFirst();next FAIL if it==FAIL
-_result_1 = it},proc{it=digit();next FAIL if it==FAIL
-_result_1 = it});return FAIL if it==FAIL
-it=_result_1  
-end
-def className()
- _result_1=nil
-it_1=nil
- it=nil
-it=token("");return FAIL if it==FAIL
-it=upper();return FAIL if it==FAIL
-autovar_1||=[];_append(autovar_1,it)
-it=([])
-autovar_2 = it
-while true
-autovar_3=@input;r=it=nameRest();break FAIL if it==FAIL
-autovar_2||=[];_append(autovar_2,it)
- break FAIL if r==FAIL
- (autovar_3=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_3
-it=autovar_2
-autovar_1||=[];_append(autovar_1,it)
-it=autovar_1
-it_1 = it
-it=(leterize(it_1*""))
-_result_1 = it
-it=_result_1  
-end
-def name()
- _result_1=nil
-it_1=nil
- it=nil
-it=token("");return FAIL if it==FAIL
-it=nameFirst();return FAIL if it==FAIL
-autovar_1||=[];_append(autovar_1,it)
-it=([])
-autovar_2 = it
-while true
-autovar_3=@input;r=it=nameRest();break FAIL if it==FAIL
-autovar_2||=[];_append(autovar_2,it)
- break FAIL if r==FAIL
- (autovar_3=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_3
-it=autovar_2
-autovar_1||=[];_append(autovar_1,it)
-it=autovar_1
-it_1 = it
-it=(leterize(it_1*""))
-_result_1 = it
-it=_result_1  
-end
-def inlineHostExpr()
- _result_1=nil
- it=nil
-it=args('{','}');return FAIL if it==FAIL
-_result_1 = it
-it=_result_1  
-end
-def number()
- _result_1=nil
- it=nil
-it=([])
-autovar_1 = it
-it=regch(/[0-9]/);return FAIL if it==FAIL
-autovar_1||=[];_append(autovar_1,it)
-while true
-autovar_2=@input;r=it=regch(/[0-9]/);break FAIL if it==FAIL
-autovar_1||=[];_append(autovar_1,it)
- break FAIL if r==FAIL
- (autovar_2=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_2
-it=autovar_1
-_result_1 = it
-it=_result_1  
-end
-def atomicHostExpr()
- _result_1=nil
-s_1=nil
- it=nil
-it=([])
-autovar_1 = it
-while true
-autovar_2=@input;r=it=_lookahead(true){it=endline();next FAIL if it==FAIL};break FAIL if it==FAIL
-it=anything();break FAIL if it==FAIL
-autovar_1||=[];_append(autovar_1,it) 
- break FAIL if r==FAIL
- (autovar_2=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_2
-it=autovar_1
-s_1 = it
-it=("{#{s_1*""}}")
-autovar_3 = it
-it=_pass(false,autovar_3){it=anything();next FAIL if it==FAIL
-autovar_4 = it
-it=_pass(true,autovar_4){it=inlineHostExpr();next FAIL if it==FAIL
-_result_1 = it};next FAIL if it==FAIL };return FAIL if it==FAIL
-it=_result_1  
-end
-
-end
-
-class AmethystOptimizer < Amethyst
 def itrans()
  _result_1=nil
 r_1=nil
@@ -929,7 +998,7 @@ it=self['rules']
 autovar_2 = it
 it=_pass(false,autovar_2){it=transs();next FAIL if it==FAIL
 rules_1 = it};next FAIL if it==FAIL };next FAIL if it==FAIL
-it=Grammar.create( {:name=>name_1,:parent=>parent_1,:rules=>rules_1,:ary=>ary_1 })
+it=Grammar.create( {:ary=>ary_1,:name=>name_1,:parent=>parent_1,:rules=>rules_1 })
 _result_1 = it },proc{it=clas(Rule);next FAIL if it==FAIL
 autovar_3 = it
 it=_pass(true,autovar_3){it=self['name']
@@ -944,7 +1013,7 @@ it=_pass(false,autovar_5){it=trans();next FAIL if it==FAIL
 body_1 = it};next FAIL if it==FAIL
 it=self['locals']
 locals_1 = it };next FAIL if it==FAIL
-it=Rule.create( {:name=>name_1,:args=>args_1,:body=>body_1,:locals=>locals_1,:ary=>ary_1 })
+it=Rule.create( {:args=>args_1,:ary=>ary_1,:body=>body_1,:locals=>locals_1,:name=>name_1 })
 _result_1 = it },proc{it=clas(Or);next FAIL if it==FAIL
 autovar_6 = it
 it=_pass(true,autovar_6){it=([])
@@ -1017,7 +1086,7 @@ it=_pass(false,autovar_20){it=trans();next FAIL if it==FAIL
 expr_1 = it};next FAIL if it==FAIL
 it=self['append']
 append_1 = it };next FAIL if it==FAIL
-it=Set.create( {:name=>name_1,:ary=>ary_1,:expr=>expr_1,:append=>append_1 })
+it=Set.create( {:append=>append_1,:ary=>ary_1,:expr=>expr_1,:name=>name_1 })
 _result_1 = it },proc{it=clas(Act);next FAIL if it==FAIL
 autovar_21 = it
 it=_pass(true,autovar_21){it=args();next FAIL if it==FAIL
@@ -1037,7 +1106,7 @@ it=self['vars']
 autovar_24 = it
 it=_pass(false,autovar_24){it=args();next FAIL if it==FAIL
 vars_1 = it};next FAIL if it==FAIL };next FAIL if it==FAIL
-it=Result.create( {:name=>name_1,:args=>args_1,:ary=>ary_1,:expr=>expr_1,:vars=>vars_1 })
+it=Result.create( {:args=>args_1,:ary=>ary_1,:expr=>expr_1,:name=>name_1,:vars=>vars_1 })
 _result_1 = it },proc{it=clas(Args);next FAIL if it==FAIL
 autovar_25 = it
 it=_pass(true,autovar_25){it=([])
@@ -1055,7 +1124,7 @@ _result_1 = it },proc{it=clas(Key);next FAIL if it==FAIL
 autovar_28 = it
 it=_pass(true,autovar_28){it=self['name']
 name_1 = it};next FAIL if it==FAIL
-it=Key.create( {:name=>name_1,:args=>args_1,:ary=>ary_1,:expr=>expr_1 })
+it=Key.create( {:args=>args_1,:ary=>ary_1,:expr=>expr_1,:name=>name_1 })
 _result_1 = it },proc{it=clas(Pass);next FAIL if it==FAIL
 autovar_29 = it
 it=_pass(true,autovar_29){it=self['to']
@@ -1068,7 +1137,7 @@ it=_pass(false,autovar_31){it=arg();next FAIL if it==FAIL
 var_1 = it};next FAIL if it==FAIL
 it=self['enter']
 enter_1 = it };next FAIL if it==FAIL
-it=Pass.create( {:ary=>ary_1,:to=>to_1,:var=>var_1,:enter=>enter_1 })
+it=Pass.create( {:ary=>ary_1,:enter=>enter_1,:to=>to_1,:var=>var_1 })
 _result_1 = it },proc{it=clas(Cut);next FAIL if it==FAIL
 autovar_32 = it
 it=_pass(true,autovar_32){ };next FAIL if it==FAIL
@@ -1131,75 +1200,6 @@ it=t_1
 _result_1 = it
 it=_result_1  
 end
-def args()
- _result_1=nil
-a_1=nil
- it=nil
-it=_or(proc{it=clas(Array);next FAIL if it==FAIL
-autovar_1 = it
-it=_pass(true,autovar_1){it=([])
-autovar_2 = it
-while true
-autovar_3=@input;r=it=arg();break FAIL if it==FAIL
-autovar_2||=[];_append(autovar_2,it)
- break FAIL if r==FAIL
- (autovar_3=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_3
-it=autovar_2
-a_1 = it };next FAIL if it==FAIL
-it=a_1
-_result_1 = it },proc{it=([])
-autovar_4 = it
-while true
-autovar_5=@input;r=it=arg();break FAIL if it==FAIL
-autovar_4||=[];_append(autovar_4,it)
- break FAIL if r==FAIL
- (autovar_5=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_5
-it=autovar_4
-_result_1 = it });return FAIL if it==FAIL
-it=_result_1  
-end
-def arg()
- _result_1=nil
-ary_1=nil
- it=nil
-it=_or(proc{it=clas(Args);next FAIL if it==FAIL
-autovar_1 = it
-it=_pass(true,autovar_1){it=([])
-autovar_2 = it
-while true
-autovar_3=@input;r=it=arg();break FAIL if it==FAIL
-autovar_2||=[];_append(autovar_2,it)
- break FAIL if r==FAIL
- (autovar_3=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_3
-it=autovar_2
-ary_1 = it };next FAIL if it==FAIL
-it=Args.create( {:ary=>ary_1 })
-_result_1 = it },proc{it=clas(Strin);next FAIL if it==FAIL
-autovar_4 = it
-it=_pass(true,autovar_4){it=([])
-autovar_5 = it
-while true
-autovar_6=@input;r=it=_or(proc{it=char();next FAIL if it==FAIL
-autovar_5||=[];_append(autovar_5,it)},proc{it=arg();next FAIL if it==FAIL
-autovar_5||=[];_append(autovar_5,it)});break FAIL if it==FAIL
- break FAIL if r==FAIL
- (autovar_6=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_6
-it=autovar_5
-ary_1 = it };next FAIL if it==FAIL
-it=Strin.create( {:ary=>ary_1 })
-_result_1 = it },proc{it=clas(Exp);next FAIL if it==FAIL
-autovar_7 = it
-it=_pass(true,autovar_7){it=transfn();next FAIL if it==FAIL
-ary_1||=[];_append(ary_1,it)};next FAIL if it==FAIL
-it=Exp.create( {:ary=>ary_1 })
-_result_1 = it },proc{it=anything();next FAIL if it==FAIL
-_result_1 = it});return FAIL if it==FAIL
-it=_result_1  
-end
 
 end
 
@@ -1253,32 +1253,6 @@ end
 
 
 class Traverser < Amethyst
-def traverse_item()
- _result_1=nil
-a_1=nil
- it=nil
-it=_or(proc{it=visit();next FAIL if it==FAIL
-a_1 = it
-it=(@changed=true)
-it=a_1
-_result_1 = it },proc{it=clas(Array);next FAIL if it==FAIL
-autovar_1 = it
-it=_pass(true,autovar_1){it=([])
-autovar_2 = it
-while true
-autovar_3=@input;r=it=traverse_item();break FAIL if it==FAIL
-autovar_2||=[];_append(autovar_2,it)
- break FAIL if r==FAIL
- (autovar_3=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_3
-it=autovar_2
-_result_1 = it };next FAIL if it==FAIL },proc{it=clas(AmethystAST);next FAIL if it==FAIL
-autovar_4 = it
-it=_pass(true,autovar_4){it=traverse();next FAIL if it==FAIL
-_result_1 = it};next FAIL if it==FAIL },proc{it=anything();next FAIL if it==FAIL
-_result_1 = it});return FAIL if it==FAIL
-it=_result_1  
-end
 def traverse()
  _result_1=nil
 it_1=nil
@@ -1309,6 +1283,32 @@ it=(@x; this_1.instance_variable_set(key_1,it_1)) };break FAIL if it==FAIL
 end;@input=autovar_5};next FAIL if it==FAIL };return FAIL if it==FAIL
 it=self['self']
 _result_1 = it
+it=_result_1  
+end
+def traverse_item()
+ _result_1=nil
+a_1=nil
+ it=nil
+it=_or(proc{it=visit();next FAIL if it==FAIL
+a_1 = it
+it=(@changed=true)
+it=a_1
+_result_1 = it },proc{it=clas(Array);next FAIL if it==FAIL
+autovar_1 = it
+it=_pass(true,autovar_1){it=([])
+autovar_2 = it
+while true
+autovar_3=@input;r=it=traverse_item();break FAIL if it==FAIL
+autovar_2||=[];_append(autovar_2,it)
+ break FAIL if r==FAIL
+ (autovar_3=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_3
+it=autovar_2
+_result_1 = it };next FAIL if it==FAIL },proc{it=clas(AmethystAST);next FAIL if it==FAIL
+autovar_4 = it
+it=_pass(true,autovar_4){it=traverse();next FAIL if it==FAIL
+_result_1 = it};next FAIL if it==FAIL },proc{it=anything();next FAIL if it==FAIL
+_result_1 = it});return FAIL if it==FAIL
 it=_result_1  
 end
 
@@ -1344,6 +1344,27 @@ end
 end
 
 class Analyze_Variables2 < Traverser
+def flat()
+ _result_1=nil
+ it=nil
+it=([])
+autovar_1 = it
+while true
+autovar_4=@input;r=it=_or(proc{it=clas(Args);next FAIL if it==FAIL
+autovar_2 = it
+it=_pass(true,autovar_2){it=flat();next FAIL if it==FAIL
+autovar_1||=[];_append(autovar_1,it)};next FAIL if it==FAIL },proc{it=clas(Strin);next FAIL if it==FAIL
+autovar_3 = it
+it=_pass(true,autovar_3){it=flat();next FAIL if it==FAIL
+autovar_1||=[];_append(autovar_1,it)};next FAIL if it==FAIL },proc{it=anything();next FAIL if it==FAIL
+autovar_1||=[];_append(autovar_1,it)});break FAIL if it==FAIL
+ break FAIL if r==FAIL
+ (autovar_4=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_4
+it=autovar_1
+_result_1 = it
+it=_result_1  
+end
 def itrans()
  _result_1=nil
 rules_1=nil
@@ -1427,27 +1448,6 @@ it=self['self']
 _result_1 = it };next FAIL if it==FAIL });return FAIL if it==FAIL
 it=_result_1  
 end
-def flat()
- _result_1=nil
- it=nil
-it=([])
-autovar_1 = it
-while true
-autovar_4=@input;r=it=_or(proc{it=clas(Args);next FAIL if it==FAIL
-autovar_2 = it
-it=_pass(true,autovar_2){it=flat();next FAIL if it==FAIL
-autovar_1||=[];_append(autovar_1,it)};next FAIL if it==FAIL },proc{it=clas(Strin);next FAIL if it==FAIL
-autovar_3 = it
-it=_pass(true,autovar_3){it=flat();next FAIL if it==FAIL
-autovar_1||=[];_append(autovar_1,it)};next FAIL if it==FAIL },proc{it=anything();next FAIL if it==FAIL
-autovar_1||=[];_append(autovar_1,it)});break FAIL if it==FAIL
- break FAIL if r==FAIL
- (autovar_4=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_4
-it=autovar_1
-_result_1 = it
-it=_result_1  
-end
 
 end
 
@@ -1481,7 +1481,7 @@ it=self['locals']
 locals_1 = it
 it=(@edges.reachable(@marked))
 reachable_1 = it };next FAIL if it==FAIL
-it=Rule.create( {:name=>name_1,:args=>args_1,:body=>body_1,:locals=>locals_1,:reachable=>reachable_1 })
+it=Rule.create( {:args=>args_1,:body=>body_1,:locals=>locals_1,:name=>name_1,:reachable=>reachable_1 })
 _result_1 = it },proc{it=clas(Apply);next FAIL if it==FAIL
 autovar_4 = it
 it=_pass(true,autovar_4){it=anything();next FAIL if it==FAIL
@@ -1633,7 +1633,7 @@ it=_pass(false,autovar_3){it=trans();next FAIL if it==FAIL
 body_1 = it};next FAIL if it==FAIL
 it=self['locals']
 locals_1 = it };next FAIL if it==FAIL
-it=Rule.create( {:name=>name_1,:args=>args_1,:body=>body_1,:locals=>locals_1 })
+it=Rule.create( {:args=>args_1,:body=>body_1,:locals=>locals_1,:name=>name_1 })
 _result_1 = it },proc{it=clas(Act);next FAIL if it==FAIL
 autovar_4 = it
 it=_pass(true,autovar_4){it=self['self']
@@ -1729,29 +1729,6 @@ end
 
 
 class Move_Assignments < AmethystOptimizer
-def trans()
- _result_1=nil
-append_1=nil
-expr_1=nil
-name_1=nil
- it=nil
-it=_or(proc{it=clas(Set);next FAIL if it==FAIL
-autovar_1 = it
-it=_pass(true,autovar_1){it=self['name']
-name_1 = it
-it=self['expr']
-autovar_2 = it
-it=_pass(false,autovar_2){it=trans();next FAIL if it==FAIL
-expr_1 = it};next FAIL if it==FAIL
-it=self['append']
-append_1 = it
-it=expr_1
-autovar_3 = it
-it=_pass(false,autovar_3){it=move(append_1,name_1);next FAIL if it==FAIL
-_result_1 = it};next FAIL if it==FAIL };next FAIL if it==FAIL },proc{it=super();next FAIL if it==FAIL
-_result_1 = it});return FAIL if it==FAIL
-it=_result_1  
-end
 def move(append_1,name_1)
  _result_1=nil
 ary_1=nil
@@ -1803,11 +1780,34 @@ it=_pass(false,autovar_9){it=move(append_1,name_1);next FAIL if it==FAIL
 to_1 = it};next FAIL if it==FAIL
 it=self['enter']
 enter_1 = it };next FAIL if it==FAIL
-it=Pass.create( {:ary=>ary_1,:var=>var_1,:to=>to_1,:enter=>enter_1 })
+it=Pass.create( {:ary=>ary_1,:enter=>enter_1,:to=>to_1,:var=>var_1 })
 _result_1 = it },proc{it=anything();next FAIL if it==FAIL
 it_1 = it
 it=(_Set(name_1,it_1,append_1))
 _result_1 = it });return FAIL if it==FAIL
+it=_result_1  
+end
+def trans()
+ _result_1=nil
+append_1=nil
+expr_1=nil
+name_1=nil
+ it=nil
+it=_or(proc{it=clas(Set);next FAIL if it==FAIL
+autovar_1 = it
+it=_pass(true,autovar_1){it=self['name']
+name_1 = it
+it=self['expr']
+autovar_2 = it
+it=_pass(false,autovar_2){it=trans();next FAIL if it==FAIL
+expr_1 = it};next FAIL if it==FAIL
+it=self['append']
+append_1 = it
+it=expr_1
+autovar_3 = it
+it=_pass(false,autovar_3){it=move(append_1,name_1);next FAIL if it==FAIL
+_result_1 = it};next FAIL if it==FAIL };next FAIL if it==FAIL },proc{it=super();next FAIL if it==FAIL
+_result_1 = it});return FAIL if it==FAIL
 it=_result_1  
 end
 
@@ -1818,6 +1818,103 @@ def varname(vh,name,number)
 	 "#{name}_#{vh[name][number]}"
 end
 class AmethystTranslator < Amethyst
+def arg()
+ _result_1=nil
+a_1=nil
+name_1=nil
+number_1=nil
+t_1=nil
+ it=nil
+it=_or(proc{it=clas(Args);next FAIL if it==FAIL
+autovar_1 = it
+it=_pass(true,autovar_1){it=([])
+autovar_2 = it
+while true
+autovar_3=@input;r=it=arg();break FAIL if it==FAIL
+autovar_2||=[];_append(autovar_2,it)
+ break FAIL if r==FAIL
+ (autovar_3=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_3
+it=autovar_2
+a_1 = it };next FAIL if it==FAIL
+it=(a_1*"")
+_result_1 = it },proc{it=clas(Strin);next FAIL if it==FAIL
+autovar_4 = it
+it=_pass(true,autovar_4){it=([])
+autovar_5 = it
+while true
+autovar_6=@input;r=it=arg();break FAIL if it==FAIL
+autovar_5||=[];_append(autovar_5,it)
+ break FAIL if r==FAIL
+ (autovar_6=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_6
+it=autovar_5
+a_1 = it };next FAIL if it==FAIL
+it=(a_1*"")
+_result_1 = it },proc{it=clas(Exp);next FAIL if it==FAIL
+autovar_7 = it
+it=_pass(true,autovar_7){it=transfn();next FAIL if it==FAIL
+t_1 = it};next FAIL if it==FAIL
+it=t_1
+_result_1 = it },proc{it=clas(Key);next FAIL if it==FAIL
+autovar_8 = it
+it=_pass(true,autovar_8){it=self['name']
+name_1 = it};next FAIL if it==FAIL
+it=("@src.#{name_1}")
+_result_1 = it },proc{it=clas(Local);next FAIL if it==FAIL
+autovar_9 = it
+it=_pass(true,autovar_9){it=anything();next FAIL if it==FAIL
+name_1 = it
+it=anything();next FAIL if it==FAIL
+number_1 = it };next FAIL if it==FAIL
+it=(varname(@varhash,name_1,number_1))
+_result_1 = it },proc{it=clas(Global);next FAIL if it==FAIL
+autovar_10 = it
+it=_pass(true,autovar_10){it=anything();next FAIL if it==FAIL
+name_1 = it};next FAIL if it==FAIL
+it=("@#{name_1}")
+_result_1 = it },proc{it=anything();next FAIL if it==FAIL
+_result_1 = it});return FAIL if it==FAIL
+it=_result_1  
+end
+def args()
+ _result_1=nil
+a_1=nil
+ it=nil
+it=_or(proc{it=clas(Array);next FAIL if it==FAIL
+autovar_1 = it
+it=_pass(true,autovar_1){it=([])
+autovar_2 = it
+while true
+autovar_3=@input;r=it=arg();break FAIL if it==FAIL
+autovar_2||=[];_append(autovar_2,it)
+ break FAIL if r==FAIL
+ (autovar_3=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_3
+it=autovar_2
+a_1 = it };next FAIL if it==FAIL
+it=(a_1*",")
+_result_1 = it },proc{it=([])
+autovar_4 = it
+while true
+autovar_5=@input;r=it=arg();break FAIL if it==FAIL
+autovar_4||=[];_append(autovar_4,it)
+ break FAIL if r==FAIL
+ (autovar_5=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_5
+it=autovar_4
+a_1 = it
+it=(a_1*",")
+_result_1 = it });return FAIL if it==FAIL
+it=_result_1  
+end
+def failwrap(s_1)
+ _result_1=nil
+ it=nil
+it=("#{s_1};#{@returnword} FAIL if it==FAIL" )
+_result_1 = it
+it=_result_1  
+end
 def itrans()
  _result_1=nil
 r_1=nil
@@ -1834,6 +1931,17 @@ end;@input=autovar_2
 it=autovar_1
 r_1 = it
 it=(r_1*"")
+_result_1 = it
+it=_result_1  
+end
+def rw(word_1,prc_1)
+ _result_1=nil
+x_1=nil
+ it=nil
+it=(rwo=@returnword;@returnword=word_1)
+it=apply(prc_1);return FAIL if it==FAIL
+x_1 = it
+it=(@returnword=rwo;x_1)
 _result_1 = it
 it=_result_1  
 end
@@ -1866,7 +1974,7 @@ it=self['rules']
 autovar_2 = it
 it=_pass(false,autovar_2){it=transs();next FAIL if it==FAIL
 body_1 = it};next FAIL if it==FAIL };next FAIL if it==FAIL
-it=("class #{name_1} < #{parent_1}\n#{body_1}\nend\n")
+it=("class #{name_1} < #{parent_1}\n#{body_1.sort}\nend\n")
 _result_1 = it },proc{it=clas(Rule);next FAIL if it==FAIL
 autovar_3 = it
 it=_pass(true,autovar_3){it=(@varhash=Hash.new{|h,k| h[k]={}}  )
@@ -1982,7 +2090,7 @@ it=_pass(false,autovar_24){it=args();next FAIL if it==FAIL
 argss_1 = it};next FAIL if it==FAIL
 it=self['vars']
 vars_1 = it };next FAIL if it==FAIL
-it=("it=#{name_1}.create(#{argss_1} {#{vars_1.map{|l| ":#{l[0]}=>#{varname(@varhash,l[0],l[1])}" }*","} })")
+it=("it=#{name_1}.create(#{argss_1} {#{vars_1.map{|l| ":#{l[0]}=>#{varname(@varhash,l[0],l[1])}" }.sort*","} })")
 _result_1 = it },proc{it=clas(Key);next FAIL if it==FAIL
 autovar_25 = it
 it=_pass(true,autovar_25){it=self['name']
@@ -2053,114 +2161,6 @@ end;@input=autovar_3
 it=autovar_2
 t_1 = it };return FAIL if it==FAIL
 it=t_1
-_result_1 = it
-it=_result_1  
-end
-def args()
- _result_1=nil
-a_1=nil
- it=nil
-it=_or(proc{it=clas(Array);next FAIL if it==FAIL
-autovar_1 = it
-it=_pass(true,autovar_1){it=([])
-autovar_2 = it
-while true
-autovar_3=@input;r=it=arg();break FAIL if it==FAIL
-autovar_2||=[];_append(autovar_2,it)
- break FAIL if r==FAIL
- (autovar_3=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_3
-it=autovar_2
-a_1 = it };next FAIL if it==FAIL
-it=(a_1*",")
-_result_1 = it },proc{it=([])
-autovar_4 = it
-while true
-autovar_5=@input;r=it=arg();break FAIL if it==FAIL
-autovar_4||=[];_append(autovar_4,it)
- break FAIL if r==FAIL
- (autovar_5=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_5
-it=autovar_4
-a_1 = it
-it=(a_1*",")
-_result_1 = it });return FAIL if it==FAIL
-it=_result_1  
-end
-def arg()
- _result_1=nil
-a_1=nil
-name_1=nil
-number_1=nil
-t_1=nil
- it=nil
-it=_or(proc{it=clas(Args);next FAIL if it==FAIL
-autovar_1 = it
-it=_pass(true,autovar_1){it=([])
-autovar_2 = it
-while true
-autovar_3=@input;r=it=arg();break FAIL if it==FAIL
-autovar_2||=[];_append(autovar_2,it)
- break FAIL if r==FAIL
- (autovar_3=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_3
-it=autovar_2
-a_1 = it };next FAIL if it==FAIL
-it=(a_1*"")
-_result_1 = it },proc{it=clas(Strin);next FAIL if it==FAIL
-autovar_4 = it
-it=_pass(true,autovar_4){it=([])
-autovar_5 = it
-while true
-autovar_6=@input;r=it=arg();break FAIL if it==FAIL
-autovar_5||=[];_append(autovar_5,it)
- break FAIL if r==FAIL
- (autovar_6=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_6
-it=autovar_5
-a_1 = it };next FAIL if it==FAIL
-it=(a_1*"")
-_result_1 = it },proc{it=clas(Exp);next FAIL if it==FAIL
-autovar_7 = it
-it=_pass(true,autovar_7){it=transfn();next FAIL if it==FAIL
-t_1 = it};next FAIL if it==FAIL
-it=t_1
-_result_1 = it },proc{it=clas(Key);next FAIL if it==FAIL
-autovar_8 = it
-it=_pass(true,autovar_8){it=self['name']
-name_1 = it};next FAIL if it==FAIL
-it=("@src.#{name_1}")
-_result_1 = it },proc{it=clas(Local);next FAIL if it==FAIL
-autovar_9 = it
-it=_pass(true,autovar_9){it=anything();next FAIL if it==FAIL
-name_1 = it
-it=anything();next FAIL if it==FAIL
-number_1 = it };next FAIL if it==FAIL
-it=(varname(@varhash,name_1,number_1))
-_result_1 = it },proc{it=clas(Global);next FAIL if it==FAIL
-autovar_10 = it
-it=_pass(true,autovar_10){it=anything();next FAIL if it==FAIL
-name_1 = it};next FAIL if it==FAIL
-it=("@#{name_1}")
-_result_1 = it },proc{it=anything();next FAIL if it==FAIL
-_result_1 = it});return FAIL if it==FAIL
-it=_result_1  
-end
-def rw(word_1,prc_1)
- _result_1=nil
-x_1=nil
- it=nil
-it=(rwo=@returnword;@returnword=word_1)
-it=apply(prc_1);return FAIL if it==FAIL
-x_1 = it
-it=(@returnword=rwo;x_1)
-_result_1 = it
-it=_result_1  
-end
-def failwrap(s_1)
- _result_1=nil
- it=nil
-it=("#{s_1};#{@returnword} FAIL if it==FAIL" )
 _result_1 = it
 it=_result_1  
 end

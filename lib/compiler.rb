@@ -49,6 +49,7 @@ class <<Compiler
 		topo= callg.topo_order
 		puts callg.inspect
 		puts topo.inspect
+		code=[]
 		topo.each{|name|if @grammars[grammar.name].rules[name]
 #			puts @grammars[grammar.name].rules[name].inspect
 				@grammars[grammar.name].opt(@grammars[grammar.name].rules[name])
@@ -57,10 +58,8 @@ class <<Compiler
 				calls.each{|nm,v|
 					r=@grammars[grammar.name].getrule(nm)
 					@grammars[grammar.name].inline(nm,name) if r && r.args.size>0 && !(/arg/=~r.name)
+					@grammars[grammar.name].inline(nm,name) if r && ["char","space"].include?(r.name)
 				}
-				@grammars[grammar.name].inline("char" ,name)
-				@grammars[grammar.name].inline("space" ,name)
-#				@grammars[grammar.name].inline("spaces" ,name)
 
 #				puts @grammars[grammar.name].rules[name].inspect
 				@grammars[grammar.name].opt(@grammars[grammar.name].rules[name])
@@ -69,8 +68,9 @@ class <<Compiler
 
 #		puts AmethystTranslator.new.parse(:itrans,[@grammars[grammar.name].rules[name]]).inspect
 
-			outs.puts AmethystTranslator.new.parse(:itrans,[@grammars[grammar.name].rules[name]])
+			code<< AmethystTranslator.new.parse(:itrans,[@grammars[grammar.name].rules[name]])
 		end}
+		outs.puts code.sort
 		outs.puts "end"
 	end
 	def compile(file,out)
