@@ -32,13 +32,24 @@ class Dataflow < Traverser
       edges.add(exp,n)
     end
 	end
+	def or_end(join)
+    ssanums.clone.each{|k,v|
+      u=[]
+      join.each{|s| u<<s[k]}
+      u=u.uniq
+      if u.size>1
+        n=newssanum(k)
+        u.each{|v| edges.add([k[0],v],n)}
+      end
+    }
+	end
 end
 
 amethyst Dataflow < Traverser {
 	root = @self=>Rule[ {@@bnding=@bnding} traverse {[@@edges,@@marked]}]
 	
 	visit = Apply[:name vars_in:var{@@marked+=var} traverse]
-				| Or[	traverse]
+				| Or[	{join=[];old=oldssanums.clone} ({@@oldssanums=old.clone} traverse_item {join<<oldssanums.clone})* {or_end(join)} @self ]
 				| Many[  @o=>vars_in:var {@@marked+=var} { prev=ssanums.clone} traverse {many_end(prev)} @self]
 				| Pass[@var=>vars_in:var {@@marked+=var} traverse]
 				| Act[ traverse:this {@@marked<<this if @pred} 
