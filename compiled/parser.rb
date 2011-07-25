@@ -19,8 +19,8 @@ end
 
 class AmethystParser < Amethyst
 def __args(o_1,c_1)
- _result_2=nil
 _result_1=nil
+_result_2=nil
 r_1=nil
 s_1=nil
  it=nil
@@ -47,7 +47,7 @@ _result_2 = it
 it=_result_2  
 end
 def _args(o_1,c_1)
- _result_1=nil
+_result_1=nil
 r_1=nil
  it=nil
 it=__args(o_1,c_1);return FAIL if it==FAIL
@@ -57,7 +57,7 @@ _result_1 = it
 it=_result_1  
 end
 def addargs()
- _result_1=nil
+_result_1=nil
 _result_2=nil
 cls_1=nil
 i_1=nil
@@ -88,7 +88,7 @@ _result_2 = it
 it=_result_2  
 end
 def application()
- _result_1=nil
+_result_1=nil
 arg_1=nil
 klas_1=nil
 rule_1=nil
@@ -108,7 +108,7 @@ _result_1 = it
 it=_result_1  
 end
 def args(o_1,c_1)
- _result_1=nil
+_result_1=nil
 r_1=nil
  it=nil
 it=__args(o_1,c_1);return FAIL if it==FAIL
@@ -122,7 +122,7 @@ _result_1 = it};next FAIL if it==FAIL };return FAIL if it==FAIL
 it=_result_1  
 end
 def argsOpt(o_1,c_1)
- _result_1=nil
+_result_1=nil
  it=nil
 it=_or(proc{it=args(o_1,c_1);next FAIL if it==FAIL
 _result_1 = it},proc{it=empty();next FAIL if it==FAIL
@@ -131,7 +131,7 @@ _result_1 = it });return FAIL if it==FAIL
 it=_result_1  
 end
 def atomicHostExpr()
- _result_1=nil
+_result_1=nil
 s_1=nil
  it=nil
 it=([])
@@ -154,8 +154,8 @@ _result_1 = it};next FAIL if it==FAIL };return FAIL if it==FAIL
 it=_result_1  
 end
 def choice()
- _result_2=nil
 _result_1=nil
+_result_2=nil
 ary_1=nil
 delim_1=nil
 f_1=nil
@@ -193,8 +193,8 @@ _result_1 = it
 it=_result_1  
 end
 def className()
- _result_2=nil
 _result_1=nil
+_result_2=nil
 it_1=nil
 s_1=nil
  it=nil
@@ -223,14 +223,14 @@ _result_2 = it
 it=_result_2  
 end
 def collect(ors_1)
- _result_1=nil
+_result_1=nil
  it=nil
 it=(a=autovar; Seq[Or[{:ary=>ors_1.ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],Act[a]])
 _result_1 = it
 it=_result_1  
 end
 def eChar()
- _result_1=nil
+_result_1=nil
 _result_2=nil
 c_1=nil
 c_2=nil
@@ -259,14 +259,14 @@ _result_2 = it });return FAIL if it==FAIL
 it=_result_2  
 end
 def expression()
- _result_1=nil
+_result_1=nil
  it=nil
 it=choice();return FAIL if it==FAIL
 _result_1 = it
 it=_result_1  
 end
 def grammar()
- _result_1=nil
+_result_1=nil
 _result_2=nil
 name_1=nil
 parent_1=nil
@@ -317,7 +317,7 @@ _result_2 = it
 it=_result_2  
 end
 def igrammar()
- _result_1=nil
+_result_1=nil
 a_1=nil
 it_1=nil
  it=nil
@@ -351,15 +351,15 @@ _result_1 = it
 it=_result_1  
 end
 def inlineHostExpr()
- _result_1=nil
+_result_1=nil
  it=nil
 it=args('{','}');return FAIL if it==FAIL
 _result_1 = it
 it=_result_1  
 end
 def key()
- _result_2=nil
 _result_1=nil
+_result_2=nil
 args_1=nil
 n_1=nil
 name_1=nil
@@ -395,8 +395,8 @@ _result_2 = it });return FAIL if it==FAIL
 it=_result_2  
 end
 def modifier()
- _result_2=nil
 _result_1=nil
+_result_2=nil
 c_1=nil
 s_1=nil
  it=nil
@@ -423,8 +423,8 @@ _result_1 = it });return FAIL if it==FAIL
 it=_result_1  
 end
 def name()
- _result_2=nil
 _result_1=nil
+_result_2=nil
 it_1=nil
 s_1=nil
  it=nil
@@ -453,7 +453,7 @@ _result_2 = it
 it=_result_2  
 end
 def nameFirst()
- _result_1=nil
+_result_1=nil
  it=nil
 it=_or(proc{it=letter();next FAIL if it==FAIL
 _result_1 = it},proc{it=seq("_");next FAIL if it==FAIL
@@ -461,7 +461,7 @@ _result_1 = it});return FAIL if it==FAIL
 it=_result_1  
 end
 def nameRest()
- _result_1=nil
+_result_1=nil
  it=nil
 it=_or(proc{it=nameFirst();next FAIL if it==FAIL
 _result_1 = it},proc{it=digit();next FAIL if it==FAIL
@@ -469,7 +469,7 @@ _result_1 = it});return FAIL if it==FAIL
 it=_result_1  
 end
 def nr()
- _result_1=nil
+_result_1=nil
 _result_2=nil
 s_1=nil
  it=nil
@@ -485,11 +485,11 @@ _result_1 = it
 it=_result_1  
 end
 def number()
- _result_2=nil
 _result_1=nil
+_result_2=nil
 _result_3=nil
-c_2=nil
 c_1=nil
+c_2=nil
 regex_1=nil
  it=nil
 it=([])
@@ -539,13 +539,13 @@ _result_3 = it
 it=_result_3  
 end
 def prefixed()
- _result_4=nil
-_result_3=nil
-_result_2=nil
 _result_1=nil
+_result_2=nil
+_result_3=nil
+_result_4=nil
 append_1=nil
-c_2=nil
 c_1=nil
+c_2=nil
 e_1=nil
 expr_1=nil
 from_1=nil
@@ -708,7 +708,7 @@ _result_2 = it });return FAIL if it==FAIL
 it=_result_2  
 end
 def procargs()
- _result_1=nil
+_result_1=nil
 c_1=nil
  it=nil
 it=(@ary=[];@tmp=[])
@@ -725,7 +725,7 @@ _result_1 = it
 it=_result_1  
 end
 def procargs2()
- _result_1=nil
+_result_1=nil
 _result_2=nil
 a_1=nil
 cls_1=nil
@@ -758,17 +758,17 @@ _result_2 = it });return FAIL if it==FAIL
 it=_result_2  
 end
 def rubyarg()
- _result_4=nil
-_result_3=nil
-_result_2=nil
 _result_1=nil
-c_2=nil
+_result_2=nil
+_result_3=nil
+_result_4=nil
 c_1=nil
+c_2=nil
 e_1=nil
 n_1=nil
 regex_1=nil
-s_2=nil
 s_1=nil
+s_2=nil
  it=nil
 it=_or(proc{it=seq("`");next FAIL if it==FAIL
 it=expression();next FAIL if it==FAIL
@@ -863,8 +863,8 @@ _result_1 = it });return FAIL if it==FAIL
 it=_result_1  
 end
 def rule()
- _result_2=nil
 _result_1=nil
+_result_2=nil
 args_1=nil
 bnding_1=nil
 body_1=nil
@@ -896,7 +896,7 @@ _result_2 = it
 it=_result_2  
 end
 def ruleargs()
- _result_1=nil
+_result_1=nil
  it=nil
 it=argsOpt('(',')');return FAIL if it==FAIL
 autovar_1 = it
@@ -907,7 +907,7 @@ _result_1 = it};next FAIL if it==FAIL };return FAIL if it==FAIL
 it=_result_1  
 end
 def sequence()
- _result_1=nil
+_result_1=nil
 ary_1=nil
  it=nil
 it=([])
@@ -926,9 +926,9 @@ _result_1 = it
 it=_result_1  
 end
 def term()
- _result_2=nil
-_result_3=nil
 _result_1=nil
+_result_2=nil
+_result_3=nil
 cls_1=nil
 expr_1=nil
 it_1=nil

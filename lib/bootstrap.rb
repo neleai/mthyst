@@ -1,41 +1,41 @@
 class Amethyst < AmethystCore
 def _()
- _result_1=nil
+_result_1=nil
  it=nil
 it=space();return FAIL if it==FAIL
 _result_1 = it
 it=_result_1  
 end
 def _false()
- _result_1=nil
+_result_1=nil
  it=nil
 it=exactly(false);return FAIL if it==FAIL
 _result_1 = it
 it=_result_1  
 end
 def _true()
- _result_1=nil
+_result_1=nil
  it=nil
 it=exactly(true);return FAIL if it==FAIL
 _result_1 = it
 it=_result_1  
 end
 def alnum()
- _result_1=nil
+_result_1=nil
  it=nil
 it=letterOrDigit();return FAIL if it==FAIL
 _result_1 = it
 it=_result_1  
 end
 def alpha()
- _result_1=nil
+_result_1=nil
  it=nil
 it=letter();return FAIL if it==FAIL
 _result_1 = it
 it=_result_1  
 end
 def char()
- _result_1=nil
+_result_1=nil
 c_1=nil
  it=nil
 it=anything();return FAIL if it==FAIL
@@ -46,7 +46,7 @@ _result_1 = it
 it=_result_1  
 end
 def clas(cls_1)
- _result_1=nil
+_result_1=nil
 i_1=nil
  it=nil
 it=anything();return FAIL if it==FAIL
@@ -57,21 +57,21 @@ _result_1 = it
 it=_result_1  
 end
 def digit()
- _result_1=nil
+_result_1=nil
  it=nil
 it=regch(/[0-9]/);return FAIL if it==FAIL
 _result_1 = it
 it=_result_1  
 end
 def empty()
- _result_1=nil
+_result_1=nil
  it=nil
 it=(nil)
 _result_1 = it
 it=_result_1  
 end
 def endline()
- _result_1=nil
+_result_1=nil
  it=nil
 it=_or(proc{it=seq("\r\n");next FAIL if it==FAIL
 _result_1 = it},proc{it=seq("\r");next FAIL if it==FAIL
@@ -80,14 +80,14 @@ _result_1 = it});return FAIL if it==FAIL
 it=_result_1  
 end
 def eof()
- _result_1=nil
+_result_1=nil
  it=nil
 it=_lookahead(true){it=anything();next FAIL if it==FAIL};return FAIL if it==FAIL
 _result_1 = it
 it=_result_1  
 end
 def exactly(wanted_1)
- _result_1=nil
+_result_1=nil
 got_1=nil
  it=nil
 it=anything();return FAIL if it==FAIL
@@ -98,7 +98,7 @@ _result_1 = it
 it=_result_1  
 end
 def letter()
- _result_1=nil
+_result_1=nil
  it=nil
 it=_or(proc{it=lower();next FAIL if it==FAIL
 _result_1 = it},proc{it=upper();next FAIL if it==FAIL
@@ -106,7 +106,7 @@ _result_1 = it});return FAIL if it==FAIL
 it=_result_1  
 end
 def letterOrDigit()
- _result_1=nil
+_result_1=nil
  it=nil
 it=_or(proc{it=letter();next FAIL if it==FAIL
 _result_1 = it},proc{it=digit();next FAIL if it==FAIL
@@ -114,7 +114,7 @@ _result_1 = it});return FAIL if it==FAIL
 it=_result_1  
 end
 def listOf(rule_1,delim_1)
- _result_1=nil
+_result_1=nil
 f_1=nil
  it=nil
 it=_or(proc{it=apply(rule_1);next FAIL if it==FAIL
@@ -137,14 +137,14 @@ _result_1 = it });return FAIL if it==FAIL
 it=_result_1  
 end
 def lower()
- _result_1=nil
+_result_1=nil
  it=nil
 it=regch(/[a-z]/);return FAIL if it==FAIL
 _result_1 = it
 it=_result_1  
 end
 def regch(regex_1)
- _result_1=nil
+_result_1=nil
 c_1=nil
  it=nil
 it=char();return FAIL if it==FAIL
@@ -155,14 +155,14 @@ _result_1 = it
 it=_result_1  
 end
 def space()
- _result_1=nil
+_result_1=nil
  it=nil
 it=regch(/[\s\t\r\n\f]/);return FAIL if it==FAIL
 _result_1 = it
 it=_result_1  
 end
 def spaces()
- _result_1=nil
+_result_1=nil
  it=nil
 it=([])
 autovar_1 = it
@@ -177,7 +177,7 @@ _result_1 = it
 it=_result_1  
 end
 def token(s_1)
- _result_1=nil
+_result_1=nil
  it=nil
 it=spaces();return FAIL if it==FAIL
 it=seq(s_1);return FAIL if it==FAIL
@@ -185,14 +185,14 @@ _result_1 = it
 it=_result_1  
 end
 def upper()
- _result_1=nil
+_result_1=nil
  it=nil
 it=regch(/[A-Z]/);return FAIL if it==FAIL
 _result_1 = it
 it=_result_1  
 end
 def word()
- _result_1=nil
+_result_1=nil
  it=nil
 it=_or(proc{it=alpha();next FAIL if it==FAIL
 _result_1 = it},proc{it=seq("_");next FAIL if it==FAIL
@@ -200,7 +200,7 @@ _result_1 = it});return FAIL if it==FAIL
 it=_result_1  
 end
 def xdigit()
- _result_1=nil
+_result_1=nil
  it=nil
 it=regch(/[0-9a-fA-F]/);return FAIL if it==FAIL
 _result_1 = it
@@ -230,7 +230,7 @@ end
 
 class AmethystParser < Amethyst
 def __args(o_1,c_1)
- _result_1=nil
+_result_1=nil
 r_1=nil
  it=nil
 it=seq(o_1);return FAIL if it==FAIL
@@ -251,7 +251,7 @@ _result_1 = it
 it=_result_1  
 end
 def _args(o_1,c_1)
- _result_1=nil
+_result_1=nil
 r_1=nil
  it=nil
 it=__args(o_1,c_1);return FAIL if it==FAIL
@@ -261,7 +261,7 @@ _result_1 = it
 it=_result_1  
 end
 def addargs()
- _result_1=nil
+_result_1=nil
 name_1=nil
 result_1=nil
  it=nil
@@ -280,7 +280,7 @@ _result_1 = it
 it=_result_1  
 end
 def application()
- _result_1=nil
+_result_1=nil
 arg_1=nil
 klas_1=nil
 rule_1=nil
@@ -300,7 +300,7 @@ _result_1 = it
 it=_result_1  
 end
 def args(o_1,c_1)
- _result_1=nil
+_result_1=nil
 r_1=nil
  it=nil
 it=__args(o_1,c_1);return FAIL if it==FAIL
@@ -314,7 +314,7 @@ _result_1 = it};next FAIL if it==FAIL };return FAIL if it==FAIL
 it=_result_1  
 end
 def argsOpt(o_1,c_1)
- _result_1=nil
+_result_1=nil
  it=nil
 it=_or(proc{it=args(o_1,c_1);next FAIL if it==FAIL
 _result_1 = it},proc{it=empty();next FAIL if it==FAIL
@@ -323,7 +323,7 @@ _result_1 = it });return FAIL if it==FAIL
 it=_result_1  
 end
 def atomicHostExpr()
- _result_1=nil
+_result_1=nil
 s_1=nil
  it=nil
 it=([])
@@ -346,7 +346,7 @@ _result_1 = it};next FAIL if it==FAIL };return FAIL if it==FAIL
 it=_result_1  
 end
 def choice()
- _result_1=nil
+_result_1=nil
 ary_1=nil
  it=nil
 it=listOf('sequence',proc{it=token("|");return FAIL if it==FAIL
@@ -358,7 +358,7 @@ _result_1 = it
 it=_result_1  
 end
 def className()
- _result_1=nil
+_result_1=nil
 it_1=nil
  it=nil
 it=token("");return FAIL if it==FAIL
@@ -381,14 +381,14 @@ _result_1 = it
 it=_result_1  
 end
 def collect(ors_1)
- _result_1=nil
+_result_1=nil
  it=nil
 it=(a=autovar; Seq[Or[{:ary=>ors_1.ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],Act[a]])
 _result_1 = it
 it=_result_1  
 end
 def eChar()
- _result_1=nil
+_result_1=nil
 c_1=nil
  it=nil
 it=_or(proc{it=seq("\\");next FAIL if it==FAIL
@@ -401,14 +401,14 @@ _result_1 = it});return FAIL if it==FAIL
 it=_result_1  
 end
 def expression()
- _result_1=nil
+_result_1=nil
  it=nil
 it=choice();return FAIL if it==FAIL
 _result_1 = it
 it=_result_1  
 end
 def grammar()
- _result_1=nil
+_result_1=nil
 name_1=nil
 parent_1=nil
 rules_1=nil
@@ -437,7 +437,7 @@ _result_1 = it
 it=_result_1  
 end
 def igrammar()
- _result_1=nil
+_result_1=nil
 a_1=nil
 it_1=nil
  it=nil
@@ -471,14 +471,14 @@ _result_1 = it
 it=_result_1  
 end
 def inlineHostExpr()
- _result_1=nil
+_result_1=nil
  it=nil
 it=args('{','}');return FAIL if it==FAIL
 _result_1 = it
 it=_result_1  
 end
 def key()
- _result_1=nil
+_result_1=nil
 args_1=nil
 n_1=nil
 name_1=nil
@@ -504,7 +504,7 @@ _result_1 = it });return FAIL if it==FAIL
 it=_result_1  
 end
 def modifier()
- _result_1=nil
+_result_1=nil
 c_1=nil
  it=nil
 it=_or(proc{it=term();next FAIL if it==FAIL
@@ -525,7 +525,7 @@ _result_1 = it });return FAIL if it==FAIL
 it=_result_1  
 end
 def name()
- _result_1=nil
+_result_1=nil
 it_1=nil
  it=nil
 it=token("");return FAIL if it==FAIL
@@ -548,7 +548,7 @@ _result_1 = it
 it=_result_1  
 end
 def nameFirst()
- _result_1=nil
+_result_1=nil
  it=nil
 it=_or(proc{it=letter();next FAIL if it==FAIL
 _result_1 = it},proc{it=seq("_");next FAIL if it==FAIL
@@ -556,7 +556,7 @@ _result_1 = it});return FAIL if it==FAIL
 it=_result_1  
 end
 def nameRest()
- _result_1=nil
+_result_1=nil
  it=nil
 it=_or(proc{it=nameFirst();next FAIL if it==FAIL
 _result_1 = it},proc{it=digit();next FAIL if it==FAIL
@@ -564,7 +564,7 @@ _result_1 = it});return FAIL if it==FAIL
 it=_result_1  
 end
 def nr()
- _result_1=nil
+_result_1=nil
  it=nil
 it=_lookahead(true){it=name();next FAIL if it==FAIL
 it=argsOpt('(',')');next FAIL if it==FAIL
@@ -573,7 +573,7 @@ _result_1 = it
 it=_result_1  
 end
 def number()
- _result_1=nil
+_result_1=nil
  it=nil
 it=([])
 autovar_1 = it
@@ -590,7 +590,7 @@ _result_1 = it
 it=_result_1  
 end
 def prefixed()
- _result_1=nil
+_result_1=nil
 append_1=nil
 e_1=nil
 expr_1=nil
@@ -654,7 +654,7 @@ _result_1 = it });return FAIL if it==FAIL
 it=_result_1  
 end
 def procargs()
- _result_1=nil
+_result_1=nil
 c_1=nil
  it=nil
 it=(@ary=[];@tmp=[])
@@ -671,7 +671,7 @@ _result_1 = it
 it=_result_1  
 end
 def procargs2()
- _result_1=nil
+_result_1=nil
 a_1=nil
  it=nil
 it=_or(proc{it=clas(Args);next FAIL if it==FAIL
@@ -692,7 +692,7 @@ _result_1 = it });return FAIL if it==FAIL
 it=_result_1  
 end
 def rubyarg()
- _result_1=nil
+_result_1=nil
 e_1=nil
 n_1=nil
 s_1=nil
@@ -751,7 +751,7 @@ _result_1 = it});return FAIL if it==FAIL
 it=_result_1  
 end
 def rule()
- _result_1=nil
+_result_1=nil
 args_1=nil
 bnding_1=nil
 body_1=nil
@@ -777,7 +777,7 @@ _result_1 = it
 it=_result_1  
 end
 def ruleargs()
- _result_1=nil
+_result_1=nil
  it=nil
 it=argsOpt('(',')');return FAIL if it==FAIL
 autovar_1 = it
@@ -788,7 +788,7 @@ _result_1 = it};next FAIL if it==FAIL };return FAIL if it==FAIL
 it=_result_1  
 end
 def sequence()
- _result_1=nil
+_result_1=nil
 ary_1=nil
  it=nil
 it=([])
@@ -807,7 +807,7 @@ _result_1 = it
 it=_result_1  
 end
 def term()
- _result_1=nil
+_result_1=nil
 cls_1=nil
 expr_1=nil
 it_1=nil
@@ -882,7 +882,7 @@ end
 
 class AmethystOptimizer < Amethyst
 def arg()
- _result_1=nil
+_result_1=nil
 ary_1=nil
  it=nil
 it=_or(proc{it=clas(Args);next FAIL if it==FAIL
@@ -922,7 +922,7 @@ _result_1 = it});return FAIL if it==FAIL
 it=_result_1  
 end
 def args()
- _result_1=nil
+_result_1=nil
 a_1=nil
  it=nil
 it=_or(proc{it=clas(Array);next FAIL if it==FAIL
@@ -951,7 +951,7 @@ _result_1 = it });return FAIL if it==FAIL
 it=_result_1  
 end
 def itrans()
- _result_1=nil
+_result_1=nil
 r_1=nil
  it=nil
 it=([])
@@ -970,7 +970,7 @@ _result_1 = it
 it=_result_1  
 end
 def trans()
- _result_1=nil
+_result_1=nil
 append_1=nil
 args_1=nil
 ary_1=nil
@@ -1174,14 +1174,14 @@ _result_1 = it };next FAIL if it==FAIL });return FAIL if it==FAIL
 it=_result_1  
 end
 def transfn()
- _result_1=nil
+_result_1=nil
  it=nil
 it=trans();return FAIL if it==FAIL
 _result_1 = it
 it=_result_1  
 end
 def transs()
- _result_1=nil
+_result_1=nil
 t_1=nil
  it=nil
 it=anything();return FAIL if it==FAIL
@@ -1207,7 +1207,7 @@ end
 
 class AmethystOptimizer2 < AmethystOptimizer
 def trans()
- _result_1=nil
+_result_1=nil
 ary_1=nil
  it=nil
 it=_or(proc{it=clas(Or);next FAIL if it==FAIL
@@ -1254,7 +1254,7 @@ end
 
 class Traverser < Amethyst
 def traverse()
- _result_1=nil
+_result_1=nil
 it_1=nil
 key_1=nil
 this_1=nil
@@ -1286,7 +1286,7 @@ _result_1 = it
 it=_result_1  
 end
 def traverse_item()
- _result_1=nil
+_result_1=nil
 a_1=nil
  it=nil
 it=_or(proc{it=visit();next FAIL if it==FAIL
@@ -1318,14 +1318,14 @@ end
 
 class Seq_Or_Optimizer < Traverser
 def root()
- _result_1=nil
+_result_1=nil
  it=nil
 it=traverse();return FAIL if it==FAIL
 _result_1 = it
 it=_result_1  
 end
 def visit()
- _result_1=nil
+_result_1=nil
  it=nil
 it=_or(proc{it=clas(Seq);next FAIL if it==FAIL
 autovar_1 = it
@@ -1345,7 +1345,7 @@ end
 
 class Analyze_Variables2 < Traverser
 def flat()
- _result_1=nil
+_result_1=nil
  it=nil
 it=([])
 autovar_1 = it
@@ -1366,7 +1366,7 @@ _result_1 = it
 it=_result_1  
 end
 def itrans()
- _result_1=nil
+_result_1=nil
 rules_1=nil
  it=nil
 it=([])
@@ -1402,7 +1402,7 @@ _result_1 = it
 it=_result_1  
 end
 def root()
- _result_1=nil
+_result_1=nil
  it=nil
 it=self['self']
 autovar_1 = it
@@ -1417,7 +1417,7 @@ _result_1 = it };next FAIL if it==FAIL };return FAIL if it==FAIL
 it=_result_1  
 end
 def visit()
- _result_1=nil
+_result_1=nil
 a_1=nil
  it=nil
 it=_or(proc{it=clas(Args);next FAIL if it==FAIL
@@ -1453,7 +1453,7 @@ end
 
 class Dead_Code_Detector < AmethystOptimizer
 def trans()
- _result_1=nil
+_result_1=nil
 args_1=nil
 body_1=nil
 locals_1=nil
@@ -1538,7 +1538,7 @@ _result_1 = it});return FAIL if it==FAIL
 it=_result_1  
 end
 def vars_in()
- _result_1=nil
+_result_1=nil
 ary_1=nil
 name_1=nil
  it=nil
@@ -1606,7 +1606,7 @@ end
 
 class Dead_Code_Deleter < AmethystOptimizer
 def trans()
- _result_1=nil
+_result_1=nil
 append_1=nil
 args_1=nil
 body_1=nil
@@ -1681,7 +1681,7 @@ end
 
 class Communize_Or < AmethystOptimizer
 def trans()
- _result_1=nil
+_result_1=nil
 ary_1=nil
 first_1=nil
 fst_1=nil
@@ -1730,7 +1730,7 @@ end
 
 class Move_Assignments < AmethystOptimizer
 def move(append_1,name_1)
- _result_1=nil
+_result_1=nil
 ary_1=nil
 el_1=nil
 enter_1=nil
@@ -1788,7 +1788,7 @@ _result_1 = it });return FAIL if it==FAIL
 it=_result_1  
 end
 def trans()
- _result_1=nil
+_result_1=nil
 append_1=nil
 expr_1=nil
 name_1=nil
@@ -1819,7 +1819,7 @@ def varname(vh,name,number)
 end
 class AmethystTranslator < Amethyst
 def arg()
- _result_1=nil
+_result_1=nil
 a_1=nil
 name_1=nil
 number_1=nil
@@ -1878,7 +1878,7 @@ _result_1 = it});return FAIL if it==FAIL
 it=_result_1  
 end
 def args()
- _result_1=nil
+_result_1=nil
 a_1=nil
  it=nil
 it=_or(proc{it=clas(Array);next FAIL if it==FAIL
@@ -1909,14 +1909,14 @@ _result_1 = it });return FAIL if it==FAIL
 it=_result_1  
 end
 def failwrap(s_1)
- _result_1=nil
+_result_1=nil
  it=nil
 it=("#{s_1};#{@returnword} FAIL if it==FAIL" )
 _result_1 = it
 it=_result_1  
 end
 def itrans()
- _result_1=nil
+_result_1=nil
 r_1=nil
  it=nil
 it=([])
@@ -1935,7 +1935,7 @@ _result_1 = it
 it=_result_1  
 end
 def rw(word_1,prc_1)
- _result_1=nil
+_result_1=nil
 x_1=nil
  it=nil
 it=(rwo=@returnword;@returnword=word_1)
@@ -1946,7 +1946,7 @@ _result_1 = it
 it=_result_1  
 end
 def trans()
- _result_1=nil
+_result_1=nil
 append_1=nil
 argss_1=nil
 body_1=nil
@@ -1990,7 +1990,7 @@ it=_pass(false,autovar_5){it=trans();next FAIL if it==FAIL
 body_1 = it
 _result_1 = it};next FAIL if it==FAIL
 it=_result_1 });next FAIL if it==FAIL
-it=("def #{name_1}(#{argss_1})\n #{@varhash.select{|nam,b| (nam!="autovar") && (!@src.args.map{|l| l[0]}.include?(nam))}.map{|nam,b| b.map{|bi,no| "#{varname(@varhash,nam,bi)}=nil\n"}}.sort*""} it=nil\n#{body_1} \nend\n")
+it=("def #{name_1}(#{argss_1})\n#{s=@varhash.select{|nam,b| (nam!="autovar") && (!@src.args.map{|l| l[0]}.include?(nam))}.map{|nam,b| b.map{|bi,no| "#{varname(@varhash,nam,bi)}=nil\n"}}.flatten.sort*""} it=nil\n#{body_1} \nend\n")
 _result_1 = it };next FAIL if it==FAIL },proc{it=clas(Or);next FAIL if it==FAIL
 autovar_6 = it
 it=_pass(true,autovar_6){it=rw('next', proc{it=([])
@@ -2135,7 +2135,7 @@ _result_1 = it });return FAIL if it==FAIL
 it=_result_1  
 end
 def transfn()
- _result_1=nil
+_result_1=nil
 t_1=nil
  it=nil
 it=trans();return FAIL if it==FAIL
@@ -2145,7 +2145,7 @@ _result_1 = it
 it=_result_1  
 end
 def transs()
- _result_1=nil
+_result_1=nil
 t_1=nil
  it=nil
 it=anything();return FAIL if it==FAIL
