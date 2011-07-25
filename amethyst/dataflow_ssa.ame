@@ -28,10 +28,11 @@ class Dataflow < Traverser
 	  if exp.expr.is_a?(Local) && !exp.append
       o=ssanum(exp.expr)
       n=newssanum(name)
+			edges.add(exp,n)
       edges.add(o,n)
     else
-      n=newssanum(name)
       edges.add(exp.expr,exp)
+      n=newssanum(name)
       edges.add(exp,n)
     end
 	end
@@ -49,16 +50,16 @@ class Dataflow < Traverser
 end
 
 amethyst Dataflow < Traverser {
-	root = @self=>Rule[ {@@bnding=@bnding} traverse {[@@edges,@@marked+[@body[-1]]]}]
+	root = @self=>Rule[ {@@bnding=@bnding} traverse {@reachable=@@edges.reverse.reachable(@@marked+[@body[-1]]); [@@edges,@@marked+[@body[-1]]]}]
 	
 	visit = Apply[:name vars_in:var{@@marked+=var} traverse]
 				| Or[	{join=[];old=oldssanums.clone} ({@@oldssanums=old.clone} traverse_item {join<<oldssanums.clone})* {or_end(join)} @self ]
 				| Many[  @o=>vars_in:var {@@marked+=var} { prev=ssanums.clone} traverse {many_end(prev)} @self]
 				| Pass[@var=>vars_in:var {@@marked+=var} traverse]
 				| Act[ traverse:this {@@marked<<this if @pred} 
-							 @ary=>[vars_in]:var ] -> var.each{|v| edges.add(v,this); edges.add(this,v);}; this
+							 @ary=>[vars_in]:var ] -> var.each{|v| edges.add(ssanum(v),this); edges.add(this,newssanum(v));}; this
 				| Set[   traverse  {set_end(@self) }    @self] 
-				| Result[@vars=>[vars_in]:var traverse:this] -> var.each{|w| @@edges.add(this,w) } ; this
+				| Result[@vars=>[vars_in]:var traverse:this] -> var.each{|w| @@edges.add(ssanum(w),this) } ; this
 				
 				vars_in={ary=[]}
 								( Global[ @self:ary[]  {@@marked<<@self} .*]								

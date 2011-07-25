@@ -572,7 +572,7 @@ _result_1 = it
 it=_result_1
 it=prefixed();next FAIL if it==FAIL
 it_1 = it
-it=(from_1=_Pass(from_1,it_1)) },proc{it=("[")
+it=(from_1=Pass[from_1,it_1]) },proc{it=("[")
 s_1 = it
 it=spaces();next FAIL if it==FAIL
 it=seq(s_1);next FAIL if it==FAIL

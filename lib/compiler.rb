@@ -8,13 +8,14 @@ class Gram
 		}
 	end
 	def opt(r)
-      debug=true
+      debug=false
 			pipeline=[Seq_Or_Optimizer,Move_Assignments2,Seq_Or_Optimizer,Communize_Or3,Seq_Or_Optimizer,Dead_Code_Detector2,Dead_Code_Deleter2,Seq_Or_Optimizer]
 			pipeline.each{|o|
 	      puts r.inspect if debug
       	r=o.new.parse(:root,r)
 			}
-	#		puts Dataflow.new.parse(:root,r).inspect
+			puts Dataflow.new.parse(:root,r).inspect
+			puts r.inspect
       @rules[r.name]=r 
 	end
 	def getrule(from)

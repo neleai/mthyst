@@ -622,7 +622,7 @@ autovar_1=@input;r=it=_lookahead(true){it=_();next FAIL if it==FAIL};break FAIL 
 it=_or(proc{it=token("=>");next FAIL if it==FAIL
 it=prefixed();next FAIL if it==FAIL
 it_1 = it
-it=(from_1=_Pass(from_1,it_1)) },proc{it=token("[");next FAIL if it==FAIL
+it=(from_1=Pass[from_1,it_1]) },proc{it=token("[");next FAIL if it==FAIL
 it=expression();next FAIL if it==FAIL
 it_1 = it
 it=(from_1=Enter[from_1,it_1])

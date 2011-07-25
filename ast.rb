@@ -49,20 +49,19 @@ def autovar
 	Local["autovar",$av]
 end
 
-def _Enter(from,to)
-	_Pass(from,to,true)
-end
 class Enter;end
 class <<Enter
 	def [](from,to)
-		_Pass(from,to,true)
+		Pass[from,to,true]
 	end
 end
-def _Pass(from,to,enter=nil)
-	a=autovar
-	Seq[_Set(a,from), Pass[{:to=>to,:enter=>enter,:var=>a}]]
-end
 
+class <<Pass
+	def [](from,to,enter=nil)
+		a=autovar
+		Seq[_Set(a,from), Pass.create({:to=>to,:enter=>enter,:var=>a})]
+	end
+end
 def _Set(name,expr,append=nil)
   Set[{:name=>_Local(name),:expr=>expr,:append=>append}]
 end
