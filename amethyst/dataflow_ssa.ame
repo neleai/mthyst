@@ -21,6 +21,17 @@ class Dataflow < Traverser
       end
     }
 	end
+	def set_end(exp)
+	  if exp.expr.is_a?(Local) && !exp.append
+      o=ssanum(exp.expr)
+      n=newssanum(exp.expr)
+      edges.add(o,n)
+    else
+      n=newssanum(exp.name)
+      edges.add(exp.expr,exp)
+      edges.add(exp,n)
+    end
+	end
 end
 
 amethyst Dataflow < Traverser {
@@ -32,7 +43,7 @@ amethyst Dataflow < Traverser {
 				| Pass[@var=>vars_in:var {@@marked+=var} traverse]
 				| Act[ traverse:this {@@marked<<this if @pred} 
 							 @ary=>[vars_in]:var ] -> var.each{|v| edges.add(v,this); edges.add(this,v);}; this
-				| Set[   traverse  {@@edges.add(@expr,@self);name=newssanum(@name);@@edges.add(@self,name) }    @self] 
+				| Set[   traverse  {set_end(@self) }    @self] 
 				| Result[@vars=>[vars_in]:var traverse:this] -> var.each{|w| @@edges.add(this,w) } ; this
 				
 				vars_in={ary=[]}

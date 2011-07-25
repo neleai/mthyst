@@ -5,3 +5,4 @@ persistence
 optimizer simplifying =>[ ] to []
 split to separate parser and traverser 
 split to traverser and modifier and dataflow_analyzer
+make AmethystModule +include to mimic ruby module
