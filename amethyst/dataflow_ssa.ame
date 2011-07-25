@@ -1,0 +1,37 @@
+$ssanums=Hash.new(0)
+$oldssanums=Hash.new(0)
+def ssanum(var)
+	[var[0],$oldssanums[var]]
+end
+def newssanum(var)
+	$ssanums[var]+=1
+	$oldssanums[var]=$ssanums[var]
+	ssanum(var)
+end
+
+amethyst Dataflow < Traverser {
+	root = @self=>Rule[{@@edges=Oriented_Graph.new ; @@marked=[]} {@@bnding=@bnding} traverse {[@@edges,@@marked]}]
+	
+	visit = Apply[:name vars_in:var{@@marked+=var} traverse]
+				| Or[	traverse]
+				| Many[  @o=>vars_in:var {@@marked+=var} traverse]
+				| Pass[@var=>vars_in:var {@@marked+=var} traverse]
+				| Act[ traverse:this {@@marked<<this if @pred} 
+							 @ary=>[vars_in]:var ] -> var.each{|v| @@edges.add(v,this); @@edges.add(this,v);}; this
+				| Set[   traverse  {@@edges.add(@expr,@self);name=newssanum(@name);@@edges.add(@self,name) }    @self] 
+				| Result[@vars=>[vars_in]:var traverse:this] -> var.each{|w| @@edges.add(this,w) } ; this
+				
+				vars_in={ary=[]}
+								( Global[ @self:ary[]  {@@marked<<@self} .*]								
+								| Act[ @self:ary[] .*]
+                | Key[ @self:ary[]    {@@marked<<@self} .*]
+								| Result[ @self:ary[] ]
+								| Strin[ vars_in:ary[] ]
+								| Args[ vars_in:ary[] ]
+								| Set[ @name=>vars_in:ary[] ]
+								| Local[:name {@@marked<<@self if name=="_result"} @self:ary[] ]
+								| anything
+								)* -> ary
+}
+
+

@@ -1,4 +1,5 @@
-$:.unshift 'lib'
+$:.unshift '..'
+$:.unshift '../lib'
 require 'graph'
 require 'pp'
 require 'amethyst'
