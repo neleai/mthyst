@@ -1,23 +1,37 @@
-$ssanums=Hash.new(0)
-$oldssanums=Hash.new(0)
-def ssanum(var)
-	[var[0],$oldssanums[var]]
-end
-def newssanum(var)
-	$ssanums[var]+=1
-	$oldssanums[var]=$ssanums[var]
-	ssanum(var)
+class Dataflow < Traverser
+	attr_accessor :ssanums,:oldssanums,:edges
+	def initialize
+		@edges=Oriented_Graph.new
+		@marked=[]
+		@ssanums=Hash.new(0)
+		@oldssanums=Hash.new(0)
+	end
+	def ssanum(var)
+		[var[0],oldssanums[var]]
+	end
+	def newssanum(var)
+		ssanums[var]+=1
+		oldssanums[var]=ssanums[var]
+		ssanum(var)
+	end
+	def many_end(prev)
+	  ssanums.each{|var,num|
+      if prev[var]!=num
+        edges.add([var[0],ssanums[var]],[var[0],prev[var]] )
+      end
+    }
+	end
 end
 
 amethyst Dataflow < Traverser {
-	root = @self=>Rule[{@@edges=Oriented_Graph.new ; @@marked=[]} {@@bnding=@bnding} traverse {[@@edges,@@marked]}]
+	root = @self=>Rule[ {@@bnding=@bnding} traverse {[@@edges,@@marked]}]
 	
 	visit = Apply[:name vars_in:var{@@marked+=var} traverse]
 				| Or[	traverse]
-				| Many[  @o=>vars_in:var {@@marked+=var} traverse]
+				| Many[  @o=>vars_in:var {@@marked+=var} { prev=ssanums.clone} traverse {many_end(prev)} @self]
 				| Pass[@var=>vars_in:var {@@marked+=var} traverse]
 				| Act[ traverse:this {@@marked<<this if @pred} 
-							 @ary=>[vars_in]:var ] -> var.each{|v| @@edges.add(v,this); @@edges.add(this,v);}; this
+							 @ary=>[vars_in]:var ] -> var.each{|v| edges.add(v,this); edges.add(this,v);}; this
 				| Set[   traverse  {@@edges.add(@expr,@self);name=newssanum(@name);@@edges.add(@self,name) }    @self] 
 				| Result[@vars=>[vars_in]:var traverse:this] -> var.each{|w| @@edges.add(this,w) } ; this
 				
