@@ -19,9 +19,9 @@ def a2ruby(s)
 #puts par.inspect
 par= Move_Assignments.new.parse(:itrans,par)
 #puts par.inspect
-#par=Dead_Code_Detector.new.parse(:itrans,par)
+par=Dead_Code_Detector.new.parse(:itrans,par)
 #puts par.inspect
-#par=Dead_Code_Deleter.new.parse(:itrans,par)
+par=Dead_Code_Deleter.new.parse(:itrans,par)
 #puts par.inspect
 #par= Move_Assignments.new.parse(:itrans,par)
 #	par=Dead_Code_Detector.new.parse(:itrans,par)

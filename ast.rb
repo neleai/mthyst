@@ -116,9 +116,8 @@ $varhash={}
 def _Local(name)
 		return name if !name.is_a?(String)
 		bnding=instance_eval{@bnding}
-		#return Local[name,bnding]
 		l=Local[name,bnding]
-		return $varhash[l] if $varhash[l]
+		#return $varhash[l] if $varhash[l]
 		$varhash[l]=l
 		instance_eval{@locals << $varhash[l] if @locals}
 		$varhash[l]
