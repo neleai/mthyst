@@ -16,19 +16,13 @@ it=(c_1.is_a? String )||FAIL;return FAIL if it==FAIL
 it=c_1
 _result_1 = it
 it=_result_1
-autovar_1 = it
-it=(autovar_1)
 c_2 = it
 it=(regex_1.match(c_2))||FAIL;return FAIL if it==FAIL
 it=c_2
 _result_2 = it
 it=_result_2
-autovar_2 = it
-it=(autovar_2)
 _result_3 = it
 it=_result_3
-autovar_3 = it
-it=(autovar_3)
 _result_4 = it
 it=_result_4  
 end
@@ -46,8 +40,6 @@ it=(wanted_1 == got_1)||FAIL;return FAIL if it==FAIL
 it=wanted_1
 _result_1 = it
 it=_result_1
-autovar_1 = it
-it=(autovar_1)
 _result_2 = it
 it=_result_2  
 end
@@ -65,8 +57,6 @@ it=(wanted_1 == got_1)||FAIL;return FAIL if it==FAIL
 it=wanted_1
 _result_1 = it
 it=_result_1
-autovar_1 = it
-it=(autovar_1)
 _result_2 = it
 it=_result_2  
 end
@@ -122,15 +112,11 @@ it=(c_1.is_a? String )||FAIL;return FAIL if it==FAIL
 it=c_1
 _result_1 = it
 it=_result_1
-autovar_1 = it
-it=(autovar_1)
 c_2 = it
 it=(regex_1.match(c_2))||FAIL;return FAIL if it==FAIL
 it=c_2
 _result_2 = it
 it=_result_2
-autovar_2 = it
-it=(autovar_2)
 _result_3 = it
 it=_result_3  
 end
@@ -223,15 +209,11 @@ it=(c_1.is_a? String )||FAIL;return FAIL if it==FAIL
 it=c_1
 _result_1 = it
 it=_result_1
-autovar_1 = it
-it=(autovar_1)
 c_2 = it
 it=(regex_1.match(c_2))||FAIL;return FAIL if it==FAIL
 it=c_2
 _result_2 = it
 it=_result_2
-autovar_2 = it
-it=(autovar_2)
 _result_3 = it
 it=_result_3  
 end
@@ -247,8 +229,6 @@ it=(c_1.is_a? String )||FAIL;return FAIL if it==FAIL
 it=c_1
 _result_1 = it
 it=_result_1
-autovar_1 = it
-it=(autovar_1)
 c_2 = it
 it=(regex_1.match(c_2))||FAIL;return FAIL if it==FAIL
 it=c_2
@@ -271,15 +251,11 @@ it=(c_1.is_a? String )||FAIL;return FAIL if it==FAIL
 it=c_1
 _result_1 = it
 it=_result_1
-autovar_1 = it
-it=(autovar_1)
 c_2 = it
 it=(regex_1.match(c_2))||FAIL;return FAIL if it==FAIL
 it=c_2
 _result_2 = it
 it=_result_2
-autovar_2 = it
-it=(autovar_2)
 _result_3 = it
 it=_result_3  
 end
@@ -295,7 +271,7 @@ regex_1=nil
 it=([])
 autovar_1 = it
 while true
-autovar_5=@input;r=it=(/[\s\t\r\n\f]/)
+autovar_2=@input;r=it=(/[\s\t\r\n\f]/)
 regex_1 = it
 it=anything();break FAIL if it==FAIL
 c_1 = it
@@ -303,23 +279,17 @@ it=(c_1.is_a? String )||FAIL;break FAIL if it==FAIL
 it=c_1
 _result_1 = it
 it=_result_1
-autovar_2 = it
-it=(autovar_2)
 c_2 = it
 it=(regex_1.match(c_2))||FAIL;break FAIL if it==FAIL
 it=c_2
 _result_2 = it
 it=_result_2
-autovar_3 = it
-it=(autovar_3)
 _result_3 = it
 it=_result_3
-autovar_4 = it
-it=(autovar_4)
 autovar_1||=[];_append(autovar_1,it) 
  break FAIL if r==FAIL
- (autovar_5=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_5
+ (autovar_2=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_2
 it=autovar_1
 _result_4 = it
 it=_result_4  
@@ -348,15 +318,11 @@ it=(c_1.is_a? String )||FAIL;return FAIL if it==FAIL
 it=c_1
 _result_1 = it
 it=_result_1
-autovar_1 = it
-it=(autovar_1)
 c_2 = it
 it=(regex_1.match(c_2))||FAIL;return FAIL if it==FAIL
 it=c_2
 _result_2 = it
 it=_result_2
-autovar_2 = it
-it=(autovar_2)
 _result_3 = it
 it=_result_3  
 end
@@ -384,15 +350,11 @@ it=(c_1.is_a? String )||FAIL;return FAIL if it==FAIL
 it=c_1
 _result_1 = it
 it=_result_1
-autovar_1 = it
-it=(autovar_1)
 c_2 = it
 it=(regex_1.match(c_2))||FAIL;return FAIL if it==FAIL
 it=c_2
 _result_2 = it
 it=_result_2
-autovar_2 = it
-it=(autovar_2)
 _result_3 = it
 it=_result_3  
 end

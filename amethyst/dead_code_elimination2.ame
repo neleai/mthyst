@@ -1,5 +1,5 @@
 amethyst Dead_Code_Detector2 < Traverser {
-	root = @self=>Rule[{@@edges=Oriented_Graph.new ; @@marked=[]} {@@bnding=@bnding} traverse {@@edges.reachable(@@marked)}:reachable {@reachable=reachable} @self]
+	root = @self=>Rule[{@@edges=Oriented_Graph.new ; @@marked=[@body[-1]]} {@@bnding=@bnding} traverse {@@edges.reachable(@@marked)}:reachable {@reachable=reachable} @self]
 	
 	visit = Apply[:name vars_in:var{@@marked+=var} traverse]
 				| Pass[@var=>vars_in:var {@@marked+=var} traverse]
@@ -17,7 +17,7 @@ amethyst Dead_Code_Detector2 < Traverser {
 								| Strin[ vars_in:ary[] ]
 								| Args[ vars_in:ary[] ]
 								| Set[ @name=>vars_in:ary[] ]
-								| Local[:name {@@marked<<@self if name=="_result"} @self:ary[] ]
+								| Local[:name  @self:ary[] ]
 								| anything
 								)* -> ary
 }

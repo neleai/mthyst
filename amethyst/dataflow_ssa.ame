@@ -46,7 +46,7 @@ class Dataflow < Traverser
 end
 
 amethyst Dataflow < Traverser {
-	root = @self=>Rule[ {@@bnding=@bnding} traverse {[@@edges,@@marked]}]
+	root = @self=>Rule[ {@@bnding=@bnding} traverse {[@@edges,@@marked+[@body[-1]]]}]
 	
 	visit = Apply[:name vars_in:var{@@marked+=var} traverse]
 				| Or[	{join=[];old=oldssanums.clone} ({@@oldssanums=old.clone} traverse_item {join<<oldssanums.clone})* {or_end(join)} @self ]
@@ -65,7 +65,7 @@ amethyst Dataflow < Traverser {
 								| Strin[ vars_in:ary[] ]
 								| Args[ vars_in:ary[] ]
 								| Set[ @name=>vars_in:ary[] ]
-								| Local[:name {@@marked<<@self if name=="_result"} @self:ary[] ]
+								| Local[:name @self:ary[] ]
 								| anything
 								)* -> ary
 }

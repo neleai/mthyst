@@ -20,7 +20,6 @@ end
 class AmethystParser < Amethyst
 def __args(o_1,c_1)
 _result_1=nil
-_result_2=nil
 r_1=nil
 s_1=nil
  it=nil
@@ -29,8 +28,6 @@ it=("")
 s_1 = it
 it=spaces();return FAIL if it==FAIL
 it=seq(s_1);return FAIL if it==FAIL
-_result_1 = it
-it=_result_1
 it=([])
 autovar_1 = it
 while true
@@ -43,8 +40,8 @@ it=autovar_1
 r_1 = it
 it=seq(c_1);return FAIL if it==FAIL
 it=r_1
-_result_2 = it
-it=_result_2  
+_result_1 = it
+it=_result_1  
 end
 def _args(o_1,c_1)
 _result_1=nil
@@ -65,7 +62,7 @@ name_1=nil
 result_1=nil
  it=nil
 while true
-autovar_3=@input;r=it=(Args)
+autovar_2=@input;r=it=(Args)
 cls_1 = it
 it=anything();break FAIL if it==FAIL
 i_1 = it
@@ -74,15 +71,13 @@ it=i_1
 _result_1 = it
 it=_result_1
 autovar_1 = it
-it=(autovar_1)
-autovar_2 = it
-it=_pass(true,autovar_2){it=anything();next FAIL if it==FAIL
+it=_pass(true,autovar_1){it=anything();next FAIL if it==FAIL
 name_1 = it
 it=(_Local(name_1) )
 result_1||=[];_append(result_1,it) };break FAIL if it==FAIL 
  break FAIL if r==FAIL
- (autovar_3=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_3
+ (autovar_2=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_2
 it=(result_1 || [])
 _result_2 = it
 it=_result_2  
@@ -185,8 +180,6 @@ _result_2 = it },proc{it=empty();next FAIL if it==FAIL
 it=([])
 _result_2 = it });return FAIL if it==FAIL
 it=_result_2
-autovar_3 = it
-it=(autovar_3)
 ary_1 = it
 it=Or.create( {:ary=>ary_1 })
 _result_1 = it
@@ -194,7 +187,6 @@ it=_result_1
 end
 def className()
 _result_1=nil
-_result_2=nil
 it_1=nil
 s_1=nil
  it=nil
@@ -202,8 +194,6 @@ it=("")
 s_1 = it
 it=spaces();return FAIL if it==FAIL
 it=seq(s_1);return FAIL if it==FAIL
-_result_1 = it
-it=_result_1
 it=upper();return FAIL if it==FAIL
 autovar_1||=[];_append(autovar_1,it)
 it=([])
@@ -219,8 +209,8 @@ autovar_1||=[];_append(autovar_1,it)
 it=autovar_1
 it_1 = it
 it=(leterize(it_1*""))
-_result_2 = it
-it=_result_2  
+_result_1 = it
+it=_result_1  
 end
 def collect(ors_1)
 _result_1=nil
@@ -242,8 +232,6 @@ it=(c_1.is_a? String )||FAIL;next FAIL if it==FAIL
 it=c_1
 _result_1 = it
 it=_result_1
-autovar_1 = it
-it=(autovar_1)
 c_2 = it
 it=("\\#{c_2}")
 _result_2 = it },proc{it=_args('#{','}');next FAIL if it==FAIL
@@ -253,8 +241,6 @@ it=(c_1.is_a? String )||FAIL;next FAIL if it==FAIL
 it=c_1
 _result_1 = it
 it=_result_1
-autovar_1 = it
-it=(autovar_1)
 _result_2 = it });return FAIL if it==FAIL
 it=_result_2  
 end
@@ -267,7 +253,6 @@ it=_result_1
 end
 def grammar()
 _result_1=nil
-_result_2=nil
 name_1=nil
 parent_1=nil
 rules_1=nil
@@ -277,16 +262,12 @@ it=("amethyst")
 s_1 = it
 it=spaces();return FAIL if it==FAIL
 it=seq(s_1);return FAIL if it==FAIL
-_result_1 = it
-it=_result_1
 it=name();return FAIL if it==FAIL
 name_1 = it
 it=_or(proc{it=("<")
 s_1 = it
 it=spaces();next FAIL if it==FAIL
 it=seq(s_1);next FAIL if it==FAIL
-_result_1 = it
-it=_result_1
 it=name();next FAIL if it==FAIL
 parent_1 = it },proc{it=empty();next FAIL if it==FAIL
 it=(parent_1="Amethyst") });return FAIL if it==FAIL
@@ -294,8 +275,6 @@ it=("{")
 s_1 = it
 it=spaces();return FAIL if it==FAIL
 it=seq(s_1);return FAIL if it==FAIL
-_result_1 = it
-it=_result_1
 it=([])
 autovar_1 = it
 while true
@@ -310,11 +289,9 @@ it=("}")
 s_1 = it
 it=spaces();return FAIL if it==FAIL
 it=seq(s_1);return FAIL if it==FAIL
-_result_1 = it
-it=_result_1
 it=Grammar.create( {:name=>name_1,:parent=>parent_1,:rules=>rules_1 })
-_result_2 = it
-it=_result_2  
+_result_1 = it
+it=_result_1  
 end
 def igrammar()
 _result_1=nil
@@ -359,7 +336,6 @@ it=_result_1
 end
 def key()
 _result_1=nil
-_result_2=nil
 args_1=nil
 n_1=nil
 name_1=nil
@@ -370,8 +346,6 @@ it=_or(proc{it=("@")
 s_1 = it
 it=spaces();next FAIL if it==FAIL
 it=seq(s_1);next FAIL if it==FAIL
-_result_1 = it
-it=_result_1
 it=_or(proc{it=className();next FAIL if it==FAIL
 name_1 = it
 it=argsOpt('[',']');next FAIL if it==FAIL
@@ -379,24 +353,21 @@ args_1 = it
 it=(Object.const_get(name_1).instance_variable_get(:@attrs))
 vars_1 = it
 it=Result.create( {:args=>args_1,:name=>name_1,:vars=>vars_1 })
-_result_2 = it },proc{it=name();next FAIL if it==FAIL
+_result_1 = it },proc{it=name();next FAIL if it==FAIL
 name_1 = it
 it=Key.create( {:args=>args_1,:name=>name_1 })
-_result_2 = it });next FAIL if it==FAIL },proc{it=("@@")
+_result_1 = it });next FAIL if it==FAIL },proc{it=("@@")
 s_1 = it
 it=spaces();next FAIL if it==FAIL
 it=seq(s_1);next FAIL if it==FAIL
-_result_1 = it
-it=_result_1
 it=name();next FAIL if it==FAIL
 n_1 = it
 it=(Global[n_1])
-_result_2 = it });return FAIL if it==FAIL
-it=_result_2  
+_result_1 = it });return FAIL if it==FAIL
+it=_result_1  
 end
 def modifier()
 _result_1=nil
-_result_2=nil
 c_1=nil
 s_1=nil
  it=nil
@@ -405,8 +376,6 @@ _result_1 = it},proc{it=("#")
 s_1 = it
 it=spaces();next FAIL if it==FAIL
 it=seq(s_1);next FAIL if it==FAIL
-_result_2 = it
-it=_result_2
 it=([])
 autovar_1 = it
 while true
@@ -424,7 +393,6 @@ it=_result_1
 end
 def name()
 _result_1=nil
-_result_2=nil
 it_1=nil
 s_1=nil
  it=nil
@@ -432,8 +400,6 @@ it=("")
 s_1 = it
 it=spaces();return FAIL if it==FAIL
 it=seq(s_1);return FAIL if it==FAIL
-_result_1 = it
-it=_result_1
 it=nameFirst();return FAIL if it==FAIL
 autovar_1||=[];_append(autovar_1,it)
 it=([])
@@ -449,8 +415,8 @@ autovar_1||=[];_append(autovar_1,it)
 it=autovar_1
 it_1 = it
 it=(leterize(it_1*""))
-_result_2 = it
-it=_result_2  
+_result_1 = it
+it=_result_1  
 end
 def nameFirst()
 _result_1=nil
@@ -470,7 +436,6 @@ it=_result_1
 end
 def nr()
 _result_1=nil
-_result_2=nil
 s_1=nil
  it=nil
 it=_lookahead(true){it=name();next FAIL if it==FAIL
@@ -478,9 +443,7 @@ it=argsOpt('(',')');next FAIL if it==FAIL
 it=("=")
 s_1 = it
 it=spaces();next FAIL if it==FAIL
-it=seq(s_1);next FAIL if it==FAIL
-_result_2 = it
-it=_result_2 };return FAIL if it==FAIL
+it=seq(s_1);next FAIL if it==FAIL };return FAIL if it==FAIL
 _result_1 = it
 it=_result_1  
 end
@@ -502,18 +465,14 @@ it=(c_1.is_a? String )||FAIL;return FAIL if it==FAIL
 it=c_1
 _result_1 = it
 it=_result_1
-autovar_2 = it
-it=(autovar_2)
 c_2 = it
 it=(regex_1.match(c_2))||FAIL;return FAIL if it==FAIL
 it=c_2
 _result_2 = it
 it=_result_2
-autovar_3 = it
-it=(autovar_3)
 autovar_1||=[];_append(autovar_1,it)
 while true
-autovar_4=@input;r=it=(/[0-9]/)
+autovar_2=@input;r=it=(/[0-9]/)
 regex_1 = it
 it=anything();break FAIL if it==FAIL
 c_1 = it
@@ -521,19 +480,15 @@ it=(c_1.is_a? String )||FAIL;break FAIL if it==FAIL
 it=c_1
 _result_1 = it
 it=_result_1
-autovar_2 = it
-it=(autovar_2)
 c_2 = it
 it=(regex_1.match(c_2))||FAIL;break FAIL if it==FAIL
 it=c_2
 _result_2 = it
 it=_result_2
-autovar_3 = it
-it=(autovar_3)
 autovar_1||=[];_append(autovar_1,it) 
  break FAIL if r==FAIL
- (autovar_4=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_4
+ (autovar_2=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_2
 it=autovar_1
 _result_3 = it
 it=_result_3  
@@ -542,7 +497,6 @@ def prefixed()
 _result_1=nil
 _result_2=nil
 _result_3=nil
-_result_4=nil
 append_1=nil
 c_1=nil
 c_2=nil
@@ -563,8 +517,6 @@ it=spaces();next FAIL if it==FAIL
 it=seq(s_1);next FAIL if it==FAIL
 _result_1 = it
 it=_result_1
-autovar_1 = it
-it=(autovar_1)
 it=inlineHostExpr();next FAIL if it==FAIL
 expr_1 = it
 it=(Pred[expr_1])
@@ -574,16 +526,12 @@ it=spaces();next FAIL if it==FAIL
 it=seq(s_1);next FAIL if it==FAIL
 _result_1 = it
 it=_result_1
-autovar_1 = it
-it=(autovar_1)
 neg_1 = it },proc{it=("~")
 s_1 = it
 it=spaces();next FAIL if it==FAIL
 it=seq(s_1);next FAIL if it==FAIL
 _result_1 = it
 it=_result_1
-autovar_1 = it
-it=(autovar_1)
 neg_1 = it });next FAIL if it==FAIL
 it=prefixed();next FAIL if it==FAIL
 m_1 = it
@@ -595,8 +543,6 @@ it=spaces();next FAIL if it==FAIL
 it=seq(s_1);next FAIL if it==FAIL
 _result_1 = it
 it=_result_1
-autovar_1 = it
-it=(autovar_1)
 it=_lookahead(false){it=(/[.:\[]/)
 regex_1 = it
 it=anything();next FAIL if it==FAIL
@@ -605,33 +551,25 @@ it=(c_1.is_a? String )||FAIL;next FAIL if it==FAIL
 it=c_1
 _result_3 = it
 it=_result_3
-autovar_2 = it
-it=(autovar_2)
 c_2 = it
 it=(regex_1.match(c_2))||FAIL;next FAIL if it==FAIL
-it=c_2
-_result_4 = it
-it=_result_4 };next FAIL if it==FAIL
+it=c_2 };next FAIL if it==FAIL
 it=_or(proc{it=(".")
 s_1 = it
 it=spaces();next FAIL if it==FAIL
 it=seq(s_1);next FAIL if it==FAIL
 _result_1 = it
-it=_result_1
-autovar_1 = it
-it=(autovar_1) },proc{it=empty();next FAIL if it==FAIL});next FAIL if it==FAIL
+it=_result_1 },proc{it=empty();next FAIL if it==FAIL});next FAIL if it==FAIL
 it=(Apply["anything"])
 from_1 = it });next FAIL if it==FAIL
 while true
-autovar_3=@input;r=it=_lookahead(true){it=_();next FAIL if it==FAIL};break FAIL if it==FAIL
+autovar_1=@input;r=it=_lookahead(true){it=_();next FAIL if it==FAIL};break FAIL if it==FAIL
 it=_or(proc{it=("=>")
 s_1 = it
 it=spaces();next FAIL if it==FAIL
 it=seq(s_1);next FAIL if it==FAIL
 _result_1 = it
 it=_result_1
-autovar_1 = it
-it=(autovar_1)
 it=prefixed();next FAIL if it==FAIL
 it_1 = it
 it=(from_1=_Pass(from_1,it_1)) },proc{it=("[")
@@ -640,8 +578,6 @@ it=spaces();next FAIL if it==FAIL
 it=seq(s_1);next FAIL if it==FAIL
 _result_1 = it
 it=_result_1
-autovar_1 = it
-it=(autovar_1)
 it=expression();next FAIL if it==FAIL
 it_1 = it
 it=(from_1=Enter[from_1,it_1])
@@ -650,24 +586,18 @@ s_1 = it
 it=spaces();next FAIL if it==FAIL
 it=seq(s_1);next FAIL if it==FAIL
 _result_1 = it
-it=_result_1
-autovar_1 = it
-it=(autovar_1) },proc{it=_or(proc{it=("*")
+it=_result_1 },proc{it=_or(proc{it=("*")
 s_1 = it
 it=spaces();next FAIL if it==FAIL
 it=seq(s_1);next FAIL if it==FAIL
 _result_1 = it
 it=_result_1
-autovar_1 = it
-it=(autovar_1)
 one_1 = it },proc{it=("+")
 s_1 = it
 it=spaces();next FAIL if it==FAIL
 it=seq(s_1);next FAIL if it==FAIL
 _result_1 = it
 it=_result_1
-autovar_1 = it
-it=(autovar_1)
 one_1 = it });next FAIL if it==FAIL
 it=(Many[from_1,one_1=="+"])
 from_1 = it },proc{it=("?")
@@ -676,8 +606,6 @@ it=spaces();next FAIL if it==FAIL
 it=seq(s_1);next FAIL if it==FAIL
 _result_1 = it
 it=_result_1
-autovar_1 = it
-it=(autovar_1)
 it=(Or[from_1,Apply["empty"]])
 from_1 = it },proc{it=(":")
 s_1 = it
@@ -685,8 +613,6 @@ it=spaces();next FAIL if it==FAIL
 it=seq(s_1);next FAIL if it==FAIL
 _result_1 = it
 it=_result_1
-autovar_1 = it
-it=(autovar_1)
 it=_or(proc{it=_or(proc{it=key();next FAIL if it==FAIL
 name_1 = it},proc{it=name();next FAIL if it==FAIL
 name_1 = it});next FAIL if it==FAIL
@@ -701,8 +627,8 @@ e_1 = it
 it=(Seq[_Set("it",from_1) , Act[e_1] ])
 from_1 = it });next FAIL if it==FAIL });break FAIL if it==FAIL 
  break FAIL if r==FAIL
- (autovar_3=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_3
+ (autovar_1=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_1
 it=from_1
 _result_2 = it });return FAIL if it==FAIL
 it=_result_2  
@@ -740,17 +666,15 @@ it=i_1
 _result_1 = it
 it=_result_1
 autovar_1 = it
-it=(autovar_1)
+it=_pass(true,autovar_1){it=([])
 autovar_2 = it
-it=_pass(true,autovar_2){it=([])
-autovar_3 = it
 while true
-autovar_4=@input;r=it=procargs2();break FAIL if it==FAIL
-autovar_3||=[];_append(autovar_3,it)
+autovar_3=@input;r=it=procargs2();break FAIL if it==FAIL
+autovar_2||=[];_append(autovar_2,it)
  break FAIL if r==FAIL
- (autovar_4=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_4
-it=autovar_3
+ (autovar_3=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_3
+it=autovar_2
 _result_2 = it };next FAIL if it==FAIL },proc{it=anything();next FAIL if it==FAIL
 a_1 = it
 it=(@tmp<<a_1)
@@ -816,8 +740,6 @@ it=spaces();next FAIL if it==FAIL
 it=seq(s_2);next FAIL if it==FAIL
 _result_2 = it
 it=_result_2
-autovar_5 = it
-it=(autovar_5)
 n_1 = it },proc{it=(/[$.:]/)
 regex_1 = it
 it=anything();next FAIL if it==FAIL
@@ -826,15 +748,11 @@ it=(c_1.is_a? String )||FAIL;next FAIL if it==FAIL
 it=c_1
 _result_3 = it
 it=_result_3
-autovar_6 = it
-it=(autovar_6)
 c_2 = it
 it=(regex_1.match(c_2))||FAIL;next FAIL if it==FAIL
 it=c_2
 _result_4 = it
 it=_result_4
-autovar_7 = it
-it=(autovar_7)
 n_1 = it },proc{it=empty();next FAIL if it==FAIL});next FAIL if it==FAIL
 it=_lookahead(true){it=_();next FAIL if it==FAIL};next FAIL if it==FAIL
 it=name();next FAIL if it==FAIL
@@ -850,21 +768,16 @@ it=(c_1.is_a? String )||FAIL;next FAIL if it==FAIL
 it=c_1
 _result_3 = it
 it=_result_3
-autovar_6 = it
-it=(autovar_6)
 c_2 = it
 it=(regex_1.match(c_2))||FAIL;next FAIL if it==FAIL
 it=c_2
 _result_4 = it
 it=_result_4
-autovar_7 = it
-it=(autovar_7)
 _result_1 = it });return FAIL if it==FAIL
 it=_result_1  
 end
 def rule()
 _result_1=nil
-_result_2=nil
 args_1=nil
 bnding_1=nil
 body_1=nil
@@ -883,8 +796,6 @@ it=("=")
 s_1 = it
 it=spaces();return FAIL if it==FAIL
 it=seq(s_1);return FAIL if it==FAIL
-_result_1 = it
-it=_result_1
 it=expression();return FAIL if it==FAIL
 body_1 = it
 it=(_body(body_1))
@@ -892,8 +803,8 @@ body_1 = it
 it=(@locals.uniq)
 locals_1 = it
 it=Rule.create( {:args=>args_1,:bnding=>bnding_1,:body=>body_1,:locals=>locals_1,:name=>name_1 })
-_result_2 = it
-it=_result_2  
+_result_1 = it
+it=_result_1  
 end
 def ruleargs()
 _result_1=nil
@@ -928,7 +839,6 @@ end
 def term()
 _result_1=nil
 _result_2=nil
-_result_3=nil
 cls_1=nil
 expr_1=nil
 it_1=nil
@@ -944,8 +854,6 @@ _result_1 = it },proc{it=("nested")
 s_1 = it
 it=spaces();next FAIL if it==FAIL
 it=seq(s_1);next FAIL if it==FAIL
-_result_2 = it
-it=_result_2
 it=seq("(");next FAIL if it==FAIL
 it=expression();next FAIL if it==FAIL
 expr_1 = it
@@ -953,15 +861,11 @@ it=(")")
 s_1 = it
 it=spaces();next FAIL if it==FAIL
 it=seq(s_1);next FAIL if it==FAIL
-_result_2 = it
-it=_result_2
 it=(Nested[expr_1])
 _result_1 = it },proc{it=("break")
 s_1 = it
 it=spaces();next FAIL if it==FAIL
 it=seq(s_1);next FAIL if it==FAIL
-_result_2 = it
-it=_result_2
 it=(Seq[Cut[],Stop[]])
 _result_1 = it },proc{it=application();next FAIL if it==FAIL
 _result_1 = it},proc{it=key();next FAIL if it==FAIL
@@ -969,15 +873,11 @@ _result_1 = it},proc{it=_or(proc{it=("->")
 s_1 = it
 it=spaces();next FAIL if it==FAIL
 it=seq(s_1);next FAIL if it==FAIL
-_result_2 = it
-it=_result_2
 it=atomicHostExpr();next FAIL if it==FAIL
 x_1 = it },proc{it=("")
 s_1 = it
 it=spaces();next FAIL if it==FAIL
 it=seq(s_1);next FAIL if it==FAIL
-_result_2 = it
-it=_result_2
 it=inlineHostExpr();next FAIL if it==FAIL
 x_1 = it });next FAIL if it==FAIL
 it=(Act[x_1])
@@ -985,8 +885,6 @@ _result_1 = it },proc{it=("\"")
 s_1 = it
 it=spaces();next FAIL if it==FAIL
 it=seq(s_1);next FAIL if it==FAIL
-_result_2 = it
-it=_result_2
 while true
 autovar_1=@input;r=it=_or(proc{it=seq("\"");next FAIL if it==FAIL
 @cut=true;it
@@ -1000,8 +898,6 @@ _result_1 = it },proc{it=("'")
 s_1 = it
 it=spaces();next FAIL if it==FAIL
 it=seq(s_1);next FAIL if it==FAIL
-_result_2 = it
-it=_result_2
 while true
 autovar_2=@input;r=it=_or(proc{it=seq("\'");next FAIL if it==FAIL
 @cut=true;it
@@ -1018,15 +914,11 @@ _result_1 = it },proc{it=("<")
 s_1 = it
 it=spaces();next FAIL if it==FAIL
 it=seq(s_1);next FAIL if it==FAIL
-_result_2 = it
-it=_result_2
 while true
 autovar_3=@input;r=it=_or(proc{it=(">")
 s_1 = it
 it=spaces();next FAIL if it==FAIL
 it=seq(s_1);next FAIL if it==FAIL
-_result_2 = it
-it=_result_2
 @cut=true;it
 @stop=true;it },proc{it=eChar();next FAIL if it==FAIL
 x_1||=[];_append(x_1,it)});break FAIL if it==FAIL
@@ -1038,24 +930,18 @@ _result_1 = it },proc{it=("(")
 s_1 = it
 it=spaces();next FAIL if it==FAIL
 it=seq(s_1);next FAIL if it==FAIL
-_result_2 = it
-it=_result_2
 it=expression();next FAIL if it==FAIL
 x_1 = it
 it=(")")
 s_1 = it
 it=spaces();next FAIL if it==FAIL
 it=seq(s_1);next FAIL if it==FAIL
-_result_2 = it
-it=_result_2
 it=_or(proc{it=seq("[]");next FAIL if it==FAIL
 it=(x_1)
 ors_1 = it
 it=(a=autovar; Seq[Or[{:ary=>ors_1.ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],Act[a]])
-_result_3 = it
-it=_result_3
-autovar_4 = it
-it=(autovar_4)
+_result_2 = it
+it=_result_2
 _result_1 = it },proc{it=empty();next FAIL if it==FAIL
 it=x_1
 _result_1 = it });next FAIL if it==FAIL });return FAIL if it==FAIL
