@@ -102,15 +102,26 @@ class <<Lookahead
     l
   end
 end
-
-$varhash=Hash.new{|h,k| h[k]={}}
+class Local
+	def hash
+		ary.hash
+	end
+	def ==(a)	
+		return false unless a.is_a? Local
+		return self.ary==a.ary
+	end
+	alias_method :eql?,:==
+end
+$varhash={}
 def _Local(name)
 		return name if !name.is_a?(String)
 		bnding=instance_eval{@bnding}
-		return $varhash[name][bnding] if $varhash[name][bnding]
-		$varhash[name][bnding]=Local[name,bnding]
-		instance_eval{	@locals << $varhash[name][bnding] if @locals}
-		$varhash[name][bnding]
+#		return Local[name,bnding]
+		l=Local[name,bnding]
+		return $varhash[l] if $varhash[l]
+		$varhash[l]=l
+		instance_eval{@locals << $varhash[l] if @locals}
+		$varhash[l]
 end
 
 
