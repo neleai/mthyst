@@ -105,5 +105,5 @@ class AmethystCore
 		r
 	end
 end
-
+require 'c/Ame'
 
