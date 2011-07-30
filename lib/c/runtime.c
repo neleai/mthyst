@@ -1,19 +1,21 @@
 #include "ruby.h"
 VALUE amecore;VALUE failobj;
+ID s_src,s_input;
+
 VALUE ame_seq(VALUE self,VALUE str){
 	int len=RSTRING(str)->len;
-	VALUE src=rb_iv_get(self,"@src");
-	int input=FIX2INT(rb_iv_get(self,"@input"));
+	VALUE src=rb_ivar_get(self,s_src);
+	int input=FIX2INT(rb_ivar_get(self,s_input));
 	if (strncmp(RSTRING(src)->ptr+input,RSTRING(str)->ptr,len))return failobj;
 	else {
-		rb_iv_set(self,"@input",INT2FIX(input+len));
+		rb_ivar_set(self,s_input,INT2FIX(input+len));
 		return str;
 	}
 }
 VALUE ame_anything(VALUE self){
 	VALUE r;
-  VALUE src=rb_iv_get(self,"@src");
-  int input=FIX2INT(rb_iv_get(self,"@input"));
+  VALUE src=rb_ivar_get(self,s_src);
+  int input=FIX2INT(rb_ivar_get(self,s_input));
 	if(TYPE(src)==T_STRING){
 		if (RSTRING(src)->len<=input) return failobj;
 		r=rb_str_new(RSTRING(src)->ptr+input,1);
@@ -21,19 +23,26 @@ VALUE ame_anything(VALUE self){
 		if (FIX2INT(rb_funcall(src,rb_intern("size"),0))<=input) return failobj;
 		r= rb_funcall(src,rb_intern("[]"),1,INT2FIX(input));
 	}
-	rb_iv_set(self,"@input",INT2FIX(input+1));
+	rb_ivar_set(self,s_input,INT2FIX(input+1));
 	return r;
 }
 VALUE ame_lookahead(VALUE self,VALUE neg){
-	VALUE input=rb_iv_get(self,"@input");
+	VALUE input=rb_ivar_get(self,s_input);
 	VALUE r=rb_yield(Qnil);
-	 rb_iv_set(self,"@input",input);
+	 rb_ivar_set(self,s_input,input);
 	if (neg==Qtrue){
 		r= (r==failobj)? Qtrue : failobj;
 	}
 	return r;
 }
+VALUE ame_pass(VALUE self,VALUE enter,VALUE expr){
+	if (enter!=Qtrue) expr=rb_ary_new3(1,expr);
+  VALUE src=rb_ivar_get(self,s_src);
+	VALUE input=rb_ivar_get(self,s_input);
+}
 void Init_Ame(VALUE self){
+	s_src=rb_intern("@src");
+	s_input=rb_intern("@input");
 	failobj=rb_eval_string("FAIL");
 	amecore=rb_define_class("AmethystCore",rb_cObject);
 	rb_define_method(amecore,"seq",ame_seq,1);
