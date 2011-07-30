@@ -29,10 +29,7 @@ class AmethystCore
 		oldSrc,oldInput=@src,@input
 		@src,@input=expr,0
 		r=yield
-		if eof==FAIL
-			@src,@input=oldSrc,oldInput
-			return FAIL 
-		end
+		r=FAIL if eof==FAIL
 		@src,@input=oldSrc,oldInput
 		r
 	end
