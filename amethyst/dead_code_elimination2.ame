@@ -76,3 +76,14 @@ amethyst Move_Assignments2 < Traverser {
 								| Pass[@var:var @to=>move(append,name):to @enter:enter] @Pass
 								| anything:{_Set(name,it,append)}
 }
+
+amethyst Dead_Code_Deleter3 < Traverser{
+		root = @self=>Rule[ @reachable:{@@reachable=it} traverse {@reachable=nil} @self]
+
+		visit = Act[@self:this .*] -> @@reachable[this] ? this : Act[]
+					| Set[@name:name traverse @expr:expr @self:this] -> @@reachable[name] ? this : expr
+					| Result[@self:this] ->@@reachable[this] ? this : Act[]
+          | Local[.* @self:this @ssaname:ssaname] ->@@reachable[ssaname] ? this : Act[]
+}
+
+

@@ -27,6 +27,14 @@ makeclasses(Object,
 		:Bnding,
 		[:Phi,:merges,:result]
 )
+
+class <<Bnding
+	def []
+		@bno||=0
+		@bno+=1
+		Bnding.create({:ary=>[@bno]})
+	end
+end
 class <<Variable
 	def [](name,bind)
 		Variable.create({:name=>name,:bind=>bind})

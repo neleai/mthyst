@@ -4,7 +4,8 @@ require 'pp'
 require 'amethyst'
 require 'compiled/amethyst'
 require 'compiled/parser'
-#require 'compiled/translator'
+require 'compiled/optimizer_null'
+require 'compiled/optimizer_and_or'
 
 def a2ruby(s)
 	par=AmethystParser.new.parse(:igrammar,s)
