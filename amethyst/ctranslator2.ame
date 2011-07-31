@@ -11,9 +11,15 @@ class AmethystCTranslator < Amethyst
 	end
 end
 amethyst AmethystCTranslator < Amethyst {
-	rbcode = {"rb_eval_string(#{"class #{@@grammar}
-#{@@callbacks.map{|k,v| "def #{k}(bind)\n#{v}\nend"}*""}
-end".inspect});"	}
+	rbtrans = Local[:name {"bind[:#{name}]"}]
+					| Args[rbtrans*]
+					| .
+
+
+	rbcode = {"class #{@@grammar}\n"}:s
+	{@@callbacks.to_a}=>[([:k [rbtrans:v]] {puts v.inspect}  {"def #{k}(bind)\n#{v}\nend\n"})*:x ]
+	{s+=x*""}
+	{s+="\nend"; "rb_eval_string(#{s.inspect})"}
 	
 	trans =  Grammar[ {@@grammar=@name} {@@callbacks={}} @rules=>[trans*]:t rbcode:rbcode
 				    { s="#include \"cthyst.h\"\nVALUE cls_#{@name};\n"
