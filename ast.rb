@@ -24,8 +24,17 @@ makeclasses(Object,
 		:Cut,
 		:Stop,
 		[:Variable,:bind,:global,:key],
-		:Bnding
+		:Bnding,
+		[:Phi,:merges,:result]
 )
+
+class <<Bnding
+	def []
+		@bno||=0
+		@bno+=1
+		Bnding.create({:ary=>[@bno]})
+	end
+end
 class <<Variable
 	def [](name,bind)
 		Variable.create({:name=>name,:bind=>bind})
@@ -48,20 +57,19 @@ def autovar
 	Local["autovar",$av]
 end
 
-def _Enter(from,to)
-	_Pass(from,to,true)
-end
 class Enter;end
 class <<Enter
 	def [](from,to)
-		_Pass(from,to,true)
+		Pass[from,to,true]
 	end
 end
-def _Pass(from,to,enter=nil)
-	a=autovar
-	Seq[_Set(a,from), Pass[{:to=>to,:enter=>enter,:var=>a}]]
-end
 
+class <<Pass
+	def [](from,to,enter=nil)
+		a=autovar
+		Seq[_Set(a,from), Pass.create({:to=>to,:enter=>enter,:var=>a})]
+	end
+end
 def _Set(name,expr,append=nil)
   Set[{:name=>_Local(name),:expr=>expr,:append=>append}]
 end
@@ -102,15 +110,25 @@ class <<Lookahead
     l
   end
 end
-
-$varhash=Hash.new{|h,k| h[k]={}}
+class Local
+	def hash
+		ary.hash
+	end
+	def ==(a)	
+		return false unless a.is_a? Local
+		return self.ary==a.ary
+	end
+	alias_method :eql?,:==
+end
+$varhash={}
 def _Local(name)
 		return name if !name.is_a?(String)
 		bnding=instance_eval{@bnding}
-		return $varhash[name][bnding] if $varhash[name][bnding]
-		$varhash[name][bnding]=Local[name,bnding]
-		instance_eval{	@locals << $varhash[name][bnding] if @locals}
-		$varhash[name][bnding]
+		l=Local[name,bnding]
+		#return $varhash[l] if $varhash[l]
+		$varhash[l]=l
+		instance_eval{@locals << $varhash[l] if @locals}
+		$varhash[l]
 end
 
 

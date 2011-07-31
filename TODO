@@ -1,0 +1,11 @@
+represent tree as control flow graph
+transform this flow graph to SSA form
+implicit variables
+persistence
+optimizer simplifying =>[ ] to []
+split to separate parser and traverser 
+split to traverser and modifier and dataflow_analyzer
+make AmethystModule +include to mimic ruby module
+make position handling explicit in ast
+make eof in Pass explicit
+refactor args

@@ -1,0 +1,80 @@
+class Dataflow < Traverser
+	attr_accessor :ssanums,:oldssanums,:edges
+	def initialize
+		@edges=Oriented_Graph.new
+		@marked=[]
+		@ssanums=Hash.new(0)
+		@oldssanums=Hash.new(0)
+	end
+	def ssanum(var)
+		return var unless var.is_a? Local
+		puts var[0]
+		puts var[1][0]
+		[var[0],oldssanums[var]]
+	end
+	def newssanum(var)
+		ssanums[var]+=1
+		oldssanums[var]=ssanums[var]
+		ssanum(var)
+	end
+	def many_end(prev)
+	  ssanums.each{|var,num|
+      if prev[var]!=num
+        edges.add([var[0],ssanums[var]],[var[0],prev[var]] )
+      end
+    }
+	end
+	def set_end(exp)
+		edges.add(exp.name,exp) if exp.append
+		name=exp.name
+		exp=exp.expr while exp.expr.is_a?(Set) && !exp.expr.append
+	  if exp.expr.is_a?(Local) && !exp.append
+      o=ssanum(exp.expr)
+      n=newssanum(name)
+			edges.add(exp,n)
+      edges.add(o,n)
+    else
+      edges.add(exp.expr,exp)
+      n=newssanum(name)
+      edges.add(exp,n)
+    end
+	end
+	def or_end(join)
+    ssanums.clone.each{|k,v|
+      u=[]
+      join.each{|s| u<<s[k]}
+      u=u.uniq
+      if u.size>1
+        n=newssanum(k)
+        u.each{|v| edges.add([k[0],v],n)}
+      end
+    }
+	end
+end
+
+amethyst Dataflow < Traverser {
+	root = @self=>Rule[ {@@bnding=@bnding} traverse {@reachable=@@edges.reverse.reachable(@@marked+[@body[-1]]); [@@edges,@@marked+[@body[-1]]]}]
+	
+	visit = Apply[:name vars_in:var{@@marked+=var} traverse]
+				| Or[	{join=[];old=oldssanums.clone} ({@@oldssanums=old.clone} traverse_item {join<<oldssanums.clone})* {or_end(join)} @self ]
+				| Many[  @o=>vars_in:var {@@marked+=var} { prev=ssanums.clone} traverse {many_end(prev)} @self]
+				| Pass[@var=>vars_in:var {@@marked+=var} traverse]
+				| Act[ traverse:this {@@marked<<this if @pred} 
+							 @ary=>[vars_in]:var ] -> var.each{|v| edges.add(ssanum(v),this); edges.add(this,newssanum(v));}; this
+				| Set[   traverse  {set_end(@self) }    @self] 
+				| Result[@vars=>[vars_in]:var traverse:this] -> var.each{|w| @@edges.add(ssanum(w),this) } ; this
+				
+				vars_in={ary=[]}
+								( Global[ @self:ary[]  {@@marked<<@self} .*]								
+								| Act[ @self:ary[] .*]
+                | Key[ @self:ary[]    {@@marked<<@self} .*]
+								| Result[ @self:ary[] ]
+								| Strin[ vars_in:ary[] ]
+								| Args[ vars_in:ary[] ]
+								| Set[ @name=>vars_in:ary[] ]
+								| Local[:name @self:ary[] ]
+								| anything
+								)* -> ary
+}
+
+

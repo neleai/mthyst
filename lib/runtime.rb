@@ -29,10 +29,7 @@ class AmethystCore
 		oldSrc,oldInput=@src,@input
 		@src,@input=expr,0
 		r=yield
-		if eof==FAIL
-			@src,@input=oldSrc,oldInput
-			return FAIL 
-		end
+		r=FAIL if eof==FAIL
 		@src,@input=oldSrc,oldInput
 		r
 	end
@@ -75,16 +72,11 @@ class AmethystCore
 	end
 
   def seq(str)
-		if @src.is_a? String
-			if str==@src[@input,str.size]
-				@input+=str.size
-				return str
-			else
-				return FAIL
-			end
+		if str==@src[@input,str.size]
+			@input+=str.size
+			return str
 		else
-			s=anything
-			return s==str ? str : FAIL
+			return FAIL
 		end
   end
 
@@ -110,5 +102,5 @@ class AmethystCore
 		r
 	end
 end
-
+require 'c/Ame'
 

@@ -1,5 +1,5 @@
 amethyst Dead_Code_Detector2 < Traverser {
-	root = @self=>Rule[{@@edges=Oriented_Graph.new ; @@marked=[]} {@@bnding=@bnding} traverse {@@edges.reachable(@@marked)}:reachable {@reachable=reachable} @self]
+	root = @self=>Rule[{@@edges=Oriented_Graph.new ; @@marked=[@body[-1]]} {@@bnding=@bnding} traverse {@@edges.reachable(@@marked)}:reachable {@reachable=reachable} @self]
 	
 	visit = Apply[:name vars_in:var{@@marked+=var} traverse]
 				| Pass[@var=>vars_in:var {@@marked+=var} traverse]
@@ -17,7 +17,7 @@ amethyst Dead_Code_Detector2 < Traverser {
 								| Strin[ vars_in:ary[] ]
 								| Args[ vars_in:ary[] ]
 								| Set[ @name=>vars_in:ary[] ]
-								| Local[:name {@@marked<<@self if name=="_result"} @self:ary[] ]
+								| Local[:name  @self:ary[] ]
 								| anything
 								)* -> ary
 }
@@ -76,3 +76,14 @@ amethyst Move_Assignments2 < Traverser {
 								| Pass[@var:var @to=>move(append,name):to @enter:enter] @Pass
 								| anything:{_Set(name,it,append)}
 }
+
+amethyst Dead_Code_Deleter3 < Traverser{
+		root = @self=>Rule[ @reachable:{@@reachable=it} traverse {@reachable=nil} @self]
+
+		visit = Act[@self:this .*] -> @@reachable[this] ? this : Act[]
+					| Set[@name:name traverse @expr:expr @self:this] -> @@reachable[name] ? this : expr
+					| Result[@self:this] ->@@reachable[this] ? this : Act[]
+          | Local[.* @self:this @ssaname:ssaname] ->@@reachable[ssaname] ? this : Act[]
+}
+
+

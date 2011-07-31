@@ -8,12 +8,14 @@ class Gram
 		}
 	end
 	def opt(r)
-      debug=true
+      debug=false
 			pipeline=[Seq_Or_Optimizer,Move_Assignments2,Seq_Or_Optimizer,Communize_Or3,Seq_Or_Optimizer,Dead_Code_Detector2,Dead_Code_Deleter2,Seq_Or_Optimizer]
 			pipeline.each{|o|
 	      puts r.inspect if debug
       	r=o.new.parse(:root,r)
 			}
+			puts Dataflow.new.parse(:root,r).inspect
+			puts r.inspect
       @rules[r.name]=r 
 	end
 	def getrule(from)
@@ -49,6 +51,7 @@ class <<Compiler
 		topo= callg.topo_order
 		puts callg.inspect
 		puts topo.inspect
+		code=[]
 		topo.each{|name|if @grammars[grammar.name].rules[name]
 #			puts @grammars[grammar.name].rules[name].inspect
 				@grammars[grammar.name].opt(@grammars[grammar.name].rules[name])
@@ -57,10 +60,8 @@ class <<Compiler
 				calls.each{|nm,v|
 					r=@grammars[grammar.name].getrule(nm)
 					@grammars[grammar.name].inline(nm,name) if r && r.args.size>0 && !(/arg/=~r.name)
+					@grammars[grammar.name].inline(nm,name) if r && ["char","space"].include?(r.name)
 				}
-				@grammars[grammar.name].inline("char" ,name)
-				@grammars[grammar.name].inline("space" ,name)
-#				@grammars[grammar.name].inline("spaces" ,name)
 
 #				puts @grammars[grammar.name].rules[name].inspect
 				@grammars[grammar.name].opt(@grammars[grammar.name].rules[name])
@@ -69,8 +70,9 @@ class <<Compiler
 
 #		puts AmethystTranslator.new.parse(:itrans,[@grammars[grammar.name].rules[name]]).inspect
 
-			outs.puts AmethystTranslator.new.parse(:itrans,[@grammars[grammar.name].rules[name]])
+			code<< AmethystTranslator.new.parse(:itrans,[@grammars[grammar.name].rules[name]])
 		end}
+		outs.puts code.sort
 		outs.puts "end"
 	end
 	def compile(file,out)
