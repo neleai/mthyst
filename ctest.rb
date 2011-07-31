@@ -20,6 +20,7 @@ o.puts a2ruby(File.new("amethyst/ctranslator2.ame").read)
 o.close
 #puts $opt.inspect
 require 'ctranslator2.rb'
-g=[Grammar[{:name=>"Foo",:rules=>[Rule[{:name=>"foo",:args=>[],:body=>"a"}]]}]]
+g=[Grammar[{:name=>"Foo",:rules=>[Rule[{:name=>"foo",:args=>[],:body=>Seq[Apply["bar"],Apply["x"]]}]]}]]
 s=AmethystCTranslator.new.parse(:trans,g)
 puts s
+File.open("c/foo.c","w"){|f| f.puts s}

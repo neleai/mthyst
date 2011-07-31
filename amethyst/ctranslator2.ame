@@ -1,0 +1,16 @@
+amethyst AmethystRBTranslator < Traverser{
+}
+
+amethyst AmethystCTranslator < Amethyst {	
+	trans =  Grammar[ {@@grammar=@name} @rules=>[trans*]:t @rbno:rbno 
+				    { s="#include \"cthyst.h\"\nVALUE cls_#{@name};\n"
+							s<<t*"\n"
+        		  s<<"\nvoid Init_#{@name}(){ cls_#{@name}=rb_define_class(\"#{@name}\",rb_cObject); 
+									 #{@rules.map{|r| "rb_define_method(cls_#{@name},\"#{r.name}\",#{@name}_#{r.name},#{r.args.size});"}*"\n" }
+								  }"
+							s } ]
+				|  Rule[@name:name @body=>trans:body ] -> "VALUE #{@@grammar}_#{name}(VALUE self) {#{body} return Qnil;}"
+				|  Apply[:name {"rb_funcall(self,rb_intern(\"#{name}\"),0);"}]
+				| Seq[ trans*]
+				| .
+}
