@@ -1,16 +1,30 @@
 amethyst AmethystRBTranslator < Traverser{
 }
 
-amethyst AmethystCTranslator < Amethyst {	
-	trans =  Grammar[ {@@grammar=@name} @rules=>[trans*]:t @rbno:rbno 
+class AmethystCTranslator < Amethyst 
+	def addcallback(cb)
+		@cbno||=0
+		@cbno+=1
+		n="callback#{@cbno}"
+		@callbacks[n]=cb
+		n
+	end
+end
+amethyst AmethystCTranslator < Amethyst {
+	rbcode = {"rb_eval_string(#{"class #{@@grammar}
+#{@@callbacks.map{|k,v| "def #{k}(bind)\n#{v}\nend"}*""}
+end".inspect});"	}
+	
+	trans =  Grammar[ {@@grammar=@name} {@@callbacks={}} @rules=>[trans*]:t rbcode:rbcode
 				    { s="#include \"cthyst.h\"\nVALUE cls_#{@name};\n"
 							s<<t*"\n"
         		  s<<"\nvoid Init_#{@name}(){ cls_#{@name}=rb_define_class(\"#{@name}\",rb_cObject); 
 #{@rules.map{|r| "rb_define_method(cls_#{@name},\"#{r.name}\",#{@name}_#{r.name},#{r.args.size});"}*"\n" }
+#{rbcode}
 }"
 							s } ]
 				|  Rule[@name:name @body=>trans:body ] { "VALUE #{@@grammar}_#{name}(VALUE self) {VALUE bind=rb_hash_new();\n#{body*"\n"}\nreturn rb_hash_aref(bind,ID2SYM(rb_intern(\"result\")));}" }
-				| Act[ .* {"rb_hash_aset(bind,ID2SYM(rb_intern(\"it\")),rb_funcall(self,rb_intern(\"callback\"),1,bind));"} ]
+				| Act[ .*:{addcallback(it)}:cbno {"rb_hash_aset(bind,ID2SYM(rb_intern(\"it\")),rb_funcall(self,rb_intern(\"#{cbno}\"),1,bind));"} ]
 				| Apply[:name {"rb_hash_aset(bind,ID2SYM(rb_intern(\"it\")),rb_funcall(self,rb_intern(\"#{name}\"),0));"}]
 				| Seq[ trans*]
 				| Set[ @expr=>trans:e {"#{e}\nrb_hash_aset(bind,ID2SYM(rb_intern(\"#{@name}\")),rb_hash_aref(bind,ID2SYM(rb_intern(\"it\")))); "} ]
