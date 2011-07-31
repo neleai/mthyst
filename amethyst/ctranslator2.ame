@@ -11,9 +11,14 @@ class AmethystCTranslator < Amethyst
 	end
 end
 amethyst AmethystCTranslator < Amethyst {
-	rbtrans = Local[:name {"bind[:#{name}]"}]
-					| Args[rbtrans*]
-					| .
+	transfn = trans:t -> "proc{#{t}}"
+	rbtrans = Local[:name  {"bind[:#{name}]"}]
+					| Args[rbtrans*:a] -> a*""
+		      | Strin[rbtrans*:a] -> a*""
+    		  | Exp[transfn:t ] -> t
+		      | Key[@name:name] -> "@src.#{name}"
+      		| Global[:name] -> "@#{name}"
+		      | .
 
 
 	rbcode = {"class #{@@grammar}\n"}:s
