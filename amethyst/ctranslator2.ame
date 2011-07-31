@@ -10,6 +10,7 @@ class AmethystCTranslator < Amethyst
 		n
 	end
 end
+
 amethyst AmethystCTranslator < Amethyst {
 	transfn = trans:t -> "proc{#{t}}"
 	rbtrans = Local[:name  {"bind[:#{name}]"}]
@@ -26,7 +27,7 @@ amethyst AmethystCTranslator < Amethyst {
 	{s+=x*""}
 	{s+="\nend"; "rb_eval_string(#{s.inspect});"}
 	
-	trans =  Grammar[ {@@grammar=@name;@@parent=@parent} {@@callbacks={}} @rules=>[trans*]:t rbcode:rbcode
+	trans =  Grammar[ {@@grammar=@name;@@parent=@parent} {@@returnword="fail"} {@@callbacks={}} @rules=>[trans*]:t rbcode:rbcode
 				    { s="#include \"cthyst.h\"\nVALUE cls_#{@name};\n"
 							s<<t*"\n"
         		  s<<"\nvoid Init_#{@name}(){ cls_#{@name}=rb_define_class(\"#{@name}\",rb_const_get(rb_cObject,rb_intern(\"#{@@parent}\"))); 
@@ -34,10 +35,12 @@ amethyst AmethystCTranslator < Amethyst {
 #{rbcode}
 }"
 							s } ]
-				|  Rule[@name:name @body=>trans:body ] { "VALUE #{@@grammar}_#{name}(VALUE self) {VALUE bind=rb_hash_new();\n#{body*"\n"}\nreturn rb_hash_aref(bind,ID2SYM(rb_intern(\"result\")));}" }
+				|  Rule[@name:name @body=>trans:body ] { "VALUE #{@@grammar}_#{name}(VALUE self) {VALUE bind=rb_hash_new();\n#{body*"\n"}\nreturn rb_hash_aref(bind,ID2SYM(rb_intern(\"result\")));\nfail: return failobj; }" }
 				| Act[ .*:{addcallback(it)}:cbno {"rb_hash_aset(bind,ID2SYM(rb_intern(\"it\")),rb_funcall(self,rb_intern(\"#{cbno}\"),1,bind));"} ]
-				| Apply[:name {"rb_hash_aset(bind,ID2SYM(rb_intern(\"it\")),rb_funcall(self,rb_intern(\"#{name}\"),0));"}]
+				| Apply[:name failwrap("rb_hash_aset(bind,ID2SYM(rb_intern(\"it\")),rb_funcall(self,rb_intern(\"#{name}\"),0));")]
 				| Seq[ trans*]
 				| Set[ @expr=>trans:e {"#{e}\nrb_hash_aset(bind,ID2SYM(rb_intern(\"#{@name}\")),rb_hash_aref(bind,ID2SYM(rb_intern(\"it\")))); "} ]
 				| .
+
+	failwrap(s) = {"#{s} if (rb_hash_aref(bind,ID2SYM(rb_intern(\"it\")))==failobj) goto #{@@returnword};" }
 }
