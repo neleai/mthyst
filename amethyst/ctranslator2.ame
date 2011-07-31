@@ -21,15 +21,15 @@ amethyst AmethystCTranslator < Amethyst {
 		      | .
 
 
-	rbcode = {"class #{@@grammar}\n"}:s
+	rbcode = {"class #{@@grammar} < #{@@parent}\n"}:s
 	{@@callbacks.to_a}=>[([:k [rbtrans:v]] {puts v.inspect}  {"def #{k}(bind)\n#{v}\nend\n"})*:x ]
 	{s+=x*""}
-	{s+="\nend"; "rb_eval_string(#{s.inspect})"}
+	{s+="\nend"; "rb_eval_string(#{s.inspect});"}
 	
-	trans =  Grammar[ {@@grammar=@name} {@@callbacks={}} @rules=>[trans*]:t rbcode:rbcode
+	trans =  Grammar[ {@@grammar=@name;@@parent=@parent} {@@callbacks={}} @rules=>[trans*]:t rbcode:rbcode
 				    { s="#include \"cthyst.h\"\nVALUE cls_#{@name};\n"
 							s<<t*"\n"
-        		  s<<"\nvoid Init_#{@name}(){ cls_#{@name}=rb_define_class(\"#{@name}\",rb_cObject); 
+        		  s<<"\nvoid Init_#{@name}(){ cls_#{@name}=rb_define_class(\"#{@name}\",rb_const_get(rb_cObject,rb_intern(\"#{@@parent}\"))); 
 #{@rules.map{|r| "rb_define_method(cls_#{@name},\"#{r.name}\",#{@name}_#{r.name},#{r.args.size});"}*"\n" }
 #{rbcode}
 }"
