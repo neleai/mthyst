@@ -31,15 +31,17 @@ amethyst AmethystCTranslator < Amethyst {
 				    { s="#include \"cthyst.h\"\nVALUE cls_#{@name};\n"
 							s<<t*"\n"
         		  s<<"\nvoid Init_#{@name}(){ cls_#{@name}=rb_define_class(\"#{@name}\",rb_const_get(rb_cObject,rb_intern(\"#{@@parent}\"))); 
+failobj=rb_eval_string(\"FAIL\");
 #{@rules.map{|r| "rb_define_method(cls_#{@name},\"#{r.name}\",#{@name}_#{r.name},#{r.args.size});"}*"\n" }
 #{rbcode}
 }"
 							s } ]
-				|  Rule[@name:name @body=>trans:body ] { "VALUE #{@@grammar}_#{name}(VALUE self) {VALUE bind=rb_hash_new();\n#{body*"\n"}\nreturn rb_hash_aref(bind,ID2SYM(rb_intern(\"result\")));\nfail: return failobj; }" }
+				|  Rule[@name:name @body=>trans:body ] { "VALUE #{@@grammar}_#{name}(VALUE self) {VALUE bind=rb_hash_new();VALUE arg0,arg1,arg2,arg3;\n#{body*"\n"}\nreturn rb_hash_aref(bind,ID2SYM(rb_intern(\"result\")));\nfail: return failobj; }" }
 				| Act[ .*:{addcallback(it)}:cbno {"rb_hash_aset(bind,ID2SYM(rb_intern(\"it\")),rb_funcall(self,rb_intern(\"#{cbno}\"),1,bind));"} ]
-				| Apply[:name failwrap("rb_hash_aset(bind,ID2SYM(rb_intern(\"it\")),rb_funcall(self,rb_intern(\"#{name}\"),0));")]
+				| Apply[:name (.:{addcallback(it)}*):args 
+            failwrap(" #{(0...(args).size).map{|a|"arg#{a}=rb_funcall(self,rb_intern(\"#{args[a]}\"),1,bind);"}} rb_hash_aset(bind,ID2SYM(rb_intern(\"it\")),rb_funcall(self,rb_intern(\"#{name}\"),#{args.size} #{(0...(args).size).map{|a|",arg#{a}"}}));")]
 				| Seq[ trans*]
-				| Set[ @expr=>trans:e {"#{e}\nrb_hash_aset(bind,ID2SYM(rb_intern(\"#{@name}\")),rb_hash_aref(bind,ID2SYM(rb_intern(\"it\")))); "} ]
+				| Set[ @expr=>trans:e {@name.is_a?(Local) ? "#{e}\nrb_hash_aset(bind,ID2SYM(rb_intern(\"#{@name[0]}\")),rb_hash_aref(bind,ID2SYM(rb_intern(\"it\")))); " : "" } ]
 				| .
 
 	failwrap(s) = {"#{s} if (rb_hash_aref(bind,ID2SYM(rb_intern(\"it\")))==failobj) goto #{@@returnword};" }
