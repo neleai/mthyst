@@ -18,7 +18,7 @@ o.puts a2ruby(File.new("amethyst/ctranslator2.ame").read)
 o.close
 end
 require 'ctranslator2.rb'
-g=[Grammar[{:name=>"Foo",:parent=>"Amethyst",:rules=>[Rule[{:name=>"foo",:args=>[],:body=>Seq[Apply["bar"],Apply["x"],Set[{:name=>Local["result"],:expr=>Act["42"]}]]}],Rule[{:name=>"a",:args=>[],:body=>Seq[Act[Args["u=",Local["a"]]]]}], Rule[{:name=>"t",:args=>[],:body=>Seq[Or[Apply["spaces"],Apply["seq",Args["'x'"]]]]}] ]}]]
+g=[Grammar[{:name=>"Foo",:parent=>"Amethyst",:rules=>[Rule[{:name=>"foo",:args=>[],:body=>Seq[Lookahead[Apply["bar"]],Apply["x"],Set[{:name=>Local["result"],:expr=>Act["42"]}]]}],Rule[{:name=>"a",:args=>[],:body=>Seq[Act[Args["u=",Local["a"]]]]}], Rule[{:name=>"t",:args=>[],:body=>Seq[Or[Apply["spaces"],Apply["seq",Args["'x'"]]]]}] ]}]]
 s=AmethystCTranslator.new.parse(:trans,g)
 puts s
 File.open("c/foo.c","w"){|f| f.puts s}

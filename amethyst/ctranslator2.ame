@@ -16,10 +16,10 @@ class AmethystCTranslator < Amethyst
 		"rb_hash_aset(bind,ID2SYM(rb_intern(\"#{s}\")),#{e})"
 	end
 	def iget(s)
-		"rb_ivar_get(self,rb_intern(\"#{s}\"))"
+		"rb_ivar_get(self,rb_intern(\"@#{s}\"))"
 	end
 	def iset(s,e)
-		"rb_ivar_set(self,rb_intern(\"#{s}\"),#{e})"
+		"rb_ivar_set(self,rb_intern(\"@#{s}\"),#{e})"
 	end
 	def label(s)
 		@lno=(@lno||0)+1
@@ -52,7 +52,7 @@ failobj=rb_eval_string(\"FAIL\");
 #{rbcode}
 }"
 							s } ]
-				|  Rule[@name:name @body=>trans:body ] { "VALUE #{@@grammar}_#{name}(VALUE self) {VALUE bind=rb_hash_new();VALUE arg0,arg1,arg2,arg3;\n#{body*"\n"}\nreturn #{bget("result")};\nfail: return failobj; }" }
+				|  Rule[@name:name @body=>trans:body ] { "VALUE #{@@grammar}_#{name}(VALUE self) {VALUE bind=rb_hash_new();int x;VALUE arg0,arg1,arg2,arg3;\n#{body*"\n"}\nreturn #{bget("result")};\nfail: return failobj; }" }
 				| Act[ .*:{addcallback(it)}:cbno {"#{bset("it","rb_funcall(self,rb_intern(\"#{cbno}\"),1,bind)")};"} ]
 				| Apply[:name (.:{addcallback(it)}*):args 
             failwrap(" #{args.size.times.map{|a|"arg#{a}=rb_funcall(self,rb_intern(\"#{args[a]}\"),1,bind);"}} #{bset("it","rb_funcall(self,rb_intern(\"#{name}\"),#{args.size} #{args.size.times.map{|a|",arg#{a}"}})")};")]
@@ -65,7 +65,9 @@ failobj=rb_eval_string(\"FAIL\");
            {"#{s}  #{alts[-1]}: goto #{fail};\n #{accept}:;\n"}
 					]
 				| Many
-				| Lookahead
+				| Lookahead[ {label("accept")}:accept {label("reject")}:reject {label("oldinput")}:oldinput 
+										 rw(reject,`trans:t`) 
+										 {"VALUE #{oldinput}=#{iget("input")};\n #{t} x=1; goto #{accept};  #{reject}: x=0; #{accept}: #{iset("input",oldinput)}; if (x==#{@neg ? 1 : 0}) goto #{@@faillabel};"} ]
 
 	failwrap(s) = {"#{s} if (#{bget("it")}==failobj) goto #{@@faillabel};" }
 
