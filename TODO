@@ -9,3 +9,4 @@ make AmethystModule +include to mimic ruby module
 make position handling explicit in ast
 make eof in Pass explicit
 refactor args
+append as Act
