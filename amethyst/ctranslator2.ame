@@ -11,15 +11,19 @@ class AmethystCTranslator < Amethyst
 	end
 	def bget(s)
 		"rb_hash_aref(bind,ID2SYM(rb_intern(\"#{s}\")))"
+		"BGET(#{s})"
 	end
 	def bset(s,e)
 		"rb_hash_aset(bind,ID2SYM(rb_intern(\"#{s}\")),#{e})"
+		"BSET(#{s},#{e})"
 	end
 	def iget(s)
 		"rb_ivar_get(self,rb_intern(\"@#{s}\"))"
+		"IGET(#{s})"
 	end
 	def iset(s,e)
 		"rb_ivar_set(self,rb_intern(\"@#{s}\"),#{e})"
+		"ISET(#{s},#{e})"
 	end
 	def label(s)
 		@lno=(@lno||0)+1
@@ -29,8 +33,9 @@ end
 
 amethyst AmethystCTranslator < Amethyst {
 	transfn = trans:t -> "proc{#{t}}"
-	rbtrans = Local[:name  {"bind[:#{name}]"}]
+	rbtrans = Local[:name .* {"bind[:#{name}]"}]
 					| Args[rbtrans*:a] -> a*""
+					| Array[rbtrans*:a] -> a*""
 		      | Strin[rbtrans*:a] -> a*""
     		  | Exp[transfn:t ] -> t
 		      | Key[@name:name] -> "@src.#{name}"
@@ -39,7 +44,7 @@ amethyst AmethystCTranslator < Amethyst {
 
 
 	rbcode = {"class #{@@grammar} < #{@@parent}\n"}:s
-	{@@callbacks.to_a}=>[([:k [rbtrans:v]] {puts v.inspect}  {"def #{k}(bind)\n#{v}\nend\n"})*:x ]
+	{@@callbacks.to_a}=>[([:k rbtrans:v] {puts v.inspect}  {"def #{k}(bind)\n#{v}\nend\n"})*:x ]
 	{s+=x*""}
 	{s+="\nend"; "rb_eval_string(#{s.inspect});"}
 	
@@ -52,12 +57,12 @@ failobj=rb_eval_string(\"FAIL\");
 #{rbcode}
 }"
 							s } ]
-				|  Rule[@name:name @body=>trans:body ] { "VALUE #{@@grammar}_#{name}(VALUE self) {VALUE bind=rb_hash_new();int x;VALUE arg0,arg1,arg2,arg3;\n#{body*"\n"}\nreturn #{bget("result")};\nfail: return failobj; }" }
-				| Act[ .*:{addcallback(it)}:cbno {"#{bset("it","rb_funcall(self,rb_intern(\"#{cbno}\"),1,bind)")};"} ]
+				|  Rule[@name:name @body=>trans:body  { "VALUE #{@@grammar}_#{name}(VALUE self #{@args.size.times.map{|i| ",VALUE a#{i}"}}) { #{@args.size.times.map{|i| bset(@args[i][0],"a#{i}")}} VALUE bind=rb_hash_new();int x;VALUE arg0,arg1,arg2,arg3;\n#{body*"\n"}\nreturn #{bget("_result")};\nfail: return failobj; }" } ]
+				| Act[ .*:{addcallback(it)}:cbno {"#{bset("it","CALL(\"#{cbno}\",1,bind)")}; #{@pred ? "FAILTEST(#{@@faillabel});" :"" }"} ]
 				| Apply[:name (.:{addcallback(it)}*):args 
-            failwrap(" #{args.size.times.map{|a|"arg#{a}=rb_funcall(self,rb_intern(\"#{args[a]}\"),1,bind);"}} #{bset("it","rb_funcall(self,rb_intern(\"#{name}\"),#{args.size} #{args.size.times.map{|a|",arg#{a}"}})")};")]
+            failwrap(" #{args.size.times.map{|a|"arg#{a}=CALL(\"#{args[a]}\",1,bind);"}} #{bset("it","CALL(\"#{name}\",#{args.size} #{args.size.times.map{|a|",arg#{a}"}})")};")]
 				| Seq[ trans*]
-				| Set[&{@append==true} @expr=>trans:e {"#{e} rb_funcall(self,rb_intern(\"_append\"),2,#{bget(@name[0])},#{bget("it")});" } ]			
+				| Set[&{@append==true} @expr=>trans:e {"#{e} CALL(\"_append\",2,#{bget(@name[0])},#{bget("it")});" } ]			
 				| Set[ @expr=>trans:e {@name.is_a?(Local) ? "#{e}\n #{bset(@name[0],bget("it"))}; " : "" } ]
 				| Or[ {label("accept")}:accept {@@faillabel}:fail {label("oldinput")}:oldinput {[label("alt")]}:alts
 					 ( &(.) {alts<<label("alt")} rw(alts[-1],`trans`))*:t
@@ -72,8 +77,9 @@ failobj=rb_eval_string(\"FAIL\");
 				| Lookahead[ {label("accept")}:accept {label("reject")}:reject {label("oldinput")}:oldinput 
 										 rw(reject,`trans:t`) 
 										 {"VALUE #{oldinput}=#{iget("input")};\n #{t} x=1; goto #{accept};  #{reject}: x=0; #{accept}: #{iset("input",oldinput)}; if (x==#{@neg ? 1 : 0}) goto #{@@faillabel};"} ]
+				| Local[ :name .* { bset("it",bget(name)) } ]
 
-	failwrap(s) = {"#{s} if (#{bget("it")}==failobj) goto #{@@faillabel};" }
+	failwrap(s) = {"#{s} FAILTEST(#{@@faillabel});" }
 
 	rw(word,prc) = {@@faillabel}:rwo {@@faillabel=word } apply(prc):x {@@faillabel=rwo; x }
 }
