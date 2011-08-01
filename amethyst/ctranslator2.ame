@@ -56,7 +56,8 @@ failobj=rb_eval_string(\"FAIL\");
 				| Act[ .*:{addcallback(it)}:cbno {"#{bset("it","rb_funcall(self,rb_intern(\"#{cbno}\"),1,bind)")};"} ]
 				| Apply[:name (.:{addcallback(it)}*):args 
             failwrap(" #{args.size.times.map{|a|"arg#{a}=rb_funcall(self,rb_intern(\"#{args[a]}\"),1,bind);"}} #{bset("it","rb_funcall(self,rb_intern(\"#{name}\"),#{args.size} #{args.size.times.map{|a|",arg#{a}"}})")};")]
-				| Seq[ trans*]			
+				| Seq[ trans*]
+				| Set[&{@append==true} @expr=>trans:e {"#{e} rb_funcall(self,rb_intern(\"_append\"),2,#{bget(@name[0])},#{bget("it")});" } ]			
 				| Set[ @expr=>trans:e {@name.is_a?(Local) ? "#{e}\n #{bset(@name[0],bget("it"))}; " : "" } ]
 				| Or[ {label("accept")}:accept {@@faillabel}:fail {label("oldinput")}:oldinput {[label("alt")]}:alts
 					 ( &(.) {alts<<label("alt")} rw(alts[-1],`trans`))*:t

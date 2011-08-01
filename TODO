@@ -8,5 +8,7 @@ split to traverser and modifier and dataflow_analyzer
 make AmethystModule +include to mimic ruby module
 make position handling explicit in ast
 make eof in Pass explicit
+make passing by it explicit
 refactor args
 append as Act
+
