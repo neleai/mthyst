@@ -9,6 +9,12 @@ class AmethystCTranslator < Amethyst
 		@callbacks[n]=cb
 		n
 	end
+	def bget(s)
+		"rb_hash_aref(bind,ID2SYM(rb_intern(\"#{s}\")))"
+	end
+	def bset(s,e)
+		"rb_hash_aset(bind,ID2SYM(rb_intern(\"#{s}\")),#{e})"
+	end
 end
 
 amethyst AmethystCTranslator < Amethyst {
@@ -36,13 +42,13 @@ failobj=rb_eval_string(\"FAIL\");
 #{rbcode}
 }"
 							s } ]
-				|  Rule[@name:name @body=>trans:body ] { "VALUE #{@@grammar}_#{name}(VALUE self) {VALUE bind=rb_hash_new();VALUE arg0,arg1,arg2,arg3;\n#{body*"\n"}\nreturn rb_hash_aref(bind,ID2SYM(rb_intern(\"result\")));\nfail: return failobj; }" }
-				| Act[ .*:{addcallback(it)}:cbno {"rb_hash_aset(bind,ID2SYM(rb_intern(\"it\")),rb_funcall(self,rb_intern(\"#{cbno}\"),1,bind));"} ]
+				|  Rule[@name:name @body=>trans:body ] { "VALUE #{@@grammar}_#{name}(VALUE self) {VALUE bind=rb_hash_new();VALUE arg0,arg1,arg2,arg3;\n#{body*"\n"}\nreturn #{bget("result")};\nfail: return failobj; }" }
+				| Act[ .*:{addcallback(it)}:cbno {"#{bset("it","rb_funcall(self,rb_intern(\"#{cbno}\"),1,bind)")};"} ]
 				| Apply[:name (.:{addcallback(it)}*):args 
-            failwrap(" #{(0...(args).size).map{|a|"arg#{a}=rb_funcall(self,rb_intern(\"#{args[a]}\"),1,bind);"}} rb_hash_aset(bind,ID2SYM(rb_intern(\"it\")),rb_funcall(self,rb_intern(\"#{name}\"),#{args.size} #{(0...(args).size).map{|a|",arg#{a}"}}));")]
+            failwrap(" #{(0...(args).size).map{|a|"arg#{a}=rb_funcall(self,rb_intern(\"#{args[a]}\"),1,bind);"}} #{bset("it","rb_funcall(self,rb_intern(\"#{name}\"),#{args.size} #{(0...(args).size).map{|a|",arg#{a}"}})")};")]
 				| Seq[ trans*]
-				| Set[ @expr=>trans:e {@name.is_a?(Local) ? "#{e}\nrb_hash_aset(bind,ID2SYM(rb_intern(\"#{@name[0]}\")),rb_hash_aref(bind,ID2SYM(rb_intern(\"it\")))); " : "" } ]
+				| Set[ @expr=>trans:e {@name.is_a?(Local) ? "#{e}\n #{bset(@name[0],bget("it"))}; " : "" } ]
 				| .
 
-	failwrap(s) = {"#{s} if (rb_hash_aref(bind,ID2SYM(rb_intern(\"it\")))==failobj) goto #{@@returnword};" }
+	failwrap(s) = {"#{s} if (#{bget("it")}==failobj) goto #{@@returnword};" }
 }
