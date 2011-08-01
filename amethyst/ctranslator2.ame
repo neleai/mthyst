@@ -57,27 +57,27 @@ failobj=rb_eval_string(\"FAIL\");
 #{rbcode}
 }"
 							s } ]
-				|  Rule[@name:name @body=>trans:body  { "VALUE #{@@grammar}_#{name}(VALUE self #{@args.size.times.map{|i| ",VALUE a#{i}"}}) { #{@args.size.times.map{|i| bset(@args[i][0],"a#{i}")}} VALUE bind=rb_hash_new();int x;VALUE arg0,arg1,arg2,arg3;\n#{body*"\n"}\nreturn #{bget("_result")};\nfail: return failobj; }" } ]
-				| Act[ .*:{addcallback(it)}:cbno {"#{bset("it","CALL(\"#{cbno}\",1,bind)")}; #{@pred ? "FAILTEST(#{@@faillabel});" :"" }"} ]
+				|  Rule[@name:name @body=>trans:body  { "VALUE #{@@grammar}_#{name}(VALUE self #{@args.size.times.map{|i| ",VALUE a#{i}"}}) {VALUE bind=rb_hash_new(); #{@args.size.times.map{|i| bset(@args[i][0],"a#{i}")+";"}} int x;VALUE arg0,arg1,arg2,arg3;\n#{body}\nreturn #{bget("_result")};\nfail: return failobj; }" } ]
+				| Act[ .*:{addcallback(it)}:cbno {"#{bset("it","CALL(#{cbno},1,bind)")}; #{@pred ? "FAILTEST(#{@@faillabel});" :"" }"} ]
 				| Apply[:name (.:{addcallback(it)}*):args 
-            failwrap(" #{args.size.times.map{|a|"arg#{a}=CALL(\"#{args[a]}\",1,bind);"}} #{bset("it","CALL(\"#{name}\",#{args.size} #{args.size.times.map{|a|",arg#{a}"}})")};")]
-				| Seq[ trans*]
-				| Set[&{@append==true} @expr=>trans:e {"#{e} CALL(\"_append\",2,#{bget(@name[0])},#{bget("it")});" } ]			
+            failwrap(" #{args.size.times.map{|a|"arg#{a}=CALL(#{args[a]},1,bind);"}} #{bset("it","CALL(#{name},#{args.size} #{args.size.times.map{|a|",arg#{a}"}})")};")]
+				| Seq[ trans*:t {puts t.inspect;t*""} ]
+				| Set[&{@append==true} @expr=>trans:e {"#{e} CALL(_append,2,#{bget(@name[0])},#{bget("it")});" } ]			
 				| Set[ @expr=>trans:e {@name.is_a?(Local) ? "#{e}\n #{bset(@name[0],bget("it"))}; " : "" } ]
 				| Or[ {label("accept")}:accept {@@faillabel}:fail {label("oldinput")}:oldinput {[label("alt")]}:alts
 					 ( &(.) {alts<<label("alt")} rw(alts[-1],`trans`))*:t
 					 {s="VALUE #{oldinput}=#{iget("input")};\n"}
-           {t.size.times{|i| s<<"#{alts[i]}: #{iset("input",oldinput)};if (#{iget("cut")}!=Qnil) goto #{fail};\n #{t[i]} \n#{iset("cut","Qnil")};goto #{accept};\n"}}
-           {"#{s}  #{alts[-1]}: goto #{fail};\n #{accept}:;\n"}
+           {puts t.inspect;puts alts.inspect;t.size.times{|i| s<<"#{alts[i]}: #{iset("input",oldinput)};if (#{iget("cut")}!=Qnil) goto #{fail};\n #{t[i]} \n#{iset("cut","Qnil")};goto #{accept};\n"}}
+           {"#{s}  #{alts[-1]}:  #{iset("input",oldinput)}; goto #{fail};\n #{accept}:;\n"}
 					]
-				| Many[ label("break"):brk 
+				| Many[ {label("break")}:brk {label("oldinput")}:oldinput
 						rw(brk,`trans:t`)
 						{"VALUE #{oldinput}; while(1){#{oldinput}=#{iget("input")}; #{t} } #{brk}: #{iset("input",oldinput)}; "}
 					]
 				| Lookahead[ {label("accept")}:accept {label("reject")}:reject {label("oldinput")}:oldinput 
 										 rw(reject,`trans:t`) 
 										 {"VALUE #{oldinput}=#{iget("input")};\n #{t} x=1; goto #{accept};  #{reject}: x=0; #{accept}: #{iset("input",oldinput)}; if (x==#{@neg ? 1 : 0}) goto #{@@faillabel};"} ]
-				| Local[ :name .* { bset("it",bget(name)) } ]
+				| Local[ :name .* { bset("it",bget(name))+";" } ]
 
 	failwrap(s) = {"#{s} FAILTEST(#{@@faillabel});" }
 
