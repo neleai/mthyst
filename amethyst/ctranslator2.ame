@@ -19,7 +19,7 @@ class AmethystCTranslator < Amethyst
 		"rb_ivar_get(self,rb_intern(\"#{s}\"))"
 	end
 	def iset(s,e)
-		"rb_ivar_set(self,rb_intern(\"#{s}\"),e)"
+		"rb_ivar_set(self,rb_intern(\"#{s}\"),#{e})"
 	end
 	def label(s)
 		@lno=(@lno||0)+1
@@ -43,7 +43,7 @@ amethyst AmethystCTranslator < Amethyst {
 	{s+=x*""}
 	{s+="\nend"; "rb_eval_string(#{s.inspect});"}
 	
-	trans =  Grammar[ {@@grammar=@name;@@parent=@parent} {@@returnword="fail"} {@@callbacks={}} @rules=>[trans*]:t rbcode:rbcode
+	trans =  Grammar[ {@@grammar=@name;@@parent=@parent} {@@faillabel="fail"} {@@callbacks={}} @rules=>[trans*]:t rbcode:rbcode
 				    { s="#include \"cthyst.h\"\nVALUE cls_#{@name};\n"
 							s<<t*"\n"
         		  s<<"\nvoid Init_#{@name}(){ cls_#{@name}=rb_define_class(\"#{@name}\",rb_const_get(rb_cObject,rb_intern(\"#{@@parent}\"))); 
@@ -58,8 +58,14 @@ failobj=rb_eval_string(\"FAIL\");
             failwrap(" #{args.size.times.map{|a|"arg#{a}=rb_funcall(self,rb_intern(\"#{args[a]}\"),1,bind);"}} #{bset("it","rb_funcall(self,rb_intern(\"#{name}\"),#{args.size} #{args.size.times.map{|a|",arg#{a}"}})")};")]
 				| Seq[ trans*]
 				| Set[ @expr=>trans:e {@name.is_a?(Local) ? "#{e}\n #{bset(@name[0],bget("it"))}; " : "" } ]
-				| Or[ {label("accept")}:accept {label("reject")}:reject
+				| Or[ {label("accept")}:accept {label("oldinput")}:oldinput {[label("alt")]}:alts
+					 ( &(.) {alts<<label("alt")} rw(alts[-1],`trans`))*:t
+					 {s="VALUE #{oldinput}=#{iget("input")};\n"}
+           {t.size.times{|i| s<<"#{alts[i]}: #{iset("input",oldinput)};\n #{t[i]} \ngoto #{accept};\n"}}
+           {"#{s}  #{alts[-1]}: goto #{@@faillabel};\n #{accept}:;\n"}
 					]
 
-	failwrap(s) = {"#{s} if (#{bget("it")}==failobj) goto #{@@returnword};" }
+	failwrap(s) = {"#{s} if (#{bget("it")}==failobj) goto #{@@faillabel};" }
+
+	rw(word,prc) = {@@faillabel}:rwo {@@faillabel=word } apply(prc):x {@@faillabel=rwo; x }
 }

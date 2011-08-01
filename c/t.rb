@@ -18,3 +18,4 @@ end
 puts Foo.new.parse(:foo,"")
 puts Foo.new.parse(:t,"   ").inspect
 puts Foo.new.parse(:t,"   x").inspect
+puts Foo.new.parse(:t,"ax").inspect
