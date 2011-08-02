@@ -10,3 +10,10 @@ trans = Or[transfn*:ary ]
 
 
 
+
+amethyst Seq_Or_Optimizer < Traverser{
+  root = traverse
+  
+  visit = Seq[ traverse {@self.ary=@ary.map{|i| (i.is_a?(Seq)) ? i.ary : i}.flatten.select{|e| !(e.is_a?(Act) && e.ary.size==0)}} {(@ary.size==1) ? @ary[0] : @self} ]
+        | Or[  traverse {@self.ary=@ary.map{|i| (i.is_a?(Or )) ? i.ary : i}.flatten.select{|e| !(e.is_a?(Act) && e.ary.size==0)}} {(@ary.size==1) ? @ary[0] : @self} ]
+}

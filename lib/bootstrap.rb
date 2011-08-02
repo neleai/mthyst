@@ -1252,6 +1252,34 @@ end
 
 
 
+
+class Seq_Or_Optimizer < Traverser
+def root()
+_result_1=nil
+ it=nil
+it=traverse();return FAIL if it==FAIL
+_result_1 = it
+it=_result_1  
+end
+def visit()
+_result_1=nil
+ it=nil
+it=_or(proc{it=clas(Seq);next FAIL if it==FAIL
+autovar_1 = it
+it=_pass(true,autovar_1){it=traverse();next FAIL if it==FAIL
+it=(@src.self.ary=@src.ary.map{|i| (i.is_a?(Seq)) ? i.ary : i}.flatten.select{|e| !(e.is_a?(Act) && e.ary.size==0)})
+it=((@src.ary.size==1) ? @src.ary[0] : @src.self)
+_result_1 = it };next FAIL if it==FAIL },proc{it=clas(Or);next FAIL if it==FAIL
+autovar_2 = it
+it=_pass(true,autovar_2){it=traverse();next FAIL if it==FAIL
+it=(@src.self.ary=@src.ary.map{|i| (i.is_a?(Or )) ? i.ary : i}.flatten.select{|e| !(e.is_a?(Act) && e.ary.size==0)})
+it=((@src.ary.size==1) ? @src.ary[0] : @src.self)
+_result_1 = it };next FAIL if it==FAIL });return FAIL if it==FAIL
+it=_result_1  
+end
+
+end
+
 class Traverser < Amethyst
 def traverse()
 _result_1=nil
@@ -1315,33 +1343,6 @@ end
 end
 
 
-
-class Seq_Or_Optimizer < Traverser
-def root()
-_result_1=nil
- it=nil
-it=traverse();return FAIL if it==FAIL
-_result_1 = it
-it=_result_1  
-end
-def visit()
-_result_1=nil
- it=nil
-it=_or(proc{it=clas(Seq);next FAIL if it==FAIL
-autovar_1 = it
-it=_pass(true,autovar_1){it=traverse();next FAIL if it==FAIL
-it=(@src.self.ary=@src.ary.map{|i| (i.is_a?(Seq)) ? i.ary : i}.flatten.select{|e| !(e.is_a?(Act) && e.ary.size==0)})
-it=((@src.ary.size==1) ? @src.ary[0] : @src.self)
-_result_1 = it };next FAIL if it==FAIL },proc{it=clas(Or);next FAIL if it==FAIL
-autovar_2 = it
-it=_pass(true,autovar_2){it=traverse();next FAIL if it==FAIL
-it=(@src.self.ary=@src.ary.map{|i| (i.is_a?(Or )) ? i.ary : i}.flatten.select{|e| !(e.is_a?(Act) && e.ary.size==0)})
-it=((@src.ary.size==1) ? @src.ary[0] : @src.self)
-_result_1 = it };next FAIL if it==FAIL });return FAIL if it==FAIL
-it=_result_1  
-end
-
-end
 
 class Analyze_Variables2 < Traverser
 def flat()
