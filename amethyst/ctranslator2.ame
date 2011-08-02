@@ -76,7 +76,7 @@ failobj=rb_eval_string(\"FAIL\");
 					]
 				| Lookahead[ {label("accept")}:accept {label("reject")}:reject {label("oldinput")}:oldinput 
 										 rw(reject,`trans:t`) 
-										 {"VALUE #{oldinput}=#{iget("input")};\n #{t} x=1; goto #{accept};  #{reject}: x=0; #{accept}: #{iset("input",oldinput)}; if (x==#{@neg ? 1 : 0}) goto #{@@faillabel};"} ]
+										 {"VALUE #{oldinput}=#{iget("input")};\n #{t} x=1; goto #{accept};  #{reject}: x=0; #{accept}: #{bset("it","Qnil")}; #{iset("input",oldinput)}; if (x==#{@neg ? 1 : 0}) goto #{@@faillabel};"} ]
 				| Local[ :name .* { bset("it",bget(name))+";" } ]
 
 	failwrap(s) = {"#{s} FAILTEST(#{@@faillabel});" }
