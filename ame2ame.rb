@@ -9,29 +9,10 @@ require 'amethyst'
 require 'c/Amethyst'
 def a2ruby(s)
 	par=AmethystParser.new.parse(:igrammar,s)
-	par=AmethystOptimizer2.new.parse(:itrans,par)
-
-#	par=Detect_Variables.new.parse(:itrans,par)
-	#puts par.inspect
-	par=Analyze_Variables2.new.parse(:itrans,par)
-	#puts par.inspect
-
-#pp inl
-#puts par.inspect
-par= Move_Assignments.new.parse(:itrans,par)
-#puts par.inspect
-par=Dead_Code_Detector.new.parse(:itrans,par)
-#puts par.inspect
-par=Dead_Code_Deleter.new.parse(:itrans,par)
-#puts par.inspect
-#par= Move_Assignments.new.parse(:itrans,par)
-#	par=Dead_Code_Detector.new.parse(:itrans,par)
-#	par=Dead_Code_Deleter.new.parse(:itrans,par)
-#	opt=c.parse(:itrans,inl)
-	par=AmethystOptimizer2.new.parse(:itrans,par)
-#puts par.inspect
-	ruby=AmethystTranslator.new.parse(:itrans,par)
-	ruby
+	[AmethystOptimizer2,Analyze_Variables2,Move_Assignments,Dead_Code_Detector,Dead_Code_Deleter,AmethystOptimizer2,AmethystTranslator].each{|p|
+	 par=p.new.parse(:itrans,par)
+	}
+	par
 end
 o=File.open("bootstrap.rb","w")
 ["amethyst.ame","parser.ame","optimizer_null.ame","traverser.ame","optimizer_and_or.ame","detect_variables2.ame","dead_code_elimination.ame","translator.ame"].each{|file|

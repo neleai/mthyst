@@ -63,8 +63,8 @@ amethyst AmethystParser < Amethyst{
 	application = (name:klas '::' name:rule {[klas,rule]} | name):rule argsOpt('(',')'):arg -> Apply[rule,arg]
 
 	key         = "@" className:name  argsOpt('[',']'):args {Object.const_get(name).instance_variable_get(:@attrs)}:vars @Result
-              | "@" name:name   @Key
-							| "@@" name:n -> Global[n]
+              | "@" name:name  -> Act[Args[Key[{:name=>name}]]]
+							| "@@" name:name -> Act[Args[Global[name]]]
 
   collect(ors) = -> a=autovar; Seq[Or[{:ary=>ors.ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],Act[a]]
 

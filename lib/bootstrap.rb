@@ -480,7 +480,6 @@ end
 def key()
 _result_1=nil
 args_1=nil
-n_1=nil
 name_1=nil
 vars_1=nil
  it=nil
@@ -495,11 +494,11 @@ it=Result.create( {:args=>args_1,:name=>name_1,:vars=>vars_1 })
 _result_1 = it },proc{it=token("@");next FAIL if it==FAIL
 it=name();next FAIL if it==FAIL
 name_1 = it
-it=Key.create( {:args=>args_1,:name=>name_1 })
+it=(Act[Args[Key[{:name=>name_1}]]])
 _result_1 = it },proc{it=token("@@");next FAIL if it==FAIL
 it=name();next FAIL if it==FAIL
-n_1 = it
-it=(Global[n_1])
+name_1 = it
+it=(Act[Args[Global[name_1]]])
 _result_1 = it });return FAIL if it==FAIL
 it=_result_1  
 end
