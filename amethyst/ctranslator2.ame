@@ -5,7 +5,7 @@ class AmethystCTranslator < Amethyst
 	def addcallback(cb)
 		@cbno||=0
 		@cbno+=1
-		n="callback#{@cbno}"
+		n="#{@rulename}_cb#{@cbno}"
 		@callbacks[n]=cb
 		n
 	end
@@ -57,12 +57,12 @@ failobj=rb_eval_string(\"FAIL\");
 #{rbcode}
 }"
 							s } ]
-				|  Rule[@name:name @body=>trans:body  { "VALUE #{@@grammar}_#{name}(VALUE self #{@args.size.times.map{|i| ",VALUE a#{i}"}}) {VALUE bind=rb_hash_new(); #{@args.size.times.map{|i| bset(@args[i][0],"a#{i}")+";"}} int x;VALUE arg0,arg1,arg2,arg3;\n#{body}\nreturn #{bget("_result")};\nfail: return failobj; }" } ]
+				|  Rule[@name:name {@@rulename=name} @body=>trans:body  { "VALUE #{@@grammar}_#{name}(VALUE self #{@args.size.times.map{|i| ",VALUE a#{i}"}}) {VALUE bind=rb_hash_new(); #{@args.size.times.map{|i| bset(@args[i][0],"a#{i}")+";"}} int x;VALUE arg0,arg1,arg2,arg3;\n#{body}\nreturn #{bget("_result")};\nfail: return failobj; }" } ]
 				| Act[ .*:{addcallback(@pred ? ["(",it,") || FAIL"]:it)}:cbno {"#{bset("it","CALL(#{cbno},1,bind)")}; #{@pred ? "FAILTEST(#{@@faillabel});" :"" }"} ]
 				| Apply[:name (.:{addcallback(it)}*):args 
             failwrap(" #{args.size.times.map{|a|"arg#{a}=CALL(#{args[a]},1,bind);"}} #{bset("it","CALL(#{name},#{args.size} #{args.size.times.map{|a|",arg#{a}"}})")};")]
 				| Seq[ trans*:t {puts t.inspect;t*""} ]
-				| Set[&{@append==true} @expr=>trans:e {"#{e} CALL(_append,2,#{bget(@name[0])},#{bget("it")});" } ]			
+				| Set[&{@append==true} @expr=>trans:e {"#{e} ;if(#{bget(@name[0])}==Qnil) #{bset(@name[0],"rb_ary_new()")}; CALL(_append,2,#{bget(@name[0])},#{bget("it")});" } ]			
 				| Set[ @expr=>trans:e {@name.is_a?(Local) ? "#{e}\n #{bset(@name[0],bget("it"))}; " : "" } ]
 				| Or[ {label("accept")}:accept {@@faillabel}:fail {label("oldinput")}:oldinput {[label("alt")]}:alts
 					 ( &(.) {alts<<label("alt")} rw(alts[-1],`trans`))*:t
