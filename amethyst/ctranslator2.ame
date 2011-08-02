@@ -29,6 +29,10 @@ class AmethystCTranslator < Amethyst
 		@lno=(@lno||0)+1
 		"#{s}#{@lno}"
 	end
+	def mktable(r)
+		@ruletable={}
+		r.each{|e| @ruletable[e.name]=e}
+	end
 end
 
 amethyst AmethystCTranslator < Amethyst {
@@ -48,7 +52,7 @@ amethyst AmethystCTranslator < Amethyst {
 	{s+=x*""}
 	{s+="\nend"; "rb_eval_string(#{s.inspect});"}
 	
-	trans =  Grammar[ {@@grammar=@name;@@parent=@parent} {@@faillabel="fail"} {@@callbacks={}} @rules=>[trans*]:t rbcode:rbcode
+	trans =  Grammar[ {@@grammar=@name;@@parent=@parent} {@@faillabel="fail"} {@@callbacks={}} {mktable(@rules)} @rules=>[trans*]:t rbcode:rbcode
 				    { s="#include \"cthyst.h\"\nVALUE cls_#{@name};\n"
 							s<<t*"\n"
         		  s<<"\nvoid Init_#{@name}(){ cls_#{@name}=rb_define_class(\"#{@name}\",rb_const_get(rb_cObject,rb_intern(\"#{@@parent}\"))); 
@@ -60,7 +64,7 @@ failobj=rb_eval_string(\"FAIL\");
 				|  Rule[@name:name {@@rulename=name} @body=>trans:body  { "VALUE #{@@grammar}_#{name}(VALUE self #{@args.size.times.map{|i| ",VALUE a#{i}"}}) {VALUE bind=rb_hash_new(); #{@args.size.times.map{|i| bset(@args[i][0],"a#{i}")+";"}} int x;VALUE arg0,arg1,arg2,arg3;\n#{body}\nreturn #{bget("_result")};\nfail: return failobj; }" } ]
 				| Act[ .*:{addcallback(@pred ? ["(",it,") || FAIL"]:it)}:cbno {"#{bset("it","CALL(#{cbno},1,bind)")}; #{@pred ? "FAILTEST(#{@@faillabel});" :"" }"} ]
 				| Apply[:name (.:{addcallback(it)}*):args 
-            failwrap(" #{args.size.times.map{|a|"arg#{a}=CALL(#{args[a]},1,bind);"}} #{bset("it","CALL(#{name},#{args.size} #{args.size.times.map{|a|",arg#{a}"}})")};")]
+            failwrap(" #{args.size.times.map{|a|"arg#{a}=CALL(#{args[a]},1,bind);"}} #{bset("it",(@@ruletable[name] ? "#{@@grammar}_#{name}(self" : "CALL(#{name},#{args.size}")+ "#{args.size.times.map{|a|",arg#{a}"}})")};")]
 				| Seq[ trans*:t {puts t.inspect;t*""} ]
 				| Set[&{@append==true} @expr=>trans:e {"#{e} ;if(#{bget(@name[0])}==Qnil) #{bset(@name[0],"rb_ary_new()")}; CALL(_append,2,#{bget(@name[0])},#{bget("it")});" } ]			
 				| Set[ @expr=>trans:e {@name.is_a?(Local) ? "#{e}\n #{bset(@name[0],bget("it"))}; " : "" } ]
