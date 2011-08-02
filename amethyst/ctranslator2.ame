@@ -48,7 +48,7 @@ amethyst AmethystCTranslator < Amethyst {
 
 
 	rbcode = {"class #{@@grammar} < #{@@parent}\n"}:s
-	{@@callbacks.to_a}=>[([:k rbtrans:v] {puts v.inspect}  {"def #{k}(bind)\n#{v}\nend\n"})*:x ]
+	{@@callbacks.to_a}=>[([:k rbtrans:v]   {"def #{k}(bind)\n#{v}\nend\n"})*:x ]
 	{s+=x*""}
 	{s+="\nend"; "rb_eval_string(#{s.inspect});"}
 	
@@ -65,13 +65,13 @@ failobj=rb_eval_string(\"FAIL\");
 				| Act[ .*:{addcallback(@pred ? ["(",it,") || FAIL"]:it)}:cbno {"#{bset("it","CALL(#{cbno},1,bind)")}; #{@pred ? "FAILTEST(#{@@faillabel});" :"" }"} ]
 				| Apply[:name (.:{addcallback(it)}*):args 
             failwrap(" #{args.size.times.map{|a|"arg#{a}=CALL(#{args[a]},1,bind);"}} #{bset("it",(@@ruletable[name] ? "#{@@grammar}_#{name}(self" : "CALL(#{name},#{args.size}")+ "#{args.size.times.map{|a|",arg#{a}"}})")};")]
-				| Seq[ trans*:t {puts t.inspect;t*""} ]
+				| Seq[ trans*:t {t*""} ]
 				| Set[&{@append==true} @expr=>trans:e {"#{e} ;if(#{bget(@name[0])}==Qnil) #{bset(@name[0],"rb_ary_new()")}; CALL(_append,2,#{bget(@name[0])},#{bget("it")});" } ]			
 				| Set[ @expr=>trans:e {@name.is_a?(Local) ? "#{e}\n #{bset(@name[0],bget("it"))}; " : "" } ]
 				| Or[ {label("accept")}:accept {@@faillabel}:fail {label("oldinput")}:oldinput {[label("alt")]}:alts
 					 ( &(.) {alts<<label("alt")} rw(alts[-1],`trans`))*:t
 					 {s="VALUE #{oldinput}=#{iget("input")};\n"}
-           {puts t.inspect;puts alts.inspect;t.size.times{|i| s<<"#{alts[i]}: #{iset("input",oldinput)};if (#{iget("cut")}!=Qnil) goto #{fail};\n #{t[i]} \n#{iset("cut","Qnil")};goto #{accept};\n"}}
+           {t.size.times{|i| s<<"#{alts[i]}: #{iset("input",oldinput)};if (#{iget("cut")}!=Qnil) goto #{fail};\n #{t[i]} \n#{iset("cut","Qnil")};goto #{accept};\n"}}
            {"#{s}  #{alts[-1]}:  #{iset("input",oldinput)}; goto #{fail};\n #{accept}:;\n"}
 					]
 				| Many[ {label("break")}:brk {label("oldinput")}:oldinput
@@ -82,7 +82,22 @@ failobj=rb_eval_string(\"FAIL\");
 										 rw(reject,`trans:t`) 
 										 {"VALUE #{oldinput}=#{iget("input")};\n #{t} x=1; goto #{accept};  #{reject}: x=0; #{accept}: #{bset("it","Qnil")}; #{iset("input",oldinput)}; if (x==#{@neg ? 1 : 0}) goto #{@@faillabel};"} ]
 				| Local[ :name .* { bset("it",bget(name))+";" } ]
-
+				| Result[ @args=>rbtrans:argss  { s="#{@name}.create(#{argss} {#{@vars.map{|l| ":#{l[0]}=>bind[:#{l[0]}]" }.sort*","} })"
+					cbno=addcallback(s)
+					"#{bset("it","CALL(#{cbno},1,bind)")};"
+				} ]
+				| Pass[ label("pass"):pass label("oldinput"):oldinput label("oldsrc"):oldsrc label("success"):success label("fail"):fail
+						rw(pass,`@to=>trans:to`)
+					{  "VALUE #{oldinput}=#{iget("input")};  VALUE #{oldsrc}=#{iget("src")}; int #{fail}=0;
+ #{iset("src",@enter ? "rb_ary_new3(1,#{iget(@var[0])})" : iget(@var[0]))}; #{iset("input","INT2FIX(0)")};
+ #{t}
+	if (CALL(eof,0)==failobj) goto #{pass};
+	goto #{success};
+	#{pass}: #{fail}=1;
+	#{success}: #{iset("src",oldsrc)}; #{iset("input",oldinput)};
+	if(#{fail}) goto #{@@faillabel};
+" }
+					]
 	failwrap(s) = {"#{s} FAILTEST(#{@@faillabel});" }
 
 	rw(word,prc) = {@@faillabel}:rwo {@@faillabel=word } apply(prc):x {@@faillabel=rwo; x }
