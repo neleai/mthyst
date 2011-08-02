@@ -1205,6 +1205,70 @@ end
 
 
 
+class Traverser < Amethyst
+def traverse()
+_result_1=nil
+it_1=nil
+key_1=nil
+this_1=nil
+ it=nil
+while true
+autovar_1=@input;r=it=anything();break FAIL if it==FAIL
+ break FAIL if r==FAIL
+ (autovar_1=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_1
+it=self['self']
+this_1 = it
+it=((@src.self.instance_variables).map{|v| [v,@src.self.instance_variable_get(v)] })
+autovar_2 = it
+it=_pass(false,autovar_2){it=anything();next FAIL if it==FAIL
+autovar_3 = it
+it=_pass(true,autovar_3){while true
+autovar_5=@input;r=it=anything();break FAIL if it==FAIL
+autovar_4 = it
+it=_pass(true,autovar_4){it=anything();next FAIL if it==FAIL
+key_1 = it
+it=traverse_item();next FAIL if it==FAIL
+it_1 = it
+it=(@x; this_1.instance_variable_set(key_1,it_1)) };break FAIL if it==FAIL 
+ break FAIL if r==FAIL
+ (autovar_5=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_5};next FAIL if it==FAIL };return FAIL if it==FAIL
+it=self['self']
+_result_1 = it
+it=_result_1  
+end
+def traverse_item()
+_result_1=nil
+a_1=nil
+ it=nil
+it=_or(proc{it=visit();next FAIL if it==FAIL
+a_1 = it
+it=(@changed=true)
+it=a_1
+_result_1 = it },proc{it=clas(Array);next FAIL if it==FAIL
+autovar_1 = it
+it=_pass(true,autovar_1){it=([])
+autovar_2 = it
+while true
+autovar_3=@input;r=it=traverse_item();break FAIL if it==FAIL
+autovar_2||=[];_append(autovar_2,it)
+ break FAIL if r==FAIL
+ (autovar_3=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_3
+it=autovar_2
+_result_1 = it };next FAIL if it==FAIL },proc{it=clas(AmethystAST);next FAIL if it==FAIL
+autovar_4 = it
+it=_pass(true,autovar_4){it=traverse();next FAIL if it==FAIL
+_result_1 = it};next FAIL if it==FAIL },proc{it=anything();next FAIL if it==FAIL
+_result_1 = it});return FAIL if it==FAIL
+it=_result_1  
+end
+
+end
+
+
+
 class AmethystOptimizer2 < AmethystOptimizer
 def trans()
 _result_1=nil
@@ -1279,70 +1343,6 @@ it=_result_1
 end
 
 end
-
-class Traverser < Amethyst
-def traverse()
-_result_1=nil
-it_1=nil
-key_1=nil
-this_1=nil
- it=nil
-while true
-autovar_1=@input;r=it=anything();break FAIL if it==FAIL
- break FAIL if r==FAIL
- (autovar_1=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_1
-it=self['self']
-this_1 = it
-it=((@src.self.instance_variables).map{|v| [v,@src.self.instance_variable_get(v)] })
-autovar_2 = it
-it=_pass(false,autovar_2){it=anything();next FAIL if it==FAIL
-autovar_3 = it
-it=_pass(true,autovar_3){while true
-autovar_5=@input;r=it=anything();break FAIL if it==FAIL
-autovar_4 = it
-it=_pass(true,autovar_4){it=anything();next FAIL if it==FAIL
-key_1 = it
-it=traverse_item();next FAIL if it==FAIL
-it_1 = it
-it=(@x; this_1.instance_variable_set(key_1,it_1)) };break FAIL if it==FAIL 
- break FAIL if r==FAIL
- (autovar_5=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_5};next FAIL if it==FAIL };return FAIL if it==FAIL
-it=self['self']
-_result_1 = it
-it=_result_1  
-end
-def traverse_item()
-_result_1=nil
-a_1=nil
- it=nil
-it=_or(proc{it=visit();next FAIL if it==FAIL
-a_1 = it
-it=(@changed=true)
-it=a_1
-_result_1 = it },proc{it=clas(Array);next FAIL if it==FAIL
-autovar_1 = it
-it=_pass(true,autovar_1){it=([])
-autovar_2 = it
-while true
-autovar_3=@input;r=it=traverse_item();break FAIL if it==FAIL
-autovar_2||=[];_append(autovar_2,it)
- break FAIL if r==FAIL
- (autovar_3=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_3
-it=autovar_2
-_result_1 = it };next FAIL if it==FAIL },proc{it=clas(AmethystAST);next FAIL if it==FAIL
-autovar_4 = it
-it=_pass(true,autovar_4){it=traverse();next FAIL if it==FAIL
-_result_1 = it};next FAIL if it==FAIL },proc{it=anything();next FAIL if it==FAIL
-_result_1 = it});return FAIL if it==FAIL
-it=_result_1  
-end
-
-end
-
-
 
 class Analyze_Variables2 < Traverser
 def flat()

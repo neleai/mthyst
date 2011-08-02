@@ -34,7 +34,7 @@ par=Dead_Code_Deleter.new.parse(:itrans,par)
 	ruby
 end
 o=File.open("bootstrap.rb","w")
-["amethyst.ame","parser.ame","optimizer_null.ame","optimizer_and_or.ame","traverser.ame","detect_variables2.ame","dead_code_elimination.ame","translator.ame"].each{|file|
+["amethyst.ame","parser.ame","optimizer_null.ame","traverser.ame","optimizer_and_or.ame","detect_variables2.ame","dead_code_elimination.ame","translator.ame"].each{|file|
 puts file
 o.puts a2ruby(File.new("amethyst/#{file}").read)
 }
