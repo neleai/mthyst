@@ -494,11 +494,11 @@ it=Result.create( {:args=>args_1,:name=>name_1,:vars=>vars_1 })
 _result_1 = it },proc{it=token("@");next FAIL if it==FAIL
 it=name();next FAIL if it==FAIL
 name_1 = it
-it=(Act[Args[Key[{:name=>name_1}]]])
+it=Key.create( {:args=>args_1,:name=>name_1 })
 _result_1 = it },proc{it=token("@@");next FAIL if it==FAIL
 it=name();next FAIL if it==FAIL
 name_1 = it
-it=(Act[Args[Global[name_1]]])
+it=(Global[name_1])
 _result_1 = it });return FAIL if it==FAIL
 it=_result_1  
 end
@@ -826,7 +826,9 @@ _result_1 = it },proc{it=token("break");next FAIL if it==FAIL
 it=(Seq[Cut[],Stop[]])
 _result_1 = it },proc{it=application();next FAIL if it==FAIL
 _result_1 = it},proc{it=key();next FAIL if it==FAIL
-_result_1 = it},proc{it=_or(proc{it=token("->");next FAIL if it==FAIL
+it_1 = it
+it=(it_1.is_a?(Result) ? it_1 : Act[Args[it_1]])
+_result_1 = it },proc{it=_or(proc{it=token("->");next FAIL if it==FAIL
 it=atomicHostExpr();next FAIL if it==FAIL
 x_1 = it },proc{it=token("");next FAIL if it==FAIL
 it=inlineHostExpr();next FAIL if it==FAIL
@@ -882,7 +884,10 @@ end
 class AmethystOptimizer < Amethyst
 def arg()
 _result_1=nil
+args_1=nil
 ary_1=nil
+name_1=nil
+vars_1=nil
  it=nil
 it=_or(proc{it=clas(Args);next FAIL if it==FAIL
 autovar_1 = it
@@ -916,6 +921,19 @@ autovar_7 = it
 it=_pass(true,autovar_7){it=transfn();next FAIL if it==FAIL
 ary_1||=[];_append(ary_1,it)};next FAIL if it==FAIL
 it=Exp.create( {:ary=>ary_1 })
+_result_1 = it },proc{it=clas(Result);next FAIL if it==FAIL
+autovar_8 = it
+it=_pass(true,autovar_8){it=self['name']
+name_1 = it
+it=self['args']
+autovar_9 = it
+it=_pass(false,autovar_9){it=args();next FAIL if it==FAIL
+args_1 = it};next FAIL if it==FAIL
+it=self['vars']
+autovar_10 = it
+it=_pass(false,autovar_10){it=args();next FAIL if it==FAIL
+vars_1 = it};next FAIL if it==FAIL };next FAIL if it==FAIL
+it=Result.create( {:args=>args_1,:ary=>ary_1,:name=>name_1,:vars=>vars_1 })
 _result_1 = it },proc{it=anything();next FAIL if it==FAIL
 _result_1 = it});return FAIL if it==FAIL
 it=_result_1  
@@ -1821,9 +1839,11 @@ class AmethystTranslator < Amethyst
 def arg()
 _result_1=nil
 a_1=nil
+argss_1=nil
 name_1=nil
 number_1=nil
 t_1=nil
+vars_1=nil
  it=nil
 it=_or(proc{it=clas(Args);next FAIL if it==FAIL
 autovar_1 = it
@@ -1856,21 +1876,32 @@ autovar_7 = it
 it=_pass(true,autovar_7){it=transfn();next FAIL if it==FAIL
 t_1 = it};next FAIL if it==FAIL
 it=t_1
-_result_1 = it },proc{it=clas(Key);next FAIL if it==FAIL
+_result_1 = it },proc{it=clas(Result);next FAIL if it==FAIL
 autovar_8 = it
 it=_pass(true,autovar_8){it=self['name']
+name_1 = it
+it=self['args']
+autovar_9 = it
+it=_pass(false,autovar_9){it=args();next FAIL if it==FAIL
+argss_1 = it};next FAIL if it==FAIL
+it=self['vars']
+vars_1 = it };next FAIL if it==FAIL
+it=("it=#{name_1}.create(#{argss_1} {#{vars_1.map{|l| ":#{l[0]}=>#{varname(@varhash,l[0],l[1])}" }.sort*","} })")
+_result_1 = it },proc{it=clas(Key);next FAIL if it==FAIL
+autovar_10 = it
+it=_pass(true,autovar_10){it=self['name']
 name_1 = it};next FAIL if it==FAIL
 it=("@src.#{name_1}")
 _result_1 = it },proc{it=clas(Local);next FAIL if it==FAIL
-autovar_9 = it
-it=_pass(true,autovar_9){it=anything();next FAIL if it==FAIL
+autovar_11 = it
+it=_pass(true,autovar_11){it=anything();next FAIL if it==FAIL
 name_1 = it
 it=anything();next FAIL if it==FAIL
 number_1 = it };next FAIL if it==FAIL
 it=(varname(@varhash,name_1,number_1))
 _result_1 = it },proc{it=clas(Global);next FAIL if it==FAIL
-autovar_10 = it
-it=_pass(true,autovar_10){it=anything();next FAIL if it==FAIL
+autovar_12 = it
+it=_pass(true,autovar_12){it=anything();next FAIL if it==FAIL
 name_1 = it};next FAIL if it==FAIL
 it=("@#{name_1}")
 _result_1 = it },proc{it=anything();next FAIL if it==FAIL

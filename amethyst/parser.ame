@@ -42,7 +42,7 @@ amethyst AmethystParser < Amethyst{
     		                     | "?"  {Or[from,Apply["empty"]]}:from
 													 	 | ":" (  (key | name):name ('[]' {true} | empty {nil} ):append {_Set(name,from,append)}:from
             		   					        | inlineHostExpr:e  {Seq[ _Set("it",from) , Act[e] ]}:from
-																   )	
+																   )
 										)				)* {from}
 
  		modifier = term
@@ -52,7 +52,7 @@ amethyst AmethystParser < Amethyst{
 				| "nested" '(' expression:expr ")" -> Nested[expr]
 				| "break" -> Seq[Cut[],Stop[]]
 		 	  | application
- 			  | key
+ 			  | key:{it.is_a?(Result) ? it : Act[Args[it]]}
 			  | ("->" atomicHostExpr | "" inlineHostExpr):x    ->  Act[x]
 				| "\"" ('"'  break| eChar:s[])*  -> Apply["token" ,quote(s)]
 		 	  | "'"  ('\'' break|  eChar:s[])* -> Apply["seq"   ,quote(s)]
@@ -63,8 +63,8 @@ amethyst AmethystParser < Amethyst{
 	application = (name:klas '::' name:rule {[klas,rule]} | name):rule argsOpt('(',')'):arg -> Apply[rule,arg]
 
 	key         = "@" className:name  argsOpt('[',']'):args {Object.const_get(name).instance_variable_get(:@attrs)}:vars @Result
-              | "@" name:name  -> Act[Args[Key[{:name=>name}]]]
-							| "@@" name:name -> Act[Args[Global[name]]]
+              | "@" name:name  @Key
+							| "@@" name:name -> Global[name]
 
   collect(ors) = -> a=autovar; Seq[Or[{:ary=>ors.ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],Act[a]]
 

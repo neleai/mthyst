@@ -31,6 +31,7 @@ amethyst AmethystOptimizer < Amethyst {
 	arg = Args[arg*:ary]  @Args
 			| Strin[(char |arg)*:ary ] @Strin
 			| Exp[transfn:ary[] ] @Exp
+			| Result[@name:name @args=>args:args @vars=>args:vars] @Result
 			| anything
 }
 
