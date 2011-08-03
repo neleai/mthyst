@@ -6,9 +6,9 @@ optimizer simplifying =>[ ] to []
 split to separate parser and traverser 
 split to traverser and modifier and dataflow_analyzer
 make AmethystModule +include to mimic ruby module
-make position handling explicit in ast
+make position handling explicit as in amethyst/position.ame
 make eof in Pass explicit
 make passing by it explicit
 refactor args
 append as Act
-
+refactor Set
