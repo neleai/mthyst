@@ -18,6 +18,8 @@ def connectstring(ary)
 end
 
 class AmethystParser < Amethyst
+
+
 def __args(o_1,c_1)
 _result_1=nil
 autovar_1=nil
@@ -699,24 +701,6 @@ it=from_1
 _result_2 = it });return FAIL if it==FAIL
 it=_result_2  
 end
-def procargs()
-_result_1=nil
-autovar_1=nil
-c_1=nil
- it=nil
-it=(@ary=[];@tmp=[])
-while true
-autovar_1=@input;r=it=_or(proc{it=anything();next FAIL if it==FAIL
-c_1 = it
-it=(c_1==',')||FAIL;next FAIL if it==FAIL
-it=(@ary<<Args[{:ary=>@tmp}];@tmp=[]) },proc{it=procargs2();next FAIL if it==FAIL});break FAIL if it==FAIL
- break FAIL if r==FAIL
- (autovar_1=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_1
-it=@ary
-_result_1 = it
-it=_result_1  
-end
 def procargs2()
 _result_1=nil
 _result_2=nil
@@ -864,36 +848,6 @@ it=c_2
 _result_4 = it
 it=_result_4
 _result_1 = it });return FAIL if it==FAIL
-it=_result_1  
-end
-def rule()
-_result_1=nil
-args_1=nil
-bnding_1=nil
-body_1=nil
-locals_1=nil
-name_1=nil
-s_1=nil
- it=nil
-it=(@locals=[];@bnding=Bnding[])
-it=@bnding
-bnding_1 = it
-it=name();return FAIL if it==FAIL
-name_1 = it
-it=ruleargs();return FAIL if it==FAIL
-args_1 = it
-it=("=")
-s_1 = it
-it=spaces();return FAIL if it==FAIL
-it=seq(s_1);return FAIL if it==FAIL
-it=expression();return FAIL if it==FAIL
-body_1 = it
-it=(_body(body_1))
-body_1 = it
-it=(@locals.uniq)
-locals_1 = it
-it=Rule.create( {:args=>args_1,:bnding=>bnding_1,:body=>body_1,:locals=>locals_1,:name=>name_1 })
-_result_1 = it
 it=_result_1  
 end
 def ruleargs()

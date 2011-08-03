@@ -37,7 +37,7 @@ end
 
 amethyst AmethystCTranslator < Amethyst {
 	transfn = trans:t -> "proc{#{t}}"
-	rbtrans = Local[:name .* {"bind[:#{name}]"}]
+	rbtrans = Local[.* {"bind[:#{@desc}]"}]
 					| Args[rbtrans*:a] -> a*""
 					| Array[rbtrans*:a] -> a*""
 		      | Strin[rbtrans*:a] -> a*""
@@ -52,8 +52,9 @@ amethyst AmethystCTranslator < Amethyst {
 	{s+=x*""}
 	{s+="\nend"; "rb_eval_string(#{s.inspect});"}
 	
-	trans =  Grammar[ {@@grammar=@name;@@parent=@parent} {@@faillabel="fail"} {@@callbacks={}} {mktable(@rules)} @rules=>[trans*]:t rbcode:rbcode
+	trans =  Grammar[ {@@grammar=@name;@@parent=@parent} {@@faillabel="fail"} {@@callbacks={}} {mktable(@rules)} {@@header=[]} @rules=>[trans*]:t rbcode:rbcode
 				    { s="#include \"cthyst.h\"\nVALUE cls_#{@name};\n"
+							s<<@@header*"\n"
 							s<<t*"\n"
         		  s<<"\nvoid Init_#{@name}(){ cls_#{@name}=rb_define_class(\"#{@name}\",rb_const_get(rb_cObject,rb_intern(\"#{@@parent}\"))); 
 failobj=rb_eval_string(\"FAIL\");
@@ -61,13 +62,15 @@ failobj=rb_eval_string(\"FAIL\");
 #{rbcode}
 }"
 							s } ]
-				|  Rule[@name:name {@@rulename=name} @body=>trans:body  { "VALUE #{@@grammar}_#{name}(VALUE self #{@args.size.times.map{|i| ",VALUE a#{i}"}}) {VALUE bind=rb_hash_new(); #{@args.size.times.map{|i| bset(@args[i][0],"a#{i}")+";"}} int x;VALUE arg0,arg1,arg2,arg3;\n#{body}\nreturn #{bget("_result")};\nfail: return failobj; }" } ]
+				|  Rule[@name:name {@@rulename=name} @body=>trans:body  { h="VALUE #{@@grammar}_#{name}(VALUE self #{@args.size.times.map{|i| ",VALUE a#{i}"}})" 
+						@@header<<h+";"
+						h+"{VALUE bind=rb_hash_new(); #{@args.size.times.map{|i| bset(@args[i].desc,"a#{i}")+";"}} int x;VALUE arg0,arg1,arg2,arg3;\n#{body}\nreturn #{bget("_result")};\nfail: return failobj; }" } ]
 				| Act[ .*:{addcallback(@pred ? ["(",it,") || FAIL"]:it)}:cbno {"#{bset("it","CALL(#{cbno},1,bind)")}; #{@pred ? "FAILTEST(#{@@faillabel});" :"" }"} ]
 				| Apply[:name (.:{addcallback(it)}*):args 
             failwrap(" #{args.size.times.map{|a|"arg#{a}=CALL(#{args[a]},1,bind);"}} #{bset("it",(@@ruletable[name] ? "#{@@grammar}_#{name}(self" : "CALL(#{name},#{args.size}")+ "#{args.size.times.map{|a|",arg#{a}"}})")};")]
 				| Seq[ trans*:t {t*""} ]
 				| Set[&{@append==true} @expr=>trans:e {"#{e} ;if(#{bget(@name[0])}==Qnil) #{bset(@name[0],"rb_ary_new()")}; CALL(_append,2,#{bget(@name[0])},#{bget("it")});" } ]			
-				| Set[ @expr=>trans:e {@name.is_a?(Local) ? "#{e}\n #{bset(@name[0],bget("it"))}; " : "" } ]
+				| Set[ @expr=>trans:e {"#{e}\n #{bset(@name.desc,bget("it"))}; " } ]
 				| Or[ {label("accept")}:accept {@@faillabel}:fail {label("oldinput")}:oldinput {[label("alt")]}:alts
 					 ( &(.) {alts<<label("alt")} rw(alts[-1],`trans`))*:t
 					 {s="VALUE #{oldinput}=#{iget("input")};\n"}
@@ -81,8 +84,8 @@ failobj=rb_eval_string(\"FAIL\");
 				| Lookahead[ {label("accept")}:accept {label("reject")}:reject {label("oldinput")}:oldinput 
 										 rw(reject,`trans:t`) 
 										 {"VALUE #{oldinput}=#{iget("input")};\n #{t} x=1; goto #{accept};  #{reject}: x=0; #{accept}: #{bset("it","Qnil")}; #{iset("input",oldinput)}; if (x==#{@neg ? 1 : 0}) goto #{@@faillabel};"} ]
-				| Local[ :name .* { bset("it",bget(name))+";" } ]
-				| Result[ @args=>rbtrans:argss  { s="#{@name}.create(#{argss} {#{@vars.map{|l| ":#{l[0]}=>bind[:#{l[0]}]" }.sort*","} })"
+				| Local[ .* { bset("it",bget(@desc))+";" } ]
+				| Result[ @args=>rbtrans:argss  { s="#{@name}.create(#{argss} {#{@vars.map{|l| ":#{l[0]}=>bind[:#{l.desc}]" }.sort*","} })"
 					cbno=addcallback(s)
 					"#{bset("it","CALL(#{cbno},1,bind)")};"
 				} ]

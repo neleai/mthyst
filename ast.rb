@@ -127,6 +127,11 @@ class Local
 		return false unless a.is_a? Local
 		return self.ary==a.ary
 	end
+	def desc
+		a=ary[1]
+		a=a[0] if a.is_a? Bnding
+		"#{ary[0]}_#{a}"
+	end
 	alias_method :eql?,:==
 end
 $varhash={}
