@@ -13,13 +13,10 @@ amethyst AmethystOptimizer < Amethyst {
 				| Act[  args:ary @pred:pred] @Act
 				| Result[@name:name @args=>args:args @vars=>args:vars] @Result
 				| Args[ arg*:ary ] @Args
-				| Key[@name:name] @Key
 				| Pass[ @to=>trans:to @var=>arg:var @enter:enter] @Pass
 				| Cut[] @Cut
 				| Stop[] @Stop
 				| Local[ .* @self]
-				| Global[ .* @self]
-				| Key[ .* @self]
 
 	transfn = trans 
 	

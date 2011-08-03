@@ -1166,11 +1166,6 @@ autovar_3=nil
 autovar_40=nil
 autovar_41=nil
 autovar_42=nil
-autovar_43=nil
-autovar_44=nil
-autovar_45=nil
-autovar_46=nil
-autovar_47=nil
 autovar_4=nil
 autovar_5=nil
 autovar_6=nil
@@ -1331,55 +1326,34 @@ end;@input=autovar_35
 it=autovar_33
 ary_1 = it };next FAIL if it==FAIL
 it=Args.create( {:ary=>ary_1,:o=>o_1 })
-_result_1 = it },proc{it=clas(Key);next FAIL if it==FAIL
-autovar_36 = it
-it=_pass(true,autovar_36){it=(@src.name)
-name_1 = it};next FAIL if it==FAIL
-it=Key.create( {:args=>args_1,:ary=>ary_1,:expr=>expr_1,:name=>name_1 })
 _result_1 = it },proc{it=clas(Pass);next FAIL if it==FAIL
+autovar_36 = it
+it=_pass(true,autovar_36){it=(@src.to)
 autovar_37 = it
-it=_pass(true,autovar_37){it=(@src.to)
-autovar_38 = it
-it=_pass(false,autovar_38){it=trans();next FAIL if it==FAIL
+it=_pass(false,autovar_37){it=trans();next FAIL if it==FAIL
 to_1 = it};next FAIL if it==FAIL
 it=(@src.var)
-autovar_39 = it
-it=_pass(false,autovar_39){it=arg();next FAIL if it==FAIL
+autovar_38 = it
+it=_pass(false,autovar_38){it=arg();next FAIL if it==FAIL
 var_1 = it};next FAIL if it==FAIL
 it=(@src.enter)
 enter_1 = it };next FAIL if it==FAIL
 it=Pass.create( {:ary=>ary_1,:enter=>enter_1,:to=>to_1,:var=>var_1 })
 _result_1 = it },proc{it=clas(Cut);next FAIL if it==FAIL
-autovar_40 = it
-it=_pass(true,autovar_40){ };next FAIL if it==FAIL
+autovar_39 = it
+it=_pass(true,autovar_39){ };next FAIL if it==FAIL
 it=Cut.create( {:ary=>ary_1 })
 _result_1 = it },proc{it=clas(Stop);next FAIL if it==FAIL
-autovar_41 = it
-it=_pass(true,autovar_41){ };next FAIL if it==FAIL
+autovar_40 = it
+it=_pass(true,autovar_40){ };next FAIL if it==FAIL
 it=Stop.create( {:ary=>ary_1 })
 _result_1 = it },proc{it=clas(Local);next FAIL if it==FAIL
-autovar_42 = it
-it=_pass(true,autovar_42){while true
-autovar_43=@input;r=it=anything();break FAIL if it==FAIL
+autovar_41 = it
+it=_pass(true,autovar_41){while true
+autovar_42=@input;r=it=anything();break FAIL if it==FAIL
  break FAIL if r==FAIL
- (autovar_43=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_43
-it=(@src.self)
-_result_1 = it };next FAIL if it==FAIL },proc{it=clas(Global);next FAIL if it==FAIL
-autovar_44 = it
-it=_pass(true,autovar_44){while true
-autovar_45=@input;r=it=anything();break FAIL if it==FAIL
- break FAIL if r==FAIL
- (autovar_45=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_45
-it=(@src.self)
-_result_1 = it };next FAIL if it==FAIL },proc{it=clas(Key);next FAIL if it==FAIL
-autovar_46 = it
-it=_pass(true,autovar_46){while true
-autovar_47=@input;r=it=anything();break FAIL if it==FAIL
- break FAIL if r==FAIL
- (autovar_47=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_47
+ (autovar_42=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_42
 it=(@src.self)
 _result_1 = it };next FAIL if it==FAIL });return FAIL if it==FAIL
 it=_result_1  
@@ -2363,8 +2337,6 @@ autovar_2=nil
 autovar_30=nil
 autovar_31=nil
 autovar_32=nil
-autovar_33=nil
-autovar_34=nil
 autovar_3=nil
 autovar_4=nil
 autovar_5=nil
@@ -2516,32 +2488,22 @@ argss_1 = it};next FAIL if it==FAIL
 it=(@src.vars)
 vars_1 = it };next FAIL if it==FAIL
 it=("it=#{name_1}.create(#{argss_1} {#{vars_1.map{|l| ":#{l[0]}=>#{varname(@varhash,l[0],l[1])}" }.sort*","} })")
-_result_1 = it },proc{it=clas(Key);next FAIL if it==FAIL
-autovar_27 = it
-it=_pass(true,autovar_27){it=(@src.name)
-name_1 = it};next FAIL if it==FAIL
-it=("it=@src.#{name_1}")
 _result_1 = it },proc{it=clas(Local);next FAIL if it==FAIL
-autovar_28 = it
-it=_pass(true,autovar_28){it=anything();next FAIL if it==FAIL
+autovar_27 = it
+it=_pass(true,autovar_27){it=anything();next FAIL if it==FAIL
 name_1 = it
 it=anything();next FAIL if it==FAIL
 number_1 = it };next FAIL if it==FAIL
 it=("it="+ varname(@varhash,name_1,number_1))
-_result_1 = it },proc{it=clas(Global);next FAIL if it==FAIL
-autovar_29 = it
-it=_pass(true,autovar_29){it=anything();next FAIL if it==FAIL
-name_1 = it};next FAIL if it==FAIL
-it=("it=@#{name_1}")
 _result_1 = it },proc{it=clas(Pass);next FAIL if it==FAIL
-autovar_30 = it
-it=_pass(true,autovar_30){it=rw('next',proc{it=(@src.to)
-autovar_31 = it
-it=_pass(false,autovar_31){it=trans();next FAIL if it==FAIL
+autovar_28 = it
+it=_pass(true,autovar_28){it=rw('next',proc{it=(@src.to)
+autovar_29 = it
+it=_pass(false,autovar_29){it=trans();next FAIL if it==FAIL
 to_1 = it};next FAIL if it==FAIL
 it=(@src.var)
-autovar_32 = it
-it=_pass(false,autovar_32){it=arg();next FAIL if it==FAIL
+autovar_30 = it
+it=_pass(false,autovar_30){it=arg();next FAIL if it==FAIL
 var_1 = it};next FAIL if it==FAIL
 it=(@src.enter)
 enter_1 = it
@@ -2549,12 +2511,12 @@ _result_1 = it
 it=_result_1 });next FAIL if it==FAIL};next FAIL if it==FAIL
 it=failwrap("it=_pass(#{!!enter_1},#{var_1}){#{to_1}}");next FAIL if it==FAIL
 _result_1 = it },proc{it=clas(Cut);next FAIL if it==FAIL
-autovar_33 = it
-it=_pass(true,autovar_33){ };next FAIL if it==FAIL
+autovar_31 = it
+it=_pass(true,autovar_31){ };next FAIL if it==FAIL
 it=("@cut=true;it")
 _result_1 = it },proc{it=clas(Stop);next FAIL if it==FAIL
-autovar_34 = it
-it=_pass(true,autovar_34){ };next FAIL if it==FAIL
+autovar_32 = it
+it=_pass(true,autovar_32){ };next FAIL if it==FAIL
 it=("@stop=true;it")
 _result_1 = it });return FAIL if it==FAIL
 it=_result_1  

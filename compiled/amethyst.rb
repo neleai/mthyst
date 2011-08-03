@@ -172,21 +172,29 @@ it=_result_1
 end
 def listOf(rule_1,delim_1)
 _result_1=nil
+autovar_1=nil
+autovar_2=nil
+autovar_3=nil
+autovar_4=nil
+autovar_5=nil
 f_1=nil
  it=nil
 it=_or(proc{it=apply(rule_1);next FAIL if it==FAIL
-f_1||=[];_append(f_1,it)
-it=([])
 autovar_1 = it
+it=(f_1||=[];_append(f_1,autovar_1))
+it=([])
+autovar_2 = it
 while true
-autovar_2=@input;r=it=apply(delim_1);break FAIL if it==FAIL
+autovar_4=@input;r=it=apply(delim_1);break FAIL if it==FAIL
 it=apply(rule_1);break FAIL if it==FAIL
-autovar_1||=[];_append(autovar_1,it) 
+autovar_3 = it
+it=(autovar_2||=[];_append(autovar_2,autovar_3)) 
  break FAIL if r==FAIL
- (autovar_2=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_2
-it=autovar_1
-f_1||=[];_append(f_1,it)
+ (autovar_4=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_4
+it=autovar_2
+autovar_5 = it
+it=(f_1||=[];_append(f_1,autovar_5))
 it=f_1
 _result_1 = it },proc{it=empty();next FAIL if it==FAIL
 it=([])
@@ -264,6 +272,9 @@ _result_1=nil
 _result_2=nil
 _result_3=nil
 _result_4=nil
+autovar_1=nil
+autovar_2=nil
+autovar_3=nil
 c_1=nil
 c_2=nil
 regex_1=nil
@@ -271,7 +282,7 @@ regex_1=nil
 it=([])
 autovar_1 = it
 while true
-autovar_2=@input;r=it=(/[\s\t\r\n\f]/)
+autovar_3=@input;r=it=(/[\s\t\r\n\f]/)
 regex_1 = it
 it=anything();break FAIL if it==FAIL
 c_1 = it
@@ -286,10 +297,11 @@ _result_2 = it
 it=_result_2
 _result_3 = it
 it=_result_3
-autovar_1||=[];_append(autovar_1,it) 
+autovar_2 = it
+it=(autovar_1||=[];_append(autovar_1,autovar_2)) 
  break FAIL if r==FAIL
- (autovar_2=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=autovar_2
+ (autovar_3=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=autovar_3
 it=autovar_1
 _result_4 = it
 it=_result_4  
