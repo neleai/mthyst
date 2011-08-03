@@ -764,7 +764,7 @@ it=(autovar_1||=[];_append(autovar_1,autovar_2))
  (autovar_3=@input;@stop=nil;break FAIL) if @stop==true
 end;@input=autovar_3
 it=autovar_1
-it=@ary
+it=(@ary)
 _result_1 = it
 it=_result_1  
 end
@@ -880,7 +880,7 @@ locals_1=nil
 name_1=nil
  it=nil
 it=(@locals=[];@bnding=Bnding[])
-it=@bnding
+it=(@bnding)
 bnding_1 = it
 it=name();return FAIL if it==FAIL
 name_1 = it
@@ -1100,13 +1100,13 @@ it=(ary_1||=[];_append(ary_1,autovar_10)) };next FAIL if it==FAIL
 it=Exp.create( {:ary=>ary_1 })
 _result_1 = it },proc{it=clas(Result);next FAIL if it==FAIL
 autovar_11 = it
-it=_pass(true,autovar_11){it=self['name']
+it=_pass(true,autovar_11){it=(@src.name)
 name_1 = it
-it=self['args']
+it=(@src.args)
 autovar_12 = it
 it=_pass(false,autovar_12){it=args();next FAIL if it==FAIL
 args_1 = it};next FAIL if it==FAIL
-it=self['vars']
+it=(@src.vars)
 autovar_13 = it
 it=_pass(false,autovar_13){it=args();next FAIL if it==FAIL
 vars_1 = it};next FAIL if it==FAIL };next FAIL if it==FAIL
@@ -1250,28 +1250,28 @@ vars_1=nil
  it=nil
 it=_or(proc{it=clas(Grammar);next FAIL if it==FAIL
 autovar_1 = it
-it=_pass(true,autovar_1){it=self['name']
+it=_pass(true,autovar_1){it=(@src.name)
 name_1 = it
-it=self['parent']
+it=(@src.parent)
 parent_1 = it
-it=self['rules']
+it=(@src.rules)
 autovar_2 = it
 it=_pass(false,autovar_2){it=transs();next FAIL if it==FAIL
 rules_1 = it};next FAIL if it==FAIL };next FAIL if it==FAIL
 it=Grammar.create( {:ary=>ary_1,:name=>name_1,:parent=>parent_1,:rules=>rules_1 })
 _result_1 = it },proc{it=clas(Rule);next FAIL if it==FAIL
 autovar_3 = it
-it=_pass(true,autovar_3){it=self['name']
+it=_pass(true,autovar_3){it=(@src.name)
 name_1 = it
-it=self['args']
+it=(@src.args)
 autovar_4 = it
 it=_pass(false,autovar_4){it=args();next FAIL if it==FAIL
 args_1 = it};next FAIL if it==FAIL
-it=self['body']
+it=(@src.body)
 autovar_5 = it
 it=_pass(false,autovar_5){it=trans();next FAIL if it==FAIL
 body_1 = it};next FAIL if it==FAIL
-it=self['locals']
+it=(@src.locals)
 locals_1 = it };next FAIL if it==FAIL
 it=Rule.create( {:args=>args_1,:ary=>ary_1,:body=>body_1,:locals=>locals_1,:name=>name_1 })
 _result_1 = it },proc{it=clas(Or);next FAIL if it==FAIL
@@ -1307,7 +1307,7 @@ autovar_14 = it
 it=_pass(true,autovar_14){it=trans();next FAIL if it==FAIL
 autovar_15 = it
 it=(ary_1||=[];_append(ary_1,autovar_15))
-it=self['neg']
+it=(@src.neg)
 neg_1 = it };next FAIL if it==FAIL
 it=Lookahead.create( {:ary=>ary_1,:neg=>neg_1 })
 _result_1 = it },proc{it=clas(Comment);next FAIL if it==FAIL
@@ -1329,7 +1329,7 @@ autovar_20 = it
 it=_pass(true,autovar_20){it=trans();next FAIL if it==FAIL
 autovar_21 = it
 it=(ary_1||=[];_append(ary_1,autovar_21))
-it=self['o']
+it=(@src.o)
 o_1 = it };next FAIL if it==FAIL
 it=Many.create( {:ary=>ary_1,:o=>o_1 })
 _result_1 = it },proc{it=clas(Apply);next FAIL if it==FAIL
@@ -1343,33 +1343,33 @@ it=(ary_1||=[];_append(ary_1,autovar_24)) };next FAIL if it==FAIL
 it=Apply.create( {:ary=>ary_1 })
 _result_1 = it },proc{it=clas(Set);next FAIL if it==FAIL
 autovar_25 = it
-it=_pass(true,autovar_25){it=self['name']
+it=_pass(true,autovar_25){it=(@src.name)
 autovar_26 = it
 it=_pass(false,autovar_26){it=arg();next FAIL if it==FAIL
 name_1 = it};next FAIL if it==FAIL
-it=self['expr']
+it=(@src.expr)
 autovar_27 = it
 it=_pass(false,autovar_27){it=trans();next FAIL if it==FAIL
 expr_1 = it};next FAIL if it==FAIL
-it=self['append']
+it=(@src.append)
 append_1 = it };next FAIL if it==FAIL
 it=Set.create( {:append=>append_1,:ary=>ary_1,:expr=>expr_1,:name=>name_1 })
 _result_1 = it },proc{it=clas(Act);next FAIL if it==FAIL
 autovar_28 = it
 it=_pass(true,autovar_28){it=args();next FAIL if it==FAIL
 ary_1 = it
-it=self['pred']
+it=(@src.pred)
 pred_1 = it };next FAIL if it==FAIL
 it=Act.create( {:ary=>ary_1,:pred=>pred_1 })
 _result_1 = it },proc{it=clas(Result);next FAIL if it==FAIL
 autovar_29 = it
-it=_pass(true,autovar_29){it=self['name']
+it=_pass(true,autovar_29){it=(@src.name)
 name_1 = it
-it=self['args']
+it=(@src.args)
 autovar_30 = it
 it=_pass(false,autovar_30){it=args();next FAIL if it==FAIL
 args_1 = it};next FAIL if it==FAIL
-it=self['vars']
+it=(@src.vars)
 autovar_31 = it
 it=_pass(false,autovar_31){it=args();next FAIL if it==FAIL
 vars_1 = it};next FAIL if it==FAIL };next FAIL if it==FAIL
@@ -1390,20 +1390,20 @@ ary_1 = it };next FAIL if it==FAIL
 it=Args.create( {:ary=>ary_1,:o=>o_1 })
 _result_1 = it },proc{it=clas(Key);next FAIL if it==FAIL
 autovar_36 = it
-it=_pass(true,autovar_36){it=self['name']
+it=_pass(true,autovar_36){it=(@src.name)
 name_1 = it};next FAIL if it==FAIL
 it=Key.create( {:args=>args_1,:ary=>ary_1,:expr=>expr_1,:name=>name_1 })
 _result_1 = it },proc{it=clas(Pass);next FAIL if it==FAIL
 autovar_37 = it
-it=_pass(true,autovar_37){it=self['to']
+it=_pass(true,autovar_37){it=(@src.to)
 autovar_38 = it
 it=_pass(false,autovar_38){it=trans();next FAIL if it==FAIL
 to_1 = it};next FAIL if it==FAIL
-it=self['var']
+it=(@src.var)
 autovar_39 = it
 it=_pass(false,autovar_39){it=arg();next FAIL if it==FAIL
 var_1 = it};next FAIL if it==FAIL
-it=self['enter']
+it=(@src.enter)
 enter_1 = it };next FAIL if it==FAIL
 it=Pass.create( {:ary=>ary_1,:enter=>enter_1,:to=>to_1,:var=>var_1 })
 _result_1 = it },proc{it=clas(Cut);next FAIL if it==FAIL
@@ -1426,7 +1426,7 @@ it=(autovar_43||=[];_append(autovar_43,autovar_44))
  (autovar_45=@input;@stop=nil;break FAIL) if @stop==true
 end;@input=autovar_45
 it=autovar_43
-it=self['self']
+it=(@src.self)
 _result_1 = it };next FAIL if it==FAIL },proc{it=clas(Global);next FAIL if it==FAIL
 autovar_46 = it
 it=_pass(true,autovar_46){it=([])
@@ -1439,7 +1439,7 @@ it=(autovar_47||=[];_append(autovar_47,autovar_48))
  (autovar_49=@input;@stop=nil;break FAIL) if @stop==true
 end;@input=autovar_49
 it=autovar_47
-it=self['self']
+it=(@src.self)
 _result_1 = it };next FAIL if it==FAIL },proc{it=clas(Key);next FAIL if it==FAIL
 autovar_50 = it
 it=_pass(true,autovar_50){it=([])
@@ -1452,7 +1452,7 @@ it=(autovar_51||=[];_append(autovar_51,autovar_52))
  (autovar_53=@input;@stop=nil;break FAIL) if @stop==true
 end;@input=autovar_53
 it=autovar_51
-it=self['self']
+it=(@src.self)
 _result_1 = it };next FAIL if it==FAIL });return FAIL if it==FAIL
 it=_result_1  
 end
@@ -1519,7 +1519,7 @@ it=(autovar_1||=[];_append(autovar_1,autovar_2))
  (autovar_3=@input;@stop=nil;break FAIL) if @stop==true
 end;@input=autovar_3
 it=autovar_1
-it=self['self']
+it=(@src.self)
 this_1 = it
 it=((@src.self.instance_variables).map{|v| [v,@src.self.instance_variable_get(v)] })
 autovar_4 = it
@@ -1541,7 +1541,7 @@ it=(autovar_6||=[];_append(autovar_6,autovar_8))
  (autovar_9=@input;@stop=nil;break FAIL) if @stop==true
 end;@input=autovar_9
 it=autovar_6 };next FAIL if it==FAIL };return FAIL if it==FAIL
-it=self['self']
+it=(@src.self)
 _result_1 = it
 it=_result_1  
 end
@@ -1716,7 +1716,7 @@ autovar_1 = it
 while true
 autovar_10=@input;r=it=_or(proc{it=clas(Grammar);next FAIL if it==FAIL
 autovar_2 = it
-it=_pass(true,autovar_2){it=self['rules']
+it=_pass(true,autovar_2){it=(@src.rules)
 autovar_3 = it
 it=_pass(false,autovar_3){it=anything();next FAIL if it==FAIL
 autovar_4 = it
@@ -1734,7 +1734,7 @@ end;@input=autovar_8
 it=autovar_5
 rules_1 = it };next FAIL if it==FAIL };next FAIL if it==FAIL
 it=(@src.rules=rules_1)
-it=self['self']
+it=(@src.self)
 autovar_9 = it };next FAIL if it==FAIL },proc{it=anything();next FAIL if it==FAIL
 autovar_9 = it});break FAIL if it==FAIL
 it=(autovar_1||=[];_append(autovar_1,autovar_9)) 
@@ -1750,7 +1750,7 @@ _result_1=nil
 autovar_1=nil
 autovar_2=nil
  it=nil
-it=self['self']
+it=(@src.self)
 autovar_1 = it
 it=_pass(false,autovar_1){it=clas(Rule);next FAIL if it==FAIL
 autovar_2 = it
@@ -1758,7 +1758,7 @@ it=_pass(true,autovar_2){it=(@variables=Hash.new{|k,v| k[v]=v} ;(@src.locals+@sr
 it=(@locals=@src.locals)
 it=traverse();next FAIL if it==FAIL
 it=(@src.body=Seq[{:ary=>[@src.body] }];@src.locals=nil)
-it=self['self']
+it=(@src.self)
 _result_1 = it };next FAIL if it==FAIL };return FAIL if it==FAIL
 it=_result_1  
 end
@@ -1787,17 +1787,15 @@ it=((@src.ary.size==1&&(@src.ary[0].is_a?(Local)||@src.ary[0].is_a?(Global)||@sr
 _result_1 = it };next FAIL if it==FAIL },proc{it=clas(Act);next FAIL if it==FAIL
 autovar_4 = it
 it=_pass(true,autovar_4){it=traverse();next FAIL if it==FAIL
-it=self['ary']
+it=(@src.ary)
 autovar_5 = it
 it=_pass(false,autovar_5){it=anything();next FAIL if it==FAIL
 autovar_6 = it
-it=_pass(true,autovar_6){it=_or(proc{it=clas(Local);next FAIL if it==FAIL
-_result_1 = it},proc{it=clas(Key);next FAIL if it==FAIL
-_result_1 = it},proc{it=clas(Global);next FAIL if it==FAIL
-_result_1 = it});next FAIL if it==FAIL};next FAIL if it==FAIL };next FAIL if it==FAIL };next FAIL if it==FAIL },proc{it=clas(Result);next FAIL if it==FAIL
+it=_pass(true,autovar_6){it=clas(Local);next FAIL if it==FAIL
+_result_1 = it};next FAIL if it==FAIL };next FAIL if it==FAIL };next FAIL if it==FAIL },proc{it=clas(Result);next FAIL if it==FAIL
 autovar_7 = it
 it=_pass(true,autovar_7){it=(@src.vars=@locals.select{|a_1| @src.vars.include? a_1[0].to_sym}.uniq)
-it=self['self']
+it=(@src.self)
 _result_1 = it };next FAIL if it==FAIL });return FAIL if it==FAIL
 it=_result_1  
 end
@@ -1833,19 +1831,19 @@ var_1=nil
  it=nil
 it=_or(proc{it=clas(Rule);next FAIL if it==FAIL
 autovar_1 = it
-it=_pass(true,autovar_1){it=self['name']
+it=_pass(true,autovar_1){it=(@src.name)
 name_1 = it
 it=(@edges=Oriented_Graph.new ; @marked=[])
-it=self['args']
+it=(@src.args)
 autovar_2 = it
 it=_pass(false,autovar_2){it=args();next FAIL if it==FAIL
 args_1 = it};next FAIL if it==FAIL
-it=self['body']
+it=(@src.body)
 autovar_3 = it
 it=_pass(false,autovar_3){it=trans();next FAIL if it==FAIL};next FAIL if it==FAIL
-it=self['body']
+it=(@src.body)
 body_1 = it
-it=self['locals']
+it=(@src.locals)
 locals_1 = it
 it=(@edges.reachable(@marked))
 reachable_1 = it };next FAIL if it==FAIL
@@ -1859,17 +1857,17 @@ var_1 = it
 it=(@marked+=var_1)
 _result_1 = it };next FAIL if it==FAIL },proc{it=clas(Pass);next FAIL if it==FAIL
 autovar_5 = it
-it=_pass(true,autovar_5){it=self['var']
+it=_pass(true,autovar_5){it=(@src.var)
 autovar_6 = it
 it=_pass(false,autovar_6){it=vars_in();next FAIL if it==FAIL
 var_1 = it};next FAIL if it==FAIL
 it=(@marked+=var_1)
-it=self['to']
+it=(@src.to)
 autovar_7 = it
 it=_pass(false,autovar_7){it=trans();next FAIL if it==FAIL
 _result_1 = it};next FAIL if it==FAIL };next FAIL if it==FAIL },proc{it=clas(Act);next FAIL if it==FAIL
 autovar_8 = it
-it=_pass(true,autovar_8){it=self['self']
+it=_pass(true,autovar_8){it=(@src.self)
 this_1 = it
 it=(@marked<<this_1 if @src.pred)
 it=vars_in();next FAIL if it==FAIL
@@ -1877,28 +1875,28 @@ var_1 = it };next FAIL if it==FAIL
 it=(var_1.each{|v_1| @edges.add(v_1,this_1); @edges.add(this_1,v_1)})
 _result_1 = it },proc{it=clas(Set);next FAIL if it==FAIL
 autovar_9 = it
-it=_pass(true,autovar_9){it=self['name']
+it=_pass(true,autovar_9){it=(@src.name)
 autovar_10 = it
 it=_pass(false,autovar_10){it=vars_in();next FAIL if it==FAIL
 v_1 = it};next FAIL if it==FAIL
 it=(v_1=v_1[0])
-it=self['expr']
+it=(@src.expr)
 autovar_11 = it
 it=_pass(false,autovar_11){it=trans();next FAIL if it==FAIL};next FAIL if it==FAIL
-it=self['expr']
+it=(@src.expr)
 autovar_12 = it
 it=_pass(false,autovar_12){it=vars_in();next FAIL if it==FAIL
 var_1 = it};next FAIL if it==FAIL };next FAIL if it==FAIL
 it=(var_1.each{|w| @edges.add(v_1,w)})
 _result_1 = it },proc{it=clas(Result);next FAIL if it==FAIL
 autovar_13 = it
-it=_pass(true,autovar_13){it=self['vars']
+it=_pass(true,autovar_13){it=(@src.vars)
 autovar_14 = it
 it=_pass(false,autovar_14){it=anything();next FAIL if it==FAIL
 autovar_15 = it
 it=_pass(true,autovar_15){it=vars_in();next FAIL if it==FAIL
 var_1 = it};next FAIL if it==FAIL };next FAIL if it==FAIL
-it=self['self']
+it=(@src.self)
 v_1 = it };next FAIL if it==FAIL
 it=(var_1.each{|w| @edges.add(v_1,w) })
 _result_1 = it },proc{it=super();next FAIL if it==FAIL
@@ -1946,7 +1944,7 @@ autovar_1 = it
 while true
 autovar_30=@input;r=it=_or(proc{it=clas(Global);next FAIL if it==FAIL
 autovar_2 = it
-it=_pass(true,autovar_2){it=self['self']
+it=_pass(true,autovar_2){it=(@src.self)
 autovar_3 = it
 it=(ary_1||=[];_append(ary_1,autovar_3))
 it=(@marked<<@src.self)
@@ -1962,7 +1960,7 @@ end;@input=autovar_6
 it=autovar_4
 autovar_7 = it };next FAIL if it==FAIL },proc{it=clas(Act);next FAIL if it==FAIL
 autovar_8 = it
-it=_pass(true,autovar_8){it=self['self']
+it=_pass(true,autovar_8){it=(@src.self)
 autovar_9 = it
 it=(ary_1||=[];_append(ary_1,autovar_9))
 it=([])
@@ -1977,7 +1975,7 @@ end;@input=autovar_12
 it=autovar_10
 autovar_7 = it };next FAIL if it==FAIL },proc{it=clas(Key);next FAIL if it==FAIL
 autovar_13 = it
-it=_pass(true,autovar_13){it=self['self']
+it=_pass(true,autovar_13){it=(@src.self)
 autovar_14 = it
 it=(ary_1||=[];_append(ary_1,autovar_14))
 it=(@marked<<@src.self)
@@ -1996,7 +1994,7 @@ autovar_18 = it
 it=_pass(true,autovar_18){it=trans();next FAIL if it==FAIL
 autovar_7 = it};next FAIL if it==FAIL },proc{it=clas(Result);next FAIL if it==FAIL
 autovar_19 = it
-it=_pass(true,autovar_19){it=self['self']
+it=_pass(true,autovar_19){it=(@src.self)
 autovar_20 = it
 it=(ary_1||=[];_append(ary_1,autovar_20))
 autovar_7 = it };next FAIL if it==FAIL },proc{it=clas(Strin);next FAIL if it==FAIL
@@ -2011,7 +2009,7 @@ autovar_24 = it
 it=(ary_1||=[];_append(ary_1,autovar_24))
 autovar_7 = it };next FAIL if it==FAIL },proc{it=clas(Set);next FAIL if it==FAIL
 autovar_25 = it
-it=_pass(true,autovar_25){it=self['name']
+it=_pass(true,autovar_25){it=(@src.name)
 autovar_26 = it
 it=_pass(false,autovar_26){it=vars_in();next FAIL if it==FAIL
 autovar_27 = it
@@ -2021,7 +2019,7 @@ autovar_28 = it
 it=_pass(true,autovar_28){it=anything();next FAIL if it==FAIL
 name_1 = it
 it=(@marked<<@src.self if name_1=="_result")
-it=self['self']
+it=(@src.self)
 autovar_29 = it
 it=(ary_1||=[];_append(ary_1,autovar_29))
 autovar_7 = it };next FAIL if it==FAIL },proc{it=anything();next FAIL if it==FAIL
@@ -2067,25 +2065,25 @@ this_1=nil
  it=nil
 it=_or(proc{it=clas(Rule);next FAIL if it==FAIL
 autovar_1 = it
-it=_pass(true,autovar_1){it=self['name']
+it=_pass(true,autovar_1){it=(@src.name)
 name_1 = it
-it=self['reachable']
+it=(@src.reachable)
 it_1 = it
 it=(@reachable=it_1)
-it=self['args']
+it=(@src.args)
 autovar_2 = it
 it=_pass(false,autovar_2){it=args();next FAIL if it==FAIL
 args_1 = it};next FAIL if it==FAIL
-it=self['body']
+it=(@src.body)
 autovar_3 = it
 it=_pass(false,autovar_3){it=trans();next FAIL if it==FAIL
 body_1 = it};next FAIL if it==FAIL
-it=self['locals']
+it=(@src.locals)
 locals_1 = it };next FAIL if it==FAIL
 it=Rule.create( {:args=>args_1,:body=>body_1,:locals=>locals_1,:name=>name_1 })
 _result_1 = it },proc{it=clas(Act);next FAIL if it==FAIL
 autovar_4 = it
-it=_pass(true,autovar_4){it=self['self']
+it=_pass(true,autovar_4){it=(@src.self)
 this_1 = it
 it=([])
 autovar_5 = it
@@ -2100,18 +2098,18 @@ it=autovar_5 };next FAIL if it==FAIL
 it=(@reachable[this_1] ? this_1 : Act[])
 _result_1 = it },proc{it=clas(Set);next FAIL if it==FAIL
 autovar_8 = it
-it=_pass(true,autovar_8){it=self['name']
+it=_pass(true,autovar_8){it=(@src.name)
 name_1 = it
-it=self['expr']
+it=(@src.expr)
 autovar_9 = it
 it=_pass(false,autovar_9){it=trans();next FAIL if it==FAIL
 expr_1 = it};next FAIL if it==FAIL
-it=self['append']
+it=(@src.append)
 append_1 = it };next FAIL if it==FAIL
 it=(@reachable[name_1] ? _Set(name_1,expr_1,append_1) : expr_1)
 _result_1 = it },proc{it=clas(Result);next FAIL if it==FAIL
 autovar_10 = it
-it=_pass(true,autovar_10){it=self['self']
+it=_pass(true,autovar_10){it=(@src.self)
 this_1 = it};next FAIL if it==FAIL
 it=(@reachable[this_1] ? this_1 : Act[])
 _result_1 = it },proc{it=clas(Local);next FAIL if it==FAIL
@@ -2126,7 +2124,7 @@ it=(autovar_12||=[];_append(autovar_12,autovar_13))
  (autovar_14=@input;@stop=nil;break FAIL) if @stop==true
 end;@input=autovar_14
 it=autovar_12
-it=self['self']
+it=(@src.self)
 this_1 = it };next FAIL if it==FAIL
 it=(@reachable[this_1] ? this_1 : Act[])
 _result_1 = it },proc{it=super();next FAIL if it==FAIL
@@ -2269,13 +2267,13 @@ ary_1 = it };next FAIL if it==FAIL
 it=Seq.create( {:ary=>ary_1 })
 _result_1 = it },proc{it=clas(Pass);next FAIL if it==FAIL
 autovar_10 = it
-it=_pass(true,autovar_10){it=self['var']
+it=_pass(true,autovar_10){it=(@src.var)
 var_1 = it
-it=self['to']
+it=(@src.to)
 autovar_11 = it
 it=_pass(false,autovar_11){it=move(append_1,name_1);next FAIL if it==FAIL
 to_1 = it};next FAIL if it==FAIL
-it=self['enter']
+it=(@src.enter)
 enter_1 = it };next FAIL if it==FAIL
 it=Pass.create( {:ary=>ary_1,:enter=>enter_1,:to=>to_1,:var=>var_1 })
 _result_1 = it },proc{it=anything();next FAIL if it==FAIL
@@ -2295,13 +2293,13 @@ name_1=nil
  it=nil
 it=_or(proc{it=clas(Set);next FAIL if it==FAIL
 autovar_1 = it
-it=_pass(true,autovar_1){it=self['name']
+it=_pass(true,autovar_1){it=(@src.name)
 name_1 = it
-it=self['expr']
+it=(@src.expr)
 autovar_2 = it
 it=_pass(false,autovar_2){it=trans();next FAIL if it==FAIL
 expr_1 = it};next FAIL if it==FAIL
-it=self['append']
+it=(@src.append)
 append_1 = it
 it=expr_1
 autovar_3 = it
@@ -2376,18 +2374,18 @@ t_1 = it};next FAIL if it==FAIL
 it=t_1
 _result_1 = it },proc{it=clas(Result);next FAIL if it==FAIL
 autovar_10 = it
-it=_pass(true,autovar_10){it=self['name']
+it=_pass(true,autovar_10){it=(@src.name)
 name_1 = it
-it=self['args']
+it=(@src.args)
 autovar_11 = it
 it=_pass(false,autovar_11){it=args();next FAIL if it==FAIL
 argss_1 = it};next FAIL if it==FAIL
-it=self['vars']
+it=(@src.vars)
 vars_1 = it };next FAIL if it==FAIL
 it=("it=#{name_1}.create(#{argss_1} {#{vars_1.map{|l| ":#{l[0]}=>#{varname(@varhash,l[0],l[1])}" }.sort*","} })")
 _result_1 = it },proc{it=clas(Key);next FAIL if it==FAIL
 autovar_12 = it
-it=_pass(true,autovar_12){it=self['name']
+it=_pass(true,autovar_12){it=(@src.name)
 name_1 = it};next FAIL if it==FAIL
 it=("@src.#{name_1}")
 _result_1 = it },proc{it=clas(Local);next FAIL if it==FAIL
@@ -2544,11 +2542,11 @@ vars_1=nil
  it=nil
 it=_or(proc{it=clas(Grammar);next FAIL if it==FAIL
 autovar_1 = it
-it=_pass(true,autovar_1){it=self['name']
+it=_pass(true,autovar_1){it=(@src.name)
 name_1 = it
-it=self['parent']
+it=(@src.parent)
 parent_1 = it
-it=self['rules']
+it=(@src.rules)
 autovar_2 = it
 it=_pass(false,autovar_2){it=transs();next FAIL if it==FAIL
 body_1 = it};next FAIL if it==FAIL };next FAIL if it==FAIL
@@ -2556,13 +2554,13 @@ it=("class #{name_1} < #{parent_1}\n#{body_1.sort}\nend\n")
 _result_1 = it },proc{it=clas(Rule);next FAIL if it==FAIL
 autovar_3 = it
 it=_pass(true,autovar_3){it=(@varhash=Hash.new{|h,k| h[k]={}}  )
-it=rw('return',proc{it=self['name']
+it=rw('return',proc{it=(@src.name)
 name_1 = it
-it=self['args']
+it=(@src.args)
 autovar_4 = it
 it=_pass(false,autovar_4){it=args();next FAIL if it==FAIL
 argss_1 = it};next FAIL if it==FAIL
-it=self['body']
+it=(@src.body)
 autovar_5 = it
 it=_pass(false,autovar_5){it=trans();next FAIL if it==FAIL
 body_1 = it
@@ -2603,12 +2601,12 @@ _result_1 = it },proc{it=clas(Act);next FAIL if it==FAIL
 autovar_14 = it
 it=_pass(true,autovar_14){it=args();next FAIL if it==FAIL
 t_1 = it
-it=self['pred']
+it=(@src.pred)
 pred_1 = it };next FAIL if it==FAIL
 it=(pred_1 ?  failwrap("it=(#{t_1})||FAIL") : "it=(#{t_1})")
 _result_1 = it },proc{it=clas(Lookahead);next FAIL if it==FAIL
 autovar_15 = it
-it=_pass(true,autovar_15){it=self['neg']
+it=_pass(true,autovar_15){it=(@src.neg)
 neg_1 = it
 it=rw('next',proc{it=trans();next FAIL if it==FAIL
 t_1 = it
@@ -2626,7 +2624,7 @@ it=_pass(true,autovar_17){it=rw('break', proc{it=trans();next FAIL if it==FAIL
 t_1 = it
 _result_1 = it
 it=_result_1 } );next FAIL if it==FAIL
-it=self['o']
+it=(@src.o)
 autovar_18 = it
 it=_pass(false,autovar_18){it=arg();next FAIL if it==FAIL
 o_1 = it};next FAIL if it==FAIL };next FAIL if it==FAIL
@@ -2651,33 +2649,33 @@ argss_1 = it };next FAIL if it==FAIL
 it=failwrap("it=#{name_1}(#{argss_1})");next FAIL if it==FAIL
 _result_1 = it },proc{it=clas(Set);next FAIL if it==FAIL
 autovar_22 = it
-it=_pass(true,autovar_22){it=self['name']
+it=_pass(true,autovar_22){it=(@src.name)
 autovar_23 = it
 it=_pass(false,autovar_23){it=arg();next FAIL if it==FAIL
 name_1 = it};next FAIL if it==FAIL
-it=self['expr']
+it=(@src.expr)
 autovar_24 = it
 it=_pass(false,autovar_24){it=trans();next FAIL if it==FAIL
 expr_1 = it};next FAIL if it==FAIL
-it=self['append']
+it=(@src.append)
 append_1 = it };next FAIL if it==FAIL
 it=("#{expr_1}\n" + (append_1 ? "#{name_1}||=[];_append(#{name_1},it)" : "#{name_1} = it"))
 _result_1 = it },proc{it=clas(Result);next FAIL if it==FAIL
 autovar_25 = it
-it=_pass(true,autovar_25){it=self['name']
+it=_pass(true,autovar_25){it=(@src.name)
 name_1 = it
-it=self['args']
+it=(@src.args)
 autovar_26 = it
 it=_pass(false,autovar_26){it=args();next FAIL if it==FAIL
 argss_1 = it};next FAIL if it==FAIL
-it=self['vars']
+it=(@src.vars)
 vars_1 = it };next FAIL if it==FAIL
 it=("it=#{name_1}.create(#{argss_1} {#{vars_1.map{|l| ":#{l[0]}=>#{varname(@varhash,l[0],l[1])}" }.sort*","} })")
 _result_1 = it },proc{it=clas(Key);next FAIL if it==FAIL
 autovar_27 = it
-it=_pass(true,autovar_27){it=self['name']
+it=_pass(true,autovar_27){it=(@src.name)
 name_1 = it};next FAIL if it==FAIL
-it=("it=self['#{name_1}']")
+it=("it=@src.#{name_1}")
 _result_1 = it },proc{it=clas(Local);next FAIL if it==FAIL
 autovar_28 = it
 it=_pass(true,autovar_28){it=anything();next FAIL if it==FAIL
@@ -2692,15 +2690,15 @@ name_1 = it};next FAIL if it==FAIL
 it=("it=@#{name_1}")
 _result_1 = it },proc{it=clas(Pass);next FAIL if it==FAIL
 autovar_30 = it
-it=_pass(true,autovar_30){it=rw('next',proc{it=self['to']
+it=_pass(true,autovar_30){it=rw('next',proc{it=(@src.to)
 autovar_31 = it
 it=_pass(false,autovar_31){it=trans();next FAIL if it==FAIL
 to_1 = it};next FAIL if it==FAIL
-it=self['var']
+it=(@src.var)
 autovar_32 = it
 it=_pass(false,autovar_32){it=arg();next FAIL if it==FAIL
 var_1 = it};next FAIL if it==FAIL
-it=self['enter']
+it=(@src.enter)
 enter_1 = it
 _result_1 = it
 it=_result_1 });next FAIL if it==FAIL};next FAIL if it==FAIL

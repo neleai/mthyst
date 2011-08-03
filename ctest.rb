@@ -8,6 +8,7 @@ def a2ruby(s)
 	opt=par.parse(:igrammar,s)
 	[AmethystOptimizer2,Analyze_Variables2,Move_Assignments,AmethystOptimizer2].each{|p|
 		opt=p.new.parse(:itrans,opt)
+		puts opt.inspect
 	}
 	$opt=opt
 	ruby=t.parse(:itrans,opt)
