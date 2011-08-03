@@ -71,7 +71,12 @@ class <<Pass
 	end
 end
 def _Set(name,expr,append=nil)
-  Set[{:name=>_Local(name),:expr=>expr,:append=>append}]
+	if append
+		a=autovar
+	  Seq[Set.create({:name=>a,:expr=>expr}),Act[Args[_Local(name),"||=[];_append(",_Local(name),",",a,")"]]]
+	else
+		Set.create({:name=>_Local(name),:expr=>expr})
+	end
 end
 class Append;end
 class <<Append
