@@ -73,9 +73,13 @@ end
 def _Set(name,expr,append=nil)
 	if append
 		a=autovar
-	  Seq[Set.create({:name=>a,:expr=>expr}),Act[Args[_Local(name),"||=[];_append(",_Local(name),",",a,")"]]]
-	else
+	  return Seq[_Set(a,expr),Act[Args[_Local(name),"||=[];_append(",_Local(name),",",a,")"]]]
+	end	
+	if name.is_a?(Local) || name.is_a?(String)
 		Set.create({:name=>_Local(name),:expr=>expr})
+	else
+		a=autovar
+		Seq[_Set(a,expr),Act[Args[_Local(name),'=',_Local(a)]]]
 	end
 end
 class Append;end
