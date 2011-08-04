@@ -1172,6 +1172,7 @@ autovar_6=nil
 autovar_7=nil
 autovar_8=nil
 autovar_9=nil
+bnding_1=nil
 body_1=nil
 enter_1=nil
 expr_1=nil
@@ -1209,9 +1210,11 @@ it=(@src.body)
 autovar_5 = it
 it=_pass(false,autovar_5){it=trans();next FAIL if it==FAIL
 body_1 = it};next FAIL if it==FAIL
+it=(@src.bnding)
+bnding_1 = it
 it=(@src.locals)
 locals_1 = it };next FAIL if it==FAIL
-it=Rule.create( {:args=>args_1,:ary=>ary_1,:body=>body_1,:locals=>locals_1,:name=>name_1 })
+it=Rule.create( {:args=>args_1,:ary=>ary_1,:bnding=>bnding_1,:body=>body_1,:locals=>locals_1,:name=>name_1 })
 _result_1 = it },proc{it=clas(Or);next FAIL if it==FAIL
 autovar_6 = it
 it=_pass(true,autovar_6){it=([])

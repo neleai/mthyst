@@ -2,7 +2,7 @@ amethyst AmethystOptimizer < Amethyst {
 	itrans =  (char | trans)*:r  -> r
 
 	trans = Grammar[@name:name @parent:parent @rules=>transs:rules] @Grammar
-				| Rule[@name:name @args=>args:args @body=>trans:body @locals:locals] @Rule
+				| Rule[@name:name @args=>args:args @body=>trans:body @bnding:bnding @locals:locals] @Rule
 				| Or[transfn*:ary]  @Or
 				| Seq[trans*:ary ]  @Seq
   			| Lookahead[trans:ary[] @neg:neg ]  @Lookahead
