@@ -69,7 +69,6 @@ failobj=rb_eval_string(\"FAIL\");
 				| Apply[:name (.:{addcallback(it)}*):args 
             failwrap(" #{args.size.times.map{|a|"arg#{a}=CALL(#{args[a]},1,bind);"}} #{bset("it",(@@ruletable[name] ? "#{@@grammar}_#{name}(self" : "CALL(#{name},#{args.size}")+ "#{args.size.times.map{|a|",arg#{a}"}})")};")]
 				| Seq[ trans*:t {t*""} ]
-				| Set[&{@append==true} @expr=>trans:e {"#{e} ;if(#{bget(@name[0])}==Qnil) #{bset(@name[0],"rb_ary_new()")}; CALL(_append,2,#{bget(@name[0])},#{bget("it")});" } ]			
 				| Set[ @expr=>trans:e {"#{e}\n #{bset(@name.desc,bget("it"))}; " } ]
 				| Or[ {label("accept")}:accept {@@faillabel}:fail {label("oldinput")}:oldinput {[label("alt")]}:alts
 					 ( &(.) {alts<<label("alt")} rw(alts[-1],`trans`))*:t
@@ -92,7 +91,7 @@ failobj=rb_eval_string(\"FAIL\");
 				| Pass[ label("pass"):pass label("oldinput"):oldinput label("oldsrc"):oldsrc label("success"):success label("fail"):fail
 						rw(pass,`@to=>trans:to`)
 					{  "VALUE #{oldinput}=#{iget("input")};  VALUE #{oldsrc}=#{iget("src")}; int #{fail}=0;
- #{iset("src",@enter ? "rb_ary_new3(1,#{iget(@var[0])})" : iget(@var[0]))}; #{iset("input","INT2FIX(0)")};
+#{iset("src",@enter ? "rb_ary_new3(1,#{iget(@var.desc)})" : iget(@var.desc))}; #{iset("input","INT2FIX(0)")};
  #{t}
 	if (CALL(eof,0)==failobj) goto #{pass};
 	goto #{success};

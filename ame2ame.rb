@@ -7,6 +7,9 @@ require 'amethyst'
 #require 'compiled/optimizer_null'
 #require 'compiled/optimizer_and_or'
 require 'c/Amethyst'
+#require 'c/AmethystOptimizer2'
+#require 'c/Traverser'
+
 def a2ruby(s)
 	par=AmethystParser.new.parse(:igrammar,s)
 	[AmethystOptimizer2,Analyze_Variables2,Move_Assignments,
