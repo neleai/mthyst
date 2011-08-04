@@ -91,7 +91,7 @@ failobj=rb_eval_string(\"FAIL\");
 				| Pass[ label("pass"):pass label("oldinput"):oldinput label("oldsrc"):oldsrc label("success"):success label("fail"):fail
 						rw(pass,`@to=>trans:to`)
 					{  "VALUE #{oldinput}=#{iget("input")};  VALUE #{oldsrc}=#{iget("src")}; int #{fail}=0;
-#{iset("src",@enter ? "rb_ary_new3(1,#{bget(@var.desc)})" : bget(@var.desc))}; #{iset("input","INT2FIX(0)")};
+#{iset("src",@enter ? bget(@var.desc) : "rb_ary_new3(1,#{bget(@var.desc)})")}; #{iset("input","INT2FIX(0)")};
  #{to}
 	if (CALL(eof,0)==failobj) goto #{pass};
 	goto #{success};

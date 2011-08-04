@@ -13,3 +13,4 @@ refactor args
 initialize append variables as []
 generic parent(Class) in tree traversal
 super in c
+variable cget,cset,rbget,rbset or some other generalization
