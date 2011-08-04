@@ -12,3 +12,4 @@ make passing by it explicit
 refactor args
 initialize append variables as []
 generic parent(Class) in tree traversal
+super in c

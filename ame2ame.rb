@@ -16,6 +16,7 @@ def a2ruby(s)
 		Dead_Code_Detector,Dead_Code_Deleter,
 		AmethystOptimizer2,AmethystTranslator].each{|p|
 	 par=p.new.parse(:itrans,par)
+	puts par.inspect
 	}
 	par
 end
