@@ -8,7 +8,7 @@ amethyst AmethystTranslator < Amethyst {
 	
 	trans = Grammar[@name:name @parent:parent @rules=>transs:body] -> "class #{name} < #{parent}\n#{body.sort}\nend\n"
 				| Rule[ { @@varhash=Hash.new{|h,k| h[k]={}}  } 
-								rw('return',`@name:name @args=>args:argss @body=>trans:body`) { "def #{name}(#{argss})\n#{s=@@varhash.select{|nam,b| (!@args.map{|l| l[0]}.include?(nam))}.map{|nam,b| b.map{|bi,no| "#{varname(@@varhash,nam,bi)}=nil\n"}}.flatten.sort*""} it=nil\n#{body} \nend\n"}]
+								rw('return',`@name:name @body=>trans:body`) { "def #{name}(#{@args.size.times.map{|i| "a#{i}"}*","})\nbind={}; #{@args.size.times.map{|i| "bind[:#{@args[i].desc}]=a#{i}"}*";"}\n  it=nil\n\n#{body} \nend\n"}]
 				| Or[rw('next', `transfn*:ors`)]  failwrap("it=_or(#{ors*","})")
 				| Seq[trans*:t ] -> "#{t*"\n"} "
 				| Act[args:t @pred:pred] -> pred ?  failwrap("it=(#{t})||FAIL") : "it=(#{t})"
@@ -18,8 +18,8 @@ amethyst AmethystTranslator < Amethyst {
 				| Apply[ Array[:klas :name] args:argss]  failwrap("it=_foreign(:#{ name } #{ argss!=[] ? ",#{argss}" : "" })")
 				| Apply[ :name args:argss]  failwrap("it=#{name}(#{argss})")
 				| Set[@name=>arg:name @expr=>trans:expr @append:append] -> "#{expr}\n" + (append ? "#{name}||=[];_append(#{name},it)" : "#{name} = it")
-				| Result[@name:name @args=>args:argss @vars:vars] -> "it=#{name}.create(#{argss} {#{vars.map{|l| ":#{l[0]}=>#{varname(@@varhash,l[0],l[1])}" }.sort*","} })"
-				| Local[:name :number] ->"it="+ varname(@@varhash,name,number)
+				| Result[@name:name @args=>args:argss @vars:vars] -> "it=#{name}.create(#{argss} {#{vars.map{|l| ":#{l[0]}=>bind[:#{l.desc}]" }.sort*","} })"
+				| Local[.* {"it=bind[:#{@desc}]"}] 
 				| Pass[rw('next',`@to=>trans:to @var=>arg:var @enter:enter`)] failwrap("it=_pass(#{!!enter},#{var}){#{to}}")
 				| Cut[] ->  "@cut=true;it"
 				| Stop[] -> "@stop=true;it"
@@ -36,7 +36,7 @@ amethyst AmethystTranslator < Amethyst {
 			| Exp[transfn:t ] -> t
 			| Result[@name:name @args=>args:argss @vars:vars] -> "it=#{name}.create(#{argss} {#{vars.map{|l| ":#{l[0]}=>#{varname(@@varhash,l[0],l[1])}" }.sort*","} })"
 			| Key[@name:name] -> "@src.#{name}"
-			| Local[:name :number] -> varname(@@varhash,name,number)
+			| Local[.* {"bind[:#{@desc}]"}]
 			| Global[:name] -> "@#{name}"
 			| anything
 				
