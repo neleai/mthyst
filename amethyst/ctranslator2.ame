@@ -36,6 +36,8 @@ class AmethystCTranslator < Amethyst
 end
 
 amethyst AmethystCTranslator < Amethyst {
+	itrans = {[]}:ruby {[]}:c {[]}:init  ( char:ruby[]  | trans:{c<<it[0];init<<it[1];ruby<<it[2]} )* -> [c,init,ruby]
+	
 	transfn = trans:t -> "proc{#{t}}"
 	rbtrans = Local[.* {"bind[:#{@desc}]"}]
 					| Args[rbtrans*:a] -> a*""
@@ -53,7 +55,7 @@ amethyst AmethystCTranslator < Amethyst {
 	{s+="\nend"; s}
 	
 	trans =  Grammar[ {@@grammar=@name;@@parent=@parent} {@@faillabel="fail"} {@@callbacks={}} {mktable(@rules)} {@@header=[]} @rules=>[trans*]:t rbcode:rbcode
-				    { s="#include \"cthyst.h\"\nVALUE cls_#{@name};\n"
+				    { s="VALUE cls_#{@name};\n"
 							s<<@@header.sort*"\n"+"\n"
 							s<<t.sort*"\n"
         		  init="\n cls_#{@name}=rb_define_class(\"#{@name}\",rb_const_get(rb_cObject,rb_intern(\"#{@@parent}\"))); 

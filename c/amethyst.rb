@@ -82,4 +82,6 @@ def xdigit_Amethystcb_1(bind)
 end
 
 end
+
+
  require 'c/amethyst_c'

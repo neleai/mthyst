@@ -43,4 +43,32 @@ def trans_AmethystOptimizer2cb_9(bind)
 end
 
 end
+
+
+
+
+
+class Seq_Or_Optimizer < Traverser
+def visit_Seq_Or_Optimizercb_1(bind)
+Seq
+end
+def visit_Seq_Or_Optimizercb_2(bind)
+@src.self.ary=@src.ary.map{|i| (i.is_a?(Seq)) ? i.ary : i}.flatten.select{|e| !(e.is_a?(Act) && e.ary.size==0)}
+end
+def visit_Seq_Or_Optimizercb_3(bind)
+(@src.ary.size==1) ? @src.ary[0] : @src.self
+end
+def visit_Seq_Or_Optimizercb_4(bind)
+Or
+end
+def visit_Seq_Or_Optimizercb_5(bind)
+@src.self.ary=@src.ary.map{|i| (i.is_a?(Or )) ? i.ary : i}.flatten.select{|e| !(e.is_a?(Act) && e.ary.size==0)}
+end
+def visit_Seq_Or_Optimizercb_6(bind)
+(@src.ary.size==1) ? @src.ary[0] : @src.self
+end
+
+end
+
+
  require 'c/optimizer_and_or_c'

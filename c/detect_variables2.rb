@@ -88,4 +88,6 @@ def visit_Analyze_Variables2cb_9(bind)
 end
 
 end
+
+
  require 'c/detect_variables2_c'

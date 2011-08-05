@@ -7,10 +7,11 @@ require 'amethyst'
 #require 'compiled/optimizer_null'
 #require 'compiled/optimizer_and_or'
 require 'c/amethyst'
-require 'c/AmethystOptimizer'
-require 'c/Analyze_Variables2'
-require 'c/AmethystOptimizer2'
-require 'c/Traverser'
+require 'c/optimizer_null'
+require 'c/optimizer_and_or'
+require 'c/detect_variables2'
+require 'c/dead_code_elimination'
+require 'c/traverser'
 
 def a2ruby(s)
 	par=AmethystParser.new.parse(:igrammar,s)

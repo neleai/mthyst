@@ -54,10 +54,10 @@ class AmethystCore
 	end
 	
 	def apply(rule)
-		if rule.is_a? Proc
-			rule.call
-		else
+		if rule.is_a?(String) || rule.is_a?(Symbol)
 			send(rule)
+		else
+			rule.call
 		end
 	end
 	

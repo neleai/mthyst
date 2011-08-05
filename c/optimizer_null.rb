@@ -274,4 +274,8 @@ bind[:autovar_2]||=[];_append(bind[:autovar_2],bind[:autovar_3])
 end
 
 end
+
+
+
+
  require 'c/optimizer_null_c'
