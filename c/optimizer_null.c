@@ -6,7 +6,7 @@ VALUE AmethystOptimizer_itrans(VALUE self );
 VALUE AmethystOptimizer_trans(VALUE self );
 VALUE AmethystOptimizer_transfn(VALUE self );
 VALUE AmethystOptimizer_transs(VALUE self );
-VALUE AmethystOptimizer_arg(VALUE self ){VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
+VALUE AmethystOptimizer_arg(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
 VALUE oldinput184=IGET(input);
 alt185: ISET(input,oldinput184);if (IGET(cut)!=Qnil) goto fail;
   arg0=CALL(arg_cb76,1,bind); BSET(it,CALL(clas,1 ,arg0)); FAILTEST(alt186);
@@ -107,7 +107,7 @@ ISET(cut,Qnil);goto accept183;
 BSET(it,BGET(_result_1));
 return BGET(_result_1);
 fail: return failobj; }
-VALUE AmethystOptimizer_args(VALUE self ){VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
+VALUE AmethystOptimizer_args(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
 VALUE oldinput170=IGET(input);
 alt171: ISET(input,oldinput170);if (IGET(cut)!=Qnil) goto fail;
   arg0=CALL(args_cb71,1,bind); BSET(it,CALL(clas,1 ,arg0)); FAILTEST(alt172);
@@ -136,7 +136,7 @@ ISET(cut,Qnil);goto accept169;
 BSET(it,BGET(_result_1));
 return BGET(_result_1);
 fail: return failobj; }
-VALUE AmethystOptimizer_itrans(VALUE self ){VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
+VALUE AmethystOptimizer_itrans(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
 BSET(it,CALL(itrans_cb1,1,bind)); 
  BSET(autovar_1,BGET(it)); VALUE oldinput2; while(1){oldinput2=IGET(input); VALUE oldinput4=IGET(input);
 alt5: ISET(input,oldinput4);if (IGET(cut)!=Qnil) goto break1;
@@ -154,7 +154,7 @@ BSET(it,CALL(itrans_cb2,1,bind));  } break1: ISET(input,oldinput2); BSET(it,BGET
  BSET(_result_1,BGET(it)); BSET(it,BGET(_result_1));
 return BGET(_result_1);
 fail: return failobj; }
-VALUE AmethystOptimizer_trans(VALUE self ){VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
+VALUE AmethystOptimizer_trans(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
 VALUE oldinput9=IGET(input);
 alt10: ISET(input,oldinput9);if (IGET(cut)!=Qnil) goto fail;
   arg0=CALL(trans_cb3,1,bind); BSET(it,CALL(clas,1 ,arg0)); FAILTEST(alt11);
@@ -489,12 +489,12 @@ ISET(cut,Qnil);goto accept8;
 BSET(it,BGET(_result_1));
 return BGET(_result_1);
 fail: return failobj; }
-VALUE AmethystOptimizer_transfn(VALUE self ){VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
+VALUE AmethystOptimizer_transfn(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
   BSET(it,CALL(trans,0 )); FAILTEST(fail);
  BSET(_result_1,BGET(it)); BSET(it,BGET(_result_1));
 return BGET(_result_1);
 fail: return failobj; }
-VALUE AmethystOptimizer_transs(VALUE self ){VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
+VALUE AmethystOptimizer_transs(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
   BSET(it,CALL(anything,0 )); FAILTEST(fail);
  BSET(autovar_1,BGET(it)); VALUE oldinput163=IGET(input);  VALUE oldsrc164=IGET(src); int fail166=0;
 ISET(src,BGET(autovar_1)); ISET(input,INT2FIX(0));

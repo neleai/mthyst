@@ -4,7 +4,7 @@ VALUE Analyze_Variables2_flat(VALUE self );
 VALUE Analyze_Variables2_itrans(VALUE self );
 VALUE Analyze_Variables2_root(VALUE self );
 VALUE Analyze_Variables2_visit(VALUE self );
-VALUE Analyze_Variables2_flat(VALUE self ){VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
+VALUE Analyze_Variables2_flat(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
 BSET(it,CALL(flat_cb26,1,bind)); 
  BSET(autovar_1,BGET(it)); VALUE oldinput82; while(1){oldinput82=IGET(input); VALUE oldinput84=IGET(input);
 alt85: ISET(input,oldinput84);if (IGET(cut)!=Qnil) goto break81;
@@ -43,7 +43,7 @@ BSET(it,CALL(flat_cb29,1,bind));  } break81: ISET(input,oldinput82); BSET(it,BGE
  BSET(_result_1,BGET(it)); BSET(it,BGET(_result_1));
 return BGET(_result_1);
 fail: return failobj; }
-VALUE Analyze_Variables2_itrans(VALUE self ){VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
+VALUE Analyze_Variables2_itrans(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
 BSET(it,CALL(itrans_cb1,1,bind)); 
  BSET(autovar_1,BGET(it)); VALUE oldinput2; while(1){oldinput2=IGET(input); VALUE oldinput4=IGET(input);
 alt5: ISET(input,oldinput4);if (IGET(cut)!=Qnil) goto break1;
@@ -99,7 +99,7 @@ BSET(it,CALL(itrans_cb9,1,bind));  } break1: ISET(input,oldinput2); BSET(it,BGET
  BSET(_result_1,BGET(it)); BSET(it,BGET(_result_1));
 return BGET(_result_1);
 fail: return failobj; }
-VALUE Analyze_Variables2_root(VALUE self ){VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
+VALUE Analyze_Variables2_root(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
 BSET(it,CALL(root_cb10,1,bind)); 
  BSET(autovar_1,BGET(it)); VALUE oldinput31=IGET(input);  VALUE oldsrc32=IGET(src); int fail34=0;
 ISET(src,rb_ary_new3(1,BGET(autovar_1))); ISET(input,INT2FIX(0));
@@ -122,7 +122,7 @@ ISET(src,BGET(autovar_2)); ISET(input,INT2FIX(0));
 BSET(it,BGET(_result_1));
 return BGET(_result_1);
 fail: return failobj; }
-VALUE Analyze_Variables2_visit(VALUE self ){VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
+VALUE Analyze_Variables2_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
 VALUE oldinput41=IGET(input);
 alt42: ISET(input,oldinput41);if (IGET(cut)!=Qnil) goto fail;
   arg0=CALL(visit_cb16,1,bind); BSET(it,CALL(clas,1 ,arg0)); FAILTEST(alt43);

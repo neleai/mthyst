@@ -2,7 +2,7 @@
 VALUE cls_Traverser;
 VALUE Traverser_traverse(VALUE self );
 VALUE Traverser_traverse_item(VALUE self );
-VALUE Traverser_traverse(VALUE self ){VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
+VALUE Traverser_traverse(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
 BSET(it,CALL(traverse_cb6,1,bind)); 
  BSET(autovar_1,BGET(it)); VALUE oldinput21; while(1){oldinput21=IGET(input);   BSET(it,CALL(anything,0 )); FAILTEST(break20);
  BSET(autovar_2,BGET(it)); BSET(it,CALL(traverse_cb7,1,bind));  } break20: ISET(input,oldinput21); BSET(it,BGET(autovar_1));BSET(it,CALL(traverse_cb8,1,bind)); 
@@ -41,7 +41,7 @@ BSET(it,CALL(traverse_cb13,1,bind));
  BSET(_result_1,BGET(it)); BSET(it,BGET(_result_1));
 return BGET(_result_1);
 fail: return failobj; }
-VALUE Traverser_traverse_item(VALUE self ){VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
+VALUE Traverser_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
 VALUE oldinput2=IGET(input);
 alt3: ISET(input,oldinput2);if (IGET(cut)!=Qnil) goto fail;
    BSET(it,CALL(visit,0 )); FAILTEST(alt4);

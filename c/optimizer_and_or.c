@@ -1,7 +1,7 @@
 #include "cthyst.h"
 VALUE cls_AmethystOptimizer2;
 VALUE AmethystOptimizer2_trans(VALUE self );
-VALUE AmethystOptimizer2_trans(VALUE self ){VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
+VALUE AmethystOptimizer2_trans(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
 VALUE oldinput2=IGET(input);
 alt3: ISET(input,oldinput2);if (IGET(cut)!=Qnil) goto fail;
   arg0=CALL(trans_cb1,1,bind); BSET(it,CALL(clas,1 ,arg0)); FAILTEST(alt4);
