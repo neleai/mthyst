@@ -7,7 +7,7 @@ require 'amethyst'
 #require 'compiled/optimizer_null'
 #require 'compiled/optimizer_and_or'
 require 'c/Amethyst'
-#require 'c/AmethystOptimizer'
+require 'c/AmethystOptimizer'
 #require 'c/AmethystOptimizer2'
 require 'c/Traverser'
 
