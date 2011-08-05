@@ -25,6 +25,7 @@ makeclasses(Object,
 		:Stop,
 		[:Variable,:bind,:global,:key],
 		:Bnding,
+		:Super,
 		[:Phi,:merges,:result]
 )
 
@@ -38,11 +39,6 @@ end
 class <<Variable
 	def [](name,bind)
 		Variable.create({:name=>name,:bind=>bind})
-	end
-end
-class Local
-	def inspect
-		"Local[#{ary[0]}_#{number}]"
 	end
 end
 def quote(s)
@@ -120,6 +116,9 @@ class <<Lookahead
   end
 end
 class Local
+	def inspect
+		"Local[#{ary[0]}_#{number}]"
+	end
 	def hash
 		ary.hash
 	end
@@ -128,9 +127,11 @@ class Local
 		return self.ary==a.ary
 	end
 	def desc
-		a=ary[1]
-		a=a[0] if a.is_a? Bnding
-		"#{ary[0]}_#{a}"
+		return @@numb[ary[0]][self] if @@numb[ary[0]][self]
+		 @@numb[ary[0]][self]="#{ary[0]}_#{@@numb[ary[0]].size+1}"
+	end
+	def self.resetnumbering
+    @@numb=Hash.new{|h,k|h[k]={}}
 	end
 	alias_method :eql?,:==
 end

@@ -62,7 +62,7 @@ failobj=rb_eval_string(\"FAIL\");
 #{rbcode}
 }"
 							s } ]
-				|  Rule[@name:name {@@rulename=name} @body=>trans:body  { h="VALUE #{@@grammar}_#{name}(VALUE self #{@args.size.times.map{|i| ",VALUE a#{i}"}})" 
+				|  Rule[@name:name {@@rulename=name; Local.resetnumbering} @body=>trans:body  { h="VALUE #{@@grammar}_#{name}(VALUE self #{@args.size.times.map{|i| ",VALUE a#{i}"}})" 
 						@@header<<h+";"
 						h+"{VALUE bind=rb_hash_new(); #{@args.size.times.map{|i| bset(@args[i].desc,"a#{i}")+";"}} int x;VALUE arg0,arg1,arg2,arg3;\n#{body}\nreturn #{bget(Local["_result",@bnding].desc)};\nfail: return failobj; }" } ]
 				| Act[ .*:{addcallback(@pred ? ["(",it,") || FAIL"]:it)}:cbno {"#{bset("it","CALL(#{cbno},1,bind)")}; #{@pred ? "FAILTEST(#{@@faillabel});" :"" }"} ]
@@ -100,6 +100,8 @@ failobj=rb_eval_string(\"FAIL\");
 	if(#{fail}) goto #{@@faillabel};
 " }
 					]
+				| Super[ "VALUE *vals; rb_call_super(0,vals)" ]
+
 	failwrap(s) = {"#{s} FAILTEST(#{@@faillabel});" }
 
 	rw(word,prc) = {@@faillabel}:rwo {@@faillabel=word } apply(prc):x {@@faillabel=rwo; x }

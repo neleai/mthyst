@@ -1,13 +1,9 @@
-def varname(vh,name,number)
-	 vh[name][number]=vh[name].size+1 if !vh[name][number]
-	 "#{name}_#{vh[name][number]}"
-end
 amethyst AmethystTranslator < Amethyst {	
 	
 	itrans =  (char | trans)*:r  -> r*""
 	
 	trans = Grammar[@name:name @parent:parent @rules=>transs:body] -> "class #{name} < #{parent}\n#{body.sort}\nend\n"
-				| Rule[ { @@varhash=Hash.new{|h,k| h[k]={}}  } 
+				| Rule[ {@@x; Local.resetnumbering  } 
 								rw('return',`@name:name @body=>trans:body`) { "def #{name}(#{@args.size.times.map{|i| "a#{i}"}*","})\nbind={}; #{@args.size.times.map{|i| "bind[:#{@args[i].desc}]=a#{i}"}*";"}\n  it=nil\n\n#{body} \nend\n"}]
 				| Or[rw('next', `transfn*:ors`)]  failwrap("it=_or(#{ors*","})")
 				| Seq[trans*:t ] -> "#{t*"\n"} "
@@ -34,7 +30,6 @@ amethyst AmethystTranslator < Amethyst {
 	arg = Args[arg*:a] -> a*""
 			| Strin[arg*:a] -> a*""
 			| Exp[transfn:t ] -> t
-			| Result[@name:name @args=>args:argss @vars:vars] -> "it=#{name}.create(#{argss} {#{vars.map{|l| ":#{l[0]}=>#{varname(@@varhash,l[0],l[1])}" }.sort*","} })"
 			| Key[@name:name] -> "@src.#{name}"
 			| Local[.* {"bind[:#{@desc}]"}]
 			| Global[:name] -> "@#{name}"
