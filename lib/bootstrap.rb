@@ -1338,7 +1338,7 @@ it=(bind[:ary_1]=bind[:ary_1].map{|a| (a.is_a?(Seq)) ? a.ary : a}.flatten.select
 it=_or(proc{it=(bind[:ary_1].size==1)||FAIL;next FAIL if it==FAIL
 it=(bind[:ary_1][0])
 bind[:_result_1] = it },proc{it=Seq.create( {:ary=>bind[:ary_1] })
-bind[:_result_1] = it});next FAIL if it==FAIL },proc{it=(super)
+bind[:_result_1] = it});next FAIL if it==FAIL },proc{it=super();next FAIL if it==FAIL
 bind[:_result_1] = it});return FAIL if it==FAIL
 it=bind[:_result_1]  
 end

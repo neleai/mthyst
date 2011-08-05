@@ -5,11 +5,16 @@ ID s_src,s_input,s_call,s_cut;
 VALUE ame_seq(VALUE self,VALUE str){
 	int len=RSTRING(str)->len;
 	VALUE src=rb_ivar_get(self,s_src);
-	int input=FIX2INT(rb_ivar_get(self,s_input));
-	if (strncmp(RSTRING(src)->ptr+input,RSTRING(str)->ptr,len))return failobj;
-	else {
-		rb_ivar_set(self,s_input,INT2FIX(input+len));
-		return str;
+	if (TYPE(src)==T_STRING){
+		int input=FIX2INT(rb_ivar_get(self,s_input));
+		if (strncmp(RSTRING(src)->ptr+input,RSTRING(str)->ptr,len)) 
+			{ return failobj; }
+		else {
+			rb_ivar_set(self,s_input,INT2FIX(input+len));
+			return str;
+		}
+	}else{
+		 rb_raise(rb_eArgError, "called seq when not in string");
 	}
 }
 VALUE ame_anything(VALUE self){

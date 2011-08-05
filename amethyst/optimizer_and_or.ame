@@ -5,7 +5,7 @@ trans = Or[transfn*:ary ]
         | Seq[trans*:ary ]
           {ary=ary.map{|a| (a.is_a?(Seq)) ? a.ary : a}.flatten.select{|e| !(e.is_a?(Act) && e.ary.size==0)}}
 				  (&{ary.size==1} {ary[0]} | @Seq)
-				| {super}
+				| super
 }
 
 

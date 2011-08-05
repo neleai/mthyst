@@ -8,6 +8,7 @@ VALUE failobj;
 #define FAILTEST(lab) if (BGET(it)==failobj) goto lab;
 #define HEADER VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
 
+#define INSV(val)  printf("%s\n",RSTRING(rb_funcall(val,rb_intern("inspect"),0))->ptr);
 #define INSB(var) printf("%s\n",RSTRING(rb_funcall(BGET(var),rb_intern("inspect"),0))->ptr);
 #define INSI(var) printf("%s\n",RSTRING(rb_funcall(IGET(var),rb_intern("inspect"),0))->ptr);
 #define INSS printf("%s\n",RSTRING(rb_funcall(self,rb_intern("inspect"),0))->ptr);
