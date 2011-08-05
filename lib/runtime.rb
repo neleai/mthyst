@@ -3,6 +3,16 @@ FAIL=Object.new
 def FAIL.inspect
 	"FAIL"
 end
+
+class AmethystLambda
+	def initialize(call,parser,bind)
+		@call,@parser,@bind=call,parser,bind
+	end
+	def call
+		parser.send(@call,@bind)
+	end
+end
+
 class AmethystCore
 
   def _lookahead(neg=false)
