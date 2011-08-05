@@ -11,7 +11,6 @@ require 'c/traverser'
 require 'c/translator'
 
 
-
 def a2ruby(s)
 	par=AmethystParser.new
 	t=AmethystTranslator.new

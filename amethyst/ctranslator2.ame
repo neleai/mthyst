@@ -82,9 +82,12 @@ failobj=rb_eval_string(\"FAIL\");
            {t.size.times{|i| s<<"#{alt}_#{i+1}: #{iset("input",oldinput)};if (#{iget("cut")}!=Qnil) goto #{fail};\n #{t[i]} \n#{iset("cut","Qnil")};goto #{accept};\n"}}
            {"#{s}  #{alt}_#{altno+1}:  #{iset("input",oldinput)}; goto #{fail};\n #{accept}:;\n"}
 					]
+				| Cut[] {"#{iset("cut","Qtrue")};"}
+				| Stop[] {"#{iset("stop","Qtrue")};"}
+
 				| Many[ {label("break")}:brk {label("oldinput")}:oldinput
 						rw(brk,`trans:t`)
-						{"VALUE #{oldinput}; while(1){#{oldinput}=#{iget("input")}; #{t} } #{brk}: #{iset("input",oldinput)}; "}
+						{"VALUE #{oldinput}; while(1){#{oldinput}=#{iget("input")}; #{t} if (#{iget("stop")}!=Qnil){{#{oldinput}=#{iget("input")};goto #{brk};} } } #{brk}: #{iset("stop","Qnil")};  #{iset("input",oldinput)}; "}
 					]
 				| Lookahead[ {label("accept")}:accept {label("reject")}:reject {label("oldinput")}:oldinput 
 										 rw(reject,`trans:t`) 

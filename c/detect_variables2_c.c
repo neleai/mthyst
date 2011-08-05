@@ -39,7 +39,7 @@ alt1_3: ISET(input,oldinput2);if (IGET(cut)!=Qnil) goto break1;
 ISET(cut,Qnil);goto accept1;
   alt1_4:  ISET(input,oldinput2); goto break1;
  accept1:;
-BSET(it,CALL(flat_Analyze_Variables2cb_4,1,bind));  } break1: ISET(input,oldinput1); BSET(it,BGET(autovar_1));
+BSET(it,CALL(flat_Analyze_Variables2cb_4,1,bind));  if (IGET(stop)!=Qnil){{oldinput1=IGET(input);goto break1;} } } break1: ISET(stop,Qnil);  ISET(input,oldinput1); BSET(it,BGET(autovar_1));
  BSET(_result_1,BGET(it)); BSET(it,BGET(_result_1));
 return BGET(_result_1);
 fail: return failobj; }
@@ -67,7 +67,7 @@ ISET(src,BGET(autovar_6)); ISET(input,INT2FIX(0));
 	pass4: fail4=1;
 	success4: ISET(src,oldsrc4); ISET(input,oldinput7);
 	if(fail4) goto break2;
-BSET(it,CALL(itrans_Analyze_Variables2cb_6,1,bind));  } break2: ISET(input,oldinput6); BSET(it,BGET(autovar_5));
+BSET(it,CALL(itrans_Analyze_Variables2cb_6,1,bind));  if (IGET(stop)!=Qnil){{oldinput6=IGET(input);goto break2;} } } break2: ISET(stop,Qnil);  ISET(input,oldinput6); BSET(it,BGET(autovar_5));
  BSET(rules_1,BGET(it)); 
 	if (CALL(eof,0)==failobj) goto pass3;
 	goto success3;
@@ -95,7 +95,7 @@ alt1_2: ISET(input,oldinput2);if (IGET(cut)!=Qnil) goto break1;
 ISET(cut,Qnil);goto accept1;
   alt1_3:  ISET(input,oldinput2); goto break1;
  accept1:;
-BSET(it,CALL(itrans_Analyze_Variables2cb_9,1,bind));  } break1: ISET(input,oldinput1); BSET(it,BGET(autovar_1));
+BSET(it,CALL(itrans_Analyze_Variables2cb_9,1,bind));  if (IGET(stop)!=Qnil){{oldinput1=IGET(input);goto break1;} } } break1: ISET(stop,Qnil);  ISET(input,oldinput1); BSET(it,BGET(autovar_1));
  BSET(_result_1,BGET(it)); BSET(it,BGET(_result_1));
 return BGET(_result_1);
 fail: return failobj; }

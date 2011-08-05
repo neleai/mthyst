@@ -4,6 +4,7 @@ gcc -I. -I/usr/lib/ruby/1.8/x86_64-linux -I/usr/lib/ruby/1.8/x86_64-linux -I.   
 gcc -shared -o $1_c.so $1_c.o -L. -L/usr/lib -L.  -rdynamic -Wl,-export-dynamic    -lruby1.8  -lpthread -lrt -ldl -lcrypt -lm   -lc
 }
 comp amethyst
+comp parser
 comp optimizer_null
 comp optimizer_and_or
 comp detect_variables2

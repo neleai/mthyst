@@ -422,7 +422,7 @@ it=_or(proc{it=seq("\\");next FAIL if it==FAIL
 it=char();next FAIL if it==FAIL
 bind[:c_1] = it
 it=("\\#{bind[:c_1]}")
-bind[:_result_1] = it },proc{it=_args('#{','}');next FAIL if it==FAIL
+bind[:_result_1] = it },proc{it=_args('#'+'{','}');next FAIL if it==FAIL
 bind[:_result_1] = it},proc{it=char();next FAIL if it==FAIL
 bind[:_result_1] = it});return FAIL if it==FAIL
 it=bind[:_result_1]  

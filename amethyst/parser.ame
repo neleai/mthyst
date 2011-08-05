@@ -69,7 +69,7 @@ amethyst AmethystParser < Amethyst{
   collect(ors) = -> a=autovar; Seq[Or[{:ary=>ors.ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],Act[a]]
 
 	eChar = '\\' char:c   -> "\\#{c}"
-  	  	| _args('#{','}')
+  	  	| _args('#'+'{','}')
 				| char
 
 	ruleargs = (argsOpt('(',')'))=>[addargs]
