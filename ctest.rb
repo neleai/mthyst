@@ -2,6 +2,16 @@ $:.unshift 'lib'
 require 'graph'
 require 'pp'
 require 'amethyst'
+require 'c/amethyst'
+require 'c/optimizer_null'
+require 'c/optimizer_and_or'
+require 'c/detect_variables2'
+require 'c/dead_code_elimination'
+require 'c/traverser'
+require 'c/translator'
+
+
+
 def a2ruby(s)
 	par=AmethystParser.new
 	t=AmethystTranslator.new
@@ -21,7 +31,7 @@ o.close
 end
 require 'ctranslator2.rb'
 g=[Grammar[{:name=>"Foo",:parent=>"Amethyst",:rules=>[Rule[{:name=>"foo",:args=>[],:body=>Seq[Lookahead[Apply["bar"]],Pass[Apply["a"],Apply["b"]],Apply["x"],Set[{:name=>Local["result"],:expr=>Act["42"]}]]}],Rule[{:name=>"a",:args=>[],:body=>Seq[Act[Args["u=",Local["a"]]]]}], Rule[{:name=>"t",:args=>[],:body=>Seq[Or[Apply["spaces"],Apply["seq",Args["'x'"]]]]}] ]}]]
-["amethyst","optimizer_null","optimizer_and_or","detect_variables2","traverser","dead_code_elimination","translator"].each{|n|
+["amethyst","parser","optimizer_null","optimizer_and_or","detect_variables2","traverser","dead_code_elimination","translator"].each{|n|
 puts AmethystCTranslator.new.parse(:itrans,g)
 a2ruby(File.new("amethyst/#{n}.ame").read)
 	puts $opt.inspect
