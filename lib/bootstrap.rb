@@ -771,7 +771,9 @@ it=bind[:autovar_58]
 bind[:autovar_61] = it
 it=(bind[:s_47]||=[];_append(bind[:s_47],bind[:autovar_61]))
 it=(Strin[connectstring(bind[:s_47])])
-bind[:_result_47] = it },proc{it=_or(proc{it=token(":@");next FAIL if it==FAIL
+bind[:_result_47] = it },proc{it=seq("...");next FAIL if it==FAIL
+bind[:_result_47] = it},proc{it=seq("..");next FAIL if it==FAIL
+bind[:_result_47] = it},proc{it=_or(proc{it=token(":@");next FAIL if it==FAIL
 bind[:n_47] = it},proc{it=regch(/[$.:]/);next FAIL if it==FAIL
 bind[:n_47] = it},proc{it=empty();next FAIL if it==FAIL});next FAIL if it==FAIL
 it=_lookahead(true){it=_();next FAIL if it==FAIL};next FAIL if it==FAIL
