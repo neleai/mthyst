@@ -25,9 +25,12 @@ class AmethystCTranslator < Amethyst
 		"rb_ivar_set(self,rb_intern(\"@#{s}\"),#{e})"
 		"ISET(#{s},#{e})"
 	end
+	def resetlabels
+		@labels=Hash.new(0)
+	end
 	def label(s)
-		@lno=(@lno||0)+1
-		"#{s}#{@lno}"
+		@labels[s]+=1
+		"#{s}#{@labels[s]}"
 	end
 	def mktable(r)
 		@ruletable={}
@@ -63,7 +66,7 @@ failobj=rb_eval_string(\"FAIL\");
 #{@rules.map{|r| "rb_define_method(cls_#{@name},\"#{r.name}\",#{@name}_#{r.name},#{r.args.size});"}.sort*"\n" }
 "
 							[s,init,rbcode] } ]
-				|  Rule[@name:name {@@rulename=name; Local.resetnumbering} @body=>trans:body  { h="VALUE #{@@grammar}_#{name}(VALUE self #{@args.size.times.map{|i| ",VALUE a#{i}"}})" 
+				|  Rule[@name:name {@@rulename=name; Local.resetnumbering;resetlabels} @body=>trans:body  { h="VALUE #{@@grammar}_#{name}(VALUE self #{@args.size.times.map{|i| ",VALUE a#{i}"}})" 
 						@@header<<h+";"
 						h+"{VALUE vals[#{@args.size}]; VALUE bind=rb_hash_new(); #{@args.size.times.map{|i| bset(@args[i].desc,"a#{i}")+"; vals[#{i}]=a#{i};"}} int x;VALUE arg0,arg1,arg2,arg3;\n#{body}\nreturn #{bget(Local["_result",@bnding].desc)};\nfail: return failobj; }" } ]
 				| Act[ .*:{addcallback(@pred ? ["(",it,") || FAIL"]:it)}:cbno {"#{bset("it","CALL(#{cbno},1,bind)")}; #{@pred ? "FAILTEST(#{@@faillabel});" :"" }"} ]
@@ -72,11 +75,11 @@ failobj=rb_eval_string(\"FAIL\");
             failwrap(" #{args.size.times.map{|a|"arg#{a}=CALL(#{args[a]},1,bind);"}} #{bset("it","CALL(#{name},#{args.size} #{args.size.times.map{|a|",arg#{a}"}})")};")]
 				| Seq[ trans*:t {t*""} ]
 				| Set[ @expr=>trans:e {"#{e}\n #{bset(@name.desc,bget("it"))}; " } ]
-				| Or[ {label("accept")}:accept {@@faillabel}:fail {label("oldinput")}:oldinput {[label("alt")]}:alts
-					 ( &(.) {alts<<label("alt")} rw(alts[-1],`trans`))*:t
+				| Or[ {label("accept")}:accept {@@faillabel}:fail {label("oldinput")}:oldinput label("alt"):alt {0}:altno
+					 ( &(.) {altno+=1} rw("#{alt}_#{altno+1}",`trans`))*:t
 					 {s="VALUE #{oldinput}=#{iget("input")};\n"}
-           {t.size.times{|i| s<<"#{alts[i]}: #{iset("input",oldinput)};if (#{iget("cut")}!=Qnil) goto #{fail};\n #{t[i]} \n#{iset("cut","Qnil")};goto #{accept};\n"}}
-           {"#{s}  #{alts[-1]}:  #{iset("input",oldinput)}; goto #{fail};\n #{accept}:;\n"}
+           {t.size.times{|i| s<<"#{alt}_#{i+1}: #{iset("input",oldinput)};if (#{iget("cut")}!=Qnil) goto #{fail};\n #{t[i]} \n#{iset("cut","Qnil")};goto #{accept};\n"}}
+           {"#{s}  #{alt}_#{altno+1}:  #{iset("input",oldinput)}; goto #{fail};\n #{accept}:;\n"}
 					]
 				| Many[ {label("break")}:brk {label("oldinput")}:oldinput
 						rw(brk,`trans:t`)
