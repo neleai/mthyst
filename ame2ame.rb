@@ -6,10 +6,10 @@ require 'amethyst'
 #require 'compiled/parser'
 #require 'compiled/optimizer_null'
 #require 'compiled/optimizer_and_or'
-require 'c/Amethyst'
+require 'c/amethyst'
 require 'c/AmethystOptimizer'
 require 'c/Analyze_Variables2'
-#require 'c/AmethystOptimizer2'
+require 'c/AmethystOptimizer2'
 require 'c/Traverser'
 
 def a2ruby(s)

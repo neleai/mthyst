@@ -5,7 +5,7 @@ class AmethystCTranslator < Amethyst
 	def addcallback2(cb)
 		@cbno||=0
 		@cbno+=1
-		n="#{@rulename}_#{@grammar}cb#{@cbno}"
+		n=Local["#{@rulename}_#{@grammar}cb",@cbno].desc
 		@callbacks[n]=cb
 		n
 	end
@@ -50,18 +50,17 @@ amethyst AmethystCTranslator < Amethyst {
 	rbcode = {"class #{@@grammar} < #{@@parent}\n"}:s
 	{@@callbacks.to_a.sort}=>[([:k :v]   {"def #{k}(bind)\n#{v}\nend\n"})*:x ]
 	{s+=x*""}
-	{s+="\nend"; "rb_eval_string(#{s.inspect});"}
+	{s+="\nend"; s}
 	
 	trans =  Grammar[ {@@grammar=@name;@@parent=@parent} {@@faillabel="fail"} {@@callbacks={}} {mktable(@rules)} {@@header=[]} @rules=>[trans*]:t rbcode:rbcode
 				    { s="#include \"cthyst.h\"\nVALUE cls_#{@name};\n"
 							s<<@@header.sort*"\n"+"\n"
 							s<<t.sort*"\n"
-        		  s<<"\nvoid Init_#{@name}(){ cls_#{@name}=rb_define_class(\"#{@name}\",rb_const_get(rb_cObject,rb_intern(\"#{@@parent}\"))); 
+        		  init="\n cls_#{@name}=rb_define_class(\"#{@name}\",rb_const_get(rb_cObject,rb_intern(\"#{@@parent}\"))); 
 failobj=rb_eval_string(\"FAIL\");
 #{@rules.map{|r| "rb_define_method(cls_#{@name},\"#{r.name}\",#{@name}_#{r.name},#{r.args.size});"}.sort*"\n" }
-#{rbcode}
-}"
-							s } ]
+"
+							[s,init,rbcode] } ]
 				|  Rule[@name:name {@@rulename=name; Local.resetnumbering} @body=>trans:body  { h="VALUE #{@@grammar}_#{name}(VALUE self #{@args.size.times.map{|i| ",VALUE a#{i}"}})" 
 						@@header<<h+";"
 						h+"{VALUE vals[#{@args.size}]; VALUE bind=rb_hash_new(); #{@args.size.times.map{|i| bset(@args[i].desc,"a#{i}")+"; vals[#{i}]=a#{i};"}} int x;VALUE arg0,arg1,arg2,arg3;\n#{body}\nreturn #{bget(Local["_result",@bnding].desc)};\nfail: return failobj; }" } ]

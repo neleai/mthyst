@@ -25,8 +25,15 @@ g=[Grammar[{:name=>"Foo",:parent=>"Amethyst",:rules=>[Rule[{:name=>"foo",:args=>
 puts AmethystCTranslator.new.parse(:trans,g)
 a2ruby(File.new("amethyst/#{n}.ame").read)
 	puts $opt.inspect
-	s=AmethystCTranslator.new.parse(:trans,$opt)
-	puts s
+	c,init,rb=AmethystCTranslator.new.parse(:trans,$opt)
+	puts c
+	puts init
+	puts rb
+	File.open("c/#{n}_c.c","w"){|f| 
+		f.puts c
+		f.puts "void Init_#{n}_c(){ #{init} }"
+	}
+	File.open("c/#{n}.rb","w"){|f| f.puts rb+"\n require 'c/#{n}_c'"}
 
-	File.open("c/#{n}.c","w"){|f| f.puts s}
 }
+`cd c;./comp`
