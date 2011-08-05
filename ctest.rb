@@ -21,7 +21,7 @@ o.close
 end
 require 'ctranslator2.rb'
 g=[Grammar[{:name=>"Foo",:parent=>"Amethyst",:rules=>[Rule[{:name=>"foo",:args=>[],:body=>Seq[Lookahead[Apply["bar"]],Pass[Apply["a"],Apply["b"]],Apply["x"],Set[{:name=>Local["result"],:expr=>Act["42"]}]]}],Rule[{:name=>"a",:args=>[],:body=>Seq[Act[Args["u=",Local["a"]]]]}], Rule[{:name=>"t",:args=>[],:body=>Seq[Or[Apply["spaces"],Apply["seq",Args["'x'"]]]]}] ]}]]
-["amethyst","optimizer_null","optimizer_and_or","traverser"].each{|n|
+["amethyst","optimizer_null","optimizer_and_or","detect_variables2","traverser"].each{|n|
 puts AmethystCTranslator.new.parse(:trans,g)
 a2ruby(File.new("amethyst/#{n}.ame").read)
 	puts $opt.inspect

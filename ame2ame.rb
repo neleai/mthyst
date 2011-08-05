@@ -8,6 +8,7 @@ require 'amethyst'
 #require 'compiled/optimizer_and_or'
 require 'c/Amethyst'
 require 'c/AmethystOptimizer'
+require 'c/Analyze_Variables2'
 #require 'c/AmethystOptimizer2'
 require 'c/Traverser'
 

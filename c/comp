@@ -8,4 +8,7 @@ gcc -shared -o AmethystOptimizer2.so optimizer_and_or.o -L. -L/usr/lib -L.  -rdy
 gcc -I. -I/usr/lib/ruby/1.8/x86_64-linux -I/usr/lib/ruby/1.8/x86_64-linux -I.   -fPIC -fno-strict-aliasing -g -g $O  -fPIC   -c traverser.c
 gcc -shared -o Traverser.so traverser.o -L. -L/usr/lib -L.  -rdynamic -Wl,-export-dynamic    -lruby1.8  -lpthread -lrt -ldl -lcrypt -lm   -lc
 
+gcc -I. -I/usr/lib/ruby/1.8/x86_64-linux -I/usr/lib/ruby/1.8/x86_64-linux -I.   -fPIC -fno-strict-aliasing -g -g $O  -fPIC   -c detect_variables2.c
+gcc -shared -o Analyze_Variables2.so detect_variables2.o -L. -L/usr/lib -L.  -rdynamic -Wl,-export-dynamic    -lruby1.8  -lpthread -lrt -ldl -lcrypt -lm   -lc
+
 
