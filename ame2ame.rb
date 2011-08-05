@@ -12,6 +12,7 @@ require 'c/optimizer_and_or'
 require 'c/detect_variables2'
 require 'c/dead_code_elimination'
 require 'c/traverser'
+require 'c/translator'
 
 def a2ruby(s)
 	par=AmethystParser.new.parse(:igrammar,s)

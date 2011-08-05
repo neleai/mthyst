@@ -1963,10 +1963,12 @@ def rw(a0,a1)
 bind={}; bind[:word_1]=a0;bind[:prc_1]=a1
   it=nil
 
-it=(rwo=@returnword;@returnword=bind[:word_1])
+it=(@returnword)
+bind[:rwo_1] = it
+it=(@returnword=bind[:word_1])
 it=apply(bind[:prc_1]);return FAIL if it==FAIL
 bind[:x_1] = it
-it=(@returnword=rwo;bind[:x_1])
+it=(@returnword=bind[:rwo_1];bind[:x_1])
 bind[:_result_1] = it
 it=bind[:_result_1]  
 end

@@ -59,6 +59,7 @@ amethyst AmethystCTranslator < Amethyst {
 				    { s="VALUE cls_#{@name};\n"
 							s<<@@header.sort*"\n"+"\n"
 							s<<t.sort*"\n"
+							s<<@@lambdas*"\n"
         		  init="\n cls_#{@name}=rb_define_class(\"#{@name}\",rb_const_get(rb_cObject,rb_intern(\"#{@@parent}\"))); 
 failobj=rb_eval_string(\"FAIL\");
 #{@@defmethods.sort*"\n" }
@@ -106,10 +107,11 @@ failobj=rb_eval_string(\"FAIL\");
 " }
 					]
 	
-	addlambda =  {"#{@@grammar}_#{@@rulename}_#{label("lambda")}"}:lambd  trans:body
+	addlambda =  {"#{@@grammar}_#{@@rulename}_#{label("lambda")}"}:lambd  rw('fail',`trans:body`)
 							  { h="VALUE #{lambd}(VALUE self,VALUE bind)"
             @@header<<h+";"
-            @@lambdas<< h+"{VALUE vals[#{@args.size}]; /*todo unify with rule and get args*/  int x;VALUE arg0,arg1,arg2,arg3;\n#{body}\nreturn #{bget(Local["_result",@bnding].desc)};\nfail: return failobj; }" }
+						@@defmethods<<"rb_define_method(cls_#{@@grammar},\"#{lambd}\",#{lambd},1);"
+            @@lambdas<< h+"{VALUE vals[0]; /*todo unify with rule and get args*/  int x;VALUE arg0,arg1,arg2,arg3;\n#{body}\nreturn #{bget("it")};\nfail: return failobj; }" }
 							 {"AmethystLambda.new(:#{lambd},self,bind)" }
 
 	failwrap(s) = {"#{s} FAILTEST(#{@@faillabel});" }

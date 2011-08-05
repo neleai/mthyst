@@ -35,7 +35,7 @@ amethyst AmethystTranslator < Amethyst {
 			| Global[:name] -> "@#{name}"
 			| anything
 				
-	rw(word,prc) = {rwo=@@returnword;@@returnword=word} apply(prc):x {@@returnword=rwo;x}
+	rw(word,prc) = {@@returnword}:rwo {@@returnword=word} apply(prc):x {@@returnword=rwo;x}
 
 	failwrap(s) = {  "#{s};#{@@returnword} FAIL if it==FAIL" }
 }

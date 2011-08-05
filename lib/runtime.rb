@@ -9,7 +9,7 @@ class AmethystLambda
 		@call,@parser,@bind=call,parser,bind
 	end
 	def call
-		parser.send(@call,@bind)
+		@parser.send(@call,@bind)
 	end
 end
 
