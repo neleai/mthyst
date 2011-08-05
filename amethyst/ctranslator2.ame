@@ -2,7 +2,7 @@ amethyst AmethystRBTranslator < Traverser{
 }
 
 class AmethystCTranslator < Amethyst 
-	def addcallback(cb)
+	def addcallback2(cb)
 		@cbno||=0
 		@cbno+=1
 		n="#{@rulename}_cb#{@cbno}"
@@ -48,7 +48,7 @@ amethyst AmethystCTranslator < Amethyst {
 
 
 	rbcode = {"class #{@@grammar} < #{@@parent}\n"}:s
-	{@@callbacks.to_a.sort}=>[([:k rbtrans:v]   {"def #{k}(bind)\n#{v}\nend\n"})*:x ]
+	{@@callbacks.to_a.sort}=>[([:k :v]   {"def #{k}(bind)\n#{v}\nend\n"})*:x ]
 	{s+=x*""}
 	{s+="\nend"; "rb_eval_string(#{s.inspect});"}
 	
@@ -105,4 +105,6 @@ failobj=rb_eval_string(\"FAIL\");
 	failwrap(s) = {"#{s} FAILTEST(#{@@faillabel});" }
 
 	rw(word,prc) = {@@faillabel}:rwo {@@faillabel=word } apply(prc):x {@@faillabel=rwo; x }
+	
+	addcallback(s) = {s}=>rbtrans:s {addcallback2(s)} 
 }
