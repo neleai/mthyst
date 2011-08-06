@@ -45,7 +45,7 @@ def root_Analyze_Variables2cb_2(bind)
 Rule
 end
 def root_Analyze_Variables2cb_3(bind)
-@variables=Hash.new{|k,v| k[v]=v} ;(@src.locals+@src.args).each{|v| @variables[v[0]]=v}
+@variables=Hash.new{|k,v| k[v]=v} ;(@src.locals+@src.args).each{|w| @variables[w[0]]=w}
 end
 def root_Analyze_Variables2cb_4(bind)
 @locals=@src.locals
@@ -63,7 +63,7 @@ def visit_Analyze_Variables2cb_10(bind)
 @src.self
 end
 def visit_Analyze_Variables2cb_2(bind)
-@src.ary.map{|bind[:a_1]| @variables[bind[:a_1]] }
+@src.ary.map{|aa| @variables[aa] }
 end
 def visit_Analyze_Variables2cb_3(bind)
 @src.ary=connectstring(bind[:a_1].flatten)
@@ -84,7 +84,7 @@ def visit_Analyze_Variables2cb_8(bind)
 Result
 end
 def visit_Analyze_Variables2cb_9(bind)
-@src.vars=@locals.select{|bind[:a_1]| @src.vars.include? bind[:a_1][0].to_sym}.uniq
+@src.vars=@locals.select{|aa| @src.vars.include? aa[0].to_sym}.uniq
 end
 
 end

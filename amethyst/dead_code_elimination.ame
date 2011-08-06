@@ -4,7 +4,7 @@ amethyst Dead_Code_Detector < AmethystOptimizer {
 				| Apply[:name vars_in:var {@@marked+=var} ]
 				| Pass[@var=>vars_in:var {@@marked+=var} @to=>trans]
 				| Act[ @self:this {@@marked<<this if @pred} 
-							 vars_in:var ] -> var.each{|v| @@edges.add(v,this); @@edges.add(this,v)}
+							 vars_in:var ] -> var.each{|w| @@edges.add(w,this); @@edges.add(this,w)}
 				| Set[@name=>vars_in:v {v=v[0]}  @expr=>trans @expr=>vars_in:var  ] -> var.each{|w| @@edges.add(v,w)}
 				| Result[@vars=>[vars_in]:var @self:v] -> var.each{|w| @@edges.add(v,w) }
 				| super 
