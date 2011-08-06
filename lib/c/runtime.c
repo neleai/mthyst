@@ -50,11 +50,11 @@ VALUE ame_anything(VALUE self){
 	VALUE r;
   VALUE src=rb_ivar_get(self,s_src);
   int input=FIX2INT(ame_getpos(self));
+	int len=FIX2INT(ame_getlen(self));
+	if (len<=input) return failobj;
 	if(TYPE(src)==T_STRING){
-		if (RSTRING(src)->len<=input) return failobj;
 		r=rb_str_new(RSTRING(src)->ptr+input,1);
 	}else{
-		if (FIX2INT(rb_funcall(src,rb_intern("size"),0))<=input) return failobj;
 		r= rb_funcall(src,rb_intern("[]"),1,INT2FIX(input));
 	}
 	ame_setpos(self,INT2FIX(input+1));
@@ -112,6 +112,8 @@ void Init_Ame(VALUE self){
 	rb_define_singleton_method(amecore,"new",ame_new,0);
 	rb_define_method(amecore,"pos=",ame_setpos,1);
 	rb_define_method(amecore,"pos",ame_getpos,0);
+	rb_define_method(amecore,"len=",ame_setlen,1);
+	rb_define_method(amecore,"len",ame_getlen,0);
 
 	rb_define_method(amecore,"seq",ame_seq,1);
 	rb_define_method(amecore,"anything",ame_anything,0);

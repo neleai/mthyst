@@ -106,6 +106,7 @@ class AmethystCore
 		print self.class
 		@src=input
 		self.pos=0
+		self.len=input.size
 		time=Time.new
 		r=self.apply(rule)
 		puts "	#{Time.new-time}"
