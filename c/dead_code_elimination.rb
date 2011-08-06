@@ -93,103 +93,79 @@ def vars_in_Dead_Code_Detectorcb_10(bind)
 @src.self
 end
 def vars_in_Dead_Code_Detectorcb_11(bind)
-bind[:ary_1]||=[];_append(bind[:ary_1],bind[:autovar_8])
+bind[:ary_1]||=[];_append(bind[:ary_1],bind[:autovar_6])
 end
 def vars_in_Dead_Code_Detectorcb_12(bind)
-[]
+@marked<<@src.self
 end
 def vars_in_Dead_Code_Detectorcb_13(bind)
-bind[:autovar_9]||=[];_append(bind[:autovar_9],bind[:autovar_10])
+Exp
 end
 def vars_in_Dead_Code_Detectorcb_14(bind)
-Key
+Result
 end
 def vars_in_Dead_Code_Detectorcb_15(bind)
 @src.self
 end
 def vars_in_Dead_Code_Detectorcb_16(bind)
-bind[:ary_1]||=[];_append(bind[:ary_1],bind[:autovar_12])
+bind[:ary_1]||=[];_append(bind[:ary_1],bind[:autovar_9])
 end
 def vars_in_Dead_Code_Detectorcb_17(bind)
-@marked<<@src.self
-end
-def vars_in_Dead_Code_Detectorcb_18(bind)
-[]
-end
-def vars_in_Dead_Code_Detectorcb_19(bind)
-bind[:autovar_13]||=[];_append(bind[:autovar_13],bind[:autovar_14])
-end
-def vars_in_Dead_Code_Detectorcb_2(bind)
-[]
-end
-def vars_in_Dead_Code_Detectorcb_20(bind)
-Exp
-end
-def vars_in_Dead_Code_Detectorcb_21(bind)
-Result
-end
-def vars_in_Dead_Code_Detectorcb_22(bind)
-@src.self
-end
-def vars_in_Dead_Code_Detectorcb_23(bind)
-bind[:ary_1]||=[];_append(bind[:ary_1],bind[:autovar_17])
-end
-def vars_in_Dead_Code_Detectorcb_24(bind)
 Strin
 end
-def vars_in_Dead_Code_Detectorcb_25(bind)
-bind[:ary_1]||=[];_append(bind[:ary_1],bind[:autovar_19])
+def vars_in_Dead_Code_Detectorcb_18(bind)
+bind[:ary_1]||=[];_append(bind[:ary_1],bind[:autovar_11])
 end
-def vars_in_Dead_Code_Detectorcb_26(bind)
+def vars_in_Dead_Code_Detectorcb_19(bind)
 Args
 end
-def vars_in_Dead_Code_Detectorcb_27(bind)
-bind[:ary_1]||=[];_append(bind[:ary_1],bind[:autovar_21])
-end
-def vars_in_Dead_Code_Detectorcb_28(bind)
-Set
-end
-def vars_in_Dead_Code_Detectorcb_29(bind)
-@src.name
-end
-def vars_in_Dead_Code_Detectorcb_3(bind)
+def vars_in_Dead_Code_Detectorcb_2(bind)
 Global
 end
-def vars_in_Dead_Code_Detectorcb_30(bind)
-bind[:ary_1]||=[];_append(bind[:ary_1],bind[:autovar_24])
+def vars_in_Dead_Code_Detectorcb_20(bind)
+bind[:ary_1]||=[];_append(bind[:ary_1],bind[:autovar_13])
 end
-def vars_in_Dead_Code_Detectorcb_31(bind)
+def vars_in_Dead_Code_Detectorcb_21(bind)
+Set
+end
+def vars_in_Dead_Code_Detectorcb_22(bind)
+@src.name
+end
+def vars_in_Dead_Code_Detectorcb_23(bind)
+bind[:ary_1]||=[];_append(bind[:ary_1],bind[:autovar_16])
+end
+def vars_in_Dead_Code_Detectorcb_24(bind)
 Local
 end
-def vars_in_Dead_Code_Detectorcb_32(bind)
+def vars_in_Dead_Code_Detectorcb_25(bind)
 @marked<<@src.self if bind[:name_1]=="_result"
 end
-def vars_in_Dead_Code_Detectorcb_33(bind)
+def vars_in_Dead_Code_Detectorcb_26(bind)
 @src.self
 end
-def vars_in_Dead_Code_Detectorcb_34(bind)
-bind[:ary_1]||=[];_append(bind[:ary_1],bind[:autovar_26])
+def vars_in_Dead_Code_Detectorcb_27(bind)
+bind[:ary_1]||=[];_append(bind[:ary_1],bind[:autovar_18])
 end
-def vars_in_Dead_Code_Detectorcb_35(bind)
-bind[:autovar_1]||=[];_append(bind[:autovar_1],bind[:autovar_6])
+def vars_in_Dead_Code_Detectorcb_3(bind)
+@src.self
 end
 def vars_in_Dead_Code_Detectorcb_4(bind)
-@src.self
+bind[:ary_1]||=[];_append(bind[:ary_1],bind[:autovar_2])
 end
 def vars_in_Dead_Code_Detectorcb_5(bind)
-bind[:ary_1]||=[];_append(bind[:ary_1],bind[:autovar_3])
-end
-def vars_in_Dead_Code_Detectorcb_6(bind)
 @marked<<@src.self
 end
+def vars_in_Dead_Code_Detectorcb_6(bind)
+Act
+end
 def vars_in_Dead_Code_Detectorcb_7(bind)
-[]
+@src.self
 end
 def vars_in_Dead_Code_Detectorcb_8(bind)
-bind[:autovar_4]||=[];_append(bind[:autovar_4],bind[:autovar_5])
+bind[:ary_1]||=[];_append(bind[:ary_1],bind[:autovar_4])
 end
 def vars_in_Dead_Code_Detectorcb_9(bind)
-Act
+Key
 end
 
 end
@@ -203,54 +179,42 @@ def trans_Dead_Code_Deletercb_10(bind)
 @src.self
 end
 def trans_Dead_Code_Deletercb_11(bind)
-[]
-end
-def trans_Dead_Code_Deletercb_12(bind)
-bind[:autovar_5]||=[];_append(bind[:autovar_5],bind[:autovar_6])
-end
-def trans_Dead_Code_Deletercb_13(bind)
 @reachable[bind[:this_1]] ? bind[:this_1] : Act[]
 end
-def trans_Dead_Code_Deletercb_14(bind)
+def trans_Dead_Code_Deletercb_12(bind)
 Set
 end
-def trans_Dead_Code_Deletercb_15(bind)
+def trans_Dead_Code_Deletercb_13(bind)
 @src.name
 end
-def trans_Dead_Code_Deletercb_16(bind)
+def trans_Dead_Code_Deletercb_14(bind)
 @src.expr
 end
-def trans_Dead_Code_Deletercb_17(bind)
+def trans_Dead_Code_Deletercb_15(bind)
 @src.append
 end
-def trans_Dead_Code_Deletercb_18(bind)
+def trans_Dead_Code_Deletercb_16(bind)
 @reachable[bind[:name_1]] ? _Set(bind[:name_1],bind[:expr_1],bind[:append_1]) : bind[:expr_1]
 end
-def trans_Dead_Code_Deletercb_19(bind)
+def trans_Dead_Code_Deletercb_17(bind)
 Result
+end
+def trans_Dead_Code_Deletercb_18(bind)
+@src.self
+end
+def trans_Dead_Code_Deletercb_19(bind)
+@reachable[bind[:this_1]] ? bind[:this_1] : Act[]
 end
 def trans_Dead_Code_Deletercb_2(bind)
 @src.name
 end
 def trans_Dead_Code_Deletercb_20(bind)
-@src.self
-end
-def trans_Dead_Code_Deletercb_21(bind)
-@reachable[bind[:this_1]] ? bind[:this_1] : Act[]
-end
-def trans_Dead_Code_Deletercb_22(bind)
 Local
 end
-def trans_Dead_Code_Deletercb_23(bind)
-[]
-end
-def trans_Dead_Code_Deletercb_24(bind)
-bind[:autovar_11]||=[];_append(bind[:autovar_11],bind[:autovar_12])
-end
-def trans_Dead_Code_Deletercb_25(bind)
+def trans_Dead_Code_Deletercb_21(bind)
 @src.self
 end
-def trans_Dead_Code_Deletercb_26(bind)
+def trans_Dead_Code_Deletercb_22(bind)
 @reachable[bind[:this_1]] ? bind[:this_1] : Act[]
 end
 def trans_Dead_Code_Deletercb_3(bind)
@@ -283,41 +247,29 @@ class Communize_Or < AmethystOptimizer
 def trans_Communize_Orcb_1(bind)
 Or
 end
-def trans_Communize_Orcb_10(bind)
-Seq[{:ary=>bind[:rest_1]}]
-end
-def trans_Communize_Orcb_11(bind)
-bind[:ary_1]||=[];_append(bind[:ary_1],bind[:autovar_9])
-end
-def trans_Communize_Orcb_12(bind)
-bind[:autovar_5]||=[];_append(bind[:autovar_5],bind[:autovar_10])
-end
-def trans_Communize_Orcb_13(bind)
-Seq[bind[:first_1] ,Or[{:ary=>bind[:ary_1]}] ]
-end
 def trans_Communize_Orcb_2(bind)
 Seq
 end
 def trans_Communize_Orcb_3(bind)
-[]
+Seq
 end
 def trans_Communize_Orcb_4(bind)
-bind[:autovar_3]||=[];_append(bind[:autovar_3],bind[:autovar_4])
+(bind[:first_1].isomorphic(bind[:fst_1])) || FAIL
 end
 def trans_Communize_Orcb_5(bind)
 []
 end
 def trans_Communize_Orcb_6(bind)
-Seq
+bind[:autovar_4]||=[];_append(bind[:autovar_4],bind[:autovar_5])
 end
 def trans_Communize_Orcb_7(bind)
-(bind[:first_1].isomorphic(bind[:fst_1])) || FAIL
+Seq[{:ary=>bind[:rest_1]}]
 end
 def trans_Communize_Orcb_8(bind)
-[]
+bind[:ary_1]||=[];_append(bind[:ary_1],bind[:autovar_6])
 end
 def trans_Communize_Orcb_9(bind)
-bind[:autovar_7]||=[];_append(bind[:autovar_7],bind[:autovar_8])
+Seq[bind[:first_1] ,Or[{:ary=>bind[:ary_1]}] ]
 end
 
 end

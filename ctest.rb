@@ -16,7 +16,7 @@ def a2ruby(s)
 	t=AmethystTranslator.new
 	opt=par.parse(:igrammar,s)
 	[AmethystOptimizer2,Analyze_Variables2,Move_Assignments,
-#		Dead_Code_Detector,Dead_Code_Deleter,
+		Dead_Code_Detector,Dead_Code_Deleter,
 		AmethystOptimizer2].each{|p|
 		opt=p.new.parse(:itrans,opt)
 		puts opt.inspect

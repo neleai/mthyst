@@ -15,18 +15,12 @@ def arg_AmethystTranslatorcb_13(bind)
 Local
 end
 def arg_AmethystTranslatorcb_14(bind)
-[]
-end
-def arg_AmethystTranslatorcb_15(bind)
-bind[:autovar_10]||=[];_append(bind[:autovar_10],bind[:autovar_11])
-end
-def arg_AmethystTranslatorcb_16(bind)
 "bind[:#{@src.desc}]"
 end
-def arg_AmethystTranslatorcb_17(bind)
+def arg_AmethystTranslatorcb_15(bind)
 Global
 end
-def arg_AmethystTranslatorcb_18(bind)
+def arg_AmethystTranslatorcb_16(bind)
 "@#{bind[:name_1]}"
 end
 def arg_AmethystTranslatorcb_2(bind)
@@ -246,48 +240,42 @@ def trans_AmethystTranslatorcb_53(bind)
 Local
 end
 def trans_AmethystTranslatorcb_54(bind)
-[]
-end
-def trans_AmethystTranslatorcb_55(bind)
-bind[:autovar_25]||=[];_append(bind[:autovar_25],bind[:autovar_26])
-end
-def trans_AmethystTranslatorcb_56(bind)
 "it=bind[:#{@src.desc}]"
 end
-def trans_AmethystTranslatorcb_57(bind)
+def trans_AmethystTranslatorcb_55(bind)
 Pass
 end
-def trans_AmethystTranslatorcb_58(bind)
+def trans_AmethystTranslatorcb_56(bind)
 'next'
 end
-def trans_AmethystTranslatorcb_59(bind)
+def trans_AmethystTranslatorcb_57(bind)
 @src.to
+end
+def trans_AmethystTranslatorcb_58(bind)
+@src.var
+end
+def trans_AmethystTranslatorcb_59(bind)
+@src.enter
 end
 def trans_AmethystTranslatorcb_6(bind)
 Rule
 end
 def trans_AmethystTranslatorcb_60(bind)
-@src.var
-end
-def trans_AmethystTranslatorcb_61(bind)
-@src.enter
-end
-def trans_AmethystTranslatorcb_62(bind)
 AmethystLambda.new(:AmethystTranslator_trans_lambda5,self,bind)
 end
-def trans_AmethystTranslatorcb_63(bind)
+def trans_AmethystTranslatorcb_61(bind)
 "it=_pass(#{!!bind[:enter_1]},#{bind[:var_1]}){#{bind[:to_1]}}"
 end
-def trans_AmethystTranslatorcb_64(bind)
+def trans_AmethystTranslatorcb_62(bind)
 Cut
 end
-def trans_AmethystTranslatorcb_65(bind)
+def trans_AmethystTranslatorcb_63(bind)
 "@cut=true;it"
 end
-def trans_AmethystTranslatorcb_66(bind)
+def trans_AmethystTranslatorcb_64(bind)
 Stop
 end
-def trans_AmethystTranslatorcb_67(bind)
+def trans_AmethystTranslatorcb_65(bind)
 "@stop=true;it"
 end
 def trans_AmethystTranslatorcb_7(bind)

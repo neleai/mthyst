@@ -249,12 +249,6 @@ def trans_AmethystOptimizercb_63(bind)
 Local
 end
 def trans_AmethystOptimizercb_64(bind)
-[]
-end
-def trans_AmethystOptimizercb_65(bind)
-bind[:autovar_38]||=[];_append(bind[:autovar_38],bind[:autovar_39])
-end
-def trans_AmethystOptimizercb_66(bind)
 @src.self
 end
 def trans_AmethystOptimizercb_7(bind)
