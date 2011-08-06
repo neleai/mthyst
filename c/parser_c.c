@@ -129,7 +129,15 @@ VALUE AmethystParser_atomicHostExpr(VALUE self ){VALUE vals[0]; VALUE bind=rb_ha
 
 it=CALL(atomicHostExpr_AmethystParsercb_1,1,bind); 
  BSET(autovar_1,it); VALUE oldinput1; while(1){oldinput1=IGET(input); VALUE oldinput2=IGET(input);
-   it=CALL(endline,0 ); FAILTEST(reject1); x=1; goto accept1;  reject1: x=0; accept1: it=Qnil; ISET(input,oldinput2); if (x==1) goto break1;  it=CALL(anything,0 ); FAILTEST(break1);
+alt1_1: ISET(input,oldinput2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
+   it=CALL(endline,0 ); FAILTEST(alt1_2);ISET(cut,Qtrue);  it=CALL(fails,0 ); FAILTEST(alt1_2); 
+ISET(cut,Qnil);goto accept1;
+alt1_2: ISET(input,oldinput2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
+   it=CALL(empty,0 ); FAILTEST(alt1_3); 
+ISET(cut,Qnil);goto accept1;
+  alt1_3:  ISET(input,oldinput2); goto break1;
+ accept1:;
+  it=CALL(anything,0 ); FAILTEST(break1);
  BSET(autovar_2,it); it=CALL(atomicHostExpr_AmethystParsercb_2,1,bind);  if (IGET(stop)!=Qnil){{oldinput1=IGET(input);goto break1;} } } break1: ISET(stop,Qnil);  ISET(input,oldinput1); it=BGET(autovar_1);
  BSET(s_1,it); it=CALL(atomicHostExpr_AmethystParsercb_3,1,bind); 
  BSET(autovar_3,it); VALUE oldinput3=IGET(input);  VALUE oldsrc1=IGET(src); int fail1=0;
@@ -231,9 +239,25 @@ it=CALL(igrammar_AmethystParsercb_1,1,bind);
 alt1_1: ISET(input,oldinput2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
  it=CALL(igrammar_AmethystParsercb_2,1,bind); 
  BSET(autovar_2,it); VALUE oldinput3=IGET(input);
-  arg0=CALL(igrammar_AmethystParsercb_3,1,bind); it=CALL(seq,1 ,arg0); FAILTEST(reject1); x=1; goto accept2;  reject1: x=0; accept2: it=Qnil; ISET(input,oldinput3); if (x==1) goto alt1_2;  it=CALL(anything,0 ); FAILTEST(alt1_2);
+alt2_1: ISET(input,oldinput3);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt1_2;}
+  arg0=CALL(igrammar_AmethystParsercb_3,1,bind); it=CALL(seq,1 ,arg0); FAILTEST(alt2_2);ISET(cut,Qtrue);  it=CALL(fails,0 ); FAILTEST(alt2_2); 
+ISET(cut,Qnil);goto accept2;
+alt2_2: ISET(input,oldinput3);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt1_2;}
+   it=CALL(empty,0 ); FAILTEST(alt2_3); 
+ISET(cut,Qnil);goto accept2;
+  alt2_3:  ISET(input,oldinput3); goto alt1_2;
+ accept2:;
+  it=CALL(anything,0 ); FAILTEST(alt1_2);
  BSET(autovar_3,it); it=CALL(igrammar_AmethystParsercb_4,1,bind); VALUE oldinput4; while(1){oldinput4=IGET(input); VALUE oldinput5=IGET(input);
-  arg0=CALL(igrammar_AmethystParsercb_5,1,bind); it=CALL(seq,1 ,arg0); FAILTEST(reject2); x=1; goto accept3;  reject2: x=0; accept3: it=Qnil; ISET(input,oldinput5); if (x==1) goto break2;  it=CALL(anything,0 ); FAILTEST(break2);
+alt3_1: ISET(input,oldinput5);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break2;}
+  arg0=CALL(igrammar_AmethystParsercb_5,1,bind); it=CALL(seq,1 ,arg0); FAILTEST(alt3_2);ISET(cut,Qtrue);  it=CALL(fails,0 ); FAILTEST(alt3_2); 
+ISET(cut,Qnil);goto accept3;
+alt3_2: ISET(input,oldinput5);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break2;}
+   it=CALL(empty,0 ); FAILTEST(alt3_3); 
+ISET(cut,Qnil);goto accept3;
+  alt3_3:  ISET(input,oldinput5); goto break2;
+ accept3:;
+  it=CALL(anything,0 ); FAILTEST(break2);
  BSET(autovar_4,it); it=CALL(igrammar_AmethystParsercb_6,1,bind);  if (IGET(stop)!=Qnil){{oldinput4=IGET(input);goto break2;} } } break2: ISET(stop,Qnil);  ISET(input,oldinput4); it=BGET(autovar_2);
  BSET(it_1,it); it=CALL(igrammar_AmethystParsercb_7,1,bind); 
  BSET(autovar_5,it);  
@@ -290,7 +314,15 @@ ISET(cut,Qnil);goto accept1;
 alt1_2: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(modifier_AmethystParsercb_1,1,bind); it=CALL(token,1 ,arg0); FAILTEST(alt1_3);it=CALL(modifier_AmethystParsercb_2,1,bind); 
  BSET(autovar_1,it); VALUE oldinput2; while(1){oldinput2=IGET(input); VALUE oldinput3=IGET(input);
-   it=CALL(endline,0 ); FAILTEST(reject1); x=1; goto accept2;  reject1: x=0; accept2: it=Qnil; ISET(input,oldinput3); if (x==1) goto break1;  it=CALL(anything,0 ); FAILTEST(break1);
+alt2_1: ISET(input,oldinput3);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
+   it=CALL(endline,0 ); FAILTEST(alt2_2);ISET(cut,Qtrue);  it=CALL(fails,0 ); FAILTEST(alt2_2); 
+ISET(cut,Qnil);goto accept2;
+alt2_2: ISET(input,oldinput3);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
+   it=CALL(empty,0 ); FAILTEST(alt2_3); 
+ISET(cut,Qnil);goto accept2;
+  alt2_3:  ISET(input,oldinput3); goto break1;
+ accept2:;
+  it=CALL(anything,0 ); FAILTEST(break1);
  BSET(autovar_2,it); it=CALL(modifier_AmethystParsercb_3,1,bind);  if (IGET(stop)!=Qnil){{oldinput2=IGET(input);goto break1;} } } break1: ISET(stop,Qnil);  ISET(input,oldinput2); it=BGET(autovar_1);
  BSET(c_1,it); it=CALL(modifier_AmethystParsercb_4,1,bind); 
  BSET(_result_1,it);  
@@ -346,8 +378,17 @@ fail: return failobj; }
 VALUE AmethystParser_nr(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 VALUE oldinput1=IGET(input);
-   it=CALL(name,0 ); FAILTEST(reject1); arg0=CALL(nr_AmethystParsercb_1,1,bind);arg1=CALL(nr_AmethystParsercb_2,1,bind); it=CALL(argsOpt,2 ,arg0,arg1); FAILTEST(reject1); arg0=CALL(nr_AmethystParsercb_3,1,bind); it=CALL(token,1 ,arg0); FAILTEST(reject1); x=1; goto accept1;  reject1: x=0; accept1: it=Qnil; ISET(input,oldinput1); if (x==1) goto fail;
- BSET(_result_1,it); it=BGET(_result_1);
+alt1_1: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
+   it=CALL(name,0 ); FAILTEST(alt1_2); arg0=CALL(nr_AmethystParsercb_1,1,bind);arg1=CALL(nr_AmethystParsercb_2,1,bind); it=CALL(argsOpt,2 ,arg0,arg1); FAILTEST(alt1_2); arg0=CALL(nr_AmethystParsercb_3,1,bind); it=CALL(token,1 ,arg0); FAILTEST(alt1_2);ISET(cut,Qtrue);  it=CALL(fails,0 ); FAILTEST(alt1_2);
+ BSET(_result_1,it);  
+ISET(cut,Qnil);goto accept1;
+alt1_2: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
+   it=CALL(empty,0 ); FAILTEST(alt1_3);
+ BSET(_result_1,it);  
+ISET(cut,Qnil);goto accept1;
+  alt1_3:  ISET(input,oldinput1); goto fail;
+ accept1:;
+it=BGET(_result_1);
 return it;
 fail: return failobj; }
 VALUE AmethystParser_number(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -406,72 +447,80 @@ ISET(cut,Qnil);goto accept3;
   alt3_3:  ISET(input,oldinput3); goto alt1_4;
  accept3:;
 VALUE oldinput6; while(1){oldinput6=IGET(input); VALUE oldinput7=IGET(input);
-   it=CALL(_,0 ); FAILTEST(reject2); x=1; goto accept6;  reject2: x=0; accept6: it=Qnil; ISET(input,oldinput7); if (x==1) goto break1;VALUE oldinput8=IGET(input);
-alt5_1: ISET(input,oldinput8);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
-  arg0=CALL(prefixed_AmethystParsercb_10,1,bind); it=CALL(token,1 ,arg0); FAILTEST(alt5_2);  it=CALL(prefixed,0 ); FAILTEST(alt5_2);
+alt5_1: ISET(input,oldinput7);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
+   it=CALL(_,0 ); FAILTEST(alt5_2);ISET(cut,Qtrue);  it=CALL(fails,0 ); FAILTEST(alt5_2); 
+ISET(cut,Qnil);goto accept6;
+alt5_2: ISET(input,oldinput7);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
+   it=CALL(empty,0 ); FAILTEST(alt5_3); 
+ISET(cut,Qnil);goto accept6;
+  alt5_3:  ISET(input,oldinput7); goto break1;
+ accept6:;
+VALUE oldinput8=IGET(input);
+alt6_1: ISET(input,oldinput8);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
+  arg0=CALL(prefixed_AmethystParsercb_10,1,bind); it=CALL(token,1 ,arg0); FAILTEST(alt6_2);  it=CALL(prefixed,0 ); FAILTEST(alt6_2);
  BSET(it_1,it); it=CALL(prefixed_AmethystParsercb_11,1,bind);  
 ISET(cut,Qnil);goto accept7;
-alt5_2: ISET(input,oldinput8);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
-  arg0=CALL(prefixed_AmethystParsercb_12,1,bind); it=CALL(token,1 ,arg0); FAILTEST(alt5_3);  it=CALL(expression,0 ); FAILTEST(alt5_3);
- BSET(it_1,it); it=CALL(prefixed_AmethystParsercb_13,1,bind);  arg0=CALL(prefixed_AmethystParsercb_14,1,bind); it=CALL(token,1 ,arg0); FAILTEST(alt5_3); 
+alt6_2: ISET(input,oldinput8);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
+  arg0=CALL(prefixed_AmethystParsercb_12,1,bind); it=CALL(token,1 ,arg0); FAILTEST(alt6_3);  it=CALL(expression,0 ); FAILTEST(alt6_3);
+ BSET(it_1,it); it=CALL(prefixed_AmethystParsercb_13,1,bind);  arg0=CALL(prefixed_AmethystParsercb_14,1,bind); it=CALL(token,1 ,arg0); FAILTEST(alt6_3); 
 ISET(cut,Qnil);goto accept7;
-alt5_3: ISET(input,oldinput8);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
+alt6_3: ISET(input,oldinput8);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
  VALUE oldinput9=IGET(input);
-alt6_1: ISET(input,oldinput9);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt5_4;}
-  arg0=CALL(prefixed_AmethystParsercb_15,1,bind); it=CALL(token,1 ,arg0); FAILTEST(alt6_2);
+alt7_1: ISET(input,oldinput9);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt6_4;}
+  arg0=CALL(prefixed_AmethystParsercb_15,1,bind); it=CALL(token,1 ,arg0); FAILTEST(alt7_2);
  BSET(one_1,it);  
 ISET(cut,Qnil);goto accept8;
-alt6_2: ISET(input,oldinput9);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt5_4;}
-  arg0=CALL(prefixed_AmethystParsercb_16,1,bind); it=CALL(token,1 ,arg0); FAILTEST(alt6_3);
+alt7_2: ISET(input,oldinput9);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt6_4;}
+  arg0=CALL(prefixed_AmethystParsercb_16,1,bind); it=CALL(token,1 ,arg0); FAILTEST(alt7_3);
  BSET(one_1,it);  
 ISET(cut,Qnil);goto accept8;
-  alt6_3:  ISET(input,oldinput9); goto alt5_4;
+  alt7_3:  ISET(input,oldinput9); goto alt6_4;
  accept8:;
 it=CALL(prefixed_AmethystParsercb_17,1,bind); 
  BSET(from_1,it);  
 ISET(cut,Qnil);goto accept7;
-alt5_4: ISET(input,oldinput8);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
-  arg0=CALL(prefixed_AmethystParsercb_18,1,bind); it=CALL(token,1 ,arg0); FAILTEST(alt5_5);it=CALL(prefixed_AmethystParsercb_19,1,bind); 
+alt6_4: ISET(input,oldinput8);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
+  arg0=CALL(prefixed_AmethystParsercb_18,1,bind); it=CALL(token,1 ,arg0); FAILTEST(alt6_5);it=CALL(prefixed_AmethystParsercb_19,1,bind); 
  BSET(from_1,it);  
 ISET(cut,Qnil);goto accept7;
-alt5_5: ISET(input,oldinput8);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
-  arg0=CALL(prefixed_AmethystParsercb_20,1,bind); it=CALL(token,1 ,arg0); FAILTEST(alt5_6);VALUE oldinput10=IGET(input);
-alt7_1: ISET(input,oldinput10);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt5_6;}
+alt6_5: ISET(input,oldinput8);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
+  arg0=CALL(prefixed_AmethystParsercb_20,1,bind); it=CALL(token,1 ,arg0); FAILTEST(alt6_6);VALUE oldinput10=IGET(input);
+alt8_1: ISET(input,oldinput10);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt6_6;}
  VALUE oldinput11=IGET(input);
-alt8_1: ISET(input,oldinput11);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt7_2;}
-   it=CALL(key,0 ); FAILTEST(alt8_2);
+alt9_1: ISET(input,oldinput11);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt8_2;}
+   it=CALL(key,0 ); FAILTEST(alt9_2);
  BSET(name_1,it);  
 ISET(cut,Qnil);goto accept10;
-alt8_2: ISET(input,oldinput11);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt7_2;}
-   it=CALL(name,0 ); FAILTEST(alt8_3);
+alt9_2: ISET(input,oldinput11);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt8_2;}
+   it=CALL(name,0 ); FAILTEST(alt9_3);
  BSET(name_1,it);  
 ISET(cut,Qnil);goto accept10;
-  alt8_3:  ISET(input,oldinput11); goto alt7_2;
+  alt9_3:  ISET(input,oldinput11); goto alt8_2;
  accept10:;
 VALUE oldinput12=IGET(input);
-alt9_1: ISET(input,oldinput12);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt7_2;}
-  arg0=CALL(prefixed_AmethystParsercb_21,1,bind); it=CALL(seq,1 ,arg0); FAILTEST(alt9_2);it=CALL(prefixed_AmethystParsercb_22,1,bind); 
+alt10_1: ISET(input,oldinput12);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt8_2;}
+  arg0=CALL(prefixed_AmethystParsercb_21,1,bind); it=CALL(seq,1 ,arg0); FAILTEST(alt10_2);it=CALL(prefixed_AmethystParsercb_22,1,bind); 
  BSET(append_1,it);  
 ISET(cut,Qnil);goto accept11;
-alt9_2: ISET(input,oldinput12);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt7_2;}
-   it=CALL(empty,0 ); FAILTEST(alt9_3);it=CALL(prefixed_AmethystParsercb_23,1,bind); 
+alt10_2: ISET(input,oldinput12);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt8_2;}
+   it=CALL(empty,0 ); FAILTEST(alt10_3);it=CALL(prefixed_AmethystParsercb_23,1,bind); 
  BSET(append_1,it);  
 ISET(cut,Qnil);goto accept11;
-  alt9_3:  ISET(input,oldinput12); goto alt7_2;
+  alt10_3:  ISET(input,oldinput12); goto alt8_2;
  accept11:;
 it=CALL(prefixed_AmethystParsercb_24,1,bind); 
  BSET(from_1,it);  
 ISET(cut,Qnil);goto accept9;
-alt7_2: ISET(input,oldinput10);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt5_6;}
-   it=CALL(inlineHostExpr,0 ); FAILTEST(alt7_3);
+alt8_2: ISET(input,oldinput10);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt6_6;}
+   it=CALL(inlineHostExpr,0 ); FAILTEST(alt8_3);
  BSET(e_1,it); it=CALL(prefixed_AmethystParsercb_25,1,bind); 
  BSET(from_1,it);  
 ISET(cut,Qnil);goto accept9;
-  alt7_3:  ISET(input,oldinput10); goto alt5_6;
+  alt8_3:  ISET(input,oldinput10); goto alt6_6;
  accept9:;
  
 ISET(cut,Qnil);goto accept7;
-  alt5_6:  ISET(input,oldinput8); goto break1;
+  alt6_6:  ISET(input,oldinput8); goto break1;
  accept7:;
  if (IGET(stop)!=Qnil){{oldinput6=IGET(input);goto break1;} } } break1: ISET(stop,Qnil);  ISET(input,oldinput6); it=BGET(from_1);
  BSET(_result_1,it);  
@@ -605,13 +654,29 @@ ISET(cut,Qnil);goto accept4;
   alt4_4:  ISET(input,oldinput6); goto alt1_10;
  accept4:;
 VALUE oldinput7=IGET(input);
-   it=CALL(_,0 ); FAILTEST(reject1); x=1; goto accept5;  reject1: x=0; accept5: it=Qnil; ISET(input,oldinput7); if (x==1) goto alt1_10;  it=CALL(name,0 ); FAILTEST(alt1_10);
+alt5_1: ISET(input,oldinput7);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt1_10;}
+   it=CALL(_,0 ); FAILTEST(alt5_2);ISET(cut,Qtrue);  it=CALL(fails,0 ); FAILTEST(alt5_2); 
+ISET(cut,Qnil);goto accept5;
+alt5_2: ISET(input,oldinput7);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt1_10;}
+   it=CALL(empty,0 ); FAILTEST(alt5_3); 
+ISET(cut,Qnil);goto accept5;
+  alt5_3:  ISET(input,oldinput7); goto alt1_10;
+ accept5:;
+  it=CALL(name,0 ); FAILTEST(alt1_10);
  BSET(autovar_9,it); it=CALL(rubyarg_AmethystParsercb_28,1,bind); it=BGET(n_1);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
 alt1_10: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
  VALUE oldinput8=IGET(input);
-   it=CALL(_,0 ); FAILTEST(reject2); x=1; goto accept6;  reject2: x=0; accept6: it=Qnil; ISET(input,oldinput8); if (x==1) goto alt1_11;  it=CALL(key,0 ); FAILTEST(alt1_11);
+alt6_1: ISET(input,oldinput8);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt1_11;}
+   it=CALL(_,0 ); FAILTEST(alt6_2);ISET(cut,Qtrue);  it=CALL(fails,0 ); FAILTEST(alt6_2); 
+ISET(cut,Qnil);goto accept6;
+alt6_2: ISET(input,oldinput8);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt1_11;}
+   it=CALL(empty,0 ); FAILTEST(alt6_3); 
+ISET(cut,Qnil);goto accept6;
+  alt6_3:  ISET(input,oldinput8); goto alt1_11;
+ accept6:;
+  it=CALL(key,0 ); FAILTEST(alt1_11);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
 alt1_11: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}

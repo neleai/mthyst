@@ -103,8 +103,17 @@ fail: return failobj; }
 VALUE Amethyst_eof(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 VALUE oldinput1=IGET(input);
-   it=CALL(anything,0 ); FAILTEST(reject1); x=1; goto accept1;  reject1: x=0; accept1: it=Qnil; ISET(input,oldinput1); if (x==1) goto fail;
- BSET(_result_1,it); it=BGET(_result_1);
+alt1_1: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
+   it=CALL(anything,0 ); FAILTEST(alt1_2);ISET(cut,Qtrue);  it=CALL(fails,0 ); FAILTEST(alt1_2);
+ BSET(_result_1,it);  
+ISET(cut,Qnil);goto accept1;
+alt1_2: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
+   it=CALL(empty,0 ); FAILTEST(alt1_3);
+ BSET(_result_1,it);  
+ISET(cut,Qnil);goto accept1;
+  alt1_3:  ISET(input,oldinput1); goto fail;
+ accept1:;
+it=BGET(_result_1);
 return it;
 fail: return failobj; }
 VALUE Amethyst_exactly(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=rb_hash_new(); BSET(wanted_1,a0); int x;VALUE arg0,arg1,arg2,arg3;VALUE it;

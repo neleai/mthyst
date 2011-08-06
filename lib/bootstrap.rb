@@ -91,8 +91,11 @@ def eof()
 bind={}; 
   it=nil
 
-it=_lookahead(true){it=anything();next FAIL if it==FAIL};return FAIL if it==FAIL
-bind[:_result_1] = it
+it=_or(proc{it=anything();next FAIL if it==FAIL
+@cut=true;it
+it=fails();next FAIL if it==FAIL
+bind[:_result_1] = it },proc{it=empty();next FAIL if it==FAIL
+bind[:_result_1] = it});return FAIL if it==FAIL
 it=bind[:_result_1]  
 end
 def exactly(a0)
@@ -103,6 +106,14 @@ it=anything();return FAIL if it==FAIL
 bind[:got_1] = it
 it=(bind[:wanted_1] == bind[:got_1])||FAIL;return FAIL if it==FAIL
 it=bind[:wanted_1]
+bind[:_result_1] = it
+it=bind[:_result_1]  
+end
+def fails()
+bind={}; 
+  it=nil
+
+it=(false)||FAIL;return FAIL if it==FAIL
 bind[:_result_1] = it
 it=bind[:_result_1]  
 end
@@ -351,7 +362,9 @@ bind={};
 it=([])
 bind[:autovar_1] = it
 while true
-bind[:autovar_3]=@input;r=it=_lookahead(true){it=endline();next FAIL if it==FAIL};break FAIL if it==FAIL
+bind[:autovar_3]=@input;r=it=_or(proc{it=endline();next FAIL if it==FAIL
+@cut=true;it
+it=fails();next FAIL if it==FAIL },proc{it=empty();next FAIL if it==FAIL});break FAIL if it==FAIL
 it=anything();break FAIL if it==FAIL
 bind[:autovar_2] = it
 it=(bind[:autovar_1]||=[];_append(bind[:autovar_1],bind[:autovar_2])) 
@@ -472,12 +485,16 @@ bind[:autovar_1] = it
 while true
 bind[:autovar_7]=@input;r=it=_or(proc{it=([])
 bind[:autovar_2] = it
-it=_lookahead(true){it=seq("amethyst");next FAIL if it==FAIL};next FAIL if it==FAIL
+it=_or(proc{it=seq("amethyst");next FAIL if it==FAIL
+@cut=true;it
+it=fails();next FAIL if it==FAIL },proc{it=empty();next FAIL if it==FAIL});next FAIL if it==FAIL
 it=anything();next FAIL if it==FAIL
 bind[:autovar_3] = it
 it=(bind[:autovar_2]||=[];_append(bind[:autovar_2],bind[:autovar_3]))
 while true
-bind[:autovar_5]=@input;r=it=_lookahead(true){it=seq("amethyst");next FAIL if it==FAIL};break FAIL if it==FAIL
+bind[:autovar_5]=@input;r=it=_or(proc{it=seq("amethyst");next FAIL if it==FAIL
+@cut=true;it
+it=fails();next FAIL if it==FAIL },proc{it=empty();next FAIL if it==FAIL});break FAIL if it==FAIL
 it=anything();break FAIL if it==FAIL
 bind[:autovar_4] = it
 it=(bind[:autovar_2]||=[];_append(bind[:autovar_2],bind[:autovar_4])) 
@@ -539,7 +556,9 @@ bind[:_result_1] = it},proc{it=token("#");next FAIL if it==FAIL
 it=([])
 bind[:autovar_1] = it
 while true
-bind[:autovar_3]=@input;r=it=_lookahead(true){it=endline();next FAIL if it==FAIL};break FAIL if it==FAIL
+bind[:autovar_3]=@input;r=it=_or(proc{it=endline();next FAIL if it==FAIL
+@cut=true;it
+it=fails();next FAIL if it==FAIL },proc{it=empty();next FAIL if it==FAIL});break FAIL if it==FAIL
 it=anything();break FAIL if it==FAIL
 bind[:autovar_2] = it
 it=(bind[:autovar_1]||=[];_append(bind[:autovar_1],bind[:autovar_2])) 
@@ -600,10 +619,13 @@ def nr()
 bind={}; 
   it=nil
 
-it=_lookahead(true){it=name();next FAIL if it==FAIL
+it=_or(proc{it=name();next FAIL if it==FAIL
 it=argsOpt('(',')');next FAIL if it==FAIL
-it=token("=");next FAIL if it==FAIL };return FAIL if it==FAIL
-bind[:_result_1] = it
+it=token("=");next FAIL if it==FAIL
+@cut=true;it
+it=fails();next FAIL if it==FAIL
+bind[:_result_1] = it },proc{it=empty();next FAIL if it==FAIL
+bind[:_result_1] = it});return FAIL if it==FAIL
 it=bind[:_result_1]  
 end
 def number()
@@ -647,7 +669,9 @@ it=_or(proc{it=token(".");next FAIL if it==FAIL},proc{it=empty();next FAIL if it
 it=(Apply["anything"])
 bind[:from_1] = it });next FAIL if it==FAIL
 while true
-bind[:autovar_1]=@input;r=it=_lookahead(true){it=_();next FAIL if it==FAIL};break FAIL if it==FAIL
+bind[:autovar_1]=@input;r=it=_or(proc{it=_();next FAIL if it==FAIL
+@cut=true;it
+it=fails();next FAIL if it==FAIL },proc{it=empty();next FAIL if it==FAIL});break FAIL if it==FAIL
 it=_or(proc{it=token("=>");next FAIL if it==FAIL
 it=prefixed();next FAIL if it==FAIL
 bind[:it_1] = it
@@ -776,12 +800,16 @@ bind[:_result_1] = it},proc{it=seq("..");next FAIL if it==FAIL
 bind[:_result_1] = it},proc{it=_or(proc{it=token(":@");next FAIL if it==FAIL
 bind[:n_1] = it},proc{it=regch(/[$.:]/);next FAIL if it==FAIL
 bind[:n_1] = it},proc{it=empty();next FAIL if it==FAIL});next FAIL if it==FAIL
-it=_lookahead(true){it=_();next FAIL if it==FAIL};next FAIL if it==FAIL
+it=_or(proc{it=_();next FAIL if it==FAIL
+@cut=true;it
+it=fails();next FAIL if it==FAIL },proc{it=empty();next FAIL if it==FAIL});next FAIL if it==FAIL
 it=name();next FAIL if it==FAIL
 bind[:autovar_11] = it
 it=(bind[:n_1]||=[];_append(bind[:n_1],bind[:autovar_11]))
 it=bind[:n_1]
-bind[:_result_1] = it },proc{it=_lookahead(true){it=_();next FAIL if it==FAIL};next FAIL if it==FAIL
+bind[:_result_1] = it },proc{it=_or(proc{it=_();next FAIL if it==FAIL
+@cut=true;it
+it=fails();next FAIL if it==FAIL },proc{it=empty();next FAIL if it==FAIL});next FAIL if it==FAIL
 it=key();next FAIL if it==FAIL
 bind[:_result_1] = it },proc{it=regch(/[^`{}()'"\[\]]/);next FAIL if it==FAIL
 bind[:_result_1] = it});return FAIL if it==FAIL

@@ -110,9 +110,11 @@ end
 
 class <<Lookahead
   def [](e,neg=nil)
-    l=Lookahead.create(e)
-    l.neg=neg
-    l
+		if neg
+			Or[Seq[e,Cut[],Apply["fails"]],Seq[Apply["empty"]]]
+		else
+    	Lookahead.create(e)
+		end
   end
 end
 class Local
