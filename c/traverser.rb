@@ -12,18 +12,21 @@ def traverse_Traversercb_4(bind)
 @src.self
 end
 def traverse_item_Traversercb_1(bind)
-@changed=true
-end
-def traverse_item_Traversercb_2(bind)
-Array
-end
-def traverse_item_Traversercb_3(bind)
 []
 end
+def traverse_item_Traversercb_2(bind)
+@changed=true
+end
+def traverse_item_Traversercb_3(bind)
+Array
+end
 def traverse_item_Traversercb_4(bind)
-bind[:autovar_2]||=[];_append(bind[:autovar_2],bind[:autovar_3])
+[]
 end
 def traverse_item_Traversercb_5(bind)
+_append(bind[:autovar_1],bind[:autovar_3])
+end
+def traverse_item_Traversercb_6(bind)
 AmethystAST
 end
 

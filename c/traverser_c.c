@@ -40,19 +40,20 @@ return it;
 fail: return failobj; }
 VALUE Traverser_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-int oldpos1=ame_getpos(self);
+it=CALL(traverse_item_Traversercb_1,1,bind); 
+ BSET(autovar_1,it); int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=CALL(visit,0 ); FAILTEST(alt1_2);
- BSET(a_1,it); it=CALL(traverse_item_Traversercb_1,1,bind); it=BGET(a_1);
+ BSET(a_1,it); it=CALL(traverse_item_Traversercb_2,1,bind); it=BGET(a_1);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  arg0=CALL(traverse_item_Traversercb_2,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_3);
- BSET(autovar_1,it); int oldpos2=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
-ame_setsrc(self,BGET(autovar_1)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
- it=CALL(traverse_item_Traversercb_3,1,bind); 
- BSET(autovar_2,it); int oldpos3; while(1){oldpos3=ame_getpos(self);   it=CALL(traverse_item,0 ); FAILTEST(break1);
- BSET(autovar_3,it); it=CALL(traverse_item_Traversercb_4,1,bind);  if (IGET(stop)!=Qnil){{oldpos3=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos3); it=BGET(autovar_2);
+  arg0=CALL(traverse_item_Traversercb_3,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_3);
+ BSET(autovar_2,it); int oldpos2=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
+ame_setsrc(self,BGET(autovar_2)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
+ it=CALL(traverse_item_Traversercb_4,1,bind); 
+ BSET(autovar_1,it); int oldpos3; while(1){oldpos3=ame_getpos(self);   it=CALL(traverse_item,0 ); FAILTEST(break1);
+ BSET(autovar_3,it); it=CALL(traverse_item_Traversercb_5,1,bind);  if (IGET(stop)!=Qnil){{oldpos3=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos3); it=BGET(autovar_1);
  BSET(_result_1,it); 
 	if (CALL(eof,0)==failobj) goto pass1;
 	goto success1;
@@ -62,7 +63,7 @@ ame_setsrc(self,BGET(autovar_1)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb
  
 ISET(cut,Qnil);goto accept1;
 alt1_3: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  arg0=CALL(traverse_item_Traversercb_5,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_4);
+  arg0=CALL(traverse_item_Traversercb_6,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_4);
  BSET(autovar_4,it); int oldpos4=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
 ame_setsrc(self,BGET(autovar_4)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=CALL(traverse,0 ); FAILTEST(pass2);
