@@ -436,13 +436,13 @@ def trans_AmethystCTranslatorcb_84(bind)
 AmethystLambda.new(:AmethystCTranslator_trans_lambda4,self,bind)
 end
 def trans_AmethystCTranslatorcb_85(bind)
-"int #{bind[:oldpos_1]}=ame_getpos(self); int #{bind[:oldlen_1]}=ame_getlen(self); VALUE #{bind[:oldsrc_1]}=#{iget("src")}; int #{bind[:fail_1]}=0;
-#{iset("src",@src.enter ? bget(@src.var.desc) : "rb_ary_new3(1,#{bget(@src.var.desc)})")}; ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(#{iget("src")},rb_intern(\"size\"),0)));
+"int #{bind[:oldpos_1]}=ame_getpos(self); int #{bind[:oldlen_1]}=ame_getlen(self); VALUE #{bind[:oldsrc_1]}=ame_getsrc(self); int #{bind[:fail_1]}=0;
+ame_setsrc(self,#{@src.enter ? bget(@src.var.desc) : "rb_ary_new3(1,#{bget(@src.var.desc)})"}); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern(\"size\"),0)));
  #{bind[:to_1]}
 	if (CALL(eof,0)==failobj) goto #{bind[:pass_1]};
 	goto #{bind[:success_1]};
 	#{bind[:pass_1]}: #{bind[:fail_1]}=1;
-	#{bind[:success_1]}: #{iset("src",bind[:oldsrc_1])}; ame_setpos(self,#{bind[:oldpos_1]}); ame_setlen(self,#{bind[:oldlen_1]});
+	#{bind[:success_1]}: ame_setsrc(self,#{bind[:oldsrc_1]}); ame_setpos(self,#{bind[:oldpos_1]}); ame_setlen(self,#{bind[:oldlen_1]});
 	if(#{bind[:fail_1]}) goto #{@faillabel};
 " 
 end

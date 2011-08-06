@@ -13,3 +13,6 @@ VALUE failobj;
 #define INSI(var) printf("%s\n",RSTRING(rb_funcall(IGET(var),rb_intern("inspect"),0))->ptr);
 #define INSS printf("%s\n",RSTRING(rb_funcall(self,rb_intern("inspect"),0))->ptr);
 #define INSBI printf("%s\n",RSTRING(rb_funcall(bind,rb_intern("inspect"),0))->ptr);
+
+VALUE ame_setsrc(VALUE self,VALUE val);
+VALUE ame_getsrc(VALUE self);
