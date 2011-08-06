@@ -8,7 +8,6 @@ split to traverser and modifier and dataflow_analyzer
 make AmethystModule +include to mimic ruby module
 make position handling explicit as in amethyst/position.ame
 make eof in Pass explicit
-make passing by it explicit
 refactor args
 initialize append variables as []
 generic parent(Class) in tree traversal

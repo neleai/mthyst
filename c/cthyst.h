@@ -5,7 +5,7 @@ VALUE failobj;
 #define ISET(s,e) rb_ivar_set(self,rb_intern("@" #s), e)
 #define IGET(s)   rb_ivar_get(self,rb_intern("@" #s))
 #define CALL(x,...) rb_funcall(self,rb_intern(#x) ,__VA_ARGS__)
-#define FAILTEST(lab) if (BGET(it)==failobj) goto lab;
+#define FAILTEST(lab) if (it==failobj) goto lab;
 #define HEADER VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
 
 #define INSV(val)  printf("%s\n",RSTRING(rb_funcall(val,rb_intern("inspect"),0))->ptr);

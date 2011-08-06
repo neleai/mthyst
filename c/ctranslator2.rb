@@ -53,7 +53,7 @@ def addlambda_AmethystCTranslatorcb_4(bind)
 h="VALUE #{bind[:lambd_1]}(VALUE self,VALUE bind)"
             @header<<h+";"
 						@defmethods<<"rb_define_method(cls_#{@grammar},\"#{bind[:lambd_1]}\",#{bind[:lambd_1]},1);"
-            @lambdas<< h+"{VALUE vals[0]; /*todo unify with rule and get args*/  int x;VALUE arg0,arg1,arg2,arg3;\n#{bind[:body_1]}\nreturn #{bget("it")};\nfail: return failobj; }" 
+            @lambdas<< h+"{VALUE vals[0]; /*todo unify with rule and get args*/  int x;VALUE it;VALUE arg0,arg1,arg2,arg3;\n#{bind[:body_1]}\nreturn it;\nfail: return failobj; }" 
 end
 def addlambda_AmethystCTranslatorcb_5(bind)
 "AmethystLambda.new(:#{bind[:lambd_1]},self,bind)" 
@@ -210,7 +210,8 @@ def trans_AmethystCTranslatorcb_18(bind)
 h="VALUE #{@grammar}_#{bind[:name_1]}(VALUE self #{@src.args.size.times.map{|i| ",VALUE a#{i}"}})" 
 						@header<<h+";"
 						@defmethods<< "rb_define_method(cls_#{@grammar},\"#{@src.name}\",#{@grammar}_#{@src.name},#{@src.args.size});"
-						h+"{VALUE vals[#{@src.args.size}]; VALUE bind=rb_hash_new(); #{@src.args.size.times.map{|i| bset(@src.args[i].desc,"a#{i}")+";"}} int x;VALUE arg0,arg1,arg2,arg3;\n#{bind[:body_1]}\nreturn #{bget("it")};\nfail: return failobj; }" 
+						h+"{VALUE vals[#{@src.args.size}]; VALUE bind=rb_hash_new(); #{@src.args.size.times.map{|i| bset(@src.args[i].desc,"a#{i}")+";"}} int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+\n#{bind[:body_1]}\nreturn it;\nfail: return failobj; }" 
 end
 def trans_AmethystCTranslatorcb_19(bind)
 Act
@@ -228,7 +229,7 @@ def trans_AmethystCTranslatorcb_22(bind)
 addcallback(@src.pred ? ["(",bind[:it_1],") || FAIL"] : bind[:it_1])
 end
 def trans_AmethystCTranslatorcb_23(bind)
-"#{bset("it","CALL(#{bind[:cbno_1]},1,bind)")}; #{@src.pred ? "FAILTEST(#{@faillabel});" :"" }"
+"it=CALL(#{bind[:cbno_1]},1,bind); #{@src.pred ? "FAILTEST(#{@faillabel});" :"" }"
 end
 def trans_AmethystCTranslatorcb_24(bind)
 Apply
@@ -237,7 +238,7 @@ def trans_AmethystCTranslatorcb_25(bind)
 "super"
 end
 def trans_AmethystCTranslatorcb_26(bind)
-rule=@ruletable[@rulename];  failwrap(rule.args.size.times.map{|i|"vals[#{i}]=#{bget(rule.args[i].desc)};"}*""+ bset("it","rb_call_super(#{rule.args.size},vals)")+";")
+rule=@ruletable[@rulename];  failwrap(rule.args.size.times.map{|i|"vals[#{i}]=#{bget(rule.args[i].desc)};"}*""+ "it=rb_call_super(#{rule.args.size},vals);")
 end
 def trans_AmethystCTranslatorcb_27(bind)
 Apply
@@ -255,7 +256,7 @@ def trans_AmethystCTranslatorcb_30(bind)
 bind[:autovar_15]||=[];_append(bind[:autovar_15],bind[:autovar_16])
 end
 def trans_AmethystCTranslatorcb_31(bind)
-" #{bind[:args_1].size.times.map{|a|"arg#{a}=CALL(#{bind[:args_1][a]},1,bind);"}} #{bset("it","CALL(#{bind[:name_1]},#{bind[:args_1].size} #{bind[:args_1].size.times.map{|a|",arg#{a}"}})")};"
+" #{bind[:args_1].size.times.map{|a|"arg#{a}=CALL(#{bind[:args_1][a]},1,bind);"}} it=CALL(#{bind[:name_1]},#{bind[:args_1].size} #{bind[:args_1].size.times.map{|a|",arg#{a}"}});"
 end
 def trans_AmethystCTranslatorcb_32(bind)
 Seq
@@ -276,7 +277,7 @@ def trans_AmethystCTranslatorcb_37(bind)
 @src.expr
 end
 def trans_AmethystCTranslatorcb_38(bind)
-"#{bind[:e_1]}\n #{bset(@src.name.desc,bget("it"))}; " 
+"#{bind[:e_1]}\n #{bset(@src.name.desc,"it")}; " 
 end
 def trans_AmethystCTranslatorcb_39(bind)
 Or
@@ -378,7 +379,7 @@ def trans_AmethystCTranslatorcb_68(bind)
 AmethystLambda.new(:AmethystCTranslator_trans_lambda3,self,bind)
 end
 def trans_AmethystCTranslatorcb_69(bind)
-"VALUE #{bind[:oldinput_1]}=#{iget("input")};\n #{bind[:t_1]} x=1; goto #{bind[:accept_1]};  #{bind[:reject_1]}: x=0; #{bind[:accept_1]}: #{bset("it","Qnil")}; #{iset("input",bind[:oldinput_1])}; if (x==#{@src.neg ? 1 : 0}) goto #{@faillabel};"
+"VALUE #{bind[:oldinput_1]}=#{iget("input")};\n #{bind[:t_1]} x=1; goto #{bind[:accept_1]};  #{bind[:reject_1]}: x=0; #{bind[:accept_1]}: it=Qnil; #{iset("input",bind[:oldinput_1])}; if (x==#{@src.neg ? 1 : 0}) goto #{@faillabel};"
 end
 def trans_AmethystCTranslatorcb_7(bind)
 mktable(@src.rules)
@@ -387,7 +388,7 @@ def trans_AmethystCTranslatorcb_70(bind)
 Local
 end
 def trans_AmethystCTranslatorcb_71(bind)
-bset("it",bget(@src.desc))+";" 
+"it=#{bget(@src.desc)};" 
 end
 def trans_AmethystCTranslatorcb_72(bind)
 Result
@@ -398,7 +399,7 @@ end
 def trans_AmethystCTranslatorcb_74(bind)
 bind[:s_1]="#{@src.name}.create(#{bind[:argss_1]} {#{@src.vars.map{|l| ":#{l[0]}=>bind[:#{l.desc}]" }.sort*","} })"
 					bind[:cbno_1]=addcallback(bind[:s_1])
-					"#{bset("it","CALL(#{bind[:cbno_1]},1,bind)")};"
+					"it=CALL(#{bind[:cbno_1]},1,bind);"
 				
 end
 def trans_AmethystCTranslatorcb_75(bind)
