@@ -56,8 +56,8 @@ amethyst AmethystCTranslator < Amethyst {
 	{s+="\nend"; s}
 	
 	trans =  Grammar[ {@@grammar=@name;@@parent=@parent} {@@lambdas=[]} {@@defmethods=[]} {@@faillabel="fail"} {@@callbacks={}} {mktable(@rules)} {@@header=[]} @rules=>[trans*]:t rbcode:rbcode
-				    { s="VALUE cls_#{@name};\n"
-							s<<@@header.sort*"\n"+"\n"
+				    { "VALUE cls_#{@name};\n" }:s
+						{	s<<@@header.sort*"\n"+"\n"
 							s<<t.sort*"\n"
 							s<<@@lambdas*"\n"
         		  init="\n cls_#{@name}=rb_define_class(\"#{@name}\",rb_const_get(rb_cObject,rb_intern(\"#{@@parent}\"))); 
@@ -70,7 +70,7 @@ failobj=rb_eval_string(\"FAIL\");
 						@@header<<h+";"
 						@@defmethods<< "rb_define_method(cls_#{@@grammar},\"#{@name}\",#{@@grammar}_#{@name},#{@args.size});"
 						h+"{VALUE vals[#{@args.size}]; VALUE bind=rb_hash_new(); #{@args.size.times.map{|i| bset(@args[i].desc,"a#{i}")+";"}} int x;VALUE arg0,arg1,arg2,arg3;\n#{body}\nreturn #{bget(Local["_result",@bnding].desc)};\nfail: return failobj; }" } ]
-				| Act[ .*:{addcallback(@pred ? ["(",it,") || FAIL"]:it)}:cbno {"#{bset("it","CALL(#{cbno},1,bind)")}; #{@pred ? "FAILTEST(#{@@faillabel});" :"" }"} ]
+				| Act[ .*:{addcallback(@pred ? ["(",it,") || FAIL"] : it)}:cbno {"#{bset("it","CALL(#{cbno},1,bind)")}; #{@pred ? "FAILTEST(#{@@faillabel});" :"" }"} ]
 				| Apply[ .=>["super"] {rule=@@ruletable[@@rulename];  failwrap(rule.args.size.times.map{|i|"vals[#{i}]=#{bget(rule.args[i].desc)};"}*""+ bset("it","rb_call_super(#{rule.args.size},vals)")+";")} ]
 				| Apply[:name (.:{addcallback(it)}*):args 
             failwrap(" #{args.size.times.map{|a|"arg#{a}=CALL(#{args[a]},1,bind);"}} #{bset("it","CALL(#{name},#{args.size} #{args.size.times.map{|a|",arg#{a}"}})")};")]

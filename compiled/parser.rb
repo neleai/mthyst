@@ -231,7 +231,7 @@ bind[:_result_1] = it
 it=bind[:_result_1]
 bind[:c_2] = it
 it=("\\#{bind[:c_2]}")
-bind[:_result_2] = it },proc{it=_args('#{','}');next FAIL if it==FAIL
+bind[:_result_2] = it },proc{it=_args('#'+'{','}');next FAIL if it==FAIL
 bind[:_result_2] = it},proc{it=anything();next FAIL if it==FAIL
 bind[:c_1] = it
 it=(bind[:c_1].is_a? String )||FAIL;next FAIL if it==FAIL

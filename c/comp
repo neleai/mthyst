@@ -11,3 +11,4 @@ comp detect_variables2
 comp traverser
 comp dead_code_elimination
 comp translator
+comp ctranslator2
