@@ -319,13 +319,13 @@ def trans_AmethystCTranslatorcb_5(bind)
 @faillabel="fail"
 end
 def trans_AmethystCTranslatorcb_50(bind)
-bind[:s_1]="VALUE #{bind[:oldinput_1]}=#{iget("input")};\n"
+bind[:s_1]="VALUE #{bind[:oldinput_1]}=ame_getpos(self);\n"
 end
 def trans_AmethystCTranslatorcb_51(bind)
-bind[:s_1]+=map_index(bind[:t_1]){|i| "#{bind[:alt_1]}_#{i+1}: #{iset("input",bind[:oldinput_1])};if (#{iget("cut")}!=Qnil) {#{iset("cut","Qnil")}; goto #{bind[:fail_1]};}\n #{bind[:t_1][i]} \n#{iset("cut","Qnil")};goto #{bind[:accept_1]};\n"}*""
+bind[:s_1]+=map_index(bind[:t_1]){|i| "#{bind[:alt_1]}_#{i+1}: ame_setpos(self,#{bind[:oldinput_1]});if (#{iget("cut")}!=Qnil) {#{iset("cut","Qnil")}; goto #{bind[:fail_1]};}\n #{bind[:t_1][i]} \n#{iset("cut","Qnil")};goto #{bind[:accept_1]};\n"}*""
 end
 def trans_AmethystCTranslatorcb_52(bind)
-"#{bind[:s_1]}  #{bind[:alt_1]}_#{bind[:altno_1]+1}:  #{iset("input",bind[:oldinput_1])}; goto #{bind[:fail_1]};\n #{bind[:accept_1]}:;\n"
+"#{bind[:s_1]}  #{bind[:alt_1]}_#{bind[:altno_1]+1}:  ame_setpos(self,#{bind[:oldinput_1]}); goto #{bind[:fail_1]};\n #{bind[:accept_1]}:;\n"
 end
 def trans_AmethystCTranslatorcb_53(bind)
 Cut
@@ -358,7 +358,7 @@ def trans_AmethystCTranslatorcb_61(bind)
 AmethystLambda.new(:AmethystCTranslator_trans_lambda2,self,bind)
 end
 def trans_AmethystCTranslatorcb_62(bind)
-"VALUE #{bind[:oldinput_1]}; while(1){#{bind[:oldinput_1]}=#{iget("input")}; #{bind[:t_1]} if (#{iget("stop")}!=Qnil){{#{bind[:oldinput_1]}=#{iget("input")};goto #{bind[:brk_1]};} } } #{bind[:brk_1]}: #{iset("stop","Qnil")};  #{iset("input",bind[:oldinput_1])}; "
+"VALUE #{bind[:oldinput_1]}; while(1){#{bind[:oldinput_1]}=ame_getpos(self); #{bind[:t_1]} if (#{iget("stop")}!=Qnil){{#{bind[:oldinput_1]}=ame_getpos(self);goto #{bind[:brk_1]};} } } #{bind[:brk_1]}: #{iset("stop","Qnil")};  ame_setpos(self,#{bind[:oldinput_1]}); "
 end
 def trans_AmethystCTranslatorcb_63(bind)
 Lookahead
@@ -379,7 +379,7 @@ def trans_AmethystCTranslatorcb_68(bind)
 AmethystLambda.new(:AmethystCTranslator_trans_lambda3,self,bind)
 end
 def trans_AmethystCTranslatorcb_69(bind)
-"VALUE #{bind[:oldinput_1]}=#{iget("input")};\n #{bind[:t_1]} x=1; goto #{bind[:accept_1]};  #{bind[:reject_1]}: x=0; #{bind[:accept_1]}: it=Qnil; #{iset("input",bind[:oldinput_1])}; if (x==#{@src.neg ? 1 : 0}) goto #{@faillabel};"
+"VALUE #{bind[:oldinput_1]}=ame_getpos(self);\n #{bind[:t_1]} x=1; goto #{bind[:accept_1]};  #{bind[:reject_1]}: x=0; #{bind[:accept_1]}: it=Qnil; ame_setpos(self,#{bind[:oldinput_1]}); if (x==#{@src.neg ? 1 : 0}) goto #{@faillabel};"
 end
 def trans_AmethystCTranslatorcb_7(bind)
 mktable(@src.rules)
@@ -433,13 +433,13 @@ def trans_AmethystCTranslatorcb_83(bind)
 AmethystLambda.new(:AmethystCTranslator_trans_lambda4,self,bind)
 end
 def trans_AmethystCTranslatorcb_84(bind)
-"VALUE #{bind[:oldinput_1]}=#{iget("input")};  VALUE #{bind[:oldsrc_1]}=#{iget("src")}; int #{bind[:fail_1]}=0;
-#{iset("src",@src.enter ? bget(@src.var.desc) : "rb_ary_new3(1,#{bget(@src.var.desc)})")}; #{iset("input","INT2FIX(0)")};
+"VALUE #{bind[:oldinput_1]}=ame_getpos(self);  VALUE #{bind[:oldsrc_1]}=#{iget("src")}; int #{bind[:fail_1]}=0;
+#{iset("src",@src.enter ? bget(@src.var.desc) : "rb_ary_new3(1,#{bget(@src.var.desc)})")}; ame_setpos(self,INT2FIX(0));
  #{bind[:to_1]}
 	if (CALL(eof,0)==failobj) goto #{bind[:pass_1]};
 	goto #{bind[:success_1]};
 	#{bind[:pass_1]}: #{bind[:fail_1]}=1;
-	#{bind[:success_1]}: #{iset("src",bind[:oldsrc_1])}; #{iset("input",bind[:oldinput_1])};
+	#{bind[:success_1]}: #{iset("src",bind[:oldsrc_1])}; ame_setpos(self,#{bind[:oldinput_1]});
 	if(#{bind[:fail_1]}) goto #{@faillabel};
 " 
 end

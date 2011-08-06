@@ -2,15 +2,23 @@
 VALUE amecore;VALUE failobj;
 ID s_src,s_input,s_call,s_cut;
 
+VALUE ame_setpos(VALUE self,VALUE val){
+	rb_iv_set(self,"@input",val);
+	return val;
+}
+VALUE ame_getpos(VALUE self){
+	return rb_iv_get(self,"@input");
+}
+
 VALUE ame_seq(VALUE self,VALUE str){
 	int len=RSTRING(str)->len;
 	VALUE src=rb_ivar_get(self,s_src);
 	if (TYPE(src)==T_STRING){
-		int input=FIX2INT(rb_ivar_get(self,s_input));
+		int input=FIX2INT(ame_getpos(self));
 		if (strncmp(RSTRING(src)->ptr+input,RSTRING(str)->ptr,len)) 
 			{ return failobj; }
 		else {
-			rb_ivar_set(self,s_input,INT2FIX(input+len));
+			ame_setpos(self,INT2FIX(input+len));
 			return str;
 		}
 	}else{
@@ -20,7 +28,7 @@ VALUE ame_seq(VALUE self,VALUE str){
 VALUE ame_anything(VALUE self){
 	VALUE r;
   VALUE src=rb_ivar_get(self,s_src);
-  int input=FIX2INT(rb_ivar_get(self,s_input));
+  int input=FIX2INT(ame_getpos(self));
 	if(TYPE(src)==T_STRING){
 		if (RSTRING(src)->len<=input) return failobj;
 		r=rb_str_new(RSTRING(src)->ptr+input,1);
@@ -28,7 +36,7 @@ VALUE ame_anything(VALUE self){
 		if (FIX2INT(rb_funcall(src,rb_intern("size"),0))<=input) return failobj;
 		r= rb_funcall(src,rb_intern("[]"),1,INT2FIX(input));
 	}
-	rb_ivar_set(self,s_input,INT2FIX(input+1));
+	ame_setpos(self,INT2FIX(input+1));
 	return r;
 }
 VALUE ame_lookahead(VALUE self,VALUE neg){
@@ -79,14 +87,6 @@ VALUE ame_new(VALUE clas){
 	VALUE argv[0]; rb_obj_call_init(o,0,argv);
 	return o;
 }
-VALUE ame_setpos(VALUE self,VALUE val){
-	rb_iv_set(self,"@input",val);
-	return val;
-}
-VALUE ame_getpos(VALUE self){
-	return rb_iv_get(self,"@input");
-}
-
 void Init_Ame(VALUE self){
 	s_cut=rb_intern("@cut");	s_src=rb_intern("@src");	s_input=rb_intern("@input");	s_call=rb_intern("call");
 	failobj=rb_eval_string("FAIL");

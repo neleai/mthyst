@@ -79,20 +79,20 @@ failobj=rb_eval_string(\"FAIL\");
 				| Set[ @expr=>trans:e {"#{e}\n #{bset(@name.desc,"it")}; " } ]
 				| Or[ {label("accept")}:accept {@@faillabel}:fail {label("oldinput")}:oldinput label("alt"):alt {0}:altno
 					 ( &(.) {altno+=1} rw("#{alt}_#{altno+1}",`trans`))*:t
-					 {s="VALUE #{oldinput}=#{iget("input")};\n"}
-           {s+=map_index(t){|i| "#{alt}_#{i+1}: #{iset("input",oldinput)};if (#{iget("cut")}!=Qnil) {#{iset("cut","Qnil")}; goto #{fail};}\n #{t[i]} \n#{iset("cut","Qnil")};goto #{accept};\n"}*""}
-           {"#{s}  #{alt}_#{altno+1}:  #{iset("input",oldinput)}; goto #{fail};\n #{accept}:;\n"}
+					 {s="VALUE #{oldinput}=ame_getpos(self);\n"}
+           {s+=map_index(t){|i| "#{alt}_#{i+1}: ame_setpos(self,#{oldinput});if (#{iget("cut")}!=Qnil) {#{iset("cut","Qnil")}; goto #{fail};}\n #{t[i]} \n#{iset("cut","Qnil")};goto #{accept};\n"}*""}
+           {"#{s}  #{alt}_#{altno+1}:  ame_setpos(self,#{oldinput}); goto #{fail};\n #{accept}:;\n"}
 					]
 				| Cut[] {"#{iset("cut","Qtrue")};"}
 				| Stop[] {"#{iset("stop","Qtrue")};"}
 
 				| Many[ {label("break")}:brk {label("oldinput")}:oldinput
 						rw(brk,`trans:t`)
-						{"VALUE #{oldinput}; while(1){#{oldinput}=#{iget("input")}; #{t} if (#{iget("stop")}!=Qnil){{#{oldinput}=#{iget("input")};goto #{brk};} } } #{brk}: #{iset("stop","Qnil")};  #{iset("input",oldinput)}; "}
+						{"VALUE #{oldinput}; while(1){#{oldinput}=ame_getpos(self); #{t} if (#{iget("stop")}!=Qnil){{#{oldinput}=ame_getpos(self);goto #{brk};} } } #{brk}: #{iset("stop","Qnil")};  ame_setpos(self,#{oldinput}); "}
 					]
 				| Lookahead[ {label("accept")}:accept {label("reject")}:reject {label("oldinput")}:oldinput 
 										 rw(reject,`trans:t`) 
-										 {"VALUE #{oldinput}=#{iget("input")};\n #{t} x=1; goto #{accept};  #{reject}: x=0; #{accept}: it=Qnil; #{iset("input",oldinput)}; if (x==#{@neg ? 1 : 0}) goto #{@@faillabel};"} ]
+										 {"VALUE #{oldinput}=ame_getpos(self);\n #{t} x=1; goto #{accept};  #{reject}: x=0; #{accept}: it=Qnil; ame_setpos(self,#{oldinput}); if (x==#{@neg ? 1 : 0}) goto #{@@faillabel};"} ]
 				| Local[ .* { "it=#{bget(@desc)};" } ]
 				| Result[ @args=>rbtrans:argss  { s="#{@name}.create(#{argss} {#{@vars.map{|l| ":#{l[0]}=>bind[:#{l.desc}]" }.sort*","} })"
 					cbno=addcallback(s)
@@ -100,13 +100,13 @@ failobj=rb_eval_string(\"FAIL\");
 				} ]
 				| Pass[ label("pass"):pass label("oldinput"):oldinput label("oldsrc"):oldsrc label("success"):success label("fail"):fail
 						rw(pass,`@to=>trans:to`)
-					{  "VALUE #{oldinput}=#{iget("input")};  VALUE #{oldsrc}=#{iget("src")}; int #{fail}=0;
-#{iset("src",@enter ? bget(@var.desc) : "rb_ary_new3(1,#{bget(@var.desc)})")}; #{iset("input","INT2FIX(0)")};
+					{  "VALUE #{oldinput}=ame_getpos(self);  VALUE #{oldsrc}=#{iget("src")}; int #{fail}=0;
+#{iset("src",@enter ? bget(@var.desc) : "rb_ary_new3(1,#{bget(@var.desc)})")}; ame_setpos(self,INT2FIX(0));
  #{to}
 	if (CALL(eof,0)==failobj) goto #{pass};
 	goto #{success};
 	#{pass}: #{fail}=1;
-	#{success}: #{iset("src",oldsrc)}; #{iset("input",oldinput)};
+	#{success}: #{iset("src",oldsrc)}; ame_setpos(self,#{oldinput});
 	if(#{fail}) goto #{@@faillabel};
 " }
 					]
