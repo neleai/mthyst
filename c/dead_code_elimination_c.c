@@ -518,7 +518,7 @@ fail: return failobj; }
 VALUE cls_Move_Assignments;
 VALUE Move_Assignments_move(VALUE self ,VALUE a0,VALUE a1);
 VALUE Move_Assignments_trans(VALUE self );
-VALUE Move_Assignments_move(VALUE self ,VALUE a0,VALUE a1){VALUE vals[2]; VALUE bind=rb_hash_new(); BSET(append_1,a0); vals[0]=a0;BSET(name_1,a1); vals[1]=a1; int x;VALUE arg0,arg1,arg2,arg3;
+VALUE Move_Assignments_move(VALUE self ,VALUE a0,VALUE a1){VALUE vals[2]; VALUE bind=rb_hash_new(); BSET(append_1,a0);BSET(name_1,a1); int x;VALUE arg0,arg1,arg2,arg3;
 VALUE oldinput1=IGET(input);
 alt1_1: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
   arg0=CALL(move_Move_Assignmentscb_1,1,bind); BSET(it,CALL(clas,1 ,arg0)); FAILTEST(alt1_2);

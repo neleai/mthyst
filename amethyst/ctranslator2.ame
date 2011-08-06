@@ -69,9 +69,9 @@ failobj=rb_eval_string(\"FAIL\");
           { h="VALUE #{@@grammar}_#{name}(VALUE self #{@args.size.times.map{|i| ",VALUE a#{i}"}})" 
 						@@header<<h+";"
 						@@defmethods<< "rb_define_method(cls_#{@@grammar},\"#{@name}\",#{@@grammar}_#{@name},#{@args.size});"
-						h+"{VALUE vals[#{@args.size}]; VALUE bind=rb_hash_new(); #{@args.size.times.map{|i| bset(@args[i].desc,"a#{i}")+"; vals[#{i}]=a#{i};"}} int x;VALUE arg0,arg1,arg2,arg3;\n#{body}\nreturn #{bget(Local["_result",@bnding].desc)};\nfail: return failobj; }" } ]
+						h+"{VALUE vals[#{@args.size}]; VALUE bind=rb_hash_new(); #{@args.size.times.map{|i| bset(@args[i].desc,"a#{i}")+";"}} int x;VALUE arg0,arg1,arg2,arg3;\n#{body}\nreturn #{bget(Local["_result",@bnding].desc)};\nfail: return failobj; }" } ]
 				| Act[ .*:{addcallback(@pred ? ["(",it,") || FAIL"]:it)}:cbno {"#{bset("it","CALL(#{cbno},1,bind)")}; #{@pred ? "FAILTEST(#{@@faillabel});" :"" }"} ]
-				| Apply[ .=>["super"] {rule=@@ruletable[@@rulename];  failwrap(bset("it","rb_call_super(#{rule.args.size},vals)")+";")} ]
+				| Apply[ .=>["super"] {rule=@@ruletable[@@rulename];  failwrap(rule.args.size.times.map{|i|"vals[#{i}]=#{bget(rule.args[i].desc)};"}*""+ bset("it","rb_call_super(#{rule.args.size},vals)")+";")} ]
 				| Apply[:name (.:{addcallback(it)}*):args 
             failwrap(" #{args.size.times.map{|a|"arg#{a}=CALL(#{args[a]},1,bind);"}} #{bset("it","CALL(#{name},#{args.size} #{args.size.times.map{|a|",arg#{a}"}})")};")]
 				| Seq[ trans*:t {t*""} ]
