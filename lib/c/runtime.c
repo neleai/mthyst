@@ -2,12 +2,21 @@
 VALUE amecore;VALUE failobj;
 ID s_src,s_input,s_call,s_cut;
 
+typedef struct{
+	VALUE src;
+	int pos;int len;
+} cstruct;
+
 VALUE ame_setpos(VALUE self,VALUE val){
-	rb_iv_set(self,"@input",val);
+	cstruct  *ptr;
+  Data_Get_Struct(self,cstruct,ptr);
+	ptr->pos=val;
 	return val;
 }
 VALUE ame_getpos(VALUE self){
-	return rb_iv_get(self,"@input");
+	cstruct  *ptr;
+  Data_Get_Struct(self,cstruct,ptr);
+	return ptr->pos;
 }
 
 VALUE ame_seq(VALUE self,VALUE str){
@@ -76,10 +85,7 @@ VALUE ame_or(int argc,VALUE *argv,VALUE self){
 	}
 	return failobj;
 }
-typedef struct{
-	VALUE src;
-	int input;int len;
-} cstruct;
+
 
 VALUE ame_new(VALUE clas){
 	cstruct *ptr=ALLOC(cstruct);
