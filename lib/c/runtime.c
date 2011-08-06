@@ -68,10 +68,33 @@ VALUE ame_or(int argc,VALUE *argv,VALUE self){
 	}
 	return failobj;
 }
+typedef struct{
+	VALUE src;
+	int input;int len;
+} cstruct;
+
+VALUE ame_new(VALUE clas){
+	cstruct *ptr=ALLOC(cstruct);
+  VALUE o=Data_Wrap_Struct(clas,0,0,ptr);
+	VALUE argv[0]; rb_obj_call_init(o,0,argv);
+	return o;
+}
+VALUE ame_setpos(VALUE self,VALUE val){
+	rb_iv_set(self,"@input",val);
+	return val;
+}
+VALUE ame_getpos(VALUE self){
+	return rb_iv_get(self,"@input");
+}
+
 void Init_Ame(VALUE self){
 	s_cut=rb_intern("@cut");	s_src=rb_intern("@src");	s_input=rb_intern("@input");	s_call=rb_intern("call");
 	failobj=rb_eval_string("FAIL");
 	amecore=rb_define_class("AmethystCore",rb_cObject);
+	rb_define_singleton_method(amecore,"new",ame_new,0);
+	rb_define_method(amecore,"pos=",ame_setpos,1);
+	rb_define_method(amecore,"pos",ame_getpos,0);
+
 	rb_define_method(amecore,"seq",ame_seq,1);
 	rb_define_method(amecore,"anything",ame_anything,0);
 	rb_define_method(amecore,"_lookahead",ame_lookahead,1);

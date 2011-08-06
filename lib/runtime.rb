@@ -104,7 +104,8 @@ class AmethystCore
 
 	def parse(rule,input)
 		print self.class
-		@src,@input=input,0
+		@src=input
+		self.pos=0
 		time=Time.new
 		r=self.apply(rule)
 		puts "	#{Time.new-time}"
