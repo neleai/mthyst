@@ -4,7 +4,7 @@ VALUE AmethystOptimizer2_trans(VALUE self );
 VALUE AmethystOptimizer2_trans(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 VALUE oldinput1=IGET(input);
-alt1_1: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_1: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystOptimizer2cb_1,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_2);
  BSET(autovar_1,it); VALUE oldinput2=IGET(input);  VALUE oldsrc1=IGET(src); int fail1=0;
 ISET(src,BGET(autovar_1)); ISET(input,INT2FIX(0));
@@ -18,11 +18,11 @@ ISET(src,BGET(autovar_1)); ISET(input,INT2FIX(0));
 	success1: ISET(src,oldsrc1); ISET(input,oldinput2);
 	if(fail1) goto alt1_2;
 it=CALL(trans_AmethystOptimizer2cb_4,1,bind); VALUE oldinput4=IGET(input);
-alt2_1: ISET(input,oldinput4);if (IGET(cut)!=Qnil) goto alt1_2;
+alt2_1: ISET(input,oldinput4);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt1_2;}
  it=CALL(trans_AmethystOptimizer2cb_5,1,bind); FAILTEST(alt2_2);it=CALL(trans_AmethystOptimizer2cb_6,1,bind); 
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept2;
-alt2_2: ISET(input,oldinput4);if (IGET(cut)!=Qnil) goto alt1_2;
+alt2_2: ISET(input,oldinput4);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt1_2;}
  it=CALL(trans_AmethystOptimizer2cb_7,1,bind);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept2;
@@ -30,7 +30,7 @@ ISET(cut,Qnil);goto accept2;
  accept2:;
  
 ISET(cut,Qnil);goto accept1;
-alt1_2: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_2: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystOptimizer2cb_8,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_3);
  BSET(autovar_4,it); VALUE oldinput5=IGET(input);  VALUE oldsrc2=IGET(src); int fail2=0;
 ISET(src,BGET(autovar_4)); ISET(input,INT2FIX(0));
@@ -44,11 +44,11 @@ ISET(src,BGET(autovar_4)); ISET(input,INT2FIX(0));
 	success2: ISET(src,oldsrc2); ISET(input,oldinput5);
 	if(fail2) goto alt1_3;
 it=CALL(trans_AmethystOptimizer2cb_11,1,bind); VALUE oldinput7=IGET(input);
-alt3_1: ISET(input,oldinput7);if (IGET(cut)!=Qnil) goto alt1_3;
+alt3_1: ISET(input,oldinput7);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt1_3;}
  it=CALL(trans_AmethystOptimizer2cb_12,1,bind); FAILTEST(alt3_2);it=CALL(trans_AmethystOptimizer2cb_13,1,bind); 
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept3;
-alt3_2: ISET(input,oldinput7);if (IGET(cut)!=Qnil) goto alt1_3;
+alt3_2: ISET(input,oldinput7);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt1_3;}
  it=CALL(trans_AmethystOptimizer2cb_14,1,bind);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept3;
@@ -56,7 +56,7 @@ ISET(cut,Qnil);goto accept3;
  accept3:;
  
 ISET(cut,Qnil);goto accept1;
-alt1_3: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_3: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
  it=rb_call_super(0,vals); FAILTEST(alt1_4);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
@@ -77,7 +77,7 @@ fail: return failobj; }
 VALUE Seq_Or_Optimizer_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 VALUE oldinput1=IGET(input);
-alt1_1: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_1: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(visit_Seq_Or_Optimizercb_1,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_2);
  BSET(autovar_1,it); VALUE oldinput2=IGET(input);  VALUE oldsrc1=IGET(src); int fail1=0;
 ISET(src,BGET(autovar_1)); ISET(input,INT2FIX(0));
@@ -90,7 +90,7 @@ ISET(src,BGET(autovar_1)); ISET(input,INT2FIX(0));
 	if(fail1) goto alt1_2;
  
 ISET(cut,Qnil);goto accept1;
-alt1_2: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_2: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(visit_Seq_Or_Optimizercb_4,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_3);
  BSET(autovar_2,it); VALUE oldinput3=IGET(input);  VALUE oldsrc2=IGET(src); int fail2=0;
 ISET(src,BGET(autovar_2)); ISET(input,INT2FIX(0));

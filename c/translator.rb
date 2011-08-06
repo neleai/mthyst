@@ -102,7 +102,7 @@ def trans_AmethystTranslatorcb_11(bind)
 AmethystLambda.new(:AmethystTranslator_trans_lambda1,self,bind)
 end
 def trans_AmethystTranslatorcb_12(bind)
-"def #{bind[:name_1]}(#{@src.args.size.times.map{|i| "a#{i}"}*","})\nbind={}; #{@src.args.size.times.map{|i| "bind[:#{@src.args[i].desc}]=a#{i}"}*";"}\n  it=nil\n\n#{bind[:body_1]} \nend\n"
+"def #{bind[:name_1]}(#{map_index(@src.args){|i| "a#{i}"}*","})\nbind={}; #{@src.args.size.times.map{|i| "bind[:#{@src.args[i].desc}]=a#{i}"}*";"}\n  it=nil\n\n#{bind[:body_1]} \nend\n"
 end
 def trans_AmethystTranslatorcb_13(bind)
 Or

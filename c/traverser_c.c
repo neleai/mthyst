@@ -41,12 +41,12 @@ fail: return failobj; }
 VALUE Traverser_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 VALUE oldinput1=IGET(input);
-alt1_1: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_1: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=CALL(visit,0 ); FAILTEST(alt1_2);
  BSET(a_1,it); it=CALL(traverse_item_Traversercb_1,1,bind); it=BGET(a_1);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_2: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_2: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(traverse_item_Traversercb_2,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_3);
  BSET(autovar_1,it); VALUE oldinput2=IGET(input);  VALUE oldsrc1=IGET(src); int fail1=0;
 ISET(src,BGET(autovar_1)); ISET(input,INT2FIX(0));
@@ -61,7 +61,7 @@ ISET(src,BGET(autovar_1)); ISET(input,INT2FIX(0));
 	if(fail1) goto alt1_3;
  
 ISET(cut,Qnil);goto accept1;
-alt1_3: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_3: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(traverse_item_Traversercb_5,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_4);
  BSET(autovar_4,it); VALUE oldinput4=IGET(input);  VALUE oldsrc2=IGET(src); int fail2=0;
 ISET(src,BGET(autovar_4)); ISET(input,INT2FIX(0));
@@ -74,7 +74,7 @@ ISET(src,BGET(autovar_4)); ISET(input,INT2FIX(0));
 	if(fail2) goto alt1_4;
  
 ISET(cut,Qnil);goto accept1;
-alt1_4: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_4: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=CALL(anything,0 ); FAILTEST(alt1_5);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;

@@ -29,6 +29,9 @@ end
 def exactly_Amethystcb_1(bind)
 (bind[:wanted_1] == bind[:got_1]) || FAIL
 end
+def fails_Amethystcb_1(bind)
+(false) || FAIL
+end
 def listOf_Amethystcb_1(bind)
 bind[:rule_1]
 end

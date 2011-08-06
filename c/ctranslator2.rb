@@ -322,7 +322,7 @@ def trans_AmethystCTranslatorcb_50(bind)
 bind[:s_1]="VALUE #{bind[:oldinput_1]}=#{iget("input")};\n"
 end
 def trans_AmethystCTranslatorcb_51(bind)
-bind[:s_1]+=map_index(bind[:t_1]){|i| "#{bind[:alt_1]}_#{i+1}: #{iset("input",bind[:oldinput_1])};if (#{iget("cut")}!=Qnil) goto #{bind[:fail_1]};\n #{bind[:t_1][i]} \n#{iset("cut","Qnil")};goto #{bind[:accept_1]};\n"}*""
+bind[:s_1]+=map_index(bind[:t_1]){|i| "#{bind[:alt_1]}_#{i+1}: #{iset("input",bind[:oldinput_1])};if (#{iget("cut")}!=Qnil) {#{iset("cut","Qnil")}; goto #{bind[:fail_1]};}\n #{bind[:t_1][i]} \n#{iset("cut","Qnil")};goto #{bind[:accept_1]};\n"}*""
 end
 def trans_AmethystCTranslatorcb_52(bind)
 "#{bind[:s_1]}  #{bind[:alt_1]}_#{bind[:altno_1]+1}:  #{iset("input",bind[:oldinput_1])}; goto #{bind[:fail_1]};\n #{bind[:accept_1]}:;\n"

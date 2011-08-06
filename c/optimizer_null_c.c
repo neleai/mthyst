@@ -9,7 +9,7 @@ VALUE AmethystOptimizer_transs(VALUE self );
 VALUE AmethystOptimizer_arg(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 VALUE oldinput1=IGET(input);
-alt1_1: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_1: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(arg_AmethystOptimizercb_1,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_2);
  BSET(autovar_1,it); VALUE oldinput2=IGET(input);  VALUE oldsrc1=IGET(src); int fail1=0;
 ISET(src,BGET(autovar_1)); ISET(input,INT2FIX(0));
@@ -25,17 +25,17 @@ ISET(src,BGET(autovar_1)); ISET(input,INT2FIX(0));
 it=CALL(arg_AmethystOptimizercb_4,1,bind);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_2: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_2: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(arg_AmethystOptimizercb_5,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_3);
  BSET(autovar_4,it); VALUE oldinput4=IGET(input);  VALUE oldsrc2=IGET(src); int fail2=0;
 ISET(src,BGET(autovar_4)); ISET(input,INT2FIX(0));
  it=CALL(arg_AmethystOptimizercb_6,1,bind); 
  BSET(autovar_5,it); VALUE oldinput5; while(1){oldinput5=IGET(input); VALUE oldinput6=IGET(input);
-alt2_1: ISET(input,oldinput6);if (IGET(cut)!=Qnil) goto break2;
+alt2_1: ISET(input,oldinput6);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break2;}
    it=CALL(char,0 ); FAILTEST(alt2_2);
  BSET(autovar_6,it);  
 ISET(cut,Qnil);goto accept2;
-alt2_2: ISET(input,oldinput6);if (IGET(cut)!=Qnil) goto break2;
+alt2_2: ISET(input,oldinput6);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break2;}
    it=CALL(arg,0 ); FAILTEST(alt2_3);
  BSET(autovar_6,it);  
 ISET(cut,Qnil);goto accept2;
@@ -51,7 +51,7 @@ it=CALL(arg_AmethystOptimizercb_7,1,bind);  if (IGET(stop)!=Qnil){{oldinput5=IGE
 it=CALL(arg_AmethystOptimizercb_8,1,bind);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_3: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_3: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(arg_AmethystOptimizercb_9,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_4);
  BSET(autovar_7,it); VALUE oldinput7=IGET(input);  VALUE oldsrc3=IGET(src); int fail3=0;
 ISET(src,BGET(autovar_7)); ISET(input,INT2FIX(0));
@@ -65,7 +65,7 @@ ISET(src,BGET(autovar_7)); ISET(input,INT2FIX(0));
 it=CALL(arg_AmethystOptimizercb_11,1,bind);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_4: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_4: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(arg_AmethystOptimizercb_12,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_5);
  BSET(autovar_9,it); VALUE oldinput8=IGET(input);  VALUE oldsrc4=IGET(src); int fail4=0;
 ISET(src,BGET(autovar_9)); ISET(input,INT2FIX(0));
@@ -99,7 +99,7 @@ ISET(src,rb_ary_new3(1,BGET(autovar_11))); ISET(input,INT2FIX(0));
 it=CALL(arg_AmethystOptimizercb_16,1,bind);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_5: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_5: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=CALL(anything,0 ); FAILTEST(alt1_6);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
@@ -111,7 +111,7 @@ fail: return failobj; }
 VALUE AmethystOptimizer_args(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 VALUE oldinput1=IGET(input);
-alt1_1: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_1: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(args_AmethystOptimizercb_1,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_2);
  BSET(autovar_1,it); VALUE oldinput2=IGET(input);  VALUE oldsrc1=IGET(src); int fail1=0;
 ISET(src,BGET(autovar_1)); ISET(input,INT2FIX(0));
@@ -127,7 +127,7 @@ ISET(src,BGET(autovar_1)); ISET(input,INT2FIX(0));
 it=BGET(a_1);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_2: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_2: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
  it=CALL(args_AmethystOptimizercb_4,1,bind); 
  BSET(autovar_4,it); VALUE oldinput4; while(1){oldinput4=IGET(input);   it=CALL(arg,0 ); FAILTEST(break2);
  BSET(autovar_5,it); it=CALL(args_AmethystOptimizercb_5,1,bind);  if (IGET(stop)!=Qnil){{oldinput4=IGET(input);goto break2;} } } break2: ISET(stop,Qnil);  ISET(input,oldinput4); it=BGET(autovar_4);
@@ -142,11 +142,11 @@ VALUE AmethystOptimizer_itrans(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_ne
 
 it=CALL(itrans_AmethystOptimizercb_1,1,bind); 
  BSET(autovar_1,it); VALUE oldinput1; while(1){oldinput1=IGET(input); VALUE oldinput2=IGET(input);
-alt1_1: ISET(input,oldinput2);if (IGET(cut)!=Qnil) goto break1;
+alt1_1: ISET(input,oldinput2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
    it=CALL(char,0 ); FAILTEST(alt1_2);
  BSET(autovar_2,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_2: ISET(input,oldinput2);if (IGET(cut)!=Qnil) goto break1;
+alt1_2: ISET(input,oldinput2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
    it=CALL(trans,0 ); FAILTEST(alt1_3);
  BSET(autovar_2,it);  
 ISET(cut,Qnil);goto accept1;
@@ -160,7 +160,7 @@ fail: return failobj; }
 VALUE AmethystOptimizer_trans(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 VALUE oldinput1=IGET(input);
-alt1_1: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_1: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystOptimizercb_1,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_2);
  BSET(autovar_1,it); VALUE oldinput2=IGET(input);  VALUE oldsrc1=IGET(src); int fail1=0;
 ISET(src,BGET(autovar_1)); ISET(input,INT2FIX(0));
@@ -185,7 +185,7 @@ ISET(src,rb_ary_new3(1,BGET(autovar_2))); ISET(input,INT2FIX(0));
 it=CALL(trans_AmethystOptimizercb_5,1,bind);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_2: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_2: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystOptimizercb_6,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_3);
  BSET(autovar_3,it); VALUE oldinput4=IGET(input);  VALUE oldsrc3=IGET(src); int fail3=0;
 ISET(src,BGET(autovar_3)); ISET(input,INT2FIX(0));
@@ -221,7 +221,7 @@ it=CALL(trans_AmethystOptimizercb_10,1,bind);
 it=CALL(trans_AmethystOptimizercb_12,1,bind);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_3: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_3: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystOptimizercb_13,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_4);
  BSET(autovar_6,it); VALUE oldinput7=IGET(input);  VALUE oldsrc6=IGET(src); int fail6=0;
 ISET(src,BGET(autovar_6)); ISET(input,INT2FIX(0));
@@ -237,7 +237,7 @@ ISET(src,BGET(autovar_6)); ISET(input,INT2FIX(0));
 it=CALL(trans_AmethystOptimizercb_16,1,bind);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_4: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_4: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystOptimizercb_17,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_5);
  BSET(autovar_9,it); VALUE oldinput9=IGET(input);  VALUE oldsrc7=IGET(src); int fail7=0;
 ISET(src,BGET(autovar_9)); ISET(input,INT2FIX(0));
@@ -253,7 +253,7 @@ ISET(src,BGET(autovar_9)); ISET(input,INT2FIX(0));
 it=CALL(trans_AmethystOptimizercb_20,1,bind);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_5: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_5: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystOptimizercb_21,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_6);
  BSET(autovar_12,it); VALUE oldinput11=IGET(input);  VALUE oldsrc8=IGET(src); int fail8=0;
 ISET(src,BGET(autovar_12)); ISET(input,INT2FIX(0));
@@ -268,7 +268,7 @@ ISET(src,BGET(autovar_12)); ISET(input,INT2FIX(0));
 it=CALL(trans_AmethystOptimizercb_24,1,bind);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_6: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_6: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystOptimizercb_25,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_7);
  BSET(autovar_14,it); VALUE oldinput12=IGET(input);  VALUE oldsrc9=IGET(src); int fail9=0;
 ISET(src,BGET(autovar_14)); ISET(input,INT2FIX(0));
@@ -284,7 +284,7 @@ ISET(src,BGET(autovar_14)); ISET(input,INT2FIX(0));
 it=CALL(trans_AmethystOptimizercb_28,1,bind);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_7: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_7: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystOptimizercb_29,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_8);
  BSET(autovar_17,it); VALUE oldinput14=IGET(input);  VALUE oldsrc10=IGET(src); int fail10=0;
 ISET(src,BGET(autovar_17)); ISET(input,INT2FIX(0));
@@ -299,7 +299,7 @@ ISET(src,BGET(autovar_17)); ISET(input,INT2FIX(0));
 it=CALL(trans_AmethystOptimizercb_32,1,bind);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_8: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_8: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystOptimizercb_33,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_9);
  BSET(autovar_19,it); VALUE oldinput15=IGET(input);  VALUE oldsrc11=IGET(src); int fail11=0;
 ISET(src,BGET(autovar_19)); ISET(input,INT2FIX(0));
@@ -314,7 +314,7 @@ ISET(src,BGET(autovar_19)); ISET(input,INT2FIX(0));
 it=CALL(trans_AmethystOptimizercb_36,1,bind);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_9: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_9: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystOptimizercb_37,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_10);
  BSET(autovar_22,it); VALUE oldinput16=IGET(input);  VALUE oldsrc12=IGET(src); int fail12=0;
 ISET(src,BGET(autovar_22)); ISET(input,INT2FIX(0));
@@ -348,7 +348,7 @@ it=CALL(trans_AmethystOptimizercb_40,1,bind);
 it=CALL(trans_AmethystOptimizercb_41,1,bind);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_10: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_10: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystOptimizercb_42,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_11);
  BSET(autovar_25,it); VALUE oldinput19=IGET(input);  VALUE oldsrc15=IGET(src); int fail15=0;
 ISET(src,BGET(autovar_25)); ISET(input,INT2FIX(0));
@@ -363,7 +363,7 @@ ISET(src,BGET(autovar_25)); ISET(input,INT2FIX(0));
 it=CALL(trans_AmethystOptimizercb_44,1,bind);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_11: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_11: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystOptimizercb_45,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_12);
  BSET(autovar_26,it); VALUE oldinput20=IGET(input);  VALUE oldsrc16=IGET(src); int fail16=0;
 ISET(src,BGET(autovar_26)); ISET(input,INT2FIX(0));
@@ -397,7 +397,7 @@ ISET(src,rb_ary_new3(1,BGET(autovar_28))); ISET(input,INT2FIX(0));
 it=CALL(trans_AmethystOptimizercb_49,1,bind);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_12: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_12: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystOptimizercb_50,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_13);
  BSET(autovar_29,it); VALUE oldinput23=IGET(input);  VALUE oldsrc19=IGET(src); int fail19=0;
 ISET(src,BGET(autovar_29)); ISET(input,INT2FIX(0));
@@ -413,7 +413,7 @@ ISET(src,BGET(autovar_29)); ISET(input,INT2FIX(0));
 it=CALL(trans_AmethystOptimizercb_53,1,bind);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_13: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_13: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystOptimizercb_54,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_14);
  BSET(autovar_32,it); VALUE oldinput25=IGET(input);  VALUE oldsrc20=IGET(src); int fail20=0;
 ISET(src,BGET(autovar_32)); ISET(input,INT2FIX(0));
@@ -447,7 +447,7 @@ it=CALL(trans_AmethystOptimizercb_57,1,bind);
 it=CALL(trans_AmethystOptimizercb_58,1,bind);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_14: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_14: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystOptimizercb_59,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_15);
  BSET(autovar_35,it); VALUE oldinput28=IGET(input);  VALUE oldsrc23=IGET(src); int fail23=0;
 ISET(src,BGET(autovar_35)); ISET(input,INT2FIX(0));
@@ -460,7 +460,7 @@ ISET(src,BGET(autovar_35)); ISET(input,INT2FIX(0));
 it=CALL(trans_AmethystOptimizercb_60,1,bind);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_15: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_15: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystOptimizercb_61,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_16);
  BSET(autovar_36,it); VALUE oldinput29=IGET(input);  VALUE oldsrc24=IGET(src); int fail24=0;
 ISET(src,BGET(autovar_36)); ISET(input,INT2FIX(0));
@@ -473,7 +473,7 @@ ISET(src,BGET(autovar_36)); ISET(input,INT2FIX(0));
 it=CALL(trans_AmethystOptimizercb_62,1,bind);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_16: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_16: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystOptimizercb_63,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_17);
  BSET(autovar_37,it); VALUE oldinput30=IGET(input);  VALUE oldsrc25=IGET(src); int fail25=0;
 ISET(src,BGET(autovar_37)); ISET(input,INT2FIX(0));

@@ -80,7 +80,7 @@ failobj=rb_eval_string(\"FAIL\");
 				| Or[ {label("accept")}:accept {@@faillabel}:fail {label("oldinput")}:oldinput label("alt"):alt {0}:altno
 					 ( &(.) {altno+=1} rw("#{alt}_#{altno+1}",`trans`))*:t
 					 {s="VALUE #{oldinput}=#{iget("input")};\n"}
-           {s+=map_index(t){|i| "#{alt}_#{i+1}: #{iset("input",oldinput)};if (#{iget("cut")}!=Qnil) goto #{fail};\n #{t[i]} \n#{iset("cut","Qnil")};goto #{accept};\n"}*""}
+           {s+=map_index(t){|i| "#{alt}_#{i+1}: #{iset("input",oldinput)};if (#{iget("cut")}!=Qnil) {#{iset("cut","Qnil")}; goto #{fail};}\n #{t[i]} \n#{iset("cut","Qnil")};goto #{accept};\n"}*""}
            {"#{s}  #{alt}_#{altno+1}:  #{iset("input",oldinput)}; goto #{fail};\n #{accept}:;\n"}
 					]
 				| Cut[] {"#{iset("cut","Qtrue")};"}

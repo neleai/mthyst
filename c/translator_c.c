@@ -16,7 +16,7 @@ VALUE AmethystTranslator_transs(VALUE self );
 VALUE AmethystTranslator_arg(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 VALUE oldinput1=IGET(input);
-alt1_1: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_1: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(arg_AmethystTranslatorcb_1,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_2);
  BSET(autovar_1,it); VALUE oldinput2=IGET(input);  VALUE oldsrc1=IGET(src); int fail1=0;
 ISET(src,BGET(autovar_1)); ISET(input,INT2FIX(0));
@@ -32,7 +32,7 @@ ISET(src,BGET(autovar_1)); ISET(input,INT2FIX(0));
 it=CALL(arg_AmethystTranslatorcb_4,1,bind); 
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_2: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_2: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(arg_AmethystTranslatorcb_5,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_3);
  BSET(autovar_4,it); VALUE oldinput4=IGET(input);  VALUE oldsrc2=IGET(src); int fail2=0;
 ISET(src,BGET(autovar_4)); ISET(input,INT2FIX(0));
@@ -48,7 +48,7 @@ ISET(src,BGET(autovar_4)); ISET(input,INT2FIX(0));
 it=CALL(arg_AmethystTranslatorcb_8,1,bind); 
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_3: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_3: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(arg_AmethystTranslatorcb_9,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_4);
  BSET(autovar_7,it); VALUE oldinput6=IGET(input);  VALUE oldsrc3=IGET(src); int fail3=0;
 ISET(src,BGET(autovar_7)); ISET(input,INT2FIX(0));
@@ -62,7 +62,7 @@ ISET(src,BGET(autovar_7)); ISET(input,INT2FIX(0));
 it=BGET(t_1);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_4: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_4: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(arg_AmethystTranslatorcb_10,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_5);
  BSET(autovar_8,it); VALUE oldinput7=IGET(input);  VALUE oldsrc4=IGET(src); int fail4=0;
 ISET(src,BGET(autovar_8)); ISET(input,INT2FIX(0));
@@ -76,7 +76,7 @@ ISET(src,BGET(autovar_8)); ISET(input,INT2FIX(0));
 it=CALL(arg_AmethystTranslatorcb_12,1,bind); 
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_5: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_5: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(arg_AmethystTranslatorcb_13,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_6);
  BSET(autovar_9,it); VALUE oldinput8=IGET(input);  VALUE oldsrc5=IGET(src); int fail5=0;
 ISET(src,BGET(autovar_9)); ISET(input,INT2FIX(0));
@@ -89,7 +89,7 @@ ISET(src,BGET(autovar_9)); ISET(input,INT2FIX(0));
 	if(fail5) goto alt1_6;
  
 ISET(cut,Qnil);goto accept1;
-alt1_6: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_6: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(arg_AmethystTranslatorcb_15,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_7);
  BSET(autovar_10,it); VALUE oldinput10=IGET(input);  VALUE oldsrc6=IGET(src); int fail6=0;
 ISET(src,BGET(autovar_10)); ISET(input,INT2FIX(0));
@@ -103,7 +103,7 @@ ISET(src,BGET(autovar_10)); ISET(input,INT2FIX(0));
 it=CALL(arg_AmethystTranslatorcb_16,1,bind); 
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_7: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_7: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=CALL(anything,0 ); FAILTEST(alt1_8);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
@@ -115,7 +115,7 @@ fail: return failobj; }
 VALUE AmethystTranslator_args(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 VALUE oldinput1=IGET(input);
-alt1_1: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_1: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(args_AmethystTranslatorcb_1,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_2);
  BSET(autovar_1,it); VALUE oldinput2=IGET(input);  VALUE oldsrc1=IGET(src); int fail1=0;
 ISET(src,BGET(autovar_1)); ISET(input,INT2FIX(0));
@@ -131,7 +131,7 @@ ISET(src,BGET(autovar_1)); ISET(input,INT2FIX(0));
 it=CALL(args_AmethystTranslatorcb_4,1,bind); 
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_2: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_2: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
  it=CALL(args_AmethystTranslatorcb_5,1,bind); 
  BSET(autovar_4,it); VALUE oldinput4; while(1){oldinput4=IGET(input);   it=CALL(arg,0 ); FAILTEST(break2);
  BSET(autovar_5,it); it=CALL(args_AmethystTranslatorcb_6,1,bind);  if (IGET(stop)!=Qnil){{oldinput4=IGET(input);goto break2;} } } break2: ISET(stop,Qnil);  ISET(input,oldinput4); it=BGET(autovar_4);
@@ -153,11 +153,11 @@ VALUE AmethystTranslator_itrans(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_n
 
 it=CALL(itrans_AmethystTranslatorcb_1,1,bind); 
  BSET(autovar_1,it); VALUE oldinput1; while(1){oldinput1=IGET(input); VALUE oldinput2=IGET(input);
-alt1_1: ISET(input,oldinput2);if (IGET(cut)!=Qnil) goto break1;
+alt1_1: ISET(input,oldinput2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
    it=CALL(char,0 ); FAILTEST(alt1_2);
  BSET(autovar_2,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_2: ISET(input,oldinput2);if (IGET(cut)!=Qnil) goto break1;
+alt1_2: ISET(input,oldinput2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
    it=CALL(trans,0 ); FAILTEST(alt1_3);
  BSET(autovar_2,it);  
 ISET(cut,Qnil);goto accept1;
@@ -179,7 +179,7 @@ fail: return failobj; }
 VALUE AmethystTranslator_trans(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 VALUE oldinput1=IGET(input);
-alt1_1: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_1: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystTranslatorcb_1,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_2);
  BSET(autovar_1,it); VALUE oldinput2=IGET(input);  VALUE oldsrc1=IGET(src); int fail1=0;
 ISET(src,BGET(autovar_1)); ISET(input,INT2FIX(0));
@@ -204,7 +204,7 @@ ISET(src,rb_ary_new3(1,BGET(autovar_2))); ISET(input,INT2FIX(0));
 it=CALL(trans_AmethystTranslatorcb_5,1,bind); 
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_2: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_2: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystTranslatorcb_6,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_3);
  BSET(autovar_3,it); VALUE oldinput4=IGET(input);  VALUE oldsrc3=IGET(src); int fail3=0;
 ISET(src,BGET(autovar_3)); ISET(input,INT2FIX(0));
@@ -217,7 +217,7 @@ ISET(src,BGET(autovar_3)); ISET(input,INT2FIX(0));
 	if(fail3) goto alt1_3;
  
 ISET(cut,Qnil);goto accept1;
-alt1_3: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_3: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystTranslatorcb_13,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_4);
  BSET(autovar_5,it); VALUE oldinput6=IGET(input);  VALUE oldsrc5=IGET(src); int fail5=0;
 ISET(src,BGET(autovar_5)); ISET(input,INT2FIX(0));
@@ -230,7 +230,7 @@ ISET(src,BGET(autovar_5)); ISET(input,INT2FIX(0));
  arg0=CALL(trans_AmethystTranslatorcb_18,1,bind); it=CALL(failwrap,1 ,arg0); FAILTEST(alt1_4);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_4: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_4: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystTranslatorcb_19,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_5);
  BSET(autovar_8,it); VALUE oldinput8=IGET(input);  VALUE oldsrc6=IGET(src); int fail6=0;
 ISET(src,BGET(autovar_8)); ISET(input,INT2FIX(0));
@@ -246,7 +246,7 @@ ISET(src,BGET(autovar_8)); ISET(input,INT2FIX(0));
 it=CALL(trans_AmethystTranslatorcb_22,1,bind); 
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_5: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_5: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystTranslatorcb_23,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_6);
  BSET(autovar_11,it); VALUE oldinput10=IGET(input);  VALUE oldsrc7=IGET(src); int fail7=0;
 ISET(src,BGET(autovar_11)); ISET(input,INT2FIX(0));
@@ -261,7 +261,7 @@ ISET(src,BGET(autovar_11)); ISET(input,INT2FIX(0));
 it=CALL(trans_AmethystTranslatorcb_25,1,bind); 
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_6: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_6: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystTranslatorcb_26,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_7);
  BSET(autovar_12,it); VALUE oldinput11=IGET(input);  VALUE oldsrc8=IGET(src); int fail8=0;
 ISET(src,BGET(autovar_12)); ISET(input,INT2FIX(0));
@@ -275,7 +275,7 @@ ISET(src,BGET(autovar_12)); ISET(input,INT2FIX(0));
  arg0=CALL(trans_AmethystTranslatorcb_30,1,bind); it=CALL(failwrap,1 ,arg0); FAILTEST(alt1_7);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_7: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_7: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystTranslatorcb_31,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_8);
  BSET(autovar_13,it); VALUE oldinput12=IGET(input);  VALUE oldsrc9=IGET(src); int fail9=0;
 ISET(src,BGET(autovar_13)); ISET(input,INT2FIX(0));
@@ -288,7 +288,7 @@ ISET(src,BGET(autovar_13)); ISET(input,INT2FIX(0));
 it=CALL(trans_AmethystTranslatorcb_32,1,bind); 
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_8: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_8: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystTranslatorcb_33,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_9);
  BSET(autovar_14,it); VALUE oldinput13=IGET(input);  VALUE oldsrc10=IGET(src); int fail10=0;
 ISET(src,BGET(autovar_14)); ISET(input,INT2FIX(0));
@@ -311,7 +311,7 @@ ISET(src,rb_ary_new3(1,BGET(autovar_15))); ISET(input,INT2FIX(0));
 it=CALL(trans_AmethystTranslatorcb_37,1,bind); 
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_9: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_9: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystTranslatorcb_38,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_10);
  BSET(autovar_16,it); VALUE oldinput15=IGET(input);  VALUE oldsrc12=IGET(src); int fail12=0;
 ISET(src,BGET(autovar_16)); ISET(input,INT2FIX(0));
@@ -335,7 +335,7 @@ ISET(src,BGET(autovar_17)); ISET(input,INT2FIX(0));
  arg0=CALL(trans_AmethystTranslatorcb_40,1,bind); it=CALL(failwrap,1 ,arg0); FAILTEST(alt1_10);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_10: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_10: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystTranslatorcb_41,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_11);
  BSET(autovar_18,it); VALUE oldinput17=IGET(input);  VALUE oldsrc14=IGET(src); int fail14=0;
 ISET(src,BGET(autovar_18)); ISET(input,INT2FIX(0));
@@ -350,7 +350,7 @@ ISET(src,BGET(autovar_18)); ISET(input,INT2FIX(0));
  arg0=CALL(trans_AmethystTranslatorcb_42,1,bind); it=CALL(failwrap,1 ,arg0); FAILTEST(alt1_11);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_11: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_11: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystTranslatorcb_43,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_12);
  BSET(autovar_19,it); VALUE oldinput18=IGET(input);  VALUE oldsrc15=IGET(src); int fail15=0;
 ISET(src,BGET(autovar_19)); ISET(input,INT2FIX(0));
@@ -384,7 +384,7 @@ it=CALL(trans_AmethystTranslatorcb_46,1,bind);
 it=CALL(trans_AmethystTranslatorcb_47,1,bind); 
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_12: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_12: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystTranslatorcb_48,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_13);
  BSET(autovar_22,it); VALUE oldinput21=IGET(input);  VALUE oldsrc18=IGET(src); int fail18=0;
 ISET(src,BGET(autovar_22)); ISET(input,INT2FIX(0));
@@ -409,7 +409,7 @@ it=CALL(trans_AmethystTranslatorcb_51,1,bind);
 it=CALL(trans_AmethystTranslatorcb_52,1,bind); 
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_13: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_13: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystTranslatorcb_53,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_14);
  BSET(autovar_24,it); VALUE oldinput23=IGET(input);  VALUE oldsrc20=IGET(src); int fail20=0;
 ISET(src,BGET(autovar_24)); ISET(input,INT2FIX(0));
@@ -422,7 +422,7 @@ ISET(src,BGET(autovar_24)); ISET(input,INT2FIX(0));
 	if(fail20) goto alt1_14;
  
 ISET(cut,Qnil);goto accept1;
-alt1_14: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_14: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystTranslatorcb_55,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_15);
  BSET(autovar_25,it); VALUE oldinput25=IGET(input);  VALUE oldsrc21=IGET(src); int fail21=0;
 ISET(src,BGET(autovar_25)); ISET(input,INT2FIX(0));
@@ -435,7 +435,7 @@ ISET(src,BGET(autovar_25)); ISET(input,INT2FIX(0));
  arg0=CALL(trans_AmethystTranslatorcb_61,1,bind); it=CALL(failwrap,1 ,arg0); FAILTEST(alt1_15);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_15: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_15: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystTranslatorcb_62,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_16);
  BSET(autovar_28,it); VALUE oldinput28=IGET(input);  VALUE oldsrc24=IGET(src); int fail24=0;
 ISET(src,BGET(autovar_28)); ISET(input,INT2FIX(0));
@@ -448,7 +448,7 @@ ISET(src,BGET(autovar_28)); ISET(input,INT2FIX(0));
 it=CALL(trans_AmethystTranslatorcb_63,1,bind); 
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_16: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_16: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_AmethystTranslatorcb_64,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_17);
  BSET(autovar_29,it); VALUE oldinput29=IGET(input);  VALUE oldsrc25=IGET(src); int fail25=0;
 ISET(src,BGET(autovar_29)); ISET(input,INT2FIX(0));

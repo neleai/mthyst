@@ -5,7 +5,7 @@ VALUE Dead_Code_Detector_vars_in(VALUE self );
 VALUE Dead_Code_Detector_trans(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 VALUE oldinput1=IGET(input);
-alt1_1: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_1: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_Dead_Code_Detectorcb_1,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_2);
  BSET(autovar_1,it); VALUE oldinput2=IGET(input);  VALUE oldsrc1=IGET(src); int fail1=0;
 ISET(src,BGET(autovar_1)); ISET(input,INT2FIX(0));
@@ -41,7 +41,7 @@ it=CALL(trans_Dead_Code_Detectorcb_6,1,bind);
 it=CALL(trans_Dead_Code_Detectorcb_9,1,bind);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_2: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_2: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_Dead_Code_Detectorcb_10,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_3);
  BSET(autovar_4,it); VALUE oldinput5=IGET(input);  VALUE oldsrc4=IGET(src); int fail4=0;
 ISET(src,BGET(autovar_4)); ISET(input,INT2FIX(0));
@@ -56,7 +56,7 @@ ISET(src,BGET(autovar_4)); ISET(input,INT2FIX(0));
 	if(fail4) goto alt1_3;
  
 ISET(cut,Qnil);goto accept1;
-alt1_3: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_3: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_Dead_Code_Detectorcb_12,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_4);
  BSET(autovar_5,it); VALUE oldinput6=IGET(input);  VALUE oldsrc5=IGET(src); int fail5=0;
 ISET(src,BGET(autovar_5)); ISET(input,INT2FIX(0));
@@ -88,7 +88,7 @@ ISET(src,rb_ary_new3(1,BGET(autovar_7))); ISET(input,INT2FIX(0));
 	if(fail5) goto alt1_4;
  
 ISET(cut,Qnil);goto accept1;
-alt1_4: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_4: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_Dead_Code_Detectorcb_16,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_5);
  BSET(autovar_8,it); VALUE oldinput9=IGET(input);  VALUE oldsrc8=IGET(src); int fail8=0;
 ISET(src,BGET(autovar_8)); ISET(input,INT2FIX(0));
@@ -103,7 +103,7 @@ ISET(src,BGET(autovar_8)); ISET(input,INT2FIX(0));
 it=CALL(trans_Dead_Code_Detectorcb_19,1,bind); 
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_5: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_5: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_Dead_Code_Detectorcb_20,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_6);
  BSET(autovar_9,it); VALUE oldinput10=IGET(input);  VALUE oldsrc9=IGET(src); int fail9=0;
 ISET(src,BGET(autovar_9)); ISET(input,INT2FIX(0));
@@ -145,7 +145,7 @@ ISET(src,rb_ary_new3(1,BGET(autovar_12))); ISET(input,INT2FIX(0));
 it=CALL(trans_Dead_Code_Detectorcb_25,1,bind); 
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_6: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_6: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_Dead_Code_Detectorcb_26,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_7);
  BSET(autovar_13,it); VALUE oldinput14=IGET(input);  VALUE oldsrc13=IGET(src); int fail13=0;
 ISET(src,BGET(autovar_13)); ISET(input,INT2FIX(0));
@@ -178,7 +178,7 @@ it=CALL(trans_Dead_Code_Detectorcb_28,1,bind);
 it=CALL(trans_Dead_Code_Detectorcb_29,1,bind); 
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_7: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_7: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
  it=rb_call_super(0,vals); FAILTEST(alt1_8);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
@@ -190,7 +190,7 @@ fail: return failobj; }
 VALUE Dead_Code_Detector_vars_in(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 it=CALL(vars_in_Dead_Code_Detectorcb_1,1,bind); VALUE oldinput1; while(1){oldinput1=IGET(input); VALUE oldinput2=IGET(input);
-alt1_1: ISET(input,oldinput2);if (IGET(cut)!=Qnil) goto break1;
+alt1_1: ISET(input,oldinput2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
   arg0=CALL(vars_in_Dead_Code_Detectorcb_2,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_2);
  BSET(autovar_1,it); VALUE oldinput3=IGET(input);  VALUE oldsrc1=IGET(src); int fail1=0;
 ISET(src,BGET(autovar_1)); ISET(input,INT2FIX(0));
@@ -203,7 +203,7 @@ ISET(src,BGET(autovar_1)); ISET(input,INT2FIX(0));
 	if(fail1) goto alt1_2;
  
 ISET(cut,Qnil);goto accept1;
-alt1_2: ISET(input,oldinput2);if (IGET(cut)!=Qnil) goto break1;
+alt1_2: ISET(input,oldinput2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
   arg0=CALL(vars_in_Dead_Code_Detectorcb_6,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_3);
  BSET(autovar_3,it); VALUE oldinput5=IGET(input);  VALUE oldsrc2=IGET(src); int fail2=0;
 ISET(src,BGET(autovar_3)); ISET(input,INT2FIX(0));
@@ -216,7 +216,7 @@ ISET(src,BGET(autovar_3)); ISET(input,INT2FIX(0));
 	if(fail2) goto alt1_3;
  
 ISET(cut,Qnil);goto accept1;
-alt1_3: ISET(input,oldinput2);if (IGET(cut)!=Qnil) goto break1;
+alt1_3: ISET(input,oldinput2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
   arg0=CALL(vars_in_Dead_Code_Detectorcb_9,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_4);
  BSET(autovar_5,it); VALUE oldinput7=IGET(input);  VALUE oldsrc3=IGET(src); int fail3=0;
 ISET(src,BGET(autovar_5)); ISET(input,INT2FIX(0));
@@ -229,7 +229,7 @@ ISET(src,BGET(autovar_5)); ISET(input,INT2FIX(0));
 	if(fail3) goto alt1_4;
  
 ISET(cut,Qnil);goto accept1;
-alt1_4: ISET(input,oldinput2);if (IGET(cut)!=Qnil) goto break1;
+alt1_4: ISET(input,oldinput2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
   arg0=CALL(vars_in_Dead_Code_Detectorcb_13,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_5);
  BSET(autovar_7,it); VALUE oldinput9=IGET(input);  VALUE oldsrc4=IGET(src); int fail4=0;
 ISET(src,BGET(autovar_7)); ISET(input,INT2FIX(0));
@@ -241,7 +241,7 @@ ISET(src,BGET(autovar_7)); ISET(input,INT2FIX(0));
 	if(fail4) goto alt1_5;
  
 ISET(cut,Qnil);goto accept1;
-alt1_5: ISET(input,oldinput2);if (IGET(cut)!=Qnil) goto break1;
+alt1_5: ISET(input,oldinput2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
   arg0=CALL(vars_in_Dead_Code_Detectorcb_14,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_6);
  BSET(autovar_8,it); VALUE oldinput10=IGET(input);  VALUE oldsrc5=IGET(src); int fail5=0;
 ISET(src,BGET(autovar_8)); ISET(input,INT2FIX(0));
@@ -254,7 +254,7 @@ ISET(src,BGET(autovar_8)); ISET(input,INT2FIX(0));
 	if(fail5) goto alt1_6;
  
 ISET(cut,Qnil);goto accept1;
-alt1_6: ISET(input,oldinput2);if (IGET(cut)!=Qnil) goto break1;
+alt1_6: ISET(input,oldinput2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
   arg0=CALL(vars_in_Dead_Code_Detectorcb_17,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_7);
  BSET(autovar_10,it); VALUE oldinput11=IGET(input);  VALUE oldsrc6=IGET(src); int fail6=0;
 ISET(src,BGET(autovar_10)); ISET(input,INT2FIX(0));
@@ -267,7 +267,7 @@ ISET(src,BGET(autovar_10)); ISET(input,INT2FIX(0));
 	if(fail6) goto alt1_7;
  
 ISET(cut,Qnil);goto accept1;
-alt1_7: ISET(input,oldinput2);if (IGET(cut)!=Qnil) goto break1;
+alt1_7: ISET(input,oldinput2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
   arg0=CALL(vars_in_Dead_Code_Detectorcb_19,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_8);
  BSET(autovar_12,it); VALUE oldinput12=IGET(input);  VALUE oldsrc7=IGET(src); int fail7=0;
 ISET(src,BGET(autovar_12)); ISET(input,INT2FIX(0));
@@ -280,7 +280,7 @@ ISET(src,BGET(autovar_12)); ISET(input,INT2FIX(0));
 	if(fail7) goto alt1_8;
  
 ISET(cut,Qnil);goto accept1;
-alt1_8: ISET(input,oldinput2);if (IGET(cut)!=Qnil) goto break1;
+alt1_8: ISET(input,oldinput2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
   arg0=CALL(vars_in_Dead_Code_Detectorcb_21,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_9);
  BSET(autovar_14,it); VALUE oldinput13=IGET(input);  VALUE oldsrc8=IGET(src); int fail8=0;
 ISET(src,BGET(autovar_14)); ISET(input,INT2FIX(0));
@@ -302,7 +302,7 @@ ISET(src,rb_ary_new3(1,BGET(autovar_15))); ISET(input,INT2FIX(0));
 	if(fail8) goto alt1_9;
  
 ISET(cut,Qnil);goto accept1;
-alt1_9: ISET(input,oldinput2);if (IGET(cut)!=Qnil) goto break1;
+alt1_9: ISET(input,oldinput2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
   arg0=CALL(vars_in_Dead_Code_Detectorcb_24,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_10);
  BSET(autovar_17,it); VALUE oldinput15=IGET(input);  VALUE oldsrc10=IGET(src); int fail10=0;
 ISET(src,BGET(autovar_17)); ISET(input,INT2FIX(0));
@@ -316,7 +316,7 @@ ISET(src,BGET(autovar_17)); ISET(input,INT2FIX(0));
 	if(fail10) goto alt1_10;
  
 ISET(cut,Qnil);goto accept1;
-alt1_10: ISET(input,oldinput2);if (IGET(cut)!=Qnil) goto break1;
+alt1_10: ISET(input,oldinput2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
    it=CALL(anything,0 ); FAILTEST(alt1_11); 
 ISET(cut,Qnil);goto accept1;
   alt1_11:  ISET(input,oldinput2); goto break1;
@@ -330,7 +330,7 @@ VALUE Dead_Code_Deleter_trans(VALUE self );
 VALUE Dead_Code_Deleter_trans(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 VALUE oldinput1=IGET(input);
-alt1_1: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_1: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_Dead_Code_Deletercb_1,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_2);
  BSET(autovar_1,it); VALUE oldinput2=IGET(input);  VALUE oldsrc1=IGET(src); int fail1=0;
 ISET(src,BGET(autovar_1)); ISET(input,INT2FIX(0));
@@ -366,7 +366,7 @@ it=CALL(trans_Dead_Code_Deletercb_7,1,bind);
 it=CALL(trans_Dead_Code_Deletercb_8,1,bind);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_2: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_2: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_Dead_Code_Deletercb_9,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_3);
  BSET(autovar_4,it); VALUE oldinput5=IGET(input);  VALUE oldsrc4=IGET(src); int fail4=0;
 ISET(src,BGET(autovar_4)); ISET(input,INT2FIX(0));
@@ -380,7 +380,7 @@ ISET(src,BGET(autovar_4)); ISET(input,INT2FIX(0));
 it=CALL(trans_Dead_Code_Deletercb_11,1,bind); 
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_3: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_3: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_Dead_Code_Deletercb_12,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_4);
  BSET(autovar_5,it); VALUE oldinput7=IGET(input);  VALUE oldsrc5=IGET(src); int fail5=0;
 ISET(src,BGET(autovar_5)); ISET(input,INT2FIX(0));
@@ -405,7 +405,7 @@ it=CALL(trans_Dead_Code_Deletercb_15,1,bind);
 it=CALL(trans_Dead_Code_Deletercb_16,1,bind); 
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_4: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_4: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_Dead_Code_Deletercb_17,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_5);
  BSET(autovar_7,it); VALUE oldinput9=IGET(input);  VALUE oldsrc7=IGET(src); int fail7=0;
 ISET(src,BGET(autovar_7)); ISET(input,INT2FIX(0));
@@ -419,7 +419,7 @@ ISET(src,BGET(autovar_7)); ISET(input,INT2FIX(0));
 it=CALL(trans_Dead_Code_Deletercb_19,1,bind); 
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_5: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_5: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_Dead_Code_Deletercb_20,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_6);
  BSET(autovar_8,it); VALUE oldinput10=IGET(input);  VALUE oldsrc8=IGET(src); int fail8=0;
 ISET(src,BGET(autovar_8)); ISET(input,INT2FIX(0));
@@ -433,7 +433,7 @@ ISET(src,BGET(autovar_8)); ISET(input,INT2FIX(0));
 it=CALL(trans_Dead_Code_Deletercb_22,1,bind); 
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_6: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_6: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
  it=rb_call_super(0,vals); FAILTEST(alt1_7);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
@@ -447,7 +447,7 @@ VALUE Communize_Or_trans(VALUE self );
 VALUE Communize_Or_trans(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 VALUE oldinput1=IGET(input);
-alt1_1: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_1: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_Communize_Orcb_1,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_2);
  BSET(autovar_1,it); VALUE oldinput2=IGET(input);  VALUE oldsrc1=IGET(src); int fail1=0;
 ISET(src,BGET(autovar_1)); ISET(input,INT2FIX(0));
@@ -485,7 +485,7 @@ ISET(src,BGET(autovar_3)); ISET(input,INT2FIX(0));
 it=CALL(trans_Communize_Orcb_9,1,bind); 
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_2: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_2: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
  it=rb_call_super(0,vals); FAILTEST(alt1_3);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
@@ -500,7 +500,7 @@ VALUE Move_Assignments_trans(VALUE self );
 VALUE Move_Assignments_move(VALUE self ,VALUE a0,VALUE a1){VALUE vals[2]; VALUE bind=rb_hash_new(); BSET(append_1,a0);BSET(name_1,a1); int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 VALUE oldinput1=IGET(input);
-alt1_1: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_1: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(move_Move_Assignmentscb_1,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_2);
  BSET(autovar_1,it); VALUE oldinput2=IGET(input);  VALUE oldsrc1=IGET(src); int fail1=0;
 ISET(src,BGET(autovar_1)); ISET(input,INT2FIX(0));
@@ -516,14 +516,14 @@ ISET(src,BGET(autovar_1)); ISET(input,INT2FIX(0));
 it=CALL(move_Move_Assignmentscb_6,1,bind);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_2: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_2: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(move_Move_Assignmentscb_7,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_3);
  BSET(autovar_4,it); VALUE oldinput4=IGET(input);  VALUE oldsrc2=IGET(src); int fail2=0;
 ISET(src,BGET(autovar_4)); ISET(input,INT2FIX(0));
  it=CALL(move_Move_Assignmentscb_8,1,bind); 
  BSET(autovar_5,it); VALUE oldinput5; while(1){oldinput5=IGET(input);   it=CALL(anything,0 ); FAILTEST(break2);
  BSET(el_1,it); VALUE oldinput6=IGET(input);
-alt2_1: ISET(input,oldinput6);if (IGET(cut)!=Qnil) goto break2;
+alt2_1: ISET(input,oldinput6);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break2;}
  VALUE oldinput7=IGET(input);
    it=CALL(eof,0 ); FAILTEST(reject1); x=1; goto accept3;  reject1: x=0; accept3: it=Qnil; ISET(input,oldinput7); if (x==0) goto alt2_2;it=BGET(el_1);
  BSET(autovar_6,it); VALUE oldinput8=IGET(input);  VALUE oldsrc3=IGET(src); int fail3=0;
@@ -537,7 +537,7 @@ ISET(src,rb_ary_new3(1,BGET(autovar_6))); ISET(input,INT2FIX(0));
 	if(fail3) goto alt2_2;
  
 ISET(cut,Qnil);goto accept2;
-alt2_2: ISET(input,oldinput6);if (IGET(cut)!=Qnil) goto break2;
+alt2_2: ISET(input,oldinput6);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break2;}
  it=BGET(el_1);
  BSET(autovar_7,it);  
 ISET(cut,Qnil);goto accept2;
@@ -553,7 +553,7 @@ it=CALL(move_Move_Assignmentscb_11,1,bind);  if (IGET(stop)!=Qnil){{oldinput5=IG
 it=CALL(move_Move_Assignmentscb_12,1,bind);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_3: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_3: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(move_Move_Assignmentscb_13,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_4);
  BSET(autovar_8,it); VALUE oldinput9=IGET(input);  VALUE oldsrc4=IGET(src); int fail4=0;
 ISET(src,BGET(autovar_8)); ISET(input,INT2FIX(0));
@@ -578,7 +578,7 @@ it=CALL(move_Move_Assignmentscb_18,1,bind);
 it=CALL(move_Move_Assignmentscb_19,1,bind);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_4: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_4: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=CALL(anything,0 ); FAILTEST(alt1_5);
  BSET(it_1,it); it=CALL(move_Move_Assignmentscb_20,1,bind); 
  BSET(_result_1,it);  
@@ -591,7 +591,7 @@ fail: return failobj; }
 VALUE Move_Assignments_trans(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 VALUE oldinput1=IGET(input);
-alt1_1: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_1: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(trans_Move_Assignmentscb_1,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_2);
  BSET(autovar_1,it); VALUE oldinput2=IGET(input);  VALUE oldsrc1=IGET(src); int fail1=0;
 ISET(src,BGET(autovar_1)); ISET(input,INT2FIX(0));
@@ -625,7 +625,7 @@ ISET(src,rb_ary_new3(1,BGET(autovar_3))); ISET(input,INT2FIX(0));
 	if(fail1) goto alt1_2;
  
 ISET(cut,Qnil);goto accept1;
-alt1_2: ISET(input,oldinput1);if (IGET(cut)!=Qnil) goto fail;
+alt1_2: ISET(input,oldinput1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
  it=rb_call_super(0,vals); FAILTEST(alt1_3);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
