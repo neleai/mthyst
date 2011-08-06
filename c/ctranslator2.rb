@@ -207,10 +207,10 @@ def trans_AmethystCTranslatorcb_17(bind)
 @src.body
 end
 def trans_AmethystCTranslatorcb_18(bind)
-h="VALUE #{@grammar}_#{bind[:name_1]}(VALUE self #{@src.args.size.times.map{|i| ",VALUE a#{i}"}})" 
+h="VALUE #{@grammar}_#{bind[:name_1]}(VALUE self #{map_index(@src.args){|i| ",VALUE a#{i}"}})" 
 						@header<<h+";"
 						@defmethods<< "rb_define_method(cls_#{@grammar},\"#{@src.name}\",#{@grammar}_#{@src.name},#{@src.args.size});"
-						h+"{VALUE vals[#{@src.args.size}]; VALUE bind=rb_hash_new(); #{@src.args.size.times.map{|i| bset(@src.args[i].desc,"a#{i}")+";"}} int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+						h+"{VALUE vals[#{@src.args.size}]; VALUE bind=rb_hash_new(); #{map_index(@src.args){|i| bset(@src.args[i].desc,"a#{i}")+";"}} int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 \n#{bind[:body_1]}\nreturn it;\nfail: return failobj; }" 
 end
 def trans_AmethystCTranslatorcb_19(bind)
@@ -238,7 +238,7 @@ def trans_AmethystCTranslatorcb_25(bind)
 "super"
 end
 def trans_AmethystCTranslatorcb_26(bind)
-rule=@ruletable[@rulename];  failwrap(rule.args.size.times.map{|i|"vals[#{i}]=#{bget(rule.args[i].desc)};"}*""+ "it=rb_call_super(#{rule.args.size},vals);")
+rule=@ruletable[@rulename];  failwrap(map_index(rule.args){|i|"vals[#{i}]=#{bget(rule.args[i].desc)};"}*""+ "it=rb_call_super(#{rule.args.size},vals);")
 end
 def trans_AmethystCTranslatorcb_27(bind)
 Apply
@@ -256,7 +256,7 @@ def trans_AmethystCTranslatorcb_30(bind)
 bind[:autovar_15]||=[];_append(bind[:autovar_15],bind[:autovar_16])
 end
 def trans_AmethystCTranslatorcb_31(bind)
-" #{bind[:args_1].size.times.map{|a|"arg#{a}=CALL(#{bind[:args_1][a]},1,bind);"}} it=CALL(#{bind[:name_1]},#{bind[:args_1].size} #{bind[:args_1].size.times.map{|a|",arg#{a}"}});"
+" #{map_index(bind[:args_1]){|a|"arg#{a}=CALL(#{bind[:args_1][a]},1,bind);"}} it=CALL(#{bind[:name_1]},#{bind[:args_1].size} #{map_index(bind[:args_1]){|a|",arg#{a}"}});"
 end
 def trans_AmethystCTranslatorcb_32(bind)
 Seq
@@ -322,7 +322,7 @@ def trans_AmethystCTranslatorcb_50(bind)
 bind[:s_1]="VALUE #{bind[:oldinput_1]}=#{iget("input")};\n"
 end
 def trans_AmethystCTranslatorcb_51(bind)
-bind[:t_1].size.times{|i| bind[:s_1]<<"#{bind[:alt_1]}_#{i+1}: #{iset("input",bind[:oldinput_1])};if (#{iget("cut")}!=Qnil) goto #{bind[:fail_1]};\n #{bind[:t_1][i]} \n#{iset("cut","Qnil")};goto #{bind[:accept_1]};\n"}
+bind[:s_1]+=map_index(bind[:t_1]){|i| "#{bind[:alt_1]}_#{i+1}: #{iset("input",bind[:oldinput_1])};if (#{iget("cut")}!=Qnil) goto #{bind[:fail_1]};\n #{bind[:t_1][i]} \n#{iset("cut","Qnil")};goto #{bind[:accept_1]};\n"}*""
 end
 def trans_AmethystCTranslatorcb_52(bind)
 "#{bind[:s_1]}  #{bind[:alt_1]}_#{bind[:altno_1]+1}:  #{iset("input",bind[:oldinput_1])}; goto #{bind[:fail_1]};\n #{bind[:accept_1]}:;\n"

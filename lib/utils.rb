@@ -54,3 +54,7 @@ def makeclasses(parent,*ary)
 	}
 
 end
+
+def map_index(s)
+	s.size.times.map{|a| yield(a)}
+end

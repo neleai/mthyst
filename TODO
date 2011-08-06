@@ -13,3 +13,6 @@ initialize append variables as []
 generic parent(Class) in tree traversal
 super in c
 variable cget,cset,rbget,rbset or some other generalization
+work in 1.9.1
+unify lambda+rule in ctranslator2
+bind cut,stop to corresponding many,or

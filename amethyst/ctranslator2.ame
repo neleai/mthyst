@@ -66,21 +66,21 @@ failobj=rb_eval_string(\"FAIL\");
 "
 							[s,init,rbcode] } ]
 				|  Rule[@name:name {@@rulename=name; Local.resetnumbering;resetlabels} @body=>trans:body  
-          { h="VALUE #{@@grammar}_#{name}(VALUE self #{@args.size.times.map{|i| ",VALUE a#{i}"}})" 
+          { h="VALUE #{@@grammar}_#{name}(VALUE self #{map_index(@args){|i| ",VALUE a#{i}"}})" 
 						@@header<<h+";"
 						@@defmethods<< "rb_define_method(cls_#{@@grammar},\"#{@name}\",#{@@grammar}_#{@name},#{@args.size});"
-						h+"{VALUE vals[#{@args.size}]; VALUE bind=rb_hash_new(); #{@args.size.times.map{|i| bset(@args[i].desc,"a#{i}")+";"}} int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+						h+"{VALUE vals[#{@args.size}]; VALUE bind=rb_hash_new(); #{map_index(@args){|i| bset(@args[i].desc,"a#{i}")+";"}} int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 \n#{body}\nreturn it;\nfail: return failobj; }" } ]
 				| Act[ .*:{addcallback(@pred ? ["(",it,") || FAIL"] : it)}:cbno {"it=CALL(#{cbno},1,bind); #{@pred ? "FAILTEST(#{@@faillabel});" :"" }"} ]
-				| Apply[ .=>["super"] {rule=@@ruletable[@@rulename];  failwrap(rule.args.size.times.map{|i|"vals[#{i}]=#{bget(rule.args[i].desc)};"}*""+ "it=rb_call_super(#{rule.args.size},vals);")} ]
+				| Apply[ .=>["super"] {rule=@@ruletable[@@rulename];  failwrap(map_index(rule.args){|i|"vals[#{i}]=#{bget(rule.args[i].desc)};"}*""+ "it=rb_call_super(#{rule.args.size},vals);")} ]
 				| Apply[:name (.:{addcallback(it)}*):args 
-            failwrap(" #{args.size.times.map{|a|"arg#{a}=CALL(#{args[a]},1,bind);"}} it=CALL(#{name},#{args.size} #{args.size.times.map{|a|",arg#{a}"}});")]
+            failwrap(" #{map_index(args){|a|"arg#{a}=CALL(#{args[a]},1,bind);"}} it=CALL(#{name},#{args.size} #{map_index(args){|a|",arg#{a}"}});")]
 				| Seq[ trans*:t {t*""} ]
 				| Set[ @expr=>trans:e {"#{e}\n #{bset(@name.desc,"it")}; " } ]
 				| Or[ {label("accept")}:accept {@@faillabel}:fail {label("oldinput")}:oldinput label("alt"):alt {0}:altno
 					 ( &(.) {altno+=1} rw("#{alt}_#{altno+1}",`trans`))*:t
 					 {s="VALUE #{oldinput}=#{iget("input")};\n"}
-           {t.size.times{|i| s<<"#{alt}_#{i+1}: #{iset("input",oldinput)};if (#{iget("cut")}!=Qnil) goto #{fail};\n #{t[i]} \n#{iset("cut","Qnil")};goto #{accept};\n"}}
+           {s+=map_index(t){|i| "#{alt}_#{i+1}: #{iset("input",oldinput)};if (#{iget("cut")}!=Qnil) goto #{fail};\n #{t[i]} \n#{iset("cut","Qnil")};goto #{accept};\n"}*""}
            {"#{s}  #{alt}_#{altno+1}:  #{iset("input",oldinput)}; goto #{fail};\n #{accept}:;\n"}
 					]
 				| Cut[] {"#{iset("cut","Qtrue")};"}

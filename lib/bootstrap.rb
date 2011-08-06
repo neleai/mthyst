@@ -1998,7 +1998,7 @@ it=_pass(false,bind[:autovar_4]){it=trans();next FAIL if it==FAIL
 bind[:body_1] = it
 bind[:_result_1] = it};next FAIL if it==FAIL
 it=bind[:_result_1] });next FAIL if it==FAIL
-it=("def #{bind[:name_1]}(#{@src.args.size.times.map{|i| "a#{i}"}*","})\nbind={}; #{@src.args.size.times.map{|i| "bind[:#{@src.args[i].desc}]=a#{i}"}*";"}\n  it=nil\n\n#{bind[:body_1]} \nend\n")
+it=("def #{bind[:name_1]}(#{map_index(@src.args){|i| "a#{i}"}*","})\nbind={}; #{@src.args.size.times.map{|i| "bind[:#{@src.args[i].desc}]=a#{i}"}*";"}\n  it=nil\n\n#{bind[:body_1]} \nend\n")
 bind[:_result_1] = it };next FAIL if it==FAIL },proc{it=clas(Or);next FAIL if it==FAIL
 bind[:autovar_5] = it
 it=_pass(true,bind[:autovar_5]){it=rw('next', proc{it=([])
