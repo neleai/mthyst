@@ -98,15 +98,15 @@ failobj=rb_eval_string(\"FAIL\");
 					cbno=addcallback(s)
 					"it=CALL(#{cbno},1,bind);"
 				} ]
-				| Pass[ label("pass"):pass label("oldpos"):oldpos label("oldsrc"):oldsrc label("success"):success label("fail"):fail
+				| Pass[ label("pass"):pass label("oldpos"):oldpos label("oldlen"):oldlen label("oldsrc"):oldsrc label("success"):success label("fail"):fail
 						rw(pass,`@to=>trans:to`)
-					{  "VALUE #{oldpos}=ame_getpos(self);  VALUE #{oldsrc}=#{iget("src")}; int #{fail}=0;
-#{iset("src",@enter ? bget(@var.desc) : "rb_ary_new3(1,#{bget(@var.desc)})")}; ame_setpos(self,INT2FIX(0));
+					{  "VALUE #{oldpos}=ame_getpos(self); VALUE #{oldlen}=ame_getlen(self); VALUE #{oldsrc}=#{iget("src")}; int #{fail}=0;
+#{iset("src",@enter ? bget(@var.desc) : "rb_ary_new3(1,#{bget(@var.desc)})")}; ame_setpos(self,INT2FIX(0)); ame_setlen(self,rb_funcall(#{iget("src")},rb_intern(\"size\"),0));
  #{to}
 	if (CALL(eof,0)==failobj) goto #{pass};
 	goto #{success};
 	#{pass}: #{fail}=1;
-	#{success}: #{iset("src",oldsrc)}; ame_setpos(self,#{oldpos});
+	#{success}: #{iset("src",oldsrc)}; ame_setpos(self,#{oldpos}); ame_setlen(self,#{oldlen});
 	if(#{fail}) goto #{@@faillabel};
 " }
 					]
