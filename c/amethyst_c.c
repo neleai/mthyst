@@ -82,7 +82,7 @@ return it;
 fail: return failobj; }
 VALUE Amethyst_endline(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-VALUE oldpos1=ame_getpos(self);
+int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(endline_Amethystcb_1,1,bind); it=CALL(seq,1 ,arg0); FAILTEST(alt1_2);
  BSET(_result_1,it);  
@@ -102,7 +102,7 @@ return it;
 fail: return failobj; }
 VALUE Amethyst_eof(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-VALUE oldpos1=ame_getpos(self);
+int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=CALL(anything,0 ); FAILTEST(alt1_2);ISET(cut,Qtrue);  it=CALL(fails,0 ); FAILTEST(alt1_2);
  BSET(_result_1,it);  
@@ -131,7 +131,7 @@ return it;
 fail: return failobj; }
 VALUE Amethyst_letter(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-VALUE oldpos1=ame_getpos(self);
+int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=CALL(lower,0 ); FAILTEST(alt1_2);
  BSET(_result_1,it);  
@@ -147,7 +147,7 @@ return it;
 fail: return failobj; }
 VALUE Amethyst_letterOrDigit(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-VALUE oldpos1=ame_getpos(self);
+int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=CALL(letter,0 ); FAILTEST(alt1_2);
  BSET(_result_1,it);  
@@ -163,11 +163,11 @@ return it;
 fail: return failobj; }
 VALUE Amethyst_listOf(VALUE self ,VALUE a0,VALUE a1){VALUE vals[2]; VALUE bind=rb_hash_new(); BSET(rule_1,a0);BSET(delim_1,a1); int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-VALUE oldpos1=ame_getpos(self);
+int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   arg0=CALL(listOf_Amethystcb_1,1,bind); it=CALL(apply,1 ,arg0); FAILTEST(alt1_2);
  BSET(autovar_1,it); it=CALL(listOf_Amethystcb_2,1,bind); it=CALL(listOf_Amethystcb_3,1,bind); 
- BSET(autovar_2,it); VALUE oldpos2; while(1){oldpos2=ame_getpos(self);  arg0=CALL(listOf_Amethystcb_4,1,bind); it=CALL(apply,1 ,arg0); FAILTEST(break1); arg0=CALL(listOf_Amethystcb_5,1,bind); it=CALL(apply,1 ,arg0); FAILTEST(break1);
+ BSET(autovar_2,it); int oldpos2; while(1){oldpos2=ame_getpos(self);  arg0=CALL(listOf_Amethystcb_4,1,bind); it=CALL(apply,1 ,arg0); FAILTEST(break1); arg0=CALL(listOf_Amethystcb_5,1,bind); it=CALL(apply,1 ,arg0); FAILTEST(break1);
  BSET(autovar_3,it); it=CALL(listOf_Amethystcb_6,1,bind);  if (IGET(stop)!=Qnil){{oldpos2=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos2); it=BGET(autovar_2);
  BSET(autovar_4,it); it=CALL(listOf_Amethystcb_7,1,bind); it=BGET(f_1);
  BSET(_result_1,it);  
@@ -203,7 +203,7 @@ fail: return failobj; }
 VALUE Amethyst_spaces(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 it=CALL(spaces_Amethystcb_1,1,bind); 
- BSET(autovar_1,it); VALUE oldpos1; while(1){oldpos1=ame_getpos(self);   it=CALL(space,0 ); FAILTEST(break1);
+ BSET(autovar_1,it); int oldpos1; while(1){oldpos1=ame_getpos(self);   it=CALL(space,0 ); FAILTEST(break1);
  BSET(autovar_2,it); it=CALL(spaces_Amethystcb_2,1,bind);  if (IGET(stop)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos1); it=BGET(autovar_1);
  BSET(_result_1,it); it=BGET(_result_1);
 return it;
@@ -222,7 +222,7 @@ return it;
 fail: return failobj; }
 VALUE Amethyst_word(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-VALUE oldpos1=ame_getpos(self);
+int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=CALL(alpha,0 ); FAILTEST(alt1_2);
  BSET(_result_1,it);  

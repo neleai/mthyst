@@ -7,39 +7,44 @@ typedef struct{
 	int pos;int len;
 } cstruct;
 
-VALUE ame_setlen(VALUE self,VALUE val){
+int ame_setlen(VALUE self,int val){
 	cstruct  *ptr;
   Data_Get_Struct(self,cstruct,ptr);
 	ptr->len=val;
 	return val;
 }
-VALUE ame_getlen(VALUE self){
+int ame_getlen(VALUE self){
 	cstruct  *ptr;
   Data_Get_Struct(self,cstruct,ptr);
 	return ptr->len;
 }
 
-VALUE ame_setpos(VALUE self,VALUE val){
+int ame_setpos(VALUE self,int val){
 	cstruct  *ptr;
   Data_Get_Struct(self,cstruct,ptr);
 	ptr->pos=val;
 	return val;
 }
-VALUE ame_getpos(VALUE self){
+int ame_getpos(VALUE self){
 	cstruct  *ptr;
   Data_Get_Struct(self,cstruct,ptr);
 	return ptr->pos;
 }
+VALUE ame_setlenrb(VALUE self,VALUE val){return INT2FIX(ame_setlen(self,FIX2INT(val)));}
+VALUE ame_setposrb(VALUE self,VALUE val){return INT2FIX(ame_setpos(self,FIX2INT(val)));}
+VALUE ame_getlenrb(VALUE self,VALUE val){return INT2FIX(ame_getlen(self));}
+VALUE ame_getposrb(VALUE self,VALUE val){return INT2FIX(ame_getpos(self));}
+
 
 VALUE ame_seq(VALUE self,VALUE str){
 	int len=RSTRING(str)->len;
 	VALUE src=rb_ivar_get(self,s_src);
 	if (TYPE(src)==T_STRING){
-		int input=FIX2INT(ame_getpos(self));
+		int input=ame_getpos(self);
 		if (strncmp(RSTRING(src)->ptr+input,RSTRING(str)->ptr,len)) 
 			{ return failobj; }
 		else {
-			ame_setpos(self,INT2FIX(input+len));
+			ame_setpos(self,input+len);
 			return str;
 		}
 	}else{
@@ -49,15 +54,15 @@ VALUE ame_seq(VALUE self,VALUE str){
 VALUE ame_anything(VALUE self){
 	VALUE r;
   VALUE src=rb_ivar_get(self,s_src);
-  int input=FIX2INT(ame_getpos(self));
-	int len=FIX2INT(ame_getlen(self));
+  int input=ame_getpos(self);
+	int len=ame_getlen(self);
 	if (len<=input) return failobj;
 	if(TYPE(src)==T_STRING){
 		r=rb_str_new(RSTRING(src)->ptr+input,1);
 	}else{
 		r= rb_funcall(src,rb_intern("[]"),1,INT2FIX(input));
 	}
-	ame_setpos(self,INT2FIX(input+1));
+	ame_setpos(self,input+1);
 	return r;
 }
 VALUE ame_lookahead(VALUE self,VALUE neg){
@@ -110,10 +115,10 @@ void Init_Ame(VALUE self){
 	failobj=rb_eval_string("FAIL");
 	amecore=rb_define_class("AmethystCore",rb_cObject);
 	rb_define_singleton_method(amecore,"new",ame_new,0);
-	rb_define_method(amecore,"pos=",ame_setpos,1);
-	rb_define_method(amecore,"pos",ame_getpos,0);
-	rb_define_method(amecore,"len=",ame_setlen,1);
-	rb_define_method(amecore,"len",ame_getlen,0);
+	rb_define_method(amecore,"pos=",ame_setposrb,1);
+	rb_define_method(amecore,"pos",ame_getposrb,0);
+	rb_define_method(amecore,"len=",ame_setlenrb,1);
+	rb_define_method(amecore,"len",ame_getlenrb,0);
 
 	rb_define_method(amecore,"seq",ame_seq,1);
 	rb_define_method(amecore,"anything",ame_anything,0);

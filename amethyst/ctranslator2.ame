@@ -79,7 +79,7 @@ failobj=rb_eval_string(\"FAIL\");
 				| Set[ @expr=>trans:e {"#{e}\n #{bset(@name.desc,"it")}; " } ]
 				| Or[ {label("accept")}:accept {@@faillabel}:fail {label("oldpos")}:oldpos label("alt"):alt {0}:altno
 					 ( &(.) {altno+=1} rw("#{alt}_#{altno+1}",`trans`))*:t
-					 {s="VALUE #{oldpos}=ame_getpos(self);\n"}
+					 {s="int #{oldpos}=ame_getpos(self);\n"}
            {s+=map_index(t){|i| "#{alt}_#{i+1}: ame_setpos(self,#{oldpos});if (#{iget("cut")}!=Qnil) {#{iset("cut","Qnil")}; goto #{fail};}\n #{t[i]} \n#{iset("cut","Qnil")};goto #{accept};\n"}*""}
            {"#{s}  #{alt}_#{altno+1}:  ame_setpos(self,#{oldpos}); goto #{fail};\n #{accept}:;\n"}
 					]
@@ -88,11 +88,11 @@ failobj=rb_eval_string(\"FAIL\");
 
 				| Many[ {label("break")}:brk {label("oldpos")}:oldpos
 						rw(brk,`trans:t`)
-						{"VALUE #{oldpos}; while(1){#{oldpos}=ame_getpos(self); #{t} if (#{iget("stop")}!=Qnil){{#{oldpos}=ame_getpos(self);goto #{brk};} } } #{brk}: #{iset("stop","Qnil")};  ame_setpos(self,#{oldpos}); "}
+						{"int #{oldpos}; while(1){#{oldpos}=ame_getpos(self); #{t} if (#{iget("stop")}!=Qnil){{#{oldpos}=ame_getpos(self);goto #{brk};} } } #{brk}: #{iset("stop","Qnil")};  ame_setpos(self,#{oldpos}); "}
 					]
 				| Lookahead[ {label("accept")}:accept {label("reject")}:reject {label("oldpos")}:oldpos 
 										 rw(reject,`trans:t`) 
-										 {"VALUE #{oldpos}=ame_getpos(self);\n #{t} x=1; goto #{accept};  #{reject}: x=0; #{accept}: it=Qnil; ame_setpos(self,#{oldpos}); if (x==#{@neg ? 1 : 0}) goto #{@@faillabel};"} ]
+										 {"int #{oldpos}=ame_getpos(self);\n #{t} x=1; goto #{accept};  #{reject}: x=0; #{accept}: it=Qnil; ame_setpos(self,#{oldpos}); if (x==#{@neg ? 1 : 0}) goto #{@@faillabel};"} ]
 				| Local[ .* { "it=#{bget(@desc)};" } ]
 				| Result[ @args=>rbtrans:argss  { s="#{@name}.create(#{argss} {#{@vars.map{|l| ":#{l[0]}=>bind[:#{l.desc}]" }.sort*","} })"
 					cbno=addcallback(s)
@@ -100,8 +100,8 @@ failobj=rb_eval_string(\"FAIL\");
 				} ]
 				| Pass[ label("pass"):pass label("oldpos"):oldpos label("oldlen"):oldlen label("oldsrc"):oldsrc label("success"):success label("fail"):fail
 						rw(pass,`@to=>trans:to`)
-					{  "VALUE #{oldpos}=ame_getpos(self); VALUE #{oldlen}=ame_getlen(self); VALUE #{oldsrc}=#{iget("src")}; int #{fail}=0;
-#{iset("src",@enter ? bget(@var.desc) : "rb_ary_new3(1,#{bget(@var.desc)})")}; ame_setpos(self,INT2FIX(0)); ame_setlen(self,rb_funcall(#{iget("src")},rb_intern(\"size\"),0));
+					{  "int #{oldpos}=ame_getpos(self); int #{oldlen}=ame_getlen(self); VALUE #{oldsrc}=#{iget("src")}; int #{fail}=0;
+#{iset("src",@enter ? bget(@var.desc) : "rb_ary_new3(1,#{bget(@var.desc)})")}; ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(#{iget("src")},rb_intern(\"size\"),0)));
  #{to}
 	if (CALL(eof,0)==failobj) goto #{pass};
 	goto #{success};
