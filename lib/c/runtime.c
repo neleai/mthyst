@@ -17,7 +17,7 @@ VALUE ame_setsrc(VALUE self,VALUE val){
 VALUE ame_getsrc(VALUE self){
 	cstruct  *ptr;
   Data_Get_Struct(self,cstruct,ptr);
-	return rb_ivar_get(self,s_src);
+//	return rb_ivar_get(self,s_src);
 	return ptr->src;
 }
 
