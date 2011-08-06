@@ -7,6 +7,18 @@ typedef struct{
 	int pos;int len;
 } cstruct;
 
+VALUE ame_setlen(VALUE self,VALUE val){
+	cstruct  *ptr;
+  Data_Get_Struct(self,cstruct,ptr);
+	ptr->len=val;
+	return val;
+}
+VALUE ame_getlen(VALUE self){
+	cstruct  *ptr;
+  Data_Get_Struct(self,cstruct,ptr);
+	return ptr->len;
+}
+
 VALUE ame_setpos(VALUE self,VALUE val){
 	cstruct  *ptr;
   Data_Get_Struct(self,cstruct,ptr);
