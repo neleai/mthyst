@@ -36,34 +36,31 @@ def listOf_Amethystcb_1(bind)
 []
 end
 def listOf_Amethystcb_10(bind)
-_append(bind[:f_1],bind[:autovar_4])
-end
-def listOf_Amethystcb_11(bind)
 []
 end
 def listOf_Amethystcb_2(bind)
 []
 end
 def listOf_Amethystcb_3(bind)
-[]
+bind[:rule_1]
 end
 def listOf_Amethystcb_4(bind)
-bind[:rule_1]
-end
-def listOf_Amethystcb_5(bind)
 _append(bind[:f_1],bind[:autovar_2])
 end
-def listOf_Amethystcb_6(bind)
+def listOf_Amethystcb_5(bind)
 []
 end
-def listOf_Amethystcb_7(bind)
+def listOf_Amethystcb_6(bind)
 bind[:delim_1]
 end
-def listOf_Amethystcb_8(bind)
+def listOf_Amethystcb_7(bind)
 bind[:rule_1]
 end
-def listOf_Amethystcb_9(bind)
+def listOf_Amethystcb_8(bind)
 _append(bind[:autovar_1],bind[:autovar_3])
+end
+def listOf_Amethystcb_9(bind)
+_append(bind[:f_1],bind[:autovar_4])
 end
 def lower_Amethystcb_1(bind)
 /[a-z]/

@@ -165,18 +165,17 @@ VALUE Amethyst_listOf(VALUE self ,VALUE a0,VALUE a1){VALUE vals[2]; VALUE bind=r
 
 it=CALL(listOf_Amethystcb_1,1,bind); 
  BSET(f_1,it); it=CALL(listOf_Amethystcb_2,1,bind); 
- BSET(autovar_1,it); it=CALL(listOf_Amethystcb_3,1,bind); 
- BSET(f_1,it); int oldpos1=ame_getpos(self);
+ BSET(autovar_1,it); int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  arg0=CALL(listOf_Amethystcb_4,1,bind); it=CALL(apply,1 ,arg0); FAILTEST(alt1_2);
- BSET(autovar_2,it); it=CALL(listOf_Amethystcb_5,1,bind); it=CALL(listOf_Amethystcb_6,1,bind); 
- BSET(autovar_1,it); int oldpos2; while(1){oldpos2=ame_getpos(self);  arg0=CALL(listOf_Amethystcb_7,1,bind); it=CALL(apply,1 ,arg0); FAILTEST(break1); arg0=CALL(listOf_Amethystcb_8,1,bind); it=CALL(apply,1 ,arg0); FAILTEST(break1);
- BSET(autovar_3,it); it=CALL(listOf_Amethystcb_9,1,bind);  if (IGET(stop)!=Qnil){{oldpos2=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos2); it=BGET(autovar_1);
- BSET(autovar_4,it); it=CALL(listOf_Amethystcb_10,1,bind); it=BGET(f_1);
+  arg0=CALL(listOf_Amethystcb_3,1,bind); it=CALL(apply,1 ,arg0); FAILTEST(alt1_2);
+ BSET(autovar_2,it); it=CALL(listOf_Amethystcb_4,1,bind); it=CALL(listOf_Amethystcb_5,1,bind); 
+ BSET(autovar_1,it); int oldpos2; while(1){oldpos2=ame_getpos(self);  arg0=CALL(listOf_Amethystcb_6,1,bind); it=CALL(apply,1 ,arg0); FAILTEST(break1); arg0=CALL(listOf_Amethystcb_7,1,bind); it=CALL(apply,1 ,arg0); FAILTEST(break1);
+ BSET(autovar_3,it); it=CALL(listOf_Amethystcb_8,1,bind);  if (IGET(stop)!=Qnil){{oldpos2=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos2); it=BGET(autovar_1);
+ BSET(autovar_4,it); it=CALL(listOf_Amethystcb_9,1,bind); it=BGET(f_1);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-   it=CALL(empty,0 ); FAILTEST(alt1_3);it=CALL(listOf_Amethystcb_11,1,bind); 
+   it=CALL(empty,0 ); FAILTEST(alt1_3);it=CALL(listOf_Amethystcb_10,1,bind); 
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto fail;

@@ -90,106 +90,85 @@ def vars_in_Dead_Code_Detectorcb_1(bind)
 []
 end
 def vars_in_Dead_Code_Detectorcb_10(bind)
-Global
+Key
 end
 def vars_in_Dead_Code_Detectorcb_11(bind)
 @src.self
 end
 def vars_in_Dead_Code_Detectorcb_12(bind)
-_append(bind[:ary_1],bind[:autovar_2])
+_append(bind[:ary_1],bind[:autovar_6])
 end
 def vars_in_Dead_Code_Detectorcb_13(bind)
 @marked<<@src.self
 end
 def vars_in_Dead_Code_Detectorcb_14(bind)
-Act
-end
-def vars_in_Dead_Code_Detectorcb_15(bind)
-@src.self
-end
-def vars_in_Dead_Code_Detectorcb_16(bind)
-_append(bind[:ary_1],bind[:autovar_4])
-end
-def vars_in_Dead_Code_Detectorcb_17(bind)
-Key
-end
-def vars_in_Dead_Code_Detectorcb_18(bind)
-@src.self
-end
-def vars_in_Dead_Code_Detectorcb_19(bind)
-_append(bind[:ary_1],bind[:autovar_6])
-end
-def vars_in_Dead_Code_Detectorcb_2(bind)
-[]
-end
-def vars_in_Dead_Code_Detectorcb_20(bind)
-@marked<<@src.self
-end
-def vars_in_Dead_Code_Detectorcb_21(bind)
 Exp
 end
-def vars_in_Dead_Code_Detectorcb_22(bind)
+def vars_in_Dead_Code_Detectorcb_15(bind)
 Result
 end
-def vars_in_Dead_Code_Detectorcb_23(bind)
+def vars_in_Dead_Code_Detectorcb_16(bind)
 @src.self
 end
-def vars_in_Dead_Code_Detectorcb_24(bind)
+def vars_in_Dead_Code_Detectorcb_17(bind)
 _append(bind[:ary_1],bind[:autovar_9])
 end
-def vars_in_Dead_Code_Detectorcb_25(bind)
+def vars_in_Dead_Code_Detectorcb_18(bind)
 Strin
 end
-def vars_in_Dead_Code_Detectorcb_26(bind)
+def vars_in_Dead_Code_Detectorcb_19(bind)
 _append(bind[:ary_1],bind[:autovar_11])
 end
-def vars_in_Dead_Code_Detectorcb_27(bind)
+def vars_in_Dead_Code_Detectorcb_2(bind)
+bind[:ary_1]=[]
+end
+def vars_in_Dead_Code_Detectorcb_20(bind)
 Args
 end
-def vars_in_Dead_Code_Detectorcb_28(bind)
+def vars_in_Dead_Code_Detectorcb_21(bind)
 _append(bind[:ary_1],bind[:autovar_13])
 end
-def vars_in_Dead_Code_Detectorcb_29(bind)
+def vars_in_Dead_Code_Detectorcb_22(bind)
 Set
 end
-def vars_in_Dead_Code_Detectorcb_3(bind)
-[]
-end
-def vars_in_Dead_Code_Detectorcb_30(bind)
+def vars_in_Dead_Code_Detectorcb_23(bind)
 @src.name
 end
-def vars_in_Dead_Code_Detectorcb_31(bind)
+def vars_in_Dead_Code_Detectorcb_24(bind)
 _append(bind[:ary_1],bind[:autovar_16])
 end
-def vars_in_Dead_Code_Detectorcb_32(bind)
+def vars_in_Dead_Code_Detectorcb_25(bind)
 Local
 end
-def vars_in_Dead_Code_Detectorcb_33(bind)
+def vars_in_Dead_Code_Detectorcb_26(bind)
 @marked<<@src.self if bind[:name_1]=="_result"
 end
-def vars_in_Dead_Code_Detectorcb_34(bind)
+def vars_in_Dead_Code_Detectorcb_27(bind)
 @src.self
 end
-def vars_in_Dead_Code_Detectorcb_35(bind)
+def vars_in_Dead_Code_Detectorcb_28(bind)
 _append(bind[:ary_1],bind[:autovar_18])
 end
+def vars_in_Dead_Code_Detectorcb_3(bind)
+Global
+end
 def vars_in_Dead_Code_Detectorcb_4(bind)
-[]
+@src.self
 end
 def vars_in_Dead_Code_Detectorcb_5(bind)
-[]
+_append(bind[:ary_1],bind[:autovar_2])
 end
 def vars_in_Dead_Code_Detectorcb_6(bind)
-[]
+@marked<<@src.self
 end
 def vars_in_Dead_Code_Detectorcb_7(bind)
-[]
+Act
 end
 def vars_in_Dead_Code_Detectorcb_8(bind)
-[]
+@src.self
 end
 def vars_in_Dead_Code_Detectorcb_9(bind)
-bind[:ary_1]=[]
+_append(bind[:ary_1],bind[:autovar_4])
 end
 
 end

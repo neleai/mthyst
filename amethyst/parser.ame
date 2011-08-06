@@ -25,7 +25,7 @@ amethyst AmethystParser < Amethyst{
 	
   rule = {@@locals=[];$appends=[];@@bnding=Bnding[]} {@@bnding}:bnding  
 				 name:name  ruleargs:args "=" expression:body  
-	   		 {_body(body)}:body {@@locals.uniq}:locals {body=Seq[{:ary=>($appends.map{|a| _Set(a,Act[Args["[]"]])}+[body])}]; }	 @Rule
+	   		 {_body(body)}:body {@@locals.uniq}:locals {body=Seq[{:ary=>($appends.uniq.map{|a| _Set(a,Act[Args["[]"]])}+[body])}]; }	 @Rule
 
 	expression = choice
 	
