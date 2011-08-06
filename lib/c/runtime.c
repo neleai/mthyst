@@ -7,6 +7,22 @@ typedef struct{
 	int pos;int len;
 } cstruct;
 
+VALUE ame_setsrc(VALUE self,VALUE val){
+	cstruct  *ptr;
+  Data_Get_Struct(self,cstruct,ptr);
+	rb_ivar_set(self,s_src,val);
+	ptr->src=val;
+	return val;
+}
+VALUE ame_getsrc(VALUE self){
+	cstruct  *ptr;
+  Data_Get_Struct(self,cstruct,ptr);
+	return rb_ivar_get(self,s_src);
+	return ptr->src;
+}
+
+
+
 int ame_setlen(VALUE self,int val){
 	cstruct  *ptr;
   Data_Get_Struct(self,cstruct,ptr);
@@ -38,7 +54,7 @@ VALUE ame_getposrb(VALUE self,VALUE val){return INT2FIX(ame_getpos(self));}
 
 VALUE ame_seq(VALUE self,VALUE str){
 	int len=RSTRING(str)->len;
-	VALUE src=rb_ivar_get(self,s_src);
+	VALUE src=ame_getsrc(self);
 	if (TYPE(src)==T_STRING){
 		int input=ame_getpos(self);
 		if (strncmp(RSTRING(src)->ptr+input,RSTRING(str)->ptr,len)) 
@@ -53,7 +69,7 @@ VALUE ame_seq(VALUE self,VALUE str){
 }
 VALUE ame_anything(VALUE self){
 	VALUE r;
-  VALUE src=rb_ivar_get(self,s_src);
+  VALUE src=ame_getsrc(self);
   int input=ame_getpos(self);
 	int len=ame_getlen(self);
 	if (len<=input) return failobj;
@@ -119,6 +135,8 @@ void Init_Ame(VALUE self){
 	rb_define_method(amecore,"pos",ame_getposrb,0);
 	rb_define_method(amecore,"len=",ame_setlenrb,1);
 	rb_define_method(amecore,"len",ame_getlenrb,0);
+	rb_define_method(amecore,"src=",ame_setsrc,1);
+	rb_define_method(amecore,"src",ame_getsrc,0);
 
 	rb_define_method(amecore,"seq",ame_seq,1);
 	rb_define_method(amecore,"anything",ame_anything,0);
