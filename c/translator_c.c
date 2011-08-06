@@ -111,7 +111,7 @@ ISET(cut,Qnil);goto accept1;
   alt1_8:  ISET(input,oldinput1); goto fail;
  accept1:;
 BSET(it,BGET(_result_1));
-return BGET(_result_1);
+return BGET(it);
 fail: return failobj; }
 VALUE AmethystTranslator_args(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
 VALUE oldinput1=IGET(input);
@@ -141,12 +141,12 @@ ISET(cut,Qnil);goto accept1;
   alt1_3:  ISET(input,oldinput1); goto fail;
  accept1:;
 BSET(it,BGET(_result_1));
-return BGET(_result_1);
+return BGET(it);
 fail: return failobj; }
 VALUE AmethystTranslator_failwrap(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=rb_hash_new(); BSET(s_1,a0); int x;VALUE arg0,arg1,arg2,arg3;
 BSET(it,CALL(failwrap_AmethystTranslatorcb_1,1,bind)); 
  BSET(_result_1,BGET(it)); BSET(it,BGET(_result_1));
-return BGET(_result_1);
+return BGET(it);
 fail: return failobj; }
 VALUE AmethystTranslator_itrans(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
 BSET(it,CALL(itrans_AmethystTranslatorcb_1,1,bind)); 
@@ -164,14 +164,14 @@ ISET(cut,Qnil);goto accept1;
 BSET(it,CALL(itrans_AmethystTranslatorcb_2,1,bind));  if (IGET(stop)!=Qnil){{oldinput1=IGET(input);goto break1;} } } break1: ISET(stop,Qnil);  ISET(input,oldinput1); BSET(it,BGET(autovar_1));
  BSET(r_1,BGET(it)); BSET(it,CALL(itrans_AmethystTranslatorcb_3,1,bind)); 
  BSET(_result_1,BGET(it)); BSET(it,BGET(_result_1));
-return BGET(_result_1);
+return BGET(it);
 fail: return failobj; }
 VALUE AmethystTranslator_rw(VALUE self ,VALUE a0,VALUE a1){VALUE vals[2]; VALUE bind=rb_hash_new(); BSET(word_1,a0);BSET(prc_1,a1); int x;VALUE arg0,arg1,arg2,arg3;
 BSET(it,CALL(rw_AmethystTranslatorcb_1,1,bind)); 
  BSET(rwo_1,BGET(it)); BSET(it,CALL(rw_AmethystTranslatorcb_2,1,bind));  arg0=CALL(rw_AmethystTranslatorcb_3,1,bind); BSET(it,CALL(apply,1 ,arg0)); FAILTEST(fail);
  BSET(x_1,BGET(it)); BSET(it,CALL(rw_AmethystTranslatorcb_4,1,bind)); 
  BSET(_result_1,BGET(it)); BSET(it,BGET(_result_1));
-return BGET(_result_1);
+return BGET(it);
 fail: return failobj; }
 VALUE AmethystTranslator_trans(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
 VALUE oldinput1=IGET(input);
@@ -464,13 +464,13 @@ ISET(cut,Qnil);goto accept1;
   alt1_17:  ISET(input,oldinput1); goto fail;
  accept1:;
 BSET(it,BGET(_result_1));
-return BGET(_result_1);
+return BGET(it);
 fail: return failobj; }
 VALUE AmethystTranslator_transfn(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
   BSET(it,CALL(trans,0 )); FAILTEST(fail);
  BSET(t_1,BGET(it)); BSET(it,CALL(transfn_AmethystTranslatorcb_1,1,bind)); 
  BSET(_result_1,BGET(it)); BSET(it,BGET(_result_1));
-return BGET(_result_1);
+return BGET(it);
 fail: return failobj; }
 VALUE AmethystTranslator_transs(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
   BSET(it,CALL(anything,0 )); FAILTEST(fail);
@@ -487,7 +487,7 @@ ISET(src,BGET(autovar_1)); ISET(input,INT2FIX(0));
 	if(fail1) goto fail;
 BSET(it,BGET(t_1));
  BSET(_result_1,BGET(it)); BSET(it,BGET(_result_1));
-return BGET(_result_1);
+return BGET(it);
 fail: return failobj; }VALUE AmethystTranslator_trans_lambda1(VALUE self,VALUE bind){VALUE vals[0]; /*todo unify with rule and get args*/  int x;VALUE arg0,arg1,arg2,arg3;
 BSET(it,CALL(trans_AmethystTranslatorcb_9,1,bind)); 
  BSET(name_1,BGET(it)); BSET(it,CALL(trans_AmethystTranslatorcb_10,1,bind)); 

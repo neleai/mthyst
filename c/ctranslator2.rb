@@ -222,7 +222,7 @@ def trans_AmethystCTranslatorcb_18(bind)
 h="VALUE #{@grammar}_#{bind[:name_1]}(VALUE self #{@src.args.size.times.map{|i| ",VALUE a#{i}"}})" 
 						@header<<h+";"
 						@defmethods<< "rb_define_method(cls_#{@grammar},\"#{@src.name}\",#{@grammar}_#{@src.name},#{@src.args.size});"
-						h+"{VALUE vals[#{@src.args.size}]; VALUE bind=rb_hash_new(); #{@src.args.size.times.map{|i| bset(@src.args[i].desc,"a#{i}")+";"}} int x;VALUE arg0,arg1,arg2,arg3;\n#{bind[:body_1]}\nreturn #{bget(Local["_result",@src.bnding].desc)};\nfail: return failobj; }" 
+						h+"{VALUE vals[#{@src.args.size}]; VALUE bind=rb_hash_new(); #{@src.args.size.times.map{|i| bset(@src.args[i].desc,"a#{i}")+";"}} int x;VALUE arg0,arg1,arg2,arg3;\n#{bind[:body_1]}\nreturn #{bget("it")};\nfail: return failobj; }" 
 end
 def trans_AmethystCTranslatorcb_19(bind)
 Act

@@ -105,7 +105,7 @@ ISET(cut,Qnil);goto accept1;
   alt1_6:  ISET(input,oldinput1); goto fail;
  accept1:;
 BSET(it,BGET(_result_1));
-return BGET(_result_1);
+return BGET(it);
 fail: return failobj; }
 VALUE AmethystOptimizer_args(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
 VALUE oldinput1=IGET(input);
@@ -134,7 +134,7 @@ ISET(cut,Qnil);goto accept1;
   alt1_3:  ISET(input,oldinput1); goto fail;
  accept1:;
 BSET(it,BGET(_result_1));
-return BGET(_result_1);
+return BGET(it);
 fail: return failobj; }
 VALUE AmethystOptimizer_itrans(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
 BSET(it,CALL(itrans_AmethystOptimizercb_1,1,bind)); 
@@ -152,7 +152,7 @@ ISET(cut,Qnil);goto accept1;
 BSET(it,CALL(itrans_AmethystOptimizercb_2,1,bind));  if (IGET(stop)!=Qnil){{oldinput1=IGET(input);goto break1;} } } break1: ISET(stop,Qnil);  ISET(input,oldinput1); BSET(it,BGET(autovar_1));
  BSET(r_1,BGET(it)); BSET(it,BGET(r_1));
  BSET(_result_1,BGET(it)); BSET(it,BGET(_result_1));
-return BGET(_result_1);
+return BGET(it);
 fail: return failobj; }
 VALUE AmethystOptimizer_trans(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
 VALUE oldinput1=IGET(input);
@@ -487,12 +487,12 @@ ISET(cut,Qnil);goto accept1;
   alt1_17:  ISET(input,oldinput1); goto fail;
  accept1:;
 BSET(it,BGET(_result_1));
-return BGET(_result_1);
+return BGET(it);
 fail: return failobj; }
 VALUE AmethystOptimizer_transfn(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
   BSET(it,CALL(trans,0 )); FAILTEST(fail);
  BSET(_result_1,BGET(it)); BSET(it,BGET(_result_1));
-return BGET(_result_1);
+return BGET(it);
 fail: return failobj; }
 VALUE AmethystOptimizer_transs(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
   BSET(it,CALL(anything,0 )); FAILTEST(fail);
@@ -509,7 +509,7 @@ ISET(src,BGET(autovar_1)); ISET(input,INT2FIX(0));
 	if(fail1) goto fail;
 BSET(it,BGET(t_1));
  BSET(_result_1,BGET(it)); BSET(it,BGET(_result_1));
-return BGET(_result_1);
+return BGET(it);
 fail: return failobj; }
 void Init_optimizer_null_c(){ 
  cls_AmethystOptimizer=rb_define_class("AmethystOptimizer",rb_const_get(rb_cObject,rb_intern("Amethyst"))); 

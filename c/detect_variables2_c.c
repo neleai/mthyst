@@ -41,7 +41,7 @@ ISET(cut,Qnil);goto accept1;
  accept1:;
 BSET(it,CALL(flat_Analyze_Variables2cb_4,1,bind));  if (IGET(stop)!=Qnil){{oldinput1=IGET(input);goto break1;} } } break1: ISET(stop,Qnil);  ISET(input,oldinput1); BSET(it,BGET(autovar_1));
  BSET(_result_1,BGET(it)); BSET(it,BGET(_result_1));
-return BGET(_result_1);
+return BGET(it);
 fail: return failobj; }
 VALUE Analyze_Variables2_itrans(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
 BSET(it,CALL(itrans_Analyze_Variables2cb_1,1,bind)); 
@@ -97,7 +97,7 @@ ISET(cut,Qnil);goto accept1;
  accept1:;
 BSET(it,CALL(itrans_Analyze_Variables2cb_9,1,bind));  if (IGET(stop)!=Qnil){{oldinput1=IGET(input);goto break1;} } } break1: ISET(stop,Qnil);  ISET(input,oldinput1); BSET(it,BGET(autovar_1));
  BSET(_result_1,BGET(it)); BSET(it,BGET(_result_1));
-return BGET(_result_1);
+return BGET(it);
 fail: return failobj; }
 VALUE Analyze_Variables2_root(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
 BSET(it,CALL(root_Analyze_Variables2cb_1,1,bind)); 
@@ -120,7 +120,7 @@ ISET(src,BGET(autovar_2)); ISET(input,INT2FIX(0));
 	success1: ISET(src,oldsrc1); ISET(input,oldinput1);
 	if(fail1) goto fail;
 BSET(it,BGET(_result_1));
-return BGET(_result_1);
+return BGET(it);
 fail: return failobj; }
 VALUE Analyze_Variables2_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
 VALUE oldinput1=IGET(input);
@@ -203,7 +203,7 @@ ISET(cut,Qnil);goto accept1;
   alt1_4:  ISET(input,oldinput1); goto fail;
  accept1:;
 BSET(it,BGET(_result_1));
-return BGET(_result_1);
+return BGET(it);
 fail: return failobj; }
 void Init_detect_variables2_c(){ 
  cls_Analyze_Variables2=rb_define_class("Analyze_Variables2",rb_const_get(rb_cObject,rb_intern("Traverser"))); 

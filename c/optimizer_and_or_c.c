@@ -62,7 +62,7 @@ ISET(cut,Qnil);goto accept1;
   alt1_4:  ISET(input,oldinput1); goto fail;
  accept1:;
 BSET(it,BGET(_result_1));
-return BGET(_result_1);
+return BGET(it);
 fail: return failobj; }
 VALUE cls_Seq_Or_Optimizer;
 VALUE Seq_Or_Optimizer_root(VALUE self );
@@ -70,7 +70,7 @@ VALUE Seq_Or_Optimizer_visit(VALUE self );
 VALUE Seq_Or_Optimizer_root(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
   BSET(it,CALL(traverse,0 )); FAILTEST(fail);
  BSET(_result_1,BGET(it)); BSET(it,BGET(_result_1));
-return BGET(_result_1);
+return BGET(it);
 fail: return failobj; }
 VALUE Seq_Or_Optimizer_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
 VALUE oldinput1=IGET(input);
@@ -103,7 +103,7 @@ ISET(cut,Qnil);goto accept1;
   alt1_3:  ISET(input,oldinput1); goto fail;
  accept1:;
 BSET(it,BGET(_result_1));
-return BGET(_result_1);
+return BGET(it);
 fail: return failobj; }
 void Init_optimizer_and_or_c(){ 
  cls_AmethystOptimizer2=rb_define_class("AmethystOptimizer2",rb_const_get(rb_cObject,rb_intern("AmethystOptimizer"))); 

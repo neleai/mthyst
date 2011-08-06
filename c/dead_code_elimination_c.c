@@ -184,7 +184,7 @@ ISET(cut,Qnil);goto accept1;
   alt1_8:  ISET(input,oldinput1); goto fail;
  accept1:;
 BSET(it,BGET(_result_1));
-return BGET(_result_1);
+return BGET(it);
 fail: return failobj; }
 VALUE Dead_Code_Detector_vars_in(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
 BSET(it,CALL(vars_in_Dead_Code_Detectorcb_1,1,bind)); BSET(it,CALL(vars_in_Dead_Code_Detectorcb_2,1,bind)); 
@@ -338,7 +338,7 @@ ISET(cut,Qnil);goto accept1;
  accept1:;
 BSET(it,CALL(vars_in_Dead_Code_Detectorcb_35,1,bind));  if (IGET(stop)!=Qnil){{oldinput1=IGET(input);goto break1;} } } break1: ISET(stop,Qnil);  ISET(input,oldinput1); BSET(it,BGET(autovar_1));BSET(it,BGET(ary_1));
  BSET(_result_1,BGET(it)); BSET(it,BGET(_result_1));
-return BGET(_result_1);
+return BGET(it);
 fail: return failobj; }
 VALUE cls_Dead_Code_Deleter;
 VALUE Dead_Code_Deleter_trans(VALUE self );
@@ -458,7 +458,7 @@ ISET(cut,Qnil);goto accept1;
   alt1_7:  ISET(input,oldinput1); goto fail;
  accept1:;
 BSET(it,BGET(_result_1));
-return BGET(_result_1);
+return BGET(it);
 fail: return failobj; }
 VALUE cls_Communize_Or;
 VALUE Communize_Or_trans(VALUE self );
@@ -513,7 +513,7 @@ ISET(cut,Qnil);goto accept1;
   alt1_3:  ISET(input,oldinput1); goto fail;
  accept1:;
 BSET(it,BGET(_result_1));
-return BGET(_result_1);
+return BGET(it);
 fail: return failobj; }
 VALUE cls_Move_Assignments;
 VALUE Move_Assignments_move(VALUE self ,VALUE a0,VALUE a1);
@@ -606,7 +606,7 @@ ISET(cut,Qnil);goto accept1;
   alt1_5:  ISET(input,oldinput1); goto fail;
  accept1:;
 BSET(it,BGET(_result_1));
-return BGET(_result_1);
+return BGET(it);
 fail: return failobj; }
 VALUE Move_Assignments_trans(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
 VALUE oldinput1=IGET(input);
@@ -651,7 +651,7 @@ ISET(cut,Qnil);goto accept1;
   alt1_3:  ISET(input,oldinput1); goto fail;
  accept1:;
 BSET(it,BGET(_result_1));
-return BGET(_result_1);
+return BGET(it);
 fail: return failobj; }
 void Init_dead_code_elimination_c(){ 
  cls_Dead_Code_Detector=rb_define_class("Dead_Code_Detector",rb_const_get(rb_cObject,rb_intern("AmethystOptimizer"))); 

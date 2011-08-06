@@ -39,7 +39,7 @@ BSET(it,CALL(traverse_Traversercb_7,1,bind));  if (IGET(stop)!=Qnil){{oldinput4=
 	if(fail1) goto fail;
 BSET(it,CALL(traverse_Traversercb_8,1,bind)); 
  BSET(_result_1,BGET(it)); BSET(it,BGET(_result_1));
-return BGET(_result_1);
+return BGET(it);
 fail: return failobj; }
 VALUE Traverser_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
 VALUE oldinput1=IGET(input);
@@ -83,7 +83,7 @@ ISET(cut,Qnil);goto accept1;
   alt1_5:  ISET(input,oldinput1); goto fail;
  accept1:;
 BSET(it,BGET(_result_1));
-return BGET(_result_1);
+return BGET(it);
 fail: return failobj; }
 void Init_traverser_c(){ 
  cls_Traverser=rb_define_class("Traverser",rb_const_get(rb_cObject,rb_intern("Amethyst"))); 
