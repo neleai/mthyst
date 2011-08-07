@@ -93,6 +93,9 @@ end
 def args_AmethystParsercb_3(bind)
 bind[:r_1]+[',']
 end
+def args_AmethystParsercb_4(bind)
+bind[:autovar_1]=[bind[:autovar_1]]
+end
 def atomicHostExpr_AmethystParsercb_1(bind)
 []
 end
@@ -104,6 +107,9 @@ _append(bind[:autovar_1],bind[:autovar_2])
 end
 def atomicHostExpr_AmethystParsercb_4(bind)
 "{#{bind[:s_1]*""}}"
+end
+def atomicHostExpr_AmethystParsercb_5(bind)
+bind[:autovar_3]=[bind[:autovar_3]]
 end
 def choice_AmethystParsercb_1(bind)
 'sequence'
@@ -542,6 +548,9 @@ def ruleargs_AmethystParsercb_1(bind)
 end
 def ruleargs_AmethystParsercb_2(bind)
 ')'
+end
+def ruleargs_AmethystParsercb_3(bind)
+bind[:autovar_1]=[bind[:autovar_1]]
 end
 def sequence_AmethystParsercb_1(bind)
 []

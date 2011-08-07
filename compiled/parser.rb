@@ -55,7 +55,7 @@ def args(a0,a1)
 bind={}; bind[:o_1]=a0;bind[:c_1]=a1
   it=nil
 
-it=_pass(false,bind[:autovar_2]){it=_pass(true,bind[:autovar_1]){it=procargs();next FAIL if it==FAIL};next FAIL if it==FAIL};return FAIL if it==FAIL
+it=_pass(true,bind[:autovar_2]){it=_pass(true,bind[:autovar_1]){it=procargs();next FAIL if it==FAIL};next FAIL if it==FAIL};return FAIL if it==FAIL
 bind[:_result_1] = it
 it=bind[:_result_1]  
 end
@@ -70,7 +70,7 @@ def atomicHostExpr()
 bind={}; 
   it=nil
 
-it=_pass(false,bind[:autovar_2]){it=_pass(true,bind[:autovar_1]){it=inlineHostExpr();next FAIL if it==FAIL};next FAIL if it==FAIL};return FAIL if it==FAIL
+it=_pass(true,bind[:autovar_2]){it=_pass(true,bind[:autovar_1]){it=inlineHostExpr();next FAIL if it==FAIL};next FAIL if it==FAIL};return FAIL if it==FAIL
 bind[:_result_1] = it
 it=bind[:_result_1]  
 end
@@ -266,7 +266,7 @@ def ruleargs()
 bind={}; 
   it=nil
 
-it=_pass(false,bind[:autovar_2]){it=_pass(true,bind[:autovar_1]){it=addargs();next FAIL if it==FAIL};next FAIL if it==FAIL};return FAIL if it==FAIL
+it=_pass(true,bind[:autovar_2]){it=_pass(true,bind[:autovar_1]){it=addargs();next FAIL if it==FAIL};next FAIL if it==FAIL};return FAIL if it==FAIL
 bind[:_result_1] = it
 it=bind[:_result_1]  
 end

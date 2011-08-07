@@ -5,7 +5,8 @@ bind={};
 
 it=(@src.self)
 bind[:autovar_1] = it
-it=_pass(false,bind[:autovar_1]){it=clas(Rule);next FAIL if it==FAIL
+it=(bind[:autovar_1]=[bind[:autovar_1]])
+it=_pass(true,bind[:autovar_1]){it=clas(Rule);next FAIL if it==FAIL
 bind[:autovar_2] = it
 it=_pass(true,bind[:autovar_2]){it=(@edges=Oriented_Graph.new ; @marked=[@src.body[-1]])
 it=(@bnding=@src.bnding)
@@ -70,7 +71,8 @@ it=(_append(bind[:ary_1],bind[:autovar_15])) };next FAIL if it==FAIL },proc{it=c
 bind[:autovar_16] = it
 it=_pass(true,bind[:autovar_16]){it=(@src.name)
 bind[:autovar_17] = it
-it=_pass(false,bind[:autovar_17]){it=vars_in();next FAIL if it==FAIL
+it=(bind[:autovar_17]=[bind[:autovar_17]])
+it=_pass(true,bind[:autovar_17]){it=vars_in();next FAIL if it==FAIL
 bind[:autovar_18] = it
 it=(_append(bind[:ary_1],bind[:autovar_18])) };next FAIL if it==FAIL };next FAIL if it==FAIL },proc{it=clas(Local);next FAIL if it==FAIL
 bind[:autovar_19] = it
@@ -100,7 +102,8 @@ bind[:_result_1] = it };next FAIL if it==FAIL },proc{it=clas(Pass);next FAIL if 
 bind[:autovar_2] = it
 it=_pass(true,bind[:autovar_2]){it=(@src.var)
 bind[:autovar_3] = it
-it=_pass(false,bind[:autovar_3]){it=vars_in();next FAIL if it==FAIL
+it=(bind[:autovar_3]=[bind[:autovar_3]])
+it=_pass(true,bind[:autovar_3]){it=vars_in();next FAIL if it==FAIL
 bind[:var_1] = it};next FAIL if it==FAIL
 it=(@marked+=bind[:var_1])
 it=traverse();next FAIL if it==FAIL
@@ -108,7 +111,8 @@ bind[:_result_1] = it };next FAIL if it==FAIL },proc{it=clas(Many);next FAIL if 
 bind[:autovar_4] = it
 it=_pass(true,bind[:autovar_4]){it=(@src.o)
 bind[:autovar_5] = it
-it=_pass(false,bind[:autovar_5]){it=vars_in();next FAIL if it==FAIL
+it=(bind[:autovar_5]=[bind[:autovar_5]])
+it=_pass(true,bind[:autovar_5]){it=vars_in();next FAIL if it==FAIL
 bind[:var_1] = it};next FAIL if it==FAIL
 it=(@marked+=bind[:var_1])
 it=traverse();next FAIL if it==FAIL
@@ -119,7 +123,8 @@ bind[:this_1] = it
 it=(@marked<<bind[:this_1] if @src.pred)
 it=(@src.ary)
 bind[:autovar_7] = it
-it=_pass(false,bind[:autovar_7]){it=anything();next FAIL if it==FAIL
+it=(bind[:autovar_7]=[bind[:autovar_7]])
+it=_pass(true,bind[:autovar_7]){it=anything();next FAIL if it==FAIL
 bind[:autovar_8] = it
 it=_pass(true,bind[:autovar_8]){it=vars_in();next FAIL if it==FAIL
 bind[:var_1] = it};next FAIL if it==FAIL };next FAIL if it==FAIL };next FAIL if it==FAIL
@@ -128,21 +133,24 @@ bind[:_result_1] = it },proc{it=clas(Set);next FAIL if it==FAIL
 bind[:autovar_9] = it
 it=_pass(true,bind[:autovar_9]){it=(@src.name)
 bind[:autovar_10] = it
-it=_pass(false,bind[:autovar_10]){it=vars_in();next FAIL if it==FAIL
+it=(bind[:autovar_10]=[bind[:autovar_10]])
+it=_pass(true,bind[:autovar_10]){it=vars_in();next FAIL if it==FAIL
 bind[:v_1] = it};next FAIL if it==FAIL
 it=(bind[:v_1]=bind[:v_1][0])
 it=traverse();next FAIL if it==FAIL
 bind[:this_1] = it
 it=(@src.expr)
 bind[:autovar_11] = it
-it=_pass(false,bind[:autovar_11]){it=vars_in();next FAIL if it==FAIL
+it=(bind[:autovar_11]=[bind[:autovar_11]])
+it=_pass(true,bind[:autovar_11]){it=vars_in();next FAIL if it==FAIL
 bind[:var_1] = it};next FAIL if it==FAIL };next FAIL if it==FAIL
 it=(bind[:var_1].each{|w| @edges.add(bind[:v_1],w)};bind[:this_1])
 bind[:_result_1] = it },proc{it=clas(Result);next FAIL if it==FAIL
 bind[:autovar_12] = it
 it=_pass(true,bind[:autovar_12]){it=(@src.vars)
 bind[:autovar_13] = it
-it=_pass(false,bind[:autovar_13]){it=anything();next FAIL if it==FAIL
+it=(bind[:autovar_13]=[bind[:autovar_13]])
+it=_pass(true,bind[:autovar_13]){it=anything();next FAIL if it==FAIL
 bind[:autovar_14] = it
 it=_pass(true,bind[:autovar_14]){it=vars_in();next FAIL if it==FAIL
 bind[:var_1] = it};next FAIL if it==FAIL };next FAIL if it==FAIL
@@ -163,7 +171,8 @@ bind={};
 
 it=(@src.self)
 bind[:autovar_1] = it
-it=_pass(false,bind[:autovar_1]){it=clas(Rule);next FAIL if it==FAIL
+it=(bind[:autovar_1]=[bind[:autovar_1]])
+it=_pass(true,bind[:autovar_1]){it=clas(Rule);next FAIL if it==FAIL
 bind[:autovar_2] = it
 it=_pass(true,bind[:autovar_2]){it=(@src.reachable)
 bind[:it_1] = it
@@ -364,7 +373,8 @@ bind[:el_1] = it
 it=_or(proc{it=_lookahead(false){it=eof();next FAIL if it==FAIL};next FAIL if it==FAIL
 it=bind[:el_1]
 bind[:autovar_7] = it
-it=_pass(false,bind[:autovar_7]){it=move(bind[:append_1],bind[:name_1]);next FAIL if it==FAIL
+it=(bind[:autovar_7]=[bind[:autovar_7]])
+it=_pass(true,bind[:autovar_7]){it=move(bind[:append_1],bind[:name_1]);next FAIL if it==FAIL
 bind[:autovar_8] = it};next FAIL if it==FAIL },proc{it=bind[:el_1]
 bind[:autovar_8] = it});break FAIL if it==FAIL
 it=(_append(bind[:autovar_2],bind[:autovar_8])) 
@@ -380,7 +390,8 @@ it=_pass(true,bind[:autovar_10]){it=(@src.var)
 bind[:var_1] = it
 it=(@src.to)
 bind[:autovar_11] = it
-it=_pass(false,bind[:autovar_11]){it=move(bind[:append_1],bind[:name_1]);next FAIL if it==FAIL
+it=(bind[:autovar_11]=[bind[:autovar_11]])
+it=_pass(true,bind[:autovar_11]){it=move(bind[:append_1],bind[:name_1]);next FAIL if it==FAIL
 bind[:to_1] = it};next FAIL if it==FAIL
 it=(@src.enter)
 bind[:enter_1] = it };next FAIL if it==FAIL
@@ -414,7 +425,8 @@ it=(@src.append)
 bind[:append_1] = it
 it=bind[:expr_1]
 bind[:autovar_2] = it
-it=_pass(false,bind[:autovar_2]){it=move(bind[:append_1],bind[:name_1]);next FAIL if it==FAIL
+it=(bind[:autovar_2]=[bind[:autovar_2]])
+it=_pass(true,bind[:autovar_2]){it=move(bind[:append_1],bind[:name_1]);next FAIL if it==FAIL
 bind[:_result_1] = it};next FAIL if it==FAIL };return FAIL if it==FAIL
 it=bind[:_result_1]  
 end
@@ -429,7 +441,8 @@ bind={};
 
 it=(@src.self)
 bind[:autovar_1] = it
-it=_pass(false,bind[:autovar_1]){it=clas(Rule);next FAIL if it==FAIL
+it=(bind[:autovar_1]=[bind[:autovar_1]])
+it=_pass(true,bind[:autovar_1]){it=clas(Rule);next FAIL if it==FAIL
 bind[:autovar_2] = it
 it=_pass(true,bind[:autovar_2]){it=(@src.reachable)
 bind[:it_1] = it
@@ -530,7 +543,8 @@ bind[:autovar_10]=@input;r=it=_or(proc{it=clas(Grammar);next FAIL if it==FAIL
 bind[:autovar_3] = it
 it=_pass(true,bind[:autovar_3]){it=(@src.rules)
 bind[:autovar_4] = it
-it=_pass(false,bind[:autovar_4]){it=anything();next FAIL if it==FAIL
+it=(bind[:autovar_4]=[bind[:autovar_4]])
+it=_pass(true,bind[:autovar_4]){it=anything();next FAIL if it==FAIL
 bind[:autovar_5] = it
 it=_pass(true,bind[:autovar_5]){it=([])
 bind[:autovar_1] = it
@@ -563,7 +577,8 @@ bind={};
 
 it=(@src.self)
 bind[:autovar_1] = it
-it=_pass(false,bind[:autovar_1]){it=clas(Rule);next FAIL if it==FAIL
+it=(bind[:autovar_1]=[bind[:autovar_1]])
+it=_pass(true,bind[:autovar_1]){it=clas(Rule);next FAIL if it==FAIL
 bind[:autovar_2] = it
 it=_pass(true,bind[:autovar_2]){it=(@variables=Hash.new{|k,v| k[v]=v} ;(@src.locals+@src.args).each{|w| @variables[w[0]]=w})
 it=(@locals=@src.locals)
@@ -582,7 +597,8 @@ bind[:autovar_1] = it
 it=_pass(true,bind[:autovar_1]){it=traverse();next FAIL if it==FAIL
 it=(@src.ary.map{|aa| @variables[aa] })
 bind[:autovar_2] = it
-it=_pass(false,bind[:autovar_2]){it=anything();next FAIL if it==FAIL
+it=(bind[:autovar_2]=[bind[:autovar_2]])
+it=_pass(true,bind[:autovar_2]){it=anything();next FAIL if it==FAIL
 bind[:autovar_3] = it
 it=_pass(true,bind[:autovar_3]){it=flat();next FAIL if it==FAIL
 bind[:a_1] = it};next FAIL if it==FAIL };next FAIL if it==FAIL
@@ -593,7 +609,8 @@ bind[:autovar_4] = it
 it=_pass(true,bind[:autovar_4]){it=traverse();next FAIL if it==FAIL
 it=(@src.ary)
 bind[:autovar_5] = it
-it=_pass(false,bind[:autovar_5]){it=anything();next FAIL if it==FAIL
+it=(bind[:autovar_5]=[bind[:autovar_5]])
+it=_pass(true,bind[:autovar_5]){it=anything();next FAIL if it==FAIL
 bind[:autovar_6] = it
 it=_pass(true,bind[:autovar_6]){it=clas(Local);next FAIL if it==FAIL
 bind[:_result_1] = it};next FAIL if it==FAIL };next FAIL if it==FAIL };next FAIL if it==FAIL },proc{it=clas(Result);next FAIL if it==FAIL
@@ -682,7 +699,8 @@ it=anything();return FAIL if it==FAIL
 bind[:to_1] = it
 it=bind[:from_1]
 bind[:autovar_1] = it
-it=_pass(false,bind[:autovar_1]){it=clas(Rule);next FAIL if it==FAIL
+it=(bind[:autovar_1]=[bind[:autovar_1]])
+it=_pass(true,bind[:autovar_1]){it=clas(Rule);next FAIL if it==FAIL
 bind[:autovar_2] = it
 it=_pass(true,bind[:autovar_2]){it=(@src.name)
 bind[:name_1] = it
@@ -694,7 +712,8 @@ bind[:body_1] = it };next FAIL if it==FAIL };return FAIL if it==FAIL
 it=(@name=bind[:name_1];@args=bind[:args_1];@body=bind[:body_1] )
 it=bind[:to_1]
 bind[:autovar_3] = it
-it=_pass(false,bind[:autovar_3]){it=clas(Rule);next FAIL if it==FAIL
+it=(bind[:autovar_3]=[bind[:autovar_3]])
+it=_pass(true,bind[:autovar_3]){it=clas(Rule);next FAIL if it==FAIL
 bind[:autovar_4] = it
 it=_pass(true,bind[:autovar_4]){it=traverse();next FAIL if it==FAIL
 bind[:_result_1] = it};next FAIL if it==FAIL };return FAIL if it==FAIL

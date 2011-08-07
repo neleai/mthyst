@@ -63,7 +63,7 @@ end
 class <<Pass
 	def [](from,to,enter=nil)
 		a=autovar
-		Seq[_Set(a,from), Pass.create({:to=>to,:enter=>enter,:var=>a})]
+		Seq[_Set(a,from), (enter ? Act[] : Act[Args[a,"=[",a,"]"]]) , Pass.create({:to=>to,:enter=>true,:var=>a})]
 	end
 end
 def _Set(name,expr,append=nil)
