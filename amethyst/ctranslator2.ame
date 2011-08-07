@@ -101,7 +101,7 @@ failobj=rb_eval_string(\"FAIL\");
 				| Pass[ label("pass"):pass label("oldpos"):oldpos label("oldlen"):oldlen label("oldsrc"):oldsrc label("success"):success label("fail"):fail
 						rw(pass,`@to=>trans:to`)
 					{  "int #{oldpos}=ame_getpos(self); int #{oldlen}=ame_getlen(self); VALUE #{oldsrc}=ame_getsrc(self); int #{fail}=0;
-ame_setsrc(self,#{@enter ? bget(@var.desc) : "rb_ary_new3(1,#{bget(@var.desc)})"}); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern(\"size\"),0)));
+ame_setsrc(self,#{bget(@var.desc)}); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern(\"size\"),0)));
  #{to}
 	if (CALL(eof,0)==failobj) goto #{pass};
 	goto #{success};

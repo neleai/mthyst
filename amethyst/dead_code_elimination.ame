@@ -26,7 +26,7 @@ amethyst Dead_Code_Detector < AmethystOptimizer {
 amethyst Dead_Code_Deleter < AmethystOptimizer{
 		trans = Rule[ @name:name  @reachable:{@@reachable=it} @args=>args:args @body=>trans:body  @locals:locals ] @Rule
 					| Act[@self:this .*] -> @@reachable[this] ? this : Act[]
-					| Set[@name:name @expr=>trans:expr @append:append] ->@@reachable[name] ? _Set(name,expr,append) : expr
+					| Set[@name:name @expr=>trans:expr] ->@@reachable[name] ? _Set(name,expr) : expr
 					| Result[@self:this] ->@@reachable[this] ? this : Act[]
 					| Local[.* @self:this] ->@@reachable[this] ? this : Act[]
 					| super
@@ -39,11 +39,11 @@ amethyst Communize_Or < AmethystOptimizer {
 }
 
 amethyst Move_Assignments < AmethystOptimizer {
-	trans = Set[@name:name @expr=>trans:expr @append:append {expr}=>move(append,name) ]
+	trans = Set[@name:name @expr=>trans:expr {expr}=>move(name) ]
 				| super
 
-	move(append,name) = Or[ move(append,name)*:ary ] @Or
-								| Seq[ .*:ary {ary[-1]}=>move(append,name):moved {@@x;ary[-1]=moved} ] @Seq
-								| Pass[@var:var @to=>move(append,name):to @enter:enter] @Pass
-								| anything:{_Set(name,it,append)}
+	move(name) = Or[ move(name)*:ary ] @Or
+								| Seq[ .*:ary {ary[-1]}=>move(name):moved {@@x;ary[-1]=moved} ] @Seq
+								| Pass[@var:var @to=>move(name):to @enter:enter] @Pass
+								| anything:{_Set(name,it)}
 }

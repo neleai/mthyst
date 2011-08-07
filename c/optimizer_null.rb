@@ -228,96 +228,93 @@ def trans_AmethystOptimizercb_5(bind)
 []
 end
 def trans_AmethystOptimizercb_50(bind)
-@src.append
+Set.create( {:ary=>bind[:ary_1],:expr=>bind[:expr_1],:name=>bind[:name_1] })
 end
 def trans_AmethystOptimizercb_51(bind)
-Set.create( {:append=>bind[:append_1],:ary=>bind[:ary_1],:expr=>bind[:expr_1],:name=>bind[:name_1] })
-end
-def trans_AmethystOptimizercb_52(bind)
 Act
 end
-def trans_AmethystOptimizercb_53(bind)
+def trans_AmethystOptimizercb_52(bind)
 @src.pred
 end
-def trans_AmethystOptimizercb_54(bind)
+def trans_AmethystOptimizercb_53(bind)
 Act.create( {:ary=>bind[:ary_1],:pred=>bind[:pred_1] })
 end
-def trans_AmethystOptimizercb_55(bind)
+def trans_AmethystOptimizercb_54(bind)
 Result
 end
-def trans_AmethystOptimizercb_56(bind)
+def trans_AmethystOptimizercb_55(bind)
 @src.name
 end
-def trans_AmethystOptimizercb_57(bind)
+def trans_AmethystOptimizercb_56(bind)
 @src.args
 end
-def trans_AmethystOptimizercb_58(bind)
+def trans_AmethystOptimizercb_57(bind)
 bind[:autovar_28]=[bind[:autovar_28]]
 end
-def trans_AmethystOptimizercb_59(bind)
+def trans_AmethystOptimizercb_58(bind)
 @src.vars
+end
+def trans_AmethystOptimizercb_59(bind)
+bind[:autovar_29]=[bind[:autovar_29]]
 end
 def trans_AmethystOptimizercb_6(bind)
 Grammar
 end
 def trans_AmethystOptimizercb_60(bind)
-bind[:autovar_29]=[bind[:autovar_29]]
-end
-def trans_AmethystOptimizercb_61(bind)
 Result.create( {:args=>bind[:args_1],:ary=>bind[:ary_1],:expr=>bind[:expr_1],:name=>bind[:name_1],:vars=>bind[:vars_1] })
 end
-def trans_AmethystOptimizercb_62(bind)
+def trans_AmethystOptimizercb_61(bind)
 Args
 end
-def trans_AmethystOptimizercb_63(bind)
+def trans_AmethystOptimizercb_62(bind)
 []
 end
-def trans_AmethystOptimizercb_64(bind)
+def trans_AmethystOptimizercb_63(bind)
 _append(bind[:autovar_4],bind[:autovar_31])
 end
-def trans_AmethystOptimizercb_65(bind)
+def trans_AmethystOptimizercb_64(bind)
 Args.create( {:ary=>bind[:ary_1],:o=>bind[:o_1] })
 end
-def trans_AmethystOptimizercb_66(bind)
+def trans_AmethystOptimizercb_65(bind)
 Pass
 end
-def trans_AmethystOptimizercb_67(bind)
+def trans_AmethystOptimizercb_66(bind)
 @src.to
 end
-def trans_AmethystOptimizercb_68(bind)
+def trans_AmethystOptimizercb_67(bind)
 bind[:autovar_33]=[bind[:autovar_33]]
 end
-def trans_AmethystOptimizercb_69(bind)
+def trans_AmethystOptimizercb_68(bind)
 @src.var
+end
+def trans_AmethystOptimizercb_69(bind)
+bind[:autovar_34]=[bind[:autovar_34]]
 end
 def trans_AmethystOptimizercb_7(bind)
 @src.name
 end
 def trans_AmethystOptimizercb_70(bind)
-bind[:autovar_34]=[bind[:autovar_34]]
-end
-def trans_AmethystOptimizercb_71(bind)
 @src.enter
 end
-def trans_AmethystOptimizercb_72(bind)
+def trans_AmethystOptimizercb_71(bind)
 Pass.create( {:ary=>bind[:ary_1],:enter=>bind[:enter_1],:to=>bind[:to_1],:var=>bind[:var_1] })
 end
-def trans_AmethystOptimizercb_73(bind)
+def trans_AmethystOptimizercb_72(bind)
 Cut
 end
-def trans_AmethystOptimizercb_74(bind)
+def trans_AmethystOptimizercb_73(bind)
 Cut.create( {:ary=>bind[:ary_1] })
 end
-def trans_AmethystOptimizercb_75(bind)
+def trans_AmethystOptimizercb_74(bind)
 Stop
 end
-def trans_AmethystOptimizercb_76(bind)
+def trans_AmethystOptimizercb_75(bind)
 Stop.create( {:ary=>bind[:ary_1] })
 end
-def trans_AmethystOptimizercb_77(bind)
+def trans_AmethystOptimizercb_76(bind)
 Local
 end
-def trans_AmethystOptimizercb_78(bind)
+def trans_AmethystOptimizercb_77(bind)
 @src.self
 end
 def trans_AmethystOptimizercb_8(bind)

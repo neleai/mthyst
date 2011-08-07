@@ -23,10 +23,9 @@ class Dataflow < Traverser
     }
 	end
 	def set_end(exp)
-		edges.add(exp.name,exp) if exp.append
 		name=exp.name
-		exp=exp.expr while exp.expr.is_a?(Set) && !exp.expr.append
-	  if exp.expr.is_a?(Local) && !exp.append
+		exp=exp.expr while exp.expr.is_a?(Set) 
+	  if exp.expr.is_a?(Local) 
       o=ssanum(exp.expr)
       n=newssanum(name)
 			edges.add(exp,n)
