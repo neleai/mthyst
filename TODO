@@ -9,10 +9,12 @@ make AmethystModule +include to mimic ruby module
 make position handling explicit as in amethyst/position.ame
 make eof in Pass explicit
 refactor args
-initialize append variables as []
 generic parent(Class) in tree traversal
-super in c
 variable cget,cset,rbget,rbset or some other generalization
 work in 1.9.1
 unify lambda+rule in ctranslator2
 bind cut,stop to corresponding many,or
+code motion of acts
+
+optimalization of lookaheads such that in anything* ~anything the ~anything is automaticaly satisfied(aka eof)
+in ~space space* the  space* must be empty

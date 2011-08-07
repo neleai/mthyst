@@ -143,8 +143,6 @@ it=([])
 bind[:f_1] = it
 it=([])
 bind[:autovar_1] = it
-it=([])
-bind[:f_1] = it
 it=_or(proc{it=apply(bind[:rule_1]);next FAIL if it==FAIL
 bind[:autovar_2] = it
 it=(_append(bind[:f_1],bind[:autovar_2]))
@@ -415,8 +413,6 @@ it=([])
 bind[:autovar_1] = it
 it=([])
 bind[:autovar_2] = it
-it=([])
-bind[:autovar_2] = it
 it=token("");return FAIL if it==FAIL
 it=upper();return FAIL if it==FAIL
 bind[:autovar_3] = it
@@ -502,8 +498,6 @@ def igrammar()
 bind={}; 
   it=nil
 
-it=([])
-bind[:autovar_1] = it
 it=([])
 bind[:autovar_1] = it
 it=([])
@@ -609,8 +603,6 @@ it=([])
 bind[:autovar_1] = it
 it=([])
 bind[:autovar_2] = it
-it=([])
-bind[:autovar_2] = it
 it=token("");return FAIL if it==FAIL
 it=nameFirst();return FAIL if it==FAIL
 bind[:autovar_3] = it
@@ -668,8 +660,6 @@ def number()
 bind={}; 
   it=nil
 
-it=([])
-bind[:autovar_1] = it
 it=([])
 bind[:autovar_1] = it
 it=([])
@@ -796,13 +786,7 @@ bind[:s_1] = it
 it=([])
 bind[:autovar_1] = it
 it=([])
-bind[:s_1] = it
-it=([])
-bind[:s_1] = it
-it=([])
 bind[:autovar_2] = it
-it=([])
-bind[:s_1] = it
 it=([])
 bind[:n_1] = it
 it=_or(proc{it=seq("`");next FAIL if it==FAIL
@@ -889,7 +873,7 @@ it=(_body(bind[:body_1]))
 bind[:body_1] = it
 it=(@locals.uniq)
 bind[:locals_1] = it
-it=(bind[:body_1]=Seq[{:ary=>($appends.map{|a| _Set(a,Act[Args["[]"]])}+[bind[:body_1]])}];puts @appends.inspect; puts bind[:body_1].inspect )
+it=(bind[:body_1]=Seq[{:ary=>($appends.uniq.map{|a| _Set(a,Act[Args["[]"]])}+[bind[:body_1]])}]; )
 it=Rule.create( {:args=>bind[:args_1],:bnding=>bind[:bnding_1],:body=>bind[:body_1],:locals=>bind[:locals_1],:name=>bind[:name_1] })
 bind[:_result_1] = it
 it=bind[:_result_1]  
@@ -932,8 +916,6 @@ def term()
 bind={}; 
   it=nil
 
-it=([])
-bind[:s_1] = it
 it=([])
 bind[:s_1] = it
 it=([])
@@ -1141,12 +1123,6 @@ it=([])
 bind[:ary_1] = it
 it=([])
 bind[:autovar_3] = it
-it=([])
-bind[:ary_1] = it
-it=([])
-bind[:ary_1] = it
-it=([])
-bind[:ary_1] = it
 it=([])
 bind[:autovar_4] = it
 it=_or(proc{it=clas(Grammar);next FAIL if it==FAIL
@@ -1707,20 +1683,6 @@ def vars_in()
 bind={}; 
   it=nil
 
-it=([])
-bind[:ary_1] = it
-it=([])
-bind[:ary_1] = it
-it=([])
-bind[:ary_1] = it
-it=([])
-bind[:ary_1] = it
-it=([])
-bind[:ary_1] = it
-it=([])
-bind[:ary_1] = it
-it=([])
-bind[:ary_1] = it
 it=([])
 bind[:ary_1] = it
 it=(bind[:ary_1]=[])

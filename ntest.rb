@@ -14,7 +14,11 @@ require 'c/detect_variables2'
 require 'c/dead_code_elimination'
 require 'c/traverser'
 require 'c/translator'
-
+class Array
+	def self
+		self
+	end
+end
 
 ["amethyst","parser"].each{|f|
 puts f

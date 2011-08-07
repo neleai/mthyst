@@ -21,13 +21,15 @@ def vars_in()
 bind={}; 
   it=nil
 
+it=([])
+bind[:ary_1] = it
 it=(bind[:ary_1]=[])
 while true
 bind[:autovar_21]=@input;r=it=_or(proc{it=clas(Global);next FAIL if it==FAIL
 bind[:autovar_1] = it
 it=_pass(true,bind[:autovar_1]){it=(@src.self)
 bind[:autovar_2] = it
-it=(bind[:ary_1]||=[];_append(bind[:ary_1],bind[:autovar_2]))
+it=(_append(bind[:ary_1],bind[:autovar_2]))
 it=(@marked<<@src.self)
 while true
 bind[:autovar_3]=@input;r=it=anything();break FAIL if it==FAIL
@@ -37,7 +39,7 @@ end;@input=bind[:autovar_3] };next FAIL if it==FAIL },proc{it=clas(Act);next FAI
 bind[:autovar_4] = it
 it=_pass(true,bind[:autovar_4]){it=(@src.self)
 bind[:autovar_5] = it
-it=(bind[:ary_1]||=[];_append(bind[:ary_1],bind[:autovar_5]))
+it=(_append(bind[:ary_1],bind[:autovar_5]))
 while true
 bind[:autovar_6]=@input;r=it=anything();break FAIL if it==FAIL
  break FAIL if r==FAIL
@@ -46,7 +48,7 @@ end;@input=bind[:autovar_6] };next FAIL if it==FAIL },proc{it=clas(Key);next FAI
 bind[:autovar_7] = it
 it=_pass(true,bind[:autovar_7]){it=(@src.self)
 bind[:autovar_8] = it
-it=(bind[:ary_1]||=[];_append(bind[:ary_1],bind[:autovar_8]))
+it=(_append(bind[:ary_1],bind[:autovar_8]))
 it=(@marked<<@src.self)
 while true
 bind[:autovar_9]=@input;r=it=anything();break FAIL if it==FAIL
@@ -56,26 +58,26 @@ end;@input=bind[:autovar_9] };next FAIL if it==FAIL },proc{it=clas(Result);next 
 bind[:autovar_10] = it
 it=_pass(true,bind[:autovar_10]){it=(@src.self)
 bind[:autovar_11] = it
-it=(bind[:ary_1]||=[];_append(bind[:ary_1],bind[:autovar_11])) };next FAIL if it==FAIL },proc{it=clas(Strin);next FAIL if it==FAIL
+it=(_append(bind[:ary_1],bind[:autovar_11])) };next FAIL if it==FAIL },proc{it=clas(Strin);next FAIL if it==FAIL
 bind[:autovar_12] = it
 it=_pass(true,bind[:autovar_12]){it=vars_in();next FAIL if it==FAIL
 bind[:autovar_13] = it
-it=(bind[:ary_1]||=[];_append(bind[:ary_1],bind[:autovar_13])) };next FAIL if it==FAIL },proc{it=clas(Args);next FAIL if it==FAIL
+it=(_append(bind[:ary_1],bind[:autovar_13])) };next FAIL if it==FAIL },proc{it=clas(Args);next FAIL if it==FAIL
 bind[:autovar_14] = it
 it=_pass(true,bind[:autovar_14]){it=vars_in();next FAIL if it==FAIL
 bind[:autovar_15] = it
-it=(bind[:ary_1]||=[];_append(bind[:ary_1],bind[:autovar_15])) };next FAIL if it==FAIL },proc{it=clas(Set);next FAIL if it==FAIL
+it=(_append(bind[:ary_1],bind[:autovar_15])) };next FAIL if it==FAIL },proc{it=clas(Set);next FAIL if it==FAIL
 bind[:autovar_16] = it
 it=_pass(true,bind[:autovar_16]){it=(@src.name)
 bind[:autovar_17] = it
 it=_pass(false,bind[:autovar_17]){it=vars_in();next FAIL if it==FAIL
 bind[:autovar_18] = it
-it=(bind[:ary_1]||=[];_append(bind[:ary_1],bind[:autovar_18])) };next FAIL if it==FAIL };next FAIL if it==FAIL },proc{it=clas(Local);next FAIL if it==FAIL
+it=(_append(bind[:ary_1],bind[:autovar_18])) };next FAIL if it==FAIL };next FAIL if it==FAIL },proc{it=clas(Local);next FAIL if it==FAIL
 bind[:autovar_19] = it
 it=_pass(true,bind[:autovar_19]){it=anything();next FAIL if it==FAIL
 it=(@src.self)
 bind[:autovar_20] = it
-it=(bind[:ary_1]||=[];_append(bind[:ary_1],bind[:autovar_20])) };next FAIL if it==FAIL },proc{it=anything();next FAIL if it==FAIL});break FAIL if it==FAIL
+it=(_append(bind[:ary_1],bind[:autovar_20])) };next FAIL if it==FAIL },proc{it=anything();next FAIL if it==FAIL});break FAIL if it==FAIL
  break FAIL if r==FAIL
  (bind[:autovar_21]=@input;@stop=nil;break FAIL) if @stop==true
 end;@input=bind[:autovar_21]
@@ -236,25 +238,27 @@ def visit()
 bind={}; 
   it=nil
 
-it=clas(Or);return FAIL if it==FAIL
+it=([])
 bind[:autovar_1] = it
-it=_pass(true,bind[:autovar_1]){it=([])
+it=clas(Or);return FAIL if it==FAIL
 bind[:autovar_2] = it
+it=_pass(true,bind[:autovar_2]){it=([])
+bind[:autovar_1] = it
 it=clas(Seq);next FAIL if it==FAIL
 bind[:autovar_3] = it
 it=_pass(true,bind[:autovar_3]){it=traverse();next FAIL if it==FAIL
 bind[:autovar_4] = it};next FAIL if it==FAIL
-it=(bind[:autovar_2]||=[];_append(bind[:autovar_2],bind[:autovar_4]))
+it=(_append(bind[:autovar_1],bind[:autovar_4]))
 while true
 bind[:autovar_6]=@input;r=it=clas(Seq);break FAIL if it==FAIL
 bind[:autovar_3] = it
 it=_pass(true,bind[:autovar_3]){it=traverse();next FAIL if it==FAIL
 bind[:autovar_5] = it};break FAIL if it==FAIL
-it=(bind[:autovar_2]||=[];_append(bind[:autovar_2],bind[:autovar_5])) 
+it=(_append(bind[:autovar_1],bind[:autovar_5])) 
  break FAIL if r==FAIL
  (bind[:autovar_6]=@input;@stop=nil;break FAIL) if @stop==true
 end;@input=bind[:autovar_6]
-it=bind[:autovar_2]
+it=bind[:autovar_1]
 bind[:ands_1] = it
 it=eof();next FAIL if it==FAIL
 it=(common=bind[:ands_1][0].size
@@ -283,25 +287,27 @@ def visit()
 bind={}; 
   it=nil
 
-it=clas(Or);return FAIL if it==FAIL
+it=([])
 bind[:autovar_1] = it
-it=_pass(true,bind[:autovar_1]){it=([])
+it=clas(Or);return FAIL if it==FAIL
 bind[:autovar_2] = it
+it=_pass(true,bind[:autovar_2]){it=([])
+bind[:autovar_1] = it
 it=clas(Seq);next FAIL if it==FAIL
 bind[:autovar_3] = it
 it=_pass(true,bind[:autovar_3]){it=traverse();next FAIL if it==FAIL
 bind[:autovar_4] = it};next FAIL if it==FAIL
-it=(bind[:autovar_2]||=[];_append(bind[:autovar_2],bind[:autovar_4]))
+it=(_append(bind[:autovar_1],bind[:autovar_4]))
 while true
 bind[:autovar_6]=@input;r=it=clas(Seq);break FAIL if it==FAIL
 bind[:autovar_3] = it
 it=_pass(true,bind[:autovar_3]){it=traverse();next FAIL if it==FAIL
 bind[:autovar_5] = it};break FAIL if it==FAIL
-it=(bind[:autovar_2]||=[];_append(bind[:autovar_2],bind[:autovar_5])) 
+it=(_append(bind[:autovar_1],bind[:autovar_5])) 
  break FAIL if r==FAIL
  (bind[:autovar_6]=@input;@stop=nil;break FAIL) if @stop==true
 end;@input=bind[:autovar_6]
-it=bind[:autovar_2]
+it=bind[:autovar_1]
 bind[:ands_1] = it
 it=eof();next FAIL if it==FAIL
 it=(com=[]
@@ -330,24 +336,28 @@ def move(a0,a1)
 bind={}; bind[:append_1]=a0;bind[:name_1]=a1
   it=nil
 
-it=_or(proc{it=clas(Or);next FAIL if it==FAIL
+it=([])
 bind[:autovar_1] = it
-it=_pass(true,bind[:autovar_1]){it=([])
+it=([])
 bind[:autovar_2] = it
-while true
-bind[:autovar_4]=@input;r=it=move(bind[:append_1],bind[:name_1]);break FAIL if it==FAIL
+it=_or(proc{it=clas(Or);next FAIL if it==FAIL
 bind[:autovar_3] = it
-it=(bind[:autovar_2]||=[];_append(bind[:autovar_2],bind[:autovar_3])) 
+it=_pass(true,bind[:autovar_3]){it=([])
+bind[:autovar_1] = it
+while true
+bind[:autovar_5]=@input;r=it=move(bind[:append_1],bind[:name_1]);break FAIL if it==FAIL
+bind[:autovar_4] = it
+it=(_append(bind[:autovar_1],bind[:autovar_4])) 
  break FAIL if r==FAIL
- (bind[:autovar_4]=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=bind[:autovar_4]
-it=bind[:autovar_2]
+ (bind[:autovar_5]=@input;@stop=nil;break FAIL) if @stop==true
+end;@input=bind[:autovar_5]
+it=bind[:autovar_1]
 bind[:ary_1] = it };next FAIL if it==FAIL
 it=Or.create( {:ary=>bind[:ary_1] })
 bind[:_result_1] = it },proc{it=clas(Seq);next FAIL if it==FAIL
-bind[:autovar_5] = it
-it=_pass(true,bind[:autovar_5]){it=([])
 bind[:autovar_6] = it
+it=_pass(true,bind[:autovar_6]){it=([])
+bind[:autovar_2] = it
 while true
 bind[:autovar_9]=@input;r=it=anything();break FAIL if it==FAIL
 bind[:el_1] = it
@@ -357,11 +367,11 @@ bind[:autovar_7] = it
 it=_pass(false,bind[:autovar_7]){it=move(bind[:append_1],bind[:name_1]);next FAIL if it==FAIL
 bind[:autovar_8] = it};next FAIL if it==FAIL },proc{it=bind[:el_1]
 bind[:autovar_8] = it});break FAIL if it==FAIL
-it=(bind[:autovar_6]||=[];_append(bind[:autovar_6],bind[:autovar_8])) 
+it=(_append(bind[:autovar_2],bind[:autovar_8])) 
  break FAIL if r==FAIL
  (bind[:autovar_9]=@input;@stop=nil;break FAIL) if @stop==true
 end;@input=bind[:autovar_9]
-it=bind[:autovar_6]
+it=bind[:autovar_2]
 bind[:ary_1] = it };next FAIL if it==FAIL
 it=Seq.create( {:ary=>bind[:ary_1] })
 bind[:_result_1] = it },proc{it=clas(Pass);next FAIL if it==FAIL
@@ -486,6 +496,8 @@ bind={};
 
 it=([])
 bind[:autovar_1] = it
+it=([])
+bind[:autovar_1] = it
 while true
 bind[:autovar_5]=@input;r=it=_or(proc{it=clas(Args);next FAIL if it==FAIL
 bind[:autovar_2] = it
@@ -495,7 +507,7 @@ bind[:autovar_4] = it
 it=_pass(true,bind[:autovar_4]){it=flat();next FAIL if it==FAIL
 bind[:autovar_3] = it};next FAIL if it==FAIL },proc{it=anything();next FAIL if it==FAIL
 bind[:autovar_3] = it});break FAIL if it==FAIL
-it=(bind[:autovar_1]||=[];_append(bind[:autovar_1],bind[:autovar_3])) 
+it=(_append(bind[:autovar_1],bind[:autovar_3])) 
  break FAIL if r==FAIL
  (bind[:autovar_5]=@input;@stop=nil;break FAIL) if @stop==true
 end;@input=bind[:autovar_5]
@@ -509,35 +521,39 @@ bind={};
 
 it=([])
 bind[:autovar_1] = it
+it=([])
+bind[:autovar_2] = it
+it=([])
+bind[:autovar_2] = it
 while true
 bind[:autovar_10]=@input;r=it=_or(proc{it=clas(Grammar);next FAIL if it==FAIL
-bind[:autovar_2] = it
-it=_pass(true,bind[:autovar_2]){it=(@src.rules)
 bind[:autovar_3] = it
-it=_pass(false,bind[:autovar_3]){it=anything();next FAIL if it==FAIL
+it=_pass(true,bind[:autovar_3]){it=(@src.rules)
 bind[:autovar_4] = it
-it=_pass(true,bind[:autovar_4]){it=([])
+it=_pass(false,bind[:autovar_4]){it=anything();next FAIL if it==FAIL
 bind[:autovar_5] = it
+it=_pass(true,bind[:autovar_5]){it=([])
+bind[:autovar_1] = it
 while true
 bind[:autovar_8]=@input;r=it=clas(Rule);break FAIL if it==FAIL
 bind[:autovar_6] = it
 it=_pass(true,bind[:autovar_6]){it=root();next FAIL if it==FAIL
 bind[:autovar_7] = it};break FAIL if it==FAIL
-it=(bind[:autovar_5]||=[];_append(bind[:autovar_5],bind[:autovar_7])) 
+it=(_append(bind[:autovar_1],bind[:autovar_7])) 
  break FAIL if r==FAIL
  (bind[:autovar_8]=@input;@stop=nil;break FAIL) if @stop==true
 end;@input=bind[:autovar_8]
-it=bind[:autovar_5]
+it=bind[:autovar_1]
 bind[:rules_1] = it };next FAIL if it==FAIL };next FAIL if it==FAIL
 it=(@src.rules=bind[:rules_1])
 it=(@src.self)
 bind[:autovar_9] = it };next FAIL if it==FAIL },proc{it=anything();next FAIL if it==FAIL
 bind[:autovar_9] = it});break FAIL if it==FAIL
-it=(bind[:autovar_1]||=[];_append(bind[:autovar_1],bind[:autovar_9])) 
+it=(_append(bind[:autovar_2],bind[:autovar_9])) 
  break FAIL if r==FAIL
  (bind[:autovar_10]=@input;@stop=nil;break FAIL) if @stop==true
 end;@input=bind[:autovar_10]
-it=bind[:autovar_1]
+it=bind[:autovar_2]
 bind[:_result_1] = it
 it=bind[:_result_1]  
 end
@@ -549,7 +565,7 @@ it=(@src.self)
 bind[:autovar_1] = it
 it=_pass(false,bind[:autovar_1]){it=clas(Rule);next FAIL if it==FAIL
 bind[:autovar_2] = it
-it=_pass(true,bind[:autovar_2]){it=(@variables=Hash.new{|k,v| k[v]=v} ;(@src.locals+@src.args).each{|v| @variables[v[0]]=v})
+it=_pass(true,bind[:autovar_2]){it=(@variables=Hash.new{|k,v| k[v]=v} ;(@src.locals+@src.args).each{|w| @variables[w[0]]=w})
 it=(@locals=@src.locals)
 it=traverse();next FAIL if it==FAIL
 it=(@src.body=Seq[{:ary=>[@src.body] }];@src.locals=nil)
@@ -564,7 +580,7 @@ bind={};
 it=_or(proc{it=clas(Args);next FAIL if it==FAIL
 bind[:autovar_1] = it
 it=_pass(true,bind[:autovar_1]){it=traverse();next FAIL if it==FAIL
-it=(@src.ary.map{|bind[:a_1]| @variables[bind[:a_1]] })
+it=(@src.ary.map{|aa| @variables[aa] })
 bind[:autovar_2] = it
 it=_pass(false,bind[:autovar_2]){it=anything();next FAIL if it==FAIL
 bind[:autovar_3] = it
@@ -582,7 +598,7 @@ bind[:autovar_6] = it
 it=_pass(true,bind[:autovar_6]){it=clas(Local);next FAIL if it==FAIL
 bind[:_result_1] = it};next FAIL if it==FAIL };next FAIL if it==FAIL };next FAIL if it==FAIL },proc{it=clas(Result);next FAIL if it==FAIL
 bind[:autovar_7] = it
-it=_pass(true,bind[:autovar_7]){it=(@src.vars=@locals.select{|bind[:a_1]| @src.vars.include? bind[:a_1][0].to_sym}.uniq)
+it=_pass(true,bind[:autovar_7]){it=(@src.vars=@locals.select{|aa| @src.vars.include? aa[0].to_sym}.uniq)
 it=(@src.self)
 bind[:_result_1] = it };next FAIL if it==FAIL });return FAIL if it==FAIL
 it=bind[:_result_1]  
@@ -688,21 +704,23 @@ def visit()
 bind={}; 
   it=nil
 
-it=clas(Apply);return FAIL if it==FAIL
+it=([])
 bind[:autovar_1] = it
-it=_pass(true,bind[:autovar_1]){it=anything();next FAIL if it==FAIL
+it=clas(Apply);return FAIL if it==FAIL
+bind[:autovar_2] = it
+it=_pass(true,bind[:autovar_2]){it=anything();next FAIL if it==FAIL
 bind[:name_1] = it
 it=(bind[:name_1]==@name)||FAIL;next FAIL if it==FAIL
 it=([])
-bind[:autovar_2] = it
+bind[:autovar_1] = it
 while true
 bind[:autovar_4]=@input;r=it=anything();break FAIL if it==FAIL
 bind[:autovar_3] = it
-it=(bind[:autovar_2]||=[];_append(bind[:autovar_2],bind[:autovar_3])) 
+it=(_append(bind[:autovar_1],bind[:autovar_3])) 
  break FAIL if r==FAIL
  (bind[:autovar_4]=@input;@stop=nil;break FAIL) if @stop==true
 end;@input=bind[:autovar_4]
-it=bind[:autovar_2]
+it=bind[:autovar_1]
 bind[:args_1] = it };return FAIL if it==FAIL
 it=(body=@body;puts bind[:args_1].inspect; bind[:args_1].each_index{|i| body=Seq[Set[{:name=>@args[i],:expr=>Act[bind[:args_1][i]]}],body] } ; body)
 bind[:_result_1] = it

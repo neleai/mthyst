@@ -90,15 +90,17 @@ VALUE ame_lookahead(VALUE self,VALUE neg){
 	}
 	return r;
 }
+
 VALUE ame_pass(VALUE self,VALUE enter,VALUE expr){
 	if (enter!=Qtrue) expr=rb_ary_new3(1,expr);
-  VALUE src=rb_ivar_get(self,s_src);	VALUE input=rb_ivar_get(self,s_input);
-  rb_ivar_set(self,s_src,expr);  rb_ivar_set(self,s_input,INT2FIX(0));
+  VALUE src=ame_getsrc(self);	int input=ame_getpos(self); int len=ame_getlen(self);
+	ame_setsrc(self,expr);	ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
 	VALUE r=rb_yield(Qnil);
 	if (rb_funcall(self,rb_intern("eof"),0)==failobj) r=failobj;
-  rb_ivar_set(self,s_src,src);  rb_ivar_set(self,s_input,input);
+  ame_setsrc(self,src);ame_setpos(self,input);ame_setlen(self,len);
 	return r;
 }
+
 VALUE ame_or(int argc,VALUE *argv,VALUE self){
 	VALUE input=rb_ivar_get(self,s_input);
 	VALUE r;
