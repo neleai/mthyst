@@ -561,19 +561,18 @@ ame_setsrc(self,BGET(autovar_9)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb
 	pass5: fail5=1;
 	success5: ame_setsrc(self,oldsrc5); ame_setpos(self,oldpos8); ame_setlen(self,oldlen5);
 	if(fail5) goto pass4;
-it=CALL(move_Move_Assignmentscb_21,1,bind); 
- BSET(enter_1,it); 
+
 	if (CALL(eof,0)==failobj) goto pass4;
 	goto success4;
 	pass4: fail4=1;
 	success4: ame_setsrc(self,oldsrc4); ame_setpos(self,oldpos7); ame_setlen(self,oldlen4);
 	if(fail4) goto alt1_4;
-it=CALL(move_Move_Assignmentscb_22,1,bind);
+it=CALL(move_Move_Assignmentscb_21,1,bind);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
 alt1_4: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=CALL(anything,0 ); FAILTEST(alt1_5);
- BSET(it_1,it); it=CALL(move_Move_Assignmentscb_23,1,bind); 
+ BSET(it_1,it); it=CALL(move_Move_Assignmentscb_22,1,bind); 
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
   alt1_5:  ame_setpos(self,oldpos1); goto fail;

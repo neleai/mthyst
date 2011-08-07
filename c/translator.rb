@@ -252,78 +252,72 @@ def trans_AmethystTranslatorcb_52(bind)
 bind[:autovar_21]=[bind[:autovar_21]]
 end
 def trans_AmethystTranslatorcb_53(bind)
-@src.append
+"#{bind[:expr_1]}\n#{bind[:name_1]} = it"
 end
 def trans_AmethystTranslatorcb_54(bind)
-"#{bind[:expr_1]}\n" + (bind[:append_1] ? "#{bind[:name_1]}||=[];_append(#{bind[:name_1]},it)" : "#{bind[:name_1]} = it")
-end
-def trans_AmethystTranslatorcb_55(bind)
 Result
 end
-def trans_AmethystTranslatorcb_56(bind)
+def trans_AmethystTranslatorcb_55(bind)
 @src.name
 end
-def trans_AmethystTranslatorcb_57(bind)
+def trans_AmethystTranslatorcb_56(bind)
 @src.args
 end
-def trans_AmethystTranslatorcb_58(bind)
+def trans_AmethystTranslatorcb_57(bind)
 bind[:autovar_23]=[bind[:autovar_23]]
 end
-def trans_AmethystTranslatorcb_59(bind)
+def trans_AmethystTranslatorcb_58(bind)
 @src.vars
+end
+def trans_AmethystTranslatorcb_59(bind)
+"it=#{bind[:name_1]}.create(#{bind[:argss_1]} {#{bind[:vars_1].map{|l| ":#{l[0]}=>bind[:#{l.desc}]" }.sort*","} })"
 end
 def trans_AmethystTranslatorcb_6(bind)
 @src.rules
 end
 def trans_AmethystTranslatorcb_60(bind)
-"it=#{bind[:name_1]}.create(#{bind[:argss_1]} {#{bind[:vars_1].map{|l| ":#{l[0]}=>bind[:#{l.desc}]" }.sort*","} })"
-end
-def trans_AmethystTranslatorcb_61(bind)
 Local
 end
-def trans_AmethystTranslatorcb_62(bind)
+def trans_AmethystTranslatorcb_61(bind)
 "it=bind[:#{@src.desc}]"
 end
-def trans_AmethystTranslatorcb_63(bind)
+def trans_AmethystTranslatorcb_62(bind)
 Pass
 end
-def trans_AmethystTranslatorcb_64(bind)
+def trans_AmethystTranslatorcb_63(bind)
 'next'
 end
-def trans_AmethystTranslatorcb_65(bind)
+def trans_AmethystTranslatorcb_64(bind)
 @src.to
 end
-def trans_AmethystTranslatorcb_66(bind)
+def trans_AmethystTranslatorcb_65(bind)
 bind[:autovar_26]=[bind[:autovar_26]]
 end
-def trans_AmethystTranslatorcb_67(bind)
+def trans_AmethystTranslatorcb_66(bind)
 @src.var
 end
-def trans_AmethystTranslatorcb_68(bind)
+def trans_AmethystTranslatorcb_67(bind)
 bind[:autovar_27]=[bind[:autovar_27]]
 end
+def trans_AmethystTranslatorcb_68(bind)
+AmethystLambda.new(:AmethystTranslator_trans_lambda5,self,bind)
+end
 def trans_AmethystTranslatorcb_69(bind)
-@src.enter
+"it=_pass(true,#{bind[:var_1]}){#{bind[:to_1]}}"
 end
 def trans_AmethystTranslatorcb_7(bind)
 bind[:autovar_4]=[bind[:autovar_4]]
 end
 def trans_AmethystTranslatorcb_70(bind)
-AmethystLambda.new(:AmethystTranslator_trans_lambda5,self,bind)
-end
-def trans_AmethystTranslatorcb_71(bind)
-"it=_pass(#{!!bind[:enter_1]},#{bind[:var_1]}){#{bind[:to_1]}}"
-end
-def trans_AmethystTranslatorcb_72(bind)
 Cut
 end
-def trans_AmethystTranslatorcb_73(bind)
+def trans_AmethystTranslatorcb_71(bind)
 "@cut=true;it"
 end
-def trans_AmethystTranslatorcb_74(bind)
+def trans_AmethystTranslatorcb_72(bind)
 Stop
 end
-def trans_AmethystTranslatorcb_75(bind)
+def trans_AmethystTranslatorcb_73(bind)
 "@stop=true;it"
 end
 def trans_AmethystTranslatorcb_8(bind)

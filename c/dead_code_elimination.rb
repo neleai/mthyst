@@ -358,12 +358,9 @@ def move_Move_Assignmentscb_20(bind)
 bind[:name_1]
 end
 def move_Move_Assignmentscb_21(bind)
-@src.enter
+Pass.create( {:ary=>bind[:ary_1],:to=>bind[:to_1],:var=>bind[:var_1] })
 end
 def move_Move_Assignmentscb_22(bind)
-Pass.create( {:ary=>bind[:ary_1],:enter=>bind[:enter_1],:to=>bind[:to_1],:var=>bind[:var_1] })
-end
-def move_Move_Assignmentscb_23(bind)
 _Set(bind[:name_1],bind[:it_1])
 end
 def move_Move_Assignmentscb_3(bind)

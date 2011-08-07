@@ -294,27 +294,24 @@ def trans_AmethystOptimizercb_7(bind)
 @src.name
 end
 def trans_AmethystOptimizercb_70(bind)
-@src.enter
+Pass.create( {:ary=>bind[:ary_1],:to=>bind[:to_1],:var=>bind[:var_1] })
 end
 def trans_AmethystOptimizercb_71(bind)
-Pass.create( {:ary=>bind[:ary_1],:enter=>bind[:enter_1],:to=>bind[:to_1],:var=>bind[:var_1] })
-end
-def trans_AmethystOptimizercb_72(bind)
 Cut
 end
-def trans_AmethystOptimizercb_73(bind)
+def trans_AmethystOptimizercb_72(bind)
 Cut.create( {:ary=>bind[:ary_1] })
 end
-def trans_AmethystOptimizercb_74(bind)
+def trans_AmethystOptimizercb_73(bind)
 Stop
 end
-def trans_AmethystOptimizercb_75(bind)
+def trans_AmethystOptimizercb_74(bind)
 Stop.create( {:ary=>bind[:ary_1] })
 end
-def trans_AmethystOptimizercb_76(bind)
+def trans_AmethystOptimizercb_75(bind)
 Local
 end
-def trans_AmethystOptimizercb_77(bind)
+def trans_AmethystOptimizercb_76(bind)
 @src.self
 end
 def trans_AmethystOptimizercb_8(bind)
