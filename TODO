@@ -18,3 +18,7 @@ code motion of acts
 
 optimalization of lookaheads such that in anything* ~anything the ~anything is automaticaly satisfied(aka eof)
 in ~space space* the  space* must be empty
+mark acts without side effects
+documentation
+consider pseudovariables
+rewrite using backtracking,repeat until...

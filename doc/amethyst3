@@ -1,0 +1,235 @@
+Extending regular expression.
+We assume you are familiar with regular expressions. Amethyst can be viewed as generalization of regular expressions. 
+In this section we assume that we are matching strings(for general pattern matching see )
+
+Matching single character (1): To match specific character write
+syntax             behaviour                                                     regexp equivalent
+.                  Matches any        character 			                           . (except it matches even newlines)
+_                  Matches whitespace character                                  \s 
+<characters>       Behaves like [characters] in regexes                          [characters] 
+and sequences
+'string'           To match string literary enclose it by single quotes
+"string"           Matches string preceded by whitespaces ( same as _* 'string' (unless you redefine token see))
+
+We also use following
+digit,alnum,space,lower,upper,xdigit... matches when c function isfoo returns 1  \d \w \s ...
+empty							 Matches empty string
+#comment					 Comment as in ruby,ignored
+
+Grammars 
+Our extension allows named rules. We write rules in grammars. It is similar to context free grammars.
+amethyst Foo { # creates grammar foo
+	hello = 'hello world' # with rule hello which matches only hello world
+	hello2 = hello hello  # and rule hello2 which matches only hello worldhello world
+}
+
+Rule can be written as rule = expression.
+Expressions can be:
+syntax							 behaviour                                                                              example
+Patterns from (1) 	 See (1)
+rule application     Calls rule (Has same behaviour as replacing by rule body (modulo recursion) )          hello2 from previous section
+										 (called application)
+exp1 exp2	...				 sequencing matches  strings created as str1+str2+... 
+                                where str1 is matched by exp1 and str2 by exp2 ...                          hello2 from previous section
+exp1 | exp2 ...      choice matches strings matched by exp1 or by exp2                                       'a' |'b'   'c' matches only strings a, bc
+										 It is priorized choice which means alternatives are tried left to rigth.
+(exp)								 Enclosing by parenthness to force precedence																					  ('a' |'b' ) 'c' matches only strings ab, ac	
+exp?                 Option Makes expression optional. Shortcut for (exp | empty)														 'a' 'b'?       matches only strings a, ab
+exp*								 Repetion matches expression exp zero or more times
+										 Greedy as in regexes (for full description see break)				                          ('a' |'b')*     matches empty string,a,b,aa,ab,ba,bb,aaa ...
+exp+								 Matches expression one or more times. You can imagine it as exp exp* 			            ('a' |'b')+     matches a,b,aa,ab,ba,bb,aaa ...
+{ruby expression}		 Semantic act- execute ruby expression(see acts)																				used in rule empty = {nil} which only returns nil.
+                                                                                                            'a' {puts 42} 'b' For string ab it prints 42 and succeds
+																																																						for other strings begining by a it prints 42 and fail
+																																																						otherwise it just fails.
+&{ruby expression}   Semantic predicate. If expression is true do nothing, if it is false fail              used in rule   fail= &{false} to always fails
+										 (has priority over &exp) shortcut for {(ruby expression)||FAIL}
+~{ruby expression}	 Negative semantic predicate, shortcut for &{!(ruby expression)}
+
+&exp								 Positive lookahead If expression exp matches do nothing, if it fails then fail					&'a' ('a' |'b') matches only string a
+~exp								 Negative lookahead	If exp fails do nothing, if it succeds then fail(see cut)           ~'a' ('a' |'b') matches only string b
+
+We describe precedence of operators so far by simplified amethyst grammar:
+
+amethyst Simplified1 {
+	rule = name '=' expression
+	expression = choice
+	choice = sequence ('|' sequence)*
+	sequence = (nr prefixed)+ #nr does lookahead which fails when we are at next rule
+	prefixed = ('&' | '~') inlineHostExpr      #semantic predicate
+					 | ('&' | '~') prefixed            #lookahead
+					 | (term | '.') ('*' | '+' | '?')* #will be expanded later
+	term = '#' (~endline .)* #comment
+			 | application #rule application
+			 | patterns from (1)
+			 | inlineHostExpr #semantic act
+			 |  nested( '(' expression ')' ) #We need wrap this recursion by nested as explained in nested, ignore nested for now
+			 | 'nested' nested('(' expression ')') #syntax of nested
+}
+
+Variables and acts
+So far we can decide if language is syntacticaly correct and little else. Now we focus to get real work done.
+Binding variables. We can bind result of any expression exp to given variable var by exp:var syntax. We can use var later in semantic acts.
+So for example if we want parse integers we can write rule          number = <0-9>+:x {x.join.to_i}
+which returns readed number as integer.
+There is handy shortcut :foo for .:foo
+
+Collecting in array
+It is often simpler to collect results of various rules to array. For it we use append with syntax exp:var[]. Append appends result of exp to array in variable var. If result was array it joins arrays istead.
+If we wish also handle signs we can use append operator.
+number = ('+'|'-')?:x[] <0-9>+:x[] {x.join.to_i}
+
+
+Implicit variables(currently TODO list) (perhaps as extension)
+Sometimes we write code like
+  name:name args:args body:body
+For each variable that can be encountered at most once we create corresponding variable(unless we bind this variable) so we can write previous as name args body 
+if it was encountered more we collect them in variable+'s'
+
+Result 
+In parsing we often want to construct syntax tree so we make its creation easy. It must include module AmethystAST
+@Class 					creates new object of given class and binds attributes to values of variables
+								variable ary has special purpose as see(objects)
+so with following definition
+class Person
+	include AmethystAST
+	attr :name
+end
+expression {"John"}:name @Person returns Person object with name set to John.
+
+
+
+Parser instance variables. If we want variable thats shared in all rules for given parser invocation you can use parser instance variable. Refer to them as @@variable(what @method is used for see objects)
+
+modifying by act
+We have handy shortcut to modify result of expression by exp:{ruby} where result of exp is saved in variable it (shortcut is exp:it {ruby} )
+
+Results of expressions
+We can describe results of expressions in following way:
+
+patterns from (1)      return matched characters (except that "string" returns string regardless of leading spaces)
+application            returns result of rule call
+exp1 exp2 ... expn     returns result of last expression expn  (except if expn has no value we use prev expression,explanation later)
+(exp1 exp2 ... expn)[] collect results of expressions in array (shortcut for {a=[]} exp1:a[] exp2:a[] ... axpn:a[] {a} )
+exp1 | exp2 ... |expn  returns result of succeding expression
+exp?									 as shortcut
+exp*									 returns array with results of exp (shortcut for  {x=[]}         (exp:x[])* {x}
+exp+									 returns array with results of exp (shortcut for  {x=[]} exp:x[] (exp:x[])* {x}
+exp:var,exp:var[]      result of exp
+
+{ruby}                 returns result of ruby expression
+&{ruby},~{ruby}        as shortcut
+&exp,~exp							 has no value(explanation see persistence)
+
+Parametrized rules, and lambdas
+Grammars can be abstracter futher by parametrized rules. Rules can have arguments and we can apply rule with arbitrary ruby expression in arguments. 
+
+'string' is shortcut for seq("string")
+"string" is shortcut for token("string")
+Here things start to be interesting as token is in fact
+token(s) = spaces seq(s)       (and unsuprisingly spaces=_*)
+
+Things get interesting as rule apply(rule) invokes rule with given rule
+Example is listof 
+listOf(rule,delim) = apply(rule):f[] (apply(delim) apply(rule):f[])* -> f
+                   | empty -> []
+
+So instead
+number:x[] (('+' | '-') number:x[])* 
+we can write
+plusminus= '+' | '-'
+listOf("number","plusminus")
+lambdas as in listOf it is unconvient define for each parameter separate rule we use lambdas(which by the way are much easier to simply use than try to describe). Lambdas are created by `expr` syntax
+so we can write previous example as
+listOf(`number`,`'+' | '-'`)
+
+If there is no space between rule and '(' it is parametrized rule, if there is space then it is sequence of rule followed by parenthized amethyst expression.
+
+Persistence (currently at TODO list)
+Our parser is persistent. It is similar to transactions so each expression either succeeds, or it fails and then program is reverted to state at start of expression.
+This like garbage collection frees us of some tedious bookkeeping. In grammar we can fail to match practicaly everywhere so for example in
+ {x=["foo"]} ( 'a':x[] 'b':x[]
+             | 'a':x[] 'c':x[] ) {x}
+If we match ac without persistence x would be ["foo","a","a","c"] (and for ad ["foo","a","a"]). Now imagine how hidden this problem could be in larger grammars.
+To do it in correct way manualy requires us write code like this(and if x was shared even more elaborate)
+ {x=["foo"]} ( {x1=x.clone} 'a':x1[] 'b':x1[] {x=x1}
+             | {x2=x.clone} 'a':x2[] 'c':x2[] {x=x2}) {x}
+
+Lookaheads could cause previous problem in cryptic way so lookahead always reverts state.
+
+This leads to sligth disadvantage the we must parenthize choice so instead {a=3} 'a' | 'b' write {a=3} ('a' | 'b') as in former case for b variable a is not assiged.
+
+Note that you can turn off persistence of parser instance variable by notpersistent(variable) when needed.
+
+
+Priorized choice,recursion,break,cut,stop
+Our parser behaves almost like backtracking parser. Alternatives and order in which we consider them can be described as
+exp1 | exp2 ... |expn      first try all alternatives of exp1, then try all alternatives of exp2 ...
+exp1 exp2                  try first alternative of exp1 with all corresponding altrenatives of exp2 , then second alternative of exp1 with corresponding alternatives of exp2 ...
+For example in ('a' | 'b' | '') ('a' | 'c' | '') alternatives are tried in following order: aa ac a ba bc b a c empty string
+
+TODO continuation passing,  memoization for linear time
+
+Cut operator
+Cut is commited choice operator. We can associate cut with choice(by %label) and if we encounter we dont try next alternatives. For example in
+'a' cut ('c' | 'd') | . 'b'  we dont match ab and order of alternatives we try are ac ad  bb cb...
+Next example is that negative lookahead ~exp shortcut for   exp cut fail | empty
+
+Ordered choice like in PEG can be simulated in amethyst by writing cut at end of all alternatives.
+
+Repeat until and stop operator
+All iteration is done by repeat-until construct exp** repeat until try first alternative of exp and if it encountered stop then it matches by this alternative, otherwise it gives alternatives obtained by recursive call. Then it procceeds to second alternative of exp...
+For example (stop | 'a')** matches non-greedily empty string,a,aa,aaa.aaaa...  ('a' | stop) would use alternatives in order ... aaaa,aaa,aa,a,empty string
+Ordinary exp* operator is in shortcut for (exp | stop )**. Note this simulates greedy match.
+
+Break is convient way to describe iteration with ending condition. Informally we repeat loop until we encounter break. For example we match double quoted strings by '"' ('"' break | '\' . | .)*
+In fact break is shortcut for cut stop.
+
+Recursion 
+To archieve linear time we must limit recursion. First step it treat left and rigth recursion as iteration, then we require all remaining recursive invocations be nested.
+
+Rigth recursion - we equivalently rewrite it as repeat until. Best is describe by example
+Suppose we have rule r = 'a' | 'b' r | 'c' | 'd' r
+Then we can write it as ('a' stop | 'b' | 'c' stop | 'd')**
+Indirect rigth recursion reduced by inlining to direct and then eliminated.
+We also do some bookkeping to save bindings and defer semantic acts after recursive call.
+
+Left recursion how handle left recursion is quite popular topic in PEGs. Nobody in PEG and CFG uses order as would backtracking parser handle it. It can be illustrated by following example
+l = l 'a' | l 'b' | c   
+Order in which backtracking parser would try alternatives is quite confusing:  caaa cbaa caa caba cbba cba ca caab cbab cab cabb cbbb cbb cb c 
+
+Istead for left recursion we use same order as most current parsers do: Rewrite as iteration. So we rewrite l as
+c ('a' | 'b' )* in which gives friendlier ordering caaa caab caa caba cabb cab ca cbaa cbab cba cbba cbbb cbb cb c
+Indirect is again reducted to direct recursion by inlining.
+
+Nested finally all other recursive calls must be wrapped in nested so which can be viewed as requiring recursive constructs to have clear delimiters of begin and end (like enclosing by (), {} ...) We only require when matching nested(exp) all alternatives of exp have same size. But this means that if first alterative will match so each other will, which means we dont have to consider futher alternatives. 
+Another reason for nested is that it allows us semiautomatic error reporting,autocompletition...
+
+
+
+General pattern matching 
+So far we matched only strings. We generalize to pattern matching of arbitrary objects.
+It is easy to see that we can generalize this matching to arrays of arbitrary objects. Also if object has method ary which returns array we can treat this object as array.
+Objects without ary method are treated as objects with empty array.
+By current object we mean object we currently pattern match with.
+
+For objects we have following functions
+.                       gets object from array
+Class 								  gets object of given class. Shortcut for clas(cls) = .:i &{i.is_a?(cls)} {i}
+true,false,nil,0,1 ...  checks if its corresponding object (perhaps ranges)
+@method									calls method on current object and returns result. Can be also used in ruby (in ruby @method= correctly calls setter).
+
+What makes matching work are pass and enter operators. 
+exp1[exp2]    Enter: match with exp1 and then match exp2 with result of exp1
+[exp2]        shortcut for .[exp2]
+exp1=>exp2    Pass:  shortcut for exp1:x {[x]}[exp2]
+
+For arrays it allows intuitive pattern matching
+{[[1,2],[3,[4,5]]}=>[ [:x :y] [:z [:u :v] ] ]    which sets x to 1,y to 2...
+
+And for objects it looks similar.
+{Or[Or[Apply["foo"],Apply["bar"] ],Apply["baz"]]}=> Or[ ( Or[.*] | Apply[.*] )* ]
+And common use is to traverse attributes like here
+Rule[ @name=>name @args=>[Local*] @body=>body ]
+
+Pass operator is defined as it is more convient write rules to get element than test current object.
