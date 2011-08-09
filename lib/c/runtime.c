@@ -82,9 +82,9 @@ VALUE ame_anything(VALUE self){
 	return r;
 }
 VALUE ame_lookahead(VALUE self,VALUE neg){
-	VALUE input=rb_ivar_get(self,s_input);
+	int input=ame_getpos(self);
 	VALUE r=rb_yield(Qnil);
-	 rb_ivar_set(self,s_input,input);
+	ame_setpos(self,input);
 	if (neg==Qtrue){
 		r= (r==failobj)? Qtrue : failobj;
 	}
@@ -102,11 +102,11 @@ VALUE ame_pass(VALUE self,VALUE enter,VALUE expr){
 }
 
 VALUE ame_or(int argc,VALUE *argv,VALUE self){
-	VALUE input=rb_ivar_get(self,s_input);
+	int input=ame_getpos(self);
 	VALUE r;
 	int i;
 	for(i=0;i<argc;i++){
-		rb_ivar_set(self,s_input,input);
+		ame_setpos(self,input);
 		r=rb_funcall(argv[i],s_call,0);
 		if (r!=failobj){
 			rb_ivar_set(self,s_cut,Qnil);

@@ -14,9 +14,10 @@ class Gram
 	      puts r.inspect if debug
       	r=o.new.parse(:root,r)
 			}
-			puts Dataflow.new.parse(:root,r).inspect
-			puts r.inspect
-      @rules[r.name]=r 
+		puts r.inspect
+		puts Dataflow.new.parse(:root,r).inspect
+		puts r.inspect
+    @rules[r.name]=r 
 	end
 	def getrule(from)
 		fromrule,nm=nil,self.name

@@ -100,6 +100,7 @@ class AmethystCore
 
 	def initialize(grammars={})
 		@grammars=grammars
+		@parents=[]
 	end	
 
 	def parse(rule,input)
