@@ -14,7 +14,7 @@ makeclasses(Object,
     :Or,
     :Seq,
 		[:Strin],
-		[:Local,:number,:no,:bind],
+		[:Local,:number,:no,:bind,:ssano],
 		[:Pass,:var,:to,:enter],
     [:Rule,:name,:args,:locals,:body,:reachable,:bnding],
     [:Grammar,:name,:parent,:rules,:rbcode,:rbno],
@@ -63,20 +63,20 @@ end
 class <<Pass
 	def [](from,to,enter=nil)
 		a=autovar
-		Seq[_Set(a,from), (enter ? Act[] : Act[Args[a,"=[",a,"]"]]) , Pass.create({:to=>to,:enter=>true,:var=>a})]
+		Seq[_Set(a,from), (enter ? Act[] : Act[Args[a.clone,"=[",a.clone,"]"]]) , Pass.create({:to=>to,:enter=>true,:var=>a})]
 	end
 end
 def _Set(name,expr,append=nil)
 	if append
 		a=autovar
 		$appends<<name if $appends
-	  return Seq[_Set(a,expr),Act[Args["_append(",_Local(name),",",a,")"]]]
+	  return Seq[_Set(a.clone,expr),Act[Args["_append(",_Local(name),",",a.clone,")"]]]
 	end	
 	if name.is_a?(Local) || name.is_a?(String)
 		Set.create({:name=>_Local(name),:expr=>expr})
 	else
 		a=autovar
-		Seq[_Set(a,expr),Act[Args[_Local(name),'=',_Local(a)]]]
+		Seq[_Set(a.clone,expr),Act[Args[_Local(name),'=',_Local(a.clone)]]]
 	end
 end
 class Append;end
@@ -89,7 +89,7 @@ end
 class <<Many
 	def [](expr,many1=nil)
 	  a=autovar
-		Seq[{:ary=>( [_Set(a, Act["[]"])]+(many1 ? [Append[a,expr]] : [])+[Many.create({:ary=>[Append[a,expr]],:o=>autovar}),Act[a]])}]
+		Seq[{:ary=>( [_Set(a.clone, Act["[]"])]+(many1 ? [Append[a.clone,expr]] : [])+[Many.create({:ary=>[Append[a.clone,expr]],:o=>autovar}),Act[a.clone]])}]
 	end
 end
 
@@ -120,7 +120,7 @@ class <<Lookahead
 end
 class Local
 	def inspect
-		"Local[#{ary[0]}_#{number}]"
+		"Local[#{ary[0]}_#{ssano}]"
 	end
 	def hash
 		ary.hash

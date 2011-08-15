@@ -8,7 +8,8 @@ class Dataflow < Traverser
 	end
 	def ssanum(var)
 		return var unless var.is_a? Local
-		[var[0],oldssanums[var]]
+		var.ssano=oldssanums[var]
+		[var,oldssanums[var]]
 	end
 	def newssanum(var)
 		ssanums[var]+=1
