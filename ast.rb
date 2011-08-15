@@ -26,7 +26,7 @@ makeclasses(Object,
 		[:Variable,:bind,:global,:key],
 		:Bnding,
 		[:Phi,:merges,:result],
-		[:Switch,:variants]
+		[:Switch,:fn,:variants]
 )
 
 class <<Bnding

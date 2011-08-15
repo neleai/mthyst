@@ -14,55 +14,6 @@ class AmethystLambda
 end
 
 class AmethystCore
-
-  def _lookahead(neg=false)
-    oldInput = @input
-    r = yield
-    @input = oldInput
-		r=(r==FAIL) ? true : FAIL	if neg
-    r
-  end
-
-  def _or(*args)
-    oldInput = @input
-    args.each { |arg|
-        @input = oldInput
-        r= arg.call
-				(@cut=nil;return r) unless r==FAIL
-				(@cut=nil;return FAIL) if @cut
-		}
-		FAIL
-	end
-
-	def _pass(enter,expr)
-		expr = [expr] unless enter
-		oldSrc,oldInput=@src,@input
-		@src,@input=expr,0
-		r=yield
-		r=FAIL if eof==FAIL
-		@src,@input=oldSrc,oldInput
-		r
-	end
-		
-	def [](key)
-		@src.send(key) 
-	end
-
-	def []=(key,value)
-	 @src.send(key+"=",value)
-	end
-
-	def anything
-		return FAIL unless @input<@src.size
-		if @src.is_a? String
-			i=@src[@input,1]
-		else
-			i=@src[@input]
-		end
-		@input+=1
-		i
-	end
-	
 	def apply(rule)
 		if rule.is_a?(String) || rule.is_a?(Symbol)
 			send(rule)
@@ -80,15 +31,6 @@ class AmethystCore
 		@input=g.input
 		return r
 	end
-
-  def seq(str)
-		if str==@src[@input,str.size]
-			@input+=str.size
-			return str
-		else
-			return FAIL
-		end
-  end
 
   def _append(ar,it)
     if it.is_a? Array
