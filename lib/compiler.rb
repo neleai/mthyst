@@ -18,7 +18,7 @@ class Gram
 			}
 		puts r.inspect
 		puts r=CloneLocals.new.parse(:root,r)
-		puts Dataflow.new.parse(:root,r).inspect
+		puts r=Dataflow.new.parse(:root,r)
 		puts r.inspect
     @rules[r.name]=r 
 	end
@@ -45,7 +45,6 @@ class <<Compiler
 	end
 	def add_grammar(grammar)
 		@grammars[grammar.name]=Gram.new(grammar)
-		#outs.puts "class #{grammar.name}"+ (grammar.parent ? " < #{grammar.parent}" : "")
 
 		callg=Oriented_Graph.new
 		@grammars[grammar.name].rules.each{|name,code|
@@ -55,11 +54,8 @@ class <<Compiler
 		topo= callg.topo_order
 		puts callg.inspect
 		puts topo.inspect
-		code=[]
 		topo.each{|name|if @grammars[grammar.name].rules[name]
-#			puts @grammars[grammar.name].rules[name].inspect
 				@grammars[grammar.name].opt(@grammars[grammar.name].rules[name])
-#				puts @grammars[grammar.name].rules[name].inspect
 if true
 				calls= DetectCalls.new.parse(:root,[@grammars[grammar.name].rules[name]])
 				calls.each{|nm,v|
@@ -68,20 +64,11 @@ if true
 					@grammars[grammar.name].inline(nm,name) if r && ["char","space"].include?(r.name)
 				}
 end
-#				puts @grammars[grammar.name].rules[name].inspect
 				@grammars[grammar.name].opt(@grammars[grammar.name].rules[name])
-#				puts @grammars[grammar.name].rules[name].inspect
-#
 
-#		puts AmethystTranslator.new.parse(:itrans,[@grammars[grammar.name].rules[name]]).inspect
-
-			code<< AmethystTranslator.new.parse(:itrans,[@grammars[grammar.name].rules[name]])
 		end}
-		#outs.puts code.sort
-		#outs.puts "end"
 	end
 	def compile(file,out,file2)
-		#outs=File.new(out,"w")
 		source=File.new(file).read
 		tree=AmethystParser.new.parse(:igrammar,source)
 		tree=Analyze_Variables2.new.parse(:itrans,tree)
@@ -90,7 +77,6 @@ end
 				add_grammar(a)
 				a.rules=@grammars[a.name].rules.map{|h,k| k}
 			else
-#				outs.print a
 			end
 		}
 		c,init,rb= AmethystCTranslator.new.parse(:itrans,tree)
