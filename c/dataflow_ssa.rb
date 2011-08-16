@@ -14,7 +14,7 @@ class Dataflow < Traverser
 	def newssanum(var)
 		ssanums[var]+=1
 		oldssanums[var]=ssanums[var]
-		ssanum(var)
+		ssanum(var.clone)
 	end
 	def many_end(prev)
 	  ssanums.each{|var,num|
@@ -49,6 +49,11 @@ class Dataflow < Traverser
     }
 	end
 end
+class Local
+	def ssaname
+		[ary[0],ssano]	
+	end
+end
 
 class Dataflow < Traverser
 def root_Dataflowcb_1(bind)
@@ -64,7 +69,7 @@ def root_Dataflowcb_4(bind)
 @bnding=@src.bnding
 end
 def root_Dataflowcb_5(bind)
-@src.reachable=@edges.reverse.reachable(@marked+[@src.body[-1]]); [@edges,@marked+[@src.body[-1]]]
+@src.reachable=@edges.reverse.reachable(@marked+[ssanum(@src.body[-1])]); [@edges,@marked+[@src.body[-1]]]
 end
 def vars_in_Dataflowcb_1(bind)
 []
@@ -151,66 +156,54 @@ def visit_Dataflowcb_1(bind)
 Apply
 end
 def visit_Dataflowcb_10(bind)
-@marked+=bind[:var_1]
+@marked<<ssanum(@src.var)
 end
 def visit_Dataflowcb_11(bind)
 @src.self
 end
 def visit_Dataflowcb_12(bind)
-Pass
-end
-def visit_Dataflowcb_13(bind)
-@src.var
-end
-def visit_Dataflowcb_14(bind)
-bind[:autovar_6]=[bind[:autovar_6]]
-end
-def visit_Dataflowcb_15(bind)
-@marked+=bind[:var_1]
-end
-def visit_Dataflowcb_16(bind)
 Act
 end
-def visit_Dataflowcb_17(bind)
+def visit_Dataflowcb_13(bind)
 @marked<<bind[:this_1] if @src.pred
 end
-def visit_Dataflowcb_18(bind)
+def visit_Dataflowcb_14(bind)
 @src.ary
 end
-def visit_Dataflowcb_19(bind)
-bind[:autovar_8]=[bind[:autovar_8]]
+def visit_Dataflowcb_15(bind)
+bind[:autovar_6]=[bind[:autovar_6]]
 end
-def visit_Dataflowcb_2(bind)
-@marked+=bind[:var_1]
-end
-def visit_Dataflowcb_20(bind)
+def visit_Dataflowcb_16(bind)
 bind[:var_1].each{|v| edges.add(ssanum(v),bind[:this_1]); edges.add(bind[:this_1],newssanum(v));}; bind[:this_1]
 end
-def visit_Dataflowcb_21(bind)
+def visit_Dataflowcb_17(bind)
 Set
 end
-def visit_Dataflowcb_22(bind)
+def visit_Dataflowcb_18(bind)
 set_end(@src.self) 
 end
-def visit_Dataflowcb_23(bind)
+def visit_Dataflowcb_19(bind)
 @src.self
 end
-def visit_Dataflowcb_24(bind)
+def visit_Dataflowcb_2(bind)
+bind[:var_1].each{|v| @marked<<ssanum(v)}
+end
+def visit_Dataflowcb_20(bind)
 Result
 end
-def visit_Dataflowcb_25(bind)
+def visit_Dataflowcb_21(bind)
 @src.vars
 end
-def visit_Dataflowcb_26(bind)
-bind[:autovar_12]=[bind[:autovar_12]]
+def visit_Dataflowcb_22(bind)
+bind[:autovar_10]=[bind[:autovar_10]]
 end
-def visit_Dataflowcb_27(bind)
+def visit_Dataflowcb_23(bind)
 bind[:var_1].each{|w| @edges.add(ssanum(w),bind[:this_1]) } ; bind[:this_1]
 end
-def visit_Dataflowcb_28(bind)
+def visit_Dataflowcb_24(bind)
 Local
 end
-def visit_Dataflowcb_29(bind)
+def visit_Dataflowcb_25(bind)
 @src.self.clone
 end
 def visit_Dataflowcb_3(bind)
@@ -229,10 +222,78 @@ def visit_Dataflowcb_7(bind)
 Many
 end
 def visit_Dataflowcb_8(bind)
-@src.o
+@src.self
 end
 def visit_Dataflowcb_9(bind)
-bind[:autovar_4]=[bind[:autovar_4]]
+Pass
+end
+
+end
+
+
+class Dead_Code_Deleter3 < Traverser
+def root_Dead_Code_Deleter3cb_1(bind)
+@src.self
+end
+def root_Dead_Code_Deleter3cb_2(bind)
+bind[:autovar_1]=[bind[:autovar_1]]
+end
+def root_Dead_Code_Deleter3cb_3(bind)
+Rule
+end
+def root_Dead_Code_Deleter3cb_4(bind)
+@src.reachable
+end
+def root_Dead_Code_Deleter3cb_5(bind)
+@reachable=bind[:it_1]
+end
+def root_Dead_Code_Deleter3cb_6(bind)
+@src.reachable=nil
+end
+def root_Dead_Code_Deleter3cb_7(bind)
+@src.self
+end
+def visit_Dead_Code_Deleter3cb_1(bind)
+Act
+end
+def visit_Dead_Code_Deleter3cb_10(bind)
+@src.self
+end
+def visit_Dead_Code_Deleter3cb_11(bind)
+@reachable[bind[:this_1]] ? bind[:this_1] : Act[]
+end
+def visit_Dead_Code_Deleter3cb_12(bind)
+Local
+end
+def visit_Dead_Code_Deleter3cb_13(bind)
+@src.self
+end
+def visit_Dead_Code_Deleter3cb_14(bind)
+@reachable[bind[:this_1].ssaname] ? bind[:this_1] : Act[]
+end
+def visit_Dead_Code_Deleter3cb_2(bind)
+@src.self
+end
+def visit_Dead_Code_Deleter3cb_3(bind)
+@reachable[bind[:this_1]] ? bind[:this_1] : Act[]
+end
+def visit_Dead_Code_Deleter3cb_4(bind)
+Set
+end
+def visit_Dead_Code_Deleter3cb_5(bind)
+@src.name
+end
+def visit_Dead_Code_Deleter3cb_6(bind)
+@src.expr
+end
+def visit_Dead_Code_Deleter3cb_7(bind)
+@src.self
+end
+def visit_Dead_Code_Deleter3cb_8(bind)
+@reachable[bind[:name_1]] ? bind[:this_1] : bind[:expr_1]
+end
+def visit_Dead_Code_Deleter3cb_9(bind)
+Result
 end
 
 end
