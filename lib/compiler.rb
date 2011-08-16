@@ -101,17 +101,12 @@ else
 require 'c/amethyst'
 require 'c/parser'
 end
-require 'c/optimizer_null'
-require 'c/optimizer_and_or'
-require 'c/detect_variables2'
-require 'c/dead_code_elimination'
-require 'c/traverser'
-require 'c/translator'
-require 'c/ctranslator2'
+["optimizer_null","optimizer_and_or","detect_variables2","dead_code_elimination","traverser","ctranslator2"].each{|opt|
+	require "c/#{opt}"
+}
 
 def translate(s)
   par=AmethystParser.new
-  t=AmethystTranslator.new
   opt=par.parse(:igrammar,s)
   [AmethystOptimizer2,Analyze_Variables2,Move_Assignments,
     Dead_Code_Detector,Dead_Code_Deleter,
