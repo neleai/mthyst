@@ -112,7 +112,7 @@ ame_setsrc(self,BGET(autovar_1)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb
   arg0=CALL(root_Analyze_Variables2cb_3,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(pass1);
  BSET(autovar_2,it); int oldpos2=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
 ame_setsrc(self,BGET(autovar_2)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
- it=CALL(root_Analyze_Variables2cb_4,1,bind); it=CALL(root_Analyze_Variables2cb_5,1,bind);   it=CALL(traverse,0 ); FAILTEST(pass2);it=CALL(root_Analyze_Variables2cb_6,1,bind); it=CALL(root_Analyze_Variables2cb_7,1,bind); 
+ it=CALL(root_Analyze_Variables2cb_4,1,bind); it=CALL(root_Analyze_Variables2cb_5,1,bind); it=CALL(root_Analyze_Variables2cb_6,1,bind);   it=CALL(traverse,0 ); FAILTEST(pass2);it=CALL(root_Analyze_Variables2cb_7,1,bind); it=CALL(root_Analyze_Variables2cb_8,1,bind); 
  BSET(_result_1,it); 
 	if (CALL(eof,0)==failobj) goto pass2;
 	goto success2;

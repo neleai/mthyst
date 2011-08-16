@@ -61,7 +61,8 @@ amethyst Dataflow < Traverser {
 							 @ary=>[vars_in]:var ] -> var.each{|v| edges.add(ssanum(v),this); edges.add(this,newssanum(v));}; this
 				| Set[   traverse  {set_end(@self) }    @self] 
 				| Result[@vars=>[vars_in]:var traverse:this] -> var.each{|w| @@edges.add(ssanum(w),this) } ; this
-				
+				| Local[ {@self.clone} ]
+	
 				vars_in={ary=[]}
 								( Global[ @self:ary[]  {@@marked<<@self} .*]								
 								| Act[ @self:ary[] .*]

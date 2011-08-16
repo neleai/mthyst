@@ -60,15 +60,18 @@ def root_Analyze_Variables2cb_3(bind)
 Rule
 end
 def root_Analyze_Variables2cb_4(bind)
-@variables=Hash.new{|k,v| k[v]=v} ;(@src.locals+@src.args).each{|w| @variables[w[0]]=w}
+@bnding=@src.bnding
 end
 def root_Analyze_Variables2cb_5(bind)
-@locals=@src.locals
+@variables=Hash.new{|k,v| k[v]=v} ;(@src.locals+@src.args).each{|w| @variables[w[0]]=w}
 end
 def root_Analyze_Variables2cb_6(bind)
-@src.body=Seq[{:ary=>[@src.body] }];@src.locals=nil
+@locals=@src.locals
 end
 def root_Analyze_Variables2cb_7(bind)
+@src.body=Seq[{:ary=>[@src.body] }];@src.locals=nil
+end
+def root_Analyze_Variables2cb_8(bind)
 @src.self
 end
 def visit_Analyze_Variables2cb_1(bind)

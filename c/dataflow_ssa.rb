@@ -207,6 +207,12 @@ end
 def visit_Dataflowcb_27(bind)
 bind[:var_1].each{|w| @edges.add(ssanum(w),bind[:this_1]) } ; bind[:this_1]
 end
+def visit_Dataflowcb_28(bind)
+Local
+end
+def visit_Dataflowcb_29(bind)
+@src.self.clone
+end
 def visit_Dataflowcb_3(bind)
 Or
 end

@@ -1,3 +1,7 @@
+class Traverser
+	def replace_by
+	end
+end
 amethyst Traverser {
 	traverse_item = visit:a  {@@changed=true} {a}
                       | Array[ traverse_item* ]

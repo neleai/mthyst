@@ -1,3 +1,7 @@
+class Traverser
+	def replace_by
+	end
+end
 class Traverser < Amethyst
 def traverse_Traversercb_1(bind)
 @src.self
