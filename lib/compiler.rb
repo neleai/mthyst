@@ -122,6 +122,8 @@ def compile_to_c(file)
     f.puts "void Init_#{file}_c(){ #{init} }"
   }
   File.open("c/#{file}.rb","w"){|f| f.puts rb; f.puts "\n require 'c/#{file}_c'"}
-  `cd c;gcc -I. -I/usr/lib/ruby/1.8/x86_64-linux -I/usr/lib/ruby/1.8/x86_64-linux -I.   -fPIC -fno-strict-aliasing -g -g $O  -fPIC   -c #{file}_c.c`
-  `cd c;gcc -shared -o #{file}_c.so #{file}_c.o -L. -L/usr/lib -L.  -rdynamic -Wl,-export-dynamic -lruby1.8  -lpthread -lrt -ldl -lcrypt -lm   -lc`
+	withtime("c"){
+  	`cd c;gcc -I. -I/usr/lib/ruby/1.8/x86_64-linux -I/usr/lib/ruby/1.8/x86_64-linux -I.   -fPIC -fno-strict-aliasing -g -g $O  -fPIC   -c #{file}_c.c`
+  	`cd c;gcc -shared -o #{file}_c.so #{file}_c.o -L. -L/usr/lib -L.  -rdynamic -Wl,-export-dynamic -lruby1.8  -lpthread -lrt -ldl -lcrypt -lm   -lc`
+	}
 end

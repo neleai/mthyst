@@ -55,6 +55,14 @@ def makeclasses(parent,*ary)
 
 end
 
+#shortcut for foo.size.times.map
 def map_index(s)
 	s.size.times.map{|a| yield(a)}
+end
+def withtime(s)
+	t=Time.new
+	print "%20s" % s;	STDOUT.flush
+	r=yield
+	puts " %0.6f" % (Time.new-t)
+	r
 end

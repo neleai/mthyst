@@ -46,15 +46,12 @@ class AmethystCore
 	end	
 
 	def parse(rule,input)
-		print self.class
 		self.src=input
 		self.pos=0
 		self.len=input.size
-		time=Time.new
-		r=self.apply(rule)
-		puts "	#{Time.new-time}"
-		
-		r
+		withtime(self.class){
+			self.apply(rule)
+		}
 	end
 end
 require 'c/Ame'
