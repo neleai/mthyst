@@ -6,7 +6,8 @@ require 'compiler'
 require 'c/inliner2'
 require 'c/dead_code_elimination2'
 require 'c/dataflow_ssa'
-
+require 'compiled/amethyst'
+#require 'compiled/parser'
 class Array
 	def self
 		self
