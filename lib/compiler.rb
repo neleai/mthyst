@@ -92,6 +92,15 @@ class <<Compiler
 end	
 Compiler::init
 
+require 'c/amethyst'
+require 'c/parser'
+require 'c/optimizer_null'
+require 'c/optimizer_and_or'
+require 'c/detect_variables2'
+require 'c/dead_code_elimination'
+require 'c/traverser'
+require 'c/translator'
+require 'c/ctranslator2'
 
 def translate(s)
   par=AmethystParser.new

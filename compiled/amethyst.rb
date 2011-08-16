@@ -131,10 +131,11 @@ def eof()
 bind={}; 
   it=nil
 
-it=anything();return FAIL if it==FAIL
+it=_or(proc{it=anything();next FAIL if it==FAIL
 @cut=true;it
-it=fails();return FAIL if it==FAIL
-bind[:_result_1] = it
+it=fails();next FAIL if it==FAIL
+bind[:_result_1] = it },proc{it=empty();next FAIL if it==FAIL
+bind[:_result_1] = it});return FAIL if it==FAIL
 it=bind[:_result_1]  
 end
 def exactly(a0)
