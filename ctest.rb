@@ -19,33 +19,23 @@ def a2ruby(s)
 		Dead_Code_Detector,Dead_Code_Deleter,
 		AmethystOptimizer2].each{|p|
 		opt=p.new.parse(:itrans,opt)
-		puts opt.inspect
+#		puts opt.inspect
 	}
-	$opt=opt
-	ruby=t.parse(:itrans,opt)
+	opt
+end
+def compile_to_c(file)
+	opt=a2ruby(File.new("amethyst/#{file}.ame").read)
+	c,init,rb=AmethystCTranslator.new.parse(:itrans,opt)
+	File.open("c/#{file}_c.c","w"){|f|
+    f.puts "#include \"cthyst.h\""
+    f.puts c
+    f.puts "void Init_#{file}_c(){ #{init} }"
+  }
+  File.open("c/#{file}.rb","w"){|f| f.puts rb; f.puts "\n require 'c/#{file}_c'"}
+	`cd c;gcc -I. -I/usr/lib/ruby/1.8/x86_64-linux -I/usr/lib/ruby/1.8/x86_64-linux -I.   -fPIC -fno-strict-aliasing -g -g $O  -fPIC   -c #{file}_c.c`
+	`cd c;gcc -shared -o #{file}_c.so #{file}_c.o -L. -L/usr/lib -L.  -rdynamic -Wl,-export-dynamic -lruby1.8  -lpthread -lrt -ldl -lcrypt -lm   -lc`
 end
 
-if false
-o=File.open("ctranslator2.rb","w")
-o.puts a2ruby(File.new("amethyst/ctranslator2.ame").read)
-o.close
-end
-#require 'ctranslator2.rb'
-g=[Grammar[{:name=>"Foo",:parent=>"Amethyst",:rules=>[Rule[{:name=>"foo",:args=>[],:body=>Seq[Lookahead[Apply["bar"]],Pass[Apply["a"],Apply["b"]],Apply["x"],Set[{:name=>Local["result"],:expr=>Act["42"]}]]}],Rule[{:name=>"a",:args=>[],:body=>Seq[Act[Args["u=",Local["a"]]]]}], Rule[{:name=>"t",:args=>[],:body=>Seq[Or[Apply["spaces"],Apply["seq",Args["'x'"]]]]}] ]}]]
 ["amethyst","parser","optimizer_null","optimizer_and_or","detect_variables2","traverser","dead_code_elimination","translator","ctranslator2"].each{|n|
-puts AmethystCTranslator.new.parse(:itrans,g)
-a2ruby(File.new("amethyst/#{n}.ame").read)
-	puts $opt.inspect
-	c,init,rb=AmethystCTranslator.new.parse(:itrans,$opt)
-	puts c
-	puts init
-	puts rb.inspect
-	File.open("c/#{n}_c.c","w"){|f| 
-		f.puts "#include \"cthyst.h\""
-		f.puts c
-		f.puts "void Init_#{n}_c(){ #{init} }"
-	}
-	File.open("c/#{n}.rb","w"){|f| f.puts rb; f.puts "\n require 'c/#{n}_c'"}
-
+	compile_to_c(n)
 }
-`cd c;./comp`
