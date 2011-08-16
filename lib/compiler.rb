@@ -17,6 +17,7 @@ class Gram
       	r=o.new.parse(:root,r)
 			}
 		puts r.inspect
+		puts r=CloneLocals.new.parse(:root,r)
 		puts Dataflow.new.parse(:root,r).inspect
 		puts r.inspect
     @rules[r.name]=r 
@@ -107,9 +108,13 @@ end
 	end
 end	
 Compiler::init
-
+if true
 require 'compiled/amethyst'
 require 'compiled/parser'
+else
+require 'c/amethyst'
+require 'c/parser'
+end
 require 'c/optimizer_null'
 require 'c/optimizer_and_or'
 require 'c/detect_variables2'
