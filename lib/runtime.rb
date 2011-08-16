@@ -54,5 +54,10 @@ class AmethystCore
 		}
 	end
 end
+class <<AmethystCore
+	def parse(rule,input)
+		self.class.new.parse(rule,input)
+	end
+end
 require 'c/Ame'
 

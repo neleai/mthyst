@@ -18,975 +18,824 @@ def connectstring(ary)
 end
 
 class AmethystParser < Amethyst
-def __args(a0,a1)
-bind={}; bind[:o_1]=a0;bind[:c_1]=a1
-  it=nil
-
-it=([])
-bind[:autovar_1] = it
-it=seq(bind[:o_1]);return FAIL if it==FAIL
-it=("")
-bind[:s_1] = it
-it=spaces();return FAIL if it==FAIL
-it=seq(bind[:s_1]);return FAIL if it==FAIL
-it=([])
-bind[:autovar_1] = it
-while true
-bind[:autovar_3]=@input;r=it=rubyarg();break FAIL if it==FAIL
-bind[:autovar_2] = it
-it=(_append(bind[:autovar_1],bind[:autovar_2])) 
- break FAIL if r==FAIL
- (bind[:autovar_3]=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=bind[:autovar_3]
-it=bind[:autovar_1]
-bind[:r_1] = it
-it=seq(bind[:c_1]);return FAIL if it==FAIL
-it=bind[:r_1]
-bind[:_result_1] = it
-it=bind[:_result_1]  
+def __args_AmethystParsercb_1(bind)
+[]
 end
-def _args(a0,a1)
-bind={}; bind[:o_1]=a0;bind[:c_1]=a1
-  it=nil
-
-it=__args(bind[:o_1],bind[:c_1]);return FAIL if it==FAIL
-bind[:r_1] = it
-it=(Args[{:ary=>([bind[:o_1]]+bind[:r_1]+[bind[:c_1]])}])
-bind[:_result_1] = it
-it=bind[:_result_1]  
+def __args_AmethystParsercb_2(bind)
+bind[:o_1]
 end
-def addargs()
-bind={}; 
-  it=nil
-
-it=([])
-bind[:result_1] = it
-while true
-bind[:autovar_3]=@input;r=it=(Args)
-bind[:cls_1] = it
-it=anything();break FAIL if it==FAIL
-bind[:i_1] = it
-it=(bind[:i_1].is_a?(bind[:cls_1]))||FAIL;break FAIL if it==FAIL
-it=bind[:i_1]
-bind[:_result_1] = it
-it=bind[:_result_1]
-bind[:autovar_1] = it
-it=_pass(true,bind[:autovar_1]){it=anything();next FAIL if it==FAIL
-bind[:name_1] = it
-it=(_Local(bind[:name_1]) )
-bind[:autovar_2] = it
-it=(_append(bind[:result_1],bind[:autovar_2])) };break FAIL if it==FAIL 
- break FAIL if r==FAIL
- (bind[:autovar_3]=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=bind[:autovar_3]
-it=(bind[:result_1] || [])
-bind[:_result_2] = it
-it=bind[:_result_2]  
+def __args_AmethystParsercb_3(bind)
+""
 end
-def application()
-bind={}; 
-  it=nil
-
-it=_or(proc{it=name();next FAIL if it==FAIL
-bind[:klas_1] = it
-it=seq("::");next FAIL if it==FAIL
-it=name();next FAIL if it==FAIL
-bind[:rule_1] = it
-it=([bind[:klas_1],bind[:rule_1]])
-bind[:rule_1] = it },proc{it=name();next FAIL if it==FAIL
-bind[:rule_1] = it});return FAIL if it==FAIL
-it=argsOpt('(',')');return FAIL if it==FAIL
-bind[:arg_1] = it
-it=(Apply[bind[:rule_1],bind[:arg_1]])
-bind[:_result_1] = it
-it=bind[:_result_1]  
+def __args_AmethystParsercb_4(bind)
+bind[:s_1]
 end
-def args(a0,a1)
-bind={}; bind[:o_1]=a0;bind[:c_1]=a1
-  it=nil
-
-it=__args(bind[:o_1],bind[:c_1]);return FAIL if it==FAIL
-bind[:r_1] = it
-it=(bind[:r_1]+[','])
-bind[:autovar_1] = it
-it=(bind[:autovar_1]=[bind[:autovar_1]])
-it=_pass(true,bind[:autovar_1]){it=anything();next FAIL if it==FAIL
-bind[:autovar_2] = it
-it=_pass(true,bind[:autovar_2]){it=procargs();next FAIL if it==FAIL
-bind[:_result_1] = it};next FAIL if it==FAIL };return FAIL if it==FAIL
-it=bind[:_result_1]  
+def __args_AmethystParsercb_5(bind)
+[]
 end
-def argsOpt(a0,a1)
-bind={}; bind[:o_1]=a0;bind[:c_1]=a1
-  it=nil
-
-it=_or(proc{it=args(bind[:o_1],bind[:c_1]);next FAIL if it==FAIL
-bind[:_result_1] = it},proc{it=empty();next FAIL if it==FAIL
-it=([])
-bind[:_result_1] = it });return FAIL if it==FAIL
-it=bind[:_result_1]  
+def __args_AmethystParsercb_6(bind)
+_append(bind[:autovar_1],bind[:autovar_2])
 end
-def atomicHostExpr()
-bind={}; 
-  it=nil
-
-it=([])
-bind[:autovar_1] = it
-it=([])
-bind[:autovar_1] = it
-while true
-bind[:autovar_3]=@input;r=it=_or(proc{it=endline();next FAIL if it==FAIL
-@cut=true;it
-it=fails();next FAIL if it==FAIL },proc{it=empty();next FAIL if it==FAIL});break FAIL if it==FAIL
-it=anything();break FAIL if it==FAIL
-bind[:autovar_2] = it
-it=(_append(bind[:autovar_1],bind[:autovar_2])) 
- break FAIL if r==FAIL
- (bind[:autovar_3]=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=bind[:autovar_3]
-it=bind[:autovar_1]
-bind[:s_1] = it
-it=("{#{bind[:s_1]*""}}")
-bind[:autovar_4] = it
-it=(bind[:autovar_4]=[bind[:autovar_4]])
-it=_pass(true,bind[:autovar_4]){it=anything();next FAIL if it==FAIL
-bind[:autovar_5] = it
-it=_pass(true,bind[:autovar_5]){it=inlineHostExpr();next FAIL if it==FAIL
-bind[:_result_1] = it};next FAIL if it==FAIL };return FAIL if it==FAIL
-it=bind[:_result_1]  
+def __args_AmethystParsercb_7(bind)
+bind[:c_1]
 end
-def choice()
-bind={}; 
-  it=nil
-
-it=(proc{it=token("|");return FAIL if it==FAIL
-bind[:_result_1] = it
-it=bind[:_result_1] })
-bind[:delim_1] = it
-it=('sequence')
-bind[:rule_1] = it
-it=([])
-bind[:f_1] = it
-it=([])
-bind[:autovar_1] = it
-it=_or(proc{it=apply(bind[:rule_1]);next FAIL if it==FAIL
-bind[:autovar_2] = it
-it=(_append(bind[:f_1],bind[:autovar_2]))
-it=([])
-bind[:autovar_1] = it
-while true
-bind[:autovar_4]=@input;r=it=apply(bind[:delim_1]);break FAIL if it==FAIL
-it=apply(bind[:rule_1]);break FAIL if it==FAIL
-bind[:autovar_3] = it
-it=(_append(bind[:autovar_1],bind[:autovar_3])) 
- break FAIL if r==FAIL
- (bind[:autovar_4]=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=bind[:autovar_4]
-it=bind[:autovar_1]
-bind[:autovar_5] = it
-it=(_append(bind[:f_1],bind[:autovar_5]))
-it=bind[:f_1]
-bind[:_result_2] = it },proc{it=empty();next FAIL if it==FAIL
-it=([])
-bind[:_result_2] = it });return FAIL if it==FAIL
-it=bind[:_result_2]
-bind[:ary_1] = it
-it=Or.create( {:ary=>bind[:ary_1] })
-bind[:_result_1] = it
-it=bind[:_result_1]  
+def _args_AmethystParsercb_1(bind)
+bind[:o_1]
 end
-def className()
-bind={}; 
-  it=nil
-
-it=([])
-bind[:autovar_1] = it
-it=([])
-bind[:autovar_2] = it
-it=("")
-bind[:s_1] = it
-it=spaces();return FAIL if it==FAIL
-it=seq(bind[:s_1]);return FAIL if it==FAIL
-it=upper();return FAIL if it==FAIL
-bind[:autovar_3] = it
-it=(_append(bind[:autovar_2],bind[:autovar_3]))
-it=([])
-bind[:autovar_1] = it
-while true
-bind[:autovar_5]=@input;r=it=nameRest();break FAIL if it==FAIL
-bind[:autovar_4] = it
-it=(_append(bind[:autovar_1],bind[:autovar_4])) 
- break FAIL if r==FAIL
- (bind[:autovar_5]=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=bind[:autovar_5]
-it=bind[:autovar_1]
-bind[:autovar_6] = it
-it=(_append(bind[:autovar_2],bind[:autovar_6]))
-it=bind[:autovar_2]
-bind[:it_1] = it
-it=(leterize(bind[:it_1]*""))
-bind[:_result_1] = it
-it=bind[:_result_1]  
+def _args_AmethystParsercb_2(bind)
+bind[:c_1]
 end
-def collect(a0)
-bind={}; bind[:ors_1]=a0
-  it=nil
-
-it=(a=autovar; Seq[Or[{:ary=>bind[:ors_1].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],Act[a]])
-bind[:_result_1] = it
-it=bind[:_result_1]  
+def _args_AmethystParsercb_3(bind)
+Args[{:ary=>([bind[:o_1]]+bind[:r_1]+[bind[:c_1]])}]
 end
-def eChar()
-bind={}; 
-  it=nil
-
-it=_or(proc{it=seq("\\");next FAIL if it==FAIL
-it=anything();next FAIL if it==FAIL
-bind[:c_1] = it
-it=(bind[:c_1].is_a? String )||FAIL;next FAIL if it==FAIL
-it=bind[:c_1]
-bind[:_result_1] = it
-it=bind[:_result_1]
-bind[:c_2] = it
-it=("\\#{bind[:c_2]}")
-bind[:_result_2] = it },proc{it=_args('#'+'{','}');next FAIL if it==FAIL
-bind[:_result_2] = it},proc{it=anything();next FAIL if it==FAIL
-bind[:c_1] = it
-it=(bind[:c_1].is_a? String )||FAIL;next FAIL if it==FAIL
-it=bind[:c_1]
-bind[:_result_1] = it
-it=bind[:_result_1]
-bind[:_result_2] = it });return FAIL if it==FAIL
-it=bind[:_result_2]  
+def addargs_AmethystParsercb_1(bind)
+[]
 end
-def expression()
-bind={}; 
-  it=nil
-
-it=choice();return FAIL if it==FAIL
-bind[:_result_1] = it
-it=bind[:_result_1]  
+def addargs_AmethystParsercb_2(bind)
+Args
 end
-def grammar()
-bind={}; 
-  it=nil
-
-it=([])
-bind[:autovar_1] = it
-it=("amethyst")
-bind[:s_1] = it
-it=spaces();return FAIL if it==FAIL
-it=seq(bind[:s_1]);return FAIL if it==FAIL
-it=name();return FAIL if it==FAIL
-bind[:name_1] = it
-it=_or(proc{it=("<")
-bind[:s_1] = it
-it=spaces();next FAIL if it==FAIL
-it=seq(bind[:s_1]);next FAIL if it==FAIL
-it=name();next FAIL if it==FAIL
-bind[:parent_1] = it },proc{it=empty();next FAIL if it==FAIL
-it=(bind[:parent_1]="Amethyst") });return FAIL if it==FAIL
-it=("{")
-bind[:s_1] = it
-it=spaces();return FAIL if it==FAIL
-it=seq(bind[:s_1]);return FAIL if it==FAIL
-it=([])
-bind[:autovar_1] = it
-while true
-bind[:autovar_3]=@input;r=it=rule();break FAIL if it==FAIL
-bind[:autovar_2] = it
-it=(_append(bind[:autovar_1],bind[:autovar_2])) 
- break FAIL if r==FAIL
- (bind[:autovar_3]=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=bind[:autovar_3]
-it=bind[:autovar_1]
-bind[:rules_1] = it
-it=("}")
-bind[:s_1] = it
-it=spaces();return FAIL if it==FAIL
-it=seq(bind[:s_1]);return FAIL if it==FAIL
-it=Grammar.create( {:name=>bind[:name_1],:parent=>bind[:parent_1],:rules=>bind[:rules_1] })
-bind[:_result_1] = it
-it=bind[:_result_1]  
+def addargs_AmethystParsercb_3(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
-def igrammar()
-bind={}; 
-  it=nil
-
-it=([])
-bind[:autovar_1] = it
-it=([])
-bind[:autovar_2] = it
-it=([])
-bind[:autovar_2] = it
-while true
-bind[:autovar_7]=@input;r=it=_or(proc{it=([])
-bind[:autovar_1] = it
-it=_or(proc{it=seq("amethyst");next FAIL if it==FAIL
-@cut=true;it
-it=fails();next FAIL if it==FAIL },proc{it=empty();next FAIL if it==FAIL});next FAIL if it==FAIL
-it=anything();next FAIL if it==FAIL
-bind[:autovar_3] = it
-it=(_append(bind[:autovar_1],bind[:autovar_3]))
-while true
-bind[:autovar_5]=@input;r=it=_or(proc{it=seq("amethyst");next FAIL if it==FAIL
-@cut=true;it
-it=fails();next FAIL if it==FAIL },proc{it=empty();next FAIL if it==FAIL});break FAIL if it==FAIL
-it=anything();break FAIL if it==FAIL
-bind[:autovar_4] = it
-it=(_append(bind[:autovar_1],bind[:autovar_4])) 
- break FAIL if r==FAIL
- (bind[:autovar_5]=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=bind[:autovar_5]
-it=bind[:autovar_1]
-bind[:it_1] = it
-it=(bind[:it_1]*"")
-bind[:autovar_6] = it },proc{it=grammar();next FAIL if it==FAIL
-bind[:autovar_6] = it});break FAIL if it==FAIL
-it=(_append(bind[:autovar_2],bind[:autovar_6])) 
- break FAIL if r==FAIL
- (bind[:autovar_7]=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=bind[:autovar_7]
-it=bind[:autovar_2]
-bind[:a_1] = it
-it=bind[:a_1]
-bind[:_result_1] = it
-it=bind[:_result_1]  
+def addargs_AmethystParsercb_4(bind)
+_Local(bind[:name_1]) 
 end
-def inlineHostExpr()
-bind={}; 
-  it=nil
-
-it=args('{','}');return FAIL if it==FAIL
-bind[:_result_1] = it
-it=bind[:_result_1]  
+def addargs_AmethystParsercb_5(bind)
+_append(bind[:result_1],bind[:autovar_2])
 end
-def key()
-bind={}; 
-  it=nil
-
-it=_or(proc{it=("@")
-bind[:s_1] = it
-it=spaces();next FAIL if it==FAIL
-it=seq(bind[:s_1]);next FAIL if it==FAIL
-it=_or(proc{it=className();next FAIL if it==FAIL
-bind[:name_1] = it
-it=argsOpt('[',']');next FAIL if it==FAIL
-bind[:args_1] = it
-it=(Object.const_get(bind[:name_1]).instance_variable_get(:@attrs))
-bind[:vars_1] = it
-it=Result.create( {:args=>bind[:args_1],:name=>bind[:name_1],:vars=>bind[:vars_1] })
-bind[:_result_1] = it },proc{it=name();next FAIL if it==FAIL
-bind[:name_1] = it
-it=Key.create( {:args=>bind[:args_1],:name=>bind[:name_1] })
-bind[:_result_1] = it });next FAIL if it==FAIL },proc{it=("@@")
-bind[:s_1] = it
-it=spaces();next FAIL if it==FAIL
-it=seq(bind[:s_1]);next FAIL if it==FAIL
-it=name();next FAIL if it==FAIL
-bind[:name_1] = it
-it=(Global[bind[:name_1]])
-bind[:_result_1] = it });return FAIL if it==FAIL
-it=bind[:_result_1]  
+def addargs_AmethystParsercb_6(bind)
+bind[:result_1] || []
 end
-def modifier()
-bind={}; 
-  it=nil
-
-it=([])
-bind[:autovar_1] = it
-it=_or(proc{it=term();next FAIL if it==FAIL
-bind[:_result_1] = it},proc{it=("#")
-bind[:s_1] = it
-it=spaces();next FAIL if it==FAIL
-it=seq(bind[:s_1]);next FAIL if it==FAIL
-it=([])
-bind[:autovar_1] = it
-while true
-bind[:autovar_3]=@input;r=it=_or(proc{it=endline();next FAIL if it==FAIL
-@cut=true;it
-it=fails();next FAIL if it==FAIL },proc{it=empty();next FAIL if it==FAIL});break FAIL if it==FAIL
-it=anything();break FAIL if it==FAIL
-bind[:autovar_2] = it
-it=(_append(bind[:autovar_1],bind[:autovar_2])) 
- break FAIL if r==FAIL
- (bind[:autovar_3]=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=bind[:autovar_3]
-it=bind[:autovar_1]
-bind[:c_1] = it
-it=(Comment[bind[:c_1]])
-bind[:_result_1] = it });return FAIL if it==FAIL
-it=bind[:_result_1]  
+def application_AmethystParsercb_1(bind)
+"::"
 end
-def name()
-bind={}; 
-  it=nil
-
-it=([])
-bind[:autovar_1] = it
-it=([])
-bind[:autovar_2] = it
-it=("")
-bind[:s_1] = it
-it=spaces();return FAIL if it==FAIL
-it=seq(bind[:s_1]);return FAIL if it==FAIL
-it=nameFirst();return FAIL if it==FAIL
-bind[:autovar_3] = it
-it=(_append(bind[:autovar_2],bind[:autovar_3]))
-it=([])
-bind[:autovar_1] = it
-while true
-bind[:autovar_5]=@input;r=it=nameRest();break FAIL if it==FAIL
-bind[:autovar_4] = it
-it=(_append(bind[:autovar_1],bind[:autovar_4])) 
- break FAIL if r==FAIL
- (bind[:autovar_5]=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=bind[:autovar_5]
-it=bind[:autovar_1]
-bind[:autovar_6] = it
-it=(_append(bind[:autovar_2],bind[:autovar_6]))
-it=bind[:autovar_2]
-bind[:it_1] = it
-it=(leterize(bind[:it_1]*""))
-bind[:_result_1] = it
-it=bind[:_result_1]  
+def application_AmethystParsercb_2(bind)
+[bind[:klas_1],bind[:rule_1]]
 end
-def nameFirst()
-bind={}; 
-  it=nil
-
-it=_or(proc{it=letter();next FAIL if it==FAIL
-bind[:_result_1] = it},proc{it=seq("_");next FAIL if it==FAIL
-bind[:_result_1] = it});return FAIL if it==FAIL
-it=bind[:_result_1]  
+def application_AmethystParsercb_3(bind)
+'('
 end
-def nameRest()
-bind={}; 
-  it=nil
-
-it=_or(proc{it=nameFirst();next FAIL if it==FAIL
-bind[:_result_1] = it},proc{it=digit();next FAIL if it==FAIL
-bind[:_result_1] = it});return FAIL if it==FAIL
-it=bind[:_result_1]  
+def application_AmethystParsercb_4(bind)
+')'
 end
-def nr()
-bind={}; 
-  it=nil
-
-it=_or(proc{it=name();next FAIL if it==FAIL
-it=argsOpt('(',')');next FAIL if it==FAIL
-it=("=")
-bind[:s_1] = it
-it=spaces();next FAIL if it==FAIL
-it=seq(bind[:s_1]);next FAIL if it==FAIL
-@cut=true;it
-it=fails();next FAIL if it==FAIL
-bind[:_result_1] = it },proc{it=empty();next FAIL if it==FAIL
-bind[:_result_1] = it});return FAIL if it==FAIL
-it=bind[:_result_1]  
+def application_AmethystParsercb_5(bind)
+Apply[bind[:rule_1],bind[:arg_1]]
 end
-def number()
-bind={}; 
-  it=nil
-
-it=([])
-bind[:autovar_1] = it
-it=([])
-bind[:autovar_1] = it
-it=(/[0-9]/)
-bind[:regex_1] = it
-it=anything();return FAIL if it==FAIL
-bind[:c_1] = it
-it=(bind[:c_1].is_a? String )||FAIL;return FAIL if it==FAIL
-it=bind[:c_1]
-bind[:_result_1] = it
-it=bind[:_result_1]
-bind[:c_2] = it
-it=(bind[:regex_1].match(bind[:c_2]))||FAIL;return FAIL if it==FAIL
-it=bind[:c_2]
-bind[:_result_2] = it
-it=bind[:_result_2]
-bind[:autovar_2] = it
-it=(_append(bind[:autovar_1],bind[:autovar_2]))
-while true
-bind[:autovar_4]=@input;r=it=(/[0-9]/)
-bind[:regex_1] = it
-it=anything();break FAIL if it==FAIL
-bind[:c_1] = it
-it=(bind[:c_1].is_a? String )||FAIL;break FAIL if it==FAIL
-it=bind[:c_1]
-bind[:_result_1] = it
-it=bind[:_result_1]
-bind[:c_2] = it
-it=(bind[:regex_1].match(bind[:c_2]))||FAIL;break FAIL if it==FAIL
-it=bind[:c_2]
-bind[:_result_2] = it
-it=bind[:_result_2]
-bind[:autovar_3] = it
-it=(_append(bind[:autovar_1],bind[:autovar_3])) 
- break FAIL if r==FAIL
- (bind[:autovar_4]=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=bind[:autovar_4]
-it=bind[:autovar_1]
-bind[:_result_3] = it
-it=bind[:_result_3]  
+def argsOpt_AmethystParsercb_1(bind)
+bind[:o_1]
 end
-def prefixed()
-bind={}; 
-  it=nil
-
-it=_or(proc{it=("&")
-bind[:s_1] = it
-it=spaces();next FAIL if it==FAIL
-it=seq(bind[:s_1]);next FAIL if it==FAIL
-bind[:_result_1] = it
-it=bind[:_result_1]
-it=inlineHostExpr();next FAIL if it==FAIL
-bind[:expr_1] = it
-it=(Pred[bind[:expr_1]])
-bind[:_result_2] = it },proc{it=_or(proc{it=("&")
-bind[:s_1] = it
-it=spaces();next FAIL if it==FAIL
-it=seq(bind[:s_1]);next FAIL if it==FAIL
-bind[:_result_1] = it
-it=bind[:_result_1]
-bind[:neg_1] = it },proc{it=("~")
-bind[:s_1] = it
-it=spaces();next FAIL if it==FAIL
-it=seq(bind[:s_1]);next FAIL if it==FAIL
-bind[:_result_1] = it
-it=bind[:_result_1]
-bind[:neg_1] = it });next FAIL if it==FAIL
-it=prefixed();next FAIL if it==FAIL
-bind[:m_1] = it
-it=(Lookahead[bind[:m_1],bind[:neg_1]=="~"])
-bind[:_result_2] = it },proc{it=_or(proc{it=modifier();next FAIL if it==FAIL
-bind[:from_1] = it},proc{it=("")
-bind[:s_1] = it
-it=spaces();next FAIL if it==FAIL
-it=seq(bind[:s_1]);next FAIL if it==FAIL
-bind[:_result_1] = it
-it=bind[:_result_1]
-it=_lookahead(false){it=(/[.:\[]/)
-bind[:regex_1] = it
-it=anything();next FAIL if it==FAIL
-bind[:c_1] = it
-it=(bind[:c_1].is_a? String )||FAIL;next FAIL if it==FAIL
-it=bind[:c_1]
-bind[:_result_3] = it
-it=bind[:_result_3]
-bind[:c_2] = it
-it=(bind[:regex_1].match(bind[:c_2]))||FAIL;next FAIL if it==FAIL
-it=bind[:c_2] };next FAIL if it==FAIL
-it=_or(proc{it=(".")
-bind[:s_1] = it
-it=spaces();next FAIL if it==FAIL
-it=seq(bind[:s_1]);next FAIL if it==FAIL
-bind[:_result_1] = it
-it=bind[:_result_1] },proc{it=empty();next FAIL if it==FAIL});next FAIL if it==FAIL
-it=(Apply["anything"])
-bind[:from_1] = it });next FAIL if it==FAIL
-while true
-bind[:autovar_1]=@input;r=it=_or(proc{it=_();next FAIL if it==FAIL
-@cut=true;it
-it=fails();next FAIL if it==FAIL },proc{it=empty();next FAIL if it==FAIL});break FAIL if it==FAIL
-it=_or(proc{it=("=>")
-bind[:s_1] = it
-it=spaces();next FAIL if it==FAIL
-it=seq(bind[:s_1]);next FAIL if it==FAIL
-bind[:_result_1] = it
-it=bind[:_result_1]
-it=prefixed();next FAIL if it==FAIL
-bind[:it_1] = it
-it=(bind[:from_1]=Pass[bind[:from_1],bind[:it_1]]) },proc{it=("[")
-bind[:s_1] = it
-it=spaces();next FAIL if it==FAIL
-it=seq(bind[:s_1]);next FAIL if it==FAIL
-bind[:_result_1] = it
-it=bind[:_result_1]
-it=expression();next FAIL if it==FAIL
-bind[:it_1] = it
-it=(bind[:from_1]=Enter[bind[:from_1],bind[:it_1]])
-it=("]")
-bind[:s_1] = it
-it=spaces();next FAIL if it==FAIL
-it=seq(bind[:s_1]);next FAIL if it==FAIL
-bind[:_result_1] = it
-it=bind[:_result_1] },proc{it=_or(proc{it=("*")
-bind[:s_1] = it
-it=spaces();next FAIL if it==FAIL
-it=seq(bind[:s_1]);next FAIL if it==FAIL
-bind[:_result_1] = it
-it=bind[:_result_1]
-bind[:one_1] = it },proc{it=("+")
-bind[:s_1] = it
-it=spaces();next FAIL if it==FAIL
-it=seq(bind[:s_1]);next FAIL if it==FAIL
-bind[:_result_1] = it
-it=bind[:_result_1]
-bind[:one_1] = it });next FAIL if it==FAIL
-it=(Many[bind[:from_1],bind[:one_1]=="+"])
-bind[:from_1] = it },proc{it=("?")
-bind[:s_1] = it
-it=spaces();next FAIL if it==FAIL
-it=seq(bind[:s_1]);next FAIL if it==FAIL
-bind[:_result_1] = it
-it=bind[:_result_1]
-it=(Or[bind[:from_1],Apply["empty"]])
-bind[:from_1] = it },proc{it=(":")
-bind[:s_1] = it
-it=spaces();next FAIL if it==FAIL
-it=seq(bind[:s_1]);next FAIL if it==FAIL
-bind[:_result_1] = it
-it=bind[:_result_1]
-it=_or(proc{it=_or(proc{it=key();next FAIL if it==FAIL
-bind[:name_1] = it},proc{it=name();next FAIL if it==FAIL
-bind[:name_1] = it});next FAIL if it==FAIL
-it=_or(proc{it=seq("[]");next FAIL if it==FAIL
-it=(true)
-bind[:append_1] = it },proc{it=empty();next FAIL if it==FAIL
-it=(nil)
-bind[:append_1] = it });next FAIL if it==FAIL
-it=(_Set(bind[:name_1],bind[:from_1],bind[:append_1]))
-bind[:from_1] = it },proc{it=inlineHostExpr();next FAIL if it==FAIL
-bind[:e_1] = it
-it=(Seq[_Set("it",bind[:from_1]) , Act[bind[:e_1]] ])
-bind[:from_1] = it });next FAIL if it==FAIL });break FAIL if it==FAIL 
- break FAIL if r==FAIL
- (bind[:autovar_1]=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=bind[:autovar_1]
-it=bind[:from_1]
-bind[:_result_2] = it });return FAIL if it==FAIL
-it=bind[:_result_2]  
+def argsOpt_AmethystParsercb_2(bind)
+bind[:c_1]
 end
-def procargs()
-bind={}; 
-  it=nil
-
-it=(@ary=[];@tmp=[])
-while true
-bind[:autovar_1]=@input;r=it=_or(proc{it=anything();next FAIL if it==FAIL
-bind[:c_1] = it
-it=(bind[:c_1]==',')||FAIL;next FAIL if it==FAIL
-it=(@ary<<Args[{:ary=>@tmp}];@tmp=[]) },proc{it=procargs2();next FAIL if it==FAIL});break FAIL if it==FAIL
- break FAIL if r==FAIL
- (bind[:autovar_1]=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=bind[:autovar_1]
-it=(@ary)
-bind[:_result_1] = it
-it=bind[:_result_1]  
+def argsOpt_AmethystParsercb_3(bind)
+[]
 end
-def procargs2()
-bind={}; 
-  it=nil
-
-it=([])
-bind[:autovar_1] = it
-it=_or(proc{it=(Args)
-bind[:cls_1] = it
-it=anything();next FAIL if it==FAIL
-bind[:i_1] = it
-it=(bind[:i_1].is_a?(bind[:cls_1]))||FAIL;next FAIL if it==FAIL
-it=bind[:i_1]
-bind[:_result_1] = it
-it=bind[:_result_1]
-bind[:autovar_2] = it
-it=_pass(true,bind[:autovar_2]){it=([])
-bind[:autovar_1] = it
-while true
-bind[:autovar_4]=@input;r=it=procargs2();break FAIL if it==FAIL
-bind[:autovar_3] = it
-it=(_append(bind[:autovar_1],bind[:autovar_3])) 
- break FAIL if r==FAIL
- (bind[:autovar_4]=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=bind[:autovar_4]
-it=bind[:autovar_1]
-bind[:_result_2] = it };next FAIL if it==FAIL },proc{it=anything();next FAIL if it==FAIL
-bind[:a_1] = it
-it=(@tmp<<bind[:a_1])
-bind[:_result_2] = it });return FAIL if it==FAIL
-it=bind[:_result_2]  
+def args_AmethystParsercb_1(bind)
+bind[:o_1]
 end
-def rubyarg()
-bind={}; 
-  it=nil
-
-it=([])
-bind[:s_1] = it
-it=([])
-bind[:autovar_1] = it
-it=([])
-bind[:autovar_2] = it
-it=([])
-bind[:n_1] = it
-it=_or(proc{it=seq("`");next FAIL if it==FAIL
-it=expression();next FAIL if it==FAIL
-bind[:e_1] = it
-it=seq("`");next FAIL if it==FAIL
-it=(Exp[_body(bind[:e_1])])
-bind[:_result_1] = it },proc{it=_args('(',')');next FAIL if it==FAIL
-bind[:_result_1] = it},proc{it=_args('[',']');next FAIL if it==FAIL
-bind[:_result_1] = it},proc{it=_args('{','}');next FAIL if it==FAIL
-bind[:_result_1] = it},proc{it=seq("\"");next FAIL if it==FAIL
-bind[:autovar_3] = it
-it=(_append(bind[:s_1],bind[:autovar_3]))
-it=([])
-bind[:autovar_1] = it
-while true
-bind[:autovar_5]=@input;r=it=_or(proc{it=seq("\"");next FAIL if it==FAIL
-@cut=true;it
-@stop=true;it
-bind[:autovar_4] = it },proc{it=eChar();next FAIL if it==FAIL
-bind[:autovar_4] = it});break FAIL if it==FAIL
-it=(_append(bind[:autovar_1],bind[:autovar_4])) 
- break FAIL if r==FAIL
- (bind[:autovar_5]=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=bind[:autovar_5]
-it=bind[:autovar_1]
-bind[:autovar_6] = it
-it=(_append(bind[:s_1],bind[:autovar_6]))
-it=(Strin[connectstring(bind[:s_1])])
-bind[:_result_1] = it },proc{it=seq("\'");next FAIL if it==FAIL
-bind[:autovar_7] = it
-it=(_append(bind[:s_1],bind[:autovar_7]))
-it=([])
-bind[:autovar_2] = it
-while true
-bind[:autovar_9]=@input;r=it=_or(proc{it=seq("\'");next FAIL if it==FAIL
-@cut=true;it
-@stop=true;it
-bind[:autovar_8] = it },proc{it=eChar();next FAIL if it==FAIL
-bind[:autovar_8] = it});break FAIL if it==FAIL
-it=(_append(bind[:autovar_2],bind[:autovar_8])) 
- break FAIL if r==FAIL
- (bind[:autovar_9]=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=bind[:autovar_9]
-it=bind[:autovar_2]
-bind[:autovar_10] = it
-it=(_append(bind[:s_1],bind[:autovar_10]))
-it=(Strin[connectstring(bind[:s_1])])
-bind[:_result_1] = it },proc{it=seq("...");next FAIL if it==FAIL
-bind[:_result_1] = it},proc{it=seq("..");next FAIL if it==FAIL
-bind[:_result_1] = it},proc{it=_or(proc{it=(":@")
-bind[:s_2] = it
-it=spaces();next FAIL if it==FAIL
-it=seq(bind[:s_2]);next FAIL if it==FAIL
-bind[:_result_2] = it
-it=bind[:_result_2]
-bind[:n_1] = it },proc{it=(/[$.:]/)
-bind[:regex_1] = it
-it=anything();next FAIL if it==FAIL
-bind[:c_1] = it
-it=(bind[:c_1].is_a? String )||FAIL;next FAIL if it==FAIL
-it=bind[:c_1]
-bind[:_result_3] = it
-it=bind[:_result_3]
-bind[:c_2] = it
-it=(bind[:regex_1].match(bind[:c_2]))||FAIL;next FAIL if it==FAIL
-it=bind[:c_2]
-bind[:_result_4] = it
-it=bind[:_result_4]
-bind[:n_1] = it },proc{it=empty();next FAIL if it==FAIL});next FAIL if it==FAIL
-it=_or(proc{it=_();next FAIL if it==FAIL
-@cut=true;it
-it=fails();next FAIL if it==FAIL },proc{it=empty();next FAIL if it==FAIL});next FAIL if it==FAIL
-it=name();next FAIL if it==FAIL
-bind[:autovar_11] = it
-it=(_append(bind[:n_1],bind[:autovar_11]))
-it=bind[:n_1]
-bind[:_result_1] = it },proc{it=_or(proc{it=_();next FAIL if it==FAIL
-@cut=true;it
-it=fails();next FAIL if it==FAIL },proc{it=empty();next FAIL if it==FAIL});next FAIL if it==FAIL
-it=key();next FAIL if it==FAIL
-bind[:_result_1] = it },proc{it=(/[^`{}()'"\[\]]/)
-bind[:regex_1] = it
-it=anything();next FAIL if it==FAIL
-bind[:c_1] = it
-it=(bind[:c_1].is_a? String )||FAIL;next FAIL if it==FAIL
-it=bind[:c_1]
-bind[:_result_3] = it
-it=bind[:_result_3]
-bind[:c_2] = it
-it=(bind[:regex_1].match(bind[:c_2]))||FAIL;next FAIL if it==FAIL
-it=bind[:c_2]
-bind[:_result_4] = it
-it=bind[:_result_4]
-bind[:_result_1] = it });return FAIL if it==FAIL
-it=bind[:_result_1]  
+def args_AmethystParsercb_2(bind)
+bind[:c_1]
 end
-def rule()
-bind={}; 
-  it=nil
-
-it=(@locals=[];$appends=[];@bnding=Bnding[])
-it=(@bnding)
-bind[:bnding_1] = it
-it=name();return FAIL if it==FAIL
-bind[:name_1] = it
-it=ruleargs();return FAIL if it==FAIL
-bind[:args_1] = it
-it=("=")
-bind[:s_1] = it
-it=spaces();return FAIL if it==FAIL
-it=seq(bind[:s_1]);return FAIL if it==FAIL
-it=expression();return FAIL if it==FAIL
-bind[:body_1] = it
-it=(_body(bind[:body_1]))
-bind[:body_1] = it
-it=(@locals.uniq)
-bind[:locals_1] = it
-it=(bind[:body_1]=Seq[{:ary=>($appends.uniq.map{|a| _Set(a,Act[Args["[]"]])}+[bind[:body_1]])}]; )
-it=Rule.create( {:args=>bind[:args_1],:bnding=>bind[:bnding_1],:body=>bind[:body_1],:locals=>bind[:locals_1],:name=>bind[:name_1] })
-bind[:_result_1] = it
-it=bind[:_result_1]  
+def args_AmethystParsercb_3(bind)
+bind[:r_1]+[',']
 end
-def ruleargs()
-bind={}; 
-  it=nil
-
-it=argsOpt('(',')');return FAIL if it==FAIL
-bind[:autovar_1] = it
-it=(bind[:autovar_1]=[bind[:autovar_1]])
-it=_pass(true,bind[:autovar_1]){it=anything();next FAIL if it==FAIL
-bind[:autovar_2] = it
-it=_pass(true,bind[:autovar_2]){it=addargs();next FAIL if it==FAIL
-bind[:_result_1] = it};next FAIL if it==FAIL };return FAIL if it==FAIL
-it=bind[:_result_1]  
+def args_AmethystParsercb_4(bind)
+bind[:autovar_1]=[bind[:autovar_1]]
 end
-def sequence()
-bind={}; 
-  it=nil
-
-it=([])
-bind[:autovar_1] = it
-it=([])
-bind[:autovar_1] = it
-while true
-bind[:autovar_3]=@input;r=it=nr();break FAIL if it==FAIL
-it=prefixed();break FAIL if it==FAIL
-bind[:autovar_2] = it
-it=(_append(bind[:autovar_1],bind[:autovar_2])) 
- break FAIL if r==FAIL
- (bind[:autovar_3]=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=bind[:autovar_3]
-it=bind[:autovar_1]
-bind[:ary_1] = it
-it=Seq.create( {:ary=>bind[:ary_1] })
-bind[:_result_1] = it
-it=bind[:_result_1]  
+def atomicHostExpr_AmethystParsercb_1(bind)
+[]
 end
-def term()
-bind={}; 
-  it=nil
-
-it=([])
-bind[:s_1] = it
-it=([])
-bind[:x_1] = it
-it=_or(proc{it=className();next FAIL if it==FAIL
-bind[:cls_1] = it
-it=(Apply["clas",bind[:cls_1]])
-bind[:_result_1] = it },proc{it=("nested")
-bind[:s_2] = it
-it=spaces();next FAIL if it==FAIL
-it=seq(bind[:s_2]);next FAIL if it==FAIL
-it=seq("(");next FAIL if it==FAIL
-it=expression();next FAIL if it==FAIL
-bind[:expr_1] = it
-it=(")")
-bind[:s_2] = it
-it=spaces();next FAIL if it==FAIL
-it=seq(bind[:s_2]);next FAIL if it==FAIL
-it=(Nested[bind[:expr_1]])
-bind[:_result_1] = it },proc{it=("break")
-bind[:s_2] = it
-it=spaces();next FAIL if it==FAIL
-it=seq(bind[:s_2]);next FAIL if it==FAIL
-it=(Seq[Cut[],Stop[]])
-bind[:_result_1] = it },proc{it=application();next FAIL if it==FAIL
-bind[:_result_1] = it},proc{it=key();next FAIL if it==FAIL
-bind[:it_1] = it
-it=(bind[:it_1].is_a?(Result) ? bind[:it_1] : Act[Args[bind[:it_1]]])
-bind[:_result_1] = it },proc{it=_or(proc{it=("->")
-bind[:s_2] = it
-it=spaces();next FAIL if it==FAIL
-it=seq(bind[:s_2]);next FAIL if it==FAIL
-it=atomicHostExpr();next FAIL if it==FAIL
-bind[:x_1] = it },proc{it=("")
-bind[:s_2] = it
-it=spaces();next FAIL if it==FAIL
-it=seq(bind[:s_2]);next FAIL if it==FAIL
-it=inlineHostExpr();next FAIL if it==FAIL
-bind[:x_1] = it });next FAIL if it==FAIL
-it=(Act[bind[:x_1]])
-bind[:_result_1] = it },proc{it=("\"")
-bind[:s_2] = it
-it=spaces();next FAIL if it==FAIL
-it=seq(bind[:s_2]);next FAIL if it==FAIL
-while true
-bind[:autovar_2]=@input;r=it=_or(proc{it=seq("\"");next FAIL if it==FAIL
-@cut=true;it
-@stop=true;it },proc{it=eChar();next FAIL if it==FAIL
-bind[:autovar_1] = it
-it=(_append(bind[:s_1],bind[:autovar_1])) });break FAIL if it==FAIL
- break FAIL if r==FAIL
- (bind[:autovar_2]=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=bind[:autovar_2]
-it=(Apply["token" ,quote(bind[:s_1])])
-bind[:_result_1] = it },proc{it=("'")
-bind[:s_2] = it
-it=spaces();next FAIL if it==FAIL
-it=seq(bind[:s_2]);next FAIL if it==FAIL
-while true
-bind[:autovar_4]=@input;r=it=_or(proc{it=seq("\'");next FAIL if it==FAIL
-@cut=true;it
-@stop=true;it },proc{it=eChar();next FAIL if it==FAIL
-bind[:autovar_3] = it
-it=(_append(bind[:s_1],bind[:autovar_3])) });break FAIL if it==FAIL
- break FAIL if r==FAIL
- (bind[:autovar_4]=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=bind[:autovar_4]
-it=(Apply["seq"   ,quote(bind[:s_1])])
-bind[:_result_1] = it },proc{it=number();next FAIL if it==FAIL
-bind[:it_1] = it
-it=(Apply["exactly",bind[:it_1]])
-bind[:_result_1] = it },proc{it=("<")
-bind[:s_2] = it
-it=spaces();next FAIL if it==FAIL
-it=seq(bind[:s_2]);next FAIL if it==FAIL
-while true
-bind[:autovar_6]=@input;r=it=_or(proc{it=(">")
-bind[:s_2] = it
-it=spaces();next FAIL if it==FAIL
-it=seq(bind[:s_2]);next FAIL if it==FAIL
-@cut=true;it
-@stop=true;it },proc{it=eChar();next FAIL if it==FAIL
-bind[:autovar_5] = it
-it=(_append(bind[:x_1],bind[:autovar_5])) });break FAIL if it==FAIL
- break FAIL if r==FAIL
- (bind[:autovar_6]=@input;@stop=nil;break FAIL) if @stop==true
-end;@input=bind[:autovar_6]
-it=(Apply["regch","/[#{bind[:x_1]}]/"])
-bind[:_result_1] = it },proc{it=("(")
-bind[:s_2] = it
-it=spaces();next FAIL if it==FAIL
-it=seq(bind[:s_2]);next FAIL if it==FAIL
-it=expression();next FAIL if it==FAIL
-bind[:x_1] = it
-it=(")")
-bind[:s_2] = it
-it=spaces();next FAIL if it==FAIL
-it=seq(bind[:s_2]);next FAIL if it==FAIL
-it=_or(proc{it=seq("[]");next FAIL if it==FAIL
-it=(bind[:x_1])
-bind[:ors_1] = it
-it=(a=autovar; Seq[Or[{:ary=>bind[:ors_1].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],Act[a]])
-bind[:_result_2] = it
-it=bind[:_result_2]
-bind[:_result_1] = it },proc{it=empty();next FAIL if it==FAIL
-it=bind[:x_1]
-bind[:_result_1] = it });next FAIL if it==FAIL });return FAIL if it==FAIL
-it=bind[:_result_1]  
+def atomicHostExpr_AmethystParsercb_2(bind)
+[]
 end
+def atomicHostExpr_AmethystParsercb_3(bind)
+_append(bind[:autovar_1],bind[:autovar_2])
+end
+def atomicHostExpr_AmethystParsercb_4(bind)
+"{#{bind[:s_1]*""}}"
+end
+def atomicHostExpr_AmethystParsercb_5(bind)
+bind[:autovar_3]=[bind[:autovar_3]]
+end
+def choice_AmethystParsercb_1(bind)
+"|"
+end
+def choice_AmethystParsercb_10(bind)
+bind[:rule_1]
+end
+def choice_AmethystParsercb_11(bind)
+_append(bind[:autovar_1],bind[:autovar_3])
+end
+def choice_AmethystParsercb_12(bind)
+_append(bind[:f_1],bind[:autovar_4])
+end
+def choice_AmethystParsercb_13(bind)
+[]
+end
+def choice_AmethystParsercb_14(bind)
+Or.create( {:ary=>bind[:ary_1] })
+end
+def choice_AmethystParsercb_2(bind)
+AmethystLambda.new(:AmethystParser_choice_lambda1,self,bind)
+end
+def choice_AmethystParsercb_3(bind)
+'sequence'
+end
+def choice_AmethystParsercb_4(bind)
+[]
+end
+def choice_AmethystParsercb_5(bind)
+[]
+end
+def choice_AmethystParsercb_6(bind)
+bind[:rule_1]
+end
+def choice_AmethystParsercb_7(bind)
+_append(bind[:f_1],bind[:autovar_2])
+end
+def choice_AmethystParsercb_8(bind)
+[]
+end
+def choice_AmethystParsercb_9(bind)
+bind[:delim_1]
+end
+def className_AmethystParsercb_1(bind)
+[]
+end
+def className_AmethystParsercb_2(bind)
+[]
+end
+def className_AmethystParsercb_3(bind)
+""
+end
+def className_AmethystParsercb_4(bind)
+bind[:s_1]
+end
+def className_AmethystParsercb_5(bind)
+_append(bind[:autovar_2],bind[:autovar_3])
+end
+def className_AmethystParsercb_6(bind)
+[]
+end
+def className_AmethystParsercb_7(bind)
+_append(bind[:autovar_1],bind[:autovar_4])
+end
+def className_AmethystParsercb_8(bind)
+_append(bind[:autovar_2],bind[:autovar_5])
+end
+def className_AmethystParsercb_9(bind)
+leterize(bind[:it_1]*"")
+end
+def collect_AmethystParsercb_1(bind)
+a=autovar; Seq[Or[{:ary=>bind[:ors_1].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],Act[a]]
+end
+def eChar_AmethystParsercb_1(bind)
+"\\"
+end
+def eChar_AmethystParsercb_2(bind)
+(bind[:c_1].is_a? String ) || FAIL
+end
+def eChar_AmethystParsercb_3(bind)
+"\\#{bind[:c_2]}"
+end
+def eChar_AmethystParsercb_4(bind)
+'#'+'{'
+end
+def eChar_AmethystParsercb_5(bind)
+'}'
+end
+def eChar_AmethystParsercb_6(bind)
+(bind[:c_1].is_a? String ) || FAIL
+end
+def grammar_AmethystParsercb_1(bind)
+[]
+end
+def grammar_AmethystParsercb_10(bind)
+_append(bind[:autovar_1],bind[:autovar_2])
+end
+def grammar_AmethystParsercb_11(bind)
+"}"
+end
+def grammar_AmethystParsercb_12(bind)
+bind[:s_1]
+end
+def grammar_AmethystParsercb_13(bind)
+Grammar.create( {:name=>bind[:name_1],:parent=>bind[:parent_1],:rules=>bind[:rules_1] })
+end
+def grammar_AmethystParsercb_2(bind)
+"amethyst"
+end
+def grammar_AmethystParsercb_3(bind)
+bind[:s_1]
+end
+def grammar_AmethystParsercb_4(bind)
+"<"
+end
+def grammar_AmethystParsercb_5(bind)
+bind[:s_1]
+end
+def grammar_AmethystParsercb_6(bind)
+bind[:parent_1]="Amethyst"
+end
+def grammar_AmethystParsercb_7(bind)
+"{"
+end
+def grammar_AmethystParsercb_8(bind)
+bind[:s_1]
+end
+def grammar_AmethystParsercb_9(bind)
+[]
+end
+def igrammar_AmethystParsercb_1(bind)
+[]
+end
+def igrammar_AmethystParsercb_10(bind)
+_append(bind[:autovar_2],bind[:autovar_5])
+end
+def igrammar_AmethystParsercb_2(bind)
+[]
+end
+def igrammar_AmethystParsercb_3(bind)
+[]
+end
+def igrammar_AmethystParsercb_4(bind)
+[]
+end
+def igrammar_AmethystParsercb_5(bind)
+"amethyst"
+end
+def igrammar_AmethystParsercb_6(bind)
+_append(bind[:autovar_1],bind[:autovar_3])
+end
+def igrammar_AmethystParsercb_7(bind)
+"amethyst"
+end
+def igrammar_AmethystParsercb_8(bind)
+_append(bind[:autovar_1],bind[:autovar_4])
+end
+def igrammar_AmethystParsercb_9(bind)
+bind[:it_1]*""
+end
+def inlineHostExpr_AmethystParsercb_1(bind)
+'{'
+end
+def inlineHostExpr_AmethystParsercb_2(bind)
+'}'
+end
+def key_AmethystParsercb_1(bind)
+"@"
+end
+def key_AmethystParsercb_10(bind)
+Global[bind[:name_1]]
+end
+def key_AmethystParsercb_2(bind)
+bind[:s_1]
+end
+def key_AmethystParsercb_3(bind)
+'['
+end
+def key_AmethystParsercb_4(bind)
+']'
+end
+def key_AmethystParsercb_5(bind)
+Object.const_get(bind[:name_1]).instance_variable_get(:@attrs)
+end
+def key_AmethystParsercb_6(bind)
+Result.create( {:args=>bind[:args_1],:name=>bind[:name_1],:vars=>bind[:vars_1] })
+end
+def key_AmethystParsercb_7(bind)
+Key.create( {:args=>bind[:args_1],:name=>bind[:name_1] })
+end
+def key_AmethystParsercb_8(bind)
+"@@"
+end
+def key_AmethystParsercb_9(bind)
+bind[:s_1]
+end
+def modifier_AmethystParsercb_1(bind)
+[]
+end
+def modifier_AmethystParsercb_2(bind)
+"#"
+end
+def modifier_AmethystParsercb_3(bind)
+bind[:s_1]
+end
+def modifier_AmethystParsercb_4(bind)
+[]
+end
+def modifier_AmethystParsercb_5(bind)
+_append(bind[:autovar_1],bind[:autovar_2])
+end
+def modifier_AmethystParsercb_6(bind)
+Comment[bind[:c_1]]
+end
+def nameFirst_AmethystParsercb_1(bind)
+"_"
+end
+def name_AmethystParsercb_1(bind)
+[]
+end
+def name_AmethystParsercb_2(bind)
+[]
+end
+def name_AmethystParsercb_3(bind)
+""
+end
+def name_AmethystParsercb_4(bind)
+bind[:s_1]
+end
+def name_AmethystParsercb_5(bind)
+_append(bind[:autovar_2],bind[:autovar_3])
+end
+def name_AmethystParsercb_6(bind)
+[]
+end
+def name_AmethystParsercb_7(bind)
+_append(bind[:autovar_1],bind[:autovar_4])
+end
+def name_AmethystParsercb_8(bind)
+_append(bind[:autovar_2],bind[:autovar_5])
+end
+def name_AmethystParsercb_9(bind)
+leterize(bind[:it_1]*"")
+end
+def nr_AmethystParsercb_1(bind)
+'('
+end
+def nr_AmethystParsercb_2(bind)
+')'
+end
+def nr_AmethystParsercb_3(bind)
+"="
+end
+def nr_AmethystParsercb_4(bind)
+bind[:s_1]
+end
+def number_AmethystParsercb_1(bind)
+[]
+end
+def number_AmethystParsercb_10(bind)
+_append(bind[:autovar_1],bind[:autovar_3])
+end
+def number_AmethystParsercb_2(bind)
+[]
+end
+def number_AmethystParsercb_3(bind)
+/[0-9]/
+end
+def number_AmethystParsercb_4(bind)
+(bind[:c_1].is_a? String ) || FAIL
+end
+def number_AmethystParsercb_5(bind)
+(bind[:regex_1].match(bind[:c_2])) || FAIL
+end
+def number_AmethystParsercb_6(bind)
+_append(bind[:autovar_1],bind[:autovar_2])
+end
+def number_AmethystParsercb_7(bind)
+/[0-9]/
+end
+def number_AmethystParsercb_8(bind)
+(bind[:c_1].is_a? String ) || FAIL
+end
+def number_AmethystParsercb_9(bind)
+(bind[:regex_1].match(bind[:c_2])) || FAIL
+end
+def prefixed_AmethystParsercb_1(bind)
+"&"
+end
+def prefixed_AmethystParsercb_10(bind)
+bind[:s_1]
+end
+def prefixed_AmethystParsercb_11(bind)
+/[.:\[]/
+end
+def prefixed_AmethystParsercb_12(bind)
+(bind[:c_1].is_a? String ) || FAIL
+end
+def prefixed_AmethystParsercb_13(bind)
+(bind[:regex_1].match(bind[:c_2])) || FAIL
+end
+def prefixed_AmethystParsercb_14(bind)
+"."
+end
+def prefixed_AmethystParsercb_15(bind)
+bind[:s_1]
+end
+def prefixed_AmethystParsercb_16(bind)
+Apply["anything"]
+end
+def prefixed_AmethystParsercb_17(bind)
+"=>"
+end
+def prefixed_AmethystParsercb_18(bind)
+bind[:s_1]
+end
+def prefixed_AmethystParsercb_19(bind)
+bind[:from_1]=Pass[bind[:from_1],bind[:it_1]]
+end
+def prefixed_AmethystParsercb_2(bind)
+bind[:s_1]
+end
+def prefixed_AmethystParsercb_20(bind)
+"["
+end
+def prefixed_AmethystParsercb_21(bind)
+bind[:s_1]
+end
+def prefixed_AmethystParsercb_22(bind)
+bind[:from_1]=Enter[bind[:from_1],bind[:it_1]]
+end
+def prefixed_AmethystParsercb_23(bind)
+"]"
+end
+def prefixed_AmethystParsercb_24(bind)
+bind[:s_1]
+end
+def prefixed_AmethystParsercb_25(bind)
+"*"
+end
+def prefixed_AmethystParsercb_26(bind)
+bind[:s_1]
+end
+def prefixed_AmethystParsercb_27(bind)
+"+"
+end
+def prefixed_AmethystParsercb_28(bind)
+bind[:s_1]
+end
+def prefixed_AmethystParsercb_29(bind)
+Many[bind[:from_1],bind[:one_1]=="+"]
+end
+def prefixed_AmethystParsercb_3(bind)
+Pred[bind[:expr_1]]
+end
+def prefixed_AmethystParsercb_30(bind)
+"?"
+end
+def prefixed_AmethystParsercb_31(bind)
+bind[:s_1]
+end
+def prefixed_AmethystParsercb_32(bind)
+Or[bind[:from_1],Apply["empty"]]
+end
+def prefixed_AmethystParsercb_33(bind)
+":"
+end
+def prefixed_AmethystParsercb_34(bind)
+bind[:s_1]
+end
+def prefixed_AmethystParsercb_35(bind)
+"[]"
+end
+def prefixed_AmethystParsercb_36(bind)
+true
+end
+def prefixed_AmethystParsercb_37(bind)
+nil
+end
+def prefixed_AmethystParsercb_38(bind)
+_Set(bind[:name_1],bind[:from_1],bind[:append_1])
+end
+def prefixed_AmethystParsercb_39(bind)
+Seq[_Set("it",bind[:from_1]) , Act[bind[:e_1]] ]
+end
+def prefixed_AmethystParsercb_4(bind)
+"&"
+end
+def prefixed_AmethystParsercb_5(bind)
+bind[:s_1]
+end
+def prefixed_AmethystParsercb_6(bind)
+"~"
+end
+def prefixed_AmethystParsercb_7(bind)
+bind[:s_1]
+end
+def prefixed_AmethystParsercb_8(bind)
+Lookahead[bind[:m_1],bind[:neg_1]=="~"]
+end
+def prefixed_AmethystParsercb_9(bind)
+""
+end
+def procargs2_AmethystParsercb_1(bind)
+[]
+end
+def procargs2_AmethystParsercb_2(bind)
+Args
+end
+def procargs2_AmethystParsercb_3(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def procargs2_AmethystParsercb_4(bind)
+[]
+end
+def procargs2_AmethystParsercb_5(bind)
+_append(bind[:autovar_1],bind[:autovar_3])
+end
+def procargs2_AmethystParsercb_6(bind)
+@tmp<<bind[:a_1]
+end
+def procargs_AmethystParsercb_1(bind)
+@ary=[];@tmp=[]
+end
+def procargs_AmethystParsercb_2(bind)
+(bind[:c_1]==',') || FAIL
+end
+def procargs_AmethystParsercb_3(bind)
+@ary<<Args[{:ary=>@tmp}];@tmp=[]
+end
+def procargs_AmethystParsercb_4(bind)
+@ary
+end
+def rubyarg_AmethystParsercb_1(bind)
+[]
+end
+def rubyarg_AmethystParsercb_10(bind)
+'['
+end
+def rubyarg_AmethystParsercb_11(bind)
+']'
+end
+def rubyarg_AmethystParsercb_12(bind)
+'{'
+end
+def rubyarg_AmethystParsercb_13(bind)
+'}'
+end
+def rubyarg_AmethystParsercb_14(bind)
+"\""
+end
+def rubyarg_AmethystParsercb_15(bind)
+_append(bind[:s_1],bind[:autovar_3])
+end
+def rubyarg_AmethystParsercb_16(bind)
+[]
+end
+def rubyarg_AmethystParsercb_17(bind)
+"\""
+end
+def rubyarg_AmethystParsercb_18(bind)
+_append(bind[:autovar_1],bind[:autovar_4])
+end
+def rubyarg_AmethystParsercb_19(bind)
+_append(bind[:s_1],bind[:autovar_5])
+end
+def rubyarg_AmethystParsercb_2(bind)
+[]
+end
+def rubyarg_AmethystParsercb_20(bind)
+Strin[connectstring(bind[:s_1])]
+end
+def rubyarg_AmethystParsercb_21(bind)
+"\'"
+end
+def rubyarg_AmethystParsercb_22(bind)
+_append(bind[:s_1],bind[:autovar_6])
+end
+def rubyarg_AmethystParsercb_23(bind)
+[]
+end
+def rubyarg_AmethystParsercb_24(bind)
+"\'"
+end
+def rubyarg_AmethystParsercb_25(bind)
+_append(bind[:autovar_2],bind[:autovar_7])
+end
+def rubyarg_AmethystParsercb_26(bind)
+_append(bind[:s_1],bind[:autovar_8])
+end
+def rubyarg_AmethystParsercb_27(bind)
+Strin[connectstring(bind[:s_1])]
+end
+def rubyarg_AmethystParsercb_28(bind)
+"..."
+end
+def rubyarg_AmethystParsercb_29(bind)
+".."
+end
+def rubyarg_AmethystParsercb_3(bind)
+[]
+end
+def rubyarg_AmethystParsercb_30(bind)
+":@"
+end
+def rubyarg_AmethystParsercb_31(bind)
+bind[:s_2]
+end
+def rubyarg_AmethystParsercb_32(bind)
+/[$.:]/
+end
+def rubyarg_AmethystParsercb_33(bind)
+(bind[:c_1].is_a? String ) || FAIL
+end
+def rubyarg_AmethystParsercb_34(bind)
+(bind[:regex_1].match(bind[:c_2])) || FAIL
+end
+def rubyarg_AmethystParsercb_35(bind)
+_append(bind[:n_1],bind[:autovar_9])
+end
+def rubyarg_AmethystParsercb_36(bind)
+/[^`{}()'"\[\]]/
+end
+def rubyarg_AmethystParsercb_37(bind)
+(bind[:c_1].is_a? String ) || FAIL
+end
+def rubyarg_AmethystParsercb_38(bind)
+(bind[:regex_1].match(bind[:c_2])) || FAIL
+end
+def rubyarg_AmethystParsercb_4(bind)
+[]
+end
+def rubyarg_AmethystParsercb_5(bind)
+"`"
+end
+def rubyarg_AmethystParsercb_6(bind)
+"`"
+end
+def rubyarg_AmethystParsercb_7(bind)
+Exp[_body(bind[:e_1])]
+end
+def rubyarg_AmethystParsercb_8(bind)
+'('
+end
+def rubyarg_AmethystParsercb_9(bind)
+')'
+end
+def rule_AmethystParsercb_1(bind)
+@locals=[];$appends=[];@bnding=Bnding[]
+end
+def rule_AmethystParsercb_2(bind)
+@bnding
+end
+def rule_AmethystParsercb_3(bind)
+"="
+end
+def rule_AmethystParsercb_4(bind)
+bind[:s_1]
+end
+def rule_AmethystParsercb_5(bind)
+_body(bind[:body_1])
+end
+def rule_AmethystParsercb_6(bind)
+@locals.uniq
+end
+def rule_AmethystParsercb_7(bind)
+bind[:body_1]=Seq[{:ary=>($appends.uniq.map{|a| _Set(a,Act[Args["[]"]])}+[bind[:body_1]])}]; 
+end
+def rule_AmethystParsercb_8(bind)
+Rule.create( {:args=>bind[:args_1],:bnding=>bind[:bnding_1],:body=>bind[:body_1],:locals=>bind[:locals_1],:name=>bind[:name_1] })
+end
+def ruleargs_AmethystParsercb_1(bind)
+'('
+end
+def ruleargs_AmethystParsercb_2(bind)
+')'
+end
+def ruleargs_AmethystParsercb_3(bind)
+bind[:autovar_1]=[bind[:autovar_1]]
+end
+def sequence_AmethystParsercb_1(bind)
+[]
+end
+def sequence_AmethystParsercb_2(bind)
+[]
+end
+def sequence_AmethystParsercb_3(bind)
+_append(bind[:autovar_1],bind[:autovar_2])
+end
+def sequence_AmethystParsercb_4(bind)
+Seq.create( {:ary=>bind[:ary_1] })
+end
+def term_AmethystParsercb_1(bind)
+[]
+end
+def term_AmethystParsercb_10(bind)
+"break"
+end
+def term_AmethystParsercb_11(bind)
+bind[:s_2]
+end
+def term_AmethystParsercb_12(bind)
+Seq[Cut[],Stop[]]
+end
+def term_AmethystParsercb_13(bind)
+bind[:it_1].is_a?(Result) ? bind[:it_1] : Act[Args[bind[:it_1]]]
+end
+def term_AmethystParsercb_14(bind)
+"->"
+end
+def term_AmethystParsercb_15(bind)
+bind[:s_2]
+end
+def term_AmethystParsercb_16(bind)
+""
+end
+def term_AmethystParsercb_17(bind)
+bind[:s_2]
+end
+def term_AmethystParsercb_18(bind)
+Act[bind[:x_1]]
+end
+def term_AmethystParsercb_19(bind)
+"\""
+end
+def term_AmethystParsercb_2(bind)
+[]
+end
+def term_AmethystParsercb_20(bind)
+bind[:s_2]
+end
+def term_AmethystParsercb_21(bind)
+"\""
+end
+def term_AmethystParsercb_22(bind)
+_append(bind[:s_1],bind[:autovar_1])
+end
+def term_AmethystParsercb_23(bind)
+Apply["token" ,quote(bind[:s_1])]
+end
+def term_AmethystParsercb_24(bind)
+"'"
+end
+def term_AmethystParsercb_25(bind)
+bind[:s_2]
+end
+def term_AmethystParsercb_26(bind)
+"\'"
+end
+def term_AmethystParsercb_27(bind)
+_append(bind[:s_1],bind[:autovar_2])
+end
+def term_AmethystParsercb_28(bind)
+Apply["seq"   ,quote(bind[:s_1])]
+end
+def term_AmethystParsercb_29(bind)
+Apply["exactly",bind[:it_1]]
+end
+def term_AmethystParsercb_3(bind)
+Apply["clas",bind[:cls_1]]
+end
+def term_AmethystParsercb_30(bind)
+"<"
+end
+def term_AmethystParsercb_31(bind)
+bind[:s_2]
+end
+def term_AmethystParsercb_32(bind)
+">"
+end
+def term_AmethystParsercb_33(bind)
+bind[:s_2]
+end
+def term_AmethystParsercb_34(bind)
+_append(bind[:x_1],bind[:autovar_3])
+end
+def term_AmethystParsercb_35(bind)
+Apply["regch","/[#{bind[:x_1]}]/"]
+end
+def term_AmethystParsercb_36(bind)
+"("
+end
+def term_AmethystParsercb_37(bind)
+bind[:s_2]
+end
+def term_AmethystParsercb_38(bind)
+")"
+end
+def term_AmethystParsercb_39(bind)
+bind[:s_2]
+end
+def term_AmethystParsercb_4(bind)
+"nested"
+end
+def term_AmethystParsercb_40(bind)
+"[]"
+end
+def term_AmethystParsercb_41(bind)
+bind[:x_1]
+end
+def term_AmethystParsercb_42(bind)
+a=autovar; Seq[Or[{:ary=>bind[:ors_1].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],Act[a]]
+end
+def term_AmethystParsercb_5(bind)
+bind[:s_2]
+end
+def term_AmethystParsercb_6(bind)
+"("
+end
+def term_AmethystParsercb_7(bind)
+")"
+end
+def term_AmethystParsercb_8(bind)
+bind[:s_2]
+end
+def term_AmethystParsercb_9(bind)
+Nested[bind[:expr_1]]
 end
 
+end
+
+
+ require 'compiled/parser_c'

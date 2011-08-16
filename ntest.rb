@@ -15,6 +15,6 @@ end
 
 ["amethyst","parser"].each{|f|
 puts f
-Compiler::compile("amethyst/#{f}.ame","compiled/#{f}.rb")
+Compiler::compile("amethyst/#{f}.ame","compiled/#{f}.rb",f)
 }
 #pp Compiler.grammars["AmethystParser"]

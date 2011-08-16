@@ -40,9 +40,9 @@ class <<Compiler
 	def init
 		@grammars={}
 	end
-	def add_grammar(grammar,outs)
+	def add_grammar(grammar)
 		@grammars[grammar.name]=Gram.new(grammar)
-		outs.puts "class #{grammar.name}"+ (grammar.parent ? " < #{grammar.parent}" : "")
+		#outs.puts "class #{grammar.name}"+ (grammar.parent ? " < #{grammar.parent}" : "")
 
 		callg=Oriented_Graph.new
 		@grammars[grammar.name].rules.each{|name,code|
@@ -73,21 +73,34 @@ class <<Compiler
 
 			code<< AmethystTranslator.new.parse(:itrans,[@grammars[grammar.name].rules[name]])
 		end}
-		outs.puts code.sort
-		outs.puts "end"
+		#outs.puts code.sort
+		#outs.puts "end"
 	end
-	def compile(file,out)
-		outs=File.new(out,"w")
+	def compile(file,out,file2)
+		#outs=File.new(out,"w")
 		source=File.new(file).read
 		tree=AmethystParser.new.parse(:igrammar,source)
 		tree=Analyze_Variables2.new.parse(:itrans,tree)
 		tree.each{|a|	
 			if a.is_a? Grammar
-				add_grammar(a,outs)
+				add_grammar(a)
+				a.rules=@grammars[a.name].rules.map{|h,k| k}
 			else
-				outs.print a
+#				outs.print a
 			end
 		}
+		c,init,rb= AmethystCTranslator.new.parse(:itrans,tree)
+		File.open("compiled/#{file2}_c.c","w"){|f|
+    f.puts "#include \"cthyst.h\""
+    f.puts c
+    f.puts "void Init_#{file2}_c(){ #{init} }"
+    }
+    File.open("compiled/#{file2}.rb","w"){|f| f.puts rb; f.puts "\n require 'compiled/#{file2}_c'"}
+	  withtime("c"){
+    `cd compiled;gcc -I. -I/usr/lib/ruby/1.8/x86_64-linux -I/usr/lib/ruby/1.8/x86_64-linux -I.   -fPIC -fno-strict-aliasing -g -g $O  -fPIC   -c #{file2}_c.c`
+    `cd compiled;gcc -shared -o #{file2}_c.so #{file2}_c.o -L. -L/usr/lib -L.  -rdynamic -Wl,-export-dynamic -lruby1.8  -lpthread -lrt -ldl -lcrypt -lm   -lc`
+  	}
+
 	end
 end	
 Compiler::init
