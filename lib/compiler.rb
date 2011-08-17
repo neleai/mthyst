@@ -11,13 +11,13 @@ class Gram
       debug=true
 			pipeline=[Seq_Or_Optimizer,Move_Assignments2,Seq_Or_Optimizer,
 			Communize_Or3,Seq_Or_Optimizer,
-			Dead_Code_Detector2,Dead_Code_Deleter2,Seq_Or_Optimizer]
+			]
 			pipeline.each{|o|
 	      puts r.inspect if debug
       	r=o.new.parse(:root,r)
 			}
 		 [CloneLocals, Dataflow, 
-			Dead_Code_Deleter3
+			Dead_Code_Deleter3,Seq_Or_Optimizer
 ].each{|o|
 			r=o.new.parse(:root,r)
 			puts r.inspect

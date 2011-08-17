@@ -376,145 +376,118 @@ def prefixed_AmethystParsercb_1(bind)
 "&"
 end
 def prefixed_AmethystParsercb_10(bind)
-""
-end
-def prefixed_AmethystParsercb_11(bind)
 bind[:s_1]
 end
-def prefixed_AmethystParsercb_12(bind)
-
-end
-def prefixed_AmethystParsercb_13(bind)
+def prefixed_AmethystParsercb_11(bind)
 /[.:\[]/
 end
-def prefixed_AmethystParsercb_14(bind)
+def prefixed_AmethystParsercb_12(bind)
 (bind[:c_1].is_a? String ) || FAIL
 end
-def prefixed_AmethystParsercb_15(bind)
+def prefixed_AmethystParsercb_13(bind)
 (bind[:regex_1].match(bind[:c_2])) || FAIL
 end
+def prefixed_AmethystParsercb_14(bind)
+"."
+end
+def prefixed_AmethystParsercb_15(bind)
+bind[:s_1]
+end
 def prefixed_AmethystParsercb_16(bind)
-
+Apply["anything"]
 end
 def prefixed_AmethystParsercb_17(bind)
-"."
+"=>"
 end
 def prefixed_AmethystParsercb_18(bind)
 bind[:s_1]
 end
 def prefixed_AmethystParsercb_19(bind)
-
+bind[:from_1]=Pass[bind[:from_1],bind[:it_1]]
 end
 def prefixed_AmethystParsercb_2(bind)
 bind[:s_1]
 end
 def prefixed_AmethystParsercb_20(bind)
-Apply["anything"]
+"["
 end
 def prefixed_AmethystParsercb_21(bind)
-"=>"
-end
-def prefixed_AmethystParsercb_22(bind)
 bind[:s_1]
 end
+def prefixed_AmethystParsercb_22(bind)
+bind[:from_1]=Enter[bind[:from_1],bind[:it_1]]
+end
 def prefixed_AmethystParsercb_23(bind)
-
+"]"
 end
 def prefixed_AmethystParsercb_24(bind)
-bind[:from_1]=Pass[bind[:from_1],bind[:it_1]]
+bind[:s_1]
 end
 def prefixed_AmethystParsercb_25(bind)
-"["
+"*"
 end
 def prefixed_AmethystParsercb_26(bind)
 bind[:s_1]
 end
 def prefixed_AmethystParsercb_27(bind)
-
-end
-def prefixed_AmethystParsercb_28(bind)
-bind[:from_1]=Enter[bind[:from_1],bind[:it_1]]
-end
-def prefixed_AmethystParsercb_29(bind)
-"]"
-end
-def prefixed_AmethystParsercb_3(bind)
-
-end
-def prefixed_AmethystParsercb_30(bind)
-bind[:s_1]
-end
-def prefixed_AmethystParsercb_31(bind)
-
-end
-def prefixed_AmethystParsercb_32(bind)
-"*"
-end
-def prefixed_AmethystParsercb_33(bind)
-bind[:s_1]
-end
-def prefixed_AmethystParsercb_34(bind)
 "+"
 end
-def prefixed_AmethystParsercb_35(bind)
+def prefixed_AmethystParsercb_28(bind)
 bind[:s_1]
 end
-def prefixed_AmethystParsercb_36(bind)
+def prefixed_AmethystParsercb_29(bind)
 Many[bind[:from_1],bind[:one_1]=="+"]
 end
-def prefixed_AmethystParsercb_37(bind)
-"?"
-end
-def prefixed_AmethystParsercb_38(bind)
-bind[:s_1]
-end
-def prefixed_AmethystParsercb_39(bind)
-
-end
-def prefixed_AmethystParsercb_4(bind)
+def prefixed_AmethystParsercb_3(bind)
 Pred[bind[:expr_1]]
 end
-def prefixed_AmethystParsercb_40(bind)
+def prefixed_AmethystParsercb_30(bind)
+"?"
+end
+def prefixed_AmethystParsercb_31(bind)
+bind[:s_1]
+end
+def prefixed_AmethystParsercb_32(bind)
 Or[bind[:from_1],Apply["empty"]]
 end
-def prefixed_AmethystParsercb_41(bind)
+def prefixed_AmethystParsercb_33(bind)
 ":"
 end
-def prefixed_AmethystParsercb_42(bind)
+def prefixed_AmethystParsercb_34(bind)
 bind[:s_1]
 end
-def prefixed_AmethystParsercb_43(bind)
-
-end
-def prefixed_AmethystParsercb_44(bind)
+def prefixed_AmethystParsercb_35(bind)
 "[]"
 end
-def prefixed_AmethystParsercb_45(bind)
+def prefixed_AmethystParsercb_36(bind)
 true
 end
-def prefixed_AmethystParsercb_46(bind)
+def prefixed_AmethystParsercb_37(bind)
 nil
 end
-def prefixed_AmethystParsercb_47(bind)
+def prefixed_AmethystParsercb_38(bind)
 _Set(bind[:name_1],bind[:from_1],bind[:append_1])
 end
-def prefixed_AmethystParsercb_48(bind)
+def prefixed_AmethystParsercb_39(bind)
 Seq[_Set("it",bind[:from_1]) , Act[bind[:e_1]] ]
 end
-def prefixed_AmethystParsercb_5(bind)
+def prefixed_AmethystParsercb_4(bind)
 "&"
 end
-def prefixed_AmethystParsercb_6(bind)
+def prefixed_AmethystParsercb_5(bind)
 bind[:s_1]
 end
-def prefixed_AmethystParsercb_7(bind)
+def prefixed_AmethystParsercb_6(bind)
 "~"
 end
-def prefixed_AmethystParsercb_8(bind)
+def prefixed_AmethystParsercb_7(bind)
 bind[:s_1]
 end
-def prefixed_AmethystParsercb_9(bind)
+def prefixed_AmethystParsercb_8(bind)
 Lookahead[bind[:m_1],bind[:neg_1]=="~"]
+end
+def prefixed_AmethystParsercb_9(bind)
+""
 end
 def procargs2_AmethystParsercb_1(bind)
 Args
