@@ -111,7 +111,7 @@ def trans_AmethystTranslatorcb_1(bind)
 []
 end
 def trans_AmethystTranslatorcb_10(bind)
-@x; Local.resetnumbering  
+Local.resetnumbering  
 end
 def trans_AmethystTranslatorcb_11(bind)
 'return'

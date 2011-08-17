@@ -10,7 +10,7 @@ amethyst Traverser {
 	traverse = .*
         	@self:this
 					{(@self.instance_variables).map{|v| [v,@self.instance_variable_get(v)] }}=>[
-			  		[ :key  traverse_item:{@@x; this.instance_variable_set(key,it)} ]* 
+			  		[ :key  traverse_item:{ this.instance_variable_set(key,it)} ]* 
 					]
 					@self
 }

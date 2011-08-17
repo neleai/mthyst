@@ -13,7 +13,7 @@ def traverse_Traversercb_3(bind)
 bind[:autovar_1]=[bind[:autovar_1]]
 end
 def traverse_Traversercb_4(bind)
-@x; bind[:this_1].instance_variable_set(bind[:key_1],bind[:it_1])
+bind[:this_1].instance_variable_set(bind[:key_1],bind[:it_1])
 end
 def traverse_Traversercb_5(bind)
 @src.self

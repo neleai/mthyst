@@ -400,7 +400,7 @@ def move_Move_Assignmentscb_13(bind)
 bind[:name_1]
 end
 def move_Move_Assignmentscb_14(bind)
-@x;bind[:ary_1][-1]=bind[:moved_1]
+bind[:ary_1][-1]=bind[:moved_1]
 end
 def move_Move_Assignmentscb_15(bind)
 Seq.create( {:ary=>bind[:ary_1] })
@@ -493,7 +493,7 @@ def trans_Move_Assignmentscb_20(bind)
 bind[:name_2]
 end
 def trans_Move_Assignmentscb_21(bind)
-@x;bind[:ary_1][-1]=bind[:moved_1]
+bind[:ary_1][-1]=bind[:moved_1]
 end
 def trans_Move_Assignmentscb_22(bind)
 Seq.create( {:ary=>bind[:ary_1] })

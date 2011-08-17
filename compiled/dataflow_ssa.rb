@@ -106,7 +106,7 @@ def root_Dataflowcb_7(bind)
 bind[:autovar_3]=[bind[:autovar_3]]
 end
 def root_Dataflowcb_8(bind)
-@x;bind[:var_1].each{|v| ssanum(v)}
+bind[:var_1].each{|v| ssanum(v)}
 end
 def root_Dataflowcb_9(bind)
 @src.reachable=@edges.reverse.reachable(@marked+[ssanum(@src.body[-1])]); @src.cfg=@edges; [@edges,@marked+[@src.body[-1]]]
@@ -229,7 +229,7 @@ def visit_Dataflowcb_12(bind)
 bind[:join_1]<<oldssanums.clone
 end
 def visit_Dataflowcb_13(bind)
-@x;or_end(bind[:join_1])
+or_end(bind[:join_1])
 end
 def visit_Dataflowcb_14(bind)
 @src.self
@@ -244,7 +244,7 @@ def visit_Dataflowcb_17(bind)
 ssanums.clone
 end
 def visit_Dataflowcb_18(bind)
-@x;many_end(bind[:prev_1])
+many_end(bind[:prev_1])
 end
 def visit_Dataflowcb_19(bind)
 @src.self

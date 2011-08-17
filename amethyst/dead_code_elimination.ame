@@ -43,7 +43,7 @@ amethyst Move_Assignments < AmethystOptimizer {
 				| super
 
 	move(name) = Or[ move(name)*:ary ] @Or
-								| Seq[ .*:ary {ary[-1]}=>move(name):moved {@@x;ary[-1]=moved} ] @Seq
+								| Seq[ .*:ary {ary[-1]}=>move(name):moved {ary[-1]=moved} ] @Seq
 								| Pass[@var:var @to=>move(name):to ] @Pass
 								| anything:{_Set(name,it)}
 }

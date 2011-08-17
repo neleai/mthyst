@@ -60,11 +60,11 @@ amethyst CloneLocals < Traverser{
 }
 
 amethyst Dataflow < Traverser {
-	root =  @self=>Rule[ {@@bnding=@bnding} @args=>[vars_in:var] {@@x;var.each{|v| ssanum(v)}} traverse {@reachable=@@edges.reverse.reachable(@@marked+[ssanum(@body[-1])]); @cfg=@@edges; [@@edges,@@marked+[@body[-1]]]} {@self}]
+	root =  @self=>Rule[ {@@bnding=@bnding} @args=>[vars_in:var] {var.each{|v| ssanum(v)}} traverse {@reachable=@@edges.reverse.reachable(@@marked+[ssanum(@body[-1])]); @cfg=@@edges; [@@edges,@@marked+[@body[-1]]]} {@self}]
 	
 	visit = Apply[:name traverse @self=>[vars_in:var] {var.each{|v| @@marked<<ssanum(v)}} @self]
-				| Or[	{[]}:join {oldssanums.clone}:old  ({@@oldssanums=old.clone} traverse_item {join<<oldssanums.clone})* {@@x;or_end(join)} @self ]
-				| Many[  {ssanums.clone}:prev traverse {@@x;many_end(prev)} @self]
+				| Or[	{[]}:join {oldssanums.clone}:old  ({@@oldssanums=old.clone} traverse_item {join<<oldssanums.clone})* {or_end(join)} @self ]
+				| Many[  {ssanums.clone}:prev traverse {many_end(prev)} @self]
 				| Pass[  traverse {@@marked<<ssanum(@var)} @self ]
 				| Act[ traverse:this {@@marked<<this if @pred || !@pure} 
 							 @ary=>[vars_in]:var ] -> var.each{|v| edges.add(ssanum(v),this); edges.add(this,newssanum(v.clone));}; this
