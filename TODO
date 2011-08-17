@@ -24,3 +24,5 @@ in ~space space* the  space* must be empty
 mark acts without side effects
 documentation
 rewrite using backtracking,repeat until...
+
+initialize parse by Pass

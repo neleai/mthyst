@@ -3,7 +3,7 @@ require 'graph'
 require 'pp'
 require 'amethyst'
 require 'compiler'
-require 'c/inliner2'
+require 'compiled/inliner2'
 require 'compiled/dead_code_elimination2'
 require 'compiled/dataflow_ssa'
 class Array
@@ -14,8 +14,8 @@ end
 
 ["amethyst","parser",
 "traverser","detect_variables2",
-"dead_code_elimination2",
-"ctranslator2","dataflow_ssa"].each{|f|
+"dead_code_elimination2","inliner2","dataflow_ssa",
+"ctranslator2"].each{|f|
 puts f
 Compiler::compile("amethyst/#{f}.ame","compiled/#{f}.rb",f)
 }
