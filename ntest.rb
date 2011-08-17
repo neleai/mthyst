@@ -12,7 +12,10 @@ class Array
 	end
 end
 
-["amethyst","parser","traverser","ctranslator2"].each{|f|
+["amethyst","parser",
+"traverser",
+"detect_variables2",
+"ctranslator2"].each{|f|
 puts f
 Compiler::compile("amethyst/#{f}.ame","compiled/#{f}.rb",f)
 }

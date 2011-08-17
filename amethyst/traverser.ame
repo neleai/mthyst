@@ -1,4 +1,4 @@
-class Traverser
+class Traverser < Amethyst
 	def replace_by
 	end
 end
