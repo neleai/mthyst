@@ -118,6 +118,26 @@ class <<Lookahead
 		end
   end
 end
+class Global
+	def hash
+		ary.hash
+	end
+	def ==(a)
+		return false unless a.is_a? Global
+    return self.ary==a.ary
+	end
+	alias_method :eql?,:==
+end
+class Key
+	def hash
+		ary.hash
+	end
+	def ==(a)
+		return false unless a.is_a? Key
+    return self.ary==a.ary
+	end
+	alias_method :eql?,:==
+end
 class Local
 	def inspect
 		"Local[#{ary[0]}#{ary[1].is_a?(Bnding) ? "" : ary[1]}_#{ssano}]"

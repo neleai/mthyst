@@ -104,7 +104,7 @@ require "c/#{opt}"
 end
 }
 ["parser"].each{|opt|
-if false
+if true
 require "compiled/#{opt}"
 else
 require "c/#{opt}"

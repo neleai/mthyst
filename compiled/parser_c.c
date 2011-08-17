@@ -607,17 +607,17 @@ return it;
 fail: return failobj; }
 VALUE AmethystParser_procargs(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-int oldpos1; while(1){oldpos1=ame_getpos(self); int oldpos2=ame_getpos(self);
+it=CALL(procargs_AmethystParsercb_1,1,bind); int oldpos1; while(1){oldpos1=ame_getpos(self); int oldpos2=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
    it=CALL(anything,0 ); FAILTEST(alt1_2);
- BSET(c_1,it); it=CALL(procargs_AmethystParsercb_1,1,bind); FAILTEST(alt1_2); 
+ BSET(c_1,it); it=CALL(procargs_AmethystParsercb_2,1,bind); FAILTEST(alt1_2);it=CALL(procargs_AmethystParsercb_3,1,bind);  
 ISET(cut,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
    it=CALL(procargs2,0 ); FAILTEST(alt1_3); 
 ISET(cut,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos2); goto break1;
  accept1:;
- if (IGET(stop)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos1); it=CALL(procargs_AmethystParsercb_2,1,bind); 
+ if (IGET(stop)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos1); it=CALL(procargs_AmethystParsercb_4,1,bind); 
  BSET(_result_1,it); it=BGET(_result_1);
 return it;
 fail: return failobj; }
@@ -782,14 +782,14 @@ return it;
 fail: return failobj; }
 VALUE AmethystParser_rule(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=CALL(rule_AmethystParsercb_1,1,bind); 
+it=CALL(rule_AmethystParsercb_1,1,bind); it=CALL(rule_AmethystParsercb_2,1,bind); 
  BSET(bnding_1,it);   it=CALL(name,0 ); FAILTEST(fail);
  BSET(name_1,it);   it=CALL(ruleargs,0 ); FAILTEST(fail);
- BSET(args_1,it); it=CALL(rule_AmethystParsercb_2,1,bind); 
- BSET(s_1,it);   it=CALL(spaces,0 ); FAILTEST(fail); arg0=CALL(rule_AmethystParsercb_3,1,bind); it=CALL(seq,1 ,arg0); FAILTEST(fail);  it=CALL(expression,0 ); FAILTEST(fail);
- BSET(body_1,it); it=CALL(rule_AmethystParsercb_4,1,bind); 
+ BSET(args_1,it); it=CALL(rule_AmethystParsercb_3,1,bind); 
+ BSET(s_1,it);   it=CALL(spaces,0 ); FAILTEST(fail); arg0=CALL(rule_AmethystParsercb_4,1,bind); it=CALL(seq,1 ,arg0); FAILTEST(fail);  it=CALL(expression,0 ); FAILTEST(fail);
  BSET(body_1,it); it=CALL(rule_AmethystParsercb_5,1,bind); 
- BSET(locals_1,it); it=CALL(rule_AmethystParsercb_6,1,bind); it=CALL(rule_AmethystParsercb_7,1,bind);
+ BSET(body_1,it); it=CALL(rule_AmethystParsercb_6,1,bind); 
+ BSET(locals_1,it); it=CALL(rule_AmethystParsercb_7,1,bind); it=CALL(rule_AmethystParsercb_8,1,bind);
  BSET(_result_1,it); it=BGET(_result_1);
 return it;
 fail: return failobj; }

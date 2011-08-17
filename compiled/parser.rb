@@ -532,9 +532,15 @@ def procargs2_AmethystParsercb_5(bind)
 @tmp<<bind[:a_1]
 end
 def procargs_AmethystParsercb_1(bind)
-(bind[:c_1]==',') || FAIL
+@ary=[];@tmp=[]
 end
 def procargs_AmethystParsercb_2(bind)
+(bind[:c_1]==',') || FAIL
+end
+def procargs_AmethystParsercb_3(bind)
+@ary<<Args[{:ary=>@tmp}];@tmp=[]
+end
+def procargs_AmethystParsercb_4(bind)
 @ary
 end
 def rubyarg_AmethystParsercb_1(bind)
@@ -646,24 +652,27 @@ def rubyarg_AmethystParsercb_9(bind)
 ']'
 end
 def rule_AmethystParsercb_1(bind)
-@bnding
+@locals=[];$appends=[];@bnding=Bnding[]
 end
 def rule_AmethystParsercb_2(bind)
-"="
+@bnding
 end
 def rule_AmethystParsercb_3(bind)
-bind[:s_1]
+"="
 end
 def rule_AmethystParsercb_4(bind)
-_body(bind[:body_1])
+bind[:s_1]
 end
 def rule_AmethystParsercb_5(bind)
-@locals.uniq
+_body(bind[:body_1])
 end
 def rule_AmethystParsercb_6(bind)
-bind[:body_1]=Seq[{:ary=>($appends.uniq.map{|a| _Set(a,Act[Args["[]"]])}+[bind[:body_1]])}]; 
+@locals.uniq
 end
 def rule_AmethystParsercb_7(bind)
+bind[:body_1]=Seq[{:ary=>($appends.uniq.map{|a| _Set(a,Act[Args["[]"]])}+[bind[:body_1]])}]; 
+end
+def rule_AmethystParsercb_8(bind)
 Rule.create( {:args=>bind[:args_1],:bnding=>bind[:bnding_1],:body=>bind[:body_1],:locals=>bind[:locals_1],:name=>bind[:name_1] })
 end
 def ruleargs_AmethystParsercb_1(bind)
