@@ -14,7 +14,7 @@ end
 
 ["amethyst","parser",
 "traverser","detect_variables2",
-"optimizer_null","optimizer_and_or",
+"optimizer_null","optimizer_and_or","dead_code_elimination",
 "dead_code_elimination2","inliner2","dataflow_ssa",
 "ctranslator2"].each{|f|
 puts f

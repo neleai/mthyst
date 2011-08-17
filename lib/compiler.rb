@@ -98,13 +98,13 @@ end
 	end
 end	
 Compiler::init
-["amethyst","traverser","detect_variables2","ctranslator2","parser","optimizer_null","optimizer_and_or"
+["amethyst","traverser","detect_variables2","ctranslator2","parser","optimizer_null","optimizer_and_or","dead_code_elimination"
 ].each{|opt|
 require "compiled/#{opt}"
 }
 
 
-[ "dead_code_elimination"].each{|opt|
+[ ].each{|opt|
 	require "c/#{opt}"
 }
 
