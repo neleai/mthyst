@@ -13,7 +13,7 @@ class Gram
 			Communize_Or3,Seq_Or_Optimizer,
 			]
 			pipeline.each{|o|
-	      puts r.inspect if debug
+#	      puts r.inspect if debug
       	r=o.new.parse(:root,r)
 			}
 		 [CloneLocals, Dataflow, 
@@ -62,8 +62,10 @@ if true
 				calls= DetectCalls.new.parse(:root,[@grammars[grammar.name].rules[name]])
 				calls.each{|nm,v|
 					r=@grammars[grammar.name].getrule(nm)
-					@grammars[grammar.name].inline(nm,name) if r && r.args.size>0 && !(/arg/=~r.name)
-					@grammars[grammar.name].inline(nm,name) if r && ["char","space"].include?(r.name)
+					if r && topo.index(nm)<topo.index(name)
+						@grammars[grammar.name].inline(nm,name) if r.args.size>0 && !(/arg/=~r.name) 
+						@grammars[grammar.name].inline(nm,name) if ["char","space"].include?(r.name)
+					end
 				}
 end
 				@grammars[grammar.name].opt(@grammars[grammar.name].rules[name])
@@ -96,12 +98,13 @@ end
 	end
 end	
 Compiler::init
-["amethyst","parser","traverser","detect_variables2","ctranslator2"].each{|opt|
+["amethyst","traverser","detect_variables2","ctranslator2","parser"
+].each{|opt|
 require "compiled/#{opt}"
 }
 
 
-["optimizer_null","optimizer_and_or","dead_code_elimination"].each{|opt|
+[ "optimizer_null","optimizer_and_or","dead_code_elimination"].each{|opt|
 	require "c/#{opt}"
 }
 
