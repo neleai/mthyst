@@ -271,7 +271,7 @@ def visit_Dataflowcb_25(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Dataflowcb_26(bind)
-@marked<<bind[:this_1] if @src.pred
+@marked<<bind[:this_1] if @src.pred || !@src.pure
 end
 def visit_Dataflowcb_27(bind)
 @src.ary

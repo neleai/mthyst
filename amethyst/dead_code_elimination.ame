@@ -3,7 +3,7 @@ amethyst Dead_Code_Detector < AmethystOptimizer {
 	trans = Rule[@name:name {@@edges=Oriented_Graph.new ; @@marked=[]}  @args=>args:args @body=>trans @body:body @locals:locals {@@edges.reachable(@@marked)}:reachable ] @Rule
 				| Apply[:name vars_in:var {@@marked+=var} ]
 				| Pass[@var=>vars_in:var {@@marked+=var} @to=>trans]
-				| Act[ @self:this {@@marked<<this if @pred} 
+				| Act[ @self:this {@@marked<<this if @pred || !@pure} 
 							 vars_in:var ] -> var.each{|w| @@edges.add(w,this); @@edges.add(this,w)}
 				| Set[@name=>vars_in:v {v=v[0]}  @expr=>trans @expr=>vars_in:var  ] -> var.each{|w| @@edges.add(v,w)}
 				| Result[@vars=>[vars_in]:var @self:v] -> var.each{|w| @@edges.add(v,w) }

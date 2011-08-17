@@ -175,7 +175,7 @@ def className_AmethystParsercb_8(bind)
 leterize(bind[:it_1]*"")
 end
 def collect_AmethystParsercb_1(bind)
-a=autovar; Seq[Or[{:ary=>bind[:ors_1].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],Act[a]]
+a=autovar; Seq[Or[{:ary=>bind[:ors_1].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],PureAct[a]]
 end
 def eChar_AmethystParsercb_1(bind)
 "\\"
@@ -643,7 +643,7 @@ def rule_AmethystParsercb_6(bind)
 @locals.uniq
 end
 def rule_AmethystParsercb_7(bind)
-bind[:body_1]=Seq[{:ary=>($appends.uniq.map{|a| _Set(a,Act[Args["[]"]])}+[bind[:body_1]])}]; 
+bind[:body_1]=Seq[{:ary=>($appends.uniq.map{|a| _Set(a,PureAct[Args["[]"]])}+[bind[:body_1]])}]; 
 end
 def rule_AmethystParsercb_8(bind)
 Rule.create( {:args=>bind[:args_1],:bnding=>bind[:bnding_1],:body=>bind[:body_1],:locals=>bind[:locals_1],:name=>bind[:name_1] })
@@ -775,7 +775,7 @@ def term_AmethystParsercb_41(bind)
 bind[:x_1]
 end
 def term_AmethystParsercb_42(bind)
-a=autovar; Seq[Or[{:ary=>bind[:ors_1].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],Act[a]]
+a=autovar; Seq[Or[{:ary=>bind[:ors_1].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],PureAct[a]]
 end
 def term_AmethystParsercb_5(bind)
 bind[:s_2]

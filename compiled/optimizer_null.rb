@@ -261,102 +261,105 @@ def trans_AmethystOptimizercb_58(bind)
 @src.pred
 end
 def trans_AmethystOptimizercb_59(bind)
-Act.create( {:ary=>bind[:ary_1],:pred=>bind[:pred_1] })
+@src.pure
 end
 def trans_AmethystOptimizercb_6(bind)
 @src.rules
 end
 def trans_AmethystOptimizercb_60(bind)
-Result
+Act.create( {:ary=>bind[:ary_1],:pred=>bind[:pred_1],:pure=>bind[:pure_1] })
 end
 def trans_AmethystOptimizercb_61(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+Result
 end
 def trans_AmethystOptimizercb_62(bind)
-@src.name
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def trans_AmethystOptimizercb_63(bind)
-@src.args
+@src.name
 end
 def trans_AmethystOptimizercb_64(bind)
-bind[:autovar_27]=[bind[:autovar_27]]
+@src.args
 end
 def trans_AmethystOptimizercb_65(bind)
-@src.vars
+bind[:autovar_27]=[bind[:autovar_27]]
 end
 def trans_AmethystOptimizercb_66(bind)
-bind[:autovar_28]=[bind[:autovar_28]]
+@src.vars
 end
 def trans_AmethystOptimizercb_67(bind)
-Result.create( {:args=>bind[:args_1],:ary=>bind[:ary_1],:expr=>bind[:expr_1],:name=>bind[:name_1],:vars=>bind[:vars_1] })
+bind[:autovar_28]=[bind[:autovar_28]]
 end
 def trans_AmethystOptimizercb_68(bind)
-Args
+Result.create( {:args=>bind[:args_1],:ary=>bind[:ary_1],:expr=>bind[:expr_1],:name=>bind[:name_1],:vars=>bind[:vars_1] })
 end
 def trans_AmethystOptimizercb_69(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+Args
 end
 def trans_AmethystOptimizercb_7(bind)
 bind[:autovar_2]=[bind[:autovar_2]]
 end
 def trans_AmethystOptimizercb_70(bind)
-[]
-end
-def trans_AmethystOptimizercb_71(bind)
-_append(bind[:autovar_30],bind[:autovar_31])
-end
-def trans_AmethystOptimizercb_72(bind)
-Args.create( {:ary=>bind[:ary_1],:o=>bind[:o_1] })
-end
-def trans_AmethystOptimizercb_73(bind)
-Pass
-end
-def trans_AmethystOptimizercb_74(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
+def trans_AmethystOptimizercb_71(bind)
+[]
+end
+def trans_AmethystOptimizercb_72(bind)
+_append(bind[:autovar_30],bind[:autovar_31])
+end
+def trans_AmethystOptimizercb_73(bind)
+Args.create( {:ary=>bind[:ary_1],:o=>bind[:o_1] })
+end
+def trans_AmethystOptimizercb_74(bind)
+Pass
+end
 def trans_AmethystOptimizercb_75(bind)
-@src.to
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def trans_AmethystOptimizercb_76(bind)
-bind[:autovar_33]=[bind[:autovar_33]]
+@src.to
 end
 def trans_AmethystOptimizercb_77(bind)
-@src.var
+bind[:autovar_33]=[bind[:autovar_33]]
 end
 def trans_AmethystOptimizercb_78(bind)
-bind[:autovar_34]=[bind[:autovar_34]]
+@src.var
 end
 def trans_AmethystOptimizercb_79(bind)
-Pass.create( {:ary=>bind[:ary_1],:to=>bind[:to_1],:var=>bind[:var_1] })
+bind[:autovar_34]=[bind[:autovar_34]]
 end
 def trans_AmethystOptimizercb_8(bind)
 Grammar.create( {:ary=>bind[:ary_1],:name=>bind[:name_1],:parent=>bind[:parent_1],:rules=>bind[:rules_1] })
 end
 def trans_AmethystOptimizercb_80(bind)
-Cut
+Pass.create( {:ary=>bind[:ary_1],:to=>bind[:to_1],:var=>bind[:var_1] })
 end
 def trans_AmethystOptimizercb_81(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+Cut
 end
 def trans_AmethystOptimizercb_82(bind)
-Cut.create( {:ary=>bind[:ary_1] })
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def trans_AmethystOptimizercb_83(bind)
-Stop
+Cut.create( {:ary=>bind[:ary_1] })
 end
 def trans_AmethystOptimizercb_84(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+Stop
 end
 def trans_AmethystOptimizercb_85(bind)
-Stop.create( {:ary=>bind[:ary_1] })
-end
-def trans_AmethystOptimizercb_86(bind)
-Local
-end
-def trans_AmethystOptimizercb_87(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
+def trans_AmethystOptimizercb_86(bind)
+Stop.create( {:ary=>bind[:ary_1] })
+end
+def trans_AmethystOptimizercb_87(bind)
+Local
+end
 def trans_AmethystOptimizercb_88(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def trans_AmethystOptimizercb_89(bind)
 @src.self
 end
 def trans_AmethystOptimizercb_9(bind)

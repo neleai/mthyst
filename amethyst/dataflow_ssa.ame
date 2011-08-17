@@ -66,7 +66,7 @@ amethyst Dataflow < Traverser {
 				| Or[	{[]}:join {oldssanums.clone}:old  ({@@oldssanums=old.clone} traverse_item {join<<oldssanums.clone})* {@@x;or_end(join)} @self ]
 				| Many[  {ssanums.clone}:prev traverse {@@x;many_end(prev)} @self]
 				| Pass[  traverse {@@marked<<ssanum(@var)} @self ]
-				| Act[ traverse:this {@@marked<<this if @pred} 
+				| Act[ traverse:this {@@marked<<this if @pred || !@pure} 
 							 @ary=>[vars_in]:var ] -> var.each{|v| edges.add(ssanum(v),this); edges.add(this,newssanum(v.clone));}; this
 				| Set[   traverse  {set_end(@self) }    @self] 
 				| Result[traverse:this @vars=>[vars_in]:var ] -> var.each{|w| @@edges.add(ssanum(w),this) } ; this

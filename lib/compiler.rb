@@ -20,7 +20,7 @@ class Gram
 			Dead_Code_Deleter3,Seq_Or_Optimizer
 ].each{|o|
 			r=o.new.parse(:root,r)
-		#	puts r.inspect
+			puts r.inspect
 		}
     @rules[r.name]=r 
 	end

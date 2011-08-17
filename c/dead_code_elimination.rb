@@ -42,7 +42,7 @@ def trans_Dead_Code_Detectorcb_21(bind)
 @src.self
 end
 def trans_Dead_Code_Detectorcb_22(bind)
-@marked<<bind[:this_1] if @src.pred
+@marked<<bind[:this_1] if @src.pred || !@src.pure
 end
 def trans_Dead_Code_Detectorcb_23(bind)
 bind[:var_1].each{|w| @edges.add(w,bind[:this_1]); @edges.add(bind[:this_1],w)}

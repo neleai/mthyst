@@ -8,7 +8,7 @@ makeclasses(Object,
     [:Many,:o],
     :Comment,
     [:Args,:o,:c,:r,:actno],
-    [:Act,:uses,:pred,:actno],
+    [:Act,:uses,:pred,:actno,:pure],
     [:Lookahead,:neg],
     :And,
     :Or,
@@ -63,20 +63,20 @@ end
 class <<Pass
 	def [](from,to,enter=nil)
 		a=autovar
-		Seq[_Set(a,from), (enter ? Act[] : Act[Args[a,"=[",a,"]"]]) , Pass.create({:to=>to,:enter=>true,:var=>a})]
+		Seq[_Set(a,from), (enter ? PureAct[] : Act[Args[a,"=[",a,"]"]]) , Pass.create({:to=>to,:enter=>true,:var=>a})]
 	end
 end
 def _Set(name,expr,append=nil)
 	if append
 		a=autovar
 		$appends<<name if $appends
-	  return Seq[_Set(a,expr),Act[Args["_append(",_Local(name),",",a,")"]]]
+	  return Seq[_Set(a,expr),PureAct[Args["_append(",_Local(name),",",a,")"]]]
 	end	
 	if name.is_a?(Local) || name.is_a?(String)
 		Set.create({:name=>_Local(name),:expr=>expr})
 	else
 		a=autovar
-		Seq[_Set(a,expr),Act[Args[_Local(name),'=',_Local(a)]]]
+		Seq[_Set(a,expr),PureAct[Args[name,'=',a]]]
 	end
 end
 class Append;end
@@ -89,10 +89,19 @@ end
 class <<Many
 	def [](expr,many1=nil)
 	  a=autovar
-		Seq[{:ary=>( [_Set(a, Act["[]"])]+(many1 ? [Append[a,expr]] : [])+[Many.create({:ary=>[Append[a,expr]]}),Act[a]])}]
+		Seq[{:ary=>( [_Set(a, PureAct["[]"])]+(many1 ? [Append[a,expr]] : [])+[Many.create({:ary=>[Append[a,expr]]}),PureAct[a]])}]
 	end
 end
 
+class PureAct
+end
+class <<PureAct
+	def [](expr=nil)
+		a=Act[expr]
+		a.pure=true
+		a
+	end
+end
 class <<Act
 	def [](expr=nil,pred=nil)
 		return Act.create({:pred=>pred}) if expr==nil
@@ -106,7 +115,7 @@ def [](e)
 end
 end
 def _body(body)
-	Seq[_Set("_result",body), Act[Args["_result"]]]
+	Seq[_Set("_result",body), PureAct[Args["_result"]]]
 end
 
 class <<Lookahead
