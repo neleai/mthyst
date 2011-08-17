@@ -38,13 +38,9 @@ class Dataflow < Traverser
     end
 	end
 	def or_end(join)
-	puts self.inspect
-	puts ssanums.inspect
    ssanums.clone.each{|k,v|
       u=[]
       join.each{|s| u<<s[k]}
-			puts k.inspect
-			puts u.inspect
       if u.uniq.size>1
         n=newssanum(k.clone)
         u.each{|v| edges.add([k,v],n)}
@@ -316,7 +312,7 @@ def visit_Dead_Code_Deleter3cb_12(bind)
 @src.self
 end
 def visit_Dead_Code_Deleter3cb_13(bind)
-puts bind[:this_1].ssaname.inspect; @reachable[bind[:this_1].ssaname] ? bind[:this_1] : Act[]
+@reachable[bind[:this_1].ssaname] ? bind[:this_1] : Act[]
 end
 def visit_Dead_Code_Deleter3cb_2(bind)
 @src.self

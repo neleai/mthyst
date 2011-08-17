@@ -96,22 +96,12 @@ end
 	end
 end	
 Compiler::init
-["amethyst"].each{|opt|
-if true
+["amethyst","parser","traverser"].each{|opt|
 require "compiled/#{opt}"
-else
-require "c/#{opt}"
-end
-}
-["parser"].each{|opt|
-if true
-require "compiled/#{opt}"
-else
-require "c/#{opt}"
-end
 }
 
-["optimizer_null","optimizer_and_or","detect_variables2","dead_code_elimination","traverser","ctranslator2"].each{|opt|
+
+["optimizer_null","optimizer_and_or","detect_variables2","dead_code_elimination","ctranslator2"].each{|opt|
 	require "c/#{opt}"
 }
 

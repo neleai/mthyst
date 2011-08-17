@@ -38,13 +38,9 @@ class Dataflow < Traverser
     end
 	end
 	def or_end(join)
-	puts self.inspect
-	puts ssanums.inspect
    ssanums.clone.each{|k,v|
       u=[]
       join.each{|s| u<<s[k]}
-			puts k.inspect
-			puts u.inspect
       if u.uniq.size>1
         n=newssanum(k.clone)
         u.each{|v| edges.add([k,v],n)}
@@ -64,7 +60,7 @@ amethyst CloneLocals < Traverser{
 }
 
 amethyst Dataflow < Traverser {
-	root = {puts "root"} @self=>Rule[ {@@bnding=@bnding} @args=>[vars_in:var] {@@x;var.each{|v| ssanum(v)}} traverse {@reachable=@@edges.reverse.reachable(@@marked+[ssanum(@body[-1])]); @cfg=@@edges; [@@edges,@@marked+[@body[-1]]]} {@self}]
+	root =  @self=>Rule[ {@@bnding=@bnding} @args=>[vars_in:var] {@@x;var.each{|v| ssanum(v)}} traverse {@reachable=@@edges.reverse.reachable(@@marked+[ssanum(@body[-1])]); @cfg=@@edges; [@@edges,@@marked+[@body[-1]]]} {@self}]
 	
 	visit = Apply[:name traverse @self=>[vars_in:var] {var.each{|v| @@marked<<ssanum(v)}} @self]
 				| Or[	{[]}:join {oldssanums.clone}:old  ({@@oldssanums=old.clone} traverse_item {join<<oldssanums.clone})* {@@x;or_end(join)} @self ]
@@ -94,7 +90,7 @@ amethyst Dead_Code_Deleter3 < Traverser{
 		visit = Act[@self:this .*] -> @@reachable[this] ? this : Act[]
 					| Set[traverse @expr:expr @self:this] -> @@reachable[this] ? this : expr
 					| Result[@self:this] ->@@reachable[this] ? this : Act[]
-          | Local[.* @self:this ] ->puts this.ssaname.inspect; @@reachable[this.ssaname] ? this : Act[]
+          | Local[.* @self:this ] -> @@reachable[this.ssaname] ? this : Act[]
 }
 
 

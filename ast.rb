@@ -134,7 +134,7 @@ class Key
 	end
 	def ==(a)
 		return false unless a.is_a? Key
-    return self.ary==a.ary
+    return self.name==a.name
 	end
 	alias_method :eql?,:==
 end

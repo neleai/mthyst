@@ -12,7 +12,7 @@ class Array
 	end
 end
 
-["amethyst","parser"].each{|f|
+["amethyst","parser","traverser"].each{|f|
 puts f
 Compiler::compile("amethyst/#{f}.ame","compiled/#{f}.rb",f)
 }
