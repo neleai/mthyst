@@ -56,32 +56,29 @@ end
 def listOf_Amethystcb_1(bind)
 []
 end
-def listOf_Amethystcb_10(bind)
-[]
-end
 def listOf_Amethystcb_2(bind)
-[]
+bind[:rule_1]
 end
 def listOf_Amethystcb_3(bind)
-bind[:rule_1]
+_append(bind[:f_1],bind[:autovar_1])
 end
 def listOf_Amethystcb_4(bind)
-_append(bind[:f_1],bind[:autovar_2])
-end
-def listOf_Amethystcb_5(bind)
 []
 end
-def listOf_Amethystcb_6(bind)
+def listOf_Amethystcb_5(bind)
 bind[:delim_1]
 end
-def listOf_Amethystcb_7(bind)
+def listOf_Amethystcb_6(bind)
 bind[:rule_1]
 end
+def listOf_Amethystcb_7(bind)
+_append(bind[:autovar_2],bind[:autovar_3])
+end
 def listOf_Amethystcb_8(bind)
-_append(bind[:autovar_1],bind[:autovar_3])
+_append(bind[:f_1],bind[:autovar_4])
 end
 def listOf_Amethystcb_9(bind)
-_append(bind[:f_1],bind[:autovar_4])
+[]
 end
 def lower_Amethystcb_1(bind)
 /[a-z]/
@@ -111,18 +108,15 @@ def spaces_Amethystcb_1(bind)
 []
 end
 def spaces_Amethystcb_2(bind)
-[]
-end
-def spaces_Amethystcb_3(bind)
 /[\s\t\r\n\f]/
 end
-def spaces_Amethystcb_4(bind)
+def spaces_Amethystcb_3(bind)
 (bind[:c_1].is_a? String ) || FAIL
 end
-def spaces_Amethystcb_5(bind)
+def spaces_Amethystcb_4(bind)
 (bind[:regex_1].match(bind[:c_2])) || FAIL
 end
-def spaces_Amethystcb_6(bind)
+def spaces_Amethystcb_5(bind)
 _append(bind[:autovar_1],bind[:autovar_2])
 end
 def token_Amethystcb_1(bind)

@@ -19,7 +19,7 @@ class Gram
 		 [CloneLocals, Dataflow, 
 			Dead_Code_Deleter3
 ].each{|o|
-#			r=o.new.parse(:root,r)
+			r=o.new.parse(:root,r)
 			puts r.inspect
 		}
     @rules[r.name]=r 
@@ -96,13 +96,21 @@ end
 	end
 end	
 Compiler::init
-["amethyst","parser"].each{|opt|
+["amethyst"].each{|opt|
+if true
+require "compiled/#{opt}"
+else
+require "c/#{opt}"
+end
+}
+["parser"].each{|opt|
 if false
 require "compiled/#{opt}"
 else
 require "c/#{opt}"
 end
 }
+
 ["optimizer_null","optimizer_and_or","detect_variables2","dead_code_elimination","traverser","ctranslator2"].each{|opt|
 	require "c/#{opt}"
 }
