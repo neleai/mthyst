@@ -89,7 +89,7 @@ end
 class <<Many
 	def [](expr,many1=nil)
 	  a=autovar
-		Seq[{:ary=>( [_Set(a, Act["[]"])]+(many1 ? [Append[a,expr]] : [])+[Many.create({:ary=>[Append[a,expr]],:o=>autovar}),Act[a]])}]
+		Seq[{:ary=>( [_Set(a, Act["[]"])]+(many1 ? [Append[a,expr]] : [])+[Many.create({:ary=>[Append[a,expr]]}),Act[a]])}]
 	end
 end
 
@@ -120,7 +120,7 @@ class <<Lookahead
 end
 class Local
 	def inspect
-		"Local[#{ary[0]}_#{ssano}]"
+		"Local[#{ary[0]}#{ary[1].is_a?(Bnding) ? "" : ary[1]}_#{ssano}]"
 	end
 	def hash
 		ary.hash

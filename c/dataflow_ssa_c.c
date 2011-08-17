@@ -254,7 +254,8 @@ alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
  BSET(autovar_4,it); int oldpos5=ame_getpos(self); int oldlen4=ame_getlen(self); VALUE oldsrc4=ame_getsrc(self); int fail4=0;
 ame_setsrc(self,BGET(autovar_4)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
  it=CALL(visit_Dataflowcb_7,1,bind); 
- BSET(old_1,it); int oldpos6; while(1){oldpos6=ame_getpos(self); it=CALL(visit_Dataflowcb_8,1,bind);   it=CALL(traverse_item,0 ); FAILTEST(break1); if (IGET(stop)!=Qnil){{oldpos6=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos6); it=CALL(visit_Dataflowcb_9,1,bind); 
+ BSET(join_1,it); it=CALL(visit_Dataflowcb_8,1,bind); 
+ BSET(old_1,it); int oldpos6; while(1){oldpos6=ame_getpos(self); it=CALL(visit_Dataflowcb_9,1,bind);   it=CALL(traverse_item,0 ); FAILTEST(break1);it=CALL(visit_Dataflowcb_10,1,bind);  if (IGET(stop)!=Qnil){{oldpos6=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos6); it=CALL(visit_Dataflowcb_11,1,bind); it=CALL(visit_Dataflowcb_12,1,bind); 
  BSET(_result_1,it); 
 	if (CALL(eof,0)==failobj) goto pass4;
 	goto success4;
@@ -264,10 +265,10 @@ ame_setsrc(self,BGET(autovar_4)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb
  
 ISET(cut,Qnil);goto accept1;
 alt1_3: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  arg0=CALL(visit_Dataflowcb_10,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_4);
+  arg0=CALL(visit_Dataflowcb_13,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_4);
  BSET(autovar_5,it); int oldpos7=ame_getpos(self); int oldlen5=ame_getlen(self); VALUE oldsrc5=ame_getsrc(self); int fail5=0;
 ame_setsrc(self,BGET(autovar_5)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-   it=CALL(traverse,0 ); FAILTEST(pass5);it=CALL(visit_Dataflowcb_11,1,bind); 
+   it=CALL(traverse,0 ); FAILTEST(pass5);it=CALL(visit_Dataflowcb_14,1,bind); it=CALL(visit_Dataflowcb_15,1,bind); 
  BSET(_result_1,it); 
 	if (CALL(eof,0)==failobj) goto pass5;
 	goto success5;
@@ -277,10 +278,10 @@ ame_setsrc(self,BGET(autovar_5)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb
  
 ISET(cut,Qnil);goto accept1;
 alt1_4: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  arg0=CALL(visit_Dataflowcb_12,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_5);
+  arg0=CALL(visit_Dataflowcb_16,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_5);
  BSET(autovar_6,it); int oldpos8=ame_getpos(self); int oldlen6=ame_getlen(self); VALUE oldsrc6=ame_getsrc(self); int fail6=0;
 ame_setsrc(self,BGET(autovar_6)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-   it=CALL(traverse,0 ); FAILTEST(pass6);it=CALL(visit_Dataflowcb_13,1,bind); it=CALL(visit_Dataflowcb_14,1,bind); 
+   it=CALL(traverse,0 ); FAILTEST(pass6);it=CALL(visit_Dataflowcb_17,1,bind); it=CALL(visit_Dataflowcb_18,1,bind); 
  BSET(_result_1,it); 
 	if (CALL(eof,0)==failobj) goto pass6;
 	goto success6;
@@ -290,12 +291,12 @@ ame_setsrc(self,BGET(autovar_6)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb
  
 ISET(cut,Qnil);goto accept1;
 alt1_5: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  arg0=CALL(visit_Dataflowcb_15,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_6);
+  arg0=CALL(visit_Dataflowcb_19,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_6);
  BSET(autovar_7,it); int oldpos9=ame_getpos(self); int oldlen7=ame_getlen(self); VALUE oldsrc7=ame_getsrc(self); int fail7=0;
 ame_setsrc(self,BGET(autovar_7)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=CALL(traverse,0 ); FAILTEST(pass7);
- BSET(this_1,it); it=CALL(visit_Dataflowcb_16,1,bind); it=CALL(visit_Dataflowcb_17,1,bind); 
- BSET(autovar_8,it); it=CALL(visit_Dataflowcb_18,1,bind); int oldpos10=ame_getpos(self); int oldlen8=ame_getlen(self); VALUE oldsrc8=ame_getsrc(self); int fail8=0;
+ BSET(this_1,it); it=CALL(visit_Dataflowcb_20,1,bind); it=CALL(visit_Dataflowcb_21,1,bind); 
+ BSET(autovar_8,it); it=CALL(visit_Dataflowcb_22,1,bind); int oldpos10=ame_getpos(self); int oldlen8=ame_getlen(self); VALUE oldsrc8=ame_getsrc(self); int fail8=0;
 ame_setsrc(self,BGET(autovar_8)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=CALL(anything,0 ); FAILTEST(pass8);
  BSET(autovar_9,it); int oldpos11=ame_getpos(self); int oldlen9=ame_getlen(self); VALUE oldsrc9=ame_getsrc(self); int fail9=0;
@@ -319,14 +320,14 @@ ame_setsrc(self,BGET(autovar_9)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb
 	pass7: fail7=1;
 	success7: ame_setsrc(self,oldsrc7); ame_setpos(self,oldpos9); ame_setlen(self,oldlen7);
 	if(fail7) goto alt1_6;
-it=CALL(visit_Dataflowcb_19,1,bind); 
+it=CALL(visit_Dataflowcb_23,1,bind); 
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
 alt1_6: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  arg0=CALL(visit_Dataflowcb_20,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_7);
+  arg0=CALL(visit_Dataflowcb_24,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_7);
  BSET(autovar_10,it); int oldpos12=ame_getpos(self); int oldlen10=ame_getlen(self); VALUE oldsrc10=ame_getsrc(self); int fail10=0;
 ame_setsrc(self,BGET(autovar_10)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-   it=CALL(traverse,0 ); FAILTEST(pass10);it=CALL(visit_Dataflowcb_21,1,bind); it=CALL(visit_Dataflowcb_22,1,bind); 
+   it=CALL(traverse,0 ); FAILTEST(pass10);it=CALL(visit_Dataflowcb_25,1,bind); it=CALL(visit_Dataflowcb_26,1,bind); 
  BSET(_result_1,it); 
 	if (CALL(eof,0)==failobj) goto pass10;
 	goto success10;
@@ -336,12 +337,12 @@ ame_setsrc(self,BGET(autovar_10)); ame_setpos(self,0); ame_setlen(self,FIX2INT(r
  
 ISET(cut,Qnil);goto accept1;
 alt1_7: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  arg0=CALL(visit_Dataflowcb_23,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_8);
+  arg0=CALL(visit_Dataflowcb_27,1,bind); it=CALL(clas,1 ,arg0); FAILTEST(alt1_8);
  BSET(autovar_11,it); int oldpos13=ame_getpos(self); int oldlen11=ame_getlen(self); VALUE oldsrc11=ame_getsrc(self); int fail11=0;
 ame_setsrc(self,BGET(autovar_11)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=CALL(traverse,0 ); FAILTEST(pass11);
- BSET(this_1,it); it=CALL(visit_Dataflowcb_24,1,bind); 
- BSET(autovar_12,it); it=CALL(visit_Dataflowcb_25,1,bind); int oldpos14=ame_getpos(self); int oldlen12=ame_getlen(self); VALUE oldsrc12=ame_getsrc(self); int fail12=0;
+ BSET(this_1,it); it=CALL(visit_Dataflowcb_28,1,bind); 
+ BSET(autovar_12,it); it=CALL(visit_Dataflowcb_29,1,bind); int oldpos14=ame_getpos(self); int oldlen12=ame_getlen(self); VALUE oldsrc12=ame_getsrc(self); int fail12=0;
 ame_setsrc(self,BGET(autovar_12)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=CALL(anything,0 ); FAILTEST(pass12);
  BSET(autovar_13,it); int oldpos15=ame_getpos(self); int oldlen13=ame_getlen(self); VALUE oldsrc13=ame_getsrc(self); int fail13=0;
@@ -365,7 +366,7 @@ ame_setsrc(self,BGET(autovar_13)); ame_setpos(self,0); ame_setlen(self,FIX2INT(r
 	pass11: fail11=1;
 	success11: ame_setsrc(self,oldsrc11); ame_setpos(self,oldpos13); ame_setlen(self,oldlen11);
 	if(fail11) goto alt1_8;
-it=CALL(visit_Dataflowcb_26,1,bind); 
+it=CALL(visit_Dataflowcb_30,1,bind); 
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
   alt1_8:  ame_setpos(self,oldpos1); goto fail;

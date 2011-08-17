@@ -38,13 +38,16 @@ class Dataflow < Traverser
     end
 	end
 	def or_end(join)
-    ssanums.clone.each{|k,v|
+	puts self.inspect
+	puts ssanums.inspect
+   ssanums.clone.each{|k,v|
       u=[]
       join.each{|s| u<<s[k]}
-      u=u.uniq
-      if u.size>1
-        n=newssanum(k)
-        u.each{|v| edges.add([k[0],v],n)}
+			puts k.inspect
+			puts u.inspect
+      if u.uniq.size>1
+        n=newssanum(k.clone)
+        u.each{|v| edges.add([k,v],n)}
       end
     }
 	end
@@ -188,61 +191,73 @@ def visit_Dataflowcb_1(bind)
 Apply
 end
 def visit_Dataflowcb_10(bind)
-Many
+bind[:join_1]<<oldssanums.clone
 end
 def visit_Dataflowcb_11(bind)
-@src.self
+@x;or_end(bind[:join_1])
 end
 def visit_Dataflowcb_12(bind)
-Pass
-end
-def visit_Dataflowcb_13(bind)
-@marked<<ssanum(@src.var)
-end
-def visit_Dataflowcb_14(bind)
 @src.self
 end
+def visit_Dataflowcb_13(bind)
+Many
+end
+def visit_Dataflowcb_14(bind)
+@x;many_end(prev)
+end
 def visit_Dataflowcb_15(bind)
-Act
+@src.self
 end
 def visit_Dataflowcb_16(bind)
-@marked<<bind[:this_1] if @src.pred
+Pass
 end
 def visit_Dataflowcb_17(bind)
-@src.ary
+@marked<<ssanum(@src.var)
 end
 def visit_Dataflowcb_18(bind)
-bind[:autovar_8]=[bind[:autovar_8]]
+@src.self
 end
 def visit_Dataflowcb_19(bind)
-bind[:var_1].each{|v| edges.add(ssanum(v),bind[:this_1]); edges.add(bind[:this_1],newssanum(v.clone));}; bind[:this_1]
+Act
 end
 def visit_Dataflowcb_2(bind)
 @src.self
 end
 def visit_Dataflowcb_20(bind)
-Set
+@marked<<bind[:this_1] if @src.pred
 end
 def visit_Dataflowcb_21(bind)
-set_end(@src.self) 
+@src.ary
 end
 def visit_Dataflowcb_22(bind)
-@src.self
+bind[:autovar_8]=[bind[:autovar_8]]
 end
 def visit_Dataflowcb_23(bind)
-Result
+bind[:var_1].each{|v| edges.add(ssanum(v),bind[:this_1]); edges.add(bind[:this_1],newssanum(v.clone));}; bind[:this_1]
 end
 def visit_Dataflowcb_24(bind)
-@src.vars
+Set
 end
 def visit_Dataflowcb_25(bind)
-bind[:autovar_12]=[bind[:autovar_12]]
+set_end(@src.self) 
 end
 def visit_Dataflowcb_26(bind)
-bind[:var_1].each{|w| @edges.add(ssanum(w),bind[:this_1]) } ; bind[:this_1]
+@src.self
+end
+def visit_Dataflowcb_27(bind)
+Result
+end
+def visit_Dataflowcb_28(bind)
+@src.vars
+end
+def visit_Dataflowcb_29(bind)
+bind[:autovar_12]=[bind[:autovar_12]]
 end
 def visit_Dataflowcb_3(bind)
 bind[:autovar_2]=[bind[:autovar_2]]
+end
+def visit_Dataflowcb_30(bind)
+bind[:var_1].each{|w| @edges.add(ssanum(w),bind[:this_1]) } ; bind[:this_1]
 end
 def visit_Dataflowcb_4(bind)
 bind[:var_1].each{|v| @marked<<ssanum(v)}
@@ -254,13 +269,13 @@ def visit_Dataflowcb_6(bind)
 Or
 end
 def visit_Dataflowcb_7(bind)
-oldssanums.clone
+[]
 end
 def visit_Dataflowcb_8(bind)
-@oldssanums=bind[:old_1].clone
+oldssanums.clone
 end
 def visit_Dataflowcb_9(bind)
-@src.self
+@oldssanums=bind[:old_1].clone
 end
 
 end

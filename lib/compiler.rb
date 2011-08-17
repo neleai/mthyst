@@ -8,7 +8,7 @@ class Gram
 		}
 	end
 	def opt(r)
-      debug=false
+      debug=true
 			pipeline=[Seq_Or_Optimizer,Move_Assignments2,Seq_Or_Optimizer,
 			Communize_Or3,Seq_Or_Optimizer,
 			Dead_Code_Detector2,Dead_Code_Deleter2,Seq_Or_Optimizer]
@@ -16,10 +16,12 @@ class Gram
 	      puts r.inspect if debug
       	r=o.new.parse(:root,r)
 			}
-		puts r.inspect
-		puts r=CloneLocals.new.parse(:root,r)
-		puts r=Dataflow.new.parse(:root,r)
-		puts r.inspect
+		 [CloneLocals, Dataflow, 
+			Dead_Code_Deleter3
+].each{|o|
+#			r=o.new.parse(:root,r)
+			puts r.inspect
+		}
     @rules[r.name]=r 
 	end
 	def getrule(from)
@@ -94,13 +96,13 @@ end
 	end
 end	
 Compiler::init
-if true
-require 'compiled/amethyst'
-require 'compiled/parser'
+["amethyst","parser"].each{|opt|
+if false
+require "compiled/#{opt}"
 else
-require 'c/amethyst'
-require 'c/parser'
+require "c/#{opt}"
 end
+}
 ["optimizer_null","optimizer_and_or","detect_variables2","dead_code_elimination","traverser","ctranslator2"].each{|opt|
 	require "c/#{opt}"
 }
