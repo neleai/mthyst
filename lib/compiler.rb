@@ -20,7 +20,7 @@ class Gram
 			Dead_Code_Deleter3,Seq_Or_Optimizer
 ].each{|o|
 			r=o.new.parse(:root,r)
-			puts r.inspect
+		#	puts r.inspect
 		}
     @rules[r.name]=r 
 	end
@@ -96,12 +96,12 @@ end
 	end
 end	
 Compiler::init
-["amethyst","parser","traverser"].each{|opt|
+["amethyst","parser","traverser","ctranslator2"].each{|opt|
 require "compiled/#{opt}"
 }
 
 
-["optimizer_null","optimizer_and_or","detect_variables2","dead_code_elimination","ctranslator2"].each{|opt|
+["optimizer_null","optimizer_and_or","detect_variables2","dead_code_elimination"].each{|opt|
 	require "c/#{opt}"
 }
 

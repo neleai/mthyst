@@ -294,7 +294,7 @@ def root_Dead_Code_Deleter3cb_4(bind)
 @reachable=@src.reachable
 end
 def root_Dead_Code_Deleter3cb_5(bind)
-@src.reachable=nil
+@src.reachable=nil;@src.cfg=nil
 end
 def root_Dead_Code_Deleter3cb_6(bind)
 @src.self

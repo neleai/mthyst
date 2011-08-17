@@ -85,7 +85,7 @@ amethyst Dataflow < Traverser {
 }
 
 amethyst Dead_Code_Deleter3 < Traverser{
-		root = @self=>Rule[ {@@reachable=@reachable} traverse {@reachable=nil} @self]
+		root = @self=>Rule[ {@@reachable=@reachable} traverse {@reachable=nil;@cfg=nil} @self]
 
 		visit = Act[@self:this .*] -> @@reachable[this] ? this : Act[]
 					| Set[traverse @expr:expr @self:this] -> @@reachable[this] ? this : expr
