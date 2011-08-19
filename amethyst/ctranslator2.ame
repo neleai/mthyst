@@ -34,6 +34,9 @@ class AmethystCTranslator < Amethyst
 		@ruletable={}
 		r.each{|e| @ruletable[e.name]=e}
 	end
+	def callrule(name,args)
+		"CALL(#{name},#{args})"
+	end
 end
 
 amethyst AmethystCTranslator < Amethyst {
@@ -74,7 +77,7 @@ failobj=rb_eval_string(\"FAIL\");
 				| Act[ .*:{addcallback(@pred ? ["(",it,") || FAIL"] : it)}:cbno {"it=CALL(#{cbno},1,bind); #{@pred ? "FAILTEST(#{@@faillabel});" :"" }"} ]
 				| Apply[ .=>["super"] {rule=@@ruletable[@@rulename];  failwrap(map_index(rule.args){|i|"vals[#{i}]=#{bget(rule.args[i].desc)};"}*""+ "it=rb_call_super(#{rule.args.size},vals);")} ]
 				| Apply[:name (.:{addcallback(it)}*):args 
-            failwrap(" #{map_index(args){|a|"arg#{a}=CALL(#{args[a]},1,bind);"}} it=CALL(#{name},#{args.size} #{map_index(args){|a|",arg#{a}"}});")]
+            failwrap(" #{map_index(args){|a|"arg#{a}=CALL(#{args[a]},1,bind);"}} it=#{callrule(name,"#{args.size} #{map_index(args){|a|",arg#{a}"}}")};")]
 				| Seq[ trans*:t {t*""} ]
 				| Bind[ @expr=>trans:e {"#{e}\n #{bset(@name.desc,"it")}; " } ]
 				| Or[ {label("accept")}:accept {@@faillabel}:fail {label("oldpos")}:oldpos label("alt"):alt {0}:altno

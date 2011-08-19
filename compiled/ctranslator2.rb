@@ -34,6 +34,9 @@ class AmethystCTranslator < Amethyst
 		@ruletable={}
 		r.each{|e| @ruletable[e.name]=e}
 	end
+	def callrule(name,args)
+		"CALL(#{name},#{args})"
+	end
 end
 
 class AmethystCTranslator < Amethyst
@@ -405,7 +408,7 @@ def trans_AmethystCTranslatorcb_38(bind)
 _append(bind[:autovar_15],bind[:autovar_16])
 end
 def trans_AmethystCTranslatorcb_39(bind)
-" #{map_index(bind[:args_1]){|a|"arg#{a}=CALL(#{bind[:args_1][a]},1,bind);"}} it=CALL(#{bind[:name_1]},#{bind[:args_1].size} #{map_index(bind[:args_1]){|a|",arg#{a}"}});"
+" #{map_index(bind[:args_1]){|a|"arg#{a}=CALL(#{bind[:args_1][a]},1,bind);"}} it=#{callrule(bind[:name_1],"#{bind[:args_1].size} #{map_index(bind[:args_1]){|a|",arg#{a}"}}")};"
 end
 def trans_AmethystCTranslatorcb_4(bind)
 @lambdas=[]

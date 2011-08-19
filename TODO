@@ -32,3 +32,5 @@ initialize parse by Pass
 directly call istead rb_funcall
 
 switch and predication by constant propagation
+
+treat super like renamed rule
