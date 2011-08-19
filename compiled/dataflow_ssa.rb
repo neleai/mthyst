@@ -187,85 +187,82 @@ def traverse_item_Dataflowcb_6(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def vars_in_Dataflowcb_1(bind)
-[]
-end
-def vars_in_Dataflowcb_10(bind)
-Key
-end
-def vars_in_Dataflowcb_11(bind)
-@src.self
-end
-def vars_in_Dataflowcb_12(bind)
-_append(bind[:ary_1],bind[:autovar_6])
-end
-def vars_in_Dataflowcb_13(bind)
-@marked<<@src.self
-end
-def vars_in_Dataflowcb_14(bind)
-Result
-end
-def vars_in_Dataflowcb_15(bind)
-@src.self
-end
-def vars_in_Dataflowcb_16(bind)
-_append(bind[:ary_1],bind[:autovar_8])
-end
-def vars_in_Dataflowcb_17(bind)
-Strin
-end
-def vars_in_Dataflowcb_18(bind)
-_append(bind[:ary_1],bind[:autovar_10])
-end
-def vars_in_Dataflowcb_19(bind)
-Args
-end
-def vars_in_Dataflowcb_2(bind)
 bind[:ary_1]=[]
 end
-def vars_in_Dataflowcb_20(bind)
-_append(bind[:ary_1],bind[:autovar_12])
-end
-def vars_in_Dataflowcb_21(bind)
-Bind
-end
-def vars_in_Dataflowcb_22(bind)
-@src.name
-end
-def vars_in_Dataflowcb_23(bind)
-bind[:autovar_14]=[bind[:autovar_14]]
-end
-def vars_in_Dataflowcb_24(bind)
-_append(bind[:ary_1],bind[:autovar_15])
-end
-def vars_in_Dataflowcb_25(bind)
-Local
-end
-def vars_in_Dataflowcb_26(bind)
+def vars_in_Dataflowcb_10(bind)
 @src.self
 end
-def vars_in_Dataflowcb_27(bind)
+def vars_in_Dataflowcb_11(bind)
+_append(bind[:ary_1],bind[:autovar_6])
+end
+def vars_in_Dataflowcb_12(bind)
+@marked<<@src.self
+end
+def vars_in_Dataflowcb_13(bind)
+Result
+end
+def vars_in_Dataflowcb_14(bind)
+@src.self
+end
+def vars_in_Dataflowcb_15(bind)
+_append(bind[:ary_1],bind[:autovar_8])
+end
+def vars_in_Dataflowcb_16(bind)
+Strin
+end
+def vars_in_Dataflowcb_17(bind)
+_append(bind[:ary_1],bind[:autovar_10])
+end
+def vars_in_Dataflowcb_18(bind)
+Args
+end
+def vars_in_Dataflowcb_19(bind)
+_append(bind[:ary_1],bind[:autovar_12])
+end
+def vars_in_Dataflowcb_2(bind)
+Global
+end
+def vars_in_Dataflowcb_20(bind)
+Bind
+end
+def vars_in_Dataflowcb_21(bind)
+@src.name
+end
+def vars_in_Dataflowcb_22(bind)
+bind[:autovar_14]=[bind[:autovar_14]]
+end
+def vars_in_Dataflowcb_23(bind)
+_append(bind[:ary_1],bind[:autovar_15])
+end
+def vars_in_Dataflowcb_24(bind)
+Local
+end
+def vars_in_Dataflowcb_25(bind)
+@src.self
+end
+def vars_in_Dataflowcb_26(bind)
 _append(bind[:ary_1],bind[:autovar_17])
 end
 def vars_in_Dataflowcb_3(bind)
-Global
+@src.self
 end
 def vars_in_Dataflowcb_4(bind)
-@src.self
-end
-def vars_in_Dataflowcb_5(bind)
 _append(bind[:ary_1],bind[:autovar_2])
 end
-def vars_in_Dataflowcb_6(bind)
+def vars_in_Dataflowcb_5(bind)
 @marked<<@src.self
 end
-def vars_in_Dataflowcb_7(bind)
+def vars_in_Dataflowcb_6(bind)
 Act
 end
-def vars_in_Dataflowcb_8(bind)
+def vars_in_Dataflowcb_7(bind)
 @src.self
 end
-def vars_in_Dataflowcb_9(bind)
+def vars_in_Dataflowcb_8(bind)
 _append(bind[:ary_1],bind[:autovar_4])
+end
+def vars_in_Dataflowcb_9(bind)
+Key
 end
 def visit_Dataflowcb_1(bind)
 Apply

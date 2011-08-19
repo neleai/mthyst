@@ -41,7 +41,7 @@ return it;
 fail: return failobj; }
 VALUE Renamer2_traverse(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=rb_ary_new3(0);int oldpos1; while(1){oldpos1=ame_getpos(self);   it=CALL(anything,0 ); FAILTEST(break1); if (IGET(stop)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos1); it=CALL(traverse_Renamer2cb_1,1,bind); 
+it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);int oldpos1; while(1){oldpos1=ame_getpos(self);   it=CALL(anything,0 ); FAILTEST(break1); if (IGET(stop)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos1); it=CALL(traverse_Renamer2cb_1,1,bind); 
  BSET(this_1,it); it=CALL(traverse_Renamer2cb_2,1,bind); 
  BSET(autovar_1,it); it=CALL(traverse_Renamer2cb_3,1,bind); int oldpos2=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,BGET(autovar_1)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
@@ -77,7 +77,7 @@ return it;
 fail: return failobj; }
 VALUE Renamer2_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-int oldpos1=ame_getpos(self);
+it=rb_ary_new3(0);int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=Renamer2_visit(self ); FAILTEST(alt1_2);
  BSET(a_1,it); it=CALL(traverse_item_Renamer2cb_1,1,bind); it=BGET(a_1);
@@ -188,7 +188,7 @@ return it;
 fail: return failobj; }
 VALUE DetectCalls_traverse(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=rb_ary_new3(0);int oldpos1; while(1){oldpos1=ame_getpos(self);   it=CALL(anything,0 ); FAILTEST(break1); if (IGET(stop)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos1); it=CALL(traverse_DetectCallscb_1,1,bind); 
+it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);int oldpos1; while(1){oldpos1=ame_getpos(self);   it=CALL(anything,0 ); FAILTEST(break1); if (IGET(stop)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos1); it=CALL(traverse_DetectCallscb_1,1,bind); 
  BSET(this_1,it); it=CALL(traverse_DetectCallscb_2,1,bind); 
  BSET(autovar_1,it); it=CALL(traverse_DetectCallscb_3,1,bind); int oldpos2=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,BGET(autovar_1)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
@@ -224,7 +224,7 @@ return it;
 fail: return failobj; }
 VALUE DetectCalls_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-int oldpos1=ame_getpos(self);
+it=rb_ary_new3(0);int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=DetectCalls_visit(self ); FAILTEST(alt1_2);
  BSET(a_1,it); it=CALL(traverse_item_DetectCallscb_1,1,bind); it=BGET(a_1);
@@ -275,7 +275,7 @@ return it;
 fail: return failobj; }
 VALUE DetectCalls_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=CALL(visit_DetectCallscb_1,1,bind); 
+it=rb_ary_new3(0);it=CALL(visit_DetectCallscb_1,1,bind); 
  BSET(cls_1,it);   it=CALL(anything,0 ); FAILTEST(fail);
  BSET(i_1,it); it=CALL(visit_DetectCallscb_2,1,bind); FAILTEST(fail);it=BGET(i_1);
  BSET(_result_1,it); it=BGET(_result_1);
@@ -373,7 +373,7 @@ return it;
 fail: return failobj; }
 VALUE Inliner2_traverse(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=rb_ary_new3(0);int oldpos1; while(1){oldpos1=ame_getpos(self);   it=CALL(anything,0 ); FAILTEST(break1); if (IGET(stop)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos1); it=CALL(traverse_Inliner2cb_1,1,bind); 
+it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);int oldpos1; while(1){oldpos1=ame_getpos(self);   it=CALL(anything,0 ); FAILTEST(break1); if (IGET(stop)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos1); it=CALL(traverse_Inliner2cb_1,1,bind); 
  BSET(this_1,it); it=CALL(traverse_Inliner2cb_2,1,bind); 
  BSET(autovar_1,it); it=CALL(traverse_Inliner2cb_3,1,bind); int oldpos2=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,BGET(autovar_1)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
@@ -409,7 +409,7 @@ return it;
 fail: return failobj; }
 VALUE Inliner2_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-int oldpos1=ame_getpos(self);
+it=rb_ary_new3(0);int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=Inliner2_visit(self ); FAILTEST(alt1_2);
  BSET(a_1,it); it=CALL(traverse_item_Inliner2cb_1,1,bind); it=BGET(a_1);
@@ -460,7 +460,7 @@ return it;
 fail: return failobj; }
 VALUE Inliner2_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=CALL(visit_Inliner2cb_1,1,bind); 
+it=rb_ary_new3(0);it=CALL(visit_Inliner2cb_1,1,bind); 
  BSET(cls_1,it);   it=CALL(anything,0 ); FAILTEST(fail);
  BSET(i_1,it); it=CALL(visit_Inliner2cb_2,1,bind); FAILTEST(fail);it=BGET(i_1);
  BSET(_result_1,it); it=BGET(_result_1);

@@ -108,7 +108,9 @@ end
 class <<Act
 	def [](expr=nil,pred=nil)
 	puts expr.inspect
-		return CAct["rb_ary_new3(0)"] if expr=="[]" 
+		exp=expr
+		exp=exp[0] if exp.is_a?(Args) && exp.size==1
+		return CAct["rb_ary_new3(0)"] if exp=="[]" 
 		return Act.create({:pred=>pred}) if expr==nil
 		Act.create(expr,{:pred=>pred})
 	end

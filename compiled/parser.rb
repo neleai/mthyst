@@ -43,21 +43,18 @@ def _args_AmethystParsercb_3(bind)
 Args[{:ary=>([bind[:o_1]]+bind[:r_1]+[bind[:c_1]])}]
 end
 def addargs_AmethystParsercb_1(bind)
-[]
-end
-def addargs_AmethystParsercb_2(bind)
 Args
 end
-def addargs_AmethystParsercb_3(bind)
+def addargs_AmethystParsercb_2(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
-def addargs_AmethystParsercb_4(bind)
+def addargs_AmethystParsercb_3(bind)
 _Local(bind[:name_1]) 
 end
-def addargs_AmethystParsercb_5(bind)
+def addargs_AmethystParsercb_4(bind)
 _append(bind[:result_1],bind[:autovar_2])
 end
-def addargs_AmethystParsercb_6(bind)
+def addargs_AmethystParsercb_5(bind)
 bind[:result_1] || []
 end
 def application_AmethystParsercb_1(bind)
@@ -112,12 +109,9 @@ def choice_AmethystParsercb_1(bind)
 "|"
 end
 def choice_AmethystParsercb_10(bind)
-_append(bind[:f_1],bind[:autovar_4])
-end
-def choice_AmethystParsercb_11(bind)
 []
 end
-def choice_AmethystParsercb_12(bind)
+def choice_AmethystParsercb_11(bind)
 Or.create( {:ary=>bind[:ary_1] })
 end
 def choice_AmethystParsercb_2(bind)
@@ -127,45 +121,42 @@ def choice_AmethystParsercb_3(bind)
 'sequence'
 end
 def choice_AmethystParsercb_4(bind)
-[]
+bind[:rule_1]
 end
 def choice_AmethystParsercb_5(bind)
-bind[:rule_1]
-end
-def choice_AmethystParsercb_6(bind)
 _append(bind[:f_1],bind[:autovar_1])
 end
-def choice_AmethystParsercb_7(bind)
+def choice_AmethystParsercb_6(bind)
 bind[:delim_1]
 end
-def choice_AmethystParsercb_8(bind)
+def choice_AmethystParsercb_7(bind)
 bind[:rule_1]
 end
-def choice_AmethystParsercb_9(bind)
+def choice_AmethystParsercb_8(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
+end
+def choice_AmethystParsercb_9(bind)
+_append(bind[:f_1],bind[:autovar_4])
 end
 def clas_AmethystParsercb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def className_AmethystParsercb_1(bind)
-[]
-end
-def className_AmethystParsercb_2(bind)
 ""
 end
-def className_AmethystParsercb_3(bind)
+def className_AmethystParsercb_2(bind)
 bind[:s_1]
 end
-def className_AmethystParsercb_4(bind)
+def className_AmethystParsercb_3(bind)
 _append(bind[:autovar_1],bind[:autovar_2])
 end
-def className_AmethystParsercb_5(bind)
+def className_AmethystParsercb_4(bind)
 _append(bind[:autovar_3],bind[:autovar_4])
 end
-def className_AmethystParsercb_6(bind)
+def className_AmethystParsercb_5(bind)
 _append(bind[:autovar_1],bind[:autovar_5])
 end
-def className_AmethystParsercb_7(bind)
+def className_AmethystParsercb_6(bind)
 leterize(bind[:it_1]*"")
 end
 def collect_AmethystParsercb_1(bind)
@@ -238,27 +229,21 @@ def grammar_AmethystParsercb_9(bind)
 "}"
 end
 def igrammar_AmethystParsercb_1(bind)
-[]
+"amethyst"
 end
 def igrammar_AmethystParsercb_2(bind)
-[]
+_append(bind[:autovar_1],bind[:autovar_3])
 end
 def igrammar_AmethystParsercb_3(bind)
 "amethyst"
 end
 def igrammar_AmethystParsercb_4(bind)
-_append(bind[:autovar_1],bind[:autovar_3])
-end
-def igrammar_AmethystParsercb_5(bind)
-"amethyst"
-end
-def igrammar_AmethystParsercb_6(bind)
 _append(bind[:autovar_1],bind[:autovar_4])
 end
-def igrammar_AmethystParsercb_7(bind)
+def igrammar_AmethystParsercb_5(bind)
 bind[:it_1]*""
 end
-def igrammar_AmethystParsercb_8(bind)
+def igrammar_AmethystParsercb_6(bind)
 _append(bind[:autovar_2],bind[:autovar_5])
 end
 def inlineHostExpr_AmethystParsercb_1(bind)
@@ -298,27 +283,24 @@ def key_AmethystParsercb_9(bind)
 bind[:s_1]
 end
 def listOf_AmethystParsercb_1(bind)
-[]
+bind[:rule_1]
 end
 def listOf_AmethystParsercb_2(bind)
-bind[:rule_1]
-end
-def listOf_AmethystParsercb_3(bind)
 _append(bind[:f_1],bind[:autovar_1])
 end
-def listOf_AmethystParsercb_4(bind)
+def listOf_AmethystParsercb_3(bind)
 bind[:delim_1]
 end
-def listOf_AmethystParsercb_5(bind)
+def listOf_AmethystParsercb_4(bind)
 bind[:rule_1]
 end
-def listOf_AmethystParsercb_6(bind)
+def listOf_AmethystParsercb_5(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
 end
-def listOf_AmethystParsercb_7(bind)
+def listOf_AmethystParsercb_6(bind)
 _append(bind[:f_1],bind[:autovar_4])
 end
-def listOf_AmethystParsercb_8(bind)
+def listOf_AmethystParsercb_7(bind)
 []
 end
 def lower_AmethystParsercb_1(bind)
@@ -346,24 +328,21 @@ def nameFirst_AmethystParsercb_1(bind)
 "_"
 end
 def name_AmethystParsercb_1(bind)
-[]
-end
-def name_AmethystParsercb_2(bind)
 ""
 end
-def name_AmethystParsercb_3(bind)
+def name_AmethystParsercb_2(bind)
 bind[:s_1]
 end
-def name_AmethystParsercb_4(bind)
+def name_AmethystParsercb_3(bind)
 _append(bind[:autovar_1],bind[:autovar_2])
 end
-def name_AmethystParsercb_5(bind)
+def name_AmethystParsercb_4(bind)
 _append(bind[:autovar_3],bind[:autovar_4])
 end
-def name_AmethystParsercb_6(bind)
+def name_AmethystParsercb_5(bind)
 _append(bind[:autovar_1],bind[:autovar_5])
 end
-def name_AmethystParsercb_7(bind)
+def name_AmethystParsercb_6(bind)
 leterize(bind[:it_1]*"")
 end
 def nr_AmethystParsercb_1(bind)
@@ -538,100 +517,94 @@ def regch_AmethystParsercb_1(bind)
 (bind[:regex_1].match(bind[:c_1])) || FAIL
 end
 def rubyarg_AmethystParsercb_1(bind)
-[]
+"`"
 end
 def rubyarg_AmethystParsercb_10(bind)
-'{'
+"\""
 end
 def rubyarg_AmethystParsercb_11(bind)
-'}'
+_append(bind[:s_1],bind[:autovar_1])
 end
 def rubyarg_AmethystParsercb_12(bind)
 "\""
 end
 def rubyarg_AmethystParsercb_13(bind)
-_append(bind[:s_1],bind[:autovar_1])
-end
-def rubyarg_AmethystParsercb_14(bind)
-"\""
-end
-def rubyarg_AmethystParsercb_15(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
 end
-def rubyarg_AmethystParsercb_16(bind)
+def rubyarg_AmethystParsercb_14(bind)
 _append(bind[:s_1],bind[:autovar_4])
 end
-def rubyarg_AmethystParsercb_17(bind)
+def rubyarg_AmethystParsercb_15(bind)
 Strin[connectstring(bind[:s_1])]
+end
+def rubyarg_AmethystParsercb_16(bind)
+"\'"
+end
+def rubyarg_AmethystParsercb_17(bind)
+_append(bind[:s_1],bind[:autovar_5])
 end
 def rubyarg_AmethystParsercb_18(bind)
 "\'"
 end
 def rubyarg_AmethystParsercb_19(bind)
-_append(bind[:s_1],bind[:autovar_5])
-end
-def rubyarg_AmethystParsercb_2(bind)
-[]
-end
-def rubyarg_AmethystParsercb_20(bind)
-"\'"
-end
-def rubyarg_AmethystParsercb_21(bind)
 _append(bind[:autovar_6],bind[:autovar_7])
 end
-def rubyarg_AmethystParsercb_22(bind)
-_append(bind[:s_1],bind[:autovar_8])
-end
-def rubyarg_AmethystParsercb_23(bind)
-Strin[connectstring(bind[:s_1])]
-end
-def rubyarg_AmethystParsercb_24(bind)
-"..."
-end
-def rubyarg_AmethystParsercb_25(bind)
-".."
-end
-def rubyarg_AmethystParsercb_26(bind)
-":@"
-end
-def rubyarg_AmethystParsercb_27(bind)
-bind[:s_2]
-end
-def rubyarg_AmethystParsercb_28(bind)
-/[$.:]/
-end
-def rubyarg_AmethystParsercb_29(bind)
-(bind[:regex_1].match(bind[:c_1])) || FAIL
-end
-def rubyarg_AmethystParsercb_3(bind)
+def rubyarg_AmethystParsercb_2(bind)
 "`"
 end
-def rubyarg_AmethystParsercb_30(bind)
+def rubyarg_AmethystParsercb_20(bind)
+_append(bind[:s_1],bind[:autovar_8])
+end
+def rubyarg_AmethystParsercb_21(bind)
+Strin[connectstring(bind[:s_1])]
+end
+def rubyarg_AmethystParsercb_22(bind)
+"..."
+end
+def rubyarg_AmethystParsercb_23(bind)
+".."
+end
+def rubyarg_AmethystParsercb_24(bind)
+":@"
+end
+def rubyarg_AmethystParsercb_25(bind)
+bind[:s_2]
+end
+def rubyarg_AmethystParsercb_26(bind)
+/[$.:]/
+end
+def rubyarg_AmethystParsercb_27(bind)
+(bind[:regex_1].match(bind[:c_1])) || FAIL
+end
+def rubyarg_AmethystParsercb_28(bind)
 _append(bind[:n_1],bind[:autovar_9])
 end
-def rubyarg_AmethystParsercb_31(bind)
+def rubyarg_AmethystParsercb_29(bind)
 /[^`{}()'"\[\]]/
 end
-def rubyarg_AmethystParsercb_32(bind)
+def rubyarg_AmethystParsercb_3(bind)
+Exp[_body(bind[:e_1])]
+end
+def rubyarg_AmethystParsercb_30(bind)
 (bind[:regex_1].match(bind[:c_1])) || FAIL
 end
 def rubyarg_AmethystParsercb_4(bind)
-"`"
-end
-def rubyarg_AmethystParsercb_5(bind)
-Exp[_body(bind[:e_1])]
-end
-def rubyarg_AmethystParsercb_6(bind)
 '('
 end
-def rubyarg_AmethystParsercb_7(bind)
+def rubyarg_AmethystParsercb_5(bind)
 ')'
 end
-def rubyarg_AmethystParsercb_8(bind)
+def rubyarg_AmethystParsercb_6(bind)
 '['
 end
-def rubyarg_AmethystParsercb_9(bind)
+def rubyarg_AmethystParsercb_7(bind)
 ']'
+end
+def rubyarg_AmethystParsercb_8(bind)
+'{'
+end
+def rubyarg_AmethystParsercb_9(bind)
+'}'
 end
 def rule_AmethystParsercb_1(bind)
 @locals=[];$appends=[];@bnding=Bnding[]
@@ -667,12 +640,9 @@ def ruleargs_AmethystParsercb_3(bind)
 bind[:autovar_1]=[bind[:autovar_1]]
 end
 def sequence_AmethystParsercb_1(bind)
-[]
-end
-def sequence_AmethystParsercb_2(bind)
 _append(bind[:autovar_1],bind[:autovar_2])
 end
-def sequence_AmethystParsercb_3(bind)
+def sequence_AmethystParsercb_2(bind)
 Seq.create( {:ary=>bind[:ary_1] })
 end
 def space_AmethystParsercb_1(bind)
@@ -691,130 +661,124 @@ def spaces_AmethystParsercb_3(bind)
 _append(bind[:autovar_1],bind[:autovar_2])
 end
 def term_AmethystParsercb_1(bind)
-[]
+Apply["clas",bind[:cls_1]]
 end
 def term_AmethystParsercb_10(bind)
-"break"
-end
-def term_AmethystParsercb_11(bind)
-bind[:s_2]
-end
-def term_AmethystParsercb_12(bind)
 Seq[Cut[],Stop[]]
 end
-def term_AmethystParsercb_13(bind)
+def term_AmethystParsercb_11(bind)
 bind[:it_1].is_a?(Result) ? bind[:it_1] : Act[Args[bind[:it_1]]]
 end
-def term_AmethystParsercb_14(bind)
+def term_AmethystParsercb_12(bind)
 "->"
+end
+def term_AmethystParsercb_13(bind)
+bind[:s_2]
+end
+def term_AmethystParsercb_14(bind)
+""
 end
 def term_AmethystParsercb_15(bind)
 bind[:s_2]
 end
 def term_AmethystParsercb_16(bind)
-""
+Act[bind[:x_1]]
 end
 def term_AmethystParsercb_17(bind)
-bind[:s_2]
+"\""
 end
 def term_AmethystParsercb_18(bind)
-Act[bind[:x_1]]
+bind[:s_2]
 end
 def term_AmethystParsercb_19(bind)
 "\""
 end
 def term_AmethystParsercb_2(bind)
-[]
+"nested"
 end
 def term_AmethystParsercb_20(bind)
-bind[:s_2]
-end
-def term_AmethystParsercb_21(bind)
-"\""
-end
-def term_AmethystParsercb_22(bind)
 _append(bind[:s_1],bind[:autovar_1])
 end
-def term_AmethystParsercb_23(bind)
+def term_AmethystParsercb_21(bind)
 Apply["token" ,quote(bind[:s_1])]
 end
-def term_AmethystParsercb_24(bind)
+def term_AmethystParsercb_22(bind)
 "'"
 end
-def term_AmethystParsercb_25(bind)
+def term_AmethystParsercb_23(bind)
 bind[:s_2]
 end
-def term_AmethystParsercb_26(bind)
+def term_AmethystParsercb_24(bind)
 "\'"
 end
-def term_AmethystParsercb_27(bind)
+def term_AmethystParsercb_25(bind)
 _append(bind[:s_1],bind[:autovar_2])
 end
-def term_AmethystParsercb_28(bind)
+def term_AmethystParsercb_26(bind)
 Apply["seq"   ,quote(bind[:s_1])]
 end
-def term_AmethystParsercb_29(bind)
+def term_AmethystParsercb_27(bind)
 Apply["exactly",bind[:it_1]]
 end
+def term_AmethystParsercb_28(bind)
+"<"
+end
+def term_AmethystParsercb_29(bind)
+bind[:s_2]
+end
 def term_AmethystParsercb_3(bind)
-Apply["clas",bind[:cls_1]]
+bind[:s_2]
 end
 def term_AmethystParsercb_30(bind)
-"<"
+">"
 end
 def term_AmethystParsercb_31(bind)
 bind[:s_2]
 end
 def term_AmethystParsercb_32(bind)
-">"
-end
-def term_AmethystParsercb_33(bind)
-bind[:s_2]
-end
-def term_AmethystParsercb_34(bind)
 _append(bind[:x_1],bind[:autovar_3])
 end
-def term_AmethystParsercb_35(bind)
+def term_AmethystParsercb_33(bind)
 Apply["regch","/[#{bind[:x_1]}]/"]
 end
-def term_AmethystParsercb_36(bind)
+def term_AmethystParsercb_34(bind)
 "("
+end
+def term_AmethystParsercb_35(bind)
+bind[:s_2]
+end
+def term_AmethystParsercb_36(bind)
+")"
 end
 def term_AmethystParsercb_37(bind)
 bind[:s_2]
 end
 def term_AmethystParsercb_38(bind)
-")"
-end
-def term_AmethystParsercb_39(bind)
-bind[:s_2]
-end
-def term_AmethystParsercb_4(bind)
-"nested"
-end
-def term_AmethystParsercb_40(bind)
 "[]"
 end
-def term_AmethystParsercb_41(bind)
+def term_AmethystParsercb_39(bind)
 bind[:x_1]
 end
-def term_AmethystParsercb_42(bind)
+def term_AmethystParsercb_4(bind)
+"("
+end
+def term_AmethystParsercb_40(bind)
 a=autovar; Seq[Or[{:ary=>bind[:ors_1].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],PureAct[a]]
 end
 def term_AmethystParsercb_5(bind)
-bind[:s_2]
-end
-def term_AmethystParsercb_6(bind)
-"("
-end
-def term_AmethystParsercb_7(bind)
 ")"
 end
-def term_AmethystParsercb_8(bind)
+def term_AmethystParsercb_6(bind)
 bind[:s_2]
 end
-def term_AmethystParsercb_9(bind)
+def term_AmethystParsercb_7(bind)
 Nested[bind[:expr_1]]
+end
+def term_AmethystParsercb_8(bind)
+"break"
+end
+def term_AmethystParsercb_9(bind)
+bind[:s_2]
 end
 def token_AmethystParsercb_1(bind)
 bind[:s_1]

@@ -89,21 +89,15 @@ def itrans_AmethystCTranslatorcb_3(bind)
 []
 end
 def itrans_AmethystCTranslatorcb_4(bind)
-[]
-end
-def itrans_AmethystCTranslatorcb_5(bind)
-[]
-end
-def itrans_AmethystCTranslatorcb_6(bind)
 _append(bind[:ruby_1],bind[:autovar_2])
 end
-def itrans_AmethystCTranslatorcb_7(bind)
+def itrans_AmethystCTranslatorcb_5(bind)
 bind[:c_1]<<bind[:it_1][0];bind[:init_1]<<bind[:it_1][1];bind[:ruby_1]<<bind[:it_1][2]
 end
-def itrans_AmethystCTranslatorcb_8(bind)
+def itrans_AmethystCTranslatorcb_6(bind)
 _append(bind[:autovar_1],bind[:autovar_3])
 end
-def itrans_AmethystCTranslatorcb_9(bind)
+def itrans_AmethystCTranslatorcb_7(bind)
 [bind[:c_1],bind[:init_1],bind[:ruby_1]]
 end
 def rbcode_AmethystCTranslatorcb_1(bind)

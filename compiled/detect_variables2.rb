@@ -12,43 +12,37 @@ def flat_Analyze_Variables2cb_3(bind)
 _append(bind[:autovar_1],bind[:autovar_3])
 end
 def itrans_Analyze_Variables2cb_1(bind)
-[]
+Grammar
 end
 def itrans_Analyze_Variables2cb_10(bind)
-_append(bind[:autovar_1],bind[:autovar_7])
-end
-def itrans_Analyze_Variables2cb_11(bind)
-@src.rules=bind[:rules_1]
-end
-def itrans_Analyze_Variables2cb_12(bind)
 @src.self
 end
-def itrans_Analyze_Variables2cb_13(bind)
+def itrans_Analyze_Variables2cb_11(bind)
 _append(bind[:autovar_2],bind[:autovar_8])
 end
 def itrans_Analyze_Variables2cb_2(bind)
-[]
-end
-def itrans_Analyze_Variables2cb_3(bind)
-Grammar
-end
-def itrans_Analyze_Variables2cb_4(bind)
 
 end
-def itrans_Analyze_Variables2cb_5(bind)
+def itrans_Analyze_Variables2cb_3(bind)
 @src.rules
 end
-def itrans_Analyze_Variables2cb_6(bind)
+def itrans_Analyze_Variables2cb_4(bind)
 bind[:autovar_4]=[bind[:autovar_4]]
+end
+def itrans_Analyze_Variables2cb_5(bind)
+
+end
+def itrans_Analyze_Variables2cb_6(bind)
+Rule
 end
 def itrans_Analyze_Variables2cb_7(bind)
 
 end
 def itrans_Analyze_Variables2cb_8(bind)
-Rule
+_append(bind[:autovar_1],bind[:autovar_7])
 end
 def itrans_Analyze_Variables2cb_9(bind)
-
+@src.rules=bind[:rules_1]
 end
 def root_Analyze_Variables2cb_1(bind)
 @src.self
