@@ -34,3 +34,7 @@ directly call istead rb_funcall
 switch and predication by constant propagation
 
 treat super like renamed rule
+
+log times of compilation
+
+dont duplicate rules that dont refer to overwritten rule

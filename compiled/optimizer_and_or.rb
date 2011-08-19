@@ -1,4 +1,7 @@
 class AmethystOptimizer2 < AmethystOptimizer
+def clas_AmethystOptimizer2cb_1(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
 def trans_AmethystOptimizer2cb_1(bind)
 Or
 end
@@ -55,6 +58,45 @@ end
 
 
 class Seq_Or_Optimizer < Traverser
+def clas_Seq_Or_Optimizercb_1(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def traverse_Seq_Or_Optimizercb_1(bind)
+@src.self
+end
+def traverse_Seq_Or_Optimizercb_2(bind)
+(@src.self.instance_variables).map{|v| [v,@src.self.instance_variable_get(v)] }
+end
+def traverse_Seq_Or_Optimizercb_3(bind)
+bind[:autovar_1]=[bind[:autovar_1]]
+end
+def traverse_Seq_Or_Optimizercb_4(bind)
+bind[:this_1].instance_variable_set(bind[:key_1],bind[:it_1])
+end
+def traverse_Seq_Or_Optimizercb_5(bind)
+@src.self
+end
+def traverse_item_Seq_Or_Optimizercb_1(bind)
+@changed=true
+end
+def traverse_item_Seq_Or_Optimizercb_2(bind)
+Array
+end
+def traverse_item_Seq_Or_Optimizercb_3(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def traverse_item_Seq_Or_Optimizercb_4(bind)
+[]
+end
+def traverse_item_Seq_Or_Optimizercb_5(bind)
+_append(bind[:autovar_2],bind[:autovar_3])
+end
+def traverse_item_Seq_Or_Optimizercb_6(bind)
+AmethystAST
+end
+def traverse_item_Seq_Or_Optimizercb_7(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
 def visit_Seq_Or_Optimizercb_1(bind)
 Seq
 end

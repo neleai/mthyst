@@ -3,97 +3,88 @@ def arg_AmethystOptimizercb_1(bind)
 []
 end
 def arg_AmethystOptimizercb_10(bind)
-(bind[:c_1].is_a? String ) || FAIL
-end
-def arg_AmethystOptimizercb_11(bind)
-_append(bind[:autovar_5],bind[:autovar_6])
-end
-def arg_AmethystOptimizercb_12(bind)
 Strin.create( {:ary=>bind[:ary_1] })
 end
-def arg_AmethystOptimizercb_13(bind)
+def arg_AmethystOptimizercb_11(bind)
 Exp
 end
-def arg_AmethystOptimizercb_14(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def arg_AmethystOptimizercb_15(bind)
+def arg_AmethystOptimizercb_12(bind)
 _append(bind[:ary_1],bind[:autovar_8])
 end
-def arg_AmethystOptimizercb_16(bind)
+def arg_AmethystOptimizercb_13(bind)
 Exp.create( {:ary=>bind[:ary_1] })
 end
-def arg_AmethystOptimizercb_17(bind)
+def arg_AmethystOptimizercb_14(bind)
 Result
 end
+def arg_AmethystOptimizercb_15(bind)
+@src.name
+end
+def arg_AmethystOptimizercb_16(bind)
+@src.args
+end
+def arg_AmethystOptimizercb_17(bind)
+bind[:autovar_10]=[bind[:autovar_10]]
+end
 def arg_AmethystOptimizercb_18(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+@src.vars
 end
 def arg_AmethystOptimizercb_19(bind)
-@src.name
+bind[:autovar_11]=[bind[:autovar_11]]
 end
 def arg_AmethystOptimizercb_2(bind)
 Args
 end
 def arg_AmethystOptimizercb_20(bind)
-@src.args
-end
-def arg_AmethystOptimizercb_21(bind)
-bind[:autovar_10]=[bind[:autovar_10]]
-end
-def arg_AmethystOptimizercb_22(bind)
-@src.vars
-end
-def arg_AmethystOptimizercb_23(bind)
-bind[:autovar_11]=[bind[:autovar_11]]
-end
-def arg_AmethystOptimizercb_24(bind)
 Result.create( {:args=>bind[:args_1],:ary=>bind[:ary_1],:name=>bind[:name_1],:vars=>bind[:vars_1] })
 end
 def arg_AmethystOptimizercb_3(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+[]
 end
 def arg_AmethystOptimizercb_4(bind)
-[]
-end
-def arg_AmethystOptimizercb_5(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
 end
-def arg_AmethystOptimizercb_6(bind)
+def arg_AmethystOptimizercb_5(bind)
 Args.create( {:ary=>bind[:ary_1] })
 end
-def arg_AmethystOptimizercb_7(bind)
+def arg_AmethystOptimizercb_6(bind)
 Strin
 end
+def arg_AmethystOptimizercb_7(bind)
+[]
+end
 def arg_AmethystOptimizercb_8(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+(bind[:c_1].is_a? String ) || FAIL
 end
 def arg_AmethystOptimizercb_9(bind)
-[]
+_append(bind[:autovar_5],bind[:autovar_6])
 end
 def args_AmethystOptimizercb_1(bind)
 Array
 end
 def args_AmethystOptimizercb_2(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+[]
 end
 def args_AmethystOptimizercb_3(bind)
-[]
-end
-def args_AmethystOptimizercb_4(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
 end
-def args_AmethystOptimizercb_5(bind)
+def args_AmethystOptimizercb_4(bind)
 []
 end
-def args_AmethystOptimizercb_6(bind)
+def args_AmethystOptimizercb_5(bind)
 _append(bind[:autovar_4],bind[:autovar_5])
+end
+def char_AmethystOptimizercb_1(bind)
+(bind[:c_1].is_a? String ) || FAIL
+end
+def clas_AmethystOptimizercb_1(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def itrans_AmethystOptimizercb_1(bind)
 []
 end
 def itrans_AmethystOptimizercb_2(bind)
-(bind[:c_1].is_a? String ) || FAIL
+[]
 end
 def itrans_AmethystOptimizercb_3(bind)
 _append(bind[:autovar_1],bind[:autovar_2])

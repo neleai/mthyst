@@ -24,11 +24,11 @@ class Gram
 		}
     @rules[r.name]=r 
 	end
-	def getrule(from)
+	def getrule(name)
 		fromrule,nm=nil,self.name
     begin
      	return nil if nm=="AmethystCore"
-      fromrule= Compiler.grammars[nm].rules[from]
+      fromrule= Compiler.grammars[nm].rules[name]
       nm=Compiler.grammars[nm].parent
     end until fromrule
 		fromrule
@@ -39,19 +39,9 @@ class Gram
 	end
 end
 def resolvegrammar(grammar,name)
-		#return nil if !Compiler.grammars[grammar]
-		while !Compiler.grammars[grammar].rules[name]
-			grammar=Compiler.grammars[grammar].parent
-			if grammar=AmethystCore
-				if name=="seq"||name=="anything"
-					return nil
-					return "AmethystCore"
-				else
-					return nil
-				end
-			end
-		end
-		grammar
+	return nil if !Compiler.grammars[grammar]
+	return grammar if Compiler.grammars[grammar].rules[name]
+	return nil
 end
 class Compiler
 end
@@ -64,10 +54,21 @@ class <<Compiler
 		@grammars[grammar.name]=Gram.new(grammar)
 
 		callg=Oriented_Graph.new
-		@grammars[grammar.name].rules.each{|name,code|
-			calls= DetectCalls.new.parse(:root,[@grammars[grammar.name].rules[name]])
-			calls.each{|c,t|callg.add(name,c)}
-		}
+		names=@grammars[grammar.name].rules.map{|name,code| name}
+		i=0
+		while i<names.size
+			calls=DetectCalls.new.parse(:root,[@grammars[grammar.name].getrule(names[i])])
+			calls.each{|c,t|
+      	if !@grammars[grammar.name].rules[c]
+					if r=@grammars[grammar.name].getrule(c)
+						@grammars[grammar.name].rules[c]=r
+						names<<c
+					end
+				end
+			  callg.add(name,c)
+			}
+			i+=1
+		end
 		topo= callg.topo_order
 		puts callg.inspect
 		puts topo.inspect
@@ -106,7 +107,7 @@ end
     }
     File.open("compiled/#{file2}.rb","w"){|f| f.puts rb; f.puts "\n require 'compiled/#{file2}_c'"}
 	  withtime("c"){
-    `cd compiled;gcc -I. -I/usr/lib/ruby/1.8/x86_64-linux -I/usr/lib/ruby/1.8/x86_64-linux -I.   -fPIC -fno-strict-aliasing -g -g $O  -fPIC   -c #{file2}_c.c`
+    `cd compiled;gcc -I. -I/usr/lib/ruby/1.8/x86_64-linux -I/usr/lib/ruby/1.8/x86_64-linux -I.   -fPIC -fno-strict-aliasing -g -g -O2  -fPIC   -c #{file2}_c.c`
     `cd compiled;gcc -shared -o #{file2}_c.so #{file2}_c.o -L. -L/usr/lib -L.  -rdynamic -Wl,-export-dynamic -lruby1.8  -lpthread -lrt -ldl -lcrypt -lm   -lc`
   	}
 
@@ -143,7 +144,7 @@ def compile_to_c(file)
   }
   File.open("c/#{file}.rb","w"){|f| f.puts rb; f.puts "\n require 'c/#{file}_c'"}
 	withtime("c"){
-  	`cd c;gcc -I. -I/usr/lib/ruby/1.8/x86_64-linux -I/usr/lib/ruby/1.8/x86_64-linux -I.   -fPIC -fno-strict-aliasing -g -g $O  -fPIC   -c #{file}_c.c`
+  	`cd c;gcc -I. -I/usr/lib/ruby/1.8/x86_64-linux -I/usr/lib/ruby/1.8/x86_64-linux -I.   -fPIC -fno-strict-aliasing -g -g -O2  -fPIC   -c #{file}_c.c`
   	`cd c;gcc -shared -o #{file}_c.so #{file}_c.o -L. -L/usr/lib -L.  -rdynamic -Wl,-export-dynamic -lruby1.8  -lpthread -lrt -ldl -lcrypt -lm   -lc`
 	}
 end

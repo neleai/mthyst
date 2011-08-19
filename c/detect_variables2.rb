@@ -9,21 +9,36 @@ def flat_Analyze_Variables2cb_3(bind)
 Args
 end
 def flat_Analyze_Variables2cb_4(bind)
-Strin
+
 end
 def flat_Analyze_Variables2cb_5(bind)
-_append(bind[:autovar_1],bind[:autovar_3])
+Strin
+end
+def flat_Analyze_Variables2cb_6(bind)
+
+end
+def flat_Analyze_Variables2cb_7(bind)
+_append(bind[:autovar_1],bind[:autovar_4])
 end
 def itrans_Analyze_Variables2cb_1(bind)
 []
 end
 def itrans_Analyze_Variables2cb_10(bind)
-@src.rules=bind[:rules_1]
+Rule
 end
 def itrans_Analyze_Variables2cb_11(bind)
-@src.self
+
 end
 def itrans_Analyze_Variables2cb_12(bind)
+_append(bind[:autovar_1],bind[:autovar_7])
+end
+def itrans_Analyze_Variables2cb_13(bind)
+@src.rules=bind[:rules_1]
+end
+def itrans_Analyze_Variables2cb_14(bind)
+@src.self
+end
+def itrans_Analyze_Variables2cb_15(bind)
 _append(bind[:autovar_2],bind[:autovar_8])
 end
 def itrans_Analyze_Variables2cb_2(bind)
@@ -36,19 +51,19 @@ def itrans_Analyze_Variables2cb_4(bind)
 Grammar
 end
 def itrans_Analyze_Variables2cb_5(bind)
-@src.rules
+
 end
 def itrans_Analyze_Variables2cb_6(bind)
-bind[:autovar_4]=[bind[:autovar_4]]
+@src.rules
 end
 def itrans_Analyze_Variables2cb_7(bind)
-[]
+bind[:autovar_4]=[bind[:autovar_4]]
 end
 def itrans_Analyze_Variables2cb_8(bind)
-Rule
+
 end
 def itrans_Analyze_Variables2cb_9(bind)
-_append(bind[:autovar_1],bind[:autovar_7])
+[]
 end
 def root_Analyze_Variables2cb_1(bind)
 @src.self
@@ -60,55 +75,73 @@ def root_Analyze_Variables2cb_3(bind)
 Rule
 end
 def root_Analyze_Variables2cb_4(bind)
-@bnding=@src.bnding
+
 end
 def root_Analyze_Variables2cb_5(bind)
-@variables=Hash.new{|k,v| k[v]=v} ;(@src.locals+@src.args).each{|w| @variables[w[0]]=w}
+@bnding=@src.bnding
 end
 def root_Analyze_Variables2cb_6(bind)
-@locals=@src.locals
+@variables=Hash.new{|k,v| k[v]=v} ;(@src.locals+@src.args).each{|w| @variables[w[0]]=w}
 end
 def root_Analyze_Variables2cb_7(bind)
-@src.body=Seq[{:ary=>[@src.body] }];@src.locals=nil
+@locals=@src.locals
 end
 def root_Analyze_Variables2cb_8(bind)
+@src.body=Seq[{:ary=>[@src.body] }];@src.locals=nil
+end
+def root_Analyze_Variables2cb_9(bind)
 @src.self
 end
 def visit_Analyze_Variables2cb_1(bind)
 Args
 end
 def visit_Analyze_Variables2cb_10(bind)
-Result
+@src.ary
 end
 def visit_Analyze_Variables2cb_11(bind)
-@src.vars=@locals.select{|aa| @src.vars.include? aa[0].to_sym}.uniq
+bind[:autovar_5]=[bind[:autovar_5]]
 end
 def visit_Analyze_Variables2cb_12(bind)
+
+end
+def visit_Analyze_Variables2cb_13(bind)
+Local
+end
+def visit_Analyze_Variables2cb_14(bind)
+Result
+end
+def visit_Analyze_Variables2cb_15(bind)
+
+end
+def visit_Analyze_Variables2cb_16(bind)
+@src.vars=@locals.select{|aa| @src.vars.include? aa[0].to_sym}.uniq
+end
+def visit_Analyze_Variables2cb_17(bind)
 @src.self
 end
 def visit_Analyze_Variables2cb_2(bind)
-@src.ary.map{|aa| @variables[aa] }
+
 end
 def visit_Analyze_Variables2cb_3(bind)
-bind[:autovar_2]=[bind[:autovar_2]]
+@src.ary.map{|aa| @variables[aa] }
 end
 def visit_Analyze_Variables2cb_4(bind)
-@src.ary=connectstring(bind[:a_1].flatten)
+bind[:autovar_2]=[bind[:autovar_2]]
 end
 def visit_Analyze_Variables2cb_5(bind)
-(@src.ary.size==1&&(@src.ary[0].is_a?(Local)||@src.ary[0].is_a?(Global)||@src.ary[0].is_a?(Key))) ? @src.ary[0] : @src.self
+
 end
 def visit_Analyze_Variables2cb_6(bind)
-Act
+@src.ary=connectstring(bind[:a_1].flatten)
 end
 def visit_Analyze_Variables2cb_7(bind)
-@src.ary
+(@src.ary.size==1&&(@src.ary[0].is_a?(Local)||@src.ary[0].is_a?(Global)||@src.ary[0].is_a?(Key))) ? @src.ary[0] : @src.self
 end
 def visit_Analyze_Variables2cb_8(bind)
-bind[:autovar_5]=[bind[:autovar_5]]
+Act
 end
 def visit_Analyze_Variables2cb_9(bind)
-Local
+
 end
 
 end

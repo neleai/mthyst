@@ -1,4 +1,97 @@
 class Dead_Code_Detector < AmethystOptimizer
+def arg_Dead_Code_Detectorcb_1(bind)
+[]
+end
+def arg_Dead_Code_Detectorcb_10(bind)
+(bind[:c_1].is_a? String ) || FAIL
+end
+def arg_Dead_Code_Detectorcb_11(bind)
+_append(bind[:autovar_5],bind[:autovar_6])
+end
+def arg_Dead_Code_Detectorcb_12(bind)
+Strin.create( {:ary=>bind[:ary_1] })
+end
+def arg_Dead_Code_Detectorcb_13(bind)
+Exp
+end
+def arg_Dead_Code_Detectorcb_14(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def arg_Dead_Code_Detectorcb_15(bind)
+_append(bind[:ary_1],bind[:autovar_8])
+end
+def arg_Dead_Code_Detectorcb_16(bind)
+Exp.create( {:ary=>bind[:ary_1] })
+end
+def arg_Dead_Code_Detectorcb_17(bind)
+Result
+end
+def arg_Dead_Code_Detectorcb_18(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def arg_Dead_Code_Detectorcb_19(bind)
+@src.name
+end
+def arg_Dead_Code_Detectorcb_2(bind)
+Args
+end
+def arg_Dead_Code_Detectorcb_20(bind)
+@src.args
+end
+def arg_Dead_Code_Detectorcb_21(bind)
+bind[:autovar_10]=[bind[:autovar_10]]
+end
+def arg_Dead_Code_Detectorcb_22(bind)
+@src.vars
+end
+def arg_Dead_Code_Detectorcb_23(bind)
+bind[:autovar_11]=[bind[:autovar_11]]
+end
+def arg_Dead_Code_Detectorcb_24(bind)
+Result.create( {:args=>bind[:args_1],:ary=>bind[:ary_1],:name=>bind[:name_1],:vars=>bind[:vars_1] })
+end
+def arg_Dead_Code_Detectorcb_3(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def arg_Dead_Code_Detectorcb_4(bind)
+[]
+end
+def arg_Dead_Code_Detectorcb_5(bind)
+_append(bind[:autovar_2],bind[:autovar_3])
+end
+def arg_Dead_Code_Detectorcb_6(bind)
+Args.create( {:ary=>bind[:ary_1] })
+end
+def arg_Dead_Code_Detectorcb_7(bind)
+Strin
+end
+def arg_Dead_Code_Detectorcb_8(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def arg_Dead_Code_Detectorcb_9(bind)
+[]
+end
+def args_Dead_Code_Detectorcb_1(bind)
+Array
+end
+def args_Dead_Code_Detectorcb_2(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def args_Dead_Code_Detectorcb_3(bind)
+[]
+end
+def args_Dead_Code_Detectorcb_4(bind)
+_append(bind[:autovar_2],bind[:autovar_3])
+end
+def args_Dead_Code_Detectorcb_5(bind)
+[]
+end
+def args_Dead_Code_Detectorcb_6(bind)
+_append(bind[:autovar_4],bind[:autovar_5])
+end
+def clas_Dead_Code_Detectorcb_1(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
 def trans_Dead_Code_Detectorcb_1(bind)
 Rule
 end
@@ -132,121 +225,187 @@ def vars_in_Dead_Code_Detectorcb_1(bind)
 []
 end
 def vars_in_Dead_Code_Detectorcb_10(bind)
-@src.self
-end
-def vars_in_Dead_Code_Detectorcb_11(bind)
-_append(bind[:ary_1],bind[:autovar_4])
-end
-def vars_in_Dead_Code_Detectorcb_12(bind)
 Key
 end
-def vars_in_Dead_Code_Detectorcb_13(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def vars_in_Dead_Code_Detectorcb_14(bind)
+def vars_in_Dead_Code_Detectorcb_11(bind)
 @src.self
 end
-def vars_in_Dead_Code_Detectorcb_15(bind)
+def vars_in_Dead_Code_Detectorcb_12(bind)
 _append(bind[:ary_1],bind[:autovar_6])
 end
-def vars_in_Dead_Code_Detectorcb_16(bind)
+def vars_in_Dead_Code_Detectorcb_13(bind)
 @marked<<@src.self
 end
-def vars_in_Dead_Code_Detectorcb_17(bind)
+def vars_in_Dead_Code_Detectorcb_14(bind)
 Exp
 end
+def vars_in_Dead_Code_Detectorcb_15(bind)
+Result
+end
+def vars_in_Dead_Code_Detectorcb_16(bind)
+@src.self
+end
+def vars_in_Dead_Code_Detectorcb_17(bind)
+_append(bind[:ary_1],bind[:autovar_9])
+end
 def vars_in_Dead_Code_Detectorcb_18(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+Strin
 end
 def vars_in_Dead_Code_Detectorcb_19(bind)
-Result
+_append(bind[:ary_1],bind[:autovar_11])
 end
 def vars_in_Dead_Code_Detectorcb_2(bind)
 bind[:ary_1]=[]
 end
 def vars_in_Dead_Code_Detectorcb_20(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def vars_in_Dead_Code_Detectorcb_21(bind)
-@src.self
-end
-def vars_in_Dead_Code_Detectorcb_22(bind)
-_append(bind[:ary_1],bind[:autovar_9])
-end
-def vars_in_Dead_Code_Detectorcb_23(bind)
-Strin
-end
-def vars_in_Dead_Code_Detectorcb_24(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def vars_in_Dead_Code_Detectorcb_25(bind)
-_append(bind[:ary_1],bind[:autovar_11])
-end
-def vars_in_Dead_Code_Detectorcb_26(bind)
 Args
 end
-def vars_in_Dead_Code_Detectorcb_27(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def vars_in_Dead_Code_Detectorcb_28(bind)
+def vars_in_Dead_Code_Detectorcb_21(bind)
 _append(bind[:ary_1],bind[:autovar_13])
 end
-def vars_in_Dead_Code_Detectorcb_29(bind)
+def vars_in_Dead_Code_Detectorcb_22(bind)
 Bind
+end
+def vars_in_Dead_Code_Detectorcb_23(bind)
+@src.name
+end
+def vars_in_Dead_Code_Detectorcb_24(bind)
+bind[:autovar_15]=[bind[:autovar_15]]
+end
+def vars_in_Dead_Code_Detectorcb_25(bind)
+_append(bind[:ary_1],bind[:autovar_16])
+end
+def vars_in_Dead_Code_Detectorcb_26(bind)
+Local
+end
+def vars_in_Dead_Code_Detectorcb_27(bind)
+@marked<<@src.self if bind[:name_1]=="_result"
+end
+def vars_in_Dead_Code_Detectorcb_28(bind)
+@src.self
+end
+def vars_in_Dead_Code_Detectorcb_29(bind)
+_append(bind[:ary_1],bind[:autovar_18])
 end
 def vars_in_Dead_Code_Detectorcb_3(bind)
 Global
 end
-def vars_in_Dead_Code_Detectorcb_30(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def vars_in_Dead_Code_Detectorcb_31(bind)
-@src.name
-end
-def vars_in_Dead_Code_Detectorcb_32(bind)
-bind[:autovar_15]=[bind[:autovar_15]]
-end
-def vars_in_Dead_Code_Detectorcb_33(bind)
-_append(bind[:ary_1],bind[:autovar_16])
-end
-def vars_in_Dead_Code_Detectorcb_34(bind)
-Local
-end
-def vars_in_Dead_Code_Detectorcb_35(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def vars_in_Dead_Code_Detectorcb_36(bind)
-@marked<<@src.self if bind[:name_1]=="_result"
-end
-def vars_in_Dead_Code_Detectorcb_37(bind)
-@src.self
-end
-def vars_in_Dead_Code_Detectorcb_38(bind)
-_append(bind[:ary_1],bind[:autovar_18])
-end
 def vars_in_Dead_Code_Detectorcb_4(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+@src.self
 end
 def vars_in_Dead_Code_Detectorcb_5(bind)
-@src.self
-end
-def vars_in_Dead_Code_Detectorcb_6(bind)
 _append(bind[:ary_1],bind[:autovar_2])
 end
-def vars_in_Dead_Code_Detectorcb_7(bind)
+def vars_in_Dead_Code_Detectorcb_6(bind)
 @marked<<@src.self
 end
-def vars_in_Dead_Code_Detectorcb_8(bind)
+def vars_in_Dead_Code_Detectorcb_7(bind)
 Act
 end
+def vars_in_Dead_Code_Detectorcb_8(bind)
+@src.self
+end
 def vars_in_Dead_Code_Detectorcb_9(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+_append(bind[:ary_1],bind[:autovar_4])
 end
 
 end
 
 
 class Dead_Code_Deleter < AmethystOptimizer
+def arg_Dead_Code_Deletercb_1(bind)
+[]
+end
+def arg_Dead_Code_Deletercb_10(bind)
+(bind[:c_1].is_a? String ) || FAIL
+end
+def arg_Dead_Code_Deletercb_11(bind)
+_append(bind[:autovar_5],bind[:autovar_6])
+end
+def arg_Dead_Code_Deletercb_12(bind)
+Strin.create( {:ary=>bind[:ary_1] })
+end
+def arg_Dead_Code_Deletercb_13(bind)
+Exp
+end
+def arg_Dead_Code_Deletercb_14(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def arg_Dead_Code_Deletercb_15(bind)
+_append(bind[:ary_1],bind[:autovar_8])
+end
+def arg_Dead_Code_Deletercb_16(bind)
+Exp.create( {:ary=>bind[:ary_1] })
+end
+def arg_Dead_Code_Deletercb_17(bind)
+Result
+end
+def arg_Dead_Code_Deletercb_18(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def arg_Dead_Code_Deletercb_19(bind)
+@src.name
+end
+def arg_Dead_Code_Deletercb_2(bind)
+Args
+end
+def arg_Dead_Code_Deletercb_20(bind)
+@src.args
+end
+def arg_Dead_Code_Deletercb_21(bind)
+bind[:autovar_10]=[bind[:autovar_10]]
+end
+def arg_Dead_Code_Deletercb_22(bind)
+@src.vars
+end
+def arg_Dead_Code_Deletercb_23(bind)
+bind[:autovar_11]=[bind[:autovar_11]]
+end
+def arg_Dead_Code_Deletercb_24(bind)
+Result.create( {:args=>bind[:args_1],:ary=>bind[:ary_1],:name=>bind[:name_1],:vars=>bind[:vars_1] })
+end
+def arg_Dead_Code_Deletercb_3(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def arg_Dead_Code_Deletercb_4(bind)
+[]
+end
+def arg_Dead_Code_Deletercb_5(bind)
+_append(bind[:autovar_2],bind[:autovar_3])
+end
+def arg_Dead_Code_Deletercb_6(bind)
+Args.create( {:ary=>bind[:ary_1] })
+end
+def arg_Dead_Code_Deletercb_7(bind)
+Strin
+end
+def arg_Dead_Code_Deletercb_8(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def arg_Dead_Code_Deletercb_9(bind)
+[]
+end
+def args_Dead_Code_Deletercb_1(bind)
+Array
+end
+def args_Dead_Code_Deletercb_2(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def args_Dead_Code_Deletercb_3(bind)
+[]
+end
+def args_Dead_Code_Deletercb_4(bind)
+_append(bind[:autovar_2],bind[:autovar_3])
+end
+def args_Dead_Code_Deletercb_5(bind)
+[]
+end
+def args_Dead_Code_Deletercb_6(bind)
+_append(bind[:autovar_4],bind[:autovar_5])
+end
+def clas_Dead_Code_Deletercb_1(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
 def trans_Dead_Code_Deletercb_1(bind)
 Rule
 end
@@ -340,6 +499,9 @@ end
 
 
 class Communize_Or < AmethystOptimizer
+def clas_Communize_Orcb_1(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
 def trans_Communize_Orcb_1(bind)
 []
 end
@@ -384,6 +546,9 @@ end
 
 
 class Move_Assignments < AmethystOptimizer
+def clas_Move_Assignmentscb_1(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
 def move_Move_Assignmentscb_1(bind)
 Or
 end

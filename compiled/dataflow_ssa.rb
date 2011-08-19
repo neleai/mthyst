@@ -55,6 +55,9 @@ class Local
 end
 
 class CloneLocals < Traverser
+def clas_CloneLocalscb_1(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
 def root_CloneLocalscb_1(bind)
 @src.self
 end
@@ -65,6 +68,42 @@ def root_CloneLocalscb_3(bind)
 Rule
 end
 def root_CloneLocalscb_4(bind)
+
+end
+def traverse_CloneLocalscb_1(bind)
+@src.self
+end
+def traverse_CloneLocalscb_2(bind)
+(@src.self.instance_variables).map{|v| [v,@src.self.instance_variable_get(v)] }
+end
+def traverse_CloneLocalscb_3(bind)
+bind[:autovar_1]=[bind[:autovar_1]]
+end
+def traverse_CloneLocalscb_4(bind)
+bind[:this_1].instance_variable_set(bind[:key_1],bind[:it_1])
+end
+def traverse_CloneLocalscb_5(bind)
+@src.self
+end
+def traverse_item_CloneLocalscb_1(bind)
+@changed=true
+end
+def traverse_item_CloneLocalscb_2(bind)
+Array
+end
+def traverse_item_CloneLocalscb_3(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def traverse_item_CloneLocalscb_4(bind)
+[]
+end
+def traverse_item_CloneLocalscb_5(bind)
+_append(bind[:autovar_2],bind[:autovar_3])
+end
+def traverse_item_CloneLocalscb_6(bind)
+AmethystAST
+end
+def traverse_item_CloneLocalscb_7(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_CloneLocalscb_1(bind)
@@ -81,10 +120,16 @@ end
 
 
 class Dataflow < Traverser
+def clas_Dataflowcb_1(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
 def root_Dataflowcb_1(bind)
 @src.self
 end
 def root_Dataflowcb_10(bind)
+@src.reachable=@edges.reverse.reachable(@marked+[ssanum(@src.body[-1])]); @src.cfg=@edges; [@edges,@marked+[@src.body[-1]]]
+end
+def root_Dataflowcb_11(bind)
 @src.self
 end
 def root_Dataflowcb_2(bind)
@@ -94,7 +139,7 @@ def root_Dataflowcb_3(bind)
 Rule
 end
 def root_Dataflowcb_4(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+
 end
 def root_Dataflowcb_5(bind)
 @bnding=@src.bnding
@@ -106,115 +151,127 @@ def root_Dataflowcb_7(bind)
 bind[:autovar_3]=[bind[:autovar_3]]
 end
 def root_Dataflowcb_8(bind)
-bind[:var_1].each{|v| ssanum(v)}
+
 end
 def root_Dataflowcb_9(bind)
-@src.reachable=@edges.reverse.reachable(@marked+[ssanum(@src.body[-1])]); @src.cfg=@edges; [@edges,@marked+[@src.body[-1]]]
+bind[:var_1].each{|v| ssanum(v)}
+end
+def traverse_Dataflowcb_1(bind)
+@src.self
+end
+def traverse_Dataflowcb_2(bind)
+(@src.self.instance_variables).map{|v| [v,@src.self.instance_variable_get(v)] }
+end
+def traverse_Dataflowcb_3(bind)
+bind[:autovar_1]=[bind[:autovar_1]]
+end
+def traverse_Dataflowcb_4(bind)
+bind[:this_1].instance_variable_set(bind[:key_1],bind[:it_1])
+end
+def traverse_Dataflowcb_5(bind)
+@src.self
+end
+def traverse_item_Dataflowcb_1(bind)
+@changed=true
+end
+def traverse_item_Dataflowcb_2(bind)
+Array
+end
+def traverse_item_Dataflowcb_3(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def traverse_item_Dataflowcb_4(bind)
+[]
+end
+def traverse_item_Dataflowcb_5(bind)
+_append(bind[:autovar_2],bind[:autovar_3])
+end
+def traverse_item_Dataflowcb_6(bind)
+AmethystAST
+end
+def traverse_item_Dataflowcb_7(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def vars_in_Dataflowcb_1(bind)
 []
 end
 def vars_in_Dataflowcb_10(bind)
-@src.self
-end
-def vars_in_Dataflowcb_11(bind)
-_append(bind[:ary_1],bind[:autovar_4])
-end
-def vars_in_Dataflowcb_12(bind)
 Key
 end
-def vars_in_Dataflowcb_13(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def vars_in_Dataflowcb_14(bind)
+def vars_in_Dataflowcb_11(bind)
 @src.self
 end
-def vars_in_Dataflowcb_15(bind)
+def vars_in_Dataflowcb_12(bind)
 _append(bind[:ary_1],bind[:autovar_6])
 end
-def vars_in_Dataflowcb_16(bind)
+def vars_in_Dataflowcb_13(bind)
 @marked<<@src.self
 end
-def vars_in_Dataflowcb_17(bind)
+def vars_in_Dataflowcb_14(bind)
 Result
 end
+def vars_in_Dataflowcb_15(bind)
+@src.self
+end
+def vars_in_Dataflowcb_16(bind)
+_append(bind[:ary_1],bind[:autovar_8])
+end
+def vars_in_Dataflowcb_17(bind)
+Strin
+end
 def vars_in_Dataflowcb_18(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+_append(bind[:ary_1],bind[:autovar_10])
 end
 def vars_in_Dataflowcb_19(bind)
-@src.self
+Args
 end
 def vars_in_Dataflowcb_2(bind)
 bind[:ary_1]=[]
 end
 def vars_in_Dataflowcb_20(bind)
-_append(bind[:ary_1],bind[:autovar_8])
-end
-def vars_in_Dataflowcb_21(bind)
-Strin
-end
-def vars_in_Dataflowcb_22(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def vars_in_Dataflowcb_23(bind)
-_append(bind[:ary_1],bind[:autovar_10])
-end
-def vars_in_Dataflowcb_24(bind)
-Args
-end
-def vars_in_Dataflowcb_25(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def vars_in_Dataflowcb_26(bind)
 _append(bind[:ary_1],bind[:autovar_12])
 end
-def vars_in_Dataflowcb_27(bind)
+def vars_in_Dataflowcb_21(bind)
 Bind
 end
-def vars_in_Dataflowcb_28(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def vars_in_Dataflowcb_29(bind)
+def vars_in_Dataflowcb_22(bind)
 @src.name
+end
+def vars_in_Dataflowcb_23(bind)
+bind[:autovar_14]=[bind[:autovar_14]]
+end
+def vars_in_Dataflowcb_24(bind)
+_append(bind[:ary_1],bind[:autovar_15])
+end
+def vars_in_Dataflowcb_25(bind)
+Local
+end
+def vars_in_Dataflowcb_26(bind)
+@src.self
+end
+def vars_in_Dataflowcb_27(bind)
+_append(bind[:ary_1],bind[:autovar_17])
 end
 def vars_in_Dataflowcb_3(bind)
 Global
 end
-def vars_in_Dataflowcb_30(bind)
-bind[:autovar_14]=[bind[:autovar_14]]
-end
-def vars_in_Dataflowcb_31(bind)
-_append(bind[:ary_1],bind[:autovar_15])
-end
-def vars_in_Dataflowcb_32(bind)
-Local
-end
-def vars_in_Dataflowcb_33(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def vars_in_Dataflowcb_34(bind)
-@src.self
-end
-def vars_in_Dataflowcb_35(bind)
-_append(bind[:ary_1],bind[:autovar_17])
-end
 def vars_in_Dataflowcb_4(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+@src.self
 end
 def vars_in_Dataflowcb_5(bind)
-@src.self
-end
-def vars_in_Dataflowcb_6(bind)
 _append(bind[:ary_1],bind[:autovar_2])
 end
-def vars_in_Dataflowcb_7(bind)
+def vars_in_Dataflowcb_6(bind)
 @marked<<@src.self
 end
-def vars_in_Dataflowcb_8(bind)
+def vars_in_Dataflowcb_7(bind)
 Act
 end
+def vars_in_Dataflowcb_8(bind)
+@src.self
+end
 def vars_in_Dataflowcb_9(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+_append(bind[:ary_1],bind[:autovar_4])
 end
 def visit_Dataflowcb_1(bind)
 Apply
@@ -335,6 +392,9 @@ end
 
 
 class Dead_Code_Deleter3 < Traverser
+def clas_Dead_Code_Deleter3cb_1(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
 def root_Dead_Code_Deleter3cb_1(bind)
 @src.self
 end
@@ -345,7 +405,7 @@ def root_Dead_Code_Deleter3cb_3(bind)
 Rule
 end
 def root_Dead_Code_Deleter3cb_4(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+
 end
 def root_Dead_Code_Deleter3cb_5(bind)
 @reachable=@src.reachable
@@ -355,6 +415,42 @@ def root_Dead_Code_Deleter3cb_6(bind)
 end
 def root_Dead_Code_Deleter3cb_7(bind)
 @src.self
+end
+def traverse_Dead_Code_Deleter3cb_1(bind)
+@src.self
+end
+def traverse_Dead_Code_Deleter3cb_2(bind)
+(@src.self.instance_variables).map{|v| [v,@src.self.instance_variable_get(v)] }
+end
+def traverse_Dead_Code_Deleter3cb_3(bind)
+bind[:autovar_1]=[bind[:autovar_1]]
+end
+def traverse_Dead_Code_Deleter3cb_4(bind)
+bind[:this_1].instance_variable_set(bind[:key_1],bind[:it_1])
+end
+def traverse_Dead_Code_Deleter3cb_5(bind)
+@src.self
+end
+def traverse_item_Dead_Code_Deleter3cb_1(bind)
+@changed=true
+end
+def traverse_item_Dead_Code_Deleter3cb_2(bind)
+Array
+end
+def traverse_item_Dead_Code_Deleter3cb_3(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def traverse_item_Dead_Code_Deleter3cb_4(bind)
+[]
+end
+def traverse_item_Dead_Code_Deleter3cb_5(bind)
+_append(bind[:autovar_2],bind[:autovar_3])
+end
+def traverse_item_Dead_Code_Deleter3cb_6(bind)
+AmethystAST
+end
+def traverse_item_Dead_Code_Deleter3cb_7(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Dead_Code_Deleter3cb_1(bind)
 Act

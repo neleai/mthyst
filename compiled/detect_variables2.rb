@@ -1,4 +1,7 @@
 class Analyze_Variables2 < Traverser
+def clas_Analyze_Variables2cb_1(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
 def flat_Analyze_Variables2cb_1(bind)
 []
 end
@@ -6,52 +9,55 @@ def flat_Analyze_Variables2cb_2(bind)
 Args
 end
 def flat_Analyze_Variables2cb_3(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def flat_Analyze_Variables2cb_4(bind)
 Strin
 end
-def flat_Analyze_Variables2cb_5(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def flat_Analyze_Variables2cb_6(bind)
+def flat_Analyze_Variables2cb_4(bind)
 _append(bind[:autovar_1],bind[:autovar_3])
 end
 def itrans_Analyze_Variables2cb_1(bind)
 []
 end
 def itrans_Analyze_Variables2cb_10(bind)
-@src.rules=bind[:rules_1]
-end
-def itrans_Analyze_Variables2cb_11(bind)
-@src.self
-end
-def itrans_Analyze_Variables2cb_12(bind)
-_append(bind[:autovar_1],bind[:autovar_8])
-end
-def itrans_Analyze_Variables2cb_2(bind)
-Grammar
-end
-def itrans_Analyze_Variables2cb_3(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def itrans_Analyze_Variables2cb_4(bind)
-@src.rules
-end
-def itrans_Analyze_Variables2cb_5(bind)
-bind[:autovar_3]=[bind[:autovar_3]]
-end
-def itrans_Analyze_Variables2cb_6(bind)
-[]
-end
-def itrans_Analyze_Variables2cb_7(bind)
 Rule
 end
+def itrans_Analyze_Variables2cb_11(bind)
+
+end
+def itrans_Analyze_Variables2cb_12(bind)
+_append(bind[:autovar_1],bind[:autovar_7])
+end
+def itrans_Analyze_Variables2cb_13(bind)
+@src.rules=bind[:rules_1]
+end
+def itrans_Analyze_Variables2cb_14(bind)
+@src.self
+end
+def itrans_Analyze_Variables2cb_15(bind)
+_append(bind[:autovar_2],bind[:autovar_8])
+end
+def itrans_Analyze_Variables2cb_2(bind)
+[]
+end
+def itrans_Analyze_Variables2cb_3(bind)
+[]
+end
+def itrans_Analyze_Variables2cb_4(bind)
+Grammar
+end
+def itrans_Analyze_Variables2cb_5(bind)
+
+end
+def itrans_Analyze_Variables2cb_6(bind)
+@src.rules
+end
+def itrans_Analyze_Variables2cb_7(bind)
+bind[:autovar_4]=[bind[:autovar_4]]
+end
 def itrans_Analyze_Variables2cb_8(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+
 end
 def itrans_Analyze_Variables2cb_9(bind)
-_append(bind[:autovar_5],bind[:autovar_7])
+[]
 end
 def root_Analyze_Variables2cb_1(bind)
 @src.self
@@ -79,6 +85,42 @@ def root_Analyze_Variables2cb_8(bind)
 end
 def root_Analyze_Variables2cb_9(bind)
 @src.self
+end
+def traverse_Analyze_Variables2cb_1(bind)
+@src.self
+end
+def traverse_Analyze_Variables2cb_2(bind)
+(@src.self.instance_variables).map{|v| [v,@src.self.instance_variable_get(v)] }
+end
+def traverse_Analyze_Variables2cb_3(bind)
+bind[:autovar_1]=[bind[:autovar_1]]
+end
+def traverse_Analyze_Variables2cb_4(bind)
+bind[:this_1].instance_variable_set(bind[:key_1],bind[:it_1])
+end
+def traverse_Analyze_Variables2cb_5(bind)
+@src.self
+end
+def traverse_item_Analyze_Variables2cb_1(bind)
+@changed=true
+end
+def traverse_item_Analyze_Variables2cb_2(bind)
+Array
+end
+def traverse_item_Analyze_Variables2cb_3(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def traverse_item_Analyze_Variables2cb_4(bind)
+[]
+end
+def traverse_item_Analyze_Variables2cb_5(bind)
+_append(bind[:autovar_2],bind[:autovar_3])
+end
+def traverse_item_Analyze_Variables2cb_6(bind)
+AmethystAST
+end
+def traverse_item_Analyze_Variables2cb_7(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Analyze_Variables2cb_1(bind)
 Args
