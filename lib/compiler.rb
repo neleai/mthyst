@@ -78,7 +78,7 @@ if true
 				calls= DetectCalls.new.parse(:root,[@grammars[grammar.name].rules[name]])
 				calls.each{|nm,v|
 					r=@grammars[grammar.name].getrule(nm)
-					if r && topo.index(nm)<topo.index(name)
+					if r && topo.index(nm)<topo.index(name) && false
 						@grammars[grammar.name].inline(nm,name) if r.args.size>0 && !(/arg/=~r.name) 
 						@grammars[grammar.name].inline(nm,name) if ["char","space"].include?(r.name)
 					end

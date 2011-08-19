@@ -14,9 +14,6 @@ end
 def digit_Amethystcb_1(bind)
 /[0-9]/
 end
-def digit_Amethystcb_2(bind)
-(bind[:regex_1].match(bind[:c_1])) || FAIL
-end
 def empty_Amethystcb_1(bind)
 nil
 end
@@ -59,9 +56,6 @@ end
 def lower_Amethystcb_1(bind)
 /[a-z]/
 end
-def lower_Amethystcb_2(bind)
-(bind[:regex_1].match(bind[:c_1])) || FAIL
-end
 def regch_Amethystcb_1(bind)
 (bind[:regex_1].match(bind[:c_1])) || FAIL
 end
@@ -69,9 +63,6 @@ def space_Amethystcb_1(bind)
 /[\s\t\r\n\f]/
 end
 def spaces_Amethystcb_1(bind)
-/[\s\t\r\n\f]/
-end
-def spaces_Amethystcb_2(bind)
 _append(bind[:autovar_1],bind[:autovar_2])
 end
 def token_Amethystcb_1(bind)
@@ -79,9 +70,6 @@ bind[:s_1]
 end
 def upper_Amethystcb_1(bind)
 /[A-Z]/
-end
-def upper_Amethystcb_2(bind)
-(bind[:regex_1].match(bind[:c_1])) || FAIL
 end
 def word_Amethystcb_1(bind)
 "_"
