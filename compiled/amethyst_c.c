@@ -116,17 +116,17 @@ int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
  int oldpos2=ame_getpos(self);
 alt2_1: ame_setpos(self,oldpos2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt1_2;}
-  it=CALL(endline_Amethystcb_1,1,bind);  arg0=it; it=CALL(seq,1 ,arg0); FAILTEST(alt2_2); 
+  it=rb_str_new2("\r\n"); arg0=it; it=CALL(seq,1 ,arg0); FAILTEST(alt2_2); 
 ISET(cut,Qnil);goto accept2;
   alt2_2:  ame_setpos(self,oldpos2); goto alt1_2;
  accept2:;
  
 ISET(cut,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=CALL(endline_Amethystcb_2,1,bind);  arg0=it; it=CALL(seq,1 ,arg0); FAILTEST(alt1_3); 
+  it=rb_str_new2("\r"); arg0=it; it=CALL(seq,1 ,arg0); FAILTEST(alt1_3); 
 ISET(cut,Qnil);goto accept1;
 alt1_3: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=CALL(endline_Amethystcb_3,1,bind);  arg0=it; it=CALL(seq,1 ,arg0); FAILTEST(alt1_4); 
+  it=rb_str_new2("\n"); arg0=it; it=CALL(seq,1 ,arg0); FAILTEST(alt1_4); 
 ISET(cut,Qnil);goto accept1;
   alt1_4:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
@@ -279,7 +279,7 @@ alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
    it=Amethyst_alpha(self ); FAILTEST(alt1_2); 
 ISET(cut,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=CALL(word_Amethystcb_1,1,bind);  arg0=it; it=CALL(seq,1 ,arg0); FAILTEST(alt1_3); 
+  it=rb_str_new2("_"); arg0=it; it=CALL(seq,1 ,arg0); FAILTEST(alt1_3); 
 ISET(cut,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto fail;
  accept1:;

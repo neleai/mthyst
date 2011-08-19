@@ -393,7 +393,7 @@ ame_setsrc(self,BGET(autovar_15)); ame_setpos(self,0); ame_setlen(self,FIX2INT(r
    it=CALL(anything,0 ); FAILTEST(pass9);
  BSET(autovar_16,it); int oldpos14=ame_getpos(self); int oldlen10=ame_getlen(self); VALUE oldsrc10=ame_getsrc(self); int fail10=0;
 ame_setsrc(self,BGET(autovar_16)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-  it=CALL(trans_AmethystCTranslatorcb_29,1,bind);  arg0=it; it=AmethystCTranslator_token(self ,arg0); FAILTEST(pass10);
+  it=rb_str_new2("super"); arg0=it; it=AmethystCTranslator_token(self ,arg0); FAILTEST(pass10);
 	if (CALL(eof,0)==failobj) goto pass10;
 	goto success10;
 	pass10: fail10=1;
@@ -405,7 +405,7 @@ ame_setsrc(self,BGET(autovar_16)); ame_setpos(self,0); ame_setlen(self,FIX2INT(r
 	pass9: fail9=1;
 	success9: ame_setsrc(self,oldsrc9); ame_setpos(self,oldpos13); ame_setlen(self,oldlen9);
 	if(fail9) goto pass8;
-it=CALL(trans_AmethystCTranslatorcb_30,1,bind); 
+it=CALL(trans_AmethystCTranslatorcb_29,1,bind); 
  BSET(_result_1,it); 
 	if (CALL(eof,0)==failobj) goto pass8;
 	goto success8;
@@ -415,16 +415,16 @@ it=CALL(trans_AmethystCTranslatorcb_30,1,bind);
  
 ISET(cut,Qnil);goto accept1;
 alt1_6: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=CALL(trans_AmethystCTranslatorcb_31,1,bind);  arg0=it; it=AmethystCTranslator_clas(self ,arg0); FAILTEST(alt1_7);
+  it=CALL(trans_AmethystCTranslatorcb_30,1,bind);  arg0=it; it=AmethystCTranslator_clas(self ,arg0); FAILTEST(alt1_7);
  BSET(autovar_17,it); int oldpos15=ame_getpos(self); int oldlen11=ame_getlen(self); VALUE oldsrc11=ame_getsrc(self); int fail11=0;
 ame_setsrc(self,BGET(autovar_17)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=CALL(anything,0 ); FAILTEST(pass11);
- BSET(name_1,it); it=CALL(trans_AmethystCTranslatorcb_32,1,bind); 
+ BSET(name_1,it); it=CALL(trans_AmethystCTranslatorcb_31,1,bind); 
  BSET(ii_1,it); it=rb_ary_new3(0);
  BSET(autovar_18,it); int oldpos16; while(1){oldpos16=ame_getpos(self);   it=AmethystCTranslator_trans(self ); FAILTEST(break4);
- BSET(aa_1,it); it=CALL(trans_AmethystCTranslatorcb_33,1,bind); it=CALL(trans_AmethystCTranslatorcb_34,1,bind); 
- BSET(autovar_19,it); it=CALL(trans_AmethystCTranslatorcb_35,1,bind);  if (IGET(stop)!=Qnil){{oldpos16=ame_getpos(self);goto break4;} } } break4: ISET(stop,Qnil);  ame_setpos(self,oldpos16); it=BGET(autovar_18);
- BSET(args_1,it);  it=CALL(trans_AmethystCTranslatorcb_36,1,bind);  arg0=it; it=AmethystCTranslator_failwrap(self ,arg0); FAILTEST(pass11);
+ BSET(aa_1,it); it=CALL(trans_AmethystCTranslatorcb_32,1,bind); it=CALL(trans_AmethystCTranslatorcb_33,1,bind); 
+ BSET(autovar_19,it); it=CALL(trans_AmethystCTranslatorcb_34,1,bind);  if (IGET(stop)!=Qnil){{oldpos16=ame_getpos(self);goto break4;} } } break4: ISET(stop,Qnil);  ame_setpos(self,oldpos16); it=BGET(autovar_18);
+ BSET(args_1,it);  it=CALL(trans_AmethystCTranslatorcb_35,1,bind);  arg0=it; it=AmethystCTranslator_failwrap(self ,arg0); FAILTEST(pass11);
  BSET(_result_1,it); 
 	if (CALL(eof,0)==failobj) goto pass11;
 	goto success11;
@@ -434,13 +434,13 @@ ame_setsrc(self,BGET(autovar_17)); ame_setpos(self,0); ame_setlen(self,FIX2INT(r
  
 ISET(cut,Qnil);goto accept1;
 alt1_7: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=CALL(trans_AmethystCTranslatorcb_37,1,bind);  arg0=it; it=AmethystCTranslator_clas(self ,arg0); FAILTEST(alt1_8);
+  it=CALL(trans_AmethystCTranslatorcb_36,1,bind);  arg0=it; it=AmethystCTranslator_clas(self ,arg0); FAILTEST(alt1_8);
  BSET(autovar_20,it); int oldpos17=ame_getpos(self); int oldlen12=ame_getlen(self); VALUE oldsrc12=ame_getsrc(self); int fail12=0;
 ame_setsrc(self,BGET(autovar_20)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
  it=rb_ary_new3(0);
  BSET(autovar_21,it); int oldpos18; while(1){oldpos18=ame_getpos(self);   it=AmethystCTranslator_trans(self ); FAILTEST(break5);
- BSET(autovar_22,it); it=CALL(trans_AmethystCTranslatorcb_38,1,bind);  if (IGET(stop)!=Qnil){{oldpos18=ame_getpos(self);goto break5;} } } break5: ISET(stop,Qnil);  ame_setpos(self,oldpos18); it=BGET(autovar_21);
- BSET(t_1,it); it=CALL(trans_AmethystCTranslatorcb_39,1,bind); 
+ BSET(autovar_22,it); it=CALL(trans_AmethystCTranslatorcb_37,1,bind);  if (IGET(stop)!=Qnil){{oldpos18=ame_getpos(self);goto break5;} } } break5: ISET(stop,Qnil);  ame_setpos(self,oldpos18); it=BGET(autovar_21);
+ BSET(t_1,it); it=CALL(trans_AmethystCTranslatorcb_38,1,bind); 
  BSET(_result_1,it); 
 	if (CALL(eof,0)==failobj) goto pass12;
 	goto success12;
@@ -450,11 +450,11 @@ ame_setsrc(self,BGET(autovar_20)); ame_setpos(self,0); ame_setlen(self,FIX2INT(r
  
 ISET(cut,Qnil);goto accept1;
 alt1_8: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=CALL(trans_AmethystCTranslatorcb_40,1,bind);  arg0=it; it=AmethystCTranslator_clas(self ,arg0); FAILTEST(alt1_9);
+  it=CALL(trans_AmethystCTranslatorcb_39,1,bind);  arg0=it; it=AmethystCTranslator_clas(self ,arg0); FAILTEST(alt1_9);
  BSET(autovar_23,it); int oldpos19=ame_getpos(self); int oldlen13=ame_getlen(self); VALUE oldsrc13=ame_getsrc(self); int fail13=0;
 ame_setsrc(self,BGET(autovar_23)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
- it=CALL(trans_AmethystCTranslatorcb_41,1,bind); 
- BSET(autovar_24,it); it=CALL(trans_AmethystCTranslatorcb_42,1,bind); int oldpos20=ame_getpos(self); int oldlen14=ame_getlen(self); VALUE oldsrc14=ame_getsrc(self); int fail14=0;
+ it=CALL(trans_AmethystCTranslatorcb_40,1,bind); 
+ BSET(autovar_24,it); it=CALL(trans_AmethystCTranslatorcb_41,1,bind); int oldpos20=ame_getpos(self); int oldlen14=ame_getlen(self); VALUE oldsrc14=ame_getsrc(self); int fail14=0;
 ame_setsrc(self,BGET(autovar_24)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCTranslator_trans(self ); FAILTEST(pass14);
  BSET(e_1,it); 
@@ -463,7 +463,7 @@ ame_setsrc(self,BGET(autovar_24)); ame_setpos(self,0); ame_setlen(self,FIX2INT(r
 	pass14: fail14=1;
 	success14: ame_setsrc(self,oldsrc14); ame_setpos(self,oldpos20); ame_setlen(self,oldlen14);
 	if(fail14) goto pass13;
-it=CALL(trans_AmethystCTranslatorcb_43,1,bind); 
+it=CALL(trans_AmethystCTranslatorcb_42,1,bind); 
  BSET(_result_1,it); 
 	if (CALL(eof,0)==failobj) goto pass13;
 	goto success13;
@@ -473,19 +473,19 @@ it=CALL(trans_AmethystCTranslatorcb_43,1,bind);
  
 ISET(cut,Qnil);goto accept1;
 alt1_9: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=CALL(trans_AmethystCTranslatorcb_44,1,bind);  arg0=it; it=AmethystCTranslator_clas(self ,arg0); FAILTEST(alt1_10);
+  it=CALL(trans_AmethystCTranslatorcb_43,1,bind);  arg0=it; it=AmethystCTranslator_clas(self ,arg0); FAILTEST(alt1_10);
  BSET(autovar_25,it); int oldpos21=ame_getpos(self); int oldlen15=ame_getlen(self); VALUE oldsrc15=ame_getsrc(self); int fail15=0;
 ame_setsrc(self,BGET(autovar_25)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
- it=CALL(trans_AmethystCTranslatorcb_45,1,bind); 
- BSET(accept_1,it); it=CALL(trans_AmethystCTranslatorcb_46,1,bind); 
- BSET(fail_1,it); it=CALL(trans_AmethystCTranslatorcb_47,1,bind); 
- BSET(oldpos_1,it);  it=CALL(trans_AmethystCTranslatorcb_48,1,bind);  arg0=it; it=CALL(label,1 ,arg0); FAILTEST(pass15);
- BSET(alt_1,it); it=CALL(trans_AmethystCTranslatorcb_49,1,bind); 
+ it=CALL(trans_AmethystCTranslatorcb_44,1,bind); 
+ BSET(accept_1,it); it=CALL(trans_AmethystCTranslatorcb_45,1,bind); 
+ BSET(fail_1,it); it=CALL(trans_AmethystCTranslatorcb_46,1,bind); 
+ BSET(oldpos_1,it);  it=CALL(trans_AmethystCTranslatorcb_47,1,bind);  arg0=it; it=CALL(label,1 ,arg0); FAILTEST(pass15);
+ BSET(alt_1,it); it=CALL(trans_AmethystCTranslatorcb_48,1,bind); 
  BSET(altno_1,it); it=rb_ary_new3(0);
  BSET(autovar_26,it); int oldpos22; while(1){oldpos22=ame_getpos(self); int oldpos23=ame_getpos(self);
-   it=CALL(anything,0 ); FAILTEST(reject1); x=1; goto accept2;  reject1: x=0; accept2: it=Qnil; ame_setpos(self,oldpos23); if (x==0) goto break6;it=CALL(trans_AmethystCTranslatorcb_50,1,bind);  it=CALL(trans_AmethystCTranslatorcb_51,1,bind);  arg0=it;it=CALL(trans_AmethystCTranslatorcb_52,1,bind);  arg1=it; it=AmethystCTranslator_rw(self ,arg0,arg1); FAILTEST(break6);
- BSET(autovar_27,it); it=CALL(trans_AmethystCTranslatorcb_53,1,bind);  if (IGET(stop)!=Qnil){{oldpos22=ame_getpos(self);goto break6;} } } break6: ISET(stop,Qnil);  ame_setpos(self,oldpos22); it=BGET(autovar_26);
- BSET(t_1,it); it=CALL(trans_AmethystCTranslatorcb_54,1,bind); it=CALL(trans_AmethystCTranslatorcb_55,1,bind); it=CALL(trans_AmethystCTranslatorcb_56,1,bind); 
+   it=CALL(anything,0 ); FAILTEST(reject1); x=1; goto accept2;  reject1: x=0; accept2: it=Qnil; ame_setpos(self,oldpos23); if (x==0) goto break6;it=CALL(trans_AmethystCTranslatorcb_49,1,bind);  it=CALL(trans_AmethystCTranslatorcb_50,1,bind);  arg0=it;it=CALL(trans_AmethystCTranslatorcb_51,1,bind);  arg1=it; it=AmethystCTranslator_rw(self ,arg0,arg1); FAILTEST(break6);
+ BSET(autovar_27,it); it=CALL(trans_AmethystCTranslatorcb_52,1,bind);  if (IGET(stop)!=Qnil){{oldpos22=ame_getpos(self);goto break6;} } } break6: ISET(stop,Qnil);  ame_setpos(self,oldpos22); it=BGET(autovar_26);
+ BSET(t_1,it); it=CALL(trans_AmethystCTranslatorcb_53,1,bind); it=CALL(trans_AmethystCTranslatorcb_54,1,bind); it=CALL(trans_AmethystCTranslatorcb_55,1,bind); 
  BSET(_result_1,it); 
 	if (CALL(eof,0)==failobj) goto pass15;
 	goto success15;
@@ -495,7 +495,7 @@ ame_setsrc(self,BGET(autovar_25)); ame_setpos(self,0); ame_setlen(self,FIX2INT(r
  
 ISET(cut,Qnil);goto accept1;
 alt1_10: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=CALL(trans_AmethystCTranslatorcb_57,1,bind);  arg0=it; it=AmethystCTranslator_clas(self ,arg0); FAILTEST(alt1_11);
+  it=CALL(trans_AmethystCTranslatorcb_56,1,bind);  arg0=it; it=AmethystCTranslator_clas(self ,arg0); FAILTEST(alt1_11);
  BSET(autovar_28,it); int oldpos24=ame_getpos(self); int oldlen16=ame_getlen(self); VALUE oldsrc16=ame_getsrc(self); int fail16=0;
 ame_setsrc(self,BGET(autovar_28)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
  
@@ -504,11 +504,11 @@ ame_setsrc(self,BGET(autovar_28)); ame_setpos(self,0); ame_setlen(self,FIX2INT(r
 	pass16: fail16=1;
 	success16: ame_setsrc(self,oldsrc16); ame_setpos(self,oldpos24); ame_setlen(self,oldlen16);
 	if(fail16) goto alt1_11;
-it=CALL(trans_AmethystCTranslatorcb_58,1,bind); 
+it=CALL(trans_AmethystCTranslatorcb_57,1,bind); 
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
 alt1_11: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=CALL(trans_AmethystCTranslatorcb_59,1,bind);  arg0=it; it=AmethystCTranslator_clas(self ,arg0); FAILTEST(alt1_12);
+  it=CALL(trans_AmethystCTranslatorcb_58,1,bind);  arg0=it; it=AmethystCTranslator_clas(self ,arg0); FAILTEST(alt1_12);
  BSET(autovar_29,it); int oldpos25=ame_getpos(self); int oldlen17=ame_getlen(self); VALUE oldsrc17=ame_getsrc(self); int fail17=0;
 ame_setsrc(self,BGET(autovar_29)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
  
@@ -517,16 +517,16 @@ ame_setsrc(self,BGET(autovar_29)); ame_setpos(self,0); ame_setlen(self,FIX2INT(r
 	pass17: fail17=1;
 	success17: ame_setsrc(self,oldsrc17); ame_setpos(self,oldpos25); ame_setlen(self,oldlen17);
 	if(fail17) goto alt1_12;
-it=CALL(trans_AmethystCTranslatorcb_60,1,bind); 
+it=CALL(trans_AmethystCTranslatorcb_59,1,bind); 
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
 alt1_12: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=CALL(trans_AmethystCTranslatorcb_61,1,bind);  arg0=it; it=AmethystCTranslator_clas(self ,arg0); FAILTEST(alt1_13);
+  it=CALL(trans_AmethystCTranslatorcb_60,1,bind);  arg0=it; it=AmethystCTranslator_clas(self ,arg0); FAILTEST(alt1_13);
  BSET(autovar_30,it); int oldpos26=ame_getpos(self); int oldlen18=ame_getlen(self); VALUE oldsrc18=ame_getsrc(self); int fail18=0;
 ame_setsrc(self,BGET(autovar_30)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
- it=CALL(trans_AmethystCTranslatorcb_62,1,bind); 
- BSET(brk_1,it); it=CALL(trans_AmethystCTranslatorcb_63,1,bind); 
- BSET(oldpos_1,it);  it=BGET(brk_1); arg0=it;it=CALL(trans_AmethystCTranslatorcb_64,1,bind);  arg1=it; it=AmethystCTranslator_rw(self ,arg0,arg1); FAILTEST(pass18);it=CALL(trans_AmethystCTranslatorcb_65,1,bind); 
+ it=CALL(trans_AmethystCTranslatorcb_61,1,bind); 
+ BSET(brk_1,it); it=CALL(trans_AmethystCTranslatorcb_62,1,bind); 
+ BSET(oldpos_1,it);  it=BGET(brk_1); arg0=it;it=CALL(trans_AmethystCTranslatorcb_63,1,bind);  arg1=it; it=AmethystCTranslator_rw(self ,arg0,arg1); FAILTEST(pass18);it=CALL(trans_AmethystCTranslatorcb_64,1,bind); 
  BSET(_result_1,it); 
 	if (CALL(eof,0)==failobj) goto pass18;
 	goto success18;
@@ -536,13 +536,13 @@ ame_setsrc(self,BGET(autovar_30)); ame_setpos(self,0); ame_setlen(self,FIX2INT(r
  
 ISET(cut,Qnil);goto accept1;
 alt1_13: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=CALL(trans_AmethystCTranslatorcb_66,1,bind);  arg0=it; it=AmethystCTranslator_clas(self ,arg0); FAILTEST(alt1_14);
+  it=CALL(trans_AmethystCTranslatorcb_65,1,bind);  arg0=it; it=AmethystCTranslator_clas(self ,arg0); FAILTEST(alt1_14);
  BSET(autovar_31,it); int oldpos27=ame_getpos(self); int oldlen19=ame_getlen(self); VALUE oldsrc19=ame_getsrc(self); int fail19=0;
 ame_setsrc(self,BGET(autovar_31)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
- it=CALL(trans_AmethystCTranslatorcb_67,1,bind); 
- BSET(accept_1,it); it=CALL(trans_AmethystCTranslatorcb_68,1,bind); 
- BSET(reject_1,it); it=CALL(trans_AmethystCTranslatorcb_69,1,bind); 
- BSET(oldpos_1,it);  it=BGET(reject_1); arg0=it;it=CALL(trans_AmethystCTranslatorcb_70,1,bind);  arg1=it; it=AmethystCTranslator_rw(self ,arg0,arg1); FAILTEST(pass19);it=CALL(trans_AmethystCTranslatorcb_71,1,bind); 
+ it=CALL(trans_AmethystCTranslatorcb_66,1,bind); 
+ BSET(accept_1,it); it=CALL(trans_AmethystCTranslatorcb_67,1,bind); 
+ BSET(reject_1,it); it=CALL(trans_AmethystCTranslatorcb_68,1,bind); 
+ BSET(oldpos_1,it);  it=BGET(reject_1); arg0=it;it=CALL(trans_AmethystCTranslatorcb_69,1,bind);  arg1=it; it=AmethystCTranslator_rw(self ,arg0,arg1); FAILTEST(pass19);it=CALL(trans_AmethystCTranslatorcb_70,1,bind); 
  BSET(_result_1,it); 
 	if (CALL(eof,0)==failobj) goto pass19;
 	goto success19;
@@ -552,10 +552,10 @@ ame_setsrc(self,BGET(autovar_31)); ame_setpos(self,0); ame_setlen(self,FIX2INT(r
  
 ISET(cut,Qnil);goto accept1;
 alt1_14: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=CALL(trans_AmethystCTranslatorcb_72,1,bind);  arg0=it; it=AmethystCTranslator_clas(self ,arg0); FAILTEST(alt1_15);
+  it=CALL(trans_AmethystCTranslatorcb_71,1,bind);  arg0=it; it=AmethystCTranslator_clas(self ,arg0); FAILTEST(alt1_15);
  BSET(autovar_32,it); int oldpos28=ame_getpos(self); int oldlen20=ame_getlen(self); VALUE oldsrc20=ame_getsrc(self); int fail20=0;
 ame_setsrc(self,BGET(autovar_32)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
- it=rb_ary_new3(0);int oldpos29; while(1){oldpos29=ame_getpos(self);   it=CALL(anything,0 ); FAILTEST(break7); if (IGET(stop)!=Qnil){{oldpos29=ame_getpos(self);goto break7;} } } break7: ISET(stop,Qnil);  ame_setpos(self,oldpos29); it=CALL(trans_AmethystCTranslatorcb_73,1,bind); 
+ it=rb_ary_new3(0);int oldpos29; while(1){oldpos29=ame_getpos(self);   it=CALL(anything,0 ); FAILTEST(break7); if (IGET(stop)!=Qnil){{oldpos29=ame_getpos(self);goto break7;} } } break7: ISET(stop,Qnil);  ame_setpos(self,oldpos29); it=CALL(trans_AmethystCTranslatorcb_72,1,bind); 
  BSET(_result_1,it); 
 	if (CALL(eof,0)==failobj) goto pass20;
 	goto success20;
@@ -565,11 +565,11 @@ ame_setsrc(self,BGET(autovar_32)); ame_setpos(self,0); ame_setlen(self,FIX2INT(r
  
 ISET(cut,Qnil);goto accept1;
 alt1_15: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=CALL(trans_AmethystCTranslatorcb_74,1,bind);  arg0=it; it=AmethystCTranslator_clas(self ,arg0); FAILTEST(alt1_16);
+  it=CALL(trans_AmethystCTranslatorcb_73,1,bind);  arg0=it; it=AmethystCTranslator_clas(self ,arg0); FAILTEST(alt1_16);
  BSET(autovar_33,it); int oldpos30=ame_getpos(self); int oldlen21=ame_getlen(self); VALUE oldsrc21=ame_getsrc(self); int fail21=0;
 ame_setsrc(self,BGET(autovar_33)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
- it=CALL(trans_AmethystCTranslatorcb_75,1,bind); 
- BSET(autovar_34,it); it=CALL(trans_AmethystCTranslatorcb_76,1,bind); int oldpos31=ame_getpos(self); int oldlen22=ame_getlen(self); VALUE oldsrc22=ame_getsrc(self); int fail22=0;
+ it=CALL(trans_AmethystCTranslatorcb_74,1,bind); 
+ BSET(autovar_34,it); it=CALL(trans_AmethystCTranslatorcb_75,1,bind); int oldpos31=ame_getpos(self); int oldlen22=ame_getlen(self); VALUE oldsrc22=ame_getsrc(self); int fail22=0;
 ame_setsrc(self,BGET(autovar_34)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCTranslator_rbtrans(self ); FAILTEST(pass22);
  BSET(argss_1,it); 
@@ -578,7 +578,7 @@ ame_setsrc(self,BGET(autovar_34)); ame_setpos(self,0); ame_setlen(self,FIX2INT(r
 	pass22: fail22=1;
 	success22: ame_setsrc(self,oldsrc22); ame_setpos(self,oldpos31); ame_setlen(self,oldlen22);
 	if(fail22) goto pass21;
-it=CALL(trans_AmethystCTranslatorcb_77,1,bind); 
+it=CALL(trans_AmethystCTranslatorcb_76,1,bind); 
  BSET(_result_1,it); 
 	if (CALL(eof,0)==failobj) goto pass21;
 	goto success21;
@@ -588,16 +588,16 @@ it=CALL(trans_AmethystCTranslatorcb_77,1,bind);
  
 ISET(cut,Qnil);goto accept1;
 alt1_16: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=CALL(trans_AmethystCTranslatorcb_78,1,bind);  arg0=it; it=AmethystCTranslator_clas(self ,arg0); FAILTEST(alt1_17);
+  it=CALL(trans_AmethystCTranslatorcb_77,1,bind);  arg0=it; it=AmethystCTranslator_clas(self ,arg0); FAILTEST(alt1_17);
  BSET(autovar_35,it); int oldpos32=ame_getpos(self); int oldlen23=ame_getlen(self); VALUE oldsrc23=ame_getsrc(self); int fail23=0;
 ame_setsrc(self,BGET(autovar_35)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-  it=CALL(trans_AmethystCTranslatorcb_79,1,bind);  arg0=it; it=CALL(label,1 ,arg0); FAILTEST(pass23);
- BSET(pass_1,it);  it=CALL(trans_AmethystCTranslatorcb_80,1,bind);  arg0=it; it=CALL(label,1 ,arg0); FAILTEST(pass23);
- BSET(oldpos_1,it);  it=CALL(trans_AmethystCTranslatorcb_81,1,bind);  arg0=it; it=CALL(label,1 ,arg0); FAILTEST(pass23);
- BSET(oldlen_1,it);  it=CALL(trans_AmethystCTranslatorcb_82,1,bind);  arg0=it; it=CALL(label,1 ,arg0); FAILTEST(pass23);
- BSET(oldsrc_1,it);  it=CALL(trans_AmethystCTranslatorcb_83,1,bind);  arg0=it; it=CALL(label,1 ,arg0); FAILTEST(pass23);
- BSET(success_1,it);  it=CALL(trans_AmethystCTranslatorcb_84,1,bind);  arg0=it; it=CALL(label,1 ,arg0); FAILTEST(pass23);
- BSET(fail_1,it);  it=BGET(pass_1); arg0=it;it=CALL(trans_AmethystCTranslatorcb_87,1,bind);  arg1=it; it=AmethystCTranslator_rw(self ,arg0,arg1); FAILTEST(pass23);it=CALL(trans_AmethystCTranslatorcb_88,1,bind); 
+  it=CALL(trans_AmethystCTranslatorcb_78,1,bind);  arg0=it; it=CALL(label,1 ,arg0); FAILTEST(pass23);
+ BSET(pass_1,it);  it=CALL(trans_AmethystCTranslatorcb_79,1,bind);  arg0=it; it=CALL(label,1 ,arg0); FAILTEST(pass23);
+ BSET(oldpos_1,it);  it=CALL(trans_AmethystCTranslatorcb_80,1,bind);  arg0=it; it=CALL(label,1 ,arg0); FAILTEST(pass23);
+ BSET(oldlen_1,it);  it=CALL(trans_AmethystCTranslatorcb_81,1,bind);  arg0=it; it=CALL(label,1 ,arg0); FAILTEST(pass23);
+ BSET(oldsrc_1,it);  it=CALL(trans_AmethystCTranslatorcb_82,1,bind);  arg0=it; it=CALL(label,1 ,arg0); FAILTEST(pass23);
+ BSET(success_1,it);  it=CALL(trans_AmethystCTranslatorcb_83,1,bind);  arg0=it; it=CALL(label,1 ,arg0); FAILTEST(pass23);
+ BSET(fail_1,it);  it=BGET(pass_1); arg0=it;it=CALL(trans_AmethystCTranslatorcb_86,1,bind);  arg1=it; it=AmethystCTranslator_rw(self ,arg0,arg1); FAILTEST(pass23);it=CALL(trans_AmethystCTranslatorcb_87,1,bind); 
  BSET(_result_1,it); 
 	if (CALL(eof,0)==failobj) goto pass23;
 	goto success23;
@@ -647,8 +647,8 @@ VALUE AmethystCTranslator_trans_lambda3(VALUE self,VALUE bind){VALUE vals[0]; /*
 return it;
 fail: return failobj; }
 VALUE AmethystCTranslator_trans_lambda4(VALUE self,VALUE bind){VALUE vals[0]; /*todo unify with rule and get args*/  int x;VALUE it;VALUE arg0,arg1,arg2,arg3;
-it=CALL(trans_AmethystCTranslatorcb_85,1,bind); 
- BSET(autovar_36,it); it=CALL(trans_AmethystCTranslatorcb_86,1,bind); int oldpos33=ame_getpos(self); int oldlen24=ame_getlen(self); VALUE oldsrc24=ame_getsrc(self); int fail24=0;
+it=CALL(trans_AmethystCTranslatorcb_84,1,bind); 
+ BSET(autovar_36,it); it=CALL(trans_AmethystCTranslatorcb_85,1,bind); int oldpos33=ame_getpos(self); int oldlen24=ame_getlen(self); VALUE oldsrc24=ame_getsrc(self); int fail24=0;
 ame_setsrc(self,BGET(autovar_36)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCTranslator_trans(self ); FAILTEST(pass24);
  BSET(to_1,it); 

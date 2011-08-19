@@ -17,15 +17,6 @@ end
 def empty_Amethystcb_1(bind)
 nil
 end
-def endline_Amethystcb_1(bind)
-"\r\n"
-end
-def endline_Amethystcb_2(bind)
-"\r"
-end
-def endline_Amethystcb_3(bind)
-"\n"
-end
 def exactly_Amethystcb_1(bind)
 (bind[:wanted_1] == bind[:got_1]) || FAIL
 end
@@ -58,9 +49,6 @@ _append(bind[:autovar_1],bind[:autovar_2])
 end
 def upper_Amethystcb_1(bind)
 /[A-Z]/
-end
-def word_Amethystcb_1(bind)
-"_"
 end
 def xdigit_Amethystcb_1(bind)
 /[0-9a-fA-F]/
