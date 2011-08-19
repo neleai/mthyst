@@ -83,8 +83,8 @@ failobj=rb_eval_string(\"FAIL\");
 				| Act[ .*:{addcallback(@pred ? ["(",it,") || FAIL"] : it)}:cbno {"it=CALL(#{cbno},1,bind); #{@pred ? "FAILTEST(#{@@faillabel});" :"" }"} ]
 				| CAct[.*:c] ->"it=#{c};"
 				| Apply[ .=>["super"] {rule=@@ruletable[@@rulename];  failwrap(map_index(rule.args){|i|"vals[#{i}]=#{bget(rule.args[i].desc)};"}*""+ "it=rb_call_super(#{rule.args.size},vals);")} ]
-				| Apply[:name (.:{addcallback(it)}*):args 
-            failwrap(" #{map_index(args){|a|"arg#{a}=CALL(#{args[a]},1,bind);"}} it=#{callrule(name,args.size)};")]
+				| Apply[:name {0}:ii ( .:{addcallback(it)}:aa {ii+=1} {"arg#{ii-1}=CALL(#{aa},1,bind);"})*:args 
+            failwrap(" #{args} it=#{callrule(name,ii)};")]
 				| Seq[ trans*:t {t*""} ]
 				| Bind[ @expr=>trans:e {"#{e}\n #{bset(@name.desc,"it")}; " } ]
 				| Or[ {label("accept")}:accept {@@faillabel}:fail {label("oldpos")}:oldpos label("alt"):alt {0}:altno
