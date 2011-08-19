@@ -20,7 +20,7 @@ class Gram
 			Dead_Code_Deleter3,Seq_Or_Optimizer
 ].each{|o|
 			r=o.new.parse(:root,r)
-			puts r.inspect
+			#puts r.inspect
 		}
     @rules[r.name]=r 
 	end
@@ -37,6 +37,21 @@ class Gram
 		puts from
 		@rules[to]=Inliner2.new.parse(:root,[getrule(from), @rules[to]])
 	end
+end
+def resolvegrammar(grammar,name)
+		#return nil if !Compiler.grammars[grammar]
+		while !Compiler.grammars[grammar].rules[name]
+			grammar=Compiler.grammars[grammar].parent
+			if grammar=AmethystCore
+				if name=="seq"||name=="anything"
+					return nil
+					return "AmethystCore"
+				else
+					return nil
+				end
+			end
+		end
+		grammar
 end
 class Compiler
 end

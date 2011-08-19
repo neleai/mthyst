@@ -41,7 +41,7 @@ alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
  BSET(autovar_4,it); int oldpos5=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
 ame_setsrc(self,BGET(autovar_4)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
  it=CALL(trans_AmethystOptimizer2cb_11,1,bind); 
- BSET(autovar_5,it); int oldpos6; while(1){oldpos6=ame_getpos(self);   it=CALL(trans,0 ); FAILTEST(break2);
+ BSET(autovar_5,it); int oldpos6; while(1){oldpos6=ame_getpos(self);   it=AmethystOptimizer2_trans(self ); FAILTEST(break2);
  BSET(autovar_6,it); it=CALL(trans_AmethystOptimizer2cb_12,1,bind);  if (IGET(stop)!=Qnil){{oldpos6=ame_getpos(self);goto break2;} } } break2: ISET(stop,Qnil);  ame_setpos(self,oldpos6); it=BGET(autovar_5);
  BSET(ary_1,it); 
 	if (CALL(eof,0)==failobj) goto pass2;

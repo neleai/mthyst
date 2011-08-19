@@ -56,13 +56,13 @@ return it;
 fail: return failobj; }
 VALUE Amethyst_alnum(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-  it=CALL(letterOrDigit,0 ); FAILTEST(fail);
+  it=Amethyst_letterOrDigit(self ); FAILTEST(fail);
  BSET(_result_1,it); it=BGET(_result_1);
 return it;
 fail: return failobj; }
 VALUE Amethyst_alpha(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-  it=CALL(letter,0 ); FAILTEST(fail);
+  it=Amethyst_letter(self ); FAILTEST(fail);
  BSET(_result_1,it); it=BGET(_result_1);
 return it;
 fail: return failobj; }
@@ -121,11 +121,11 @@ VALUE Amethyst_eof(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;
 
 int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-   it=CALL(anything,0 ); FAILTEST(alt1_2);ISET(cut,Qtrue);  it=CALL(fails,0 ); FAILTEST(alt1_2);
+   it=CALL(anything,0 ); FAILTEST(alt1_2);ISET(cut,Qtrue);  it=Amethyst_fails(self ); FAILTEST(alt1_2);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-   it=CALL(empty,0 ); FAILTEST(alt1_3);
+   it=Amethyst_empty(self ); FAILTEST(alt1_3);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto fail;
@@ -150,11 +150,11 @@ VALUE Amethyst_letter(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int
 
 int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-   it=CALL(lower,0 ); FAILTEST(alt1_2);
+   it=Amethyst_lower(self ); FAILTEST(alt1_2);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-   it=CALL(upper,0 ); FAILTEST(alt1_3);
+   it=Amethyst_upper(self ); FAILTEST(alt1_3);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto fail;
@@ -166,11 +166,11 @@ VALUE Amethyst_letterOrDigit(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new(
 
 int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-   it=CALL(letter,0 ); FAILTEST(alt1_2);
+   it=Amethyst_letter(self ); FAILTEST(alt1_2);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-   it=CALL(digit,0 ); FAILTEST(alt1_3);
+   it=Amethyst_digit(self ); FAILTEST(alt1_3);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto fail;
@@ -191,7 +191,7 @@ alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-   it=CALL(empty,0 ); FAILTEST(alt1_3);it=CALL(listOf_Amethystcb_9,1,bind); 
+   it=Amethyst_empty(self ); FAILTEST(alt1_3);it=CALL(listOf_Amethystcb_9,1,bind); 
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto fail;
@@ -246,7 +246,7 @@ return it;
 fail: return failobj; }
 VALUE Amethyst_token(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=rb_hash_new(); BSET(s_1,a0); int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-  it=CALL(spaces,0 ); FAILTEST(fail); arg0=CALL(token_Amethystcb_1,1,bind); it=CALL(seq,1 ,arg0); FAILTEST(fail);
+  it=Amethyst_spaces(self ); FAILTEST(fail); arg0=CALL(token_Amethystcb_1,1,bind); it=CALL(seq,1 ,arg0); FAILTEST(fail);
  BSET(_result_1,it); it=BGET(_result_1);
 return it;
 fail: return failobj; }
@@ -265,7 +265,7 @@ VALUE Amethyst_word(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x
 
 int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-   it=CALL(alpha,0 ); FAILTEST(alt1_2);
+   it=Amethyst_alpha(self ); FAILTEST(alt1_2);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}

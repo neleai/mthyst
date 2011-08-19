@@ -68,7 +68,7 @@ ame_setsrc(self,BGET(autovar_3)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb
    it=CALL(anything,0 ); FAILTEST(pass3);
  BSET(autovar_4,it); int oldpos4=ame_getpos(self); int oldlen4=ame_getlen(self); VALUE oldsrc4=ame_getsrc(self); int fail4=0;
 ame_setsrc(self,BGET(autovar_4)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-   it=CALL(vars_in,0 ); FAILTEST(pass4);
+   it=Dataflow_vars_in(self ); FAILTEST(pass4);
  BSET(var_1,it); 
 	if (CALL(eof,0)==failobj) goto pass4;
 	goto success4;
@@ -172,7 +172,7 @@ alt1_5: ame_setpos(self,oldpos2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto brea
  BSET(_result_1,it); it=BGET(_result_1);
  BSET(autovar_9,it); int oldpos10=ame_getpos(self); int oldlen5=ame_getlen(self); VALUE oldsrc5=ame_getsrc(self); int fail5=0;
 ame_setsrc(self,BGET(autovar_9)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-   it=CALL(vars_in,0 ); FAILTEST(pass5);
+   it=Dataflow_vars_in(self ); FAILTEST(pass5);
  BSET(autovar_10,it); it=CALL(vars_in_Dataflowcb_23,1,bind); 
 	if (CALL(eof,0)==failobj) goto pass5;
 	goto success5;
@@ -188,7 +188,7 @@ alt1_6: ame_setpos(self,oldpos2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto brea
  BSET(_result_1,it); it=BGET(_result_1);
  BSET(autovar_11,it); int oldpos11=ame_getpos(self); int oldlen6=ame_getlen(self); VALUE oldsrc6=ame_getsrc(self); int fail6=0;
 ame_setsrc(self,BGET(autovar_11)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-   it=CALL(vars_in,0 ); FAILTEST(pass6);
+   it=Dataflow_vars_in(self ); FAILTEST(pass6);
  BSET(autovar_12,it); it=CALL(vars_in_Dataflowcb_26,1,bind); 
 	if (CALL(eof,0)==failobj) goto pass6;
 	goto success6;
@@ -207,7 +207,7 @@ ame_setsrc(self,BGET(autovar_13)); ame_setpos(self,0); ame_setlen(self,FIX2INT(r
  it=CALL(vars_in_Dataflowcb_29,1,bind); 
  BSET(autovar_14,it); it=CALL(vars_in_Dataflowcb_30,1,bind); int oldpos13=ame_getpos(self); int oldlen8=ame_getlen(self); VALUE oldsrc8=ame_getsrc(self); int fail8=0;
 ame_setsrc(self,BGET(autovar_14)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-   it=CALL(vars_in,0 ); FAILTEST(pass8);
+   it=Dataflow_vars_in(self ); FAILTEST(pass8);
  BSET(autovar_15,it); it=CALL(vars_in_Dataflowcb_31,1,bind); 
 	if (CALL(eof,0)==failobj) goto pass8;
 	goto success8;
@@ -263,7 +263,7 @@ ame_setsrc(self,BGET(autovar_2)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb
    it=CALL(anything,0 ); FAILTEST(pass2);
  BSET(autovar_3,it); int oldpos4=ame_getpos(self); int oldlen3=ame_getlen(self); VALUE oldsrc3=ame_getsrc(self); int fail3=0;
 ame_setsrc(self,BGET(autovar_3)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-   it=CALL(vars_in,0 ); FAILTEST(pass3);
+   it=Dataflow_vars_in(self ); FAILTEST(pass3);
  BSET(var_1,it); 
 	if (CALL(eof,0)==failobj) goto pass3;
 	goto success3;
@@ -350,7 +350,7 @@ ame_setsrc(self,BGET(autovar_8)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb
    it=CALL(anything,0 ); FAILTEST(pass8);
  BSET(autovar_9,it); int oldpos11=ame_getpos(self); int oldlen9=ame_getlen(self); VALUE oldsrc9=ame_getsrc(self); int fail9=0;
 ame_setsrc(self,BGET(autovar_9)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-   it=CALL(vars_in,0 ); FAILTEST(pass9);
+   it=Dataflow_vars_in(self ); FAILTEST(pass9);
  BSET(var_1,it); 
 	if (CALL(eof,0)==failobj) goto pass9;
 	goto success9;
@@ -402,7 +402,7 @@ ame_setsrc(self,BGET(autovar_12)); ame_setpos(self,0); ame_setlen(self,FIX2INT(r
    it=CALL(anything,0 ); FAILTEST(pass12);
  BSET(autovar_13,it); int oldpos15=ame_getpos(self); int oldlen13=ame_getlen(self); VALUE oldsrc13=ame_getsrc(self); int fail13=0;
 ame_setsrc(self,BGET(autovar_13)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-   it=CALL(vars_in,0 ); FAILTEST(pass13);
+   it=Dataflow_vars_in(self ); FAILTEST(pass13);
  BSET(var_1,it); 
 	if (CALL(eof,0)==failobj) goto pass13;
 	goto success13;

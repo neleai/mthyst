@@ -15,7 +15,7 @@ ame_setsrc(self,BGET(autovar_2)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb
  BSET(autovar_3,it); int oldpos5=ame_getpos(self); int oldlen3=ame_getlen(self); VALUE oldsrc3=ame_getsrc(self); int fail3=0;
 ame_setsrc(self,BGET(autovar_3)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=CALL(anything,0 ); FAILTEST(pass3);
- BSET(key_1,it);   it=CALL(traverse_item,0 ); FAILTEST(pass3);
+ BSET(key_1,it);   it=Traverser_traverse_item(self ); FAILTEST(pass3);
  BSET(it_1,it); it=CALL(traverse_Traversercb_4,1,bind); 
 	if (CALL(eof,0)==failobj) goto pass3;
 	goto success3;
@@ -54,7 +54,7 @@ alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
  BSET(autovar_1,it); int oldpos2=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,BGET(autovar_1)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
  it=CALL(traverse_item_Traversercb_4,1,bind); 
- BSET(autovar_2,it); int oldpos3; while(1){oldpos3=ame_getpos(self);   it=CALL(traverse_item,0 ); FAILTEST(break1);
+ BSET(autovar_2,it); int oldpos3; while(1){oldpos3=ame_getpos(self);   it=Traverser_traverse_item(self ); FAILTEST(break1);
  BSET(autovar_3,it); it=CALL(traverse_item_Traversercb_5,1,bind);  if (IGET(stop)!=Qnil){{oldpos3=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos3); it=BGET(autovar_2);
  BSET(_result_1,it); 
 	if (CALL(eof,0)==failobj) goto pass1;
@@ -71,7 +71,7 @@ alt1_3: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
  BSET(_result_2,it); it=BGET(_result_2);
  BSET(autovar_4,it); int oldpos4=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
 ame_setsrc(self,BGET(autovar_4)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-   it=CALL(traverse,0 ); FAILTEST(pass2);
+   it=Traverser_traverse(self ); FAILTEST(pass2);
  BSET(_result_1,it); 
 	if (CALL(eof,0)==failobj) goto pass2;
 	goto success2;
