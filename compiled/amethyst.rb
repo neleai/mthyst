@@ -1,10 +1,4 @@
 class Amethyst < AmethystCore
-def _false_Amethystcb_1(bind)
-false
-end
-def _true_Amethystcb_1(bind)
-true
-end
 def char_Amethystcb_1(bind)
 (bind[:c_1].is_a? String ) || FAIL
 end

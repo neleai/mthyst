@@ -111,6 +111,10 @@ class <<Act
 		exp=expr
 		exp=exp[0] if exp.is_a?(Args) && exp.size==1
 		return CAct["rb_ary_new3(0)"] if exp=="[]"
+		return CAct["Qtrue"] if exp=="true"
+		return CAct["Qfalse"] if exp=="false"
+		return CAct["Qnil"] if exp=="nil"
+
 		return CAct["rb_str_new2(#{exp})"] if exp.is_a?(String) && exp[0]==?\" && exp[-1]==?\"
 		return Act.create({:pred=>pred}) if expr==nil
 		Act.create(expr,{:pred=>pred})

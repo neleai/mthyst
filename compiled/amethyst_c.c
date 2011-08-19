@@ -40,7 +40,7 @@ VALUE Amethyst__false(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int
 
 int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=CALL(_false_Amethystcb_1,1,bind);  arg0=it; it=Amethyst_exactly(self ,arg0); FAILTEST(alt1_2); 
+  it=Qfalse; arg0=it; it=Amethyst_exactly(self ,arg0); FAILTEST(alt1_2); 
 ISET(cut,Qnil);goto accept1;
   alt1_2:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
@@ -52,7 +52,7 @@ VALUE Amethyst__true(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int 
 
 int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=CALL(_true_Amethystcb_1,1,bind);  arg0=it; it=Amethyst_exactly(self ,arg0); FAILTEST(alt1_2); 
+  it=Qtrue; arg0=it; it=Amethyst_exactly(self ,arg0); FAILTEST(alt1_2); 
 ISET(cut,Qnil);goto accept1;
   alt1_2:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
