@@ -11,6 +11,7 @@ makeclasses(Object,
     :Comment,
     [:Args,:o,:c,:r,:actno],
     [:Act,:uses,:pred,:actno,:pure],
+		[:CAct,:pred,:pure],
     [:Lookahead,:neg],
     :And,
     :Or,
@@ -106,6 +107,8 @@ class <<PureAct
 end
 class <<Act
 	def [](expr=nil,pred=nil)
+	puts expr.inspect
+		return CAct["rb_ary_new3(0)"] if expr=="[]" 
 		return Act.create({:pred=>pred}) if expr==nil
 		Act.create(expr,{:pred=>pred})
 	end

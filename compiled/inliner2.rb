@@ -36,15 +36,12 @@ def traverse_item_Renamer2cb_3(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def traverse_item_Renamer2cb_4(bind)
-[]
-end
-def traverse_item_Renamer2cb_5(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
 end
-def traverse_item_Renamer2cb_6(bind)
+def traverse_item_Renamer2cb_5(bind)
 AmethystAST
 end
-def traverse_item_Renamer2cb_7(bind)
+def traverse_item_Renamer2cb_6(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Renamer2cb_1(bind)
@@ -104,15 +101,12 @@ def traverse_item_DetectCallscb_3(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def traverse_item_DetectCallscb_4(bind)
-[]
-end
-def traverse_item_DetectCallscb_5(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
 end
-def traverse_item_DetectCallscb_6(bind)
+def traverse_item_DetectCallscb_5(bind)
 AmethystAST
 end
-def traverse_item_DetectCallscb_7(bind)
+def traverse_item_DetectCallscb_6(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_DetectCallscb_1(bind)
@@ -193,15 +187,12 @@ def traverse_item_Inliner2cb_3(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def traverse_item_Inliner2cb_4(bind)
-[]
-end
-def traverse_item_Inliner2cb_5(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
 end
-def traverse_item_Inliner2cb_6(bind)
+def traverse_item_Inliner2cb_5(bind)
 AmethystAST
 end
-def traverse_item_Inliner2cb_7(bind)
+def traverse_item_Inliner2cb_6(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Inliner2cb_1(bind)
@@ -214,12 +205,9 @@ def visit_Inliner2cb_3(bind)
 (bind[:name_1]==@name) || FAIL
 end
 def visit_Inliner2cb_4(bind)
-[]
-end
-def visit_Inliner2cb_5(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
 end
-def visit_Inliner2cb_6(bind)
+def visit_Inliner2cb_5(bind)
 body=@body;puts bind[:args_1].inspect; bind[:args_1].each_index{|i| body=Seq[Bind[{:name=>@args[i],:expr=>Act[bind[:args_1][i]]}],body] } ; body
 end
 

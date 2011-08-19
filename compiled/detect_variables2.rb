@@ -3,61 +3,52 @@ def clas_Analyze_Variables2cb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def flat_Analyze_Variables2cb_1(bind)
-[]
-end
-def flat_Analyze_Variables2cb_2(bind)
 Args
 end
-def flat_Analyze_Variables2cb_3(bind)
+def flat_Analyze_Variables2cb_2(bind)
 Strin
 end
-def flat_Analyze_Variables2cb_4(bind)
+def flat_Analyze_Variables2cb_3(bind)
 _append(bind[:autovar_1],bind[:autovar_3])
 end
 def itrans_Analyze_Variables2cb_1(bind)
 []
 end
 def itrans_Analyze_Variables2cb_10(bind)
-Rule
-end
-def itrans_Analyze_Variables2cb_11(bind)
-
-end
-def itrans_Analyze_Variables2cb_12(bind)
 _append(bind[:autovar_1],bind[:autovar_7])
 end
-def itrans_Analyze_Variables2cb_13(bind)
+def itrans_Analyze_Variables2cb_11(bind)
 @src.rules=bind[:rules_1]
 end
-def itrans_Analyze_Variables2cb_14(bind)
+def itrans_Analyze_Variables2cb_12(bind)
 @src.self
 end
-def itrans_Analyze_Variables2cb_15(bind)
+def itrans_Analyze_Variables2cb_13(bind)
 _append(bind[:autovar_2],bind[:autovar_8])
 end
 def itrans_Analyze_Variables2cb_2(bind)
 []
 end
 def itrans_Analyze_Variables2cb_3(bind)
-[]
-end
-def itrans_Analyze_Variables2cb_4(bind)
 Grammar
 end
-def itrans_Analyze_Variables2cb_5(bind)
+def itrans_Analyze_Variables2cb_4(bind)
 
 end
-def itrans_Analyze_Variables2cb_6(bind)
+def itrans_Analyze_Variables2cb_5(bind)
 @src.rules
 end
-def itrans_Analyze_Variables2cb_7(bind)
+def itrans_Analyze_Variables2cb_6(bind)
 bind[:autovar_4]=[bind[:autovar_4]]
 end
-def itrans_Analyze_Variables2cb_8(bind)
+def itrans_Analyze_Variables2cb_7(bind)
 
 end
+def itrans_Analyze_Variables2cb_8(bind)
+Rule
+end
 def itrans_Analyze_Variables2cb_9(bind)
-[]
+
 end
 def root_Analyze_Variables2cb_1(bind)
 @src.self
@@ -111,15 +102,12 @@ def traverse_item_Analyze_Variables2cb_3(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def traverse_item_Analyze_Variables2cb_4(bind)
-[]
-end
-def traverse_item_Analyze_Variables2cb_5(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
 end
-def traverse_item_Analyze_Variables2cb_6(bind)
+def traverse_item_Analyze_Variables2cb_5(bind)
 AmethystAST
 end
-def traverse_item_Analyze_Variables2cb_7(bind)
+def traverse_item_Analyze_Variables2cb_6(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Analyze_Variables2cb_1(bind)

@@ -54,15 +54,12 @@ def traverse_item_Dead_Code_Detector2cb_3(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def traverse_item_Dead_Code_Detector2cb_4(bind)
-[]
-end
-def traverse_item_Dead_Code_Detector2cb_5(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
 end
-def traverse_item_Dead_Code_Detector2cb_6(bind)
+def traverse_item_Dead_Code_Detector2cb_5(bind)
 AmethystAST
 end
-def traverse_item_Dead_Code_Detector2cb_7(bind)
+def traverse_item_Dead_Code_Detector2cb_6(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def vars_in_Dead_Code_Detector2cb_1(bind)
@@ -299,15 +296,12 @@ def traverse_item_Dead_Code_Deleter2cb_3(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def traverse_item_Dead_Code_Deleter2cb_4(bind)
-[]
-end
-def traverse_item_Dead_Code_Deleter2cb_5(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
 end
-def traverse_item_Dead_Code_Deleter2cb_6(bind)
+def traverse_item_Dead_Code_Deleter2cb_5(bind)
 AmethystAST
 end
-def traverse_item_Dead_Code_Deleter2cb_7(bind)
+def traverse_item_Dead_Code_Deleter2cb_6(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Dead_Code_Deleter2cb_1(bind)
@@ -408,21 +402,39 @@ def traverse_item_Communize_Or2cb_3(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def traverse_item_Communize_Or2cb_4(bind)
-[]
-end
-def traverse_item_Communize_Or2cb_5(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
 end
-def traverse_item_Communize_Or2cb_6(bind)
+def traverse_item_Communize_Or2cb_5(bind)
 AmethystAST
 end
-def traverse_item_Communize_Or2cb_7(bind)
+def traverse_item_Communize_Or2cb_6(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Communize_Or2cb_1(bind)
 Or
 end
-def visit_Communize_Or2cb_10(bind)
+def visit_Communize_Or2cb_2(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def visit_Communize_Or2cb_3(bind)
+Seq
+end
+def visit_Communize_Or2cb_4(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def visit_Communize_Or2cb_5(bind)
+_append(bind[:autovar_2],bind[:autovar_4])
+end
+def visit_Communize_Or2cb_6(bind)
+Seq
+end
+def visit_Communize_Or2cb_7(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def visit_Communize_Or2cb_8(bind)
+_append(bind[:autovar_2],bind[:autovar_5])
+end
+def visit_Communize_Or2cb_9(bind)
 common=bind[:ands_1][0].size
 								bind[:ands_1].each{|a| 0.upto(common){|n| (common=[common,n].min ;next) if a[n].to_yaml!=bind[:ands_1][0][n].to_yaml}}
 								commn=bind[:ands_1][0].ary[0,common]
@@ -430,30 +442,6 @@ common=bind[:ands_1][0].size
 								bind[:ands_1].each{|a| o<< Seq[{:ary=>a.ary[common,a.size-common]}] unless common==a.size	}
 	            	Seq[{:ary=>(commn+[Or[{:ary=>o}]])}]
 							
-end
-def visit_Communize_Or2cb_2(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def visit_Communize_Or2cb_3(bind)
-[]
-end
-def visit_Communize_Or2cb_4(bind)
-Seq
-end
-def visit_Communize_Or2cb_5(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def visit_Communize_Or2cb_6(bind)
-_append(bind[:autovar_2],bind[:autovar_4])
-end
-def visit_Communize_Or2cb_7(bind)
-Seq
-end
-def visit_Communize_Or2cb_8(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def visit_Communize_Or2cb_9(bind)
-_append(bind[:autovar_2],bind[:autovar_5])
 end
 
 end
@@ -493,21 +481,39 @@ def traverse_item_Communize_Or3cb_3(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def traverse_item_Communize_Or3cb_4(bind)
-[]
-end
-def traverse_item_Communize_Or3cb_5(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
 end
-def traverse_item_Communize_Or3cb_6(bind)
+def traverse_item_Communize_Or3cb_5(bind)
 AmethystAST
 end
-def traverse_item_Communize_Or3cb_7(bind)
+def traverse_item_Communize_Or3cb_6(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Communize_Or3cb_1(bind)
 Or
 end
-def visit_Communize_Or3cb_10(bind)
+def visit_Communize_Or3cb_2(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def visit_Communize_Or3cb_3(bind)
+Seq
+end
+def visit_Communize_Or3cb_4(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def visit_Communize_Or3cb_5(bind)
+_append(bind[:autovar_2],bind[:autovar_4])
+end
+def visit_Communize_Or3cb_6(bind)
+Seq
+end
+def visit_Communize_Or3cb_7(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def visit_Communize_Or3cb_8(bind)
+_append(bind[:autovar_2],bind[:autovar_5])
+end
+def visit_Communize_Or3cb_9(bind)
 com=[]
 							last=bind[:ands_1].shift
 							bind[:ands_1].each{|a|
@@ -522,30 +528,6 @@ com=[]
 							@src.ary=com
 							@src.self
 					
-end
-def visit_Communize_Or3cb_2(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def visit_Communize_Or3cb_3(bind)
-[]
-end
-def visit_Communize_Or3cb_4(bind)
-Seq
-end
-def visit_Communize_Or3cb_5(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def visit_Communize_Or3cb_6(bind)
-_append(bind[:autovar_2],bind[:autovar_4])
-end
-def visit_Communize_Or3cb_7(bind)
-Seq
-end
-def visit_Communize_Or3cb_8(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def visit_Communize_Or3cb_9(bind)
-_append(bind[:autovar_2],bind[:autovar_5])
 end
 
 end
@@ -565,76 +547,70 @@ def move_Move_Assignments2cb_1(bind)
 Or
 end
 def move_Move_Assignments2cb_10(bind)
-[]
-end
-def move_Move_Assignments2cb_11(bind)
-bind[:autovar_6]=[bind[:autovar_6]]
-end
-def move_Move_Assignments2cb_12(bind)
 bind[:append_1]
 end
-def move_Move_Assignments2cb_13(bind)
+def move_Move_Assignments2cb_11(bind)
 bind[:name_1]
 end
-def move_Move_Assignments2cb_14(bind)
+def move_Move_Assignments2cb_12(bind)
 _append(bind[:autovar_5],bind[:autovar_7])
 end
-def move_Move_Assignments2cb_15(bind)
+def move_Move_Assignments2cb_13(bind)
 Seq.create( {:ary=>bind[:ary_1] })
 end
-def move_Move_Assignments2cb_16(bind)
+def move_Move_Assignments2cb_14(bind)
 Pass
 end
-def move_Move_Assignments2cb_17(bind)
+def move_Move_Assignments2cb_15(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
-def move_Move_Assignments2cb_18(bind)
+def move_Move_Assignments2cb_16(bind)
 @src.var
 end
-def move_Move_Assignments2cb_19(bind)
+def move_Move_Assignments2cb_17(bind)
 @src.to
+end
+def move_Move_Assignments2cb_18(bind)
+bind[:autovar_9]=[bind[:autovar_9]]
+end
+def move_Move_Assignments2cb_19(bind)
+bind[:append_1]
 end
 def move_Move_Assignments2cb_2(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def move_Move_Assignments2cb_20(bind)
-bind[:autovar_9]=[bind[:autovar_9]]
-end
-def move_Move_Assignments2cb_21(bind)
-bind[:append_1]
-end
-def move_Move_Assignments2cb_22(bind)
 bind[:name_1]
 end
-def move_Move_Assignments2cb_23(bind)
+def move_Move_Assignments2cb_21(bind)
 @src.enter
 end
-def move_Move_Assignments2cb_24(bind)
+def move_Move_Assignments2cb_22(bind)
 Pass.create( {:ary=>bind[:ary_1],:enter=>bind[:enter_1],:to=>bind[:to_1],:var=>bind[:var_1] })
 end
-def move_Move_Assignments2cb_25(bind)
+def move_Move_Assignments2cb_23(bind)
 _Bind(bind[:name_1],bind[:it_1],bind[:append_1])
 end
 def move_Move_Assignments2cb_3(bind)
-[]
-end
-def move_Move_Assignments2cb_4(bind)
 bind[:append_1]
 end
-def move_Move_Assignments2cb_5(bind)
+def move_Move_Assignments2cb_4(bind)
 bind[:name_1]
 end
-def move_Move_Assignments2cb_6(bind)
+def move_Move_Assignments2cb_5(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
 end
-def move_Move_Assignments2cb_7(bind)
+def move_Move_Assignments2cb_6(bind)
 Or.create( {:ary=>bind[:ary_1] })
 end
-def move_Move_Assignments2cb_8(bind)
+def move_Move_Assignments2cb_7(bind)
 Seq
 end
-def move_Move_Assignments2cb_9(bind)
+def move_Move_Assignments2cb_8(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def move_Move_Assignments2cb_9(bind)
+bind[:autovar_6]=[bind[:autovar_6]]
 end
 def traverse_Move_Assignments2cb_1(bind)
 @src.self
@@ -661,15 +637,12 @@ def traverse_item_Move_Assignments2cb_3(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def traverse_item_Move_Assignments2cb_4(bind)
-[]
-end
-def traverse_item_Move_Assignments2cb_5(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
 end
-def traverse_item_Move_Assignments2cb_6(bind)
+def traverse_item_Move_Assignments2cb_5(bind)
 AmethystAST
 end
-def traverse_item_Move_Assignments2cb_7(bind)
+def traverse_item_Move_Assignments2cb_6(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Move_Assignments2cb_1(bind)
@@ -679,78 +652,72 @@ def visit_Move_Assignments2cb_10(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Move_Assignments2cb_11(bind)
-[]
-end
-def visit_Move_Assignments2cb_12(bind)
 bind[:append_2]
 end
-def visit_Move_Assignments2cb_13(bind)
+def visit_Move_Assignments2cb_12(bind)
 bind[:name_2]
 end
-def visit_Move_Assignments2cb_14(bind)
+def visit_Move_Assignments2cb_13(bind)
 _append(bind[:autovar_4],bind[:autovar_5])
 end
-def visit_Move_Assignments2cb_15(bind)
+def visit_Move_Assignments2cb_14(bind)
 Or.create( {:ary=>bind[:ary_1] })
 end
-def visit_Move_Assignments2cb_16(bind)
+def visit_Move_Assignments2cb_15(bind)
 Seq
 end
-def visit_Move_Assignments2cb_17(bind)
+def visit_Move_Assignments2cb_16(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
+def visit_Move_Assignments2cb_17(bind)
+bind[:autovar_8]=[bind[:autovar_8]]
+end
 def visit_Move_Assignments2cb_18(bind)
-[]
+bind[:append_2]
 end
 def visit_Move_Assignments2cb_19(bind)
-bind[:autovar_8]=[bind[:autovar_8]]
+bind[:name_2]
 end
 def visit_Move_Assignments2cb_2(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Move_Assignments2cb_20(bind)
-bind[:append_2]
-end
-def visit_Move_Assignments2cb_21(bind)
-bind[:name_2]
-end
-def visit_Move_Assignments2cb_22(bind)
 _append(bind[:autovar_7],bind[:autovar_9])
 end
-def visit_Move_Assignments2cb_23(bind)
+def visit_Move_Assignments2cb_21(bind)
 Seq.create( {:ary=>bind[:ary_1] })
 end
-def visit_Move_Assignments2cb_24(bind)
+def visit_Move_Assignments2cb_22(bind)
 Pass
 end
-def visit_Move_Assignments2cb_25(bind)
+def visit_Move_Assignments2cb_23(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
-def visit_Move_Assignments2cb_26(bind)
+def visit_Move_Assignments2cb_24(bind)
 @src.var
 end
-def visit_Move_Assignments2cb_27(bind)
+def visit_Move_Assignments2cb_25(bind)
 @src.to
 end
-def visit_Move_Assignments2cb_28(bind)
+def visit_Move_Assignments2cb_26(bind)
 bind[:autovar_11]=[bind[:autovar_11]]
 end
-def visit_Move_Assignments2cb_29(bind)
+def visit_Move_Assignments2cb_27(bind)
 bind[:append_2]
+end
+def visit_Move_Assignments2cb_28(bind)
+bind[:name_2]
+end
+def visit_Move_Assignments2cb_29(bind)
+@src.enter
 end
 def visit_Move_Assignments2cb_3(bind)
 @src.name
 end
 def visit_Move_Assignments2cb_30(bind)
-bind[:name_2]
-end
-def visit_Move_Assignments2cb_31(bind)
-@src.enter
-end
-def visit_Move_Assignments2cb_32(bind)
 Pass.create( {:ary=>bind[:ary_1],:enter=>bind[:enter_1],:to=>bind[:to_1],:var=>bind[:var_1] })
 end
-def visit_Move_Assignments2cb_33(bind)
+def visit_Move_Assignments2cb_31(bind)
 _Bind(bind[:name_2],bind[:it_1],bind[:append_2])
 end
 def visit_Move_Assignments2cb_4(bind)

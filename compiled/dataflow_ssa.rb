@@ -95,15 +95,12 @@ def traverse_item_CloneLocalscb_3(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def traverse_item_CloneLocalscb_4(bind)
-[]
-end
-def traverse_item_CloneLocalscb_5(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
 end
-def traverse_item_CloneLocalscb_6(bind)
+def traverse_item_CloneLocalscb_5(bind)
 AmethystAST
 end
-def traverse_item_CloneLocalscb_7(bind)
+def traverse_item_CloneLocalscb_6(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_CloneLocalscb_1(bind)
@@ -181,15 +178,12 @@ def traverse_item_Dataflowcb_3(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def traverse_item_Dataflowcb_4(bind)
-[]
-end
-def traverse_item_Dataflowcb_5(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
 end
-def traverse_item_Dataflowcb_6(bind)
+def traverse_item_Dataflowcb_5(bind)
 AmethystAST
 end
-def traverse_item_Dataflowcb_7(bind)
+def traverse_item_Dataflowcb_6(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def vars_in_Dataflowcb_1(bind)
@@ -441,15 +435,12 @@ def traverse_item_Dead_Code_Deleter3cb_3(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def traverse_item_Dead_Code_Deleter3cb_4(bind)
-[]
-end
-def traverse_item_Dead_Code_Deleter3cb_5(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
 end
-def traverse_item_Dead_Code_Deleter3cb_6(bind)
+def traverse_item_Dead_Code_Deleter3cb_5(bind)
 AmethystAST
 end
-def traverse_item_Dead_Code_Deleter3cb_7(bind)
+def traverse_item_Dead_Code_Deleter3cb_6(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Dead_Code_Deleter3cb_1(bind)
