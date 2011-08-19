@@ -92,15 +92,24 @@ def traverse_item_CloneLocalscb_2(bind)
 Array
 end
 def traverse_item_CloneLocalscb_3(bind)
-_append(bind[:autovar_2],bind[:autovar_3])
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def traverse_item_CloneLocalscb_4(bind)
+_append(bind[:autovar_2],bind[:autovar_3])
+end
+def traverse_item_CloneLocalscb_5(bind)
 AmethystAST
+end
+def traverse_item_CloneLocalscb_6(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_CloneLocalscb_1(bind)
 Local
 end
 def visit_CloneLocalscb_2(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def visit_CloneLocalscb_3(bind)
 @src.self.clone
 end
 
@@ -166,10 +175,16 @@ def traverse_item_Dataflowcb_2(bind)
 Array
 end
 def traverse_item_Dataflowcb_3(bind)
-_append(bind[:autovar_2],bind[:autovar_3])
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def traverse_item_Dataflowcb_4(bind)
+_append(bind[:autovar_2],bind[:autovar_3])
+end
+def traverse_item_Dataflowcb_5(bind)
 AmethystAST
+end
+def traverse_item_Dataflowcb_6(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def vars_in_Dataflowcb_1(bind)
 bind[:ary_1]=[]
@@ -253,94 +268,115 @@ def visit_Dataflowcb_1(bind)
 Apply
 end
 def visit_Dataflowcb_10(bind)
-bind[:join_1]<<oldssanums.clone
+oldssanums.clone
 end
 def visit_Dataflowcb_11(bind)
-or_end(bind[:join_1])
+@oldssanums=bind[:old_1].clone
 end
 def visit_Dataflowcb_12(bind)
-@src.self
+bind[:join_1]<<oldssanums.clone
 end
 def visit_Dataflowcb_13(bind)
-Many
+or_end(bind[:join_1])
 end
 def visit_Dataflowcb_14(bind)
-ssanums.clone
-end
-def visit_Dataflowcb_15(bind)
-many_end(bind[:prev_1])
-end
-def visit_Dataflowcb_16(bind)
 @src.self
 end
+def visit_Dataflowcb_15(bind)
+Many
+end
+def visit_Dataflowcb_16(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
 def visit_Dataflowcb_17(bind)
-Pass
+ssanums.clone
 end
 def visit_Dataflowcb_18(bind)
-@marked<<ssanum(@src.var)
+many_end(bind[:prev_1])
 end
 def visit_Dataflowcb_19(bind)
 @src.self
 end
 def visit_Dataflowcb_2(bind)
-@src.self
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Dataflowcb_20(bind)
-Act
+Pass
 end
 def visit_Dataflowcb_21(bind)
-@marked<<bind[:this_1] if @src.pred || !@src.pure
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Dataflowcb_22(bind)
-@src.ary
+@marked<<ssanum(@src.var)
 end
 def visit_Dataflowcb_23(bind)
-bind[:autovar_8]=[bind[:autovar_8]]
-end
-def visit_Dataflowcb_24(bind)
-bind[:var_1].each{|v| edges.add(ssanum(v),bind[:this_1]); edges.add(bind[:this_1],newssanum(v.clone));}; bind[:this_1]
-end
-def visit_Dataflowcb_25(bind)
-Bind
-end
-def visit_Dataflowcb_26(bind)
-set_end(@src.self) 
-end
-def visit_Dataflowcb_27(bind)
 @src.self
 end
+def visit_Dataflowcb_24(bind)
+Act
+end
+def visit_Dataflowcb_25(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def visit_Dataflowcb_26(bind)
+@marked<<bind[:this_1] if @src.pred || !@src.pure
+end
+def visit_Dataflowcb_27(bind)
+@src.ary
+end
 def visit_Dataflowcb_28(bind)
-Result
+bind[:autovar_8]=[bind[:autovar_8]]
 end
 def visit_Dataflowcb_29(bind)
-@src.vars
+bind[:var_1].each{|v| edges.add(ssanum(v),bind[:this_1]); edges.add(bind[:this_1],newssanum(v.clone));}; bind[:this_1]
 end
 def visit_Dataflowcb_3(bind)
-bind[:autovar_2]=[bind[:autovar_2]]
+@src.self
 end
 def visit_Dataflowcb_30(bind)
-bind[:autovar_12]=[bind[:autovar_12]]
+Bind
 end
 def visit_Dataflowcb_31(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def visit_Dataflowcb_32(bind)
+set_end(@src.self) 
+end
+def visit_Dataflowcb_33(bind)
+@src.self
+end
+def visit_Dataflowcb_34(bind)
+Result
+end
+def visit_Dataflowcb_35(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def visit_Dataflowcb_36(bind)
+@src.vars
+end
+def visit_Dataflowcb_37(bind)
+bind[:autovar_12]=[bind[:autovar_12]]
+end
+def visit_Dataflowcb_38(bind)
 bind[:var_1].each{|w| @edges.add(ssanum(w),bind[:this_1]) } ; bind[:this_1]
 end
 def visit_Dataflowcb_4(bind)
-bind[:var_1].each{|v| @marked<<ssanum(v)}
+bind[:autovar_2]=[bind[:autovar_2]]
 end
 def visit_Dataflowcb_5(bind)
-@src.self
+bind[:var_1].each{|v| @marked<<ssanum(v)}
 end
 def visit_Dataflowcb_6(bind)
-Or
+@src.self
 end
 def visit_Dataflowcb_7(bind)
-[]
+Or
 end
 def visit_Dataflowcb_8(bind)
-oldssanums.clone
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Dataflowcb_9(bind)
-@oldssanums=bind[:old_1].clone
+[]
 end
 
 end
@@ -393,49 +429,67 @@ def traverse_item_Dead_Code_Deleter3cb_2(bind)
 Array
 end
 def traverse_item_Dead_Code_Deleter3cb_3(bind)
-_append(bind[:autovar_2],bind[:autovar_3])
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def traverse_item_Dead_Code_Deleter3cb_4(bind)
+_append(bind[:autovar_2],bind[:autovar_3])
+end
+def traverse_item_Dead_Code_Deleter3cb_5(bind)
 AmethystAST
+end
+def traverse_item_Dead_Code_Deleter3cb_6(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Dead_Code_Deleter3cb_1(bind)
 Act
 end
 def visit_Dead_Code_Deleter3cb_10(bind)
-@reachable[bind[:this_1]] ? bind[:this_1] : Act[]
+Result
 end
 def visit_Dead_Code_Deleter3cb_11(bind)
-Local
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Dead_Code_Deleter3cb_12(bind)
 @src.self
 end
 def visit_Dead_Code_Deleter3cb_13(bind)
+@reachable[bind[:this_1]] ? bind[:this_1] : Act[]
+end
+def visit_Dead_Code_Deleter3cb_14(bind)
+Local
+end
+def visit_Dead_Code_Deleter3cb_15(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def visit_Dead_Code_Deleter3cb_16(bind)
+@src.self
+end
+def visit_Dead_Code_Deleter3cb_17(bind)
 @reachable[bind[:this_1].ssaname] ? bind[:this_1] : Act[]
 end
 def visit_Dead_Code_Deleter3cb_2(bind)
-@src.self
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Dead_Code_Deleter3cb_3(bind)
-@reachable[bind[:this_1]] ? bind[:this_1] : Act[]
+@src.self
 end
 def visit_Dead_Code_Deleter3cb_4(bind)
-Bind
+@reachable[bind[:this_1]] ? bind[:this_1] : Act[]
 end
 def visit_Dead_Code_Deleter3cb_5(bind)
-@src.expr
+Bind
 end
 def visit_Dead_Code_Deleter3cb_6(bind)
-@src.self
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Dead_Code_Deleter3cb_7(bind)
-@reachable[bind[:this_1]] ? bind[:this_1] : bind[:expr_1]
+@src.expr
 end
 def visit_Dead_Code_Deleter3cb_8(bind)
-Result
+@src.self
 end
 def visit_Dead_Code_Deleter3cb_9(bind)
-@src.self
+@reachable[bind[:this_1]] ? bind[:this_1] : bind[:expr_1]
 end
 
 end

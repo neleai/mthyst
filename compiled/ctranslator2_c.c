@@ -9,9 +9,7 @@ VALUE AmethystCTranslator_failwrap(VALUE self ,VALUE a0);
 VALUE AmethystCTranslator_itrans(VALUE self );
 VALUE AmethystCTranslator_rbcode(VALUE self );
 VALUE AmethystCTranslator_rbtrans(VALUE self );
-VALUE AmethystCTranslator_regch(VALUE self ,VALUE a0);
 VALUE AmethystCTranslator_rw(VALUE self ,VALUE a0,VALUE a1);
-VALUE AmethystCTranslator_space(VALUE self );
 VALUE AmethystCTranslator_spaces(VALUE self );
 VALUE AmethystCTranslator_token(VALUE self ,VALUE a0);
 VALUE AmethystCTranslator_trans(VALUE self );
@@ -252,13 +250,6 @@ ISET(cut,Qnil);goto accept1;
 it=BGET(_result_1);
 return it;
 fail: return failobj; }
-VALUE AmethystCTranslator_regch(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=rb_hash_new(); BSET(regex_1,a0); int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
-
-  it=AmethystCTranslator_char(self ); FAILTEST(fail);
- BSET(c_1,it); it=CALL(regch_AmethystCTranslatorcb_1,1,bind); FAILTEST(fail);it=BGET(c_1);
- BSET(_result_1,it); it=BGET(_result_1);
-return it;
-fail: return failobj; }
 VALUE AmethystCTranslator_rw(VALUE self ,VALUE a0,VALUE a1){VALUE vals[2]; VALUE bind=rb_hash_new(); BSET(word_1,a0);BSET(prc_1,a1); int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 it=CALL(rw_AmethystCTranslatorcb_1,1,bind); 
@@ -267,18 +258,18 @@ it=CALL(rw_AmethystCTranslatorcb_1,1,bind);
  BSET(_result_1,it); it=BGET(_result_1);
 return it;
 fail: return failobj; }
-VALUE AmethystCTranslator_space(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
-
- it=CALL(space_AmethystCTranslatorcb_1,1,bind);  arg0=it; it=AmethystCTranslator_regch(self ,arg0); FAILTEST(fail);
- BSET(_result_1,it); it=BGET(_result_1);
-return it;
-fail: return failobj; }
 VALUE AmethystCTranslator_spaces(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 it=rb_ary_new3(0);it=rb_ary_new3(0);
- BSET(autovar_1,it); int oldpos1; while(1){oldpos1=ame_getpos(self);   it=AmethystCTranslator_space(self ); FAILTEST(break1);
- BSET(autovar_2,it); it=CALL(spaces_AmethystCTranslatorcb_1,1,bind);  if (IGET(stop)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos1); it=BGET(autovar_1);
+ BSET(autovar_1,it); int oldpos1; while(1){oldpos1=ame_getpos(self); it=CALL(spaces_AmethystCTranslatorcb_1,1,bind); 
+ BSET(regex_1,it);   it=CALL(anything,0 ); FAILTEST(break1);
+ BSET(c_1,it); it=CALL(spaces_AmethystCTranslatorcb_2,1,bind); FAILTEST(break1);it=BGET(c_1);
  BSET(_result_1,it); it=BGET(_result_1);
+ BSET(c_2,it); it=CALL(spaces_AmethystCTranslatorcb_3,1,bind); FAILTEST(break1);it=BGET(c_2);
+ BSET(_result_2,it); it=BGET(_result_2);
+ BSET(_result_3,it); it=BGET(_result_3);
+ BSET(autovar_2,it); it=CALL(spaces_AmethystCTranslatorcb_4,1,bind);  if (IGET(stop)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos1); it=BGET(autovar_1);
+ BSET(_result_4,it); it=BGET(_result_4);
 return it;
 fail: return failobj; }
 VALUE AmethystCTranslator_token(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=rb_hash_new(); BSET(s_1,a0); int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -677,9 +668,7 @@ rb_define_method(cls_AmethystCTranslator,"failwrap",AmethystCTranslator_failwrap
 rb_define_method(cls_AmethystCTranslator,"itrans",AmethystCTranslator_itrans,0);
 rb_define_method(cls_AmethystCTranslator,"rbcode",AmethystCTranslator_rbcode,0);
 rb_define_method(cls_AmethystCTranslator,"rbtrans",AmethystCTranslator_rbtrans,0);
-rb_define_method(cls_AmethystCTranslator,"regch",AmethystCTranslator_regch,1);
 rb_define_method(cls_AmethystCTranslator,"rw",AmethystCTranslator_rw,2);
-rb_define_method(cls_AmethystCTranslator,"space",AmethystCTranslator_space,0);
 rb_define_method(cls_AmethystCTranslator,"spaces",AmethystCTranslator_spaces,0);
 rb_define_method(cls_AmethystCTranslator,"token",AmethystCTranslator_token,1);
 rb_define_method(cls_AmethystCTranslator,"trans",AmethystCTranslator_trans,0);

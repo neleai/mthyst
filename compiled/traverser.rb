@@ -28,19 +28,22 @@ def traverse_item_Traversercb_2(bind)
 Array
 end
 def traverse_item_Traversercb_3(bind)
-_append(bind[:autovar_2],bind[:autovar_3])
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def traverse_item_Traversercb_4(bind)
+_append(bind[:autovar_2],bind[:autovar_3])
+end
+def traverse_item_Traversercb_5(bind)
 AmethystAST
+end
+def traverse_item_Traversercb_6(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 
 end
 
 
 class Detector < Traverser
-def clas_Detectorcb_1(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
 def root_Detectorcb_1(bind)
 @detected=[]
 end
@@ -69,10 +72,16 @@ def traverse_item_Detectorcb_2(bind)
 Array
 end
 def traverse_item_Detectorcb_3(bind)
-_append(bind[:autovar_2],bind[:autovar_3])
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def traverse_item_Detectorcb_4(bind)
+_append(bind[:autovar_2],bind[:autovar_3])
+end
+def traverse_item_Detectorcb_5(bind)
 AmethystAST
+end
+def traverse_item_Detectorcb_6(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Detectorcb_1(bind)
 @detected<<bind[:it_1]

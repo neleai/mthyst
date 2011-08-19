@@ -54,18 +54,21 @@ def root_Analyze_Variables2cb_3(bind)
 Rule
 end
 def root_Analyze_Variables2cb_4(bind)
-@bnding=@src.bnding
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def root_Analyze_Variables2cb_5(bind)
-@variables=Hash.new{|k,v| k[v]=v} ;(@src.locals+@src.args).each{|w| @variables[w[0]]=w}
+@bnding=@src.bnding
 end
 def root_Analyze_Variables2cb_6(bind)
-@locals=@src.locals
+@variables=Hash.new{|k,v| k[v]=v} ;(@src.locals+@src.args).each{|w| @variables[w[0]]=w}
 end
 def root_Analyze_Variables2cb_7(bind)
-@src.body=Seq[{:ary=>[@src.body] }];@src.locals=nil
+@locals=@src.locals
 end
 def root_Analyze_Variables2cb_8(bind)
+@src.body=Seq[{:ary=>[@src.body] }];@src.locals=nil
+end
+def root_Analyze_Variables2cb_9(bind)
 @src.self
 end
 def traverse_Analyze_Variables2cb_1(bind)
@@ -90,46 +93,64 @@ def traverse_item_Analyze_Variables2cb_2(bind)
 Array
 end
 def traverse_item_Analyze_Variables2cb_3(bind)
-_append(bind[:autovar_2],bind[:autovar_3])
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def traverse_item_Analyze_Variables2cb_4(bind)
+_append(bind[:autovar_2],bind[:autovar_3])
+end
+def traverse_item_Analyze_Variables2cb_5(bind)
 AmethystAST
+end
+def traverse_item_Analyze_Variables2cb_6(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Analyze_Variables2cb_1(bind)
 Args
 end
 def visit_Analyze_Variables2cb_10(bind)
-Result
+bind[:autovar_5]=[bind[:autovar_5]]
 end
 def visit_Analyze_Variables2cb_11(bind)
-@src.vars=@locals.select{|aa| @src.vars.include? aa[0].to_sym}.uniq
+Local
 end
 def visit_Analyze_Variables2cb_12(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def visit_Analyze_Variables2cb_13(bind)
+Result
+end
+def visit_Analyze_Variables2cb_14(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def visit_Analyze_Variables2cb_15(bind)
+@src.vars=@locals.select{|aa| @src.vars.include? aa[0].to_sym}.uniq
+end
+def visit_Analyze_Variables2cb_16(bind)
 @src.self
 end
 def visit_Analyze_Variables2cb_2(bind)
-@src.ary.map{|aa| @variables[aa] }
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Analyze_Variables2cb_3(bind)
-bind[:autovar_2]=[bind[:autovar_2]]
+@src.ary.map{|aa| @variables[aa] }
 end
 def visit_Analyze_Variables2cb_4(bind)
-@src.ary=connectstring(bind[:a_1].flatten)
+bind[:autovar_2]=[bind[:autovar_2]]
 end
 def visit_Analyze_Variables2cb_5(bind)
-(@src.ary.size==1&&(@src.ary[0].is_a?(Local)||@src.ary[0].is_a?(Global)||@src.ary[0].is_a?(Key))) ? @src.ary[0] : @src.self
+@src.ary=connectstring(bind[:a_1].flatten)
 end
 def visit_Analyze_Variables2cb_6(bind)
-Act
+(@src.ary.size==1&&(@src.ary[0].is_a?(Local)||@src.ary[0].is_a?(Global)||@src.ary[0].is_a?(Key))) ? @src.ary[0] : @src.self
 end
 def visit_Analyze_Variables2cb_7(bind)
-@src.ary
+Act
 end
 def visit_Analyze_Variables2cb_8(bind)
-bind[:autovar_5]=[bind[:autovar_5]]
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Analyze_Variables2cb_9(bind)
-Local
+@src.ary
 end
 
 end

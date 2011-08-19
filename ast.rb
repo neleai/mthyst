@@ -108,11 +108,11 @@ end
 class <<Act
 	def [](expr=nil,pred=nil)
 		if !pred
-			puts expr.inspect
+			#puts expr.inspect
 			expr=expr[0] if expr.is_a?(Array) && expr.size==1
 			exp=expr
 			exp=exp[0] if exp.is_a?(Args) && exp.size==1
-			puts exp.inspect
+			#puts exp.inspect
 			return CAct["rb_ary_new3(0)"] if exp=="[]"
 			return CAct["Qtrue"] if exp=="true"
 			return CAct["Qfalse"] if exp=="false"

@@ -172,9 +172,6 @@ end
 def rbtrans_AmethystCTranslatorcb_9(bind)
 Strin
 end
-def regch_AmethystCTranslatorcb_1(bind)
-(bind[:regex_1].match(bind[:c_1])) || FAIL
-end
 def rw_AmethystCTranslatorcb_1(bind)
 @faillabel
 end
@@ -184,10 +181,16 @@ end
 def rw_AmethystCTranslatorcb_3(bind)
 @faillabel=bind[:rwo_1]; bind[:x_1] 
 end
-def space_AmethystCTranslatorcb_1(bind)
+def spaces_AmethystCTranslatorcb_1(bind)
 /[\s\t\r\n\f]/
 end
-def spaces_AmethystCTranslatorcb_1(bind)
+def spaces_AmethystCTranslatorcb_2(bind)
+(bind[:c_1].is_a? String ) || FAIL
+end
+def spaces_AmethystCTranslatorcb_3(bind)
+(bind[:regex_1].match(bind[:c_2])) || FAIL
+end
+def spaces_AmethystCTranslatorcb_4(bind)
 _append(bind[:autovar_1],bind[:autovar_2])
 end
 def trans_AmethystCTranslatorcb_1(bind)

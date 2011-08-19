@@ -33,18 +33,27 @@ def traverse_item_Renamer2cb_2(bind)
 Array
 end
 def traverse_item_Renamer2cb_3(bind)
-_append(bind[:autovar_2],bind[:autovar_3])
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def traverse_item_Renamer2cb_4(bind)
+_append(bind[:autovar_2],bind[:autovar_3])
+end
+def traverse_item_Renamer2cb_5(bind)
 AmethystAST
+end
+def traverse_item_Renamer2cb_6(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Renamer2cb_1(bind)
 Local
 end
 def visit_Renamer2cb_2(bind)
-@src.self
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Renamer2cb_3(bind)
+@src.self
+end
+def visit_Renamer2cb_4(bind)
 @newvars[bind[:this_1]] ? @newvars[bind[:this_1]] : ($av+=1; @newvars[bind[:this_1]]=_Local(bind[:name_1],$av) ;@newvars[bind[:this_1]] )
 end
 
@@ -89,18 +98,27 @@ def traverse_item_DetectCallscb_2(bind)
 Array
 end
 def traverse_item_DetectCallscb_3(bind)
-_append(bind[:autovar_2],bind[:autovar_3])
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def traverse_item_DetectCallscb_4(bind)
+_append(bind[:autovar_2],bind[:autovar_3])
+end
+def traverse_item_DetectCallscb_5(bind)
 AmethystAST
+end
+def traverse_item_DetectCallscb_6(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_DetectCallscb_1(bind)
 Apply
 end
 def visit_DetectCallscb_2(bind)
-@calls[bind[:name_1]]=true 
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_DetectCallscb_3(bind)
+@calls[bind[:name_1]]=true 
+end
+def visit_DetectCallscb_4(bind)
 @src.self
 end
 
@@ -166,22 +184,31 @@ def traverse_item_Inliner2cb_2(bind)
 Array
 end
 def traverse_item_Inliner2cb_3(bind)
-_append(bind[:autovar_2],bind[:autovar_3])
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def traverse_item_Inliner2cb_4(bind)
+_append(bind[:autovar_2],bind[:autovar_3])
+end
+def traverse_item_Inliner2cb_5(bind)
 AmethystAST
+end
+def traverse_item_Inliner2cb_6(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Inliner2cb_1(bind)
 Apply
 end
 def visit_Inliner2cb_2(bind)
-(bind[:name_1]==@name) || FAIL
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Inliner2cb_3(bind)
-_append(bind[:autovar_2],bind[:autovar_3])
+(bind[:name_1]==@name) || FAIL
 end
 def visit_Inliner2cb_4(bind)
-body=@body;puts bind[:args_1].inspect; bind[:args_1].each_index{|i| body=Seq[Bind[{:name=>@args[i],:expr=>Act[bind[:args_1][i]]}],body] } ; body
+_append(bind[:autovar_2],bind[:autovar_3])
+end
+def visit_Inliner2cb_5(bind)
+body=@body;puts bind[:args_1].inspect; bind[:args_1].each_index{|i| body=Seq[Bind[{:name=>@args[i],:expr=>bind[:args_1][i]}],body] } ; body
 end
 
 end

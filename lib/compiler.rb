@@ -1,3 +1,4 @@
+$OPT="-O2"
 class Gram
 	attr_accessor :name,:parent,:rules
 	def initialize(grammar)
@@ -78,7 +79,7 @@ if true
 				calls= DetectCalls.new.parse(:root,[@grammars[grammar.name].rules[name]])
 				calls.each{|nm,v|
 					r=@grammars[grammar.name].getrule(nm)
-					if r && topo.index(nm)<topo.index(name) && false
+					if r && topo.index(nm)<topo.index(name) 
 						@grammars[grammar.name].inline(nm,name) if r.args.size>0 && !(/arg/=~r.name) 
 						@grammars[grammar.name].inline(nm,name) if ["char","space"].include?(r.name)
 					end
@@ -107,7 +108,7 @@ end
     }
     File.open("compiled/#{file2}.rb","w"){|f| f.puts rb; f.puts "\n require 'compiled/#{file2}_c'"}
 	  withtime("c"){
-    `cd compiled;gcc -I. -I/usr/lib/ruby/1.8/x86_64-linux -I/usr/lib/ruby/1.8/x86_64-linux -I.   -fPIC -fno-strict-aliasing -g -g   -fPIC   -c #{file2}_c.c`
+    `cd compiled;gcc -I. -I/usr/lib/ruby/1.8/x86_64-linux -I/usr/lib/ruby/1.8/x86_64-linux -I.   -fPIC -fno-strict-aliasing -g -g #$OPT  -fPIC   -c #{file2}_c.c`
     `cd compiled;gcc -shared -o #{file2}_c.so #{file2}_c.o -L. -L/usr/lib -L.  -rdynamic -Wl,-export-dynamic -lruby1.8  -lpthread -lrt -ldl -lcrypt -lm   -lc`
   	}
 
@@ -140,7 +141,7 @@ def compile_to_c(file)
   }
   File.open("c/#{file}.rb","w"){|f| f.puts rb; f.puts "\n require 'c/#{file}_c'"}
 	withtime("c"){
-  	`cd c;gcc -I. -I/usr/lib/ruby/1.8/x86_64-linux -I/usr/lib/ruby/1.8/x86_64-linux -I.   -fPIC -fno-strict-aliasing -g -g   -fPIC   -c #{file}_c.c`
+  	`cd c;gcc -I. -I/usr/lib/ruby/1.8/x86_64-linux -I/usr/lib/ruby/1.8/x86_64-linux -I.   -fPIC -fno-strict-aliasing -g -g   -fPIC #$OPT  -c #{file}_c.c`
   	`cd c;gcc -shared -o #{file}_c.so #{file}_c.o -L. -L/usr/lib -L.  -rdynamic -Wl,-export-dynamic -lruby1.8  -lpthread -lrt -ldl -lcrypt -lm   -lc`
 	}
 end
