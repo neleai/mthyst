@@ -107,7 +107,7 @@ class <<PureAct
 end
 class <<Act
 	def [](expr=nil,pred=nil)
-	puts expr.inspect
+	#puts expr.inspect
 		exp=expr
 		exp=exp[0] if exp.is_a?(Args) && exp.size==1
 		return CAct["rb_ary_new3(0)"] if exp=="[]" 
@@ -124,7 +124,16 @@ end
 def _body(body)
 	Seq[_Bind("_result",body), PureAct[Args["_result"]]]
 end
-
+class <<Apply
+  def [](name,*args)
+#  args=args.map{|a| Act[a]}
+		 ar=[name]+args.flatten
+     a=Apply.create({:ary=>ar})
+		 puts a.inspect
+		 a
+  end
+end
+         
 class <<Lookahead
   def [](e,neg=nil)
 		if neg
