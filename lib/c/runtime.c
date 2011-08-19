@@ -1,4 +1,5 @@
 #include "ruby.h"
+// write declarations to cthyst.h as without them call from other so will crash
 VALUE amecore;VALUE failobj;
 ID s_src,s_input,s_call,s_cut;
 
@@ -17,7 +18,6 @@ VALUE ame_setsrc(VALUE self,VALUE val){
 VALUE ame_getsrc(VALUE self){
 	cstruct  *ptr;
   Data_Get_Struct(self,cstruct,ptr);
-//	return rb_ivar_get(self,s_src);
 	return ptr->src;
 }
 

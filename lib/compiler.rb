@@ -40,6 +40,7 @@ class Gram
 	end
 end
 def resolvegrammar(grammar,name)
+	return "AmethystCore" if name=="anything" || name=="seq"
 	return nil if !Compiler.grammars[grammar]
 	return grammar if Compiler.grammars[grammar].rules[name]
 	return nil
