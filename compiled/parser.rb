@@ -19,24 +19,12 @@ end
 
 class AmethystParser < Amethyst
 def __args_AmethystParsercb_1(bind)
-bind[:o_1]
-end
-def __args_AmethystParsercb_2(bind)
 ""
 end
-def __args_AmethystParsercb_3(bind)
+def __args_AmethystParsercb_2(bind)
 _append(bind[:autovar_1],bind[:autovar_2])
 end
-def __args_AmethystParsercb_4(bind)
-bind[:c_1]
-end
 def _args_AmethystParsercb_1(bind)
-bind[:o_1]
-end
-def _args_AmethystParsercb_2(bind)
-bind[:c_1]
-end
-def _args_AmethystParsercb_3(bind)
 Args[{:ary=>([bind[:o_1]]+bind[:r_1]+[bind[:c_1]])}]
 end
 def addargs_AmethystParsercb_1(bind)
@@ -67,24 +55,12 @@ def application_AmethystParsercb_5(bind)
 Apply[bind[:rule_1],bind[:arg_1]]
 end
 def argsOpt_AmethystParsercb_1(bind)
-bind[:o_1]
-end
-def argsOpt_AmethystParsercb_2(bind)
-bind[:c_1]
-end
-def argsOpt_AmethystParsercb_3(bind)
 []
 end
 def args_AmethystParsercb_1(bind)
-bind[:o_1]
-end
-def args_AmethystParsercb_2(bind)
-bind[:c_1]
-end
-def args_AmethystParsercb_3(bind)
 bind[:r_1]+[',']
 end
-def args_AmethystParsercb_4(bind)
+def args_AmethystParsercb_2(bind)
 bind[:autovar_1]=[bind[:autovar_1]]
 end
 def atomicHostExpr_AmethystParsercb_1(bind)
@@ -232,24 +208,15 @@ def key_AmethystParsercb_8(bind)
 Global[bind[:name_1]]
 end
 def listOf_AmethystParsercb_1(bind)
-bind[:rule_1]
-end
-def listOf_AmethystParsercb_2(bind)
 _append(bind[:f_1],bind[:autovar_1])
 end
-def listOf_AmethystParsercb_3(bind)
-bind[:delim_1]
-end
-def listOf_AmethystParsercb_4(bind)
-bind[:rule_1]
-end
-def listOf_AmethystParsercb_5(bind)
+def listOf_AmethystParsercb_2(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
 end
-def listOf_AmethystParsercb_6(bind)
+def listOf_AmethystParsercb_3(bind)
 _append(bind[:f_1],bind[:autovar_4])
 end
-def listOf_AmethystParsercb_7(bind)
+def listOf_AmethystParsercb_4(bind)
 []
 end
 def lower_AmethystParsercb_1(bind)
@@ -585,9 +552,6 @@ end
 def term_AmethystParsercb_27(bind)
 "[]"
 end
-def term_AmethystParsercb_28(bind)
-bind[:x_1]
-end
 def term_AmethystParsercb_3(bind)
 "("
 end
@@ -608,9 +572,6 @@ bind[:it_1].is_a?(Result) ? bind[:it_1] : Act[Args[bind[:it_1]]]
 end
 def term_AmethystParsercb_9(bind)
 "->"
-end
-def token_AmethystParsercb_1(bind)
-bind[:s_1]
 end
 def upper_AmethystParsercb_1(bind)
 /[A-Z]/

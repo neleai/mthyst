@@ -472,61 +472,43 @@ def move_Move_Assignments2cb_1(bind)
 Or
 end
 def move_Move_Assignments2cb_10(bind)
-_append(bind[:autovar_5],bind[:autovar_7])
-end
-def move_Move_Assignments2cb_11(bind)
-Seq.create( {:ary=>bind[:ary_1] })
-end
-def move_Move_Assignments2cb_12(bind)
-Pass
-end
-def move_Move_Assignments2cb_13(bind)
-@src.var
-end
-def move_Move_Assignments2cb_14(bind)
 @src.to
 end
-def move_Move_Assignments2cb_15(bind)
+def move_Move_Assignments2cb_11(bind)
 bind[:autovar_9]=[bind[:autovar_9]]
 end
-def move_Move_Assignments2cb_16(bind)
-bind[:append_1]
-end
-def move_Move_Assignments2cb_17(bind)
-bind[:name_1]
-end
-def move_Move_Assignments2cb_18(bind)
+def move_Move_Assignments2cb_12(bind)
 @src.enter
 end
-def move_Move_Assignments2cb_19(bind)
+def move_Move_Assignments2cb_13(bind)
 Pass.create( {:ary=>bind[:ary_1],:enter=>bind[:enter_1],:to=>bind[:to_1],:var=>bind[:var_1] })
 end
-def move_Move_Assignments2cb_2(bind)
-bind[:append_1]
-end
-def move_Move_Assignments2cb_20(bind)
+def move_Move_Assignments2cb_14(bind)
 _Bind(bind[:name_1],bind[:it_1],bind[:append_1])
 end
-def move_Move_Assignments2cb_3(bind)
-bind[:name_1]
-end
-def move_Move_Assignments2cb_4(bind)
+def move_Move_Assignments2cb_2(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
 end
-def move_Move_Assignments2cb_5(bind)
+def move_Move_Assignments2cb_3(bind)
 Or.create( {:ary=>bind[:ary_1] })
 end
-def move_Move_Assignments2cb_6(bind)
+def move_Move_Assignments2cb_4(bind)
 Seq
 end
-def move_Move_Assignments2cb_7(bind)
+def move_Move_Assignments2cb_5(bind)
 bind[:autovar_6]=[bind[:autovar_6]]
 end
+def move_Move_Assignments2cb_6(bind)
+_append(bind[:autovar_5],bind[:autovar_7])
+end
+def move_Move_Assignments2cb_7(bind)
+Seq.create( {:ary=>bind[:ary_1] })
+end
 def move_Move_Assignments2cb_8(bind)
-bind[:append_1]
+Pass
 end
 def move_Move_Assignments2cb_9(bind)
-bind[:name_1]
+@src.var
 end
 def traverse_Move_Assignments2cb_1(bind)
 @src.self
@@ -569,12 +551,6 @@ def visit_Move_Assignments2cb_4(bind)
 end
 def visit_Move_Assignments2cb_5(bind)
 bind[:autovar_2]=[bind[:autovar_2]]
-end
-def visit_Move_Assignments2cb_6(bind)
-bind[:append_1]
-end
-def visit_Move_Assignments2cb_7(bind)
-bind[:name_1]
 end
 
 end

@@ -442,55 +442,46 @@ def move_Move_Assignmentscb_1(bind)
 Or
 end
 def move_Move_Assignmentscb_10(bind)
-bind[:ary_1][-1]=bind[:moved_1]
-end
-def move_Move_Assignmentscb_11(bind)
-Seq.create( {:ary=>bind[:ary_1] })
-end
-def move_Move_Assignmentscb_12(bind)
 Pass
 end
-def move_Move_Assignmentscb_13(bind)
+def move_Move_Assignmentscb_11(bind)
 @src.var
 end
-def move_Move_Assignmentscb_14(bind)
+def move_Move_Assignmentscb_12(bind)
 @src.to
 end
-def move_Move_Assignmentscb_15(bind)
+def move_Move_Assignmentscb_13(bind)
 bind[:autovar_9]=[bind[:autovar_9]]
 end
-def move_Move_Assignmentscb_16(bind)
-bind[:name_1]
-end
-def move_Move_Assignmentscb_17(bind)
+def move_Move_Assignmentscb_14(bind)
 Pass.create( {:ary=>bind[:ary_1],:to=>bind[:to_1],:var=>bind[:var_1] })
 end
-def move_Move_Assignmentscb_18(bind)
+def move_Move_Assignmentscb_15(bind)
 _Bind(bind[:name_1],bind[:it_1])
 end
 def move_Move_Assignmentscb_2(bind)
-bind[:name_1]
-end
-def move_Move_Assignmentscb_3(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
 end
-def move_Move_Assignmentscb_4(bind)
+def move_Move_Assignmentscb_3(bind)
 Or.create( {:ary=>bind[:ary_1] })
 end
-def move_Move_Assignmentscb_5(bind)
+def move_Move_Assignmentscb_4(bind)
 Seq
 end
-def move_Move_Assignmentscb_6(bind)
+def move_Move_Assignmentscb_5(bind)
 _append(bind[:autovar_5],bind[:autovar_6])
 end
-def move_Move_Assignmentscb_7(bind)
+def move_Move_Assignmentscb_6(bind)
 bind[:ary_1][-1]
 end
-def move_Move_Assignmentscb_8(bind)
+def move_Move_Assignmentscb_7(bind)
 bind[:autovar_7]=[bind[:autovar_7]]
 end
+def move_Move_Assignmentscb_8(bind)
+bind[:ary_1][-1]=bind[:moved_1]
+end
 def move_Move_Assignmentscb_9(bind)
-bind[:name_1]
+Seq.create( {:ary=>bind[:ary_1] })
 end
 def trans_Move_Assignmentscb_1(bind)
 Bind
@@ -506,9 +497,6 @@ bind[:autovar_2]=[bind[:autovar_2]]
 end
 def trans_Move_Assignmentscb_5(bind)
 bind[:autovar_3]=[bind[:autovar_3]]
-end
-def trans_Move_Assignmentscb_6(bind)
-bind[:name_1]
 end
 
 end

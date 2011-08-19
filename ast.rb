@@ -126,8 +126,9 @@ def _body(body)
 end
 class <<Apply
   def [](name,*args)
-#  args=args.map{|a| Act[a]}
-		 ar=[name]+args.flatten
+		args=args.flatten
+	  args=args.map{|a| Act[a]}
+		 ar=[name]+args
      a=Apply.create({:ary=>ar})
 		 puts a.inspect
 		 a

@@ -33,24 +33,15 @@ def fails_Amethystcb_1(bind)
 (false) || FAIL
 end
 def listOf_Amethystcb_1(bind)
-bind[:rule_1]
-end
-def listOf_Amethystcb_2(bind)
 _append(bind[:f_1],bind[:autovar_2])
 end
-def listOf_Amethystcb_3(bind)
-bind[:delim_1]
-end
-def listOf_Amethystcb_4(bind)
-bind[:rule_1]
-end
-def listOf_Amethystcb_5(bind)
+def listOf_Amethystcb_2(bind)
 _append(bind[:autovar_1],bind[:autovar_3])
 end
-def listOf_Amethystcb_6(bind)
+def listOf_Amethystcb_3(bind)
 _append(bind[:f_1],bind[:autovar_4])
 end
-def listOf_Amethystcb_7(bind)
+def listOf_Amethystcb_4(bind)
 []
 end
 def lower_Amethystcb_1(bind)
@@ -64,9 +55,6 @@ def space_Amethystcb_1(bind)
 end
 def spaces_Amethystcb_1(bind)
 _append(bind[:autovar_1],bind[:autovar_2])
-end
-def token_Amethystcb_1(bind)
-bind[:s_1]
 end
 def upper_Amethystcb_1(bind)
 /[A-Z]/
