@@ -52,7 +52,7 @@ VALUE ame_getlenrb(VALUE self,VALUE val){return INT2FIX(ame_getlen(self));}
 VALUE ame_getposrb(VALUE self,VALUE val){return INT2FIX(ame_getpos(self));}
 
 
-VALUE ame_seq(VALUE self,VALUE str){
+VALUE AmethystCore_seq(VALUE self,VALUE str){
 	int len=RSTRING(str)->len;
 	VALUE src=ame_getsrc(self);
 	if (TYPE(src)==T_STRING){
@@ -67,7 +67,7 @@ VALUE ame_seq(VALUE self,VALUE str){
 		 rb_raise(rb_eArgError, "called seq when not in string");
 	}
 }
-VALUE ame_anything(VALUE self){
+VALUE AmethystCore_anything(VALUE self){
 	VALUE r;
   VALUE src=ame_getsrc(self);
   int input=ame_getpos(self);
@@ -140,8 +140,8 @@ void Init_Ame(VALUE self){
 	rb_define_method(amecore,"src=",ame_setsrc,1);
 	rb_define_method(amecore,"src",ame_getsrc,0);
 
-	rb_define_method(amecore,"seq",ame_seq,1);
-	rb_define_method(amecore,"anything",ame_anything,0);
+	rb_define_method(amecore,"seq",AmethystCore_seq,1);
+	rb_define_method(amecore,"anything",AmethystCore_anything,0);
 	rb_define_method(amecore,"_lookahead",ame_lookahead,1);
 	rb_define_method(amecore,"_pass",ame_pass,2);
 	rb_define_method(amecore,"_or",ame_or,-1);
