@@ -120,10 +120,6 @@ require "compiled/#{opt}"
 }
 
 
-[ ].each{|opt|
-	require "c/#{opt}"
-}
-
 def translate(s)
   par=AmethystParser.new
   opt=par.parse(:igrammar,s)
