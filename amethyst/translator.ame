@@ -10,10 +10,10 @@ amethyst AmethystTranslator < Amethyst {
 				| Act[args:t @pred:pred] -> pred ?  failwrap("it=(#{t})||FAIL") : "it=(#{t})"
   			| Lookahead[ @neg:neg rw('next',`trans:t`) ]  failwrap("it=_lookahead(#{!!neg}){#{t}}")
         | Comment[:c] -> ""
-				| Many[rw('break', `trans:t` ) @o=>arg:o] -> "while true\n#{o}=@input;r=#{t}\n break FAIL if r==FAIL\n (#{o}=@input;@stop=nil;break FAIL) if @stop==true\nend;@input=#{o}"
+				| Many[rw('break', `trans:t` ) {autovar}=>arg:o] -> "while true\n#{o}=@input;r=#{t}\n break FAIL if r==FAIL\n (#{o}=@input;@stop=nil;break FAIL) if @stop==true\nend;@input=#{o}"
 				| Apply[ Array[:klas :name] args:argss]  failwrap("it=_foreign(:#{ name } #{ argss!=[] ? ",#{argss}" : "" })")
 				| Apply[ :name args:argss]  failwrap("it=#{name}(#{argss})")
-				| Set[@name=>arg:name @expr=>trans:expr ] -> "#{expr}\n#{name} = it"
+				| Bind[@name=>arg:name @expr=>trans:expr ] -> "#{expr}\n#{name} = it"
 				| Result[@name:name @args=>args:argss @vars:vars] -> "it=#{name}.create(#{argss} {#{vars.map{|l| ":#{l[0]}=>bind[:#{l.desc}]" }.sort*","} })"
 				| Local[.* {"it=bind[:#{@desc}]"}] 
 				| Pass[rw('next',`@to=>trans:to @var=>arg:var`)] failwrap("it=_pass(true,#{var}){#{to}}")

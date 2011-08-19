@@ -210,7 +210,7 @@ def trans_AmethystOptimizercb_44(bind)
 Apply.create( {:ary=>bind[:ary_1] })
 end
 def trans_AmethystOptimizercb_45(bind)
-Set
+Bind
 end
 def trans_AmethystOptimizercb_46(bind)
 @src.name
@@ -228,7 +228,7 @@ def trans_AmethystOptimizercb_5(bind)
 []
 end
 def trans_AmethystOptimizercb_50(bind)
-Set.create( {:ary=>bind[:ary_1],:expr=>bind[:expr_1],:name=>bind[:name_1] })
+Bind.create( {:ary=>bind[:ary_1],:expr=>bind[:expr_1],:name=>bind[:name_1] })
 end
 def trans_AmethystOptimizercb_51(bind)
 Act

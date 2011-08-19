@@ -25,7 +25,7 @@ class Dataflow < Traverser
 	end
 	def set_end(exp)
 		name=exp.name
-		exp=exp.expr while exp.expr.is_a?(Set) 
+		exp=exp.expr while exp.expr.is_a?(Bind) 
 	  if exp.expr.is_a?(Local) 
       o=ssanum(exp.expr)
       n=newssanum(name)
@@ -94,7 +94,7 @@ def root_Dataflowcb_6(bind)
 bind[:autovar_3]=[bind[:autovar_3]]
 end
 def root_Dataflowcb_7(bind)
-@x;bind[:var_1].each{|v| ssanum(v)}
+bind[:var_1].each{|v| ssanum(v)}
 end
 def root_Dataflowcb_8(bind)
 @src.reachable=@edges.reverse.reachable(@marked+[ssanum(@src.body[-1])]); @src.cfg=@edges; [@edges,@marked+[@src.body[-1]]]
@@ -142,7 +142,7 @@ def vars_in_Dataflowcb_20(bind)
 _append(bind[:ary_1],bind[:autovar_12])
 end
 def vars_in_Dataflowcb_21(bind)
-Set
+Bind
 end
 def vars_in_Dataflowcb_22(bind)
 @src.name
@@ -190,7 +190,7 @@ def visit_Dataflowcb_10(bind)
 bind[:join_1]<<oldssanums.clone
 end
 def visit_Dataflowcb_11(bind)
-@x;or_end(bind[:join_1])
+or_end(bind[:join_1])
 end
 def visit_Dataflowcb_12(bind)
 @src.self
@@ -202,7 +202,7 @@ def visit_Dataflowcb_14(bind)
 ssanums.clone
 end
 def visit_Dataflowcb_15(bind)
-@x;many_end(bind[:prev_1])
+many_end(bind[:prev_1])
 end
 def visit_Dataflowcb_16(bind)
 @src.self
@@ -223,7 +223,7 @@ def visit_Dataflowcb_20(bind)
 Act
 end
 def visit_Dataflowcb_21(bind)
-@marked<<bind[:this_1] if @src.pred
+@marked<<bind[:this_1] if @src.pred || !@src.pure
 end
 def visit_Dataflowcb_22(bind)
 @src.ary
@@ -235,7 +235,7 @@ def visit_Dataflowcb_24(bind)
 bind[:var_1].each{|v| edges.add(ssanum(v),bind[:this_1]); edges.add(bind[:this_1],newssanum(v.clone));}; bind[:this_1]
 end
 def visit_Dataflowcb_25(bind)
-Set
+Bind
 end
 def visit_Dataflowcb_26(bind)
 set_end(@src.self) 
@@ -321,7 +321,7 @@ def visit_Dead_Code_Deleter3cb_3(bind)
 @reachable[bind[:this_1]] ? bind[:this_1] : Act[]
 end
 def visit_Dead_Code_Deleter3cb_4(bind)
-Set
+Bind
 end
 def visit_Dead_Code_Deleter3cb_5(bind)
 @src.expr

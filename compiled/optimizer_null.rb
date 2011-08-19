@@ -228,7 +228,7 @@ def trans_AmethystOptimizercb_48(bind)
 Apply.create( {:ary=>bind[:ary_1] })
 end
 def trans_AmethystOptimizercb_49(bind)
-Set
+Bind
 end
 def trans_AmethystOptimizercb_5(bind)
 @src.parent
@@ -249,7 +249,7 @@ def trans_AmethystOptimizercb_54(bind)
 bind[:autovar_24]=[bind[:autovar_24]]
 end
 def trans_AmethystOptimizercb_55(bind)
-Set.create( {:ary=>bind[:ary_1],:expr=>bind[:expr_1],:name=>bind[:name_1] })
+Bind.create( {:ary=>bind[:ary_1],:expr=>bind[:expr_1],:name=>bind[:name_1] })
 end
 def trans_AmethystOptimizercb_56(bind)
 Act

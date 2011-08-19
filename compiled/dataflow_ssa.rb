@@ -25,7 +25,7 @@ class Dataflow < Traverser
 	end
 	def set_end(exp)
 		name=exp.name
-		exp=exp.expr while exp.expr.is_a?(Set) 
+		exp=exp.expr while exp.expr.is_a?(Bind) 
 	  if exp.expr.is_a?(Local) 
       o=ssanum(exp.expr)
       n=newssanum(name)
@@ -169,7 +169,7 @@ def vars_in_Dataflowcb_26(bind)
 _append(bind[:ary_1],bind[:autovar_12])
 end
 def vars_in_Dataflowcb_27(bind)
-Set
+Bind
 end
 def vars_in_Dataflowcb_28(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
@@ -286,7 +286,7 @@ def visit_Dataflowcb_3(bind)
 @src.self
 end
 def visit_Dataflowcb_30(bind)
-Set
+Bind
 end
 def visit_Dataflowcb_31(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
@@ -393,7 +393,7 @@ def visit_Dead_Code_Deleter3cb_4(bind)
 @reachable[bind[:this_1]] ? bind[:this_1] : Act[]
 end
 def visit_Dead_Code_Deleter3cb_5(bind)
-Set
+Bind
 end
 def visit_Dead_Code_Deleter3cb_6(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL

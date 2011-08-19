@@ -63,7 +63,7 @@ def vars_in_Dead_Code_Detector2cb_20(bind)
 _append(bind[:ary_1],bind[:autovar_12])
 end
 def vars_in_Dead_Code_Detector2cb_21(bind)
-Set
+Bind
 end
 def vars_in_Dead_Code_Detector2cb_22(bind)
 @src.name
@@ -126,7 +126,7 @@ def visit_Dead_Code_Detector2cb_15(bind)
 bind[:var_1].each{|bind[:v_1]| @edges.add(bind[:v_1],bind[:this_1]); @edges.add(bind[:this_1],bind[:v_1]);}; bind[:this_1]
 end
 def visit_Dead_Code_Detector2cb_16(bind)
-Set
+Bind
 end
 def visit_Dead_Code_Detector2cb_17(bind)
 @src.name
@@ -233,7 +233,7 @@ def visit_Dead_Code_Deleter2cb_3(bind)
 @reachable[bind[:this_1]] ? bind[:this_1] : Act[]
 end
 def visit_Dead_Code_Deleter2cb_4(bind)
-Set
+Bind
 end
 def visit_Dead_Code_Deleter2cb_5(bind)
 @src.name
@@ -385,7 +385,7 @@ def move_Move_Assignments2cb_23(bind)
 Pass.create( {:ary=>bind[:ary_1],:enter=>bind[:enter_1],:to=>bind[:to_1],:var=>bind[:var_1] })
 end
 def move_Move_Assignments2cb_24(bind)
-_Set(bind[:name_1],bind[:it_1],bind[:append_1])
+_Bind(bind[:name_1],bind[:it_1],bind[:append_1])
 end
 def move_Move_Assignments2cb_3(bind)
 Or
@@ -409,7 +409,7 @@ def move_Move_Assignments2cb_9(bind)
 Seq
 end
 def visit_Move_Assignments2cb_1(bind)
-Set
+Bind
 end
 def visit_Move_Assignments2cb_2(bind)
 @src.name

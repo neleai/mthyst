@@ -67,7 +67,7 @@ it=(_append(bind[:ary_1],bind[:autovar_13])) };next FAIL if it==FAIL },proc{it=c
 bind[:autovar_14] = it
 it=_pass(true,bind[:autovar_14]){it=vars_in();next FAIL if it==FAIL
 bind[:autovar_15] = it
-it=(_append(bind[:ary_1],bind[:autovar_15])) };next FAIL if it==FAIL },proc{it=clas(Set);next FAIL if it==FAIL
+it=(_append(bind[:ary_1],bind[:autovar_15])) };next FAIL if it==FAIL },proc{it=clas(Bind);next FAIL if it==FAIL
 bind[:autovar_16] = it
 it=_pass(true,bind[:autovar_16]){it=(@src.name)
 bind[:autovar_17] = it
@@ -129,7 +129,7 @@ bind[:autovar_8] = it
 it=_pass(true,bind[:autovar_8]){it=vars_in();next FAIL if it==FAIL
 bind[:var_1] = it};next FAIL if it==FAIL };next FAIL if it==FAIL };next FAIL if it==FAIL
 it=(bind[:var_1].each{|bind[:v_1]| @edges.add(bind[:v_1],bind[:this_1]); @edges.add(bind[:this_1],bind[:v_1]);}; bind[:this_1])
-bind[:_result_1] = it },proc{it=clas(Set);next FAIL if it==FAIL
+bind[:_result_1] = it },proc{it=clas(Bind);next FAIL if it==FAIL
 bind[:autovar_9] = it
 it=_pass(true,bind[:autovar_9]){it=(@src.name)
 bind[:autovar_10] = it
@@ -197,7 +197,7 @@ bind[:autovar_2]=@input;r=it=anything();break FAIL if it==FAIL
  (bind[:autovar_2]=@input;@stop=nil;break FAIL) if @stop==true
 end;@input=bind[:autovar_2] };next FAIL if it==FAIL
 it=(@reachable[bind[:this_1]] ? bind[:this_1] : Act[])
-bind[:_result_1] = it },proc{it=clas(Set);next FAIL if it==FAIL
+bind[:_result_1] = it },proc{it=clas(Bind);next FAIL if it==FAIL
 bind[:autovar_3] = it
 it=_pass(true,bind[:autovar_3]){it=(@src.name)
 bind[:name_1] = it
@@ -398,7 +398,7 @@ bind[:enter_1] = it };next FAIL if it==FAIL
 it=Pass.create( {:ary=>bind[:ary_1],:enter=>bind[:enter_1],:to=>bind[:to_1],:var=>bind[:var_1] })
 bind[:_result_1] = it },proc{it=anything();next FAIL if it==FAIL
 bind[:it_1] = it
-it=(_Set(bind[:name_1],bind[:it_1],bind[:append_1]))
+it=(_Bind(bind[:name_1],bind[:it_1],bind[:append_1]))
 bind[:_result_1] = it });return FAIL if it==FAIL
 it=bind[:_result_1]  
 end
@@ -414,7 +414,7 @@ def visit()
 bind={}; 
   it=nil
 
-it=clas(Set);return FAIL if it==FAIL
+it=clas(Bind);return FAIL if it==FAIL
 bind[:autovar_1] = it
 it=_pass(true,bind[:autovar_1]){it=(@src.name)
 bind[:name_1] = it
@@ -467,7 +467,7 @@ bind[:autovar_2]=@input;r=it=anything();break FAIL if it==FAIL
  (bind[:autovar_2]=@input;@stop=nil;break FAIL) if @stop==true
 end;@input=bind[:autovar_2] };next FAIL if it==FAIL
 it=(@reachable[bind[:this_1]] ? bind[:this_1] : Act[])
-bind[:_result_1] = it },proc{it=clas(Set);next FAIL if it==FAIL
+bind[:_result_1] = it },proc{it=clas(Bind);next FAIL if it==FAIL
 bind[:autovar_3] = it
 it=_pass(true,bind[:autovar_3]){it=(@src.name)
 bind[:name_1] = it
@@ -741,7 +741,7 @@ it=(_append(bind[:autovar_1],bind[:autovar_3]))
 end;@input=bind[:autovar_4]
 it=bind[:autovar_1]
 bind[:args_1] = it };return FAIL if it==FAIL
-it=(body=@body;puts bind[:args_1].inspect; bind[:args_1].each_index{|i| body=Seq[Set[{:name=>@args[i],:expr=>Act[bind[:args_1][i]]}],body] } ; body)
+it=(body=@body;puts bind[:args_1].inspect; bind[:args_1].each_index{|i| body=Seq[Bind[{:name=>@args[i],:expr=>Act[bind[:args_1][i]]}],body] } ; body)
 bind[:_result_1] = it
 it=bind[:_result_1]  
 end

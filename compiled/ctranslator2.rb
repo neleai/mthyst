@@ -429,7 +429,7 @@ def trans_AmethystCTranslatorcb_45(bind)
 bind[:t_1]*""
 end
 def trans_AmethystCTranslatorcb_46(bind)
-Set
+Bind
 end
 def trans_AmethystCTranslatorcb_47(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL

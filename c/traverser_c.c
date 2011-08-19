@@ -84,9 +84,30 @@ ISET(cut,Qnil);goto accept1;
 it=BGET(_result_1);
 return it;
 fail: return failobj; }
+VALUE cls_Detector;
+VALUE Detector_root(VALUE self );
+VALUE Detector_visit(VALUE self );
+VALUE Detector_root(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+
+it=CALL(root_Detectorcb_1,1,bind);   it=CALL(traverse,0 ); FAILTEST(fail);it=CALL(root_Detectorcb_2,1,bind); 
+ BSET(_result_1,it); it=BGET(_result_1);
+return it;
+fail: return failobj; }
+VALUE Detector_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+
+  it=CALL(detect,0 ); FAILTEST(fail);
+ BSET(it_1,it); it=CALL(visit_Detectorcb_1,1,bind); it=CALL(visit_Detectorcb_2,1,bind); 
+ BSET(_result_1,it); it=BGET(_result_1);
+return it;
+fail: return failobj; }
 void Init_traverser_c(){ 
  cls_Traverser=rb_define_class("Traverser",rb_const_get(rb_cObject,rb_intern("Amethyst"))); 
 failobj=rb_eval_string("FAIL");
 rb_define_method(cls_Traverser,"traverse",Traverser_traverse,0);
 rb_define_method(cls_Traverser,"traverse_item",Traverser_traverse_item,0);
+
+ cls_Detector=rb_define_class("Detector",rb_const_get(rb_cObject,rb_intern("Traverser"))); 
+failobj=rb_eval_string("FAIL");
+rb_define_method(cls_Detector,"root",Detector_root,0);
+rb_define_method(cls_Detector,"visit",Detector_visit,0);
  }

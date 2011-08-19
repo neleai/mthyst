@@ -466,10 +466,10 @@ def prefixed_AmethystParsercb_37(bind)
 nil
 end
 def prefixed_AmethystParsercb_38(bind)
-_Set(bind[:name_1],bind[:from_1],bind[:append_1])
+_Bind(bind[:name_1],bind[:from_1],bind[:append_1])
 end
 def prefixed_AmethystParsercb_39(bind)
-Seq[_Set("it",bind[:from_1]) , Act[bind[:e_1]] ]
+Seq[_Bind("it",bind[:from_1]) , Act[bind[:e_1]] ]
 end
 def prefixed_AmethystParsercb_4(bind)
 "&"
@@ -643,7 +643,7 @@ def rule_AmethystParsercb_6(bind)
 @locals.uniq
 end
 def rule_AmethystParsercb_7(bind)
-bind[:body_1]=Seq[{:ary=>($appends.uniq.map{|a| _Set(a,PureAct[Args["[]"]])}+[bind[:body_1]])}]; 
+bind[:body_1]=Seq[{:ary=>($appends.uniq.map{|a| _Bind(a,PureAct[Args["[]"]])}+[bind[:body_1]])}]; 
 end
 def rule_AmethystParsercb_8(bind)
 Rule.create( {:args=>bind[:args_1],:bnding=>bind[:bnding_1],:body=>bind[:body_1],:locals=>bind[:locals_1],:name=>bind[:name_1] })

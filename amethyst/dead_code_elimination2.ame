@@ -6,7 +6,7 @@ amethyst Dead_Code_Detector2 < Traverser {
 				| Many[  @o=>vars_in:var {@@marked+=var} traverse]
 				| Act[ traverse:this {@@marked<<this if @pred} 
 							 @ary=>[vars_in]:var ] -> var.each{|v| @@edges.add(v,this); @@edges.add(this,v);}; this
-				| Set[@name=>vars_in:v {v=v[0]}   traverse:this @expr=>vars_in:var ] -> var.each{|w| @@edges.add(v,w)};this
+				| Bind[@name=>vars_in:v {v=v[0]}   traverse:this @expr=>vars_in:var ] -> var.each{|w| @@edges.add(v,w)};this
 				| Result[@vars=>[vars_in]:var traverse:this] -> var.each{|w| @@edges.add(this,w) } ; this
 				
 				vars_in={ary=[]}
@@ -16,7 +16,7 @@ amethyst Dead_Code_Detector2 < Traverser {
 								| Result[ @self:ary[] ]
 								| Strin[ vars_in:ary[] ]
 								| Args[ vars_in:ary[] ]
-								| Set[ @name=>vars_in:ary[] ]
+								| Bind[ @name=>vars_in:ary[] ]
 								| Local[:name  @self:ary[] ]
 								| anything
 								)* -> ary
@@ -26,7 +26,7 @@ amethyst Dead_Code_Deleter2 < Traverser{
 		root = @self=>Rule[ @reachable:{@@reachable=it} traverse {@reachable=nil} @self]
 
 		visit = Act[@self:this .*] -> @@reachable[this] ? this : Act[]
-					| Set[@name:name traverse @expr:expr @self:this] -> @@reachable[name] ? this : expr
+					| Bind[@name:name traverse @expr:expr @self:this] -> @@reachable[name] ? this : expr
 					| Result[@self:this] ->@@reachable[this] ? this : Act[]
           | Local[.* @self:this] ->@@reachable[this] ? this : Act[]
 }
@@ -69,12 +69,12 @@ amethyst Communize_Or3 < Traverser {
 amethyst Move_Assignments2 < Traverser {
 	root=traverse 
 	
-	visit = Set[@name:name traverse @expr:expr @append:append {expr}=>move(append,name) ]
+	visit = Bind[@name:name traverse @expr:expr @append:append {expr}=>move(append,name) ]
 
 	move(append,name) = Or[ move(append,name)*:ary ] @Or
 								| Seq[ (:el (&eof {el}=>move(append,name) | {el}) )*:ary ] @Seq
 								| Pass[@var:var @to=>move(append,name):to @enter:enter] @Pass
-								| anything:{_Set(name,it,append)}
+								| anything:{_Bind(name,it,append)}
 }
 
 

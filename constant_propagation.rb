@@ -50,7 +50,7 @@ class Constant_Propagator
 				nil
 			when Act
 				nil
-			when Set
+			when Bind
 				depend.add(exp.expr,exp)
 				depend.add(exp,exp.name)
 				init(exp.expr)
@@ -66,7 +66,7 @@ class Constant_Propagator
 					a=Top if a!=Bottom && a!=vals[e]
 				}
 				return a
-			when Set
+			when Bind
 				return Top if el.append
 				return vals[el.expr]
 			when Seq
@@ -77,7 +77,7 @@ class Constant_Propagator
 	end
 end
 l=Local["a"]
-t=Seq[Set[{:name=>l,:expr=>Act["foo"] }],Set[{:name=>l,:expr=>Act["bar"] }] ]
+t=Seq[Bind[{:name=>l,:expr=>Act["foo"] }],Bind[{:name=>l,:expr=>Act["bar"] }] ]
 f=Constant_Propagator.new(t)
 f.analyze
 puts f.inspect

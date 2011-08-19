@@ -51,7 +51,7 @@ class Dataflow_SSA
 					end
 				}
 			when Act
-			when Set
+			when Bind
 				init(exp.expr)
 				if exp.expr.is_a? Local
 					o=ssanum(exp.expr)
@@ -67,7 +67,7 @@ class Dataflow_SSA
 end
 
 l=Local["a"]
-t=Or[Set[{:name=>l,:expr=>Act["foo"] }],Set[{:name=>l,:expr=>Act["bar"] }],Act["foo"],Set[{:name=>l,:expr=>l}] ]
+t=Or[Bind[{:name=>l,:expr=>Act["foo"] }],Bind[{:name=>l,:expr=>Act["bar"] }],Act["foo"],Bind[{:name=>l,:expr=>l}] ]
 f=Dataflow_SSA.new(t)
 #f.analyze
 puts f.inspect

@@ -47,7 +47,7 @@ amethyst AmethystCTranslator < Amethyst {
 
 				| Char[:c] -> "if (ptr->str[ptr->pos]!='#{c}') goto #{@@faillabel};ptr->pos++;"
 
-				| Set[ @name=>Local[ :number @no:number] @expr=>trans:expr ] -> "#{expr} csetlocal(ptr,#{number},result);"
+				| Bind[ @name=>Local[ :number @no:number] @expr=>trans:expr ] -> "#{expr} csetlocal(ptr,#{number},result);"
 
 
 			  rw(word,prc) = {@@faillabel}:rwo {@@faillabel=word } apply(prc):x {@@faillabel=rwo; x }

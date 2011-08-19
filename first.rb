@@ -40,7 +40,7 @@ class First
 				exp.ary.each{|e| init(e,exp)}
 			when Many
 				exp.ary.each{|e| init(e,exp)}
-			when Set
+			when Bind
 				init(exp.expr,exp)
 			when Grammar
 				exp.rules.each{|r| @rules[r.name]=r}
@@ -73,7 +73,7 @@ class First
 				end
 			when Many
 				return (vals[el[0]]+["empty"]).uniq
-			when Set
+			when Bind
 				return vals[el.expr]
 			when Act
 				return ["empty"]

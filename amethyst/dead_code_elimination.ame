@@ -5,7 +5,7 @@ amethyst Dead_Code_Detector < AmethystOptimizer {
 				| Pass[@var=>vars_in:var {@@marked+=var} @to=>trans]
 				| Act[ @self:this {@@marked<<this if @pred || !@pure} 
 							 vars_in:var ] -> var.each{|w| @@edges.add(w,this); @@edges.add(this,w)}
-				| Set[@name=>vars_in:v {v=v[0]}  @expr=>trans @expr=>vars_in:var  ] -> var.each{|w| @@edges.add(v,w)}
+				| Bind[@name=>vars_in:v {v=v[0]}  @expr=>trans @expr=>vars_in:var  ] -> var.each{|w| @@edges.add(v,w)}
 				| Result[@vars=>[vars_in]:var @self:v] -> var.each{|w| @@edges.add(v,w) }
 				| super 
 				
@@ -17,7 +17,7 @@ amethyst Dead_Code_Detector < AmethystOptimizer {
 								| Result[ @self:ary[] ]
 								| Strin[ vars_in:ary[] ]
 								| Args[ vars_in:ary[] ]
-								| Set[ @name=>vars_in:ary[] ]
+								| Bind[ @name=>vars_in:ary[] ]
 								| Local[:name {@@marked<<@self if name=="_result"} @self:ary[] ]
 								| anything
 								)* -> ary
@@ -26,7 +26,7 @@ amethyst Dead_Code_Detector < AmethystOptimizer {
 amethyst Dead_Code_Deleter < AmethystOptimizer{
 		trans = Rule[ @name:name  @reachable:{@@reachable=it} @args=>args:args @body=>trans:body  @locals:locals ] @Rule
 					| Act[@self:this .*] -> @@reachable[this] ? this : Act[]
-					| Set[@name:name @expr=>trans:expr] ->@@reachable[name] ? _Set(name,expr) : expr
+					| Bind[@name:name @expr=>trans:expr] ->@@reachable[name] ? _Bind(name,expr) : expr
 					| Result[@self:this] ->@@reachable[this] ? this : Act[]
 					| Local[.* @self:this] ->@@reachable[this] ? this : Act[]
 					| super
@@ -39,11 +39,11 @@ amethyst Communize_Or < AmethystOptimizer {
 }
 
 amethyst Move_Assignments < AmethystOptimizer {
-	trans = Set[@name:name @expr=>trans:expr {expr}=>move(name) ]
+	trans = Bind[@name:name @expr=>trans:expr {expr}=>move(name) ]
 				| super
 
 	move(name) = Or[ move(name)*:ary ] @Or
 								| Seq[ .*:ary {ary[-1]}=>move(name):moved {ary[-1]=moved} ] @Seq
 								| Pass[@var:var @to=>move(name):to ] @Pass
-								| anything:{_Set(name,it)}
+								| anything:{_Bind(name,it)}
 }

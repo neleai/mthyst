@@ -48,7 +48,7 @@ def trans_Dead_Code_Detectorcb_23(bind)
 bind[:var_1].each{|w| @edges.add(w,bind[:this_1]); @edges.add(bind[:this_1],w)}
 end
 def trans_Dead_Code_Detectorcb_24(bind)
-Set
+Bind
 end
 def trans_Dead_Code_Detectorcb_25(bind)
 @src.name
@@ -153,7 +153,7 @@ def vars_in_Dead_Code_Detectorcb_21(bind)
 _append(bind[:ary_1],bind[:autovar_13])
 end
 def vars_in_Dead_Code_Detectorcb_22(bind)
-Set
+Bind
 end
 def vars_in_Dead_Code_Detectorcb_23(bind)
 @src.name
@@ -218,7 +218,7 @@ def trans_Dead_Code_Deletercb_13(bind)
 @reachable[bind[:this_1]] ? bind[:this_1] : Act[]
 end
 def trans_Dead_Code_Deletercb_14(bind)
-Set
+Bind
 end
 def trans_Dead_Code_Deletercb_15(bind)
 @src.name
@@ -230,7 +230,7 @@ def trans_Dead_Code_Deletercb_17(bind)
 bind[:autovar_6]=[bind[:autovar_6]]
 end
 def trans_Dead_Code_Deletercb_18(bind)
-@reachable[bind[:name_1]] ? _Set(bind[:name_1],bind[:expr_1]) : bind[:expr_1]
+@reachable[bind[:name_1]] ? _Bind(bind[:name_1],bind[:expr_1]) : bind[:expr_1]
 end
 def trans_Dead_Code_Deletercb_19(bind)
 Result
@@ -361,7 +361,7 @@ def move_Move_Assignmentscb_21(bind)
 Pass.create( {:ary=>bind[:ary_1],:to=>bind[:to_1],:var=>bind[:var_1] })
 end
 def move_Move_Assignmentscb_22(bind)
-_Set(bind[:name_1],bind[:it_1])
+_Bind(bind[:name_1],bind[:it_1])
 end
 def move_Move_Assignmentscb_3(bind)
 Or
@@ -385,7 +385,7 @@ def move_Move_Assignmentscb_9(bind)
 []
 end
 def trans_Move_Assignmentscb_1(bind)
-Set
+Bind
 end
 def trans_Move_Assignmentscb_2(bind)
 @src.name

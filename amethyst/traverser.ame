@@ -15,4 +15,7 @@ amethyst Traverser {
 					@self
 }
 
-
+amethyst Detector < Traverser{
+	root = {@@detected=[]} traverse {@@detected}
+	visit = detect:{@@detected<<it} {@self}
+}

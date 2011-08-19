@@ -40,6 +40,21 @@ end
 end
 
 
+class Detector < Traverser
+def root_Detectorcb_1(bind)
+@detected=[]
+end
+def root_Detectorcb_2(bind)
+@detected
+end
+def visit_Detectorcb_1(bind)
+@detected<<bind[:it_1]
+end
+def visit_Detectorcb_2(bind)
+@src.self
+end
+
+end
 
 
  require 'c/traverser_c'

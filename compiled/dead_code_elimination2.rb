@@ -84,7 +84,7 @@ def vars_in_Dead_Code_Detector2cb_26(bind)
 _append(bind[:ary_1],bind[:autovar_12])
 end
 def vars_in_Dead_Code_Detector2cb_27(bind)
-Set
+Bind
 end
 def vars_in_Dead_Code_Detector2cb_28(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
@@ -168,7 +168,7 @@ def visit_Dead_Code_Detector2cb_2(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Dead_Code_Detector2cb_20(bind)
-Set
+Bind
 end
 def visit_Dead_Code_Detector2cb_21(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
@@ -296,7 +296,7 @@ def visit_Dead_Code_Deleter2cb_4(bind)
 @reachable[bind[:this_1]] ? bind[:this_1] : Act[]
 end
 def visit_Dead_Code_Deleter2cb_5(bind)
-Set
+Bind
 end
 def visit_Dead_Code_Deleter2cb_6(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
@@ -460,7 +460,7 @@ def move_Move_Assignments2cb_24(bind)
 Pass.create( {:ary=>bind[:ary_1],:enter=>bind[:enter_1],:to=>bind[:to_1],:var=>bind[:var_1] })
 end
 def move_Move_Assignments2cb_25(bind)
-_Set(bind[:name_1],bind[:it_1],bind[:append_1])
+_Bind(bind[:name_1],bind[:it_1],bind[:append_1])
 end
 def move_Move_Assignments2cb_3(bind)
 []
@@ -484,7 +484,7 @@ def move_Move_Assignments2cb_9(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Move_Assignments2cb_1(bind)
-Set
+Bind
 end
 def visit_Move_Assignments2cb_10(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
@@ -562,7 +562,7 @@ def visit_Move_Assignments2cb_32(bind)
 Pass.create( {:ary=>bind[:ary_1],:enter=>bind[:enter_1],:to=>bind[:to_1],:var=>bind[:var_1] })
 end
 def visit_Move_Assignments2cb_33(bind)
-_Set(bind[:name_2],bind[:it_1],bind[:append_2])
+_Bind(bind[:name_2],bind[:it_1],bind[:append_2])
 end
 def visit_Move_Assignments2cb_4(bind)
 @src.expr

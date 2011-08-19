@@ -85,7 +85,7 @@ def visit_Inliner2cb_5(bind)
 _append(bind[:autovar_1],bind[:autovar_3])
 end
 def visit_Inliner2cb_6(bind)
-body=@body;puts bind[:args_1].inspect; bind[:args_1].each_index{|i| body=Seq[Set[{:name=>@args[i],:expr=>Act[bind[:args_1][i]]}],body] } ; body
+body=@body;puts bind[:args_1].inspect; bind[:args_1].each_index{|i| body=Seq[Bind[{:name=>@args[i],:expr=>Act[bind[:args_1][i]]}],body] } ; body
 end
 
 end

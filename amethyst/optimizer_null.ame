@@ -9,7 +9,7 @@ amethyst AmethystOptimizer < Amethyst {
         | Comment[anything*:ary]  @Comment
 				| Many[trans:ary[] @o:o] @Many
 				| Apply[ :ary[] args:ary[]] @Apply
-        | Set[@name=>arg:name @expr=>trans:expr] @Set
+        | Bind[@name=>arg:name @expr=>trans:expr] @Bind
 				| Act[  args:ary @pred:pred @pure:pure] @Act
 				| Result[@name:name @args=>args:args @vars=>args:vars] @Result
 				| Args[ arg*:ary ] @Args

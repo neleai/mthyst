@@ -76,7 +76,7 @@ failobj=rb_eval_string(\"FAIL\");
 				| Apply[:name (.:{addcallback(it)}*):args 
             failwrap(" #{map_index(args){|a|"arg#{a}=CALL(#{args[a]},1,bind);"}} it=CALL(#{name},#{args.size} #{map_index(args){|a|",arg#{a}"}});")]
 				| Seq[ trans*:t {t*""} ]
-				| Set[ @expr=>trans:e {"#{e}\n #{bset(@name.desc,"it")}; " } ]
+				| Bind[ @expr=>trans:e {"#{e}\n #{bset(@name.desc,"it")}; " } ]
 				| Or[ {label("accept")}:accept {@@faillabel}:fail {label("oldpos")}:oldpos label("alt"):alt {0}:altno
 					 ( &(.) {altno+=1} rw("#{alt}_#{altno+1}",`trans`))*:t
 					 {s="int #{oldpos}=ame_getpos(self);\n"}

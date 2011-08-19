@@ -319,7 +319,7 @@ def trans_AmethystCTranslatorcb_43(bind)
 bind[:t_1]*""
 end
 def trans_AmethystCTranslatorcb_44(bind)
-Set
+Bind
 end
 def trans_AmethystCTranslatorcb_45(bind)
 @src.expr

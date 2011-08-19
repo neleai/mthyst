@@ -726,10 +726,10 @@ it=(true)
 bind[:append_1] = it },proc{it=empty();next FAIL if it==FAIL
 it=(nil)
 bind[:append_1] = it });next FAIL if it==FAIL
-it=(_Set(bind[:name_1],bind[:from_1],bind[:append_1]))
+it=(_Bind(bind[:name_1],bind[:from_1],bind[:append_1]))
 bind[:from_1] = it },proc{it=inlineHostExpr();next FAIL if it==FAIL
 bind[:e_1] = it
-it=(Seq[_Set("it",bind[:from_1]) , Act[bind[:e_1]] ])
+it=(Seq[_Bind("it",bind[:from_1]) , Act[bind[:e_1]] ])
 bind[:from_1] = it });next FAIL if it==FAIL });break FAIL if it==FAIL 
  break FAIL if r==FAIL
  (bind[:autovar_1]=@input;@stop=nil;break FAIL) if @stop==true
@@ -875,7 +875,7 @@ it=(_body(bind[:body_1]))
 bind[:body_1] = it
 it=(@locals.uniq)
 bind[:locals_1] = it
-it=(bind[:body_1]=Seq[{:ary=>($appends.uniq.map{|a| _Set(a,Act[Args["[]"]])}+[bind[:body_1]])}]; )
+it=(bind[:body_1]=Seq[{:ary=>($appends.uniq.map{|a| _Bind(a,Act[Args["[]"]])}+[bind[:body_1]])}]; )
 it=Rule.create( {:args=>bind[:args_1],:bnding=>bind[:bnding_1],:body=>bind[:body_1],:locals=>bind[:locals_1],:name=>bind[:name_1] })
 bind[:_result_1] = it
 it=bind[:_result_1]  
@@ -1228,7 +1228,7 @@ it=args();next FAIL if it==FAIL
 bind[:autovar_25] = it
 it=(_append(bind[:ary_1],bind[:autovar_25])) };next FAIL if it==FAIL
 it=Apply.create( {:ary=>bind[:ary_1] })
-bind[:_result_1] = it },proc{it=clas(Set);next FAIL if it==FAIL
+bind[:_result_1] = it },proc{it=clas(Bind);next FAIL if it==FAIL
 bind[:autovar_26] = it
 it=_pass(true,bind[:autovar_26]){it=(@src.name)
 bind[:autovar_27] = it
@@ -1240,7 +1240,7 @@ bind[:autovar_28] = it
 it=(bind[:autovar_28]=[bind[:autovar_28]])
 it=_pass(true,bind[:autovar_28]){it=trans();next FAIL if it==FAIL
 bind[:expr_1] = it};next FAIL if it==FAIL };next FAIL if it==FAIL
-it=Set.create( {:ary=>bind[:ary_1],:expr=>bind[:expr_1],:name=>bind[:name_1] })
+it=Bind.create( {:ary=>bind[:ary_1],:expr=>bind[:expr_1],:name=>bind[:name_1] })
 bind[:_result_1] = it },proc{it=clas(Act);next FAIL if it==FAIL
 bind[:autovar_29] = it
 it=_pass(true,bind[:autovar_29]){it=args();next FAIL if it==FAIL
@@ -1668,7 +1668,7 @@ it=(@marked<<bind[:this_1] if @src.pred)
 it=vars_in();next FAIL if it==FAIL
 bind[:var_1] = it };next FAIL if it==FAIL
 it=(bind[:var_1].each{|w| @edges.add(w,bind[:this_1]); @edges.add(bind[:this_1],w)})
-bind[:_result_1] = it },proc{it=clas(Set);next FAIL if it==FAIL
+bind[:_result_1] = it },proc{it=clas(Bind);next FAIL if it==FAIL
 bind[:autovar_9] = it
 it=_pass(true,bind[:autovar_9]){it=(@src.name)
 bind[:autovar_10] = it
@@ -1753,7 +1753,7 @@ it=(_append(bind[:ary_1],bind[:autovar_14])) };next FAIL if it==FAIL },proc{it=c
 bind[:autovar_15] = it
 it=_pass(true,bind[:autovar_15]){it=vars_in();next FAIL if it==FAIL
 bind[:autovar_16] = it
-it=(_append(bind[:ary_1],bind[:autovar_16])) };next FAIL if it==FAIL },proc{it=clas(Set);next FAIL if it==FAIL
+it=(_append(bind[:ary_1],bind[:autovar_16])) };next FAIL if it==FAIL },proc{it=clas(Bind);next FAIL if it==FAIL
 bind[:autovar_17] = it
 it=_pass(true,bind[:autovar_17]){it=(@src.name)
 bind[:autovar_18] = it
@@ -1814,7 +1814,7 @@ bind[:autovar_5]=@input;r=it=anything();break FAIL if it==FAIL
  (bind[:autovar_5]=@input;@stop=nil;break FAIL) if @stop==true
 end;@input=bind[:autovar_5] };next FAIL if it==FAIL
 it=(@reachable[bind[:this_1]] ? bind[:this_1] : Act[])
-bind[:_result_1] = it },proc{it=clas(Set);next FAIL if it==FAIL
+bind[:_result_1] = it },proc{it=clas(Bind);next FAIL if it==FAIL
 bind[:autovar_6] = it
 it=_pass(true,bind[:autovar_6]){it=(@src.name)
 bind[:name_1] = it
@@ -1823,7 +1823,7 @@ bind[:autovar_7] = it
 it=(bind[:autovar_7]=[bind[:autovar_7]])
 it=_pass(true,bind[:autovar_7]){it=trans();next FAIL if it==FAIL
 bind[:expr_1] = it};next FAIL if it==FAIL };next FAIL if it==FAIL
-it=(@reachable[bind[:name_1]] ? _Set(bind[:name_1],bind[:expr_1]) : bind[:expr_1])
+it=(@reachable[bind[:name_1]] ? _Bind(bind[:name_1],bind[:expr_1]) : bind[:expr_1])
 bind[:_result_1] = it },proc{it=clas(Result);next FAIL if it==FAIL
 bind[:autovar_8] = it
 it=_pass(true,bind[:autovar_8]){it=(@src.self)
@@ -1955,7 +1955,7 @@ bind[:to_1] = it};next FAIL if it==FAIL };next FAIL if it==FAIL
 it=Pass.create( {:ary=>bind[:ary_1],:to=>bind[:to_1],:var=>bind[:var_1] })
 bind[:_result_1] = it },proc{it=anything();next FAIL if it==FAIL
 bind[:it_1] = it
-it=(_Set(bind[:name_1],bind[:it_1]))
+it=(_Bind(bind[:name_1],bind[:it_1]))
 bind[:_result_1] = it });return FAIL if it==FAIL
 it=bind[:_result_1]  
 end
@@ -1963,7 +1963,7 @@ def trans()
 bind={}; 
   it=nil
 
-it=_or(proc{it=clas(Set);next FAIL if it==FAIL
+it=_or(proc{it=clas(Bind);next FAIL if it==FAIL
 bind[:autovar_1] = it
 it=_pass(true,bind[:autovar_1]){it=(@src.name)
 bind[:name_1] = it
@@ -2239,7 +2239,7 @@ bind[:name_1] = it
 it=args();next FAIL if it==FAIL
 bind[:argss_1] = it };next FAIL if it==FAIL
 it=failwrap("it=#{bind[:name_1]}(#{bind[:argss_1]})");next FAIL if it==FAIL
-bind[:_result_1] = it },proc{it=clas(Set);next FAIL if it==FAIL
+bind[:_result_1] = it },proc{it=clas(Bind);next FAIL if it==FAIL
 bind[:autovar_21] = it
 it=_pass(true,bind[:autovar_21]){it=(@src.name)
 bind[:autovar_22] = it

@@ -60,7 +60,7 @@ def trans_Dead_Code_Detectorcb_27(bind)
 bind[:var_1].each{|w| @edges.add(w,bind[:this_1]); @edges.add(bind[:this_1],w)}
 end
 def trans_Dead_Code_Detectorcb_28(bind)
-Set
+Bind
 end
 def trans_Dead_Code_Detectorcb_29(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
@@ -192,7 +192,7 @@ def vars_in_Dead_Code_Detectorcb_28(bind)
 _append(bind[:ary_1],bind[:autovar_13])
 end
 def vars_in_Dead_Code_Detectorcb_29(bind)
-Set
+Bind
 end
 def vars_in_Dead_Code_Detectorcb_3(bind)
 Global
@@ -269,7 +269,7 @@ def trans_Dead_Code_Deletercb_15(bind)
 @reachable[bind[:this_1]] ? bind[:this_1] : Act[]
 end
 def trans_Dead_Code_Deletercb_16(bind)
-Set
+Bind
 end
 def trans_Dead_Code_Deletercb_17(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
@@ -287,7 +287,7 @@ def trans_Dead_Code_Deletercb_20(bind)
 bind[:autovar_6]=[bind[:autovar_6]]
 end
 def trans_Dead_Code_Deletercb_21(bind)
-@reachable[bind[:name_1]] ? _Set(bind[:name_1],bind[:expr_1]) : bind[:expr_1]
+@reachable[bind[:name_1]] ? _Bind(bind[:name_1],bind[:expr_1]) : bind[:expr_1]
 end
 def trans_Dead_Code_Deletercb_22(bind)
 Result
@@ -430,7 +430,7 @@ def move_Move_Assignmentscb_22(bind)
 Pass.create( {:ary=>bind[:ary_1],:to=>bind[:to_1],:var=>bind[:var_1] })
 end
 def move_Move_Assignmentscb_23(bind)
-_Set(bind[:name_1],bind[:it_1])
+_Bind(bind[:name_1],bind[:it_1])
 end
 def move_Move_Assignmentscb_3(bind)
 []
@@ -454,7 +454,7 @@ def move_Move_Assignmentscb_9(bind)
 []
 end
 def trans_Move_Assignmentscb_1(bind)
-Set
+Bind
 end
 def trans_Move_Assignmentscb_10(bind)
 []
@@ -523,7 +523,7 @@ def trans_Move_Assignmentscb_3(bind)
 @src.name
 end
 def trans_Move_Assignmentscb_30(bind)
-_Set(bind[:name_2],bind[:it_1])
+_Bind(bind[:name_2],bind[:it_1])
 end
 def trans_Move_Assignmentscb_4(bind)
 @src.expr

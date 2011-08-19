@@ -210,7 +210,7 @@ def trans_AmethystTranslatorcb_4(bind)
 @src.name
 end
 def trans_AmethystTranslatorcb_40(bind)
-@src.o
+autovar
 end
 def trans_AmethystTranslatorcb_41(bind)
 bind[:autovar_15]=[bind[:autovar_15]]
@@ -234,7 +234,7 @@ def trans_AmethystTranslatorcb_47(bind)
 "it=#{bind[:name_1]}(#{bind[:argss_1]})"
 end
 def trans_AmethystTranslatorcb_48(bind)
-Set
+Bind
 end
 def trans_AmethystTranslatorcb_49(bind)
 @src.name

@@ -4,7 +4,9 @@ makeclasses(Object,
     :Apply,:Char,
     :Nested,
     :Exp,
-    [:Set,:name,:expr,:append],
+    [:Bind,:name,:expr,:append],
+    [:Bind,:name,:expr,:append],
+
     [:Many,:o],
     :Comment,
     [:Args,:o,:c,:r,:actno],
@@ -63,33 +65,33 @@ end
 class <<Pass
 	def [](from,to,enter=nil)
 		a=autovar
-		Seq[_Set(a,from), (enter ? PureAct[] : Act[Args[a,"=[",a,"]"]]) , Pass.create({:to=>to,:enter=>true,:var=>a})]
+		Seq[_Bind(a,from), (enter ? PureAct[] : Act[Args[a,"=[",a,"]"]]) , Pass.create({:to=>to,:enter=>true,:var=>a})]
 	end
 end
-def _Set(name,expr,append=nil)
+def _Bind(name,expr,append=nil)
 	if append
 		a=autovar
 		$appends<<name if $appends
-	  return Seq[_Set(a,expr),PureAct[Args["_append(",_Local(name),",",a,")"]]]
+	  return Seq[_Bind(a,expr),PureAct[Args["_append(",_Local(name),",",a,")"]]]
 	end	
 	if name.is_a?(Local) || name.is_a?(String)
-		Set.create({:name=>_Local(name),:expr=>expr})
+		Bind.create({:name=>_Local(name),:expr=>expr})
 	else
 		a=autovar
-		Seq[_Set(a,expr),PureAct[Args[name,'=',a]]]
+		Seq[_Bind(a,expr),PureAct[Args[name,'=',a]]]
 	end
 end
 class Append;end
 class <<Append
 	def [](name,expr)
-		_Set(name,expr,true)
+		_Bind(name,expr,true)
 	end
 end
 
 class <<Many
 	def [](expr,many1=nil)
 	  a=autovar
-		Seq[{:ary=>( [_Set(a, PureAct["[]"])]+(many1 ? [Append[a,expr]] : [])+[Many.create({:ary=>[Append[a,expr]]}),PureAct[a]])}]
+		Seq[{:ary=>( [_Bind(a, PureAct["[]"])]+(many1 ? [Append[a,expr]] : [])+[Many.create({:ary=>[Append[a,expr]]}),PureAct[a]])}]
 	end
 end
 
@@ -115,7 +117,7 @@ def [](e)
 end
 end
 def _body(body)
-	Seq[_Set("_result",body), PureAct[Args["_result"]]]
+	Seq[_Bind("_result",body), PureAct[Args["_result"]]]
 end
 
 class <<Lookahead

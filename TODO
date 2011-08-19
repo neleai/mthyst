@@ -20,9 +20,15 @@ bind cut,stop to corresponding many,or
 code motion of acts
 
 optimalization of lookaheads such that in anything* ~anything the ~anything is automaticaly satisfied(aka eof)
-in ~space space* the  space* must be empty
-mark acts without side effects
+in ~space space* the  space* must be empty 
+Do it by constant propagation?
+
+detect acts as pure if they have simple form
 documentation
 rewrite using backtracking,repeat until...
 
 initialize parse by Pass
+
+directly call istead rb_funcall
+
+switch and predication by constant propagation
