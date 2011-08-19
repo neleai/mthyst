@@ -106,7 +106,7 @@ return it;
 fail: return failobj; }
 VALUE Amethyst_empty(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=CALL(empty_Amethystcb_1,1,bind); 
+it=Qnil;
  BSET(_result_1,it); it=BGET(_result_1);
 return it;
 fail: return failobj; }

@@ -108,9 +108,6 @@ end
 def eChar_AmethystParsercb_3(bind)
 '}'
 end
-def empty_AmethystParsercb_1(bind)
-nil
-end
 def fails_AmethystParsercb_1(bind)
 (false) || FAIL
 end
@@ -214,12 +211,6 @@ def prefixed_AmethystParsercb_1(bind)
 Pred[bind[:expr_1]]
 end
 def prefixed_AmethystParsercb_10(bind)
-nil
-end
-def prefixed_AmethystParsercb_11(bind)
-_Bind(bind[:name_1],bind[:from_1],bind[:append_1])
-end
-def prefixed_AmethystParsercb_12(bind)
 Seq[_Bind("it",bind[:from_1]) , Act[bind[:e_1]] ]
 end
 def prefixed_AmethystParsercb_2(bind)
@@ -244,7 +235,7 @@ def prefixed_AmethystParsercb_8(bind)
 Or[bind[:from_1],Apply["empty"]]
 end
 def prefixed_AmethystParsercb_9(bind)
-true
+_Bind(bind[:name_1],bind[:from_1],bind[:append_1])
 end
 def procargs2_AmethystParsercb_1(bind)
 Args

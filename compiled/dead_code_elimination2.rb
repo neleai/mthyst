@@ -326,9 +326,6 @@ class Communize_Or2 < Traverser
 def clas_Communize_Or2cb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
-def empty_Communize_Or2cb_1(bind)
-nil
-end
 def fails_Communize_Or2cb_1(bind)
 (false) || FAIL
 end
@@ -389,9 +386,6 @@ end
 class Communize_Or3 < Traverser
 def clas_Communize_Or3cb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def empty_Communize_Or3cb_1(bind)
-nil
 end
 def fails_Communize_Or3cb_1(bind)
 (false) || FAIL
@@ -461,9 +455,6 @@ end
 class Move_Assignments2 < Traverser
 def clas_Move_Assignments2cb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def empty_Move_Assignments2cb_1(bind)
-nil
 end
 def fails_Move_Assignments2cb_1(bind)
 (false) || FAIL

@@ -8,9 +8,6 @@ end
 def digit_Amethystcb_1(bind)
 /[0-9]/
 end
-def empty_Amethystcb_1(bind)
-nil
-end
 def exactly_Amethystcb_1(bind)
 (bind[:wanted_1] == bind[:got_1]) || FAIL
 end

@@ -642,7 +642,7 @@ return it;
 fail: return failobj; }
 VALUE Communize_Or2_empty(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=CALL(empty_Communize_Or2cb_1,1,bind); 
+it=Qnil;
  BSET(_result_1,it); it=BGET(_result_1);
 return it;
 fail: return failobj; }
@@ -816,7 +816,7 @@ return it;
 fail: return failobj; }
 VALUE Communize_Or3_empty(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=CALL(empty_Communize_Or3cb_1,1,bind); 
+it=Qnil;
  BSET(_result_1,it); it=BGET(_result_1);
 return it;
 fail: return failobj; }
@@ -991,7 +991,7 @@ return it;
 fail: return failobj; }
 VALUE Move_Assignments2_empty(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=CALL(empty_Move_Assignments2cb_1,1,bind); 
+it=Qnil;
  BSET(_result_1,it); it=BGET(_result_1);
 return it;
 fail: return failobj; }
