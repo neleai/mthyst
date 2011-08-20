@@ -18,9 +18,13 @@ class Dataflow < Traverser
 	end
 	def many_end(prev)
 	  ssanums.each{|var,num|
-      if prev[var]!=num
-        edges.add([var[0],ssanums[var]],[var[0],prev[var]] )
-      end
+			if var.is_a?(Local)
+	      if prev[var]!=num
+					varp=var.clone
+					varp.ssano=prev[var]
+ 	       edges.add([var,ssanums[var]],[varp,prev[var]] )
+ 	     end
+			end
     }
 	end
 	def set_end(exp)
