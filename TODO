@@ -39,3 +39,5 @@ log times of compilation
 
 dont duplicate rules that dont refer to overwritten rule
 
+parse acts after parser finishes
+detect numbers as cacts(they dont join to single string)

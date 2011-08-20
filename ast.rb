@@ -1,32 +1,29 @@
 makeclasses(Object,
     [:Key,:name,:expr,:args],
-    [:Result,:name,:expr,:args,:vars],
+    [:Result,:name,:args,:vars],
     :Apply,:Char,
     :Nested,
     :Exp,
     [:Bind,:name,:expr,:append],
-    [:Bind,:name,:expr,:append],
-
-    [:Many,:o],
+    [:Many],
     :Comment,
-    [:Args,:o,:c,:r,:actno],
-    [:Act,:uses,:pred,:actno,:pure],
+    [:Args],
+    [:Act,:pred,:pure],
 		[:CAct,:pred,:pure],
     [:Lookahead,:neg],
     :And,
     :Or,
     :Seq,
 		[:Strin],
-		[:Local,:number,:no,:bind,:ssano],
+		[:Local,:ssano],
 		[:Pass,:var,:to,:enter],
     [:Rule,:name,:args,:locals,:body,:cfg,:reachable,:bnding],
-    [:Grammar,:name,:parent,:rules,:rbcode,:rbno],
+    [:Grammar,:name,:parent,:rules],
 		:Global,
 		:Memo,
 		:Break,
 		:Cut,
 		:Stop,
-		[:Variable,:bind,:global,:key],
 		:Bnding,
 		[:Phi,:merges,:result],
 		[:Switch,:fn,:variants]
@@ -37,11 +34,6 @@ class <<Bnding
 		@bno||=0
 		@bno+=1
 		Bnding.create({:ary=>[@bno]})
-	end
-end
-class <<Variable
-	def [](name,bind)
-		Variable.create({:name=>name,:bind=>bind})
 	end
 end
 def quote(s)
