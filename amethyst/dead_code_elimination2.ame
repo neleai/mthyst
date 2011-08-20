@@ -67,6 +67,8 @@ amethyst Communize_Or3 < Traverser {
 }
 
 amethyst Move_Assignments2 < Traverser {
+	itrans=root	
+
 	root=traverse 
 	
 	visit = Bind[@name:name traverse @expr:expr @append:append {expr}=>move(append,name) ]

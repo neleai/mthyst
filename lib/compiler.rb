@@ -10,10 +10,9 @@ class Gram
 	end
 	def opt(r)
       debug=true
-			pipeline=[Seq_Or_Optimizer,Move_Assignments2,Seq_Or_Optimizer,
+			[Seq_Or_Optimizer,Move_Assignments2,Seq_Or_Optimizer,
 			Communize_Or3,Seq_Or_Optimizer,
-			]
-			pipeline.each{|o|
+			].each{|o|
 #	      puts r.inspect if debug
       	r=o.new.parse(:root,r)
 			}
@@ -116,7 +115,7 @@ end
 	end
 end	
 Compiler::init
-["amethyst","traverser","detect_variables2","ctranslator2","parser","optimizer_null","optimizer_and_or","dead_code_elimination"
+["amethyst","traverser","detect_variables2","ctranslator2","parser","optimizer_null","optimizer_and_or","dead_code_elimination2","dataflow_ssa"
 ].each{|opt|
 require "compiled/#{opt}"
 }
@@ -125,12 +124,17 @@ require "compiled/#{opt}"
 def translate(s)
   par=AmethystParser.new
   opt=par.parse(:igrammar,s)
-  [AmethystOptimizer2,Analyze_Variables2,Move_Assignments,
-    Dead_Code_Detector,Dead_Code_Deleter,
-    AmethystOptimizer2].each{|p|
+  [Seq_Or_Optimizer,Analyze_Variables2,Move_Assignments2,
+    Seq_Or_Optimizer,Seq_Or_Optimizer].each{|p|
+		puts opt.inspect
     opt=p.new.parse(:itrans,opt)
   }
+
   opt
+end
+
+def a2ruby(s)
+	AmethystTranslator.new.parse(:itrans,translate(s))
 end
 def compile_to_c(file)
   opt=translate(File.new("amethyst/#{file}.ame").read)

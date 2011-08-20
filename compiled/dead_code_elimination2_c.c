@@ -1049,6 +1049,7 @@ VALUE Move_Assignments2_clas(VALUE self ,VALUE a0);
 VALUE Move_Assignments2_empty(VALUE self );
 VALUE Move_Assignments2_eof(VALUE self );
 VALUE Move_Assignments2_fails(VALUE self );
+VALUE Move_Assignments2_itrans(VALUE self );
 VALUE Move_Assignments2_move(VALUE self ,VALUE a0,VALUE a1);
 VALUE Move_Assignments2_root(VALUE self );
 VALUE Move_Assignments2_traverse(VALUE self );
@@ -1086,6 +1087,18 @@ fail: return failobj; }
 VALUE Move_Assignments2_fails(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 it=CALL(fails_Move_Assignments2cb_1,1,bind); FAILTEST(fail);
+ BSET(_result_1,it); it=BGET(_result_1);
+return it;
+fail: return failobj; }
+VALUE Move_Assignments2_itrans(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+
+int oldpos1=ame_getpos(self);
+alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
+   it=Move_Assignments2_root(self ); FAILTEST(alt1_2); 
+ISET(cut,Qnil);goto accept1;
+  alt1_2:  ame_setpos(self,oldpos1); goto fail;
+ accept1:;
+
  BSET(_result_1,it); it=BGET(_result_1);
 return it;
 fail: return failobj; }
@@ -1191,13 +1204,7 @@ return it;
 fail: return failobj; }
 VALUE Move_Assignments2_root(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-int oldpos1=ame_getpos(self);
-alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-   it=Move_Assignments2_traverse(self ); FAILTEST(alt1_2); 
-ISET(cut,Qnil);goto accept1;
-  alt1_2:  ame_setpos(self,oldpos1); goto fail;
- accept1:;
-
+  it=Move_Assignments2_traverse(self ); FAILTEST(fail);
  BSET(_result_1,it); it=BGET(_result_1);
 return it;
 fail: return failobj; }
@@ -1465,6 +1472,7 @@ rb_define_method(cls_Move_Assignments2,"clas",Move_Assignments2_clas,1);
 rb_define_method(cls_Move_Assignments2,"empty",Move_Assignments2_empty,0);
 rb_define_method(cls_Move_Assignments2,"eof",Move_Assignments2_eof,0);
 rb_define_method(cls_Move_Assignments2,"fails",Move_Assignments2_fails,0);
+rb_define_method(cls_Move_Assignments2,"itrans",Move_Assignments2_itrans,0);
 rb_define_method(cls_Move_Assignments2,"move",Move_Assignments2_move,2);
 rb_define_method(cls_Move_Assignments2,"root",Move_Assignments2_root,0);
 rb_define_method(cls_Move_Assignments2,"traverse",Move_Assignments2_traverse,0);

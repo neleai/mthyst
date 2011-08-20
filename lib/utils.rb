@@ -23,16 +23,17 @@ module Populate
 	end
 	alias_method :create,:[]
 end
-
+class Object
+ def self
+    self
+  end
+end
 module AmethystAST
 	def size
 		ary.size
 	end
 	def [](a)
 		ary[a]
-	end
-	def self
-		self
 	end
 	def isomorphic(that)
 		this.to_yaml==that.to_yaml
