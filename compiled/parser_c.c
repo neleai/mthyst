@@ -202,10 +202,10 @@ VALUE AmethystParser_choice(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new()
 it=rb_ary_new3(0);
  BSET(f_1,it); int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=rb_str_new2("sequence"); arg0=it; it=CALL(apply,1 ,arg0); FAILTEST(alt1_2);
+   it=AmethystParser_sequence(self ); FAILTEST(alt1_2);
  BSET(autovar_1,it); it=CALL(choice_AmethystParsercb_1,1,bind); it=rb_ary_new3(0);
  BSET(autovar_2,it); int oldpos2; while(1){oldpos2=ame_getpos(self);  it=rb_str_new2("|"); arg0=it; it=AmethystParser_token(self ,arg0); FAILTEST(break1);
- BSET(_result_1,it); it=BGET(_result_1); it=rb_str_new2("sequence"); arg0=it; it=CALL(apply,1 ,arg0); FAILTEST(break1);
+ BSET(_result_1,it); it=BGET(_result_1);  it=AmethystParser_sequence(self ); FAILTEST(break1);
  BSET(autovar_3,it); it=CALL(choice_AmethystParsercb_2,1,bind);  if (IGET(stop)!=Qnil){{oldpos2=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos2); it=BGET(autovar_2);
  BSET(autovar_4,it); it=CALL(choice_AmethystParsercb_3,1,bind); it=BGET(f_1);
  BSET(_result_2,it);  
@@ -441,7 +441,7 @@ alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
   it=rb_str_new2("sequence"); arg0=it; it=CALL(apply,1 ,arg0); FAILTEST(alt1_2);
  BSET(autovar_1,it); it=CALL(listOf_AmethystParsercb_1,1,bind); it=rb_ary_new3(0);
  BSET(autovar_2,it); int oldpos2; while(1){oldpos2=ame_getpos(self);  it=rb_str_new2("|"); arg0=it; it=AmethystParser_token(self ,arg0); FAILTEST(break1);
- BSET(_result_1,it); it=BGET(_result_1); it=rb_str_new2("sequence"); arg0=it; it=CALL(apply,1 ,arg0); FAILTEST(break1);
+ BSET(_result_1,it); it=BGET(_result_1);  it=AmethystParser_sequence(self ); FAILTEST(break1);
  BSET(autovar_3,it); it=CALL(listOf_AmethystParsercb_2,1,bind);  if (IGET(stop)!=Qnil){{oldpos2=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos2); it=BGET(autovar_2);
  BSET(autovar_4,it); it=CALL(listOf_AmethystParsercb_3,1,bind); it=BGET(f_1);
  BSET(_result_2,it);  
