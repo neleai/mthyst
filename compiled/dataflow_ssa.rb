@@ -108,12 +108,21 @@ def traverse_item_CloneLocalscb_6(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_CloneLocalscb_1(bind)
-Local
+Bnding
 end
 def visit_CloneLocalscb_2(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_CloneLocalscb_3(bind)
+@src.self
+end
+def visit_CloneLocalscb_4(bind)
+AmethystAST
+end
+def visit_CloneLocalscb_5(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def visit_CloneLocalscb_6(bind)
 @src.self.clone
 end
 

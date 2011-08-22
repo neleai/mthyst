@@ -60,7 +60,9 @@ end
 
 amethyst CloneLocals < Traverser{
 	root = @self=>Rule[ traverse ]
-	visit = Local[.* {@self.clone}]
+	visit = Bnding[.* {@self}]
+				| AmethystAST[.* traverse {@self.clone}]
+
 }
 
 amethyst Dataflow < Traverser {

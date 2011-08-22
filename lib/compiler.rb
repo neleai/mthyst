@@ -22,7 +22,7 @@ class Gram
 			r=o.new.parse(:root,r)
 			#puts r.inspect
 		}
-		r=propagate_consts(r)
+#		r=propagate_consts(r)
     @rules[r.name]=r 
 	end
 	def getrule(name)
