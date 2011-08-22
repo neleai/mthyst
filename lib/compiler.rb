@@ -20,7 +20,7 @@ class Gram
 			Dead_Code_Deleter3,Seq_Or_Optimizer
 ].each{|o|
 			r=o.new.parse(:root,r)
-			puts r.inspect
+			puts r.inspect if debug
 		}
 		r=propagate_consts(r)
  [CloneLocals, Dataflow, 
@@ -28,7 +28,7 @@ class Gram
 			Communize_Or3,Seq_Or_Optimizer
 ].each{|o|
 			r=o.new.parse(:root,r)
-			puts r.inspect
+			puts r.inspect if debug
 		}
 
     @rules[r.name]=r 

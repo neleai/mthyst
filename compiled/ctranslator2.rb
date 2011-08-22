@@ -86,24 +86,15 @@ def failwrap_AmethystCTranslatorcb_1(bind)
 "#{bind[:s_1]} FAILTEST(#{@faillabel});" 
 end
 def itrans_AmethystCTranslatorcb_1(bind)
-[]
-end
-def itrans_AmethystCTranslatorcb_2(bind)
-[]
-end
-def itrans_AmethystCTranslatorcb_3(bind)
-[]
-end
-def itrans_AmethystCTranslatorcb_4(bind)
 (bind[:c_2].is_a? String ) || FAIL
 end
-def itrans_AmethystCTranslatorcb_5(bind)
+def itrans_AmethystCTranslatorcb_2(bind)
 _append(bind[:ruby_1],bind[:autovar_1])
 end
-def itrans_AmethystCTranslatorcb_6(bind)
+def itrans_AmethystCTranslatorcb_3(bind)
 bind[:c_1]<<bind[:it_1][0];bind[:init_1]<<bind[:it_1][1];bind[:ruby_1]<<bind[:it_1][2]
 end
-def itrans_AmethystCTranslatorcb_7(bind)
+def itrans_AmethystCTranslatorcb_4(bind)
 [bind[:c_1],bind[:init_1],bind[:ruby_1]]
 end
 def rbcode_AmethystCTranslatorcb_1(bind)
@@ -227,39 +218,42 @@ def trans_AmethystCTranslatorcb_10(bind)
 @src.rules
 end
 def trans_AmethystCTranslatorcb_100(bind)
-"oldpos"
+"pass"
 end
 def trans_AmethystCTranslatorcb_101(bind)
-"oldlen"
+"oldpos"
 end
 def trans_AmethystCTranslatorcb_102(bind)
-"oldsrc"
+"oldlen"
 end
 def trans_AmethystCTranslatorcb_103(bind)
-"success"
+"oldsrc"
 end
 def trans_AmethystCTranslatorcb_104(bind)
-"fail"
+"success"
 end
 def trans_AmethystCTranslatorcb_105(bind)
-@faillabel
+"fail"
 end
 def trans_AmethystCTranslatorcb_106(bind)
-@faillabel=bind[:word_1] 
+@faillabel
 end
 def trans_AmethystCTranslatorcb_107(bind)
-@src.to
+@faillabel=bind[:word_1] 
 end
 def trans_AmethystCTranslatorcb_108(bind)
-bind[:autovar_36]=[bind[:autovar_36]]
+@src.to
 end
 def trans_AmethystCTranslatorcb_109(bind)
-@faillabel=bind[:rwo_1]; bind[:x_1] 
+bind[:autovar_36]=[bind[:autovar_36]]
 end
 def trans_AmethystCTranslatorcb_11(bind)
 bind[:autovar_2]=[bind[:autovar_2]]
 end
 def trans_AmethystCTranslatorcb_110(bind)
+@faillabel=bind[:rwo_1]; bind[:x_1] 
+end
+def trans_AmethystCTranslatorcb_111(bind)
 "int #{bind[:oldpos_1]}=ame_getpos(self); int #{bind[:oldlen_1]}=ame_getlen(self); VALUE #{bind[:oldsrc_1]}=ame_getsrc(self); int #{bind[:fail_1]}=0;
 ame_setsrc(self,#{bget(@src.var.desc)}); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern(\"size\"),0)));
  #{bind[:to_1]}
@@ -354,223 +348,223 @@ def trans_AmethystCTranslatorcb_33(bind)
 bind[:autovar_15]=[bind[:autovar_15]]
 end
 def trans_AmethystCTranslatorcb_34(bind)
-rule=@ruletable[@rulename];  failwrap(map_index(rule.args){|i|"vals[#{i}]=#{bget(rule.args[i].desc)};"}*""+ "it=rb_call_super(#{rule.args.size},vals);")
+"super"
 end
 def trans_AmethystCTranslatorcb_35(bind)
-Apply
+rule=@ruletable[@rulename];  failwrap(map_index(rule.args){|i|"vals[#{i}]=#{bget(rule.args[i].desc)};"}*""+ "it=rb_call_super(#{rule.args.size},vals);")
 end
 def trans_AmethystCTranslatorcb_36(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+Apply
 end
 def trans_AmethystCTranslatorcb_37(bind)
-bind[:ii_1]+=1
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def trans_AmethystCTranslatorcb_38(bind)
-"#{bind[:aa_1]} arg#{bind[:ii_1]-1}=it;"
+bind[:ii_1]+=1
 end
 def trans_AmethystCTranslatorcb_39(bind)
-_append(bind[:autovar_18],bind[:autovar_19])
+"#{bind[:aa_1]} arg#{bind[:ii_1]-1}=it;"
 end
 def trans_AmethystCTranslatorcb_4(bind)
 @lambdas=[]
 end
 def trans_AmethystCTranslatorcb_40(bind)
-" #{bind[:args_1]} it=#{callrule(bind[:name_1],bind[:ii_1])};"
+_append(bind[:autovar_18],bind[:autovar_19])
 end
 def trans_AmethystCTranslatorcb_41(bind)
-"#{bind[:s_2]} FAILTEST(#{@faillabel});" 
+" #{bind[:args_1]} it=#{callrule(bind[:name_1],bind[:ii_1])};"
 end
 def trans_AmethystCTranslatorcb_42(bind)
-Seq
+"#{bind[:s_3]} FAILTEST(#{@faillabel});" 
 end
 def trans_AmethystCTranslatorcb_43(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+Seq
 end
 def trans_AmethystCTranslatorcb_44(bind)
-_append(bind[:autovar_21],bind[:autovar_22])
-end
-def trans_AmethystCTranslatorcb_45(bind)
-bind[:t_1]*""
-end
-def trans_AmethystCTranslatorcb_46(bind)
-Bind
-end
-def trans_AmethystCTranslatorcb_47(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
+def trans_AmethystCTranslatorcb_45(bind)
+_append(bind[:autovar_21],bind[:autovar_22])
+end
+def trans_AmethystCTranslatorcb_46(bind)
+bind[:t_1]*""
+end
+def trans_AmethystCTranslatorcb_47(bind)
+Bind
+end
 def trans_AmethystCTranslatorcb_48(bind)
-@src.expr
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def trans_AmethystCTranslatorcb_49(bind)
-bind[:autovar_24]=[bind[:autovar_24]]
+@src.expr
 end
 def trans_AmethystCTranslatorcb_5(bind)
 @defmethods=[]
 end
 def trans_AmethystCTranslatorcb_50(bind)
-"#{bind[:e_1]}\n #{bset(@src.name.desc,"it")}; " 
+bind[:autovar_24]=[bind[:autovar_24]]
 end
 def trans_AmethystCTranslatorcb_51(bind)
-Or
+"#{bind[:e_1]}\n #{bset(@src.name.desc,"it")}; " 
 end
 def trans_AmethystCTranslatorcb_52(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+Or
 end
 def trans_AmethystCTranslatorcb_53(bind)
-label("accept")
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def trans_AmethystCTranslatorcb_54(bind)
-@faillabel
+label("accept")
 end
 def trans_AmethystCTranslatorcb_55(bind)
-label("oldpos")
+@faillabel
 end
 def trans_AmethystCTranslatorcb_56(bind)
-"alt"
+label("oldpos")
 end
 def trans_AmethystCTranslatorcb_57(bind)
-bind[:altno_1]+=1
+"alt"
 end
 def trans_AmethystCTranslatorcb_58(bind)
-"#{bind[:alt_1]}_#{bind[:altno_1]+1}"
+bind[:altno_1]+=1
 end
 def trans_AmethystCTranslatorcb_59(bind)
-@faillabel
+"#{bind[:alt_1]}_#{bind[:altno_1]+1}"
 end
 def trans_AmethystCTranslatorcb_6(bind)
 @faillabel="fail"
 end
 def trans_AmethystCTranslatorcb_60(bind)
-@faillabel=bind[:word_1] 
+@faillabel
 end
 def trans_AmethystCTranslatorcb_61(bind)
-@faillabel=bind[:rwo_1]; bind[:x_1] 
+@faillabel=bind[:word_1] 
 end
 def trans_AmethystCTranslatorcb_62(bind)
-_append(bind[:autovar_26],bind[:autovar_27])
+@faillabel=bind[:rwo_1]; bind[:x_1] 
 end
 def trans_AmethystCTranslatorcb_63(bind)
-bind[:s_1]="int #{bind[:oldpos_1]}=ame_getpos(self);\n"
+_append(bind[:autovar_26],bind[:autovar_27])
 end
 def trans_AmethystCTranslatorcb_64(bind)
-bind[:s_1]+=map_index(bind[:t_1]){|i| "#{bind[:alt_1]}_#{i+1}: ame_setpos(self,#{bind[:oldpos_1]});if (#{iget("cut")}!=Qnil) {#{iset("cut","Qnil")}; goto #{bind[:fail_1]};}\n #{bind[:t_1][i]} \n#{iset("cut","Qnil")};goto #{bind[:accept_1]};\n"}*""
+bind[:s_1]="int #{bind[:oldpos_1]}=ame_getpos(self);\n"
 end
 def trans_AmethystCTranslatorcb_65(bind)
-"#{bind[:s_1]}  #{bind[:alt_1]}_#{bind[:altno_1]+1}:  ame_setpos(self,#{bind[:oldpos_1]}); goto #{bind[:fail_1]};\n #{bind[:accept_1]}:;\n"
+bind[:s_1]+=map_index(bind[:t_1]){|i| "#{bind[:alt_1]}_#{i+1}: ame_setpos(self,#{bind[:oldpos_1]});if (#{iget("cut")}!=Qnil) {#{iset("cut","Qnil")}; goto #{bind[:fail_1]};}\n #{bind[:t_1][i]} \n#{iset("cut","Qnil")};goto #{bind[:accept_1]};\n"}*""
 end
 def trans_AmethystCTranslatorcb_66(bind)
-Cut
+"#{bind[:s_1]}  #{bind[:alt_1]}_#{bind[:altno_1]+1}:  ame_setpos(self,#{bind[:oldpos_1]}); goto #{bind[:fail_1]};\n #{bind[:accept_1]}:;\n"
 end
 def trans_AmethystCTranslatorcb_67(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+Cut
 end
 def trans_AmethystCTranslatorcb_68(bind)
-"#{iset("cut","Qtrue")};"
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def trans_AmethystCTranslatorcb_69(bind)
-Stop
+"#{iset("cut","Qtrue")};"
 end
 def trans_AmethystCTranslatorcb_7(bind)
 @callbacks={}
 end
 def trans_AmethystCTranslatorcb_70(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+Stop
 end
 def trans_AmethystCTranslatorcb_71(bind)
-"#{iset("stop","Qtrue")};"
-end
-def trans_AmethystCTranslatorcb_72(bind)
-Many
-end
-def trans_AmethystCTranslatorcb_73(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
+def trans_AmethystCTranslatorcb_72(bind)
+"#{iset("stop","Qtrue")};"
+end
+def trans_AmethystCTranslatorcb_73(bind)
+Many
+end
 def trans_AmethystCTranslatorcb_74(bind)
-label("break")
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def trans_AmethystCTranslatorcb_75(bind)
-label("oldpos")
+label("break")
 end
 def trans_AmethystCTranslatorcb_76(bind)
-@faillabel
+label("oldpos")
 end
 def trans_AmethystCTranslatorcb_77(bind)
-@faillabel=bind[:word_1] 
+@faillabel
 end
 def trans_AmethystCTranslatorcb_78(bind)
-@faillabel=bind[:rwo_1]; bind[:x_1] 
+@faillabel=bind[:word_1] 
 end
 def trans_AmethystCTranslatorcb_79(bind)
-"int #{bind[:oldpos_1]}; while(1){#{bind[:oldpos_1]}=ame_getpos(self); #{bind[:t_1]} if (#{iget("stop")}!=Qnil){{#{bind[:oldpos_1]}=ame_getpos(self);goto #{bind[:brk_1]};} } } #{bind[:brk_1]}: #{iset("stop","Qnil")};  ame_setpos(self,#{bind[:oldpos_1]}); "
+@faillabel=bind[:rwo_1]; bind[:x_1] 
 end
 def trans_AmethystCTranslatorcb_8(bind)
 mktable(@src.rules)
 end
 def trans_AmethystCTranslatorcb_80(bind)
-Lookahead
+"int #{bind[:oldpos_1]}; while(1){#{bind[:oldpos_1]}=ame_getpos(self); #{bind[:t_1]} if (#{iget("stop")}!=Qnil){{#{bind[:oldpos_1]}=ame_getpos(self);goto #{bind[:brk_1]};} } } #{bind[:brk_1]}: #{iset("stop","Qnil")};  ame_setpos(self,#{bind[:oldpos_1]}); "
 end
 def trans_AmethystCTranslatorcb_81(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+Lookahead
 end
 def trans_AmethystCTranslatorcb_82(bind)
-label("accept")
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def trans_AmethystCTranslatorcb_83(bind)
-label("reject")
+label("accept")
 end
 def trans_AmethystCTranslatorcb_84(bind)
-label("oldpos")
+label("reject")
 end
 def trans_AmethystCTranslatorcb_85(bind)
-@faillabel
+label("oldpos")
 end
 def trans_AmethystCTranslatorcb_86(bind)
-@faillabel=bind[:word_1] 
+@faillabel
 end
 def trans_AmethystCTranslatorcb_87(bind)
-@faillabel=bind[:rwo_1]; bind[:x_1] 
+@faillabel=bind[:word_1] 
 end
 def trans_AmethystCTranslatorcb_88(bind)
-"int #{bind[:oldpos_1]}=ame_getpos(self);\n #{bind[:t_1]} x=1; goto #{bind[:accept_1]};  #{bind[:reject_1]}: x=0; #{bind[:accept_1]}: it=Qnil; ame_setpos(self,#{bind[:oldpos_1]}); if (x==#{@src.neg ? 1 : 0}) goto #{@faillabel};"
+@faillabel=bind[:rwo_1]; bind[:x_1] 
 end
 def trans_AmethystCTranslatorcb_89(bind)
-Local
+"int #{bind[:oldpos_1]}=ame_getpos(self);\n #{bind[:t_1]} x=1; goto #{bind[:accept_1]};  #{bind[:reject_1]}: x=0; #{bind[:accept_1]}: it=Qnil; ame_setpos(self,#{bind[:oldpos_1]}); if (x==#{@src.neg ? 1 : 0}) goto #{@faillabel};"
 end
 def trans_AmethystCTranslatorcb_9(bind)
 @header=[]
 end
 def trans_AmethystCTranslatorcb_90(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+Local
 end
 def trans_AmethystCTranslatorcb_91(bind)
-"it=#{bget(@src.desc)};" 
-end
-def trans_AmethystCTranslatorcb_92(bind)
-Result
-end
-def trans_AmethystCTranslatorcb_93(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
+def trans_AmethystCTranslatorcb_92(bind)
+"it=#{bget(@src.desc)};" 
+end
+def trans_AmethystCTranslatorcb_93(bind)
+Result
+end
 def trans_AmethystCTranslatorcb_94(bind)
-@src.args
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def trans_AmethystCTranslatorcb_95(bind)
-bind[:autovar_34]=[bind[:autovar_34]]
+@src.args
 end
 def trans_AmethystCTranslatorcb_96(bind)
+bind[:autovar_34]=[bind[:autovar_34]]
+end
+def trans_AmethystCTranslatorcb_97(bind)
 bind[:s_1]="#{@src.name}.create(#{bind[:argss_1]} {#{@src.vars.map{|l| ":#{l[0]}=>bind[:#{l.desc}]" }.sort*","} })"
 					bind[:cbno_1]=addcallback(bind[:s_1])
 					"it=CALL(#{bind[:cbno_1]},1,bind);"
 				
 end
-def trans_AmethystCTranslatorcb_97(bind)
+def trans_AmethystCTranslatorcb_98(bind)
 Pass
 end
-def trans_AmethystCTranslatorcb_98(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
 def trans_AmethystCTranslatorcb_99(bind)
-"pass"
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def transfn_AmethystCTranslatorcb_1(bind)
 "proc{#{bind[:t_1]}}"

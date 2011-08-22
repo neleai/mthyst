@@ -314,96 +314,93 @@ def visit_Dataflowcb_1(bind)
 Apply
 end
 def visit_Dataflowcb_10(bind)
-oldssanums.clone
-end
-def visit_Dataflowcb_11(bind)
 @oldssanums=bind[:old_1].clone
 end
-def visit_Dataflowcb_12(bind)
+def visit_Dataflowcb_11(bind)
 bind[:join_1]<<oldssanums.clone
 end
-def visit_Dataflowcb_13(bind)
+def visit_Dataflowcb_12(bind)
 or_end(bind[:join_1])
 end
-def visit_Dataflowcb_14(bind)
+def visit_Dataflowcb_13(bind)
 @src.self
 end
-def visit_Dataflowcb_15(bind)
+def visit_Dataflowcb_14(bind)
 Many
 end
-def visit_Dataflowcb_16(bind)
+def visit_Dataflowcb_15(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
-def visit_Dataflowcb_17(bind)
+def visit_Dataflowcb_16(bind)
 ssanums.clone
 end
-def visit_Dataflowcb_18(bind)
+def visit_Dataflowcb_17(bind)
 many_end(bind[:prev_1])
 end
-def visit_Dataflowcb_19(bind)
+def visit_Dataflowcb_18(bind)
 @src.self
+end
+def visit_Dataflowcb_19(bind)
+Pass
 end
 def visit_Dataflowcb_2(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Dataflowcb_20(bind)
-Pass
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Dataflowcb_21(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def visit_Dataflowcb_22(bind)
 @marked<<ssanum(@src.var)
 end
-def visit_Dataflowcb_23(bind)
+def visit_Dataflowcb_22(bind)
 @src.self
 end
-def visit_Dataflowcb_24(bind)
+def visit_Dataflowcb_23(bind)
 Act
 end
-def visit_Dataflowcb_25(bind)
+def visit_Dataflowcb_24(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
-def visit_Dataflowcb_26(bind)
+def visit_Dataflowcb_25(bind)
 @marked<<bind[:this_1] if @src.pred || !@src.pure
 end
-def visit_Dataflowcb_27(bind)
+def visit_Dataflowcb_26(bind)
 @src.ary
 end
-def visit_Dataflowcb_28(bind)
+def visit_Dataflowcb_27(bind)
 bind[:autovar_8]=[bind[:autovar_8]]
 end
-def visit_Dataflowcb_29(bind)
+def visit_Dataflowcb_28(bind)
 bind[:var_1].each{|v| edges.add(ssanum(v),bind[:this_1]); edges.add(bind[:this_1],newssanum(v.clone));}; bind[:this_1]
+end
+def visit_Dataflowcb_29(bind)
+Bind
 end
 def visit_Dataflowcb_3(bind)
 @src.self
 end
 def visit_Dataflowcb_30(bind)
-Bind
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Dataflowcb_31(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def visit_Dataflowcb_32(bind)
 set_end(@src.self) 
 end
-def visit_Dataflowcb_33(bind)
+def visit_Dataflowcb_32(bind)
 @src.self
 end
-def visit_Dataflowcb_34(bind)
+def visit_Dataflowcb_33(bind)
 Result
 end
-def visit_Dataflowcb_35(bind)
+def visit_Dataflowcb_34(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
-def visit_Dataflowcb_36(bind)
+def visit_Dataflowcb_35(bind)
 @src.vars
 end
-def visit_Dataflowcb_37(bind)
+def visit_Dataflowcb_36(bind)
 bind[:autovar_12]=[bind[:autovar_12]]
 end
-def visit_Dataflowcb_38(bind)
+def visit_Dataflowcb_37(bind)
 bind[:var_1].each{|w| @edges.add(ssanum(w),bind[:this_1]) } ; bind[:this_1]
 end
 def visit_Dataflowcb_4(bind)
@@ -422,7 +419,7 @@ def visit_Dataflowcb_8(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Dataflowcb_9(bind)
-[]
+oldssanums.clone
 end
 
 end

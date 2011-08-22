@@ -100,15 +100,15 @@ VALUE Amethyst_endline(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  in
 
 int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=rb_str_new2("\r\n"); arg0=it; it=AmethystCore_seq(self ,arg0); FAILTEST(alt1_2);
+  it=CALL(endline_Amethystcb_1,1,bind);  arg0=it; it=AmethystCore_seq(self ,arg0); FAILTEST(alt1_2);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=rb_str_new2("\r"); arg0=it; it=AmethystCore_seq(self ,arg0); FAILTEST(alt1_3);
+  it=CALL(endline_Amethystcb_2,1,bind);  arg0=it; it=AmethystCore_seq(self ,arg0); FAILTEST(alt1_3);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
 alt1_3: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=rb_str_new2("\n"); arg0=it; it=AmethystCore_seq(self ,arg0); FAILTEST(alt1_4);
+  it=CALL(endline_Amethystcb_3,1,bind);  arg0=it; it=AmethystCore_seq(self ,arg0); FAILTEST(alt1_4);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
   alt1_4:  ame_setpos(self,oldpos1); goto fail;
@@ -190,7 +190,7 @@ alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-   it=Amethyst_empty(self ); FAILTEST(alt1_3);it=CALL(listOf_Amethystcb_4,1,bind); 
+   it=Amethyst_empty(self ); FAILTEST(alt1_3);it=rb_ary_new3(0);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto fail;
@@ -268,7 +268,7 @@ alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=rb_str_new2("_"); arg0=it; it=AmethystCore_seq(self ,arg0); FAILTEST(alt1_3);
+  it=CALL(word_Amethystcb_1,1,bind);  arg0=it; it=AmethystCore_seq(self ,arg0); FAILTEST(alt1_3);
  BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto fail;

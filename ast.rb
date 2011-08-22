@@ -99,9 +99,9 @@ class <<PureAct
 end
 class <<Act
 	def [](expr=nil,pred=nil)
+		expr=expr[0] if expr.is_a?(Array) && expr.size==1
 		if !pred
 			#puts expr.inspect
-			expr=expr[0] if expr.is_a?(Array) && expr.size==1
 			exp=expr
 			exp=exp[0] if exp.is_a?(Args) && exp.size==1
 			#puts exp.inspect
@@ -111,7 +111,7 @@ class <<Act
 			return CAct["Qfalse"] if exp=="false"
 			return CAct["Qnil"] if exp=="nil"
 			return CAct["INT2FIX(#{exp})"] if exp.is_a?(String) && exp==exp.to_i.to_s && exp.to_i>-1000000000&&exp.to_i<1000000000
-			return CAct["rb_str_new2(\"#{exp[1...-1]}\")"] if exp.is_a?(String) && ((exp[0]==?\" && exp[-1]==?\")|| (exp[0]==?\' && exp[-1]==?\'))
+			return CAct["rb_str_new2(\"#{exp[1...-1]}\")"] if exp.is_a?(String) && ((exp[0]==?\" && exp[-1]==?\")|| (exp[0]==?\' && exp[-1]==?\')) && !exp=~/#/
 		end
 		return Act.create({:pred=>pred}) if expr==nil
 		Act.create(expr,{:pred=>pred})

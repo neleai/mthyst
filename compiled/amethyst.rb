@@ -29,6 +29,15 @@ end
 def digit_Amethystcb_3(bind)
 (bind[:regex_1].match(bind[:c_2])) || FAIL
 end
+def endline_Amethystcb_1(bind)
+"\r\n"
+end
+def endline_Amethystcb_2(bind)
+"\r"
+end
+def endline_Amethystcb_3(bind)
+"\n"
+end
 def exactly_Amethystcb_1(bind)
 (bind[:wanted_1] == bind[:got_1]) || FAIL
 end
@@ -43,9 +52,6 @@ _append(bind[:autovar_2],bind[:autovar_3])
 end
 def listOf_Amethystcb_3(bind)
 _append(bind[:f_1],bind[:autovar_4])
-end
-def listOf_Amethystcb_4(bind)
-[]
 end
 def lower_Amethystcb_1(bind)
 /[a-z]/
@@ -91,6 +97,9 @@ def upper_Amethystcb_2(bind)
 end
 def upper_Amethystcb_3(bind)
 (bind[:regex_1].match(bind[:c_2])) || FAIL
+end
+def word_Amethystcb_1(bind)
+"_"
 end
 def xdigit_Amethystcb_1(bind)
 /[0-9a-fA-F]/
