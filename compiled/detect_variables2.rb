@@ -203,7 +203,7 @@ def visit_Remap_Actscb_2(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Remap_Actscb_3(bind)
-Act[@src.ary,{:pred=>@src.pred,:pure=>@src.pure}]
+(@src.pure ? PureAct : Act)[@src.ary,@src.pred]
 end
 
 end

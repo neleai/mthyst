@@ -685,7 +685,7 @@ ame_setsrc(self,BGET(autovar_1)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb
  BSET(_result_1,it); it=BGET(_result_1);
  BSET(autovar_2,it); int oldpos2=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
 ame_setsrc(self,BGET(autovar_2)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
- it=CALL(root_Dead_Code_Deleter3cb_5,1,bind);   it=Dead_Code_Deleter3_traverse(self ); FAILTEST(pass2);it=CALL(root_Dead_Code_Deleter3cb_6,1,bind); it=CALL(root_Dead_Code_Deleter3cb_7,1,bind); 
+ it=CALL(root_Dead_Code_Deleter3cb_5,1,bind); it=CALL(root_Dead_Code_Deleter3cb_6,1,bind);   it=Dead_Code_Deleter3_traverse(self ); FAILTEST(pass2);it=CALL(root_Dead_Code_Deleter3cb_7,1,bind); 
  BSET(_result_2,it); 
 	if (CALL(eof,0)==failobj) goto pass2;
 	goto success2;
