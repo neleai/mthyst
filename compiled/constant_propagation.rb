@@ -5,6 +5,12 @@ end
 def root_Constant_Traversercb_1(bind)
 @consts=@src.consts
 end
+def root_Constant_Traversercb_2(bind)
+@src.cfg=nil;@src.reachable=nil;@src.consts=nil
+end
+def root_Constant_Traversercb_3(bind)
+@src.self
+end
 def traverse_Constant_Traversercb_1(bind)
 @src.self
 end

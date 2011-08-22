@@ -10,7 +10,7 @@ amethyst Analyze_Variables2 < Traverser {
 	flat= (Args[flat] | Strin[flat] |	. )*
 }
 
-amethyst Remap_Acts{
+amethyst Remap_Acts < Traverser{
 	root = traverse
 	
 	visit = Act[traverse {Act[@ary]} ]

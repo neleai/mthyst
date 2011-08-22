@@ -66,7 +66,7 @@ amethyst CloneLocals < Traverser{
 }
 
 amethyst Dataflow < Traverser {
-	root =  @self=>Rule[ {@@bnding=@bnding} @args=>[vars_in:var] {var.each{|v| ssanum(v)}} traverse {@reachable=@@edges.reverse.reachable(@@marked+[ssanum(@body[-1])]); @cfg=@@edges; [@@edges,@@marked+[@body[-1]]]} {@self}]
+	root =  @self=>Rule[ {@@bnding=@bnding} @args=>[vars_in:var] {var.each{|v| ssanum(v)}} traverse {@reachable=@@edges.reverse.reachable(@@marked+[ssanum(@body[-1])]); @cfg=@@edges; } {@self}]
 	
 	visit = Apply[:name traverse @self=>[vars_in:var] {var.each{|v| @@marked<<ssanum(v)}} @self]
 				| Or[	{[]}:join {oldssanums.clone}:old  ({@@oldssanums=old.clone} traverse_item {join<<oldssanums.clone})* {or_end(join)} @self ]
