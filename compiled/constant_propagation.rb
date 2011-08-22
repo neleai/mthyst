@@ -42,6 +42,15 @@ def visit_Constant_Traversercb_1(bind)
 Bind
 end
 def visit_Constant_Traversercb_10(bind)
+@src.self
+end
+def visit_Constant_Traversercb_11(bind)
+Local
+end
+def visit_Constant_Traversercb_12(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def visit_Constant_Traversercb_13(bind)
 puts @src.self.ssaname.inspect; @consts[@src.self.ssaname] ? @consts[@src.self.ssaname] : @src.self 
 end
 def visit_Constant_Traversercb_2(bind)
@@ -63,7 +72,7 @@ def visit_Constant_Traversercb_7(bind)
 @src.self
 end
 def visit_Constant_Traversercb_8(bind)
-Local
+Act
 end
 def visit_Constant_Traversercb_9(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
