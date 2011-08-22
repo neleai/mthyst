@@ -208,7 +208,7 @@ def visit_Inliner2cb_4(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
 end
 def visit_Inliner2cb_5(bind)
-body=@body;puts bind[:args_1].inspect; bind[:args_1].each_index{|i| body=Seq[Bind[{:name=>@args[i],:expr=>bind[:args_1][i]}],body] } ; body
+body=deep_clone(@body);puts bind[:args_1].inspect; bind[:args_1].each_index{|i| body=Seq[Bind[{:name=>@args[i],:expr=>bind[:args_1][i]}],body] } ; body
 end
 
 end

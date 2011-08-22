@@ -55,10 +55,13 @@ def application_AmethystParsercb_2(bind)
 Apply[bind[:rule_1],bind[:arg_1]]
 end
 def args_AmethystParsercb_1(bind)
-bind[:r_1]+[',']
+_append(bind[:autovar_1],bind[:autovar_2])
 end
 def args_AmethystParsercb_2(bind)
-bind[:autovar_1]=[bind[:autovar_1]]
+bind[:r_2]+[',']
+end
+def args_AmethystParsercb_3(bind)
+bind[:autovar_3]=[bind[:autovar_3]]
 end
 def atomicHostExpr_AmethystParsercb_1(bind)
 _append(bind[:autovar_1],bind[:autovar_2])
@@ -121,6 +124,9 @@ def eChar_AmethystParsercb_3(bind)
 '#'+'{'
 end
 def eChar_AmethystParsercb_4(bind)
+Args[{:ary=>([bind[:o_1]]+bind[:r_1]+[bind[:c_3]])}]
+end
+def eChar_AmethystParsercb_5(bind)
 (bind[:c_1].is_a? String ) || FAIL
 end
 def empty_AmethystParsercb_1(bind)
@@ -149,6 +155,15 @@ bind[:it_1]*""
 end
 def igrammar_AmethystParsercb_4(bind)
 _append(bind[:autovar_1],bind[:autovar_5])
+end
+def inlineHostExpr_AmethystParsercb_1(bind)
+_append(bind[:autovar_1],bind[:autovar_2])
+end
+def inlineHostExpr_AmethystParsercb_2(bind)
+bind[:r_2]+[',']
+end
+def inlineHostExpr_AmethystParsercb_3(bind)
+bind[:autovar_3]=[bind[:autovar_3]]
 end
 def key_AmethystParsercb_1(bind)
 Object.const_get(bind[:name_1]).instance_variable_get(:@attrs)
@@ -295,49 +310,58 @@ def rubyarg_AmethystParsercb_1(bind)
 Exp[_body(bind[:e_1])]
 end
 def rubyarg_AmethystParsercb_10(bind)
-/[$.:]/
-end
-def rubyarg_AmethystParsercb_11(bind)
-(bind[:c_1].is_a? String ) || FAIL
-end
-def rubyarg_AmethystParsercb_12(bind)
-(bind[:regex_1].match(bind[:c_2])) || FAIL
-end
-def rubyarg_AmethystParsercb_13(bind)
-_append(bind[:n_1],bind[:autovar_9])
-end
-def rubyarg_AmethystParsercb_14(bind)
-/[^`{}()'"\[\]]/
-end
-def rubyarg_AmethystParsercb_15(bind)
-(bind[:c_1].is_a? String ) || FAIL
-end
-def rubyarg_AmethystParsercb_16(bind)
-(bind[:regex_1].match(bind[:c_2])) || FAIL
-end
-def rubyarg_AmethystParsercb_2(bind)
-_append(bind[:s_1],bind[:autovar_1])
-end
-def rubyarg_AmethystParsercb_3(bind)
-_append(bind[:autovar_2],bind[:autovar_3])
-end
-def rubyarg_AmethystParsercb_4(bind)
-_append(bind[:s_1],bind[:autovar_4])
-end
-def rubyarg_AmethystParsercb_5(bind)
-Strin[connectstring(bind[:s_1])]
-end
-def rubyarg_AmethystParsercb_6(bind)
-_append(bind[:s_1],bind[:autovar_5])
-end
-def rubyarg_AmethystParsercb_7(bind)
 _append(bind[:autovar_6],bind[:autovar_7])
 end
-def rubyarg_AmethystParsercb_8(bind)
+def rubyarg_AmethystParsercb_11(bind)
 _append(bind[:s_1],bind[:autovar_8])
 end
-def rubyarg_AmethystParsercb_9(bind)
+def rubyarg_AmethystParsercb_12(bind)
 Strin[connectstring(bind[:s_1])]
+end
+def rubyarg_AmethystParsercb_13(bind)
+/[$.:]/
+end
+def rubyarg_AmethystParsercb_14(bind)
+(bind[:c_2].is_a? String ) || FAIL
+end
+def rubyarg_AmethystParsercb_15(bind)
+(bind[:regex_1].match(bind[:c_3])) || FAIL
+end
+def rubyarg_AmethystParsercb_16(bind)
+_append(bind[:n_1],bind[:autovar_9])
+end
+def rubyarg_AmethystParsercb_17(bind)
+/[^`{}()'"\[\]]/
+end
+def rubyarg_AmethystParsercb_18(bind)
+(bind[:c_2].is_a? String ) || FAIL
+end
+def rubyarg_AmethystParsercb_19(bind)
+(bind[:regex_1].match(bind[:c_3])) || FAIL
+end
+def rubyarg_AmethystParsercb_2(bind)
+Args[{:ary=>([bind[:o_1]]+bind[:r_1]+[bind[:c_1]])}]
+end
+def rubyarg_AmethystParsercb_3(bind)
+Args[{:ary=>([bind[:o_1]]+bind[:r_1]+[bind[:c_1]])}]
+end
+def rubyarg_AmethystParsercb_4(bind)
+Args[{:ary=>([bind[:o_1]]+bind[:r_1]+[bind[:c_1]])}]
+end
+def rubyarg_AmethystParsercb_5(bind)
+_append(bind[:s_1],bind[:autovar_1])
+end
+def rubyarg_AmethystParsercb_6(bind)
+_append(bind[:autovar_2],bind[:autovar_3])
+end
+def rubyarg_AmethystParsercb_7(bind)
+_append(bind[:s_1],bind[:autovar_4])
+end
+def rubyarg_AmethystParsercb_8(bind)
+Strin[connectstring(bind[:s_1])]
+end
+def rubyarg_AmethystParsercb_9(bind)
+_append(bind[:s_1],bind[:autovar_5])
 end
 def rule_AmethystParsercb_1(bind)
 @locals=[];$appends=[];@bnding=Bnding[]
