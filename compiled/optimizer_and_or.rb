@@ -7,34 +7,31 @@ def itrans_Seq_Or_Optimizercb_1(bind)
 Grammar
 end
 def itrans_Seq_Or_Optimizercb_10(bind)
-@src.self
-end
-def itrans_Seq_Or_Optimizercb_11(bind)
-_append(bind[:autovar_2],bind[:autovar_8])
+_append(bind[:autovar_1],bind[:autovar_8])
 end
 def itrans_Seq_Or_Optimizercb_2(bind)
-
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def itrans_Seq_Or_Optimizercb_3(bind)
 @src.rules
 end
 def itrans_Seq_Or_Optimizercb_4(bind)
-bind[:autovar_4]=[bind[:autovar_4]]
+bind[:autovar_3]=[bind[:autovar_3]]
 end
 def itrans_Seq_Or_Optimizercb_5(bind)
-
-end
-def itrans_Seq_Or_Optimizercb_6(bind)
 Rule
 end
+def itrans_Seq_Or_Optimizercb_6(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
 def itrans_Seq_Or_Optimizercb_7(bind)
-
+_append(bind[:autovar_5],bind[:autovar_7])
 end
 def itrans_Seq_Or_Optimizercb_8(bind)
-_append(bind[:autovar_1],bind[:autovar_7])
+@src.rules=bind[:rules_1]
 end
 def itrans_Seq_Or_Optimizercb_9(bind)
-@src.rules=bind[:rules_1]
+@src.self
 end
 def traverse_Seq_Or_Optimizercb_1(bind)
 @src.self

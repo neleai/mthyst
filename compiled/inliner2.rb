@@ -6,7 +6,7 @@ def root_Renamer2cb_1(bind)
 Rule
 end
 def root_Renamer2cb_2(bind)
-
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def root_Renamer2cb_3(bind)
 @newvars={}
@@ -68,7 +68,7 @@ def root_DetectCallscb_1(bind)
 Rule
 end
 def root_DetectCallscb_2(bind)
-
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def root_DetectCallscb_3(bind)
 @calls={}
@@ -136,13 +136,13 @@ def root_Inliner2cb_10(bind)
 Rule
 end
 def root_Inliner2cb_11(bind)
-
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def root_Inliner2cb_2(bind)
 Rule
 end
 def root_Inliner2cb_3(bind)
-
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def root_Inliner2cb_4(bind)
 @src.name

@@ -104,13 +104,7 @@ VALUE Detector_traverse_item(VALUE self );
 VALUE Detector_visit(VALUE self );
 VALUE Detector_root(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-int oldpos1=ame_getpos(self);
-alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
- it=CALL(root_Detectorcb_1,1,bind);   it=Detector_traverse(self ); FAILTEST(alt1_2);it=CALL(root_Detectorcb_2,1,bind);  
-ISET(cut,Qnil);goto accept1;
-  alt1_2:  ame_setpos(self,oldpos1); goto fail;
- accept1:;
-
+it=CALL(root_Detectorcb_1,1,bind);   it=Detector_traverse(self ); FAILTEST(fail);it=CALL(root_Detectorcb_2,1,bind); 
  BSET(_result_1,it); it=BGET(_result_1);
 return it;
 fail: return failobj; }

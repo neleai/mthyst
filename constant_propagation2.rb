@@ -105,3 +105,5 @@ r=Constant_Traverser.new.parse(:root,r)
 puts r.inspect
 r
 end
+
+Compiler::compile("amethyst/amethyst.ame","compiled/a.rb","amethyst2")

@@ -72,7 +72,7 @@ def root_CloneLocalscb_3(bind)
 Rule
 end
 def root_CloneLocalscb_4(bind)
-
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def traverse_CloneLocalscb_1(bind)
 @src.self
@@ -128,9 +128,6 @@ def root_Dataflowcb_1(bind)
 @src.self
 end
 def root_Dataflowcb_10(bind)
-@src.reachable=@edges.reverse.reachable(@marked+[ssanum(@src.body[-1])]); @src.cfg=@edges; [@edges,@marked+[@src.body[-1]]]
-end
-def root_Dataflowcb_11(bind)
 @src.self
 end
 def root_Dataflowcb_2(bind)
@@ -140,7 +137,7 @@ def root_Dataflowcb_3(bind)
 Rule
 end
 def root_Dataflowcb_4(bind)
-
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def root_Dataflowcb_5(bind)
 @bnding=@src.bnding
@@ -152,10 +149,10 @@ def root_Dataflowcb_7(bind)
 bind[:autovar_3]=[bind[:autovar_3]]
 end
 def root_Dataflowcb_8(bind)
-
+bind[:var_1].each{|v| ssanum(v)}
 end
 def root_Dataflowcb_9(bind)
-bind[:var_1].each{|v| ssanum(v)}
+@src.reachable=@edges.reverse.reachable(@marked+[ssanum(@src.body[-1])]); @src.cfg=@edges; [@edges,@marked+[@src.body[-1]]]
 end
 def traverse_Dataflowcb_1(bind)
 @src.self
@@ -194,79 +191,103 @@ def vars_in_Dataflowcb_1(bind)
 bind[:ary_1]=[]
 end
 def vars_in_Dataflowcb_10(bind)
-@src.self
+_append(bind[:ary_1],bind[:autovar_4])
 end
 def vars_in_Dataflowcb_11(bind)
-_append(bind[:ary_1],bind[:autovar_6])
+Key
 end
 def vars_in_Dataflowcb_12(bind)
-@marked<<@src.self
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def vars_in_Dataflowcb_13(bind)
-Result
-end
-def vars_in_Dataflowcb_14(bind)
 @src.self
 end
+def vars_in_Dataflowcb_14(bind)
+_append(bind[:ary_1],bind[:autovar_6])
+end
 def vars_in_Dataflowcb_15(bind)
-_append(bind[:ary_1],bind[:autovar_8])
+@marked<<@src.self
 end
 def vars_in_Dataflowcb_16(bind)
-Strin
+Result
 end
 def vars_in_Dataflowcb_17(bind)
-_append(bind[:ary_1],bind[:autovar_10])
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def vars_in_Dataflowcb_18(bind)
-Args
+@src.self
 end
 def vars_in_Dataflowcb_19(bind)
-_append(bind[:ary_1],bind[:autovar_12])
+_append(bind[:ary_1],bind[:autovar_8])
 end
 def vars_in_Dataflowcb_2(bind)
 Global
 end
 def vars_in_Dataflowcb_20(bind)
-Bind
+Strin
 end
 def vars_in_Dataflowcb_21(bind)
-@src.name
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def vars_in_Dataflowcb_22(bind)
-bind[:autovar_14]=[bind[:autovar_14]]
+_append(bind[:ary_1],bind[:autovar_10])
 end
 def vars_in_Dataflowcb_23(bind)
-_append(bind[:ary_1],bind[:autovar_15])
+Args
 end
 def vars_in_Dataflowcb_24(bind)
-Local
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def vars_in_Dataflowcb_25(bind)
-@src.self
+_append(bind[:ary_1],bind[:autovar_12])
 end
 def vars_in_Dataflowcb_26(bind)
-_append(bind[:ary_1],bind[:autovar_17])
+Bind
+end
+def vars_in_Dataflowcb_27(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def vars_in_Dataflowcb_28(bind)
+@src.name
+end
+def vars_in_Dataflowcb_29(bind)
+bind[:autovar_14]=[bind[:autovar_14]]
 end
 def vars_in_Dataflowcb_3(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def vars_in_Dataflowcb_30(bind)
+_append(bind[:ary_1],bind[:autovar_15])
+end
+def vars_in_Dataflowcb_31(bind)
+Local
+end
+def vars_in_Dataflowcb_32(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def vars_in_Dataflowcb_33(bind)
 @src.self
+end
+def vars_in_Dataflowcb_34(bind)
+_append(bind[:ary_1],bind[:autovar_17])
 end
 def vars_in_Dataflowcb_4(bind)
-_append(bind[:ary_1],bind[:autovar_2])
-end
-def vars_in_Dataflowcb_5(bind)
-@marked<<@src.self
-end
-def vars_in_Dataflowcb_6(bind)
-Act
-end
-def vars_in_Dataflowcb_7(bind)
 @src.self
 end
+def vars_in_Dataflowcb_5(bind)
+_append(bind[:ary_1],bind[:autovar_2])
+end
+def vars_in_Dataflowcb_6(bind)
+@marked<<@src.self
+end
+def vars_in_Dataflowcb_7(bind)
+Act
+end
 def vars_in_Dataflowcb_8(bind)
-_append(bind[:ary_1],bind[:autovar_4])
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def vars_in_Dataflowcb_9(bind)
-Key
+@src.self
 end
 def visit_Dataflowcb_1(bind)
 Apply
@@ -400,7 +421,7 @@ def root_Dead_Code_Deleter3cb_3(bind)
 Rule
 end
 def root_Dead_Code_Deleter3cb_4(bind)
-
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def root_Dead_Code_Deleter3cb_5(bind)
 @reachable=@src.reachable

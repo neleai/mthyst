@@ -1,5 +1,4 @@
 $OPT="-O2"
-require 'constant_propagation2'
 class Gram
 	attr_accessor :name,:parent,:rules
 	def initialize(grammar)
@@ -23,6 +22,7 @@ class Gram
 			r=o.new.parse(:root,r)
 			#puts r.inspect
 		}
+#		r=propagate_consts(r)
     @rules[r.name]=r 
 	end
 	def getrule(name)
@@ -67,7 +67,7 @@ class <<Compiler
 						names<<c
 					end
 				end
-			  callg.add(name,c)
+			  callg.add(names[i],c)
 			}
 			i+=1
 		end
@@ -120,7 +120,7 @@ end
 	end
 end	
 Compiler::init
-["amethyst","traverser","detect_variables2","ctranslator2","parser","optimizer_null","optimizer_and_or","dead_code_elimination2","dataflow_ssa"
+["amethyst","traverser","detect_variables2","ctranslator2","parser","optimizer_null","optimizer_and_or","dead_code_elimination2","dataflow_ssa","inliner2"
 ].each{|opt|
 require "compiled/#{opt}"
 }
