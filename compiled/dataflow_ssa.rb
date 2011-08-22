@@ -203,7 +203,7 @@ def vars_in_Dataflowcb_10(bind)
 _append(bind[:ary_1],bind[:autovar_4])
 end
 def vars_in_Dataflowcb_11(bind)
-Key
+CAct
 end
 def vars_in_Dataflowcb_12(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
@@ -215,70 +215,82 @@ def vars_in_Dataflowcb_14(bind)
 _append(bind[:ary_1],bind[:autovar_6])
 end
 def vars_in_Dataflowcb_15(bind)
-@marked<<@src.self
+Key
 end
 def vars_in_Dataflowcb_16(bind)
-Result
-end
-def vars_in_Dataflowcb_17(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
-def vars_in_Dataflowcb_18(bind)
+def vars_in_Dataflowcb_17(bind)
 @src.self
 end
-def vars_in_Dataflowcb_19(bind)
+def vars_in_Dataflowcb_18(bind)
 _append(bind[:ary_1],bind[:autovar_8])
+end
+def vars_in_Dataflowcb_19(bind)
+@marked<<@src.self
 end
 def vars_in_Dataflowcb_2(bind)
 Global
 end
 def vars_in_Dataflowcb_20(bind)
-Strin
+Result
 end
 def vars_in_Dataflowcb_21(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def vars_in_Dataflowcb_22(bind)
-_append(bind[:ary_1],bind[:autovar_10])
+@src.self
 end
 def vars_in_Dataflowcb_23(bind)
-Args
+_append(bind[:ary_1],bind[:autovar_10])
 end
 def vars_in_Dataflowcb_24(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+Strin
 end
 def vars_in_Dataflowcb_25(bind)
-_append(bind[:ary_1],bind[:autovar_12])
-end
-def vars_in_Dataflowcb_26(bind)
-Bind
-end
-def vars_in_Dataflowcb_27(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
+def vars_in_Dataflowcb_26(bind)
+_append(bind[:ary_1],bind[:autovar_12])
+end
+def vars_in_Dataflowcb_27(bind)
+Args
+end
 def vars_in_Dataflowcb_28(bind)
-@src.name
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def vars_in_Dataflowcb_29(bind)
-bind[:autovar_14]=[bind[:autovar_14]]
+_append(bind[:ary_1],bind[:autovar_14])
 end
 def vars_in_Dataflowcb_3(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def vars_in_Dataflowcb_30(bind)
-_append(bind[:ary_1],bind[:autovar_15])
+Bind
 end
 def vars_in_Dataflowcb_31(bind)
-Local
-end
-def vars_in_Dataflowcb_32(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
+def vars_in_Dataflowcb_32(bind)
+@src.name
+end
 def vars_in_Dataflowcb_33(bind)
-@src.self
+bind[:autovar_16]=[bind[:autovar_16]]
 end
 def vars_in_Dataflowcb_34(bind)
 _append(bind[:ary_1],bind[:autovar_17])
+end
+def vars_in_Dataflowcb_35(bind)
+Local
+end
+def vars_in_Dataflowcb_36(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def vars_in_Dataflowcb_37(bind)
+@src.self
+end
+def vars_in_Dataflowcb_38(bind)
+_append(bind[:ary_1],bind[:autovar_19])
 end
 def vars_in_Dataflowcb_4(bind)
 @src.self
@@ -478,16 +490,16 @@ def visit_Dead_Code_Deleter3cb_1(bind)
 Act
 end
 def visit_Dead_Code_Deleter3cb_10(bind)
-Result
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Dead_Code_Deleter3cb_11(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+@src.expr
 end
 def visit_Dead_Code_Deleter3cb_12(bind)
 @src.self
 end
 def visit_Dead_Code_Deleter3cb_13(bind)
-@reachable[bind[:this_1]] ? bind[:this_1] : Act[]
+@reachable[bind[:this_1]] ? bind[:this_1] : bind[:expr_1]
 end
 def visit_Dead_Code_Deleter3cb_14(bind)
 Local
@@ -505,25 +517,25 @@ def visit_Dead_Code_Deleter3cb_2(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Dead_Code_Deleter3cb_3(bind)
-@src.self
+CAct
 end
 def visit_Dead_Code_Deleter3cb_4(bind)
-@reachable[bind[:this_1]] ? bind[:this_1] : Act[]
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Dead_Code_Deleter3cb_5(bind)
-Bind
+Result
 end
 def visit_Dead_Code_Deleter3cb_6(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Dead_Code_Deleter3cb_7(bind)
-@src.expr
-end
-def visit_Dead_Code_Deleter3cb_8(bind)
 @src.self
 end
+def visit_Dead_Code_Deleter3cb_8(bind)
+@reachable[bind[:this_1]] ? bind[:this_1] : Act[]
+end
 def visit_Dead_Code_Deleter3cb_9(bind)
-@reachable[bind[:this_1]] ? bind[:this_1] : bind[:expr_1]
+Bind
 end
 
 end

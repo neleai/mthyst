@@ -80,6 +80,7 @@ amethyst Dataflow < Traverser {
 				vars_in={ary=[]}
 								( Global[ @self:ary[]  {@@marked<<@self} .*]								
 								| Act[ @self:ary[] .*]
+								| CAct[ @self:ary[] .*]
                 | Key[ @self:ary[]    {@@marked<<@self} .*]
 								| Result[ @self:ary[] ]
 								| Strin[ vars_in:ary[] ]
@@ -93,9 +94,8 @@ amethyst Dataflow < Traverser {
 amethyst Dead_Code_Deleter3 < Traverser{
 		root = @self=>Rule[ {@@reachable=@reachable} traverse {@reachable=nil;@cfg=nil} @self]
 
-		visit = Act[@self:this .*] -> @@reachable[this] ? this : Act[]
+		visit = (Act|CAct|Result)[@self:this .*] -> @@reachable[this] ? this : Act[]
 					| Bind[traverse @expr:expr @self:this] -> @@reachable[this] ? this : expr
-					| Result[@self:this] ->@@reachable[this] ? this : Act[]
           | Local[.* @self:this ] -> @@reachable[this.ssaname] ? this : Act[]
 }
 

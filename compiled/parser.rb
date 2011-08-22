@@ -144,6 +144,9 @@ end
 def eChar_AmethystParsercb_5(bind)
 (bind[:c_1].is_a? String ) || FAIL
 end
+def empty_AmethystParsercb_1(bind)
+
+end
 def fails_AmethystParsercb_1(bind)
 (false) || FAIL
 end
