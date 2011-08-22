@@ -124,14 +124,14 @@ ame_setsrc(self,BGET(autovar_1)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb
  it=CALL(visit_Constant_Traversercb_3,1,bind); 
  BSET(autovar_2,it); it=CALL(visit_Constant_Traversercb_4,1,bind); int oldpos3=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
 ame_setsrc(self,BGET(autovar_2)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-   it=Constant_Traverser_traverse(self ); FAILTEST(pass2);
+   it=Constant_Traverser_traverse_item(self ); FAILTEST(pass2);
  BSET(expr_1,it); 
 	if (CALL(eof,0)==failobj) goto pass2;
 	goto success2;
 	pass2: fail2=1;
 	success2: ame_setsrc(self,oldsrc2); ame_setpos(self,oldpos3); ame_setlen(self,oldlen2);
 	if(fail2) goto pass1;
-it=CALL(visit_Constant_Traversercb_5,1,bind); it=CALL(visit_Constant_Traversercb_6,1,bind); 
+it=CALL(visit_Constant_Traversercb_5,1,bind); it=CALL(visit_Constant_Traversercb_6,1,bind); it=CALL(visit_Constant_Traversercb_7,1,bind); 
  BSET(_result_2,it); 
 	if (CALL(eof,0)==failobj) goto pass1;
 	goto success1;
@@ -141,13 +141,13 @@ it=CALL(visit_Constant_Traversercb_5,1,bind); it=CALL(visit_Constant_Traversercb
  
 ISET(cut,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
- it=CALL(visit_Constant_Traversercb_7,1,bind); 
+ it=CALL(visit_Constant_Traversercb_8,1,bind); 
  BSET(cls_1,it);   it=AmethystCore_anything(self ); FAILTEST(alt1_3);
- BSET(i_1,it); it=CALL(visit_Constant_Traversercb_8,1,bind); FAILTEST(alt1_3);it=BGET(i_1);
+ BSET(i_1,it); it=CALL(visit_Constant_Traversercb_9,1,bind); FAILTEST(alt1_3);it=BGET(i_1);
  BSET(_result_1,it); it=BGET(_result_1);
  BSET(autovar_3,it); int oldpos4=ame_getpos(self); int oldlen3=ame_getlen(self); VALUE oldsrc3=ame_getsrc(self); int fail3=0;
 ame_setsrc(self,BGET(autovar_3)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
- it=rb_ary_new3(0);int oldpos5; while(1){oldpos5=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break1); if (IGET(stop)!=Qnil){{oldpos5=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos5); it=CALL(visit_Constant_Traversercb_9,1,bind); 
+ it=rb_ary_new3(0);int oldpos5; while(1){oldpos5=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break1); if (IGET(stop)!=Qnil){{oldpos5=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos5); it=CALL(visit_Constant_Traversercb_10,1,bind); 
  BSET(_result_2,it); 
 	if (CALL(eof,0)==failobj) goto pass3;
 	goto success3;

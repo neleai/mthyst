@@ -19,10 +19,10 @@ end
 
 
 
-t=translate("amethyst Foo { bar = {1}:x ({x}:y {y}:x)* }")
-puts t.inspect
-r=t[0].rules[0]
-r=Dataflow.new.parse(:root,r)
+#t=translate("amethyst Foo { bar = {1}:x ({x}:y {y}:x)* }")
+#puts t.inspect
+#r=t[0].rules[0]
+#r=Dataflow.new.parse(:root,r)
 class Constant_Propagator
   attr_accessor :vals,:active,:activea,:depend
 	def initialize(depend)
@@ -90,6 +90,8 @@ class Constant_Propagator
   end
 	
 end
+def propagate_consts(r)
+r=Dataflow.new.parse(:root,r)
 c=Constant_Propagator.new(r.cfg)
 puts c.inspect
 r.consts={}
@@ -97,3 +99,5 @@ c.analyze2.each{|k,v| r.consts[k]=v if v!=Top&&v!=Bottom  }
 puts r.inspect
 r=Constant_Traverser.new.parse(:root,r)
 puts r.inspect
+r
+end

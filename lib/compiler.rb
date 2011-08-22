@@ -1,4 +1,5 @@
 $OPT="-O2"
+require 'constant_propagation2'
 class Gram
 	attr_accessor :name,:parent,:rules
 	def initialize(grammar)
