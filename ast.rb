@@ -111,7 +111,7 @@ class <<Act
 			return CAct["Qfalse"] if exp=="false"
 			return CAct["Qnil"] if exp=="nil"
 			return CAct["INT2FIX(#{exp})"] if exp.is_a?(String) && exp==exp.to_i.to_s && exp.to_i>-1000000000&&exp.to_i<1000000000
-			return CAct["rb_str_new2(#{exp})"] if exp.is_a?(String) && exp[0]==?\" && exp[-1]==?\"
+			return CAct["rb_str_new2(\"#{exp[1...-1]}\")"] if exp.is_a?(String) && ((exp[0]==?\" && exp[-1]==?\")|| (exp[0]==?\' && exp[-1]==?\'))
 		end
 		return Act.create({:pred=>pred}) if expr==nil
 		Act.create(expr,{:pred=>pred})
