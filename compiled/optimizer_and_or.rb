@@ -69,6 +69,18 @@ end
 def visit_Seq_Or_Optimizercb_1(bind)
 Seq
 end
+def visit_Seq_Or_Optimizercb_10(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def visit_Seq_Or_Optimizercb_11(bind)
+(bind[:name_1]=="apply") || FAIL
+end
+def visit_Seq_Or_Optimizercb_12(bind)
+(bind[:arg_1].is_a?(Act) && bind[:arg_1][0].is_a?(Exp)) || FAIL
+end
+def visit_Seq_Or_Optimizercb_13(bind)
+bind[:arg_1][0][0]
+end
 def visit_Seq_Or_Optimizercb_2(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
@@ -89,6 +101,9 @@ def visit_Seq_Or_Optimizercb_7(bind)
 end
 def visit_Seq_Or_Optimizercb_8(bind)
 (@src.ary.size==1) ? @src.ary[0] : @src.self
+end
+def visit_Seq_Or_Optimizercb_9(bind)
+Apply
 end
 
 end

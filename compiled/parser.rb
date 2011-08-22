@@ -82,27 +82,21 @@ def char_AmethystParsercb_1(bind)
 (bind[:c_1].is_a? String ) || FAIL
 end
 def choice_AmethystParsercb_1(bind)
-AmethystLambda.new(:AmethystParser_choice_lambda1,self,bind)
-end
-def choice_AmethystParsercb_2(bind)
 'sequence'
 end
-def choice_AmethystParsercb_3(bind)
+def choice_AmethystParsercb_2(bind)
 _append(bind[:f_1],bind[:autovar_1])
 end
-def choice_AmethystParsercb_4(bind)
-AmethystLambda.new(:AmethystParser_choice_lambda2,self,bind)
-end
-def choice_AmethystParsercb_5(bind)
+def choice_AmethystParsercb_3(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
 end
-def choice_AmethystParsercb_6(bind)
+def choice_AmethystParsercb_4(bind)
 _append(bind[:f_1],bind[:autovar_4])
 end
-def choice_AmethystParsercb_7(bind)
+def choice_AmethystParsercb_5(bind)
 []
 end
-def choice_AmethystParsercb_8(bind)
+def choice_AmethystParsercb_6(bind)
 Or.create( {:ary=>bind[:ary_1] })
 end
 def clas_AmethystParsercb_1(bind)
@@ -202,15 +196,12 @@ def listOf_AmethystParsercb_1(bind)
 _append(bind[:f_1],bind[:autovar_1])
 end
 def listOf_AmethystParsercb_2(bind)
-AmethystLambda.new(:AmethystParser_listOf_lambda1,self,bind)
-end
-def listOf_AmethystParsercb_3(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
 end
-def listOf_AmethystParsercb_4(bind)
+def listOf_AmethystParsercb_3(bind)
 _append(bind[:f_1],bind[:autovar_4])
 end
-def listOf_AmethystParsercb_5(bind)
+def listOf_AmethystParsercb_4(bind)
 []
 end
 def lower_AmethystParsercb_1(bind)

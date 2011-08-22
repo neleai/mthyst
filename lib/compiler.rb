@@ -13,14 +13,14 @@ class Gram
       debug=true
 			[Seq_Or_Optimizer,Move_Assignments2,Seq_Or_Optimizer,
 			].each{|o|
-#	      puts r.inspect if debug
+	      puts r.inspect if debug
       	r=o.new.parse(:root,r)
 			}
 		 [CloneLocals, Dataflow, 
 			Dead_Code_Deleter3,Seq_Or_Optimizer
 ].each{|o|
 			r=o.new.parse(:root,r)
-			#puts r.inspect
+			puts r.inspect
 		}
 		r=propagate_consts(r)
  [CloneLocals, Dataflow, 
@@ -28,7 +28,7 @@ class Gram
 			Communize_Or3,Seq_Or_Optimizer
 ].each{|o|
 			r=o.new.parse(:root,r)
-			#puts r.inspect
+			puts r.inspect
 		}
 
     @rules[r.name]=r 

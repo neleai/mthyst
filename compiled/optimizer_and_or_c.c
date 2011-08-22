@@ -204,7 +204,25 @@ ame_setsrc(self,BGET(autovar_2)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb
 	if(fail2) goto alt1_3;
  
 ISET(cut,Qnil);goto accept1;
-  alt1_3:  ame_setpos(self,oldpos1); goto fail;
+alt1_3: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
+ it=CALL(visit_Seq_Or_Optimizercb_9,1,bind); 
+ BSET(cls_1,it);   it=AmethystCore_anything(self ); FAILTEST(alt1_4);
+ BSET(i_1,it); it=CALL(visit_Seq_Or_Optimizercb_10,1,bind); FAILTEST(alt1_4);it=BGET(i_1);
+ BSET(_result_1,it); it=BGET(_result_1);
+ BSET(autovar_3,it); int oldpos4=ame_getpos(self); int oldlen3=ame_getlen(self); VALUE oldsrc3=ame_getsrc(self); int fail3=0;
+ame_setsrc(self,BGET(autovar_3)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
+   it=AmethystCore_anything(self ); FAILTEST(pass3);
+ BSET(name_1,it); it=CALL(visit_Seq_Or_Optimizercb_11,1,bind); FAILTEST(pass3);  it=AmethystCore_anything(self ); FAILTEST(pass3);
+ BSET(arg_1,it); it=CALL(visit_Seq_Or_Optimizercb_12,1,bind); FAILTEST(pass3);it=CALL(visit_Seq_Or_Optimizercb_13,1,bind); 
+ BSET(_result_2,it); 
+	if (CALL(eof,0)==failobj) goto pass3;
+	goto success3;
+	pass3: fail3=1;
+	success3: ame_setsrc(self,oldsrc3); ame_setpos(self,oldpos4); ame_setlen(self,oldlen3);
+	if(fail3) goto alt1_4;
+ 
+ISET(cut,Qnil);goto accept1;
+  alt1_4:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
 it=BGET(_result_2);
 return it;
