@@ -333,6 +333,41 @@ ISET(cut,Qnil);goto accept1;
 it=BGET(_result_2);
 return it;
 fail: return failobj; }
+VALUE cls_Remap_Acts;
+VALUE Remap_Acts_clas(VALUE self ,VALUE a0);
+VALUE Remap_Acts_root(VALUE self );
+VALUE Remap_Acts_visit(VALUE self );
+VALUE Remap_Acts_clas(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=rb_hash_new(); BSET(cls_1,a0); int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+
+  it=AmethystCore_anything(self ); FAILTEST(fail);
+ BSET(i_1,it); it=CALL(clas_Remap_Actscb_1,1,bind); FAILTEST(fail);it=BGET(i_1);
+ BSET(_result_1,it); it=BGET(_result_1);
+return it;
+fail: return failobj; }
+VALUE Remap_Acts_root(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+
+  it=CALL(traverse,0 ); FAILTEST(fail);
+ BSET(_result_1,it); it=BGET(_result_1);
+return it;
+fail: return failobj; }
+VALUE Remap_Acts_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+
+it=CALL(visit_Remap_Actscb_1,1,bind); 
+ BSET(cls_1,it);   it=AmethystCore_anything(self ); FAILTEST(fail);
+ BSET(i_1,it); it=CALL(visit_Remap_Actscb_2,1,bind); FAILTEST(fail);it=BGET(i_1);
+ BSET(_result_1,it); it=BGET(_result_1);
+ BSET(autovar_1,it); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
+ame_setsrc(self,BGET(autovar_1)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
+   it=CALL(traverse,0 ); FAILTEST(pass1);it=CALL(visit_Remap_Actscb_3,1,bind); 
+ BSET(_result_2,it); 
+	if (CALL(eof,0)==failobj) goto pass1;
+	goto success1;
+	pass1: fail1=1;
+	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos1); ame_setlen(self,oldlen1);
+	if(fail1) goto fail;
+it=BGET(_result_2);
+return it;
+fail: return failobj; }
 void Init_detect_variables2_c(){ 
  cls_Analyze_Variables2=rb_define_class("Analyze_Variables2",rb_const_get(rb_cObject,rb_intern("Traverser"))); 
 failobj=rb_eval_string("FAIL");
@@ -343,4 +378,10 @@ rb_define_method(cls_Analyze_Variables2,"root",Analyze_Variables2_root,0);
 rb_define_method(cls_Analyze_Variables2,"traverse",Analyze_Variables2_traverse,0);
 rb_define_method(cls_Analyze_Variables2,"traverse_item",Analyze_Variables2_traverse_item,0);
 rb_define_method(cls_Analyze_Variables2,"visit",Analyze_Variables2_visit,0);
+
+ cls_Remap_Acts=rb_define_class("Remap_Acts",rb_const_get(rb_cObject,rb_intern("Amethyst"))); 
+failobj=rb_eval_string("FAIL");
+rb_define_method(cls_Remap_Acts,"clas",Remap_Acts_clas,1);
+rb_define_method(cls_Remap_Acts,"root",Remap_Acts_root,0);
+rb_define_method(cls_Remap_Acts,"visit",Remap_Acts_visit,0);
  }

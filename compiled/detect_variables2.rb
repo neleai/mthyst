@@ -159,4 +159,21 @@ end
 end
 
 
+class Remap_Acts < Amethyst
+def clas_Remap_Actscb_1(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def visit_Remap_Actscb_1(bind)
+Act
+end
+def visit_Remap_Actscb_2(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def visit_Remap_Actscb_3(bind)
+Act[@src.ary]
+end
+
+end
+
+
  require 'compiled/detect_variables2_c'
