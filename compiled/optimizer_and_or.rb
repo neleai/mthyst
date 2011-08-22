@@ -76,13 +76,34 @@ def visit_Seq_Or_Optimizercb_11(bind)
 (bind[:name_1]=="apply") || FAIL
 end
 def visit_Seq_Or_Optimizercb_12(bind)
-(bind[:arg_1].is_a?(Act) && bind[:arg_1][0].is_a?(Exp)) || FAIL
+puts @src.self.inspect
 end
 def visit_Seq_Or_Optimizercb_13(bind)
-bind[:arg_1][0][0]
+(bind[:arg_1].is_a?(CAct)) || FAIL
+end
+def visit_Seq_Or_Optimizercb_14(bind)
+puts "aaa";puts Apply[bind[:arg_1][0][13...-2]].inspect
+end
+def visit_Seq_Or_Optimizercb_15(bind)
+@src.self
+end
+def visit_Seq_Or_Optimizercb_16(bind)
+Apply
+end
+def visit_Seq_Or_Optimizercb_17(bind)
+(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def visit_Seq_Or_Optimizercb_18(bind)
+(bind[:name_1]=="apply") || FAIL
+end
+def visit_Seq_Or_Optimizercb_19(bind)
+(bind[:arg_1].is_a?(Act) && bind[:arg_1][0].is_a?(Exp)) || FAIL
 end
 def visit_Seq_Or_Optimizercb_2(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+end
+def visit_Seq_Or_Optimizercb_20(bind)
+bind[:arg_1][0][0]
 end
 def visit_Seq_Or_Optimizercb_3(bind)
 @src.self.ary=@src.ary.map{|i| (i.is_a?(Seq)) ? i.ary : i}.flatten.select{|e| !(e.is_a?(Act) && e.ary.size==0)}
