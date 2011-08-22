@@ -1,5 +1,7 @@
 amethyst Amethyst < AmethystCore {
-  
+	grammar = "amethyst" name:name ("<" name:parent |empty {parent="Amethyst"} ) 
+"{" rule*:rules "}"  @Grammar
+
 	regch(regex) = char:c &{regex.match(c)} -> c
 
   eof= ~.

@@ -91,6 +91,7 @@ class Constant_Propagator
 	
 end
 def propagate_consts(r)
+r=CloneLocals.new.parse(:root,r)
 r=Dataflow.new.parse(:root,r)
 c=Constant_Propagator.new(r.cfg)
 puts c.inspect
@@ -105,5 +106,6 @@ r=Constant_Traverser.new.parse(:root,r)
 puts r.inspect
 r
 end
-
-Compiler::compile("amethyst/amethyst.ame","compiled/a.rb","amethyst2")
+["amethyst"].each{|f|
+Compiler::compile("amethyst/#{f}.ame","compiled/a.rb","#{f}2")
+}
