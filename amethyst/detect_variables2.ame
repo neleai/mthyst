@@ -13,5 +13,5 @@ amethyst Analyze_Variables2 < Traverser {
 amethyst Remap_Acts < Traverser{
 	root = traverse
 	
-	visit = Act[traverse {(@pure ? PureAct[@ary] : Act[@ary,@pred])} ]
+	visit = Act[traverse {puts @self.inspect; a=(@pure ? PureAct[@ary] : Act[@ary,@pred]);puts a.inspect;a } ]
 }
