@@ -1,0 +1,5 @@
+amethyst Constant_Traverser < Traverser {
+	root = {@@consts=@consts} traverse
+	visit = Bind[ @expr=>traverse:expr {@expr=expr} {@self} ]
+				| Local[ .* {puts @self.ssaname.inspect; @@consts[@self.ssaname] ? @consts[@self.ssaname] : @self } ]
+}

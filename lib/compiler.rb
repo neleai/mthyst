@@ -75,17 +75,21 @@ class <<Compiler
 		puts topo.inspect
 		topo.each{|name|if @grammars[grammar.name].rules[name]
 				@grammars[grammar.name].opt(@grammars[grammar.name].rules[name])
+				
 if true
+				inlined=false
 				calls= DetectCalls.new.parse(:root,[@grammars[grammar.name].rules[name]])
 				calls.each{|nm,v|
 					r=@grammars[grammar.name].getrule(nm)
 					if r && topo.index(nm)<topo.index(name) 
-						@grammars[grammar.name].inline(nm,name) if r.args.size>0 && !(/arg/=~r.name) 
-						@grammars[grammar.name].inline(nm,name) if ["char","space"].include?(r.name)
+						if r.args.size>0 && !(/arg/=~r.name)  || ["char","space"].include?(r.name)
+							@grammars[grammar.name].inline(nm,name) 
+							inlined=true
+						end
 					end
 				}
+				@grammars[grammar.name].opt(@grammars[grammar.name].rules[name]) if inlined
 end
-				@grammars[grammar.name].opt(@grammars[grammar.name].rules[name])
 
 		end}
 	end

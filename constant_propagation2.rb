@@ -3,6 +3,7 @@ require 'graph'
 require 'pp'
 require 'amethyst'
 require 'compiler'
+require 'compiled/constant_propagation'
 Top=Object.new
 Bottom=Object.new
 class <<Top
@@ -38,8 +39,8 @@ class Constant_Propagator
 			puts e.inspect
       val=step(e)
 			puts val.inspect
-      if val!=vals[e]
-        vals[e]=val
+      if val!=valof(e)
+        setval(e,val)
         depend.edges[e].each{|d| addactive(d)}
       end
     end
@@ -55,6 +56,10 @@ class Constant_Propagator
 		@depend.topo_order.each{|e| addactive(e);@vals[e]=Bottom}
 		analyze
 		@vals
+	end
+	def setval(e,x)
+		return vals[e.ssaname]=x if e.is_a?(Local)
+    return vals[e]=x
 	end
 	def valof(e)
 		return vals[e.ssaname] if e.is_a?(Local)
@@ -87,4 +92,8 @@ class Constant_Propagator
 end
 c=Constant_Propagator.new(r.cfg)
 puts c.inspect
-puts c.analyze2.inspect
+r.consts={}
+c.analyze2.each{|k,v| r.consts[k]=v if v!=Top&&v!=Bottom  }
+puts r.inspect
+r=Constant_Traverser.new.parse(:root,r)
+puts r.inspect
