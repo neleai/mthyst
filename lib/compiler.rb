@@ -12,7 +12,6 @@ class Gram
 	def opt(r)
       debug=true
 			[Seq_Or_Optimizer,Move_Assignments2,Seq_Or_Optimizer,
-			Communize_Or3,Seq_Or_Optimizer,
 			].each{|o|
 #	      puts r.inspect if debug
       	r=o.new.parse(:root,r)
@@ -25,7 +24,8 @@ class Gram
 		}
 		r=propagate_consts(r)
  [CloneLocals, Dataflow, 
-			Dead_Code_Deleter3,Seq_Or_Optimizer
+			Dead_Code_Deleter3,Seq_Or_Optimizer,
+			Communize_Or3,Seq_Or_Optimizer
 ].each{|o|
 			r=o.new.parse(:root,r)
 			#puts r.inspect

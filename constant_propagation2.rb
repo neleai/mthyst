@@ -91,7 +91,7 @@ def propagate_consts(r)
 r=CloneLocals.new.parse(:root,r)
 r=Dataflow.new.parse(:root,r)
 c=Constant_Propagator.new(r.cfg)
-puts c.inspect
+#puts c.inspect
 r.consts={}
 c.analyze2.each{|k,v| 
 	if v!=Top&&v!=Bottom  
@@ -100,9 +100,9 @@ c.analyze2.each{|k,v|
 		r.consts[k]=Act[v] if v.is_a?(Exp)
 	end
 }
-puts r.inspect
+#puts r.inspect
 r=Constant_Traverser.new.parse(:root,r)
-puts r.inspect
+#puts r.inspect
 r
 end
 if false
