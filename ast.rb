@@ -105,6 +105,7 @@ class <<Act
 			exp=expr
 			exp=exp[0] if exp.is_a?(Args) && exp.size==1
 			#puts exp.inspect
+			return Act.create(exp) if exp.is_a?(Exp)
 			return CAct["rb_ary_new3(0)"] if exp=="[]"
 			return CAct["Qtrue"] if exp=="true"
 			return CAct["Qfalse"] if exp=="false"

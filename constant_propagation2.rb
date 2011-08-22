@@ -78,6 +78,7 @@ class Constant_Propagator
  	      return valof(el.expr)
 			when Act
 				return valof(el[0]) if el[0].is_a? Local
+				return el[0] if el[0].is_a?(Exp)
 				return Top
 			when CAct
 				return el[0]
@@ -94,7 +95,9 @@ puts c.inspect
 r.consts={}
 c.analyze2.each{|k,v| 
 	if v!=Top&&v!=Bottom  
-		r.consts[k]=v.is_a?(String) ? CAct[v] : v 
+		r.consts[k]=v 
+		r.consts[k]=CAct[v] if v.is_a?(String)
+		r.consts[k]=Act[v] if v.is_a?(Exp)
 	end
 }
 puts r.inspect

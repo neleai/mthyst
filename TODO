@@ -43,3 +43,5 @@ parse acts after parser finishes
 detect numbers as cacts(they dont join to single string)
 
 saner handling of Locals
+
+generic equality

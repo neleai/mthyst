@@ -11,6 +11,7 @@ VALUE AmethystParser_atomicHostExpr(VALUE self );
 VALUE AmethystParser_char(VALUE self );
 VALUE AmethystParser_choice(VALUE self );
 VALUE AmethystParser_choice_lambda1(VALUE self,VALUE bind);
+VALUE AmethystParser_choice_lambda2(VALUE self,VALUE bind);
 VALUE AmethystParser_clas(VALUE self ,VALUE a0);
 VALUE AmethystParser_className(VALUE self );
 VALUE AmethystParser_collect(VALUE self ,VALUE a0);
@@ -26,6 +27,7 @@ VALUE AmethystParser_inlineHostExpr(VALUE self );
 VALUE AmethystParser_key(VALUE self );
 VALUE AmethystParser_letter(VALUE self );
 VALUE AmethystParser_listOf(VALUE self ,VALUE a0,VALUE a1);
+VALUE AmethystParser_listOf_lambda1(VALUE self,VALUE bind);
 VALUE AmethystParser_lower(VALUE self );
 VALUE AmethystParser_modifier(VALUE self );
 VALUE AmethystParser_name(VALUE self );
@@ -200,26 +202,25 @@ return it;
 fail: return failobj; }
 VALUE AmethystParser_choice(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=CALL(choice_AmethystParsercb_1,1,bind); 
- BSET(delim_1,it); it=CALL(choice_AmethystParsercb_2,1,bind); 
+it=CALL(choice_AmethystParsercb_1,1,bind); it=CALL(choice_AmethystParsercb_2,1,bind); 
  BSET(rule_1,it); it=rb_ary_new3(0);
  BSET(f_1,it); int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   it=BGET(rule_1); arg0=it; it=CALL(apply,1 ,arg0); FAILTEST(alt1_2);
  BSET(autovar_1,it); it=CALL(choice_AmethystParsercb_3,1,bind); it=rb_ary_new3(0);
- BSET(autovar_2,it); int oldpos2; while(1){oldpos2=ame_getpos(self);  it=BGET(delim_1); arg0=it; it=CALL(apply,1 ,arg0); FAILTEST(break1); it=BGET(rule_1); arg0=it; it=CALL(apply,1 ,arg0); FAILTEST(break1);
- BSET(autovar_3,it); it=CALL(choice_AmethystParsercb_4,1,bind);  if (IGET(stop)!=Qnil){{oldpos2=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos2); it=BGET(autovar_2);
- BSET(autovar_4,it); it=CALL(choice_AmethystParsercb_5,1,bind); it=BGET(f_1);
+ BSET(autovar_2,it); int oldpos2; while(1){oldpos2=ame_getpos(self);  it=CALL(choice_AmethystParsercb_4,1,bind);  arg0=it; it=CALL(apply,1 ,arg0); FAILTEST(break1); it=BGET(rule_1); arg0=it; it=CALL(apply,1 ,arg0); FAILTEST(break1);
+ BSET(autovar_3,it); it=CALL(choice_AmethystParsercb_5,1,bind);  if (IGET(stop)!=Qnil){{oldpos2=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos2); it=BGET(autovar_2);
+ BSET(autovar_4,it); it=CALL(choice_AmethystParsercb_6,1,bind); it=BGET(f_1);
  BSET(_result_2,it);  
 ISET(cut,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-   it=AmethystParser_empty(self ); FAILTEST(alt1_3);it=CALL(choice_AmethystParsercb_6,1,bind); 
+   it=AmethystParser_empty(self ); FAILTEST(alt1_3);it=CALL(choice_AmethystParsercb_7,1,bind); 
  BSET(_result_2,it);  
 ISET(cut,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
 it=BGET(_result_2);
- BSET(ary_1,it); it=CALL(choice_AmethystParsercb_7,1,bind);
+ BSET(ary_1,it); it=CALL(choice_AmethystParsercb_8,1,bind);
  BSET(_result_1,it); it=BGET(_result_1);
 return it;
 fail: return failobj; }
@@ -442,18 +443,18 @@ it=rb_ary_new3(0);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   it=BGET(rule_1); arg0=it; it=CALL(apply,1 ,arg0); FAILTEST(alt1_2);
  BSET(autovar_1,it); it=CALL(listOf_AmethystParsercb_1,1,bind); it=rb_ary_new3(0);
- BSET(autovar_2,it); int oldpos2; while(1){oldpos2=ame_getpos(self);  it=BGET(delim_1); arg0=it; it=CALL(apply,1 ,arg0); FAILTEST(break1); it=BGET(rule_1); arg0=it; it=CALL(apply,1 ,arg0); FAILTEST(break1);
- BSET(autovar_3,it); it=CALL(listOf_AmethystParsercb_2,1,bind);  if (IGET(stop)!=Qnil){{oldpos2=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos2); it=BGET(autovar_2);
- BSET(autovar_4,it); it=CALL(listOf_AmethystParsercb_3,1,bind); it=BGET(f_1);
- BSET(_result_1,it);  
+ BSET(autovar_2,it); int oldpos2; while(1){oldpos2=ame_getpos(self);  it=CALL(listOf_AmethystParsercb_2,1,bind);  arg0=it; it=CALL(apply,1 ,arg0); FAILTEST(break1); it=BGET(rule_1); arg0=it; it=CALL(apply,1 ,arg0); FAILTEST(break1);
+ BSET(autovar_3,it); it=CALL(listOf_AmethystParsercb_3,1,bind);  if (IGET(stop)!=Qnil){{oldpos2=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos2); it=BGET(autovar_2);
+ BSET(autovar_4,it); it=CALL(listOf_AmethystParsercb_4,1,bind); it=BGET(f_1);
+ BSET(_result_2,it);  
 ISET(cut,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-   it=AmethystParser_empty(self ); FAILTEST(alt1_3);it=CALL(listOf_AmethystParsercb_4,1,bind); 
- BSET(_result_1,it);  
+   it=AmethystParser_empty(self ); FAILTEST(alt1_3);it=CALL(listOf_AmethystParsercb_5,1,bind); 
+ BSET(_result_2,it);  
 ISET(cut,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=BGET(_result_1);
+it=BGET(_result_2);
 return it;
 fail: return failobj; }
 VALUE AmethystParser_lower(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -1084,7 +1085,17 @@ it=CALL(upper_AmethystParsercb_1,1,bind);
  BSET(_result_2,it); it=BGET(_result_2);
  BSET(_result_3,it); it=BGET(_result_3);
 return it;
-fail: return failobj; }VALUE AmethystParser_choice_lambda1(VALUE self,VALUE bind){VALUE vals[0]; /*todo unify with rule and get args*/  int x;VALUE it;VALUE arg0,arg1,arg2,arg3;
+fail: return failobj; }VALUE AmethystParser_listOf_lambda1(VALUE self,VALUE bind){VALUE vals[0]; /*todo unify with rule and get args*/  int x;VALUE it;VALUE arg0,arg1,arg2,arg3;
+ it=rb_str_new2("|"); arg0=it; it=AmethystParser_token(self ,arg0); FAILTEST(fail);
+ BSET(_result_1,it); it=BGET(_result_1);
+return it;
+fail: return failobj; }
+VALUE AmethystParser_choice_lambda1(VALUE self,VALUE bind){VALUE vals[0]; /*todo unify with rule and get args*/  int x;VALUE it;VALUE arg0,arg1,arg2,arg3;
+ it=rb_str_new2("|"); arg0=it; it=AmethystParser_token(self ,arg0); FAILTEST(fail);
+ BSET(_result_1,it); it=BGET(_result_1);
+return it;
+fail: return failobj; }
+VALUE AmethystParser_choice_lambda2(VALUE self,VALUE bind){VALUE vals[0]; /*todo unify with rule and get args*/  int x;VALUE it;VALUE arg0,arg1,arg2,arg3;
  it=rb_str_new2("|"); arg0=it; it=AmethystParser_token(self ,arg0); FAILTEST(fail);
  BSET(_result_1,it); it=BGET(_result_1);
 return it;
@@ -1093,6 +1104,8 @@ void Init_parser_c(){
  cls_AmethystParser=rb_define_class("AmethystParser",rb_const_get(rb_cObject,rb_intern("Amethyst"))); 
 failobj=rb_eval_string("FAIL");
 rb_define_method(cls_AmethystParser,"AmethystParser_choice_lambda1",AmethystParser_choice_lambda1,1);
+rb_define_method(cls_AmethystParser,"AmethystParser_choice_lambda2",AmethystParser_choice_lambda2,1);
+rb_define_method(cls_AmethystParser,"AmethystParser_listOf_lambda1",AmethystParser_listOf_lambda1,1);
 rb_define_method(cls_AmethystParser,"_",AmethystParser__,0);
 rb_define_method(cls_AmethystParser,"__args",AmethystParser___args,2);
 rb_define_method(cls_AmethystParser,"_args",AmethystParser__args,2);
