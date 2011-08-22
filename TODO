@@ -47,3 +47,5 @@ saner handling of Locals
 generic equality
 
 timestamps for ruby/c files
+
+hashes with different equalization

@@ -144,6 +144,18 @@ class <<Lookahead
 		end
   end
 end
+
+class Bnding
+	def hash
+		ary.hash
+	end
+	def ==(a)
+		return false unless a.is_a? Bnding
+    return self.ary==a.ary
+	end
+	alias_method :eql?,:==
+end
+
 class Global
 	def hash
 		ary.hash

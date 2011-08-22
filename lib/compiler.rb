@@ -16,14 +16,16 @@ class Gram
 	      puts r.inspect if debug
       	r=o.new.parse(:root,r)
 			}
-		 [CloneLocals, Dataflow, 
+		 r=deep_clone(r)
+		 [ Dataflow, 
 			Dead_Code_Deleter3,Seq_Or_Optimizer
 ].each{|o|
 			r=o.new.parse(:root,r)
 			puts r.inspect if debug
 		}
 		r=propagate_consts(r)
- [CloneLocals, Dataflow, 
+	r=deep_clone(r)
+ [ Dataflow, 
 			Dead_Code_Deleter3,Seq_Or_Optimizer,
 			Communize_Or3,Seq_Or_Optimizer
 ].each{|o|

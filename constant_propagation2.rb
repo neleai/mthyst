@@ -88,7 +88,8 @@ class Constant_Propagator
 	
 end
 def propagate_consts(r)
-[CloneLocals, Remap_Acts,Dataflow].each{|p| p.new.parse(:root,r)
+r=deep_clone(r)
+[ Remap_Acts,Dataflow].each{|p| p.new.parse(:root,r)
 #puts r.inspect
 }
 c=Constant_Propagator.new(r.cfg)
