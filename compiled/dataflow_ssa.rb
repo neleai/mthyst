@@ -161,7 +161,7 @@ def root_Dataflowcb_8(bind)
 bind[:var_1].each{|v| ssanum(v)}
 end
 def root_Dataflowcb_9(bind)
-@src.reachable=@edges.reverse.reachable(@marked+[ssanum(@src.body[-1])]); @src.cfg=@edges; [@edges,@marked+[@src.body[-1]]]
+@src.reachable=@edges.reverse.reachable(@marked+[ssanum(@src.body[-1])]); @src.cfg=@edges; 
 end
 def traverse_Dataflowcb_1(bind)
 @src.self

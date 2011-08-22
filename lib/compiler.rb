@@ -10,7 +10,7 @@ class Gram
 		}
 	end
 	def opt(r)
-      debug=true
+      debug=false
 			[Seq_Or_Optimizer,Move_Assignments2,Seq_Or_Optimizer,
 			].each{|o|
 	      puts r.inspect if debug
