@@ -690,8 +690,7 @@ return it;
 fail: return failobj; }
 VALUE Communize_Or2_empty(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=Qnil;
- BSET(_result_1,it); it=BGET(_result_1);
+it=Qnil;it=Qnil;
 return it;
 fail: return failobj; }
 VALUE Communize_Or2_eof(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -873,8 +872,7 @@ return it;
 fail: return failobj; }
 VALUE Communize_Or3_empty(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=Qnil;
- BSET(_result_1,it); it=BGET(_result_1);
+it=Qnil;it=Qnil;
 return it;
 fail: return failobj; }
 VALUE Communize_Or3_eof(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -1058,8 +1056,7 @@ return it;
 fail: return failobj; }
 VALUE Move_Assignments2_empty(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=Qnil;
- BSET(_result_1,it); it=BGET(_result_1);
+it=Qnil;it=Qnil;
 return it;
 fail: return failobj; }
 VALUE Move_Assignments2_eof(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;

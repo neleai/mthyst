@@ -387,7 +387,7 @@ def trans_AmethystCTranslatorcb_4(bind)
 @lambdas=[]
 end
 def trans_AmethystCTranslatorcb_40(bind)
-"#{bind[:s_3]} FAILTEST(#{@faillabel});" 
+"#{bind[:s_2]} FAILTEST(#{@faillabel});" 
 end
 def trans_AmethystCTranslatorcb_41(bind)
 Seq

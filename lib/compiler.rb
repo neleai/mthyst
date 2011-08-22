@@ -1,4 +1,5 @@
 $OPT="-O2"
+require 'constant_propagation2'
 class Gram
 	attr_accessor :name,:parent,:rules
 	def initialize(grammar)
@@ -22,7 +23,14 @@ class Gram
 			r=o.new.parse(:root,r)
 			#puts r.inspect
 		}
-#		r=propagate_consts(r)
+		r=propagate_consts(r)
+ [CloneLocals, Dataflow, 
+			Dead_Code_Deleter3,Seq_Or_Optimizer
+].each{|o|
+			r=o.new.parse(:root,r)
+			#puts r.inspect
+		}
+
     @rules[r.name]=r 
 	end
 	def getrule(name)

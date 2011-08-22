@@ -36,9 +36,7 @@ class Constant_Propagator
 	def analyze
     while e=activea.pop
       active.delete(e)
-			puts e.inspect
       val=step(e)
-			puts val.inspect
       if val!=valof(e)
         setval(e,val)
         depend.edges[e].each{|d| addactive(d)}
@@ -66,12 +64,10 @@ class Constant_Propagator
 		return vals[e]
 	end
  	def step(el)
-		puts el.inspect
     case el
       when Array
         a=Bottom
         depend.reverse.edges[el].each{|e|
-					puts " #{e.inspect} #{valof(e).inspect} #{a.inspect}"
 					if valof(e)!=Bottom
           	a=valof(e) if a==Bottom
           	a=Top if a!=valof(e)
@@ -106,6 +102,8 @@ r=Constant_Traverser.new.parse(:root,r)
 puts r.inspect
 r
 end
-["amethyst"].each{|f|
+if false
+["amethyst","parser"].each{|f|
 Compiler::compile("amethyst/#{f}.ame","compiled/a.rb","#{f}2")
 }
+end
