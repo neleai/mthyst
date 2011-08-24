@@ -1,29 +1,31 @@
-def firstchar(s)
-	s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
-	eval('"'+s+'"')[0]
-end
-def first(s)
-	if s.is_a?(Seq)
-		return first(s[0])
+class Detect_Switch < Traverser
+	def firstchar(s)
+		s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
+		eval('"'+s+'"')[0]
 	end
-	if s.is_a? Bind
-		return first(s.expr)
-	end
-	if s.is_a? Switch
-		a=[]
-		s.ary.each{|k,v| a<<k}
-		return a.uniq
-	end
-	if s.is_a? Or
-		a=[]
-		s.ary.each{|e| 
-		return nil if !first(e)
-			a+=first(e)}
-		return a.uniq
-	end
-	if s.is_a?(Apply) && s[0]=="seq"
-		return nil if s[1][0].size==15
-		return [firstchar(s[1][0])]
+	def first(s)
+		if s.is_a?(Seq)
+			return first(s[0])
+		end
+		if s.is_a? Bind
+			return first(s.expr)
+		end
+		if s.is_a? Switch
+			a=[]
+			s.ary.each{|k,v| a<<k}
+			return a.uniq
+		end
+		if s.is_a? Or
+			a=[]
+			s.ary.each{|e| 
+			return nil if !first(e)
+				a+=first(e)}
+			return a.uniq
+		end
+		if s.is_a?(Apply) && s[0]=="seq"
+			return nil if s[1][0].size==15
+			return [firstchar(s[1][0])]
+		end
 	end
 end
 
@@ -35,6 +37,32 @@ amethyst Detect_Switch < Traverser {
 	visit = Or[{Hash.new{|h,k|h[k]=[]} }:ary2
 		(traverse_item:e &{first(e)}  { first(e).each{|a| ary2[a]<<e}})*
 		{Switch[{:act=>"RSTRING(ame_getsrc(self))->ptr[ame_getpos(self)]",:ary=>ary2.to_a.map{|h,k| [h,Or[{:ary=>k}]]}}];}
+	]
+}
+class Detect_ClasSwitch < Traverser
+	def initcls
+		{}
+	end
+	def firstclas(s,clses)
+		if s.is_a?(Apply) && s[0]=="clas"
+			e=s[1][0]
+			return clses[e] if clses[e]
+			return clses[e]=clses.size
+		end
+	end
+	def classwitch(clses)
+		"rb_funcall()"
+	end
+end
+
+amethyst Detect_ClasSwitch < Traverser {
+	itrans =   (Grammar[ @rules=>[ Rule[root]*:rules ] {@rules=rules} @self] | .)*
+
+	root = traverse
+
+	visit = Or[{Hash.new{|h,k|h[k]=[]} }:ary2 {initcls}:clses
+		(traverse_item:e &{firstclas(e,clses)}  { firstclas(e,clses).each{|a| ary2[a]<<e}})*
+		{Switch[{:act=>classswitch(clses),:ary=>ary2.to_a.map{|h,k| [h,Or[{:ary=>k}]]}}];}
 	]
 }
 

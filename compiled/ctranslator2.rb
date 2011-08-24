@@ -561,4 +561,7 @@ end
 end
 
 
- require 'compiled/ctranslator2_c'
+def testversion(r)
+ raise "invalid version" if r!='25adc70f04797f98821747ec46122bf9'
+end
+  require 'compiled/ctranslator2_c'

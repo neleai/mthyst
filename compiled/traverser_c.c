@@ -96,8 +96,7 @@ ISET(cut,Qnil);goto accept1;
  accept1:;
 it=BGET(_result_1);
 return it;
-fail: return failobj; }
-VALUE cls_Detector;
+fail: return failobj; }VALUE cls_Detector;
 VALUE Detector_root(VALUE self );
 VALUE Detector_traverse(VALUE self );
 VALUE Detector_traverse_item(VALUE self );
@@ -215,4 +214,4 @@ rb_define_method(cls_Detector,"root",Detector_root,0);
 rb_define_method(cls_Detector,"traverse",Detector_traverse,0);
 rb_define_method(cls_Detector,"traverse_item",Detector_traverse_item,0);
 rb_define_method(cls_Detector,"visit",Detector_visit,0);
- }
+ rb_eval_string("testversion('ee0326cadda988b80fed1f7d0814294f')");}

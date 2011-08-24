@@ -469,4 +469,7 @@ end
 
 
 
- require 'compiled/dataflow_ssa_c'
+def testversion(r)
+ raise "invalid version" if r!='c51b798668bbbbafac919d6b7f82f898'
+end
+  require 'compiled/dataflow_ssa_c'

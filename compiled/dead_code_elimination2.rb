@@ -723,4 +723,7 @@ end
 
 
 
- require 'compiled/dead_code_elimination2_c'
+def testversion(r)
+ raise "invalid version" if r!='9a64ed5b6f93dba435017e5effef9421'
+end
+  require 'compiled/dead_code_elimination2_c'

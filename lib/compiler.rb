@@ -1,3 +1,4 @@
+require 'digest'
 $OPT="-O2"
 COMPILED=["amethyst","traverser","detect_variables2","ctranslator2","parser","optimizer_null","optimizer_and_or","dead_code_elimination2","dataflow_ssa","inliner2",
 "detect_switch"]
@@ -124,12 +125,14 @@ end
 		tree=Seq_Or_Optimizer.new.parse(:itrans,tree)
 		puts tree.inspect
 		c,init,rb= AmethystCTranslator.new.parse(:itrans,tree)
+		c=c*""
+		r=Digest::MD5.hexdigest(c)
 		File.open("compiled/#{file2}_c.c","w"){|f|
     f.puts "#include \"cthyst.h\""
     f.puts c
-    f.puts "void Init_#{file2}_c(){ #{init} }"
+    f.puts "void Init_#{file2}_c(){ #{init} rb_eval_string(\"testversion('#{r}')\");}"
     }
-    File.open("compiled/#{file2}.rb","w"){|f| f.puts rb; f.puts "\n require 'compiled/#{file2}_c'"}
+    File.open("compiled/#{file2}.rb","w"){|f| f.puts rb; f.puts "\ndef testversion(r)\n raise \"invalid version\" if r!='#{r}'\nend\n  require 'compiled/#{file2}_c'"}
 	  withtime("c"){
     `cd compiled;gcc -I. -I/usr/lib/ruby/1.8/x86_64-linux -I/usr/lib/ruby/1.8/x86_64-linux -I.   -fPIC -fno-strict-aliasing -g -g #$OPT  -fPIC   -c #{file2}_c.c`
     `cd compiled;gcc -shared -o #{file2}_c.so #{file2}_c.o -L. -L/usr/lib -L.  -rdynamic -Wl,-export-dynamic -lruby1.8  -lpthread -lrt -ldl -lcrypt -lm   -lc`

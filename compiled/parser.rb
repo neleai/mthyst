@@ -454,4 +454,7 @@ end
 end
 
 
- require 'compiled/parser_c'
+def testversion(r)
+ raise "invalid version" if r!='07421ed3c7a24648d197c56ac25c2b7b'
+end
+  require 'compiled/parser_c'

@@ -102,4 +102,7 @@ end
 end
 
 
- require 'compiled/amethyst_c'
+def testversion(r)
+ raise "invalid version" if r!='afcaf1cbb68a74359b9d72c386e61cb0'
+end
+  require 'compiled/amethyst_c'

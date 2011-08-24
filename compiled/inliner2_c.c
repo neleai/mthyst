@@ -136,8 +136,7 @@ ame_setsrc(self,BGET(autovar_1)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb
 it=CALL(visit_Renamer2cb_4,1,bind); 
  BSET(_result_2,it); it=BGET(_result_2);
 return it;
-fail: return failobj; }
-VALUE cls_DetectCalls;
+fail: return failobj; }VALUE cls_DetectCalls;
 VALUE DetectCalls_clas(VALUE self ,VALUE a0);
 VALUE DetectCalls_root(VALUE self );
 VALUE DetectCalls_traverse(VALUE self );
@@ -273,8 +272,7 @@ ame_setsrc(self,BGET(autovar_1)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb
 	if(fail1) goto fail;
 it=BGET(_result_2);
 return it;
-fail: return failobj; }
-VALUE cls_Inliner2;
+fail: return failobj; }VALUE cls_Inliner2;
 VALUE Inliner2_clas(VALUE self ,VALUE a0);
 VALUE Inliner2_root(VALUE self );
 VALUE Inliner2_traverse(VALUE self );
@@ -473,4 +471,4 @@ rb_define_method(cls_Inliner2,"root",Inliner2_root,0);
 rb_define_method(cls_Inliner2,"traverse",Inliner2_traverse,0);
 rb_define_method(cls_Inliner2,"traverse_item",Inliner2_traverse_item,0);
 rb_define_method(cls_Inliner2,"visit",Inliner2_visit,0);
- }
+ rb_eval_string("testversion('3ec0163089ae0325ae1228eaea1a66f6')");}

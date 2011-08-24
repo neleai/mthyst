@@ -731,4 +731,4 @@ rb_define_method(cls_AmethystCTranslator,"spaces",AmethystCTranslator_spaces,0);
 rb_define_method(cls_AmethystCTranslator,"token",AmethystCTranslator_token,1);
 rb_define_method(cls_AmethystCTranslator,"trans",AmethystCTranslator_trans,0);
 rb_define_method(cls_AmethystCTranslator,"transfn",AmethystCTranslator_transfn,0);
- }
+ rb_eval_string("testversion('25adc70f04797f98821747ec46122bf9')");}

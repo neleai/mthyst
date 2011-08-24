@@ -214,4 +214,7 @@ end
 end
 
 
- require 'compiled/inliner2_c'
+def testversion(r)
+ raise "invalid version" if r!='3ec0163089ae0325ae1228eaea1a66f6'
+end
+  require 'compiled/inliner2_c'

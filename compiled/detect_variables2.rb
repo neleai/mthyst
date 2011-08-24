@@ -209,4 +209,7 @@ end
 end
 
 
- require 'compiled/detect_variables2_c'
+def testversion(r)
+ raise "invalid version" if r!='fbd58b66ec8f870d669be3bb29e65d7a'
+end
+  require 'compiled/detect_variables2_c'

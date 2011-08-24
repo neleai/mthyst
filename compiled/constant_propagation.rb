@@ -84,4 +84,7 @@ end
 end
 
 
- require 'compiled/constant_propagation_c'
+def testversion(r)
+ raise "invalid version" if r!='fbcd8f7da4bb4409a6a87b1b5e8c9c40'
+end
+  require 'compiled/constant_propagation_c'

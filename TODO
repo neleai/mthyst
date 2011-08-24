@@ -51,3 +51,5 @@ hashes with different equalization
 timestamps for ruby/c files
 
 iterative dataflow
+
+delete choices after fail

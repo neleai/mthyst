@@ -463,8 +463,7 @@ ISET(cut,Qnil);goto accept1;
  accept1:;
 it=BGET(_result_2);
 return it;
-fail: return failobj; }
-VALUE cls_Dead_Code_Deleter2;
+fail: return failobj; }VALUE cls_Dead_Code_Deleter2;
 VALUE Dead_Code_Deleter2_clas(VALUE self ,VALUE a0);
 VALUE Dead_Code_Deleter2_root(VALUE self );
 VALUE Dead_Code_Deleter2_traverse(VALUE self );
@@ -669,8 +668,7 @@ ISET(cut,Qnil);goto accept1;
  accept1:;
 it=BGET(_result_2);
 return it;
-fail: return failobj; }
-VALUE cls_Constant_Propagator2;
+fail: return failobj; }VALUE cls_Constant_Propagator2;
 
 VALUE cls_Communize_Or2;
 VALUE Communize_Or2_clas(VALUE self ,VALUE a0);
@@ -853,8 +851,7 @@ it=CALL(visit_Communize_Or2cb_8,1,bind);  if (IGET(stop)!=Qnil){{oldpos3=ame_get
 	if(fail1) goto fail;
 it=BGET(_result_2);
 return it;
-fail: return failobj; }
-VALUE cls_Communize_Or3;
+fail: return failobj; }VALUE cls_Communize_Or3;
 VALUE Communize_Or3_clas(VALUE self ,VALUE a0);
 VALUE Communize_Or3_empty(VALUE self );
 VALUE Communize_Or3_eof(VALUE self );
@@ -1035,8 +1032,7 @@ it=CALL(visit_Communize_Or3cb_8,1,bind);  if (IGET(stop)!=Qnil){{oldpos3=ame_get
 	if(fail1) goto fail;
 it=BGET(_result_2);
 return it;
-fail: return failobj; }
-VALUE cls_Move_Assignments2;
+fail: return failobj; }VALUE cls_Move_Assignments2;
 VALUE Move_Assignments2_clas(VALUE self ,VALUE a0);
 VALUE Move_Assignments2_empty(VALUE self );
 VALUE Move_Assignments2_eof(VALUE self );
@@ -1463,4 +1459,4 @@ rb_define_method(cls_Move_Assignments2,"root",Move_Assignments2_root,0);
 rb_define_method(cls_Move_Assignments2,"traverse",Move_Assignments2_traverse,0);
 rb_define_method(cls_Move_Assignments2,"traverse_item",Move_Assignments2_traverse_item,0);
 rb_define_method(cls_Move_Assignments2,"visit",Move_Assignments2_visit,0);
- }
+ rb_eval_string("testversion('9a64ed5b6f93dba435017e5effef9421')");}

@@ -332,8 +332,7 @@ ISET(cut,Qnil);goto accept1;
  accept1:;
 it=BGET(_result_2);
 return it;
-fail: return failobj; }
-VALUE cls_Remap_Acts;
+fail: return failobj; }VALUE cls_Remap_Acts;
 VALUE Remap_Acts_clas(VALUE self ,VALUE a0);
 VALUE Remap_Acts_root(VALUE self );
 VALUE Remap_Acts_traverse(VALUE self );
@@ -475,4 +474,4 @@ rb_define_method(cls_Remap_Acts,"root",Remap_Acts_root,0);
 rb_define_method(cls_Remap_Acts,"traverse",Remap_Acts_traverse,0);
 rb_define_method(cls_Remap_Acts,"traverse_item",Remap_Acts_traverse_item,0);
 rb_define_method(cls_Remap_Acts,"visit",Remap_Acts_visit,0);
- }
+ rb_eval_string("testversion('fbd58b66ec8f870d669be3bb29e65d7a')");}

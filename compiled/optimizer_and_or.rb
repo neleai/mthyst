@@ -127,4 +127,7 @@ end
 end
 
 
- require 'compiled/optimizer_and_or_c'
+def testversion(r)
+ raise "invalid version" if r!='26e93a4f0f3c62730b1c78fa5b27738c'
+end
+  require 'compiled/optimizer_and_or_c'

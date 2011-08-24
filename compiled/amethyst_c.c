@@ -311,4 +311,4 @@ rb_define_method(cls_Amethyst,"token",Amethyst_token,1);
 rb_define_method(cls_Amethyst,"upper",Amethyst_upper,0);
 rb_define_method(cls_Amethyst,"word",Amethyst_word,0);
 rb_define_method(cls_Amethyst,"xdigit",Amethyst_xdigit,0);
- }
+ rb_eval_string("testversion('afcaf1cbb68a74359b9d72c386e61cb0')");}

@@ -254,4 +254,4 @@ rb_define_method(cls_Seq_Or_Optimizer,"root",Seq_Or_Optimizer_root,0);
 rb_define_method(cls_Seq_Or_Optimizer,"traverse",Seq_Or_Optimizer_traverse,0);
 rb_define_method(cls_Seq_Or_Optimizer,"traverse_item",Seq_Or_Optimizer_traverse_item,0);
 rb_define_method(cls_Seq_Or_Optimizer,"visit",Seq_Or_Optimizer_visit,0);
- }
+ rb_eval_string("testversion('26e93a4f0f3c62730b1c78fa5b27738c')");}
