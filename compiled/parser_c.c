@@ -310,17 +310,22 @@ return it;
 fail: return failobj; }
 VALUE AmethystParser_endline(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-char chr1=RSTRING(ame_getsrc(self))->ptr[ame_getpos(self)];  switch(chr1){case 13:; char chr2=RSTRING(ame_getsrc(self))->ptr[ame_getpos(self)];  switch(chr2){case 13:; int oldpos1=ame_getpos(self);
+int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=rb_str_new2("\r\n"); arg0=it; it=AmethystCore_seq(self ,arg0); FAILTEST(alt1_2); 
+  it=rb_str_new2("\r\n"); arg0=it; it=AmethystCore_seq(self ,arg0); FAILTEST(alt1_2);
+ BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=rb_str_new2("\r"); arg0=it; it=AmethystCore_seq(self ,arg0); FAILTEST(alt1_3); 
+  it=rb_str_new2("\r"); arg0=it; it=AmethystCore_seq(self ,arg0); FAILTEST(alt1_3);
+ BSET(_result_1,it);  
 ISET(cut,Qnil);goto accept1;
-  alt1_3:  ame_setpos(self,oldpos1); goto fail;
+alt1_3: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
+  it=rb_str_new2("\n"); arg0=it; it=AmethystCore_seq(self ,arg0); FAILTEST(alt1_4);
+ BSET(_result_1,it);  
+ISET(cut,Qnil);goto accept1;
+  alt1_4:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-default: goto fail;}case 10:;  it=rb_str_new2("\n"); arg0=it; it=AmethystCore_seq(self ,arg0); FAILTEST(fail);
- BSET(_result_1,it); default: goto fail;}it=BGET(_result_1);
+it=BGET(_result_1);
 return it;
 fail: return failobj; }
 VALUE AmethystParser_expression(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
