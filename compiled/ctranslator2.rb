@@ -244,7 +244,7 @@ def trans_AmethystCTranslatorcb_106(bind)
 "char #{bind[:chr_1]}=RSTRING(ame_gesrc(self))->ptr[ame_getpos(self)];  switch(#{bind[:chr_1]}){"
 end
 def trans_AmethystCTranslatorcb_107(bind)
-bind[:s_1]+="case #{bind[:c_1]}: #{bind[:t_1]}"
+bind[:s_1]+="case #{bind[:c_1]}:; #{bind[:t_1]}"
 end
 def trans_AmethystCTranslatorcb_108(bind)
 bind[:s_1]+"case default: goto #{@faillabel};}"
