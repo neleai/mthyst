@@ -1,4 +1,7 @@
 def first(s)
+	if s.is_a? Bind
+		return first(s.expr)
+	end
 	if s.is_a? Or
 		a=[]
 		s.ary.each{|e| a+=first(e)}
@@ -10,9 +13,12 @@ def first(s)
 end
 
 amethyst Detect_Switch < Traverser {
+	itrans =   (Grammar[ @rules=>[ Rule[root]*:rules ] {@rules=rules} @self] | .)*
+
 	root = traverse
 
 	visit = Or[{Hash.new{|h,k|h[k]=[]} }:ary2
+		{puts @self.inspect}
 		(traverse_item:e &{first(e)} {puts e.inspect} { first(e).each{|a| ary2[a]<<e}})*
 		{Switch[{:ary=>ary2.to_a.map{|h,k| [h,Or[{:ary=>k}]]} }]}
 	]

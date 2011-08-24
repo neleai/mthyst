@@ -1,4 +1,6 @@
 $OPT="-O2"
+COMPILED=["amethyst","traverser","detect_variables2","ctranslator2","parser","optimizer_null","optimizer_and_or","dead_code_elimination2","dataflow_ssa","inliner2",
+"detect_switch"]
 require 'constant_propagation2'
 class Gram
 	attr_accessor :name,:parent,:rules
@@ -116,6 +118,7 @@ end
 			else
 			end
 		}
+		#tree=Detect_Switch.new.parse(:itrans,tree)
 		c,init,rb= AmethystCTranslator.new.parse(:itrans,tree)
 		File.open("compiled/#{file2}_c.c","w"){|f|
     f.puts "#include \"cthyst.h\""
@@ -131,8 +134,7 @@ end
 	end
 end	
 Compiler::init
-["amethyst","traverser","detect_variables2","ctranslator2","parser","optimizer_null","optimizer_and_or","dead_code_elimination2","dataflow_ssa","inliner2"
-].each{|opt|
+COMPILED.each{|opt|
 require "compiled/#{opt}"
 }
 
