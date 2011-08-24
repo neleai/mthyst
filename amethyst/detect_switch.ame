@@ -1,4 +1,9 @@
 def first(s)
+	if s.is_a? Or
+		a=[]
+		s.ary.each{|e| a+=first(e)}
+		return a.uniq
+	end
 	if s.is_a?(Apply) && s[0]=="seq"
 		[s[1][0][14].chr]
 	end
@@ -12,6 +17,6 @@ amethyst Detect_Switch < Traverser {
 		{@ary.each{|e| 
 			first(e).each{|a| ary2[a]<<e}
 		}}
-		{Switch[{:ary=>ary2.to_a}]}
+		{Switch[{:ary=>ary2.to_a.map{|h,k| [h,Or[{:ary=>k}]]} }]}
 	]
 }

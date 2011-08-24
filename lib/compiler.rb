@@ -108,6 +108,7 @@ end
 		source=File.new(file).read
 		tree=AmethystParser.new.parse(:igrammar,source)
 		tree=Analyze_Variables2.new.parse(:itrans,tree)
+		tree=Remap_Acts.new.parse(:root,tree)
 		tree.each{|a|	
 			if a.is_a? Grammar
 				add_grammar(a)
