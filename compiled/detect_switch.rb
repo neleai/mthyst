@@ -69,7 +69,7 @@ def visit_Detect_Switchcb_7(bind)
 _append(bind[:autovar_1],bind[:autovar_3])
 end
 def visit_Detect_Switchcb_8(bind)
-s=Switch[{:act=>CAct["RSTRING(ame_getsrc(self))->ptr[ame_getpos(self)]"],:ary=>bind[:ary2_1].to_a.map{|h,k| [h,Or[{:ary=>k}]]}}];puts s.inspect;s
+s=Switch[{:act=>"RSTRING(ame_getsrc(self))->ptr[ame_getpos(self)]",:ary=>bind[:ary2_1].to_a.map{|h,k| [h,Or[{:ary=>k}]]}}];puts s.inspect;s
 end
 
 end
