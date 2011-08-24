@@ -1,11 +1,9 @@
 def firstchar(s)
 	s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
-	return ?\" if s=='"'
 	eval('"'+s+'"')[0]
 end
 def first(s)
 	if s.is_a?(Seq)
-		return nil
 		return first(s[0])
 	end
 	if s.is_a? Bind
@@ -71,7 +69,7 @@ def visit_Detect_Switchcb_7(bind)
 _append(bind[:autovar_1],bind[:autovar_3])
 end
 def visit_Detect_Switchcb_8(bind)
-Switch[{:act=>CAct["RSTRING(ame_getsrc(self))->ptr[ame_getpos(self)]"],:ary=>bind[:ary2_1].to_a.map{|h,k| [h,Or[{:ary=>k}]]}}]
+s=Switch[{:act=>CAct["RSTRING(ame_getsrc(self))->ptr[ame_getpos(self)]"],:ary=>bind[:ary2_1].to_a.map{|h,k| [h,Or[{:ary=>k}]]}}];puts s.inspect;s
 end
 
 end

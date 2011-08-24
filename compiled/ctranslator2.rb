@@ -244,10 +244,10 @@ def trans_AmethystCTranslatorcb_106(bind)
 @src.act
 end
 def trans_AmethystCTranslatorcb_107(bind)
-bind[:autovar_38]=[bind[:autovar_38]]
+puts bind[:act_1].inspect;puts @src.self.inspect
 end
 def trans_AmethystCTranslatorcb_108(bind)
-"char #{bind[:chr_1]}=#{bind[:act_1]};  switch(#{bind[:chr_1]}){"
+"char #{bind[:chr_1]}=RSTRING(ame_getsrc(self))->ptr[ame_getpos(self)];  switch(#{bind[:chr_1]}){"
 end
 def trans_AmethystCTranslatorcb_109(bind)
 bind[:s_1]+="case #{bind[:c_1]}:; #{bind[:t_1]} break;"

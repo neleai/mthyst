@@ -1,11 +1,9 @@
 def firstchar(s)
 	s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
-	return ?\" if s=='"'
 	eval('"'+s+'"')[0]
 end
 def first(s)
 	if s.is_a?(Seq)
-		return nil
 		return first(s[0])
 	end
 	if s.is_a? Bind
@@ -32,7 +30,7 @@ amethyst Detect_Switch < Traverser {
 	visit = Or[{Hash.new{|h,k|h[k]=[]} }:ary2
 		{puts @self.inspect}
 		(traverse_item:e &{first(e)} {puts e.inspect} { first(e).each{|a| ary2[a]<<e}})*
-		{Switch[{:act=>CAct["RSTRING(ame_getsrc(self))->ptr[ame_getpos(self)]"],:ary=>ary2.to_a.map{|h,k| [h,Or[{:ary=>k}]]}}]}
+		{s=Switch[{:act=>"RSTRING(ame_getsrc(self))->ptr[ame_getpos(self)]",:ary=>ary2.to_a.map{|h,k| [h,Or[{:ary=>k}]]}}];puts s.inspect;s}
 	]
 }
 
