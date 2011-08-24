@@ -1,4 +1,3 @@
-Top=Object.new
 class Oriented_Graph
 	attr_accessor :edges
 	def initialize

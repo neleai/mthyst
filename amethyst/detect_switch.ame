@@ -1,0 +1,17 @@
+def first(s)
+	if s.is_a?(Apply) && s[0]=="seq"
+		[s[1][0][14].chr]
+	end
+end
+
+amethyst Detect_Switch < Traverser {
+	root = traverse
+
+	visit = Or[.* {Hash.new{|h,k|h[k]=[]} }:ary2
+		{puts @ary.inspect}
+		{@ary.each{|e| 
+			first(e).each{|a| ary2[a]<<e}
+		}}
+		{Switch[{:ary=>ary2.to_a}]}
+	]
+}

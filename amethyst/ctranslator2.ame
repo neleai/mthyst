@@ -120,6 +120,12 @@ ame_setsrc(self,#{bget(@var.desc)}); ame_setpos(self,0); ame_setlen(self,FIX2INT
 	if(#{fail}) goto #{@@faillabel};
 " }
 					]
+				| Switch[ label("chr"):chr 
+									{"char #{chr}=RSTRING(ame_gesrc(self))->ptr[ame_getpos(self)];  switch(#{chr}){"}:s
+										( .:c trans:t {s+="case #{c}: #{t}"})*
+									{s+"}"}
+								]
+
 	
 	addlambda =  {"#{@@grammar}_#{@@rulename}_#{label("lambda")}"}:lambd  rw('fail',`trans:body`)
 							  { h="VALUE #{lambd}(VALUE self,VALUE bind)"
