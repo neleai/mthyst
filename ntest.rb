@@ -15,4 +15,5 @@ require 'compiled/dataflow_ssa'
 puts f
 Compiler::compile("amethyst/#{f}.ame","compiled/#{f}.rb",f)
 }
+totaltime
 #pp Compiler.grammars["AmethystParser"]

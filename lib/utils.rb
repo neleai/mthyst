@@ -72,10 +72,18 @@ end
 def map_index(s)
 	s.size.times.map{|a| yield(a)}
 end
+$glob=Hash.new(0.0)
 def withtime(s)
 	t=Time.new
 	print "%20s" % s;	STDOUT.flush
 	r=yield
 	puts " %0.6f" % (Time.new-t)
+	$glob[s]+=Time.new-t
 	r
+end
+def totaltime
+	$glob.each{|s,t|
+		print "%20s" % s; STDOUT.flush
+	  puts " %0.6f" % t
+	}
 end
