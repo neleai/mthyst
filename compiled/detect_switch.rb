@@ -1,14 +1,20 @@
 def firstchar(s)
 	s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
+	return '"' if s=='"'
 	eval('"'+s+'"')[0]
 end
 def first(s)
+	if s.is_a?(Seq)
+		return first(s[0])
+	end
 	if s.is_a? Bind
 		return first(s.expr)
 	end
 	if s.is_a? Or
 		a=[]
-		s.ary.each{|e| a+=first(e)}
+		s.ary.each{|e| 
+		return nil if !first(e)
+			a+=first(e)}
 		return a.uniq
 	end
 	if s.is_a?(Apply) && s[0]=="seq"
