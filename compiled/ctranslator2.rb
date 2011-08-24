@@ -241,13 +241,13 @@ def trans_AmethystCTranslatorcb_105(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def trans_AmethystCTranslatorcb_106(bind)
-"char #{bind[:chr_1]}=RSTRING(ame_gesrc(self))->ptr[ame_getpos(self)];  switch(#{bind[:chr_1]}){"
+"char #{bind[:chr_1]}=RSTRING(ame_getsrc(self))->ptr[ame_getpos(self)];  switch(#{bind[:chr_1]}){"
 end
 def trans_AmethystCTranslatorcb_107(bind)
 bind[:s_1]+="case #{bind[:c_1]}:; #{bind[:t_1]}"
 end
 def trans_AmethystCTranslatorcb_108(bind)
-bind[:s_1]+"case default: goto #{@faillabel};}"
+bind[:s_1]+"default: goto #{@faillabel};}"
 end
 def trans_AmethystCTranslatorcb_11(bind)
 bind[:autovar_2]=[bind[:autovar_2]]

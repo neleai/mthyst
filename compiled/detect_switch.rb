@@ -1,7 +1,6 @@
 def firstchar(s)
-	s=(s[13]==?\ ) ? s[14,2] : s[13,1]
-	puts s.inspect
-	eval(s.inspect)[0]
+	s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
+	eval('"'+s+'"')[0]
 end
 def first(s)
 	if s.is_a? Bind
