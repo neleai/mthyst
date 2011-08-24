@@ -118,7 +118,10 @@ end
 			else
 			end
 		}
-		#tree=Detect_Switch.new.parse(:itrans,tree)
+		puts tree.inspect
+#		tree=Detect_Switch.new.parse(:itrans,tree)
+		tree=Seq_Or_Optimizer.new.parse(:itrans,tree)
+		puts tree.inspect
 		c,init,rb= AmethystCTranslator.new.parse(:itrans,tree)
 		File.open("compiled/#{file2}_c.c","w"){|f|
     f.puts "#include \"cthyst.h\""

@@ -1,3 +1,8 @@
+def firstchar(s)
+	s=(s[13]==?\ ) ? s[13,2] : s[13,1]
+	puts s.inspect
+	eval(s.inspect)[0]
+end
 def first(s)
 	if s.is_a? Bind
 		return first(s.expr)
@@ -8,7 +13,7 @@ def first(s)
 		return a.uniq
 	end
 	if s.is_a?(Apply) && s[0]=="seq"
-		[s[1][0][14].chr]
+		[firstchar(s[1][0])]
 	end
 end
 
@@ -59,7 +64,7 @@ def visit_Detect_Switchcb_7(bind)
 _append(bind[:autovar_1],bind[:autovar_3])
 end
 def visit_Detect_Switchcb_8(bind)
-Switch[{:ary=>bind[:ary2_1].to_a.map{|h,k| [h,Or[{:ary=>k}]]} }]
+Switch[{:ary=>bind[:ary2_1].to_a.map{|h,k| [h,Or[{:ary=>k}]]}}]
 end
 
 end

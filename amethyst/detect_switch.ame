@@ -1,3 +1,8 @@
+def firstchar(s)
+	s=(s[13]==?\ ) ? s[13,2] : s[13,1]
+	puts s.inspect
+	eval(s.inspect)[0]
+end
 def first(s)
 	if s.is_a? Bind
 		return first(s.expr)
@@ -8,7 +13,7 @@ def first(s)
 		return a.uniq
 	end
 	if s.is_a?(Apply) && s[0]=="seq"
-		[s[1][0][14].chr]
+		[firstchar(s[1][0])]
 	end
 end
 
@@ -20,6 +25,6 @@ amethyst Detect_Switch < Traverser {
 	visit = Or[{Hash.new{|h,k|h[k]=[]} }:ary2
 		{puts @self.inspect}
 		(traverse_item:e &{first(e)} {puts e.inspect} { first(e).each{|a| ary2[a]<<e}})*
-		{Switch[{:ary=>ary2.to_a.map{|h,k| [h,Or[{:ary=>k}]]} }]}
+		{Switch[{:ary=>ary2.to_a.map{|h,k| [h,Or[{:ary=>k}]]}}]}
 	]
 }
