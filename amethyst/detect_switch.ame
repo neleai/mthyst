@@ -9,6 +9,11 @@ def first(s)
 	if s.is_a? Bind
 		return first(s.expr)
 	end
+	if s.is_a? Switch
+		a=[]
+		s.ary.each{|k,v| a<<k}
+		return a.uniq
+	end
 	if s.is_a? Or
 		a=[]
 		s.ary.each{|e| 
@@ -18,7 +23,7 @@ def first(s)
 	end
 	if s.is_a?(Apply) && s[0]=="seq"
 		return nil if s[1][0].size==15
-		[firstchar(s[1][0])]
+		return [firstchar(s[1][0])]
 	end
 end
 
@@ -28,9 +33,8 @@ amethyst Detect_Switch < Traverser {
 	root = traverse
 
 	visit = Or[{Hash.new{|h,k|h[k]=[]} }:ary2
-		{puts @self.inspect}
-		(traverse_item:e &{first(e)} {puts e.inspect} { first(e).each{|a| ary2[a]<<e}})*
-		{s=Switch[{:act=>"RSTRING(ame_getsrc(self))->ptr[ame_getpos(self)]",:ary=>ary2.to_a.map{|h,k| [h,Or[{:ary=>k}]]}}];puts s.inspect;s}
+		(traverse_item:e &{first(e)}  { first(e).each{|a| ary2[a]<<e}})*
+		{Switch[{:act=>"RSTRING(ame_getsrc(self))->ptr[ame_getpos(self)]",:ary=>ary2.to_a.map{|h,k| [h,Or[{:ary=>k}]]}}];}
 	]
 }
 

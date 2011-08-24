@@ -9,6 +9,11 @@ def first(s)
 	if s.is_a? Bind
 		return first(s.expr)
 	end
+	if s.is_a? Switch
+		a=[]
+		s.ary.each{|k,v| a<<k}
+		return a.uniq
+	end
 	if s.is_a? Or
 		a=[]
 		s.ary.each{|e| 
@@ -18,7 +23,7 @@ def first(s)
 	end
 	if s.is_a?(Apply) && s[0]=="seq"
 		return nil if s[1][0].size==15
-		[firstchar(s[1][0])]
+		return [firstchar(s[1][0])]
 	end
 end
 
@@ -54,22 +59,16 @@ def visit_Detect_Switchcb_2(bind)
 Hash.new{|h,k|h[k]=[]} 
 end
 def visit_Detect_Switchcb_3(bind)
-puts @src.self.inspect
-end
-def visit_Detect_Switchcb_4(bind)
 (first(bind[:e_1])) || FAIL
 end
-def visit_Detect_Switchcb_5(bind)
-puts bind[:e_1].inspect
-end
-def visit_Detect_Switchcb_6(bind)
+def visit_Detect_Switchcb_4(bind)
 first(bind[:e_1]).each{|a| bind[:ary2_1][a]<<bind[:e_1]}
 end
-def visit_Detect_Switchcb_7(bind)
+def visit_Detect_Switchcb_5(bind)
 _append(bind[:autovar_1],bind[:autovar_3])
 end
-def visit_Detect_Switchcb_8(bind)
-s=Switch[{:act=>"RSTRING(ame_getsrc(self))->ptr[ame_getpos(self)]",:ary=>bind[:ary2_1].to_a.map{|h,k| [h,Or[{:ary=>k}]]}}];puts s.inspect;s
+def visit_Detect_Switchcb_6(bind)
+Switch[{:act=>"RSTRING(ame_getsrc(self))->ptr[ame_getpos(self)]",:ary=>bind[:ary2_1].to_a.map{|h,k| [h,Or[{:ary=>k}]]}}];
 end
 
 end
