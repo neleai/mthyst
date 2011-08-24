@@ -12,11 +12,8 @@ end
 amethyst Detect_Switch < Traverser {
 	root = traverse
 
-	visit = Or[.* {Hash.new{|h,k|h[k]=[]} }:ary2
-		{puts @ary.inspect}
-		{@ary.each{|e| 
-			first(e).each{|a| ary2[a]<<e}
-		}}
+	visit = Or[{Hash.new{|h,k|h[k]=[]} }:ary2
+		(traverse_item:e &{first(e)} {puts e.inspect} { first(e).each{|a| ary2[a]<<e}})*
 		{Switch[{:ary=>ary2.to_a.map{|h,k| [h,Or[{:ary=>k}]]} }]}
 	]
 }

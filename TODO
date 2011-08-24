@@ -46,6 +46,8 @@ saner handling of Locals
 
 generic equality
 
+hashes with different equalization
+
 timestamps for ruby/c files
 
-hashes with different equalization
+iterative dataflow
