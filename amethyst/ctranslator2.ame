@@ -121,9 +121,9 @@ ame_setsrc(self,#{bget(@var.desc)}); ame_setpos(self,0); ame_setlen(self,FIX2INT
 " }
 					]
 				| Switch[ label("chr"):chr 
-									{"char #{chr}=RSTRING(ame_gesrc(self))->ptr[ame_getpos(self)];  switch(#{chr}){"}:s
+									{"char #{chr}=RSTRING(ame_getsrc(self))->ptr[ame_getpos(self)];  switch(#{chr}){"}:s
 										( .:c trans:t {s+="case #{c}:; #{t}"})*
-									{s+"case default: goto #{@@faillabel};}"}
+									{s+"default: goto #{@@faillabel};}"}
 								]
 
 	
