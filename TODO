@@ -1,5 +1,3 @@
-represent tree as control flow graph
-transform this flow graph to SSA form
 implicit variables
 persistence
 optimizer simplifying =>[ ] to []
@@ -29,26 +27,17 @@ rewrite using backtracking,repeat until...
 
 initialize parse by Pass
 
-directly call istead rb_funcall
-
 switch and predication by constant propagation
 
 treat super like renamed rule
 
-log times of compilation
-
 dont duplicate rules that dont refer to overwritten rule
-
-parse acts after parser finishes
-detect numbers as cacts(they dont join to single string)
 
 saner handling of Locals
 
 generic equality
 
 hashes with different equalization
-
-timestamps for ruby/c files
 
 iterative dataflow
 
