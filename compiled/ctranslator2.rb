@@ -98,7 +98,7 @@ def rbcode_AmethystCTranslatorcb_1(bind)
 "class #{@grammar} < #{@parent}\n"
 end
 def rbcode_AmethystCTranslatorcb_2(bind)
-bind[:s_1]<<@defs*"\n"
+bind[:s_1]<<@defs*"\n";bind[:s_1]<<"\n"
 end
 def rbcode_AmethystCTranslatorcb_3(bind)
 @callbacks.to_a.sort
