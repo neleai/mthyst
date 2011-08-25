@@ -122,9 +122,13 @@ class Detect_ClasSwitch < Traverser
 	end
 	def classswitch(ary)
 		@no=(@no||0)+1
-		rb="def switchcb#{@no}(e)\n"
-		ary.each_with_index{|c,i| rb<< "return #{i} if e.is_a?(#{c})\n"}
-		rb+="return #{ary.size}\nend"
+		rb="def self.switchcb_#{@no}(e)\n"
+		ary.each_with_index{|c,i| rb<< "return #{i} if e<=#{c}\n"}
+		rb+="return #{ary.size}\nend\n"
+		rb+="@@switchhash#{@no}=Hash.new{|h,k| h[k]=switchcb_#{@no}(k)}\n"
+		rb+="def switchcb#{@no}(e)\n"
+		rb+="@@switchhash#{@no}[e.class]\n"
+		rb+="end"
 		[rb, "FIX2INT(CALL(switchcb#{@no},1,ame_curobj(self)))"]
 	end
 	def topsort(a)

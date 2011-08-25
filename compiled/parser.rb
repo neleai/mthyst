@@ -18,10 +18,14 @@ def connectstring(ary)
 end
 
 class AmethystParser < Amethyst
-def switchcb1(e)
-return 0 if e.is_a?(Args)
-return 1 if e.is_a?(Object)
+def self.switchcb_1(e)
+return 0 if e<=Args
+return 1 if e<=Object
 return 2
+end
+@@switchhash1=Hash.new{|h,k| h[k]=switchcb_1(k)}
+def switchcb1(e)
+@@switchhash1[e.class]
 end
 def __AmethystParsercb_1(bind)
 /[\s\t\r\n\f]/

@@ -46,35 +46,43 @@ class AmethystCTranslator < Amethyst
 end
 
 class AmethystCTranslator < Amethyst
-def switchcb1(e)
-return 0 if e.is_a?(Local)
-return 1 if e.is_a?(Args)
-return 2 if e.is_a?(Array)
-return 3 if e.is_a?(Strin)
-return 4 if e.is_a?(Key)
-return 5 if e.is_a?(Global)
-return 6 if e.is_a?(Exp)
-return 7 if e.is_a?(Object)
+def self.switchcb_1(e)
+return 0 if e<=Local
+return 1 if e<=Args
+return 2 if e<=Array
+return 3 if e<=Strin
+return 4 if e<=Key
+return 5 if e<=Global
+return 6 if e<=Exp
+return 7 if e<=Object
 return 8
 end
-def switchcb2(e)
-return 0 if e.is_a?(Cut)
-return 1 if e.is_a?(Local)
-return 2 if e.is_a?(Or)
-return 3 if e.is_a?(Stop)
-return 4 if e.is_a?(Lookahead)
-return 5 if e.is_a?(Rule)
-return 6 if e.is_a?(CAct)
-return 7 if e.is_a?(Grammar)
-return 8 if e.is_a?(Act)
-return 9 if e.is_a?(Apply)
-return 10 if e.is_a?(Bind)
-return 11 if e.is_a?(Result)
-return 12 if e.is_a?(Pass)
-return 13 if e.is_a?(Seq)
-return 14 if e.is_a?(Many)
-return 15 if e.is_a?(Switch)
+@@switchhash1=Hash.new{|h,k| h[k]=switchcb_1(k)}
+def switchcb1(e)
+@@switchhash1[e.class]
+end
+def self.switchcb_2(e)
+return 0 if e<=Cut
+return 1 if e<=Local
+return 2 if e<=Or
+return 3 if e<=Stop
+return 4 if e<=Lookahead
+return 5 if e<=Rule
+return 6 if e<=CAct
+return 7 if e<=Grammar
+return 8 if e<=Act
+return 9 if e<=Apply
+return 10 if e<=Bind
+return 11 if e<=Result
+return 12 if e<=Pass
+return 13 if e<=Seq
+return 14 if e<=Many
+return 15 if e<=Switch
 return 16
+end
+@@switchhash2=Hash.new{|h,k| h[k]=switchcb_2(k)}
+def switchcb2(e)
+@@switchhash2[e.class]
 end
 def addcallback_AmethystCTranslatorcb_1(bind)
 bind[:autovar_1]=[bind[:autovar_1]]

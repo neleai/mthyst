@@ -59,28 +59,36 @@ class Local
 end
 
 class Dataflow < Traverser
-def switchcb1(e)
-return 0 if e.is_a?(Or)
-return 1 if e.is_a?(Apply)
-return 2 if e.is_a?(Act)
-return 3 if e.is_a?(Bind)
-return 4 if e.is_a?(Result)
-return 5 if e.is_a?(Pass)
-return 6 if e.is_a?(Many)
+def self.switchcb_1(e)
+return 0 if e<=Or
+return 1 if e<=Apply
+return 2 if e<=Act
+return 3 if e<=Bind
+return 4 if e<=Result
+return 5 if e<=Pass
+return 6 if e<=Many
 return 7
 end
-def switchcb2(e)
-return 0 if e.is_a?(Global)
-return 1 if e.is_a?(Act)
-return 2 if e.is_a?(CAct)
-return 3 if e.is_a?(Key)
-return 4 if e.is_a?(Result)
-return 5 if e.is_a?(Strin)
-return 6 if e.is_a?(Args)
-return 7 if e.is_a?(Bind)
-return 8 if e.is_a?(Local)
-return 9 if e.is_a?(Object)
+@@switchhash1=Hash.new{|h,k| h[k]=switchcb_1(k)}
+def switchcb1(e)
+@@switchhash1[e.class]
+end
+def self.switchcb_2(e)
+return 0 if e<=Global
+return 1 if e<=Act
+return 2 if e<=CAct
+return 3 if e<=Key
+return 4 if e<=Result
+return 5 if e<=Strin
+return 6 if e<=Args
+return 7 if e<=Bind
+return 8 if e<=Local
+return 9 if e<=Object
 return 10
+end
+@@switchhash2=Hash.new{|h,k| h[k]=switchcb_2(k)}
+def switchcb2(e)
+@@switchhash2[e.class]
 end
 def clas_Dataflowcb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
@@ -321,31 +329,47 @@ end
 
 
 class Dead_Code_Deleter3 < Traverser
-def switchcb4(e)
-return 0 if e.is_a?(Local)
-return 1 if e.is_a?(CAct)
-return 2 if e.is_a?(Act)
-return 3 if e.is_a?(Result)
-return 4 if e.is_a?(Bind)
+def self.switchcb_4(e)
+return 0 if e<=Local
+return 1 if e<=CAct
+return 2 if e<=Act
+return 3 if e<=Result
+return 4 if e<=Bind
 return 5
 end
-def switchcb3(e)
-return 0 if e.is_a?(CAct)
-return 1 if e.is_a?(Act)
-return 2 if e.is_a?(Result)
+@@switchhash4=Hash.new{|h,k| h[k]=switchcb_4(k)}
+def switchcb4(e)
+@@switchhash4[e.class]
+end
+def self.switchcb_3(e)
+return 0 if e<=CAct
+return 1 if e<=Act
+return 2 if e<=Result
 return 3
 end
+@@switchhash3=Hash.new{|h,k| h[k]=switchcb_3(k)}
 def switchcb3(e)
-return 0 if e.is_a?(CAct)
-return 1 if e.is_a?(Act)
-return 2 if e.is_a?(Result)
+@@switchhash3[e.class]
+end
+def self.switchcb_3(e)
+return 0 if e<=CAct
+return 1 if e<=Act
+return 2 if e<=Result
 return 3
 end
+@@switchhash3=Hash.new{|h,k| h[k]=switchcb_3(k)}
 def switchcb3(e)
-return 0 if e.is_a?(CAct)
-return 1 if e.is_a?(Act)
-return 2 if e.is_a?(Result)
+@@switchhash3[e.class]
+end
+def self.switchcb_3(e)
+return 0 if e<=CAct
+return 1 if e<=Act
+return 2 if e<=Result
 return 3
+end
+@@switchhash3=Hash.new{|h,k| h[k]=switchcb_3(k)}
+def switchcb3(e)
+@@switchhash3[e.class]
 end
 def clas_Dead_Code_Deleter3cb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL

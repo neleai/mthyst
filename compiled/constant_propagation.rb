@@ -1,9 +1,13 @@
 class Constant_Traverser < Traverser
-def switchcb1(e)
-return 0 if e.is_a?(Local)
-return 1 if e.is_a?(Bind)
-return 2 if e.is_a?(Act)
+def self.switchcb_1(e)
+return 0 if e<=Local
+return 1 if e<=Bind
+return 2 if e<=Act
 return 3
+end
+@@switchhash1=Hash.new{|h,k| h[k]=switchcb_1(k)}
+def switchcb1(e)
+@@switchhash1[e.class]
 end
 def clas_Constant_Traversercb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL

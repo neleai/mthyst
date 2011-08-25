@@ -1,15 +1,23 @@
 
 class Seq_Or_Optimizer < Traverser
-def switchcb1(e)
-return 0 if e.is_a?(Or)
-return 1 if e.is_a?(Apply)
-return 2 if e.is_a?(Seq)
+def self.switchcb_1(e)
+return 0 if e<=Or
+return 1 if e<=Apply
+return 2 if e<=Seq
 return 3
 end
-def switchcb2(e)
-return 0 if e.is_a?(Grammar)
-return 1 if e.is_a?(Object)
+@@switchhash1=Hash.new{|h,k| h[k]=switchcb_1(k)}
+def switchcb1(e)
+@@switchhash1[e.class]
+end
+def self.switchcb_2(e)
+return 0 if e<=Grammar
+return 1 if e<=Object
 return 2
+end
+@@switchhash2=Hash.new{|h,k| h[k]=switchcb_2(k)}
+def switchcb2(e)
+@@switchhash2[e.class]
 end
 def clas_Seq_Or_Optimizercb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL

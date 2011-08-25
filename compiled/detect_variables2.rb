@@ -1,20 +1,32 @@
 class Analyze_Variables2 < Traverser
-def switchcb1(e)
-return 0 if e.is_a?(Args)
-return 1 if e.is_a?(Act)
-return 2 if e.is_a?(Result)
+def self.switchcb_1(e)
+return 0 if e<=Args
+return 1 if e<=Act
+return 2 if e<=Result
 return 3
 end
-def switchcb2(e)
-return 0 if e.is_a?(Grammar)
-return 1 if e.is_a?(Object)
+@@switchhash1=Hash.new{|h,k| h[k]=switchcb_1(k)}
+def switchcb1(e)
+@@switchhash1[e.class]
+end
+def self.switchcb_2(e)
+return 0 if e<=Grammar
+return 1 if e<=Object
 return 2
 end
-def switchcb3(e)
-return 0 if e.is_a?(Args)
-return 1 if e.is_a?(Strin)
-return 2 if e.is_a?(Object)
+@@switchhash2=Hash.new{|h,k| h[k]=switchcb_2(k)}
+def switchcb2(e)
+@@switchhash2[e.class]
+end
+def self.switchcb_3(e)
+return 0 if e<=Args
+return 1 if e<=Strin
+return 2 if e<=Object
 return 3
+end
+@@switchhash3=Hash.new{|h,k| h[k]=switchcb_3(k)}
+def switchcb3(e)
+@@switchhash3[e.class]
 end
 def clas_Analyze_Variables2cb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL

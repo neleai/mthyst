@@ -1,24 +1,32 @@
 class Dead_Code_Detector2 < Traverser
-def switchcb1(e)
-return 0 if e.is_a?(Apply)
-return 1 if e.is_a?(Act)
-return 2 if e.is_a?(Bind)
-return 3 if e.is_a?(Result)
-return 4 if e.is_a?(Pass)
-return 5 if e.is_a?(Many)
+def self.switchcb_1(e)
+return 0 if e<=Apply
+return 1 if e<=Act
+return 2 if e<=Bind
+return 3 if e<=Result
+return 4 if e<=Pass
+return 5 if e<=Many
 return 6
 end
-def switchcb2(e)
-return 0 if e.is_a?(Global)
-return 1 if e.is_a?(Act)
-return 2 if e.is_a?(Key)
-return 3 if e.is_a?(Result)
-return 4 if e.is_a?(Strin)
-return 5 if e.is_a?(Args)
-return 6 if e.is_a?(Bind)
-return 7 if e.is_a?(Local)
-return 8 if e.is_a?(Object)
+@@switchhash1=Hash.new{|h,k| h[k]=switchcb_1(k)}
+def switchcb1(e)
+@@switchhash1[e.class]
+end
+def self.switchcb_2(e)
+return 0 if e<=Global
+return 1 if e<=Act
+return 2 if e<=Key
+return 3 if e<=Result
+return 4 if e<=Strin
+return 5 if e<=Args
+return 6 if e<=Bind
+return 7 if e<=Local
+return 8 if e<=Object
 return 9
+end
+@@switchhash2=Hash.new{|h,k| h[k]=switchcb_2(k)}
+def switchcb2(e)
+@@switchhash2[e.class]
 end
 def clas_Dead_Code_Detector2cb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
@@ -235,12 +243,16 @@ end
 
 
 class Dead_Code_Deleter2 < Traverser
-def switchcb3(e)
-return 0 if e.is_a?(Local)
-return 1 if e.is_a?(Act)
-return 2 if e.is_a?(Bind)
-return 3 if e.is_a?(Result)
+def self.switchcb_3(e)
+return 0 if e<=Local
+return 1 if e<=Act
+return 2 if e<=Bind
+return 3 if e<=Result
 return 4
+end
+@@switchhash3=Hash.new{|h,k| h[k]=switchcb_3(k)}
+def switchcb3(e)
+@@switchhash3[e.class]
 end
 def clas_Dead_Code_Deleter2cb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
@@ -484,19 +496,27 @@ end
 
 
 class Move_Assignments2 < Traverser
-def switchcb4(e)
-return 0 if e.is_a?(Or)
-return 1 if e.is_a?(Seq)
-return 2 if e.is_a?(Pass)
-return 3 if e.is_a?(Object)
+def self.switchcb_4(e)
+return 0 if e<=Or
+return 1 if e<=Seq
+return 2 if e<=Pass
+return 3 if e<=Object
 return 4
 end
-def switchcb5(e)
-return 0 if e.is_a?(Or)
-return 1 if e.is_a?(Seq)
-return 2 if e.is_a?(Pass)
-return 3 if e.is_a?(Object)
+@@switchhash4=Hash.new{|h,k| h[k]=switchcb_4(k)}
+def switchcb4(e)
+@@switchhash4[e.class]
+end
+def self.switchcb_5(e)
+return 0 if e<=Or
+return 1 if e<=Seq
+return 2 if e<=Pass
+return 3 if e<=Object
 return 4
+end
+@@switchhash5=Hash.new{|h,k| h[k]=switchcb_5(k)}
+def switchcb5(e)
+@@switchhash5[e.class]
 end
 def clas_Move_Assignments2cb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
