@@ -763,7 +763,7 @@ return it;
 fail: return failobj; }
 VALUE AmethystParser_procargs2(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-int oldpos1=ame_getpos(self);
+char chr1=FIX2INT(CALL(switchcb1,1,ame_curobj(self)));  switch(chr1){case 0:; int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   it=CALL(procargs2_AmethystParsercb_1,1,bind);  arg0=it; it=AmethystParser_clas(self ,arg0); FAILTEST(alt1_2);
  BSET(autovar_1,it); int oldpos2=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
@@ -786,7 +786,30 @@ alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
 ISET(cut,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=BGET(_result_1);
+ break;case 1:; int oldpos4=ame_getpos(self);
+alt2_1: ame_setpos(self,oldpos4);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
+  it=CALL(procargs2_AmethystParsercb_4,1,bind);  arg0=it; it=AmethystParser_clas(self ,arg0); FAILTEST(alt2_2);
+ BSET(autovar_1,it); int oldpos5=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
+ame_setsrc(self,BGET(autovar_1)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
+ it=rb_ary_new3(0);
+ BSET(autovar_2,it); int oldpos6; while(1){oldpos6=ame_getpos(self);   it=AmethystParser_procargs2(self ); FAILTEST(break2);
+ BSET(autovar_3,it); it=CALL(procargs2_AmethystParsercb_5,1,bind);  if (IGET(stop)!=Qnil){{oldpos6=ame_getpos(self);goto break2;} } } break2: ISET(stop,Qnil);  ame_setpos(self,oldpos6); it=BGET(autovar_2);
+ BSET(_result_1,it); 
+	if (CALL(eof,0)==failobj) goto pass2;
+	goto success2;
+	pass2: fail2=1;
+	success2: ame_setsrc(self,oldsrc2); ame_setpos(self,oldpos5); ame_setlen(self,oldlen2);
+	if(fail2) goto alt2_2;
+ 
+ISET(cut,Qnil);goto accept2;
+alt2_2: ame_setpos(self,oldpos4);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
+   it=AmethystCore_anything(self ); FAILTEST(alt2_3);
+ BSET(a_1,it); it=CALL(procargs2_AmethystParsercb_6,1,bind); 
+ BSET(_result_1,it);  
+ISET(cut,Qnil);goto accept2;
+  alt2_3:  ame_setpos(self,oldpos4); goto fail;
+ accept2:;
+ break;default: goto fail;}it=BGET(_result_1);
 return it;
 fail: return failobj; }
 VALUE AmethystParser_regch(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=rb_hash_new(); BSET(regex_1,a0); int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -1185,4 +1208,4 @@ rb_define_method(cls_AmethystParser,"spaces",AmethystParser_spaces,0);
 rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
 rb_define_method(cls_AmethystParser,"token",AmethystParser_token,1);
 rb_define_method(cls_AmethystParser,"upper",AmethystParser_upper,0);
- rb_eval_string("testversion('7edd769660a4ddcd59b44dbdc9570633')");}
+ rb_eval_string("testversion('07f67a40ade56421a8f53214428210d4')");}

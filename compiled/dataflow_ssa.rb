@@ -69,6 +69,19 @@ return 5 if e.is_a?(Pass)
 return 6 if e.is_a?(Result)
 return 7
 end
+def switchcb2(e)
+return 0 if e.is_a?(Act)
+return 1 if e.is_a?(Args)
+return 2 if e.is_a?(Bind)
+return 3 if e.is_a?(CAct)
+return 4 if e.is_a?(Global)
+return 5 if e.is_a?(Key)
+return 6 if e.is_a?(Local)
+return 7 if e.is_a?(Object)
+return 8 if e.is_a?(Result)
+return 9 if e.is_a?(Strin)
+return 10
+end
 def clas_Dataflowcb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
@@ -130,88 +143,172 @@ def vars_in_Dataflowcb_1(bind)
 bind[:ary_1]=[]
 end
 def vars_in_Dataflowcb_10(bind)
-@src.self
+_append(bind[:ary_1],bind[:autovar_7])
 end
 def vars_in_Dataflowcb_11(bind)
-_append(bind[:ary_1],bind[:autovar_6])
+CAct
 end
 def vars_in_Dataflowcb_12(bind)
-Key
+@src.self
 end
 def vars_in_Dataflowcb_13(bind)
-@src.self
+_append(bind[:ary_1],bind[:autovar_9])
 end
 def vars_in_Dataflowcb_14(bind)
-_append(bind[:ary_1],bind[:autovar_8])
-end
-def vars_in_Dataflowcb_15(bind)
-@marked<<@src.self
-end
-def vars_in_Dataflowcb_16(bind)
-Result
-end
-def vars_in_Dataflowcb_17(bind)
-@src.self
-end
-def vars_in_Dataflowcb_18(bind)
-_append(bind[:ary_1],bind[:autovar_10])
-end
-def vars_in_Dataflowcb_19(bind)
-Strin
-end
-def vars_in_Dataflowcb_2(bind)
 Global
 end
-def vars_in_Dataflowcb_20(bind)
-_append(bind[:ary_1],bind[:autovar_12])
-end
-def vars_in_Dataflowcb_21(bind)
-Args
-end
-def vars_in_Dataflowcb_22(bind)
-_append(bind[:ary_1],bind[:autovar_14])
-end
-def vars_in_Dataflowcb_23(bind)
-Bind
-end
-def vars_in_Dataflowcb_24(bind)
-@src.name
-end
-def vars_in_Dataflowcb_25(bind)
-bind[:autovar_16]=[bind[:autovar_16]]
-end
-def vars_in_Dataflowcb_26(bind)
-_append(bind[:ary_1],bind[:autovar_17])
-end
-def vars_in_Dataflowcb_27(bind)
-Local
-end
-def vars_in_Dataflowcb_28(bind)
+def vars_in_Dataflowcb_15(bind)
 @src.self
 end
+def vars_in_Dataflowcb_16(bind)
+_append(bind[:ary_1],bind[:autovar_11])
+end
+def vars_in_Dataflowcb_17(bind)
+@marked<<@src.self
+end
+def vars_in_Dataflowcb_18(bind)
+Key
+end
+def vars_in_Dataflowcb_19(bind)
+@src.self
+end
+def vars_in_Dataflowcb_2(bind)
+Act
+end
+def vars_in_Dataflowcb_20(bind)
+_append(bind[:ary_1],bind[:autovar_13])
+end
+def vars_in_Dataflowcb_21(bind)
+@marked<<@src.self
+end
+def vars_in_Dataflowcb_22(bind)
+Local
+end
+def vars_in_Dataflowcb_23(bind)
+@src.self
+end
+def vars_in_Dataflowcb_24(bind)
+_append(bind[:ary_1],bind[:autovar_15])
+end
+def vars_in_Dataflowcb_25(bind)
+Global
+end
+def vars_in_Dataflowcb_26(bind)
+@src.self
+end
+def vars_in_Dataflowcb_27(bind)
+_append(bind[:ary_1],bind[:autovar_11])
+end
+def vars_in_Dataflowcb_28(bind)
+@marked<<@src.self
+end
 def vars_in_Dataflowcb_29(bind)
-_append(bind[:ary_1],bind[:autovar_19])
+Act
 end
 def vars_in_Dataflowcb_3(bind)
 @src.self
 end
+def vars_in_Dataflowcb_30(bind)
+@src.self
+end
+def vars_in_Dataflowcb_31(bind)
+_append(bind[:ary_1],bind[:autovar_2])
+end
+def vars_in_Dataflowcb_32(bind)
+CAct
+end
+def vars_in_Dataflowcb_33(bind)
+@src.self
+end
+def vars_in_Dataflowcb_34(bind)
+_append(bind[:ary_1],bind[:autovar_9])
+end
+def vars_in_Dataflowcb_35(bind)
+Key
+end
+def vars_in_Dataflowcb_36(bind)
+@src.self
+end
+def vars_in_Dataflowcb_37(bind)
+_append(bind[:ary_1],bind[:autovar_13])
+end
+def vars_in_Dataflowcb_38(bind)
+@marked<<@src.self
+end
+def vars_in_Dataflowcb_39(bind)
+Result
+end
 def vars_in_Dataflowcb_4(bind)
 _append(bind[:ary_1],bind[:autovar_2])
 end
-def vars_in_Dataflowcb_5(bind)
-@marked<<@src.self
-end
-def vars_in_Dataflowcb_6(bind)
-Act
-end
-def vars_in_Dataflowcb_7(bind)
+def vars_in_Dataflowcb_40(bind)
 @src.self
 end
-def vars_in_Dataflowcb_8(bind)
+def vars_in_Dataflowcb_41(bind)
+_append(bind[:ary_1],bind[:autovar_17])
+end
+def vars_in_Dataflowcb_42(bind)
+Strin
+end
+def vars_in_Dataflowcb_43(bind)
+_append(bind[:ary_1],bind[:autovar_19])
+end
+def vars_in_Dataflowcb_44(bind)
+Args
+end
+def vars_in_Dataflowcb_45(bind)
 _append(bind[:ary_1],bind[:autovar_4])
 end
+def vars_in_Dataflowcb_46(bind)
+Bind
+end
+def vars_in_Dataflowcb_47(bind)
+@src.name
+end
+def vars_in_Dataflowcb_48(bind)
+bind[:autovar_6]=[bind[:autovar_6]]
+end
+def vars_in_Dataflowcb_49(bind)
+_append(bind[:ary_1],bind[:autovar_7])
+end
+def vars_in_Dataflowcb_5(bind)
+Args
+end
+def vars_in_Dataflowcb_50(bind)
+Local
+end
+def vars_in_Dataflowcb_51(bind)
+@src.self
+end
+def vars_in_Dataflowcb_52(bind)
+_append(bind[:ary_1],bind[:autovar_15])
+end
+def vars_in_Dataflowcb_53(bind)
+Result
+end
+def vars_in_Dataflowcb_54(bind)
+@src.self
+end
+def vars_in_Dataflowcb_55(bind)
+_append(bind[:ary_1],bind[:autovar_17])
+end
+def vars_in_Dataflowcb_56(bind)
+Strin
+end
+def vars_in_Dataflowcb_57(bind)
+_append(bind[:ary_1],bind[:autovar_19])
+end
+def vars_in_Dataflowcb_6(bind)
+_append(bind[:ary_1],bind[:autovar_4])
+end
+def vars_in_Dataflowcb_7(bind)
+Bind
+end
+def vars_in_Dataflowcb_8(bind)
+@src.name
+end
 def vars_in_Dataflowcb_9(bind)
-CAct
+bind[:autovar_6]=[bind[:autovar_6]]
 end
 def visit_Dataflowcb_1(bind)
 Act
@@ -308,7 +405,7 @@ end
 
 
 class Dead_Code_Deleter3 < Traverser
-def switchcb3(e)
+def switchcb4(e)
 return 0 if e.is_a?(Act)
 return 1 if e.is_a?(Bind)
 return 2 if e.is_a?(CAct)
@@ -316,19 +413,19 @@ return 3 if e.is_a?(Local)
 return 4 if e.is_a?(Result)
 return 5
 end
-def switchcb2(e)
+def switchcb3(e)
 return 0 if e.is_a?(Act)
 return 1 if e.is_a?(CAct)
 return 2 if e.is_a?(Result)
 return 3
 end
-def switchcb2(e)
+def switchcb3(e)
 return 0 if e.is_a?(Act)
 return 1 if e.is_a?(CAct)
 return 2 if e.is_a?(Result)
 return 3
 end
-def switchcb2(e)
+def switchcb3(e)
 return 0 if e.is_a?(Act)
 return 1 if e.is_a?(CAct)
 return 2 if e.is_a?(Result)
@@ -455,6 +552,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='feb7754cfd9d21e24e28b80ee525b03b'
+ raise "invalid version" if r!='cf7bc37f5cdd3e94e63d6dc15e39a065'
 end
   require 'compiled/dataflow_ssa_c'

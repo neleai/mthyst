@@ -18,7 +18,11 @@ def connectstring(ary)
 end
 
 class AmethystParser < Amethyst
-
+def switchcb1(e)
+return 0 if e.is_a?(Args)
+return 1 if e.is_a?(Object)
+return 2
+end
 def __AmethystParsercb_1(bind)
 /[\s\t\r\n\f]/
 end
@@ -283,6 +287,15 @@ end
 def procargs2_AmethystParsercb_3(bind)
 @tmp<<bind[:a_1]
 end
+def procargs2_AmethystParsercb_4(bind)
+Args
+end
+def procargs2_AmethystParsercb_5(bind)
+_append(bind[:autovar_2],bind[:autovar_3])
+end
+def procargs2_AmethystParsercb_6(bind)
+@tmp<<bind[:a_1]
+end
 def procargs_AmethystParsercb_1(bind)
 @ary=[];@tmp=[]
 end
@@ -450,6 +463,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='7edd769660a4ddcd59b44dbdc9570633'
+ raise "invalid version" if r!='07f67a40ade56421a8f53214428210d4'
 end
   require 'compiled/parser_c'

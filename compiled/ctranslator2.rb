@@ -47,6 +47,17 @@ end
 
 class AmethystCTranslator < Amethyst
 def switchcb1(e)
+return 0 if e.is_a?(Args)
+return 1 if e.is_a?(Array)
+return 2 if e.is_a?(Exp)
+return 3 if e.is_a?(Global)
+return 4 if e.is_a?(Key)
+return 5 if e.is_a?(Local)
+return 6 if e.is_a?(Object)
+return 7 if e.is_a?(Strin)
+return 8
+end
+def switchcb2(e)
 return 0 if e.is_a?(Act)
 return 1 if e.is_a?(Apply)
 return 2 if e.is_a?(Bind)
@@ -138,55 +149,106 @@ def rbcode_AmethystCTranslatorcb_8(bind)
 bind[:s_1]+="\nend"; bind[:s_1]
 end
 def rbtrans_AmethystCTranslatorcb_1(bind)
-Local
-end
-def rbtrans_AmethystCTranslatorcb_10(bind)
-_append(bind[:autovar_9],bind[:autovar_10])
-end
-def rbtrans_AmethystCTranslatorcb_11(bind)
-bind[:a_1]*""
-end
-def rbtrans_AmethystCTranslatorcb_12(bind)
-Key
-end
-def rbtrans_AmethystCTranslatorcb_13(bind)
-@src.name
-end
-def rbtrans_AmethystCTranslatorcb_14(bind)
-"@src.#{bind[:name_1]}"
-end
-def rbtrans_AmethystCTranslatorcb_15(bind)
-Global
-end
-def rbtrans_AmethystCTranslatorcb_16(bind)
-"@#{bind[:name_1]}"
-end
-def rbtrans_AmethystCTranslatorcb_17(bind)
-Exp
-end
-def rbtrans_AmethystCTranslatorcb_2(bind)
-"bind[:#{@src.desc}]"
-end
-def rbtrans_AmethystCTranslatorcb_3(bind)
 Args
 end
-def rbtrans_AmethystCTranslatorcb_4(bind)
-_append(bind[:autovar_3],bind[:autovar_4])
+def rbtrans_AmethystCTranslatorcb_10(bind)
+Key
 end
-def rbtrans_AmethystCTranslatorcb_5(bind)
+def rbtrans_AmethystCTranslatorcb_11(bind)
+@src.name
+end
+def rbtrans_AmethystCTranslatorcb_12(bind)
+"@src.#{bind[:name_1]}"
+end
+def rbtrans_AmethystCTranslatorcb_13(bind)
+Local
+end
+def rbtrans_AmethystCTranslatorcb_14(bind)
+"bind[:#{@src.desc}]"
+end
+def rbtrans_AmethystCTranslatorcb_15(bind)
+Local
+end
+def rbtrans_AmethystCTranslatorcb_16(bind)
+"bind[:#{@src.desc}]"
+end
+def rbtrans_AmethystCTranslatorcb_17(bind)
+Args
+end
+def rbtrans_AmethystCTranslatorcb_18(bind)
+_append(bind[:autovar_2],bind[:autovar_3])
+end
+def rbtrans_AmethystCTranslatorcb_19(bind)
 bind[:a_1]*""
 end
-def rbtrans_AmethystCTranslatorcb_6(bind)
+def rbtrans_AmethystCTranslatorcb_2(bind)
+_append(bind[:autovar_2],bind[:autovar_3])
+end
+def rbtrans_AmethystCTranslatorcb_20(bind)
 Array
 end
-def rbtrans_AmethystCTranslatorcb_7(bind)
-_append(bind[:autovar_6],bind[:autovar_7])
+def rbtrans_AmethystCTranslatorcb_21(bind)
+_append(bind[:autovar_5],bind[:autovar_6])
 end
-def rbtrans_AmethystCTranslatorcb_8(bind)
+def rbtrans_AmethystCTranslatorcb_22(bind)
 bind[:a_1]*""
 end
-def rbtrans_AmethystCTranslatorcb_9(bind)
+def rbtrans_AmethystCTranslatorcb_23(bind)
 Strin
+end
+def rbtrans_AmethystCTranslatorcb_24(bind)
+_append(bind[:autovar_12],bind[:autovar_13])
+end
+def rbtrans_AmethystCTranslatorcb_25(bind)
+bind[:a_1]*""
+end
+def rbtrans_AmethystCTranslatorcb_26(bind)
+Key
+end
+def rbtrans_AmethystCTranslatorcb_27(bind)
+@src.name
+end
+def rbtrans_AmethystCTranslatorcb_28(bind)
+"@src.#{bind[:name_1]}"
+end
+def rbtrans_AmethystCTranslatorcb_29(bind)
+Global
+end
+def rbtrans_AmethystCTranslatorcb_3(bind)
+bind[:a_1]*""
+end
+def rbtrans_AmethystCTranslatorcb_30(bind)
+"@#{bind[:name_1]}"
+end
+def rbtrans_AmethystCTranslatorcb_31(bind)
+Exp
+end
+def rbtrans_AmethystCTranslatorcb_32(bind)
+Strin
+end
+def rbtrans_AmethystCTranslatorcb_33(bind)
+_append(bind[:autovar_12],bind[:autovar_13])
+end
+def rbtrans_AmethystCTranslatorcb_34(bind)
+bind[:a_1]*""
+end
+def rbtrans_AmethystCTranslatorcb_4(bind)
+Array
+end
+def rbtrans_AmethystCTranslatorcb_5(bind)
+_append(bind[:autovar_5],bind[:autovar_6])
+end
+def rbtrans_AmethystCTranslatorcb_6(bind)
+bind[:a_1]*""
+end
+def rbtrans_AmethystCTranslatorcb_7(bind)
+Exp
+end
+def rbtrans_AmethystCTranslatorcb_8(bind)
+Global
+end
+def rbtrans_AmethystCTranslatorcb_9(bind)
+"@#{bind[:name_1]}"
 end
 def rw_AmethystCTranslatorcb_1(bind)
 @faillabel
@@ -518,6 +580,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='f48d870c229e840279dd2a14d001677f'
+ raise "invalid version" if r!='273113a68f8c7383c2352e21aa932bfe'
 end
   require 'compiled/ctranslator2_c'
