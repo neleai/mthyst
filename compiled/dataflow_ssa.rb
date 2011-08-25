@@ -308,23 +308,31 @@ end
 
 
 class Dead_Code_Deleter3 < Traverser
+def switchcb3(e)
+return 0 if e.is_a?(Act)
+return 1 if e.is_a?(Bind)
+return 2 if e.is_a?(CAct)
+return 3 if e.is_a?(Local)
+return 4 if e.is_a?(Result)
+return 5
+end
 def switchcb2(e)
 return 0 if e.is_a?(Act)
 return 1 if e.is_a?(CAct)
 return 2 if e.is_a?(Result)
 return 3
 end
-def switchcb3(e)
+def switchcb2(e)
 return 0 if e.is_a?(Act)
-return 1
+return 1 if e.is_a?(CAct)
+return 2 if e.is_a?(Result)
+return 3
 end
-def switchcb4(e)
-return 0 if e.is_a?(CAct)
-return 1
-end
-def switchcb5(e)
-return 0 if e.is_a?(Result)
-return 1
+def switchcb2(e)
+return 0 if e.is_a?(Act)
+return 1 if e.is_a?(CAct)
+return 2 if e.is_a?(Result)
+return 3
 end
 def clas_Dead_Code_Deleter3cb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
@@ -378,16 +386,46 @@ def visit_Dead_Code_Deleter3cb_1(bind)
 Act
 end
 def visit_Dead_Code_Deleter3cb_10(bind)
-Local
+Act
 end
 def visit_Dead_Code_Deleter3cb_11(bind)
-@src.self
+CAct
 end
 def visit_Dead_Code_Deleter3cb_12(bind)
+Result
+end
+def visit_Dead_Code_Deleter3cb_13(bind)
+@src.self
+end
+def visit_Dead_Code_Deleter3cb_14(bind)
+@reachable[bind[:this_1]] ? bind[:this_1] : Act[]
+end
+def visit_Dead_Code_Deleter3cb_15(bind)
+Local
+end
+def visit_Dead_Code_Deleter3cb_16(bind)
+@src.self
+end
+def visit_Dead_Code_Deleter3cb_17(bind)
 @reachable[bind[:this_1].ssaname] ? bind[:this_1] : Act[]
+end
+def visit_Dead_Code_Deleter3cb_18(bind)
+Act
+end
+def visit_Dead_Code_Deleter3cb_19(bind)
+CAct
 end
 def visit_Dead_Code_Deleter3cb_2(bind)
 CAct
+end
+def visit_Dead_Code_Deleter3cb_20(bind)
+Result
+end
+def visit_Dead_Code_Deleter3cb_21(bind)
+@src.self
+end
+def visit_Dead_Code_Deleter3cb_22(bind)
+@reachable[bind[:this_1]] ? bind[:this_1] : Act[]
 end
 def visit_Dead_Code_Deleter3cb_3(bind)
 Result
@@ -417,6 +455,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='167290321c588f20cc180ad5c553f014'
+ raise "invalid version" if r!='feb7754cfd9d21e24e28b80ee525b03b'
 end
   require 'compiled/dataflow_ssa_c'

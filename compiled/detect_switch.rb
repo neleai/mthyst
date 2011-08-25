@@ -12,7 +12,7 @@ class Detect_Switch < Traverser
 		end
 		if s.is_a? Switch
 			a=[]
-			s.ary.each{|k,v| a<<k}
+			s.ary.each{|k,v| a+=first(v)}
 			return a.uniq
 		end
 		if s.is_a? Or
@@ -89,8 +89,20 @@ class Detect_ClasSwitch < Traverser
 		if s.is_a?(Seq)
       return first(s[0])
     end
-	if s.is_a? Bind
+		if s.is_a? Bind
 			return first(s.expr)
+		end
+		if s.is_a? Switch
+			a=[]
+			s.ary.each{|k,v| a+=first(v)}
+			return a.uniq
+		end
+		if s.is_a? Or
+			a=[]
+			s.ary.each{|e| 
+			return nil if !first(e)
+				a+=first(e)}
+			return a.uniq
 		end
 		if s.is_a?(Apply) && s[0]=="clas"
 			return [s[1][0]]
