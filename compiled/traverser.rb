@@ -3,6 +3,7 @@ class Traverser < Amethyst
 	end
 end
 class Traverser < Amethyst
+
 def clas_Traversercb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
@@ -38,6 +39,7 @@ end
 
 
 class Detector < Traverser
+
 def clas_Detectorcb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end

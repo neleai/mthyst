@@ -1,4 +1,5 @@
 class Renamer2 < Traverser
+
 def clas_Renamer2cb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
@@ -49,6 +50,7 @@ end
 
 
 class DetectCalls < Traverser
+
 def clas_DetectCallscb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
@@ -102,6 +104,7 @@ end
 
 
 class Inliner2 < Traverser
+
 def clas_Inliner2cb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end

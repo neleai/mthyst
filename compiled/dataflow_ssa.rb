@@ -59,6 +59,7 @@ class Local
 end
 
 class Dataflow < Traverser
+
 def clas_Dataflowcb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
@@ -298,6 +299,7 @@ end
 
 
 class Dead_Code_Deleter3 < Traverser
+
 def clas_Dead_Code_Deleter3cb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end

@@ -98,7 +98,7 @@ return it;
 fail: return failobj; }
 VALUE Amethyst_endline(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-char chr1=RSTRING(ame_getsrc(self))->ptr[ame_getpos(self)];  switch(chr1){case 13:; int oldpos1=ame_getpos(self);
+char chr1=*ame_curstr(self);  switch(chr1){case 13:; int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   it=rb_str_new2("\r\n"); arg0=it; it=AmethystCore_seq(self ,arg0); FAILTEST(alt1_2);
  BSET(_result_1,it);  
@@ -311,4 +311,4 @@ rb_define_method(cls_Amethyst,"token",Amethyst_token,1);
 rb_define_method(cls_Amethyst,"upper",Amethyst_upper,0);
 rb_define_method(cls_Amethyst,"word",Amethyst_word,0);
 rb_define_method(cls_Amethyst,"xdigit",Amethyst_xdigit,0);
- rb_eval_string("testversion('afcaf1cbb68a74359b9d72c386e61cb0')");}
+ rb_eval_string("testversion('5de4e1bdcbe9959966fbaf0ccd79c20a')");}

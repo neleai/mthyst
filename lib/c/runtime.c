@@ -48,16 +48,21 @@ int ame_getpos(VALUE self){
 }
 VALUE ame_setlenrb(VALUE self,VALUE val){return INT2FIX(ame_setlen(self,FIX2INT(val)));}
 VALUE ame_setposrb(VALUE self,VALUE val){return INT2FIX(ame_setpos(self,FIX2INT(val)));}
-VALUE ame_getlenrb(VALUE self,VALUE val){return INT2FIX(ame_getlen(self));}
-VALUE ame_getposrb(VALUE self,VALUE val){return INT2FIX(ame_getpos(self));}
-
+VALUE ame_getlenrb(VALUE self){return INT2FIX(ame_getlen(self));}
+VALUE ame_getposrb(VALUE self){return INT2FIX(ame_getpos(self));}
+char* ame_curstr(VALUE self){
+	return RSTRING(ame_getsrc(self))->ptr+ame_getpos(self);
+}
+VALUE ame_curobj(VALUE self){
+	return rb_funcall(ame_getsrc(self),rb_intern("[]"),1,ame_getposrb(self));
+}
 
 VALUE AmethystCore_seq(VALUE self,VALUE str){
 	int len=RSTRING(str)->len;
 	VALUE src=ame_getsrc(self);
 	if (TYPE(src)==T_STRING){
 		int input=ame_getpos(self);
-		if (strncmp(RSTRING(src)->ptr+input,RSTRING(str)->ptr,len)) 
+		if (strncmp(ame_curstr(self),RSTRING(str)->ptr,len)) 
 			{ return failobj; }
 		else {
 			ame_setpos(self,input+len);
@@ -74,9 +79,9 @@ VALUE AmethystCore_anything(VALUE self){
 	int len=ame_getlen(self);
 	if (len<=input) return failobj;
 	if(TYPE(src)==T_STRING){
-		r=rb_str_new(RSTRING(src)->ptr+input,1);
+		r=rb_str_new(ame_curstr(self),1);
 	}else{
-		r= rb_funcall(src,rb_intern("[]"),1,INT2FIX(input));
+		r= ame_curobj(self);
 	}
 	ame_setpos(self,input+1);
 	return r;

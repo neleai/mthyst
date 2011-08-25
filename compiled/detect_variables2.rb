@@ -1,4 +1,5 @@
 class Analyze_Variables2 < Traverser
+
 def clas_Analyze_Variables2cb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
@@ -127,6 +128,7 @@ end
 
 
 class Remap_Acts < Traverser
+
 def clas_Remap_Actscb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end

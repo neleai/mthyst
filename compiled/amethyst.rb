@@ -1,4 +1,5 @@
 class Amethyst < AmethystCore
+
 def __Amethystcb_1(bind)
 /[\s\t\r\n\f]/
 end
@@ -103,6 +104,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='afcaf1cbb68a74359b9d72c386e61cb0'
+ raise "invalid version" if r!='5de4e1bdcbe9959966fbaf0ccd79c20a'
 end
   require 'compiled/amethyst_c'

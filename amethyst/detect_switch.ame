@@ -36,7 +36,7 @@ amethyst Detect_Switch < Traverser {
 
 	visit = Or[{Hash.new{|h,k|h[k]=[]} }:ary2
 		(traverse_item:e &{first(e)}  { first(e).each{|a| ary2[a]<<e}})*
-		{Switch[{:act=>"RSTRING(ame_getsrc(self))->ptr[ame_getpos(self)]",:ary=>ary2.to_a.map{|h,k| [h,Or[{:ary=>k}]]}}];}
+		{Switch[{:act=>"*ame_curstr(self)",:ary=>ary2.to_a.map{|h,k| [h,Or[{:ary=>k}]]}}];}
 	]
 }
 class Detect_ClasSwitch < Traverser

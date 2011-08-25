@@ -46,6 +46,7 @@ class AmethystCTranslator < Amethyst
 end
 
 class AmethystCTranslator < Amethyst
+
 def addcallback_AmethystCTranslatorcb_1(bind)
 bind[:autovar_1]=[bind[:autovar_1]]
 end

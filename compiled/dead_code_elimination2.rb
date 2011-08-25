@@ -1,4 +1,5 @@
 class Dead_Code_Detector2 < Traverser
+
 def clas_Dead_Code_Detector2cb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
@@ -214,6 +215,7 @@ end
 
 
 class Dead_Code_Deleter2 < Traverser
+
 def clas_Dead_Code_Deleter2cb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
@@ -313,10 +315,12 @@ end
 
 class Constant_Propagator2 < Traverser
 
+
 end
 
 
 class Communize_Or2 < Traverser
+
 def clas_Communize_Or2cb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
@@ -381,6 +385,7 @@ end
 end
 
 class Communize_Or3 < Traverser
+
 def clas_Communize_Or3cb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
@@ -453,6 +458,7 @@ end
 
 
 class Move_Assignments2 < Traverser
+
 def clas_Move_Assignments2cb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end

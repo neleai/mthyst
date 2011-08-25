@@ -30,6 +30,7 @@ class Detect_Switch < Traverser
 end
 
 class Detect_Switch < Traverser
+
 def itrans_Detect_Switchcb_1(bind)
 Grammar
 end
@@ -70,7 +71,7 @@ def visit_Detect_Switchcb_5(bind)
 _append(bind[:autovar_1],bind[:autovar_3])
 end
 def visit_Detect_Switchcb_6(bind)
-Switch[{:act=>"RSTRING(ame_getsrc(self))->ptr[ame_getpos(self)]",:ary=>bind[:ary2_1].to_a.map{|h,k| [h,Or[{:ary=>k}]]}}];
+Switch[{:act=>"*ame_curstr(self)",:ary=>bind[:ary2_1].to_a.map{|h,k| [h,Or[{:ary=>k}]]}}];
 end
 
 end
@@ -103,6 +104,7 @@ class Detect_ClasSwitch < Traverser
 end
 
 class Detect_ClasSwitch < Traverser
+
 def itrans_Detect_ClasSwitchcb_1(bind)
 Grammar
 end

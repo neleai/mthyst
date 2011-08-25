@@ -18,6 +18,7 @@ def connectstring(ary)
 end
 
 class AmethystParser < Amethyst
+
 def __AmethystParsercb_1(bind)
 /[\s\t\r\n\f]/
 end
@@ -449,6 +450,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='4f2c9fd00bc89152d4d3d6dc3044bda1'
+ raise "invalid version" if r!='79da0b0dde6436c963d8feba1268916c'
 end
   require 'compiled/parser_c'

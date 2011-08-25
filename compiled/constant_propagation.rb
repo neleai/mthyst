@@ -1,4 +1,5 @@
 class Constant_Traverser < Traverser
+
 def clas_Constant_Traversercb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
