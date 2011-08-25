@@ -96,7 +96,7 @@ if true
 				calls.each{|nm,v|
 					r=@grammars[grammar.name].getrule(nm)
 					if r && topo.index(nm)<topo.index(name) 
-						if r.args.size>0   || ["char","space"].include?(r.name)
+						if r.args.size>0  && r.name!="clas" || ["char","space"].include?(r.name)
 							@grammars[grammar.name].inline(nm,name) 
 							inlined=true
 						end
@@ -123,8 +123,8 @@ end
 		puts tree.inspect
 		tree=Seq_Or_Optimizer.new.parse(:itrans,tree)
 		puts tree.inspect
-		tree=Detect_ClasSwitch.new.parse(:itrans,tree)
-		puts tree.inspect
+#		tree=Detect_ClasSwitch.new.parse(:itrans,tree)
+#		puts tree.inspect
 		tree=Seq_Or_Optimizer.new.parse(:itrans,tree)
 		puts tree.inspect
 

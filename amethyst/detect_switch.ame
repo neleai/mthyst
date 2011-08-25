@@ -47,6 +47,9 @@ class Detect_ClasSwitch < Traverser
 		if s.is_a?(Seq)
       return firstclas(s[0])
     end
+	if s.is_a? Bind
+			return firstclas(s.expr)
+		end
 		if s.is_a?(Apply) && s[0]=="clas"
 			e=s[1][0]
 			return [@clses[e]] if @clses[e]

@@ -12,21 +12,18 @@ def root_Dead_Code_Detector2cb_3(bind)
 Rule
 end
 def root_Dead_Code_Detector2cb_4(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def root_Dead_Code_Detector2cb_5(bind)
 @edges=Oriented_Graph.new ; @marked=[@src.body[-1]]
 end
-def root_Dead_Code_Detector2cb_6(bind)
+def root_Dead_Code_Detector2cb_5(bind)
 @bnding=@src.bnding
 end
-def root_Dead_Code_Detector2cb_7(bind)
+def root_Dead_Code_Detector2cb_6(bind)
 @edges.reachable(@marked)
 end
-def root_Dead_Code_Detector2cb_8(bind)
+def root_Dead_Code_Detector2cb_7(bind)
 @src.reachable=bind[:reachable_1]
 end
-def root_Dead_Code_Detector2cb_9(bind)
+def root_Dead_Code_Detector2cb_8(bind)
 @src.self
 end
 def traverse_Dead_Code_Detector2cb_1(bind)
@@ -51,214 +48,166 @@ def traverse_item_Dead_Code_Detector2cb_2(bind)
 Array
 end
 def traverse_item_Dead_Code_Detector2cb_3(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def traverse_item_Dead_Code_Detector2cb_4(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
 end
-def traverse_item_Dead_Code_Detector2cb_5(bind)
+def traverse_item_Dead_Code_Detector2cb_4(bind)
 AmethystAST
-end
-def traverse_item_Dead_Code_Detector2cb_6(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def vars_in_Dead_Code_Detector2cb_1(bind)
 bind[:ary_1]=[]
 end
 def vars_in_Dead_Code_Detector2cb_10(bind)
-_append(bind[:ary_1],bind[:autovar_4])
+@src.self
 end
 def vars_in_Dead_Code_Detector2cb_11(bind)
-Key
-end
-def vars_in_Dead_Code_Detector2cb_12(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def vars_in_Dead_Code_Detector2cb_13(bind)
-@src.self
-end
-def vars_in_Dead_Code_Detector2cb_14(bind)
 _append(bind[:ary_1],bind[:autovar_6])
 end
-def vars_in_Dead_Code_Detector2cb_15(bind)
+def vars_in_Dead_Code_Detector2cb_12(bind)
 @marked<<@src.self
 end
-def vars_in_Dead_Code_Detector2cb_16(bind)
+def vars_in_Dead_Code_Detector2cb_13(bind)
 Result
 end
-def vars_in_Dead_Code_Detector2cb_17(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def vars_in_Dead_Code_Detector2cb_18(bind)
+def vars_in_Dead_Code_Detector2cb_14(bind)
 @src.self
 end
-def vars_in_Dead_Code_Detector2cb_19(bind)
+def vars_in_Dead_Code_Detector2cb_15(bind)
 _append(bind[:ary_1],bind[:autovar_8])
+end
+def vars_in_Dead_Code_Detector2cb_16(bind)
+Strin
+end
+def vars_in_Dead_Code_Detector2cb_17(bind)
+_append(bind[:ary_1],bind[:autovar_10])
+end
+def vars_in_Dead_Code_Detector2cb_18(bind)
+Args
+end
+def vars_in_Dead_Code_Detector2cb_19(bind)
+_append(bind[:ary_1],bind[:autovar_12])
 end
 def vars_in_Dead_Code_Detector2cb_2(bind)
 Global
 end
 def vars_in_Dead_Code_Detector2cb_20(bind)
-Strin
-end
-def vars_in_Dead_Code_Detector2cb_21(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def vars_in_Dead_Code_Detector2cb_22(bind)
-_append(bind[:ary_1],bind[:autovar_10])
-end
-def vars_in_Dead_Code_Detector2cb_23(bind)
-Args
-end
-def vars_in_Dead_Code_Detector2cb_24(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def vars_in_Dead_Code_Detector2cb_25(bind)
-_append(bind[:ary_1],bind[:autovar_12])
-end
-def vars_in_Dead_Code_Detector2cb_26(bind)
 Bind
 end
-def vars_in_Dead_Code_Detector2cb_27(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def vars_in_Dead_Code_Detector2cb_28(bind)
+def vars_in_Dead_Code_Detector2cb_21(bind)
 @src.name
 end
-def vars_in_Dead_Code_Detector2cb_29(bind)
+def vars_in_Dead_Code_Detector2cb_22(bind)
 bind[:autovar_14]=[bind[:autovar_14]]
 end
-def vars_in_Dead_Code_Detector2cb_3(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def vars_in_Dead_Code_Detector2cb_30(bind)
+def vars_in_Dead_Code_Detector2cb_23(bind)
 _append(bind[:ary_1],bind[:autovar_15])
 end
-def vars_in_Dead_Code_Detector2cb_31(bind)
+def vars_in_Dead_Code_Detector2cb_24(bind)
 Local
 end
-def vars_in_Dead_Code_Detector2cb_32(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def vars_in_Dead_Code_Detector2cb_33(bind)
+def vars_in_Dead_Code_Detector2cb_25(bind)
 @src.self
 end
-def vars_in_Dead_Code_Detector2cb_34(bind)
+def vars_in_Dead_Code_Detector2cb_26(bind)
 _append(bind[:ary_1],bind[:autovar_17])
 end
-def vars_in_Dead_Code_Detector2cb_4(bind)
+def vars_in_Dead_Code_Detector2cb_3(bind)
 @src.self
 end
-def vars_in_Dead_Code_Detector2cb_5(bind)
+def vars_in_Dead_Code_Detector2cb_4(bind)
 _append(bind[:ary_1],bind[:autovar_2])
 end
-def vars_in_Dead_Code_Detector2cb_6(bind)
+def vars_in_Dead_Code_Detector2cb_5(bind)
 @marked<<@src.self
 end
-def vars_in_Dead_Code_Detector2cb_7(bind)
+def vars_in_Dead_Code_Detector2cb_6(bind)
 Act
 end
+def vars_in_Dead_Code_Detector2cb_7(bind)
+@src.self
+end
 def vars_in_Dead_Code_Detector2cb_8(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+_append(bind[:ary_1],bind[:autovar_4])
 end
 def vars_in_Dead_Code_Detector2cb_9(bind)
-@src.self
+Key
 end
 def visit_Dead_Code_Detector2cb_1(bind)
 Apply
 end
 def visit_Dead_Code_Detector2cb_10(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+@marked+=bind[:var_1]
 end
 def visit_Dead_Code_Detector2cb_11(bind)
-@src.o
-end
-def visit_Dead_Code_Detector2cb_12(bind)
-bind[:autovar_5]=[bind[:autovar_5]]
-end
-def visit_Dead_Code_Detector2cb_13(bind)
-@marked+=bind[:var_1]
-end
-def visit_Dead_Code_Detector2cb_14(bind)
 Act
 end
-def visit_Dead_Code_Detector2cb_15(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def visit_Dead_Code_Detector2cb_16(bind)
+def visit_Dead_Code_Detector2cb_12(bind)
 @marked<<bind[:this_1] if @src.pred
 end
-def visit_Dead_Code_Detector2cb_17(bind)
+def visit_Dead_Code_Detector2cb_13(bind)
 @src.ary
 end
-def visit_Dead_Code_Detector2cb_18(bind)
+def visit_Dead_Code_Detector2cb_14(bind)
 bind[:autovar_7]=[bind[:autovar_7]]
 end
-def visit_Dead_Code_Detector2cb_19(bind)
+def visit_Dead_Code_Detector2cb_15(bind)
 bind[:var_1].each{|bind[:v_1]| @edges.add(bind[:v_1],bind[:this_1]); @edges.add(bind[:this_1],bind[:v_1]);}; bind[:this_1]
 end
-def visit_Dead_Code_Detector2cb_2(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def visit_Dead_Code_Detector2cb_20(bind)
+def visit_Dead_Code_Detector2cb_16(bind)
 Bind
 end
-def visit_Dead_Code_Detector2cb_21(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def visit_Dead_Code_Detector2cb_22(bind)
+def visit_Dead_Code_Detector2cb_17(bind)
 @src.name
 end
-def visit_Dead_Code_Detector2cb_23(bind)
+def visit_Dead_Code_Detector2cb_18(bind)
 bind[:autovar_10]=[bind[:autovar_10]]
 end
-def visit_Dead_Code_Detector2cb_24(bind)
+def visit_Dead_Code_Detector2cb_19(bind)
 bind[:v_1]=bind[:v_1][0]
 end
-def visit_Dead_Code_Detector2cb_25(bind)
+def visit_Dead_Code_Detector2cb_2(bind)
+@marked+=bind[:var_1]
+end
+def visit_Dead_Code_Detector2cb_20(bind)
 @src.expr
 end
-def visit_Dead_Code_Detector2cb_26(bind)
+def visit_Dead_Code_Detector2cb_21(bind)
 bind[:autovar_11]=[bind[:autovar_11]]
 end
-def visit_Dead_Code_Detector2cb_27(bind)
+def visit_Dead_Code_Detector2cb_22(bind)
 bind[:var_1].each{|w| @edges.add(bind[:v_1],w)};bind[:this_1]
 end
-def visit_Dead_Code_Detector2cb_28(bind)
+def visit_Dead_Code_Detector2cb_23(bind)
 Result
 end
-def visit_Dead_Code_Detector2cb_29(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def visit_Dead_Code_Detector2cb_3(bind)
-@marked+=bind[:var_1]
-end
-def visit_Dead_Code_Detector2cb_30(bind)
+def visit_Dead_Code_Detector2cb_24(bind)
 @src.vars
 end
-def visit_Dead_Code_Detector2cb_31(bind)
+def visit_Dead_Code_Detector2cb_25(bind)
 bind[:autovar_13]=[bind[:autovar_13]]
 end
-def visit_Dead_Code_Detector2cb_32(bind)
+def visit_Dead_Code_Detector2cb_26(bind)
 bind[:var_1].each{|w| @edges.add(bind[:this_1],w) } ; bind[:this_1]
 end
-def visit_Dead_Code_Detector2cb_4(bind)
+def visit_Dead_Code_Detector2cb_3(bind)
 Pass
 end
-def visit_Dead_Code_Detector2cb_5(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def visit_Dead_Code_Detector2cb_6(bind)
+def visit_Dead_Code_Detector2cb_4(bind)
 @src.var
 end
-def visit_Dead_Code_Detector2cb_7(bind)
+def visit_Dead_Code_Detector2cb_5(bind)
 bind[:autovar_3]=[bind[:autovar_3]]
 end
-def visit_Dead_Code_Detector2cb_8(bind)
+def visit_Dead_Code_Detector2cb_6(bind)
 @marked+=bind[:var_1]
 end
-def visit_Dead_Code_Detector2cb_9(bind)
+def visit_Dead_Code_Detector2cb_7(bind)
 Many
+end
+def visit_Dead_Code_Detector2cb_8(bind)
+@src.o
+end
+def visit_Dead_Code_Detector2cb_9(bind)
+bind[:autovar_5]=[bind[:autovar_5]]
 end
 
 end
@@ -278,18 +227,15 @@ def root_Dead_Code_Deleter2cb_3(bind)
 Rule
 end
 def root_Dead_Code_Deleter2cb_4(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def root_Dead_Code_Deleter2cb_5(bind)
 @src.reachable
 end
-def root_Dead_Code_Deleter2cb_6(bind)
+def root_Dead_Code_Deleter2cb_5(bind)
 @reachable=bind[:it_1]
 end
-def root_Dead_Code_Deleter2cb_7(bind)
+def root_Dead_Code_Deleter2cb_6(bind)
 @src.reachable=nil
 end
-def root_Dead_Code_Deleter2cb_8(bind)
+def root_Dead_Code_Deleter2cb_7(bind)
 @src.self
 end
 def traverse_Dead_Code_Deleter2cb_1(bind)
@@ -314,28 +260,22 @@ def traverse_item_Dead_Code_Deleter2cb_2(bind)
 Array
 end
 def traverse_item_Dead_Code_Deleter2cb_3(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def traverse_item_Dead_Code_Deleter2cb_4(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
 end
-def traverse_item_Dead_Code_Deleter2cb_5(bind)
+def traverse_item_Dead_Code_Deleter2cb_4(bind)
 AmethystAST
-end
-def traverse_item_Dead_Code_Deleter2cb_6(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Dead_Code_Deleter2cb_1(bind)
 Act
 end
 def visit_Dead_Code_Deleter2cb_10(bind)
-@reachable[bind[:name_1]] ? bind[:this_1] : bind[:expr_1]
+@src.self
 end
 def visit_Dead_Code_Deleter2cb_11(bind)
-Result
+@reachable[bind[:this_1]] ? bind[:this_1] : Act[]
 end
 def visit_Dead_Code_Deleter2cb_12(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+Local
 end
 def visit_Dead_Code_Deleter2cb_13(bind)
 @src.self
@@ -343,41 +283,29 @@ end
 def visit_Dead_Code_Deleter2cb_14(bind)
 @reachable[bind[:this_1]] ? bind[:this_1] : Act[]
 end
-def visit_Dead_Code_Deleter2cb_15(bind)
-Local
-end
-def visit_Dead_Code_Deleter2cb_16(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def visit_Dead_Code_Deleter2cb_17(bind)
-@src.self
-end
-def visit_Dead_Code_Deleter2cb_18(bind)
-@reachable[bind[:this_1]] ? bind[:this_1] : Act[]
-end
 def visit_Dead_Code_Deleter2cb_2(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+@src.self
 end
 def visit_Dead_Code_Deleter2cb_3(bind)
-@src.self
-end
-def visit_Dead_Code_Deleter2cb_4(bind)
 @reachable[bind[:this_1]] ? bind[:this_1] : Act[]
 end
-def visit_Dead_Code_Deleter2cb_5(bind)
+def visit_Dead_Code_Deleter2cb_4(bind)
 Bind
 end
-def visit_Dead_Code_Deleter2cb_6(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def visit_Dead_Code_Deleter2cb_7(bind)
+def visit_Dead_Code_Deleter2cb_5(bind)
 @src.name
 end
-def visit_Dead_Code_Deleter2cb_8(bind)
+def visit_Dead_Code_Deleter2cb_6(bind)
 @src.expr
 end
-def visit_Dead_Code_Deleter2cb_9(bind)
+def visit_Dead_Code_Deleter2cb_7(bind)
 @src.self
+end
+def visit_Dead_Code_Deleter2cb_8(bind)
+@reachable[bind[:name_1]] ? bind[:this_1] : bind[:expr_1]
+end
+def visit_Dead_Code_Deleter2cb_9(bind)
+Result
 end
 
 end
@@ -420,42 +348,27 @@ def traverse_item_Communize_Or2cb_2(bind)
 Array
 end
 def traverse_item_Communize_Or2cb_3(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def traverse_item_Communize_Or2cb_4(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
 end
-def traverse_item_Communize_Or2cb_5(bind)
+def traverse_item_Communize_Or2cb_4(bind)
 AmethystAST
-end
-def traverse_item_Communize_Or2cb_6(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Communize_Or2cb_1(bind)
 Or
 end
 def visit_Communize_Or2cb_2(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+Seq
 end
 def visit_Communize_Or2cb_3(bind)
-Seq
-end
-def visit_Communize_Or2cb_4(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def visit_Communize_Or2cb_5(bind)
 _append(bind[:autovar_2],bind[:autovar_4])
 end
-def visit_Communize_Or2cb_6(bind)
+def visit_Communize_Or2cb_4(bind)
 Seq
 end
-def visit_Communize_Or2cb_7(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def visit_Communize_Or2cb_8(bind)
+def visit_Communize_Or2cb_5(bind)
 _append(bind[:autovar_2],bind[:autovar_5])
 end
-def visit_Communize_Or2cb_9(bind)
+def visit_Communize_Or2cb_6(bind)
 common=bind[:ands_1][0].size
 								bind[:ands_1].each{|a| 0.upto(common){|n| (common=[common,n].min ;next) if a[n].to_yaml!=bind[:ands_1][0][n].to_yaml}}
 								commn=bind[:ands_1][0].ary[0,common]
@@ -499,42 +412,27 @@ def traverse_item_Communize_Or3cb_2(bind)
 Array
 end
 def traverse_item_Communize_Or3cb_3(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def traverse_item_Communize_Or3cb_4(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
 end
-def traverse_item_Communize_Or3cb_5(bind)
+def traverse_item_Communize_Or3cb_4(bind)
 AmethystAST
-end
-def traverse_item_Communize_Or3cb_6(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Communize_Or3cb_1(bind)
 Or
 end
 def visit_Communize_Or3cb_2(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+Seq
 end
 def visit_Communize_Or3cb_3(bind)
-Seq
-end
-def visit_Communize_Or3cb_4(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def visit_Communize_Or3cb_5(bind)
 _append(bind[:autovar_2],bind[:autovar_4])
 end
-def visit_Communize_Or3cb_6(bind)
+def visit_Communize_Or3cb_4(bind)
 Seq
 end
-def visit_Communize_Or3cb_7(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def visit_Communize_Or3cb_8(bind)
+def visit_Communize_Or3cb_5(bind)
 _append(bind[:autovar_2],bind[:autovar_5])
 end
-def visit_Communize_Or3cb_9(bind)
+def visit_Communize_Or3cb_6(bind)
 com=[]
 							last=bind[:ands_1].shift
 							bind[:ands_1].each{|a|
@@ -568,52 +466,43 @@ def move_Move_Assignments2cb_1(bind)
 Or
 end
 def move_Move_Assignments2cb_10(bind)
-Pass
-end
-def move_Move_Assignments2cb_11(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def move_Move_Assignments2cb_12(bind)
-@src.var
-end
-def move_Move_Assignments2cb_13(bind)
 @src.to
 end
-def move_Move_Assignments2cb_14(bind)
+def move_Move_Assignments2cb_11(bind)
 bind[:autovar_9]=[bind[:autovar_9]]
 end
-def move_Move_Assignments2cb_15(bind)
+def move_Move_Assignments2cb_12(bind)
 @src.enter
 end
-def move_Move_Assignments2cb_16(bind)
+def move_Move_Assignments2cb_13(bind)
 Pass.create( {:ary=>bind[:ary_1],:enter=>bind[:enter_1],:to=>bind[:to_1],:var=>bind[:var_1] })
 end
-def move_Move_Assignments2cb_17(bind)
+def move_Move_Assignments2cb_14(bind)
 _Bind(bind[:name_1],bind[:it_1],bind[:append_1])
 end
 def move_Move_Assignments2cb_2(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def move_Move_Assignments2cb_3(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
 end
-def move_Move_Assignments2cb_4(bind)
+def move_Move_Assignments2cb_3(bind)
 Or.create( {:ary=>bind[:ary_1] })
 end
-def move_Move_Assignments2cb_5(bind)
+def move_Move_Assignments2cb_4(bind)
 Seq
 end
-def move_Move_Assignments2cb_6(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def move_Move_Assignments2cb_7(bind)
+def move_Move_Assignments2cb_5(bind)
 bind[:autovar_6]=[bind[:autovar_6]]
 end
-def move_Move_Assignments2cb_8(bind)
+def move_Move_Assignments2cb_6(bind)
 _append(bind[:autovar_5],bind[:autovar_7])
 end
-def move_Move_Assignments2cb_9(bind)
+def move_Move_Assignments2cb_7(bind)
 Seq.create( {:ary=>bind[:ary_1] })
+end
+def move_Move_Assignments2cb_8(bind)
+Pass
+end
+def move_Move_Assignments2cb_9(bind)
+@src.var
 end
 def traverse_Move_Assignments2cb_1(bind)
 @src.self
@@ -637,85 +526,67 @@ def traverse_item_Move_Assignments2cb_2(bind)
 Array
 end
 def traverse_item_Move_Assignments2cb_3(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def traverse_item_Move_Assignments2cb_4(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
 end
-def traverse_item_Move_Assignments2cb_5(bind)
+def traverse_item_Move_Assignments2cb_4(bind)
 AmethystAST
-end
-def traverse_item_Move_Assignments2cb_6(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
 def visit_Move_Assignments2cb_1(bind)
 Bind
 end
 def visit_Move_Assignments2cb_10(bind)
-Or.create( {:ary=>bind[:ary_1] })
-end
-def visit_Move_Assignments2cb_11(bind)
-Seq
-end
-def visit_Move_Assignments2cb_12(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def visit_Move_Assignments2cb_13(bind)
 bind[:autovar_8]=[bind[:autovar_8]]
 end
-def visit_Move_Assignments2cb_14(bind)
+def visit_Move_Assignments2cb_11(bind)
 _append(bind[:autovar_7],bind[:autovar_9])
 end
-def visit_Move_Assignments2cb_15(bind)
+def visit_Move_Assignments2cb_12(bind)
 Seq.create( {:ary=>bind[:ary_1] })
 end
-def visit_Move_Assignments2cb_16(bind)
+def visit_Move_Assignments2cb_13(bind)
 Pass
 end
-def visit_Move_Assignments2cb_17(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def visit_Move_Assignments2cb_18(bind)
+def visit_Move_Assignments2cb_14(bind)
 @src.var
 end
-def visit_Move_Assignments2cb_19(bind)
+def visit_Move_Assignments2cb_15(bind)
 @src.to
 end
-def visit_Move_Assignments2cb_2(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
-end
-def visit_Move_Assignments2cb_20(bind)
+def visit_Move_Assignments2cb_16(bind)
 bind[:autovar_11]=[bind[:autovar_11]]
 end
-def visit_Move_Assignments2cb_21(bind)
+def visit_Move_Assignments2cb_17(bind)
 @src.enter
 end
-def visit_Move_Assignments2cb_22(bind)
+def visit_Move_Assignments2cb_18(bind)
 Pass.create( {:ary=>bind[:ary_1],:enter=>bind[:enter_1],:to=>bind[:to_1],:var=>bind[:var_1] })
 end
-def visit_Move_Assignments2cb_23(bind)
+def visit_Move_Assignments2cb_19(bind)
 _Bind(bind[:name_2],bind[:it_1],bind[:append_2])
 end
-def visit_Move_Assignments2cb_3(bind)
+def visit_Move_Assignments2cb_2(bind)
 @src.name
 end
-def visit_Move_Assignments2cb_4(bind)
+def visit_Move_Assignments2cb_3(bind)
 @src.expr
 end
-def visit_Move_Assignments2cb_5(bind)
+def visit_Move_Assignments2cb_4(bind)
 @src.append
 end
-def visit_Move_Assignments2cb_6(bind)
+def visit_Move_Assignments2cb_5(bind)
 bind[:autovar_2]=[bind[:autovar_2]]
 end
-def visit_Move_Assignments2cb_7(bind)
+def visit_Move_Assignments2cb_6(bind)
 Or
 end
+def visit_Move_Assignments2cb_7(bind)
+_append(bind[:autovar_4],bind[:autovar_5])
+end
 def visit_Move_Assignments2cb_8(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+Or.create( {:ary=>bind[:ary_1] })
 end
 def visit_Move_Assignments2cb_9(bind)
-_append(bind[:autovar_4],bind[:autovar_5])
+Seq
 end
 
 end
@@ -724,6 +595,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='9a64ed5b6f93dba435017e5effef9421'
+ raise "invalid version" if r!='f8456c45909d4c7912865449600809df'
 end
   require 'compiled/dead_code_elimination2_c'
