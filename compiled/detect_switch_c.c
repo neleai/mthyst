@@ -169,7 +169,7 @@ ame_setsrc(self,BGET(autovar_2)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb
  BSET(autovar_1,it); int oldpos2; while(1){oldpos2=ame_getpos(self);   it=CALL(traverse_item,0 ); FAILTEST(break1);
  BSET(e_1,it); it=CALL(visit_Detect_ClasSwitchcb_4,1,bind); FAILTEST(break1);it=CALL(visit_Detect_ClasSwitchcb_5,1,bind); 
  BSET(autovar_3,it); it=CALL(visit_Detect_ClasSwitchcb_6,1,bind);  if (IGET(stop)!=Qnil){{oldpos2=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos2); it=BGET(autovar_1);int oldpos3=ame_getpos(self);
-   it=CALL(eof,0 ); FAILTEST(reject1); x=1; goto accept1;  reject1: x=0; accept1: it=Qnil; ame_setpos(self,oldpos3); if (x==0) goto pass1;it=CALL(visit_Detect_ClasSwitchcb_7,1,bind); it=CALL(visit_Detect_ClasSwitchcb_8,1,bind); 
+   it=CALL(eof,0 ); FAILTEST(reject1); x=1; goto accept1;  reject1: x=0; accept1: it=Qnil; ame_setpos(self,oldpos3); if (x==0) goto pass1;it=CALL(visit_Detect_ClasSwitchcb_7,1,bind); it=CALL(visit_Detect_ClasSwitchcb_8,1,bind); it=CALL(visit_Detect_ClasSwitchcb_9,1,bind); 
 	if (CALL(eof,0)==failobj) goto pass1;
 	goto success1;
 	pass1: fail1=1;

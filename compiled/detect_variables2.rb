@@ -1,7 +1,7 @@
 class Analyze_Variables2 < Traverser
 def switchcb1(e)
-return 0 if e.is_a?(Act)
-return 1 if e.is_a?(Args)
+return 0 if e.is_a?(Args)
+return 1 if e.is_a?(Act)
 return 2 if e.is_a?(Result)
 return 3
 end
@@ -12,8 +12,8 @@ return 2
 end
 def switchcb3(e)
 return 0 if e.is_a?(Args)
-return 1 if e.is_a?(Object)
-return 2 if e.is_a?(Strin)
+return 1 if e.is_a?(Strin)
+return 2 if e.is_a?(Object)
 return 3
 end
 def clas_Analyze_Variables2cb_1(bind)
@@ -23,10 +23,10 @@ def flat_Analyze_Variables2cb_1(bind)
 Args
 end
 def flat_Analyze_Variables2cb_2(bind)
-Args
+Strin
 end
 def flat_Analyze_Variables2cb_3(bind)
-Strin
+Args
 end
 def flat_Analyze_Variables2cb_4(bind)
 Strin
@@ -131,7 +131,7 @@ def traverse_item_Analyze_Variables2cb_4(bind)
 AmethystAST
 end
 def visit_Analyze_Variables2cb_1(bind)
-Act
+Args
 end
 def visit_Analyze_Variables2cb_10(bind)
 Result
@@ -143,28 +143,28 @@ def visit_Analyze_Variables2cb_12(bind)
 @src.self
 end
 def visit_Analyze_Variables2cb_2(bind)
-@src.ary
+@src.ary.map{|aa| @variables[aa] }
 end
 def visit_Analyze_Variables2cb_3(bind)
 bind[:autovar_2]=[bind[:autovar_2]]
 end
 def visit_Analyze_Variables2cb_4(bind)
-Local
-end
-def visit_Analyze_Variables2cb_5(bind)
-Args
-end
-def visit_Analyze_Variables2cb_6(bind)
-@src.ary.map{|aa| @variables[aa] }
-end
-def visit_Analyze_Variables2cb_7(bind)
-bind[:autovar_5]=[bind[:autovar_5]]
-end
-def visit_Analyze_Variables2cb_8(bind)
 @src.ary=connectstring(bind[:a_1].flatten)
 end
-def visit_Analyze_Variables2cb_9(bind)
+def visit_Analyze_Variables2cb_5(bind)
 (@src.ary.size==1&&(@src.ary[0].is_a?(Local)||@src.ary[0].is_a?(Global)||@src.ary[0].is_a?(Key))) ? @src.ary[0] : @src.self
+end
+def visit_Analyze_Variables2cb_6(bind)
+Act
+end
+def visit_Analyze_Variables2cb_7(bind)
+@src.ary
+end
+def visit_Analyze_Variables2cb_8(bind)
+bind[:autovar_5]=[bind[:autovar_5]]
+end
+def visit_Analyze_Variables2cb_9(bind)
+Local
 end
 
 end
@@ -213,6 +213,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='e87938c7ae40831e4d8511eca9705524'
+ raise "invalid version" if r!='d073a42f75dbbfe0529aaf1500af6d85'
 end
   require 'compiled/detect_variables2_c'

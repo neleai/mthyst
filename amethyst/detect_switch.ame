@@ -80,6 +80,12 @@ class Detect_ClasSwitch < Traverser
 		rb+="return #{ary.size}\nend"
 		[rb, "FIX2INT(CALL(switchcb#{@no},1,ame_curobj(self)))"]
 	end
+	def topsort(a)
+		a=a.uniq
+		g=Oriented_Graph.new
+		a.each{|u| a.each{|v| g.add(u,v) if  eval(u) >= eval(v)}}
+	 	g.topo_order
+	end
 end
 
 amethyst Detect_ClasSwitch < Traverser {
@@ -89,10 +95,11 @@ amethyst Detect_ClasSwitch < Traverser {
 
 	visit = Or[ {[]}:ary2 {[]}:ary3
     (traverse_item:e &{first(e)} {ary2+=first(e)})* &eof
-    {	ary2.sort.uniq.each_with_index{|e,i|
+		{ary2=topsort(ary2)}
+    {	ary2.each_with_index{|e,i|
       	ary3<<[i,Or[{:ary=>@ary.select{|p| includes(first(p),e)}}]]
 		}}
-    {c=classswitch(ary2.sort.uniq);Switch[{:act=>c[1],:defs=>c[0],:ary=>ary3}]}
+    {c=classswitch(ary2);Switch[{:act=>c[1],:defs=>c[0],:ary=>ary3}]}
 	]
 }
 

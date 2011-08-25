@@ -122,6 +122,12 @@ class Detect_ClasSwitch < Traverser
 		rb+="return #{ary.size}\nend"
 		[rb, "FIX2INT(CALL(switchcb#{@no},1,ame_curobj(self)))"]
 	end
+	def topsort(a)
+		a=a.uniq
+		g=Oriented_Graph.new
+		a.each{|u| a.each{|v| g.add(u,v) if  eval(u) >= eval(v)}}
+	 	g.topo_order
+	end
 end
 
 class Detect_ClasSwitch < Traverser
@@ -169,12 +175,15 @@ def visit_Detect_ClasSwitchcb_6(bind)
 _append(bind[:autovar_1],bind[:autovar_3])
 end
 def visit_Detect_ClasSwitchcb_7(bind)
-bind[:ary2_1].sort.uniq.each_with_index{|bind[:e_1],i|
+bind[:ary2_1]=topsort(bind[:ary2_1])
+end
+def visit_Detect_ClasSwitchcb_8(bind)
+bind[:ary2_1].each_with_index{|bind[:e_1],i|
       	bind[:ary3_1]<<[i,Or[{:ary=>@src.ary.select{|p| includes(first(p),bind[:e_1])}}]]
 		}
 end
-def visit_Detect_ClasSwitchcb_8(bind)
-c=classswitch(bind[:ary2_1].sort.uniq);Switch[{:act=>c[1],:defs=>c[0],:ary=>bind[:ary3_1]}]
+def visit_Detect_ClasSwitchcb_9(bind)
+c=classswitch(bind[:ary2_1]);Switch[{:act=>c[1],:defs=>c[0],:ary=>bind[:ary3_1]}]
 end
 
 end

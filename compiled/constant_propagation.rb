@@ -1,8 +1,8 @@
 class Constant_Traverser < Traverser
 def switchcb1(e)
-return 0 if e.is_a?(Act)
+return 0 if e.is_a?(Local)
 return 1 if e.is_a?(Bind)
-return 2 if e.is_a?(Local)
+return 2 if e.is_a?(Act)
 return 3
 end
 def clas_Constant_Traversercb_1(bind)
@@ -45,10 +45,10 @@ def traverse_item_Constant_Traversercb_4(bind)
 AmethystAST
 end
 def visit_Constant_Traversercb_1(bind)
-Act
+Local
 end
 def visit_Constant_Traversercb_2(bind)
-@src.self
+@consts[@src.self.ssaname] ? @consts[@src.self.ssaname] : @src.self 
 end
 def visit_Constant_Traversercb_3(bind)
 Bind
@@ -66,10 +66,10 @@ def visit_Constant_Traversercb_7(bind)
 @src.self
 end
 def visit_Constant_Traversercb_8(bind)
-Local
+Act
 end
 def visit_Constant_Traversercb_9(bind)
-@consts[@src.self.ssaname] ? @consts[@src.self.ssaname] : @src.self 
+@src.self
 end
 
 end

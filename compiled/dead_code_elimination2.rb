@@ -1,23 +1,23 @@
 class Dead_Code_Detector2 < Traverser
 def switchcb1(e)
-return 0 if e.is_a?(Act)
-return 1 if e.is_a?(Apply)
+return 0 if e.is_a?(Apply)
+return 1 if e.is_a?(Act)
 return 2 if e.is_a?(Bind)
-return 3 if e.is_a?(Many)
+return 3 if e.is_a?(Result)
 return 4 if e.is_a?(Pass)
-return 5 if e.is_a?(Result)
+return 5 if e.is_a?(Many)
 return 6
 end
 def switchcb2(e)
-return 0 if e.is_a?(Act)
-return 1 if e.is_a?(Args)
-return 2 if e.is_a?(Bind)
-return 3 if e.is_a?(Global)
-return 4 if e.is_a?(Key)
-return 5 if e.is_a?(Local)
-return 6 if e.is_a?(Object)
-return 7 if e.is_a?(Result)
-return 8 if e.is_a?(Strin)
+return 0 if e.is_a?(Global)
+return 1 if e.is_a?(Act)
+return 2 if e.is_a?(Key)
+return 3 if e.is_a?(Result)
+return 4 if e.is_a?(Strin)
+return 5 if e.is_a?(Args)
+return 6 if e.is_a?(Bind)
+return 7 if e.is_a?(Local)
+return 8 if e.is_a?(Object)
 return 9
 end
 def clas_Dead_Code_Detector2cb_1(bind)
@@ -78,157 +78,157 @@ def vars_in_Dead_Code_Detector2cb_1(bind)
 bind[:ary_1]=[]
 end
 def vars_in_Dead_Code_Detector2cb_10(bind)
-_append(bind[:ary_1],bind[:autovar_7])
+@src.self
 end
 def vars_in_Dead_Code_Detector2cb_11(bind)
-Global
+_append(bind[:ary_1],bind[:autovar_6])
 end
 def vars_in_Dead_Code_Detector2cb_12(bind)
-@src.self
+@marked<<@src.self
 end
 def vars_in_Dead_Code_Detector2cb_13(bind)
-_append(bind[:ary_1],bind[:autovar_9])
+Result
 end
 def vars_in_Dead_Code_Detector2cb_14(bind)
-@marked<<@src.self
+@src.self
 end
 def vars_in_Dead_Code_Detector2cb_15(bind)
-Key
+_append(bind[:ary_1],bind[:autovar_8])
 end
 def vars_in_Dead_Code_Detector2cb_16(bind)
-@src.self
+Strin
 end
 def vars_in_Dead_Code_Detector2cb_17(bind)
-_append(bind[:ary_1],bind[:autovar_11])
+_append(bind[:ary_1],bind[:autovar_10])
 end
 def vars_in_Dead_Code_Detector2cb_18(bind)
-@marked<<@src.self
+Args
 end
 def vars_in_Dead_Code_Detector2cb_19(bind)
-Local
+_append(bind[:ary_1],bind[:autovar_12])
 end
 def vars_in_Dead_Code_Detector2cb_2(bind)
-Act
-end
-def vars_in_Dead_Code_Detector2cb_20(bind)
-@src.self
-end
-def vars_in_Dead_Code_Detector2cb_21(bind)
-_append(bind[:ary_1],bind[:autovar_13])
-end
-def vars_in_Dead_Code_Detector2cb_22(bind)
 Global
 end
+def vars_in_Dead_Code_Detector2cb_20(bind)
+Bind
+end
+def vars_in_Dead_Code_Detector2cb_21(bind)
+@src.name
+end
+def vars_in_Dead_Code_Detector2cb_22(bind)
+bind[:autovar_14]=[bind[:autovar_14]]
+end
 def vars_in_Dead_Code_Detector2cb_23(bind)
-@src.self
+_append(bind[:ary_1],bind[:autovar_15])
 end
 def vars_in_Dead_Code_Detector2cb_24(bind)
-_append(bind[:ary_1],bind[:autovar_9])
+Local
 end
 def vars_in_Dead_Code_Detector2cb_25(bind)
-@marked<<@src.self
-end
-def vars_in_Dead_Code_Detector2cb_26(bind)
-Act
-end
-def vars_in_Dead_Code_Detector2cb_27(bind)
 @src.self
 end
+def vars_in_Dead_Code_Detector2cb_26(bind)
+_append(bind[:ary_1],bind[:autovar_17])
+end
+def vars_in_Dead_Code_Detector2cb_27(bind)
+Global
+end
 def vars_in_Dead_Code_Detector2cb_28(bind)
-_append(bind[:ary_1],bind[:autovar_2])
+@src.self
 end
 def vars_in_Dead_Code_Detector2cb_29(bind)
-Key
+_append(bind[:ary_1],bind[:autovar_2])
 end
 def vars_in_Dead_Code_Detector2cb_3(bind)
 @src.self
 end
 def vars_in_Dead_Code_Detector2cb_30(bind)
-@src.self
-end
-def vars_in_Dead_Code_Detector2cb_31(bind)
-_append(bind[:ary_1],bind[:autovar_11])
-end
-def vars_in_Dead_Code_Detector2cb_32(bind)
 @marked<<@src.self
 end
-def vars_in_Dead_Code_Detector2cb_33(bind)
-Result
+def vars_in_Dead_Code_Detector2cb_31(bind)
+Act
 end
-def vars_in_Dead_Code_Detector2cb_34(bind)
+def vars_in_Dead_Code_Detector2cb_32(bind)
 @src.self
 end
+def vars_in_Dead_Code_Detector2cb_33(bind)
+_append(bind[:ary_1],bind[:autovar_4])
+end
+def vars_in_Dead_Code_Detector2cb_34(bind)
+Key
+end
 def vars_in_Dead_Code_Detector2cb_35(bind)
-_append(bind[:ary_1],bind[:autovar_15])
+@src.self
 end
 def vars_in_Dead_Code_Detector2cb_36(bind)
-Strin
+_append(bind[:ary_1],bind[:autovar_6])
 end
 def vars_in_Dead_Code_Detector2cb_37(bind)
-_append(bind[:ary_1],bind[:autovar_17])
+@marked<<@src.self
 end
 def vars_in_Dead_Code_Detector2cb_38(bind)
-Args
+Result
 end
 def vars_in_Dead_Code_Detector2cb_39(bind)
-_append(bind[:ary_1],bind[:autovar_4])
+@src.self
 end
 def vars_in_Dead_Code_Detector2cb_4(bind)
 _append(bind[:ary_1],bind[:autovar_2])
 end
 def vars_in_Dead_Code_Detector2cb_40(bind)
-Bind
+_append(bind[:ary_1],bind[:autovar_8])
 end
 def vars_in_Dead_Code_Detector2cb_41(bind)
-@src.name
+Strin
 end
 def vars_in_Dead_Code_Detector2cb_42(bind)
-bind[:autovar_6]=[bind[:autovar_6]]
+_append(bind[:ary_1],bind[:autovar_10])
 end
 def vars_in_Dead_Code_Detector2cb_43(bind)
-_append(bind[:ary_1],bind[:autovar_7])
-end
-def vars_in_Dead_Code_Detector2cb_44(bind)
-Local
-end
-def vars_in_Dead_Code_Detector2cb_45(bind)
-@src.self
-end
-def vars_in_Dead_Code_Detector2cb_46(bind)
-_append(bind[:ary_1],bind[:autovar_13])
-end
-def vars_in_Dead_Code_Detector2cb_47(bind)
-Result
-end
-def vars_in_Dead_Code_Detector2cb_48(bind)
-@src.self
-end
-def vars_in_Dead_Code_Detector2cb_49(bind)
-_append(bind[:ary_1],bind[:autovar_15])
-end
-def vars_in_Dead_Code_Detector2cb_5(bind)
 Args
 end
+def vars_in_Dead_Code_Detector2cb_44(bind)
+_append(bind[:ary_1],bind[:autovar_12])
+end
+def vars_in_Dead_Code_Detector2cb_45(bind)
+Bind
+end
+def vars_in_Dead_Code_Detector2cb_46(bind)
+@src.name
+end
+def vars_in_Dead_Code_Detector2cb_47(bind)
+bind[:autovar_14]=[bind[:autovar_14]]
+end
+def vars_in_Dead_Code_Detector2cb_48(bind)
+_append(bind[:ary_1],bind[:autovar_15])
+end
+def vars_in_Dead_Code_Detector2cb_49(bind)
+Local
+end
+def vars_in_Dead_Code_Detector2cb_5(bind)
+@marked<<@src.self
+end
 def vars_in_Dead_Code_Detector2cb_50(bind)
-Strin
+@src.self
 end
 def vars_in_Dead_Code_Detector2cb_51(bind)
 _append(bind[:ary_1],bind[:autovar_17])
 end
 def vars_in_Dead_Code_Detector2cb_6(bind)
-_append(bind[:ary_1],bind[:autovar_4])
+Act
 end
 def vars_in_Dead_Code_Detector2cb_7(bind)
-Bind
+@src.self
 end
 def vars_in_Dead_Code_Detector2cb_8(bind)
-@src.name
+_append(bind[:ary_1],bind[:autovar_4])
 end
 def vars_in_Dead_Code_Detector2cb_9(bind)
-bind[:autovar_6]=[bind[:autovar_6]]
+Key
 end
 def visit_Dead_Code_Detector2cb_1(bind)
-Act
+Apply
 end
 def visit_Dead_Code_Detector2cb_10(bind)
 bind[:autovar_6]=[bind[:autovar_6]]
@@ -246,58 +246,58 @@ def visit_Dead_Code_Detector2cb_14(bind)
 bind[:var_1].each{|w| @edges.add(bind[:v_1],w)};bind[:this_1]
 end
 def visit_Dead_Code_Detector2cb_15(bind)
-Many
+Result
 end
 def visit_Dead_Code_Detector2cb_16(bind)
-@src.o
+@src.vars
 end
 def visit_Dead_Code_Detector2cb_17(bind)
 bind[:autovar_9]=[bind[:autovar_9]]
 end
 def visit_Dead_Code_Detector2cb_18(bind)
-@marked+=bind[:var_1]
+bind[:var_1].each{|w| @edges.add(bind[:this_1],w) } ; bind[:this_1]
 end
 def visit_Dead_Code_Detector2cb_19(bind)
 Pass
 end
 def visit_Dead_Code_Detector2cb_2(bind)
-@marked<<bind[:this_1] if @src.pred
+@marked+=bind[:var_1]
 end
 def visit_Dead_Code_Detector2cb_20(bind)
 @src.var
 end
 def visit_Dead_Code_Detector2cb_21(bind)
-bind[:autovar_11]=[bind[:autovar_11]]
+bind[:autovar_12]=[bind[:autovar_12]]
 end
 def visit_Dead_Code_Detector2cb_22(bind)
 @marked+=bind[:var_1]
 end
 def visit_Dead_Code_Detector2cb_23(bind)
-Result
+Many
 end
 def visit_Dead_Code_Detector2cb_24(bind)
-@src.vars
+@src.o
 end
 def visit_Dead_Code_Detector2cb_25(bind)
-bind[:autovar_13]=[bind[:autovar_13]]
+bind[:autovar_14]=[bind[:autovar_14]]
 end
 def visit_Dead_Code_Detector2cb_26(bind)
-bind[:var_1].each{|w| @edges.add(bind[:this_1],w) } ; bind[:this_1]
+@marked+=bind[:var_1]
 end
 def visit_Dead_Code_Detector2cb_3(bind)
-@src.ary
+Act
 end
 def visit_Dead_Code_Detector2cb_4(bind)
-bind[:autovar_2]=[bind[:autovar_2]]
+@marked<<bind[:this_1] if @src.pred
 end
 def visit_Dead_Code_Detector2cb_5(bind)
-bind[:var_1].each{|bind[:v_1]| @edges.add(bind[:v_1],bind[:this_1]); @edges.add(bind[:this_1],bind[:v_1]);}; bind[:this_1]
+@src.ary
 end
 def visit_Dead_Code_Detector2cb_6(bind)
-Apply
+bind[:autovar_3]=[bind[:autovar_3]]
 end
 def visit_Dead_Code_Detector2cb_7(bind)
-@marked+=bind[:var_1]
+bind[:var_1].each{|bind[:v_1]| @edges.add(bind[:v_1],bind[:this_1]); @edges.add(bind[:this_1],bind[:v_1]);}; bind[:this_1]
 end
 def visit_Dead_Code_Detector2cb_8(bind)
 Bind
@@ -311,9 +311,9 @@ end
 
 class Dead_Code_Deleter2 < Traverser
 def switchcb3(e)
-return 0 if e.is_a?(Act)
-return 1 if e.is_a?(Bind)
-return 2 if e.is_a?(Local)
+return 0 if e.is_a?(Local)
+return 1 if e.is_a?(Act)
+return 2 if e.is_a?(Bind)
 return 3 if e.is_a?(Result)
 return 4
 end
@@ -369,13 +369,13 @@ def traverse_item_Dead_Code_Deleter2cb_4(bind)
 AmethystAST
 end
 def visit_Dead_Code_Deleter2cb_1(bind)
-Act
+Local
 end
 def visit_Dead_Code_Deleter2cb_10(bind)
 @src.self
 end
 def visit_Dead_Code_Deleter2cb_11(bind)
-@reachable[bind[:this_1]] ? bind[:this_1] : Act[]
+@reachable[bind[:name_1]] ? bind[:this_1] : bind[:expr_1]
 end
 def visit_Dead_Code_Deleter2cb_12(bind)
 Result
@@ -393,22 +393,22 @@ def visit_Dead_Code_Deleter2cb_3(bind)
 @reachable[bind[:this_1]] ? bind[:this_1] : Act[]
 end
 def visit_Dead_Code_Deleter2cb_4(bind)
-Bind
+Act
 end
 def visit_Dead_Code_Deleter2cb_5(bind)
-@src.name
-end
-def visit_Dead_Code_Deleter2cb_6(bind)
-@src.expr
-end
-def visit_Dead_Code_Deleter2cb_7(bind)
 @src.self
 end
+def visit_Dead_Code_Deleter2cb_6(bind)
+@reachable[bind[:this_1]] ? bind[:this_1] : Act[]
+end
+def visit_Dead_Code_Deleter2cb_7(bind)
+Bind
+end
 def visit_Dead_Code_Deleter2cb_8(bind)
-@reachable[bind[:name_1]] ? bind[:this_1] : bind[:expr_1]
+@src.name
 end
 def visit_Dead_Code_Deleter2cb_9(bind)
-Local
+@src.expr
 end
 
 end
@@ -560,17 +560,17 @@ end
 
 class Move_Assignments2 < Traverser
 def switchcb4(e)
-return 0 if e.is_a?(Object)
-return 1 if e.is_a?(Or)
+return 0 if e.is_a?(Or)
+return 1 if e.is_a?(Seq)
 return 2 if e.is_a?(Pass)
-return 3 if e.is_a?(Seq)
+return 3 if e.is_a?(Object)
 return 4
 end
 def switchcb5(e)
-return 0 if e.is_a?(Object)
-return 1 if e.is_a?(Or)
+return 0 if e.is_a?(Or)
+return 1 if e.is_a?(Seq)
 return 2 if e.is_a?(Pass)
-return 3 if e.is_a?(Seq)
+return 3 if e.is_a?(Object)
 return 4
 end
 def clas_Move_Assignments2cb_1(bind)
@@ -586,67 +586,67 @@ def move_Move_Assignments2cb_1(bind)
 Or
 end
 def move_Move_Assignments2cb_10(bind)
-@src.to
+Pass
 end
 def move_Move_Assignments2cb_11(bind)
-bind[:autovar_9]=[bind[:autovar_9]]
+@src.var
 end
 def move_Move_Assignments2cb_12(bind)
-@src.enter
+@src.to
 end
 def move_Move_Assignments2cb_13(bind)
-Pass.create( {:ary=>bind[:ary_1],:enter=>bind[:enter_1],:to=>bind[:to_1],:var=>bind[:var_1] })
+bind[:autovar_9]=[bind[:autovar_9]]
 end
 def move_Move_Assignments2cb_14(bind)
-_Bind(bind[:name_1],bind[:it_1],bind[:append_1])
+@src.enter
 end
 def move_Move_Assignments2cb_15(bind)
-Or
+Pass.create( {:ary=>bind[:ary_1],:enter=>bind[:enter_1],:to=>bind[:to_1],:var=>bind[:var_1] })
 end
 def move_Move_Assignments2cb_16(bind)
-_append(bind[:autovar_2],bind[:autovar_3])
-end
-def move_Move_Assignments2cb_17(bind)
-Or.create( {:ary=>bind[:ary_1] })
-end
-def move_Move_Assignments2cb_18(bind)
 _Bind(bind[:name_1],bind[:it_1],bind[:append_1])
 end
+def move_Move_Assignments2cb_17(bind)
+Or
+end
+def move_Move_Assignments2cb_18(bind)
+_append(bind[:autovar_2],bind[:autovar_3])
+end
 def move_Move_Assignments2cb_19(bind)
-Pass
+Or.create( {:ary=>bind[:ary_1] })
 end
 def move_Move_Assignments2cb_2(bind)
 _append(bind[:autovar_2],bind[:autovar_3])
 end
 def move_Move_Assignments2cb_20(bind)
-@src.var
-end
-def move_Move_Assignments2cb_21(bind)
-@src.to
-end
-def move_Move_Assignments2cb_22(bind)
-bind[:autovar_9]=[bind[:autovar_9]]
-end
-def move_Move_Assignments2cb_23(bind)
-@src.enter
-end
-def move_Move_Assignments2cb_24(bind)
-Pass.create( {:ary=>bind[:ary_1],:enter=>bind[:enter_1],:to=>bind[:to_1],:var=>bind[:var_1] })
-end
-def move_Move_Assignments2cb_25(bind)
-_Bind(bind[:name_1],bind[:it_1],bind[:append_1])
-end
-def move_Move_Assignments2cb_26(bind)
 Seq
 end
-def move_Move_Assignments2cb_27(bind)
+def move_Move_Assignments2cb_21(bind)
 bind[:autovar_6]=[bind[:autovar_6]]
 end
-def move_Move_Assignments2cb_28(bind)
+def move_Move_Assignments2cb_22(bind)
 _append(bind[:autovar_5],bind[:autovar_7])
 end
-def move_Move_Assignments2cb_29(bind)
+def move_Move_Assignments2cb_23(bind)
 Seq.create( {:ary=>bind[:ary_1] })
+end
+def move_Move_Assignments2cb_24(bind)
+Pass
+end
+def move_Move_Assignments2cb_25(bind)
+@src.var
+end
+def move_Move_Assignments2cb_26(bind)
+@src.to
+end
+def move_Move_Assignments2cb_27(bind)
+bind[:autovar_9]=[bind[:autovar_9]]
+end
+def move_Move_Assignments2cb_28(bind)
+@src.enter
+end
+def move_Move_Assignments2cb_29(bind)
+Pass.create( {:ary=>bind[:ary_1],:enter=>bind[:enter_1],:to=>bind[:to_1],:var=>bind[:var_1] })
 end
 def move_Move_Assignments2cb_3(bind)
 Or.create( {:ary=>bind[:ary_1] })
@@ -655,22 +655,22 @@ def move_Move_Assignments2cb_30(bind)
 _Bind(bind[:name_1],bind[:it_1],bind[:append_1])
 end
 def move_Move_Assignments2cb_4(bind)
-Seq
+_Bind(bind[:name_1],bind[:it_1],bind[:append_1])
 end
 def move_Move_Assignments2cb_5(bind)
-bind[:autovar_6]=[bind[:autovar_6]]
+Seq
 end
 def move_Move_Assignments2cb_6(bind)
-_append(bind[:autovar_5],bind[:autovar_7])
+bind[:autovar_6]=[bind[:autovar_6]]
 end
 def move_Move_Assignments2cb_7(bind)
-Seq.create( {:ary=>bind[:ary_1] })
+_append(bind[:autovar_5],bind[:autovar_7])
 end
 def move_Move_Assignments2cb_8(bind)
-Pass
+Seq.create( {:ary=>bind[:ary_1] })
 end
 def move_Move_Assignments2cb_9(bind)
-@src.var
+_Bind(bind[:name_1],bind[:it_1],bind[:append_1])
 end
 def traverse_Move_Assignments2cb_1(bind)
 @src.self
@@ -703,85 +703,85 @@ def visit_Move_Assignments2cb_1(bind)
 Bind
 end
 def visit_Move_Assignments2cb_10(bind)
-bind[:autovar_8]=[bind[:autovar_8]]
+Seq
 end
 def visit_Move_Assignments2cb_11(bind)
-_append(bind[:autovar_7],bind[:autovar_9])
+bind[:autovar_8]=[bind[:autovar_8]]
 end
 def visit_Move_Assignments2cb_12(bind)
-Seq.create( {:ary=>bind[:ary_1] })
+_append(bind[:autovar_7],bind[:autovar_9])
 end
 def visit_Move_Assignments2cb_13(bind)
-Pass
+Seq.create( {:ary=>bind[:ary_1] })
 end
 def visit_Move_Assignments2cb_14(bind)
-@src.var
+_Bind(bind[:name_2],bind[:it_1],bind[:append_2])
 end
 def visit_Move_Assignments2cb_15(bind)
-@src.to
+Pass
 end
 def visit_Move_Assignments2cb_16(bind)
-bind[:autovar_11]=[bind[:autovar_11]]
+@src.var
 end
 def visit_Move_Assignments2cb_17(bind)
-@src.enter
+@src.to
 end
 def visit_Move_Assignments2cb_18(bind)
-Pass.create( {:ary=>bind[:ary_1],:enter=>bind[:enter_1],:to=>bind[:to_1],:var=>bind[:var_1] })
+bind[:autovar_11]=[bind[:autovar_11]]
 end
 def visit_Move_Assignments2cb_19(bind)
-_Bind(bind[:name_2],bind[:it_1],bind[:append_2])
+@src.enter
 end
 def visit_Move_Assignments2cb_2(bind)
 @src.name
 end
 def visit_Move_Assignments2cb_20(bind)
-Or
+Pass.create( {:ary=>bind[:ary_1],:enter=>bind[:enter_1],:to=>bind[:to_1],:var=>bind[:var_1] })
 end
 def visit_Move_Assignments2cb_21(bind)
-_append(bind[:autovar_4],bind[:autovar_5])
-end
-def visit_Move_Assignments2cb_22(bind)
-Or.create( {:ary=>bind[:ary_1] })
-end
-def visit_Move_Assignments2cb_23(bind)
 _Bind(bind[:name_2],bind[:it_1],bind[:append_2])
 end
+def visit_Move_Assignments2cb_22(bind)
+Or
+end
+def visit_Move_Assignments2cb_23(bind)
+_append(bind[:autovar_4],bind[:autovar_5])
+end
 def visit_Move_Assignments2cb_24(bind)
-Pass
+Or.create( {:ary=>bind[:ary_1] })
 end
 def visit_Move_Assignments2cb_25(bind)
-@src.var
+Seq
 end
 def visit_Move_Assignments2cb_26(bind)
-@src.to
+bind[:autovar_8]=[bind[:autovar_8]]
 end
 def visit_Move_Assignments2cb_27(bind)
-bind[:autovar_11]=[bind[:autovar_11]]
+_append(bind[:autovar_7],bind[:autovar_9])
 end
 def visit_Move_Assignments2cb_28(bind)
-@src.enter
+Seq.create( {:ary=>bind[:ary_1] })
 end
 def visit_Move_Assignments2cb_29(bind)
-Pass.create( {:ary=>bind[:ary_1],:enter=>bind[:enter_1],:to=>bind[:to_1],:var=>bind[:var_1] })
+Pass
 end
 def visit_Move_Assignments2cb_3(bind)
 @src.expr
 end
 def visit_Move_Assignments2cb_30(bind)
-_Bind(bind[:name_2],bind[:it_1],bind[:append_2])
+@src.var
 end
 def visit_Move_Assignments2cb_31(bind)
-Seq
+@src.to
 end
 def visit_Move_Assignments2cb_32(bind)
-bind[:autovar_8]=[bind[:autovar_8]]
+bind[:autovar_11]=[bind[:autovar_11]]
 end
 def visit_Move_Assignments2cb_33(bind)
-_append(bind[:autovar_7],bind[:autovar_9])
+@src.enter
 end
 def visit_Move_Assignments2cb_34(bind)
-Seq.create( {:ary=>bind[:ary_1] })
+Pass.create( {:ary=>bind[:ary_1],:enter=>bind[:enter_1],:to=>bind[:to_1],:var=>bind[:var_1] })
 end
 def visit_Move_Assignments2cb_35(bind)
 _Bind(bind[:name_2],bind[:it_1],bind[:append_2])
@@ -802,7 +802,7 @@ def visit_Move_Assignments2cb_8(bind)
 Or.create( {:ary=>bind[:ary_1] })
 end
 def visit_Move_Assignments2cb_9(bind)
-Seq
+_Bind(bind[:name_2],bind[:it_1],bind[:append_2])
 end
 
 end
@@ -811,6 +811,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='472975b3f408eeb0e8dbda8a6e6e9c11'
+ raise "invalid version" if r!='a861d2384db9acae36b1198a7f985aab'
 end
   require 'compiled/dead_code_elimination2_c'
