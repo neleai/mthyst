@@ -125,7 +125,7 @@ def traverse_item_Analyze_Variables2cb_2(bind)
 Array
 end
 def traverse_item_Analyze_Variables2cb_3(bind)
-_append(bind[:autovar_2],bind[:autovar_3])
+bind[:ar_1]<<bind[:it_1]
 end
 def traverse_item_Analyze_Variables2cb_4(bind)
 AmethystAST
@@ -197,7 +197,7 @@ def traverse_item_Remap_Actscb_2(bind)
 Array
 end
 def traverse_item_Remap_Actscb_3(bind)
-_append(bind[:autovar_2],bind[:autovar_3])
+bind[:ar_1]<<bind[:it_1]
 end
 def traverse_item_Remap_Actscb_4(bind)
 AmethystAST
@@ -213,6 +213,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='621567161f690bcdd8b22822cd13b989'
+ raise "invalid version" if r!='e87938c7ae40831e4d8511eca9705524'
 end
   require 'compiled/detect_variables2_c'

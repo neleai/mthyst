@@ -81,7 +81,7 @@ def traverse_item_Seq_Or_Optimizercb_2(bind)
 Array
 end
 def traverse_item_Seq_Or_Optimizercb_3(bind)
-_append(bind[:autovar_2],bind[:autovar_3])
+bind[:ar_1]<<bind[:it_1]
 end
 def traverse_item_Seq_Or_Optimizercb_4(bind)
 AmethystAST
@@ -136,6 +136,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='78f1888086ba2762909f6296faa377f7'
+ raise "invalid version" if r!='1849760e8901cb0d5f128c760e7819fb'
 end
   require 'compiled/optimizer_and_or_c'

@@ -731,8 +731,17 @@ ame_setsrc(self,BGET(autovar_37)); ame_setpos(self,0); ame_setlen(self,FIX2INT(r
   it=rb_str_new2("chr"); arg0=it; it=CALL(label,1 ,arg0); FAILTEST(pass25);
  BSET(chr_1,it); it=CALL(trans_AmethystCTranslatorcb_90,1,bind); it=CALL(trans_AmethystCTranslatorcb_91,1,bind); 
  BSET(s_2,it); int oldpos35; while(1){oldpos35=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break8);
- BSET(c_1,it);   it=AmethystCTranslator_trans(self ); FAILTEST(break8);
- BSET(t_1,it); it=CALL(trans_AmethystCTranslatorcb_92,1,bind);  if (IGET(stop)!=Qnil){{oldpos35=ame_getpos(self);goto break8;} } } break8: ISET(stop,Qnil);  ame_setpos(self,oldpos35); it=CALL(trans_AmethystCTranslatorcb_93,1,bind); 
+ BSET(autovar_38,it); int oldpos36=ame_getpos(self); int oldlen26=ame_getlen(self); VALUE oldsrc26=ame_getsrc(self); int fail26=0;
+ame_setsrc(self,BGET(autovar_38)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
+   it=AmethystCore_anything(self ); FAILTEST(pass26);
+ BSET(c_1,it);   it=AmethystCTranslator_trans(self ); FAILTEST(pass26);
+ BSET(t_1,it); 
+	if (CALL(eof,0)==failobj) goto pass26;
+	goto success26;
+	pass26: fail26=1;
+	success26: ame_setsrc(self,oldsrc26); ame_setpos(self,oldpos36); ame_setlen(self,oldlen26);
+	if(fail26) goto break8;
+it=CALL(trans_AmethystCTranslatorcb_92,1,bind);  if (IGET(stop)!=Qnil){{oldpos35=ame_getpos(self);goto break8;} } } break8: ISET(stop,Qnil);  ame_setpos(self,oldpos35); it=CALL(trans_AmethystCTranslatorcb_93,1,bind); 
  BSET(_result_1,it); 
 	if (CALL(eof,0)==failobj) goto pass25;
 	goto success25;
@@ -765,4 +774,4 @@ rb_define_method(cls_AmethystCTranslator,"spaces",AmethystCTranslator_spaces,0);
 rb_define_method(cls_AmethystCTranslator,"token",AmethystCTranslator_token,1);
 rb_define_method(cls_AmethystCTranslator,"trans",AmethystCTranslator_trans,0);
 rb_define_method(cls_AmethystCTranslator,"transfn",AmethystCTranslator_transfn,0);
- rb_eval_string("testversion('273113a68f8c7383c2352e21aa932bfe')");}
+ rb_eval_string("testversion('4fc5c1f363288399d060aa2e997dbe40')");}

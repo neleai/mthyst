@@ -134,7 +134,7 @@ def traverse_item_Dataflowcb_2(bind)
 Array
 end
 def traverse_item_Dataflowcb_3(bind)
-_append(bind[:autovar_2],bind[:autovar_3])
+bind[:ar_1]<<bind[:it_1]
 end
 def traverse_item_Dataflowcb_4(bind)
 AmethystAST
@@ -474,7 +474,7 @@ def traverse_item_Dead_Code_Deleter3cb_2(bind)
 Array
 end
 def traverse_item_Dead_Code_Deleter3cb_3(bind)
-_append(bind[:autovar_2],bind[:autovar_3])
+bind[:ar_1]<<bind[:it_1]
 end
 def traverse_item_Dead_Code_Deleter3cb_4(bind)
 AmethystAST
@@ -552,6 +552,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='cf7bc37f5cdd3e94e63d6dc15e39a065'
+ raise "invalid version" if r!='2bf4c67e941cede52dfd4fd80889cdf9'
 end
   require 'compiled/dataflow_ssa_c'

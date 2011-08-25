@@ -4,7 +4,7 @@ class Traverser < Amethyst
 end
 amethyst Traverser {
 	traverse_item = visit:a  {@@changed=true} {a}
-                      | Array[ traverse_item* ]
+                      | Array[ {[]}:ar (traverse_item:{ar<<it})* {ar}]
 											| AmethystAST[ traverse ]
 											| .
 	traverse = .*

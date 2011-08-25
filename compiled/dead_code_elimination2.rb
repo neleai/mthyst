@@ -69,7 +69,7 @@ def traverse_item_Dead_Code_Detector2cb_2(bind)
 Array
 end
 def traverse_item_Dead_Code_Detector2cb_3(bind)
-_append(bind[:autovar_2],bind[:autovar_3])
+bind[:ar_1]<<bind[:it_1]
 end
 def traverse_item_Dead_Code_Detector2cb_4(bind)
 AmethystAST
@@ -363,7 +363,7 @@ def traverse_item_Dead_Code_Deleter2cb_2(bind)
 Array
 end
 def traverse_item_Dead_Code_Deleter2cb_3(bind)
-_append(bind[:autovar_2],bind[:autovar_3])
+bind[:ar_1]<<bind[:it_1]
 end
 def traverse_item_Dead_Code_Deleter2cb_4(bind)
 AmethystAST
@@ -453,7 +453,7 @@ def traverse_item_Communize_Or2cb_2(bind)
 Array
 end
 def traverse_item_Communize_Or2cb_3(bind)
-_append(bind[:autovar_2],bind[:autovar_3])
+bind[:ar_1]<<bind[:it_1]
 end
 def traverse_item_Communize_Or2cb_4(bind)
 AmethystAST
@@ -518,7 +518,7 @@ def traverse_item_Communize_Or3cb_2(bind)
 Array
 end
 def traverse_item_Communize_Or3cb_3(bind)
-_append(bind[:autovar_2],bind[:autovar_3])
+bind[:ar_1]<<bind[:it_1]
 end
 def traverse_item_Communize_Or3cb_4(bind)
 AmethystAST
@@ -694,7 +694,7 @@ def traverse_item_Move_Assignments2cb_2(bind)
 Array
 end
 def traverse_item_Move_Assignments2cb_3(bind)
-_append(bind[:autovar_2],bind[:autovar_3])
+bind[:ar_1]<<bind[:it_1]
 end
 def traverse_item_Move_Assignments2cb_4(bind)
 AmethystAST
@@ -811,6 +811,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='a4e4e07dbcd577f697cebf6349cecf46'
+ raise "invalid version" if r!='472975b3f408eeb0e8dbda8a6e6e9c11'
 end
   require 'compiled/dead_code_elimination2_c'

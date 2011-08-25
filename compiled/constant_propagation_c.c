@@ -67,8 +67,8 @@ alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
  BSET(autovar_1,it); int oldpos2=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,BGET(autovar_1)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
  it=rb_ary_new3(0);
- BSET(autovar_2,it); int oldpos3; while(1){oldpos3=ame_getpos(self);   it=Constant_Traverser_traverse_item(self ); FAILTEST(break1);
- BSET(autovar_3,it); it=CALL(traverse_item_Constant_Traversercb_3,1,bind);  if (IGET(stop)!=Qnil){{oldpos3=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos3); it=BGET(autovar_2);
+ BSET(ar_1,it); int oldpos3; while(1){oldpos3=ame_getpos(self);   it=Constant_Traverser_traverse_item(self ); FAILTEST(break1);
+ BSET(it_1,it); it=CALL(traverse_item_Constant_Traversercb_3,1,bind);  if (IGET(stop)!=Qnil){{oldpos3=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos3); it=BGET(ar_1);
  BSET(_result_1,it); 
 	if (CALL(eof,0)==failobj) goto pass1;
 	goto success1;
@@ -79,8 +79,8 @@ ame_setsrc(self,BGET(autovar_1)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb
 ISET(cut,Qnil);goto accept1;
 alt1_3: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   it=CALL(traverse_item_Constant_Traversercb_4,1,bind);  arg0=it; it=Constant_Traverser_clas(self ,arg0); FAILTEST(alt1_4);
- BSET(autovar_4,it); int oldpos4=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
-ame_setsrc(self,BGET(autovar_4)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
+ BSET(autovar_2,it); int oldpos4=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
+ame_setsrc(self,BGET(autovar_2)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=Constant_Traverser_traverse(self ); FAILTEST(pass2);
  BSET(_result_1,it); 
 	if (CALL(eof,0)==failobj) goto pass2;
@@ -152,4 +152,4 @@ rb_define_method(cls_Constant_Traverser,"root",Constant_Traverser_root,0);
 rb_define_method(cls_Constant_Traverser,"traverse",Constant_Traverser_traverse,0);
 rb_define_method(cls_Constant_Traverser,"traverse_item",Constant_Traverser_traverse_item,0);
 rb_define_method(cls_Constant_Traverser,"visit",Constant_Traverser_visit,0);
- rb_eval_string("testversion('bb6bb5508d591d86f857276074e091c2')");}
+ rb_eval_string("testversion('d567fe9c9042f3429ad0f766e8a229d1')");}

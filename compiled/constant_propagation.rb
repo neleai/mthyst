@@ -39,7 +39,7 @@ def traverse_item_Constant_Traversercb_2(bind)
 Array
 end
 def traverse_item_Constant_Traversercb_3(bind)
-_append(bind[:autovar_2],bind[:autovar_3])
+bind[:ar_1]<<bind[:it_1]
 end
 def traverse_item_Constant_Traversercb_4(bind)
 AmethystAST
@@ -76,6 +76,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='bb6bb5508d591d86f857276074e091c2'
+ raise "invalid version" if r!='d567fe9c9042f3429ad0f766e8a229d1'
 end
   require 'compiled/constant_propagation_c'

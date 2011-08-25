@@ -125,7 +125,7 @@ ame_setsrc(self,#{bget(@var.desc)}); ame_setpos(self,0); ame_setlen(self,FIX2INT
 				| Switch[ label("chr"):chr 
 									{@@defs<<@defs if @defs}
 									{"char #{chr}=#{@act};  switch(#{chr}){"}:s
-										( .:c trans:t {s+="case #{c}:; #{t} break;"})*
+										( [.:c trans:t] {s+="case #{c}:; #{t} break;"})*
 									{s+"default: goto #{@@faillabel};}"}
 								]
 

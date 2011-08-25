@@ -31,7 +31,7 @@ def traverse_item_Renamer2cb_2(bind)
 Array
 end
 def traverse_item_Renamer2cb_3(bind)
-_append(bind[:autovar_2],bind[:autovar_3])
+bind[:ar_1]<<bind[:it_1]
 end
 def traverse_item_Renamer2cb_4(bind)
 AmethystAST
@@ -85,7 +85,7 @@ def traverse_item_DetectCallscb_2(bind)
 Array
 end
 def traverse_item_DetectCallscb_3(bind)
-_append(bind[:autovar_2],bind[:autovar_3])
+bind[:ar_1]<<bind[:it_1]
 end
 def traverse_item_DetectCallscb_4(bind)
 AmethystAST
@@ -157,7 +157,7 @@ def traverse_item_Inliner2cb_2(bind)
 Array
 end
 def traverse_item_Inliner2cb_3(bind)
-_append(bind[:autovar_2],bind[:autovar_3])
+bind[:ar_1]<<bind[:it_1]
 end
 def traverse_item_Inliner2cb_4(bind)
 AmethystAST
@@ -179,6 +179,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='5e1790af9a631219d2f08279f66dde7a'
+ raise "invalid version" if r!='85d3f3618ca87cd356dd374a0be8b3f3'
 end
   require 'compiled/inliner2_c'

@@ -29,7 +29,7 @@ def traverse_item_Traversercb_2(bind)
 Array
 end
 def traverse_item_Traversercb_3(bind)
-_append(bind[:autovar_2],bind[:autovar_3])
+bind[:ar_1]<<bind[:it_1]
 end
 def traverse_item_Traversercb_4(bind)
 AmethystAST
@@ -71,7 +71,7 @@ def traverse_item_Detectorcb_2(bind)
 Array
 end
 def traverse_item_Detectorcb_3(bind)
-_append(bind[:autovar_2],bind[:autovar_3])
+bind[:ar_1]<<bind[:it_1]
 end
 def traverse_item_Detectorcb_4(bind)
 AmethystAST
@@ -87,6 +87,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='36499a3b8dd93ea9f9a05840d72eba14'
+ raise "invalid version" if r!='6e898c43bfc47c627ad7f7b4855fac33'
 end
   require 'compiled/traverser_c'

@@ -580,6 +580,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='273113a68f8c7383c2352e21aa932bfe'
+ raise "invalid version" if r!='4fc5c1f363288399d060aa2e997dbe40'
 end
   require 'compiled/ctranslator2_c'
