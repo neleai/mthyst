@@ -60,6 +60,8 @@ amethyst AmethystCTranslator < Amethyst {
 
 
 	rbcode = {"class #{@@grammar} < #{@@parent}\n"}:s
+
+	{s<<@@defs*"\n"}
 	{@@callbacks.to_a.sort}=>[([:k :v]   {"def #{k}(bind)\n#{v}\nend\n"})*:x ]
 	{s+=x*""}
 	{s+="\nend"; s}
@@ -69,7 +71,6 @@ amethyst AmethystCTranslator < Amethyst {
 						{	s<<@@header.sort*"\n"+"\n"
 							s<<t.sort*"\n"
 							s<<@@lambdas*"\n"
-							s<<@@defs*"\n"
         		  init="\n cls_#{@name}=rb_define_class(\"#{@name}\",rb_const_get(rb_cObject,rb_intern(\"#{@@parent}\"))); 
 failobj=rb_eval_string(\"FAIL\");
 #{@@defmethods.sort*"\n" }

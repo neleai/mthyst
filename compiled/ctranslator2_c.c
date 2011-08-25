@@ -86,8 +86,8 @@ fail: return failobj; }
 VALUE AmethystCTranslator_rbcode(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 it=CALL(rbcode_AmethystCTranslatorcb_1,1,bind); 
- BSET(s_1,it); it=CALL(rbcode_AmethystCTranslatorcb_2,1,bind); 
- BSET(autovar_1,it); it=CALL(rbcode_AmethystCTranslatorcb_3,1,bind); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
+ BSET(s_1,it); it=CALL(rbcode_AmethystCTranslatorcb_2,1,bind); it=CALL(rbcode_AmethystCTranslatorcb_3,1,bind); 
+ BSET(autovar_1,it); it=CALL(rbcode_AmethystCTranslatorcb_4,1,bind); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,BGET(autovar_1)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCore_anything(self ); FAILTEST(pass1);
  BSET(autovar_2,it); int oldpos2=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
@@ -104,8 +104,8 @@ ame_setsrc(self,BGET(autovar_4)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb
 	pass3: fail3=1;
 	success3: ame_setsrc(self,oldsrc3); ame_setpos(self,oldpos4); ame_setlen(self,oldlen3);
 	if(fail3) goto break1;
-it=CALL(rbcode_AmethystCTranslatorcb_4,1,bind); 
- BSET(autovar_5,it); it=CALL(rbcode_AmethystCTranslatorcb_5,1,bind);  if (IGET(stop)!=Qnil){{oldpos3=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos3); it=BGET(autovar_3);
+it=CALL(rbcode_AmethystCTranslatorcb_5,1,bind); 
+ BSET(autovar_5,it); it=CALL(rbcode_AmethystCTranslatorcb_6,1,bind);  if (IGET(stop)!=Qnil){{oldpos3=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos3); it=BGET(autovar_3);
  BSET(x_1,it); 
 	if (CALL(eof,0)==failobj) goto pass2;
 	goto success2;
@@ -118,7 +118,7 @@ it=CALL(rbcode_AmethystCTranslatorcb_4,1,bind);
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos1); ame_setlen(self,oldlen1);
 	if(fail1) goto fail;
-it=CALL(rbcode_AmethystCTranslatorcb_6,1,bind); it=CALL(rbcode_AmethystCTranslatorcb_7,1,bind); 
+it=CALL(rbcode_AmethystCTranslatorcb_7,1,bind); it=CALL(rbcode_AmethystCTranslatorcb_8,1,bind); 
  BSET(_result_1,it); it=BGET(_result_1);
 return it;
 fail: return failobj; }
@@ -659,4 +659,4 @@ rb_define_method(cls_AmethystCTranslator,"spaces",AmethystCTranslator_spaces,0);
 rb_define_method(cls_AmethystCTranslator,"token",AmethystCTranslator_token,1);
 rb_define_method(cls_AmethystCTranslator,"trans",AmethystCTranslator_trans,0);
 rb_define_method(cls_AmethystCTranslator,"transfn",AmethystCTranslator_transfn,0);
- rb_eval_string("testversion('0c24443867d18d9e6024bdc503ce3fec')");}
+ rb_eval_string("testversion('5564e6a382834573a25d0c7f8c656d32')");}

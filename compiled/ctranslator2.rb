@@ -98,21 +98,24 @@ def rbcode_AmethystCTranslatorcb_1(bind)
 "class #{@grammar} < #{@parent}\n"
 end
 def rbcode_AmethystCTranslatorcb_2(bind)
-@callbacks.to_a.sort
+bind[:s_1]<<@defs*"\n"
 end
 def rbcode_AmethystCTranslatorcb_3(bind)
-bind[:autovar_1]=[bind[:autovar_1]]
+@callbacks.to_a.sort
 end
 def rbcode_AmethystCTranslatorcb_4(bind)
-"def #{bind[:k_1]}(bind)\n#{bind[:v_1]}\nend\n"
+bind[:autovar_1]=[bind[:autovar_1]]
 end
 def rbcode_AmethystCTranslatorcb_5(bind)
-_append(bind[:autovar_3],bind[:autovar_5])
+"def #{bind[:k_1]}(bind)\n#{bind[:v_1]}\nend\n"
 end
 def rbcode_AmethystCTranslatorcb_6(bind)
-bind[:s_1]+=bind[:x_1]*""
+_append(bind[:autovar_3],bind[:autovar_5])
 end
 def rbcode_AmethystCTranslatorcb_7(bind)
+bind[:s_1]+=bind[:x_1]*""
+end
+def rbcode_AmethystCTranslatorcb_8(bind)
 bind[:s_1]+="\nend"; bind[:s_1]
 end
 def rbtrans_AmethystCTranslatorcb_1(bind)
@@ -206,7 +209,6 @@ def trans_AmethystCTranslatorcb_14(bind)
 bind[:s_1]<<@header.sort*"\n"+"\n"
 							bind[:s_1]<<bind[:t_1].sort*"\n"
 							bind[:s_1]<<@lambdas*"\n"
-							bind[:s_1]<<@defs*"\n"
         		  init="\n cls_#{@src.name}=rb_define_class(\"#{@src.name}\",rb_const_get(rb_cObject,rb_intern(\"#{@parent}\"))); 
 failobj=rb_eval_string(\"FAIL\");
 #{@defmethods.sort*"\n" }
@@ -497,6 +499,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='0c24443867d18d9e6024bdc503ce3fec'
+ raise "invalid version" if r!='5564e6a382834573a25d0c7f8c656d32'
 end
   require 'compiled/ctranslator2_c'
