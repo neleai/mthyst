@@ -59,19 +59,27 @@ def visit_Detect_Switchcb_1(bind)
 Or
 end
 def visit_Detect_Switchcb_2(bind)
-Hash.new{|h,k|h[k]=[]} 
+[]
 end
 def visit_Detect_Switchcb_3(bind)
-(first(bind[:e_1])) || FAIL
+[]
 end
 def visit_Detect_Switchcb_4(bind)
-first(bind[:e_1]).each{|a| bind[:ary2_1][a]<<bind[:e_1]}
+(first(bind[:e_1])) || FAIL
 end
 def visit_Detect_Switchcb_5(bind)
-_append(bind[:autovar_1],bind[:autovar_3])
+bind[:ary2_1]+=first(bind[:e_1])
 end
 def visit_Detect_Switchcb_6(bind)
-Switch[{:act=>"*ame_curstr(self)",:ary=>bind[:ary2_1].to_a.sort_by{|a,b|a}.map{|h,k| [h,Or[{:ary=>k}]]}}];
+_append(bind[:autovar_1],bind[:autovar_3])
+end
+def visit_Detect_Switchcb_7(bind)
+bind[:ary2_1].sort.uniq.each{|bind[:e_1]| 
+			bind[:ary3_1]<<[bind[:e_1],Or[{:ary=>@src.ary.select{|p| first(p).include?(bind[:e_1])}}]]
+		}
+end
+def visit_Detect_Switchcb_8(bind)
+Switch[{:act=>"*ame_curstr(self)",:ary=>bind[:ary3_1]}]
 end
 
 end

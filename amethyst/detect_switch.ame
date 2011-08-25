@@ -34,9 +34,12 @@ amethyst Detect_Switch < Traverser {
 
 	root = traverse
 
-	visit = Or[{Hash.new{|h,k|h[k]=[]} }:ary2
-		(traverse_item:e &{first(e)}  { first(e).each{|a| ary2[a]<<e}})*
-		{Switch[{:act=>"*ame_curstr(self)",:ary=>ary2.to_a.sort_by{|a,b|a}.map{|h,k| [h,Or[{:ary=>k}]]}}];}
+	visit = Or[ {[]}:ary2 {[]}:ary3
+		(traverse_item:e &{first(e)} {ary2+=first(e)})* &eof
+		{ary2.sort.uniq.each{|e| 
+			ary3<<[e,Or[{:ary=>@ary.select{|p| first(p).include?(e)}}]]
+		}}
+		{Switch[{:act=>"*ame_curstr(self)",:ary=>ary3}]}
 	]
 }
 class Detect_ClasSwitch < Traverser
