@@ -85,9 +85,6 @@ end
 end
 
 class Detect_ClasSwitch < Traverser
-	def initclas
-		@clses={}
-	end
 	def firstclas(s)
 		if s.is_a?(Seq)
       return firstclas(s[0])
@@ -96,17 +93,18 @@ class Detect_ClasSwitch < Traverser
 			return firstclas(s.expr)
 		end
 		if s.is_a?(Apply) && s[0]=="clas"
-			e=s[1][0]
-			return [@clses[e]] if @clses[e]
-			@clses[e]=@clses.size
-			return [@clses[e]]
+			return [s[1][0]]
 		end
 	end
-	def classswitch()
+	def includes(p,e)
+		p.each{|f| return true if eval(e) >= eval(f)}
+		return false
+	end
+	def classswitch(ary)
 		@no=(@no||0)+1
 		rb="def switchcb#{@no}(e)\n"
-			@clses.to_a.sort_by{|a,b|a}.each{|k,v| rb+="return #{v} if e.is_a? #{k}\n"}
-		rb+="return #{@clses.size}\nend"
+		ary.each_with_index{|c,i| rb<< "return #{i} if e.is_a?(#{c})"}
+		rb+="return #{ary.size}\nend"
 		[rb, "CALL(switchcb#{@no},1,ame_curobj(self))"]
 	end
 end
@@ -141,22 +139,27 @@ def visit_Detect_ClasSwitchcb_1(bind)
 Or
 end
 def visit_Detect_ClasSwitchcb_2(bind)
-Hash.new{|h,k|h[k]=[]} 
+[]
 end
 def visit_Detect_ClasSwitchcb_3(bind)
-initclas
+[]
 end
 def visit_Detect_ClasSwitchcb_4(bind)
 (firstclas(bind[:e_1])) || FAIL
 end
 def visit_Detect_ClasSwitchcb_5(bind)
-firstclas(bind[:e_1]).each{|a| bind[:ary2_1][a]<<bind[:e_1]}
+bind[:ary2_1]+=firstclas(bind[:e_1])
 end
 def visit_Detect_ClasSwitchcb_6(bind)
 _append(bind[:autovar_1],bind[:autovar_3])
 end
 def visit_Detect_ClasSwitchcb_7(bind)
-c=classswitch; Switch[{:defs=>c[0], :act=>c[1], :ary=>bind[:ary2_1].sort_by{|a,b|a}.map{|h,k| [h,Or[{:ary=>k}]]}}];
+bind[:ary2_1].sort.uniq.each_with_index{|bind[:e_1],i|
+      	bind[:ary3_1]<<[i,Or[{:ary=>@src.ary.select{|p| includes(firstclas(p),bind[:e_1])}}]]
+		}
+end
+def visit_Detect_ClasSwitchcb_8(bind)
+c=classswitch(bind[:ary2_1].sort.uniq);Switch[{:act=>c[1],:defs=>c[0],:ary=>bind[:ary3_1]}]
 end
 
 end
