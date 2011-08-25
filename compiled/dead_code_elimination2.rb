@@ -1,5 +1,13 @@
 class Dead_Code_Detector2 < Traverser
-
+def switchcb1(e)
+return 0 if e.is_a?(Act)
+return 1 if e.is_a?(Apply)
+return 2 if e.is_a?(Bind)
+return 3 if e.is_a?(Many)
+return 4 if e.is_a?(Pass)
+return 5 if e.is_a?(Result)
+return 6
+end
 def clas_Dead_Code_Detector2cb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
@@ -133,49 +141,49 @@ def vars_in_Dead_Code_Detector2cb_9(bind)
 Key
 end
 def visit_Dead_Code_Detector2cb_1(bind)
-Apply
-end
-def visit_Dead_Code_Detector2cb_10(bind)
-@marked+=bind[:var_1]
-end
-def visit_Dead_Code_Detector2cb_11(bind)
 Act
 end
-def visit_Dead_Code_Detector2cb_12(bind)
-@marked<<bind[:this_1] if @src.pred
+def visit_Dead_Code_Detector2cb_10(bind)
+bind[:autovar_6]=[bind[:autovar_6]]
 end
-def visit_Dead_Code_Detector2cb_13(bind)
-@src.ary
-end
-def visit_Dead_Code_Detector2cb_14(bind)
-bind[:autovar_7]=[bind[:autovar_7]]
-end
-def visit_Dead_Code_Detector2cb_15(bind)
-bind[:var_1].each{|bind[:v_1]| @edges.add(bind[:v_1],bind[:this_1]); @edges.add(bind[:this_1],bind[:v_1]);}; bind[:this_1]
-end
-def visit_Dead_Code_Detector2cb_16(bind)
-Bind
-end
-def visit_Dead_Code_Detector2cb_17(bind)
-@src.name
-end
-def visit_Dead_Code_Detector2cb_18(bind)
-bind[:autovar_10]=[bind[:autovar_10]]
-end
-def visit_Dead_Code_Detector2cb_19(bind)
+def visit_Dead_Code_Detector2cb_11(bind)
 bind[:v_1]=bind[:v_1][0]
 end
-def visit_Dead_Code_Detector2cb_2(bind)
+def visit_Dead_Code_Detector2cb_12(bind)
+@src.expr
+end
+def visit_Dead_Code_Detector2cb_13(bind)
+bind[:autovar_7]=[bind[:autovar_7]]
+end
+def visit_Dead_Code_Detector2cb_14(bind)
+bind[:var_1].each{|w| @edges.add(bind[:v_1],w)};bind[:this_1]
+end
+def visit_Dead_Code_Detector2cb_15(bind)
+Many
+end
+def visit_Dead_Code_Detector2cb_16(bind)
+@src.o
+end
+def visit_Dead_Code_Detector2cb_17(bind)
+bind[:autovar_9]=[bind[:autovar_9]]
+end
+def visit_Dead_Code_Detector2cb_18(bind)
 @marked+=bind[:var_1]
 end
+def visit_Dead_Code_Detector2cb_19(bind)
+Pass
+end
+def visit_Dead_Code_Detector2cb_2(bind)
+@marked<<bind[:this_1] if @src.pred
+end
 def visit_Dead_Code_Detector2cb_20(bind)
-@src.expr
+@src.var
 end
 def visit_Dead_Code_Detector2cb_21(bind)
 bind[:autovar_11]=[bind[:autovar_11]]
 end
 def visit_Dead_Code_Detector2cb_22(bind)
-bind[:var_1].each{|w| @edges.add(bind[:v_1],w)};bind[:this_1]
+@marked+=bind[:var_1]
 end
 def visit_Dead_Code_Detector2cb_23(bind)
 Result
@@ -190,32 +198,38 @@ def visit_Dead_Code_Detector2cb_26(bind)
 bind[:var_1].each{|w| @edges.add(bind[:this_1],w) } ; bind[:this_1]
 end
 def visit_Dead_Code_Detector2cb_3(bind)
-Pass
+@src.ary
 end
 def visit_Dead_Code_Detector2cb_4(bind)
-@src.var
+bind[:autovar_2]=[bind[:autovar_2]]
 end
 def visit_Dead_Code_Detector2cb_5(bind)
-bind[:autovar_3]=[bind[:autovar_3]]
+bind[:var_1].each{|bind[:v_1]| @edges.add(bind[:v_1],bind[:this_1]); @edges.add(bind[:this_1],bind[:v_1]);}; bind[:this_1]
 end
 def visit_Dead_Code_Detector2cb_6(bind)
-@marked+=bind[:var_1]
+Apply
 end
 def visit_Dead_Code_Detector2cb_7(bind)
-Many
+@marked+=bind[:var_1]
 end
 def visit_Dead_Code_Detector2cb_8(bind)
-@src.o
+Bind
 end
 def visit_Dead_Code_Detector2cb_9(bind)
-bind[:autovar_5]=[bind[:autovar_5]]
+@src.name
 end
 
 end
 
 
 class Dead_Code_Deleter2 < Traverser
-
+def switchcb2(e)
+return 0 if e.is_a?(Act)
+return 1 if e.is_a?(Bind)
+return 2 if e.is_a?(Local)
+return 3 if e.is_a?(Result)
+return 4
+end
 def clas_Dead_Code_Deleter2cb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
@@ -277,7 +291,7 @@ def visit_Dead_Code_Deleter2cb_11(bind)
 @reachable[bind[:this_1]] ? bind[:this_1] : Act[]
 end
 def visit_Dead_Code_Deleter2cb_12(bind)
-Local
+Result
 end
 def visit_Dead_Code_Deleter2cb_13(bind)
 @src.self
@@ -307,7 +321,7 @@ def visit_Dead_Code_Deleter2cb_8(bind)
 @reachable[bind[:name_1]] ? bind[:this_1] : bind[:expr_1]
 end
 def visit_Dead_Code_Deleter2cb_9(bind)
-Result
+Local
 end
 
 end
@@ -601,6 +615,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='f8456c45909d4c7912865449600809df'
+ raise "invalid version" if r!='b182f58765f1a9c6f08a9b992c8ed4fd'
 end
   require 'compiled/dead_code_elimination2_c'

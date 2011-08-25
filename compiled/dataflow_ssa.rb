@@ -59,7 +59,16 @@ class Local
 end
 
 class Dataflow < Traverser
-
+def switchcb1(e)
+return 0 if e.is_a?(Act)
+return 1 if e.is_a?(Apply)
+return 2 if e.is_a?(Bind)
+return 3 if e.is_a?(Many)
+return 4 if e.is_a?(Or)
+return 5 if e.is_a?(Pass)
+return 6 if e.is_a?(Result)
+return 7
+end
 def clas_Dataflowcb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
@@ -205,58 +214,58 @@ def vars_in_Dataflowcb_9(bind)
 CAct
 end
 def visit_Dataflowcb_1(bind)
-Apply
-end
-def visit_Dataflowcb_10(bind)
-or_end(bind[:join_1])
-end
-def visit_Dataflowcb_11(bind)
-@src.self
-end
-def visit_Dataflowcb_12(bind)
-Many
-end
-def visit_Dataflowcb_13(bind)
-ssanums.clone
-end
-def visit_Dataflowcb_14(bind)
-many_end(bind[:prev_1])
-end
-def visit_Dataflowcb_15(bind)
-@src.self
-end
-def visit_Dataflowcb_16(bind)
-Pass
-end
-def visit_Dataflowcb_17(bind)
-@marked<<ssanum(@src.var)
-end
-def visit_Dataflowcb_18(bind)
-@src.self
-end
-def visit_Dataflowcb_19(bind)
 Act
 end
-def visit_Dataflowcb_2(bind)
+def visit_Dataflowcb_10(bind)
 @src.self
 end
-def visit_Dataflowcb_20(bind)
-@marked<<bind[:this_1] if @src.pred || !@src.pure
-end
-def visit_Dataflowcb_21(bind)
-@src.ary
-end
-def visit_Dataflowcb_22(bind)
-bind[:autovar_8]=[bind[:autovar_8]]
-end
-def visit_Dataflowcb_23(bind)
-bind[:var_1].each{|v| edges.add(ssanum(v),bind[:this_1]); edges.add(bind[:this_1],newssanum(v.clone));}; bind[:this_1]
-end
-def visit_Dataflowcb_24(bind)
+def visit_Dataflowcb_11(bind)
 Bind
 end
-def visit_Dataflowcb_25(bind)
+def visit_Dataflowcb_12(bind)
 set_end(@src.self) 
+end
+def visit_Dataflowcb_13(bind)
+@src.self
+end
+def visit_Dataflowcb_14(bind)
+Many
+end
+def visit_Dataflowcb_15(bind)
+ssanums.clone
+end
+def visit_Dataflowcb_16(bind)
+many_end(bind[:prev_1])
+end
+def visit_Dataflowcb_17(bind)
+@src.self
+end
+def visit_Dataflowcb_18(bind)
+Or
+end
+def visit_Dataflowcb_19(bind)
+oldssanums.clone
+end
+def visit_Dataflowcb_2(bind)
+@marked<<bind[:this_1] if @src.pred || !@src.pure
+end
+def visit_Dataflowcb_20(bind)
+@oldssanums=bind[:old_1].clone
+end
+def visit_Dataflowcb_21(bind)
+bind[:join_1]<<oldssanums.clone
+end
+def visit_Dataflowcb_22(bind)
+or_end(bind[:join_1])
+end
+def visit_Dataflowcb_23(bind)
+@src.self
+end
+def visit_Dataflowcb_24(bind)
+Pass
+end
+def visit_Dataflowcb_25(bind)
+@marked<<ssanum(@src.var)
 end
 def visit_Dataflowcb_26(bind)
 @src.self
@@ -271,35 +280,52 @@ def visit_Dataflowcb_29(bind)
 bind[:autovar_12]=[bind[:autovar_12]]
 end
 def visit_Dataflowcb_3(bind)
-bind[:autovar_2]=[bind[:autovar_2]]
+@src.ary
 end
 def visit_Dataflowcb_30(bind)
 bind[:var_1].each{|w| @edges.add(ssanum(w),bind[:this_1]) } ; bind[:this_1]
 end
 def visit_Dataflowcb_4(bind)
-bind[:var_1].each{|v| @marked<<ssanum(v)}
+bind[:autovar_2]=[bind[:autovar_2]]
 end
 def visit_Dataflowcb_5(bind)
-@src.self
+bind[:var_1].each{|v| edges.add(ssanum(v),bind[:this_1]); edges.add(bind[:this_1],newssanum(v.clone));}; bind[:this_1]
 end
 def visit_Dataflowcb_6(bind)
-Or
+Apply
 end
 def visit_Dataflowcb_7(bind)
-oldssanums.clone
+@src.self
 end
 def visit_Dataflowcb_8(bind)
-@oldssanums=bind[:old_1].clone
+bind[:autovar_5]=[bind[:autovar_5]]
 end
 def visit_Dataflowcb_9(bind)
-bind[:join_1]<<oldssanums.clone
+bind[:var_1].each{|v| @marked<<ssanum(v)}
 end
 
 end
 
 
 class Dead_Code_Deleter3 < Traverser
-
+def switchcb2(e)
+return 0 if e.is_a?(Act)
+return 1 if e.is_a?(CAct)
+return 2 if e.is_a?(Result)
+return 3
+end
+def switchcb3(e)
+return 0 if e.is_a?(Act)
+return 1
+end
+def switchcb4(e)
+return 0 if e.is_a?(CAct)
+return 1
+end
+def switchcb5(e)
+return 0 if e.is_a?(Result)
+return 1
+end
 def clas_Dead_Code_Deleter3cb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
@@ -391,6 +417,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='ad7e17ec5251c098d86f1e6d00614c1d'
+ raise "invalid version" if r!='167290321c588f20cc180ad5c553f014'
 end
   require 'compiled/dataflow_ssa_c'

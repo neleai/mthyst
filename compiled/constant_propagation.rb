@@ -1,5 +1,10 @@
 class Constant_Traverser < Traverser
-
+def switchcb1(e)
+return 0 if e.is_a?(Act)
+return 1 if e.is_a?(Bind)
+return 2 if e.is_a?(Local)
+return 3
+end
 def clas_Constant_Traversercb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
@@ -40,22 +45,22 @@ def traverse_item_Constant_Traversercb_4(bind)
 AmethystAST
 end
 def visit_Constant_Traversercb_1(bind)
-Bind
+Act
 end
 def visit_Constant_Traversercb_2(bind)
-@src.expr
-end
-def visit_Constant_Traversercb_3(bind)
-bind[:autovar_2]=[bind[:autovar_2]]
-end
-def visit_Constant_Traversercb_4(bind)
-@src.expr=bind[:expr_1]
-end
-def visit_Constant_Traversercb_5(bind)
 @src.self
 end
+def visit_Constant_Traversercb_3(bind)
+Bind
+end
+def visit_Constant_Traversercb_4(bind)
+@src.expr
+end
+def visit_Constant_Traversercb_5(bind)
+bind[:autovar_3]=[bind[:autovar_3]]
+end
 def visit_Constant_Traversercb_6(bind)
-Act
+@src.expr=bind[:expr_1]
 end
 def visit_Constant_Traversercb_7(bind)
 @src.self
@@ -71,6 +76,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='934e23dee92ab2325a4ad6d5b877383c'
+ raise "invalid version" if r!='bb6bb5508d591d86f857276074e091c2'
 end
   require 'compiled/constant_propagation_c'

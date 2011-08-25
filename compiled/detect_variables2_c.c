@@ -218,86 +218,74 @@ return it;
 fail: return failobj; }
 VALUE Analyze_Variables2_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-int oldpos1=ame_getpos(self);
-alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=CALL(visit_Analyze_Variables2cb_1,1,bind);  arg0=it; it=Analyze_Variables2_clas(self ,arg0); FAILTEST(alt1_2);
- BSET(autovar_1,it); int oldpos2=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
+char chr1=FIX2INT(CALL(switchcb1,1,ame_curobj(self)));  switch(chr1){case 0:;  it=CALL(visit_Analyze_Variables2cb_1,1,bind);  arg0=it; it=Analyze_Variables2_clas(self ,arg0); FAILTEST(fail);
+ BSET(autovar_1,it); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,BGET(autovar_1)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=Analyze_Variables2_traverse(self ); FAILTEST(pass1);it=CALL(visit_Analyze_Variables2cb_2,1,bind); 
- BSET(autovar_2,it); it=CALL(visit_Analyze_Variables2cb_3,1,bind); int oldpos3=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
+ BSET(autovar_2,it); it=CALL(visit_Analyze_Variables2cb_3,1,bind); int oldpos2=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
 ame_setsrc(self,BGET(autovar_2)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCore_anything(self ); FAILTEST(pass2);
- BSET(autovar_3,it); int oldpos4=ame_getpos(self); int oldlen3=ame_getlen(self); VALUE oldsrc3=ame_getsrc(self); int fail3=0;
+ BSET(autovar_3,it); int oldpos3=ame_getpos(self); int oldlen3=ame_getlen(self); VALUE oldsrc3=ame_getsrc(self); int fail3=0;
 ame_setsrc(self,BGET(autovar_3)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-   it=Analyze_Variables2_flat(self ); FAILTEST(pass3);
- BSET(a_1,it); 
+  it=CALL(visit_Analyze_Variables2cb_4,1,bind);  arg0=it; it=Analyze_Variables2_clas(self ,arg0); FAILTEST(pass3);
+ BSET(_result_1,it); 
 	if (CALL(eof,0)==failobj) goto pass3;
 	goto success3;
 	pass3: fail3=1;
-	success3: ame_setsrc(self,oldsrc3); ame_setpos(self,oldpos4); ame_setlen(self,oldlen3);
+	success3: ame_setsrc(self,oldsrc3); ame_setpos(self,oldpos3); ame_setlen(self,oldlen3);
 	if(fail3) goto pass2;
 
 	if (CALL(eof,0)==failobj) goto pass2;
 	goto success2;
 	pass2: fail2=1;
-	success2: ame_setsrc(self,oldsrc2); ame_setpos(self,oldpos3); ame_setlen(self,oldlen2);
+	success2: ame_setsrc(self,oldsrc2); ame_setpos(self,oldpos2); ame_setlen(self,oldlen2);
 	if(fail2) goto pass1;
-it=CALL(visit_Analyze_Variables2cb_4,1,bind); it=CALL(visit_Analyze_Variables2cb_5,1,bind); 
- BSET(_result_1,it); 
+
 	if (CALL(eof,0)==failobj) goto pass1;
 	goto success1;
 	pass1: fail1=1;
-	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos2); ame_setlen(self,oldlen1);
-	if(fail1) goto alt1_2;
- 
-ISET(cut,Qnil);goto accept1;
-alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=CALL(visit_Analyze_Variables2cb_6,1,bind);  arg0=it; it=Analyze_Variables2_clas(self ,arg0); FAILTEST(alt1_3);
- BSET(autovar_4,it); int oldpos5=ame_getpos(self); int oldlen4=ame_getlen(self); VALUE oldsrc4=ame_getsrc(self); int fail4=0;
+	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos1); ame_setlen(self,oldlen1);
+	if(fail1) goto fail;
+ break;case 1:;  it=CALL(visit_Analyze_Variables2cb_5,1,bind);  arg0=it; it=Analyze_Variables2_clas(self ,arg0); FAILTEST(fail);
+ BSET(autovar_4,it); int oldpos4=ame_getpos(self); int oldlen4=ame_getlen(self); VALUE oldsrc4=ame_getsrc(self); int fail4=0;
 ame_setsrc(self,BGET(autovar_4)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-   it=Analyze_Variables2_traverse(self ); FAILTEST(pass4);it=CALL(visit_Analyze_Variables2cb_7,1,bind); 
- BSET(autovar_5,it); it=CALL(visit_Analyze_Variables2cb_8,1,bind); int oldpos6=ame_getpos(self); int oldlen5=ame_getlen(self); VALUE oldsrc5=ame_getsrc(self); int fail5=0;
+   it=Analyze_Variables2_traverse(self ); FAILTEST(pass4);it=CALL(visit_Analyze_Variables2cb_6,1,bind); 
+ BSET(autovar_5,it); it=CALL(visit_Analyze_Variables2cb_7,1,bind); int oldpos5=ame_getpos(self); int oldlen5=ame_getlen(self); VALUE oldsrc5=ame_getsrc(self); int fail5=0;
 ame_setsrc(self,BGET(autovar_5)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCore_anything(self ); FAILTEST(pass5);
- BSET(autovar_6,it); int oldpos7=ame_getpos(self); int oldlen6=ame_getlen(self); VALUE oldsrc6=ame_getsrc(self); int fail6=0;
+ BSET(autovar_6,it); int oldpos6=ame_getpos(self); int oldlen6=ame_getlen(self); VALUE oldsrc6=ame_getsrc(self); int fail6=0;
 ame_setsrc(self,BGET(autovar_6)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-  it=CALL(visit_Analyze_Variables2cb_9,1,bind);  arg0=it; it=Analyze_Variables2_clas(self ,arg0); FAILTEST(pass6);
- BSET(_result_1,it); 
+   it=Analyze_Variables2_flat(self ); FAILTEST(pass6);
+ BSET(a_1,it); 
 	if (CALL(eof,0)==failobj) goto pass6;
 	goto success6;
 	pass6: fail6=1;
-	success6: ame_setsrc(self,oldsrc6); ame_setpos(self,oldpos7); ame_setlen(self,oldlen6);
+	success6: ame_setsrc(self,oldsrc6); ame_setpos(self,oldpos6); ame_setlen(self,oldlen6);
 	if(fail6) goto pass5;
 
 	if (CALL(eof,0)==failobj) goto pass5;
 	goto success5;
 	pass5: fail5=1;
-	success5: ame_setsrc(self,oldsrc5); ame_setpos(self,oldpos6); ame_setlen(self,oldlen5);
+	success5: ame_setsrc(self,oldsrc5); ame_setpos(self,oldpos5); ame_setlen(self,oldlen5);
 	if(fail5) goto pass4;
-
+it=CALL(visit_Analyze_Variables2cb_8,1,bind); it=CALL(visit_Analyze_Variables2cb_9,1,bind); 
+ BSET(_result_1,it); 
 	if (CALL(eof,0)==failobj) goto pass4;
 	goto success4;
 	pass4: fail4=1;
-	success4: ame_setsrc(self,oldsrc4); ame_setpos(self,oldpos5); ame_setlen(self,oldlen4);
-	if(fail4) goto alt1_3;
- 
-ISET(cut,Qnil);goto accept1;
-alt1_3: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=CALL(visit_Analyze_Variables2cb_10,1,bind);  arg0=it; it=Analyze_Variables2_clas(self ,arg0); FAILTEST(alt1_4);
- BSET(autovar_7,it); int oldpos8=ame_getpos(self); int oldlen7=ame_getlen(self); VALUE oldsrc7=ame_getsrc(self); int fail7=0;
+	success4: ame_setsrc(self,oldsrc4); ame_setpos(self,oldpos4); ame_setlen(self,oldlen4);
+	if(fail4) goto fail;
+ break;case 2:;  it=CALL(visit_Analyze_Variables2cb_10,1,bind);  arg0=it; it=Analyze_Variables2_clas(self ,arg0); FAILTEST(fail);
+ BSET(autovar_7,it); int oldpos7=ame_getpos(self); int oldlen7=ame_getlen(self); VALUE oldsrc7=ame_getsrc(self); int fail7=0;
 ame_setsrc(self,BGET(autovar_7)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
  it=CALL(visit_Analyze_Variables2cb_11,1,bind); it=CALL(visit_Analyze_Variables2cb_12,1,bind); 
  BSET(_result_1,it); 
 	if (CALL(eof,0)==failobj) goto pass7;
 	goto success7;
 	pass7: fail7=1;
-	success7: ame_setsrc(self,oldsrc7); ame_setpos(self,oldpos8); ame_setlen(self,oldlen7);
-	if(fail7) goto alt1_4;
- 
-ISET(cut,Qnil);goto accept1;
-  alt1_4:  ame_setpos(self,oldpos1); goto fail;
- accept1:;
-it=BGET(_result_1);
+	success7: ame_setsrc(self,oldsrc7); ame_setpos(self,oldpos7); ame_setlen(self,oldlen7);
+	if(fail7) goto fail;
+ break;default: goto fail;}it=BGET(_result_1);
 return it;
 fail: return failobj; }VALUE cls_Remap_Acts;
 VALUE Remap_Acts_clas(VALUE self ,VALUE a0);
@@ -432,4 +420,4 @@ rb_define_method(cls_Remap_Acts,"root",Remap_Acts_root,0);
 rb_define_method(cls_Remap_Acts,"traverse",Remap_Acts_traverse,0);
 rb_define_method(cls_Remap_Acts,"traverse_item",Remap_Acts_traverse_item,0);
 rb_define_method(cls_Remap_Acts,"visit",Remap_Acts_visit,0);
- rb_eval_string("testversion('bc7e8fd13378720990e832860963edf4')");}
+ rb_eval_string("testversion('ed82d077809ed62c7532b73e417f6e20')");}

@@ -1,6 +1,11 @@
 
 class Seq_Or_Optimizer < Traverser
-
+def switchcb1(e)
+return 0 if e.is_a?(Apply)
+return 1 if e.is_a?(Or)
+return 2 if e.is_a?(Seq)
+return 3
+end
 def clas_Seq_Or_Optimizercb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
@@ -56,55 +61,55 @@ def traverse_item_Seq_Or_Optimizercb_4(bind)
 AmethystAST
 end
 def visit_Seq_Or_Optimizercb_1(bind)
-Seq
+Apply
 end
 def visit_Seq_Or_Optimizercb_10(bind)
-(bind[:arg_1].is_a?(CAct)) || FAIL
-end
-def visit_Seq_Or_Optimizercb_11(bind)
-Apply[bind[:arg_1][0][13...-2]]
-end
-def visit_Seq_Or_Optimizercb_12(bind)
-Apply
-end
-def visit_Seq_Or_Optimizercb_13(bind)
-(bind[:name_1]=="apply") || FAIL
-end
-def visit_Seq_Or_Optimizercb_14(bind)
-(bind[:arg_1].is_a?(Act) && bind[:arg_1][0].is_a?(Exp)) || FAIL
-end
-def visit_Seq_Or_Optimizercb_15(bind)
-bind[:arg_1][0][0]
-end
-def visit_Seq_Or_Optimizercb_2(bind)
-@src.self.ary=@src.ary.map{|i| (i.is_a?(Seq)) ? i.ary : i}.flatten.select{|e| !(e.is_a?(Act) && e.ary.size==0)}
-end
-def visit_Seq_Or_Optimizercb_3(bind)
-(@src.ary.size==1) ? @src.ary[0] : @src.self
-end
-def visit_Seq_Or_Optimizercb_4(bind)
 Or
 end
-def visit_Seq_Or_Optimizercb_5(bind)
+def visit_Seq_Or_Optimizercb_11(bind)
 @src.self.ary=@src.ary.map{|i| (i.is_a?(Or )) ? i.ary : i}.flatten.select{|e| !(e.is_a?(Act) && e.ary.size==0)}
 end
-def visit_Seq_Or_Optimizercb_6(bind)
+def visit_Seq_Or_Optimizercb_12(bind)
 (@src.ary.size==1) ? @src.ary[0] : @src.self
 end
-def visit_Seq_Or_Optimizercb_7(bind)
-Apply
+def visit_Seq_Or_Optimizercb_13(bind)
+Seq
 end
-def visit_Seq_Or_Optimizercb_8(bind)
+def visit_Seq_Or_Optimizercb_14(bind)
+@src.self.ary=@src.ary.map{|i| (i.is_a?(Seq)) ? i.ary : i}.flatten.select{|e| !(e.is_a?(Act) && e.ary.size==0)}
+end
+def visit_Seq_Or_Optimizercb_15(bind)
+(@src.ary.size==1) ? @src.ary[0] : @src.self
+end
+def visit_Seq_Or_Optimizercb_2(bind)
 (bind[:name_1]=="apply") || FAIL
 end
-def visit_Seq_Or_Optimizercb_9(bind)
+def visit_Seq_Or_Optimizercb_3(bind)
 puts @src.self.inspect
+end
+def visit_Seq_Or_Optimizercb_4(bind)
+(bind[:arg_1].is_a?(CAct)) || FAIL
+end
+def visit_Seq_Or_Optimizercb_5(bind)
+Apply[bind[:arg_1][0][13...-2]]
+end
+def visit_Seq_Or_Optimizercb_6(bind)
+Apply
+end
+def visit_Seq_Or_Optimizercb_7(bind)
+(bind[:name_1]=="apply") || FAIL
+end
+def visit_Seq_Or_Optimizercb_8(bind)
+(bind[:arg_1].is_a?(Act) && bind[:arg_1][0].is_a?(Exp)) || FAIL
+end
+def visit_Seq_Or_Optimizercb_9(bind)
+bind[:arg_1][0][0]
 end
 
 end
 
 
 def testversion(r)
- raise "invalid version" if r!='98f09ae819106dd73732949922bcb203'
+ raise "invalid version" if r!='b6cd7ef2a23726b50a19f25b5f0a1c6c'
 end
   require 'compiled/optimizer_and_or_c'

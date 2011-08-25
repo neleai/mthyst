@@ -1,5 +1,10 @@
 class Analyze_Variables2 < Traverser
-
+def switchcb1(e)
+return 0 if e.is_a?(Act)
+return 1 if e.is_a?(Args)
+return 2 if e.is_a?(Result)
+return 3
+end
 def clas_Analyze_Variables2cb_1(bind)
 (bind[:i_1].is_a?(bind[:cls_1])) || FAIL
 end
@@ -88,7 +93,7 @@ def traverse_item_Analyze_Variables2cb_4(bind)
 AmethystAST
 end
 def visit_Analyze_Variables2cb_1(bind)
-Args
+Act
 end
 def visit_Analyze_Variables2cb_10(bind)
 Result
@@ -100,28 +105,28 @@ def visit_Analyze_Variables2cb_12(bind)
 @src.self
 end
 def visit_Analyze_Variables2cb_2(bind)
-@src.ary.map{|aa| @variables[aa] }
+@src.ary
 end
 def visit_Analyze_Variables2cb_3(bind)
 bind[:autovar_2]=[bind[:autovar_2]]
 end
 def visit_Analyze_Variables2cb_4(bind)
-@src.ary=connectstring(bind[:a_1].flatten)
+Local
 end
 def visit_Analyze_Variables2cb_5(bind)
-(@src.ary.size==1&&(@src.ary[0].is_a?(Local)||@src.ary[0].is_a?(Global)||@src.ary[0].is_a?(Key))) ? @src.ary[0] : @src.self
+Args
 end
 def visit_Analyze_Variables2cb_6(bind)
-Act
+@src.ary.map{|aa| @variables[aa] }
 end
 def visit_Analyze_Variables2cb_7(bind)
-@src.ary
-end
-def visit_Analyze_Variables2cb_8(bind)
 bind[:autovar_5]=[bind[:autovar_5]]
 end
+def visit_Analyze_Variables2cb_8(bind)
+@src.ary=connectstring(bind[:a_1].flatten)
+end
 def visit_Analyze_Variables2cb_9(bind)
-Local
+(@src.ary.size==1&&(@src.ary[0].is_a?(Local)||@src.ary[0].is_a?(Global)||@src.ary[0].is_a?(Key))) ? @src.ary[0] : @src.self
 end
 
 end
@@ -170,6 +175,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='bc7e8fd13378720990e832860963edf4'
+ raise "invalid version" if r!='ed82d077809ed62c7532b73e417f6e20'
 end
   require 'compiled/detect_variables2_c'
