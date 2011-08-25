@@ -98,7 +98,7 @@ class Detect_ClasSwitch < Traverser
 		rb="def switchcb#{@no}(e)\n"
 			@clses.each{|k,v| rb+="return #{v} if e.is_a? #{k}\n"}
 		rb+="return #{@clses.size}\nend"
-		[rb, "CALL(switchcb#{@no})"]
+		[rb, "CALL(switchcb#{@no},0)"]
 	end
 end
 

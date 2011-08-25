@@ -123,7 +123,7 @@ end
 		puts tree.inspect
 		tree=Seq_Or_Optimizer.new.parse(:itrans,tree)
 		puts tree.inspect
-#		tree=Detect_ClasSwitch.new.parse(:itrans,tree)
+	#	tree=Detect_ClasSwitch.new.parse(:itrans,tree)
 #		puts tree.inspect
 		tree=Seq_Or_Optimizer.new.parse(:itrans,tree)
 		puts tree.inspect
