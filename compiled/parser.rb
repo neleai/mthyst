@@ -242,13 +242,13 @@ def prefixed_AmethystParsercb_1(bind)
 Pred[bind[:expr_1]]
 end
 def prefixed_AmethystParsercb_10(bind)
-Or[bind[:from_1],Apply["empty"]]
-end
-def prefixed_AmethystParsercb_11(bind)
 _Bind(bind[:name_1],bind[:from_1],bind[:append_1])
 end
-def prefixed_AmethystParsercb_12(bind)
+def prefixed_AmethystParsercb_11(bind)
 Seq[_Bind("it",bind[:from_1]) , Act[bind[:e_1]] ]
+end
+def prefixed_AmethystParsercb_12(bind)
+Or[bind[:from_1],Apply["empty"]]
 end
 def prefixed_AmethystParsercb_2(bind)
 Lookahead[bind[:m_1],bind[:neg_1]=="~"]
@@ -450,6 +450,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='79da0b0dde6436c963d8feba1268916c'
+ raise "invalid version" if r!='7edd769660a4ddcd59b44dbdc9570633'
 end
   require 'compiled/parser_c'

@@ -36,7 +36,7 @@ amethyst Detect_Switch < Traverser {
 
 	visit = Or[{Hash.new{|h,k|h[k]=[]} }:ary2
 		(traverse_item:e &{first(e)}  { first(e).each{|a| ary2[a]<<e}})*
-		{Switch[{:act=>"*ame_curstr(self)",:ary=>ary2.to_a.map{|h,k| [h,Or[{:ary=>k}]]}}];}
+		{Switch[{:act=>"*ame_curstr(self)",:ary=>ary2.to_a.sort_by{|a,b|a}.map{|h,k| [h,Or[{:ary=>k}]]}}];}
 	]
 }
 class Detect_ClasSwitch < Traverser
@@ -60,9 +60,9 @@ class Detect_ClasSwitch < Traverser
 	def classswitch()
 		@no=(@no||0)+1
 		rb="def switchcb#{@no}(e)\n"
-			@clses.each{|k,v| rb+="return #{v} if e.is_a? #{k}\n"}
+			@clses.to_a.sort_by{|a,b|a}.each{|k,v| rb+="return #{v} if e.is_a? #{k}\n"}
 		rb+="return #{@clses.size}\nend"
-		[rb, "CALL(switchcb#{@no},0)"]
+		[rb, "CALL(switchcb#{@no},1,ame_curobj(self))"]
 	end
 end
 
@@ -73,7 +73,7 @@ amethyst Detect_ClasSwitch < Traverser {
 
 	visit = Or[{Hash.new{|h,k|h[k]=[]} }:ary2 {initclas}
 		(traverse_item:e &{firstclas(e)}  { firstclas(e).each{|a| ary2[a]<<e}})*
-		{c=classswitch; Switch[{:defs=>c[0], :act=>c[1], :ary=>ary2.to_a.map{|h,k| [h,Or[{:ary=>k}]]}}];}
+		{c=classswitch; Switch[{:defs=>c[0], :act=>c[1], :ary=>ary2.sort_by{|a,b|a}.map{|h,k| [h,Or[{:ary=>k}]]}}];}
 	]
 }
 

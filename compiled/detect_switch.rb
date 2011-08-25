@@ -71,7 +71,7 @@ def visit_Detect_Switchcb_5(bind)
 _append(bind[:autovar_1],bind[:autovar_3])
 end
 def visit_Detect_Switchcb_6(bind)
-Switch[{:act=>"*ame_curstr(self)",:ary=>bind[:ary2_1].to_a.map{|h,k| [h,Or[{:ary=>k}]]}}];
+Switch[{:act=>"*ame_curstr(self)",:ary=>bind[:ary2_1].to_a.sort_by{|a,b|a}.map{|h,k| [h,Or[{:ary=>k}]]}}];
 end
 
 end
@@ -97,9 +97,9 @@ class Detect_ClasSwitch < Traverser
 	def classswitch()
 		@no=(@no||0)+1
 		rb="def switchcb#{@no}(e)\n"
-			@clses.each{|k,v| rb+="return #{v} if e.is_a? #{k}\n"}
+			@clses.to_a.sort_by{|a,b|a}.each{|k,v| rb+="return #{v} if e.is_a? #{k}\n"}
 		rb+="return #{@clses.size}\nend"
-		[rb, "CALL(switchcb#{@no},0)"]
+		[rb, "CALL(switchcb#{@no},1,ame_curobj(self))"]
 	end
 end
 
@@ -148,7 +148,7 @@ def visit_Detect_ClasSwitchcb_6(bind)
 _append(bind[:autovar_1],bind[:autovar_3])
 end
 def visit_Detect_ClasSwitchcb_7(bind)
-c=classswitch; Switch[{:defs=>c[0], :act=>c[1], :ary=>bind[:ary2_1].to_a.map{|h,k| [h,Or[{:ary=>k}]]}}];
+c=classswitch; Switch[{:defs=>c[0], :act=>c[1], :ary=>bind[:ary2_1].sort_by{|a,b|a}.map{|h,k| [h,Or[{:ary=>k}]]}}];
 end
 
 end
