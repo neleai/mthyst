@@ -8,12 +8,17 @@ class AmethystCTranslator < Amethyst
 		n
 	end
 	def bget(s)
+		s=s.desc
 		"rb_hash_aref(bind,ID2SYM(rb_intern(\"#{s}\")))"
 		"BGET(#{s})"
 	end
 	def bset(s,e)
+		s=s.desc
 		"rb_hash_aset(bind,ID2SYM(rb_intern(\"#{s}\")),#{e})"
 		"BSET(#{s},#{e})"
+	end
+	def rbbget(s)
+		"bind[:#{s.desc}]"
 	end
 	def iget(s)
 		"rb_ivar_get(self,rb_intern(\"@#{s}\"))"
@@ -184,7 +189,7 @@ def rbtrans_AmethystCTranslatorcb_17(bind)
 Exp
 end
 def rbtrans_AmethystCTranslatorcb_2(bind)
-"bind[:#{@src.desc}]"
+rbbget(@src.self)
 end
 def rbtrans_AmethystCTranslatorcb_3(bind)
 Args
@@ -310,7 +315,7 @@ def trans_AmethystCTranslatorcb_33(bind)
 h="VALUE #{@grammar}_#{bind[:name_1]}(VALUE self #{map_index(@src.args){|i| ",VALUE a#{i}"}})" 
 						@header<<h+";"
 						@defmethods<< "rb_define_method(cls_#{@grammar},\"#{@src.name}\",#{@grammar}_#{@src.name},#{@src.args.size});"
-						h+"{VALUE vals[#{@src.args.size}]; VALUE bind=rb_hash_new(); #{map_index(@src.args){|i| bset(@src.args[i].desc,"a#{i}")+";"}} int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+						h+"{VALUE vals[#{@src.args.size}]; VALUE bind=rb_hash_new(); #{map_index(@src.args){|i| bset(@src.args[i],"a#{i}")+";"}} int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 \n#{bind[:body_1]}\nreturn it;\nfail: return failobj; }" 
 end
 def trans_AmethystCTranslatorcb_34(bind)
@@ -332,7 +337,7 @@ def trans_AmethystCTranslatorcb_39(bind)
 @lambdas=[]
 end
 def trans_AmethystCTranslatorcb_4(bind)
-"it=#{bget(@src.desc)};" 
+"it=#{bget(@src.self)};" 
 end
 def trans_AmethystCTranslatorcb_40(bind)
 @defs=[]
@@ -396,7 +401,7 @@ def trans_AmethystCTranslatorcb_56(bind)
 bind[:autovar_22]=[bind[:autovar_22]]
 end
 def trans_AmethystCTranslatorcb_57(bind)
-rule=@ruletable[@rulename];  failwrap(map_index(rule.args){|i|"vals[#{i}]=#{bget(rule.args[i].desc)};"}*""+ "it=rb_call_super(#{rule.args.size},vals);")
+rule=@ruletable[@rulename];  failwrap(map_index(rule.args){|i|"vals[#{i}]=#{bget(rule.args[i])};"}*""+ "it=rb_call_super(#{rule.args.size},vals);")
 end
 def trans_AmethystCTranslatorcb_58(bind)
 Apply
@@ -429,7 +434,7 @@ def trans_AmethystCTranslatorcb_66(bind)
 bind[:autovar_28]=[bind[:autovar_28]]
 end
 def trans_AmethystCTranslatorcb_67(bind)
-"#{bind[:e_1]}\n #{bset(@src.name.desc,"it")}; " 
+"#{bind[:e_1]}\n #{bset(@src.name,"it")}; " 
 end
 def trans_AmethystCTranslatorcb_68(bind)
 Result
@@ -444,7 +449,7 @@ def trans_AmethystCTranslatorcb_70(bind)
 bind[:autovar_30]=[bind[:autovar_30]]
 end
 def trans_AmethystCTranslatorcb_71(bind)
-bind[:s_1]="#{@src.name}.create(#{bind[:argss_1]} {#{@src.vars.map{|l| ":#{l[0]}=>bind[:#{l.desc}]" }.sort*","} })"
+bind[:s_1]="#{@src.name}.create(#{bind[:argss_1]} {#{@src.vars.map{|l| ":#{l[0]}=>#{rbbget(l)}" }.sort*","} })"
 					bind[:cbno_1]=addcallback(bind[:s_1])
 					"it=CALL(#{bind[:cbno_1]},1,bind);"
 				
@@ -469,7 +474,7 @@ def trans_AmethystCTranslatorcb_77(bind)
 end
 def trans_AmethystCTranslatorcb_78(bind)
 "int #{bind[:oldpos_1]}=ame_getpos(self); int #{bind[:oldlen_1]}=ame_getlen(self); VALUE #{bind[:oldsrc_1]}=ame_getsrc(self); int #{bind[:fail_1]}=0;
-ame_setsrc(self,#{bget(@src.var.desc)}); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern(\"size\"),0)));
+ame_setsrc(self,#{bget(@src.var)}); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern(\"size\"),0)));
  #{bind[:to_1]}
 	if (CALL(eof,0)==failobj) goto #{bind[:pass_1]};
 	goto #{bind[:success_1]};
