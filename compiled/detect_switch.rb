@@ -38,22 +38,22 @@ def itrans_Detect_Switchcb_2(bind)
 @src.rules
 end
 def itrans_Detect_Switchcb_3(bind)
-bind[:autovar_4]=[bind[:autovar_4]]
+bind[3]=[bind[3]]
 end
 def itrans_Detect_Switchcb_4(bind)
 Rule
 end
 def itrans_Detect_Switchcb_5(bind)
-_append(bind[:autovar_1],bind[:autovar_7])
+_append(bind[0],bind[6])
 end
 def itrans_Detect_Switchcb_6(bind)
-@src.rules=bind[:rules_1]
+@src.rules=bind[7]
 end
 def itrans_Detect_Switchcb_7(bind)
 @src.self
 end
 def itrans_Detect_Switchcb_8(bind)
-_append(bind[:autovar_2],bind[:autovar_8])
+_append(bind[1],bind[8])
 end
 def visit_Detect_Switchcb_1(bind)
 Or
@@ -65,21 +65,21 @@ def visit_Detect_Switchcb_3(bind)
 []
 end
 def visit_Detect_Switchcb_4(bind)
-(first(bind[:e_1])) || FAIL
+(first(bind[4])) || FAIL
 end
 def visit_Detect_Switchcb_5(bind)
-bind[:ary2_1]+=first(bind[:e_1])
+bind[2]+=first(bind[4])
 end
 def visit_Detect_Switchcb_6(bind)
-_append(bind[:autovar_1],bind[:autovar_3])
+_append(bind[0],bind[5])
 end
 def visit_Detect_Switchcb_7(bind)
-bind[:ary2_1].sort.uniq.each{|bind[:e_1]| 
-			bind[:ary3_1]<<[bind[:e_1],Or[{:ary=>@src.ary.select{|p| first(p).include?(bind[:e_1])}}]]
+bind[2].sort.uniq.each{|bind[4]| 
+			bind[3]<<[bind[4],Or[{:ary=>@src.ary.select{|p| first(p).include?(bind[4])}}]]
 		}
 end
 def visit_Detect_Switchcb_8(bind)
-Switch[{:act=>"*ame_curstr(self)",:ary=>bind[:ary3_1]}]
+Switch[{:act=>"*ame_curstr(self)",:ary=>bind[3]}]
 end
 
 end
@@ -148,22 +148,22 @@ def itrans_Detect_ClasSwitchcb_2(bind)
 @src.rules
 end
 def itrans_Detect_ClasSwitchcb_3(bind)
-bind[:autovar_4]=[bind[:autovar_4]]
+bind[3]=[bind[3]]
 end
 def itrans_Detect_ClasSwitchcb_4(bind)
 Rule
 end
 def itrans_Detect_ClasSwitchcb_5(bind)
-_append(bind[:autovar_1],bind[:autovar_7])
+_append(bind[0],bind[6])
 end
 def itrans_Detect_ClasSwitchcb_6(bind)
-@src.rules=bind[:rules_1]
+@src.rules=bind[7]
 end
 def itrans_Detect_ClasSwitchcb_7(bind)
 @src.self
 end
 def itrans_Detect_ClasSwitchcb_8(bind)
-_append(bind[:autovar_2],bind[:autovar_8])
+_append(bind[1],bind[8])
 end
 def visit_Detect_ClasSwitchcb_1(bind)
 Or
@@ -175,24 +175,24 @@ def visit_Detect_ClasSwitchcb_3(bind)
 []
 end
 def visit_Detect_ClasSwitchcb_4(bind)
-(first(bind[:e_1])) || FAIL
+(first(bind[4])) || FAIL
 end
 def visit_Detect_ClasSwitchcb_5(bind)
-bind[:ary2_1]+=first(bind[:e_1])
+bind[2]+=first(bind[4])
 end
 def visit_Detect_ClasSwitchcb_6(bind)
-_append(bind[:autovar_1],bind[:autovar_3])
+_append(bind[0],bind[5])
 end
 def visit_Detect_ClasSwitchcb_7(bind)
-bind[:ary2_1]=topsort(bind[:ary2_1])
+bind[2]=topsort(bind[2])
 end
 def visit_Detect_ClasSwitchcb_8(bind)
-bind[:ary2_1].each_with_index{|bind[:e_1],i|
-      	bind[:ary3_1]<<[i,Or[{:ary=>@src.ary.select{|p| includes(bind[:ary2_1],i,first(p))}}]]
+bind[2].each_with_index{|bind[4],i|
+      	bind[3]<<[i,Or[{:ary=>@src.ary.select{|p| includes(bind[2],i,first(p))}}]]
 		}
 end
 def visit_Detect_ClasSwitchcb_9(bind)
-c=classswitch(bind[:ary2_1]);Switch[{:act=>c[1],:defs=>c[0],:ary=>bind[:ary3_1]}]
+c=classswitch(bind[2]);Switch[{:act=>c[1],:defs=>c[0],:ary=>bind[3]}]
 end
 
 end

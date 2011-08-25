@@ -29,7 +29,7 @@ def switchcb3(e)
 @@switchhash3[e.class]
 end
 def clas_Analyze_Variables2cb_1(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+(bind[0].is_a?(bind[1])) || FAIL
 end
 def flat_Analyze_Variables2cb_1(bind)
 Args
@@ -38,7 +38,7 @@ def flat_Analyze_Variables2cb_2(bind)
 Strin
 end
 def flat_Analyze_Variables2cb_3(bind)
-_append(bind[:autovar_1],bind[:autovar_3])
+_append(bind[0],bind[2])
 end
 def itrans_Analyze_Variables2cb_1(bind)
 Grammar
@@ -47,28 +47,28 @@ def itrans_Analyze_Variables2cb_2(bind)
 @src.rules
 end
 def itrans_Analyze_Variables2cb_3(bind)
-bind[:autovar_3]=[bind[:autovar_3]]
+bind[2]=[bind[2]]
 end
 def itrans_Analyze_Variables2cb_4(bind)
 Rule
 end
 def itrans_Analyze_Variables2cb_5(bind)
-_append(bind[:autovar_5],bind[:autovar_7])
+_append(bind[4],bind[6])
 end
 def itrans_Analyze_Variables2cb_6(bind)
-@src.rules=bind[:rules_1]
+@src.rules=bind[7]
 end
 def itrans_Analyze_Variables2cb_7(bind)
 @src.self
 end
 def itrans_Analyze_Variables2cb_8(bind)
-_append(bind[:autovar_1],bind[:autovar_8])
+_append(bind[0],bind[8])
 end
 def root_Analyze_Variables2cb_1(bind)
 @src.self
 end
 def root_Analyze_Variables2cb_2(bind)
-bind[:autovar_1]=[bind[:autovar_1]]
+bind[0]=[bind[0]]
 end
 def root_Analyze_Variables2cb_3(bind)
 Rule
@@ -95,10 +95,10 @@ def traverse_Analyze_Variables2cb_2(bind)
 (@src.self.instance_variables).map{|v| [v,@src.self.instance_variable_get(v)] }
 end
 def traverse_Analyze_Variables2cb_3(bind)
-bind[:autovar_1]=[bind[:autovar_1]]
+bind[1]=[bind[1]]
 end
 def traverse_Analyze_Variables2cb_4(bind)
-bind[:this_1].instance_variable_set(bind[:key_1],bind[:it_1])
+bind[0].instance_variable_set(bind[4],bind[5])
 end
 def traverse_Analyze_Variables2cb_5(bind)
 @src.self
@@ -110,7 +110,7 @@ def traverse_item_Analyze_Variables2cb_2(bind)
 Array
 end
 def traverse_item_Analyze_Variables2cb_3(bind)
-bind[:ar_1]<<bind[:it_1]
+bind[3]<<bind[4]
 end
 def traverse_item_Analyze_Variables2cb_4(bind)
 AmethystAST
@@ -131,10 +131,10 @@ def visit_Analyze_Variables2cb_2(bind)
 @src.ary.map{|aa| @variables[aa] }
 end
 def visit_Analyze_Variables2cb_3(bind)
-bind[:autovar_2]=[bind[:autovar_2]]
+bind[1]=[bind[1]]
 end
 def visit_Analyze_Variables2cb_4(bind)
-@src.ary=connectstring(bind[:a_1].flatten)
+@src.ary=connectstring(bind[3].flatten)
 end
 def visit_Analyze_Variables2cb_5(bind)
 (@src.ary.size==1&&(@src.ary[0].is_a?(Local)||@src.ary[0].is_a?(Global)||@src.ary[0].is_a?(Key))) ? @src.ary[0] : @src.self
@@ -146,7 +146,7 @@ def visit_Analyze_Variables2cb_7(bind)
 @src.ary
 end
 def visit_Analyze_Variables2cb_8(bind)
-bind[:autovar_5]=[bind[:autovar_5]]
+bind[6]=[bind[6]]
 end
 def visit_Analyze_Variables2cb_9(bind)
 Local
@@ -158,7 +158,7 @@ end
 class Remap_Acts < Traverser
 
 def clas_Remap_Actscb_1(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+(bind[0].is_a?(bind[1])) || FAIL
 end
 def traverse_Remap_Actscb_1(bind)
 @src.self
@@ -167,10 +167,10 @@ def traverse_Remap_Actscb_2(bind)
 (@src.self.instance_variables).map{|v| [v,@src.self.instance_variable_get(v)] }
 end
 def traverse_Remap_Actscb_3(bind)
-bind[:autovar_1]=[bind[:autovar_1]]
+bind[1]=[bind[1]]
 end
 def traverse_Remap_Actscb_4(bind)
-bind[:this_1].instance_variable_set(bind[:key_1],bind[:it_1])
+bind[0].instance_variable_set(bind[4],bind[5])
 end
 def traverse_Remap_Actscb_5(bind)
 @src.self
@@ -182,7 +182,7 @@ def traverse_item_Remap_Actscb_2(bind)
 Array
 end
 def traverse_item_Remap_Actscb_3(bind)
-bind[:ar_1]<<bind[:it_1]
+bind[3]<<bind[4]
 end
 def traverse_item_Remap_Actscb_4(bind)
 AmethystAST
@@ -198,6 +198,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='5464086a78c952f743367d4701ad102f'
+ raise "invalid version" if r!='757f0e3c91ab5b0a22011db0099f87c7'
 end
   require 'compiled/detect_variables2_c'

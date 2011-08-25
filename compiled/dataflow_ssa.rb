@@ -91,13 +91,13 @@ def switchcb2(e)
 @@switchhash2[e.class]
 end
 def clas_Dataflowcb_1(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+(bind[0].is_a?(bind[1])) || FAIL
 end
 def root_Dataflowcb_1(bind)
 @src.self
 end
 def root_Dataflowcb_2(bind)
-bind[:autovar_1]=[bind[:autovar_1]]
+bind[0]=[bind[0]]
 end
 def root_Dataflowcb_3(bind)
 Rule
@@ -109,10 +109,10 @@ def root_Dataflowcb_5(bind)
 @src.args
 end
 def root_Dataflowcb_6(bind)
-bind[:autovar_3]=[bind[:autovar_3]]
+bind[2]=[bind[2]]
 end
 def root_Dataflowcb_7(bind)
-bind[:var_1].each{|v| ssanum(v)}
+bind[4].each{|v| ssanum(v)}
 end
 def root_Dataflowcb_8(bind)
 @src.reachable=@edges.reverse.reachable(@marked+[ssanum(@src.body[-1])]); @src.cfg=@edges; 
@@ -127,10 +127,10 @@ def traverse_Dataflowcb_2(bind)
 (@src.self.instance_variables).map{|v| [v,@src.self.instance_variable_get(v)] }
 end
 def traverse_Dataflowcb_3(bind)
-bind[:autovar_1]=[bind[:autovar_1]]
+bind[1]=[bind[1]]
 end
 def traverse_Dataflowcb_4(bind)
-bind[:this_1].instance_variable_set(bind[:key_1],bind[:it_1])
+bind[0].instance_variable_set(bind[4],bind[5])
 end
 def traverse_Dataflowcb_5(bind)
 @src.self
@@ -142,19 +142,19 @@ def traverse_item_Dataflowcb_2(bind)
 Array
 end
 def traverse_item_Dataflowcb_3(bind)
-bind[:ar_1]<<bind[:it_1]
+bind[3]<<bind[4]
 end
 def traverse_item_Dataflowcb_4(bind)
 AmethystAST
 end
 def vars_in_Dataflowcb_1(bind)
-bind[:ary_1]=[]
+bind[0]=[]
 end
 def vars_in_Dataflowcb_10(bind)
 @src.self
 end
 def vars_in_Dataflowcb_11(bind)
-_append(bind[:ary_1],bind[:autovar_6])
+_append(bind[0],bind[6])
 end
 def vars_in_Dataflowcb_12(bind)
 Key
@@ -163,7 +163,7 @@ def vars_in_Dataflowcb_13(bind)
 @src.self
 end
 def vars_in_Dataflowcb_14(bind)
-_append(bind[:ary_1],bind[:autovar_8])
+_append(bind[0],bind[8])
 end
 def vars_in_Dataflowcb_15(bind)
 @marked<<@src.self
@@ -175,7 +175,7 @@ def vars_in_Dataflowcb_17(bind)
 @src.self
 end
 def vars_in_Dataflowcb_18(bind)
-_append(bind[:ary_1],bind[:autovar_10])
+_append(bind[0],bind[10])
 end
 def vars_in_Dataflowcb_19(bind)
 Strin
@@ -184,13 +184,13 @@ def vars_in_Dataflowcb_2(bind)
 Global
 end
 def vars_in_Dataflowcb_20(bind)
-_append(bind[:ary_1],bind[:autovar_12])
+_append(bind[0],bind[12])
 end
 def vars_in_Dataflowcb_21(bind)
 Args
 end
 def vars_in_Dataflowcb_22(bind)
-_append(bind[:ary_1],bind[:autovar_14])
+_append(bind[0],bind[14])
 end
 def vars_in_Dataflowcb_23(bind)
 Bind
@@ -199,10 +199,10 @@ def vars_in_Dataflowcb_24(bind)
 @src.name
 end
 def vars_in_Dataflowcb_25(bind)
-bind[:autovar_16]=[bind[:autovar_16]]
+bind[16]=[bind[16]]
 end
 def vars_in_Dataflowcb_26(bind)
-_append(bind[:ary_1],bind[:autovar_17])
+_append(bind[0],bind[17])
 end
 def vars_in_Dataflowcb_27(bind)
 Local
@@ -211,13 +211,13 @@ def vars_in_Dataflowcb_28(bind)
 @src.self
 end
 def vars_in_Dataflowcb_29(bind)
-_append(bind[:ary_1],bind[:autovar_19])
+_append(bind[0],bind[19])
 end
 def vars_in_Dataflowcb_3(bind)
 @src.self
 end
 def vars_in_Dataflowcb_4(bind)
-_append(bind[:ary_1],bind[:autovar_2])
+_append(bind[0],bind[2])
 end
 def vars_in_Dataflowcb_5(bind)
 @marked<<@src.self
@@ -229,7 +229,7 @@ def vars_in_Dataflowcb_7(bind)
 @src.self
 end
 def vars_in_Dataflowcb_8(bind)
-_append(bind[:ary_1],bind[:autovar_4])
+_append(bind[0],bind[4])
 end
 def vars_in_Dataflowcb_9(bind)
 CAct
@@ -238,7 +238,7 @@ def visit_Dataflowcb_1(bind)
 Or
 end
 def visit_Dataflowcb_10(bind)
-bind[:var_1].each{|v| @marked<<ssanum(v)}
+bind[7].each{|v| @marked<<ssanum(v)}
 end
 def visit_Dataflowcb_11(bind)
 @src.self
@@ -247,16 +247,16 @@ def visit_Dataflowcb_12(bind)
 Act
 end
 def visit_Dataflowcb_13(bind)
-@marked<<bind[:this_1] if @src.pred || !@src.pure
+@marked<<bind[9] if @src.pred || !@src.pure
 end
 def visit_Dataflowcb_14(bind)
 @src.ary
 end
 def visit_Dataflowcb_15(bind)
-bind[:autovar_6]=[bind[:autovar_6]]
+bind[10]=[bind[10]]
 end
 def visit_Dataflowcb_16(bind)
-bind[:var_1].each{|v| edges.add(ssanum(v),bind[:this_1]); edges.add(bind[:this_1],newssanum(v.clone));}; bind[:this_1]
+bind[7].each{|v| edges.add(ssanum(v),bind[9]); edges.add(bind[9],newssanum(v.clone));}; bind[9]
 end
 def visit_Dataflowcb_17(bind)
 Bind
@@ -277,10 +277,10 @@ def visit_Dataflowcb_21(bind)
 @src.vars
 end
 def visit_Dataflowcb_22(bind)
-bind[:autovar_10]=[bind[:autovar_10]]
+bind[14]=[bind[14]]
 end
 def visit_Dataflowcb_23(bind)
-bind[:var_1].each{|w| @edges.add(ssanum(w),bind[:this_1]) } ; bind[:this_1]
+bind[7].each{|w| @edges.add(ssanum(w),bind[9]) } ; bind[9]
 end
 def visit_Dataflowcb_24(bind)
 Pass
@@ -298,19 +298,19 @@ def visit_Dataflowcb_28(bind)
 ssanums.clone
 end
 def visit_Dataflowcb_29(bind)
-many_end(bind[:prev_1])
+many_end(bind[18])
 end
 def visit_Dataflowcb_3(bind)
-@oldssanums=bind[:old_1].clone
+@oldssanums=bind[2].clone
 end
 def visit_Dataflowcb_30(bind)
 @src.self
 end
 def visit_Dataflowcb_4(bind)
-bind[:join_1]<<oldssanums.clone
+bind[1]<<oldssanums.clone
 end
 def visit_Dataflowcb_5(bind)
-or_end(bind[:join_1])
+or_end(bind[1])
 end
 def visit_Dataflowcb_6(bind)
 @src.self
@@ -322,7 +322,7 @@ def visit_Dataflowcb_8(bind)
 @src.self
 end
 def visit_Dataflowcb_9(bind)
-bind[:autovar_3]=[bind[:autovar_3]]
+bind[5]=[bind[5]]
 end
 
 end
@@ -372,13 +372,13 @@ def switchcb3(e)
 @@switchhash3[e.class]
 end
 def clas_Dead_Code_Deleter3cb_1(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+(bind[0].is_a?(bind[1])) || FAIL
 end
 def root_Dead_Code_Deleter3cb_1(bind)
 @src.self
 end
 def root_Dead_Code_Deleter3cb_2(bind)
-bind[:autovar_1]=[bind[:autovar_1]]
+bind[0]=[bind[0]]
 end
 def root_Dead_Code_Deleter3cb_3(bind)
 Rule
@@ -399,10 +399,10 @@ def traverse_Dead_Code_Deleter3cb_2(bind)
 (@src.self.instance_variables).map{|v| [v,@src.self.instance_variable_get(v)] }
 end
 def traverse_Dead_Code_Deleter3cb_3(bind)
-bind[:autovar_1]=[bind[:autovar_1]]
+bind[1]=[bind[1]]
 end
 def traverse_Dead_Code_Deleter3cb_4(bind)
-bind[:this_1].instance_variable_set(bind[:key_1],bind[:it_1])
+bind[0].instance_variable_set(bind[4],bind[5])
 end
 def traverse_Dead_Code_Deleter3cb_5(bind)
 @src.self
@@ -414,7 +414,7 @@ def traverse_item_Dead_Code_Deleter3cb_2(bind)
 Array
 end
 def traverse_item_Dead_Code_Deleter3cb_3(bind)
-bind[:ar_1]<<bind[:it_1]
+bind[3]<<bind[4]
 end
 def traverse_item_Dead_Code_Deleter3cb_4(bind)
 AmethystAST
@@ -432,7 +432,7 @@ def visit_Dead_Code_Deleter3cb_12(bind)
 @src.self
 end
 def visit_Dead_Code_Deleter3cb_13(bind)
-@reachable[bind[:this_1]] ? bind[:this_1] : Act[]
+@reachable[bind[1]] ? bind[1] : Act[]
 end
 def visit_Dead_Code_Deleter3cb_14(bind)
 CAct
@@ -447,7 +447,7 @@ def visit_Dead_Code_Deleter3cb_17(bind)
 @src.self
 end
 def visit_Dead_Code_Deleter3cb_18(bind)
-@reachable[bind[:this_1]] ? bind[:this_1] : Act[]
+@reachable[bind[1]] ? bind[1] : Act[]
 end
 def visit_Dead_Code_Deleter3cb_19(bind)
 Bind
@@ -462,10 +462,10 @@ def visit_Dead_Code_Deleter3cb_21(bind)
 @src.self
 end
 def visit_Dead_Code_Deleter3cb_22(bind)
-@reachable[bind[:this_1]] ? bind[:this_1] : bind[:expr_1]
+@reachable[bind[1]] ? bind[1] : bind[5]
 end
 def visit_Dead_Code_Deleter3cb_3(bind)
-@reachable[bind[:this_1].ssaname] ? bind[:this_1] : Act[]
+@reachable[bind[1].ssaname] ? bind[1] : Act[]
 end
 def visit_Dead_Code_Deleter3cb_4(bind)
 CAct
@@ -480,7 +480,7 @@ def visit_Dead_Code_Deleter3cb_7(bind)
 @src.self
 end
 def visit_Dead_Code_Deleter3cb_8(bind)
-@reachable[bind[:this_1]] ? bind[:this_1] : Act[]
+@reachable[bind[1]] ? bind[1] : Act[]
 end
 def visit_Dead_Code_Deleter3cb_9(bind)
 CAct
@@ -492,6 +492,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='14385ece6ec5211a840b553ff6935920'
+ raise "invalid version" if r!='b8be189196a8304ea0e358a9ad1ad6a9'
 end
   require 'compiled/dataflow_ssa_c'

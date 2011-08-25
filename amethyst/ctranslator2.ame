@@ -7,18 +7,22 @@ class AmethystCTranslator < Amethyst
 		@callbacks[n]=cb
 		n
 	end
+	def desc(s)
+		return @locls[s.desc] if @locls[s.desc]
+		@locls[s.desc]=@locls.size
+	end
 	def bget(s)
-		s=s.desc
-		"rb_hash_aref(bind,ID2SYM(rb_intern(\"#{s}\")))"
+		s=desc(s)
+		return "rb_ary_entry(bind,#{s})"
 		"BGET(#{s})"
 	end
 	def bset(s,e)
-		s=s.desc
-		"rb_hash_aset(bind,ID2SYM(rb_intern(\"#{s}\")),#{e})"
+		s=desc(s)
+		return "rb_ary_store(bind,#{s},#{e})"
 		"BSET(#{s},#{e})"
 	end
 	def rbbget(s)
-		"bind[:#{s.desc}]"
+		"bind[#{desc(s)}]"
 	end
 	def iget(s)
 		"rb_ivar_get(self,rb_intern(\"@#{s}\"))"
@@ -81,11 +85,11 @@ failobj=rb_eval_string(\"FAIL\");
 #{@@defmethods.sort*"\n" }
 "
 							[s,init,rbcode] } ]
-				|  Rule[@name:name {@@rulename=name; Local.resetnumbering;resetlabels} @body=>trans:body  
+				|  Rule[@name:name {@@rulename=name; Local.resetnumbering;resetlabels;@@locls={}} @body=>trans:body  
           { h="VALUE #{@@grammar}_#{name}(VALUE self #{map_index(@args){|i| ",VALUE a#{i}"}})" 
 						@@header<<h+";"
 						@@defmethods<< "rb_define_method(cls_#{@@grammar},\"#{@name}\",#{@@grammar}_#{@name},#{@args.size});"
-						h+"{VALUE vals[#{@args.size}]; VALUE bind=rb_hash_new(); #{map_index(@args){|i| bset(@args[i],"a#{i}")+";"}} int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+						h+"{VALUE vals[#{@args.size}]; VALUE bind=rb_ary_new2(#{@@locls.size}); #{map_index(@args){|i| bset(@args[i],"a#{i}")+";"}} int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 \n#{body}\nreturn it;\nfail: return failobj; }" } ]
 				| Act[ .*:{addcallback(@pred ? ["(",it,") || FAIL"] : it)}:cbno {"it=CALL(#{cbno},1,bind); #{@pred ? "FAILTEST(#{@@faillabel});" :"" }"} ]
 				| CAct[.*:c] ->"it=#{c};"

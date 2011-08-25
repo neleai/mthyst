@@ -10,7 +10,7 @@ def switchcb1(e)
 @@switchhash1[e.class]
 end
 def clas_Constant_Traversercb_1(bind)
-(bind[:i_1].is_a?(bind[:cls_1])) || FAIL
+(bind[0].is_a?(bind[1])) || FAIL
 end
 def root_Constant_Traversercb_1(bind)
 @consts=@src.consts
@@ -28,10 +28,10 @@ def traverse_Constant_Traversercb_2(bind)
 (@src.self.instance_variables).map{|v| [v,@src.self.instance_variable_get(v)] }
 end
 def traverse_Constant_Traversercb_3(bind)
-bind[:autovar_1]=[bind[:autovar_1]]
+bind[1]=[bind[1]]
 end
 def traverse_Constant_Traversercb_4(bind)
-bind[:this_1].instance_variable_set(bind[:key_1],bind[:it_1])
+bind[0].instance_variable_set(bind[4],bind[5])
 end
 def traverse_Constant_Traversercb_5(bind)
 @src.self
@@ -43,7 +43,7 @@ def traverse_item_Constant_Traversercb_2(bind)
 Array
 end
 def traverse_item_Constant_Traversercb_3(bind)
-bind[:ar_1]<<bind[:it_1]
+bind[3]<<bind[4]
 end
 def traverse_item_Constant_Traversercb_4(bind)
 AmethystAST
@@ -61,10 +61,10 @@ def visit_Constant_Traversercb_4(bind)
 @src.expr
 end
 def visit_Constant_Traversercb_5(bind)
-bind[:autovar_3]=[bind[:autovar_3]]
+bind[3]=[bind[3]]
 end
 def visit_Constant_Traversercb_6(bind)
-@src.expr=bind[:expr_1]
+@src.expr=bind[4]
 end
 def visit_Constant_Traversercb_7(bind)
 @src.self
@@ -80,6 +80,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='d567fe9c9042f3429ad0f766e8a229d1'
+ raise "invalid version" if r!='ea050d870ab5d644645995925919fcb4'
 end
   require 'compiled/constant_propagation_c'
