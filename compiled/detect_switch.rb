@@ -85,12 +85,12 @@ end
 end
 
 class Detect_ClasSwitch < Traverser
-	def firstclas(s)
+	def first(s)
 		if s.is_a?(Seq)
-      return firstclas(s[0])
+      return first(s[0])
     end
 	if s.is_a? Bind
-			return firstclas(s.expr)
+			return first(s.expr)
 		end
 		if s.is_a?(Apply) && s[0]=="clas"
 			return [s[1][0]]
@@ -145,17 +145,17 @@ def visit_Detect_ClasSwitchcb_3(bind)
 []
 end
 def visit_Detect_ClasSwitchcb_4(bind)
-(firstclas(bind[:e_1])) || FAIL
+(first(bind[:e_1])) || FAIL
 end
 def visit_Detect_ClasSwitchcb_5(bind)
-bind[:ary2_1]+=firstclas(bind[:e_1])
+bind[:ary2_1]+=first(bind[:e_1])
 end
 def visit_Detect_ClasSwitchcb_6(bind)
 _append(bind[:autovar_1],bind[:autovar_3])
 end
 def visit_Detect_ClasSwitchcb_7(bind)
 bind[:ary2_1].sort.uniq.each_with_index{|bind[:e_1],i|
-      	bind[:ary3_1]<<[i,Or[{:ary=>@src.ary.select{|p| includes(firstclas(p),bind[:e_1])}}]]
+      	bind[:ary3_1]<<[i,Or[{:ary=>@src.ary.select{|p| includes(first(p),bind[:e_1])}}]]
 		}
 end
 def visit_Detect_ClasSwitchcb_8(bind)

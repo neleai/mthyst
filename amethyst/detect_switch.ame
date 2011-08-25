@@ -43,12 +43,12 @@ amethyst Detect_Switch < Traverser {
 	]
 }
 class Detect_ClasSwitch < Traverser
-	def firstclas(s)
+	def first(s)
 		if s.is_a?(Seq)
-      return firstclas(s[0])
+      return first(s[0])
     end
 	if s.is_a? Bind
-			return firstclas(s.expr)
+			return first(s.expr)
 		end
 		if s.is_a?(Apply) && s[0]=="clas"
 			return [s[1][0]]
@@ -73,9 +73,9 @@ amethyst Detect_ClasSwitch < Traverser {
 	root = traverse
 
 	visit = Or[ {[]}:ary2 {[]}:ary3
-    (traverse_item:e &{firstclas(e)} {ary2+=firstclas(e)})* &eof
+    (traverse_item:e &{first(e)} {ary2+=first(e)})* &eof
     {	ary2.sort.uniq.each_with_index{|e,i|
-      	ary3<<[i,Or[{:ary=>@ary.select{|p| includes(firstclas(p),e)}}]]
+      	ary3<<[i,Or[{:ary=>@ary.select{|p| includes(first(p),e)}}]]
 		}}
     {c=classswitch(ary2.sort.uniq);Switch[{:act=>c[1],:defs=>c[0],:ary=>ary3}]}
 	]
