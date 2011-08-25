@@ -15,3 +15,8 @@ c=AmethystCTranslator.new
 c.resetlabels
 res= c.parse(:trans,res)
 puts res.inspect
+
+r=Seq[Or[Apply["clas","Foo"],Apply["clas","bar"]]]
+res=Detect_ClasSwitch.new.parse(:root,r)
+res=Seq_Or_Optimizer.new.parse(:root,res)
+puts res.inspect

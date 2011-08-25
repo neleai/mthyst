@@ -82,8 +82,11 @@ def withtime(s)
 	r
 end
 def totaltime
-	$glob.each{|s,t|
+	tot=0
+	$glob.to_a.each{|s,t|
 		print "%20s" % s; STDOUT.flush
 	  puts " %0.6f" % t
+		tot+=t
 	}
+	puts "total #{tot}"
 end

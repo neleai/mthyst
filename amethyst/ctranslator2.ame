@@ -64,11 +64,12 @@ amethyst AmethystCTranslator < Amethyst {
 	{s+=x*""}
 	{s+="\nend"; s}
 	
-	trans =  Grammar[ {@@grammar=@name;@@parent=@parent} {@@lambdas=[]} {@@defmethods=[]} {@@faillabel="fail"} {@@callbacks={}} {mktable(@rules)} {@@header=[]} @rules=>[trans*]:t rbcode:rbcode
+	trans =  Grammar[ {@@grammar=@name;@@parent=@parent} {@@lambdas=[]} {@@defs=[]} {@@defmethods=[]} {@@faillabel="fail"} {@@callbacks={}} {mktable(@rules)} {@@header=[]} @rules=>[trans*]:t rbcode:rbcode
 				    { "VALUE cls_#{@name};\n" }:s
 						{	s<<@@header.sort*"\n"+"\n"
 							s<<t.sort*"\n"
 							s<<@@lambdas*"\n"
+							s<<@@defs*"\n"
         		  init="\n cls_#{@name}=rb_define_class(\"#{@name}\",rb_const_get(rb_cObject,rb_intern(\"#{@@parent}\"))); 
 failobj=rb_eval_string(\"FAIL\");
 #{@@defmethods.sort*"\n" }
@@ -121,6 +122,7 @@ ame_setsrc(self,#{bget(@var.desc)}); ame_setpos(self,0); ame_setlen(self,FIX2INT
 " }
 					]
 				| Switch[ label("chr"):chr 
+									{@@defs<<@defs if @defs}
 									{"char #{chr}=#{@act};  switch(#{chr}){"}:s
 										( .:c trans:t {s+="case #{c}:; #{t} break;"})*
 									{s+"default: goto #{@@faillabel};}"}
