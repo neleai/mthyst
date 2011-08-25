@@ -17,24 +17,6 @@ end
 def itrans_Seq_Or_Optimizercb_1(bind)
 Grammar
 end
-def itrans_Seq_Or_Optimizercb_10(bind)
-bind[:autovar_3]=[bind[:autovar_3]]
-end
-def itrans_Seq_Or_Optimizercb_11(bind)
-Rule
-end
-def itrans_Seq_Or_Optimizercb_12(bind)
-_append(bind[:autovar_5],bind[:autovar_7])
-end
-def itrans_Seq_Or_Optimizercb_13(bind)
-@src.rules=bind[:rules_1]
-end
-def itrans_Seq_Or_Optimizercb_14(bind)
-@src.self
-end
-def itrans_Seq_Or_Optimizercb_15(bind)
-_append(bind[:autovar_1],bind[:autovar_8])
-end
 def itrans_Seq_Or_Optimizercb_2(bind)
 @src.rules
 end
@@ -54,10 +36,7 @@ def itrans_Seq_Or_Optimizercb_7(bind)
 @src.self
 end
 def itrans_Seq_Or_Optimizercb_8(bind)
-Grammar
-end
-def itrans_Seq_Or_Optimizercb_9(bind)
-@src.rules
+_append(bind[:autovar_1],bind[:autovar_8])
 end
 def traverse_Seq_Or_Optimizercb_1(bind)
 @src.self
@@ -136,6 +115,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='1e6e8d44691ee2380d4981b14a739b51'
+ raise "invalid version" if r!='3792ca9ff9f0f6b84e0f6d237066a030'
 end
   require 'compiled/optimizer_and_or_c'

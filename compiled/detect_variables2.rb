@@ -26,34 +26,10 @@ def flat_Analyze_Variables2cb_2(bind)
 Strin
 end
 def flat_Analyze_Variables2cb_3(bind)
-Args
-end
-def flat_Analyze_Variables2cb_4(bind)
-Strin
-end
-def flat_Analyze_Variables2cb_5(bind)
 _append(bind[:autovar_1],bind[:autovar_3])
 end
 def itrans_Analyze_Variables2cb_1(bind)
 Grammar
-end
-def itrans_Analyze_Variables2cb_10(bind)
-bind[:autovar_3]=[bind[:autovar_3]]
-end
-def itrans_Analyze_Variables2cb_11(bind)
-Rule
-end
-def itrans_Analyze_Variables2cb_12(bind)
-_append(bind[:autovar_5],bind[:autovar_7])
-end
-def itrans_Analyze_Variables2cb_13(bind)
-@src.rules=bind[:rules_1]
-end
-def itrans_Analyze_Variables2cb_14(bind)
-@src.self
-end
-def itrans_Analyze_Variables2cb_15(bind)
-_append(bind[:autovar_1],bind[:autovar_8])
 end
 def itrans_Analyze_Variables2cb_2(bind)
 @src.rules
@@ -74,10 +50,7 @@ def itrans_Analyze_Variables2cb_7(bind)
 @src.self
 end
 def itrans_Analyze_Variables2cb_8(bind)
-Grammar
-end
-def itrans_Analyze_Variables2cb_9(bind)
-@src.rules
+_append(bind[:autovar_1],bind[:autovar_8])
 end
 def root_Analyze_Variables2cb_1(bind)
 @src.self
@@ -213,6 +186,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='d073a42f75dbbfe0529aaf1500af6d85'
+ raise "invalid version" if r!='5464086a78c952f743367d4701ad102f'
 end
   require 'compiled/detect_variables2_c'

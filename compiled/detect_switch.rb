@@ -111,8 +111,13 @@ class Detect_ClasSwitch < Traverser
 			return ["Object"]
 		end
 	end
-	def includes(p,e)
-		p.each{|f| return true if eval(e) >= eval(f) || eval(e) <= eval(f)}
+	def includes(ary,i,p)
+		i.times{|ii|
+			s=true
+			p.each{|f| s=false unless eval(f) <= eval(ary[ii])}
+			return false if s
+		}
+		p.each{|f| return true if eval(ary[i]) >= eval(f) || eval(ary[i]) <= eval(f)}
 		return false
 	end
 	def classswitch(ary)
@@ -179,7 +184,7 @@ bind[:ary2_1]=topsort(bind[:ary2_1])
 end
 def visit_Detect_ClasSwitchcb_8(bind)
 bind[:ary2_1].each_with_index{|bind[:e_1],i|
-      	bind[:ary3_1]<<[i,Or[{:ary=>@src.ary.select{|p| includes(first(p),bind[:e_1])}}]]
+      	bind[:ary3_1]<<[i,Or[{:ary=>@src.ary.select{|p| includes(bind[:ary2_1],i,first(p))}}]]
 		}
 end
 def visit_Detect_ClasSwitchcb_9(bind)

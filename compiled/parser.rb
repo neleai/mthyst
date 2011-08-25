@@ -288,12 +288,6 @@ def procargs2_AmethystParsercb_3(bind)
 @tmp<<bind[:a_1]
 end
 def procargs2_AmethystParsercb_4(bind)
-Args
-end
-def procargs2_AmethystParsercb_5(bind)
-_append(bind[:autovar_2],bind[:autovar_3])
-end
-def procargs2_AmethystParsercb_6(bind)
 @tmp<<bind[:a_1]
 end
 def procargs_AmethystParsercb_1(bind)
@@ -463,6 +457,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='07f67a40ade56421a8f53214428210d4'
+ raise "invalid version" if r!='8c400edfaad07f0eee0695651d33e038'
 end
   require 'compiled/parser_c'

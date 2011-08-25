@@ -57,40 +57,8 @@ alt2_2: ame_setpos(self,oldpos4);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto brea
 ISET(cut,Qnil);goto accept2;
   alt2_3:  ame_setpos(self,oldpos4); goto break1;
  accept2:;
- break;case 2:; int oldpos6=ame_getpos(self);
-alt3_1: ame_setpos(self,oldpos6);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
-  it=CALL(flat_Analyze_Variables2cb_3,1,bind);  arg0=it; it=Analyze_Variables2_clas(self ,arg0); FAILTEST(alt3_2);
- BSET(autovar_2,it); int oldpos7=ame_getpos(self); int oldlen3=ame_getlen(self); VALUE oldsrc3=ame_getsrc(self); int fail3=0;
-ame_setsrc(self,BGET(autovar_2)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-   it=Analyze_Variables2_flat(self ); FAILTEST(pass3);
- BSET(autovar_3,it); 
-	if (CALL(eof,0)==failobj) goto pass3;
-	goto success3;
-	pass3: fail3=1;
-	success3: ame_setsrc(self,oldsrc3); ame_setpos(self,oldpos7); ame_setlen(self,oldlen3);
-	if(fail3) goto alt3_2;
- 
-ISET(cut,Qnil);goto accept3;
-alt3_2: ame_setpos(self,oldpos6);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
-  it=CALL(flat_Analyze_Variables2cb_4,1,bind);  arg0=it; it=Analyze_Variables2_clas(self ,arg0); FAILTEST(alt3_3);
- BSET(autovar_4,it); int oldpos8=ame_getpos(self); int oldlen4=ame_getlen(self); VALUE oldsrc4=ame_getsrc(self); int fail4=0;
-ame_setsrc(self,BGET(autovar_4)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-   it=Analyze_Variables2_flat(self ); FAILTEST(pass4);
- BSET(autovar_3,it); 
-	if (CALL(eof,0)==failobj) goto pass4;
-	goto success4;
-	pass4: fail4=1;
-	success4: ame_setsrc(self,oldsrc4); ame_setpos(self,oldpos8); ame_setlen(self,oldlen4);
-	if(fail4) goto alt3_3;
- 
-ISET(cut,Qnil);goto accept3;
-alt3_3: ame_setpos(self,oldpos6);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
-   it=AmethystCore_anything(self ); FAILTEST(alt3_4);
- BSET(autovar_3,it);  
-ISET(cut,Qnil);goto accept3;
-  alt3_4:  ame_setpos(self,oldpos6); goto break1;
- accept3:;
- break;default: goto break1;}it=CALL(flat_Analyze_Variables2cb_5,1,bind);  if (IGET(stop)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos1); it=BGET(autovar_1);
+ break;case 2:;   it=AmethystCore_anything(self ); FAILTEST(break1);
+ BSET(autovar_3,it);  break;default: goto break1;}it=CALL(flat_Analyze_Variables2cb_3,1,bind);  if (IGET(stop)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos1); it=BGET(autovar_1);
  BSET(_result_1,it); it=BGET(_result_1);
 return it;
 fail: return failobj; }
@@ -147,57 +115,8 @@ alt1_2: ame_setpos(self,oldpos2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto brea
 ISET(cut,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos2); goto break1;
  accept1:;
- break;case 1:; int oldpos8=ame_getpos(self);
-alt2_1: ame_setpos(self,oldpos8);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
-  it=CALL(itrans_Analyze_Variables2cb_8,1,bind);  arg0=it; it=Analyze_Variables2_clas(self ,arg0); FAILTEST(alt2_2);
- BSET(autovar_2,it); int oldpos9=ame_getpos(self); int oldlen5=ame_getlen(self); VALUE oldsrc5=ame_getsrc(self); int fail5=0;
-ame_setsrc(self,BGET(autovar_2)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
- it=CALL(itrans_Analyze_Variables2cb_9,1,bind); 
- BSET(autovar_3,it); it=CALL(itrans_Analyze_Variables2cb_10,1,bind); int oldpos10=ame_getpos(self); int oldlen6=ame_getlen(self); VALUE oldsrc6=ame_getsrc(self); int fail6=0;
-ame_setsrc(self,BGET(autovar_3)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-   it=AmethystCore_anything(self ); FAILTEST(pass6);
- BSET(autovar_4,it); int oldpos11=ame_getpos(self); int oldlen7=ame_getlen(self); VALUE oldsrc7=ame_getsrc(self); int fail7=0;
-ame_setsrc(self,BGET(autovar_4)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
- it=rb_ary_new3(0);
- BSET(autovar_5,it); int oldpos12; while(1){oldpos12=ame_getpos(self);  it=CALL(itrans_Analyze_Variables2cb_11,1,bind);  arg0=it; it=Analyze_Variables2_clas(self ,arg0); FAILTEST(break3);
- BSET(autovar_6,it); int oldpos13=ame_getpos(self); int oldlen8=ame_getlen(self); VALUE oldsrc8=ame_getsrc(self); int fail8=0;
-ame_setsrc(self,BGET(autovar_6)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-   it=Analyze_Variables2_root(self ); FAILTEST(pass8);
- BSET(autovar_7,it); 
-	if (CALL(eof,0)==failobj) goto pass8;
-	goto success8;
-	pass8: fail8=1;
-	success8: ame_setsrc(self,oldsrc8); ame_setpos(self,oldpos13); ame_setlen(self,oldlen8);
-	if(fail8) goto break3;
-it=CALL(itrans_Analyze_Variables2cb_12,1,bind);  if (IGET(stop)!=Qnil){{oldpos12=ame_getpos(self);goto break3;} } } break3: ISET(stop,Qnil);  ame_setpos(self,oldpos12); it=BGET(autovar_5);
- BSET(rules_1,it); 
-	if (CALL(eof,0)==failobj) goto pass7;
-	goto success7;
-	pass7: fail7=1;
-	success7: ame_setsrc(self,oldsrc7); ame_setpos(self,oldpos11); ame_setlen(self,oldlen7);
-	if(fail7) goto pass6;
-
-	if (CALL(eof,0)==failobj) goto pass6;
-	goto success6;
-	pass6: fail6=1;
-	success6: ame_setsrc(self,oldsrc6); ame_setpos(self,oldpos10); ame_setlen(self,oldlen6);
-	if(fail6) goto pass5;
-it=CALL(itrans_Analyze_Variables2cb_13,1,bind); it=CALL(itrans_Analyze_Variables2cb_14,1,bind); 
- BSET(autovar_8,it); 
-	if (CALL(eof,0)==failobj) goto pass5;
-	goto success5;
-	pass5: fail5=1;
-	success5: ame_setsrc(self,oldsrc5); ame_setpos(self,oldpos9); ame_setlen(self,oldlen5);
-	if(fail5) goto alt2_2;
- 
-ISET(cut,Qnil);goto accept2;
-alt2_2: ame_setpos(self,oldpos8);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
-   it=AmethystCore_anything(self ); FAILTEST(alt2_3);
- BSET(autovar_8,it);  
-ISET(cut,Qnil);goto accept2;
-  alt2_3:  ame_setpos(self,oldpos8); goto break1;
- accept2:;
- break;default: goto break1;}it=CALL(itrans_Analyze_Variables2cb_15,1,bind);  if (IGET(stop)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos1); it=BGET(autovar_1);
+ break;case 1:;   it=AmethystCore_anything(self ); FAILTEST(break1);
+ BSET(autovar_8,it);  break;default: goto break1;}it=CALL(itrans_Analyze_Variables2cb_8,1,bind);  if (IGET(stop)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos1); it=BGET(autovar_1);
  BSET(_result_1,it); it=BGET(_result_1);
 return it;
 fail: return failobj; }
@@ -510,4 +429,4 @@ rb_define_method(cls_Remap_Acts,"root",Remap_Acts_root,0);
 rb_define_method(cls_Remap_Acts,"traverse",Remap_Acts_traverse,0);
 rb_define_method(cls_Remap_Acts,"traverse_item",Remap_Acts_traverse_item,0);
 rb_define_method(cls_Remap_Acts,"visit",Remap_Acts_visit,0);
- rb_eval_string("testversion('d073a42f75dbbfe0529aaf1500af6d85')");}
+ rb_eval_string("testversion('5464086a78c952f743367d4701ad102f')");}

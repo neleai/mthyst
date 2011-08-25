@@ -208,95 +208,11 @@ end
 def vars_in_Dataflowcb_3(bind)
 @src.self
 end
-def vars_in_Dataflowcb_30(bind)
-Global
-end
-def vars_in_Dataflowcb_31(bind)
-@src.self
-end
-def vars_in_Dataflowcb_32(bind)
-_append(bind[:ary_1],bind[:autovar_2])
-end
-def vars_in_Dataflowcb_33(bind)
-@marked<<@src.self
-end
-def vars_in_Dataflowcb_34(bind)
-Act
-end
-def vars_in_Dataflowcb_35(bind)
-@src.self
-end
-def vars_in_Dataflowcb_36(bind)
-_append(bind[:ary_1],bind[:autovar_4])
-end
-def vars_in_Dataflowcb_37(bind)
-CAct
-end
-def vars_in_Dataflowcb_38(bind)
-@src.self
-end
-def vars_in_Dataflowcb_39(bind)
-_append(bind[:ary_1],bind[:autovar_6])
-end
 def vars_in_Dataflowcb_4(bind)
 _append(bind[:ary_1],bind[:autovar_2])
 end
-def vars_in_Dataflowcb_40(bind)
-Key
-end
-def vars_in_Dataflowcb_41(bind)
-@src.self
-end
-def vars_in_Dataflowcb_42(bind)
-_append(bind[:ary_1],bind[:autovar_8])
-end
-def vars_in_Dataflowcb_43(bind)
-@marked<<@src.self
-end
-def vars_in_Dataflowcb_44(bind)
-Result
-end
-def vars_in_Dataflowcb_45(bind)
-@src.self
-end
-def vars_in_Dataflowcb_46(bind)
-_append(bind[:ary_1],bind[:autovar_10])
-end
-def vars_in_Dataflowcb_47(bind)
-Strin
-end
-def vars_in_Dataflowcb_48(bind)
-_append(bind[:ary_1],bind[:autovar_12])
-end
-def vars_in_Dataflowcb_49(bind)
-Args
-end
 def vars_in_Dataflowcb_5(bind)
 @marked<<@src.self
-end
-def vars_in_Dataflowcb_50(bind)
-_append(bind[:ary_1],bind[:autovar_14])
-end
-def vars_in_Dataflowcb_51(bind)
-Bind
-end
-def vars_in_Dataflowcb_52(bind)
-@src.name
-end
-def vars_in_Dataflowcb_53(bind)
-bind[:autovar_16]=[bind[:autovar_16]]
-end
-def vars_in_Dataflowcb_54(bind)
-_append(bind[:ary_1],bind[:autovar_17])
-end
-def vars_in_Dataflowcb_55(bind)
-Local
-end
-def vars_in_Dataflowcb_56(bind)
-@src.self
-end
-def vars_in_Dataflowcb_57(bind)
-_append(bind[:ary_1],bind[:autovar_19])
 end
 def vars_in_Dataflowcb_6(bind)
 Act
@@ -552,6 +468,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='41e3412976aea5063b1d22f5f86882a9'
+ raise "invalid version" if r!='14385ece6ec5211a840b553ff6935920'
 end
   require 'compiled/dataflow_ssa_c'
