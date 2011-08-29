@@ -25,7 +25,6 @@ class Detect_Switch < Traverser
 			return a.uniq
 		end
 		if s.is_a?(Apply) && s[0]=="seq"
-			puts s.inspect
 			return nil unless s[1].is_a?(CAct)
 			return nil if s[1][0].size==15
 			return [firstchar(s[1][0])]
@@ -115,7 +114,7 @@ bind[1].sort.uniq.each{|bind[3]|
 		}
 end
 def visit_Detect_Switchcb_5(bind)
-s=Switch[{:act=>"*ame_curstr(self)",:ary=>bind[2]}];puts s.inspect;s
+s=Switch[{:act=>"*ame_curstr(self)",:ary=>bind[2]}];s
 end
 
 end
@@ -232,40 +231,34 @@ def itrans_Detect_ClasSwitchcb_7(bind)
 _append(bind[0],bind[10])
 end
 def predicate_Detect_ClasSwitchcb_1(bind)
-puts bind[0];puts bind[1].inspect
+bind[1]=[bind[1]]
 end
 def predicate_Detect_ClasSwitchcb_10(bind)
-predicate(bind[0],@src.expr)
-end
-def predicate_Detect_ClasSwitchcb_11(bind)
 Bind.create( {:expr=>bind[16],:name=>bind[11] })
 end
-def predicate_Detect_ClasSwitchcb_12(bind)
-puts "end";puts bind[0];puts bind[9].inspect;bind[9]
-end
 def predicate_Detect_ClasSwitchcb_2(bind)
-bind[2]=[bind[2]]
+_append(bind[4],bind[5])
 end
 def predicate_Detect_ClasSwitchcb_3(bind)
-_append(bind[5],bind[6])
+Seq[[predicate(bind[7],bind[3])]+bind[6]]
 end
 def predicate_Detect_ClasSwitchcb_4(bind)
-Seq[[predicate(bind[0],bind[4])]+bind[7]]
-end
-def predicate_Detect_ClasSwitchcb_5(bind)
 (bind[11]=="clas") || FAIL
 end
-def predicate_Detect_ClasSwitchcb_6(bind)
+def predicate_Detect_ClasSwitchcb_5(bind)
 Act
 end
-def predicate_Detect_ClasSwitchcb_7(bind)
-(child(bind[0],bind[13])) || FAIL
+def predicate_Detect_ClasSwitchcb_6(bind)
+(child(bind[7],bind[13])) || FAIL
 end
-def predicate_Detect_ClasSwitchcb_8(bind)
+def predicate_Detect_ClasSwitchcb_7(bind)
 Apply["anything"]
 end
-def predicate_Detect_ClasSwitchcb_9(bind)
+def predicate_Detect_ClasSwitchcb_8(bind)
 @src.name
+end
+def predicate_Detect_ClasSwitchcb_9(bind)
+predicate(bind[7],@src.expr)
 end
 def traverse_Detect_ClasSwitchcb_1(bind)
 @src
@@ -307,11 +300,14 @@ def visit_Detect_ClasSwitchcb_4(bind)
 bind[1]=topsort(bind[1])
 end
 def visit_Detect_ClasSwitchcb_5(bind)
+(bind[1].size>1) || FAIL
+end
+def visit_Detect_ClasSwitchcb_6(bind)
 bind[1].each_with_index{|bind[3],i|
       	bind[2]<<[i,Or[{:ary=>@src.ary.select{|p| includes(bind[1],i,first(p))}.map{|p| predicate(bind[3],p)}}]]
 		}
 end
-def visit_Detect_ClasSwitchcb_6(bind)
+def visit_Detect_ClasSwitchcb_7(bind)
 c=classswitch(bind[1]);s=Switch[{:act=>c[1],:defs=>c[0],:ary=>bind[2]}];puts s.inspect;s
 end
 
@@ -320,6 +316,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='55f83005a39ba4d6d3fd7e65244e2a02'
+ raise "invalid version" if r!='a7d188db90c3757efa4661bad4f11f6b'
 end
   require 'compiled/detect_switch_c'
