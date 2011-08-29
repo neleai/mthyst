@@ -181,7 +181,7 @@ def rbtrans_AmethystCTranslatorcb_13(bind)
 @src.name
 end
 def rbtrans_AmethystCTranslatorcb_14(bind)
-"@src.#{bind[13]}"
+(bind[13]=="self") ? "@src" : "@src.#{bind[13]}"
 end
 def rbtrans_AmethystCTranslatorcb_15(bind)
 Global
@@ -193,7 +193,7 @@ def rbtrans_AmethystCTranslatorcb_17(bind)
 Exp
 end
 def rbtrans_AmethystCTranslatorcb_2(bind)
-rbbget(@src.self)
+rbbget(@src)
 end
 def rbtrans_AmethystCTranslatorcb_3(bind)
 Args
@@ -341,7 +341,7 @@ def trans_AmethystCTranslatorcb_39(bind)
 @lambdas=[]
 end
 def trans_AmethystCTranslatorcb_4(bind)
-"it=#{bget(@src.self)};" 
+"it=#{bget(@src)};" 
 end
 def trans_AmethystCTranslatorcb_40(bind)
 @defs=[]

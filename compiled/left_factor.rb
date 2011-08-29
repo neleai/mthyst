@@ -39,10 +39,10 @@ def fails_Left_Factorcb_1(bind)
 (false) || FAIL
 end
 def traverse_Left_Factorcb_1(bind)
-@src.self
+@src
 end
 def traverse_Left_Factorcb_2(bind)
-(@src.self.instance_variables).map{|v| [v,@src.self.instance_variable_get(v)] }
+(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
 end
 def traverse_Left_Factorcb_3(bind)
 bind[1]=[bind[1]]
@@ -51,7 +51,7 @@ def traverse_Left_Factorcb_4(bind)
 bind[0].instance_variable_set(bind[4],bind[5])
 end
 def traverse_Left_Factorcb_5(bind)
-@src.self
+@src
 end
 def traverse_item_Left_Factorcb_1(bind)
 @changed=true

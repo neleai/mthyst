@@ -32,7 +32,7 @@ def clas_Dead_Code_Detector2cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
 def root_Dead_Code_Detector2cb_1(bind)
-@src.self
+@src
 end
 def root_Dead_Code_Detector2cb_2(bind)
 bind[0]=[bind[0]]
@@ -53,13 +53,13 @@ def root_Dead_Code_Detector2cb_7(bind)
 @src.reachable=bind[2]
 end
 def root_Dead_Code_Detector2cb_8(bind)
-@src.self
+@src
 end
 def traverse_Dead_Code_Detector2cb_1(bind)
-@src.self
+@src
 end
 def traverse_Dead_Code_Detector2cb_2(bind)
-(@src.self.instance_variables).map{|v| [v,@src.self.instance_variable_get(v)] }
+(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
 end
 def traverse_Dead_Code_Detector2cb_3(bind)
 bind[1]=[bind[1]]
@@ -68,7 +68,7 @@ def traverse_Dead_Code_Detector2cb_4(bind)
 bind[0].instance_variable_set(bind[4],bind[5])
 end
 def traverse_Dead_Code_Detector2cb_5(bind)
-@src.self
+@src
 end
 def traverse_item_Dead_Code_Detector2cb_1(bind)
 @changed=true
@@ -86,19 +86,19 @@ def vars_in_Dead_Code_Detector2cb_1(bind)
 bind[0]=[]
 end
 def vars_in_Dead_Code_Detector2cb_10(bind)
-@src.self
+@src
 end
 def vars_in_Dead_Code_Detector2cb_11(bind)
 _append(bind[0],bind[6])
 end
 def vars_in_Dead_Code_Detector2cb_12(bind)
-@marked<<@src.self
+@marked<<@src
 end
 def vars_in_Dead_Code_Detector2cb_13(bind)
 Result
 end
 def vars_in_Dead_Code_Detector2cb_14(bind)
-@src.self
+@src
 end
 def vars_in_Dead_Code_Detector2cb_15(bind)
 _append(bind[0],bind[8])
@@ -134,25 +134,25 @@ def vars_in_Dead_Code_Detector2cb_24(bind)
 Local
 end
 def vars_in_Dead_Code_Detector2cb_25(bind)
-@src.self
+@src
 end
 def vars_in_Dead_Code_Detector2cb_26(bind)
 _append(bind[0],bind[17])
 end
 def vars_in_Dead_Code_Detector2cb_3(bind)
-@src.self
+@src
 end
 def vars_in_Dead_Code_Detector2cb_4(bind)
 _append(bind[0],bind[2])
 end
 def vars_in_Dead_Code_Detector2cb_5(bind)
-@marked<<@src.self
+@marked<<@src
 end
 def vars_in_Dead_Code_Detector2cb_6(bind)
 Act
 end
 def vars_in_Dead_Code_Detector2cb_7(bind)
-@src.self
+@src
 end
 def vars_in_Dead_Code_Detector2cb_8(bind)
 _append(bind[0],bind[4])
@@ -258,7 +258,7 @@ def clas_Dead_Code_Deleter2cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
 def root_Dead_Code_Deleter2cb_1(bind)
-@src.self
+@src
 end
 def root_Dead_Code_Deleter2cb_2(bind)
 bind[0]=[bind[0]]
@@ -276,13 +276,13 @@ def root_Dead_Code_Deleter2cb_6(bind)
 @src.reachable=nil
 end
 def root_Dead_Code_Deleter2cb_7(bind)
-@src.self
+@src
 end
 def traverse_Dead_Code_Deleter2cb_1(bind)
-@src.self
+@src
 end
 def traverse_Dead_Code_Deleter2cb_2(bind)
-(@src.self.instance_variables).map{|v| [v,@src.self.instance_variable_get(v)] }
+(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
 end
 def traverse_Dead_Code_Deleter2cb_3(bind)
 bind[1]=[bind[1]]
@@ -291,7 +291,7 @@ def traverse_Dead_Code_Deleter2cb_4(bind)
 bind[0].instance_variable_set(bind[4],bind[5])
 end
 def traverse_Dead_Code_Deleter2cb_5(bind)
-@src.self
+@src
 end
 def traverse_item_Dead_Code_Deleter2cb_1(bind)
 @changed=true
@@ -309,7 +309,7 @@ def visit_Dead_Code_Deleter2cb_1(bind)
 Local
 end
 def visit_Dead_Code_Deleter2cb_10(bind)
-@src.self
+@src
 end
 def visit_Dead_Code_Deleter2cb_11(bind)
 @reachable[bind[5]] ? bind[1] : bind[6]
@@ -318,13 +318,13 @@ def visit_Dead_Code_Deleter2cb_12(bind)
 Result
 end
 def visit_Dead_Code_Deleter2cb_13(bind)
-@src.self
+@src
 end
 def visit_Dead_Code_Deleter2cb_14(bind)
 @reachable[bind[1]] ? bind[1] : Act[]
 end
 def visit_Dead_Code_Deleter2cb_2(bind)
-@src.self
+@src
 end
 def visit_Dead_Code_Deleter2cb_3(bind)
 @reachable[bind[1]] ? bind[1] : Act[]
@@ -333,7 +333,7 @@ def visit_Dead_Code_Deleter2cb_4(bind)
 Act
 end
 def visit_Dead_Code_Deleter2cb_5(bind)
-@src.self
+@src
 end
 def visit_Dead_Code_Deleter2cb_6(bind)
 @reachable[bind[1]] ? bind[1] : Act[]
@@ -436,10 +436,10 @@ def move_Move_Assignments2cb_9(bind)
 _Bind(bind[3],bind[7],bind[2])
 end
 def traverse_Move_Assignments2cb_1(bind)
-@src.self
+@src
 end
 def traverse_Move_Assignments2cb_2(bind)
-(@src.self.instance_variables).map{|v| [v,@src.self.instance_variable_get(v)] }
+(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
 end
 def traverse_Move_Assignments2cb_3(bind)
 bind[1]=[bind[1]]
@@ -448,7 +448,7 @@ def traverse_Move_Assignments2cb_4(bind)
 bind[0].instance_variable_set(bind[4],bind[5])
 end
 def traverse_Move_Assignments2cb_5(bind)
-@src.self
+@src
 end
 def traverse_item_Move_Assignments2cb_1(bind)
 @changed=true

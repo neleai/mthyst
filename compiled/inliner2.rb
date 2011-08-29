@@ -10,10 +10,10 @@ def root_Renamer2cb_2(bind)
 @newvars={}
 end
 def traverse_Renamer2cb_1(bind)
-@src.self
+@src
 end
 def traverse_Renamer2cb_2(bind)
-(@src.self.instance_variables).map{|v| [v,@src.self.instance_variable_get(v)] }
+(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
 end
 def traverse_Renamer2cb_3(bind)
 bind[1]=[bind[1]]
@@ -22,7 +22,7 @@ def traverse_Renamer2cb_4(bind)
 bind[0].instance_variable_set(bind[4],bind[5])
 end
 def traverse_Renamer2cb_5(bind)
-@src.self
+@src
 end
 def traverse_item_Renamer2cb_1(bind)
 @changed=true
@@ -40,7 +40,7 @@ def visit_Renamer2cb_1(bind)
 Local
 end
 def visit_Renamer2cb_2(bind)
-@src.self
+@src
 end
 def visit_Renamer2cb_3(bind)
 @newvars[bind[2]] ? @newvars[bind[2]] : ($av+=1; @newvars[bind[2]]=_Local(bind[1],$av) ;@newvars[bind[2]] )
@@ -64,10 +64,10 @@ def root_DetectCallscb_3(bind)
 @calls
 end
 def traverse_DetectCallscb_1(bind)
-@src.self
+@src
 end
 def traverse_DetectCallscb_2(bind)
-(@src.self.instance_variables).map{|v| [v,@src.self.instance_variable_get(v)] }
+(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
 end
 def traverse_DetectCallscb_3(bind)
 bind[1]=[bind[1]]
@@ -76,7 +76,7 @@ def traverse_DetectCallscb_4(bind)
 bind[0].instance_variable_set(bind[4],bind[5])
 end
 def traverse_DetectCallscb_5(bind)
-@src.self
+@src
 end
 def traverse_item_DetectCallscb_1(bind)
 @changed=true
@@ -97,7 +97,7 @@ def visit_DetectCallscb_2(bind)
 @calls[bind[1]]=true 
 end
 def visit_DetectCallscb_3(bind)
-@src.self
+@src
 end
 
 end
@@ -136,10 +136,10 @@ def root_Inliner2cb_9(bind)
 Rule
 end
 def traverse_Inliner2cb_1(bind)
-@src.self
+@src
 end
 def traverse_Inliner2cb_2(bind)
-(@src.self.instance_variables).map{|v| [v,@src.self.instance_variable_get(v)] }
+(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
 end
 def traverse_Inliner2cb_3(bind)
 bind[1]=[bind[1]]
@@ -148,7 +148,7 @@ def traverse_Inliner2cb_4(bind)
 bind[0].instance_variable_set(bind[4],bind[5])
 end
 def traverse_Inliner2cb_5(bind)
-@src.self
+@src
 end
 def traverse_item_Inliner2cb_1(bind)
 @changed=true

@@ -71,16 +71,16 @@ def itrans_Detect_Switchcb_6(bind)
 @src.rules=bind[7]
 end
 def itrans_Detect_Switchcb_7(bind)
-@src.self
+@src
 end
 def itrans_Detect_Switchcb_8(bind)
 _append(bind[0],bind[8])
 end
 def traverse_Detect_Switchcb_1(bind)
-@src.self
+@src
 end
 def traverse_Detect_Switchcb_2(bind)
-(@src.self.instance_variables).map{|v| [v,@src.self.instance_variable_get(v)] }
+(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
 end
 def traverse_Detect_Switchcb_3(bind)
 bind[1]=[bind[1]]
@@ -89,7 +89,7 @@ def traverse_Detect_Switchcb_4(bind)
 bind[0].instance_variable_set(bind[4],bind[5])
 end
 def traverse_Detect_Switchcb_5(bind)
-@src.self
+@src
 end
 def traverse_item_Detect_Switchcb_1(bind)
 @changed=true
@@ -218,16 +218,16 @@ def itrans_Detect_ClasSwitchcb_6(bind)
 @src.rules=bind[7]
 end
 def itrans_Detect_ClasSwitchcb_7(bind)
-@src.self
+@src
 end
 def itrans_Detect_ClasSwitchcb_8(bind)
 _append(bind[0],bind[8])
 end
 def traverse_Detect_ClasSwitchcb_1(bind)
-@src.self
+@src
 end
 def traverse_Detect_ClasSwitchcb_2(bind)
-(@src.self.instance_variables).map{|v| [v,@src.self.instance_variable_get(v)] }
+(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
 end
 def traverse_Detect_ClasSwitchcb_3(bind)
 bind[1]=[bind[1]]
@@ -236,7 +236,7 @@ def traverse_Detect_ClasSwitchcb_4(bind)
 bind[0].instance_variable_set(bind[4],bind[5])
 end
 def traverse_Detect_ClasSwitchcb_5(bind)
-@src.self
+@src
 end
 def traverse_item_Detect_ClasSwitchcb_1(bind)
 @changed=true

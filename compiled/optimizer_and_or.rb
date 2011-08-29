@@ -41,16 +41,16 @@ def itrans_Seq_Or_Optimizercb_6(bind)
 @src.rules=bind[7]
 end
 def itrans_Seq_Or_Optimizercb_7(bind)
-@src.self
+@src
 end
 def itrans_Seq_Or_Optimizercb_8(bind)
 _append(bind[0],bind[8])
 end
 def traverse_Seq_Or_Optimizercb_1(bind)
-@src.self
+@src
 end
 def traverse_Seq_Or_Optimizercb_2(bind)
-(@src.self.instance_variables).map{|v| [v,@src.self.instance_variable_get(v)] }
+(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
 end
 def traverse_Seq_Or_Optimizercb_3(bind)
 bind[1]=[bind[1]]
@@ -59,7 +59,7 @@ def traverse_Seq_Or_Optimizercb_4(bind)
 bind[0].instance_variable_set(bind[4],bind[5])
 end
 def traverse_Seq_Or_Optimizercb_5(bind)
-@src.self
+@src
 end
 def traverse_item_Seq_Or_Optimizercb_1(bind)
 @changed=true
@@ -98,7 +98,7 @@ def visit_Seq_Or_Optimizercb_4(bind)
 (bind[3]=="apply") || FAIL
 end
 def visit_Seq_Or_Optimizercb_5(bind)
-puts @src.self.inspect
+puts @src.inspect
 end
 def visit_Seq_Or_Optimizercb_6(bind)
 (bind[4].is_a?(CAct)) || FAIL

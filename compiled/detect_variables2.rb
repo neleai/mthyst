@@ -59,13 +59,13 @@ def itrans_Analyze_Variables2cb_6(bind)
 @src.rules=bind[7]
 end
 def itrans_Analyze_Variables2cb_7(bind)
-@src.self
+@src
 end
 def itrans_Analyze_Variables2cb_8(bind)
 _append(bind[0],bind[8])
 end
 def root_Analyze_Variables2cb_1(bind)
-@src.self
+@src
 end
 def root_Analyze_Variables2cb_2(bind)
 bind[0]=[bind[0]]
@@ -86,13 +86,13 @@ def root_Analyze_Variables2cb_7(bind)
 @src.locals=nil
 end
 def root_Analyze_Variables2cb_8(bind)
-@src.self
+@src
 end
 def traverse_Analyze_Variables2cb_1(bind)
-@src.self
+@src
 end
 def traverse_Analyze_Variables2cb_2(bind)
-(@src.self.instance_variables).map{|v| [v,@src.self.instance_variable_get(v)] }
+(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
 end
 def traverse_Analyze_Variables2cb_3(bind)
 bind[1]=[bind[1]]
@@ -101,7 +101,7 @@ def traverse_Analyze_Variables2cb_4(bind)
 bind[0].instance_variable_set(bind[4],bind[5])
 end
 def traverse_Analyze_Variables2cb_5(bind)
-@src.self
+@src
 end
 def traverse_item_Analyze_Variables2cb_1(bind)
 @changed=true
@@ -125,7 +125,7 @@ def visit_Analyze_Variables2cb_11(bind)
 @src.vars=@locals.select{|aa| @src.vars.include? aa[0].to_sym}.uniq
 end
 def visit_Analyze_Variables2cb_12(bind)
-@src.self
+@src
 end
 def visit_Analyze_Variables2cb_2(bind)
 @src.ary.map{|aa| @variables[aa] }
@@ -137,7 +137,7 @@ def visit_Analyze_Variables2cb_4(bind)
 @src.ary=connectstring(bind[3].flatten)
 end
 def visit_Analyze_Variables2cb_5(bind)
-(@src.ary.size==1&&(@src.ary[0].is_a?(Local)||@src.ary[0].is_a?(Global)||@src.ary[0].is_a?(Key))) ? @src.ary[0] : @src.self
+(@src.ary.size==1&&(@src.ary[0].is_a?(Local)||@src.ary[0].is_a?(Global)||@src.ary[0].is_a?(Key))) ? @src.ary[0] : @src
 end
 def visit_Analyze_Variables2cb_6(bind)
 Act
@@ -161,10 +161,10 @@ def clas_Remap_Actscb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
 def traverse_Remap_Actscb_1(bind)
-@src.self
+@src
 end
 def traverse_Remap_Actscb_2(bind)
-(@src.self.instance_variables).map{|v| [v,@src.self.instance_variable_get(v)] }
+(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
 end
 def traverse_Remap_Actscb_3(bind)
 bind[1]=[bind[1]]
@@ -173,7 +173,7 @@ def traverse_Remap_Actscb_4(bind)
 bind[0].instance_variable_set(bind[4],bind[5])
 end
 def traverse_Remap_Actscb_5(bind)
-@src.self
+@src
 end
 def traverse_item_Remap_Actscb_1(bind)
 @changed=true
