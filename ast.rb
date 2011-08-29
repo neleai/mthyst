@@ -88,6 +88,28 @@ class <<Many
 	end
 end
 
+class <<Seq
+	def [](*args)
+		args=args[0][:ary] if args.size==1 && args[0].is_a?(Hash)
+		return Seq.create(*args) if args[-1].is_a?(Hash)
+		args=args.map{|i| (i.is_a?(Seq)) ? i.ary : i}.flatten
+		args=args.select{|e| !(e.is_a?(Act) && e.ary.size==0)} 
+		(args.size==1) ? args[0] : Seq.create({:ary=>args})
+	end
+end
+
+class <<Or
+	def [](*args)
+		args=args[0][:ary] if args.size==1 && args[0].is_a?(Hash)
+		return Or.create(*args) if args[-1].is_a?(Hash)
+		args=args.map{|i| (i.is_a?(Or)) ? i.ary : i}.flatten
+		args=args.select{|e| !(e.is_a?(Act) && e.ary.size==0)} 
+		(args.size==1) ? args[0] : Or.create({:ary=>args})
+	end
+end
+
+
+
 class PureAct
 end
 class <<PureAct
