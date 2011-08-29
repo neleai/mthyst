@@ -13,7 +13,16 @@ class Left_Factor < Traverser
 end
 
 class Left_Factor < Traverser
-
+def self.switchcb_Left_Factor1(e)
+return 0 if e<=Array
+return 1 if e<=AmethystAST
+return 2 if e<=Object
+return 3
+end
+@@switchhashLeft_Factor1=Hash.new{|h,k| h[k]=switchcb_Left_Factor1(k)}
+def switchcbLeft_Factor1(e)
+@@switchhashLeft_Factor1[e.class]
+end
 def clas_Left_Factorcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
@@ -57,13 +66,13 @@ def traverse_item_Left_Factorcb_1(bind)
 @changed=true
 end
 def traverse_item_Left_Factorcb_2(bind)
-Array
-end
-def traverse_item_Left_Factorcb_3(bind)
 bind[3]<<bind[4]
 end
+def traverse_item_Left_Factorcb_3(bind)
+@changed=true
+end
 def traverse_item_Left_Factorcb_4(bind)
-AmethystAST
+@changed=true
 end
 def visit_Left_Factorcb_1(bind)
 Or
@@ -88,6 +97,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='db83a548ed68e154b77fa245a327c79e'
+ raise "invalid version" if r!='42067f43e593b0377d38d0d1cf5d99a5'
 end
   require 'compiled/left_factor_c'

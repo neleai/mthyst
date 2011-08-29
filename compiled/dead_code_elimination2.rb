@@ -11,15 +11,25 @@ def switchcbMove_Assignments21(e)
 @@switchhashMove_Assignments21[e.class]
 end
 def self.switchcb_Move_Assignments22(e)
+return 0 if e<=Array
+return 1 if e<=AmethystAST
+return 2 if e<=Object
+return 3
+end
+@@switchhashMove_Assignments22=Hash.new{|h,k| h[k]=switchcb_Move_Assignments22(k)}
+def switchcbMove_Assignments22(e)
+@@switchhashMove_Assignments22[e.class]
+end
+def self.switchcb_Move_Assignments23(e)
 return 0 if e<=Or
 return 1 if e<=Seq
 return 2 if e<=Pass
 return 3 if e<=Object
 return 4
 end
-@@switchhashMove_Assignments22=Hash.new{|h,k| h[k]=switchcb_Move_Assignments22(k)}
-def switchcbMove_Assignments22(e)
-@@switchhashMove_Assignments22[e.class]
+@@switchhashMove_Assignments23=Hash.new{|h,k| h[k]=switchcb_Move_Assignments23(k)}
+def switchcbMove_Assignments23(e)
+@@switchhashMove_Assignments23[e.class]
 end
 def clas_Move_Assignments2cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -91,13 +101,13 @@ def traverse_item_Move_Assignments2cb_1(bind)
 @changed=true
 end
 def traverse_item_Move_Assignments2cb_2(bind)
-Array
-end
-def traverse_item_Move_Assignments2cb_3(bind)
 bind[3]<<bind[4]
 end
+def traverse_item_Move_Assignments2cb_3(bind)
+@changed=true
+end
 def traverse_item_Move_Assignments2cb_4(bind)
-AmethystAST
+@changed=true
 end
 def visit_Move_Assignments2cb_1(bind)
 Bind
@@ -163,6 +173,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='344b41db704ea7314255086178eed48b'
+ raise "invalid version" if r!='f6b58420253685ebde7c95fbbec60bdf'
 end
   require 'compiled/dead_code_elimination2_c'

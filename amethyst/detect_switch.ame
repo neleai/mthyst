@@ -70,7 +70,7 @@ class Detect_ClasSwitch < Traverser
 		if s.is_a?(Apply) && s[0]=="clas"
 			return [s[1][0]]
 		end
-		if s.is_a?(Apply) && s[0]=="anything"
+		if s.is_a?(Apply) #&& s[0]=="anything"
 			return ["Object"]
 		end
 	end
@@ -125,6 +125,6 @@ amethyst Detect_ClasSwitch < Traverser {
 													 | Apply[ .:name &{name=="clas"} Act[.:match] &{child(clas,match)&&clas==match} {Apply["anything"]}] 
  													 | Bind[@name:name {predicate(clas,@expr)}:expr  @Bind]
 													 | .
-													 ) 
+													 )
 }
 

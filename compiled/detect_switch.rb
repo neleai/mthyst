@@ -42,6 +42,16 @@ end
 def switchcbDetect_Switch1(e)
 @@switchhashDetect_Switch1[e.class]
 end
+def self.switchcb_Detect_Switch2(e)
+return 0 if e<=Array
+return 1 if e<=AmethystAST
+return 2 if e<=Object
+return 3
+end
+@@switchhashDetect_Switch2=Hash.new{|h,k| h[k]=switchcb_Detect_Switch2(k)}
+def switchcbDetect_Switch2(e)
+@@switchhashDetect_Switch2[e.class]
+end
 def clas_Detect_Switchcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
@@ -91,13 +101,13 @@ def traverse_item_Detect_Switchcb_1(bind)
 @changed=true
 end
 def traverse_item_Detect_Switchcb_2(bind)
-Array
-end
-def traverse_item_Detect_Switchcb_3(bind)
 bind[3]<<bind[4]
 end
+def traverse_item_Detect_Switchcb_3(bind)
+@changed=true
+end
 def traverse_item_Detect_Switchcb_4(bind)
-AmethystAST
+@changed=true
 end
 def visit_Detect_Switchcb_1(bind)
 Or
@@ -144,7 +154,7 @@ class Detect_ClasSwitch < Traverser
 		if s.is_a?(Apply) && s[0]=="clas"
 			return [s[1][0]]
 		end
-		if s.is_a?(Apply) && s[0]=="anything"
+		if s.is_a?(Apply) #&& s[0]=="anything"
 			return ["Object"]
 		end
 	end
@@ -181,25 +191,35 @@ class Detect_ClasSwitch < Traverser
 end
 
 class Detect_ClasSwitch < Traverser
-def self.switchcb_Detect_ClasSwitch2(e)
+def self.switchcb_Detect_ClasSwitch3(e)
 return 0 if e<=Seq
 return 1 if e<=Apply
 return 2 if e<=Bind
 return 3 if e<=Object
 return 4
 end
-@@switchhashDetect_ClasSwitch2=Hash.new{|h,k| h[k]=switchcb_Detect_ClasSwitch2(k)}
-def switchcbDetect_ClasSwitch2(e)
-@@switchhashDetect_ClasSwitch2[e.class]
+@@switchhashDetect_ClasSwitch3=Hash.new{|h,k| h[k]=switchcb_Detect_ClasSwitch3(k)}
+def switchcbDetect_ClasSwitch3(e)
+@@switchhashDetect_ClasSwitch3[e.class]
 end
-def self.switchcb_Detect_ClasSwitch3(e)
+def self.switchcb_Detect_ClasSwitch4(e)
 return 0 if e<=Grammar
 return 1 if e<=Object
 return 2
 end
-@@switchhashDetect_ClasSwitch3=Hash.new{|h,k| h[k]=switchcb_Detect_ClasSwitch3(k)}
-def switchcbDetect_ClasSwitch3(e)
-@@switchhashDetect_ClasSwitch3[e.class]
+@@switchhashDetect_ClasSwitch4=Hash.new{|h,k| h[k]=switchcb_Detect_ClasSwitch4(k)}
+def switchcbDetect_ClasSwitch4(e)
+@@switchhashDetect_ClasSwitch4[e.class]
+end
+def self.switchcb_Detect_ClasSwitch5(e)
+return 0 if e<=Array
+return 1 if e<=AmethystAST
+return 2 if e<=Object
+return 3
+end
+@@switchhashDetect_ClasSwitch5=Hash.new{|h,k| h[k]=switchcb_Detect_ClasSwitch5(k)}
+def switchcbDetect_ClasSwitch5(e)
+@@switchhashDetect_ClasSwitch5[e.class]
 end
 def clas_Detect_ClasSwitchcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -283,13 +303,13 @@ def traverse_item_Detect_ClasSwitchcb_1(bind)
 @changed=true
 end
 def traverse_item_Detect_ClasSwitchcb_2(bind)
-Array
-end
-def traverse_item_Detect_ClasSwitchcb_3(bind)
 bind[3]<<bind[4]
 end
+def traverse_item_Detect_ClasSwitchcb_3(bind)
+@changed=true
+end
 def traverse_item_Detect_ClasSwitchcb_4(bind)
-AmethystAST
+@changed=true
 end
 def visit_Detect_ClasSwitchcb_1(bind)
 Or
@@ -320,6 +340,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='560908dcd7ca00eebf3b9ed83d3aab1d'
+ raise "invalid version" if r!='d937ad8c1dc204da388cfaf47c660a2d'
 end
   require 'compiled/detect_switch_c'

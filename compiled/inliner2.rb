@@ -1,5 +1,14 @@
 class Renamer2 < Traverser
-
+def self.switchcb_Renamer21(e)
+return 0 if e<=Array
+return 1 if e<=AmethystAST
+return 2 if e<=Object
+return 3
+end
+@@switchhashRenamer21=Hash.new{|h,k| h[k]=switchcb_Renamer21(k)}
+def switchcbRenamer21(e)
+@@switchhashRenamer21[e.class]
+end
 def clas_Renamer2cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
@@ -34,13 +43,13 @@ def traverse_item_Renamer2cb_1(bind)
 @changed=true
 end
 def traverse_item_Renamer2cb_2(bind)
-Array
-end
-def traverse_item_Renamer2cb_3(bind)
 bind[3]<<bind[4]
 end
+def traverse_item_Renamer2cb_3(bind)
+@changed=true
+end
 def traverse_item_Renamer2cb_4(bind)
-AmethystAST
+@changed=true
 end
 def visit_Renamer2cb_1(bind)
 Local
@@ -56,7 +65,16 @@ end
 
 
 class DetectCalls < Traverser
-
+def self.switchcb_DetectCalls2(e)
+return 0 if e<=Array
+return 1 if e<=AmethystAST
+return 2 if e<=Object
+return 3
+end
+@@switchhashDetectCalls2=Hash.new{|h,k| h[k]=switchcb_DetectCalls2(k)}
+def switchcbDetectCalls2(e)
+@@switchhashDetectCalls2[e.class]
+end
 def clas_DetectCallscb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
@@ -94,13 +112,13 @@ def traverse_item_DetectCallscb_1(bind)
 @changed=true
 end
 def traverse_item_DetectCallscb_2(bind)
-Array
-end
-def traverse_item_DetectCallscb_3(bind)
 bind[3]<<bind[4]
 end
+def traverse_item_DetectCallscb_3(bind)
+@changed=true
+end
 def traverse_item_DetectCallscb_4(bind)
-AmethystAST
+@changed=true
 end
 def visit_DetectCallscb_1(bind)
 Apply
@@ -116,7 +134,16 @@ end
 
 
 class Inliner2 < Traverser
-
+def self.switchcb_Inliner23(e)
+return 0 if e<=Array
+return 1 if e<=AmethystAST
+return 2 if e<=Object
+return 3
+end
+@@switchhashInliner23=Hash.new{|h,k| h[k]=switchcb_Inliner23(k)}
+def switchcbInliner23(e)
+@@switchhashInliner23[e.class]
+end
 def clas_Inliner2cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
@@ -172,13 +199,13 @@ def traverse_item_Inliner2cb_1(bind)
 @changed=true
 end
 def traverse_item_Inliner2cb_2(bind)
-Array
-end
-def traverse_item_Inliner2cb_3(bind)
 bind[3]<<bind[4]
 end
+def traverse_item_Inliner2cb_3(bind)
+@changed=true
+end
 def traverse_item_Inliner2cb_4(bind)
-AmethystAST
+@changed=true
 end
 def visit_Inliner2cb_1(bind)
 Apply
@@ -197,6 +224,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='1f9e9473258459ba8539dd7e4f11b50a'
+ raise "invalid version" if r!='466ca6b6d5b9271cebb3a7a95fb28548'
 end
   require 'compiled/inliner2_c'

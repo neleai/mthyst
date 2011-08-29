@@ -9,6 +9,16 @@ end
 def switchcbConstant_Traverser1(e)
 @@switchhashConstant_Traverser1[e.class]
 end
+def self.switchcb_Constant_Traverser2(e)
+return 0 if e<=Array
+return 1 if e<=AmethystAST
+return 2 if e<=Object
+return 3
+end
+@@switchhashConstant_Traverser2=Hash.new{|h,k| h[k]=switchcb_Constant_Traverser2(k)}
+def switchcbConstant_Traverser2(e)
+@@switchhashConstant_Traverser2[e.class]
+end
 def clas_Constant_Traversercb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
@@ -46,13 +56,13 @@ def traverse_item_Constant_Traversercb_1(bind)
 @changed=true
 end
 def traverse_item_Constant_Traversercb_2(bind)
-Array
-end
-def traverse_item_Constant_Traversercb_3(bind)
 bind[3]<<bind[4]
 end
+def traverse_item_Constant_Traversercb_3(bind)
+@changed=true
+end
 def traverse_item_Constant_Traversercb_4(bind)
-AmethystAST
+@changed=true
 end
 def visit_Constant_Traversercb_1(bind)
 @consts[@src.ssaname] ? @consts[@src.ssaname] : @src 
@@ -77,6 +87,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='1b13e7e00870b345539c4054b336d362'
+ raise "invalid version" if r!='8d4bd7b57291f89011f9f322b4aef93d'
 end
   require 'compiled/constant_propagation_c'

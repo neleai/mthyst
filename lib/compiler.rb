@@ -120,6 +120,8 @@ end
 			else
 			end
 		}
+		
+		tree=deep_clone(tree)
 		[Detect_Switch,Seq_Or_Optimizer,Detect_ClasSwitch,Seq_Or_Optimizer].each{|o|
 			tree=o.new.parse(:itrans,tree)
 			#puts tree.inspect

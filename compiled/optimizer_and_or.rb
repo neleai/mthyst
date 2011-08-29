@@ -19,6 +19,16 @@ end
 def switchcbSeq_Or_Optimizer2(e)
 @@switchhashSeq_Or_Optimizer2[e.class]
 end
+def self.switchcb_Seq_Or_Optimizer3(e)
+return 0 if e<=Array
+return 1 if e<=AmethystAST
+return 2 if e<=Object
+return 3
+end
+@@switchhashSeq_Or_Optimizer3=Hash.new{|h,k| h[k]=switchcb_Seq_Or_Optimizer3(k)}
+def switchcbSeq_Or_Optimizer3(e)
+@@switchhashSeq_Or_Optimizer3[e.class]
+end
 def clas_Seq_Or_Optimizercb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
@@ -68,13 +78,13 @@ def traverse_item_Seq_Or_Optimizercb_1(bind)
 @changed=true
 end
 def traverse_item_Seq_Or_Optimizercb_2(bind)
-Array
-end
-def traverse_item_Seq_Or_Optimizercb_3(bind)
 bind[3]<<bind[4]
 end
+def traverse_item_Seq_Or_Optimizercb_3(bind)
+@changed=true
+end
 def traverse_item_Seq_Or_Optimizercb_4(bind)
-AmethystAST
+@changed=true
 end
 def visit_Seq_Or_Optimizercb_1(bind)
 Or[{:ary=>@src.ary}]
@@ -108,6 +118,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='256390c907f6be1c403acb6a976f5cc1'
+ raise "invalid version" if r!='e3c260ae410c6d6bc0f38687f4bf2d25'
 end
   require 'compiled/optimizer_and_or_c'

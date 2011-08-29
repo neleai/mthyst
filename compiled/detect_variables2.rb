@@ -28,6 +28,16 @@ end
 def switchcbAnalyze_Variables23(e)
 @@switchhashAnalyze_Variables23[e.class]
 end
+def self.switchcb_Analyze_Variables24(e)
+return 0 if e<=Array
+return 1 if e<=AmethystAST
+return 2 if e<=Object
+return 3
+end
+@@switchhashAnalyze_Variables24=Hash.new{|h,k| h[k]=switchcb_Analyze_Variables24(k)}
+def switchcbAnalyze_Variables24(e)
+@@switchhashAnalyze_Variables24[e.class]
+end
 def clas_Analyze_Variables2cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
@@ -104,13 +114,13 @@ def traverse_item_Analyze_Variables2cb_1(bind)
 @changed=true
 end
 def traverse_item_Analyze_Variables2cb_2(bind)
-Array
-end
-def traverse_item_Analyze_Variables2cb_3(bind)
 bind[3]<<bind[4]
 end
+def traverse_item_Analyze_Variables2cb_3(bind)
+@changed=true
+end
 def traverse_item_Analyze_Variables2cb_4(bind)
-AmethystAST
+@changed=true
 end
 def visit_Analyze_Variables2cb_1(bind)
 @src.ary.map{|aa| @variables[aa] }
@@ -144,7 +154,16 @@ end
 
 
 class Remap_Acts < Traverser
-
+def self.switchcb_Remap_Acts5(e)
+return 0 if e<=Array
+return 1 if e<=AmethystAST
+return 2 if e<=Object
+return 3
+end
+@@switchhashRemap_Acts5=Hash.new{|h,k| h[k]=switchcb_Remap_Acts5(k)}
+def switchcbRemap_Acts5(e)
+@@switchhashRemap_Acts5[e.class]
+end
 def clas_Remap_Actscb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
@@ -173,13 +192,13 @@ def traverse_item_Remap_Actscb_1(bind)
 @changed=true
 end
 def traverse_item_Remap_Actscb_2(bind)
-Array
-end
-def traverse_item_Remap_Actscb_3(bind)
 bind[3]<<bind[4]
 end
+def traverse_item_Remap_Actscb_3(bind)
+@changed=true
+end
 def traverse_item_Remap_Actscb_4(bind)
-AmethystAST
+@changed=true
 end
 def visit_Remap_Actscb_1(bind)
 Act
@@ -192,6 +211,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='6c9dd199fe426dd6b838cd42a7bd5fbd'
+ raise "invalid version" if r!='069869ecd0608397a36a0d450ad9d75e'
 end
   require 'compiled/detect_variables2_c'

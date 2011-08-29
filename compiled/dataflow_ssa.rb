@@ -90,6 +90,16 @@ end
 def switchcbDataflow2(e)
 @@switchhashDataflow2[e.class]
 end
+def self.switchcb_Dataflow3(e)
+return 0 if e<=Array
+return 1 if e<=AmethystAST
+return 2 if e<=Object
+return 3
+end
+@@switchhashDataflow3=Hash.new{|h,k| h[k]=switchcb_Dataflow3(k)}
+def switchcbDataflow3(e)
+@@switchhashDataflow3[e.class]
+end
 def clas_Dataflowcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
@@ -145,13 +155,13 @@ def traverse_item_Dataflowcb_1(bind)
 @changed=true
 end
 def traverse_item_Dataflowcb_2(bind)
-Array
-end
-def traverse_item_Dataflowcb_3(bind)
 bind[3]<<bind[4]
 end
+def traverse_item_Dataflowcb_3(bind)
+@changed=true
+end
 def traverse_item_Dataflowcb_4(bind)
-AmethystAST
+@changed=true
 end
 def vars_in_Dataflowcb_1(bind)
 bind[0]=[]
@@ -287,45 +297,55 @@ end
 
 
 class Dead_Code_Deleter3 < Traverser
-def self.switchcb_Dead_Code_Deleter34(e)
+def self.switchcb_Dead_Code_Deleter35(e)
 return 0 if e<=Bind
 return 1 if e<=Local
 return 2 if e<=Object
+return 3
+end
+@@switchhashDead_Code_Deleter35=Hash.new{|h,k| h[k]=switchcb_Dead_Code_Deleter35(k)}
+def switchcbDead_Code_Deleter35(e)
+@@switchhashDead_Code_Deleter35[e.class]
+end
+def self.switchcb_Dead_Code_Deleter34(e)
+return 0 if e<=CAct
+return 1 if e<=Act
+return 2 if e<=Result
 return 3
 end
 @@switchhashDead_Code_Deleter34=Hash.new{|h,k| h[k]=switchcb_Dead_Code_Deleter34(k)}
 def switchcbDead_Code_Deleter34(e)
 @@switchhashDead_Code_Deleter34[e.class]
 end
-def self.switchcb_Dead_Code_Deleter33(e)
+def self.switchcb_Dead_Code_Deleter34(e)
 return 0 if e<=CAct
 return 1 if e<=Act
 return 2 if e<=Result
 return 3
 end
-@@switchhashDead_Code_Deleter33=Hash.new{|h,k| h[k]=switchcb_Dead_Code_Deleter33(k)}
-def switchcbDead_Code_Deleter33(e)
-@@switchhashDead_Code_Deleter33[e.class]
+@@switchhashDead_Code_Deleter34=Hash.new{|h,k| h[k]=switchcb_Dead_Code_Deleter34(k)}
+def switchcbDead_Code_Deleter34(e)
+@@switchhashDead_Code_Deleter34[e.class]
 end
-def self.switchcb_Dead_Code_Deleter33(e)
+def self.switchcb_Dead_Code_Deleter34(e)
 return 0 if e<=CAct
 return 1 if e<=Act
 return 2 if e<=Result
 return 3
 end
-@@switchhashDead_Code_Deleter33=Hash.new{|h,k| h[k]=switchcb_Dead_Code_Deleter33(k)}
-def switchcbDead_Code_Deleter33(e)
-@@switchhashDead_Code_Deleter33[e.class]
+@@switchhashDead_Code_Deleter34=Hash.new{|h,k| h[k]=switchcb_Dead_Code_Deleter34(k)}
+def switchcbDead_Code_Deleter34(e)
+@@switchhashDead_Code_Deleter34[e.class]
 end
-def self.switchcb_Dead_Code_Deleter33(e)
-return 0 if e<=CAct
-return 1 if e<=Act
-return 2 if e<=Result
+def self.switchcb_Dead_Code_Deleter36(e)
+return 0 if e<=Array
+return 1 if e<=AmethystAST
+return 2 if e<=Object
 return 3
 end
-@@switchhashDead_Code_Deleter33=Hash.new{|h,k| h[k]=switchcb_Dead_Code_Deleter33(k)}
-def switchcbDead_Code_Deleter33(e)
-@@switchhashDead_Code_Deleter33[e.class]
+@@switchhashDead_Code_Deleter36=Hash.new{|h,k| h[k]=switchcb_Dead_Code_Deleter36(k)}
+def switchcbDead_Code_Deleter36(e)
+@@switchhashDead_Code_Deleter36[e.class]
 end
 def clas_Dead_Code_Deleter3cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -373,13 +393,13 @@ def traverse_item_Dead_Code_Deleter3cb_1(bind)
 @changed=true
 end
 def traverse_item_Dead_Code_Deleter3cb_2(bind)
-Array
-end
-def traverse_item_Dead_Code_Deleter3cb_3(bind)
 bind[3]<<bind[4]
 end
+def traverse_item_Dead_Code_Deleter3cb_3(bind)
+@changed=true
+end
 def traverse_item_Dead_Code_Deleter3cb_4(bind)
-AmethystAST
+@changed=true
 end
 def visit_Dead_Code_Deleter3cb_1(bind)
 @src
@@ -421,6 +441,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='6c4f840921f53a2d1179ade44c9217e1'
+ raise "invalid version" if r!='202002d2770d1320dbf531839e881a3d'
 end
   require 'compiled/dataflow_ssa_c'
