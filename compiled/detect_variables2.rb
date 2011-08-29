@@ -31,6 +31,12 @@ end
 def clas_Analyze_Variables2cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
+def empty_Analyze_Variables2cb_1(bind)
+
+end
+def fails_Analyze_Variables2cb_1(bind)
+(false) || FAIL
+end
 def flat_Analyze_Variables2cb_1(bind)
 Args
 end
@@ -160,6 +166,12 @@ class Remap_Acts < Traverser
 def clas_Remap_Actscb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
+def empty_Remap_Actscb_1(bind)
+
+end
+def fails_Remap_Actscb_1(bind)
+(false) || FAIL
+end
 def traverse_Remap_Actscb_1(bind)
 @src
 end
@@ -198,6 +210,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='c10d9bb782921f385473d92008008efc'
+ raise "invalid version" if r!='d2259c4daba2b34382b304259e50e463'
 end
   require 'compiled/detect_variables2_c'

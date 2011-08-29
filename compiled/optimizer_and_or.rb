@@ -22,6 +22,12 @@ end
 def clas_Seq_Or_Optimizercb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
+def empty_Seq_Or_Optimizercb_1(bind)
+
+end
+def fails_Seq_Or_Optimizercb_1(bind)
+(false) || FAIL
+end
 def itrans_Seq_Or_Optimizercb_1(bind)
 Grammar
 end
@@ -117,6 +123,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='b641942531033c720f41881fca6c72a9'
+ raise "invalid version" if r!='c3c93400817b47ca4e0dd921a8a02404'
 end
   require 'compiled/optimizer_and_or_c'

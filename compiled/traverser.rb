@@ -7,6 +7,12 @@ class Traverser < Amethyst
 def clas_Traversercb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
+def empty_Traversercb_1(bind)
+
+end
+def fails_Traversercb_1(bind)
+(false) || FAIL
+end
 def traverse_Traversercb_1(bind)
 @src
 end
@@ -42,6 +48,12 @@ class Detector < Traverser
 
 def clas_Detectorcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
+end
+def empty_Detectorcb_1(bind)
+
+end
+def fails_Detectorcb_1(bind)
+(false) || FAIL
 end
 def root_Detectorcb_1(bind)
 @detected=[]
@@ -87,6 +99,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='8cb150198a0074c8649162e3b59c37c7'
+ raise "invalid version" if r!='9c171f5d0def9290c6713519a3909cdf'
 end
   require 'compiled/traverser_c'

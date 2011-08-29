@@ -3,6 +3,12 @@ class Renamer2 < Traverser
 def clas_Renamer2cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
+def empty_Renamer2cb_1(bind)
+
+end
+def fails_Renamer2cb_1(bind)
+(false) || FAIL
+end
 def root_Renamer2cb_1(bind)
 Rule
 end
@@ -53,6 +59,12 @@ class DetectCalls < Traverser
 
 def clas_DetectCallscb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
+end
+def empty_DetectCallscb_1(bind)
+
+end
+def fails_DetectCallscb_1(bind)
+(false) || FAIL
 end
 def root_DetectCallscb_1(bind)
 Rule
@@ -107,6 +119,12 @@ class Inliner2 < Traverser
 
 def clas_Inliner2cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
+end
+def empty_Inliner2cb_1(bind)
+
+end
+def fails_Inliner2cb_1(bind)
+(false) || FAIL
 end
 def root_Inliner2cb_1(bind)
 bind[2]=[bind[2]]
@@ -179,6 +197,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='74309843da5196d9d7a9b1b734c36ae8'
+ raise "invalid version" if r!='1f9e9473258459ba8539dd7e4f11b50a'
 end
   require 'compiled/inliner2_c'

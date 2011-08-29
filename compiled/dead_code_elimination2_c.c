@@ -1,6 +1,9 @@
 #include "cthyst.h"
 VALUE cls_Dead_Code_Detector2;
 VALUE Dead_Code_Detector2_clas(VALUE self ,VALUE a0);
+VALUE Dead_Code_Detector2_empty(VALUE self );
+VALUE Dead_Code_Detector2_eof(VALUE self );
+VALUE Dead_Code_Detector2_fails(VALUE self );
 VALUE Dead_Code_Detector2_root(VALUE self );
 VALUE Dead_Code_Detector2_traverse(VALUE self );
 VALUE Dead_Code_Detector2_traverse_item(VALUE self );
@@ -13,6 +16,33 @@ VALUE Dead_Code_Detector2_clas(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=r
  rb_ary_store(bind,2,it); it=rb_ary_entry(bind,2);
 return it;
 fail: return failobj; }
+VALUE Dead_Code_Detector2_empty(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(0);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+
+it=CALL(empty_Dead_Code_Detector2cb_1,1,bind); 
+return it;
+fail: return failobj; }
+VALUE Dead_Code_Detector2_eof(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+
+int oldpos1=ame_getpos(self);
+alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
+   it=AmethystCore_anything(self ); FAILTEST(alt1_2);ISET(cut,Qtrue);  it=Dead_Code_Detector2_fails(self ); FAILTEST(alt1_2);
+ rb_ary_store(bind,0,it);  
+ISET(cut,Qnil);goto accept1;
+alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
+   it=Dead_Code_Detector2_empty(self ); FAILTEST(alt1_3);
+ rb_ary_store(bind,0,it);  
+ISET(cut,Qnil);goto accept1;
+  alt1_3:  ame_setpos(self,oldpos1); goto fail;
+ accept1:;
+it=rb_ary_entry(bind,0);
+return it;
+fail: return failobj; }
+VALUE Dead_Code_Detector2_fails(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+
+it=CALL(fails_Dead_Code_Detector2cb_1,1,bind); FAILTEST(fail);
+ rb_ary_store(bind,0,it); it=rb_ary_entry(bind,0);
+return it;
+fail: return failobj; }
 VALUE Dead_Code_Detector2_root(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(6);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 it=CALL(root_Dead_Code_Detector2cb_1,1,bind); 
@@ -23,15 +53,13 @@ ame_setsrc(self,rb_ary_entry(bind,0)); ame_setpos(self,0); ame_setlen(self,FIX2I
 ame_setsrc(self,rb_ary_entry(bind,1)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
  it=CALL(root_Dead_Code_Detector2cb_4,1,bind); it=CALL(root_Dead_Code_Detector2cb_5,1,bind);   it=Dead_Code_Detector2_traverse(self ); FAILTEST(pass2);it=CALL(root_Dead_Code_Detector2cb_6,1,bind); 
  rb_ary_store(bind,2,it); it=CALL(root_Dead_Code_Detector2cb_7,1,bind); it=CALL(root_Dead_Code_Detector2cb_8,1,bind); 
- rb_ary_store(bind,3,it); 
-	if (CALL(eof,0)==failobj) goto pass2;
+ rb_ary_store(bind,3,it);   it=Dead_Code_Detector2_eof(self ); FAILTEST(pass2);
 	goto success2;
 	pass2: fail2=1;
 	success2: ame_setsrc(self,oldsrc2); ame_setpos(self,oldpos2); ame_setlen(self,oldlen2);
 	if(fail2) goto pass1;
 it=rb_ary_entry(bind,3);
- rb_ary_store(bind,4,it); 
-	if (CALL(eof,0)==failobj) goto pass1;
+ rb_ary_store(bind,4,it);   it=Dead_Code_Detector2_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos1); ame_setlen(self,oldlen1);
@@ -54,20 +82,17 @@ ame_setsrc(self,rb_ary_entry(bind,2)); ame_setpos(self,0); ame_setlen(self,FIX2I
 ame_setsrc(self,rb_ary_entry(bind,3)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCore_anything(self ); FAILTEST(pass3);
  rb_ary_store(bind,4,it);   it=Dead_Code_Detector2_traverse_item(self ); FAILTEST(pass3);
- rb_ary_store(bind,5,it); it=CALL(traverse_Dead_Code_Detector2cb_4,1,bind); 
-	if (CALL(eof,0)==failobj) goto pass3;
+ rb_ary_store(bind,5,it); it=CALL(traverse_Dead_Code_Detector2cb_4,1,bind);   it=Dead_Code_Detector2_eof(self ); FAILTEST(pass3);
 	goto success3;
 	pass3: fail3=1;
 	success3: ame_setsrc(self,oldsrc3); ame_setpos(self,oldpos5); ame_setlen(self,oldlen3);
 	if(fail3) goto break2;
- if (IGET(stop)!=Qnil){{oldpos4=ame_getpos(self);goto break2;} } } break2: ISET(stop,Qnil);  ame_setpos(self,oldpos4); 
-	if (CALL(eof,0)==failobj) goto pass2;
+ if (IGET(stop)!=Qnil){{oldpos4=ame_getpos(self);goto break2;} } } break2: ISET(stop,Qnil);  ame_setpos(self,oldpos4);   it=Dead_Code_Detector2_eof(self ); FAILTEST(pass2);
 	goto success2;
 	pass2: fail2=1;
 	success2: ame_setsrc(self,oldsrc2); ame_setpos(self,oldpos3); ame_setlen(self,oldlen2);
 	if(fail2) goto pass1;
-
-	if (CALL(eof,0)==failobj) goto pass1;
+  it=Dead_Code_Detector2_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos2); ame_setlen(self,oldlen1);
@@ -91,8 +116,7 @@ ame_setsrc(self,rb_ary_entry(bind,2)); ame_setpos(self,0); ame_setlen(self,FIX2I
  it=rb_ary_new3(0);
  rb_ary_store(bind,3,it); int oldpos3; while(1){oldpos3=ame_getpos(self);   it=Dead_Code_Detector2_traverse_item(self ); FAILTEST(break1);
  rb_ary_store(bind,4,it); it=CALL(traverse_item_Dead_Code_Detector2cb_3,1,bind);  if (IGET(stop)!=Qnil){{oldpos3=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos3); it=rb_ary_entry(bind,3);
- rb_ary_store(bind,5,it); 
-	if (CALL(eof,0)==failobj) goto pass1;
+ rb_ary_store(bind,5,it);   it=Dead_Code_Detector2_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos2); ame_setlen(self,oldlen1);
@@ -105,8 +129,7 @@ alt1_3: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
  rb_ary_store(bind,6,it); int oldpos4=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
 ame_setsrc(self,rb_ary_entry(bind,6)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=Dead_Code_Detector2_traverse(self ); FAILTEST(pass2);
- rb_ary_store(bind,7,it); 
-	if (CALL(eof,0)==failobj) goto pass2;
+ rb_ary_store(bind,7,it);   it=Dead_Code_Detector2_eof(self ); FAILTEST(pass2);
 	goto success2;
 	pass2: fail2=1;
 	success2: ame_setsrc(self,oldsrc2); ame_setpos(self,oldpos4); ame_setlen(self,oldlen2);
@@ -132,8 +155,7 @@ alt1_1: ame_setpos(self,oldpos2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto brea
  rb_ary_store(bind,1,it); int oldpos3=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,rb_ary_entry(bind,1)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
  it=CALL(vars_in_Dead_Code_Detector2cb_3,1,bind); 
- rb_ary_store(bind,2,it); it=CALL(vars_in_Dead_Code_Detector2cb_4,1,bind); it=CALL(vars_in_Dead_Code_Detector2cb_5,1,bind); int oldpos4; while(1){oldpos4=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break2); if (IGET(stop)!=Qnil){{oldpos4=ame_getpos(self);goto break2;} } } break2: ISET(stop,Qnil);  ame_setpos(self,oldpos4); 
-	if (CALL(eof,0)==failobj) goto pass1;
+ rb_ary_store(bind,2,it); it=CALL(vars_in_Dead_Code_Detector2cb_4,1,bind); it=CALL(vars_in_Dead_Code_Detector2cb_5,1,bind); int oldpos4; while(1){oldpos4=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break2); if (IGET(stop)!=Qnil){{oldpos4=ame_getpos(self);goto break2;} } } break2: ISET(stop,Qnil);  ame_setpos(self,oldpos4);   it=Dead_Code_Detector2_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos3); ame_setlen(self,oldlen1);
@@ -151,8 +173,7 @@ alt2_1: ame_setpos(self,oldpos5);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto brea
  rb_ary_store(bind,3,it); int oldpos6=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
 ame_setsrc(self,rb_ary_entry(bind,3)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
  it=CALL(vars_in_Dead_Code_Detector2cb_7,1,bind); 
- rb_ary_store(bind,4,it); it=CALL(vars_in_Dead_Code_Detector2cb_8,1,bind); int oldpos7; while(1){oldpos7=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break3); if (IGET(stop)!=Qnil){{oldpos7=ame_getpos(self);goto break3;} } } break3: ISET(stop,Qnil);  ame_setpos(self,oldpos7); 
-	if (CALL(eof,0)==failobj) goto pass2;
+ rb_ary_store(bind,4,it); it=CALL(vars_in_Dead_Code_Detector2cb_8,1,bind); int oldpos7; while(1){oldpos7=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break3); if (IGET(stop)!=Qnil){{oldpos7=ame_getpos(self);goto break3;} } } break3: ISET(stop,Qnil);  ame_setpos(self,oldpos7);   it=Dead_Code_Detector2_eof(self ); FAILTEST(pass2);
 	goto success2;
 	pass2: fail2=1;
 	success2: ame_setsrc(self,oldsrc2); ame_setpos(self,oldpos6); ame_setlen(self,oldlen2);
@@ -170,8 +191,7 @@ alt3_1: ame_setpos(self,oldpos8);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto brea
  rb_ary_store(bind,5,it); int oldpos9=ame_getpos(self); int oldlen3=ame_getlen(self); VALUE oldsrc3=ame_getsrc(self); int fail3=0;
 ame_setsrc(self,rb_ary_entry(bind,5)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
  it=CALL(vars_in_Dead_Code_Detector2cb_10,1,bind); 
- rb_ary_store(bind,6,it); it=CALL(vars_in_Dead_Code_Detector2cb_11,1,bind); it=CALL(vars_in_Dead_Code_Detector2cb_12,1,bind); int oldpos10; while(1){oldpos10=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break4); if (IGET(stop)!=Qnil){{oldpos10=ame_getpos(self);goto break4;} } } break4: ISET(stop,Qnil);  ame_setpos(self,oldpos10); 
-	if (CALL(eof,0)==failobj) goto pass3;
+ rb_ary_store(bind,6,it); it=CALL(vars_in_Dead_Code_Detector2cb_11,1,bind); it=CALL(vars_in_Dead_Code_Detector2cb_12,1,bind); int oldpos10; while(1){oldpos10=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break4); if (IGET(stop)!=Qnil){{oldpos10=ame_getpos(self);goto break4;} } } break4: ISET(stop,Qnil);  ame_setpos(self,oldpos10);   it=Dead_Code_Detector2_eof(self ); FAILTEST(pass3);
 	goto success3;
 	pass3: fail3=1;
 	success3: ame_setsrc(self,oldsrc3); ame_setpos(self,oldpos9); ame_setlen(self,oldlen3);
@@ -189,8 +209,7 @@ alt4_1: ame_setpos(self,oldpos11);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto bre
  rb_ary_store(bind,7,it); int oldpos12=ame_getpos(self); int oldlen4=ame_getlen(self); VALUE oldsrc4=ame_getsrc(self); int fail4=0;
 ame_setsrc(self,rb_ary_entry(bind,7)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
  it=CALL(vars_in_Dead_Code_Detector2cb_14,1,bind); 
- rb_ary_store(bind,8,it); it=CALL(vars_in_Dead_Code_Detector2cb_15,1,bind); 
-	if (CALL(eof,0)==failobj) goto pass4;
+ rb_ary_store(bind,8,it); it=CALL(vars_in_Dead_Code_Detector2cb_15,1,bind);   it=Dead_Code_Detector2_eof(self ); FAILTEST(pass4);
 	goto success4;
 	pass4: fail4=1;
 	success4: ame_setsrc(self,oldsrc4); ame_setpos(self,oldpos12); ame_setlen(self,oldlen4);
@@ -208,8 +227,7 @@ alt5_1: ame_setpos(self,oldpos13);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto bre
  rb_ary_store(bind,9,it); int oldpos14=ame_getpos(self); int oldlen5=ame_getlen(self); VALUE oldsrc5=ame_getsrc(self); int fail5=0;
 ame_setsrc(self,rb_ary_entry(bind,9)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=Dead_Code_Detector2_vars_in(self ); FAILTEST(pass5);
- rb_ary_store(bind,10,it); it=CALL(vars_in_Dead_Code_Detector2cb_17,1,bind); 
-	if (CALL(eof,0)==failobj) goto pass5;
+ rb_ary_store(bind,10,it); it=CALL(vars_in_Dead_Code_Detector2cb_17,1,bind);   it=Dead_Code_Detector2_eof(self ); FAILTEST(pass5);
 	goto success5;
 	pass5: fail5=1;
 	success5: ame_setsrc(self,oldsrc5); ame_setpos(self,oldpos14); ame_setlen(self,oldlen5);
@@ -227,8 +245,7 @@ alt6_1: ame_setpos(self,oldpos15);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto bre
  rb_ary_store(bind,11,it); int oldpos16=ame_getpos(self); int oldlen6=ame_getlen(self); VALUE oldsrc6=ame_getsrc(self); int fail6=0;
 ame_setsrc(self,rb_ary_entry(bind,11)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=Dead_Code_Detector2_vars_in(self ); FAILTEST(pass6);
- rb_ary_store(bind,12,it); it=CALL(vars_in_Dead_Code_Detector2cb_19,1,bind); 
-	if (CALL(eof,0)==failobj) goto pass6;
+ rb_ary_store(bind,12,it); it=CALL(vars_in_Dead_Code_Detector2cb_19,1,bind);   it=Dead_Code_Detector2_eof(self ); FAILTEST(pass6);
 	goto success6;
 	pass6: fail6=1;
 	success6: ame_setsrc(self,oldsrc6); ame_setpos(self,oldpos16); ame_setlen(self,oldlen6);
@@ -249,14 +266,12 @@ ame_setsrc(self,rb_ary_entry(bind,13)); ame_setpos(self,0); ame_setlen(self,FIX2
  rb_ary_store(bind,14,it); it=CALL(vars_in_Dead_Code_Detector2cb_22,1,bind); int oldpos19=ame_getpos(self); int oldlen8=ame_getlen(self); VALUE oldsrc8=ame_getsrc(self); int fail8=0;
 ame_setsrc(self,rb_ary_entry(bind,14)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=Dead_Code_Detector2_vars_in(self ); FAILTEST(pass8);
- rb_ary_store(bind,15,it); it=CALL(vars_in_Dead_Code_Detector2cb_23,1,bind); 
-	if (CALL(eof,0)==failobj) goto pass8;
+ rb_ary_store(bind,15,it); it=CALL(vars_in_Dead_Code_Detector2cb_23,1,bind);   it=Dead_Code_Detector2_eof(self ); FAILTEST(pass8);
 	goto success8;
 	pass8: fail8=1;
 	success8: ame_setsrc(self,oldsrc8); ame_setpos(self,oldpos19); ame_setlen(self,oldlen8);
 	if(fail8) goto pass7;
-
-	if (CALL(eof,0)==failobj) goto pass7;
+  it=Dead_Code_Detector2_eof(self ); FAILTEST(pass7);
 	goto success7;
 	pass7: fail7=1;
 	success7: ame_setsrc(self,oldsrc7); ame_setpos(self,oldpos18); ame_setlen(self,oldlen7);
@@ -274,8 +289,7 @@ alt8_1: ame_setpos(self,oldpos20);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto bre
  rb_ary_store(bind,16,it); int oldpos21=ame_getpos(self); int oldlen9=ame_getlen(self); VALUE oldsrc9=ame_getsrc(self); int fail9=0;
 ame_setsrc(self,rb_ary_entry(bind,16)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCore_anything(self ); FAILTEST(pass9);it=CALL(vars_in_Dead_Code_Detector2cb_25,1,bind); 
- rb_ary_store(bind,17,it); it=CALL(vars_in_Dead_Code_Detector2cb_26,1,bind); 
-	if (CALL(eof,0)==failobj) goto pass9;
+ rb_ary_store(bind,17,it); it=CALL(vars_in_Dead_Code_Detector2cb_26,1,bind);   it=Dead_Code_Detector2_eof(self ); FAILTEST(pass9);
 	goto success9;
 	pass9: fail9=1;
 	success9: ame_setsrc(self,oldsrc9); ame_setpos(self,oldpos21); ame_setlen(self,oldlen9);
@@ -298,8 +312,7 @@ char chr1=FIX2INT(CALL(switchcb1,1,ame_curobj(self)));  switch(chr1){case 0:;  i
 ame_setsrc(self,rb_ary_entry(bind,0)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCore_anything(self ); FAILTEST(pass1);  it=Dead_Code_Detector2_vars_in(self ); FAILTEST(pass1);
  rb_ary_store(bind,1,it); it=CALL(visit_Dead_Code_Detector2cb_2,1,bind);   it=Dead_Code_Detector2_traverse(self ); FAILTEST(pass1);
- rb_ary_store(bind,2,it); 
-	if (CALL(eof,0)==failobj) goto pass1;
+ rb_ary_store(bind,2,it);   it=Dead_Code_Detector2_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos1); ame_setlen(self,oldlen1);
@@ -316,21 +329,18 @@ ame_setsrc(self,rb_ary_entry(bind,6)); ame_setpos(self,0); ame_setlen(self,FIX2I
  rb_ary_store(bind,7,it); int oldpos4=ame_getpos(self); int oldlen4=ame_getlen(self); VALUE oldsrc4=ame_getsrc(self); int fail4=0;
 ame_setsrc(self,rb_ary_entry(bind,7)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=Dead_Code_Detector2_vars_in(self ); FAILTEST(pass4);
- rb_ary_store(bind,8,it); 
-	if (CALL(eof,0)==failobj) goto pass4;
+ rb_ary_store(bind,8,it);   it=Dead_Code_Detector2_eof(self ); FAILTEST(pass4);
 	goto success4;
 	pass4: fail4=1;
 	success4: ame_setsrc(self,oldsrc4); ame_setpos(self,oldpos4); ame_setlen(self,oldlen4);
 	if(fail4) goto pass3;
 it=rb_ary_entry(bind,8);
- rb_ary_store(bind,1,it); 
-	if (CALL(eof,0)==failobj) goto pass3;
+ rb_ary_store(bind,1,it);   it=Dead_Code_Detector2_eof(self ); FAILTEST(pass3);
 	goto success3;
 	pass3: fail3=1;
 	success3: ame_setsrc(self,oldsrc3); ame_setpos(self,oldpos3); ame_setlen(self,oldlen3);
 	if(fail3) goto pass2;
-
-	if (CALL(eof,0)==failobj) goto pass2;
+  it=Dead_Code_Detector2_eof(self ); FAILTEST(pass2);
 	goto success2;
 	pass2: fail2=1;
 	success2: ame_setsrc(self,oldsrc2); ame_setpos(self,oldpos2); ame_setlen(self,oldlen2);
@@ -343,8 +353,7 @@ ame_setsrc(self,rb_ary_entry(bind,10)); ame_setpos(self,0); ame_setlen(self,FIX2
  rb_ary_store(bind,11,it); it=CALL(visit_Dead_Code_Detector2cb_10,1,bind); int oldpos6=ame_getpos(self); int oldlen6=ame_getlen(self); VALUE oldsrc6=ame_getsrc(self); int fail6=0;
 ame_setsrc(self,rb_ary_entry(bind,11)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=Dead_Code_Detector2_vars_in(self ); FAILTEST(pass6);
- rb_ary_store(bind,9,it); 
-	if (CALL(eof,0)==failobj) goto pass6;
+ rb_ary_store(bind,9,it);   it=Dead_Code_Detector2_eof(self ); FAILTEST(pass6);
 	goto success6;
 	pass6: fail6=1;
 	success6: ame_setsrc(self,oldsrc6); ame_setpos(self,oldpos6); ame_setlen(self,oldlen6);
@@ -354,14 +363,12 @@ it=CALL(visit_Dead_Code_Detector2cb_11,1,bind);   it=Dead_Code_Detector2_travers
  rb_ary_store(bind,12,it); it=CALL(visit_Dead_Code_Detector2cb_13,1,bind); int oldpos7=ame_getpos(self); int oldlen7=ame_getlen(self); VALUE oldsrc7=ame_getsrc(self); int fail7=0;
 ame_setsrc(self,rb_ary_entry(bind,12)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=Dead_Code_Detector2_vars_in(self ); FAILTEST(pass7);
- rb_ary_store(bind,1,it); 
-	if (CALL(eof,0)==failobj) goto pass7;
+ rb_ary_store(bind,1,it);   it=Dead_Code_Detector2_eof(self ); FAILTEST(pass7);
 	goto success7;
 	pass7: fail7=1;
 	success7: ame_setsrc(self,oldsrc7); ame_setpos(self,oldpos7); ame_setlen(self,oldlen7);
 	if(fail7) goto pass5;
-
-	if (CALL(eof,0)==failobj) goto pass5;
+  it=Dead_Code_Detector2_eof(self ); FAILTEST(pass5);
 	goto success5;
 	pass5: fail5=1;
 	success5: ame_setsrc(self,oldsrc5); ame_setpos(self,oldpos5); ame_setlen(self,oldlen5);
@@ -377,22 +384,19 @@ ame_setsrc(self,rb_ary_entry(bind,14)); ame_setpos(self,0); ame_setlen(self,FIX2
  rb_ary_store(bind,15,it); int oldpos10=ame_getpos(self); int oldlen10=ame_getlen(self); VALUE oldsrc10=ame_getsrc(self); int fail10=0;
 ame_setsrc(self,rb_ary_entry(bind,15)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=Dead_Code_Detector2_vars_in(self ); FAILTEST(pass10);
- rb_ary_store(bind,16,it); 
-	if (CALL(eof,0)==failobj) goto pass10;
+ rb_ary_store(bind,16,it);   it=Dead_Code_Detector2_eof(self ); FAILTEST(pass10);
 	goto success10;
 	pass10: fail10=1;
 	success10: ame_setsrc(self,oldsrc10); ame_setpos(self,oldpos10); ame_setlen(self,oldlen10);
 	if(fail10) goto pass9;
 it=rb_ary_entry(bind,16);
- rb_ary_store(bind,1,it); 
-	if (CALL(eof,0)==failobj) goto pass9;
+ rb_ary_store(bind,1,it);   it=Dead_Code_Detector2_eof(self ); FAILTEST(pass9);
 	goto success9;
 	pass9: fail9=1;
 	success9: ame_setsrc(self,oldsrc9); ame_setpos(self,oldpos9); ame_setlen(self,oldlen9);
 	if(fail9) goto pass8;
   it=Dead_Code_Detector2_traverse(self ); FAILTEST(pass8);
- rb_ary_store(bind,5,it); 
-	if (CALL(eof,0)==failobj) goto pass8;
+ rb_ary_store(bind,5,it);   it=Dead_Code_Detector2_eof(self ); FAILTEST(pass8);
 	goto success8;
 	pass8: fail8=1;
 	success8: ame_setsrc(self,oldsrc8); ame_setpos(self,oldpos8); ame_setlen(self,oldlen8);
@@ -405,15 +409,13 @@ ame_setsrc(self,rb_ary_entry(bind,17)); ame_setpos(self,0); ame_setlen(self,FIX2
  rb_ary_store(bind,18,it); it=CALL(visit_Dead_Code_Detector2cb_21,1,bind); int oldpos12=ame_getpos(self); int oldlen12=ame_getlen(self); VALUE oldsrc12=ame_getsrc(self); int fail12=0;
 ame_setsrc(self,rb_ary_entry(bind,18)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=Dead_Code_Detector2_vars_in(self ); FAILTEST(pass12);
- rb_ary_store(bind,1,it); 
-	if (CALL(eof,0)==failobj) goto pass12;
+ rb_ary_store(bind,1,it);   it=Dead_Code_Detector2_eof(self ); FAILTEST(pass12);
 	goto success12;
 	pass12: fail12=1;
 	success12: ame_setsrc(self,oldsrc12); ame_setpos(self,oldpos12); ame_setlen(self,oldlen12);
 	if(fail12) goto pass11;
 it=CALL(visit_Dead_Code_Detector2cb_22,1,bind);   it=Dead_Code_Detector2_traverse(self ); FAILTEST(pass11);
- rb_ary_store(bind,19,it); 
-	if (CALL(eof,0)==failobj) goto pass11;
+ rb_ary_store(bind,19,it);   it=Dead_Code_Detector2_eof(self ); FAILTEST(pass11);
 	goto success11;
 	pass11: fail11=1;
 	success11: ame_setsrc(self,oldsrc11); ame_setpos(self,oldpos11); ame_setlen(self,oldlen11);
@@ -426,15 +428,13 @@ ame_setsrc(self,rb_ary_entry(bind,20)); ame_setpos(self,0); ame_setlen(self,FIX2
  rb_ary_store(bind,21,it); it=CALL(visit_Dead_Code_Detector2cb_25,1,bind); int oldpos14=ame_getpos(self); int oldlen14=ame_getlen(self); VALUE oldsrc14=ame_getsrc(self); int fail14=0;
 ame_setsrc(self,rb_ary_entry(bind,21)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=Dead_Code_Detector2_vars_in(self ); FAILTEST(pass14);
- rb_ary_store(bind,1,it); 
-	if (CALL(eof,0)==failobj) goto pass14;
+ rb_ary_store(bind,1,it);   it=Dead_Code_Detector2_eof(self ); FAILTEST(pass14);
 	goto success14;
 	pass14: fail14=1;
 	success14: ame_setsrc(self,oldsrc14); ame_setpos(self,oldpos14); ame_setlen(self,oldlen14);
 	if(fail14) goto pass13;
 it=CALL(visit_Dead_Code_Detector2cb_26,1,bind);   it=Dead_Code_Detector2_traverse(self ); FAILTEST(pass13);
- rb_ary_store(bind,22,it); 
-	if (CALL(eof,0)==failobj) goto pass13;
+ rb_ary_store(bind,22,it);   it=Dead_Code_Detector2_eof(self ); FAILTEST(pass13);
 	goto success13;
 	pass13: fail13=1;
 	success13: ame_setsrc(self,oldsrc13); ame_setpos(self,oldpos13); ame_setlen(self,oldlen13);
@@ -444,6 +444,9 @@ it=rb_ary_entry(bind,22);
 return it;
 fail: return failobj; }VALUE cls_Dead_Code_Deleter2;
 VALUE Dead_Code_Deleter2_clas(VALUE self ,VALUE a0);
+VALUE Dead_Code_Deleter2_empty(VALUE self );
+VALUE Dead_Code_Deleter2_eof(VALUE self );
+VALUE Dead_Code_Deleter2_fails(VALUE self );
 VALUE Dead_Code_Deleter2_root(VALUE self );
 VALUE Dead_Code_Deleter2_traverse(VALUE self );
 VALUE Dead_Code_Deleter2_traverse_item(VALUE self );
@@ -453,6 +456,33 @@ VALUE Dead_Code_Deleter2_clas(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=rb
   it=AmethystCore_anything(self ); FAILTEST(fail);
  rb_ary_store(bind,0,it); it=CALL(clas_Dead_Code_Deleter2cb_1,1,bind); FAILTEST(fail);it=rb_ary_entry(bind,0);
  rb_ary_store(bind,2,it); it=rb_ary_entry(bind,2);
+return it;
+fail: return failobj; }
+VALUE Dead_Code_Deleter2_empty(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(0);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+
+it=CALL(empty_Dead_Code_Deleter2cb_1,1,bind); 
+return it;
+fail: return failobj; }
+VALUE Dead_Code_Deleter2_eof(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+
+int oldpos1=ame_getpos(self);
+alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
+   it=AmethystCore_anything(self ); FAILTEST(alt1_2);ISET(cut,Qtrue);  it=Dead_Code_Deleter2_fails(self ); FAILTEST(alt1_2);
+ rb_ary_store(bind,0,it);  
+ISET(cut,Qnil);goto accept1;
+alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
+   it=Dead_Code_Deleter2_empty(self ); FAILTEST(alt1_3);
+ rb_ary_store(bind,0,it);  
+ISET(cut,Qnil);goto accept1;
+  alt1_3:  ame_setpos(self,oldpos1); goto fail;
+ accept1:;
+it=rb_ary_entry(bind,0);
+return it;
+fail: return failobj; }
+VALUE Dead_Code_Deleter2_fails(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+
+it=CALL(fails_Dead_Code_Deleter2cb_1,1,bind); FAILTEST(fail);
+ rb_ary_store(bind,0,it); it=rb_ary_entry(bind,0);
 return it;
 fail: return failobj; }
 VALUE Dead_Code_Deleter2_root(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(6);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -465,15 +495,13 @@ ame_setsrc(self,rb_ary_entry(bind,0)); ame_setpos(self,0); ame_setlen(self,FIX2I
 ame_setsrc(self,rb_ary_entry(bind,1)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
  it=CALL(root_Dead_Code_Deleter2cb_4,1,bind); 
  rb_ary_store(bind,2,it); it=CALL(root_Dead_Code_Deleter2cb_5,1,bind);   it=Dead_Code_Deleter2_traverse(self ); FAILTEST(pass2);it=CALL(root_Dead_Code_Deleter2cb_6,1,bind); it=CALL(root_Dead_Code_Deleter2cb_7,1,bind); 
- rb_ary_store(bind,3,it); 
-	if (CALL(eof,0)==failobj) goto pass2;
+ rb_ary_store(bind,3,it);   it=Dead_Code_Deleter2_eof(self ); FAILTEST(pass2);
 	goto success2;
 	pass2: fail2=1;
 	success2: ame_setsrc(self,oldsrc2); ame_setpos(self,oldpos2); ame_setlen(self,oldlen2);
 	if(fail2) goto pass1;
 it=rb_ary_entry(bind,3);
- rb_ary_store(bind,4,it); 
-	if (CALL(eof,0)==failobj) goto pass1;
+ rb_ary_store(bind,4,it);   it=Dead_Code_Deleter2_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos1); ame_setlen(self,oldlen1);
@@ -496,20 +524,17 @@ ame_setsrc(self,rb_ary_entry(bind,2)); ame_setpos(self,0); ame_setlen(self,FIX2I
 ame_setsrc(self,rb_ary_entry(bind,3)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCore_anything(self ); FAILTEST(pass3);
  rb_ary_store(bind,4,it);   it=Dead_Code_Deleter2_traverse_item(self ); FAILTEST(pass3);
- rb_ary_store(bind,5,it); it=CALL(traverse_Dead_Code_Deleter2cb_4,1,bind); 
-	if (CALL(eof,0)==failobj) goto pass3;
+ rb_ary_store(bind,5,it); it=CALL(traverse_Dead_Code_Deleter2cb_4,1,bind);   it=Dead_Code_Deleter2_eof(self ); FAILTEST(pass3);
 	goto success3;
 	pass3: fail3=1;
 	success3: ame_setsrc(self,oldsrc3); ame_setpos(self,oldpos5); ame_setlen(self,oldlen3);
 	if(fail3) goto break2;
- if (IGET(stop)!=Qnil){{oldpos4=ame_getpos(self);goto break2;} } } break2: ISET(stop,Qnil);  ame_setpos(self,oldpos4); 
-	if (CALL(eof,0)==failobj) goto pass2;
+ if (IGET(stop)!=Qnil){{oldpos4=ame_getpos(self);goto break2;} } } break2: ISET(stop,Qnil);  ame_setpos(self,oldpos4);   it=Dead_Code_Deleter2_eof(self ); FAILTEST(pass2);
 	goto success2;
 	pass2: fail2=1;
 	success2: ame_setsrc(self,oldsrc2); ame_setpos(self,oldpos3); ame_setlen(self,oldlen2);
 	if(fail2) goto pass1;
-
-	if (CALL(eof,0)==failobj) goto pass1;
+  it=Dead_Code_Deleter2_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos2); ame_setlen(self,oldlen1);
@@ -533,8 +558,7 @@ ame_setsrc(self,rb_ary_entry(bind,2)); ame_setpos(self,0); ame_setlen(self,FIX2I
  it=rb_ary_new3(0);
  rb_ary_store(bind,3,it); int oldpos3; while(1){oldpos3=ame_getpos(self);   it=Dead_Code_Deleter2_traverse_item(self ); FAILTEST(break1);
  rb_ary_store(bind,4,it); it=CALL(traverse_item_Dead_Code_Deleter2cb_3,1,bind);  if (IGET(stop)!=Qnil){{oldpos3=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos3); it=rb_ary_entry(bind,3);
- rb_ary_store(bind,5,it); 
-	if (CALL(eof,0)==failobj) goto pass1;
+ rb_ary_store(bind,5,it);   it=Dead_Code_Deleter2_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos2); ame_setlen(self,oldlen1);
@@ -547,8 +571,7 @@ alt1_3: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
  rb_ary_store(bind,6,it); int oldpos4=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
 ame_setsrc(self,rb_ary_entry(bind,6)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=Dead_Code_Deleter2_traverse(self ); FAILTEST(pass2);
- rb_ary_store(bind,7,it); 
-	if (CALL(eof,0)==failobj) goto pass2;
+ rb_ary_store(bind,7,it);   it=Dead_Code_Deleter2_eof(self ); FAILTEST(pass2);
 	goto success2;
 	pass2: fail2=1;
 	success2: ame_setsrc(self,oldsrc2); ame_setpos(self,oldpos4); ame_setlen(self,oldlen2);
@@ -571,8 +594,7 @@ char chr1=FIX2INT(CALL(switchcb3,1,ame_curobj(self)));  switch(chr1){case 0:;  i
  rb_ary_store(bind,0,it); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,rb_ary_entry(bind,0)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
  int oldpos2; while(1){oldpos2=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break1); if (IGET(stop)!=Qnil){{oldpos2=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos2); it=CALL(visit_Dead_Code_Deleter2cb_2,1,bind); 
- rb_ary_store(bind,1,it); 
-	if (CALL(eof,0)==failobj) goto pass1;
+ rb_ary_store(bind,1,it);   it=Dead_Code_Deleter2_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos1); ame_setlen(self,oldlen1);
@@ -582,8 +604,7 @@ it=CALL(visit_Dead_Code_Deleter2cb_3,1,bind);
  rb_ary_store(bind,3,it); int oldpos3=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
 ame_setsrc(self,rb_ary_entry(bind,3)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
  it=CALL(visit_Dead_Code_Deleter2cb_5,1,bind); 
- rb_ary_store(bind,1,it); int oldpos4; while(1){oldpos4=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break2); if (IGET(stop)!=Qnil){{oldpos4=ame_getpos(self);goto break2;} } } break2: ISET(stop,Qnil);  ame_setpos(self,oldpos4); 
-	if (CALL(eof,0)==failobj) goto pass2;
+ rb_ary_store(bind,1,it); int oldpos4; while(1){oldpos4=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break2); if (IGET(stop)!=Qnil){{oldpos4=ame_getpos(self);goto break2;} } } break2: ISET(stop,Qnil);  ame_setpos(self,oldpos4);   it=Dead_Code_Deleter2_eof(self ); FAILTEST(pass2);
 	goto success2;
 	pass2: fail2=1;
 	success2: ame_setsrc(self,oldsrc2); ame_setpos(self,oldpos3); ame_setlen(self,oldlen2);
@@ -595,8 +616,7 @@ ame_setsrc(self,rb_ary_entry(bind,4)); ame_setpos(self,0); ame_setlen(self,FIX2I
  it=CALL(visit_Dead_Code_Deleter2cb_8,1,bind); 
  rb_ary_store(bind,5,it);   it=Dead_Code_Deleter2_traverse(self ); FAILTEST(pass3);it=CALL(visit_Dead_Code_Deleter2cb_9,1,bind); 
  rb_ary_store(bind,6,it); it=CALL(visit_Dead_Code_Deleter2cb_10,1,bind); 
- rb_ary_store(bind,1,it); 
-	if (CALL(eof,0)==failobj) goto pass3;
+ rb_ary_store(bind,1,it);   it=Dead_Code_Deleter2_eof(self ); FAILTEST(pass3);
 	goto success3;
 	pass3: fail3=1;
 	success3: ame_setsrc(self,oldsrc3); ame_setpos(self,oldpos5); ame_setlen(self,oldlen3);
@@ -606,8 +626,7 @@ it=CALL(visit_Dead_Code_Deleter2cb_11,1,bind);
  rb_ary_store(bind,7,it); int oldpos6=ame_getpos(self); int oldlen4=ame_getlen(self); VALUE oldsrc4=ame_getsrc(self); int fail4=0;
 ame_setsrc(self,rb_ary_entry(bind,7)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
  it=CALL(visit_Dead_Code_Deleter2cb_13,1,bind); 
- rb_ary_store(bind,1,it); 
-	if (CALL(eof,0)==failobj) goto pass4;
+ rb_ary_store(bind,1,it);   it=Dead_Code_Deleter2_eof(self ); FAILTEST(pass4);
 	goto success4;
 	pass4: fail4=1;
 	success4: ame_setsrc(self,oldsrc4); ame_setpos(self,oldpos6); ame_setlen(self,oldlen4);
@@ -677,8 +696,7 @@ ame_setsrc(self,rb_ary_entry(bind,0)); ame_setpos(self,0); ame_setlen(self,FIX2I
  rb_ary_store(bind,1,it); int oldpos3; while(1){oldpos3=ame_getpos(self);  it=rb_ary_entry(bind,2); arg0=it;it=rb_ary_entry(bind,3); arg1=it; it=Move_Assignments2_move(self ,arg0,arg1); FAILTEST(break1);
  rb_ary_store(bind,4,it); it=CALL(move_Move_Assignments2cb_2,1,bind);  if (IGET(stop)!=Qnil){{oldpos3=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos3); it=rb_ary_entry(bind,1);
  rb_ary_store(bind,5,it); it=CALL(move_Move_Assignments2cb_3,1,bind); 
- rb_ary_store(bind,6,it); 
-	if (CALL(eof,0)==failobj) goto pass1;
+ rb_ary_store(bind,6,it);   it=Move_Assignments2_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos2); ame_setlen(self,oldlen1);
@@ -707,8 +725,7 @@ alt3_1: ame_setpos(self,oldpos7);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto brea
  rb_ary_store(bind,12,it); it=CALL(move_Move_Assignments2cb_6,1,bind); int oldpos9=ame_getpos(self); int oldlen3=ame_getlen(self); VALUE oldsrc3=ame_getsrc(self); int fail3=0;
 ame_setsrc(self,rb_ary_entry(bind,12)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
   it=rb_ary_entry(bind,2); arg0=it;it=rb_ary_entry(bind,3); arg1=it; it=Move_Assignments2_move(self ,arg0,arg1); FAILTEST(pass3);
- rb_ary_store(bind,13,it); 
-	if (CALL(eof,0)==failobj) goto pass3;
+ rb_ary_store(bind,13,it);   it=Move_Assignments2_eof(self ); FAILTEST(pass3);
 	goto success3;
 	pass3: fail3=1;
 	success3: ame_setsrc(self,oldsrc3); ame_setpos(self,oldpos9); ame_setlen(self,oldlen3);
@@ -724,8 +741,7 @@ ISET(cut,Qnil);goto accept3;
  accept3:;
 it=CALL(move_Move_Assignments2cb_7,1,bind);  if (IGET(stop)!=Qnil){{oldpos6=ame_getpos(self);goto break2;} } } break2: ISET(stop,Qnil);  ame_setpos(self,oldpos6); it=rb_ary_entry(bind,10);
  rb_ary_store(bind,5,it); it=CALL(move_Move_Assignments2cb_8,1,bind); 
- rb_ary_store(bind,15,it); 
-	if (CALL(eof,0)==failobj) goto pass2;
+ rb_ary_store(bind,15,it);   it=Move_Assignments2_eof(self ); FAILTEST(pass2);
 	goto success2;
 	pass2: fail2=1;
 	success2: ame_setsrc(self,oldsrc2); ame_setpos(self,oldpos5); ame_setlen(self,oldlen2);
@@ -750,15 +766,13 @@ ame_setsrc(self,rb_ary_entry(bind,16)); ame_setpos(self,0); ame_setlen(self,FIX2
  rb_ary_store(bind,18,it); it=CALL(move_Move_Assignments2cb_13,1,bind); int oldpos12=ame_getpos(self); int oldlen5=ame_getlen(self); VALUE oldsrc5=ame_getsrc(self); int fail5=0;
 ame_setsrc(self,rb_ary_entry(bind,18)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
   it=rb_ary_entry(bind,2); arg0=it;it=rb_ary_entry(bind,3); arg1=it; it=Move_Assignments2_move(self ,arg0,arg1); FAILTEST(pass5);
- rb_ary_store(bind,19,it); 
-	if (CALL(eof,0)==failobj) goto pass5;
+ rb_ary_store(bind,19,it);   it=Move_Assignments2_eof(self ); FAILTEST(pass5);
 	goto success5;
 	pass5: fail5=1;
 	success5: ame_setsrc(self,oldsrc5); ame_setpos(self,oldpos12); ame_setlen(self,oldlen5);
 	if(fail5) goto pass4;
 it=CALL(move_Move_Assignments2cb_14,1,bind); 
- rb_ary_store(bind,20,it); 
-	if (CALL(eof,0)==failobj) goto pass4;
+ rb_ary_store(bind,20,it);   it=Move_Assignments2_eof(self ); FAILTEST(pass4);
 	goto success4;
 	pass4: fail4=1;
 	success4: ame_setsrc(self,oldsrc4); ame_setpos(self,oldpos11); ame_setlen(self,oldlen4);
@@ -798,20 +812,17 @@ ame_setsrc(self,rb_ary_entry(bind,2)); ame_setpos(self,0); ame_setlen(self,FIX2I
 ame_setsrc(self,rb_ary_entry(bind,3)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCore_anything(self ); FAILTEST(pass3);
  rb_ary_store(bind,4,it);   it=Move_Assignments2_traverse_item(self ); FAILTEST(pass3);
- rb_ary_store(bind,5,it); it=CALL(traverse_Move_Assignments2cb_4,1,bind); 
-	if (CALL(eof,0)==failobj) goto pass3;
+ rb_ary_store(bind,5,it); it=CALL(traverse_Move_Assignments2cb_4,1,bind);   it=Move_Assignments2_eof(self ); FAILTEST(pass3);
 	goto success3;
 	pass3: fail3=1;
 	success3: ame_setsrc(self,oldsrc3); ame_setpos(self,oldpos5); ame_setlen(self,oldlen3);
 	if(fail3) goto break2;
- if (IGET(stop)!=Qnil){{oldpos4=ame_getpos(self);goto break2;} } } break2: ISET(stop,Qnil);  ame_setpos(self,oldpos4); 
-	if (CALL(eof,0)==failobj) goto pass2;
+ if (IGET(stop)!=Qnil){{oldpos4=ame_getpos(self);goto break2;} } } break2: ISET(stop,Qnil);  ame_setpos(self,oldpos4);   it=Move_Assignments2_eof(self ); FAILTEST(pass2);
 	goto success2;
 	pass2: fail2=1;
 	success2: ame_setsrc(self,oldsrc2); ame_setpos(self,oldpos3); ame_setlen(self,oldlen2);
 	if(fail2) goto pass1;
-
-	if (CALL(eof,0)==failobj) goto pass1;
+  it=Move_Assignments2_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos2); ame_setlen(self,oldlen1);
@@ -835,8 +846,7 @@ ame_setsrc(self,rb_ary_entry(bind,2)); ame_setpos(self,0); ame_setlen(self,FIX2I
  it=rb_ary_new3(0);
  rb_ary_store(bind,3,it); int oldpos3; while(1){oldpos3=ame_getpos(self);   it=Move_Assignments2_traverse_item(self ); FAILTEST(break1);
  rb_ary_store(bind,4,it); it=CALL(traverse_item_Move_Assignments2cb_3,1,bind);  if (IGET(stop)!=Qnil){{oldpos3=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos3); it=rb_ary_entry(bind,3);
- rb_ary_store(bind,5,it); 
-	if (CALL(eof,0)==failobj) goto pass1;
+ rb_ary_store(bind,5,it);   it=Move_Assignments2_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos2); ame_setlen(self,oldlen1);
@@ -849,8 +859,7 @@ alt1_3: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
  rb_ary_store(bind,6,it); int oldpos4=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
 ame_setsrc(self,rb_ary_entry(bind,6)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=Move_Assignments2_traverse(self ); FAILTEST(pass2);
- rb_ary_store(bind,7,it); 
-	if (CALL(eof,0)==failobj) goto pass2;
+ rb_ary_store(bind,7,it);   it=Move_Assignments2_eof(self ); FAILTEST(pass2);
 	goto success2;
 	pass2: fail2=1;
 	success2: ame_setsrc(self,oldsrc2); ame_setpos(self,oldpos4); ame_setlen(self,oldlen2);
@@ -889,8 +898,7 @@ ame_setsrc(self,rb_ary_entry(bind,7)); ame_setpos(self,0); ame_setlen(self,FIX2I
  rb_ary_store(bind,8,it); int oldpos5; while(1){oldpos5=ame_getpos(self);  it=rb_ary_entry(bind,6); arg0=it;it=rb_ary_entry(bind,5); arg1=it; it=Move_Assignments2_move(self ,arg0,arg1); FAILTEST(break1);
  rb_ary_store(bind,9,it); it=CALL(visit_Move_Assignments2cb_7,1,bind);  if (IGET(stop)!=Qnil){{oldpos5=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos5); it=rb_ary_entry(bind,8);
  rb_ary_store(bind,10,it); it=CALL(visit_Move_Assignments2cb_8,1,bind); 
- rb_ary_store(bind,11,it); 
-	if (CALL(eof,0)==failobj) goto pass3;
+ rb_ary_store(bind,11,it);   it=Move_Assignments2_eof(self ); FAILTEST(pass3);
 	goto success3;
 	pass3: fail3=1;
 	success3: ame_setsrc(self,oldsrc3); ame_setpos(self,oldpos4); ame_setlen(self,oldlen3);
@@ -919,8 +927,7 @@ alt3_1: ame_setpos(self,oldpos9);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto brea
  rb_ary_store(bind,17,it); it=CALL(visit_Move_Assignments2cb_11,1,bind); int oldpos11=ame_getpos(self); int oldlen5=ame_getlen(self); VALUE oldsrc5=ame_getsrc(self); int fail5=0;
 ame_setsrc(self,rb_ary_entry(bind,17)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
   it=rb_ary_entry(bind,6); arg0=it;it=rb_ary_entry(bind,5); arg1=it; it=Move_Assignments2_move(self ,arg0,arg1); FAILTEST(pass5);
- rb_ary_store(bind,18,it); 
-	if (CALL(eof,0)==failobj) goto pass5;
+ rb_ary_store(bind,18,it);   it=Move_Assignments2_eof(self ); FAILTEST(pass5);
 	goto success5;
 	pass5: fail5=1;
 	success5: ame_setsrc(self,oldsrc5); ame_setpos(self,oldpos11); ame_setlen(self,oldlen5);
@@ -936,8 +943,7 @@ ISET(cut,Qnil);goto accept3;
  accept3:;
 it=CALL(visit_Move_Assignments2cb_12,1,bind);  if (IGET(stop)!=Qnil){{oldpos8=ame_getpos(self);goto break2;} } } break2: ISET(stop,Qnil);  ame_setpos(self,oldpos8); it=rb_ary_entry(bind,15);
  rb_ary_store(bind,10,it); it=CALL(visit_Move_Assignments2cb_13,1,bind); 
- rb_ary_store(bind,20,it); 
-	if (CALL(eof,0)==failobj) goto pass4;
+ rb_ary_store(bind,20,it);   it=Move_Assignments2_eof(self ); FAILTEST(pass4);
 	goto success4;
 	pass4: fail4=1;
 	success4: ame_setsrc(self,oldsrc4); ame_setpos(self,oldpos7); ame_setlen(self,oldlen4);
@@ -962,15 +968,13 @@ ame_setsrc(self,rb_ary_entry(bind,21)); ame_setpos(self,0); ame_setlen(self,FIX2
  rb_ary_store(bind,23,it); it=CALL(visit_Move_Assignments2cb_18,1,bind); int oldpos14=ame_getpos(self); int oldlen7=ame_getlen(self); VALUE oldsrc7=ame_getsrc(self); int fail7=0;
 ame_setsrc(self,rb_ary_entry(bind,23)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
   it=rb_ary_entry(bind,6); arg0=it;it=rb_ary_entry(bind,5); arg1=it; it=Move_Assignments2_move(self ,arg0,arg1); FAILTEST(pass7);
- rb_ary_store(bind,24,it); 
-	if (CALL(eof,0)==failobj) goto pass7;
+ rb_ary_store(bind,24,it);   it=Move_Assignments2_eof(self ); FAILTEST(pass7);
 	goto success7;
 	pass7: fail7=1;
 	success7: ame_setsrc(self,oldsrc7); ame_setpos(self,oldpos14); ame_setlen(self,oldlen7);
 	if(fail7) goto pass6;
 it=CALL(visit_Move_Assignments2cb_19,1,bind); 
- rb_ary_store(bind,25,it); 
-	if (CALL(eof,0)==failobj) goto pass6;
+ rb_ary_store(bind,25,it);   it=Move_Assignments2_eof(self ); FAILTEST(pass6);
 	goto success6;
 	pass6: fail6=1;
 	success6: ame_setsrc(self,oldsrc6); ame_setpos(self,oldpos13); ame_setlen(self,oldlen6);
@@ -988,15 +992,13 @@ ISET(cut,Qnil);goto accept5;
  break;case 3:;   it=AmethystCore_anything(self ); FAILTEST(pass2);
  rb_ary_store(bind,13,it); it=CALL(visit_Move_Assignments2cb_22,1,bind); 
  rb_ary_store(bind,12,it);  break;default: goto pass2;}it=rb_ary_entry(bind,12);
- rb_ary_store(bind,26,it); 
-	if (CALL(eof,0)==failobj) goto pass2;
+ rb_ary_store(bind,26,it);   it=Move_Assignments2_eof(self ); FAILTEST(pass2);
 	goto success2;
 	pass2: fail2=1;
 	success2: ame_setsrc(self,oldsrc2); ame_setpos(self,oldpos2); ame_setlen(self,oldlen2);
 	if(fail2) goto pass1;
 it=rb_ary_entry(bind,26);
- rb_ary_store(bind,27,it); 
-	if (CALL(eof,0)==failobj) goto pass1;
+ rb_ary_store(bind,27,it);   it=Move_Assignments2_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos1); ame_setlen(self,oldlen1);
@@ -1009,6 +1011,9 @@ void Init_dead_code_elimination2_c(){
  cls_Dead_Code_Detector2=rb_define_class("Dead_Code_Detector2",rb_const_get(rb_cObject,rb_intern("Traverser"))); 
 failobj=rb_eval_string("FAIL");
 rb_define_method(cls_Dead_Code_Detector2,"clas",Dead_Code_Detector2_clas,1);
+rb_define_method(cls_Dead_Code_Detector2,"empty",Dead_Code_Detector2_empty,0);
+rb_define_method(cls_Dead_Code_Detector2,"eof",Dead_Code_Detector2_eof,0);
+rb_define_method(cls_Dead_Code_Detector2,"fails",Dead_Code_Detector2_fails,0);
 rb_define_method(cls_Dead_Code_Detector2,"root",Dead_Code_Detector2_root,0);
 rb_define_method(cls_Dead_Code_Detector2,"traverse",Dead_Code_Detector2_traverse,0);
 rb_define_method(cls_Dead_Code_Detector2,"traverse_item",Dead_Code_Detector2_traverse_item,0);
@@ -1018,6 +1023,9 @@ rb_define_method(cls_Dead_Code_Detector2,"visit",Dead_Code_Detector2_visit,0);
  cls_Dead_Code_Deleter2=rb_define_class("Dead_Code_Deleter2",rb_const_get(rb_cObject,rb_intern("Traverser"))); 
 failobj=rb_eval_string("FAIL");
 rb_define_method(cls_Dead_Code_Deleter2,"clas",Dead_Code_Deleter2_clas,1);
+rb_define_method(cls_Dead_Code_Deleter2,"empty",Dead_Code_Deleter2_empty,0);
+rb_define_method(cls_Dead_Code_Deleter2,"eof",Dead_Code_Deleter2_eof,0);
+rb_define_method(cls_Dead_Code_Deleter2,"fails",Dead_Code_Deleter2_fails,0);
 rb_define_method(cls_Dead_Code_Deleter2,"root",Dead_Code_Deleter2_root,0);
 rb_define_method(cls_Dead_Code_Deleter2,"traverse",Dead_Code_Deleter2_traverse,0);
 rb_define_method(cls_Dead_Code_Deleter2,"traverse_item",Dead_Code_Deleter2_traverse_item,0);
@@ -1035,4 +1043,4 @@ rb_define_method(cls_Move_Assignments2,"root",Move_Assignments2_root,0);
 rb_define_method(cls_Move_Assignments2,"traverse",Move_Assignments2_traverse,0);
 rb_define_method(cls_Move_Assignments2,"traverse_item",Move_Assignments2_traverse_item,0);
 rb_define_method(cls_Move_Assignments2,"visit",Move_Assignments2_visit,0);
- rb_eval_string("testversion('6d4f999e4fb765ba8b566a1c029ae544')");}
+ rb_eval_string("testversion('10102ae66dd0d40502bc9a3a24ad89af')");}

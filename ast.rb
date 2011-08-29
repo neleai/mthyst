@@ -59,7 +59,7 @@ class <<Pass
 	def [](from,to,enter=nil)
 		a=autovar
 		r=autovar
-		Seq[_Bind(a,from), (enter ? PureAct[] : Act[Args[a,"=[",a,"]"]]) , Pass.create({:to=>_Bind(r,to),:enter=>true,:var=>a}),r]
+		Seq[_Bind(a,from), (enter ? PureAct[] : Act[Args[a,"=[",a,"]"]]) , Pass.create({:to=>Seq[_Bind(r,to),Apply["eof"]],:enter=>true,:var=>a}),r]
 	end
 end
 def _Bind(name,expr,append=nil)

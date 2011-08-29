@@ -126,6 +126,12 @@ end
 def clas_AmethystCTranslatorcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
+def empty_AmethystCTranslatorcb_1(bind)
+
+end
+def fails_AmethystCTranslatorcb_1(bind)
+(false) || FAIL
+end
 def failwrap_AmethystCTranslatorcb_1(bind)
 "#{bind[0]} FAILTEST(#{@faillabel});" 
 end
@@ -480,7 +486,6 @@ def trans_AmethystCTranslatorcb_78(bind)
 "int #{bind[7]}=ame_getpos(self); int #{bind[69]}=ame_getlen(self); VALUE #{bind[70]}=ame_getsrc(self); int #{bind[6]}=0;
 ame_setsrc(self,#{bget(@src.var)}); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern(\"size\"),0)));
  #{bind[73]}
-	if (CALL(eof,0)==failobj) goto #{bind[68]};
 	goto #{bind[71]};
 	#{bind[68]}: #{bind[6]}=1;
 	#{bind[71]}: ame_setsrc(self,#{bind[70]}); ame_setpos(self,#{bind[7]}); ame_setlen(self,#{bind[69]});
@@ -546,6 +551,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='9239ce99cd6d8f305c922c75c9342f86'
+ raise "invalid version" if r!='a95d1b9fb634bd762193e8ed02e28ec4'
 end
   require 'compiled/ctranslator2_c'

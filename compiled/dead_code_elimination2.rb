@@ -31,6 +31,12 @@ end
 def clas_Dead_Code_Detector2cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
+def empty_Dead_Code_Detector2cb_1(bind)
+
+end
+def fails_Dead_Code_Detector2cb_1(bind)
+(false) || FAIL
+end
 def root_Dead_Code_Detector2cb_1(bind)
 @src
 end
@@ -256,6 +262,12 @@ def switchcb3(e)
 end
 def clas_Dead_Code_Deleter2cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
+end
+def empty_Dead_Code_Deleter2cb_1(bind)
+
+end
+def fails_Dead_Code_Deleter2cb_1(bind)
+(false) || FAIL
 end
 def root_Dead_Code_Deleter2cb_1(bind)
 @src
@@ -535,6 +547,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='6d4f999e4fb765ba8b566a1c029ae544'
+ raise "invalid version" if r!='10102ae66dd0d40502bc9a3a24ad89af'
 end
   require 'compiled/dead_code_elimination2_c'

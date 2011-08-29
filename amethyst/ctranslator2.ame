@@ -124,7 +124,6 @@ failobj=rb_eval_string(\"FAIL\");
 					{  "int #{oldpos}=ame_getpos(self); int #{oldlen}=ame_getlen(self); VALUE #{oldsrc}=ame_getsrc(self); int #{fail}=0;
 ame_setsrc(self,#{bget(@var)}); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern(\"size\"),0)));
  #{to}
-	if (CALL(eof,0)==failobj) goto #{pass};
 	goto #{success};
 	#{pass}: #{fail}=1;
 	#{success}: ame_setsrc(self,#{oldsrc}); ame_setpos(self,#{oldpos}); ame_setlen(self,#{oldlen});
