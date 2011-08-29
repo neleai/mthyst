@@ -49,5 +49,8 @@ hashes with different equalization
 adaptive dataflow
 think about suitable decomposition
 
+Left factor to recognize binds as same
+Bind in postfix form
 
+merge detect_switch and detect_classswitch
 
