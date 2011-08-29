@@ -663,14 +663,14 @@ ame_setsrc(self,rb_ary_entry(bind,0)); ame_setpos(self,0); ame_setlen(self,FIX2I
  it=rb_ary_new3(0);
  rb_ary_store(bind,1,it); int oldpos3; while(1){oldpos3=ame_getpos(self);  it=rb_ary_entry(bind,2); arg0=it;it=rb_ary_entry(bind,3); arg1=it; it=Move_Assignments2_move(self ,arg0,arg1); FAILTEST(break1);
  rb_ary_store(bind,4,it); it=CALL(move_Move_Assignments2cb_2,1,bind);  if (IGET(stop)!=Qnil){{oldpos3=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos3); it=rb_ary_entry(bind,1);
- rb_ary_store(bind,5,it); 
+ rb_ary_store(bind,5,it); it=CALL(move_Move_Assignments2cb_3,1,bind); 
+ rb_ary_store(bind,6,it); 
 	if (CALL(eof,0)==failobj) goto pass1;
 	goto success1;
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos2); ame_setlen(self,oldlen1);
 	if(fail1) goto alt1_2;
-it=CALL(move_Move_Assignments2cb_3,1,bind);
- rb_ary_store(bind,6,it);  
+ 
 ISET(cut,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt1_3);
@@ -708,14 +708,14 @@ ISET(cut,Qnil);goto accept3;
   alt3_3:  ame_setpos(self,oldpos7); goto break2;
  accept3:;
 it=CALL(move_Move_Assignments2cb_7,1,bind);  if (IGET(stop)!=Qnil){{oldpos6=ame_getpos(self);goto break2;} } } break2: ISET(stop,Qnil);  ame_setpos(self,oldpos6); it=rb_ary_entry(bind,9);
- rb_ary_store(bind,5,it); 
+ rb_ary_store(bind,5,it); it=CALL(move_Move_Assignments2cb_8,1,bind); 
+ rb_ary_store(bind,6,it); 
 	if (CALL(eof,0)==failobj) goto pass2;
 	goto success2;
 	pass2: fail2=1;
 	success2: ame_setsrc(self,oldsrc2); ame_setpos(self,oldpos5); ame_setlen(self,oldlen2);
 	if(fail2) goto alt2_2;
-it=CALL(move_Move_Assignments2cb_8,1,bind);
- rb_ary_store(bind,6,it);  
+ 
 ISET(cut,Qnil);goto accept2;
 alt2_2: ame_setpos(self,oldpos4);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt2_3);
@@ -870,14 +870,14 @@ ame_setsrc(self,rb_ary_entry(bind,7)); ame_setpos(self,0); ame_setlen(self,FIX2I
  it=rb_ary_new3(0);
  rb_ary_store(bind,8,it); int oldpos5; while(1){oldpos5=ame_getpos(self);  it=rb_ary_entry(bind,6); arg0=it;it=rb_ary_entry(bind,5); arg1=it; it=Move_Assignments2_move(self ,arg0,arg1); FAILTEST(break1);
  rb_ary_store(bind,9,it); it=CALL(visit_Move_Assignments2cb_7,1,bind);  if (IGET(stop)!=Qnil){{oldpos5=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos5); it=rb_ary_entry(bind,8);
- rb_ary_store(bind,10,it); 
+ rb_ary_store(bind,10,it); it=CALL(visit_Move_Assignments2cb_8,1,bind); 
+ rb_ary_store(bind,11,it); 
 	if (CALL(eof,0)==failobj) goto pass3;
 	goto success3;
 	pass3: fail3=1;
 	success3: ame_setsrc(self,oldsrc3); ame_setpos(self,oldpos4); ame_setlen(self,oldlen3);
 	if(fail3) goto alt1_2;
-it=CALL(visit_Move_Assignments2cb_8,1,bind);
- rb_ary_store(bind,11,it);  
+ 
 ISET(cut,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos3);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto pass2;}
    it=AmethystCore_anything(self ); FAILTEST(alt1_3);
@@ -915,14 +915,14 @@ ISET(cut,Qnil);goto accept3;
   alt3_3:  ame_setpos(self,oldpos9); goto break2;
  accept3:;
 it=CALL(visit_Move_Assignments2cb_12,1,bind);  if (IGET(stop)!=Qnil){{oldpos8=ame_getpos(self);goto break2;} } } break2: ISET(stop,Qnil);  ame_setpos(self,oldpos8); it=rb_ary_entry(bind,14);
- rb_ary_store(bind,10,it); 
+ rb_ary_store(bind,10,it); it=CALL(visit_Move_Assignments2cb_13,1,bind); 
+ rb_ary_store(bind,11,it); 
 	if (CALL(eof,0)==failobj) goto pass4;
 	goto success4;
 	pass4: fail4=1;
 	success4: ame_setsrc(self,oldsrc4); ame_setpos(self,oldpos7); ame_setlen(self,oldlen4);
 	if(fail4) goto alt2_2;
-it=CALL(visit_Move_Assignments2cb_13,1,bind);
- rb_ary_store(bind,11,it);  
+ 
 ISET(cut,Qnil);goto accept2;
 alt2_2: ame_setpos(self,oldpos6);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto pass2;}
    it=AmethystCore_anything(self ); FAILTEST(alt2_3);
@@ -1012,4 +1012,4 @@ rb_define_method(cls_Move_Assignments2,"root",Move_Assignments2_root,0);
 rb_define_method(cls_Move_Assignments2,"traverse",Move_Assignments2_traverse,0);
 rb_define_method(cls_Move_Assignments2,"traverse_item",Move_Assignments2_traverse_item,0);
 rb_define_method(cls_Move_Assignments2,"visit",Move_Assignments2_visit,0);
- rb_eval_string("testversion('a7424519a3c11ccdab9ffafd240a9021')");}
+ rb_eval_string("testversion('e2d518a174fbc8fb4e157662e01d14e2')");}

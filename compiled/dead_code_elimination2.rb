@@ -415,7 +415,7 @@ def move_Move_Assignments2cb_2(bind)
 _append(bind[1],bind[4])
 end
 def move_Move_Assignments2cb_3(bind)
-Or.create( {:ary=>bind[5] })
+Or[{:ary=>bind[5]}]
 end
 def move_Move_Assignments2cb_4(bind)
 _Bind(bind[3],bind[7],bind[2])
@@ -430,7 +430,7 @@ def move_Move_Assignments2cb_7(bind)
 _append(bind[9],bind[12])
 end
 def move_Move_Assignments2cb_8(bind)
-Seq.create( {:ary=>bind[5] })
+Seq[{:ary=>bind[5]}]
 end
 def move_Move_Assignments2cb_9(bind)
 _Bind(bind[3],bind[7],bind[2])
@@ -475,7 +475,7 @@ def visit_Move_Assignments2cb_12(bind)
 _append(bind[14],bind[17])
 end
 def visit_Move_Assignments2cb_13(bind)
-Seq.create( {:ary=>bind[10] })
+Seq[{:ary=>bind[10]}]
 end
 def visit_Move_Assignments2cb_14(bind)
 _Bind(bind[5],bind[12],bind[6])
@@ -523,7 +523,7 @@ def visit_Move_Assignments2cb_7(bind)
 _append(bind[8],bind[9])
 end
 def visit_Move_Assignments2cb_8(bind)
-Or.create( {:ary=>bind[10] })
+Or[{:ary=>bind[10]}]
 end
 def visit_Move_Assignments2cb_9(bind)
 _Bind(bind[5],bind[12],bind[6])
@@ -535,6 +535,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='a7424519a3c11ccdab9ffafd240a9021'
+ raise "invalid version" if r!='e2d518a174fbc8fb4e157662e01d14e2'
 end
   require 'compiled/dead_code_elimination2_c'
