@@ -144,7 +144,7 @@ class Detect_ClasSwitch < Traverser
 		if s.is_a?(Apply) && s[0]=="clas"
 			return [s[1][0]]
 		end
-		if s.is_a?(Apply) #&& s[0]=="anything"
+		if s.is_a?(Apply) && s[0]=="anything"
 			return ["Object"]
 		end
 	end
@@ -250,7 +250,7 @@ def predicate_Detect_ClasSwitchcb_5(bind)
 Act
 end
 def predicate_Detect_ClasSwitchcb_6(bind)
-(child(bind[13],bind[7])) || FAIL
+(child(bind[7],bind[13])) || FAIL
 end
 def predicate_Detect_ClasSwitchcb_7(bind)
 Apply["anything"]
