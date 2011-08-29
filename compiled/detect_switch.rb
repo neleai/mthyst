@@ -232,34 +232,40 @@ def itrans_Detect_ClasSwitchcb_7(bind)
 _append(bind[0],bind[10])
 end
 def predicate_Detect_ClasSwitchcb_1(bind)
-bind[1]=[bind[1]]
+puts bind[0];puts bind[1].inspect
 end
 def predicate_Detect_ClasSwitchcb_10(bind)
+predicate(bind[0],@src.expr)
+end
+def predicate_Detect_ClasSwitchcb_11(bind)
 Bind.create( {:expr=>bind[16],:name=>bind[11] })
 end
+def predicate_Detect_ClasSwitchcb_12(bind)
+puts "end";puts bind[0];puts bind[9].inspect;bind[9]
+end
 def predicate_Detect_ClasSwitchcb_2(bind)
-_append(bind[4],bind[5])
+bind[2]=[bind[2]]
 end
 def predicate_Detect_ClasSwitchcb_3(bind)
-Seq[[predicate(bind[7],bind[3])]+bind[6]]
+_append(bind[5],bind[6])
 end
 def predicate_Detect_ClasSwitchcb_4(bind)
-(bind[11]=="clas") || FAIL
+Seq[[predicate(bind[0],bind[4])]+bind[7]]
 end
 def predicate_Detect_ClasSwitchcb_5(bind)
-Act
+(bind[11]=="clas") || FAIL
 end
 def predicate_Detect_ClasSwitchcb_6(bind)
-(child(bind[7],bind[13])) || FAIL
+Act
 end
 def predicate_Detect_ClasSwitchcb_7(bind)
-Apply["anything"]
+(child(bind[0],bind[13])) || FAIL
 end
 def predicate_Detect_ClasSwitchcb_8(bind)
-@src.name
+Apply["anything"]
 end
 def predicate_Detect_ClasSwitchcb_9(bind)
-predicate(bind[7],@src.expr)
+@src.name
 end
 def traverse_Detect_ClasSwitchcb_1(bind)
 @src
@@ -314,6 +320,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='578c3b3b7aae28e33c6f181102e17497'
+ raise "invalid version" if r!='55f83005a39ba4d6d3fd7e65244e2a02'
 end
   require 'compiled/detect_switch_c'

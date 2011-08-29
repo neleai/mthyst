@@ -120,10 +120,10 @@ amethyst Detect_ClasSwitch < Traverser {
     {c=classswitch(ary2);s=Switch[{:act=>c[1],:defs=>c[0],:ary=>ary3}];puts s.inspect;s}
 	]
 
-  predicate(clas,p) = {p}=>( Seq[ .:first .*:rest  {Seq[[predicate(clas,first)]+rest]} ]
+  predicate(clas,p) = {puts clas;puts p.inspect} {p}=>( Seq[ .:first .*:rest  {Seq[[predicate(clas,first)]+rest]} ]
 													 | Apply[ .:name &{name=="clas"} Act[.:match] &{child(clas,match)} {Apply["anything"]}] 
  													 | Bind[@name:name {predicate(clas,@expr)}:expr  @Bind]
 													 | .
-													 )
+													 ):x {puts "end";puts clas;puts x.inspect;x} 
 }
 
