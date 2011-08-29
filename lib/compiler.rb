@@ -122,7 +122,7 @@ end
 		}
 		[Detect_Switch,Seq_Or_Optimizer,Detect_ClasSwitch,Seq_Or_Optimizer].each{|o|
 			tree=o.new.parse(:itrans,tree)
-			puts tree.inspect
+			#puts tree.inspect
 		}
 
 		c,init,rb= AmethystCTranslator.new.parse(:itrans,tree)

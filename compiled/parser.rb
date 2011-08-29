@@ -283,15 +283,12 @@ def prefixed_AmethystParsercb_9(bind)
 Many[bind[5],bind[11]=="+"]
 end
 def procargs2_AmethystParsercb_1(bind)
-Args
-end
-def procargs2_AmethystParsercb_2(bind)
 _append(bind[1],bind[2])
 end
-def procargs2_AmethystParsercb_3(bind)
+def procargs2_AmethystParsercb_2(bind)
 @tmp<<bind[5]
 end
-def procargs2_AmethystParsercb_4(bind)
+def procargs2_AmethystParsercb_3(bind)
 @tmp<<bind[5]
 end
 def procargs_AmethystParsercb_1(bind)
@@ -461,6 +458,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='a38b394160fd467e2b5268ada0f268a2'
+ raise "invalid version" if r!='03d1cea2325e6509afa0b9735e619f76'
 end
   require 'compiled/parser_c'
