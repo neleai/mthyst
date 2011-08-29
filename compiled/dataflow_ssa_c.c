@@ -13,7 +13,7 @@ VALUE Dataflow_clas(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=rb_ary_new2(
  rb_ary_store(bind,2,it); it=rb_ary_entry(bind,2);
 return it;
 fail: return failobj; }
-VALUE Dataflow_root(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(6);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+VALUE Dataflow_root(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(8);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 it=CALL(root_Dataflowcb_1,1,bind); 
  rb_ary_store(bind,0,it); it=CALL(root_Dataflowcb_2,1,bind); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
@@ -47,13 +47,15 @@ it=CALL(root_Dataflowcb_7,1,bind);   it=Dataflow_traverse(self ); FAILTEST(pass2
 	pass2: fail2=1;
 	success2: ame_setsrc(self,oldsrc2); ame_setpos(self,oldpos2); ame_setlen(self,oldlen2);
 	if(fail2) goto pass1;
-
+it=rb_ary_entry(bind,5);
+ rb_ary_store(bind,6,it); 
 	if (CALL(eof,0)==failobj) goto pass1;
 	goto success1;
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos1); ame_setlen(self,oldlen1);
 	if(fail1) goto fail;
-it=rb_ary_entry(bind,5);
+it=rb_ary_entry(bind,6);
+ rb_ary_store(bind,7,it); it=rb_ary_entry(bind,7);
 return it;
 fail: return failobj; }
 VALUE Dataflow_traverse(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(7);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -92,7 +94,7 @@ it=CALL(traverse_Dataflowcb_5,1,bind);
  rb_ary_store(bind,6,it); it=rb_ary_entry(bind,6);
 return it;
 fail: return failobj; }
-VALUE Dataflow_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(6);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+VALUE Dataflow_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(8);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
@@ -107,26 +109,28 @@ ame_setsrc(self,rb_ary_entry(bind,2)); ame_setpos(self,0); ame_setlen(self,FIX2I
  it=rb_ary_new3(0);
  rb_ary_store(bind,3,it); int oldpos3; while(1){oldpos3=ame_getpos(self);   it=Dataflow_traverse_item(self ); FAILTEST(break1);
  rb_ary_store(bind,4,it); it=CALL(traverse_item_Dataflowcb_3,1,bind);  if (IGET(stop)!=Qnil){{oldpos3=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos3); it=rb_ary_entry(bind,3);
- rb_ary_store(bind,1,it); 
+ rb_ary_store(bind,5,it); 
 	if (CALL(eof,0)==failobj) goto pass1;
 	goto success1;
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos2); ame_setlen(self,oldlen1);
 	if(fail1) goto alt1_3;
- 
+it=rb_ary_entry(bind,5);
+ rb_ary_store(bind,1,it);  
 ISET(cut,Qnil);goto accept1;
 alt1_3: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   it=CALL(traverse_item_Dataflowcb_4,1,bind);  arg0=it; it=Dataflow_clas(self ,arg0); FAILTEST(alt1_4);
- rb_ary_store(bind,5,it); int oldpos4=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
-ame_setsrc(self,rb_ary_entry(bind,5)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
+ rb_ary_store(bind,6,it); int oldpos4=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
+ame_setsrc(self,rb_ary_entry(bind,6)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=Dataflow_traverse(self ); FAILTEST(pass2);
- rb_ary_store(bind,1,it); 
+ rb_ary_store(bind,7,it); 
 	if (CALL(eof,0)==failobj) goto pass2;
 	goto success2;
 	pass2: fail2=1;
 	success2: ame_setsrc(self,oldsrc2); ame_setpos(self,oldpos4); ame_setlen(self,oldlen2);
 	if(fail2) goto alt1_4;
- 
+it=rb_ary_entry(bind,7);
+ rb_ary_store(bind,1,it);  
 ISET(cut,Qnil);goto accept1;
 alt1_4: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt1_5);
@@ -324,7 +328,7 @@ ISET(cut,Qnil);goto accept9;
  rb_ary_store(bind,20,it); it=rb_ary_entry(bind,20);
 return it;
 fail: return failobj; }
-VALUE Dataflow_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(19);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+VALUE Dataflow_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(26);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 char chr1=FIX2INT(CALL(switchcb1,1,ame_curobj(self)));  switch(chr1){case 0:;  it=CALL(visit_Dataflowcb_1,1,bind);  arg0=it; it=Dataflow_clas(self ,arg0); FAILTEST(fail);
  rb_ary_store(bind,0,it); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
@@ -338,17 +342,18 @@ ame_setsrc(self,rb_ary_entry(bind,0)); ame_setpos(self,0); ame_setlen(self,FIX2I
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos1); ame_setlen(self,oldlen1);
 	if(fail1) goto fail;
- break;case 1:;  it=CALL(visit_Dataflowcb_7,1,bind);  arg0=it; it=Dataflow_clas(self ,arg0); FAILTEST(fail);
- rb_ary_store(bind,4,it); int oldpos3=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
-ame_setsrc(self,rb_ary_entry(bind,4)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-   it=AmethystCore_anything(self ); FAILTEST(pass2);  it=Dataflow_traverse(self ); FAILTEST(pass2);it=CALL(visit_Dataflowcb_8,1,bind); 
- rb_ary_store(bind,5,it); it=CALL(visit_Dataflowcb_9,1,bind); int oldpos4=ame_getpos(self); int oldlen3=ame_getlen(self); VALUE oldsrc3=ame_getsrc(self); int fail3=0;
+it=rb_ary_entry(bind,3);
+ rb_ary_store(bind,4,it);  break;case 1:;  it=CALL(visit_Dataflowcb_7,1,bind);  arg0=it; it=Dataflow_clas(self ,arg0); FAILTEST(fail);
+ rb_ary_store(bind,5,it); int oldpos3=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
 ame_setsrc(self,rb_ary_entry(bind,5)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-   it=AmethystCore_anything(self ); FAILTEST(pass3);
- rb_ary_store(bind,6,it); int oldpos5=ame_getpos(self); int oldlen4=ame_getlen(self); VALUE oldsrc4=ame_getsrc(self); int fail4=0;
+   it=AmethystCore_anything(self ); FAILTEST(pass2);  it=Dataflow_traverse(self ); FAILTEST(pass2);it=CALL(visit_Dataflowcb_8,1,bind); 
+ rb_ary_store(bind,6,it); it=CALL(visit_Dataflowcb_9,1,bind); int oldpos4=ame_getpos(self); int oldlen3=ame_getlen(self); VALUE oldsrc3=ame_getsrc(self); int fail3=0;
 ame_setsrc(self,rb_ary_entry(bind,6)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
+   it=AmethystCore_anything(self ); FAILTEST(pass3);
+ rb_ary_store(bind,7,it); int oldpos5=ame_getpos(self); int oldlen4=ame_getlen(self); VALUE oldsrc4=ame_getsrc(self); int fail4=0;
+ame_setsrc(self,rb_ary_entry(bind,7)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=Dataflow_vars_in(self ); FAILTEST(pass4);
- rb_ary_store(bind,7,it); 
+ rb_ary_store(bind,8,it); 
 	if (CALL(eof,0)==failobj) goto pass4;
 	goto success4;
 	pass4: fail4=1;
@@ -361,30 +366,32 @@ ame_setsrc(self,rb_ary_entry(bind,6)); ame_setpos(self,0); ame_setlen(self,FIX2I
 	success3: ame_setsrc(self,oldsrc3); ame_setpos(self,oldpos4); ame_setlen(self,oldlen3);
 	if(fail3) goto pass2;
 it=CALL(visit_Dataflowcb_10,1,bind); it=CALL(visit_Dataflowcb_11,1,bind); 
- rb_ary_store(bind,3,it); 
+ rb_ary_store(bind,9,it); 
 	if (CALL(eof,0)==failobj) goto pass2;
 	goto success2;
 	pass2: fail2=1;
 	success2: ame_setsrc(self,oldsrc2); ame_setpos(self,oldpos3); ame_setlen(self,oldlen2);
 	if(fail2) goto fail;
- break;case 2:;  it=CALL(visit_Dataflowcb_12,1,bind);  arg0=it; it=Dataflow_clas(self ,arg0); FAILTEST(fail);
- rb_ary_store(bind,8,it); int oldpos6=ame_getpos(self); int oldlen5=ame_getlen(self); VALUE oldsrc5=ame_getsrc(self); int fail5=0;
-ame_setsrc(self,rb_ary_entry(bind,8)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-   it=Dataflow_traverse(self ); FAILTEST(pass5);
- rb_ary_store(bind,9,it); it=CALL(visit_Dataflowcb_13,1,bind); it=CALL(visit_Dataflowcb_14,1,bind); 
- rb_ary_store(bind,10,it); it=CALL(visit_Dataflowcb_15,1,bind); int oldpos7=ame_getpos(self); int oldlen6=ame_getlen(self); VALUE oldsrc6=ame_getsrc(self); int fail6=0;
+it=rb_ary_entry(bind,9);
+ rb_ary_store(bind,4,it);  break;case 2:;  it=CALL(visit_Dataflowcb_12,1,bind);  arg0=it; it=Dataflow_clas(self ,arg0); FAILTEST(fail);
+ rb_ary_store(bind,10,it); int oldpos6=ame_getpos(self); int oldlen5=ame_getlen(self); VALUE oldsrc5=ame_getsrc(self); int fail5=0;
 ame_setsrc(self,rb_ary_entry(bind,10)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
+   it=Dataflow_traverse(self ); FAILTEST(pass5);
+ rb_ary_store(bind,11,it); it=CALL(visit_Dataflowcb_13,1,bind); it=CALL(visit_Dataflowcb_14,1,bind); 
+ rb_ary_store(bind,12,it); it=CALL(visit_Dataflowcb_15,1,bind); int oldpos7=ame_getpos(self); int oldlen6=ame_getlen(self); VALUE oldsrc6=ame_getsrc(self); int fail6=0;
+ame_setsrc(self,rb_ary_entry(bind,12)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCore_anything(self ); FAILTEST(pass6);
- rb_ary_store(bind,11,it); int oldpos8=ame_getpos(self); int oldlen7=ame_getlen(self); VALUE oldsrc7=ame_getsrc(self); int fail7=0;
-ame_setsrc(self,rb_ary_entry(bind,11)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
+ rb_ary_store(bind,13,it); int oldpos8=ame_getpos(self); int oldlen7=ame_getlen(self); VALUE oldsrc7=ame_getsrc(self); int fail7=0;
+ame_setsrc(self,rb_ary_entry(bind,13)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=Dataflow_vars_in(self ); FAILTEST(pass7);
- rb_ary_store(bind,7,it); 
+ rb_ary_store(bind,14,it); 
 	if (CALL(eof,0)==failobj) goto pass7;
 	goto success7;
 	pass7: fail7=1;
 	success7: ame_setsrc(self,oldsrc7); ame_setpos(self,oldpos8); ame_setlen(self,oldlen7);
 	if(fail7) goto pass6;
-
+it=rb_ary_entry(bind,14);
+ rb_ary_store(bind,8,it); 
 	if (CALL(eof,0)==failobj) goto pass6;
 	goto success6;
 	pass6: fail6=1;
@@ -397,34 +404,36 @@ ame_setsrc(self,rb_ary_entry(bind,11)); ame_setpos(self,0); ame_setlen(self,FIX2
 	success5: ame_setsrc(self,oldsrc5); ame_setpos(self,oldpos6); ame_setlen(self,oldlen5);
 	if(fail5) goto fail;
 it=CALL(visit_Dataflowcb_16,1,bind); 
- rb_ary_store(bind,3,it);  break;case 3:;  it=CALL(visit_Dataflowcb_17,1,bind);  arg0=it; it=Dataflow_clas(self ,arg0); FAILTEST(fail);
- rb_ary_store(bind,12,it); int oldpos9=ame_getpos(self); int oldlen8=ame_getlen(self); VALUE oldsrc8=ame_getsrc(self); int fail8=0;
-ame_setsrc(self,rb_ary_entry(bind,12)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
+ rb_ary_store(bind,4,it);  break;case 3:;  it=CALL(visit_Dataflowcb_17,1,bind);  arg0=it; it=Dataflow_clas(self ,arg0); FAILTEST(fail);
+ rb_ary_store(bind,15,it); int oldpos9=ame_getpos(self); int oldlen8=ame_getlen(self); VALUE oldsrc8=ame_getsrc(self); int fail8=0;
+ame_setsrc(self,rb_ary_entry(bind,15)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=Dataflow_traverse(self ); FAILTEST(pass8);it=CALL(visit_Dataflowcb_18,1,bind); it=CALL(visit_Dataflowcb_19,1,bind); 
- rb_ary_store(bind,3,it); 
+ rb_ary_store(bind,16,it); 
 	if (CALL(eof,0)==failobj) goto pass8;
 	goto success8;
 	pass8: fail8=1;
 	success8: ame_setsrc(self,oldsrc8); ame_setpos(self,oldpos9); ame_setlen(self,oldlen8);
 	if(fail8) goto fail;
- break;case 4:;  it=CALL(visit_Dataflowcb_20,1,bind);  arg0=it; it=Dataflow_clas(self ,arg0); FAILTEST(fail);
- rb_ary_store(bind,13,it); int oldpos10=ame_getpos(self); int oldlen9=ame_getlen(self); VALUE oldsrc9=ame_getsrc(self); int fail9=0;
-ame_setsrc(self,rb_ary_entry(bind,13)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
+it=rb_ary_entry(bind,16);
+ rb_ary_store(bind,4,it);  break;case 4:;  it=CALL(visit_Dataflowcb_20,1,bind);  arg0=it; it=Dataflow_clas(self ,arg0); FAILTEST(fail);
+ rb_ary_store(bind,17,it); int oldpos10=ame_getpos(self); int oldlen9=ame_getlen(self); VALUE oldsrc9=ame_getsrc(self); int fail9=0;
+ame_setsrc(self,rb_ary_entry(bind,17)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=Dataflow_traverse(self ); FAILTEST(pass9);
- rb_ary_store(bind,9,it); it=CALL(visit_Dataflowcb_21,1,bind); 
- rb_ary_store(bind,14,it); it=CALL(visit_Dataflowcb_22,1,bind); int oldpos11=ame_getpos(self); int oldlen10=ame_getlen(self); VALUE oldsrc10=ame_getsrc(self); int fail10=0;
-ame_setsrc(self,rb_ary_entry(bind,14)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
+ rb_ary_store(bind,11,it); it=CALL(visit_Dataflowcb_21,1,bind); 
+ rb_ary_store(bind,18,it); it=CALL(visit_Dataflowcb_22,1,bind); int oldpos11=ame_getpos(self); int oldlen10=ame_getlen(self); VALUE oldsrc10=ame_getsrc(self); int fail10=0;
+ame_setsrc(self,rb_ary_entry(bind,18)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCore_anything(self ); FAILTEST(pass10);
- rb_ary_store(bind,15,it); int oldpos12=ame_getpos(self); int oldlen11=ame_getlen(self); VALUE oldsrc11=ame_getsrc(self); int fail11=0;
-ame_setsrc(self,rb_ary_entry(bind,15)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
+ rb_ary_store(bind,19,it); int oldpos12=ame_getpos(self); int oldlen11=ame_getlen(self); VALUE oldsrc11=ame_getsrc(self); int fail11=0;
+ame_setsrc(self,rb_ary_entry(bind,19)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=Dataflow_vars_in(self ); FAILTEST(pass11);
- rb_ary_store(bind,7,it); 
+ rb_ary_store(bind,20,it); 
 	if (CALL(eof,0)==failobj) goto pass11;
 	goto success11;
 	pass11: fail11=1;
 	success11: ame_setsrc(self,oldsrc11); ame_setpos(self,oldpos12); ame_setlen(self,oldlen11);
 	if(fail11) goto pass10;
-
+it=rb_ary_entry(bind,20);
+ rb_ary_store(bind,8,it); 
 	if (CALL(eof,0)==failobj) goto pass10;
 	goto success10;
 	pass10: fail10=1;
@@ -437,28 +446,30 @@ ame_setsrc(self,rb_ary_entry(bind,15)); ame_setpos(self,0); ame_setlen(self,FIX2
 	success9: ame_setsrc(self,oldsrc9); ame_setpos(self,oldpos10); ame_setlen(self,oldlen9);
 	if(fail9) goto fail;
 it=CALL(visit_Dataflowcb_23,1,bind); 
- rb_ary_store(bind,3,it);  break;case 5:;  it=CALL(visit_Dataflowcb_24,1,bind);  arg0=it; it=Dataflow_clas(self ,arg0); FAILTEST(fail);
- rb_ary_store(bind,16,it); int oldpos13=ame_getpos(self); int oldlen12=ame_getlen(self); VALUE oldsrc12=ame_getsrc(self); int fail12=0;
-ame_setsrc(self,rb_ary_entry(bind,16)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
+ rb_ary_store(bind,4,it);  break;case 5:;  it=CALL(visit_Dataflowcb_24,1,bind);  arg0=it; it=Dataflow_clas(self ,arg0); FAILTEST(fail);
+ rb_ary_store(bind,21,it); int oldpos13=ame_getpos(self); int oldlen12=ame_getlen(self); VALUE oldsrc12=ame_getsrc(self); int fail12=0;
+ame_setsrc(self,rb_ary_entry(bind,21)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=Dataflow_traverse(self ); FAILTEST(pass12);it=CALL(visit_Dataflowcb_25,1,bind); it=CALL(visit_Dataflowcb_26,1,bind); 
- rb_ary_store(bind,3,it); 
+ rb_ary_store(bind,22,it); 
 	if (CALL(eof,0)==failobj) goto pass12;
 	goto success12;
 	pass12: fail12=1;
 	success12: ame_setsrc(self,oldsrc12); ame_setpos(self,oldpos13); ame_setlen(self,oldlen12);
 	if(fail12) goto fail;
- break;case 6:;  it=CALL(visit_Dataflowcb_27,1,bind);  arg0=it; it=Dataflow_clas(self ,arg0); FAILTEST(fail);
- rb_ary_store(bind,17,it); int oldpos14=ame_getpos(self); int oldlen13=ame_getlen(self); VALUE oldsrc13=ame_getsrc(self); int fail13=0;
-ame_setsrc(self,rb_ary_entry(bind,17)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
+it=rb_ary_entry(bind,22);
+ rb_ary_store(bind,4,it);  break;case 6:;  it=CALL(visit_Dataflowcb_27,1,bind);  arg0=it; it=Dataflow_clas(self ,arg0); FAILTEST(fail);
+ rb_ary_store(bind,23,it); int oldpos14=ame_getpos(self); int oldlen13=ame_getlen(self); VALUE oldsrc13=ame_getsrc(self); int fail13=0;
+ame_setsrc(self,rb_ary_entry(bind,23)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
  it=CALL(visit_Dataflowcb_28,1,bind); 
- rb_ary_store(bind,18,it);   it=Dataflow_traverse(self ); FAILTEST(pass13);it=CALL(visit_Dataflowcb_29,1,bind); it=CALL(visit_Dataflowcb_30,1,bind); 
- rb_ary_store(bind,3,it); 
+ rb_ary_store(bind,24,it);   it=Dataflow_traverse(self ); FAILTEST(pass13);it=CALL(visit_Dataflowcb_29,1,bind); it=CALL(visit_Dataflowcb_30,1,bind); 
+ rb_ary_store(bind,25,it); 
 	if (CALL(eof,0)==failobj) goto pass13;
 	goto success13;
 	pass13: fail13=1;
 	success13: ame_setsrc(self,oldsrc13); ame_setpos(self,oldpos14); ame_setlen(self,oldlen13);
 	if(fail13) goto fail;
- break;default: goto fail;}it=rb_ary_entry(bind,3);
+it=rb_ary_entry(bind,25);
+ rb_ary_store(bind,4,it);  break;default: goto fail;}it=rb_ary_entry(bind,4);
 return it;
 fail: return failobj; }VALUE cls_Dead_Code_Deleter3;
 VALUE Dead_Code_Deleter3_clas(VALUE self ,VALUE a0);
@@ -473,7 +484,7 @@ VALUE Dead_Code_Deleter3_clas(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=rb
  rb_ary_store(bind,2,it); it=rb_ary_entry(bind,2);
 return it;
 fail: return failobj; }
-VALUE Dead_Code_Deleter3_root(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(3);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+VALUE Dead_Code_Deleter3_root(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(5);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 it=CALL(root_Dead_Code_Deleter3cb_1,1,bind); 
  rb_ary_store(bind,0,it); it=CALL(root_Dead_Code_Deleter3cb_2,1,bind); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
@@ -488,13 +499,15 @@ ame_setsrc(self,rb_ary_entry(bind,1)); ame_setpos(self,0); ame_setlen(self,FIX2I
 	pass2: fail2=1;
 	success2: ame_setsrc(self,oldsrc2); ame_setpos(self,oldpos2); ame_setlen(self,oldlen2);
 	if(fail2) goto pass1;
-
+it=rb_ary_entry(bind,2);
+ rb_ary_store(bind,3,it); 
 	if (CALL(eof,0)==failobj) goto pass1;
 	goto success1;
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos1); ame_setlen(self,oldlen1);
 	if(fail1) goto fail;
-it=rb_ary_entry(bind,2);
+it=rb_ary_entry(bind,3);
+ rb_ary_store(bind,4,it); it=rb_ary_entry(bind,4);
 return it;
 fail: return failobj; }
 VALUE Dead_Code_Deleter3_traverse(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(7);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -533,7 +546,7 @@ it=CALL(traverse_Dead_Code_Deleter3cb_5,1,bind);
  rb_ary_store(bind,6,it); it=rb_ary_entry(bind,6);
 return it;
 fail: return failobj; }
-VALUE Dead_Code_Deleter3_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(6);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+VALUE Dead_Code_Deleter3_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(8);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
@@ -548,26 +561,28 @@ ame_setsrc(self,rb_ary_entry(bind,2)); ame_setpos(self,0); ame_setlen(self,FIX2I
  it=rb_ary_new3(0);
  rb_ary_store(bind,3,it); int oldpos3; while(1){oldpos3=ame_getpos(self);   it=Dead_Code_Deleter3_traverse_item(self ); FAILTEST(break1);
  rb_ary_store(bind,4,it); it=CALL(traverse_item_Dead_Code_Deleter3cb_3,1,bind);  if (IGET(stop)!=Qnil){{oldpos3=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos3); it=rb_ary_entry(bind,3);
- rb_ary_store(bind,1,it); 
+ rb_ary_store(bind,5,it); 
 	if (CALL(eof,0)==failobj) goto pass1;
 	goto success1;
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos2); ame_setlen(self,oldlen1);
 	if(fail1) goto alt1_3;
- 
+it=rb_ary_entry(bind,5);
+ rb_ary_store(bind,1,it);  
 ISET(cut,Qnil);goto accept1;
 alt1_3: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   it=CALL(traverse_item_Dead_Code_Deleter3cb_4,1,bind);  arg0=it; it=Dead_Code_Deleter3_clas(self ,arg0); FAILTEST(alt1_4);
- rb_ary_store(bind,5,it); int oldpos4=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
-ame_setsrc(self,rb_ary_entry(bind,5)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
+ rb_ary_store(bind,6,it); int oldpos4=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
+ame_setsrc(self,rb_ary_entry(bind,6)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=Dead_Code_Deleter3_traverse(self ); FAILTEST(pass2);
- rb_ary_store(bind,1,it); 
+ rb_ary_store(bind,7,it); 
 	if (CALL(eof,0)==failobj) goto pass2;
 	goto success2;
 	pass2: fail2=1;
 	success2: ame_setsrc(self,oldsrc2); ame_setpos(self,oldpos4); ame_setlen(self,oldlen2);
 	if(fail2) goto alt1_4;
- 
+it=rb_ary_entry(bind,7);
+ rb_ary_store(bind,1,it);  
 ISET(cut,Qnil);goto accept1;
 alt1_4: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt1_5);
@@ -662,4 +677,4 @@ rb_define_method(cls_Dead_Code_Deleter3,"root",Dead_Code_Deleter3_root,0);
 rb_define_method(cls_Dead_Code_Deleter3,"traverse",Dead_Code_Deleter3_traverse,0);
 rb_define_method(cls_Dead_Code_Deleter3,"traverse_item",Dead_Code_Deleter3_traverse_item,0);
 rb_define_method(cls_Dead_Code_Deleter3,"visit",Dead_Code_Deleter3_visit,0);
- rb_eval_string("testversion('b8be189196a8304ea0e358a9ad1ad6a9')");}
+ rb_eval_string("testversion('dbf600bb830575b458949b3be293df02')");}

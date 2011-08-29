@@ -65,16 +65,16 @@ def itrans_Detect_Switchcb_4(bind)
 Rule
 end
 def itrans_Detect_Switchcb_5(bind)
-_append(bind[4],bind[6])
+_append(bind[4],bind[7])
 end
 def itrans_Detect_Switchcb_6(bind)
-@src.rules=bind[7]
+@src.rules=bind[8]
 end
 def itrans_Detect_Switchcb_7(bind)
 @src
 end
 def itrans_Detect_Switchcb_8(bind)
-_append(bind[0],bind[8])
+_append(bind[0],bind[10])
 end
 def traverse_Detect_Switchcb_1(bind)
 @src
@@ -212,16 +212,16 @@ def itrans_Detect_ClasSwitchcb_4(bind)
 Rule
 end
 def itrans_Detect_ClasSwitchcb_5(bind)
-_append(bind[4],bind[6])
+_append(bind[4],bind[7])
 end
 def itrans_Detect_ClasSwitchcb_6(bind)
-@src.rules=bind[7]
+@src.rules=bind[8]
 end
 def itrans_Detect_ClasSwitchcb_7(bind)
 @src
 end
 def itrans_Detect_ClasSwitchcb_8(bind)
-_append(bind[0],bind[8])
+_append(bind[0],bind[10])
 end
 def traverse_Detect_ClasSwitchcb_1(bind)
 @src
@@ -276,6 +276,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='8a3771fe6efaed43d8f44725f794bd4a'
+ raise "invalid version" if r!='8655f1e97fce2837a363d39aad020323'
 end
   require 'compiled/detect_switch_c'

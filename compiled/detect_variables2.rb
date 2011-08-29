@@ -38,7 +38,7 @@ def flat_Analyze_Variables2cb_2(bind)
 Strin
 end
 def flat_Analyze_Variables2cb_3(bind)
-_append(bind[0],bind[2])
+_append(bind[0],bind[3])
 end
 def itrans_Analyze_Variables2cb_1(bind)
 Grammar
@@ -53,16 +53,16 @@ def itrans_Analyze_Variables2cb_4(bind)
 Rule
 end
 def itrans_Analyze_Variables2cb_5(bind)
-_append(bind[4],bind[6])
+_append(bind[4],bind[7])
 end
 def itrans_Analyze_Variables2cb_6(bind)
-@src.rules=bind[7]
+@src.rules=bind[8]
 end
 def itrans_Analyze_Variables2cb_7(bind)
 @src
 end
 def itrans_Analyze_Variables2cb_8(bind)
-_append(bind[0],bind[8])
+_append(bind[0],bind[10])
 end
 def root_Analyze_Variables2cb_1(bind)
 @src
@@ -146,7 +146,7 @@ def visit_Analyze_Variables2cb_7(bind)
 @src.ary
 end
 def visit_Analyze_Variables2cb_8(bind)
-bind[6]=[bind[6]]
+bind[7]=[bind[7]]
 end
 def visit_Analyze_Variables2cb_9(bind)
 Local
@@ -198,6 +198,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='757f0e3c91ab5b0a22011db0099f87c7'
+ raise "invalid version" if r!='c10d9bb782921f385473d92008008efc'
 end
   require 'compiled/detect_variables2_c'

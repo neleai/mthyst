@@ -164,19 +164,19 @@ def visit_Dead_Code_Detector2cb_1(bind)
 Apply
 end
 def visit_Dead_Code_Detector2cb_10(bind)
-bind[9]=[bind[9]]
+bind[11]=[bind[11]]
 end
 def visit_Dead_Code_Detector2cb_11(bind)
-bind[7]=bind[7][0]
+bind[9]=bind[9][0]
 end
 def visit_Dead_Code_Detector2cb_12(bind)
 @src.expr
 end
 def visit_Dead_Code_Detector2cb_13(bind)
-bind[10]=[bind[10]]
+bind[12]=[bind[12]]
 end
 def visit_Dead_Code_Detector2cb_14(bind)
-bind[1].each{|w| @edges.add(bind[7],w)};bind[4]
+bind[1].each{|w| @edges.add(bind[9],w)};bind[5]
 end
 def visit_Dead_Code_Detector2cb_15(bind)
 Result
@@ -185,10 +185,10 @@ def visit_Dead_Code_Detector2cb_16(bind)
 @src.vars
 end
 def visit_Dead_Code_Detector2cb_17(bind)
-bind[12]=[bind[12]]
+bind[14]=[bind[14]]
 end
 def visit_Dead_Code_Detector2cb_18(bind)
-bind[1].each{|w| @edges.add(bind[4],w) } ; bind[4]
+bind[1].each{|w| @edges.add(bind[5],w) } ; bind[5]
 end
 def visit_Dead_Code_Detector2cb_19(bind)
 Pass
@@ -200,7 +200,7 @@ def visit_Dead_Code_Detector2cb_20(bind)
 @src.var
 end
 def visit_Dead_Code_Detector2cb_21(bind)
-bind[15]=[bind[15]]
+bind[18]=[bind[18]]
 end
 def visit_Dead_Code_Detector2cb_22(bind)
 @marked+=bind[1]
@@ -212,7 +212,7 @@ def visit_Dead_Code_Detector2cb_24(bind)
 @src.o
 end
 def visit_Dead_Code_Detector2cb_25(bind)
-bind[17]=[bind[17]]
+bind[21]=[bind[21]]
 end
 def visit_Dead_Code_Detector2cb_26(bind)
 @marked+=bind[1]
@@ -221,16 +221,16 @@ def visit_Dead_Code_Detector2cb_3(bind)
 Act
 end
 def visit_Dead_Code_Detector2cb_4(bind)
-@marked<<bind[4] if @src.pred
+@marked<<bind[5] if @src.pred
 end
 def visit_Dead_Code_Detector2cb_5(bind)
 @src.ary
 end
 def visit_Dead_Code_Detector2cb_6(bind)
-bind[5]=[bind[5]]
+bind[6]=[bind[6]]
 end
 def visit_Dead_Code_Detector2cb_7(bind)
-bind[1].each{|bind[7]| @edges.add(bind[7],bind[4]); @edges.add(bind[4],bind[7]);}; bind[4]
+bind[1].each{|bind[9]| @edges.add(bind[9],bind[5]); @edges.add(bind[5],bind[9]);}; bind[5]
 end
 def visit_Dead_Code_Detector2cb_8(bind)
 Bind
@@ -397,19 +397,19 @@ def move_Move_Assignments2cb_12(bind)
 @src.to
 end
 def move_Move_Assignments2cb_13(bind)
-bind[15]=[bind[15]]
+bind[18]=[bind[18]]
 end
 def move_Move_Assignments2cb_14(bind)
 @src.enter
 end
 def move_Move_Assignments2cb_15(bind)
-Pass.create( {:ary=>bind[5],:enter=>bind[17],:to=>bind[16],:var=>bind[14] })
+Pass.create( {:ary=>bind[5],:enter=>bind[20],:to=>bind[19],:var=>bind[17] })
 end
 def move_Move_Assignments2cb_16(bind)
-_Bind(bind[3],bind[7],bind[2])
+_Bind(bind[3],bind[8],bind[2])
 end
 def move_Move_Assignments2cb_17(bind)
-_Bind(bind[3],bind[7],bind[2])
+_Bind(bind[3],bind[8],bind[2])
 end
 def move_Move_Assignments2cb_2(bind)
 _append(bind[1],bind[4])
@@ -418,22 +418,22 @@ def move_Move_Assignments2cb_3(bind)
 Or[{:ary=>bind[5]}]
 end
 def move_Move_Assignments2cb_4(bind)
-_Bind(bind[3],bind[7],bind[2])
+_Bind(bind[3],bind[8],bind[2])
 end
 def move_Move_Assignments2cb_5(bind)
 Seq
 end
 def move_Move_Assignments2cb_6(bind)
-bind[11]=[bind[11]]
+bind[12]=[bind[12]]
 end
 def move_Move_Assignments2cb_7(bind)
-_append(bind[9],bind[12])
+_append(bind[10],bind[14])
 end
 def move_Move_Assignments2cb_8(bind)
 Seq[{:ary=>bind[5]}]
 end
 def move_Move_Assignments2cb_9(bind)
-_Bind(bind[3],bind[7],bind[2])
+_Bind(bind[3],bind[8],bind[2])
 end
 def traverse_Move_Assignments2cb_1(bind)
 @src
@@ -469,16 +469,16 @@ def visit_Move_Assignments2cb_10(bind)
 Seq
 end
 def visit_Move_Assignments2cb_11(bind)
-bind[16]=[bind[16]]
+bind[17]=[bind[17]]
 end
 def visit_Move_Assignments2cb_12(bind)
-_append(bind[14],bind[17])
+_append(bind[15],bind[19])
 end
 def visit_Move_Assignments2cb_13(bind)
 Seq[{:ary=>bind[10]}]
 end
 def visit_Move_Assignments2cb_14(bind)
-_Bind(bind[5],bind[12],bind[6])
+_Bind(bind[5],bind[13],bind[6])
 end
 def visit_Move_Assignments2cb_15(bind)
 Pass
@@ -490,7 +490,7 @@ def visit_Move_Assignments2cb_17(bind)
 @src.to
 end
 def visit_Move_Assignments2cb_18(bind)
-bind[20]=[bind[20]]
+bind[23]=[bind[23]]
 end
 def visit_Move_Assignments2cb_19(bind)
 @src.enter
@@ -499,13 +499,13 @@ def visit_Move_Assignments2cb_2(bind)
 @src.name
 end
 def visit_Move_Assignments2cb_20(bind)
-Pass.create( {:ary=>bind[10],:enter=>bind[22],:to=>bind[21],:var=>bind[19] })
+Pass.create( {:ary=>bind[10],:enter=>bind[25],:to=>bind[24],:var=>bind[22] })
 end
 def visit_Move_Assignments2cb_21(bind)
-_Bind(bind[5],bind[12],bind[6])
+_Bind(bind[5],bind[13],bind[6])
 end
 def visit_Move_Assignments2cb_22(bind)
-_Bind(bind[5],bind[12],bind[6])
+_Bind(bind[5],bind[13],bind[6])
 end
 def visit_Move_Assignments2cb_3(bind)
 @src.expr
@@ -526,7 +526,7 @@ def visit_Move_Assignments2cb_8(bind)
 Or[{:ary=>bind[10]}]
 end
 def visit_Move_Assignments2cb_9(bind)
-_Bind(bind[5],bind[12],bind[6])
+_Bind(bind[5],bind[13],bind[6])
 end
 
 end
@@ -535,6 +535,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='e2d518a174fbc8fb4e157662e01d14e2'
+ raise "invalid version" if r!='6d4f999e4fb765ba8b566a1c029ae544'
 end
   require 'compiled/dead_code_elimination2_c'

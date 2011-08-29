@@ -238,7 +238,7 @@ def visit_Dataflowcb_1(bind)
 Or
 end
 def visit_Dataflowcb_10(bind)
-bind[7].each{|v| @marked<<ssanum(v)}
+bind[8].each{|v| @marked<<ssanum(v)}
 end
 def visit_Dataflowcb_11(bind)
 @src
@@ -247,16 +247,16 @@ def visit_Dataflowcb_12(bind)
 Act
 end
 def visit_Dataflowcb_13(bind)
-@marked<<bind[9] if @src.pred || !@src.pure
+@marked<<bind[11] if @src.pred || !@src.pure
 end
 def visit_Dataflowcb_14(bind)
 @src.ary
 end
 def visit_Dataflowcb_15(bind)
-bind[10]=[bind[10]]
+bind[12]=[bind[12]]
 end
 def visit_Dataflowcb_16(bind)
-bind[7].each{|v| edges.add(ssanum(v),bind[9]); edges.add(bind[9],newssanum(v.clone));}; bind[9]
+bind[8].each{|v| edges.add(ssanum(v),bind[11]); edges.add(bind[11],newssanum(v.clone));}; bind[11]
 end
 def visit_Dataflowcb_17(bind)
 Bind
@@ -277,10 +277,10 @@ def visit_Dataflowcb_21(bind)
 @src.vars
 end
 def visit_Dataflowcb_22(bind)
-bind[14]=[bind[14]]
+bind[18]=[bind[18]]
 end
 def visit_Dataflowcb_23(bind)
-bind[7].each{|w| @edges.add(ssanum(w),bind[9]) } ; bind[9]
+bind[8].each{|w| @edges.add(ssanum(w),bind[11]) } ; bind[11]
 end
 def visit_Dataflowcb_24(bind)
 Pass
@@ -298,7 +298,7 @@ def visit_Dataflowcb_28(bind)
 ssanums.clone
 end
 def visit_Dataflowcb_29(bind)
-many_end(bind[18])
+many_end(bind[24])
 end
 def visit_Dataflowcb_3(bind)
 @oldssanums=bind[2].clone
@@ -322,7 +322,7 @@ def visit_Dataflowcb_8(bind)
 @src
 end
 def visit_Dataflowcb_9(bind)
-bind[5]=[bind[5]]
+bind[6]=[bind[6]]
 end
 
 end
@@ -492,6 +492,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='b8be189196a8304ea0e358a9ad1ad6a9'
+ raise "invalid version" if r!='dbf600bb830575b458949b3be293df02'
 end
   require 'compiled/dataflow_ssa_c'

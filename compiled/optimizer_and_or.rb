@@ -35,16 +35,16 @@ def itrans_Seq_Or_Optimizercb_4(bind)
 Rule
 end
 def itrans_Seq_Or_Optimizercb_5(bind)
-_append(bind[4],bind[6])
+_append(bind[4],bind[7])
 end
 def itrans_Seq_Or_Optimizercb_6(bind)
-@src.rules=bind[7]
+@src.rules=bind[8]
 end
 def itrans_Seq_Or_Optimizercb_7(bind)
 @src
 end
 def itrans_Seq_Or_Optimizercb_8(bind)
-_append(bind[0],bind[8])
+_append(bind[0],bind[10])
 end
 def traverse_Seq_Or_Optimizercb_1(bind)
 @src
@@ -77,10 +77,10 @@ def visit_Seq_Or_Optimizercb_1(bind)
 Or
 end
 def visit_Seq_Or_Optimizercb_10(bind)
-(bind[4].is_a?(Act) && bind[4][0].is_a?(Exp)) || FAIL
+(bind[5].is_a?(Act) && bind[5][0].is_a?(Exp)) || FAIL
 end
 def visit_Seq_Or_Optimizercb_11(bind)
-bind[4][0][0]
+bind[5][0][0]
 end
 def visit_Seq_Or_Optimizercb_12(bind)
 Seq
@@ -95,28 +95,28 @@ def visit_Seq_Or_Optimizercb_3(bind)
 Apply
 end
 def visit_Seq_Or_Optimizercb_4(bind)
-(bind[3]=="apply") || FAIL
+(bind[4]=="apply") || FAIL
 end
 def visit_Seq_Or_Optimizercb_5(bind)
 puts @src.inspect
 end
 def visit_Seq_Or_Optimizercb_6(bind)
-(bind[4].is_a?(CAct)) || FAIL
+(bind[5].is_a?(CAct)) || FAIL
 end
 def visit_Seq_Or_Optimizercb_7(bind)
-Apply[bind[4][0][13...-2]]
+Apply[bind[5][0][13...-2]]
 end
 def visit_Seq_Or_Optimizercb_8(bind)
 Apply
 end
 def visit_Seq_Or_Optimizercb_9(bind)
-(bind[3]=="apply") || FAIL
+(bind[4]=="apply") || FAIL
 end
 
 end
 
 
 def testversion(r)
- raise "invalid version" if r!='5a74a26744023193a3a7a8426dc48c18'
+ raise "invalid version" if r!='b641942531033c720f41881fca6c72a9'
 end
   require 'compiled/optimizer_and_or_c'
