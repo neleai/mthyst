@@ -152,13 +152,16 @@ class Detect_ClasSwitch < Traverser
 			return ["Object"]
 		end
 	end
+	def child(par,chld)
+		 eval(par) <= eval(chld)
+	end
 	def includes(ary,i,p)
 		i.times{|ii|
 			s=true
-			p.each{|f| s=false unless eval(f) <= eval(ary[ii])}
+			p.each{|f| s=false unless child(f,ary[ii])}
 			return false if s
 		}
-		p.each{|f| return true if eval(ary[i]) >= eval(f) || eval(ary[i]) <= eval(f)}
+		p.each{|f| return true if child(ary[i],f) || child(f,ary[i])}
 		return false
 	end
 	def classswitch(ary)
@@ -175,7 +178,7 @@ class Detect_ClasSwitch < Traverser
 	def topsort(a)
 		a=a.uniq
 		g=Oriented_Graph.new
-		a.each{|u| a.each{|v| g.add(u,v) if  eval(u) >= eval(v)}}
+		a.each{|u| a.each{|v| g.add(u,v) if child(v,u)}}
 	 	g.topo_order
 	end
 end
