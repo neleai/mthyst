@@ -12,7 +12,9 @@ class Detect_Switch < Traverser
 		end
 		if s.is_a? Switch
 			a=[]
-			s.ary.each{|k,v| a+=first(v)}
+			s.ary.each{|k,v| 
+				return nil if !first(v)
+			a+=first(v)}
 			return a.uniq
 		end
 		if s.is_a? Or
@@ -23,6 +25,8 @@ class Detect_Switch < Traverser
 			return a.uniq
 		end
 		if s.is_a?(Apply) && s[0]=="seq"
+			puts s.inspect
+			return nil unless s[1].is_a?(CAct)
 			return nil if s[1][0].size==15
 			return [firstchar(s[1][0])]
 		end
@@ -39,7 +43,7 @@ amethyst Detect_Switch < Traverser {
 		{ary2.sort.uniq.each{|e| 
 			ary3<<[e,Or[{:ary=>@ary.select{|p| first(p).include?(e)}}]]
 		}}
-		{Switch[{:act=>"*ame_curstr(self)",:ary=>ary3}]}
+		{s=Switch[{:act=>"*ame_curstr(self)",:ary=>ary3}];puts s.inspect;s}
 	]
 }
 class Detect_ClasSwitch < Traverser
@@ -52,7 +56,9 @@ class Detect_ClasSwitch < Traverser
 		end
 		if s.is_a? Switch
 			a=[]
-			s.ary.each{|k,v| a+=first(v)}
+			s.ary.each{|k,v|
+				return nil if !first(v)
+			a+=first(v)}
 			return a.uniq
 		end
 		if s.is_a? Or
@@ -108,7 +114,7 @@ amethyst Detect_ClasSwitch < Traverser {
     {	ary2.each_with_index{|e,i|
       	ary3<<[i,Or[{:ary=>@ary.select{|p| includes(ary2,i,first(p))}}]]
 		}}
-    {c=classswitch(ary2);Switch[{:act=>c[1],:defs=>c[0],:ary=>ary3}]}
+    {c=classswitch(ary2);s=Switch[{:act=>c[1],:defs=>c[0],:ary=>ary3}];puts s.inspect;s}
 	]
 }
 

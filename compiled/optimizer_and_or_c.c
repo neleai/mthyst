@@ -163,7 +163,7 @@ VALUE Seq_Or_Optimizer_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(
 char chr1=FIX2INT(CALL(switchcb1,1,ame_curobj(self)));  switch(chr1){case 0:;  it=CALL(visit_Seq_Or_Optimizercb_1,1,bind);  arg0=it; it=Seq_Or_Optimizer_clas(self ,arg0); FAILTEST(fail);
  rb_ary_store(bind,0,it); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,rb_ary_entry(bind,0)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-   it=Seq_Or_Optimizer_traverse(self ); FAILTEST(pass1);it=CALL(visit_Seq_Or_Optimizercb_2,1,bind); it=CALL(visit_Seq_Or_Optimizercb_3,1,bind); 
+   it=Seq_Or_Optimizer_traverse(self ); FAILTEST(pass1);it=CALL(visit_Seq_Or_Optimizercb_2,1,bind); 
  rb_ary_store(bind,1,it); 
 	if (CALL(eof,0)==failobj) goto pass1;
 	goto success1;
@@ -172,12 +172,12 @@ ame_setsrc(self,rb_ary_entry(bind,0)); ame_setpos(self,0); ame_setlen(self,FIX2I
 	if(fail1) goto fail;
  break;case 1:; int oldpos2=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=CALL(visit_Seq_Or_Optimizercb_4,1,bind);  arg0=it; it=Seq_Or_Optimizer_clas(self ,arg0); FAILTEST(alt1_2);
+  it=CALL(visit_Seq_Or_Optimizercb_3,1,bind);  arg0=it; it=Seq_Or_Optimizer_clas(self ,arg0); FAILTEST(alt1_2);
  rb_ary_store(bind,2,it); int oldpos3=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
 ame_setsrc(self,rb_ary_entry(bind,2)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCore_anything(self ); FAILTEST(pass2);
- rb_ary_store(bind,3,it); it=CALL(visit_Seq_Or_Optimizercb_5,1,bind); FAILTEST(pass2);it=CALL(visit_Seq_Or_Optimizercb_6,1,bind);   it=AmethystCore_anything(self ); FAILTEST(pass2);
- rb_ary_store(bind,4,it); it=CALL(visit_Seq_Or_Optimizercb_7,1,bind); FAILTEST(pass2);it=CALL(visit_Seq_Or_Optimizercb_8,1,bind); 
+ rb_ary_store(bind,3,it); it=CALL(visit_Seq_Or_Optimizercb_4,1,bind); FAILTEST(pass2);it=CALL(visit_Seq_Or_Optimizercb_5,1,bind);   it=AmethystCore_anything(self ); FAILTEST(pass2);
+ rb_ary_store(bind,4,it); it=CALL(visit_Seq_Or_Optimizercb_6,1,bind); FAILTEST(pass2);it=CALL(visit_Seq_Or_Optimizercb_7,1,bind); 
  rb_ary_store(bind,1,it); 
 	if (CALL(eof,0)==failobj) goto pass2;
 	goto success2;
@@ -187,12 +187,12 @@ ame_setsrc(self,rb_ary_entry(bind,2)); ame_setpos(self,0); ame_setlen(self,FIX2I
  
 ISET(cut,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=CALL(visit_Seq_Or_Optimizercb_9,1,bind);  arg0=it; it=Seq_Or_Optimizer_clas(self ,arg0); FAILTEST(alt1_3);
+  it=CALL(visit_Seq_Or_Optimizercb_8,1,bind);  arg0=it; it=Seq_Or_Optimizer_clas(self ,arg0); FAILTEST(alt1_3);
  rb_ary_store(bind,5,it); int oldpos4=ame_getpos(self); int oldlen3=ame_getlen(self); VALUE oldsrc3=ame_getsrc(self); int fail3=0;
 ame_setsrc(self,rb_ary_entry(bind,5)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCore_anything(self ); FAILTEST(pass3);
- rb_ary_store(bind,3,it); it=CALL(visit_Seq_Or_Optimizercb_10,1,bind); FAILTEST(pass3);  it=AmethystCore_anything(self ); FAILTEST(pass3);
- rb_ary_store(bind,4,it); it=CALL(visit_Seq_Or_Optimizercb_11,1,bind); FAILTEST(pass3);it=CALL(visit_Seq_Or_Optimizercb_12,1,bind); 
+ rb_ary_store(bind,3,it); it=CALL(visit_Seq_Or_Optimizercb_9,1,bind); FAILTEST(pass3);  it=AmethystCore_anything(self ); FAILTEST(pass3);
+ rb_ary_store(bind,4,it); it=CALL(visit_Seq_Or_Optimizercb_10,1,bind); FAILTEST(pass3);it=CALL(visit_Seq_Or_Optimizercb_11,1,bind); 
  rb_ary_store(bind,1,it); 
 	if (CALL(eof,0)==failobj) goto pass3;
 	goto success3;
@@ -203,10 +203,10 @@ ame_setsrc(self,rb_ary_entry(bind,5)); ame_setpos(self,0); ame_setlen(self,FIX2I
 ISET(cut,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos2); goto fail;
  accept1:;
- break;case 2:;  it=CALL(visit_Seq_Or_Optimizercb_13,1,bind);  arg0=it; it=Seq_Or_Optimizer_clas(self ,arg0); FAILTEST(fail);
+ break;case 2:;  it=CALL(visit_Seq_Or_Optimizercb_12,1,bind);  arg0=it; it=Seq_Or_Optimizer_clas(self ,arg0); FAILTEST(fail);
  rb_ary_store(bind,6,it); int oldpos5=ame_getpos(self); int oldlen4=ame_getlen(self); VALUE oldsrc4=ame_getsrc(self); int fail4=0;
 ame_setsrc(self,rb_ary_entry(bind,6)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-   it=Seq_Or_Optimizer_traverse(self ); FAILTEST(pass4);it=CALL(visit_Seq_Or_Optimizercb_14,1,bind); it=CALL(visit_Seq_Or_Optimizercb_15,1,bind); 
+   it=Seq_Or_Optimizer_traverse(self ); FAILTEST(pass4);it=CALL(visit_Seq_Or_Optimizercb_13,1,bind); 
  rb_ary_store(bind,1,it); 
 	if (CALL(eof,0)==failobj) goto pass4;
 	goto success4;
@@ -225,4 +225,4 @@ rb_define_method(cls_Seq_Or_Optimizer,"root",Seq_Or_Optimizer_root,0);
 rb_define_method(cls_Seq_Or_Optimizer,"traverse",Seq_Or_Optimizer_traverse,0);
 rb_define_method(cls_Seq_Or_Optimizer,"traverse_item",Seq_Or_Optimizer_traverse_item,0);
 rb_define_method(cls_Seq_Or_Optimizer,"visit",Seq_Or_Optimizer_visit,0);
- rb_eval_string("testversion('f6dc2ec312c1ffe5a09c88e4582539b7')");}
+ rb_eval_string("testversion('5a74a26744023193a3a7a8426dc48c18')");}

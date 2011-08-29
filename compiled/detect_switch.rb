@@ -12,7 +12,9 @@ class Detect_Switch < Traverser
 		end
 		if s.is_a? Switch
 			a=[]
-			s.ary.each{|k,v| a+=first(v)}
+			s.ary.each{|k,v| 
+				return nil if !first(v)
+			a+=first(v)}
 			return a.uniq
 		end
 		if s.is_a? Or
@@ -23,6 +25,8 @@ class Detect_Switch < Traverser
 			return a.uniq
 		end
 		if s.is_a?(Apply) && s[0]=="seq"
+			puts s.inspect
+			return nil unless s[1].is_a?(CAct)
 			return nil if s[1][0].size==15
 			return [firstchar(s[1][0])]
 		end
@@ -114,7 +118,7 @@ bind[1].sort.uniq.each{|bind[3]|
 		}
 end
 def visit_Detect_Switchcb_5(bind)
-Switch[{:act=>"*ame_curstr(self)",:ary=>bind[2]}]
+s=Switch[{:act=>"*ame_curstr(self)",:ary=>bind[2]}];puts s.inspect;s
 end
 
 end
@@ -129,7 +133,9 @@ class Detect_ClasSwitch < Traverser
 		end
 		if s.is_a? Switch
 			a=[]
-			s.ary.each{|k,v| a+=first(v)}
+			s.ary.each{|k,v|
+				return nil if !first(v)
+			a+=first(v)}
 			return a.uniq
 		end
 		if s.is_a? Or
@@ -262,7 +268,7 @@ bind[1].each_with_index{|bind[3],i|
 		}
 end
 def visit_Detect_ClasSwitchcb_6(bind)
-c=classswitch(bind[1]);Switch[{:act=>c[1],:defs=>c[0],:ary=>bind[2]}]
+c=classswitch(bind[1]);s=Switch[{:act=>c[1],:defs=>c[0],:ary=>bind[2]}];puts s.inspect;s
 end
 
 end

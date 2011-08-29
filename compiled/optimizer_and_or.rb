@@ -77,52 +77,46 @@ def visit_Seq_Or_Optimizercb_1(bind)
 Or
 end
 def visit_Seq_Or_Optimizercb_10(bind)
-(bind[3]=="apply") || FAIL
-end
-def visit_Seq_Or_Optimizercb_11(bind)
 (bind[4].is_a?(Act) && bind[4][0].is_a?(Exp)) || FAIL
 end
-def visit_Seq_Or_Optimizercb_12(bind)
+def visit_Seq_Or_Optimizercb_11(bind)
 bind[4][0][0]
 end
-def visit_Seq_Or_Optimizercb_13(bind)
+def visit_Seq_Or_Optimizercb_12(bind)
 Seq
 end
-def visit_Seq_Or_Optimizercb_14(bind)
-@src.self.ary=@src.ary.map{|i| (i.is_a?(Seq)) ? i.ary : i}.flatten.select{|e| !(e.is_a?(Act) && e.ary.size==0)}
-end
-def visit_Seq_Or_Optimizercb_15(bind)
-(@src.ary.size==1) ? @src.ary[0] : @src.self
+def visit_Seq_Or_Optimizercb_13(bind)
+Seq[{:ary=>@src.ary}]
 end
 def visit_Seq_Or_Optimizercb_2(bind)
-@src.self.ary=@src.ary.map{|i| (i.is_a?(Or )) ? i.ary : i}.flatten.select{|e| !(e.is_a?(Act) && e.ary.size==0)}
+Or[{:ary=>@src.ary}]
 end
 def visit_Seq_Or_Optimizercb_3(bind)
-(@src.ary.size==1) ? @src.ary[0] : @src.self
+Apply
 end
 def visit_Seq_Or_Optimizercb_4(bind)
-Apply
-end
-def visit_Seq_Or_Optimizercb_5(bind)
 (bind[3]=="apply") || FAIL
 end
-def visit_Seq_Or_Optimizercb_6(bind)
+def visit_Seq_Or_Optimizercb_5(bind)
 puts @src.self.inspect
 end
-def visit_Seq_Or_Optimizercb_7(bind)
+def visit_Seq_Or_Optimizercb_6(bind)
 (bind[4].is_a?(CAct)) || FAIL
 end
-def visit_Seq_Or_Optimizercb_8(bind)
+def visit_Seq_Or_Optimizercb_7(bind)
 Apply[bind[4][0][13...-2]]
 end
-def visit_Seq_Or_Optimizercb_9(bind)
+def visit_Seq_Or_Optimizercb_8(bind)
 Apply
+end
+def visit_Seq_Or_Optimizercb_9(bind)
+(bind[3]=="apply") || FAIL
 end
 
 end
 
 
 def testversion(r)
- raise "invalid version" if r!='f6dc2ec312c1ffe5a09c88e4582539b7'
+ raise "invalid version" if r!='5a74a26744023193a3a7a8426dc48c18'
 end
   require 'compiled/optimizer_and_or_c'
