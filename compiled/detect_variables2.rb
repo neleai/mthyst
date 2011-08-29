@@ -83,7 +83,7 @@ def root_Analyze_Variables2cb_6(bind)
 @locals=@src.locals
 end
 def root_Analyze_Variables2cb_7(bind)
-@src.body=Seq[{:ary=>[@src.body] }];@src.locals=nil
+@src.locals=nil
 end
 def root_Analyze_Variables2cb_8(bind)
 @src.self
