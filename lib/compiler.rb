@@ -120,10 +120,10 @@ end
 			else
 			end
 		}
-		tree=Detect_Switch.new.parse(:itrans,tree)
-		tree=Seq_Or_Optimizer.new.parse(:itrans,tree)
-		tree=Detect_ClasSwitch.new.parse(:itrans,tree)
-		tree=Seq_Or_Optimizer.new.parse(:itrans,tree)
+		[Detect_Switch,Seq_Or_Optimizer,Detect_ClasSwitch,Seq_Or_Optimizer].each{|o|
+			tree=o.new.parse(:itrans,tree)
+			puts tree.inspect
+		}
 
 		c,init,rb= AmethystCTranslator.new.parse(:itrans,tree)
 		c=c*""

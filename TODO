@@ -53,3 +53,4 @@ Bind in postfix form
 
 merge detect_switch and detect_classswitch
 
+do not remove unused arguments
