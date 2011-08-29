@@ -18,14 +18,14 @@ def connectstring(ary)
 end
 
 class AmethystParser < Amethyst
-def self.switchcb_1(e)
+def self.switchcb_AmethystParser1(e)
 return 0 if e<=Args
 return 1 if e<=Object
 return 2
 end
-@@switchhash1=Hash.new{|h,k| h[k]=switchcb_1(k)}
-def switchcb1(e)
-@@switchhash1[e.class]
+@@switchhashAmethystParser1=Hash.new{|h,k| h[k]=switchcb_AmethystParser1(k)}
+def switchcbAmethystParser1(e)
+@@switchhashAmethystParser1[e.class]
 end
 def __AmethystParsercb_1(bind)
 /[\s\t\r\n\f]/
@@ -458,6 +458,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='03d1cea2325e6509afa0b9735e619f76'
+ raise "invalid version" if r!='eff13585cf4f0391c336b01e40beb233'
 end
   require 'compiled/parser_c'

@@ -1,25 +1,25 @@
 class Move_Assignments2 < Traverser
-def self.switchcb_1(e)
+def self.switchcb_Move_Assignments21(e)
 return 0 if e<=Or
 return 1 if e<=Seq
 return 2 if e<=Pass
 return 3 if e<=Object
 return 4
 end
-@@switchhash1=Hash.new{|h,k| h[k]=switchcb_1(k)}
-def switchcb1(e)
-@@switchhash1[e.class]
+@@switchhashMove_Assignments21=Hash.new{|h,k| h[k]=switchcb_Move_Assignments21(k)}
+def switchcbMove_Assignments21(e)
+@@switchhashMove_Assignments21[e.class]
 end
-def self.switchcb_2(e)
+def self.switchcb_Move_Assignments22(e)
 return 0 if e<=Or
 return 1 if e<=Seq
 return 2 if e<=Pass
 return 3 if e<=Object
 return 4
 end
-@@switchhash2=Hash.new{|h,k| h[k]=switchcb_2(k)}
-def switchcb2(e)
-@@switchhash2[e.class]
+@@switchhashMove_Assignments22=Hash.new{|h,k| h[k]=switchcb_Move_Assignments22(k)}
+def switchcbMove_Assignments22(e)
+@@switchhashMove_Assignments22[e.class]
 end
 def clas_Move_Assignments2cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -163,6 +163,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='4d202b70c8d9fe02b6b826603273ec79'
+ raise "invalid version" if r!='344b41db704ea7314255086178eed48b'
 end
   require 'compiled/dead_code_elimination2_c'

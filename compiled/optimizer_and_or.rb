@@ -1,23 +1,23 @@
 
 class Seq_Or_Optimizer < Traverser
-def self.switchcb_1(e)
+def self.switchcb_Seq_Or_Optimizer1(e)
 return 0 if e<=Or
 return 1 if e<=Apply
 return 2 if e<=Seq
 return 3
 end
-@@switchhash1=Hash.new{|h,k| h[k]=switchcb_1(k)}
-def switchcb1(e)
-@@switchhash1[e.class]
+@@switchhashSeq_Or_Optimizer1=Hash.new{|h,k| h[k]=switchcb_Seq_Or_Optimizer1(k)}
+def switchcbSeq_Or_Optimizer1(e)
+@@switchhashSeq_Or_Optimizer1[e.class]
 end
-def self.switchcb_2(e)
+def self.switchcb_Seq_Or_Optimizer2(e)
 return 0 if e<=Grammar
 return 1 if e<=Object
 return 2
 end
-@@switchhash2=Hash.new{|h,k| h[k]=switchcb_2(k)}
-def switchcb2(e)
-@@switchhash2[e.class]
+@@switchhashSeq_Or_Optimizer2=Hash.new{|h,k| h[k]=switchcb_Seq_Or_Optimizer2(k)}
+def switchcbSeq_Or_Optimizer2(e)
+@@switchhashSeq_Or_Optimizer2[e.class]
 end
 def clas_Seq_Or_Optimizercb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -108,6 +108,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='302af77f8cdca4a2db07c99ab4b97750'
+ raise "invalid version" if r!='256390c907f6be1c403acb6a976f5cc1'
 end
   require 'compiled/optimizer_and_or_c'

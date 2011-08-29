@@ -55,7 +55,7 @@ class AmethystCTranslator < Amethyst
 end
 
 class AmethystCTranslator < Amethyst
-def self.switchcb_1(e)
+def self.switchcb_AmethystCTranslator1(e)
 return 0 if e<=Local
 return 1 if e<=Args
 return 2 if e<=Array
@@ -66,11 +66,11 @@ return 6 if e<=Exp
 return 7 if e<=Object
 return 8
 end
-@@switchhash1=Hash.new{|h,k| h[k]=switchcb_1(k)}
-def switchcb1(e)
-@@switchhash1[e.class]
+@@switchhashAmethystCTranslator1=Hash.new{|h,k| h[k]=switchcb_AmethystCTranslator1(k)}
+def switchcbAmethystCTranslator1(e)
+@@switchhashAmethystCTranslator1[e.class]
 end
-def self.switchcb_2(e)
+def self.switchcb_AmethystCTranslator2(e)
 return 0 if e<=Cut
 return 1 if e<=Local
 return 2 if e<=Or
@@ -89,9 +89,9 @@ return 14 if e<=Many
 return 15 if e<=Switch
 return 16
 end
-@@switchhash2=Hash.new{|h,k| h[k]=switchcb_2(k)}
-def switchcb2(e)
-@@switchhash2[e.class]
+@@switchhashAmethystCTranslator2=Hash.new{|h,k| h[k]=switchcb_AmethystCTranslator2(k)}
+def switchcbAmethystCTranslator2(e)
+@@switchhashAmethystCTranslator2[e.class]
 end
 def addcallback_AmethystCTranslatorcb_1(bind)
 bind[1]=[bind[1]]
@@ -479,6 +479,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='2396183bae2a781fd618c0cf7c983723'
+ raise "invalid version" if r!='768b3119c895a8f6322f4b9ba73c5415'
 end
   require 'compiled/ctranslator2_c'

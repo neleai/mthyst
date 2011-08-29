@@ -1,13 +1,13 @@
 class Constant_Traverser < Traverser
-def self.switchcb_1(e)
+def self.switchcb_Constant_Traverser1(e)
 return 0 if e<=Local
 return 1 if e<=Bind
 return 2 if e<=Act
 return 3
 end
-@@switchhash1=Hash.new{|h,k| h[k]=switchcb_1(k)}
-def switchcb1(e)
-@@switchhash1[e.class]
+@@switchhashConstant_Traverser1=Hash.new{|h,k| h[k]=switchcb_Constant_Traverser1(k)}
+def switchcbConstant_Traverser1(e)
+@@switchhashConstant_Traverser1[e.class]
 end
 def clas_Constant_Traversercb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -77,6 +77,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='a5ebb50a482c72f24dbeeb903bc367fe'
+ raise "invalid version" if r!='1b13e7e00870b345539c4054b336d362'
 end
   require 'compiled/constant_propagation_c'

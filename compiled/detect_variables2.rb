@@ -1,32 +1,32 @@
 class Analyze_Variables2 < Traverser
-def self.switchcb_1(e)
+def self.switchcb_Analyze_Variables21(e)
 return 0 if e<=Args
 return 1 if e<=Act
 return 2 if e<=Result
 return 3
 end
-@@switchhash1=Hash.new{|h,k| h[k]=switchcb_1(k)}
-def switchcb1(e)
-@@switchhash1[e.class]
+@@switchhashAnalyze_Variables21=Hash.new{|h,k| h[k]=switchcb_Analyze_Variables21(k)}
+def switchcbAnalyze_Variables21(e)
+@@switchhashAnalyze_Variables21[e.class]
 end
-def self.switchcb_2(e)
+def self.switchcb_Analyze_Variables22(e)
 return 0 if e<=Grammar
 return 1 if e<=Object
 return 2
 end
-@@switchhash2=Hash.new{|h,k| h[k]=switchcb_2(k)}
-def switchcb2(e)
-@@switchhash2[e.class]
+@@switchhashAnalyze_Variables22=Hash.new{|h,k| h[k]=switchcb_Analyze_Variables22(k)}
+def switchcbAnalyze_Variables22(e)
+@@switchhashAnalyze_Variables22[e.class]
 end
-def self.switchcb_3(e)
+def self.switchcb_Analyze_Variables23(e)
 return 0 if e<=Args
 return 1 if e<=Strin
 return 2 if e<=Object
 return 3
 end
-@@switchhash3=Hash.new{|h,k| h[k]=switchcb_3(k)}
-def switchcb3(e)
-@@switchhash3[e.class]
+@@switchhashAnalyze_Variables23=Hash.new{|h,k| h[k]=switchcb_Analyze_Variables23(k)}
+def switchcbAnalyze_Variables23(e)
+@@switchhashAnalyze_Variables23[e.class]
 end
 def clas_Analyze_Variables2cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -192,6 +192,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='a450a91437db6c4220dc5aaf5eb5b1c6'
+ raise "invalid version" if r!='6c9dd199fe426dd6b838cd42a7bd5fbd'
 end
   require 'compiled/detect_variables2_c'

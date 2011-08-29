@@ -89,14 +89,14 @@ class Detect_ClasSwitch < Traverser
 	end
 	def classswitch(ary)
 		@no=(@no||0)+1
-		rb="def self.switchcb_#{@no}(e)\n"
+		rb="def self.switchcb_#{@name}#{@no}(e)\n"
 		ary.each_with_index{|c,i| rb<< "return #{i} if e<=#{c}\n"}
 		rb+="return #{ary.size}\nend\n"
-		rb+="@@switchhash#{@no}=Hash.new{|h,k| h[k]=switchcb_#{@no}(k)}\n"
-		rb+="def switchcb#{@no}(e)\n"
-		rb+="@@switchhash#{@no}[e.class]\n"
+		rb+="@@switchhash#{@name}#{@no}=Hash.new{|h,k| h[k]=switchcb_#{@name}#{@no}(k)}\n"
+		rb+="def switchcb#{@name}#{@no}(e)\n"
+		rb+="@@switchhash#{@name}#{@no}[e.class]\n"
 		rb+="end"
-		[rb, "FIX2INT(CALL(switchcb#{@no},1,ame_curobj(self)))"]
+		[rb, "FIX2INT(CALL(switchcb#{@name}#{@no},1,ame_curobj(self)))"]
 	end
 	def topsort(a)
 		a=a.uniq
@@ -107,7 +107,7 @@ class Detect_ClasSwitch < Traverser
 end
 
 amethyst Detect_ClasSwitch < Traverser {
-	itrans =   (Grammar[ @rules=>[ Rule[root]*:rules ] {@rules=rules} @self] | .)*
+	itrans =   (Grammar[ {@@name=@name} @rules=>[ Rule[root]*:rules ] {@rules=rules} @self] | .)*
 
 	root = traverse
 
@@ -122,7 +122,7 @@ amethyst Detect_ClasSwitch < Traverser {
 	]
 
   predicate(clas,p) = {p}=>( Seq[ .:first .*:rest  {Seq[[predicate(clas,first)]+rest]} ]
-													 | Apply[ .:name &{name=="clas"} Act[.:match] &{child(clas,match)} {Apply["anything"]}] 
+													 | Apply[ .:name &{name=="clas"} Act[.:match] &{child(clas,match)&&clas==match} {Apply["anything"]}] 
  													 | Bind[@name:name {predicate(clas,@expr)}:expr  @Bind]
 													 | .
 													 ) 

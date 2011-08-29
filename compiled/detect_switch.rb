@@ -33,14 +33,14 @@ class Detect_Switch < Traverser
 end
 
 class Detect_Switch < Traverser
-def self.switchcb_1(e)
+def self.switchcb_Detect_Switch1(e)
 return 0 if e<=Grammar
 return 1 if e<=Object
 return 2
 end
-@@switchhash1=Hash.new{|h,k| h[k]=switchcb_1(k)}
-def switchcb1(e)
-@@switchhash1[e.class]
+@@switchhashDetect_Switch1=Hash.new{|h,k| h[k]=switchcb_Detect_Switch1(k)}
+def switchcbDetect_Switch1(e)
+@@switchhashDetect_Switch1[e.class]
 end
 def clas_Detect_Switchcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -163,14 +163,14 @@ class Detect_ClasSwitch < Traverser
 	end
 	def classswitch(ary)
 		@no=(@no||0)+1
-		rb="def self.switchcb_#{@no}(e)\n"
+		rb="def self.switchcb_#{@name}#{@no}(e)\n"
 		ary.each_with_index{|c,i| rb<< "return #{i} if e<=#{c}\n"}
 		rb+="return #{ary.size}\nend\n"
-		rb+="@@switchhash#{@no}=Hash.new{|h,k| h[k]=switchcb_#{@no}(k)}\n"
-		rb+="def switchcb#{@no}(e)\n"
-		rb+="@@switchhash#{@no}[e.class]\n"
+		rb+="@@switchhash#{@name}#{@no}=Hash.new{|h,k| h[k]=switchcb_#{@name}#{@no}(k)}\n"
+		rb+="def switchcb#{@name}#{@no}(e)\n"
+		rb+="@@switchhash#{@name}#{@no}[e.class]\n"
 		rb+="end"
-		[rb, "FIX2INT(CALL(switchcb#{@no},1,ame_curobj(self)))"]
+		[rb, "FIX2INT(CALL(switchcb#{@name}#{@no},1,ame_curobj(self)))"]
 	end
 	def topsort(a)
 		a=a.uniq
@@ -181,25 +181,25 @@ class Detect_ClasSwitch < Traverser
 end
 
 class Detect_ClasSwitch < Traverser
-def self.switchcb_2(e)
+def self.switchcb_Detect_ClasSwitch2(e)
 return 0 if e<=Seq
 return 1 if e<=Apply
 return 2 if e<=Bind
 return 3 if e<=Object
 return 4
 end
-@@switchhash2=Hash.new{|h,k| h[k]=switchcb_2(k)}
-def switchcb2(e)
-@@switchhash2[e.class]
+@@switchhashDetect_ClasSwitch2=Hash.new{|h,k| h[k]=switchcb_Detect_ClasSwitch2(k)}
+def switchcbDetect_ClasSwitch2(e)
+@@switchhashDetect_ClasSwitch2[e.class]
 end
-def self.switchcb_3(e)
+def self.switchcb_Detect_ClasSwitch3(e)
 return 0 if e<=Grammar
 return 1 if e<=Object
 return 2
 end
-@@switchhash3=Hash.new{|h,k| h[k]=switchcb_3(k)}
-def switchcb3(e)
-@@switchhash3[e.class]
+@@switchhashDetect_ClasSwitch3=Hash.new{|h,k| h[k]=switchcb_Detect_ClasSwitch3(k)}
+def switchcbDetect_ClasSwitch3(e)
+@@switchhashDetect_ClasSwitch3[e.class]
 end
 def clas_Detect_ClasSwitchcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -211,24 +211,27 @@ def fails_Detect_ClasSwitchcb_1(bind)
 (false) || FAIL
 end
 def itrans_Detect_ClasSwitchcb_1(bind)
-@src.rules
+@name=@src.name
 end
 def itrans_Detect_ClasSwitchcb_2(bind)
-bind[2]=[bind[2]]
+@src.rules
 end
 def itrans_Detect_ClasSwitchcb_3(bind)
-Rule
+bind[2]=[bind[2]]
 end
 def itrans_Detect_ClasSwitchcb_4(bind)
-_append(bind[4],bind[7])
+Rule
 end
 def itrans_Detect_ClasSwitchcb_5(bind)
-@src.rules=bind[8]
+_append(bind[4],bind[7])
 end
 def itrans_Detect_ClasSwitchcb_6(bind)
-@src
+@src.rules=bind[8]
 end
 def itrans_Detect_ClasSwitchcb_7(bind)
+@src
+end
+def itrans_Detect_ClasSwitchcb_8(bind)
 _append(bind[0],bind[10])
 end
 def predicate_Detect_ClasSwitchcb_1(bind)
@@ -250,7 +253,7 @@ def predicate_Detect_ClasSwitchcb_5(bind)
 Act
 end
 def predicate_Detect_ClasSwitchcb_6(bind)
-(child(bind[7],bind[13])) || FAIL
+(child(bind[7],bind[13])&&bind[7]==bind[13]) || FAIL
 end
 def predicate_Detect_ClasSwitchcb_7(bind)
 Apply["anything"]
@@ -317,6 +320,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='a7d188db90c3757efa4661bad4f11f6b'
+ raise "invalid version" if r!='560908dcd7ca00eebf3b9ed83d3aab1d'
 end
   require 'compiled/detect_switch_c'
