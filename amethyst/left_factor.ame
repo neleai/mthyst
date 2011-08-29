@@ -1,4 +1,4 @@
-class Left_Factor
+class Left_Factor < Traverser
 	def first(s)
 		s[0] if s.is_a? Seq
 		s
@@ -14,7 +14,7 @@ amethyst Left_Factor < Traverser {
 
 	visit=Or[ traverse .:x factor([],x) ]		
 	
-	factor(prev,current) = .:next ( &{first(current).to_yaml==first(next).to_yaml} factor(prev,Seq[first(current),Or[rest(current),rest(next)])
+	factor(prev,current) = .:next ( &{first(current).to_yaml==first(next).to_yaml} factor(prev,Seq[first(current),Or[rest(current),rest(next)]])
 															  | ~{first(current).to_yaml==first(next).to_yaml} factor(prev+[current],next) )
 											 | eof -> Or[prev+[current]]
 }

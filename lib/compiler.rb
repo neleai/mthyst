@@ -1,7 +1,7 @@
 require 'digest'
 $OPT="-O2"
-COMPILED=["amethyst","traverser","detect_variables2","ctranslator2","parser","optimizer_null","optimizer_and_or","dead_code_elimination2","dataflow_ssa","inliner2",
-"detect_switch"]
+COMPILED=["amethyst","traverser","detect_variables2","ctranslator2","parser","optimizer_and_or","dead_code_elimination2","dataflow_ssa","inliner2",
+"detect_switch","left_factor"]
 require 'constant_propagation2'
 class Gram
 	attr_accessor :name,:parent,:rules
@@ -30,7 +30,8 @@ class Gram
 	r=deep_clone(r)
  [ Dataflow, 
 			Dead_Code_Deleter3,Seq_Or_Optimizer,
-			Communize_Or3,Seq_Or_Optimizer
+			Left_Factor,
+			Seq_Or_Optimizer
 ].each{|o|
 			r=o.new.parse(:root,r)
 			puts r.inspect if debug

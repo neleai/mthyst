@@ -31,40 +31,6 @@ amethyst Dead_Code_Deleter2 < Traverser{
           | Local[.* @self:this] ->@@reachable[this] ? this : Act[]
 }
 
-amethyst Constant_Propagator2 < Traverser {
-}
-
-amethyst Communize_Or2 < Traverser {
-	root = traverse
-	
-	visit = Or[ Seq[traverse]+:ands eof
-							{common=ands[0].size
-								ands.each{|a| 0.upto(common){|n| (common=[common,n].min ;next) if a[n].to_yaml!=ands[0][n].to_yaml}}
-								commn=ands[0].ary[0,common]
-								o=[]
-								ands.each{|a| o<< Seq[{:ary=>a.ary[common,a.size-common]}] unless common==a.size	}
-	            	Seq[{:ary=>(commn+[Or[{:ary=>o}]])}]
-							}
-            ]
-}
-amethyst Communize_Or3 < Traverser {
-	root = traverse
-	visit = Or[ Seq[traverse]+:ands eof {
-							com=[]
-							last=ands.shift
-							ands.each{|a|
-								if last[0].to_yaml==a[0].to_yaml
-									last=Seq[last[0],Or[Seq[*last[1..(-1)]],Seq[*a[1..(-1)]]]]
-								else
-									com<<last
-									last=a
-								end
-							}
-							com<<last
-							@ary=com
-							@self
-					} ]
-}
 
 amethyst Move_Assignments2 < Traverser {
 	itrans=root	
