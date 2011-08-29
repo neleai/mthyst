@@ -40,7 +40,7 @@ def deep_clone(o)
 	end
 end
 
-module AmethystAST
+class AmethystAST
 	def size
 		ary.size
 	end
@@ -61,7 +61,6 @@ def makeclasses(parent,*ary)
 		eval " class #{a[0]} < #{parent}
 						@attrs=#{(a[1..-1]+[:ary]).inspect}
 						attr_accessor *@attrs
-						include AmethystAST
 						extend Populate
 					end"
 	}

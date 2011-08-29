@@ -1,4 +1,4 @@
-makeclasses(Object,
+makeclasses(AmethystAST,
     [:Key,:name,:expr,:args],
     [:Result,:name,:args,:vars],
     :Apply,:Char,
