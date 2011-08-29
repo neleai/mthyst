@@ -10,6 +10,7 @@ require 'compiled/dataflow_ssa'
 ["amethyst","parser",
 "traverser","detect_variables2",
 "optimizer_and_or",
+"detect_switch",
 "dead_code_elimination2","inliner2","dataflow_ssa","constant_propagation",
 "ctranslator2"].each{|f|
 puts f

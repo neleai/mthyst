@@ -1,0 +1,44 @@
+Compilers obtain most properties by dataflow analysis and its extensions.
+
+We first describe constraint propagation and then general analysis. 
+
+Constraint propagation is analysis which unifies constant propagation,range analysis, and type inference and more.
+
+SSA and SSU form
+We want to differenciate between diferent definitions and uses of variables. Conceptualy simplest way how to do it is insert after each instruction dummy assignments x=x for each variable x. We number instructions by integers. In instruction i we rewrite x to x_i and rewrite dummy assignment after instruction i to x_j=x_i where j is number of following instruction.
+Most of these assignments are not needed as variables remain unchanged and minimal SSA and SSU form is what we obtain when we omit assignment that we dont need and unify corresponding variables.
+Traditionaly SSA form is described by phi function. It is easy to convert between x_1=phi(x_2,x_3) and dummy assignments x_1=x_2 and x_1=x_3. We use dummy assignment form because it is more natural in our setting. 
+
+One,two,three, too many
+For each variable we want to know set of values it can attain. This is impossible as there can be infinitely many values. What we do is approximate them by supersets which have compact representation.
+
+What compact representation means can vary. Following example is choosen to be rich enough to show lot of issues we need to handle.
+
+We call following sets atomic
+set Nothing={}
+set Const(c)={c} for each constant c
+set Range(a,b)={x | is x integer in range a<=x<=b}
+set Bits(ones,zeros)={x | x integer with some bits fixed by equations x&ones=ones and x&zeros=0}
+set Class(t)={x | x has class t} for each type t
+set Inherits(t)={x | x inherits from class t} for each type t
+set Anything={x | x can be any possible value}
+
+And our compact representation is union of say at most 16 atomic sets.
+Note that we can coerce Const to Range and Bits and how Bits and Range are dependent.
+
+Now dataflow equations represent that if we know that arguments of operation are what we can say about result.
+It is easy to see that theoreticaly we need only to know how evaluate atomic sets and then take union over all choices in corresponding compact representations(how make this practical is described in).
+Specifying rules for buildin operations is mostly exercise of writing basic rules of arithmetic and is left to reader.
+
+We make previous algorithm practical by Simplify(S,k) which simplifies representation of S to S' \superset S that consists only of k atomic sets. Then with it we could by Simplifying arguments reduce number of cases we must evaluate and then reduce result to fit 16 atomic sets.
+
+Writing simplify is mostly of heuristic nature. 
+Always if we U \subset V we can omit U.
+We can merge overlapping ranges.
+
+There is another catch as in loop for(i=0;i<1000000;i++) range of i can be extended 1000000. Generic way how to solve this and similar issues is by add timestamp and when we extend range say 32 times to (a,b) ,(a,b+1),...(a,b+31) we return (a,infinity). 
+
+We consider Ranges and Bits mostly for predication. Say we have conditional  B<-A->C and we go to 
+ 
+
+Another question is being lazy. We first mark what 

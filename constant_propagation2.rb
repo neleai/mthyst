@@ -91,6 +91,7 @@ def propagate_consts(r)
 [ Remap_Acts,Dataflow].each{|p| p.new.parse(:root,r)
 #puts r.inspect
 }
+withtime("Constant_Propagator"){
 c=Constant_Propagator.new(r.cfg)
 #puts c.inspect
 r.consts={}
@@ -100,6 +101,7 @@ c.analyze2.each{|k,v|
 		r.consts[k]=CAct[v] if v.is_a?(String)
 		r.consts[k]=Act[v] if v.is_a?(Exp)
 	end
+}
 }
 #puts r.inspect
 r=Constant_Traverser.new.parse(:root,r)

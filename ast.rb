@@ -176,12 +176,19 @@ class Key
 	end
 	alias_method :eql?,:==
 end
+class <<Local
+	def [](*a)
+    r=super
+    r.instance_variable_set(:@hash,r.ary.hash)
+    r
+  end
+end
 class Local
 	def inspect
 		"Local[#{ary[0]}#{ary[1].is_a?(Bnding) ? "" : ary[1]}_#{ssano}]"
 	end
 	def hash
-		ary.hash
+		@hash
 	end
 	def ==(a)	
 		return false unless a.is_a? Local
@@ -202,6 +209,7 @@ def _Local(name)
 		bnding=instance_eval{@bnding}
 		l=Local[name,bnding]
 		#return $varhash[l] if $varhash[l]
+		puts l.inspect
 		$varhash[l]=l
 		instance_eval{@locals << $varhash[l] if @locals}
 		$varhash[l]

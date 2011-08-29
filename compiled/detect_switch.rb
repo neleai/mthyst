@@ -30,7 +30,24 @@ class Detect_Switch < Traverser
 end
 
 class Detect_Switch < Traverser
+def self.switchcb_1(e)
+return 0 if e<=Grammar
+return 1 if e<=Object
+return 2
+end
+@@switchhash1=Hash.new{|h,k| h[k]=switchcb_1(k)}
+def switchcb1(e)
+@@switchhash1[e.class]
+end
+def clas_Detect_Switchcb_1(bind)
+(bind[0].is_a?(bind[1])) || FAIL
+end
+def empty_Detect_Switchcb_1(bind)
 
+end
+def fails_Detect_Switchcb_1(bind)
+(false) || FAIL
+end
 def itrans_Detect_Switchcb_1(bind)
 Grammar
 end
@@ -38,13 +55,13 @@ def itrans_Detect_Switchcb_2(bind)
 @src.rules
 end
 def itrans_Detect_Switchcb_3(bind)
-bind[3]=[bind[3]]
+bind[2]=[bind[2]]
 end
 def itrans_Detect_Switchcb_4(bind)
 Rule
 end
 def itrans_Detect_Switchcb_5(bind)
-_append(bind[0],bind[6])
+_append(bind[4],bind[6])
 end
 def itrans_Detect_Switchcb_6(bind)
 @src.rules=bind[7]
@@ -53,33 +70,51 @@ def itrans_Detect_Switchcb_7(bind)
 @src.self
 end
 def itrans_Detect_Switchcb_8(bind)
-_append(bind[1],bind[8])
+_append(bind[0],bind[8])
+end
+def traverse_Detect_Switchcb_1(bind)
+@src.self
+end
+def traverse_Detect_Switchcb_2(bind)
+(@src.self.instance_variables).map{|v| [v,@src.self.instance_variable_get(v)] }
+end
+def traverse_Detect_Switchcb_3(bind)
+bind[1]=[bind[1]]
+end
+def traverse_Detect_Switchcb_4(bind)
+bind[0].instance_variable_set(bind[4],bind[5])
+end
+def traverse_Detect_Switchcb_5(bind)
+@src.self
+end
+def traverse_item_Detect_Switchcb_1(bind)
+@changed=true
+end
+def traverse_item_Detect_Switchcb_2(bind)
+Array
+end
+def traverse_item_Detect_Switchcb_3(bind)
+bind[3]<<bind[4]
+end
+def traverse_item_Detect_Switchcb_4(bind)
+AmethystAST
 end
 def visit_Detect_Switchcb_1(bind)
 Or
 end
 def visit_Detect_Switchcb_2(bind)
-[]
+(first(bind[3])) || FAIL
 end
 def visit_Detect_Switchcb_3(bind)
-[]
+bind[1]+=first(bind[3])
 end
 def visit_Detect_Switchcb_4(bind)
-(first(bind[4])) || FAIL
-end
-def visit_Detect_Switchcb_5(bind)
-bind[2]+=first(bind[4])
-end
-def visit_Detect_Switchcb_6(bind)
-_append(bind[0],bind[5])
-end
-def visit_Detect_Switchcb_7(bind)
-bind[2].sort.uniq.each{|bind[4]| 
-			bind[3]<<[bind[4],Or[{:ary=>@src.ary.select{|p| first(p).include?(bind[4])}}]]
+bind[1].sort.uniq.each{|bind[3]| 
+			bind[2]<<[bind[3],Or[{:ary=>@src.ary.select{|p| first(p).include?(bind[3])}}]]
 		}
 end
-def visit_Detect_Switchcb_8(bind)
-Switch[{:act=>"*ame_curstr(self)",:ary=>bind[3]}]
+def visit_Detect_Switchcb_5(bind)
+Switch[{:act=>"*ame_curstr(self)",:ary=>bind[2]}]
 end
 
 end
@@ -140,7 +175,24 @@ class Detect_ClasSwitch < Traverser
 end
 
 class Detect_ClasSwitch < Traverser
+def self.switchcb_2(e)
+return 0 if e<=Grammar
+return 1 if e<=Object
+return 2
+end
+@@switchhash2=Hash.new{|h,k| h[k]=switchcb_2(k)}
+def switchcb2(e)
+@@switchhash2[e.class]
+end
+def clas_Detect_ClasSwitchcb_1(bind)
+(bind[0].is_a?(bind[1])) || FAIL
+end
+def empty_Detect_ClasSwitchcb_1(bind)
 
+end
+def fails_Detect_ClasSwitchcb_1(bind)
+(false) || FAIL
+end
 def itrans_Detect_ClasSwitchcb_1(bind)
 Grammar
 end
@@ -148,13 +200,13 @@ def itrans_Detect_ClasSwitchcb_2(bind)
 @src.rules
 end
 def itrans_Detect_ClasSwitchcb_3(bind)
-bind[3]=[bind[3]]
+bind[2]=[bind[2]]
 end
 def itrans_Detect_ClasSwitchcb_4(bind)
 Rule
 end
 def itrans_Detect_ClasSwitchcb_5(bind)
-_append(bind[0],bind[6])
+_append(bind[4],bind[6])
 end
 def itrans_Detect_ClasSwitchcb_6(bind)
 @src.rules=bind[7]
@@ -163,40 +215,61 @@ def itrans_Detect_ClasSwitchcb_7(bind)
 @src.self
 end
 def itrans_Detect_ClasSwitchcb_8(bind)
-_append(bind[1],bind[8])
+_append(bind[0],bind[8])
+end
+def traverse_Detect_ClasSwitchcb_1(bind)
+@src.self
+end
+def traverse_Detect_ClasSwitchcb_2(bind)
+(@src.self.instance_variables).map{|v| [v,@src.self.instance_variable_get(v)] }
+end
+def traverse_Detect_ClasSwitchcb_3(bind)
+bind[1]=[bind[1]]
+end
+def traverse_Detect_ClasSwitchcb_4(bind)
+bind[0].instance_variable_set(bind[4],bind[5])
+end
+def traverse_Detect_ClasSwitchcb_5(bind)
+@src.self
+end
+def traverse_item_Detect_ClasSwitchcb_1(bind)
+@changed=true
+end
+def traverse_item_Detect_ClasSwitchcb_2(bind)
+Array
+end
+def traverse_item_Detect_ClasSwitchcb_3(bind)
+bind[3]<<bind[4]
+end
+def traverse_item_Detect_ClasSwitchcb_4(bind)
+AmethystAST
 end
 def visit_Detect_ClasSwitchcb_1(bind)
 Or
 end
 def visit_Detect_ClasSwitchcb_2(bind)
-[]
+(first(bind[3])) || FAIL
 end
 def visit_Detect_ClasSwitchcb_3(bind)
-[]
+bind[1]+=first(bind[3])
 end
 def visit_Detect_ClasSwitchcb_4(bind)
-(first(bind[4])) || FAIL
+bind[1]=topsort(bind[1])
 end
 def visit_Detect_ClasSwitchcb_5(bind)
-bind[2]+=first(bind[4])
-end
-def visit_Detect_ClasSwitchcb_6(bind)
-_append(bind[0],bind[5])
-end
-def visit_Detect_ClasSwitchcb_7(bind)
-bind[2]=topsort(bind[2])
-end
-def visit_Detect_ClasSwitchcb_8(bind)
-bind[2].each_with_index{|bind[4],i|
-      	bind[3]<<[i,Or[{:ary=>@src.ary.select{|p| includes(bind[2],i,first(p))}}]]
+bind[1].each_with_index{|bind[3],i|
+      	bind[2]<<[i,Or[{:ary=>@src.ary.select{|p| includes(bind[1],i,first(p))}}]]
 		}
 end
-def visit_Detect_ClasSwitchcb_9(bind)
-c=classswitch(bind[2]);Switch[{:act=>c[1],:defs=>c[0],:ary=>bind[3]}]
+def visit_Detect_ClasSwitchcb_6(bind)
+c=classswitch(bind[1]);Switch[{:act=>c[1],:defs=>c[0],:ary=>bind[2]}]
 end
 
 end
 
 
 
- require 'compiled/detect_switch_c'
+def testversion(r)
+ raise "invalid version" if r!='8a3771fe6efaed43d8f44725f794bd4a'
+end
+  require 'compiled/detect_switch_c'

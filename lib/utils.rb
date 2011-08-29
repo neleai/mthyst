@@ -83,7 +83,8 @@ def withtime(s)
 end
 def totaltime
 	tot=0
-	$glob.to_a.each{|s,t|
+	puts
+	$glob.to_a.sort_by{|a,b|-b}.each{|s,t|
 		print "%20s" % s; STDOUT.flush
 	  puts " %0.6f" % t
 		tot+=t
