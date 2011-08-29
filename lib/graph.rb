@@ -1,10 +1,12 @@
 class Oriented_Graph
-	attr_accessor :edges
+	attr_accessor :edges,:redges
 	def initialize
 		@edges=Hash.new{|h,k| h[k]=[]}
+		@redges=Hash.new{|h,k| h[k]=[]}
 	end
 	def add(from,to)
 		@edges[from]<<to
+		@redges[to]<<from
 	end
 	def dfs(v,visited)
 		return if visited[v]
@@ -21,7 +23,7 @@ class Oriented_Graph
 	end
 	def reverse
 		g=Oriented_Graph.new
-		@edges.each{|v,a| a.each{|w| g.add(w,v)}}
+		g.edges,g.redges=redges,edges
 		g
 	end
 	def topo_order2(v,visited,order)
