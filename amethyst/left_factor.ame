@@ -7,6 +7,9 @@ class Left_Factor < Traverser
 		Seq[s[1..(-1)]] if s.is_a? Seq
 		Act[]
 	end
+	def merge(s1,s2)
+		Seq[first(s1),Or[rest(s1),rest(s2)]]
+	end
 end
 
 amethyst Left_Factor < Traverser {
@@ -14,7 +17,7 @@ amethyst Left_Factor < Traverser {
 
 	visit=Or[ traverse .:x factor([],x) ]		
 	
-	factor(prev,current) = .:next ( &{first(current).to_yaml==first(next).to_yaml} factor(prev,Seq[first(current),Or[rest(current),rest(next)]])
+	factor(prev,current) = .:next ( &{first(current).to_yaml==first(next).to_yaml} factor(prev,merge(current,next))
 															  | ~{first(current).to_yaml==first(next).to_yaml} factor(prev+[current],next) )
 											 | eof -> Or[prev+[current]]
 }

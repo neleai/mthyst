@@ -7,6 +7,9 @@ class Left_Factor < Traverser
 		Seq[s[1..(-1)]] if s.is_a? Seq
 		Act[]
 	end
+	def merge(s1,s2)
+		Seq[first(s1),Or[rest(s1),rest(s2)]]
+	end
 end
 
 class Left_Factor < Traverser
@@ -21,7 +24,7 @@ def factor_Left_Factorcb_1(bind)
 (first(bind[1]).to_yaml==first(bind[0]).to_yaml) || FAIL
 end
 def factor_Left_Factorcb_2(bind)
-Seq[first(bind[1]),Or[rest(bind[1]),rest(bind[0])]]
+merge(bind[1],bind[0])
 end
 def factor_Left_Factorcb_3(bind)
 first(bind[1]).to_yaml==first(bind[0]).to_yaml
@@ -69,7 +72,7 @@ def visit_Left_Factorcb_2(bind)
 (first(bind[2]).to_yaml==first(bind[4]).to_yaml) || FAIL
 end
 def visit_Left_Factorcb_3(bind)
-Seq[first(bind[2]),Or[rest(bind[2]),rest(bind[4])]]
+merge(bind[2],bind[4])
 end
 def visit_Left_Factorcb_4(bind)
 first(bind[2]).to_yaml==first(bind[4]).to_yaml
