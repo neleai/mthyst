@@ -1,0 +1,20 @@
+class Left_Factor
+	def first(s)
+		s[0] if s.is_a? Seq
+		s
+	end
+	def rest(s)
+		Seq[s[1..(-1)]] if s.is_a? Seq
+		Act[]
+	end
+end
+
+amethyst Left_Factor < Traverser {
+	root=traverse
+
+	visit=Or[ traverse .:x factor([],x) ]		
+	
+	factor(prev,current) = .:next ( &{first(current).to_yaml==first(next).to_yaml} factor(prev,Seq[first(current),Or[rest(current),rest(next)])
+															  | ~{first(current).to_yaml==first(next).to_yaml} factor(prev+[current],next) )
+											 | eof -> Or[prev+[current]]
+}
