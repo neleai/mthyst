@@ -109,10 +109,10 @@ end
 class Detect_Switch < Traverser
 	def first(s)
 		r=Switch_Dataflow.new.parse(:first,[s])
-		return nil if r.include?(:anything)
 		return r
 	end
 	def intersects(p,e)
+		return true if e==:default
 		first(p).intersection(Set[e,:empty,:anything])!=Set[]
 	end
 end
@@ -207,17 +207,20 @@ def visit_Detect_Switchcb_4(bind)
 bind[1]+=first(bind[3])
 end
 def visit_Detect_Switchcb_5(bind)
-bind[1].sort.uniq.each{|bind[3]| 
+bind[1].each{|bind[3]| bind[3]=:default if [:anything,:empty].include? bind[3]
 			bind[2]<<[[bind[3]],Or[{:ary=>@src.ary.select{|p|intersects(p,bind[3])}}]]
 		}
 end
 def visit_Detect_Switchcb_6(bind)
-bind[2]=bind[2].group_by{|a,b| b.to_yaml}.map{|y,v| [v.map{|k,val| k}.sort,v[0][1]]}.sort
+bind[2]=bind[2].group_by{|a,b| b.to_yaml}.map{|y,v| [v.map{|k,val| k},v[0][1]]}
 end
 def visit_Detect_Switchcb_7(bind)
-bind[2]<<[[:default],Apply["fails"]] 
+bind[2]<<[[:default],Apply["fails"]] unless bind[1].include?(:anything) || bind[1].include?(:empty)
 end
 def visit_Detect_Switchcb_8(bind)
+(bind[2].size>1) || FAIL
+end
+def visit_Detect_Switchcb_9(bind)
 Switch[{:act=>"*ame_curstr(self)",:ary=>bind[2]}]
 end
 
@@ -440,6 +443,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='ea4bb50a953e7cd139421174dbb8d03b'
+ raise "invalid version" if r!='2c831ef425c5641739a482b2839157be'
 end
   require 'compiled/detect_switch_c'
