@@ -1,56 +1,135 @@
+class Switch_Dataflow < Amethyst
+	def seqjoin(first,second)
+		if first.include? :empty
+			return (first-Set[[:empty]])+second
+		else
+			return first 
+		end
+	end
+  def firstchar(s)
+    s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
+    eval('"'+s+'"')[0]
+  end
+end
+class Switch_Dataflow < Amethyst
+def self.switchcb_Switch_Dataflow1(e)
+return 0 if e<=Seq
+return 1 if e<=Or
+return 2 if e<=Switch
+return 3 if e<=Bind
+return 4 if e<=Apply
+return 5 if e<=Object
+return 6
+end
+@@switchhashSwitch_Dataflow1=Hash.new{|h,k| h[k]=switchcb_Switch_Dataflow1(k)}
+def switchcbSwitch_Dataflow1(e)
+@@switchhashSwitch_Dataflow1[e.class]
+end
+def clas_Switch_Dataflowcb_1(bind)
+(bind[0].is_a?(bind[1])) || FAIL
+end
+def empty_Switch_Dataflowcb_1(bind)
+
+end
+def fails_Switch_Dataflowcb_1(bind)
+(false) || FAIL
+end
+def first_Switch_Dataflowcb_1(bind)
+_append(bind[1],bind[2])
+end
+def first_Switch_Dataflowcb_10(bind)
+@src.expr
+end
+def first_Switch_Dataflowcb_11(bind)
+bind[15]=[bind[15]]
+end
+def first_Switch_Dataflowcb_12(bind)
+Set[:anything]
+end
+def first_Switch_Dataflowcb_13(bind)
+CAct
+end
+def first_Switch_Dataflowcb_14(bind)
+Set[firstchar(bind[21])]
+end
+def first_Switch_Dataflowcb_15(bind)
+Set[:anything]
+end
+def first_Switch_Dataflowcb_16(bind)
+Set[:anything]
+end
+def first_Switch_Dataflowcb_2(bind)
+bind[3].inject{|u,v|seqjoin(u,v)}
+end
+def first_Switch_Dataflowcb_3(bind)
+Set[:anything]
+end
+def first_Switch_Dataflowcb_4(bind)
+_append(bind[7],bind[8])
+end
+def first_Switch_Dataflowcb_5(bind)
+bind[3].inject(:+)
+end
+def first_Switch_Dataflowcb_6(bind)
+Set[:anything]
+end
+def first_Switch_Dataflowcb_7(bind)
+_append(bind[11],bind[12])
+end
+def first_Switch_Dataflowcb_8(bind)
+bind[3].inject(:+)
+end
+def first_Switch_Dataflowcb_9(bind)
+Set[:anything]
+end
+def spaces_Switch_Dataflowcb_1(bind)
+/[\s\t\r\n\f]/
+end
+def spaces_Switch_Dataflowcb_2(bind)
+(bind[2].is_a? String ) || FAIL
+end
+def spaces_Switch_Dataflowcb_3(bind)
+(bind[1].match(bind[4])) || FAIL
+end
+def spaces_Switch_Dataflowcb_4(bind)
+_append(bind[0],bind[7])
+end
+
+end
+
+
 class Detect_Switch < Traverser
 	def firstchar(s)
+		return :anything if s.size==15
 		s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
 		eval('"'+s+'"')[0]
 	end
 	def first(s)
-		if s.is_a?(Seq)
-			return first(s[0])
-		end
-		if s.is_a? Bind
-			return first(s.expr)
-		end
-		if s.is_a? Switch
-			a=[]
-			s.ary.each{|k,v| 
-				return nil if !first(v)
-			a+=first(v)}
-			return a.uniq
-		end
-		if s.is_a? Or
-			a=[]
-			s.ary.each{|e| 
-			return nil if !first(e)
-				a+=first(e)}
-			return a.uniq
-		end
-		if s.is_a?(Apply) && s[0]=="seq"
-			return nil unless s[1].is_a?(CAct)
-			return nil if s[1][0].size==15
-			return [firstchar(s[1][0])]
-		end
+		r=Switch_Dataflow.new.parse(:first,[s])
+		return nil if r.include?(:anything)
+		return r
 	end
 end
 
 class Detect_Switch < Traverser
-def self.switchcb_Detect_Switch1(e)
+def self.switchcb_Detect_Switch2(e)
 return 0 if e<=Grammar
 return 1 if e<=Object
 return 2
 end
-@@switchhashDetect_Switch1=Hash.new{|h,k| h[k]=switchcb_Detect_Switch1(k)}
-def switchcbDetect_Switch1(e)
-@@switchhashDetect_Switch1[e.class]
+@@switchhashDetect_Switch2=Hash.new{|h,k| h[k]=switchcb_Detect_Switch2(k)}
+def switchcbDetect_Switch2(e)
+@@switchhashDetect_Switch2[e.class]
 end
-def self.switchcb_Detect_Switch2(e)
+def self.switchcb_Detect_Switch3(e)
 return 0 if e<=Array
 return 1 if e<=AmethystAST
 return 2 if e<=Object
 return 3
 end
-@@switchhashDetect_Switch2=Hash.new{|h,k| h[k]=switchcb_Detect_Switch2(k)}
-def switchcbDetect_Switch2(e)
-@@switchhashDetect_Switch2[e.class]
+@@switchhashDetect_Switch3=Hash.new{|h,k| h[k]=switchcb_Detect_Switch3(k)}
+def switchcbDetect_Switch3(e)
+@@switchhashDetect_Switch3[e.class]
 end
 def clas_Detect_Switchcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -113,17 +192,20 @@ def visit_Detect_Switchcb_1(bind)
 Or
 end
 def visit_Detect_Switchcb_2(bind)
-(first(bind[3])) || FAIL
+Set[]
 end
 def visit_Detect_Switchcb_3(bind)
-bind[1]+=first(bind[3])
+(first(bind[3])) || FAIL
 end
 def visit_Detect_Switchcb_4(bind)
+bind[1]+=first(bind[3])
+end
+def visit_Detect_Switchcb_5(bind)
 bind[1].sort.uniq.each{|bind[3]| 
 			bind[2]<<[bind[3],Or[{:ary=>@src.ary.select{|p| first(p).include?(bind[3])}}]]
 		}
 end
-def visit_Detect_Switchcb_5(bind)
+def visit_Detect_Switchcb_6(bind)
 s=Switch[{:act=>"*ame_curstr(self)",:ary=>bind[2]}];s
 end
 
@@ -191,35 +273,35 @@ class Detect_ClasSwitch < Traverser
 end
 
 class Detect_ClasSwitch < Traverser
-def self.switchcb_Detect_ClasSwitch3(e)
+def self.switchcb_Detect_ClasSwitch4(e)
 return 0 if e<=Seq
 return 1 if e<=Apply
 return 2 if e<=Bind
 return 3 if e<=Object
 return 4
 end
-@@switchhashDetect_ClasSwitch3=Hash.new{|h,k| h[k]=switchcb_Detect_ClasSwitch3(k)}
-def switchcbDetect_ClasSwitch3(e)
-@@switchhashDetect_ClasSwitch3[e.class]
-end
-def self.switchcb_Detect_ClasSwitch4(e)
-return 0 if e<=Grammar
-return 1 if e<=Object
-return 2
-end
 @@switchhashDetect_ClasSwitch4=Hash.new{|h,k| h[k]=switchcb_Detect_ClasSwitch4(k)}
 def switchcbDetect_ClasSwitch4(e)
 @@switchhashDetect_ClasSwitch4[e.class]
 end
 def self.switchcb_Detect_ClasSwitch5(e)
+return 0 if e<=Grammar
+return 1 if e<=Object
+return 2
+end
+@@switchhashDetect_ClasSwitch5=Hash.new{|h,k| h[k]=switchcb_Detect_ClasSwitch5(k)}
+def switchcbDetect_ClasSwitch5(e)
+@@switchhashDetect_ClasSwitch5[e.class]
+end
+def self.switchcb_Detect_ClasSwitch6(e)
 return 0 if e<=Array
 return 1 if e<=AmethystAST
 return 2 if e<=Object
 return 3
 end
-@@switchhashDetect_ClasSwitch5=Hash.new{|h,k| h[k]=switchcb_Detect_ClasSwitch5(k)}
-def switchcbDetect_ClasSwitch5(e)
-@@switchhashDetect_ClasSwitch5[e.class]
+@@switchhashDetect_ClasSwitch6=Hash.new{|h,k| h[k]=switchcb_Detect_ClasSwitch6(k)}
+def switchcbDetect_ClasSwitch6(e)
+@@switchhashDetect_ClasSwitch6[e.class]
 end
 def clas_Detect_ClasSwitchcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -340,6 +422,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='d937ad8c1dc204da388cfaf47c660a2d'
+ raise "invalid version" if r!='e7ddc5f702d3fbfb478622c06f10dc42'
 end
   require 'compiled/detect_switch_c'

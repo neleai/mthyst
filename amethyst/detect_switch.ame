@@ -1,34 +1,37 @@
+class Switch_Dataflow < Amethyst
+	def seqjoin(first,second)
+		if first.include? :empty
+			return (first-Set[[:empty]])+second
+		else
+			return first 
+		end
+	end
+  def firstchar(s)
+    s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
+    eval('"'+s+'"')[0]
+  end
+end
+amethyst Switch_Dataflow {
+	first = Seq[value*:{it.inject{|u,v|seqjoin(u,v)}}]
+				| Or[value*:{it.inject(:+)}]
+				| Switch[value*:{it.inject(:+)}]
+				| Bind[@expr=>value]
+				| Apply[ ["seq"] CAct[.:str] {Set[firstchar(str)]}]
+				| . {Set[:anything]}
+
+	value = first
+}
+
 class Detect_Switch < Traverser
 	def firstchar(s)
+		return :anything if s.size==15
 		s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
 		eval('"'+s+'"')[0]
 	end
 	def first(s)
-		if s.is_a?(Seq)
-			return first(s[0])
-		end
-		if s.is_a? Bind
-			return first(s.expr)
-		end
-		if s.is_a? Switch
-			a=[]
-			s.ary.each{|k,v| 
-				return nil if !first(v)
-			a+=first(v)}
-			return a.uniq
-		end
-		if s.is_a? Or
-			a=[]
-			s.ary.each{|e| 
-			return nil if !first(e)
-				a+=first(e)}
-			return a.uniq
-		end
-		if s.is_a?(Apply) && s[0]=="seq"
-			return nil unless s[1].is_a?(CAct)
-			return nil if s[1][0].size==15
-			return [firstchar(s[1][0])]
-		end
+		r=Switch_Dataflow.new.parse(:first,[s])
+		return nil if r.include?(:anything)
+		return r
 	end
 end
 
@@ -37,7 +40,7 @@ amethyst Detect_Switch < Traverser {
 
 	root = traverse
 
-	visit = Or[ {[]}:ary2 {[]}:ary3
+	visit = Or[ {Set[]}:ary2 {[]}:ary3
 		(traverse_item:e &{first(e)} {ary2+=first(e)})* &eof
 		{ary2.sort.uniq.each{|e| 
 			ary3<<[e,Or[{:ary=>@ary.select{|p| first(p).include?(e)}}]]
