@@ -212,6 +212,9 @@ bind[1].sort.uniq.each{|bind[3]|
 		}
 end
 def visit_Detect_Switchcb_6(bind)
+bind[2]=bind[2].group_by{|a,b| b.to_yaml}.map{|y,v| [v.map{|k,val| k}.sort,v[0][1]]}.sort
+end
+def visit_Detect_Switchcb_7(bind)
 Switch[{:act=>"*ame_curstr(self)",:ary=>bind[2]}]
 end
 
@@ -420,6 +423,9 @@ bind[1].each_with_index{|bind[3],i|
 		}
 end
 def visit_Detect_ClasSwitchcb_7(bind)
+bind[2]=bind[2].group_by{|a,b| b.to_yaml}.map{|y,v| [v.map{|k,val| k}.sort,v[0][1]]}.sort
+end
+def visit_Detect_ClasSwitchcb_8(bind)
 c=classswitch(bind[1]);s=Switch[{:act=>c[1],:defs=>c[0],:ary=>bind[2]}];puts s.inspect;s
 end
 
@@ -428,6 +434,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='4f0410eae77e0de6542bb4266eddd754'
+ raise "invalid version" if r!='1111f3acc067e1d6c36fdbea73645b94'
 end
   require 'compiled/detect_switch_c'
