@@ -197,6 +197,9 @@ end
 def visit_Detect_Switchcb_1(bind)
 Or
 end
+def visit_Detect_Switchcb_10(bind)
+Switch[{:act=>"*ame_curstr(self)",:ary=>bind[2]}]
+end
 def visit_Detect_Switchcb_2(bind)
 Set[]
 end
@@ -207,21 +210,21 @@ def visit_Detect_Switchcb_4(bind)
 bind[1]+=first(bind[3])
 end
 def visit_Detect_Switchcb_5(bind)
-bind[1].each{|bind[3]| bind[3]=:default if [:anything,:empty].include? bind[3]
-			bind[2]<<[[bind[3]],Or[{:ary=>@src.ary.select{|p|intersects(p,bind[3])}}]]
-		}
+bind[1]=bind[1].map{|bind[3]|  [:anything,:empty].include?(bind[3]) ? :default : bind[3]}
 end
 def visit_Detect_Switchcb_6(bind)
-bind[2]=bind[2].group_by{|a,b| b.to_yaml}.map{|y,v| [v.map{|k,val| k},v[0][1]]}
+bind[1].uniq.each{|bind[3]|
+			bind[2]<<[bind[3],Or[{:ary=>@src.ary.select{|p|intersects(p,bind[3])}}]]
+		}
 end
 def visit_Detect_Switchcb_7(bind)
-bind[2]<<[[:default],Apply["fails"]] unless bind[1].include?(:anything) || bind[1].include?(:empty)
+bind[2]=bind[2].group_by{|a,b| b.to_yaml}.map{|y,v| [v.map{|k,val| k},v[0][1]]}
 end
 def visit_Detect_Switchcb_8(bind)
-(bind[2].size>1) || FAIL
+bind[2]<<[[:default],Apply["fails"]] unless bind[1].include?(:default)
 end
 def visit_Detect_Switchcb_9(bind)
-Switch[{:act=>"*ame_curstr(self)",:ary=>bind[2]}]
+(bind[2].size>1) || FAIL
 end
 
 end
@@ -425,7 +428,7 @@ def visit_Detect_ClasSwitchcb_5(bind)
 end
 def visit_Detect_ClasSwitchcb_6(bind)
 bind[1].each_with_index{|bind[3],i|
-      	bind[2]<<[[i],Or[{:ary=>@src.ary.select{|p| includes(bind[1],i,first(p))}.map{|p| predicate(bind[3],p)}}]]
+      	bind[2]<<[i,Or[{:ary=>@src.ary.select{|p| includes(bind[1],i,first(p))}.map{|p| predicate(bind[3],p)}}]]
 		}
 end
 def visit_Detect_ClasSwitchcb_7(bind)
@@ -443,6 +446,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='2c831ef425c5641739a482b2839157be'
+ raise "invalid version" if r!='dcc65a85212b8f4ce396f77d1a353776'
 end
   require 'compiled/detect_switch_c'

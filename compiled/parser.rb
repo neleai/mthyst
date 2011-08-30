@@ -635,6 +635,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='368835a0b615f7157c586c90b2e9196b'
+ raise "invalid version" if r!='d6f2eb5cb0622d39941cd4399dc844e3'
 end
   require 'compiled/parser_c'

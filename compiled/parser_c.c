@@ -1013,7 +1013,7 @@ alt5_6: ame_setpos(self,oldpos5);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
 ISET(cut,Qnil);goto accept5;
   alt5_7:  ame_setpos(self,oldpos5); goto fail;
  accept5:;
- break;case default:;case default:; int oldpos9=ame_getpos(self);
+ break;default:; int oldpos9=ame_getpos(self);
 alt9_1: ame_setpos(self,oldpos9);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   it=rb_str_new2("`"); arg0=it; it=AmethystCore_seq(self ,arg0); FAILTEST(alt9_2);  it=AmethystParser_expression(self ); FAILTEST(alt9_2);
  rb_ary_store(bind,14,it);  it=rb_str_new2("`"); arg0=it; it=AmethystCore_seq(self ,arg0); FAILTEST(alt9_2);it=CALL(rubyarg_AmethystParsercb_21,1,bind); 
@@ -1687,4 +1687,4 @@ rb_define_method(cls_AmethystParser,"spaces",AmethystParser_spaces,0);
 rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
 rb_define_method(cls_AmethystParser,"token",AmethystParser_token,1);
 rb_define_method(cls_AmethystParser,"upper",AmethystParser_upper,0);
- rb_eval_string("testversion('368835a0b615f7157c586c90b2e9196b')");}
+ rb_eval_string("testversion('d6f2eb5cb0622d39941cd4399dc844e3')");}
