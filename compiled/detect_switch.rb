@@ -110,7 +110,7 @@ class Detect_Switch < Traverser
 		return r
 	end
 	def intersects(p,e)
-		first(p).include?(e)
+		first(p).intersection(Set[e,:empty,:anything])!=Set[]
 	end
 end
 
