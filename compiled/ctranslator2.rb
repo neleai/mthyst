@@ -460,7 +460,7 @@ def trans_AmethystCTranslatorcb_74(bind)
 "char #{bind[84]}=#{@src.act};  switch(#{bind[84]}){"
 end
 def trans_AmethystCTranslatorcb_75(bind)
-bind[17]+="case #{bind[31]}:; #{bind[16]} break;"
+bind[17]+=bind[31].map{|n| "case #{n}:;"}*"" + " #{bind[16]} break;"
 end
 def trans_AmethystCTranslatorcb_76(bind)
 bind[17]+"default: goto #{@faillabel};}"

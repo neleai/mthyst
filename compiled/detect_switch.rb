@@ -208,7 +208,7 @@ bind[1]+=first(bind[3])
 end
 def visit_Detect_Switchcb_5(bind)
 bind[1].sort.uniq.each{|bind[3]| 
-			bind[2]<<[bind[3],Or[{:ary=>@src.ary.select{|p|intersects(p,bind[3])}}]]
+			bind[2]<<[[bind[3]],Or[{:ary=>@src.ary.select{|p|intersects(p,bind[3])}}]]
 		}
 end
 def visit_Detect_Switchcb_6(bind)
@@ -416,7 +416,7 @@ def visit_Detect_ClasSwitchcb_5(bind)
 end
 def visit_Detect_ClasSwitchcb_6(bind)
 bind[1].each_with_index{|bind[3],i|
-      	bind[2]<<[i,Or[{:ary=>@src.ary.select{|p| includes(bind[1],i,first(p))}.map{|p| predicate(bind[3],p)}}]]
+      	bind[2]<<[[i],Or[{:ary=>@src.ary.select{|p| includes(bind[1],i,first(p))}.map{|p| predicate(bind[3],p)}}]]
 		}
 end
 def visit_Detect_ClasSwitchcb_7(bind)

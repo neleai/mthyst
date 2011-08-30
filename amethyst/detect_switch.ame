@@ -43,7 +43,7 @@ amethyst Detect_Switch < Traverser {
 	visit = Or[ {Set[]}:ary2 {[]}:ary3
 		(traverse_item:e &{first(e)} {ary2+=first(e)})* &eof
 		{ary2.sort.uniq.each{|e| 
-			ary3<<[e,Or[{:ary=>@ary.select{|p|intersects(p,e)}}]]
+			ary3<<[[e],Or[{:ary=>@ary.select{|p|intersects(p,e)}}]]
 		}}
 		{Switch[{:act=>"*ame_curstr(self)",:ary=>ary3}]}
 	]
@@ -119,7 +119,7 @@ amethyst Detect_ClasSwitch < Traverser {
 		{ary2=topsort(ary2)}
 		&{ary2.size>1}
     {	ary2.each_with_index{|e,i|
-      	ary3<<[i,Or[{:ary=>@ary.select{|p| includes(ary2,i,first(p))}.map{|p| predicate(e,p)}}]]
+      	ary3<<[[i],Or[{:ary=>@ary.select{|p| includes(ary2,i,first(p))}.map{|p| predicate(e,p)}}]]
 		}}
     {c=classswitch(ary2);s=Switch[{:act=>c[1],:defs=>c[0],:ary=>ary3}];puts s.inspect;s}
 	]
