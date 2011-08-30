@@ -17,7 +17,7 @@ amethyst Switch_Dataflow {
 				| Switch[value*:{it.inject(:+)}]
 				| Bind[@expr=>value]
 				| Apply[ ["seq"] CAct[.:str] {Set[firstchar(str)]}]
-				| . {Set[:anything]}
+				| . {Set[:anything,:empty]}
 
 	value = first
 }
@@ -33,6 +33,9 @@ class Detect_Switch < Traverser
 		return nil if r.include?(:anything)
 		return r
 	end
+	def intersects(p,e)
+		first(p).include?(e)
+	end
 end
 
 amethyst Detect_Switch < Traverser {
@@ -43,9 +46,9 @@ amethyst Detect_Switch < Traverser {
 	visit = Or[ {Set[]}:ary2 {[]}:ary3
 		(traverse_item:e &{first(e)} {ary2+=first(e)})* &eof
 		{ary2.sort.uniq.each{|e| 
-			ary3<<[e,Or[{:ary=>@ary.select{|p| first(p).include?(e)}}]]
+			ary3<<[e,Or[{:ary=>@ary.select{|p|intersects(p,e)}}]]
 		}}
-		{s=Switch[{:act=>"*ame_curstr(self)",:ary=>ary3}];s}
+		{Switch[{:act=>"*ame_curstr(self)",:ary=>ary3}]}
 	]
 }
 class Detect_ClasSwitch < Traverser

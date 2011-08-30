@@ -44,7 +44,7 @@ def first_Switch_Dataflowcb_11(bind)
 bind[15]=[bind[15]]
 end
 def first_Switch_Dataflowcb_12(bind)
-Set[:anything]
+Set[:anything,:empty]
 end
 def first_Switch_Dataflowcb_13(bind)
 CAct
@@ -53,16 +53,16 @@ def first_Switch_Dataflowcb_14(bind)
 Set[firstchar(bind[21])]
 end
 def first_Switch_Dataflowcb_15(bind)
-Set[:anything]
+Set[:anything,:empty]
 end
 def first_Switch_Dataflowcb_16(bind)
-Set[:anything]
+Set[:anything,:empty]
 end
 def first_Switch_Dataflowcb_2(bind)
 bind[3].inject{|u,v|seqjoin(u,v)}
 end
 def first_Switch_Dataflowcb_3(bind)
-Set[:anything]
+Set[:anything,:empty]
 end
 def first_Switch_Dataflowcb_4(bind)
 _append(bind[7],bind[8])
@@ -71,7 +71,7 @@ def first_Switch_Dataflowcb_5(bind)
 bind[3].inject(:+)
 end
 def first_Switch_Dataflowcb_6(bind)
-Set[:anything]
+Set[:anything,:empty]
 end
 def first_Switch_Dataflowcb_7(bind)
 _append(bind[11],bind[12])
@@ -80,7 +80,7 @@ def first_Switch_Dataflowcb_8(bind)
 bind[3].inject(:+)
 end
 def first_Switch_Dataflowcb_9(bind)
-Set[:anything]
+Set[:anything,:empty]
 end
 def spaces_Switch_Dataflowcb_1(bind)
 /[\s\t\r\n\f]/
@@ -108,6 +108,9 @@ class Detect_Switch < Traverser
 		r=Switch_Dataflow.new.parse(:first,[s])
 		return nil if r.include?(:anything)
 		return r
+	end
+	def intersects(p,e)
+		first(p).include?(e)
 	end
 end
 
@@ -202,11 +205,11 @@ bind[1]+=first(bind[3])
 end
 def visit_Detect_Switchcb_5(bind)
 bind[1].sort.uniq.each{|bind[3]| 
-			bind[2]<<[bind[3],Or[{:ary=>@src.ary.select{|p| first(p).include?(bind[3])}}]]
+			bind[2]<<[bind[3],Or[{:ary=>@src.ary.select{|p|intersects(p,bind[3])}}]]
 		}
 end
 def visit_Detect_Switchcb_6(bind)
-s=Switch[{:act=>"*ame_curstr(self)",:ary=>bind[2]}];s
+Switch[{:act=>"*ame_curstr(self)",:ary=>bind[2]}]
 end
 
 end
