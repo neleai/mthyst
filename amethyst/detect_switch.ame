@@ -46,6 +46,7 @@ amethyst Detect_Switch < Traverser {
 			ary3<<[[e],Or[{:ary=>@ary.select{|p|intersects(p,e)}}]]
 		}}
 		{ary3=ary3.group_by{|a,b| b.to_yaml}.map{|y,v| [v.map{|k,val| k}.sort,v[0][1]]}.sort}
+		{ary3<<[[:default],Apply["fails"]] }
 		{Switch[{:act=>"*ame_curstr(self)",:ary=>ary3}]}
 	]
 }
@@ -123,6 +124,7 @@ amethyst Detect_ClasSwitch < Traverser {
       	ary3<<[[i],Or[{:ary=>@ary.select{|p| includes(ary2,i,first(p))}.map{|p| predicate(e,p)}}]]
 		}}
 		{ary3=ary3.group_by{|a,b| b.to_yaml}.map{|y,v| [v.map{|k,val| k}.sort,v[0][1]]}.sort}
+		{ary3<<[[:default],Apply["fails"]] }
 	  {c=classswitch(ary2);s=Switch[{:act=>c[1],:defs=>c[0],:ary=>ary3}];puts s.inspect;s}
 	]
 

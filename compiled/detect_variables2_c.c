@@ -88,7 +88,7 @@ ISET(cut,Qnil);goto accept2;
   alt2_3:  ame_setpos(self,oldpos4); goto break1;
  accept2:;
  break;case 2:;   it=AmethystCore_anything(self ); FAILTEST(break1);
- rb_ary_store(bind,3,it);  break;default: goto break1;}it=CALL(flat_Analyze_Variables2cb_1,1,bind);  if (IGET(stop)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos1); it=rb_ary_entry(bind,0);
+ rb_ary_store(bind,3,it);  break;default:;   it=Analyze_Variables2_fails(self ); FAILTEST(break1); break;}it=CALL(flat_Analyze_Variables2cb_1,1,bind);  if (IGET(stop)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos1); it=rb_ary_entry(bind,0);
  rb_ary_store(bind,6,it); it=rb_ary_entry(bind,6);
 return it;
 fail: return failobj; }
@@ -144,7 +144,7 @@ ISET(cut,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos2); goto break1;
  accept1:;
  break;case 1:;   it=AmethystCore_anything(self ); FAILTEST(break1);
- rb_ary_store(bind,10,it);  break;default: goto break1;}it=CALL(itrans_Analyze_Variables2cb_7,1,bind);  if (IGET(stop)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos1); it=rb_ary_entry(bind,0);
+ rb_ary_store(bind,10,it);  break;default:;   it=Analyze_Variables2_fails(self ); FAILTEST(break1); break;}it=CALL(itrans_Analyze_Variables2cb_7,1,bind);  if (IGET(stop)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos1); it=rb_ary_entry(bind,0);
  rb_ary_store(bind,11,it); it=rb_ary_entry(bind,11);
 return it;
 fail: return failobj; }
@@ -271,7 +271,7 @@ alt3_2: ame_setpos(self,oldpos6);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
 ISET(cut,Qnil);goto accept3;
   alt3_3:  ame_setpos(self,oldpos6); goto fail;
  accept3:;
- break;default: goto fail;}it=rb_ary_entry(bind,1);
+ break;default:;   it=Analyze_Variables2_fails(self ); FAILTEST(fail); break;}it=rb_ary_entry(bind,1);
 return it;
 fail: return failobj; }
 VALUE Analyze_Variables2_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(14);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -341,7 +341,7 @@ ame_setsrc(self,rb_ary_entry(bind,12)); ame_setpos(self,0); ame_setlen(self,FIX2
 	success7: ame_setsrc(self,oldsrc7); ame_setpos(self,oldpos7); ame_setlen(self,oldlen7);
 	if(fail7) goto fail;
 it=rb_ary_entry(bind,13);
- rb_ary_store(bind,5,it);  break;default: goto fail;}it=rb_ary_entry(bind,5);
+ rb_ary_store(bind,5,it);  break;default:;   it=Analyze_Variables2_fails(self ); FAILTEST(fail); break;}it=rb_ary_entry(bind,5);
 return it;
 fail: return failobj; }VALUE cls_Remap_Acts;
 VALUE Remap_Acts_clas(VALUE self ,VALUE a0);
@@ -491,7 +491,7 @@ alt3_2: ame_setpos(self,oldpos6);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
 ISET(cut,Qnil);goto accept3;
   alt3_3:  ame_setpos(self,oldpos6); goto fail;
  accept3:;
- break;default: goto fail;}it=rb_ary_entry(bind,1);
+ break;default:;   it=Remap_Acts_fails(self ); FAILTEST(fail); break;}it=rb_ary_entry(bind,1);
 return it;
 fail: return failobj; }
 VALUE Remap_Acts_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(3);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -533,4 +533,4 @@ rb_define_method(cls_Remap_Acts,"root",Remap_Acts_root,0);
 rb_define_method(cls_Remap_Acts,"traverse",Remap_Acts_traverse,0);
 rb_define_method(cls_Remap_Acts,"traverse_item",Remap_Acts_traverse_item,0);
 rb_define_method(cls_Remap_Acts,"visit",Remap_Acts_visit,0);
- rb_eval_string("testversion('069869ecd0608397a36a0d450ad9d75e')");}
+ rb_eval_string("testversion('6edf346634a0b8f5e059a217a3b3fcef')");}

@@ -211,6 +211,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='069869ecd0608397a36a0d450ad9d75e'
+ raise "invalid version" if r!='6edf346634a0b8f5e059a217a3b3fcef'
 end
   require 'compiled/detect_variables2_c'

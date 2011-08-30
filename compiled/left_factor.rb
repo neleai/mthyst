@@ -97,6 +97,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='42067f43e593b0377d38d0d1cf5d99a5'
+ raise "invalid version" if r!='31318d23109cf098548e1b43a4ae681c'
 end
   require 'compiled/left_factor_c'

@@ -224,6 +224,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='466ca6b6d5b9271cebb3a7a95fb28548'
+ raise "invalid version" if r!='3dd0bd0c4fbaaa6724b9217481b18e74'
 end
   require 'compiled/inliner2_c'

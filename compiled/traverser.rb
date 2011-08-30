@@ -117,6 +117,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='1e082128b558509307ef00caf78349f2'
+ raise "invalid version" if r!='1955538b077a50b210f839690fc3fe07'
 end
   require 'compiled/traverser_c'

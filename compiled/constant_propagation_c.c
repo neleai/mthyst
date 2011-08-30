@@ -147,7 +147,7 @@ alt3_2: ame_setpos(self,oldpos6);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
 ISET(cut,Qnil);goto accept3;
   alt3_3:  ame_setpos(self,oldpos6); goto fail;
  accept3:;
- break;default: goto fail;}it=rb_ary_entry(bind,1);
+ break;default:;   it=Constant_Traverser_fails(self ); FAILTEST(fail); break;}it=rb_ary_entry(bind,1);
 return it;
 fail: return failobj; }
 VALUE Constant_Traverser_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(9);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -191,7 +191,7 @@ ame_setsrc(self,rb_ary_entry(bind,7)); ame_setpos(self,0); ame_setlen(self,FIX2I
 	success4: ame_setsrc(self,oldsrc4); ame_setpos(self,oldpos5); ame_setlen(self,oldlen4);
 	if(fail4) goto fail;
 it=rb_ary_entry(bind,8);
- rb_ary_store(bind,2,it);  break;default: goto fail;}it=rb_ary_entry(bind,2);
+ rb_ary_store(bind,2,it);  break;default:;   it=Constant_Traverser_fails(self ); FAILTEST(fail); break;}it=rb_ary_entry(bind,2);
 return it;
 fail: return failobj; }
 void Init_constant_propagation_c(){ 
@@ -205,4 +205,4 @@ rb_define_method(cls_Constant_Traverser,"root",Constant_Traverser_root,0);
 rb_define_method(cls_Constant_Traverser,"traverse",Constant_Traverser_traverse,0);
 rb_define_method(cls_Constant_Traverser,"traverse_item",Constant_Traverser_traverse_item,0);
 rb_define_method(cls_Constant_Traverser,"visit",Constant_Traverser_visit,0);
- rb_eval_string("testversion('8d4bd7b57291f89011f9f322b4aef93d')");}
+ rb_eval_string("testversion('5dc1c7899fc39ca60bfb4cd5355ad935')");}

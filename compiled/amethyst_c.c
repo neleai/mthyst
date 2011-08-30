@@ -110,7 +110,7 @@ alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
 ISET(cut,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
- break;default: goto fail;}it=rb_ary_entry(bind,0);
+ break;default:;   it=Amethyst_fails(self ); FAILTEST(fail); break;}it=rb_ary_entry(bind,0);
 return it;
 fail: return failobj; }
 VALUE Amethyst_eof(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -311,4 +311,4 @@ rb_define_method(cls_Amethyst,"token",Amethyst_token,1);
 rb_define_method(cls_Amethyst,"upper",Amethyst_upper,0);
 rb_define_method(cls_Amethyst,"word",Amethyst_word,0);
 rb_define_method(cls_Amethyst,"xdigit",Amethyst_xdigit,0);
- rb_eval_string("testversion('55ddea08c419d453a099062940e3e89e')");}
+ rb_eval_string("testversion('2c50929a79eb78de81dafe3ff5947e2c')");}

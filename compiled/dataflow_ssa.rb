@@ -441,6 +441,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='202002d2770d1320dbf531839e881a3d'
+ raise "invalid version" if r!='fa8b12fa8c2fc4b33e0469f97200f295'
 end
   require 'compiled/dataflow_ssa_c'

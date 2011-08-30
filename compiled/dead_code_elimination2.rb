@@ -173,6 +173,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='f6b58420253685ebde7c95fbbec60bdf'
+ raise "invalid version" if r!='aa14ac0526045fe69c03f0b7816d7563'
 end
   require 'compiled/dead_code_elimination2_c'

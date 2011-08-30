@@ -139,7 +139,7 @@ alt3_2: ame_setpos(self,oldpos6);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
 ISET(cut,Qnil);goto accept3;
   alt3_3:  ame_setpos(self,oldpos6); goto fail;
  accept3:;
- break;default: goto fail;}it=rb_ary_entry(bind,1);
+ break;default:;   it=Traverser_fails(self ); FAILTEST(fail); break;}it=rb_ary_entry(bind,1);
 return it;
 fail: return failobj; }VALUE cls_Detector;
 VALUE Detector_clas(VALUE self ,VALUE a0);
@@ -289,7 +289,7 @@ alt3_2: ame_setpos(self,oldpos6);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
 ISET(cut,Qnil);goto accept3;
   alt3_3:  ame_setpos(self,oldpos6); goto fail;
  accept3:;
- break;default: goto fail;}it=rb_ary_entry(bind,1);
+ break;default:;   it=Detector_fails(self ); FAILTEST(fail); break;}it=rb_ary_entry(bind,1);
 return it;
 fail: return failobj; }
 VALUE Detector_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(2);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -319,4 +319,4 @@ rb_define_method(cls_Detector,"root",Detector_root,0);
 rb_define_method(cls_Detector,"traverse",Detector_traverse,0);
 rb_define_method(cls_Detector,"traverse_item",Detector_traverse_item,0);
 rb_define_method(cls_Detector,"visit",Detector_visit,0);
- rb_eval_string("testversion('1e082128b558509307ef00caf78349f2')");}
+ rb_eval_string("testversion('1955538b077a50b210f839690fc3fe07')");}

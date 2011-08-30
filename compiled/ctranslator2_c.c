@@ -297,7 +297,7 @@ ISET(cut,Qnil);goto accept7;
   alt7_3:  ame_setpos(self,oldpos17); goto fail;
  accept7:;
  break;case 7:;   it=AmethystCore_anything(self ); FAILTEST(fail);
- rb_ary_store(bind,2,it);  break;default: goto fail;}it=rb_ary_entry(bind,2);
+ rb_ary_store(bind,2,it);  break;default:;   it=AmethystCTranslator_fails(self ); FAILTEST(fail); break;}it=rb_ary_entry(bind,2);
 return it;
 fail: return failobj; }
 VALUE AmethystCTranslator_rw(VALUE self ,VALUE a0,VALUE a1){VALUE vals[2]; VALUE bind=rb_ary_new2(5); rb_ary_store(bind,1,a0);rb_ary_store(bind,2,a1); int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -651,7 +651,7 @@ it=CALL(trans_AmethystCTranslatorcb_75,1,bind);  if (IGET(stop)!=Qnil){{oldpos35
 	success25: ame_setsrc(self,oldsrc25); ame_setpos(self,oldpos34); ame_setlen(self,oldlen25);
 	if(fail25) goto fail;
 it=rb_ary_entry(bind,86);
- rb_ary_store(bind,1,it);  break;default: goto fail;}it=rb_ary_entry(bind,1);
+ rb_ary_store(bind,1,it);  break;default:;   it=AmethystCTranslator_fails(self ); FAILTEST(fail); break;}it=rb_ary_entry(bind,1);
 return it;
 fail: return failobj; }
 VALUE AmethystCTranslator_transfn(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(2);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -680,4 +680,4 @@ rb_define_method(cls_AmethystCTranslator,"spaces",AmethystCTranslator_spaces,0);
 rb_define_method(cls_AmethystCTranslator,"token",AmethystCTranslator_token,1);
 rb_define_method(cls_AmethystCTranslator,"trans",AmethystCTranslator_trans,0);
 rb_define_method(cls_AmethystCTranslator,"transfn",AmethystCTranslator_transfn,0);
- rb_eval_string("testversion('768b3119c895a8f6322f4b9ba73c5415')");}
+ rb_eval_string("testversion('af7cb1dc0711f8f3bfb87e40a48a3bb0')");}

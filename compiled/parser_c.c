@@ -319,7 +319,7 @@ alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
 ISET(cut,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
- break;default: goto fail;}it=rb_ary_entry(bind,0);
+ break;default:;   it=AmethystParser_fails(self ); FAILTEST(fail); break;}it=rb_ary_entry(bind,0);
 return it;
 fail: return failobj; }
 VALUE AmethystParser_eof(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -823,7 +823,7 @@ ISET(cut,Qnil);goto accept1;
  accept1:;
  break;case 1:;   it=AmethystCore_anything(self ); FAILTEST(fail);
  rb_ary_store(bind,5,it); it=CALL(procargs2_AmethystParsercb_3,1,bind); 
- rb_ary_store(bind,4,it);  break;default: goto fail;}it=rb_ary_entry(bind,4);
+ rb_ary_store(bind,4,it);  break;default:;   it=AmethystParser_fails(self ); FAILTEST(fail); break;}it=rb_ary_entry(bind,4);
 return it;
 fail: return failobj; }
 VALUE AmethystParser_regch(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=rb_ary_new2(5); rb_ary_store(bind,3,a0); int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -1223,4 +1223,4 @@ rb_define_method(cls_AmethystParser,"spaces",AmethystParser_spaces,0);
 rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
 rb_define_method(cls_AmethystParser,"token",AmethystParser_token,1);
 rb_define_method(cls_AmethystParser,"upper",AmethystParser_upper,0);
- rb_eval_string("testversion('2d83f9e86e0683c438541a823e9ea419')");}
+ rb_eval_string("testversion('1a4ba968a77366eb82ae903acc3792f8')");}

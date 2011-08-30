@@ -118,6 +118,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='e3c260ae410c6d6bc0f38687f4bf2d25'
+ raise "invalid version" if r!='163aa579601826dbfe5c0ab26db798b7'
 end
   require 'compiled/optimizer_and_or_c'

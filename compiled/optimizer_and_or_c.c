@@ -95,7 +95,7 @@ ISET(cut,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos2); goto break1;
  accept1:;
  break;case 1:;   it=AmethystCore_anything(self ); FAILTEST(break1);
- rb_ary_store(bind,10,it);  break;default: goto break1;}it=CALL(itrans_Seq_Or_Optimizercb_7,1,bind);  if (IGET(stop)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos1); it=rb_ary_entry(bind,0);
+ rb_ary_store(bind,10,it);  break;default:;   it=Seq_Or_Optimizer_fails(self ); FAILTEST(break1); break;}it=CALL(itrans_Seq_Or_Optimizercb_7,1,bind);  if (IGET(stop)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos1); it=rb_ary_entry(bind,0);
  rb_ary_store(bind,11,it); it=rb_ary_entry(bind,11);
 return it;
 fail: return failobj; }
@@ -204,7 +204,7 @@ alt3_2: ame_setpos(self,oldpos6);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
 ISET(cut,Qnil);goto accept3;
   alt3_3:  ame_setpos(self,oldpos6); goto fail;
  accept3:;
- break;default: goto fail;}it=rb_ary_entry(bind,1);
+ break;default:;   it=Seq_Or_Optimizer_fails(self ); FAILTEST(fail); break;}it=rb_ary_entry(bind,1);
 return it;
 fail: return failobj; }
 VALUE Seq_Or_Optimizer_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(11);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -262,7 +262,7 @@ ame_setsrc(self,rb_ary_entry(bind,9)); ame_setpos(self,0); ame_setlen(self,FIX2I
 	success4: ame_setsrc(self,oldsrc4); ame_setpos(self,oldpos5); ame_setlen(self,oldlen4);
 	if(fail4) goto fail;
 it=rb_ary_entry(bind,10);
- rb_ary_store(bind,2,it);  break;default: goto fail;}it=rb_ary_entry(bind,2);
+ rb_ary_store(bind,2,it);  break;default:;   it=Seq_Or_Optimizer_fails(self ); FAILTEST(fail); break;}it=rb_ary_entry(bind,2);
 return it;
 fail: return failobj; }
 void Init_optimizer_and_or_c(){ 
@@ -277,4 +277,4 @@ rb_define_method(cls_Seq_Or_Optimizer,"root",Seq_Or_Optimizer_root,0);
 rb_define_method(cls_Seq_Or_Optimizer,"traverse",Seq_Or_Optimizer_traverse,0);
 rb_define_method(cls_Seq_Or_Optimizer,"traverse_item",Seq_Or_Optimizer_traverse_item,0);
 rb_define_method(cls_Seq_Or_Optimizer,"visit",Seq_Or_Optimizer_visit,0);
- rb_eval_string("testversion('e3c260ae410c6d6bc0f38687f4bf2d25')");}
+ rb_eval_string("testversion('163aa579601826dbfe5c0ab26db798b7')");}

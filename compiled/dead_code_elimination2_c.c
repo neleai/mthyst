@@ -154,7 +154,7 @@ ISET(cut,Qnil);goto accept5;
  accept5:;
  break;case 3:;   it=AmethystCore_anything(self ); FAILTEST(fail);
  rb_ary_store(bind,8,it); it=CALL(move_Move_Assignments2cb_14,1,bind); 
- rb_ary_store(bind,7,it);  break;default: goto fail;}it=rb_ary_entry(bind,7);
+ rb_ary_store(bind,7,it);  break;default:;   it=Move_Assignments2_fails(self ); FAILTEST(fail); break;}it=rb_ary_entry(bind,7);
 return it;
 fail: return failobj; }
 VALUE Move_Assignments2_root(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -262,7 +262,7 @@ alt3_2: ame_setpos(self,oldpos6);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
 ISET(cut,Qnil);goto accept3;
   alt3_3:  ame_setpos(self,oldpos6); goto fail;
  accept3:;
- break;default: goto fail;}it=rb_ary_entry(bind,1);
+ break;default:;   it=Move_Assignments2_fails(self ); FAILTEST(fail); break;}it=rb_ary_entry(bind,1);
 return it;
 fail: return failobj; }
 VALUE Move_Assignments2_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(29);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -380,7 +380,7 @@ ISET(cut,Qnil);goto accept5;
  accept5:;
  break;case 3:;   it=AmethystCore_anything(self ); FAILTEST(pass2);
  rb_ary_store(bind,13,it); it=CALL(visit_Move_Assignments2cb_19,1,bind); 
- rb_ary_store(bind,12,it);  break;default: goto pass2;}it=rb_ary_entry(bind,12);
+ rb_ary_store(bind,12,it);  break;default:;   it=Move_Assignments2_fails(self ); FAILTEST(pass2); break;}it=rb_ary_entry(bind,12);
  rb_ary_store(bind,26,it);   it=Move_Assignments2_eof(self ); FAILTEST(pass2);
 	goto success2;
 	pass2: fail2=1;
@@ -409,4 +409,4 @@ rb_define_method(cls_Move_Assignments2,"root",Move_Assignments2_root,0);
 rb_define_method(cls_Move_Assignments2,"traverse",Move_Assignments2_traverse,0);
 rb_define_method(cls_Move_Assignments2,"traverse_item",Move_Assignments2_traverse_item,0);
 rb_define_method(cls_Move_Assignments2,"visit",Move_Assignments2_visit,0);
- rb_eval_string("testversion('f6b58420253685ebde7c95fbbec60bdf')");}
+ rb_eval_string("testversion('aa14ac0526045fe69c03f0b7816d7563')");}
