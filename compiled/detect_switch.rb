@@ -18,10 +18,11 @@ return 0 if e<=Seq
 return 1 if e<=Or
 return 2 if e<=Switch
 return 3 if e<=Bind
-return 4 if e<=Act
-return 5 if e<=Apply
-return 6 if e<=Object
-return 7
+return 4 if e<=Many
+return 5 if e<=Act
+return 6 if e<=Apply
+return 7 if e<=Object
+return 8
 end
 @@switchhashSwitch_Dataflow1=Hash.new{|h,k| h[k]=switchcb_Switch_Dataflow1(k)}
 def switchcbSwitch_Dataflow1(e)
@@ -43,37 +44,43 @@ def first_Switch_Dataflowcb_10(bind)
 @src.expr
 end
 def first_Switch_Dataflowcb_11(bind)
-bind[15]=[bind[15]]
+bind[16]=[bind[16]]
 end
 def first_Switch_Dataflowcb_12(bind)
 Set[:anything,:empty]
 end
 def first_Switch_Dataflowcb_13(bind)
-Set[:empty]
+bind[4]+Set[:empty]
 end
 def first_Switch_Dataflowcb_14(bind)
 Set[:anything,:empty]
 end
 def first_Switch_Dataflowcb_15(bind)
-CAct
+Set[:empty]
 end
 def first_Switch_Dataflowcb_16(bind)
-Set[firstchar(bind[23])]
-end
-def first_Switch_Dataflowcb_17(bind)
 Set[:anything,:empty]
 end
+def first_Switch_Dataflowcb_17(bind)
+CAct
+end
 def first_Switch_Dataflowcb_18(bind)
+Set[firstchar(bind[26])]
+end
+def first_Switch_Dataflowcb_19(bind)
 Set[:anything,:empty]
 end
 def first_Switch_Dataflowcb_2(bind)
-bind[3].inject{|u,v|seqjoin(u,v)}
+bind[3].inject{|u,bind[4]|seqjoin(u,bind[4])}
+end
+def first_Switch_Dataflowcb_20(bind)
+Set[:anything,:empty]
 end
 def first_Switch_Dataflowcb_3(bind)
 Set[:anything,:empty]
 end
 def first_Switch_Dataflowcb_4(bind)
-_append(bind[7],bind[8])
+_append(bind[8],bind[9])
 end
 def first_Switch_Dataflowcb_5(bind)
 bind[3].inject(:+)
@@ -82,7 +89,7 @@ def first_Switch_Dataflowcb_6(bind)
 Set[:anything,:empty]
 end
 def first_Switch_Dataflowcb_7(bind)
-_append(bind[11],bind[12])
+_append(bind[12],bind[13])
 end
 def first_Switch_Dataflowcb_8(bind)
 bind[3].inject(:+)
@@ -198,6 +205,9 @@ def visit_Detect_Switchcb_1(bind)
 Or
 end
 def visit_Detect_Switchcb_10(bind)
+(bind[2].size>1) || FAIL
+end
+def visit_Detect_Switchcb_11(bind)
 Switch[{:act=>"*ame_curstr(self)",:ary=>bind[2]}]
 end
 def visit_Detect_Switchcb_2(bind)
@@ -210,21 +220,21 @@ def visit_Detect_Switchcb_4(bind)
 bind[1]+=first(bind[3])
 end
 def visit_Detect_Switchcb_5(bind)
-bind[1]=bind[1].map{|bind[3]|  [:anything,:empty].include?(bind[3]) ? :default : bind[3]}
+bind[1]=bind[1].map{|bind[3]|  [:anything,:empty].include?(bind[3]) ? :default : bind[3]}.uniq
 end
 def visit_Detect_Switchcb_6(bind)
-bind[1].uniq.each{|bind[3]|
+(bind[1].size>1) || FAIL
+end
+def visit_Detect_Switchcb_7(bind)
+bind[1].each{|bind[3]|
 			bind[2]<<[bind[3],Or[{:ary=>@src.ary.select{|p|intersects(p,bind[3])}}]]
 		}
 end
-def visit_Detect_Switchcb_7(bind)
+def visit_Detect_Switchcb_8(bind)
 bind[2]=bind[2].group_by{|a,b| b.to_yaml}.map{|y,v| [v.map{|k,val| k},v[0][1]]}
 end
-def visit_Detect_Switchcb_8(bind)
-bind[2]<<[[:default],Apply["fails"]] unless bind[1].include?(:default)
-end
 def visit_Detect_Switchcb_9(bind)
-(bind[2].size>1) || FAIL
+bind[2]<<[[:default],Apply["fails"]] unless bind[1].include?(:default)
 end
 
 end
@@ -432,7 +442,7 @@ bind[1].each_with_index{|bind[3],i|
 		}
 end
 def visit_Detect_ClasSwitchcb_7(bind)
-bind[2]=bind[2].group_by{|a,b| b.to_yaml}.map{|y,v| [v.map{|k,val| k}.sort,v[0][1]]}.sort
+bind[2]=bind[2].group_by{|a,b| b.ary}.map{|y,v| [v.map{|k,val| k}.sort,v[0][1]]}.sort
 end
 def visit_Detect_ClasSwitchcb_8(bind)
 bind[2]<<[[:default],Apply["fails"]] 
@@ -446,6 +456,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='dcc65a85212b8f4ce396f77d1a353776'
+ raise "invalid version" if r!='3041306e5e19bdcff8373ea152f8d370'
 end
   require 'compiled/detect_switch_c'
