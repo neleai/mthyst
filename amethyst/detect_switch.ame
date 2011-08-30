@@ -27,10 +27,10 @@ amethyst Switch_Dataflow {
 class Detect_Switch < Traverser
 	def first(s)
 		r=Switch_Dataflow.new.parse(:first,[s])
-		return nil if r.include?(:anything)
 		return r
 	end
 	def intersects(p,e)
+		return true if e==:default
 		first(p).intersection(Set[e,:empty,:anything])!=Set[]
 	end
 end
@@ -42,11 +42,13 @@ amethyst Detect_Switch < Traverser {
 
 	visit = Or[ {Set[]}:ary2 {[]}:ary3
 		(traverse_item:e &{first(e)} {ary2+=first(e)})* &eof
-		{ary2.sort.uniq.each{|e| 
-			ary3<<[[e],Or[{:ary=>@ary.select{|p|intersects(p,e)}}]]
+		{ary2=ary2.map{|e|  [:anything,:empty].include?(e) ? :default : e}}
+		{ary2.uniq.each{|e|
+			ary3<<[e,Or[{:ary=>@ary.select{|p|intersects(p,e)}}]]
 		}}
-		{ary3=ary3.group_by{|a,b| b.to_yaml}.map{|y,v| [v.map{|k,val| k}.sort,v[0][1]]}.sort}
-		{ary3<<[[:default],Apply["fails"]] }
+		{ary3=ary3.group_by{|a,b| b.to_yaml}.map{|y,v| [v.map{|k,val| k},v[0][1]]}}
+		{ary3<<[[:default],Apply["fails"]] unless ary2.include?(:default)}
+    &{ary3.size>1}
 		{Switch[{:act=>"*ame_curstr(self)",:ary=>ary3}]}
 	]
 }
@@ -121,7 +123,7 @@ amethyst Detect_ClasSwitch < Traverser {
 		{ary2=topsort(ary2)}
 		&{ary2.size>1}
     {	ary2.each_with_index{|e,i|
-      	ary3<<[[i],Or[{:ary=>@ary.select{|p| includes(ary2,i,first(p))}.map{|p| predicate(e,p)}}]]
+      	ary3<<[i,Or[{:ary=>@ary.select{|p| includes(ary2,i,first(p))}.map{|p| predicate(e,p)}}]]
 		}}
 		{ary3=ary3.group_by{|a,b| b.to_yaml}.map{|y,v| [v.map{|k,val| k}.sort,v[0][1]]}.sort}
 		{ary3<<[[:default],Apply["fails"]] }
