@@ -7,6 +7,7 @@ class Switch_Dataflow < Amethyst
 		end
 	end
   def firstchar(s)
+	  return :empty if s.size==15
     s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
     eval('"'+s+'"')[0]
   end
@@ -17,9 +18,10 @@ return 0 if e<=Seq
 return 1 if e<=Or
 return 2 if e<=Switch
 return 3 if e<=Bind
-return 4 if e<=Apply
-return 5 if e<=Object
-return 6
+return 4 if e<=Act
+return 5 if e<=Apply
+return 6 if e<=Object
+return 7
 end
 @@switchhashSwitch_Dataflow1=Hash.new{|h,k| h[k]=switchcb_Switch_Dataflow1(k)}
 def switchcbSwitch_Dataflow1(e)
@@ -47,15 +49,21 @@ def first_Switch_Dataflowcb_12(bind)
 Set[:anything,:empty]
 end
 def first_Switch_Dataflowcb_13(bind)
-CAct
+Set[:empty]
 end
 def first_Switch_Dataflowcb_14(bind)
-Set[firstchar(bind[21])]
-end
-def first_Switch_Dataflowcb_15(bind)
 Set[:anything,:empty]
 end
+def first_Switch_Dataflowcb_15(bind)
+CAct
+end
 def first_Switch_Dataflowcb_16(bind)
+Set[firstchar(bind[23])]
+end
+def first_Switch_Dataflowcb_17(bind)
+Set[:anything,:empty]
+end
+def first_Switch_Dataflowcb_18(bind)
 Set[:anything,:empty]
 end
 def first_Switch_Dataflowcb_2(bind)
@@ -99,11 +107,6 @@ end
 
 
 class Detect_Switch < Traverser
-	def firstchar(s)
-		return :anything if s.size==15
-		s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
-		eval('"'+s+'"')[0]
-	end
 	def first(s)
 		r=Switch_Dataflow.new.parse(:first,[s])
 		return nil if r.include?(:anything)
@@ -425,6 +428,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='e7ddc5f702d3fbfb478622c06f10dc42'
+ raise "invalid version" if r!='4f0410eae77e0de6542bb4266eddd754'
 end
   require 'compiled/detect_switch_c'

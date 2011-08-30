@@ -7,6 +7,7 @@ class Switch_Dataflow < Amethyst
 		end
 	end
   def firstchar(s)
+	  return :empty if s.size==15
     s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
     eval('"'+s+'"')[0]
   end
@@ -16,6 +17,7 @@ amethyst Switch_Dataflow {
 				| Or[value*:{it.inject(:+)}]
 				| Switch[value*:{it.inject(:+)}]
 				| Bind[@expr=>value]
+				| Act[.* {Set[:empty]} ]
 				| Apply[ ["seq"] CAct[.:str] {Set[firstchar(str)]}]
 				| . {Set[:anything,:empty]}
 
@@ -23,11 +25,6 @@ amethyst Switch_Dataflow {
 }
 
 class Detect_Switch < Traverser
-	def firstchar(s)
-		return :anything if s.size==15
-		s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
-		eval('"'+s+'"')[0]
-	end
 	def first(s)
 		r=Switch_Dataflow.new.parse(:first,[s])
 		return nil if r.include?(:anything)
