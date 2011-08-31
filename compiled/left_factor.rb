@@ -1,4 +1,4 @@
-class Left_Factor < Traverser
+class Left_Factor < Traverser_Clone
 	def first(s)
 		s[0] if s.is_a? Seq
 		s
@@ -12,7 +12,7 @@ class Left_Factor < Traverser
 	end
 end
 
-class Left_Factor < Traverser
+class Left_Factor < Traverser_Clone
 def self.switchcb_Left_Factor1(e)
 return 0 if e<=Array
 return 1 if e<=AmethystAST
@@ -45,7 +45,7 @@ def fails_Left_Factorcb_1(bind)
 (false) || FAIL
 end
 def traverse_Left_Factorcb_1(bind)
-@src
+@src.clone
 end
 def traverse_Left_Factorcb_2(bind)
 (@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
@@ -55,9 +55,6 @@ bind[1]=[bind[1]]
 end
 def traverse_Left_Factorcb_4(bind)
 bind[0].instance_variable_set(bind[4],bind[5])
-end
-def traverse_Left_Factorcb_5(bind)
-@src
 end
 def traverse_item_Left_Factorcb_1(bind)
 @changed=true
@@ -94,6 +91,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='724a17fd0e2cce8379251e5e98720235'
+ raise "invalid version" if r!='4da49586909ddd2e3f368f8a6d05e75e'
 end
   require 'compiled/left_factor_c'

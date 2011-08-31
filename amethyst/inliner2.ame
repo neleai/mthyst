@@ -1,16 +1,16 @@
-amethyst Renamer2 < Traverser {
+amethyst Renamer2 < Traverser_Clone {
 	root = Rule[{@@newvars={}} traverse]
 	
 	visit = Local[ :name @self:this ]  -> @@newvars[this] ? @@newvars[this] : ($av+=1; @@newvars[this]=_Local(name,$av) ;@@newvars[this] )
 }
 
-amethyst DetectCalls < Traverser {
+amethyst DetectCalls < Traverser_Clone {
 	root = Rule[{@@calls={}} traverse {@@calls} ]
 	
 	visit = Apply[:name .*:args {@@calls[name]=true } @self]
 }
 
-amethyst Inliner2 < Traverser {
+amethyst Inliner2 < Traverser_Clone {
 	
 	root = :from :to {from}=>Rule[@name:name @args:args @locals:locals @body:body]  {@@name=name;@@args=args;@@body=body } 
 				 {to}=>Rule[traverse]

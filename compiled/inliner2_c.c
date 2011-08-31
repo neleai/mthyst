@@ -86,7 +86,7 @@ ame_setsrc(self,rb_ary_entry(bind,3)); ame_setpos(self,0); ame_setlen(self,FIX2I
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos2); ame_setlen(self,oldlen1);
 	if(fail1) goto fail;
-it=CALL(traverse_Renamer2cb_5,1,bind); 
+it=rb_ary_entry(bind,0);
  rb_ary_store(bind,6,it); it=rb_ary_entry(bind,6);
 return it;
 fail: return failobj; }
@@ -261,7 +261,7 @@ ame_setsrc(self,rb_ary_entry(bind,3)); ame_setpos(self,0); ame_setlen(self,FIX2I
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos2); ame_setlen(self,oldlen1);
 	if(fail1) goto fail;
-it=CALL(traverse_DetectCallscb_5,1,bind); 
+it=rb_ary_entry(bind,0);
  rb_ary_store(bind,6,it); it=rb_ary_entry(bind,6);
 return it;
 fail: return failobj; }
@@ -466,7 +466,7 @@ ame_setsrc(self,rb_ary_entry(bind,3)); ame_setpos(self,0); ame_setlen(self,FIX2I
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos2); ame_setlen(self,oldlen1);
 	if(fail1) goto fail;
-it=CALL(traverse_Inliner2cb_5,1,bind); 
+it=rb_ary_entry(bind,0);
  rb_ary_store(bind,6,it); it=rb_ary_entry(bind,6);
 return it;
 fail: return failobj; }
@@ -558,7 +558,7 @@ it=CALL(visit_Inliner2cb_4,1,bind);
 return it;
 fail: return failobj; }
 void Init_inliner2_c(){ 
- cls_Renamer2=rb_define_class("Renamer2",rb_const_get(rb_cObject,rb_intern("Traverser"))); 
+ cls_Renamer2=rb_define_class("Renamer2",rb_const_get(rb_cObject,rb_intern("Traverser_Clone"))); 
 failobj=rb_eval_string("FAIL");
 rb_define_method(cls_Renamer2,"clas",Renamer2_clas,1);
 rb_define_method(cls_Renamer2,"empty",Renamer2_empty,0);
@@ -569,7 +569,7 @@ rb_define_method(cls_Renamer2,"traverse",Renamer2_traverse,0);
 rb_define_method(cls_Renamer2,"traverse_item",Renamer2_traverse_item,0);
 rb_define_method(cls_Renamer2,"visit",Renamer2_visit,0);
 
- cls_DetectCalls=rb_define_class("DetectCalls",rb_const_get(rb_cObject,rb_intern("Traverser"))); 
+ cls_DetectCalls=rb_define_class("DetectCalls",rb_const_get(rb_cObject,rb_intern("Traverser_Clone"))); 
 failobj=rb_eval_string("FAIL");
 rb_define_method(cls_DetectCalls,"clas",DetectCalls_clas,1);
 rb_define_method(cls_DetectCalls,"empty",DetectCalls_empty,0);
@@ -580,7 +580,7 @@ rb_define_method(cls_DetectCalls,"traverse",DetectCalls_traverse,0);
 rb_define_method(cls_DetectCalls,"traverse_item",DetectCalls_traverse_item,0);
 rb_define_method(cls_DetectCalls,"visit",DetectCalls_visit,0);
 
- cls_Inliner2=rb_define_class("Inliner2",rb_const_get(rb_cObject,rb_intern("Traverser"))); 
+ cls_Inliner2=rb_define_class("Inliner2",rb_const_get(rb_cObject,rb_intern("Traverser_Clone"))); 
 failobj=rb_eval_string("FAIL");
 rb_define_method(cls_Inliner2,"clas",Inliner2_clas,1);
 rb_define_method(cls_Inliner2,"empty",Inliner2_empty,0);
@@ -590,4 +590,4 @@ rb_define_method(cls_Inliner2,"root",Inliner2_root,0);
 rb_define_method(cls_Inliner2,"traverse",Inliner2_traverse,0);
 rb_define_method(cls_Inliner2,"traverse_item",Inliner2_traverse_item,0);
 rb_define_method(cls_Inliner2,"visit",Inliner2_visit,0);
- rb_eval_string("testversion('a2fab23351059f4c0bcc43192ff90e76')");}
+ rb_eval_string("testversion('8da3124ba5fb023ccc1e63d9a501d5dc')");}

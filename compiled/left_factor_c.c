@@ -114,7 +114,7 @@ ame_setsrc(self,rb_ary_entry(bind,3)); ame_setpos(self,0); ame_setlen(self,FIX2I
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos2); ame_setlen(self,oldlen1);
 	if(fail1) goto fail;
-it=CALL(traverse_Left_Factorcb_5,1,bind); 
+it=rb_ary_entry(bind,0);
  rb_ary_store(bind,6,it); it=rb_ary_entry(bind,6);
 return it;
 fail: return failobj; }
@@ -246,7 +246,7 @@ it=rb_ary_entry(bind,8);
 return it;
 fail: return failobj; }
 void Init_left_factor_c(){ 
- cls_Left_Factor=rb_define_class("Left_Factor",rb_const_get(rb_cObject,rb_intern("Traverser"))); 
+ cls_Left_Factor=rb_define_class("Left_Factor",rb_const_get(rb_cObject,rb_intern("Traverser_Clone"))); 
 failobj=rb_eval_string("FAIL");
 rb_define_method(cls_Left_Factor,"clas",Left_Factor_clas,1);
 rb_define_method(cls_Left_Factor,"empty",Left_Factor_empty,0);
@@ -257,4 +257,4 @@ rb_define_method(cls_Left_Factor,"root",Left_Factor_root,0);
 rb_define_method(cls_Left_Factor,"traverse",Left_Factor_traverse,0);
 rb_define_method(cls_Left_Factor,"traverse_item",Left_Factor_traverse_item,0);
 rb_define_method(cls_Left_Factor,"visit",Left_Factor_visit,0);
- rb_eval_string("testversion('724a17fd0e2cce8379251e5e98720235')");}
+ rb_eval_string("testversion('4da49586909ddd2e3f368f8a6d05e75e')");}

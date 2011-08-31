@@ -1,4 +1,4 @@
-class Renamer2 < Traverser
+class Renamer2 < Traverser_Clone
 def self.switchcb_Renamer21(e)
 return 0 if e<=Array
 return 1 if e<=AmethystAST
@@ -22,7 +22,7 @@ def root_Renamer2cb_2(bind)
 @newvars={}
 end
 def traverse_Renamer2cb_1(bind)
-@src
+@src.clone
 end
 def traverse_Renamer2cb_2(bind)
 (@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
@@ -32,9 +32,6 @@ bind[1]=[bind[1]]
 end
 def traverse_Renamer2cb_4(bind)
 bind[0].instance_variable_set(bind[4],bind[5])
-end
-def traverse_Renamer2cb_5(bind)
-@src
 end
 def traverse_item_Renamer2cb_1(bind)
 @changed=true
@@ -61,7 +58,7 @@ end
 end
 
 
-class DetectCalls < Traverser
+class DetectCalls < Traverser_Clone
 def self.switchcb_DetectCalls2(e)
 return 0 if e<=Array
 return 1 if e<=AmethystAST
@@ -88,7 +85,7 @@ def root_DetectCallscb_3(bind)
 @calls
 end
 def traverse_DetectCallscb_1(bind)
-@src
+@src.clone
 end
 def traverse_DetectCallscb_2(bind)
 (@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
@@ -98,9 +95,6 @@ bind[1]=[bind[1]]
 end
 def traverse_DetectCallscb_4(bind)
 bind[0].instance_variable_set(bind[4],bind[5])
-end
-def traverse_DetectCallscb_5(bind)
-@src
 end
 def traverse_item_DetectCallscb_1(bind)
 @changed=true
@@ -127,7 +121,7 @@ end
 end
 
 
-class Inliner2 < Traverser
+class Inliner2 < Traverser_Clone
 def self.switchcb_Inliner23(e)
 return 0 if e<=Array
 return 1 if e<=AmethystAST
@@ -172,7 +166,7 @@ def root_Inliner2cb_9(bind)
 Rule
 end
 def traverse_Inliner2cb_1(bind)
-@src
+@src.clone
 end
 def traverse_Inliner2cb_2(bind)
 (@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
@@ -182,9 +176,6 @@ bind[1]=[bind[1]]
 end
 def traverse_Inliner2cb_4(bind)
 bind[0].instance_variable_set(bind[4],bind[5])
-end
-def traverse_Inliner2cb_5(bind)
-@src
 end
 def traverse_item_Inliner2cb_1(bind)
 @changed=true
@@ -215,6 +206,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='a2fab23351059f4c0bcc43192ff90e76'
+ raise "invalid version" if r!='8da3124ba5fb023ccc1e63d9a501d5dc'
 end
   require 'compiled/inliner2_c'
