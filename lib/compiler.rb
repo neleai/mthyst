@@ -19,7 +19,6 @@ class Gram
 	      puts r.inspect if debug
       	r=o.new.parse(:root,r)
 			}
-		 r=deep_clone(r)
 		 [ Dataflow, 
 			Dead_Code_Deleter3,Seq_Or_Optimizer
 ].each{|o|
