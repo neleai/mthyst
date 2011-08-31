@@ -109,7 +109,7 @@ end
 		source=File.new(file).read
 		source_hash=Digest::MD5.hexdigest(source)
 		if eval("#{file2}_compiled_by")==$compiled_by && eval("#{file2}_source_hash")==source_hash
-			puts "same"
+			return unless ["amethyst","traverser"].include? file2 #inheritance
 		end
 		tree=AmethystParser.new.parse(:igrammar,source)
 		tree=Analyze_Variables2.new.parse(:itrans,tree)
