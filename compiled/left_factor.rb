@@ -1,4 +1,4 @@
-class Left_Factor < Traverser_Clone
+class Left_Factor < Traverser_Clone2
 	def first(s)
 		s[0] if s.is_a? Seq
 		s
@@ -12,7 +12,7 @@ class Left_Factor < Traverser_Clone
 	end
 end
 
-class Left_Factor < Traverser_Clone
+class Left_Factor < Traverser_Clone2
 def self.switchcb_Left_Factor1(e)
 return 0 if e<=Array
 return 1 if e<=AmethystAST
@@ -45,19 +45,30 @@ def fails_Left_Factorcb_1(bind)
 (false) || FAIL
 end
 def traverse_Left_Factorcb_1(bind)
-@src.clone
+@changed
 end
 def traverse_Left_Factorcb_2(bind)
-(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
+@src
 end
 def traverse_Left_Factorcb_3(bind)
-bind[1]=[bind[1]]
+(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
 end
 def traverse_Left_Factorcb_4(bind)
-bind[0].instance_variable_set(bind[4],bind[5])
+bind[4]=[bind[4]]
 end
 def traverse_Left_Factorcb_5(bind)
-bind[0].normalize
+@changed=false
+end
+def traverse_Left_Factorcb_6(bind)
+(bind[2]||=bind[1].clone;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
+end
+def traverse_Left_Factorcb_7(bind)
+if bind[3]
+             @changed=true;bind[2].normalize
+           else
+            @changed=bind[0]
+            @src
+          end
 end
 def traverse_item_Left_Factorcb_1(bind)
 @changed=true
@@ -94,15 +105,15 @@ end
 
 
 def left_factor_compiled_by
-'9d12426189ed8023ed76c841d0106625'
+'05274f1a7aa8586d5a4e4d60957d63a4'
 end
 def left_factor_source_hash
-'c1f3dabf5a18a17226ee84e325fbdabe'
+'f264ac06705a9c2e0746e6a287dbb141'
 end
 def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version
 end
 def left_factor_version
-'724a17fd0e2cce8379251e5e98720235'
+'352ff56e64f7ffd469a80dc2e93a0b36'
 end
   require 'compiled/left_factor_c'

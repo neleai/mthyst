@@ -1,4 +1,4 @@
-class Left_Factor < Traverser_Clone
+class Left_Factor < Traverser_Clone2
 	def first(s)
 		s[0] if s.is_a? Seq
 		s
@@ -12,7 +12,7 @@ class Left_Factor < Traverser_Clone
 	end
 end
 
-amethyst Left_Factor < Traverser_Clone {
+amethyst Left_Factor < Traverser_Clone2 {
 	root=traverse
 
 	visit=Or[ traverse[ .:x factor([],x) ] ]		

@@ -1,4 +1,4 @@
-class Renamer2 < Traverser_Clone
+class Renamer2 < Traverser_Clone2
 def self.switchcb_Renamer21(e)
 return 0 if e<=Array
 return 1 if e<=AmethystAST
@@ -22,19 +22,30 @@ def root_Renamer2cb_2(bind)
 @newvars={}
 end
 def traverse_Renamer2cb_1(bind)
-@src.clone
+@changed
 end
 def traverse_Renamer2cb_2(bind)
-(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
+@src
 end
 def traverse_Renamer2cb_3(bind)
-bind[1]=[bind[1]]
+(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
 end
 def traverse_Renamer2cb_4(bind)
-bind[0].instance_variable_set(bind[4],bind[5])
+bind[4]=[bind[4]]
 end
 def traverse_Renamer2cb_5(bind)
-bind[0].normalize
+@changed=false
+end
+def traverse_Renamer2cb_6(bind)
+(bind[2]||=bind[1].clone;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
+end
+def traverse_Renamer2cb_7(bind)
+if bind[3]
+             @changed=true;bind[2].normalize
+           else
+            @changed=bind[0]
+            @src
+          end
 end
 def traverse_item_Renamer2cb_1(bind)
 @changed=true
@@ -61,7 +72,7 @@ end
 end
 
 
-class DetectCalls < Traverser_Clone
+class DetectCalls < Traverser_Clone2
 def self.switchcb_DetectCalls2(e)
 return 0 if e<=Array
 return 1 if e<=AmethystAST
@@ -88,19 +99,30 @@ def root_DetectCallscb_3(bind)
 @calls
 end
 def traverse_DetectCallscb_1(bind)
-@src.clone
+@changed
 end
 def traverse_DetectCallscb_2(bind)
-(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
+@src
 end
 def traverse_DetectCallscb_3(bind)
-bind[1]=[bind[1]]
+(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
 end
 def traverse_DetectCallscb_4(bind)
-bind[0].instance_variable_set(bind[4],bind[5])
+bind[4]=[bind[4]]
 end
 def traverse_DetectCallscb_5(bind)
-bind[0].normalize
+@changed=false
+end
+def traverse_DetectCallscb_6(bind)
+(bind[2]||=bind[1].clone;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
+end
+def traverse_DetectCallscb_7(bind)
+if bind[3]
+             @changed=true;bind[2].normalize
+           else
+            @changed=bind[0]
+            @src
+          end
 end
 def traverse_item_DetectCallscb_1(bind)
 @changed=true
@@ -127,7 +149,7 @@ end
 end
 
 
-class Inliner2 < Traverser_Clone
+class Inliner2 < Traverser_Clone2
 def self.switchcb_Inliner23(e)
 return 0 if e<=Array
 return 1 if e<=AmethystAST
@@ -172,19 +194,30 @@ def root_Inliner2cb_9(bind)
 Rule
 end
 def traverse_Inliner2cb_1(bind)
-@src.clone
+@changed
 end
 def traverse_Inliner2cb_2(bind)
-(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
+@src
 end
 def traverse_Inliner2cb_3(bind)
-bind[1]=[bind[1]]
+(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
 end
 def traverse_Inliner2cb_4(bind)
-bind[0].instance_variable_set(bind[4],bind[5])
+bind[4]=[bind[4]]
 end
 def traverse_Inliner2cb_5(bind)
-bind[0].normalize
+@changed=false
+end
+def traverse_Inliner2cb_6(bind)
+(bind[2]||=bind[1].clone;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
+end
+def traverse_Inliner2cb_7(bind)
+if bind[3]
+             @changed=true;bind[2].normalize
+           else
+            @changed=bind[0]
+            @src
+          end
 end
 def traverse_item_Inliner2cb_1(bind)
 @changed=true
@@ -215,15 +248,15 @@ end
 
 
 def inliner2_compiled_by
-'9d12426189ed8023ed76c841d0106625'
+'05274f1a7aa8586d5a4e4d60957d63a4'
 end
 def inliner2_source_hash
-'dad047e0a7b0dc017777eb467b949297'
+'d46130ad91ded4f2dceff5159cdcb009'
 end
 def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version
 end
 def inliner2_version
-'a2fab23351059f4c0bcc43192ff90e76'
+'f76721a0d21cf6b010b5182981180bfd'
 end
   require 'compiled/inliner2_c'
