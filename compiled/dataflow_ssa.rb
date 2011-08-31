@@ -227,19 +227,19 @@ def visit_Dataflowcb_1(bind)
 oldssanums.clone
 end
 def visit_Dataflowcb_10(bind)
-@marked<<bind[11] if @src.pred || !@src.pure
+@marked<<@src if @src.pred || !@src.pure
 end
 def visit_Dataflowcb_11(bind)
 @src.ary
 end
 def visit_Dataflowcb_12(bind)
-bind[12]=[bind[12]]
+bind[14]=[bind[14]]
 end
 def visit_Dataflowcb_13(bind)
-bind[8].each{|v| edges.add(ssanum(v),bind[11]); edges.add(bind[11],newssanum(v.clone));}; bind[11]
+bind[9].each{|v| edges.add(ssanum(v),@src); edges.add(@src,newssanum(v.clone));}; @src
 end
 def visit_Dataflowcb_14(bind)
-set_end(@src) 
+set_end(@src)
 end
 def visit_Dataflowcb_15(bind)
 @src
@@ -248,10 +248,10 @@ def visit_Dataflowcb_16(bind)
 @src.vars
 end
 def visit_Dataflowcb_17(bind)
-bind[18]=[bind[18]]
+bind[25]=[bind[25]]
 end
 def visit_Dataflowcb_18(bind)
-bind[8].each{|w| @edges.add(ssanum(w),bind[11]) } ; bind[11]
+bind[9].each{|w| @edges.add(ssanum(w),@src) } ; @src
 end
 def visit_Dataflowcb_19(bind)
 @marked<<ssanum(@src.var)
@@ -266,7 +266,7 @@ def visit_Dataflowcb_21(bind)
 ssanums.clone
 end
 def visit_Dataflowcb_22(bind)
-many_end(bind[24])
+many_end(bind[35])
 end
 def visit_Dataflowcb_23(bind)
 @src
@@ -284,10 +284,10 @@ def visit_Dataflowcb_6(bind)
 @src
 end
 def visit_Dataflowcb_7(bind)
-bind[6]=[bind[6]]
+bind[7]=[bind[7]]
 end
 def visit_Dataflowcb_8(bind)
-bind[8].each{|v| @marked<<ssanum(v)}
+bind[9].each{|v| @marked<<ssanum(v)}
 end
 def visit_Dataflowcb_9(bind)
 @src
@@ -371,9 +371,6 @@ end
 def root_Dead_Code_Deleter3cb_5(bind)
 @src.reachable=nil;@src.cfg=nil
 end
-def root_Dead_Code_Deleter3cb_6(bind)
-@src
-end
 def traverse_Dead_Code_Deleter3cb_1(bind)
 @src
 end
@@ -405,9 +402,6 @@ def visit_Dead_Code_Deleter3cb_1(bind)
 @src
 end
 def visit_Dead_Code_Deleter3cb_10(bind)
-@src
-end
-def visit_Dead_Code_Deleter3cb_11(bind)
 @reachable[bind[1]] ? bind[1] : Act[]
 end
 def visit_Dead_Code_Deleter3cb_2(bind)
@@ -417,22 +411,22 @@ def visit_Dead_Code_Deleter3cb_3(bind)
 @src.expr
 end
 def visit_Dead_Code_Deleter3cb_4(bind)
-@src
+@reachable[@src] ? @src : bind[5]
 end
 def visit_Dead_Code_Deleter3cb_5(bind)
-@reachable[bind[1]] ? bind[1] : bind[4]
+@src
 end
 def visit_Dead_Code_Deleter3cb_6(bind)
-@src
-end
-def visit_Dead_Code_Deleter3cb_7(bind)
 @reachable[bind[1]] ? bind[1] : Act[]
 end
-def visit_Dead_Code_Deleter3cb_8(bind)
+def visit_Dead_Code_Deleter3cb_7(bind)
 @src
 end
-def visit_Dead_Code_Deleter3cb_9(bind)
+def visit_Dead_Code_Deleter3cb_8(bind)
 @reachable[bind[1].ssaname] ? bind[1] : Act[]
+end
+def visit_Dead_Code_Deleter3cb_9(bind)
+@src
 end
 
 end
@@ -441,6 +435,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='f157c5b70cc2e125c6e8372c72abd083'
+ raise "invalid version" if r!='f736749c36b74a03e36403022507ee50'
 end
   require 'compiled/dataflow_ssa_c'

@@ -78,25 +78,25 @@ def visit_Left_Factorcb_1(bind)
 Or
 end
 def visit_Left_Factorcb_2(bind)
-(first(bind[2]).to_yaml==first(bind[4]).to_yaml) || FAIL
+(first(bind[3]).to_yaml==first(bind[5]).to_yaml) || FAIL
 end
 def visit_Left_Factorcb_3(bind)
-merge(bind[2],bind[4])
+merge(bind[3],bind[5])
 end
 def visit_Left_Factorcb_4(bind)
-first(bind[2]).to_yaml==first(bind[4]).to_yaml
+first(bind[3]).to_yaml==first(bind[5]).to_yaml
 end
 def visit_Left_Factorcb_5(bind)
-bind[3]+[bind[2]]
+bind[4]+[bind[3]]
 end
 def visit_Left_Factorcb_6(bind)
-Or[bind[3]+[bind[2]]]
+Or[bind[4]+[bind[3]]]
 end
 
 end
 
 
 def testversion(r)
- raise "invalid version" if r!='31318d23109cf098548e1b43a4ae681c'
+ raise "invalid version" if r!='2519071b1095d2e7de45085abc042925'
 end
   require 'compiled/left_factor_c'

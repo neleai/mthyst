@@ -15,7 +15,7 @@ end
 amethyst Left_Factor < Traverser {
 	root=traverse
 
-	visit=Or[ traverse .:x factor([],x) ]		
+	visit=Or[ traverse[ .:x factor([],x) ] ]		
 	
 	factor(prev,current) = .:next ( &{first(current).to_yaml==first(next).to_yaml} factor(prev,merge(current,next))
 															  | ~{first(current).to_yaml==first(next).to_yaml} factor(prev+[current],next) )

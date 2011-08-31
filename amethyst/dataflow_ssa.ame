@@ -59,16 +59,17 @@ class Local
 end
 
 amethyst Dataflow < Traverser {
-	root =  @self=>Rule[ {@@bnding=@bnding} @args=>[vars_in:var] {var.each{|v| ssanum(v)}} traverse {@reachable=@@edges.reverse.reachable(@@marked+[ssanum(@body[-1])]); @cfg=@@edges; } {@self}]
+	root =  @self=>Rule[ {@@bnding=@bnding} @args=>[vars_in:var] {var.each{|v| ssanum(v)}} traverse[.* {@reachable=@@edges.reverse.reachable(@@marked+[ssanum(@body[-1])]); @cfg=@@edges; } {@self}] ]
 	
-	visit = Apply[:name traverse @self=>[vars_in:var] {var.each{|v| @@marked<<ssanum(v)}} @self]
+	visit = Apply[:name traverse[.* @self=>[vars_in:var] {var.each{|v| @@marked<<ssanum(v)}} @self] ]
 				| Or[	{[]}:join {oldssanums.clone}:old  ({@@oldssanums=old.clone} traverse_item {join<<oldssanums.clone})* {or_end(join)} @self ]
-				| Many[  {ssanums.clone}:prev traverse {many_end(prev)} @self]
-				| Pass[  traverse {@@marked<<ssanum(@var)} @self ]
-				| Act[ traverse:this {@@marked<<this if @pred || !@pure} 
-							 @ary=>[vars_in]:var ] -> var.each{|v| edges.add(ssanum(v),this); edges.add(this,newssanum(v.clone));}; this
-				| Bind[   traverse  {set_end(@self) }    @self] 
-				| Result[traverse:this @vars=>[vars_in]:var ] -> var.each{|w| @@edges.add(ssanum(w),this) } ; this
+				| Many[  {ssanums.clone}:prev traverse[.* {many_end(prev)} @self] ] 
+				| Pass[  traverse[.* {@@marked<<ssanum(@var)} @self] ]
+				| Act[ traverse[.* {@@marked<<@self if @pred || !@pure} 
+							 @ary=>[vars_in]:var  { var.each{|v| edges.add(ssanum(v),@self); edges.add(@self,newssanum(v.clone));}; @self}
+					]]
+				| Bind[   traverse[.*  {set_end(@self)} @self ] ] 
+				| Result[traverse[.* @vars=>[vars_in]:var { var.each{|w| @@edges.add(ssanum(w),@self) } ; @self} ]]
 	
 				vars_in={ary=[]}
 								( Global[ @self:ary[]  {@@marked<<@self} .*]								
@@ -85,10 +86,10 @@ amethyst Dataflow < Traverser {
 }
 
 amethyst Dead_Code_Deleter3 < Traverser{
-		root = @self=>Rule[ {@@reachable=@reachable} {@reachable=nil;@cfg=nil} traverse @self]
+		root = @self=>Rule[ {@@reachable=@reachable} {@reachable=nil;@cfg=nil} traverse]
 
 		visit = (Act|CAct|Result)[@self:this .*] -> @@reachable[this] ? this : Act[]
-					| Bind[traverse @expr:expr @self:this] -> @@reachable[this] ? this : expr
+					| Bind[traverse[.* @expr:expr {@@reachable[@self] ? @self : expr}]]
           | Local[.* @self:this ] -> @@reachable[this.ssaname] ? this : Act[]
 }
 

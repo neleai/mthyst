@@ -1,5 +1,5 @@
 amethyst Constant_Traverser < Traverser {
-	root = {@@consts=@consts}  {@cfg=nil;@reachable=nil;@consts=nil} traverse  @self
+	root = {@@consts=@consts}  {@cfg=nil;@reachable=nil;@consts=nil} traverse  
 	visit = Bind[ @expr=>traverse_item:expr {@expr=expr}  {@self} ]
 				| Act[.* {@self}]
 				| Local[ .* {@@consts[@ssaname] ? @@consts[@ssaname] : @self } ]

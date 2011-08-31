@@ -126,10 +126,10 @@ def visit_Analyze_Variables2cb_1(bind)
 @src.ary.map{|aa| @variables[aa] }
 end
 def visit_Analyze_Variables2cb_2(bind)
-bind[1]=[bind[1]]
+bind[2]=[bind[2]]
 end
 def visit_Analyze_Variables2cb_3(bind)
-@src.ary=connectstring(bind[3].flatten)
+@src.ary=connectstring(bind[4].flatten)
 end
 def visit_Analyze_Variables2cb_4(bind)
 (@src.ary.size==1&&(@src.ary[0].is_a?(Local)||@src.ary[0].is_a?(Global)||@src.ary[0].is_a?(Key))) ? @src.ary[0] : @src
@@ -138,7 +138,7 @@ def visit_Analyze_Variables2cb_5(bind)
 @src.ary
 end
 def visit_Analyze_Variables2cb_6(bind)
-bind[7]=[bind[7]]
+bind[10]=[bind[10]]
 end
 def visit_Analyze_Variables2cb_7(bind)
 Local
@@ -211,6 +211,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='6edf346634a0b8f5e059a217a3b3fcef'
+ raise "invalid version" if r!='d69e2194d965c197f4f08de2c3413f2c'
 end
   require 'compiled/detect_variables2_c'

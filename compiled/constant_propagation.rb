@@ -34,9 +34,6 @@ end
 def root_Constant_Traversercb_2(bind)
 @src.cfg=nil;@src.reachable=nil;@src.consts=nil
 end
-def root_Constant_Traversercb_3(bind)
-@src
-end
 def traverse_Constant_Traversercb_1(bind)
 @src
 end
@@ -87,6 +84,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='5dc1c7899fc39ca60bfb4cd5355ad935'
+ raise "invalid version" if r!='65509ccf1c5348b6edf10d7080986413'
 end
   require 'compiled/constant_propagation_c'
