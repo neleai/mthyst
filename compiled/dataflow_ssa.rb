@@ -293,7 +293,7 @@ end
 end
 
 
-class Dead_Code_Deleter3 < Traverser_Clone
+class Dead_Code_Deleter3 < Traverser_Clone2
 def self.switchcb_Dead_Code_Deleter35(e)
 return 0 if e<=Bind
 return 1 if e<=Local
@@ -336,19 +336,30 @@ def root_Dead_Code_Deleter3cb_5(bind)
 @src.reachable=nil;@src.cfg=nil
 end
 def traverse_Dead_Code_Deleter3cb_1(bind)
-@src.clone
+@changed
 end
 def traverse_Dead_Code_Deleter3cb_2(bind)
-(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
+@src
 end
 def traverse_Dead_Code_Deleter3cb_3(bind)
-bind[1]=[bind[1]]
+(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
 end
 def traverse_Dead_Code_Deleter3cb_4(bind)
-bind[0].instance_variable_set(bind[4],bind[5])
+bind[4]=[bind[4]]
 end
 def traverse_Dead_Code_Deleter3cb_5(bind)
-bind[0].normalize
+@changed=false
+end
+def traverse_Dead_Code_Deleter3cb_6(bind)
+(bind[2]||=bind[1].clone;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
+end
+def traverse_Dead_Code_Deleter3cb_7(bind)
+if bind[3]
+             @changed=true;bind[2].normalize
+           else
+            @changed=bind[0]
+            @src
+          end
 end
 def traverse_item_Dead_Code_Deleter3cb_1(bind)
 @changed=true
@@ -399,15 +410,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'05274f1a7aa8586d5a4e4d60957d63a4'
+'78041514cdb10249f58983210f5e8c0d'
 end
 def dataflow_ssa_source_hash
-'ae15679d14a7f7a4eb481d4d27d24467'
+'020d6348c7de8636699d4640c2555d6a'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'756de8526db9c54fe793603ebc7c100b'
+'eceac6b925589223be19b3495810b6a7'
 end
   require 'compiled/dataflow_ssa_c'

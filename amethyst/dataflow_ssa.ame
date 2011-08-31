@@ -85,7 +85,7 @@ amethyst Dataflow < Traverser {
 								)* -> ary
 }
 
-amethyst Dead_Code_Deleter3 < Traverser_Clone{
+amethyst Dead_Code_Deleter3 < Traverser_Clone2{
 		root = @self=>Rule[ {@@reachable=@reachable} {@reachable=nil;@cfg=nil} traverse]
 
 		visit = (Act|CAct|Result)[@self:this .*] -> @@reachable[this] ? this : Act[]
