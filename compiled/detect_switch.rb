@@ -90,12 +90,18 @@ def first_Switch_Dataflowcb_18(bind)
 Chars[firstchar(bind[26])]
 end
 def first_Switch_Dataflowcb_19(bind)
-Chars[:anything,:empty]
+Chars[:anything]
 end
 def first_Switch_Dataflowcb_2(bind)
 bind[3].inject{|u,v|u.seqjoin(v)}
 end
 def first_Switch_Dataflowcb_20(bind)
+Chars[:anything]
+end
+def first_Switch_Dataflowcb_21(bind)
+Chars[:anything,:empty]
+end
+def first_Switch_Dataflowcb_22(bind)
 Chars[:anything,:empty]
 end
 def first_Switch_Dataflowcb_3(bind)
@@ -482,6 +488,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='e327c0fdeda0a92e94afea5b81bb662b'
+ raise "invalid version" if r!='3e0e231e236b0c079039e956064a7e2d'
 end
   require 'compiled/detect_switch_c'

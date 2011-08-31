@@ -42,6 +42,8 @@ amethyst Switch_Dataflow {
 				| Many[value:val {val+Chars[:empty]} ]
 				| Act[.* {Chars[:empty]} ]
 				| Apply[ ["seq"] CAct[.:str] {Chars[firstchar(str)]}]
+				| Apply[ ["anything" ] {Chars[:anything]}]
+				| Apply[ ["regch" ] {Chars[:anything]}]
 				| . {Chars[:anything,:empty]}
 
 	value = first
