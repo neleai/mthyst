@@ -170,12 +170,15 @@ end
 
 
 def dead_code_elimination2_compiled_by
-'42'
+'9d12426189ed8023ed76c841d0106625'
 end
 def dead_code_elimination2_source_hash
 '3ddfc0bb46a066e1294930564d5150e4'
 end
 def testversiondead_code_elimination2(r)
- raise "invalid version" if r!='b97e0be1378a696d10361a1b93c1707d'
+ raise "invalid version" if r!=dead_code_elimination2_version
+end
+def dead_code_elimination2_version
+'b97e0be1378a696d10361a1b93c1707d'
 end
   require 'compiled/dead_code_elimination2_c'

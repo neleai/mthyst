@@ -399,12 +399,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'42'
+'9d12426189ed8023ed76c841d0106625'
 end
 def dataflow_ssa_source_hash
 'ae15679d14a7f7a4eb481d4d27d24467'
 end
 def testversiondataflow_ssa(r)
- raise "invalid version" if r!='756de8526db9c54fe793603ebc7c100b'
+ raise "invalid version" if r!=dataflow_ssa_version
+end
+def dataflow_ssa_version
+'756de8526db9c54fe793603ebc7c100b'
 end
   require 'compiled/dataflow_ssa_c'
