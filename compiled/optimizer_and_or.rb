@@ -1,5 +1,5 @@
 
-class Seq_Or_Optimizer < Traverser_Clone
+class Seq_Or_Optimizer < Traverser_Clone2
 def self.switchcb_Seq_Or_Optimizer1(e)
 return 0 if e<=Or
 return 1 if e<=Apply
@@ -57,19 +57,30 @@ def itrans_Seq_Or_Optimizercb_7(bind)
 _append(bind[0],bind[10])
 end
 def traverse_Seq_Or_Optimizercb_1(bind)
-@src.clone
+@changed
 end
 def traverse_Seq_Or_Optimizercb_2(bind)
-(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
+@src
 end
 def traverse_Seq_Or_Optimizercb_3(bind)
-bind[1]=[bind[1]]
+(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
 end
 def traverse_Seq_Or_Optimizercb_4(bind)
-bind[0].instance_variable_set(bind[4],bind[5])
+bind[4]=[bind[4]]
 end
 def traverse_Seq_Or_Optimizercb_5(bind)
-bind[0].normalize
+@changed=false
+end
+def traverse_Seq_Or_Optimizercb_6(bind)
+(bind[2]||=bind[1].clone;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
+end
+def traverse_Seq_Or_Optimizercb_7(bind)
+if bind[3]
+             @changed=true;bind[2].normalize
+           else
+            @changed=bind[0]
+            @src
+          end
 end
 def traverse_item_Seq_Or_Optimizercb_1(bind)
 @changed=true
@@ -115,6 +126,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='5ea8213c2909bd91c5ffaf1edef1c8e9'
+ raise "invalid version" if r!='698e6e511cb4ee2e561e1de1e4ad9129'
 end
   require 'compiled/optimizer_and_or_c'

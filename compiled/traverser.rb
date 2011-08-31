@@ -114,7 +114,22 @@ end
 def traverse_Traverser_Clone2cb_1(bind)
 @changed
 end
-def traverse_Traverser_Clone2cb_10(bind)
+def traverse_Traverser_Clone2cb_2(bind)
+@src
+end
+def traverse_Traverser_Clone2cb_3(bind)
+(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
+end
+def traverse_Traverser_Clone2cb_4(bind)
+bind[4]=[bind[4]]
+end
+def traverse_Traverser_Clone2cb_5(bind)
+@changed=false
+end
+def traverse_Traverser_Clone2cb_6(bind)
+(bind[2]||=bind[1].clone;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
+end
+def traverse_Traverser_Clone2cb_7(bind)
 if bind[3]
              @changed=true;bind[2].normalize
            else
@@ -122,41 +137,17 @@ if bind[3]
             @src
           end
 end
-def traverse_Traverser_Clone2cb_2(bind)
-@src
-end
-def traverse_Traverser_Clone2cb_3(bind)
-puts "enter #{@src.inspect} #{@changed}"
-end
-def traverse_Traverser_Clone2cb_4(bind)
-(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
-end
-def traverse_Traverser_Clone2cb_5(bind)
-bind[4]=[bind[4]]
-end
-def traverse_Traverser_Clone2cb_6(bind)
-@changed=false
-end
-def traverse_Traverser_Clone2cb_7(bind)
-(bind[2]||=bind[1].clone;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
-end
-def traverse_Traverser_Clone2cb_8(bind)
-puts bind[2].inspect
-end
-def traverse_Traverser_Clone2cb_9(bind)
-puts "leave #{bind[2].inspect} #{@changed} #{bind[3]}"
-end
 def traverse_item_Traverser_Clone2cb_1(bind)
-puts bind[0].inspect;@changed=true
+@changed=true
 end
 def traverse_item_Traverser_Clone2cb_2(bind)
 bind[3]<<bind[4]
 end
 def traverse_item_Traverser_Clone2cb_3(bind)
-puts bind[0].inspect;@changed=true
+@changed=true
 end
 def traverse_item_Traverser_Clone2cb_4(bind)
-puts bind[0].inspect;@changed=true
+@changed=true
 end
 
 end
@@ -225,6 +216,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='796620b30cb1ef1b25cf579a5380307a'
+ raise "invalid version" if r!='a316229a7ac5c4b692076103b4874586'
 end
   require 'compiled/traverser_c'

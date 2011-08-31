@@ -26,20 +26,17 @@ amethyst Traverser {
 }
 
 amethyst Traverser_Clone2 {
-  traverse_item = visit:a  {puts a.inspect;@@changed=true} {a}
+  traverse_item = visit:a  {@@changed=true} {a}
                       | Array[ {[]}:ar (traverse_item:{ar<<it})* {ar}]
                       | AmethystAST[ traverse ]
                       | .
   traverse = .*
           {@@changed}:oldchanged {@self}:this {nil}:clon {false}:changed
-          {puts "enter #{@inspect} #{@@changed}"}
           {(@self.instance_variables).map{|v| [v,@self.instance_variable_get(v)] }}=>[
             [ :key {@@changed=false} traverse_item:val
                  { (clon||=this.clone;changed=true;clon.instance_variable_set(key,val)) if @@changed}
-                {puts clon.inspect}
             ]*
           ]
-          {puts "leave #{clon.inspect} #{@@changed} #{changed}"}
           {if changed
              @@changed=true;clon.normalize
            else
