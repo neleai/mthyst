@@ -90,25 +90,25 @@ def visit_Seq_Or_Optimizercb_1(bind)
 Or[{:ary=>@src.ary}]
 end
 def visit_Seq_Or_Optimizercb_2(bind)
-(bind[4]=="apply") || FAIL
+(bind[6]=="apply") || FAIL
 end
 def visit_Seq_Or_Optimizercb_3(bind)
 puts @src.inspect
 end
 def visit_Seq_Or_Optimizercb_4(bind)
-(bind[5].is_a?(CAct)) || FAIL
+(bind[7].is_a?(CAct)) || FAIL
 end
 def visit_Seq_Or_Optimizercb_5(bind)
-Apply[bind[5][0][13...-2]]
+Apply[bind[7][0][13...-2]]
 end
 def visit_Seq_Or_Optimizercb_6(bind)
-(bind[4]=="apply") || FAIL
+(bind[6]=="apply") || FAIL
 end
 def visit_Seq_Or_Optimizercb_7(bind)
-(bind[5].is_a?(Act) && bind[5][0].is_a?(Exp)) || FAIL
+(bind[7].is_a?(Act) && bind[7][0].is_a?(Exp)) || FAIL
 end
 def visit_Seq_Or_Optimizercb_8(bind)
-bind[5][0][0]
+bind[7][0][0]
 end
 def visit_Seq_Or_Optimizercb_9(bind)
 Seq[{:ary=>@src.ary}]
@@ -118,6 +118,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='163aa579601826dbfe5c0ab26db798b7'
+ raise "invalid version" if r!='40a4ef34c70e23e874637da0541ba3ed'
 end
   require 'compiled/optimizer_and_or_c'

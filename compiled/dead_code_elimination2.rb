@@ -113,13 +113,13 @@ def visit_Move_Assignments2cb_1(bind)
 Bind
 end
 def visit_Move_Assignments2cb_10(bind)
-_append(bind[15],bind[19])
+_append(bind[16],bind[20])
 end
 def visit_Move_Assignments2cb_11(bind)
-Seq[{:ary=>bind[10]}]
+Seq[{:ary=>bind[11]}]
 end
 def visit_Move_Assignments2cb_12(bind)
-_Bind(bind[5],bind[13],bind[6])
+_Bind(bind[6],bind[14],bind[7])
 end
 def visit_Move_Assignments2cb_13(bind)
 @src.var
@@ -128,19 +128,19 @@ def visit_Move_Assignments2cb_14(bind)
 @src.to
 end
 def visit_Move_Assignments2cb_15(bind)
-bind[23]=[bind[23]]
+bind[24]=[bind[24]]
 end
 def visit_Move_Assignments2cb_16(bind)
 @src.enter
 end
 def visit_Move_Assignments2cb_17(bind)
-Pass.create( {:ary=>bind[10],:enter=>bind[25],:to=>bind[24],:var=>bind[22] })
+Pass.create( {:ary=>bind[11],:enter=>bind[26],:to=>bind[25],:var=>bind[23] })
 end
 def visit_Move_Assignments2cb_18(bind)
-_Bind(bind[5],bind[13],bind[6])
+_Bind(bind[6],bind[14],bind[7])
 end
 def visit_Move_Assignments2cb_19(bind)
-_Bind(bind[5],bind[13],bind[6])
+_Bind(bind[6],bind[14],bind[7])
 end
 def visit_Move_Assignments2cb_2(bind)
 @src.name
@@ -152,19 +152,19 @@ def visit_Move_Assignments2cb_4(bind)
 @src.append
 end
 def visit_Move_Assignments2cb_5(bind)
-bind[4]=[bind[4]]
+bind[5]=[bind[5]]
 end
 def visit_Move_Assignments2cb_6(bind)
-_append(bind[8],bind[9])
+_append(bind[9],bind[10])
 end
 def visit_Move_Assignments2cb_7(bind)
-Or[{:ary=>bind[10]}]
+Or[{:ary=>bind[11]}]
 end
 def visit_Move_Assignments2cb_8(bind)
-_Bind(bind[5],bind[13],bind[6])
+_Bind(bind[6],bind[14],bind[7])
 end
 def visit_Move_Assignments2cb_9(bind)
-bind[17]=[bind[17]]
+bind[18]=[bind[18]]
 end
 
 end
@@ -173,6 +173,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='aa14ac0526045fe69c03f0b7816d7563'
+ raise "invalid version" if r!='0cba5e17348add00dce0521d705551de'
 end
   require 'compiled/dead_code_elimination2_c'

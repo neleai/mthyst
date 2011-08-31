@@ -3,7 +3,7 @@ amethyst Move_Assignments2 < Traverser {
 
 	root=traverse 
 	
-	visit = Bind[@name:name traverse @expr:expr @append:append {expr}=>move(append,name) ]
+	visit = Bind[@name:name traverse[.* @expr:expr @append:append {expr}=>move(append,name) ]]
 
 	move(append,name) = Or[ move(append,name)*:ary {Or[{:ary=>ary}]} ]
 								| Seq[ (:el (&eof {el}=>move(append,name) | {el}) )*:ary  {Seq[{:ary=>ary}]} ] 
