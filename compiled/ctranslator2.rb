@@ -109,7 +109,7 @@ def addlambda_AmethystCTranslatorcb_3(bind)
 @faillabel=bind[1] 
 end
 def addlambda_AmethystCTranslatorcb_4(bind)
-@faillabel=bind[2]; bind[5] 
+@faillabel=bind[2]; bind[4] 
 end
 def addlambda_AmethystCTranslatorcb_5(bind)
 h="VALUE #{bind[0]}(VALUE self,VALUE bind)"
@@ -424,7 +424,7 @@ ame_setsrc(self,#{bget(@src.var)}); ame_setpos(self,0); ame_setlen(self,FIX2INT(
 " 
 end
 def trans_AmethystCTranslatorcb_65(bind)
-_append(bind[77],bind[78])
+_append(bind[76],bind[77])
 end
 def trans_AmethystCTranslatorcb_66(bind)
 bind[16]*""
@@ -448,13 +448,13 @@ def trans_AmethystCTranslatorcb_71(bind)
 @faillabel=bind[12]; bind[13] 
 end
 def trans_AmethystCTranslatorcb_72(bind)
-"int #{bind[7]}; while(1){#{bind[7]}=ame_getpos(self); #{bind[16]} if (#{iget("stop")}!=Qnil){{#{bind[7]}=ame_getpos(self);goto #{bind[81]};} } } #{bind[81]}: #{iset("stop","Qnil")};  ame_setpos(self,#{bind[7]}); "
+"int #{bind[7]}; while(1){#{bind[7]}=ame_getpos(self); #{bind[16]} if (#{iget("stop")}!=Qnil){{#{bind[7]}=ame_getpos(self);goto #{bind[80]};} } } #{bind[80]}: #{iset("stop","Qnil")};  ame_setpos(self,#{bind[7]}); "
 end
 def trans_AmethystCTranslatorcb_73(bind)
 @defs<<@src.defs if @src.defs
 end
 def trans_AmethystCTranslatorcb_74(bind)
-"char #{bind[84]}=#{@src.act};  switch(#{bind[84]}){"
+"char #{bind[83]}=#{@src.act};  switch(#{bind[83]}){"
 end
 def trans_AmethystCTranslatorcb_75(bind)
 bind[17]+=bind[31].map{|n| n==:default ? "default:;" : "case #{n}:;"}*"" + " #{bind[16]} break;"
@@ -476,6 +476,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='3573e678e8ebfbca0df60616bc85996c'
+ raise "invalid version" if r!='8c5c3ad2c7d3658fc473310770ae5581'
 end
   require 'compiled/ctranslator2_c'

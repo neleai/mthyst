@@ -26,8 +26,7 @@ class Gram
 			puts r.inspect if debug
 		}
 		r=propagate_consts(r)
-	r=deep_clone(r)
- [ Dataflow, 
+ [ Seq_Or_Optimizer,Dataflow, 
 			Dead_Code_Deleter3,Seq_Or_Optimizer,
 			Left_Factor,Seq_Or_Optimizer
 ].each{|o|

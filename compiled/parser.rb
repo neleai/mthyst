@@ -85,13 +85,13 @@ def choice_AmethystParsercb_1(bind)
 _append(bind[0],bind[1])
 end
 def choice_AmethystParsercb_2(bind)
-_append(bind[2],bind[4])
+_append(bind[2],bind[3])
 end
 def choice_AmethystParsercb_3(bind)
-_append(bind[0],bind[5])
+_append(bind[0],bind[4])
 end
 def choice_AmethystParsercb_4(bind)
-Or.create( {:ary=>bind[7] })
+Or.create( {:ary=>bind[6] })
 end
 def clas_AmethystParsercb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -512,6 +512,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='0b526ec80fcb5d6c5228b695d5b220d7'
+ raise "invalid version" if r!='f0450e5a43ead234ecdb5857d543f02d'
 end
   require 'compiled/parser_c'
