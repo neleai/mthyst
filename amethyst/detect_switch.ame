@@ -13,6 +13,12 @@ class Chars
 		c.ary=ary
 		c
 	end
+	def self.top
+		Chars[:anything]
+	end
+	def self.empty
+		Chars[:empty]
+	end
 	def +(a)
 		c=Chars.new
 		c.ary=(ary+a.ary).uniq
@@ -39,12 +45,12 @@ amethyst Switch_Dataflow {
 				| Or[value*:{it.inject(:+)}]
 				| Switch[value*:{it.inject(:+)}]
 				| Bind[@expr=>value]
-				| Many[value:val {val+Chars[:empty]} ]
-				| Act[.* {Chars[:empty]} ]
+				| Many[value:val {val+Chars.empty} ]
+				| Act[.* {Chars.empty} ]
 				| Apply[ ["seq"] CAct[.:str] {Chars[firstchar(str)]}]
-				| Apply[ ["anything" ] {Chars[:anything]}]
-				| Apply[ ["regch" ] {Chars[:anything]}]
-				| . {Chars[:anything,:empty]}
+				| Apply[ ["anything" ] {Chars.top}]
+				| Apply[ ["regch" ] {Chars.top}]
+				| . {Chars.top+Chars.empty}
 
 	value = first
 }

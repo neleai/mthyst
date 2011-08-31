@@ -13,6 +13,12 @@ class Chars
 		c.ary=ary
 		c
 	end
+	def self.top
+		Chars[:anything]
+	end
+	def self.empty
+		Chars[:empty]
+	end
 	def +(a)
 		c=Chars.new
 		c.ary=(ary+a.ary).uniq
@@ -69,19 +75,19 @@ def first_Switch_Dataflowcb_11(bind)
 bind[15]=[bind[15]]
 end
 def first_Switch_Dataflowcb_12(bind)
-Chars[:anything,:empty]
+Chars.top+Chars.empty
 end
 def first_Switch_Dataflowcb_13(bind)
-bind[19]+Chars[:empty]
+bind[19]+Chars.empty
 end
 def first_Switch_Dataflowcb_14(bind)
-Chars[:anything,:empty]
+Chars.top+Chars.empty
 end
 def first_Switch_Dataflowcb_15(bind)
-Chars[:empty]
+Chars.empty
 end
 def first_Switch_Dataflowcb_16(bind)
-Chars[:anything,:empty]
+Chars.top+Chars.empty
 end
 def first_Switch_Dataflowcb_17(bind)
 CAct
@@ -90,22 +96,22 @@ def first_Switch_Dataflowcb_18(bind)
 Chars[firstchar(bind[26])]
 end
 def first_Switch_Dataflowcb_19(bind)
-Chars[:anything]
+Chars.top
 end
 def first_Switch_Dataflowcb_2(bind)
 bind[3].inject{|u,v|u.seqjoin(v)}
 end
 def first_Switch_Dataflowcb_20(bind)
-Chars[:anything]
+Chars.top
 end
 def first_Switch_Dataflowcb_21(bind)
-Chars[:anything,:empty]
+Chars.top+Chars.empty
 end
 def first_Switch_Dataflowcb_22(bind)
-Chars[:anything,:empty]
+Chars.top+Chars.empty
 end
 def first_Switch_Dataflowcb_3(bind)
-Chars[:anything,:empty]
+Chars.top+Chars.empty
 end
 def first_Switch_Dataflowcb_4(bind)
 _append(bind[7],bind[8])
@@ -114,7 +120,7 @@ def first_Switch_Dataflowcb_5(bind)
 bind[3].inject(:+)
 end
 def first_Switch_Dataflowcb_6(bind)
-Chars[:anything,:empty]
+Chars.top+Chars.empty
 end
 def first_Switch_Dataflowcb_7(bind)
 _append(bind[11],bind[12])
@@ -123,7 +129,7 @@ def first_Switch_Dataflowcb_8(bind)
 bind[3].inject(:+)
 end
 def first_Switch_Dataflowcb_9(bind)
-Chars[:anything,:empty]
+Chars.top+Chars.empty
 end
 def spaces_Switch_Dataflowcb_1(bind)
 /[\s\t\r\n\f]/
