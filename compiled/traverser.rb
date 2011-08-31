@@ -1,17 +1,58 @@
-class Traverser < Amethyst
-	def replace_by
-	end
-end
-class Traverser < Amethyst
-def self.switchcb_Traverser1(e)
+class Traverser_Clone < Amethyst
+def self.switchcb_Traverser_Clone1(e)
 return 0 if e<=Array
 return 1 if e<=AmethystAST
 return 2 if e<=Object
 return 3
 end
-@@switchhashTraverser1=Hash.new{|h,k| h[k]=switchcb_Traverser1(k)}
-def switchcbTraverser1(e)
-@@switchhashTraverser1[e.class]
+@@switchhashTraverser_Clone1=Hash.new{|h,k| h[k]=switchcb_Traverser_Clone1(k)}
+def switchcbTraverser_Clone1(e)
+@@switchhashTraverser_Clone1[e.class]
+end
+def clas_Traverser_Clonecb_1(bind)
+(bind[0].is_a?(bind[1])) || FAIL
+end
+def fails_Traverser_Clonecb_1(bind)
+(false) || FAIL
+end
+def traverse_Traverser_Clonecb_1(bind)
+@src.clone
+end
+def traverse_Traverser_Clonecb_2(bind)
+(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
+end
+def traverse_Traverser_Clonecb_3(bind)
+bind[1]=[bind[1]]
+end
+def traverse_Traverser_Clonecb_4(bind)
+bind[0].instance_variable_set(bind[4],bind[5])
+end
+def traverse_item_Traverser_Clonecb_1(bind)
+@changed=true
+end
+def traverse_item_Traverser_Clonecb_2(bind)
+bind[3]<<bind[4]
+end
+def traverse_item_Traverser_Clonecb_3(bind)
+@changed=true
+end
+def traverse_item_Traverser_Clonecb_4(bind)
+@changed=true
+end
+
+end
+
+
+class Traverser < Amethyst
+def self.switchcb_Traverser2(e)
+return 0 if e<=Array
+return 1 if e<=AmethystAST
+return 2 if e<=Object
+return 3
+end
+@@switchhashTraverser2=Hash.new{|h,k| h[k]=switchcb_Traverser2(k)}
+def switchcbTraverser2(e)
+@@switchhashTraverser2[e.class]
 end
 def clas_Traversercb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -49,17 +90,18 @@ end
 
 end
 
+ 
 
 class Detector < Traverser
-def self.switchcb_Detector2(e)
+def self.switchcb_Detector3(e)
 return 0 if e<=Array
 return 1 if e<=AmethystAST
 return 2 if e<=Object
 return 3
 end
-@@switchhashDetector2=Hash.new{|h,k| h[k]=switchcb_Detector2(k)}
-def switchcbDetector2(e)
-@@switchhashDetector2[e.class]
+@@switchhashDetector3=Hash.new{|h,k| h[k]=switchcb_Detector3(k)}
+def switchcbDetector3(e)
+@@switchhashDetector3[e.class]
 end
 def clas_Detectorcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -111,6 +153,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='6cb62f525997d74445adaa25c84614e3'
+ raise "invalid version" if r!='10a548bba7d494a9a65ea7ca788af5d1'
 end
   require 'compiled/traverser_c'

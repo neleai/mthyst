@@ -1,7 +1,6 @@
 require 'runtime'
-require 'bootstrap'
 
-class Amethyst
+class Amethyst < AmethystCore
 	def self::load(g)
     evalgrammar(grammar(filename))	
 	end

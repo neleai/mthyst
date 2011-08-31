@@ -3,7 +3,6 @@ require 'set'
 $OPT="-O2"
 COMPILED=["amethyst","traverser","detect_variables2","ctranslator2","parser","optimizer_and_or","dead_code_elimination2","dataflow_ssa","inliner2",
 "detect_switch","left_factor","constant_propagation"]
-require 'constant_propagation2'
 class Gram
 	attr_accessor :name,:parent,:rules
 	def initialize(grammar)
@@ -148,6 +147,8 @@ Compiler::init
 COMPILED.each{|opt|
 require "compiled/#{opt}"
 }
+require 'constant_propagation2'
+
 
 
 def translate(s)

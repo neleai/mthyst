@@ -1,5 +1,5 @@
 
-amethyst Seq_Or_Optimizer < Traverser{
+amethyst Seq_Or_Optimizer < Traverser_Clone{
 	itrans =   (Grammar[ @rules=>[ Rule[root]*:rules ] {@rules=rules} @self] | .)*
 
 	root = traverse

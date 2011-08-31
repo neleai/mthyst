@@ -134,7 +134,7 @@ ame_setsrc(self,rb_ary_entry(bind,3)); ame_setpos(self,0); ame_setlen(self,FIX2I
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos2); ame_setlen(self,oldlen1);
 	if(fail1) goto fail;
-it=CALL(traverse_Seq_Or_Optimizercb_5,1,bind); 
+it=rb_ary_entry(bind,0);
  rb_ary_store(bind,6,it); it=rb_ary_entry(bind,6);
 return it;
 fail: return failobj; }
@@ -284,7 +284,7 @@ it=rb_ary_entry(bind,14);
 return it;
 fail: return failobj; }
 void Init_optimizer_and_or_c(){ 
- cls_Seq_Or_Optimizer=rb_define_class("Seq_Or_Optimizer",rb_const_get(rb_cObject,rb_intern("Traverser"))); 
+ cls_Seq_Or_Optimizer=rb_define_class("Seq_Or_Optimizer",rb_const_get(rb_cObject,rb_intern("Traverser_Clone"))); 
 failobj=rb_eval_string("FAIL");
 rb_define_method(cls_Seq_Or_Optimizer,"clas",Seq_Or_Optimizer_clas,1);
 rb_define_method(cls_Seq_Or_Optimizer,"empty",Seq_Or_Optimizer_empty,0);
@@ -295,4 +295,4 @@ rb_define_method(cls_Seq_Or_Optimizer,"root",Seq_Or_Optimizer_root,0);
 rb_define_method(cls_Seq_Or_Optimizer,"traverse",Seq_Or_Optimizer_traverse,0);
 rb_define_method(cls_Seq_Or_Optimizer,"traverse_item",Seq_Or_Optimizer_traverse_item,0);
 rb_define_method(cls_Seq_Or_Optimizer,"visit",Seq_Or_Optimizer_visit,0);
- rb_eval_string("testversion('5ea8213c2909bd91c5ffaf1edef1c8e9')");}
+ rb_eval_string("testversion('439a0cbf78d7f6be97314f94e6a32f80')");}
