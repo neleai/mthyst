@@ -293,7 +293,7 @@ end
 end
 
 
-class Dead_Code_Deleter3 < Traverser
+class Dead_Code_Deleter3 < Traverser_Clone
 def self.switchcb_Dead_Code_Deleter35(e)
 return 0 if e<=Bind
 return 1 if e<=Local
@@ -336,7 +336,7 @@ def root_Dead_Code_Deleter3cb_5(bind)
 @src.reachable=nil;@src.cfg=nil
 end
 def traverse_Dead_Code_Deleter3cb_1(bind)
-@src
+@src.clone
 end
 def traverse_Dead_Code_Deleter3cb_2(bind)
 (@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
@@ -346,9 +346,6 @@ bind[1]=[bind[1]]
 end
 def traverse_Dead_Code_Deleter3cb_4(bind)
 bind[0].instance_variable_set(bind[4],bind[5])
-end
-def traverse_Dead_Code_Deleter3cb_5(bind)
-@src
 end
 def traverse_item_Dead_Code_Deleter3cb_1(bind)
 @changed=true
@@ -363,31 +360,34 @@ def traverse_item_Dead_Code_Deleter3cb_4(bind)
 @changed=true
 end
 def visit_Dead_Code_Deleter3cb_1(bind)
-@src.expr
+@src
+end
+def visit_Dead_Code_Deleter3cb_10(bind)
+@reachable[bind[8]] ? bind[8] : Act[]
 end
 def visit_Dead_Code_Deleter3cb_2(bind)
-@reachable[@src] ? @src : bind[2]
+@src.expr
 end
 def visit_Dead_Code_Deleter3cb_3(bind)
-@src
+@reachable[bind[1]] ? @src : bind[3]
 end
 def visit_Dead_Code_Deleter3cb_4(bind)
-@reachable[bind[7].ssaname] ? bind[7] : Act[]
-end
-def visit_Dead_Code_Deleter3cb_5(bind)
-Act
-end
-def visit_Dead_Code_Deleter3cb_6(bind)
-CAct
-end
-def visit_Dead_Code_Deleter3cb_7(bind)
-Result
-end
-def visit_Dead_Code_Deleter3cb_8(bind)
 @src
 end
+def visit_Dead_Code_Deleter3cb_5(bind)
+@reachable[bind[8].ssaname] ? bind[8] : Act[]
+end
+def visit_Dead_Code_Deleter3cb_6(bind)
+Act
+end
+def visit_Dead_Code_Deleter3cb_7(bind)
+CAct
+end
+def visit_Dead_Code_Deleter3cb_8(bind)
+Result
+end
 def visit_Dead_Code_Deleter3cb_9(bind)
-@reachable[bind[7]] ? bind[7] : Act[]
+@src
 end
 
 end
@@ -396,6 +396,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='b108037b52747a909de029fa3b1f91ac'
+ raise "invalid version" if r!='05630129d0e3920e03ccc691668aa726'
 end
   require 'compiled/dataflow_ssa_c'

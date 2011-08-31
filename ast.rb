@@ -109,7 +109,7 @@ class <<Or
 	end
 end
 
-[Bnding,Global,Local,Act,CAct].each{|c| eval("class #{c} 
+[Apply,Bnding,Global,Local,Act,CAct].each{|c| eval("class #{c} 
  def hash
 	ary.hash
  end
