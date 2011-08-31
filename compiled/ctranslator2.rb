@@ -126,9 +126,6 @@ end
 def clas_AmethystCTranslatorcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
-def empty_AmethystCTranslatorcb_1(bind)
-
-end
 def fails_AmethystCTranslatorcb_1(bind)
 (false) || FAIL
 end
@@ -479,6 +476,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='af7cb1dc0711f8f3bfb87e40a48a3bb0'
+ raise "invalid version" if r!='3573e678e8ebfbca0df60616bc85996c'
 end
   require 'compiled/ctranslator2_c'

@@ -19,7 +19,7 @@ return it;
 fail: return failobj; }
 VALUE Analyze_Variables2_empty(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(0);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=CALL(empty_Analyze_Variables2cb_1,1,bind); 
+it=Qnil;it=Qnil;
 return it;
 fail: return failobj; }
 VALUE Analyze_Variables2_eof(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -46,7 +46,7 @@ return it;
 fail: return failobj; }
 VALUE Analyze_Variables2_flat(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(7);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=rb_ary_new3(0);
+it=rb_ary_new3(0);it=rb_ary_new3(0);
  rb_ary_store(bind,0,it); int oldpos1; while(1){oldpos1=ame_getpos(self); char chr1=FIX2INT(CALL(switchcbAnalyze_Variables23,1,ame_curobj(self)));  switch(chr1){case 0:; int oldpos2=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
    it=AmethystCore_anything(self ); FAILTEST(alt1_2);
@@ -94,7 +94,7 @@ return it;
 fail: return failobj; }
 VALUE Analyze_Variables2_itrans(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(12);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=rb_ary_new3(0);
+it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);
  rb_ary_store(bind,0,it); int oldpos1; while(1){oldpos1=ame_getpos(self); char chr1=FIX2INT(CALL(switchcbAnalyze_Variables22,1,ame_curobj(self)));  switch(chr1){case 0:; int oldpos2=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
    it=AmethystCore_anything(self ); FAILTEST(alt1_2);
@@ -388,7 +388,7 @@ return it;
 fail: return failobj; }
 VALUE Remap_Acts_empty(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(0);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=CALL(empty_Remap_Actscb_1,1,bind); 
+it=Qnil;it=Qnil;
 return it;
 fail: return failobj; }
 VALUE Remap_Acts_eof(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -569,4 +569,4 @@ rb_define_method(cls_Remap_Acts,"root",Remap_Acts_root,0);
 rb_define_method(cls_Remap_Acts,"traverse",Remap_Acts_traverse,0);
 rb_define_method(cls_Remap_Acts,"traverse_item",Remap_Acts_traverse_item,0);
 rb_define_method(cls_Remap_Acts,"visit",Remap_Acts_visit,0);
- rb_eval_string("testversion('d69e2194d965c197f4f08de2c3413f2c')");}
+ rb_eval_string("testversion('fbe017776a99232b07722d3b316172e5')");}

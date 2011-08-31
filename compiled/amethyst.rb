@@ -104,6 +104,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='2c50929a79eb78de81dafe3ff5947e2c'
+ raise "invalid version" if r!='e55a9b3b73405cf65e01c5c8170f3130'
 end
   require 'compiled/amethyst_c'

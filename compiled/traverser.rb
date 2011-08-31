@@ -16,9 +16,6 @@ end
 def clas_Traversercb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
-def empty_Traversercb_1(bind)
-
-end
 def fails_Traversercb_1(bind)
 (false) || FAIL
 end
@@ -67,9 +64,6 @@ end
 def clas_Detectorcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
-def empty_Detectorcb_1(bind)
-
-end
 def fails_Detectorcb_1(bind)
 (false) || FAIL
 end
@@ -117,6 +111,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='1955538b077a50b210f839690fc3fe07'
+ raise "invalid version" if r!='6cb62f525997d74445adaa25c84614e3'
 end
   require 'compiled/traverser_c'

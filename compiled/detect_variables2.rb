@@ -41,9 +41,6 @@ end
 def clas_Analyze_Variables2cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
-def empty_Analyze_Variables2cb_1(bind)
-
-end
 def fails_Analyze_Variables2cb_1(bind)
 (false) || FAIL
 end
@@ -167,9 +164,6 @@ end
 def clas_Remap_Actscb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
-def empty_Remap_Actscb_1(bind)
-
-end
 def fails_Remap_Actscb_1(bind)
 (false) || FAIL
 end
@@ -211,6 +205,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='d69e2194d965c197f4f08de2c3413f2c'
+ raise "invalid version" if r!='fbe017776a99232b07722d3b316172e5'
 end
   require 'compiled/detect_variables2_c'

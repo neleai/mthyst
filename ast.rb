@@ -109,6 +109,27 @@ class <<Or
 	end
 end
 
+[Bnding,Global,Local,Act,CAct].each{|c| eval("class #{c} 
+ def hash
+	ary.hash
+ end
+ def ==(a)
+    return false unless a.is_a? #{c}
+    return self.ary==a.ary
+  end
+	alias_method :eql?,:==
+end")}
+
+class Key
+	def hash
+		name.hash
+	end
+	def ==(a)
+		return false unless a.is_a? Key
+		return self.name==a.name
+	end
+	alias_method :eql?,:==
+end
 
 
 class PureAct
@@ -168,37 +189,6 @@ class <<Lookahead
   end
 end
 
-class Bnding
-	def hash
-		ary.hash
-	end
-	def ==(a)
-		return false unless a.is_a? Bnding
-    return self.ary==a.ary
-	end
-	alias_method :eql?,:==
-end
-
-class Global
-	def hash
-		ary.hash
-	end
-	def ==(a)
-		return false unless a.is_a? Global
-    return self.ary==a.ary
-	end
-	alias_method :eql?,:==
-end
-class Key
-	def hash
-		ary.hash
-	end
-	def ==(a)
-		return false unless a.is_a? Key
-    return self.name==a.name
-	end
-	alias_method :eql?,:==
-end
 class <<Local
 	def [](*a)
     r=super
@@ -213,10 +203,6 @@ class Local
 	def hash
 		@hash
 	end
-	def ==(a)	
-		return false unless a.is_a? Local
-		return self.ary==a.ary
-	end
 	def desc
 		return @@numb[ary[0]][self] if @@numb[ary[0]][self]
 		 @@numb[ary[0]][self]="#{ary[0]}_#{@@numb[ary[0]].size+1}"
@@ -224,7 +210,7 @@ class Local
 	def self.resetnumbering
     @@numb=Hash.new{|h,k|h[k]={}}
 	end
-	alias_method :eql?,:==
+
 end
 $varhash={}
 def _Local(name)

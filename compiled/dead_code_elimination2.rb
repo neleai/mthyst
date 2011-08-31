@@ -34,9 +34,6 @@ end
 def clas_Move_Assignments2cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
-def empty_Move_Assignments2cb_1(bind)
-
-end
 def fails_Move_Assignments2cb_1(bind)
 (false) || FAIL
 end
@@ -173,6 +170,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='0cba5e17348add00dce0521d705551de'
+ raise "invalid version" if r!='b97e0be1378a696d10361a1b93c1707d'
 end
   require 'compiled/dead_code_elimination2_c'

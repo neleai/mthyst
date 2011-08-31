@@ -103,9 +103,6 @@ end
 def clas_Dataflowcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
-def empty_Dataflowcb_1(bind)
-
-end
 def fails_Dataflowcb_1(bind)
 (false) || FAIL
 end
@@ -350,9 +347,6 @@ end
 def clas_Dead_Code_Deleter3cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
-def empty_Dead_Code_Deleter3cb_1(bind)
-
-end
 def fails_Dead_Code_Deleter3cb_1(bind)
 (false) || FAIL
 end
@@ -435,6 +429,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='f736749c36b74a03e36403022507ee50'
+ raise "invalid version" if r!='dcc921f4af982d42003b4d09c9b0f729'
 end
   require 'compiled/dataflow_ssa_c'

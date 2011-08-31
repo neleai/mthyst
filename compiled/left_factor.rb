@@ -26,9 +26,6 @@ end
 def clas_Left_Factorcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
-def empty_Left_Factorcb_1(bind)
-
-end
 def factor_Left_Factorcb_1(bind)
 (first(bind[1]).to_yaml==first(bind[0]).to_yaml) || FAIL
 end
@@ -97,6 +94,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='2519071b1095d2e7de45085abc042925'
+ raise "invalid version" if r!='724a17fd0e2cce8379251e5e98720235'
 end
   require 'compiled/left_factor_c'

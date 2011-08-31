@@ -18,7 +18,7 @@ return it;
 fail: return failobj; }
 VALUE Seq_Or_Optimizer_empty(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(0);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=CALL(empty_Seq_Or_Optimizercb_1,1,bind); 
+it=Qnil;it=Qnil;
 return it;
 fail: return failobj; }
 VALUE Seq_Or_Optimizer_eof(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -45,7 +45,7 @@ return it;
 fail: return failobj; }
 VALUE Seq_Or_Optimizer_itrans(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(12);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=rb_ary_new3(0);
+it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);
  rb_ary_store(bind,0,it); int oldpos1; while(1){oldpos1=ame_getpos(self); char chr1=FIX2INT(CALL(switchcbSeq_Or_Optimizer2,1,ame_curobj(self)));  switch(chr1){case 0:; int oldpos2=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
    it=AmethystCore_anything(self ); FAILTEST(alt1_2);
@@ -295,4 +295,4 @@ rb_define_method(cls_Seq_Or_Optimizer,"root",Seq_Or_Optimizer_root,0);
 rb_define_method(cls_Seq_Or_Optimizer,"traverse",Seq_Or_Optimizer_traverse,0);
 rb_define_method(cls_Seq_Or_Optimizer,"traverse_item",Seq_Or_Optimizer_traverse_item,0);
 rb_define_method(cls_Seq_Or_Optimizer,"visit",Seq_Or_Optimizer_visit,0);
- rb_eval_string("testversion('40a4ef34c70e23e874637da0541ba3ed')");}
+ rb_eval_string("testversion('5ea8213c2909bd91c5ffaf1edef1c8e9')");}
