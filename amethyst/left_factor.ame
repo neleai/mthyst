@@ -17,7 +17,7 @@ amethyst Left_Factor < Traverser_Clone {
 
 	visit=Or[ traverse[ .:x factor([],x) ] ]		
 	
-	factor(prev,current) = .:next ( &{first(current).to_yaml==first(next).to_yaml} factor(prev,merge(current,next))
-															  | ~{first(current).to_yaml==first(next).to_yaml} factor(prev+[current],next) )
+	factor(prev,current) = .:next ( &{first(current)==first(next)} factor(prev,merge(current,next))
+															  | ~{first(current)==first(next)} factor(prev+[current],next) )
 											 | eof -> Or[prev+[current]]
 }

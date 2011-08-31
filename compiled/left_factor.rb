@@ -27,13 +27,13 @@ def clas_Left_Factorcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
 def factor_Left_Factorcb_1(bind)
-(first(bind[1]).to_yaml==first(bind[0]).to_yaml) || FAIL
+(first(bind[1])==first(bind[0])) || FAIL
 end
 def factor_Left_Factorcb_2(bind)
 merge(bind[1],bind[0])
 end
 def factor_Left_Factorcb_3(bind)
-first(bind[1]).to_yaml==first(bind[0]).to_yaml
+first(bind[1])==first(bind[0])
 end
 def factor_Left_Factorcb_4(bind)
 bind[2]+[bind[1]]
@@ -72,13 +72,13 @@ def visit_Left_Factorcb_1(bind)
 Or
 end
 def visit_Left_Factorcb_2(bind)
-(first(bind[3]).to_yaml==first(bind[5]).to_yaml) || FAIL
+(first(bind[3])==first(bind[5])) || FAIL
 end
 def visit_Left_Factorcb_3(bind)
 merge(bind[3],bind[5])
 end
 def visit_Left_Factorcb_4(bind)
-first(bind[3]).to_yaml==first(bind[5]).to_yaml
+first(bind[3])==first(bind[5])
 end
 def visit_Left_Factorcb_5(bind)
 bind[4]+[bind[3]]
