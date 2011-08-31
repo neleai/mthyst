@@ -1,4 +1,4 @@
-class Constant_Traverser < Traverser
+class Constant_Traverser < Traverser_Clone
 def self.switchcb_Constant_Traverser1(e)
 return 0 if e<=Local
 return 1 if e<=Bind
@@ -32,7 +32,7 @@ def root_Constant_Traversercb_2(bind)
 @src.cfg=nil;@src.reachable=nil;@src.consts=nil
 end
 def traverse_Constant_Traversercb_1(bind)
-@src
+@src.clone
 end
 def traverse_Constant_Traversercb_2(bind)
 (@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
@@ -42,9 +42,6 @@ bind[1]=[bind[1]]
 end
 def traverse_Constant_Traversercb_4(bind)
 bind[0].instance_variable_set(bind[4],bind[5])
-end
-def traverse_Constant_Traversercb_5(bind)
-@src
 end
 def traverse_item_Constant_Traversercb_1(bind)
 @changed=true
@@ -81,6 +78,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='6738a1739b6bce89a164a551decd1cfa'
+ raise "invalid version" if r!='585ba814acc845eb5890d3f59a3d96f3'
 end
   require 'compiled/constant_propagation_c'

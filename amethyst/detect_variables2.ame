@@ -1,4 +1,4 @@
-amethyst Analyze_Variables2 < Traverser {
+amethyst Analyze_Variables2 < Traverser_Clone {
 	itrans =   (Grammar[ @rules=>[ Rule[root]*:rules ] {@rules=rules} @self] | .)*
   root = @self=>Rule[ {@@bnding=@bnding} {@@variables=Hash.new{|k,v| k[v]=v} ;(@locals+@args).each{|w| @@variables[w[0]]=w}} {@@locals=@locals} 
 traverse[.*	{@locals=nil} @self] ]
@@ -10,7 +10,7 @@ traverse[.*	{@locals=nil} @self] ]
 	flat= (Args[flat] | Strin[flat] |	. )*
 }
 
-amethyst Remap_Acts < Traverser{
+amethyst Remap_Acts < Traverser_Clone{
 	root = traverse
 	
 	visit = Act[traverse[.* {@pure ? PureAct[@ary] : Act[@ary,@pred]}] ]

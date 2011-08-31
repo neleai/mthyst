@@ -1,4 +1,4 @@
-class Analyze_Variables2 < Traverser
+class Analyze_Variables2 < Traverser_Clone
 def self.switchcb_Analyze_Variables21(e)
 return 0 if e<=Args
 return 1 if e<=Act
@@ -93,7 +93,7 @@ def root_Analyze_Variables2cb_8(bind)
 @src
 end
 def traverse_Analyze_Variables2cb_1(bind)
-@src
+@src.clone
 end
 def traverse_Analyze_Variables2cb_2(bind)
 (@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
@@ -103,9 +103,6 @@ bind[1]=[bind[1]]
 end
 def traverse_Analyze_Variables2cb_4(bind)
 bind[0].instance_variable_set(bind[4],bind[5])
-end
-def traverse_Analyze_Variables2cb_5(bind)
-@src
 end
 def traverse_item_Analyze_Variables2cb_1(bind)
 @changed=true
@@ -150,7 +147,7 @@ end
 end
 
 
-class Remap_Acts < Traverser
+class Remap_Acts < Traverser_Clone
 def self.switchcb_Remap_Acts5(e)
 return 0 if e<=Array
 return 1 if e<=AmethystAST
@@ -168,7 +165,7 @@ def fails_Remap_Actscb_1(bind)
 (false) || FAIL
 end
 def traverse_Remap_Actscb_1(bind)
-@src
+@src.clone
 end
 def traverse_Remap_Actscb_2(bind)
 (@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
@@ -178,9 +175,6 @@ bind[1]=[bind[1]]
 end
 def traverse_Remap_Actscb_4(bind)
 bind[0].instance_variable_set(bind[4],bind[5])
-end
-def traverse_Remap_Actscb_5(bind)
-@src
 end
 def traverse_item_Remap_Actscb_1(bind)
 @changed=true
@@ -205,6 +199,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='fbe017776a99232b07722d3b316172e5'
+ raise "invalid version" if r!='c2b896a26d9bc8b622b0140111b81922'
 end
   require 'compiled/detect_variables2_c'
