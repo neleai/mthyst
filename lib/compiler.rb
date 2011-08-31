@@ -107,6 +107,10 @@ end
 	end
 	def compile(file,out,file2)
 		source=File.new(file).read
+		source_hash=Digest::MD5.hexdigest(source)
+		if eval("#{file2}_compiled_by")==$compiled_by && eval("#{file2}_source_hash")==source_hash
+			puts "same"
+		end
 		tree=AmethystParser.new.parse(:igrammar,source)
 		tree=Analyze_Variables2.new.parse(:itrans,tree)
 		tree=Remap_Acts.new.parse(:root,tree)
@@ -117,7 +121,7 @@ end
 			else
 			end
 		}
-		
+		YAML::dump(tree,File.new("compiled/ast/#{file2}.yaml","w"))
 		[Detect_Switch,Seq_Or_Optimizer,Detect_ClasSwitch,Seq_Or_Optimizer].each{|o|
 			tree=o.new.parse(:itrans,tree)
 			#puts tree.inspect
@@ -126,14 +130,13 @@ end
 		c,init,rb= AmethystCTranslator.new.parse(:itrans,tree)
 		c=c*""
 		r=Digest::MD5.hexdigest(c)
-		shash=Digest::MD5.hexdigest(source)
 
 		File.open("compiled/#{file2}_c.c","w"){|f|
     f.puts "#include \"cthyst.h\""
     f.puts c
     f.puts "void Init_#{file2}_c(){ #{init} rb_eval_string(\"testversion#{file2}('#{r}')\");}"
     }
-    File.open("compiled/#{file2}.rb","w"){|f| f.puts rb; f.puts "\ndef #{file2}_compiled_by\n'#{$compiled_by}'\nend\ndef #{file2}_source_hash\n'#{shash}'\nend\ndef testversion#{file2}(r)\n raise \"invalid version\" if r!=#{file2}_version\nend\ndef #{file2}_version\n'#{r}'\nend\n  require 'compiled/#{file2}_c'"}
+    File.open("compiled/#{file2}.rb","w"){|f| f.puts rb; f.puts "\ndef #{file2}_compiled_by\n'#{$compiled_by}'\nend\ndef #{file2}_source_hash\n'#{source_hash}'\nend\ndef testversion#{file2}(r)\n raise \"invalid version\" if r!=#{file2}_version\nend\ndef #{file2}_version\n'#{r}'\nend\n  require 'compiled/#{file2}_c'"}
 	  withtime("c"){
     `cd compiled;gcc -I. -I/usr/lib/ruby/1.8/x86_64-linux -I/usr/lib/ruby/1.8/x86_64-linux -I.   -fPIC -fno-strict-aliasing -g -g #$OPT  -fPIC   -c #{file2}_c.c`
     `cd compiled;gcc -shared -o #{file2}_c.so #{file2}_c.o -L. -L/usr/lib -L.  -rdynamic -Wl,-export-dynamic -lruby1.8  -lpthread -lrt -ldl -lcrypt -lm   -lc`
