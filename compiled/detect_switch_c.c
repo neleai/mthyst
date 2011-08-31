@@ -397,21 +397,24 @@ VALUE Detect_Switch_root(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1); 
  rb_ary_store(bind,0,it); it=rb_ary_entry(bind,0);
 return it;
 fail: return failobj; }
-VALUE Detect_Switch_traverse(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(7);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+VALUE Detect_Switch_traverse(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(10);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 int oldpos1; while(1){oldpos1=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break1); if (IGET(stop)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos1); it=CALL(traverse_Detect_Switchcb_1,1,bind); 
  rb_ary_store(bind,0,it); it=CALL(traverse_Detect_Switchcb_2,1,bind); 
- rb_ary_store(bind,1,it); it=CALL(traverse_Detect_Switchcb_3,1,bind); int oldpos2=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
-ame_setsrc(self,rb_ary_entry(bind,1)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
+ rb_ary_store(bind,1,it); it=Qnil;
+ rb_ary_store(bind,2,it); it=Qfalse;
+ rb_ary_store(bind,3,it); it=CALL(traverse_Detect_Switchcb_3,1,bind); 
+ rb_ary_store(bind,4,it); it=CALL(traverse_Detect_Switchcb_4,1,bind); int oldpos2=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
+ame_setsrc(self,rb_ary_entry(bind,4)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCore_anything(self ); FAILTEST(pass1);
- rb_ary_store(bind,2,it); int oldpos3=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
-ame_setsrc(self,rb_ary_entry(bind,2)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
+ rb_ary_store(bind,5,it); int oldpos3=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
+ame_setsrc(self,rb_ary_entry(bind,5)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
  int oldpos4; while(1){oldpos4=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break2);
- rb_ary_store(bind,3,it); int oldpos5=ame_getpos(self); int oldlen3=ame_getlen(self); VALUE oldsrc3=ame_getsrc(self); int fail3=0;
-ame_setsrc(self,rb_ary_entry(bind,3)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
+ rb_ary_store(bind,6,it); int oldpos5=ame_getpos(self); int oldlen3=ame_getlen(self); VALUE oldsrc3=ame_getsrc(self); int fail3=0;
+ame_setsrc(self,rb_ary_entry(bind,6)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCore_anything(self ); FAILTEST(pass3);
- rb_ary_store(bind,4,it);   it=Detect_Switch_traverse_item(self ); FAILTEST(pass3);
- rb_ary_store(bind,5,it); it=CALL(traverse_Detect_Switchcb_4,1,bind);   it=Detect_Switch_eof(self ); FAILTEST(pass3);
+ rb_ary_store(bind,7,it); it=CALL(traverse_Detect_Switchcb_5,1,bind);   it=Detect_Switch_traverse_item(self ); FAILTEST(pass3);
+ rb_ary_store(bind,8,it); it=CALL(traverse_Detect_Switchcb_6,1,bind);   it=Detect_Switch_eof(self ); FAILTEST(pass3);
 	goto success3;
 	pass3: fail3=1;
 	success3: ame_setsrc(self,oldsrc3); ame_setpos(self,oldpos5); ame_setlen(self,oldlen3);
@@ -426,8 +429,8 @@ ame_setsrc(self,rb_ary_entry(bind,3)); ame_setpos(self,0); ame_setlen(self,FIX2I
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos2); ame_setlen(self,oldlen1);
 	if(fail1) goto fail;
-it=CALL(traverse_Detect_Switchcb_5,1,bind); 
- rb_ary_store(bind,6,it); it=rb_ary_entry(bind,6);
+it=CALL(traverse_Detect_Switchcb_7,1,bind); 
+ rb_ary_store(bind,9,it); it=rb_ary_entry(bind,9);
 return it;
 fail: return failobj; }
 VALUE Detect_Switch_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(8);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -715,21 +718,24 @@ VALUE Detect_ClasSwitch_root(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(
  rb_ary_store(bind,0,it); it=rb_ary_entry(bind,0);
 return it;
 fail: return failobj; }
-VALUE Detect_ClasSwitch_traverse(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(7);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+VALUE Detect_ClasSwitch_traverse(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(10);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 int oldpos1; while(1){oldpos1=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break1); if (IGET(stop)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos1); it=CALL(traverse_Detect_ClasSwitchcb_1,1,bind); 
  rb_ary_store(bind,0,it); it=CALL(traverse_Detect_ClasSwitchcb_2,1,bind); 
- rb_ary_store(bind,1,it); it=CALL(traverse_Detect_ClasSwitchcb_3,1,bind); int oldpos2=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
-ame_setsrc(self,rb_ary_entry(bind,1)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
+ rb_ary_store(bind,1,it); it=Qnil;
+ rb_ary_store(bind,2,it); it=Qfalse;
+ rb_ary_store(bind,3,it); it=CALL(traverse_Detect_ClasSwitchcb_3,1,bind); 
+ rb_ary_store(bind,4,it); it=CALL(traverse_Detect_ClasSwitchcb_4,1,bind); int oldpos2=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
+ame_setsrc(self,rb_ary_entry(bind,4)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCore_anything(self ); FAILTEST(pass1);
- rb_ary_store(bind,2,it); int oldpos3=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
-ame_setsrc(self,rb_ary_entry(bind,2)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
+ rb_ary_store(bind,5,it); int oldpos3=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
+ame_setsrc(self,rb_ary_entry(bind,5)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
  int oldpos4; while(1){oldpos4=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break2);
- rb_ary_store(bind,3,it); int oldpos5=ame_getpos(self); int oldlen3=ame_getlen(self); VALUE oldsrc3=ame_getsrc(self); int fail3=0;
-ame_setsrc(self,rb_ary_entry(bind,3)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
+ rb_ary_store(bind,6,it); int oldpos5=ame_getpos(self); int oldlen3=ame_getlen(self); VALUE oldsrc3=ame_getsrc(self); int fail3=0;
+ame_setsrc(self,rb_ary_entry(bind,6)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCore_anything(self ); FAILTEST(pass3);
- rb_ary_store(bind,4,it);   it=Detect_ClasSwitch_traverse_item(self ); FAILTEST(pass3);
- rb_ary_store(bind,5,it); it=CALL(traverse_Detect_ClasSwitchcb_4,1,bind);   it=Detect_ClasSwitch_eof(self ); FAILTEST(pass3);
+ rb_ary_store(bind,7,it); it=CALL(traverse_Detect_ClasSwitchcb_5,1,bind);   it=Detect_ClasSwitch_traverse_item(self ); FAILTEST(pass3);
+ rb_ary_store(bind,8,it); it=CALL(traverse_Detect_ClasSwitchcb_6,1,bind);   it=Detect_ClasSwitch_eof(self ); FAILTEST(pass3);
 	goto success3;
 	pass3: fail3=1;
 	success3: ame_setsrc(self,oldsrc3); ame_setpos(self,oldpos5); ame_setlen(self,oldlen3);
@@ -744,8 +750,8 @@ ame_setsrc(self,rb_ary_entry(bind,3)); ame_setpos(self,0); ame_setlen(self,FIX2I
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos2); ame_setlen(self,oldlen1);
 	if(fail1) goto fail;
-it=CALL(traverse_Detect_ClasSwitchcb_5,1,bind); 
- rb_ary_store(bind,6,it); it=rb_ary_entry(bind,6);
+it=CALL(traverse_Detect_ClasSwitchcb_7,1,bind); 
+ rb_ary_store(bind,9,it); it=rb_ary_entry(bind,9);
 return it;
 fail: return failobj; }
 VALUE Detect_ClasSwitch_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(8);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -848,7 +854,7 @@ rb_define_method(cls_Switch_Dataflow,"spaces",Switch_Dataflow_spaces,0);
 rb_define_method(cls_Switch_Dataflow,"token",Switch_Dataflow_token,1);
 rb_define_method(cls_Switch_Dataflow,"value",Switch_Dataflow_value,0);
 
- cls_Detect_Switch=rb_define_class("Detect_Switch",rb_const_get(rb_cObject,rb_intern("Traverser_Clone"))); 
+ cls_Detect_Switch=rb_define_class("Detect_Switch",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2"))); 
 failobj=rb_eval_string("FAIL");
 rb_define_method(cls_Detect_Switch,"clas",Detect_Switch_clas,1);
 rb_define_method(cls_Detect_Switch,"empty",Detect_Switch_empty,0);
@@ -860,7 +866,7 @@ rb_define_method(cls_Detect_Switch,"traverse",Detect_Switch_traverse,0);
 rb_define_method(cls_Detect_Switch,"traverse_item",Detect_Switch_traverse_item,0);
 rb_define_method(cls_Detect_Switch,"visit",Detect_Switch_visit,0);
 
- cls_Detect_ClasSwitch=rb_define_class("Detect_ClasSwitch",rb_const_get(rb_cObject,rb_intern("Traverser_Clone"))); 
+ cls_Detect_ClasSwitch=rb_define_class("Detect_ClasSwitch",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2"))); 
 failobj=rb_eval_string("FAIL");
 rb_define_method(cls_Detect_ClasSwitch,"clas",Detect_ClasSwitch_clas,1);
 rb_define_method(cls_Detect_ClasSwitch,"empty",Detect_ClasSwitch_empty,0);
@@ -872,4 +878,4 @@ rb_define_method(cls_Detect_ClasSwitch,"root",Detect_ClasSwitch_root,0);
 rb_define_method(cls_Detect_ClasSwitch,"traverse",Detect_ClasSwitch_traverse,0);
 rb_define_method(cls_Detect_ClasSwitch,"traverse_item",Detect_ClasSwitch_traverse_item,0);
 rb_define_method(cls_Detect_ClasSwitch,"visit",Detect_ClasSwitch_visit,0);
- rb_eval_string("testversion('3ed8e3df52c580419756de06170ad227')");}
+ rb_eval_string("testversion('5ef05666df1c79ebbadf73a1fc6403c5')");}
