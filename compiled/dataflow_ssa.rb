@@ -304,36 +304,6 @@ end
 def switchcbDead_Code_Deleter35(e)
 @@switchhashDead_Code_Deleter35[e.class]
 end
-def self.switchcb_Dead_Code_Deleter34(e)
-return 0 if e<=CAct
-return 1 if e<=Act
-return 2 if e<=Result
-return 3
-end
-@@switchhashDead_Code_Deleter34=Hash.new{|h,k| h[k]=switchcb_Dead_Code_Deleter34(k)}
-def switchcbDead_Code_Deleter34(e)
-@@switchhashDead_Code_Deleter34[e.class]
-end
-def self.switchcb_Dead_Code_Deleter34(e)
-return 0 if e<=CAct
-return 1 if e<=Act
-return 2 if e<=Result
-return 3
-end
-@@switchhashDead_Code_Deleter34=Hash.new{|h,k| h[k]=switchcb_Dead_Code_Deleter34(k)}
-def switchcbDead_Code_Deleter34(e)
-@@switchhashDead_Code_Deleter34[e.class]
-end
-def self.switchcb_Dead_Code_Deleter34(e)
-return 0 if e<=CAct
-return 1 if e<=Act
-return 2 if e<=Result
-return 3
-end
-@@switchhashDead_Code_Deleter34=Hash.new{|h,k| h[k]=switchcb_Dead_Code_Deleter34(k)}
-def switchcbDead_Code_Deleter34(e)
-@@switchhashDead_Code_Deleter34[e.class]
-end
 def self.switchcb_Dead_Code_Deleter36(e)
 return 0 if e<=Array
 return 1 if e<=AmethystAST
@@ -393,34 +363,31 @@ def traverse_item_Dead_Code_Deleter3cb_4(bind)
 @changed=true
 end
 def visit_Dead_Code_Deleter3cb_1(bind)
-@src
-end
-def visit_Dead_Code_Deleter3cb_10(bind)
-@reachable[bind[1]] ? bind[1] : Act[]
-end
-def visit_Dead_Code_Deleter3cb_2(bind)
-@reachable[bind[1]] ? bind[1] : Act[]
-end
-def visit_Dead_Code_Deleter3cb_3(bind)
 @src.expr
 end
+def visit_Dead_Code_Deleter3cb_2(bind)
+@reachable[@src] ? @src : bind[2]
+end
+def visit_Dead_Code_Deleter3cb_3(bind)
+@src
+end
 def visit_Dead_Code_Deleter3cb_4(bind)
-@reachable[@src] ? @src : bind[5]
+@reachable[bind[7].ssaname] ? bind[7] : Act[]
 end
 def visit_Dead_Code_Deleter3cb_5(bind)
-@src
+Act
 end
 def visit_Dead_Code_Deleter3cb_6(bind)
-@reachable[bind[1]] ? bind[1] : Act[]
+CAct
 end
 def visit_Dead_Code_Deleter3cb_7(bind)
-@src
+Result
 end
 def visit_Dead_Code_Deleter3cb_8(bind)
-@reachable[bind[1].ssaname] ? bind[1] : Act[]
+@src
 end
 def visit_Dead_Code_Deleter3cb_9(bind)
-@src
+@reachable[bind[7]] ? bind[7] : Act[]
 end
 
 end
@@ -429,6 +396,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='dcc921f4af982d42003b4d09c9b0f729'
+ raise "invalid version" if r!='b108037b52747a909de029fa3b1f91ac'
 end
   require 'compiled/dataflow_ssa_c'
