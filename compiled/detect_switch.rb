@@ -1,17 +1,39 @@
 class Switch_Dataflow < Amethyst
-	def seqjoin(first,second)
-		if first.include? :empty
-			return (first-Set[[:empty]])+second
-		else
-			return first 
-		end
-	end
   def firstchar(s)
 	  return :empty if s.size==15
     s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
     eval('"'+s+'"')[0]
   end
 end
+
+class Chars
+	attr_accessor :ary
+	def self.[](*ary)
+		c=Chars.new
+		c.ary=ary
+		c
+	end
+	def +(a)
+		c=Chars.new
+		c.ary=(ary+a.ary).uniq
+		c
+	end
+	def -(a)
+		c=Chars.new
+		c.ary=(ary-a.ary).uniq
+		c
+	end
+	def &(a)
+		c=Chars.new 
+    c.ary=(ary&a.ary).uniq
+    c
+	end
+	def seqjoin(a)
+		return self unless a.ary.include? :empty
+		(self-Chars[:empty])+a
+	end
+end
+
 class Switch_Dataflow < Amethyst
 def self.switchcb_Switch_Dataflow1(e)
 return 0 if e<=Seq
@@ -44,58 +66,58 @@ def first_Switch_Dataflowcb_10(bind)
 @src.expr
 end
 def first_Switch_Dataflowcb_11(bind)
-bind[16]=[bind[16]]
+bind[15]=[bind[15]]
 end
 def first_Switch_Dataflowcb_12(bind)
-Set[:anything,:empty]
+Chars[:anything,:empty]
 end
 def first_Switch_Dataflowcb_13(bind)
-bind[4]+Set[:empty]
+bind[19]+Chars[:empty]
 end
 def first_Switch_Dataflowcb_14(bind)
-Set[:anything,:empty]
+Chars[:anything,:empty]
 end
 def first_Switch_Dataflowcb_15(bind)
-Set[:empty]
+Chars[:empty]
 end
 def first_Switch_Dataflowcb_16(bind)
-Set[:anything,:empty]
+Chars[:anything,:empty]
 end
 def first_Switch_Dataflowcb_17(bind)
 CAct
 end
 def first_Switch_Dataflowcb_18(bind)
-Set[firstchar(bind[26])]
+Chars[firstchar(bind[26])]
 end
 def first_Switch_Dataflowcb_19(bind)
-Set[:anything,:empty]
+Chars[:anything,:empty]
 end
 def first_Switch_Dataflowcb_2(bind)
-bind[3].inject{|u,bind[4]|seqjoin(u,bind[4])}
+bind[3].inject{|u,v|u.seqjoin(v)}
 end
 def first_Switch_Dataflowcb_20(bind)
-Set[:anything,:empty]
+Chars[:anything,:empty]
 end
 def first_Switch_Dataflowcb_3(bind)
-Set[:anything,:empty]
+Chars[:anything,:empty]
 end
 def first_Switch_Dataflowcb_4(bind)
-_append(bind[8],bind[9])
+_append(bind[7],bind[8])
 end
 def first_Switch_Dataflowcb_5(bind)
 bind[3].inject(:+)
 end
 def first_Switch_Dataflowcb_6(bind)
-Set[:anything,:empty]
+Chars[:anything,:empty]
 end
 def first_Switch_Dataflowcb_7(bind)
-_append(bind[12],bind[13])
+_append(bind[11],bind[12])
 end
 def first_Switch_Dataflowcb_8(bind)
 bind[3].inject(:+)
 end
 def first_Switch_Dataflowcb_9(bind)
-Set[:anything,:empty]
+Chars[:anything,:empty]
 end
 def spaces_Switch_Dataflowcb_1(bind)
 /[\s\t\r\n\f]/
@@ -120,7 +142,11 @@ class Detect_Switch < Traverser
 	end
 	def intersects(p,e)
 		return true if e==:default
-		first(p).intersection(Set[e,:empty,:anything])!=Set[]
+		r=(first(p).ary & [e,:empty,:anything])!=[]
+		puts first(p).ary.inspect
+		puts [e,:empty,:anything].inspect
+		puts r
+		r
 	end
 end
 
@@ -211,7 +237,7 @@ def visit_Detect_Switchcb_11(bind)
 Switch[{:act=>"*ame_curstr(self)",:ary=>bind[2]}]
 end
 def visit_Detect_Switchcb_2(bind)
-Set[]
+Chars[]
 end
 def visit_Detect_Switchcb_3(bind)
 (first(bind[3])) || FAIL
@@ -220,7 +246,7 @@ def visit_Detect_Switchcb_4(bind)
 bind[1]+=first(bind[3])
 end
 def visit_Detect_Switchcb_5(bind)
-bind[1]=bind[1].map{|bind[3]|  [:anything,:empty].include?(bind[3]) ? :default : bind[3]}.uniq
+bind[1]=bind[1].ary.map{|bind[3]|  [:anything,:empty].include?(bind[3]) ? :default : bind[3]}.uniq
 end
 def visit_Detect_Switchcb_6(bind)
 (bind[1].size>1) || FAIL
@@ -456,6 +482,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='3041306e5e19bdcff8373ea152f8d370'
+ raise "invalid version" if r!='e327c0fdeda0a92e94afea5b81bb662b'
 end
   require 'compiled/detect_switch_c'

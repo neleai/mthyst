@@ -1,26 +1,48 @@
 class Switch_Dataflow < Amethyst
-	def seqjoin(first,second)
-		if first.include? :empty
-			return (first-Set[[:empty]])+second
-		else
-			return first 
-		end
-	end
   def firstchar(s)
 	  return :empty if s.size==15
     s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
     eval('"'+s+'"')[0]
   end
 end
+
+class Chars
+	attr_accessor :ary
+	def self.[](*ary)
+		c=Chars.new
+		c.ary=ary
+		c
+	end
+	def +(a)
+		c=Chars.new
+		c.ary=(ary+a.ary).uniq
+		c
+	end
+	def -(a)
+		c=Chars.new
+		c.ary=(ary-a.ary).uniq
+		c
+	end
+	def &(a)
+		c=Chars.new 
+    c.ary=(ary&a.ary).uniq
+    c
+	end
+	def seqjoin(a)
+		return self unless a.ary.include? :empty
+		(self-Chars[:empty])+a
+	end
+end
+
 amethyst Switch_Dataflow {
-	first = Seq[value*:{it.inject{|u,v|seqjoin(u,v)}}]
+	first = Seq[value*:{it.inject{|u,v|u.seqjoin(v)}}]
 				| Or[value*:{it.inject(:+)}]
 				| Switch[value*:{it.inject(:+)}]
 				| Bind[@expr=>value]
-				| Many[value:v {v+Set[:empty]} ]
-				| Act[.* {Set[:empty]} ]
-				| Apply[ ["seq"] CAct[.:str] {Set[firstchar(str)]}]
-				| . {Set[:anything,:empty]}
+				| Many[value:val {val+Chars[:empty]} ]
+				| Act[.* {Chars[:empty]} ]
+				| Apply[ ["seq"] CAct[.:str] {Chars[firstchar(str)]}]
+				| . {Chars[:anything,:empty]}
 
 	value = first
 }
@@ -32,7 +54,11 @@ class Detect_Switch < Traverser
 	end
 	def intersects(p,e)
 		return true if e==:default
-		first(p).intersection(Set[e,:empty,:anything])!=Set[]
+		r=(first(p).ary & [e,:empty,:anything])!=[]
+		puts first(p).ary.inspect
+		puts [e,:empty,:anything].inspect
+		puts r
+		r
 	end
 end
 
@@ -41,9 +67,9 @@ amethyst Detect_Switch < Traverser {
 
 	root = traverse
 
-	visit = Or[ {Set[]}:ary2 {[]}:ary3
+	visit = Or[ {Chars[]}:ary2 {[]}:ary3
 		(traverse_item:e &{first(e)} {ary2+=first(e)})* &eof
-		{ary2=ary2.map{|e|  [:anything,:empty].include?(e) ? :default : e}.uniq}
+		{ary2=ary2.ary.map{|e|  [:anything,:empty].include?(e) ? :default : e}.uniq}
 		&{ary2.size>1}
 		{ary2.each{|e|
 			ary3<<[e,Or[{:ary=>@ary.select{|p|intersects(p,e)}}]]
