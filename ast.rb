@@ -29,6 +29,17 @@ makeclasses(AmethystAST,
 		[:Switch,:act,:defs]
 )
 
+class Array
+	def normalize
+		self
+	end
+end
+class AmethystAST
+	def normalize
+		self
+	end
+end
+
 class <<Bnding
 	def []
 		@bno||=0

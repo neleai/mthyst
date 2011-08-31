@@ -652,7 +652,7 @@ ame_setsrc(self,rb_ary_entry(bind,3)); ame_setpos(self,0); ame_setlen(self,FIX2I
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos2); ame_setlen(self,oldlen1);
 	if(fail1) goto fail;
-it=rb_ary_entry(bind,0);
+it=CALL(traverse_Dead_Code_Deleter3cb_5,1,bind); 
  rb_ary_store(bind,6,it); it=rb_ary_entry(bind,6);
 return it;
 fail: return failobj; }
@@ -808,4 +808,4 @@ rb_define_method(cls_Dead_Code_Deleter3,"root",Dead_Code_Deleter3_root,0);
 rb_define_method(cls_Dead_Code_Deleter3,"traverse",Dead_Code_Deleter3_traverse,0);
 rb_define_method(cls_Dead_Code_Deleter3,"traverse_item",Dead_Code_Deleter3_traverse_item,0);
 rb_define_method(cls_Dead_Code_Deleter3,"visit",Dead_Code_Deleter3_visit,0);
- rb_eval_string("testversion('05630129d0e3920e03ccc691668aa726')");}
+ rb_eval_string("testversion('756de8526db9c54fe793603ebc7c100b')");}

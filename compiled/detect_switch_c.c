@@ -426,7 +426,7 @@ ame_setsrc(self,rb_ary_entry(bind,3)); ame_setpos(self,0); ame_setlen(self,FIX2I
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos2); ame_setlen(self,oldlen1);
 	if(fail1) goto fail;
-it=rb_ary_entry(bind,0);
+it=CALL(traverse_Detect_Switchcb_5,1,bind); 
  rb_ary_store(bind,6,it); it=rb_ary_entry(bind,6);
 return it;
 fail: return failobj; }
@@ -744,7 +744,7 @@ ame_setsrc(self,rb_ary_entry(bind,3)); ame_setpos(self,0); ame_setlen(self,FIX2I
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos2); ame_setlen(self,oldlen1);
 	if(fail1) goto fail;
-it=rb_ary_entry(bind,0);
+it=CALL(traverse_Detect_ClasSwitchcb_5,1,bind); 
  rb_ary_store(bind,6,it); it=rb_ary_entry(bind,6);
 return it;
 fail: return failobj; }
@@ -872,4 +872,4 @@ rb_define_method(cls_Detect_ClasSwitch,"root",Detect_ClasSwitch_root,0);
 rb_define_method(cls_Detect_ClasSwitch,"traverse",Detect_ClasSwitch_traverse,0);
 rb_define_method(cls_Detect_ClasSwitch,"traverse_item",Detect_ClasSwitch_traverse_item,0);
 rb_define_method(cls_Detect_ClasSwitch,"visit",Detect_ClasSwitch_visit,0);
- rb_eval_string("testversion('61188a2fbcc2e46e7041cdd34f2e2a55')");}
+ rb_eval_string("testversion('3ed8e3df52c580419756de06170ad227')");}

@@ -86,7 +86,7 @@ ame_setsrc(self,rb_ary_entry(bind,3)); ame_setpos(self,0); ame_setlen(self,FIX2I
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos2); ame_setlen(self,oldlen1);
 	if(fail1) goto fail;
-it=rb_ary_entry(bind,0);
+it=CALL(traverse_Renamer2cb_5,1,bind); 
  rb_ary_store(bind,6,it); it=rb_ary_entry(bind,6);
 return it;
 fail: return failobj; }
@@ -261,7 +261,7 @@ ame_setsrc(self,rb_ary_entry(bind,3)); ame_setpos(self,0); ame_setlen(self,FIX2I
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos2); ame_setlen(self,oldlen1);
 	if(fail1) goto fail;
-it=rb_ary_entry(bind,0);
+it=CALL(traverse_DetectCallscb_5,1,bind); 
  rb_ary_store(bind,6,it); it=rb_ary_entry(bind,6);
 return it;
 fail: return failobj; }
@@ -466,7 +466,7 @@ ame_setsrc(self,rb_ary_entry(bind,3)); ame_setpos(self,0); ame_setlen(self,FIX2I
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos2); ame_setlen(self,oldlen1);
 	if(fail1) goto fail;
-it=rb_ary_entry(bind,0);
+it=CALL(traverse_Inliner2cb_5,1,bind); 
  rb_ary_store(bind,6,it); it=rb_ary_entry(bind,6);
 return it;
 fail: return failobj; }
@@ -590,4 +590,4 @@ rb_define_method(cls_Inliner2,"root",Inliner2_root,0);
 rb_define_method(cls_Inliner2,"traverse",Inliner2_traverse,0);
 rb_define_method(cls_Inliner2,"traverse_item",Inliner2_traverse_item,0);
 rb_define_method(cls_Inliner2,"visit",Inliner2_visit,0);
- rb_eval_string("testversion('8da3124ba5fb023ccc1e63d9a501d5dc')");}
+ rb_eval_string("testversion('a2fab23351059f4c0bcc43192ff90e76')");}

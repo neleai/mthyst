@@ -69,7 +69,7 @@ ame_setsrc(self,rb_ary_entry(bind,3)); ame_setpos(self,0); ame_setlen(self,FIX2I
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos2); ame_setlen(self,oldlen1);
 	if(fail1) goto fail;
-it=rb_ary_entry(bind,0);
+it=CALL(traverse_Traverser_Clonecb_5,1,bind); 
  rb_ary_store(bind,6,it); it=rb_ary_entry(bind,6);
 return it;
 fail: return failobj; }
@@ -470,4 +470,4 @@ rb_define_method(cls_Detector,"root",Detector_root,0);
 rb_define_method(cls_Detector,"traverse",Detector_traverse,0);
 rb_define_method(cls_Detector,"traverse_item",Detector_traverse_item,0);
 rb_define_method(cls_Detector,"visit",Detector_visit,0);
- rb_eval_string("testversion('10a548bba7d494a9a65ea7ca788af5d1')");}
+ rb_eval_string("testversion('fb55970e2dfbf2491672ddd6fc00522a')");}

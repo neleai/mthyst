@@ -33,6 +33,9 @@ end
 def traverse_Renamer2cb_4(bind)
 bind[0].instance_variable_set(bind[4],bind[5])
 end
+def traverse_Renamer2cb_5(bind)
+bind[0].normalize
+end
 def traverse_item_Renamer2cb_1(bind)
 @changed=true
 end
@@ -95,6 +98,9 @@ bind[1]=[bind[1]]
 end
 def traverse_DetectCallscb_4(bind)
 bind[0].instance_variable_set(bind[4],bind[5])
+end
+def traverse_DetectCallscb_5(bind)
+bind[0].normalize
 end
 def traverse_item_DetectCallscb_1(bind)
 @changed=true
@@ -177,6 +183,9 @@ end
 def traverse_Inliner2cb_4(bind)
 bind[0].instance_variable_set(bind[4],bind[5])
 end
+def traverse_Inliner2cb_5(bind)
+bind[0].normalize
+end
 def traverse_item_Inliner2cb_1(bind)
 @changed=true
 end
@@ -206,6 +215,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='8da3124ba5fb023ccc1e63d9a501d5dc'
+ raise "invalid version" if r!='a2fab23351059f4c0bcc43192ff90e76'
 end
   require 'compiled/inliner2_c'

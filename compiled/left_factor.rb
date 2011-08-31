@@ -56,6 +56,9 @@ end
 def traverse_Left_Factorcb_4(bind)
 bind[0].instance_variable_set(bind[4],bind[5])
 end
+def traverse_Left_Factorcb_5(bind)
+bind[0].normalize
+end
 def traverse_item_Left_Factorcb_1(bind)
 @changed=true
 end
@@ -91,6 +94,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='4da49586909ddd2e3f368f8a6d05e75e'
+ raise "invalid version" if r!='724a17fd0e2cce8379251e5e98720235'
 end
   require 'compiled/left_factor_c'

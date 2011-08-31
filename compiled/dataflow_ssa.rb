@@ -347,6 +347,9 @@ end
 def traverse_Dead_Code_Deleter3cb_4(bind)
 bind[0].instance_variable_set(bind[4],bind[5])
 end
+def traverse_Dead_Code_Deleter3cb_5(bind)
+bind[0].normalize
+end
 def traverse_item_Dead_Code_Deleter3cb_1(bind)
 @changed=true
 end
@@ -396,6 +399,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='05630129d0e3920e03ccc691668aa726'
+ raise "invalid version" if r!='756de8526db9c54fe793603ebc7c100b'
 end
   require 'compiled/dataflow_ssa_c'

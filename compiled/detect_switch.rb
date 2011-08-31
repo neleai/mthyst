@@ -218,6 +218,9 @@ end
 def traverse_Detect_Switchcb_4(bind)
 bind[0].instance_variable_set(bind[4],bind[5])
 end
+def traverse_Detect_Switchcb_5(bind)
+bind[0].normalize
+end
 def traverse_item_Detect_Switchcb_1(bind)
 @changed=true
 end
@@ -432,6 +435,9 @@ end
 def traverse_Detect_ClasSwitchcb_4(bind)
 bind[0].instance_variable_set(bind[4],bind[5])
 end
+def traverse_Detect_ClasSwitchcb_5(bind)
+bind[0].normalize
+end
 def traverse_item_Detect_ClasSwitchcb_1(bind)
 @changed=true
 end
@@ -479,6 +485,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='61188a2fbcc2e46e7041cdd34f2e2a55'
+ raise "invalid version" if r!='3ed8e3df52c580419756de06170ad227'
 end
   require 'compiled/detect_switch_c'

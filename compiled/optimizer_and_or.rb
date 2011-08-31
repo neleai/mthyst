@@ -68,6 +68,9 @@ end
 def traverse_Seq_Or_Optimizercb_4(bind)
 bind[0].instance_variable_set(bind[4],bind[5])
 end
+def traverse_Seq_Or_Optimizercb_5(bind)
+bind[0].normalize
+end
 def traverse_item_Seq_Or_Optimizercb_1(bind)
 @changed=true
 end
@@ -112,6 +115,6 @@ end
 
 
 def testversion(r)
- raise "invalid version" if r!='439a0cbf78d7f6be97314f94e6a32f80'
+ raise "invalid version" if r!='5ea8213c2909bd91c5ffaf1edef1c8e9'
 end
   require 'compiled/optimizer_and_or_c'
