@@ -93,7 +93,13 @@ end
 end
 
 
-def testversion(r)
+def left_factor_compiled_by
+'42'
+end
+def left_factor_source_hash
+'c1f3dabf5a18a17226ee84e325fbdabe'
+end
+def testversionleft_factor(r)
  raise "invalid version" if r!='724a17fd0e2cce8379251e5e98720235'
 end
   require 'compiled/left_factor_c'

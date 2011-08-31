@@ -298,4 +298,4 @@ rb_define_method(cls_Seq_Or_Optimizer,"root",Seq_Or_Optimizer_root,0);
 rb_define_method(cls_Seq_Or_Optimizer,"traverse",Seq_Or_Optimizer_traverse,0);
 rb_define_method(cls_Seq_Or_Optimizer,"traverse_item",Seq_Or_Optimizer_traverse_item,0);
 rb_define_method(cls_Seq_Or_Optimizer,"visit",Seq_Or_Optimizer_visit,0);
- rb_eval_string("testversion('698e6e511cb4ee2e561e1de1e4ad9129')");}
+ rb_eval_string("testversionoptimizer_and_or('698e6e511cb4ee2e561e1de1e4ad9129')");}

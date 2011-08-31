@@ -215,7 +215,13 @@ end
 end
 
 
-def testversion(r)
+def traverser_compiled_by
+'42'
+end
+def traverser_source_hash
+'d70386104d855f1aacbae5cf78a72adf'
+end
+def testversiontraverser(r)
  raise "invalid version" if r!='a316229a7ac5c4b692076103b4874586'
 end
   require 'compiled/traverser_c'

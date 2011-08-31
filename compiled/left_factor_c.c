@@ -257,4 +257,4 @@ rb_define_method(cls_Left_Factor,"root",Left_Factor_root,0);
 rb_define_method(cls_Left_Factor,"traverse",Left_Factor_traverse,0);
 rb_define_method(cls_Left_Factor,"traverse_item",Left_Factor_traverse_item,0);
 rb_define_method(cls_Left_Factor,"visit",Left_Factor_visit,0);
- rb_eval_string("testversion('724a17fd0e2cce8379251e5e98720235')");}
+ rb_eval_string("testversionleft_factor('724a17fd0e2cce8379251e5e98720235')");}

@@ -590,4 +590,4 @@ rb_define_method(cls_Inliner2,"root",Inliner2_root,0);
 rb_define_method(cls_Inliner2,"traverse",Inliner2_traverse,0);
 rb_define_method(cls_Inliner2,"traverse_item",Inliner2_traverse_item,0);
 rb_define_method(cls_Inliner2,"visit",Inliner2_visit,0);
- rb_eval_string("testversion('a2fab23351059f4c0bcc43192ff90e76')");}
+ rb_eval_string("testversioninliner2('a2fab23351059f4c0bcc43192ff90e76')");}

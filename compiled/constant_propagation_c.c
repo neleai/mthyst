@@ -208,4 +208,4 @@ rb_define_method(cls_Constant_Traverser,"root",Constant_Traverser_root,0);
 rb_define_method(cls_Constant_Traverser,"traverse",Constant_Traverser_traverse,0);
 rb_define_method(cls_Constant_Traverser,"traverse_item",Constant_Traverser_traverse_item,0);
 rb_define_method(cls_Constant_Traverser,"visit",Constant_Traverser_visit,0);
- rb_eval_string("testversion('0039323961d7ade4d75f3982b661bbbc')");}
+ rb_eval_string("testversionconstant_propagation('0039323961d7ade4d75f3982b661bbbc')");}

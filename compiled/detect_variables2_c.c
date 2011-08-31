@@ -569,4 +569,4 @@ rb_define_method(cls_Remap_Acts,"root",Remap_Acts_root,0);
 rb_define_method(cls_Remap_Acts,"traverse",Remap_Acts_traverse,0);
 rb_define_method(cls_Remap_Acts,"traverse_item",Remap_Acts_traverse_item,0);
 rb_define_method(cls_Remap_Acts,"visit",Remap_Acts_visit,0);
- rb_eval_string("testversion('fbe017776a99232b07722d3b316172e5')");}
+ rb_eval_string("testversiondetect_variables2('fbe017776a99232b07722d3b316172e5')");}

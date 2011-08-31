@@ -475,7 +475,13 @@ end
 end
 
 
-def testversion(r)
+def ctranslator2_compiled_by
+'42'
+end
+def ctranslator2_source_hash
+'56f9473af5b764ce89b5fe94db3c62c5'
+end
+def testversionctranslator2(r)
  raise "invalid version" if r!='8c5c3ad2c7d3658fc473310770ae5581'
 end
   require 'compiled/ctranslator2_c'

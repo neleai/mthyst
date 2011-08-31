@@ -418,4 +418,4 @@ rb_define_method(cls_Move_Assignments2,"root",Move_Assignments2_root,0);
 rb_define_method(cls_Move_Assignments2,"traverse",Move_Assignments2_traverse,0);
 rb_define_method(cls_Move_Assignments2,"traverse_item",Move_Assignments2_traverse_item,0);
 rb_define_method(cls_Move_Assignments2,"visit",Move_Assignments2_visit,0);
- rb_eval_string("testversion('b97e0be1378a696d10361a1b93c1707d')");}
+ rb_eval_string("testversiondead_code_elimination2('b97e0be1378a696d10361a1b93c1707d')");}

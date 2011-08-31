@@ -125,7 +125,13 @@ end
 end
 
 
-def testversion(r)
+def optimizer_and_or_compiled_by
+'42'
+end
+def optimizer_and_or_source_hash
+'d6491f906a16d895f1e205ab13f509ee'
+end
+def testversionoptimizer_and_or(r)
  raise "invalid version" if r!='698e6e511cb4ee2e561e1de1e4ad9129'
 end
   require 'compiled/optimizer_and_or_c'

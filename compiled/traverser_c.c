@@ -624,4 +624,4 @@ rb_define_method(cls_Detector,"root",Detector_root,0);
 rb_define_method(cls_Detector,"traverse",Detector_traverse,0);
 rb_define_method(cls_Detector,"traverse_item",Detector_traverse_item,0);
 rb_define_method(cls_Detector,"visit",Detector_visit,0);
- rb_eval_string("testversion('a316229a7ac5c4b692076103b4874586')");}
+ rb_eval_string("testversiontraverser('a316229a7ac5c4b692076103b4874586')");}

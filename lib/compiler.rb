@@ -1,6 +1,7 @@
 require 'digest'
 require 'set'
 $OPT="-O2"
+$compiled_by=42
 COMPILED=["amethyst","traverser","detect_variables2","ctranslator2","parser","optimizer_and_or","dead_code_elimination2","dataflow_ssa","inliner2",
 "detect_switch","left_factor","constant_propagation"]
 class Gram
@@ -126,12 +127,14 @@ end
 		c,init,rb= AmethystCTranslator.new.parse(:itrans,tree)
 		c=c*""
 		r=Digest::MD5.hexdigest(c)
+		shash=Digest::MD5.hexdigest(source)
+
 		File.open("compiled/#{file2}_c.c","w"){|f|
     f.puts "#include \"cthyst.h\""
     f.puts c
-    f.puts "void Init_#{file2}_c(){ #{init} rb_eval_string(\"testversion('#{r}')\");}"
+    f.puts "void Init_#{file2}_c(){ #{init} rb_eval_string(\"testversion#{file2}('#{r}')\");}"
     }
-    File.open("compiled/#{file2}.rb","w"){|f| f.puts rb; f.puts "\ndef testversion(r)\n raise \"invalid version\" if r!='#{r}'\nend\n  require 'compiled/#{file2}_c'"}
+    File.open("compiled/#{file2}.rb","w"){|f| f.puts rb; f.puts "\ndef #{file2}_compiled_by\n'#{$compiled_by}'\nend\ndef #{file2}_source_hash\n'#{shash}'\nend\ndef testversion#{file2}(r)\n raise \"invalid version\" if r!='#{r}'\nend\n  require 'compiled/#{file2}_c'"}
 	  withtime("c"){
     `cd compiled;gcc -I. -I/usr/lib/ruby/1.8/x86_64-linux -I/usr/lib/ruby/1.8/x86_64-linux -I.   -fPIC -fno-strict-aliasing -g -g #$OPT  -fPIC   -c #{file2}_c.c`
     `cd compiled;gcc -shared -o #{file2}_c.so #{file2}_c.o -L. -L/usr/lib -L.  -rdynamic -Wl,-export-dynamic -lruby1.8  -lpthread -lrt -ldl -lcrypt -lm   -lc`
