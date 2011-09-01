@@ -1,4 +1,4 @@
-amethyst Move_Assignments2 < Traverser {
+amethyst Move_Assignments2 < Traverser_Clone2 {
 	itrans=root	
 
 	root=traverse 

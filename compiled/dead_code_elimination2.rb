@@ -1,4 +1,4 @@
-class Move_Assignments2 < Traverser
+class Move_Assignments2 < Traverser_Clone2
 def self.switchcb_Move_Assignments21(e)
 return 0 if e<=Or
 return 1 if e<=Seq
@@ -80,19 +80,30 @@ def move_Move_Assignments2cb_9(bind)
 @src.to
 end
 def traverse_Move_Assignments2cb_1(bind)
-@src
+@changed
 end
 def traverse_Move_Assignments2cb_2(bind)
-(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
+@src
 end
 def traverse_Move_Assignments2cb_3(bind)
-bind[1]=[bind[1]]
+(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
 end
 def traverse_Move_Assignments2cb_4(bind)
-bind[0].instance_variable_set(bind[4],bind[5])
+bind[4]=[bind[4]]
 end
 def traverse_Move_Assignments2cb_5(bind)
-@src
+@changed=false
+end
+def traverse_Move_Assignments2cb_6(bind)
+(bind[2]||=bind[1].clone;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
+end
+def traverse_Move_Assignments2cb_7(bind)
+if bind[3]
+             @changed=true;bind[2].normalize
+           else
+            @changed=bind[0]
+            @src
+          end
 end
 def traverse_item_Move_Assignments2cb_1(bind)
 @changed=true
@@ -170,15 +181,15 @@ end
 
 
 def dead_code_elimination2_compiled_by
-'556a39aa73f9dab7a979f32593734b3c'
+'6598e545719fc2909ec495bc0cda3079'
 end
 def dead_code_elimination2_source_hash
-'3ddfc0bb46a066e1294930564d5150e4'
+'1ea0e38223363e113ae5fc0719d6cc14'
 end
 def testversiondead_code_elimination2(r)
  raise "invalid version" if r!=dead_code_elimination2_version
 end
 def dead_code_elimination2_version
-'b97e0be1378a696d10361a1b93c1707d'
+'4059e9c0ef546e95ac8d5abd65cc9616'
 end
   require 'compiled/dead_code_elimination2_c'
