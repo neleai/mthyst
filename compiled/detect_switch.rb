@@ -323,7 +323,7 @@ bind[1].each{|bind[3]|
 		}
 end
 def visit_Detect_Switchcb_8(bind)
-bind[2]=bind[2].group_by{|a,b| b.to_yaml}.map{|y,v| [v.map{|k,val| k},v[0][1]]}
+bind[2]=bind[2].group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k},v[0][1]]}
 end
 def visit_Detect_Switchcb_9(bind)
 bind[2]<<[[:default],Apply["fails"]] unless bind[1].include?(:default)
@@ -553,10 +553,10 @@ end
 
 
 def detect_switch_compiled_by
-'27bba8a11c0bf2d375809b0c229e8a76'
+'279e3c99edca9033ef8c099964d2c315'
 end
 def detect_switch_source_hash
-'4a20ef52c50d2f519e81c3d959989913'
+'c105a725f0b76031e0d1420646f94e48'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
