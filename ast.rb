@@ -170,11 +170,6 @@ end
 class Act
 	def self.[](expr=nil,pred=nil)
 		expr=expr[0] if expr.is_a?(Array) && expr.size<=1
-		if !pred
-			#puts expr.inspect
-			exp=expr
-			exp=exp[0] if exp.is_a?(Args) && exp.size==1
-		end
 		return Act.create({:pred=>pred}) if expr==nil
 		r=Act.create(expr,{:pred=>pred}).normalize
 		puts "ret #{r.inspect}"
