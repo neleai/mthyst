@@ -15,19 +15,13 @@ class Gram
 	end
 	def opt(r)
 			[Seq_Or_Optimizer,Move_Assignments2,Seq_Or_Optimizer,
+ 			 Dataflow, Dead_Code_Deleter3
 			].each{|o|
 	      puts r.inspect if $debug>1
       	r=o.new.parse(:root,r)
 			}
-		 [ Dataflow, 
-			Dead_Code_Deleter3
-].each{|o|
-			r=o.new.parse(:root,r)
-			puts r.inspect if $debug>1
-		}
 		r=propagate_consts(r)
- [ Seq_Or_Optimizer,Dataflow, 
-			Dead_Code_Deleter3,
+ [ Seq_Or_Optimizer,Dataflow, Dead_Code_Deleter3,
 			Left_Factor,
 ].each{|o|
 			r=o.new.parse(:root,r)
