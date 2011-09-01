@@ -1,8 +1,8 @@
 require 'digest'
 require 'set'
 $OPT="-O2"
-$debug=0
-COMPILED=["amethyst","traverser","detect_variables2","ctranslator2","parser","optimizer_and_or","dead_code_elimination2","dataflow_ssa","inliner2",
+$debug=1
+COMPILED=["amethyst","traverser","detect_variables2","ctranslator2","parser","dead_code_elimination2","dataflow_ssa","inliner2",
 "detect_switch","left_factor","constant_propagation"]
 class Gram
 	attr_accessor :name,:parent,:rules
@@ -14,7 +14,7 @@ class Gram
 		}
 	end
 	def opt(r)
-			[Remap_Acts,Seq_Or_Optimizer,Move_Assignments2,
+			[Remap_Acts,Move_Assignments2,
  			 Dataflow, Dead_Code_Deleter3
 			].each{|o|
 	      puts r.inspect if $debug>1
@@ -149,7 +149,7 @@ require 'constant_propagation2'
 def translate(s)
   par=AmethystParser.new
   opt=par.parse(:igrammar,s)
-  [Seq_Or_Optimizer,Analyze_Variables2,Move_Assignments2].each{|p|
+  [Analyze_Variables2,Move_Assignments2].each{|p|
 		puts opt.inspect
     opt=p.new.parse(:itrans,opt)
   }
