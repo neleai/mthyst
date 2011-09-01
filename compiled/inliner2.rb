@@ -116,9 +116,6 @@ end
 def visit_DetectCallscb_2(bind)
 @calls[bind[1]]=true 
 end
-def visit_DetectCallscb_3(bind)
-@src
-end
 
 end
 
@@ -222,15 +219,15 @@ end
 
 
 def inliner2_compiled_by
-'1933ccf106b92e3e9ffe5e0e3d50e1fb'
+'cc80c0c6d1bde23757fa9216e26c9a31'
 end
 def inliner2_source_hash
-'ce6bcfdd4863aab1cac8290e34051070'
+'5f358071d0a2c1782d213625edc96769'
 end
 def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version
 end
 def inliner2_version
-'0616c5599b5d986517fc920789c0da03'
+'646e79f00c8b78d9112565a3ca77b291'
 end
   require 'compiled/inliner2_c'

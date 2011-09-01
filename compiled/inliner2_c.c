@@ -333,7 +333,7 @@ VALUE DetectCalls_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(4);  
  rb_ary_store(bind,0,it); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,rb_ary_entry(bind,0)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCore_anything(self ); FAILTEST(pass1);
- rb_ary_store(bind,1,it); int oldpos2; while(1){oldpos2=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break1); if (IGET(stop)!=Qnil){{oldpos2=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos2); it=CALL(visit_DetectCallscb_2,1,bind); it=CALL(visit_DetectCallscb_3,1,bind); 
+ rb_ary_store(bind,1,it); int oldpos2; while(1){oldpos2=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break1); if (IGET(stop)!=Qnil){{oldpos2=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos2); it=CALL(visit_DetectCallscb_2,1,bind); 
  rb_ary_store(bind,2,it);   it=DetectCalls_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
@@ -586,4 +586,4 @@ rb_define_method(cls_Inliner2,"root",Inliner2_root,0);
 rb_define_method(cls_Inliner2,"traverse",Inliner2_traverse,0);
 rb_define_method(cls_Inliner2,"traverse_item",Inliner2_traverse_item,0);
 rb_define_method(cls_Inliner2,"visit",Inliner2_visit,0);
- rb_eval_string("testversioninliner2('0616c5599b5d986517fc920789c0da03')");}
+ rb_eval_string("testversioninliner2('646e79f00c8b78d9112565a3ca77b291')");}

@@ -7,7 +7,7 @@ amethyst Renamer2 < Traverser_Clone2 {
 amethyst DetectCalls < Visitor {
 	root = Rule[{@@calls={}} traverse {@@calls} ]
 	
-	visit = Apply[:name .*:args {@@calls[name]=true } @self]
+	visit = Apply[:name .*:args {@@calls[name]=true }]
 }
 
 amethyst Inliner2 < Traverser_Clone2 {
