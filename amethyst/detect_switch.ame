@@ -4,6 +4,42 @@ class Switch_Dataflow < Amethyst
     s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
     eval('"'+s+'"')[0]
   end
+
+
+	def initialize
+    @depend=Oriented_Graph.new
+    @vals=Hash.new(Chars.bottom)
+		@visited={}
+  end
+
+	def analyze(e)
+    @active={}
+    @activea=[e]
+		while el=@activea.pop
+			@active.delete(el)
+      val=getvalue(el)
+      if val!=@vals[el]
+        @vals[e]=val
+        @depend.edges[e].each{|d| addactive(d)}
+      end
+
+		end
+		@vals[e]
+	end 
+	def depends(e)
+		@depend.add(e,@vis)
+		if !@visited[e]
+			@visited[e]=true
+			addactive(e)
+		end
+	end
+	def addactive(e)
+    if !@active[e]
+      @active[e]=true
+      @activea<<e
+    end
+  end
+
 end
 
 class Chars
@@ -18,6 +54,9 @@ class Chars
 	end
 	def self.empty
 		Chars[:empty]
+	end
+	def self.bottom
+		Chars[]
 	end
 	def +(a)
 		c=Chars.new
@@ -52,15 +91,17 @@ amethyst Switch_Dataflow {
 				| Apply[ ["regch" ] {Chars.top}]
 				| . {Chars.top+Chars.empty}
 				
-				value = {@@cached||={}} .:x (&{@@cached[x]} 
-																		| ({x}=>first):v {@@cached[x]=v} )
+				value =  .:x  {depends(x); @@vals[x]}
 
+				getvalue(v) = {v}=>first
+
+				root = .:x analyze(x)
 }
 
 class Detect_Switch < Traverser_Clone2
 	def first(s)
 		@switchdf||=Switch_Dataflow.new
-		r=@switchdf.parse(:value,[s])
+		r=@switchdf.parse(:root,[s])
 		return r
 	end
 	def intersects(p,e)

@@ -4,6 +4,42 @@ class Switch_Dataflow < Amethyst
     s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
     eval('"'+s+'"')[0]
   end
+
+
+	def initialize
+    @depend=Oriented_Graph.new
+    @vals=Hash.new(Chars.bottom)
+		@visited={}
+  end
+
+	def analyze(e)
+    @active={}
+    @activea=[e]
+		while el=@activea.pop
+			@active.delete(el)
+      val=getvalue(el)
+      if val!=@vals[el]
+        @vals[e]=val
+        @depend.edges[e].each{|d| addactive(d)}
+      end
+
+		end
+		@vals[e]
+	end 
+	def depends(e)
+		@depend.add(e,@vis)
+		if !@visited[e]
+			@visited[e]=true
+			addactive(e)
+		end
+	end
+	def addactive(e)
+    if !@active[e]
+      @active[e]=true
+      @activea<<e
+    end
+  end
+
 end
 
 class Chars
@@ -18,6 +54,9 @@ class Chars
 	end
 	def self.empty
 		Chars[:empty]
+	end
+	def self.bottom
+		Chars[]
 	end
 	def +(a)
 		c=Chars.new
@@ -128,6 +167,9 @@ end
 def first_Switch_Dataflowcb_9(bind)
 Chars.top+Chars.empty
 end
+def getvalue_Switch_Dataflowcb_1(bind)
+bind[1]=[bind[1]]
+end
 def spaces_Switch_Dataflowcb_1(bind)
 /[\s\t\r\n\f]/
 end
@@ -141,16 +183,7 @@ def spaces_Switch_Dataflowcb_4(bind)
 _append(bind[0],bind[7])
 end
 def value_Switch_Dataflowcb_1(bind)
-@cached||={}
-end
-def value_Switch_Dataflowcb_2(bind)
-(@cached[bind[0]]) || FAIL
-end
-def value_Switch_Dataflowcb_3(bind)
-bind[2]=[bind[2]]
-end
-def value_Switch_Dataflowcb_4(bind)
-@cached[bind[0]]=bind[4]
+depends(bind[0]); @vals[bind[0]]
 end
 
 end
@@ -159,7 +192,7 @@ end
 class Detect_Switch < Traverser_Clone2
 	def first(s)
 		@switchdf||=Switch_Dataflow.new
-		r=@switchdf.parse(:value,[s])
+		r=@switchdf.parse(:root,[s])
 		return r
 	end
 	def intersects(p,e)
@@ -517,15 +550,15 @@ end
 
 
 def detect_switch_compiled_by
-'65f4e9be839ce5490c99380dcc32bfb1'
+'f71f34a0f8537ad7fd3af53b14067ec8'
 end
 def detect_switch_source_hash
-'1eef1c0f1de9a25113fdfa7d96128047'
+'f6925763e408951c031572096d2f2fcf'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'5ae70b8a7f40b362c1e8f1e2312fe5d1'
+'df820123d561805a9e7f7f274036470f'
 end
   require 'compiled/detect_switch_c'
