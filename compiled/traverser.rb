@@ -124,7 +124,7 @@ def traverse_Traverser_Clone2cb_5(bind)
 @changed=false
 end
 def traverse_Traverser_Clone2cb_6(bind)
-(bind[2]||=bind[1].clone;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
+(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
 end
 def traverse_Traverser_Clone2cb_7(bind)
 if bind[3]
@@ -186,10 +186,10 @@ end
 
 
 def traverser_compiled_by
-'cc80c0c6d1bde23757fa9216e26c9a31'
+'b15234f1587549717965f197378f2515'
 end
 def traverser_source_hash
-'3c871a71ee181b6a8f055855c218f36a'
+'8cc6486a86f92a3a16179857fc64e1d9'
 end
 def testversiontraverser(r)
  raise "invalid version" if r!=traverser_version

@@ -37,7 +37,7 @@ def traverse_Renamer2cb_5(bind)
 @changed=false
 end
 def traverse_Renamer2cb_6(bind)
-(bind[2]||=bind[1].clone;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
+(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
 end
 def traverse_Renamer2cb_7(bind)
 if bind[3]
@@ -180,7 +180,7 @@ def traverse_Inliner2cb_5(bind)
 @changed=false
 end
 def traverse_Inliner2cb_6(bind)
-(bind[2]||=bind[1].clone;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
+(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
 end
 def traverse_Inliner2cb_7(bind)
 if bind[3]
@@ -219,7 +219,7 @@ end
 
 
 def inliner2_compiled_by
-'cc80c0c6d1bde23757fa9216e26c9a31'
+'b15234f1587549717965f197378f2515'
 end
 def inliner2_source_hash
 '5f358071d0a2c1782d213625edc96769'

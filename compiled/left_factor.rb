@@ -60,7 +60,7 @@ def traverse_Left_Factorcb_5(bind)
 @changed=false
 end
 def traverse_Left_Factorcb_6(bind)
-(bind[2]||=bind[1].clone;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
+(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
 end
 def traverse_Left_Factorcb_7(bind)
 if bind[3]
@@ -105,7 +105,7 @@ end
 
 
 def left_factor_compiled_by
-'cc80c0c6d1bde23757fa9216e26c9a31'
+'b15234f1587549717965f197378f2515'
 end
 def left_factor_source_hash
 'f264ac06705a9c2e0746e6a287dbb141'

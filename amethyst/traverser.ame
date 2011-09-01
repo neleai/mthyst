@@ -34,7 +34,7 @@ amethyst Traverser_Clone2 {
           {@@changed}:oldchanged {@self}:this {nil}:clon {false}:changed
           {(@self.instance_variables).map{|v| [v,@self.instance_variable_get(v)] }}=>[
             [ :key {@@changed=false} traverse_item:val
-                 { (clon||=this.clone;changed=true;clon.instance_variable_set(key,val)) if @@changed}
+                 { (clon||=this.dup;changed=true;clon.instance_variable_set(key,val)) if @@changed}
             ]*
           ]
           {if changed

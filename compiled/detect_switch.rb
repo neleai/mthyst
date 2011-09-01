@@ -273,7 +273,7 @@ def traverse_Detect_Switchcb_5(bind)
 @changed=false
 end
 def traverse_Detect_Switchcb_6(bind)
-(bind[2]||=bind[1].clone;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
+(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
 end
 def traverse_Detect_Switchcb_7(bind)
 if bind[3]
@@ -501,7 +501,7 @@ def traverse_Detect_ClasSwitchcb_5(bind)
 @changed=false
 end
 def traverse_Detect_ClasSwitchcb_6(bind)
-(bind[2]||=bind[1].clone;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
+(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
 end
 def traverse_Detect_ClasSwitchcb_7(bind)
 if bind[3]
@@ -555,7 +555,7 @@ end
 
 
 def detect_switch_compiled_by
-'cc80c0c6d1bde23757fa9216e26c9a31'
+'b15234f1587549717965f197378f2515'
 end
 def detect_switch_source_hash
 '32c9707d0ada65c1c1f171be10f0bbb2'
