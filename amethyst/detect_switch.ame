@@ -85,7 +85,7 @@ amethyst Switch_Dataflow {
 				| Switch[value*:{it.inject(:+)}]
 				| Bind[@expr=>value]
 				| Many[value:val {val+Chars.empty} ]
-				| Act[.* {Chars.empty} ]
+				| (Act|CAct)[.* {Chars.empty} ]
 				| Apply[ ["seq"] CAct[.:str] {Chars[firstchar(str)]}]
 				| Apply[ ["anything" ] {Chars.top}]
 				| Apply[ ["regch" ] {Chars.top}]
@@ -126,8 +126,8 @@ amethyst Detect_Switch < Traverser_Clone2 {
 		{ary2.each{|e|
 			ary3<<[e,Or[{:ary=>@ary.select{|p|intersects(p,e)}}]]
 		}}
-		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k},v[0][1]]}}
-		{ary3<<[[:default],Apply["fails"]] unless ary2.include?(:default)}
+		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k.to_s}.sort,v[0][1]]}.sort}
+		{ary3<<[["default"],Apply["fails"]] unless ary2.include?(:default)}
     &{ary3.size>1}
 		{Switch[{:act=>"*ame_curstr(self)",:ary=>ary3}]}
 	]

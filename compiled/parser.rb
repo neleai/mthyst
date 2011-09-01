@@ -512,7 +512,7 @@ end
 
 
 def parser_compiled_by
-'5463ad23a1928fac8c1279f9e3e4dc60'
+'82c774e4022d583170e112c9072b1b15'
 end
 def parser_source_hash
 'd843fb6bb6feba68df42d656666d6471'
@@ -521,6 +521,6 @@ def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'2e0d5b7dc065a10a44a6b067e03d010b'
+'8def195b4bee7e3558364242eec82dd1'
 end
   require 'compiled/parser_c'
