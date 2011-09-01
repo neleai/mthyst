@@ -164,14 +164,24 @@ end
 
 class Remap_Acts < Traverser_Clone
 def self.switchcb_Remap_Acts5(e)
-return 0 if e<=Array
-return 1 if e<=AmethystAST
+return 0 if e<=Act
+return 1 if e<=CAct
 return 2 if e<=Object
 return 3
 end
 @@switchhashRemap_Acts5=Hash.new{|h,k| h[k]=switchcb_Remap_Acts5(k)}
 def switchcbRemap_Acts5(e)
 @@switchhashRemap_Acts5[e.class]
+end
+def self.switchcb_Remap_Acts6(e)
+return 0 if e<=Array
+return 1 if e<=AmethystAST
+return 2 if e<=Object
+return 3
+end
+@@switchhashRemap_Acts6=Hash.new{|h,k| h[k]=switchcb_Remap_Acts6(k)}
+def switchcbRemap_Acts6(e)
+@@switchhashRemap_Acts6[e.class]
 end
 def clas_Remap_Actscb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -204,25 +214,25 @@ def traverse_item_Remap_Actscb_4(bind)
 @changed=true
 end
 def visit_Remap_Actscb_1(bind)
-Act
+@src.pure ? PureAct[@src.ary] : Act[@src.ary,@src.pred]
 end
 def visit_Remap_Actscb_2(bind)
-@src.pure ? PureAct[@src.ary] : Act[@src.ary,@src.pred]
+@src
 end
 
 end
 
 
 def detect_variables2_compiled_by
-'82c774e4022d583170e112c9072b1b15'
+'1933ccf106b92e3e9ffe5e0e3d50e1fb'
 end
 def detect_variables2_source_hash
-'c08f0171404908cf1f526bda84455470'
+'640768518fc562b2eec0b8386a059c9a'
 end
 def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'0feec49efe00c9c21e41d1d16d1006ed'
+'73b21727c762cfed6d5d304c214179f1'
 end
   require 'compiled/detect_variables2_c'

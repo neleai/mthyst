@@ -170,7 +170,7 @@ end
 class CAct
 	def self.[](*a)
 		c=CAct.create({:ary=>a})
-		#c.freeze
+#		c.freeze
 	end
 end
 class Act
