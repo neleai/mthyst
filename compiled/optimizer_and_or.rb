@@ -127,7 +127,7 @@ end
 
 
 def optimizer_and_or_compiled_by
-'0bbeaa19ede4562e5d1c3a3f200330dc'
+'a7e4a7102d50d0ff30c89235f8beb119'
 end
 def optimizer_and_or_source_hash
 'd6491f906a16d895f1e205ab13f509ee'
@@ -136,6 +136,6 @@ def testversionoptimizer_and_or(r)
  raise "invalid version" if r!=optimizer_and_or_version
 end
 def optimizer_and_or_version
-'9dfb1626fdc302ca364ac7ae49b94fc9'
+'836ac4c731c326819fd3d23fdb7f1cb1'
 end
   require 'compiled/optimizer_and_or_c'

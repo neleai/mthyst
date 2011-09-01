@@ -88,7 +88,7 @@ class Constant_Propagator
 	
 end
 def propagate_consts(r)
-[ Remap_Acts,Dataflow].each{|p| r=p.new.parse(:root,r)
+[Dataflow].each{|p| r=p.new.parse(:root,r)
 #puts r.inspect
 }
 withtime("Constant_Propagator"){

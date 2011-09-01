@@ -1,7 +1,7 @@
 require 'digest'
 require 'set'
 $OPT="-O2"
-$debug=1
+$debug=0
 COMPILED=["amethyst","traverser","detect_variables2","ctranslator2","parser","optimizer_and_or","dead_code_elimination2","dataflow_ssa","inliner2",
 "detect_switch","left_factor","constant_propagation"]
 class Gram
@@ -107,7 +107,6 @@ end
 		end
 		tree=AmethystParser.new.parse(:igrammar,source)
 		tree=Analyze_Variables2.new.parse(:itrans,tree)
-#		tree=Remap_Acts.new.parse(:root,tree)
 		tree.each{|a|	
 			if a.is_a? Grammar
 				add_grammar(a)

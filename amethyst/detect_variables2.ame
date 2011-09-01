@@ -5,6 +5,7 @@ traverse[.*	{@locals=nil} @self] ]
 
 	visit = Args[ traverse[.* {@ary.map{|aa| @@variables[aa] }}=>[flat:a]  {@ary=connectstring(a.flatten)}  {(@ary.size==1&&(@ary[0].is_a?(Local)||@ary[0].is_a?(Global)||@ary[0].is_a?(Key))) ? @ary[0] : @self}]]
 				| Act[ traverse[.* @ary=>[( Local)] ] ]
+				| Act[ traverse[.* {@pure ? PureAct[@ary] : Act[@ary,@pred]}]]
 				| Result[ {@vars=@@locals.select{|aa| @vars.include? aa[0].to_sym}.uniq} @self]
 
 	flat= (Args[flat] | Strin[flat] |	. )*
