@@ -47,7 +47,14 @@ amethyst Traverser_Clone2 {
 
  
 
-amethyst Detector < Traverser{
-	root = {@@detected=[]} traverse {@@detected}
-	visit = detect:{@@detected<<it} {@self}
+amethyst Visitor{
+	 traverse_item = visit 
+                 | Array[traverse_item*]
+                 | AmethystAST[ traverse ]
+                 | .
+
+    traverse = .*
+          {(@self.instance_variables).map{|v| @self.instance_variable_get(v)}}=>[
+            traverse_item*
+          ]
 }

@@ -152,76 +152,49 @@ end
 
  
 
-class Detector < Traverser
-def self.switchcb_Detector4(e)
+class Visitor < Amethyst
+def self.switchcb_Visitor4(e)
 return 0 if e<=Array
 return 1 if e<=AmethystAST
 return 2 if e<=Object
 return 3
 end
-@@switchhashDetector4=Hash.new{|h,k| h[k]=switchcb_Detector4(k)}
-def switchcbDetector4(e)
-@@switchhashDetector4[e.class]
+@@switchhashVisitor4=Hash.new{|h,k| h[k]=switchcb_Visitor4(k)}
+def switchcbVisitor4(e)
+@@switchhashVisitor4[e.class]
 end
-def clas_Detectorcb_1(bind)
+def clas_Visitorcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
-def fails_Detectorcb_1(bind)
+def fails_Visitorcb_1(bind)
 (false) || FAIL
 end
-def root_Detectorcb_1(bind)
-@detected=[]
+def traverse_Visitorcb_1(bind)
+(@src.instance_variables).map{|v| @src.instance_variable_get(v)}
 end
-def root_Detectorcb_2(bind)
-@detected
+def traverse_Visitorcb_2(bind)
+bind[0]=[bind[0]]
 end
-def traverse_Detectorcb_1(bind)
-@src
+def traverse_Visitorcb_3(bind)
+_append(bind[2],bind[3])
 end
-def traverse_Detectorcb_2(bind)
-(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
-end
-def traverse_Detectorcb_3(bind)
-bind[1]=[bind[1]]
-end
-def traverse_Detectorcb_4(bind)
-bind[0].instance_variable_set(bind[4],bind[5])
-end
-def traverse_Detectorcb_5(bind)
-@src
-end
-def traverse_item_Detectorcb_1(bind)
-@changed=true
-end
-def traverse_item_Detectorcb_2(bind)
-bind[3]<<bind[4]
-end
-def traverse_item_Detectorcb_3(bind)
-@changed=true
-end
-def traverse_item_Detectorcb_4(bind)
-@changed=true
-end
-def visit_Detectorcb_1(bind)
-@detected<<bind[0]
-end
-def visit_Detectorcb_2(bind)
-@src
+def traverse_item_Visitorcb_1(bind)
+_append(bind[2],bind[3])
 end
 
 end
 
 
 def traverser_compiled_by
-'f7d67a07ca05e208f72264fd02d4cd4f'
+'556a39aa73f9dab7a979f32593734b3c'
 end
 def traverser_source_hash
-'5df9c584d5b4568abb11bb3b37a44843'
+'4f9f282c6b20637d13dec4e9f897d943'
 end
 def testversiontraverser(r)
  raise "invalid version" if r!=traverser_version
 end
 def traverser_version
-'79de5b0883c6f48a1491351446a0f1fc'
+'c13fd1a806e8b7fc96abec08e63a5fe1'
 end
   require 'compiled/traverser_c'
