@@ -1,7 +1,7 @@
 require 'digest'
 require 'set'
 $OPT="-O2"
-$debug=false
+$debug=true
 COMPILED=["amethyst","traverser","detect_variables2","ctranslator2","parser","optimizer_and_or","dead_code_elimination2","dataflow_ssa","inliner2",
 "detect_switch","left_factor","constant_propagation"]
 class Gram
