@@ -21,7 +21,7 @@ class Gram
       	r=o.new.parse(:root,r)
 			}
 		r=propagate_consts(r)
- [ Seq_Or_Optimizer,Dataflow, Dead_Code_Deleter3,
+ [ Dataflow, Dead_Code_Deleter3,
 			Left_Factor,
 ].each{|o|
 			r=o.new.parse(:root,r)
@@ -115,7 +115,7 @@ end
 			else
 			end
 		}
-		[Detect_Switch,Detect_ClasSwitch,Seq_Or_Optimizer].each{|o|
+		[Detect_Switch,Detect_ClasSwitch].each{|o|
 			tree=o.new.parse(:itrans,tree)
 			puts tree.inspect if $debug>1
 		}
