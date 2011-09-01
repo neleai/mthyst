@@ -14,7 +14,7 @@ class Gram
 		}
 	end
 	def opt(r)
-			[Seq_Or_Optimizer,Move_Assignments2,Seq_Or_Optimizer,
+			[Seq_Or_Optimizer,Move_Assignments2,
  			 Dataflow, Dead_Code_Deleter3
 			].each{|o|
 	      puts r.inspect if $debug>1
@@ -150,7 +150,7 @@ require 'constant_propagation2'
 def translate(s)
   par=AmethystParser.new
   opt=par.parse(:igrammar,s)
-  [Seq_Or_Optimizer,Analyze_Variables2,Move_Assignments2,Seq_Or_Optimizer].each{|p|
+  [Seq_Or_Optimizer,Analyze_Variables2,Move_Assignments2].each{|p|
 		puts opt.inspect
     opt=p.new.parse(:itrans,opt)
   }
