@@ -13,7 +13,7 @@ traverse[.*	{@locals=nil} @self] ]
 amethyst Remap_Acts < Traverser_Clone{
 	root = traverse
 	
-	visit = Act[traverse[.* {@pure ? PureAct[@ary] : Act[@ary,@pred]}] ]
+	visit = Act[traverse_item*:ar  {@pure ? PureAct[ar] : Act[ar,@pred]} ]
 				| Or[ traverse_item*:t {Or[*t]} ]
 				| Seq[ traverse_item*:t {Seq[*t]} ]
 				| CAct[.*{@self}]

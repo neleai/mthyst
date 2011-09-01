@@ -248,7 +248,7 @@ def visit_Dataflowcb_16(bind)
 @src.ary
 end
 def visit_Dataflowcb_17(bind)
-bind[23]=[bind[23]]
+bind[22]=[bind[22]]
 end
 def visit_Dataflowcb_18(bind)
 bind[4].each{|v| edges.add(ssanum(v),@src); edges.add(@src,newssanum(v.clone));}; @src
@@ -266,7 +266,7 @@ def visit_Dataflowcb_21(bind)
 @src.vars
 end
 def visit_Dataflowcb_22(bind)
-bind[34]=[bind[34]]
+bind[32]=[bind[32]]
 end
 def visit_Dataflowcb_23(bind)
 bind[4].each{|w| @edges.add(ssanum(w),@src) } ; @src
@@ -275,10 +275,10 @@ def visit_Dataflowcb_24(bind)
 @src
 end
 def visit_Dataflowcb_25(bind)
-_append(bind[42],bind[43])
+_append(bind[40],bind[41])
 end
 def visit_Dataflowcb_26(bind)
-Seq[*bind[44]]
+Seq[*bind[42]]
 end
 def visit_Dataflowcb_3(bind)
 bind[4].each{|v| @marked<<ssanum(v)}
@@ -422,15 +422,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'ca181e7ad5711e564764e2fd6678fb10'
+'2f6a2443c0b2aba62c04644e2b1b3710'
 end
 def dataflow_ssa_source_hash
-'4bb1e5d517714ed13163ddb957ddc17c'
+'a3b35abc724afec33d80f43c0b4bb540'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'541ec36c870f4305b0308e764d2889ed'
+'f3f9c5f13b51f9329917027f1c77ead2'
 end
   require 'compiled/dataflow_ssa_c'

@@ -216,21 +216,24 @@ def traverse_item_Remap_Actscb_4(bind)
 @changed=true
 end
 def visit_Remap_Actscb_1(bind)
-@src.pure ? PureAct[@src.ary] : Act[@src.ary,@src.pred]
+_append(bind[1],bind[2])
 end
 def visit_Remap_Actscb_2(bind)
-_append(bind[6],bind[7])
+@src.pure ? PureAct[bind[3]] : Act[bind[3],@src.pred]
 end
 def visit_Remap_Actscb_3(bind)
-Or[*bind[8]]
+_append(bind[7],bind[8])
 end
 def visit_Remap_Actscb_4(bind)
-_append(bind[11],bind[12])
+Or[*bind[9]]
 end
 def visit_Remap_Actscb_5(bind)
-Seq[*bind[8]]
+_append(bind[12],bind[13])
 end
 def visit_Remap_Actscb_6(bind)
+Seq[*bind[9]]
+end
+def visit_Remap_Actscb_7(bind)
 @src
 end
 
@@ -238,15 +241,15 @@ end
 
 
 def detect_variables2_compiled_by
-'ca181e7ad5711e564764e2fd6678fb10'
+'2f6a2443c0b2aba62c04644e2b1b3710'
 end
 def detect_variables2_source_hash
-'d04c1aed5f87559214d1d3b2bcc178b1'
+'41ba98b35bdd99ae3438aaa7dee995dd'
 end
 def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'00b5b7d87e32a5c6307543566c96bc82'
+'cb5273713253ad060232f0ab8b96a628'
 end
   require 'compiled/detect_variables2_c'
