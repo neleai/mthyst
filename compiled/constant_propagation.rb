@@ -1,9 +1,10 @@
 class Constant_Traverser < Traverser_Clone2
 def self.switchcb_Constant_Traverser1(e)
-return 0 if e<=Local
-return 1 if e<=Bind
-return 2 if e<=Act
-return 3
+return 0 if e<=Bind
+return 1 if e<=Act
+return 2 if e<=Local
+return 3 if e<=Object
+return 4
 end
 @@switchhashConstant_Traverser1=Hash.new{|h,k| h[k]=switchcb_Constant_Traverser1(k)}
 def switchcbConstant_Traverser1(e)
@@ -70,29 +71,29 @@ def traverse_item_Constant_Traversercb_4(bind)
 @changed=true
 end
 def visit_Constant_Traversercb_1(bind)
-@consts[@src.ssaname] ? @consts[@src.ssaname] : @src 
-end
-def visit_Constant_Traversercb_2(bind)
 @src.expr
 end
+def visit_Constant_Traversercb_2(bind)
+bind[1]=[bind[1]]
+end
 def visit_Constant_Traversercb_3(bind)
-bind[4]=[bind[4]]
+@src.expr=bind[2]
 end
 def visit_Constant_Traversercb_4(bind)
-@src.expr=bind[5]
+@src
 end
 def visit_Constant_Traversercb_5(bind)
 @src
 end
 def visit_Constant_Traversercb_6(bind)
-@src
+@consts[@src.ssaname] ? @consts[@src.ssaname] : @src 
 end
 
 end
 
 
 def constant_propagation_compiled_by
-'3040c90b8005b05f6affc594d30d8252'
+'0bbeaa19ede4562e5d1c3a3f200330dc'
 end
 def constant_propagation_source_hash
 'd8faaf3573d0a7f4bb79bbe4c1e9164d'
@@ -101,6 +102,6 @@ def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
 end
 def constant_propagation_version
-'0039323961d7ade4d75f3982b661bbbc'
+'27b00d565b9f7ccb0faa76bf35587aa6'
 end
   require 'compiled/constant_propagation_c'

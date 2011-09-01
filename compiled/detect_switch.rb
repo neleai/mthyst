@@ -495,7 +495,7 @@ def visit_Detect_ClasSwitchcb_3(bind)
 bind[1]+=first(bind[3])
 end
 def visit_Detect_ClasSwitchcb_4(bind)
-bind[1]=topsort(bind[1])
+bind[1]=topsort(bind[1]+["Object"])
 end
 def visit_Detect_ClasSwitchcb_5(bind)
 (bind[1].size>1) || FAIL
@@ -509,9 +509,6 @@ def visit_Detect_ClasSwitchcb_7(bind)
 bind[2]=bind[2].group_by{|a,b| b.ary}.map{|y,v| [v.map{|k,val| k}.sort,v[0][1]]}.sort
 end
 def visit_Detect_ClasSwitchcb_8(bind)
-bind[2]<<[[:default],Apply["fails"]] 
-end
-def visit_Detect_ClasSwitchcb_9(bind)
 c=classswitch(bind[1]);s=Switch[{:act=>c[1],:defs=>c[0],:ary=>bind[2]}];puts s.inspect;s
 end
 
@@ -520,15 +517,15 @@ end
 
 
 def detect_switch_compiled_by
-'3040c90b8005b05f6affc594d30d8252'
+'0bbeaa19ede4562e5d1c3a3f200330dc'
 end
 def detect_switch_source_hash
-'fa0cff90ac08d45f541ed3e9070377fb'
+'396fdfd31c8f0aceb1b76cc33fb30bc5'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'88e876e167974e655d44a6b2b3b44227'
+'71c9a874adbc94703b67ef8e1e9b5aa9'
 end
   require 'compiled/detect_switch_c'

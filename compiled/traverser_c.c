@@ -139,7 +139,7 @@ alt3_2: ame_setpos(self,oldpos6);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
 ISET(cut,Qnil);goto accept3;
   alt3_3:  ame_setpos(self,oldpos6); goto fail;
  accept3:;
- break;default:;   it=Traverser_Clone_fails(self ); FAILTEST(fail); break;}it=rb_ary_entry(bind,1);
+ break;}it=rb_ary_entry(bind,1);
 return it;
 fail: return failobj; }VALUE cls_Traverser;
 VALUE Traverser_clas(VALUE self ,VALUE a0);
@@ -281,7 +281,7 @@ alt3_2: ame_setpos(self,oldpos6);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
 ISET(cut,Qnil);goto accept3;
   alt3_3:  ame_setpos(self,oldpos6); goto fail;
  accept3:;
- break;default:;   it=Traverser_fails(self ); FAILTEST(fail); break;}it=rb_ary_entry(bind,1);
+ break;}it=rb_ary_entry(bind,1);
 return it;
 fail: return failobj; }VALUE cls_Traverser_Clone2;
 VALUE Traverser_Clone2_clas(VALUE self ,VALUE a0);
@@ -426,7 +426,7 @@ alt3_2: ame_setpos(self,oldpos6);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
 ISET(cut,Qnil);goto accept3;
   alt3_3:  ame_setpos(self,oldpos6); goto fail;
  accept3:;
- break;default:;   it=Traverser_Clone2_fails(self ); FAILTEST(fail); break;}it=rb_ary_entry(bind,1);
+ break;}it=rb_ary_entry(bind,1);
 return it;
 fail: return failobj; }VALUE cls_Visitor;
 VALUE Visitor_clas(VALUE self ,VALUE a0);
@@ -558,7 +558,7 @@ alt3_2: ame_setpos(self,oldpos6);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
 ISET(cut,Qnil);goto accept3;
   alt3_3:  ame_setpos(self,oldpos6); goto fail;
  accept3:;
- break;default:;   it=Visitor_fails(self ); FAILTEST(fail); break;}it=rb_ary_entry(bind,0);
+ break;}it=rb_ary_entry(bind,0);
 return it;
 fail: return failobj; }
 void Init_traverser_c(){ 
@@ -597,4 +597,4 @@ rb_define_method(cls_Visitor,"eof",Visitor_eof,0);
 rb_define_method(cls_Visitor,"fails",Visitor_fails,0);
 rb_define_method(cls_Visitor,"traverse",Visitor_traverse,0);
 rb_define_method(cls_Visitor,"traverse_item",Visitor_traverse_item,0);
- rb_eval_string("testversiontraverser('c13fd1a806e8b7fc96abec08e63a5fe1')");}
+ rb_eval_string("testversiontraverser('c9ffc2f95e474a09275f745536d9b545')");}

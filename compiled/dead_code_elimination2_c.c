@@ -154,7 +154,7 @@ ISET(cut,Qnil);goto accept5;
  accept5:;
  break;case 3:;   it=AmethystCore_anything(self ); FAILTEST(fail);
  rb_ary_store(bind,8,it); it=CALL(move_Move_Assignments2cb_14,1,bind); 
- rb_ary_store(bind,7,it);  break;default:;   it=Move_Assignments2_fails(self ); FAILTEST(fail); break;}it=rb_ary_entry(bind,7);
+ rb_ary_store(bind,7,it);  break;}it=rb_ary_entry(bind,7);
 return it;
 fail: return failobj; }
 VALUE Move_Assignments2_root(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -265,7 +265,7 @@ alt3_2: ame_setpos(self,oldpos6);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
 ISET(cut,Qnil);goto accept3;
   alt3_3:  ame_setpos(self,oldpos6); goto fail;
  accept3:;
- break;default:;   it=Move_Assignments2_fails(self ); FAILTEST(fail); break;}it=rb_ary_entry(bind,1);
+ break;}it=rb_ary_entry(bind,1);
 return it;
 fail: return failobj; }
 VALUE Move_Assignments2_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(31);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -386,7 +386,7 @@ ISET(cut,Qnil);goto accept5;
  accept5:;
  break;case 3:;   it=AmethystCore_anything(self ); FAILTEST(pass3);
  rb_ary_store(bind,14,it); it=CALL(visit_Move_Assignments2cb_19,1,bind); 
- rb_ary_store(bind,13,it);  break;default:;   it=Move_Assignments2_fails(self ); FAILTEST(pass3); break;}it=rb_ary_entry(bind,13);
+ rb_ary_store(bind,13,it);  break;}it=rb_ary_entry(bind,13);
  rb_ary_store(bind,27,it);   it=Move_Assignments2_eof(self ); FAILTEST(pass3);
 	goto success3;
 	pass3: fail3=1;
@@ -421,4 +421,4 @@ rb_define_method(cls_Move_Assignments2,"root",Move_Assignments2_root,0);
 rb_define_method(cls_Move_Assignments2,"traverse",Move_Assignments2_traverse,0);
 rb_define_method(cls_Move_Assignments2,"traverse_item",Move_Assignments2_traverse_item,0);
 rb_define_method(cls_Move_Assignments2,"visit",Move_Assignments2_visit,0);
- rb_eval_string("testversiondead_code_elimination2('4059e9c0ef546e95ac8d5abd65cc9616')");}
+ rb_eval_string("testversiondead_code_elimination2('f9a6e4777590314a0e2fefd5bb5b651b')");}

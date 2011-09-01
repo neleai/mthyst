@@ -159,7 +159,7 @@ alt3_2: ame_setpos(self,oldpos6);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
 ISET(cut,Qnil);goto accept3;
   alt3_3:  ame_setpos(self,oldpos6); goto fail;
  accept3:;
- break;default:;   it=Renamer2_fails(self ); FAILTEST(fail); break;}it=rb_ary_entry(bind,1);
+ break;}it=rb_ary_entry(bind,1);
 return it;
 fail: return failobj; }
 VALUE Renamer2_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(4);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -324,7 +324,7 @@ alt3_2: ame_setpos(self,oldpos6);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
 ISET(cut,Qnil);goto accept3;
   alt3_3:  ame_setpos(self,oldpos6); goto fail;
  accept3:;
- break;default:;   it=DetectCalls_fails(self ); FAILTEST(fail); break;}it=rb_ary_entry(bind,0);
+ break;}it=rb_ary_entry(bind,0);
 return it;
 fail: return failobj; }
 VALUE DetectCalls_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(4);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -532,7 +532,7 @@ alt3_2: ame_setpos(self,oldpos6);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
 ISET(cut,Qnil);goto accept3;
   alt3_3:  ame_setpos(self,oldpos6); goto fail;
  accept3:;
- break;default:;   it=Inliner2_fails(self ); FAILTEST(fail); break;}it=rb_ary_entry(bind,1);
+ break;}it=rb_ary_entry(bind,1);
 return it;
 fail: return failobj; }
 VALUE Inliner2_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(6);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -586,4 +586,4 @@ rb_define_method(cls_Inliner2,"root",Inliner2_root,0);
 rb_define_method(cls_Inliner2,"traverse",Inliner2_traverse,0);
 rb_define_method(cls_Inliner2,"traverse_item",Inliner2_traverse_item,0);
 rb_define_method(cls_Inliner2,"visit",Inliner2_visit,0);
- rb_eval_string("testversioninliner2('39b28a9437e40422418818f7acab871d')");}
+ rb_eval_string("testversioninliner2('22f7441f7b5f6487c7fa36ff7d3d5e7e')");}

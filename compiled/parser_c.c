@@ -822,7 +822,7 @@ ISET(cut,Qnil);goto accept1;
  accept1:;
  break;case 1:;   it=AmethystCore_anything(self ); FAILTEST(fail);
  rb_ary_store(bind,5,it); it=CALL(procargs2_AmethystParsercb_3,1,bind); 
- rb_ary_store(bind,4,it);  break;default:;   it=AmethystParser_fails(self ); FAILTEST(fail); break;}it=rb_ary_entry(bind,4);
+ rb_ary_store(bind,4,it);  break;}it=rb_ary_entry(bind,4);
 return it;
 fail: return failobj; }
 VALUE AmethystParser_regch(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=rb_ary_new2(5); rb_ary_store(bind,3,a0); int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -1346,4 +1346,4 @@ rb_define_method(cls_AmethystParser,"spaces",AmethystParser_spaces,0);
 rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
 rb_define_method(cls_AmethystParser,"token",AmethystParser_token,1);
 rb_define_method(cls_AmethystParser,"upper",AmethystParser_upper,0);
- rb_eval_string("testversionparser('f0450e5a43ead234ecdb5857d543f02d')");}
+ rb_eval_string("testversionparser('9b43f9d2e2606f778b92bc7e0f98532d')");}

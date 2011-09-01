@@ -187,7 +187,7 @@ alt3_2: ame_setpos(self,oldpos6);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
 ISET(cut,Qnil);goto accept3;
   alt3_3:  ame_setpos(self,oldpos6); goto fail;
  accept3:;
- break;default:;   it=Left_Factor_fails(self ); FAILTEST(fail); break;}it=rb_ary_entry(bind,1);
+ break;}it=rb_ary_entry(bind,1);
 return it;
 fail: return failobj; }
 VALUE Left_Factor_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(10);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -260,4 +260,4 @@ rb_define_method(cls_Left_Factor,"root",Left_Factor_root,0);
 rb_define_method(cls_Left_Factor,"traverse",Left_Factor_traverse,0);
 rb_define_method(cls_Left_Factor,"traverse_item",Left_Factor_traverse_item,0);
 rb_define_method(cls_Left_Factor,"visit",Left_Factor_visit,0);
- rb_eval_string("testversionleft_factor('352ff56e64f7ffd469a80dc2e93a0b36')");}
+ rb_eval_string("testversionleft_factor('550a186beae620c2b91cb268571f75dd')");}

@@ -1,10 +1,11 @@
 
 class Seq_Or_Optimizer < Traverser_Clone2
 def self.switchcb_Seq_Or_Optimizer1(e)
-return 0 if e<=Or
-return 1 if e<=Apply
-return 2 if e<=Seq
-return 3
+return 0 if e<=Seq
+return 1 if e<=Or
+return 2 if e<=Apply
+return 3 if e<=Object
+return 4
 end
 @@switchhashSeq_Or_Optimizer1=Hash.new{|h,k| h[k]=switchcb_Seq_Or_Optimizer1(k)}
 def switchcbSeq_Or_Optimizer1(e)
@@ -95,38 +96,38 @@ def traverse_item_Seq_Or_Optimizercb_4(bind)
 @changed=true
 end
 def visit_Seq_Or_Optimizercb_1(bind)
-Or[{:ary=>@src.ary}]
+Seq[{:ary=>@src.ary}]
 end
 def visit_Seq_Or_Optimizercb_2(bind)
-(bind[6]=="apply") || FAIL
+Or[{:ary=>@src.ary}]
 end
 def visit_Seq_Or_Optimizercb_3(bind)
-puts @src.inspect
+(bind[10]=="apply") || FAIL
 end
 def visit_Seq_Or_Optimizercb_4(bind)
-(bind[7].is_a?(CAct)) || FAIL
+puts @src.inspect
 end
 def visit_Seq_Or_Optimizercb_5(bind)
-Apply[bind[7][0][13...-2]]
+(bind[11].is_a?(CAct)) || FAIL
 end
 def visit_Seq_Or_Optimizercb_6(bind)
-(bind[6]=="apply") || FAIL
+Apply[bind[11][0][13...-2]]
 end
 def visit_Seq_Or_Optimizercb_7(bind)
-(bind[7].is_a?(Act) && bind[7][0].is_a?(Exp)) || FAIL
+(bind[10]=="apply") || FAIL
 end
 def visit_Seq_Or_Optimizercb_8(bind)
-bind[7][0][0]
+(bind[11].is_a?(Act) && bind[11][0].is_a?(Exp)) || FAIL
 end
 def visit_Seq_Or_Optimizercb_9(bind)
-Seq[{:ary=>@src.ary}]
+bind[11][0][0]
 end
 
 end
 
 
 def optimizer_and_or_compiled_by
-'3040c90b8005b05f6affc594d30d8252'
+'0bbeaa19ede4562e5d1c3a3f200330dc'
 end
 def optimizer_and_or_source_hash
 'd6491f906a16d895f1e205ab13f509ee'
@@ -135,6 +136,6 @@ def testversionoptimizer_and_or(r)
  raise "invalid version" if r!=optimizer_and_or_version
 end
 def optimizer_and_or_version
-'698e6e511cb4ee2e561e1de1e4ad9129'
+'9dfb1626fdc302ca364ac7ae49b94fc9'
 end
   require 'compiled/optimizer_and_or_c'

@@ -3,7 +3,8 @@ def self.switchcb_Analyze_Variables21(e)
 return 0 if e<=Args
 return 1 if e<=Act
 return 2 if e<=Result
-return 3
+return 3 if e<=Object
+return 4
 end
 @@switchhashAnalyze_Variables21=Hash.new{|h,k| h[k]=switchcb_Analyze_Variables21(k)}
 def switchcbAnalyze_Variables21(e)
@@ -199,7 +200,7 @@ end
 
 
 def detect_variables2_compiled_by
-'3040c90b8005b05f6affc594d30d8252'
+'0bbeaa19ede4562e5d1c3a3f200330dc'
 end
 def detect_variables2_source_hash
 'e9ef25a44d0856bc32d67573dfd56b79'
@@ -208,6 +209,6 @@ def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'c2b896a26d9bc8b622b0140111b81922'
+'f1f38c41645031ca79d6a116bc6d2c5e'
 end
   require 'compiled/detect_variables2_c'
