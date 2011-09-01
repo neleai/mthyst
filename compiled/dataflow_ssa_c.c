@@ -372,9 +372,9 @@ ISET(cut,Qnil);goto accept9;
  rb_ary_store(bind,20,it); it=rb_ary_entry(bind,20);
 return it;
 fail: return failobj; }
-VALUE Dataflow_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(41);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+VALUE Dataflow_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(46);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);char chr1=FIX2INT(CALL(switchcbDataflow1,1,ame_curobj(self)));  switch(chr1){case 0:;   it=AmethystCore_anything(self ); FAILTEST(fail);
+it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);char chr1=FIX2INT(CALL(switchcbDataflow1,1,ame_curobj(self)));  switch(chr1){case 0:;   it=AmethystCore_anything(self ); FAILTEST(fail);
  rb_ary_store(bind,0,it); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,rb_ary_entry(bind,0)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCore_anything(self ); FAILTEST(pass1);  it=Dataflow_traverse(self ); FAILTEST(pass1);
@@ -564,8 +564,21 @@ ame_setsrc(self,rb_ary_entry(bind,39)); ame_setpos(self,0); ame_setlen(self,FIX2
 	success20: ame_setsrc(self,oldsrc20); ame_setpos(self,oldpos27); ame_setlen(self,oldlen20);
 	if(fail20) goto fail;
 it=rb_ary_entry(bind,40);
- rb_ary_store(bind,7,it);  break;case 8:; int oldpos29=ame_getpos(self);
-  alt1_1:  ame_setpos(self,oldpos29); goto fail;
+ rb_ary_store(bind,7,it);  break;case 8:;   it=AmethystCore_anything(self ); FAILTEST(fail);
+ rb_ary_store(bind,41,it); int oldpos29=ame_getpos(self); int oldlen21=ame_getlen(self); VALUE oldsrc21=ame_getsrc(self); int fail21=0;
+ame_setsrc(self,rb_ary_entry(bind,41)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
+ it=rb_ary_new3(0);
+ rb_ary_store(bind,42,it); int oldpos30; while(1){oldpos30=ame_getpos(self);   it=Dataflow_traverse_item(self ); FAILTEST(break9);
+ rb_ary_store(bind,43,it); it=CALL(visit_Dataflowcb_25,1,bind);  if (IGET(stop)!=Qnil){{oldpos30=ame_getpos(self);goto break9;} } } break9: ISET(stop,Qnil);  ame_setpos(self,oldpos30); it=rb_ary_entry(bind,42);
+ rb_ary_store(bind,44,it); it=CALL(visit_Dataflowcb_26,1,bind); 
+ rb_ary_store(bind,45,it);   it=Dataflow_eof(self ); FAILTEST(pass21);
+	goto success21;
+	pass21: fail21=1;
+	success21: ame_setsrc(self,oldsrc21); ame_setpos(self,oldpos29); ame_setlen(self,oldlen21);
+	if(fail21) goto fail;
+it=rb_ary_entry(bind,45);
+ rb_ary_store(bind,7,it);  break;case 9:; int oldpos31=ame_getpos(self);
+  alt1_1:  ame_setpos(self,oldpos31); goto fail;
  accept1:;
  break;}it=rb_ary_entry(bind,7);
 return it;
@@ -824,4 +837,4 @@ rb_define_method(cls_Dead_Code_Deleter3,"root",Dead_Code_Deleter3_root,0);
 rb_define_method(cls_Dead_Code_Deleter3,"traverse",Dead_Code_Deleter3_traverse,0);
 rb_define_method(cls_Dead_Code_Deleter3,"traverse_item",Dead_Code_Deleter3_traverse_item,0);
 rb_define_method(cls_Dead_Code_Deleter3,"visit",Dead_Code_Deleter3_visit,0);
- rb_eval_string("testversiondataflow_ssa('53ec7e3f62d047fc133e59c512a385b6')");}
+ rb_eval_string("testversiondataflow_ssa('541ec36c870f4305b0308e764d2889ed')");}

@@ -100,19 +100,17 @@ class <<Many
 	end
 end
 
-class <<Seq
-	def [](*args)
+class Seq
+	def self.[](*args)
 		args=args[0][:ary] if args.size==1 && args[0].is_a?(Hash)
 		return Seq.create(*args) if args[-1].is_a?(Hash)
 		s=Seq.create({:ary=>args}).normalize
 		(s.size==1) ? s.ary[0] : s
 	end
-end
-class Seq
 	def normalize
 		@ary=@ary.map{|i| (i.is_a?(Seq)) ? i.ary : i}.flatten
 		@ary=@ary.select{|e| !(e.is_a?(Act) && e.ary.size==0)}
-		self
+		self.freeze
 	end
 end
 
