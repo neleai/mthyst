@@ -113,7 +113,7 @@ class Seq
 		@ary=@ary.map{|i| (i.is_a?(Seq)) ? i.ary : i}.flatten
 		@ary=@ary.select{|e| !(e.is_a?(Act) && e.ary.size==0)}
 		puts self.inspect if @ary.size==1
-		#(@ary.size==1) ? @ary[0] : self
+	#	(@ary.size==1) ? @ary[0] : self
 		self
 	end
 end

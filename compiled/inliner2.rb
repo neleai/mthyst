@@ -72,7 +72,7 @@ end
 end
 
 
-class DetectCalls < Traverser_Clone2
+class DetectCalls < Traverser_Clone
 def self.switchcb_DetectCalls2(e)
 return 0 if e<=Array
 return 1 if e<=AmethystAST
@@ -99,30 +99,16 @@ def root_DetectCallscb_3(bind)
 @calls
 end
 def traverse_DetectCallscb_1(bind)
-@changed
+@src.clone
 end
 def traverse_DetectCallscb_2(bind)
-@src
-end
-def traverse_DetectCallscb_3(bind)
 (@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
 end
+def traverse_DetectCallscb_3(bind)
+bind[1]=[bind[1]]
+end
 def traverse_DetectCallscb_4(bind)
-bind[4]=[bind[4]]
-end
-def traverse_DetectCallscb_5(bind)
-@changed=false
-end
-def traverse_DetectCallscb_6(bind)
-(bind[2]||=bind[1].clone;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
-end
-def traverse_DetectCallscb_7(bind)
-if bind[3]
-             @changed=true;bind[2].normalize
-           else
-            @changed=bind[0]
-            @src
-          end
+bind[0].instance_variable_set(bind[4],bind[5])
 end
 def traverse_item_DetectCallscb_1(bind)
 @changed=true
@@ -248,15 +234,15 @@ end
 
 
 def inliner2_compiled_by
-'458ce6ea18c9d7b4043b97ccfc06b9d9'
+'f7d67a07ca05e208f72264fd02d4cd4f'
 end
 def inliner2_source_hash
-'d46130ad91ded4f2dceff5159cdcb009'
+'74c7d6604e76c27d0bafc016b0e24eaa'
 end
 def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version
 end
 def inliner2_version
-'f76721a0d21cf6b010b5182981180bfd'
+'ae38e70e2f6d14c8369a1a412594b0a9'
 end
   require 'compiled/inliner2_c'
