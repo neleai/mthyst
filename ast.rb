@@ -96,7 +96,7 @@ end
 class <<Many
 	def [](expr,many1=nil)
 	  a=autovar
-		Seq[{:ary=>( [_Bind(a, PureAct["[]"])]+(many1 ? [Append[a,expr]] : [])+[Many.create({:ary=>[Append[a,expr]]}),PureAct[a]])}]
+		Seq[{:ary=>( [_Bind(a, Act["[]"])]+(many1 ? [Append[a,expr]] : [])+[Many.create({:ary=>[Append[a,expr]]}),PureAct[a]])}]
 	end
 end
 
@@ -165,6 +165,12 @@ class <<PureAct
 		a=Act[expr]
 		a.pure=true
 		a
+	end
+end
+class CAct
+	def self.[](*a)
+		c=CAct.create({:ary=>a})
+		#c.freeze
 	end
 end
 class Act

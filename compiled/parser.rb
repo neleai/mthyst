@@ -433,7 +433,7 @@ def rule_AmethystParsercb_4(bind)
 @locals.uniq
 end
 def rule_AmethystParsercb_5(bind)
-bind[3]=Seq[{:ary=>($appends.uniq.map{|a| _Bind(a,PureAct[Args["[]"]])}+[bind[3]])}]; 
+bind[3]=Seq[{:ary=>($appends.uniq.map{|a| _Bind(a,Act["[]"])}+[bind[3]])}]; 
 end
 def rule_AmethystParsercb_6(bind)
 Rule.create( {:args=>bind[2],:bnding=>bind[0],:body=>bind[3],:locals=>bind[4],:name=>bind[1] })
@@ -515,7 +515,7 @@ def parser_compiled_by
 '82c774e4022d583170e112c9072b1b15'
 end
 def parser_source_hash
-'d843fb6bb6feba68df42d656666d6471'
+'909f0552f09069fba603fa458921d863'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
