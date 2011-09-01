@@ -172,7 +172,6 @@ class Act
 		expr=expr[0] if expr.is_a?(Array) && expr.size<=1
 		return Act.create({:pred=>pred}) if expr==nil
 		r=Act.create(expr,{:pred=>pred}).normalize
-		puts "ret #{r.inspect}"
 		r
 	end
 	def normalize
@@ -181,8 +180,6 @@ class Act
 		if @ary.size==1 && !@pred
 			exp=@ary[0]
 			exp=exp[0] if exp.is_a?(Args) && exp.size==1
-			puts exp.inspect
-			puts exp.inspect
 		  return Act.create(exp,{:pure=>true}) if exp.is_a?(Exp)
 			return CAct["rb_ary_new3(0)"] if exp=="[]"
 			return CAct["Qtrue"] if exp=="true"

@@ -27,7 +27,7 @@ class Switch_Dataflow < Amethyst
 		@vals[e]
 	end 
 	def depends(e)
-		@depend.add(e,@vis)
+		@depend.add(e,@vis) unless @depend.edges[e].include?(@vis)
 		if !@visited[e]
 			@visited[e]=true
 			addactive(e)
@@ -168,6 +168,9 @@ def first_Switch_Dataflowcb_9(bind)
 Chars.top+Chars.empty
 end
 def getvalue_Switch_Dataflowcb_1(bind)
+@vis=bind[0]; bind[0]
+end
+def getvalue_Switch_Dataflowcb_2(bind)
 bind[1]=[bind[1]]
 end
 def spaces_Switch_Dataflowcb_1(bind)
@@ -550,15 +553,15 @@ end
 
 
 def detect_switch_compiled_by
-'f71f34a0f8537ad7fd3af53b14067ec8'
+'27bba8a11c0bf2d375809b0c229e8a76'
 end
 def detect_switch_source_hash
-'ecaed4d7e5156efd7424e89b1d609d92'
+'4a20ef52c50d2f519e81c3d959989913'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'df820123d561805a9e7f7f274036470f'
+'ae100836b786c9e3b6f406bb67cfd2a7'
 end
   require 'compiled/detect_switch_c'

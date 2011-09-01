@@ -27,7 +27,7 @@ class Switch_Dataflow < Amethyst
 		@vals[e]
 	end 
 	def depends(e)
-		@depend.add(e,@vis)
+		@depend.add(e,@vis) unless @depend.edges[e].include?(@vis)
 		if !@visited[e]
 			@visited[e]=true
 			addactive(e)
@@ -93,7 +93,7 @@ amethyst Switch_Dataflow {
 				
 				value =  .:x  {depends(x); @@vals[x]}
 
-				getvalue(v) = {v}=>first
+				getvalue(v) = {@@vis=v; v}=>first
 
 				root = .:x analyze(x)
 }

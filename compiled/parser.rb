@@ -307,79 +307,118 @@ def regch_AmethystParsercb_2(bind)
 (bind[3].match(bind[2])) || FAIL
 end
 def rubyarg_AmethystParsercb_1(bind)
-Args[{:ary=>([bind[3]]+bind[4]+[bind[2]])}]
+Exp[_body(bind[2])]
 end
 def rubyarg_AmethystParsercb_10(bind)
-Args[{:ary=>([bind[3]]+bind[4]+[bind[2]])}]
+_append(bind[13],bind[14])
 end
 def rubyarg_AmethystParsercb_11(bind)
-_append(bind[0],bind[13])
+_append(bind[0],bind[15])
 end
 def rubyarg_AmethystParsercb_12(bind)
-_append(bind[14],bind[15])
+Strin[connectstring(bind[0])]
 end
 def rubyarg_AmethystParsercb_13(bind)
-_append(bind[0],bind[16])
-end
-def rubyarg_AmethystParsercb_14(bind)
-Strin[connectstring(bind[0])]
-end
-def rubyarg_AmethystParsercb_15(bind)
-_append(bind[0],bind[17])
-end
-def rubyarg_AmethystParsercb_16(bind)
-_append(bind[18],bind[19])
-end
-def rubyarg_AmethystParsercb_17(bind)
-_append(bind[0],bind[20])
-end
-def rubyarg_AmethystParsercb_18(bind)
-Strin[connectstring(bind[0])]
-end
-def rubyarg_AmethystParsercb_19(bind)
 /[$.:]/
 end
-def rubyarg_AmethystParsercb_2(bind)
-Args[{:ary=>([bind[3]]+bind[4]+[bind[2]])}]
+def rubyarg_AmethystParsercb_14(bind)
+(bind[18].is_a? String ) || FAIL
 end
-def rubyarg_AmethystParsercb_20(bind)
-(bind[8].is_a? String ) || FAIL
+def rubyarg_AmethystParsercb_15(bind)
+(bind[17].match(bind[20])) || FAIL
 end
-def rubyarg_AmethystParsercb_21(bind)
-(bind[7].match(bind[10])) || FAIL
-end
-def rubyarg_AmethystParsercb_22(bind)
+def rubyarg_AmethystParsercb_16(bind)
 _append(bind[1],bind[22])
 end
-def rubyarg_AmethystParsercb_23(bind)
+def rubyarg_AmethystParsercb_17(bind)
 /[^`{}()'"\[\]]/
+end
+def rubyarg_AmethystParsercb_18(bind)
+(bind[18].is_a? String ) || FAIL
+end
+def rubyarg_AmethystParsercb_19(bind)
+(bind[17].match(bind[20])) || FAIL
+end
+def rubyarg_AmethystParsercb_2(bind)
+Args[{:ary=>([bind[5]]+bind[6]+[bind[4]])}]
+end
+def rubyarg_AmethystParsercb_20(bind)
+Exp[_body(bind[2])]
+end
+def rubyarg_AmethystParsercb_21(bind)
+Args[{:ary=>([bind[5]]+bind[6]+[bind[4]])}]
+end
+def rubyarg_AmethystParsercb_22(bind)
+Args[{:ary=>([bind[5]]+bind[6]+[bind[4]])}]
+end
+def rubyarg_AmethystParsercb_23(bind)
+Args[{:ary=>([bind[5]]+bind[6]+[bind[4]])}]
 end
 def rubyarg_AmethystParsercb_24(bind)
-(bind[8].is_a? String ) || FAIL
+_append(bind[0],bind[8])
 end
 def rubyarg_AmethystParsercb_25(bind)
-(bind[7].match(bind[10])) || FAIL
+_append(bind[9],bind[10])
+end
+def rubyarg_AmethystParsercb_26(bind)
+_append(bind[0],bind[11])
+end
+def rubyarg_AmethystParsercb_27(bind)
+Strin[connectstring(bind[0])]
+end
+def rubyarg_AmethystParsercb_28(bind)
+_append(bind[0],bind[12])
+end
+def rubyarg_AmethystParsercb_29(bind)
+_append(bind[13],bind[14])
 end
 def rubyarg_AmethystParsercb_3(bind)
-Args[{:ary=>([bind[3]]+bind[4]+[bind[2]])}]
+Args[{:ary=>([bind[5]]+bind[6]+[bind[4]])}]
 end
-def rubyarg_AmethystParsercb_4(bind)
+def rubyarg_AmethystParsercb_30(bind)
+_append(bind[0],bind[15])
+end
+def rubyarg_AmethystParsercb_31(bind)
+Strin[connectstring(bind[0])]
+end
+def rubyarg_AmethystParsercb_32(bind)
+/[$.:]/
+end
+def rubyarg_AmethystParsercb_33(bind)
+(bind[18].is_a? String ) || FAIL
+end
+def rubyarg_AmethystParsercb_34(bind)
+(bind[17].match(bind[20])) || FAIL
+end
+def rubyarg_AmethystParsercb_35(bind)
+_append(bind[1],bind[22])
+end
+def rubyarg_AmethystParsercb_36(bind)
 /[^`{}()'"\[\]]/
 end
+def rubyarg_AmethystParsercb_37(bind)
+(bind[18].is_a? String ) || FAIL
+end
+def rubyarg_AmethystParsercb_38(bind)
+(bind[17].match(bind[20])) || FAIL
+end
+def rubyarg_AmethystParsercb_4(bind)
+Args[{:ary=>([bind[5]]+bind[6]+[bind[4]])}]
+end
 def rubyarg_AmethystParsercb_5(bind)
-(bind[8].is_a? String ) || FAIL
+_append(bind[0],bind[8])
 end
 def rubyarg_AmethystParsercb_6(bind)
-(bind[7].match(bind[10])) || FAIL
+_append(bind[9],bind[10])
 end
 def rubyarg_AmethystParsercb_7(bind)
-Exp[_body(bind[12])]
+_append(bind[0],bind[11])
 end
 def rubyarg_AmethystParsercb_8(bind)
-Args[{:ary=>([bind[3]]+bind[4]+[bind[2]])}]
+Strin[connectstring(bind[0])]
 end
 def rubyarg_AmethystParsercb_9(bind)
-Args[{:ary=>([bind[3]]+bind[4]+[bind[2]])}]
+_append(bind[0],bind[12])
 end
 def rule_AmethystParsercb_1(bind)
 @locals=[];$appends=[];@bnding=Bnding[]
@@ -473,7 +512,7 @@ end
 
 
 def parser_compiled_by
-'f71f34a0f8537ad7fd3af53b14067ec8'
+'27bba8a11c0bf2d375809b0c229e8a76'
 end
 def parser_source_hash
 'd843fb6bb6feba68df42d656666d6471'
@@ -482,6 +521,6 @@ def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'139fd9f845f6918bdc29be1eacbae5b3'
+'9b43f9d2e2606f778b92bc7e0f98532d'
 end
   require 'compiled/parser_c'

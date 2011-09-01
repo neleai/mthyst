@@ -270,8 +270,8 @@ return it;
 fail: return failobj; }
 VALUE Switch_Dataflow_getvalue(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=rb_ary_new2(4); rb_ary_store(bind,0,a0); int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=rb_ary_entry(bind,0);
- rb_ary_store(bind,1,it); it=CALL(getvalue_Switch_Dataflowcb_1,1,bind); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
+it=CALL(getvalue_Switch_Dataflowcb_1,1,bind); 
+ rb_ary_store(bind,1,it); it=CALL(getvalue_Switch_Dataflowcb_2,1,bind); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,rb_ary_entry(bind,1)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=Switch_Dataflow_first(self ); FAILTEST(pass1);
  rb_ary_store(bind,2,it);   it=Switch_Dataflow_eof(self ); FAILTEST(pass1);
@@ -905,4 +905,4 @@ rb_define_method(cls_Detect_ClasSwitch,"root",Detect_ClasSwitch_root,0);
 rb_define_method(cls_Detect_ClasSwitch,"traverse",Detect_ClasSwitch_traverse,0);
 rb_define_method(cls_Detect_ClasSwitch,"traverse_item",Detect_ClasSwitch_traverse_item,0);
 rb_define_method(cls_Detect_ClasSwitch,"visit",Detect_ClasSwitch_visit,0);
- rb_eval_string("testversiondetect_switch('df820123d561805a9e7f7f274036470f')");}
+ rb_eval_string("testversiondetect_switch('ae100836b786c9e3b6f406bb67cfd2a7')");}
