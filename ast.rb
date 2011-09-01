@@ -121,11 +121,20 @@ class <<Or
 	def [](*args)
 		args=args[0][:ary] if args.size==1 && args[0].is_a?(Hash)
 		return Or.create(*args) if args[-1].is_a?(Hash)
-		args=args.map{|i| (i.is_a?(Or)) ? i.ary : i}.flatten
-		args=args.select{|e| !(e.is_a?(Act) && e.ary.size==0)} 
-		(args.size==1) ? args[0] : Or.create({:ary=>args})
+		s=Or.create({:ary=>args}).normalize
+		(s.size==1) ? s.ary[0] : s
 	end
 end
+class Or
+	def normalize
+		@ary=@ary.map{|i| (i.is_a?(Or)) ? i.ary : i}.flatten
+		@ary=@ary.select{|e| !(e.is_a?(Act) && e.ary.size==0)}
+		#(@ary.size==1) ? @ary[0] : self
+		self
+	end
+end
+
+
 
 [Apply,Bnding,Global,Local,Act,CAct].each{|c| eval("class #{c} 
  def hash
