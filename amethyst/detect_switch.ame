@@ -19,8 +19,8 @@ class Switch_Dataflow < Amethyst
 			@active.delete(el)
       val=getvalue(el)
       if val!=@vals[el]
-        @vals[e]=val
-        @depend.edges[e].each{|d| addactive(d)}
+        @vals[el]=val
+        @depend.edges[el].each{|d| addactive(d)}
       end
 
 		end

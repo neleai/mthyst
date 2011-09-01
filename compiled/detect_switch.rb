@@ -19,8 +19,8 @@ class Switch_Dataflow < Amethyst
 			@active.delete(el)
       val=getvalue(el)
       if val!=@vals[el]
-        @vals[e]=val
-        @depend.edges[e].each{|d| addactive(d)}
+        @vals[el]=val
+        @depend.edges[el].each{|d| addactive(d)}
       end
 
 		end
@@ -553,7 +553,7 @@ def detect_switch_compiled_by
 'f71f34a0f8537ad7fd3af53b14067ec8'
 end
 def detect_switch_source_hash
-'f6925763e408951c031572096d2f2fcf'
+'ecaed4d7e5156efd7424e89b1d609d92'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
