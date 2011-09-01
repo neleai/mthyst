@@ -110,6 +110,7 @@ class Seq
 	def normalize
 		@ary=@ary.map{|i| (i.is_a?(Seq)) ? i.ary : i}.flatten
 		@ary=@ary.select{|e| !(e.is_a?(Act) && e.ary.size==0)}
+		@ary.freeze
 		self.freeze
 	end
 end
@@ -127,6 +128,7 @@ class Or
 		@ary=@ary.map{|i| (i.is_a?(Or)) ? i.ary : i}.flatten
 		@ary=@ary.select{|e| !(e.is_a?(Act) && e.ary.size==0)}
 		(@ary.size==1) ? @ary[0] : self
+		@ary.freeze
 		self.freeze
 	end
 end
