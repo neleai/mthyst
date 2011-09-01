@@ -104,14 +104,16 @@ class <<Seq
 	def [](*args)
 		args=args[0][:ary] if args.size==1 && args[0].is_a?(Hash)
 		return Seq.create(*args) if args[-1].is_a?(Hash)
-		args=args.map{|i| (i.is_a?(Seq)) ? i.ary : i}.flatten
-		args=args.select{|e| !(e.is_a?(Act) && e.ary.size==0)} 
-		(args.size==1) ? args[0] : Seq.create({:ary=>args})
+		s=Seq.create({:ary=>args}).normalize
+		(s.size==1) ? s.ary[0] : s
 	end
+end
+class Seq
 	def normalize
-	#	@ary=@ary.map{|i| (i.is_a?(Seq)) ? i.ary : i}.flatten
-	#	@ary=@ary.select{|e| !(e.is_a?(Act) && e.ary.size==0)}
-	#	(@ary.size==1) ? @ary[0] : self
+		@ary=@ary.map{|i| (i.is_a?(Seq)) ? i.ary : i}.flatten
+		@ary=@ary.select{|e| !(e.is_a?(Act) && e.ary.size==0)}
+		#(@ary.size==1) ? @ary[0] : self
+		self
 	end
 end
 
