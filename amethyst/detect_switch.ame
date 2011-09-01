@@ -59,7 +59,8 @@ amethyst Switch_Dataflow {
 
 class Detect_Switch < Traverser_Clone2
 	def first(s)
-		r=Switch_Dataflow.new.parse(:first,[s])
+		@switchdf||=Switch_Dataflow.new
+		r=@switchdf.parse(:first,[s])
 		return r
 	end
 	def intersects(p,e)

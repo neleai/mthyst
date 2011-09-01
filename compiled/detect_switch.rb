@@ -158,7 +158,8 @@ end
 
 class Detect_Switch < Traverser_Clone2
 	def first(s)
-		r=Switch_Dataflow.new.parse(:first,[s])
+		@switchdf||=Switch_Dataflow.new
+		r=@switchdf.parse(:first,[s])
 		return r
 	end
 	def intersects(p,e)
@@ -522,7 +523,7 @@ def detect_switch_compiled_by
 '3040c90b8005b05f6affc594d30d8252'
 end
 def detect_switch_source_hash
-'2d89fa6614d9f4385605f6e3c4116845'
+'fa0cff90ac08d45f541ed3e9070377fb'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
