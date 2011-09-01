@@ -120,9 +120,6 @@ end
 def visit_Analyze_Variables2cb_1(bind)
 @src.ary.map{|aa| @variables[aa] }
 end
-def visit_Analyze_Variables2cb_10(bind)
-@src
-end
 def visit_Analyze_Variables2cb_2(bind)
 bind[2]=[bind[2]]
 end
@@ -142,10 +139,10 @@ def visit_Analyze_Variables2cb_7(bind)
 Local
 end
 def visit_Analyze_Variables2cb_8(bind)
-@src.pure ? PureAct[@src.ary] : Act[@src.ary,@src.pred]
+@src.vars=@locals.select{|aa| @src.vars.include? aa[0].to_sym}.uniq
 end
 def visit_Analyze_Variables2cb_9(bind)
-@src.vars=@locals.select{|aa| @src.vars.include? aa[0].to_sym}.uniq
+@src
 end
 
 end
@@ -203,15 +200,15 @@ end
 
 
 def detect_variables2_compiled_by
-'9df2b25406a3a41034278fba0197327d'
+'a9cd9d63c48866d58a85f804e8bde97e'
 end
 def detect_variables2_source_hash
-'022372d80c974986fd5e9165c603b679'
+'e9ef25a44d0856bc32d67573dfd56b79'
 end
 def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'aa493377ddd12b6e753bfa19eb1176fa'
+'ce157c46cb3ba761370e3eeb062d86f6'
 end
   require 'compiled/detect_variables2_c'
