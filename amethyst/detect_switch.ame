@@ -51,8 +51,10 @@ amethyst Switch_Dataflow {
 				| Apply[ ["anything" ] {Chars.top}]
 				| Apply[ ["regch" ] {Chars.top}]
 				| . {Chars.top+Chars.empty}
+				
+				value = {@@cached||={}} .:x (&{@@cached[x]} 
+																		| ({x}=>first):v {@@cached[x]=v} )
 
-	value = first
 }
 
 class Detect_Switch < Traverser_Clone2
