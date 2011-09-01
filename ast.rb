@@ -164,13 +164,13 @@ class <<PureAct
 	def [](expr=nil)
 		a=Act[expr].dup
 		a.pure=true
-		a#.freeze
+		a.freeze
 	end
 end
 class CAct
 	def self.[](*a)
 		c=CAct.create({:ary=>a})
-		c#.freeze
+		c.freeze
 	end
 end
 class Act
@@ -196,7 +196,7 @@ class Act
 		end
 		@pure=true if exp.is_a?(Exp)
 		@ary=nil if @ary.size==0
-		self#.freeze
+		self.freeze
 	end
 end
 class Pred;end
