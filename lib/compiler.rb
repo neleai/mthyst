@@ -102,7 +102,7 @@ end
 	def compile(file,out,file2)
 		source=File.new(file).read
 		source_hash=Digest::MD5.hexdigest(source)
-		if eval("#{file2}_compiled_by")==$compiled_by && eval("#{file2}_source_hash")==source_hash && $debug>0
+		if eval("#{file2}_compiled_by")==$compiled_by && eval("#{file2}_source_hash")==source_hash && $debug<1
 			return unless ["amethyst","traverser"].include? file2 #inheritance
 		end
 		tree=AmethystParser.new.parse(:igrammar,source)
@@ -115,7 +115,7 @@ end
 			else
 			end
 		}
-		[Detect_Switch,Detect_ClasSwitch].each{|o|
+		[Detect_Switch,Detect_ClasSwitch,Seq_Or_Optimizer].each{|o|
 			tree=o.new.parse(:itrans,tree)
 			puts tree.inspect if $debug>1
 		}
@@ -146,13 +146,6 @@ $compiled_by<< eval("#{opt}_version")
 $compiled_by=Digest::MD5.hexdigest($compiled_by)
 
 require 'constant_propagation2'
-
-# recompling is faster
-def save_grammars
-#		YAML::dump([$compiled_by,Compiler.grammars],File.new("compiled/grammars.yaml","w"))
-end
-#restore=YAML::load(File.new("compiled/grammars.yaml"))
-#Compiler.grammars=restore[1] if restore[0]==$compiled_by
 
 def translate(s)
   par=AmethystParser.new

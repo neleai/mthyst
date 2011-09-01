@@ -112,8 +112,6 @@ class Seq
 	def normalize
 		@ary=@ary.map{|i| (i.is_a?(Seq)) ? i.ary : i}.flatten
 		@ary=@ary.select{|e| !(e.is_a?(Act) && e.ary.size==0)}
-		puts self.inspect if @ary.size==1
-	#	(@ary.size==1) ? @ary[0] : self
 		self
 	end
 end
@@ -169,31 +167,39 @@ class <<PureAct
 		a
 	end
 end
-class <<Act
-	def [](expr=nil,pred=nil)
+class Act
+	def self.[](expr=nil,pred=nil)
 		expr=expr[0] if expr.is_a?(Array) && expr.size<=1
 		if !pred
 			#puts expr.inspect
 			exp=expr
 			exp=exp[0] if exp.is_a?(Args) && exp.size==1
 			return CAct["rb_ary_new3(0)"] if exp=="[]"
-			return CAct["Qtrue"] if exp=="true"
-			return CAct["Qfalse"] if exp=="false"
-			return CAct["Qnil"] if exp=="nil"
-			return Act.create(exp,{:pure=>true}) if exp.is_a?(Exp)
-			return CAct["INT2FIX(#{exp})"] if exp.is_a?(String) && exp==exp.to_i.to_s && exp.to_i>-1000000000&&exp.to_i<1000000000
 			return CAct["rb_str_new2(\"#{exp[1...-1]}\")"] if exp.is_a?(String) && ((exp[0]==?\" && exp[-1]==?\")|| (exp[0]==?' && exp[-1]==?')) && !(exp=~/\#/)
 		end
 		return Act.create({:pred=>pred}) if expr==nil
-		Act.create(expr,{:pred=>pred}).normalize
+		r=Act.create(expr,{:pred=>pred}).normalize
+		puts "ret #{r.inspect}"
+		r
 	end
 	def normalize
-		@ary=@ary[0] if  @ary[0].is_a?(Args) && @ary[0].size==1
-    return CAct["rb_ary_new3(0)"] if @ary=="[]"
-    return CAct["Qtrue"] if @ary=="true"
-    return CAct["Qfalse"] if @ary=="false"
-    return CAct["Qnil"] if @ary=="nil"
-		@ary=nil if @ary && @ary.size==0
+		return self if !@ary
+		#@ary=[@ary[0][0]] if @ary[0].is_a?(Args) && @ary[0].size==1
+		if @ary.size==1 && !@pred
+			exp=@ary[0]
+			exp=exp[0] if exp.is_a?(Args) && exp.size==1
+			puts exp.inspect
+			puts exp.inspect
+		  return Act.create(exp,{:pure=>true}) if exp.is_a?(Exp)
+			return CAct["rb_ary_new3(0)"] if exp=="[]"
+			return CAct["Qtrue"] if exp=="true"
+			return CAct["Qfalse"] if exp=="false"
+			return CAct["Qnil"] if exp=="nil"
+			return CAct["INT2FIX(#{exp})"] if exp.is_a?(String) && exp==exp.to_i.to_s && exp.to_i>-1000000000&&exp.to_i<1000000000
+			return CAct["rb_str_new2(\"#{exp[1...-1]}\")"] if exp.is_a?(String) && ((exp[0]==?\" && exp[-1]==?\")|| (exp[0]==?' && exp[-1]==?')) && !(exp=~/\#/)
+		end
+		@pure=true if exp.is_a?(Exp)
+		@ary=nil if @ary.size==0
 		self
 	end
 end

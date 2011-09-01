@@ -12,5 +12,4 @@ puts f
 Compiler::compile("amethyst/#{f}.ame","compiled/#{f}.rb",f)
 }
 totaltime
-save_grammars
 #pp Compiler.grammars["AmethystParser"]
