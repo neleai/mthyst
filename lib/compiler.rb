@@ -20,15 +20,15 @@ class Gram
       	r=o.new.parse(:root,r)
 			}
 		 [ Dataflow, 
-			Dead_Code_Deleter3,Seq_Or_Optimizer
+			Dead_Code_Deleter3
 ].each{|o|
 			r=o.new.parse(:root,r)
 			puts r.inspect if $debug
 		}
 		r=propagate_consts(r)
  [ Seq_Or_Optimizer,Dataflow, 
-			Dead_Code_Deleter3,Seq_Or_Optimizer,
-			Left_Factor,Seq_Or_Optimizer
+			Dead_Code_Deleter3,
+			Left_Factor,
 ].each{|o|
 			r=o.new.parse(:root,r)
 			puts r.inspect if $debug
@@ -108,7 +108,7 @@ end
 	def compile(file,out,file2)
 		source=File.new(file).read
 		source_hash=Digest::MD5.hexdigest(source)
-		if eval("#{file2}_compiled_by")==$compiled_by && eval("#{file2}_source_hash")==source_hash
+		if eval("#{file2}_compiled_by")==$compiled_by && eval("#{file2}_source_hash")==source_hash && !$debug
 			return unless ["amethyst","traverser"].include? file2 #inheritance
 		end
 		tree=AmethystParser.new.parse(:igrammar,source)
@@ -121,7 +121,7 @@ end
 			else
 			end
 		}
-		[Detect_Switch,Seq_Or_Optimizer,Detect_ClasSwitch,Seq_Or_Optimizer].each{|o|
+		[Detect_Switch,Detect_ClasSwitch].each{|o|
 			tree=o.new.parse(:itrans,tree)
 			puts tree.inspect if $debug
 		}
@@ -163,8 +163,7 @@ end
 def translate(s)
   par=AmethystParser.new
   opt=par.parse(:igrammar,s)
-  [Seq_Or_Optimizer,Analyze_Variables2,Move_Assignments2,
-    Seq_Or_Optimizer,Seq_Or_Optimizer].each{|p|
+  [Seq_Or_Optimizer,Analyze_Variables2,Move_Assignments2,Seq_Or_Optimizer].each{|p|
 		puts opt.inspect
     opt=p.new.parse(:itrans,opt)
   }
