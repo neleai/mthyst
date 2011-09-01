@@ -1,4 +1,4 @@
-class Analyze_Variables2 < Traverser_Clone
+class Analyze_Variables2 < Traverser_Clone2
 def self.switchcb_Analyze_Variables21(e)
 return 0 if e<=Args
 return 1 if e<=Act
@@ -94,16 +94,30 @@ def root_Analyze_Variables2cb_8(bind)
 @src
 end
 def traverse_Analyze_Variables2cb_1(bind)
-@src.clone
+@changed
 end
 def traverse_Analyze_Variables2cb_2(bind)
-(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
+@src
 end
 def traverse_Analyze_Variables2cb_3(bind)
-bind[1]=[bind[1]]
+(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
 end
 def traverse_Analyze_Variables2cb_4(bind)
-bind[0].instance_variable_set(bind[4],bind[5])
+bind[4]=[bind[4]]
+end
+def traverse_Analyze_Variables2cb_5(bind)
+@changed=false
+end
+def traverse_Analyze_Variables2cb_6(bind)
+(bind[2]||=bind[1].clone;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
+end
+def traverse_Analyze_Variables2cb_7(bind)
+if bind[3]
+             @changed=true;bind[2].normalize
+           else
+            @changed=bind[0]
+            @src
+          end
 end
 def traverse_item_Analyze_Variables2cb_1(bind)
 @changed=true
@@ -200,15 +214,15 @@ end
 
 
 def detect_variables2_compiled_by
-'a9cd9d63c48866d58a85f804e8bde97e'
+'0597c547a82521b9ac3743de7acceddc'
 end
 def detect_variables2_source_hash
-'e9ef25a44d0856bc32d67573dfd56b79'
+'c08f0171404908cf1f526bda84455470'
 end
 def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'ce157c46cb3ba761370e3eeb062d86f6'
+'0feec49efe00c9c21e41d1d16d1006ed'
 end
   require 'compiled/detect_variables2_c'
