@@ -205,14 +205,20 @@ end
 def _body(body)
 	Seq[_Bind("_result",body), PureAct[Args["_result"]]]
 end
-class <<Apply
-  def [](name,*args)
+class Apply
+  def self.[](name,*args)
 		args=args.flatten
 	  args=args.map{|a| Act[a]}
 		 ar=[name]+args
-     a=Apply.create({:ary=>ar})
-		 a
+     Apply.create({:ary=>ar}).normalize
   end
+	def normalize
+		if @ary[0]=="apply"
+			return Apply[@ary[1][0][13...-2]] if @ary[1].is_a?(CAct)
+			return @ary[1][0][0] if @ary[1].is_a?(Act) && @ary[1][0].is_a?(Exp)
+		end
+		self
+	end
 end
          
 class <<Lookahead
