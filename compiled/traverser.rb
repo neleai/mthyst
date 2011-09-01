@@ -25,7 +25,7 @@ def traverse_Traverser_Clonecb_3(bind)
 bind[1]=[bind[1]]
 end
 def traverse_Traverser_Clonecb_4(bind)
-bind[0].instance_variable_set(bind[4],bind[5])
+bind[0].instance_variable_set(bind[4],bind[5]) unless bind[5].eql?(@src.instance_variable_get(bind[4]))
 end
 def traverse_item_Traverser_Clonecb_1(bind)
 @changed=true
@@ -189,7 +189,7 @@ def traverser_compiled_by
 '82c774e4022d583170e112c9072b1b15'
 end
 def traverser_source_hash
-'4f9f282c6b20637d13dec4e9f897d943'
+'3c871a71ee181b6a8f055855c218f36a'
 end
 def testversiontraverser(r)
  raise "invalid version" if r!=traverser_version
