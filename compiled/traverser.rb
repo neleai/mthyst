@@ -27,9 +27,6 @@ end
 def traverse_Traverser_Clonecb_4(bind)
 bind[0].instance_variable_set(bind[4],bind[5])
 end
-def traverse_Traverser_Clonecb_5(bind)
-bind[0].normalize
-end
 def traverse_item_Traverser_Clonecb_1(bind)
 @changed=true
 end
@@ -216,15 +213,15 @@ end
 
 
 def traverser_compiled_by
-'78041514cdb10249f58983210f5e8c0d'
+'4540d014da314655aee3c5544e8d25f8'
 end
 def traverser_source_hash
-'d70386104d855f1aacbae5cf78a72adf'
+'5df9c584d5b4568abb11bb3b37a44843'
 end
 def testversiontraverser(r)
  raise "invalid version" if r!=traverser_version
 end
 def traverser_version
-'a316229a7ac5c4b692076103b4874586'
+'79de5b0883c6f48a1491351446a0f1fc'
 end
   require 'compiled/traverser_c'

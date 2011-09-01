@@ -1,6 +1,7 @@
 require 'digest'
 require 'set'
 $OPT="-O2"
+$debug=false
 COMPILED=["amethyst","traverser","detect_variables2","ctranslator2","parser","optimizer_and_or","dead_code_elimination2","dataflow_ssa","inliner2",
 "detect_switch","left_factor","constant_propagation"]
 class Gram
@@ -13,17 +14,16 @@ class Gram
 		}
 	end
 	def opt(r)
-      debug=false
 			[Seq_Or_Optimizer,Move_Assignments2,Seq_Or_Optimizer,
 			].each{|o|
-	      puts r.inspect if debug
+	      puts r.inspect if $debug
       	r=o.new.parse(:root,r)
 			}
 		 [ Dataflow, 
 			Dead_Code_Deleter3,Seq_Or_Optimizer
 ].each{|o|
 			r=o.new.parse(:root,r)
-			puts r.inspect if debug
+			puts r.inspect if $debug
 		}
 		r=propagate_consts(r)
  [ Seq_Or_Optimizer,Dataflow, 
@@ -31,7 +31,7 @@ class Gram
 			Left_Factor,Seq_Or_Optimizer
 ].each{|o|
 			r=o.new.parse(:root,r)
-			puts r.inspect if debug
+			puts r.inspect if $debug
 		}
 
     @rules[r.name]=r 
@@ -123,7 +123,7 @@ end
 		}
 		[Detect_Switch,Seq_Or_Optimizer,Detect_ClasSwitch,Seq_Or_Optimizer].each{|o|
 			tree=o.new.parse(:itrans,tree)
-			#puts tree.inspect
+			puts tree.inspect if $debug
 		}
 
 		c,init,rb= AmethystCTranslator.new.parse(:itrans,tree)

@@ -108,6 +108,11 @@ class <<Seq
 		args=args.select{|e| !(e.is_a?(Act) && e.ary.size==0)} 
 		(args.size==1) ? args[0] : Seq.create({:ary=>args})
 	end
+	def normalize
+	#	@ary=@ary.map{|i| (i.is_a?(Seq)) ? i.ary : i}.flatten
+	#	@ary=@ary.select{|e| !(e.is_a?(Act) && e.ary.size==0)}
+	#	(@ary.size==1) ? @ary[0] : self
+	end
 end
 
 class <<Or
@@ -154,7 +159,7 @@ class <<PureAct
 end
 class <<Act
 	def [](expr=nil,pred=nil)
-		expr=expr[0] if expr.is_a?(Array) && expr.size==1
+		expr=expr[0] if expr.is_a?(Array) && expr.size<=1
 		if !pred
 			#puts expr.inspect
 			exp=expr
@@ -169,6 +174,9 @@ class <<Act
 		end
 		return Act.create({:pred=>pred}) if expr==nil
 		Act.create(expr,{:pred=>pred})
+	end
+	def normalize
+		@ary=nil if @ary && @ary.size==0
 	end
 end
 class Pred;end

@@ -190,9 +190,6 @@ end
 def traverse_Remap_Actscb_4(bind)
 bind[0].instance_variable_set(bind[4],bind[5])
 end
-def traverse_Remap_Actscb_5(bind)
-bind[0].normalize
-end
 def traverse_item_Remap_Actscb_1(bind)
 @changed=true
 end
@@ -216,7 +213,7 @@ end
 
 
 def detect_variables2_compiled_by
-'78041514cdb10249f58983210f5e8c0d'
+'4540d014da314655aee3c5544e8d25f8'
 end
 def detect_variables2_source_hash
 'c08f0171404908cf1f526bda84455470'
@@ -225,6 +222,6 @@ def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'f68e550e2166db1b02b2b2be612719aa'
+'658f7629da4150321fc34879d1ee9108'
 end
   require 'compiled/detect_variables2_c'
