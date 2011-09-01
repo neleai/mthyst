@@ -1,7 +1,7 @@
 require 'digest'
 require 'set'
 $OPT="-O2"
-$debug=true
+$debug=1
 COMPILED=["amethyst","traverser","detect_variables2","ctranslator2","parser","optimizer_and_or","dead_code_elimination2","dataflow_ssa","inliner2",
 "detect_switch","left_factor","constant_propagation"]
 class Gram
@@ -16,14 +16,14 @@ class Gram
 	def opt(r)
 			[Seq_Or_Optimizer,Move_Assignments2,Seq_Or_Optimizer,
 			].each{|o|
-	      puts r.inspect if $debug
+	      puts r.inspect if $debug>1
       	r=o.new.parse(:root,r)
 			}
 		 [ Dataflow, 
 			Dead_Code_Deleter3
 ].each{|o|
 			r=o.new.parse(:root,r)
-			puts r.inspect if $debug
+			puts r.inspect if $debug>1
 		}
 		r=propagate_consts(r)
  [ Seq_Or_Optimizer,Dataflow, 
@@ -31,7 +31,7 @@ class Gram
 			Left_Factor,
 ].each{|o|
 			r=o.new.parse(:root,r)
-			puts r.inspect if $debug
+			puts r.inspect if $debug>1
 		}
 
     @rules[r.name]=r 
@@ -108,7 +108,7 @@ end
 	def compile(file,out,file2)
 		source=File.new(file).read
 		source_hash=Digest::MD5.hexdigest(source)
-		if eval("#{file2}_compiled_by")==$compiled_by && eval("#{file2}_source_hash")==source_hash && !$debug
+		if eval("#{file2}_compiled_by")==$compiled_by && eval("#{file2}_source_hash")==source_hash && $debug>0
 			return unless ["amethyst","traverser"].include? file2 #inheritance
 		end
 		tree=AmethystParser.new.parse(:igrammar,source)
@@ -123,7 +123,7 @@ end
 		}
 		[Detect_Switch,Detect_ClasSwitch].each{|o|
 			tree=o.new.parse(:itrans,tree)
-			puts tree.inspect if $debug
+			puts tree.inspect if $debug>1
 		}
 
 		c,init,rb= AmethystCTranslator.new.parse(:itrans,tree)
