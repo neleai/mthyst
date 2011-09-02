@@ -70,8 +70,9 @@ return 5 if e<=Act
 return 6 if e<=Bind
 return 7 if e<=Result
 return 8 if e<=Lookahead
-return 9 if e<=Object
-return 10
+return 9 if e<=Local
+return 10 if e<=Object
+return 11
 end
 @@switchhashDataflow2=Hash.new{|h,k| h[k]=switchcb_Dataflow2(k)}
 def switchcbDataflow2(e)
@@ -303,18 +304,21 @@ def visit_Dataflowcb_32(bind)
 Lookahead[*bind[0]]
 end
 def visit_Dataflowcb_33(bind)
-CAct
+@src.dup
 end
 def visit_Dataflowcb_34(bind)
-Bnding
+CAct
 end
 def visit_Dataflowcb_35(bind)
-Global
+Bnding
 end
 def visit_Dataflowcb_36(bind)
-Key
+Global
 end
 def visit_Dataflowcb_37(bind)
+Key
+end
+def visit_Dataflowcb_38(bind)
 @src
 end
 def visit_Dataflowcb_4(bind)
@@ -456,15 +460,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'89000b06cc78863013cfea0038be03ae'
+'4633aa560412cd73b5664322e4821570'
 end
 def dataflow_ssa_source_hash
-'efcbea2801c2e57c1a4b99f929eec2a1'
+'ab2ba60da629c9e89c0c52e0cb8cc7c1'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'f15551eac48eb83f377bb8910a22c9b4'
+'11961039e449b591c28500e314444965'
 end
   require 'compiled/dataflow_ssa_c'
