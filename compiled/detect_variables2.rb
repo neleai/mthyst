@@ -186,8 +186,9 @@ return 4 if e<=Bind
 return 5 if e<=Many
 return 6 if e<=Apply
 return 7 if e<=CAct
-return 8 if e<=Object
-return 9
+return 8 if e<=Bnding
+return 9 if e<=Object
+return 10
 end
 @@switchhashRemap_Acts5=Hash.new{|h,k| h[k]=switchcb_Remap_Acts5(k)}
 def switchcbRemap_Acts5(e)
@@ -269,6 +270,9 @@ end
 def visit_Remap_Actscb_2(bind)
 @src.pure ? PureAct[bind[3]] : Act[bind[3],@src.pred]
 end
+def visit_Remap_Actscb_20(bind)
+@src
+end
 def visit_Remap_Actscb_3(bind)
 _append(bind[7],bind[8])
 end
@@ -295,15 +299,15 @@ end
 
 
 def detect_variables2_compiled_by
-'7149ff1f913eddfa661d0cdd0d758adf'
+'9f0feb9068a97c27fa0fc5bc05035761'
 end
 def detect_variables2_source_hash
-'8f7aac6abe2e376a003499c900a3c585'
+'b867726a91ed30df80e534f7b4c90899'
 end
 def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'eaa3dae4a7aa857be71e4f1eb37634fa'
+'0d0a57d20aa11460c301e9bdb0804c36'
 end
   require 'compiled/detect_variables2_c'

@@ -50,7 +50,7 @@ VALUE Move_Assignments2_itrans(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new
  rb_ary_store(bind,0,it); it=rb_ary_entry(bind,0);
 return it;
 fail: return failobj; }
-VALUE Move_Assignments2_move(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=rb_ary_new2(20); rb_ary_store(bind,2,a0); int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+VALUE Move_Assignments2_move(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=rb_ary_new2(19); rb_ary_store(bind,2,a0); int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 it=rb_ary_new3(0);it=rb_ary_new3(0);char chr1=FIX2INT(CALL(switchcbMove_Assignments23,1,ame_curobj(self)));  switch(chr1){case 0:; int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
@@ -136,8 +136,7 @@ ame_setsrc(self,rb_ary_entry(bind,17)); ame_setpos(self,0); ame_setlen(self,FIX2
 	pass5: fail5=1;
 	success5: ame_setsrc(self,oldsrc5); ame_setpos(self,oldpos12); ame_setlen(self,oldlen5);
 	if(fail5) goto pass4;
-it=CALL(move_Move_Assignments2cb_11,1,bind); 
- rb_ary_store(bind,19,it);   it=Move_Assignments2_eof(self ); FAILTEST(pass4);
+it=CALL(move_Move_Assignments2cb_11,1,bind);   it=Move_Assignments2_eof(self ); FAILTEST(pass4);
 	goto success4;
 	pass4: fail4=1;
 	success4: ame_setsrc(self,oldsrc4); ame_setpos(self,oldpos11); ame_setlen(self,oldlen4);
@@ -268,7 +267,7 @@ ISET(cut,Qnil);goto accept3;
  break;}it=rb_ary_entry(bind,1);
 return it;
 fail: return failobj; }
-VALUE Move_Assignments2_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(29);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+VALUE Move_Assignments2_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(28);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
  it=CALL(visit_Move_Assignments2cb_1,1,bind);  arg0=it; it=Move_Assignments2_clas(self ,arg0); FAILTEST(fail);
  rb_ary_store(bind,0,it); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
@@ -366,8 +365,7 @@ ame_setsrc(self,rb_ary_entry(bind,22)); ame_setpos(self,0); ame_setlen(self,FIX2
 	pass8: fail8=1;
 	success8: ame_setsrc(self,oldsrc8); ame_setpos(self,oldpos16); ame_setlen(self,oldlen8);
 	if(fail8) goto pass7;
-it=CALL(visit_Move_Assignments2cb_15,1,bind); 
- rb_ary_store(bind,24,it);   it=Move_Assignments2_eof(self ); FAILTEST(pass7);
+it=CALL(visit_Move_Assignments2cb_15,1,bind);   it=Move_Assignments2_eof(self ); FAILTEST(pass7);
 	goto success7;
 	pass7: fail7=1;
 	success7: ame_setsrc(self,oldsrc7); ame_setpos(self,oldpos15); ame_setlen(self,oldlen7);
@@ -385,25 +383,25 @@ ISET(cut,Qnil);goto accept5;
  break;case 3:;   it=AmethystCore_anything(self ); FAILTEST(pass3);
  rb_ary_store(bind,12,it); it=CALL(visit_Move_Assignments2cb_18,1,bind); 
  rb_ary_store(bind,11,it);  break;}it=rb_ary_entry(bind,11);
- rb_ary_store(bind,25,it);   it=Move_Assignments2_eof(self ); FAILTEST(pass3);
+ rb_ary_store(bind,24,it);   it=Move_Assignments2_eof(self ); FAILTEST(pass3);
 	goto success3;
 	pass3: fail3=1;
 	success3: ame_setsrc(self,oldsrc3); ame_setpos(self,oldpos4); ame_setlen(self,oldlen3);
 	if(fail3) goto pass2;
-it=rb_ary_entry(bind,25);
- rb_ary_store(bind,26,it);   it=Move_Assignments2_eof(self ); FAILTEST(pass2);
+it=rb_ary_entry(bind,24);
+ rb_ary_store(bind,25,it);   it=Move_Assignments2_eof(self ); FAILTEST(pass2);
 	goto success2;
 	pass2: fail2=1;
 	success2: ame_setsrc(self,oldsrc2); ame_setpos(self,oldpos2); ame_setlen(self,oldlen2);
 	if(fail2) goto pass1;
-it=rb_ary_entry(bind,26);
- rb_ary_store(bind,27,it);   it=Move_Assignments2_eof(self ); FAILTEST(pass1);
+it=rb_ary_entry(bind,25);
+ rb_ary_store(bind,26,it);   it=Move_Assignments2_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos1); ame_setlen(self,oldlen1);
 	if(fail1) goto fail;
-it=rb_ary_entry(bind,27);
- rb_ary_store(bind,28,it); it=rb_ary_entry(bind,28);
+it=rb_ary_entry(bind,26);
+ rb_ary_store(bind,27,it); it=rb_ary_entry(bind,27);
 return it;
 fail: return failobj; }
 void Init_dead_code_elimination2_c(){ 
@@ -419,4 +417,4 @@ rb_define_method(cls_Move_Assignments2,"root",Move_Assignments2_root,0);
 rb_define_method(cls_Move_Assignments2,"traverse",Move_Assignments2_traverse,0);
 rb_define_method(cls_Move_Assignments2,"traverse_item",Move_Assignments2_traverse_item,0);
 rb_define_method(cls_Move_Assignments2,"visit",Move_Assignments2_visit,0);
- rb_eval_string("testversiondead_code_elimination2('d427e7c79a2c20ed0cb4e03ed2bbec06')");}
+ rb_eval_string("testversiondead_code_elimination2('739adc31653e612e5b7edf7249fa45b0')");}

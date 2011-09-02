@@ -63,6 +63,7 @@ amethyst Dataflow < Traverser {
 	
 	visit = Apply[  traverse_item*:t {Apply[*t]}:app @self=>[vars_in:var] {var.each{|v| @@marked<<ssanum(v)}} {app} ]
 				| Or[	{[]}:join {oldssanums.clone}:old  ({@@oldssanums=old.clone} traverse_item {join<<oldssanums.clone})* {or_end(join)} @self ]
+				| Seq[traverse_item*:a {Seq[*a]} ]
 				| Many[  {ssanums.clone}:prev traverse_item*:t {many_end(prev)} {Many.create({:ary=>t}).normalize} ] 
 			  | Pass[ @to=>traverse_item:to {@@marked<<ssanum(@var)} {Pass.create({:to=>to,:var=>@var}).normalize} ]
 				| Act[ traverse_item {@@marked<<@self if @pred || !@pure} 
@@ -71,7 +72,7 @@ amethyst Dataflow < Traverser {
 				| Bind[   traverse[.*  {set_end(@self)} @self ] ] 
 				| Result[traverse[.* @vars=>[vars_in]:var { var.each{|w| @@edges.add(ssanum(w),@self) } ; @self} ]]
 				| CAct[.* {@self}]
-				| Seq[traverse_item*:a {Seq[*a]} ]
+				| Bnding[.*{@self}]
 	
 				vars_in={ary=[]}
 								( Global[ @self:ary[]  {@@marked<<@self} .*]								

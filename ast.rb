@@ -16,7 +16,7 @@ makeclasses(AmethystAST,
     :Seq,
 		[:Strin],
 		[:Local,:ssano],
-		[:Pass,:var,:to,:enter],
+		[:Pass,:var,:to],
     [:Rule,:name,:args,:locals,:body,:cfg,:reachable,:bnding,:consts],
     [:Grammar,:name,:parent,:rules],
 		:Global,
@@ -44,7 +44,10 @@ class Bnding
 	def self.[]
 		@bno||=0
 		@bno+=1
-		Bnding.create({:ary=>[@bno]})
+		Bnding.create({:ary=>[@bno]}).normalize
+	end
+	def normalize
+		self.freeze
 	end
 end
 def quote(s)

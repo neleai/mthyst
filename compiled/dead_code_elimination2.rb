@@ -47,7 +47,7 @@ def move_Move_Assignments2cb_11(bind)
 @src.enter
 end
 def move_Move_Assignments2cb_12(bind)
-Pass.create( {:ary=>bind[4],:enter=>bind[19],:to=>bind[18],:var=>bind[16] })
+Pass.create( {:ary=>bind[4],:to=>bind[18],:var=>bind[16] })
 end
 def move_Move_Assignments2cb_13(bind)
 _Bind(bind[2],bind[7],false)
@@ -139,7 +139,7 @@ def visit_Move_Assignments2cb_15(bind)
 @src.enter
 end
 def visit_Move_Assignments2cb_16(bind)
-Pass.create( {:ary=>bind[9],:enter=>bind[24],:to=>bind[23],:var=>bind[21] })
+Pass.create( {:ary=>bind[9],:to=>bind[23],:var=>bind[21] })
 end
 def visit_Move_Assignments2cb_17(bind)
 _Bind(bind[5],bind[12],false)
@@ -178,7 +178,7 @@ end
 
 
 def dead_code_elimination2_compiled_by
-'7149ff1f913eddfa661d0cdd0d758adf'
+'9f0feb9068a97c27fa0fc5bc05035761'
 end
 def dead_code_elimination2_source_hash
 '0468eaf2584b080c70ce4ee6724f230f'
@@ -187,6 +187,6 @@ def testversiondead_code_elimination2(r)
  raise "invalid version" if r!=dead_code_elimination2_version
 end
 def dead_code_elimination2_version
-'d427e7c79a2c20ed0cb4e03ed2bbec06'
+'739adc31653e612e5b7edf7249fa45b0'
 end
   require 'compiled/dead_code_elimination2_c'

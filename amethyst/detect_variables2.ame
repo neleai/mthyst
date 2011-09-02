@@ -25,4 +25,5 @@ amethyst Remap_Acts < Traverser_Clone{
 
 				| Apply[ traverse_item*:t {Apply[*t]} ]
 				| CAct[.*{@self}]
+				| Bnding[.*{@self}]
 }
