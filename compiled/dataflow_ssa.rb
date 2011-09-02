@@ -59,7 +59,7 @@ class Local
 end
 
 class Dataflow < Traverser
-def self.switchcb_Dataflow1(e)
+def self.switchcb_Dataflow2(e)
 return 0 if e<=Apply
 return 1 if e<=Or
 return 2 if e<=Seq
@@ -68,16 +68,14 @@ return 4 if e<=Pass
 return 5 if e<=Act
 return 6 if e<=Bind
 return 7 if e<=Result
-return 8 if e<=CAct
-return 9 if e<=Bnding
-return 10 if e<=Object
-return 11
+return 8 if e<=Object
+return 9
 end
-@@switchhashDataflow1=Hash.new{|h,k| h[k]=switchcb_Dataflow1(k)}
-def switchcbDataflow1(e)
-@@switchhashDataflow1[e.class]
+@@switchhashDataflow2=Hash.new{|h,k| h[k]=switchcb_Dataflow2(k)}
+def switchcbDataflow2(e)
+@@switchhashDataflow2[e.class]
 end
-def self.switchcb_Dataflow2(e)
+def self.switchcb_Dataflow3(e)
 return 0 if e<=Global
 return 1 if e<=Act
 return 2 if e<=CAct
@@ -90,19 +88,19 @@ return 8 if e<=Local
 return 9 if e<=Object
 return 10
 end
-@@switchhashDataflow2=Hash.new{|h,k| h[k]=switchcb_Dataflow2(k)}
-def switchcbDataflow2(e)
-@@switchhashDataflow2[e.class]
+@@switchhashDataflow3=Hash.new{|h,k| h[k]=switchcb_Dataflow3(k)}
+def switchcbDataflow3(e)
+@@switchhashDataflow3[e.class]
 end
-def self.switchcb_Dataflow3(e)
+def self.switchcb_Dataflow4(e)
 return 0 if e<=Array
 return 1 if e<=AmethystAST
 return 2 if e<=Object
 return 3
 end
-@@switchhashDataflow3=Hash.new{|h,k| h[k]=switchcb_Dataflow3(k)}
-def switchcbDataflow3(e)
-@@switchhashDataflow3[e.class]
+@@switchhashDataflow4=Hash.new{|h,k| h[k]=switchcb_Dataflow4(k)}
+def switchcbDataflow4(e)
+@@switchhashDataflow4[e.class]
 end
 def clas_Dataflowcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -294,9 +292,18 @@ def visit_Dataflowcb_3(bind)
 @src
 end
 def visit_Dataflowcb_30(bind)
-@src
+CAct
 end
 def visit_Dataflowcb_31(bind)
+Bnding
+end
+def visit_Dataflowcb_32(bind)
+Global
+end
+def visit_Dataflowcb_33(bind)
+Key
+end
+def visit_Dataflowcb_34(bind)
 @src
 end
 def visit_Dataflowcb_4(bind)
@@ -322,25 +329,25 @@ end
 
 
 class Dead_Code_Deleter3 < Traverser_Clone2
-def self.switchcb_Dead_Code_Deleter35(e)
+def self.switchcb_Dead_Code_Deleter36(e)
 return 0 if e<=Bind
 return 1 if e<=Local
-return 2 if e<=Object
-return 3
-end
-@@switchhashDead_Code_Deleter35=Hash.new{|h,k| h[k]=switchcb_Dead_Code_Deleter35(k)}
-def switchcbDead_Code_Deleter35(e)
-@@switchhashDead_Code_Deleter35[e.class]
-end
-def self.switchcb_Dead_Code_Deleter36(e)
-return 0 if e<=Array
-return 1 if e<=AmethystAST
 return 2 if e<=Object
 return 3
 end
 @@switchhashDead_Code_Deleter36=Hash.new{|h,k| h[k]=switchcb_Dead_Code_Deleter36(k)}
 def switchcbDead_Code_Deleter36(e)
 @@switchhashDead_Code_Deleter36[e.class]
+end
+def self.switchcb_Dead_Code_Deleter37(e)
+return 0 if e<=Array
+return 1 if e<=AmethystAST
+return 2 if e<=Object
+return 3
+end
+@@switchhashDead_Code_Deleter37=Hash.new{|h,k| h[k]=switchcb_Dead_Code_Deleter37(k)}
+def switchcbDead_Code_Deleter37(e)
+@@switchhashDead_Code_Deleter37[e.class]
 end
 def clas_Dead_Code_Deleter3cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -438,15 +445,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'76adb2ea96a6a03bedf8c0028192cc67'
+'315f7864bd9e9e073440c623b989267d'
 end
 def dataflow_ssa_source_hash
-'84aeda207cde7c339546604858648ee9'
+'02cd95f3203c0360d72265f1d3b69f52'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'be6080641fcae92ecc6fd430fe752dbb'
+'45bd25201c23addac527f78e19af69c9'
 end
   require 'compiled/dataflow_ssa_c'

@@ -1,5 +1,5 @@
 makeclasses(AmethystAST,
-    [:Key,:name],
+    [:Key],
     [:Result,:name,:args,:vars],
     :Apply,:Char,
     :Nested,
@@ -147,7 +147,7 @@ end
 
 
 
-[Apply,Bnding,Global,Local,Act,CAct,Seq,Or].each{|c| eval("class #{c} 
+[Apply,Bnding,Global,Key,Local,Act,CAct,Seq,Or].each{|c| eval("class #{c} 
  def hash
 	ary.hash
  end
@@ -157,17 +157,6 @@ end
   end
 	alias_method :eql?,:==
 end")}
-
-class Key
-	def hash
-		name.hash
-	end
-	def ==(a)
-		return false unless a.is_a? Key
-		return self.ary==a.ary
-	end
-	alias_method :eql?,:==
-end
 
 
 class PureAct

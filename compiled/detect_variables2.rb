@@ -177,7 +177,7 @@ end
 
 
 class Remap_Acts < Traverser_Clone
-def self.switchcb_Remap_Acts5(e)
+def self.switchcb_Remap_Acts6(e)
 return 0 if e<=Act
 return 1 if e<=Or
 return 2 if e<=Seq
@@ -185,24 +185,22 @@ return 3 if e<=Pass
 return 4 if e<=Bind
 return 5 if e<=Many
 return 6 if e<=Apply
-return 7 if e<=CAct
-return 8 if e<=Bnding
-return 9 if e<=Object
-return 10
+return 7 if e<=Object
+return 8
 end
-@@switchhashRemap_Acts5=Hash.new{|h,k| h[k]=switchcb_Remap_Acts5(k)}
-def switchcbRemap_Acts5(e)
-@@switchhashRemap_Acts5[e.class]
+@@switchhashRemap_Acts6=Hash.new{|h,k| h[k]=switchcb_Remap_Acts6(k)}
+def switchcbRemap_Acts6(e)
+@@switchhashRemap_Acts6[e.class]
 end
-def self.switchcb_Remap_Acts6(e)
+def self.switchcb_Remap_Acts7(e)
 return 0 if e<=Array
 return 1 if e<=AmethystAST
 return 2 if e<=Object
 return 3
 end
-@@switchhashRemap_Acts6=Hash.new{|h,k| h[k]=switchcb_Remap_Acts6(k)}
-def switchcbRemap_Acts6(e)
-@@switchhashRemap_Acts6[e.class]
+@@switchhashRemap_Acts7=Hash.new{|h,k| h[k]=switchcb_Remap_Acts7(k)}
+def switchcbRemap_Acts7(e)
+@@switchhashRemap_Acts7[e.class]
 end
 def clas_Remap_Actscb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -265,12 +263,21 @@ def visit_Remap_Actscb_18(bind)
 Apply[*bind[9]]
 end
 def visit_Remap_Actscb_19(bind)
-@src
+CAct
 end
 def visit_Remap_Actscb_2(bind)
 @src.pure ? PureAct[bind[3]] : Act[bind[3],@src.pred]
 end
 def visit_Remap_Actscb_20(bind)
+Bnding
+end
+def visit_Remap_Actscb_21(bind)
+Global
+end
+def visit_Remap_Actscb_22(bind)
+Key
+end
+def visit_Remap_Actscb_23(bind)
 @src
 end
 def visit_Remap_Actscb_3(bind)
@@ -299,15 +306,15 @@ end
 
 
 def detect_variables2_compiled_by
-'76adb2ea96a6a03bedf8c0028192cc67'
+'315f7864bd9e9e073440c623b989267d'
 end
 def detect_variables2_source_hash
-'b867726a91ed30df80e534f7b4c90899'
+'e6ad2bf485e8ec2913b25f15bf277a01'
 end
 def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'0d0a57d20aa11460c301e9bdb0804c36'
+'9e2a412476682c02e6742fd8af63fcdd'
 end
   require 'compiled/detect_variables2_c'
