@@ -27,7 +27,7 @@ class Dataflow < Traverser
 			end
     }
 	end
-	def set_end(exp)
+	def bind_end(exp)
 		name=exp.name
 		exp=exp.expr while exp.expr.is_a?(Bind) 
 	  if exp.expr.is_a?(Local) 
@@ -185,7 +185,7 @@ def vars_in_Dataflowcb_15(bind)
 _append(bind[0],bind[14])
 end
 def vars_in_Dataflowcb_16(bind)
-@src.name
+@src.expr
 end
 def vars_in_Dataflowcb_17(bind)
 bind[16]=[bind[16]]
@@ -275,7 +275,7 @@ def visit_Dataflowcb_24(bind)
 bind[7].each{|v| edges.add(ssanum(v),@src); edges.add(@src,newssanum(v.clone));}; @src
 end
 def visit_Dataflowcb_25(bind)
-set_end(@src)
+bind_end(@src)
 end
 def visit_Dataflowcb_26(bind)
 @src
@@ -455,7 +455,7 @@ def dataflow_ssa_compiled_by
 'a6b43314326197f5f0b46ebedb01c2be'
 end
 def dataflow_ssa_source_hash
-'c38bfac973158c48573f658e73bb2469'
+'55eecbaec6415443a7d9e8897bc488a4'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
