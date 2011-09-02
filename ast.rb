@@ -158,7 +158,7 @@ end
 	alias_method :eql?,:==
 end")}
 
-[Global,Key,Result
+[Global,Key,Result,Switch
 ].each{|c| eval("class #{c} 
 	def self.[](*a)
 		create(*a).freeze
