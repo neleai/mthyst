@@ -224,90 +224,93 @@ def vars_in_Dataflowcb_9(bind)
 @src
 end
 def visit_Dataflowcb_1(bind)
-_append(bind[1],bind[2])
+_append(bind[2],bind[3])
 end
 def visit_Dataflowcb_10(bind)
-_append(bind[15],bind[16])
+Or[*bind[0]]
 end
 def visit_Dataflowcb_11(bind)
-Seq[*bind[17]]
+_append(bind[16],bind[17])
 end
 def visit_Dataflowcb_12(bind)
-ssanums.clone
+Seq[*bind[18]]
 end
 def visit_Dataflowcb_13(bind)
-_append(bind[21],bind[22])
+ssanums.clone
 end
 def visit_Dataflowcb_14(bind)
-many_end(bind[20])
+_append(bind[22],bind[23])
 end
 def visit_Dataflowcb_15(bind)
-Many.create({:ary=>bind[3]}).normalize
+many_end(bind[21])
 end
 def visit_Dataflowcb_16(bind)
-@src.to
+Many.create({:ary=>bind[0]}).normalize
 end
 def visit_Dataflowcb_17(bind)
-bind[25]=[bind[25]]
+@src.to
 end
 def visit_Dataflowcb_18(bind)
-@marked<<ssanum(@src.var)
+bind[26]=[bind[26]]
 end
 def visit_Dataflowcb_19(bind)
-Pass.create({:to=>bind[26],:var=>@src.var}).normalize
+@marked<<ssanum(@src.var)
 end
 def visit_Dataflowcb_2(bind)
-Apply[*bind[3]]
+Apply[*bind[0]]
 end
 def visit_Dataflowcb_20(bind)
-@marked<<@src if @src.pred || !@src.pure
+Pass.create({:to=>bind[27],:var=>@src.var}).normalize
 end
 def visit_Dataflowcb_21(bind)
-@src.ary
+@marked<<@src if @src.pred || !@src.pure
 end
 def visit_Dataflowcb_22(bind)
-bind[29]=[bind[29]]
+@src.ary
 end
 def visit_Dataflowcb_23(bind)
-bind[7].each{|v| edges.add(ssanum(v),@src); edges.add(@src,newssanum(v.clone));}; @src
+bind[30]=[bind[30]]
 end
 def visit_Dataflowcb_24(bind)
-bind_end(@src)
+bind[7].each{|v| edges.add(ssanum(v),@src); edges.add(@src,newssanum(v.clone));}; @src
 end
 def visit_Dataflowcb_25(bind)
-@src
+bind_end(@src)
 end
 def visit_Dataflowcb_26(bind)
-@src.vars
+@src
 end
 def visit_Dataflowcb_27(bind)
-bind[38]=[bind[38]]
+@src.vars
 end
 def visit_Dataflowcb_28(bind)
-bind[7].each{|w| @edges.add(ssanum(w),@src) } ; @src
+bind[39]=[bind[39]]
 end
 def visit_Dataflowcb_29(bind)
-_append(bind[43],bind[44])
+bind[7].each{|w| @edges.add(ssanum(w),@src) } ; @src
 end
 def visit_Dataflowcb_3(bind)
 bind[5]=[bind[5]]
 end
 def visit_Dataflowcb_30(bind)
-Lookahead[*bind[3]]
+_append(bind[44],bind[45])
 end
 def visit_Dataflowcb_31(bind)
-CAct
+Lookahead[*bind[0]]
 end
 def visit_Dataflowcb_32(bind)
-Bnding
+CAct
 end
 def visit_Dataflowcb_33(bind)
-Global
+Bnding
 end
 def visit_Dataflowcb_34(bind)
-Key
+Global
 end
 def visit_Dataflowcb_35(bind)
+Key
+end
+def visit_Dataflowcb_36(bind)
 @src
 end
 def visit_Dataflowcb_4(bind)
@@ -320,13 +323,13 @@ def visit_Dataflowcb_6(bind)
 @oldssanums=bind[12].clone
 end
 def visit_Dataflowcb_7(bind)
-bind[11]<<oldssanums.clone
+_append(bind[0],bind[13])
 end
 def visit_Dataflowcb_8(bind)
-or_end(bind[11])
+bind[11]<<oldssanums.clone
 end
 def visit_Dataflowcb_9(bind)
-@src
+or_end(bind[11])
 end
 
 end
@@ -449,15 +452,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'defc22884cd8f0f94e602cebcb4acceb'
+'fb241471208edb8483ff6f171d7ca214'
 end
 def dataflow_ssa_source_hash
-'fd95232bdd3dc11773906c77732aa4a1'
+'5e1cf62e60e01c11731d9b84d0ebb6bd'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'98381292c1507cf7335c0d619795de16'
+'4c06284238992da0356e7598828b7f71'
 end
   require 'compiled/dataflow_ssa_c'
