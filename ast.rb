@@ -234,9 +234,6 @@ class Apply
 		end
 		self.freeze
 	end
-	def inspect
-		"#{ary[0]}(#{ary[1..-1].map{|a|a.inspect}*","})"
-	end
 end
          
 class Lookahead
@@ -260,9 +257,6 @@ class Local
   end
 end
 class Local
-	def inspect
-		"Local[#{ary[0]}#{ary[1].is_a?(Bnding) ? "" : ary[1]}_#{ssano}]"
-	end
 	def hash
 		@hash
 	end
@@ -288,3 +282,25 @@ def _Local(name)
 end
 
 
+
+
+class Apply
+	def inspect
+		"#{ary[0]}(#{ary[1..-1].map{|a|a.inspect}*","})"
+	end
+end
+class Local
+	def inspect
+		"L[#{ary[0]}#{ary[1].is_a?(Bnding) ? "" : ary[1]}_#{ssano}]"
+	end
+end
+class Key
+	def inspect
+		"@#{ary[0]}"
+	end
+end
+class Global
+	def inspect
+		"@#{ary[0]}"
+	end
+end
