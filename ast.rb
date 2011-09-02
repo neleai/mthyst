@@ -10,7 +10,7 @@ makeclasses(AmethystAST,
     [:Args],
     [:Act,:pred,:pure],
 		[:CAct,:pred,:pure],
-    [:Lookahead,:neg],
+    [:Lookahead],
     :And,
     :Or,
     :Seq,
@@ -241,9 +241,12 @@ class Lookahead
 		if neg
 			Or[Seq[e,Cut[],Apply["fails"]],Seq[Apply["empty"]]]
 		else
-    	Lookahead.create(e)
+    	Lookahead.create(e).normalize
 		end
   end
+	def normalize
+		freeze
+	end
 end
 
 class Local

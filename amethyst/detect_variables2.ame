@@ -24,5 +24,6 @@ amethyst Remap_Acts < Traverser_Clone{
 				| Many[ traverse_item*:t {Many.create({:ary=>t}).normalize} ]
 
 				| Apply[ traverse_item*:t {Apply[*t]} ]
+				| Lookahead[ traverse_item*:t {Lookahead[*t]} ]
 				| (CAct | Bnding | Global | Key| Result)[.*{@self}]
 }

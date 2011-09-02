@@ -553,9 +553,9 @@ ISET(cut,Qnil);goto accept3;
  break;}it=rb_ary_entry(bind,1);
 return it;
 fail: return failobj; }
-VALUE Remap_Acts_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(35);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+VALUE Remap_Acts_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(39);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);char chr1=FIX2INT(CALL(switchcbRemap_Acts6,1,ame_curobj(self)));  switch(chr1){case 0:;   it=AmethystCore_anything(self ); FAILTEST(fail);
+it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);char chr1=FIX2INT(CALL(switchcbRemap_Acts6,1,ame_curobj(self)));  switch(chr1){case 0:;   it=AmethystCore_anything(self ); FAILTEST(fail);
  rb_ary_store(bind,0,it); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,rb_ary_entry(bind,0)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
  it=rb_ary_new3(0);
@@ -667,38 +667,51 @@ ame_setsrc(self,rb_ary_entry(bind,29)); ame_setpos(self,0); ame_setlen(self,FIX2
 	success10: ame_setsrc(self,oldsrc10); ame_setpos(self,oldpos14); ame_setlen(self,oldlen10);
 	if(fail10) goto fail;
 it=rb_ary_entry(bind,32);
- rb_ary_store(bind,5,it);  break;case 7:; int oldpos16=ame_getpos(self);
-alt1_1: ame_setpos(self,oldpos16);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=CALL(visit_Remap_Actscb_19,1,bind);  arg0=it; it=Remap_Acts_clas(self ,arg0); FAILTEST(alt1_2);
- rb_ary_store(bind,33,it);  
-ISET(cut,Qnil);goto accept1;
-alt1_2: ame_setpos(self,oldpos16);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=CALL(visit_Remap_Actscb_20,1,bind);  arg0=it; it=Remap_Acts_clas(self ,arg0); FAILTEST(alt1_3);
- rb_ary_store(bind,33,it);  
-ISET(cut,Qnil);goto accept1;
-alt1_3: ame_setpos(self,oldpos16);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=CALL(visit_Remap_Actscb_21,1,bind);  arg0=it; it=Remap_Acts_clas(self ,arg0); FAILTEST(alt1_4);
- rb_ary_store(bind,33,it);  
-ISET(cut,Qnil);goto accept1;
-alt1_4: ame_setpos(self,oldpos16);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=CALL(visit_Remap_Actscb_22,1,bind);  arg0=it; it=Remap_Acts_clas(self ,arg0); FAILTEST(alt1_5);
- rb_ary_store(bind,33,it);  
-ISET(cut,Qnil);goto accept1;
-alt1_5: ame_setpos(self,oldpos16);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=CALL(visit_Remap_Actscb_23,1,bind);  arg0=it; it=Remap_Acts_clas(self ,arg0); FAILTEST(alt1_6);
- rb_ary_store(bind,33,it);  
-ISET(cut,Qnil);goto accept1;
-  alt1_6:  ame_setpos(self,oldpos16); goto fail;
- accept1:;
-int oldpos17=ame_getpos(self); int oldlen11=ame_getlen(self); VALUE oldsrc11=ame_getsrc(self); int fail11=0;
+ rb_ary_store(bind,5,it);  break;case 7:;   it=AmethystCore_anything(self ); FAILTEST(fail);
+ rb_ary_store(bind,33,it); int oldpos16=ame_getpos(self); int oldlen11=ame_getlen(self); VALUE oldsrc11=ame_getsrc(self); int fail11=0;
 ame_setsrc(self,rb_ary_entry(bind,33)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
- it=rb_ary_new3(0);int oldpos18; while(1){oldpos18=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break6); if (IGET(stop)!=Qnil){{oldpos18=ame_getpos(self);goto break6;} } } break6: ISET(stop,Qnil);  ame_setpos(self,oldpos18); it=CALL(visit_Remap_Actscb_24,1,bind); 
- rb_ary_store(bind,34,it);   it=Remap_Acts_eof(self ); FAILTEST(pass11);
+ it=rb_ary_new3(0);
+ rb_ary_store(bind,34,it); int oldpos17; while(1){oldpos17=ame_getpos(self);   it=Remap_Acts_traverse_item(self ); FAILTEST(break6);
+ rb_ary_store(bind,35,it); it=CALL(visit_Remap_Actscb_19,1,bind);  if (IGET(stop)!=Qnil){{oldpos17=ame_getpos(self);goto break6;} } } break6: ISET(stop,Qnil);  ame_setpos(self,oldpos17); it=rb_ary_entry(bind,34);
+ rb_ary_store(bind,9,it); it=CALL(visit_Remap_Actscb_20,1,bind); 
+ rb_ary_store(bind,36,it);   it=Remap_Acts_eof(self ); FAILTEST(pass11);
 	goto success11;
 	pass11: fail11=1;
-	success11: ame_setsrc(self,oldsrc11); ame_setpos(self,oldpos17); ame_setlen(self,oldlen11);
+	success11: ame_setsrc(self,oldsrc11); ame_setpos(self,oldpos16); ame_setlen(self,oldlen11);
 	if(fail11) goto fail;
-it=rb_ary_entry(bind,34);
+it=rb_ary_entry(bind,36);
+ rb_ary_store(bind,5,it);  break;case 8:; int oldpos18=ame_getpos(self);
+alt1_1: ame_setpos(self,oldpos18);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
+  it=CALL(visit_Remap_Actscb_21,1,bind);  arg0=it; it=Remap_Acts_clas(self ,arg0); FAILTEST(alt1_2);
+ rb_ary_store(bind,37,it);  
+ISET(cut,Qnil);goto accept1;
+alt1_2: ame_setpos(self,oldpos18);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
+  it=CALL(visit_Remap_Actscb_22,1,bind);  arg0=it; it=Remap_Acts_clas(self ,arg0); FAILTEST(alt1_3);
+ rb_ary_store(bind,37,it);  
+ISET(cut,Qnil);goto accept1;
+alt1_3: ame_setpos(self,oldpos18);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
+  it=CALL(visit_Remap_Actscb_23,1,bind);  arg0=it; it=Remap_Acts_clas(self ,arg0); FAILTEST(alt1_4);
+ rb_ary_store(bind,37,it);  
+ISET(cut,Qnil);goto accept1;
+alt1_4: ame_setpos(self,oldpos18);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
+  it=CALL(visit_Remap_Actscb_24,1,bind);  arg0=it; it=Remap_Acts_clas(self ,arg0); FAILTEST(alt1_5);
+ rb_ary_store(bind,37,it);  
+ISET(cut,Qnil);goto accept1;
+alt1_5: ame_setpos(self,oldpos18);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
+  it=CALL(visit_Remap_Actscb_25,1,bind);  arg0=it; it=Remap_Acts_clas(self ,arg0); FAILTEST(alt1_6);
+ rb_ary_store(bind,37,it);  
+ISET(cut,Qnil);goto accept1;
+  alt1_6:  ame_setpos(self,oldpos18); goto fail;
+ accept1:;
+int oldpos19=ame_getpos(self); int oldlen12=ame_getlen(self); VALUE oldsrc12=ame_getsrc(self); int fail12=0;
+ame_setsrc(self,rb_ary_entry(bind,37)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
+ it=rb_ary_new3(0);int oldpos20; while(1){oldpos20=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break7); if (IGET(stop)!=Qnil){{oldpos20=ame_getpos(self);goto break7;} } } break7: ISET(stop,Qnil);  ame_setpos(self,oldpos20); it=CALL(visit_Remap_Actscb_26,1,bind); 
+ rb_ary_store(bind,38,it);   it=Remap_Acts_eof(self ); FAILTEST(pass12);
+	goto success12;
+	pass12: fail12=1;
+	success12: ame_setsrc(self,oldsrc12); ame_setpos(self,oldpos19); ame_setlen(self,oldlen12);
+	if(fail12) goto fail;
+it=rb_ary_entry(bind,38);
  rb_ary_store(bind,5,it);  break;}it=rb_ary_entry(bind,5);
 return it;
 fail: return failobj; }
@@ -726,4 +739,4 @@ rb_define_method(cls_Remap_Acts,"root",Remap_Acts_root,0);
 rb_define_method(cls_Remap_Acts,"traverse",Remap_Acts_traverse,0);
 rb_define_method(cls_Remap_Acts,"traverse_item",Remap_Acts_traverse_item,0);
 rb_define_method(cls_Remap_Acts,"visit",Remap_Acts_visit,0);
- rb_eval_string("testversiondetect_variables2('1043dac1fd6eeaaaa9e7527acc29d255')");}
+ rb_eval_string("testversiondetect_variables2('413ec2f609396dafaeac81c2169f2d50')");}

@@ -113,7 +113,7 @@ failobj=rb_eval_string(\"FAIL\");
 					]
 				| Lookahead[ {label("accept")}:accept {label("reject")}:reject {label("oldpos")}:oldpos 
 										 rw(reject,`trans:t`) 
-										 {"int #{oldpos}=ame_getpos(self);\n #{t} x=1; goto #{accept};  #{reject}: x=0; #{accept}: it=Qnil; ame_setpos(self,#{oldpos}); if (x==#{@neg ? 1 : 0}) goto #{@@faillabel};"} ]
+										 {"int #{oldpos}=ame_getpos(self);\n #{t} x=1; goto #{accept};  #{reject}: x=0; #{accept}: it=Qnil; ame_setpos(self,#{oldpos}); if (x==0) goto #{@@faillabel};"} ]
 				| Local[ .* { "it=#{bget(@self)};" } ]
 				| Result[ { s="#{@name}.create( {#{@vars.map{|l| ":#{l[0]}=>#{rbbget(l)}" }.sort*","} })"
 					cbno=addcallback(s)

@@ -72,6 +72,7 @@ amethyst Dataflow < Traverser {
 				| Bind[   traverse[.*  {set_end(@self)} @self ] ] 
 				| Result[  @vars=>[vars_in]:var { var.each{|w| @@edges.add(ssanum(w),@self) } ; @self} ]
 				| (CAct | Bnding | Global | Key)[.*{@self}]
+				| Lookahead[ traverse_item*:t {Lookahead[*t]} ]
 
 				vars_in={ary=[]}
 								( Global[ @self:ary[]  {@@marked<<@self} .*]								

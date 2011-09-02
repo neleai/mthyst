@@ -403,7 +403,7 @@ def trans_AmethystCTranslatorcb_61(bind)
 @faillabel=bind[55]; bind[56] 
 end
 def trans_AmethystCTranslatorcb_62(bind)
-"int #{bind[50]}=ame_getpos(self);\n #{bind[6]} x=1; goto #{bind[48]};  #{bind[66]}: x=0; #{bind[48]}: it=Qnil; ame_setpos(self,#{bind[50]}); if (x==#{@src.neg ? 1 : 0}) goto #{@faillabel};"
+"int #{bind[50]}=ame_getpos(self);\n #{bind[6]} x=1; goto #{bind[48]};  #{bind[66]}: x=0; #{bind[48]}: it=Qnil; ame_setpos(self,#{bind[50]}); if (x==0) goto #{@faillabel};"
 end
 def trans_AmethystCTranslatorcb_63(bind)
 "it=#{bget(@src)};" 
@@ -468,10 +468,10 @@ end
 
 
 def ctranslator2_compiled_by
-'fc8f89f7c7f3091ba2a0aca66370db8b'
+'a6b43314326197f5f0b46ebedb01c2be'
 end
 def ctranslator2_source_hash
-'9db6a151464f82c9b6981c5ebe6ce590'
+'6ff853c227629fa2c41c51ba625f3646'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
