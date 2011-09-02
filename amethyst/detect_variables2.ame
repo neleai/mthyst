@@ -13,17 +13,4 @@ traverse[.*	{@locals=nil} @self] ]
 	flat= (Args[flat] | Strin[flat] |	. )*
 }
 
-amethyst Remap_Acts < Traverser_Clone{
-	root = traverse
-	
-	visit = Act[traverse_item*:ar  {@pure ? PureAct[ar] : Act[ar,@pred]} ]
-				| Or[ traverse_item*:t {Or[*t]} ]
-				| Seq[ traverse_item*:t {Seq[*t]} ]
-				| Pass[ @to=>traverse_item:to {Pass.create({:to=>to,:var=>@var}).normalize} ]
-				| Bind[ @name=>traverse_item:name @expr=>traverse_item:expr {Bind.create({:name=>name,:expr=>expr}).normalize} ]
-				| Many[ traverse_item*:t {Many.create({:ary=>t}).normalize} ]
 
-				| Apply[ traverse_item*:t {Apply[*t]} ]
-				| Lookahead[ traverse_item*:t {Lookahead[*t]} ]
-				| (CAct | Bnding | Global | Key| Result)[.*{@self}]
-}

@@ -14,8 +14,8 @@ class Gram
 		}
 	end
 	def opt(r)
+			r=deep_clone(r)
 			[
-Remap_Acts,
 Move_Assignments2,
  			 Dataflow, Dead_Code_Deleter3
 			].each{|o|
