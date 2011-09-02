@@ -29,14 +29,15 @@ class Dataflow < Traverser
 	end
 	def bind_end(exp)
 		name=exp.name
-		exp=exp.expr while exp.expr.is_a?(Bind) 
-	  if exp.expr.is_a?(Local) 
-      o=ssanum(exp.expr)
+		val=exp
+		val=val.expr while val.is_a?(Bind) 
+	  if val.is_a?(Local) 
+      o=ssanum(val)
       n=newssanum(name)
 			edges.add(exp,n)
       edges.add(o,n)
     else
-      edges.add(exp.expr,exp)
+      edges.add(val,exp)
       n=newssanum(name)
       edges.add(exp,n)
     end

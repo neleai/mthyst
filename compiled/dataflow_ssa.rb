@@ -29,14 +29,15 @@ class Dataflow < Traverser
 	end
 	def bind_end(exp)
 		name=exp.name
-		exp=exp.expr while exp.expr.is_a?(Bind) 
-	  if exp.expr.is_a?(Local) 
-      o=ssanum(exp.expr)
+		val=exp
+		val=val.expr while val.is_a?(Bind) 
+	  if val.is_a?(Local) 
+      o=ssanum(val)
       n=newssanum(name)
 			edges.add(exp,n)
       edges.add(o,n)
     else
-      edges.add(exp.expr,exp)
+      edges.add(val,exp)
       n=newssanum(name)
       edges.add(exp,n)
     end
@@ -458,7 +459,7 @@ def dataflow_ssa_compiled_by
 '572ee9bcd91197cbeded89160f9221bb'
 end
 def dataflow_ssa_source_hash
-'07326bca229bd5d2663b42eed5de1a70'
+'efcbea2801c2e57c1a4b99f929eec2a1'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
