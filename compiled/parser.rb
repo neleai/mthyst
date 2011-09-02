@@ -58,7 +58,25 @@ def application_AmethystParsercb_1(bind)
 [bind[0],bind[1]]
 end
 def application_AmethystParsercb_2(bind)
-Apply[bind[1],bind[3]]
+_append(bind[2],bind[3])
+end
+def application_AmethystParsercb_3(bind)
+bind[6]+[',']
+end
+def application_AmethystParsercb_4(bind)
+bind[7]=[bind[7]]
+end
+def application_AmethystParsercb_5(bind)
+Apply[bind[1],bind[13]]
+end
+def argsOpt_AmethystParsercb_1(bind)
+_append(bind[6],bind[7])
+end
+def argsOpt_AmethystParsercb_2(bind)
+bind[10]+[',']
+end
+def argsOpt_AmethystParsercb_3(bind)
+bind[11]=[bind[11]]
 end
 def args_AmethystParsercb_1(bind)
 _append(bind[4],bind[5])
@@ -172,7 +190,7 @@ def key_AmethystParsercb_1(bind)
 Object.const_get(bind[0]).instance_variable_get(:@attrs)
 end
 def key_AmethystParsercb_2(bind)
-Result.create( {:args=>bind[2],:name=>bind[0],:vars=>bind[3] })
+Result.create( {:name=>bind[0],:vars=>bind[1] })
 end
 def key_AmethystParsercb_3(bind)
 Key[bind[0]]
@@ -218,6 +236,15 @@ _append(bind[0],bind[4])
 end
 def name_AmethystParsercb_4(bind)
 leterize(bind[5]*"")
+end
+def nr_AmethystParsercb_1(bind)
+_append(bind[0],bind[1])
+end
+def nr_AmethystParsercb_2(bind)
+bind[4]+[',']
+end
+def nr_AmethystParsercb_3(bind)
+bind[5]=[bind[5]]
 end
 def number_AmethystParsercb_1(bind)
 /[0-9]/
@@ -439,7 +466,16 @@ def rule_AmethystParsercb_6(bind)
 Rule.create( {:args=>bind[2],:bnding=>bind[0],:body=>bind[3],:locals=>bind[4],:name=>bind[1] })
 end
 def ruleargs_AmethystParsercb_1(bind)
-bind[1]=[bind[1]]
+_append(bind[0],bind[1])
+end
+def ruleargs_AmethystParsercb_2(bind)
+bind[4]+[',']
+end
+def ruleargs_AmethystParsercb_3(bind)
+bind[5]=[bind[5]]
+end
+def ruleargs_AmethystParsercb_4(bind)
+bind[11]=[bind[11]]
 end
 def sequence_AmethystParsercb_1(bind)
 _append(bind[0],bind[1])
@@ -512,15 +548,15 @@ end
 
 
 def parser_compiled_by
-'315f7864bd9e9e073440c623b989267d'
+'fc8f89f7c7f3091ba2a0aca66370db8b'
 end
 def parser_source_hash
-'7290a3d8d561f0e2495e44f518c97d0e'
+'01bc3c7063c2ffa326eac197a272c010'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'25533af9bfa922d5cad7cfb678848ebc'
+'9f46a5e33da69380aa6a7743b2a40f7d'
 end
   require 'compiled/parser_c'

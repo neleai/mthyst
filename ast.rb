@@ -1,6 +1,6 @@
 makeclasses(AmethystAST,
     [:Key],
-    [:Result,:name,:args,:vars],
+    [:Result,:name,:vars],
     :Apply,:Char,
     :Nested,
     :Exp,
@@ -158,7 +158,8 @@ end
 	alias_method :eql?,:==
 end")}
 
-[Global,Key].each{|c| eval("class #{c} 
+[Global,Key,Result
+].each{|c| eval("class #{c} 
 	def self.[](*a)
 		create(*a).freeze
 	end

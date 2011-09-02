@@ -70,7 +70,7 @@ amethyst Dataflow < Traverser {
 							 @ary=>[vars_in]:var  { var.each{|v| edges.add(ssanum(v),@self); edges.add(@self,newssanum(v.clone));}; @self}
 					]
 				| Bind[   traverse[.*  {set_end(@self)} @self ] ] 
-				| Result[traverse[.* @vars=>[vars_in]:var { var.each{|w| @@edges.add(ssanum(w),@self) } ; @self} ]]
+				| Result[  @vars=>[vars_in]:var { var.each{|w| @@edges.add(ssanum(w),@self) } ; @self} ]
 				| (CAct | Bnding | Global | Key)[.*{@self}]
 
 				vars_in={ary=[]}

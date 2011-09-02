@@ -372,9 +372,9 @@ ISET(cut,Qnil);goto accept9;
  rb_ary_store(bind,20,it); it=rb_ary_entry(bind,20);
 return it;
 fail: return failobj; }
-VALUE Dataflow_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(46);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+VALUE Dataflow_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(44);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);char chr1=FIX2INT(CALL(switchcbDataflow2,1,ame_curobj(self)));  switch(chr1){case 0:;   it=AmethystCore_anything(self ); FAILTEST(fail);
+it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);it=rb_ary_new3(0);char chr1=FIX2INT(CALL(switchcbDataflow2,1,ame_curobj(self)));  switch(chr1){case 0:;   it=AmethystCore_anything(self ); FAILTEST(fail);
  rb_ary_store(bind,0,it); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,rb_ary_entry(bind,0)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
  it=rb_ary_new3(0);
@@ -513,68 +513,59 @@ it=rb_ary_entry(bind,36);
  rb_ary_store(bind,9,it);  break;case 7:;   it=AmethystCore_anything(self ); FAILTEST(fail);
  rb_ary_store(bind,37,it); int oldpos19=ame_getpos(self); int oldlen14=ame_getlen(self); VALUE oldsrc14=ame_getsrc(self); int fail14=0;
 ame_setsrc(self,rb_ary_entry(bind,37)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-   it=Dataflow_traverse(self ); FAILTEST(pass14);
- rb_ary_store(bind,38,it); int oldpos20=ame_getpos(self); int oldlen15=ame_getlen(self); VALUE oldsrc15=ame_getsrc(self); int fail15=0;
+ it=CALL(visit_Dataflowcb_27,1,bind); 
+ rb_ary_store(bind,38,it); it=CALL(visit_Dataflowcb_28,1,bind); int oldpos20=ame_getpos(self); int oldlen15=ame_getlen(self); VALUE oldsrc15=ame_getsrc(self); int fail15=0;
 ame_setsrc(self,rb_ary_entry(bind,38)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
- it=rb_ary_new3(0);int oldpos21; while(1){oldpos21=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break6); if (IGET(stop)!=Qnil){{oldpos21=ame_getpos(self);goto break6;} } } break6: ISET(stop,Qnil);  ame_setpos(self,oldpos21); it=CALL(visit_Dataflowcb_27,1,bind); 
- rb_ary_store(bind,39,it); it=CALL(visit_Dataflowcb_28,1,bind); int oldpos22=ame_getpos(self); int oldlen16=ame_getlen(self); VALUE oldsrc16=ame_getsrc(self); int fail16=0;
+   it=AmethystCore_anything(self ); FAILTEST(pass15);
+ rb_ary_store(bind,39,it); int oldpos21=ame_getpos(self); int oldlen16=ame_getlen(self); VALUE oldsrc16=ame_getsrc(self); int fail16=0;
 ame_setsrc(self,rb_ary_entry(bind,39)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-   it=AmethystCore_anything(self ); FAILTEST(pass16);
- rb_ary_store(bind,40,it); int oldpos23=ame_getpos(self); int oldlen17=ame_getlen(self); VALUE oldsrc17=ame_getsrc(self); int fail17=0;
-ame_setsrc(self,rb_ary_entry(bind,40)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-   it=Dataflow_vars_in(self ); FAILTEST(pass17);
- rb_ary_store(bind,41,it);   it=Dataflow_eof(self ); FAILTEST(pass17);
-	goto success17;
-	pass17: fail17=1;
-	success17: ame_setsrc(self,oldsrc17); ame_setpos(self,oldpos23); ame_setlen(self,oldlen17);
-	if(fail17) goto pass16;
-it=rb_ary_entry(bind,41);
- rb_ary_store(bind,7,it);   it=Dataflow_eof(self ); FAILTEST(pass16);
+   it=Dataflow_vars_in(self ); FAILTEST(pass16);
+ rb_ary_store(bind,40,it);   it=Dataflow_eof(self ); FAILTEST(pass16);
 	goto success16;
 	pass16: fail16=1;
-	success16: ame_setsrc(self,oldsrc16); ame_setpos(self,oldpos22); ame_setlen(self,oldlen16);
+	success16: ame_setsrc(self,oldsrc16); ame_setpos(self,oldpos21); ame_setlen(self,oldlen16);
 	if(fail16) goto pass15;
-it=CALL(visit_Dataflowcb_29,1,bind); 
- rb_ary_store(bind,42,it);   it=Dataflow_eof(self ); FAILTEST(pass15);
+it=rb_ary_entry(bind,40);
+ rb_ary_store(bind,7,it);   it=Dataflow_eof(self ); FAILTEST(pass15);
 	goto success15;
 	pass15: fail15=1;
 	success15: ame_setsrc(self,oldsrc15); ame_setpos(self,oldpos20); ame_setlen(self,oldlen15);
 	if(fail15) goto pass14;
-it=rb_ary_entry(bind,42);
- rb_ary_store(bind,43,it);   it=Dataflow_eof(self ); FAILTEST(pass14);
+it=CALL(visit_Dataflowcb_29,1,bind); 
+ rb_ary_store(bind,41,it);   it=Dataflow_eof(self ); FAILTEST(pass14);
 	goto success14;
 	pass14: fail14=1;
 	success14: ame_setsrc(self,oldsrc14); ame_setpos(self,oldpos19); ame_setlen(self,oldlen14);
 	if(fail14) goto fail;
-it=rb_ary_entry(bind,43);
- rb_ary_store(bind,9,it);  break;case 8:; int oldpos24=ame_getpos(self);
-alt1_1: ame_setpos(self,oldpos24);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
+it=rb_ary_entry(bind,41);
+ rb_ary_store(bind,9,it);  break;case 8:; int oldpos22=ame_getpos(self);
+alt1_1: ame_setpos(self,oldpos22);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   it=CALL(visit_Dataflowcb_30,1,bind);  arg0=it; it=Dataflow_clas(self ,arg0); FAILTEST(alt1_2);
- rb_ary_store(bind,44,it);  
+ rb_ary_store(bind,42,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_2: ame_setpos(self,oldpos24);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
+alt1_2: ame_setpos(self,oldpos22);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   it=CALL(visit_Dataflowcb_31,1,bind);  arg0=it; it=Dataflow_clas(self ,arg0); FAILTEST(alt1_3);
- rb_ary_store(bind,44,it);  
+ rb_ary_store(bind,42,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_3: ame_setpos(self,oldpos24);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
+alt1_3: ame_setpos(self,oldpos22);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   it=CALL(visit_Dataflowcb_32,1,bind);  arg0=it; it=Dataflow_clas(self ,arg0); FAILTEST(alt1_4);
- rb_ary_store(bind,44,it);  
+ rb_ary_store(bind,42,it);  
 ISET(cut,Qnil);goto accept1;
-alt1_4: ame_setpos(self,oldpos24);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
+alt1_4: ame_setpos(self,oldpos22);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
   it=CALL(visit_Dataflowcb_33,1,bind);  arg0=it; it=Dataflow_clas(self ,arg0); FAILTEST(alt1_5);
- rb_ary_store(bind,44,it);  
+ rb_ary_store(bind,42,it);  
 ISET(cut,Qnil);goto accept1;
-  alt1_5:  ame_setpos(self,oldpos24); goto fail;
+  alt1_5:  ame_setpos(self,oldpos22); goto fail;
  accept1:;
-int oldpos25=ame_getpos(self); int oldlen18=ame_getlen(self); VALUE oldsrc18=ame_getsrc(self); int fail18=0;
-ame_setsrc(self,rb_ary_entry(bind,44)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
- it=rb_ary_new3(0);int oldpos26; while(1){oldpos26=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break7); if (IGET(stop)!=Qnil){{oldpos26=ame_getpos(self);goto break7;} } } break7: ISET(stop,Qnil);  ame_setpos(self,oldpos26); it=CALL(visit_Dataflowcb_34,1,bind); 
- rb_ary_store(bind,45,it);   it=Dataflow_eof(self ); FAILTEST(pass18);
-	goto success18;
-	pass18: fail18=1;
-	success18: ame_setsrc(self,oldsrc18); ame_setpos(self,oldpos25); ame_setlen(self,oldlen18);
-	if(fail18) goto fail;
-it=rb_ary_entry(bind,45);
+int oldpos23=ame_getpos(self); int oldlen17=ame_getlen(self); VALUE oldsrc17=ame_getsrc(self); int fail17=0;
+ame_setsrc(self,rb_ary_entry(bind,42)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
+ it=rb_ary_new3(0);int oldpos24; while(1){oldpos24=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break6); if (IGET(stop)!=Qnil){{oldpos24=ame_getpos(self);goto break6;} } } break6: ISET(stop,Qnil);  ame_setpos(self,oldpos24); it=CALL(visit_Dataflowcb_34,1,bind); 
+ rb_ary_store(bind,43,it);   it=Dataflow_eof(self ); FAILTEST(pass17);
+	goto success17;
+	pass17: fail17=1;
+	success17: ame_setsrc(self,oldsrc17); ame_setpos(self,oldpos23); ame_setlen(self,oldlen17);
+	if(fail17) goto fail;
+it=rb_ary_entry(bind,43);
  rb_ary_store(bind,9,it);  break;}it=rb_ary_entry(bind,9);
 return it;
 fail: return failobj; }VALUE cls_Dead_Code_Deleter3;
@@ -832,4 +823,4 @@ rb_define_method(cls_Dead_Code_Deleter3,"root",Dead_Code_Deleter3_root,0);
 rb_define_method(cls_Dead_Code_Deleter3,"traverse",Dead_Code_Deleter3_traverse,0);
 rb_define_method(cls_Dead_Code_Deleter3,"traverse_item",Dead_Code_Deleter3_traverse_item,0);
 rb_define_method(cls_Dead_Code_Deleter3,"visit",Dead_Code_Deleter3_visit,0);
- rb_eval_string("testversiondataflow_ssa('45bd25201c23addac527f78e19af69c9')");}
+ rb_eval_string("testversiondataflow_ssa('c6a90902cd96093f76a51f58b9445b74')");}

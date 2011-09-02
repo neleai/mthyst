@@ -283,7 +283,7 @@ def visit_Dataflowcb_27(bind)
 @src.vars
 end
 def visit_Dataflowcb_28(bind)
-bind[39]=[bind[39]]
+bind[38]=[bind[38]]
 end
 def visit_Dataflowcb_29(bind)
 bind[7].each{|w| @edges.add(ssanum(w),@src) } ; @src
@@ -445,15 +445,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'315f7864bd9e9e073440c623b989267d'
+'fc8f89f7c7f3091ba2a0aca66370db8b'
 end
 def dataflow_ssa_source_hash
-'02cd95f3203c0360d72265f1d3b69f52'
+'d6edead2ebd71d8ac8ede89c1ccf9e10'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'45bd25201c23addac527f78e19af69c9'
+'c6a90902cd96093f76a51f58b9445b74'
 end
   require 'compiled/dataflow_ssa_c'

@@ -5,7 +5,7 @@ traverse[.*	{@locals=nil} @self] ]
 
 	visit = Args[ traverse[.* {@ary.map{|aa| @@variables[aa] }}=>[flat:a]  {@ary=connectstring(a.flatten)}  {(@ary.size==1&&(@ary[0].is_a?(Local)||@ary[0].is_a?(Global)||@ary[0].is_a?(Key))) ? @ary[0] : @self}]]
 				| Act[ traverse[.* @ary=>[( Local)] ] ]
-				| Result[ {@vars=@@locals.select{|aa| @vars.include? aa[0].to_sym}.uniq} @self]
+				| Result[ {vars=@@locals.select{|aa| @vars.include? aa[0].to_sym}.uniq ;Result[{:name=>@name,:vars=>vars}]}]
 				| Or[ traverse_item*:t {Or[*t]} ]
 				| Seq[ traverse_item*:t {Seq[*t]} ]
 
@@ -24,5 +24,5 @@ amethyst Remap_Acts < Traverser_Clone{
 				| Many[ traverse_item*:t {Many.create({:ary=>t}).normalize} ]
 
 				| Apply[ traverse_item*:t {Apply[*t]} ]
-				| (CAct | Bnding | Global | Key)[.*{@self}]
+				| (CAct | Bnding | Global | Key| Result)[.*{@self}]
 }

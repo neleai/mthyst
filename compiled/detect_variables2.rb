@@ -137,15 +137,12 @@ def visit_Analyze_Variables2cb_1(bind)
 @src.ary.map{|aa| @variables[aa] }
 end
 def visit_Analyze_Variables2cb_10(bind)
-_append(bind[19],bind[20])
-end
-def visit_Analyze_Variables2cb_11(bind)
 Or[*bind[21]]
 end
-def visit_Analyze_Variables2cb_12(bind)
+def visit_Analyze_Variables2cb_11(bind)
 _append(bind[24],bind[25])
 end
-def visit_Analyze_Variables2cb_13(bind)
+def visit_Analyze_Variables2cb_12(bind)
 Seq[*bind[21]]
 end
 def visit_Analyze_Variables2cb_2(bind)
@@ -167,10 +164,10 @@ def visit_Analyze_Variables2cb_7(bind)
 Local
 end
 def visit_Analyze_Variables2cb_8(bind)
-@src.vars=@locals.select{|aa| @src.vars.include? aa[0].to_sym}.uniq
+vars=@locals.select{|aa| @src.vars.include? aa[0].to_sym}.uniq ;Result[{:name=>@src.name,:vars=>vars}]
 end
 def visit_Analyze_Variables2cb_9(bind)
-@src
+_append(bind[19],bind[20])
 end
 
 end
@@ -278,6 +275,9 @@ def visit_Remap_Actscb_22(bind)
 Key
 end
 def visit_Remap_Actscb_23(bind)
+Result
+end
+def visit_Remap_Actscb_24(bind)
 @src
 end
 def visit_Remap_Actscb_3(bind)
@@ -306,15 +306,15 @@ end
 
 
 def detect_variables2_compiled_by
-'315f7864bd9e9e073440c623b989267d'
+'fc8f89f7c7f3091ba2a0aca66370db8b'
 end
 def detect_variables2_source_hash
-'e6ad2bf485e8ec2913b25f15bf277a01'
+'d780e1cbeaf426bc16051eda78b20a50'
 end
 def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'9e2a412476682c02e6742fd8af63fcdd'
+'1043dac1fd6eeaaaa9e7527acc29d255'
 end
   require 'compiled/detect_variables2_c'
