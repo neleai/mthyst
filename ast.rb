@@ -234,6 +234,9 @@ class Apply
 		end
 		self.freeze
 	end
+	def inspect
+		"#{ary[0]}(#{ary[1..-1].map{|a|a.inspect}*","})"
+	end
 end
          
 class Lookahead
