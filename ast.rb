@@ -158,6 +158,13 @@ end
 	alias_method :eql?,:==
 end")}
 
+[Global,Key].each{|c| eval("class #{c} 
+	def self.[](*a)
+		create(*a).freeze
+	end
+end")}
+
+
 
 class PureAct
 	def self.[](expr=nil)
