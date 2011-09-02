@@ -226,7 +226,7 @@ class Apply
 			return Apply[@ary[1][0][13...-2]] if @ary[1].is_a?(CAct)
 			return @ary[1][0][0] if @ary[1].is_a?(Act) && @ary[1][0].is_a?(Exp)
 		end
-		self#.freeze
+		self.freeze
 	end
 end
          
