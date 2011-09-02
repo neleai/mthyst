@@ -40,8 +40,8 @@ class AmethystAST
 	end
 end
 
-class <<Bnding
-	def []
+class Bnding
+	def self.[]
 		@bno||=0
 		@bno+=1
 		Bnding.create({:ary=>[@bno]})
@@ -59,9 +59,8 @@ def autovar
 	Local["autovar",$av]
 end
 
-class Enter;end
-class <<Enter
-	def [](from,to)
+class Enter
+	def self.[](from,to)
 		Pass[from,to,true]
 	end
 end
@@ -89,9 +88,8 @@ def _Bind(name,expr,append=nil)
 		Seq[_Bind(a,expr),PureAct[Args[name,'=',a]]]
 	end
 end
-class Append;end
-class <<Append
-	def [](name,expr)
+class Append
+	def self.[](name,expr)
 		_Bind(name,expr,true)
 	end
 end
@@ -121,15 +119,13 @@ class Seq
 	end
 end
 
-class <<Or
-	def [](*args)
+class Or
+	def self.[](*args)
 		args=args[0][:ary] if args.size==1 && args[0].is_a?(Hash)
 		return Or.create(*args) if args[-1].is_a?(Hash)
 		s=Or.create({:ary=>args}).normalize
 		(s.size==1) ? s.ary[0] : s
 	end
-end
-class Or
 	def normalize
 		@ary=@ary.map{|i| (i.is_a?(Or)) ? i.ary : i}.flatten
 		@ary=@ary.select{|e| !(e.is_a?(Act) && e.ary.size==0)}
@@ -165,9 +161,7 @@ end
 
 
 class PureAct
-end
-class <<PureAct
-	def [](expr=nil)
+	def self.[](expr=nil)
 		a=Act[expr].dup
 		if a.is_a?(Act)
 			a.pure=true 
@@ -211,9 +205,8 @@ class Act
 		self.freeze
 	end
 end
-class Pred;end
-class <<Pred
-def [](e)
+class Pred
+def self.[](e)
 	Act[e,true]
 end
 end
@@ -236,8 +229,8 @@ class Apply
 	end
 end
          
-class <<Lookahead
-  def [](e,neg=nil)
+class Lookahead
+  def self.[](e,neg=nil)
 		if neg
 			Or[Seq[e,Cut[],Apply["fails"]],Seq[Apply["empty"]]]
 		else
@@ -246,8 +239,8 @@ class <<Lookahead
   end
 end
 
-class <<Local
-	def [](*a)
+class Local
+	def self.[](*a)
     r=super
     r.instance_variable_set(:@hash,r.ary.hash)
     r
