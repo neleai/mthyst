@@ -202,7 +202,7 @@ def traverse_Remap_Actscb_3(bind)
 bind[1]=[bind[1]]
 end
 def traverse_Remap_Actscb_4(bind)
-bind[0].instance_variable_set(bind[4],bind[5]) unless bind[5].eql?(@src.instance_variable_get(bind[4]))
+bind[0].instance_variable_set(bind[4],bind[5]) unless bind[5].equal?(bind[0].instance_variable_get(bind[4]))
 end
 def traverse_item_Remap_Actscb_1(bind)
 @changed=true
