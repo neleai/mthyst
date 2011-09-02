@@ -240,13 +240,13 @@ alt5_1: ame_setpos(self,oldpos13);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fai
    it=AmethystCore_anything(self ); FAILTEST(alt5_2);
  rb_ary_store(bind,13,it); int oldpos14=ame_getpos(self); int oldlen5=ame_getlen(self); VALUE oldsrc5=ame_getsrc(self); int fail5=0;
 ame_setsrc(self,rb_ary_entry(bind,13)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
- it=CALL(rbtrans_AmethystCTranslatorcb_8,1,bind); 
+   it=AmethystCore_anything(self ); FAILTEST(pass5);
  rb_ary_store(bind,14,it);   it=AmethystCTranslator_eof(self ); FAILTEST(pass5);
 	goto success5;
 	pass5: fail5=1;
 	success5: ame_setsrc(self,oldsrc5); ame_setpos(self,oldpos14); ame_setlen(self,oldlen5);
 	if(fail5) goto alt5_2;
-it=CALL(rbtrans_AmethystCTranslatorcb_9,1,bind); 
+it=CALL(rbtrans_AmethystCTranslatorcb_8,1,bind); 
  rb_ary_store(bind,2,it);  
 ISET(cut,Qnil);goto accept5;
 alt5_2: ame_setpos(self,oldpos13);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
@@ -266,7 +266,7 @@ ame_setsrc(self,rb_ary_entry(bind,15)); ame_setpos(self,0); ame_setlen(self,FIX2
 	pass6: fail6=1;
 	success6: ame_setsrc(self,oldsrc6); ame_setpos(self,oldpos16); ame_setlen(self,oldlen6);
 	if(fail6) goto alt6_2;
-it=CALL(rbtrans_AmethystCTranslatorcb_10,1,bind); 
+it=CALL(rbtrans_AmethystCTranslatorcb_9,1,bind); 
  rb_ary_store(bind,2,it);  
 ISET(cut,Qnil);goto accept6;
 alt6_2: ame_setpos(self,oldpos15);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
@@ -678,4 +678,4 @@ rb_define_method(cls_AmethystCTranslator,"spaces",AmethystCTranslator_spaces,0);
 rb_define_method(cls_AmethystCTranslator,"token",AmethystCTranslator_token,1);
 rb_define_method(cls_AmethystCTranslator,"trans",AmethystCTranslator_trans,0);
 rb_define_method(cls_AmethystCTranslator,"transfn",AmethystCTranslator_transfn,0);
- rb_eval_string("testversionctranslator2('16eefb759b12871e450ade89690eae21')");}
+ rb_eval_string("testversionctranslator2('dc7027a8d01dc32cf84bc68382acb2e4')");}

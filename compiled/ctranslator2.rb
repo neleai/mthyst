@@ -172,9 +172,6 @@ end
 def rbtrans_AmethystCTranslatorcb_1(bind)
 rbbget(@src)
 end
-def rbtrans_AmethystCTranslatorcb_10(bind)
-"@#{bind[14]}"
-end
 def rbtrans_AmethystCTranslatorcb_2(bind)
 _append(bind[4],bind[5])
 end
@@ -194,10 +191,10 @@ def rbtrans_AmethystCTranslatorcb_7(bind)
 bind[6]*""
 end
 def rbtrans_AmethystCTranslatorcb_8(bind)
-@src.name
+(bind[14]=="self") ? "@src" : "@src.#{bind[14]}"
 end
 def rbtrans_AmethystCTranslatorcb_9(bind)
-(bind[14]=="self") ? "@src" : "@src.#{bind[14]}"
+"@#{bind[14]}"
 end
 def rw_AmethystCTranslatorcb_1(bind)
 @faillabel
@@ -477,15 +474,15 @@ end
 
 
 def ctranslator2_compiled_by
-'9f0feb9068a97c27fa0fc5bc05035761'
+'76adb2ea96a6a03bedf8c0028192cc67'
 end
 def ctranslator2_source_hash
-'9fb550f715e7c4bc249becbee64e3b82'
+'7b17404f6b3be5aee16d6943e45ece50'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'16eefb759b12871e450ade89690eae21'
+'dc7027a8d01dc32cf84bc68382acb2e4'
 end
   require 'compiled/ctranslator2_c'

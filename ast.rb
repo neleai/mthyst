@@ -1,5 +1,5 @@
 makeclasses(AmethystAST,
-    [:Key,:name,:expr,:args],
+    [:Key,:name],
     [:Result,:name,:args,:vars],
     :Apply,:Char,
     :Nested,
@@ -164,7 +164,7 @@ class Key
 	end
 	def ==(a)
 		return false unless a.is_a? Key
-		return self.name==a.name
+		return self.ary==a.ary
 	end
 	alias_method :eql?,:==
 end
