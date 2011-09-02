@@ -182,11 +182,12 @@ return 0 if e<=Act
 return 1 if e<=Or
 return 2 if e<=Seq
 return 3 if e<=Pass
-return 4 if e<=Many
-return 5 if e<=Apply
-return 6 if e<=CAct
-return 7 if e<=Object
-return 8
+return 4 if e<=Bind
+return 5 if e<=Many
+return 6 if e<=Apply
+return 7 if e<=CAct
+return 8 if e<=Object
+return 9
 end
 @@switchhashRemap_Acts5=Hash.new{|h,k| h[k]=switchcb_Remap_Acts5(k)}
 def switchcbRemap_Acts5(e)
@@ -236,18 +237,33 @@ def visit_Remap_Actscb_1(bind)
 _append(bind[1],bind[2])
 end
 def visit_Remap_Actscb_10(bind)
-_append(bind[20],bind[21])
+@src.name
 end
 def visit_Remap_Actscb_11(bind)
-Many.create({:ary=>bind[9]}).normalize
+bind[20]=[bind[20]]
 end
 def visit_Remap_Actscb_12(bind)
-_append(bind[24],bind[25])
+@src.expr
 end
 def visit_Remap_Actscb_13(bind)
-Apply[*bind[9]]
+bind[22]=[bind[22]]
 end
 def visit_Remap_Actscb_14(bind)
+Bind.create({:name=>bind[21],:expr=>bind[23]}).normalize
+end
+def visit_Remap_Actscb_15(bind)
+_append(bind[26],bind[27])
+end
+def visit_Remap_Actscb_16(bind)
+Many.create({:ary=>bind[9]}).normalize
+end
+def visit_Remap_Actscb_17(bind)
+_append(bind[30],bind[31])
+end
+def visit_Remap_Actscb_18(bind)
+Apply[*bind[9]]
+end
+def visit_Remap_Actscb_19(bind)
 @src
 end
 def visit_Remap_Actscb_2(bind)
@@ -279,15 +295,15 @@ end
 
 
 def detect_variables2_compiled_by
-'9e0681b570f26762a301cc938ce8c3c5'
+'7149ff1f913eddfa661d0cdd0d758adf'
 end
 def detect_variables2_source_hash
-'43fcfb59f2a13ed1ce161ac7c21f159f'
+'8f7aac6abe2e376a003499c900a3c585'
 end
 def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'a49a31b43b34950e9dca9dafb9ab3870'
+'eaa3dae4a7aa857be71e4f1eb37634fa'
 end
   require 'compiled/detect_variables2_c'

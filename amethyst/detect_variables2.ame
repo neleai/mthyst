@@ -20,6 +20,7 @@ amethyst Remap_Acts < Traverser_Clone{
 				| Or[ traverse_item*:t {Or[*t]} ]
 				| Seq[ traverse_item*:t {Seq[*t]} ]
 				| Pass[ @to=>traverse_item:to {Pass.create({:to=>to,:var=>@var}).normalize} ]
+				| Bind[ @name=>traverse_item:name @expr=>traverse_item:expr {Bind.create({:name=>name,:expr=>expr}).normalize} ]
 				| Many[ traverse_item*:t {Many.create({:ary=>t}).normalize} ]
 
 				| Apply[ traverse_item*:t {Apply[*t]} ]
