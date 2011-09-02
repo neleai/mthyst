@@ -88,6 +88,13 @@ def _Bind(name,expr,append=nil)
 		Seq[_Bind(a,expr),PureAct[Args[name,'=',a]]]
 	end
 end
+class Bind
+	def normalize
+		self#.freeze
+	end
+end
+
+
 class Append
 	def self.[](name,expr)
 		_Bind(name,expr,true)
