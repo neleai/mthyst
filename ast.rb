@@ -66,11 +66,14 @@ class <<Enter
 	end
 end
 
-class <<Pass
-	def [](from,to,enter=nil)
+class Pass
+	def self.[](from,to,enter=nil)
 		a=autovar
 		r=autovar
-		Seq[_Bind(a,from), (enter ? PureAct[] : Act[Args[a,"=[",a,"]"]]) , Pass.create({:to=>Seq[_Bind(r,to),Apply["eof"]],:enter=>true,:var=>a}),r]
+		Seq[_Bind(a,from), (enter ? PureAct[] : Act[Args[a,"=[",a,"]"]]) , Pass.create({:to=>Seq[_Bind(r,to),Apply["eof"]],:var=>a}),r]
+	end
+	def normalize
+		self#.freeze
 	end
 end
 def _Bind(name,expr,append=nil)

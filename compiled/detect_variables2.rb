@@ -3,8 +3,10 @@ def self.switchcb_Analyze_Variables21(e)
 return 0 if e<=Args
 return 1 if e<=Act
 return 2 if e<=Result
-return 3 if e<=Object
-return 4
+return 3 if e<=Or
+return 4 if e<=Seq
+return 5 if e<=Object
+return 6
 end
 @@switchhashAnalyze_Variables21=Hash.new{|h,k| h[k]=switchcb_Analyze_Variables21(k)}
 def switchcbAnalyze_Variables21(e)
@@ -134,6 +136,18 @@ end
 def visit_Analyze_Variables2cb_1(bind)
 @src.ary.map{|aa| @variables[aa] }
 end
+def visit_Analyze_Variables2cb_10(bind)
+_append(bind[19],bind[20])
+end
+def visit_Analyze_Variables2cb_11(bind)
+Or[*bind[21]]
+end
+def visit_Analyze_Variables2cb_12(bind)
+_append(bind[24],bind[25])
+end
+def visit_Analyze_Variables2cb_13(bind)
+Seq[*bind[21]]
+end
 def visit_Analyze_Variables2cb_2(bind)
 bind[2]=[bind[2]]
 end
@@ -166,11 +180,12 @@ class Remap_Acts < Traverser_Clone
 def self.switchcb_Remap_Acts5(e)
 return 0 if e<=Act
 return 1 if e<=Or
-return 2 if e<=Apply
-return 3 if e<=Seq
-return 4 if e<=CAct
-return 5 if e<=Object
-return 6
+return 2 if e<=Seq
+return 3 if e<=Pass
+return 4 if e<=Apply
+return 5 if e<=CAct
+return 6 if e<=Object
+return 7
 end
 @@switchhashRemap_Acts5=Hash.new{|h,k| h[k]=switchcb_Remap_Acts5(k)}
 def switchcbRemap_Acts5(e)
@@ -219,6 +234,15 @@ end
 def visit_Remap_Actscb_1(bind)
 _append(bind[1],bind[2])
 end
+def visit_Remap_Actscb_10(bind)
+_append(bind[20],bind[21])
+end
+def visit_Remap_Actscb_11(bind)
+Apply[*bind[9]]
+end
+def visit_Remap_Actscb_12(bind)
+@src
+end
 def visit_Remap_Actscb_2(bind)
 @src.pure ? PureAct[bind[3]] : Act[bind[3],@src.pred]
 end
@@ -232,31 +256,31 @@ def visit_Remap_Actscb_5(bind)
 _append(bind[12],bind[13])
 end
 def visit_Remap_Actscb_6(bind)
-Apply[*bind[9]]
-end
-def visit_Remap_Actscb_7(bind)
-_append(bind[16],bind[17])
-end
-def visit_Remap_Actscb_8(bind)
 Seq[*bind[9]]
 end
+def visit_Remap_Actscb_7(bind)
+@src.to
+end
+def visit_Remap_Actscb_8(bind)
+bind[16]=[bind[16]]
+end
 def visit_Remap_Actscb_9(bind)
-@src
+Pass.create({:to=>bind[17],:var=>@src.var}).normalize
 end
 
 end
 
 
 def detect_variables2_compiled_by
-'7fb8b8862b20cc6b0048afa6fb3b3794'
+'679442981b030477908be8837c7c48b7'
 end
 def detect_variables2_source_hash
-'736d3eb1fed1d6f8306e3d83ca840e63'
+'d9916dde5bcdea341dc83ccd2a7a884b'
 end
 def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'0616a57926d93377448c6efc036e59d9'
+'7724ecc63c82c43143d2ee7ed04d5531'
 end
   require 'compiled/detect_variables2_c'

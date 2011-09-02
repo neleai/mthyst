@@ -14,7 +14,9 @@ class Gram
 		}
 	end
 	def opt(r)
-			[Remap_Acts,Move_Assignments2,
+			[
+Remap_Acts,
+Move_Assignments2,
  			 Dataflow, Dead_Code_Deleter3
 			].each{|o|
 	      puts r.inspect if $debug>1
