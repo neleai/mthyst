@@ -4,8 +4,9 @@ optimizer simplifying =>[ ] to []
 split to separate parser and traverser 
 split to traverser and modifier and dataflow_analyzer
 make AmethystModule +include to mimic ruby module
+parser to produce literal tree and convert to abstract tree
 make position handling explicit as in amethyst/position.ame
-refactor args
+
 generic parent(Class) in tree traversal
 
 variable cget,cset,rbget,rbset or some other generalization
@@ -15,9 +16,6 @@ work in 1.9.1
 unify lambda+rule in ctranslator2
 bind cut,stop to corresponding many,or
 code motion of acts
-
-
-detect acts as pure if they have simple form
 
 documentation
 
@@ -39,8 +37,6 @@ treat super like renamed rule
 
 dont duplicate rules that dont refer to overwritten rule
 
-saner handling of Locals
-
 generic equality
 
 hashes with different equalization
@@ -56,3 +52,6 @@ merge detect_switch and detect_classswitch
 do not remove unused arguments
 
 dataflow cantfail, noresult
+
+make bind pure
+saner handling of Locals
