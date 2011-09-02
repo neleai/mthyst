@@ -163,8 +163,12 @@ end
 class <<PureAct
 	def [](expr=nil)
 		a=Act[expr].dup
-		a.pure=true
-		a.freeze
+		if a.is_a?(Act)
+			a.pure=true 
+			a.freeze 
+		else 
+			a
+		end
 	end
 end
 class CAct
@@ -176,6 +180,8 @@ end
 class Act
 	def self.[](expr=nil,pred=nil)
 		expr=expr[0] if expr.is_a?(Array) && expr.size<=1
+		expr=expr[0] if expr.is_a?(Act) && expr.size<=1
+		return expr if expr.is_a?(CAct) || expr.is_a?(Local)
 		return Act.create({:pred=>pred}) if expr==nil
 		r=Act.create(expr,{:pred=>pred}).normalize
 		r
@@ -220,7 +226,7 @@ class Apply
 			return Apply[@ary[1][0][13...-2]] if @ary[1].is_a?(CAct)
 			return @ary[1][0][0] if @ary[1].is_a?(Act) && @ary[1][0].is_a?(Exp)
 		end
-		self
+		self#.freeze
 	end
 end
          

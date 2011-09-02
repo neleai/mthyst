@@ -166,10 +166,11 @@ class Remap_Acts < Traverser_Clone
 def self.switchcb_Remap_Acts5(e)
 return 0 if e<=Act
 return 1 if e<=Or
-return 2 if e<=Seq
-return 3 if e<=CAct
-return 4 if e<=Object
-return 5
+return 2 if e<=Apply
+return 3 if e<=Seq
+return 4 if e<=CAct
+return 5 if e<=Object
+return 6
 end
 @@switchhashRemap_Acts5=Hash.new{|h,k| h[k]=switchcb_Remap_Acts5(k)}
 def switchcbRemap_Acts5(e)
@@ -231,9 +232,15 @@ def visit_Remap_Actscb_5(bind)
 _append(bind[12],bind[13])
 end
 def visit_Remap_Actscb_6(bind)
-Seq[*bind[9]]
+Apply[*bind[9]]
 end
 def visit_Remap_Actscb_7(bind)
+_append(bind[16],bind[17])
+end
+def visit_Remap_Actscb_8(bind)
+Seq[*bind[9]]
+end
+def visit_Remap_Actscb_9(bind)
 @src
 end
 
@@ -241,15 +248,15 @@ end
 
 
 def detect_variables2_compiled_by
-'2f6a2443c0b2aba62c04644e2b1b3710'
+'e9c665938847210f7e5f38291e3db1f5'
 end
 def detect_variables2_source_hash
-'41ba98b35bdd99ae3438aaa7dee995dd'
+'736d3eb1fed1d6f8306e3d83ca840e63'
 end
 def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'cb5273713253ad060232f0ab8b96a628'
+'0616a57926d93377448c6efc036e59d9'
 end
   require 'compiled/detect_variables2_c'

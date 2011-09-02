@@ -15,6 +15,7 @@ amethyst Remap_Acts < Traverser_Clone{
 	
 	visit = Act[traverse_item*:ar  {@pure ? PureAct[ar] : Act[ar,@pred]} ]
 				| Or[ traverse_item*:t {Or[*t]} ]
+				| Apply[ traverse_item*:t {Apply[*t]} ]
 				| Seq[ traverse_item*:t {Seq[*t]} ]
 				| CAct[.*{@self}]
 }
