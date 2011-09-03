@@ -1,58 +1,13 @@
-class Traverser_Clone < Amethyst
-def self.switchcb_Traverser_Clone1(e)
-return 0 if e<=Array
-return 1 if e<=AmethystAST
-return 2 if e<=Object
-return 3
-end
-@@switchhashTraverser_Clone1=Hash.new{|h,k| h[k]=switchcb_Traverser_Clone1(k)}
-def switchcbTraverser_Clone1(e)
-@@switchhashTraverser_Clone1[e.class]
-end
-def clas_Traverser_Clonecb_1(bind)
-(bind[0].is_a?(bind[1])) || FAIL
-end
-def fails_Traverser_Clonecb_1(bind)
-(false) || FAIL
-end
-def traverse_Traverser_Clonecb_1(bind)
-@src.clone
-end
-def traverse_Traverser_Clonecb_2(bind)
-(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
-end
-def traverse_Traverser_Clonecb_3(bind)
-bind[1]=[bind[1]]
-end
-def traverse_Traverser_Clonecb_4(bind)
-bind[0].instance_variable_set(bind[4],bind[5]) unless bind[5].equal?(bind[0].instance_variable_get(bind[4]))
-end
-def traverse_item_Traverser_Clonecb_1(bind)
-@changed=true
-end
-def traverse_item_Traverser_Clonecb_2(bind)
-bind[3]<<bind[4]
-end
-def traverse_item_Traverser_Clonecb_3(bind)
-@changed=true
-end
-def traverse_item_Traverser_Clonecb_4(bind)
-@changed=true
-end
-
-end
-
-
 class Traverser < Amethyst
-def self.switchcb_Traverser2(e)
+def self.switchcb_Traverser1(e)
 return 0 if e<=Array
 return 1 if e<=AmethystAST
 return 2 if e<=Object
 return 3
 end
-@@switchhashTraverser2=Hash.new{|h,k| h[k]=switchcb_Traverser2(k)}
-def switchcbTraverser2(e)
-@@switchhashTraverser2[e.class]
+@@switchhashTraverser1=Hash.new{|h,k| h[k]=switchcb_Traverser1(k)}
+def switchcbTraverser1(e)
+@@switchhashTraverser1[e.class]
 end
 def clas_Traversercb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -92,15 +47,15 @@ end
 
 
 class Traverser_Clone2 < Amethyst
-def self.switchcb_Traverser_Clone23(e)
+def self.switchcb_Traverser_Clone22(e)
 return 0 if e<=Array
 return 1 if e<=AmethystAST
 return 2 if e<=Object
 return 3
 end
-@@switchhashTraverser_Clone23=Hash.new{|h,k| h[k]=switchcb_Traverser_Clone23(k)}
-def switchcbTraverser_Clone23(e)
-@@switchhashTraverser_Clone23[e.class]
+@@switchhashTraverser_Clone22=Hash.new{|h,k| h[k]=switchcb_Traverser_Clone22(k)}
+def switchcbTraverser_Clone22(e)
+@@switchhashTraverser_Clone22[e.class]
 end
 def clas_Traverser_Clone2cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -153,15 +108,15 @@ end
  
 
 class Visitor < Amethyst
-def self.switchcb_Visitor4(e)
+def self.switchcb_Visitor3(e)
 return 0 if e<=Array
 return 1 if e<=AmethystAST
 return 2 if e<=Object
 return 3
 end
-@@switchhashVisitor4=Hash.new{|h,k| h[k]=switchcb_Visitor4(k)}
-def switchcbVisitor4(e)
-@@switchhashVisitor4[e.class]
+@@switchhashVisitor3=Hash.new{|h,k| h[k]=switchcb_Visitor3(k)}
+def switchcbVisitor3(e)
+@@switchhashVisitor3[e.class]
 end
 def clas_Visitorcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -186,15 +141,15 @@ end
 
 
 def traverser_compiled_by
-'4633aa560412cd73b5664322e4821570'
+'a9517670bd40d733212e9c0eae987e43'
 end
 def traverser_source_hash
-'9886fff09884c1bf29256cb07358b2b5'
+'63c18902da89e1b2234d417503a9d719'
 end
 def testversiontraverser(r)
  raise "invalid version" if r!=traverser_version
 end
 def traverser_version
-'90e4342b1fdd5e49a8a897247ef462f1'
+'7a596ca41749da7db2d467b3ede272b4'
 end
   require 'compiled/traverser_c'
