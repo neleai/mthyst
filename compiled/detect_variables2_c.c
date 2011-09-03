@@ -397,10 +397,7 @@ ame_setsrc(self,rb_ary_entry(bind,23)); ame_setpos(self,0); ame_setlen(self,FIX2
 	success11: ame_setsrc(self,oldsrc11); ame_setpos(self,oldpos14); ame_setlen(self,oldlen11);
 	if(fail11) goto fail;
 it=rb_ary_entry(bind,26);
- rb_ary_store(bind,7,it);  break;case 5:; int oldpos16=ame_getpos(self);
-  alt1_1:  ame_setpos(self,oldpos16); goto fail;
- accept1:;
- break;}it=rb_ary_entry(bind,7);
+ rb_ary_store(bind,7,it);  break;case 5:;   it=Analyze_Variables2_fails(self ); FAILTEST(fail); break;}it=rb_ary_entry(bind,7);
 return it;
 fail: return failobj; }
 void Init_detect_variables2_c(){ 
@@ -416,4 +413,4 @@ rb_define_method(cls_Analyze_Variables2,"root",Analyze_Variables2_root,0);
 rb_define_method(cls_Analyze_Variables2,"traverse",Analyze_Variables2_traverse,0);
 rb_define_method(cls_Analyze_Variables2,"traverse_item",Analyze_Variables2_traverse_item,0);
 rb_define_method(cls_Analyze_Variables2,"visit",Analyze_Variables2_visit,0);
- rb_eval_string("testversiondetect_variables2('9a4641bda33344c750294a6ab767070a')");}
+ rb_eval_string("testversiondetect_variables2('0b066a0a051db498be91ff20ca8587f4')");}

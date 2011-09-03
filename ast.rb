@@ -133,6 +133,7 @@ class Or
 	def self.[](*args)
 		args=args[0][:ary] if args.size==1 && args[0].is_a?(Hash)
 		return Or.create(*args) if args[-1].is_a?(Hash)
+		return Apply["fails"] if args.size==0
 		s=Or.create({:ary=>args}).normalize
 		(s.size==1) ? s.ary[0] : s
 	end
