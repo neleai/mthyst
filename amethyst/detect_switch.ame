@@ -100,8 +100,11 @@ amethyst Switch_Dataflow {
 
 class Detect_Switch < Traverser_Clone2
 	def first(s)
-		@switchdf||=Switch_Dataflow.new
-		r=@switchdf.parse(:root,[s])
+		if !@switchdf
+			@switchdf=Switch_Dataflow.new
+			@switchdf.parse(:root,[])
+		end
+		r=@switchdf.analyze(s)
 		return r
 	end
 	def intersects(p,e)
@@ -170,6 +173,23 @@ class ClasLattice
   end
 end
 
+amethyst ClasSwitch_Dataflow {
+  first = Seq[value*:{it.inject{|u,v|u.seqjoin(v)}}]
+        | Or[value*:{it.inject(:+)}]
+        | Switch[value*:{it.inject(:+)}]
+        | Bind[@expr=>value]
+        | Many[value:val {val+ClasLattice.empty} ]
+        | (Act|CAct)[.* {ClasLattice.empty} ]
+        | Apply[ ["clas"] Act[.:cls] {ClasLattice[cls]}]
+        | Apply[ .* {ClasLattice.top}]
+        | . {ClasLattice.top+ClasLattice.empty}
+		
+				value=first
+
+				root=first
+
+				analyze(x) = {x}=>first
+}
 
 class Detect_ClasSwitch < Traverser_Clone2
 	def first(s)
@@ -187,6 +207,14 @@ class Detect_ClasSwitch < Traverser_Clone2
 			a+=first(v)}
 			return a
 		end
+		if !@switchdf
+			@switchdf=ClasSwitch_Dataflow.new
+			@switchdf.parse(:root,[])
+		end
+		r=@switchdf.analyze(s)
+		return ClasLattice.top if r.ary.include?(:empty)
+		return r
+
 		if s.is_a? Or
 			a=ClasLattice.bottom
 			s.ary.each{|e| 
