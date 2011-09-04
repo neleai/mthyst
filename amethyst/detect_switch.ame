@@ -8,7 +8,7 @@ class Switch_Dataflow < Amethyst
 
 	def initialize
     @depend=Oriented_Graph.new
-    @vals=Hash.new(Chars.bottom)
+    @vals=Hash.new(CharLattice.bottom)
 		@visited={}
   end
 
@@ -42,54 +42,55 @@ class Switch_Dataflow < Amethyst
 
 end
 
-class Chars
+class CharLattice
 	attr_accessor :ary
 	def self.[](*ary)
-		c=Chars.new
+		c=CharLattice.new
 		c.ary=ary
 		c
 	end
 	def self.top
-		Chars[:anything]
+		CharLattice[:anything]
 	end
 	def self.empty
-		Chars[:empty]
+		CharLattice[:empty]
 	end
 	def self.bottom
-		Chars[]
+		CharLattice[]
 	end
 	def +(a)
-		c=Chars.new
+		c=CharLattice.new
 		c.ary=(ary+a.ary).uniq
 		c
 	end
 	def -(a)
-		c=Chars.new
+		c=CharLattice.new
 		c.ary=(ary-a.ary).uniq
 		c
 	end
 	def &(a)
-		c=Chars.new 
+		c=CharLattice.new 
     c.ary=(ary&a.ary).uniq
     c
 	end
 	def seqjoin(a)
 		return self unless a.ary.include? :empty
-		(self-Chars[:empty])+a
+		(self-CharLattice[:empty])+a
 	end
 end
 
 amethyst Switch_Dataflow {
 	first = Seq[value*:{it.inject{|u,v|u.seqjoin(v)}}]
 				| Or[value*:{it.inject(:+)}]
+				| Switch[&{@first.is_a?(CharLattice)} .* {@first}]
 				| Switch[value*:{it.inject(:+)}]
 				| Bind[@expr=>value]
-				| Many[value:val {val+Chars.empty} ]
-				| (Act|CAct)[.* {Chars.empty} ]
-				| Apply[ ["seq"] CAct[.:str] {Chars[firstchar(str)]}]
-				| Apply[ ["anything" ] {Chars.top}]
-				| Apply[ ["regch" ] {Chars.top}]
-				| . {Chars.top+Chars.empty}
+				| Many[value:val {val+CharLattice.empty} ]
+				| (Act|CAct)[.* {CharLattice.empty} ]
+				| Apply[ ["seq"] CAct[.:str] {CharLattice[firstchar(str)]}]
+				| Apply[ ["anything" ] {CharLattice.top}]
+				| Apply[ ["regch" ] {CharLattice.top}]
+				| . {CharLattice.top+CharLattice.empty}
 				
 				value =  .:x  {depends(x); @@vals[x]}
 
@@ -122,8 +123,9 @@ amethyst Detect_Switch < Traverser_Clone2 {
 
 	root = traverse
 
-	visit = Or[ {Chars[]}:ary2 {[]}:ary3
+	visit = Or[ {CharLattice[]}:ary2 {[]}:ary3
 		(traverse_item:e &{first(e)} {ary2+=first(e)})* &eof
+		{ary2}:firs
 		{ary2=ary2.ary.map{|e|  [:anything,:empty].include?(e) ? :default : e}.uniq}
 		&{ary2.size>1}
 		{ary2.each{|e|
@@ -132,7 +134,7 @@ amethyst Detect_Switch < Traverser_Clone2 {
 		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k.to_s}.sort,v[0][1]]}.sort}
 		{ary3<<[["default"],Apply["fails"]] unless ary2.include?(:default)}
     &{ary3.size>1}
-		{Switch[{:act=>"*ame_curstr(self)",:ary=>ary3}]}
+		{Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>ary3}]}
 	]
 }
 
@@ -176,7 +178,7 @@ end
 amethyst ClasSwitch_Dataflow {
   first = Seq[value*:{it.inject{|u,v|u.seqjoin(v)}}]
         | Or[value*:{it.inject(:+)}]
-				| Switch[&{@first} .* {@first}]
+				| Switch[&{@first.is_a?(ClasLattice)} .* {@first}]
         | Switch[value*:{it.inject(:+)}]
         | Bind[@expr=>value]
         | Many[value:val {val+ClasLattice.empty} ]

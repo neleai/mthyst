@@ -37,8 +37,6 @@ treat super like renamed rule
 
 dont duplicate rules that dont refer to overwritten rule
 
-generic equality
-
 hashes with different equalization
 
 adaptive dataflow
@@ -56,4 +54,4 @@ dataflow cantfail, noresult
 make bind pure
 saner handling of Locals
 
-classwitch remembers clases it uses
+classwicch predicate written by lattice terminology

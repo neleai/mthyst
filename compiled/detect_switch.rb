@@ -8,7 +8,7 @@ class Switch_Dataflow < Amethyst
 
 	def initialize
     @depend=Oriented_Graph.new
-    @vals=Hash.new(Chars.bottom)
+    @vals=Hash.new(CharLattice.bottom)
 		@visited={}
   end
 
@@ -42,40 +42,40 @@ class Switch_Dataflow < Amethyst
 
 end
 
-class Chars
+class CharLattice
 	attr_accessor :ary
 	def self.[](*ary)
-		c=Chars.new
+		c=CharLattice.new
 		c.ary=ary
 		c
 	end
 	def self.top
-		Chars[:anything]
+		CharLattice[:anything]
 	end
 	def self.empty
-		Chars[:empty]
+		CharLattice[:empty]
 	end
 	def self.bottom
-		Chars[]
+		CharLattice[]
 	end
 	def +(a)
-		c=Chars.new
+		c=CharLattice.new
 		c.ary=(ary+a.ary).uniq
 		c
 	end
 	def -(a)
-		c=Chars.new
+		c=CharLattice.new
 		c.ary=(ary-a.ary).uniq
 		c
 	end
 	def &(a)
-		c=Chars.new 
+		c=CharLattice.new 
     c.ary=(ary&a.ary).uniq
     c
 	end
 	def seqjoin(a)
 		return self unless a.ary.include? :empty
-		(self-Chars[:empty])+a
+		(self-CharLattice[:empty])+a
 	end
 end
 
@@ -106,52 +106,58 @@ def first_Switch_Dataflowcb_1(bind)
 _append(bind[1],bind[2])
 end
 def first_Switch_Dataflowcb_10(bind)
-@src.expr
+bind[3].inject(:+)
 end
 def first_Switch_Dataflowcb_11(bind)
-bind[15]=[bind[15]]
+CharLattice.top+CharLattice.empty
 end
 def first_Switch_Dataflowcb_12(bind)
-Chars.top+Chars.empty
+@src.expr
 end
 def first_Switch_Dataflowcb_13(bind)
-bind[19]+Chars.empty
+bind[17]=[bind[17]]
 end
 def first_Switch_Dataflowcb_14(bind)
-Chars.top+Chars.empty
+CharLattice.top+CharLattice.empty
 end
 def first_Switch_Dataflowcb_15(bind)
-Act
+bind[21]+CharLattice.empty
 end
 def first_Switch_Dataflowcb_16(bind)
-CAct
+CharLattice.top+CharLattice.empty
 end
 def first_Switch_Dataflowcb_17(bind)
-Chars.empty
+Act
 end
 def first_Switch_Dataflowcb_18(bind)
-Chars.top+Chars.empty
+CAct
 end
 def first_Switch_Dataflowcb_19(bind)
-CAct
+CharLattice.empty
 end
 def first_Switch_Dataflowcb_2(bind)
 bind[3].inject{|u,v|u.seqjoin(v)}
 end
 def first_Switch_Dataflowcb_20(bind)
-Chars[firstchar(bind[26])]
+CharLattice.top+CharLattice.empty
 end
 def first_Switch_Dataflowcb_21(bind)
-Chars.top
+CAct
 end
 def first_Switch_Dataflowcb_22(bind)
-Chars.top
+CharLattice[firstchar(bind[28])]
 end
 def first_Switch_Dataflowcb_23(bind)
-Chars.top+Chars.empty
+CharLattice.top
+end
+def first_Switch_Dataflowcb_24(bind)
+CharLattice.top
+end
+def first_Switch_Dataflowcb_25(bind)
+CharLattice.top+CharLattice.empty
 end
 def first_Switch_Dataflowcb_3(bind)
-Chars.top+Chars.empty
+CharLattice.top+CharLattice.empty
 end
 def first_Switch_Dataflowcb_4(bind)
 _append(bind[7],bind[8])
@@ -160,16 +166,16 @@ def first_Switch_Dataflowcb_5(bind)
 bind[3].inject(:+)
 end
 def first_Switch_Dataflowcb_6(bind)
-Chars.top+Chars.empty
+CharLattice.top+CharLattice.empty
 end
 def first_Switch_Dataflowcb_7(bind)
-_append(bind[11],bind[12])
+(@src.first.is_a?(CharLattice)) || FAIL
 end
 def first_Switch_Dataflowcb_8(bind)
-bind[3].inject(:+)
+@src.first
 end
 def first_Switch_Dataflowcb_9(bind)
-Chars.top+Chars.empty
+_append(bind[13],bind[14])
 end
 def getvalue_Switch_Dataflowcb_1(bind)
 @vis=bind[0]; bind[0]
@@ -307,10 +313,10 @@ def visit_Detect_Switchcb_10(bind)
 (bind[2].size>1) || FAIL
 end
 def visit_Detect_Switchcb_11(bind)
-Switch[{:act=>"*ame_curstr(self)",:ary=>bind[2]}]
+Switch[{:act=>"*ame_curstr(self)",:first=>bind[4],:ary=>bind[2]}]
 end
 def visit_Detect_Switchcb_2(bind)
-Chars[]
+CharLattice[]
 end
 def visit_Detect_Switchcb_3(bind)
 (first(bind[3])) || FAIL
@@ -466,7 +472,7 @@ def first_ClasSwitch_Dataflowcb_6(bind)
 ClasLattice.top+ClasLattice.empty
 end
 def first_ClasSwitch_Dataflowcb_7(bind)
-(@src.first) || FAIL
+(@src.first.is_a?(ClasLattice)) || FAIL
 end
 def first_ClasSwitch_Dataflowcb_8(bind)
 @src.first
@@ -696,15 +702,15 @@ end
 
 
 def detect_switch_compiled_by
-'6722ff54d38ecfbb2bba13652ee09014'
+'a44a056fd741fee8f471b7d0e8a0064c'
 end
 def detect_switch_source_hash
-'64c1546df9760b66ac3c6173b553855c'
+'7a67d8713d138c23372eb1e41c2685f0'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'72bf0930b306ab935dcb2e666a1517f4'
+'fbfda8a97941c3833e218b64c21e96cd'
 end
   require 'compiled/detect_switch_c'
