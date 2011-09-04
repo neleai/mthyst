@@ -86,9 +86,16 @@ class Switch_Dataflow < Amethyst
 
 end
 
+class FirstLattice
+  def self.empty
+    self[:empty]
+  end
+  def self.bottom
+    self[]
+  end
 
-
-class CharLattice
+end
+class CharLattice < FirstLattice
 	attr_accessor :ary
 	def self.[](*ary)
 		c=CharLattice.new
@@ -97,12 +104,6 @@ class CharLattice
 	end
 	def self.top
 		CharLattice[:anything]
-	end
-	def self.empty
-		CharLattice[:empty]
-	end
-	def self.bottom
-		CharLattice[]
 	end
 	def +(a)
 		c=CharLattice.new
@@ -125,7 +126,7 @@ class CharLattice
 	end
 end
 
-class ClasLattice
+class ClasLattice < FirstLattice
   attr_accessor :ary
   def self.[](*ary)
     c=ClasLattice.new
@@ -134,12 +135,6 @@ class ClasLattice
   end
   def self.top
     ClasLattice["Object"]
-  end
-  def self.empty
-    ClasLattice[:empty]
-  end
-  def self.bottom
-    ClasLattice[]
   end
   def +(a)
     c=ClasLattice.new
@@ -755,7 +750,7 @@ def detect_switch_compiled_by
 'f976c22243acea7d546399d311d9bd77'
 end
 def detect_switch_source_hash
-'28dc87bb4e8f9b1ac33c2b37b1d09d6a'
+'f477f6f2ab77e546bce9b6ca8643e119'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
