@@ -87,42 +87,35 @@ class Switch_Dataflow < Amethyst
 end
 
 class FirstLattice
+	attr_accessor :ary
   def self.empty
     self[:empty]
   end
   def self.bottom
     self[]
   end
-
+	def +(a)
+		self.class[*(ary+a.ary)]
+	end
+	def -(a)
+		self.class[*(ary-a.ary)]
+	end
+	def &(a)
+		self.class[*(ary&a.ary)]
+	end
+	def seqjoin(a)
+    return self unless a.ary.include? :empty
+    (self-self.class.empty)+a
+  end
 end
 class CharLattice < FirstLattice
-	attr_accessor :ary
 	def self.[](*ary)
 		c=CharLattice.new
-		c.ary=ary
+		c.ary=ary.uniq
 		c
 	end
 	def self.top
 		CharLattice[:anything]
-	end
-	def +(a)
-		c=CharLattice.new
-		c.ary=(ary+a.ary).uniq
-		c
-	end
-	def -(a)
-		c=CharLattice.new
-		c.ary=(ary-a.ary).uniq
-		c
-	end
-	def &(a)
-		c=CharLattice.new 
-    c.ary=(ary&a.ary).uniq
-    c
-	end
-	def seqjoin(a)
-		return self unless a.ary.include? :empty
-		(self-CharLattice[:empty])+a
 	end
 end
 
@@ -130,30 +123,15 @@ class ClasLattice < FirstLattice
   attr_accessor :ary
   def self.[](*ary)
     c=ClasLattice.new
-    c.ary=ary
+    c.ary=ary.uniq
     c
   end
   def self.top
     ClasLattice["Object"]
   end
-  def +(a)
-    c=ClasLattice.new
-    c.ary=(ary+a.ary).uniq
-    c
-  end
-  def -(a)
-    c=ClasLattice.new
-    c.ary=(ary-a.ary).uniq
-    c
-  end
-  def &(a)
-    c=ClasLattice.new
-    c.ary=(ary&a.ary).uniq
-    c
-  end
-  def seqjoin(a)
+	def seqjoin(a)
     return self #unless a.ary.include? :empty
-    (self-ClasLattice[:empty])+a
+    (self-self.class.empty)+a
   end
 end
 
@@ -750,7 +728,7 @@ def detect_switch_compiled_by
 'f976c22243acea7d546399d311d9bd77'
 end
 def detect_switch_source_hash
-'f477f6f2ab77e546bce9b6ca8643e119'
+'98e0f67be195df5c2d50af4fffceb982'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
