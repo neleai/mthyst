@@ -406,45 +406,51 @@ def first_ClasSwitch_Dataflowcb_1(bind)
 _append(bind[1],bind[2])
 end
 def first_ClasSwitch_Dataflowcb_10(bind)
-@src.expr
+bind[3].inject(:+)
 end
 def first_ClasSwitch_Dataflowcb_11(bind)
-bind[15]=[bind[15]]
-end
-def first_ClasSwitch_Dataflowcb_12(bind)
 ClasLattice.top+ClasLattice.empty
 end
+def first_ClasSwitch_Dataflowcb_12(bind)
+@src.expr
+end
 def first_ClasSwitch_Dataflowcb_13(bind)
-bind[19]+ClasLattice.empty
+bind[17]=[bind[17]]
 end
 def first_ClasSwitch_Dataflowcb_14(bind)
 ClasLattice.top+ClasLattice.empty
 end
 def first_ClasSwitch_Dataflowcb_15(bind)
-Act
+bind[21]+ClasLattice.empty
 end
 def first_ClasSwitch_Dataflowcb_16(bind)
-CAct
-end
-def first_ClasSwitch_Dataflowcb_17(bind)
-ClasLattice.empty
-end
-def first_ClasSwitch_Dataflowcb_18(bind)
 ClasLattice.top+ClasLattice.empty
 end
-def first_ClasSwitch_Dataflowcb_19(bind)
+def first_ClasSwitch_Dataflowcb_17(bind)
 Act
+end
+def first_ClasSwitch_Dataflowcb_18(bind)
+CAct
+end
+def first_ClasSwitch_Dataflowcb_19(bind)
+ClasLattice.empty
 end
 def first_ClasSwitch_Dataflowcb_2(bind)
 bind[3].inject{|u,v|u.seqjoin(v)}
 end
 def first_ClasSwitch_Dataflowcb_20(bind)
-ClasLattice[bind[26]]
+ClasLattice.top+ClasLattice.empty
 end
 def first_ClasSwitch_Dataflowcb_21(bind)
-ClasLattice.top
+Act
 end
 def first_ClasSwitch_Dataflowcb_22(bind)
+ClasLattice[bind[28]]
+end
+def first_ClasSwitch_Dataflowcb_23(bind)
+ClasLattice.top
+end
+def first_ClasSwitch_Dataflowcb_24(bind)
 ClasLattice.top+ClasLattice.empty
 end
 def first_ClasSwitch_Dataflowcb_3(bind)
@@ -460,13 +466,13 @@ def first_ClasSwitch_Dataflowcb_6(bind)
 ClasLattice.top+ClasLattice.empty
 end
 def first_ClasSwitch_Dataflowcb_7(bind)
-_append(bind[11],bind[12])
+(@src.first) || FAIL
 end
 def first_ClasSwitch_Dataflowcb_8(bind)
-bind[3].inject(:+)
+@src.first
 end
 def first_ClasSwitch_Dataflowcb_9(bind)
-ClasLattice.top+ClasLattice.empty
+_append(bind[13],bind[14])
 end
 def spaces_ClasSwitch_Dataflowcb_1(bind)
 /[\s\t\r\n\f]/
@@ -486,17 +492,6 @@ end
 
 class Detect_ClasSwitch < Traverser_Clone2
 	def first(s)
-		if s.is_a?(Seq)
-			return first(s[0])
-		end
-		if s.is_a? Switch
-			return s.first if s.first
-			a=ClasLattice.bottom
-			s.ary.each{|k,v|
-				return nil if !first(v)
-			a+=first(v)}
-			return a
-		end
 		if !@switchdf
 			@switchdf=ClasSwitch_Dataflow.new
 			@switchdf.parse(:root,[])
@@ -701,15 +696,15 @@ end
 
 
 def detect_switch_compiled_by
-'a0c06a05e632c15ca2dda0a3a1ed4835'
+'6722ff54d38ecfbb2bba13652ee09014'
 end
 def detect_switch_source_hash
-'90eb56c1d6149351d0ddf3991cc3b1cf'
+'64c1546df9760b66ac3c6173b553855c'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'9e88f677d74df443055826dbb36045e6'
+'72bf0930b306ab935dcb2e666a1517f4'
 end
   require 'compiled/detect_switch_c'

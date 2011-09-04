@@ -176,6 +176,7 @@ end
 amethyst ClasSwitch_Dataflow {
   first = Seq[value*:{it.inject{|u,v|u.seqjoin(v)}}]
         | Or[value*:{it.inject(:+)}]
+				| Switch[&{@first} .* {@first}]
         | Switch[value*:{it.inject(:+)}]
         | Bind[@expr=>value]
         | Many[value:val {val+ClasLattice.empty} ]
@@ -193,17 +194,6 @@ amethyst ClasSwitch_Dataflow {
 
 class Detect_ClasSwitch < Traverser_Clone2
 	def first(s)
-		if s.is_a?(Seq)
-			return first(s[0])
-		end
-		if s.is_a? Switch
-			return s.first if s.first
-			a=ClasLattice.bottom
-			s.ary.each{|k,v|
-				return nil if !first(v)
-			a+=first(v)}
-			return a
-		end
 		if !@switchdf
 			@switchdf=ClasSwitch_Dataflow.new
 			@switchdf.parse(:root,[])
