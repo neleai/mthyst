@@ -141,6 +141,7 @@ class Detect_ClasSwitch < Traverser_Clone2
 			return first(s.expr)
 		end
 		if s.is_a? Switch
+			return s.first if s.first
 			a=[]
 			s.ary.each{|k,v|
 				return nil if !first(v)
@@ -200,13 +201,14 @@ amethyst Detect_ClasSwitch < Traverser_Clone2 {
 
 	visit = Or[ {[]}:ary2 {[]}:ary3
     (traverse_item:e &{first(e)} {ary2+=first(e)})* &eof
+		{ary2}:firs
 		{ary2=topsort(ary2+["Object"])}
 		&{ary2.size>1}
     {	ary2.each_with_index{|e,i|
       	ary3<<[i,Or[{:ary=>@ary.select{|p| includes(ary2,i,first(p))}.map{|p| predicate(e,p)}}]]
 		}}
 		{ary3=ary3.group_by{|a,b| b.ary}.map{|y,v| [v.map{|k,val| k}.sort,v[0][1]]}.sort}
-	  {c=classswitch(ary2);s=Switch[{:act=>c[1],:defs=>c[0],:ary=>ary3}];puts s.inspect;s}
+	  {c=classswitch(ary2);s=Switch[{:act=>c[1],:first=>firs,:defs=>c[0],:ary=>ary3}];puts s.inspect;s}
 	]
 
   predicate(clas,p) = {p}=>( Seq[ .:first .*:rest  {Seq[[predicate(clas,first)]+rest]} ]

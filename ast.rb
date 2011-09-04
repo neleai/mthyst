@@ -26,7 +26,7 @@ makeclasses(AmethystAST,
 		:Stop,
 		:Bnding,
 		[:Phi,:merges,:result],
-		[:Switch,:act,:defs]
+		[:Switch,:act,:defs,:first]
 )
 
 class Array

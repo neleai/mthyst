@@ -86,9 +86,11 @@ return 1 if e<=Or
 return 2 if e<=Switch
 return 3 if e<=Bind
 return 4 if e<=Many
-return 5 if e<=Apply
-return 6 if e<=Object
-return 7
+return 5 if e<=Act
+return 6 if e<=CAct
+return 7 if e<=Apply
+return 8 if e<=Object
+return 9
 end
 @@switchhashSwitch_Dataflow2=Hash.new{|h,k| h[k]=switchcb_Switch_Dataflow2(k)}
 def switchcbSwitch_Dataflow2(e)
@@ -119,31 +121,31 @@ def first_Switch_Dataflowcb_14(bind)
 Chars.top+Chars.empty
 end
 def first_Switch_Dataflowcb_15(bind)
-CAct
+Act
 end
 def first_Switch_Dataflowcb_16(bind)
-Chars[firstchar(bind[24])]
+CAct
 end
 def first_Switch_Dataflowcb_17(bind)
-Chars.top
+Chars.empty
 end
 def first_Switch_Dataflowcb_18(bind)
-Chars.top
+Chars.top+Chars.empty
 end
 def first_Switch_Dataflowcb_19(bind)
-Chars.top+Chars.empty
+CAct
 end
 def first_Switch_Dataflowcb_2(bind)
 bind[3].inject{|u,v|u.seqjoin(v)}
 end
 def first_Switch_Dataflowcb_20(bind)
-Act
+Chars[firstchar(bind[26])]
 end
 def first_Switch_Dataflowcb_21(bind)
-CAct
+Chars.top
 end
 def first_Switch_Dataflowcb_22(bind)
-Chars.empty
+Chars.top
 end
 def first_Switch_Dataflowcb_23(bind)
 Chars.top+Chars.empty
@@ -342,6 +344,7 @@ class Detect_ClasSwitch < Traverser_Clone2
 			return first(s.expr)
 		end
 		if s.is_a? Switch
+			return s.first if s.first
 			a=[]
 			s.ary.each{|k,v|
 				return nil if !first(v)
@@ -547,7 +550,7 @@ def visit_Detect_ClasSwitchcb_7(bind)
 bind[2]=bind[2].group_by{|a,b| b.ary}.map{|y,v| [v.map{|k,val| k}.sort,v[0][1]]}.sort
 end
 def visit_Detect_ClasSwitchcb_8(bind)
-c=classswitch(bind[1]);s=Switch[{:act=>c[1],:defs=>c[0],:ary=>bind[2]}];puts s.inspect;s
+c=classswitch(bind[1]);s=Switch[{:act=>c[1],:first=>bind[4],:defs=>c[0],:ary=>bind[2]}];puts s.inspect;s
 end
 
 end
@@ -555,15 +558,15 @@ end
 
 
 def detect_switch_compiled_by
-'87f2aa0b804077d21df18f24ca62d5d8'
+'21c68e737fb2f8669a95b662409a609b'
 end
 def detect_switch_source_hash
-'32c9707d0ada65c1c1f171be10f0bbb2'
+'f62434a1d11ff9bd0b72615bb517ce18'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'be822813c6db987b64a78793bd8bddc0'
+'03059935d132c55f1a78ac12a9733704'
 end
   require 'compiled/detect_switch_c'

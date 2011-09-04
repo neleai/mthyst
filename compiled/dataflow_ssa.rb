@@ -69,10 +69,14 @@ return 4 if e<=Pass
 return 5 if e<=Act
 return 6 if e<=Bind
 return 7 if e<=Result
-return 8 if e<=Lookahead
-return 9 if e<=Local
-return 10 if e<=Object
-return 11
+return 8 if e<=CAct
+return 9 if e<=Bnding
+return 10 if e<=Global
+return 11 if e<=Key
+return 12 if e<=Lookahead
+return 13 if e<=Local
+return 14 if e<=Object
+return 15
 end
 @@switchhashDataflow2=Hash.new{|h,k| h[k]=switchcb_Dataflow2(k)}
 def switchcbDataflow2(e)
@@ -298,28 +302,28 @@ def visit_Dataflowcb_30(bind)
 bind[7].each{|w| @edges.add(ssanum(w),@src) } ; @src
 end
 def visit_Dataflowcb_31(bind)
-_append(bind[45],bind[46])
-end
-def visit_Dataflowcb_32(bind)
-Lookahead[*bind[0]]
-end
-def visit_Dataflowcb_33(bind)
-@src.dup
-end
-def visit_Dataflowcb_34(bind)
 CAct
 end
-def visit_Dataflowcb_35(bind)
+def visit_Dataflowcb_32(bind)
 Bnding
 end
-def visit_Dataflowcb_36(bind)
+def visit_Dataflowcb_33(bind)
 Global
 end
-def visit_Dataflowcb_37(bind)
+def visit_Dataflowcb_34(bind)
 Key
 end
-def visit_Dataflowcb_38(bind)
+def visit_Dataflowcb_35(bind)
 @src
+end
+def visit_Dataflowcb_36(bind)
+_append(bind[47],bind[48])
+end
+def visit_Dataflowcb_37(bind)
+Lookahead[*bind[0]]
+end
+def visit_Dataflowcb_38(bind)
+@src.dup
 end
 def visit_Dataflowcb_4(bind)
 bind[7].each{|v| @marked<<ssanum(v)}
@@ -345,10 +349,13 @@ end
 
 class Dead_Code_Deleter3 < Traverser_Clone2
 def self.switchcb_Dead_Code_Deleter36(e)
-return 0 if e<=Bind
-return 1 if e<=Local
-return 2 if e<=Object
-return 3
+return 0 if e<=Act
+return 1 if e<=CAct
+return 2 if e<=Result
+return 3 if e<=Bind
+return 4 if e<=Local
+return 5 if e<=Object
+return 6
 end
 @@switchhashDead_Code_Deleter36=Hash.new{|h,k| h[k]=switchcb_Dead_Code_Deleter36(k)}
 def switchcbDead_Code_Deleter36(e)
@@ -424,31 +431,31 @@ def traverse_item_Dead_Code_Deleter3cb_4(bind)
 @changed=true
 end
 def visit_Dead_Code_Deleter3cb_1(bind)
-@src
+Act
 end
 def visit_Dead_Code_Deleter3cb_10(bind)
-@reachable[bind[8]] ? bind[8] : Act[]
+@reachable[bind[1].ssaname] ? bind[1] : Act[]
 end
 def visit_Dead_Code_Deleter3cb_2(bind)
-@src.expr
+CAct
 end
 def visit_Dead_Code_Deleter3cb_3(bind)
-@reachable[bind[1]] ? @src : bind[3]
+Result
 end
 def visit_Dead_Code_Deleter3cb_4(bind)
 @src
 end
 def visit_Dead_Code_Deleter3cb_5(bind)
-@reachable[bind[8].ssaname] ? bind[8] : Act[]
+@reachable[bind[1]] ? bind[1] : Act[]
 end
 def visit_Dead_Code_Deleter3cb_6(bind)
-Act
+@src
 end
 def visit_Dead_Code_Deleter3cb_7(bind)
-CAct
+@src.expr
 end
 def visit_Dead_Code_Deleter3cb_8(bind)
-Result
+@reachable[bind[4]] ? @src : bind[6]
 end
 def visit_Dead_Code_Deleter3cb_9(bind)
 @src
@@ -460,7 +467,7 @@ end
 
 
 def dataflow_ssa_compiled_by
-'87f2aa0b804077d21df18f24ca62d5d8'
+'21c68e737fb2f8669a95b662409a609b'
 end
 def dataflow_ssa_source_hash
 'ab2ba60da629c9e89c0c52e0cb8cc7c1'
@@ -469,6 +476,6 @@ def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'11961039e449b591c28500e314444965'
+'f25c5fe44d48068aa38f033af3443854'
 end
   require 'compiled/dataflow_ssa_c'
