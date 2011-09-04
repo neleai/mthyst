@@ -1,11 +1,4 @@
-class Switch_Dataflow < Amethyst
-  def firstchar(s)
-	  return :empty if s.size==15
-    s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
-    eval('"'+s+'"')[0]
-  end
-
-
+class First_Dataflow < Amethyst
 	def initialize
     @depend=Oriented_Graph.new
     @vals=Hash.new(CharLattice.bottom)
@@ -39,51 +32,17 @@ class Switch_Dataflow < Amethyst
       @activea<<e
     end
   end
-
 end
 
-class ClasSwitch_Dataflow < Amethyst
+class Switch_Dataflow < First_Dataflow
   def firstchar(s)
 	  return :empty if s.size==15
     s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
     eval('"'+s+'"')[0]
   end
+end
 
-
-	def initialize
-    @depend=Oriented_Graph.new
-    @vals=Hash.new(CharLattice.bottom)
-		@visited={}
-  end
-
-	def analyze(e)
-    @active={}
-    @activea=[e]
-		while el=@activea.pop
-			@active.delete(el)
-      val=getvalue(el)
-      if val!=@vals[el]
-        @vals[el]=val
-        @depend.edges[el].each{|d| addactive(d)}
-      end
-
-		end
-		@vals[e]
-	end 
-	def depends(e)
-		@depend.add(e,@vis) unless @depend.edges[e].include?(@vis)
-		if !@visited[e]
-			@visited[e]=true
-			addactive(e)
-		end
-	end
-	def addactive(e)
-    if !@active[e]
-      @active[e]=true
-      @activea<<e
-    end
-  end
-
+class ClasSwitch_Dataflow < First_Dataflow
 end
 
 class FirstLattice
@@ -135,8 +94,25 @@ class ClasLattice < FirstLattice
   end
 end
 
+class First_Dataflow < Amethyst
 
-class Switch_Dataflow < Amethyst
+def fails_First_Dataflowcb_1(bind)
+(false) || FAIL
+end
+def getvalue_First_Dataflowcb_1(bind)
+@vis=bind[0]; bind[0]
+end
+def getvalue_First_Dataflowcb_2(bind)
+bind[1]=[bind[1]]
+end
+def value_First_Dataflowcb_1(bind)
+depends(bind[0]); @vals[bind[0]]
+end
+
+end
+
+
+class Switch_Dataflow < First_Dataflow
 def self.switchcb_Switch_Dataflow2(e)
 return 0 if e<=Seq
 return 1 if e<=Or
@@ -234,12 +210,6 @@ end
 def first_Switch_Dataflowcb_9(bind)
 _append(bind[13],bind[14])
 end
-def getvalue_Switch_Dataflowcb_1(bind)
-@vis=bind[0]; bind[0]
-end
-def getvalue_Switch_Dataflowcb_2(bind)
-bind[1]=[bind[1]]
-end
 def spaces_Switch_Dataflowcb_1(bind)
 /[\s\t\r\n\f]/
 end
@@ -259,7 +229,7 @@ end
 end
 
 
-class ClasSwitch_Dataflow < Amethyst
+class ClasSwitch_Dataflow < First_Dataflow
 def self.switchcb_ClasSwitch_Dataflow4(e)
 return 0 if e<=Seq
 return 1 if e<=Or
@@ -353,12 +323,6 @@ def first_ClasSwitch_Dataflowcb_8(bind)
 end
 def first_ClasSwitch_Dataflowcb_9(bind)
 _append(bind[13],bind[14])
-end
-def getvalue_ClasSwitch_Dataflowcb_1(bind)
-@vis=bind[0]; bind[0]
-end
-def getvalue_ClasSwitch_Dataflowcb_2(bind)
-bind[1]=[bind[1]]
 end
 def spaces_ClasSwitch_Dataflowcb_1(bind)
 /[\s\t\r\n\f]/
@@ -731,15 +695,15 @@ end
 
 
 def detect_switch_compiled_by
-'5931d51eba64cf5a8a063e1902c658d3'
+'56d5165a67a57959a5f5d737c5b20166'
 end
 def detect_switch_source_hash
-'e8d7c41a86bba2dc1bbbf78015496364'
+'2c2b972e7b473fda1fff43131bf3926b'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'85835251c10f620e09368c1feb2d799e'
+'9dbba32cff8fff770fe89e9734c76feb'
 end
   require 'compiled/detect_switch_c'

@@ -1,11 +1,4 @@
-class Switch_Dataflow < Amethyst
-  def firstchar(s)
-	  return :empty if s.size==15
-    s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
-    eval('"'+s+'"')[0]
-  end
-
-
+class First_Dataflow < Amethyst
 	def initialize
     @depend=Oriented_Graph.new
     @vals=Hash.new(CharLattice.bottom)
@@ -39,51 +32,17 @@ class Switch_Dataflow < Amethyst
       @activea<<e
     end
   end
-
 end
 
-class ClasSwitch_Dataflow < Amethyst
+class Switch_Dataflow < First_Dataflow
   def firstchar(s)
 	  return :empty if s.size==15
     s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
     eval('"'+s+'"')[0]
   end
+end
 
-
-	def initialize
-    @depend=Oriented_Graph.new
-    @vals=Hash.new(CharLattice.bottom)
-		@visited={}
-  end
-
-	def analyze(e)
-    @active={}
-    @activea=[e]
-		while el=@activea.pop
-			@active.delete(el)
-      val=getvalue(el)
-      if val!=@vals[el]
-        @vals[el]=val
-        @depend.edges[el].each{|d| addactive(d)}
-      end
-
-		end
-		@vals[e]
-	end 
-	def depends(e)
-		@depend.add(e,@vis) unless @depend.edges[e].include?(@vis)
-		if !@visited[e]
-			@visited[e]=true
-			addactive(e)
-		end
-	end
-	def addactive(e)
-    if !@active[e]
-      @active[e]=true
-      @activea<<e
-    end
-  end
-
+class ClasSwitch_Dataflow < First_Dataflow
 end
 
 class FirstLattice
@@ -135,8 +94,15 @@ class ClasLattice < FirstLattice
   end
 end
 
+amethyst First_Dataflow {
+	value =  .:x  {depends(x); @@vals[x]}
 
-amethyst Switch_Dataflow {
+	getvalue(v) = {@@vis=v; v}=>first
+
+	root = .:x analyze(x)
+}
+
+amethyst Switch_Dataflow < First_Dataflow{
 	first = Seq[value*:{it.inject{|u,v|u.seqjoin(v)}}]
 				| Or[value*:{it.inject(:+)}]
 				| Switch[&{@first.is_a?(CharLattice)} .* {@first}]
@@ -148,15 +114,9 @@ amethyst Switch_Dataflow {
 				| Apply[ ["anything" ] {CharLattice.top}]
 				| Apply[ ["regch" ] {CharLattice.top}]
 				| . {CharLattice.top+CharLattice.empty}
-				
-				value =  .:x  {depends(x); @@vals[x]}
-
-				getvalue(v) = {@@vis=v; v}=>first
-
-				root = .:x analyze(x)
 }
 
-amethyst ClasSwitch_Dataflow {
+amethyst ClasSwitch_Dataflow < First_Dataflow{
   first = Seq[value*:{it.inject{|u,v|u.seqjoin(v)}}]
         | Or[value*:{it.inject(:+)}]
 				| Switch[&{@first.is_a?(ClasLattice)} .* {@first}]
@@ -167,12 +127,6 @@ amethyst ClasSwitch_Dataflow {
         | Apply[ ["clas"] Act[.:cls] {ClasLattice[cls]}]
         | Apply[ .* {ClasLattice.top}]
         | . {ClasLattice.top+ClasLattice.empty}
-		
-        value =  .:x  {depends(x); @@vals[x]}
-
-        getvalue(v) = {@@vis=v; v}=>first
-
-        root = .:x analyze(x)
 }
 
 
