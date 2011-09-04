@@ -371,7 +371,7 @@ class ClasLattice
     c
   end
   def seqjoin(a)
-    return self unless a.ary.include? :empty
+    return self #unless a.ary.include? :empty
     (self-ClasLattice[:empty])+a
   end
 end
@@ -487,10 +487,7 @@ end
 class Detect_ClasSwitch < Traverser_Clone2
 	def first(s)
 		if s.is_a?(Seq)
-      return first(s[0])
-    end
-		if s.is_a? Bind
-			return first(s.expr)
+			return first(s[0])
 		end
 		if s.is_a? Switch
 			return s.first if s.first
@@ -507,20 +504,6 @@ class Detect_ClasSwitch < Traverser_Clone2
 		r=@switchdf.analyze(s)
 		return ClasLattice.top if r.ary.include?(:empty)
 		return r
-
-		if s.is_a? Or
-			a=ClasLattice.bottom
-			s.ary.each{|e| 
-			return nil if !first(e)
-				a+=first(e)}
-			return a
-		end
-		if s.is_a?(Apply) && s[0]=="clas"
-			return ClasLattice[s[1][0]]
-		end
-		if s.is_a?(Apply) #&& s[0]=="anything"
-			return ClasLattice["Object"]
-		end
 	end
 	def child(par,chld)
 		 par,chld=eval(par),eval(chld)
@@ -718,10 +701,10 @@ end
 
 
 def detect_switch_compiled_by
-'650c4905c5748bd782394fe5c6f0d089'
+'a0c06a05e632c15ca2dda0a3a1ed4835'
 end
 def detect_switch_source_hash
-'9dccd720d77020a1378e8c5cdce643b3'
+'90eb56c1d6149351d0ddf3991cc3b1cf'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
