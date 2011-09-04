@@ -129,8 +129,10 @@ amethyst ClasSwitch_Dataflow < First_Dataflow{
         | . {ClasLattice.top+ClasLattice.empty}
 }
 
+class Detect_First< Traverser_Clone2
+end
 
-class Detect_Switch < Traverser_Clone2
+class Detect_Switch < Detect_First
 	def first(s)
 		if !@switchdf
 			@switchdf=Switch_Dataflow.new
@@ -149,7 +151,7 @@ class Detect_Switch < Traverser_Clone2
 	end
 end
 
-class Detect_ClasSwitch < Traverser_Clone2
+class Detect_ClasSwitch < Detect_First
 	def first(s)
 		if !@switchdf
 			@switchdf=ClasSwitch_Dataflow.new
@@ -191,13 +193,13 @@ class Detect_ClasSwitch < Traverser_Clone2
 	end
 end
 
-
-
-amethyst Detect_Switch < Traverser_Clone2 {
-	itrans =   (Grammar[ @rules=>[ Rule[root]*:rules ] {@rules=rules} @self] | .)*
+amethyst Detect_First < Traverser_Clone2 {
+	itrans =   (Grammar[ {@@name=@name} @rules=>[ Rule[root]*:rules ] {@rules=rules} @self] | .)*
 
 	root = traverse
+}
 
+amethyst Detect_Switch < Detect_First {
 	visit = Or[ {CharLattice[]}:ary2 {[]}:ary3
 		(traverse_item:e &{first(e)} {ary2+=first(e)})* &eof
 		{ary2}:firs
@@ -213,11 +215,7 @@ amethyst Detect_Switch < Traverser_Clone2 {
 	]
 }
 
-amethyst Detect_ClasSwitch < Traverser_Clone2 {
-	itrans =   (Grammar[ {@@name=@name} @rules=>[ Rule[root]*:rules ] {@rules=rules} @self] | .)*
-
-	root = traverse
-
+amethyst Detect_ClasSwitch < Detect_First {
 	visit = Or[ {ClasLattice.bottom}:ary2 {[]}:ary3
     (traverse_item:e &{first(e)} {ary2+=first(e)})* &eof
 		{ary2}:firs
