@@ -42,7 +42,7 @@ class Switch_Dataflow < Amethyst
 
 end
 
-class Switch_Dataflow < Amethyst
+class ClasSwitch_Dataflow < Amethyst
   def firstchar(s)
 	  return :empty if s.size==15
     s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
@@ -168,11 +168,11 @@ amethyst ClasSwitch_Dataflow {
         | Apply[ .* {ClasLattice.top}]
         | . {ClasLattice.top+ClasLattice.empty}
 		
-				value=first
+        value =  .:x  {depends(x); @@vals[x]}
 
-				root=first
+        getvalue(v) = {@@vis=v; v}=>first
 
-				analyze(x) = {x}=>first
+        root = .:x analyze(x)
 }
 
 

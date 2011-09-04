@@ -339,31 +339,16 @@ VALUE Switch_Dataflow_value(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(2
  rb_ary_store(bind,1,it); it=rb_ary_entry(bind,1);
 return it;
 fail: return failobj; }VALUE cls_ClasSwitch_Dataflow;
-VALUE ClasSwitch_Dataflow_analyze(VALUE self ,VALUE a0);
 VALUE ClasSwitch_Dataflow_clas(VALUE self ,VALUE a0);
 VALUE ClasSwitch_Dataflow_empty(VALUE self );
 VALUE ClasSwitch_Dataflow_eof(VALUE self );
 VALUE ClasSwitch_Dataflow_fails(VALUE self );
 VALUE ClasSwitch_Dataflow_first(VALUE self );
+VALUE ClasSwitch_Dataflow_getvalue(VALUE self ,VALUE a0);
 VALUE ClasSwitch_Dataflow_root(VALUE self );
 VALUE ClasSwitch_Dataflow_spaces(VALUE self );
 VALUE ClasSwitch_Dataflow_token(VALUE self ,VALUE a0);
 VALUE ClasSwitch_Dataflow_value(VALUE self );
-VALUE ClasSwitch_Dataflow_analyze(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=rb_ary_new2(4); rb_ary_store(bind,0,a0); int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
-
-it=rb_ary_entry(bind,0);
- rb_ary_store(bind,1,it); it=CALL(analyze_ClasSwitch_Dataflowcb_1,1,bind); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
-ame_setsrc(self,rb_ary_entry(bind,1)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-   it=ClasSwitch_Dataflow_first(self ); FAILTEST(pass1);
- rb_ary_store(bind,2,it);   it=ClasSwitch_Dataflow_eof(self ); FAILTEST(pass1);
-	goto success1;
-	pass1: fail1=1;
-	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos1); ame_setlen(self,oldlen1);
-	if(fail1) goto fail;
-it=rb_ary_entry(bind,2);
- rb_ary_store(bind,3,it); it=rb_ary_entry(bind,3);
-return it;
-fail: return failobj; }
 VALUE ClasSwitch_Dataflow_clas(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=rb_ary_new2(3); rb_ary_store(bind,1,a0); int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
   it=AmethystCore_anything(self ); FAILTEST(fail);
@@ -615,10 +600,26 @@ ISET(cut,Qnil);goto accept8;
  break;}it=rb_ary_entry(bind,5);
 return it;
 fail: return failobj; }
-VALUE ClasSwitch_Dataflow_root(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+VALUE ClasSwitch_Dataflow_getvalue(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=rb_ary_new2(4); rb_ary_store(bind,0,a0); int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-  it=ClasSwitch_Dataflow_first(self ); FAILTEST(fail);
- rb_ary_store(bind,0,it); it=rb_ary_entry(bind,0);
+it=CALL(getvalue_ClasSwitch_Dataflowcb_1,1,bind); 
+ rb_ary_store(bind,1,it); it=CALL(getvalue_ClasSwitch_Dataflowcb_2,1,bind); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
+ame_setsrc(self,rb_ary_entry(bind,1)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
+   it=ClasSwitch_Dataflow_first(self ); FAILTEST(pass1);
+ rb_ary_store(bind,2,it);   it=ClasSwitch_Dataflow_eof(self ); FAILTEST(pass1);
+	goto success1;
+	pass1: fail1=1;
+	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos1); ame_setlen(self,oldlen1);
+	if(fail1) goto fail;
+it=rb_ary_entry(bind,2);
+ rb_ary_store(bind,3,it); it=rb_ary_entry(bind,3);
+return it;
+fail: return failobj; }
+VALUE ClasSwitch_Dataflow_root(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(2);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+
+  it=AmethystCore_anything(self ); FAILTEST(fail);
+ rb_ary_store(bind,0,it);  it=rb_ary_entry(bind,0); arg0=it; it=CALL(analyze,1 ,arg0); FAILTEST(fail);
+ rb_ary_store(bind,1,it); it=rb_ary_entry(bind,1);
 return it;
 fail: return failobj; }
 VALUE ClasSwitch_Dataflow_spaces(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(9);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -641,10 +642,11 @@ VALUE ClasSwitch_Dataflow_token(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=
  rb_ary_store(bind,1,it); it=rb_ary_entry(bind,1);
 return it;
 fail: return failobj; }
-VALUE ClasSwitch_Dataflow_value(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+VALUE ClasSwitch_Dataflow_value(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(2);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-  it=ClasSwitch_Dataflow_first(self ); FAILTEST(fail);
- rb_ary_store(bind,0,it); it=rb_ary_entry(bind,0);
+  it=AmethystCore_anything(self ); FAILTEST(fail);
+ rb_ary_store(bind,0,it); it=CALL(value_ClasSwitch_Dataflowcb_1,1,bind); 
+ rb_ary_store(bind,1,it); it=rb_ary_entry(bind,1);
 return it;
 fail: return failobj; }VALUE cls_Detect_Switch;
 VALUE Detect_Switch_clas(VALUE self ,VALUE a0);
@@ -1215,12 +1217,12 @@ rb_define_method(cls_Switch_Dataflow,"value",Switch_Dataflow_value,0);
 
  cls_ClasSwitch_Dataflow=rb_define_class("ClasSwitch_Dataflow",rb_const_get(rb_cObject,rb_intern("Amethyst"))); 
 failobj=rb_eval_string("FAIL");
-rb_define_method(cls_ClasSwitch_Dataflow,"analyze",ClasSwitch_Dataflow_analyze,1);
 rb_define_method(cls_ClasSwitch_Dataflow,"clas",ClasSwitch_Dataflow_clas,1);
 rb_define_method(cls_ClasSwitch_Dataflow,"empty",ClasSwitch_Dataflow_empty,0);
 rb_define_method(cls_ClasSwitch_Dataflow,"eof",ClasSwitch_Dataflow_eof,0);
 rb_define_method(cls_ClasSwitch_Dataflow,"fails",ClasSwitch_Dataflow_fails,0);
 rb_define_method(cls_ClasSwitch_Dataflow,"first",ClasSwitch_Dataflow_first,0);
+rb_define_method(cls_ClasSwitch_Dataflow,"getvalue",ClasSwitch_Dataflow_getvalue,1);
 rb_define_method(cls_ClasSwitch_Dataflow,"root",ClasSwitch_Dataflow_root,0);
 rb_define_method(cls_ClasSwitch_Dataflow,"spaces",ClasSwitch_Dataflow_spaces,0);
 rb_define_method(cls_ClasSwitch_Dataflow,"token",ClasSwitch_Dataflow_token,1);
@@ -1250,4 +1252,4 @@ rb_define_method(cls_Detect_ClasSwitch,"root",Detect_ClasSwitch_root,0);
 rb_define_method(cls_Detect_ClasSwitch,"traverse",Detect_ClasSwitch_traverse,0);
 rb_define_method(cls_Detect_ClasSwitch,"traverse_item",Detect_ClasSwitch_traverse_item,0);
 rb_define_method(cls_Detect_ClasSwitch,"visit",Detect_ClasSwitch_visit,0);
- rb_eval_string("testversiondetect_switch('be3dbc2dc9aa143589d0a1a6fa106961')");}
+ rb_eval_string("testversiondetect_switch('85835251c10f620e09368c1feb2d799e')");}

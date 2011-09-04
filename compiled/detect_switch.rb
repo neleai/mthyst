@@ -42,7 +42,7 @@ class Switch_Dataflow < Amethyst
 
 end
 
-class Switch_Dataflow < Amethyst
+class ClasSwitch_Dataflow < Amethyst
   def firstchar(s)
 	  return :empty if s.size==15
     s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
@@ -276,9 +276,6 @@ end
 def switchcbClasSwitch_Dataflow4(e)
 @@switchhashClasSwitch_Dataflow4[e.class]
 end
-def analyze_ClasSwitch_Dataflowcb_1(bind)
-bind[1]=[bind[1]]
-end
 def clas_ClasSwitch_Dataflowcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
@@ -357,6 +354,12 @@ end
 def first_ClasSwitch_Dataflowcb_9(bind)
 _append(bind[13],bind[14])
 end
+def getvalue_ClasSwitch_Dataflowcb_1(bind)
+@vis=bind[0]; bind[0]
+end
+def getvalue_ClasSwitch_Dataflowcb_2(bind)
+bind[1]=[bind[1]]
+end
 def spaces_ClasSwitch_Dataflowcb_1(bind)
 /[\s\t\r\n\f]/
 end
@@ -368,6 +371,9 @@ def spaces_ClasSwitch_Dataflowcb_3(bind)
 end
 def spaces_ClasSwitch_Dataflowcb_4(bind)
 _append(bind[0],bind[7])
+end
+def value_ClasSwitch_Dataflowcb_1(bind)
+depends(bind[0]); @vals[bind[0]]
 end
 
 end
@@ -725,15 +731,15 @@ end
 
 
 def detect_switch_compiled_by
-'f976c22243acea7d546399d311d9bd77'
+'5931d51eba64cf5a8a063e1902c658d3'
 end
 def detect_switch_source_hash
-'98e0f67be195df5c2d50af4fffceb982'
+'e8d7c41a86bba2dc1bbbf78015496364'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'be3dbc2dc9aa143589d0a1a6fa106961'
+'85835251c10f620e09368c1feb2d799e'
 end
   require 'compiled/detect_switch_c'
