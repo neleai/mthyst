@@ -42,6 +42,52 @@ class Switch_Dataflow < Amethyst
 
 end
 
+class Switch_Dataflow < Amethyst
+  def firstchar(s)
+	  return :empty if s.size==15
+    s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
+    eval('"'+s+'"')[0]
+  end
+
+
+	def initialize
+    @depend=Oriented_Graph.new
+    @vals=Hash.new(CharLattice.bottom)
+		@visited={}
+  end
+
+	def analyze(e)
+    @active={}
+    @activea=[e]
+		while el=@activea.pop
+			@active.delete(el)
+      val=getvalue(el)
+      if val!=@vals[el]
+        @vals[el]=val
+        @depend.edges[el].each{|d| addactive(d)}
+      end
+
+		end
+		@vals[e]
+	end 
+	def depends(e)
+		@depend.add(e,@vis) unless @depend.edges[e].include?(@vis)
+		if !@visited[e]
+			@visited[e]=true
+			addactive(e)
+		end
+	end
+	def addactive(e)
+    if !@active[e]
+      @active[e]=true
+      @activea<<e
+    end
+  end
+
+end
+
+
+
 class CharLattice
 	attr_accessor :ary
 	def self.[](*ary)
@@ -78,65 +124,6 @@ class CharLattice
 		(self-CharLattice[:empty])+a
 	end
 end
-
-amethyst Switch_Dataflow {
-	first = Seq[value*:{it.inject{|u,v|u.seqjoin(v)}}]
-				| Or[value*:{it.inject(:+)}]
-				| Switch[&{@first.is_a?(CharLattice)} .* {@first}]
-				| Switch[value*:{it.inject(:+)}]
-				| Bind[@expr=>value]
-				| Many[value:val {val+CharLattice.empty} ]
-				| (Act|CAct)[.* {CharLattice.empty} ]
-				| Apply[ ["seq"] CAct[.:str] {CharLattice[firstchar(str)]}]
-				| Apply[ ["anything" ] {CharLattice.top}]
-				| Apply[ ["regch" ] {CharLattice.top}]
-				| . {CharLattice.top+CharLattice.empty}
-				
-				value =  .:x  {depends(x); @@vals[x]}
-
-				getvalue(v) = {@@vis=v; v}=>first
-
-				root = .:x analyze(x)
-}
-
-class Detect_Switch < Traverser_Clone2
-	def first(s)
-		if !@switchdf
-			@switchdf=Switch_Dataflow.new
-			@switchdf.parse(:root,[])
-		end
-		r=@switchdf.analyze(s)
-		return r
-	end
-	def intersects(p,e)
-		return true if e==:default
-		r=(first(p).ary & [e,:empty,:anything])!=[]
-		puts first(p).ary.inspect
-		puts [e,:empty,:anything].inspect
-		puts r
-		r
-	end
-end
-
-amethyst Detect_Switch < Traverser_Clone2 {
-	itrans =   (Grammar[ @rules=>[ Rule[root]*:rules ] {@rules=rules} @self] | .)*
-
-	root = traverse
-
-	visit = Or[ {CharLattice[]}:ary2 {[]}:ary3
-		(traverse_item:e &{first(e)} {ary2+=first(e)})* &eof
-		{ary2}:firs
-		{ary2=ary2.ary.map{|e|  [:anything,:empty].include?(e) ? :default : e}.uniq}
-		&{ary2.size>1}
-		{ary2.each{|e|
-			ary3<<[e,Or[{:ary=>@ary.select{|p|intersects(p,e)}}]]
-		}}
-		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k.to_s}.sort,v[0][1]]}.sort}
-		{ary3<<[["default"],Apply["fails"]] unless ary2.include?(:default)}
-    &{ary3.size>1}
-		{Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>ary3}]}
-	]
-}
 
 class ClasLattice
   attr_accessor :ary
@@ -175,6 +162,27 @@ class ClasLattice
   end
 end
 
+
+amethyst Switch_Dataflow {
+	first = Seq[value*:{it.inject{|u,v|u.seqjoin(v)}}]
+				| Or[value*:{it.inject(:+)}]
+				| Switch[&{@first.is_a?(CharLattice)} .* {@first}]
+				| Switch[value*:{it.inject(:+)}]
+				| Bind[@expr=>value]
+				| Many[value:val {val+CharLattice.empty} ]
+				| (Act|CAct)[.* {CharLattice.empty} ]
+				| Apply[ ["seq"] CAct[.:str] {CharLattice[firstchar(str)]}]
+				| Apply[ ["anything" ] {CharLattice.top}]
+				| Apply[ ["regch" ] {CharLattice.top}]
+				| . {CharLattice.top+CharLattice.empty}
+				
+				value =  .:x  {depends(x); @@vals[x]}
+
+				getvalue(v) = {@@vis=v; v}=>first
+
+				root = .:x analyze(x)
+}
+
 amethyst ClasSwitch_Dataflow {
   first = Seq[value*:{it.inject{|u,v|u.seqjoin(v)}}]
         | Or[value*:{it.inject(:+)}]
@@ -193,6 +201,26 @@ amethyst ClasSwitch_Dataflow {
 
 				analyze(x) = {x}=>first
 }
+
+
+class Detect_Switch < Traverser_Clone2
+	def first(s)
+		if !@switchdf
+			@switchdf=Switch_Dataflow.new
+			@switchdf.parse(:root,[])
+		end
+		r=@switchdf.analyze(s)
+		return r
+	end
+	def intersects(p,e)
+		return true if e==:default
+		r=(first(p).ary & [e,:empty,:anything])!=[]
+		puts first(p).ary.inspect
+		puts [e,:empty,:anything].inspect
+		puts r
+		r
+	end
+end
 
 class Detect_ClasSwitch < Traverser_Clone2
 	def first(s)
@@ -235,6 +263,28 @@ class Detect_ClasSwitch < Traverser_Clone2
 	 	g.topo_order
 	end
 end
+
+
+
+amethyst Detect_Switch < Traverser_Clone2 {
+	itrans =   (Grammar[ @rules=>[ Rule[root]*:rules ] {@rules=rules} @self] | .)*
+
+	root = traverse
+
+	visit = Or[ {CharLattice[]}:ary2 {[]}:ary3
+		(traverse_item:e &{first(e)} {ary2+=first(e)})* &eof
+		{ary2}:firs
+		{ary2=ary2.ary.map{|e|  [:anything,:empty].include?(e) ? :default : e}.uniq}
+		&{ary2.size>1}
+		{ary2.each{|e|
+			ary3<<[e,Or[{:ary=>@ary.select{|p|intersects(p,e)}}]]
+		}}
+		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k.to_s}.sort,v[0][1]]}.sort}
+		{ary3<<[["default"],Apply["fails"]] unless ary2.include?(:default)}
+    &{ary3.size>1}
+		{Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>ary3}]}
+	]
+}
 
 amethyst Detect_ClasSwitch < Traverser_Clone2 {
 	itrans =   (Grammar[ {@@name=@name} @rules=>[ Rule[root]*:rules ] {@rules=rules} @self] | .)*
