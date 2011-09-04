@@ -132,6 +132,45 @@ amethyst Detect_Switch < Traverser_Clone2 {
 		{Switch[{:act=>"*ame_curstr(self)",:ary=>ary3}]}
 	]
 }
+
+class ClasLattice
+  attr_accessor :ary
+  def self.[](*ary)
+    c=ClasLattice.new
+    c.ary=ary
+    c
+  end
+  def self.top
+    ClasLattice["Object"]
+  end
+  def self.empty
+    ClasLattice[:empty]
+  end
+  def self.bottom
+    ClasLattice[]
+  end
+  def +(a)
+    c=ClasLattice.new
+    c.ary=(ary+a.ary).uniq
+    c
+  end
+  def -(a)
+    c=ClasLattice.new
+    c.ary=(ary-a.ary).uniq
+    c
+  end
+  def &(a)
+    c=ClasLattice.new
+    c.ary=(ary&a.ary).uniq
+    c
+  end
+  def seqjoin(a)
+    return self unless a.ary.include? :empty
+    (self-ClasLattice[:empty])+a
+  end
+end
+
+
 class Detect_ClasSwitch < Traverser_Clone2
 	def first(s)
 		if s.is_a?(Seq)
@@ -142,24 +181,24 @@ class Detect_ClasSwitch < Traverser_Clone2
 		end
 		if s.is_a? Switch
 			return s.first if s.first
-			a=[]
+			a=ClasLattice.bottom
 			s.ary.each{|k,v|
 				return nil if !first(v)
 			a+=first(v)}
-			return a.uniq
+			return a
 		end
 		if s.is_a? Or
-			a=[]
+			a=ClasLattice.bottom
 			s.ary.each{|e| 
 			return nil if !first(e)
 				a+=first(e)}
-			return a.uniq
+			return a
 		end
 		if s.is_a?(Apply) && s[0]=="clas"
-			return [s[1][0]]
+			return ClasLattice[s[1][0]]
 		end
 		if s.is_a?(Apply) #&& s[0]=="anything"
-			return ["Object"]
+			return ClasLattice["Object"]
 		end
 	end
 	def child(par,chld)
@@ -169,10 +208,10 @@ class Detect_ClasSwitch < Traverser_Clone2
 	def includes(ary,i,p)
 		i.times{|ii|
 			s=true
-			p.each{|f| s=false unless child(f,ary[ii])}
+			p.ary.each{|f| s=false unless child(f,ary[ii])}
 			return false if s
 		}
-		p.each{|f| return true if child(ary[i],f) || child(f,ary[i])}
+		p.ary.each{|f| return true if child(ary[i],f) || child(f,ary[i])}
 		return false
 	end
 	def classswitch(ary)
@@ -199,10 +238,10 @@ amethyst Detect_ClasSwitch < Traverser_Clone2 {
 
 	root = traverse
 
-	visit = Or[ {[]}:ary2 {[]}:ary3
+	visit = Or[ {ClasLattice.bottom}:ary2 {[]}:ary3
     (traverse_item:e &{first(e)} {ary2+=first(e)})* &eof
 		{ary2}:firs
-		{ary2=topsort(ary2+["Object"])}
+		{ary2=topsort(ary2.ary+["Object"])}
 		&{ary2.size>1}
     {	ary2.each_with_index{|e,i|
       	ary3<<[i,Or[{:ary=>@ary.select{|p| includes(ary2,i,first(p))}.map{|p| predicate(e,p)}}]]

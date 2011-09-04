@@ -335,6 +335,45 @@ end
 
 end
 
+
+class ClasLattice
+  attr_accessor :ary
+  def self.[](*ary)
+    c=ClasLattice.new
+    c.ary=ary
+    c
+  end
+  def self.top
+    ClasLattice["Object"]
+  end
+  def self.empty
+    ClasLattice[:empty]
+  end
+  def self.bottom
+    ClasLattice[]
+  end
+  def +(a)
+    c=ClasLattice.new
+    c.ary=(ary+a.ary).uniq
+    c
+  end
+  def -(a)
+    c=ClasLattice.new
+    c.ary=(ary-a.ary).uniq
+    c
+  end
+  def &(a)
+    c=ClasLattice.new
+    c.ary=(ary&a.ary).uniq
+    c
+  end
+  def seqjoin(a)
+    return self unless a.ary.include? :empty
+    (self-ClasLattice[:empty])+a
+  end
+end
+
+
 class Detect_ClasSwitch < Traverser_Clone2
 	def first(s)
 		if s.is_a?(Seq)
@@ -345,24 +384,24 @@ class Detect_ClasSwitch < Traverser_Clone2
 		end
 		if s.is_a? Switch
 			return s.first if s.first
-			a=[]
+			a=ClasLattice.bottom
 			s.ary.each{|k,v|
 				return nil if !first(v)
 			a+=first(v)}
-			return a.uniq
+			return a
 		end
 		if s.is_a? Or
-			a=[]
+			a=ClasLattice.bottom
 			s.ary.each{|e| 
 			return nil if !first(e)
 				a+=first(e)}
-			return a.uniq
+			return a
 		end
 		if s.is_a?(Apply) && s[0]=="clas"
-			return [s[1][0]]
+			return ClasLattice[s[1][0]]
 		end
 		if s.is_a?(Apply) #&& s[0]=="anything"
-			return ["Object"]
+			return ClasLattice["Object"]
 		end
 	end
 	def child(par,chld)
@@ -372,10 +411,10 @@ class Detect_ClasSwitch < Traverser_Clone2
 	def includes(ary,i,p)
 		i.times{|ii|
 			s=true
-			p.each{|f| s=false unless child(f,ary[ii])}
+			p.ary.each{|f| s=false unless child(f,ary[ii])}
 			return false if s
 		}
-		p.each{|f| return true if child(ary[i],f) || child(f,ary[i])}
+		p.ary.each{|f| return true if child(ary[i],f) || child(f,ary[i])}
 		return false
 	end
 	def classswitch(ary)
@@ -530,26 +569,29 @@ def visit_Detect_ClasSwitchcb_1(bind)
 Or
 end
 def visit_Detect_ClasSwitchcb_2(bind)
-(first(bind[3])) || FAIL
+ClasLattice.bottom
 end
 def visit_Detect_ClasSwitchcb_3(bind)
-bind[1]+=first(bind[3])
+(first(bind[3])) || FAIL
 end
 def visit_Detect_ClasSwitchcb_4(bind)
-bind[1]=topsort(bind[1]+["Object"])
+bind[1]+=first(bind[3])
 end
 def visit_Detect_ClasSwitchcb_5(bind)
-(bind[1].size>1) || FAIL
+bind[1]=topsort(bind[1].ary+["Object"])
 end
 def visit_Detect_ClasSwitchcb_6(bind)
+(bind[1].size>1) || FAIL
+end
+def visit_Detect_ClasSwitchcb_7(bind)
 bind[1].each_with_index{|bind[3],i|
       	bind[2]<<[i,Or[{:ary=>@src.ary.select{|p| includes(bind[1],i,first(p))}.map{|p| predicate(bind[3],p)}}]]
 		}
 end
-def visit_Detect_ClasSwitchcb_7(bind)
+def visit_Detect_ClasSwitchcb_8(bind)
 bind[2]=bind[2].group_by{|a,b| b.ary}.map{|y,v| [v.map{|k,val| k}.sort,v[0][1]]}.sort
 end
-def visit_Detect_ClasSwitchcb_8(bind)
+def visit_Detect_ClasSwitchcb_9(bind)
 c=classswitch(bind[1]);s=Switch[{:act=>c[1],:first=>bind[4],:defs=>c[0],:ary=>bind[2]}];puts s.inspect;s
 end
 
@@ -558,15 +600,15 @@ end
 
 
 def detect_switch_compiled_by
-'21c68e737fb2f8669a95b662409a609b'
+'f993c99cf7829af123e91937da87b3e8'
 end
 def detect_switch_source_hash
-'f62434a1d11ff9bd0b72615bb517ce18'
+'10317773e80168d25c3dd75ebc3a0026'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'03059935d132c55f1a78ac12a9733704'
+'74859dd68e20e5dba81922b7ce119fb5'
 end
   require 'compiled/detect_switch_c'
