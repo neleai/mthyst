@@ -221,66 +221,72 @@ def visit_Dataflowcb_18(bind)
 bind[26]=[bind[26]]
 end
 def visit_Dataflowcb_19(bind)
-@marked<<ssanum(@src.var)
+@src.var
 end
 def visit_Dataflowcb_2(bind)
 Apply[*bind[0]]
 end
 def visit_Dataflowcb_20(bind)
-Pass.create({:to=>bind[27],:var=>@src.var}).normalize
+bind[28]=[bind[28]]
 end
 def visit_Dataflowcb_21(bind)
-Act[bind[0],@src.pred]
+@marked<<ssanum(bind[7])
 end
 def visit_Dataflowcb_22(bind)
-@marked<<bind[30] if @src.pred || !@src.pure
+Pass.create({:to=>bind[27],:var=>bind[7]}).normalize
 end
 def visit_Dataflowcb_23(bind)
-bind[30].ary
+Act[bind[0],@src.pred]
 end
 def visit_Dataflowcb_24(bind)
-bind[31]=[bind[31]]
+@marked<<bind[31] if @src.pred || !@src.pure
 end
 def visit_Dataflowcb_25(bind)
-bind[7].each{|v| edges.add(ssanum(v),bind[30]); edges.add(bind[30],newssanum(v.clone));}; bind[30]
+bind[31].ary
 end
 def visit_Dataflowcb_26(bind)
-bind_end(@src)
+bind[32]=[bind[32]]
 end
 def visit_Dataflowcb_27(bind)
-@src
+bind[7].each{|v| edges.add(ssanum(v),bind[31]); edges.add(bind[31],newssanum(v.clone));}; bind[31]
 end
 def visit_Dataflowcb_28(bind)
-@src.vars
+bind_end(@src)
 end
 def visit_Dataflowcb_29(bind)
-bind[40]=[bind[40]]
+@src
 end
 def visit_Dataflowcb_3(bind)
 bind[5]=[bind[5]]
 end
 def visit_Dataflowcb_30(bind)
-bind[7].each{|w| @edges.add(ssanum(w),@src) } ; @src
+@src.vars
 end
 def visit_Dataflowcb_31(bind)
-CAct
+bind[41]=[bind[41]]
 end
 def visit_Dataflowcb_32(bind)
-Bnding
+bind[7].each{|w| @edges.add(ssanum(w),@src) } ; @src
 end
 def visit_Dataflowcb_33(bind)
-Global
+CAct
 end
 def visit_Dataflowcb_34(bind)
-Key
+Bnding
 end
 def visit_Dataflowcb_35(bind)
-_append(bind[47],bind[48])
+Global
 end
 def visit_Dataflowcb_36(bind)
-Lookahead[*bind[0]]
+Key
 end
 def visit_Dataflowcb_37(bind)
+_append(bind[48],bind[49])
+end
+def visit_Dataflowcb_38(bind)
+Lookahead[*bind[0]]
+end
+def visit_Dataflowcb_39(bind)
 d=@src.dup;ssanum(d);d
 end
 def visit_Dataflowcb_4(bind)
@@ -407,15 +413,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'231ffbd749f30d18bc9c6755273ffcc3'
+'c4d6ee6f8f8ca80962ca665e606abe7b'
 end
 def dataflow_ssa_source_hash
-'1d8eec029994859071ae2ba80a5b6a86'
+'dcdfc5cc2a9000523001bef628d7aaff'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'e8fbce9c0174fb6f1b8e1975c6bfb5d8'
+'6b8bfd6d9a32fc62751cf28e9133d2a1'
 end
   require 'compiled/dataflow_ssa_c'
