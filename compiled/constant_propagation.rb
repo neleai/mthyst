@@ -36,21 +36,18 @@ def traverse_Constant_Traversercb_1(bind)
 @changed
 end
 def traverse_Constant_Traversercb_2(bind)
-@src
-end
-def traverse_Constant_Traversercb_3(bind)
 (@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
 end
-def traverse_Constant_Traversercb_4(bind)
+def traverse_Constant_Traversercb_3(bind)
 bind[4]=[bind[4]]
 end
-def traverse_Constant_Traversercb_5(bind)
+def traverse_Constant_Traversercb_4(bind)
 @changed=false
 end
-def traverse_Constant_Traversercb_6(bind)
+def traverse_Constant_Traversercb_5(bind)
 (bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
 end
-def traverse_Constant_Traversercb_7(bind)
+def traverse_Constant_Traversercb_6(bind)
 if bind[3]
              @changed=true;bind[2].normalize
            else
@@ -63,12 +60,6 @@ def traverse_item_Constant_Traversercb_1(bind)
 end
 def traverse_item_Constant_Traversercb_2(bind)
 bind[3]<<bind[4]
-end
-def traverse_item_Constant_Traversercb_3(bind)
-@changed=true
-end
-def traverse_item_Constant_Traversercb_4(bind)
-@changed=true
 end
 def visit_Constant_Traversercb_1(bind)
 @src.expr
@@ -90,7 +81,7 @@ end
 
 
 def constant_propagation_compiled_by
-'4f060f367d394bd9ece9627ba6e4c563'
+'231ffbd749f30d18bc9c6755273ffcc3'
 end
 def constant_propagation_source_hash
 'e3dfd733e0fbab53901e87a38b0994a6'
@@ -99,6 +90,6 @@ def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
 end
 def constant_propagation_version
-'38970e274d138685fd105866dbebd2c2'
+'d533b6002467bc10b565852b7d5ca87b'
 end
   require 'compiled/constant_propagation_c'

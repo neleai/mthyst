@@ -83,7 +83,7 @@ class <<Compiler
 		puts called.inspect
 		puts callg.inspect
 		puts topo.inspect
-		topo.each{|name|if @grammars[grammar.name].rules[name] && called[name]
+		topo.each{|name|if @grammars[grammar.name].rules[name] #&& called[name]
 				@grammars[grammar.name].opt(@grammars[grammar.name].rules[name])
 				
 if true
@@ -118,6 +118,7 @@ end
 			else
 			end
 		}
+		tree=deep_clone(tree)
 		[Detect_Switch,Detect_ClasSwitch].each{|o|
 			tree=o.new.parse(:itrans,tree)
 			puts tree.inspect if $debug>1

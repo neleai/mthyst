@@ -1,18 +1,6 @@
 class Amethyst < AmethystCore
 
-def __Amethystcb_1(bind)
-/[\s\t\r\n\f]/
-end
-def __Amethystcb_2(bind)
-(bind[1].is_a? String ) || FAIL
-end
-def __Amethystcb_3(bind)
-(bind[0].match(bind[3])) || FAIL
-end
 def _false_Amethystcb_1(bind)
-(bind[0] == bind[1]) || FAIL
-end
-def _true_Amethystcb_1(bind)
 (bind[0] == bind[1]) || FAIL
 end
 def char_Amethystcb_1(bind)
@@ -23,12 +11,6 @@ def clas_Amethystcb_1(bind)
 end
 def digit_Amethystcb_1(bind)
 /[0-9]/
-end
-def digit_Amethystcb_2(bind)
-(bind[1].is_a? String ) || FAIL
-end
-def digit_Amethystcb_3(bind)
-(bind[0].match(bind[3])) || FAIL
 end
 def exactly_Amethystcb_1(bind)
 (bind[1] == bind[0]) || FAIL
@@ -55,19 +37,7 @@ def lower_Amethystcb_3(bind)
 (bind[0].match(bind[3])) || FAIL
 end
 def regch_Amethystcb_1(bind)
-(bind[0].is_a? String ) || FAIL
-end
-def regch_Amethystcb_2(bind)
 (bind[3].match(bind[2])) || FAIL
-end
-def space_Amethystcb_1(bind)
-/[\s\t\r\n\f]/
-end
-def space_Amethystcb_2(bind)
-(bind[1].is_a? String ) || FAIL
-end
-def space_Amethystcb_3(bind)
-(bind[0].match(bind[3])) || FAIL
 end
 def spaces_Amethystcb_1(bind)
 /[\s\t\r\n\f]/
@@ -84,27 +54,15 @@ end
 def upper_Amethystcb_1(bind)
 /[A-Z]/
 end
-def upper_Amethystcb_2(bind)
-(bind[1].is_a? String ) || FAIL
-end
-def upper_Amethystcb_3(bind)
-(bind[0].match(bind[3])) || FAIL
-end
 def xdigit_Amethystcb_1(bind)
 /[0-9a-fA-F]/
-end
-def xdigit_Amethystcb_2(bind)
-(bind[1].is_a? String ) || FAIL
-end
-def xdigit_Amethystcb_3(bind)
-(bind[0].match(bind[3])) || FAIL
 end
 
 end
 
 
 def amethyst_compiled_by
-'4f060f367d394bd9ece9627ba6e4c563'
+'231ffbd749f30d18bc9c6755273ffcc3'
 end
 def amethyst_source_hash
 '5cbafbddaf968d8241b4b848732e487f'
@@ -113,6 +71,6 @@ def testversionamethyst(r)
  raise "invalid version" if r!=amethyst_version
 end
 def amethyst_version
-'2c50929a79eb78de81dafe3ff5947e2c'
+'fe16f7c16b8300d2291cad842be43855'
 end
   require 'compiled/amethyst_c'

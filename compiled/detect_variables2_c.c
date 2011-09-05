@@ -101,13 +101,13 @@ alt1_1: ame_setpos(self,oldpos2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto brea
  rb_ary_store(bind,1,it); int oldpos3=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,rb_ary_entry(bind,1)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
  it=CALL(itrans_Analyze_Variables2cb_1,1,bind); 
- rb_ary_store(bind,2,it); it=CALL(itrans_Analyze_Variables2cb_2,1,bind); int oldpos4=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
+ rb_ary_store(bind,2,it); it=CALL(visit_Analyze_Variables2cb_2,1,bind); int oldpos4=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
 ame_setsrc(self,rb_ary_entry(bind,2)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCore_anything(self ); FAILTEST(pass2);
  rb_ary_store(bind,3,it); int oldpos5=ame_getpos(self); int oldlen3=ame_getlen(self); VALUE oldsrc3=ame_getsrc(self); int fail3=0;
 ame_setsrc(self,rb_ary_entry(bind,3)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
  it=rb_ary_new3(0);
- rb_ary_store(bind,4,it); int oldpos6; while(1){oldpos6=ame_getpos(self);  it=CALL(itrans_Analyze_Variables2cb_3,1,bind);  arg0=it; it=Analyze_Variables2_clas(self ,arg0); FAILTEST(break2);
+ rb_ary_store(bind,4,it); int oldpos6; while(1){oldpos6=ame_getpos(self);  it=CALL(itrans_Analyze_Variables2cb_2,1,bind);  arg0=it; it=Analyze_Variables2_clas(self ,arg0); FAILTEST(break2);
  rb_ary_store(bind,5,it); int oldpos7=ame_getpos(self); int oldlen4=ame_getlen(self); VALUE oldsrc4=ame_getsrc(self); int fail4=0;
 ame_setsrc(self,rb_ary_entry(bind,5)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=Analyze_Variables2_root(self ); FAILTEST(pass4);
@@ -117,7 +117,7 @@ ame_setsrc(self,rb_ary_entry(bind,5)); ame_setpos(self,0); ame_setlen(self,FIX2I
 	success4: ame_setsrc(self,oldsrc4); ame_setpos(self,oldpos7); ame_setlen(self,oldlen4);
 	if(fail4) goto break2;
 it=rb_ary_entry(bind,6);
- rb_ary_store(bind,7,it); it=CALL(itrans_Analyze_Variables2cb_4,1,bind);  if (IGET(stop)!=Qnil){{oldpos6=ame_getpos(self);goto break2;} } } break2: ISET(stop,Qnil);  ame_setpos(self,oldpos6); it=rb_ary_entry(bind,4);
+ rb_ary_store(bind,7,it); it=CALL(itrans_Analyze_Variables2cb_3,1,bind);  if (IGET(stop)!=Qnil){{oldpos6=ame_getpos(self);goto break2;} } } break2: ISET(stop,Qnil);  ame_setpos(self,oldpos6); it=rb_ary_entry(bind,4);
  rb_ary_store(bind,8,it);   it=Analyze_Variables2_eof(self ); FAILTEST(pass3);
 	goto success3;
 	pass3: fail3=1;
@@ -128,7 +128,7 @@ it=rb_ary_entry(bind,6);
 	pass2: fail2=1;
 	success2: ame_setsrc(self,oldsrc2); ame_setpos(self,oldpos4); ame_setlen(self,oldlen2);
 	if(fail2) goto pass1;
-it=CALL(itrans_Analyze_Variables2cb_5,1,bind); it=CALL(itrans_Analyze_Variables2cb_6,1,bind); 
+it=CALL(itrans_Analyze_Variables2cb_4,1,bind); it=CALL(itrans_Analyze_Variables2cb_5,1,bind); 
  rb_ary_store(bind,9,it);   it=Analyze_Variables2_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
@@ -144,22 +144,22 @@ ISET(cut,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos2); goto break1;
  accept1:;
  break;case 1:;   it=AmethystCore_anything(self ); FAILTEST(break1);
- rb_ary_store(bind,10,it);  break;}it=CALL(itrans_Analyze_Variables2cb_7,1,bind);  if (IGET(stop)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos1); it=rb_ary_entry(bind,0);
+ rb_ary_store(bind,10,it);  break;}it=CALL(itrans_Analyze_Variables2cb_6,1,bind);  if (IGET(stop)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos1); it=rb_ary_entry(bind,0);
  rb_ary_store(bind,11,it); it=rb_ary_entry(bind,11);
 return it;
 fail: return failobj; }
 VALUE Analyze_Variables2_root(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(7);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=CALL(root_Analyze_Variables2cb_1,1,bind); 
- rb_ary_store(bind,0,it); it=CALL(root_Analyze_Variables2cb_2,1,bind); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
+it=CALL(itrans_Analyze_Variables2cb_5,1,bind); 
+ rb_ary_store(bind,0,it); it=CALL(root_Analyze_Variables2cb_1,1,bind); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,rb_ary_entry(bind,0)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-  it=CALL(root_Analyze_Variables2cb_3,1,bind);  arg0=it; it=Analyze_Variables2_clas(self ,arg0); FAILTEST(pass1);
+  it=CALL(itrans_Analyze_Variables2cb_2,1,bind);  arg0=it; it=Analyze_Variables2_clas(self ,arg0); FAILTEST(pass1);
  rb_ary_store(bind,1,it); int oldpos2=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
 ame_setsrc(self,rb_ary_entry(bind,1)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
- it=CALL(root_Analyze_Variables2cb_4,1,bind); it=CALL(root_Analyze_Variables2cb_5,1,bind); it=CALL(root_Analyze_Variables2cb_6,1,bind);   it=Analyze_Variables2_traverse(self ); FAILTEST(pass2);
+ it=CALL(root_Analyze_Variables2cb_2,1,bind); it=CALL(root_Analyze_Variables2cb_3,1,bind); it=CALL(root_Analyze_Variables2cb_4,1,bind);   it=Analyze_Variables2_traverse(self ); FAILTEST(pass2);
  rb_ary_store(bind,2,it); int oldpos3=ame_getpos(self); int oldlen3=ame_getlen(self); VALUE oldsrc3=ame_getsrc(self); int fail3=0;
 ame_setsrc(self,rb_ary_entry(bind,2)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
- int oldpos4; while(1){oldpos4=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break1); if (IGET(stop)!=Qnil){{oldpos4=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos4); it=CALL(root_Analyze_Variables2cb_7,1,bind); it=CALL(root_Analyze_Variables2cb_8,1,bind); 
+ int oldpos4; while(1){oldpos4=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break1); if (IGET(stop)!=Qnil){{oldpos4=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos4); it=CALL(root_Analyze_Variables2cb_5,1,bind); it=CALL(itrans_Analyze_Variables2cb_5,1,bind); 
  rb_ary_store(bind,3,it);   it=Analyze_Variables2_eof(self ); FAILTEST(pass3);
 	goto success3;
 	pass3: fail3=1;
@@ -184,11 +184,11 @@ fail: return failobj; }
 VALUE Analyze_Variables2_traverse(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(10);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 int oldpos1; while(1){oldpos1=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break1); if (IGET(stop)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos1); it=CALL(traverse_Analyze_Variables2cb_1,1,bind); 
- rb_ary_store(bind,0,it); it=CALL(traverse_Analyze_Variables2cb_2,1,bind); 
+ rb_ary_store(bind,0,it); it=CALL(itrans_Analyze_Variables2cb_5,1,bind); 
  rb_ary_store(bind,1,it); it=Qnil;
  rb_ary_store(bind,2,it); it=Qfalse;
- rb_ary_store(bind,3,it); it=CALL(traverse_Analyze_Variables2cb_3,1,bind); 
- rb_ary_store(bind,4,it); it=CALL(traverse_Analyze_Variables2cb_4,1,bind); int oldpos2=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
+ rb_ary_store(bind,3,it); it=CALL(traverse_Analyze_Variables2cb_2,1,bind); 
+ rb_ary_store(bind,4,it); it=CALL(traverse_Analyze_Variables2cb_3,1,bind); int oldpos2=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,rb_ary_entry(bind,4)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCore_anything(self ); FAILTEST(pass1);
  rb_ary_store(bind,5,it); int oldpos3=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
@@ -197,8 +197,8 @@ ame_setsrc(self,rb_ary_entry(bind,5)); ame_setpos(self,0); ame_setlen(self,FIX2I
  rb_ary_store(bind,6,it); int oldpos5=ame_getpos(self); int oldlen3=ame_getlen(self); VALUE oldsrc3=ame_getsrc(self); int fail3=0;
 ame_setsrc(self,rb_ary_entry(bind,6)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCore_anything(self ); FAILTEST(pass3);
- rb_ary_store(bind,7,it); it=CALL(traverse_Analyze_Variables2cb_5,1,bind);   it=Analyze_Variables2_traverse_item(self ); FAILTEST(pass3);
- rb_ary_store(bind,8,it); it=CALL(traverse_Analyze_Variables2cb_6,1,bind);   it=Analyze_Variables2_eof(self ); FAILTEST(pass3);
+ rb_ary_store(bind,7,it); it=CALL(traverse_Analyze_Variables2cb_4,1,bind);   it=Analyze_Variables2_traverse_item(self ); FAILTEST(pass3);
+ rb_ary_store(bind,8,it); it=CALL(traverse_Analyze_Variables2cb_5,1,bind);   it=Analyze_Variables2_eof(self ); FAILTEST(pass3);
 	goto success3;
 	pass3: fail3=1;
 	success3: ame_setsrc(self,oldsrc3); ame_setpos(self,oldpos5); ame_setlen(self,oldlen3);
@@ -213,7 +213,7 @@ ame_setsrc(self,rb_ary_entry(bind,6)); ame_setpos(self,0); ame_setlen(self,FIX2I
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos2); ame_setlen(self,oldlen1);
 	if(fail1) goto fail;
-it=CALL(traverse_Analyze_Variables2cb_7,1,bind); 
+it=CALL(traverse_Analyze_Variables2cb_6,1,bind); 
  rb_ary_store(bind,9,it); it=rb_ary_entry(bind,9);
 return it;
 fail: return failobj; }
@@ -249,7 +249,7 @@ ISET(cut,Qnil);goto accept1;
  break;case 1:; int oldpos4=ame_getpos(self);
 alt2_1: ame_setpos(self,oldpos4);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=Analyze_Variables2_visit(self ); FAILTEST(alt2_2);
- rb_ary_store(bind,0,it); it=CALL(traverse_item_Analyze_Variables2cb_3,1,bind); it=rb_ary_entry(bind,0);
+ rb_ary_store(bind,0,it); it=CALL(traverse_item_Analyze_Variables2cb_1,1,bind); it=rb_ary_entry(bind,0);
  rb_ary_store(bind,1,it);  
 ISET(cut,Qnil);goto accept2;
 alt2_2: ame_setpos(self,oldpos4);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
@@ -274,7 +274,7 @@ ISET(cut,Qnil);goto accept2;
  break;case 2:; int oldpos6=ame_getpos(self);
 alt3_1: ame_setpos(self,oldpos6);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=Analyze_Variables2_visit(self ); FAILTEST(alt3_2);
- rb_ary_store(bind,0,it); it=CALL(traverse_item_Analyze_Variables2cb_4,1,bind); it=rb_ary_entry(bind,0);
+ rb_ary_store(bind,0,it); it=CALL(traverse_item_Analyze_Variables2cb_1,1,bind); it=rb_ary_entry(bind,0);
  rb_ary_store(bind,1,it);  
 ISET(cut,Qnil);goto accept3;
 alt3_2: ame_setpos(self,oldpos6);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
@@ -413,4 +413,4 @@ rb_define_method(cls_Analyze_Variables2,"root",Analyze_Variables2_root,0);
 rb_define_method(cls_Analyze_Variables2,"traverse",Analyze_Variables2_traverse,0);
 rb_define_method(cls_Analyze_Variables2,"traverse_item",Analyze_Variables2_traverse_item,0);
 rb_define_method(cls_Analyze_Variables2,"visit",Analyze_Variables2_visit,0);
- rb_eval_string("testversiondetect_variables2('86c81a5b0df2fcb51167d14c88d0a936')");}
+ rb_eval_string("testversiondetect_variables2('f5aa159bd5684c32bb12a5ac143946a3')");}

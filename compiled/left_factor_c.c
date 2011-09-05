@@ -153,7 +153,7 @@ ISET(cut,Qnil);goto accept1;
  break;case 1:; int oldpos4=ame_getpos(self);
 alt2_1: ame_setpos(self,oldpos4);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=Left_Factor_visit(self ); FAILTEST(alt2_2);
- rb_ary_store(bind,0,it); it=CALL(traverse_item_Left_Factorcb_3,1,bind); it=rb_ary_entry(bind,0);
+ rb_ary_store(bind,0,it); it=CALL(traverse_item_Left_Factorcb_1,1,bind); it=rb_ary_entry(bind,0);
  rb_ary_store(bind,1,it);  
 ISET(cut,Qnil);goto accept2;
 alt2_2: ame_setpos(self,oldpos4);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
@@ -178,7 +178,7 @@ ISET(cut,Qnil);goto accept2;
  break;case 2:; int oldpos6=ame_getpos(self);
 alt3_1: ame_setpos(self,oldpos6);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=Left_Factor_visit(self ); FAILTEST(alt3_2);
- rb_ary_store(bind,0,it); it=CALL(traverse_item_Left_Factorcb_4,1,bind); it=rb_ary_entry(bind,0);
+ rb_ary_store(bind,0,it); it=CALL(traverse_item_Left_Factorcb_1,1,bind); it=rb_ary_entry(bind,0);
  rb_ary_store(bind,1,it);  
 ISET(cut,Qnil);goto accept3;
 alt3_2: ame_setpos(self,oldpos6);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
@@ -260,4 +260,4 @@ rb_define_method(cls_Left_Factor,"root",Left_Factor_root,0);
 rb_define_method(cls_Left_Factor,"traverse",Left_Factor_traverse,0);
 rb_define_method(cls_Left_Factor,"traverse_item",Left_Factor_traverse_item,0);
 rb_define_method(cls_Left_Factor,"visit",Left_Factor_visit,0);
- rb_eval_string("testversionleft_factor('74d112e69845407b59597ca8becc90b1')");}
+ rb_eval_string("testversionleft_factor('b1a46839cc57b0b5da144fae7030a951')");}

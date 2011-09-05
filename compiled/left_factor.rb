@@ -76,12 +76,6 @@ end
 def traverse_item_Left_Factorcb_2(bind)
 bind[3]<<bind[4]
 end
-def traverse_item_Left_Factorcb_3(bind)
-@changed=true
-end
-def traverse_item_Left_Factorcb_4(bind)
-@changed=true
-end
 def visit_Left_Factorcb_1(bind)
 Or
 end
@@ -105,7 +99,7 @@ end
 
 
 def left_factor_compiled_by
-'4f060f367d394bd9ece9627ba6e4c563'
+'231ffbd749f30d18bc9c6755273ffcc3'
 end
 def left_factor_source_hash
 'f264ac06705a9c2e0746e6a287dbb141'
@@ -114,6 +108,6 @@ def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version
 end
 def left_factor_version
-'74d112e69845407b59597ca8becc90b1'
+'b1a46839cc57b0b5da144fae7030a951'
 end
   require 'compiled/left_factor_c'

@@ -1,9 +1,11 @@
 
 class AmethystCTranslator < Amethyst 
 	def addcallback2(cb)
+		return @rcallbacks[cb] if @rcallbacks[cb]
 		@cbno||=0
 		@cbno+=1
 		n=Local["#{@rulename}_#{@grammar}cb",@cbno].desc
+		@rcallbacks[cb]=n
 		@callbacks[n]=cb
 		n
 	end
@@ -75,7 +77,7 @@ amethyst AmethystCTranslator < Amethyst {
 	{s+=x*""}
 	{s+="\nend"; s}
 	
-	trans =  Grammar[ {@@grammar=@name;@@parent=@parent} {@@lambdas=[]} {@@defs=[]} {@@defmethods=[]} {@@faillabel="fail"} {@@callbacks={}} {mktable(@rules)} {@@header=[]} @rules=>[trans*]:t rbcode:rbcode
+	trans =  Grammar[ {@@grammar=@name;@@parent=@parent} {@@lambdas=[] ;@@rcallbacks={}} {@@defs=[]} {@@defmethods=[]} {@@faillabel="fail"} {@@callbacks={}} {mktable(@rules)} {@@header=[]} @rules=>[trans*]:t rbcode:rbcode
 				    { "VALUE cls_#{@name};\n" }:s
 						{	s<<@@header.sort*"\n"+"\n"
 							s<<t.sort*"\n"

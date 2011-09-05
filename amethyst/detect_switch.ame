@@ -104,10 +104,9 @@ class ClasLattice < FirstLattice
   def self.top
     ClasLattice["Object"]
   end
-	def seqjoin(a)
-    return self #unless a.ary.include? Empty
-    (self-self.class.empty)+a
-  end
+  def seqjoin(a)
+    return self	
+	end
 end
 
 amethyst First_Dataflow {
@@ -174,7 +173,7 @@ class Detect_ClasSwitch < Detect_First
 			@switchdf.parse(:root,[])
 		end
 		r=@switchdf.analyze(s)
-		return ClasLattice.top if r.ary.include?(Empty)
+		return r+ClasLattice.top-ClasLattice.empty if r.ary.include?(Empty)
 		return r
 	end
 	def child(par,chld)

@@ -51,11 +51,11 @@ fail: return failobj; }
 VALUE Constant_Traverser_traverse(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(10);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 int oldpos1; while(1){oldpos1=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break1); if (IGET(stop)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos1); it=CALL(traverse_Constant_Traversercb_1,1,bind); 
- rb_ary_store(bind,0,it); it=CALL(traverse_Constant_Traversercb_2,1,bind); 
+ rb_ary_store(bind,0,it); it=CALL(visit_Constant_Traversercb_4,1,bind); 
  rb_ary_store(bind,1,it); it=Qnil;
  rb_ary_store(bind,2,it); it=Qfalse;
- rb_ary_store(bind,3,it); it=CALL(traverse_Constant_Traversercb_3,1,bind); 
- rb_ary_store(bind,4,it); it=CALL(traverse_Constant_Traversercb_4,1,bind); int oldpos2=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
+ rb_ary_store(bind,3,it); it=CALL(traverse_Constant_Traversercb_2,1,bind); 
+ rb_ary_store(bind,4,it); it=CALL(traverse_Constant_Traversercb_3,1,bind); int oldpos2=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,rb_ary_entry(bind,4)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCore_anything(self ); FAILTEST(pass1);
  rb_ary_store(bind,5,it); int oldpos3=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
@@ -64,8 +64,8 @@ ame_setsrc(self,rb_ary_entry(bind,5)); ame_setpos(self,0); ame_setlen(self,FIX2I
  rb_ary_store(bind,6,it); int oldpos5=ame_getpos(self); int oldlen3=ame_getlen(self); VALUE oldsrc3=ame_getsrc(self); int fail3=0;
 ame_setsrc(self,rb_ary_entry(bind,6)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCore_anything(self ); FAILTEST(pass3);
- rb_ary_store(bind,7,it); it=CALL(traverse_Constant_Traversercb_5,1,bind);   it=Constant_Traverser_traverse_item(self ); FAILTEST(pass3);
- rb_ary_store(bind,8,it); it=CALL(traverse_Constant_Traversercb_6,1,bind);   it=Constant_Traverser_eof(self ); FAILTEST(pass3);
+ rb_ary_store(bind,7,it); it=CALL(traverse_Constant_Traversercb_4,1,bind);   it=Constant_Traverser_traverse_item(self ); FAILTEST(pass3);
+ rb_ary_store(bind,8,it); it=CALL(traverse_Constant_Traversercb_5,1,bind);   it=Constant_Traverser_eof(self ); FAILTEST(pass3);
 	goto success3;
 	pass3: fail3=1;
 	success3: ame_setsrc(self,oldsrc3); ame_setpos(self,oldpos5); ame_setlen(self,oldlen3);
@@ -80,7 +80,7 @@ ame_setsrc(self,rb_ary_entry(bind,6)); ame_setpos(self,0); ame_setlen(self,FIX2I
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos2); ame_setlen(self,oldlen1);
 	if(fail1) goto fail;
-it=CALL(traverse_Constant_Traversercb_7,1,bind); 
+it=CALL(traverse_Constant_Traversercb_6,1,bind); 
  rb_ary_store(bind,9,it); it=rb_ary_entry(bind,9);
 return it;
 fail: return failobj; }
@@ -116,7 +116,7 @@ ISET(cut,Qnil);goto accept1;
  break;case 1:; int oldpos4=ame_getpos(self);
 alt2_1: ame_setpos(self,oldpos4);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=Constant_Traverser_visit(self ); FAILTEST(alt2_2);
- rb_ary_store(bind,0,it); it=CALL(traverse_item_Constant_Traversercb_3,1,bind); it=rb_ary_entry(bind,0);
+ rb_ary_store(bind,0,it); it=CALL(traverse_item_Constant_Traversercb_1,1,bind); it=rb_ary_entry(bind,0);
  rb_ary_store(bind,1,it);  
 ISET(cut,Qnil);goto accept2;
 alt2_2: ame_setpos(self,oldpos4);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
@@ -141,7 +141,7 @@ ISET(cut,Qnil);goto accept2;
  break;case 2:; int oldpos6=ame_getpos(self);
 alt3_1: ame_setpos(self,oldpos6);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=Constant_Traverser_visit(self ); FAILTEST(alt3_2);
- rb_ary_store(bind,0,it); it=CALL(traverse_item_Constant_Traversercb_4,1,bind); it=rb_ary_entry(bind,0);
+ rb_ary_store(bind,0,it); it=CALL(traverse_item_Constant_Traversercb_1,1,bind); it=rb_ary_entry(bind,0);
  rb_ary_store(bind,1,it);  
 ISET(cut,Qnil);goto accept3;
 alt3_2: ame_setpos(self,oldpos6);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
@@ -208,4 +208,4 @@ rb_define_method(cls_Constant_Traverser,"root",Constant_Traverser_root,0);
 rb_define_method(cls_Constant_Traverser,"traverse",Constant_Traverser_traverse,0);
 rb_define_method(cls_Constant_Traverser,"traverse_item",Constant_Traverser_traverse_item,0);
 rb_define_method(cls_Constant_Traverser,"visit",Constant_Traverser_visit,0);
- rb_eval_string("testversionconstant_propagation('38970e274d138685fd105866dbebd2c2')");}
+ rb_eval_string("testversionconstant_propagation('d533b6002467bc10b565852b7d5ca87b')");}

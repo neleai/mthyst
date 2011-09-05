@@ -54,66 +54,51 @@ def itrans_Analyze_Variables2cb_1(bind)
 @src.rules
 end
 def itrans_Analyze_Variables2cb_2(bind)
-bind[2]=[bind[2]]
-end
-def itrans_Analyze_Variables2cb_3(bind)
 Rule
 end
-def itrans_Analyze_Variables2cb_4(bind)
+def itrans_Analyze_Variables2cb_3(bind)
 _append(bind[4],bind[7])
 end
-def itrans_Analyze_Variables2cb_5(bind)
+def itrans_Analyze_Variables2cb_4(bind)
 @src.rules=bind[8]
 end
-def itrans_Analyze_Variables2cb_6(bind)
+def itrans_Analyze_Variables2cb_5(bind)
 @src
 end
-def itrans_Analyze_Variables2cb_7(bind)
+def itrans_Analyze_Variables2cb_6(bind)
 _append(bind[0],bind[10])
 end
 def root_Analyze_Variables2cb_1(bind)
-@src
-end
-def root_Analyze_Variables2cb_2(bind)
 bind[0]=[bind[0]]
 end
-def root_Analyze_Variables2cb_3(bind)
-Rule
-end
-def root_Analyze_Variables2cb_4(bind)
+def root_Analyze_Variables2cb_2(bind)
 @bnding=@src.bnding
 end
-def root_Analyze_Variables2cb_5(bind)
+def root_Analyze_Variables2cb_3(bind)
 @variables=Hash.new{|k,v| k[v]=v} ;(@src.locals+@src.args).each{|w| @variables[w[0]]=w}
 end
-def root_Analyze_Variables2cb_6(bind)
+def root_Analyze_Variables2cb_4(bind)
 @locals=@src.locals
 end
-def root_Analyze_Variables2cb_7(bind)
+def root_Analyze_Variables2cb_5(bind)
 @src.locals=nil
-end
-def root_Analyze_Variables2cb_8(bind)
-@src
 end
 def traverse_Analyze_Variables2cb_1(bind)
 @changed
 end
 def traverse_Analyze_Variables2cb_2(bind)
-@src
-end
-def traverse_Analyze_Variables2cb_3(bind)
 (@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
 end
-def traverse_Analyze_Variables2cb_4(bind)
+def traverse_Analyze_Variables2cb_3(bind)
 bind[4]=[bind[4]]
 end
-def traverse_Analyze_Variables2cb_5(bind)
+def traverse_Analyze_Variables2cb_4(bind)
 @changed=false
 end
-def traverse_Analyze_Variables2cb_6(bind)
+def traverse_Analyze_Variables2cb_5(bind)
 (bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
 end
-def traverse_Analyze_Variables2cb_7(bind)
+def traverse_Analyze_Variables2cb_6(bind)
 if bind[3]
              @changed=true;bind[2].normalize
            else
@@ -126,12 +111,6 @@ def traverse_item_Analyze_Variables2cb_1(bind)
 end
 def traverse_item_Analyze_Variables2cb_2(bind)
 bind[3]<<bind[4]
-end
-def traverse_item_Analyze_Variables2cb_3(bind)
-@changed=true
-end
-def traverse_item_Analyze_Variables2cb_4(bind)
-@changed=true
 end
 def visit_Analyze_Variables2cb_1(bind)
 @src.ary.map{|aa| @variables[aa] }
@@ -176,7 +155,7 @@ end
 
 
 def detect_variables2_compiled_by
-'4f060f367d394bd9ece9627ba6e4c563'
+'231ffbd749f30d18bc9c6755273ffcc3'
 end
 def detect_variables2_source_hash
 '9a11d44448f9afbe8e585059dc878534'
@@ -185,6 +164,6 @@ def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'86c81a5b0df2fcb51167d14c88d0a936'
+'f5aa159bd5684c32bb12a5ac143946a3'
 end
   require 'compiled/detect_variables2_c'

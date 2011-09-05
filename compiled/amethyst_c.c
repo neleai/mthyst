@@ -26,11 +26,11 @@ VALUE Amethyst_word(VALUE self );
 VALUE Amethyst_xdigit(VALUE self );
 VALUE Amethyst__(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(7);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=CALL(__Amethystcb_1,1,bind); 
+it=CALL(spaces_Amethystcb_1,1,bind); 
  rb_ary_store(bind,0,it);   it=AmethystCore_anything(self ); FAILTEST(fail);
- rb_ary_store(bind,1,it); it=CALL(__Amethystcb_2,1,bind); FAILTEST(fail);it=rb_ary_entry(bind,1);
+ rb_ary_store(bind,1,it); it=CALL(lower_Amethystcb_2,1,bind); FAILTEST(fail);it=rb_ary_entry(bind,1);
  rb_ary_store(bind,2,it); it=rb_ary_entry(bind,2);
- rb_ary_store(bind,3,it); it=CALL(__Amethystcb_3,1,bind); FAILTEST(fail);it=rb_ary_entry(bind,3);
+ rb_ary_store(bind,3,it); it=CALL(lower_Amethystcb_3,1,bind); FAILTEST(fail);it=rb_ary_entry(bind,3);
  rb_ary_store(bind,4,it); it=rb_ary_entry(bind,4);
  rb_ary_store(bind,5,it); it=rb_ary_entry(bind,5);
  rb_ary_store(bind,6,it); it=rb_ary_entry(bind,6);
@@ -49,7 +49,7 @@ VALUE Amethyst__true(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(4);  int
 
 it=Qtrue;
  rb_ary_store(bind,0,it);   it=AmethystCore_anything(self ); FAILTEST(fail);
- rb_ary_store(bind,1,it); it=CALL(_true_Amethystcb_1,1,bind); FAILTEST(fail);it=rb_ary_entry(bind,0);
+ rb_ary_store(bind,1,it); it=CALL(_false_Amethystcb_1,1,bind); FAILTEST(fail);it=rb_ary_entry(bind,0);
  rb_ary_store(bind,2,it); it=rb_ary_entry(bind,2);
  rb_ary_store(bind,3,it); it=rb_ary_entry(bind,3);
 return it;
@@ -84,9 +84,9 @@ VALUE Amethyst_digit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(6);  int
 
 it=CALL(digit_Amethystcb_1,1,bind); 
  rb_ary_store(bind,0,it);   it=AmethystCore_anything(self ); FAILTEST(fail);
- rb_ary_store(bind,1,it); it=CALL(digit_Amethystcb_2,1,bind); FAILTEST(fail);it=rb_ary_entry(bind,1);
+ rb_ary_store(bind,1,it); it=CALL(lower_Amethystcb_2,1,bind); FAILTEST(fail);it=rb_ary_entry(bind,1);
  rb_ary_store(bind,2,it); it=rb_ary_entry(bind,2);
- rb_ary_store(bind,3,it); it=CALL(digit_Amethystcb_3,1,bind); FAILTEST(fail);it=rb_ary_entry(bind,3);
+ rb_ary_store(bind,3,it); it=CALL(lower_Amethystcb_3,1,bind); FAILTEST(fail);it=rb_ary_entry(bind,3);
  rb_ary_store(bind,4,it); it=rb_ary_entry(bind,4);
  rb_ary_store(bind,5,it); it=rb_ary_entry(bind,5);
 return it;
@@ -209,19 +209,19 @@ fail: return failobj; }
 VALUE Amethyst_regch(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=rb_ary_new2(5); rb_ary_store(bind,3,a0); int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
   it=AmethystCore_anything(self ); FAILTEST(fail);
- rb_ary_store(bind,0,it); it=CALL(regch_Amethystcb_1,1,bind); FAILTEST(fail);it=rb_ary_entry(bind,0);
+ rb_ary_store(bind,0,it); it=CALL(char_Amethystcb_1,1,bind); FAILTEST(fail);it=rb_ary_entry(bind,0);
  rb_ary_store(bind,1,it); it=rb_ary_entry(bind,1);
- rb_ary_store(bind,2,it); it=CALL(regch_Amethystcb_2,1,bind); FAILTEST(fail);it=rb_ary_entry(bind,2);
+ rb_ary_store(bind,2,it); it=CALL(regch_Amethystcb_1,1,bind); FAILTEST(fail);it=rb_ary_entry(bind,2);
  rb_ary_store(bind,4,it); it=rb_ary_entry(bind,4);
 return it;
 fail: return failobj; }
 VALUE Amethyst_space(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(6);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=CALL(space_Amethystcb_1,1,bind); 
+it=CALL(spaces_Amethystcb_1,1,bind); 
  rb_ary_store(bind,0,it);   it=AmethystCore_anything(self ); FAILTEST(fail);
- rb_ary_store(bind,1,it); it=CALL(space_Amethystcb_2,1,bind); FAILTEST(fail);it=rb_ary_entry(bind,1);
+ rb_ary_store(bind,1,it); it=CALL(lower_Amethystcb_2,1,bind); FAILTEST(fail);it=rb_ary_entry(bind,1);
  rb_ary_store(bind,2,it); it=rb_ary_entry(bind,2);
- rb_ary_store(bind,3,it); it=CALL(space_Amethystcb_3,1,bind); FAILTEST(fail);it=rb_ary_entry(bind,3);
+ rb_ary_store(bind,3,it); it=CALL(lower_Amethystcb_3,1,bind); FAILTEST(fail);it=rb_ary_entry(bind,3);
  rb_ary_store(bind,4,it); it=rb_ary_entry(bind,4);
  rb_ary_store(bind,5,it); it=rb_ary_entry(bind,5);
 return it;
@@ -250,9 +250,9 @@ VALUE Amethyst_upper(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(6);  int
 
 it=CALL(upper_Amethystcb_1,1,bind); 
  rb_ary_store(bind,0,it);   it=AmethystCore_anything(self ); FAILTEST(fail);
- rb_ary_store(bind,1,it); it=CALL(upper_Amethystcb_2,1,bind); FAILTEST(fail);it=rb_ary_entry(bind,1);
+ rb_ary_store(bind,1,it); it=CALL(lower_Amethystcb_2,1,bind); FAILTEST(fail);it=rb_ary_entry(bind,1);
  rb_ary_store(bind,2,it); it=rb_ary_entry(bind,2);
- rb_ary_store(bind,3,it); it=CALL(upper_Amethystcb_3,1,bind); FAILTEST(fail);it=rb_ary_entry(bind,3);
+ rb_ary_store(bind,3,it); it=CALL(lower_Amethystcb_3,1,bind); FAILTEST(fail);it=rb_ary_entry(bind,3);
  rb_ary_store(bind,4,it); it=rb_ary_entry(bind,4);
  rb_ary_store(bind,5,it); it=rb_ary_entry(bind,5);
 return it;
@@ -277,9 +277,9 @@ VALUE Amethyst_xdigit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(6);  in
 
 it=CALL(xdigit_Amethystcb_1,1,bind); 
  rb_ary_store(bind,0,it);   it=AmethystCore_anything(self ); FAILTEST(fail);
- rb_ary_store(bind,1,it); it=CALL(xdigit_Amethystcb_2,1,bind); FAILTEST(fail);it=rb_ary_entry(bind,1);
+ rb_ary_store(bind,1,it); it=CALL(lower_Amethystcb_2,1,bind); FAILTEST(fail);it=rb_ary_entry(bind,1);
  rb_ary_store(bind,2,it); it=rb_ary_entry(bind,2);
- rb_ary_store(bind,3,it); it=CALL(xdigit_Amethystcb_3,1,bind); FAILTEST(fail);it=rb_ary_entry(bind,3);
+ rb_ary_store(bind,3,it); it=CALL(lower_Amethystcb_3,1,bind); FAILTEST(fail);it=rb_ary_entry(bind,3);
  rb_ary_store(bind,4,it); it=rb_ary_entry(bind,4);
  rb_ary_store(bind,5,it); it=rb_ary_entry(bind,5);
 return it;
@@ -311,4 +311,4 @@ rb_define_method(cls_Amethyst,"token",Amethyst_token,1);
 rb_define_method(cls_Amethyst,"upper",Amethyst_upper,0);
 rb_define_method(cls_Amethyst,"word",Amethyst_word,0);
 rb_define_method(cls_Amethyst,"xdigit",Amethyst_xdigit,0);
- rb_eval_string("testversionamethyst('2c50929a79eb78de81dafe3ff5947e2c')");}
+ rb_eval_string("testversionamethyst('fe16f7c16b8300d2291cad842be43855')");}

@@ -25,21 +25,18 @@ def traverse_Renamer2cb_1(bind)
 @changed
 end
 def traverse_Renamer2cb_2(bind)
-@src
-end
-def traverse_Renamer2cb_3(bind)
 (@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
 end
-def traverse_Renamer2cb_4(bind)
+def traverse_Renamer2cb_3(bind)
 bind[4]=[bind[4]]
 end
-def traverse_Renamer2cb_5(bind)
+def traverse_Renamer2cb_4(bind)
 @changed=false
 end
-def traverse_Renamer2cb_6(bind)
+def traverse_Renamer2cb_5(bind)
 (bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
 end
-def traverse_Renamer2cb_7(bind)
+def traverse_Renamer2cb_6(bind)
 if bind[3]
              @changed=true;bind[2].normalize
            else
@@ -52,12 +49,6 @@ def traverse_item_Renamer2cb_1(bind)
 end
 def traverse_item_Renamer2cb_2(bind)
 bind[3]<<bind[4]
-end
-def traverse_item_Renamer2cb_3(bind)
-@changed=true
-end
-def traverse_item_Renamer2cb_4(bind)
-@changed=true
 end
 def visit_Renamer2cb_1(bind)
 Local
@@ -103,9 +94,6 @@ def traverse_DetectCallscb_1(bind)
 end
 def traverse_DetectCallscb_2(bind)
 bind[0]=[bind[0]]
-end
-def traverse_DetectCallscb_3(bind)
-_append(bind[2],bind[3])
 end
 def traverse_item_DetectCallscb_1(bind)
 _append(bind[2],bind[3])
@@ -161,9 +149,6 @@ end
 def root_Inliner2cb_8(bind)
 bind[7]=[bind[7]]
 end
-def root_Inliner2cb_9(bind)
-Rule
-end
 def traverse_Inliner2cb_1(bind)
 @changed
 end
@@ -196,12 +181,6 @@ end
 def traverse_item_Inliner2cb_2(bind)
 bind[3]<<bind[4]
 end
-def traverse_item_Inliner2cb_3(bind)
-@changed=true
-end
-def traverse_item_Inliner2cb_4(bind)
-@changed=true
-end
 def visit_Inliner2cb_1(bind)
 Apply
 end
@@ -219,7 +198,7 @@ end
 
 
 def inliner2_compiled_by
-'4f060f367d394bd9ece9627ba6e4c563'
+'231ffbd749f30d18bc9c6755273ffcc3'
 end
 def inliner2_source_hash
 'b3a4aa983f8b01b3e605f552935c42e9'
@@ -228,6 +207,6 @@ def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version
 end
 def inliner2_version
-'15f05a8258dbe6f5f81352fa3c2035d1'
+'a0d35568938cb6d51c7477ec6fb2148b'
 end
   require 'compiled/inliner2_c'
