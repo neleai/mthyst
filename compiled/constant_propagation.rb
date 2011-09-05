@@ -77,15 +77,12 @@ def visit_Constant_Traversercb_2(bind)
 bind[1]=[bind[1]]
 end
 def visit_Constant_Traversercb_3(bind)
-@src.expr=bind[2]
+_Bind(@src.name,bind[2])
 end
 def visit_Constant_Traversercb_4(bind)
 @src
 end
 def visit_Constant_Traversercb_5(bind)
-@src
-end
-def visit_Constant_Traversercb_6(bind)
 @consts[@src.ssaname] ? @consts[@src.ssaname] : @src 
 end
 
@@ -93,15 +90,15 @@ end
 
 
 def constant_propagation_compiled_by
-'cc339a8057219f5a30f8d8ec82aff68c'
+'be3224b41b3d273427a807e14aaee34c'
 end
 def constant_propagation_source_hash
-'d8faaf3573d0a7f4bb79bbe4c1e9164d'
+'e3dfd733e0fbab53901e87a38b0994a6'
 end
 def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
 end
 def constant_propagation_version
-'998b2304010e12699534fbcea6cf3056'
+'d0912bc122a993cb37c8af1f62ef553c'
 end
   require 'compiled/constant_propagation_c'
