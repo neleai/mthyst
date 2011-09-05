@@ -2,8 +2,8 @@ require 'digest'
 require 'set'
 $OPT="-O2"
 $debug=1
-COMPILED=["amethyst","traverser","detect_variables2","ctranslator2","parser","dead_code_elimination2","dataflow_ssa","inliner2",
-"detect_switch","left_factor","constant_propagation"]
+COMPILED=["amethyst","traverser","detect_variables2","parser","dead_code_elimination2","dataflow_ssa","inliner2",
+"detect_switch","left_factor","constant_propagation","ctranslator2"]
 class Gram
 	attr_accessor :name,:parent,:rules
 	def initialize(grammar)
@@ -16,7 +16,7 @@ class Gram
 	def opt(r)
 			r=deep_clone(r)
 			[
-Move_Assignments2,
+			Move_Assignments2,
  			 Dataflow, Dead_Code_Deleter3
 			].each{|o|
 	      puts r.inspect if $debug>1

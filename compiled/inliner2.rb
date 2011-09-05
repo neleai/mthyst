@@ -212,17 +212,17 @@ def visit_Inliner2cb_3(bind)
 _append(bind[2],bind[3])
 end
 def visit_Inliner2cb_4(bind)
-body=deep_clone(@body);puts bind[4].inspect; bind[4].each_index{|i| body=Seq[Bind[{:name=>@args[i],:expr=>bind[4][i]}],body] } ; body
+body=deep_clone(@body);puts bind[4].inspect; bind[4].each_index{|i| body=Seq[_Bind(@args[i],bind[4][i]),body] } ; body
 end
 
 end
 
 
 def inliner2_compiled_by
-'2afaa35b2e8828b5cd8753bcf4142b64'
+'1f373951c1043b8d86f52b58411497d4'
 end
 def inliner2_source_hash
-'5f358071d0a2c1782d213625edc96769'
+'b3a4aa983f8b01b3e605f552935c42e9'
 end
 def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version

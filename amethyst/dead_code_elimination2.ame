@@ -5,8 +5,8 @@ amethyst Move_Assignments2 < Traverser_Clone2 {
 	
 	visit = Bind[@name:name traverse[.* @expr:expr  {expr}=>move(name) ]]
 
-	move(name) = Or[ move(name)*:ary {Or[{:ary=>ary}]} ]
-								| Seq[ (:el (&eof {el}=>move(name) | {el}) )*:ary  {Seq[{:ary=>ary}]} ] 
+	move(name) = Or[ {puts "move";puts @self.inspect} move(name)*:ary {Or[{:ary=>ary}]} ]
+								| Seq[  {puts "move";puts @self.inspect} (:el (&eof {el}=>move(name) | {el}) )*:ary  {Seq[{:ary=>ary}]} ] 
 								| anything:{_Bind(name,it,false)}
 }
 

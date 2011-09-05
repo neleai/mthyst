@@ -57,10 +57,10 @@ alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
    it=AmethystCore_anything(self ); FAILTEST(alt1_2);
  rb_ary_store(bind,0,it); int oldpos2=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,rb_ary_entry(bind,0)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
- it=rb_ary_new3(0);
+ it=CALL(move_Move_Assignments2cb_1,1,bind); it=rb_ary_new3(0);
  rb_ary_store(bind,1,it); int oldpos3; while(1){oldpos3=ame_getpos(self);  it=rb_ary_entry(bind,2); arg0=it; it=Move_Assignments2_move(self ,arg0); FAILTEST(break1);
- rb_ary_store(bind,3,it); it=CALL(move_Move_Assignments2cb_1,1,bind);  if (IGET(stop)!=Qnil){{oldpos3=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos3); it=rb_ary_entry(bind,1);
- rb_ary_store(bind,4,it); it=CALL(move_Move_Assignments2cb_2,1,bind); 
+ rb_ary_store(bind,3,it); it=CALL(move_Move_Assignments2cb_2,1,bind);  if (IGET(stop)!=Qnil){{oldpos3=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos3); it=rb_ary_entry(bind,1);
+ rb_ary_store(bind,4,it); it=CALL(move_Move_Assignments2cb_3,1,bind); 
  rb_ary_store(bind,5,it);   it=Move_Assignments2_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
@@ -71,7 +71,7 @@ it=rb_ary_entry(bind,5);
 ISET(cut,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt1_3);
- rb_ary_store(bind,7,it); it=CALL(move_Move_Assignments2cb_3,1,bind); 
+ rb_ary_store(bind,7,it); it=CALL(move_Move_Assignments2cb_4,1,bind); 
  rb_ary_store(bind,6,it);  
 ISET(cut,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto fail;
@@ -81,13 +81,13 @@ alt2_1: ame_setpos(self,oldpos4);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
    it=AmethystCore_anything(self ); FAILTEST(alt2_2);
  rb_ary_store(bind,8,it); int oldpos5=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
 ame_setsrc(self,rb_ary_entry(bind,8)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
- it=rb_ary_new3(0);
+ it=CALL(move_Move_Assignments2cb_5,1,bind); it=rb_ary_new3(0);
  rb_ary_store(bind,9,it); int oldpos6; while(1){oldpos6=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break2);
  rb_ary_store(bind,10,it); int oldpos7=ame_getpos(self);
 alt3_1: ame_setpos(self,oldpos7);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break2;}
  int oldpos8=ame_getpos(self);
    it=Move_Assignments2_eof(self ); FAILTEST(reject1); x=1; goto accept4;  reject1: x=0; accept4: it=Qnil; ame_setpos(self,oldpos8); if (x==0) goto alt3_2;it=rb_ary_entry(bind,10);
- rb_ary_store(bind,11,it); it=CALL(move_Move_Assignments2cb_4,1,bind); int oldpos9=ame_getpos(self); int oldlen3=ame_getlen(self); VALUE oldsrc3=ame_getsrc(self); int fail3=0;
+ rb_ary_store(bind,11,it); it=CALL(move_Move_Assignments2cb_6,1,bind); int oldpos9=ame_getpos(self); int oldlen3=ame_getlen(self); VALUE oldsrc3=ame_getsrc(self); int fail3=0;
 ame_setsrc(self,rb_ary_entry(bind,11)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
   it=rb_ary_entry(bind,2); arg0=it; it=Move_Assignments2_move(self ,arg0); FAILTEST(pass3);
  rb_ary_store(bind,12,it);   it=Move_Assignments2_eof(self ); FAILTEST(pass3);
@@ -104,8 +104,8 @@ alt3_2: ame_setpos(self,oldpos7);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto brea
 ISET(cut,Qnil);goto accept3;
   alt3_3:  ame_setpos(self,oldpos7); goto break2;
  accept3:;
-it=CALL(move_Move_Assignments2cb_5,1,bind);  if (IGET(stop)!=Qnil){{oldpos6=ame_getpos(self);goto break2;} } } break2: ISET(stop,Qnil);  ame_setpos(self,oldpos6); it=rb_ary_entry(bind,9);
- rb_ary_store(bind,4,it); it=CALL(move_Move_Assignments2cb_6,1,bind); 
+it=CALL(move_Move_Assignments2cb_7,1,bind);  if (IGET(stop)!=Qnil){{oldpos6=ame_getpos(self);goto break2;} } } break2: ISET(stop,Qnil);  ame_setpos(self,oldpos6); it=rb_ary_entry(bind,9);
+ rb_ary_store(bind,4,it); it=CALL(move_Move_Assignments2cb_8,1,bind); 
  rb_ary_store(bind,14,it);   it=Move_Assignments2_eof(self ); FAILTEST(pass2);
 	goto success2;
 	pass2: fail2=1;
@@ -116,13 +116,13 @@ it=rb_ary_entry(bind,14);
 ISET(cut,Qnil);goto accept2;
 alt2_2: ame_setpos(self,oldpos4);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt2_3);
- rb_ary_store(bind,7,it); it=CALL(move_Move_Assignments2cb_7,1,bind); 
+ rb_ary_store(bind,7,it); it=CALL(move_Move_Assignments2cb_9,1,bind); 
  rb_ary_store(bind,6,it);  
 ISET(cut,Qnil);goto accept2;
   alt2_3:  ame_setpos(self,oldpos4); goto fail;
  accept2:;
  break;case 2:;   it=AmethystCore_anything(self ); FAILTEST(fail);
- rb_ary_store(bind,7,it); it=CALL(move_Move_Assignments2cb_8,1,bind); 
+ rb_ary_store(bind,7,it); it=CALL(move_Move_Assignments2cb_10,1,bind); 
  rb_ary_store(bind,6,it);  break;}it=rb_ary_entry(bind,6);
 return it;
 fail: return failobj; }
@@ -256,10 +256,10 @@ alt1_1: ame_setpos(self,oldpos5);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto pass
    it=AmethystCore_anything(self ); FAILTEST(alt1_2);
  rb_ary_store(bind,6,it); int oldpos6=ame_getpos(self); int oldlen4=ame_getlen(self); VALUE oldsrc4=ame_getsrc(self); int fail4=0;
 ame_setsrc(self,rb_ary_entry(bind,6)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
- it=rb_ary_new3(0);
+ it=CALL(visit_Move_Assignments2cb_5,1,bind); it=rb_ary_new3(0);
  rb_ary_store(bind,7,it); int oldpos7; while(1){oldpos7=ame_getpos(self);  it=rb_ary_entry(bind,5); arg0=it; it=Move_Assignments2_move(self ,arg0); FAILTEST(break2);
- rb_ary_store(bind,8,it); it=CALL(visit_Move_Assignments2cb_5,1,bind);  if (IGET(stop)!=Qnil){{oldpos7=ame_getpos(self);goto break2;} } } break2: ISET(stop,Qnil);  ame_setpos(self,oldpos7); it=rb_ary_entry(bind,7);
- rb_ary_store(bind,9,it); it=CALL(visit_Move_Assignments2cb_6,1,bind); 
+ rb_ary_store(bind,8,it); it=CALL(visit_Move_Assignments2cb_6,1,bind);  if (IGET(stop)!=Qnil){{oldpos7=ame_getpos(self);goto break2;} } } break2: ISET(stop,Qnil);  ame_setpos(self,oldpos7); it=rb_ary_entry(bind,7);
+ rb_ary_store(bind,9,it); it=CALL(visit_Move_Assignments2cb_7,1,bind); 
  rb_ary_store(bind,10,it);   it=Move_Assignments2_eof(self ); FAILTEST(pass4);
 	goto success4;
 	pass4: fail4=1;
@@ -270,7 +270,7 @@ it=rb_ary_entry(bind,10);
 ISET(cut,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos5);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto pass3;}
    it=AmethystCore_anything(self ); FAILTEST(alt1_3);
- rb_ary_store(bind,12,it); it=CALL(visit_Move_Assignments2cb_7,1,bind); 
+ rb_ary_store(bind,12,it); it=CALL(visit_Move_Assignments2cb_8,1,bind); 
  rb_ary_store(bind,11,it);  
 ISET(cut,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos5); goto pass3;
@@ -280,13 +280,13 @@ alt2_1: ame_setpos(self,oldpos8);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto pass
    it=AmethystCore_anything(self ); FAILTEST(alt2_2);
  rb_ary_store(bind,13,it); int oldpos9=ame_getpos(self); int oldlen5=ame_getlen(self); VALUE oldsrc5=ame_getsrc(self); int fail5=0;
 ame_setsrc(self,rb_ary_entry(bind,13)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
- it=rb_ary_new3(0);
+ it=CALL(visit_Move_Assignments2cb_9,1,bind); it=rb_ary_new3(0);
  rb_ary_store(bind,14,it); int oldpos10; while(1){oldpos10=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break3);
  rb_ary_store(bind,15,it); int oldpos11=ame_getpos(self);
 alt3_1: ame_setpos(self,oldpos11);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break3;}
  int oldpos12=ame_getpos(self);
    it=Move_Assignments2_eof(self ); FAILTEST(reject1); x=1; goto accept4;  reject1: x=0; accept4: it=Qnil; ame_setpos(self,oldpos12); if (x==0) goto alt3_2;it=rb_ary_entry(bind,15);
- rb_ary_store(bind,16,it); it=CALL(visit_Move_Assignments2cb_8,1,bind); int oldpos13=ame_getpos(self); int oldlen6=ame_getlen(self); VALUE oldsrc6=ame_getsrc(self); int fail6=0;
+ rb_ary_store(bind,16,it); it=CALL(visit_Move_Assignments2cb_10,1,bind); int oldpos13=ame_getpos(self); int oldlen6=ame_getlen(self); VALUE oldsrc6=ame_getsrc(self); int fail6=0;
 ame_setsrc(self,rb_ary_entry(bind,16)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
   it=rb_ary_entry(bind,5); arg0=it; it=Move_Assignments2_move(self ,arg0); FAILTEST(pass6);
  rb_ary_store(bind,17,it);   it=Move_Assignments2_eof(self ); FAILTEST(pass6);
@@ -303,8 +303,8 @@ alt3_2: ame_setpos(self,oldpos11);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto bre
 ISET(cut,Qnil);goto accept3;
   alt3_3:  ame_setpos(self,oldpos11); goto break3;
  accept3:;
-it=CALL(visit_Move_Assignments2cb_9,1,bind);  if (IGET(stop)!=Qnil){{oldpos10=ame_getpos(self);goto break3;} } } break3: ISET(stop,Qnil);  ame_setpos(self,oldpos10); it=rb_ary_entry(bind,14);
- rb_ary_store(bind,9,it); it=CALL(visit_Move_Assignments2cb_10,1,bind); 
+it=CALL(visit_Move_Assignments2cb_11,1,bind);  if (IGET(stop)!=Qnil){{oldpos10=ame_getpos(self);goto break3;} } } break3: ISET(stop,Qnil);  ame_setpos(self,oldpos10); it=rb_ary_entry(bind,14);
+ rb_ary_store(bind,9,it); it=CALL(visit_Move_Assignments2cb_12,1,bind); 
  rb_ary_store(bind,19,it);   it=Move_Assignments2_eof(self ); FAILTEST(pass5);
 	goto success5;
 	pass5: fail5=1;
@@ -315,13 +315,13 @@ it=rb_ary_entry(bind,19);
 ISET(cut,Qnil);goto accept2;
 alt2_2: ame_setpos(self,oldpos8);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto pass3;}
    it=AmethystCore_anything(self ); FAILTEST(alt2_3);
- rb_ary_store(bind,12,it); it=CALL(visit_Move_Assignments2cb_11,1,bind); 
+ rb_ary_store(bind,12,it); it=CALL(visit_Move_Assignments2cb_13,1,bind); 
  rb_ary_store(bind,11,it);  
 ISET(cut,Qnil);goto accept2;
   alt2_3:  ame_setpos(self,oldpos8); goto pass3;
  accept2:;
  break;case 2:;   it=AmethystCore_anything(self ); FAILTEST(pass3);
- rb_ary_store(bind,12,it); it=CALL(visit_Move_Assignments2cb_12,1,bind); 
+ rb_ary_store(bind,12,it); it=CALL(visit_Move_Assignments2cb_14,1,bind); 
  rb_ary_store(bind,11,it);  break;}it=rb_ary_entry(bind,11);
  rb_ary_store(bind,20,it);   it=Move_Assignments2_eof(self ); FAILTEST(pass3);
 	goto success3;
@@ -357,4 +357,4 @@ rb_define_method(cls_Move_Assignments2,"root",Move_Assignments2_root,0);
 rb_define_method(cls_Move_Assignments2,"traverse",Move_Assignments2_traverse,0);
 rb_define_method(cls_Move_Assignments2,"traverse_item",Move_Assignments2_traverse_item,0);
 rb_define_method(cls_Move_Assignments2,"visit",Move_Assignments2_visit,0);
- rb_eval_string("testversiondead_code_elimination2('8f34ee47e1c8b9551e843b906afde7dc')");}
+ rb_eval_string("testversiondead_code_elimination2('314dd0cff02ade1c50b7f2f9f9871462')");}
