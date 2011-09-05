@@ -1,6 +1,6 @@
 require 'digest'
 require 'set'
-$OPT="-O2"
+$OPT=""
 $debug=1
 COMPILED=["amethyst","traverser","detect_variables2","parser","dataflow_ssa","inliner2",
 "detect_switch","left_factor","constant_propagation","ctranslator2"]
@@ -118,7 +118,6 @@ end
 			else
 			end
 		}
-		tree=deep_clone(tree)
 		[Detect_Switch,Detect_ClasSwitch].each{|o|
 			tree=o.new.parse(:itrans,tree)
 			puts tree.inspect if $debug>1
