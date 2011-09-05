@@ -12,8 +12,6 @@ makeclasses(AmethystAST,
 		[:CAct,:pred,:pure],
     [:Lookahead],
     :And,
-    :Or,
-    :Seq,
 		[:Strin],
 		[:Local,:ssano],
 		[:Pass,:var,:to],
@@ -28,6 +26,9 @@ makeclasses(AmethystAST,
 		[:Phi,:merges,:result],
 		[:Switch,:act,:defs,:first]
 )
+
+class SeqOr<AmethystAST;end
+makeclasses(SeqOr,:Seq,:Or)
 
 class Array
 	def normalize
@@ -93,7 +94,6 @@ def _Bind(name,expr,append=nil)
 end
 class Bind
 	def normalize
-#		puts self.inspect if @expr.is_a?(Or) || @expr.is_a?(Seq)
 		return Or[*expr.ary.map{|a|_Bind(name,a)}] if @expr.is_a?(Or)
     return Seq[*(expr.ary[0...-1]+[_Bind(name,expr.ary[-1])])] if @expr.is_a?(Seq) && @expr.ary.size>0
 
@@ -118,19 +118,21 @@ class Many
 	end
 end
 
+class SeqOr
+	 def normalize
+    @ary=@ary.map{|i| (i.is_a?(self.class)) ? i.ary : i}.flatten
+    @ary=@ary.select{|e| !(e.is_a?(Act) && e.ary.size==0)}
+    return Act[] if @ary.size==0
+    return @ary[0] if (@ary.size==1)
+    @ary.freeze
+    self.freeze
+  end
+end
 class Seq
 	def self.[](*args)
 		args=args[0][:ary] if args.size==1 && args[0].is_a?(Hash)
 		return Seq.create(*args) if args[-1].is_a?(Hash)
-		s=Seq.create({:ary=>args}).normalize
-		(s.size==1) ? s.ary[0] : s
-	end
-	def normalize
-		@ary=@ary.map{|i| (i.is_a?(Seq)) ? i.ary : i}.flatten
-		@ary=@ary.select{|e| !(e.is_a?(Act) && e.ary.size==0)}
-		return Act[] if @ary.size==0
-		@ary.freeze
-		self.freeze
+		Seq.create({:ary=>args}).normalize
 	end
 end
 
@@ -140,13 +142,6 @@ class Or
 		return Or.create(*args) if args[-1].is_a?(Hash)
 		return Apply["fails"] if args.size==0
 		Or.create({:ary=>args}).normalize
-	end
-	def normalize
-		@ary=@ary.map{|i| (i.is_a?(Or)) ? i.ary : i}.flatten
-		@ary=@ary.select{|e| !(e.is_a?(Act) && e.ary.size==0)}
-		return @ary[0] if (@ary.size==1) 
-		@ary.freeze
-		self.freeze
 	end
 end
 
