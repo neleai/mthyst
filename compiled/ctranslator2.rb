@@ -110,7 +110,7 @@ def addlambda_AmethystCTranslatorcb_3(bind)
 @faillabel=bind[1] 
 end
 def addlambda_AmethystCTranslatorcb_4(bind)
-@faillabel=bind[2]; bind[4] 
+@faillabel=bind[2]; bind[5] 
 end
 def addlambda_AmethystCTranslatorcb_5(bind)
 h="VALUE #{bind[0]}(VALUE self,VALUE bind)"
@@ -446,7 +446,7 @@ def trans_AmethystCTranslatorcb_71(bind)
 @defs<<@src.defs if @src.defs
 end
 def trans_AmethystCTranslatorcb_72(bind)
-"char #{bind[81]}=#{@src.act};  switch(#{bind[81]}){"
+"char #{bind[82]}=#{@src.act};  switch(#{bind[82]}){"
 end
 def trans_AmethystCTranslatorcb_73(bind)
 bind[8]+=bind[25].map{|n| n=="default" ? "default:;" : "case #{n}:;"}*"" + " #{bind[6]} break;"
@@ -468,7 +468,7 @@ end
 
 
 def ctranslator2_compiled_by
-'be3224b41b3d273427a807e14aaee34c'
+'82950869242cd0f5191ff793535c3d24'
 end
 def ctranslator2_source_hash
 '6ff853c227629fa2c41c51ba625f3646'
@@ -477,6 +477,6 @@ def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'b889796acba07f6f128d87ec5d9fd4cc'
+'6d7c5872a05b7e8bd91520b5e711d51f'
 end
   require 'compiled/ctranslator2_c'

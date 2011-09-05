@@ -16,7 +16,6 @@ class Gram
 	def opt(r)
 			r=deep_clone(r)
 			[
-			Move_Assignments2,
  			 Dataflow, Dead_Code_Deleter3
 			].each{|o|
 	      puts r.inspect if $debug>1
