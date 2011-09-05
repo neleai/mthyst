@@ -8,7 +8,7 @@ VALUE First_Dataflow_root(VALUE self );
 VALUE First_Dataflow_value(VALUE self );
 VALUE First_Dataflow_empty(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(0);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=CALL(empty_First_Dataflowcb_1,1,bind); 
+it=Qnil;
 return it;
 fail: return failobj; }
 VALUE First_Dataflow_eof(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -79,7 +79,7 @@ return it;
 fail: return failobj; }
 VALUE Switch_Dataflow_empty(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(0);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=CALL(empty_Switch_Dataflowcb_1,1,bind); 
+it=Qnil;
 return it;
 fail: return failobj; }
 VALUE Switch_Dataflow_eof(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -394,7 +394,7 @@ return it;
 fail: return failobj; }
 VALUE ClasSwitch_Dataflow_empty(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(0);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=CALL(empty_ClasSwitch_Dataflowcb_1,1,bind); 
+it=Qnil;
 return it;
 fail: return failobj; }
 VALUE ClasSwitch_Dataflow_eof(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -680,7 +680,7 @@ return it;
 fail: return failobj; }
 VALUE Detect_First_empty(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(0);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=CALL(empty_Detect_Firstcb_1,1,bind); 
+it=Qnil;
 return it;
 fail: return failobj; }
 VALUE Detect_First_eof(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -888,7 +888,7 @@ return it;
 fail: return failobj; }
 VALUE Detect_Switch_empty(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(0);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=CALL(empty_Detect_Switchcb_1,1,bind); 
+it=Qnil;
 return it;
 fail: return failobj; }
 VALUE Detect_Switch_eof(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -1055,7 +1055,7 @@ return it;
 fail: return failobj; }
 VALUE Detect_ClasSwitch_empty(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(0);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=CALL(empty_Detect_ClasSwitchcb_1,1,bind); 
+it=Qnil;
 return it;
 fail: return failobj; }
 VALUE Detect_ClasSwitch_eof(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -1359,4 +1359,4 @@ rb_define_method(cls_Detect_ClasSwitch,"predicate",Detect_ClasSwitch_predicate,2
 rb_define_method(cls_Detect_ClasSwitch,"traverse",Detect_ClasSwitch_traverse,0);
 rb_define_method(cls_Detect_ClasSwitch,"traverse_item",Detect_ClasSwitch_traverse_item,0);
 rb_define_method(cls_Detect_ClasSwitch,"visit",Detect_ClasSwitch_visit,0);
- rb_eval_string("testversiondetect_switch('8bfb1d8bc32083a4058137e983acfe6c')");}
+ rb_eval_string("testversiondetect_switch('88c35c21fb36af9c9f5d3b10031dace8')");}

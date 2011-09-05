@@ -17,7 +17,7 @@ return it;
 fail: return failobj; }
 VALUE Constant_Traverser_empty(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(0);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=CALL(empty_Constant_Traversercb_1,1,bind); 
+it=Qnil;
 return it;
 fail: return failobj; }
 VALUE Constant_Traverser_eof(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -208,4 +208,4 @@ rb_define_method(cls_Constant_Traverser,"root",Constant_Traverser_root,0);
 rb_define_method(cls_Constant_Traverser,"traverse",Constant_Traverser_traverse,0);
 rb_define_method(cls_Constant_Traverser,"traverse_item",Constant_Traverser_traverse_item,0);
 rb_define_method(cls_Constant_Traverser,"visit",Constant_Traverser_visit,0);
- rb_eval_string("testversionconstant_propagation('16acc0a7b248d428558e5a5feef65899')");}
+ rb_eval_string("testversionconstant_propagation('38970e274d138685fd105866dbebd2c2')");}

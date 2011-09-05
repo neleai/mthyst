@@ -112,9 +112,6 @@ end
 def clas_Dataflowcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
-def empty_Dataflowcb_1(bind)
-
-end
 def fails_Dataflowcb_1(bind)
 (false) || FAIL
 end
@@ -140,7 +137,7 @@ def root_Dataflowcb_7(bind)
 bind[4].each{|v| ssanum(v)}
 end
 def root_Dataflowcb_8(bind)
-@src.reachable=@edges.reverse.reachable(@marked+[ssanum(@src.body[-1])]); @src.cfg=@edges; 
+@src.reachable=@edges.reverse.reachable(@marked+[ssanum(@src.body[-1]),@src.body]); @src.cfg=@edges; 
 end
 def root_Dataflowcb_9(bind)
 @src
@@ -377,9 +374,6 @@ end
 def clas_Dead_Code_Deleter3cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
-def empty_Dead_Code_Deleter3cb_1(bind)
-
-end
 def fails_Dead_Code_Deleter3cb_1(bind)
 (false) || FAIL
 end
@@ -473,15 +467,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'793e966a1b9536509d81486e8f275c5b'
+'77f45e93189ae6ac53da0d3a1640854b'
 end
 def dataflow_ssa_source_hash
-'b412e6bde310472e62d35ea1f1c84803'
+'19a8f36bd7f8debfee126fd6cc3706e9'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'4321a8a85bf9f3d6c84aa0aa28b3bd9a'
+'3aa6005373970145ac247022abf0f4a8'
 end
   require 'compiled/dataflow_ssa_c'

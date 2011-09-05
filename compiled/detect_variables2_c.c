@@ -19,7 +19,7 @@ return it;
 fail: return failobj; }
 VALUE Analyze_Variables2_empty(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(0);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=CALL(empty_Analyze_Variables2cb_1,1,bind); 
+it=Qnil;
 return it;
 fail: return failobj; }
 VALUE Analyze_Variables2_eof(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -413,4 +413,4 @@ rb_define_method(cls_Analyze_Variables2,"root",Analyze_Variables2_root,0);
 rb_define_method(cls_Analyze_Variables2,"traverse",Analyze_Variables2_traverse,0);
 rb_define_method(cls_Analyze_Variables2,"traverse_item",Analyze_Variables2_traverse_item,0);
 rb_define_method(cls_Analyze_Variables2,"visit",Analyze_Variables2_visit,0);
- rb_eval_string("testversiondetect_variables2('226b49391c357db656c840fb8ffb448e')");}
+ rb_eval_string("testversiondetect_variables2('86c81a5b0df2fcb51167d14c88d0a936')");}

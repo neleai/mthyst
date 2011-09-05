@@ -15,7 +15,7 @@ return it;
 fail: return failobj; }
 VALUE Traverser_empty(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(0);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=CALL(empty_Traversercb_1,1,bind); 
+it=Qnil;
 return it;
 fail: return failobj; }
 VALUE Traverser_eof(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -157,7 +157,7 @@ return it;
 fail: return failobj; }
 VALUE Traverser_Clone2_empty(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(0);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=CALL(empty_Traverser_Clone2cb_1,1,bind); 
+it=Qnil;
 return it;
 fail: return failobj; }
 VALUE Traverser_Clone2_eof(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -302,7 +302,7 @@ return it;
 fail: return failobj; }
 VALUE Visitor_empty(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(0);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=CALL(empty_Visitorcb_1,1,bind); 
+it=Qnil;
 return it;
 fail: return failobj; }
 VALUE Visitor_eof(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -446,4 +446,4 @@ rb_define_method(cls_Visitor,"eof",Visitor_eof,0);
 rb_define_method(cls_Visitor,"fails",Visitor_fails,0);
 rb_define_method(cls_Visitor,"traverse",Visitor_traverse,0);
 rb_define_method(cls_Visitor,"traverse_item",Visitor_traverse_item,0);
- rb_eval_string("testversiontraverser('effeac3ec05529ab8108693c073e5e66')");}
+ rb_eval_string("testversiontraverser('545af5d54dbb9419b09ce8a5a5ce7f45')");}

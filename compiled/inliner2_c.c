@@ -17,7 +17,7 @@ return it;
 fail: return failobj; }
 VALUE Renamer2_empty(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(0);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=CALL(empty_Renamer2cb_1,1,bind); 
+it=Qnil;
 return it;
 fail: return failobj; }
 VALUE Renamer2_eof(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -195,7 +195,7 @@ return it;
 fail: return failobj; }
 VALUE DetectCalls_empty(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(0);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=CALL(empty_DetectCallscb_1,1,bind); 
+it=Qnil;
 return it;
 fail: return failobj; }
 VALUE DetectCalls_eof(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -360,7 +360,7 @@ return it;
 fail: return failobj; }
 VALUE Inliner2_empty(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(0);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=CALL(empty_Inliner2cb_1,1,bind); 
+it=Qnil;
 return it;
 fail: return failobj; }
 VALUE Inliner2_eof(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -586,4 +586,4 @@ rb_define_method(cls_Inliner2,"root",Inliner2_root,0);
 rb_define_method(cls_Inliner2,"traverse",Inliner2_traverse,0);
 rb_define_method(cls_Inliner2,"traverse_item",Inliner2_traverse_item,0);
 rb_define_method(cls_Inliner2,"visit",Inliner2_visit,0);
- rb_eval_string("testversioninliner2('2165693930c9d303fb7b4d777d6fbb22')");}
+ rb_eval_string("testversioninliner2('15f05a8258dbe6f5f81352fa3c2035d1')");}

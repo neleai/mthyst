@@ -18,7 +18,7 @@ return it;
 fail: return failobj; }
 VALUE Left_Factor_empty(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(0);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=CALL(empty_Left_Factorcb_1,1,bind); 
+it=Qnil;
 return it;
 fail: return failobj; }
 VALUE Left_Factor_eof(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -260,4 +260,4 @@ rb_define_method(cls_Left_Factor,"root",Left_Factor_root,0);
 rb_define_method(cls_Left_Factor,"traverse",Left_Factor_traverse,0);
 rb_define_method(cls_Left_Factor,"traverse_item",Left_Factor_traverse_item,0);
 rb_define_method(cls_Left_Factor,"visit",Left_Factor_visit,0);
- rb_eval_string("testversionleft_factor('d1d16f240694f471e497a5301f777504')");}
+ rb_eval_string("testversionleft_factor('74d112e69845407b59597ca8becc90b1')");}

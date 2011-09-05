@@ -44,9 +44,6 @@ end
 def clas_Analyze_Variables2cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
-def empty_Analyze_Variables2cb_1(bind)
-
-end
 def fails_Analyze_Variables2cb_1(bind)
 (false) || FAIL
 end
@@ -179,7 +176,7 @@ end
 
 
 def detect_variables2_compiled_by
-'793e966a1b9536509d81486e8f275c5b'
+'77f45e93189ae6ac53da0d3a1640854b'
 end
 def detect_variables2_source_hash
 '9a11d44448f9afbe8e585059dc878534'
@@ -188,6 +185,6 @@ def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'226b49391c357db656c840fb8ffb448e'
+'86c81a5b0df2fcb51167d14c88d0a936'
 end
   require 'compiled/detect_variables2_c'

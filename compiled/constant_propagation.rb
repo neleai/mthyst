@@ -23,9 +23,6 @@ end
 def clas_Constant_Traversercb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
-def empty_Constant_Traversercb_1(bind)
-
-end
 def fails_Constant_Traversercb_1(bind)
 (false) || FAIL
 end
@@ -93,7 +90,7 @@ end
 
 
 def constant_propagation_compiled_by
-'793e966a1b9536509d81486e8f275c5b'
+'77f45e93189ae6ac53da0d3a1640854b'
 end
 def constant_propagation_source_hash
 'e3dfd733e0fbab53901e87a38b0994a6'
@@ -102,6 +99,6 @@ def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
 end
 def constant_propagation_version
-'16acc0a7b248d428558e5a5feef65899'
+'38970e274d138685fd105866dbebd2c2'
 end
   require 'compiled/constant_propagation_c'

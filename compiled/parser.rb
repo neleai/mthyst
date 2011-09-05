@@ -153,9 +153,6 @@ end
 def eChar_AmethystParsercb_5(bind)
 (bind[0].is_a? String ) || FAIL
 end
-def empty_AmethystParsercb_1(bind)
-
-end
 def fails_AmethystParsercb_1(bind)
 (false) || FAIL
 end
@@ -551,7 +548,7 @@ end
 
 
 def parser_compiled_by
-'793e966a1b9536509d81486e8f275c5b'
+'77f45e93189ae6ac53da0d3a1640854b'
 end
 def parser_source_hash
 '01bc3c7063c2ffa326eac197a272c010'
@@ -560,6 +557,6 @@ def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'7ac64e9d7ca9b36e6f8f420e59cf4883'
+'02d7da4263fc952930a7aad89eeb2da8'
 end
   require 'compiled/parser_c'

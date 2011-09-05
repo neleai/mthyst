@@ -59,7 +59,7 @@ return it;
 fail: return failobj; }
 VALUE AmethystCTranslator_empty(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(0);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=CALL(empty_AmethystCTranslatorcb_1,1,bind); 
+it=Qnil;
 return it;
 fail: return failobj; }
 VALUE AmethystCTranslator_eof(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -671,4 +671,4 @@ rb_define_method(cls_AmethystCTranslator,"spaces",AmethystCTranslator_spaces,0);
 rb_define_method(cls_AmethystCTranslator,"token",AmethystCTranslator_token,1);
 rb_define_method(cls_AmethystCTranslator,"trans",AmethystCTranslator_trans,0);
 rb_define_method(cls_AmethystCTranslator,"transfn",AmethystCTranslator_transfn,0);
- rb_eval_string("testversionctranslator2('32d4cd1f7208e337433dd229338f2ad6')");}
+ rb_eval_string("testversionctranslator2('3c40083d7b27141ef8efd175fc926c9b')");}

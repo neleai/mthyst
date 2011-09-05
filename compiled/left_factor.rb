@@ -26,9 +26,6 @@ end
 def clas_Left_Factorcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
-def empty_Left_Factorcb_1(bind)
-
-end
 def factor_Left_Factorcb_1(bind)
 (first(bind[1])==first(bind[0])) || FAIL
 end
@@ -108,7 +105,7 @@ end
 
 
 def left_factor_compiled_by
-'793e966a1b9536509d81486e8f275c5b'
+'77f45e93189ae6ac53da0d3a1640854b'
 end
 def left_factor_source_hash
 'f264ac06705a9c2e0746e6a287dbb141'
@@ -117,6 +114,6 @@ def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version
 end
 def left_factor_version
-'d1d16f240694f471e497a5301f777504'
+'74d112e69845407b59597ca8becc90b1'
 end
   require 'compiled/left_factor_c'
