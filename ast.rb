@@ -139,13 +139,12 @@ class Or
 		args=args[0][:ary] if args.size==1 && args[0].is_a?(Hash)
 		return Or.create(*args) if args[-1].is_a?(Hash)
 		return Apply["fails"] if args.size==0
-		s=Or.create({:ary=>args}).normalize
-		(s.size==1) ? s.ary[0] : s
+		Or.create({:ary=>args}).normalize
 	end
 	def normalize
 		@ary=@ary.map{|i| (i.is_a?(Or)) ? i.ary : i}.flatten
 		@ary=@ary.select{|e| !(e.is_a?(Act) && e.ary.size==0)}
-		(@ary.size==1) ? @ary[0] : self
+		return @ary[0] if (@ary.size==1) 
 		@ary.freeze
 		self.freeze
 	end

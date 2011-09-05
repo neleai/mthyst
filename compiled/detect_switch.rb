@@ -713,7 +713,7 @@ bind[1].each_with_index{|bind[3],i|
 		}
 end
 def visit_Detect_ClasSwitchcb_8(bind)
-bind[2]=bind[2].group_by{|a,b| b.ary}.map{|y,v| [v.map{|k,val| k}.sort,v[0][1]]}.sort
+bind[2]=bind[2].group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.sort,v[0][1]]}.sort
 end
 def visit_Detect_ClasSwitchcb_9(bind)
 c=classswitch(bind[1]);s=Switch[{:act=>c[1],:first=>bind[4],:defs=>c[0],:ary=>bind[2]}];puts s.inspect;s
@@ -727,7 +727,7 @@ def detect_switch_compiled_by
 '793e966a1b9536509d81486e8f275c5b'
 end
 def detect_switch_source_hash
-'507c4dbd01a1d27aa03b8d10be3350eb'
+'36a6ff18db17e9f9b4452f288da436cd'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version

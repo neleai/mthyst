@@ -224,7 +224,7 @@ amethyst Detect_ClasSwitch < Detect_First {
     {	ary2.each_with_index{|e,i|
       	ary3<<[i,Or[{:ary=>@ary.select{|p| includes(ary2,i,first(p))}.map{|p| predicate(e,p)}}]]
 		}}
-		{ary3=ary3.group_by{|a,b| b.ary}.map{|y,v| [v.map{|k,val| k}.sort,v[0][1]]}.sort}
+		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.sort,v[0][1]]}.sort}
 	  {c=classswitch(ary2);s=Switch[{:act=>c[1],:first=>firs,:defs=>c[0],:ary=>ary3}];puts s.inspect;s}
 	]
 
