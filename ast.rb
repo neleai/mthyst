@@ -85,9 +85,7 @@ def _Bind(name,expr,append=nil)
 	  return Seq[_Bind(a,expr),PureAct[Args["_append(",_Local(name),",",a,")"]]]
 	end	
 	if name.is_a?(Local) || name.is_a?(String)
-		return Or[*expr.ary.map{|a|_Bind(name,a)}] if expr.is_a?(Or)
-		return Seq[*(expr.ary[0...-1]+[_Bind(name,expr.ary[-1])])] if expr.is_a?(Seq) && expr.ary.size>0
-		Bind.create({:name=>_Local(name),:expr=>expr})
+		Bind.create({:name=>_Local(name),:expr=>expr}).normalize
 	else
 		a=autovar
 		Seq[_Bind(a,expr),PureAct[Args[name,'=',a]]]
@@ -95,6 +93,10 @@ def _Bind(name,expr,append=nil)
 end
 class Bind
 	def normalize
+		puts self.inspect if @expr.is_a?(Or) || @expr.is_a?(Seq)
+		return Or[*expr.ary.map{|a|_Bind(name,a)}] if @expr.is_a?(Or)
+#    return Seq[*(expr.ary[0...-1]+[_Bind(name,expr.ary[-1])])] if @expr.is_a?(Seq) && @expr.ary.size>0
+
 		self#.freeze
 	end
 end

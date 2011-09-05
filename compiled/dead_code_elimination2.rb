@@ -152,7 +152,7 @@ end
 
 
 def dead_code_elimination2_compiled_by
-'1f373951c1043b8d86f52b58411497d4'
+'cc339a8057219f5a30f8d8ec82aff68c'
 end
 def dead_code_elimination2_source_hash
 '3ccbd29bed4d0abe1c77a2d14db15920'

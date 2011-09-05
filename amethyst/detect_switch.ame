@@ -230,7 +230,7 @@ amethyst Detect_ClasSwitch < Detect_First {
 
   predicate(clas,p) = {p}=>( Seq[ .:first .*:rest  {Seq[[predicate(clas,first)]+rest]} ]
 													 | Apply[ .:name &{name=="clas"} Act[.:match] &{child(clas,match)&&clas==match} {Apply["anything"]}] 
- 													 | Bind[@name:name {predicate(clas,@expr)}:expr  @Bind]
+ 													 | Bind[@name:name {predicate(clas,@expr)}:expr  {_Bind(name,expr)}]
 													 | .
 													 )
 }

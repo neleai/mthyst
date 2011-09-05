@@ -625,7 +625,7 @@ def predicate_Detect_ClasSwitchcb_1(bind)
 bind[1]=[bind[1]]
 end
 def predicate_Detect_ClasSwitchcb_10(bind)
-Bind.create( {:expr=>bind[16],:name=>bind[11] })
+_Bind(bind[11],bind[16])
 end
 def predicate_Detect_ClasSwitchcb_2(bind)
 _append(bind[4],bind[5])
@@ -724,15 +724,15 @@ end
 
 
 def detect_switch_compiled_by
-'1f373951c1043b8d86f52b58411497d4'
+'cc339a8057219f5a30f8d8ec82aff68c'
 end
 def detect_switch_source_hash
-'113dcdd021fb57ef86025eb5b7a221d3'
+'507c4dbd01a1d27aa03b8d10be3350eb'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'cb858b524dad5006894845d19d02fb73'
+'47d553d701375b5f92d7ff938fda58a9'
 end
   require 'compiled/detect_switch_c'
