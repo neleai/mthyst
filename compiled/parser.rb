@@ -130,7 +130,7 @@ def key_AmethystParsercb_1(bind)
 Object.const_get(bind[0]).instance_variable_get(:@attrs)
 end
 def key_AmethystParsercb_2(bind)
-Result.create( {:name=>bind[0],:vars=>bind[1] })
+Result[{:name=>bind[0],:vars=>bind[1]}]
 end
 def key_AmethystParsercb_3(bind)
 Key[bind[0]]
@@ -344,15 +344,15 @@ end
 
 
 def parser_compiled_by
-'c4d6ee6f8f8ca80962ca665e606abe7b'
+'414302066185e17ee54d3b3929e5b26c'
 end
 def parser_source_hash
-'01bc3c7063c2ffa326eac197a272c010'
+'4106df08f5e6833d77c45c6f71cbe207'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'6e08be9f148927552b87237f2d9a17b2'
+'94aec8475ade541bae7883b795924ad5'
 end
   require 'compiled/parser_c'

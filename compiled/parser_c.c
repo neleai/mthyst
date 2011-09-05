@@ -498,7 +498,7 @@ int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=AmethystParser_spaces(self ); FAILTEST(alt1_2); it=rb_str_new2("@"); arg0=it; it=AmethystCore_seq(self ,arg0); FAILTEST(alt1_2);  it=AmethystParser_className(self ); FAILTEST(alt1_2);
  rb_ary_store(bind,0,it); it=CALL(key_AmethystParsercb_1,1,bind); 
- rb_ary_store(bind,1,it); it=CALL(key_AmethystParsercb_2,1,bind);
+ rb_ary_store(bind,1,it); it=CALL(key_AmethystParsercb_2,1,bind); 
  rb_ary_store(bind,2,it);  
 ISET(cut,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
@@ -1431,4 +1431,4 @@ rb_define_method(cls_AmethystParser,"spaces",AmethystParser_spaces,0);
 rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
 rb_define_method(cls_AmethystParser,"token",AmethystParser_token,1);
 rb_define_method(cls_AmethystParser,"upper",AmethystParser_upper,0);
- rb_eval_string("testversionparser('6e08be9f148927552b87237f2d9a17b2')");}
+ rb_eval_string("testversionparser('94aec8475ade541bae7883b795924ad5')");}

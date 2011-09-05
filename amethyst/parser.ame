@@ -62,7 +62,7 @@ amethyst AmethystParser < Amethyst{
 
 	application = (name:klas '::' name:rule {[klas,rule]} | name):rule argsOpt('(',')'):arg -> Apply[rule,arg]
 
-	key         = "@" className:name {Object.const_get(name).instance_variable_get(:@attrs)}:vars @Result
+	key         = "@" className:name {Object.const_get(name).instance_variable_get(:@attrs)}:vars {Result[{:name=>name,:vars=>vars}]}
               | "@" name:name  {Key[name]}
 							| "@@" name:name -> Global[name]
 

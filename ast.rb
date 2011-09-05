@@ -163,6 +163,9 @@ end")}
 	def self.[](*a)
 		create(*a).freeze
 	end
+	def normalize
+		freeze
+	end
 end")}
 
 
