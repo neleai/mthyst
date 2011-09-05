@@ -1,3 +1,15 @@
+class Anything_
+	def inspect
+		"Anything"
+	end
+end
+Anything=Anything_.new
+class Empty_
+  def inspect
+    "Empty"
+  end
+end
+Empty=Empty_.new
 class First_Dataflow < Amethyst
 	def initialize
     @depend=Oriented_Graph.new
@@ -36,7 +48,7 @@ end
 
 class Switch_Dataflow < First_Dataflow
   def firstchar(s)
-	  return :empty if s.size==15
+	  return Empty if s.size==15
     s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
     eval('"'+s+'"')[0]
   end
@@ -48,7 +60,7 @@ end
 class FirstLattice
 	attr_accessor :ary
   def self.empty
-    self[:empty]
+    self[Empty]
   end
   def self.bottom
     self[]
@@ -63,9 +75,13 @@ class FirstLattice
 		self.class[*(ary&a.ary)]
 	end
 	def seqjoin(a)
-    return self unless a.ary.include? :empty
+    return self unless a.ary.include? Empty
     (self-self.class.empty)+a
   end
+	def ==(a)
+		return false unless a.is_a?(FirstLattice)
+		ary.map{|e| e.inspect}.uniq.sort==a.ary.map{|e| e.inspect}.uniq.sort
+	end
 end
 class CharLattice < FirstLattice
 	def self.[](*ary)
@@ -74,7 +90,7 @@ class CharLattice < FirstLattice
 		c
 	end
 	def self.top
-		CharLattice[:anything]
+		CharLattice[Anything]
 	end
 end
 
@@ -89,7 +105,7 @@ class ClasLattice < FirstLattice
     ClasLattice["Object"]
   end
 	def seqjoin(a)
-    return self #unless a.ary.include? :empty
+    return self #unless a.ary.include? Empty
     (self-self.class.empty)+a
   end
 end
@@ -125,8 +141,8 @@ amethyst ClasSwitch_Dataflow < First_Dataflow{
         | Many[value:val {val+ClasLattice.empty} ]
         | (Act|CAct)[.* {ClasLattice.empty} ]
         | Apply[ ["clas"] Act[.:cls] {ClasLattice[cls]}]
-        | Apply[ .* {ClasLattice.top}]
         | . {ClasLattice.top+ClasLattice.empty}
+				| Apply[ :name &{$rules[name]} .* {$rules[name].body}=>value]
 }
 
 class Detect_First< Traverser_Clone2
@@ -143,9 +159,9 @@ class Detect_Switch < Detect_First
 	end
 	def intersects(p,e)
 		return true if e==:default
-		r=(first(p).ary & [e,:empty,:anything])!=[]
+		r=(first(p).ary & [e,Empty,Anything])!=[]
 		puts first(p).ary.inspect
-		puts [e,:empty,:anything].inspect
+		puts [e,Empty,Anything].inspect
 		puts r
 		r
 	end
@@ -158,7 +174,7 @@ class Detect_ClasSwitch < Detect_First
 			@switchdf.parse(:root,[])
 		end
 		r=@switchdf.analyze(s)
-		return ClasLattice.top if r.ary.include?(:empty)
+		return ClasLattice.top if r.ary.include?(Empty)
 		return r
 	end
 	def child(par,chld)
@@ -194,7 +210,7 @@ class Detect_ClasSwitch < Detect_First
 end
 
 amethyst Detect_First < Traverser_Clone2 {
-	itrans =   (Grammar[ {@@name=@name} @rules=>[ Rule[root]*:rules ] {@rules=rules} @self] | .)*
+	itrans =   (Grammar[ {@@name=@name} {$rules={};@rules.each{|r| $rules[r.name]=r}} @rules=>[ Rule[root]*:rules ] {@rules=rules} @self] | .)*
 
 	root = traverse
 }
@@ -203,7 +219,7 @@ amethyst Detect_Switch < Detect_First {
 	visit = Or[ {CharLattice[]}:ary2 {[]}:ary3
 		(traverse_item:e &{first(e)} {ary2+=first(e)})* &eof
 		{ary2}:firs
-		{ary2=ary2.ary.map{|e|  [:anything,:empty].include?(e) ? :default : e}.uniq}
+		{ary2=ary2.ary.map{|e|  [Anything,Empty].include?(e) ? :default : e}.uniq}
 		&{ary2.size>1}
 		{ary2.each{|e|
 			ary3<<[e,Or[{:ary=>@ary.select{|p|intersects(p,e)}}]]

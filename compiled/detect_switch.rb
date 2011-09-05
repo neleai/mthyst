@@ -1,3 +1,15 @@
+class Anything_
+	def inspect
+		"Anything"
+	end
+end
+Anything=Anything_.new
+class Empty_
+  def inspect
+    "Empty"
+  end
+end
+Empty=Empty_.new
 class First_Dataflow < Amethyst
 	def initialize
     @depend=Oriented_Graph.new
@@ -36,7 +48,7 @@ end
 
 class Switch_Dataflow < First_Dataflow
   def firstchar(s)
-	  return :empty if s.size==15
+	  return Empty if s.size==15
     s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
     eval('"'+s+'"')[0]
   end
@@ -48,7 +60,7 @@ end
 class FirstLattice
 	attr_accessor :ary
   def self.empty
-    self[:empty]
+    self[Empty]
   end
   def self.bottom
     self[]
@@ -63,9 +75,13 @@ class FirstLattice
 		self.class[*(ary&a.ary)]
 	end
 	def seqjoin(a)
-    return self unless a.ary.include? :empty
+    return self unless a.ary.include? Empty
     (self-self.class.empty)+a
   end
+	def ==(a)
+		return false unless a.is_a?(FirstLattice)
+		ary.map{|e| e.inspect}.uniq.sort==a.ary.map{|e| e.inspect}.uniq.sort
+	end
 end
 class CharLattice < FirstLattice
 	def self.[](*ary)
@@ -74,7 +90,7 @@ class CharLattice < FirstLattice
 		c
 	end
 	def self.top
-		CharLattice[:anything]
+		CharLattice[Anything]
 	end
 end
 
@@ -89,7 +105,7 @@ class ClasLattice < FirstLattice
     ClasLattice["Object"]
   end
 	def seqjoin(a)
-    return self #unless a.ary.include? :empty
+    return self #unless a.ary.include? Empty
     (self-self.class.empty)+a
   end
 end
@@ -298,10 +314,16 @@ def first_ClasSwitch_Dataflowcb_22(bind)
 ClasLattice[bind[28]]
 end
 def first_ClasSwitch_Dataflowcb_23(bind)
-ClasLattice.top
+ClasLattice.top+ClasLattice.empty
 end
 def first_ClasSwitch_Dataflowcb_24(bind)
-ClasLattice.top+ClasLattice.empty
+($rules[bind[31]]) || FAIL
+end
+def first_ClasSwitch_Dataflowcb_25(bind)
+$rules[bind[31]].body
+end
+def first_ClasSwitch_Dataflowcb_26(bind)
+bind[32]=[bind[32]]
 end
 def first_ClasSwitch_Dataflowcb_3(bind)
 ClasLattice.top+ClasLattice.empty
@@ -357,9 +379,9 @@ class Detect_Switch < Detect_First
 	end
 	def intersects(p,e)
 		return true if e==:default
-		r=(first(p).ary & [e,:empty,:anything])!=[]
+		r=(first(p).ary & [e,Empty,Anything])!=[]
 		puts first(p).ary.inspect
-		puts [e,:empty,:anything].inspect
+		puts [e,Empty,Anything].inspect
 		puts r
 		r
 	end
@@ -372,7 +394,7 @@ class Detect_ClasSwitch < Detect_First
 			@switchdf.parse(:root,[])
 		end
 		r=@switchdf.analyze(s)
-		return ClasLattice.top if r.ary.include?(:empty)
+		return ClasLattice.top if r.ary.include?(Empty)
 		return r
 	end
 	def child(par,chld)
@@ -437,24 +459,27 @@ def itrans_Detect_Firstcb_1(bind)
 @name=@src.name
 end
 def itrans_Detect_Firstcb_2(bind)
-@src.rules
+$rules={};@src.rules.each{|r| $rules[r.name]=r}
 end
 def itrans_Detect_Firstcb_3(bind)
-bind[2]=[bind[2]]
+@src.rules
 end
 def itrans_Detect_Firstcb_4(bind)
-Rule
+bind[2]=[bind[2]]
 end
 def itrans_Detect_Firstcb_5(bind)
-_append(bind[4],bind[7])
+Rule
 end
 def itrans_Detect_Firstcb_6(bind)
-@src.rules=bind[8]
+_append(bind[4],bind[7])
 end
 def itrans_Detect_Firstcb_7(bind)
-@src
+@src.rules=bind[8]
 end
 def itrans_Detect_Firstcb_8(bind)
+@src
+end
+def itrans_Detect_Firstcb_9(bind)
 _append(bind[0],bind[10])
 end
 def traverse_Detect_Firstcb_1(bind)
@@ -573,7 +598,7 @@ def visit_Detect_Switchcb_4(bind)
 bind[1]+=first(bind[3])
 end
 def visit_Detect_Switchcb_5(bind)
-bind[1]=bind[1].ary.map{|bind[3]|  [:anything,:empty].include?(bind[3]) ? :default : bind[3]}.uniq
+bind[1]=bind[1].ary.map{|bind[3]|  [Anything,Empty].include?(bind[3]) ? :default : bind[3]}.uniq
 end
 def visit_Detect_Switchcb_6(bind)
 (bind[1].size>1) || FAIL
@@ -724,15 +749,15 @@ end
 
 
 def detect_switch_compiled_by
-'4ab2b7634dddee8de8389bb3e7f5a086'
+'4f060f367d394bd9ece9627ba6e4c563'
 end
 def detect_switch_source_hash
-'36a6ff18db17e9f9b4452f288da436cd'
+'5781cdaba8b25995c3d400d258cb09d7'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'88c35c21fb36af9c9f5d3b10031dace8'
+'12d9ef078bee2a5eb5b639b3385099ab'
 end
   require 'compiled/detect_switch_c'
