@@ -85,6 +85,12 @@ def _Bind(name,expr,append=nil)
 	  return Seq[_Bind(a,expr),PureAct[Args["_append(",_Local(name),",",a,")"]]]
 	end	
 	if name.is_a?(Local) || name.is_a?(String)
+		return Or[*expr.ary.map{|a|_Bind(name,a)}] if expr.is_a?(Or)
+		if expr.is_a?(Seq) && false
+			s=Seq[*(expr.ary[0...-1]+[_Bind(name,expr.ary[-1])])] 
+			puts s.inspect
+			return s
+		end
 		Bind.create({:name=>_Local(name),:expr=>expr})
 	else
 		a=autovar

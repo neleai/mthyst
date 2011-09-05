@@ -2,9 +2,8 @@ class Move_Assignments2 < Traverser_Clone2
 def self.switchcb_Move_Assignments21(e)
 return 0 if e<=Or
 return 1 if e<=Seq
-return 2 if e<=Pass
-return 3 if e<=Object
-return 4
+return 2 if e<=Object
+return 3
 end
 @@switchhashMove_Assignments21=Hash.new{|h,k| h[k]=switchcb_Move_Assignments21(k)}
 def switchcbMove_Assignments21(e)
@@ -23,9 +22,8 @@ end
 def self.switchcb_Move_Assignments23(e)
 return 0 if e<=Or
 return 1 if e<=Seq
-return 2 if e<=Pass
-return 3 if e<=Object
-return 4
+return 2 if e<=Object
+return 3
 end
 @@switchhashMove_Assignments23=Hash.new{|h,k| h[k]=switchcb_Move_Assignments23(k)}
 def switchcbMove_Assignments23(e)
@@ -39,21 +37,6 @@ def fails_Move_Assignments2cb_1(bind)
 end
 def move_Move_Assignments2cb_1(bind)
 _append(bind[1],bind[3])
-end
-def move_Move_Assignments2cb_10(bind)
-bind[17]=[bind[17]]
-end
-def move_Move_Assignments2cb_11(bind)
-@src.enter
-end
-def move_Move_Assignments2cb_12(bind)
-Pass.create( {:ary=>bind[4],:to=>bind[18],:var=>bind[16] })
-end
-def move_Move_Assignments2cb_13(bind)
-_Bind(bind[2],bind[7],false)
-end
-def move_Move_Assignments2cb_14(bind)
-_Bind(bind[2],bind[7],false)
 end
 def move_Move_Assignments2cb_2(bind)
 Or[{:ary=>bind[4]}]
@@ -74,10 +57,7 @@ def move_Move_Assignments2cb_7(bind)
 _Bind(bind[2],bind[7],false)
 end
 def move_Move_Assignments2cb_8(bind)
-@src.var
-end
-def move_Move_Assignments2cb_9(bind)
-@src.to
+_Bind(bind[2],bind[7],false)
 end
 def traverse_Move_Assignments2cb_1(bind)
 @changed
@@ -127,24 +107,6 @@ def visit_Move_Assignments2cb_11(bind)
 _Bind(bind[5],bind[12],false)
 end
 def visit_Move_Assignments2cb_12(bind)
-@src.var
-end
-def visit_Move_Assignments2cb_13(bind)
-@src.to
-end
-def visit_Move_Assignments2cb_14(bind)
-bind[22]=[bind[22]]
-end
-def visit_Move_Assignments2cb_15(bind)
-@src.enter
-end
-def visit_Move_Assignments2cb_16(bind)
-Pass.create( {:ary=>bind[9],:to=>bind[23],:var=>bind[21] })
-end
-def visit_Move_Assignments2cb_17(bind)
-_Bind(bind[5],bind[12],false)
-end
-def visit_Move_Assignments2cb_18(bind)
 _Bind(bind[5],bind[12],false)
 end
 def visit_Move_Assignments2cb_2(bind)
@@ -178,15 +140,15 @@ end
 
 
 def dead_code_elimination2_compiled_by
-'90280e238b9819c10296cd86ef0c2494'
+'2afaa35b2e8828b5cd8753bcf4142b64'
 end
 def dead_code_elimination2_source_hash
-'0468eaf2584b080c70ce4ee6724f230f'
+'8c3dc1e48411acae0a657f38495081d5'
 end
 def testversiondead_code_elimination2(r)
  raise "invalid version" if r!=dead_code_elimination2_version
 end
 def dead_code_elimination2_version
-'739adc31653e612e5b7edf7249fa45b0'
+'8f34ee47e1c8b9551e843b906afde7dc'
 end
   require 'compiled/dead_code_elimination2_c'

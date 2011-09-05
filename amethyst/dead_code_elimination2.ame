@@ -7,7 +7,6 @@ amethyst Move_Assignments2 < Traverser_Clone2 {
 
 	move(name) = Or[ move(name)*:ary {Or[{:ary=>ary}]} ]
 								| Seq[ (:el (&eof {el}=>move(name) | {el}) )*:ary  {Seq[{:ary=>ary}]} ] 
-								| Pass[@var:var @to=>move(name):to @enter:enter] @Pass
 								| anything:{_Bind(name,it,false)}
 }
 
