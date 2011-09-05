@@ -183,6 +183,9 @@ class CAct
 		c=CAct.create({:ary=>a})
 		c.freeze
 	end
+	def pure
+		true
+	end
 end
 class Act
 	def self.[](expr=nil,pred=nil)

@@ -23,6 +23,9 @@ end
 def clas_Constant_Traversercb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
+def empty_Constant_Traversercb_1(bind)
+
+end
 def fails_Constant_Traversercb_1(bind)
 (false) || FAIL
 end
@@ -99,6 +102,6 @@ def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
 end
 def constant_propagation_version
-'d0912bc122a993cb37c8af1f62ef553c'
+'16acc0a7b248d428558e5a5feef65899'
 end
   require 'compiled/constant_propagation_c'

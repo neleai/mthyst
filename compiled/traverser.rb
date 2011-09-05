@@ -12,6 +12,9 @@ end
 def clas_Traversercb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
+def empty_Traversercb_1(bind)
+
+end
 def fails_Traversercb_1(bind)
 (false) || FAIL
 end
@@ -59,6 +62,9 @@ def switchcbTraverser_Clone22(e)
 end
 def clas_Traverser_Clone2cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
+end
+def empty_Traverser_Clone2cb_1(bind)
+
 end
 def fails_Traverser_Clone2cb_1(bind)
 (false) || FAIL
@@ -121,6 +127,9 @@ end
 def clas_Visitorcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
+def empty_Visitorcb_1(bind)
+
+end
 def fails_Visitorcb_1(bind)
 (false) || FAIL
 end
@@ -150,6 +159,6 @@ def testversiontraverser(r)
  raise "invalid version" if r!=traverser_version
 end
 def traverser_version
-'7a596ca41749da7db2d467b3ede272b4'
+'effeac3ec05529ab8108693c073e5e66'
 end
   require 'compiled/traverser_c'

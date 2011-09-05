@@ -112,6 +112,9 @@ end
 def clas_Dataflowcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
+def empty_Dataflowcb_1(bind)
+
+end
 def fails_Dataflowcb_1(bind)
 (false) || FAIL
 end
@@ -374,6 +377,9 @@ end
 def clas_Dead_Code_Deleter3cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
+def empty_Dead_Code_Deleter3cb_1(bind)
+
+end
 def fails_Dead_Code_Deleter3cb_1(bind)
 (false) || FAIL
 end
@@ -455,7 +461,7 @@ def visit_Dead_Code_Deleter3cb_7(bind)
 @src.expr
 end
 def visit_Dead_Code_Deleter3cb_8(bind)
-@reachable[bind[4]] ? @src : bind[6]
+@reachable[bind[4]] ? @src : (((bind[6].is_a?(Act)||bind[6].is_a?(CAct))&&bind[6].pure)? Act[] : bind[6])
 end
 def visit_Dead_Code_Deleter3cb_9(bind)
 @src
@@ -470,12 +476,12 @@ def dataflow_ssa_compiled_by
 '793e966a1b9536509d81486e8f275c5b'
 end
 def dataflow_ssa_source_hash
-'ab2ba60da629c9e89c0c52e0cb8cc7c1'
+'b412e6bde310472e62d35ea1f1c84803'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'f25c5fe44d48068aa38f033af3443854'
+'4321a8a85bf9f3d6c84aa0aa28b3bd9a'
 end
   require 'compiled/dataflow_ssa_c'

@@ -12,6 +12,9 @@ end
 def clas_Renamer2cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
+def empty_Renamer2cb_1(bind)
+
+end
 def fails_Renamer2cb_1(bind)
 (false) || FAIL
 end
@@ -86,6 +89,9 @@ end
 def clas_DetectCallscb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
+def empty_DetectCallscb_1(bind)
+
+end
 def fails_DetectCallscb_1(bind)
 (false) || FAIL
 end
@@ -133,6 +139,9 @@ def switchcbInliner23(e)
 end
 def clas_Inliner2cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
+end
+def empty_Inliner2cb_1(bind)
+
 end
 def fails_Inliner2cb_1(bind)
 (false) || FAIL
@@ -228,6 +237,6 @@ def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version
 end
 def inliner2_version
-'646e79f00c8b78d9112565a3ca77b291'
+'2165693930c9d303fb7b4d777d6fbb22'
 end
   require 'compiled/inliner2_c'

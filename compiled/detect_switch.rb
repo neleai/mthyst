@@ -96,6 +96,9 @@ end
 
 class First_Dataflow < Amethyst
 
+def empty_First_Dataflowcb_1(bind)
+
+end
 def fails_First_Dataflowcb_1(bind)
 (false) || FAIL
 end
@@ -131,6 +134,9 @@ def switchcbSwitch_Dataflow2(e)
 end
 def clas_Switch_Dataflowcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
+end
+def empty_Switch_Dataflowcb_1(bind)
+
 end
 def fails_Switch_Dataflowcb_1(bind)
 (false) || FAIL
@@ -248,6 +254,9 @@ def switchcbClasSwitch_Dataflow4(e)
 end
 def clas_ClasSwitch_Dataflowcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
+end
+def empty_ClasSwitch_Dataflowcb_1(bind)
+
 end
 def fails_ClasSwitch_Dataflowcb_1(bind)
 (false) || FAIL
@@ -430,6 +439,9 @@ end
 def clas_Detect_Firstcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
+def empty_Detect_Firstcb_1(bind)
+
+end
 def fails_Detect_Firstcb_1(bind)
 (false) || FAIL
 end
@@ -512,6 +524,9 @@ def switchcbDetect_Switch7(e)
 end
 def clas_Detect_Switchcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
+end
+def empty_Detect_Switchcb_1(bind)
+
 end
 def fails_Detect_Switchcb_1(bind)
 (false) || FAIL
@@ -617,6 +632,9 @@ def switchcbDetect_ClasSwitch9(e)
 end
 def clas_Detect_ClasSwitchcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
+end
+def empty_Detect_ClasSwitchcb_1(bind)
+
 end
 def fails_Detect_ClasSwitchcb_1(bind)
 (false) || FAIL
@@ -733,6 +751,6 @@ def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'47d553d701375b5f92d7ff938fda58a9'
+'8bfb1d8bc32083a4058137e983acfe6c'
 end
   require 'compiled/detect_switch_c'

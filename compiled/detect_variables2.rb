@@ -44,6 +44,9 @@ end
 def clas_Analyze_Variables2cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
+def empty_Analyze_Variables2cb_1(bind)
+
+end
 def fails_Analyze_Variables2cb_1(bind)
 (false) || FAIL
 end
@@ -185,6 +188,6 @@ def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'0b066a0a051db498be91ff20ca8587f4'
+'226b49391c357db656c840fb8ffb448e'
 end
   require 'compiled/detect_variables2_c'
