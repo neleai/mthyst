@@ -281,7 +281,7 @@ def visit_Dataflowcb_36(bind)
 Lookahead[*bind[0]]
 end
 def visit_Dataflowcb_37(bind)
-@src.dup
+d=@src.dup;ssanum(d);d
 end
 def visit_Dataflowcb_4(bind)
 bind[7].each{|v| @marked<<ssanum(v)}
@@ -410,7 +410,7 @@ def dataflow_ssa_compiled_by
 '231ffbd749f30d18bc9c6755273ffcc3'
 end
 def dataflow_ssa_source_hash
-'19a8f36bd7f8debfee126fd6cc3706e9'
+'1d8eec029994859071ae2ba80a5b6a86'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
