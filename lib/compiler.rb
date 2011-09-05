@@ -63,6 +63,7 @@ class <<Compiler
 
 		callg=Oriented_Graph.new
 		names=@grammars[grammar.name].rules.map{|name,code| name}
+		names2=names.dup
 		i=0
 		while i<names.size
 			calls=DetectCalls.new.parse(:root,[@grammars[grammar.name].getrule(names[i])])
@@ -78,9 +79,11 @@ class <<Compiler
 			i+=1
 		end
 		topo= callg.topo_order
+		called=callg.reverse.reachable(names2)
+		puts called.inspect
 		puts callg.inspect
 		puts topo.inspect
-		topo.each{|name|if @grammars[grammar.name].rules[name]
+		topo.each{|name|if @grammars[grammar.name].rules[name] && called[name]
 				@grammars[grammar.name].opt(@grammars[grammar.name].rules[name])
 				
 if true
