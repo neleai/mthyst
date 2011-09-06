@@ -134,6 +134,13 @@ class Seq
 		return Seq.create(*args) if args[-1].is_a?(Hash)
 		Seq.create({:ary=>args}).normalize
 	end
+	def normalize
+		s=super
+		s.ary.each_index{|i|if i!=s.ary.size-1
+			return Seq[*s.ary[0..i]] if s.ary[i].is_a?(Apply) && s.ary[i][0]=="fails"
+		end}
+		s
+	end
 end
 
 class Or
