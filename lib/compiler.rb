@@ -60,14 +60,14 @@ class <<Compiler
 	end
 	def add_grammar(grammar)
 		@grammars[grammar.name]=Gram.new(grammar)
-
+		calls={}
 		callg=Oriented_Graph.new
 		names=@grammars[grammar.name].rules.map{|name,code| name}
 		names2=names.dup
 		i=0
 		while i<names.size
-			calls=DetectCalls.new.parse(:root,[@grammars[grammar.name].getrule(names[i])])
-			calls.each{|c,t|
+			calls[names[i]]=DetectCalls.new.parse(:root,[@grammars[grammar.name].getrule(names[i])])
+			calls[names[i]].each{|c,t|
       	if !@grammars[grammar.name].rules[c]
 					if r=@grammars[grammar.name].getrule(c)
 						@grammars[grammar.name].rules[c]=r
@@ -83,13 +83,12 @@ class <<Compiler
 		puts called.inspect
 		puts callg.inspect
 		puts topo.inspect
-		topo.each{|name|if @grammars[grammar.name].rules[name] #&& called[name]
+		topo.each{|name|if @grammars[grammar.name].rules[name] && called[name]
 				@grammars[grammar.name].opt(@grammars[grammar.name].rules[name])
 				
 if true
 				inlined=false
-				calls= DetectCalls.new.parse(:root,[@grammars[grammar.name].rules[name]])
-				calls.each{|nm,v|
+				calls[name].each{|nm,v|
 					r=@grammars[grammar.name].getrule(nm)
 					if r && topo.index(nm)<topo.index(name) 
 						if r.args.size>0  && r.name!="clas" || ["char","space"].include?(r.name)

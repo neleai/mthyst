@@ -1,9 +1,3 @@
-amethyst Renamer2 < Traverser_Clone2 {
-	root = Rule[{@@newvars={}} traverse]
-	
-	visit = Local[ :name @self:this ]  -> @@newvars[this] ? @@newvars[this] : ($av+=1; @@newvars[this]=_Local(name,$av) ;@@newvars[this] )
-}
-
 amethyst DetectCalls < Visitor {
 	root = Rule[{@@calls={}} traverse {@@calls} ]
 	
@@ -11,9 +5,14 @@ amethyst DetectCalls < Visitor {
 }
 
 amethyst Inliner2 < Traverser_Clone2 {
-	
 	root = :from :to {from}=>Rule[@name:name @args:args @locals:locals @body:body]  {@@name=name;@@args=args;@@body=body } 
 				 {to}=>Rule[traverse]
  
- visit = Apply[:name &{name==@@name} .*:args] ->  body=deep_clone(@@body);puts args.inspect; args.each_index{|i| body=Seq[_Bind(@@args[i],args[i]),body] } ; body
+  visit = Apply[:name &{name==@@name} .*:args] ->  body=deep_clone(@@body); args.each_index{|i| body=Seq[_Bind(@@args[i],args[i]),body] } ; body
+}
+
+amethyst Replace_Super < Traverser_Clone2 {
+	root = :name :to   {@@name=name;}  {to}=>Rule[traverse]
+ 
+  visit = Apply[:name &{name=="super"} .*:args {Apply[*([@@name]+args)] }]
 }
