@@ -31,7 +31,6 @@ left factor and binding
 optimalization of lookaheads such that in anything* ~anything the ~anything is automaticaly satisfied(aka eof)
 in ~space space* the  space* must be empty 
 Do it by constant propagation?
-delete choices after fail
 
 dont duplicate rules that dont refer to overwritten rule
 

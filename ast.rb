@@ -266,7 +266,7 @@ class Local
 	def self.[](*a)
     r=super
     r.instance_variable_set(:@hash,r.ary.hash)
-    r
+    r.normalize
   end
 end
 class Local
