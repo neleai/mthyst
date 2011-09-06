@@ -25,7 +25,7 @@ class Dataflow < Traverser
 	  ssanums.each{|var,num|
 			if var.is_a?(Local)
 	      if prev[var]!=num
-					varp=var.clone
+					varp=var.dup
 					varp.ssano=prev[var]
  	       edges.add([var,ssanums[var]],[varp,prev[var]] )
  	     end
@@ -46,6 +46,10 @@ class Dataflow < Traverser
       n=newssanum(name)
       edges.add(exp,n)
     end
+		puts exp.inspect
+		puts n.inspect
+		exp.name=n[0]
+		exp
 	end
 	def or_end(join)
    ssanums.clone.each{|k,v|
@@ -271,34 +275,34 @@ def visit_Dataflowcb_28(bind)
 bind_end(@src)
 end
 def visit_Dataflowcb_29(bind)
-@src
+@src.vars
 end
 def visit_Dataflowcb_3(bind)
 bind[5]=[bind[5]]
 end
 def visit_Dataflowcb_30(bind)
-@src.vars
-end
-def visit_Dataflowcb_31(bind)
 bind[41]=[bind[41]]
 end
-def visit_Dataflowcb_32(bind)
+def visit_Dataflowcb_31(bind)
 _append(bind[43],bind[44])
 end
-def visit_Dataflowcb_33(bind)
+def visit_Dataflowcb_32(bind)
 n=Result[{:name=>@src.name,:vars=>bind[7]}]; bind[7].each{|w| @edges.add(w.ssaname,n) } ; n
 end
-def visit_Dataflowcb_34(bind)
+def visit_Dataflowcb_33(bind)
 CAct
 end
-def visit_Dataflowcb_35(bind)
+def visit_Dataflowcb_34(bind)
 Bnding
 end
-def visit_Dataflowcb_36(bind)
+def visit_Dataflowcb_35(bind)
 Global
 end
-def visit_Dataflowcb_37(bind)
+def visit_Dataflowcb_36(bind)
 Key
+end
+def visit_Dataflowcb_37(bind)
+@src
 end
 def visit_Dataflowcb_38(bind)
 _append(bind[49],bind[50])
@@ -433,15 +437,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'1b3240ea73c88f073864f44084cccd60'
+'deb7f9dd93c80a6de99457f9a7d2d8b5'
 end
 def dataflow_ssa_source_hash
-'2c65dad5c0f3ac03f56fac5cf9e577cd'
+'e01f79486090d98b88cba369f7806bf6'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'5f9536bbc03fe3087e44dc9302e65f78'
+'9a4005c8b622e7a6dbe249d3752f22b9'
 end
   require 'compiled/dataflow_ssa_c'
