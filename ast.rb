@@ -97,7 +97,7 @@ class Bind
 		return Or[*expr.ary.map{|a|_Bind(name,a)}] if @expr.is_a?(Or)
     return Seq[*(expr.ary[0...-1]+[_Bind(name,expr.ary[-1])])] if @expr.is_a?(Seq) && @expr.ary.size>0
 
-		self#.freeze
+		self.freeze
 	end
 end
 
