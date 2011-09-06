@@ -34,17 +34,18 @@ class Dataflow < Traverser
 	end
 	def bind_end(exp)
 		name=exp.name
+		n=newssanum(name.dup)
+    edges.add(exp,n)
+
+		bnd=_Bind(n[0],exp.expr)
+		
 		val=exp
 		val=val.expr while val.is_a?(Bind) 
 	  if val.is_a?(Local) 
       o=ssanum(val)
-      n=newssanum(name)
-			edges.add(exp,n)
       edges.add(o,n)
     else
       edges.add(val,exp)
-      n=newssanum(name)
-      edges.add(exp,n)
     end
 		puts exp.inspect
 		puts n.inspect
@@ -314,7 +315,7 @@ def visit_Dataflowcb_4(bind)
 bind[7].each{|v| @marked<<ssanum(v)}
 end
 def visit_Dataflowcb_40(bind)
-d=@src.dup;ssanum2(d);d
+d=@src.dup;ssanum2(d)[0]
 end
 def visit_Dataflowcb_5(bind)
 oldssanums.clone
@@ -440,7 +441,7 @@ def dataflow_ssa_compiled_by
 'deb7f9dd93c80a6de99457f9a7d2d8b5'
 end
 def dataflow_ssa_source_hash
-'e01f79486090d98b88cba369f7806bf6'
+'e175a82dd634aed551fe59a0dc78dc2c'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version

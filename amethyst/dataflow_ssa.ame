@@ -34,17 +34,18 @@ class Dataflow < Traverser
 	end
 	def bind_end(exp)
 		name=exp.name
+		n=newssanum(name.dup)
+    edges.add(exp,n)
+
+		bnd=_Bind(n[0],exp.expr)
+		
 		val=exp
 		val=val.expr while val.is_a?(Bind) 
 	  if val.is_a?(Local) 
       o=ssanum(val)
-      n=newssanum(name)
-			edges.add(exp,n)
       edges.add(o,n)
     else
       edges.add(val,exp)
-      n=newssanum(name)
-      edges.add(exp,n)
     end
 		puts exp.inspect
 		puts n.inspect
@@ -83,7 +84,7 @@ amethyst Dataflow < Traverser {
 				| Result[ @vars=>[traverse_item*:var] {n=Result[{:name=>@name,:vars=>var}]; var.each{|w| @@edges.add(w.ssaname,n) } ; n} ]
 				| (CAct | Bnding | Global | Key)[.*{@self}]
 				| Lookahead[ traverse_item*:t {Lookahead[*t]} ]
-				| Local[ .* {d=@dup;ssanum2(d);d} ]
+				| Local[ .* {d=@dup;ssanum2(d)[0]} ]
 
 				vars_in={ary=[]}
 								( Global[ @self:ary[]  {@@marked<<@self} .*]								
