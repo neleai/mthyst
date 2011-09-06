@@ -1,4 +1,4 @@
-class Dataflow < Traverser
+class Dataflow < Traverser_Clone2
 	attr_accessor :ssanums,:oldssanums,:edges
 	def initialize
 		@edges=Oriented_Graph.new
@@ -66,7 +66,7 @@ class Local
 	end
 end
 
-amethyst Dataflow < Traverser {
+amethyst Dataflow < Traverser_Clone2 {
 	root =  @self=>Rule[ {@@bnding=@bnding} @args=>[traverse_item*:var] {var.each{|v| @@marked<<ssanum(v)};@args=var} ({@body}=>traverse_item):body {@body=body} {@reachable=@@edges.reverse.reachable(@@marked+[ssanum(@body[-1]),@body]); @cfg=@@edges; } {@self} ]
 	
 	visit = Apply[  traverse_item*:t {Apply[*t]}:app {app}=>[vars_in:var] {var.each{|v| @@marked<<ssanum(v)}} {app} ]

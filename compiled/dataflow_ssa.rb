@@ -1,4 +1,4 @@
-class Dataflow < Traverser
+class Dataflow < Traverser_Clone2
 	attr_accessor :ssanums,:oldssanums,:edges
 	def initialize
 		@edges=Oriented_Graph.new
@@ -66,7 +66,7 @@ class Local
 	end
 end
 
-class Dataflow < Traverser
+class Dataflow < Traverser_Clone2
 def self.switchcb_Dataflow2(e)
 return 0 if e<=Apply
 return 1 if e<=Or
@@ -156,13 +156,27 @@ def root_Dataflowcb_9(bind)
 bind[7]=[bind[7]]
 end
 def traverse_Dataflowcb_1(bind)
-(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
+@changed
 end
 def traverse_Dataflowcb_2(bind)
-bind[1]=[bind[1]]
+(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
 end
 def traverse_Dataflowcb_3(bind)
-bind[0].instance_variable_set(bind[4],bind[5])
+bind[4]=[bind[4]]
+end
+def traverse_Dataflowcb_4(bind)
+@changed=false
+end
+def traverse_Dataflowcb_5(bind)
+(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
+end
+def traverse_Dataflowcb_6(bind)
+if bind[3]
+             @changed=true;bind[2].normalize
+           else
+            @changed=bind[0]
+            @src
+          end
 end
 def traverse_item_Dataflowcb_1(bind)
 @changed=true
@@ -435,15 +449,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'deb7f9dd93c80a6de99457f9a7d2d8b5'
+'dc800c4f3e6a83293d0407e36e545fd1'
 end
 def dataflow_ssa_source_hash
-'3e1464467a434abdff63ee4e84e08fc2'
+'17deedeeb7a21e39e8f6dfe9d1d8d6ae'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'9a4005c8b622e7a6dbe249d3752f22b9'
+'50356361a4213f8e9c4e8c9a567df38b'
 end
   require 'compiled/dataflow_ssa_c'
