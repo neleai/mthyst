@@ -115,6 +115,12 @@ end
 def root_Dataflowcb_1(bind)
 bind[0]=[bind[0]]
 end
+def root_Dataflowcb_10(bind)
+@src.body=bind[9]
+end
+def root_Dataflowcb_11(bind)
+@src.reachable=@edges.reverse.reachable(@marked+[ssanum(@src.body[-1]),@src.body]); @src.cfg=@edges; 
+end
 def root_Dataflowcb_2(bind)
 Rule
 end
@@ -128,16 +134,16 @@ def root_Dataflowcb_5(bind)
 bind[2]=[bind[2]]
 end
 def root_Dataflowcb_6(bind)
-bind[4].each{|v| @marked<<ssanum(v)}
+_append(bind[4],bind[5])
 end
 def root_Dataflowcb_7(bind)
-@src.body
+bind[6].each{|v| @marked<<ssanum(v)};@src.args=bind[6]
 end
 def root_Dataflowcb_8(bind)
-@src.body=bind[7]
+@src.body
 end
 def root_Dataflowcb_9(bind)
-@src.reachable=@edges.reverse.reachable(@marked+[ssanum(@src.body[-1]),@src.body]); @src.cfg=@edges; 
+bind[7]=[bind[7]]
 end
 def traverse_Dataflowcb_1(bind)
 (@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
@@ -419,15 +425,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'416867580a9f9e5165f1bcaa15354e90'
+'c51339cb14e9420935f7bae21c4865da'
 end
 def dataflow_ssa_source_hash
-'bd7f9f990ce78fe10ed1f455b3b6a669'
+'026a99a83a3724d0fdb5d74d24d04c11'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'e24601babaa50cd727f349cfeedf820c'
+'fcd5e1ef44b5f575c44413ce1f8cf2b5'
 end
   require 'compiled/dataflow_ssa_c'

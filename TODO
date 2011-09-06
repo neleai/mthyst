@@ -52,4 +52,4 @@ dataflow cantfail, noresult
 make bind pure
 saner handling of Locals
 
-classwicch predicate written by lattice terminology
+detects also rules in parent that call but are not called
