@@ -74,12 +74,12 @@ amethyst Dataflow < Traverser_Clone2 {
 				| Many[  {ssanums.clone}:prev traverse_item*:t {many_end(prev)} {Many.create({:ary=>t}).normalize} ] 
 			  | Pass[ @to=>traverse_item:to @var=>traverse_item:var {@@marked<<var.ssaname} {Pass.create({:to=>to,:var=>var}).normalize} ]
 				| Act[ traverse_item:t {Act[t,@pred]}:act {@@marked<<act if @pred || !@pure} 
-							 {act.ary}=>[vars_in]:var  { var.each{|v| edges.add(ssanum(v),act); edges.add(act,newssanum(v.clone));}; act}
+							 {act.ary}=>[vars_in]:var  { var.each{|v| edges.add(ssanum(v),act); edges.add(act,newssanum(v));}; act}
 					]
 				| Bind[   traverse[.*  {bind_end(@self)} ] ] 
 				| Result[ @vars=>[traverse_item*:var] {n=Result[{:name=>@name,:vars=>var}]; var.each{|w| @@edges.add(w.ssaname,n) } ; n} ]
 				| Lookahead[ traverse_item*:t {Lookahead[*t]} ]
-				| Local[ .* {d=@dup;ssanum2(d)[0]} ]
+				| Local[ .* {ssanum2(@self)[0]} ]
 
 				vars_in={ary=[]}
 								( Global[ @self:ary[]  {@@marked<<@self} .*]								

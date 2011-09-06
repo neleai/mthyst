@@ -165,10 +165,10 @@ end
 	alias_method :eql?,:==
 end")}
 
-[Global,Key,Result,Switch
+[Global,Key,Result,Switch,Cut,Stop,CAct
 ].each{|c| eval("class #{c} 
 	def self.[](*a)
-		create(*a).freeze
+		create(*a).normalize
 	end
 	def normalize
 		freeze
@@ -189,10 +189,6 @@ class PureAct
 	end
 end
 class CAct
-	def self.[](*a)
-		c=CAct.create({:ary=>a})
-		c.freeze
-	end
 	def pure
 		true
 	end
@@ -208,7 +204,6 @@ class Act
 	end
 	def normalize
 		return self if !@ary
-		#@ary=[@ary[0][0]] if @ary[0].is_a?(Args) && @ary[0].size==1
 		if @ary.size==1 && !@pred
 			exp=@ary[0]
 			exp=exp[0] if exp.is_a?(Args) && exp.size==1
