@@ -10,52 +10,7 @@ class Empty_
   end
 end
 Empty=Empty_.new
-class First_Dataflow < Amethyst
-	def initialize
-    @depend=Oriented_Graph.new
-    @vals=Hash.new(CharLattice.bottom)
-		@visited={}
-  end
 
-	def analyze(e)
-    @active={}
-    @activea=[e]
-		while el=@activea.pop
-			@active.delete(el)
-      val=getvalue(el)
-      if val!=@vals[el]
-        @vals[el]=val
-        @depend.edges[el].each{|d| addactive(d)}
-      end
-
-		end
-		@vals[e]
-	end 
-	def depends(e)
-		@depend.add(e,@vis) unless @depend.edges[e].include?(@vis)
-		if !@visited[e]
-			@visited[e]=true
-			addactive(e)
-		end
-	end
-	def addactive(e)
-    if !@active[e]
-      @active[e]=true
-      @activea<<e
-    end
-  end
-end
-
-class Switch_Dataflow < First_Dataflow
-  def firstchar(s)
-	  return Empty if s.size==15
-    s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
-    eval('"'+s+'"')[0]
-  end
-end
-
-class ClasSwitch_Dataflow < First_Dataflow
-end
 
 class FirstLattice
 	attr_accessor :ary
@@ -108,40 +63,86 @@ class ClasLattice < FirstLattice
     return self	
 	end
 end
+class First_Dataflow < Amethyst
+	def initialize
+    @depend=Oriented_Graph.new
+    @vals=Hash.new(CharLattice.bottom)
+		@visited={}
+  end
 
+	def analyze(e)
+    @active={}
+    @activea=[e]
+		while el=@activea.pop
+			@active.delete(el)
+      val=getvalue(el)
+      if val!=@vals[el]
+        @vals[el]=val
+        @depend.edges[el].each{|d| addactive(d)}
+      end
+
+		end
+		@vals[e]
+	end 
+	def depends(e)
+		@depend.add(e,@vis) unless @depend.edges[e].include?(@vis)
+		if !@visited[e]
+			@visited[e]=true
+			addactive(e)
+		end
+	end
+	def addactive(e)
+    if !@active[e]
+      @active[e]=true
+      @activea<<e
+    end
+  end
+end
+
+class Switch_Dataflow < First_Dataflow
+  def firstchar(s)
+	  return Empty if s.size==15
+    s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
+    eval('"'+s+'"')[0]
+  end
+	def lattice
+		CharLattice
+	end
+end
+
+class ClasSwitch_Dataflow < First_Dataflow
+	def lattice
+		ClasLattice
+	end
+end
 amethyst First_Dataflow {
 	value =  .:x  {depends(x); @@vals[x]}
 
 
 	root = .:x analyze(x)
 	
-	first =  Seq[value*:{it.inject{|u,v|u.seqjoin(v)}}]
-				 | Or[value*:{it.inject(:+)}]
-				 | Switch[value*:{it.inject(:+)}]
-	       | Bind[@expr=>value]
-				 
+	first =	Switch[&{@first.is_a?(lattice)} .* {@first}]
+				| Seq[value*:{it.inject{|u,v|u.seqjoin(v)}}]
+				| Many[value:val {val+lattice.empty} ]
+				| Or[value*:{it.inject(:+)}]
+				| Switch[value*:{it.inject(:+)}]
+	      | Bind[@expr=>value] 
+				| (Act|CAct)[.* {lattice.empty} ]
+				| . {lattice.top+lattice.empty}
 }  			
 
 amethyst Switch_Dataflow < First_Dataflow{
-	first = Switch[&{@first.is_a?(CharLattice)} .* {@first}]
-				| Many[value:val {val+CharLattice.empty} ]
-				| (Act|CAct)[.* {CharLattice.empty} ]
-				| Apply[ ["seq"] CAct[.:str] {CharLattice[firstchar(str)]}]
-				| Apply[ ["anything" ] {CharLattice.top}]
-				| Apply[ ["regch" ] {CharLattice.top}]
+	first = Apply[ ["seq"] CAct[.:str] {lattice[firstchar(str)]}]
+				| Apply[ ["anything" ] {lattice.top}]
+				| Apply[ ["regch" ] {lattice.top}]
 				| super
-				| . {CharLattice.top+CharLattice.empty}
 
 	getvalue(v) = {@@vis=v; v}=>first
 }
 
 amethyst ClasSwitch_Dataflow < First_Dataflow{
-  first = Switch[&{@first.is_a?(ClasLattice)} .* {@first}]
-        | Many[value:val {val+ClasLattice.empty} ]
-        | (Act|CAct)[.* {ClasLattice.empty} ]
-        | Apply[ ["clas"] Act[.:cls] {ClasLattice[cls]}]
+  first = Apply[ ["clas"] Act[.:cls] {lattice[cls]}]
         | super
-				| . {ClasLattice.top+ClasLattice.empty}
 				| Apply[ :name &{$rules[name]} .* {$rules[name].body}=>value]
 
 	getvalue(v) = {@@vis=v; v}=>first

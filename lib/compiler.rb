@@ -89,7 +89,7 @@ class <<Compiler
 		puts called.inspect
 		puts callg.inspect
 		puts topo.inspect
-		topo.each{|name|if @grammars[grammar.name].rules[name] #&& called[name]
+		topo.each{|name|if @grammars[grammar.name].rules[name] && called[name]
 				@grammars[grammar.name].opt(@grammars[grammar.name].rules[name])
 				
 if true
