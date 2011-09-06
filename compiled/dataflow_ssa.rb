@@ -112,6 +112,9 @@ end
 def clas_Dataflowcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
+def fails_Dataflowcb_1(bind)
+(false) || FAIL
+end
 def root_Dataflowcb_1(bind)
 bind[0]=[bind[0]]
 end
@@ -296,13 +299,10 @@ def visit_Dataflowcb_38(bind)
 Lookahead[*bind[0]]
 end
 def visit_Dataflowcb_39(bind)
-(false) || FAIL
+d=@src.dup;ssanum(d);d
 end
 def visit_Dataflowcb_4(bind)
 bind[7].each{|v| @marked<<ssanum(v)}
-end
-def visit_Dataflowcb_40(bind)
-d=@src.dup;ssanum(d);d
 end
 def visit_Dataflowcb_5(bind)
 oldssanums.clone
@@ -425,15 +425,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'c51339cb14e9420935f7bae21c4865da'
+'ab3421f7b9310e5b828254732b338fb2'
 end
 def dataflow_ssa_source_hash
-'026a99a83a3724d0fdb5d74d24d04c11'
+'09fdce2587336b0bc83ed52675b84f37'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'fcd5e1ef44b5f575c44413ce1f8cf2b5'
+'0a932498a0f68af1b7ad204bbcb9ccf4'
 end
   require 'compiled/dataflow_ssa_c'

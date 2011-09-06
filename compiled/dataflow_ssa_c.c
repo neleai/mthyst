@@ -39,7 +39,7 @@ return it;
 fail: return failobj; }
 VALUE Dataflow_fails(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-it=CALL(visit_Dataflowcb_39,1,bind); FAILTEST(fail);
+it=CALL(fails_Dataflowcb_1,1,bind); FAILTEST(fail);
  rb_ary_store(bind,0,it); it=rb_ary_entry(bind,0);
 return it;
 fail: return failobj; }
@@ -598,7 +598,7 @@ it=rb_ary_entry(bind,50);
  rb_ary_store(bind,9,it);  break;case 13:;   it=AmethystCore_anything(self ); FAILTEST(fail);
  rb_ary_store(bind,51,it); int oldpos28=ame_getpos(self); int oldlen20=ame_getlen(self); VALUE oldsrc20=ame_getsrc(self); int fail20=0;
 ame_setsrc(self,rb_ary_entry(bind,51)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
- it=CALL(visit_Dataflowcb_39,1,bind); FAILTEST(pass20);int oldpos29; while(1){oldpos29=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break8); if (IGET(stop)!=Qnil){{oldpos29=ame_getpos(self);goto break8;} } } break8: ISET(stop,Qnil);  ame_setpos(self,oldpos29); it=CALL(visit_Dataflowcb_40,1,bind); 
+ int oldpos29; while(1){oldpos29=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break8); if (IGET(stop)!=Qnil){{oldpos29=ame_getpos(self);goto break8;} } } break8: ISET(stop,Qnil);  ame_setpos(self,oldpos29); it=CALL(visit_Dataflowcb_39,1,bind); 
  rb_ary_store(bind,52,it);   it=Dataflow_eof(self ); FAILTEST(pass20);
 	goto success20;
 	pass20: fail20=1;
@@ -862,4 +862,4 @@ rb_define_method(cls_Dead_Code_Deleter3,"root",Dead_Code_Deleter3_root,0);
 rb_define_method(cls_Dead_Code_Deleter3,"traverse",Dead_Code_Deleter3_traverse,0);
 rb_define_method(cls_Dead_Code_Deleter3,"traverse_item",Dead_Code_Deleter3_traverse_item,0);
 rb_define_method(cls_Dead_Code_Deleter3,"visit",Dead_Code_Deleter3_visit,0);
- rb_eval_string("testversiondataflow_ssa('fcd5e1ef44b5f575c44413ce1f8cf2b5')");}
+ rb_eval_string("testversiondataflow_ssa('0a932498a0f68af1b7ad204bbcb9ccf4')");}

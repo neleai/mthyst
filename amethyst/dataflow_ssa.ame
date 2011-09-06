@@ -74,7 +74,7 @@ amethyst Dataflow < Traverser {
 				| Result[ @vars=>[vars_in]:var { var.each{|w| @@edges.add(ssanum(w),@self) } ; @self} ]
 				| (CAct | Bnding | Global | Key)[.*{@self}]
 				| Lookahead[ traverse_item*:t {Lookahead[*t]} ]
-				| Local[&{false} .* {d=@dup;ssanum(d);d} ]
+				| Local[ .* {d=@dup;ssanum(d);d} ]
 
 				vars_in={ary=[]}
 								( Global[ @self:ary[]  {@@marked<<@self} .*]								
