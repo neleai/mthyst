@@ -12,7 +12,9 @@ class Dataflow < Traverser
 	end
 	def ssanum2(var)
 		return var unless var.is_a? Local
+		var=var.dup
 		var.ssano=oldssanums[var]
+		var.freeze
 		[var,oldssanums[var]]
 	end
 
@@ -436,7 +438,7 @@ def dataflow_ssa_compiled_by
 'deb7f9dd93c80a6de99457f9a7d2d8b5'
 end
 def dataflow_ssa_source_hash
-'1c4fdb3d4ba5fd1046871c70051e2ad6'
+'3e1464467a434abdff63ee4e84e08fc2'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version

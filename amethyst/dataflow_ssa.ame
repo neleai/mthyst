@@ -12,7 +12,9 @@ class Dataflow < Traverser
 	end
 	def ssanum2(var)
 		return var unless var.is_a? Local
+		var=var.dup
 		var.ssano=oldssanums[var]
+		var.freeze
 		[var,oldssanums[var]]
 	end
 

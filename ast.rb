@@ -279,7 +279,7 @@ $varhash={}
 def _Local(name)
 		return name if !name.is_a?(String)
 		bnding=instance_eval{@bnding}
-		l=Local[name,bnding]
+		l=Local[name,bnding].normalize
 		#return $varhash[l] if $varhash[l]
 		puts l.inspect
 		$varhash[l]=l
@@ -298,6 +298,9 @@ end
 class Local
 	def inspect
 		"L[#{ary[0]}#{ary[1].is_a?(Bnding) ? "" : ary[1]}_#{ssano}]"
+	end
+	def normalize
+		freeze
 	end
 end
 class Key
