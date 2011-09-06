@@ -67,29 +67,24 @@ class Local
 end
 
 class Dataflow < Traverser_Clone2
-def self.switchcb_Dataflow2(e)
+def self.switchcb_Dataflow1(e)
 return 0 if e<=Apply
 return 1 if e<=Or
-return 2 if e<=Seq
-return 3 if e<=Many
-return 4 if e<=Pass
-return 5 if e<=Act
-return 6 if e<=Bind
-return 7 if e<=Result
-return 8 if e<=CAct
-return 9 if e<=Bnding
-return 10 if e<=Global
-return 11 if e<=Key
-return 12 if e<=Lookahead
-return 13 if e<=Local
-return 14 if e<=Object
-return 15
+return 2 if e<=Many
+return 3 if e<=Pass
+return 4 if e<=Act
+return 5 if e<=Bind
+return 6 if e<=Result
+return 7 if e<=Lookahead
+return 8 if e<=Local
+return 9 if e<=Object
+return 10
 end
-@@switchhashDataflow2=Hash.new{|h,k| h[k]=switchcb_Dataflow2(k)}
-def switchcbDataflow2(e)
-@@switchhashDataflow2[e.class]
+@@switchhashDataflow1=Hash.new{|h,k| h[k]=switchcb_Dataflow1(k)}
+def switchcbDataflow1(e)
+@@switchhashDataflow1[e.class]
 end
-def self.switchcb_Dataflow3(e)
+def self.switchcb_Dataflow2(e)
 return 0 if e<=Global
 return 1 if e<=Act
 return 2 if e<=CAct
@@ -102,19 +97,19 @@ return 8 if e<=Local
 return 9 if e<=Object
 return 10
 end
-@@switchhashDataflow3=Hash.new{|h,k| h[k]=switchcb_Dataflow3(k)}
-def switchcbDataflow3(e)
-@@switchhashDataflow3[e.class]
+@@switchhashDataflow2=Hash.new{|h,k| h[k]=switchcb_Dataflow2(k)}
+def switchcbDataflow2(e)
+@@switchhashDataflow2[e.class]
 end
-def self.switchcb_Dataflow4(e)
+def self.switchcb_Dataflow3(e)
 return 0 if e<=Array
 return 1 if e<=AmethystAST
 return 2 if e<=Object
 return 3
 end
-@@switchhashDataflow4=Hash.new{|h,k| h[k]=switchcb_Dataflow4(k)}
-def switchcbDataflow4(e)
-@@switchhashDataflow4[e.class]
+@@switchhashDataflow3=Hash.new{|h,k| h[k]=switchcb_Dataflow3(k)}
+def switchcbDataflow3(e)
+@@switchhashDataflow3[e.class]
 end
 def clas_Dataflowcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -188,40 +183,43 @@ def vars_in_Dataflowcb_1(bind)
 bind[0]=[]
 end
 def vars_in_Dataflowcb_10(bind)
-@src.expr
+_append(bind[0],bind[14])
 end
 def vars_in_Dataflowcb_11(bind)
-bind[16]=[bind[16]]
+@src.expr
 end
 def vars_in_Dataflowcb_12(bind)
-_append(bind[0],bind[17])
+bind[16]=[bind[16]]
 end
 def vars_in_Dataflowcb_13(bind)
+_append(bind[0],bind[17])
+end
+def vars_in_Dataflowcb_14(bind)
 _append(bind[0],bind[19])
 end
 def vars_in_Dataflowcb_2(bind)
-_append(bind[0],bind[2])
+@src
 end
 def vars_in_Dataflowcb_3(bind)
-@marked<<@src
+_append(bind[0],bind[2])
 end
 def vars_in_Dataflowcb_4(bind)
-_append(bind[0],bind[4])
+@marked<<@src
 end
 def vars_in_Dataflowcb_5(bind)
-_append(bind[0],bind[6])
+_append(bind[0],bind[4])
 end
 def vars_in_Dataflowcb_6(bind)
-_append(bind[0],bind[8])
+_append(bind[0],bind[6])
 end
 def vars_in_Dataflowcb_7(bind)
-_append(bind[0],bind[10])
+_append(bind[0],bind[8])
 end
 def vars_in_Dataflowcb_8(bind)
-_append(bind[0],bind[12])
+_append(bind[0],bind[10])
 end
 def vars_in_Dataflowcb_9(bind)
-_append(bind[0],bind[14])
+_append(bind[0],bind[12])
 end
 def visit_Dataflowcb_1(bind)
 _append(bind[2],bind[3])
@@ -230,103 +228,82 @@ def visit_Dataflowcb_10(bind)
 Or[*bind[0]]
 end
 def visit_Dataflowcb_11(bind)
-_append(bind[16],bind[17])
-end
-def visit_Dataflowcb_12(bind)
-Seq[*bind[18]]
-end
-def visit_Dataflowcb_13(bind)
 ssanums.clone
 end
+def visit_Dataflowcb_12(bind)
+_append(bind[17],bind[18])
+end
+def visit_Dataflowcb_13(bind)
+many_end(bind[16])
+end
 def visit_Dataflowcb_14(bind)
-_append(bind[22],bind[23])
-end
-def visit_Dataflowcb_15(bind)
-many_end(bind[21])
-end
-def visit_Dataflowcb_16(bind)
 Many.create({:ary=>bind[0]}).normalize
 end
-def visit_Dataflowcb_17(bind)
+def visit_Dataflowcb_15(bind)
 @src.to
 end
+def visit_Dataflowcb_16(bind)
+bind[21]=[bind[21]]
+end
+def visit_Dataflowcb_17(bind)
+@src.var
+end
 def visit_Dataflowcb_18(bind)
-bind[26]=[bind[26]]
+bind[23]=[bind[23]]
 end
 def visit_Dataflowcb_19(bind)
-@src.var
+@marked<<bind[7].ssaname
 end
 def visit_Dataflowcb_2(bind)
 Apply[*bind[0]]
 end
 def visit_Dataflowcb_20(bind)
-bind[28]=[bind[28]]
+Pass.create({:to=>bind[22],:var=>bind[7]}).normalize
 end
 def visit_Dataflowcb_21(bind)
-@marked<<bind[7].ssaname
-end
-def visit_Dataflowcb_22(bind)
-Pass.create({:to=>bind[27],:var=>bind[7]}).normalize
-end
-def visit_Dataflowcb_23(bind)
 Act[bind[0],@src.pred]
 end
+def visit_Dataflowcb_22(bind)
+@marked<<bind[26] if @src.pred || !@src.pure
+end
+def visit_Dataflowcb_23(bind)
+bind[26].ary
+end
 def visit_Dataflowcb_24(bind)
-@marked<<bind[31] if @src.pred || !@src.pure
+bind[27]=[bind[27]]
 end
 def visit_Dataflowcb_25(bind)
-bind[31].ary
+bind[7].each{|v| edges.add(ssanum(v),bind[26]); edges.add(bind[26],newssanum(v.clone));}; bind[26]
 end
 def visit_Dataflowcb_26(bind)
-bind[32]=[bind[32]]
-end
-def visit_Dataflowcb_27(bind)
-bind[7].each{|v| edges.add(ssanum(v),bind[31]); edges.add(bind[31],newssanum(v.clone));}; bind[31]
-end
-def visit_Dataflowcb_28(bind)
 bind_end(@src)
 end
-def visit_Dataflowcb_29(bind)
+def visit_Dataflowcb_27(bind)
 @src.vars
+end
+def visit_Dataflowcb_28(bind)
+bind[36]=[bind[36]]
+end
+def visit_Dataflowcb_29(bind)
+_append(bind[38],bind[39])
 end
 def visit_Dataflowcb_3(bind)
 bind[5]=[bind[5]]
 end
 def visit_Dataflowcb_30(bind)
-bind[41]=[bind[41]]
-end
-def visit_Dataflowcb_31(bind)
-_append(bind[43],bind[44])
-end
-def visit_Dataflowcb_32(bind)
 n=Result[{:name=>@src.name,:vars=>bind[7]}]; bind[7].each{|w| @edges.add(w.ssaname,n) } ; n
 end
-def visit_Dataflowcb_33(bind)
-CAct
+def visit_Dataflowcb_31(bind)
+_append(bind[42],bind[43])
 end
-def visit_Dataflowcb_34(bind)
-Bnding
-end
-def visit_Dataflowcb_35(bind)
-Global
-end
-def visit_Dataflowcb_36(bind)
-Key
-end
-def visit_Dataflowcb_37(bind)
-@src
-end
-def visit_Dataflowcb_38(bind)
-_append(bind[49],bind[50])
-end
-def visit_Dataflowcb_39(bind)
+def visit_Dataflowcb_32(bind)
 Lookahead[*bind[0]]
+end
+def visit_Dataflowcb_33(bind)
+d=@src.dup;ssanum2(d)[0]
 end
 def visit_Dataflowcb_4(bind)
 bind[7].each{|v| @marked<<ssanum(v)}
-end
-def visit_Dataflowcb_40(bind)
-d=@src.dup;ssanum2(d)[0]
 end
 def visit_Dataflowcb_5(bind)
 oldssanums.clone
@@ -348,7 +325,7 @@ end
 
 
 class Dead_Code_Deleter3 < Traverser_Clone2
-def self.switchcb_Dead_Code_Deleter36(e)
+def self.switchcb_Dead_Code_Deleter35(e)
 return 0 if e<=Act
 return 1 if e<=CAct
 return 2 if e<=Result
@@ -357,19 +334,19 @@ return 4 if e<=Local
 return 5 if e<=Object
 return 6
 end
-@@switchhashDead_Code_Deleter36=Hash.new{|h,k| h[k]=switchcb_Dead_Code_Deleter36(k)}
-def switchcbDead_Code_Deleter36(e)
-@@switchhashDead_Code_Deleter36[e.class]
+@@switchhashDead_Code_Deleter35=Hash.new{|h,k| h[k]=switchcb_Dead_Code_Deleter35(k)}
+def switchcbDead_Code_Deleter35(e)
+@@switchhashDead_Code_Deleter35[e.class]
 end
-def self.switchcb_Dead_Code_Deleter37(e)
+def self.switchcb_Dead_Code_Deleter36(e)
 return 0 if e<=Array
 return 1 if e<=AmethystAST
 return 2 if e<=Object
 return 3
 end
-@@switchhashDead_Code_Deleter37=Hash.new{|h,k| h[k]=switchcb_Dead_Code_Deleter37(k)}
-def switchcbDead_Code_Deleter37(e)
-@@switchhashDead_Code_Deleter37[e.class]
+@@switchhashDead_Code_Deleter36=Hash.new{|h,k| h[k]=switchcb_Dead_Code_Deleter36(k)}
+def switchcbDead_Code_Deleter36(e)
+@@switchhashDead_Code_Deleter36[e.class]
 end
 def clas_Dead_Code_Deleter3cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -449,15 +426,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'f315bad66422f696f0eca2c06db69128'
+'852e01454b21da9a82313334ed8f5efd'
 end
 def dataflow_ssa_source_hash
-'17deedeeb7a21e39e8f6dfe9d1d8d6ae'
+'c69965d60963480a744bdf9a738728ce'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'50356361a4213f8e9c4e8c9a567df38b'
+'a5fe6d4dc1f7ca83cd0207640fc39d1f'
 end
   require 'compiled/dataflow_ssa_c'
