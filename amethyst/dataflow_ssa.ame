@@ -8,13 +8,18 @@ class Dataflow < Traverser
 	end
 	def ssanum(var)
 		return var unless var.is_a? Local
+		[var,oldssanums[var]]
+	end
+	def ssanum2(var)
+		return var unless var.is_a? Local
 		var.ssano=oldssanums[var]
 		[var,oldssanums[var]]
 	end
+
 	def newssanum(var)
 		ssanums[var]+=1
 		oldssanums[var]=ssanums[var]
-		ssanum(var)
+		ssanum2(var)
 	end
 	def many_end(prev)
 	  ssanums.each{|var,num|
@@ -66,7 +71,7 @@ amethyst Dataflow < Traverser {
 				| Or[	{[]}:join {oldssanums.clone}:old  ({@@oldssanums=old.clone} traverse_item:t[] {join<<oldssanums.clone})* {or_end(join)} {Or[*t]} ]
 				| Seq[traverse_item*:a {Seq[*a]} ]
 				| Many[  {ssanums.clone}:prev traverse_item*:t {many_end(prev)} {Many.create({:ary=>t}).normalize} ] 
-			  | Pass[ @to=>traverse_item:to @var=>traverse_item:var {@@marked<<ssanum(var)} {Pass.create({:to=>to,:var=>var}).normalize} ]
+			  | Pass[ @to=>traverse_item:to @var=>traverse_item:var {@@marked<<var.ssaname} {Pass.create({:to=>to,:var=>var}).normalize} ]
 				| Act[ traverse_item:t {Act[t,@pred]}:act {@@marked<<act if @pred || !@pure} 
 							 {act.ary}=>[vars_in]:var  { var.each{|v| edges.add(ssanum(v),act); edges.add(act,newssanum(v.clone));}; act}
 					]
@@ -74,7 +79,7 @@ amethyst Dataflow < Traverser {
 				| Result[ @vars=>[traverse_item*:var] {n=Result[{:name=>@name,:vars=>var}]; var.each{|w| @@edges.add(w.ssaname,n) } ; n} ]
 				| (CAct | Bnding | Global | Key)[.*{@self}]
 				| Lookahead[ traverse_item*:t {Lookahead[*t]} ]
-				| Local[ .* {d=@dup;ssanum(d);d} ]
+				| Local[ .* {d=@dup;ssanum2(d);d} ]
 
 				vars_in={ary=[]}
 								( Global[ @self:ary[]  {@@marked<<@self} .*]								
