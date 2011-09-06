@@ -33,8 +33,6 @@ in ~space space* the  space* must be empty
 Do it by constant propagation?
 delete choices after fail
 
-treat super like renamed rule
-
 dont duplicate rules that dont refer to overwritten rule
 
 hashes with different equalization

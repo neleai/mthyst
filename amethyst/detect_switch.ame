@@ -112,36 +112,39 @@ end
 amethyst First_Dataflow {
 	value =  .:x  {depends(x); @@vals[x]}
 
-	getvalue(v) = {@@vis=v; v}=>first
 
 	root = .:x analyze(x)
-}
+	
+	first =  Seq[value*:{it.inject{|u,v|u.seqjoin(v)}}]
+				 | Or[value*:{it.inject(:+)}]
+				 | Switch[value*:{it.inject(:+)}]
+	       | Bind[@expr=>value]
+				 
+}  			
 
 amethyst Switch_Dataflow < First_Dataflow{
-	first = Seq[value*:{it.inject{|u,v|u.seqjoin(v)}}]
-				| Or[value*:{it.inject(:+)}]
-				| Switch[&{@first.is_a?(CharLattice)} .* {@first}]
-				| Switch[value*:{it.inject(:+)}]
-				| Bind[@expr=>value]
+	first = Switch[&{@first.is_a?(CharLattice)} .* {@first}]
 				| Many[value:val {val+CharLattice.empty} ]
 				| (Act|CAct)[.* {CharLattice.empty} ]
 				| Apply[ ["seq"] CAct[.:str] {CharLattice[firstchar(str)]}]
 				| Apply[ ["anything" ] {CharLattice.top}]
 				| Apply[ ["regch" ] {CharLattice.top}]
+				| super
 				| . {CharLattice.top+CharLattice.empty}
+
+	getvalue(v) = {@@vis=v; v}=>first
 }
 
 amethyst ClasSwitch_Dataflow < First_Dataflow{
-  first = Seq[value*:{it.inject{|u,v|u.seqjoin(v)}}]
-        | Or[value*:{it.inject(:+)}]
-				| Switch[&{@first.is_a?(ClasLattice)} .* {@first}]
-        | Switch[value*:{it.inject(:+)}]
-        | Bind[@expr=>value]
+  first = Switch[&{@first.is_a?(ClasLattice)} .* {@first}]
         | Many[value:val {val+ClasLattice.empty} ]
         | (Act|CAct)[.* {ClasLattice.empty} ]
         | Apply[ ["clas"] Act[.:cls] {ClasLattice[cls]}]
-        | . {ClasLattice.top+ClasLattice.empty}
+        | super
+				| . {ClasLattice.top+ClasLattice.empty}
 				| Apply[ :name &{$rules[name]} .* {$rules[name].body}=>value]
+
+	getvalue(v) = {@@vis=v; v}=>first
 }
 
 class Detect_First< Traverser_Clone2
@@ -159,9 +162,6 @@ class Detect_Switch < Detect_First
 	def intersects(p,e)
 		return true if e==:default
 		r=(first(p).ary & [e,Empty,Anything])!=[]
-		puts first(p).ary.inspect
-		puts [e,Empty,Anything].inspect
-		puts r
 		r
 	end
 end
@@ -240,7 +240,7 @@ amethyst Detect_ClasSwitch < Detect_First {
       	ary3<<[i,Or[{:ary=>@ary.select{|p| includes(ary2,i,first(p))}.map{|p| predicate(e,p)}}]]
 		}}
 		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.sort,v[0][1]]}.sort}
-	  {c=classswitch(ary2);s=Switch[{:act=>c[1],:first=>firs,:defs=>c[0],:ary=>ary3}];puts s.inspect;s}
+	  {c=classswitch(ary2);s=Switch[{:act=>c[1],:first=>firs,:defs=>c[0],:ary=>ary3}]}
 	]
 
   predicate(clas,p) = {p}=>( Seq[ .:first .*:rest  {Seq[[predicate(clas,first)]+rest]} ]

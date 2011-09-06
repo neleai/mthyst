@@ -67,6 +67,12 @@ class <<Compiler
 		i=0
 		while i<names.size
 			calls[names[i]]=DetectCalls.new.parse(:root,[@grammars[grammar.name].getrule(names[i])])
+			if calls[names[i]].include? "super"
+					super_name="#{names[i]}_#{grammar.name}"
+					@grammars[grammar.name].rules[super_name]=deep_clone(@grammars[grammar.parent].getrule(names[i]))
+					@grammars[grammar.name].rules[super_name].name=super_name
+					@grammars[grammar.name].rules[names[i]]=Replace_Super.new.parse(:root,[super_name,@grammars[grammar.name].rules[names[i]]])
+			end
 			calls[names[i]].each{|c,t|
       	if !@grammars[grammar.name].rules[c]
 					if r=@grammars[grammar.name].getrule(c)
@@ -83,7 +89,7 @@ class <<Compiler
 		puts called.inspect
 		puts callg.inspect
 		puts topo.inspect
-		topo.each{|name|if @grammars[grammar.name].rules[name] && called[name]
+		topo.each{|name|if @grammars[grammar.name].rules[name] #&& called[name]
 				@grammars[grammar.name].opt(@grammars[grammar.name].rules[name])
 				
 if true

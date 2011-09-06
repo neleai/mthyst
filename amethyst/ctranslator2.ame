@@ -95,7 +95,6 @@ failobj=rb_eval_string(\"FAIL\");
 \n#{body}\nreturn it;\nfail: return failobj; }" } ]
 				| Act[ .*:{addcallback(@pred ? ["(",it,") || FAIL"] : it)}:cbno {"it=CALL(#{cbno},1,bind); #{@pred ? "FAILTEST(#{@@faillabel});" :"" }"} ]
 				| CAct[.*:c] ->"it=#{c};"
-				| Apply[ .=>["super"] {rule=@@ruletable[@@rulename];  failwrap(map_index(rule.args){|i|"vals[#{i}]=#{bget(rule.args[i])};"}*""+ "it=rb_call_super(#{rule.args.size},vals);")} ]
 				| Apply[:name {0}:ii ( trans:aa {ii+=1} {"#{aa} arg#{ii-1}=it;"})*:args 
             failwrap(" #{args} it=#{callrule(name,ii)};")]
 				| Seq[ trans*:t {t*""} ]
