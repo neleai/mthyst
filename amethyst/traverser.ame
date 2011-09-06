@@ -1,17 +1,3 @@
-amethyst Traverser {
- 	  traverse_item = visit:a  {@@changed=true} {a}
-                      | Array[ {[]}:ar (traverse_item:{ar<<it})* {ar}]
-                      | AmethystAST[ traverse ]
-                      | .
-
-	  traverse = .*
-          @self:this
-          {(@self.instance_variables).map{|v| [v,@self.instance_variable_get(v)] }}=>[
-            [ :key  traverse_item:{ this.instance_variable_set(key,it)} ]* 
-          ]
-          @self
-}
-
 amethyst Traverser_Clone2 {
   traverse_item = visit:a  {@@changed=true} {a}
                       | Array[ {[]}:ar (traverse_item:{ar<<it})* {ar}]

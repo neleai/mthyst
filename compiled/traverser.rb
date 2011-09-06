@@ -1,52 +1,13 @@
-class Traverser < Amethyst
-def self.switchcb_Traverser1(e)
-return 0 if e<=Array
-return 1 if e<=AmethystAST
-return 2 if e<=Object
-return 3
-end
-@@switchhashTraverser1=Hash.new{|h,k| h[k]=switchcb_Traverser1(k)}
-def switchcbTraverser1(e)
-@@switchhashTraverser1[e.class]
-end
-def clas_Traversercb_1(bind)
-(bind[0].is_a?(bind[1])) || FAIL
-end
-def fails_Traversercb_1(bind)
-(false) || FAIL
-end
-def traverse_Traversercb_1(bind)
-@src
-end
-def traverse_Traversercb_2(bind)
-(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
-end
-def traverse_Traversercb_3(bind)
-bind[1]=[bind[1]]
-end
-def traverse_Traversercb_4(bind)
-bind[0].instance_variable_set(bind[4],bind[5])
-end
-def traverse_item_Traversercb_1(bind)
-@changed=true
-end
-def traverse_item_Traversercb_2(bind)
-bind[3]<<bind[4]
-end
-
-end
-
-
 class Traverser_Clone2 < Amethyst
-def self.switchcb_Traverser_Clone22(e)
+def self.switchcb_Traverser_Clone21(e)
 return 0 if e<=Array
 return 1 if e<=AmethystAST
 return 2 if e<=Object
 return 3
 end
-@@switchhashTraverser_Clone22=Hash.new{|h,k| h[k]=switchcb_Traverser_Clone22(k)}
-def switchcbTraverser_Clone22(e)
-@@switchhashTraverser_Clone22[e.class]
+@@switchhashTraverser_Clone21=Hash.new{|h,k| h[k]=switchcb_Traverser_Clone21(k)}
+def switchcbTraverser_Clone21(e)
+@@switchhashTraverser_Clone21[e.class]
 end
 def clas_Traverser_Clone2cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -93,15 +54,15 @@ end
  
 
 class Visitor < Amethyst
-def self.switchcb_Visitor3(e)
+def self.switchcb_Visitor2(e)
 return 0 if e<=Array
 return 1 if e<=AmethystAST
 return 2 if e<=Object
 return 3
 end
-@@switchhashVisitor3=Hash.new{|h,k| h[k]=switchcb_Visitor3(k)}
-def switchcbVisitor3(e)
-@@switchhashVisitor3[e.class]
+@@switchhashVisitor2=Hash.new{|h,k| h[k]=switchcb_Visitor2(k)}
+def switchcbVisitor2(e)
+@@switchhashVisitor2[e.class]
 end
 def clas_Visitorcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -123,15 +84,15 @@ end
 
 
 def traverser_compiled_by
-'dc800c4f3e6a83293d0407e36e545fd1'
+'f315bad66422f696f0eca2c06db69128'
 end
 def traverser_source_hash
-'63c18902da89e1b2234d417503a9d719'
+'22a0094158fcb42ea5b9d2d2e863085b'
 end
 def testversiontraverser(r)
  raise "invalid version" if r!=traverser_version
 end
 def traverser_version
-'580e63448e06c6eea4d729753b4ce422'
+'4820eda54a656eaa32c127fdf285bc56'
 end
   require 'compiled/traverser_c'
