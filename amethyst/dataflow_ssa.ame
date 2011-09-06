@@ -71,7 +71,7 @@ amethyst Dataflow < Traverser {
 							 {act.ary}=>[vars_in]:var  { var.each{|v| edges.add(ssanum(v),act); edges.add(act,newssanum(v.clone));}; act}
 					]
 				| Bind[   traverse[.*  {bind_end(@self)} @self ] ] 
-				| Result[ @vars=>[vars_in]:var { var.each{|w| @@edges.add(ssanum(w),@self) } ; @self} ]
+				| Result[ @vars=>[traverse_item*:var] {n=Result[{:name=>@name,:vars=>var}]; var.each{|w| @@edges.add(w.ssaname,n) } ; n} ]
 				| (CAct | Bnding | Global | Key)[.*{@self}]
 				| Lookahead[ traverse_item*:t {Lookahead[*t]} ]
 				| Local[ .* {d=@dup;ssanum(d);d} ]
