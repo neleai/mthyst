@@ -165,7 +165,7 @@ end
 	alias_method :eql?,:==
 end")}
 
-[Global,Key,Result,Switch,Cut,Stop,CAct
+[Global,Key,Result,Switch,Cut,Stop,CAct,Args
 ].each{|c| eval("class #{c} 
 	def self.[](*a)
 		create(*a).normalize

@@ -116,28 +116,28 @@ def visit_Analyze_Variables2cb_1(bind)
 @src.ary.map{|aa| @variables[aa] }
 end
 def visit_Analyze_Variables2cb_10(bind)
-Or[*bind[21]]
+Or[*bind[22]]
 end
 def visit_Analyze_Variables2cb_11(bind)
-_append(bind[24],bind[25])
+_append(bind[25],bind[26])
 end
 def visit_Analyze_Variables2cb_12(bind)
-Seq[*bind[21]]
+Seq[*bind[22]]
 end
 def visit_Analyze_Variables2cb_2(bind)
 bind[2]=[bind[2]]
 end
 def visit_Analyze_Variables2cb_3(bind)
-@src.ary=connectstring(bind[4].flatten)
+connectstring(bind[4].flatten)
 end
 def visit_Analyze_Variables2cb_4(bind)
-(@src.ary.size==1&&(@src.ary[0].is_a?(Local)||@src.ary[0].is_a?(Global)||@src.ary[0].is_a?(Key))) ? @src.ary[0] : @src
+(bind[5].size==1&&(bind[5][0].is_a?(Local)||bind[5][0].is_a?(Global)||bind[5][0].is_a?(Key))) ? bind[5][0] : Args[*bind[5]]
 end
 def visit_Analyze_Variables2cb_5(bind)
 @src.ary
 end
 def visit_Analyze_Variables2cb_6(bind)
-bind[10]=[bind[10]]
+bind[11]=[bind[11]]
 end
 def visit_Analyze_Variables2cb_7(bind)
 Local
@@ -146,7 +146,7 @@ def visit_Analyze_Variables2cb_8(bind)
 vars=@locals.select{|aa| @src.vars.include? aa[0].to_sym}.uniq ;Result[{:name=>@src.name,:vars=>vars}]
 end
 def visit_Analyze_Variables2cb_9(bind)
-_append(bind[19],bind[20])
+_append(bind[20],bind[21])
 end
 
 end
@@ -155,15 +155,15 @@ end
 
 
 def detect_variables2_compiled_by
-'852e01454b21da9a82313334ed8f5efd'
+'505defec20d4d6f2cc93df3e5d8d58a9'
 end
 def detect_variables2_source_hash
-'9a11d44448f9afbe8e585059dc878534'
+'56196ab0e78188e5a2d6bc8b4c79e49b'
 end
 def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'f5aa159bd5684c32bb12a5ac143946a3'
+'bde60cd8fe1e41c9c78affe60fbca969'
 end
   require 'compiled/detect_variables2_c'
