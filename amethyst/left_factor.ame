@@ -1,20 +1,22 @@
 class Left_Factor < Traverser_Clone2
 	def first(s)
-		return s[0] if s.is_a? Seq
-#		return s.expr if s.is_a? Bind
-		puts s.inspect
+		return first(s[0]) if s.is_a? Seq
+		return first(s.expr) if s.is_a? Bind
 		s
 	end
 	def rest(s,bin)
+		return bin unless s.is_a?(Seq)
 		Seq[[bin]+s[1..(-1)]]
 	end
 	def binds(s,a)
-		_Bind(s.name,binds(s.expr,a)) if s.is_a? Bind
+		return binds(s[0],a) if s.is_a?(Seq)
+		return _Bind(s.name,binds(s.expr,a)) if s.is_a? Bind
 		a
 	end
 	def merge(ary)
 		a=autovar
-		[Seq[_Bind(a,first(ary[0])),Or[*(ary.map{|e| rest(e,binds(e.ary[0],a))})]]]
+		r=[Seq[_Bind(a,first(ary[0])),Or[*(ary.map{|e| rest(e,binds(e,a))})]]]
+		r
 	end
 end
 

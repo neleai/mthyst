@@ -26,7 +26,6 @@ initialize parse by Pass
 switch and predication by constant propagation
 
 consider left factor when conditions are in inclusion.
-left factor and binding
 
 optimalization of lookaheads such that in anything* ~anything the ~anything is automaticaly satisfied(aka eof)
 in ~space space* the  space* must be empty 
