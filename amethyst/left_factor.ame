@@ -1,11 +1,11 @@
 class Left_Factor < Traverser_Clone2
 	def first(s)
 		s[0] if s.is_a? Seq
+		#s.expr if s.is_a? Bind
 		s
 	end
 	def rest(s)
-		Seq[s[1..(-1)]] if s.is_a? Seq
-		Act[]
+		Seq[s[1..(-1)]]
 	end
 	def merge(ary)
 		Seq[first(ary[0]),Or[*(ary.map{|e| rest(e)})]]
