@@ -7,8 +7,8 @@ class Left_Factor < Traverser_Clone2
 		Seq[s[1..(-1)]] if s.is_a? Seq
 		Act[]
 	end
-	def merge(s1,s2)
-		Seq[first(s1),Or[rest(s1),rest(s2)]]
+	def merge(ary)
+		Seq[first(ary[0]),Or[*(ary.map{|e| rest(e)})]]
 	end
 end
 
@@ -27,19 +27,25 @@ def clas_Left_Factorcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
 def factor_Left_Factorcb_1(bind)
-(first(bind[1])==first(bind[0])) || FAIL
+(bind[1]==first(bind[0])) || FAIL
 end
 def factor_Left_Factorcb_2(bind)
-merge(bind[1],bind[0])
+bind[3]+bind[0]
 end
 def factor_Left_Factorcb_3(bind)
-first(bind[1])==first(bind[0])
+bind[1]==first(bind[0])
 end
 def factor_Left_Factorcb_4(bind)
-bind[2]+[bind[1]]
+bind[2]+merge(bind[3])
 end
 def factor_Left_Factorcb_5(bind)
-Or[bind[2]+[bind[1]]]
+first(bind[0])
+end
+def factor_Left_Factorcb_6(bind)
+[bind[0]]
+end
+def factor_Left_Factorcb_7(bind)
+Or[*(bind[2]+merge(bind[3]))]
 end
 def fails_Left_Factorcb_1(bind)
 (false) || FAIL
@@ -79,35 +85,47 @@ end
 def visit_Left_Factorcb_1(bind)
 Or
 end
+def visit_Left_Factorcb_10(bind)
+Or[*(bind[5]+merge(bind[3]))]
+end
 def visit_Left_Factorcb_2(bind)
-(first(bind[3])==first(bind[5])) || FAIL
+[bind[2]]
 end
 def visit_Left_Factorcb_3(bind)
-merge(bind[3],bind[5])
+first(bind[2])
 end
 def visit_Left_Factorcb_4(bind)
-first(bind[3])==first(bind[5])
+(bind[4]==first(bind[6])) || FAIL
 end
 def visit_Left_Factorcb_5(bind)
-bind[4]+[bind[3]]
+bind[3]+bind[6]
 end
 def visit_Left_Factorcb_6(bind)
-Or[bind[4]+[bind[3]]]
+bind[4]==first(bind[6])
+end
+def visit_Left_Factorcb_7(bind)
+bind[5]+merge(bind[3])
+end
+def visit_Left_Factorcb_8(bind)
+first(bind[6])
+end
+def visit_Left_Factorcb_9(bind)
+[bind[6]]
 end
 
 end
 
 
 def left_factor_compiled_by
-'505defec20d4d6f2cc93df3e5d8d58a9'
+'6165b5d8479cabffca2b2b972b898a7c'
 end
 def left_factor_source_hash
-'f264ac06705a9c2e0746e6a287dbb141'
+'353e306385d54bc9b59408342a2d4d83'
 end
 def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version
 end
 def left_factor_version
-'b1a46839cc57b0b5da144fae7030a951'
+'48eda1628c998b2c137dbb521c3a8e3a'
 end
   require 'compiled/left_factor_c'

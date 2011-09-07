@@ -3,7 +3,7 @@ VALUE cls_Left_Factor;
 VALUE Left_Factor_clas(VALUE self ,VALUE a0);
 VALUE Left_Factor_empty(VALUE self );
 VALUE Left_Factor_eof(VALUE self );
-VALUE Left_Factor_factor(VALUE self ,VALUE a0,VALUE a1);
+VALUE Left_Factor_factor(VALUE self ,VALUE a0,VALUE a1,VALUE a2);
 VALUE Left_Factor_fails(VALUE self );
 VALUE Left_Factor_root(VALUE self );
 VALUE Left_Factor_traverse(VALUE self );
@@ -37,15 +37,15 @@ ISET(cut,Qnil);goto accept1;
 it=rb_ary_entry(bind,0);
 return it;
 fail: return failobj; }
-VALUE Left_Factor_factor(VALUE self ,VALUE a0,VALUE a1){VALUE vals[2]; VALUE bind=rb_ary_new2(4); rb_ary_store(bind,2,a0);rb_ary_store(bind,1,a1); int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+VALUE Left_Factor_factor(VALUE self ,VALUE a0,VALUE a1,VALUE a2){VALUE vals[3]; VALUE bind=rb_ary_new2(5); rb_ary_store(bind,2,a0);rb_ary_store(bind,1,a1);rb_ary_store(bind,3,a2); int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt1_2);
  rb_ary_store(bind,0,it); int oldpos2=ame_getpos(self);
 alt2_1: ame_setpos(self,oldpos2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt1_2;}
- it=CALL(factor_Left_Factorcb_1,1,bind); FAILTEST(alt2_2); it=rb_ary_entry(bind,2); arg0=it;it=CALL(factor_Left_Factorcb_2,1,bind);  arg1=it; it=Left_Factor_factor(self ,arg0,arg1); FAILTEST(alt2_2);
- rb_ary_store(bind,3,it);  
+ it=CALL(factor_Left_Factorcb_1,1,bind); FAILTEST(alt2_2); it=rb_ary_entry(bind,2); arg0=it;it=rb_ary_entry(bind,1); arg1=it;it=CALL(factor_Left_Factorcb_2,1,bind);  arg2=it; it=Left_Factor_factor(self ,arg0,arg1,arg2); FAILTEST(alt2_2);
+ rb_ary_store(bind,4,it);  
 ISET(cut,Qnil);goto accept2;
 alt2_2: ame_setpos(self,oldpos2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt1_2;}
  int oldpos3=ame_getpos(self);
@@ -57,20 +57,20 @@ alt3_2: ame_setpos(self,oldpos3);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt2
 ISET(cut,Qnil);goto accept3;
   alt3_3:  ame_setpos(self,oldpos3); goto alt2_3;
  accept3:;
- it=CALL(factor_Left_Factorcb_4,1,bind);  arg0=it;it=rb_ary_entry(bind,0); arg1=it; it=Left_Factor_factor(self ,arg0,arg1); FAILTEST(alt2_3);
- rb_ary_store(bind,3,it);  
+ it=CALL(factor_Left_Factorcb_4,1,bind);  arg0=it;it=CALL(factor_Left_Factorcb_5,1,bind);  arg1=it;it=CALL(factor_Left_Factorcb_6,1,bind);  arg2=it; it=Left_Factor_factor(self ,arg0,arg1,arg2); FAILTEST(alt2_3);
+ rb_ary_store(bind,4,it);  
 ISET(cut,Qnil);goto accept2;
   alt2_3:  ame_setpos(self,oldpos2); goto alt1_2;
  accept2:;
  
 ISET(cut,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-   it=Left_Factor_eof(self ); FAILTEST(alt1_3);it=CALL(factor_Left_Factorcb_5,1,bind); 
- rb_ary_store(bind,3,it);  
+   it=Left_Factor_eof(self ); FAILTEST(alt1_3);it=CALL(factor_Left_Factorcb_7,1,bind); 
+ rb_ary_store(bind,4,it);  
 ISET(cut,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=rb_ary_entry(bind,3);
+it=rb_ary_entry(bind,4);
 return it;
 fail: return failobj; }
 VALUE Left_Factor_fails(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -190,7 +190,7 @@ ISET(cut,Qnil);goto accept3;
  break;}it=rb_ary_entry(bind,1);
 return it;
 fail: return failobj; }
-VALUE Left_Factor_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(10);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+VALUE Left_Factor_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(11);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
  it=CALL(visit_Left_Factorcb_1,1,bind);  arg0=it; it=Left_Factor_clas(self ,arg0); FAILTEST(fail);
  rb_ary_store(bind,0,it); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
@@ -199,53 +199,54 @@ ame_setsrc(self,rb_ary_entry(bind,0)); ame_setpos(self,0); ame_setlen(self,FIX2I
  rb_ary_store(bind,1,it); int oldpos2=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
 ame_setsrc(self,rb_ary_entry(bind,1)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCore_anything(self ); FAILTEST(pass2);
- rb_ary_store(bind,2,it); it=rb_ary_entry(bind,2);
- rb_ary_store(bind,3,it); it=rb_ary_new3(0);
- rb_ary_store(bind,4,it); int oldpos3=ame_getpos(self);
+ rb_ary_store(bind,2,it); it=CALL(visit_Left_Factorcb_2,1,bind); 
+ rb_ary_store(bind,3,it); it=CALL(visit_Left_Factorcb_3,1,bind); 
+ rb_ary_store(bind,4,it); it=rb_ary_new3(0);
+ rb_ary_store(bind,5,it); int oldpos3=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos3);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto pass2;}
    it=AmethystCore_anything(self ); FAILTEST(alt1_2);
- rb_ary_store(bind,5,it); int oldpos4=ame_getpos(self);
+ rb_ary_store(bind,6,it); int oldpos4=ame_getpos(self);
 alt2_1: ame_setpos(self,oldpos4);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt1_2;}
- it=CALL(visit_Left_Factorcb_2,1,bind); FAILTEST(alt2_2); it=rb_ary_new3(0); arg0=it;it=CALL(visit_Left_Factorcb_3,1,bind);  arg1=it; it=Left_Factor_factor(self ,arg0,arg1); FAILTEST(alt2_2);
- rb_ary_store(bind,6,it);  
+ it=CALL(visit_Left_Factorcb_4,1,bind); FAILTEST(alt2_2); it=rb_ary_new3(0); arg0=it;it=rb_ary_entry(bind,4); arg1=it;it=CALL(visit_Left_Factorcb_5,1,bind);  arg2=it; it=Left_Factor_factor(self ,arg0,arg1,arg2); FAILTEST(alt2_2);
+ rb_ary_store(bind,7,it);  
 ISET(cut,Qnil);goto accept2;
 alt2_2: ame_setpos(self,oldpos4);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt1_2;}
  int oldpos5=ame_getpos(self);
 alt3_1: ame_setpos(self,oldpos5);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt2_3;}
- it=CALL(visit_Left_Factorcb_4,1,bind); ISET(cut,Qtrue);  it=Left_Factor_fails(self ); FAILTEST(alt3_2); 
+ it=CALL(visit_Left_Factorcb_6,1,bind); ISET(cut,Qtrue);  it=Left_Factor_fails(self ); FAILTEST(alt3_2); 
 ISET(cut,Qnil);goto accept3;
 alt3_2: ame_setpos(self,oldpos5);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto alt2_3;}
    it=Left_Factor_empty(self ); FAILTEST(alt3_3); 
 ISET(cut,Qnil);goto accept3;
   alt3_3:  ame_setpos(self,oldpos5); goto alt2_3;
  accept3:;
- it=CALL(visit_Left_Factorcb_5,1,bind);  arg0=it;it=rb_ary_entry(bind,5); arg1=it; it=Left_Factor_factor(self ,arg0,arg1); FAILTEST(alt2_3);
- rb_ary_store(bind,6,it);  
+ it=CALL(visit_Left_Factorcb_7,1,bind);  arg0=it;it=CALL(visit_Left_Factorcb_8,1,bind);  arg1=it;it=CALL(visit_Left_Factorcb_9,1,bind);  arg2=it; it=Left_Factor_factor(self ,arg0,arg1,arg2); FAILTEST(alt2_3);
+ rb_ary_store(bind,7,it);  
 ISET(cut,Qnil);goto accept2;
   alt2_3:  ame_setpos(self,oldpos4); goto alt1_2;
  accept2:;
  
 ISET(cut,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos3);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto pass2;}
-   it=Left_Factor_eof(self ); FAILTEST(alt1_3);it=CALL(visit_Left_Factorcb_6,1,bind); 
- rb_ary_store(bind,6,it);  
+   it=Left_Factor_eof(self ); FAILTEST(alt1_3);it=CALL(visit_Left_Factorcb_10,1,bind); 
+ rb_ary_store(bind,7,it);  
 ISET(cut,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos3); goto pass2;
  accept1:;
-it=rb_ary_entry(bind,6);
- rb_ary_store(bind,7,it);   it=Left_Factor_eof(self ); FAILTEST(pass2);
+it=rb_ary_entry(bind,7);
+ rb_ary_store(bind,8,it);   it=Left_Factor_eof(self ); FAILTEST(pass2);
 	goto success2;
 	pass2: fail2=1;
 	success2: ame_setsrc(self,oldsrc2); ame_setpos(self,oldpos2); ame_setlen(self,oldlen2);
 	if(fail2) goto pass1;
-it=rb_ary_entry(bind,7);
- rb_ary_store(bind,8,it);   it=Left_Factor_eof(self ); FAILTEST(pass1);
+it=rb_ary_entry(bind,8);
+ rb_ary_store(bind,9,it);   it=Left_Factor_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos1); ame_setlen(self,oldlen1);
 	if(fail1) goto fail;
-it=rb_ary_entry(bind,8);
- rb_ary_store(bind,9,it); it=rb_ary_entry(bind,9);
+it=rb_ary_entry(bind,9);
+ rb_ary_store(bind,10,it); it=rb_ary_entry(bind,10);
 return it;
 fail: return failobj; }
 void Init_left_factor_c(){ 
@@ -254,10 +255,10 @@ failobj=rb_eval_string("FAIL");
 rb_define_method(cls_Left_Factor,"clas",Left_Factor_clas,1);
 rb_define_method(cls_Left_Factor,"empty",Left_Factor_empty,0);
 rb_define_method(cls_Left_Factor,"eof",Left_Factor_eof,0);
-rb_define_method(cls_Left_Factor,"factor",Left_Factor_factor,2);
+rb_define_method(cls_Left_Factor,"factor",Left_Factor_factor,3);
 rb_define_method(cls_Left_Factor,"fails",Left_Factor_fails,0);
 rb_define_method(cls_Left_Factor,"root",Left_Factor_root,0);
 rb_define_method(cls_Left_Factor,"traverse",Left_Factor_traverse,0);
 rb_define_method(cls_Left_Factor,"traverse_item",Left_Factor_traverse_item,0);
 rb_define_method(cls_Left_Factor,"visit",Left_Factor_visit,0);
- rb_eval_string("testversionleft_factor('b1a46839cc57b0b5da144fae7030a951')");}
+ rb_eval_string("testversionleft_factor('48eda1628c998b2c137dbb521c3a8e3a')");}

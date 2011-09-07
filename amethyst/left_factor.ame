@@ -7,17 +7,17 @@ class Left_Factor < Traverser_Clone2
 		Seq[s[1..(-1)]] if s.is_a? Seq
 		Act[]
 	end
-	def merge(s1,s2)
-		Seq[first(s1),Or[rest(s1),rest(s2)]]
+	def merge(ary)
+		Seq[first(ary[0]),Or[*(ary.map{|e| rest(e)})]]
 	end
 end
 
 amethyst Left_Factor < Traverser_Clone2 {
 	root=traverse
 
-	visit=Or[ traverse[ .:x factor([],x) ] ]		
+	visit=Or[ traverse[ .:x factor([],first(x),[x]) ] ]		
 	
-	factor(prev,current) = .:next ( &{first(current)==first(next)} factor(prev,merge(current,next))
-															  | ~{first(current)==first(next)} factor(prev+[current],next) )
-											 | eof -> Or[prev+[current]]
+	factor(prev,start,cur) = .:next ( &{start==first(next)} factor(prev,start,cur+next)
+	  														  | ~{start==first(next)} factor(prev+merge(cur),first(next),[next]) )
+											 | eof -> Or[*(prev+merge(cur))]
 }
