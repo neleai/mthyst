@@ -1,6 +1,8 @@
 amethyst Amethyst < AmethystCore {
 	regch(regex) = char:c &{regex.match(c)} -> c
 
+	foo= char:a foo | char:b bar
+
   eof= ~.
 
   empty = -> nil

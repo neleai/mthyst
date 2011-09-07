@@ -1,19 +1,20 @@
 class Left_Factor < Traverser_Clone2
 	def first(s)
-		s[0] if s.is_a? Seq
-		s.expr if s.is_a? Bind
+		return s[0] if s.is_a? Seq
+#		return s.expr if s.is_a? Bind
+		puts s.inspect
 		s
 	end
-	def rest(s)
-		Seq[s[1..(-1)]]
+	def rest(s,bin)
+		Seq[[bin]+s[1..(-1)]]
 	end
 	def binds(s,a)
-		_Bind(s.name,binds(s.expr,a)) if s.is_a? Expr
+		_Bind(s.name,binds(s.expr,a)) if s.is_a? Bind
 		a
 	end
 	def merge(ary)
 		a=autovar
-		Seq[_Bind(a,first(ary[0])),Or[*(binds(ary[0],a)+ ary.map{|e| rest(e)})]]
+		[Seq[_Bind(a,first(ary[0])),Or[*(ary.map{|e| rest(e,binds(e.ary[0],a))})]]]
 	end
 end
 
@@ -35,7 +36,7 @@ def factor_Left_Factorcb_1(bind)
 (bind[1]==first(bind[0])) || FAIL
 end
 def factor_Left_Factorcb_2(bind)
-bind[3]+bind[0]
+bind[3]+[bind[0]]
 end
 def factor_Left_Factorcb_3(bind)
 bind[1]==first(bind[0])
@@ -103,7 +104,7 @@ def visit_Left_Factorcb_4(bind)
 (bind[4]==first(bind[6])) || FAIL
 end
 def visit_Left_Factorcb_5(bind)
-bind[3]+bind[6]
+bind[3]+[bind[6]]
 end
 def visit_Left_Factorcb_6(bind)
 bind[4]==first(bind[6])
@@ -122,10 +123,10 @@ end
 
 
 def left_factor_compiled_by
-'6165b5d8479cabffca2b2b972b898a7c'
+'5be1e01a7170ebef6193a89f007c0634'
 end
 def left_factor_source_hash
-'075774de3ed8237712c1133830096a51'
+'7b36a1b26629b664516a1b64590aeda7'
 end
 def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version
