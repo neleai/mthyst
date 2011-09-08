@@ -160,7 +160,7 @@ end
 
 
 
-[Apply,Bnding,Global,Key,Local,Act,CAct,Seq,Or].each{|c| eval("class #{c} 
+[Apply,Bnding,Global,Key,Act,CAct,Seq,Or].each{|c| eval("class #{c} 
  def hash
 	ary.hash
  end
@@ -263,26 +263,22 @@ class Lookahead
 	end
 end
 
+
+$lochash=Hash.new{|h,k|h[k]=Hash.new{|h,k|h[k]=Hash.new}}
 class Local
 	def self.[](name,bnd,ssano=nil)
+		return $lochash[name][bnd][ssano] if $lochash[name][bnd][ssano]
     r=Local.create({:ary=>[name,bnd],:ssano=>ssano})
     r.instance_variable_set(:@hash,[name,bnd,ssano].hash)
-    r.normalize
+    $lochash[name][bnd][ssano]=r.normalize
   end
 end
 class Local
-	def hash
-		@hash
-	end
 	def desc
 		return @@numb[ary[0]][ary[1]] if @@numb[ary[0]][ary[1]]
 		 @@numb[ary[0]][ary[1]]="#{ary[0]}_#{@@numb[ary[0]].size+1}"
 	end
-	def ==(a)
-		return false unless a.is_a?(Local)
-		return false if ssano!=a.ssano
-		return ary==a.ary
-	end
+	alias_method :==,:equal?
 	alias_method :eql?,:==
 	def self.resetnumbering
     @@numb=Hash.new{|h,k|h[k]={}}
