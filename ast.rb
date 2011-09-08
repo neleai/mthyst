@@ -160,7 +160,7 @@ end
 
 
 
-[Apply,Bnding,Global,Key,Act,CAct,Seq,Or].each{|c| eval("class #{c} 
+[Apply,Bnding,Global,Key,Act,Seq,Or].each{|c| eval("class #{c} 
  def hash
 	ary.hash
  end
@@ -171,7 +171,7 @@ end
 	alias_method :eql?,:==
 end")}
 
-[Global,Key,Result,Switch,Cut,Stop,CAct,Args
+[Global,Key,Result,Switch,Cut,Stop,Args
 ].each{|c| eval("class #{c} 
 	def self.[](*a)
 		create(*a).normalize
@@ -263,14 +263,27 @@ class Lookahead
 	end
 end
 
+$hash_CAct={}
+class CAct
+	def self.[](*args)
+		eql=args
+		return $hash_CAct[eql] if $hash_CAct[eql]
+		r=CAct.create({:ary=>args})
+		$hash_CAct[eql]=r.normalize
+	end
+	def normalize
+		freeze
+	end
+end
 
-$lochash=Hash.new{|h,k|h[k]=Hash.new{|h,k|h[k]=Hash.new}}
+$hash_Local={}
 class Local
 	def self.[](name,bnd,ssano=nil)
-		return $lochash[name][bnd][ssano] if $lochash[name][bnd][ssano]
+		eql=[name,bnd,ssano]
+		return $hash_Local[eql] if $hash_Local[eql]
     r=Local.create({:ary=>[name,bnd],:ssano=>ssano})
     r.instance_variable_set(:@hash,[name,bnd,ssano].hash)
-    $lochash[name][bnd][ssano]=r.normalize
+    $hash_Local[eql]=r.normalize
   end
 end
 class Local
