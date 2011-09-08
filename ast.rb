@@ -266,7 +266,7 @@ end
 class Local
 	def self.[](name,bnd,ssano=nil)
     r=Local.create({:ary=>[name,bnd],:ssano=>ssano})
-    r.instance_variable_set(:@hash,[name,bnd].hash)
+    r.instance_variable_set(:@hash,[name,bnd,ssano].hash)
     r.normalize
   end
 end
@@ -275,15 +275,15 @@ class Local
 		@hash
 	end
 	def desc
-		return @@numb[ary[0]][self] if @@numb[ary[0]][self]
-		 @@numb[ary[0]][self]="#{ary[0]}_#{@@numb[ary[0]].size+1}"
+		return @@numb[ary[0]][ary[1]] if @@numb[ary[0]][ary[1]]
+		 @@numb[ary[0]][ary[1]]="#{ary[0]}_#{@@numb[ary[0]].size+1}"
 	end
 	def ==(a)
 		return false unless a.is_a?(Local)
 		return false if ssano!=a.ssano
 		return ary==a.ary
 	end
-	#alias_method :eql?,:==
+	alias_method :eql?,:==
 	def self.resetnumbering
     @@numb=Hash.new{|h,k|h[k]={}}
 	end
