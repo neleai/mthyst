@@ -264,13 +264,14 @@ class Lookahead
 	end
 end
 [CAct,Global,Key,
-Cut,Stop,Exp,Strin#Args,Strin,Exp
+Cut,Stop,Exp,Strin,Args
+#Result
 ].each{|cls|
 eval("$hash_#{cls}={}
 class #{cls}
 	def self.[](*args)
 		return $hash_#{cls}[args] if $hash_#{cls}[args]
-		#{cls}.create({:ary=>args}).normalize
+		#{cls}.create(*args).normalize
 	end
 	def normalize
 		return $hash_#{cls}[ary] if $hash_#{cls}[ary]
