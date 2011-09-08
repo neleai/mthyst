@@ -17,6 +17,8 @@ def connectstring(ary)
 	r
 end
 
+#@Or and @Seq are necessary for collect
+
 class AmethystParser < Amethyst
 def self.switchcb_AmethystParser1(e)
 return 0 if e<=Args
@@ -341,7 +343,7 @@ def parser_compiled_by
 'ffd44199bc97e9b2fbb422010e038381'
 end
 def parser_source_hash
-'6aabe8adfa524d572abb14e0b99a12f1'
+'d1f9e8937adb72c1bb0d0e1f84feabb9'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version

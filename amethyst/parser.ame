@@ -17,6 +17,8 @@ def connectstring(ary)
 	r
 end
 
+#@Or and @Seq are necessary for collect
+
 amethyst AmethystParser < Amethyst{
 	igrammar = ((~'amethyst'   . )+:{it*""} | grammar)*:a -> a
 

@@ -15,8 +15,6 @@ class Left_Factor < Traverser_Clone2
 	end
 	def merge(ary)
 		a=autovar.normalize
-		puts a.inspect
-		puts a.frozen?
 		r=[Seq[_Bind(a,first(ary[0])),Or[*(ary.map{|e| rest(e,binds(e,a))})]]]
 		r
 	end
@@ -130,7 +128,7 @@ def left_factor_compiled_by
 'ffd44199bc97e9b2fbb422010e038381'
 end
 def left_factor_source_hash
-'576cbe6974b725385c9dfd84f2faa6e6'
+'e5fce1598d23bfd5c5b8d3922301a768'
 end
 def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version

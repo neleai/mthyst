@@ -66,8 +66,6 @@ $av=0
 def autovar
 	$av+=1
 	a=Local["autovar",$av]
-	puts a.inspect
-	puts "err" unless a.frozen?
 	a
 end
 
@@ -307,7 +305,6 @@ def _Local(name)
 		return name if !name.is_a?(String)
 		bnding=instance_eval{@bnding}
 		l=Local[name,bnding]
-		puts l.inspect
 		instance_eval{@locals << l if @locals}
 		l
 end

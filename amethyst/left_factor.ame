@@ -15,8 +15,6 @@ class Left_Factor < Traverser_Clone2
 	end
 	def merge(ary)
 		a=autovar.normalize
-		puts a.inspect
-		puts a.frozen?
 		r=[Seq[_Bind(a,first(ary[0])),Or[*(ary.map{|e| rest(e,binds(e,a))})]]]
 		r
 	end

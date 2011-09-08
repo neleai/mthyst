@@ -1,7 +1,7 @@
 require 'digest'
 require 'set'
 $OPT=""
-$debug=2
+$debug=1
 COMPILED=["amethyst","traverser","detect_variables2","parser","dataflow_ssa","inliner2",
 "detect_switch","left_factor","constant_propagation","ctranslator2"]
 class Gram
@@ -114,7 +114,6 @@ end
 			return unless ["amethyst","traverser"].include? file2 #inheritance
 		end
 		tree=AmethystParser.new.parse(:igrammar,source)
-		deep_clone(tree)
 		tree=Analyze_Variables2.new.parse(:itrans,tree)
 		deep_clone(tree)
 		tree.each{|a|	
