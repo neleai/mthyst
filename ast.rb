@@ -65,7 +65,7 @@ end
 $av=0
 def autovar
 	$av+=1
-	Local["autovar",$av]
+	Local["autovar",$av].normalize
 end
 
 class Enter
@@ -266,13 +266,12 @@ end
 eval("$hash_#{cls}={}
 class #{cls}
 	def self.[](*args)
-		eql=args
-		return $hash_#{cls}[eql] if $hash_#{cls}[eql]
-		r=#{cls}.create({:ary=>args})
-		$hash_#{cls}[eql]=r.normalize
+		return $hash_#{cls}[args] if $hash_#{cls}[args]
+		#{cls}.create({:ary=>args}).normalize
 	end
 	def normalize
-		freeze
+		return $hash_#{cls}[ary] if $hash_#{cls}[ary]
+		$hash_#{cls}[ary]=self.freeze
 	end
 end")
 }
@@ -282,10 +281,12 @@ class Local
 	def self.[](name,bnd,ssano=nil)
 		eql=[name,bnd,ssano]
 		return $hash_Local[eql] if $hash_Local[eql]
-    r=Local.create({:ary=>[name,bnd],:ssano=>ssano})
-    r.instance_variable_set(:@hash,[name,bnd,ssano].hash)
-    $hash_Local[eql]=r.normalize
+    Local.create({:ary=>[name,bnd],:ssano=>ssano}).normalize
   end
+	def normalize
+		return $hash_Local[[ary[0],ary[1],ssano]] if $hash_Local[[ary[0],ary[1],ssano]]
+		$hash_Local[[ary[0],ary[1],ssano]]=self.freeze
+	end
 end
 class Local
 	def desc
@@ -303,7 +304,7 @@ $varhash={}
 def _Local(name)
 		return name if !name.is_a?(String)
 		bnding=instance_eval{@bnding}
-		l=Local[name,bnding].normalize
+		l=Local[name,bnding]
 		puts l.inspect
 		$varhash[l]=l
 		instance_eval{@locals << $varhash[l] if @locals}
@@ -321,9 +322,6 @@ end
 class Local
 	def inspect
 		"L[#{ary[0]}#{ary[1].is_a?(Bnding) ? "" : ary[1]}_#{ssano}]"
-	end
-	def normalize
-		freeze
 	end
 end
 class Key
