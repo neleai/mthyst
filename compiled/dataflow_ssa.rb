@@ -7,26 +7,26 @@ class Dataflow < Traverser_Clone2
 		@oldssanums=Hash.new(0)
 	end
 	def ssanum(var)
-		return var unless var.is_a? Local
-		[var,oldssanums[var]]
+		ssanum2(var)
 	end
 	def ssanum2(var)
 		return var unless var.is_a? Local
-		var=Local[var[0],var[1],oldssanums[var]]
-		[var,oldssanums[var]]
+		var=Local[var[0],var[1],oldssanums[var.unssa]]
+		[var,var.ssano]
 	end
 
 	def newssanum(var)
-		ssanums[var]+=1
-		oldssanums[var]=ssanums[var]
-		ssanum2(var)
+		return var unless var.is_a? Local
+		ssanums[var.unssa]+=1
+		oldssanums[var.unssa]=ssanums[var.unssa]
+		ssanum2(var.unssa)
 	end
 	def many_end(prev)
 	  ssanums.each{|var,num|
 			if var.is_a?(Local)
-	      if prev[var]!=num
-					varp=Local[var[0],var[1],prev[var]]
- 	       edges.add([var,ssanums[var]],[varp,prev[var]] )
+	      if prev[var.unssa]!=num
+					varp=Local[var[0],var[1],prev[var.unssa]]
+ 	       edges.add([var,ssanums[var.unssa]],[varp,prev[var.unssa]] )
  	     end
 			end
     }
@@ -60,6 +60,9 @@ end
 class Local
 	def ssaname
 		[self,ssano]	
+	end
+	def unssa
+		Local[ary[0],ary[1]]
 	end
 end
 
@@ -489,7 +492,7 @@ def dataflow_ssa_compiled_by
 'bd948575545fde7f4a64489d1c5410e4'
 end
 def dataflow_ssa_source_hash
-'530e8cd136e7687fbd18e1c696b29114'
+'acc40c740e366af5a3dd39e5eae23dc6'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version

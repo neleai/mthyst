@@ -281,7 +281,7 @@ class Local
 	def ==(a)
 		return false unless a.is_a?(Local)
 		return false if ssano!=a.ssano
-		return ary,ssano==a.ary
+		return ary==a.ary
 	end
 	def self.resetnumbering
     @@numb=Hash.new{|h,k|h[k]={}}
