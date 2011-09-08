@@ -17,7 +17,6 @@ class Gram
 			[
  			 Dataflow, Dead_Code_Deleter3,Forget_SSA
 			].each{|o|
-			deep_clone(r)
 	      puts r.inspect if $debug>1
       	r=o.new.parse(:root,r)
 			}
@@ -115,7 +114,9 @@ end
 			return unless ["amethyst","traverser"].include? file2 #inheritance
 		end
 		tree=AmethystParser.new.parse(:igrammar,source)
+		deep_clone(tree)
 		tree=Analyze_Variables2.new.parse(:itrans,tree)
+		deep_clone(tree)
 		tree.each{|a|	
 			if a.is_a? Grammar
 				add_grammar(a)

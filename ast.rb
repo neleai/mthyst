@@ -65,7 +65,10 @@ end
 $av=0
 def autovar
 	$av+=1
-	Local["autovar",$av].normalize
+	a=Local["autovar",$av]
+	puts a.inspect
+	puts "err" unless a.frozen?
+	a
 end
 
 class Enter
@@ -86,14 +89,14 @@ class Pass
 end
 def _Bind(name,expr,append=nil)
 	if append
-		a=autovar
+		a=autovar.normalize
 		$appends<<name if $appends
 	  return Seq[_Bind(a,expr),PureAct[Args["_append(",_Local(name),",",a,")"]]]
 	end	
 	if name.is_a?(Local) || name.is_a?(String)
 		Bind.create({:name=>_Local(name),:expr=>expr}).normalize
 	else
-		a=autovar
+		a=autovar.normalize
 		Seq[_Bind(a,expr),PureAct[Args[name,'=',a]]]
 	end
 end
@@ -171,7 +174,7 @@ end
 	alias_method :eql?,:==
 end")}
 
-[Result,Switch,Cut,Stop,Args
+[Result,Switch,Cut,Stop,Args,Strin
 ].each{|c| eval("class #{c} 
 	def self.[](*a)
 		create(*a).normalize
