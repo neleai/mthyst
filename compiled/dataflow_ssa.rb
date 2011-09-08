@@ -12,9 +12,7 @@ class Dataflow < Traverser_Clone2
 	end
 	def ssanum2(var)
 		return var unless var.is_a? Local
-		var=var.dup
-		var.ssano=oldssanums[var]
-		var.freeze
+		var=Local[var[0],var[1],oldssanums[var]]
 		[var,oldssanums[var]]
 	end
 
@@ -27,8 +25,7 @@ class Dataflow < Traverser_Clone2
 	  ssanums.each{|var,num|
 			if var.is_a?(Local)
 	      if prev[var]!=num
-					varp=var.dup
-					varp.ssano=prev[var]
+					varp=Local[var[0],var[1],prev[var]]
  	       edges.add([var,ssanums[var]],[varp,prev[var]] )
  	     end
 			end
@@ -36,7 +33,7 @@ class Dataflow < Traverser_Clone2
 	end
 	def bind_end(exp)
 		name=exp.name
-		n=newssanum(name.dup)
+		n=newssanum(name)
 		bnd=_Bind(n[0],exp.expr)
     edges.add(bnd,n)
 		val=exp
@@ -54,7 +51,7 @@ class Dataflow < Traverser_Clone2
       u=[]
       join.each{|s| u<<s[k]}
       if u.uniq.size>1
-        n=newssanum(k.clone)
+        n=newssanum(k)
         u.each{|v| edges.add([k,v],n)}
       end
     }
@@ -492,7 +489,7 @@ def dataflow_ssa_compiled_by
 'bd948575545fde7f4a64489d1c5410e4'
 end
 def dataflow_ssa_source_hash
-'f43ed4b6401688e4154e1b45777ecfb1'
+'530e8cd136e7687fbd18e1c696b29114'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version

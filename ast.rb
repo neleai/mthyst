@@ -264,9 +264,9 @@ class Lookahead
 end
 
 class Local
-	def self.[](*a)
-    r=super
-    r.instance_variable_set(:@hash,r.ary.hash)
+	def self.[](name,bnd,ssano=nil)
+    r=Local.create({:ary=>[name,bnd],:ssano=>ssano})
+    r.instance_variable_set(:@hash,[name,bnd].hash)
     r.normalize
   end
 end
@@ -288,7 +288,6 @@ def _Local(name)
 		return name if !name.is_a?(String)
 		bnding=instance_eval{@bnding}
 		l=Local[name,bnding].normalize
-		#return $varhash[l] if $varhash[l]
 		puts l.inspect
 		$varhash[l]=l
 		instance_eval{@locals << $varhash[l] if @locals}
