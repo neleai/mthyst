@@ -10,11 +10,13 @@ class Left_Factor < Traverser_Clone2
 	end
 	def binds(s,a)
 		return binds(s[0],a) if s.is_a?(Seq)
-		return _Bind(s.name,binds(s.expr,a)) if s.is_a? Bind
+		return _Bind(s.name.normalize,binds(s.expr,a)) if s.is_a? Bind
 		a
 	end
 	def merge(ary)
-		a=autovar
+		a=autovar.normalize
+		puts a.inspect
+		puts a.frozen?
 		r=[Seq[_Bind(a,first(ary[0])),Or[*(ary.map{|e| rest(e,binds(e,a))})]]]
 		r
 	end
@@ -128,7 +130,7 @@ def left_factor_compiled_by
 'ffd44199bc97e9b2fbb422010e038381'
 end
 def left_factor_source_hash
-'5e71d94060be7500b73f6f4b885af59e'
+'576cbe6974b725385c9dfd84f2faa6e6'
 end
 def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version

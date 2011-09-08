@@ -14,10 +14,10 @@ class Gram
 		}
 	end
 	def opt(r)
-			r=deep_clone(r)
 			[
  			 Dataflow, Dead_Code_Deleter3,Forget_SSA
 			].each{|o|
+			deep_clone(r)
 	      puts r.inspect if $debug>1
       	r=o.new.parse(:root,r)
 			}

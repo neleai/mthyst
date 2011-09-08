@@ -300,15 +300,13 @@ class Local
 	end
 
 end
-$varhash={}
 def _Local(name)
 		return name if !name.is_a?(String)
 		bnding=instance_eval{@bnding}
 		l=Local[name,bnding]
 		puts l.inspect
-		$varhash[l]=l
-		instance_eval{@locals << $varhash[l] if @locals}
-		$varhash[l]
+		instance_eval{@locals << l if @locals}
+		l
 end
 
 
