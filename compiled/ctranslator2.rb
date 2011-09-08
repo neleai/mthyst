@@ -14,14 +14,14 @@ class AmethystCTranslator < Amethyst
 		@locls[s.desc]=@locls.size
 	end
 	def bget(s)
+		cm=s[0]
 		s=desc(s)
-		return "rb_ary_entry(bind,#{s})"
-		"BGET(#{s})"
+		return "rb_ary_entry(bind,#{s}/*#{cm}*/)"
 	end
 	def bset(s,e)
+		cm=s[0]
 		s=desc(s)
-		return "rb_ary_store(bind,#{s},#{e})"
-		"BSET(#{s},#{e})"
+		return "rb_ary_store(bind,#{s}/*#{cm}*/,#{e})"
 	end
 	def rbbget(s)
 		"bind[#{desc(s)}]"
@@ -389,15 +389,15 @@ end
 
 
 def ctranslator2_compiled_by
-'bd948575545fde7f4a64489d1c5410e4'
+'ffd44199bc97e9b2fbb422010e038381'
 end
 def ctranslator2_source_hash
-'51d14f8afe1d1da52fb1879d51bfdbe0'
+'d54118f01665e15ea58a134ed995b36c'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'dd922d88e384709159839a83847b1abc'
+'e956d32ae86efe947c320bf35fb95cdb'
 end
   require 'compiled/ctranslator2_c'

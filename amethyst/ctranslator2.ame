@@ -14,14 +14,14 @@ class AmethystCTranslator < Amethyst
 		@locls[s.desc]=@locls.size
 	end
 	def bget(s)
+		cm=s[0]
 		s=desc(s)
-		return "rb_ary_entry(bind,#{s})"
-		"BGET(#{s})"
+		return "rb_ary_entry(bind,#{s}/*#{cm}*/)"
 	end
 	def bset(s,e)
+		cm=s[0]
 		s=desc(s)
-		return "rb_ary_store(bind,#{s},#{e})"
-		"BSET(#{s},#{e})"
+		return "rb_ary_store(bind,#{s}/*#{cm}*/,#{e})"
 	end
 	def rbbget(s)
 		"bind[#{desc(s)}]"

@@ -81,7 +81,7 @@ end
 
 
 def constant_propagation_compiled_by
-'bd948575545fde7f4a64489d1c5410e4'
+'ffd44199bc97e9b2fbb422010e038381'
 end
 def constant_propagation_source_hash
 'e3dfd733e0fbab53901e87a38b0994a6'
@@ -90,6 +90,6 @@ def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
 end
 def constant_propagation_version
-'d533b6002467bc10b565852b7d5ca87b'
+'fe4ef925c5d28c2b256caab545e6893e'
 end
   require 'compiled/constant_propagation_c'
