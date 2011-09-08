@@ -264,7 +264,7 @@ class Lookahead
 	end
 end
 [CAct,Global,Key,
-Cut,Stop,Exp,Strin,Args
+Cut,Stop,Exp,Strin,Args,Switch
 #Result
 ].each{|cls|
 eval("$hash_#{cls}={}
