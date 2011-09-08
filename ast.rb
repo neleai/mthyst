@@ -235,6 +235,8 @@ end
 def _body(body)
 	Seq[_Bind("_result",body), PureAct[Args["_result"]]]
 end
+
+$hash_Apply={}
 class Apply
   def self.[](name,*args)
 		args=args.flatten
@@ -243,6 +245,10 @@ class Apply
      Apply.create({:ary=>ar}).normalize
   end
 	def normalize
+		return $hash_Apply[ary] if $hash_Apply[ary]
+		$hash_Apply[ary]=normalize2
+	end
+	def normalize2
 		if @ary[0]=="apply"
 			return Apply[@ary[1][0][13...-2]] if @ary[1].is_a?(CAct)
 			return @ary[1][0][0] if @ary[1].is_a?(Act) && @ary[1][0].is_a?(Exp)
@@ -264,7 +270,7 @@ class Lookahead
 	end
 end
 [CAct,Global,Key,
-Cut,Stop,Exp,Strin,Args,Switch
+Cut,Stop,Exp,Strin,Args
 #Result
 ].each{|cls|
 eval("$hash_#{cls}={}
