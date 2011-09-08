@@ -29,7 +29,12 @@ makeclasses(AmethystAST,
 
 class SeqOr<AmethystAST;end
 makeclasses(SeqOr,:Seq,:Or)
-
+Placeholder=Object.new
+class <<Placeholder
+	def to_s
+		"Placeholder"
+	end
+end
 class Array
 	def normalize
 		self
@@ -73,7 +78,7 @@ class Pass
 	def self.[](from,to,enter=nil)
 		a=autovar
 		r=autovar
-		Seq[_Bind(a,from), (enter ? PureAct[] : Act[Args[a,"=[",a,"]"]]) , Pass.create({:to=>Seq[_Bind(r,to),Apply["eof"]],:var=>a}),r]
+		Seq[_Bind(a,from), (enter ? Placeholder : Act[Args[a,"=[",a,"]"]]) , Pass.create({:to=>Seq[_Bind(r,to),Apply["eof"]],:var=>a}),r]
 	end
 	def normalize
 		self.freeze
@@ -121,8 +126,8 @@ end
 class SeqOr
 	 def normalize
     @ary=@ary.map{|i| (i.is_a?(self.class)) ? i.ary : i}.flatten
-    @ary=@ary.select{|e| !(e.is_a?(Act) && e.ary.size==0)}
-    return Act[] if @ary.size==0
+    @ary=@ary.select{|e| !(e==Placeholder)}
+    return Placeholder if @ary.size==0
     return @ary[0] if (@ary.size==1)
     @ary.freeze
     self.freeze
@@ -136,6 +141,7 @@ class Seq
 	end
 	def normalize
 		s=super
+		return s if s==Placeholder
 		s.ary.each_index{|i|if i!=s.ary.size-1
 			return Seq[*s.ary[0..i]] if s.ary[i].is_a?(Apply) && s.ary[i][0]=="fails"
 		end}

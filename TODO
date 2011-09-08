@@ -38,11 +38,10 @@ hashes with different equalization
 adaptive dataflow
 think about suitable decomposition
 
-Left factor to recognize binds as same
-Bind in postfix form
-
 dataflow cantfail, noresult
 
 saner handling of Locals
 
 detects also rules in parent that call but are not called
+
+move switch into pipeline
