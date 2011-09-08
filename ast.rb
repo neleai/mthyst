@@ -78,7 +78,7 @@ class Pass
 	def self.[](from,to,enter=nil)
 		a=autovar
 		r=autovar
-		Seq[_Bind(a,from), (enter ? Placeholder : Act[Args[a,"=[",a,"]"]]) , Pass.create({:to=>Seq[_Bind(r,to),Apply["eof"]],:var=>a}),r]
+		Seq[_Bind(a,from), (enter ? Placeholder : Act[Args[a,"=[",a,"]"]]) , Pass.create({:to=>Seq[_Bind(r,to),Apply["eof"]],:var=>a}).normalize,r]
 	end
 	def normalize
 		self.freeze
@@ -116,7 +116,7 @@ end
 class Many
 	def self.[](expr,many1=nil)
 	  a=autovar
-		Seq[{:ary=>( [_Bind(a, Act["[]"])]+(many1 ? [Append[a,expr]] : [])+[Many.create({:ary=>[Append[a,expr]]}),PureAct[a]])}]
+		Seq[{:ary=>( [_Bind(a, Act["[]"])]+(many1 ? [Append[a,expr]] : [])+[Many.create({:ary=>[Append[a,expr]]}).normalize,a])}]
 	end
 	def normalize
 		self.freeze
@@ -136,7 +136,7 @@ end
 class Seq
 	def self.[](*args)
 		args=args[0][:ary] if args.size==1 && args[0].is_a?(Hash)
-		return Seq.create(*args) if args[-1].is_a?(Hash)
+		return Seq.create(*args).normalize if args[-1].is_a?(Hash)
 		Seq.create({:ary=>args}).normalize
 	end
 	def normalize
@@ -152,7 +152,7 @@ end
 class Or
 	def self.[](*args)
 		args=args[0][:ary] if args.size==1 && args[0].is_a?(Hash)
-		return Or.create(*args) if args[-1].is_a?(Hash)
+		return Or.create(*args).normalize if args[-1].is_a?(Hash)
 		return Apply["fails"] if args.size==0
 		Or.create({:ary=>args}).normalize
 	end
