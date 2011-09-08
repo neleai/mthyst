@@ -283,6 +283,7 @@ class Local
 		return false if ssano!=a.ssano
 		return ary==a.ary
 	end
+	#alias_method :eql?,:==
 	def self.resetnumbering
     @@numb=Hash.new{|h,k|h[k]={}}
 	end
