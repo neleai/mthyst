@@ -263,7 +263,9 @@ class Lookahead
 		freeze
 	end
 end
-["CAct","Global","Key"].each{|cls|
+[CAct,Global,Key,
+Cut,Stop,#Args,Strin,Exp
+].each{|cls|
 eval("$hash_#{cls}={}
 class #{cls}
 	def self.[](*args)
