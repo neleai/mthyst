@@ -155,7 +155,7 @@ end
 
 
 def detect_variables2_compiled_by
-'ffd44199bc97e9b2fbb422010e038381'
+'134cd9027e9b30970632efd11255a82c'
 end
 def detect_variables2_source_hash
 '56196ab0e78188e5a2d6bc8b4c79e49b'

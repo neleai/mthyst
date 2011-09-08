@@ -200,6 +200,7 @@ class CAct
 		true
 	end
 end
+$hash_Act=Hash.new{|h,k|h[k]=Hash.new{|h,k|h[k]={}}}
 class Act
 	def self.[](expr=nil,pred=nil)
 		expr=expr[0] if expr.is_a?(Array) && expr.size<=1
@@ -210,6 +211,10 @@ class Act
 		r
 	end
 	def normalize
+		return $hash_Act[pred][ary][pure] if $hash_Act[pred][ary][pure]
+		$hash_Act[pred][ary][pure]=normalize2
+	end
+	def normalize2
 		return self if !@ary
 		if @ary.size==1 && !@pred
 			exp=@ary[0]
