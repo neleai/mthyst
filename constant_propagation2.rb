@@ -65,7 +65,7 @@ class Constant_Propagator
 	end
  	def step(el)
     case el
-      when Array
+      when Local
         a=Bottom
         depend.reverse.edges[el].each{|e|
 					if valof(e)!=Bottom
@@ -103,9 +103,9 @@ c.analyze2.each{|k,v|
 	end
 }
 }
-#puts r.inspect
+puts r.inspect if $debug>1
 r=Constant_Traverser.new.parse(:root,r)
-#puts r.inspect
+puts r.inspect if $debug>1
 r
 end
 if false
