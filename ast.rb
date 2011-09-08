@@ -160,7 +160,7 @@ end
 
 
 
-[Apply,Bnding,Global,Key,Act,Seq,Or].each{|c| eval("class #{c} 
+[Apply,Bnding,Act,Seq,Or].each{|c| eval("class #{c} 
  def hash
 	ary.hash
  end
@@ -171,7 +171,7 @@ end
 	alias_method :eql?,:==
 end")}
 
-[Global,Key,Result,Switch,Cut,Stop,Args
+[Result,Switch,Cut,Stop,Args
 ].each{|c| eval("class #{c} 
 	def self.[](*a)
 		create(*a).normalize
@@ -262,19 +262,20 @@ class Lookahead
 		freeze
 	end
 end
-
-$hash_CAct={}
-class CAct
+["CAct","Global","Key"].each{|cls|
+eval("$hash_#{cls}={}
+class #{cls}
 	def self.[](*args)
 		eql=args
-		return $hash_CAct[eql] if $hash_CAct[eql]
-		r=CAct.create({:ary=>args})
-		$hash_CAct[eql]=r.normalize
+		return $hash_#{cls}[eql] if $hash_#{cls}[eql]
+		r=#{cls}.create({:ary=>args})
+		$hash_#{cls}[eql]=r.normalize
 	end
 	def normalize
 		freeze
 	end
-end
+end")
+}
 
 $hash_Local={}
 class Local
