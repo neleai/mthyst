@@ -103,4 +103,7 @@ amethyst Dead_Code_Deleter3 < Traverser_Clone2{
           | Local[.* @self:this ] -> @@reachable[this.ssaname] ? this : Placeholder
 }
 
-
+amethyst Forget_SSA < Traverser_Clone2 {
+	root = @self=>Rule[traverse]
+	visit = Local[ :name :num {Local[name,num]} ]
+}

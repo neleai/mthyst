@@ -423,18 +423,81 @@ end
 end
 
 
+class Forget_SSA < Traverser_Clone2
+def self.switchcb_Forget_SSA7(e)
+return 0 if e<=Array
+return 1 if e<=AmethystAST
+return 2 if e<=Object
+return 3
+end
+@@switchhashForget_SSA7=Hash.new{|h,k| h[k]=switchcb_Forget_SSA7(k)}
+def switchcbForget_SSA7(e)
+@@switchhashForget_SSA7[e.class]
+end
+def clas_Forget_SSAcb_1(bind)
+(bind[0].is_a?(bind[1])) || FAIL
+end
+def fails_Forget_SSAcb_1(bind)
+(false) || FAIL
+end
+def root_Forget_SSAcb_1(bind)
+@src
+end
+def root_Forget_SSAcb_2(bind)
+bind[0]=[bind[0]]
+end
+def root_Forget_SSAcb_3(bind)
+Rule
+end
+def traverse_Forget_SSAcb_1(bind)
+@changed
+end
+def traverse_Forget_SSAcb_2(bind)
+(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
+end
+def traverse_Forget_SSAcb_3(bind)
+bind[4]=[bind[4]]
+end
+def traverse_Forget_SSAcb_4(bind)
+@changed=false
+end
+def traverse_Forget_SSAcb_5(bind)
+(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
+end
+def traverse_Forget_SSAcb_6(bind)
+if bind[3]
+             @changed=true;bind[2].normalize
+           else
+            @changed=bind[0]
+            @src
+          end
+end
+def traverse_item_Forget_SSAcb_1(bind)
+@changed=true
+end
+def traverse_item_Forget_SSAcb_2(bind)
+bind[3]<<bind[4]
+end
+def visit_Forget_SSAcb_1(bind)
+Local
+end
+def visit_Forget_SSAcb_2(bind)
+Local[bind[1],bind[2]]
+end
+
+end
 
 
 def dataflow_ssa_compiled_by
-'6fd746bf8ba8647037115dbbdac86403'
+'bd948575545fde7f4a64489d1c5410e4'
 end
 def dataflow_ssa_source_hash
-'18b3853555a6a3ed73c704f9c8885a01'
+'f43ed4b6401688e4154e1b45777ecfb1'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'a5fe6d4dc1f7ca83cd0207640fc39d1f'
+'d9e73f5414a2b1ba0e5bba7a25ec352e'
 end
   require 'compiled/dataflow_ssa_c'
