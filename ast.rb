@@ -278,6 +278,11 @@ class Local
 		return @@numb[ary[0]][self] if @@numb[ary[0]][self]
 		 @@numb[ary[0]][self]="#{ary[0]}_#{@@numb[ary[0]].size+1}"
 	end
+	def ==(a)
+		return false unless a.is_a?(Local)
+		return false if ssano!=a.ssano
+		return ary,ssano==a.ary
+	end
 	def self.resetnumbering
     @@numb=Hash.new{|h,k|h[k]={}}
 	end
