@@ -82,7 +82,7 @@ def clas_AmethystParsercb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
 def collect_AmethystParsercb_1(bind)
-a=autovar.normalize; Seq[Or[{:ary=>bind[0].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],PureAct[a]]
+a=autovar.normalize; Seq[Or[{:ary=>bind[0].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
 end
 def eChar_AmethystParsercb_1(bind)
 "\\#{bind[2]}"
@@ -304,7 +304,7 @@ def term_AmethystParsercb_11(bind)
 Apply["regch","/[#{bind[1]}]/"]
 end
 def term_AmethystParsercb_12(bind)
-a=autovar.normalize; Seq[Or[{:ary=>bind[11].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],PureAct[a]]
+a=autovar.normalize; Seq[Or[{:ary=>bind[11].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
 end
 def term_AmethystParsercb_2(bind)
 Nested[bind[4]]
@@ -341,7 +341,7 @@ def parser_compiled_by
 'ffd44199bc97e9b2fbb422010e038381'
 end
 def parser_source_hash
-'7352c8b0eefc7cf4d84901abf4acf28f'
+'6aabe8adfa524d572abb14e0b99a12f1'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version

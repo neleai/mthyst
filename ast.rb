@@ -216,7 +216,7 @@ class Act
 		if @ary.size==1 && !@pred
 			exp=@ary[0]
 			exp=exp[0] if exp.is_a?(Args) && exp.size==1
-		  return Act.create(exp,{:pure=>true}) if exp.is_a?(Exp)
+		  return Act.create(exp,{:pure=>true}).freeze if exp.is_a?(Exp)
 			return CAct["rb_ary_new3(0)"] if exp=="[]"
 			return CAct["Qtrue"] if exp=="true"
 			return CAct["Qfalse"] if exp=="false"

@@ -66,7 +66,7 @@ amethyst AmethystParser < Amethyst{
               | "@" name:name  {Key[name]}
 							| "@@" name:name -> Global[name]
 
-  collect(ors) = -> a=autovar.normalize; Seq[Or[{:ary=>ors.ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],PureAct[a]]
+  collect(ors) = -> a=autovar.normalize; Seq[Or[{:ary=>ors.ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
 
 	eChar = '\\' char:c   -> "\\#{c}"
   	  	| _args('#'+'{','}')
