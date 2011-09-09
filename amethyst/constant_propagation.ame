@@ -14,17 +14,22 @@ end
 class ConstantLattice
 	attr_accessor :val
 	def self.[](val)
-		@val=val
+		c=ConstantLattice.new
+		c.val=val
+		c.freeze
 	end
 	def +(a)
 		return a if val==Bottom
 		return self if a.val==Bottom
-		return Top if val==Top|| a.val==Top 
+		return ConstantLattice[Top] if val==Top|| a.val==Top 
 		if val==a.val
 			return self
 		else
 			return ConstantLattice[Top]
 		end		
+	end
+	def ==(a)
+		return val==a.val
 	end
 end
 

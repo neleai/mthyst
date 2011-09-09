@@ -6,7 +6,7 @@ require 'compiler'
 require 'compiled/constant_propagation'
 
 #t=translate("amethyst Foo { bar = {1}:x ({x}:y {y}:x)* }")
-#puts t.inspect
+#nspect
 #r=t[0].rules[0]
 #r=Dataflow.new.parse(:root,r)
 class Constant_Propagator
@@ -28,6 +28,7 @@ class Constant_Propagator
         depend.edges[e].each{|d| addactive(d)}
       end
     end
+		@vals.clone.each{|k,v| @vals[k]=v.val}
   end
   def addactive(e)
     if !@active[e]
@@ -37,7 +38,7 @@ class Constant_Propagator
   end
 
 	def analyze2
-		@depend.topo_order.each{|e| addactive(e);@vals[e]=Bottom}
+		@depend.topo_order.each{|e| addactive(e);@vals[e]=ConstantLattice[Bottom]}
 		analyze
 		@vals
 	end
@@ -52,24 +53,21 @@ class Constant_Propagator
  	def step(el)
     case el
       when Local
-        a=Bottom
+        a=ConstantLattice[Bottom]
         depend.reverse.edges[el].each{|e|
-					if valof(e)!=Bottom
-          	a=valof(e) if a==Bottom
-          	a=Top if a!=valof(e)
-					end
+					a=a+valof(e)
         }
         return a
       when Bind
  	      return valof(el.expr)
 			when Act
 				return valof(el[0]) if el[0].is_a? Local
-				return el[0] if el[0].is_a?(Exp)
-				return Top
+				return ConstantLattice[el[0]] if el[0].is_a?(Exp)
+				return ConstantLattice[Top]
 			when CAct
-				return el[0]
+				return ConstantLattice[el[0]]
     end
-		return Top
+		return ConstantLattice[Top]
   end
 	
 end

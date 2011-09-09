@@ -14,17 +14,22 @@ end
 class ConstantLattice
 	attr_accessor :val
 	def self.[](val)
-		@val=val
+		c=ConstantLattice.new
+		c.val=val
+		c.freeze
 	end
 	def +(a)
 		return a if val==Bottom
 		return self if a.val==Bottom
-		return Top if val==Top|| a.val==Top 
+		return ConstantLattice[Top] if val==Top|| a.val==Top 
 		if val==a.val
 			return self
 		else
 			return ConstantLattice[Top]
 		end		
+	end
+	def ==(a)
+		return val==a.val
 	end
 end
 
@@ -115,7 +120,7 @@ def constant_propagation_compiled_by
 'ffd44199bc97e9b2fbb422010e038381'
 end
 def constant_propagation_source_hash
-'6bfdc303ec8e3cb89513740602283bf1'
+'549b0533d7fcea2b5847de81c1fa58a4'
 end
 def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
