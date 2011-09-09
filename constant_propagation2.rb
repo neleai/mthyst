@@ -4,20 +4,6 @@ require 'pp'
 require 'amethyst'
 require 'compiler'
 require 'compiled/constant_propagation'
-Top=Object.new
-Bottom=Object.new
-class <<Top
-  def inspect
-    "Top"
-  end
-end
-class <<Bottom
-  def inspect
-    "Bottom"
-  end
-end
-
-
 
 #t=translate("amethyst Foo { bar = {1}:x ({x}:y {y}:x)* }")
 #puts t.inspect

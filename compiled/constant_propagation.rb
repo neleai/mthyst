@@ -1,3 +1,34 @@
+Top=Object.new
+Bottom=Object.new
+class <<Top
+  def inspect
+    "Top"
+  end
+end
+class <<Bottom
+  def inspect
+    "Bottom"
+  end
+end
+
+class ConstantLattice
+	attr_accessor :val
+	def self.[](val)
+		@val=val
+	end
+	def +(a)
+		return a if val==Bottom
+		return self if a.val==Bottom
+		return Top if val==Top|| a.val==Top 
+		if val==a.val
+			return self
+		else
+			return ConstantLattice[Top]
+		end		
+	end
+end
+
+
 class Constant_Traverser < Traverser_Clone2
 def self.switchcb_Constant_Traverser1(e)
 return 0 if e<=Bind
@@ -81,10 +112,10 @@ end
 
 
 def constant_propagation_compiled_by
-'134cd9027e9b30970632efd11255a82c'
+'ffd44199bc97e9b2fbb422010e038381'
 end
 def constant_propagation_source_hash
-'e3dfd733e0fbab53901e87a38b0994a6'
+'6bfdc303ec8e3cb89513740602283bf1'
 end
 def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version

@@ -1,3 +1,34 @@
+Top=Object.new
+Bottom=Object.new
+class <<Top
+  def inspect
+    "Top"
+  end
+end
+class <<Bottom
+  def inspect
+    "Bottom"
+  end
+end
+
+class ConstantLattice
+	attr_accessor :val
+	def self.[](val)
+		@val=val
+	end
+	def +(a)
+		return a if val==Bottom
+		return self if a.val==Bottom
+		return Top if val==Top|| a.val==Top 
+		if val==a.val
+			return self
+		else
+			return ConstantLattice[Top]
+		end		
+	end
+end
+
+
 amethyst Constant_Traverser < Traverser_Clone2 {
 	root = {@@consts=@consts}  {@cfg=nil;@reachable=nil;@consts=nil} traverse  
 	visit = Bind[ @expr=>traverse_item:expr {_Bind(@name,expr)} ]
