@@ -13,17 +13,18 @@ variable cget,cset,rbget,rbset or some other generalization
 consider pseudovariables
 
 work in 1.9.1
-unify lambda+rule in ctranslator2
 bind cut,stop to corresponding many,or
 code motion of acts
 
 documentation
 
+unify lambda+rule in ctranslator2
 rewrite using backtracking,repeat until...
+continuation passing style
 
 initialize parse by Pass
 
-switch and predication by constant propagation
+switch and predication by constant propagation?
 
 consider left factor when conditions are in inclusion.
 
@@ -45,3 +46,7 @@ saner handling of Locals
 detects also rules in parent that call but are not called
 
 move switch into pipeline
+
+detect_switch char intervals
+
+predicate,cut,stop,comment do not return value

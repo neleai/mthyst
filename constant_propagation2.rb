@@ -27,6 +27,7 @@ class Constant_Propagator < Amethyst
       end
     end
 		@vals.clone.each{|k,v| @vals[k]=v.val}
+		#puts @vals.inspect
   end
   def addactive(e)
     if !@active[e]

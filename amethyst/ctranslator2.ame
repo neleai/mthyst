@@ -71,7 +71,6 @@ amethyst AmethystCTranslator < Amethyst {
 
 
 	rbcode = {"class #{@@grammar} < #{@@parent}\n"}:s
-
 	{s<<@@defs*"\n";s<<"\n"}
 	{@@callbacks.to_a.sort}=>[([:k :v]   {"def #{k}(bind)\n#{v}\nend\n"})*:x ]
 	{s+=x*""}
