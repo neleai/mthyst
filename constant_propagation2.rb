@@ -48,27 +48,8 @@ class Constant_Propagator < Amethyst
 		return vals[e.ssaname] if e.is_a?(Local)
 		return vals[e]
 	end
- 	def step(el)
-    case el
-      when Local
-        a=ConstantLattice[Bottom]
-        depend.reverse.edges[el].each{|e|
-					a=a+valof(e)
-        }
-        return a
-      when Bind
- 	      return valof(el.expr)
-			when Act
-				return valof(el[0]) if el[0].is_a? Local
-				return ConstantLattice[el[0]] if el[0].is_a?(Exp)
-				return ConstantLattice[Top]
-			when CAct
-				return ConstantLattice[el[0]]
-    end
-		return ConstantLattice[Top]
-  end
-	
 end
+
 def propagate_consts(r)
 [Dataflow].each{|p| r=p.new.parse(:root,r)
 #puts r.inspect

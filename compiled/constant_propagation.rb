@@ -34,35 +34,81 @@ class ConstantLattice
 end
 
 class Constant_Propagator < Amethyst
-
+def self.switchcb_Constant_Propagator2(e)
+return 0 if e<=Local
+return 1 if e<=Bind
+return 2 if e<=Act
+return 3 if e<=CAct
+return 4 if e<=Object
+return 5
+end
+@@switchhashConstant_Propagator2=Hash.new{|h,k| h[k]=switchcb_Constant_Propagator2(k)}
+def switchcbConstant_Propagator2(e)
+@@switchhashConstant_Propagator2[e.class]
+end
+def clas_Constant_Propagatorcb_1(bind)
+(bind[0].is_a?(bind[1])) || FAIL
+end
+def fails_Constant_Propagatorcb_1(bind)
+(false) || FAIL
+end
 def root_Constant_Propagatorcb_1(bind)
 @depend=bind[0]
+end
+def step_Constant_Propagatorcb_1(bind)
+bind[1]=[bind[1]]
+end
+def step_Constant_Propagatorcb_2(bind)
+a=ConstantLattice[Bottom]
+        											depend.reverse.edges[bind[0]].each{|e| a=a+valof(e)}
+															a
+end
+def step_Constant_Propagatorcb_3(bind)
+ConstantLattice[Top]
+end
+def step_Constant_Propagatorcb_4(bind)
+@src.expr
+end
+def step_Constant_Propagatorcb_5(bind)
+Local
+end
+def step_Constant_Propagatorcb_6(bind)
+@src
+end
+def step_Constant_Propagatorcb_7(bind)
+Exp
+end
+def step_Constant_Propagatorcb_8(bind)
+ConstantLattice[@src]
+end
+def step_Constant_Propagatorcb_9(bind)
+ConstantLattice[bind[14]]
 end
 
 end
 
 
 class Constant_Traverser < Traverser_Clone2
-def self.switchcb_Constant_Traverser1(e)
+def self.switchcb_Constant_Traverser3(e)
 return 0 if e<=Bind
 return 1 if e<=Act
 return 2 if e<=Local
 return 3 if e<=Object
 return 4
 end
-@@switchhashConstant_Traverser1=Hash.new{|h,k| h[k]=switchcb_Constant_Traverser1(k)}
-def switchcbConstant_Traverser1(e)
-@@switchhashConstant_Traverser1[e.class]
+@@switchhashConstant_Traverser3=Hash.new{|h,k| h[k]=switchcb_Constant_Traverser3(k)}
+def switchcbConstant_Traverser3(e)
+@@switchhashConstant_Traverser3[e.class]
 end
-def self.switchcb_Constant_Traverser2(e)
+def self.switchcb_Constant_Traverser4(e)
 return 0 if e<=Array
 return 1 if e<=AmethystAST
 return 2 if e<=Object
 return 3
 end
-@@switchhashConstant_Traverser2=Hash.new{|h,k| h[k]=switchcb_Constant_Traverser2(k)}
-def switchcbConstant_Traverser2(e)
-@@switchhashConstant_Traverser2[e.class]
+@@switchhashConstant_Traverser4=Hash.new{|h,k| h[k]=switchcb_Constant_Traverser4(k)}
+def switchcbConstant_Traverser4(e)
+@@switchhashConstant_Traverser4[e.class]
 end
 def clas_Constant_Traversercb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -125,15 +171,15 @@ end
 
 
 def constant_propagation_compiled_by
-'4217ca4d937940a3d2b0e05391d418c5'
+'5e9d8025c12dd2964212da06c08f1e66'
 end
 def constant_propagation_source_hash
-'ff47971d3291d0d6fd7a3cb356ced265'
+'9468cae32ec5bb7e6431d4fa1b1b69e4'
 end
 def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
 end
 def constant_propagation_version
-'f726c663a273759655648696d2ee97b5'
+'0173ff6114f28390825a31e07b24516d'
 end
   require 'compiled/constant_propagation_c'
