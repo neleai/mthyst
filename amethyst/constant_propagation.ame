@@ -33,6 +33,9 @@ class ConstantLattice
 	end
 end
 
+amethyst Constant_Propagator{
+	root= .:{@@depend=it}
+}
 
 amethyst Constant_Traverser < Traverser_Clone2 {
 	root = {@@consts=@consts}  {@cfg=nil;@reachable=nil;@consts=nil} traverse  

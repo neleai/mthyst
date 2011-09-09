@@ -1,5 +1,13 @@
 #include "cthyst.h"
-VALUE cls_Constant_Traverser;
+VALUE cls_Constant_Propagator;
+VALUE Constant_Propagator_root(VALUE self );
+VALUE Constant_Propagator_root(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(2);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+
+  it=AmethystCore_anything(self ); FAILTEST(fail);
+ rb_ary_store(bind,0/*it*/,it); it=CALL(root_Constant_Propagatorcb_1,1,bind); 
+ rb_ary_store(bind,1/*_result*/,it); it=rb_ary_entry(bind,1/*_result*/);
+return it;
+fail: return failobj; }VALUE cls_Constant_Traverser;
 VALUE Constant_Traverser_clas(VALUE self ,VALUE a0);
 VALUE Constant_Traverser_empty(VALUE self );
 VALUE Constant_Traverser_eof(VALUE self );
@@ -198,6 +206,10 @@ it=rb_ary_entry(bind,8/*autovar*/);
 return it;
 fail: return failobj; }
 void Init_constant_propagation_c(){ 
+ cls_Constant_Propagator=rb_define_class("Constant_Propagator",rb_const_get(rb_cObject,rb_intern("Amethyst"))); 
+failobj=rb_eval_string("FAIL");
+rb_define_method(cls_Constant_Propagator,"root",Constant_Propagator_root,0);
+
  cls_Constant_Traverser=rb_define_class("Constant_Traverser",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2"))); 
 failobj=rb_eval_string("FAIL");
 rb_define_method(cls_Constant_Traverser,"clas",Constant_Traverser_clas,1);
@@ -208,4 +220,4 @@ rb_define_method(cls_Constant_Traverser,"root",Constant_Traverser_root,0);
 rb_define_method(cls_Constant_Traverser,"traverse",Constant_Traverser_traverse,0);
 rb_define_method(cls_Constant_Traverser,"traverse_item",Constant_Traverser_traverse_item,0);
 rb_define_method(cls_Constant_Traverser,"visit",Constant_Traverser_visit,0);
- rb_eval_string("testversionconstant_propagation('fe4ef925c5d28c2b256caab545e6893e')");}
+ rb_eval_string("testversionconstant_propagation('f726c663a273759655648696d2ee97b5')");}

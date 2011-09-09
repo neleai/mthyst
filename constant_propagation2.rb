@@ -9,16 +9,14 @@ require 'compiled/constant_propagation'
 #nspect
 #r=t[0].rules[0]
 #r=Dataflow.new.parse(:root,r)
-class Constant_Propagator
+class Constant_Propagator < Amethyst
   attr_accessor :vals,:active,:activea,:depend
-	def initialize(depend)
-		@depend=depend
+	def initialize()
 		@vals={}
     @active={}
     @activea=[]
-
 	end
-	
+
 	def analyze
     while e=activea.pop
       active.delete(e)
@@ -76,7 +74,8 @@ def propagate_consts(r)
 #puts r.inspect
 }
 withtime("Constant_Propagator"){
-c=Constant_Propagator.new(r.cfg)
+c=Constant_Propagator.new
+c.parse(:root,[r.cfg])
 #puts c.inspect
 r.consts={}
 c.analyze2.each{|k,v| 

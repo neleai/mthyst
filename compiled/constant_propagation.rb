@@ -33,6 +33,14 @@ class ConstantLattice
 	end
 end
 
+class Constant_Propagator < Amethyst
+
+def root_Constant_Propagatorcb_1(bind)
+@depend=bind[0]
+end
+
+end
+
 
 class Constant_Traverser < Traverser_Clone2
 def self.switchcb_Constant_Traverser1(e)
@@ -117,15 +125,15 @@ end
 
 
 def constant_propagation_compiled_by
-'41b7ca665fc615d019e788c78ca8a200'
+'4217ca4d937940a3d2b0e05391d418c5'
 end
 def constant_propagation_source_hash
-'549b0533d7fcea2b5847de81c1fa58a4'
+'ff47971d3291d0d6fd7a3cb356ced265'
 end
 def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
 end
 def constant_propagation_version
-'fe4ef925c5d28c2b256caab545e6893e'
+'f726c663a273759655648696d2ee97b5'
 end
   require 'compiled/constant_propagation_c'
