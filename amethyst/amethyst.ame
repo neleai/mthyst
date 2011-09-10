@@ -1,4 +1,6 @@
 amethyst Amethyst < AmethystCore {
+	foo= "a" | "b"		
+
 	regch(regex) = char:c &{regex.match(c)} -> c
 
   eof= ~.

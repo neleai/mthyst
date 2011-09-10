@@ -13,6 +13,7 @@ VALUE Amethyst_endline(VALUE self );
 VALUE Amethyst_eof(VALUE self );
 VALUE Amethyst_exactly(VALUE self ,VALUE a0);
 VALUE Amethyst_fails(VALUE self );
+VALUE Amethyst_foo(VALUE self );
 VALUE Amethyst_letter(VALUE self );
 VALUE Amethyst_letterOrDigit(VALUE self );
 VALUE Amethyst_listOf(VALUE self ,VALUE a0,VALUE a1);
@@ -144,6 +145,22 @@ VALUE Amethyst_fails(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int
 
 it=CALL(fails_Amethystcb_1,1,bind); FAILTEST(fail);
  rb_ary_store(bind,0/*_result*/,it); it=rb_ary_entry(bind,0/*_result*/);
+return it;
+fail: return failobj; }
+VALUE Amethyst_foo(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+
+  it=Amethyst_spaces(self ); FAILTEST(fail);int oldpos1=ame_getpos(self);
+alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
+  it=rb_str_new2("a"); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(alt1_2);it=rb_str_new2("a");
+ rb_ary_store(bind,0/*_result*/,it);  
+ISET(cut,Qnil);goto accept1;
+alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
+  it=rb_str_new2("b"); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(alt1_3);it=rb_str_new2("b");
+ rb_ary_store(bind,0/*_result*/,it);  
+ISET(cut,Qnil);goto accept1;
+  alt1_3:  ame_setpos(self,oldpos1); goto fail;
+ accept1:;
+it=rb_ary_entry(bind,0/*_result*/);
 return it;
 fail: return failobj; }
 VALUE Amethyst_letter(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -312,6 +329,7 @@ rb_define_method(cls_Amethyst,"endline",Amethyst_endline,0);
 rb_define_method(cls_Amethyst,"eof",Amethyst_eof,0);
 rb_define_method(cls_Amethyst,"exactly",Amethyst_exactly,1);
 rb_define_method(cls_Amethyst,"fails",Amethyst_fails,0);
+rb_define_method(cls_Amethyst,"foo",Amethyst_foo,0);
 rb_define_method(cls_Amethyst,"letter",Amethyst_letter,0);
 rb_define_method(cls_Amethyst,"letterOrDigit",Amethyst_letterOrDigit,0);
 rb_define_method(cls_Amethyst,"listOf",Amethyst_listOf,2);
@@ -324,4 +342,4 @@ rb_define_method(cls_Amethyst,"token",Amethyst_token,1);
 rb_define_method(cls_Amethyst,"upper",Amethyst_upper,0);
 rb_define_method(cls_Amethyst,"word",Amethyst_word,0);
 rb_define_method(cls_Amethyst,"xdigit",Amethyst_xdigit,0);
- rb_eval_string("testversionamethyst('0879796d05b601c5589bdd7183a55455')");}
+ rb_eval_string("testversionamethyst('6801d072c1322e26c0ce6b857ff27617')");}

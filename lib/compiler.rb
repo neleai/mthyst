@@ -22,7 +22,8 @@ class Gram
 			}
 		r=propagate_consts(r)
  [ Dataflow, Dead_Code_Deleter3,Forget_SSA,
-			Left_Factor,
+	 Left_Factor,
+   Dataflow, Dead_Code_Deleter3,Forget_SSA,
 ].each{|o|
 			r=o.new.parse(:root,r)
 			puts r.inspect if $debug>1

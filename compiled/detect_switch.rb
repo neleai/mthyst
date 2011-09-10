@@ -101,6 +101,8 @@ end
 
 class Switch_Dataflow < First_Dataflow
   def firstchar(s)
+		puts "detect"
+		puts s.inspect
 	  return Empty if s.size==15
     s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
     eval('"'+s+'"')[0]
@@ -597,10 +599,13 @@ def visit_Detect_Switchcb_1(bind)
 Or
 end
 def visit_Detect_Switchcb_10(bind)
-(bind[2].size>1) || FAIL
+bind[2]<<[["default"],Apply["fails"]] unless bind[1].include?(:default)
 end
 def visit_Detect_Switchcb_11(bind)
-Switch[{:act=>"*ame_curstr(self)",:first=>bind[4],:ary=>bind[2]}]
+(bind[2].size>1) || FAIL
+end
+def visit_Detect_Switchcb_12(bind)
+s=Switch[{:act=>"*ame_curstr(self)",:first=>bind[4],:ary=>bind[2]}];puts s.inspect;s
 end
 def visit_Detect_Switchcb_2(bind)
 CharLattice[]
@@ -615,18 +620,18 @@ def visit_Detect_Switchcb_5(bind)
 bind[1]=bind[1].ary.map{|bind[3]|  [Anything,Empty].include?(bind[3]) ? :default : bind[3]}.uniq
 end
 def visit_Detect_Switchcb_6(bind)
-(bind[1].size>1) || FAIL
+puts bind[1].inspect
 end
 def visit_Detect_Switchcb_7(bind)
+(bind[1].size>1) || FAIL
+end
+def visit_Detect_Switchcb_8(bind)
 bind[1].each{|bind[3]|
 			bind[2]<<[bind[3],Or[{:ary=>@src.ary.select{|p|intersects(p,bind[3])}}]]
 		}
 end
-def visit_Detect_Switchcb_8(bind)
-bind[2]=bind[2].group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k.to_s}.sort,v[0][1]]}.sort
-end
 def visit_Detect_Switchcb_9(bind)
-bind[2]<<[["default"],Apply["fails"]] unless bind[1].include?(:default)
+bind[2]=bind[2].group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k.to_s}.sort,v[0][1]]}.sort
 end
 
 end
@@ -757,15 +762,15 @@ end
 
 
 def detect_switch_compiled_by
-'1977478035caab4af2240947dcfbdbcf'
+'e119b993f6e32aad20ad0fd10262f3d0'
 end
 def detect_switch_source_hash
-'36f4f8b77a80da866acf97252d1acff7'
+'79cdeae5ef172194ed9247e2ec8a87bb'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'5b27db95afec418cd9e04d958c9ec8fb'
+'c969a14da2a83b62f2d9c135e62a000f'
 end
   require 'compiled/detect_switch_c'
