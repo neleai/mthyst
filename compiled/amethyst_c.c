@@ -101,15 +101,15 @@ VALUE Amethyst_endline(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  i
 
 int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=rb_str_new2("\r\n"); arg0=it; it=CALL(_seq,1 ,arg0); FAILTEST(alt1_2);it=rb_str_new2("\r\n");
+  it=rb_str_new2("\r\n"); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(alt1_2);it=rb_str_new2("\r\n");
  rb_ary_store(bind,0/*_result*/,it);  
 ISET(cut,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=rb_str_new2("\r"); arg0=it; it=CALL(_seq,1 ,arg0); FAILTEST(alt1_3);it=rb_str_new2("\r");
+  it=rb_str_new2("\r"); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(alt1_3);it=rb_str_new2("\r");
  rb_ary_store(bind,0/*_result*/,it);  
 ISET(cut,Qnil);goto accept1;
 alt1_3: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=rb_str_new2("\n"); arg0=it; it=CALL(_seq,1 ,arg0); FAILTEST(alt1_4);it=rb_str_new2("\n");
+  it=rb_str_new2("\n"); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(alt1_4);it=rb_str_new2("\n");
  rb_ary_store(bind,0/*_result*/,it);  
 ISET(cut,Qnil);goto accept1;
   alt1_4:  ame_setpos(self,oldpos1); goto fail;
@@ -221,7 +221,7 @@ return it;
 fail: return failobj; }
 VALUE Amethyst_seq(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=rb_ary_new2(2); rb_ary_store(bind,0/*s*/,a0); int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
- it=rb_ary_entry(bind,0/*s*/); arg0=it; it=CALL(_seq,1 ,arg0); FAILTEST(fail);it=rb_ary_entry(bind,0/*s*/);
+ it=rb_ary_entry(bind,0/*s*/); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(fail);it=rb_ary_entry(bind,0/*s*/);
  rb_ary_store(bind,1/*_result*/,it); it=rb_ary_entry(bind,1/*_result*/);
 return it;
 fail: return failobj; }
@@ -253,7 +253,7 @@ fail: return failobj; }
 VALUE Amethyst_token(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=rb_ary_new2(4); rb_ary_store(bind,0/*s*/,a0); int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
   it=Amethyst_spaces(self ); FAILTEST(fail);it=rb_ary_entry(bind,0/*s*/);
- rb_ary_store(bind,1/*s*/,it);  it=rb_ary_entry(bind,1/*s*/); arg0=it; it=CALL(_seq,1 ,arg0); FAILTEST(fail);it=rb_ary_entry(bind,1/*s*/);
+ rb_ary_store(bind,1/*s*/,it);  it=rb_ary_entry(bind,1/*s*/); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(fail);it=rb_ary_entry(bind,1/*s*/);
  rb_ary_store(bind,2/*_result*/,it); it=rb_ary_entry(bind,2/*_result*/);
  rb_ary_store(bind,3/*_result*/,it); it=rb_ary_entry(bind,3/*_result*/);
 return it;
@@ -277,7 +277,7 @@ alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail
  rb_ary_store(bind,0/*_result*/,it);  
 ISET(cut,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
-  it=rb_str_new2("_"); arg0=it; it=CALL(_seq,1 ,arg0); FAILTEST(alt1_3);it=rb_str_new2("_");
+  it=rb_str_new2("_"); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(alt1_3);it=rb_str_new2("_");
  rb_ary_store(bind,0/*_result*/,it);  
 ISET(cut,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto fail;
@@ -324,4 +324,4 @@ rb_define_method(cls_Amethyst,"token",Amethyst_token,1);
 rb_define_method(cls_Amethyst,"upper",Amethyst_upper,0);
 rb_define_method(cls_Amethyst,"word",Amethyst_word,0);
 rb_define_method(cls_Amethyst,"xdigit",Amethyst_xdigit,0);
- rb_eval_string("testversionamethyst('80003705f177af2bdef236ad1f54edb4')");}
+ rb_eval_string("testversionamethyst('0879796d05b601c5589bdd7183a55455')");}
