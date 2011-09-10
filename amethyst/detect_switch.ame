@@ -59,9 +59,6 @@ class ClasLattice < FirstLattice
   def self.top
     ClasLattice["Object"]
   end
-  def seqjoin(a)
-    return self	
-	end
 end
 class First_Dataflow < Amethyst
 	def initialize

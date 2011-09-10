@@ -59,9 +59,6 @@ class ClasLattice < FirstLattice
   def self.top
     ClasLattice["Object"]
   end
-  def seqjoin(a)
-    return self	
-	end
 end
 class First_Dataflow < Amethyst
 	def initialize
@@ -760,7 +757,7 @@ def detect_switch_compiled_by
 '0a2e7266adf8f5e02bc7de141be2ecd3'
 end
 def detect_switch_source_hash
-'3d6c8b242b3a3e0b12212c65a5118afb'
+'7d4b64a52b045ce90f4e21a54e55b0a0'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
