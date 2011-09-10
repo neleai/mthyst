@@ -407,12 +407,13 @@ class Detect_Switch < Detect_First
 		return r
 	end
 	def intersects(p,e)
-		return true if e==:default
-		r=(first(p).ary & [e,Empty,Anything])!=[]
-		r
-	end
-	def intersects2(p,e)
-		Or[{:ary=>p.ary.select{|p|intersects(p,e)}}] if p.is_a?(Or)
+		if p.is_a?(Or)
+			return Or[{:ary=>p.ary.map{|p|intersects(p,e)}}] if p.is_a?(Or)
+		else
+			return p if e==:default
+			return p if (first(p).ary & [e,Empty,Anything])!=[]
+			return Placeholder
+		end
 	end
 end
 
@@ -619,7 +620,7 @@ def visit_Detect_Switchcb_6(bind)
 end
 def visit_Detect_Switchcb_7(bind)
 bind[1].each{|bind[3]|
-			bind[2]<<[bind[3],intersects2(@src,bind[3])]
+			bind[2]<<[bind[3],intersects(@src,bind[3])]
 		}
 end
 def visit_Detect_Switchcb_8(bind)
@@ -760,7 +761,7 @@ def detect_switch_compiled_by
 '0a2e7266adf8f5e02bc7de141be2ecd3'
 end
 def detect_switch_source_hash
-'3414dc6c0787aa97b9f1d359de9cf73a'
+'146d17e30d53825faee7510272f30c10'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version

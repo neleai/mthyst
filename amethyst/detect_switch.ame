@@ -158,12 +158,13 @@ class Detect_Switch < Detect_First
 		return r
 	end
 	def intersects(p,e)
-		return true if e==:default
-		r=(first(p).ary & [e,Empty,Anything])!=[]
-		r
-	end
-	def intersects2(p,e)
-		Or[{:ary=>p.ary.select{|p|intersects(p,e)}}] if p.is_a?(Or)
+		if p.is_a?(Or)
+			return Or[{:ary=>p.ary.map{|p|intersects(p,e)}}] if p.is_a?(Or)
+		else
+			return p if e==:default
+			return p if (first(p).ary & [e,Empty,Anything])!=[]
+			return Placeholder
+		end
 	end
 end
 
@@ -222,7 +223,7 @@ amethyst Detect_Switch < Detect_First {
 		{ary2=ary2.ary.map{|e|  [Anything,Empty].include?(e) ? :default : e}.uniq}
 		&{ary2.size>1}
 		{ary2.each{|e|
-			ary3<<[e,intersects2(@self,e)]
+			ary3<<[e,intersects(@self,e)]
 		}}
 		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k.to_s}.sort,v[0][1]]}.sort}
 		{ary3<<[["default"],Apply["fails"]] unless ary2.include?(:default)}
