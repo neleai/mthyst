@@ -19,6 +19,6 @@ VALUE failobj;
 VALUE ame_setsrc(VALUE self,VALUE val);
 VALUE ame_getsrc(VALUE self);
 VALUE AmethystCore_anything(VALUE self);
-VALUE AmethystCore_seq(VALUE self,VALUE str);
+VALUE AmethystCore__seq(VALUE self,VALUE str);
 char* ame_curstr(VALUE self);
 VALUE ame_curobj(VALUE self);

@@ -57,7 +57,7 @@ VALUE ame_curobj(VALUE self){
 	return rb_funcall(ame_getsrc(self),rb_intern("[]"),1,ame_getposrb(self));
 }
 
-VALUE AmethystCore_seq(VALUE self,VALUE str){
+VALUE AmethystCore__seq(VALUE self,VALUE str){
 	int len=RSTRING(str)->len;
 	VALUE src=ame_getsrc(self);
 	if (TYPE(src)==T_STRING){
@@ -145,7 +145,7 @@ void Init_Ame(VALUE self){
 	rb_define_method(amecore,"src=",ame_setsrc,1);
 	rb_define_method(amecore,"src",ame_getsrc,0);
 
-	rb_define_method(amecore,"_seq",AmethystCore_seq,1);
+	rb_define_method(amecore,"_seq",AmethystCore__seq,1);
 	rb_define_method(amecore,"anything",AmethystCore_anything,0);
 	rb_define_method(amecore,"_lookahead",ame_lookahead,1);
 	rb_define_method(amecore,"_pass",ame_pass,2);
