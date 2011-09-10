@@ -1,5 +1,6 @@
 class Left_Factor < Traverser_Clone2
 	def merge(ary)
+		return ary[0] if ary.size==1
 		a=autovar.normalize
 		[Seq[_Bind(a,first(ary[0])),Or[*(ary.map{|e| rest(e,binds(e,a))})]]]
 	end
@@ -157,7 +158,7 @@ def left_factor_compiled_by
 '1977478035caab4af2240947dcfbdbcf'
 end
 def left_factor_source_hash
-'2e37cd65c7aab3d7f8e97f83f8245f2f'
+'735fd68abfa48b088273bd588cc38a2c'
 end
 def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version
