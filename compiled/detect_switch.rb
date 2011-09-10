@@ -30,7 +30,7 @@ class FirstLattice
 		self.class[*(ary&a.ary)]
 	end
 	def seqjoin(a)
-    return self unless a.ary.include? Empty
+    return self unless self.ary.include? Empty
     (self-self.class.empty)+a
   end
 	def ==(a)
@@ -101,8 +101,6 @@ end
 
 class Switch_Dataflow < First_Dataflow
   def firstchar(s)
-		puts "detect"
-		puts s.inspect
 	  return Empty if s.size==15
     s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
     eval('"'+s+'"')[0]
@@ -599,13 +597,10 @@ def visit_Detect_Switchcb_1(bind)
 Or
 end
 def visit_Detect_Switchcb_10(bind)
-bind[2]<<[["default"],Apply["fails"]] unless bind[1].include?(:default)
-end
-def visit_Detect_Switchcb_11(bind)
 (bind[2].size>1) || FAIL
 end
-def visit_Detect_Switchcb_12(bind)
-s=Switch[{:act=>"*ame_curstr(self)",:first=>bind[4],:ary=>bind[2]}];puts s.inspect;s
+def visit_Detect_Switchcb_11(bind)
+Switch[{:act=>"*ame_curstr(self)",:first=>bind[4],:ary=>bind[2]}]
 end
 def visit_Detect_Switchcb_2(bind)
 CharLattice[]
@@ -620,18 +615,18 @@ def visit_Detect_Switchcb_5(bind)
 bind[1]=bind[1].ary.map{|bind[3]|  [Anything,Empty].include?(bind[3]) ? :default : bind[3]}.uniq
 end
 def visit_Detect_Switchcb_6(bind)
-puts bind[1].inspect
-end
-def visit_Detect_Switchcb_7(bind)
 (bind[1].size>1) || FAIL
 end
-def visit_Detect_Switchcb_8(bind)
+def visit_Detect_Switchcb_7(bind)
 bind[1].each{|bind[3]|
 			bind[2]<<[bind[3],Or[{:ary=>@src.ary.select{|p|intersects(p,bind[3])}}]]
 		}
 end
-def visit_Detect_Switchcb_9(bind)
+def visit_Detect_Switchcb_8(bind)
 bind[2]=bind[2].group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k.to_s}.sort,v[0][1]]}.sort
+end
+def visit_Detect_Switchcb_9(bind)
+bind[2]<<[["default"],Apply["fails"]] unless bind[1].include?(:default)
 end
 
 end
@@ -762,15 +757,15 @@ end
 
 
 def detect_switch_compiled_by
-'e119b993f6e32aad20ad0fd10262f3d0'
+'0a2e7266adf8f5e02bc7de141be2ecd3'
 end
 def detect_switch_source_hash
-'79cdeae5ef172194ed9247e2ec8a87bb'
+'3d6c8b242b3a3e0b12212c65a5118afb'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'c969a14da2a83b62f2d9c135e62a000f'
+'eb6d3be451e2d2f958d311df408e2141'
 end
   require 'compiled/detect_switch_c'

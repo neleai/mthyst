@@ -30,7 +30,7 @@ class FirstLattice
 		self.class[*(ary&a.ary)]
 	end
 	def seqjoin(a)
-    return self unless a.ary.include? Empty
+    return self unless self.ary.include? Empty
     (self-self.class.empty)+a
   end
 	def ==(a)
@@ -101,8 +101,6 @@ end
 
 class Switch_Dataflow < First_Dataflow
   def firstchar(s)
-		puts "detect"
-		puts s.inspect
 	  return Empty if s.size==15
     s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
     eval('"'+s+'"')[0]
@@ -222,7 +220,6 @@ amethyst Detect_Switch < Detect_First {
 		(traverse_item:e &{first(e)} {ary2+=first(e)})* &eof
 		{ary2}:firs
 		{ary2=ary2.ary.map{|e|  [Anything,Empty].include?(e) ? :default : e}.uniq}
-		{puts ary2.inspect}
 		&{ary2.size>1}
 		{ary2.each{|e|
 			ary3<<[e,Or[{:ary=>@ary.select{|p|intersects(p,e)}}]]
@@ -230,7 +227,7 @@ amethyst Detect_Switch < Detect_First {
 		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k.to_s}.sort,v[0][1]]}.sort}
 		{ary3<<[["default"],Apply["fails"]] unless ary2.include?(:default)}
     &{ary3.size>1}
-		{s=Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>ary3}];puts s.inspect;s}
+		{Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>ary3}]}
 	]
 }
 
