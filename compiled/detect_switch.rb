@@ -601,36 +601,54 @@ def visit_Detect_Switchcb_1(bind)
 Or
 end
 def visit_Detect_Switchcb_10(bind)
-(bind[2].size>1) || FAIL
+Or[*bind[3]]
 end
 def visit_Detect_Switchcb_11(bind)
-Switch[{:act=>"*ame_curstr(self)",:first=>bind[4],:ary=>bind[2]}]
+(bind[7].is_a?(Or)) || FAIL
+end
+def visit_Detect_Switchcb_12(bind)
+bind[1].each{|bind[4]|
+			bind[2]<<[bind[4],intersects(bind[7],bind[4])]
+		}
+end
+def visit_Detect_Switchcb_13(bind)
+puts bind[2].inspect
+end
+def visit_Detect_Switchcb_14(bind)
+bind[2]=bind[2].group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k.to_s}.sort,v[0][1]]}.sort
+end
+def visit_Detect_Switchcb_15(bind)
+bind[2]<<[["default"],Apply["fails"]] unless bind[1].include?(:default)
+end
+def visit_Detect_Switchcb_16(bind)
+(bind[2].size>1) || FAIL
+end
+def visit_Detect_Switchcb_17(bind)
+s=Switch[{:act=>"*ame_curstr(self)",:first=>bind[6],:ary=>bind[2]}];puts s.inspect;s
 end
 def visit_Detect_Switchcb_2(bind)
 CharLattice[]
 end
 def visit_Detect_Switchcb_3(bind)
-(first(bind[3])) || FAIL
+puts @src.inspect
 end
 def visit_Detect_Switchcb_4(bind)
-bind[1]+=first(bind[3])
+(first(bind[4])) || FAIL
 end
 def visit_Detect_Switchcb_5(bind)
-bind[1]=bind[1].ary.map{|bind[3]|  [Anything,Empty].include?(bind[3]) ? :default : bind[3]}.uniq
+_append(bind[3],bind[5])
 end
 def visit_Detect_Switchcb_6(bind)
-(bind[1].size>1) || FAIL
+bind[1]+=first(bind[4])
 end
 def visit_Detect_Switchcb_7(bind)
-bind[1].each{|bind[3]|
-			bind[2]<<[bind[3],intersects(@src,bind[3])]
-		}
+bind[1]=bind[1].ary.map{|bind[4]|  [Anything,Empty].include?(bind[4]) ? :default : bind[4]}.uniq
 end
 def visit_Detect_Switchcb_8(bind)
-bind[2]=bind[2].group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k.to_s}.sort,v[0][1]]}.sort
+puts bind[1].inspect
 end
 def visit_Detect_Switchcb_9(bind)
-bind[2]<<[["default"],Apply["fails"]] unless bind[1].include?(:default)
+(bind[1].size>1) || FAIL
 end
 
 end
@@ -761,15 +779,15 @@ end
 
 
 def detect_switch_compiled_by
-'12d4c0f9c3dac7da18157cb74ae7c618'
+'3c5b278bbeff4f9b1ede385859ee90b9'
 end
 def detect_switch_source_hash
-'19c17826066ffa90fff1bdb6d4de8435'
+'4c9fcac1911c588c7fede99f31284fc4'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'eb6d3be451e2d2f958d311df408e2141'
+'ee7e353f20b53fa87258ea0c823e8cfd'
 end
   require 'compiled/detect_switch_c'

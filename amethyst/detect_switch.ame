@@ -220,13 +220,15 @@ amethyst Detect_First < Traverser_Clone2 {
 }
 
 amethyst Detect_Switch < Detect_First {
-	visit = Or[ {CharLattice[]}:ary2 {[]}:ary3
-		(traverse_item:e &{first(e)} {ary2+=first(e)})* &eof
+	visit = Or[ {CharLattice[]}:ary2 {[]}:ary3 {[]}:els
+		(traverse_item:e &{first(e)} {e}:els[] {ary2+=first(e)})* &eof
 		{ary2}:firs
 		{ary2=ary2.ary.map{|e|  [Anything,Empty].include?(e) ? :default : e}.uniq}
 		&{ary2.size>1}
+		{Or[*els]}:new_or
+		&{new_or.is_a?(Or)}
 		{ary2.each{|e|
-			ary3<<[e,intersects(@self,e)]
+			ary3<<[e,intersects(new_or,e)]
 		}}
 		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k.to_s}.sort,v[0][1]]}.sort}
 		{ary3<<[["default"],Apply["fails"]] unless ary2.include?(:default)}
