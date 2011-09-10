@@ -66,7 +66,7 @@ VALUE AmethystCore_seq(VALUE self,VALUE str){
 			{ return failobj; }
 		else {
 			ame_setpos(self,input+len);
-			return str;
+			return Qnil;
 		}
 	}else{
 		 rb_raise(rb_eArgError, "called seq when not in string");
@@ -145,7 +145,7 @@ void Init_Ame(VALUE self){
 	rb_define_method(amecore,"src=",ame_setsrc,1);
 	rb_define_method(amecore,"src",ame_getsrc,0);
 
-	rb_define_method(amecore,"seq",AmethystCore_seq,1);
+	rb_define_method(amecore,"_seq",AmethystCore_seq,1);
 	rb_define_method(amecore,"anything",AmethystCore_anything,0);
 	rb_define_method(amecore,"_lookahead",ame_lookahead,1);
 	rb_define_method(amecore,"_pass",ame_pass,2);

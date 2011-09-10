@@ -46,4 +46,6 @@ amethyst Amethyst < AmethystCore {
   clas(cls) = .:i &{i.is_a?(cls)} {i}	
 
 	token(s) = spaces seq(s)
+
+	seq(s) = _seq(s) {s}
 }

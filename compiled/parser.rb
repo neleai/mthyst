@@ -48,25 +48,34 @@ def application_AmethystParsercb_1(bind)
 [bind[2],bind[3]]
 end
 def application_AmethystParsercb_2(bind)
+_append(bind[4],bind[5])
+end
+def application_AmethystParsercb_3(bind)
+bind[8]+[',']
+end
+def application_AmethystParsercb_4(bind)
+bind[9]=[bind[9]]
+end
+def application_AmethystParsercb_5(bind)
 Apply[bind[3],bind[15]]
 end
 def argsOpt_AmethystParsercb_1(bind)
-_append(bind[6],bind[7])
+_append(bind[7],bind[8])
 end
 def argsOpt_AmethystParsercb_2(bind)
-bind[10]+[',']
+bind[11]+[',']
 end
 def argsOpt_AmethystParsercb_3(bind)
-bind[11]=[bind[11]]
+bind[12]=[bind[12]]
 end
 def args_AmethystParsercb_1(bind)
-_append(bind[4],bind[5])
+_append(bind[5],bind[6])
 end
 def args_AmethystParsercb_2(bind)
-bind[8]+[',']
+bind[9]+[',']
 end
 def args_AmethystParsercb_3(bind)
-bind[9]=[bind[9]]
+bind[10]=[bind[10]]
 end
 def atomicHostExpr_AmethystParsercb_1(bind)
 "{#{bind[2]*""}}"
@@ -153,7 +162,10 @@ def modifier_AmethystParsercb_1(bind)
 "#"
 end
 def modifier_AmethystParsercb_2(bind)
-Comment[bind[4]]
+_append(bind[3],bind[4])
+end
+def modifier_AmethystParsercb_3(bind)
+Comment[bind[5]]
 end
 def name_AmethystParsercb_1(bind)
 _append(bind[2],bind[3])
@@ -174,37 +186,37 @@ def prefixed_AmethystParsercb_1(bind)
 Pred[bind[0]]
 end
 def prefixed_AmethystParsercb_10(bind)
-Or[bind[6],Apply["empty"]]
+Or[bind[5],Apply["empty"]]
 end
 def prefixed_AmethystParsercb_11(bind)
-_Bind(bind[15],bind[6],bind[16])
+_Bind(bind[14],bind[5],bind[15])
 end
 def prefixed_AmethystParsercb_12(bind)
-Seq[_Bind("it",bind[6]) , Act[bind[17]] ]
+Seq[_Bind("it",bind[5]) , Act[bind[16]] ]
 end
 def prefixed_AmethystParsercb_2(bind)
-Lookahead[bind[5],bind[4]=="~"]
+Lookahead[bind[4],bind[3]=="~"]
 end
 def prefixed_AmethystParsercb_3(bind)
 /[.:\[]/
 end
 def prefixed_AmethystParsercb_4(bind)
-(bind[8].is_a? String ) || FAIL
+(bind[7].is_a? String ) || FAIL
 end
 def prefixed_AmethystParsercb_5(bind)
-(bind[7].match(bind[10])) || FAIL
+(bind[6].match(bind[9])) || FAIL
 end
 def prefixed_AmethystParsercb_6(bind)
 Apply["anything"]
 end
 def prefixed_AmethystParsercb_7(bind)
-bind[6]=Pass[bind[6],bind[12]]
+bind[5]=Pass[bind[5],bind[11]]
 end
 def prefixed_AmethystParsercb_8(bind)
-bind[6]=Enter[bind[6],bind[12]]
+bind[5]=Enter[bind[5],bind[11]]
 end
 def prefixed_AmethystParsercb_9(bind)
-Many[bind[6],bind[14]=="+"]
+Many[bind[5],bind[13]=="+"]
 end
 def procargs2_AmethystParsercb_1(bind)
 _append(bind[1],bind[2])
@@ -231,37 +243,40 @@ def rubyarg_AmethystParsercb_1(bind)
 Exp[_body(bind[2])]
 end
 def rubyarg_AmethystParsercb_10(bind)
-(bind[17].match(bind[20])) || FAIL
+(bind[17].is_a? String ) || FAIL
 end
 def rubyarg_AmethystParsercb_11(bind)
-_append(bind[1],bind[22])
+(bind[16].match(bind[19])) || FAIL
 end
 def rubyarg_AmethystParsercb_12(bind)
+_append(bind[1],bind[21])
+end
+def rubyarg_AmethystParsercb_13(bind)
 /[^`{}()'"\[\]]/
 end
 def rubyarg_AmethystParsercb_2(bind)
-_append(bind[9],bind[10])
+_append(bind[0],bind[8])
 end
 def rubyarg_AmethystParsercb_3(bind)
-_append(bind[0],bind[11])
+_append(bind[9],bind[10])
 end
 def rubyarg_AmethystParsercb_4(bind)
-Strin[connectstring(bind[0])]
+_append(bind[0],bind[11])
 end
 def rubyarg_AmethystParsercb_5(bind)
-_append(bind[0],bind[12])
+Strin[connectstring(bind[0])]
 end
 def rubyarg_AmethystParsercb_6(bind)
-_append(bind[13],bind[14])
+_append(bind[0],bind[12])
 end
 def rubyarg_AmethystParsercb_7(bind)
-_append(bind[0],bind[15])
+_append(bind[13],bind[14])
 end
 def rubyarg_AmethystParsercb_8(bind)
-/[$.:]/
+_append(bind[0],bind[15])
 end
 def rubyarg_AmethystParsercb_9(bind)
-(bind[18].is_a? String ) || FAIL
+/[$.:]/
 end
 def rule_AmethystParsercb_1(bind)
 @locals=[];$appends=[];@bnding=Bnding[]
@@ -280,6 +295,9 @@ bind[3]=Seq[{:ary=>($appends.uniq.map{|a| _Bind(a,Act["[]"])}+[bind[3]])}];
 end
 def rule_AmethystParsercb_6(bind)
 Rule.create( {:args=>bind[2],:bnding=>bind[0],:body=>bind[3],:locals=>bind[4],:name=>bind[1] })
+end
+def ruleargs_AmethystParsercb_1(bind)
+bind[11]=[bind[11]]
 end
 def sequence_AmethystParsercb_1(bind)
 Seq.create( {:ary=>bind[2] })
@@ -300,13 +318,13 @@ def term_AmethystParsercb_1(bind)
 Apply["clas",bind[2]]
 end
 def term_AmethystParsercb_10(bind)
-_append(bind[1],bind[10])
+_append(bind[1],bind[11])
 end
 def term_AmethystParsercb_11(bind)
 Apply["regch","/[#{bind[1]}]/"]
 end
 def term_AmethystParsercb_12(bind)
-a=autovar.normalize; Seq[Or[{:ary=>bind[11].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
+a=autovar.normalize; Seq[Or[{:ary=>bind[12].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
 end
 def term_AmethystParsercb_2(bind)
 Nested[bind[4]]
@@ -324,7 +342,7 @@ def term_AmethystParsercb_6(bind)
 Apply["token" ,quote(bind[0])]
 end
 def term_AmethystParsercb_7(bind)
-_append(bind[0],bind[8])
+_append(bind[0],bind[9])
 end
 def term_AmethystParsercb_8(bind)
 Apply["seq"   ,quote(bind[0])]
@@ -340,7 +358,7 @@ end
 
 
 def parser_compiled_by
-'5e9d8025c12dd2964212da06c08f1e66'
+'6529b6e3be8fb9145ae30940ca3b8573'
 end
 def parser_source_hash
 'd1f9e8937adb72c1bb0d0e1f84feabb9'
@@ -349,6 +367,6 @@ def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'4579e6f9d2071c99ad3c9303d199e3df'
+'1bb8bac1e7608cf44f562ea2495a8543'
 end
   require 'compiled/parser_c'
