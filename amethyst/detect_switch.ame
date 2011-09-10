@@ -160,6 +160,9 @@ class Detect_Switch < Detect_First
 	def intersects(p,e)
 		if p.is_a?(Or)
 			return Or[{:ary=>p.ary.map{|p|intersects(p,e)}}] if p.is_a?(Or)
+		elsif p.is_a?(Switch)
+			nary=p.ary.map{|o,v| [o,intersects(v,e)]}
+			return Switch[{:act=>p.act,:first=>p.first,:defs=>p.defs,:ary=>nary}]
 		else
 			return p if e==:default
 			return p if (first(p).ary & [e,Empty,Anything])!=[]

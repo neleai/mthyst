@@ -1,0 +1,4 @@
+amethyst Tests{
+	sw = (('a' |'b') 'c'
+				| 'd')
+}

@@ -2,7 +2,7 @@ require 'digest'
 require 'set'
 $OPT=""
 $debug=1
-COMPILED=["amethyst","traverser","detect_variables2","parser","dataflow_ssa","inliner2",
+COMPILED=["amethyst","traverser","tests","detect_variables2","parser","dataflow_ssa","inliner2",
 "detect_switch","left_factor","constant_propagation","ctranslator2"]
 class Gram
 	attr_accessor :name,:parent,:rules
@@ -111,7 +111,7 @@ end
 	def compile(file,out,file2)
 		source=File.new(file).read
 		source_hash=Digest::MD5.hexdigest(source)
-		if eval("#{file2}_compiled_by")==$compiled_by && eval("#{file2}_source_hash")==source_hash && $debug<1
+		if Dir["compiled/#{file2}.rb"]!=[] && eval("#{file2}_compiled_by")==$compiled_by && eval("#{file2}_source_hash")==source_hash && $debug<1
 			return unless ["amethyst","traverser"].include? file2 #inheritance
 		end
 		tree=AmethystParser.new.parse(:igrammar,source)
@@ -149,8 +149,10 @@ end
 Compiler::init
 $compiled_by=""
 COMPILED.each{|opt|
-require "compiled/#{opt}"
-$compiled_by<< eval("#{opt}_version")
+if Dir["compiled/#{opt}.rb"]!=[] #new grammars
+	require "compiled/#{opt}"
+	$compiled_by<< eval("#{opt}_version")
+end
 }
 $compiled_by=Digest::MD5.hexdigest($compiled_by)
 

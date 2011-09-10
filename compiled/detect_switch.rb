@@ -409,6 +409,9 @@ class Detect_Switch < Detect_First
 	def intersects(p,e)
 		if p.is_a?(Or)
 			return Or[{:ary=>p.ary.map{|p|intersects(p,e)}}] if p.is_a?(Or)
+		elsif p.is_a?(Switch)
+			nary=p.ary.map{|o,v| [o,intersects(v,e)]}
+			return Switch[{:act=>p.act,:first=>p.first,:defs=>p.defs,:ary=>nary}]
 		else
 			return p if e==:default
 			return p if (first(p).ary & [e,Empty,Anything])!=[]
@@ -761,7 +764,7 @@ def detect_switch_compiled_by
 '12d4c0f9c3dac7da18157cb74ae7c618'
 end
 def detect_switch_source_hash
-'146d17e30d53825faee7510272f30c10'
+'19c17826066ffa90fff1bdb6d4de8435'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
