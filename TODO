@@ -50,3 +50,6 @@ move switch into pipeline
 detect_switch char intervals
 
 predicate,cut,stop,comment do not return value
+
+defer alternatives of classwitch to ctranslator2
+merge identical options of detect_switch in normalize
