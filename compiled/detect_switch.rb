@@ -736,22 +736,22 @@ def predicate_Detect_ClasSwitchcb_1(bind)
 bind[1]=[bind[1]]
 end
 def predicate_Detect_ClasSwitchcb_10(bind)
-_Bind(bind[11],bind[16])
+_Bind(bind[12],bind[17])
 end
 def predicate_Detect_ClasSwitchcb_2(bind)
 _append(bind[4],bind[5])
 end
 def predicate_Detect_ClasSwitchcb_3(bind)
-Seq[[predicate(bind[7],bind[3])]+bind[6]]
+Seq[[predicate(bind[7],bind[8],bind[3])]+bind[6]]
 end
 def predicate_Detect_ClasSwitchcb_4(bind)
-(bind[11]=="clas") || FAIL
+(bind[12]=="clas") || FAIL
 end
 def predicate_Detect_ClasSwitchcb_5(bind)
 Act
 end
 def predicate_Detect_ClasSwitchcb_6(bind)
-(child(bind[7],bind[13])&&bind[7]==bind[13]) || FAIL
+(child(bind[7][bind[8]],bind[14])&&bind[7][bind[8]]==bind[14]) || FAIL
 end
 def predicate_Detect_ClasSwitchcb_7(bind)
 Apply["anything"]
@@ -760,7 +760,7 @@ def predicate_Detect_ClasSwitchcb_8(bind)
 @src.name
 end
 def predicate_Detect_ClasSwitchcb_9(bind)
-predicate(bind[7],@src.expr)
+predicate(bind[7],bind[8],@src.expr)
 end
 def traverse_Detect_ClasSwitchcb_1(bind)
 @changed
@@ -822,8 +822,8 @@ def visit_Detect_ClasSwitchcb_7(bind)
 (bind[1].size>1) || FAIL
 end
 def visit_Detect_ClasSwitchcb_8(bind)
-bind[1].each_with_index{|bind[4],i|
-      	bind[2]<<[i,Or[{:ary=>bind[3].select{|p| includes(bind[1],i,first(p))}.map{|p| predicate(bind[4],p)}}]]
+bind[1].each_index{|i|
+      	bind[2]<<[i,Or[{:ary=>bind[3].select{|p| includes(bind[1],i,first(p))}.map{|p| predicate(bind[1],i,p)}}]]
 		}
 end
 def visit_Detect_ClasSwitchcb_9(bind)
@@ -835,15 +835,15 @@ end
 
 
 def detect_switch_compiled_by
-'d2087f7674baf9e2d14ac7966d77385e'
+'8563a75b9475ff86981218690509e79c'
 end
 def detect_switch_source_hash
-'49a1b1ae2b8a3dd1ce6c03f7a5884c4a'
+'1327ab8640a67cb7e14641a5d4188756'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'620196c3620b206d1467d1fffe6d7b72'
+'00df3caa06cb9378471a031e36414cd5'
 end
   require 'compiled/detect_switch_c'
