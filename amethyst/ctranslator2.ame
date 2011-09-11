@@ -59,7 +59,6 @@ end
 amethyst AmethystCTranslator < Amethyst {
 	itrans = {[]}:ruby {[]}:c {[]}:init  ( char:ruby[]  | trans:{c<<it[0];init<<it[1];ruby<<it[2]} )* -> [c,init,ruby]
 	
-	transfn = trans:t -> "proc{#{t}}"
 	rbtrans = Local[.* {rbbget(@self)}]
 					| Args[rbtrans*:a] -> a*""
 					| Array[rbtrans*:a] -> a*""

@@ -381,23 +381,20 @@ end
 def trans_AmethystCTranslatorcb_9(bind)
 @src.rules
 end
-def transfn_AmethystCTranslatorcb_1(bind)
-"proc{#{bind[0]}}"
-end
 
 end
 
 
 def ctranslator2_compiled_by
-'4c2699fd9310cdab7ff09a37ceb3b4f5'
+'d2cfc117e308e8623de0a667d22a28e5'
 end
 def ctranslator2_source_hash
-'0095d3f772ecd71a2cc81e78999c281e'
+'642b3039b06b4f01cd54d90a0607400b'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'e956d32ae86efe947c320bf35fb95cdb'
+'7e58983f8d33dfb29def449fbb6aa6fb'
 end
   require 'compiled/ctranslator2_c'
