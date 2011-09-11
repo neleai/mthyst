@@ -406,16 +406,18 @@ class Detect_Switch < Detect_First
 		r=@switchdf.analyze(s)
 		return r
 	end
-	def intersects(p,e)
+	def predicate(p,e)
+		return p if e==:default
+		return Placeholder if  (first(p).ary & [e,Empty,Anything])==[]
 		if p.is_a?(Or)
-			return Or[{:ary=>p.ary.map{|p|intersects(p,e)}}] if p.is_a?(Or)
+			return Or[{:ary=>p.ary.map{|p|predicate(p,e)}}] if p.is_a?(Or)
 		elsif p.is_a?(Switch)
-			nary=p.ary.map{|o,v| [o,intersects(v,e)]}
+			nary=p.ary.map{|o,v| [o,predicate(v,e)]}
 			return Switch[{:act=>p.act,:first=>p.first,:defs=>p.defs,:ary=>nary}]
+#		elsif p.is_a?(Seq)
+#			return Seq[*([predicate(p[0],e)]+p.ary[1..-1])]
 		else
-			return p if e==:default
-			return p if (first(p).ary & [e,Empty,Anything])!=[]
-			return Placeholder
+			return p 
 		end
 	end
 end
@@ -601,54 +603,45 @@ def visit_Detect_Switchcb_1(bind)
 Or
 end
 def visit_Detect_Switchcb_10(bind)
-Or[*bind[3]]
-end
-def visit_Detect_Switchcb_11(bind)
-(bind[7].is_a?(Or)) || FAIL
-end
-def visit_Detect_Switchcb_12(bind)
 bind[1].each{|bind[4]|
-			bind[2]<<[bind[4],intersects(bind[7],bind[4])]
+			bind[2]<<[bind[4],predicate(bind[7],bind[4])]
 		}
 end
-def visit_Detect_Switchcb_13(bind)
-puts bind[2].inspect
-end
-def visit_Detect_Switchcb_14(bind)
+def visit_Detect_Switchcb_11(bind)
 bind[2]=bind[2].group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k.to_s}.sort,v[0][1]]}.sort
 end
-def visit_Detect_Switchcb_15(bind)
+def visit_Detect_Switchcb_12(bind)
 bind[2]<<[["default"],Apply["fails"]] unless bind[1].include?(:default)
 end
-def visit_Detect_Switchcb_16(bind)
+def visit_Detect_Switchcb_13(bind)
 (bind[2].size>1) || FAIL
 end
-def visit_Detect_Switchcb_17(bind)
-s=Switch[{:act=>"*ame_curstr(self)",:first=>bind[6],:ary=>bind[2]}];puts s.inspect;s
+def visit_Detect_Switchcb_14(bind)
+Switch[{:act=>"*ame_curstr(self)",:first=>bind[6],:ary=>bind[2]}]
 end
 def visit_Detect_Switchcb_2(bind)
 CharLattice[]
 end
 def visit_Detect_Switchcb_3(bind)
-puts @src.inspect
-end
-def visit_Detect_Switchcb_4(bind)
 (first(bind[4])) || FAIL
 end
-def visit_Detect_Switchcb_5(bind)
+def visit_Detect_Switchcb_4(bind)
 _append(bind[3],bind[5])
 end
-def visit_Detect_Switchcb_6(bind)
+def visit_Detect_Switchcb_5(bind)
 bind[1]+=first(bind[4])
 end
-def visit_Detect_Switchcb_7(bind)
+def visit_Detect_Switchcb_6(bind)
 bind[1]=bind[1].ary.map{|bind[4]|  [Anything,Empty].include?(bind[4]) ? :default : bind[4]}.uniq
 end
+def visit_Detect_Switchcb_7(bind)
+(bind[1].size>1) || FAIL
+end
 def visit_Detect_Switchcb_8(bind)
-puts bind[1].inspect
+Or[*bind[3]]
 end
 def visit_Detect_Switchcb_9(bind)
-(bind[1].size>1) || FAIL
+(bind[7].is_a?(Or)) || FAIL
 end
 
 end
@@ -779,15 +772,15 @@ end
 
 
 def detect_switch_compiled_by
-'3c5b278bbeff4f9b1ede385859ee90b9'
+'aeaf0f0f7524c44431aa00a9feee57c4'
 end
 def detect_switch_source_hash
-'4c9fcac1911c588c7fede99f31284fc4'
+'f989d0952d834c2248b90d73e230afd6'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'ee7e353f20b53fa87258ea0c823e8cfd'
+'be534eb91767603db9f54fbcf864513a'
 end
   require 'compiled/detect_switch_c'

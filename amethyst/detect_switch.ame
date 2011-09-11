@@ -157,16 +157,18 @@ class Detect_Switch < Detect_First
 		r=@switchdf.analyze(s)
 		return r
 	end
-	def intersects(p,e)
+	def predicate(p,e)
+		return p if e==:default
+		return Placeholder if  (first(p).ary & [e,Empty,Anything])==[]
 		if p.is_a?(Or)
-			return Or[{:ary=>p.ary.map{|p|intersects(p,e)}}] if p.is_a?(Or)
+			return Or[{:ary=>p.ary.map{|p|predicate(p,e)}}] if p.is_a?(Or)
 		elsif p.is_a?(Switch)
-			nary=p.ary.map{|o,v| [o,intersects(v,e)]}
+			nary=p.ary.map{|o,v| [o,predicate(v,e)]}
 			return Switch[{:act=>p.act,:first=>p.first,:defs=>p.defs,:ary=>nary}]
+#		elsif p.is_a?(Seq)
+#			return Seq[*([predicate(p[0],e)]+p.ary[1..-1])]
 		else
-			return p if e==:default
-			return p if (first(p).ary & [e,Empty,Anything])!=[]
-			return Placeholder
+			return p 
 		end
 	end
 end
@@ -228,7 +230,7 @@ amethyst Detect_Switch < Detect_First {
 		{Or[*els]}:new_or
 		&{new_or.is_a?(Or)}
 		{ary2.each{|e|
-			ary3<<[e,intersects(new_or,e)]
+			ary3<<[e,predicate(new_or,e)]
 		}}
 		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k.to_s}.sort,v[0][1]]}.sort}
 		{ary3<<[["default"],Apply["fails"]] unless ary2.include?(:default)}
