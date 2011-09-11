@@ -424,13 +424,19 @@ class Detect_Switch < Detect_First
 		r=@switchdf.analyze(s)
 		return r
 	end
+	def intersects(ar,el)
+		return true if ar & [Empty,Anything] != []
+		return ar & [el] !=[]
+	end
 	def predicate(p,e)
 		return p if e==:default
-		return Placeholder if  (first(p).ary & [e,Empty,Anything])==[]
+		return Placeholder if !intersects(first(p).ary,e)
 		if p.is_a?(Or)
 			return Or[{:ary=>p.ary.map{|p|predicate(p,e)}}] if p.is_a?(Or)
 		elsif p.is_a?(Switch)
-			nary=p.ary.map{|o,v| [o,predicate(v,e)]}.select{|o,v| v!=Placeholder}
+			nary=p.ary
+			nary=nary.select{|o,v| intersects(o,e.to_s)} if p.first.is_a?(CharLattice)
+			nary=nary.map{|o,v| [o,predicate(v,e)]}.select{|o,v| v!=Placeholder}
 			return Switch[{:act=>p.act,:first=>p.first,:defs=>p.defs,:ary=>nary}]
 		elsif p.is_a?(Seq)
 			return Seq[*([predicate(p[0],e)]+p.ary[1..-1])]
@@ -793,10 +799,10 @@ end
 
 
 def detect_switch_compiled_by
-'2eb8d8dab2d0553e95dcfe90ffe70169'
+'e4923a379071fddf4f2f71db8dbc5cc1'
 end
 def detect_switch_source_hash
-'2cf2e9d0e38c9f719344567800453d5b'
+'d3ad405aa01fe2bbb56ad5d526fdceb9'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version

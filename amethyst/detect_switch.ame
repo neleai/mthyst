@@ -157,13 +157,19 @@ class Detect_Switch < Detect_First
 		r=@switchdf.analyze(s)
 		return r
 	end
+	def intersects(ar,el)
+		return true if ar & [Empty,Anything] != []
+		return ar & [el] !=[]
+	end
 	def predicate(p,e)
 		return p if e==:default
-		return Placeholder if  (first(p).ary & [e,Empty,Anything])==[]
+		return Placeholder if !intersects(first(p).ary,e)
 		if p.is_a?(Or)
 			return Or[{:ary=>p.ary.map{|p|predicate(p,e)}}] if p.is_a?(Or)
 		elsif p.is_a?(Switch)
-			nary=p.ary.map{|o,v| [o,predicate(v,e)]}.select{|o,v| v!=Placeholder}
+			nary=p.ary
+			nary=nary.select{|o,v| intersects(o,e.to_s)} if p.first.is_a?(CharLattice)
+			nary=nary.map{|o,v| [o,predicate(v,e)]}.select{|o,v| v!=Placeholder}
 			return Switch[{:act=>p.act,:first=>p.first,:defs=>p.defs,:ary=>nary}]
 		elsif p.is_a?(Seq)
 			return Seq[*([predicate(p[0],e)]+p.ary[1..-1])]

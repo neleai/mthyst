@@ -763,9 +763,9 @@ ISET(cut,Qnil);goto accept5;
   alt4_3:  ame_setpos(self,oldpos6); goto break1;
  accept5:;
   it=AmethystParser_spaces(self ); FAILTEST(break1);char chr2=*ame_curstr(self);  switch(chr2){case 42:; char chr3=*ame_curstr(self);  switch(chr3){case 42:;  it=rb_str_new2("*"); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(break1);it=rb_str_new2("*");
- rb_ary_store(bind,9/*one*/,it);  break;default:;   it=AmethystParser_fails(self ); FAILTEST(break1); break;}it=CALL(prefixed_AmethystParsercb_7,1,bind); 
+ rb_ary_store(bind,9/*one*/,it);  break;}it=CALL(prefixed_AmethystParsercb_7,1,bind); 
  rb_ary_store(bind,4/*from*/,it);  break;case 43:; char chr4=*ame_curstr(self);  switch(chr4){case 43:;  it=rb_str_new2("+"); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(break1);it=rb_str_new2("+");
- rb_ary_store(bind,9/*one*/,it);  break;default:;   it=AmethystParser_fails(self ); FAILTEST(break1); break;}it=CALL(prefixed_AmethystParsercb_7,1,bind); 
+ rb_ary_store(bind,9/*one*/,it);  break;}it=CALL(prefixed_AmethystParsercb_7,1,bind); 
  rb_ary_store(bind,4/*from*/,it);  break;case 58:;  it=rb_str_new2(":"); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(break1);it=rb_str_new2(":");int oldpos7=ame_getpos(self);
 alt5_1: ame_setpos(self,oldpos7);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
  int oldpos8=ame_getpos(self);
@@ -1749,4 +1749,4 @@ rb_define_method(cls_AmethystParser,"spaces",AmethystParser_spaces,0);
 rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
 rb_define_method(cls_AmethystParser,"token",AmethystParser_token,1);
 rb_define_method(cls_AmethystParser,"upper",AmethystParser_upper,0);
- rb_eval_string("testversionparser('e11fe5c34d2e2c04f2ef171bf1942e8f')");}
+ rb_eval_string("testversionparser('8ef67197f8985ab793bdeab5a0ddc472')");}
