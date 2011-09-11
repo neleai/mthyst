@@ -564,9 +564,9 @@ end
 
 class Detect_Switch < Detect_First
 def self.switchcb_Detect_Switch12(e)
-return 0 if e<=Or
-return 1 if e<=Switch
-return 2 if e<=Seq
+return 0 if e<=Seq
+return 1 if e<=Or
+return 2 if e<=Switch
 return 3 if e<=Object
 return 4
 end
@@ -603,23 +603,23 @@ def predicate_Detect_Switchcb_4(bind)
 bind[3]=[bind[3]]
 end
 def predicate_Detect_Switchcb_5(bind)
-_append(bind[5],bind[7])
+_append(bind[7],bind[8])
 end
 def predicate_Detect_Switchcb_6(bind)
-Or[*bind[8]]
+Seq[*([bind[6]]+bind[9])]
 end
 def predicate_Detect_Switchcb_7(bind)
+_append(bind[13],bind[14])
+end
+def predicate_Detect_Switchcb_8(bind)
+Or[*bind[15]]
+end
+def predicate_Detect_Switchcb_9(bind)
 nary=bind[1].ary
                                  nary=nary.select{|o,v| intersects(o.ary,bind[0].to_s)} if bind[1].first.is_a?(CharLattice)
                                  nary=nary.map{|o,v| [o,predicate(bind[0],v)]}.select{|o,v| v!=Placeholder}
                                  Switch[{:act=>bind[1].act,:first=>bind[1].first,:defs=>bind[1].defs,:ary=>nary}]
                               
-end
-def predicate_Detect_Switchcb_8(bind)
-_append(bind[15],bind[16])
-end
-def predicate_Detect_Switchcb_9(bind)
-Seq[*([bind[14]]+bind[17])]
 end
 def traverse_Detect_Switchcb_1(bind)
 @changed
@@ -707,10 +707,11 @@ end
 class Detect_ClasSwitch < Detect_First
 def self.switchcb_Detect_ClasSwitch15(e)
 return 0 if e<=Seq
-return 1 if e<=Apply
-return 2 if e<=Bind
-return 3 if e<=Object
-return 4
+return 1 if e<=Or
+return 2 if e<=Apply
+return 3 if e<=Bind
+return 4 if e<=Object
+return 5
 end
 @@switchhashDetect_ClasSwitch15=Hash.new{|h,k| h[k]=switchcb_Detect_ClasSwitch15(k)}
 def switchcbDetect_ClasSwitch15(e)
@@ -736,16 +737,22 @@ def predicate_Detect_ClasSwitchcb_1(bind)
 (bind[0][bind[1]]==:default) || FAIL
 end
 def predicate_Detect_ClasSwitchcb_10(bind)
-Apply["anything"]
+Act
 end
 def predicate_Detect_ClasSwitchcb_11(bind)
-@src.name
+(child(bind[0][bind[1]],bind[21])&&bind[0][bind[1]]==bind[21]) || FAIL
 end
 def predicate_Detect_ClasSwitchcb_12(bind)
-predicate(bind[0],bind[1],@src.expr)
+Apply["anything"]
 end
 def predicate_Detect_ClasSwitchcb_13(bind)
-_Bind(bind[14],bind[19])
+@src.name
+end
+def predicate_Detect_ClasSwitchcb_14(bind)
+predicate(bind[0],bind[1],@src.expr)
+end
+def predicate_Detect_ClasSwitchcb_15(bind)
+_Bind(bind[19],bind[24])
 end
 def predicate_Detect_ClasSwitchcb_2(bind)
 (!includes(bind[0],bind[1],first(bind[2]))) || FAIL
@@ -763,13 +770,13 @@ def predicate_Detect_ClasSwitchcb_6(bind)
 Seq[*([bind[7]]+bind[10])]
 end
 def predicate_Detect_ClasSwitchcb_7(bind)
-(bind[14]=="clas") || FAIL
+_append(bind[14],bind[15])
 end
 def predicate_Detect_ClasSwitchcb_8(bind)
-Act
+Or[*bind[16]]
 end
 def predicate_Detect_ClasSwitchcb_9(bind)
-(child(bind[0][bind[1]],bind[16])&&bind[0][bind[1]]==bind[16]) || FAIL
+(bind[19]=="clas") || FAIL
 end
 def traverse_Detect_ClasSwitchcb_1(bind)
 @changed
@@ -841,15 +848,15 @@ end
 
 
 def detect_switch_compiled_by
-'85283a6ee405639742e13d1a80f73922'
+'f6f960d4590f00c1e2ba8d5deb80754e'
 end
 def detect_switch_source_hash
-'9aba69e51b4cebf41dfcd98e64a7af10'
+'d6912b2cf59f6e38a66a8f6ecff5f82f'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'38a16c6fd88b3083ef8988a5c4e6ff86'
+'dd06d6162c7f3785ece852dc29b77d1d'
 end
   require 'compiled/detect_switch_c'

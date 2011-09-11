@@ -235,14 +235,14 @@ amethyst Detect_Switch < Detect_First {
 
 	predicate(chr,p) = &{chr==:default} {p}
 										| &{!intersects(first(p).ary,chr)} {Placeholder}
-                    | {p}=>( Or[ (.:e predicate(chr,e))*:ary {Or[*ary]} ]
+                    |  {p}=>( Seq[ .:e predicate(chr,e):f .*:rest {Seq[*([f]+rest)]} ]
+														| Or[ (.:e predicate(chr,e))*:ary {Or[*ary]} ]
 														| Switch[.*{
 																 nary=p.ary
                                  nary=nary.select{|o,v| intersects(o.ary,chr.to_s)} if p.first.is_a?(CharLattice)
                                  nary=nary.map{|o,v| [o,predicate(chr,v)]}.select{|o,v| v!=Placeholder}
                                  Switch[{:act=>p.act,:first=>p.first,:defs=>p.defs,:ary=>nary}]
                               }]
-														| Seq[ .:e predicate(chr,e):f .*:rest {Seq[*([f]+rest)]} ]
 														| . 
 														)
 }
@@ -264,6 +264,7 @@ amethyst Detect_ClasSwitch < Detect_First {
   predicate(clas,i,p) = &{clas[i]==:default} {p}
 											| &{!includes(clas,i,first(p))} {Placeholder}	
 											|	{p}=>( Seq[ .:e predicate(clas,i,e):f .*:rest {Seq[*([f]+rest)]} ]
+														 | Or[ (.:e predicate(clas,i,e))*:ary {Or[*ary]} ]
 									  				 | Apply[ .:name &{name=="clas"} Act[.:match] &{child(clas[i],match)&&clas[i]==match} {Apply["anything"]}] 
  										  			 | Bind[@name:name {predicate(clas,i,@expr)}:expr  {_Bind(name,expr)}]
 											  		 | .
