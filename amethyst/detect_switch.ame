@@ -165,23 +165,6 @@ class Detect_Switch < Detect_First
 		return true if ar & [Empty,Anything] != []
 		return ar & [el] !=[]
 	end
-	def predicate(p,e)
-		return predicate2(e,p)
-		return p if e==:default
-		return Placeholder if !intersects(first(p).ary,e)
-		if p.is_a?(Or)
-			return Or[{:ary=>p.ary.map{|p|predicate(p,e)}}] if p.is_a?(Or)
-		elsif p.is_a?(Switch)
-			nary=p.ary
-			nary=nary.select{|o,v| intersects(o.ary,e.to_s)} if p.first.is_a?(CharLattice)
-			nary=nary.map{|o,v| [o,predicate(v,e)]}.select{|o,v| v!=Placeholder}
-			return Switch[{:act=>p.act,:first=>p.first,:defs=>p.defs,:ary=>nary}]
-		elsif p.is_a?(Seq)
-			return Seq[*([predicate(p[0],e)]+p.ary[1..-1])]
-		else
-			return p 
-		end
-	end
 end
 
 class Detect_ClasSwitch < Detect_First
@@ -241,7 +224,7 @@ amethyst Detect_Switch < Detect_First {
 		{Or[*els]}:new_or
 		&{new_or.is_a?(Or)}
 		{ary2.each{|e|
-			ary3<<[e,predicate(new_or,e)]
+			ary3<<[e,predicate(e,new_or)]
 		}}
 		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k.to_s}.sort,v[0][1]]}.sort}
 		{ary3<<[["default"],Apply["fails"]] unless ary2.include?(:default)}
@@ -250,16 +233,16 @@ amethyst Detect_Switch < Detect_First {
 		{Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>ary3}]}
 	]
 
-	predicate2(chr,p) = &{chr==:default} {p}
+	predicate(chr,p) = &{chr==:default} {p}
 										| &{!intersects(first(p).ary,chr)} {Placeholder}
-                    | {p}=>( Or[ (.:e predicate2(chr,e))*:ary {Or[*ary]} ]
+                    | {p}=>( Or[ (.:e predicate(chr,e))*:ary {Or[*ary]} ]
 														| Switch[.*{
 																 nary=p.ary
                                  nary=nary.select{|o,v| intersects(o.ary,chr.to_s)} if p.first.is_a?(CharLattice)
-                                 nary=nary.map{|o,v| [o,predicate2(chr,v)]}.select{|o,v| v!=Placeholder}
+                                 nary=nary.map{|o,v| [o,predicate(chr,v)]}.select{|o,v| v!=Placeholder}
                                  Switch[{:act=>p.act,:first=>p.first,:defs=>p.defs,:ary=>nary}]
                               }]
-														| Seq[ .:e predicate2(chr,e):f .*:rest {Seq[*([f]+rest)]} ]
+														| Seq[ .:e predicate(chr,e):f .*:rest {Seq[*([f]+rest)]} ]
 														| . 
 														)
 }

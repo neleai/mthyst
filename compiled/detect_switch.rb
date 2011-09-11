@@ -432,23 +432,6 @@ class Detect_Switch < Detect_First
 		return true if ar & [Empty,Anything] != []
 		return ar & [el] !=[]
 	end
-	def predicate(p,e)
-		return predicate2(e,p)
-		return p if e==:default
-		return Placeholder if !intersects(first(p).ary,e)
-		if p.is_a?(Or)
-			return Or[{:ary=>p.ary.map{|p|predicate(p,e)}}] if p.is_a?(Or)
-		elsif p.is_a?(Switch)
-			nary=p.ary
-			nary=nary.select{|o,v| intersects(o.ary,e.to_s)} if p.first.is_a?(CharLattice)
-			nary=nary.map{|o,v| [o,predicate(v,e)]}.select{|o,v| v!=Placeholder}
-			return Switch[{:act=>p.act,:first=>p.first,:defs=>p.defs,:ary=>nary}]
-		elsif p.is_a?(Seq)
-			return Seq[*([predicate(p[0],e)]+p.ary[1..-1])]
-		else
-			return p 
-		end
-	end
 end
 
 class Detect_ClasSwitch < Detect_First
@@ -580,22 +563,22 @@ end
 
 
 class Detect_Switch < Detect_First
-def self.switchcb_Detect_Switch11(e)
-return 0 if e<=Array
-return 1 if e<=AmethystAST
-return 2 if e<=Object
-return 3
-end
-@@switchhashDetect_Switch11=Hash.new{|h,k| h[k]=switchcb_Detect_Switch11(k)}
-def switchcbDetect_Switch11(e)
-@@switchhashDetect_Switch11[e.class]
-end
-def self.switchcb_Detect_Switch13(e)
+def self.switchcb_Detect_Switch12(e)
 return 0 if e<=Or
 return 1 if e<=Switch
 return 2 if e<=Seq
 return 3 if e<=Object
 return 4
+end
+@@switchhashDetect_Switch12=Hash.new{|h,k| h[k]=switchcb_Detect_Switch12(k)}
+def switchcbDetect_Switch12(e)
+@@switchhashDetect_Switch12[e.class]
+end
+def self.switchcb_Detect_Switch13(e)
+return 0 if e<=Array
+return 1 if e<=AmethystAST
+return 2 if e<=Object
+return 3
 end
 @@switchhashDetect_Switch13=Hash.new{|h,k| h[k]=switchcb_Detect_Switch13(k)}
 def switchcbDetect_Switch13(e)
@@ -607,35 +590,35 @@ end
 def fails_Detect_Switchcb_1(bind)
 (false) || FAIL
 end
-def predicate2_Detect_Switchcb_1(bind)
+def predicate_Detect_Switchcb_1(bind)
 (bind[0]==:default) || FAIL
 end
-def predicate2_Detect_Switchcb_2(bind)
+def predicate_Detect_Switchcb_2(bind)
 (!intersects(first(bind[1]).ary,bind[0])) || FAIL
 end
-def predicate2_Detect_Switchcb_3(bind)
+def predicate_Detect_Switchcb_3(bind)
 Placeholder
 end
-def predicate2_Detect_Switchcb_4(bind)
+def predicate_Detect_Switchcb_4(bind)
 bind[3]=[bind[3]]
 end
-def predicate2_Detect_Switchcb_5(bind)
+def predicate_Detect_Switchcb_5(bind)
 _append(bind[5],bind[7])
 end
-def predicate2_Detect_Switchcb_6(bind)
+def predicate_Detect_Switchcb_6(bind)
 Or[*bind[8]]
 end
-def predicate2_Detect_Switchcb_7(bind)
+def predicate_Detect_Switchcb_7(bind)
 nary=bind[1].ary
                                  nary=nary.select{|o,v| intersects(o.ary,bind[0].to_s)} if bind[1].first.is_a?(CharLattice)
-                                 nary=nary.map{|o,v| [o,predicate2(bind[0],v)]}.select{|o,v| v!=Placeholder}
+                                 nary=nary.map{|o,v| [o,predicate(bind[0],v)]}.select{|o,v| v!=Placeholder}
                                  Switch[{:act=>bind[1].act,:first=>bind[1].first,:defs=>bind[1].defs,:ary=>nary}]
                               
 end
-def predicate2_Detect_Switchcb_8(bind)
+def predicate_Detect_Switchcb_8(bind)
 _append(bind[15],bind[16])
 end
-def predicate2_Detect_Switchcb_9(bind)
+def predicate_Detect_Switchcb_9(bind)
 Seq[*([bind[14]]+bind[17])]
 end
 def traverse_Detect_Switchcb_1(bind)
@@ -675,7 +658,7 @@ Or
 end
 def visit_Detect_Switchcb_10(bind)
 bind[1].each{|bind[4]|
-			bind[2]<<[bind[4],predicate(bind[7],bind[4])]
+			bind[2]<<[bind[4],predicate(bind[4],bind[7])]
 		}
 end
 def visit_Detect_Switchcb_11(bind)
@@ -852,15 +835,15 @@ end
 
 
 def detect_switch_compiled_by
-'2a488fd2cca43b7eb46ebe194453909f'
+'d2087f7674baf9e2d14ac7966d77385e'
 end
 def detect_switch_source_hash
-'119e99b72662893463ce57d388bf9927'
+'49a1b1ae2b8a3dd1ce6c03f7a5884c4a'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'ad04eca138526ad1d4eb5d3c80d72eeb'
+'620196c3620b206d1467d1fffe6d7b72'
 end
   require 'compiled/detect_switch_c'
