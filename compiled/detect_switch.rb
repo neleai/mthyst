@@ -37,6 +37,10 @@ class FirstLattice
 		return false unless a.is_a?(FirstLattice)
 		ary.map{|e| e.inspect}.uniq.sort==a.ary.map{|e| e.inspect}.uniq.sort
 	end
+
+	def cases(first)
+		ary.map{|c| c=="default" ? "default:;" : "case #{c}:;"}*""
+	end
 end
 class CharLattice < FirstLattice
 	def self.[](*ary)
@@ -435,7 +439,7 @@ class Detect_Switch < Detect_First
 			return Or[{:ary=>p.ary.map{|p|predicate(p,e)}}] if p.is_a?(Or)
 		elsif p.is_a?(Switch)
 			nary=p.ary
-			nary=nary.select{|o,v| intersects(o,e.to_s)} if p.first.is_a?(CharLattice)
+			nary=nary.select{|o,v| intersects(o.ary,e.to_s)} if p.first.is_a?(CharLattice)
 			nary=nary.map{|o,v| [o,predicate(v,e)]}.select{|o,v| v!=Placeholder}
 			return Switch[{:act=>p.act,:first=>p.first,:defs=>p.defs,:ary=>nary}]
 		elsif p.is_a?(Seq)
@@ -638,9 +642,12 @@ def visit_Detect_Switchcb_12(bind)
 bind[2]<<[["default"],Apply["fails"]] unless bind[1].include?(:default)
 end
 def visit_Detect_Switchcb_13(bind)
-(bind[2].size>1) || FAIL
+bind[2]=bind[2].map{|o,v| [CharLattice[*o],v]}
 end
 def visit_Detect_Switchcb_14(bind)
+(bind[2].size>1) || FAIL
+end
+def visit_Detect_Switchcb_15(bind)
 Switch[{:act=>"*ame_curstr(self)",:first=>bind[6],:ary=>bind[2]}]
 end
 def visit_Detect_Switchcb_2(bind)
@@ -765,6 +772,9 @@ def visit_Detect_ClasSwitchcb_1(bind)
 Or
 end
 def visit_Detect_ClasSwitchcb_10(bind)
+bind[2]=bind[2].map{|o,v| [ClasLattice[*o],v]}
+end
+def visit_Detect_ClasSwitchcb_11(bind)
 c=classswitch(bind[1]);s=Switch[{:act=>c[1],:first=>bind[6],:defs=>c[0],:ary=>bind[2]}]
 end
 def visit_Detect_ClasSwitchcb_2(bind)
@@ -799,15 +809,15 @@ end
 
 
 def detect_switch_compiled_by
-'e4923a379071fddf4f2f71db8dbc5cc1'
+'815ab465b8f52035e6bfc2df698f4f3c'
 end
 def detect_switch_source_hash
-'d3ad405aa01fe2bbb56ad5d526fdceb9'
+'74faa626b682b5fc45e9311b01b720a4'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'39228f285242afbc99b259edee18cd86'
+'e1e7357a047e738c5e688be8f066419c'
 end
   require 'compiled/detect_switch_c'

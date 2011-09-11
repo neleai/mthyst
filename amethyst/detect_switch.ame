@@ -37,6 +37,10 @@ class FirstLattice
 		return false unless a.is_a?(FirstLattice)
 		ary.map{|e| e.inspect}.uniq.sort==a.ary.map{|e| e.inspect}.uniq.sort
 	end
+
+	def cases(first)
+		ary.map{|c| c=="default" ? "default:;" : "case #{c}:;"}*""
+	end
 end
 class CharLattice < FirstLattice
 	def self.[](*ary)
@@ -168,7 +172,7 @@ class Detect_Switch < Detect_First
 			return Or[{:ary=>p.ary.map{|p|predicate(p,e)}}] if p.is_a?(Or)
 		elsif p.is_a?(Switch)
 			nary=p.ary
-			nary=nary.select{|o,v| intersects(o,e.to_s)} if p.first.is_a?(CharLattice)
+			nary=nary.select{|o,v| intersects(o.ary,e.to_s)} if p.first.is_a?(CharLattice)
 			nary=nary.map{|o,v| [o,predicate(v,e)]}.select{|o,v| v!=Placeholder}
 			return Switch[{:act=>p.act,:first=>p.first,:defs=>p.defs,:ary=>nary}]
 		elsif p.is_a?(Seq)
@@ -240,6 +244,7 @@ amethyst Detect_Switch < Detect_First {
 		}}
 		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k.to_s}.sort,v[0][1]]}.sort}
 		{ary3<<[["default"],Apply["fails"]] unless ary2.include?(:default)}
+		{ary3=ary3.map{|o,v| [CharLattice[*o],v]}}
     &{ary3.size>1}
 		{Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>ary3}]}
 	]
@@ -255,6 +260,7 @@ amethyst Detect_ClasSwitch < Detect_First {
       	ary3<<[i,Or[{:ary=>els.select{|p| includes(ary2,i,first(p))}.map{|p| predicate(e,p)}}]]
 		}}
 		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.sort,v[0][1]]}.sort}
+		{ary3=ary3.map{|o,v| [ClasLattice[*o],v]}}
 	  {c=classswitch(ary2);s=Switch[{:act=>c[1],:first=>firs,:defs=>c[0],:ary=>ary3}]}
 	]
 

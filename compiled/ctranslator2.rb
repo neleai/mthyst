@@ -364,7 +364,7 @@ def trans_AmethystCTranslatorcb_54(bind)
 "char #{bind[78]}=#{@src.act};  switch(#{bind[78]}){"
 end
 def trans_AmethystCTranslatorcb_55(bind)
-bind[8]+=bind[25].map{|n| n=="default" ? "default:;" : "case #{n}:;"}*"" + " #{bind[6]} break;"
+bind[8]+=bind[25].cases(@src.first) + " #{bind[6]} break;"
 end
 def trans_AmethystCTranslatorcb_56(bind)
 bind[8]+"}"
@@ -386,10 +386,10 @@ end
 
 
 def ctranslator2_compiled_by
-'e4923a379071fddf4f2f71db8dbc5cc1'
+'815ab465b8f52035e6bfc2df698f4f3c'
 end
 def ctranslator2_source_hash
-'642b3039b06b4f01cd54d90a0607400b'
+'e6cc78d86279a05a129dfe504fce1d92'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
