@@ -166,6 +166,7 @@ class Detect_Switch < Detect_First
 		return ar & [el] !=[]
 	end
 	def predicate(p,e)
+		return predicate2(e,p)
 		return p if e==:default
 		return Placeholder if !intersects(first(p).ary,e)
 		if p.is_a?(Or)
@@ -248,6 +249,19 @@ amethyst Detect_Switch < Detect_First {
     &{ary3.size>1}
 		{Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>ary3}]}
 	]
+
+	predicate2(chr,p) = &{chr==:default} {p}
+										| &{!intersects(first(p).ary,chr)} {Placeholder}
+                    | {p}=>( Or[ (.:e predicate2(chr,e))*:ary {Or[*ary]} ]
+														| Switch[.*{
+																 nary=p.ary
+                                 nary=nary.select{|o,v| intersects(o.ary,chr.to_s)} if p.first.is_a?(CharLattice)
+                                 nary=nary.map{|o,v| [o,predicate2(chr,v)]}.select{|o,v| v!=Placeholder}
+                                 Switch[{:act=>p.act,:first=>p.first,:defs=>p.defs,:ary=>nary}]
+                              }]
+														| Seq[ .:e predicate2(chr,e):f .*:rest {Seq[*([f]+rest)]} ]
+														| . 
+														)
 }
 
 amethyst Detect_ClasSwitch < Detect_First {
