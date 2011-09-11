@@ -163,10 +163,10 @@ class Detect_Switch < Detect_First
 		if p.is_a?(Or)
 			return Or[{:ary=>p.ary.map{|p|predicate(p,e)}}] if p.is_a?(Or)
 		elsif p.is_a?(Switch)
-			nary=p.ary.map{|o,v| [o,predicate(v,e)]}
+			nary=p.ary.map{|o,v| [o,predicate(v,e)]}.select{|o,v| v!=Placeholder}
 			return Switch[{:act=>p.act,:first=>p.first,:defs=>p.defs,:ary=>nary}]
-#		elsif p.is_a?(Seq)
-#			return Seq[*([predicate(p[0],e)]+p.ary[1..-1])]
+		elsif p.is_a?(Seq)
+			return Seq[*([predicate(p[0],e)]+p.ary[1..-1])]
 		else
 			return p 
 		end

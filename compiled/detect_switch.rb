@@ -412,10 +412,10 @@ class Detect_Switch < Detect_First
 		if p.is_a?(Or)
 			return Or[{:ary=>p.ary.map{|p|predicate(p,e)}}] if p.is_a?(Or)
 		elsif p.is_a?(Switch)
-			nary=p.ary.map{|o,v| [o,predicate(v,e)]}
+			nary=p.ary.map{|o,v| [o,predicate(v,e)]}.select{|o,v| v!=Placeholder}
 			return Switch[{:act=>p.act,:first=>p.first,:defs=>p.defs,:ary=>nary}]
-#		elsif p.is_a?(Seq)
-#			return Seq[*([predicate(p[0],e)]+p.ary[1..-1])]
+		elsif p.is_a?(Seq)
+			return Seq[*([predicate(p[0],e)]+p.ary[1..-1])]
 		else
 			return p 
 		end
@@ -772,10 +772,10 @@ end
 
 
 def detect_switch_compiled_by
-'aeaf0f0f7524c44431aa00a9feee57c4'
+'4c2699fd9310cdab7ff09a37ceb3b4f5'
 end
 def detect_switch_source_hash
-'f989d0952d834c2248b90d73e230afd6'
+'4541cd1465b99b5c6fe8b1988ed72a43'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
