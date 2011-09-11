@@ -811,10 +811,16 @@ def visit_Detect_ClasSwitchcb_1(bind)
 Or
 end
 def visit_Detect_ClasSwitchcb_10(bind)
-bind[2]=bind[2].map{|o,v| [ClasLattice[*o],v]}
+bind[2]=bind[2].map{|o,v| v==Placeholder ? [o,Apply["fails"]] : [o,v]}
 end
 def visit_Detect_ClasSwitchcb_11(bind)
-c=classswitch(bind[1]);s=Switch[{:act=>c[1],:first=>bind[6],:defs=>c[0],:ary=>bind[2]}]
+bind[2]=bind[2].group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.sort,v[0][1]]}.sort
+end
+def visit_Detect_ClasSwitchcb_12(bind)
+bind[2]=bind[2].map{|o,v| [ClasLattice[*o],v]}
+end
+def visit_Detect_ClasSwitchcb_13(bind)
+c=classswitch(bind[1]);Switch[{:act=>c[1],:first=>bind[6],:defs=>c[0],:ary=>bind[2]}]
 end
 def visit_Detect_ClasSwitchcb_2(bind)
 ClasLattice.bottom
@@ -835,12 +841,12 @@ def visit_Detect_ClasSwitchcb_7(bind)
 (bind[1].size>1) || FAIL
 end
 def visit_Detect_ClasSwitchcb_8(bind)
-bind[1].each_index{|i|
-      	bind[2]<<[i,Or[{:ary=>bind[3].select{|p| includes(bind[1],i,first(p))}.map{|p| predicate(bind[1],i,p)}}]]
-		}
+Or[*bind[3]]
 end
 def visit_Detect_ClasSwitchcb_9(bind)
-bind[2]=bind[2].group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.sort,v[0][1]]}.sort
+bind[1].each_index{|i|
+      	bind[2]<<[i,predicate(bind[1],i,bind[7])]
+		}
 end
 
 end
@@ -848,15 +854,15 @@ end
 
 
 def detect_switch_compiled_by
-'f6f960d4590f00c1e2ba8d5deb80754e'
+'31aedacc914c2b7fe45777ff958100db'
 end
 def detect_switch_source_hash
-'d6912b2cf59f6e38a66a8f6ecff5f82f'
+'0333990fa43dee2a61a6aa52e0813aa6'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'dd06d6162c7f3785ece852dc29b77d1d'
+'c6fd300e79e130e21877d60845807002'
 end
   require 'compiled/detect_switch_c'

@@ -253,12 +253,15 @@ amethyst Detect_ClasSwitch < Detect_First {
 		{ary2}:firs
 		{ary2=topsort(ary2.ary+["Object"])}
 		&{ary2.size>1}
+		{Or[*els]}:new_or
     {	ary2.each_index{|i|
-      	ary3<<[i,Or[{:ary=>els.select{|p| includes(ary2,i,first(p))}.map{|p| predicate(ary2,i,p)}}]]
+      	ary3<<[i,predicate(ary2,i,new_or)]
 		}}
+    {ary3=ary3.map{|o,v| v==Placeholder ? [o,Apply["fails"]] : [o,v]}}
+
 		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.sort,v[0][1]]}.sort}
 		{ary3=ary3.map{|o,v| [ClasLattice[*o],v]}}
-	  {c=classswitch(ary2);s=Switch[{:act=>c[1],:first=>firs,:defs=>c[0],:ary=>ary3}]}
+	  {c=classswitch(ary2);Switch[{:act=>c[1],:first=>firs,:defs=>c[0],:ary=>ary3}]}
 	]
 
   predicate(clas,i,p) = &{clas[i]==:default} {p}
