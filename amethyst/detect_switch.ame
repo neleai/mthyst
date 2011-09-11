@@ -261,7 +261,9 @@ amethyst Detect_ClasSwitch < Detect_First {
 	  {c=classswitch(ary2);s=Switch[{:act=>c[1],:first=>firs,:defs=>c[0],:ary=>ary3}]}
 	]
 
-  predicate(clas,i,p) = {p}=>( Seq[ .:first .*:rest  {Seq[[predicate(clas,i,first)]+rest]} ]
+  predicate(clas,i,p) = &{clas[i]==:default} {p}
+											| &{!includes(clas,i,first(p))} {Placeholder}	
+											|	{p}=>( Seq[ .:e predicate(clas,i,e):f .*:rest {Seq[*([f]+rest)]} ]
 									  				 | Apply[ .:name &{name=="clas"} Act[.:match] &{child(clas[i],match)&&clas[i]==match} {Apply["anything"]}] 
  										  			 | Bind[@name:name {predicate(clas,i,@expr)}:expr  {_Bind(name,expr)}]
 											  		 | .
