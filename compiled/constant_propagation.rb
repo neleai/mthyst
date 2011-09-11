@@ -46,6 +46,16 @@ end
 def switchcbConstant_Propagator2(e)
 @@switchhashConstant_Propagator2[e.class]
 end
+def self.switchcb_Constant_Propagator1(e)
+return 0 if e<=Local
+return 1 if e<=Exp
+return 2 if e<=Object
+return 3
+end
+@@switchhashConstant_Propagator1=Hash.new{|h,k| h[k]=switchcb_Constant_Propagator1(k)}
+def switchcbConstant_Propagator1(e)
+@@switchhashConstant_Propagator1[e.class]
+end
 def clas_Constant_Propagatorcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
@@ -70,18 +80,12 @@ def step_Constant_Propagatorcb_4(bind)
 @src.expr
 end
 def step_Constant_Propagatorcb_5(bind)
-Local
-end
-def step_Constant_Propagatorcb_6(bind)
 @src
 end
-def step_Constant_Propagatorcb_7(bind)
-Exp
-end
-def step_Constant_Propagatorcb_8(bind)
+def step_Constant_Propagatorcb_6(bind)
 ConstantLattice[@src]
 end
-def step_Constant_Propagatorcb_9(bind)
+def step_Constant_Propagatorcb_7(bind)
 ConstantLattice[bind[14]]
 end
 
@@ -171,7 +175,7 @@ end
 
 
 def constant_propagation_compiled_by
-'d2cfc117e308e8623de0a667d22a28e5'
+'2eb8d8dab2d0553e95dcfe90ffe70169'
 end
 def constant_propagation_source_hash
 '9468cae32ec5bb7e6431d4fa1b1b69e4'
@@ -180,6 +184,6 @@ def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
 end
 def constant_propagation_version
-'0173ff6114f28390825a31e07b24516d'
+'d38f14ec523b7d1736b94c5627f42c93'
 end
   require 'compiled/constant_propagation_c'
