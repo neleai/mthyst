@@ -196,10 +196,12 @@ class PureAct
 	end
 end
 class CAct
-	def pure
-		true
+	def pure;	true;	end
+	def ccode
+		ary[0]
 	end
 end
+
 $hash_Act=Hash.new{|h,k|h[k]=Hash.new{|h,k|h[k]={}}}
 class Act
 	def self.[](expr=nil,pred=nil)

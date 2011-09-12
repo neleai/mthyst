@@ -1,3 +1,0 @@
-class First {
-	dataflow = Apply[ .["seq"] CAct[.:{firstchar(it)} ]]
-}
