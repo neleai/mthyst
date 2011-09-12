@@ -44,8 +44,8 @@ class AmethystAST
 	def size
 		ary.size
 	end
-	def [](a)
-		ary[a]
+	def [](*a)
+		ary[*a]
 	end
 	def inspect
 		attrs=self.class.instance_variable_get(:@attrs)-[:ary]

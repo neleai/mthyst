@@ -45,11 +45,10 @@ saner handling of Locals
 
 detects also rules in parent that call but are not called
 
-move switch into pipeline
-
-detect_switch char intervals
-
 predicate,cut,stop,comment do not return value
 
+move switch into pipeline
+detect_switch char intervals
+negation in switch
 defer alternatives of classwitch to ctranslator2
 merge identical options of detect_switch in normalize
