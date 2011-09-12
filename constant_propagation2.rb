@@ -63,7 +63,6 @@ r.consts={}
 c.analyze2.each{|k,v| 
 	if v!=Top&&v!=Bottom  
 		r.consts[k]=v 
-		r.consts[k]=CAct[v] if v.is_a?(String)
 		r.consts[k]=Act[v] if v.is_a?(Exp)
 	end
 }
