@@ -197,11 +197,11 @@ class PureAct
 end
 class CAct
 	def pure;	true;	end
-	def ccode
-		ary[0]
-	end
+	def ccode;ary[0];	end
 end
-
+class CAct_Bool < CAct
+	def ccode;"Q#{ary[0]}";end
+end
 $hash_Act=Hash.new{|h,k|h[k]=Hash.new{|h,k|h[k]={}}}
 class Act
 	def self.[](expr=nil,pred=nil)
@@ -223,9 +223,7 @@ class Act
 			exp=exp[0] if exp.is_a?(Args) && exp.size==1
 		  return Act.create(exp,{:pure=>true}).freeze if exp.is_a?(Exp)
 			return CAct["rb_ary_new3(0)"] if exp=="[]"
-			return CAct["Qtrue"] if exp=="true"
-			return CAct["Qfalse"] if exp=="false"
-			return CAct["Qnil"] if exp=="nil"
+			return CAct_Bool[exp] if ["true","false","nil"].include?(exp)
 			return CAct["INT2FIX(#{exp})"] if exp.is_a?(String) && exp==exp.to_i.to_s && exp.to_i>-1000000000&&exp.to_i<1000000000
 			return CAct["rb_str_new2(\"#{exp[1...-1]}\")"] if exp.is_a?(String) && ((exp[0]==?\" && exp[-1]==?\")|| (exp[0]==?' && exp[-1]==?')) && !(exp=~/\#/)
 		end
@@ -279,7 +277,7 @@ class Lookahead
 		freeze
 	end
 end
-[CAct,Global,Key,
+[CAct,CAct_Bool,Global,Key,
 Cut,Stop,Exp,Strin,Args,
 Comment
 #Result
