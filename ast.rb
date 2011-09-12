@@ -199,6 +199,8 @@ class CAct
 	def pure;	true;	end
 	def ccode	
 		return "Q#{ary[0].inspect}" if [true,false,nil].include?(ary[0])
+		#ugly but needed for arbitrary precision(alternatively emit int2fix when fits fixnum range)
+		return "rb_funcall(rb_str_new2(\"#{ary[0]}\"),rb_intern(\"to_i\"),0)" if ary[0].is_a? Integer
 		ary[0]	
 	end
 end
@@ -224,7 +226,7 @@ class Act
 		  return Act.create(exp,{:pure=>true}).freeze if exp.is_a?(Exp)
 			return CAct["rb_ary_new3(0)"] if exp=="[]"
 			return CAct[eval(exp)] if ["true","false","nil"].include?(exp)
-			return CAct["INT2FIX(#{exp})"] if exp.is_a?(String) && exp==exp.to_i.to_s && exp.to_i>-1000000000&&exp.to_i<1000000000
+			return CAct[exp.to_i] if exp.is_a?(String) && exp==exp.to_i.to_s
 			return CAct["rb_str_new2(\"#{exp[1...-1]}\")"] if exp.is_a?(String) && ((exp[0]==?\" && exp[-1]==?\")|| (exp[0]==?' && exp[-1]==?')) && !(exp=~/\#/)
 		end
 		@pure=true if exp.is_a?(Exp)
