@@ -102,8 +102,8 @@ end
 
 class Switch_Dataflow < First_Dataflow
   def firstchar(s)
-	  return Empty if s.size==15
-    s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
+	  return Empty if s==""
+    s=(s[0]==?\\ ) ? s[0,2] : s[0,1]
     eval('"'+s+'"')[0]
   end
 	def lattice

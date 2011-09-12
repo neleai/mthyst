@@ -198,10 +198,12 @@ end
 class CAct
 	def pure;	true;	end
 	def ccode	
+		return "rb_ary_new3(0)" if ary[0].is_a?(Array)
 		return "Q#{ary[0].inspect}" if [true,false,nil].include?(ary[0])
 		#ugly but needed for arbitrary precision(alternatively emit int2fix when fits fixnum range)
 		return "rb_funcall(rb_str_new2(\"#{ary[0]}\"),rb_intern(\"to_i\"),0)" if ary[0].is_a? Integer
-		ary[0]	
+		return "rb_str_new2(\"#{ary[0]}\")" if ary[0].is_a?(String)
+		ary[0]
 	end
 end
 $hash_Act=Hash.new{|h,k|h[k]=Hash.new{|h,k|h[k]={}}}
@@ -224,10 +226,10 @@ class Act
 			exp=@ary[0]
 			exp=exp[0] if exp.is_a?(Args) && exp.size==1
 		  return Act.create(exp,{:pure=>true}).freeze if exp.is_a?(Exp)
-			return CAct["rb_ary_new3(0)"] if exp=="[]"
+			return CAct[[]] if exp=="[]"
 			return CAct[eval(exp)] if ["true","false","nil"].include?(exp)
 			return CAct[exp.to_i] if exp.is_a?(String) && exp==exp.to_i.to_s
-			return CAct["rb_str_new2(\"#{exp[1...-1]}\")"] if exp.is_a?(String) && ((exp[0]==?\" && exp[-1]==?\")|| (exp[0]==?' && exp[-1]==?')) && !(exp=~/\#/)
+			return CAct[exp[1...-1]] if exp.is_a?(String) && ((exp[0]==?\" && exp[-1]==?\")|| (exp[0]==?' && exp[-1]==?')) && !(exp=~/\#/)
 		end
 		@pure=true if exp.is_a?(Exp)
 		@ary=nil if @ary.size==0
@@ -257,7 +259,7 @@ class Apply
 	end
 	def normalize2
 		if @ary[0]=="apply"
-			return Apply[@ary[1][0][13...-2]] if @ary[1].is_a?(CAct)
+			return Apply[@ary[1][0]] if @ary[1].is_a?(CAct)
 			return @ary[1][0][0] if @ary[1].is_a?(Act) && @ary[1][0].is_a?(Exp)
 		end
 		if @ary[0]=="_seq"

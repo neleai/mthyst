@@ -102,8 +102,8 @@ end
 
 class Switch_Dataflow < First_Dataflow
   def firstchar(s)
-	  return Empty if s.size==15
-    s=(s[13]==?\\ ) ? s[13,2] : s[13,1]
+	  return Empty if s==""
+    s=(s[0]==?\\ ) ? s[0,2] : s[0,1]
     eval('"'+s+'"')[0]
   end
 	def lattice
@@ -854,10 +854,10 @@ end
 
 
 def detect_switch_compiled_by
-'4dd024b41dc98bad2d20a010aef5c0ba'
+'e710c5a0f45c2e159d2816be792a0755'
 end
 def detect_switch_source_hash
-'0333990fa43dee2a61a6aa52e0813aa6'
+'7bdf89033cc6ba90be7cef2f6c910d5b'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
