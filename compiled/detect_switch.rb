@@ -51,9 +51,13 @@ class CharLattice < FirstLattice
 	def self.top
 		CharLattice[Anything]
 	end
+	def cchar(c)
+		return "'\\''" if c==?'
+		"'#{c.chr.inspect[1...-1]}'"
+	end
   def cases(first)
 		puts ary.inspect
-    ary.map{|c| c=="default" ? "default:;" : "case #{c[0]} ... #{c[1]}:;"}*""
+    ary.map{|c| c=="default" ? "default:;" : "case #{cchar(c[0])} ... #{cchar(c[0])}:;"}*""
   end
 
 end
@@ -114,8 +118,23 @@ class Switch_Dataflow < First_Dataflow
   end
 	def regchar(s)
 		puts s
-		#return lattice[[s[2],s[4]]] if s.size==7 && s[3]==?\-
-		lattice.top
+		return lattice.top if s[2]==?^ #TODO negation
+		chars=[]
+		s=s[2...-2]
+		i=0
+		while i<s.size
+			c=s[i]
+			return lattice.top if c==?\-
+			if c==?\\
+				raise "stray \\" if i==s.size-1
+				c=eval('"'+s[i,2]+'"')[0]
+				i+=2
+			else
+				i+=1
+			end
+			chars<<[c,c]
+		end
+		lattice[*chars]
 	end
 	def lattice
 		CharLattice
@@ -871,10 +890,10 @@ end
 
 
 def detect_switch_compiled_by
-'668c6ffbe5f6c1ef344fc437d80bd7d2'
+'66051b1aa3e32b72fa4455e2d1eb2602'
 end
 def detect_switch_source_hash
-'6b4dfeb453e75a4c29e9fc7a643f9a70'
+'822a1b92c71c69539fd9a3f617a20b99'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
