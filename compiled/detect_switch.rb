@@ -51,6 +51,10 @@ class CharLattice < FirstLattice
 	def self.top
 		CharLattice[Anything]
 	end
+  def cases(first)
+    ary.map{|c| c=="default" ? "default:;" : "case #{c} ... #{c}:;"}*""
+  end
+
 end
 
 class ClasLattice < FirstLattice
@@ -854,10 +858,10 @@ end
 
 
 def detect_switch_compiled_by
-'e710c5a0f45c2e159d2816be792a0755'
+'2142e09117bd12c5d7f8262037bc1a1d'
 end
 def detect_switch_source_hash
-'b1ecb3c1396e11e5d0feafed475a1f20'
+'19686900f1b8f6d4e95e3cdc455072f3'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version

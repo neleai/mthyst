@@ -51,6 +51,10 @@ class CharLattice < FirstLattice
 	def self.top
 		CharLattice[Anything]
 	end
+  def cases(first)
+    ary.map{|c| c=="default" ? "default:;" : "case #{c} ... #{c}:;"}*""
+  end
+
 end
 
 class ClasLattice < FirstLattice
