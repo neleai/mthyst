@@ -112,6 +112,10 @@ class Switch_Dataflow < First_Dataflow
     s=eval('"'+s+'"')[0]
 		[s,s]
   end
+	def regchar(s)
+		puts s
+		Anything
+	end
 	def lattice
 		CharLattice
 	end
@@ -139,9 +143,9 @@ amethyst First_Dataflow {
 }  			
 
 amethyst Switch_Dataflow < First_Dataflow{
-	first = Apply[ ["_seq"] CAct[.:str] {lattice[firstchar(str)]}]
+	first = Apply[ ["_seq"  ] CAct[.:str] {lattice[firstchar(str)]}]
+				| Apply[ ["regch" ] Act[.:str] {lattice[regchar(str)]}]
 				| Apply[ ["anything" ] {lattice.top}]
-				| Apply[ ["regch" ] {lattice.top}]
 				| super
 
 	getvalue(v) = {@@vis=v; v}=>first

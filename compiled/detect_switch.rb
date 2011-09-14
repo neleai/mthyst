@@ -112,6 +112,10 @@ class Switch_Dataflow < First_Dataflow
     s=eval('"'+s+'"')[0]
 		[s,s]
   end
+	def regchar(s)
+		puts s
+		Anything
+	end
 	def lattice
 		CharLattice
 	end
@@ -281,6 +285,12 @@ def first_Switch_Dataflowcb_2(bind)
 lattice[firstchar(bind[3])]
 end
 def first_Switch_Dataflowcb_3(bind)
+Act
+end
+def first_Switch_Dataflowcb_4(bind)
+lattice[regchar(bind[3])]
+end
+def first_Switch_Dataflowcb_5(bind)
 lattice.top
 end
 def getvalue_Switch_Dataflowcb_1(bind)
@@ -289,17 +299,17 @@ end
 def getvalue_Switch_Dataflowcb_2(bind)
 bind[1]=[bind[1]]
 end
+def regch_Switch_Dataflowcb_1(bind)
+(bind[0].is_a? String ) || FAIL
+end
+def regch_Switch_Dataflowcb_2(bind)
+(bind[3].match(bind[2])) || FAIL
+end
 def spaces_Switch_Dataflowcb_1(bind)
 /[\s\t\r\n\f]/
 end
 def spaces_Switch_Dataflowcb_2(bind)
-(bind[2].is_a? String ) || FAIL
-end
-def spaces_Switch_Dataflowcb_3(bind)
-(bind[1].match(bind[4])) || FAIL
-end
-def spaces_Switch_Dataflowcb_4(bind)
-_append(bind[0],bind[7])
+_append(bind[0],bind[2])
 end
 
 end
@@ -403,17 +413,17 @@ end
 def getvalue_ClasSwitch_Dataflowcb_2(bind)
 bind[1]=[bind[1]]
 end
+def regch_ClasSwitch_Dataflowcb_1(bind)
+(bind[0].is_a? String ) || FAIL
+end
+def regch_ClasSwitch_Dataflowcb_2(bind)
+(bind[3].match(bind[2])) || FAIL
+end
 def spaces_ClasSwitch_Dataflowcb_1(bind)
 /[\s\t\r\n\f]/
 end
 def spaces_ClasSwitch_Dataflowcb_2(bind)
-(bind[2].is_a? String ) || FAIL
-end
-def spaces_ClasSwitch_Dataflowcb_3(bind)
-(bind[1].match(bind[4])) || FAIL
-end
-def spaces_ClasSwitch_Dataflowcb_4(bind)
-_append(bind[0],bind[7])
+_append(bind[0],bind[2])
 end
 def value_ClasSwitch_Dataflowcb_1(bind)
 depends(bind[0]); @vals[bind[0]]
@@ -860,15 +870,15 @@ end
 
 
 def detect_switch_compiled_by
-'e3311a430639fda67c2964fac0266e78'
+'668c6ffbe5f6c1ef344fc437d80bd7d2'
 end
 def detect_switch_source_hash
-'fa74bfdcb727f10da88f666e8d8693c9'
+'92b7251a3755eabb5145068d3901df19'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'c6fd300e79e130e21877d60845807002'
+'aac83101e209edc00d0ce84184390538'
 end
   require 'compiled/detect_switch_c'
