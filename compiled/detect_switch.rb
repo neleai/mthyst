@@ -107,14 +107,15 @@ end
 
 class Switch_Dataflow < First_Dataflow
   def firstchar(s)
-	  return Empty if s==""
+	  return lattice.empty if s==""
     s=(s[0]==?\\ ) ? s[0,2] : s[0,1]
     s=eval('"'+s+'"')[0]
-		[s,s]
+		lattice[[s,s]]
   end
 	def regchar(s)
 		puts s
-		Anything
+		#return lattice[[s[2],s[4]]] if s.size==7 && s[3]==?\-
+		lattice.top
 	end
 	def lattice
 		CharLattice
@@ -282,13 +283,13 @@ def first_Switch_Dataflowcb_1(bind)
 CAct
 end
 def first_Switch_Dataflowcb_2(bind)
-lattice[firstchar(bind[3])]
+firstchar(bind[3])
 end
 def first_Switch_Dataflowcb_3(bind)
 Act
 end
 def first_Switch_Dataflowcb_4(bind)
-lattice[regchar(bind[3])]
+regchar(bind[3])
 end
 def first_Switch_Dataflowcb_5(bind)
 lattice.top
@@ -873,7 +874,7 @@ def detect_switch_compiled_by
 '668c6ffbe5f6c1ef344fc437d80bd7d2'
 end
 def detect_switch_source_hash
-'92b7251a3755eabb5145068d3901df19'
+'6b4dfeb453e75a4c29e9fc7a643f9a70'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
