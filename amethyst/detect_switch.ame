@@ -20,8 +20,8 @@ class FirstLattice
   def self.bottom
     self[]
   end
-	def +(a)
-		self.class[*(ary+a.ary)]
+	def |(a)
+		self.class[*(ary|a.ary)]
 	end
 	def -(a)
 		self.class[*(ary-a.ary)]
@@ -31,7 +31,7 @@ class FirstLattice
 	end
 	def seqjoin(a)
     return self unless self.ary.include? Empty
-    (self-self.class.empty)+a
+    (self-self.class.empty)|a
   end
 	def ==(a)
 		return false unless a.is_a?(FirstLattice)
@@ -124,12 +124,12 @@ amethyst First_Dataflow {
 	
 	first =	Switch[&{@first.is_a?(lattice)} .* {@first}]
 				| Seq[value*:{it.inject{|u,v|u.seqjoin(v)}}]
-				| Many[value:val {val+lattice.empty} ]
-				| Or[value*:{it.inject(:+)}]
-				| Switch[value*:{it.inject(:+)}]
+				| Many[value:val {val|lattice.empty} ]
+				| Or[value*:{it.inject(:|)}]
+				| Switch[value*:{it.inject(:|)}]
 	      | Bind[@expr=>value] 
 				| (Act|CAct)[.* {lattice.empty} ]
-				| . {lattice.top+lattice.empty}
+				| . {lattice.top|lattice.empty}
 }  			
 
 amethyst Switch_Dataflow < First_Dataflow{
@@ -174,7 +174,7 @@ class Detect_ClasSwitch < Detect_First
 			@switchdf.parse(:root,[])
 		end
 		r=@switchdf.analyze(s)
-		return r+ClasLattice.top-ClasLattice.empty if r.ary.include?(Empty)
+		return (r|ClasLattice.top)-ClasLattice.empty if r.ary.include?(Empty)
 		return r
 	end
 	def child(par,chld)
@@ -217,7 +217,7 @@ amethyst Detect_First < Traverser_Clone2 {
 
 amethyst Detect_Switch < Detect_First {
 	visit = Or[ {CharLattice[]}:ary2 {[]}:ary3 {[]}:els
-		(traverse_item:e &{first(e)} {e}:els[] {ary2+=first(e)})* &eof
+		(traverse_item:e &{first(e)} {e}:els[] {ary2|=first(e)})* &eof
 		{ary2}:firs
 		{ary2=ary2.ary.map{|e|  [Anything,Empty].include?(e) ? :default : e}.uniq}
 		&{ary2.size>1}
@@ -249,7 +249,7 @@ amethyst Detect_Switch < Detect_First {
 
 amethyst Detect_ClasSwitch < Detect_First {
 	visit = Or[ {ClasLattice.bottom}:ary2 {[]}:ary3 {[]}:els
- 		(traverse_item:e &{first(e)} {e}:els[] {ary2+=first(e)})* &eof
+ 		(traverse_item:e &{first(e)} {e}:els[] {ary2|=first(e)})* &eof
 		{ary2}:firs
 		{ary2=topsort(ary2.ary+["Object"])}
 		&{ary2.size>1}

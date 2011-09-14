@@ -20,8 +20,8 @@ class FirstLattice
   def self.bottom
     self[]
   end
-	def +(a)
-		self.class[*(ary+a.ary)]
+	def |(a)
+		self.class[*(ary|a.ary)]
 	end
 	def -(a)
 		self.class[*(ary-a.ary)]
@@ -31,7 +31,7 @@ class FirstLattice
 	end
 	def seqjoin(a)
     return self unless self.ary.include? Empty
-    (self-self.class.empty)+a
+    (self-self.class.empty)|a
   end
 	def ==(a)
 		return false unless a.is_a?(FirstLattice)
@@ -167,10 +167,10 @@ def first_First_Dataflowcb_3(bind)
 _append(bind[4],bind[5])
 end
 def first_First_Dataflowcb_4(bind)
-bind[6].inject(:+)
+bind[6].inject(:|)
 end
 def first_First_Dataflowcb_5(bind)
-lattice.top+lattice.empty
+lattice.top|lattice.empty
 end
 def first_First_Dataflowcb_6(bind)
 _append(bind[9],bind[10])
@@ -179,7 +179,7 @@ def first_First_Dataflowcb_7(bind)
 bind[6].inject{|u,v|u.seqjoin(v)}
 end
 def first_First_Dataflowcb_8(bind)
-bind[13]+lattice.empty
+bind[13]|lattice.empty
 end
 def first_First_Dataflowcb_9(bind)
 _append(bind[16],bind[17])
@@ -251,10 +251,10 @@ def first_Switch_Dataflow_Switch_Dataflowcb_3(bind)
 _append(bind[4],bind[5])
 end
 def first_Switch_Dataflow_Switch_Dataflowcb_4(bind)
-bind[6].inject(:+)
+bind[6].inject(:|)
 end
 def first_Switch_Dataflow_Switch_Dataflowcb_5(bind)
-lattice.top+lattice.empty
+lattice.top|lattice.empty
 end
 def first_Switch_Dataflow_Switch_Dataflowcb_6(bind)
 _append(bind[9],bind[10])
@@ -263,7 +263,7 @@ def first_Switch_Dataflow_Switch_Dataflowcb_7(bind)
 bind[6].inject{|u,v|u.seqjoin(v)}
 end
 def first_Switch_Dataflow_Switch_Dataflowcb_8(bind)
-bind[13]+lattice.empty
+bind[13]|lattice.empty
 end
 def first_Switch_Dataflow_Switch_Dataflowcb_9(bind)
 _append(bind[16],bind[17])
@@ -359,10 +359,10 @@ def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_3(bind)
 _append(bind[4],bind[5])
 end
 def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_4(bind)
-bind[6].inject(:+)
+bind[6].inject(:|)
 end
 def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_5(bind)
-lattice.top+lattice.empty
+lattice.top|lattice.empty
 end
 def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_6(bind)
 _append(bind[9],bind[10])
@@ -371,7 +371,7 @@ def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_7(bind)
 bind[6].inject{|u,v|u.seqjoin(v)}
 end
 def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_8(bind)
-bind[13]+lattice.empty
+bind[13]|lattice.empty
 end
 def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_9(bind)
 _append(bind[16],bind[17])
@@ -441,7 +441,7 @@ class Detect_ClasSwitch < Detect_First
 			@switchdf.parse(:root,[])
 		end
 		r=@switchdf.analyze(s)
-		return r+ClasLattice.top-ClasLattice.empty if r.ary.include?(Empty)
+		return (r|ClasLattice.top)-ClasLattice.empty if r.ary.include?(Empty)
 		return r
 	end
 	def child(par,chld)
@@ -686,7 +686,7 @@ def visit_Detect_Switchcb_4(bind)
 _append(bind[3],bind[5])
 end
 def visit_Detect_Switchcb_5(bind)
-bind[1]+=first(bind[4])
+bind[1]|=first(bind[4])
 end
 def visit_Detect_Switchcb_6(bind)
 bind[1]=bind[1].ary.map{|bind[4]|  [Anything,Empty].include?(bind[4]) ? :default : bind[4]}.uniq
@@ -832,7 +832,7 @@ def visit_Detect_ClasSwitchcb_4(bind)
 _append(bind[3],bind[5])
 end
 def visit_Detect_ClasSwitchcb_5(bind)
-bind[1]+=first(bind[4])
+bind[1]|=first(bind[4])
 end
 def visit_Detect_ClasSwitchcb_6(bind)
 bind[1]=topsort(bind[1].ary+["Object"])
@@ -857,7 +857,7 @@ def detect_switch_compiled_by
 'e710c5a0f45c2e159d2816be792a0755'
 end
 def detect_switch_source_hash
-'7bdf89033cc6ba90be7cef2f6c910d5b'
+'b1ecb3c1396e11e5d0feafed475a1f20'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
