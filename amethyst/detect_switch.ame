@@ -35,7 +35,7 @@ class FirstLattice
   end
 	def ==(a)
 		return false unless a.is_a?(FirstLattice)
-		ary.map{|e| e.inspect}.uniq.sort==a.ary.map{|e| e.inspect}.uniq.sort
+		ary.sort_by{|e| e.inspect}==a.ary.sort_by{|e| e.inspect}
 	end
 
 	def cases(first)
@@ -52,7 +52,8 @@ class CharLattice < FirstLattice
 		CharLattice[Anything]
 	end
   def cases(first)
-    ary.map{|c| c=="default" ? "default:;" : "case #{c} ... #{c}:;"}*""
+		puts ary.inspect
+    ary.map{|c| c=="default" ? "default:;" : "case #{c[0]} ... #{c[1]}:;"}*""
   end
 
 end
@@ -108,7 +109,8 @@ class Switch_Dataflow < First_Dataflow
   def firstchar(s)
 	  return Empty if s==""
     s=(s[0]==?\\ ) ? s[0,2] : s[0,1]
-    eval('"'+s+'"')[0]
+    s=eval('"'+s+'"')[0]
+		[s,s]
   end
 	def lattice
 		CharLattice
@@ -223,27 +225,27 @@ amethyst Detect_Switch < Detect_First {
 	visit = Or[ {CharLattice[]}:ary2 {[]}:ary3 {[]}:els
 		(traverse_item:e &{first(e)} {e}:els[] {ary2|=first(e)})* &eof
 		{ary2}:firs
-		{ary2=ary2.ary.map{|e|  [Anything,Empty].include?(e) ? :default : e}.uniq}
+		{ary2=ary2.ary.map{|e|  [Anything,Empty].include?(e) ? "default" : e}.uniq}
 		&{ary2.size>1}
 		{Or[*els]}:new_or
 		&{new_or.is_a?(Or)}
 		{ary2.each{|e|
 			ary3<<[e,predicate(e,new_or)]
 		}}
-		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k.to_s}.sort,v[0][1]]}.sort}
-		{ary3<<[["default"],Apply["fails"]] unless ary2.include?(:default)}
+		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.sort_by{|e| e.inspect},v[0][1]]}.sort_by{|e| e.inspect}}
+		{ary3<<[["default"],Apply["fails"]] unless ary2.include?("default")}
 		{ary3=ary3.map{|o,v| [CharLattice[*o],v]}}
     &{ary3.size>1}
 		{Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>ary3}]}
 	]
 
-	predicate(chr,p) = &{chr==:default} {p}
+	predicate(chr,p) = &{chr=="default"} {p}
 										| &{!intersects(first(p).ary,chr)} {Placeholder}
                     |  {p}=>( Seq[ .:e predicate(chr,e):f .*:rest {Seq[*([f]+rest)]} ]
 														| Or[ (.:e predicate(chr,e))*:ary {Or[*ary]} ]
 														| Switch[.*{
 																 nary=p.ary
-                                 nary=nary.select{|o,v| intersects(o.ary,chr.to_s)} if p.first.is_a?(CharLattice)
+                                 nary=nary.select{|o,v| intersects(o.ary,chr)} if p.first.is_a?(CharLattice)
                                  nary=nary.map{|o,v| [o,predicate(chr,v)]}.select{|o,v| v!=Placeholder}
                                  Switch[{:act=>p.act,:first=>p.first,:defs=>p.defs,:ary=>nary}]
                               }]
@@ -263,12 +265,12 @@ amethyst Detect_ClasSwitch < Detect_First {
 		}}
     {ary3=ary3.map{|o,v| v==Placeholder ? [o,Apply["fails"]] : [o,v]}}
 
-		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.sort,v[0][1]]}.sort}
+		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.sort_by{|e| e.inspect},v[0][1]]}.sort_by{|e| e.inspect}}
 		{ary3=ary3.map{|o,v| [ClasLattice[*o],v]}}
 	  {c=classswitch(ary2);Switch[{:act=>c[1],:first=>firs,:defs=>c[0],:ary=>ary3}]}
 	]
 
-  predicate(clas,i,p) = &{clas[i]==:default} {p}
+  predicate(clas,i,p) = &{clas[i]=="default"} {p}
 											| &{!includes(clas,i,first(p))} {Placeholder}	
 											|	{p}=>( Seq[ .:e predicate(clas,i,e):f .*:rest {Seq[*([f]+rest)]} ]
 														 | Or[ (.:e predicate(clas,i,e))*:ary {Or[*ary]} ]

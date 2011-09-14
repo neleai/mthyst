@@ -35,7 +35,7 @@ class FirstLattice
   end
 	def ==(a)
 		return false unless a.is_a?(FirstLattice)
-		ary.map{|e| e.inspect}.uniq.sort==a.ary.map{|e| e.inspect}.uniq.sort
+		ary.sort_by{|e| e.inspect}==a.ary.sort_by{|e| e.inspect}
 	end
 
 	def cases(first)
@@ -52,7 +52,8 @@ class CharLattice < FirstLattice
 		CharLattice[Anything]
 	end
   def cases(first)
-    ary.map{|c| c=="default" ? "default:;" : "case #{c} ... #{c}:;"}*""
+		puts ary.inspect
+    ary.map{|c| c=="default" ? "default:;" : "case #{c[0]} ... #{c[1]}:;"}*""
   end
 
 end
@@ -108,7 +109,8 @@ class Switch_Dataflow < First_Dataflow
   def firstchar(s)
 	  return Empty if s==""
     s=(s[0]==?\\ ) ? s[0,2] : s[0,1]
-    eval('"'+s+'"')[0]
+    s=eval('"'+s+'"')[0]
+		[s,s]
   end
 	def lattice
 		CharLattice
@@ -595,7 +597,7 @@ def fails_Detect_Switchcb_1(bind)
 (false) || FAIL
 end
 def predicate_Detect_Switchcb_1(bind)
-(bind[0]==:default) || FAIL
+(bind[0]=="default") || FAIL
 end
 def predicate_Detect_Switchcb_2(bind)
 (!intersects(first(bind[1]).ary,bind[0])) || FAIL
@@ -620,7 +622,7 @@ Or[*bind[15]]
 end
 def predicate_Detect_Switchcb_9(bind)
 nary=bind[1].ary
-                                 nary=nary.select{|o,v| intersects(o.ary,bind[0].to_s)} if bind[1].first.is_a?(CharLattice)
+                                 nary=nary.select{|o,v| intersects(o.ary,bind[0])} if bind[1].first.is_a?(CharLattice)
                                  nary=nary.map{|o,v| [o,predicate(bind[0],v)]}.select{|o,v| v!=Placeholder}
                                  Switch[{:act=>bind[1].act,:first=>bind[1].first,:defs=>bind[1].defs,:ary=>nary}]
                               
@@ -666,10 +668,10 @@ bind[1].each{|bind[4]|
 		}
 end
 def visit_Detect_Switchcb_11(bind)
-bind[2]=bind[2].group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k.to_s}.sort,v[0][1]]}.sort
+bind[2]=bind[2].group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.sort_by{|bind[4]| bind[4].inspect},v[0][1]]}.sort_by{|bind[4]| bind[4].inspect}
 end
 def visit_Detect_Switchcb_12(bind)
-bind[2]<<[["default"],Apply["fails"]] unless bind[1].include?(:default)
+bind[2]<<[["default"],Apply["fails"]] unless bind[1].include?("default")
 end
 def visit_Detect_Switchcb_13(bind)
 bind[2]=bind[2].map{|o,v| [CharLattice[*o],v]}
@@ -693,7 +695,7 @@ def visit_Detect_Switchcb_5(bind)
 bind[1]|=first(bind[4])
 end
 def visit_Detect_Switchcb_6(bind)
-bind[1]=bind[1].ary.map{|bind[4]|  [Anything,Empty].include?(bind[4]) ? :default : bind[4]}.uniq
+bind[1]=bind[1].ary.map{|bind[4]|  [Anything,Empty].include?(bind[4]) ? "default" : bind[4]}.uniq
 end
 def visit_Detect_Switchcb_7(bind)
 (bind[1].size>1) || FAIL
@@ -738,7 +740,7 @@ def fails_Detect_ClasSwitchcb_1(bind)
 (false) || FAIL
 end
 def predicate_Detect_ClasSwitchcb_1(bind)
-(bind[0][bind[1]]==:default) || FAIL
+(bind[0][bind[1]]=="default") || FAIL
 end
 def predicate_Detect_ClasSwitchcb_10(bind)
 Act
@@ -818,7 +820,7 @@ def visit_Detect_ClasSwitchcb_10(bind)
 bind[2]=bind[2].map{|o,v| v==Placeholder ? [o,Apply["fails"]] : [o,v]}
 end
 def visit_Detect_ClasSwitchcb_11(bind)
-bind[2]=bind[2].group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.sort,v[0][1]]}.sort
+bind[2]=bind[2].group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.sort_by{|bind[4]| bind[4].inspect},v[0][1]]}.sort_by{|bind[4]| bind[4].inspect}
 end
 def visit_Detect_ClasSwitchcb_12(bind)
 bind[2]=bind[2].map{|o,v| [ClasLattice[*o],v]}
@@ -858,10 +860,10 @@ end
 
 
 def detect_switch_compiled_by
-'2142e09117bd12c5d7f8262037bc1a1d'
+'e3311a430639fda67c2964fac0266e78'
 end
 def detect_switch_source_hash
-'19686900f1b8f6d4e95e3cdc455072f3'
+'fa74bfdcb727f10da88f666e8d8693c9'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
