@@ -56,7 +56,7 @@ class CharLattice < FirstLattice
 		"'#{c.chr.inspect[1...-1]}'"
 	end
   def cases(first)
-    ary.map{|c| c=="default" ? "default:;" : "case #{cchar(c[0])} ... #{cchar(c[1])}:;"}*""
+    ary.map{|c| c=="default" ? "default:;" : "case UC(#{cchar(c[0])}) ... UC(#{cchar(c[1])}):;"}*""
   end
 	def sentinel;[[256,255]];end
 	def ~
@@ -918,7 +918,7 @@ def detect_switch_compiled_by
 'cc79203ac7417cdabb52f7d76fd2b034'
 end
 def detect_switch_source_hash
-'f076ed4fbb6dd48579f97e807d831ce6'
+'16efe92cc7d768b5a82ed79dae471687'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version

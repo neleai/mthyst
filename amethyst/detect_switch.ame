@@ -56,7 +56,7 @@ class CharLattice < FirstLattice
 		"'#{c.chr.inspect[1...-1]}'"
 	end
   def cases(first)
-    ary.map{|c| c=="default" ? "default:;" : "case #{cchar(c[0])} ... #{cchar(c[1])}:;"}*""
+    ary.map{|c| c=="default" ? "default:;" : "case UC(#{cchar(c[0])}) ... UC(#{cchar(c[1])}):;"}*""
   end
 	def sentinel;[[256,255]];end
 	def ~

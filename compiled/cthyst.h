@@ -13,7 +13,7 @@ VALUE failobj;
 #define INSI(var) printf("%s\n",RSTRING(rb_funcall(IGET(var),rb_intern("inspect"),0))->ptr);
 #define INSS printf("%s\n",RSTRING(rb_funcall(self,rb_intern("inspect"),0))->ptr);
 #define INSBI printf("%s\n",RSTRING(rb_funcall(bind,rb_intern("inspect"),0))->ptr);
-
+#define UC(x) ((unsigned char) x)
 #define rb_str_new_cstr rb_str_new2
 //you need this declaration, with implicit it will crash
 VALUE ame_setsrc(VALUE self,VALUE val);

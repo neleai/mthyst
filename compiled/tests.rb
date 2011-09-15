@@ -14,6 +14,6 @@ def testversiontests(r)
  raise "invalid version" if r!=tests_version
 end
 def tests_version
-'7c0a0e55a4ef6e4fcafa4d88fc7d6003'
+'1ebd43e67bfa43982e204b2d4a385eaa'
 end
   require 'compiled/tests_c'
