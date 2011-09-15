@@ -136,8 +136,8 @@ return it;
 fail: return failobj; }
 VALUE Amethyst_foo(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-  it=Amethyst_spaces(self ); FAILTEST(fail);char chr1=*ame_curstr(self);  switch(chr1){case 'a' ... 'a':;  it=rb_str_new2("a"); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(fail);it=rb_str_new2("a");
- rb_ary_store(bind,0/*_result*/,it);  break;case 'b' ... 'b':;  it=rb_str_new2("b"); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(fail);it=rb_str_new2("b");
+char chr1=*ame_curstr(self);  switch(chr1){case 'g' ... 'i':;  it=CALL(foo_Amethystcb_1,1,bind);  arg0=it; it=Amethyst_regch(self ,arg0); FAILTEST(fail);
+ rb_ary_store(bind,0/*_result*/,it);  break;case 'a' ... 'c':;  it=CALL(foo_Amethystcb_2,1,bind);  arg0=it; it=Amethyst_regch(self ,arg0); FAILTEST(fail);
  rb_ary_store(bind,0/*_result*/,it);  break;default:;   it=Amethyst_fails(self ); FAILTEST(fail); break;}it=rb_ary_entry(bind,0/*_result*/);
 return it;
 fail: return failobj; }
@@ -295,4 +295,4 @@ rb_define_method(cls_Amethyst,"token",Amethyst_token,1);
 rb_define_method(cls_Amethyst,"upper",Amethyst_upper,0);
 rb_define_method(cls_Amethyst,"word",Amethyst_word,0);
 rb_define_method(cls_Amethyst,"xdigit",Amethyst_xdigit,0);
- rb_eval_string("testversionamethyst('0fe4e419af444be03b5b646001d72710')");}
+ rb_eval_string("testversionamethyst('2d74b6bbd9f004b95ffdad02d92ddd90')");}

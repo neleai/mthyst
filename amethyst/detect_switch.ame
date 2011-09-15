@@ -56,8 +56,7 @@ class CharLattice < FirstLattice
 		"'#{c.chr.inspect[1...-1]}'"
 	end
   def cases(first)
-		puts ary.inspect
-    ary.map{|c| c=="default" ? "default:;" : "case #{cchar(c[0])} ... #{cchar(c[0])}:;"}*""
+    ary.map{|c| c=="default" ? "default:;" : "case #{cchar(c[0])} ... #{cchar(c[1])}:;"}*""
   end
 
 end
@@ -117,22 +116,23 @@ class Switch_Dataflow < First_Dataflow
 		lattice[[s,s]]
   end
 	def regchar(s)
-		puts s
 		return lattice.top if s[2]==?^ #TODO negation
 		chars=[]
 		s=s[2...-2]
 		i=0
 		while i<s.size
 			c=s[i]
-			return lattice.top if c==?\-
-			if c==?\\
+			if s[i+1]==?-
+				chars<<[c,s[i+2]]
+				i+=3
+			elsif c==?\\
 				raise "stray \\" if i==s.size-1
 				c=eval('"'+s[i,2]+'"')[0]
 				i+=2
 			else
+				chars<<[c,c]
 				i+=1
 			end
-			chars<<[c,c]
 		end
 		lattice[*chars]
 	end

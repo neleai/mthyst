@@ -56,8 +56,7 @@ class CharLattice < FirstLattice
 		"'#{c.chr.inspect[1...-1]}'"
 	end
   def cases(first)
-		puts ary.inspect
-    ary.map{|c| c=="default" ? "default:;" : "case #{cchar(c[0])} ... #{cchar(c[0])}:;"}*""
+    ary.map{|c| c=="default" ? "default:;" : "case #{cchar(c[0])} ... #{cchar(c[1])}:;"}*""
   end
 
 end
@@ -117,22 +116,23 @@ class Switch_Dataflow < First_Dataflow
 		lattice[[s,s]]
   end
 	def regchar(s)
-		puts s
 		return lattice.top if s[2]==?^ #TODO negation
 		chars=[]
 		s=s[2...-2]
 		i=0
 		while i<s.size
 			c=s[i]
-			return lattice.top if c==?\-
-			if c==?\\
+			if s[i+1]==?-
+				chars<<[c,s[i+2]]
+				i+=3
+			elsif c==?\\
 				raise "stray \\" if i==s.size-1
 				c=eval('"'+s[i,2]+'"')[0]
 				i+=2
 			else
+				chars<<[c,c]
 				i+=1
 			end
-			chars<<[c,c]
 		end
 		lattice[*chars]
 	end
@@ -890,10 +890,10 @@ end
 
 
 def detect_switch_compiled_by
-'66051b1aa3e32b72fa4455e2d1eb2602'
+'4006431f3892998bd13dbde48287edd1'
 end
 def detect_switch_source_hash
-'822a1b92c71c69539fd9a3f617a20b99'
+'413777854c02fb1ef42914f22fab5527'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
