@@ -131,7 +131,7 @@ ame_setsrc(self,#{bget(@var)}); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_f
 					]
 				| Switch[ label("chr"):chr 
 									{@@defs<<@defs if @defs}
-									{"char #{chr}=#{@act};  switch(#{chr}){"}:s
+									{"unsigned char #{chr}=#{@act};  switch(#{chr}){"}:s
 										( [.:c trans:t] {s+=c.cases(@first) + " #{t} break;"})*
 									{s+"}"}
 								]

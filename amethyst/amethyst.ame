@@ -1,5 +1,5 @@
 amethyst Amethyst < AmethystCore {
-	foo= <a-c> | <g-i>
+	foo= <^a-c> | <g-i>
 
 	regch(regex) = char:c &{regex.match(c)} -> c
 

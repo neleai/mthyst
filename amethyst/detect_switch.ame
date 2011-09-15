@@ -58,12 +58,31 @@ class CharLattice < FirstLattice
   def cases(first)
     ary.map{|c| c=="default" ? "default:;" : "case #{cchar(c[0])} ... #{cchar(c[1])}:;"}*""
   end
+	def sentinel;[[256,255]];end
 	def ~
-		normalize
-		CharLattice.top
+		return CharLattice.top
+		first=0
+		nary=[]
+		(normalize.ary+sentinel).each{|beg,en|
+			nary<<[first,beg-1] if first<=beg-1
+			first=en+1
+		}
+		CharLattice[*nary]
 	end
 	def normalize
-		ary=ary.sort
+		nary=[]
+		first,last=*ary.sort[0]
+		puts ary.inspect
+		(ary.sort+sentinel).each{|beg,en|
+			if beg<=last+1
+				last=en
+			else
+				nary<<[first,last]
+				first,last=beg,en
+			end
+		}
+		@ary=nary
+		self
 	end
 end
 

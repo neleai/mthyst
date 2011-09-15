@@ -267,7 +267,7 @@ def trans_AmethystCTranslatorcb_26(bind)
 @defs<<@src.defs if @src.defs
 end
 def trans_AmethystCTranslatorcb_27(bind)
-"char #{bind[38]}=#{@src.act};  switch(#{bind[38]}){"
+"unsigned char #{bind[38]}=#{@src.act};  switch(#{bind[38]}){"
 end
 def trans_AmethystCTranslatorcb_28(bind)
 bind[8]+=bind[40].cases(@src.first) + " #{bind[6]} break;"
@@ -383,15 +383,15 @@ end
 
 
 def ctranslator2_compiled_by
-'d3969eed3d82ea584b788d4373043781'
+'cc79203ac7417cdabb52f7d76fd2b034'
 end
 def ctranslator2_source_hash
-'dbacf9eecb1381cbe517a323fe8eca98'
+'523b34fdcdba69967e9203a3f870bb3d'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'e16986ceb790bec19e3573455a111b7e'
+'31a4413222067d8e78c03e7925f29f2e'
 end
   require 'compiled/ctranslator2_c'

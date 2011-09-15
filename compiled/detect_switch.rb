@@ -58,12 +58,31 @@ class CharLattice < FirstLattice
   def cases(first)
     ary.map{|c| c=="default" ? "default:;" : "case #{cchar(c[0])} ... #{cchar(c[1])}:;"}*""
   end
+	def sentinel;[[256,255]];end
 	def ~
-		normalize
-		CharLattice.top
+		return CharLattice.top
+		first=0
+		nary=[]
+		(normalize.ary+sentinel).each{|beg,en|
+			nary<<[first,beg-1] if first<=beg-1
+			first=en+1
+		}
+		CharLattice[*nary]
 	end
 	def normalize
-		ary=ary.sort
+		nary=[]
+		first,last=*ary.sort[0]
+		puts ary.inspect
+		(ary.sort+sentinel).each{|beg,en|
+			if beg<=last+1
+				last=en
+			else
+				nary<<[first,last]
+				first,last=beg,en
+			end
+		}
+		@ary=nary
+		self
 	end
 end
 
@@ -896,15 +915,15 @@ end
 
 
 def detect_switch_compiled_by
-'d3969eed3d82ea584b788d4373043781'
+'cc79203ac7417cdabb52f7d76fd2b034'
 end
 def detect_switch_source_hash
-'6dc9cf56757070cdd78c37cf75e33f86'
+'f076ed4fbb6dd48579f97e807d831ce6'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'aac83101e209edc00d0ce84184390538'
+'cf7955466f831efc3917330f6b4d409f'
 end
   require 'compiled/detect_switch_c'

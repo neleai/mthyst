@@ -10,9 +10,9 @@ return it;
 fail: return failobj; }
 VALUE Tests_sw(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-char chr1=*ame_curstr(self);  switch(chr1){case 'd' ... 'd':;  it=rb_str_new2("d"); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(fail);it=rb_str_new2("d");
- rb_ary_store(bind,0/*_result*/,it);  break;case 'a' ... 'a':; char chr2=*ame_curstr(self);  switch(chr2){case 'a' ... 'a':;  it=rb_str_new2("a"); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(fail);it=rb_str_new2("a"); break;} it=rb_str_new2("c"); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(fail);it=rb_str_new2("c");
- rb_ary_store(bind,0/*_result*/,it);  break;case 'b' ... 'b':; char chr3=*ame_curstr(self);  switch(chr3){case 'b' ... 'b':;  it=rb_str_new2("b"); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(fail);it=rb_str_new2("b"); break;} it=rb_str_new2("c"); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(fail);it=rb_str_new2("c");
+unsigned char chr1=*ame_curstr(self);  switch(chr1){case 'd' ... 'd':;  it=rb_str_new2("d"); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(fail);it=rb_str_new2("d");
+ rb_ary_store(bind,0/*_result*/,it);  break;case 'a' ... 'a':; unsigned char chr2=*ame_curstr(self);  switch(chr2){case 'a' ... 'a':;  it=rb_str_new2("a"); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(fail);it=rb_str_new2("a"); break;} it=rb_str_new2("c"); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(fail);it=rb_str_new2("c");
+ rb_ary_store(bind,0/*_result*/,it);  break;case 'b' ... 'b':; unsigned char chr3=*ame_curstr(self);  switch(chr3){case 'b' ... 'b':;  it=rb_str_new2("b"); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(fail);it=rb_str_new2("b"); break;} it=rb_str_new2("c"); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(fail);it=rb_str_new2("c");
  rb_ary_store(bind,0/*_result*/,it);  break;default:;   it=CALL(fails,0 ); FAILTEST(fail); break;}it=rb_ary_entry(bind,0/*_result*/);
 return it;
 fail: return failobj; }
@@ -21,4 +21,4 @@ void Init_tests_c(){
 failobj=rb_eval_string("FAIL");
 rb_define_method(cls_Tests,"seq",Tests_seq,1);
 rb_define_method(cls_Tests,"sw",Tests_sw,0);
- rb_eval_string("testversiontests('2a97eabd3748a6feb47eedca4bd10d91')");}
+ rb_eval_string("testversiontests('7c0a0e55a4ef6e4fcafa4d88fc7d6003')");}

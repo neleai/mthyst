@@ -19,10 +19,10 @@ def fails_Amethystcb_1(bind)
 (false) || FAIL
 end
 def foo_Amethystcb_1(bind)
-/[g-i]/
+/[^a-c]/
 end
 def foo_Amethystcb_2(bind)
-/[a-c]/
+/[g-i]/
 end
 def listOf_Amethystcb_1(bind)
 _append(bind[3],bind[5])
@@ -53,15 +53,15 @@ end
 
 
 def amethyst_compiled_by
-'d3969eed3d82ea584b788d4373043781'
+'cc79203ac7417cdabb52f7d76fd2b034'
 end
 def amethyst_source_hash
-'bdb4ed7db5e6e513b1da8baab70c687d'
+'daf5b03e7d8303be7a8e0dc85e2bfe6f'
 end
 def testversionamethyst(r)
  raise "invalid version" if r!=amethyst_version
 end
 def amethyst_version
-'2d74b6bbd9f004b95ffdad02d92ddd90'
+'a5724cbb166663d8256e2d6c4cf00861'
 end
   require 'compiled/amethyst_c'
