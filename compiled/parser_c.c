@@ -1120,7 +1120,7 @@ alt12_6: ame_setpos(self,oldpos15);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fa
 ISET(cut,Qnil);goto accept12;
   alt12_7:  ame_setpos(self,oldpos15); goto fail;
  accept12:;
- break;case UC('\'') ... UC('\''):; int oldpos19=ame_getpos(self);
+ break;case '\'' ... '\'':; int oldpos19=ame_getpos(self);
 alt16_1: ame_setpos(self,oldpos19);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
  it=rb_str_new2(")");
  rb_ary_store(bind,4/*c*/,it); it=rb_str_new2("(");
@@ -1636,4 +1636,4 @@ rb_define_method(cls_AmethystParser,"spaces",AmethystParser_spaces,0);
 rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
 rb_define_method(cls_AmethystParser,"token",AmethystParser_token,1);
 rb_define_method(cls_AmethystParser,"upper",AmethystParser_upper,0);
- rb_eval_string("testversionparser('872c913c8ac9ceb330153a9e0e38a1d8')");}
+ rb_eval_string("testversionparser('6ba51de6f82178de903bc6204ab2de6f')");}

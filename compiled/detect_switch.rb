@@ -65,6 +65,7 @@ class FirstLattice
 		ary.map{|c| c=="default" ? "default:;" : "case #{c}:;"}*""
 	end
 end
+
 class CharLattice < FirstLattice
 	def self.[](*ary)
 		c=CharLattice.new
@@ -76,10 +77,10 @@ class CharLattice < FirstLattice
 	end
 	def cchar(c)
 		return "'\\''" if c==?'
-		"'#{c.chr.inspect[1...-1]}'"
+		"UC('#{c.chr.inspect[1...-1]}')"
 	end
   def cases(first)
-    ary.map{|c| c=="default" ? "default:;" : "case UC(#{cchar(c[0])}) ... UC(#{cchar(c[1])}):;"}*""
+    ary.map{|c| c=="default" ? "default:;" : "case #{cchar(c[0])} ... #{cchar(c[1])}:;"}*""
   end
 	def sentinel;[[256,255]];end
 	def ~
@@ -633,6 +634,9 @@ class Detect_Switch < Detect_First
 		if !@switchdf
 			@switchdf=Switch_Dataflow.new
 			@switchdf.parse(:root,[])
+			@sizedf=Sizes_Dataflow.new
+			@sizedf.parse(:root,[])
+
 		end
 		r=@switchdf.analyze(s)
 		return r
@@ -1087,7 +1091,7 @@ def detect_switch_compiled_by
 'c1b6ff450dbf6eac1c21fc44f55d359b'
 end
 def detect_switch_source_hash
-'cd52e3409bff1caa2d87f3bb8cc09931'
+'f7e157fa4b12384ce1bed36211f9974b'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
