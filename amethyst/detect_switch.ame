@@ -215,14 +215,17 @@ amethyst First_Dataflow {
 }  			
 
 amethyst Sizes_Dataflow < First_Dataflow {
-	first= Apply[ ["_seq"] CAct[.:str] {lattice[eval(str).size]} ]
-			 | super
+	first = Apply[( ["_seq"] CAct[.:str] {lattice[eval(str).size]} 
+								| ["regch" | "clas" | "anything"] {lattice[1]}
+								)]
+			  | super
 }
 
 amethyst Switch_Dataflow < First_Dataflow{
-	first = Apply[ ["_seq"  ] CAct[.:str] {firstchar(str)}]
-				| Apply[ ["regch" ] Act[.:str]  {regchar(str)}]
-				| Apply[ ["anything" ] {lattice.top}]
+	first = Apply[( ["_seq"  ] CAct[.:str] {firstchar(str)}
+								| ["regch" ] Act[.:str]  {regchar(str)}
+								| ["anything" ] {lattice.top}
+							  )]
 				| super
 
 	getvalue(v) = {@@vis=v; v}=>first
@@ -319,6 +322,8 @@ amethyst Detect_Switch < Detect_First {
     &{ary3.size>1}
 		{Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>ary3}]}
 	]
+	
+	split(p) = {p}=>(Apply[ ["_seq"] .* ])
 
 	predicate(chr,p) = &{chr=="default"} {p}
 										| &{!intersects(first(p).ary,chr)} {Placeholder}

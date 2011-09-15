@@ -52,6 +52,7 @@ detect_switch char intervals
 negation in switch
 defer alternatives of classwitch to ctranslator2
 merge identical options of detect_switch in normalize
+predication by splitting to predicated and notpredicated part
 
 operator for case insensivity
 

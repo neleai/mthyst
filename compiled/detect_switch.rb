@@ -274,8 +274,17 @@ end
   			
 
 class Sizes_Dataflow < First_Dataflow
-def self.switchcb_Sizes_Dataflow3(e)
+def self.switchcb_Sizes_Dataflow4(e)
 return 0 if e<=Apply
+return 1 if e<=Object
+return 2
+end
+@@switchhashSizes_Dataflow4=Hash.new{|h,k| h[k]=switchcb_Sizes_Dataflow4(k)}
+def switchcbSizes_Dataflow4(e)
+@@switchhashSizes_Dataflow4[e.class]
+end
+def self.switchcb_Sizes_Dataflow3(e)
+return 0 if e<=CAct
 return 1 if e<=Object
 return 2
 end
@@ -283,7 +292,7 @@ end
 def switchcbSizes_Dataflow3(e)
 @@switchhashSizes_Dataflow3[e.class]
 end
-def self.switchcb_Sizes_Dataflow5(e)
+def self.switchcb_Sizes_Dataflow6(e)
 return 0 if e<=Switch
 return 1 if e<=Seq
 return 2 if e<=Many
@@ -294,19 +303,19 @@ return 6 if e<=CAct
 return 7 if e<=Object
 return 8
 end
-@@switchhashSizes_Dataflow5=Hash.new{|h,k| h[k]=switchcb_Sizes_Dataflow5(k)}
-def switchcbSizes_Dataflow5(e)
-@@switchhashSizes_Dataflow5[e.class]
+@@switchhashSizes_Dataflow6=Hash.new{|h,k| h[k]=switchcb_Sizes_Dataflow6(k)}
+def switchcbSizes_Dataflow6(e)
+@@switchhashSizes_Dataflow6[e.class]
 end
-def self.switchcb_Sizes_Dataflow4(e)
+def self.switchcb_Sizes_Dataflow5(e)
 return 0 if e<=Act
 return 1 if e<=CAct
 return 2 if e<=Object
 return 3
 end
-@@switchhashSizes_Dataflow4=Hash.new{|h,k| h[k]=switchcb_Sizes_Dataflow4(k)}
-def switchcbSizes_Dataflow4(e)
-@@switchhashSizes_Dataflow4[e.class]
+@@switchhashSizes_Dataflow5=Hash.new{|h,k| h[k]=switchcb_Sizes_Dataflow5(k)}
+def switchcbSizes_Dataflow5(e)
+@@switchhashSizes_Dataflow5[e.class]
 end
 def clas_Sizes_Dataflowcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -354,7 +363,10 @@ def first_Sizes_Dataflowcb_1(bind)
 CAct
 end
 def first_Sizes_Dataflowcb_2(bind)
-lattice[eval(bind[3]).size]
+lattice[eval(bind[5]).size]
+end
+def first_Sizes_Dataflowcb_3(bind)
+lattice[1]
 end
 def regch_Sizes_Dataflowcb_1(bind)
 (bind[0].is_a? String ) || FAIL
@@ -373,7 +385,7 @@ end
 
 
 class Switch_Dataflow < First_Dataflow
-def self.switchcb_Switch_Dataflow7(e)
+def self.switchcb_Switch_Dataflow8(e)
 return 0 if e<=Switch
 return 1 if e<=Seq
 return 2 if e<=Many
@@ -384,28 +396,38 @@ return 6 if e<=CAct
 return 7 if e<=Object
 return 8
 end
-@@switchhashSwitch_Dataflow7=Hash.new{|h,k| h[k]=switchcb_Switch_Dataflow7(k)}
-def switchcbSwitch_Dataflow7(e)
-@@switchhashSwitch_Dataflow7[e.class]
+@@switchhashSwitch_Dataflow8=Hash.new{|h,k| h[k]=switchcb_Switch_Dataflow8(k)}
+def switchcbSwitch_Dataflow8(e)
+@@switchhashSwitch_Dataflow8[e.class]
 end
-def self.switchcb_Switch_Dataflow6(e)
+def self.switchcb_Switch_Dataflow7(e)
 return 0 if e<=Act
 return 1 if e<=CAct
 return 2 if e<=Object
 return 3
 end
-@@switchhashSwitch_Dataflow6=Hash.new{|h,k| h[k]=switchcb_Switch_Dataflow6(k)}
-def switchcbSwitch_Dataflow6(e)
-@@switchhashSwitch_Dataflow6[e.class]
+@@switchhashSwitch_Dataflow7=Hash.new{|h,k| h[k]=switchcb_Switch_Dataflow7(k)}
+def switchcbSwitch_Dataflow7(e)
+@@switchhashSwitch_Dataflow7[e.class]
 end
-def self.switchcb_Switch_Dataflow8(e)
+def self.switchcb_Switch_Dataflow10(e)
 return 0 if e<=Apply
 return 1 if e<=Object
 return 2
 end
-@@switchhashSwitch_Dataflow8=Hash.new{|h,k| h[k]=switchcb_Switch_Dataflow8(k)}
-def switchcbSwitch_Dataflow8(e)
-@@switchhashSwitch_Dataflow8[e.class]
+@@switchhashSwitch_Dataflow10=Hash.new{|h,k| h[k]=switchcb_Switch_Dataflow10(k)}
+def switchcbSwitch_Dataflow10(e)
+@@switchhashSwitch_Dataflow10[e.class]
+end
+def self.switchcb_Switch_Dataflow9(e)
+return 0 if e<=CAct
+return 1 if e<=Act
+return 2 if e<=Object
+return 3
+end
+@@switchhashSwitch_Dataflow9=Hash.new{|h,k| h[k]=switchcb_Switch_Dataflow9(k)}
+def switchcbSwitch_Dataflow9(e)
+@@switchhashSwitch_Dataflow9[e.class]
 end
 def clas_Switch_Dataflowcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -453,13 +475,13 @@ def first_Switch_Dataflowcb_1(bind)
 CAct
 end
 def first_Switch_Dataflowcb_2(bind)
-firstchar(bind[3])
+firstchar(bind[5])
 end
 def first_Switch_Dataflowcb_3(bind)
 Act
 end
 def first_Switch_Dataflowcb_4(bind)
-regchar(bind[3])
+regchar(bind[5])
 end
 def first_Switch_Dataflowcb_5(bind)
 lattice.top
@@ -487,7 +509,7 @@ end
 
 
 class ClasSwitch_Dataflow < First_Dataflow
-def self.switchcb_ClasSwitch_Dataflow10(e)
+def self.switchcb_ClasSwitch_Dataflow12(e)
 return 0 if e<=Switch
 return 1 if e<=Seq
 return 2 if e<=Many
@@ -498,28 +520,28 @@ return 6 if e<=CAct
 return 7 if e<=Object
 return 8
 end
-@@switchhashClasSwitch_Dataflow10=Hash.new{|h,k| h[k]=switchcb_ClasSwitch_Dataflow10(k)}
-def switchcbClasSwitch_Dataflow10(e)
-@@switchhashClasSwitch_Dataflow10[e.class]
+@@switchhashClasSwitch_Dataflow12=Hash.new{|h,k| h[k]=switchcb_ClasSwitch_Dataflow12(k)}
+def switchcbClasSwitch_Dataflow12(e)
+@@switchhashClasSwitch_Dataflow12[e.class]
 end
-def self.switchcb_ClasSwitch_Dataflow9(e)
+def self.switchcb_ClasSwitch_Dataflow11(e)
 return 0 if e<=Act
 return 1 if e<=CAct
 return 2 if e<=Object
 return 3
 end
-@@switchhashClasSwitch_Dataflow9=Hash.new{|h,k| h[k]=switchcb_ClasSwitch_Dataflow9(k)}
-def switchcbClasSwitch_Dataflow9(e)
-@@switchhashClasSwitch_Dataflow9[e.class]
+@@switchhashClasSwitch_Dataflow11=Hash.new{|h,k| h[k]=switchcb_ClasSwitch_Dataflow11(k)}
+def switchcbClasSwitch_Dataflow11(e)
+@@switchhashClasSwitch_Dataflow11[e.class]
 end
-def self.switchcb_ClasSwitch_Dataflow11(e)
+def self.switchcb_ClasSwitch_Dataflow13(e)
 return 0 if e<=Apply
 return 1 if e<=Object
 return 2
 end
-@@switchhashClasSwitch_Dataflow11=Hash.new{|h,k| h[k]=switchcb_ClasSwitch_Dataflow11(k)}
-def switchcbClasSwitch_Dataflow11(e)
-@@switchhashClasSwitch_Dataflow11[e.class]
+@@switchhashClasSwitch_Dataflow13=Hash.new{|h,k| h[k]=switchcb_ClasSwitch_Dataflow13(k)}
+def switchcbClasSwitch_Dataflow13(e)
+@@switchhashClasSwitch_Dataflow13[e.class]
 end
 def clas_ClasSwitch_Dataflowcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -664,24 +686,24 @@ class Detect_ClasSwitch < Detect_First
 end
 
 class Detect_First < Traverser_Clone2
-def self.switchcb_Detect_First12(e)
+def self.switchcb_Detect_First14(e)
 return 0 if e<=Grammar
 return 1 if e<=Object
 return 2
 end
-@@switchhashDetect_First12=Hash.new{|h,k| h[k]=switchcb_Detect_First12(k)}
-def switchcbDetect_First12(e)
-@@switchhashDetect_First12[e.class]
+@@switchhashDetect_First14=Hash.new{|h,k| h[k]=switchcb_Detect_First14(k)}
+def switchcbDetect_First14(e)
+@@switchhashDetect_First14[e.class]
 end
-def self.switchcb_Detect_First13(e)
+def self.switchcb_Detect_First15(e)
 return 0 if e<=Array
 return 1 if e<=AmethystAST
 return 2 if e<=Object
 return 3
 end
-@@switchhashDetect_First13=Hash.new{|h,k| h[k]=switchcb_Detect_First13(k)}
-def switchcbDetect_First13(e)
-@@switchhashDetect_First13[e.class]
+@@switchhashDetect_First15=Hash.new{|h,k| h[k]=switchcb_Detect_First15(k)}
+def switchcbDetect_First15(e)
+@@switchhashDetect_First15[e.class]
 end
 def clas_Detect_Firstcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -750,26 +772,26 @@ end
 
 
 class Detect_Switch < Detect_First
-def self.switchcb_Detect_Switch15(e)
+def self.switchcb_Detect_Switch17(e)
 return 0 if e<=Seq
 return 1 if e<=Or
 return 2 if e<=Switch
 return 3 if e<=Object
 return 4
 end
-@@switchhashDetect_Switch15=Hash.new{|h,k| h[k]=switchcb_Detect_Switch15(k)}
-def switchcbDetect_Switch15(e)
-@@switchhashDetect_Switch15[e.class]
+@@switchhashDetect_Switch17=Hash.new{|h,k| h[k]=switchcb_Detect_Switch17(k)}
+def switchcbDetect_Switch17(e)
+@@switchhashDetect_Switch17[e.class]
 end
-def self.switchcb_Detect_Switch16(e)
+def self.switchcb_Detect_Switch18(e)
 return 0 if e<=Array
 return 1 if e<=AmethystAST
 return 2 if e<=Object
 return 3
 end
-@@switchhashDetect_Switch16=Hash.new{|h,k| h[k]=switchcb_Detect_Switch16(k)}
-def switchcbDetect_Switch16(e)
-@@switchhashDetect_Switch16[e.class]
+@@switchhashDetect_Switch18=Hash.new{|h,k| h[k]=switchcb_Detect_Switch18(k)}
+def switchcbDetect_Switch18(e)
+@@switchhashDetect_Switch18[e.class]
 end
 def clas_Detect_Switchcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -807,6 +829,27 @@ nary=bind[1].ary
                                  nary=nary.map{|o,v| [o,predicate(bind[0],v)]}.select{|o,v| v!=Placeholder}
                                  Switch[{:act=>bind[1].act,:first=>bind[1].first,:defs=>bind[1].defs,:ary=>nary}]
                               
+end
+def regch_Detect_Switchcb_1(bind)
+(bind[0].is_a? String ) || FAIL
+end
+def regch_Detect_Switchcb_2(bind)
+(bind[3].match(bind[2])) || FAIL
+end
+def spaces_Detect_Switchcb_1(bind)
+/[\s\t\r\n\f]/
+end
+def spaces_Detect_Switchcb_2(bind)
+_append(bind[0],bind[2])
+end
+def split_Detect_Switchcb_1(bind)
+bind[1]=[bind[1]]
+end
+def split_Detect_Switchcb_2(bind)
+Apply
+end
+def split_Detect_Switchcb_3(bind)
+_append(bind[4],bind[5])
 end
 def traverse_Detect_Switchcb_1(bind)
 @changed
@@ -892,7 +935,7 @@ end
 
 
 class Detect_ClasSwitch < Detect_First
-def self.switchcb_Detect_ClasSwitch18(e)
+def self.switchcb_Detect_ClasSwitch20(e)
 return 0 if e<=Seq
 return 1 if e<=Or
 return 2 if e<=Apply
@@ -900,19 +943,19 @@ return 3 if e<=Bind
 return 4 if e<=Object
 return 5
 end
-@@switchhashDetect_ClasSwitch18=Hash.new{|h,k| h[k]=switchcb_Detect_ClasSwitch18(k)}
-def switchcbDetect_ClasSwitch18(e)
-@@switchhashDetect_ClasSwitch18[e.class]
+@@switchhashDetect_ClasSwitch20=Hash.new{|h,k| h[k]=switchcb_Detect_ClasSwitch20(k)}
+def switchcbDetect_ClasSwitch20(e)
+@@switchhashDetect_ClasSwitch20[e.class]
 end
-def self.switchcb_Detect_ClasSwitch19(e)
+def self.switchcb_Detect_ClasSwitch21(e)
 return 0 if e<=Array
 return 1 if e<=AmethystAST
 return 2 if e<=Object
 return 3
 end
-@@switchhashDetect_ClasSwitch19=Hash.new{|h,k| h[k]=switchcb_Detect_ClasSwitch19(k)}
-def switchcbDetect_ClasSwitch19(e)
-@@switchhashDetect_ClasSwitch19[e.class]
+@@switchhashDetect_ClasSwitch21=Hash.new{|h,k| h[k]=switchcb_Detect_ClasSwitch21(k)}
+def switchcbDetect_ClasSwitch21(e)
+@@switchhashDetect_ClasSwitch21[e.class]
 end
 def clas_Detect_ClasSwitchcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -1041,15 +1084,15 @@ end
 
 
 def detect_switch_compiled_by
-'415c1bf26d6bc9030819007cb30c14d1'
+'a4aa17eae97f5d9e9c245ff6a8a12317'
 end
 def detect_switch_source_hash
-'7607ca521ae665d45c182038d1dba8fe'
+'ebd8bba348256f39ab4845314612eed7'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'d1b7bb11c6bd024405a3711a59c2db91'
+'af1fdf2511fc515ef772964551963752'
 end
   require 'compiled/detect_switch_c'
