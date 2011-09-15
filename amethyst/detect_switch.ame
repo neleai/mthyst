@@ -263,8 +263,8 @@ class Detect_Switch < Detect_First
 		r
 	end
 	def intersects(ar,el)
-		return true if ar & [Empty,Anything] != []
-		return ar & [el] !=[]
+		return true if (ar & CharLattice[Empty,Anything]).ary != []
+		return (ar & el).ary !=[]
 	end
 end
 
@@ -325,7 +325,7 @@ amethyst Detect_Switch < Detect_First {
 		{Or[*els]}:new_or
 		&{new_or.is_a?(Or)}
 		{ary2.each{|e|
-			ary3<<[e,predicate(e,new_or)]
+			ary3<<[e,predicate(CharLattice[e],new_or)]
 		}}
 		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.sort_by{|e| e.inspect},v[0][1]]}.sort_by{|e| e.inspect}}
 		{ary3<<[["default"],Apply["fails"]] unless ary2.include?("default")}
@@ -336,14 +336,17 @@ amethyst Detect_Switch < Detect_First {
 	
 	split(p) = {p}=>(Apply[ ["_seq"] .* ])
 
-	predicate(chr,p) = &{chr=="default"} {p}
-										| &{!intersects(first(p).ary,chr)} {Placeholder}
+	predicate(chr,p) = &{chr.ary[0]=="default"} {p}
+										| &{!intersects(first(p),chr)} {Placeholder}
                     |  {p}=>( Seq[ .:e predicate(chr,e):f .*:rest {Seq[*([f]+rest)]} ]
 														| Or[ (.:e predicate(chr,e))*:ary {Or[*ary]} ]
 														| Switch[.*{
 																 nary=p.ary
-                                 nary=nary.select{|o,v| intersects(o.ary,chr)} if p.first.is_a?(CharLattice)
+																 puts nary.inspect
+                                 nary=nary.select{|o,v| intersects(o,chr)} if p.first.is_a?(CharLattice)
+																	puts nary.inspect
                                  nary=nary.map{|o,v| [o,predicate(chr,v)]}.select{|o,v| v!=Placeholder}
+																	puts nary.inspect
                                  Switch[{:act=>p.act,:first=>p.first,:defs=>p.defs,:ary=>nary}]
                               }]
 														| . 

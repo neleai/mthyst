@@ -653,8 +653,8 @@ class Detect_Switch < Detect_First
 		r
 	end
 	def intersects(ar,el)
-		return true if ar & [Empty,Anything] != []
-		return ar & [el] !=[]
+		return true if (ar & CharLattice[Empty,Anything]).ary != []
+		return (ar & el).ary !=[]
 	end
 end
 
@@ -815,10 +815,10 @@ def fails_Detect_Switchcb_1(bind)
 (false) || FAIL
 end
 def predicate_Detect_Switchcb_1(bind)
-(bind[0]=="default") || FAIL
+(bind[0].ary[0]=="default") || FAIL
 end
 def predicate_Detect_Switchcb_2(bind)
-(!intersects(first(bind[1]).ary,bind[0])) || FAIL
+(!intersects(first(bind[1]),bind[0])) || FAIL
 end
 def predicate_Detect_Switchcb_3(bind)
 Placeholder
@@ -840,8 +840,11 @@ Or[*bind[15]]
 end
 def predicate_Detect_Switchcb_9(bind)
 nary=bind[1].ary
-                                 nary=nary.select{|o,v| intersects(o.ary,bind[0])} if bind[1].first.is_a?(CharLattice)
+																 puts nary.inspect
+                                 nary=nary.select{|o,v| intersects(o,bind[0])} if bind[1].first.is_a?(CharLattice)
+																	puts nary.inspect
                                  nary=nary.map{|o,v| [o,predicate(bind[0],v)]}.select{|o,v| v!=Placeholder}
+																	puts nary.inspect
                                  Switch[{:act=>bind[1].act,:first=>bind[1].first,:defs=>bind[1].defs,:ary=>nary}]
                               
 end
@@ -903,7 +906,7 @@ Or
 end
 def visit_Detect_Switchcb_10(bind)
 bind[1].each{|bind[4]|
-			bind[2]<<[bind[4],predicate(bind[4],bind[7])]
+			bind[2]<<[bind[4],predicate(CharLattice[bind[4]],bind[7])]
 		}
 end
 def visit_Detect_Switchcb_11(bind)
@@ -1099,10 +1102,10 @@ end
 
 
 def detect_switch_compiled_by
-'783275e26ca39b075354c9a1ac768433'
+'8f37d6da8242105416e982e4ce8780bc'
 end
 def detect_switch_source_hash
-'0e1399e5965cd971bf7ffb5dc57c9983'
+'e2dc9ee73402344255e42b1c580fd8d6'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
