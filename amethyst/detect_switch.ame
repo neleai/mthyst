@@ -124,7 +124,7 @@ end
 class First_Dataflow < Amethyst
 	def initialize
     @depend=Oriented_Graph.new
-    @vals=Hash.new(CharLattice.bottom)
+    @vals=Hash.new(lattice.bottom)
 		@visited={}
   end
 
@@ -220,6 +220,8 @@ amethyst Sizes_Dataflow < First_Dataflow {
 								| ["regch" | "clas" | "anything"] {lattice[1]}
 								)]
 			  | super
+
+	getvalue(v) = {@@vis=v; v}=>first
 }
 
 amethyst Switch_Dataflow < First_Dataflow{
@@ -244,16 +246,21 @@ class Detect_First< Traverser_Clone2
 end
 
 class Detect_Switch < Detect_First
+	def empty?(s)	
+		if !@sizedf
+			@sizedf=Sizes_Dataflow.new
+			@sizedf.parse(:root,[])
+		end
+		@sizedf.analyze(s)==0
+	end
 	def first(s)
 		if !@switchdf
 			@switchdf=Switch_Dataflow.new
 			@switchdf.parse(:root,[])
-			@sizedf=Sizes_Dataflow.new
-			@sizedf.parse(:root,[])
-
 		end
 		r=@switchdf.analyze(s)
-		return r
+		r+= CharLattice.empty if empty?(s)
+		r
 	end
 	def intersects(ar,el)
 		return true if ar & [Empty,Anything] != []

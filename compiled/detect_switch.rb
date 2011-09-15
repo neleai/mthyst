@@ -76,7 +76,7 @@ class CharLattice < FirstLattice
 		CharLattice[Anything]
 	end
 	def cchar(c)
-		return "'\\''" if c==?'
+		return "UC('\\'')" if c==?'
 		"UC('#{c.chr.inspect[1...-1]}')"
 	end
   def cases(first)
@@ -124,7 +124,7 @@ end
 class First_Dataflow < Amethyst
 	def initialize
     @depend=Oriented_Graph.new
-    @vals=Hash.new(CharLattice.bottom)
+    @vals=Hash.new(lattice.bottom)
 		@visited={}
   end
 
@@ -368,6 +368,12 @@ lattice[bind[5].size]
 end
 def first_Sizes_Dataflowcb_3(bind)
 lattice[1]
+end
+def getvalue_Sizes_Dataflowcb_1(bind)
+@vis=bind[0]; bind[0]
+end
+def getvalue_Sizes_Dataflowcb_2(bind)
+bind[1]=[bind[1]]
 end
 def regch_Sizes_Dataflowcb_1(bind)
 (bind[0].is_a? String ) || FAIL
@@ -630,16 +636,21 @@ class Detect_First< Traverser_Clone2
 end
 
 class Detect_Switch < Detect_First
+	def empty?(s)	
+		if !@sizedf
+			@sizedf=Sizes_Dataflow.new
+			@sizedf.parse(:root,[])
+		end
+		@sizedf.analyze(s)==0
+	end
 	def first(s)
 		if !@switchdf
 			@switchdf=Switch_Dataflow.new
 			@switchdf.parse(:root,[])
-			@sizedf=Sizes_Dataflow.new
-			@sizedf.parse(:root,[])
-
 		end
 		r=@switchdf.analyze(s)
-		return r
+		r+= CharLattice.empty if empty?(s)
+		r
 	end
 	def intersects(ar,el)
 		return true if ar & [Empty,Anything] != []
@@ -1088,15 +1099,15 @@ end
 
 
 def detect_switch_compiled_by
-'c1b6ff450dbf6eac1c21fc44f55d359b'
+'783275e26ca39b075354c9a1ac768433'
 end
 def detect_switch_source_hash
-'f7e157fa4b12384ce1bed36211f9974b'
+'0e1399e5965cd971bf7ffb5dc57c9983'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'af1fdf2511fc515ef772964551963752'
+'b6f5249b3eb804d9aa7ae21c52222d78'
 end
   require 'compiled/detect_switch_c'

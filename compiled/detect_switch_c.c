@@ -219,6 +219,7 @@ VALUE Sizes_Dataflow_eof(VALUE self );
 VALUE Sizes_Dataflow_fails(VALUE self );
 VALUE Sizes_Dataflow_first(VALUE self );
 VALUE Sizes_Dataflow_first_Sizes_Dataflow(VALUE self );
+VALUE Sizes_Dataflow_getvalue(VALUE self ,VALUE a0);
 VALUE Sizes_Dataflow_regch(VALUE self ,VALUE a0);
 VALUE Sizes_Dataflow_spaces(VALUE self );
 VALUE Sizes_Dataflow_token(VALUE self ,VALUE a0);
@@ -511,6 +512,21 @@ ISET(cut,Qnil);goto accept6;
   alt6_3:  ame_setpos(self,oldpos17); goto fail;
  accept6:;
  break;}it=rb_ary_entry(bind,2/*_result*/);
+return it;
+fail: return failobj; }
+VALUE Sizes_Dataflow_getvalue(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=rb_ary_new2(4); rb_ary_store(bind,0/*v*/,a0); int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+
+it=CALL(getvalue_Sizes_Dataflowcb_1,1,bind); 
+ rb_ary_store(bind,1/*autovar*/,it); it=CALL(getvalue_Sizes_Dataflowcb_2,1,bind); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
+ame_setsrc(self,rb_ary_entry(bind,1/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
+   it=Sizes_Dataflow_first(self ); FAILTEST(pass1);
+ rb_ary_store(bind,2/*autovar*/,it);   it=Sizes_Dataflow_eof(self ); FAILTEST(pass1);
+	goto success1;
+	pass1: fail1=1;
+	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos1); ame_setlen(self,oldlen1);
+	if(fail1) goto fail;
+it=rb_ary_entry(bind,2/*autovar*/);
+ rb_ary_store(bind,3/*_result*/,it); it=rb_ary_entry(bind,3/*_result*/);
 return it;
 fail: return failobj; }
 VALUE Sizes_Dataflow_regch(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=rb_ary_new2(5); rb_ary_store(bind,3/*regex*/,a0); int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -2157,6 +2173,7 @@ rb_define_method(cls_Sizes_Dataflow,"eof",Sizes_Dataflow_eof,0);
 rb_define_method(cls_Sizes_Dataflow,"fails",Sizes_Dataflow_fails,0);
 rb_define_method(cls_Sizes_Dataflow,"first",Sizes_Dataflow_first,0);
 rb_define_method(cls_Sizes_Dataflow,"first_Sizes_Dataflow",Sizes_Dataflow_first_Sizes_Dataflow,0);
+rb_define_method(cls_Sizes_Dataflow,"getvalue",Sizes_Dataflow_getvalue,1);
 rb_define_method(cls_Sizes_Dataflow,"regch",Sizes_Dataflow_regch,1);
 rb_define_method(cls_Sizes_Dataflow,"spaces",Sizes_Dataflow_spaces,0);
 rb_define_method(cls_Sizes_Dataflow,"token",Sizes_Dataflow_token,1);
@@ -2224,4 +2241,4 @@ rb_define_method(cls_Detect_ClasSwitch,"predicate",Detect_ClasSwitch_predicate,3
 rb_define_method(cls_Detect_ClasSwitch,"traverse",Detect_ClasSwitch_traverse,0);
 rb_define_method(cls_Detect_ClasSwitch,"traverse_item",Detect_ClasSwitch_traverse_item,0);
 rb_define_method(cls_Detect_ClasSwitch,"visit",Detect_ClasSwitch_visit,0);
- rb_eval_string("testversiondetect_switch('af1fdf2511fc515ef772964551963752')");}
+ rb_eval_string("testversiondetect_switch('b6f5249b3eb804d9aa7ae21c52222d78')");}
