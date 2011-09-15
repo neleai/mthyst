@@ -228,31 +228,34 @@ def rubyarg_AmethystParsercb_1(bind)
 Exp[_body(bind[2])]
 end
 def rubyarg_AmethystParsercb_10(bind)
+_append(bind[1],bind[16])
+end
+def rubyarg_AmethystParsercb_11(bind)
 /[^`{}()'"\[\]]/
 end
 def rubyarg_AmethystParsercb_2(bind)
-_append(bind[9],bind[10])
+_append(bind[0],bind[8])
 end
 def rubyarg_AmethystParsercb_3(bind)
-_append(bind[0],bind[11])
+_append(bind[9],bind[10])
 end
 def rubyarg_AmethystParsercb_4(bind)
-Strin[connectstring(bind[0])]
+_append(bind[0],bind[11])
 end
 def rubyarg_AmethystParsercb_5(bind)
-_append(bind[0],bind[12])
+Strin[connectstring(bind[0])]
 end
 def rubyarg_AmethystParsercb_6(bind)
-_append(bind[13],bind[14])
+_append(bind[0],bind[12])
 end
 def rubyarg_AmethystParsercb_7(bind)
-_append(bind[0],bind[15])
+_append(bind[13],bind[14])
 end
 def rubyarg_AmethystParsercb_8(bind)
-/[$.:]/
+_append(bind[0],bind[15])
 end
 def rubyarg_AmethystParsercb_9(bind)
-_append(bind[1],bind[16])
+/[$.:]/
 end
 def rule_AmethystParsercb_1(bind)
 @locals=[];$appends=[];@bnding=Bnding[]
@@ -312,7 +315,7 @@ def term_AmethystParsercb_6(bind)
 Apply["token" ,quote(bind[0])]
 end
 def term_AmethystParsercb_7(bind)
-_append(bind[0],bind[8])
+_append(bind[0],bind[7])
 end
 def term_AmethystParsercb_8(bind)
 Apply["seq"   ,quote(bind[0])]
@@ -328,7 +331,7 @@ end
 
 
 def parser_compiled_by
-'a4aa17eae97f5d9e9c245ff6a8a12317'
+'c1b6ff450dbf6eac1c21fc44f55d359b'
 end
 def parser_source_hash
 'd1f9e8937adb72c1bb0d0e1f84feabb9'
@@ -337,6 +340,6 @@ def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'c312838c23662bf4732a1122d62c5cd2'
+'872c913c8ac9ceb330153a9e0e38a1d8'
 end
   require 'compiled/parser_c'

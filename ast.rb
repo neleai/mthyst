@@ -202,7 +202,7 @@ class CAct
 		return "Q#{ary[0].inspect}" if [true,false,nil].include?(ary[0])
 		#ugly but needed for arbitrary precision(alternatively emit int2fix when fits fixnum range)
 		return "rb_funcall(rb_str_new2(\"#{ary[0]}\"),rb_intern(\"to_i\"),0)" if ary[0].is_a? Integer
-		return "rb_str_new2(\"#{ary[0]}\")" if ary[0].is_a?(String)
+		return "rb_str_new2(#{ary[0].inspect})" if ary[0].is_a?(String)
 		ary[0]
 	end
 end
@@ -229,7 +229,7 @@ class Act
 			return CAct[[]] if exp=="[]"
 			return CAct[eval(exp)] if ["true","false","nil"].include?(exp)
 			return CAct[exp.to_i] if exp.is_a?(String) && exp==exp.to_i.to_s
-			return CAct[exp[1...-1]] if exp.is_a?(String) && ((exp[0]==?\" && exp[-1]==?\")|| (exp[0]==?' && exp[-1]==?')) && !(exp=~/\#/)
+			return CAct[eval('"'+exp[1...-1]+'"')] if exp.is_a?(String) && ((exp[0]==?\" && exp[-1]==?\")|| (exp[0]==?' && exp[-1]==?')) && !(exp=~/\#/)
 		end
 		@pure=true if exp.is_a?(Exp)
 		@ary=nil if @ary.size==0

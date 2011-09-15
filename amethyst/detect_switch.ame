@@ -164,7 +164,7 @@ end
 class Switch_Dataflow < First_Dataflow
   def firstchar(s)
 	  return lattice.empty if s==""
-    s=eval('"'+s+'"')[0]
+    s=s[0]
 		lattice[[s,s]]
   end
 	def regchar(s)
@@ -215,7 +215,7 @@ amethyst First_Dataflow {
 }  			
 
 amethyst Sizes_Dataflow < First_Dataflow {
-	first = Apply[( ["_seq"] CAct[.:str] {lattice[eval(str).size]} 
+	first = Apply[( ["_seq"] CAct[.:str] {lattice[str.size]} 
 								| ["regch" | "clas" | "anything"] {lattice[1]}
 								)]
 			  | super
