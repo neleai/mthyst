@@ -59,7 +59,11 @@ class CharLattice < FirstLattice
     ary.map{|c| c=="default" ? "default:;" : "case #{cchar(c[0])} ... #{cchar(c[1])}:;"}*""
   end
 	def ~
+		normalize
 		CharLattice.top
+	end
+	def normalize
+		ary=ary.sort
 	end
 end
 

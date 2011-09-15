@@ -59,7 +59,11 @@ class CharLattice < FirstLattice
     ary.map{|c| c=="default" ? "default:;" : "case #{cchar(c[0])} ... #{cchar(c[1])}:;"}*""
   end
 	def ~
+		normalize
 		CharLattice.top
+	end
+	def normalize
+		ary=ary.sort
 	end
 end
 
@@ -895,7 +899,7 @@ def detect_switch_compiled_by
 'd3969eed3d82ea584b788d4373043781'
 end
 def detect_switch_source_hash
-'531bd1be15b4331548429320dcf13571'
+'6dc9cf56757070cdd78c37cf75e33f86'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
