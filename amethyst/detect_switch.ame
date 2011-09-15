@@ -58,7 +58,9 @@ class CharLattice < FirstLattice
   def cases(first)
     ary.map{|c| c=="default" ? "default:;" : "case #{cchar(c[0])} ... #{cchar(c[1])}:;"}*""
   end
-
+	def ~
+		CharLattice.top
+	end
 end
 
 class ClasLattice < FirstLattice
@@ -116,7 +118,7 @@ class Switch_Dataflow < First_Dataflow
 		lattice[[s,s]]
   end
 	def regchar(s)
-		return lattice.top if s[2]==?^ #TODO negation
+		return ~regchar("/["+s[3...-2]+"]/") if s[2]==?^ 
 		chars=[]
 		s=s[2...-2]
 		i=0

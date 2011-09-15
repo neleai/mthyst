@@ -58,7 +58,9 @@ class CharLattice < FirstLattice
   def cases(first)
     ary.map{|c| c=="default" ? "default:;" : "case #{cchar(c[0])} ... #{cchar(c[1])}:;"}*""
   end
-
+	def ~
+		CharLattice.top
+	end
 end
 
 class ClasLattice < FirstLattice
@@ -116,7 +118,7 @@ class Switch_Dataflow < First_Dataflow
 		lattice[[s,s]]
   end
 	def regchar(s)
-		return lattice.top if s[2]==?^ #TODO negation
+		return ~regchar("/["+s[3...-2]+"]/") if s[2]==?^ 
 		chars=[]
 		s=s[2...-2]
 		i=0
@@ -890,10 +892,10 @@ end
 
 
 def detect_switch_compiled_by
-'4006431f3892998bd13dbde48287edd1'
+'d3969eed3d82ea584b788d4373043781'
 end
 def detect_switch_source_hash
-'413777854c02fb1ef42914f22fab5527'
+'531bd1be15b4331548429320dcf13571'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
