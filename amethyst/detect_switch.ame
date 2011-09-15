@@ -82,30 +82,43 @@ class CharLattice < FirstLattice
   def cases(first)
     ary.map{|c| c=="default" ? "default:;" : "case #{cchar(c[0])} ... #{cchar(c[1])}:;"}*""
   end
-	def sentinel;[[256,255]];end
 	def ~
-		return CharLattice.top
 		first=0
 		nary=[]
-		(normalize.ary+sentinel).each{|beg,en|
+		(normalize.ary+[[256,256]]).each{|beg,en|
 			nary<<[first,beg-1] if first<=beg-1
 			first=en+1
 		}
 		CharLattice[*nary]
 	end
+	def &(a)
+		~(~self | ~a)
+	end
+	def |(a)
+		c=CharLattice.new
+		c.ary=ary+a.ary
+		c.normalize
+	end
 	def normalize
 		nary=[]
-		first,last=*ary.sort[0]
-		puts ary.inspect
-		(ary.sort+sentinel).each{|beg,en|
-			if beg<=last+1
-				last=en
-			else
-				nary<<[first,last]
-				first,last=beg,en
-			end
+		special=[]
+		ary=@ary
+		[Empty,Anything].each{|s|
+			special<<s if ary.include?(s)
+			ary.delete(s)
 		}
-		@ary=nary
+		if ary.size>0
+			first,last=*ary.sort[0]
+			(ary.sort+[[257,257]]).each{|beg,en|
+				if beg<=last+1
+					last=en
+				else
+					nary<<[first,last]
+					first,last=beg,en
+				end
+			}
+		end
+		@ary=nary+special
 		self
 	end
 end
@@ -263,7 +276,8 @@ class Detect_Switch < Detect_First
 		r
 	end
 	def intersects(ar,el)
-		return true if (ar & CharLattice[Empty,Anything]).ary != []
+		return true if (ar.ary & [Empty,Anything]) != []
+		return true if (el.ary & [Empty,Anything]) != []
 		return (ar & el).ary !=[]
 	end
 end
@@ -342,11 +356,8 @@ amethyst Detect_Switch < Detect_First {
 														| Or[ (.:e predicate(chr,e))*:ary {Or[*ary]} ]
 														| Switch[.*{
 																 nary=p.ary
-																 puts nary.inspect
                                  nary=nary.select{|o,v| intersects(o,chr)} if p.first.is_a?(CharLattice)
-																	puts nary.inspect
                                  nary=nary.map{|o,v| [o,predicate(chr,v)]}.select{|o,v| v!=Placeholder}
-																	puts nary.inspect
                                  Switch[{:act=>p.act,:first=>p.first,:defs=>p.defs,:ary=>nary}]
                               }]
 														| . 

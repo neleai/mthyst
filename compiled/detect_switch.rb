@@ -82,30 +82,43 @@ class CharLattice < FirstLattice
   def cases(first)
     ary.map{|c| c=="default" ? "default:;" : "case #{cchar(c[0])} ... #{cchar(c[1])}:;"}*""
   end
-	def sentinel;[[256,255]];end
 	def ~
-		return CharLattice.top
 		first=0
 		nary=[]
-		(normalize.ary+sentinel).each{|beg,en|
+		(normalize.ary+[[256,256]]).each{|beg,en|
 			nary<<[first,beg-1] if first<=beg-1
 			first=en+1
 		}
 		CharLattice[*nary]
 	end
+	def &(a)
+		~(~self | ~a)
+	end
+	def |(a)
+		c=CharLattice.new
+		c.ary=ary+a.ary
+		c.normalize
+	end
 	def normalize
 		nary=[]
-		first,last=*ary.sort[0]
-		puts ary.inspect
-		(ary.sort+sentinel).each{|beg,en|
-			if beg<=last+1
-				last=en
-			else
-				nary<<[first,last]
-				first,last=beg,en
-			end
+		special=[]
+		ary=@ary
+		[Empty,Anything].each{|s|
+			special<<s if ary.include?(s)
+			ary.delete(s)
 		}
-		@ary=nary
+		if ary.size>0
+			first,last=*ary.sort[0]
+			(ary.sort+[[257,257]]).each{|beg,en|
+				if beg<=last+1
+					last=en
+				else
+					nary<<[first,last]
+					first,last=beg,en
+				end
+			}
+		end
+		@ary=nary+special
 		self
 	end
 end
@@ -653,7 +666,8 @@ class Detect_Switch < Detect_First
 		r
 	end
 	def intersects(ar,el)
-		return true if (ar & CharLattice[Empty,Anything]).ary != []
+		return true if (ar.ary & [Empty,Anything]) != []
+		return true if (el.ary & [Empty,Anything]) != []
 		return (ar & el).ary !=[]
 	end
 end
@@ -840,11 +854,8 @@ Or[*bind[15]]
 end
 def predicate_Detect_Switchcb_9(bind)
 nary=bind[1].ary
-																 puts nary.inspect
                                  nary=nary.select{|o,v| intersects(o,bind[0])} if bind[1].first.is_a?(CharLattice)
-																	puts nary.inspect
                                  nary=nary.map{|o,v| [o,predicate(bind[0],v)]}.select{|o,v| v!=Placeholder}
-																	puts nary.inspect
                                  Switch[{:act=>bind[1].act,:first=>bind[1].first,:defs=>bind[1].defs,:ary=>nary}]
                               
 end
@@ -1102,10 +1113,10 @@ end
 
 
 def detect_switch_compiled_by
-'8f37d6da8242105416e982e4ce8780bc'
+'4e3f6003c00b11bbacb368d16f291635'
 end
 def detect_switch_source_hash
-'e2dc9ee73402344255e42b1c580fd8d6'
+'91a892937c1c2e072c71b87d22bc3b80'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
