@@ -85,14 +85,15 @@ class CharLattice < FirstLattice
 	def ~
 		first=0
 		nary=[]
-		(normalize.ary+[[256,256]]).each{|beg,en|
+		((normalize.ary-[Empty])+[[256,256]]).each{|beg,en|
 			nary<<[first,beg-1] if first<=beg-1
 			first=en+1
 		}
 		CharLattice[*nary]
 	end
 	def &(a)
-		~(~self | ~a)
+		r= ~(~self | ~a)
+		r
 	end
 	def |(a)
 		c=CharLattice.new
@@ -111,7 +112,7 @@ class CharLattice < FirstLattice
 			first,last=*ary.sort[0]
 			(ary.sort+[[257,257]]).each{|beg,en|
 				if beg<=last+1
-					last=en
+					last=[last,en].max
 				else
 					nary<<[first,last]
 					first,last=beg,en
@@ -119,6 +120,7 @@ class CharLattice < FirstLattice
 			}
 		end
 		@ary=nary+special
+
 		self
 	end
 end
@@ -339,7 +341,7 @@ amethyst Detect_Switch < Detect_First {
 		&{ary2.size>1}
 		{Or[*els]}:new_or
 		&{new_or.is_a?(Or)}
-		{@@cases=[firs]} split {puts @@cases.inspect}
+		{@@cases=[firs-CharLattice.empty]} {new_or}=>split 
 		{ary2.each{|e|
 			ary3<<[e,predicate(CharLattice[e],new_or)]
 		}}
@@ -353,7 +355,7 @@ amethyst Detect_Switch < Detect_First {
 	split = Seq[ split .*]
 				| Or[ split*]
 				| Bind[ @expr=>split ]
-				| .:el first(el):f {@@cases=@@cases.map{|c| [c&f,c&~f]}.flatten }
+				| .:el first(el):f {@@cases=@@cases.map{|c| [c&f,c&~f]}.flatten.uniq_by{|x|x.ary.inspect} }
 	
 	predicate(chr,p) = &{chr.ary[0]=="default"} {p}
 										| &{!intersects(first(p),chr)} {Placeholder}

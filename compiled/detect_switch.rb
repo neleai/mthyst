@@ -85,14 +85,18 @@ class CharLattice < FirstLattice
 	def ~
 		first=0
 		nary=[]
-		(normalize.ary+[[256,256]]).each{|beg,en|
+		((normalize.ary-[Empty])+[[256,256]]).each{|beg,en|
 			nary<<[first,beg-1] if first<=beg-1
 			first=en+1
 		}
 		CharLattice[*nary]
 	end
 	def &(a)
-		~(~self | ~a)
+		puts self.inspect
+		puts a.inspect
+		r= ~(~self | ~a)
+		puts r.inspect
+		r
 	end
 	def |(a)
 		c=CharLattice.new
@@ -111,14 +115,17 @@ class CharLattice < FirstLattice
 			first,last=*ary.sort[0]
 			(ary.sort+[[257,257]]).each{|beg,en|
 				if beg<=last+1
-					last=en
+					last=[last,en].max
 				else
 					nary<<[first,last]
 					first,last=beg,en
 				end
 			}
 		end
+		puts "norm"+self.inspect
 		@ary=nary+special
+		puts "normd"+self.inspect
+
 		self
 	end
 end
@@ -875,7 +882,7 @@ def split_Detect_Switchcb_1(bind)
 _append(bind[1],bind[2])
 end
 def split_Detect_Switchcb_2(bind)
-@cases=@cases.map{|c| [c&bind[6],c&~bind[6]]}.flatten 
+puts "with "+bind[6].inspect;puts "cases "+@cases.inspect; @cases=@cases.map{|c| [c&bind[6],c&~bind[6]]}.flatten.uniq_by{|x|x.ary.inspect};puts "result "+@cases.inspect 
 end
 def split_Detect_Switchcb_3(bind)
 _append(bind[8],bind[9])
@@ -922,29 +929,32 @@ def visit_Detect_Switchcb_1(bind)
 Or
 end
 def visit_Detect_Switchcb_10(bind)
-@cases=[bind[6]]
+@cases=[bind[6]-CharLattice.empty]
 end
 def visit_Detect_Switchcb_11(bind)
-puts @cases.inspect
+bind[8]=[bind[8]]
 end
 def visit_Detect_Switchcb_12(bind)
+puts bind[7].inspect;puts @cases.inspect
+end
+def visit_Detect_Switchcb_13(bind)
 bind[1].each{|bind[4]|
 			bind[2]<<[bind[4],predicate(CharLattice[bind[4]],bind[7])]
 		}
 end
-def visit_Detect_Switchcb_13(bind)
+def visit_Detect_Switchcb_14(bind)
 bind[2]=bind[2].group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.sort_by{|bind[4]| bind[4].inspect},v[0][1]]}.sort_by{|bind[4]| bind[4].inspect}
 end
-def visit_Detect_Switchcb_14(bind)
+def visit_Detect_Switchcb_15(bind)
 bind[2]<<[["default"],Apply["fails"]] unless bind[1].include?("default")
 end
-def visit_Detect_Switchcb_15(bind)
+def visit_Detect_Switchcb_16(bind)
 bind[2]=bind[2].map{|o,v| [CharLattice[*o],v]}
 end
-def visit_Detect_Switchcb_16(bind)
+def visit_Detect_Switchcb_17(bind)
 (bind[2].size>1) || FAIL
 end
-def visit_Detect_Switchcb_17(bind)
+def visit_Detect_Switchcb_18(bind)
 Switch[{:act=>"*ame_curstr(self)",:first=>bind[6],:ary=>bind[2]}]
 end
 def visit_Detect_Switchcb_2(bind)
@@ -1125,15 +1135,15 @@ end
 
 
 def detect_switch_compiled_by
-'6f6513f13cc8ece1ebac1aea5bdea372'
+'2fe6c7c587c8b5f74a34f058577b83cd'
 end
 def detect_switch_source_hash
-'044bc13e79249ba7019a8a153e45a90e'
+'b12233e4c60fc714d8cf15ff8398de28'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'d3784c1e588490d02d5881f9c3e33f25'
+'88871051cf713936fd9b870ce465e06b'
 end
   require 'compiled/detect_switch_c'

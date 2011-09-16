@@ -87,3 +87,15 @@ def totaltime
 	}
 	puts "total #{tot}"
 end
+class Array
+	def uniq_by
+		h={}
+		r=[]
+		each{|e|
+			by=yield(e)
+			r<<e if !h[by]
+			h[by]=true
+		}
+		r
+	end
+end
