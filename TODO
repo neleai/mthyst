@@ -54,4 +54,5 @@ defer alternatives of classwitch to ctranslator2
 merge identical options of detect_switch in normalize
 predication by splitting to predicated and notpredicated part
 
+equalization of bind
 operator for case insensivity

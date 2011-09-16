@@ -668,6 +668,7 @@ class Detect_Switch < Detect_First
 	def intersects(ar,el)
 		return true if (ar.ary & [Empty,Anything]) != []
 		return true if (el.ary & [Empty,Anything]) != []
+		return true if el.ary.include?("default") || ar.ary.include?("default")
 		return (ar & el).ary !=[]
 	end
 end
@@ -858,27 +859,6 @@ nary=bind[1].ary
                                  nary=nary.map{|o,v| [o,predicate(bind[0],v)]}.select{|o,v| v!=Placeholder}
                                  Switch[{:act=>bind[1].act,:first=>bind[1].first,:defs=>bind[1].defs,:ary=>nary}]
                               
-end
-def regch_Detect_Switchcb_1(bind)
-(bind[0].is_a? String ) || FAIL
-end
-def regch_Detect_Switchcb_2(bind)
-(bind[3].match(bind[2])) || FAIL
-end
-def spaces_Detect_Switchcb_1(bind)
-/[\s\t\r\n\f]/
-end
-def spaces_Detect_Switchcb_2(bind)
-_append(bind[0],bind[2])
-end
-def split_Detect_Switchcb_1(bind)
-bind[1]=[bind[1]]
-end
-def split_Detect_Switchcb_2(bind)
-Apply
-end
-def split_Detect_Switchcb_3(bind)
-_append(bind[4],bind[5])
 end
 def traverse_Detect_Switchcb_1(bind)
 @changed
@@ -1113,15 +1093,15 @@ end
 
 
 def detect_switch_compiled_by
-'4e3f6003c00b11bbacb368d16f291635'
+'aa01d421f69843689256fc8f2c5bba88'
 end
 def detect_switch_source_hash
-'91a892937c1c2e072c71b87d22bc3b80'
+'c7b38073edf3604a8944cfe5fec7e6ad'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'b6f5249b3eb804d9aa7ae21c52222d78'
+'c61b57e893c2aaaf5a74ba1f4908fdef'
 end
   require 'compiled/detect_switch_c'

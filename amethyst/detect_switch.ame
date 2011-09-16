@@ -278,6 +278,7 @@ class Detect_Switch < Detect_First
 	def intersects(ar,el)
 		return true if (ar.ary & [Empty,Anything]) != []
 		return true if (el.ary & [Empty,Anything]) != []
+		return true if el.ary.include?("default") || ar.ary.include?("default")
 		return (ar & el).ary !=[]
 	end
 end
@@ -347,9 +348,8 @@ amethyst Detect_Switch < Detect_First {
     &{ary3.size>1}
 		{Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>ary3}]}
 	]
-	
-	split(p) = {p}=>(Apply[ ["_seq"] .* ])
 
+	
 	predicate(chr,p) = &{chr.ary[0]=="default"} {p}
 										| &{!intersects(first(p),chr)} {Placeholder}
                     |  {p}=>( Seq[ .:e predicate(chr,e):f .*:rest {Seq[*([f]+rest)]} ]
