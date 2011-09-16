@@ -64,6 +64,9 @@ class FirstLattice
 	def cases(first)
 		ary.map{|c| c=="default" ? "default:;" : "case #{c}:;"}*""
 	end
+	def inspect
+		self.class.to_s+ary.inspect
+	end
 end
 
 class CharLattice < FirstLattice
@@ -342,13 +345,15 @@ amethyst Detect_Switch < Detect_First {
 		{Or[*els]}:new_or
 		&{new_or.is_a?(Or)}
 		{@@cases=[firs-CharLattice.empty]} {new_or}=>split 
-		{ary2.each{|e|
-			ary3<<[CharLattice[e],predicate(CharLattice[e],new_or)]
+		{puts @@cases.inspect}
+		{ary2.each{|ee|e=CharLattice[ee]
+			ary3<<[e,predicate(e,new_or)]
 		}}
+		{puts ary3.inspect}
 		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.inject(:|),v[0][1]]}.sort_by{|e| e.inspect}}
 		{ary3<<[CharLattice["default"],Apply["fails"]] unless ary2.include?("default")}
     &{ary3.size>1}
-		{Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>ary3}]}
+		{s=Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>ary3}];puts s.inspect;s}
 	]
 	
 	split = Seq[ split .*]

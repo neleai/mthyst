@@ -64,6 +64,9 @@ class FirstLattice
 	def cases(first)
 		ary.map{|c| c=="default" ? "default:;" : "case #{c}:;"}*""
 	end
+	def inspect
+		self.class.to_s+ary.inspect
+	end
 end
 
 class CharLattice < FirstLattice
@@ -930,21 +933,27 @@ def visit_Detect_Switchcb_11(bind)
 bind[8]=[bind[8]]
 end
 def visit_Detect_Switchcb_12(bind)
-bind[1].each{|bind[4]|
-			bind[2]<<[CharLattice[bind[4]],predicate(CharLattice[bind[4]],bind[7])]
-		}
+puts @cases.inspect
 end
 def visit_Detect_Switchcb_13(bind)
-bind[2]=bind[2].group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.inject(:|),v[0][1]]}.sort_by{|bind[4]| bind[4].inspect}
+bind[1].each{|ee|bind[4]=CharLattice[ee]
+			bind[2]<<[bind[4],predicate(bind[4],bind[7])]
+		}
 end
 def visit_Detect_Switchcb_14(bind)
-bind[2]<<[CharLattice["default"],Apply["fails"]] unless bind[1].include?("default")
+puts bind[2].inspect
 end
 def visit_Detect_Switchcb_15(bind)
-(bind[2].size>1) || FAIL
+bind[2]=bind[2].group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.inject(:|),v[0][1]]}.sort_by{|bind[4]| bind[4].inspect}
 end
 def visit_Detect_Switchcb_16(bind)
-Switch[{:act=>"*ame_curstr(self)",:first=>bind[6],:ary=>bind[2]}]
+bind[2]<<[CharLattice["default"],Apply["fails"]] unless bind[1].include?("default")
+end
+def visit_Detect_Switchcb_17(bind)
+(bind[2].size>1) || FAIL
+end
+def visit_Detect_Switchcb_18(bind)
+s=Switch[{:act=>"*ame_curstr(self)",:first=>bind[6],:ary=>bind[2]}];puts s.inspect;s
 end
 def visit_Detect_Switchcb_2(bind)
 CharLattice[]
@@ -1124,15 +1133,15 @@ end
 
 
 def detect_switch_compiled_by
-'121189ada877eb09af99851205c41cbb'
+'cf1e8114f40e7b76b8a2246bdd903186'
 end
 def detect_switch_source_hash
-'0da207f5f6bf99849f911f7e29c26aa2'
+'886cdae20f0e20684c1f77f2641b1094'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'19e2f8617a942b9ffd41179316fd36d3'
+'88871051cf713936fd9b870ce465e06b'
 end
   require 'compiled/detect_switch_c'
