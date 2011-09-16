@@ -55,4 +55,6 @@ merge identical options of detect_switch in normalize
 predication by splitting to predicated and notpredicated part
 
 equalization of bind
+name immutability and equalization and use it in lattices
+
 operator for case insensivity

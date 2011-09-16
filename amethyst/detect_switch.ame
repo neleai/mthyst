@@ -348,7 +348,10 @@ amethyst Detect_Switch < Detect_First {
     &{ary3.size>1}
 		{Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>ary3}]}
 	]
-
+	
+	split = Seq[ split .*]
+				| Or[ split*]
+				| .:el first(el):f {@cases.map{|c| [c&f,c&~f]}.flatten.uniq }
 	
 	predicate(chr,p) = &{chr.ary[0]=="default"} {p}
 										| &{!intersects(first(p),chr)} {Placeholder}

@@ -159,18 +159,20 @@ class Or
 	end
 end
 
-
-
-[Apply,Bnding,Act,Seq,Or].each{|c| eval("class #{c} 
+def def_hash_by_ary(c)
+	eval("class #{c} 
  def hash
-	ary.hash
+  ary.hash
  end
  def ==(a)
     return false unless a.is_a? #{c}
     return self.ary==a.ary
   end
-	alias_method :eql?,:==
-end")}
+  alias_method :eql?,:==
+	end")
+end
+
+[Apply,Bnding,Act,Seq,Or].each{|c| def_hash_by_ary(c)}
 
 [Result,Switch,Cut,Stop,Args,Strin,Exp
 ].each{|c| eval("class #{c} 

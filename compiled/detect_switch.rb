@@ -814,14 +814,24 @@ def switchcbDetect_Switch17(e)
 @@switchhashDetect_Switch17[e.class]
 end
 def self.switchcb_Detect_Switch18(e)
-return 0 if e<=Array
-return 1 if e<=AmethystAST
+return 0 if e<=Seq
+return 1 if e<=Or
 return 2 if e<=Object
 return 3
 end
 @@switchhashDetect_Switch18=Hash.new{|h,k| h[k]=switchcb_Detect_Switch18(k)}
 def switchcbDetect_Switch18(e)
 @@switchhashDetect_Switch18[e.class]
+end
+def self.switchcb_Detect_Switch19(e)
+return 0 if e<=Array
+return 1 if e<=AmethystAST
+return 2 if e<=Object
+return 3
+end
+@@switchhashDetect_Switch19=Hash.new{|h,k| h[k]=switchcb_Detect_Switch19(k)}
+def switchcbDetect_Switch19(e)
+@@switchhashDetect_Switch19[e.class]
 end
 def clas_Detect_Switchcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -859,6 +869,15 @@ nary=bind[1].ary
                                  nary=nary.map{|o,v| [o,predicate(bind[0],v)]}.select{|o,v| v!=Placeholder}
                                  Switch[{:act=>bind[1].act,:first=>bind[1].first,:defs=>bind[1].defs,:ary=>nary}]
                               
+end
+def split_Detect_Switchcb_1(bind)
+_append(bind[1],bind[2])
+end
+def split_Detect_Switchcb_2(bind)
+@src.cases.map{|c| [c&bind[6],c&~bind[6]]}.flatten.uniq 
+end
+def split_Detect_Switchcb_3(bind)
+_append(bind[8],bind[9])
 end
 def traverse_Detect_Switchcb_1(bind)
 @changed
@@ -944,7 +963,7 @@ end
 
 
 class Detect_ClasSwitch < Detect_First
-def self.switchcb_Detect_ClasSwitch20(e)
+def self.switchcb_Detect_ClasSwitch21(e)
 return 0 if e<=Seq
 return 1 if e<=Or
 return 2 if e<=Apply
@@ -952,19 +971,19 @@ return 3 if e<=Bind
 return 4 if e<=Object
 return 5
 end
-@@switchhashDetect_ClasSwitch20=Hash.new{|h,k| h[k]=switchcb_Detect_ClasSwitch20(k)}
-def switchcbDetect_ClasSwitch20(e)
-@@switchhashDetect_ClasSwitch20[e.class]
+@@switchhashDetect_ClasSwitch21=Hash.new{|h,k| h[k]=switchcb_Detect_ClasSwitch21(k)}
+def switchcbDetect_ClasSwitch21(e)
+@@switchhashDetect_ClasSwitch21[e.class]
 end
-def self.switchcb_Detect_ClasSwitch21(e)
+def self.switchcb_Detect_ClasSwitch22(e)
 return 0 if e<=Array
 return 1 if e<=AmethystAST
 return 2 if e<=Object
 return 3
 end
-@@switchhashDetect_ClasSwitch21=Hash.new{|h,k| h[k]=switchcb_Detect_ClasSwitch21(k)}
-def switchcbDetect_ClasSwitch21(e)
-@@switchhashDetect_ClasSwitch21[e.class]
+@@switchhashDetect_ClasSwitch22=Hash.new{|h,k| h[k]=switchcb_Detect_ClasSwitch22(k)}
+def switchcbDetect_ClasSwitch22(e)
+@@switchhashDetect_ClasSwitch22[e.class]
 end
 def clas_Detect_ClasSwitchcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -1093,15 +1112,15 @@ end
 
 
 def detect_switch_compiled_by
-'aa01d421f69843689256fc8f2c5bba88'
+'bd3542832dfff61f618c6119bec2be9b'
 end
 def detect_switch_source_hash
-'c7b38073edf3604a8944cfe5fec7e6ad'
+'23eb59043a30b0fec0a623478b1873f7'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'c61b57e893c2aaaf5a74ba1f4908fdef'
+'94dfacd64487ea58a6111ff7eb46c608'
 end
   require 'compiled/detect_switch_c'
