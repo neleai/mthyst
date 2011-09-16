@@ -73,7 +73,7 @@ class CharLattice < FirstLattice
 		c
 	end
 	def self.top
-		CharLattice[Anything]
+		CharLattice[[0,255]]
 	end
 	def cchar(c)
 		return "UC('\\'')" if c==?'
@@ -339,6 +339,7 @@ amethyst Detect_Switch < Detect_First {
 		&{ary2.size>1}
 		{Or[*els]}:new_or
 		&{new_or.is_a?(Or)}
+		{@@cases=[firs]} split {puts @@cases.inspect}
 		{ary2.each{|e|
 			ary3<<[e,predicate(CharLattice[e],new_or)]
 		}}
@@ -351,7 +352,8 @@ amethyst Detect_Switch < Detect_First {
 	
 	split = Seq[ split .*]
 				| Or[ split*]
-				| .:el first(el):f {@cases.map{|c| [c&f,c&~f]}.flatten.uniq }
+				| Bind[ @expr=>split ]
+				| .:el first(el):f {@@cases=@@cases.map{|c| [c&f,c&~f]}.flatten }
 	
 	predicate(chr,p) = &{chr.ary[0]=="default"} {p}
 										| &{!intersects(first(p),chr)} {Placeholder}

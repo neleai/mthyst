@@ -73,7 +73,7 @@ class CharLattice < FirstLattice
 		c
 	end
 	def self.top
-		CharLattice[Anything]
+		CharLattice[[0,255]]
 	end
 	def cchar(c)
 		return "UC('\\'')" if c==?'
@@ -816,8 +816,9 @@ end
 def self.switchcb_Detect_Switch18(e)
 return 0 if e<=Seq
 return 1 if e<=Or
-return 2 if e<=Object
-return 3
+return 2 if e<=Bind
+return 3 if e<=Object
+return 4
 end
 @@switchhashDetect_Switch18=Hash.new{|h,k| h[k]=switchcb_Detect_Switch18(k)}
 def switchcbDetect_Switch18(e)
@@ -874,10 +875,16 @@ def split_Detect_Switchcb_1(bind)
 _append(bind[1],bind[2])
 end
 def split_Detect_Switchcb_2(bind)
-@src.cases.map{|c| [c&bind[6],c&~bind[6]]}.flatten.uniq 
+@cases=@cases.map{|c| [c&bind[6],c&~bind[6]]}.flatten 
 end
 def split_Detect_Switchcb_3(bind)
 _append(bind[8],bind[9])
+end
+def split_Detect_Switchcb_4(bind)
+@src.expr
+end
+def split_Detect_Switchcb_5(bind)
+bind[12]=[bind[12]]
 end
 def traverse_Detect_Switchcb_1(bind)
 @changed
@@ -915,23 +922,29 @@ def visit_Detect_Switchcb_1(bind)
 Or
 end
 def visit_Detect_Switchcb_10(bind)
+@cases=[bind[6]]
+end
+def visit_Detect_Switchcb_11(bind)
+puts @cases.inspect
+end
+def visit_Detect_Switchcb_12(bind)
 bind[1].each{|bind[4]|
 			bind[2]<<[bind[4],predicate(CharLattice[bind[4]],bind[7])]
 		}
 end
-def visit_Detect_Switchcb_11(bind)
+def visit_Detect_Switchcb_13(bind)
 bind[2]=bind[2].group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.sort_by{|bind[4]| bind[4].inspect},v[0][1]]}.sort_by{|bind[4]| bind[4].inspect}
 end
-def visit_Detect_Switchcb_12(bind)
+def visit_Detect_Switchcb_14(bind)
 bind[2]<<[["default"],Apply["fails"]] unless bind[1].include?("default")
 end
-def visit_Detect_Switchcb_13(bind)
+def visit_Detect_Switchcb_15(bind)
 bind[2]=bind[2].map{|o,v| [CharLattice[*o],v]}
 end
-def visit_Detect_Switchcb_14(bind)
+def visit_Detect_Switchcb_16(bind)
 (bind[2].size>1) || FAIL
 end
-def visit_Detect_Switchcb_15(bind)
+def visit_Detect_Switchcb_17(bind)
 Switch[{:act=>"*ame_curstr(self)",:first=>bind[6],:ary=>bind[2]}]
 end
 def visit_Detect_Switchcb_2(bind)
@@ -1112,15 +1125,15 @@ end
 
 
 def detect_switch_compiled_by
-'bd3542832dfff61f618c6119bec2be9b'
+'6f6513f13cc8ece1ebac1aea5bdea372'
 end
 def detect_switch_source_hash
-'23eb59043a30b0fec0a623478b1873f7'
+'044bc13e79249ba7019a8a153e45a90e'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'94dfacd64487ea58a6111ff7eb46c608'
+'d3784c1e588490d02d5881f9c3e33f25'
 end
   require 'compiled/detect_switch_c'

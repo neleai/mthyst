@@ -177,7 +177,7 @@ def prefixed_AmethystParsercb_1(bind)
 Pred[bind[0]]
 end
 def prefixed_AmethystParsercb_10(bind)
-bind[4]=Enter[bind[4],bind[9]]
+Seq[_Bind("it",bind[4]) , Act[bind[9]] ]
 end
 def prefixed_AmethystParsercb_2(bind)
 Lookahead[bind[3],bind[2]=="~"]
@@ -189,19 +189,19 @@ def prefixed_AmethystParsercb_4(bind)
 Apply["anything"]
 end
 def prefixed_AmethystParsercb_5(bind)
-Many[bind[4],bind[5]=="+"]
+bind[4]=Pass[bind[4],bind[5]]
 end
 def prefixed_AmethystParsercb_6(bind)
-_Bind(bind[6],bind[4],bind[7])
+bind[4]=Enter[bind[4],bind[5]]
 end
 def prefixed_AmethystParsercb_7(bind)
-Seq[_Bind("it",bind[4]) , Act[bind[8]] ]
+Many[bind[4],bind[6]=="+"]
 end
 def prefixed_AmethystParsercb_8(bind)
-bind[4]=Pass[bind[4],bind[9]]
+Or[bind[4],Apply["empty"]]
 end
 def prefixed_AmethystParsercb_9(bind)
-Or[bind[4],Apply["empty"]]
+_Bind(bind[7],bind[4],bind[8])
 end
 def procargs2_AmethystParsercb_1(bind)
 _append(bind[1],bind[2])
@@ -331,7 +331,7 @@ end
 
 
 def parser_compiled_by
-'bd3542832dfff61f618c6119bec2be9b'
+'6f6513f13cc8ece1ebac1aea5bdea372'
 end
 def parser_source_hash
 'd1f9e8937adb72c1bb0d0e1f84feabb9'
@@ -340,6 +340,6 @@ def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'87b7b55bceeaf8ab91895a01b602b80e'
+'808181b7477c6c368a32ae711cac1e1b'
 end
   require 'compiled/parser_c'

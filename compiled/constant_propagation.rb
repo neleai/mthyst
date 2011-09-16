@@ -175,7 +175,7 @@ end
 
 
 def constant_propagation_compiled_by
-'bd3542832dfff61f618c6119bec2be9b'
+'6f6513f13cc8ece1ebac1aea5bdea372'
 end
 def constant_propagation_source_hash
 '4a7badb332b849d427161a22fcb99ead'
