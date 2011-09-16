@@ -335,6 +335,10 @@ amethyst Detect_First < Traverser_Clone2 {
 
 	root = traverse
 }
+def unempty(s)
+	s.ary.include?(Empty) ? CharLattice.top	: s
+end
+
 
 amethyst Detect_Switch < Detect_First {
 	visit = Or[ {CharLattice[]}:ary2 {[]}:ary3 {[]}:els
@@ -344,9 +348,10 @@ amethyst Detect_Switch < Detect_First {
 		&{ary2.size>1}
 		{Or[*els]}:new_or
 		&{new_or.is_a?(Or)}
-		{@@cases=[firs-CharLattice.empty]} {new_or}=>split 
+		{firs=unempty(firs)}
+		{@@cases=[firs]} {new_or}=>split 
 		{puts @@cases.inspect}
-		{ary2.each{|ee|e=CharLattice[ee]
+		{@@cases.each{|ee|e=ee
 			ary3<<[e,predicate(e,new_or)]
 		}}
 		{puts ary3.inspect}
@@ -359,7 +364,7 @@ amethyst Detect_Switch < Detect_First {
 	split = Seq[ split .*]
 				| Or[ split*]
 				| Bind[ @expr=>split ]
-				| .:el first(el):f {@@cases=@@cases.map{|c| [c&f,c&~f]}.flatten.uniq_by{|x|x.ary.inspect} }
+				| .:el first(el):f {@@cases=@@cases.map{|c| [c&f,c&~f]}.flatten.select{|x| x.ary.size>0}.uniq_by{|x|x.ary.inspect} }
 	
 	predicate(chr,p) = &{chr.ary[0]=="default"} {p}
 										| &{!intersects(first(p),chr)} {Placeholder}
