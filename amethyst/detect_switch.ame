@@ -104,7 +104,7 @@ class CharLattice < FirstLattice
 		nary=[]
 		special=[]
 		ary=@ary
-		[Empty,Anything].each{|s|
+		[Empty,Anything,"default"].each{|s|
 			special<<s if ary.include?(s)
 			ary.delete(s)
 		}
@@ -343,11 +343,10 @@ amethyst Detect_Switch < Detect_First {
 		&{new_or.is_a?(Or)}
 		{@@cases=[firs-CharLattice.empty]} {new_or}=>split 
 		{ary2.each{|e|
-			ary3<<[e,predicate(CharLattice[e],new_or)]
+			ary3<<[CharLattice[e],predicate(CharLattice[e],new_or)]
 		}}
-		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.sort_by{|e| e.inspect},v[0][1]]}.sort_by{|e| e.inspect}}
-		{ary3<<[["default"],Apply["fails"]] unless ary2.include?("default")}
-		{ary3=ary3.map{|o,v| [CharLattice[*o],v]}}
+		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.inject(:|),v[0][1]]}.sort_by{|e| e.inspect}}
+		{ary3<<[CharLattice["default"],Apply["fails"]] unless ary2.include?("default")}
     &{ary3.size>1}
 		{Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>ary3}]}
 	]

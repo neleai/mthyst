@@ -1876,7 +1876,7 @@ ame_setsrc(self,rb_ary_entry(bind,8/*autovar*/)); ame_setpos(self,0); ame_setlen
 	pass2: fail2=1;
 	success2: ame_setsrc(self,oldsrc2); ame_setpos(self,oldpos4); ame_setlen(self,oldlen2);
 	if(fail2) goto pass1;
-it=CALL(visit_Detect_Switchcb_12,1,bind); it=CALL(visit_Detect_Switchcb_13,1,bind); it=CALL(visit_Detect_Switchcb_14,1,bind); it=CALL(visit_Detect_Switchcb_15,1,bind); it=CALL(visit_Detect_Switchcb_16,1,bind); it=CALL(visit_Detect_Switchcb_17,1,bind); FAILTEST(pass1);it=CALL(visit_Detect_Switchcb_18,1,bind); 
+it=CALL(visit_Detect_Switchcb_12,1,bind); it=CALL(visit_Detect_Switchcb_13,1,bind); it=CALL(visit_Detect_Switchcb_14,1,bind); it=CALL(visit_Detect_Switchcb_15,1,bind); FAILTEST(pass1);it=CALL(visit_Detect_Switchcb_16,1,bind); 
  rb_ary_store(bind,9/*autovar*/,it);   it=Detect_Switch_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
@@ -2270,4 +2270,4 @@ rb_define_method(cls_Detect_ClasSwitch,"predicate",Detect_ClasSwitch_predicate,3
 rb_define_method(cls_Detect_ClasSwitch,"traverse",Detect_ClasSwitch_traverse,0);
 rb_define_method(cls_Detect_ClasSwitch,"traverse_item",Detect_ClasSwitch_traverse_item,0);
 rb_define_method(cls_Detect_ClasSwitch,"visit",Detect_ClasSwitch_visit,0);
- rb_eval_string("testversiondetect_switch('88871051cf713936fd9b870ce465e06b')");}
+ rb_eval_string("testversiondetect_switch('19e2f8617a942b9ffd41179316fd36d3')");}
