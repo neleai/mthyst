@@ -5,7 +5,7 @@ end
 
 
 def tests_compiled_by
-'8e2791058fc7a35ba2d662d06f19050f'
+'6520799ebd592a173c2955a115c807c0'
 end
 def tests_source_hash
 '782b2298ca9627b4363c7b0244c75c46'

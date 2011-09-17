@@ -173,10 +173,17 @@ class First_Dataflow < Amethyst
       @activea<<e
     end
   end
+
+	def empty?(el)
+		@vals[el].ary.include?(Empty)
+	end
 end
 class Sizes_Dataflow < First_Dataflow
 	def lattice
 		SizesLattice
+	end
+	def empty?(el)
+		true
 	end
 end
 
@@ -224,7 +231,7 @@ amethyst First_Dataflow {
 	root = .:x analyze(x)
 	
 	first =	Switch[&{@first.is_a?(lattice)} .* {@first}]
-				| Seq[value*:{it.inject{|u,v|u.seqjoin(v)}}]
+				| Seq[{lattice.empty}:val (.:el {el}=>value:nev {val.seqjoin(nev)}:val  (~{empty?(el)} stop | empty) )*   .* {val}]
 				| Many[value:val {val|lattice.empty} ]
 				| Or[value*:{it.inject(:|)}]
 				| Switch[value*:{it.inject(:|)}]
@@ -350,11 +357,9 @@ amethyst Detect_Switch < Detect_First {
 		&{new_or.is_a?(Or)}
 		{firs=unempty(firs)}
 		{@@cases=[firs]} {new_or}=>split 
-		{puts @@cases.inspect}
 		{@@cases.each{|ee|e=ee
 			ary3<<[e,predicate(e,new_or)]
 		}}
-		{puts ary3.inspect}
 		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.inject(:|),v[0][1]]}.sort_by{|e| e.inspect}}
 		{ary3<<[CharLattice["default"],Apply["fails"]] unless ary2.include?("default")}
     &{ary3.size>1}
