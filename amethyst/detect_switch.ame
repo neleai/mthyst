@@ -261,6 +261,7 @@ amethyst Switch_Dataflow < First_Dataflow{
 
 amethyst ClasSwitch_Dataflow < First_Dataflow{
   first = Apply[ ["clas"] Act[.:cls] {lattice[cls]}]
+				| Apply[ ["clas"] CAct[.:cls] {lattice[cls.to_s]}]
         | super
 				| Apply[ :name &{$rules[name]} .* {$rules[name].body}=>value]
 

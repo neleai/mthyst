@@ -636,13 +636,19 @@ def first_ClasSwitch_Dataflowcb_2(bind)
 lattice[bind[3]]
 end
 def first_ClasSwitch_Dataflowcb_3(bind)
-($rules[bind[7]]) || FAIL
+CAct
 end
 def first_ClasSwitch_Dataflowcb_4(bind)
-$rules[bind[7]].body
+lattice[bind[3].to_s]
 end
 def first_ClasSwitch_Dataflowcb_5(bind)
-bind[8]=[bind[8]]
+($rules[bind[11]]) || FAIL
+end
+def first_ClasSwitch_Dataflowcb_6(bind)
+$rules[bind[11]].body
+end
+def first_ClasSwitch_Dataflowcb_7(bind)
+bind[12]=[bind[12]]
 end
 def getvalue_ClasSwitch_Dataflowcb_1(bind)
 @vis=bind[0]; bind[0]
@@ -1153,15 +1159,15 @@ end
 
 
 def detect_switch_compiled_by
-'6520799ebd592a173c2955a115c807c0'
+'49594132eda59b890c7349bd50f344f0'
 end
 def detect_switch_source_hash
-'66bfa5c0e523044bc5e537d221fb5b01'
+'cbb51f693d1c801c61827b29f67cd538'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'56d5cfd060317743f78f29268bc145eb'
+'8e0db989f8cadeb1f9d7532c04202c43'
 end
   require 'compiled/detect_switch_c'
