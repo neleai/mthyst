@@ -621,19 +621,16 @@ def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_9(bind)
 empty?(bind[10])
 end
 def first_ClasSwitch_Dataflowcb_1(bind)
-lattice[bind[3]]
-end
-def first_ClasSwitch_Dataflowcb_2(bind)
 lattice[bind[3].to_s]
 end
+def first_ClasSwitch_Dataflowcb_2(bind)
+($rules[bind[7]]) || FAIL
+end
 def first_ClasSwitch_Dataflowcb_3(bind)
-($rules[bind[11]]) || FAIL
+$rules[bind[7]].body
 end
 def first_ClasSwitch_Dataflowcb_4(bind)
-$rules[bind[11]].body
-end
-def first_ClasSwitch_Dataflowcb_5(bind)
-bind[12]=[bind[12]]
+bind[8]=[bind[8]]
 end
 def getvalue_ClasSwitch_Dataflowcb_1(bind)
 @vis=bind[0]; bind[0]
@@ -1021,22 +1018,19 @@ def predicate_Detect_ClasSwitchcb_1(bind)
 (bind[0][bind[1]]=="default") || FAIL
 end
 def predicate_Detect_ClasSwitchcb_10(bind)
-(child(bind[0][bind[1]],bind[21])&&bind[0][bind[1]]==bind[21]) || FAIL
+(child(bind[0][bind[1]],bind[21])&&bind[0][bind[1]].to_s==bind[21].to_s) || FAIL
 end
 def predicate_Detect_ClasSwitchcb_11(bind)
 Apply["anything"]
 end
 def predicate_Detect_ClasSwitchcb_12(bind)
-(child(bind[0][bind[1]],bind[21])&&bind[0][bind[1]].to_s==bind[21].to_s) || FAIL
-end
-def predicate_Detect_ClasSwitchcb_13(bind)
 @src.name
 end
-def predicate_Detect_ClasSwitchcb_14(bind)
+def predicate_Detect_ClasSwitchcb_13(bind)
 predicate(bind[0],bind[1],@src.expr)
 end
-def predicate_Detect_ClasSwitchcb_15(bind)
-_Bind(bind[19],bind[27])
+def predicate_Detect_ClasSwitchcb_14(bind)
+_Bind(bind[19],bind[24])
 end
 def predicate_Detect_ClasSwitchcb_2(bind)
 (!includes(bind[0],bind[1],first(bind[2]))) || FAIL
@@ -1135,15 +1129,15 @@ end
 
 
 def detect_switch_compiled_by
-'ea97b696acc5094888ad81c0e7b8e0f3'
+'4f3923b02772e6e29448788a59269545'
 end
 def detect_switch_source_hash
-'b436008182f2ad603aabe182c3d3cc66'
+'54f7ff1b0e96f546ad567c67e2eedc7d'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'375d92bb098eb6dce072ed7334820384'
+'96feb2fa08aec1d48b12af4f0b59257c'
 end
   require 'compiled/detect_switch_c'

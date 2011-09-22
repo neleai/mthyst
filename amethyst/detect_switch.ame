@@ -260,8 +260,7 @@ amethyst Switch_Dataflow < First_Dataflow{
 }
 
 amethyst ClasSwitch_Dataflow < First_Dataflow{
-  first = Apply[ ["clas"] Act[.:cls] {lattice[cls]}]
-				| Apply[ ["clas"] CAct[.:cls] {lattice[cls.to_s]}]
+  first = Apply[ ["clas"] CAct[.:cls] {lattice[cls.to_s]}]
         | super
 				| Apply[ :name &{$rules[name]} .* {$rules[name].body}=>value]
 
@@ -407,9 +406,7 @@ amethyst Detect_ClasSwitch < Detect_First {
 											| &{!includes(clas,i,first(p))} {Placeholder}	
 											|	{p}=>( Seq[ .:e predicate(clas,i,e):f .*:rest {Seq[*([f]+rest)]} ]
 														 | Or[ (.:e predicate(clas,i,e))*:ary {Or[*ary]} ]
-									  				 | Apply[ .:name &{name=="clas"} Act[.:match] &{child(clas[i],match)&&clas[i]==match} {Apply["anything"]}] 
 									  				 | Apply[ .:name &{name=="clas"} CAct[.:match] &{child(clas[i],match)&&clas[i].to_s==match.to_s} {Apply["anything"]}] 
-
  										  			 | Bind[@name:name {predicate(clas,i,@expr)}:expr  {_Bind(name,expr)}]
 											  		 | .
 												  	 )
