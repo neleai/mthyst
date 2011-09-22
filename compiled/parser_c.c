@@ -74,17 +74,17 @@ fail: return failobj; }
 VALUE AmethystParser_addargs(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(5);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 it=rb_ary_new3(0);
- rb_ary_store(bind,0/*result*/,it); int oldpos1; while(1){oldpos1=ame_getpos(self);  it=CALL(addargs_AmethystParsercb_1,1,bind);  arg0=it; it=AmethystParser_clas(self ,arg0); FAILTEST(break1);
+ rb_ary_store(bind,0/*result*/,it); int oldpos1; while(1){oldpos1=ame_getpos(self);  it=rb_const_get(rb_cObject, rb_intern("Args")); arg0=it; it=AmethystParser_clas(self ,arg0); FAILTEST(break1);
  rb_ary_store(bind,1/*autovar*/,it); int oldpos2=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,rb_ary_entry(bind,1/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCore_anything(self ); FAILTEST(pass1);
- rb_ary_store(bind,2/*name*/,it); it=CALL(addargs_AmethystParsercb_2,1,bind); 
- rb_ary_store(bind,3/*autovar*/,it); it=CALL(addargs_AmethystParsercb_3,1,bind);   it=AmethystParser_eof(self ); FAILTEST(pass1);
+ rb_ary_store(bind,2/*name*/,it); it=CALL(addargs_AmethystParsercb_1,1,bind); 
+ rb_ary_store(bind,3/*autovar*/,it); it=CALL(addargs_AmethystParsercb_2,1,bind);   it=AmethystParser_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos2); ame_setlen(self,oldlen1);
 	if(fail1) goto break1;
- if (IGET(stop)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos1); it=CALL(addargs_AmethystParsercb_4,1,bind); 
+ if (IGET(stop)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos1); it=CALL(addargs_AmethystParsercb_3,1,bind); 
  rb_ary_store(bind,4/*_result*/,it); it=rb_ary_entry(bind,4/*_result*/);
 return it;
 fail: return failobj; }
@@ -1604,4 +1604,4 @@ rb_define_method(cls_AmethystParser,"spaces",AmethystParser_spaces,0);
 rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
 rb_define_method(cls_AmethystParser,"token",AmethystParser_token,1);
 rb_define_method(cls_AmethystParser,"upper",AmethystParser_upper,0);
- rb_eval_string("testversionparser('cf3cab261128eee010cc4dde48c932b4')");}
+ rb_eval_string("testversionparser('268ce9f093d454bfcc70be89ef74a926')");}

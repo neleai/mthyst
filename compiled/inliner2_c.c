@@ -44,10 +44,10 @@ return it;
 fail: return failobj; }
 VALUE DetectCalls_root(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(3);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
- it=CALL(root_DetectCallscb_1,1,bind);  arg0=it; it=DetectCalls_clas(self ,arg0); FAILTEST(fail);
+ it=rb_const_get(rb_cObject, rb_intern("Rule")); arg0=it; it=DetectCalls_clas(self ,arg0); FAILTEST(fail);
  rb_ary_store(bind,0/*autovar*/,it); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,rb_ary_entry(bind,0/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
- it=CALL(root_DetectCallscb_2,1,bind);   it=DetectCalls_traverse(self ); FAILTEST(pass1);it=CALL(root_DetectCallscb_3,1,bind); 
+ it=CALL(root_DetectCallscb_1,1,bind);   it=DetectCalls_traverse(self ); FAILTEST(pass1);it=CALL(root_DetectCallscb_2,1,bind); 
  rb_ary_store(bind,1/*autovar*/,it);   it=DetectCalls_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
@@ -151,11 +151,11 @@ return it;
 fail: return failobj; }
 VALUE DetectCalls_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(4);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
- it=CALL(visit_DetectCallscb_1,1,bind);  arg0=it; it=DetectCalls_clas(self ,arg0); FAILTEST(fail);
+ it=rb_const_get(rb_cObject, rb_intern("Apply")); arg0=it; it=DetectCalls_clas(self ,arg0); FAILTEST(fail);
  rb_ary_store(bind,0/*autovar*/,it); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,rb_ary_entry(bind,0/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCore_anything(self ); FAILTEST(pass1);
- rb_ary_store(bind,1/*name*/,it); int oldpos2; while(1){oldpos2=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break1); if (IGET(stop)!=Qnil){{oldpos2=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos2); it=CALL(visit_DetectCallscb_2,1,bind); 
+ rb_ary_store(bind,1/*name*/,it); int oldpos2; while(1){oldpos2=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break1); if (IGET(stop)!=Qnil){{oldpos2=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos2); it=CALL(visit_DetectCallscb_1,1,bind); 
  rb_ary_store(bind,2/*autovar*/,it);   it=DetectCalls_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
@@ -214,12 +214,12 @@ VALUE Inliner2_root(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(12);  int
  rb_ary_store(bind,1/*to*/,it); it=rb_ary_entry(bind,0/*from*/);
  rb_ary_store(bind,2/*autovar*/,it); it=CALL(root_Inliner2cb_1,1,bind); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,rb_ary_entry(bind,2/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-  it=CALL(root_Inliner2cb_2,1,bind);  arg0=it; it=Inliner2_clas(self ,arg0); FAILTEST(pass1);
+  it=rb_const_get(rb_cObject, rb_intern("Rule")); arg0=it; it=Inliner2_clas(self ,arg0); FAILTEST(pass1);
  rb_ary_store(bind,3/*autovar*/,it); int oldpos2=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
 ame_setsrc(self,rb_ary_entry(bind,3/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
- it=CALL(root_Inliner2cb_3,1,bind); 
- rb_ary_store(bind,4/*name*/,it); it=CALL(root_Inliner2cb_4,1,bind); 
- rb_ary_store(bind,5/*args*/,it); it=CALL(root_Inliner2cb_5,1,bind); it=CALL(root_Inliner2cb_6,1,bind); 
+ it=CALL(root_Inliner2cb_2,1,bind); 
+ rb_ary_store(bind,4/*name*/,it); it=CALL(root_Inliner2cb_3,1,bind); 
+ rb_ary_store(bind,5/*args*/,it); it=CALL(root_Inliner2cb_4,1,bind); it=CALL(root_Inliner2cb_5,1,bind); 
  rb_ary_store(bind,6/*body*/,it);   it=Inliner2_eof(self ); FAILTEST(pass2);
 	goto success2;
 	pass2: fail2=1;
@@ -230,10 +230,10 @@ ame_setsrc(self,rb_ary_entry(bind,3/*autovar*/)); ame_setpos(self,0); ame_setlen
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos1); ame_setlen(self,oldlen1);
 	if(fail1) goto fail;
-it=CALL(root_Inliner2cb_7,1,bind); it=rb_ary_entry(bind,1/*to*/);
- rb_ary_store(bind,7/*autovar*/,it); it=CALL(root_Inliner2cb_8,1,bind); int oldpos3=ame_getpos(self); int oldlen3=ame_getlen(self); VALUE oldsrc3=ame_getsrc(self); int fail3=0;
+it=CALL(root_Inliner2cb_6,1,bind); it=rb_ary_entry(bind,1/*to*/);
+ rb_ary_store(bind,7/*autovar*/,it); it=CALL(root_Inliner2cb_7,1,bind); int oldpos3=ame_getpos(self); int oldlen3=ame_getlen(self); VALUE oldsrc3=ame_getsrc(self); int fail3=0;
 ame_setsrc(self,rb_ary_entry(bind,7/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-  it=CALL(root_Inliner2cb_2,1,bind);  arg0=it; it=Inliner2_clas(self ,arg0); FAILTEST(pass3);
+  it=rb_const_get(rb_cObject, rb_intern("Rule")); arg0=it; it=Inliner2_clas(self ,arg0); FAILTEST(pass3);
  rb_ary_store(bind,8/*autovar*/,it); int oldpos4=ame_getpos(self); int oldlen4=ame_getlen(self); VALUE oldsrc4=ame_getsrc(self); int fail4=0;
 ame_setsrc(self,rb_ary_entry(bind,8/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=Inliner2_traverse(self ); FAILTEST(pass4);
@@ -359,19 +359,19 @@ return it;
 fail: return failobj; }
 VALUE Inliner2_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(6);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
- it=CALL(visit_Inliner2cb_1,1,bind);  arg0=it; it=Inliner2_clas(self ,arg0); FAILTEST(fail);
+ it=rb_const_get(rb_cObject, rb_intern("Apply")); arg0=it; it=Inliner2_clas(self ,arg0); FAILTEST(fail);
  rb_ary_store(bind,0/*autovar*/,it); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,rb_ary_entry(bind,0/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCore_anything(self ); FAILTEST(pass1);
- rb_ary_store(bind,1/*name*/,it); it=CALL(visit_Inliner2cb_2,1,bind); FAILTEST(pass1);it=rb_ary_new3(0);
+ rb_ary_store(bind,1/*name*/,it); it=CALL(visit_Inliner2cb_1,1,bind); FAILTEST(pass1);it=rb_ary_new3(0);
  rb_ary_store(bind,2/*autovar*/,it); int oldpos2; while(1){oldpos2=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break1);
- rb_ary_store(bind,3/*autovar*/,it); it=CALL(visit_Inliner2cb_3,1,bind);  if (IGET(stop)!=Qnil){{oldpos2=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos2); it=rb_ary_entry(bind,2/*autovar*/);
+ rb_ary_store(bind,3/*autovar*/,it); it=CALL(visit_Inliner2cb_2,1,bind);  if (IGET(stop)!=Qnil){{oldpos2=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos2); it=rb_ary_entry(bind,2/*autovar*/);
  rb_ary_store(bind,4/*args*/,it);   it=Inliner2_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos1); ame_setlen(self,oldlen1);
 	if(fail1) goto fail;
-it=CALL(visit_Inliner2cb_4,1,bind); 
+it=CALL(visit_Inliner2cb_3,1,bind); 
  rb_ary_store(bind,5/*_result*/,it); it=rb_ary_entry(bind,5/*_result*/);
 return it;
 fail: return failobj; }VALUE cls_Replace_Super;
@@ -424,7 +424,7 @@ VALUE Replace_Super_root(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(7); 
  rb_ary_store(bind,1/*to*/,it); it=CALL(root_Replace_Supercb_1,1,bind); it=rb_ary_entry(bind,1/*to*/);
  rb_ary_store(bind,2/*autovar*/,it); it=CALL(root_Replace_Supercb_2,1,bind); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,rb_ary_entry(bind,2/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-  it=CALL(root_Replace_Supercb_3,1,bind);  arg0=it; it=Replace_Super_clas(self ,arg0); FAILTEST(pass1);
+  it=rb_const_get(rb_cObject, rb_intern("Rule")); arg0=it; it=Replace_Super_clas(self ,arg0); FAILTEST(pass1);
  rb_ary_store(bind,3/*autovar*/,it); int oldpos2=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
 ame_setsrc(self,rb_ary_entry(bind,3/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=Replace_Super_traverse(self ); FAILTEST(pass2);
@@ -550,14 +550,14 @@ return it;
 fail: return failobj; }
 VALUE Replace_Super_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(7);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
- it=CALL(visit_Replace_Supercb_1,1,bind);  arg0=it; it=Replace_Super_clas(self ,arg0); FAILTEST(fail);
+ it=rb_const_get(rb_cObject, rb_intern("Apply")); arg0=it; it=Replace_Super_clas(self ,arg0); FAILTEST(fail);
  rb_ary_store(bind,0/*autovar*/,it); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,rb_ary_entry(bind,0/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCore_anything(self ); FAILTEST(pass1);
- rb_ary_store(bind,1/*name*/,it); it=CALL(visit_Replace_Supercb_2,1,bind); FAILTEST(pass1);it=rb_ary_new3(0);
+ rb_ary_store(bind,1/*name*/,it); it=CALL(visit_Replace_Supercb_1,1,bind); FAILTEST(pass1);it=rb_ary_new3(0);
  rb_ary_store(bind,2/*autovar*/,it); int oldpos2; while(1){oldpos2=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break1);
- rb_ary_store(bind,3/*autovar*/,it); it=CALL(visit_Replace_Supercb_3,1,bind);  if (IGET(stop)!=Qnil){{oldpos2=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos2); it=rb_ary_entry(bind,2/*autovar*/);
- rb_ary_store(bind,4/*args*/,it); it=CALL(visit_Replace_Supercb_4,1,bind); 
+ rb_ary_store(bind,3/*autovar*/,it); it=CALL(visit_Replace_Supercb_2,1,bind);  if (IGET(stop)!=Qnil){{oldpos2=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos2); it=rb_ary_entry(bind,2/*autovar*/);
+ rb_ary_store(bind,4/*args*/,it); it=CALL(visit_Replace_Supercb_3,1,bind); 
  rb_ary_store(bind,5/*autovar*/,it);   it=Replace_Super_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
@@ -600,4 +600,4 @@ rb_define_method(cls_Replace_Super,"root",Replace_Super_root,0);
 rb_define_method(cls_Replace_Super,"traverse",Replace_Super_traverse,0);
 rb_define_method(cls_Replace_Super,"traverse_item",Replace_Super_traverse_item,0);
 rb_define_method(cls_Replace_Super,"visit",Replace_Super_visit,0);
- rb_eval_string("testversioninliner2('0eed4e2a8f7fcce9e7fd646037606bbe')");}
+ rb_eval_string("testversioninliner2('ba4b474585834ce727b76845d7737713')");}

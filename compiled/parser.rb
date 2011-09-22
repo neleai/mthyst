@@ -33,15 +33,12 @@ def _args_AmethystParsercb_1(bind)
 Args[{:ary=>([bind[0]]+bind[2]+[bind[1]])}]
 end
 def addargs_AmethystParsercb_1(bind)
-Args
-end
-def addargs_AmethystParsercb_2(bind)
 _Local(bind[2]) 
 end
-def addargs_AmethystParsercb_3(bind)
+def addargs_AmethystParsercb_2(bind)
 _append(bind[0],bind[3])
 end
-def addargs_AmethystParsercb_4(bind)
+def addargs_AmethystParsercb_3(bind)
 bind[0] || []
 end
 def application_AmethystParsercb_1(bind)
@@ -334,7 +331,7 @@ end
 
 
 def parser_compiled_by
-'49594132eda59b890c7349bd50f344f0'
+'ea97b696acc5094888ad81c0e7b8e0f3'
 end
 def parser_source_hash
 'd1f9e8937adb72c1bb0d0e1f84feabb9'
@@ -343,6 +340,6 @@ def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'cf3cab261128eee010cc4dde48c932b4'
+'268ce9f093d454bfcc70be89ef74a926'
 end
   require 'compiled/parser_c'

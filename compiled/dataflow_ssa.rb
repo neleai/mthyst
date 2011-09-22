@@ -123,34 +123,31 @@ def root_Dataflowcb_1(bind)
 bind[0]=[bind[0]]
 end
 def root_Dataflowcb_10(bind)
-@src.body=bind[9]
-end
-def root_Dataflowcb_11(bind)
 @src.reachable=@edges.reverse.reachable(@marked+[ssanum(@src.body[-1]),@src.body]); @src.cfg=@edges; 
 end
 def root_Dataflowcb_2(bind)
-Rule
-end
-def root_Dataflowcb_3(bind)
 @bnding=@src.bnding
 end
-def root_Dataflowcb_4(bind)
+def root_Dataflowcb_3(bind)
 @src.args
 end
-def root_Dataflowcb_5(bind)
+def root_Dataflowcb_4(bind)
 bind[2]=[bind[2]]
 end
-def root_Dataflowcb_6(bind)
+def root_Dataflowcb_5(bind)
 _append(bind[4],bind[5])
 end
-def root_Dataflowcb_7(bind)
+def root_Dataflowcb_6(bind)
 bind[6].each{|v| @marked<<ssanum(v)};@src.args=bind[6]
 end
-def root_Dataflowcb_8(bind)
+def root_Dataflowcb_7(bind)
 @src.body
 end
-def root_Dataflowcb_9(bind)
+def root_Dataflowcb_8(bind)
 bind[7]=[bind[7]]
+end
+def root_Dataflowcb_9(bind)
+@src.body=bind[9]
 end
 def traverse_Dataflowcb_1(bind)
 @changed
@@ -371,12 +368,9 @@ def root_Dead_Code_Deleter3cb_1(bind)
 bind[0]=[bind[0]]
 end
 def root_Dead_Code_Deleter3cb_2(bind)
-Rule
-end
-def root_Dead_Code_Deleter3cb_3(bind)
 @reachable=@src.reachable
 end
-def root_Dead_Code_Deleter3cb_4(bind)
+def root_Dead_Code_Deleter3cb_3(bind)
 @src.reachable=nil;@src.cfg=nil
 end
 def traverse_Dead_Code_Deleter3cb_1(bind)
@@ -450,9 +444,6 @@ end
 def root_Forget_SSAcb_2(bind)
 bind[0]=[bind[0]]
 end
-def root_Forget_SSAcb_3(bind)
-Rule
-end
 def traverse_Forget_SSAcb_1(bind)
 @changed
 end
@@ -483,9 +474,6 @@ def traverse_item_Forget_SSAcb_2(bind)
 bind[3]<<bind[4]
 end
 def visit_Forget_SSAcb_1(bind)
-Local
-end
-def visit_Forget_SSAcb_2(bind)
 Local[bind[1],bind[2]]
 end
 
@@ -493,7 +481,7 @@ end
 
 
 def dataflow_ssa_compiled_by
-'49594132eda59b890c7349bd50f344f0'
+'ea97b696acc5094888ad81c0e7b8e0f3'
 end
 def dataflow_ssa_source_hash
 '256ed86af86d95d9b8953797b6b14661'
@@ -502,6 +490,6 @@ def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'18d5f5ff77dcf8137a5d60393aa1bc3f'
+'7f77b4d66b10be6beb30d2d7d54743fc'
 end
   require 'compiled/dataflow_ssa_c'

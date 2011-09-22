@@ -121,41 +121,38 @@ def traverse_item_Left_Factorcb_2(bind)
 bind[3]<<bind[4]
 end
 def visit_Left_Factorcb_1(bind)
-Or
-end
-def visit_Left_Factorcb_10(bind)
-Or[*(bind[5]+merge(bind[3]))]
-end
-def visit_Left_Factorcb_2(bind)
 [bind[2]]
 end
-def visit_Left_Factorcb_3(bind)
+def visit_Left_Factorcb_2(bind)
 first(bind[2])
 end
-def visit_Left_Factorcb_4(bind)
+def visit_Left_Factorcb_3(bind)
 (bind[4]==first(bind[6])) || FAIL
 end
-def visit_Left_Factorcb_5(bind)
+def visit_Left_Factorcb_4(bind)
 bind[3]+[bind[6]]
 end
-def visit_Left_Factorcb_6(bind)
+def visit_Left_Factorcb_5(bind)
 bind[4]==first(bind[6])
 end
-def visit_Left_Factorcb_7(bind)
+def visit_Left_Factorcb_6(bind)
 bind[5]+merge(bind[3])
 end
-def visit_Left_Factorcb_8(bind)
+def visit_Left_Factorcb_7(bind)
 first(bind[6])
 end
-def visit_Left_Factorcb_9(bind)
+def visit_Left_Factorcb_8(bind)
 [bind[6]]
+end
+def visit_Left_Factorcb_9(bind)
+Or[*(bind[5]+merge(bind[3]))]
 end
 
 end
 
 
 def left_factor_compiled_by
-'49594132eda59b890c7349bd50f344f0'
+'ea97b696acc5094888ad81c0e7b8e0f3'
 end
 def left_factor_source_hash
 '735fd68abfa48b088273bd588cc38a2c'
@@ -164,6 +161,6 @@ def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version
 end
 def left_factor_version
-'7efa570f165312d8a85dbfacb028d89d'
+'fedabc152c81a9b177c8d9808515b8ab'
 end
   require 'compiled/left_factor_c'

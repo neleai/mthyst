@@ -16,12 +16,9 @@ def fails_DetectCallscb_1(bind)
 (false) || FAIL
 end
 def root_DetectCallscb_1(bind)
-Rule
-end
-def root_DetectCallscb_2(bind)
 @calls={}
 end
-def root_DetectCallscb_3(bind)
+def root_DetectCallscb_2(bind)
 @calls
 end
 def traverse_DetectCallscb_1(bind)
@@ -34,9 +31,6 @@ def traverse_item_DetectCallscb_1(bind)
 _append(bind[2],bind[3])
 end
 def visit_DetectCallscb_1(bind)
-Apply
-end
-def visit_DetectCallscb_2(bind)
 @calls[bind[1]]=true 
 end
 
@@ -64,24 +58,21 @@ def root_Inliner2cb_1(bind)
 bind[2]=[bind[2]]
 end
 def root_Inliner2cb_2(bind)
-Rule
-end
-def root_Inliner2cb_3(bind)
 @src.name
 end
-def root_Inliner2cb_4(bind)
+def root_Inliner2cb_3(bind)
 @src.args
 end
-def root_Inliner2cb_5(bind)
+def root_Inliner2cb_4(bind)
 @src.locals
 end
-def root_Inliner2cb_6(bind)
+def root_Inliner2cb_5(bind)
 @src.body
 end
-def root_Inliner2cb_7(bind)
+def root_Inliner2cb_6(bind)
 @name=bind[4];@args=bind[5];@body=bind[6] 
 end
-def root_Inliner2cb_8(bind)
+def root_Inliner2cb_7(bind)
 bind[7]=[bind[7]]
 end
 def traverse_Inliner2cb_1(bind)
@@ -117,15 +108,12 @@ def traverse_item_Inliner2cb_2(bind)
 bind[3]<<bind[4]
 end
 def visit_Inliner2cb_1(bind)
-Apply
-end
-def visit_Inliner2cb_2(bind)
 (bind[1]==@name) || FAIL
 end
-def visit_Inliner2cb_3(bind)
+def visit_Inliner2cb_2(bind)
 _append(bind[2],bind[3])
 end
-def visit_Inliner2cb_4(bind)
+def visit_Inliner2cb_3(bind)
 body=deep_clone(@body); bind[4].each_index{|i| body=Seq[_Bind(@args[i],bind[4][i]),body] } ; body
 end
 
@@ -154,9 +142,6 @@ def root_Replace_Supercb_1(bind)
 end
 def root_Replace_Supercb_2(bind)
 bind[2]=[bind[2]]
-end
-def root_Replace_Supercb_3(bind)
-Rule
 end
 def traverse_Replace_Supercb_1(bind)
 @changed
@@ -191,15 +176,12 @@ def traverse_item_Replace_Supercb_2(bind)
 bind[3]<<bind[4]
 end
 def visit_Replace_Supercb_1(bind)
-Apply
-end
-def visit_Replace_Supercb_2(bind)
 (bind[1]=="super") || FAIL
 end
-def visit_Replace_Supercb_3(bind)
+def visit_Replace_Supercb_2(bind)
 _append(bind[2],bind[3])
 end
-def visit_Replace_Supercb_4(bind)
+def visit_Replace_Supercb_3(bind)
 Apply[*([@name]+bind[4])] 
 end
 
@@ -207,7 +189,7 @@ end
 
 
 def inliner2_compiled_by
-'49594132eda59b890c7349bd50f344f0'
+'ea97b696acc5094888ad81c0e7b8e0f3'
 end
 def inliner2_source_hash
 'e70b868139b66428259e6a338880dd0c'
@@ -216,6 +198,6 @@ def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version
 end
 def inliner2_version
-'0eed4e2a8f7fcce9e7fd646037606bbe'
+'ba4b474585834ce727b76845d7737713'
 end
   require 'compiled/inliner2_c'

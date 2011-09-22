@@ -199,7 +199,8 @@ class PureAct
 end
 class CAct
 	def pure;	true;	end
-	def ccode	
+	def ccode	#rewrite in amethyst
+		return "rb_const_get(rb_cObject, rb_intern(\"#{ary[0].inspect}\"))" if ary[0].is_a?(Class)
 		return "rb_ary_new3(0)" if ary[0].is_a?(Array)
 		return "Q#{ary[0].inspect}" if [true,false,nil].include?(ary[0])
 		#ugly but needed for arbitrary precision(alternatively emit int2fix when fits fixnum range)
@@ -229,8 +230,9 @@ class Act
 			exp=exp[0] if exp.is_a?(Args) && exp.size==1
 		  return Act.create(exp,{:pure=>true}).freeze if exp.is_a?(Exp)
 			return CAct[[]] if exp=="[]"
-			return CAct[eval(exp)] if ["true","false","nil"].include?(exp)
 			return CAct[exp.to_i] if exp.is_a?(String) && exp==exp.to_i.to_s
+			return CAct[eval(exp)] if exp=~/^[A-Z][a-zA-Z0-9_]*$/ && eval(exp).is_a?(Class)
+			return CAct[eval(exp)] if ["true","false","nil"].include?(exp)
 			return CAct[eval('"'+exp[1...-1]+'"')] if exp.is_a?(String) && ((exp[0]==?\" && exp[-1]==?\")|| (exp[0]==?' && exp[-1]==?')) && !(exp=~/\#/)
 		end
 		@pure=true if exp.is_a?(Exp)
