@@ -708,7 +708,7 @@ class Detect_ClasSwitch < Detect_First
 		return r
 	end
 	def child(par,chld)
-		 par,chld=eval(par),eval(chld)
+		 par,chld=eval(par.to_s),eval(chld.to_s)
 		 par<=chld
 	end
 	def includes(ary,i,p)
@@ -1156,7 +1156,7 @@ def detect_switch_compiled_by
 '6520799ebd592a173c2955a115c807c0'
 end
 def detect_switch_source_hash
-'f597ff946ab32d67c0f16e8b0e75c7fa'
+'66bfa5c0e523044bc5e537d221fb5b01'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version

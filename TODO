@@ -60,3 +60,4 @@ name immutability and equalization and use it in lattices
 operator for case insensivity
 
 bind expr in ary instead in @expr
+classes directly as CAct

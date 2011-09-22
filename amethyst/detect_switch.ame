@@ -306,7 +306,7 @@ class Detect_ClasSwitch < Detect_First
 		return r
 	end
 	def child(par,chld)
-		 par,chld=eval(par),eval(chld)
+		 par,chld=eval(par.to_s),eval(chld.to_s)
 		 par<=chld
 	end
 	def includes(ary,i,p)
