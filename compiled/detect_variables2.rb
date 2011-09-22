@@ -1,10 +1,10 @@
 class Analyze_Variables2 < Traverser_Clone2
 def self.switchcb_Analyze_Variables21(e)
-return 0 if e<=Args
-return 1 if e<=Act
-return 2 if e<=Result
+return 0 if e<=Seq
+return 1 if e<=Result
+return 2 if e<=Args
 return 3 if e<=Or
-return 4 if e<=Seq
+return 4 if e<=Act
 return 5 if e<=Object
 return 6
 end
@@ -54,15 +54,18 @@ def itrans_Analyze_Variables2cb_1(bind)
 @src.rules
 end
 def itrans_Analyze_Variables2cb_2(bind)
-_append(bind[4],bind[7])
+bind[2]=[bind[2]]
 end
 def itrans_Analyze_Variables2cb_3(bind)
-@src.rules=bind[8]
+_append(bind[4],bind[7])
 end
 def itrans_Analyze_Variables2cb_4(bind)
-@src
+@src.rules=bind[8]
 end
 def itrans_Analyze_Variables2cb_5(bind)
+@src
+end
+def itrans_Analyze_Variables2cb_6(bind)
 _append(bind[0],bind[10])
 end
 def root_Analyze_Variables2cb_1(bind)
@@ -110,37 +113,37 @@ def traverse_item_Analyze_Variables2cb_2(bind)
 bind[3]<<bind[4]
 end
 def visit_Analyze_Variables2cb_1(bind)
-@src.ary.map{|aa| @variables[aa] }
+_append(bind[1],bind[2])
 end
 def visit_Analyze_Variables2cb_10(bind)
-_append(bind[25],bind[26])
-end
-def visit_Analyze_Variables2cb_11(bind)
-Seq[*bind[22]]
-end
-def visit_Analyze_Variables2cb_2(bind)
-bind[2]=[bind[2]]
-end
-def visit_Analyze_Variables2cb_3(bind)
-connectstring(bind[4].flatten)
-end
-def visit_Analyze_Variables2cb_4(bind)
-(bind[5].size==1&&(bind[5][0].is_a?(Local)||bind[5][0].is_a?(Global)||bind[5][0].is_a?(Key))) ? bind[5][0] : Args[*bind[5]]
-end
-def visit_Analyze_Variables2cb_5(bind)
 @src.ary
 end
-def visit_Analyze_Variables2cb_6(bind)
-bind[11]=[bind[11]]
+def visit_Analyze_Variables2cb_11(bind)
+bind[22]=[bind[22]]
 end
-def visit_Analyze_Variables2cb_7(bind)
+def visit_Analyze_Variables2cb_2(bind)
+Seq[*bind[3]]
+end
+def visit_Analyze_Variables2cb_3(bind)
 vars=@locals.select{|aa| @src.vars.include? aa[0].to_sym}.uniq ;Result[{:name=>@src.name,:vars=>vars}]
 end
+def visit_Analyze_Variables2cb_4(bind)
+@src.ary.map{|aa| @variables[aa] }
+end
+def visit_Analyze_Variables2cb_5(bind)
+bind[10]=[bind[10]]
+end
+def visit_Analyze_Variables2cb_6(bind)
+connectstring(bind[12].flatten)
+end
+def visit_Analyze_Variables2cb_7(bind)
+(bind[13].size==1&&(bind[13][0].is_a?(Local)||bind[13][0].is_a?(Global)||bind[13][0].is_a?(Key))) ? bind[13][0] : Args[*bind[13]]
+end
 def visit_Analyze_Variables2cb_8(bind)
-_append(bind[20],bind[21])
+_append(bind[17],bind[18])
 end
 def visit_Analyze_Variables2cb_9(bind)
-Or[*bind[22]]
+Or[*bind[3]]
 end
 
 end
@@ -149,7 +152,7 @@ end
 
 
 def detect_variables2_compiled_by
-'4f3923b02772e6e29448788a59269545'
+'ab38faab4b54d801ab71fb1398845da2'
 end
 def detect_variables2_source_hash
 '56196ab0e78188e5a2d6bc8b4c79e49b'
@@ -158,6 +161,6 @@ def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'c63afcbd49c33f59101efa0db952ece7'
+'67c2a3a7641786410fe56258e8accbcd'
 end
   require 'compiled/detect_variables2_c'

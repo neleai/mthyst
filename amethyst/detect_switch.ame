@@ -136,7 +136,7 @@ class ClasLattice < FirstLattice
     c
   end
   def self.top
-    ClasLattice["Object"]
+    ClasLattice[Object]
   end
 end
 class First_Dataflow < Amethyst
@@ -260,7 +260,7 @@ amethyst Switch_Dataflow < First_Dataflow{
 }
 
 amethyst ClasSwitch_Dataflow < First_Dataflow{
-  first = Apply[ ["clas"] CAct[.:cls] {lattice[cls.to_s]}]
+  first = Apply[ ["clas"] CAct[.:cls] {lattice[cls]}]
         | super
 				| Apply[ :name &{$rules[name]} .* {$rules[name].body}=>value]
 
@@ -306,7 +306,7 @@ class Detect_ClasSwitch < Detect_First
 		return r
 	end
 	def child(par,chld)
-		 par,chld=eval(par.to_s),eval(chld.to_s)
+		 #par,chld=eval(par.to_s),eval(chld.to_s)
 		 par<=chld
 	end
 	def includes(ary,i,p)
@@ -330,7 +330,7 @@ class Detect_ClasSwitch < Detect_First
 		[rb, "FIX2INT(CALL(switchcb#{@name}#{@no},1,ame_curobj(self)))"]
 	end
 	def topsort(a)
-		a=a.uniq
+		a=a.uniq.sort_by{|a| a.to_s}
 		g=Oriented_Graph.new
 		a.each{|u| a.each{|v| g.add(u,v) if child(v,u)}}
 	 	g.topo_order
@@ -389,7 +389,7 @@ amethyst Detect_ClasSwitch < Detect_First {
 	visit = Or[ {ClasLattice.bottom}:ary2 {[]}:ary3 {[]}:els
  		(traverse_item:e &{first(e)} {e}:els[] {ary2|=first(e)})* &eof
 		{ary2}:firs
-		{ary2=topsort(ary2.ary+["Object"])}
+		{ary2=topsort(ary2.ary+[Object])}
 		&{ary2.size>1}
 		{Or[*els]}:new_or
     {	ary2.each_index{|i|
@@ -406,7 +406,7 @@ amethyst Detect_ClasSwitch < Detect_First {
 											| &{!includes(clas,i,first(p))} {Placeholder}	
 											|	{p}=>( Seq[ .:e predicate(clas,i,e):f .*:rest {Seq[*([f]+rest)]} ]
 														 | Or[ (.:e predicate(clas,i,e))*:ary {Or[*ary]} ]
-									  				 | Apply[ .:name &{name=="clas"} CAct[.:match] &{child(clas[i],match)&&clas[i].to_s==match.to_s} {Apply["anything"]}] 
+									  				 | Apply[ .:name &{name=="clas"} CAct[.:match] &{child(clas[i],match)&&clas[i]==match} {Apply["anything"]}] 
  										  			 | Bind[@name:name {predicate(clas,i,@expr)}:expr  {_Bind(name,expr)}]
 											  		 | .
 												  	 )

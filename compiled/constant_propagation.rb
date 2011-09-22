@@ -36,8 +36,8 @@ end
 class Constant_Propagator < Amethyst
 def self.switchcb_Constant_Propagator2(e)
 return 0 if e<=Local
-return 1 if e<=Bind
-return 2 if e<=Act
+return 1 if e<=Act
+return 2 if e<=Bind
 return 3 if e<=CAct
 return 4 if e<=Object
 return 5
@@ -47,8 +47,8 @@ def switchcbConstant_Propagator2(e)
 @@switchhashConstant_Propagator2[e.class]
 end
 def self.switchcb_Constant_Propagator1(e)
-return 0 if e<=Local
-return 1 if e<=Exp
+return 0 if e<=Exp
+return 1 if e<=Local
 return 2 if e<=Object
 return 3
 end
@@ -77,13 +77,13 @@ def step_Constant_Propagatorcb_3(bind)
 ConstantLattice[Top]
 end
 def step_Constant_Propagatorcb_4(bind)
-@src.expr
+ConstantLattice[@src]
 end
 def step_Constant_Propagatorcb_5(bind)
 @src
 end
 def step_Constant_Propagatorcb_6(bind)
-ConstantLattice[@src]
+@src.expr
 end
 def step_Constant_Propagatorcb_7(bind)
 ConstantLattice[bind[14]]
@@ -94,9 +94,9 @@ end
 
 class Constant_Traverser < Traverser_Clone2
 def self.switchcb_Constant_Traverser3(e)
-return 0 if e<=Bind
+return 0 if e<=Local
 return 1 if e<=Act
-return 2 if e<=Local
+return 2 if e<=Bind
 return 3 if e<=Object
 return 4
 end
@@ -156,26 +156,26 @@ def traverse_item_Constant_Traversercb_2(bind)
 bind[3]<<bind[4]
 end
 def visit_Constant_Traversercb_1(bind)
-@src.expr
+@consts[@src.ssaname] ? @consts[@src.ssaname] : @src 
 end
 def visit_Constant_Traversercb_2(bind)
-bind[1]=[bind[1]]
-end
-def visit_Constant_Traversercb_3(bind)
-_Bind(@src.name,bind[2])
-end
-def visit_Constant_Traversercb_4(bind)
 @src
 end
+def visit_Constant_Traversercb_3(bind)
+@src.expr
+end
+def visit_Constant_Traversercb_4(bind)
+bind[6]=[bind[6]]
+end
 def visit_Constant_Traversercb_5(bind)
-@consts[@src.ssaname] ? @consts[@src.ssaname] : @src 
+_Bind(@src.name,bind[7])
 end
 
 end
 
 
 def constant_propagation_compiled_by
-'4f3923b02772e6e29448788a59269545'
+'ab38faab4b54d801ab71fb1398845da2'
 end
 def constant_propagation_source_hash
 '4a7badb332b849d427161a22fcb99ead'
@@ -184,6 +184,6 @@ def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
 end
 def constant_propagation_version
-'8fc5f124ca288566aab77980520d1864'
+'bab24607c16da39d3d08ff30e4611672'
 end
   require 'compiled/constant_propagation_c'
