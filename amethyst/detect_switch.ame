@@ -217,6 +217,13 @@ class Switch_Dataflow < First_Dataflow
 	def lattice
 		CharLattice
 	end
+  def empty?(s)
+    if !@sizedf
+      @sizedf=Sizes_Dataflow.new
+      @sizedf.parse(:root,[])
+    end
+    @sizedf.analyze(s)==0
+  end
 end
 
 class ClasSwitch_Dataflow < First_Dataflow
