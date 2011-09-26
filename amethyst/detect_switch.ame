@@ -227,10 +227,8 @@ class Switch_Dataflow < First_Dataflow
 		CharLattice
 	end
   def empty?(s)
-		a=	@vals[s].ary.include?(Empty)
     b=($sizedf.analyze(s).size==0)
-		puts "#{a} #{b} #{s.inspect} #{@vals[s].inspect} #{$sizedf.analyze(s).inspect}" if a!=b
-		true
+		b
   end
 end
 
@@ -239,7 +237,7 @@ class ClasSwitch_Dataflow < First_Dataflow
 		ClasLattice
 	end
   def empty?(s)
-    $sizedf.analyze(s)==0
+    $sizedf.analyze(s).size==0
   end
 end
 amethyst First_Dataflow {
@@ -294,7 +292,7 @@ class Detect_Switch < Detect_First
 		$sizedf.parse(:root,[])
 	end
 	def empty?(s)	
-		$sizedf.analyze(s)==0
+		$sizedf.analyze(s).size==0
 	end
 	def first(s)
 		if !@switchdf
@@ -302,7 +300,7 @@ class Detect_Switch < Detect_First
 			@switchdf.parse(:root,[])
 		end
 		r=@switchdf.analyze(s)
-		r+= CharLattice.empty if empty?(s)
+		r|= CharLattice.empty if empty?(s)
 		r
 	end
 	def intersects(ar,el)

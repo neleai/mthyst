@@ -227,10 +227,8 @@ class Switch_Dataflow < First_Dataflow
 		CharLattice
 	end
   def empty?(s)
-		a=	@vals[s].ary.include?(Empty)
     b=($sizedf.analyze(s).size==0)
-		puts "#{a} #{b} #{s.inspect} #{@vals[s].inspect} #{$sizedf.analyze(s).inspect}" if a!=b
-		true
+		b
   end
 end
 
@@ -239,7 +237,7 @@ class ClasSwitch_Dataflow < First_Dataflow
 		ClasLattice
 	end
   def empty?(s)
-    $sizedf.analyze(s)==0
+    $sizedf.analyze(s).size==0
   end
 end
 class First_Dataflow < Amethyst
@@ -703,7 +701,7 @@ class Detect_Switch < Detect_First
 		$sizedf.parse(:root,[])
 	end
 	def empty?(s)	
-		$sizedf.analyze(s)==0
+		$sizedf.analyze(s).size==0
 	end
 	def first(s)
 		if !@switchdf
@@ -711,7 +709,7 @@ class Detect_Switch < Detect_First
 			@switchdf.parse(:root,[])
 		end
 		r=@switchdf.analyze(s)
-		r+= CharLattice.empty if empty?(s)
+		r|= CharLattice.empty if empty?(s)
 		r
 	end
 	def intersects(ar,el)
@@ -1159,10 +1157,10 @@ end
 
 
 def detect_switch_compiled_by
-'4bcf25d870da0db66352f3a086498180'
+'08488c6a28acbf0fc13e88fbfa52add1'
 end
 def detect_switch_source_hash
-'f28413ec77a57e8d05a8ff9d3fa37015'
+'398424dd1ece392b82fa410d6a8c9271'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
