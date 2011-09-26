@@ -335,7 +335,7 @@ class Detect_ClasSwitch < Detect_First
 	def topsort(a)
 		a=a.uniq.sort_by{|a| a.to_s}
 		g=Oriented_Graph.new
-		a.each{|u| a.each{|v| g.add(u,v) if child(v,u)}}
+		a.each{|u| a.each{|v| g.add(u,v) if child(v,u) || (!child(u,v)&& u.to_s>v.to_s)}}
 	 	g.topo_order
 	end
 end

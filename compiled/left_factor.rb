@@ -8,8 +8,8 @@ end
 
 class Left_Factor < Traverser_Clone2
 def self.switchcb_Left_Factor1(e)
-return 0 if e<=Seq
-return 1 if e<=Bind
+return 0 if e<=Bind
+return 1 if e<=Seq
 return 2 if e<=Object
 return 3
 end
@@ -37,8 +37,8 @@ def switchcbLeft_Factor3(e)
 @@switchhashLeft_Factor3[e.class]
 end
 def self.switchcb_Left_Factor4(e)
-return 0 if e<=Seq
-return 1 if e<=Bind
+return 0 if e<=Bind
+return 1 if e<=Seq
 return 2 if e<=Object
 return 3
 end
@@ -53,7 +53,7 @@ def binds_Left_Factorcb_2(bind)
 @src.expr
 end
 def binds_Left_Factorcb_3(bind)
-_Bind(@src.name,bind[8])
+_Bind(@src.name,bind[4])
 end
 def clas_Left_Factorcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -152,7 +152,7 @@ end
 
 
 def left_factor_compiled_by
-'6ae5485046c8cbad7e497513c567604c'
+'965deb8de8a7004c9f5dd965659b9ca3'
 end
 def left_factor_source_hash
 '735fd68abfa48b088273bd588cc38a2c'
@@ -161,6 +161,6 @@ def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version
 end
 def left_factor_version
-'384f493de1694a75963f9cca9e9ce5d3'
+'26107589ff833e361db4e14f617ca0b8'
 end
   require 'compiled/left_factor_c'
