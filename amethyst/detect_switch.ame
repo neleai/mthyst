@@ -19,6 +19,9 @@ class SizesLattice
 	def self.empty
 		self[0]
 	end
+	def self.default
+		self[0]
+	end
 	def self.top
 		self[1.0/0.0]
 	end
@@ -77,6 +80,9 @@ class CharLattice < FirstLattice
 	end
 	def self.top
 		CharLattice[[0,255]]
+	end
+	def self.default
+		top|empty
 	end
 	def cchar(c)
 		return "UC('\\'')" if c==?'
@@ -138,6 +144,9 @@ class ClasLattice < FirstLattice
   def self.top
     ClasLattice[Object]
   end
+	def self.default
+		top|empty
+	end
 end
 class First_Dataflow < Amethyst
 	def initialize
@@ -219,8 +228,9 @@ class Switch_Dataflow < First_Dataflow
 	end
   def empty?(s)
 		a=	@vals[s].ary.include?(Empty)
-    b=($sizedf.analyze(s)==0)
-		puts "#{a} #{b} #{s.inspect}" if a!=b
+    b=($sizedf.analyze(s).size==0)
+		puts "#{a} #{b} #{s.inspect} #{@vals[s].inspect} #{$sizedf.analyze(s).inspect}" if a!=b
+		true
   end
 end
 
@@ -245,7 +255,7 @@ amethyst First_Dataflow {
 				| Switch[value*:{it.inject(:|)}]
 	      | Bind[@expr=>value] 
 				| (Act|CAct|Local|Result|Cut|Stop)[.* {lattice.empty} ]
-				| . {lattice.top|lattice.empty}
+				| . {lattice.default}
 }  			
 
 amethyst Sizes_Dataflow < First_Dataflow {

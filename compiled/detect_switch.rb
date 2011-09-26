@@ -19,6 +19,9 @@ class SizesLattice
 	def self.empty
 		self[0]
 	end
+	def self.default
+		self[0]
+	end
 	def self.top
 		self[1.0/0.0]
 	end
@@ -77,6 +80,9 @@ class CharLattice < FirstLattice
 	end
 	def self.top
 		CharLattice[[0,255]]
+	end
+	def self.default
+		top|empty
 	end
 	def cchar(c)
 		return "UC('\\'')" if c==?'
@@ -138,6 +144,9 @@ class ClasLattice < FirstLattice
   def self.top
     ClasLattice[Object]
   end
+	def self.default
+		top|empty
+	end
 end
 class First_Dataflow < Amethyst
 	def initialize
@@ -219,8 +228,9 @@ class Switch_Dataflow < First_Dataflow
 	end
   def empty?(s)
 		a=	@vals[s].ary.include?(Empty)
-    b=($sizedf.analyze(s)==0)
-		puts "#{a} #{b} #{s.inspect}" if a!=b
+    b=($sizedf.analyze(s).size==0)
+		puts "#{a} #{b} #{s.inspect} #{@vals[s].inspect} #{$sizedf.analyze(s).inspect}" if a!=b
+		true
   end
 end
 
@@ -286,7 +296,7 @@ def first_First_Dataflowcb_13(bind)
 empty?(bind[22])
 end
 def first_First_Dataflowcb_2(bind)
-lattice.top|lattice.empty
+lattice.default
 end
 def first_First_Dataflowcb_3(bind)
 (@src.first.is_a?(lattice)) || FAIL
@@ -386,7 +396,7 @@ def first_Sizes_Dataflow_Sizes_Dataflowcb_13(bind)
 empty?(bind[22])
 end
 def first_Sizes_Dataflow_Sizes_Dataflowcb_2(bind)
-lattice.top|lattice.empty
+lattice.default
 end
 def first_Sizes_Dataflow_Sizes_Dataflowcb_3(bind)
 (@src.first.is_a?(lattice)) || FAIL
@@ -508,7 +518,7 @@ def first_Switch_Dataflow_Switch_Dataflowcb_13(bind)
 empty?(bind[22])
 end
 def first_Switch_Dataflow_Switch_Dataflowcb_2(bind)
-lattice.top|lattice.empty
+lattice.default
 end
 def first_Switch_Dataflow_Switch_Dataflowcb_3(bind)
 (@src.first.is_a?(lattice)) || FAIL
@@ -624,7 +634,7 @@ def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_13(bind)
 empty?(bind[22])
 end
 def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_2(bind)
-lattice.top|lattice.empty
+lattice.default
 end
 def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_3(bind)
 (@src.first.is_a?(lattice)) || FAIL
@@ -1152,7 +1162,7 @@ def detect_switch_compiled_by
 '4bcf25d870da0db66352f3a086498180'
 end
 def detect_switch_source_hash
-'78dd3bcc3c80118fe0b0b4d5a1264495'
+'f28413ec77a57e8d05a8ff9d3fa37015'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
