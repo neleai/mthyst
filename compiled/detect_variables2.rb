@@ -6,7 +6,6 @@ return 2 if e<=Or
 return 3 if e<=Result
 return 4 if e<=Seq
 return 5 if e<=Object
-return 6
 end
 @@switchhashAnalyze_Variables21=Hash.new{|h,k| h[k]=switchcb_Analyze_Variables21(k)}
 def switchcbAnalyze_Variables21(e)
@@ -15,7 +14,6 @@ end
 def self.switchcb_Analyze_Variables22(e)
 return 0 if e<=Grammar
 return 1 if e<=Object
-return 2
 end
 @@switchhashAnalyze_Variables22=Hash.new{|h,k| h[k]=switchcb_Analyze_Variables22(k)}
 def switchcbAnalyze_Variables22(e)
@@ -25,7 +23,6 @@ def self.switchcb_Analyze_Variables23(e)
 return 0 if e<=Args
 return 1 if e<=Strin
 return 2 if e<=Object
-return 3
 end
 @@switchhashAnalyze_Variables23=Hash.new{|h,k| h[k]=switchcb_Analyze_Variables23(k)}
 def switchcbAnalyze_Variables23(e)
@@ -35,7 +32,6 @@ def self.switchcb_Analyze_Variables24(e)
 return 0 if e<=AmethystAST
 return 1 if e<=Array
 return 2 if e<=Object
-return 3
 end
 @@switchhashAnalyze_Variables24=Hash.new{|h,k| h[k]=switchcb_Analyze_Variables24(k)}
 def switchcbAnalyze_Variables24(e)
@@ -149,7 +145,7 @@ end
 
 
 def detect_variables2_compiled_by
-'965deb8de8a7004c9f5dd965659b9ca3'
+'4bcf25d870da0db66352f3a086498180'
 end
 def detect_variables2_source_hash
 '56196ab0e78188e5a2d6bc8b4c79e49b'

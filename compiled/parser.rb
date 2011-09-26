@@ -23,7 +23,6 @@ class AmethystParser < Amethyst
 def self.switchcb_AmethystParser1(e)
 return 0 if e<=Args
 return 1 if e<=Object
-return 2
 end
 @@switchhashAmethystParser1=Hash.new{|h,k| h[k]=switchcb_AmethystParser1(k)}
 def switchcbAmethystParser1(e)
@@ -331,7 +330,7 @@ end
 
 
 def parser_compiled_by
-'965deb8de8a7004c9f5dd965659b9ca3'
+'4bcf25d870da0db66352f3a086498180'
 end
 def parser_source_hash
 'd1f9e8937adb72c1bb0d0e1f84feabb9'

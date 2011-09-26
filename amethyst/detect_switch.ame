@@ -218,7 +218,9 @@ class Switch_Dataflow < First_Dataflow
 		CharLattice
 	end
   def empty?(s)
-    $sizedf.analyze(s)==0
+		a=	@vals[s].ary.include?(Empty)
+    b=($sizedf.analyze(s)==0)
+		puts "#{a} #{b} #{s.inspect}" if a!=b
   end
 end
 
@@ -226,6 +228,9 @@ class ClasSwitch_Dataflow < First_Dataflow
 	def lattice
 		ClasLattice
 	end
+  def empty?(s)
+    $sizedf.analyze(s)==0
+  end
 end
 amethyst First_Dataflow {
 	value =  .:x  {depends(x); @@vals[x]}
@@ -239,7 +244,7 @@ amethyst First_Dataflow {
 				| Or[value*:{it.inject(:|)}]
 				| Switch[value*:{it.inject(:|)}]
 	      | Bind[@expr=>value] 
-				| (Act|CAct)[.* {lattice.empty} ]
+				| (Act|CAct|Local|Result|Cut|Stop)[.* {lattice.empty} ]
 				| . {lattice.top|lattice.empty}
 }  			
 
@@ -325,7 +330,7 @@ class Detect_ClasSwitch < Detect_First
 		@no=(@no||0)+1
 		rb="def self.switchcb_#{@name}#{@no}(e)\n"
 		ary.each_with_index{|c,i| rb<< "return #{i} if e<=#{c}\n"}
-		rb+="return #{ary.size}\nend\n"
+		rb+="end\n"
 		rb+="@@switchhash#{@name}#{@no}=Hash.new{|h,k| h[k]=switchcb_#{@name}#{@no}(k)}\n"
 		rb+="def switchcb#{@name}#{@no}(e)\n"
 		rb+="@@switchhash#{@name}#{@no}[e.class]\n"

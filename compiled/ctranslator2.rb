@@ -66,7 +66,6 @@ return 4 if e<=Key
 return 5 if e<=Local
 return 6 if e<=Strin
 return 7 if e<=Object
-return 8
 end
 @@switchhashAmethystCTranslator1=Hash.new{|h,k| h[k]=switchcb_AmethystCTranslator1(k)}
 def switchcbAmethystCTranslator1(e)
@@ -90,7 +89,6 @@ return 13 if e<=Seq
 return 14 if e<=Stop
 return 15 if e<=Switch
 return 16 if e<=Object
-return 17
 end
 @@switchhashAmethystCTranslator2=Hash.new{|h,k| h[k]=switchcb_AmethystCTranslator2(k)}
 def switchcbAmethystCTranslator2(e)
@@ -386,7 +384,7 @@ end
 
 
 def ctranslator2_compiled_by
-'965deb8de8a7004c9f5dd965659b9ca3'
+'4bcf25d870da0db66352f3a086498180'
 end
 def ctranslator2_source_hash
 '523b34fdcdba69967e9203a3f870bb3d'

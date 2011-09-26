@@ -80,7 +80,6 @@ return 6 if e<=Or
 return 7 if e<=Pass
 return 8 if e<=Result
 return 9 if e<=Object
-return 10
 end
 @@switchhashDataflow1=Hash.new{|h,k| h[k]=switchcb_Dataflow1(k)}
 def switchcbDataflow1(e)
@@ -97,7 +96,6 @@ return 6 if e<=Local
 return 7 if e<=Result
 return 8 if e<=Strin
 return 9 if e<=Object
-return 10
 end
 @@switchhashDataflow2=Hash.new{|h,k| h[k]=switchcb_Dataflow2(k)}
 def switchcbDataflow2(e)
@@ -107,7 +105,6 @@ def self.switchcb_Dataflow3(e)
 return 0 if e<=AmethystAST
 return 1 if e<=Array
 return 2 if e<=Object
-return 3
 end
 @@switchhashDataflow3=Hash.new{|h,k| h[k]=switchcb_Dataflow3(k)}
 def switchcbDataflow3(e)
@@ -331,7 +328,6 @@ return 2 if e<=CAct
 return 3 if e<=Local
 return 4 if e<=Result
 return 5 if e<=Object
-return 6
 end
 @@switchhashDead_Code_Deleter35=Hash.new{|h,k| h[k]=switchcb_Dead_Code_Deleter35(k)}
 def switchcbDead_Code_Deleter35(e)
@@ -342,7 +338,6 @@ return 0 if e<=Act
 return 1 if e<=CAct
 return 2 if e<=Result
 return 3 if e<=Object
-return 4
 end
 @@switchhashDead_Code_Deleter34=Hash.new{|h,k| h[k]=switchcb_Dead_Code_Deleter34(k)}
 def switchcbDead_Code_Deleter34(e)
@@ -352,7 +347,6 @@ def self.switchcb_Dead_Code_Deleter36(e)
 return 0 if e<=AmethystAST
 return 1 if e<=Array
 return 2 if e<=Object
-return 3
 end
 @@switchhashDead_Code_Deleter36=Hash.new{|h,k| h[k]=switchcb_Dead_Code_Deleter36(k)}
 def switchcbDead_Code_Deleter36(e)
@@ -426,7 +420,6 @@ def self.switchcb_Forget_SSA7(e)
 return 0 if e<=AmethystAST
 return 1 if e<=Array
 return 2 if e<=Object
-return 3
 end
 @@switchhashForget_SSA7=Hash.new{|h,k| h[k]=switchcb_Forget_SSA7(k)}
 def switchcbForget_SSA7(e)
@@ -481,7 +474,7 @@ end
 
 
 def dataflow_ssa_compiled_by
-'965deb8de8a7004c9f5dd965659b9ca3'
+'4bcf25d870da0db66352f3a086498180'
 end
 def dataflow_ssa_source_hash
 '256ed86af86d95d9b8953797b6b14661'

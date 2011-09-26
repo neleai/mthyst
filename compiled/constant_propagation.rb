@@ -40,7 +40,6 @@ return 1 if e<=Bind
 return 2 if e<=CAct
 return 3 if e<=Local
 return 4 if e<=Object
-return 5
 end
 @@switchhashConstant_Propagator2=Hash.new{|h,k| h[k]=switchcb_Constant_Propagator2(k)}
 def switchcbConstant_Propagator2(e)
@@ -50,7 +49,6 @@ def self.switchcb_Constant_Propagator1(e)
 return 0 if e<=Exp
 return 1 if e<=Local
 return 2 if e<=Object
-return 3
 end
 @@switchhashConstant_Propagator1=Hash.new{|h,k| h[k]=switchcb_Constant_Propagator1(k)}
 def switchcbConstant_Propagator1(e)
@@ -98,7 +96,6 @@ return 0 if e<=Act
 return 1 if e<=Bind
 return 2 if e<=Local
 return 3 if e<=Object
-return 4
 end
 @@switchhashConstant_Traverser3=Hash.new{|h,k| h[k]=switchcb_Constant_Traverser3(k)}
 def switchcbConstant_Traverser3(e)
@@ -108,7 +105,6 @@ def self.switchcb_Constant_Traverser4(e)
 return 0 if e<=AmethystAST
 return 1 if e<=Array
 return 2 if e<=Object
-return 3
 end
 @@switchhashConstant_Traverser4=Hash.new{|h,k| h[k]=switchcb_Constant_Traverser4(k)}
 def switchcbConstant_Traverser4(e)
@@ -172,7 +168,7 @@ end
 
 
 def constant_propagation_compiled_by
-'965deb8de8a7004c9f5dd965659b9ca3'
+'4bcf25d870da0db66352f3a086498180'
 end
 def constant_propagation_source_hash
 '4a7badb332b849d427161a22fcb99ead'

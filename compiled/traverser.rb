@@ -3,7 +3,6 @@ def self.switchcb_Traverser_Clone21(e)
 return 0 if e<=AmethystAST
 return 1 if e<=Array
 return 2 if e<=Object
-return 3
 end
 @@switchhashTraverser_Clone21=Hash.new{|h,k| h[k]=switchcb_Traverser_Clone21(k)}
 def switchcbTraverser_Clone21(e)
@@ -58,7 +57,6 @@ def self.switchcb_Visitor2(e)
 return 0 if e<=AmethystAST
 return 1 if e<=Array
 return 2 if e<=Object
-return 3
 end
 @@switchhashVisitor2=Hash.new{|h,k| h[k]=switchcb_Visitor2(k)}
 def switchcbVisitor2(e)
@@ -87,7 +85,7 @@ end
 
 
 def traverser_compiled_by
-'965deb8de8a7004c9f5dd965659b9ca3'
+'4bcf25d870da0db66352f3a086498180'
 end
 def traverser_source_hash
 '22a0094158fcb42ea5b9d2d2e863085b'

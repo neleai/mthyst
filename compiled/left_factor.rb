@@ -11,7 +11,6 @@ def self.switchcb_Left_Factor1(e)
 return 0 if e<=Bind
 return 1 if e<=Seq
 return 2 if e<=Object
-return 3
 end
 @@switchhashLeft_Factor1=Hash.new{|h,k| h[k]=switchcb_Left_Factor1(k)}
 def switchcbLeft_Factor1(e)
@@ -20,7 +19,6 @@ end
 def self.switchcb_Left_Factor2(e)
 return 0 if e<=Seq
 return 1 if e<=Object
-return 2
 end
 @@switchhashLeft_Factor2=Hash.new{|h,k| h[k]=switchcb_Left_Factor2(k)}
 def switchcbLeft_Factor2(e)
@@ -30,7 +28,6 @@ def self.switchcb_Left_Factor3(e)
 return 0 if e<=AmethystAST
 return 1 if e<=Array
 return 2 if e<=Object
-return 3
 end
 @@switchhashLeft_Factor3=Hash.new{|h,k| h[k]=switchcb_Left_Factor3(k)}
 def switchcbLeft_Factor3(e)
@@ -40,7 +37,6 @@ def self.switchcb_Left_Factor4(e)
 return 0 if e<=Bind
 return 1 if e<=Seq
 return 2 if e<=Object
-return 3
 end
 @@switchhashLeft_Factor4=Hash.new{|h,k| h[k]=switchcb_Left_Factor4(k)}
 def switchcbLeft_Factor4(e)
@@ -152,7 +148,7 @@ end
 
 
 def left_factor_compiled_by
-'965deb8de8a7004c9f5dd965659b9ca3'
+'4bcf25d870da0db66352f3a086498180'
 end
 def left_factor_source_hash
 '735fd68abfa48b088273bd588cc38a2c'
