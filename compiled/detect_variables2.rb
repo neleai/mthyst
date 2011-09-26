@@ -3,8 +3,8 @@ def self.switchcb_Analyze_Variables21(e)
 return 0 if e<=Seq
 return 1 if e<=Result
 return 2 if e<=Args
-return 3 if e<=Act
-return 4 if e<=Or
+return 3 if e<=Or
+return 4 if e<=Act
 return 5 if e<=Object
 return 6
 end
@@ -32,8 +32,8 @@ def switchcbAnalyze_Variables23(e)
 @@switchhashAnalyze_Variables23[e.class]
 end
 def self.switchcb_Analyze_Variables24(e)
-return 0 if e<=Array
-return 1 if e<=AmethystAST
+return 0 if e<=AmethystAST
+return 1 if e<=Array
 return 2 if e<=Object
 return 3
 end
@@ -110,16 +110,16 @@ def traverse_item_Analyze_Variables2cb_1(bind)
 @changed=true
 end
 def traverse_item_Analyze_Variables2cb_2(bind)
-bind[3]<<bind[4]
+bind[5]<<bind[6]
 end
 def visit_Analyze_Variables2cb_1(bind)
 _append(bind[1],bind[2])
 end
 def visit_Analyze_Variables2cb_10(bind)
-_append(bind[25],bind[26])
+@src.ary
 end
 def visit_Analyze_Variables2cb_11(bind)
-Or[*bind[3]]
+bind[22]=[bind[22]]
 end
 def visit_Analyze_Variables2cb_2(bind)
 Seq[*bind[3]]
@@ -140,10 +140,10 @@ def visit_Analyze_Variables2cb_7(bind)
 (bind[13].size==1&&(bind[13][0].is_a?(Local)||bind[13][0].is_a?(Global)||bind[13][0].is_a?(Key))) ? bind[13][0] : Args[*bind[13]]
 end
 def visit_Analyze_Variables2cb_8(bind)
-@src.ary
+_append(bind[17],bind[18])
 end
 def visit_Analyze_Variables2cb_9(bind)
-bind[18]=[bind[18]]
+Or[*bind[3]]
 end
 
 end
@@ -152,7 +152,7 @@ end
 
 
 def detect_variables2_compiled_by
-'e4a172671ed05b0be7e71f3b210bd161'
+'6ae5485046c8cbad7e497513c567604c'
 end
 def detect_variables2_source_hash
 '56196ab0e78188e5a2d6bc8b4c79e49b'
@@ -161,6 +161,6 @@ def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'d939195beb345855e4f36a715e0d09de'
+'642ddee8eb76f73d5116e7f7d2c3712c'
 end
   require 'compiled/detect_variables2_c'

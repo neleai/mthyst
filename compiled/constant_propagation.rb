@@ -35,10 +35,10 @@ end
 
 class Constant_Propagator < Amethyst
 def self.switchcb_Constant_Propagator2(e)
-return 0 if e<=Act
-return 1 if e<=Bind
-return 2 if e<=CAct
-return 3 if e<=Local
+return 0 if e<=CAct
+return 1 if e<=Local
+return 2 if e<=Act
+return 3 if e<=Bind
 return 4 if e<=Object
 return 5
 end
@@ -69,24 +69,24 @@ def step_Constant_Propagatorcb_1(bind)
 bind[1]=[bind[1]]
 end
 def step_Constant_Propagatorcb_2(bind)
-ConstantLattice[@src]
+@src
 end
 def step_Constant_Propagatorcb_3(bind)
-@src
+ConstantLattice[bind[3]]
 end
 def step_Constant_Propagatorcb_4(bind)
 ConstantLattice[Top]
 end
 def step_Constant_Propagatorcb_5(bind)
-@src.expr
-end
-def step_Constant_Propagatorcb_6(bind)
-ConstantLattice[bind[12]]
-end
-def step_Constant_Propagatorcb_7(bind)
 a=ConstantLattice[Bottom]
         											depend.reverse.edges[bind[0]].each{|e| a=a+valof(e)}
 															a
+end
+def step_Constant_Propagatorcb_6(bind)
+ConstantLattice[@src]
+end
+def step_Constant_Propagatorcb_7(bind)
+@src.expr
 end
 
 end
@@ -94,9 +94,9 @@ end
 
 class Constant_Traverser < Traverser_Clone2
 def self.switchcb_Constant_Traverser3(e)
-return 0 if e<=Act
-return 1 if e<=Bind
-return 2 if e<=Local
+return 0 if e<=Local
+return 1 if e<=Act
+return 2 if e<=Bind
 return 3 if e<=Object
 return 4
 end
@@ -105,8 +105,8 @@ def switchcbConstant_Traverser3(e)
 @@switchhashConstant_Traverser3[e.class]
 end
 def self.switchcb_Constant_Traverser4(e)
-return 0 if e<=Array
-return 1 if e<=AmethystAST
+return 0 if e<=AmethystAST
+return 1 if e<=Array
 return 2 if e<=Object
 return 3
 end
@@ -133,12 +133,15 @@ def traverse_Constant_Traversercb_2(bind)
 (@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
 end
 def traverse_Constant_Traversercb_3(bind)
-@changed=false
+bind[4]=[bind[4]]
 end
 def traverse_Constant_Traversercb_4(bind)
-(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
+@changed=false
 end
 def traverse_Constant_Traversercb_5(bind)
+(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
+end
+def traverse_Constant_Traversercb_6(bind)
 if bind[3]
              @changed=true;bind[2].normalize
            else
@@ -150,29 +153,29 @@ def traverse_item_Constant_Traversercb_1(bind)
 @changed=true
 end
 def traverse_item_Constant_Traversercb_2(bind)
-bind[3]<<bind[4]
+bind[5]<<bind[6]
 end
 def visit_Constant_Traversercb_1(bind)
-@src
+@consts[@src.ssaname] ? @consts[@src.ssaname] : @src 
 end
 def visit_Constant_Traversercb_2(bind)
-@src.expr
+@src
 end
 def visit_Constant_Traversercb_3(bind)
-bind[4]=[bind[4]]
+@src.expr
 end
 def visit_Constant_Traversercb_4(bind)
-_Bind(@src.name,bind[5])
+bind[6]=[bind[6]]
 end
 def visit_Constant_Traversercb_5(bind)
-@consts[@src.ssaname] ? @consts[@src.ssaname] : @src 
+_Bind(@src.name,bind[7])
 end
 
 end
 
 
 def constant_propagation_compiled_by
-'e4a172671ed05b0be7e71f3b210bd161'
+'6ae5485046c8cbad7e497513c567604c'
 end
 def constant_propagation_source_hash
 '4a7badb332b849d427161a22fcb99ead'
@@ -181,6 +184,6 @@ def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
 end
 def constant_propagation_version
-'9d6cd9371f11e301d21aa909731f5bf8'
+'fb52ba624e9eb926db267f969984d2b7'
 end
   require 'compiled/constant_propagation_c'

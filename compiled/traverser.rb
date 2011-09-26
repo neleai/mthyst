@@ -1,7 +1,7 @@
 class Traverser_Clone2 < Amethyst
 def self.switchcb_Traverser_Clone21(e)
-return 0 if e<=Array
-return 1 if e<=AmethystAST
+return 0 if e<=AmethystAST
+return 1 if e<=Array
 return 2 if e<=Object
 return 3
 end
@@ -45,7 +45,7 @@ def traverse_item_Traverser_Clone2cb_1(bind)
 @changed=true
 end
 def traverse_item_Traverser_Clone2cb_2(bind)
-bind[3]<<bind[4]
+bind[5]<<bind[6]
 end
 
 end
@@ -55,8 +55,8 @@ end
 
 class Visitor < Amethyst
 def self.switchcb_Visitor2(e)
-return 0 if e<=Array
-return 1 if e<=AmethystAST
+return 0 if e<=AmethystAST
+return 1 if e<=Array
 return 2 if e<=Object
 return 3
 end
@@ -76,15 +76,18 @@ end
 def traverse_Visitorcb_2(bind)
 bind[0]=[bind[0]]
 end
-def traverse_item_Visitorcb_1(bind)
+def traverse_Visitorcb_3(bind)
 _append(bind[2],bind[3])
+end
+def traverse_item_Visitorcb_1(bind)
+_append(bind[4],bind[5])
 end
 
 end
 
 
 def traverser_compiled_by
-'e4a172671ed05b0be7e71f3b210bd161'
+'6ae5485046c8cbad7e497513c567604c'
 end
 def traverser_source_hash
 '22a0094158fcb42ea5b9d2d2e863085b'
@@ -93,6 +96,6 @@ def testversiontraverser(r)
  raise "invalid version" if r!=traverser_version
 end
 def traverser_version
-'fbf90b0cb5dd3646332613db7b00e83a'
+'a5ea1f883879ef305bd2fcc06df85d30'
 end
   require 'compiled/traverser_c'

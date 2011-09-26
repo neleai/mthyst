@@ -27,8 +27,8 @@ def switchcbLeft_Factor2(e)
 @@switchhashLeft_Factor2[e.class]
 end
 def self.switchcb_Left_Factor3(e)
-return 0 if e<=Array
-return 1 if e<=AmethystAST
+return 0 if e<=AmethystAST
+return 1 if e<=Array
 return 2 if e<=Object
 return 3
 end
@@ -118,7 +118,7 @@ def traverse_item_Left_Factorcb_1(bind)
 @changed=true
 end
 def traverse_item_Left_Factorcb_2(bind)
-bind[3]<<bind[4]
+bind[5]<<bind[6]
 end
 def visit_Left_Factorcb_1(bind)
 [bind[2]]
@@ -152,7 +152,7 @@ end
 
 
 def left_factor_compiled_by
-'e4a172671ed05b0be7e71f3b210bd161'
+'6ae5485046c8cbad7e497513c567604c'
 end
 def left_factor_source_hash
 '735fd68abfa48b088273bd588cc38a2c'
@@ -161,6 +161,6 @@ def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version
 end
 def left_factor_version
-'fedabc152c81a9b177c8d9808515b8ab'
+'384f493de1694a75963f9cca9e9ce5d3'
 end
   require 'compiled/left_factor_c'

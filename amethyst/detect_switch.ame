@@ -218,11 +218,7 @@ class Switch_Dataflow < First_Dataflow
 		CharLattice
 	end
   def empty?(s)
-    if !@sizedf
-      @sizedf=Sizes_Dataflow.new
-      @sizedf.parse(:root,[])
-    end
-    @sizedf.analyze(s)==0
+    $sizedf.analyze(s)==0
   end
 end
 
@@ -278,12 +274,12 @@ class Detect_First< Traverser_Clone2
 end
 
 class Detect_Switch < Detect_First
+	def initialize
+		$sizedf=Sizes_Dataflow.new
+		$sizedf.parse(:root,[])
+	end
 	def empty?(s)	
-		if !@sizedf
-			@sizedf=Sizes_Dataflow.new
-			@sizedf.parse(:root,[])
-		end
-		@sizedf.analyze(s)==0
+		$sizedf.analyze(s)==0
 	end
 	def first(s)
 		if !@switchdf

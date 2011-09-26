@@ -1,7 +1,7 @@
 class DetectCalls < Visitor
 def self.switchcb_DetectCalls1(e)
-return 0 if e<=Array
-return 1 if e<=AmethystAST
+return 0 if e<=AmethystAST
+return 1 if e<=Array
 return 2 if e<=Object
 return 3
 end
@@ -27,8 +27,11 @@ end
 def traverse_DetectCallscb_2(bind)
 bind[0]=[bind[0]]
 end
-def traverse_item_DetectCallscb_1(bind)
+def traverse_DetectCallscb_3(bind)
 _append(bind[2],bind[3])
+end
+def traverse_item_DetectCallscb_1(bind)
+_append(bind[4],bind[5])
 end
 def visit_DetectCallscb_1(bind)
 @calls[bind[1]]=true 
@@ -39,8 +42,8 @@ end
 
 class Inliner2 < Traverser_Clone2
 def self.switchcb_Inliner22(e)
-return 0 if e<=Array
-return 1 if e<=AmethystAST
+return 0 if e<=AmethystAST
+return 1 if e<=Array
 return 2 if e<=Object
 return 3
 end
@@ -105,7 +108,7 @@ def traverse_item_Inliner2cb_1(bind)
 @changed=true
 end
 def traverse_item_Inliner2cb_2(bind)
-bind[3]<<bind[4]
+bind[5]<<bind[6]
 end
 def visit_Inliner2cb_1(bind)
 (bind[1]==@name) || FAIL
@@ -122,8 +125,8 @@ end
 
 class Replace_Super < Traverser_Clone2
 def self.switchcb_Replace_Super3(e)
-return 0 if e<=Array
-return 1 if e<=AmethystAST
+return 0 if e<=AmethystAST
+return 1 if e<=Array
 return 2 if e<=Object
 return 3
 end
@@ -173,7 +176,7 @@ def traverse_item_Replace_Supercb_1(bind)
 @changed=true
 end
 def traverse_item_Replace_Supercb_2(bind)
-bind[3]<<bind[4]
+bind[5]<<bind[6]
 end
 def visit_Replace_Supercb_1(bind)
 (bind[1]=="super") || FAIL
@@ -189,7 +192,7 @@ end
 
 
 def inliner2_compiled_by
-'e4a172671ed05b0be7e71f3b210bd161'
+'6ae5485046c8cbad7e497513c567604c'
 end
 def inliner2_source_hash
 'e70b868139b66428259e6a338880dd0c'
@@ -198,6 +201,6 @@ def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version
 end
 def inliner2_version
-'ba4b474585834ce727b76845d7737713'
+'ee1b12749bf75270ac1758ab8146bee4'
 end
   require 'compiled/inliner2_c'
