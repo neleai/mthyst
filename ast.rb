@@ -46,6 +46,7 @@ class AmethystAST
 	end
 end
 
+$hash_Bnding={}
 class Bnding
 	def self.[]
 		@bno||=0
@@ -53,6 +54,10 @@ class Bnding
 		Bnding.create({:ary=>[@bno]}).normalize
 	end
 	def normalize
+		return $hash_Bnding[ary] if $hash_Bnding[ary]
+		$hash_Bnding[ary]=normalize2
+	end
+	def normalize2
 		self.freeze
 	end
 end
@@ -173,6 +178,7 @@ def def_hash_by_ary(c)
 end
 
 [Apply,Bnding,Act,Seq,Or].each{|c| def_hash_by_ary(c)}
+[Bnding].each{|c| eval("class #{c}\n alias_method :hash,:object_id\nend\n")}
 
 [Result,Switch,Cut,Stop,Args,Strin,Exp
 ].each{|c| eval("class #{c} 
