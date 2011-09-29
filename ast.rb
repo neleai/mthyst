@@ -178,7 +178,7 @@ def def_hash_by_ary(c)
 end
 
 [Apply,Bnding,Act,Seq,Or].each{|c| def_hash_by_ary(c)}
-[Apply,Bnding].each{|c| eval("class #{c}\n alias_method :hash,:object_id\nend\n")}
+[Apply,Bnding,Act].each{|c| eval("class #{c}\n alias_method :hash,:object_id\nend\n")}
 
 [Result,Switch,Cut,Stop,Args,Strin,Exp
 ].each{|c| eval("class #{c} 
