@@ -174,20 +174,7 @@ class Or
 	end
 end
 
-def def_hash_by_ary(c)
-	eval("class #{c} 
- def hash
-  ary.hash
- end
- def ==(a)
-    return false unless a.is_a? #{c}
-    return self.ary==a.ary
-  end
-  alias_method :eql?,:==
-	end")
-end
-
-[Apply,Bnding,Act,Seq,Or].each{|c| def_hash_by_ary(c)}
+#better rewrite by writing equalize_by generator
 [Apply,Bnding,Act,Seq,Or].each{|c| eval("class #{c}\n alias_method :hash,:object_id\nend\n")}
 
 [Result,Switch,Cut,Stop,Args,Strin,Exp
