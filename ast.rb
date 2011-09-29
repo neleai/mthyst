@@ -130,7 +130,7 @@ class Many
 end
 
 class SeqOr
-	 def normalize
+	 def normalize2
     @ary=@ary.map{|i| (i.is_a?(self.class)) ? i.ary : i}.flatten
     @ary=@ary.select{|e| !(e==Placeholder)}
     return Placeholder if @ary.size==0
@@ -139,13 +139,14 @@ class SeqOr
     self.freeze
   end
 end
+$hash_Seq={}
 class Seq
 	def self.[](*args)
 		args=args[0][:ary] if args.size==1 && args[0].is_a?(Hash)
 		return Seq.create(*args).normalize if args[-1].is_a?(Hash)
 		Seq.create({:ary=>args}).normalize
 	end
-	def normalize
+	def normalize2
 		s=super
 		return s if s==Placeholder
 		s.ary.each_index{|i|if i!=s.ary.size-1
@@ -153,14 +154,23 @@ class Seq
 		end}
 		s
 	end
+	def normalize
+		return $hash_Seq[ary] if $hash_Seq[ary]
+		$hash_Seq[ary]=normalize2
+	end
 end
 
+$hash_Or={}
 class Or
 	def self.[](*args)
 		args=args[0][:ary] if args.size==1 && args[0].is_a?(Hash)
 		return Or.create(*args).normalize if args[-1].is_a?(Hash)
 		return Apply["fails"] if args.size==0
 		Or.create({:ary=>args}).normalize
+	end
+	def normalize
+		return $hash_Or[ary] if $hash_Or[ary]
+		$hash_Or[ary]=normalize2
 	end
 end
 
