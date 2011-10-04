@@ -743,7 +743,7 @@ class Detect_ClasSwitch < Detect_First
 		p.ary.each{|f| return true if child(ary[i],f) || child(f,ary[i])}
 		return false
 	end
-	def classswitch(ary)
+	def classswitch(ary,first,ary3)
 		@no=(@no||0)+1
 		rb="def self.switchcb_#{@name}#{@no}(e)\n"
 		ary.each_with_index{|c,i| rb<< "return #{i} if e<=#{c}\n"}
@@ -752,7 +752,7 @@ class Detect_ClasSwitch < Detect_First
 		rb+="def switchcb#{@name}#{@no}(e)\n"
 		rb+="@@switchhash#{@name}#{@no}[e.class]\n"
 		rb+="end"
-		[rb, "FIX2INT(CALL(switchcb#{@name}#{@no},1,ame_curobj(self)))"]
+		Switch[{:defs=>rb,:act=>"FIX2INT(CALL(switchcb#{@name}#{@no},1,ame_curobj(self)))",:first=>first,:ary=>ary3}]
 	end
 	def topsort(a)
 		a=a.uniq.sort_by{|a| a.to_s}
@@ -1123,7 +1123,7 @@ def visit_Detect_ClasSwitchcb_11(bind)
 bind[2]=bind[2].map{|o,v| [ClasLattice[*o],v]}
 end
 def visit_Detect_ClasSwitchcb_12(bind)
-c=classswitch(bind[1]);Switch[{:act=>c[1],:first=>bind[6],:defs=>c[0],:ary=>bind[2]}]
+c=classswitch(bind[1],bind[6],bind[2])
 end
 def visit_Detect_ClasSwitchcb_2(bind)
 (first(bind[4])) || FAIL
@@ -1157,10 +1157,10 @@ end
 
 
 def detect_switch_compiled_by
-'624475cc241858fbd087efc9f29858ac'
+'291d519bff5b09611718451f193cf9de'
 end
 def detect_switch_source_hash
-'398424dd1ece392b82fa410d6a8c9271'
+'2ca156234f47d81c8d15b46de74b61e4'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version

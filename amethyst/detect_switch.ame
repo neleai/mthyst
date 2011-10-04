@@ -334,7 +334,7 @@ class Detect_ClasSwitch < Detect_First
 		p.ary.each{|f| return true if child(ary[i],f) || child(f,ary[i])}
 		return false
 	end
-	def classswitch(ary)
+	def classswitch(ary,first,ary3)
 		@no=(@no||0)+1
 		rb="def self.switchcb_#{@name}#{@no}(e)\n"
 		ary.each_with_index{|c,i| rb<< "return #{i} if e<=#{c}\n"}
@@ -343,7 +343,7 @@ class Detect_ClasSwitch < Detect_First
 		rb+="def switchcb#{@name}#{@no}(e)\n"
 		rb+="@@switchhash#{@name}#{@no}[e.class]\n"
 		rb+="end"
-		[rb, "FIX2INT(CALL(switchcb#{@name}#{@no},1,ame_curobj(self)))"]
+		Switch[{:defs=>rb,:act=>"FIX2INT(CALL(switchcb#{@name}#{@no},1,ame_curobj(self)))",:first=>first,:ary=>ary3}]
 	end
 	def topsort(a)
 		a=a.uniq.sort_by{|a| a.to_s}
@@ -415,7 +415,7 @@ amethyst Detect_ClasSwitch < Detect_First {
 
 		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.sort_by{|e| e.inspect},v[0][1]]}.sort_by{|e| e.inspect}}
 		{ary3=ary3.map{|o,v| [ClasLattice[*o],v]}}
-	  {c=classswitch(ary2);Switch[{:act=>c[1],:first=>firs,:defs=>c[0],:ary=>ary3}]}
+	  {c=classswitch(ary2,firs,ary3)}
 	]
 
   predicate(clas,i,p) = &{clas[i]=="default"} {p}

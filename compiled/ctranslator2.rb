@@ -222,90 +222,93 @@ def trans_AmethystCTranslatorcb_17(bind)
 @defs<<@src.defs if @src.defs
 end
 def trans_AmethystCTranslatorcb_18(bind)
-"unsigned char #{bind[36]}=#{@src.act};  switch(#{bind[36]}){"
+@header<<@src.header if @src.header
 end
 def trans_AmethystCTranslatorcb_19(bind)
-bind[22]+=bind[38].cases(@src.first) + " #{bind[32]} break;"
+"unsigned char #{bind[36]}=#{@src.act};  switch(#{bind[36]}){"
 end
 def trans_AmethystCTranslatorcb_2(bind)
 "it=CALL(#{bind[4]},1,bind); #{@src.pred ? "FAILTEST(#{@faillabel});" :"" }"
 end
 def trans_AmethystCTranslatorcb_20(bind)
-bind[22]+"}"
+bind[22]+=bind[38].cases(@src.first) + " #{bind[32]} break;"
 end
 def trans_AmethystCTranslatorcb_21(bind)
-bind[41]+=1
+bind[22]+"}"
 end
 def trans_AmethystCTranslatorcb_22(bind)
-"#{bind[43]} arg#{bind[41]-1}=it;"
+bind[41]+=1
 end
 def trans_AmethystCTranslatorcb_23(bind)
-_append(bind[42],bind[44])
+"#{bind[43]} arg#{bind[41]-1}=it;"
 end
 def trans_AmethystCTranslatorcb_24(bind)
-" #{bind[45]} it=#{callrule(bind[25],bind[41])};"
+_append(bind[42],bind[44])
 end
 def trans_AmethystCTranslatorcb_25(bind)
-"#{bind[46]} FAILTEST(#{@faillabel});" 
+" #{bind[45]} it=#{callrule(bind[25],bind[41])};"
 end
 def trans_AmethystCTranslatorcb_26(bind)
-@src.expr
+"#{bind[46]} FAILTEST(#{@faillabel});" 
 end
 def trans_AmethystCTranslatorcb_27(bind)
-bind[50]=[bind[50]]
+@src.expr
 end
 def trans_AmethystCTranslatorcb_28(bind)
-"#{bind[51]}\n #{bset(@src.name,"it")}; " 
+bind[50]=[bind[50]]
 end
 def trans_AmethystCTranslatorcb_29(bind)
-"it=#{@src.ccode};"
+"#{bind[51]}\n #{bset(@src.name,"it")}; " 
 end
 def trans_AmethystCTranslatorcb_3(bind)
 @faillabel=bind[14] 
 end
 def trans_AmethystCTranslatorcb_30(bind)
-"#{iset("cut","Qtrue")};"
+"it=#{@src.ccode};"
 end
 def trans_AmethystCTranslatorcb_31(bind)
-@grammar=@src.name;@parent=@src.parent
+"#{iset("cut","Qtrue")};"
 end
 def trans_AmethystCTranslatorcb_32(bind)
-@lambdas=[] ;@rcallbacks={}
+@grammar=@src.name;@parent=@src.parent
 end
 def trans_AmethystCTranslatorcb_33(bind)
-@defs=[]
+@lambdas=[] ;@rcallbacks={}
 end
 def trans_AmethystCTranslatorcb_34(bind)
-@defmethods=[]
+@defs=[]
 end
 def trans_AmethystCTranslatorcb_35(bind)
-@faillabel="fail"
+@defmethods=[]
 end
 def trans_AmethystCTranslatorcb_36(bind)
-@callbacks={}
+@faillabel="fail"
 end
 def trans_AmethystCTranslatorcb_37(bind)
-mktable(@src.rules)
+@callbacks={}
 end
 def trans_AmethystCTranslatorcb_38(bind)
-@header=[]
+mktable(@src.rules)
 end
 def trans_AmethystCTranslatorcb_39(bind)
-@src.rules
+@header=[]
 end
 def trans_AmethystCTranslatorcb_4(bind)
 @src.to
 end
 def trans_AmethystCTranslatorcb_40(bind)
-bind[57]=[bind[57]]
+@src.rules
 end
 def trans_AmethystCTranslatorcb_41(bind)
-_append(bind[59],bind[60])
+bind[57]=[bind[57]]
 end
 def trans_AmethystCTranslatorcb_42(bind)
-"VALUE cls_#{@src.name};\n" 
+_append(bind[59],bind[60])
 end
 def trans_AmethystCTranslatorcb_43(bind)
+"VALUE cls_#{@src.name};\n" 
+end
+def trans_AmethystCTranslatorcb_44(bind)
 bind[22]<<@header.sort*"\n"+"\n"
 							bind[22]<<bind[32].sort*"\n"
 							bind[22]<<@lambdas*"\n"
@@ -315,46 +318,46 @@ failobj=rb_eval_string(\"FAIL\");
 "
 							[bind[22],init,bind[62]] 
 end
-def trans_AmethystCTranslatorcb_44(bind)
+def trans_AmethystCTranslatorcb_45(bind)
 "it=#{bget(@src)};" 
 end
-def trans_AmethystCTranslatorcb_45(bind)
+def trans_AmethystCTranslatorcb_46(bind)
 label("accept")
 end
-def trans_AmethystCTranslatorcb_46(bind)
+def trans_AmethystCTranslatorcb_47(bind)
 label("reject")
 end
-def trans_AmethystCTranslatorcb_47(bind)
+def trans_AmethystCTranslatorcb_48(bind)
 label("oldpos")
 end
-def trans_AmethystCTranslatorcb_48(bind)
-"int #{bind[9]}=ame_getpos(self);\n #{bind[32]} x=1; goto #{bind[67]};  #{bind[68]}: x=0; #{bind[67]}: it=Qnil; ame_setpos(self,#{bind[9]}); if (x==0) goto #{@faillabel};"
-end
 def trans_AmethystCTranslatorcb_49(bind)
-label("break")
+"int #{bind[9]}=ame_getpos(self);\n #{bind[32]} x=1; goto #{bind[67]};  #{bind[68]}: x=0; #{bind[67]}: it=Qnil; ame_setpos(self,#{bind[9]}); if (x==0) goto #{@faillabel};"
 end
 def trans_AmethystCTranslatorcb_5(bind)
 bind[16]=[bind[16]]
 end
 def trans_AmethystCTranslatorcb_50(bind)
-"int #{bind[9]}; while(1){#{bind[9]}=ame_getpos(self); #{bind[32]} if (#{iget("stop")}!=Qnil){{#{bind[9]}=ame_getpos(self);goto #{bind[71]};} } } #{bind[71]}: #{iset("stop","Qnil")};  ame_setpos(self,#{bind[9]}); "
+label("break")
 end
 def trans_AmethystCTranslatorcb_51(bind)
-bind[75]+=1
+"int #{bind[9]}; while(1){#{bind[9]}=ame_getpos(self); #{bind[32]} if (#{iget("stop")}!=Qnil){{#{bind[9]}=ame_getpos(self);goto #{bind[71]};} } } #{bind[71]}: #{iset("stop","Qnil")};  ame_setpos(self,#{bind[9]}); "
 end
 def trans_AmethystCTranslatorcb_52(bind)
-"#{bind[74]}_#{bind[75]+1}"
+bind[75]+=1
 end
 def trans_AmethystCTranslatorcb_53(bind)
-_append(bind[76],bind[78])
+"#{bind[74]}_#{bind[75]+1}"
 end
 def trans_AmethystCTranslatorcb_54(bind)
-bind[22]="int #{bind[9]}=ame_getpos(self);\n"
+_append(bind[76],bind[78])
 end
 def trans_AmethystCTranslatorcb_55(bind)
-bind[22]+=map_index(bind[32]){|i| "#{bind[74]}_#{i+1}: ame_setpos(self,#{bind[9]});if (#{iget("cut")}!=Qnil) {#{iset("cut","Qnil")}; goto #{bind[13]};}\n #{bind[32][i]} \n#{iset("cut","Qnil")};goto #{bind[67]};\n"}*""
+bind[22]="int #{bind[9]}=ame_getpos(self);\n"
 end
 def trans_AmethystCTranslatorcb_56(bind)
+bind[22]+=map_index(bind[32]){|i| "#{bind[74]}_#{i+1}: ame_setpos(self,#{bind[9]});if (#{iget("cut")}!=Qnil) {#{iset("cut","Qnil")}; goto #{bind[13]};}\n #{bind[32][i]} \n#{iset("cut","Qnil")};goto #{bind[67]};\n"}*""
+end
+def trans_AmethystCTranslatorcb_57(bind)
 "#{bind[22]}  #{bind[74]}_#{bind[75]+1}:  ame_setpos(self,#{bind[9]}); goto #{bind[13]};\n #{bind[67]}:;\n"
 end
 def trans_AmethystCTranslatorcb_6(bind)
@@ -384,15 +387,15 @@ end
 
 
 def ctranslator2_compiled_by
-'624475cc241858fbd087efc9f29858ac'
+'291d519bff5b09611718451f193cf9de'
 end
 def ctranslator2_source_hash
-'523b34fdcdba69967e9203a3f870bb3d'
+'2ab1484652f9d9fb801743e9670340aa'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'fc837ca11f6ea5c10242f5826a924f9d'
+'e03dd016c0ed742b3242b29431a491d7'
 end
   require 'compiled/ctranslator2_c'

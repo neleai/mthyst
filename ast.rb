@@ -24,7 +24,7 @@ makeclasses(AmethystAST,
 		:Stop,
 		:Bnding,
 		[:Phi,:merges,:result],
-		[:Switch,:act,:defs,:first]
+		[:Switch,:act,:defs,:first,:header]
 )
 
 class SeqOr<AmethystAST;end
