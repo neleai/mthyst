@@ -147,17 +147,6 @@ class Or
 	end
 end
 
-[Result,Switch,Cut,Stop,Args,Strin,Exp
-].each{|c| eval("class #{c} 
-	def self.[](*a)
-		create(*a).normalize
-	end
-	def normalize
-		freeze
-	end
-end")}
-
-
 
 class PureAct
 	def self.[](expr=nil)
@@ -276,6 +265,21 @@ def _Local(name)
 		l
 end
 
+class Result
+	def normalize2
+		self.freeze
+	end
+end
+[Result,Switch
+].each{|c| eval("class #{c} 
+	def self.[](*a)
+		create(*a).normalize
+	end
+	def normalize
+		freeze
+	end
+end")}
+
 
 def equalize_by(klas,args)
   eval("$hash_#{klas}={}
@@ -291,6 +295,7 @@ end
 equalize_by(Bind,"[name,expr]")
 equalize_by(Local,"[ary[0],ary[1],ssano]")
 equalize_by(Act,"[pred,ary,pure]")
+equalize_by(Result,"[name,vars]")
 [CAct,Global,Key,
 Cut,Stop,Exp,Strin,Args,
 Comment#,Result
