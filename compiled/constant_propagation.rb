@@ -43,7 +43,7 @@ return 4 if e<=Object
 end
 @@switchhashConstant_Propagator2=Hash.new{|h,k| h[k]=switchcb_Constant_Propagator2(k)}
 def switchcbConstant_Propagator2(e)
-@@switchhashConstant_Propagator2[e.class]
+@@switchhashConstant_Propagator2[e]
 end
 def self.switchcb_Constant_Propagator1(e)
 return 0 if e<=Exp
@@ -52,7 +52,7 @@ return 2 if e<=Object
 end
 @@switchhashConstant_Propagator1=Hash.new{|h,k| h[k]=switchcb_Constant_Propagator1(k)}
 def switchcbConstant_Propagator1(e)
-@@switchhashConstant_Propagator1[e.class]
+@@switchhashConstant_Propagator1[e]
 end
 def clas_Constant_Propagatorcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -99,7 +99,7 @@ return 3 if e<=Object
 end
 @@switchhashConstant_Traverser3=Hash.new{|h,k| h[k]=switchcb_Constant_Traverser3(k)}
 def switchcbConstant_Traverser3(e)
-@@switchhashConstant_Traverser3[e.class]
+@@switchhashConstant_Traverser3[e]
 end
 def self.switchcb_Constant_Traverser4(e)
 return 0 if e<=AmethystAST
@@ -108,7 +108,7 @@ return 2 if e<=Object
 end
 @@switchhashConstant_Traverser4=Hash.new{|h,k| h[k]=switchcb_Constant_Traverser4(k)}
 def switchcbConstant_Traverser4(e)
-@@switchhashConstant_Traverser4[e.class]
+@@switchhashConstant_Traverser4[e]
 end
 def clas_Constant_Traversercb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -168,7 +168,7 @@ end
 
 
 def constant_propagation_compiled_by
-'291d519bff5b09611718451f193cf9de'
+'ae7f7ff83d1b1f766d486f002118d4a4'
 end
 def constant_propagation_source_hash
 '4a7badb332b849d427161a22fcb99ead'
@@ -177,6 +177,6 @@ def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
 end
 def constant_propagation_version
-'318d9007b0c520af20e5ae8c11afbf51'
+'67cf8b368ada6948ec38cf09b5333211'
 end
   require 'compiled/constant_propagation_c'

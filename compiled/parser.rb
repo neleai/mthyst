@@ -26,7 +26,7 @@ return 1 if e<=Object
 end
 @@switchhashAmethystParser1=Hash.new{|h,k| h[k]=switchcb_AmethystParser1(k)}
 def switchcbAmethystParser1(e)
-@@switchhashAmethystParser1[e.class]
+@@switchhashAmethystParser1[e]
 end
 def _args_AmethystParsercb_1(bind)
 Args[{:ary=>([bind[0]]+bind[2]+[bind[1]])}]
@@ -330,7 +330,7 @@ end
 
 
 def parser_compiled_by
-'291d519bff5b09611718451f193cf9de'
+'ae7f7ff83d1b1f766d486f002118d4a4'
 end
 def parser_source_hash
 'd1f9e8937adb72c1bb0d0e1f84feabb9'
@@ -339,6 +339,6 @@ def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'1a9c93454a8a8f4dc13f5c2f736e1493'
+'cb2eb1c30038e57e95fe5298ebf4297b'
 end
   require 'compiled/parser_c'

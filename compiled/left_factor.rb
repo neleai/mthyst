@@ -14,7 +14,7 @@ return 2 if e<=Object
 end
 @@switchhashLeft_Factor1=Hash.new{|h,k| h[k]=switchcb_Left_Factor1(k)}
 def switchcbLeft_Factor1(e)
-@@switchhashLeft_Factor1[e.class]
+@@switchhashLeft_Factor1[e]
 end
 def self.switchcb_Left_Factor2(e)
 return 0 if e<=Seq
@@ -22,7 +22,7 @@ return 1 if e<=Object
 end
 @@switchhashLeft_Factor2=Hash.new{|h,k| h[k]=switchcb_Left_Factor2(k)}
 def switchcbLeft_Factor2(e)
-@@switchhashLeft_Factor2[e.class]
+@@switchhashLeft_Factor2[e]
 end
 def self.switchcb_Left_Factor3(e)
 return 0 if e<=AmethystAST
@@ -31,7 +31,7 @@ return 2 if e<=Object
 end
 @@switchhashLeft_Factor3=Hash.new{|h,k| h[k]=switchcb_Left_Factor3(k)}
 def switchcbLeft_Factor3(e)
-@@switchhashLeft_Factor3[e.class]
+@@switchhashLeft_Factor3[e]
 end
 def self.switchcb_Left_Factor4(e)
 return 0 if e<=Bind
@@ -40,7 +40,7 @@ return 2 if e<=Object
 end
 @@switchhashLeft_Factor4=Hash.new{|h,k| h[k]=switchcb_Left_Factor4(k)}
 def switchcbLeft_Factor4(e)
-@@switchhashLeft_Factor4[e.class]
+@@switchhashLeft_Factor4[e]
 end
 def binds_Left_Factorcb_1(bind)
 bind[1]=[bind[1]]
@@ -148,7 +148,7 @@ end
 
 
 def left_factor_compiled_by
-'291d519bff5b09611718451f193cf9de'
+'ae7f7ff83d1b1f766d486f002118d4a4'
 end
 def left_factor_source_hash
 '735fd68abfa48b088273bd588cc38a2c'
@@ -157,6 +157,6 @@ def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version
 end
 def left_factor_version
-'26107589ff833e361db4e14f617ca0b8'
+'e79e5a3d5c4ceb87160da8b329c5a27a'
 end
   require 'compiled/left_factor_c'

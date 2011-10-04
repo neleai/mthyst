@@ -83,7 +83,7 @@ return 9 if e<=Object
 end
 @@switchhashDataflow1=Hash.new{|h,k| h[k]=switchcb_Dataflow1(k)}
 def switchcbDataflow1(e)
-@@switchhashDataflow1[e.class]
+@@switchhashDataflow1[e]
 end
 def self.switchcb_Dataflow2(e)
 return 0 if e<=Act
@@ -99,7 +99,7 @@ return 9 if e<=Object
 end
 @@switchhashDataflow2=Hash.new{|h,k| h[k]=switchcb_Dataflow2(k)}
 def switchcbDataflow2(e)
-@@switchhashDataflow2[e.class]
+@@switchhashDataflow2[e]
 end
 def self.switchcb_Dataflow3(e)
 return 0 if e<=AmethystAST
@@ -108,7 +108,7 @@ return 2 if e<=Object
 end
 @@switchhashDataflow3=Hash.new{|h,k| h[k]=switchcb_Dataflow3(k)}
 def switchcbDataflow3(e)
-@@switchhashDataflow3[e.class]
+@@switchhashDataflow3[e]
 end
 def clas_Dataflowcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -331,7 +331,7 @@ return 5 if e<=Object
 end
 @@switchhashDead_Code_Deleter35=Hash.new{|h,k| h[k]=switchcb_Dead_Code_Deleter35(k)}
 def switchcbDead_Code_Deleter35(e)
-@@switchhashDead_Code_Deleter35[e.class]
+@@switchhashDead_Code_Deleter35[e]
 end
 def self.switchcb_Dead_Code_Deleter34(e)
 return 0 if e<=Act
@@ -341,7 +341,7 @@ return 3 if e<=Object
 end
 @@switchhashDead_Code_Deleter34=Hash.new{|h,k| h[k]=switchcb_Dead_Code_Deleter34(k)}
 def switchcbDead_Code_Deleter34(e)
-@@switchhashDead_Code_Deleter34[e.class]
+@@switchhashDead_Code_Deleter34[e]
 end
 def self.switchcb_Dead_Code_Deleter36(e)
 return 0 if e<=AmethystAST
@@ -350,7 +350,7 @@ return 2 if e<=Object
 end
 @@switchhashDead_Code_Deleter36=Hash.new{|h,k| h[k]=switchcb_Dead_Code_Deleter36(k)}
 def switchcbDead_Code_Deleter36(e)
-@@switchhashDead_Code_Deleter36[e.class]
+@@switchhashDead_Code_Deleter36[e]
 end
 def clas_Dead_Code_Deleter3cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -423,7 +423,7 @@ return 2 if e<=Object
 end
 @@switchhashForget_SSA7=Hash.new{|h,k| h[k]=switchcb_Forget_SSA7(k)}
 def switchcbForget_SSA7(e)
-@@switchhashForget_SSA7[e.class]
+@@switchhashForget_SSA7[e]
 end
 def clas_Forget_SSAcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -474,7 +474,7 @@ end
 
 
 def dataflow_ssa_compiled_by
-'291d519bff5b09611718451f193cf9de'
+'ae7f7ff83d1b1f766d486f002118d4a4'
 end
 def dataflow_ssa_source_hash
 '256ed86af86d95d9b8953797b6b14661'
@@ -483,6 +483,6 @@ def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'ec1a5106ff85b17bbf29c9cff6d8424e'
+'67592f4eb4726e11921a91150a331286'
 end
   require 'compiled/dataflow_ssa_c'

@@ -9,7 +9,7 @@ return 5 if e<=Object
 end
 @@switchhashAnalyze_Variables21=Hash.new{|h,k| h[k]=switchcb_Analyze_Variables21(k)}
 def switchcbAnalyze_Variables21(e)
-@@switchhashAnalyze_Variables21[e.class]
+@@switchhashAnalyze_Variables21[e]
 end
 def self.switchcb_Analyze_Variables22(e)
 return 0 if e<=Grammar
@@ -17,7 +17,7 @@ return 1 if e<=Object
 end
 @@switchhashAnalyze_Variables22=Hash.new{|h,k| h[k]=switchcb_Analyze_Variables22(k)}
 def switchcbAnalyze_Variables22(e)
-@@switchhashAnalyze_Variables22[e.class]
+@@switchhashAnalyze_Variables22[e]
 end
 def self.switchcb_Analyze_Variables23(e)
 return 0 if e<=Args
@@ -26,7 +26,7 @@ return 2 if e<=Object
 end
 @@switchhashAnalyze_Variables23=Hash.new{|h,k| h[k]=switchcb_Analyze_Variables23(k)}
 def switchcbAnalyze_Variables23(e)
-@@switchhashAnalyze_Variables23[e.class]
+@@switchhashAnalyze_Variables23[e]
 end
 def self.switchcb_Analyze_Variables24(e)
 return 0 if e<=AmethystAST
@@ -35,7 +35,7 @@ return 2 if e<=Object
 end
 @@switchhashAnalyze_Variables24=Hash.new{|h,k| h[k]=switchcb_Analyze_Variables24(k)}
 def switchcbAnalyze_Variables24(e)
-@@switchhashAnalyze_Variables24[e.class]
+@@switchhashAnalyze_Variables24[e]
 end
 def clas_Analyze_Variables2cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -145,7 +145,7 @@ end
 
 
 def detect_variables2_compiled_by
-'291d519bff5b09611718451f193cf9de'
+'ae7f7ff83d1b1f766d486f002118d4a4'
 end
 def detect_variables2_source_hash
 '56196ab0e78188e5a2d6bc8b4c79e49b'
@@ -154,6 +154,6 @@ def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'2f02b379b6029a86265f4a9a7cd7537e'
+'f3b8cb3af082f3d41e36c0223026e617'
 end
   require 'compiled/detect_variables2_c'

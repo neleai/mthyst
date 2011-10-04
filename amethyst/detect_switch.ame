@@ -341,9 +341,9 @@ class Detect_ClasSwitch < Detect_First
 		rb+="end\n"
 		rb+="@@switchhash#{@name}#{@no}=Hash.new{|h,k| h[k]=switchcb_#{@name}#{@no}(k)}\n"
 		rb+="def switchcb#{@name}#{@no}(e)\n"
-		rb+="@@switchhash#{@name}#{@no}[e.class]\n"
+		rb+="@@switchhash#{@name}#{@no}[e]\n"
 		rb+="end"
-		Switch[{:defs=>rb,:act=>"FIX2INT(CALL(switchcb#{@name}#{@no},1,ame_curobj(self)))",:first=>first,:ary=>ary3}]
+		Switch[{:defs=>rb,:act=>"FIX2INT(CALL(switchcb#{@name}#{@no},1,rb_obj_class(ame_curobj(self))))",:first=>first,:ary=>ary3}]
 	end
 	def topsort(a)
 		a=a.uniq.sort_by{|a| a.to_s}
