@@ -253,6 +253,8 @@ def equalize_by(klas,args)
             $hash_#{klas}[#{args}]=normalize2
           end
 					alias_method :hash,:object_id
+					alias_method :eql?,:equal?
+					alias_method :==,:equal?
     end")
 end
 [Act,Apply,Args,Bind,Bnding,CAct,Comment,Cut,Exp,Global,Key,Local,Lookahead,Many,Or,Pass,Result,Seq,Stop,Strin,Switch].each{|e| 
