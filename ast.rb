@@ -139,7 +139,7 @@ class SeqOr
     self.freeze
   end
 end
-$hash_Seq={}
+
 class Seq
 	def self.[](*args)
 		args=args[0][:ary] if args.size==1 && args[0].is_a?(Hash)
@@ -154,13 +154,8 @@ class Seq
 		end}
 		s
 	end
-	def normalize
-		return $hash_Seq[ary] if $hash_Seq[ary]
-		$hash_Seq[ary]=normalize2
-	end
 end
 
-$hash_Or={}
 class Or
 	def self.[](*args)
 		args=args[0][:ary] if args.size==1 && args[0].is_a?(Hash)
@@ -168,13 +163,19 @@ class Or
 		return Apply["fails"] if args.size==0
 		Or.create({:ary=>args}).normalize
 	end
-	def normalize
-		return $hash_Or[ary] if $hash_Or[ary]
-		$hash_Or[ary]=normalize2
-	end
 end
 
 #better rewrite by writing equalize_by generator
+def equalize_by(klas,args)
+  eval("$hash_#{klas}={}
+    class #{klas}\n
+          def normalize
+            return $hash_#{klas}[#{args}] if $hash_#{klas}[#{args}]
+            $hash_#{klas}[#{args}]=normalize2
+          end
+    end")
+end
+[Seq,Or].each{|e| equalize_by(e,"ary")}
 [Apply,Bnding,Act,Seq,Or].each{|c| eval("class #{c}\n alias_method :hash,:object_id\nend\n")}
 
 [Result,Switch,Cut,Stop,Args,Strin,Exp
