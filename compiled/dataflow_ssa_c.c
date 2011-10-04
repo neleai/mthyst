@@ -744,9 +744,7 @@ return it;
 fail: return failobj; }
 VALUE Dead_Code_Deleter3_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(10);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-unsigned char chr1=FIX2INT(CALL(switchcbDead_Code_Deleter35,1,ame_curobj(self)));  switch(chr1){case 0:;case 2:;case 4:;case 5:; unsigned char chr2=FIX2INT(CALL(switchcbDead_Code_Deleter34,1,ame_curobj(self)));  switch(chr2){case 0:;   it=AmethystCore_anything(self ); FAILTEST(fail);
- rb_ary_store(bind,0/*autovar*/,it);  break;case 1:;   it=AmethystCore_anything(self ); FAILTEST(fail);
- rb_ary_store(bind,0/*autovar*/,it);  break;case 2:;   it=AmethystCore_anything(self ); FAILTEST(fail);
+unsigned char chr1=FIX2INT(CALL(switchcbDead_Code_Deleter35,1,ame_curobj(self)));  switch(chr1){case 0:;case 2:;case 4:;case 5:; unsigned char chr2=FIX2INT(CALL(switchcbDead_Code_Deleter34,1,ame_curobj(self)));  switch(chr2){case 0:;case 1:;case 2:;   it=AmethystCore_anything(self ); FAILTEST(fail);
  rb_ary_store(bind,0/*autovar*/,it);  break;case 3:;   it=Dead_Code_Deleter3_fails(self ); FAILTEST(fail); break;}int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,rb_ary_entry(bind,0/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
  it=CALL(visit_Dead_Code_Deleter3cb_1,1,bind); 
@@ -1012,4 +1010,4 @@ rb_define_method(cls_Forget_SSA,"root",Forget_SSA_root,0);
 rb_define_method(cls_Forget_SSA,"traverse",Forget_SSA_traverse,0);
 rb_define_method(cls_Forget_SSA,"traverse_item",Forget_SSA_traverse_item,0);
 rb_define_method(cls_Forget_SSA,"visit",Forget_SSA_visit,0);
- rb_eval_string("testversiondataflow_ssa('65ac0a50024b2373a8c31a07ac1c60cd')");}
+ rb_eval_string("testversiondataflow_ssa('ec1a5106ff85b17bbf29c9cff6d8424e')");}

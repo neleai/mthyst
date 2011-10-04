@@ -88,13 +88,12 @@ def _Bind(name,expr,append=nil)
 	end
 end
 class Bind
-	def normalize
+	def normalize2
 		return Or[*expr.ary.map{|a|_Bind(name,a)}] if @expr.is_a?(Or)
     return Seq[*(expr.ary[0...-1]+[_Bind(name,expr.ary[-1])])] if @expr.is_a?(Seq) && @expr.ary.size>0
 		self.freeze
 	end
 end
-
 
 class Append
 	def self.[](name,expr)
@@ -160,6 +159,8 @@ def equalize_by(klas,args)
 end
 [Apply,Bnding,Seq,Or,Many].each{|e| equalize_by(e,"ary")}
 [Apply,Bnding,Act,Seq,Or,Many].each{|c| eval("class #{c}\n alias_method :hash,:object_id\nend\n")}
+
+equalize_by(Bind,"[name,expr]")
 
 [Result,Switch,Cut,Stop,Args,Strin,Exp
 ].each{|c| eval("class #{c} 
@@ -260,7 +261,7 @@ class Lookahead
 		end
   end
 	def normalize
-		freeze
+		self.freeze
 	end
 end
 [CAct,Global,Key,
