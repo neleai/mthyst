@@ -67,8 +67,8 @@ next h[k]=5 if k<=Local
 next h[k]=6 if k<=Strin
 next h[k]=7 if k<=Object
 }
-def switchcbAmethystCTranslator1(e)
-@@switchhashAmethystCTranslator1[e]
+def switchcbAmethystCTranslator1
+@@switchhashAmethystCTranslator1
 end
 @@switchhashAmethystCTranslator2=Hash.new{|h,k|
 next h[k]=0 if k<=Act
@@ -89,8 +89,8 @@ next h[k]=14 if k<=Stop
 next h[k]=15 if k<=Switch
 next h[k]=16 if k<=Object
 }
-def switchcbAmethystCTranslator2(e)
-@@switchhashAmethystCTranslator2[e]
+def switchcbAmethystCTranslator2
+@@switchhashAmethystCTranslator2
 end
 def addcallback_AmethystCTranslatorcb_1(bind)
 addcallback2(bind[0])
@@ -385,7 +385,7 @@ end
 
 
 def ctranslator2_compiled_by
-'ae7f7ff83d1b1f766d486f002118d4a4'
+'497c9d72ca5c5444685eb85c946a50cd'
 end
 def ctranslator2_source_hash
 '2ab1484652f9d9fb801743e9670340aa'
@@ -394,6 +394,6 @@ def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'8b6b2d10c06b9226fa3536ca1678db8a'
+'d2cf3711a920634114fbe6195eb4340a'
 end
   require 'compiled/ctranslator2_c'

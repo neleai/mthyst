@@ -4,8 +4,8 @@ next h[k]=0 if k<=AmethystAST
 next h[k]=1 if k<=Array
 next h[k]=2 if k<=Object
 }
-def switchcbTraverser_Clone21(e)
-@@switchhashTraverser_Clone21[e]
+def switchcbTraverser_Clone21
+@@switchhashTraverser_Clone21
 end
 def clas_Traverser_Clone2cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -57,8 +57,8 @@ next h[k]=0 if k<=AmethystAST
 next h[k]=1 if k<=Array
 next h[k]=2 if k<=Object
 }
-def switchcbVisitor2(e)
-@@switchhashVisitor2[e]
+def switchcbVisitor2
+@@switchhashVisitor2
 end
 def clas_Visitorcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -83,7 +83,7 @@ end
 
 
 def traverser_compiled_by
-'ae7f7ff83d1b1f766d486f002118d4a4'
+'497c9d72ca5c5444685eb85c946a50cd'
 end
 def traverser_source_hash
 '22a0094158fcb42ea5b9d2d2e863085b'
@@ -92,6 +92,6 @@ def testversiontraverser(r)
  raise "invalid version" if r!=traverser_version
 end
 def traverser_version
-'7d4affaff5ceee91b0cd86917ec5bbe5'
+'fe397a0a7056680b46929a24935ade8f'
 end
   require 'compiled/traverser_c'

@@ -24,8 +24,8 @@ class AmethystParser < Amethyst
 next h[k]=0 if k<=Args
 next h[k]=1 if k<=Object
 }
-def switchcbAmethystParser1(e)
-@@switchhashAmethystParser1[e]
+def switchcbAmethystParser1
+@@switchhashAmethystParser1
 end
 def _args_AmethystParsercb_1(bind)
 Args[{:ary=>([bind[0]]+bind[2]+[bind[1]])}]
@@ -329,7 +329,7 @@ end
 
 
 def parser_compiled_by
-'ae7f7ff83d1b1f766d486f002118d4a4'
+'497c9d72ca5c5444685eb85c946a50cd'
 end
 def parser_source_hash
 'd1f9e8937adb72c1bb0d0e1f84feabb9'
@@ -338,6 +338,6 @@ def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'cb2eb1c30038e57e95fe5298ebf4297b'
+'eeff90c1ef30972364f43e31a59883e3'
 end
   require 'compiled/parser_c'

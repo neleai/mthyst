@@ -12,31 +12,31 @@ next h[k]=0 if k<=Bind
 next h[k]=1 if k<=Seq
 next h[k]=2 if k<=Object
 }
-def switchcbLeft_Factor1(e)
-@@switchhashLeft_Factor1[e]
+def switchcbLeft_Factor1
+@@switchhashLeft_Factor1
 end
 @@switchhashLeft_Factor2=Hash.new{|h,k|
 next h[k]=0 if k<=Seq
 next h[k]=1 if k<=Object
 }
-def switchcbLeft_Factor2(e)
-@@switchhashLeft_Factor2[e]
+def switchcbLeft_Factor2
+@@switchhashLeft_Factor2
 end
 @@switchhashLeft_Factor3=Hash.new{|h,k|
 next h[k]=0 if k<=AmethystAST
 next h[k]=1 if k<=Array
 next h[k]=2 if k<=Object
 }
-def switchcbLeft_Factor3(e)
-@@switchhashLeft_Factor3[e]
+def switchcbLeft_Factor3
+@@switchhashLeft_Factor3
 end
 @@switchhashLeft_Factor4=Hash.new{|h,k|
 next h[k]=0 if k<=Bind
 next h[k]=1 if k<=Seq
 next h[k]=2 if k<=Object
 }
-def switchcbLeft_Factor4(e)
-@@switchhashLeft_Factor4[e]
+def switchcbLeft_Factor4
+@@switchhashLeft_Factor4
 end
 def binds_Left_Factorcb_1(bind)
 bind[1]=[bind[1]]
@@ -144,7 +144,7 @@ end
 
 
 def left_factor_compiled_by
-'ae7f7ff83d1b1f766d486f002118d4a4'
+'497c9d72ca5c5444685eb85c946a50cd'
 end
 def left_factor_source_hash
 '735fd68abfa48b088273bd588cc38a2c'
@@ -153,6 +153,6 @@ def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version
 end
 def left_factor_version
-'e79e5a3d5c4ceb87160da8b329c5a27a'
+'0a02094f760f10d93d183301c8e4ad24'
 end
   require 'compiled/left_factor_c'

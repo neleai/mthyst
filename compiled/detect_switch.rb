@@ -255,8 +255,8 @@ next h[k]=9 if k<=Stop
 next h[k]=10 if k<=Switch
 next h[k]=11 if k<=Object
 }
-def switchcbFirst_Dataflow2(e)
-@@switchhashFirst_Dataflow2[e]
+def switchcbFirst_Dataflow2
+@@switchhashFirst_Dataflow2
 end
 @@switchhashFirst_Dataflow1=Hash.new{|h,k|
 next h[k]=0 if k<=Act
@@ -267,8 +267,8 @@ next h[k]=4 if k<=Result
 next h[k]=5 if k<=Stop
 next h[k]=6 if k<=Object
 }
-def switchcbFirst_Dataflow1(e)
-@@switchhashFirst_Dataflow1[e]
+def switchcbFirst_Dataflow1
+@@switchhashFirst_Dataflow1
 end
 def clas_First_Dataflowcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -327,15 +327,15 @@ class Sizes_Dataflow < First_Dataflow
 next h[k]=0 if k<=Apply
 next h[k]=1 if k<=Object
 }
-def switchcbSizes_Dataflow4(e)
-@@switchhashSizes_Dataflow4[e]
+def switchcbSizes_Dataflow4
+@@switchhashSizes_Dataflow4
 end
 @@switchhashSizes_Dataflow3=Hash.new{|h,k|
 next h[k]=0 if k<=CAct
 next h[k]=1 if k<=Object
 }
-def switchcbSizes_Dataflow3(e)
-@@switchhashSizes_Dataflow3[e]
+def switchcbSizes_Dataflow3
+@@switchhashSizes_Dataflow3
 end
 @@switchhashSizes_Dataflow6=Hash.new{|h,k|
 next h[k]=0 if k<=Act
@@ -351,8 +351,8 @@ next h[k]=9 if k<=Stop
 next h[k]=10 if k<=Switch
 next h[k]=11 if k<=Object
 }
-def switchcbSizes_Dataflow6(e)
-@@switchhashSizes_Dataflow6[e]
+def switchcbSizes_Dataflow6
+@@switchhashSizes_Dataflow6
 end
 @@switchhashSizes_Dataflow5=Hash.new{|h,k|
 next h[k]=0 if k<=Act
@@ -363,8 +363,8 @@ next h[k]=4 if k<=Result
 next h[k]=5 if k<=Stop
 next h[k]=6 if k<=Object
 }
-def switchcbSizes_Dataflow5(e)
-@@switchhashSizes_Dataflow5[e]
+def switchcbSizes_Dataflow5
+@@switchhashSizes_Dataflow5
 end
 def clas_Sizes_Dataflowcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -454,8 +454,8 @@ next h[k]=9 if k<=Stop
 next h[k]=10 if k<=Switch
 next h[k]=11 if k<=Object
 }
-def switchcbSwitch_Dataflow8(e)
-@@switchhashSwitch_Dataflow8[e]
+def switchcbSwitch_Dataflow8
+@@switchhashSwitch_Dataflow8
 end
 @@switchhashSwitch_Dataflow7=Hash.new{|h,k|
 next h[k]=0 if k<=Act
@@ -466,23 +466,23 @@ next h[k]=4 if k<=Result
 next h[k]=5 if k<=Stop
 next h[k]=6 if k<=Object
 }
-def switchcbSwitch_Dataflow7(e)
-@@switchhashSwitch_Dataflow7[e]
+def switchcbSwitch_Dataflow7
+@@switchhashSwitch_Dataflow7
 end
 @@switchhashSwitch_Dataflow10=Hash.new{|h,k|
 next h[k]=0 if k<=Apply
 next h[k]=1 if k<=Object
 }
-def switchcbSwitch_Dataflow10(e)
-@@switchhashSwitch_Dataflow10[e]
+def switchcbSwitch_Dataflow10
+@@switchhashSwitch_Dataflow10
 end
 @@switchhashSwitch_Dataflow9=Hash.new{|h,k|
 next h[k]=0 if k<=Act
 next h[k]=1 if k<=CAct
 next h[k]=2 if k<=Object
 }
-def switchcbSwitch_Dataflow9(e)
-@@switchhashSwitch_Dataflow9[e]
+def switchcbSwitch_Dataflow9
+@@switchhashSwitch_Dataflow9
 end
 def clas_Switch_Dataflowcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -575,8 +575,8 @@ next h[k]=9 if k<=Stop
 next h[k]=10 if k<=Switch
 next h[k]=11 if k<=Object
 }
-def switchcbClasSwitch_Dataflow12(e)
-@@switchhashClasSwitch_Dataflow12[e]
+def switchcbClasSwitch_Dataflow12
+@@switchhashClasSwitch_Dataflow12
 end
 @@switchhashClasSwitch_Dataflow11=Hash.new{|h,k|
 next h[k]=0 if k<=Act
@@ -587,15 +587,15 @@ next h[k]=4 if k<=Result
 next h[k]=5 if k<=Stop
 next h[k]=6 if k<=Object
 }
-def switchcbClasSwitch_Dataflow11(e)
-@@switchhashClasSwitch_Dataflow11[e]
+def switchcbClasSwitch_Dataflow11
+@@switchhashClasSwitch_Dataflow11
 end
 @@switchhashClasSwitch_Dataflow13=Hash.new{|h,k|
 next h[k]=0 if k<=Apply
 next h[k]=1 if k<=Object
 }
-def switchcbClasSwitch_Dataflow13(e)
-@@switchhashClasSwitch_Dataflow13[e]
+def switchcbClasSwitch_Dataflow13
+@@switchhashClasSwitch_Dataflow13
 end
 def clas_ClasSwitch_Dataflowcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -735,10 +735,10 @@ class Detect_ClasSwitch < Detect_First
 		rb="@@switchhash#{@name}#{@no}=Hash.new{|h,k|\n"
 		ary.each_with_index{|c,i| rb<< "next h[k]=#{i} if k<=#{c}\n"}
 		rb+="}\n"
-		rb+="def switchcb#{@name}#{@no}(e)\n"
-		rb+="@@switchhash#{@name}#{@no}[e]\n"
+		rb+="def switchcb#{@name}#{@no}\n"
+		rb+="@@switchhash#{@name}#{@no}\n"
 		rb+="end"
-		Switch[{:defs=>rb,:act=>"FIX2INT(CALL(switchcb#{@name}#{@no},1,rb_obj_class(ame_curobj(self))))",:first=>first,:ary=>ary3}]
+		Switch[{:defs=>rb,:act=>"FIX2INT(rb_hash_aref(CALL(switchcb#{@name}#{@no},0),rb_obj_class(ame_curobj(self))))",:first=>first,:ary=>ary3}]
 	end
 	def topsort(a)
 		a=a.uniq.sort_by{|a| a.to_s}
@@ -753,16 +753,16 @@ class Detect_First < Traverser_Clone2
 next h[k]=0 if k<=Grammar
 next h[k]=1 if k<=Object
 }
-def switchcbDetect_First14(e)
-@@switchhashDetect_First14[e]
+def switchcbDetect_First14
+@@switchhashDetect_First14
 end
 @@switchhashDetect_First15=Hash.new{|h,k|
 next h[k]=0 if k<=AmethystAST
 next h[k]=1 if k<=Array
 next h[k]=2 if k<=Object
 }
-def switchcbDetect_First15(e)
-@@switchhashDetect_First15[e]
+def switchcbDetect_First15
+@@switchhashDetect_First15
 end
 def clas_Detect_Firstcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -838,8 +838,8 @@ next h[k]=1 if k<=Seq
 next h[k]=2 if k<=Switch
 next h[k]=3 if k<=Object
 }
-def switchcbDetect_Switch17(e)
-@@switchhashDetect_Switch17[e]
+def switchcbDetect_Switch17
+@@switchhashDetect_Switch17
 end
 @@switchhashDetect_Switch18=Hash.new{|h,k|
 next h[k]=0 if k<=Bind
@@ -847,16 +847,16 @@ next h[k]=1 if k<=Or
 next h[k]=2 if k<=Seq
 next h[k]=3 if k<=Object
 }
-def switchcbDetect_Switch18(e)
-@@switchhashDetect_Switch18[e]
+def switchcbDetect_Switch18
+@@switchhashDetect_Switch18
 end
 @@switchhashDetect_Switch19=Hash.new{|h,k|
 next h[k]=0 if k<=AmethystAST
 next h[k]=1 if k<=Array
 next h[k]=2 if k<=Object
 }
-def switchcbDetect_Switch19(e)
-@@switchhashDetect_Switch19[e]
+def switchcbDetect_Switch19
+@@switchhashDetect_Switch19
 end
 def clas_Detect_Switchcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -1004,16 +1004,16 @@ next h[k]=2 if k<=Or
 next h[k]=3 if k<=Seq
 next h[k]=4 if k<=Object
 }
-def switchcbDetect_ClasSwitch21(e)
-@@switchhashDetect_ClasSwitch21[e]
+def switchcbDetect_ClasSwitch21
+@@switchhashDetect_ClasSwitch21
 end
 @@switchhashDetect_ClasSwitch22=Hash.new{|h,k|
 next h[k]=0 if k<=AmethystAST
 next h[k]=1 if k<=Array
 next h[k]=2 if k<=Object
 }
-def switchcbDetect_ClasSwitch22(e)
-@@switchhashDetect_ClasSwitch22[e]
+def switchcbDetect_ClasSwitch22
+@@switchhashDetect_ClasSwitch22
 end
 def clas_Detect_ClasSwitchcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -1136,15 +1136,15 @@ end
 
 
 def detect_switch_compiled_by
-'ae7f7ff83d1b1f766d486f002118d4a4'
+'497c9d72ca5c5444685eb85c946a50cd'
 end
 def detect_switch_source_hash
-'c0e0fb18a828cd8e4100d3c620738de0'
+'7085520e3b4220e16be81f7ac96e7836'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'d5d3ad2b1ca035fdb742c352daf09c4d'
+'d084ecb391c63e09dbcd7034b046f57a'
 end
   require 'compiled/detect_switch_c'

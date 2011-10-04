@@ -78,7 +78,7 @@ return it;
 fail: return failobj; }
 VALUE Traverser_Clone2_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(8);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-unsigned char chr1=FIX2INT(CALL(switchcbTraverser_Clone21,1,rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:; int oldpos1=ame_getpos(self);
+unsigned char chr1=FIX2INT(rb_hash_aref(CALL(switchcbTraverser_Clone21,0),rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:; int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=CALL(visit,0 ); FAILTEST(alt1_2);
  rb_ary_store(bind,0/*a*/,it); it=CALL(traverse_item_Traverser_Clone2cb_1,1,bind); it=rb_ary_entry(bind,0/*a*/);
@@ -213,7 +213,7 @@ return it;
 fail: return failobj; }
 VALUE Visitor_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(7);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-unsigned char chr1=FIX2INT(CALL(switchcbVisitor2,1,rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:; int oldpos1=ame_getpos(self);
+unsigned char chr1=FIX2INT(rb_hash_aref(CALL(switchcbVisitor2,0),rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:; int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=CALL(visit,0 ); FAILTEST(alt1_2);
  rb_ary_store(bind,0/*_result*/,it);  
@@ -295,4 +295,4 @@ rb_define_method(cls_Visitor,"eof",Visitor_eof,0);
 rb_define_method(cls_Visitor,"fails",Visitor_fails,0);
 rb_define_method(cls_Visitor,"traverse",Visitor_traverse,0);
 rb_define_method(cls_Visitor,"traverse_item",Visitor_traverse_item,0);
- rb_eval_string("testversiontraverser('7d4affaff5ceee91b0cd86917ec5bbe5')");}
+ rb_eval_string("testversiontraverser('fe397a0a7056680b46929a24935ade8f')");}

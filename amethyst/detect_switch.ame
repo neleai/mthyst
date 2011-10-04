@@ -339,10 +339,10 @@ class Detect_ClasSwitch < Detect_First
 		rb="@@switchhash#{@name}#{@no}=Hash.new{|h,k|\n"
 		ary.each_with_index{|c,i| rb<< "next h[k]=#{i} if k<=#{c}\n"}
 		rb+="}\n"
-		rb+="def switchcb#{@name}#{@no}(e)\n"
-		rb+="@@switchhash#{@name}#{@no}[e]\n"
+		rb+="def switchcb#{@name}#{@no}\n"
+		rb+="@@switchhash#{@name}#{@no}\n"
 		rb+="end"
-		Switch[{:defs=>rb,:act=>"FIX2INT(CALL(switchcb#{@name}#{@no},1,rb_obj_class(ame_curobj(self))))",:first=>first,:ary=>ary3}]
+		Switch[{:defs=>rb,:act=>"FIX2INT(rb_hash_aref(CALL(switchcb#{@name}#{@no},0),rb_obj_class(ame_curobj(self))))",:first=>first,:ary=>ary3}]
 	end
 	def topsort(a)
 		a=a.uniq.sort_by{|a| a.to_s}

@@ -4,8 +4,8 @@ next h[k]=0 if k<=AmethystAST
 next h[k]=1 if k<=Array
 next h[k]=2 if k<=Object
 }
-def switchcbDetectCalls1(e)
-@@switchhashDetectCalls1[e]
+def switchcbDetectCalls1
+@@switchhashDetectCalls1
 end
 def clas_DetectCallscb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -44,8 +44,8 @@ next h[k]=0 if k<=AmethystAST
 next h[k]=1 if k<=Array
 next h[k]=2 if k<=Object
 }
-def switchcbInliner22(e)
-@@switchhashInliner22[e]
+def switchcbInliner22
+@@switchhashInliner22
 end
 def clas_Inliner2cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -125,8 +125,8 @@ next h[k]=0 if k<=AmethystAST
 next h[k]=1 if k<=Array
 next h[k]=2 if k<=Object
 }
-def switchcbReplace_Super3(e)
-@@switchhashReplace_Super3[e]
+def switchcbReplace_Super3
+@@switchhashReplace_Super3
 end
 def clas_Replace_Supercb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -186,7 +186,7 @@ end
 
 
 def inliner2_compiled_by
-'ae7f7ff83d1b1f766d486f002118d4a4'
+'497c9d72ca5c5444685eb85c946a50cd'
 end
 def inliner2_source_hash
 'e70b868139b66428259e6a338880dd0c'
@@ -195,6 +195,6 @@ def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version
 end
 def inliner2_version
-'b14e0134f00bee3a68dc281c33dd4412'
+'e80f4d3b7481d15b102c2fb67fcbb4a0'
 end
   require 'compiled/inliner2_c'
