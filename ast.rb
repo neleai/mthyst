@@ -40,8 +40,7 @@ end
 $hash_Bnding={}
 class Bnding
 	def self.[]
-		@bno||=0
-		@bno+=1
+		@bno=(@bno||0)+1
 		Bnding.create({:ary=>[@bno]}).normalize
 	end
 	def normalize2
@@ -57,8 +56,7 @@ end
 $av=0
 def autovar
 	$av+=1
-	a=Local["autovar",$av]
-	a
+	Local["autovar",$av]
 end
 
 class Enter
@@ -69,8 +67,7 @@ end
 
 class Pass
 	def self.[](from,to,enter=nil)
-		a=autovar
-		r=autovar
+		a,r=autovar,autovar
 		Seq[_Bind(a,from), (enter ? Placeholder : Act[Args[a,"=[",a,"]"]]) , Pass.create({:to=>Seq[_Bind(r,to),Apply["eof"]],:var=>a}).normalize,r]
 	end
 	def normalize
@@ -79,14 +76,14 @@ class Pass
 end
 def _Bind(name,expr,append=nil)
 	if append
-		a=autovar.normalize
+		a=autovar
 		$appends<<name if $appends
 	  return Seq[_Bind(a,expr),PureAct[Args["_append(",_Local(name),",",a,")"]]]
 	end	
 	if name.is_a?(Local) || name.is_a?(String)
 		Bind.create({:name=>_Local(name),:expr=>expr}).normalize
 	else
-		a=autovar.normalize
+		a=autovar
 		Seq[_Bind(a,expr),PureAct[Args[name,'=',a]]]
 	end
 end
@@ -94,7 +91,6 @@ class Bind
 	def normalize
 		return Or[*expr.ary.map{|a|_Bind(name,a)}] if @expr.is_a?(Or)
     return Seq[*(expr.ary[0...-1]+[_Bind(name,expr.ary[-1])])] if @expr.is_a?(Seq) && @expr.ary.size>0
-
 		self.freeze
 	end
 end
