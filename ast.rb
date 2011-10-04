@@ -53,9 +53,8 @@ def quote(s)
   '"'+s.gsub('\\"','"').gsub('"','\\"')+'"'
 end
 
-$av=0
 def autovar
-	$av+=1
+	$av=($av||0)+1
 	Local["autovar",$av]
 end
 
@@ -69,9 +68,6 @@ class Pass
 	def self.[](from,to,enter=nil)
 		a,r=autovar,autovar
 		Seq[_Bind(a,from), (enter ? Placeholder : Act[Args[a,"=[",a,"]"]]) , Pass.create({:to=>Seq[_Bind(r,to),Apply["eof"]],:var=>a}).normalize,r]
-	end
-	def normalize
-		self.freeze
 	end
 end
 def _Bind(name,expr,append=nil)
@@ -241,8 +237,6 @@ class Local
 		return @@numb[ary[0]][ary[1]] if @@numb[ary[0]][ary[1]]
 		 @@numb[ary[0]][ary[1]]="#{ary[0]}_#{@@numb[ary[0]].size+1}"
 	end
-	alias_method :==,:equal?
-	alias_method :eql?,:==
 	def self.resetnumbering
     @@numb=Hash.new{|h,k|h[k]={}}
 	end
@@ -256,17 +250,6 @@ def _Local(name)
 		l
 end
 
-[Result,Switch
-].each{|c| eval("class #{c} 
-	def self.[](*a)
-		create(*a).normalize
-	end
-	def normalize
-		freeze
-	end
-end")}
-
-
 def equalize_by(klas,args)
   eval("$hash_#{klas}={}
     class #{klas}\n
@@ -277,13 +260,12 @@ def equalize_by(klas,args)
 					alias_method :hash,:object_id
     end")
 end
-[Lookahead,Apply,Bnding,Seq,Or,Many,CAct,Global,Key,Cut,Stop,Exp,Strin,Args,Comment,
-Bind,Local,Act,Result,Switch].each{|e| 
+[Act,Apply,Args,Bind,Bnding,CAct,Comment,Cut,Exp,Global,Key,Local,Lookahead,Many,Or,Pass,Result,Seq,Stop,Strin,Switch].each{|e| 
 by="[#{e.instance_variable_get(:@attrs)*","}]"
-puts by
+by="ary" if by=="[ary]"
 equalize_by(e,by)
 }
-[CAct,Global,Key,Cut,Stop,Exp,Strin,Args,Comment].each{|cls|
+[CAct,Global,Key,Cut,Stop,Exp,Strin,Args,Comment,Result,Switch].each{|cls|
 	eval("class #{cls}
 		def self.[](*args)
 			#{cls}.create(*args).normalize
