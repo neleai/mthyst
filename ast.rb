@@ -53,10 +53,6 @@ class Bnding
 		@bno+=1
 		Bnding.create({:ary=>[@bno]}).normalize
 	end
-	def normalize
-		return $hash_Bnding[ary] if $hash_Bnding[ary]
-		$hash_Bnding[ary]=normalize2
-	end
 	def normalize2
 		self.freeze
 	end
@@ -175,7 +171,7 @@ def equalize_by(klas,args)
           end
     end")
 end
-[Seq,Or].each{|e| equalize_by(e,"ary")}
+[Apply,Bnding,Seq,Or].each{|e| equalize_by(e,"ary")}
 [Apply,Bnding,Act,Seq,Or].each{|c| eval("class #{c}\n alias_method :hash,:object_id\nend\n")}
 
 [Result,Switch,Cut,Stop,Args,Strin,Exp
@@ -253,7 +249,6 @@ def _body(body)
 	Seq[_Bind("_result",body), PureAct[Args["_result"]]]
 end
 
-$hash_Apply={}
 class Apply
   def self.[](name,*args)
 		args=args.flatten
@@ -261,10 +256,6 @@ class Apply
 		 ar=[name]+args
      Apply.create({:ary=>ar}).normalize
   end
-	def normalize
-		return $hash_Apply[ary] if $hash_Apply[ary]
-		$hash_Apply[ary]=normalize2
-	end
 	def normalize2
 		if @ary[0]=="apply"
 			return Apply[@ary[1][0]] if @ary[1].is_a?(CAct)
