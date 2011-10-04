@@ -147,21 +147,6 @@ class Or
 	end
 end
 
-#better rewrite by writing equalize_by generator
-def equalize_by(klas,args)
-  eval("$hash_#{klas}={}
-    class #{klas}\n
-          def normalize
-            return $hash_#{klas}[#{args}] if $hash_#{klas}[#{args}]
-            $hash_#{klas}[#{args}]=normalize2
-          end
-					alias_method :hash,:object_id
-    end")
-end
-[Apply,Bnding,Seq,Or,Many].each{|e| equalize_by(e,"ary")}
-
-equalize_by(Bind,"[name,expr]")
-
 [Result,Switch,Cut,Stop,Args,Strin,Exp
 ].each{|c| eval("class #{c} 
 	def self.[](*a)
@@ -223,7 +208,6 @@ class Act
 		self.freeze
 	end
 end
-equalize_by(Act,"[pred,ary,pure]")
 class Pred
 def self.[](e)
 	Act[e,true]
@@ -264,24 +248,6 @@ class Lookahead
 		self.freeze
 	end
 end
-equalize_by(Lookahead,"ary")
-[CAct,Global,Key,
-Cut,Stop,Exp,Strin,Args,
-Comment
-#Result
-].each{|cls|
-eval("class #{cls}
-	def self.[](*args)
-		#{cls}.create(*args).normalize
-	end
-	def normalize2
-		self.freeze
-	end
-end")
-equalize_by(cls,"ary")
-}
-
-$hash_Local={}
 class Local
 	def self.[](name,bnd,ssano=nil)
     Local.create({:ary=>[name,bnd],:ssano=>ssano}).normalize
@@ -290,7 +256,6 @@ class Local
 		self.freeze
 	end
 end
-equalize_by("Local","[ary[0],ary[1],ssano]")
 class Local
 	def desc
 		return @@numb[ary[0]][ary[1]] if @@numb[ary[0]][ary[1]]
@@ -310,6 +275,36 @@ def _Local(name)
 		instance_eval{@locals << l if @locals}
 		l
 end
+
+
+def equalize_by(klas,args)
+  eval("$hash_#{klas}={}
+    class #{klas}\n
+          def normalize
+            return $hash_#{klas}[#{args}] if $hash_#{klas}[#{args}]
+            $hash_#{klas}[#{args}]=normalize2
+          end
+					alias_method :hash,:object_id
+    end")
+end
+[Lookahead,Apply,Bnding,Seq,Or,Many].each{|e| equalize_by(e,"ary")}
+equalize_by(Bind,"[name,expr]")
+equalize_by(Local,"[ary[0],ary[1],ssano]")
+equalize_by(Act,"[pred,ary,pure]")
+[CAct,Global,Key,
+Cut,Stop,Exp,Strin,Args,
+Comment#,Result
+].each{|cls|
+eval("class #{cls}
+	def self.[](*args)
+		#{cls}.create(*args).normalize
+	end
+	def normalize2
+		self.freeze
+	end
+end")
+equalize_by(cls,"ary")
+}
 
 class Apply;					def inspect;	"#{ary[0]}(#{ary[1..-1].map{|a|a.inspect}*","})";							end;end
 class Local;					def inspect;	"L[#{ary[0]}#{ary[1].is_a?(Bnding) ? "" : ary[1]}_#{ssano}]";	end;end
