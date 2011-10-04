@@ -260,10 +260,11 @@ class Lookahead
     	Lookahead.create(e).normalize
 		end
   end
-	def normalize
+	def normalize2
 		self.freeze
 	end
 end
+equalize_by(Lookahead,"ary")
 [CAct,Global,Key,
 Cut,Stop,Exp,Strin,Args,
 Comment
