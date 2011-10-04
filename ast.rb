@@ -9,7 +9,7 @@ makeclasses(AmethystAST,
     :Comment,
     [:Args],
     [:Act,:pred,:pure],
-		[:CAct,:pred],
+		[:CAct],
     [:Lookahead],
     :And,
 		[:Strin],
@@ -277,12 +277,12 @@ def equalize_by(klas,args)
 					alias_method :hash,:object_id
     end")
 end
-[Lookahead,Apply,Bnding,Seq,Or,Many,CAct,Global,Key,Cut,Stop,Exp,Strin,Args,Comment].each{|e| equalize_by(e,"ary")}
-equalize_by(Bind,"[name,expr]")
-equalize_by(Local,"[ary[0],ary[1],ssano]")
-equalize_by(Act,"[pred,ary,pure]")
-equalize_by(Result,"[name,vars]")
-equalize_by(Switch,"[act,defs,first,ary]")
+[Lookahead,Apply,Bnding,Seq,Or,Many,CAct,Global,Key,Cut,Stop,Exp,Strin,Args,Comment,
+Bind,Local,Act,Result,Switch].each{|e| 
+by="[#{e.instance_variable_get(:@attrs)*","}]"
+puts by
+equalize_by(e,by)
+}
 [CAct,Global,Key,Cut,Stop,Exp,Strin,Args,Comment].each{|cls|
 	eval("class #{cls}
 		def self.[](*args)
@@ -290,6 +290,7 @@ equalize_by(Switch,"[act,defs,first,ary]")
 		end
 	end")
 }
+
 
 class Apply;					def inspect;	"#{ary[0]}(#{ary[1..-1].map{|a|a.inspect}*","})";							end;end
 class Local;					def inspect;	"L[#{ary[0]}#{ary[1].is_a?(Bnding) ? "" : ary[1]}_#{ssano}]";	end;end
