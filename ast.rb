@@ -107,7 +107,7 @@ class Many
 	  a=autovar
 		Seq[{:ary=>( [_Bind(a, Act["[]"])]+(many1 ? [Append[a,expr]] : [])+[Many.create({:ary=>[Append[a,expr]]}).normalize,a])}]
 	end
-	def normalize
+	def normalize2
 		self.freeze
 	end
 end
@@ -158,8 +158,8 @@ def equalize_by(klas,args)
           end
     end")
 end
-[Apply,Bnding,Seq,Or].each{|e| equalize_by(e,"ary")}
-[Apply,Bnding,Act,Seq,Or].each{|c| eval("class #{c}\n alias_method :hash,:object_id\nend\n")}
+[Apply,Bnding,Seq,Or,Many].each{|e| equalize_by(e,"ary")}
+[Apply,Bnding,Act,Seq,Or,Many].each{|c| eval("class #{c}\n alias_method :hash,:object_id\nend\n")}
 
 [Result,Switch,Cut,Stop,Args,Strin,Exp
 ].each{|c| eval("class #{c} 
