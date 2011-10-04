@@ -312,14 +312,11 @@ class Local
 	def self.[](name,bnd,ssano=nil)
     Local.create({:ary=>[name,bnd],:ssano=>ssano}).normalize
   end
-	def normalize
-		return $hash_Local[[ary[0],ary[1],ssano]] if $hash_Local[[ary[0],ary[1],ssano]]
-		$hash_Local[[ary[0],ary[1],ssano]]=normalize2
-	end
 	def normalize2
 		self.freeze
 	end
 end
+equalize_by("Local","[ary[0],ary[1],ssano]")
 class Local
 	def desc
 		return @@numb[ary[0]][ary[1]] if @@numb[ary[0]][ary[1]]
