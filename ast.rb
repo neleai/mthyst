@@ -277,25 +277,18 @@ def equalize_by(klas,args)
 					alias_method :hash,:object_id
     end")
 end
-[Lookahead,Apply,Bnding,Seq,Or,Many].each{|e| equalize_by(e,"ary")}
+[Lookahead,Apply,Bnding,Seq,Or,Many,CAct,Global,Key,Cut,Stop,Exp,Strin,Args,Comment].each{|e| equalize_by(e,"ary")}
 equalize_by(Bind,"[name,expr]")
 equalize_by(Local,"[ary[0],ary[1],ssano]")
 equalize_by(Act,"[pred,ary,pure]")
 equalize_by(Result,"[name,vars]")
 equalize_by(Switch,"[act,defs,first,ary]")
-[CAct,Global,Key,
-Cut,Stop,Exp,Strin,Args,
-Comment
-].each{|cls|
-eval("class #{cls}
-	def self.[](*args)
-		#{cls}.create(*args).normalize
-	end
-	def normalize2
-		self.freeze
-	end
-end")
-equalize_by(cls,"ary")
+[CAct,Global,Key,Cut,Stop,Exp,Strin,Args,Comment].each{|cls|
+	eval("class #{cls}
+		def self.[](*args)
+			#{cls}.create(*args).normalize
+		end
+	end")
 }
 
 class Apply;					def inspect;	"#{ary[0]}(#{ary[1..-1].map{|a|a.inspect}*","})";							end;end
