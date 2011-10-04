@@ -1,38 +1,5 @@
 class Analyze_Variables2 < Traverser_Clone2
-@@switchhashAnalyze_Variables21=Hash.new{|h,k|
-next h[k]=0 if k<=Act
-next h[k]=1 if k<=Args
-next h[k]=2 if k<=Or
-next h[k]=3 if k<=Result
-next h[k]=4 if k<=Seq
-next h[k]=5 if k<=Object
-}
-def switchcbAnalyze_Variables21
-@@switchhashAnalyze_Variables21
-end
-@@switchhashAnalyze_Variables22=Hash.new{|h,k|
-next h[k]=0 if k<=Grammar
-next h[k]=1 if k<=Object
-}
-def switchcbAnalyze_Variables22
-@@switchhashAnalyze_Variables22
-end
-@@switchhashAnalyze_Variables23=Hash.new{|h,k|
-next h[k]=0 if k<=Args
-next h[k]=1 if k<=Strin
-next h[k]=2 if k<=Object
-}
-def switchcbAnalyze_Variables23
-@@switchhashAnalyze_Variables23
-end
-@@switchhashAnalyze_Variables24=Hash.new{|h,k|
-next h[k]=0 if k<=AmethystAST
-next h[k]=1 if k<=Array
-next h[k]=2 if k<=Object
-}
-def switchcbAnalyze_Variables24
-@@switchhashAnalyze_Variables24
-end
+
 def clas_Analyze_Variables2cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
@@ -141,7 +108,7 @@ end
 
 
 def detect_variables2_compiled_by
-'ae84f387ab7a3c31ee9a46104ebf9fdb'
+'6b247e5576e0b764091c15f5d197bffc'
 end
 def detect_variables2_source_hash
 '56196ab0e78188e5a2d6bc8b4c79e49b'
@@ -150,6 +117,6 @@ def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'de8cf1b2f7f896fabde3bc1943de2a35'
+'e6bca8e8f12a3f793cc782c7b6cedf94'
 end
   require 'compiled/detect_variables2_c'

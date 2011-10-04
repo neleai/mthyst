@@ -10,6 +10,10 @@ VALUE Analyze_Variables2_root(VALUE self );
 VALUE Analyze_Variables2_traverse(VALUE self );
 VALUE Analyze_Variables2_traverse_item(VALUE self );
 VALUE Analyze_Variables2_visit(VALUE self );
+VALUE switchhashAnalyze_Variables21;
+VALUE switchhashAnalyze_Variables22;
+VALUE switchhashAnalyze_Variables23;
+VALUE switchhashAnalyze_Variables24;
 VALUE Analyze_Variables2_clas(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=rb_ary_new2(3); rb_ary_store(bind,1/*cls*/,a0); int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
   it=AmethystCore_anything(self ); FAILTEST(fail);
@@ -47,7 +51,7 @@ fail: return failobj; }
 VALUE Analyze_Variables2_flat(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(7);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 it=rb_ary_new3(0);
- rb_ary_store(bind,0/*autovar*/,it); int oldpos1; while(1){oldpos1=ame_getpos(self); unsigned char chr1=FIX2INT(rb_hash_aref(CALL(switchcbAnalyze_Variables23,0),rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:; int oldpos2=ame_getpos(self);
+ rb_ary_store(bind,0/*autovar*/,it); int oldpos1; while(1){oldpos1=ame_getpos(self); unsigned char chr1=FIX2INT(rb_hash_aref(switchhashAnalyze_Variables23,rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:; int oldpos2=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
    it=AmethystCore_anything(self ); FAILTEST(alt1_2);
  rb_ary_store(bind,1/*autovar*/,it); int oldpos3=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
@@ -95,7 +99,7 @@ fail: return failobj; }
 VALUE Analyze_Variables2_itrans(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(12);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 it=rb_ary_new3(0);
- rb_ary_store(bind,0/*autovar*/,it); int oldpos1; while(1){oldpos1=ame_getpos(self); unsigned char chr1=FIX2INT(rb_hash_aref(CALL(switchcbAnalyze_Variables22,0),rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:; int oldpos2=ame_getpos(self);
+ rb_ary_store(bind,0/*autovar*/,it); int oldpos1; while(1){oldpos1=ame_getpos(self); unsigned char chr1=FIX2INT(rb_hash_aref(switchhashAnalyze_Variables22,rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:; int oldpos2=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos2);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto break1;}
    it=AmethystCore_anything(self ); FAILTEST(alt1_2);
  rb_ary_store(bind,1/*autovar*/,it); int oldpos3=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
@@ -219,7 +223,7 @@ return it;
 fail: return failobj; }
 VALUE Analyze_Variables2_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(8);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-unsigned char chr1=FIX2INT(rb_hash_aref(CALL(switchcbAnalyze_Variables24,0),rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:; int oldpos1=ame_getpos(self);
+unsigned char chr1=FIX2INT(rb_hash_aref(switchhashAnalyze_Variables24,rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:; int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=Analyze_Variables2_visit(self ); FAILTEST(alt1_2);
  rb_ary_store(bind,0/*a*/,it); it=CALL(traverse_item_Analyze_Variables2cb_1,1,bind); it=rb_ary_entry(bind,0/*a*/);
@@ -288,7 +292,7 @@ return it;
 fail: return failobj; }
 VALUE Analyze_Variables2_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(28);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-unsigned char chr1=FIX2INT(rb_hash_aref(CALL(switchcbAnalyze_Variables21,0),rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:;   it=AmethystCore_anything(self ); FAILTEST(fail);
+unsigned char chr1=FIX2INT(rb_hash_aref(switchhashAnalyze_Variables21,rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:;   it=AmethystCore_anything(self ); FAILTEST(fail);
  rb_ary_store(bind,0/*autovar*/,it); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,rb_ary_entry(bind,0/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=Analyze_Variables2_traverse(self ); FAILTEST(pass1);
@@ -404,7 +408,10 @@ fail: return failobj; }
 void Init_detect_variables2_c(){ 
  cls_Analyze_Variables2=rb_define_class("Analyze_Variables2",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2"))); 
 failobj=rb_eval_string("FAIL");
-
+switchhashAnalyze_Variables21=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Act\nnext h[k]=1 if k<=Args\nnext h[k]=2 if k<=Or\nnext h[k]=3 if k<=Result\nnext h[k]=4 if k<=Seq\nnext h[k]=5 if k<=Object\n}\n");rb_define_variable("switchhashAnalyze_Variables21",&switchhashAnalyze_Variables21);
+switchhashAnalyze_Variables22=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Grammar\nnext h[k]=1 if k<=Object\n}\n");rb_define_variable("switchhashAnalyze_Variables22",&switchhashAnalyze_Variables22);
+switchhashAnalyze_Variables23=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Args\nnext h[k]=1 if k<=Strin\nnext h[k]=2 if k<=Object\n}\n");rb_define_variable("switchhashAnalyze_Variables23",&switchhashAnalyze_Variables23);
+switchhashAnalyze_Variables24=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}\n");rb_define_variable("switchhashAnalyze_Variables24",&switchhashAnalyze_Variables24);
 rb_define_method(cls_Analyze_Variables2,"clas",Analyze_Variables2_clas,1);
 rb_define_method(cls_Analyze_Variables2,"empty",Analyze_Variables2_empty,0);
 rb_define_method(cls_Analyze_Variables2,"eof",Analyze_Variables2_eof,0);
@@ -415,4 +422,4 @@ rb_define_method(cls_Analyze_Variables2,"root",Analyze_Variables2_root,0);
 rb_define_method(cls_Analyze_Variables2,"traverse",Analyze_Variables2_traverse,0);
 rb_define_method(cls_Analyze_Variables2,"traverse_item",Analyze_Variables2_traverse_item,0);
 rb_define_method(cls_Analyze_Variables2,"visit",Analyze_Variables2_visit,0);
- rb_eval_string("testversiondetect_variables2('de8cf1b2f7f896fabde3bc1943de2a35')");}
+ rb_eval_string("testversiondetect_variables2('e6bca8e8f12a3f793cc782c7b6cedf94')");}

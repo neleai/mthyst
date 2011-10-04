@@ -1,12 +1,5 @@
 class Traverser_Clone2 < Amethyst
-@@switchhashTraverser_Clone21=Hash.new{|h,k|
-next h[k]=0 if k<=AmethystAST
-next h[k]=1 if k<=Array
-next h[k]=2 if k<=Object
-}
-def switchcbTraverser_Clone21
-@@switchhashTraverser_Clone21
-end
+
 def clas_Traverser_Clone2cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
@@ -52,14 +45,7 @@ end
  
 
 class Visitor < Amethyst
-@@switchhashVisitor2=Hash.new{|h,k|
-next h[k]=0 if k<=AmethystAST
-next h[k]=1 if k<=Array
-next h[k]=2 if k<=Object
-}
-def switchcbVisitor2
-@@switchhashVisitor2
-end
+
 def clas_Visitorcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
@@ -83,7 +69,7 @@ end
 
 
 def traverser_compiled_by
-'ae84f387ab7a3c31ee9a46104ebf9fdb'
+'6b247e5576e0b764091c15f5d197bffc'
 end
 def traverser_source_hash
 '22a0094158fcb42ea5b9d2d2e863085b'
@@ -92,6 +78,6 @@ def testversiontraverser(r)
  raise "invalid version" if r!=traverser_version
 end
 def traverser_version
-'fe397a0a7056680b46929a24935ade8f'
+'b744588fb9305734e1c4af9db188ae3d'
 end
   require 'compiled/traverser_c'

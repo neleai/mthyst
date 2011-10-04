@@ -46,6 +46,7 @@ VALUE AmethystParser_spaces(VALUE self );
 VALUE AmethystParser_term(VALUE self );
 VALUE AmethystParser_token(VALUE self ,VALUE a0);
 VALUE AmethystParser_upper(VALUE self );
+VALUE switchhashAmethystParser1;
 VALUE AmethystParser__(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(2);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
  it=CALL(spaces_AmethystParsercb_1,1,bind);  arg0=it; it=AmethystParser_regch(self ,arg0); FAILTEST(fail);
@@ -820,7 +821,7 @@ return it;
 fail: return failobj; }
 VALUE AmethystParser_procargs2(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(6);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-unsigned char chr1=FIX2INT(rb_hash_aref(CALL(switchcbAmethystParser1,0),rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:; int oldpos1=ame_getpos(self);
+unsigned char chr1=FIX2INT(rb_hash_aref(switchhashAmethystParser1,rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:; int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (IGET(cut)!=Qnil) {ISET(cut,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt1_2);
  rb_ary_store(bind,0/*autovar*/,it); int oldpos2=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
@@ -1508,7 +1509,7 @@ fail: return failobj; }
 void Init_parser_c(){ 
  cls_AmethystParser=rb_define_class("AmethystParser",rb_const_get(rb_cObject,rb_intern("Amethyst"))); 
 failobj=rb_eval_string("FAIL");
-
+switchhashAmethystParser1=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Args\nnext h[k]=1 if k<=Object\n}\n");rb_define_variable("switchhashAmethystParser1",&switchhashAmethystParser1);
 rb_define_method(cls_AmethystParser,"_",AmethystParser__,0);
 rb_define_method(cls_AmethystParser,"__args",AmethystParser___args,2);
 rb_define_method(cls_AmethystParser,"_args",AmethystParser__args,2);
@@ -1555,4 +1556,4 @@ rb_define_method(cls_AmethystParser,"spaces",AmethystParser_spaces,0);
 rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
 rb_define_method(cls_AmethystParser,"token",AmethystParser_token,1);
 rb_define_method(cls_AmethystParser,"upper",AmethystParser_upper,0);
- rb_eval_string("testversionparser('eeff90c1ef30972364f43e31a59883e3')");}
+ rb_eval_string("testversionparser('3adeca5185ade2288e957ad047052fef')");}

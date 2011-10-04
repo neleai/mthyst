@@ -57,41 +57,7 @@ class AmethystCTranslator < Amethyst
 end
 
 class AmethystCTranslator < Amethyst
-@@switchhashAmethystCTranslator1=Hash.new{|h,k|
-next h[k]=0 if k<=Args
-next h[k]=1 if k<=Array
-next h[k]=2 if k<=Exp
-next h[k]=3 if k<=Global
-next h[k]=4 if k<=Key
-next h[k]=5 if k<=Local
-next h[k]=6 if k<=Strin
-next h[k]=7 if k<=Object
-}
-def switchcbAmethystCTranslator1
-@@switchhashAmethystCTranslator1
-end
-@@switchhashAmethystCTranslator2=Hash.new{|h,k|
-next h[k]=0 if k<=Act
-next h[k]=1 if k<=Apply
-next h[k]=2 if k<=Bind
-next h[k]=3 if k<=CAct
-next h[k]=4 if k<=Cut
-next h[k]=5 if k<=Grammar
-next h[k]=6 if k<=Local
-next h[k]=7 if k<=Lookahead
-next h[k]=8 if k<=Many
-next h[k]=9 if k<=Or
-next h[k]=10 if k<=Pass
-next h[k]=11 if k<=Result
-next h[k]=12 if k<=Rule
-next h[k]=13 if k<=Seq
-next h[k]=14 if k<=Stop
-next h[k]=15 if k<=Switch
-next h[k]=16 if k<=Object
-}
-def switchcbAmethystCTranslator2
-@@switchhashAmethystCTranslator2
-end
+
 def addcallback_AmethystCTranslatorcb_1(bind)
 addcallback2(bind[0])
 end
@@ -392,7 +358,7 @@ end
 
 
 def ctranslator2_compiled_by
-'ae84f387ab7a3c31ee9a46104ebf9fdb'
+'6b247e5576e0b764091c15f5d197bffc'
 end
 def ctranslator2_source_hash
 '001fcb12af6b02d716471dd28ae53005'
@@ -401,6 +367,6 @@ def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'2fa6a52916b989f7894d7f4bcac6d69f'
+'cfd9c6d35ba5a865f88f2dffe9acd6b6'
 end
   require 'compiled/ctranslator2_c'

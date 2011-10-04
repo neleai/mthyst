@@ -1,12 +1,5 @@
 class DetectCalls < Visitor
-@@switchhashDetectCalls1=Hash.new{|h,k|
-next h[k]=0 if k<=AmethystAST
-next h[k]=1 if k<=Array
-next h[k]=2 if k<=Object
-}
-def switchcbDetectCalls1
-@@switchhashDetectCalls1
-end
+
 def clas_DetectCallscb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
@@ -39,14 +32,7 @@ end
 
 
 class Inliner2 < Traverser_Clone2
-@@switchhashInliner22=Hash.new{|h,k|
-next h[k]=0 if k<=AmethystAST
-next h[k]=1 if k<=Array
-next h[k]=2 if k<=Object
-}
-def switchcbInliner22
-@@switchhashInliner22
-end
+
 def clas_Inliner2cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
@@ -120,14 +106,7 @@ end
 
 
 class Replace_Super < Traverser_Clone2
-@@switchhashReplace_Super3=Hash.new{|h,k|
-next h[k]=0 if k<=AmethystAST
-next h[k]=1 if k<=Array
-next h[k]=2 if k<=Object
-}
-def switchcbReplace_Super3
-@@switchhashReplace_Super3
-end
+
 def clas_Replace_Supercb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
@@ -186,7 +165,7 @@ end
 
 
 def inliner2_compiled_by
-'ae84f387ab7a3c31ee9a46104ebf9fdb'
+'6b247e5576e0b764091c15f5d197bffc'
 end
 def inliner2_source_hash
 'e70b868139b66428259e6a338880dd0c'
@@ -195,6 +174,6 @@ def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version
 end
 def inliner2_version
-'e80f4d3b7481d15b102c2fb67fcbb4a0'
+'1a58112f2fa3eeec09f99a038e84e186'
 end
   require 'compiled/inliner2_c'

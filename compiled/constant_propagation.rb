@@ -34,24 +34,7 @@ class ConstantLattice
 end
 
 class Constant_Propagator < Amethyst
-@@switchhashConstant_Propagator2=Hash.new{|h,k|
-next h[k]=0 if k<=Act
-next h[k]=1 if k<=Bind
-next h[k]=2 if k<=CAct
-next h[k]=3 if k<=Local
-next h[k]=4 if k<=Object
-}
-def switchcbConstant_Propagator2
-@@switchhashConstant_Propagator2
-end
-@@switchhashConstant_Propagator1=Hash.new{|h,k|
-next h[k]=0 if k<=Exp
-next h[k]=1 if k<=Local
-next h[k]=2 if k<=Object
-}
-def switchcbConstant_Propagator1
-@@switchhashConstant_Propagator1
-end
+
 def clas_Constant_Propagatorcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
@@ -89,23 +72,7 @@ end
 
 
 class Constant_Traverser < Traverser_Clone2
-@@switchhashConstant_Traverser3=Hash.new{|h,k|
-next h[k]=0 if k<=Act
-next h[k]=1 if k<=Bind
-next h[k]=2 if k<=Local
-next h[k]=3 if k<=Object
-}
-def switchcbConstant_Traverser3
-@@switchhashConstant_Traverser3
-end
-@@switchhashConstant_Traverser4=Hash.new{|h,k|
-next h[k]=0 if k<=AmethystAST
-next h[k]=1 if k<=Array
-next h[k]=2 if k<=Object
-}
-def switchcbConstant_Traverser4
-@@switchhashConstant_Traverser4
-end
+
 def clas_Constant_Traversercb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
@@ -164,7 +131,7 @@ end
 
 
 def constant_propagation_compiled_by
-'ae84f387ab7a3c31ee9a46104ebf9fdb'
+'6b247e5576e0b764091c15f5d197bffc'
 end
 def constant_propagation_source_hash
 '4a7badb332b849d427161a22fcb99ead'
@@ -173,6 +140,6 @@ def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
 end
 def constant_propagation_version
-'bb4f82864bc57a1d13fd64486554e4d6'
+'39845e5a8248e36ea7a69a45b1616451'
 end
   require 'compiled/constant_propagation_c'

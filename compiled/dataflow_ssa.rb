@@ -69,44 +69,7 @@ class Local
 end
 
 class Dataflow < Traverser_Clone2
-@@switchhashDataflow1=Hash.new{|h,k|
-next h[k]=0 if k<=Act
-next h[k]=1 if k<=Apply
-next h[k]=2 if k<=Bind
-next h[k]=3 if k<=Local
-next h[k]=4 if k<=Lookahead
-next h[k]=5 if k<=Many
-next h[k]=6 if k<=Or
-next h[k]=7 if k<=Pass
-next h[k]=8 if k<=Result
-next h[k]=9 if k<=Object
-}
-def switchcbDataflow1
-@@switchhashDataflow1
-end
-@@switchhashDataflow2=Hash.new{|h,k|
-next h[k]=0 if k<=Act
-next h[k]=1 if k<=Args
-next h[k]=2 if k<=Bind
-next h[k]=3 if k<=CAct
-next h[k]=4 if k<=Global
-next h[k]=5 if k<=Key
-next h[k]=6 if k<=Local
-next h[k]=7 if k<=Result
-next h[k]=8 if k<=Strin
-next h[k]=9 if k<=Object
-}
-def switchcbDataflow2
-@@switchhashDataflow2
-end
-@@switchhashDataflow3=Hash.new{|h,k|
-next h[k]=0 if k<=AmethystAST
-next h[k]=1 if k<=Array
-next h[k]=2 if k<=Object
-}
-def switchcbDataflow3
-@@switchhashDataflow3
-end
+
 def clas_Dataflowcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
@@ -318,34 +281,7 @@ end
 
 
 class Dead_Code_Deleter3 < Traverser_Clone2
-@@switchhashDead_Code_Deleter35=Hash.new{|h,k|
-next h[k]=0 if k<=Act
-next h[k]=1 if k<=Bind
-next h[k]=2 if k<=CAct
-next h[k]=3 if k<=Local
-next h[k]=4 if k<=Result
-next h[k]=5 if k<=Object
-}
-def switchcbDead_Code_Deleter35
-@@switchhashDead_Code_Deleter35
-end
-@@switchhashDead_Code_Deleter34=Hash.new{|h,k|
-next h[k]=0 if k<=Act
-next h[k]=1 if k<=CAct
-next h[k]=2 if k<=Result
-next h[k]=3 if k<=Object
-}
-def switchcbDead_Code_Deleter34
-@@switchhashDead_Code_Deleter34
-end
-@@switchhashDead_Code_Deleter36=Hash.new{|h,k|
-next h[k]=0 if k<=AmethystAST
-next h[k]=1 if k<=Array
-next h[k]=2 if k<=Object
-}
-def switchcbDead_Code_Deleter36
-@@switchhashDead_Code_Deleter36
-end
+
 def clas_Dead_Code_Deleter3cb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
@@ -410,14 +346,7 @@ end
 
 
 class Forget_SSA < Traverser_Clone2
-@@switchhashForget_SSA7=Hash.new{|h,k|
-next h[k]=0 if k<=AmethystAST
-next h[k]=1 if k<=Array
-next h[k]=2 if k<=Object
-}
-def switchcbForget_SSA7
-@@switchhashForget_SSA7
-end
+
 def clas_Forget_SSAcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
 end
@@ -467,7 +396,7 @@ end
 
 
 def dataflow_ssa_compiled_by
-'ae84f387ab7a3c31ee9a46104ebf9fdb'
+'6b247e5576e0b764091c15f5d197bffc'
 end
 def dataflow_ssa_source_hash
 '256ed86af86d95d9b8953797b6b14661'
@@ -476,6 +405,6 @@ def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'43171c0de2943c6f3150905988ca35cf'
+'0871721be143d2235b9de0ffc0b44973'
 end
   require 'compiled/dataflow_ssa_c'

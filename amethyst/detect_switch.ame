@@ -336,13 +336,11 @@ class Detect_ClasSwitch < Detect_First
 	end
 	def classswitch(ary,first,ary3)
 		@no=(@no||0)+1
-		rb="@@switchhash#{@name}#{@no}=Hash.new{|h,k|\n"
-		ary.each_with_index{|c,i| rb<< "next h[k]=#{i} if k<=#{c}\n"}
-		rb+="}\n"
-		rb+="def switchcb#{@name}#{@no}\n"
-		rb+="@@switchhash#{@name}#{@no}\n"
-		rb+="end"
-		Switch[{:defs=>rb,:act=>"FIX2INT(rb_hash_aref(CALL(switchcb#{@name}#{@no},0),rb_obj_class(ame_curobj(self))))",:first=>first,:ary=>ary3}]
+		#TODO perfect hash
+		init="Hash.new{|h,k|\n"
+		ary.each_with_index{|c,i| init<< "next h[k]=#{i} if k<=#{c}\n"}
+		init+="}\n"
+		Switch[{:header=>"VALUE switchhash#{@name}#{@no};",:init=>"switchhash#{@name}#{@no}=rb_eval_string(#{init.inspect});rb_define_variable(\"switchhash#{@name}#{@no}\",&switchhash#{@name}#{@no});" ,:act=>"FIX2INT(rb_hash_aref(switchhash#{@name}#{@no},rb_obj_class(ame_curobj(self))))",:first=>first,:ary=>ary3}]
 	end
 	def topsort(a)
 		a=a.uniq.sort_by{|a| a.to_s}

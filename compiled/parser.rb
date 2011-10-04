@@ -20,13 +20,7 @@ end
 #@Or and @Seq are necessary for collect
 
 class AmethystParser < Amethyst
-@@switchhashAmethystParser1=Hash.new{|h,k|
-next h[k]=0 if k<=Args
-next h[k]=1 if k<=Object
-}
-def switchcbAmethystParser1
-@@switchhashAmethystParser1
-end
+
 def _args_AmethystParsercb_1(bind)
 Args[{:ary=>([bind[0]]+bind[2]+[bind[1]])}]
 end
@@ -329,7 +323,7 @@ end
 
 
 def parser_compiled_by
-'ae84f387ab7a3c31ee9a46104ebf9fdb'
+'6b247e5576e0b764091c15f5d197bffc'
 end
 def parser_source_hash
 'd1f9e8937adb72c1bb0d0e1f84feabb9'
@@ -338,6 +332,6 @@ def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'eeff90c1ef30972364f43e31a59883e3'
+'3adeca5185ade2288e957ad047052fef'
 end
   require 'compiled/parser_c'
