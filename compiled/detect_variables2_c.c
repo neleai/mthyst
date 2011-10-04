@@ -404,6 +404,7 @@ fail: return failobj; }
 void Init_detect_variables2_c(){ 
  cls_Analyze_Variables2=rb_define_class("Analyze_Variables2",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2"))); 
 failobj=rb_eval_string("FAIL");
+
 rb_define_method(cls_Analyze_Variables2,"clas",Analyze_Variables2_clas,1);
 rb_define_method(cls_Analyze_Variables2,"empty",Analyze_Variables2_empty,0);
 rb_define_method(cls_Analyze_Variables2,"eof",Analyze_Variables2_eof,0);

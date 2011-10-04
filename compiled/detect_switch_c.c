@@ -2143,6 +2143,7 @@ fail: return failobj; }
 void Init_detect_switch_c(){ 
  cls_First_Dataflow=rb_define_class("First_Dataflow",rb_const_get(rb_cObject,rb_intern("Amethyst"))); 
 failobj=rb_eval_string("FAIL");
+
 rb_define_method(cls_First_Dataflow,"clas",First_Dataflow_clas,1);
 rb_define_method(cls_First_Dataflow,"empty",First_Dataflow_empty,0);
 rb_define_method(cls_First_Dataflow,"eof",First_Dataflow_eof,0);
@@ -2153,6 +2154,7 @@ rb_define_method(cls_First_Dataflow,"value",First_Dataflow_value,0);
 
  cls_Sizes_Dataflow=rb_define_class("Sizes_Dataflow",rb_const_get(rb_cObject,rb_intern("First_Dataflow"))); 
 failobj=rb_eval_string("FAIL");
+
 rb_define_method(cls_Sizes_Dataflow,"clas",Sizes_Dataflow_clas,1);
 rb_define_method(cls_Sizes_Dataflow,"empty",Sizes_Dataflow_empty,0);
 rb_define_method(cls_Sizes_Dataflow,"eof",Sizes_Dataflow_eof,0);
@@ -2166,6 +2168,7 @@ rb_define_method(cls_Sizes_Dataflow,"token",Sizes_Dataflow_token,1);
 
  cls_Switch_Dataflow=rb_define_class("Switch_Dataflow",rb_const_get(rb_cObject,rb_intern("First_Dataflow"))); 
 failobj=rb_eval_string("FAIL");
+
 rb_define_method(cls_Switch_Dataflow,"clas",Switch_Dataflow_clas,1);
 rb_define_method(cls_Switch_Dataflow,"empty",Switch_Dataflow_empty,0);
 rb_define_method(cls_Switch_Dataflow,"eof",Switch_Dataflow_eof,0);
@@ -2179,6 +2182,7 @@ rb_define_method(cls_Switch_Dataflow,"token",Switch_Dataflow_token,1);
 
  cls_ClasSwitch_Dataflow=rb_define_class("ClasSwitch_Dataflow",rb_const_get(rb_cObject,rb_intern("First_Dataflow"))); 
 failobj=rb_eval_string("FAIL");
+
 rb_define_method(cls_ClasSwitch_Dataflow,"clas",ClasSwitch_Dataflow_clas,1);
 rb_define_method(cls_ClasSwitch_Dataflow,"empty",ClasSwitch_Dataflow_empty,0);
 rb_define_method(cls_ClasSwitch_Dataflow,"eof",ClasSwitch_Dataflow_eof,0);
@@ -2193,6 +2197,7 @@ rb_define_method(cls_ClasSwitch_Dataflow,"value",ClasSwitch_Dataflow_value,0);
 
  cls_Detect_First=rb_define_class("Detect_First",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2"))); 
 failobj=rb_eval_string("FAIL");
+
 rb_define_method(cls_Detect_First,"clas",Detect_First_clas,1);
 rb_define_method(cls_Detect_First,"empty",Detect_First_empty,0);
 rb_define_method(cls_Detect_First,"eof",Detect_First_eof,0);
@@ -2204,6 +2209,7 @@ rb_define_method(cls_Detect_First,"traverse_item",Detect_First_traverse_item,0);
 
  cls_Detect_Switch=rb_define_class("Detect_Switch",rb_const_get(rb_cObject,rb_intern("Detect_First"))); 
 failobj=rb_eval_string("FAIL");
+
 rb_define_method(cls_Detect_Switch,"clas",Detect_Switch_clas,1);
 rb_define_method(cls_Detect_Switch,"empty",Detect_Switch_empty,0);
 rb_define_method(cls_Detect_Switch,"eof",Detect_Switch_eof,0);
@@ -2216,6 +2222,7 @@ rb_define_method(cls_Detect_Switch,"visit",Detect_Switch_visit,0);
 
  cls_Detect_ClasSwitch=rb_define_class("Detect_ClasSwitch",rb_const_get(rb_cObject,rb_intern("Detect_First"))); 
 failobj=rb_eval_string("FAIL");
+
 rb_define_method(cls_Detect_ClasSwitch,"clas",Detect_ClasSwitch_clas,1);
 rb_define_method(cls_Detect_ClasSwitch,"empty",Detect_ClasSwitch_empty,0);
 rb_define_method(cls_Detect_ClasSwitch,"eof",Detect_ClasSwitch_eof,0);

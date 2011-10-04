@@ -1508,6 +1508,7 @@ fail: return failobj; }
 void Init_parser_c(){ 
  cls_AmethystParser=rb_define_class("AmethystParser",rb_const_get(rb_cObject,rb_intern("Amethyst"))); 
 failobj=rb_eval_string("FAIL");
+
 rb_define_method(cls_AmethystParser,"_",AmethystParser__,0);
 rb_define_method(cls_AmethystParser,"__args",AmethystParser___args,2);
 rb_define_method(cls_AmethystParser,"_args",AmethystParser__args,2);

@@ -979,6 +979,7 @@ fail: return failobj; }
 void Init_dataflow_ssa_c(){ 
  cls_Dataflow=rb_define_class("Dataflow",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2"))); 
 failobj=rb_eval_string("FAIL");
+
 rb_define_method(cls_Dataflow,"clas",Dataflow_clas,1);
 rb_define_method(cls_Dataflow,"empty",Dataflow_empty,0);
 rb_define_method(cls_Dataflow,"eof",Dataflow_eof,0);
@@ -991,6 +992,7 @@ rb_define_method(cls_Dataflow,"visit",Dataflow_visit,0);
 
  cls_Dead_Code_Deleter3=rb_define_class("Dead_Code_Deleter3",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2"))); 
 failobj=rb_eval_string("FAIL");
+
 rb_define_method(cls_Dead_Code_Deleter3,"clas",Dead_Code_Deleter3_clas,1);
 rb_define_method(cls_Dead_Code_Deleter3,"empty",Dead_Code_Deleter3_empty,0);
 rb_define_method(cls_Dead_Code_Deleter3,"eof",Dead_Code_Deleter3_eof,0);
@@ -1002,6 +1004,7 @@ rb_define_method(cls_Dead_Code_Deleter3,"visit",Dead_Code_Deleter3_visit,0);
 
  cls_Forget_SSA=rb_define_class("Forget_SSA",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2"))); 
 failobj=rb_eval_string("FAIL");
+
 rb_define_method(cls_Forget_SSA,"clas",Forget_SSA_clas,1);
 rb_define_method(cls_Forget_SSA,"empty",Forget_SSA_empty,0);
 rb_define_method(cls_Forget_SSA,"eof",Forget_SSA_eof,0);

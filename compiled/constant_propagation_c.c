@@ -362,6 +362,7 @@ fail: return failobj; }
 void Init_constant_propagation_c(){ 
  cls_Constant_Propagator=rb_define_class("Constant_Propagator",rb_const_get(rb_cObject,rb_intern("Amethyst"))); 
 failobj=rb_eval_string("FAIL");
+
 rb_define_method(cls_Constant_Propagator,"clas",Constant_Propagator_clas,1);
 rb_define_method(cls_Constant_Propagator,"empty",Constant_Propagator_empty,0);
 rb_define_method(cls_Constant_Propagator,"eof",Constant_Propagator_eof,0);
@@ -371,6 +372,7 @@ rb_define_method(cls_Constant_Propagator,"step",Constant_Propagator_step,1);
 
  cls_Constant_Traverser=rb_define_class("Constant_Traverser",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2"))); 
 failobj=rb_eval_string("FAIL");
+
 rb_define_method(cls_Constant_Traverser,"clas",Constant_Traverser_clas,1);
 rb_define_method(cls_Constant_Traverser,"empty",Constant_Traverser_empty,0);
 rb_define_method(cls_Constant_Traverser,"eof",Constant_Traverser_eof,0);

@@ -75,13 +75,14 @@ amethyst AmethystCTranslator < Amethyst {
 	{s+=x*""}
 	{s+="\nend"; s}
 	
-	trans =  Grammar[ {@@grammar=@name;@@parent=@parent} {@@lambdas=[] ;@@rcallbacks={}} {@@defs=[]} {@@defmethods=[]} {@@faillabel="fail"} {@@callbacks={}} {mktable(@rules)} {@@header=[]} @rules=>[trans*]:t rbcode:rbcode
+	trans =  Grammar[ {@@grammar=@name;@@parent=@parent} {@@lambdas=[] ;@@rcallbacks={}} {@@defs=[]} {@@defmethods=[]} {@@faillabel="fail"} {@@callbacks={}} {mktable(@rules)} {@@header=[]} {@@init=[]} @rules=>[trans*]:t rbcode:rbcode
 				    { "VALUE cls_#{@name};\n" }:s
 						{	s<<@@header.sort*"\n"+"\n"
 							s<<t.sort*"\n"
 							s<<@@lambdas*"\n"
         		  init="\n cls_#{@name}=rb_define_class(\"#{@name}\",rb_const_get(rb_cObject,rb_intern(\"#{@@parent}\"))); 
 failobj=rb_eval_string(\"FAIL\");
+#{@@init*"\n"}
 #{@@defmethods.sort*"\n" }
 "
 							[s,init,rbcode] } ]
@@ -132,6 +133,7 @@ ame_setsrc(self,#{bget(@var)}); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_f
 				| Switch[ label("chr"):chr 
 									{@@defs<<@defs if @defs}
 									{@@header<<@header if @header}
+									{@@init<<@init if @init}
 									{"unsigned char #{chr}=#{@act};  switch(#{chr}){"}:s
 										( [.:c trans:t] {s+=c.cases(@first) + " #{t} break;"})*
 									{s+"}"}

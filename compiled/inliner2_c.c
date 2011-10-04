@@ -570,6 +570,7 @@ fail: return failobj; }
 void Init_inliner2_c(){ 
  cls_DetectCalls=rb_define_class("DetectCalls",rb_const_get(rb_cObject,rb_intern("Visitor"))); 
 failobj=rb_eval_string("FAIL");
+
 rb_define_method(cls_DetectCalls,"clas",DetectCalls_clas,1);
 rb_define_method(cls_DetectCalls,"empty",DetectCalls_empty,0);
 rb_define_method(cls_DetectCalls,"eof",DetectCalls_eof,0);
@@ -581,6 +582,7 @@ rb_define_method(cls_DetectCalls,"visit",DetectCalls_visit,0);
 
  cls_Inliner2=rb_define_class("Inliner2",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2"))); 
 failobj=rb_eval_string("FAIL");
+
 rb_define_method(cls_Inliner2,"clas",Inliner2_clas,1);
 rb_define_method(cls_Inliner2,"empty",Inliner2_empty,0);
 rb_define_method(cls_Inliner2,"eof",Inliner2_eof,0);
@@ -592,6 +594,7 @@ rb_define_method(cls_Inliner2,"visit",Inliner2_visit,0);
 
  cls_Replace_Super=rb_define_class("Replace_Super",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2"))); 
 failobj=rb_eval_string("FAIL");
+
 rb_define_method(cls_Replace_Super,"clas",Replace_Super_clas,1);
 rb_define_method(cls_Replace_Super,"empty",Replace_Super_empty,0);
 rb_define_method(cls_Replace_Super,"eof",Replace_Super_eof,0);

@@ -19,6 +19,7 @@ fail: return failobj; }
 void Init_tests_c(){ 
  cls_Tests=rb_define_class("Tests",rb_const_get(rb_cObject,rb_intern("Amethyst"))); 
 failobj=rb_eval_string("FAIL");
+
 rb_define_method(cls_Tests,"seq",Tests_seq,1);
 rb_define_method(cls_Tests,"sw",Tests_sw,0);
  rb_eval_string("testversiontests('255e40f27aef57e5f53f73ecc143b28c')");}

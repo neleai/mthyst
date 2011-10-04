@@ -280,6 +280,7 @@ fail: return failobj; }
 void Init_traverser_c(){ 
  cls_Traverser_Clone2=rb_define_class("Traverser_Clone2",rb_const_get(rb_cObject,rb_intern("Amethyst"))); 
 failobj=rb_eval_string("FAIL");
+
 rb_define_method(cls_Traverser_Clone2,"clas",Traverser_Clone2_clas,1);
 rb_define_method(cls_Traverser_Clone2,"empty",Traverser_Clone2_empty,0);
 rb_define_method(cls_Traverser_Clone2,"eof",Traverser_Clone2_eof,0);
@@ -289,6 +290,7 @@ rb_define_method(cls_Traverser_Clone2,"traverse_item",Traverser_Clone2_traverse_
 
  cls_Visitor=rb_define_class("Visitor",rb_const_get(rb_cObject,rb_intern("Amethyst"))); 
 failobj=rb_eval_string("FAIL");
+
 rb_define_method(cls_Visitor,"clas",Visitor_clas,1);
 rb_define_method(cls_Visitor,"empty",Visitor_empty,0);
 rb_define_method(cls_Visitor,"eof",Visitor_eof,0);

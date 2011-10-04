@@ -279,6 +279,7 @@ fail: return failobj; }
 void Init_amethyst_c(){ 
  cls_Amethyst=rb_define_class("Amethyst",rb_const_get(rb_cObject,rb_intern("AmethystCore"))); 
 failobj=rb_eval_string("FAIL");
+
 rb_define_method(cls_Amethyst,"_",Amethyst__,0);
 rb_define_method(cls_Amethyst,"_false",Amethyst__false,0);
 rb_define_method(cls_Amethyst,"_true",Amethyst__true,0);

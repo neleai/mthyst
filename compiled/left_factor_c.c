@@ -406,6 +406,7 @@ fail: return failobj; }
 void Init_left_factor_c(){ 
  cls_Left_Factor=rb_define_class("Left_Factor",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2"))); 
 failobj=rb_eval_string("FAIL");
+
 rb_define_method(cls_Left_Factor,"binds",Left_Factor_binds,2);
 rb_define_method(cls_Left_Factor,"clas",Left_Factor_clas,1);
 rb_define_method(cls_Left_Factor,"empty",Left_Factor_empty,0);
