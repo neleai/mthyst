@@ -1,10 +1,9 @@
 class Traverser_Clone2 < Amethyst
-def self.switchcb_Traverser_Clone21(e)
-return 0 if e<=AmethystAST
-return 1 if e<=Array
-return 2 if e<=Object
-end
-@@switchhashTraverser_Clone21=Hash.new{|h,k| h[k]=switchcb_Traverser_Clone21(k)}
+@@switchhashTraverser_Clone21=Hash.new{|h,k|
+next h[k]=0 if k<=AmethystAST
+next h[k]=1 if k<=Array
+next h[k]=2 if k<=Object
+}
 def switchcbTraverser_Clone21(e)
 @@switchhashTraverser_Clone21[e]
 end
@@ -53,12 +52,11 @@ end
  
 
 class Visitor < Amethyst
-def self.switchcb_Visitor2(e)
-return 0 if e<=AmethystAST
-return 1 if e<=Array
-return 2 if e<=Object
-end
-@@switchhashVisitor2=Hash.new{|h,k| h[k]=switchcb_Visitor2(k)}
+@@switchhashVisitor2=Hash.new{|h,k|
+next h[k]=0 if k<=AmethystAST
+next h[k]=1 if k<=Array
+next h[k]=2 if k<=Object
+}
 def switchcbVisitor2(e)
 @@switchhashVisitor2[e]
 end

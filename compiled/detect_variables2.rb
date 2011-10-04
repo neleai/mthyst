@@ -1,39 +1,35 @@
 class Analyze_Variables2 < Traverser_Clone2
-def self.switchcb_Analyze_Variables21(e)
-return 0 if e<=Act
-return 1 if e<=Args
-return 2 if e<=Or
-return 3 if e<=Result
-return 4 if e<=Seq
-return 5 if e<=Object
-end
-@@switchhashAnalyze_Variables21=Hash.new{|h,k| h[k]=switchcb_Analyze_Variables21(k)}
+@@switchhashAnalyze_Variables21=Hash.new{|h,k|
+next h[k]=0 if k<=Act
+next h[k]=1 if k<=Args
+next h[k]=2 if k<=Or
+next h[k]=3 if k<=Result
+next h[k]=4 if k<=Seq
+next h[k]=5 if k<=Object
+}
 def switchcbAnalyze_Variables21(e)
 @@switchhashAnalyze_Variables21[e]
 end
-def self.switchcb_Analyze_Variables22(e)
-return 0 if e<=Grammar
-return 1 if e<=Object
-end
-@@switchhashAnalyze_Variables22=Hash.new{|h,k| h[k]=switchcb_Analyze_Variables22(k)}
+@@switchhashAnalyze_Variables22=Hash.new{|h,k|
+next h[k]=0 if k<=Grammar
+next h[k]=1 if k<=Object
+}
 def switchcbAnalyze_Variables22(e)
 @@switchhashAnalyze_Variables22[e]
 end
-def self.switchcb_Analyze_Variables23(e)
-return 0 if e<=Args
-return 1 if e<=Strin
-return 2 if e<=Object
-end
-@@switchhashAnalyze_Variables23=Hash.new{|h,k| h[k]=switchcb_Analyze_Variables23(k)}
+@@switchhashAnalyze_Variables23=Hash.new{|h,k|
+next h[k]=0 if k<=Args
+next h[k]=1 if k<=Strin
+next h[k]=2 if k<=Object
+}
 def switchcbAnalyze_Variables23(e)
 @@switchhashAnalyze_Variables23[e]
 end
-def self.switchcb_Analyze_Variables24(e)
-return 0 if e<=AmethystAST
-return 1 if e<=Array
-return 2 if e<=Object
-end
-@@switchhashAnalyze_Variables24=Hash.new{|h,k| h[k]=switchcb_Analyze_Variables24(k)}
+@@switchhashAnalyze_Variables24=Hash.new{|h,k|
+next h[k]=0 if k<=AmethystAST
+next h[k]=1 if k<=Array
+next h[k]=2 if k<=Object
+}
 def switchcbAnalyze_Variables24(e)
 @@switchhashAnalyze_Variables24[e]
 end

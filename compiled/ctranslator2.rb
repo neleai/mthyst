@@ -57,40 +57,38 @@ class AmethystCTranslator < Amethyst
 end
 
 class AmethystCTranslator < Amethyst
-def self.switchcb_AmethystCTranslator1(e)
-return 0 if e<=Args
-return 1 if e<=Array
-return 2 if e<=Exp
-return 3 if e<=Global
-return 4 if e<=Key
-return 5 if e<=Local
-return 6 if e<=Strin
-return 7 if e<=Object
-end
-@@switchhashAmethystCTranslator1=Hash.new{|h,k| h[k]=switchcb_AmethystCTranslator1(k)}
+@@switchhashAmethystCTranslator1=Hash.new{|h,k|
+next h[k]=0 if k<=Args
+next h[k]=1 if k<=Array
+next h[k]=2 if k<=Exp
+next h[k]=3 if k<=Global
+next h[k]=4 if k<=Key
+next h[k]=5 if k<=Local
+next h[k]=6 if k<=Strin
+next h[k]=7 if k<=Object
+}
 def switchcbAmethystCTranslator1(e)
 @@switchhashAmethystCTranslator1[e]
 end
-def self.switchcb_AmethystCTranslator2(e)
-return 0 if e<=Act
-return 1 if e<=Apply
-return 2 if e<=Bind
-return 3 if e<=CAct
-return 4 if e<=Cut
-return 5 if e<=Grammar
-return 6 if e<=Local
-return 7 if e<=Lookahead
-return 8 if e<=Many
-return 9 if e<=Or
-return 10 if e<=Pass
-return 11 if e<=Result
-return 12 if e<=Rule
-return 13 if e<=Seq
-return 14 if e<=Stop
-return 15 if e<=Switch
-return 16 if e<=Object
-end
-@@switchhashAmethystCTranslator2=Hash.new{|h,k| h[k]=switchcb_AmethystCTranslator2(k)}
+@@switchhashAmethystCTranslator2=Hash.new{|h,k|
+next h[k]=0 if k<=Act
+next h[k]=1 if k<=Apply
+next h[k]=2 if k<=Bind
+next h[k]=3 if k<=CAct
+next h[k]=4 if k<=Cut
+next h[k]=5 if k<=Grammar
+next h[k]=6 if k<=Local
+next h[k]=7 if k<=Lookahead
+next h[k]=8 if k<=Many
+next h[k]=9 if k<=Or
+next h[k]=10 if k<=Pass
+next h[k]=11 if k<=Result
+next h[k]=12 if k<=Rule
+next h[k]=13 if k<=Seq
+next h[k]=14 if k<=Stop
+next h[k]=15 if k<=Switch
+next h[k]=16 if k<=Object
+}
 def switchcbAmethystCTranslator2(e)
 @@switchhashAmethystCTranslator2[e]
 end

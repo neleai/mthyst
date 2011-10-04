@@ -69,44 +69,41 @@ class Local
 end
 
 class Dataflow < Traverser_Clone2
-def self.switchcb_Dataflow1(e)
-return 0 if e<=Act
-return 1 if e<=Apply
-return 2 if e<=Bind
-return 3 if e<=Local
-return 4 if e<=Lookahead
-return 5 if e<=Many
-return 6 if e<=Or
-return 7 if e<=Pass
-return 8 if e<=Result
-return 9 if e<=Object
-end
-@@switchhashDataflow1=Hash.new{|h,k| h[k]=switchcb_Dataflow1(k)}
+@@switchhashDataflow1=Hash.new{|h,k|
+next h[k]=0 if k<=Act
+next h[k]=1 if k<=Apply
+next h[k]=2 if k<=Bind
+next h[k]=3 if k<=Local
+next h[k]=4 if k<=Lookahead
+next h[k]=5 if k<=Many
+next h[k]=6 if k<=Or
+next h[k]=7 if k<=Pass
+next h[k]=8 if k<=Result
+next h[k]=9 if k<=Object
+}
 def switchcbDataflow1(e)
 @@switchhashDataflow1[e]
 end
-def self.switchcb_Dataflow2(e)
-return 0 if e<=Act
-return 1 if e<=Args
-return 2 if e<=Bind
-return 3 if e<=CAct
-return 4 if e<=Global
-return 5 if e<=Key
-return 6 if e<=Local
-return 7 if e<=Result
-return 8 if e<=Strin
-return 9 if e<=Object
-end
-@@switchhashDataflow2=Hash.new{|h,k| h[k]=switchcb_Dataflow2(k)}
+@@switchhashDataflow2=Hash.new{|h,k|
+next h[k]=0 if k<=Act
+next h[k]=1 if k<=Args
+next h[k]=2 if k<=Bind
+next h[k]=3 if k<=CAct
+next h[k]=4 if k<=Global
+next h[k]=5 if k<=Key
+next h[k]=6 if k<=Local
+next h[k]=7 if k<=Result
+next h[k]=8 if k<=Strin
+next h[k]=9 if k<=Object
+}
 def switchcbDataflow2(e)
 @@switchhashDataflow2[e]
 end
-def self.switchcb_Dataflow3(e)
-return 0 if e<=AmethystAST
-return 1 if e<=Array
-return 2 if e<=Object
-end
-@@switchhashDataflow3=Hash.new{|h,k| h[k]=switchcb_Dataflow3(k)}
+@@switchhashDataflow3=Hash.new{|h,k|
+next h[k]=0 if k<=AmethystAST
+next h[k]=1 if k<=Array
+next h[k]=2 if k<=Object
+}
 def switchcbDataflow3(e)
 @@switchhashDataflow3[e]
 end
@@ -321,34 +318,31 @@ end
 
 
 class Dead_Code_Deleter3 < Traverser_Clone2
-def self.switchcb_Dead_Code_Deleter35(e)
-return 0 if e<=Act
-return 1 if e<=Bind
-return 2 if e<=CAct
-return 3 if e<=Local
-return 4 if e<=Result
-return 5 if e<=Object
-end
-@@switchhashDead_Code_Deleter35=Hash.new{|h,k| h[k]=switchcb_Dead_Code_Deleter35(k)}
+@@switchhashDead_Code_Deleter35=Hash.new{|h,k|
+next h[k]=0 if k<=Act
+next h[k]=1 if k<=Bind
+next h[k]=2 if k<=CAct
+next h[k]=3 if k<=Local
+next h[k]=4 if k<=Result
+next h[k]=5 if k<=Object
+}
 def switchcbDead_Code_Deleter35(e)
 @@switchhashDead_Code_Deleter35[e]
 end
-def self.switchcb_Dead_Code_Deleter34(e)
-return 0 if e<=Act
-return 1 if e<=CAct
-return 2 if e<=Result
-return 3 if e<=Object
-end
-@@switchhashDead_Code_Deleter34=Hash.new{|h,k| h[k]=switchcb_Dead_Code_Deleter34(k)}
+@@switchhashDead_Code_Deleter34=Hash.new{|h,k|
+next h[k]=0 if k<=Act
+next h[k]=1 if k<=CAct
+next h[k]=2 if k<=Result
+next h[k]=3 if k<=Object
+}
 def switchcbDead_Code_Deleter34(e)
 @@switchhashDead_Code_Deleter34[e]
 end
-def self.switchcb_Dead_Code_Deleter36(e)
-return 0 if e<=AmethystAST
-return 1 if e<=Array
-return 2 if e<=Object
-end
-@@switchhashDead_Code_Deleter36=Hash.new{|h,k| h[k]=switchcb_Dead_Code_Deleter36(k)}
+@@switchhashDead_Code_Deleter36=Hash.new{|h,k|
+next h[k]=0 if k<=AmethystAST
+next h[k]=1 if k<=Array
+next h[k]=2 if k<=Object
+}
 def switchcbDead_Code_Deleter36(e)
 @@switchhashDead_Code_Deleter36[e]
 end
@@ -416,12 +410,11 @@ end
 
 
 class Forget_SSA < Traverser_Clone2
-def self.switchcb_Forget_SSA7(e)
-return 0 if e<=AmethystAST
-return 1 if e<=Array
-return 2 if e<=Object
-end
-@@switchhashForget_SSA7=Hash.new{|h,k| h[k]=switchcb_Forget_SSA7(k)}
+@@switchhashForget_SSA7=Hash.new{|h,k|
+next h[k]=0 if k<=AmethystAST
+next h[k]=1 if k<=Array
+next h[k]=2 if k<=Object
+}
 def switchcbForget_SSA7(e)
 @@switchhashForget_SSA7[e]
 end

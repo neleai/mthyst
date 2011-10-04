@@ -1,1 +1,1 @@
-cp -r restore/* c 
+cd compiled;./restore

@@ -1,10 +1,9 @@
 class DetectCalls < Visitor
-def self.switchcb_DetectCalls1(e)
-return 0 if e<=AmethystAST
-return 1 if e<=Array
-return 2 if e<=Object
-end
-@@switchhashDetectCalls1=Hash.new{|h,k| h[k]=switchcb_DetectCalls1(k)}
+@@switchhashDetectCalls1=Hash.new{|h,k|
+next h[k]=0 if k<=AmethystAST
+next h[k]=1 if k<=Array
+next h[k]=2 if k<=Object
+}
 def switchcbDetectCalls1(e)
 @@switchhashDetectCalls1[e]
 end
@@ -40,12 +39,11 @@ end
 
 
 class Inliner2 < Traverser_Clone2
-def self.switchcb_Inliner22(e)
-return 0 if e<=AmethystAST
-return 1 if e<=Array
-return 2 if e<=Object
-end
-@@switchhashInliner22=Hash.new{|h,k| h[k]=switchcb_Inliner22(k)}
+@@switchhashInliner22=Hash.new{|h,k|
+next h[k]=0 if k<=AmethystAST
+next h[k]=1 if k<=Array
+next h[k]=2 if k<=Object
+}
 def switchcbInliner22(e)
 @@switchhashInliner22[e]
 end
@@ -122,12 +120,11 @@ end
 
 
 class Replace_Super < Traverser_Clone2
-def self.switchcb_Replace_Super3(e)
-return 0 if e<=AmethystAST
-return 1 if e<=Array
-return 2 if e<=Object
-end
-@@switchhashReplace_Super3=Hash.new{|h,k| h[k]=switchcb_Replace_Super3(k)}
+@@switchhashReplace_Super3=Hash.new{|h,k|
+next h[k]=0 if k<=AmethystAST
+next h[k]=1 if k<=Array
+next h[k]=2 if k<=Object
+}
 def switchcbReplace_Super3(e)
 @@switchhashReplace_Super3[e]
 end

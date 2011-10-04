@@ -336,10 +336,9 @@ class Detect_ClasSwitch < Detect_First
 	end
 	def classswitch(ary,first,ary3)
 		@no=(@no||0)+1
-		rb="def self.switchcb_#{@name}#{@no}(e)\n"
-		ary.each_with_index{|c,i| rb<< "return #{i} if e<=#{c}\n"}
-		rb+="end\n"
-		rb+="@@switchhash#{@name}#{@no}=Hash.new{|h,k| h[k]=switchcb_#{@name}#{@no}(k)}\n"
+		rb="@@switchhash#{@name}#{@no}=Hash.new{|h,k|\n"
+		ary.each_with_index{|c,i| rb<< "next h[k]=#{i} if k<=#{c}\n"}
+		rb+="}\n"
 		rb+="def switchcb#{@name}#{@no}(e)\n"
 		rb+="@@switchhash#{@name}#{@no}[e]\n"
 		rb+="end"

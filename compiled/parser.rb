@@ -20,11 +20,10 @@ end
 #@Or and @Seq are necessary for collect
 
 class AmethystParser < Amethyst
-def self.switchcb_AmethystParser1(e)
-return 0 if e<=Args
-return 1 if e<=Object
-end
-@@switchhashAmethystParser1=Hash.new{|h,k| h[k]=switchcb_AmethystParser1(k)}
+@@switchhashAmethystParser1=Hash.new{|h,k|
+next h[k]=0 if k<=Args
+next h[k]=1 if k<=Object
+}
 def switchcbAmethystParser1(e)
 @@switchhashAmethystParser1[e]
 end

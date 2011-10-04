@@ -34,23 +34,21 @@ class ConstantLattice
 end
 
 class Constant_Propagator < Amethyst
-def self.switchcb_Constant_Propagator2(e)
-return 0 if e<=Act
-return 1 if e<=Bind
-return 2 if e<=CAct
-return 3 if e<=Local
-return 4 if e<=Object
-end
-@@switchhashConstant_Propagator2=Hash.new{|h,k| h[k]=switchcb_Constant_Propagator2(k)}
+@@switchhashConstant_Propagator2=Hash.new{|h,k|
+next h[k]=0 if k<=Act
+next h[k]=1 if k<=Bind
+next h[k]=2 if k<=CAct
+next h[k]=3 if k<=Local
+next h[k]=4 if k<=Object
+}
 def switchcbConstant_Propagator2(e)
 @@switchhashConstant_Propagator2[e]
 end
-def self.switchcb_Constant_Propagator1(e)
-return 0 if e<=Exp
-return 1 if e<=Local
-return 2 if e<=Object
-end
-@@switchhashConstant_Propagator1=Hash.new{|h,k| h[k]=switchcb_Constant_Propagator1(k)}
+@@switchhashConstant_Propagator1=Hash.new{|h,k|
+next h[k]=0 if k<=Exp
+next h[k]=1 if k<=Local
+next h[k]=2 if k<=Object
+}
 def switchcbConstant_Propagator1(e)
 @@switchhashConstant_Propagator1[e]
 end
@@ -91,22 +89,20 @@ end
 
 
 class Constant_Traverser < Traverser_Clone2
-def self.switchcb_Constant_Traverser3(e)
-return 0 if e<=Act
-return 1 if e<=Bind
-return 2 if e<=Local
-return 3 if e<=Object
-end
-@@switchhashConstant_Traverser3=Hash.new{|h,k| h[k]=switchcb_Constant_Traverser3(k)}
+@@switchhashConstant_Traverser3=Hash.new{|h,k|
+next h[k]=0 if k<=Act
+next h[k]=1 if k<=Bind
+next h[k]=2 if k<=Local
+next h[k]=3 if k<=Object
+}
 def switchcbConstant_Traverser3(e)
 @@switchhashConstant_Traverser3[e]
 end
-def self.switchcb_Constant_Traverser4(e)
-return 0 if e<=AmethystAST
-return 1 if e<=Array
-return 2 if e<=Object
-end
-@@switchhashConstant_Traverser4=Hash.new{|h,k| h[k]=switchcb_Constant_Traverser4(k)}
+@@switchhashConstant_Traverser4=Hash.new{|h,k|
+next h[k]=0 if k<=AmethystAST
+next h[k]=1 if k<=Array
+next h[k]=2 if k<=Object
+}
 def switchcbConstant_Traverser4(e)
 @@switchhashConstant_Traverser4[e]
 end
