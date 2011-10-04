@@ -270,6 +270,11 @@ class Result
 		self.freeze
 	end
 end
+class  Switch
+	def normalize2
+		self.freeze
+	end
+end
 [Result,Switch
 ].each{|c| eval("class #{c} 
 	def self.[](*a)
@@ -296,9 +301,10 @@ equalize_by(Bind,"[name,expr]")
 equalize_by(Local,"[ary[0],ary[1],ssano]")
 equalize_by(Act,"[pred,ary,pure]")
 equalize_by(Result,"[name,vars]")
+equalize_by(Switch,"[act,defs,first,ary]")
 [CAct,Global,Key,
 Cut,Stop,Exp,Strin,Args,
-Comment#,Result
+Comment
 ].each{|cls|
 eval("class #{cls}
 	def self.[](*args)
