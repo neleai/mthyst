@@ -35,6 +35,9 @@ class Array
 end
 class AmethystAST
 	def normalize;	self;	end
+	def normalize2
+		self.freeze
+	end
 end
 
 $hash_Bnding={}
@@ -42,9 +45,6 @@ class Bnding
 	def self.[]
 		@bno=(@bno||0)+1
 		Bnding.create({:ary=>[@bno]}).normalize
-	end
-	def normalize2
-		self.freeze
 	end
 end
 def quote(s)
@@ -105,9 +105,6 @@ class Many
 	def self.[](expr,many1=nil)
 	  a=autovar
 		Seq[{:ary=>( [_Bind(a, Act["[]"])]+(many1 ? [Append[a,expr]] : [])+[Many.create({:ary=>[Append[a,expr]]}).normalize,a])}]
-	end
-	def normalize2
-		self.freeze
 	end
 end
 
@@ -233,17 +230,11 @@ class Lookahead
     	Lookahead.create(e).normalize
 		end
   end
-	def normalize2
-		self.freeze
-	end
 end
 class Local
 	def self.[](name,bnd,ssano=nil)
     Local.create({:ary=>[name,bnd],:ssano=>ssano}).normalize
   end
-	def normalize2
-		self.freeze
-	end
 end
 class Local
 	def desc
@@ -265,16 +256,6 @@ def _Local(name)
 		l
 end
 
-class Result
-	def normalize2
-		self.freeze
-	end
-end
-class  Switch
-	def normalize2
-		self.freeze
-	end
-end
 [Result,Switch
 ].each{|c| eval("class #{c} 
 	def self.[](*a)
