@@ -309,13 +309,14 @@ end")
 $hash_Local={}
 class Local
 	def self.[](name,bnd,ssano=nil)
-		eql=[name,bnd,ssano]
-		return $hash_Local[eql] if $hash_Local[eql]
     Local.create({:ary=>[name,bnd],:ssano=>ssano}).normalize
   end
 	def normalize
 		return $hash_Local[[ary[0],ary[1],ssano]] if $hash_Local[[ary[0],ary[1],ssano]]
-		$hash_Local[[ary[0],ary[1],ssano]]=self.freeze
+		$hash_Local[[ary[0],ary[1],ssano]]=normalize2
+	end
+	def normalize2
+		self.freeze
 	end
 end
 class Local
