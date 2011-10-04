@@ -285,17 +285,15 @@ Cut,Stop,Exp,Strin,Args,
 Comment
 #Result
 ].each{|cls|
-eval("$hash_#{cls}={}
-class #{cls}
+eval("class #{cls}
 	def self.[](*args)
-		return $hash_#{cls}[args] if $hash_#{cls}[args]
 		#{cls}.create(*args).normalize
 	end
-	def normalize
-		return $hash_#{cls}[ary] if $hash_#{cls}[ary]
-		$hash_#{cls}[ary]=self.freeze
+	def normalize2
+		self.freeze
 	end
 end")
+equalize_by(cls,"ary")
 }
 
 $hash_Local={}
