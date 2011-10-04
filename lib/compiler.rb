@@ -14,21 +14,16 @@ class Gram
 		}
 	end
 	def opt(r)
-			[
- 			 Dataflow, Dead_Code_Deleter3,Forget_SSA
-			].each{|o|
-	      puts r.inspect if $debug>1
-      	r=o.new.parse(:root,r)
-			}
+		dce=[ Dataflow, Dead_Code_Deleter3,Forget_SSA]
+		[dce].flatten.each{|o|
+	    puts r.inspect if $debug>1
+     	r=o.new.parse(:root,r)
+		}
 		r=propagate_consts(r)
- [ Dataflow, Dead_Code_Deleter3,Forget_SSA,
-	 Left_Factor,
-   Dataflow, Dead_Code_Deleter3,Forget_SSA,
-].each{|o|
+ 		[ dce,	 Left_Factor,	 dce].flatten.each{|o|
 			r=o.new.parse(:root,r)
 			puts r.inspect if $debug>1
 		}
-
     @rules[r.name]=r 
 	end
 	def getrule(name)
