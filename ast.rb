@@ -30,20 +30,11 @@ makeclasses(AmethystAST,
 class SeqOr<AmethystAST;end
 makeclasses(SeqOr,:Seq,:Or)
 Placeholder=Object.new
-class <<Placeholder
-	def to_s
-		"Placeholder"
-	end
-end
 class Array
-	def normalize
-		self
-	end
+	def normalize;	self;	end
 end
 class AmethystAST
-	def normalize
-		self
-	end
+	def normalize;	self;	end
 end
 
 $hash_Bnding={}
@@ -330,22 +321,17 @@ end
 
 
 class Apply
-	def inspect
-		"#{ary[0]}(#{ary[1..-1].map{|a|a.inspect}*","})"
-	end
+	def inspect;	"#{ary[0]}(#{ary[1..-1].map{|a|a.inspect}*","})";	end
 end
 class Local
-	def inspect
-		"L[#{ary[0]}#{ary[1].is_a?(Bnding) ? "" : ary[1]}_#{ssano}]"
-	end
+	def inspect;	"L[#{ary[0]}#{ary[1].is_a?(Bnding) ? "" : ary[1]}_#{ssano}]";	end
 end
 class Key
-	def inspect
-		"@#{ary[0]}"
-	end
+	def inspect;	"@#{ary[0]}";	end
 end
 class Global
-	def inspect
-		"@#{ary[0]}"
-	end
+	def inspect;	"@#{ary[0]}";	end
+end
+class <<Placeholder
+	def inspect;	"Placeholder";	end
 end
