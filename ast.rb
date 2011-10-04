@@ -155,10 +155,10 @@ def equalize_by(klas,args)
             return $hash_#{klas}[#{args}] if $hash_#{klas}[#{args}]
             $hash_#{klas}[#{args}]=normalize2
           end
+					alias_method :hash,:object_id
     end")
 end
 [Apply,Bnding,Seq,Or,Many].each{|e| equalize_by(e,"ary")}
-[Apply,Bnding,Act,Seq,Or,Many].each{|c| eval("class #{c}\n alias_method :hash,:object_id\nend\n")}
 
 equalize_by(Bind,"[name,expr]")
 
