@@ -310,21 +310,8 @@ def _Local(name)
 		l
 end
 
-
-
-
-class Apply
-	def inspect;	"#{ary[0]}(#{ary[1..-1].map{|a|a.inspect}*","})";	end
-end
-class Local
-	def inspect;	"L[#{ary[0]}#{ary[1].is_a?(Bnding) ? "" : ary[1]}_#{ssano}]";	end
-end
-class Key
-	def inspect;	"@#{ary[0]}";	end
-end
-class Global
-	def inspect;	"@#{ary[0]}";	end
-end
-class <<Placeholder
-	def inspect;	"Placeholder";	end
-end
+class Apply;					def inspect;	"#{ary[0]}(#{ary[1..-1].map{|a|a.inspect}*","})";							end;end
+class Local;					def inspect;	"L[#{ary[0]}#{ary[1].is_a?(Bnding) ? "" : ary[1]}_#{ssano}]";	end;end
+class Key;						def inspect;	"@#{ary[0]}";																									end;end
+class Global;					def inspect;	"@@#{ary[0]}";																								end;end
+class <<Placeholder;	def inspect;	"Placeholder";																								end;end
