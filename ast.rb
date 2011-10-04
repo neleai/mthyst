@@ -30,6 +30,7 @@ makeclasses(AmethystAST,
 class SeqOr<AmethystAST;end
 makeclasses(SeqOr,:Seq,:Or)
 Placeholder=Object.new
+
 class Array
 	def normalize;	self;	end
 end
@@ -90,7 +91,6 @@ class Bind
 		self.freeze
 	end
 end
-
 class Append
 	def self.[](name,expr)
 		_Bind(name,expr,true)
@@ -114,7 +114,6 @@ class SeqOr
     self.freeze
   end
 end
-
 class Seq
 	def self.[](*args)
 		args=args[0][:ary] if args.size==1 && args[0].is_a?(Hash)
@@ -130,7 +129,6 @@ class Seq
 		s
 	end
 end
-
 class Or
 	def self.[](*args)
 		args=args[0][:ary] if args.size==1 && args[0].is_a?(Hash)
@@ -140,16 +138,13 @@ class Or
 	end
 end
 
-
 class PureAct
 	def self.[](expr=nil)
 		a=Act[expr].dup
 		if a.is_a?(Act)
 			a.pure=true 
-			a.freeze 
-		else 
-			a
 		end
+		a.normalize
 	end
 end
 class CAct
