@@ -167,17 +167,4 @@ end
 def a2ruby(s)
 	AmethystTranslator.new.parse(:itrans,translate(s))
 end
-def compile_to_c(file)
-  opt=translate(File.new("amethyst/#{file}.ame").read)
-  c,init,rb=AmethystCTranslator.new.parse(:itrans,opt)
-  File.open("compiled/#{file}_c.c","w"){|f|
-    f.puts "#include \"cthyst.h\""
-    f.puts c
-    f.puts "void Init_#{file}_c(){ #{init} }"
-  }
-  File.open("compiled/#{file}.rb","w"){|f| f.puts rb; f.puts "\n require 'compiled/#{file}_c'"}
-	withtime("c"){
-  	`cd compiled;gcc -I. -I/usr/lib/ruby/1.8/x86_64-linux -I/usr/lib/ruby/1.8/x86_64-linux -I.   -fPIC -fno-strict-aliasing -g -g   -fPIC #$OPT  -c #{file}_c.c`
-  	`cd compiled;gcc -shared -o #{file}_c.so #{file}_c.o -L. -L/usr/lib -L.  -rdynamic -Wl,-export-dynamic -lruby1.8  -lpthread -lrt -ldl -lcrypt -lm   -lc`
-	}
-end
+
