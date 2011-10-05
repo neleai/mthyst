@@ -64,3 +64,6 @@ bind expr in ary instead in @expr
 serialization
 
 support for provable refactorization and migrations
+
+strings by boyer-moore like approach
+indexing from end
