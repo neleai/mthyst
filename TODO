@@ -2,7 +2,6 @@ implicit variables
 persistence
 optimizer simplifying =>[ ] to []
 split to separate parser and traverser 
-split to traverser and modifier and dataflow_analyzer
 make AmethystModule +include to mimic ruby module
 parser to produce literal tree and convert to abstract tree
 make position handling explicit as in amethyst/position.ame
@@ -48,18 +47,11 @@ detects also rules in parent that call but are not called
 predicate,cut,stop,comment do not return value
 
 move switch into pipeline
-detect_switch char intervals
-negation in switch
-defer alternatives of classwitch to ctranslator2
-merge identical options of detect_switch in normalize
 predication by splitting to predicated and notpredicated part
-
-equalization of bind
-name immutability and equalization and use it in lattices
 
 operator for case insensivity
 
-bind expr in ary instead in @expr
+Bind has expr in ary instead in @expr
 
 serialization
 
@@ -67,3 +59,6 @@ support for provable refactorization and migrations
 
 strings by boyer-moore like approach
 indexing from end
+
+
+replace(x) as (apply(x) | .)*
