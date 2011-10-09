@@ -31,6 +31,7 @@ class SizesLattice
 		l.size=a
 		$hash_SizesLattice[a]=l
 	end
+	alias_method :==,:equal?
 	def |(a)
 		SizesLattice[ [size,a.size].min ]
 	end
@@ -60,10 +61,6 @@ class FirstLattice
     return self unless self.ary.include? Empty
     (self-self.class.empty)|a
   end
-	def ==(a)
-		return false unless a.is_a?(FirstLattice)
-		ary.sort_by{|e| e.inspect}==a.ary.sort_by{|e| e.inspect}
-	end
 
 	def cases(first)
 		ary.map{|c| c=="default" ? "default:;" : "case #{c}:;"}*""
@@ -73,12 +70,15 @@ class FirstLattice
 	end
 end
 
+$hash_CharLattice={}
 class CharLattice < FirstLattice
 	def self.[](*ary)
+		return $hash_CharLattice[ary] if $hash_CharLattice[ary]
 		c=CharLattice.new
-		c.ary=ary.uniq
-		c
+		c.ary=ary
+		$hash_CharLattice[ary]=c
 	end
+	alias_method :==,:equal?
 	def self.top
 		CharLattice[[0,255]]
 	end
@@ -129,9 +129,7 @@ class CharLattice < FirstLattice
 				end
 			}
 		end
-		@ary=nary+special
-
-		self
+		CharLattice[*(nary+special)]
 	end
 end
 
@@ -145,6 +143,7 @@ class ClasLattice < FirstLattice
     c.ary=ary
     $hash_ClasLattice[ary]=c
   end
+	alias_method :==,:equal?
   def self.top
     ClasLattice[Object]
   end
@@ -937,7 +936,7 @@ def detect_switch_compiled_by
 '6b247e5576e0b764091c15f5d197bffc'
 end
 def detect_switch_source_hash
-'090eae66a3a08bd3f72f317d05551028'
+'5360b69186e6f9326cfd71f19fc8db23'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
