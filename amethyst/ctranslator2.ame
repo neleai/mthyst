@@ -93,7 +93,10 @@ failobj=rb_eval_string(\"FAIL\");
 						h+"{VALUE vals[#{@args.size}]; VALUE bind=rb_ary_new2(#{@@locls.size}); #{map_index(@args){|i| bset(@args[i],"a#{i}")+";"}} int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 \n#{body}\nreturn it;\nfail: return failobj; }" } ]
 				| Act[ .*:{addcallback(@pred ? ["(",it,") || FAIL"] : it)}:cbno {"it=CALL(#{cbno},1,bind); #{@pred ? "FAILTEST(#{@@faillabel});" :"" }"} ]
-				| CAct[.* {"it=#{@ccode};"}]
+				| CAct[.* {ar=*@ccode; 
+                   @@init<<ar[0] if ar[0]
+                   @@header<<ar[1] if ar[1]
+                   "it=#{ar[2]};"}]
 				| Apply[:name {0}:ii ( trans:aa {ii+=1} {"#{aa} arg#{ii-1}=it;"})*:args 
             failwrap(" #{args} it=#{callrule(name,ii)};")]
 				| Seq[ trans*:t {t*""} ]

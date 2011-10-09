@@ -60,3 +60,7 @@ indexing from end
 
 
 replace(x) as (apply(x) | .)*
+
+copy propagation
+
+, in Acts

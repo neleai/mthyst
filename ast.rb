@@ -143,7 +143,7 @@ class PureAct
 end
 class CAct
 	def pure;	true;	end
-	def ccode	#rewrite in amethyst
+	def ccode2	#rewrite in amethyst
 		return "rb_const_get(rb_cObject, rb_intern(\"#{ary[0].inspect}\"))" if ary[0].is_a?(Class)
 		return "rb_ary_new3(0)" if ary[0].is_a?(Array)
 		return "Q#{ary[0].inspect}" if [true,false,nil].include?(ary[0])
@@ -151,6 +151,9 @@ class CAct
 		return "rb_funcall(rb_str_new2(\"#{ary[0]}\"),rb_intern(\"to_i\"),0)" if ary[0].is_a? Integer
 		return "rb_str_new2(#{ary[0].inspect})" if ary[0].is_a?(String)
 		ary[0]
+	end
+	def ccode
+		[nil,nil,ccode2]
 	end
 end
 class Act

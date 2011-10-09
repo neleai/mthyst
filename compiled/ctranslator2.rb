@@ -231,7 +231,10 @@ def trans_AmethystCTranslatorcb_30(bind)
 "#{bind[51]}\n #{bset(@src.name,"it")}; " 
 end
 def trans_AmethystCTranslatorcb_31(bind)
-"it=#{@src.ccode};"
+ar=*@src.ccode; 
+                   @init<<ar[0] if ar[0]
+                   @header<<ar[1] if ar[1]
+                   "it=#{ar[2]};"
 end
 def trans_AmethystCTranslatorcb_32(bind)
 "#{iset("cut","Qtrue")};"
@@ -361,7 +364,7 @@ def ctranslator2_compiled_by
 'eecccbdcc97b18266cf8ee60a8e8d771'
 end
 def ctranslator2_source_hash
-'001fcb12af6b02d716471dd28ae53005'
+'704076169547e3119448917cf430d5c1'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
