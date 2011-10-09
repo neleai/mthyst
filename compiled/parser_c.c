@@ -178,6 +178,7 @@ VALUE c_244;
 VALUE c_245;
 VALUE c_246;
 VALUE c_247;
+VALUE c_249;
 VALUE c_251;
 VALUE c_252;
 VALUE c_255;
@@ -293,7 +294,7 @@ fail: return failobj; }
 VALUE AmethystParser_addargs(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(5);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 it=rb_ary_new3(0);
- rb_ary_store(bind,0/*result*/,it); int oldpos1; while(1){oldpos1=ame_getpos(self);  it=rb_const_get(rb_cObject, rb_intern("Args")); arg0=it; it=AmethystParser_clas(self ,arg0); FAILTEST(break1);
+ rb_ary_store(bind,0/*result*/,it); int oldpos1; while(1){oldpos1=ame_getpos(self);  it=c_249; arg0=it; it=AmethystParser_clas(self ,arg0); FAILTEST(break1);
  rb_ary_store(bind,1/*autovar*/,it); int oldpos2=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,rb_ary_entry(bind,1/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
    it=AmethystCore_anything(self ); FAILTEST(pass1);
@@ -1899,6 +1900,7 @@ c_244=rb_str_new2("{");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark"))
 c_245=rb_str_new2("}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_245);
 c_246=rb_str_new2(":@");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_246);
 c_247=rb_str_new2(":@");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_247);
+c_249=rb_const_get(rb_cObject, rb_intern("Args"));
 switchhashAmethystParser1=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Args\nnext h[k]=1 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashAmethystParser1);
 c_251=rb_str_new2("");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_251);
 c_252=rb_str_new2("");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_252);
@@ -1992,4 +1994,4 @@ rb_define_method(cls_AmethystParser,"spaces",AmethystParser_spaces,0);
 rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
 rb_define_method(cls_AmethystParser,"token",AmethystParser_token,1);
 rb_define_method(cls_AmethystParser,"upper",AmethystParser_upper,0);
- rb_eval_string("testversionparser('2caa74cf1a8b2515dbd95255ad30fa8b')");}
+ rb_eval_string("testversionparser('fe6641c7cebc82f18de654f19d0fac1c')");}
