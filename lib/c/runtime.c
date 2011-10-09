@@ -86,46 +86,6 @@ VALUE AmethystCore_anything(VALUE self){
 	ame_setpos(self,input+1);
 	return r;
 }
-VALUE ame_lookahead(VALUE self,VALUE neg){
-	int input=ame_getpos(self);
-	VALUE r=rb_yield(Qnil);
-	ame_setpos(self,input);
-	if (neg==Qtrue){
-		r= (r==failobj)? Qtrue : failobj;
-	}
-	return r;
-}
-
-VALUE ame_pass(VALUE self,VALUE enter,VALUE expr){
-	if (enter!=Qtrue) expr=rb_ary_new3(1,expr);
-  VALUE src=ame_getsrc(self);	int input=ame_getpos(self); int len=ame_getlen(self);
-	ame_setsrc(self,expr);	ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-	VALUE r=rb_yield(Qnil);
-	if (rb_funcall(self,rb_intern("eof"),0)==failobj) r=failobj;
-  ame_setsrc(self,src);ame_setpos(self,input);ame_setlen(self,len);
-	return r;
-}
-
-VALUE ame_or(int argc,VALUE *argv,VALUE self){
-	int input=ame_getpos(self);
-	VALUE r;
-	int i;
-	for(i=0;i<argc;i++){
-		ame_setpos(self,input);
-		r=rb_funcall(argv[i],s_call,0);
-		if (r!=failobj){
-			rb_ivar_set(self,s_cut,Qnil);
-			return r;
-		}
-		VALUE cut=rb_ivar_get(self,s_cut);
-		if (cut!=Qnil){
-			rb_ivar_set(self,s_cut,Qnil);
-			return failobj;
-		}
-	}
-	return failobj;
-}
-
 
 VALUE ame_new(VALUE clas){
 	cstruct *ptr=ALLOC(cstruct);
@@ -147,8 +107,4 @@ void Init_Ame(VALUE self){
 
 	rb_define_method(amecore,"_seq",AmethystCore__seq,1);
 	rb_define_method(amecore,"anything",AmethystCore_anything,0);
-	rb_define_method(amecore,"_lookahead",ame_lookahead,1);
-	rb_define_method(amecore,"_pass",ame_pass,2);
-	rb_define_method(amecore,"_or",ame_or,-1);
-
 }

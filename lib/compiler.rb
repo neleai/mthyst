@@ -153,18 +153,3 @@ $compiled_by=Digest::MD5.hexdigest($compiled_by)
 
 require 'constant_propagation2'
 
-def translate(s)
-  par=AmethystParser.new
-  opt=par.parse(:igrammar,s)
-  [Analyze_Variables2,Move_Assignments2].each{|p|
-		puts opt.inspect
-    opt=p.new.parse(:itrans,opt)
-  }
-
-  opt
-end
-
-def a2ruby(s)
-	AmethystTranslator.new.parse(:itrans,translate(s))
-end
-

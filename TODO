@@ -33,8 +33,6 @@ Do it by constant propagation?
 
 dont duplicate rules that dont refer to overwritten rule
 
-hashes with different equalization
-
 adaptive dataflow
 think about suitable decomposition
 
