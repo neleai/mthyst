@@ -10,7 +10,7 @@ class Empty_
   end
 end
 Empty=Empty_.new
-
+$hash_SizesLattice={}
 class SizesLattice
 	attr_accessor :size
 	def self.bottom
@@ -26,9 +26,10 @@ class SizesLattice
 		self[1.0/0.0]
 	end
 	def self.[](a)
+		return $hash_SizesLattice[a] if $hash_SizesLattice[a]
 		l=self.new
 		l.size=a
-		l
+		$hash_SizesLattice[a]=l
 	end
 	def |(a)
 		SizesLattice[ [size,a.size].min ]
@@ -134,12 +135,15 @@ class CharLattice < FirstLattice
 	end
 end
 
+$hash_ClasLattice={}
 class ClasLattice < FirstLattice
   attr_accessor :ary
   def self.[](*ary)
+		ary=ary.uniq.sort_by{|a| a.inspect}
+		return $hash_ClasLattice[ary] if $hash_ClasLattice[ary]
     c=ClasLattice.new
-    c.ary=ary.uniq
-    c
+    c.ary=ary
+    $hash_ClasLattice[ary]=c
   end
   def self.top
     ClasLattice[Object]
@@ -933,7 +937,7 @@ def detect_switch_compiled_by
 '6b247e5576e0b764091c15f5d197bffc'
 end
 def detect_switch_source_hash
-'9d438a03a2414b63c1aa52df52542db2'
+'090eae66a3a08bd3f72f317d05551028'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
