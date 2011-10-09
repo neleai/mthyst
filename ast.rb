@@ -229,7 +229,9 @@ class Local
 	def self.resetnumbering
     @@numb=Hash.new{|h,k|h[k]={}}
 	end
-
+	def unssa
+		$hash_Local[[nil,ary]]
+	end
 end
 def _Local(name)
 		return name if !name.is_a?(String)

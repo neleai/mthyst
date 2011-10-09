@@ -966,21 +966,19 @@ ISET(cut,Qnil);goto accept3;
  break;}it=rb_ary_entry(bind,1/*_result*/);
 return it;
 fail: return failobj; }
-VALUE Forget_SSA_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(5);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+VALUE Forget_SSA_visit(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(3);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
  it=rb_const_get(rb_cObject, rb_intern("Local")); arg0=it; it=Forget_SSA_clas(self ,arg0); FAILTEST(fail);
  rb_ary_store(bind,0/*autovar*/,it); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,rb_ary_entry(bind,0/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern("size"),0)));
-   it=AmethystCore_anything(self ); FAILTEST(pass1);
- rb_ary_store(bind,1/*name*/,it);   it=AmethystCore_anything(self ); FAILTEST(pass1);
- rb_ary_store(bind,2/*num*/,it); it=CALL(visit_Forget_SSAcb_1,1,bind); 
- rb_ary_store(bind,3/*autovar*/,it);   it=Forget_SSA_eof(self ); FAILTEST(pass1);
+ int oldpos2; while(1){oldpos2=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break1); if (IGET(stop)!=Qnil){{oldpos2=ame_getpos(self);goto break1;} } } break1: ISET(stop,Qnil);  ame_setpos(self,oldpos2); it=CALL(visit_Forget_SSAcb_1,1,bind); 
+ rb_ary_store(bind,1/*autovar*/,it);   it=Forget_SSA_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos1); ame_setlen(self,oldlen1);
 	if(fail1) goto fail;
-it=rb_ary_entry(bind,3/*autovar*/);
- rb_ary_store(bind,4/*_result*/,it); it=rb_ary_entry(bind,4/*_result*/);
+it=rb_ary_entry(bind,1/*autovar*/);
+ rb_ary_store(bind,2/*_result*/,it); it=rb_ary_entry(bind,2/*_result*/);
 return it;
 fail: return failobj; }
 void Init_dataflow_ssa_c(){ 
@@ -1024,4 +1022,4 @@ rb_define_method(cls_Forget_SSA,"root",Forget_SSA_root,0);
 rb_define_method(cls_Forget_SSA,"traverse",Forget_SSA_traverse,0);
 rb_define_method(cls_Forget_SSA,"traverse_item",Forget_SSA_traverse_item,0);
 rb_define_method(cls_Forget_SSA,"visit",Forget_SSA_visit,0);
- rb_eval_string("testversiondataflow_ssa('0871721be143d2235b9de0ffc0b44973')");}
+ rb_eval_string("testversiondataflow_ssa('45055f6ba05e571fc3b05c1bd0f2c026')");}

@@ -63,9 +63,6 @@ class Local
 	def ssaname
 		self
 	end
-	def unssa
-		Local[ary[0],ary[1]]
-	end
 end
 
 class Dataflow < Traverser_Clone2
@@ -389,22 +386,22 @@ def traverse_item_Forget_SSAcb_2(bind)
 bind[5]<<bind[6]
 end
 def visit_Forget_SSAcb_1(bind)
-Local[bind[1],bind[2]]
+@src.unssa
 end
 
 end
 
 
 def dataflow_ssa_compiled_by
-'6b247e5576e0b764091c15f5d197bffc'
+'eecccbdcc97b18266cf8ee60a8e8d771'
 end
 def dataflow_ssa_source_hash
-'256ed86af86d95d9b8953797b6b14661'
+'8be2880c1daeab06c6723ecc1f07d4b2'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'0871721be143d2235b9de0ffc0b44973'
+'45055f6ba05e571fc3b05c1bd0f2c026'
 end
   require 'compiled/dataflow_ssa_c'

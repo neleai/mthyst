@@ -63,9 +63,6 @@ class Local
 	def ssaname
 		self
 	end
-	def unssa
-		Local[ary[0],ary[1]]
-	end
 end
 
 amethyst Dataflow < Traverser_Clone2 {
@@ -107,5 +104,5 @@ amethyst Dead_Code_Deleter3 < Traverser_Clone2{
 
 amethyst Forget_SSA < Traverser_Clone2 {
 	root = @self=>Rule[traverse]
-	visit = Local[ :name :num {Local[name,num]} ]
+	visit = Local[ .* {@unssa} ]
 }
