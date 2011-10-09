@@ -1,6 +1,6 @@
 require 'runtime'
-
-class Amethyst < AmethystCore
+GC_mark=[]#mark for gc
+class Amethyst < AmethystCore	
 	def self::load(g)
     evalgrammar(grammar(filename))	
 	end

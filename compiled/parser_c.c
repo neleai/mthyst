@@ -1509,7 +1509,7 @@ fail: return failobj; }
 void Init_parser_c(){ 
  cls_AmethystParser=rb_define_class("AmethystParser",rb_const_get(rb_cObject,rb_intern("Amethyst"))); 
 failobj=rb_eval_string("FAIL");
-switchhashAmethystParser1=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Args\nnext h[k]=1 if k<=Object\n}\n");rb_define_variable("switchhashAmethystParser1",&switchhashAmethystParser1);
+switchhashAmethystParser1=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Args\nnext h[k]=1 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")), switchhashAmethystParser1);
 rb_define_method(cls_AmethystParser,"_",AmethystParser__,0);
 rb_define_method(cls_AmethystParser,"__args",AmethystParser___args,2);
 rb_define_method(cls_AmethystParser,"_args",AmethystParser__args,2);

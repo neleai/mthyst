@@ -366,8 +366,8 @@ fail: return failobj; }
 void Init_constant_propagation_c(){ 
  cls_Constant_Propagator=rb_define_class("Constant_Propagator",rb_const_get(rb_cObject,rb_intern("Amethyst"))); 
 failobj=rb_eval_string("FAIL");
-switchhashConstant_Propagator2=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Act\nnext h[k]=1 if k<=Bind\nnext h[k]=2 if k<=CAct\nnext h[k]=3 if k<=Local\nnext h[k]=4 if k<=Object\n}\n");rb_define_variable("switchhashConstant_Propagator2",&switchhashConstant_Propagator2);
-switchhashConstant_Propagator1=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Exp\nnext h[k]=1 if k<=Local\nnext h[k]=2 if k<=Object\n}\n");rb_define_variable("switchhashConstant_Propagator1",&switchhashConstant_Propagator1);
+switchhashConstant_Propagator2=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Act\nnext h[k]=1 if k<=Bind\nnext h[k]=2 if k<=CAct\nnext h[k]=3 if k<=Local\nnext h[k]=4 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")), switchhashConstant_Propagator2);
+switchhashConstant_Propagator1=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Exp\nnext h[k]=1 if k<=Local\nnext h[k]=2 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")), switchhashConstant_Propagator1);
 rb_define_method(cls_Constant_Propagator,"clas",Constant_Propagator_clas,1);
 rb_define_method(cls_Constant_Propagator,"empty",Constant_Propagator_empty,0);
 rb_define_method(cls_Constant_Propagator,"eof",Constant_Propagator_eof,0);
@@ -377,8 +377,8 @@ rb_define_method(cls_Constant_Propagator,"step",Constant_Propagator_step,1);
 
  cls_Constant_Traverser=rb_define_class("Constant_Traverser",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2"))); 
 failobj=rb_eval_string("FAIL");
-switchhashConstant_Traverser3=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Act\nnext h[k]=1 if k<=Bind\nnext h[k]=2 if k<=Local\nnext h[k]=3 if k<=Object\n}\n");rb_define_variable("switchhashConstant_Traverser3",&switchhashConstant_Traverser3);
-switchhashConstant_Traverser4=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}\n");rb_define_variable("switchhashConstant_Traverser4",&switchhashConstant_Traverser4);
+switchhashConstant_Traverser3=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Act\nnext h[k]=1 if k<=Bind\nnext h[k]=2 if k<=Local\nnext h[k]=3 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")), switchhashConstant_Traverser3);
+switchhashConstant_Traverser4=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")), switchhashConstant_Traverser4);
 rb_define_method(cls_Constant_Traverser,"clas",Constant_Traverser_clas,1);
 rb_define_method(cls_Constant_Traverser,"empty",Constant_Traverser_empty,0);
 rb_define_method(cls_Constant_Traverser,"eof",Constant_Traverser_eof,0);

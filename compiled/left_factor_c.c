@@ -410,10 +410,10 @@ fail: return failobj; }
 void Init_left_factor_c(){ 
  cls_Left_Factor=rb_define_class("Left_Factor",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2"))); 
 failobj=rb_eval_string("FAIL");
-switchhashLeft_Factor1=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Bind\nnext h[k]=1 if k<=Seq\nnext h[k]=2 if k<=Object\n}\n");rb_define_variable("switchhashLeft_Factor1",&switchhashLeft_Factor1);
-switchhashLeft_Factor2=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Seq\nnext h[k]=1 if k<=Object\n}\n");rb_define_variable("switchhashLeft_Factor2",&switchhashLeft_Factor2);
-switchhashLeft_Factor3=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}\n");rb_define_variable("switchhashLeft_Factor3",&switchhashLeft_Factor3);
-switchhashLeft_Factor4=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Bind\nnext h[k]=1 if k<=Seq\nnext h[k]=2 if k<=Object\n}\n");rb_define_variable("switchhashLeft_Factor4",&switchhashLeft_Factor4);
+switchhashLeft_Factor1=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Bind\nnext h[k]=1 if k<=Seq\nnext h[k]=2 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")), switchhashLeft_Factor1);
+switchhashLeft_Factor2=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Seq\nnext h[k]=1 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")), switchhashLeft_Factor2);
+switchhashLeft_Factor3=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")), switchhashLeft_Factor3);
+switchhashLeft_Factor4=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Bind\nnext h[k]=1 if k<=Seq\nnext h[k]=2 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")), switchhashLeft_Factor4);
 rb_define_method(cls_Left_Factor,"binds",Left_Factor_binds,2);
 rb_define_method(cls_Left_Factor,"clas",Left_Factor_clas,1);
 rb_define_method(cls_Left_Factor,"empty",Left_Factor_empty,0);

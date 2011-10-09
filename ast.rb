@@ -141,6 +141,7 @@ class PureAct
 		a.normalize
 	end
 end
+$constno=0
 class CAct
 	def pure;	true;	end
 	def ccode2	#rewrite in amethyst
@@ -153,6 +154,8 @@ class CAct
 		ary[0]
 	end
 	def ccode
+		$constno+=1
+		#return ["VALUE c_#{$constno};","c_#{$constno}=rb_str_new2(#{ary[0].inspect});","rb_obj_clone(c_#{$constno})"]
 		[nil,nil,ccode2]
 	end
 end
