@@ -232,8 +232,8 @@ def trans_AmethystCTranslatorcb_30(bind)
 end
 def trans_AmethystCTranslatorcb_31(bind)
 ar=*@src.ccode; 
-                   @init<<ar[0] if ar[0]
-                   @header<<ar[1] if ar[1]
+                   @header<<ar[0] if ar[0]
+                   @init<<ar[1] if ar[1]
                    "it=#{ar[2]};"
 end
 def trans_AmethystCTranslatorcb_32(bind)
@@ -361,15 +361,15 @@ end
 
 
 def ctranslator2_compiled_by
-'eecccbdcc97b18266cf8ee60a8e8d771'
+'8c21a83465d0dc26e680f89fe03aa593'
 end
 def ctranslator2_source_hash
-'704076169547e3119448917cf430d5c1'
+'90278cc9731f96e7849b55012fbdabf5'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'cfd9c6d35ba5a865f88f2dffe9acd6b6'
+'261264058f7a37fe12ff557417ec08d1'
 end
   require 'compiled/ctranslator2_c'

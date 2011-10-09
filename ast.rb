@@ -155,7 +155,7 @@ class CAct
 	end
 	def ccode
 		$constno+=1
-		#return ["VALUE c_#{$constno};","c_#{$constno}=rb_str_new2(#{ary[0].inspect});","rb_obj_clone(c_#{$constno})"]
+		return ["VALUE c_#{$constno};","c_#{$constno}=rb_str_new2(#{ary[0].inspect});#{gc_mark_var("c_#{$constno}")}","rb_obj_clone(c_#{$constno})"] if ary[0].is_a?(String)
 		[nil,nil,ccode2]
 	end
 end

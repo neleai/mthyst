@@ -94,8 +94,8 @@ failobj=rb_eval_string(\"FAIL\");
 \n#{body}\nreturn it;\nfail: return failobj; }" } ]
 				| Act[ .*:{addcallback(@pred ? ["(",it,") || FAIL"] : it)}:cbno {"it=CALL(#{cbno},1,bind); #{@pred ? "FAILTEST(#{@@faillabel});" :"" }"} ]
 				| CAct[.* {ar=*@ccode; 
-                   @@init<<ar[0] if ar[0]
-                   @@header<<ar[1] if ar[1]
+                   @@header<<ar[0] if ar[0]
+                   @@init<<ar[1] if ar[1]
                    "it=#{ar[2]};"}]
 				| Apply[:name {0}:ii ( trans:aa {ii+=1} {"#{aa} arg#{ii-1}=it;"})*:args 
             failwrap(" #{args} it=#{callrule(name,ii)};")]
