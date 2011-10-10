@@ -257,6 +257,8 @@ amethyst First_Dataflow {
 	      | Bind[@expr=>value] 
 				| (Act|CAct|Local|Result|Cut|Stop)[.* {lattice.empty} ]
 				| . {lattice.default}
+
+	 getvalue(v) = {@@vis=v; v}=>first
 }  			
 
 amethyst Sizes_Dataflow < First_Dataflow {
@@ -264,8 +266,6 @@ amethyst Sizes_Dataflow < First_Dataflow {
 								| ["regch" | "clas" | "anything"] {lattice[1]}
 								)]
 			  | super
-
-	getvalue(v) = {@@vis=v; v}=>first
 }
 
 amethyst Switch_Dataflow < First_Dataflow{
@@ -274,16 +274,12 @@ amethyst Switch_Dataflow < First_Dataflow{
 								| ["anything" ] {lattice.top}
 							  )]
 				| super
-
-	getvalue(v) = {@@vis=v; v}=>first
 }
 
 amethyst ClasSwitch_Dataflow < First_Dataflow{
   first = Apply[ ["clas"] CAct[.:cls] {lattice[cls]}]
         | super
 				| Apply[ :name &{$rules[name]} .* {$rules[name].body}=>value]
-
-	getvalue(v) = {@@vis=v; v}=>first
 }
 
 class Detect_First< Traverser_Clone2

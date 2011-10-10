@@ -42,6 +42,7 @@ class Gram
 	end
 end
 def resolvegrammar(grammar,name)
+	#TODO add header
 	return "AmethystCore" if name=="anything" || name=="_seq"
 	return nil if !Compiler.grammars[grammar]
 	return grammar if Compiler.grammars[grammar].rules[name]
@@ -77,22 +78,9 @@ class <<Compiler
 			g.calls[nam]=DetectCalls.new.parse(:root,[g.getrule(nam)])
 			g.calls[nam].each{|c,t| callg.add(nam,c)}
 		}
-		names2=names.dup
-		i=0
-		while i<names.size
-			g.calls[names[i]]=DetectCalls.new.parse(:root,[g.getrule(names[i])])
-			g.calls[names[i]].each{|c,t|
-      	if !g.rules[c]
-					if r=g.getrule(c)
-						g.rules[c]=r
-						names<<c
-					end
-				end
-			}
-			i+=1
-		end
 		topo= callg.topo_order
-		called=callg.reverse.reachable(names2)
+		called=callg.reverse.reachable(names)
+		called.each{|k,v| g.rules[k]=g.getrule(k)}
 		puts called.inspect
 		puts callg.inspect
 		puts topo.inspect

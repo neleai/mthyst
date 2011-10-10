@@ -79,15 +79,6 @@ end
 def addlambda_AmethystCTranslatorcb_4(bind)
 "AmethystLambda.new(:#{bind[0]},self,bind)" 
 end
-def char_AmethystCTranslatorcb_1(bind)
-(bind[0].is_a? String ) || FAIL
-end
-def clas_AmethystCTranslatorcb_1(bind)
-(bind[0].is_a?(bind[1])) || FAIL
-end
-def fails_AmethystCTranslatorcb_1(bind)
-(false) || FAIL
-end
 def failwrap_AmethystCTranslatorcb_1(bind)
 "#{bind[0]} FAILTEST(#{@faillabel});" 
 end
@@ -364,7 +355,7 @@ end
 
 
 def ctranslator2_compiled_by
-'55ef8e9a6e1d5a0fe35d47f75b84f5ab'
+'15120988666749b4542163956adc2939'
 end
 def ctranslator2_source_hash
 '2ee72dc12553d07f5ce1f9558eb71ddb'
@@ -373,6 +364,6 @@ def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'7eee8e185b4d190bb54ec7a928853379'
+'c9d8404f94c14ccf0f552d63d2b153e4'
 end
   require 'compiled/ctranslator2_c'

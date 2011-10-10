@@ -35,12 +35,6 @@ end
 
 class Constant_Propagator < Amethyst
 
-def clas_Constant_Propagatorcb_1(bind)
-(bind[0].is_a?(bind[1])) || FAIL
-end
-def fails_Constant_Propagatorcb_1(bind)
-(false) || FAIL
-end
 def root_Constant_Propagatorcb_1(bind)
 @depend=bind[0]
 end
@@ -73,12 +67,6 @@ end
 
 class Constant_Traverser < Traverser_Clone2
 
-def clas_Constant_Traversercb_1(bind)
-(bind[0].is_a?(bind[1])) || FAIL
-end
-def fails_Constant_Traversercb_1(bind)
-(false) || FAIL
-end
 def root_Constant_Traversercb_1(bind)
 @consts=@src.consts
 end
@@ -131,7 +119,7 @@ end
 
 
 def constant_propagation_compiled_by
-'55ef8e9a6e1d5a0fe35d47f75b84f5ab'
+'15120988666749b4542163956adc2939'
 end
 def constant_propagation_source_hash
 '4a7badb332b849d427161a22fcb99ead'
@@ -140,6 +128,6 @@ def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
 end
 def constant_propagation_version
-'39845e5a8248e36ea7a69a45b1616451'
+'2bf8dfe9c31fbdbb99da57f22aabf74c'
 end
   require 'compiled/constant_propagation_c'

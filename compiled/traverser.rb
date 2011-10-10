@@ -1,11 +1,5 @@
 class Traverser_Clone2 < Amethyst
 
-def clas_Traverser_Clone2cb_1(bind)
-(bind[0].is_a?(bind[1])) || FAIL
-end
-def fails_Traverser_Clone2cb_1(bind)
-(false) || FAIL
-end
 def traverse_Traverser_Clone2cb_1(bind)
 @changed
 end
@@ -46,12 +40,6 @@ end
 
 class Visitor < Amethyst
 
-def clas_Visitorcb_1(bind)
-(bind[0].is_a?(bind[1])) || FAIL
-end
-def fails_Visitorcb_1(bind)
-(false) || FAIL
-end
 def traverse_Visitorcb_1(bind)
 (@src.instance_variables).map{|v| @src.instance_variable_get(v)}
 end
@@ -69,7 +57,7 @@ end
 
 
 def traverser_compiled_by
-'55ef8e9a6e1d5a0fe35d47f75b84f5ab'
+'15120988666749b4542163956adc2939'
 end
 def traverser_source_hash
 '102e4f870eb0748a3420fd0f2398e4a9'
@@ -78,6 +66,6 @@ def testversiontraverser(r)
  raise "invalid version" if r!=traverser_version
 end
 def traverser_version
-'b744588fb9305734e1c4af9db188ae3d'
+'908423ae724c936f0c75800e669458e0'
 end
   require 'compiled/traverser_c'

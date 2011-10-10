@@ -245,12 +245,6 @@ class ClasSwitch_Dataflow < First_Dataflow
 end
 class First_Dataflow < Amethyst
 
-def clas_First_Dataflowcb_1(bind)
-(bind[0].is_a?(bind[1])) || FAIL
-end
-def fails_First_Dataflowcb_1(bind)
-(false) || FAIL
-end
 def first_First_Dataflowcb_1(bind)
 lattice.empty
 end
@@ -290,6 +284,12 @@ end
 def first_First_Dataflowcb_9(bind)
 bind[15]|lattice.empty
 end
+def getvalue_First_Dataflowcb_1(bind)
+@vis=bind[0]; bind[0]
+end
+def getvalue_First_Dataflowcb_2(bind)
+bind[1]=[bind[1]]
+end
 def value_First_Dataflowcb_1(bind)
 depends(bind[0]); @vals[bind[0]]
 end
@@ -299,12 +299,6 @@ end
 
 class Sizes_Dataflow < First_Dataflow
 
-def clas_Sizes_Dataflowcb_1(bind)
-(bind[0].is_a?(bind[1])) || FAIL
-end
-def fails_Sizes_Dataflowcb_1(bind)
-(false) || FAIL
-end
 def first_Sizes_Dataflow_Sizes_Dataflowcb_1(bind)
 lattice.empty
 end
@@ -356,33 +350,12 @@ end
 def getvalue_Sizes_Dataflowcb_2(bind)
 bind[1]=[bind[1]]
 end
-def regch_Sizes_Dataflowcb_1(bind)
-(bind[0].is_a? String ) || FAIL
-end
-def regch_Sizes_Dataflowcb_2(bind)
-(bind[3].match(bind[2])) || FAIL
-end
-def spaces_Sizes_Dataflowcb_1(bind)
-/[\s\t\r\n\f]/
-end
-def spaces_Sizes_Dataflowcb_2(bind)
-_append(bind[0],bind[2])
-end
-def value_Sizes_Dataflowcb_1(bind)
-depends(bind[0]); @vals[bind[0]]
-end
 
 end
 
 
 class Switch_Dataflow < First_Dataflow
 
-def clas_Switch_Dataflowcb_1(bind)
-(bind[0].is_a?(bind[1])) || FAIL
-end
-def fails_Switch_Dataflowcb_1(bind)
-(false) || FAIL
-end
 def first_Switch_Dataflow_Switch_Dataflowcb_1(bind)
 lattice.empty
 end
@@ -437,33 +410,12 @@ end
 def getvalue_Switch_Dataflowcb_2(bind)
 bind[1]=[bind[1]]
 end
-def regch_Switch_Dataflowcb_1(bind)
-(bind[0].is_a? String ) || FAIL
-end
-def regch_Switch_Dataflowcb_2(bind)
-(bind[3].match(bind[2])) || FAIL
-end
-def spaces_Switch_Dataflowcb_1(bind)
-/[\s\t\r\n\f]/
-end
-def spaces_Switch_Dataflowcb_2(bind)
-_append(bind[0],bind[2])
-end
-def value_Switch_Dataflowcb_1(bind)
-depends(bind[0]); @vals[bind[0]]
-end
 
 end
 
 
 class ClasSwitch_Dataflow < First_Dataflow
 
-def clas_ClasSwitch_Dataflowcb_1(bind)
-(bind[0].is_a?(bind[1])) || FAIL
-end
-def fails_ClasSwitch_Dataflowcb_1(bind)
-(false) || FAIL
-end
 def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_1(bind)
 lattice.empty
 end
@@ -520,21 +472,6 @@ def getvalue_ClasSwitch_Dataflowcb_1(bind)
 end
 def getvalue_ClasSwitch_Dataflowcb_2(bind)
 bind[1]=[bind[1]]
-end
-def regch_ClasSwitch_Dataflowcb_1(bind)
-(bind[0].is_a? String ) || FAIL
-end
-def regch_ClasSwitch_Dataflowcb_2(bind)
-(bind[3].match(bind[2])) || FAIL
-end
-def spaces_ClasSwitch_Dataflowcb_1(bind)
-/[\s\t\r\n\f]/
-end
-def spaces_ClasSwitch_Dataflowcb_2(bind)
-_append(bind[0],bind[2])
-end
-def value_ClasSwitch_Dataflowcb_1(bind)
-depends(bind[0]); @vals[bind[0]]
 end
 
 end
@@ -609,12 +546,6 @@ end
 
 class Detect_First < Traverser_Clone2
 
-def clas_Detect_Firstcb_1(bind)
-(bind[0].is_a?(bind[1])) || FAIL
-end
-def fails_Detect_Firstcb_1(bind)
-(false) || FAIL
-end
 def itrans_Detect_Firstcb_1(bind)
 @name=@src.name
 end
@@ -639,35 +570,6 @@ end
 def itrans_Detect_Firstcb_8(bind)
 _append(bind[0],bind[10])
 end
-def traverse_Detect_Firstcb_1(bind)
-@changed
-end
-def traverse_Detect_Firstcb_2(bind)
-(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
-end
-def traverse_Detect_Firstcb_3(bind)
-bind[4]=[bind[4]]
-end
-def traverse_Detect_Firstcb_4(bind)
-@changed=false
-end
-def traverse_Detect_Firstcb_5(bind)
-(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
-end
-def traverse_Detect_Firstcb_6(bind)
-if bind[3]
-             @changed=true;bind[2].normalize
-           else
-            @changed=bind[0]
-            @src
-          end
-end
-def traverse_item_Detect_Firstcb_1(bind)
-@changed=true
-end
-def traverse_item_Detect_Firstcb_2(bind)
-bind[5]<<bind[6]
-end
 
 end
 
@@ -678,11 +580,29 @@ end
 
 class Detect_Switch < Detect_First
 
-def clas_Detect_Switchcb_1(bind)
-(bind[0].is_a?(bind[1])) || FAIL
+def itrans_Detect_Switchcb_1(bind)
+@name=@src.name
 end
-def fails_Detect_Switchcb_1(bind)
-(false) || FAIL
+def itrans_Detect_Switchcb_2(bind)
+$rules={};@src.rules.each{|r| $rules[r.name]=r}
+end
+def itrans_Detect_Switchcb_3(bind)
+@src.rules
+end
+def itrans_Detect_Switchcb_4(bind)
+bind[2]=[bind[2]]
+end
+def itrans_Detect_Switchcb_5(bind)
+_append(bind[4],bind[7])
+end
+def itrans_Detect_Switchcb_6(bind)
+@src.rules=bind[8]
+end
+def itrans_Detect_Switchcb_7(bind)
+@src
+end
+def itrans_Detect_Switchcb_8(bind)
+_append(bind[0],bind[10])
 end
 def predicate_Detect_Switchcb_1(bind)
 (bind[0].ary[0]=="default") || FAIL
@@ -734,21 +654,18 @@ def traverse_Detect_Switchcb_1(bind)
 @changed
 end
 def traverse_Detect_Switchcb_2(bind)
-@src
-end
-def traverse_Detect_Switchcb_3(bind)
 (@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
 end
-def traverse_Detect_Switchcb_4(bind)
+def traverse_Detect_Switchcb_3(bind)
 bind[4]=[bind[4]]
 end
-def traverse_Detect_Switchcb_5(bind)
+def traverse_Detect_Switchcb_4(bind)
 @changed=false
 end
-def traverse_Detect_Switchcb_6(bind)
+def traverse_Detect_Switchcb_5(bind)
 (bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
 end
-def traverse_Detect_Switchcb_7(bind)
+def traverse_Detect_Switchcb_6(bind)
 if bind[3]
              @changed=true;bind[2].normalize
            else
@@ -818,11 +735,29 @@ end
 
 class Detect_ClasSwitch < Detect_First
 
-def clas_Detect_ClasSwitchcb_1(bind)
-(bind[0].is_a?(bind[1])) || FAIL
+def itrans_Detect_ClasSwitchcb_1(bind)
+@name=@src.name
 end
-def fails_Detect_ClasSwitchcb_1(bind)
-(false) || FAIL
+def itrans_Detect_ClasSwitchcb_2(bind)
+$rules={};@src.rules.each{|r| $rules[r.name]=r}
+end
+def itrans_Detect_ClasSwitchcb_3(bind)
+@src.rules
+end
+def itrans_Detect_ClasSwitchcb_4(bind)
+bind[2]=[bind[2]]
+end
+def itrans_Detect_ClasSwitchcb_5(bind)
+_append(bind[4],bind[7])
+end
+def itrans_Detect_ClasSwitchcb_6(bind)
+@src.rules=bind[8]
+end
+def itrans_Detect_ClasSwitchcb_7(bind)
+@src
+end
+def itrans_Detect_ClasSwitchcb_8(bind)
+_append(bind[0],bind[10])
 end
 def predicate_Detect_ClasSwitchcb_1(bind)
 (bind[0][bind[1]]=="default") || FAIL
@@ -870,18 +805,15 @@ def traverse_Detect_ClasSwitchcb_1(bind)
 @changed
 end
 def traverse_Detect_ClasSwitchcb_2(bind)
-@src
-end
-def traverse_Detect_ClasSwitchcb_3(bind)
 (@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
 end
-def traverse_Detect_ClasSwitchcb_4(bind)
+def traverse_Detect_ClasSwitchcb_3(bind)
 @changed=false
 end
-def traverse_Detect_ClasSwitchcb_5(bind)
+def traverse_Detect_ClasSwitchcb_4(bind)
 (bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
 end
-def traverse_Detect_ClasSwitchcb_6(bind)
+def traverse_Detect_ClasSwitchcb_5(bind)
 if bind[3]
              @changed=true;bind[2].normalize
            else
@@ -939,15 +871,15 @@ end
 
 
 def detect_switch_compiled_by
-'55ef8e9a6e1d5a0fe35d47f75b84f5ab'
+'15120988666749b4542163956adc2939'
 end
 def detect_switch_source_hash
-'e62af5c3b05c0985f29556b3de52ded3'
+'87dde11e462b874713f4d607aa7c799a'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'153364d838d4cae57d3cac48b9734655'
+'70295b497a49f6ce487e9ef4b4ca42d5'
 end
   require 'compiled/detect_switch_c'

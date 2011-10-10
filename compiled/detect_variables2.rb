@@ -1,11 +1,5 @@
 class Analyze_Variables2 < Traverser_Clone2
 
-def clas_Analyze_Variables2cb_1(bind)
-(bind[0].is_a?(bind[1])) || FAIL
-end
-def fails_Analyze_Variables2cb_1(bind)
-(false) || FAIL
-end
 def flat_Analyze_Variables2cb_1(bind)
 _append(bind[0],bind[3])
 end
@@ -108,7 +102,7 @@ end
 
 
 def detect_variables2_compiled_by
-'55ef8e9a6e1d5a0fe35d47f75b84f5ab'
+'15120988666749b4542163956adc2939'
 end
 def detect_variables2_source_hash
 '56196ab0e78188e5a2d6bc8b4c79e49b'
@@ -117,6 +111,6 @@ def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'04c9620c4da79b1afb4da6baa806da98'
+'a575089e8b1edd97da266ee0b799b0d0'
 end
   require 'compiled/detect_variables2_c'

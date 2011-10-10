@@ -1,11 +1,5 @@
 class DetectCalls < Visitor
 
-def clas_DetectCallscb_1(bind)
-(bind[0].is_a?(bind[1])) || FAIL
-end
-def fails_DetectCallscb_1(bind)
-(false) || FAIL
-end
 def root_DetectCallscb_1(bind)
 @calls={}
 end
@@ -33,12 +27,6 @@ end
 
 class Inliner2 < Traverser_Clone2
 
-def clas_Inliner2cb_1(bind)
-(bind[0].is_a?(bind[1])) || FAIL
-end
-def fails_Inliner2cb_1(bind)
-(false) || FAIL
-end
 def root_Inliner2cb_1(bind)
 bind[2]=[bind[2]]
 end
@@ -107,12 +95,6 @@ end
 
 class Replace_Super < Traverser_Clone2
 
-def clas_Replace_Supercb_1(bind)
-(bind[0].is_a?(bind[1])) || FAIL
-end
-def fails_Replace_Supercb_1(bind)
-(false) || FAIL
-end
 def root_Replace_Supercb_1(bind)
 @name=bind[0];
 end
@@ -165,7 +147,7 @@ end
 
 
 def inliner2_compiled_by
-'55ef8e9a6e1d5a0fe35d47f75b84f5ab'
+'15120988666749b4542163956adc2939'
 end
 def inliner2_source_hash
 'e70b868139b66428259e6a338880dd0c'
@@ -174,6 +156,6 @@ def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version
 end
 def inliner2_version
-'c6d76f3607a1b6620f3bc9baf86af3da'
+'478b8e8587c784762a5dd1f4932a7cc5'
 end
   require 'compiled/inliner2_c'

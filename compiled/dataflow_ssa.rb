@@ -67,12 +67,6 @@ end
 
 class Dataflow < Traverser_Clone2
 
-def clas_Dataflowcb_1(bind)
-(bind[0].is_a?(bind[1])) || FAIL
-end
-def fails_Dataflowcb_1(bind)
-(false) || FAIL
-end
 def root_Dataflowcb_1(bind)
 bind[0]=[bind[0]]
 end
@@ -279,12 +273,6 @@ end
 
 class Dead_Code_Deleter3 < Traverser_Clone2
 
-def clas_Dead_Code_Deleter3cb_1(bind)
-(bind[0].is_a?(bind[1])) || FAIL
-end
-def fails_Dead_Code_Deleter3cb_1(bind)
-(false) || FAIL
-end
 def root_Dead_Code_Deleter3cb_1(bind)
 bind[0]=[bind[0]]
 end
@@ -344,12 +332,6 @@ end
 
 class Forget_SSA < Traverser_Clone2
 
-def clas_Forget_SSAcb_1(bind)
-(bind[0].is_a?(bind[1])) || FAIL
-end
-def fails_Forget_SSAcb_1(bind)
-(false) || FAIL
-end
 def root_Forget_SSAcb_1(bind)
 @src
 end
@@ -393,7 +375,7 @@ end
 
 
 def dataflow_ssa_compiled_by
-'55ef8e9a6e1d5a0fe35d47f75b84f5ab'
+'15120988666749b4542163956adc2939'
 end
 def dataflow_ssa_source_hash
 '8be2880c1daeab06c6723ecc1f07d4b2'
@@ -402,6 +384,6 @@ def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'8badfdf6c25a6488589112eea1c67c09'
+'8bf7f6d8a140c20ca3a687dad1bfa89f'
 end
   require 'compiled/dataflow_ssa_c'
