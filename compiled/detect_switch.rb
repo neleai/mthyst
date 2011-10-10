@@ -368,6 +368,9 @@ end
 def spaces_Sizes_Dataflowcb_2(bind)
 _append(bind[0],bind[2])
 end
+def value_Sizes_Dataflowcb_1(bind)
+depends(bind[0]); @vals[bind[0]]
+end
 
 end
 
@@ -445,6 +448,9 @@ def spaces_Switch_Dataflowcb_1(bind)
 end
 def spaces_Switch_Dataflowcb_2(bind)
 _append(bind[0],bind[2])
+end
+def value_Switch_Dataflowcb_1(bind)
+depends(bind[0]); @vals[bind[0]]
 end
 
 end
@@ -933,7 +939,7 @@ end
 
 
 def detect_switch_compiled_by
-'e11535cbd949b17c302456e6c41d7291'
+'55ef8e9a6e1d5a0fe35d47f75b84f5ab'
 end
 def detect_switch_source_hash
 'e62af5c3b05c0985f29556b3de52ded3'
@@ -942,6 +948,6 @@ def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'250be8a9fdbcd075396d3e0e4929152f'
+'153364d838d4cae57d3cac48b9734655'
 end
   require 'compiled/detect_switch_c'

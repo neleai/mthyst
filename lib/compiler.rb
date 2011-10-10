@@ -63,15 +63,19 @@ class <<Compiler
 		callg=Oriented_Graph.new
 		names=g.rules.map{|name,code| name}
 		names2=names.dup
+		names2.each{|nam|#resolve super
+			g.calls[nam]=DetectCalls.new.parse(:root,[g.getrule(nam)])
+			if g.calls[nam].include? "super"
+          super_name="#{nam}_#{grammar.name}"
+					names<<super_name
+          g.rules[super_name]=deep_clone(@grammars[grammar.parent].getrule(nam))
+          g.rules[super_name].name=super_name
+          g.rules[nam]=Replace_Super.new.parse(:root,[super_name,g.rules[nam]])
+      end
+		}
 		i=0
 		while i<names.size
 			g.calls[names[i]]=DetectCalls.new.parse(:root,[g.getrule(names[i])])
-			if g.calls[names[i]].include? "super"
-					super_name="#{names[i]}_#{grammar.name}"
-					g.rules[super_name]=deep_clone(@grammars[grammar.parent].getrule(names[i]))
-					g.rules[super_name].name=super_name
-					g.rules[names[i]]=Replace_Super.new.parse(:root,[super_name,g.rules[names[i]]])
-			end
 			g.calls[names[i]].each{|c,t|
       	if !g.rules[c]
 					if r=g.getrule(c)
@@ -93,7 +97,7 @@ class <<Compiler
 				
 if true
 				inlined=false
-				g.calls[name].each{|nm,v|
+				callg[name].each{|nm,v|
 					r=g.getrule(nm)
 					if r && topo.index(nm)<topo.index(name) 
 						if r.args.size>0  && (! ["regch","clas"].include?(r.name)) || ["char","space"].include?(r.name)

@@ -13,6 +13,9 @@ class Oriented_Graph
 		visited[v]=true
 		@edges[v].each{|w| dfs(w,visited) }
 	end
+	def [](from)
+		@edges[from]
+	end
 	def reachable(ary)
 #		pp self
 		reach={}
