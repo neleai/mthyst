@@ -5,7 +5,7 @@ $debug=1
 COMPILED=["amethyst","traverser","tests","detect_variables2","parser","dataflow_ssa","inliner2",
 "detect_switch","left_factor","constant_propagation","ctranslator2"]
 class Gram
-	attr_accessor :name,:parent,:rules,:calls
+	attr_accessor :name,:parent,:rules,:calls,:callgraph
 	def initialize(grammar)
 		@name,@parent=grammar.name,grammar.parent
 		@rules={}
@@ -60,7 +60,8 @@ class <<Compiler
 	end
 	def add_grammar(grammar)
 		g=@grammars[grammar.name]=Gram.new(grammar)
-		callg=Oriented_Graph.new
+		g.callgraph=callg=Oriented_Graph.new
+		g.callgraph=callg=@grammars[grammar.parent].callgraph.clone if @grammars[grammar.parent]
 		names=g.rules.map{|name,code| name}
 		names2=names.dup
 		names2.each{|nam|#resolve super

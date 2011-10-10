@@ -4,6 +4,12 @@ class Oriented_Graph
 		@edges=Hash.new{|h,k| h[k]=[]}
 		@redges=Hash.new{|h,k| h[k]=[]}
 	end
+	def clone
+		c=Oriented_Graph.new
+		edges.each{ |k,v|  c.edges[k]=v.clone}
+		redges.each{|k,v| c.redges[k]=v.clone}
+		c
+	end
 	def add(from,to)
 		@edges[from]<<to
 		@redges[to]<<from
