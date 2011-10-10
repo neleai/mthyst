@@ -63,8 +63,7 @@ class <<Compiler
 		g.callgraph=callg=Oriented_Graph.new
 		g.callgraph=callg=@grammars[grammar.parent].callgraph.clone if @grammars[grammar.parent]
 		names=g.rules.map{|name,code| name}
-		names2=names.dup
-		names2.each{|nam|#resolve super
+		names.dup.each{|nam|#resolve super
 			g.calls[nam]=DetectCalls.new.parse(:root,[g.getrule(nam)])
 			if g.calls[nam].include? "super"
           super_name="#{nam}_#{grammar.name}"
@@ -74,6 +73,11 @@ class <<Compiler
           g.rules[nam]=Replace_Super.new.parse(:root,[super_name,g.rules[nam]])
       end
 		}
+		names.dup.each{|nam| #update callgraph
+			g.calls[nam]=DetectCalls.new.parse(:root,[g.getrule(nam)])
+			g.calls[nam].each{|c,t| callg.add(nam,c)}
+		}
+		names2=names.dup
 		i=0
 		while i<names.size
 			g.calls[names[i]]=DetectCalls.new.parse(:root,[g.getrule(names[i])])
@@ -84,7 +88,6 @@ class <<Compiler
 						names<<c
 					end
 				end
-			  callg.add(names[i],c)
 			}
 			i+=1
 		end
@@ -95,8 +98,6 @@ class <<Compiler
 		puts topo.inspect
 		topo.each{|name|if g.rules[name] && called[name]
 				g.opt(g.rules[name])
-				
-if true
 				inlined=false
 				callg[name].each{|nm,v|
 					r=g.getrule(nm)
@@ -108,7 +109,6 @@ if true
 					end
 				}
 				g.opt(g.rules[name]) if inlined
-end
 
 		end}
 	end
