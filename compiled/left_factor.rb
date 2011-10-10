@@ -66,7 +66,7 @@ def traverse_Left_Factorcb_5(bind)
 @changed=false
 end
 def traverse_Left_Factorcb_6(bind)
-(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
+(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
 end
 def traverse_Left_Factorcb_7(bind)
 if bind[3]

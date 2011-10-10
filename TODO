@@ -64,3 +64,5 @@ replace(x) as (apply(x) | .)*
 copy propagation
 
 , in Acts
+
+inline constant_propagation2.rb to lib/compiler

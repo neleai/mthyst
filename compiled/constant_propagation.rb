@@ -95,7 +95,7 @@ def traverse_Constant_Traversercb_3(bind)
 @changed=false
 end
 def traverse_Constant_Traversercb_4(bind)
-(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
+(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
 end
 def traverse_Constant_Traversercb_5(bind)
 if bind[3]

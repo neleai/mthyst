@@ -646,7 +646,7 @@ def traverse_Detect_Firstcb_4(bind)
 @changed=false
 end
 def traverse_Detect_Firstcb_5(bind)
-(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
+(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
 end
 def traverse_Detect_Firstcb_6(bind)
 if bind[3]
@@ -740,7 +740,7 @@ def traverse_Detect_Switchcb_5(bind)
 @changed=false
 end
 def traverse_Detect_Switchcb_6(bind)
-(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
+(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
 end
 def traverse_Detect_Switchcb_7(bind)
 if bind[3]
@@ -873,7 +873,7 @@ def traverse_Detect_ClasSwitchcb_4(bind)
 @changed=false
 end
 def traverse_Detect_ClasSwitchcb_5(bind)
-(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
+(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
 end
 def traverse_Detect_ClasSwitchcb_6(bind)
 if bind[3]

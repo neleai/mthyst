@@ -52,7 +52,7 @@ def traverse_Analyze_Variables2cb_4(bind)
 @changed=false
 end
 def traverse_Analyze_Variables2cb_5(bind)
-(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed
+(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
 end
 def traverse_Analyze_Variables2cb_6(bind)
 if bind[3]
