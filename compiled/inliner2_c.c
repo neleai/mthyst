@@ -580,9 +580,9 @@ fail: return failobj; }
 void Init_inliner2_c(){ 
  cls_DetectCalls=rb_define_class("DetectCalls",rb_const_get(rb_cObject,rb_intern("Visitor"))); 
 failobj=rb_eval_string("FAIL");
-c_330=rb_const_get(rb_cObject, rb_intern("Apply"));
+c_330=rb_const_get(rb_cObject, rb_intern("Apply"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_330);
 switchhashDetectCalls1=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashDetectCalls1);
-c_333=rb_const_get(rb_cObject, rb_intern("Rule"));
+c_333=rb_const_get(rb_cObject, rb_intern("Rule"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_333);
 rb_define_method(cls_DetectCalls,"clas",DetectCalls_clas,1);
 rb_define_method(cls_DetectCalls,"empty",DetectCalls_empty,0);
 rb_define_method(cls_DetectCalls,"eof",DetectCalls_eof,0);
@@ -594,10 +594,10 @@ rb_define_method(cls_DetectCalls,"visit",DetectCalls_visit,0);
 
  cls_Inliner2=rb_define_class("Inliner2",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2"))); 
 failobj=rb_eval_string("FAIL");
-c_335=rb_const_get(rb_cObject, rb_intern("Apply"));
+c_335=rb_const_get(rb_cObject, rb_intern("Apply"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_335);
 switchhashInliner22=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashInliner22);
-c_339=rb_const_get(rb_cObject, rb_intern("Rule"));
-c_340=rb_const_get(rb_cObject, rb_intern("Rule"));
+c_339=rb_const_get(rb_cObject, rb_intern("Rule"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_339);
+c_340=rb_const_get(rb_cObject, rb_intern("Rule"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_340);
 rb_define_method(cls_Inliner2,"clas",Inliner2_clas,1);
 rb_define_method(cls_Inliner2,"empty",Inliner2_empty,0);
 rb_define_method(cls_Inliner2,"eof",Inliner2_eof,0);
@@ -609,9 +609,9 @@ rb_define_method(cls_Inliner2,"visit",Inliner2_visit,0);
 
  cls_Replace_Super=rb_define_class("Replace_Super",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2"))); 
 failobj=rb_eval_string("FAIL");
-c_343=rb_const_get(rb_cObject, rb_intern("Apply"));
+c_343=rb_const_get(rb_cObject, rb_intern("Apply"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_343);
 switchhashReplace_Super3=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashReplace_Super3);
-c_347=rb_const_get(rb_cObject, rb_intern("Rule"));
+c_347=rb_const_get(rb_cObject, rb_intern("Rule"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_347);
 rb_define_method(cls_Replace_Super,"clas",Replace_Super_clas,1);
 rb_define_method(cls_Replace_Super,"empty",Replace_Super_empty,0);
 rb_define_method(cls_Replace_Super,"eof",Replace_Super_eof,0);

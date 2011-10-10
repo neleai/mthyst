@@ -58,6 +58,9 @@ end
 
 class AmethystCTranslator < Amethyst
 
+def add_c_global_AmethystCTranslatorcb_1(bind)
+@header<<"VALUE #{bind[0]};"; @init<<"#{bind[0]}=#{bind[1]};#{gc_mark_var(bind[0])};"
+end
 def addcallback_AmethystCTranslatorcb_1(bind)
 addcallback2(bind[0])
 end
@@ -361,15 +364,15 @@ end
 
 
 def ctranslator2_compiled_by
-'5ef041bfcb2ac508cb2e9b9e827a4df6'
+'e11535cbd949b17c302456e6c41d7291'
 end
 def ctranslator2_source_hash
-'90278cc9731f96e7849b55012fbdabf5'
+'2ee72dc12553d07f5ce1f9558eb71ddb'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'6f16569a7d73583d46ea37dd38484411'
+'7eee8e185b4d190bb54ec7a928853379'
 end
   require 'compiled/ctranslator2_c'

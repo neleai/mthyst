@@ -1,5 +1,6 @@
 #include "cthyst.h"
 VALUE cls_AmethystCTranslator;
+VALUE AmethystCTranslator_add_c_global(VALUE self ,VALUE a0,VALUE a1);
 VALUE AmethystCTranslator_addcallback(VALUE self ,VALUE a0);
 VALUE AmethystCTranslator_addlambda(VALUE self );
 VALUE AmethystCTranslator_char(VALUE self );
@@ -26,6 +27,12 @@ VALUE c_447;
 VALUE c_448;
 VALUE switchhashAmethystCTranslator1;
 VALUE switchhashAmethystCTranslator2;
+VALUE AmethystCTranslator_add_c_global(VALUE self ,VALUE a0,VALUE a1){VALUE vals[2]; VALUE bind=rb_ary_new2(3); rb_ary_store(bind,0/*name*/,a0);rb_ary_store(bind,1/*expr*/,a1); int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+
+it=CALL(add_c_global_AmethystCTranslatorcb_1,1,bind); 
+ rb_ary_store(bind,2/*_result*/,it); it=rb_ary_entry(bind,2/*_result*/);
+return it;
+fail: return failobj; }
 VALUE AmethystCTranslator_addcallback(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=rb_ary_new2(3); rb_ary_store(bind,0/*s*/,a0); int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 it=rb_ary_entry(bind,0/*s*/);
@@ -614,6 +621,7 @@ c_443=rb_str_new2("chr");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark"
 c_444=rb_funcall(rb_str_new2("0"),rb_intern("to_i"),0);rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_444);
 c_447=rb_str_new2("alt");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_447);
 c_448=rb_funcall(rb_str_new2("0"),rb_intern("to_i"),0);rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_448);
+rb_define_method(cls_AmethystCTranslator,"add_c_global",AmethystCTranslator_add_c_global,2);
 rb_define_method(cls_AmethystCTranslator,"addcallback",AmethystCTranslator_addcallback,1);
 rb_define_method(cls_AmethystCTranslator,"addlambda",AmethystCTranslator_addlambda,0);
 rb_define_method(cls_AmethystCTranslator,"char",AmethystCTranslator_char,0);
@@ -627,4 +635,4 @@ rb_define_method(cls_AmethystCTranslator,"rbcode",AmethystCTranslator_rbcode,0);
 rb_define_method(cls_AmethystCTranslator,"rbtrans",AmethystCTranslator_rbtrans,0);
 rb_define_method(cls_AmethystCTranslator,"rw",AmethystCTranslator_rw,2);
 rb_define_method(cls_AmethystCTranslator,"trans",AmethystCTranslator_trans,0);
- rb_eval_string("testversionctranslator2('6f16569a7d73583d46ea37dd38484411')");}
+ rb_eval_string("testversionctranslator2('7eee8e185b4d190bb54ec7a928853379')");}

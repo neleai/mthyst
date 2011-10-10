@@ -142,16 +142,19 @@ class PureAct
 	end
 end
 $constno=0
+def cact_add_global(name,expr,wrap)
+	["VALUE #{name};","#{name}=#{expr};#{gc_mark_var(name)}",wrap]
+end
 class CAct
 	def pure;	true;	end
 	def ccode #rewrite in amethyst
 		$constno+=1
 		return [nil,nil,"rb_ary_new3(0)"] if ary[0].is_a?(Array)
     return [nil,nil,"Q#{ary[0].inspect}"] if [true,false,nil].include?(ary[0])
-		return ["VALUE c_#{$constno};","c_#{$constno}=rb_const_get(rb_cObject, rb_intern(\"#{ary[0].inspect}\"));","c_#{$constno}"] if ary[0].is_a?(Class)
+		return cact_add_global("c_#{$constno}","rb_const_get(rb_cObject, rb_intern(\"#{ary[0].inspect}\"))","c_#{$constno}") if ary[0].is_a?(Class)
 		#ugly but needed for arbitrary precision(alternatively emit int2fix when fits fixnum range)
-		return ["VALUE c_#{$constno};","c_#{$constno}=rb_funcall(rb_str_new2(\"#{ary[0]}\"),rb_intern(\"to_i\"),0);#{gc_mark_var("c_#{$constno}")}","c_#{$constno}"] if ary[0].is_a? Integer
-		return ["VALUE c_#{$constno};","c_#{$constno}=rb_str_new2(#{ary[0].inspect});#{gc_mark_var("c_#{$constno}")}","rb_obj_clone(c_#{$constno})"] if ary[0].is_a?(String)
+		return cact_add_global("c_#{$constno}","rb_funcall(rb_str_new2(\"#{ary[0]}\"),rb_intern(\"to_i\"),0)","c_#{$constno}") if ary[0].is_a? Integer
+		return cact_add_global("c_#{$constno}","rb_str_new2(#{ary[0].inspect})","rb_obj_clone(c_#{$constno})") if ary[0].is_a?(String)
 		[nil,nil,ary[0]]
 	end
 end

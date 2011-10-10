@@ -150,6 +150,8 @@ ame_setsrc(self,#{bget(@var)}); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_f
             @@lambdas<< h+"{VALUE vals[0]; /*todo unify with rule and get args*/  int x;VALUE it;VALUE arg0,arg1,arg2,arg3;\n#{body}\nreturn it;\nfail: return failobj; }" }
 							 {"AmethystLambda.new(:#{lambd},self,bind)" }
 
+	add_c_global(name,expr) = {@@header<<"VALUE #{name};"; @@init<<"#{name}=#{expr};#{gc_mark_var(name)};"}
+
 	failwrap(s) = {"#{s} FAILTEST(#{@@faillabel});" }
 
 	rw(word,prc) = {@@faillabel}:rwo {@@faillabel=word } apply(prc):x {@@faillabel=rwo; x }
