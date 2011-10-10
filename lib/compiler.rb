@@ -60,20 +60,19 @@ class <<Compiler
 	end
 	def add_grammar(grammar)
 		g=@grammars[grammar.name]=Gram.new(grammar)
-		calls={}
 		callg=Oriented_Graph.new
 		names=g.rules.map{|name,code| name}
 		names2=names.dup
 		i=0
 		while i<names.size
-			calls[names[i]]=DetectCalls.new.parse(:root,[g.getrule(names[i])])
-			if calls[names[i]].include? "super"
+			g.calls[names[i]]=DetectCalls.new.parse(:root,[g.getrule(names[i])])
+			if g.calls[names[i]].include? "super"
 					super_name="#{names[i]}_#{grammar.name}"
 					g.rules[super_name]=deep_clone(@grammars[grammar.parent].getrule(names[i]))
 					g.rules[super_name].name=super_name
 					g.rules[names[i]]=Replace_Super.new.parse(:root,[super_name,g.rules[names[i]]])
 			end
-			calls[names[i]].each{|c,t|
+			g.calls[names[i]].each{|c,t|
       	if !g.rules[c]
 					if r=g.getrule(c)
 						g.rules[c]=r
@@ -94,7 +93,7 @@ class <<Compiler
 				
 if true
 				inlined=false
-				calls[name].each{|nm,v|
+				g.calls[name].each{|nm,v|
 					r=g.getrule(nm)
 					if r && topo.index(nm)<topo.index(name) 
 						if r.args.size>0  && (! ["regch","clas"].include?(r.name)) || ["char","space"].include?(r.name)
