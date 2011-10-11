@@ -27,13 +27,11 @@ class Gram
 		}
     @rules[r.name]=r 
 	end
-	def getrule(name)#todo use for resolvegrammar
-		grammar=self.name
-    while true
-     	return nil if grammar=="AmethystCore"
-      return Compiler.grammars[grammar].rules[name] if Compiler.grammars[grammar].rules[name]
-      grammar=Compiler.grammars[grammar].parent
-    end 
+	def getrule(name)
+		grammar=resolvegrammar(self.name,name)
+		return nil if grammar=="AmethystCore"
+		return Compiler.grammars[grammar].rules[name] if grammar
+		return nil
 	end
 	def inline(from,to)
 		puts from
