@@ -1,1 +1,21 @@
 amethyst(mthyst) is ruby top-down parser generator
+
+#For initial bootstrap type
+cd lib/c
+ruby extconf.rb
+make
+#which compiles basic methods.
+#TODO compile flags are hardcoded. Replace them if you are not in x64
+
+#Then type
+cd ../..
+./reset
+#which recompiles grammars.
+
+#Then feel free to change grammars. To compile your changes type 
+ruby bootstrap
+#which compiles new grammars by old grammars. Type ruby bootstrap again to compile with new grammars.
+
+#If you break grammars type 
+./reset
+#Which restores grammars to state they were at current commit.
