@@ -16,9 +16,56 @@ VALUE failobj;
 #define UC(x) ((unsigned char) x)
 #define rb_str_new_cstr rb_str_new2
 //you need this declaration, with implicit it will crash
-VALUE ame_setsrc(VALUE self,VALUE val);
-VALUE ame_getsrc(VALUE self);
 VALUE AmethystCore_anything(VALUE self);
 VALUE AmethystCore__seq(VALUE self,VALUE str);
-char* ame_curstr(VALUE self);
-VALUE ame_curobj(VALUE self);
+
+typedef struct{
+  VALUE src;
+  int pos;int len;
+} cstruct;
+extern ID s_src,s_input,s_call,s_cut;
+static inline VALUE ame_setsrc(VALUE self,VALUE val){
+  cstruct  *ptr;
+  Data_Get_Struct(self,cstruct,ptr);
+  rb_ivar_set(self,s_src,val);
+  ptr->src=val;
+  return val;
+}
+static inline VALUE ame_getsrc(VALUE self){
+  cstruct  *ptr;
+  Data_Get_Struct(self,cstruct,ptr);
+  return ptr->src;
+}
+
+
+static inline int ame_setlen(VALUE self,int val){
+  cstruct  *ptr;
+  Data_Get_Struct(self,cstruct,ptr);
+  ptr->len=val;
+  return val;
+}
+static inline int ame_getlen(VALUE self){
+  cstruct  *ptr;
+  Data_Get_Struct(self,cstruct,ptr);
+  return ptr->len;
+}
+
+static inline int ame_setpos(VALUE self,int val){
+  cstruct  *ptr;
+  Data_Get_Struct(self,cstruct,ptr);
+  ptr->pos=val;
+  return val;
+}
+static inline int ame_getpos(VALUE self){
+  cstruct  *ptr;
+  Data_Get_Struct(self,cstruct,ptr);
+  return ptr->pos;
+}
+
+static inline char* ame_curstr(VALUE self){
+  return RSTRING(ame_getsrc(self))->ptr+ame_getpos(self);
+}
+static inline VALUE ame_curobj(VALUE self){
+  return rb_funcall(ame_getsrc(self),rb_intern("[]"),1,ame_getposrb(self));
+}
+

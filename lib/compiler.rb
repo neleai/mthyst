@@ -54,10 +54,6 @@ class <<Compiler
 	def init
 		@grammars={}
 	end
-	def resolve
-		#resolve super 
-		#clone all rules that use rule defined in this grammar
-	end
 	def add_grammar(grammar)
 		g=@grammars[grammar.name]=Gram.new(grammar)
 		g.callgraph=callg=Oriented_Graph.new
