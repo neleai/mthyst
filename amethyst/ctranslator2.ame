@@ -49,6 +49,7 @@ class AmethystCTranslator < Amethyst
 		margs=argc.times.map{|a| ",arg#{a}"}
 		grammar=resolvegrammar(@grammar,name)
 		if grammar
+			@header<<"VALUE #{grammar}_#{name}(VALUE self #{",VALUE"*argc});"
 			"#{grammar}_#{name}(self #{margs})"
 		else
 			"CALL(#{name},#{argc} #{margs})"
@@ -77,7 +78,7 @@ amethyst AmethystCTranslator < Amethyst {
 	
 	trans =  Grammar[ {@@grammar=@name;@@parent=@parent} {@@lambdas=[] ;@@rcallbacks={}} {@@defs=[]} {@@defmethods=[]} {@@faillabel="fail"} {@@callbacks={}} {mktable(@rules)} {@@header=[]} {@@init=[]} @rules=>[trans*]:t rbcode:rbcode
 				    { "VALUE cls_#{@name};\n" }:s
-						{	s<<@@header.sort*"\n"+"\n"
+						{	s<<@@header.uniq.sort*"\n"+"\n"
 							s<<t.sort*"\n"
 							s<<@@lambdas*"\n"
         		  init="\n cls_#{@name}=rb_define_class(\"#{@name}\",rb_const_get(rb_cObject,rb_intern(\"#{@@parent}\"))); 

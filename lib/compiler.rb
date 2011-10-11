@@ -27,14 +27,13 @@ class Gram
 		}
     @rules[r.name]=r 
 	end
-	def getrule(name)
-		fromrule,nm=nil,self.name
-    begin
-     	return nil if nm=="AmethystCore"
-      fromrule= Compiler.grammars[nm].rules[name]
-      nm=Compiler.grammars[nm].parent
-    end until fromrule
-		fromrule
+	def getrule(name)#todo use for resolvegrammar
+		grammar=self.name
+    while true
+     	return nil if grammar=="AmethystCore"
+      return Compiler.grammars[grammar].rules[name] if Compiler.grammars[grammar].rules[name]
+      grammar=Compiler.grammars[grammar].parent
+    end 
 	end
 	def inline(from,to)
 		puts from
@@ -44,9 +43,11 @@ end
 def resolvegrammar(grammar,name)
 	#TODO add header
 	return "AmethystCore" if name=="anything" || name=="_seq"
-	return nil if !Compiler.grammars[grammar]
-	return grammar if Compiler.grammars[grammar].rules[name]
-	return nil
+	while true
+		return nil if !Compiler.grammars[grammar]
+		return grammar if Compiler.grammars[grammar].rules[name]
+		grammar=Compiler.grammars[grammar].parent
+	end
 end
 class Compiler
 end
@@ -81,9 +82,7 @@ class <<Compiler
 		topo= callg.topo_order
 		called=callg.reverse.reachable(names)
 		called.each{|k,v| g.rules[k]=g.getrule(k)}
-		puts called.inspect
-		puts callg.inspect
-		puts topo.inspect
+		puts called.inspect;puts callg.inspect;puts topo.inspect
 		topo.each{|name|if g.rules[name] && called[name]
 				g.opt(g.rules[name])
 				inlined=false

@@ -1,5 +1,7 @@
 #include "cthyst.h"
 VALUE cls_Tests;
+VALUE AmethystCore__seq(VALUE self ,VALUE);
+VALUE Amethyst_fails(VALUE self );
 VALUE Tests_sw(VALUE self );
 VALUE c_21;
 VALUE c_22;
@@ -16,7 +18,7 @@ VALUE Tests_sw(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(1);  int x;VAL
 unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC('d') ... UC('d'):;  it=rb_obj_clone(c_21); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(fail);it=rb_obj_clone(c_22);
  rb_ary_store(bind,0/*_result*/,it);  break;case UC('a') ... UC('a'):;  it=rb_obj_clone(c_23); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(fail);it=rb_obj_clone(c_24); it=rb_obj_clone(c_25); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(fail);it=rb_obj_clone(c_26);
  rb_ary_store(bind,0/*_result*/,it);  break;case UC('b') ... UC('b'):;  it=rb_obj_clone(c_27); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(fail);it=rb_obj_clone(c_28); it=rb_obj_clone(c_29); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(fail);it=rb_obj_clone(c_30);
- rb_ary_store(bind,0/*_result*/,it);  break;default:;   it=CALL(fails,0 ); FAILTEST(fail); break;}it=rb_ary_entry(bind,0/*_result*/);
+ rb_ary_store(bind,0/*_result*/,it);  break;default:;   it=Amethyst_fails(self ); FAILTEST(fail); break;}it=rb_ary_entry(bind,0/*_result*/);
 return it;
 fail: return failobj; }
 void Init_tests_c(){ 
@@ -33,4 +35,4 @@ c_28=rb_str_new2("b");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),
 c_29=rb_str_new2("c");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_29);
 c_30=rb_str_new2("c");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_30);
 rb_define_method(cls_Tests,"sw",Tests_sw,0);
- rb_eval_string("testversiontests('f8830b5587961d18ee475220b4c32e96')");}
+ rb_eval_string("testversiontests('1b36db1ed6809cd45d42ee7987616435')");}

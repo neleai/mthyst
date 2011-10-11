@@ -1,5 +1,7 @@
 #include "cthyst.h"
 VALUE cls_Amethyst;
+VALUE AmethystCore__seq(VALUE self ,VALUE);
+VALUE AmethystCore_anything(VALUE self );
 VALUE Amethyst__(VALUE self );
 VALUE Amethyst__false(VALUE self );
 VALUE Amethyst__true(VALUE self );
@@ -19,6 +21,7 @@ VALUE Amethyst_letterOrDigit(VALUE self );
 VALUE Amethyst_listOf(VALUE self ,VALUE a0,VALUE a1);
 VALUE Amethyst_lower(VALUE self );
 VALUE Amethyst_regch(VALUE self ,VALUE a0);
+VALUE Amethyst_regch(VALUE self ,VALUE);
 VALUE Amethyst_seq(VALUE self ,VALUE a0);
 VALUE Amethyst_space(VALUE self );
 VALUE Amethyst_spaces(VALUE self );
@@ -321,4 +324,4 @@ rb_define_method(cls_Amethyst,"token",Amethyst_token,1);
 rb_define_method(cls_Amethyst,"upper",Amethyst_upper,0);
 rb_define_method(cls_Amethyst,"word",Amethyst_word,0);
 rb_define_method(cls_Amethyst,"xdigit",Amethyst_xdigit,0);
- rb_eval_string("testversionamethyst('7ca923889e277931413e9ca8de84f525')");}
+ rb_eval_string("testversionamethyst('4534e4fc62e9b18a86376d1cafcdb81f')");}

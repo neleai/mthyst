@@ -57,7 +57,7 @@ end
 
 
 def traverser_compiled_by
-'15120988666749b4542163956adc2939'
+'064e92d59b3fb63004feb3d49639c3df'
 end
 def traverser_source_hash
 '102e4f870eb0748a3420fd0f2398e4a9'
@@ -66,6 +66,6 @@ def testversiontraverser(r)
  raise "invalid version" if r!=traverser_version
 end
 def traverser_version
-'908423ae724c936f0c75800e669458e0'
+'3e957cc89c32847d015222321c927aa0'
 end
   require 'compiled/traverser_c'

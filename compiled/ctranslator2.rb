@@ -49,6 +49,7 @@ class AmethystCTranslator < Amethyst
 		margs=argc.times.map{|a| ",arg#{a}"}
 		grammar=resolvegrammar(@grammar,name)
 		if grammar
+			@header<<"VALUE #{grammar}_#{name}(VALUE self #{",VALUE"*argc});"
 			"#{grammar}_#{name}(self #{margs})"
 		else
 			"CALL(#{name},#{argc} #{margs})"
@@ -276,7 +277,7 @@ def trans_AmethystCTranslatorcb_45(bind)
 "VALUE cls_#{@src.name};\n" 
 end
 def trans_AmethystCTranslatorcb_46(bind)
-bind[22]<<@header.sort*"\n"+"\n"
+bind[22]<<@header.uniq.sort*"\n"+"\n"
 							bind[22]<<bind[32].sort*"\n"
 							bind[22]<<@lambdas*"\n"
         		  init="\n cls_#{@src.name}=rb_define_class(\"#{@src.name}\",rb_const_get(rb_cObject,rb_intern(\"#{@parent}\"))); 
@@ -355,15 +356,15 @@ end
 
 
 def ctranslator2_compiled_by
-'15120988666749b4542163956adc2939'
+'064e92d59b3fb63004feb3d49639c3df'
 end
 def ctranslator2_source_hash
-'2ee72dc12553d07f5ce1f9558eb71ddb'
+'5166d226ddebe265909056c25b20c155'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'c9d8404f94c14ccf0f552d63d2b153e4'
+'ec896875c9a4410c7637bd768b6449e3'
 end
   require 'compiled/ctranslator2_c'
