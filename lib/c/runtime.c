@@ -1,61 +1,12 @@
 #include "ruby.h"
+#include "../../compiled/cthyst.h"
 // write declarations to cthyst.h as without them call from other so will crash
 VALUE amecore;VALUE failobj;
 ID s_src,s_input,s_call,s_cut;
 
-typedef struct{
-	VALUE src;
-	int pos;int len;
-} cstruct;
-
-VALUE ame_setsrc(VALUE self,VALUE val){
-	cstruct  *ptr;
-  Data_Get_Struct(self,cstruct,ptr);
-	rb_ivar_set(self,s_src,val);
-	ptr->src=val;
-	return val;
-}
-VALUE ame_getsrc(VALUE self){
-	cstruct  *ptr;
-  Data_Get_Struct(self,cstruct,ptr);
-	return ptr->src;
-}
-
-
-
-int ame_setlen(VALUE self,int val){
-	cstruct  *ptr;
-  Data_Get_Struct(self,cstruct,ptr);
-	ptr->len=val;
-	return val;
-}
-int ame_getlen(VALUE self){
-	cstruct  *ptr;
-  Data_Get_Struct(self,cstruct,ptr);
-	return ptr->len;
-}
-
-int ame_setpos(VALUE self,int val){
-	cstruct  *ptr;
-  Data_Get_Struct(self,cstruct,ptr);
-	ptr->pos=val;
-	return val;
-}
-int ame_getpos(VALUE self){
-	cstruct  *ptr;
-  Data_Get_Struct(self,cstruct,ptr);
-	return ptr->pos;
-}
 VALUE ame_setlenrb(VALUE self,VALUE val){return INT2FIX(ame_setlen(self,FIX2INT(val)));}
 VALUE ame_setposrb(VALUE self,VALUE val){return INT2FIX(ame_setpos(self,FIX2INT(val)));}
 VALUE ame_getlenrb(VALUE self){return INT2FIX(ame_getlen(self));}
-VALUE ame_getposrb(VALUE self){return INT2FIX(ame_getpos(self));}
-char* ame_curstr(VALUE self){
-	return RSTRING(ame_getsrc(self))->ptr+ame_getpos(self);
-}
-VALUE ame_curobj(VALUE self){
-	return rb_funcall(ame_getsrc(self),rb_intern("[]"),1,ame_getposrb(self));
-}
 
 VALUE AmethystCore__seq(VALUE self,VALUE str){
 	int len=RSTRING(str)->len;

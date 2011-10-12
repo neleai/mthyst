@@ -56,7 +56,6 @@ static inline int ame_getlen(VALUE self){
   Data_Get_Struct(self,cstruct,ptr);
   return ptr->len;
 }
-
 static inline int ame_setpos(VALUE self,int val){
   cstruct  *ptr;
   Data_Get_Struct(self,cstruct,ptr);
@@ -68,6 +67,7 @@ static inline int ame_getpos(VALUE self){
   Data_Get_Struct(self,cstruct,ptr);
   return ptr->pos;
 }
+static inline VALUE ame_getposrb(VALUE self){return INT2FIX(ame_getpos(self));}
 
 static inline char* ame_curstr(VALUE self){
   return RSTRING(ame_getsrc(self))->ptr+ame_getpos(self);
