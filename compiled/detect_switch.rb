@@ -534,7 +534,7 @@ class Detect_ClasSwitch < Detect_First
 		init="Hash.new{|h,k|\n"
 		ary.each_with_index{|c,i| init<< "next h[k]=#{i} if k<=#{c}\n"}
 		init+="}\n"
-		Switch[{:header=>"VALUE switchhash#{@name}#{@no};",:init=>"switchhash#{@name}#{@no}=rb_eval_string(#{init.inspect});#{gc_mark_var("switchhash#{@name}#{@no}")}" ,:act=>"FIX2INT(rb_hash_aref(switchhash#{@name}#{@no},rb_obj_class(ame_curobj(self))))",:first=>first,:ary=>ary3}]
+		Switch[{:header=>"VALUE switchhash#{@name}#{@no};",:init=>"switchhash#{@name}#{@no}=rb_eval_string(#{init.inspect});#{gc_mark_var("switchhash#{@name}#{@no}")}" ,:act=>"FIX2LONG(rb_hash_aref(switchhash#{@name}#{@no},rb_obj_class(ame_curobj(self))))",:first=>first,:ary=>ary3}]
 	end
 	def topsort(a)
 		a=a.uniq.sort_by{|a| a.to_s}
@@ -871,15 +871,15 @@ end
 
 
 def detect_switch_compiled_by
-'064e92d59b3fb63004feb3d49639c3df'
+'4d6dbe5e319b14e20b7b434546ea8212'
 end
 def detect_switch_source_hash
-'87dde11e462b874713f4d607aa7c799a'
+'05ef4ce48bdad97634db0482c8a7f7c4'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'b027088cf3679ae5c6486bf6024366e3'
+'725bf5e9b6d4681d89879447fc345e3a'
 end
   require 'compiled/detect_switch_c'

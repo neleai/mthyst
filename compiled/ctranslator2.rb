@@ -334,7 +334,7 @@ def trans_AmethystCTranslatorcb_6(bind)
 end
 def trans_AmethystCTranslatorcb_7(bind)
 "int #{bind[9]}=ame_getpos(self); int #{bind[10]}=ame_getlen(self); VALUE #{bind[11]}=ame_getsrc(self); int #{bind[13]}=0;
-ame_setsrc(self,#{bget(@src.var)}); ame_setpos(self,0); ame_setlen(self,FIX2INT(rb_funcall(ame_getsrc(self),rb_intern(\"size\"),0)));
+ame_setsrc(self,#{bget(@src.var)}); ame_setpos(self,0); ame_setlen(self,FIX2LONG(rb_funcall(ame_getsrc(self),rb_intern(\"size\"),0)));
  #{bind[17]}
 	goto #{bind[12]};
 	#{bind[8]}: #{bind[13]}=1;
@@ -356,15 +356,15 @@ end
 
 
 def ctranslator2_compiled_by
-'064e92d59b3fb63004feb3d49639c3df'
+'4d6dbe5e319b14e20b7b434546ea8212'
 end
 def ctranslator2_source_hash
-'5166d226ddebe265909056c25b20c155'
+'18203b64af7ebf0aad142c671a588ac2'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'ec896875c9a4410c7637bd768b6449e3'
+'9418e747f7b8a30cb78910765786eda6'
 end
   require 'compiled/ctranslator2_c'
