@@ -15,6 +15,13 @@ VALUE failobj;
 #define INSBI printf("%s\n",RSTRING(rb_funcall(bind,rb_intern("inspect"),0))->ptr);
 #define UC(x) ((unsigned char) x)
 #define rb_str_new_cstr rb_str_new2
+
+//Ommited check to allow gcc optimize
+#undef Data_Get_Struct
+#define Data_Get_Struct(obj,type,sval) do {\
+    sval = (type*)DATA_PTR(obj);\
+} while (0)
+
 //you need this declaration, with implicit it will crash
 VALUE AmethystCore_anything(VALUE self);
 VALUE AmethystCore__seq(VALUE self,VALUE str);

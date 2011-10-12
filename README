@@ -19,3 +19,7 @@ ruby bootstrap
 #If you break grammars type 
 ./reset
 #Which restores grammars to state they were at current commit.
+
+#For improving speed we look at profile output. You need to install and run oprofile. Run script
+compiled/anotate #to get anotated source and assembly after you ran oprofile.
+

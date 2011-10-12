@@ -47,7 +47,6 @@ predicate,cut,stop,comment do not return value
 move switch into pipeline
 predication by splitting to predicated and notpredicated part
 
-operator for case insensivity
 
 Bind has expr in ary instead in @expr
 
@@ -59,6 +58,7 @@ strings by boyer-moore like approach
 indexing from end
 
 
+operator for case insensivity
 replace(x) as (apply(x) | .)*
 
 copy propagation
