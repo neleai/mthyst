@@ -264,10 +264,10 @@ def first_First_Dataflowcb_2(bind)
 lattice.default
 end
 def first_First_Dataflowcb_3(bind)
-(@src.first.is_a?(lattice)) || FAIL
+(src.first.is_a?(lattice)) || FAIL
 end
 def first_First_Dataflowcb_4(bind)
-@src.first
+src.first
 end
 def first_First_Dataflowcb_5(bind)
 _append(bind[6],bind[7])
@@ -276,7 +276,7 @@ def first_First_Dataflowcb_6(bind)
 bind[8].inject(:|)
 end
 def first_First_Dataflowcb_7(bind)
-@src.expr
+src.expr
 end
 def first_First_Dataflowcb_8(bind)
 bind[11]=[bind[11]]
@@ -318,10 +318,10 @@ def first_Sizes_Dataflow_Sizes_Dataflowcb_2(bind)
 lattice.default
 end
 def first_Sizes_Dataflow_Sizes_Dataflowcb_3(bind)
-(@src.first.is_a?(lattice)) || FAIL
+(src.first.is_a?(lattice)) || FAIL
 end
 def first_Sizes_Dataflow_Sizes_Dataflowcb_4(bind)
-@src.first
+src.first
 end
 def first_Sizes_Dataflow_Sizes_Dataflowcb_5(bind)
 _append(bind[6],bind[7])
@@ -330,7 +330,7 @@ def first_Sizes_Dataflow_Sizes_Dataflowcb_6(bind)
 bind[8].inject(:|)
 end
 def first_Sizes_Dataflow_Sizes_Dataflowcb_7(bind)
-@src.expr
+src.expr
 end
 def first_Sizes_Dataflow_Sizes_Dataflowcb_8(bind)
 bind[11]=[bind[11]]
@@ -375,10 +375,10 @@ def first_Switch_Dataflow_Switch_Dataflowcb_2(bind)
 lattice.default
 end
 def first_Switch_Dataflow_Switch_Dataflowcb_3(bind)
-(@src.first.is_a?(lattice)) || FAIL
+(src.first.is_a?(lattice)) || FAIL
 end
 def first_Switch_Dataflow_Switch_Dataflowcb_4(bind)
-@src.first
+src.first
 end
 def first_Switch_Dataflow_Switch_Dataflowcb_5(bind)
 _append(bind[6],bind[7])
@@ -387,7 +387,7 @@ def first_Switch_Dataflow_Switch_Dataflowcb_6(bind)
 bind[8].inject(:|)
 end
 def first_Switch_Dataflow_Switch_Dataflowcb_7(bind)
-@src.expr
+src.expr
 end
 def first_Switch_Dataflow_Switch_Dataflowcb_8(bind)
 bind[11]=[bind[11]]
@@ -435,10 +435,10 @@ def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_2(bind)
 lattice.default
 end
 def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_3(bind)
-(@src.first.is_a?(lattice)) || FAIL
+(src.first.is_a?(lattice)) || FAIL
 end
 def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_4(bind)
-@src.first
+src.first
 end
 def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_5(bind)
 _append(bind[6],bind[7])
@@ -447,7 +447,7 @@ def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_6(bind)
 bind[8].inject(:|)
 end
 def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_7(bind)
-@src.expr
+src.expr
 end
 def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_8(bind)
 bind[11]=[bind[11]]
@@ -547,13 +547,13 @@ end
 class Detect_First < Traverser_Clone2
 
 def itrans_Detect_Firstcb_1(bind)
-@name=@src.name
+@name=src.name
 end
 def itrans_Detect_Firstcb_2(bind)
-$rules={};@src.rules.each{|r| $rules[r.name]=r}
+$rules={};src.rules.each{|r| $rules[r.name]=r}
 end
 def itrans_Detect_Firstcb_3(bind)
-@src.rules
+src.rules
 end
 def itrans_Detect_Firstcb_4(bind)
 bind[2]=[bind[2]]
@@ -562,10 +562,10 @@ def itrans_Detect_Firstcb_5(bind)
 _append(bind[4],bind[7])
 end
 def itrans_Detect_Firstcb_6(bind)
-@src.rules=bind[8]
+src.rules=bind[8]
 end
 def itrans_Detect_Firstcb_7(bind)
-@src
+src
 end
 def itrans_Detect_Firstcb_8(bind)
 _append(bind[0],bind[10])
@@ -581,13 +581,13 @@ end
 class Detect_Switch < Detect_First
 
 def itrans_Detect_Switchcb_1(bind)
-@name=@src.name
+@name=src.name
 end
 def itrans_Detect_Switchcb_2(bind)
-$rules={};@src.rules.each{|r| $rules[r.name]=r}
+$rules={};src.rules.each{|r| $rules[r.name]=r}
 end
 def itrans_Detect_Switchcb_3(bind)
-@src.rules
+src.rules
 end
 def itrans_Detect_Switchcb_4(bind)
 bind[2]=[bind[2]]
@@ -596,10 +596,10 @@ def itrans_Detect_Switchcb_5(bind)
 _append(bind[4],bind[7])
 end
 def itrans_Detect_Switchcb_6(bind)
-@src.rules=bind[8]
+src.rules=bind[8]
 end
 def itrans_Detect_Switchcb_7(bind)
-@src
+src
 end
 def itrans_Detect_Switchcb_8(bind)
 _append(bind[0],bind[10])
@@ -636,7 +636,7 @@ nary=bind[1].ary
                               
 end
 def split_Detect_Switchcb_1(bind)
-@src.expr
+src.expr
 end
 def split_Detect_Switchcb_2(bind)
 bind[1]=[bind[1]]
@@ -654,7 +654,7 @@ def traverse_Detect_Switchcb_1(bind)
 @changed
 end
 def traverse_Detect_Switchcb_2(bind)
-(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
+(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
 def traverse_Detect_Switchcb_3(bind)
 bind[4]=[bind[4]]
@@ -670,7 +670,7 @@ if bind[3]
              @changed=true;bind[2].normalize
            else
             @changed=bind[0]
-            @src
+            src
           end
 end
 def traverse_item_Detect_Switchcb_1(bind)
@@ -736,13 +736,13 @@ end
 class Detect_ClasSwitch < Detect_First
 
 def itrans_Detect_ClasSwitchcb_1(bind)
-@name=@src.name
+@name=src.name
 end
 def itrans_Detect_ClasSwitchcb_2(bind)
-$rules={};@src.rules.each{|r| $rules[r.name]=r}
+$rules={};src.rules.each{|r| $rules[r.name]=r}
 end
 def itrans_Detect_ClasSwitchcb_3(bind)
-@src.rules
+src.rules
 end
 def itrans_Detect_ClasSwitchcb_4(bind)
 bind[2]=[bind[2]]
@@ -751,10 +751,10 @@ def itrans_Detect_ClasSwitchcb_5(bind)
 _append(bind[4],bind[7])
 end
 def itrans_Detect_ClasSwitchcb_6(bind)
-@src.rules=bind[8]
+src.rules=bind[8]
 end
 def itrans_Detect_ClasSwitchcb_7(bind)
-@src
+src
 end
 def itrans_Detect_ClasSwitchcb_8(bind)
 _append(bind[0],bind[10])
@@ -796,16 +796,16 @@ def predicate_Detect_ClasSwitchcb_7(bind)
 Apply["anything"]
 end
 def predicate_Detect_ClasSwitchcb_8(bind)
-@src.name
+src.name
 end
 def predicate_Detect_ClasSwitchcb_9(bind)
-predicate(bind[0],bind[1],@src.expr)
+predicate(bind[0],bind[1],src.expr)
 end
 def traverse_Detect_ClasSwitchcb_1(bind)
 @changed
 end
 def traverse_Detect_ClasSwitchcb_2(bind)
-(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
+(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
 def traverse_Detect_ClasSwitchcb_3(bind)
 @changed=false
@@ -818,7 +818,7 @@ if bind[3]
              @changed=true;bind[2].normalize
            else
             @changed=bind[0]
-            @src
+            src
           end
 end
 def traverse_item_Detect_ClasSwitchcb_1(bind)

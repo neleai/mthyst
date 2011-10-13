@@ -12,10 +12,10 @@ def binds_Left_Factorcb_1(bind)
 bind[1]=[bind[1]]
 end
 def binds_Left_Factorcb_2(bind)
-@src.expr
+src.expr
 end
 def binds_Left_Factorcb_3(bind)
-_Bind(@src.name,bind[4])
+_Bind(src.name,bind[4])
 end
 def factor_Left_Factorcb_1(bind)
 (bind[1]==first(bind[0])) || FAIL
@@ -48,10 +48,10 @@ def traverse_Left_Factorcb_1(bind)
 @changed
 end
 def traverse_Left_Factorcb_2(bind)
-@src
+src
 end
 def traverse_Left_Factorcb_3(bind)
-(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
+(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
 def traverse_Left_Factorcb_4(bind)
 bind[4]=[bind[4]]
@@ -67,7 +67,7 @@ if bind[3]
              @changed=true;bind[2].normalize
            else
             @changed=bind[0]
-            @src
+            src
           end
 end
 def traverse_item_Left_Factorcb_1(bind)

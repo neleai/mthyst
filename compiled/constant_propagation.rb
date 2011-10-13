@@ -42,16 +42,16 @@ def step_Constant_Propagatorcb_1(bind)
 bind[1]=[bind[1]]
 end
 def step_Constant_Propagatorcb_2(bind)
-ConstantLattice[@src]
+ConstantLattice[src]
 end
 def step_Constant_Propagatorcb_3(bind)
-@src
+src
 end
 def step_Constant_Propagatorcb_4(bind)
 ConstantLattice[Top]
 end
 def step_Constant_Propagatorcb_5(bind)
-@src.expr
+src.expr
 end
 def step_Constant_Propagatorcb_6(bind)
 ConstantLattice[bind[12]]
@@ -68,16 +68,16 @@ end
 class Constant_Traverser < Traverser_Clone2
 
 def root_Constant_Traversercb_1(bind)
-@consts=@src.consts
+@consts=src.consts
 end
 def root_Constant_Traversercb_2(bind)
-@src.cfg=nil;@src.reachable=nil;@src.consts=nil
+src.cfg=nil;src.reachable=nil;src.consts=nil
 end
 def traverse_Constant_Traversercb_1(bind)
 @changed
 end
 def traverse_Constant_Traversercb_2(bind)
-(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
+(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
 def traverse_Constant_Traversercb_3(bind)
 @changed=false
@@ -90,7 +90,7 @@ if bind[3]
              @changed=true;bind[2].normalize
            else
             @changed=bind[0]
-            @src
+            src
           end
 end
 def traverse_item_Constant_Traversercb_1(bind)
@@ -100,19 +100,19 @@ def traverse_item_Constant_Traversercb_2(bind)
 bind[5]<<bind[6]
 end
 def visit_Constant_Traversercb_1(bind)
-@src
+src
 end
 def visit_Constant_Traversercb_2(bind)
-@src.expr
+src.expr
 end
 def visit_Constant_Traversercb_3(bind)
 bind[4]=[bind[4]]
 end
 def visit_Constant_Traversercb_4(bind)
-_Bind(@src.name,bind[5])
+_Bind(src.name,bind[5])
 end
 def visit_Constant_Traversercb_5(bind)
-@consts[@src.ssaname] ? @consts[@src.ssaname] : @src 
+@consts[src.ssaname] ? @consts[src.ssaname] : src 
 end
 
 end

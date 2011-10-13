@@ -4,16 +4,16 @@ def flat_Analyze_Variables2cb_1(bind)
 _append(bind[0],bind[3])
 end
 def itrans_Analyze_Variables2cb_1(bind)
-@src.rules
+src.rules
 end
 def itrans_Analyze_Variables2cb_2(bind)
 _append(bind[4],bind[7])
 end
 def itrans_Analyze_Variables2cb_3(bind)
-@src.rules=bind[8]
+src.rules=bind[8]
 end
 def itrans_Analyze_Variables2cb_4(bind)
-@src
+src
 end
 def itrans_Analyze_Variables2cb_5(bind)
 _append(bind[0],bind[10])
@@ -22,22 +22,22 @@ def root_Analyze_Variables2cb_1(bind)
 bind[0]=[bind[0]]
 end
 def root_Analyze_Variables2cb_2(bind)
-@bnding=@src.bnding
+@bnding=src.bnding
 end
 def root_Analyze_Variables2cb_3(bind)
-@variables=Hash.new{|k,v| k[v]=v} ;(@src.locals+@src.args).each{|w| @variables[w[0]]=w}
+@variables=Hash.new{|k,v| k[v]=v} ;(src.locals+src.args).each{|w| @variables[w[0]]=w}
 end
 def root_Analyze_Variables2cb_4(bind)
-@locals=@src.locals
+@locals=src.locals
 end
 def root_Analyze_Variables2cb_5(bind)
-@src.locals=nil
+src.locals=nil
 end
 def traverse_Analyze_Variables2cb_1(bind)
 @changed
 end
 def traverse_Analyze_Variables2cb_2(bind)
-(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
+(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
 def traverse_Analyze_Variables2cb_3(bind)
 bind[4]=[bind[4]]
@@ -53,7 +53,7 @@ if bind[3]
              @changed=true;bind[2].normalize
            else
             @changed=bind[0]
-            @src
+            src
           end
 end
 def traverse_item_Analyze_Variables2cb_1(bind)
@@ -63,7 +63,7 @@ def traverse_item_Analyze_Variables2cb_2(bind)
 bind[5]<<bind[6]
 end
 def visit_Analyze_Variables2cb_1(bind)
-@src.ary
+src.ary
 end
 def visit_Analyze_Variables2cb_10(bind)
 _append(bind[25],bind[26])
@@ -75,7 +75,7 @@ def visit_Analyze_Variables2cb_2(bind)
 bind[2]=[bind[2]]
 end
 def visit_Analyze_Variables2cb_3(bind)
-@src.ary.map{|aa| @variables[aa] }
+src.ary.map{|aa| @variables[aa] }
 end
 def visit_Analyze_Variables2cb_4(bind)
 bind[11]=[bind[11]]
@@ -93,7 +93,7 @@ def visit_Analyze_Variables2cb_8(bind)
 Or[*bind[20]]
 end
 def visit_Analyze_Variables2cb_9(bind)
-vars=@locals.select{|aa| @src.vars.include? aa[0].to_sym}.uniq ;Result[{:name=>@src.name,:vars=>vars}]
+vars=@locals.select{|aa| src.vars.include? aa[0].to_sym}.uniq ;Result[{:name=>src.name,:vars=>vars}]
 end
 
 end

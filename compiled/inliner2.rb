@@ -7,7 +7,7 @@ def root_DetectCallscb_2(bind)
 @calls
 end
 def traverse_DetectCallscb_1(bind)
-(@src.instance_variables).map{|v| @src.instance_variable_get(v)}
+(src.instance_variables).map{|v| src.instance_variable_get(v)}
 end
 def traverse_DetectCallscb_2(bind)
 bind[0]=[bind[0]]
@@ -31,16 +31,16 @@ def root_Inliner2cb_1(bind)
 bind[2]=[bind[2]]
 end
 def root_Inliner2cb_2(bind)
-@src.name
+src.name
 end
 def root_Inliner2cb_3(bind)
-@src.args
+src.args
 end
 def root_Inliner2cb_4(bind)
-@src.locals
+src.locals
 end
 def root_Inliner2cb_5(bind)
-@src.body
+src.body
 end
 def root_Inliner2cb_6(bind)
 @name=bind[4];@args=bind[5];@body=bind[6] 
@@ -52,10 +52,10 @@ def traverse_Inliner2cb_1(bind)
 @changed
 end
 def traverse_Inliner2cb_2(bind)
-@src
+src
 end
 def traverse_Inliner2cb_3(bind)
-(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
+(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
 def traverse_Inliner2cb_4(bind)
 bind[4]=[bind[4]]
@@ -71,7 +71,7 @@ if bind[3]
              @changed=true;bind[2].normalize
            else
             @changed=bind[0]
-            @src
+            src
           end
 end
 def traverse_item_Inliner2cb_1(bind)
@@ -105,10 +105,10 @@ def traverse_Replace_Supercb_1(bind)
 @changed
 end
 def traverse_Replace_Supercb_2(bind)
-@src
+src
 end
 def traverse_Replace_Supercb_3(bind)
-(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
+(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
 def traverse_Replace_Supercb_4(bind)
 bind[4]=[bind[4]]
@@ -124,7 +124,7 @@ if bind[3]
              @changed=true;bind[2].normalize
            else
             @changed=bind[0]
-            @src
+            src
           end
 end
 def traverse_item_Replace_Supercb_1(bind)

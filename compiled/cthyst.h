@@ -35,7 +35,6 @@ extern ID s_src,s_input,s_call,s_cut;
 static inline VALUE ame_setsrc(VALUE self,VALUE val){
   cstruct  *ptr;
   Data_Get_Struct(self,cstruct,ptr);
-  rb_ivar_set(self,s_src,val);
   ptr->src=val;
   return val;
 }

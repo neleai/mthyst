@@ -71,13 +71,13 @@ def root_Dataflowcb_1(bind)
 bind[0]=[bind[0]]
 end
 def root_Dataflowcb_10(bind)
-@src.reachable=@edges.reverse.reachable(@marked+[ssanum(@src.body[-1]),@src.body]); @src.cfg=@edges; 
+src.reachable=@edges.reverse.reachable(@marked+[ssanum(src.body[-1]),src.body]); src.cfg=@edges; 
 end
 def root_Dataflowcb_2(bind)
-@bnding=@src.bnding
+@bnding=src.bnding
 end
 def root_Dataflowcb_3(bind)
-@src.args
+src.args
 end
 def root_Dataflowcb_4(bind)
 bind[2]=[bind[2]]
@@ -86,22 +86,22 @@ def root_Dataflowcb_5(bind)
 _append(bind[4],bind[5])
 end
 def root_Dataflowcb_6(bind)
-bind[6].each{|v| @marked<<ssanum(v)};@src.args=bind[6]
+bind[6].each{|v| @marked<<ssanum(v)};src.args=bind[6]
 end
 def root_Dataflowcb_7(bind)
-@src.body
+src.body
 end
 def root_Dataflowcb_8(bind)
 bind[7]=[bind[7]]
 end
 def root_Dataflowcb_9(bind)
-@src.body=bind[9]
+src.body=bind[9]
 end
 def traverse_Dataflowcb_1(bind)
 @changed
 end
 def traverse_Dataflowcb_2(bind)
-(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
+(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
 def traverse_Dataflowcb_3(bind)
 bind[4]=[bind[4]]
@@ -117,7 +117,7 @@ if bind[3]
              @changed=true;bind[2].normalize
            else
             @changed=bind[0]
-            @src
+            src
           end
 end
 def traverse_item_Dataflowcb_1(bind)
@@ -130,7 +130,7 @@ def vars_in_Dataflowcb_1(bind)
 bind[0]=[]
 end
 def vars_in_Dataflowcb_10(bind)
-@marked<<@src
+@marked<<src
 end
 def vars_in_Dataflowcb_11(bind)
 _append(bind[0],bind[13])
@@ -145,7 +145,7 @@ def vars_in_Dataflowcb_14(bind)
 _append(bind[0],bind[19])
 end
 def vars_in_Dataflowcb_2(bind)
-@src
+src
 end
 def vars_in_Dataflowcb_3(bind)
 _append(bind[0],bind[2])
@@ -154,7 +154,7 @@ def vars_in_Dataflowcb_4(bind)
 _append(bind[0],bind[4])
 end
 def vars_in_Dataflowcb_5(bind)
-@src.expr
+src.expr
 end
 def vars_in_Dataflowcb_6(bind)
 bind[6]=[bind[6]]
@@ -169,13 +169,13 @@ def vars_in_Dataflowcb_9(bind)
 _append(bind[0],bind[11])
 end
 def visit_Dataflowcb_1(bind)
-Act[bind[0],@src.pred]
+Act[bind[0],src.pred]
 end
 def visit_Dataflowcb_10(bind)
-bind_end(@src)
+bind_end(src)
 end
 def visit_Dataflowcb_11(bind)
-ssanum2(@src)
+ssanum2(src)
 end
 def visit_Dataflowcb_12(bind)
 _append(bind[23],bind[24])
@@ -202,7 +202,7 @@ def visit_Dataflowcb_19(bind)
 @oldssanums=bind[33].clone
 end
 def visit_Dataflowcb_2(bind)
-@marked<<bind[2] if @src.pred || !@src.pure
+@marked<<bind[2] if src.pred || !src.pure
 end
 def visit_Dataflowcb_20(bind)
 _append(bind[0],bind[34])
@@ -217,13 +217,13 @@ def visit_Dataflowcb_23(bind)
 Or[*bind[0]]
 end
 def visit_Dataflowcb_24(bind)
-@src.to
+src.to
 end
 def visit_Dataflowcb_25(bind)
 bind[37]=[bind[37]]
 end
 def visit_Dataflowcb_26(bind)
-@src.var
+src.var
 end
 def visit_Dataflowcb_27(bind)
 bind[39]=[bind[39]]
@@ -238,7 +238,7 @@ def visit_Dataflowcb_3(bind)
 bind[2].ary
 end
 def visit_Dataflowcb_30(bind)
-@src.vars
+src.vars
 end
 def visit_Dataflowcb_31(bind)
 bind[42]=[bind[42]]
@@ -247,7 +247,7 @@ def visit_Dataflowcb_32(bind)
 _append(bind[44],bind[45])
 end
 def visit_Dataflowcb_33(bind)
-n=Result[{:name=>@src.name,:vars=>bind[6]}]; bind[6].each{|w| @edges.add(w.ssaname,n) } ; n
+n=Result[{:name=>src.name,:vars=>bind[6]}]; bind[6].each{|w| @edges.add(w.ssaname,n) } ; n
 end
 def visit_Dataflowcb_4(bind)
 bind[3]=[bind[3]]
@@ -277,16 +277,16 @@ def root_Dead_Code_Deleter3cb_1(bind)
 bind[0]=[bind[0]]
 end
 def root_Dead_Code_Deleter3cb_2(bind)
-@reachable=@src.reachable
+@reachable=src.reachable
 end
 def root_Dead_Code_Deleter3cb_3(bind)
-@src.reachable=nil;@src.cfg=nil
+src.reachable=nil;src.cfg=nil
 end
 def traverse_Dead_Code_Deleter3cb_1(bind)
 @changed
 end
 def traverse_Dead_Code_Deleter3cb_2(bind)
-(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
+(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
 def traverse_Dead_Code_Deleter3cb_3(bind)
 bind[4]=[bind[4]]
@@ -302,7 +302,7 @@ if bind[3]
              @changed=true;bind[2].normalize
            else
             @changed=bind[0]
-            @src
+            src
           end
 end
 def traverse_item_Dead_Code_Deleter3cb_1(bind)
@@ -312,16 +312,16 @@ def traverse_item_Dead_Code_Deleter3cb_2(bind)
 bind[5]<<bind[6]
 end
 def visit_Dead_Code_Deleter3cb_1(bind)
-@src
+src
 end
 def visit_Dead_Code_Deleter3cb_2(bind)
 @reachable[bind[1]] ? bind[1] : Placeholder
 end
 def visit_Dead_Code_Deleter3cb_3(bind)
-@src.expr
+src.expr
 end
 def visit_Dead_Code_Deleter3cb_4(bind)
-@reachable[bind[4]] ? @src : (((bind[6].is_a?(Act)||bind[6].is_a?(CAct))&&bind[6].pure)? Placeholder : bind[6])
+@reachable[bind[4]] ? src : (((bind[6].is_a?(Act)||bind[6].is_a?(CAct))&&bind[6].pure)? Placeholder : bind[6])
 end
 def visit_Dead_Code_Deleter3cb_5(bind)
 @reachable[bind[1].ssaname] ? bind[1] : Placeholder
@@ -333,7 +333,7 @@ end
 class Forget_SSA < Traverser_Clone2
 
 def root_Forget_SSAcb_1(bind)
-@src
+src
 end
 def root_Forget_SSAcb_2(bind)
 bind[0]=[bind[0]]
@@ -342,7 +342,7 @@ def traverse_Forget_SSAcb_1(bind)
 @changed
 end
 def traverse_Forget_SSAcb_2(bind)
-(@src.instance_variables).map{|v| [v,@src.instance_variable_get(v)] }
+(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
 def traverse_Forget_SSAcb_3(bind)
 bind[4]=[bind[4]]
@@ -358,7 +358,7 @@ if bind[3]
              @changed=true;bind[2].normalize
            else
             @changed=bind[0]
-            @src
+            src
           end
 end
 def traverse_item_Forget_SSAcb_1(bind)
@@ -368,7 +368,7 @@ def traverse_item_Forget_SSAcb_2(bind)
 bind[5]<<bind[6]
 end
 def visit_Forget_SSAcb_1(bind)
-@src.unssa
+src.unssa
 end
 
 end
