@@ -26,12 +26,15 @@ class AmethystCTranslator < Amethyst
 	def rbbget(s)
 		"bind[#{desc(s)}]"
 	end
+	def symb(str)
+		"rb_intern(#{str.inspect})"
+	end
 	def iget(s)
-		"rb_ivar_get(self,rb_intern(\"@#{s}\"))"
+		"rb_ivar_get(self,#{symb("@#{s}")})"
 		"IGET(#{s})"
 	end
 	def iset(s,e)
-		"rb_ivar_set(self,rb_intern(\"@#{s}\"),#{e})"
+		"rb_ivar_set(self,#{symb("@#{s}")}),#{e})"
 		"ISET(#{s},#{e})"
 	end
 	def resetlabels
@@ -126,7 +129,7 @@ failobj=rb_eval_string(\"FAIL\");
 				| Pass[ label("pass"):pass label("oldpos"):oldpos label("oldlen"):oldlen label("oldsrc"):oldsrc label("success"):success label("fail"):fail
 						rw(pass,`@to=>trans:to`)
 					{  "int #{oldpos}=ame_getpos(self); int #{oldlen}=ame_getlen(self); VALUE #{oldsrc}=ame_getsrc(self); int #{fail}=0;
-ame_setsrc(self,#{bget(@var)}); ame_setpos(self,0); ame_setlen(self,FIX2LONG(rb_funcall(ame_getsrc(self),rb_intern(\"size\"),0)));
+ame_setsrc(self,#{bget(@var)}); ame_setpos(self,0); ame_setlen(self,FIX2LONG(rb_funcall(ame_getsrc(self),#{symb("size")},0)));
  #{to}
 	goto #{success};
 	#{pass}: #{fail}=1;

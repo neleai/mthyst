@@ -26,12 +26,15 @@ class AmethystCTranslator < Amethyst
 	def rbbget(s)
 		"bind[#{desc(s)}]"
 	end
+	def symb(str)
+		"rb_intern(#{str.inspect})"
+	end
 	def iget(s)
-		"rb_ivar_get(self,rb_intern(\"@#{s}\"))"
+		"rb_ivar_get(self,#{symb("@#{s}")})"
 		"IGET(#{s})"
 	end
 	def iset(s,e)
-		"rb_ivar_set(self,rb_intern(\"@#{s}\"),#{e})"
+		"rb_ivar_set(self,#{symb("@#{s}")}),#{e})"
 		"ISET(#{s},#{e})"
 	end
 	def resetlabels
@@ -334,7 +337,7 @@ def trans_AmethystCTranslatorcb_6(bind)
 end
 def trans_AmethystCTranslatorcb_7(bind)
 "int #{bind[9]}=ame_getpos(self); int #{bind[10]}=ame_getlen(self); VALUE #{bind[11]}=ame_getsrc(self); int #{bind[13]}=0;
-ame_setsrc(self,#{bget(@src.var)}); ame_setpos(self,0); ame_setlen(self,FIX2LONG(rb_funcall(ame_getsrc(self),rb_intern(\"size\"),0)));
+ame_setsrc(self,#{bget(@src.var)}); ame_setpos(self,0); ame_setlen(self,FIX2LONG(rb_funcall(ame_getsrc(self),#{symb("size")},0)));
  #{bind[17]}
 	goto #{bind[12]};
 	#{bind[8]}: #{bind[13]}=1;
@@ -359,7 +362,7 @@ def ctranslator2_compiled_by
 '4d6dbe5e319b14e20b7b434546ea8212'
 end
 def ctranslator2_source_hash
-'18203b64af7ebf0aad142c671a588ac2'
+'7c0f29dc3d3cc46d2410ee6acc3aff3b'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
