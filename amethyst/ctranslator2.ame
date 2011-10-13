@@ -112,15 +112,15 @@ failobj=rb_eval_string(\"FAIL\");
 				| Or[ {label("accept")}:accept {@@faillabel}:fail {label("oldpos")}:oldpos label("alt"):alt {0}:altno
 					 ( &(.) {altno+=1} rw("#{alt}_#{altno+1}",`trans`))*:t
 					 {s="int #{oldpos}=ame_getpos(self);\n"}
-           {s+=map_index(t){|i| "#{alt}_#{i+1}: ame_setpos(self,#{oldpos});if (#{iget("cut")}!=Qnil) {#{iset("cut","Qnil")}; goto #{fail};}\n #{t[i]} \n#{iset("cut","Qnil")};goto #{accept};\n"}*""}
+           {s+=map_index(t){|i| "#{alt}_#{i+1}: ame_setpos(self,#{oldpos});if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto #{fail};}\n #{t[i]} \name_setcut(self,Qnil);goto #{accept};\n"}*""}
            {"#{s}  #{alt}_#{altno+1}:  ame_setpos(self,#{oldpos}); goto #{fail};\n #{accept}:;\n"}
 					]
-				| Cut[] {"#{iset("cut","Qtrue")};"}
-				| Stop[] {"#{iset("stop","Qtrue")};"}
+				| Cut[]   {"ame_setcut(self,Qtrue);"}
+				| Stop[] {"ame_setstop(self,Qtrue);"}
 
 				| Many[ {label("break")}:brk {label("oldpos")}:oldpos
 						rw(brk,`trans:t`)
-						{"int #{oldpos}; while(1){#{oldpos}=ame_getpos(self); #{t} if (#{iget("stop")}!=Qnil){{#{oldpos}=ame_getpos(self);goto #{brk};} } } #{brk}: #{iset("stop","Qnil")};  ame_setpos(self,#{oldpos}); "}
+						{"int #{oldpos}; while(1){#{oldpos}=ame_getpos(self); #{t} if (ame_getstop(self)!=Qnil){{#{oldpos}=ame_getpos(self);goto #{brk};} } } #{brk}: ame_setstop(self,Qnil);  ame_setpos(self,#{oldpos}); "}
 					]
 				| Lookahead[ {label("accept")}:accept {label("reject")}:reject {label("oldpos")}:oldpos 
 										 rw(reject,`trans:t`) 

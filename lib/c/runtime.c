@@ -40,6 +40,7 @@ VALUE AmethystCore_anything(VALUE self){
 
 VALUE ame_new(VALUE clas){
 	cstruct *ptr=ALLOC(cstruct);
+	ptr->cut=ptr->stop=Qnil;
   VALUE o=Data_Wrap_Struct(clas,0,0,ptr);
 	VALUE argv[0]; rb_obj_call_init(o,0,argv);
 	return o;

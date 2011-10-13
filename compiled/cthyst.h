@@ -1,6 +1,12 @@
 #include "ruby.h"
 VALUE failobj;
+#define BSET(s,e) rb_hash_aset(bind,ID2SYM(rb_intern( #s )), e )
+#define BGET(s)   rb_hash_aref(bind,ID2SYM(rb_intern( #s )))
+#define ISET(s,e) rb_ivar_set(self,rb_intern("@" #s), e)
+#define IGET(s)   rb_ivar_get(self,rb_intern("@" #s))
+#define CALL(x,...) rb_funcall(self,rb_intern(#x) ,__VA_ARGS__)
 #define FAILTEST(lab) if (it==failobj) goto lab;
+#define HEADER VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
 
 #define INSV(val)  printf("%s\n",RSTRING(rb_funcall(val,rb_intern("inspect"),0))->ptr);
 #define INSB(var) printf("%s\n",RSTRING(rb_funcall(BGET(var),rb_intern("inspect"),0))->ptr);
@@ -26,25 +32,68 @@ typedef struct{
 	VALUE cut;VALUE stop;
 } cstruct;
 extern ID s_src,s_input,s_call,s_cut;
-
-#define c_accessor(type,name) static inline type ame_set##name(VALUE self,type val){\
-cstruct  *ptr;\
-  Data_Get_Struct(self,cstruct,ptr);\
-  ptr->name=val;\
-  return val;\
-} \
-static inline type ame_get##name(VALUE self){\
-  cstruct  *ptr;\
-  Data_Get_Struct(self,cstruct,ptr);\
-  return ptr->name;\
+static inline VALUE ame_setsrc(VALUE self,VALUE val){
+  cstruct  *ptr;
+  Data_Get_Struct(self,cstruct,ptr);
+  rb_ivar_set(self,s_src,val);
+  ptr->src=val;
+  return val;
+}
+static inline VALUE ame_getsrc(VALUE self){
+  cstruct  *ptr;
+  Data_Get_Struct(self,cstruct,ptr);
+  return ptr->src;
 }
 
-c_accessor(VALUE,src)
-c_accessor(int,pos)
-c_accessor(int,len)
-c_accessor(VALUE,cut)
-c_accessor(VALUE,stop)
+static inline VALUE ame_setcut(VALUE self,VALUE val){
+  cstruct  *ptr;
+  Data_Get_Struct(self,cstruct,ptr);
+  ptr->cut=val;
+  return val;
+}
+static inline VALUE ame_getcut(VALUE self){
+  cstruct  *ptr;
+  Data_Get_Struct(self,cstruct,ptr);
+  return ptr->cut;
+}
+static inline VALUE ame_setstop(VALUE self,VALUE val){
+  cstruct  *ptr;
+  Data_Get_Struct(self,cstruct,ptr);
+  ptr->stop=val;
+  return val;
+}
+static inline VALUE ame_getstop(VALUE self){
+  cstruct  *ptr;
+  Data_Get_Struct(self,cstruct,ptr);
+  return ptr->stop;
+}
 
+
+
+
+
+static inline int ame_setlen(VALUE self,int val){
+  cstruct  *ptr;
+  Data_Get_Struct(self,cstruct,ptr);
+  ptr->len=val;
+  return val;
+}
+static inline int ame_getlen(VALUE self){
+  cstruct  *ptr;
+  Data_Get_Struct(self,cstruct,ptr);
+  return ptr->len;
+}
+static inline int ame_setpos(VALUE self,int val){
+  cstruct  *ptr;
+  Data_Get_Struct(self,cstruct,ptr);
+  ptr->pos=val;
+  return val;
+}
+static inline int ame_getpos(VALUE self){
+  cstruct  *ptr;
+  Data_Get_Struct(self,cstruct,ptr);
+  return ptr->pos;
+}
 static inline VALUE ame_getposrb(VALUE self){return INT2FIX(ame_getpos(self));}
 
 static inline char* ame_curstr(VALUE self){
