@@ -27,15 +27,16 @@ class AmethystCTranslator < Amethyst
 		"bind[#{desc(s)}]"
 	end
 	def symb(str)
-		"rb_intern(#{str.inspect})"
+		str=str.gsub("@","_at_");
+		@header<<"VALUE s_#{str}#{@grammar};"
+		@init<<"s_#{str}#{@grammar}=rb_intern(#{str.inspect});"
+		"s_#{str}#{@grammar}"
 	end
 	def iget(s)
 		"rb_ivar_get(self,#{symb("@#{s}")})"
-		"IGET(#{s})"
 	end
 	def iset(s,e)
-		"rb_ivar_set(self,#{symb("@#{s}")}),#{e})"
-		"ISET(#{s},#{e})"
+		"rb_ivar_set(self,#{symb("@#{s}")},#{e})"
 	end
 	def resetlabels
 		@labels=Hash.new(0)
@@ -285,7 +286,7 @@ bind[22]<<@header.uniq.sort*"\n"+"\n"
 							bind[22]<<@lambdas*"\n"
         		  init="\n cls_#{@src.name}=rb_define_class(\"#{@src.name}\",rb_const_get(rb_cObject,rb_intern(\"#{@parent}\"))); 
 failobj=rb_eval_string(\"FAIL\");
-#{@init*"\n"}
+#{@init.uniq.sort*"\n"}
 #{@defmethods.sort*"\n" }
 "
 							[bind[22],init,bind[62]] 
@@ -359,15 +360,15 @@ end
 
 
 def ctranslator2_compiled_by
-'4d6dbe5e319b14e20b7b434546ea8212'
+'eee644bd16d472002ee098deb4f27fb6'
 end
 def ctranslator2_source_hash
-'7c0f29dc3d3cc46d2410ee6acc3aff3b'
+'7ad702df2ecc2ed389b21a9236158244'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'9418e747f7b8a30cb78910765786eda6'
+'dddefa6484f3ee9636b1072d954aa0d6'
 end
   require 'compiled/ctranslator2_c'

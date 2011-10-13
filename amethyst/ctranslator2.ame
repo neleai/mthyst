@@ -27,15 +27,16 @@ class AmethystCTranslator < Amethyst
 		"bind[#{desc(s)}]"
 	end
 	def symb(str)
-		"rb_intern(#{str.inspect})"
+		str=str.gsub("@","_at_");
+		@header<<"VALUE s_#{str}#{@grammar};"
+		@init<<"s_#{str}#{@grammar}=rb_intern(#{str.inspect});"
+		"s_#{str}#{@grammar}"
 	end
 	def iget(s)
 		"rb_ivar_get(self,#{symb("@#{s}")})"
-		"IGET(#{s})"
 	end
 	def iset(s,e)
-		"rb_ivar_set(self,#{symb("@#{s}")}),#{e})"
-		"ISET(#{s},#{e})"
+		"rb_ivar_set(self,#{symb("@#{s}")},#{e})"
 	end
 	def resetlabels
 		@labels=Hash.new(0)
@@ -86,7 +87,7 @@ amethyst AmethystCTranslator < Amethyst {
 							s<<@@lambdas*"\n"
         		  init="\n cls_#{@name}=rb_define_class(\"#{@name}\",rb_const_get(rb_cObject,rb_intern(\"#{@@parent}\"))); 
 failobj=rb_eval_string(\"FAIL\");
-#{@@init*"\n"}
+#{@@init.uniq.sort*"\n"}
 #{@@defmethods.sort*"\n" }
 "
 							[s,init,rbcode] } ]
