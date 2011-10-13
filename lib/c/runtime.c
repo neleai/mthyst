@@ -2,7 +2,7 @@
 #include "../../compiled/cthyst.h"
 // write declarations to cthyst.h as without them call from other so will crash
 VALUE amecore;VALUE failobj;
-ID s_src,s_input,s_call,s_cut;
+ID s_src,s_input,s_call,s_cut,s_ary_get;
 
 VALUE ame_setlenrb(VALUE self,VALUE val){return INT2FIX(ame_setlen(self,FIX2INT(val)));}
 VALUE ame_setposrb(VALUE self,VALUE val){return INT2FIX(ame_setpos(self,FIX2INT(val)));}
@@ -46,7 +46,7 @@ VALUE ame_new(VALUE clas){
 	return o;
 }
 void Init_Ame(VALUE self){
-	s_cut=rb_intern("@cut");	s_src=rb_intern("@src");	s_input=rb_intern("@input");	s_call=rb_intern("call");
+	s_cut=rb_intern("@cut");	s_src=rb_intern("@src");	s_input=rb_intern("@input");	s_call=rb_intern("call");s_ary_get=rb_intern("[]");
 	failobj=rb_eval_string("FAIL");
 	amecore=rb_define_class("AmethystCore",rb_cObject);
 	rb_define_singleton_method(amecore,"new",ame_new,0);

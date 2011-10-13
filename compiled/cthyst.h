@@ -31,7 +31,7 @@ typedef struct{
   int pos;int len;
 	VALUE cut;VALUE stop;
 } cstruct;
-extern ID s_src,s_input,s_call,s_cut;
+extern ID s_src,s_input,s_call,s_cut,s_ary_get;
 static inline VALUE ame_setsrc(VALUE self,VALUE val){
   cstruct  *ptr;
   Data_Get_Struct(self,cstruct,ptr);
@@ -99,6 +99,6 @@ static inline char* ame_curstr(VALUE self){
   return RSTRING(ame_getsrc(self))->ptr+ame_getpos(self);
 }
 static inline VALUE ame_curobj(VALUE self){
-  return rb_funcall(ame_getsrc(self),rb_intern("[]"),1,ame_getposrb(self));
+  return rb_funcall(ame_getsrc(self),s_ary_get,1,ame_getposrb(self));
 }
 
