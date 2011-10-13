@@ -50,7 +50,7 @@ class AmethystCTranslator < Amethyst
 		r.each{|e| @ruletable[e.name]=e}
 	end
 	def rbcall(name,args)
-		"CALL(#{name},#{args.size}#{args.map{|a| ",#{a}"}})"
+		"rb_funcall(self,#{symb(name)},#{args.size}#{args.map{|a| ",#{a}"}})"
 	end
 	def callrule(name,argc)
 		margs=argc.times.map{|a| ",arg#{a}"}

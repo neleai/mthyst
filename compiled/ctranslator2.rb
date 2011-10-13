@@ -50,7 +50,7 @@ class AmethystCTranslator < Amethyst
 		r.each{|e| @ruletable[e.name]=e}
 	end
 	def rbcall(name,args)
-		"CALL(#{name},#{args.size}#{args.map{|a| ",#{a}"}})"
+		"rb_funcall(self,#{symb(name)},#{args.size}#{args.map{|a| ",#{a}"}})"
 	end
 	def callrule(name,argc)
 		margs=argc.times.map{|a| ",arg#{a}"}
@@ -363,15 +363,15 @@ end
 
 
 def ctranslator2_compiled_by
-'38d2eae82d1a90425312d481c2cdf0e1'
+'1437b05d65918461c2227a771884178b'
 end
 def ctranslator2_source_hash
-'5ebea7e17fb8ab0fd4a230fabf5fd3a1'
+'79d90fe681a0f3500ecdb5e8acbb7fef'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'2ecc35251460bf699cd7c323401b2180'
+'c144e75d31c5010cb9d54f81d3cc2e68'
 end
   require 'compiled/ctranslator2_c'

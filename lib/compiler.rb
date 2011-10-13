@@ -2,7 +2,7 @@ require 'digest'
 require 'set'
 $OPT="-O3"
 $debug=1
-$profiling=false
+$profiling=true
 COMPILED=["amethyst","traverser","tests","detect_variables2","parser","dataflow_ssa","inliner2",
 "detect_switch","left_factor","constant_propagation","ctranslator2"]
 class Gram

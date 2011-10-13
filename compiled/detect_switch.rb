@@ -871,7 +871,7 @@ end
 
 
 def detect_switch_compiled_by
-'38d2eae82d1a90425312d481c2cdf0e1'
+'1437b05d65918461c2227a771884178b'
 end
 def detect_switch_source_hash
 '05ef4ce48bdad97634db0482c8a7f7c4'
@@ -880,6 +880,6 @@ def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'54b85cc39f9b3a12dafe63a8b2393053'
+'aa95d1f8ee7a9aacebdf022fb1d09a06'
 end
   require 'compiled/detect_switch_c'
