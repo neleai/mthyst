@@ -200,9 +200,9 @@ VALUE Amethyst_listOf(VALUE self ,VALUE a0,VALUE a1){VALUE vals[2]; VALUE bind=r
 it=rb_ary_new3(0);
  rb_ary_store(bind,0/*f*/,it); int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (rb_ivar_get(self,s__at_cutAmethyst)!=Qnil) {rb_ivar_set(self,s__at_cutAmethyst,Qnil); goto fail;}
-  it=rb_ary_entry(bind,1/*rule*/); arg0=it; it=CALL(apply,1 ,arg0); FAILTEST(alt1_2);
+  it=rb_ary_entry(bind,1/*rule*/); arg0=it; it=CALL(apply,1,arg0); FAILTEST(alt1_2);
  rb_ary_store(bind,2/*autovar*/,it); it=CALL(spaces_Amethystcb_2,1,bind); it=rb_ary_new3(0);
- rb_ary_store(bind,3/*autovar*/,it); int oldpos2; while(1){oldpos2=ame_getpos(self);  it=rb_ary_entry(bind,4/*delim*/); arg0=it; it=CALL(apply,1 ,arg0); FAILTEST(break1); it=rb_ary_entry(bind,1/*rule*/); arg0=it; it=CALL(apply,1 ,arg0); FAILTEST(break1);
+ rb_ary_store(bind,3/*autovar*/,it); int oldpos2; while(1){oldpos2=ame_getpos(self);  it=rb_ary_entry(bind,4/*delim*/); arg0=it; it=CALL(apply,1,arg0); FAILTEST(break1); it=rb_ary_entry(bind,1/*rule*/); arg0=it; it=CALL(apply,1,arg0); FAILTEST(break1);
  rb_ary_store(bind,5/*autovar*/,it); it=CALL(listOf_Amethystcb_1,1,bind);  if (rb_ivar_get(self,s__at_stopAmethyst)!=Qnil){{oldpos2=ame_getpos(self);goto break1;} } } break1: rb_ivar_set(self,s__at_stopAmethyst,Qnil);  ame_setpos(self,oldpos2); it=rb_ary_entry(bind,3/*autovar*/);
  rb_ary_store(bind,6/*autovar*/,it); it=CALL(listOf_Amethystcb_2,1,bind); it=rb_ary_entry(bind,0/*f*/);
  rb_ary_store(bind,7/*_result*/,it);  
@@ -328,4 +328,4 @@ rb_define_method(cls_Amethyst,"token",Amethyst_token,1);
 rb_define_method(cls_Amethyst,"upper",Amethyst_upper,0);
 rb_define_method(cls_Amethyst,"word",Amethyst_word,0);
 rb_define_method(cls_Amethyst,"xdigit",Amethyst_xdigit,0);
- rb_eval_string("testversionamethyst('6d9c5e9a3c6a4bf77cb5c46066b0d24d')");}
+ rb_eval_string("testversionamethyst('ed9e85412ab70aa1676e334663333e68')");}

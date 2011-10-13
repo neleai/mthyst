@@ -48,7 +48,7 @@ VALUE Traverser_Clone2_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=rb_a
 
 unsigned char chr1=FIX2LONG(rb_hash_aref(switchhashTraverser_Clone21,rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:; int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (rb_ivar_get(self,s__at_cutTraverser_Clone2)!=Qnil) {rb_ivar_set(self,s__at_cutTraverser_Clone2,Qnil); goto fail;}
-   it=CALL(visit,0 ); FAILTEST(alt1_2);
+   it=CALL(visit,0); FAILTEST(alt1_2);
  rb_ary_store(bind,0/*a*/,it); it=CALL(traverse_item_Traverser_Clone2cb_1,1,bind); it=rb_ary_entry(bind,0/*a*/);
  rb_ary_store(bind,1/*_result*/,it);  
 rb_ivar_set(self,s__at_cutTraverser_Clone2,Qnil);goto accept1;
@@ -73,7 +73,7 @@ rb_ivar_set(self,s__at_cutTraverser_Clone2,Qnil);goto accept1;
  accept1:;
  break;case 1:; int oldpos3=ame_getpos(self);
 alt2_1: ame_setpos(self,oldpos3);if (rb_ivar_get(self,s__at_cutTraverser_Clone2)!=Qnil) {rb_ivar_set(self,s__at_cutTraverser_Clone2,Qnil); goto fail;}
-   it=CALL(visit,0 ); FAILTEST(alt2_2);
+   it=CALL(visit,0); FAILTEST(alt2_2);
  rb_ary_store(bind,0/*a*/,it); it=CALL(traverse_item_Traverser_Clone2cb_1,1,bind); it=rb_ary_entry(bind,0/*a*/);
  rb_ary_store(bind,1/*_result*/,it);  
 rb_ivar_set(self,s__at_cutTraverser_Clone2,Qnil);goto accept2;
@@ -100,7 +100,7 @@ rb_ivar_set(self,s__at_cutTraverser_Clone2,Qnil);goto accept2;
  accept2:;
  break;case 2:; int oldpos6=ame_getpos(self);
 alt3_1: ame_setpos(self,oldpos6);if (rb_ivar_get(self,s__at_cutTraverser_Clone2)!=Qnil) {rb_ivar_set(self,s__at_cutTraverser_Clone2,Qnil); goto fail;}
-   it=CALL(visit,0 ); FAILTEST(alt3_2);
+   it=CALL(visit,0); FAILTEST(alt3_2);
  rb_ary_store(bind,0/*a*/,it); it=CALL(traverse_item_Traverser_Clone2cb_1,1,bind); it=rb_ary_entry(bind,0/*a*/);
  rb_ary_store(bind,1/*_result*/,it);  
 rb_ivar_set(self,s__at_cutTraverser_Clone2,Qnil);goto accept3;
@@ -151,7 +151,7 @@ VALUE Visitor_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=rb_ary_new2(7
 
 unsigned char chr1=FIX2LONG(rb_hash_aref(switchhashVisitor2,rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:; int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (rb_ivar_get(self,s__at_cutVisitor)!=Qnil) {rb_ivar_set(self,s__at_cutVisitor,Qnil); goto fail;}
-   it=CALL(visit,0 ); FAILTEST(alt1_2);
+   it=CALL(visit,0); FAILTEST(alt1_2);
  rb_ary_store(bind,0/*_result*/,it);  
 rb_ivar_set(self,s__at_cutVisitor,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (rb_ivar_get(self,s__at_cutVisitor)!=Qnil) {rb_ivar_set(self,s__at_cutVisitor,Qnil); goto fail;}
@@ -175,7 +175,7 @@ rb_ivar_set(self,s__at_cutVisitor,Qnil);goto accept1;
  accept1:;
  break;case 1:; int oldpos3=ame_getpos(self);
 alt2_1: ame_setpos(self,oldpos3);if (rb_ivar_get(self,s__at_cutVisitor)!=Qnil) {rb_ivar_set(self,s__at_cutVisitor,Qnil); goto fail;}
-   it=CALL(visit,0 ); FAILTEST(alt2_2);
+   it=CALL(visit,0); FAILTEST(alt2_2);
  rb_ary_store(bind,0/*_result*/,it);  
 rb_ivar_set(self,s__at_cutVisitor,Qnil);goto accept2;
 alt2_2: ame_setpos(self,oldpos3);if (rb_ivar_get(self,s__at_cutVisitor)!=Qnil) {rb_ivar_set(self,s__at_cutVisitor,Qnil); goto fail;}
@@ -201,7 +201,7 @@ rb_ivar_set(self,s__at_cutVisitor,Qnil);goto accept2;
  accept2:;
  break;case 2:; int oldpos6=ame_getpos(self);
 alt3_1: ame_setpos(self,oldpos6);if (rb_ivar_get(self,s__at_cutVisitor)!=Qnil) {rb_ivar_set(self,s__at_cutVisitor,Qnil); goto fail;}
-   it=CALL(visit,0 ); FAILTEST(alt3_2);
+   it=CALL(visit,0); FAILTEST(alt3_2);
  rb_ary_store(bind,0/*_result*/,it);  
 rb_ivar_set(self,s__at_cutVisitor,Qnil);goto accept3;
 alt3_2: ame_setpos(self,oldpos6);if (rb_ivar_get(self,s__at_cutVisitor)!=Qnil) {rb_ivar_set(self,s__at_cutVisitor,Qnil); goto fail;}
@@ -231,4 +231,4 @@ s_sizeVisitor=rb_intern("size");
 switchhashVisitor2=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashVisitor2);
 rb_define_method(cls_Visitor,"traverse",Visitor_traverse,0);
 rb_define_method(cls_Visitor,"traverse_item",Visitor_traverse_item,0);
- rb_eval_string("testversiontraverser('96a239d1d5c7aa9270a522f77a58c9c1')");}
+ rb_eval_string("testversiontraverser('b01cc0f7121b5e6b48d776430d7d3d9f')");}

@@ -49,6 +49,9 @@ class AmethystCTranslator < Amethyst
 		@ruletable={}
 		r.each{|e| @ruletable[e.name]=e}
 	end
+	def rbcall(name,args)
+		"CALL(#{name},#{args.size}#{args.map{|a| ",#{a}"}})"
+	end
 	def callrule(name,argc)
 		margs=argc.times.map{|a| ",arg#{a}"}
 		grammar=resolvegrammar(@grammar,name)
@@ -56,7 +59,7 @@ class AmethystCTranslator < Amethyst
 			@header<<"VALUE #{grammar}_#{name}(VALUE self #{",VALUE"*argc});"
 			"#{grammar}_#{name}(self #{margs})"
 		else
-			"CALL(#{name},#{argc} #{margs})"
+			rbcall(name,argc.times.map{|a| "arg#{a}"})
 		end
 	end
 end
@@ -97,7 +100,7 @@ failobj=rb_eval_string(\"FAIL\");
 						@@defmethods<< "rb_define_method(cls_#{@@grammar},\"#{@name}\",#{@@grammar}_#{@name},#{@args.size});"
 						h+"{VALUE vals[#{@args.size}]; VALUE bind=rb_ary_new2(#{@@locls.size}); #{map_index(@args){|i| bset(@args[i],"a#{i}")+";"}} int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 \n#{body}\nreturn it;\nfail: return failobj; }" } ]
-				| Act[ .*:{addcallback(@pred ? ["(",it,") || FAIL"] : it)}:cbno {"it=CALL(#{cbno},1,bind); #{@pred ? "FAILTEST(#{@@faillabel});" :"" }"} ]
+				| Act[ .*:{addcallback(@pred ? ["(",it,") || FAIL"] : it)}:cbno {"it=#{rbcall(cbno,["bind"])}; #{@pred ? "FAILTEST(#{@@faillabel});" :"" }"} ]
 				| CAct[.* {ar=*@ccode; 
                    @@header<<ar[0] if ar[0]
                    @@init<<ar[1] if ar[1]
@@ -125,7 +128,7 @@ failobj=rb_eval_string(\"FAIL\");
 				| Local[ .* { "it=#{bget(@self)};" } ]
 				| Result[ { s="#{@name}.create( {#{@vars.map{|l| ":#{l[0]}=>#{rbbget(l)}" }.sort*","} })"
 					cbno=addcallback(s)
-					"it=CALL(#{cbno},1,bind);"
+					"it=#{rbcall(cbno,["bind"])};"
 				} ]
 				| Pass[ label("pass"):pass label("oldpos"):oldpos label("oldlen"):oldlen label("oldsrc"):oldsrc label("success"):success label("fail"):fail
 						rw(pass,`@to=>trans:to`)

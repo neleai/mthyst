@@ -49,6 +49,9 @@ class AmethystCTranslator < Amethyst
 		@ruletable={}
 		r.each{|e| @ruletable[e.name]=e}
 	end
+	def rbcall(name,args)
+		"CALL(#{name},#{args.size}#{args.map{|a| ",#{a}"}})"
+	end
 	def callrule(name,argc)
 		margs=argc.times.map{|a| ",arg#{a}"}
 		grammar=resolvegrammar(@grammar,name)
@@ -56,7 +59,7 @@ class AmethystCTranslator < Amethyst
 			@header<<"VALUE #{grammar}_#{name}(VALUE self #{",VALUE"*argc});"
 			"#{grammar}_#{name}(self #{margs})"
 		else
-			"CALL(#{name},#{argc} #{margs})"
+			rbcall(name,argc.times.map{|a| "arg#{a}"})
 		end
 	end
 end
@@ -191,7 +194,7 @@ def trans_AmethystCTranslatorcb_19(bind)
 @init<<@src.init if @src.init
 end
 def trans_AmethystCTranslatorcb_2(bind)
-"it=CALL(#{bind[4]},1,bind); #{@src.pred ? "FAILTEST(#{@faillabel});" :"" }"
+"it=#{rbcall(bind[4],["bind"])}; #{@src.pred ? "FAILTEST(#{@faillabel});" :"" }"
 end
 def trans_AmethystCTranslatorcb_20(bind)
 "unsigned char #{bind[36]}=#{@src.act};  switch(#{bind[36]}){"
@@ -349,7 +352,7 @@ end
 def trans_AmethystCTranslatorcb_8(bind)
 bind[22]="#{@src.name}.create( {#{@src.vars.map{|l| ":#{l[0]}=>#{rbbget(l)}" }.sort*","} })"
 					bind[4]=addcallback(bind[22])
-					"it=CALL(#{bind[4]},1,bind);"
+					"it=#{rbcall(bind[4],["bind"])};"
 				
 end
 def trans_AmethystCTranslatorcb_9(bind)
@@ -360,15 +363,15 @@ end
 
 
 def ctranslator2_compiled_by
-'eee644bd16d472002ee098deb4f27fb6'
+'38d2eae82d1a90425312d481c2cdf0e1'
 end
 def ctranslator2_source_hash
-'7ad702df2ecc2ed389b21a9236158244'
+'5ebea7e17fb8ab0fd4a230fabf5fd3a1'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'dddefa6484f3ee9636b1072d954aa0d6'
+'2ecc35251460bf699cd7c323401b2180'
 end
   require 'compiled/ctranslator2_c'

@@ -280,7 +280,7 @@ fail: return failobj; }
 VALUE AmethystCTranslator_rw(VALUE self ,VALUE a0,VALUE a1){VALUE vals[2]; VALUE bind=rb_ary_new2(5); rb_ary_store(bind,1/*word*/,a0);rb_ary_store(bind,2/*prc*/,a1); int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 it=CALL(rw_AmethystCTranslatorcb_1,1,bind); 
- rb_ary_store(bind,0/*rwo*/,it); it=CALL(rw_AmethystCTranslatorcb_2,1,bind);  it=rb_ary_entry(bind,2/*prc*/); arg0=it; it=CALL(apply,1 ,arg0); FAILTEST(fail);
+ rb_ary_store(bind,0/*rwo*/,it); it=CALL(rw_AmethystCTranslatorcb_2,1,bind);  it=rb_ary_entry(bind,2/*prc*/); arg0=it; it=CALL(apply,1,arg0); FAILTEST(fail);
  rb_ary_store(bind,3/*x*/,it); it=CALL(rw_AmethystCTranslatorcb_3,1,bind); 
  rb_ary_store(bind,4/*_result*/,it); it=rb_ary_entry(bind,4/*_result*/);
 return it;
@@ -304,12 +304,12 @@ it=rb_ary_entry(bind,5/*autovar*/);
  rb_ary_store(bind,6/*_result*/,it);  break;case 10:;   it=AmethystCore_anything(self ); FAILTEST(fail);
  rb_ary_store(bind,7/*autovar*/,it); int oldpos3=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
 ame_setsrc(self,rb_ary_entry(bind,7/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2LONG(rb_funcall(ame_getsrc(self),s_sizeAmethystCTranslator,0)));
-  it=rb_obj_clone(c_405); arg0=it; it=CALL(label,1 ,arg0); FAILTEST(pass2);
- rb_ary_store(bind,8/*pass*/,it);  it=rb_obj_clone(c_406); arg0=it; it=CALL(label,1 ,arg0); FAILTEST(pass2);
- rb_ary_store(bind,9/*oldpos*/,it);  it=rb_obj_clone(c_407); arg0=it; it=CALL(label,1 ,arg0); FAILTEST(pass2);
- rb_ary_store(bind,10/*oldlen*/,it);  it=rb_obj_clone(c_408); arg0=it; it=CALL(label,1 ,arg0); FAILTEST(pass2);
- rb_ary_store(bind,11/*oldsrc*/,it);  it=rb_obj_clone(c_409); arg0=it; it=CALL(label,1 ,arg0); FAILTEST(pass2);
- rb_ary_store(bind,12/*success*/,it);  it=rb_obj_clone(c_410); arg0=it; it=CALL(label,1 ,arg0); FAILTEST(pass2);
+  it=rb_obj_clone(c_405); arg0=it; it=CALL(label,1,arg0); FAILTEST(pass2);
+ rb_ary_store(bind,8/*pass*/,it);  it=rb_obj_clone(c_406); arg0=it; it=CALL(label,1,arg0); FAILTEST(pass2);
+ rb_ary_store(bind,9/*oldpos*/,it);  it=rb_obj_clone(c_407); arg0=it; it=CALL(label,1,arg0); FAILTEST(pass2);
+ rb_ary_store(bind,10/*oldlen*/,it);  it=rb_obj_clone(c_408); arg0=it; it=CALL(label,1,arg0); FAILTEST(pass2);
+ rb_ary_store(bind,11/*oldsrc*/,it);  it=rb_obj_clone(c_409); arg0=it; it=CALL(label,1,arg0); FAILTEST(pass2);
+ rb_ary_store(bind,12/*success*/,it);  it=rb_obj_clone(c_410); arg0=it; it=CALL(label,1,arg0); FAILTEST(pass2);
  rb_ary_store(bind,13/*fail*/,it); it=rb_ary_entry(bind,8/*pass*/);
  rb_ary_store(bind,14/*word*/,it); it=CALL(rw_AmethystCTranslatorcb_1,1,bind); 
  rb_ary_store(bind,15/*rwo*/,it); it=CALL(trans_AmethystCTranslatorcb_3,1,bind); it=CALL(trans_AmethystCTranslatorcb_4,1,bind); 
@@ -386,7 +386,7 @@ it=CALL(trans_AmethystCTranslatorcb_16,1,bind);
  rb_ary_store(bind,6/*_result*/,it);  break;case 15:;   it=AmethystCore_anything(self ); FAILTEST(fail);
  rb_ary_store(bind,35/*autovar*/,it); int oldpos11=ame_getpos(self); int oldlen9=ame_getlen(self); VALUE oldsrc9=ame_getsrc(self); int fail9=0;
 ame_setsrc(self,rb_ary_entry(bind,35/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2LONG(rb_funcall(ame_getsrc(self),s_sizeAmethystCTranslator,0)));
-  it=rb_obj_clone(c_412); arg0=it; it=CALL(label,1 ,arg0); FAILTEST(pass9);
+  it=rb_obj_clone(c_412); arg0=it; it=CALL(label,1,arg0); FAILTEST(pass9);
  rb_ary_store(bind,36/*chr*/,it); it=CALL(trans_AmethystCTranslatorcb_17,1,bind); it=CALL(trans_AmethystCTranslatorcb_18,1,bind); it=CALL(trans_AmethystCTranslatorcb_19,1,bind); it=CALL(trans_AmethystCTranslatorcb_20,1,bind); 
  rb_ary_store(bind,22/*s*/,it); int oldpos12; while(1){oldpos12=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break3);
  rb_ary_store(bind,37/*autovar*/,it); int oldpos13=ame_getpos(self); int oldlen10=ame_getlen(self); VALUE oldsrc10=ame_getsrc(self); int fail10=0;
@@ -544,7 +544,7 @@ ame_setsrc(self,rb_ary_entry(bind,73/*autovar*/)); ame_setpos(self,0); ame_setle
  it=CALL(trans_AmethystCTranslatorcb_48,1,bind); 
  rb_ary_store(bind,67/*accept*/,it); it=CALL(rw_AmethystCTranslatorcb_1,1,bind); 
  rb_ary_store(bind,13/*fail*/,it); it=CALL(trans_AmethystCTranslatorcb_50,1,bind); 
- rb_ary_store(bind,9/*oldpos*/,it);  it=rb_obj_clone(c_416); arg0=it; it=CALL(label,1 ,arg0); FAILTEST(pass22);
+ rb_ary_store(bind,9/*oldpos*/,it);  it=rb_obj_clone(c_416); arg0=it; it=CALL(label,1,arg0); FAILTEST(pass22);
  rb_ary_store(bind,74/*alt*/,it); it=c_417;
  rb_ary_store(bind,75/*altno*/,it); it=rb_ary_new3(0);
  rb_ary_store(bind,76/*autovar*/,it); int oldpos30; while(1){oldpos30=ame_getpos(self); int oldpos31=ame_getpos(self);
@@ -593,4 +593,4 @@ rb_define_method(cls_AmethystCTranslator,"rbcode",AmethystCTranslator_rbcode,0);
 rb_define_method(cls_AmethystCTranslator,"rbtrans",AmethystCTranslator_rbtrans,0);
 rb_define_method(cls_AmethystCTranslator,"rw",AmethystCTranslator_rw,2);
 rb_define_method(cls_AmethystCTranslator,"trans",AmethystCTranslator_trans,0);
- rb_eval_string("testversionctranslator2('dddefa6484f3ee9636b1072d954aa0d6')");}
+ rb_eval_string("testversionctranslator2('2ecc35251460bf699cd7c323401b2180')");}
