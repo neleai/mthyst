@@ -1,7 +1,7 @@
 #include "ruby.h"
 #include "../../compiled/cthyst.h"
 // write declarations to cthyst.h as without them call from other so will crash
-VALUE amecore;VALUE failobj;
+VALUE amecore;VALUE bindcls;VALUE failobj;
 ID s_src,s_input,s_call,s_cut,s_ary_get;
 
 VALUE ame_setlenrb(VALUE self,VALUE val){return INT2FIX(ame_setlen(self,FIX2INT(val)));}
@@ -45,6 +45,7 @@ VALUE ame_new(VALUE clas){
 	VALUE argv[0]; rb_obj_call_init(o,0,argv);
 	return o;
 }
+
 void Init_Ame(VALUE self){
 	s_ary_get=rb_intern("[]");
 	failobj=rb_eval_string("FAIL");
@@ -59,4 +60,9 @@ void Init_Ame(VALUE self){
 
 	rb_define_method(amecore,"_seq",AmethystCore__seq,1);
 	rb_define_method(amecore,"anything",AmethystCore_anything,0);
+
+	bindcls=rb_define_class("BindingClass",rb_cObject);
+  rb_define_singleton_method(bindcls,"new",bind_new,1);
+	rb_define_method(bindcls,"[]=",bind_asetrb,2);
+	rb_define_method(bindcls,"[]",bind_agetrb,1);
 }

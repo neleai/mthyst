@@ -55,3 +55,27 @@ static inline VALUE ame_curobj(VALUE self){
   return rb_funcall(ame_getsrc(self),s_ary_get,1,ame_getposrb(self));
 }
 
+typedef struct {
+  VALUE *ary;int size;
+} bind_struct;
+static inline VALUE bind_new(VALUE clas,VALUE size){
+  bind_struct *ptr=ALLOC(bind_struct);
+  ptr->size=FIX2LONG(size);
+  ptr->ary=ALLOC_N(VALUE,ptr->size);
+  VALUE o=Data_Wrap_Struct(clas,0,0,ptr);
+  VALUE argv[0]; rb_obj_call_init(o,0,argv);
+  return o;
+}
+static inline VALUE bind_aset(VALUE self,long no,VALUE val){
+  bind_struct* ptr;
+  Data_Get_Struct(self,bind_struct,ptr);
+  return ptr->ary[no]=val;
+}
+static inline VALUE bind_aget(VALUE self,long no){
+  bind_struct* ptr;
+  Data_Get_Struct(self,bind_struct,ptr);
+  return ptr->ary[no];
+}
+VALUE bind_asetrb(VALUE self,VALUE no,VALUE val){return bind_aset(self,FIX2LONG(no),val);}
+VALUE bind_agetrb(VALUE self,VALUE no){return bind_aget(self,FIX2LONG(no));}
+
