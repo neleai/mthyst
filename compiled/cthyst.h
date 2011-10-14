@@ -31,7 +31,7 @@ typedef struct{
   int pos;int len;
 	VALUE cut;VALUE stop;
 } cstruct;
-extern ID s_src,s_input,s_call,s_cut,s_ary_get;
+extern ID s_ary_get;
 #define ACCESSOR(type,name) \
 static inline type ame_get##name(VALUE self){\
   cstruct  *ptr;\

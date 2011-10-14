@@ -46,7 +46,7 @@ VALUE ame_new(VALUE clas){
 	return o;
 }
 void Init_Ame(VALUE self){
-	s_cut=rb_intern("@cut");	s_src=rb_intern("@src");	s_input=rb_intern("@input");	s_call=rb_intern("call");s_ary_get=rb_intern("[]");
+	s_ary_get=rb_intern("[]");
 	failobj=rb_eval_string("FAIL");
 	amecore=rb_define_class("AmethystCore",rb_cObject);
 	rb_define_singleton_method(amecore,"new",ame_new,0);
