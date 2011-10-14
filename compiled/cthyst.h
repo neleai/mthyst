@@ -58,14 +58,18 @@ static inline VALUE ame_curobj(VALUE self){
 typedef struct {
   VALUE *ary;int size;
 } bind_struct;
+void bind_mark(bind_struct *o);void bind_free(bind_struct *o);
 static inline VALUE bind_new(VALUE clas,VALUE size){
   bind_struct *ptr=ALLOC(bind_struct);
   ptr->size=FIX2LONG(size);
   ptr->ary=ALLOC_N(VALUE,ptr->size);
-  VALUE o=Data_Wrap_Struct(clas,0,0,ptr);
+	int i;for(i=0;i<size;i++) ptr->ary[i]=Qnil;
+  VALUE o=Data_Wrap_Struct(clas,bind_mark,bind_free,ptr);
   VALUE argv[0]; rb_obj_call_init(o,0,argv);
   return o;
 }
+extern VALUE bindcls;
+static inline VALUE bind_new2(long size){bind_new(bindcls,LONG2FIX(size));}
 static inline VALUE bind_aset(VALUE self,long no,VALUE val){
   bind_struct* ptr;
   Data_Get_Struct(self,bind_struct,ptr);

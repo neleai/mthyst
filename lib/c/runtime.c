@@ -46,6 +46,13 @@ VALUE ame_new(VALUE clas){
 	return o;
 }
 
+void bind_mark(bind_struct *ptr){
+	int i;for(i=0;i<ptr->size;i++) rb_gc_mark(ptr->ary[i]);
+}
+void bind_free(bind_struct *ptr){
+	free(ptr->ary);
+	free(ptr);
+}
 void Init_Ame(VALUE self){
 	s_ary_get=rb_intern("[]");
 	failobj=rb_eval_string("FAIL");
