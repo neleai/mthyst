@@ -108,7 +108,7 @@ end
 
 
 def left_factor_compiled_by
-'23b64da0c27c451817d9d6aaf6498fac'
+'1edd76a0673cff5ebf95806f512f0498'
 end
 def left_factor_source_hash
 '735fd68abfa48b088273bd588cc38a2c'
@@ -117,6 +117,6 @@ def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version
 end
 def left_factor_version
-'7316b9c44388e72603863c2467aaf452'
+'a3a07d815086a21122bf7cca8903811c'
 end
   require 'compiled/left_factor_c'

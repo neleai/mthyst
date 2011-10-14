@@ -62,14 +62,13 @@ void bind_mark(bind_struct *o);void bind_free(bind_struct *o);
 static inline VALUE bind_new(VALUE clas,VALUE size){
   bind_struct *ptr=ALLOC(bind_struct);
   ptr->size=FIX2LONG(size);
-  ptr->ary=ALLOC_N(VALUE,ptr->size);
-	int i;for(i=0;i<size;i++) ptr->ary[i]=Qnil;
+  ptr->ary=calloc(sizeof(VALUE),ptr->size);
   VALUE o=Data_Wrap_Struct(clas,bind_mark,bind_free,ptr);
-  VALUE argv[0]; rb_obj_call_init(o,0,argv);
+/*  VALUE argv[0]; rb_obj_call_init(o,0,argv);*/
   return o;
 }
 extern VALUE bindcls;
-static inline VALUE bind_new2(long size){bind_new(bindcls,LONG2FIX(size));}
+static inline VALUE bind_new2(long size){return bind_new(bindcls,LONG2FIX(size));}
 static inline VALUE bind_aset(VALUE self,long no,VALUE val){
   bind_struct* ptr;
   Data_Get_Struct(self,bind_struct,ptr);
@@ -78,6 +77,7 @@ static inline VALUE bind_aset(VALUE self,long no,VALUE val){
 static inline VALUE bind_aget(VALUE self,long no){
   bind_struct* ptr;
   Data_Get_Struct(self,bind_struct,ptr);
+	if (!ptr->ary[no]) return Qnil;
   return ptr->ary[no];
 }
 VALUE bind_asetrb(VALUE self,VALUE no,VALUE val){return bind_aset(self,FIX2LONG(no),val);}

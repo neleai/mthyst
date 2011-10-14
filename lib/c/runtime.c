@@ -47,7 +47,7 @@ VALUE ame_new(VALUE clas){
 }
 
 void bind_mark(bind_struct *ptr){
-	int i;for(i=0;i<ptr->size;i++) rb_gc_mark(ptr->ary[i]);
+	int i;for(i=0;i<ptr->size;i++) if(ptr->ary[i]) rb_gc_mark(ptr->ary[i]);
 }
 void bind_free(bind_struct *ptr){
 	free(ptr->ary);

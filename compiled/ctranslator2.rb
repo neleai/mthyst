@@ -16,12 +16,12 @@ class AmethystCTranslator < Amethyst
 	def bget(s)
 		cm=s[0]
 		s=desc(s)
-		return "rb_ary_entry(bind,#{s}/*#{cm}*/)"
+		return "bind_aget(bind,#{s}/*#{cm}*/)"
 	end
 	def bset(s,e)
 		cm=s[0]
 		s=desc(s)
-		return "rb_ary_store(bind,#{s}/*#{cm}*/,#{e})"
+		return "bind_aset(bind,#{s}/*#{cm}*/,#{e})"
 	end
 	def rbbget(s)
 		"bind[#{desc(s)}]"
@@ -172,7 +172,7 @@ def trans_AmethystCTranslatorcb_13(bind)
 h="VALUE #{@grammar}_#{bind[25]}(VALUE self #{map_index(src.args){|i| ",VALUE a#{i}"}})" 
 						@header<<h+";"
 						@defmethods<< "rb_define_method(cls_#{@grammar},\"#{src.name}\",#{@grammar}_#{src.name},#{src.args.size});"
-						h+"{VALUE vals[#{src.args.size}]; VALUE bind=rb_ary_new2(#{@locls.size}); #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}} int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+						h+"{VALUE vals[#{src.args.size}]; VALUE bind=bind_new2(#{@locls.size}); #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}} int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 \n#{bind[27]}\nreturn it;\nfail: return failobj; }" 
 end
 def trans_AmethystCTranslatorcb_14(bind)
@@ -357,15 +357,15 @@ end
 
 
 def ctranslator2_compiled_by
-'23b64da0c27c451817d9d6aaf6498fac'
+'1edd76a0673cff5ebf95806f512f0498'
 end
 def ctranslator2_source_hash
-'86eaf4031f83bea34a5b2181623a2865'
+'34090ab4c54b5913f90332692a76c801'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'064bad5b8242f77f82108c7e107541de'
+'0998a09634d079c1247d4a4d7dc66699'
 end
   require 'compiled/ctranslator2_c'
