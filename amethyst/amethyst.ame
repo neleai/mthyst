@@ -37,6 +37,7 @@ amethyst Amethyst < AmethystCore {
 
   listOf(rule,delim) =  apply(rule):f[] (apply(delim) apply(rule))*:f[] -> f
                          | empty -> []
+	replace(exp) = (apply(exp) | .):{it*""}
 
   exactly(wanted) = :got &{wanted == got} -> wanted
 
