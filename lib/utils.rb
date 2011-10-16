@@ -44,9 +44,9 @@ class AmethystAST
 	def size
 		ary.size
 	end
-	def [](*a)
-		ary[*a]
-	end
+#	def [](*a)
+#		ary[*a]
+#	end
 	def inspect
 		attrs=self.class.instance_variable_get(:@attrs)-[:ary]
 		"#{self.class}[#{(ary.map{|a| a.inspect}+(attrs.select{|v| send(v)!=nil}.size>0 ? ["{#{(attrs).select{|v| send(v)!=nil}.map{|v| ":#{v}=>#{send(v).inspect}" }*', '}}"]:[]) )*"," }]"

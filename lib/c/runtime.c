@@ -53,8 +53,14 @@ void bind_free(bind_struct *ptr){
 	free(ptr->ary);
 	free(ptr);
 }
+
+ID s_ary;
+VALUE ameast_agetrb(VALUE self,VALUE num){
+	return rb_ary_entry(rb_ivar_get(self,s_ary),FIX2LONG(num));
+}
 void Init_Ame(VALUE self){
 	s_ary_get=rb_intern("[]");
+	s_ary=rb_intern("@ary");
 	failobj=rb_eval_string("FAIL");
 	amecore=rb_define_class("AmethystCore",rb_cObject);
 	rb_define_singleton_method(amecore,"new",ame_new,0);
@@ -72,4 +78,7 @@ void Init_Ame(VALUE self){
   rb_define_singleton_method(bindcls,"new",bind_new,1);
 	rb_define_method(bindcls,"[]=",bind_asetrb,2);
 	rb_define_method(bindcls,"[]",bind_agetrb,1);
+
+	VALUE ameast=rb_define_class("AmethystAST",rb_cObject);
+	rb_define_method(ameast,"[]",ameast_agetrb,1);
 }

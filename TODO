@@ -13,7 +13,7 @@ consider pseudovariables
 
 work in 1.9.1
 bind cut,stop to corresponding many,or
-code motion of acts
+code motion of acts and binds
 
 documentation
 
@@ -29,9 +29,8 @@ consider left factor when conditions are in inclusion.
 
 optimalization of lookaheads such that in anything* ~anything the ~anything is automaticaly satisfied(aka eof)
 in ~space space* the  space* must be empty 
+Also unbounded .* is move to end of object.
 Do it by constant propagation?
-
-dont duplicate rules that dont refer to overwritten rule
 
 adaptive dataflow
 think about suitable decomposition
@@ -40,15 +39,10 @@ dataflow cantfail, noresult
 
 saner handling of Locals
 
-detects also rules in parent that call but are not called
-
 predicate,cut,stop,comment do not return value
 
 move switch into pipeline
 predication by splitting to predicated and notpredicated part
-
-
-Bind has expr in ary instead in @expr
 
 serialization
 
