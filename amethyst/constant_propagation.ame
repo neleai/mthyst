@@ -39,7 +39,7 @@ amethyst Constant_Propagator{
 	step(el) = {el}=>( Local[.*  {a=ConstantLattice[Bottom]
         											depend.reverse.edges[el].each{|e| a=a+valof(e)}
 															a}]
-								   | Bind[ valof(@expr)]
+								   | Bind[.* valof(@expr)]
   								 |  Act[ Local[.* valof(@self)]
 								         | Exp[.*{ConstantLattice[@self]}]
                        ]
@@ -50,7 +50,7 @@ amethyst Constant_Propagator{
 
 amethyst Constant_Traverser < Traverser_Clone2 {
 	root = {@@consts=@consts}  {@cfg=nil;@reachable=nil;@consts=nil} traverse  
-	visit = Bind[ @expr=>traverse_item:expr {_Bind(@name,expr)} ]
+	visit = Bind[.* @expr=>traverse_item:expr {_Bind(@name,expr)} ]
 				| Act[.* {@self}]
 				| Local[ .* {@@consts[@ssaname] ? @@consts[@ssaname] : @self } ]
 }

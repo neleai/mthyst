@@ -66,3 +66,5 @@ copy propagation
 , in Acts
 
 inline constant_propagation2.rb to lib/compiler
+
+analysis what can be saved on stack

@@ -102,7 +102,7 @@ end
 
 
 def detect_variables2_compiled_by
-'1edd76a0673cff5ebf95806f512f0498'
+'1bc718d9f4ad43063cdeb9c24e9bf168'
 end
 def detect_variables2_source_hash
 '56196ab0e78188e5a2d6bc8b4c79e49b'

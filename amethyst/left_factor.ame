@@ -8,14 +8,14 @@ end
 
 amethyst Left_Factor < Traverser_Clone2 {
 	first(s)    = {s}=>( Seq[.:f .* first(f) ] 
-				  					 | Bind[ first(@expr)   ]
+				  					 | Bind[.* first(@expr)   ]
 									   | .)
 
 	rest(s,bin) = {s}=>( Seq[.:f .*:{Seq[[bin]+it]} ]
 										 | . {bin} )
 
 	binds(s,a)  = {s}=>( Seq[.:f .* binds(f,a)]
-										 | Bind[ binds(@expr,a):nexp {_Bind(@name,nexp)} ]
+										 | Bind[.* binds(@expr,a):nexp {_Bind(@name,nexp)} ]
 										 | . {a})
 
 	root=traverse

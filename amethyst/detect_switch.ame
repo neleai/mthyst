@@ -254,7 +254,7 @@ amethyst First_Dataflow {
 				| Many[value:val {val|lattice.empty} ]
 				| Or[value*:{it.inject(:|)}]
 				| Switch[value*:{it.inject(:|)}]
-	      | Bind[@expr=>value] 
+	      | Bind[.* @expr=>value] 
 				| (Act|CAct|Local|Result|Cut|Stop)[.* {lattice.empty} ]
 				| . {lattice.default}
 
@@ -380,7 +380,7 @@ amethyst Detect_Switch < Detect_First {
 	
 	split = Seq[ split .*]
 				| Or[ split*]
-				| Bind[ @expr=>split ]
+				| Bind[.* @expr=>split ]
 				| .:el first(el):f {@@cases=@@cases.map{|c| [c&f,c&~f]}.flatten.select{|x| x.ary.size>0}.uniq_by{|x|x.ary.inspect} }
 	
 	predicate(chr,p) = &{chr.ary[0]=="default"} {p}
@@ -419,7 +419,7 @@ amethyst Detect_ClasSwitch < Detect_First {
 											|	{p}=>( Seq[ .:e predicate(clas,i,e):f .*:rest {Seq[*([f]+rest)]} ]
 														 | Or[ (.:e predicate(clas,i,e))*:ary {Or[*ary]} ]
 									  				 | Apply[ .:name &{name=="clas"} CAct[.:match] &{child(clas[i],match)&&clas[i]==match} {Apply["anything"]}] 
- 										  			 | Bind[@name:name {predicate(clas,i,@expr)}:expr  {_Bind(name,expr)}]
+ 										  			 | Bind[.* @name:name {predicate(clas,i,@expr)}:expr  {_Bind(name,expr)}]
 											  		 | .
 												  	 )
 }
