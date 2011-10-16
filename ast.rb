@@ -2,7 +2,7 @@ makeclasses(AmethystAST,
     [:Grammar,:name,:parent,:rules],
     [:Rule,:name,:args,:locals,:body,:cfg,:reachable,:bnding,:consts],
     :Apply,
-    [:Bind,:name,:expr],
+    [:Bind,:name],
     [:Many],
 		[:Pass,:var,:to],
 		[:CAct],
@@ -72,7 +72,7 @@ def _Bind(name,expr,append=nil)
 	  return Seq[_Bind(a,expr),PureAct[Args["_append(",_Local(name),",",a,")"]]]
 	end	
 	if name.is_a?(Local) || name.is_a?(String)
-		Bind.create({:name=>_Local(name),:expr=>expr}).normalize
+		Bind.create({:name=>_Local(name),:ary=>[expr]}).normalize
 	else
 		a=autovar
 		Seq[_Bind(a,expr),PureAct[Args[name,'=',a]]]
@@ -80,9 +80,12 @@ def _Bind(name,expr,append=nil)
 end
 class Bind
 	def normalize2
-		return Or[*expr.ary.map{|a|_Bind(name,a)}] if @expr.is_a?(Or)
-    return Seq[*(expr.ary[0...-1]+[_Bind(name,expr.ary[-1])])] if @expr.is_a?(Seq) && @expr.ary.size>0
+		return Or[*expr.ary.map{|a|_Bind(name,a)}] if expr.is_a?(Or)
+    return Seq[*(expr.ary[0...-1]+[_Bind(name,expr.ary[-1])])] if expr.is_a?(Seq) && expr.ary.size>0
 		self.freeze
+	end
+	def expr
+		ary[0]
 	end
 end
 class Append
