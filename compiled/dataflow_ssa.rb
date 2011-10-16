@@ -130,19 +130,13 @@ def vars_in_Dataflowcb_1(bind)
 bind[0]=[]
 end
 def vars_in_Dataflowcb_10(bind)
-@marked<<src
+_append(bind[0],bind[14])
 end
 def vars_in_Dataflowcb_11(bind)
-_append(bind[0],bind[13])
+_append(bind[0],bind[16])
 end
 def vars_in_Dataflowcb_12(bind)
-_append(bind[0],bind[15])
-end
-def vars_in_Dataflowcb_13(bind)
-_append(bind[0],bind[17])
-end
-def vars_in_Dataflowcb_14(bind)
-_append(bind[0],bind[19])
+_append(bind[0],bind[18])
 end
 def vars_in_Dataflowcb_2(bind)
 src
@@ -154,19 +148,19 @@ def vars_in_Dataflowcb_4(bind)
 _append(bind[0],bind[4])
 end
 def vars_in_Dataflowcb_5(bind)
-src.expr
+_append(bind[0],bind[6])
 end
 def vars_in_Dataflowcb_6(bind)
-bind[6]=[bind[6]]
+_append(bind[0],bind[8])
 end
 def vars_in_Dataflowcb_7(bind)
-_append(bind[0],bind[7])
+_append(bind[0],bind[10])
 end
 def vars_in_Dataflowcb_8(bind)
-_append(bind[0],bind[9])
+@marked<<src
 end
 def vars_in_Dataflowcb_9(bind)
-_append(bind[0],bind[11])
+_append(bind[0],bind[12])
 end
 def visit_Dataflowcb_1(bind)
 Act[bind[0],src.pred]
@@ -375,15 +369,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'d1a58e6f7366472d476b4700d012354b'
+'04e7cd446908893b978f27336c54a870'
 end
 def dataflow_ssa_source_hash
-'8bbbc18514efd74eb1a70f0fb7834e88'
+'5de92e0d764995e234e6f266feb8696a'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'e0d6a9d375bdd62ab2c9800219c0f858'
+'cd83de89ac09237403bccf95a0a38fb3'
 end
   require 'compiled/dataflow_ssa_c'

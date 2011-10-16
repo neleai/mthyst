@@ -88,7 +88,7 @@ amethyst Dataflow < Traverser_Clone2 {
 								| Result[ @self:ary[] ]
 								| Strin[ vars_in:ary[] ]
 								| Args[ vars_in:ary[] ]
-								| Bind[.* @expr=>vars_in:ary[] ]
+								| Bind[ vars_in:ary[] ]
 								| Local[:name @self:ary[] ]
 								| anything
 								)* -> ary

@@ -249,16 +249,10 @@ def first_First_Dataflowcb_1(bind)
 lattice.empty
 end
 def first_First_Dataflowcb_10(bind)
-_append(bind[18],bind[19])
+bind[13].seqjoin(bind[22])
 end
 def first_First_Dataflowcb_11(bind)
-bind[23]=[bind[23]]
-end
-def first_First_Dataflowcb_12(bind)
-bind[15].seqjoin(bind[24])
-end
-def first_First_Dataflowcb_13(bind)
-empty?(bind[22])
+empty?(bind[20])
 end
 def first_First_Dataflowcb_2(bind)
 lattice.default
@@ -276,13 +270,13 @@ def first_First_Dataflowcb_6(bind)
 bind[8].inject(:|)
 end
 def first_First_Dataflowcb_7(bind)
-src.expr
+bind[13]|lattice.empty
 end
 def first_First_Dataflowcb_8(bind)
-bind[11]=[bind[11]]
+_append(bind[16],bind[17])
 end
 def first_First_Dataflowcb_9(bind)
-bind[15]|lattice.empty
+bind[21]=[bind[21]]
 end
 def getvalue_First_Dataflowcb_1(bind)
 @vis=bind[0]; bind[0]
@@ -303,16 +297,10 @@ def first_Sizes_Dataflow_Sizes_Dataflowcb_1(bind)
 lattice.empty
 end
 def first_Sizes_Dataflow_Sizes_Dataflowcb_10(bind)
-_append(bind[18],bind[19])
+bind[13].seqjoin(bind[22])
 end
 def first_Sizes_Dataflow_Sizes_Dataflowcb_11(bind)
-bind[23]=[bind[23]]
-end
-def first_Sizes_Dataflow_Sizes_Dataflowcb_12(bind)
-bind[15].seqjoin(bind[24])
-end
-def first_Sizes_Dataflow_Sizes_Dataflowcb_13(bind)
-empty?(bind[22])
+empty?(bind[20])
 end
 def first_Sizes_Dataflow_Sizes_Dataflowcb_2(bind)
 lattice.default
@@ -330,13 +318,13 @@ def first_Sizes_Dataflow_Sizes_Dataflowcb_6(bind)
 bind[8].inject(:|)
 end
 def first_Sizes_Dataflow_Sizes_Dataflowcb_7(bind)
-src.expr
+bind[13]|lattice.empty
 end
 def first_Sizes_Dataflow_Sizes_Dataflowcb_8(bind)
-bind[11]=[bind[11]]
+_append(bind[16],bind[17])
 end
 def first_Sizes_Dataflow_Sizes_Dataflowcb_9(bind)
-bind[15]|lattice.empty
+bind[21]=[bind[21]]
 end
 def first_Sizes_Dataflowcb_1(bind)
 lattice[bind[5].size]
@@ -360,16 +348,10 @@ def first_Switch_Dataflow_Switch_Dataflowcb_1(bind)
 lattice.empty
 end
 def first_Switch_Dataflow_Switch_Dataflowcb_10(bind)
-_append(bind[18],bind[19])
+bind[13].seqjoin(bind[22])
 end
 def first_Switch_Dataflow_Switch_Dataflowcb_11(bind)
-bind[23]=[bind[23]]
-end
-def first_Switch_Dataflow_Switch_Dataflowcb_12(bind)
-bind[15].seqjoin(bind[24])
-end
-def first_Switch_Dataflow_Switch_Dataflowcb_13(bind)
-empty?(bind[22])
+empty?(bind[20])
 end
 def first_Switch_Dataflow_Switch_Dataflowcb_2(bind)
 lattice.default
@@ -387,13 +369,13 @@ def first_Switch_Dataflow_Switch_Dataflowcb_6(bind)
 bind[8].inject(:|)
 end
 def first_Switch_Dataflow_Switch_Dataflowcb_7(bind)
-src.expr
+bind[13]|lattice.empty
 end
 def first_Switch_Dataflow_Switch_Dataflowcb_8(bind)
-bind[11]=[bind[11]]
+_append(bind[16],bind[17])
 end
 def first_Switch_Dataflow_Switch_Dataflowcb_9(bind)
-bind[15]|lattice.empty
+bind[21]=[bind[21]]
 end
 def first_Switch_Dataflowcb_1(bind)
 firstchar(bind[5])
@@ -420,16 +402,10 @@ def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_1(bind)
 lattice.empty
 end
 def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_10(bind)
-_append(bind[18],bind[19])
+bind[13].seqjoin(bind[22])
 end
 def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_11(bind)
-bind[23]=[bind[23]]
-end
-def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_12(bind)
-bind[15].seqjoin(bind[24])
-end
-def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_13(bind)
-empty?(bind[22])
+empty?(bind[20])
 end
 def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_2(bind)
 lattice.default
@@ -447,13 +423,13 @@ def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_6(bind)
 bind[8].inject(:|)
 end
 def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_7(bind)
-src.expr
+bind[13]|lattice.empty
 end
 def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_8(bind)
-bind[11]=[bind[11]]
+_append(bind[16],bind[17])
 end
 def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_9(bind)
-bind[15]|lattice.empty
+bind[21]=[bind[21]]
 end
 def first_ClasSwitch_Dataflowcb_1(bind)
 lattice[bind[3]]
@@ -636,19 +612,13 @@ nary=bind[1].ary
                               
 end
 def split_Detect_Switchcb_1(bind)
-src.expr
+@cases=@cases.map{|c| [c&bind[4],c&~bind[4]]}.flatten.select{|x| x.ary.size>0}.uniq_by{|x|x.ary.inspect} 
 end
 def split_Detect_Switchcb_2(bind)
-bind[1]=[bind[1]]
+_append(bind[6],bind[7])
 end
 def split_Detect_Switchcb_3(bind)
-@cases=@cases.map{|c| [c&bind[6],c&~bind[6]]}.flatten.select{|x| x.ary.size>0}.uniq_by{|x|x.ary.inspect} 
-end
-def split_Detect_Switchcb_4(bind)
-_append(bind[8],bind[9])
-end
-def split_Detect_Switchcb_5(bind)
-_append(bind[12],bind[13])
+_append(bind[10],bind[11])
 end
 def traverse_Detect_Switchcb_1(bind)
 @changed
@@ -763,19 +733,19 @@ def predicate_Detect_ClasSwitchcb_1(bind)
 (bind[0][bind[1]]=="default") || FAIL
 end
 def predicate_Detect_ClasSwitchcb_10(bind)
-_Bind(bind[6],bind[12])
+_Bind(bind[6],bind[13])
 end
 def predicate_Detect_ClasSwitchcb_11(bind)
-_append(bind[15],bind[17])
+_append(bind[16],bind[18])
 end
 def predicate_Detect_ClasSwitchcb_12(bind)
-Or[*bind[18]]
+Or[*bind[19]]
 end
 def predicate_Detect_ClasSwitchcb_13(bind)
-_append(bind[22],bind[23])
+_append(bind[23],bind[24])
 end
 def predicate_Detect_ClasSwitchcb_14(bind)
-Seq[*([bind[21]]+bind[24])]
+Seq[*([bind[22]]+bind[25])]
 end
 def predicate_Detect_ClasSwitchcb_2(bind)
 (!includes(bind[0],bind[1],first(bind[2]))) || FAIL
@@ -799,7 +769,7 @@ def predicate_Detect_ClasSwitchcb_8(bind)
 src.name
 end
 def predicate_Detect_ClasSwitchcb_9(bind)
-predicate(bind[0],bind[1],src.expr)
+predicate(bind[0],bind[1],bind[12])
 end
 def traverse_Detect_ClasSwitchcb_1(bind)
 @changed
@@ -871,15 +841,15 @@ end
 
 
 def detect_switch_compiled_by
-'d1a58e6f7366472d476b4700d012354b'
+'04e7cd446908893b978f27336c54a870'
 end
 def detect_switch_source_hash
-'157064f7b67f3540d220dd27eea773b5'
+'3f0ba00e9a04725284f31a291c9cf83d'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'cef7261d81f79373a0aa95f82dfdef33'
+'52b71626b3944ade058c6d0ab13ef760'
 end
   require 'compiled/detect_switch_c'

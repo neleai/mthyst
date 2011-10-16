@@ -108,7 +108,7 @@ failobj=rb_eval_string(\"FAIL\");
 				| Apply[:name {0}:ii ( trans:aa {ii+=1} {"#{aa} arg#{ii-1}=it;"})*:args 
             failwrap(" #{args} it=#{callrule(name,ii)};")]
 				| Seq[ trans*:t {t*""} ]
-				| Bind[.* @expr=>trans:e {"#{e}\n #{bset(@name,"it")}; " } ]
+				| Bind[trans:e {"#{e}\n #{bset(@name,"it")}; " } ]
 				| Or[ {label("accept")}:accept {@@faillabel}:fail {label("oldpos")}:oldpos label("alt"):alt {0}:altno
 					 ( &(.) {altno+=1} rw("#{alt}_#{altno+1}",`trans`))*:t
 					 {s="int #{oldpos}=ame_getpos(self);\n"}
