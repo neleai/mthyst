@@ -1,0 +1,39 @@
+Compilers obtain most properties by dataflow analysis and its extensions.
+
+We ilustrate dataflow analysis on constraint propagation(TODO find name) and then say general.
+
+Constraint analysis
+First we describe analysis without regard to performance and then we say how to make practical.
+
+CFG
+
+SSA form
+We want to differtiate between diferent definitions and uses of same variable. Simplest way how to do it is following. 
+1 Number instructions by natural numbers.
+2 For each variable x replace occurences of x in instruction i by x_i
+3 For each variable insert dummy assignment x_j=x_i after instruction i if in CFG there is edge between instructions i and j.
+Lot of these relabelings are not neccesary and minimal SSA and SSU form produces exacly relabeling where each label is necessary.
+SSA form makes dummy assnments explicit by phi function. Assignment x_1=Phi(x_2,x_3) is equivalent to dummy assignments x_1=x_2 and x_1=x_3.
+For our purposes we use dummy assignment form as it is more natural in our analysis.
+
+Predicate  propagation.
+An ideal predicate propagation would for each variable determine exactly set of values it can attain. Then we could for any single variable predicate P determine if P is always true,false or can vary. This is undecidable problem so we need to relax it. We restrict predicates to certain classes which we call atomic. We identify predicate with set on which it is satisfied. Problem we want to solve is to find superset of attainable values that can be compactly represented by atomic predicates.  We show an example:
+
+Types of atomic predicates are
+Nothing={}
+Const(c)= {x| x=c } c constant
+Anything={x | x can be any possible value}
+
+Range(a,b)= {x| a<=x<=b,x integer}
+
+Bits(ones,zeroes)={x| integers with some bits prescribed by equations x&ones=ones and x&zeros=0}
+
+Class(t)={x | x has class t}
+Inherits(t)={x | x inherits from class t}
+
+Desirable property is that constraint propagations with different interesting predicates are composable. Note that composition of constraint propagations A and B is usually stronger than running A and then B separately, consider program
+x_A=t_A;x_B=t_b;
+while(true){ if(!(P_A(x_A)&&P_B(x_B))){
+	x_A=f_A;x_B=f_B
+}}
+Where P_A(t_A),P_B(t_B) are true, P_A(f_A),P_B(f_B) false , P_A(t_A) can be proved by A but not B and  P_B(t_B) can be proved by B but not A

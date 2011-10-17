@@ -51,4 +51,6 @@ amethyst Amethyst < AmethystCore {
 	token(s) = spaces seq(s)
 
 	seq(s) = _seq(s) {s}
+
+	parse2(rule,obj) = {obj}[apply(rule)]
 }

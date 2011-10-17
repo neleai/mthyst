@@ -59,5 +59,6 @@ copy propagation
 , in Acts
 
 inline constant_propagation2.rb to lib/compiler
+Constant propagation also do value numbering to register renaming scheme.
 
 analysis what can be saved on stack

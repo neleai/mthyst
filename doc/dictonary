@@ -1,0 +1,30 @@
+We explain amethyst by showing dictonary between equivalent ruby and amethyst code
+
+2+2                                               {2+2}
+While in ruby you can simply type any expression in amethyst you have to enclose ruby expressions by {}.
+def foo;42;end															    	foo = {42}
+def bar(a,b,c);b;end                              bar(a,b,c) = {b}
+Amethyst rules correspond to ruby methods with different syntax. 
+Footnote: we dont support default argurments... yet.
+foo                                               foo
+bar(1,2,3)                                        bar(1,2,3)
+You can not put space before argument parenthness see parenthness.
+
+class Foo                                         amethyst Foo {
+	def foo;42;end                                    foo = {42}
+end                                               }
+class Bar < Foo                                   amethyst Bar < Foo {
+	def bar(a,b,c);b;end                              bar(a,b,c) = {b}
+end                                               }
+Amethyst grammars correspond to ruby classes with same inherance semantics.
+Footnote: Now you cant redefined methods created by amethyst(TODO test by method_added hook)
+
+foo;bar                                           foo bar
+As in context free grammars sequencing is done by space or newline not by ;
+
+x=foo;x+1                                         foo:x {x+1}
+x={42};x+1                                        {42}:x {x+1}
+Result of amethyst expression can be captured to local variable by appending :variable.
+Note that {x=42} {x+1} does not work(yet) as our parser not recognizes x as local variable.
+
+return FAIL unless x==3                           &{x==3}

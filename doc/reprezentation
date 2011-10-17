@@ -1,0 +1,11 @@
+Our immediate representation is described in file ast.rb.
+All elements have lot in common. They all inherit from class AmethystAST. 
+Rule application
+foo       Apply[{:name=>"foo"}]                    foo()
+bar(2,3)	Apply[CAct[2],CAct[3],{:name=>"bar}]     bar(CAct[2],CAct[3])
+'s'				seq(CAct["s"])
+"t"				token(CAct["t"])
+<u-v>			regch(CAct[/[u-v]/])
+Baz				clas(CAct[Baz])
+
+a b c        Seq[a(),b(),c()]
