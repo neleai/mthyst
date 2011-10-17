@@ -1,11 +1,26 @@
 Our immediate representation is described in file ast.rb.
-All elements have lot in common. They all inherit from class AmethystAST. 
-Rule application
-foo       Apply[{:name=>"foo"}]                    foo()
-bar(2,3)	Apply[CAct[2],CAct[3],{:name=>"bar}]     bar(CAct[2],CAct[3])
-'s'				seq(CAct["s"])
-"t"				token(CAct["t"])
-<u-v>			regch(CAct[/[u-v]/])
-Baz				clas(CAct[Baz])
+Each element is written as Class[array,{hash}] it reprezents how it is created
+A simple semantic act(number,string,regexp,class) is reprezented as CAct.
+amethyst 	 To create                               Printed
+{42}       CAct[42]																 42
 
-a b c        Seq[a(),b(),c()]
+Rule application
+foo        Apply[{:name=>"foo"}]                   foo()
+bar(2,3)	 Apply[CAct[2],CAct[3],{:name=>"bar}]    bar(2,3)
+'s'			 	                                         seq("s")
+"t"				                                         token("t")
+<u-v>			                                         regch(/[u-v]/)
+Baz				                                         clas(Baz)
+
+a   b   c  Seq[a(),b(),c()]
+d | e | f  Or[d(),e(),f()]
+
+Semantic acts and locals. 
+{foo}    Act[Local["foo"]]   L["foo"]
+{@bar}   Act[Key["bar"]]     @bar
+{@@baz}  Act[Global["baz"]]  @@baz
+
+{2+2}:x    Bind[Act["2+2"],{:name=>L["x"]}]
+
+All those are immutable. We unify elements that have same variables.
+In normalize we apply identities.
