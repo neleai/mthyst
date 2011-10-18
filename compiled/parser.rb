@@ -145,10 +145,10 @@ def prefixed_AmethystParsercb_1(bind)
 Pred[bind[0]]
 end
 def prefixed_AmethystParsercb_10(bind)
-bind[4]=Enter[bind[4],bind[9]]
+bind[6]=Enter[bind[6],bind[11]]
 end
 def prefixed_AmethystParsercb_2(bind)
-Lookahead[bind[3],bind[2]=="~"]
+Lookahead[bind[5],bind[4]=="~"]
 end
 def prefixed_AmethystParsercb_3(bind)
 /[.:\[]/
@@ -157,19 +157,19 @@ def prefixed_AmethystParsercb_4(bind)
 Apply["anything"]
 end
 def prefixed_AmethystParsercb_5(bind)
-Many[bind[4],bind[5]=="+"]
+Many[bind[6],bind[7]=="+"]
 end
 def prefixed_AmethystParsercb_6(bind)
-_Bind(bind[6],bind[4],bind[7])
+_Bind(bind[8],bind[6],bind[9])
 end
 def prefixed_AmethystParsercb_7(bind)
-Seq[_Bind("it",bind[4]) , Act[bind[8]] ]
+Seq[_Bind("it",bind[6]) , Act[bind[10]] ]
 end
 def prefixed_AmethystParsercb_8(bind)
-bind[4]=Pass[bind[4],bind[9]]
+bind[6]=Pass[bind[6],bind[11]]
 end
 def prefixed_AmethystParsercb_9(bind)
-Or[bind[4],Apply["empty"]]
+Or[bind[6],Apply["empty"]]
 end
 def procargs2_AmethystParsercb_1(bind)
 _append(bind[1],bind[2])
@@ -193,37 +193,37 @@ def rubyarg_AmethystParsercb_1(bind)
 Args[{:ary=>([bind[3]]+bind[4]+[bind[2]])}]
 end
 def rubyarg_AmethystParsercb_10(bind)
-_append(bind[13],bind[14])
+_append(bind[15],bind[16])
 end
 def rubyarg_AmethystParsercb_11(bind)
-_append(bind[0],bind[15])
+_append(bind[0],bind[17])
 end
 def rubyarg_AmethystParsercb_12(bind)
-Exp[_body(bind[16])]
+Exp[_body(bind[18])]
 end
 def rubyarg_AmethystParsercb_2(bind)
 /[$.:]/
 end
 def rubyarg_AmethystParsercb_3(bind)
-_append(bind[1],bind[7])
+_append(bind[1],bind[9])
 end
 def rubyarg_AmethystParsercb_4(bind)
 /[^`{}()'"\[\]]/
 end
 def rubyarg_AmethystParsercb_5(bind)
-_append(bind[0],bind[8])
+_append(bind[0],bind[10])
 end
 def rubyarg_AmethystParsercb_6(bind)
-_append(bind[9],bind[10])
+_append(bind[11],bind[12])
 end
 def rubyarg_AmethystParsercb_7(bind)
-_append(bind[0],bind[11])
+_append(bind[0],bind[13])
 end
 def rubyarg_AmethystParsercb_8(bind)
 Strin[connectstring(bind[0])]
 end
 def rubyarg_AmethystParsercb_9(bind)
-_append(bind[0],bind[12])
+_append(bind[0],bind[14])
 end
 def rule_AmethystParsercb_1(bind)
 @locals=[];$appends=[];@bnding=Bnding[]
@@ -308,6 +308,6 @@ def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'0a4c17b47a1ca9df8c96bf06d3e875fa'
+'acbe6ed200d0a9bcae925e318f338d85'
 end
   require 'compiled/parser_c'

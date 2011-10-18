@@ -52,5 +52,5 @@ amethyst Constant_Traverser < Traverser_Clone2 {
 	root = {@@consts=@consts}  {@cfg=nil;@reachable=nil;@consts=nil} traverse  
 	visit = Bind[traverse_item:expr {_Bind(@name,expr)} ]
 				| Act[.* {@self}]
-				| Local[ .* {@@consts[@ssaname] ? @@consts[@ssaname] : @self } ]
+				| Local[ .* {(@@consts[@ssaname] && @self[0]!="_result") ? @@consts[@ssaname] : @self } ]
 }
