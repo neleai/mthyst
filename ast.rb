@@ -148,11 +148,13 @@ $constno=0
 def cact_add_global(name,expr,wrap)
 	["VALUE #{name};","#{name}=#{expr};#{gc_mark_var(name)}",wrap]
 end
-class Result
-	def pure;true;end
-end
+[CAct,Result].each{|c|
+	eval("class #{c}
+					def pure;true;end
+	      end")
+}
+
 class CAct
-	def pure;	true;	end
 	def ccode #rewrite in amethyst
 		$constno+=1
 		return [nil,nil,"rb_ary_new3(0)"] if ary[0].is_a?(Array)
