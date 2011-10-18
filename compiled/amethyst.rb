@@ -56,15 +56,15 @@ end
 
 
 def amethyst_compiled_by
-'7c4dbb0fbb00526aab53b89f8c7d14c0'
+'46d12497faafe574a40390f3bb9e7223'
 end
 def amethyst_source_hash
-'b3edd3d2d9cb3d6f4f041407f81764d8'
+'9ebd849bfbdecc64f9a0412222037922'
 end
 def testversionamethyst(r)
  raise "invalid version" if r!=amethyst_version
 end
 def amethyst_version
-'734e00574dfdc0bb5d38619bd0204fea'
+'36f3725d638ea2ac2c55bff74820081b'
 end
   require 'compiled/amethyst_c'

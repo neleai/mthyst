@@ -45,14 +45,6 @@ class AmethystCore
 		@parents=[]
 	end	
 
-	def parse(rule,input)
-		self.src=input
-		self.pos=0
-		self.len=input.size
-		withtime(self.class){
-			self.apply(rule)
-		}
-	end
 end
 class <<AmethystCore
 	def parse(rule,input)

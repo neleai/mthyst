@@ -21,8 +21,6 @@ unify lambda+rule in ctranslator2
 rewrite using backtracking,repeat until...
 continuation passing style
 
-initialize parse by Pass
-
 switch and predication by constant propagation?
 
 consider left factor when conditions are in inclusion.
@@ -51,14 +49,12 @@ support for provable refactorization and migrations
 strings by boyer-moore like approach
 indexing from end
 
-
 operator for case insensivity
-
-copy propagation
 
 , in Acts
 
 inline constant_propagation2.rb to lib/compiler
+copy propagation
 Constant propagation also do value numbering to register renaming scheme.
 
-analysis what can be saved on stack
+analysis what objects can be saved on stack
