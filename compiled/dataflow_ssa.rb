@@ -309,15 +309,21 @@ def visit_Dead_Code_Deleter3cb_1(bind)
 src
 end
 def visit_Dead_Code_Deleter3cb_2(bind)
-@reachable[bind[1]] ? bind[1] : Placeholder
+(!@reachable[bind[1]] ||(bind[1].pure && !@bounded)) ? Placeholder : bind[1]
 end
 def visit_Dead_Code_Deleter3cb_3(bind)
-src.expr
+@bounded=true
 end
 def visit_Dead_Code_Deleter3cb_4(bind)
-@reachable[bind[4]] ? src : (((bind[6].is_a?(Act)||bind[6].is_a?(CAct))&&bind[6].pure)? Placeholder : bind[6])
+@bounded=false
 end
 def visit_Dead_Code_Deleter3cb_5(bind)
+src.expr
+end
+def visit_Dead_Code_Deleter3cb_6(bind)
+@reachable[bind[6]] ? src : (((bind[8].is_a?(Act)||bind[8].is_a?(CAct))&&bind[8].pure)? Placeholder : bind[8])
+end
+def visit_Dead_Code_Deleter3cb_7(bind)
 @reachable[bind[1].ssaname] ? bind[1] : Placeholder
 end
 
@@ -369,15 +375,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'46d12497faafe574a40390f3bb9e7223'
+'5225087d145c133e487bff022e7909f9'
 end
 def dataflow_ssa_source_hash
-'5de92e0d764995e234e6f266feb8696a'
+'d8305bf2bf60cf6da5d5f25c32337e92'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'cd83de89ac09237403bccf95a0a38fb3'
+'98023a09392ae0e43f6b1d859eaaa3db'
 end
   require 'compiled/dataflow_ssa_c'

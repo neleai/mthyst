@@ -102,7 +102,7 @@ end
 
 
 def detect_variables2_compiled_by
-'46d12497faafe574a40390f3bb9e7223'
+'5225087d145c133e487bff022e7909f9'
 end
 def detect_variables2_source_hash
 '56196ab0e78188e5a2d6bc8b4c79e49b'
@@ -111,6 +111,6 @@ def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'c039df08fde1b18411149c141a12b79d'
+'7acd6b3471fec765ca868539e132d588'
 end
   require 'compiled/detect_variables2_c'
