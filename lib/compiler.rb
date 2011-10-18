@@ -18,10 +18,28 @@ class Gram
 	def opt(r)
 		dce=[ Dataflow, Dead_Code_Deleter3,Forget_SSA]
 		[dce].flatten.each{|o|
-	    puts r.inspect if $debug>1
      	r=o.new.parse(:root,r)
+	    puts r.inspect if $debug>1
 		}
-		r=propagate_consts(r)
+		
+		[Dataflow].each{|p| r=p.new.parse(:root,r)}
+		withtime(Constant_Propagator){
+			c=Constant_Propagator.new
+			c.parse(:root,[r.cfg])
+			r.consts={}
+			c.analyze2.each{|k,v|
+			  if v!=Top&&v!=Bottom
+			    r.consts[k]=v
+			    r.consts[k]=Act[v] if v.is_a?(Exp)
+			  end
+			}
+			puts r.inspect if $debug>1
+		}
+		[Constant_Traverser].each{|p| 
+			r=p.new.parse(:root,r)
+			puts r.inspect if $debug>1
+		}
+		
  		[ dce,	 Left_Factor,	 dce].flatten.each{|o|
 			r=o.new.parse(:root,r)
 			puts r.inspect if $debug>1

@@ -1,14 +1,3 @@
-$:.unshift 'lib'
-require 'graph'
-require 'pp'
-require 'amethyst'
-require 'compiler'
-require 'compiled/constant_propagation'
-
-#t=translate("amethyst Foo { bar = {1}:x ({x}:y {y}:x)* }")
-#nspect
-#r=t[0].rules[0]
-#r=Dataflow.new.parse(:root,r)
 class Constant_Propagator < Amethyst
   attr_accessor :vals,:active,:activea,:depend
 	def initialize()
@@ -51,29 +40,4 @@ class Constant_Propagator < Amethyst
 	end
 end
 
-def propagate_consts(r)
-[Dataflow].each{|p| r=p.new.parse(:root,r)
-#puts r.inspect
-}
-withtime("Constant_Propagator"){
-c=Constant_Propagator.new
-c.parse(:root,[r.cfg])
-#puts c.inspect
-r.consts={}
-c.analyze2.each{|k,v| 
-	if v!=Top&&v!=Bottom  
-		r.consts[k]=v 
-		r.consts[k]=Act[v] if v.is_a?(Exp)
-	end
-}
-}
-puts r.inspect if $debug>1
-r=Constant_Traverser.new.parse(:root,r)
-puts r.inspect if $debug>1
-r
-end
-if false
-["amethyst","parser"].each{|f|
-Compiler::compile("amethyst/#{f}.ame","compiled/a.rb","#{f}2")
-}
-end
+
