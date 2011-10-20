@@ -1,7 +1,4 @@
-$:.unshift 'lib'
-require 'amethyst'
-require 'ast'
-require 'compiler'
+require 'lib/amethyst'
 
 COMPILED.each{|f|
 puts f

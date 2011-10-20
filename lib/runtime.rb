@@ -50,5 +50,5 @@ class <<AmethystCore
 		self.class.new.parse(rule,input)
 	end
 end
-require 'c/Ame'
+require 'lib/c/Ame'
 

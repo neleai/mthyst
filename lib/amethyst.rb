@@ -1,4 +1,5 @@
-$: << File.expand_path(File.dirname(__FILE__)+"/..")
+Amethyst_path=File.expand_path(File.dirname(__FILE__)+"/..")
+$: << Amethyst_path
 require 'lib/graph'
 require 'lib/utils'
 require 'lib/ast'
@@ -16,4 +17,4 @@ class Amethyst < AmethystCore
 	def self::evalgrammar(g)
 	end
 end
-require 'compiler'
+require 'lib/compiler'

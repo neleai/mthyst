@@ -115,7 +115,7 @@ class <<Compiler
 	def compile(file,out,file2)
 		source=File.new(file).read
 		source_hash=Digest::MD5.hexdigest(source)
-		if Dir["compiled/#{file2}.rb"]!=[] && eval("#{file2}_compiled_by")==$compiled_by && eval("#{file2}_source_hash")==source_hash && $debug<1
+		if Dir[Amethyst_path+ "/compiled/#{file2}.rb"]!=[] && eval("#{file2}_compiled_by")==$compiled_by && eval("#{file2}_source_hash")==source_hash && $debug<1
 			return unless ["amethyst","traverser"].include? file2 #inheritance
 		end
 		tree=AmethystParser.new.parse(:igrammar,source)
@@ -155,7 +155,7 @@ end
 Compiler::init
 $compiled_by=""
 COMPILED.each{|opt|
-if Dir["compiled/#{opt}.rb"]!=[] #new grammars
+if Dir[Amethyst_path+"/compiled/#{opt}.rb"]!=[] #new grammars
 	require "compiled/#{opt}"
 	$compiled_by<< eval("#{opt}_version")
 end
