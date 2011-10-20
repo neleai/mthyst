@@ -95,9 +95,12 @@ def igrammar_AmethystParsercb_3(bind)
 _append(bind[0],bind[5])
 end
 def inlineHostExpr_AmethystParsercb_1(bind)
-bind[4]+[',']
+_append(bind[0],bind[1])
 end
 def inlineHostExpr_AmethystParsercb_2(bind)
+bind[4]+[',']
+end
+def inlineHostExpr_AmethystParsercb_3(bind)
 bind[5]=[bind[5]]
 end
 def key_AmethystParsercb_1(bind)
@@ -129,15 +132,6 @@ _append(bind[0],bind[4])
 end
 def name_AmethystParsercb_3(bind)
 leterize(bind[5]*"")
-end
-def number_AmethystParsercb_1(bind)
-/[0-9]/
-end
-def number_AmethystParsercb_2(bind)
-_append(bind[0],bind[1])
-end
-def number_AmethystParsercb_3(bind)
-_append(bind[0],bind[2])
 end
 def prefixed_AmethystParsercb_1(bind)
 Pred[bind[0]]
@@ -297,15 +291,15 @@ end
 
 
 def parser_compiled_by
-'3dc91be876530e8b8365e27304be8d79'
+'32e1bf03e0f843f0f8290a1271d8023d'
 end
 def parser_source_hash
-'11c6af1b316089224bbdf5aef58d210c'
+'d4be34e646c37287959b1920949aaa5f'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'d4a72ab8822bcc102af42fe46a543aa4'
+'d97b018f46d590dc39437e58a827c161'
 end
   require 'compiled/parser_c'

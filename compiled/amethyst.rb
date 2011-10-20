@@ -33,6 +33,15 @@ end
 def lower_Amethystcb_1(bind)
 /[a-z]/
 end
+def number_Amethystcb_1(bind)
+_append(bind[0],bind[1])
+end
+def number_Amethystcb_2(bind)
+_append(bind[0],bind[2])
+end
+def number_Amethystcb_3(bind)
+(bind[3]*"").to_i
+end
 def regch_Amethystcb_1(bind)
 (bind[3].match(bind[2])) || FAIL
 end
@@ -41,9 +50,6 @@ bind[1]*""
 end
 def spaces_Amethystcb_1(bind)
 /[\s\t\r\n\f]/
-end
-def spaces_Amethystcb_2(bind)
-_append(bind[0],bind[2])
 end
 def upper_Amethystcb_1(bind)
 /[A-Z]/
@@ -56,15 +62,15 @@ end
 
 
 def amethyst_compiled_by
-'3dc91be876530e8b8365e27304be8d79'
+'32e1bf03e0f843f0f8290a1271d8023d'
 end
 def amethyst_source_hash
-'9ebd849bfbdecc64f9a0412222037922'
+'20c13aeccc5b724b5bd33cdc9542487b'
 end
 def testversionamethyst(r)
  raise "invalid version" if r!=amethyst_version
 end
 def amethyst_version
-'1522aab1055e8ef2ff92908ae4f3f9d5'
+'a9cd97a664cfd0dfcc3869afcd18e34c'
 end
   require 'compiled/amethyst_c'
