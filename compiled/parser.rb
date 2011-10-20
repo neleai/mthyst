@@ -1,5 +1,3 @@
-require 'ast'
-
 def connectstring(ary)
 	r=[]
 	s=nil
@@ -302,7 +300,7 @@ def parser_compiled_by
 '3dc91be876530e8b8365e27304be8d79'
 end
 def parser_source_hash
-'d1f9e8937adb72c1bb0d0e1f84feabb9'
+'11c6af1b316089224bbdf5aef58d210c'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version

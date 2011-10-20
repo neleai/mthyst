@@ -1,4 +1,3 @@
-require 'utils'
 FAIL=Object.new
 def FAIL.inspect
 	"FAIL"

@@ -1,6 +1,6 @@
 require 'digest'
 require 'set'
-$OPT="-O3 -march=core2"
+$OPT="-O1 -march=core2"
 $debug=1
 $profiling=false
 COMPILED=["amethyst","traverser","tests","detect_variables2","parser","dataflow_ssa","inliner2",

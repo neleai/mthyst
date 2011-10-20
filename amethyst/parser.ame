@@ -1,5 +1,3 @@
-require 'ast'
-
 def connectstring(ary)
 	r=[]
 	s=nil
