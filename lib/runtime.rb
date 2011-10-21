@@ -1,6 +1,9 @@
 FAIL=Object.new
-def FAIL.inspect
-	"FAIL"
+class << FAIL
+	def inspect
+		"FAIL"
+	end
+	alias_method :to_s,:inspect
 end
 
 class AmethystLambda
