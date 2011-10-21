@@ -34,6 +34,48 @@ class ConstantLattice
 end
 
 class Constant_Propagator < Amethyst
+  attr_accessor :vals,:active,:activea,:depend
+  def initialize()
+    @vals={}
+    @active={}
+    @activea=[]
+  end
+
+  def analyze
+    while e=activea.pop
+      active.delete(e)
+      val=step(e)
+      if val!=valof(e)
+        setval(e,val)
+        depend.edges[e].each{|d| addactive(d)}
+      end
+    end
+    @vals.clone.each{|k,v| @vals[k]=v.val}
+  end
+  def addactive(e)
+    if !@active[e]
+      @active[e]=true
+      @activea<<e
+    end
+  end
+
+  def analyze2
+    @depend.topo_order.each{|e| addactive(e);@vals[e]=ConstantLattice[Bottom]}
+    analyze
+    @vals
+  end
+  def setval(e,x)
+    return vals[e.ssaname]=x if e.is_a?(Local)
+    return vals[e]=x
+  end
+  def valof(e)
+    return vals[e.ssaname] if e.is_a?(Local)
+    return vals[e]
+  end
+end
+
+
+class Constant_Propagator < Amethyst
 
 def root_Constant_Propagatorcb_1(bind)
 @depend=bind[0]
@@ -116,7 +158,7 @@ def constant_propagation_compiled_by
 '32e1bf03e0f843f0f8290a1271d8023d'
 end
 def constant_propagation_source_hash
-'78abe3f9cc5549ee6b73dd3c3ed1744f'
+'d78bfaa5c4bf07850d77f0ad2c8c4cc2'
 end
 def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version

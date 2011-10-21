@@ -162,7 +162,6 @@ end
 }
 $compiled_by=Digest::MD5.hexdigest($compiled_by)
 
-require 'constant_propagation2'
 
 class Amethyst
 	alias_method :parse2,:parse
