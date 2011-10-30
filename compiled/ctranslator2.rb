@@ -28,7 +28,7 @@ class AmethystCTranslator < Amethyst
 	end
 	def symb(str)
 		str=str.gsub("@","_at_");
-		@header<<"VALUE s_#{str}#{@grammar};"
+		@header<<"static VALUE s_#{str}#{@grammar};"
 		@init<<"s_#{str}#{@grammar}=rb_intern(#{str.inspect});"
 		"s_#{str}#{@grammar}"
 	end
@@ -67,7 +67,7 @@ end
 class AmethystCTranslator < Amethyst
 
 def add_c_global_AmethystCTranslatorcb_1(bind)
-@header<<"VALUE #{bind[0]};"; @init<<"#{bind[0]}=#{bind[1]};#{gc_mark_var(bind[0])};"
+@header<<"static VALUE #{bind[0]};"; @init<<"#{bind[0]}=#{bind[1]};#{gc_mark_var(bind[0])};"
 end
 def addcallback_AmethystCTranslatorcb_1(bind)
 addcallback2(bind[0])
@@ -351,15 +351,15 @@ end
 
 
 def ctranslator2_compiled_by
-'32e1bf03e0f843f0f8290a1271d8023d'
+'f6e745e25a98ad1f0a13aca1afccdd21'
 end
 def ctranslator2_source_hash
-'f4c25d12edada9565fe94d99fb158fd1'
+'93e6d10df797c5f0782d535db720f6ed'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'a270de91b3a33da8b7709e44c1125841'
+'ed93e6aa0e85f9d1954f774918601acd'
 end
   require 'compiled/ctranslator2_c'

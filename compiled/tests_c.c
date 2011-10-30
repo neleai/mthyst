@@ -3,14 +3,14 @@ VALUE cls_Tests;
 VALUE AmethystCore__seq(VALUE self ,VALUE);
 VALUE Amethyst_fails(VALUE self );
 VALUE Tests_sw(VALUE self );
-VALUE c_22;
-VALUE c_23;
-VALUE c_24;
-VALUE c_25;
-VALUE c_26;
-VALUE c_27;
-VALUE c_28;
-VALUE c_29;
+static VALUE c_22;
+static VALUE c_23;
+static VALUE c_24;
+static VALUE c_25;
+static VALUE c_26;
+static VALUE c_27;
+static VALUE c_28;
+static VALUE c_29;
 VALUE Tests_sw(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(2);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC('d') ... UC('d'):;  it=rb_obj_clone(c_22); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(fail);it=rb_obj_clone(c_23);
@@ -34,4 +34,4 @@ c_27=rb_str_new2("b");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),
 c_28=rb_str_new2("c");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_28);
 c_29=rb_str_new2("c");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_29);
 rb_define_method(cls_Tests,"sw",Tests_sw,0);
- rb_eval_string("testversiontests('c2063160ae7f3952a7b5bd2186041547')");}
+ rb_eval_string("testversiontests('3377eba14a06130217833824258ad378')");}

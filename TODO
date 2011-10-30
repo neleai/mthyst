@@ -43,6 +43,7 @@ move switch into pipeline
 predication by splitting to predicated and notpredicated part
 
 serialization
+incremental compilation
 
 support for provable refactorization and migrations
 
@@ -57,3 +58,5 @@ copy propagation
 Constant propagation also do value numbering to register renaming scheme.
 
 analysis what objects can be saved on stack
+
+do not propagate constants to Result

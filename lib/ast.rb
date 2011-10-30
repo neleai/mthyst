@@ -146,7 +146,7 @@ class PureAct
 end
 $constno=0
 def cact_add_global(name,expr,wrap)
-	["VALUE #{name};","#{name}=#{expr};#{gc_mark_var(name)}",wrap]
+	["static VALUE #{name};","#{name}=#{expr};#{gc_mark_var(name)}",wrap]
 end
 [CAct,Result].each{|c|
 	eval("class #{c}

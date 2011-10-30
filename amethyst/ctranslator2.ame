@@ -28,7 +28,7 @@ class AmethystCTranslator < Amethyst
 	end
 	def symb(str)
 		str=str.gsub("@","_at_");
-		@header<<"VALUE s_#{str}#{@grammar};"
+		@header<<"static VALUE s_#{str}#{@grammar};"
 		@init<<"s_#{str}#{@grammar}=rb_intern(#{str.inspect});"
 		"s_#{str}#{@grammar}"
 	end
@@ -158,7 +158,7 @@ ame_setsrc(self,#{bget(@var)}); ame_setpos(self,0); ame_setlen(self,FIX2LONG(rb_
             @@lambdas<< h+"{VALUE vals[0]; /*todo unify with rule and get args*/  int x;VALUE it;VALUE arg0,arg1,arg2,arg3;\n#{body}\nreturn it;\nfail: return failobj; }" }
 							 {"AmethystLambda.new(:#{lambd},self,bind)" }
 
-	add_c_global(name,expr) = {@@header<<"VALUE #{name};"; @@init<<"#{name}=#{expr};#{gc_mark_var(name)};"}
+	add_c_global(name,expr) = {@@header<<"static VALUE #{name};"; @@init<<"#{name}=#{expr};#{gc_mark_var(name)};"}
 
 	failwrap(s) = {"#{s} FAILTEST(#{@@faillabel});" }
 

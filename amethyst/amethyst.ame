@@ -9,7 +9,7 @@ amethyst Amethyst < AmethystCore {
 
   char= .:c &{c.is_a? String } -> c
 
-  endline=  ('\r\n' ) | '\r' | '\n'
+  endline =  '\r\n' | '\r' | '\n'
 
   space = <\s\t\r\n\f>
 
