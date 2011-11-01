@@ -1,4 +1,4 @@
-require 'lib/amethyst'
+require './lib/amethyst'
 
 COMPILED.each{|f|
 puts f

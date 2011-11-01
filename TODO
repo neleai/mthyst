@@ -60,3 +60,5 @@ Constant propagation also do value numbering to register renaming scheme.
 analysis what objects can be saved on stack
 
 do not propagate constants to Result
+
+replace({"a"=>"b","c"=>"d"})

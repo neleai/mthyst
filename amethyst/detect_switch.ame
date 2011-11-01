@@ -363,7 +363,7 @@ amethyst Detect_Switch < Detect_First {
 	visit = Or[ {CharLattice[]}:ary2 {[]}:ary3 {[]}:els
 		(traverse_item:e &{first(e)} {e}:els[] {ary2|=first(e)})* &eof
 		{ary2}:firs
-		{ary2=ary2.ary.map{|e|  [Anything,Empty].include?(e) ? "default" : e}.uniq}
+		{ary2=ary2.ary.map{|el|  [Anything,Empty].include?(el) ? "default" : el}.uniq}
 		&{ary2.size>1}
 		{Or[*els]}:new_or
 		&{new_or.is_a?(Or)}
@@ -372,7 +372,7 @@ amethyst Detect_Switch < Detect_First {
 		{@@cases.each{|ee|e=ee
 			ary3<<[e,predicate(e,new_or)]
 		}}
-		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.inject(:|),v[0][1]]}.sort_by{|e| e.inspect}}
+		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.inject(:|),v[0][1]]}.sort_by{|el| el.inspect}}
 		{ary3<<[CharLattice["default"],Apply["fails"]] unless ary2.include?("default")}
     &{ary3.size>1}
 		{s=Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>ary3}];puts s.inspect;s}
@@ -409,7 +409,7 @@ amethyst Detect_ClasSwitch < Detect_First {
 		}}
     {ary3=ary3.map{|o,v| v==Placeholder ? [o,Apply["fails"]] : [o,v]}}
 
-		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.sort_by{|e| e.inspect},v[0][1]]}.sort_by{|e| e.inspect}}
+		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.sort_by{|el| el.inspect},v[0][1]]}.sort_by{|el| el.inspect}}
 		{ary3=ary3.map{|o,v| [ClasLattice[*o],v]}}
 	  {c=classswitch(ary2,firs,ary3)}
 	]

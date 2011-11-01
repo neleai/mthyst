@@ -9,11 +9,11 @@ VALUE ame_setposrb(VALUE self,VALUE val){return INT2FIX(ame_setpos(self,FIX2INT(
 VALUE ame_getlenrb(VALUE self){return INT2FIX(ame_getlen(self));}
 
 VALUE AmethystCore__seq(VALUE self,VALUE str){
-	int len=RSTRING(str)->len;
+	int len=RSTRING_LEN(str);
 	VALUE src=ame_getsrc(self);
 	if (TYPE(src)==T_STRING){
 		int input=ame_getpos(self);
-		if (strncmp(ame_curstr(self),RSTRING(str)->ptr,len)) 
+		if (strncmp(ame_curstr(self),RSTRING_PTR(str),len)) 
 			{ return failobj; }
 		else {
 			ame_setpos(self,input+len);

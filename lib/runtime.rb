@@ -24,16 +24,6 @@ class AmethystCore
 		end
 	end
 	
-	def foreign(grammar,rule,*args)
-		#share @grammars in case of multiple indirect invocations
-		g=@grammars[grammar]||=grammar.new(@grammars)
-		g.src=@src
-		g.input=@input
-		r=g.call(rule,*args)
-		@input=g.input
-		return r
-	end
-
   def _append(ar,it)
     if it.is_a? Array
       ar.concat(it)

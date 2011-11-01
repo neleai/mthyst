@@ -14,7 +14,7 @@ VALUE failobj;
 #define INSS printf("%s\n",RSTRING(rb_funcall(self,rb_intern("inspect"),0))->ptr);
 #define INSBI printf("%s\n",RSTRING(rb_funcall(bind,rb_intern("inspect"),0))->ptr);
 #define UC(x) ((unsigned char) x)
-#define rb_str_new_cstr rb_str_new2
+//#define rb_str_new_cstr rb_str_new2
 
 //Ommited check to allow gcc optimize
 #undef Data_Get_Struct
@@ -49,7 +49,7 @@ ACCESSOR(VALUE,src);ACCESSOR(int,pos);ACCESSOR(int,len);ACCESSOR(VALUE,cut);ACCE
 static inline VALUE ame_getposrb(VALUE self){return INT2FIX(ame_getpos(self));}
 
 static inline char* ame_curstr(VALUE self){
-  return RSTRING(ame_getsrc(self))->ptr+ame_getpos(self);
+  return RSTRING_PTR(ame_getsrc(self))+ame_getpos(self);
 }
 static inline VALUE ame_curobj(VALUE self){
   return rb_funcall(ame_getsrc(self),s_ary_get,1,ame_getposrb(self));
