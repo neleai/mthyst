@@ -213,11 +213,11 @@ class Switch_Dataflow < First_Dataflow
 		while i<s.size
 			c=s[i].ord
 			if s[i+1]==?-
-				chars<<[c,s[i+2]]
+				chars<<[c,s[i+2].ord]
 				i+=3
 			elsif s[i]==?\\
 				raise "stray \\" if i==s.size-1
-				c=eval('"'+s[i,2]+'"')[0]
+				c=eval('"'+s[i,2]+'"')[0].ord
 				i+=2
 			else
 				chars<<[c,c]
@@ -844,7 +844,7 @@ def detect_switch_compiled_by
 'b8cd7f2b463428f7d287ec8a4dd97bb4'
 end
 def detect_switch_source_hash
-'ae9836271078bdb777a90ffda71e0c42'
+'26ae7cc9d65148acb72eeff08982035a'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
