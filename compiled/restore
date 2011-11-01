@@ -9,3 +9,5 @@ gcc -shared -o $1_c.so $1_c.o -L. -L/usr/lib -L.  -rdynamic -Wl,-export-dynamic 
 for I in *.rb ;do
 comp `basename $I .rb`
 done
+
+cd ../lib/c/;ruby extconf.rb;make clean;make

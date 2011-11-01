@@ -50,7 +50,7 @@ class AmethystCTranslator < Amethyst
 		r.each{|e| @ruletable[e.name]=e}
 	end
 	def rbcall(name,args)
-		"rb_funcall(self,#{symb(name)},#{args.size}#{args.map{|a| ",#{a}"}})"
+		"rb_funcall(self,#{symb(name)},#{args.size}#{args.map{|a| ",#{a}"}*""})"
 	end
 	def callrule(name,argc)
 		margs=argc.times.map{|a| ",arg#{a}"}
@@ -95,10 +95,10 @@ failobj=rb_eval_string(\"FAIL\");
 "
 							[s,init,rbcode] } ]
 				|  Rule[@name:name {@@rulename=name; Local.resetnumbering;resetlabels;@@locls={}} @body=>trans:body  
-          { h="VALUE #{@@grammar}_#{name}(VALUE self #{map_index(@args){|i| ",VALUE a#{i}"}})" 
+          { h="VALUE #{@@grammar}_#{name}(VALUE self #{map_index(@args){|i| ",VALUE a#{i}"}*""})" 
 						@@header<<h+";"
 						@@defmethods<< "rb_define_method(cls_#{@@grammar},\"#{@name}\",#{@@grammar}_#{@name},#{@args.size});"
-						h+"{VALUE vals[#{@args.size}]; VALUE bind=bind_new2(#{@@locls.size}); #{map_index(@args){|i| bset(@args[i],"a#{i}")+";"}} int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+						h+"{VALUE vals[#{@args.size}]; VALUE bind=bind_new2(#{@@locls.size}); #{map_index(@args){|i| bset(@args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 \n#{body}\nreturn it;\nfail: return failobj; }" } ]
 				| Act[ .*:{addcallback(@pred ? ["(",it,") || FAIL"] : it)}:cbno {"it=#{rbcall(cbno,["bind"])}; #{@pred ? "FAILTEST(#{@@faillabel});" :"" }"} ]
 				| CAct[.* {ar=*@ccode; 

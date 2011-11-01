@@ -50,7 +50,7 @@ class AmethystCTranslator < Amethyst
 		r.each{|e| @ruletable[e.name]=e}
 	end
 	def rbcall(name,args)
-		"rb_funcall(self,#{symb(name)},#{args.size}#{args.map{|a| ",#{a}"}})"
+		"rb_funcall(self,#{symb(name)},#{args.size}#{args.map{|a| ",#{a}"}*""})"
 	end
 	def callrule(name,argc)
 		margs=argc.times.map{|a| ",arg#{a}"}
@@ -169,10 +169,10 @@ def trans_AmethystCTranslatorcb_12(bind)
 bind[26]=[bind[26]]
 end
 def trans_AmethystCTranslatorcb_13(bind)
-h="VALUE #{@grammar}_#{bind[25]}(VALUE self #{map_index(src.args){|i| ",VALUE a#{i}"}})" 
+h="VALUE #{@grammar}_#{bind[25]}(VALUE self #{map_index(src.args){|i| ",VALUE a#{i}"}*""})" 
 						@header<<h+";"
 						@defmethods<< "rb_define_method(cls_#{@grammar},\"#{src.name}\",#{@grammar}_#{src.name},#{src.args.size});"
-						h+"{VALUE vals[#{src.args.size}]; VALUE bind=bind_new2(#{@locls.size}); #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}} int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+						h+"{VALUE vals[#{src.args.size}]; VALUE bind=bind_new2(#{@locls.size}); #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 \n#{bind[27]}\nreturn it;\nfail: return failobj; }" 
 end
 def trans_AmethystCTranslatorcb_14(bind)
@@ -354,7 +354,7 @@ def ctranslator2_compiled_by
 'b8cd7f2b463428f7d287ec8a4dd97bb4'
 end
 def ctranslator2_source_hash
-'93e6d10df797c5f0782d535db720f6ed'
+'464ed7fc3b413e5ed0646cb8680ec52a'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
