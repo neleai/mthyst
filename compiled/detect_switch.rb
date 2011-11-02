@@ -86,8 +86,8 @@ class CharLattice < FirstLattice
 		top|empty
 	end
 	def cchar(c)
-		return "UC('\\'')" if c==?'
-		"UC('#{c.chr.inspect[1...-1]}')"
+		#return "UC('\\'')" if c==?'
+		"UC(#{c.ord})"
 	end
   def cases(first)
     ary.map{|c| c=="default" ? "default:;" : "case #{cchar(c[0])} ... #{cchar(c[1])}:;"}*""
@@ -844,12 +844,12 @@ def detect_switch_compiled_by
 'b8cd7f2b463428f7d287ec8a4dd97bb4'
 end
 def detect_switch_source_hash
-'26ae7cc9d65148acb72eeff08982035a'
+'e5d66875e62b4dfc3d49fd083ce7889b'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'f6d073830626dbd7a018de8f75b6ec99'
+'d3d716ccffdf4d96f6b5050fbc5e98ef'
 end
   require 'compiled/detect_switch_c'

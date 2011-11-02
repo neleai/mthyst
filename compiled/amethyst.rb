@@ -71,6 +71,6 @@ def testversionamethyst(r)
  raise "invalid version" if r!=amethyst_version
 end
 def amethyst_version
-'e37faa0d99f9da813888370fdc71b003'
+'0d9bab0035d1859f789b923500d49d5c'
 end
   require 'compiled/amethyst_c'

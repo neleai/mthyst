@@ -13,11 +13,11 @@ static VALUE c_28;
 static VALUE c_29;
 VALUE Tests_sw(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(2);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC('d') ... UC('d'):;  it=rb_obj_clone(c_22); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(fail);it=rb_obj_clone(c_23);
+unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC(100) ... UC(100):;  it=rb_obj_clone(c_22); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(fail);it=rb_obj_clone(c_23);
  bind_aset(bind,0/*_result*/,it); it=bind_aget(bind,0/*_result*/);
- bind_aset(bind,1/*_result*/,it);  break;case UC('a') ... UC('a'):;  it=rb_obj_clone(c_24); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(fail); it=rb_obj_clone(c_25); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(fail);it=rb_obj_clone(c_26);
+ bind_aset(bind,1/*_result*/,it);  break;case UC(97) ... UC(97):;  it=rb_obj_clone(c_24); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(fail); it=rb_obj_clone(c_25); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(fail);it=rb_obj_clone(c_26);
  bind_aset(bind,0/*_result*/,it); it=bind_aget(bind,0/*_result*/);
- bind_aset(bind,1/*_result*/,it);  break;case UC('b') ... UC('b'):;  it=rb_obj_clone(c_27); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(fail); it=rb_obj_clone(c_28); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(fail);it=rb_obj_clone(c_29);
+ bind_aset(bind,1/*_result*/,it);  break;case UC(98) ... UC(98):;  it=rb_obj_clone(c_27); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(fail); it=rb_obj_clone(c_28); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(fail);it=rb_obj_clone(c_29);
  bind_aset(bind,0/*_result*/,it); it=bind_aget(bind,0/*_result*/);
  bind_aset(bind,1/*_result*/,it);  break;default:;   it=Amethyst_fails(self ); FAILTEST(fail); break;}it=bind_aget(bind,1/*_result*/);
 return it;
@@ -34,4 +34,4 @@ c_27=rb_str_new2("b");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),
 c_28=rb_str_new2("c");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_28);
 c_29=rb_str_new2("c");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_29);
 rb_define_method(cls_Tests,"sw",Tests_sw,0);
- rb_eval_string("testversiontests('3377eba14a06130217833824258ad378')");}
+ rb_eval_string("testversiontests('655ff19e154d8adb3fd72567c13f2451')");}

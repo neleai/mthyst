@@ -86,8 +86,8 @@ class CharLattice < FirstLattice
 		top|empty
 	end
 	def cchar(c)
-		return "UC('\\'')" if c==?'
-		"UC('#{c.chr.inspect[1...-1]}')"
+		#return "UC('\\'')" if c==?'
+		"UC(#{c.ord})"
 	end
   def cases(first)
     ary.map{|c| c=="default" ? "default:;" : "case #{cchar(c[0])} ... #{cchar(c[1])}:;"}*""

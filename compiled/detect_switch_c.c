@@ -303,7 +303,7 @@ alt2_2: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
  it=bind_aget(bind,2/*autovar*/);
  bind_aset(bind,7/*autovar*/,it); int oldpos6=ame_getpos(self); int oldlen4=ame_getlen(self); VALUE oldsrc4=ame_getsrc(self); int fail4=0;
 ame_setsrc(self,bind_aget(bind,7/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2LONG(rb_funcall(ame_getsrc(self),s_sizeSizes_Dataflow,0)));
-   it=Amethyst_spaces(self ); FAILTEST(pass4);unsigned char chr3=*ame_curstr(self);  switch(chr3){case UC('r') ... UC('r'):;  it=rb_obj_clone(c_276); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(pass4); break;case UC('a') ... UC('a'):;  it=rb_obj_clone(c_277); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(pass4); break;case UC('c') ... UC('c'):;  it=rb_obj_clone(c_278); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(pass4); break;default:;   it=Amethyst_fails(self ); FAILTEST(pass4); break;}  it=Amethyst_eof(self ); FAILTEST(pass4);
+   it=Amethyst_spaces(self ); FAILTEST(pass4);unsigned char chr3=*ame_curstr(self);  switch(chr3){case UC(114) ... UC(114):;  it=rb_obj_clone(c_276); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(pass4); break;case UC(97) ... UC(97):;  it=rb_obj_clone(c_277); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(pass4); break;case UC(99) ... UC(99):;  it=rb_obj_clone(c_278); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(pass4); break;default:;   it=Amethyst_fails(self ); FAILTEST(pass4); break;}  it=Amethyst_eof(self ); FAILTEST(pass4);
 	goto success4;
 	pass4: fail4=1;
 	success4: ame_setsrc(self,oldsrc4); ame_setpos(self,oldpos6); ame_setlen(self,oldlen4);
@@ -2275,4 +2275,4 @@ rb_define_method(cls_Detect_ClasSwitch,"root",Detect_ClasSwitch_root,0);
 rb_define_method(cls_Detect_ClasSwitch,"traverse",Detect_ClasSwitch_traverse,0);
 rb_define_method(cls_Detect_ClasSwitch,"traverse_item",Detect_ClasSwitch_traverse_item,0);
 rb_define_method(cls_Detect_ClasSwitch,"visit",Detect_ClasSwitch_visit,0);
- rb_eval_string("testversiondetect_switch('f6d073830626dbd7a018de8f75b6ec99')");}
+ rb_eval_string("testversiondetect_switch('d3d716ccffdf4d96f6b5050fbc5e98ef')");}
