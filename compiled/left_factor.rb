@@ -9,12 +9,6 @@ end
 class Left_Factor < Traverser_Clone2
 
 def binds_Left_Factorcb_1(bind)
-bind[1]=[bind[1]]
-end
-def binds_Left_Factorcb_2(bind)
-src.expr
-end
-def binds_Left_Factorcb_3(bind)
 _Bind(src.name,bind[4])
 end
 def factor_Left_Factorcb_1(bind)
@@ -37,6 +31,12 @@ def factor_Left_Factorcb_6(bind)
 end
 def factor_Left_Factorcb_7(bind)
 Or[*(bind[2]+merge(bind[3]))]
+end
+def first_Left_Factorcb_1(bind)
+bind[1]=[bind[1]]
+end
+def first_Left_Factorcb_2(bind)
+src.expr
 end
 def rest_Left_Factorcb_1(bind)
 _append(bind[3],bind[4])
@@ -108,7 +108,7 @@ end
 
 
 def left_factor_compiled_by
-'b8cd7f2b463428f7d287ec8a4dd97bb4'
+'4322872c516510b2fc07ef92ced6b004'
 end
 def left_factor_source_hash
 '5f695eb2fd88cd92c4c57d0927917584'
@@ -117,6 +117,6 @@ def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version
 end
 def left_factor_version
-'d7feeaaea2d4ebba452a11702e7b870c'
+'a18146e567e727bc5df62d16e802d894'
 end
   require 'compiled/left_factor_c'

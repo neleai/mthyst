@@ -1,10 +1,7 @@
 class Amethyst < AmethystCore
 
-def _false_Amethystcb_1(bind)
+def _true_Amethystcb_1(bind)
 (bind[0] == bind[1]) || FAIL
-end
-def char_Amethystcb_1(bind)
-(bind[0].is_a? String ) || FAIL
 end
 def clas_Amethystcb_1(bind)
 (bind[0].is_a?(bind[1])) || FAIL
@@ -37,19 +34,22 @@ def number_Amethystcb_1(bind)
 _append(bind[0],bind[1])
 end
 def number_Amethystcb_2(bind)
-_append(bind[0],bind[2])
-end
-def number_Amethystcb_3(bind)
 (bind[3]*"").to_i
 end
 def regch_Amethystcb_1(bind)
+(bind[0].is_a? String ) || FAIL
+end
+def regch_Amethystcb_2(bind)
 (bind[3].match(bind[2])) || FAIL
 end
 def replace_Amethystcb_1(bind)
 bind[1]*""
 end
-def spaces_Amethystcb_1(bind)
+def space_Amethystcb_1(bind)
 /[\s\t\r\n\f]/
+end
+def spaces_Amethystcb_1(bind)
+_append(bind[0],bind[2])
 end
 def upper_Amethystcb_1(bind)
 /[A-Z]/
@@ -62,7 +62,7 @@ end
 
 
 def amethyst_compiled_by
-'b8cd7f2b463428f7d287ec8a4dd97bb4'
+'4322872c516510b2fc07ef92ced6b004'
 end
 def amethyst_source_hash
 'aaa6d7dca6b6bc8a20edac17d9b7cad6'
@@ -71,6 +71,6 @@ def testversionamethyst(r)
  raise "invalid version" if r!=amethyst_version
 end
 def amethyst_version
-'0d9bab0035d1859f789b923500d49d5c'
+'42dff308c64d246462a876915c2f6999'
 end
   require 'compiled/amethyst_c'

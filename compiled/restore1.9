@@ -1,0 +1,13 @@
+O=""
+comp(){
+echo $1
+git checkout $1.rb
+git checkout $1_c.c
+gcc -I. -I/usr/include/ruby-1.9.1/x86_64-linux -I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -fPIC -fno-strict-aliasing -g -g -O2 -fPIC -c $1_c.c -o $1_c.o
+gcc -shared -o $1_c.so $1_c.o -L. -L/usr/lib -L. -rdynamic -Wl,-export-dynamic -lruby-1.9.1 -lpthread -lrt -ldl -lcrypt -lm -lc
+}
+for I in *.rb ;do
+comp `basename $I .rb`
+done
+
+cd ../lib/c/;ruby1.9.1 extconf.rb;make clean;make

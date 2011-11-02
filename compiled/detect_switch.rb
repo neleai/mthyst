@@ -575,9 +575,6 @@ def itrans_Detect_Switchcb_6(bind)
 src.rules=bind[8]
 end
 def itrans_Detect_Switchcb_7(bind)
-src
-end
-def itrans_Detect_Switchcb_8(bind)
 _append(bind[0],bind[10])
 end
 def predicate_Detect_Switchcb_1(bind)
@@ -624,18 +621,21 @@ def traverse_Detect_Switchcb_1(bind)
 @changed
 end
 def traverse_Detect_Switchcb_2(bind)
-(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
+src
 end
 def traverse_Detect_Switchcb_3(bind)
-bind[4]=[bind[4]]
+(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
 def traverse_Detect_Switchcb_4(bind)
-@changed=false
+bind[4]=[bind[4]]
 end
 def traverse_Detect_Switchcb_5(bind)
-(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
+@changed=false
 end
 def traverse_Detect_Switchcb_6(bind)
+(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
+end
+def traverse_Detect_Switchcb_7(bind)
 if bind[3]
              @changed=true;bind[2].normalize
            else
@@ -724,9 +724,6 @@ def itrans_Detect_ClasSwitchcb_6(bind)
 src.rules=bind[8]
 end
 def itrans_Detect_ClasSwitchcb_7(bind)
-src
-end
-def itrans_Detect_ClasSwitchcb_8(bind)
 _append(bind[0],bind[10])
 end
 def predicate_Detect_ClasSwitchcb_1(bind)
@@ -775,15 +772,18 @@ def traverse_Detect_ClasSwitchcb_1(bind)
 @changed
 end
 def traverse_Detect_ClasSwitchcb_2(bind)
-(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
+src
 end
 def traverse_Detect_ClasSwitchcb_3(bind)
-@changed=false
+(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
 def traverse_Detect_ClasSwitchcb_4(bind)
-(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
+@changed=false
 end
 def traverse_Detect_ClasSwitchcb_5(bind)
+(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
+end
+def traverse_Detect_ClasSwitchcb_6(bind)
 if bind[3]
              @changed=true;bind[2].normalize
            else
@@ -841,7 +841,7 @@ end
 
 
 def detect_switch_compiled_by
-'b8cd7f2b463428f7d287ec8a4dd97bb4'
+'4322872c516510b2fc07ef92ced6b004'
 end
 def detect_switch_source_hash
 'e5d66875e62b4dfc3d49fd083ce7889b'
@@ -850,6 +850,6 @@ def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'d3d716ccffdf4d96f6b5050fbc5e98ef'
+'0eb6a7a9a75ef053a83c2d2283fd6966'
 end
   require 'compiled/detect_switch_c'

@@ -64,3 +64,5 @@ do not propagate constants to Result
 replace({"a"=>"b","c"=>"d"})
 
 use bit operations to test fixed strings
+
+extract cc from makefile for portability

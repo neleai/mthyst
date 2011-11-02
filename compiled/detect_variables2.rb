@@ -7,15 +7,18 @@ def itrans_Analyze_Variables2cb_1(bind)
 src.rules
 end
 def itrans_Analyze_Variables2cb_2(bind)
-_append(bind[4],bind[7])
+bind[2]=[bind[2]]
 end
 def itrans_Analyze_Variables2cb_3(bind)
-src.rules=bind[8]
+_append(bind[4],bind[7])
 end
 def itrans_Analyze_Variables2cb_4(bind)
-src
+src.rules=bind[8]
 end
 def itrans_Analyze_Variables2cb_5(bind)
+src
+end
+def itrans_Analyze_Variables2cb_6(bind)
 _append(bind[0],bind[10])
 end
 def root_Analyze_Variables2cb_1(bind)
@@ -66,34 +69,31 @@ def visit_Analyze_Variables2cb_1(bind)
 src.ary
 end
 def visit_Analyze_Variables2cb_10(bind)
-_append(bind[25],bind[26])
-end
-def visit_Analyze_Variables2cb_11(bind)
 Seq[*bind[20]]
 end
 def visit_Analyze_Variables2cb_2(bind)
-bind[2]=[bind[2]]
-end
-def visit_Analyze_Variables2cb_3(bind)
 src.ary.map{|aa| @variables[aa] }
 end
-def visit_Analyze_Variables2cb_4(bind)
+def visit_Analyze_Variables2cb_3(bind)
 bind[11]=[bind[11]]
 end
-def visit_Analyze_Variables2cb_5(bind)
+def visit_Analyze_Variables2cb_4(bind)
 connectstring(bind[13].flatten)
 end
-def visit_Analyze_Variables2cb_6(bind)
+def visit_Analyze_Variables2cb_5(bind)
 (bind[14].size==1&&(bind[14][0].is_a?(Local)||bind[14][0].is_a?(Global)||bind[14][0].is_a?(Key))) ? bind[14][0] : Args[*bind[14]]
 end
-def visit_Analyze_Variables2cb_7(bind)
+def visit_Analyze_Variables2cb_6(bind)
 _append(bind[18],bind[19])
 end
-def visit_Analyze_Variables2cb_8(bind)
+def visit_Analyze_Variables2cb_7(bind)
 Or[*bind[20]]
 end
-def visit_Analyze_Variables2cb_9(bind)
+def visit_Analyze_Variables2cb_8(bind)
 vars=@locals.select{|aa| src.vars.include? aa[0].to_sym}.uniq ;Result[{:name=>src.name,:vars=>vars}]
+end
+def visit_Analyze_Variables2cb_9(bind)
+_append(bind[25],bind[26])
 end
 
 end
@@ -102,7 +102,7 @@ end
 
 
 def detect_variables2_compiled_by
-'b8cd7f2b463428f7d287ec8a4dd97bb4'
+'4322872c516510b2fc07ef92ced6b004'
 end
 def detect_variables2_source_hash
 '56196ab0e78188e5a2d6bc8b4c79e49b'
@@ -111,6 +111,6 @@ def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'9db30fabb5255209f5f332de278b0a90'
+'71fd4ead80a7b95fa3f8043e5d535185'
 end
   require 'compiled/detect_variables2_c'

@@ -68,34 +68,37 @@ end
 class Dataflow < Traverser_Clone2
 
 def root_Dataflowcb_1(bind)
-bind[0]=[bind[0]]
+src
 end
 def root_Dataflowcb_10(bind)
+src.body=bind[9]
+end
+def root_Dataflowcb_11(bind)
 src.reachable=@edges.reverse.reachable(@marked+[ssanum(src.body[-1]),src.body]); src.cfg=@edges; 
 end
 def root_Dataflowcb_2(bind)
-@bnding=src.bnding
+bind[0]=[bind[0]]
 end
 def root_Dataflowcb_3(bind)
-src.args
+@bnding=src.bnding
 end
 def root_Dataflowcb_4(bind)
-bind[2]=[bind[2]]
+src.args
 end
 def root_Dataflowcb_5(bind)
-_append(bind[4],bind[5])
+bind[2]=[bind[2]]
 end
 def root_Dataflowcb_6(bind)
-bind[6].each{|v| @marked<<ssanum(v)};src.args=bind[6]
+_append(bind[4],bind[5])
 end
 def root_Dataflowcb_7(bind)
-src.body
+bind[6].each{|v| @marked<<ssanum(v)};src.args=bind[6]
 end
 def root_Dataflowcb_8(bind)
-bind[7]=[bind[7]]
+src.body
 end
 def root_Dataflowcb_9(bind)
-src.body=bind[9]
+bind[7]=[bind[7]]
 end
 def traverse_Dataflowcb_1(bind)
 @changed
@@ -130,37 +133,34 @@ def vars_in_Dataflowcb_1(bind)
 bind[0]=[]
 end
 def vars_in_Dataflowcb_10(bind)
-_append(bind[0],bind[14])
-end
-def vars_in_Dataflowcb_11(bind)
 _append(bind[0],bind[16])
 end
-def vars_in_Dataflowcb_12(bind)
+def vars_in_Dataflowcb_11(bind)
 _append(bind[0],bind[18])
 end
 def vars_in_Dataflowcb_2(bind)
-src
-end
-def vars_in_Dataflowcb_3(bind)
 _append(bind[0],bind[2])
 end
-def vars_in_Dataflowcb_4(bind)
+def vars_in_Dataflowcb_3(bind)
 _append(bind[0],bind[4])
 end
-def vars_in_Dataflowcb_5(bind)
+def vars_in_Dataflowcb_4(bind)
 _append(bind[0],bind[6])
 end
-def vars_in_Dataflowcb_6(bind)
+def vars_in_Dataflowcb_5(bind)
 _append(bind[0],bind[8])
 end
-def vars_in_Dataflowcb_7(bind)
+def vars_in_Dataflowcb_6(bind)
 _append(bind[0],bind[10])
 end
-def vars_in_Dataflowcb_8(bind)
+def vars_in_Dataflowcb_7(bind)
 @marked<<src
 end
-def vars_in_Dataflowcb_9(bind)
+def vars_in_Dataflowcb_8(bind)
 _append(bind[0],bind[12])
+end
+def vars_in_Dataflowcb_9(bind)
+_append(bind[0],bind[14])
 end
 def visit_Dataflowcb_1(bind)
 Act[bind[0],src.pred]
@@ -268,12 +268,15 @@ end
 class Dead_Code_Deleter3 < Traverser_Clone2
 
 def root_Dead_Code_Deleter3cb_1(bind)
-bind[0]=[bind[0]]
+src
 end
 def root_Dead_Code_Deleter3cb_2(bind)
-@reachable=src.reachable
+bind[0]=[bind[0]]
 end
 def root_Dead_Code_Deleter3cb_3(bind)
+@reachable=src.reachable
+end
+def root_Dead_Code_Deleter3cb_4(bind)
 src.reachable=nil;src.cfg=nil
 end
 def traverse_Dead_Code_Deleter3cb_1(bind)
@@ -306,21 +309,18 @@ def traverse_item_Dead_Code_Deleter3cb_2(bind)
 bind[5]<<bind[6]
 end
 def visit_Dead_Code_Deleter3cb_1(bind)
-src
-end
-def visit_Dead_Code_Deleter3cb_2(bind)
 (!@reachable[bind[1]] ||(bind[1].pure && !@bounded)) ? Placeholder : bind[1]
 end
-def visit_Dead_Code_Deleter3cb_3(bind)
+def visit_Dead_Code_Deleter3cb_2(bind)
 @bounded=@reachable[bind[6]]
 end
-def visit_Dead_Code_Deleter3cb_4(bind)
+def visit_Dead_Code_Deleter3cb_3(bind)
 @bounded=false
 end
-def visit_Dead_Code_Deleter3cb_5(bind)
+def visit_Dead_Code_Deleter3cb_4(bind)
 @reachable[bind[6]] ? src : src.expr
 end
-def visit_Dead_Code_Deleter3cb_6(bind)
+def visit_Dead_Code_Deleter3cb_5(bind)
 @reachable[bind[1].ssaname] ? bind[1] : Placeholder
 end
 
@@ -372,7 +372,7 @@ end
 
 
 def dataflow_ssa_compiled_by
-'b8cd7f2b463428f7d287ec8a4dd97bb4'
+'4322872c516510b2fc07ef92ced6b004'
 end
 def dataflow_ssa_source_hash
 '416015899f2ee8b9eca59a856d6b1a09'
@@ -381,6 +381,6 @@ def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'e7831dd4a6930ddb99059348481abc83'
+'499ee388581d748aeb33063dc2ab7081'
 end
   require 'compiled/dataflow_ssa_c'
