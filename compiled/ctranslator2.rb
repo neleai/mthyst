@@ -57,7 +57,7 @@ class AmethystCTranslator < Amethyst
 		grammar=resolvegrammar(@grammar,name)
 		if grammar
 			@header<<"VALUE #{grammar}_#{name}(VALUE self #{",VALUE"*argc});"
-			"#{grammar}_#{name}(self #{margs})"
+			"#{grammar}_#{name}(self #{margs*""})"
 		else
 			rbcall(name,argc.times.map{|a| "arg#{a}"})
 		end
@@ -212,7 +212,7 @@ def trans_AmethystCTranslatorcb_24(bind)
 _append(bind[42],bind[44])
 end
 def trans_AmethystCTranslatorcb_25(bind)
-" #{bind[45]} it=#{callrule(bind[25],bind[41])};"
+" #{bind[45]*""} it=#{callrule(bind[25],bind[41])};"
 end
 def trans_AmethystCTranslatorcb_26(bind)
 "#{bind[46]} FAILTEST(#{@faillabel});" 
@@ -354,7 +354,7 @@ def ctranslator2_compiled_by
 'b8cd7f2b463428f7d287ec8a4dd97bb4'
 end
 def ctranslator2_source_hash
-'464ed7fc3b413e5ed0646cb8680ec52a'
+'22455c23a59396d7d76a08e0e4d265ba'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version

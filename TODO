@@ -50,7 +50,7 @@ support for provable refactorization and migrations
 strings by boyer-moore like approach
 indexing from end
 
-operator for case insensivity
+functor for case insensivity
 
 , in Acts
 
@@ -62,3 +62,5 @@ analysis what objects can be saved on stack
 do not propagate constants to Result
 
 replace({"a"=>"b","c"=>"d"})
+
+use bit operations to test fixed strings

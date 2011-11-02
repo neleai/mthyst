@@ -257,7 +257,7 @@ def term_AmethystParsercb_11(bind)
 _append(bind[1],bind[10])
 end
 def term_AmethystParsercb_12(bind)
-Apply["regch","/[#{bind[1]}]/"]
+Apply["regch","/[#{bind[1]*""}]/"]
 end
 def term_AmethystParsercb_13(bind)
 a=autovar.normalize; Seq[Or[{:ary=>bind[11].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
@@ -294,7 +294,7 @@ def parser_compiled_by
 'b8cd7f2b463428f7d287ec8a4dd97bb4'
 end
 def parser_source_hash
-'d4be34e646c37287959b1920949aaa5f'
+'e90e69a3908b7245f022ab639cf88a3e'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version

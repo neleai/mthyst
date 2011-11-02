@@ -20,7 +20,6 @@ makeclasses(AmethystAST,
     :Nested,
 		[:Switch,:act,:defs,:first,:header,:init]
 )
-
 class SeqOr<AmethystAST;end
 makeclasses(SeqOr,:Seq,:Or)
 Placeholder=Object.new

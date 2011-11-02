@@ -57,7 +57,7 @@ class AmethystCTranslator < Amethyst
 		grammar=resolvegrammar(@grammar,name)
 		if grammar
 			@header<<"VALUE #{grammar}_#{name}(VALUE self #{",VALUE"*argc});"
-			"#{grammar}_#{name}(self #{margs})"
+			"#{grammar}_#{name}(self #{margs*""})"
 		else
 			rbcall(name,argc.times.map{|a| "arg#{a}"})
 		end
@@ -106,7 +106,7 @@ failobj=rb_eval_string(\"FAIL\");
                    @@init<<ar[1] if ar[1]
                    "it=#{ar[2]};"}]
 				| Apply[:name {0}:ii ( trans:aa {ii+=1} {"#{aa} arg#{ii-1}=it;"})*:args 
-            failwrap(" #{args} it=#{callrule(name,ii)};")]
+            failwrap(" #{args*""} it=#{callrule(name,ii)};")]
 				| Seq[ trans*:t {t*""} ]
 				| Bind[trans:e {"#{e}\n #{bset(@name,"it")}; " } ]
 				| Or[ {label("accept")}:accept {@@faillabel}:fail {label("oldpos")}:oldpos label("alt"):alt {0}:altno

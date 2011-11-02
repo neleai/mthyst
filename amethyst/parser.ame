@@ -57,7 +57,7 @@ amethyst AmethystParser < Amethyst{
 				| "\"" ('"'  break| eChar:s[])*  -> Apply["token" ,quote(s)]
 		 	  | "'"  ('\'' break|  eChar:s[])* -> Apply["seq"   ,quote(s)]
  			  | number:{Apply["exactly",it]}
-      	| "<" (">" break | eChar:x[])*                            ->  Apply["regch","/[#{x}]/"]
+      	| "<" (">" break | eChar:x[])*                            ->  Apply["regch","/[#{x*""}]/"]
 		    | "(" expression:x ")" ( '[]'	collect(x) | empty {x} )
 
 	application = (name:klas '::' name:rule {[klas,rule]} | name):rule argsOpt('(',')'):arg -> Apply[rule,arg]
