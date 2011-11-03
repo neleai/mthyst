@@ -1,8 +1,5 @@
 require 'digest'
 require 'set'
-$OPT="-O1 -march=core2"
-$debug=1
-$profiling=false
 COMPILED=["amethyst","traverser","tests","detect_variables2","parser","dataflow_ssa","inliner2",
 "detect_switch","left_factor","constant_propagation","ctranslator2"]
 class Gram
@@ -146,7 +143,7 @@ class <<Compiler
 	  withtime("c"){ #todo get flags portable not just 1.8 on x64
 		if !$profiling
 			if true
-				`cd compiled;gcc -I. -I/usr/include/ruby-1.9.1/x86_64-linux -I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -fPIC -fno-strict-aliasing -g -g -O2 -fPIC -c #{file2}_c.c -o #{file2}_c.o`
+				`cd compiled;gcc -I. -I/usr/include/ruby-1.9.1/x86_64-linux -I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -fPIC -fno-strict-aliasing -g -g #{$OPT} -fPIC -c #{file2}_c.c -o #{file2}_c.o`
 				`cd compiled;gcc -shared -o #{file2}_c.so #{file2}_c.o -L. -L/usr/lib -L. -rdynamic -Wl,-export-dynamic -lruby-1.9.1 -lpthread -lrt -ldl -lcrypt -lm -lc`
 
 	    else
