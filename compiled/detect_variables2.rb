@@ -90,7 +90,7 @@ def visit_Analyze_Variables2cb_7(bind)
 Or[*bind[20]]
 end
 def visit_Analyze_Variables2cb_8(bind)
-vars=@locals.select{|aa| src.vars.include? aa[0].to_sym}.uniq ;Result[{:name=>src.name,:vars=>vars}]
+vars=@locals.select{|aa| src.vars.include? aa[0].to_sym}.uniq ;Result[{:name=>src.name,:vars=>vars,:varnames=>vars.map{|v| v[0]}}]
 end
 def visit_Analyze_Variables2cb_9(bind)
 _append(bind[25],bind[26])
@@ -105,7 +105,7 @@ def detect_variables2_compiled_by
 '68f1ee9e61385fab0ca401b476c6da05'
 end
 def detect_variables2_source_hash
-'56196ab0e78188e5a2d6bc8b4c79e49b'
+'610d7534e45fdb75843a0d15e4dd57c2'
 end
 def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version

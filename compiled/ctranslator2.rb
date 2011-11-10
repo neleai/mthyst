@@ -341,7 +341,7 @@ ame_setsrc(self,#{bget(src.var)}); ame_setpos(self,0); ame_setlen(self,FIX2LONG(
 " 
 end
 def trans_AmethystCTranslatorcb_9(bind)
-bind[22]="#{src.name}.create( {#{src.vars.map{|l| ":#{l[0]}=>#{rbbget(l)}" }.sort*","} })"
+bind[22]="#{src.name}.create( {#{src.vars.size.times.map{|i| ":#{src.varnames[i]}=>#{rbbget(src.vars[i])}" }.sort*","} })"
 					bind[4]=addcallback(bind[22])
 					"it=#{rbcall(bind[4],["bind"])};"
 				
@@ -354,7 +354,7 @@ def ctranslator2_compiled_by
 '68f1ee9e61385fab0ca401b476c6da05'
 end
 def ctranslator2_source_hash
-'22455c23a59396d7d76a08e0e4d265ba'
+'b43e05d2d5e9cb7badaa2a4bdc079298'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
