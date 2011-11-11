@@ -78,43 +78,52 @@ def traverse_item_Analyze_Variables2cb_3(bind)
 _append(bind[6],bind[8])
 end
 def visit_Analyze_Variables2cb_1(bind)
-_append(bind[2],bind[3])
+src.pred
 end
 def visit_Analyze_Variables2cb_10(bind)
-Or[*bind[24]]
+connectstring(bind[23].flatten)
 end
 def visit_Analyze_Variables2cb_11(bind)
-vars=@locals.select{|aa| src.vars.include? aa[0].to_sym}.uniq ;Result[{:name=>src.name,:vars=>vars,:varnames=>vars.map{|v| v[0]}}]
+(bind[10].size==1&&(bind[10][0].is_a?(Local)||bind[10][0].is_a?(Global)||bind[10][0].is_a?(Key))) ? bind[10][0] : Args[*bind[10]]
 end
 def visit_Analyze_Variables2cb_12(bind)
-_append(bind[29],bind[30])
+_append(bind[27],bind[28])
 end
 def visit_Analyze_Variables2cb_13(bind)
-Seq[*bind[24]]
+Or[*bind[29]]
+end
+def visit_Analyze_Variables2cb_14(bind)
+vars=@locals.select{|aa| src.vars.include? aa[0].to_sym}.uniq ;Result[{:name=>src.name,:vars=>vars,:varnames=>vars.map{|v| v[0]}}]
+end
+def visit_Analyze_Variables2cb_15(bind)
+_append(bind[34],bind[35])
+end
+def visit_Analyze_Variables2cb_16(bind)
+Seq[*bind[29]]
 end
 def visit_Analyze_Variables2cb_2(bind)
 src.ary
 end
 def visit_Analyze_Variables2cb_3(bind)
-bind[4]=[bind[4]]
+bind[5]=[bind[5]]
 end
 def visit_Analyze_Variables2cb_4(bind)
-_append(bind[13],bind[14])
+_append(bind[8],bind[9])
 end
 def visit_Analyze_Variables2cb_5(bind)
-src.ary.map{|aa| @variables[aa] }
+Act[bind[10],bind[1]]
 end
 def visit_Analyze_Variables2cb_6(bind)
-bind[15]=[bind[15]]
+(!bind[1]) || FAIL
 end
 def visit_Analyze_Variables2cb_7(bind)
-connectstring(bind[17].flatten)
+_append(bind[19],bind[20])
 end
 def visit_Analyze_Variables2cb_8(bind)
-(bind[18].size==1&&(bind[18][0].is_a?(Local)||bind[18][0].is_a?(Global)||bind[18][0].is_a?(Key))) ? bind[18][0] : Args[*bind[18]]
+src.ary.map{|aa| @variables[aa] }
 end
 def visit_Analyze_Variables2cb_9(bind)
-_append(bind[22],bind[23])
+bind[21]=[bind[21]]
 end
 
 end
@@ -123,15 +132,15 @@ end
 
 
 def detect_variables2_compiled_by
-'28bdcaf0896417c86c011e5e96d3e20e'
+'64255256a18ce226602ca6e5c8338757'
 end
 def detect_variables2_source_hash
-'610d7534e45fdb75843a0d15e4dd57c2'
+'6f596bb945fdc49d1a31cadef1900689'
 end
 def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'21ce5588c7d1de2e3862fd97aa700729'
+'8483b376202276f4d0fb2f7cea069e20'
 end
   require 'compiled/detect_variables2_c'
