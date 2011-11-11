@@ -164,5 +164,5 @@ ame_setsrc(self,#{bget(@var)}); ame_setpos(self,0); ame_setlen(self,FIX2LONG(rb_
 
 	rw(word,prc) = {@@faillabel}:rwo {@@faillabel=word } apply(prc):x {@@faillabel=rwo; x }
 	
-	addcallback(s) = {s}=>rbtrans:s {addcallback2(s)} 
+	addcallback(s) = {s}=>rbtrans2:s {addcallback2(s)} 
 }

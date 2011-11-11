@@ -110,7 +110,7 @@ class <<Compiler
 					end
 				}
 				g.opt(g.rules[name]) if inlined
-#				g.rules[name]=Forget_Args.new.parse(:root,g.rules[name])
+				#g.rules[name]=Forget_Args.new.parse(:root,g.rules[name])
 		end}
 	end
 	def compile(file,out,file2)
