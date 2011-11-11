@@ -176,15 +176,17 @@ class Act
 	end
 	def normalize2
 		return self if !@ary
-		if @ary.size==1 && !@pred
+		if @ary.size==1 
 			exp=@ary[0]
-			exp=exp[0] if exp.is_a?(Args) && exp.size==1
-		  return Act.create(exp,{:pure=>true}).freeze if exp.is_a?(Exp)
-			return CAct[[]] if exp=="[]"
-			return CAct[exp.to_i] if exp.is_a?(String) && exp==exp.to_i.to_s
-			return CAct[eval(exp)] if exp=~/^[A-Z][a-zA-Z0-9_]*$/ && eval(exp).is_a?(Class)
-			return CAct[eval(exp)] if ["true","false","nil"].include?(exp)
-			return CAct[eval('"'+exp[1...-1]+'"')] if exp.is_a?(String) && ((exp[0]==?\" && exp[-1]==?\")|| (exp[0]==?' && exp[-1]==?')) && !(exp=~/\#/)
+			return exp if exp.is_a?(Act)
+			if  !@pred
+			  return Act.create(exp,{:pure=>true}).freeze if exp.is_a?(Exp)
+				return CAct[[]] if exp=="[]"
+				return CAct[exp.to_i] if exp.is_a?(String) && exp==exp.to_i.to_s
+				return CAct[eval(exp)] if exp=~/^[A-Z][a-zA-Z0-9_]*$/ && eval(exp).is_a?(Class)
+				return CAct[eval(exp)] if ["true","false","nil"].include?(exp)
+				return CAct[eval('"'+exp[1...-1]+'"')] if exp.is_a?(String) && ((exp[0]==?\" && exp[-1]==?\")|| (exp[0]==?' && exp[-1]==?')) && !(exp=~/\#/)
+			end
 		end
 		@pure=true if exp.is_a?(Exp)
 		@ary=nil if @ary.size==0
