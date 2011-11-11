@@ -203,22 +203,22 @@ def trans_AmethystCTranslatorcb_22(bind)
 bind[22]+"}"
 end
 def trans_AmethystCTranslatorcb_23(bind)
-bind[41]+=1
+bind[43]+=1
 end
 def trans_AmethystCTranslatorcb_24(bind)
-"#{bind[43]} arg#{bind[41]-1}=it;"
+"#{bind[45]} arg#{bind[43]-1}=it;"
 end
 def trans_AmethystCTranslatorcb_25(bind)
-_append(bind[42],bind[44])
+_append(bind[44],bind[46])
 end
 def trans_AmethystCTranslatorcb_26(bind)
-" #{bind[45]*""} it=#{callrule(bind[25],bind[41])};"
+" #{bind[47]*""} it=#{callrule(bind[25],bind[43])};"
 end
 def trans_AmethystCTranslatorcb_27(bind)
-"#{bind[46]} FAILTEST(#{@faillabel});" 
+"#{bind[48]} FAILTEST(#{@faillabel});" 
 end
 def trans_AmethystCTranslatorcb_28(bind)
-"#{bind[50]}\n #{bset(src.name,"it")}; " 
+"#{bind[52]}\n #{bset(src.name,"it")}; " 
 end
 def trans_AmethystCTranslatorcb_29(bind)
 ar=*src.ccode; 
@@ -263,10 +263,10 @@ def trans_AmethystCTranslatorcb_4(bind)
 @faillabel=bind[14] 
 end
 def trans_AmethystCTranslatorcb_40(bind)
-bind[56]=[bind[56]]
+bind[58]=[bind[58]]
 end
 def trans_AmethystCTranslatorcb_41(bind)
-_append(bind[58],bind[59])
+_append(bind[60],bind[61])
 end
 def trans_AmethystCTranslatorcb_42(bind)
 "VALUE cls_#{src.name};\n" 
@@ -280,7 +280,7 @@ failobj=rb_eval_string(\"FAIL\");
 #{@init.uniq.sort*"\n"}
 #{@defmethods.sort*"\n" }
 "
-							[bind[22],init,bind[61]] 
+							[bind[22],init,bind[63]] 
 end
 def trans_AmethystCTranslatorcb_44(bind)
 "it=#{bget(src)};" 
@@ -295,7 +295,7 @@ def trans_AmethystCTranslatorcb_47(bind)
 label("oldpos")
 end
 def trans_AmethystCTranslatorcb_48(bind)
-"int #{bind[9]}=ame_getpos(self);\n #{bind[32]} x=1; goto #{bind[66]};  #{bind[67]}: x=0; #{bind[66]}: it=Qnil; ame_setpos(self,#{bind[9]}); if (x==0) goto #{@faillabel};"
+"int #{bind[9]}=ame_getpos(self);\n #{bind[32]} x=1; goto #{bind[68]};  #{bind[69]}: x=0; #{bind[68]}: it=Qnil; ame_setpos(self,#{bind[9]}); if (x==0) goto #{@faillabel};"
 end
 def trans_AmethystCTranslatorcb_49(bind)
 label("break")
@@ -304,25 +304,25 @@ def trans_AmethystCTranslatorcb_5(bind)
 src.to
 end
 def trans_AmethystCTranslatorcb_50(bind)
-"int #{bind[9]}; while(1){#{bind[9]}=ame_getpos(self); #{bind[32]} if (ame_getstop(self)!=Qnil){{#{bind[9]}=ame_getpos(self);goto #{bind[70]};} } } #{bind[70]}: ame_setstop(self,Qnil);  ame_setpos(self,#{bind[9]}); "
+"int #{bind[9]}; while(1){#{bind[9]}=ame_getpos(self); #{bind[32]} if (ame_getstop(self)!=Qnil){{#{bind[9]}=ame_getpos(self);goto #{bind[72]};} } } #{bind[72]}: ame_setstop(self,Qnil);  ame_setpos(self,#{bind[9]}); "
 end
 def trans_AmethystCTranslatorcb_51(bind)
-bind[74]+=1
+bind[76]+=1
 end
 def trans_AmethystCTranslatorcb_52(bind)
-"#{bind[73]}_#{bind[74]+1}"
+"#{bind[75]}_#{bind[76]+1}"
 end
 def trans_AmethystCTranslatorcb_53(bind)
-_append(bind[75],bind[77])
+_append(bind[77],bind[79])
 end
 def trans_AmethystCTranslatorcb_54(bind)
 bind[22]="int #{bind[9]}=ame_getpos(self);\n"
 end
 def trans_AmethystCTranslatorcb_55(bind)
-bind[22]+=map_index(bind[32]){|i| "#{bind[73]}_#{i+1}: ame_setpos(self,#{bind[9]});if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto #{bind[13]};}\n #{bind[32][i]} \name_setcut(self,Qnil);goto #{bind[66]};\n"}*""
+bind[22]+=map_index(bind[32]){|i| "#{bind[75]}_#{i+1}: ame_setpos(self,#{bind[9]});if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto #{bind[13]};}\n #{bind[32][i]} \name_setcut(self,Qnil);goto #{bind[68]};\n"}*""
 end
 def trans_AmethystCTranslatorcb_56(bind)
-"#{bind[22]}  #{bind[73]}_#{bind[74]+1}:  ame_setpos(self,#{bind[9]}); goto #{bind[13]};\n #{bind[66]}:;\n"
+"#{bind[22]}  #{bind[75]}_#{bind[76]+1}:  ame_setpos(self,#{bind[9]}); goto #{bind[13]};\n #{bind[68]}:;\n"
 end
 def trans_AmethystCTranslatorcb_6(bind)
 bind[16]=[bind[16]]
@@ -351,15 +351,15 @@ end
 
 
 def ctranslator2_compiled_by
-'68f1ee9e61385fab0ca401b476c6da05'
+'9eb635e400a54df1c82d4f75cbcafce4'
 end
 def ctranslator2_source_hash
-'b43e05d2d5e9cb7badaa2a4bdc079298'
+'42adb9533d99c231e474d8aefdc63460'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'3a8629826335a1a430a7019df25b7f15'
+'f96645bb4c839821810987ee8330f52f'
 end
   require 'compiled/ctranslator2_c'

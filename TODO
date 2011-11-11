@@ -27,8 +27,10 @@ consider left factor when conditions are in inclusion.
 
 optimalization of lookaheads such that in anything* ~anything the ~anything is automaticaly satisfied(aka eof)
 in ~space space* the  space* must be empty (predication to fail)
-Also unbounded .* is move to end of object.
 Do it by constant propagation?
+
+Automaticaly rewrite .* foo to _find(`foo`) and optimalizations
+Special case _find(`eof`) consumes everything
 
 adaptive dataflow
 think about suitable decomposition
@@ -66,3 +68,4 @@ replace({"a"=>"b","c"=>"d"})
 dataflows to calculate bitmasks and test by (chars|both =ones|both) where ones are bits that must be 1 and both bits than can be 0 or 1
 
 extract cc from makefile for portability
+UTF8
