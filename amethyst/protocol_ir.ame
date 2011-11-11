@@ -1,0 +1,27 @@
+amethyst Protocol_IR{
+	grammar = Grammar[ @name @parent @rules=>[rule*]]
+	
+	rule    = Rule[ @name @args=>[Local*] @body=>expr ]
+	
+	expr    = Seq[expr+]
+					| Or[expr+] | Cut
+					| Switch[ @act @defs @first @header @init switch_alternative+ ]
+					| Many[expr] | Stop
+					| Lookahead[expr]
+					| Pass[@var=>Local @to=>expr]
+					| atom
+			
+	atom    = Bind[ @name=>Local atom ]
+       	 	| Apply[ :name Act*:args]
+					| local
+			 		| Act[ @pred (String | variable )*]
+			 		| Cact[ :ruby_obj ]
+
+	variable= local
+					| Exp[expr]
+					| Key[:name]
+					| Global[:name]
+					| Result[:klas :varnames :vars]
+	
+	local   = Local[:name :binding @ssano]
+}		

@@ -4,8 +4,7 @@ $OPT||="-O1"
 require 'digest'
 require 'set'
 COMPILED=["amethyst","traverser","tests","detect_variables2","parser","dataflow_ssa","inliner2",
-"detect_switch","left_factor","constant_propagation","ctranslator2",
-"forget_args"]
+"detect_switch","left_factor","constant_propagation","ctranslator2"]
 class Gram
 	attr_accessor :name,:parent,:rules,:calls,:callgraph
 	def initialize(grammar)

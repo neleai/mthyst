@@ -73,6 +73,7 @@ amethyst AmethystCTranslator < Amethyst {
 		       | Key[.:name] -> (name=="self") ? "src" : "src.#{name}"
       		 | Global[:name] -> "@#{name}"
     		   | Exp[addlambda ] 
+					 | Result[ {"#{@name}.create( {#{@vars.size.times.map{|i| ":#{@varnames[i]}=>#{rbbget(@vars[i])}" }.sort*","} })"} ]
 		       | .
 	rbtrans2 = rbtrans*:{it*""}
 
