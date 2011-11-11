@@ -23,6 +23,8 @@ VALUE AmethystCore__seq(VALUE self,VALUE str){
 		 rb_raise(rb_eArgError, "called seq when not in string");
 	}
 }
+#define mbs_UTF8(c) mbsize_UTF8[c/16]
+char mbsize_UTF8[]={1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,3,4};
 VALUE AmethystCore_anything(VALUE self){
 	VALUE r;
   VALUE src=ame_getsrc(self);
@@ -30,11 +32,13 @@ VALUE AmethystCore_anything(VALUE self){
 	int len=ame_getlen(self);
 	if (len<=input) return failobj;
 	if(TYPE(src)==T_STRING){
-		r=rb_str_new(ame_curstr(self),1);
+		int cs=mbs_UTF8(*ame_curstr(self));
+		r=rb_str_new(ame_curstr(self),cs);
+		ame_setpos(self,input+cs);
 	}else{
 		r= ame_curobj(self);
+		ame_setpos(self,input+1);
 	}
-	ame_setpos(self,input+1);
 	return r;
 }
 
