@@ -34,7 +34,6 @@ static VALUE s_traverse_Dataflowcb_6Dataflow;
 static VALUE s_traverse_item_Dataflowcb_1Dataflow;
 static VALUE s_traverse_item_Dataflowcb_2Dataflow;
 static VALUE s_vars_in_Dataflowcb_10Dataflow;
-static VALUE s_vars_in_Dataflowcb_11Dataflow;
 static VALUE s_vars_in_Dataflowcb_1Dataflow;
 static VALUE s_vars_in_Dataflowcb_2Dataflow;
 static VALUE s_vars_in_Dataflowcb_3Dataflow;
@@ -235,7 +234,7 @@ ame_setcut(self,Qnil);goto accept3;
  break;}it=bind_aget(bind,1/*_result*/);
 return it;
 fail: return failobj; }
-VALUE Dataflow_vars_in(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(20);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
+VALUE Dataflow_vars_in(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(18);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 it=rb_ary_new3(0);
  bind_aset(bind,0/*ary*/,it); it=rb_funcall(self,s_vars_in_Dataflowcb_1Dataflow,1,bind); int oldpos1; while(1){oldpos1=ame_getpos(self); unsigned char chr1=FIX2LONG(rb_hash_aref(switchhashDataflow2,rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:; int oldpos2=ame_getpos(self);
@@ -382,26 +381,8 @@ alt8_2: ame_setpos(self,oldpos20);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Q
 ame_setcut(self,Qnil);goto accept8;
   alt8_3:  ame_setpos(self,oldpos20); goto break1;
  accept8:;
- break;case 8:; int oldpos22=ame_getpos(self);
-alt9_1: ame_setpos(self,oldpos22);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
-   it=AmethystCore_anything(self ); FAILTEST(alt9_2);
- bind_aset(bind,17/*autovar*/,it); int oldpos23=ame_getpos(self); int oldlen9=ame_getlen(self); VALUE oldsrc9=ame_getsrc(self); int fail9=0;
-ame_setsrc(self,bind_aget(bind,17/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2LONG(rb_funcall(ame_getsrc(self),s_sizeDataflow,0)));
-   it=Dataflow_vars_in(self ); FAILTEST(pass9);
- bind_aset(bind,18/*autovar*/,it); it=rb_funcall(self,s_vars_in_Dataflowcb_11Dataflow,1,bind);   it=Amethyst_eof(self ); FAILTEST(pass9);
-	goto success9;
-	pass9: fail9=1;
-	success9: ame_setsrc(self,oldsrc9); ame_setpos(self,oldpos23); ame_setlen(self,oldlen9);
-	if(fail9) goto alt9_2;
- 
-ame_setcut(self,Qnil);goto accept9;
-alt9_2: ame_setpos(self,oldpos22);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
-   it=AmethystCore_anything(self ); FAILTEST(alt9_3); 
-ame_setcut(self,Qnil);goto accept9;
-  alt9_3:  ame_setpos(self,oldpos22); goto break1;
- accept9:;
- break;case 9:;   it=AmethystCore_anything(self ); FAILTEST(break1); break;} if (ame_getstop(self)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos1); it=bind_aget(bind,0/*ary*/);
- bind_aset(bind,19/*_result*/,it); it=bind_aget(bind,19/*_result*/);
+ break;case 8:;   it=AmethystCore_anything(self ); FAILTEST(break1); break;} if (ame_getstop(self)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos1); it=bind_aget(bind,0/*ary*/);
+ bind_aset(bind,17/*_result*/,it); it=bind_aget(bind,17/*_result*/);
 return it;
 fail: return failobj; }
 VALUE Dataflow_visit(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(47);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
@@ -1002,7 +983,6 @@ s_traverse_Dataflowcb_6Dataflow=rb_intern("traverse_Dataflowcb_6");
 s_traverse_item_Dataflowcb_1Dataflow=rb_intern("traverse_item_Dataflowcb_1");
 s_traverse_item_Dataflowcb_2Dataflow=rb_intern("traverse_item_Dataflowcb_2");
 s_vars_in_Dataflowcb_10Dataflow=rb_intern("vars_in_Dataflowcb_10");
-s_vars_in_Dataflowcb_11Dataflow=rb_intern("vars_in_Dataflowcb_11");
 s_vars_in_Dataflowcb_1Dataflow=rb_intern("vars_in_Dataflowcb_1");
 s_vars_in_Dataflowcb_2Dataflow=rb_intern("vars_in_Dataflowcb_2");
 s_vars_in_Dataflowcb_3Dataflow=rb_intern("vars_in_Dataflowcb_3");
@@ -1046,7 +1026,7 @@ s_visit_Dataflowcb_7Dataflow=rb_intern("visit_Dataflowcb_7");
 s_visit_Dataflowcb_8Dataflow=rb_intern("visit_Dataflowcb_8");
 s_visit_Dataflowcb_9Dataflow=rb_intern("visit_Dataflowcb_9");
 switchhashDataflow1=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Act\nnext h[k]=1 if k<=Apply\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=Local\nnext h[k]=4 if k<=Lookahead\nnext h[k]=5 if k<=Many\nnext h[k]=6 if k<=Or\nnext h[k]=7 if k<=Pass\nnext h[k]=8 if k<=Result\nnext h[k]=9 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashDataflow1);
-switchhashDataflow2=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Act\nnext h[k]=1 if k<=Args\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=CAct\nnext h[k]=4 if k<=Global\nnext h[k]=5 if k<=Key\nnext h[k]=6 if k<=Local\nnext h[k]=7 if k<=Result\nnext h[k]=8 if k<=Strin\nnext h[k]=9 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashDataflow2);
+switchhashDataflow2=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Act\nnext h[k]=1 if k<=Args\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=CAct\nnext h[k]=4 if k<=Global\nnext h[k]=5 if k<=Key\nnext h[k]=6 if k<=Local\nnext h[k]=7 if k<=Result\nnext h[k]=8 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashDataflow2);
 switchhashDataflow3=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashDataflow3);
 rb_define_method(cls_Dataflow,"root",Dataflow_root,0);
 rb_define_method(cls_Dataflow,"traverse",Dataflow_traverse,0);
@@ -1104,4 +1084,4 @@ rb_define_method(cls_Forget_SSA,"root",Forget_SSA_root,0);
 rb_define_method(cls_Forget_SSA,"traverse",Forget_SSA_traverse,0);
 rb_define_method(cls_Forget_SSA,"traverse_item",Forget_SSA_traverse_item,0);
 rb_define_method(cls_Forget_SSA,"visit",Forget_SSA_visit,0);
- rb_eval_string("testversiondataflow_ssa('499ee388581d748aeb33063dc2ab7081')");}
+ rb_eval_string("testversiondataflow_ssa('871847622c62cf904a6c99994fd790cb')");}

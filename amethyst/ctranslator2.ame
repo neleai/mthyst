@@ -70,7 +70,6 @@ amethyst AmethystCTranslator < Amethyst {
 	rbtrans = Local[.* {rbbget(@self)}]
 					| Args[rbtrans*:a] -> a*""
 					| Array[rbtrans*:a] -> a*""
-		      | Strin[rbtrans*:a] -> a*""
 		      | Key[.:name] -> (name=="self") ? "src" : "src.#{name}"
       		| Global[:name] -> "@#{name}"
     		  | Exp[addlambda ] 
