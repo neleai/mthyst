@@ -202,7 +202,7 @@ end
 class Switch_Dataflow < First_Dataflow
   def firstchar(s)
 	  return lattice.empty if s==""
-    s=s[0].ord
+    s=s[0].bytes.to_a[0]
 		lattice[[s,s]]
   end
 	def regchar(s)
@@ -211,13 +211,13 @@ class Switch_Dataflow < First_Dataflow
 		s=s[2...-2]
 		i=0
 		while i<s.size
-			c=s[i].ord
+			c=s[i].bytes.to_a[0]
 			if s[i+1]==?-
-				chars<<[c,s[i+2].ord]
+				chars<<[c,s[i+2].bytes.to_a[0]]
 				i+=3
 			elsif s[i]==?\\
 				raise "stray \\" if i==s.size-1
-				c=eval('"'+s[i,2]+'"')[0].ord
+				c=eval('"'+s[i,2]+'"')[0].bytes.to_a[0]
 				i+=2
 			else
 				chars<<[c,c]

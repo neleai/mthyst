@@ -202,7 +202,7 @@ end
 class Switch_Dataflow < First_Dataflow
   def firstchar(s)
 	  return lattice.empty if s==""
-    s=s[0].ord
+    s=s[0].bytes.to_a[0]
 		lattice[[s,s]]
   end
 	def regchar(s)
@@ -211,13 +211,13 @@ class Switch_Dataflow < First_Dataflow
 		s=s[2...-2]
 		i=0
 		while i<s.size
-			c=s[i].ord
+			c=s[i].bytes.to_a[0]
 			if s[i+1]==?-
-				chars<<[c,s[i+2].ord]
+				chars<<[c,s[i+2].bytes.to_a[0]]
 				i+=3
 			elsif s[i]==?\\
 				raise "stray \\" if i==s.size-1
-				c=eval('"'+s[i,2]+'"')[0].ord
+				c=eval('"'+s[i,2]+'"')[0].bytes.to_a[0]
 				i+=2
 			else
 				chars<<[c,c]
@@ -844,7 +844,7 @@ def detect_switch_compiled_by
 '04bdd40be6d2210a519b9d7bc7674bc2'
 end
 def detect_switch_source_hash
-'e5d66875e62b4dfc3d49fd083ce7889b'
+'e1e47be27b5cda0d7b8d103c5a596b66'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
