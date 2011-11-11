@@ -4,7 +4,8 @@ $OPT||="-O1"
 require 'digest'
 require 'set'
 COMPILED=["amethyst","traverser","tests","detect_variables2","parser","dataflow_ssa","inliner2",
-"detect_switch","left_factor","constant_propagation","ctranslator2"]
+"detect_switch","left_factor","constant_propagation","ctranslator2",
+"forget_args"]
 class Gram
 	attr_accessor :name,:parent,:rules,:calls,:callgraph
 	def initialize(grammar)
@@ -109,7 +110,7 @@ class <<Compiler
 					end
 				}
 				g.opt(g.rules[name]) if inlined
-
+#				g.rules[name]=Forget_Args.new.parse(:root,g.rules[name])
 		end}
 	end
 	def compile(file,out,file2)

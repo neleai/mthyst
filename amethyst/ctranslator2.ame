@@ -68,13 +68,13 @@ amethyst AmethystCTranslator < Amethyst {
 	itrans = {[]}:ruby {[]}:c {[]}:init  ( char:ruby[]  | trans:{c<<it[0];init<<it[1];ruby<<it[2]} )* -> [c,init,ruby]
 	
 	rbtrans = Local[.* {rbbget(@self)}]
-					| Args[rbtrans*:a] -> a*""
-					| Array[rbtrans*:a] -> a*""
-		      | Key[.:name] -> (name=="self") ? "src" : "src.#{name}"
-      		| Global[:name] -> "@#{name}"
-    		  | Exp[addlambda ] 
-		      | .
-
+				 	 | Args[rbtrans2]
+					 | Array[rbtrans2] 
+		       | Key[.:name] -> (name=="self") ? "src" : "src.#{name}"
+      		 | Global[:name] -> "@#{name}"
+    		   | Exp[addlambda ] 
+		       | .
+	rbtrans2 = rbtrans*:{it*""}
 
 	rbcode = {"class #{@@grammar} < #{@@parent}\n"}:s
 	{s<<@@defs*"\n";s<<"\n"}

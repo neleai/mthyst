@@ -171,8 +171,8 @@ class Act
 		expr=expr[0] if expr.is_a?(Act) && expr.size<=1
 		return expr if expr.is_a?(CAct) || expr.is_a?(Local)
 		return Act.create({:pred=>pred}) if expr==nil
-		r=Act.create(expr,{:pred=>pred}).normalize
-		r
+		expr=[expr] unless expr.is_a?(Array)
+		Act.create({:ary=>expr,:pred=>pred}).normalize
 	end
 	def normalize2
 		return self if !@ary
