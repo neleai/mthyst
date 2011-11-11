@@ -98,25 +98,31 @@ def root_Dataflowcb_9(bind)
 bind[7]=[bind[7]]
 end
 def traverse_Dataflowcb_1(bind)
-@changed
+_append(bind[0],bind[1])
 end
 def traverse_Dataflowcb_2(bind)
-(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
+@changed
 end
 def traverse_Dataflowcb_3(bind)
-bind[4]=[bind[4]]
+(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
 def traverse_Dataflowcb_4(bind)
-@changed=false
+bind[6]=[bind[6]]
 end
 def traverse_Dataflowcb_5(bind)
-(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
+@changed=false
 end
 def traverse_Dataflowcb_6(bind)
-if bind[3]
-             @changed=true;bind[2].normalize
+(bind[4]||=bind[3].dup;bind[5]=true;bind[4].instance_variable_set(bind[10],bind[11])) if @changed && bind[11]!=instance_variable_get(bind[10])
+end
+def traverse_Dataflowcb_7(bind)
+_append(bind[8],bind[13])
+end
+def traverse_Dataflowcb_8(bind)
+if bind[5]
+             @changed=true;bind[4].normalize
            else
-            @changed=bind[0]
+            @changed=bind[2]
             src
           end
 end
@@ -124,37 +130,52 @@ def traverse_item_Dataflowcb_1(bind)
 @changed=true
 end
 def traverse_item_Dataflowcb_2(bind)
-bind[5]<<bind[6]
+bind[5]<<bind[7]
+end
+def traverse_item_Dataflowcb_3(bind)
+_append(bind[6],bind[8])
 end
 def vars_in_Dataflowcb_1(bind)
 bind[0]=[]
 end
 def vars_in_Dataflowcb_10(bind)
-_append(bind[0],bind[16])
+_append(bind[0],bind[25])
+end
+def vars_in_Dataflowcb_11(bind)
+_append(bind[26],bind[27])
+end
+def vars_in_Dataflowcb_12(bind)
+_append(bind[0],bind[30])
+end
+def vars_in_Dataflowcb_13(bind)
+_append(bind[0],bind[33])
+end
+def vars_in_Dataflowcb_14(bind)
+_append(bind[1],bind[7])
 end
 def vars_in_Dataflowcb_2(bind)
-_append(bind[0],bind[2])
+_append(bind[0],bind[3])
 end
 def vars_in_Dataflowcb_3(bind)
-_append(bind[0],bind[4])
+_append(bind[0],bind[9])
 end
 def vars_in_Dataflowcb_4(bind)
-_append(bind[0],bind[6])
-end
-def vars_in_Dataflowcb_5(bind)
-_append(bind[0],bind[8])
-end
-def vars_in_Dataflowcb_6(bind)
-_append(bind[0],bind[10])
-end
-def vars_in_Dataflowcb_7(bind)
-@marked<<src
-end
-def vars_in_Dataflowcb_8(bind)
 _append(bind[0],bind[12])
 end
+def vars_in_Dataflowcb_5(bind)
+_append(bind[0],bind[15])
+end
+def vars_in_Dataflowcb_6(bind)
+_append(bind[16],bind[17])
+end
+def vars_in_Dataflowcb_7(bind)
+_append(bind[0],bind[20])
+end
+def vars_in_Dataflowcb_8(bind)
+@marked<<src
+end
 def vars_in_Dataflowcb_9(bind)
-_append(bind[0],bind[14])
+_append(bind[21],bind[22])
 end
 def visit_Dataflowcb_1(bind)
 _append(bind[2],bind[3])
@@ -163,81 +184,93 @@ def visit_Dataflowcb_10(bind)
 bind[8].each{|v| @marked<<ssanum(v)}
 end
 def visit_Dataflowcb_11(bind)
-bind_end(src)
+_append(bind[19],bind[20])
 end
 def visit_Dataflowcb_12(bind)
-ssanum(src)
+_append(bind[22],bind[23])
 end
 def visit_Dataflowcb_13(bind)
-_append(bind[25],bind[26])
+bind_end(src)
 end
 def visit_Dataflowcb_14(bind)
-Lookahead[*bind[0]]
+_append(bind[27],bind[28])
 end
 def visit_Dataflowcb_15(bind)
-ssanums.clone
+ssanum(src)
 end
 def visit_Dataflowcb_16(bind)
-_append(bind[30],bind[31])
+_append(bind[31],bind[32])
 end
 def visit_Dataflowcb_17(bind)
-many_end(bind[29])
+Lookahead[*bind[0]]
 end
 def visit_Dataflowcb_18(bind)
-Many.create({:ary=>bind[0]}).normalize
+ssanums.clone
 end
 def visit_Dataflowcb_19(bind)
-oldssanums.clone
+_append(bind[36],bind[37])
 end
 def visit_Dataflowcb_2(bind)
 Act[bind[0],src.pred]
 end
 def visit_Dataflowcb_20(bind)
-@oldssanums=bind[35].clone
+many_end(bind[35])
 end
 def visit_Dataflowcb_21(bind)
-_append(bind[0],bind[36])
+Many.create({:ary=>bind[0]}).normalize
 end
 def visit_Dataflowcb_22(bind)
-bind[34]<<oldssanums.clone
+oldssanums.clone
 end
 def visit_Dataflowcb_23(bind)
-or_end(bind[34])
+@oldssanums=bind[41].clone
 end
 def visit_Dataflowcb_24(bind)
-Or[*bind[0]]
+_append(bind[0],bind[43])
 end
 def visit_Dataflowcb_25(bind)
-src.to
+bind[40]<<oldssanums.clone
 end
 def visit_Dataflowcb_26(bind)
-bind[39]=[bind[39]]
+_append(bind[42],bind[44])
 end
 def visit_Dataflowcb_27(bind)
-src.var
+or_end(bind[40])
 end
 def visit_Dataflowcb_28(bind)
-bind[41]=[bind[41]]
+Or[*bind[0]]
 end
 def visit_Dataflowcb_29(bind)
-@marked<<bind[8].ssaname
+src.to
 end
 def visit_Dataflowcb_3(bind)
 @marked<<bind[4] if src.pred || !src.pure
 end
 def visit_Dataflowcb_30(bind)
-Pass.create({:to=>bind[40],:var=>bind[8]}).normalize
+bind[47]=[bind[47]]
 end
 def visit_Dataflowcb_31(bind)
-src.vars
+src.var
 end
 def visit_Dataflowcb_32(bind)
-bind[44]=[bind[44]]
+bind[49]=[bind[49]]
 end
 def visit_Dataflowcb_33(bind)
-_append(bind[46],bind[47])
+@marked<<bind[8].ssaname
 end
 def visit_Dataflowcb_34(bind)
+Pass.create({:to=>bind[48],:var=>bind[8]}).normalize
+end
+def visit_Dataflowcb_35(bind)
+src.vars
+end
+def visit_Dataflowcb_36(bind)
+bind[52]=[bind[52]]
+end
+def visit_Dataflowcb_37(bind)
+_append(bind[54],bind[55])
+end
+def visit_Dataflowcb_38(bind)
 n=Result[{:name=>src.name,:varnames=>src.varnames,:vars=>bind[8]}]; bind[8].each{|w| @edges.add(w.ssaname,n) } ; n
 end
 def visit_Dataflowcb_4(bind)
@@ -277,25 +310,31 @@ def root_Dead_Code_Deleter3cb_4(bind)
 src.reachable=nil;src.cfg=nil
 end
 def traverse_Dead_Code_Deleter3cb_1(bind)
-@changed
+_append(bind[0],bind[1])
 end
 def traverse_Dead_Code_Deleter3cb_2(bind)
-(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
+@changed
 end
 def traverse_Dead_Code_Deleter3cb_3(bind)
-bind[4]=[bind[4]]
+(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
 def traverse_Dead_Code_Deleter3cb_4(bind)
-@changed=false
+bind[6]=[bind[6]]
 end
 def traverse_Dead_Code_Deleter3cb_5(bind)
-(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
+@changed=false
 end
 def traverse_Dead_Code_Deleter3cb_6(bind)
-if bind[3]
-             @changed=true;bind[2].normalize
+(bind[4]||=bind[3].dup;bind[5]=true;bind[4].instance_variable_set(bind[10],bind[11])) if @changed && bind[11]!=instance_variable_get(bind[10])
+end
+def traverse_Dead_Code_Deleter3cb_7(bind)
+_append(bind[8],bind[13])
+end
+def traverse_Dead_Code_Deleter3cb_8(bind)
+if bind[5]
+             @changed=true;bind[4].normalize
            else
-            @changed=bind[0]
+            @changed=bind[2]
             src
           end
 end
@@ -303,22 +342,40 @@ def traverse_item_Dead_Code_Deleter3cb_1(bind)
 @changed=true
 end
 def traverse_item_Dead_Code_Deleter3cb_2(bind)
-bind[5]<<bind[6]
+bind[5]<<bind[7]
+end
+def traverse_item_Dead_Code_Deleter3cb_3(bind)
+_append(bind[6],bind[8])
 end
 def visit_Dead_Code_Deleter3cb_1(bind)
-(!@reachable[bind[1]] ||(bind[1].pure && !@bounded)) ? Placeholder : bind[1]
+_append(bind[2],bind[3])
+end
+def visit_Dead_Code_Deleter3cb_10(bind)
+@reachable[bind[1].ssaname] ? bind[1] : Placeholder
 end
 def visit_Dead_Code_Deleter3cb_2(bind)
-@bounded=@reachable[bind[6]]
+(!@reachable[bind[1]] ||(bind[1].pure && !@bounded)) ? Placeholder : bind[1]
 end
 def visit_Dead_Code_Deleter3cb_3(bind)
-@bounded=false
+_append(bind[6],bind[7])
 end
 def visit_Dead_Code_Deleter3cb_4(bind)
-@reachable[bind[6]] ? src : src.expr
+_append(bind[10],bind[11])
 end
 def visit_Dead_Code_Deleter3cb_5(bind)
-@reachable[bind[1].ssaname] ? bind[1] : Placeholder
+@bounded=@reachable[bind[12]]
+end
+def visit_Dead_Code_Deleter3cb_6(bind)
+_append(bind[14],bind[15])
+end
+def visit_Dead_Code_Deleter3cb_7(bind)
+@bounded=false
+end
+def visit_Dead_Code_Deleter3cb_8(bind)
+@reachable[bind[12]] ? src : src.expr
+end
+def visit_Dead_Code_Deleter3cb_9(bind)
+_append(bind[19],bind[20])
 end
 
 end
@@ -333,25 +390,31 @@ def root_Forget_SSAcb_2(bind)
 bind[0]=[bind[0]]
 end
 def traverse_Forget_SSAcb_1(bind)
-@changed
+_append(bind[0],bind[1])
 end
 def traverse_Forget_SSAcb_2(bind)
-(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
+@changed
 end
 def traverse_Forget_SSAcb_3(bind)
-bind[4]=[bind[4]]
+(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
 def traverse_Forget_SSAcb_4(bind)
-@changed=false
+bind[6]=[bind[6]]
 end
 def traverse_Forget_SSAcb_5(bind)
-(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
+@changed=false
 end
 def traverse_Forget_SSAcb_6(bind)
-if bind[3]
-             @changed=true;bind[2].normalize
+(bind[4]||=bind[3].dup;bind[5]=true;bind[4].instance_variable_set(bind[10],bind[11])) if @changed && bind[11]!=instance_variable_get(bind[10])
+end
+def traverse_Forget_SSAcb_7(bind)
+_append(bind[8],bind[13])
+end
+def traverse_Forget_SSAcb_8(bind)
+if bind[5]
+             @changed=true;bind[4].normalize
            else
-            @changed=bind[0]
+            @changed=bind[2]
             src
           end
 end
@@ -359,9 +422,15 @@ def traverse_item_Forget_SSAcb_1(bind)
 @changed=true
 end
 def traverse_item_Forget_SSAcb_2(bind)
-bind[5]<<bind[6]
+bind[5]<<bind[7]
+end
+def traverse_item_Forget_SSAcb_3(bind)
+_append(bind[6],bind[8])
 end
 def visit_Forget_SSAcb_1(bind)
+_append(bind[1],bind[2])
+end
+def visit_Forget_SSAcb_2(bind)
 src.unssa
 end
 
@@ -369,7 +438,7 @@ end
 
 
 def dataflow_ssa_compiled_by
-'26a443a672e00380dbd5aa8ee4beb9bc'
+'28bdcaf0896417c86c011e5e96d3e20e'
 end
 def dataflow_ssa_source_hash
 'ac42f28226bebb487b4767cd507d20d8'
@@ -378,6 +447,6 @@ def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'264bad9d50579df30d37fd2e5057ade0'
+'c220de1b1fa5a83eb3ab71cc69040b40'
 end
   require 'compiled/dataflow_ssa_c'

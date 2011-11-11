@@ -9,7 +9,10 @@ end
 class Left_Factor < Traverser_Clone2
 
 def binds_Left_Factorcb_1(bind)
-_Bind(src.name,bind[4])
+_Bind(src.name,bind[6])
+end
+def binds_Left_Factorcb_2(bind)
+_append(bind[11],bind[12])
 end
 def factor_Left_Factorcb_1(bind)
 (bind[1]==first(bind[0])) || FAIL
@@ -36,37 +39,46 @@ def first_Left_Factorcb_1(bind)
 bind[1]=[bind[1]]
 end
 def first_Left_Factorcb_2(bind)
-src.expr
-end
-def rest_Left_Factorcb_1(bind)
 _append(bind[3],bind[4])
 end
-def rest_Left_Factorcb_2(bind)
+def first_Left_Factorcb_3(bind)
+src.expr
+end
+def first_Left_Factorcb_4(bind)
+_append(bind[9],bind[10])
+end
+def rest_Left_Factorcb_1(bind)
 Seq[[bind[6]]+bind[5]]
 end
 def traverse_Left_Factorcb_1(bind)
-@changed
+_append(bind[0],bind[1])
 end
 def traverse_Left_Factorcb_2(bind)
-src
+@changed
 end
 def traverse_Left_Factorcb_3(bind)
-(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
+src
 end
 def traverse_Left_Factorcb_4(bind)
-bind[4]=[bind[4]]
+(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
 def traverse_Left_Factorcb_5(bind)
-@changed=false
+bind[6]=[bind[6]]
 end
 def traverse_Left_Factorcb_6(bind)
-(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
+@changed=false
 end
 def traverse_Left_Factorcb_7(bind)
-if bind[3]
-             @changed=true;bind[2].normalize
+(bind[4]||=bind[3].dup;bind[5]=true;bind[4].instance_variable_set(bind[10],bind[11])) if @changed && bind[11]!=instance_variable_get(bind[10])
+end
+def traverse_Left_Factorcb_8(bind)
+_append(bind[8],bind[13])
+end
+def traverse_Left_Factorcb_9(bind)
+if bind[5]
+             @changed=true;bind[4].normalize
            else
-            @changed=bind[0]
+            @changed=bind[2]
             src
           end
 end
@@ -74,7 +86,10 @@ def traverse_item_Left_Factorcb_1(bind)
 @changed=true
 end
 def traverse_item_Left_Factorcb_2(bind)
-bind[5]<<bind[6]
+bind[5]<<bind[7]
+end
+def traverse_item_Left_Factorcb_3(bind)
+_append(bind[6],bind[8])
 end
 def visit_Left_Factorcb_1(bind)
 [bind[2]]
@@ -108,7 +123,7 @@ end
 
 
 def left_factor_compiled_by
-'26a443a672e00380dbd5aa8ee4beb9bc'
+'28bdcaf0896417c86c011e5e96d3e20e'
 end
 def left_factor_source_hash
 '5f695eb2fd88cd92c4c57d0927917584'
@@ -117,6 +132,6 @@ def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version
 end
 def left_factor_version
-'f02c74b604aa0c1b37bd787ba46d1898'
+'e8641b60473509f2b3a3401df06727db'
 end
   require 'compiled/left_factor_c'

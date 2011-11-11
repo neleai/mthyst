@@ -1,28 +1,34 @@
 class Traverser_Clone2 < Amethyst
 
 def traverse_Traverser_Clone2cb_1(bind)
-@changed
+_append(bind[0],bind[1])
 end
 def traverse_Traverser_Clone2cb_2(bind)
-src
+@changed
 end
 def traverse_Traverser_Clone2cb_3(bind)
-(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
+src
 end
 def traverse_Traverser_Clone2cb_4(bind)
-bind[4]=[bind[4]]
+(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
 def traverse_Traverser_Clone2cb_5(bind)
-@changed=false
+bind[6]=[bind[6]]
 end
 def traverse_Traverser_Clone2cb_6(bind)
-(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
+@changed=false
 end
 def traverse_Traverser_Clone2cb_7(bind)
-if bind[3]
-             @changed=true;bind[2].normalize
+(bind[4]||=bind[3].dup;bind[5]=true;bind[4].instance_variable_set(bind[10],bind[11])) if @changed && bind[11]!=instance_variable_get(bind[10])
+end
+def traverse_Traverser_Clone2cb_8(bind)
+_append(bind[8],bind[13])
+end
+def traverse_Traverser_Clone2cb_9(bind)
+if bind[5]
+             @changed=true;bind[4].normalize
            else
-            @changed=bind[0]
+            @changed=bind[2]
             src
           end
 end
@@ -30,7 +36,10 @@ def traverse_item_Traverser_Clone2cb_1(bind)
 @changed=true
 end
 def traverse_item_Traverser_Clone2cb_2(bind)
-bind[5]<<bind[6]
+bind[5]<<bind[7]
+end
+def traverse_item_Traverser_Clone2cb_3(bind)
+_append(bind[6],bind[8])
 end
 
 end
@@ -41,13 +50,13 @@ end
 class Visitor < Amethyst
 
 def traverse_Visitorcb_1(bind)
-(src.instance_variables).map{|v| src.instance_variable_get(v)}
+_append(bind[0],bind[1])
 end
 def traverse_Visitorcb_2(bind)
-bind[0]=[bind[0]]
+(src.instance_variables).map{|v| src.instance_variable_get(v)}
 end
 def traverse_Visitorcb_3(bind)
-_append(bind[2],bind[3])
+bind[2]=[bind[2]]
 end
 def traverse_item_Visitorcb_1(bind)
 _append(bind[4],bind[5])
@@ -57,7 +66,7 @@ end
 
 
 def traverser_compiled_by
-'26a443a672e00380dbd5aa8ee4beb9bc'
+'28bdcaf0896417c86c011e5e96d3e20e'
 end
 def traverser_source_hash
 '102e4f870eb0748a3420fd0f2398e4a9'
@@ -66,6 +75,6 @@ def testversiontraverser(r)
  raise "invalid version" if r!=traverser_version
 end
 def traverser_version
-'86a6108282d062b90193dcfbae01de1a'
+'6e1948aeb0ff7ca238799e7c803b5c47'
 end
   require 'compiled/traverser_c'

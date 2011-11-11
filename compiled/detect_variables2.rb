@@ -34,28 +34,37 @@ def root_Analyze_Variables2cb_4(bind)
 @locals=src.locals
 end
 def root_Analyze_Variables2cb_5(bind)
+_append(bind[3],bind[4])
+end
+def root_Analyze_Variables2cb_6(bind)
 src.locals=nil
 end
 def traverse_Analyze_Variables2cb_1(bind)
-@changed
+_append(bind[0],bind[1])
 end
 def traverse_Analyze_Variables2cb_2(bind)
-(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
+@changed
 end
 def traverse_Analyze_Variables2cb_3(bind)
-bind[4]=[bind[4]]
+(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
 def traverse_Analyze_Variables2cb_4(bind)
-@changed=false
+bind[6]=[bind[6]]
 end
 def traverse_Analyze_Variables2cb_5(bind)
-(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
+@changed=false
 end
 def traverse_Analyze_Variables2cb_6(bind)
-if bind[3]
-             @changed=true;bind[2].normalize
+(bind[4]||=bind[3].dup;bind[5]=true;bind[4].instance_variable_set(bind[10],bind[11])) if @changed && bind[11]!=instance_variable_get(bind[10])
+end
+def traverse_Analyze_Variables2cb_7(bind)
+_append(bind[8],bind[13])
+end
+def traverse_Analyze_Variables2cb_8(bind)
+if bind[5]
+             @changed=true;bind[4].normalize
            else
-            @changed=bind[0]
+            @changed=bind[2]
             src
           end
 end
@@ -63,37 +72,49 @@ def traverse_item_Analyze_Variables2cb_1(bind)
 @changed=true
 end
 def traverse_item_Analyze_Variables2cb_2(bind)
-bind[5]<<bind[6]
+bind[5]<<bind[7]
+end
+def traverse_item_Analyze_Variables2cb_3(bind)
+_append(bind[6],bind[8])
 end
 def visit_Analyze_Variables2cb_1(bind)
-src.ary
+_append(bind[2],bind[3])
 end
 def visit_Analyze_Variables2cb_10(bind)
-Seq[*bind[20]]
+Or[*bind[24]]
 end
-def visit_Analyze_Variables2cb_2(bind)
-src.ary.map{|aa| @variables[aa] }
-end
-def visit_Analyze_Variables2cb_3(bind)
-bind[11]=[bind[11]]
-end
-def visit_Analyze_Variables2cb_4(bind)
-connectstring(bind[13].flatten)
-end
-def visit_Analyze_Variables2cb_5(bind)
-(bind[14].size==1&&(bind[14][0].is_a?(Local)||bind[14][0].is_a?(Global)||bind[14][0].is_a?(Key))) ? bind[14][0] : Args[*bind[14]]
-end
-def visit_Analyze_Variables2cb_6(bind)
-_append(bind[18],bind[19])
-end
-def visit_Analyze_Variables2cb_7(bind)
-Or[*bind[20]]
-end
-def visit_Analyze_Variables2cb_8(bind)
+def visit_Analyze_Variables2cb_11(bind)
 vars=@locals.select{|aa| src.vars.include? aa[0].to_sym}.uniq ;Result[{:name=>src.name,:vars=>vars,:varnames=>vars.map{|v| v[0]}}]
 end
+def visit_Analyze_Variables2cb_12(bind)
+_append(bind[29],bind[30])
+end
+def visit_Analyze_Variables2cb_13(bind)
+Seq[*bind[24]]
+end
+def visit_Analyze_Variables2cb_2(bind)
+src.ary
+end
+def visit_Analyze_Variables2cb_3(bind)
+bind[4]=[bind[4]]
+end
+def visit_Analyze_Variables2cb_4(bind)
+_append(bind[13],bind[14])
+end
+def visit_Analyze_Variables2cb_5(bind)
+src.ary.map{|aa| @variables[aa] }
+end
+def visit_Analyze_Variables2cb_6(bind)
+bind[15]=[bind[15]]
+end
+def visit_Analyze_Variables2cb_7(bind)
+connectstring(bind[17].flatten)
+end
+def visit_Analyze_Variables2cb_8(bind)
+(bind[18].size==1&&(bind[18][0].is_a?(Local)||bind[18][0].is_a?(Global)||bind[18][0].is_a?(Key))) ? bind[18][0] : Args[*bind[18]]
+end
 def visit_Analyze_Variables2cb_9(bind)
-_append(bind[25],bind[26])
+_append(bind[22],bind[23])
 end
 
 end
@@ -102,7 +123,7 @@ end
 
 
 def detect_variables2_compiled_by
-'26a443a672e00380dbd5aa8ee4beb9bc'
+'28bdcaf0896417c86c011e5e96d3e20e'
 end
 def detect_variables2_source_hash
 '610d7534e45fdb75843a0d15e4dd57c2'
@@ -111,6 +132,6 @@ def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'71fd4ead80a7b95fa3f8043e5d535185'
+'21ce5588c7d1de2e3862fd97aa700729'
 end
   require 'compiled/detect_variables2_c'

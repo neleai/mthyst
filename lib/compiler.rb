@@ -98,6 +98,7 @@ class <<Compiler
 		called.each{|k,v| g.rules[k]=g.getrule(k)}
 		puts called.inspect;puts callg.inspect;puts topo.inspect
 		topo.each{|name|if g.rules[name] && called[name]
+				g.rules[name]=Forget_Args.new.parse(:root,g.rules[name])
 				g.opt(g.rules[name])
 				inlined=false
 				callg[name].each{|nm,v|
@@ -110,7 +111,6 @@ class <<Compiler
 					end
 				}
 				g.opt(g.rules[name]) if inlined
-				g.rules[name]=Forget_Args.new.parse(:root,g.rules[name])
 		end}
 	end
 	def compile(file,out,file2)
