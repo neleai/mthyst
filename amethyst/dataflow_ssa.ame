@@ -7,9 +7,6 @@ class Dataflow < Traverser_Clone2
 		@oldssanums=Hash.new(0)
 	end
 	def ssanum(var)
-		ssanum2(var)
-	end
-	def ssanum2(var)
 		return var unless var.is_a? Local
 		var=Local[var[0],var[1],oldssanums[var.unssa]]
 		var.ssaname
@@ -19,7 +16,7 @@ class Dataflow < Traverser_Clone2
 		return var unless var.is_a? Local
 		ssanums[var.unssa]+=1
 		oldssanums[var.unssa]=ssanums[var.unssa]
-		ssanum2(var.unssa)
+		ssanum(var.unssa)
 	end
 	def many_end(prev)
 	  ssanums.each{|var,num|
@@ -78,7 +75,7 @@ amethyst Dataflow < Traverser_Clone2 {
 				| Bind[.*   traverse[.*  {bind_end(@self)} ] ] 
 				| Result[ @vars=>[traverse_item*:var] {n=Result[{:name=>@name,:varnames=>@varnames,:vars=>var}]; var.each{|w| @@edges.add(w.ssaname,n) } ; n} ]
 				| Lookahead[ traverse_item*:t {Lookahead[*t]} ]
-				| Local[ .* {ssanum2(@self)} ]
+				| Local[ .* {ssanum(@self)} ]
 
 				vars_in={ary=[]}
 								( Global[ @self:ary[]  {@@marked<<@self} .*]								

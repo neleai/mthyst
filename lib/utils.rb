@@ -1,3 +1,4 @@
+require 'lib/compatibility'
 def leterize(s)
 	trans={"."=>"_dot_","_"=>"_","-"=>"_minus_","="=>"_equal_","<" => "_less_",">"=>"_greater_","$"=>"_dollar_"}
 	s2=""
