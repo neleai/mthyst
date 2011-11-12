@@ -1,10 +1,11 @@
 $debug||=1
 $profiling||=false
 $OPT||="-O1"
+$implicit_variables=false
 require 'digest'
 require 'set'
 COMPILED=["amethyst","traverser","tests","detect_variables2","parser","dataflow_ssa","inliner2",
-"detect_switch","left_factor","constant_propagation","ctranslator2"]
+"detect_switch","left_factor","constant_propagation","ctranslator2","implicit_variables"]
 class Gram
 	attr_accessor :name,:parent,:rules,:calls,:callgraph
 	def initialize(grammar)
@@ -99,6 +100,10 @@ class <<Compiler
 		called.each{|k,v| g.rules[k]=g.getrule(k)}
 		puts called.inspect;puts callg.inspect;puts topo.inspect
 		topo.each{|name|if g.rules[name] && called[name]
+				if $implicit_variables
+					freq=Detect_Implicit_Variables.new.parse(:root,g.rules[name])
+					g.rules[name]=Add_Implicit_Variables.new.parse(:root,[freq,g.rules[name]])
+				end
 				g.opt(g.rules[name])
 				inlined=false
 				callg[name].each{|nm,v|

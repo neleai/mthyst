@@ -1,6 +1,12 @@
-amethyst Detect_Implicit_Variables < Traverser {
+amethyst Detect_Implicit_Variables < Visitor {
+	root = {@@vars=Hash.new(0)} traverse {@@vars}
+
+	visit = 	Apply[ :name {@@vars[name]+=1} .*]
 }
-amethyst Add_Implicit_Variables < Traverser {
-	root = .:@@name .:@@many Rule[ traverse ]
-	visit =		Apply[ :name traverse &{@@name[name]} {Bind[{:name=>@@name[name],:expr=>@self,:append=>@@many[name]}]}]
+
+amethyst Add_Implicit_Variables < Traverser_Clone2 {
+	root = .:@@vars Rule[ traverse ]
+
+	visit =		Apply[ :name .* &{@@vars[name]>=1} {_Bind(name,@self)}]
+				|		Apply[ :name .* &{@@vars[name]> 1} {Append[name,@self]}]
 }
