@@ -273,8 +273,17 @@ end
 def visit_Dataflowcb_38(bind)
 n=Result[{:name=>src.name,:varnames=>src.varnames,:vars=>bind[8]}]; bind[8].each{|w| @edges.add(w.ssaname,n) } ; n
 end
+def visit_Dataflowcb_39(bind)
+bind[58]<<[bind[61],bind[62]]
+end
 def visit_Dataflowcb_4(bind)
 bind[4].ary
+end
+def visit_Dataflowcb_40(bind)
+_append(bind[59],bind[63])
+end
+def visit_Dataflowcb_41(bind)
+Switch[{:ary=>bind[58],:act=>src.act,:defs=>src.defs,:first=>src.first,:header=>src.header,:init=>src.init}]
 end
 def visit_Dataflowcb_5(bind)
 bind[5]=[bind[5]]
@@ -438,15 +447,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'c4c4e8a3b9da03833be08129b95b8d63'
+'7232446b4f912f0fd6e66002729a538e'
 end
 def dataflow_ssa_source_hash
-'ac42f28226bebb487b4767cd507d20d8'
+'07ca6a5cee80f9443021c6fff23991d5'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'d652fa75975438a0e2bb78e95ed3413c'
+'d0a20fbb9d791fc4979e73d04e2d83fa'
 end
   require 'compiled/dataflow_ssa_c'
