@@ -9,10 +9,10 @@ end
 class Left_Factor < Traverser_Clone2
 
 def binds_Left_Factorcb_1(bind)
-_append(bind[10],bind[11])
+_Bind(src.name,bind[6])
 end
 def binds_Left_Factorcb_2(bind)
-_Bind(src.name,bind[12])
+_append(bind[11],bind[12])
 end
 def factor_Left_Factorcb_1(bind)
 (bind[1]==first(bind[0])) || FAIL
@@ -39,18 +39,15 @@ def first_Left_Factorcb_1(bind)
 bind[1]=[bind[1]]
 end
 def first_Left_Factorcb_2(bind)
-_append(bind[4],bind[5])
-end
-def first_Left_Factorcb_3(bind)
-_append(bind[9],bind[10])
-end
-def first_Left_Factorcb_4(bind)
-src.expr
-end
-def rest_Left_Factorcb_1(bind)
 _append(bind[3],bind[4])
 end
-def rest_Left_Factorcb_2(bind)
+def first_Left_Factorcb_3(bind)
+src.expr
+end
+def first_Left_Factorcb_4(bind)
+_append(bind[9],bind[10])
+end
+def rest_Left_Factorcb_1(bind)
 Seq[[bind[6]]+bind[5]]
 end
 def traverse_Left_Factorcb_1(bind)
@@ -89,10 +86,10 @@ def traverse_item_Left_Factorcb_1(bind)
 @changed=true
 end
 def traverse_item_Left_Factorcb_2(bind)
-bind[3]<<bind[5]
+bind[5]<<bind[7]
 end
 def traverse_item_Left_Factorcb_3(bind)
-_append(bind[4],bind[6])
+_append(bind[6],bind[8])
 end
 def visit_Left_Factorcb_1(bind)
 [bind[2]]
@@ -126,7 +123,7 @@ end
 
 
 def left_factor_compiled_by
-'ea067fdfa12d41c5b58f6a4e0cd87f03'
+'e27b4778d510e10a887af993a181e5c9'
 end
 def left_factor_source_hash
 '5f695eb2fd88cd92c4c57d0927917584'
@@ -135,6 +132,6 @@ def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version
 end
 def left_factor_version
-'768955d62b5797b812926c9bb3cd46c2'
+'18c2d698d9db0f61f882527dced2990a'
 end
   require 'compiled/left_factor_c'

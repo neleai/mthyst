@@ -132,7 +132,7 @@ class <<Compiler
 		}
 		tree.each{|a|	
 			if a.is_a? Grammar
-				a.rules=@grammars[a.name].rules.map{|k,v| @grammars[a.name].opt(v)}
+				#a.rules=a.rules.map{|v| @grammars[a.name].opt(v)}
 			else
 			end
 		}

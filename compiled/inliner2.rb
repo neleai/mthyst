@@ -15,7 +15,7 @@ end
 def traverse_DetectCallscb_3(bind)
 bind[2]=[bind[2]]
 end
-def traverse_DetectCallscb_4(bind)
+def traverse_item_DetectCallscb_1(bind)
 _append(bind[4],bind[5])
 end
 def visit_DetectCallscb_1(bind)
@@ -87,10 +87,10 @@ def traverse_item_Inliner2cb_1(bind)
 @changed=true
 end
 def traverse_item_Inliner2cb_2(bind)
-bind[3]<<bind[5]
+bind[5]<<bind[7]
 end
 def traverse_item_Inliner2cb_3(bind)
-_append(bind[4],bind[6])
+_append(bind[6],bind[8])
 end
 def visit_Inliner2cb_1(bind)
 (bind[1]==@name) || FAIL
@@ -149,10 +149,10 @@ def traverse_item_Replace_Supercb_1(bind)
 @changed=true
 end
 def traverse_item_Replace_Supercb_2(bind)
-bind[3]<<bind[5]
+bind[5]<<bind[7]
 end
 def traverse_item_Replace_Supercb_3(bind)
-_append(bind[4],bind[6])
+_append(bind[6],bind[8])
 end
 def visit_Replace_Supercb_1(bind)
 (bind[1]=="super") || FAIL
@@ -168,7 +168,7 @@ end
 
 
 def inliner2_compiled_by
-'ea067fdfa12d41c5b58f6a4e0cd87f03'
+'e27b4778d510e10a887af993a181e5c9'
 end
 def inliner2_source_hash
 'e70b868139b66428259e6a338880dd0c'
@@ -177,6 +177,6 @@ def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version
 end
 def inliner2_version
-'a21c01414d22db9308d4e7637fd0152d'
+'3d7b80e8d6872bb58eed3ac3b588b5f6'
 end
   require 'compiled/inliner2_c'
