@@ -36,10 +36,10 @@ def traverse_item_Traverser_Clone2cb_1(bind)
 @changed=true
 end
 def traverse_item_Traverser_Clone2cb_2(bind)
-bind[5]<<bind[7]
+bind[3]<<bind[5]
 end
 def traverse_item_Traverser_Clone2cb_3(bind)
-_append(bind[6],bind[8])
+_append(bind[4],bind[6])
 end
 
 end
@@ -58,15 +58,18 @@ end
 def traverse_Visitorcb_3(bind)
 bind[2]=[bind[2]]
 end
-def traverse_item_Visitorcb_1(bind)
+def traverse_Visitorcb_4(bind)
 _append(bind[4],bind[5])
+end
+def traverse_item_Visitorcb_1(bind)
+_append(bind[2],bind[3])
 end
 
 end
 
 
 def traverser_compiled_by
-'4e68869daef2b6cb2c347274ccc6f1fe'
+'ea067fdfa12d41c5b58f6a4e0cd87f03'
 end
 def traverser_source_hash
 '102e4f870eb0748a3420fd0f2398e4a9'
@@ -75,6 +78,6 @@ def testversiontraverser(r)
  raise "invalid version" if r!=traverser_version
 end
 def traverser_version
-'6e1948aeb0ff7ca238799e7c803b5c47'
+'5fd58e84e2ddb21f156473a3632d922b'
 end
   require 'compiled/traverser_c'

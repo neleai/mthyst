@@ -130,166 +130,163 @@ def traverse_item_Dataflowcb_1(bind)
 @changed=true
 end
 def traverse_item_Dataflowcb_2(bind)
-bind[5]<<bind[7]
+bind[3]<<bind[5]
 end
 def traverse_item_Dataflowcb_3(bind)
-_append(bind[6],bind[8])
+_append(bind[4],bind[6])
 end
 def vars_in_Dataflowcb_1(bind)
 bind[0]=[]
 end
 def vars_in_Dataflowcb_10(bind)
-_append(bind[0],bind[25])
+_append(bind[0],bind[27])
 end
 def vars_in_Dataflowcb_11(bind)
-_append(bind[26],bind[27])
-end
-def vars_in_Dataflowcb_12(bind)
 _append(bind[0],bind[30])
 end
-def vars_in_Dataflowcb_13(bind)
+def vars_in_Dataflowcb_12(bind)
 _append(bind[0],bind[33])
 end
-def vars_in_Dataflowcb_14(bind)
+def vars_in_Dataflowcb_13(bind)
 _append(bind[1],bind[7])
 end
 def vars_in_Dataflowcb_2(bind)
 _append(bind[0],bind[3])
 end
 def vars_in_Dataflowcb_3(bind)
-_append(bind[0],bind[9])
-end
-def vars_in_Dataflowcb_4(bind)
-_append(bind[0],bind[12])
-end
-def vars_in_Dataflowcb_5(bind)
-_append(bind[0],bind[15])
-end
-def vars_in_Dataflowcb_6(bind)
-_append(bind[16],bind[17])
-end
-def vars_in_Dataflowcb_7(bind)
-_append(bind[0],bind[20])
-end
-def vars_in_Dataflowcb_8(bind)
 @marked<<src
 end
+def vars_in_Dataflowcb_4(bind)
+_append(bind[0],bind[9])
+end
+def vars_in_Dataflowcb_5(bind)
+_append(bind[10],bind[11])
+end
+def vars_in_Dataflowcb_6(bind)
+_append(bind[15],bind[16])
+end
+def vars_in_Dataflowcb_7(bind)
+_append(bind[0],bind[19])
+end
+def vars_in_Dataflowcb_8(bind)
+_append(bind[20],bind[21])
+end
 def vars_in_Dataflowcb_9(bind)
-_append(bind[21],bind[22])
+_append(bind[0],bind[24])
 end
 def visit_Dataflowcb_1(bind)
 _append(bind[2],bind[3])
 end
 def visit_Dataflowcb_10(bind)
-bind[8].each{|v| @marked<<ssanum(v)}
+or_end(bind[11])
 end
 def visit_Dataflowcb_11(bind)
-_append(bind[19],bind[20])
-end
-def visit_Dataflowcb_12(bind)
-_append(bind[22],bind[23])
-end
-def visit_Dataflowcb_13(bind)
-bind_end(src)
-end
-def visit_Dataflowcb_14(bind)
-_append(bind[27],bind[28])
-end
-def visit_Dataflowcb_15(bind)
-ssanum(src)
-end
-def visit_Dataflowcb_16(bind)
-_append(bind[31],bind[32])
-end
-def visit_Dataflowcb_17(bind)
-Lookahead[*bind[0]]
-end
-def visit_Dataflowcb_18(bind)
-ssanums.clone
-end
-def visit_Dataflowcb_19(bind)
-_append(bind[36],bind[37])
-end
-def visit_Dataflowcb_2(bind)
-Act[bind[0],src.pred]
-end
-def visit_Dataflowcb_20(bind)
-many_end(bind[35])
-end
-def visit_Dataflowcb_21(bind)
-Many.create({:ary=>bind[0]}).normalize
-end
-def visit_Dataflowcb_22(bind)
-oldssanums.clone
-end
-def visit_Dataflowcb_23(bind)
-@oldssanums=bind[41].clone
-end
-def visit_Dataflowcb_24(bind)
-_append(bind[0],bind[43])
-end
-def visit_Dataflowcb_25(bind)
-bind[40]<<oldssanums.clone
-end
-def visit_Dataflowcb_26(bind)
-_append(bind[42],bind[44])
-end
-def visit_Dataflowcb_27(bind)
-or_end(bind[40])
-end
-def visit_Dataflowcb_28(bind)
 Or[*bind[0]]
 end
-def visit_Dataflowcb_29(bind)
+def visit_Dataflowcb_12(bind)
+ssanums.clone
+end
+def visit_Dataflowcb_13(bind)
+_append(bind[19],bind[20])
+end
+def visit_Dataflowcb_14(bind)
+many_end(bind[18])
+end
+def visit_Dataflowcb_15(bind)
+Many.create({:ary=>bind[0]}).normalize
+end
+def visit_Dataflowcb_16(bind)
 src.to
 end
-def visit_Dataflowcb_3(bind)
-@marked<<bind[4] if src.pred || !src.pure
+def visit_Dataflowcb_17(bind)
+bind[23]=[bind[23]]
 end
-def visit_Dataflowcb_30(bind)
-bind[47]=[bind[47]]
-end
-def visit_Dataflowcb_31(bind)
+def visit_Dataflowcb_18(bind)
 src.var
 end
-def visit_Dataflowcb_32(bind)
-bind[49]=[bind[49]]
+def visit_Dataflowcb_19(bind)
+bind[25]=[bind[25]]
 end
-def visit_Dataflowcb_33(bind)
-@marked<<bind[8].ssaname
+def visit_Dataflowcb_2(bind)
+Apply[*bind[0]]
 end
-def visit_Dataflowcb_34(bind)
-Pass.create({:to=>bind[48],:var=>bind[8]}).normalize
+def visit_Dataflowcb_20(bind)
+@marked<<bind[7].ssaname
 end
-def visit_Dataflowcb_35(bind)
+def visit_Dataflowcb_21(bind)
+Pass.create({:to=>bind[24],:var=>bind[7]}).normalize
+end
+def visit_Dataflowcb_22(bind)
+_append(bind[28],bind[29])
+end
+def visit_Dataflowcb_23(bind)
+Act[bind[0],src.pred]
+end
+def visit_Dataflowcb_24(bind)
+@marked<<bind[30] if src.pred || !src.pure
+end
+def visit_Dataflowcb_25(bind)
+bind[30].ary
+end
+def visit_Dataflowcb_26(bind)
+bind[31]=[bind[31]]
+end
+def visit_Dataflowcb_27(bind)
+bind[7].each{|v| edges.add(ssanum(v),bind[30]); edges.add(bind[30],newssanum(v));}; bind[30]
+end
+def visit_Dataflowcb_28(bind)
+_append(bind[36],bind[37])
+end
+def visit_Dataflowcb_29(bind)
+_append(bind[39],bind[40])
+end
+def visit_Dataflowcb_3(bind)
+bind[5]=[bind[5]]
+end
+def visit_Dataflowcb_30(bind)
+bind_end(src)
+end
+def visit_Dataflowcb_31(bind)
 src.vars
 end
+def visit_Dataflowcb_32(bind)
+bind[44]=[bind[44]]
+end
+def visit_Dataflowcb_33(bind)
+_append(bind[46],bind[47])
+end
+def visit_Dataflowcb_34(bind)
+n=Result[{:name=>src.name,:varnames=>src.varnames,:vars=>bind[7]}]; bind[7].each{|w| @edges.add(w.ssaname,n) } ; n
+end
+def visit_Dataflowcb_35(bind)
+_append(bind[50],bind[51])
+end
 def visit_Dataflowcb_36(bind)
-bind[52]=[bind[52]]
+Lookahead[*bind[0]]
 end
 def visit_Dataflowcb_37(bind)
 _append(bind[54],bind[55])
 end
 def visit_Dataflowcb_38(bind)
-n=Result[{:name=>src.name,:varnames=>src.varnames,:vars=>bind[8]}]; bind[8].each{|w| @edges.add(w.ssaname,n) } ; n
+ssanum(src)
 end
 def visit_Dataflowcb_4(bind)
-bind[4].ary
+bind[7].each{|v| @marked<<ssanum(v)}
 end
 def visit_Dataflowcb_5(bind)
-bind[5]=[bind[5]]
+oldssanums.clone
 end
 def visit_Dataflowcb_6(bind)
-bind[8].each{|v| edges.add(ssanum(v),bind[4]); edges.add(bind[4],newssanum(v));}; bind[4]
+@oldssanums=bind[12].clone
 end
 def visit_Dataflowcb_7(bind)
-_append(bind[12],bind[13])
+_append(bind[0],bind[14])
 end
 def visit_Dataflowcb_8(bind)
-Apply[*bind[0]]
+bind[11]<<oldssanums.clone
 end
 def visit_Dataflowcb_9(bind)
-bind[15]=[bind[15]]
+_append(bind[13],bind[15])
 end
 
 end
@@ -342,10 +339,10 @@ def traverse_item_Dead_Code_Deleter3cb_1(bind)
 @changed=true
 end
 def traverse_item_Dead_Code_Deleter3cb_2(bind)
-bind[5]<<bind[7]
+bind[3]<<bind[5]
 end
 def traverse_item_Dead_Code_Deleter3cb_3(bind)
-_append(bind[6],bind[8])
+_append(bind[4],bind[6])
 end
 def visit_Dead_Code_Deleter3cb_1(bind)
 _append(bind[2],bind[3])
@@ -422,10 +419,10 @@ def traverse_item_Forget_SSAcb_1(bind)
 @changed=true
 end
 def traverse_item_Forget_SSAcb_2(bind)
-bind[5]<<bind[7]
+bind[3]<<bind[5]
 end
 def traverse_item_Forget_SSAcb_3(bind)
-_append(bind[6],bind[8])
+_append(bind[4],bind[6])
 end
 def visit_Forget_SSAcb_1(bind)
 _append(bind[1],bind[2])
@@ -438,7 +435,7 @@ end
 
 
 def dataflow_ssa_compiled_by
-'4e68869daef2b6cb2c347274ccc6f1fe'
+'ea067fdfa12d41c5b58f6a4e0cd87f03'
 end
 def dataflow_ssa_source_hash
 'ac42f28226bebb487b4767cd507d20d8'
@@ -447,6 +444,6 @@ def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'93907e190e67d9dd4eafe3e915acf06e'
+'1501aebc827699e6b28e16547aef5fdd'
 end
   require 'compiled/dataflow_ssa_c'

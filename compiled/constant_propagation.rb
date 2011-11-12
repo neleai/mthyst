@@ -84,33 +84,33 @@ def step_Constant_Propagatorcb_1(bind)
 bind[1]=[bind[1]]
 end
 def step_Constant_Propagatorcb_10(bind)
+ConstantLattice[Top]
+end
+def step_Constant_Propagatorcb_2(bind)
+_append(bind[3],bind[4])
+end
+def step_Constant_Propagatorcb_3(bind)
 a=ConstantLattice[Bottom]
         											depend.reverse.edges[bind[0]].each{|e| a=a+valof(e)}
 															a
 end
-def step_Constant_Propagatorcb_2(bind)
-_append(bind[4],bind[5])
-end
-def step_Constant_Propagatorcb_3(bind)
-ConstantLattice[src]
-end
 def step_Constant_Propagatorcb_4(bind)
-_append(bind[9],bind[10])
+_append(bind[12],bind[13])
 end
 def step_Constant_Propagatorcb_5(bind)
 src
 end
 def step_Constant_Propagatorcb_6(bind)
-ConstantLattice[Top]
-end
-def step_Constant_Propagatorcb_7(bind)
 _append(bind[17],bind[18])
 end
+def step_Constant_Propagatorcb_7(bind)
+ConstantLattice[src]
+end
 def step_Constant_Propagatorcb_8(bind)
-ConstantLattice[bind[19]]
+_append(bind[21],bind[22])
 end
 def step_Constant_Propagatorcb_9(bind)
-_append(bind[22],bind[23])
+ConstantLattice[bind[23]]
 end
 
 end
@@ -157,35 +157,35 @@ def traverse_item_Constant_Traversercb_1(bind)
 @changed=true
 end
 def traverse_item_Constant_Traversercb_2(bind)
-bind[5]<<bind[7]
+bind[3]<<bind[5]
 end
 def traverse_item_Constant_Traversercb_3(bind)
-_append(bind[6],bind[8])
+_append(bind[4],bind[6])
 end
 def visit_Constant_Traversercb_1(bind)
-_append(bind[1],bind[2])
+_Bind(src.name,bind[1])
 end
 def visit_Constant_Traversercb_2(bind)
-src
+_append(bind[5],bind[6])
 end
 def visit_Constant_Traversercb_3(bind)
-_Bind(src.name,bind[6])
+src
 end
 def visit_Constant_Traversercb_4(bind)
 _append(bind[9],bind[10])
 end
 def visit_Constant_Traversercb_5(bind)
-(@consts[src.ssaname] && src[0]!="_result") ? @consts[src.ssaname] : src 
+_append(bind[13],bind[14])
 end
 def visit_Constant_Traversercb_6(bind)
-_append(bind[13],bind[14])
+(@consts[src.ssaname] && src[0]!="_result") ? @consts[src.ssaname] : src 
 end
 
 end
 
 
 def constant_propagation_compiled_by
-'4e68869daef2b6cb2c347274ccc6f1fe'
+'ea067fdfa12d41c5b58f6a4e0cd87f03'
 end
 def constant_propagation_source_hash
 'b3213c6e35e227b2b1fc4eb983600f9f'
@@ -194,6 +194,6 @@ def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
 end
 def constant_propagation_version
-'092af0d25d88de16b89823f9513489d0'
+'c009af3a44fc9383bd1e15b2e8f7bf1e'
 end
   require 'compiled/constant_propagation_c'

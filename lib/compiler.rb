@@ -119,7 +119,6 @@ class <<Compiler
 		end
 		tree=AmethystParser.new.parse(:igrammar,source)
 		tree=Analyze_Variables2.new.parse(:itrans,tree)
-		deep_clone(tree)
 		tree.each{|a|	
 			if a.is_a? Grammar
 				add_grammar(a)
@@ -130,6 +129,12 @@ class <<Compiler
 		[Detect_Switch,Detect_ClasSwitch].each{|o|
 			tree=o.new.parse(:itrans,tree)
 			puts tree.inspect if $debug>1
+		}
+		tree.each{|a|	
+			if a.is_a? Grammar
+				a.rules=@grammars[a.name].rules.map{|k,v| @grammars[a.name].opt(v)}
+			else
+			end
 		}
 
 		c,init,rb= AmethystCTranslator.new.parse(:itrans,tree)
