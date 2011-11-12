@@ -542,9 +542,13 @@ class Detect_ClasSwitch < Detect_First
 		return (r|ClasLattice.top)-ClasLattice.empty if r.ary.include?(Empty)
 		return r
 	end
+	def assume(str)
+	end
 	def child(par,chld)
 		 #par,chld=eval(par.to_s),eval(chld.to_s)
-		 par<=chld
+		 is_child=(par<=chld)
+		 assume("#{par.to_s}<=#{chld.to_s}") if is_child
+		 is_child
 	end
 	def includes(ary,i,p)
 		i.times{|ii|
@@ -916,10 +920,10 @@ end
 
 
 def detect_switch_compiled_by
-'e27b4778d510e10a887af993a181e5c9'
+'4e68869daef2b6cb2c347274ccc6f1fe'
 end
 def detect_switch_source_hash
-'e1e47be27b5cda0d7b8d103c5a596b66'
+'5c7c13460eb27339bf2603866b9d59ff'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version

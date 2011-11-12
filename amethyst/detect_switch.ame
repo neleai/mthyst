@@ -320,9 +320,13 @@ class Detect_ClasSwitch < Detect_First
 		return (r|ClasLattice.top)-ClasLattice.empty if r.ary.include?(Empty)
 		return r
 	end
+	def assume(str)
+	end
 	def child(par,chld)
 		 #par,chld=eval(par.to_s),eval(chld.to_s)
-		 par<=chld
+		 is_child=(par<=chld)
+		 assume("#{par.to_s}<=#{chld.to_s}") if is_child
+		 is_child
 	end
 	def includes(ary,i,p)
 		i.times{|ii|

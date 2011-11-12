@@ -49,9 +49,6 @@ incremental compilation
 
 support for provable refactorization and migrations
 
-strings by boyer-moore like approach
-indexing from end
-
 functor for case insensivity
 
 , in Acts
@@ -61,11 +58,11 @@ Constant propagation also do value numbering to register renaming scheme.
 
 analysis what objects can be saved on stack
 
-do not propagate constants to Result
-
 replace({"a"=>"b","c"=>"d"})
 
 dataflows to calculate bitmasks and test by (chars|both =ones|both) where ones are bits that must be 1 and both bits than can be 0 or 1
+indexing from end
 
 extract cc from makefile for portability
+
 UTF8

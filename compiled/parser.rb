@@ -281,7 +281,7 @@ def term_AmethystParsercb_3(bind)
 Seq[Cut[],Stop[]]
 end
 def term_AmethystParsercb_4(bind)
-(false&&bind[5].is_a?(Result)) ? bind[5] : Act[Args[bind[5]]]
+Act[Args[bind[5]]]
 end
 def term_AmethystParsercb_5(bind)
 Act[bind[1]]
@@ -303,10 +303,10 @@ end
 
 
 def parser_compiled_by
-'e27b4778d510e10a887af993a181e5c9'
+'4e68869daef2b6cb2c347274ccc6f1fe'
 end
 def parser_source_hash
-'02b1ed056b58ad9d5e0105813a215a59'
+'bcc979ada99c6c0f6a1b989834696d25'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
