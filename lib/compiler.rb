@@ -130,11 +130,18 @@ class <<Compiler
 			if a.is_a? Grammar	
 				ds=Detect_Switch.new;ds.instance_variable_set(:@name,a.name)
 				dc=Detect_ClasSwitch.new;dc.instance_variable_set(:@name,a.name)
-				a.rules=a.rules.map{|v|
+				a.rules=a.rules.map{|r|
 			    [ds,dc].each{|o|
-    		  	v=o.parse(:root,v)
+    		  	r=o.parse(:root,r)
     			}
-					v
+			    dce=[ Dataflow, #Dead_Code_Deleter3,
+					Forget_SSA]
+			    [dce].flatten.each{|o|
+      			r=o.new.parse(:root,r)
+     		 		puts r.inspect if $debug>1
+    			}
+
+					r
 				}
 			else
 			end
