@@ -32,19 +32,19 @@ def addargs_AmethystParsercb_3(bind)
 bind[0] || []
 end
 def application_AmethystParsercb_1(bind)
-[bind[2],bind[3]]
+[bind[3],bind[4]]
 end
 def application_AmethystParsercb_2(bind)
-_append(bind[5],bind[6])
+_append(bind[6],bind[7])
 end
 def application_AmethystParsercb_3(bind)
-bind[9]+[',']
+bind[10]+[',']
 end
 def application_AmethystParsercb_4(bind)
-bind[10]=[bind[10]]
+bind[11]=[bind[11]]
 end
 def application_AmethystParsercb_5(bind)
-Apply[bind[3],bind[15]]
+Apply[bind[4],bind[16]]
 end
 def argsOpt_AmethystParsercb_1(bind)
 _append(bind[7],bind[8])
@@ -54,6 +54,15 @@ bind[11]+[',']
 end
 def argsOpt_AmethystParsercb_3(bind)
 bind[12]=[bind[12]]
+end
+def args_AmethystParsercb_1(bind)
+_append(bind[5],bind[6])
+end
+def args_AmethystParsercb_2(bind)
+bind[9]+[',']
+end
+def args_AmethystParsercb_3(bind)
+bind[10]=[bind[10]]
 end
 def atomicHostExpr_AmethystParsercb_1(bind)
 "{#{bind[2]*""}}"
@@ -170,7 +179,7 @@ def prefixed_AmethystParsercb_9(bind)
 Or[bind[6],Apply["empty"]]
 end
 def procargs2_AmethystParsercb_1(bind)
-@tmp<<bind[5]
+@tmp<<bind[6]
 end
 def procargs_AmethystParsercb_1(bind)
 @ary=[];@tmp=[]
@@ -241,9 +250,6 @@ end
 def ruleargs_AmethystParsercb_2(bind)
 bind[6]=[bind[6]]
 end
-def ruleargs_AmethystParsercb_3(bind)
-bind[11]=[bind[11]]
-end
 def sequence_AmethystParsercb_1(bind)
 Seq.create( {:ary=>bind[2] })
 end
@@ -300,7 +306,7 @@ end
 
 
 def parser_compiled_by
-'0186de3d596cbf89890073e02261d691'
+'17b05d2bd59d596a94da580f100a668e'
 end
 def parser_source_hash
 'bcc979ada99c6c0f6a1b989834696d25'
@@ -309,6 +315,6 @@ def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'5692ef9abdd627b35c384e2ab000ff21'
+'073bdfe1a2b4aa5e0770da1f5037d80c'
 end
   require 'compiled/parser_c'

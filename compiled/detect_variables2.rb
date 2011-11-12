@@ -1,25 +1,25 @@
 class Analyze_Variables2 < Traverser_Clone2
 
 def flat_Analyze_Variables2cb_1(bind)
-_append(bind[0],bind[3])
+_append(bind[0],bind[4])
 end
 def itrans_Analyze_Variables2cb_1(bind)
 src.rules
 end
 def itrans_Analyze_Variables2cb_2(bind)
-bind[2]=[bind[2]]
+bind[3]=[bind[3]]
 end
 def itrans_Analyze_Variables2cb_3(bind)
-_append(bind[4],bind[7])
+_append(bind[5],bind[8])
 end
 def itrans_Analyze_Variables2cb_4(bind)
-src.rules=bind[8]
+src.rules=bind[9]
 end
 def itrans_Analyze_Variables2cb_5(bind)
 src
 end
 def itrans_Analyze_Variables2cb_6(bind)
-_append(bind[0],bind[10])
+_append(bind[0],bind[11])
 end
 def root_Analyze_Variables2cb_1(bind)
 bind[0]=[bind[0]]
@@ -132,7 +132,7 @@ end
 
 
 def detect_variables2_compiled_by
-'0186de3d596cbf89890073e02261d691'
+'17b05d2bd59d596a94da580f100a668e'
 end
 def detect_variables2_source_hash
 '6f596bb945fdc49d1a31cadef1900689'
@@ -141,6 +141,6 @@ def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'8483b376202276f4d0fb2f7cea069e20'
+'1761accdb014407347e7814aa63cf6d7'
 end
   require 'compiled/detect_variables2_c'

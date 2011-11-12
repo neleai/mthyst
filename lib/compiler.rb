@@ -134,13 +134,7 @@ class <<Compiler
 			    [ds,dc].each{|o|
     		  	r=o.parse(:root,r)
     			}
-			    dce=[ Dataflow, Dead_Code_Deleter3,
-					Forget_SSA]
-			    [dce].flatten.each{|o|
-      			r=o.new.parse(:root,r)
-     		 		puts r.inspect 
-    			}
-
+					r=@grammars[a.name].opt(r)
 					r
 				}
 			else

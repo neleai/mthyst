@@ -89,13 +89,13 @@ a=ConstantLattice[Bottom]
 															a
 end
 def step_Constant_Propagatorcb_2(bind)
-_append(bind[4],bind[5])
+_append(bind[5],bind[6])
 end
 def step_Constant_Propagatorcb_3(bind)
 ConstantLattice[src]
 end
 def step_Constant_Propagatorcb_4(bind)
-_append(bind[9],bind[10])
+_append(bind[10],bind[11])
 end
 def step_Constant_Propagatorcb_5(bind)
 src
@@ -104,13 +104,13 @@ def step_Constant_Propagatorcb_6(bind)
 ConstantLattice[Top]
 end
 def step_Constant_Propagatorcb_7(bind)
-_append(bind[17],bind[18])
+_append(bind[20],bind[21])
 end
 def step_Constant_Propagatorcb_8(bind)
-ConstantLattice[bind[19]]
+ConstantLattice[bind[22]]
 end
 def step_Constant_Propagatorcb_9(bind)
-_append(bind[22],bind[23])
+_append(bind[26],bind[27])
 end
 
 end
@@ -185,7 +185,7 @@ end
 
 
 def constant_propagation_compiled_by
-'0186de3d596cbf89890073e02261d691'
+'17b05d2bd59d596a94da580f100a668e'
 end
 def constant_propagation_source_hash
 'b3213c6e35e227b2b1fc4eb983600f9f'
@@ -194,6 +194,6 @@ def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
 end
 def constant_propagation_version
-'2b5c6add9f41802e81fc0ad22a74849d'
+'85d09c40c933155dd5394f9c22414370'
 end
   require 'compiled/constant_propagation_c'
