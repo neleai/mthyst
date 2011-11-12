@@ -261,7 +261,7 @@ VALUE Dataflow_vars_in(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(44);  in
 
 it=rb_ary_new3(0);
  bind_aset(bind,0/*ary*/,it); it=rb_funcall(self,s_vars_in_Dataflowcb_1Dataflow,1,bind); it=rb_ary_new3(0);
- bind_aset(bind,1/*autovar*/,it); int oldpos1; while(1){oldpos1=ame_getpos(self); unsigned char chr1=FIX2LONG(rb_hash_aref(switchhashDataflow2,rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:;   it=AmethystCore_anything(self ); FAILTEST(break1);
+ bind_aset(bind,1/*autovar*/,it); int oldpos1; while(1){oldpos1=ame_getpos(self); unsigned char chr1=FIX2LONG(rb_hash_aref(switchhashDataflow1,rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:;   it=AmethystCore_anything(self ); FAILTEST(break1);
  bind_aset(bind,2/*autovar*/,it); int oldpos2=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
  it=bind_aget(bind,2/*autovar*/);
@@ -453,7 +453,7 @@ fail: return failobj; }
 VALUE Dataflow_visit(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(65);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
 it=rb_ary_new3(0);
- bind_aset(bind,0/*t*/,it); unsigned char chr1=FIX2LONG(rb_hash_aref(switchhashDataflow1,rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:;   it=AmethystCore_anything(self ); FAILTEST(fail);
+ bind_aset(bind,0/*t*/,it); unsigned char chr1=FIX2LONG(rb_hash_aref(switchhashDataflow2,rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:;   it=AmethystCore_anything(self ); FAILTEST(fail);
  bind_aset(bind,1/*autovar*/,it); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,bind_aget(bind,1/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2LONG(rb_funcall(ame_getsrc(self),s_sizeDataflow,0)));
  it=rb_ary_new3(0);
@@ -1179,8 +1179,8 @@ s_visit_Dataflowcb_6Dataflow=rb_intern("visit_Dataflowcb_6");
 s_visit_Dataflowcb_7Dataflow=rb_intern("visit_Dataflowcb_7");
 s_visit_Dataflowcb_8Dataflow=rb_intern("visit_Dataflowcb_8");
 s_visit_Dataflowcb_9Dataflow=rb_intern("visit_Dataflowcb_9");
-switchhashDataflow1=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Act\nnext h[k]=1 if k<=Apply\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=Local\nnext h[k]=4 if k<=Lookahead\nnext h[k]=5 if k<=Many\nnext h[k]=6 if k<=Or\nnext h[k]=7 if k<=Pass\nnext h[k]=8 if k<=Result\nnext h[k]=9 if k<=Switch\nnext h[k]=10 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashDataflow1);
-switchhashDataflow2=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Act\nnext h[k]=1 if k<=Args\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=CAct\nnext h[k]=4 if k<=Global\nnext h[k]=5 if k<=Key\nnext h[k]=6 if k<=Local\nnext h[k]=7 if k<=Result\nnext h[k]=8 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashDataflow2);
+switchhashDataflow1=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Act\nnext h[k]=1 if k<=Args\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=CAct\nnext h[k]=4 if k<=Global\nnext h[k]=5 if k<=Key\nnext h[k]=6 if k<=Local\nnext h[k]=7 if k<=Result\nnext h[k]=8 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashDataflow1);
+switchhashDataflow2=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Act\nnext h[k]=1 if k<=Apply\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=Local\nnext h[k]=4 if k<=Lookahead\nnext h[k]=5 if k<=Many\nnext h[k]=6 if k<=Or\nnext h[k]=7 if k<=Pass\nnext h[k]=8 if k<=Result\nnext h[k]=9 if k<=Switch\nnext h[k]=10 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashDataflow2);
 switchhashTraverser_Clone21=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashTraverser_Clone21);
 rb_define_method(cls_Dataflow,"root",Dataflow_root,0);
 rb_define_method(cls_Dataflow,"traverse",Dataflow_traverse,0);
@@ -1250,4 +1250,4 @@ rb_define_method(cls_Forget_SSA,"root",Forget_SSA_root,0);
 rb_define_method(cls_Forget_SSA,"traverse",Forget_SSA_traverse,0);
 rb_define_method(cls_Forget_SSA,"traverse_item",Forget_SSA_traverse_item,0);
 rb_define_method(cls_Forget_SSA,"visit",Forget_SSA_visit,0);
- rb_eval_string("testversiondataflow_ssa('6f114273b339685dd31a15c9d678e995')");}
+ rb_eval_string("testversiondataflow_ssa('1bbc9eac97a91f5ea53c40e3eb4f1d7e')");}

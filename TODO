@@ -41,7 +41,6 @@ saner handling of Locals
 
 predicate,cut,stop,comment do not return value
 
-move switch into pipeline
 predication by splitting to predicated and notpredicated part
 
 serialization

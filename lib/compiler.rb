@@ -74,6 +74,8 @@ class <<Compiler
 		@grammars={}
 	end
 	def add_grammar(grammar)
+		ds=Detect_Switch.new;ds.instance_variable_set(:@name,grammar.name)
+		dc=Detect_ClasSwitch.new;dc.instance_variable_set(:@name,grammar.name)
 		g=@grammars[grammar.name]=Gram.new(grammar)
 		g.callgraph=callg=Oriented_Graph.new
 		g.callgraph=callg=@grammars[grammar.parent].callgraph.clone if @grammars[grammar.parent]
@@ -109,6 +111,8 @@ class <<Compiler
 					end
 				}
 				g.opt(g.rules[name]) if inlined
+		    [ds,dc].each{|o| g.rules[name]=o.parse(:root,g.rules[name])}
+				g.opt(g.rules[name])	
 		end}
 	end
 	def compile(file,out,file2)
@@ -126,22 +130,7 @@ class <<Compiler
 			else
 			end
 		}
-		tree.each{|a|	
-			if a.is_a? Grammar	
-				ds=Detect_Switch.new;ds.instance_variable_set(:@name,a.name)
-				dc=Detect_ClasSwitch.new;dc.instance_variable_set(:@name,a.name)
-				a.rules=a.rules.map{|r|
-			    [ds,dc].each{|o|
-    		  	r=o.parse(:root,r)
-    			}
-					r=@grammars[a.name].opt(r)
-					r
-				}
-			else
-			end
-		}
-
-		c,init,rb= AmethystCTranslator.new.parse(:itrans,tree)
+			c,init,rb= AmethystCTranslator.new.parse(:itrans,tree)
 		c=c*""
 		r=Digest::MD5.hexdigest(c)
 
