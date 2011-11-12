@@ -134,11 +134,11 @@ class <<Compiler
 			    [ds,dc].each{|o|
     		  	r=o.parse(:root,r)
     			}
-			    dce=[ Dataflow, #Dead_Code_Deleter3,
+			    dce=[ Dataflow, Dead_Code_Deleter3,
 					Forget_SSA]
 			    [dce].flatten.each{|o|
       			r=o.new.parse(:root,r)
-     		 		puts r.inspect if $debug>1
+     		 		puts r.inspect 
     			}
 
 					r

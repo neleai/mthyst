@@ -191,34 +191,31 @@ def rubyarg_AmethystParsercb_1(bind)
 Args[{:ary=>([bind[3]]+bind[4]+[bind[2]])}]
 end
 def rubyarg_AmethystParsercb_10(bind)
-_append(bind[0],bind[17])
-end
-def rubyarg_AmethystParsercb_11(bind)
 Exp[_body(bind[18])]
 end
 def rubyarg_AmethystParsercb_2(bind)
 /[$.:]/
 end
 def rubyarg_AmethystParsercb_3(bind)
-_append(bind[1],bind[9])
-end
-def rubyarg_AmethystParsercb_4(bind)
 /[^`{}()'"\[\]]/
 end
-def rubyarg_AmethystParsercb_5(bind)
+def rubyarg_AmethystParsercb_4(bind)
 _append(bind[11],bind[12])
 end
-def rubyarg_AmethystParsercb_6(bind)
+def rubyarg_AmethystParsercb_5(bind)
 _append(bind[0],bind[13])
 end
-def rubyarg_AmethystParsercb_7(bind)
+def rubyarg_AmethystParsercb_6(bind)
 Strin[connectstring(bind[0])]
 end
-def rubyarg_AmethystParsercb_8(bind)
+def rubyarg_AmethystParsercb_7(bind)
 _append(bind[0],bind[14])
 end
-def rubyarg_AmethystParsercb_9(bind)
+def rubyarg_AmethystParsercb_8(bind)
 _append(bind[15],bind[16])
+end
+def rubyarg_AmethystParsercb_9(bind)
+_append(bind[0],bind[17])
 end
 def rule_AmethystParsercb_1(bind)
 @locals=[];$appends=[];@bnding=Bnding[]
@@ -251,46 +248,46 @@ def sequence_AmethystParsercb_1(bind)
 Seq.create( {:ary=>bind[2] })
 end
 def term_AmethystParsercb_1(bind)
-Apply["clas",bind[2]]
+Apply["clas",bind[4]]
 end
 def term_AmethystParsercb_10(bind)
-_append(bind[9],bind[11])
+_append(bind[2],bind[11])
 end
 def term_AmethystParsercb_11(bind)
 Apply["seq"   ,quote(bind[0])]
 end
 def term_AmethystParsercb_12(bind)
-Apply["exactly",bind[5]]
+Apply["exactly",bind[7]]
 end
 def term_AmethystParsercb_13(bind)
-_append(bind[1],bind[16])
+_append(bind[3],bind[16])
 end
 def term_AmethystParsercb_14(bind)
 _append(bind[14],bind[15])
 end
 def term_AmethystParsercb_15(bind)
-Apply["regch","/[#{bind[1]*""}]/"]
+Apply["regch","/[#{bind[3]*""}]/"]
 end
 def term_AmethystParsercb_16(bind)
 a=autovar.normalize; Seq[Or[{:ary=>bind[17].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
 end
 def term_AmethystParsercb_2(bind)
-Nested[bind[4]]
+Nested[bind[6]]
 end
 def term_AmethystParsercb_3(bind)
 Seq[Cut[],Stop[]]
 end
 def term_AmethystParsercb_4(bind)
-Act[Args[bind[5]]]
+Act[Args[bind[7]]]
 end
 def term_AmethystParsercb_5(bind)
-Act[bind[1]]
+Act[bind[3]]
 end
 def term_AmethystParsercb_6(bind)
-_append(bind[0],bind[7])
+_append(bind[0],bind[8])
 end
 def term_AmethystParsercb_7(bind)
-_append(bind[6],bind[8])
+_append(bind[1],bind[9])
 end
 def term_AmethystParsercb_8(bind)
 Apply["token" ,quote(bind[0])]
@@ -303,7 +300,7 @@ end
 
 
 def parser_compiled_by
-'7232446b4f912f0fd6e66002729a538e'
+'0186de3d596cbf89890073e02261d691'
 end
 def parser_source_hash
 'bcc979ada99c6c0f6a1b989834696d25'
@@ -312,6 +309,6 @@ def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'6356ca84d1281dd0dc59d92df340022c'
+'5692ef9abdd627b35c384e2ab000ff21'
 end
   require 'compiled/parser_c'

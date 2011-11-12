@@ -48,7 +48,7 @@ class Dataflow < Traverser_Clone2
    ssanums.clone.each{|k,v|
       u=[]
       join.each{|s| u<<s[k]}
-      if u.uniq.size>1
+      if u.uniq.size>=1
         n=newssanum(k)
         u.each{|v| l=Local[k[0],k[1],v]
 					edges.add(l.ssaname,n)}
@@ -447,15 +447,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'7232446b4f912f0fd6e66002729a538e'
+'0186de3d596cbf89890073e02261d691'
 end
 def dataflow_ssa_source_hash
-'07ca6a5cee80f9443021c6fff23991d5'
+'af3e7bd7fc22a19c2638e60f781c6887'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'d0a20fbb9d791fc4979e73d04e2d83fa'
+'fd581e43549dadb1fe79292d0541a60a'
 end
   require 'compiled/dataflow_ssa_c'
