@@ -153,7 +153,7 @@ VALUE Inliner2_root(VALUE self );
 VALUE Inliner2_traverse(VALUE self );
 VALUE Inliner2_traverse_item(VALUE self );
 VALUE Inliner2_visit(VALUE self );
-VALUE switchhashInliner22;
+VALUE switchhashInliner21;
 static VALUE c_304;
 static VALUE c_305;
 static VALUE c_306;
@@ -268,7 +268,7 @@ return it;
 fail: return failobj; }
 VALUE Inliner2_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(10);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-unsigned char chr1=FIX2LONG(rb_hash_aref(switchhashInliner22,rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:; int oldpos1=ame_getpos(self);
+unsigned char chr1=FIX2LONG(rb_hash_aref(switchhashInliner21,rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:; int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=Inliner2_visit(self ); FAILTEST(alt1_2);
  bind_aset(bind,0/*a*/,it); it=rb_funcall(self,s_traverse_item_Inliner2cb_1Inliner2,1,bind); it=bind_aget(bind,0/*a*/);
@@ -362,7 +362,7 @@ VALUE Replace_Super_root(VALUE self );
 VALUE Replace_Super_traverse(VALUE self );
 VALUE Replace_Super_traverse_item(VALUE self );
 VALUE Replace_Super_visit(VALUE self );
-VALUE switchhashReplace_Super3;
+VALUE switchhashReplace_Super1;
 static VALUE c_314;
 static VALUE c_315;
 static VALUE s_root_Replace_Supercb_1Replace_Super;
@@ -452,7 +452,7 @@ return it;
 fail: return failobj; }
 VALUE Replace_Super_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(10);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-unsigned char chr1=FIX2LONG(rb_hash_aref(switchhashReplace_Super3,rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:; int oldpos1=ame_getpos(self);
+unsigned char chr1=FIX2LONG(rb_hash_aref(switchhashReplace_Super1,rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:; int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=Replace_Super_visit(self ); FAILTEST(alt1_2);
  bind_aset(bind,0/*a*/,it); it=rb_funcall(self,s_traverse_item_Replace_Supercb_1Replace_Super,1,bind); it=bind_aget(bind,0/*a*/);
@@ -588,7 +588,7 @@ s_traverse_item_Inliner2cb_3Inliner2=rb_intern("traverse_item_Inliner2cb_3");
 s_visit_Inliner2cb_1Inliner2=rb_intern("visit_Inliner2cb_1");
 s_visit_Inliner2cb_2Inliner2=rb_intern("visit_Inliner2cb_2");
 s_visit_Inliner2cb_3Inliner2=rb_intern("visit_Inliner2cb_3");
-switchhashInliner22=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashInliner22);
+switchhashInliner21=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashInliner21);
 rb_define_method(cls_Inliner2,"root",Inliner2_root,0);
 rb_define_method(cls_Inliner2,"traverse",Inliner2_traverse,0);
 rb_define_method(cls_Inliner2,"traverse_item",Inliner2_traverse_item,0);
@@ -616,9 +616,9 @@ s_traverse_item_Replace_Supercb_3Replace_Super=rb_intern("traverse_item_Replace_
 s_visit_Replace_Supercb_1Replace_Super=rb_intern("visit_Replace_Supercb_1");
 s_visit_Replace_Supercb_2Replace_Super=rb_intern("visit_Replace_Supercb_2");
 s_visit_Replace_Supercb_3Replace_Super=rb_intern("visit_Replace_Supercb_3");
-switchhashReplace_Super3=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashReplace_Super3);
+switchhashReplace_Super1=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashReplace_Super1);
 rb_define_method(cls_Replace_Super,"root",Replace_Super_root,0);
 rb_define_method(cls_Replace_Super,"traverse",Replace_Super_traverse,0);
 rb_define_method(cls_Replace_Super,"traverse_item",Replace_Super_traverse_item,0);
 rb_define_method(cls_Replace_Super,"visit",Replace_Super_visit,0);
- rb_eval_string("testversioninliner2('3d7b80e8d6872bb58eed3ac3b588b5f6')");}
+ rb_eval_string("testversioninliner2('3614197964f47b5b0c1f62fd1f9db8bb')");}

@@ -126,13 +126,16 @@ class <<Compiler
 			else
 			end
 		}
-		[Detect_Switch,Detect_ClasSwitch].each{|o|
-			tree=o.new.parse(:itrans,tree)
-			puts tree.inspect if $debug>1
-		}
 		tree.each{|a|	
-			if a.is_a? Grammar
-				#a.rules=a.rules.map{|v| @grammars[a.name].opt(v)}
+			if a.is_a? Grammar	
+				ds=Detect_Switch.new;ds.instance_variable_set(:@name,a.name)
+				dc=Detect_ClasSwitch.new;dc.instance_variable_set(:@name,a.name)
+				a.rules=a.rules.map{|v|
+			    [ds,dc].each{|o|
+    		  	v=o.parse(:root,v)
+    			}
+					v
+				}
 			else
 			end
 		}

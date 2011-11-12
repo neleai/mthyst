@@ -135,7 +135,7 @@ VALUE AmethystCore_anything(VALUE self );
 VALUE Amethyst_eof(VALUE self );
 VALUE Visitor_traverse(VALUE self );
 VALUE Visitor_traverse_item(VALUE self );
-VALUE switchhashVisitor2;
+VALUE switchhashVisitor1;
 static VALUE s_sizeVisitor;
 static VALUE s_traverse_Visitorcb_1Visitor;
 static VALUE s_traverse_Visitorcb_2Visitor;
@@ -172,7 +172,7 @@ return it;
 fail: return failobj; }
 VALUE Visitor_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(7);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
-unsigned char chr1=FIX2LONG(rb_hash_aref(switchhashVisitor2,rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:; int oldpos1=ame_getpos(self);
+unsigned char chr1=FIX2LONG(rb_hash_aref(switchhashVisitor1,rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:; int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=rb_funcall(self,s_visitVisitor,0); FAILTEST(alt1_2);
  bind_aset(bind,0/*_result*/,it);  
@@ -265,7 +265,7 @@ s_traverse_Visitorcb_2Visitor=rb_intern("traverse_Visitorcb_2");
 s_traverse_Visitorcb_3Visitor=rb_intern("traverse_Visitorcb_3");
 s_traverse_item_Visitorcb_1Visitor=rb_intern("traverse_item_Visitorcb_1");
 s_visitVisitor=rb_intern("visit");
-switchhashVisitor2=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashVisitor2);
+switchhashVisitor1=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashVisitor1);
 rb_define_method(cls_Visitor,"traverse",Visitor_traverse,0);
 rb_define_method(cls_Visitor,"traverse_item",Visitor_traverse_item,0);
- rb_eval_string("testversiontraverser('6e1948aeb0ff7ca238799e7c803b5c47')");}
+ rb_eval_string("testversiontraverser('d5a0a83f7007913bcc60f99506ef5f27')");}
