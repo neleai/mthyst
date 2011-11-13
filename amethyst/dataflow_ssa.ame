@@ -76,7 +76,7 @@ amethyst Dataflow < Traverser_Clone2 {
 					]
 				| Bind[.*   traverse[.*  {bind_end(@self)} ] ] 
 				| Result[ @vars=>[traverse_item*:var] {n=Result[{:name=>@name,:varnames=>@varnames,:vars=>var}]; var.each{|w| @@edges.add(w.ssaname,n) } ; n} ]
-				| Lookahead[ traverse_item*:t {Lookahead[*t]} ]
+				| Lookahead[ {oldssanums.clone}:old traverse_item*:t {@@oldssanums=old} {Lookahead[*t]} ]
 				| Local[ .* {ssanum(@self)} ]
 
 				vars_in={ary=[]}

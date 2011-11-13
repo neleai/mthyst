@@ -1,4 +1,3 @@
-implicit variables
 persistence
 optimizer simplifying =>[ ] to []
 split to separate parser and traverser 

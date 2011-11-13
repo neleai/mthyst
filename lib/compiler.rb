@@ -98,7 +98,7 @@ class <<Compiler
 		topo= callg.topo_order
 		called=callg.reverse.reachable(names)
 		called.each{|k,v| g.rules[k]=g.getrule(k)}
-		puts called.inspect;puts callg.inspect;puts topo.inspect
+		puts called.inspect;puts topo.inspect
 		topo.each{|name|if g.rules[name] && called[name]
 				if $implicit_variables
 					freq=Detect_Implicit_Variables.new.parse(:root,g.rules[name])
