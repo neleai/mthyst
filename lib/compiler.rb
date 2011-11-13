@@ -2,6 +2,7 @@ $debug||=1
 $profiling||=false
 $OPT||="-O1"
 $implicit_variables=false
+$persistent=false
 require 'digest'
 require 'set'
 COMPILED=["amethyst","traverser","tests","detect_variables2","parser","dataflow_ssa","inliner2",

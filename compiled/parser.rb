@@ -167,7 +167,7 @@ def prefixed_AmethystParsercb_5(bind)
 Many[bind[6],bind[8]=="+"]
 end
 def prefixed_AmethystParsercb_6(bind)
-_Bind(bind[10],bind[6],bind[11])
+_Bind(bind[10],bind[6],bind[11]=='[]')
 end
 def prefixed_AmethystParsercb_7(bind)
 Seq[_Bind("it",bind[6]) , Act[bind[12]] ]
@@ -306,15 +306,15 @@ end
 
 
 def parser_compiled_by
-'6ea3ca1136007779bdb8516a624cb180'
+'d3c0021385430bbc5713319f80b8fba6'
 end
 def parser_source_hash
-'bcc979ada99c6c0f6a1b989834696d25'
+'87190d8d425c064e1908d8aeb27d2d4a'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'d788d834a0fa26259ab6cf4f8a99be73'
+'20f5a2190b69f9a9637dfde77aea88f3'
 end
   require 'compiled/parser_c'

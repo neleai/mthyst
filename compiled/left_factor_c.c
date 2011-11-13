@@ -20,7 +20,7 @@ VALUE switchhashLeft_Factor1;
 VALUE switchhashLeft_Factor2;
 VALUE switchhashLeft_Factor3;
 VALUE switchhashTraverser_Clone21;
-static VALUE c_407;
+static VALUE c_405;
 static VALUE s_binds_Left_Factorcb_1Left_Factor;
 static VALUE s_binds_Left_Factorcb_2Left_Factor;
 static VALUE s_factor_Left_Factorcb_1Left_Factor;
@@ -377,7 +377,7 @@ return it;
 fail: return failobj; }
 VALUE Left_Factor_visit(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(11);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
- it=c_407; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(fail);
+ it=c_405; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(fail);
  bind_aset(bind,0/*autovar*/,it); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,bind_aget(bind,0/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2LONG(rb_funcall(ame_getsrc(self),s_sizeLeft_Factor,0)));
    it=Left_Factor_traverse(self ); FAILTEST(pass1);
@@ -437,7 +437,7 @@ fail: return failobj; }
 void Init_left_factor_c(){ 
  cls_Left_Factor=rb_define_class("Left_Factor",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2"))); 
 failobj=rb_eval_string("FAIL");
-c_407=rb_const_get(rb_cObject, rb_intern("Or"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_407);
+c_405=rb_const_get(rb_cObject, rb_intern("Or"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_405);
 s_binds_Left_Factorcb_1Left_Factor=rb_intern("binds_Left_Factorcb_1");
 s_binds_Left_Factorcb_2Left_Factor=rb_intern("binds_Left_Factorcb_2");
 s_factor_Left_Factorcb_1Left_Factor=rb_intern("factor_Left_Factorcb_1");
@@ -486,4 +486,4 @@ rb_define_method(cls_Left_Factor,"root",Left_Factor_root,0);
 rb_define_method(cls_Left_Factor,"traverse",Left_Factor_traverse,0);
 rb_define_method(cls_Left_Factor,"traverse_item",Left_Factor_traverse_item,0);
 rb_define_method(cls_Left_Factor,"visit",Left_Factor_visit,0);
- rb_eval_string("testversionleft_factor('a70a62f1badabc0afd00fc2c70676134')");}
+ rb_eval_string("testversionleft_factor('472a86c69cbc0d1c177c1042389bdc67')");}

@@ -40,7 +40,7 @@ amethyst AmethystParser < Amethyst{
 												     | "[" expression:{from=Enter[from,it]} "]" 
 		 												 | ("*"| "+"):one  { Many[from,one=="+"]}:from
     		                     | "?"  {Or[from,Apply["empty"]]}:from
-													 	 | ":" (  (key | name):name ('[]' {true} | empty {nil} ):append {_Bind(name,from,append)}:from
+													 	 | ":" (  (key | name):name ('[]'?):append {_Bind(name,from,append=='[]')}:from
             		   					        | inlineHostExpr:e  {Seq[ _Bind("it",from) , Act[e] ]}:from
 																   )
 										)				)* {from}
