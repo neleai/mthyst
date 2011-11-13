@@ -173,7 +173,7 @@ alt1_1: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
    it=AmethystCore_anything(self ); FAILTEST(alt1_2);
  bind_aset(bind,4/*c*/,it); it=rb_funcall(self,s_itrans_AmethystCTranslatorcb_1AmethystCTranslator,1,bind); FAILTEST(alt1_2);it=bind_aget(bind,4/*c*/);
  bind_aset(bind,5/*_result*/,it); it=bind_aget(bind,5/*_result*/);
- bind_aset(bind,6/*autovar*/,it); it=rb_funcall(self,s_itrans_AmethystCTranslatorcb_2AmethystCTranslator,1,bind); 
+ bind_aset(bind,6/*autovar*/,it); it=rb_funcall(self,s_itrans_AmethystCTranslatorcb_2AmethystCTranslator,1,bind); it=bind_aget(bind,6/*autovar*/);
  bind_aset(bind,7/*autovar*/,it);  
 ame_setcut(self,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
@@ -821,4 +821,4 @@ rb_define_method(cls_AmethystCTranslator,"rbtrans",AmethystCTranslator_rbtrans,0
 rb_define_method(cls_AmethystCTranslator,"rbtrans2",AmethystCTranslator_rbtrans2,0);
 rb_define_method(cls_AmethystCTranslator,"rw",AmethystCTranslator_rw,2);
 rb_define_method(cls_AmethystCTranslator,"trans",AmethystCTranslator_trans,0);
- rb_eval_string("testversionctranslator2('7fa3415ddb0ee36a79ea4cdd3f93d6c4')");}
+ rb_eval_string("testversionctranslator2('004258026baffa8fdfdd1401ab1d9da4')");}

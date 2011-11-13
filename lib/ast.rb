@@ -68,7 +68,7 @@ def _Bind(name,expr,append=nil)
 	if append
 		a=autovar
 		$appends<<name if $appends
-	  return Seq[_Bind(a,expr),PureAct[Args["_append(",_Local(name),",",a,")"]]]
+	  return Seq[_Bind(a,expr),PureAct[Args["_append(",_Local(name),",",a,")"]],a]
 	end	
 	if name.is_a?(Local) || name.is_a?(String)
 		Bind.create({:name=>_Local(name),:ary=>[expr]}).normalize
