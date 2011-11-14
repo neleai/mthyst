@@ -363,7 +363,7 @@ end
 
 
 def ctranslator2_compiled_by
-'a775569ada2156ebfefd2817f9669017'
+'c58bcfcde7a665d599649ca9df836cd4'
 end
 def ctranslator2_source_hash
 '12320fb0de278eb46f9f3c0e7965e151'
@@ -372,6 +372,6 @@ def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'004258026baffa8fdfdd1401ab1d9da4'
+'2267d12025e1e46fe74fb37a83a07ee8'
 end
   require 'compiled/ctranslator2_c'

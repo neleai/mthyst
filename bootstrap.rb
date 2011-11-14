@@ -2,7 +2,7 @@ require './lib/amethyst'
 
 $profiling=false
 $OPT="-O1 -march=core2"
-$debug=1
+$debug=2
 
 COMPILED.each{|f|
 puts f

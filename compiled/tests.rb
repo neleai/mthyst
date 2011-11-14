@@ -5,10 +5,10 @@ end
 
 
 def tests_compiled_by
-'a775569ada2156ebfefd2817f9669017'
+'c58bcfcde7a665d599649ca9df836cd4'
 end
 def tests_source_hash
-'34b65b8eb650a402fc31cdc8ac136642'
+'cf06821607e17dfe8dd4d086b136a1e3'
 end
 def testversiontests(r)
  raise "invalid version" if r!=tests_version

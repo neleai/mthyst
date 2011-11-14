@@ -90,16 +90,22 @@ def visit_Analyze_Variables2cb_12(bind)
 _append(bind[27],bind[28])
 end
 def visit_Analyze_Variables2cb_13(bind)
-Or[*bind[29]]
+Placeholder
 end
 def visit_Analyze_Variables2cb_14(bind)
-vars=@locals.select{|aa| src.vars.include? aa[0].to_sym}.uniq ;Result[{:name=>src.name,:vars=>vars,:varnames=>vars.map{|v| v[0]}}]
+_append(bind[31],bind[32])
 end
 def visit_Analyze_Variables2cb_15(bind)
-_append(bind[34],bind[35])
+Or[*bind[33]]
 end
 def visit_Analyze_Variables2cb_16(bind)
-Seq[*bind[29]]
+vars=@locals.select{|aa| src.vars.include? aa[0].to_sym}.uniq ;Result[{:name=>src.name,:vars=>vars,:varnames=>vars.map{|v| v[0]}}]
+end
+def visit_Analyze_Variables2cb_17(bind)
+_append(bind[38],bind[39])
+end
+def visit_Analyze_Variables2cb_18(bind)
+Seq[*bind[33]]
 end
 def visit_Analyze_Variables2cb_2(bind)
 src.ary
@@ -132,15 +138,15 @@ end
 
 
 def detect_variables2_compiled_by
-'a775569ada2156ebfefd2817f9669017'
+'c58bcfcde7a665d599649ca9df836cd4'
 end
 def detect_variables2_source_hash
-'6f596bb945fdc49d1a31cadef1900689'
+'eab18725e78d475e7622db4b6d8f1183'
 end
 def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'1905eea43e6e18830d99466f487f929f'
+'ecede126e03121253fdf95216cc6e636'
 end
   require 'compiled/detect_variables2_c'

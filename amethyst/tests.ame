@@ -1,6 +1,6 @@
 amethyst Tests{
 	sw = (('a' |'b') 'c'
-				| 'd')
+				| 'd') 
 
-	test = {1}:from ("a" {from}| {42}):from
+ test = {1}:from ("a" {from}| {42}):from #42
 }

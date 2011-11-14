@@ -8,6 +8,7 @@ traverse[.*	{@locals=nil} @self] ]
 				| Result[ {vars=@@locals.select{|aa| @vars.include? aa[0].to_sym}.uniq ;Result[{:name=>@name,:vars=>vars,:varnames=>vars.map{|v| v[0]}}]}]
 				| Or[ traverse_item*:t {Or[*t]} ]
 				| Seq[ traverse_item*:t {Seq[*t]} ]
+				| Comment[.*{Placeholder}]
 
 
 	flat= (Args[flat] | Strin[flat] |	. )*

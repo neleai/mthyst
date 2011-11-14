@@ -37,8 +37,6 @@ dataflow cantfail, noresult
 
 saner handling of Locals
 
-predicate,cut,stop,comment do not return value
-
 predication by splitting to predicated and notpredicated part
 
 serialization

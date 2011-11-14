@@ -83,6 +83,7 @@ class Bind
 	end
 	def normalize2
 		return Or[*expr.ary.map{|a|_Bind(name,a)}] if expr.is_a?(Or)
+		return Seq[Bind[name,Seq[*expr.ary[0...-1]]],expr.ary[-1]] if expr.is_a?(Seq) && expr.ary.size>0 && [Comment,Cut,Stop].include?(expr.ary[-1].class)
     return Seq[*(expr.ary[0...-1]+[_Bind(name,expr.ary[-1])])] if expr.is_a?(Seq) && expr.ary.size>0
 		self.freeze
 	end
