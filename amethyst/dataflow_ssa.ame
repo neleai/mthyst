@@ -36,12 +36,7 @@ class Dataflow < Traverser_Clone2
     edges.add(bnd,n)
 		val=exp
 		val=val.expr while val.is_a?(Bind) 
-	  if val.is_a?(Local) 
-      o=ssanum(val)
-      edges.add(o,n)
-    else
-      edges.add(val,bnd)
-    end
+    edges.add(val,bnd)
 		bnd
 	end
 	def or_end(join)
@@ -97,8 +92,8 @@ amethyst Dead_Code_Deleter3 < Traverser_Clone2{
 
 		visit = (Act|CAct|Result)[@self:this .*] -> (!@@reachable[this] ||(this.pure && !@@bounded)) ? Placeholder : this
 					| Apply[.* {@self}]
-					| Bind[.* @self:b {@@bounded=@@reachable[b]} traverse[ .* {@@bounded=false} {@@reachable[b] ? @self : @expr}]]
-					| Local[.* @self:this ] -> @@reachable[this.ssaname] ? this : Placeholder
+					| Bind[.* @self:b {@@bounded=@@reachable[@name]} traverse[ .* {@@bounded=false} {@@reachable[@name] ? @self : @expr}]]
+					| Local[.* @self:this ] -> @@reachable[this] ? this : Placeholder
 }
 
 amethyst Forget_SSA < Traverser_Clone2 {

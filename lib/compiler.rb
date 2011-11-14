@@ -18,6 +18,8 @@ class Gram
 		}
 	end
 	def opt(r)
+	    puts r.inspect if $debug>1
+
 		dce=[ Dataflow, Dead_Code_Deleter3,Forget_SSA]
 		[dce].flatten.each{|o|
      	r=o.new.parse(:root,r)
@@ -136,6 +138,7 @@ class <<Compiler
 			else
 			end
 		}
+		puts tree.inspect if $debug >1
 			c,init,rb= AmethystCTranslator.new.parse(:itrans,tree)
 		c=c*""
 		r=Digest::MD5.hexdigest(c)

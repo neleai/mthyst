@@ -36,12 +36,7 @@ class Dataflow < Traverser_Clone2
     edges.add(bnd,n)
 		val=exp
 		val=val.expr while val.is_a?(Bind) 
-	  if val.is_a?(Local) 
-      o=ssanum(val)
-      edges.add(o,n)
-    else
-      edges.add(val,bnd)
-    end
+    edges.add(val,bnd)
 		bnd
 	end
 	def or_end(join)
@@ -363,7 +358,7 @@ def visit_Dead_Code_Deleter3cb_1(bind)
 _append(bind[2],bind[3])
 end
 def visit_Dead_Code_Deleter3cb_10(bind)
-@reachable[bind[1].ssaname] ? bind[1] : Placeholder
+@reachable[bind[1]] ? bind[1] : Placeholder
 end
 def visit_Dead_Code_Deleter3cb_2(bind)
 (!@reachable[bind[1]] ||(bind[1].pure && !@bounded)) ? Placeholder : bind[1]
@@ -375,19 +370,19 @@ def visit_Dead_Code_Deleter3cb_4(bind)
 _append(bind[10],bind[11])
 end
 def visit_Dead_Code_Deleter3cb_5(bind)
-@bounded=@reachable[bind[12]]
+@bounded=@reachable[src.name]
 end
 def visit_Dead_Code_Deleter3cb_6(bind)
-_append(bind[14],bind[15])
+_append(bind[13],bind[14])
 end
 def visit_Dead_Code_Deleter3cb_7(bind)
 @bounded=false
 end
 def visit_Dead_Code_Deleter3cb_8(bind)
-@reachable[bind[12]] ? src : src.expr
+@reachable[src.name] ? src : src.expr
 end
 def visit_Dead_Code_Deleter3cb_9(bind)
-_append(bind[19],bind[20])
+_append(bind[18],bind[19])
 end
 
 end
@@ -450,15 +445,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'2248e53cfa9275223222d888f9987725'
+'0d125a47d852c213d99c6adf4c70ad87'
 end
 def dataflow_ssa_source_hash
-'b21cf7c4321b75f2d5314a19fd6953bd'
+'82542b6c7bed543a6bae0afc82c8983d'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'10fc4677ace993e0240d5c7c9f179dfb'
+'47966aa9ae2ba10917c6368cfa057f8f'
 end
   require 'compiled/dataflow_ssa_c'
