@@ -33,10 +33,9 @@ class Dataflow < Traverser_Clone2
 		name=exp.name
 		n=newssanum(name)
 		bnd=_Bind(n,exp.expr)
-    edges.add(bnd,n)
-		val=exp
+		val=bnd.expr
 		val=val.expr while val.is_a?(Bind) 
-    edges.add(val,bnd)
+    edges.add(val,n)
 		bnd
 	end
 	def or_end(join)
@@ -448,7 +447,7 @@ def dataflow_ssa_compiled_by
 '0d125a47d852c213d99c6adf4c70ad87'
 end
 def dataflow_ssa_source_hash
-'82542b6c7bed543a6bae0afc82c8983d'
+'95ecc9f12129b33ae33790d51cbd690b'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
