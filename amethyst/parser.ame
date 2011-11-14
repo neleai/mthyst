@@ -40,9 +40,9 @@ amethyst AmethystParser < Amethyst{
 												     | "[" expression:{from=Enter[from,it]} "]" 
 		 												 | ("*"| "+"):one  { Many[from,one=="+"]}:from
     		                     | "?"  {Or[from,Apply["empty"]]}:from
-													 	 | ":" (  (key | name):name ('[]'?):append {_Bind(name,from,append=='[]')}:from
-            		   					        | inlineHostExpr:e  {Seq[ _Bind("it",from) , Act[e] ]}:from
-																   )
+													 	 | ":" (  (key | name):name ('[]'?):append {_Bind(name,from,append=='[]')}
+            		   					        | inlineHostExpr:e  {Seq[ _Bind("it",from) , Act[e] ]}
+																   ):from
 										)				)* {from}
 
  		modifier = term
