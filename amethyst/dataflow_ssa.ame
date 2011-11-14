@@ -91,7 +91,7 @@ amethyst Dead_Code_Deleter3 < Traverser_Clone2{
 
 		visit = (Act|CAct|Result)[@self:this .*] -> (!@@reachable[this] ||(this.pure && !@@bounded)) ? Placeholder : this
 					| Apply[.* {@self}]
-					| Bind[.* @self:b {@@bounded=@@reachable[@name]} traverse[ .* {@@bounded=false} {@@reachable[@name] ? @self : @expr}]]
+					| Bind[.* @self:b {@@bounded||=@@reachable[@name]} traverse[ .* {@@bounded=false} {@@reachable[@name] ? @self : @expr}]]
 					| Local[.* @self:this ] -> @@reachable[this] ? this : Placeholder
 }
 

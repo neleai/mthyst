@@ -152,9 +152,6 @@ def prefixed_AmethystParsercb_10(bind)
 bind[6]=Enter[bind[6],bind[13]]
 end
 def prefixed_AmethystParsercb_11(bind)
-1;bind[6]
-end
-def prefixed_AmethystParsercb_12(bind)
 _append(bind[7],bind[9])
 end
 def prefixed_AmethystParsercb_2(bind)
@@ -309,15 +306,15 @@ end
 
 
 def parser_compiled_by
-'0d125a47d852c213d99c6adf4c70ad87'
+'a4aeea8bf790784dfcdd2e53d3449777'
 end
 def parser_source_hash
-'edd6b42d46e4275cc07a1504f6386dd3'
+'8929996fc84a8cdfec63f6999f623011'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'deef252085ff18b83e4530157c040263'
+'e542fdd3fd4b4a686b63a5fabd4f6c1d'
 end
   require 'compiled/parser_c'

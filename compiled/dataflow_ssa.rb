@@ -369,7 +369,7 @@ def visit_Dead_Code_Deleter3cb_4(bind)
 _append(bind[10],bind[11])
 end
 def visit_Dead_Code_Deleter3cb_5(bind)
-@bounded=@reachable[src.name]
+@bounded||=@reachable[src.name]
 end
 def visit_Dead_Code_Deleter3cb_6(bind)
 _append(bind[13],bind[14])
@@ -444,15 +444,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'0d125a47d852c213d99c6adf4c70ad87'
+'a4aeea8bf790784dfcdd2e53d3449777'
 end
 def dataflow_ssa_source_hash
-'95ecc9f12129b33ae33790d51cbd690b'
+'8d2bdb8b5252c7296990d85f16b1e1ce'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'47966aa9ae2ba10917c6368cfa057f8f'
+'29d5b90a58c2f0aab8e44dc0da87239d'
 end
   require 'compiled/dataflow_ssa_c'
