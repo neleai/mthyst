@@ -797,7 +797,7 @@ def predicate_Detect_ClasSwitchcb_1(bind)
 (bind[0][bind[1]]=="default") || FAIL
 end
 def predicate_Detect_ClasSwitchcb_10(bind)
-_Bind(bind[7],bind[15])
+Bind[bind[7],bind[15]]
 end
 def predicate_Detect_ClasSwitchcb_11(bind)
 _append(bind[19],bind[21])
@@ -923,10 +923,10 @@ end
 
 
 def detect_switch_compiled_by
-'a4aeea8bf790784dfcdd2e53d3449777'
+'a775569ada2156ebfefd2817f9669017'
 end
 def detect_switch_source_hash
-'5c7c13460eb27339bf2603866b9d59ff'
+'ab4987e3769638cb0a4ef7af85bc8261'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version

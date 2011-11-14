@@ -99,7 +99,7 @@ def visit_Inliner2cb_2(bind)
 _append(bind[2],bind[3])
 end
 def visit_Inliner2cb_3(bind)
-body=deep_clone(@body); bind[4].each_index{|i| body=Seq[_Bind(@args[i],bind[4][i]),body] } ; body
+body=deep_clone(@body); bind[4].each_index{|i| body=Seq[Bind[@args[i],bind[4][i]],body] } ; body
 end
 
 end
@@ -168,10 +168,10 @@ end
 
 
 def inliner2_compiled_by
-'a4aeea8bf790784dfcdd2e53d3449777'
+'a775569ada2156ebfefd2817f9669017'
 end
 def inliner2_source_hash
-'e70b868139b66428259e6a338880dd0c'
+'15d2dcc6fca8d43a09a729785234a685'
 end
 def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version

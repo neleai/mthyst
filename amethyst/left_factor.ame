@@ -2,7 +2,7 @@ class Left_Factor < Traverser_Clone2
 	def merge(ary)
 		return ary[0] if ary.size==1
 		a=autovar.normalize
-		[Seq[_Bind(a,first(ary[0])),Or[*(ary.map{|e| rest(e,binds(e,a))})]]]
+		[Seq[Bind[a,first(ary[0])],Or[*(ary.map{|e| rest(e,binds(e,a))})]]]
 	end
 end
 
@@ -15,7 +15,7 @@ amethyst Left_Factor < Traverser_Clone2 {
 										 | . {bin} )
 
 	binds(s,a)  = {s}=>( Seq[.:f .* binds(f,a)]
-										 | Bind[.* binds(@expr,a):nexp {_Bind(@name,nexp)} ]
+										 | Bind[.* binds(@expr,a):nexp {Bind[@name,nexp]} ]
 										 | . {a})
 
 	root=traverse

@@ -78,6 +78,9 @@ def _Bind(name,expr,append=nil)
 	end
 end
 class Bind
+	def self.[](name,expr)
+		Bind.create({:name=>name,:ary=>[expr]}).normalize
+	end
 	def normalize2
 		return Or[*expr.ary.map{|a|_Bind(name,a)}] if expr.is_a?(Or)
     return Seq[*(expr.ary[0...-1]+[_Bind(name,expr.ary[-1])])] if expr.is_a?(Seq) && expr.ary.size>0

@@ -169,7 +169,7 @@ def visit_Constant_Traversercb_2(bind)
 src
 end
 def visit_Constant_Traversercb_3(bind)
-_Bind(src.name,bind[6])
+Bind[src.name,bind[6]]
 end
 def visit_Constant_Traversercb_4(bind)
 _append(bind[9],bind[10])
@@ -185,10 +185,10 @@ end
 
 
 def constant_propagation_compiled_by
-'a4aeea8bf790784dfcdd2e53d3449777'
+'a775569ada2156ebfefd2817f9669017'
 end
 def constant_propagation_source_hash
-'b3213c6e35e227b2b1fc4eb983600f9f'
+'b507d97e60e0e88d6bb37c3125ee8745'
 end
 def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version

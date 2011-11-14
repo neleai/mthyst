@@ -32,7 +32,7 @@ class Dataflow < Traverser_Clone2
 	def bind_end(exp)
 		name=exp.name
 		n=newssanum(name)
-		bnd=_Bind(n,exp.expr)
+		bnd=Bind[n,exp.expr]
 		val=bnd.expr
 		val=val.expr while val.is_a?(Bind) 
     edges.add(val,n)
