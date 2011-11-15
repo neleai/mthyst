@@ -24,13 +24,6 @@ class AmethystCore
 		end
 	end
 	
-  def _append(ar,it)
-    if it.is_a? Array
-      ar.concat(it)
-    else
-      ar << it
-    end
-  end
 
 	def initialize(grammars={})
 		@grammars=grammars

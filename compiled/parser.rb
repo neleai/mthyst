@@ -200,31 +200,43 @@ def rubyarg_AmethystParsercb_1(bind)
 Args[{:ary=>([bind[3]]+bind[4]+[bind[2]])}]
 end
 def rubyarg_AmethystParsercb_10(bind)
-Exp[_body(bind[18])]
+Strin[connectstring(bind[0])]
+end
+def rubyarg_AmethystParsercb_11(bind)
+_append(bind[0],bind[16])
+end
+def rubyarg_AmethystParsercb_12(bind)
+_append(bind[17],bind[18])
+end
+def rubyarg_AmethystParsercb_13(bind)
+_append(bind[0],bind[19])
+end
+def rubyarg_AmethystParsercb_14(bind)
+Exp[_body(bind[20])]
 end
 def rubyarg_AmethystParsercb_2(bind)
 /[$.:]/
 end
 def rubyarg_AmethystParsercb_3(bind)
-/[^`{}()'"\[\]]/
+_append(bind[1],bind[10])
 end
 def rubyarg_AmethystParsercb_4(bind)
-_append(bind[11],bind[12])
+_append(bind[1],bind[11])
 end
 def rubyarg_AmethystParsercb_5(bind)
-_append(bind[0],bind[13])
+bind[1]*""
 end
 def rubyarg_AmethystParsercb_6(bind)
-Strin[connectstring(bind[0])]
+/[^`{}()'"\[\]]/
 end
 def rubyarg_AmethystParsercb_7(bind)
-_append(bind[0],bind[14])
+_append(bind[0],bind[12])
 end
 def rubyarg_AmethystParsercb_8(bind)
-_append(bind[15],bind[16])
+_append(bind[13],bind[14])
 end
 def rubyarg_AmethystParsercb_9(bind)
-_append(bind[0],bind[17])
+_append(bind[0],bind[15])
 end
 def rule_AmethystParsercb_1(bind)
 @locals=[];$appends=[];@bnding=Bnding[]
@@ -306,15 +318,15 @@ end
 
 
 def parser_compiled_by
-'c58bcfcde7a665d599649ca9df836cd4'
+'3dcf104ef6aa91fcbe86afd37aade00c'
 end
 def parser_source_hash
-'8929996fc84a8cdfec63f6999f623011'
+'4dae726aff094ea1fab5dce8e1dbffd6'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'2b3c6a1404b84cfb9b437dfd42c7b4d3'
+'e177c201df1481d1ea7d48b3f5d3d1a2'
 end
   require 'compiled/parser_c'

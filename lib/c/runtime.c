@@ -42,6 +42,19 @@ VALUE AmethystCore_anything(VALUE self){
 	return r;
 }
 
+VALUE AmethystCore_append(VALUE self,VALUE ary,VALUE el){
+	if (TYPE(ary)!=T_ARRAY){
+
+		 exit(42);
+	}
+	if (TYPE(el)==T_ARRAY){
+		rb_ary_concat(ary,el);
+	}else{
+		rb_ary_push(ary,el);
+	}
+	return ary;
+}
+
 VALUE ame_new(VALUE clas){
 	cstruct *ptr=ALLOC(cstruct);
 	ptr->cut=ptr->stop=Qnil;
@@ -74,9 +87,10 @@ void Init_Ame(VALUE self){
 	rb_define_method(amecore,"len",ame_getlenrb,0);
 	rb_define_method(amecore,"src=",ame_setsrc,1);
 	rb_define_method(amecore,"src",ame_getsrc,0);
-
+	
 	rb_define_method(amecore,"_seq",AmethystCore__seq,1);
 	rb_define_method(amecore,"anything",AmethystCore_anything,0);
+	rb_define_method(amecore,"_append",AmethystCore_append,2);
 
 	bindcls=rb_define_class("BindingClass",rb_cObject);
   rb_define_singleton_method(bindcls,"new",bind_new,1);
