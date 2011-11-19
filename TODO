@@ -6,7 +6,6 @@ parser to produce literal tree and convert to abstract tree
 make position handling explicit as in amethyst/position.ame
 
 generic parent(Class) in tree traversal
-
 variable cget,cset,rbget,rbset or some other generalization
 consider pseudovariables
 
@@ -22,6 +21,7 @@ rewrite using backtracking,repeat until...
 continuation passing style
 
 switch and predication by constant propagation?
+predication by splitting to predicated and notpredicated part
 
 consider left factor when conditions are in inclusion.
 
@@ -38,18 +38,12 @@ think about suitable decomposition
 dataflow cantfail, noresult
 as constant propagation
 
-saner handling of Locals
-
-predication by splitting to predicated and notpredicated part
-
 serialization
 incremental compilation
 
 support for provable refactorization and migrations
 
 functor for case insensivity
-
-, in Acts
 
 copy propagation, expression variables
 Constant propagation also do value numbering to register renaming scheme.

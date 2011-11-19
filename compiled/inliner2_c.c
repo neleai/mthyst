@@ -171,7 +171,7 @@ static VALUE sy_Inliner2_bind_lb_2_rb__eq_;
 static VALUE sy_Inliner2_bind_lb_5_rb__lt_;
 static VALUE sy_Inliner2_bind_lb_6_rb__eq_;
 static VALUE sy_Inliner2_bind_lb_7_rb__eq_;
-static VALUE sy_Inliner2_body_eq_dee;
+static VALUE sy_Inliner2_body_eq__at_bo;
 static VALUE sy_Inliner2_if_sp_bind_lb_;
 static VALUE sy_Inliner2_src;
 static VALUE sy_Inliner2_src_dot_args;
@@ -350,7 +350,7 @@ it=rb_funcall(self,sy_Inliner2__append_lp_,1,bind);  if (ame_getstop(self)!=Qnil
 	pass1: fail1=1;
 	success1: ame_setsrc(self,oldsrc1); ame_setpos(self,oldpos1); ame_setlen(self,oldlen1);
 	if(fail1) goto fail;
-it=rb_funcall(self,sy_Inliner2_body_eq_dee,1,bind);  bind_aset(bind,5/*_result*/,it);
+it=rb_funcall(self,sy_Inliner2_body_eq__at_bo,1,bind);  bind_aset(bind,5/*_result*/,it);
 it=bind_aget(bind,5/*_result*/);
 return it;
 fail: return failobj; }VALUE cls_Replace_Super;
@@ -579,7 +579,7 @@ sy_Inliner2_bind_lb_2_rb__eq_=rb_intern("Inliner2_bind_lb_2_rb__eq_");
 sy_Inliner2_bind_lb_5_rb__lt_=rb_intern("Inliner2_bind_lb_5_rb__lt_");
 sy_Inliner2_bind_lb_6_rb__eq_=rb_intern("Inliner2_bind_lb_6_rb__eq_");
 sy_Inliner2_bind_lb_7_rb__eq_=rb_intern("Inliner2_bind_lb_7_rb__eq_");
-sy_Inliner2_body_eq_dee=rb_intern("Inliner2_body_eq_dee");
+sy_Inliner2_body_eq__at_bo=rb_intern("Inliner2_body_eq__at_bo");
 sy_Inliner2_if_sp_bind_lb_=rb_intern("Inliner2_if_sp_bind_lb_");
 sy_Inliner2_src=rb_intern("Inliner2_src");
 sy_Inliner2_src_dot_args=rb_intern("Inliner2_src_dot_args");
@@ -619,4 +619,4 @@ rb_define_method(cls_Replace_Super,"root",Replace_Super_root,0);
 rb_define_method(cls_Replace_Super,"traverse",Replace_Super_traverse,0);
 rb_define_method(cls_Replace_Super,"traverse_item",Replace_Super_traverse_item,0);
 rb_define_method(cls_Replace_Super,"visit",Replace_Super_visit,0);
- rb_eval_string("testversioninliner2('1ab449df9c17217484040ce89e31962f')");}
+ rb_eval_string("testversioninliner2('a0495577bee206d34e6b9eb8c3ad3ce4')");}

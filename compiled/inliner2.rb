@@ -75,8 +75,8 @@ end
 def Inliner2_bind_lb_7_rb__eq_(bind)
 bind[7]=[bind[7]]
 end
-def Inliner2_body_eq_dee(bind)
-body=deep_clone(@body); bind[4].each_index{|i| body=Seq[Bind[@args[i],bind[4][i]],body] } ; body
+def Inliner2_body_eq__at_bo(bind)
+body=@body; bind[4].each_index{|i| body=Seq[Bind[@args[i],bind[4][i]],body] } ; body
 end
 def Inliner2_if_sp_bind_lb_(bind)
 if bind[5]
@@ -168,15 +168,15 @@ end
 
 
 def inliner2_compiled_by
-'f794536016cd5f275a441293dd832be1'
+'43f7761befe5b26d07441d960bedf563'
 end
 def inliner2_source_hash
-'15d2dcc6fca8d43a09a729785234a685'
+'eca6429e1f65c5d4367c65294557dc01'
 end
 def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version
 end
 def inliner2_version
-'1ab449df9c17217484040ce89e31962f'
+'a0495577bee206d34e6b9eb8c3ad3ce4'
 end
   require 'compiled/inliner2_c'
