@@ -1,6 +1,6 @@
 require 'lib/compatibility'
 def leterize(s)
-	trans={"."=>"dot","_"=>"","+"=>"pl","-"=>"mi","*"=>"ti","/"=>"di","="=>"eq","<" => "lt",">"=>"gt","$"=>"do","@"=>"at","("=>"lp",")"=>"rp","["=>"lb","]"=>"rb"}
+	trans={"."=>"dot","+"=>"pl","-"=>"mi","*"=>"ti","/"=>"di","="=>"eq","<" => "lt",">"=>"gt","$"=>"do","@"=>"at","("=>"lp",")"=>"rp","["=>"lb","]"=>"rb"}
 	s2=""
 	s=s.split("")
 	s.each{|e|s2+=trans[e]?"_#{trans[e]}_" : e }
@@ -10,7 +10,7 @@ def signature(s)
 	s=leterize(s[0,8])
 	r=""
 	s.each_char{|c|
-		return r unless c=="-" || ("a"<=c && c<="z") || ("A"<=c && c<="Z")
+		return r unless c=="_" || ("a"<=c && c<="z") || ("A"<=c && c<="Z") || ("0"<=c && c<="9")
 		r<<c
 	}
 	r
@@ -54,9 +54,6 @@ class AmethystAST
 	def size
 		ary.size
 	end
-#	def [](*a)
-#		ary[*a]
-#	end
 	def inspect
 		attrs=self.class.instance_variable_get(:@attrs)-[:ary]
 		"#{self.class}[#{(ary.map{|a| a.inspect}+(attrs.select{|v| send(v)!=nil}.size>0 ? ["{#{(attrs).select{|v| send(v)!=nil}.map{|v| ":#{v}=>#{send(v).inspect}" }*', '}}"]:[]) )*"," }]"

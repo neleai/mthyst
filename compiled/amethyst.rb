@@ -1,68 +1,68 @@
 class Amethyst < AmethystCore
 
-def _true_Amethystcb_1(bind)
-(bind[0] == bind[1]) || FAIL
-end
-def clas_Amethystcb_1(bind)
-(bind[0].is_a?(bind[1])) || FAIL
-end
-def digit_Amethystcb_1(bind)
-/[0-9]/
-end
-def exactly_Amethystcb_1(bind)
-(bind[1] == bind[0]) || FAIL
-end
-def fails_Amethystcb_1(bind)
-(false) || FAIL
-end
-def foo_Amethystcb_1(bind)
-/[^a-c]/
-end
-def foo_Amethystcb_2(bind)
-/[g-i]/
-end
-def listOf_Amethystcb_1(bind)
-_append(bind[3],bind[5])
-end
-def listOf_Amethystcb_2(bind)
-_append(bind[0],bind[6])
-end
-def lower_Amethystcb_1(bind)
-/[a-z]/
-end
-def number_Amethystcb_1(bind)
-_append(bind[0],bind[1])
-end
-def number_Amethystcb_2(bind)
-(bind[3]*"").to_i
-end
-def regch_Amethystcb_1(bind)
-(bind[0].is_a? String ) || FAIL
-end
-def regch_Amethystcb_2(bind)
-(bind[3].match(bind[2])) || FAIL
-end
-def replace_Amethystcb_1(bind)
-bind[1]*""
-end
-def space_Amethystcb_1(bind)
-/[\s\t\r\n\f]/
-end
-def spaces_Amethystcb_1(bind)
+def Amethyst__append_lp_1(bind)
 _append(bind[0],bind[2])
 end
-def upper_Amethystcb_1(bind)
+def Amethyst__append_lp_2(bind)
+_append(bind[0],bind[1])
+end
+def Amethyst__append_lp_3(bind)
+_append(bind[3],bind[5])
+end
+def Amethyst__append_lp_4(bind)
+_append(bind[0],bind[6])
+end
+def Amethyst__di__lb_0_mi_9_rb__di_1(bind)
+/[0-9]/
+end
+def Amethyst__di__lb_0_mi_9a_mi_f1(bind)
+/[0-9a-fA-F]/
+end
+def Amethyst__di__lb_1(bind)
+/[^a-c]/
+end
+def Amethyst__di__lb_2(bind)
+/[\s\t\r\n\f]/
+end
+def Amethyst__di__lb_A_mi_Z_rb__di_1(bind)
 /[A-Z]/
 end
-def xdigit_Amethystcb_1(bind)
-/[0-9a-fA-F]/
+def Amethyst__di__lb_a_mi_z_rb__di_1(bind)
+/[a-z]/
+end
+def Amethyst__di__lb_g_mi_i_rb__di_1(bind)
+/[g-i]/
+end
+def Amethyst__lp_bind_lb_0_rb_1(bind)
+(bind[0].is_a? String ) || FAIL
+end
+def Amethyst__lp_bind_lb_0_rb_2(bind)
+(bind[0] == bind[1]) || FAIL
+end
+def Amethyst__lp_bind_lb_0_rb_3(bind)
+(bind[0].is_a?(bind[1])) || FAIL
+end
+def Amethyst__lp_bind_lb_1_rb_1(bind)
+(bind[1] == bind[0]) || FAIL
+end
+def Amethyst__lp_bind_lb_3_rb_1(bind)
+(bind[3].match(bind[2])) || FAIL
+end
+def Amethyst__lp_bind_lb_3_rb_2(bind)
+(bind[3]*"").to_i
+end
+def Amethyst__lp_false_rp_1(bind)
+(false) || FAIL
+end
+def Amethyst_bind_lb_1_rb__ti_1(bind)
+bind[1]*""
 end
 
 end
 
 
 def amethyst_compiled_by
-'3dcf104ef6aa91fcbe86afd37aade00c'
+'efb04d97d57b1eb5714da35fba16915c'
 end
 def amethyst_source_hash
 'aaa6d7dca6b6bc8a20edac17d9b7cad6'
@@ -71,6 +71,6 @@ def testversionamethyst(r)
  raise "invalid version" if r!=amethyst_version
 end
 def amethyst_version
-'42dff308c64d246462a876915c2f6999'
+'bb5406dc41d83188015cdb0a5e101007'
 end
   require 'compiled/amethyst_c'

@@ -245,59 +245,59 @@ class ClasSwitch_Dataflow < First_Dataflow
 end
 class First_Dataflow < Amethyst
 
-def first_First_Dataflowcb_1(bind)
+def First_Dataflow__append_lp_1(bind)
 _append(bind[1],bind[2])
 end
-def first_First_Dataflowcb_10(bind)
-_append(bind[24],bind[25])
-end
-def first_First_Dataflowcb_11(bind)
-bind[31]=[bind[31]]
-end
-def first_First_Dataflowcb_12(bind)
-bind[20].seqjoin(bind[32])
-end
-def first_First_Dataflowcb_13(bind)
-empty?(bind[30])
-end
-def first_First_Dataflowcb_14(bind)
-_append(bind[29],bind[33])
-end
-def first_First_Dataflowcb_15(bind)
-_append(bind[34],bind[35])
-end
-def first_First_Dataflowcb_2(bind)
-lattice.empty
-end
-def first_First_Dataflowcb_3(bind)
-lattice.default
-end
-def first_First_Dataflowcb_4(bind)
-(src.first.is_a?(lattice)) || FAIL
-end
-def first_First_Dataflowcb_5(bind)
+def First_Dataflow__append_lp_2(bind)
 _append(bind[7],bind[8])
 end
-def first_First_Dataflowcb_6(bind)
-src.first
-end
-def first_First_Dataflowcb_7(bind)
+def First_Dataflow__append_lp_3(bind)
 _append(bind[11],bind[12])
 end
-def first_First_Dataflowcb_8(bind)
-bind[13].inject(:|)
+def First_Dataflow__append_lp_4(bind)
+_append(bind[24],bind[25])
 end
-def first_First_Dataflowcb_9(bind)
-bind[20]|lattice.empty
+def First_Dataflow__append_lp_5(bind)
+_append(bind[29],bind[33])
 end
-def getvalue_First_Dataflowcb_1(bind)
+def First_Dataflow__append_lp_6(bind)
+_append(bind[34],bind[35])
+end
+def First_Dataflow__at_vis_eq_bin1(bind)
 @vis=bind[0]; bind[0]
 end
-def getvalue_First_Dataflowcb_2(bind)
+def First_Dataflow__lp_src_dot_fir1(bind)
+(src.first.is_a?(lattice)) || FAIL
+end
+def First_Dataflow_bind_lb_13_rb_1(bind)
+bind[13].inject(:|)
+end
+def First_Dataflow_bind_lb_1_rb__eq_1(bind)
 bind[1]=[bind[1]]
 end
-def value_First_Dataflowcb_1(bind)
+def First_Dataflow_bind_lb_20_rb_1(bind)
+bind[20]|lattice.empty
+end
+def First_Dataflow_bind_lb_20_rb_2(bind)
+bind[20].seqjoin(bind[32])
+end
+def First_Dataflow_bind_lb_31_rb_1(bind)
+bind[31]=[bind[31]]
+end
+def First_Dataflow_depends_lp_1(bind)
 depends(bind[0]); @vals[bind[0]]
+end
+def First_Dataflow_empty1(bind)
+empty?(bind[30])
+end
+def First_Dataflow_lattice_dot_1(bind)
+lattice.empty
+end
+def First_Dataflow_lattice_dot_2(bind)
+lattice.default
+end
+def First_Dataflow_src_dot_firs1(bind)
+src.first
 end
 
 end
@@ -305,62 +305,62 @@ end
 
 class Sizes_Dataflow < First_Dataflow
 
-def first_Sizes_Dataflow_Sizes_Dataflowcb_1(bind)
+def Sizes_Dataflow__append_lp_1(bind)
 _append(bind[1],bind[2])
 end
-def first_Sizes_Dataflow_Sizes_Dataflowcb_10(bind)
-_append(bind[32],bind[33])
-end
-def first_Sizes_Dataflow_Sizes_Dataflowcb_11(bind)
-bind[41]=[bind[41]]
-end
-def first_Sizes_Dataflow_Sizes_Dataflowcb_12(bind)
-bind[26].seqjoin(bind[42])
-end
-def first_Sizes_Dataflow_Sizes_Dataflowcb_13(bind)
-empty?(bind[40])
-end
-def first_Sizes_Dataflow_Sizes_Dataflowcb_14(bind)
-_append(bind[39],bind[43])
-end
-def first_Sizes_Dataflow_Sizes_Dataflowcb_15(bind)
-_append(bind[44],bind[45])
-end
-def first_Sizes_Dataflow_Sizes_Dataflowcb_2(bind)
-lattice.empty
-end
-def first_Sizes_Dataflow_Sizes_Dataflowcb_3(bind)
-lattice.default
-end
-def first_Sizes_Dataflow_Sizes_Dataflowcb_4(bind)
-(src.first.is_a?(lattice)) || FAIL
-end
-def first_Sizes_Dataflow_Sizes_Dataflowcb_5(bind)
+def Sizes_Dataflow__append_lp_2(bind)
 _append(bind[9],bind[10])
 end
-def first_Sizes_Dataflow_Sizes_Dataflowcb_6(bind)
-src.first
-end
-def first_Sizes_Dataflow_Sizes_Dataflowcb_7(bind)
+def Sizes_Dataflow__append_lp_3(bind)
 _append(bind[13],bind[14])
 end
-def first_Sizes_Dataflow_Sizes_Dataflowcb_8(bind)
-bind[15].inject(:|)
+def Sizes_Dataflow__append_lp_4(bind)
+_append(bind[32],bind[33])
 end
-def first_Sizes_Dataflow_Sizes_Dataflowcb_9(bind)
-bind[26]|lattice.empty
+def Sizes_Dataflow__append_lp_5(bind)
+_append(bind[39],bind[43])
 end
-def first_Sizes_Dataflowcb_1(bind)
-lattice[bind[6].size]
+def Sizes_Dataflow__append_lp_6(bind)
+_append(bind[44],bind[45])
 end
-def first_Sizes_Dataflowcb_2(bind)
-lattice[1]
-end
-def getvalue_Sizes_Dataflowcb_1(bind)
+def Sizes_Dataflow__at_vis_eq_bin1(bind)
 @vis=bind[0]; bind[0]
 end
-def getvalue_Sizes_Dataflowcb_2(bind)
+def Sizes_Dataflow__lp_src_dot_fir1(bind)
+(src.first.is_a?(lattice)) || FAIL
+end
+def Sizes_Dataflow_bind_lb_15_rb_1(bind)
+bind[15].inject(:|)
+end
+def Sizes_Dataflow_bind_lb_1_rb__eq_1(bind)
 bind[1]=[bind[1]]
+end
+def Sizes_Dataflow_bind_lb_26_rb_1(bind)
+bind[26]|lattice.empty
+end
+def Sizes_Dataflow_bind_lb_26_rb_2(bind)
+bind[26].seqjoin(bind[42])
+end
+def Sizes_Dataflow_bind_lb_41_rb_1(bind)
+bind[41]=[bind[41]]
+end
+def Sizes_Dataflow_empty1(bind)
+empty?(bind[40])
+end
+def Sizes_Dataflow_lattice_dot_1(bind)
+lattice.empty
+end
+def Sizes_Dataflow_lattice_dot_2(bind)
+lattice.default
+end
+def Sizes_Dataflow_lattice_lb_1(bind)
+lattice[bind[6].size]
+end
+def Sizes_Dataflow_lattice_lb_2(bind)
+lattice[1]
+end
+def Sizes_Dataflow_src_dot_firs1(bind)
+src.first
 end
 
 end
@@ -368,65 +368,65 @@ end
 
 class Switch_Dataflow < First_Dataflow
 
-def first_Switch_Dataflow_Switch_Dataflowcb_1(bind)
+def Switch_Dataflow__append_lp_1(bind)
 _append(bind[1],bind[2])
 end
-def first_Switch_Dataflow_Switch_Dataflowcb_10(bind)
-_append(bind[32],bind[33])
-end
-def first_Switch_Dataflow_Switch_Dataflowcb_11(bind)
-bind[41]=[bind[41]]
-end
-def first_Switch_Dataflow_Switch_Dataflowcb_12(bind)
-bind[26].seqjoin(bind[42])
-end
-def first_Switch_Dataflow_Switch_Dataflowcb_13(bind)
-empty?(bind[40])
-end
-def first_Switch_Dataflow_Switch_Dataflowcb_14(bind)
-_append(bind[39],bind[43])
-end
-def first_Switch_Dataflow_Switch_Dataflowcb_15(bind)
-_append(bind[44],bind[45])
-end
-def first_Switch_Dataflow_Switch_Dataflowcb_2(bind)
-lattice.empty
-end
-def first_Switch_Dataflow_Switch_Dataflowcb_3(bind)
-lattice.default
-end
-def first_Switch_Dataflow_Switch_Dataflowcb_4(bind)
-(src.first.is_a?(lattice)) || FAIL
-end
-def first_Switch_Dataflow_Switch_Dataflowcb_5(bind)
+def Switch_Dataflow__append_lp_2(bind)
 _append(bind[9],bind[10])
 end
-def first_Switch_Dataflow_Switch_Dataflowcb_6(bind)
-src.first
-end
-def first_Switch_Dataflow_Switch_Dataflowcb_7(bind)
+def Switch_Dataflow__append_lp_3(bind)
 _append(bind[13],bind[14])
 end
-def first_Switch_Dataflow_Switch_Dataflowcb_8(bind)
-bind[15].inject(:|)
+def Switch_Dataflow__append_lp_4(bind)
+_append(bind[32],bind[33])
 end
-def first_Switch_Dataflow_Switch_Dataflowcb_9(bind)
-bind[26]|lattice.empty
+def Switch_Dataflow__append_lp_5(bind)
+_append(bind[39],bind[43])
 end
-def first_Switch_Dataflowcb_1(bind)
-firstchar(bind[6])
+def Switch_Dataflow__append_lp_6(bind)
+_append(bind[44],bind[45])
 end
-def first_Switch_Dataflowcb_2(bind)
-regchar(bind[6])
-end
-def first_Switch_Dataflowcb_3(bind)
-lattice.top
-end
-def getvalue_Switch_Dataflowcb_1(bind)
+def Switch_Dataflow__at_vis_eq_bin1(bind)
 @vis=bind[0]; bind[0]
 end
-def getvalue_Switch_Dataflowcb_2(bind)
+def Switch_Dataflow__lp_src_dot_fir1(bind)
+(src.first.is_a?(lattice)) || FAIL
+end
+def Switch_Dataflow_bind_lb_15_rb_1(bind)
+bind[15].inject(:|)
+end
+def Switch_Dataflow_bind_lb_1_rb__eq_1(bind)
 bind[1]=[bind[1]]
+end
+def Switch_Dataflow_bind_lb_26_rb_1(bind)
+bind[26]|lattice.empty
+end
+def Switch_Dataflow_bind_lb_26_rb_2(bind)
+bind[26].seqjoin(bind[42])
+end
+def Switch_Dataflow_bind_lb_41_rb_1(bind)
+bind[41]=[bind[41]]
+end
+def Switch_Dataflow_empty1(bind)
+empty?(bind[40])
+end
+def Switch_Dataflow_firstcha1(bind)
+firstchar(bind[6])
+end
+def Switch_Dataflow_lattice_dot_1(bind)
+lattice.top
+end
+def Switch_Dataflow_lattice_dot_2(bind)
+lattice.empty
+end
+def Switch_Dataflow_lattice_dot_3(bind)
+lattice.default
+end
+def Switch_Dataflow_regchar_lp_1(bind)
+regchar(bind[6])
+end
+def Switch_Dataflow_src_dot_firs1(bind)
+src.first
 end
 
 end
@@ -434,71 +434,71 @@ end
 
 class ClasSwitch_Dataflow < First_Dataflow
 
-def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_1(bind)
-_append(bind[1],bind[2])
-end
-def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_10(bind)
-_append(bind[32],bind[33])
-end
-def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_11(bind)
-bind[41]=[bind[41]]
-end
-def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_12(bind)
-bind[26].seqjoin(bind[42])
-end
-def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_13(bind)
-empty?(bind[40])
-end
-def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_14(bind)
-_append(bind[39],bind[43])
-end
-def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_15(bind)
-_append(bind[44],bind[45])
-end
-def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_2(bind)
-lattice.empty
-end
-def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_3(bind)
-lattice.default
-end
-def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_4(bind)
-(src.first.is_a?(lattice)) || FAIL
-end
-def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_5(bind)
-_append(bind[9],bind[10])
-end
-def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_6(bind)
-src.first
-end
-def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_7(bind)
-_append(bind[13],bind[14])
-end
-def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_8(bind)
-bind[15].inject(:|)
-end
-def first_ClasSwitch_Dataflow_ClasSwitch_Dataflowcb_9(bind)
-bind[26]|lattice.empty
-end
-def first_ClasSwitch_Dataflowcb_1(bind)
-lattice[bind[3]]
-end
-def first_ClasSwitch_Dataflowcb_2(bind)
-($rules[bind[7]]) || FAIL
-end
-def first_ClasSwitch_Dataflowcb_3(bind)
+def ClasSwitch_Dataflow__append_lp_1(bind)
 _append(bind[8],bind[9])
 end
-def first_ClasSwitch_Dataflowcb_4(bind)
-$rules[bind[7]].body
+def ClasSwitch_Dataflow__append_lp_2(bind)
+_append(bind[1],bind[2])
 end
-def first_ClasSwitch_Dataflowcb_5(bind)
-bind[10]=[bind[10]]
+def ClasSwitch_Dataflow__append_lp_3(bind)
+_append(bind[9],bind[10])
 end
-def getvalue_ClasSwitch_Dataflowcb_1(bind)
+def ClasSwitch_Dataflow__append_lp_4(bind)
+_append(bind[13],bind[14])
+end
+def ClasSwitch_Dataflow__append_lp_5(bind)
+_append(bind[32],bind[33])
+end
+def ClasSwitch_Dataflow__append_lp_6(bind)
+_append(bind[39],bind[43])
+end
+def ClasSwitch_Dataflow__append_lp_7(bind)
+_append(bind[44],bind[45])
+end
+def ClasSwitch_Dataflow__at_vis_eq_bin1(bind)
 @vis=bind[0]; bind[0]
 end
-def getvalue_ClasSwitch_Dataflowcb_2(bind)
+def ClasSwitch_Dataflow__do_rules_lb_b1(bind)
+$rules[bind[7]].body
+end
+def ClasSwitch_Dataflow__lp__do_rules_lb_1(bind)
+($rules[bind[7]]) || FAIL
+end
+def ClasSwitch_Dataflow__lp_src_dot_fir1(bind)
+(src.first.is_a?(lattice)) || FAIL
+end
+def ClasSwitch_Dataflow_bind_lb_10_rb_1(bind)
+bind[10]=[bind[10]]
+end
+def ClasSwitch_Dataflow_bind_lb_15_rb_1(bind)
+bind[15].inject(:|)
+end
+def ClasSwitch_Dataflow_bind_lb_1_rb__eq_1(bind)
 bind[1]=[bind[1]]
+end
+def ClasSwitch_Dataflow_bind_lb_26_rb_1(bind)
+bind[26]|lattice.empty
+end
+def ClasSwitch_Dataflow_bind_lb_26_rb_2(bind)
+bind[26].seqjoin(bind[42])
+end
+def ClasSwitch_Dataflow_bind_lb_41_rb_1(bind)
+bind[41]=[bind[41]]
+end
+def ClasSwitch_Dataflow_empty1(bind)
+empty?(bind[40])
+end
+def ClasSwitch_Dataflow_lattice_dot_1(bind)
+lattice.empty
+end
+def ClasSwitch_Dataflow_lattice_dot_2(bind)
+lattice.default
+end
+def ClasSwitch_Dataflow_lattice_lb_1(bind)
+lattice[bind[3]]
+end
+def ClasSwitch_Dataflow_src_dot_firs1(bind)
+src.first
 end
 
 end
@@ -577,29 +577,29 @@ end
 
 class Detect_First < Traverser_Clone2
 
-def itrans_Detect_Firstcb_1(bind)
-@name=src.name
-end
-def itrans_Detect_Firstcb_2(bind)
-$rules={};src.rules.each{|r| $rules[r.name]=r}
-end
-def itrans_Detect_Firstcb_3(bind)
-src.rules
-end
-def itrans_Detect_Firstcb_4(bind)
-bind[3]=[bind[3]]
-end
-def itrans_Detect_Firstcb_5(bind)
+def Detect_First__append_lp_1(bind)
 _append(bind[5],bind[8])
 end
-def itrans_Detect_Firstcb_6(bind)
-src.rules=bind[9]
+def Detect_First__append_lp_2(bind)
+_append(bind[0],bind[11])
 end
-def itrans_Detect_Firstcb_7(bind)
+def Detect_First__at_name_eq_sr1(bind)
+@name=src.name
+end
+def Detect_First__do_rules_eq_1(bind)
+$rules={};src.rules.each{|r| $rules[r.name]=r}
+end
+def Detect_First_bind_lb_3_rb__eq_1(bind)
+bind[3]=[bind[3]]
+end
+def Detect_First_src1(bind)
 src
 end
-def itrans_Detect_Firstcb_8(bind)
-_append(bind[0],bind[11])
+def Detect_First_src_dot_rule1(bind)
+src.rules
+end
+def Detect_First_src_dot_rule2(bind)
+src.rules=bind[9]
 end
 
 end
@@ -611,95 +611,135 @@ end
 
 class Detect_Switch < Detect_First
 
-def itrans_Detect_Switchcb_1(bind)
-@name=src.name
+def Detect_Switch_CharLatt1(bind)
+CharLattice[]
 end
-def itrans_Detect_Switchcb_2(bind)
-$rules={};src.rules.each{|r| $rules[r.name]=r}
+def Detect_Switch_Or_lb__ti_bind1(bind)
+Or[*bind[3]]
 end
-def itrans_Detect_Switchcb_3(bind)
-src.rules
-end
-def itrans_Detect_Switchcb_4(bind)
-bind[5]=[bind[5]]
-end
-def itrans_Detect_Switchcb_5(bind)
-_append(bind[7],bind[10])
-end
-def itrans_Detect_Switchcb_6(bind)
-src.rules=bind[11]
-end
-def itrans_Detect_Switchcb_7(bind)
-_append(bind[0],bind[13])
-end
-def predicate_Detect_Switchcb_1(bind)
-(bind[0].ary[0]=="default") || FAIL
-end
-def predicate_Detect_Switchcb_10(bind)
-nary=bind[1].ary
-                                 nary=nary.select{|o,v| intersects(o,bind[0])} if bind[1].first.is_a?(CharLattice)
-                                 nary=nary.map{|o,v| [o,predicate(bind[0],v)]}.select{|o,v| v!=Placeholder}
-                                 Switch[{:act=>bind[1].act,:first=>bind[1].first,:defs=>bind[1].defs,:ary=>nary}]
-                              
-end
-def predicate_Detect_Switchcb_2(bind)
-(!intersects(first(bind[1]),bind[0])) || FAIL
-end
-def predicate_Detect_Switchcb_3(bind)
-Placeholder
-end
-def predicate_Detect_Switchcb_4(bind)
-bind[3]=[bind[3]]
-end
-def predicate_Detect_Switchcb_5(bind)
-_append(bind[6],bind[8])
-end
-def predicate_Detect_Switchcb_6(bind)
+def Detect_Switch_Or_lb__ti_bind2(bind)
 Or[*bind[9]]
 end
-def predicate_Detect_Switchcb_7(bind)
-_append(bind[15],bind[16])
+def Detect_Switch_Placehol1(bind)
+Placeholder
 end
-def predicate_Detect_Switchcb_8(bind)
+def Detect_Switch_Seq_lb__ti__lp__lb_b1(bind)
 Seq[*([bind[14]]+bind[17])]
 end
-def predicate_Detect_Switchcb_9(bind)
-_append(bind[21],bind[22])
+def Detect_Switch__append_lp_1(bind)
+_append(bind[3],bind[6])
 end
-def split_Detect_Switchcb_1(bind)
-@cases=@cases.map{|c| [c&bind[5],c&~bind[5]]}.flatten.select{|x| x.ary.size>0}.uniq_by{|x|x.ary.inspect} 
+def Detect_Switch__append_lp_10(bind)
+_append(bind[7],bind[10])
 end
-def split_Detect_Switchcb_2(bind)
+def Detect_Switch__append_lp_11(bind)
+_append(bind[0],bind[13])
+end
+def Detect_Switch__append_lp_2(bind)
+_append(bind[4],bind[7])
+end
+def Detect_Switch__append_lp_3(bind)
 _append(bind[8],bind[9])
 end
-def split_Detect_Switchcb_3(bind)
+def Detect_Switch__append_lp_4(bind)
 _append(bind[13],bind[14])
 end
-def traverse_Detect_Switchcb_1(bind)
+def Detect_Switch__append_lp_5(bind)
+_append(bind[6],bind[8])
+end
+def Detect_Switch__append_lp_6(bind)
+_append(bind[15],bind[16])
+end
+def Detect_Switch__append_lp_7(bind)
+_append(bind[21],bind[22])
+end
+def Detect_Switch__append_lp_8(bind)
 _append(bind[0],bind[1])
 end
-def traverse_Detect_Switchcb_2(bind)
-@changed
-end
-def traverse_Detect_Switchcb_3(bind)
-src
-end
-def traverse_Detect_Switchcb_4(bind)
-(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
-end
-def traverse_Detect_Switchcb_5(bind)
-bind[6]=[bind[6]]
-end
-def traverse_Detect_Switchcb_6(bind)
-@changed=false
-end
-def traverse_Detect_Switchcb_7(bind)
-(bind[4]||=bind[3].dup;bind[5]=true;bind[4].instance_variable_set(bind[10],bind[11])) if @changed && bind[11]!=instance_variable_get(bind[10])
-end
-def traverse_Detect_Switchcb_8(bind)
+def Detect_Switch__append_lp_9(bind)
 _append(bind[8],bind[13])
 end
-def traverse_Detect_Switchcb_9(bind)
+def Detect_Switch__at_cases_dot_e1(bind)
+@cases.each{|ee|bind[5]=ee
+			bind[2]<<[bind[5],predicate(bind[5],bind[9])]
+		}
+end
+def Detect_Switch__at_cases_eq__at_1(bind)
+@cases=@cases.map{|c| [c&bind[5],c&~bind[5]]}.flatten.select{|x| x.ary.size>0}.uniq_by{|x|x.ary.inspect} 
+end
+def Detect_Switch__at_cases_eq__lb_1(bind)
+@cases=[bind[8]]
+end
+def Detect_Switch__at_changed1(bind)
+@changed=true
+end
+def Detect_Switch__at_changed2(bind)
+@changed
+end
+def Detect_Switch__at_changed3(bind)
+@changed=false
+end
+def Detect_Switch__at_name_eq_sr1(bind)
+@name=src.name
+end
+def Detect_Switch__do_rules_eq_1(bind)
+$rules={};src.rules.each{|r| $rules[r.name]=r}
+end
+def Detect_Switch__lp_1(bind)
+(!intersects(first(bind[1]),bind[0])) || FAIL
+end
+def Detect_Switch__lp_bind_lb_0_rb_1(bind)
+(bind[0].ary[0]=="default") || FAIL
+end
+def Detect_Switch__lp_bind_lb_1_rb_1(bind)
+(bind[1].size>1) || FAIL
+end
+def Detect_Switch__lp_bind_lb_2_rb_1(bind)
+(bind[2].size>1) || FAIL
+end
+def Detect_Switch__lp_bind_lb_4_rb_1(bind)
+(bind[4]||=bind[3].dup;bind[5]=true;bind[4].instance_variable_set(bind[10],bind[11])) if @changed && bind[11]!=instance_variable_get(bind[10])
+end
+def Detect_Switch__lp_bind_lb_9_rb_1(bind)
+(bind[9].is_a?(Or)) || FAIL
+end
+def Detect_Switch__lp_first_lp_b1(bind)
+(first(bind[5])) || FAIL
+end
+def Detect_Switch__lp_src_dot_ins1(bind)
+(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
+end
+def Detect_Switch_bind_lb_10_rb_1(bind)
+bind[10]=[bind[10]]
+end
+def Detect_Switch_bind_lb_1_rb_1(bind)
+bind[1]|=first(bind[5])
+end
+def Detect_Switch_bind_lb_1_rb__eq_1(bind)
+bind[1]=bind[1].ary.map{|el|  [Anything,Empty].include?(el) ? "default" : el}.uniq
+end
+def Detect_Switch_bind_lb_2_rb__eq_1(bind)
+bind[2]=bind[2].group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.inject(:|),v[0][1]]}.sort_by{|el| el.inspect}
+end
+def Detect_Switch_bind_lb_2_rb__lt_1(bind)
+bind[2]<<[CharLattice["default"],Apply["fails"]] unless bind[1].include?("default")
+end
+def Detect_Switch_bind_lb_3_rb__eq_1(bind)
+bind[3]=[bind[3]]
+end
+def Detect_Switch_bind_lb_5_rb__eq_1(bind)
+bind[5]=[bind[5]]
+end
+def Detect_Switch_bind_lb_5_rb__lt_1(bind)
+bind[5]<<bind[7]
+end
+def Detect_Switch_bind_lb_6_rb__eq_1(bind)
+bind[6]=[bind[6]]
+end
+def Detect_Switch_bind_lb_8_rb__eq_1(bind)
+bind[8]=unempty(bind[8])
+end
+def Detect_Switch_if1(bind)
 if bind[5]
              @changed=true;bind[4].normalize
            else
@@ -707,64 +747,24 @@ if bind[5]
             src
           end
 end
-def traverse_item_Detect_Switchcb_1(bind)
-@changed=true
+def Detect_Switch_nary_eq_bin1(bind)
+nary=bind[1].ary
+                                 nary=nary.select{|o,v| intersects(o,bind[0])} if bind[1].first.is_a?(CharLattice)
+                                 nary=nary.map{|o,v| [o,predicate(bind[0],v)]}.select{|o,v| v!=Placeholder}
+                                 Switch[{:act=>bind[1].act,:first=>bind[1].first,:defs=>bind[1].defs,:ary=>nary}]
+                              
 end
-def traverse_item_Detect_Switchcb_2(bind)
-bind[5]<<bind[7]
-end
-def visit_Detect_Switchcb_1(bind)
-CharLattice[]
-end
-def visit_Detect_Switchcb_10(bind)
-bind[8]=unempty(bind[8])
-end
-def visit_Detect_Switchcb_11(bind)
-@cases=[bind[8]]
-end
-def visit_Detect_Switchcb_12(bind)
-bind[10]=[bind[10]]
-end
-def visit_Detect_Switchcb_13(bind)
-@cases.each{|ee|bind[5]=ee
-			bind[2]<<[bind[5],predicate(bind[5],bind[9])]
-		}
-end
-def visit_Detect_Switchcb_14(bind)
-bind[2]=bind[2].group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.inject(:|),v[0][1]]}.sort_by{|el| el.inspect}
-end
-def visit_Detect_Switchcb_15(bind)
-bind[2]<<[CharLattice["default"],Apply["fails"]] unless bind[1].include?("default")
-end
-def visit_Detect_Switchcb_16(bind)
-(bind[2].size>1) || FAIL
-end
-def visit_Detect_Switchcb_17(bind)
+def Detect_Switch_s_eq_Switch1(bind)
 s=Switch[{:act=>"*ame_curstr(self)",:first=>bind[8],:ary=>bind[2]}];puts s.inspect;s
 end
-def visit_Detect_Switchcb_2(bind)
-(first(bind[5])) || FAIL
+def Detect_Switch_src1(bind)
+src
 end
-def visit_Detect_Switchcb_3(bind)
-_append(bind[3],bind[6])
+def Detect_Switch_src_dot_rule1(bind)
+src.rules
 end
-def visit_Detect_Switchcb_4(bind)
-bind[1]|=first(bind[5])
-end
-def visit_Detect_Switchcb_5(bind)
-_append(bind[4],bind[7])
-end
-def visit_Detect_Switchcb_6(bind)
-bind[1]=bind[1].ary.map{|el|  [Anything,Empty].include?(el) ? "default" : el}.uniq
-end
-def visit_Detect_Switchcb_7(bind)
-(bind[1].size>1) || FAIL
-end
-def visit_Detect_Switchcb_8(bind)
-Or[*bind[3]]
-end
-def visit_Detect_Switchcb_9(bind)
-(bind[9].is_a?(Or)) || FAIL
+def Detect_Switch_src_dot_rule2(bind)
+src.rules=bind[11]
 end
 
 end
@@ -772,94 +772,129 @@ end
 
 class Detect_ClasSwitch < Detect_First
 
-def itrans_Detect_ClasSwitchcb_1(bind)
-@name=src.name
-end
-def itrans_Detect_ClasSwitchcb_2(bind)
-$rules={};src.rules.each{|r| $rules[r.name]=r}
-end
-def itrans_Detect_ClasSwitchcb_3(bind)
-src.rules
-end
-def itrans_Detect_ClasSwitchcb_4(bind)
-bind[5]=[bind[5]]
-end
-def itrans_Detect_ClasSwitchcb_5(bind)
-_append(bind[7],bind[10])
-end
-def itrans_Detect_ClasSwitchcb_6(bind)
-src.rules=bind[11]
-end
-def itrans_Detect_ClasSwitchcb_7(bind)
-_append(bind[0],bind[13])
-end
-def predicate_Detect_ClasSwitchcb_1(bind)
-(bind[0][bind[1]]=="default") || FAIL
-end
-def predicate_Detect_ClasSwitchcb_10(bind)
-Bind[bind[7],bind[15]]
-end
-def predicate_Detect_ClasSwitchcb_11(bind)
-_append(bind[19],bind[21])
-end
-def predicate_Detect_ClasSwitchcb_12(bind)
-Or[*bind[22]]
-end
-def predicate_Detect_ClasSwitchcb_13(bind)
-_append(bind[27],bind[28])
-end
-def predicate_Detect_ClasSwitchcb_14(bind)
-Seq[*([bind[26]]+bind[29])]
-end
-def predicate_Detect_ClasSwitchcb_2(bind)
-(!includes(bind[0],bind[1],first(bind[2]))) || FAIL
-end
-def predicate_Detect_ClasSwitchcb_3(bind)
-Placeholder
-end
-def predicate_Detect_ClasSwitchcb_4(bind)
-bind[4]=[bind[4]]
-end
-def predicate_Detect_ClasSwitchcb_5(bind)
-(bind[7]=="clas") || FAIL
-end
-def predicate_Detect_ClasSwitchcb_6(bind)
-(child(bind[0][bind[1]],bind[9])&&bind[0][bind[1]]==bind[9]) || FAIL
-end
-def predicate_Detect_ClasSwitchcb_7(bind)
+def Detect_ClasSwitch_Apply_lb_1(bind)
 Apply["anything"]
 end
-def predicate_Detect_ClasSwitchcb_8(bind)
-src.name
+def Detect_ClasSwitch_Bind_lb_bin1(bind)
+Bind[bind[7],bind[15]]
 end
-def predicate_Detect_ClasSwitchcb_9(bind)
-predicate(bind[0],bind[1],bind[14])
+def Detect_ClasSwitch_ClasLatt1(bind)
+ClasLattice.bottom
 end
-def traverse_Detect_ClasSwitchcb_1(bind)
+def Detect_ClasSwitch_Or_lb__ti_bind1(bind)
+Or[*bind[3]]
+end
+def Detect_ClasSwitch_Or_lb__ti_bind2(bind)
+Or[*bind[22]]
+end
+def Detect_ClasSwitch_Placehol1(bind)
+Placeholder
+end
+def Detect_ClasSwitch_Seq_lb__ti__lp__lb_b1(bind)
+Seq[*([bind[26]]+bind[29])]
+end
+def Detect_ClasSwitch__append_lp_1(bind)
+_append(bind[3],bind[6])
+end
+def Detect_ClasSwitch__append_lp_2(bind)
+_append(bind[4],bind[7])
+end
+def Detect_ClasSwitch__append_lp_3(bind)
+_append(bind[19],bind[21])
+end
+def Detect_ClasSwitch__append_lp_4(bind)
+_append(bind[27],bind[28])
+end
+def Detect_ClasSwitch__append_lp_5(bind)
+_append(bind[6],bind[8])
+end
+def Detect_ClasSwitch__append_lp_6(bind)
 _append(bind[0],bind[1])
 end
-def traverse_Detect_ClasSwitchcb_2(bind)
-@changed
-end
-def traverse_Detect_ClasSwitchcb_3(bind)
-src
-end
-def traverse_Detect_ClasSwitchcb_4(bind)
-(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
-end
-def traverse_Detect_ClasSwitchcb_5(bind)
-bind[6]=[bind[6]]
-end
-def traverse_Detect_ClasSwitchcb_6(bind)
-@changed=false
-end
-def traverse_Detect_ClasSwitchcb_7(bind)
-(bind[4]||=bind[3].dup;bind[5]=true;bind[4].instance_variable_set(bind[10],bind[11])) if @changed && bind[11]!=instance_variable_get(bind[10])
-end
-def traverse_Detect_ClasSwitchcb_8(bind)
+def Detect_ClasSwitch__append_lp_7(bind)
 _append(bind[8],bind[13])
 end
-def traverse_Detect_ClasSwitchcb_9(bind)
+def Detect_ClasSwitch__append_lp_8(bind)
+_append(bind[7],bind[10])
+end
+def Detect_ClasSwitch__append_lp_9(bind)
+_append(bind[0],bind[13])
+end
+def Detect_ClasSwitch__at_changed1(bind)
+@changed=true
+end
+def Detect_ClasSwitch__at_changed2(bind)
+@changed
+end
+def Detect_ClasSwitch__at_changed3(bind)
+@changed=false
+end
+def Detect_ClasSwitch__at_name_eq_sr1(bind)
+@name=src.name
+end
+def Detect_ClasSwitch__do_rules_eq_1(bind)
+$rules={};src.rules.each{|r| $rules[r.name]=r}
+end
+def Detect_ClasSwitch__lp_1(bind)
+(!includes(bind[0],bind[1],first(bind[2]))) || FAIL
+end
+def Detect_ClasSwitch__lp_bind_lb_0_rb_1(bind)
+(bind[0][bind[1]]=="default") || FAIL
+end
+def Detect_ClasSwitch__lp_bind_lb_1_rb_1(bind)
+(bind[1].size>1) || FAIL
+end
+def Detect_ClasSwitch__lp_bind_lb_4_rb_1(bind)
+(bind[4]||=bind[3].dup;bind[5]=true;bind[4].instance_variable_set(bind[10],bind[11])) if @changed && bind[11]!=instance_variable_get(bind[10])
+end
+def Detect_ClasSwitch__lp_bind_lb_7_rb_1(bind)
+(bind[7]=="clas") || FAIL
+end
+def Detect_ClasSwitch__lp_child_lp_b1(bind)
+(child(bind[0][bind[1]],bind[9])&&bind[0][bind[1]]==bind[9]) || FAIL
+end
+def Detect_ClasSwitch__lp_first_lp_b1(bind)
+(first(bind[5])) || FAIL
+end
+def Detect_ClasSwitch__lp_src_dot_ins1(bind)
+(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
+end
+def Detect_ClasSwitch_bind_lb_1_rb_1(bind)
+bind[1]|=first(bind[5])
+end
+def Detect_ClasSwitch_bind_lb_1_rb__dot_1(bind)
+bind[1].each_index{|i|
+      	bind[2]<<[i,predicate(bind[1],i,bind[9])]
+		}
+end
+def Detect_ClasSwitch_bind_lb_1_rb__eq_1(bind)
+bind[1]=topsort(bind[1].ary+[Object])
+end
+def Detect_ClasSwitch_bind_lb_2_rb__eq_1(bind)
+bind[2]=bind[2].map{|o,v| v==Placeholder ? [o,Apply["fails"]] : [o,v]}
+end
+def Detect_ClasSwitch_bind_lb_2_rb__eq_2(bind)
+bind[2]=bind[2].group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.sort_by{|el| el.inspect},v[0][1]]}.sort_by{|el| el.inspect}
+end
+def Detect_ClasSwitch_bind_lb_2_rb__eq_3(bind)
+bind[2]=bind[2].map{|o,v| [ClasLattice[*o],v]}
+end
+def Detect_ClasSwitch_bind_lb_4_rb__eq_1(bind)
+bind[4]=[bind[4]]
+end
+def Detect_ClasSwitch_bind_lb_5_rb__eq_1(bind)
+bind[5]=[bind[5]]
+end
+def Detect_ClasSwitch_bind_lb_5_rb__lt_1(bind)
+bind[5]<<bind[7]
+end
+def Detect_ClasSwitch_bind_lb_6_rb__eq_1(bind)
+bind[6]=[bind[6]]
+end
+def Detect_ClasSwitch_c_eq_classs1(bind)
+c=classswitch(bind[1],bind[8],bind[2])
+end
+def Detect_ClasSwitch_if1(bind)
 if bind[5]
              @changed=true;bind[4].normalize
            else
@@ -867,55 +902,20 @@ if bind[5]
             src
           end
 end
-def traverse_item_Detect_ClasSwitchcb_1(bind)
-@changed=true
+def Detect_ClasSwitch_predicat1(bind)
+predicate(bind[0],bind[1],bind[14])
 end
-def traverse_item_Detect_ClasSwitchcb_2(bind)
-bind[5]<<bind[7]
+def Detect_ClasSwitch_src1(bind)
+src
 end
-def traverse_item_Detect_ClasSwitchcb_3(bind)
-_append(bind[6],bind[8])
+def Detect_ClasSwitch_src_dot_name1(bind)
+src.name
 end
-def visit_Detect_ClasSwitchcb_1(bind)
-ClasLattice.bottom
+def Detect_ClasSwitch_src_dot_rule1(bind)
+src.rules
 end
-def visit_Detect_ClasSwitchcb_10(bind)
-bind[2]=bind[2].map{|o,v| v==Placeholder ? [o,Apply["fails"]] : [o,v]}
-end
-def visit_Detect_ClasSwitchcb_11(bind)
-bind[2]=bind[2].group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.sort_by{|el| el.inspect},v[0][1]]}.sort_by{|el| el.inspect}
-end
-def visit_Detect_ClasSwitchcb_12(bind)
-bind[2]=bind[2].map{|o,v| [ClasLattice[*o],v]}
-end
-def visit_Detect_ClasSwitchcb_13(bind)
-c=classswitch(bind[1],bind[8],bind[2])
-end
-def visit_Detect_ClasSwitchcb_2(bind)
-(first(bind[5])) || FAIL
-end
-def visit_Detect_ClasSwitchcb_3(bind)
-_append(bind[3],bind[6])
-end
-def visit_Detect_ClasSwitchcb_4(bind)
-bind[1]|=first(bind[5])
-end
-def visit_Detect_ClasSwitchcb_5(bind)
-_append(bind[4],bind[7])
-end
-def visit_Detect_ClasSwitchcb_6(bind)
-bind[1]=topsort(bind[1].ary+[Object])
-end
-def visit_Detect_ClasSwitchcb_7(bind)
-(bind[1].size>1) || FAIL
-end
-def visit_Detect_ClasSwitchcb_8(bind)
-Or[*bind[3]]
-end
-def visit_Detect_ClasSwitchcb_9(bind)
-bind[1].each_index{|i|
-      	bind[2]<<[i,predicate(bind[1],i,bind[9])]
-		}
+def Detect_ClasSwitch_src_dot_rule2(bind)
+src.rules=bind[11]
 end
 
 end
@@ -923,7 +923,7 @@ end
 
 
 def detect_switch_compiled_by
-'3dcf104ef6aa91fcbe86afd37aade00c'
+'efb04d97d57b1eb5714da35fba16915c'
 end
 def detect_switch_source_hash
 'ab4987e3769638cb0a4ef7af85bc8261'
@@ -932,6 +932,6 @@ def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'5398e40405229fbbd4c18294c4649b44'
+'4afd0f23f571fffaf7db9023dcfa6b21'
 end
   require 'compiled/detect_switch_c'
