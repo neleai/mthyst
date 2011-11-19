@@ -453,6 +453,6 @@ def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'e857d66de6e0744285e8ace062fc518a'
+'bb85a8b624b8497347f7c4febb0e1c23'
 end
   require 'compiled/dataflow_ssa_c'

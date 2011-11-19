@@ -327,6 +327,6 @@ def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'a0bf5cad1e743a8ce9388d9665a2aff1'
+'9968ba705a27e661bfacd070eb3de41d'
 end
   require 'compiled/parser_c'

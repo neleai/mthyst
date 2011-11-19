@@ -132,6 +132,6 @@ def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version
 end
 def left_factor_version
-'6011f7ab6e0672b44bee237833797c0f'
+'03c9babd2ec1c34cb90ec491ee038f3c'
 end
   require 'compiled/left_factor_c'

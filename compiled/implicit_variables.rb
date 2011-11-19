@@ -106,6 +106,6 @@ def testversionimplicit_variables(r)
  raise "invalid version" if r!=implicit_variables_version
 end
 def implicit_variables_version
-'f55ecef4b746d4985ddaa361d4145979'
+'0882aca4ab1f72f1d1a1e2a283b8aef1'
 end
   require 'compiled/implicit_variables_c'

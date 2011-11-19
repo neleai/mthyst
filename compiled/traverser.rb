@@ -75,6 +75,6 @@ def testversiontraverser(r)
  raise "invalid version" if r!=traverser_version
 end
 def traverser_version
-'f64c76601e408391b8701feacdbbc7f2'
+'68ae60027beffbc467d57f5661622374'
 end
   require 'compiled/traverser_c'

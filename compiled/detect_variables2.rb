@@ -147,6 +147,6 @@ def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'7e7781aa181c7b1d849973b0db0f2251'
+'ed2aa24ad0455c57c591b09cfac8dd7a'
 end
   require 'compiled/detect_variables2_c'

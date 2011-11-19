@@ -75,7 +75,7 @@ def AmethystCTranslator_10(bind)
 "#{bind[51]} FAILTEST(#{@faillabel});" 
 end
 def AmethystCTranslator_11(bind)
-"#{bind[55]}\n #{bset(src.name,"it")}; " 
+"#{bind[55]} #{bset(src.name,"it")};\n" 
 end
 def AmethystCTranslator_12(bind)
 "VALUE cls_#{src.name};\n" 
@@ -368,12 +368,12 @@ def ctranslator2_compiled_by
 'ddbd2ab2d5ab620699c741fb90acd2cb'
 end
 def ctranslator2_source_hash
-'761e3f87bc540aeb04a19f04f9164c51'
+'043515cbb9ab3da2803737049a091515'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'505cd43fe7b5eba1c039ee0d26fa46aa'
+'1d84290782c60a557ab1b24adbf0e239'
 end
   require 'compiled/ctranslator2_c'

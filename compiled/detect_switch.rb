@@ -932,6 +932,6 @@ def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'6dafbf68ba9f7c354d622da0c9c93e5d'
+'d68e1b112ccfca752e5a5a6a53fca665'
 end
   require 'compiled/detect_switch_c'

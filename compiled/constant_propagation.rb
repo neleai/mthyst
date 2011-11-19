@@ -194,6 +194,6 @@ def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
 end
 def constant_propagation_version
-'033b649d47e1c746a4dd54f648eb0318'
+'e14fef95863c0fcdc04bece5afa8d3d0'
 end
   require 'compiled/constant_propagation_c'
