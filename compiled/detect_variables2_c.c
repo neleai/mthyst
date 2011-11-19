@@ -15,9 +15,8 @@ VALUE switchhashAnalyze_Variables22;
 VALUE switchhashAnalyze_Variables23;
 VALUE switchhashAnalyze_Variables24;
 VALUE switchhashTraverser_Clone21;
-static VALUE c_39;
-static VALUE c_40;
-static VALUE c_44;
+static VALUE c_Local;
+static VALUE c_Rule;
 static VALUE s_Analyze_Variables2_Act_lb_bind1Analyze_Variables2;
 static VALUE s_Analyze_Variables2_Or_lb__ti_bind1Analyze_Variables2;
 static VALUE s_Analyze_Variables2_Placehol1Analyze_Variables2;
@@ -127,7 +126,7 @@ ame_setsrc(self,bind_aget(bind,3/*autovar*/)); ame_setpos(self,0); ame_setlen(se
  bind_aset(bind,4/*autovar*/,it); int oldpos5=ame_getpos(self); int oldlen3=ame_getlen(self); VALUE oldsrc3=ame_getsrc(self); int fail3=0;
 ame_setsrc(self,bind_aget(bind,4/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2LONG(rb_funcall(ame_getsrc(self),s_sizeAnalyze_Variables2,0)));
  it=rb_ary_new3(0);
- bind_aset(bind,5/*autovar*/,it); int oldpos6; while(1){oldpos6=ame_getpos(self);  it=c_39; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(break2);
+ bind_aset(bind,5/*autovar*/,it); int oldpos6; while(1){oldpos6=ame_getpos(self);  it=c_Rule; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(break2);
  bind_aset(bind,6/*autovar*/,it); int oldpos7=ame_getpos(self); int oldlen4=ame_getlen(self); VALUE oldsrc4=ame_getsrc(self); int fail4=0;
 ame_setsrc(self,bind_aget(bind,6/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2LONG(rb_funcall(ame_getsrc(self),s_sizeAnalyze_Variables2,0)));
    it=Analyze_Variables2_root(self ); FAILTEST(pass4);
@@ -173,7 +172,7 @@ VALUE Analyze_Variables2_root(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(9
 it=rb_funcall(self,s_Analyze_Variables2_src1Analyze_Variables2,1,bind); 
  bind_aset(bind,0/*autovar*/,it); it=rb_funcall(self,s_Analyze_Variables2_bind_lb_0_rb__eq_1Analyze_Variables2,1,bind); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,bind_aget(bind,0/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2LONG(rb_funcall(ame_getsrc(self),s_sizeAnalyze_Variables2,0)));
-  it=c_40; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(pass1);
+  it=c_Rule; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(pass1);
  bind_aset(bind,1/*autovar*/,it); int oldpos2=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
 ame_setsrc(self,bind_aget(bind,1/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2LONG(rb_funcall(ame_getsrc(self),s_sizeAnalyze_Variables2,0)));
  it=rb_funcall(self,s_Analyze_Variables2__at_bnding_eq_1Analyze_Variables2,1,bind); it=rb_funcall(self,s_Analyze_Variables2__at_variabl1Analyze_Variables2,1,bind); it=rb_funcall(self,s_Analyze_Variables2__at_locals_eq_1Analyze_Variables2,1,bind);   it=Analyze_Variables2_traverse(self ); FAILTEST(pass2);
@@ -345,7 +344,7 @@ ame_setsrc(self,bind_aget(bind,7/*autovar*/)); ame_setpos(self,0); ame_setlen(se
 	success5: ame_setsrc(self,oldsrc5); ame_setpos(self,oldpos6); ame_setlen(self,oldlen5);
 	if(fail5) goto pass4;
 it=bind_aget(bind,11/*autovar*/);
- bind_aset(bind,12/*autovar*/,it);  break;case 1:; it=rb_funcall(self,s_Analyze_Variables2__lp_1Analyze_Variables2,1,bind); FAILTEST(pass4); it=c_44; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(pass4);
+ bind_aset(bind,12/*autovar*/,it);  break;case 1:; it=rb_funcall(self,s_Analyze_Variables2__lp_1Analyze_Variables2,1,bind); FAILTEST(pass4); it=c_Local; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(pass4);
  bind_aset(bind,12/*autovar*/,it);  break;case 2:;   it=Amethyst_fails(self ); FAILTEST(pass4); break;}  it=Amethyst_eof(self ); FAILTEST(pass4);
 	goto success4;
 	pass4: fail4=1;
@@ -463,9 +462,8 @@ fail: return failobj; }
 void Init_detect_variables2_c(){ 
  cls_Analyze_Variables2=rb_define_class("Analyze_Variables2",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2"))); 
 failobj=rb_eval_string("FAIL");
-c_39=rb_const_get(rb_cObject, rb_intern("Rule"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_39);
-c_40=rb_const_get(rb_cObject, rb_intern("Rule"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_40);
-c_44=rb_const_get(rb_cObject, rb_intern("Local"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_44);
+c_Local=rb_const_get(rb_cObject, rb_intern("Local"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Local);
+c_Rule=rb_const_get(rb_cObject, rb_intern("Rule"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Rule);
 s_Analyze_Variables2_Act_lb_bind1Analyze_Variables2=rb_intern("Analyze_Variables2_Act_lb_bind1");
 s_Analyze_Variables2_Or_lb__ti_bind1Analyze_Variables2=rb_intern("Analyze_Variables2_Or_lb__ti_bind1");
 s_Analyze_Variables2_Placehol1Analyze_Variables2=rb_intern("Analyze_Variables2_Placehol1");
@@ -520,4 +518,4 @@ rb_define_method(cls_Analyze_Variables2,"root",Analyze_Variables2_root,0);
 rb_define_method(cls_Analyze_Variables2,"traverse",Analyze_Variables2_traverse,0);
 rb_define_method(cls_Analyze_Variables2,"traverse_item",Analyze_Variables2_traverse_item,0);
 rb_define_method(cls_Analyze_Variables2,"visit",Analyze_Variables2_visit,0);
- rb_eval_string("testversiondetect_variables2('86affe068cfd45b15dae87a88802c7fd')");}
+ rb_eval_string("testversiondetect_variables2('5e84a567b4a722d0d4e15444b6c138f1')");}

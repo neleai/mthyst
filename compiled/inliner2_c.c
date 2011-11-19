@@ -8,8 +8,8 @@ VALUE DetectCalls_traverse(VALUE self );
 VALUE DetectCalls_traverse_item(VALUE self );
 VALUE DetectCalls_visit(VALUE self );
 VALUE switchhashVisitor1;
-static VALUE c_304;
-static VALUE c_305;
+static VALUE c_Apply;
+static VALUE c_Rule;
 static VALUE s_DetectCalls__append_lp_1DetectCalls;
 static VALUE s_DetectCalls__append_lp_2DetectCalls;
 static VALUE s_DetectCalls__append_lp_3DetectCalls;
@@ -21,7 +21,7 @@ static VALUE s_DetectCalls_bind_lb_2_rb__eq_1DetectCalls;
 static VALUE s_sizeDetectCalls;
 VALUE DetectCalls_root(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(3);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
- it=c_304; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(fail);
+ it=c_Rule; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(fail);
  bind_aset(bind,0/*autovar*/,it); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,bind_aget(bind,0/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2LONG(rb_funcall(ame_getsrc(self),s_sizeDetectCalls,0)));
  it=rb_funcall(self,s_DetectCalls__at_calls_eq_1DetectCalls,1,bind);   it=DetectCalls_traverse(self ); FAILTEST(pass1);it=rb_funcall(self,s_DetectCalls__at_calls1DetectCalls,1,bind); 
@@ -130,7 +130,7 @@ return it;
 fail: return failobj; }
 VALUE DetectCalls_visit(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(6);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
- it=c_305; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(fail);
+ it=c_Apply; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(fail);
  bind_aset(bind,0/*autovar*/,it); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,bind_aget(bind,0/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2LONG(rb_funcall(ame_getsrc(self),s_sizeDetectCalls,0)));
    it=AmethystCore_anything(self ); FAILTEST(pass1);
@@ -154,9 +154,8 @@ VALUE Inliner2_traverse(VALUE self );
 VALUE Inliner2_traverse_item(VALUE self );
 VALUE Inliner2_visit(VALUE self );
 VALUE switchhashTraverser_Clone21;
-static VALUE c_310;
-static VALUE c_311;
-static VALUE c_312;
+static VALUE c_Apply;
+static VALUE c_Rule;
 static VALUE s_Inliner2__append_lp_1Inliner2;
 static VALUE s_Inliner2__append_lp_2Inliner2;
 static VALUE s_Inliner2__append_lp_3Inliner2;
@@ -187,7 +186,7 @@ VALUE Inliner2_root(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(12);  int x
  bind_aset(bind,1/*to*/,it); it=bind_aget(bind,0/*from*/);
  bind_aset(bind,2/*autovar*/,it); it=rb_funcall(self,s_Inliner2_bind_lb_2_rb__eq_1Inliner2,1,bind); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,bind_aget(bind,2/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2LONG(rb_funcall(ame_getsrc(self),s_sizeInliner2,0)));
-  it=c_310; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(pass1);
+  it=c_Rule; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(pass1);
  bind_aset(bind,3/*autovar*/,it); int oldpos2=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
 ame_setsrc(self,bind_aget(bind,3/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2LONG(rb_funcall(ame_getsrc(self),s_sizeInliner2,0)));
  it=rb_funcall(self,s_Inliner2_src_dot_name1Inliner2,1,bind); 
@@ -206,7 +205,7 @@ ame_setsrc(self,bind_aget(bind,3/*autovar*/)); ame_setpos(self,0); ame_setlen(se
 it=rb_funcall(self,s_Inliner2__at_name_eq_bi1Inliner2,1,bind); it=bind_aget(bind,1/*to*/);
  bind_aset(bind,7/*autovar*/,it); it=rb_funcall(self,s_Inliner2_bind_lb_7_rb__eq_1Inliner2,1,bind); int oldpos3=ame_getpos(self); int oldlen3=ame_getlen(self); VALUE oldsrc3=ame_getsrc(self); int fail3=0;
 ame_setsrc(self,bind_aget(bind,7/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2LONG(rb_funcall(ame_getsrc(self),s_sizeInliner2,0)));
-  it=c_311; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(pass3);
+  it=c_Rule; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(pass3);
  bind_aset(bind,8/*autovar*/,it); int oldpos4=ame_getpos(self); int oldlen4=ame_getlen(self); VALUE oldsrc4=ame_getsrc(self); int fail4=0;
 ame_setsrc(self,bind_aget(bind,8/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2LONG(rb_funcall(ame_getsrc(self),s_sizeInliner2,0)));
    it=Inliner2_traverse(self ); FAILTEST(pass4);
@@ -339,7 +338,7 @@ return it;
 fail: return failobj; }
 VALUE Inliner2_visit(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(6);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
- it=c_312; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(fail);
+ it=c_Apply; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(fail);
  bind_aset(bind,0/*autovar*/,it); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,bind_aget(bind,0/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2LONG(rb_funcall(ame_getsrc(self),s_sizeInliner2,0)));
    it=AmethystCore_anything(self ); FAILTEST(pass1);
@@ -363,8 +362,8 @@ VALUE Replace_Super_traverse(VALUE self );
 VALUE Replace_Super_traverse_item(VALUE self );
 VALUE Replace_Super_visit(VALUE self );
 VALUE switchhashTraverser_Clone21;
-static VALUE c_320;
-static VALUE c_321;
+static VALUE c_Apply;
+static VALUE c_Rule;
 static VALUE s_Replace_Super_Apply_lb__ti__lp_1Replace_Super;
 static VALUE s_Replace_Super__append_lp_1Replace_Super;
 static VALUE s_Replace_Super__append_lp_2Replace_Super;
@@ -390,7 +389,7 @@ VALUE Replace_Super_root(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(7);  i
  bind_aset(bind,1/*to*/,it); it=rb_funcall(self,s_Replace_Super__at_name_eq_bi1Replace_Super,1,bind); it=bind_aget(bind,1/*to*/);
  bind_aset(bind,2/*autovar*/,it); it=rb_funcall(self,s_Replace_Super_bind_lb_2_rb__eq_1Replace_Super,1,bind); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,bind_aget(bind,2/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2LONG(rb_funcall(ame_getsrc(self),s_sizeReplace_Super,0)));
-  it=c_320; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(pass1);
+  it=c_Rule; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(pass1);
  bind_aset(bind,3/*autovar*/,it); int oldpos2=ame_getpos(self); int oldlen2=ame_getlen(self); VALUE oldsrc2=ame_getsrc(self); int fail2=0;
 ame_setsrc(self,bind_aget(bind,3/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2LONG(rb_funcall(ame_getsrc(self),s_sizeReplace_Super,0)));
    it=Replace_Super_traverse(self ); FAILTEST(pass2);
@@ -523,7 +522,7 @@ return it;
 fail: return failobj; }
 VALUE Replace_Super_visit(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(7);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it;
 
- it=c_321; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(fail);
+ it=c_Apply; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(fail);
  bind_aset(bind,0/*autovar*/,it); int oldpos1=ame_getpos(self); int oldlen1=ame_getlen(self); VALUE oldsrc1=ame_getsrc(self); int fail1=0;
 ame_setsrc(self,bind_aget(bind,0/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2LONG(rb_funcall(ame_getsrc(self),s_sizeReplace_Super,0)));
    it=AmethystCore_anything(self ); FAILTEST(pass1);
@@ -543,8 +542,8 @@ fail: return failobj; }
 void Init_inliner2_c(){ 
  cls_DetectCalls=rb_define_class("DetectCalls",rb_const_get(rb_cObject,rb_intern("Visitor"))); 
 failobj=rb_eval_string("FAIL");
-c_304=rb_const_get(rb_cObject, rb_intern("Rule"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_304);
-c_305=rb_const_get(rb_cObject, rb_intern("Apply"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_305);
+c_Apply=rb_const_get(rb_cObject, rb_intern("Apply"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Apply);
+c_Rule=rb_const_get(rb_cObject, rb_intern("Rule"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Rule);
 s_DetectCalls__append_lp_1DetectCalls=rb_intern("DetectCalls__append_lp_1");
 s_DetectCalls__append_lp_2DetectCalls=rb_intern("DetectCalls__append_lp_2");
 s_DetectCalls__append_lp_3DetectCalls=rb_intern("DetectCalls__append_lp_3");
@@ -562,9 +561,8 @@ rb_define_method(cls_DetectCalls,"visit",DetectCalls_visit,0);
 
  cls_Inliner2=rb_define_class("Inliner2",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2"))); 
 failobj=rb_eval_string("FAIL");
-c_310=rb_const_get(rb_cObject, rb_intern("Rule"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_310);
-c_311=rb_const_get(rb_cObject, rb_intern("Rule"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_311);
-c_312=rb_const_get(rb_cObject, rb_intern("Apply"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_312);
+c_Apply=rb_const_get(rb_cObject, rb_intern("Apply"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Apply);
+c_Rule=rb_const_get(rb_cObject, rb_intern("Rule"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Rule);
 s_Inliner2__append_lp_1Inliner2=rb_intern("Inliner2__append_lp_1");
 s_Inliner2__append_lp_2Inliner2=rb_intern("Inliner2__append_lp_2");
 s_Inliner2__append_lp_3Inliner2=rb_intern("Inliner2__append_lp_3");
@@ -596,8 +594,8 @@ rb_define_method(cls_Inliner2,"visit",Inliner2_visit,0);
 
  cls_Replace_Super=rb_define_class("Replace_Super",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2"))); 
 failobj=rb_eval_string("FAIL");
-c_320=rb_const_get(rb_cObject, rb_intern("Rule"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_320);
-c_321=rb_const_get(rb_cObject, rb_intern("Apply"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_321);
+c_Apply=rb_const_get(rb_cObject, rb_intern("Apply"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Apply);
+c_Rule=rb_const_get(rb_cObject, rb_intern("Rule"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Rule);
 s_Replace_Super_Apply_lb__ti__lp_1Replace_Super=rb_intern("Replace_Super_Apply_lb__ti__lp_1");
 s_Replace_Super__append_lp_1Replace_Super=rb_intern("Replace_Super__append_lp_1");
 s_Replace_Super__append_lp_2Replace_Super=rb_intern("Replace_Super__append_lp_2");
@@ -621,4 +619,4 @@ rb_define_method(cls_Replace_Super,"root",Replace_Super_root,0);
 rb_define_method(cls_Replace_Super,"traverse",Replace_Super_traverse,0);
 rb_define_method(cls_Replace_Super,"traverse_item",Replace_Super_traverse_item,0);
 rb_define_method(cls_Replace_Super,"visit",Replace_Super_visit,0);
- rb_eval_string("testversioninliner2('f74d7b588c7613305d7fc6bfbb6da087')");}
+ rb_eval_string("testversioninliner2('e5397f924e5c0b259379e89a01a0167d')");}
