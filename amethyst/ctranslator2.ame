@@ -29,9 +29,10 @@ class AmethystCTranslator < Amethyst
 	end
 	def symb(str)
 		str=str.gsub("@","_at_");
-		@header<<"static VALUE s_#{str}#{@grammar};"
-		@init<<"s_#{str}#{@grammar}=rb_intern(#{str.inspect});"
-		"s_#{str}#{@grammar}"
+		sy="sy_#{str}"
+		@header<<"static VALUE #{sy};"
+		@init<<"#{sy}=rb_intern(#{str.inspect});"
+		sy
 	end
 	def iget(s)
 		"rb_ivar_get(self,#{symb("@#{s}")})"

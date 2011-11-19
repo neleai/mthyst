@@ -29,9 +29,10 @@ class AmethystCTranslator < Amethyst
 	end
 	def symb(str)
 		str=str.gsub("@","_at_");
-		@header<<"static VALUE s_#{str}#{@grammar};"
-		@init<<"s_#{str}#{@grammar}=rb_intern(#{str.inspect});"
-		"s_#{str}#{@grammar}"
+		sy="sy_#{str}"
+		@header<<"static VALUE #{sy};"
+		@init<<"#{sy}=rb_intern(#{str.inspect});"
+		sy
 	end
 	def iget(s)
 		"rb_ivar_get(self,#{symb("@#{s}")})"
@@ -364,15 +365,15 @@ end
 
 
 def ctranslator2_compiled_by
-'a33d9b39b37ff38e73ee8e10fdcf2db6'
+'918d0b12d547c874f99f20d2c393c325'
 end
 def ctranslator2_source_hash
-'cd09f1d626eeebdb72379c3a66a8717e'
+'dd7e25a38cc026e9a130ddec7a888e79'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'86bbeed6e29b7005a510a167571622a5'
+'c695b46c900833005d3b0f1208257bf8'
 end
   require 'compiled/ctranslator2_c'
