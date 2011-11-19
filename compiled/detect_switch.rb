@@ -245,7 +245,7 @@ class ClasSwitch_Dataflow < First_Dataflow
 end
 class First_Dataflow < Amethyst
 
-def First_Dataflow__append_lp_1(bind)
+def First_Dataflow__append_lp_(bind)
 _append(bind[1],bind[2])
 end
 def First_Dataflow__append_lp_2(bind)
@@ -263,40 +263,40 @@ end
 def First_Dataflow__append_lp_6(bind)
 _append(bind[34],bind[35])
 end
-def First_Dataflow__at_vis_eq_bin1(bind)
+def First_Dataflow__at_vis_eq_bin(bind)
 @vis=bind[0]; bind[0]
 end
-def First_Dataflow__lp_src_dot_fir1(bind)
+def First_Dataflow__lp_src_dot_fir(bind)
 (src.first.is_a?(lattice)) || FAIL
 end
-def First_Dataflow_bind_lb_13_rb_1(bind)
+def First_Dataflow_bind_lb_13_rb_(bind)
 bind[13].inject(:|)
 end
-def First_Dataflow_bind_lb_1_rb__eq_1(bind)
+def First_Dataflow_bind_lb_1_rb__eq_(bind)
 bind[1]=[bind[1]]
 end
-def First_Dataflow_bind_lb_20_rb_1(bind)
+def First_Dataflow_bind_lb_20_rb_(bind)
 bind[20]|lattice.empty
 end
 def First_Dataflow_bind_lb_20_rb_2(bind)
 bind[20].seqjoin(bind[32])
 end
-def First_Dataflow_bind_lb_31_rb_1(bind)
+def First_Dataflow_bind_lb_31_rb_(bind)
 bind[31]=[bind[31]]
 end
-def First_Dataflow_depends_lp_1(bind)
+def First_Dataflow_depends_lp_(bind)
 depends(bind[0]); @vals[bind[0]]
 end
-def First_Dataflow_empty1(bind)
+def First_Dataflow_empty(bind)
 empty?(bind[30])
 end
-def First_Dataflow_lattice_dot_1(bind)
+def First_Dataflow_lattice_dot_(bind)
 lattice.empty
 end
 def First_Dataflow_lattice_dot_2(bind)
 lattice.default
 end
-def First_Dataflow_src_dot_firs1(bind)
+def First_Dataflow_src_dot_firs(bind)
 src.first
 end
 
@@ -305,7 +305,7 @@ end
 
 class Sizes_Dataflow < First_Dataflow
 
-def Sizes_Dataflow__append_lp_1(bind)
+def Sizes_Dataflow__append_lp_(bind)
 _append(bind[1],bind[2])
 end
 def Sizes_Dataflow__append_lp_2(bind)
@@ -323,43 +323,43 @@ end
 def Sizes_Dataflow__append_lp_6(bind)
 _append(bind[44],bind[45])
 end
-def Sizes_Dataflow__at_vis_eq_bin1(bind)
+def Sizes_Dataflow__at_vis_eq_bin(bind)
 @vis=bind[0]; bind[0]
 end
-def Sizes_Dataflow__lp_src_dot_fir1(bind)
+def Sizes_Dataflow__lp_src_dot_fir(bind)
 (src.first.is_a?(lattice)) || FAIL
 end
-def Sizes_Dataflow_bind_lb_15_rb_1(bind)
+def Sizes_Dataflow_bind_lb_15_rb_(bind)
 bind[15].inject(:|)
 end
-def Sizes_Dataflow_bind_lb_1_rb__eq_1(bind)
+def Sizes_Dataflow_bind_lb_1_rb__eq_(bind)
 bind[1]=[bind[1]]
 end
-def Sizes_Dataflow_bind_lb_26_rb_1(bind)
+def Sizes_Dataflow_bind_lb_26_rb_(bind)
 bind[26]|lattice.empty
 end
 def Sizes_Dataflow_bind_lb_26_rb_2(bind)
 bind[26].seqjoin(bind[42])
 end
-def Sizes_Dataflow_bind_lb_41_rb_1(bind)
+def Sizes_Dataflow_bind_lb_41_rb_(bind)
 bind[41]=[bind[41]]
 end
-def Sizes_Dataflow_empty1(bind)
+def Sizes_Dataflow_empty(bind)
 empty?(bind[40])
 end
-def Sizes_Dataflow_lattice_dot_1(bind)
+def Sizes_Dataflow_lattice_dot_(bind)
 lattice.empty
 end
 def Sizes_Dataflow_lattice_dot_2(bind)
 lattice.default
 end
-def Sizes_Dataflow_lattice_lb_1(bind)
+def Sizes_Dataflow_lattice_lb_(bind)
 lattice[bind[6].size]
 end
 def Sizes_Dataflow_lattice_lb_2(bind)
 lattice[1]
 end
-def Sizes_Dataflow_src_dot_firs1(bind)
+def Sizes_Dataflow_src_dot_firs(bind)
 src.first
 end
 
@@ -368,7 +368,7 @@ end
 
 class Switch_Dataflow < First_Dataflow
 
-def Switch_Dataflow__append_lp_1(bind)
+def Switch_Dataflow__append_lp_(bind)
 _append(bind[1],bind[2])
 end
 def Switch_Dataflow__append_lp_2(bind)
@@ -386,34 +386,34 @@ end
 def Switch_Dataflow__append_lp_6(bind)
 _append(bind[44],bind[45])
 end
-def Switch_Dataflow__at_vis_eq_bin1(bind)
+def Switch_Dataflow__at_vis_eq_bin(bind)
 @vis=bind[0]; bind[0]
 end
-def Switch_Dataflow__lp_src_dot_fir1(bind)
+def Switch_Dataflow__lp_src_dot_fir(bind)
 (src.first.is_a?(lattice)) || FAIL
 end
-def Switch_Dataflow_bind_lb_15_rb_1(bind)
+def Switch_Dataflow_bind_lb_15_rb_(bind)
 bind[15].inject(:|)
 end
-def Switch_Dataflow_bind_lb_1_rb__eq_1(bind)
+def Switch_Dataflow_bind_lb_1_rb__eq_(bind)
 bind[1]=[bind[1]]
 end
-def Switch_Dataflow_bind_lb_26_rb_1(bind)
+def Switch_Dataflow_bind_lb_26_rb_(bind)
 bind[26]|lattice.empty
 end
 def Switch_Dataflow_bind_lb_26_rb_2(bind)
 bind[26].seqjoin(bind[42])
 end
-def Switch_Dataflow_bind_lb_41_rb_1(bind)
+def Switch_Dataflow_bind_lb_41_rb_(bind)
 bind[41]=[bind[41]]
 end
-def Switch_Dataflow_empty1(bind)
+def Switch_Dataflow_empty(bind)
 empty?(bind[40])
 end
-def Switch_Dataflow_firstcha1(bind)
+def Switch_Dataflow_firstcha(bind)
 firstchar(bind[6])
 end
-def Switch_Dataflow_lattice_dot_1(bind)
+def Switch_Dataflow_lattice_dot_(bind)
 lattice.top
 end
 def Switch_Dataflow_lattice_dot_2(bind)
@@ -422,10 +422,10 @@ end
 def Switch_Dataflow_lattice_dot_3(bind)
 lattice.default
 end
-def Switch_Dataflow_regchar_lp_1(bind)
+def Switch_Dataflow_regchar_lp_(bind)
 regchar(bind[6])
 end
-def Switch_Dataflow_src_dot_firs1(bind)
+def Switch_Dataflow_src_dot_firs(bind)
 src.first
 end
 
@@ -434,7 +434,7 @@ end
 
 class ClasSwitch_Dataflow < First_Dataflow
 
-def ClasSwitch_Dataflow__append_lp_1(bind)
+def ClasSwitch_Dataflow__append_lp_(bind)
 _append(bind[8],bind[9])
 end
 def ClasSwitch_Dataflow__append_lp_2(bind)
@@ -455,49 +455,49 @@ end
 def ClasSwitch_Dataflow__append_lp_7(bind)
 _append(bind[44],bind[45])
 end
-def ClasSwitch_Dataflow__at_vis_eq_bin1(bind)
+def ClasSwitch_Dataflow__at_vis_eq_bin(bind)
 @vis=bind[0]; bind[0]
 end
-def ClasSwitch_Dataflow__do_rules_lb_b1(bind)
+def ClasSwitch_Dataflow__do_rules_lb_b(bind)
 $rules[bind[7]].body
 end
-def ClasSwitch_Dataflow__lp__do_rules_lb_1(bind)
+def ClasSwitch_Dataflow__lp__do_rules_lb_(bind)
 ($rules[bind[7]]) || FAIL
 end
-def ClasSwitch_Dataflow__lp_src_dot_fir1(bind)
+def ClasSwitch_Dataflow__lp_src_dot_fir(bind)
 (src.first.is_a?(lattice)) || FAIL
 end
-def ClasSwitch_Dataflow_bind_lb_10_rb_1(bind)
+def ClasSwitch_Dataflow_bind_lb_10_rb_(bind)
 bind[10]=[bind[10]]
 end
-def ClasSwitch_Dataflow_bind_lb_15_rb_1(bind)
+def ClasSwitch_Dataflow_bind_lb_15_rb_(bind)
 bind[15].inject(:|)
 end
-def ClasSwitch_Dataflow_bind_lb_1_rb__eq_1(bind)
+def ClasSwitch_Dataflow_bind_lb_1_rb__eq_(bind)
 bind[1]=[bind[1]]
 end
-def ClasSwitch_Dataflow_bind_lb_26_rb_1(bind)
+def ClasSwitch_Dataflow_bind_lb_26_rb_(bind)
 bind[26]|lattice.empty
 end
 def ClasSwitch_Dataflow_bind_lb_26_rb_2(bind)
 bind[26].seqjoin(bind[42])
 end
-def ClasSwitch_Dataflow_bind_lb_41_rb_1(bind)
+def ClasSwitch_Dataflow_bind_lb_41_rb_(bind)
 bind[41]=[bind[41]]
 end
-def ClasSwitch_Dataflow_empty1(bind)
+def ClasSwitch_Dataflow_empty(bind)
 empty?(bind[40])
 end
-def ClasSwitch_Dataflow_lattice_dot_1(bind)
+def ClasSwitch_Dataflow_lattice_dot_(bind)
 lattice.empty
 end
 def ClasSwitch_Dataflow_lattice_dot_2(bind)
 lattice.default
 end
-def ClasSwitch_Dataflow_lattice_lb_1(bind)
+def ClasSwitch_Dataflow_lattice_lb_(bind)
 lattice[bind[3]]
 end
-def ClasSwitch_Dataflow_src_dot_firs1(bind)
+def ClasSwitch_Dataflow_src_dot_firs(bind)
 src.first
 end
 
@@ -577,25 +577,25 @@ end
 
 class Detect_First < Traverser_Clone2
 
-def Detect_First__append_lp_1(bind)
+def Detect_First__append_lp_(bind)
 _append(bind[5],bind[8])
 end
 def Detect_First__append_lp_2(bind)
 _append(bind[0],bind[11])
 end
-def Detect_First__at_name_eq_sr1(bind)
+def Detect_First__at_name_eq_sr(bind)
 @name=src.name
 end
-def Detect_First__do_rules_eq_1(bind)
+def Detect_First__do_rules_eq_(bind)
 $rules={};src.rules.each{|r| $rules[r.name]=r}
 end
-def Detect_First_bind_lb_3_rb__eq_1(bind)
+def Detect_First_bind_lb_3_rb__eq_(bind)
 bind[3]=[bind[3]]
 end
-def Detect_First_src1(bind)
+def Detect_First_src(bind)
 src
 end
-def Detect_First_src_dot_rule1(bind)
+def Detect_First_src_dot_rule(bind)
 src.rules
 end
 def Detect_First_src_dot_rule2(bind)
@@ -611,22 +611,22 @@ end
 
 class Detect_Switch < Detect_First
 
-def Detect_Switch_CharLatt1(bind)
+def Detect_Switch_CharLatt(bind)
 CharLattice[]
 end
-def Detect_Switch_Or_lb__ti_bind1(bind)
+def Detect_Switch_Or_lb__ti_bind(bind)
 Or[*bind[3]]
 end
 def Detect_Switch_Or_lb__ti_bind2(bind)
 Or[*bind[9]]
 end
-def Detect_Switch_Placehol1(bind)
+def Detect_Switch_Placehol(bind)
 Placeholder
 end
-def Detect_Switch_Seq_lb__ti__lp__lb_b1(bind)
+def Detect_Switch_Seq_lb__ti__lp__lb_b(bind)
 Seq[*([bind[14]]+bind[17])]
 end
-def Detect_Switch__append_lp_1(bind)
+def Detect_Switch__append_lp_(bind)
 _append(bind[3],bind[6])
 end
 def Detect_Switch__append_lp_10(bind)
@@ -659,18 +659,18 @@ end
 def Detect_Switch__append_lp_9(bind)
 _append(bind[8],bind[13])
 end
-def Detect_Switch__at_cases_dot_e1(bind)
+def Detect_Switch__at_cases_dot_e(bind)
 @cases.each{|ee|bind[5]=ee
 			bind[2]<<[bind[5],predicate(bind[5],bind[9])]
 		}
 end
-def Detect_Switch__at_cases_eq__at_1(bind)
+def Detect_Switch__at_cases_eq__at_(bind)
 @cases=@cases.map{|c| [c&bind[5],c&~bind[5]]}.flatten.select{|x| x.ary.size>0}.uniq_by{|x|x.ary.inspect} 
 end
-def Detect_Switch__at_cases_eq__lb_1(bind)
+def Detect_Switch__at_cases_eq__lb_(bind)
 @cases=[bind[8]]
 end
-def Detect_Switch__at_changed1(bind)
+def Detect_Switch__at_changed(bind)
 @changed=true
 end
 def Detect_Switch__at_changed2(bind)
@@ -679,67 +679,67 @@ end
 def Detect_Switch__at_changed3(bind)
 @changed=false
 end
-def Detect_Switch__at_name_eq_sr1(bind)
+def Detect_Switch__at_name_eq_sr(bind)
 @name=src.name
 end
-def Detect_Switch__do_rules_eq_1(bind)
+def Detect_Switch__do_rules_eq_(bind)
 $rules={};src.rules.each{|r| $rules[r.name]=r}
 end
-def Detect_Switch__lp_1(bind)
+def Detect_Switch__lp_(bind)
 (!intersects(first(bind[1]),bind[0])) || FAIL
 end
-def Detect_Switch__lp_bind_lb_0_rb_1(bind)
+def Detect_Switch__lp_bind_lb_0_rb_(bind)
 (bind[0].ary[0]=="default") || FAIL
 end
-def Detect_Switch__lp_bind_lb_1_rb_1(bind)
+def Detect_Switch__lp_bind_lb_1_rb_(bind)
 (bind[1].size>1) || FAIL
 end
-def Detect_Switch__lp_bind_lb_2_rb_1(bind)
+def Detect_Switch__lp_bind_lb_2_rb_(bind)
 (bind[2].size>1) || FAIL
 end
-def Detect_Switch__lp_bind_lb_4_rb_1(bind)
+def Detect_Switch__lp_bind_lb_4_rb_(bind)
 (bind[4]||=bind[3].dup;bind[5]=true;bind[4].instance_variable_set(bind[10],bind[11])) if @changed && bind[11]!=instance_variable_get(bind[10])
 end
-def Detect_Switch__lp_bind_lb_9_rb_1(bind)
+def Detect_Switch__lp_bind_lb_9_rb_(bind)
 (bind[9].is_a?(Or)) || FAIL
 end
-def Detect_Switch__lp_first_lp_b1(bind)
+def Detect_Switch__lp_first_lp_b(bind)
 (first(bind[5])) || FAIL
 end
-def Detect_Switch__lp_src_dot_ins1(bind)
+def Detect_Switch__lp_src_dot_ins(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Detect_Switch_bind_lb_10_rb_1(bind)
+def Detect_Switch_bind_lb_10_rb_(bind)
 bind[10]=[bind[10]]
 end
-def Detect_Switch_bind_lb_1_rb_1(bind)
+def Detect_Switch_bind_lb_1_rb_(bind)
 bind[1]|=first(bind[5])
 end
-def Detect_Switch_bind_lb_1_rb__eq_1(bind)
+def Detect_Switch_bind_lb_1_rb__eq_(bind)
 bind[1]=bind[1].ary.map{|el|  [Anything,Empty].include?(el) ? "default" : el}.uniq
 end
-def Detect_Switch_bind_lb_2_rb__eq_1(bind)
+def Detect_Switch_bind_lb_2_rb__eq_(bind)
 bind[2]=bind[2].group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.inject(:|),v[0][1]]}.sort_by{|el| el.inspect}
 end
-def Detect_Switch_bind_lb_2_rb__lt_1(bind)
+def Detect_Switch_bind_lb_2_rb__lt_(bind)
 bind[2]<<[CharLattice["default"],Apply["fails"]] unless bind[1].include?("default")
 end
-def Detect_Switch_bind_lb_3_rb__eq_1(bind)
+def Detect_Switch_bind_lb_3_rb__eq_(bind)
 bind[3]=[bind[3]]
 end
-def Detect_Switch_bind_lb_5_rb__eq_1(bind)
+def Detect_Switch_bind_lb_5_rb__eq_(bind)
 bind[5]=[bind[5]]
 end
-def Detect_Switch_bind_lb_5_rb__lt_1(bind)
+def Detect_Switch_bind_lb_5_rb__lt_(bind)
 bind[5]<<bind[7]
 end
-def Detect_Switch_bind_lb_6_rb__eq_1(bind)
+def Detect_Switch_bind_lb_6_rb__eq_(bind)
 bind[6]=[bind[6]]
 end
-def Detect_Switch_bind_lb_8_rb__eq_1(bind)
+def Detect_Switch_bind_lb_8_rb__eq_(bind)
 bind[8]=unempty(bind[8])
 end
-def Detect_Switch_if1(bind)
+def Detect_Switch_if_sp_bind_lb_(bind)
 if bind[5]
              @changed=true;bind[4].normalize
            else
@@ -747,20 +747,20 @@ if bind[5]
             src
           end
 end
-def Detect_Switch_nary_eq_bin1(bind)
+def Detect_Switch_nary_eq_bin(bind)
 nary=bind[1].ary
                                  nary=nary.select{|o,v| intersects(o,bind[0])} if bind[1].first.is_a?(CharLattice)
                                  nary=nary.map{|o,v| [o,predicate(bind[0],v)]}.select{|o,v| v!=Placeholder}
                                  Switch[{:act=>bind[1].act,:first=>bind[1].first,:defs=>bind[1].defs,:ary=>nary}]
                               
 end
-def Detect_Switch_s_eq_Switch1(bind)
+def Detect_Switch_s_eq_Switch(bind)
 s=Switch[{:act=>"*ame_curstr(self)",:first=>bind[8],:ary=>bind[2]}];puts s.inspect;s
 end
-def Detect_Switch_src1(bind)
+def Detect_Switch_src(bind)
 src
 end
-def Detect_Switch_src_dot_rule1(bind)
+def Detect_Switch_src_dot_rule(bind)
 src.rules
 end
 def Detect_Switch_src_dot_rule2(bind)
@@ -772,28 +772,28 @@ end
 
 class Detect_ClasSwitch < Detect_First
 
-def Detect_ClasSwitch_Apply_lb_1(bind)
+def Detect_ClasSwitch_Apply_lb_(bind)
 Apply["anything"]
 end
-def Detect_ClasSwitch_Bind_lb_bin1(bind)
+def Detect_ClasSwitch_Bind_lb_bin(bind)
 Bind[bind[7],bind[15]]
 end
-def Detect_ClasSwitch_ClasLatt1(bind)
+def Detect_ClasSwitch_ClasLatt(bind)
 ClasLattice.bottom
 end
-def Detect_ClasSwitch_Or_lb__ti_bind1(bind)
+def Detect_ClasSwitch_Or_lb__ti_bind(bind)
 Or[*bind[3]]
 end
 def Detect_ClasSwitch_Or_lb__ti_bind2(bind)
 Or[*bind[22]]
 end
-def Detect_ClasSwitch_Placehol1(bind)
+def Detect_ClasSwitch_Placehol(bind)
 Placeholder
 end
-def Detect_ClasSwitch_Seq_lb__ti__lp__lb_b1(bind)
+def Detect_ClasSwitch_Seq_lb__ti__lp__lb_b(bind)
 Seq[*([bind[26]]+bind[29])]
 end
-def Detect_ClasSwitch__append_lp_1(bind)
+def Detect_ClasSwitch__append_lp_(bind)
 _append(bind[3],bind[6])
 end
 def Detect_ClasSwitch__append_lp_2(bind)
@@ -820,7 +820,7 @@ end
 def Detect_ClasSwitch__append_lp_9(bind)
 _append(bind[0],bind[13])
 end
-def Detect_ClasSwitch__at_changed1(bind)
+def Detect_ClasSwitch__at_changed(bind)
 @changed=true
 end
 def Detect_ClasSwitch__at_changed2(bind)
@@ -829,48 +829,48 @@ end
 def Detect_ClasSwitch__at_changed3(bind)
 @changed=false
 end
-def Detect_ClasSwitch__at_name_eq_sr1(bind)
+def Detect_ClasSwitch__at_name_eq_sr(bind)
 @name=src.name
 end
-def Detect_ClasSwitch__do_rules_eq_1(bind)
+def Detect_ClasSwitch__do_rules_eq_(bind)
 $rules={};src.rules.each{|r| $rules[r.name]=r}
 end
-def Detect_ClasSwitch__lp_1(bind)
+def Detect_ClasSwitch__lp_(bind)
 (!includes(bind[0],bind[1],first(bind[2]))) || FAIL
 end
-def Detect_ClasSwitch__lp_bind_lb_0_rb_1(bind)
+def Detect_ClasSwitch__lp_bind_lb_0_rb_(bind)
 (bind[0][bind[1]]=="default") || FAIL
 end
-def Detect_ClasSwitch__lp_bind_lb_1_rb_1(bind)
+def Detect_ClasSwitch__lp_bind_lb_1_rb_(bind)
 (bind[1].size>1) || FAIL
 end
-def Detect_ClasSwitch__lp_bind_lb_4_rb_1(bind)
+def Detect_ClasSwitch__lp_bind_lb_4_rb_(bind)
 (bind[4]||=bind[3].dup;bind[5]=true;bind[4].instance_variable_set(bind[10],bind[11])) if @changed && bind[11]!=instance_variable_get(bind[10])
 end
-def Detect_ClasSwitch__lp_bind_lb_7_rb_1(bind)
+def Detect_ClasSwitch__lp_bind_lb_7_rb_(bind)
 (bind[7]=="clas") || FAIL
 end
-def Detect_ClasSwitch__lp_child_lp_b1(bind)
+def Detect_ClasSwitch__lp_child_lp_b(bind)
 (child(bind[0][bind[1]],bind[9])&&bind[0][bind[1]]==bind[9]) || FAIL
 end
-def Detect_ClasSwitch__lp_first_lp_b1(bind)
+def Detect_ClasSwitch__lp_first_lp_b(bind)
 (first(bind[5])) || FAIL
 end
-def Detect_ClasSwitch__lp_src_dot_ins1(bind)
+def Detect_ClasSwitch__lp_src_dot_ins(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Detect_ClasSwitch_bind_lb_1_rb_1(bind)
+def Detect_ClasSwitch_bind_lb_1_rb_(bind)
 bind[1]|=first(bind[5])
 end
-def Detect_ClasSwitch_bind_lb_1_rb__dot_1(bind)
+def Detect_ClasSwitch_bind_lb_1_rb__dot_(bind)
 bind[1].each_index{|i|
       	bind[2]<<[i,predicate(bind[1],i,bind[9])]
 		}
 end
-def Detect_ClasSwitch_bind_lb_1_rb__eq_1(bind)
+def Detect_ClasSwitch_bind_lb_1_rb__eq_(bind)
 bind[1]=topsort(bind[1].ary+[Object])
 end
-def Detect_ClasSwitch_bind_lb_2_rb__eq_1(bind)
+def Detect_ClasSwitch_bind_lb_2_rb__eq_(bind)
 bind[2]=bind[2].map{|o,v| v==Placeholder ? [o,Apply["fails"]] : [o,v]}
 end
 def Detect_ClasSwitch_bind_lb_2_rb__eq_2(bind)
@@ -879,22 +879,22 @@ end
 def Detect_ClasSwitch_bind_lb_2_rb__eq_3(bind)
 bind[2]=bind[2].map{|o,v| [ClasLattice[*o],v]}
 end
-def Detect_ClasSwitch_bind_lb_4_rb__eq_1(bind)
+def Detect_ClasSwitch_bind_lb_4_rb__eq_(bind)
 bind[4]=[bind[4]]
 end
-def Detect_ClasSwitch_bind_lb_5_rb__eq_1(bind)
+def Detect_ClasSwitch_bind_lb_5_rb__eq_(bind)
 bind[5]=[bind[5]]
 end
-def Detect_ClasSwitch_bind_lb_5_rb__lt_1(bind)
+def Detect_ClasSwitch_bind_lb_5_rb__lt_(bind)
 bind[5]<<bind[7]
 end
-def Detect_ClasSwitch_bind_lb_6_rb__eq_1(bind)
+def Detect_ClasSwitch_bind_lb_6_rb__eq_(bind)
 bind[6]=[bind[6]]
 end
-def Detect_ClasSwitch_c_eq_classs1(bind)
+def Detect_ClasSwitch_c_eq_classs(bind)
 c=classswitch(bind[1],bind[8],bind[2])
 end
-def Detect_ClasSwitch_if1(bind)
+def Detect_ClasSwitch_if_sp_bind_lb_(bind)
 if bind[5]
              @changed=true;bind[4].normalize
            else
@@ -902,16 +902,16 @@ if bind[5]
             src
           end
 end
-def Detect_ClasSwitch_predicat1(bind)
+def Detect_ClasSwitch_predicat(bind)
 predicate(bind[0],bind[1],bind[14])
 end
-def Detect_ClasSwitch_src1(bind)
+def Detect_ClasSwitch_src(bind)
 src
 end
-def Detect_ClasSwitch_src_dot_name1(bind)
+def Detect_ClasSwitch_src_dot_name(bind)
 src.name
 end
-def Detect_ClasSwitch_src_dot_rule1(bind)
+def Detect_ClasSwitch_src_dot_rule(bind)
 src.rules
 end
 def Detect_ClasSwitch_src_dot_rule2(bind)
@@ -923,7 +923,7 @@ end
 
 
 def detect_switch_compiled_by
-'918d0b12d547c874f99f20d2c393c325'
+'ddbd2ab2d5ab620699c741fb90acd2cb'
 end
 def detect_switch_source_hash
 'ab4987e3769638cb0a4ef7af85bc8261'
@@ -932,6 +932,6 @@ def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'783546f9b3378a13eb080768bf4ad6df'
+'6dafbf68ba9f7c354d622da0c9c93e5d'
 end
   require 'compiled/detect_switch_c'

@@ -4,8 +4,8 @@ class AmethystCTranslator < Amethyst
 		return @rcallbacks[cb] if @rcallbacks[cb]
 		n="#{@grammar}_#{signature(cb)}"
 		i=1
-		i+=1 while @callbacks[n+i.to_s]
-		n=n+i.to_s
+		i+=1 while @callbacks[n+(i>1 ? i.to_s : "")]
+		n=n+i.to_s if i>1
 		@rcallbacks[cb]=n
 		@callbacks[n]=cb
 		n

@@ -169,8 +169,8 @@ class CAct
 			sig="s_#{signature(ary[0].inspect[1...-1])}"
 			i=1
 			i+=1 while ($cstr[sig+i.to_s] || ary[0].inspect) !=  ary[0].inspect
-			sig=sig+i.to_s 
-			$cstr[sig]=ary[0].inspect
+			$cstr[sig+i.to_s]=ary[0].inspect
+			sig=sig+i.to_s if i>1
 			return cact_add_global(sig,"rb_str_new2(#{ary[0].inspect})","rb_obj_clone(#{sig})")
 		end
 		[nil,nil,ary[0]]
