@@ -244,6 +244,9 @@ end
 def AmethystParser__di__lb__dot__co__bs__lb__rb__di_(bind)
 /[.:\[]/
 end
+def AmethystParser__lb_Args_lb_(bind)
+[Args[{:ary=>bind[4]}]]
+end
 def AmethystParser__lb_bind_lb_3_rb_(bind)
 [bind[3],bind[4]]
 end
@@ -318,15 +321,15 @@ end
 
 
 def parser_compiled_by
-'ddbd2ab2d5ab620699c741fb90acd2cb'
+'f794536016cd5f275a441293dd832be1'
 end
 def parser_source_hash
-'4dae726aff094ea1fab5dce8e1dbffd6'
+'7f24c01c6b6381f81d8ca28ff1275158'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'9968ba705a27e661bfacd070eb3de41d'
+'09b3b740b23f22772e9f41feee73d070'
 end
   require 'compiled/parser_c'

@@ -115,7 +115,7 @@ amethyst AmethystParser < Amethyst{
 	
 	name = "" (nameFirst nameRest*)[]:{leterize(it*"")}
 
-	inlineHostExpr = args('{','}')
+	inlineHostExpr = __args('{','}'):r {[Args[{:ary=>r}]]}
 
 	atomicHostExpr = (~endline .)*:s   {"{#{s*""}}"}=>[ inlineHostExpr ]
 }

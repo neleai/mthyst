@@ -36,6 +36,7 @@ adaptive dataflow
 think about suitable decomposition
 
 dataflow cantfail, noresult
+as constant propagation
 
 saner handling of Locals
 
@@ -50,7 +51,7 @@ functor for case insensivity
 
 , in Acts
 
-copy propagation
+copy propagation, expression variables
 Constant propagation also do value numbering to register renaming scheme.
 
 analysis what closures can be saved on stack
