@@ -156,7 +156,7 @@ end
 					def pure;true;end
 	      end")
 }
-
+$cstr={}
 class CAct
 	def ccode #rewrite in amethyst
 		$constno+=1
@@ -165,7 +165,14 @@ class CAct
 		return cact_add_global("c_#{$constno}","rb_const_get(rb_cObject, rb_intern(\"#{ary[0].inspect}\"))","c_#{$constno}") if ary[0].is_a?(Class)
 		#ugly but needed for arbitrary precision(alternatively emit int2fix when fits fixnum range)
 		return cact_add_global("c_#{$constno}","rb_funcall(rb_str_new2(\"#{ary[0]}\"),rb_intern(\"to_i\"),0)","c_#{$constno}") if ary[0].is_a? Integer
-		return cact_add_global("c_#{$constno}","rb_str_new2(#{ary[0].inspect})","rb_obj_clone(c_#{$constno})") if ary[0].is_a?(String)
+		if ary[0].is_a?(String)
+			sig="s_#{signature(ary[0].inspect[1...-1])}"
+			i=1
+			i+=1 while ($cstr[sig+i.to_s] || ary[0].inspect) !=  ary[0].inspect
+			sig=sig+i.to_s 
+			$cstr[sig]=ary[0].inspect
+			return cact_add_global(sig,"rb_str_new2(#{ary[0].inspect})","rb_obj_clone(#{sig})")
+		end
 		[nil,nil,ary[0]]
 	end
 end

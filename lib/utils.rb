@@ -1,6 +1,6 @@
 require 'lib/compatibility'
 def leterize(s)
-	trans={"."=>"dot","+"=>"pl","-"=>"mi","*"=>"ti","/"=>"di","="=>"eq","<" => "lt",">"=>"gt","$"=>"do","@"=>"at","("=>"lp",")"=>"rp","["=>"lb","]"=>"rb"}
+	trans={"."=>"dot","+"=>"pl","-"=>"mi","*"=>"ti","/"=>"di","="=>"eq","<" => "lt",">"=>"gt","$"=>"do","@"=>"at","("=>"lp",")"=>"rp","["=>"lb","]"=>"rb",":"=>"co","\\"=>"bs"}
 	s2=""
 	s=s.split("")
 	s.each{|e|s2+=trans[e]?"_#{trans[e]}_" : e }
@@ -8,6 +8,7 @@ def leterize(s)
 end
 def signature(s)
 	s=leterize(s[0,8])
+	puts s.inspect
 	r=""
 	s.each_char{|c|
 		return r unless c=="_" || ("a"<=c && c<="z") || ("A"<=c && c<="Z") || ("0"<=c && c<="9")

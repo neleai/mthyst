@@ -5,7 +5,7 @@ end
 
 
 def tests_compiled_by
-'efb04d97d57b1eb5714da35fba16915c'
+'bc2798735c434f68a74de54cbaba3fb9'
 end
 def tests_source_hash
 'cf06821607e17dfe8dd4d086b136a1e3'
@@ -14,6 +14,6 @@ def testversiontests(r)
  raise "invalid version" if r!=tests_version
 end
 def tests_version
-'5b1081cfd274af93465dee3a2f9776a2'
+'f26907135c8d9f1b5ada96f855f96582'
 end
   require 'compiled/tests_c'

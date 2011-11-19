@@ -21,11 +21,11 @@ end
 def Amethyst__di__lb_1(bind)
 /[^a-c]/
 end
-def Amethyst__di__lb_2(bind)
-/[\s\t\r\n\f]/
-end
 def Amethyst__di__lb_A_mi_Z_rb__di_1(bind)
 /[A-Z]/
+end
+def Amethyst__di__lb__bs_s_bs_t_bs_r1(bind)
+/[\s\t\r\n\f]/
 end
 def Amethyst__di__lb_a_mi_z_rb__di_1(bind)
 /[a-z]/
@@ -62,7 +62,7 @@ end
 
 
 def amethyst_compiled_by
-'efb04d97d57b1eb5714da35fba16915c'
+'bc2798735c434f68a74de54cbaba3fb9'
 end
 def amethyst_source_hash
 'aaa6d7dca6b6bc8a20edac17d9b7cad6'
@@ -71,6 +71,6 @@ def testversionamethyst(r)
  raise "invalid version" if r!=amethyst_version
 end
 def amethyst_version
-'bb5406dc41d83188015cdb0a5e101007'
+'4f4ee219180af4d7cc83f11c33496711'
 end
   require 'compiled/amethyst_c'
