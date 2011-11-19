@@ -1,10 +1,19 @@
 require 'lib/compatibility'
 def leterize(s)
-	trans={"."=>"_dot_","_"=>"_","-"=>"_minus_","="=>"_equal_","<" => "_less_",">"=>"_greater_","$"=>"_dollar_"}
+	trans={"."=>"dot","_"=>"","+"=>"pl","-"=>"mi","*"=>"ti","/"=>"di","="=>"eq","<" => "lt",">"=>"gt","$"=>"do","@"=>"at","("=>"lp",")"=>"rp","["=>"lb","]"=>"rb"}
 	s2=""
 	s=s.split("")
-	s.each{|e|s2+=trans[e]?trans[e]:e }
+	s.each{|e|s2+=trans[e]?"_#{trans[e]}_" : e }
 	s2
+end
+def signature(s)
+	s=leterize(s[0,8])
+	r=""
+	s.each_char{|c|
+		return r unless c=="-" || ("a"<=c && c<="z") || ("A"<=c && c<="Z")
+		r<<c
+	}
+	r
 end
 module Populate
 	def [](*args)
