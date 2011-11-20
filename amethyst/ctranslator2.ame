@@ -107,7 +107,8 @@ failobj=rb_eval_string(\"FAIL\");
                    @@header<<ar[0] if ar[0]
                    @@init<<ar[1] if ar[1]
                    "it=#{ar[2]};"}]
-				| Apply[ .["_find"]  ]
+				| Apply[ ["_find"]  ]
+				| Apply[ ["_seq"] CAct[.:s] {"if (strncmp(ame_curstr(self),#{s.inspect},#{s.size})) goto #{@@faillabel}; else ame_setpos(self,ame_getpos(self)+#{s.size});"}]
 				| Apply[:name {0}:ii ( trans:aa {ii+=1} {"#{aa} arg#{ii-1}=it;"})*:args 
             failwrap(" #{args*""} it=#{callrule(name,ii)};")]
 				| Seq[ trans*:t {t*""} ]
