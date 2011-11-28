@@ -6,7 +6,7 @@ $persistent=false
 require 'digest'
 require 'set'
 COMPILED=["amethyst","traverser","tests","detect_variables2","parser","dataflow_ssa","inliner2",
-"detect_switch","left_factor","constant_propagation","ctranslator2","implicit_variables"]
+"detect_switch","left_factor","constant_propagation","ctranslator2","implicit_variables","remove_left_rigth_recursion"]
 class Gram
 	attr_accessor :name,:parent,:rules,:calls,:callgraph
 	def initialize(grammar)
