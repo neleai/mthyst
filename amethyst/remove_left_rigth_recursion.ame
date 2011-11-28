@@ -1,11 +1,18 @@
+#todo reset variables
+#initialization
+
 amethyst Remove_Left_Recursion < Traverser_Clone2 {
-	root =	Rule[ @name:name {autovar}:a @body=>Or[
-							( Seq[ rec(name,a):r .*:rest {Seq[*([r]+rest)]}:next[]]
-              | .:first[]
-							)*
-						]
-            {Seq[Bind[a,Or[*first]],Many[Bind[a,Or[*next]]]]}
-        	]
+	root =	Rule[ @name:name {autovar}:a @body=>Seq[
+							{@ary[-1]}:result 
+              Or[
+							  ( Seq[ rec(name,result):r .*:rest {Seq[*([r]+rest)]}:next[]]
+                | .:first[]
+							  )*
+						  ]
+							.*:finish
+            ]
+        	] 
+          {Seq[Seq[Or[*first]],Many[Seq[Or[*next],*finish]],result]}
 	
 	rec(name,a) = Apply[&{@name==name} . {a}]
             | Bind[@name:n @expr=>rec(name,a):expr {Bind[n,expr]}]
