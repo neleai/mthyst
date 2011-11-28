@@ -220,12 +220,15 @@ class Apply
 		 ar=[name]+args
      Apply.create({:ary=>ar}).normalize
   end
+	def name
+		@ary[0]
+	end
 	def normalize2
-		if @ary[0]=="apply"
+		if name=="apply"
 			return Apply[@ary[1][0]] if @ary[1].is_a?(CAct)
 			return @ary[1][0][0] if @ary[1].is_a?(Act) && @ary[1][0].is_a?(Exp)
 		end
-		if @ary[0]=="_seq"
+		if name=="_seq"
 			return Placeholder if @ary[1].is_a?(CAct) && @ary[1][0].size==15
 		end 
 		self.freeze

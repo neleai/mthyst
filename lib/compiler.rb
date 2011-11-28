@@ -168,7 +168,7 @@ Compiler::init
 $compiled_by=""
 COMPILED.each{|opt|
 if Dir[Amethyst_path+"/compiled/#{opt}.rb"]!=[] #new grammars
-	require "compiled/#{opt}"
+	require Amethyst_path+"/compiled/#{opt}"
 	$compiled_by<< eval("#{opt}_version")
 end
 }

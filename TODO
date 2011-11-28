@@ -58,3 +58,9 @@ indexing from end
 extract cc from makefile for portability
 
 UTF8
+
+grammar not necessary
+
+flatarray class
+
+recognize local=
