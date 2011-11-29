@@ -36,9 +36,6 @@ end
 def Remove_Left_Recursion__lp_src_dot_nam2(bind)
 (src.name==bind[1]) || FAIL
 end
-def Remove_Left_Recursion_autovar(bind)
-autovar
-end
 def Remove_Left_Recursion_bind_lb_18_rb_(bind)
 bind[18]=[bind[18]]
 end
@@ -64,22 +61,18 @@ end
 end
 
 
-class Remove_Rigth_Recursion < Traverser_Clone2
-
-
-end
 
 
 def remove_left_rigth_recursion_compiled_by
-'eeac909f1a6c56f616abf095b4552d85'
+'c4340c50c20eefe13981d7bfaa6354fb'
 end
 def remove_left_rigth_recursion_source_hash
-'f7194f60ce5898d718c3df9fff5441bf'
+'1604e1c7f4226805aa67e2684ce3aa00'
 end
 def testversionremove_left_rigth_recursion(r)
  raise "invalid version" if r!=remove_left_rigth_recursion_version
 end
 def remove_left_rigth_recursion_version
-'53426dfe68bd5dc7611a84f298c69fc0'
+'1e9a5774b0249793fc73917632a621eb'
 end
   require 'compiled/remove_left_rigth_recursion_c'
