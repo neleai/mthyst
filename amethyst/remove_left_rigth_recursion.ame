@@ -4,6 +4,7 @@
 amethyst Remove_Left_Recursion < Traverser_Clone2 {
 	root =	Rule[ @name:name @body=>Seq[
 							{@ary[-1]}:result 
+							(start )*:init
               Or[
 							  ( Seq[ rec(name,result):r .*:rest {Seq[*([r]+rest)]}:next[]]
                 | .:first[]
@@ -12,7 +13,10 @@ amethyst Remove_Left_Recursion < Traverser_Clone2 {
 							.*:finish
             ]
         	] 
-          {Seq[Seq[Or[*first]],Many[Seq[Or[*next],*finish]],result]}
+          {Seq[Seq[*init,Or[*first]],Many[Seq[*init,Or[*next],*finish]],result]}
+	
+	start = Act | CAct | Local
+        | Bind[ @expr=>start {@self}]
 	
 	rec(name,a) = Apply[&{@name==name} . {a}]
             | Bind[@name:n @expr=>rec(name,a):expr {Bind[n,expr]}]
