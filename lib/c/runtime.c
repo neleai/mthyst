@@ -1,6 +1,6 @@
 #include "ruby.h"
 #include "../../compiled/cthyst.h"
-// write declarations to cthyst.h as without them call from other so will crash
+// write declarations to cthyst.h as without them call from other .so will crash
 VALUE amecore;VALUE bindcls;VALUE failobj;
 ID s_src,s_input,s_call,s_cut,s_ary_get;
 
@@ -44,8 +44,7 @@ VALUE AmethystCore_anything(VALUE self){
 
 VALUE AmethystCore_append(VALUE self,VALUE ary,VALUE el){
 	if (TYPE(ary)!=T_ARRAY){
-
-		 exit(42);
+	 rb_raise(rb_eArgError,"first argument is not array");
 	}
 	if (TYPE(el)==T_ARRAY){
 		rb_ary_concat(ary,el);

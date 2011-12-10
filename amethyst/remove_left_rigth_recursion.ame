@@ -1,5 +1,4 @@
-#todo reset variables
-#initialization
+#todo bind.reset to reset locals
 
 amethyst Remove_Left_Recursion < Traverser_Clone2 {
 	root =	Rule[ @name:name @body=>Seq[
@@ -13,7 +12,7 @@ amethyst Remove_Left_Recursion < Traverser_Clone2 {
 							.*:finish
             ]
         	] 
-          {Seq[Seq[*init,Or[*first]],Many[Seq[*init,Or[*next],*finish]],result]}
+          {Seq[Seq[*init,Or[*first]],Many[Act["x=",result,";bind.reset;"result,"=x"],Seq[*init,Or[*next],*finish]],result]}
 	
 	start = Act | CAct | Local
         | Bind[ @expr=>start {@self}]
