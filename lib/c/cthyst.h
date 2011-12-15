@@ -8,7 +8,7 @@ VALUE failobj;
 #define FAILTEST(lab) if (it==failobj) goto lab;
 #define HEADER VALUE bind=rb_hash_new();  int x;VALUE arg0,arg1,arg2,arg3;
 
-#define INSV(val)  printf("%s\n",RSTRING(rb_funcall(val,rb_intern("inspect"),0))->ptr);
+#define INSV(val)  printf("%s\n",RSTRING_PTR(rb_funcall(val,rb_intern("inspect"),0)));
 #define INSB(var) printf("%s\n",RSTRING(rb_funcall(BGET(var),rb_intern("inspect"),0))->ptr);
 #define INSI(var) printf("%s\n",RSTRING(rb_funcall(IGET(var),rb_intern("inspect"),0))->ptr);
 #define INSS printf("%s\n",RSTRING(rb_funcall(self,rb_intern("inspect"),0))->ptr);
@@ -27,7 +27,8 @@ VALUE AmethystCore_anything(VALUE self);
 VALUE AmethystCore__seq(VALUE self,VALUE str);
 
 typedef struct{
-  VALUE src,*ary;
+  VALUE src;
+	char *str;VALUE *ary;
   int pos;int len;
 	VALUE cut;VALUE stop;
 } cstruct;
@@ -52,14 +53,17 @@ static inline char* ame_curstr(VALUE self){
   return RSTRING_PTR(ame_getsrc(self))+ame_getpos(self);
 }
 static inline VALUE ame_curobj(VALUE self){
- /* cstruct  *ptr;
+  cstruct  *ptr;
   Data_Get_Struct(self,cstruct,ptr);
 	if(!ptr->ary){
-		VALUE ary=rb_funcall(ptr->src,rb_intern("ary"),0);
+		VALUE ary;
+	  if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+		else  ary=rb_funcall(ptr->src,rb_intern("ary"),0);
 		ptr->ary=RARRAY_PTR(ary);
+	//	ptr->len=RARRAY_LEN(ary);
 	}
-  return ptr->ary[ame_getposrb(self)];*/
-	return rb_funcall(ame_getsrc(self),s_ary_get,1,ame_getposrb(self));
+	if (ptr->len==ptr->pos) return Qnil;
+  return ptr->ary[ptr->pos];
 }
 
 typedef struct {
