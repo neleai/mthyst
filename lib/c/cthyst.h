@@ -27,7 +27,7 @@ VALUE AmethystCore_anything(VALUE self);
 VALUE AmethystCore__seq(VALUE self,VALUE str);
 
 typedef struct{
-  VALUE src,ary;
+  VALUE src,*ary;
   int pos;int len;
 	VALUE cut;VALUE stop;
 } cstruct;
@@ -52,11 +52,14 @@ static inline char* ame_curstr(VALUE self){
   return RSTRING_PTR(ame_getsrc(self))+ame_getpos(self);
 }
 static inline VALUE ame_curobj(VALUE self){
-  cstruct  *ptr;
+ /* cstruct  *ptr;
   Data_Get_Struct(self,cstruct,ptr);
 	if(!ptr->ary){
+		VALUE ary=rb_funcall(ptr->src,rb_intern("ary"),0);
+		ptr->ary=RARRAY_PTR(ary);
 	}
-  return rb_funcall(ame_getsrc(self),s_ary_get,1,ame_getposrb(self));
+  return ptr->ary[ame_getposrb(self)];*/
+	return rb_funcall(ame_getsrc(self),s_ary_get,1,ame_getposrb(self));
 }
 
 typedef struct {
@@ -68,7 +71,7 @@ static inline VALUE bind_new(VALUE clas,VALUE size){
   ptr->size=FIX2LONG(size);
   ptr->ary=calloc(sizeof(VALUE),ptr->size);
   VALUE o=Data_Wrap_Struct(clas,bind_mark,bind_free,ptr);
-/*  VALUE argv[0]; rb_obj_call_init(o,0,argv);*/
+	// dont call init its slow.
   return o;
 }
 extern VALUE bindcls;

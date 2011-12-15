@@ -137,7 +137,7 @@ failobj=rb_eval_string(\"FAIL\");
 				| Pass[ label("pass"):pass label("oldpass"):oldpass label("success"):success label("fail"):fail
 						rw(pass,`@to=>trans:to`)
 					{  "cstruct #{oldpass}=*ptr; int #{fail}=0;
-ame_setsrc(self,#{bget(@var)}); ame_setpos(self,0); ame_setlen(self,FIX2LONG(rb_funcall(ame_getsrc(self),#{symb("size")},0)));
+          ptr->src=#{bget(@var)}; ptr->pos=0; ptr->len=FIX2LONG(rb_funcall(ame_getsrc(self),#{symb("size")},0)); ptr->ary=NULL;
  #{to}
 	goto #{success};
 	#{pass}: #{fail}=1;

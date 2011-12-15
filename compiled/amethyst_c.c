@@ -258,7 +258,7 @@ VALUE Amethyst_parse(VALUE self ,VALUE a0,VALUE a1){VALUE vals[2]; VALUE bind=bi
 
 it=bind_aget(bind,0/*obj*/); bind_aset(bind,1/*autovar*/,it);
 cstruct oldpass1=*ptr; int fail1=0;
-ame_setsrc(self,bind_aget(bind,1/*autovar*/)); ame_setpos(self,0); ame_setlen(self,FIX2LONG(rb_funcall(ame_getsrc(self),sy_size,0)));
+          ptr->src=bind_aget(bind,1/*autovar*/); ptr->pos=0; ptr->len=FIX2LONG(rb_funcall(ame_getsrc(self),sy_size,0)); ptr->ary=NULL;
   it=bind_aget(bind,2/*rule*/); arg0=it; it=rb_funcall(self,sy_apply,1,arg0); FAILTEST(pass1); bind_aset(bind,3/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass1);
 	goto success1;
@@ -411,4 +411,4 @@ rb_define_method(cls_Amethyst,"token",Amethyst_token,1);
 rb_define_method(cls_Amethyst,"upper",Amethyst_upper,0);
 rb_define_method(cls_Amethyst,"word",Amethyst_word,0);
 rb_define_method(cls_Amethyst,"xdigit",Amethyst_xdigit,0);
- rb_eval_string("testversionamethyst('99cbca74648e8e83bda5176f72dbfa07')");}
+ rb_eval_string("testversionamethyst('7ae9dcc06c4dabe5e0e4f4e233ce910c')");}
