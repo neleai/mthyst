@@ -27,7 +27,7 @@ VALUE AmethystCore_anything(VALUE self);
 VALUE AmethystCore__seq(VALUE self,VALUE str);
 
 typedef struct{
-  VALUE src;
+  VALUE src,ary;
   int pos;int len;
 	VALUE cut;VALUE stop;
 } cstruct;
