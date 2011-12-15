@@ -26,18 +26,19 @@ VALUE AmethystCore__seq(VALUE self,VALUE str){
 #define mbs_UTF8(c) mbsize_UTF8[c/16]
 char mbsize_UTF8[]={1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,3,4};
 VALUE AmethystCore_anything(VALUE self){
+  cstruct  *ptr;
+  Data_Get_Struct(self,cstruct,ptr);
 	VALUE r;
-  VALUE src=ame_getsrc(self);
   int input=ame_getpos(self);
 	int len=ame_getlen(self);
 	if (len<=input) return failobj;
-	if(TYPE(src)==T_STRING){
+	if(TYPE(ptr->src)==T_STRING){
 		int cs=mbs_UTF8(*ame_curstr(self));
 		r=rb_str_new(ame_curstr(self),cs);
-		ame_setpos(self,input+cs);
+		ptr->pos+=cs;
 	}else{
 		r= ame_curobj(self);
-		ame_setpos(self,input+1);
+		ptr->pos++;
 	}
 	return r;
 }

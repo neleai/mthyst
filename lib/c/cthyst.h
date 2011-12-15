@@ -60,7 +60,7 @@ static inline VALUE ame_curobj(VALUE self){
 	  if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
 		else  ary=rb_funcall(ptr->src,rb_intern("ary"),0);
 		ptr->ary=RARRAY_PTR(ary);
-	//	ptr->len=RARRAY_LEN(ary);
+		ptr->len=RARRAY_LEN(ary);
 	}
 	if (ptr->len==ptr->pos) return Qnil;
   return ptr->ary[ptr->pos];
