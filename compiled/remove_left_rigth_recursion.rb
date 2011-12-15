@@ -72,7 +72,7 @@ end
 
 
 def remove_left_rigth_recursion_compiled_by
-'37b42f1d1797e2f81f6ef9b6c4bc2570'
+'b3a798db922ec4f9f35d43920fba8c2b'
 end
 def remove_left_rigth_recursion_source_hash
 '75a657d19bcd50952d54f24954bce430'
@@ -81,6 +81,6 @@ def testversionremove_left_rigth_recursion(r)
  raise "invalid version" if r!=remove_left_rigth_recursion_version
 end
 def remove_left_rigth_recursion_version
-'3b4eb264a06a560d4b1509c21d6ad8c2'
+'bbb958eeb52908d5f21ad518be267ebb'
 end
   require 'compiled/remove_left_rigth_recursion_c'

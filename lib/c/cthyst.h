@@ -52,6 +52,10 @@ static inline char* ame_curstr(VALUE self){
   return RSTRING_PTR(ame_getsrc(self))+ame_getpos(self);
 }
 static inline VALUE ame_curobj(VALUE self){
+  cstruct  *ptr;
+  Data_Get_Struct(self,cstruct,ptr);
+	if(!ptr->ary){
+	}
   return rb_funcall(ame_getsrc(self),s_ary_get,1,ame_getposrb(self));
 }
 

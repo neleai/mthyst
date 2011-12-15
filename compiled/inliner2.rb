@@ -168,7 +168,7 @@ end
 
 
 def inliner2_compiled_by
-'37b42f1d1797e2f81f6ef9b6c4bc2570'
+'b3a798db922ec4f9f35d43920fba8c2b'
 end
 def inliner2_source_hash
 'eca6429e1f65c5d4367c65294557dc01'
@@ -177,6 +177,6 @@ def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version
 end
 def inliner2_version
-'a0495577bee206d34e6b9eb8c3ad3ce4'
+'02d724b6a2b25802510eed373ef7a455'
 end
   require 'compiled/inliner2_c'
