@@ -9,7 +9,7 @@ def Remove_Left_Recursion_Bind_lb_bin2(bind)
 Bind[bind[6],bind[8]]
 end
 def Remove_Left_Recursion_Seq_lb_Seq_lb_(bind)
-Seq[Seq[*bind[9],Or[*bind[1]]],Many[Act["x=",bind[6],";bind.reset;"bind[6],"=x"],Seq[*bind[9],Or[*bind[0]],*bind[34]]],bind[6]]
+Seq[Seq[*bind[9],Or[*bind[1]]],Many[Act["x=",bind[6],";bind.reset;",bind[6],"=x"],Seq[*bind[9],Or[*bind[0]],*bind[34]]],bind[6]]
 end
 def Remove_Left_Recursion_Seq_lb__ti__lp__lb_b(bind)
 Seq[*([bind[24]]+bind[27])]
@@ -75,7 +75,7 @@ def remove_left_rigth_recursion_compiled_by
 '37b42f1d1797e2f81f6ef9b6c4bc2570'
 end
 def remove_left_rigth_recursion_source_hash
-'1be7c270e787081dd27633a47a0f14f3'
+'2916a31381168e10752ef301192cb30a'
 end
 def testversionremove_left_rigth_recursion(r)
  raise "invalid version" if r!=remove_left_rigth_recursion_version
