@@ -121,7 +121,7 @@ def AmethystCTranslator_5(bind)
 end
 def AmethystCTranslator_6(bind)
 "cstruct #{bind[9]}=*ptr; int #{bind[11]}=0;
-          ptr->src=#{bget(src.var)}; ptr->pos=0; ptr->len=FIX2LONG(rb_funcall(ame_getsrc(self),#{symb("size")},0)); ptr->ary=NULL;
+          ptr->src=#{bget(src.var)}; ptr->pos=0; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else ptr->len=FIX2LONG(rb_funcall(ptr->src,#{symb("size")},0)); ptr->ary=NULL;
  #{bind[15]}
 	goto #{bind[10]};
 	#{bind[8]}: #{bind[11]}=1;
@@ -368,15 +368,15 @@ end
 
 
 def ctranslator2_compiled_by
-'4f3d6f553e5483ca7b899a96b9c6d4c2'
+'06a274f502fb1ac4226cc05345c0b477'
 end
 def ctranslator2_source_hash
-'c53e3c8769d156ce91c569d1ae9a771f'
+'5fca9fa319b44701252fef797c83d3b3'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'a6bc05cc96edc8197580af67e861a6e4'
+'506fd8ebedc88b9ffe17f66445430066'
 end
   require 'compiled/ctranslator2_c'

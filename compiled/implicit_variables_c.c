@@ -30,10 +30,10 @@ it=rb_ary_new3(0); bind_aset(bind,0/*autovar*/,it);
 int oldpos1; while(1){oldpos1=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break1); bind_aset(bind,1/*autovar*/,it);
 it=rb_funcall(self,sy_Detect_Implicit_Variables__append_lp_3,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos1); it=bind_aget(bind,0/*autovar*/);it=rb_funcall(self,sy_Detect_Implicit_Variables__lp_src_dot_ins,1,bind);  bind_aset(bind,2/*autovar*/,it);
 it=rb_funcall(self,sy_Detect_Implicit_Variables_bind_lb_2_rb__eq_,1,bind); cstruct oldpass1=*ptr; int fail1=0;
-          ptr->src=bind_aget(bind,2/*autovar*/); ptr->pos=0; ptr->len=FIX2LONG(rb_funcall(ame_getsrc(self),sy_size,0)); ptr->ary=NULL;
+          ptr->src=bind_aget(bind,2/*autovar*/); ptr->pos=0; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else ptr->len=FIX2LONG(rb_funcall(ptr->src,sy_size,0)); ptr->ary=NULL;
    it=AmethystCore_anything(self ); FAILTEST(pass1); bind_aset(bind,3/*autovar*/,it);
 cstruct oldpass2=*ptr; int fail2=0;
-          ptr->src=bind_aget(bind,3/*autovar*/); ptr->pos=0; ptr->len=FIX2LONG(rb_funcall(ame_getsrc(self),sy_size,0)); ptr->ary=NULL;
+          ptr->src=bind_aget(bind,3/*autovar*/); ptr->pos=0; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else ptr->len=FIX2LONG(rb_funcall(ptr->src,sy_size,0)); ptr->ary=NULL;
  it=rb_ary_new3(0); bind_aset(bind,4/*autovar*/,it);
 int oldpos2; while(1){oldpos2=ame_getpos(self);   it=Detect_Implicit_Variables_traverse_item(self ); FAILTEST(break2); bind_aset(bind,5/*autovar*/,it);
 it=rb_funcall(self,sy_Detect_Implicit_Variables__append_lp_2,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos2=ame_getpos(self);goto break2;} } } break2: ame_setstop(self,Qnil);  ame_setpos(self,oldpos2); it=bind_aget(bind,4/*autovar*/); bind_aset(bind,6/*autovar*/,it);
@@ -62,7 +62,7 @@ ame_setcut(self,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt1_3); bind_aset(bind,1/*autovar*/,it);
 cstruct oldpass1=*ptr; int fail1=0;
-          ptr->src=bind_aget(bind,1/*autovar*/); ptr->pos=0; ptr->len=FIX2LONG(rb_funcall(ame_getsrc(self),sy_size,0)); ptr->ary=NULL;
+          ptr->src=bind_aget(bind,1/*autovar*/); ptr->pos=0; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else ptr->len=FIX2LONG(rb_funcall(ptr->src,sy_size,0)); ptr->ary=NULL;
    it=Detect_Implicit_Variables_traverse(self ); FAILTEST(pass1); bind_aset(bind,2/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass1);
 	goto success1;
@@ -86,7 +86,7 @@ ame_setcut(self,Qnil);goto accept2;
 alt2_2: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt2_3); bind_aset(bind,3/*autovar*/,it);
 cstruct oldpass2=*ptr; int fail2=0;
-          ptr->src=bind_aget(bind,3/*autovar*/); ptr->pos=0; ptr->len=FIX2LONG(rb_funcall(ame_getsrc(self),sy_size,0)); ptr->ary=NULL;
+          ptr->src=bind_aget(bind,3/*autovar*/); ptr->pos=0; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else ptr->len=FIX2LONG(rb_funcall(ptr->src,sy_size,0)); ptr->ary=NULL;
  it=rb_ary_new3(0); bind_aset(bind,4/*autovar*/,it);
 int oldpos3; while(1){oldpos3=ame_getpos(self);   it=Detect_Implicit_Variables_traverse_item(self ); FAILTEST(break1); bind_aset(bind,5/*autovar*/,it);
 it=rb_funcall(self,sy_Detect_Implicit_Variables__append_lp_2,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos3=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos3); it=bind_aget(bind,4/*autovar*/); bind_aset(bind,6/*autovar*/,it);
@@ -122,7 +122,7 @@ VALUE Detect_Implicit_Variables_visit(VALUE self ){VALUE vals[0]; VALUE bind=bin
 
  it=c_Apply; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(fail); bind_aset(bind,0/*autovar*/,it);
 cstruct oldpass1=*ptr; int fail1=0;
-          ptr->src=bind_aget(bind,0/*autovar*/); ptr->pos=0; ptr->len=FIX2LONG(rb_funcall(ame_getsrc(self),sy_size,0)); ptr->ary=NULL;
+          ptr->src=bind_aget(bind,0/*autovar*/); ptr->pos=0; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else ptr->len=FIX2LONG(rb_funcall(ptr->src,sy_size,0)); ptr->ary=NULL;
    it=AmethystCore_anything(self ); FAILTEST(pass1); bind_aset(bind,1/*name*/,it);
 it=rb_funcall(self,sy_Detect_Implicit_Variables__at_vars_lb_bi,1,bind); it=rb_ary_new3(0); bind_aset(bind,2/*autovar*/,it);
 int oldpos1; while(1){oldpos1=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break1); bind_aset(bind,3/*autovar*/,it);
@@ -171,7 +171,7 @@ VALUE Add_Implicit_Variables_root(VALUE self ){VALUE vals[0]; VALUE bind=bind_ne
   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,0/*autovar*/,it);
 it=rb_funcall(self,sy_Add_Implicit_Variables__at_vars_eq_bi,1,bind);  it=c_Rule; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(fail); bind_aset(bind,1/*autovar*/,it);
 cstruct oldpass1=*ptr; int fail1=0;
-          ptr->src=bind_aget(bind,1/*autovar*/); ptr->pos=0; ptr->len=FIX2LONG(rb_funcall(ame_getsrc(self),sy_size,0)); ptr->ary=NULL;
+          ptr->src=bind_aget(bind,1/*autovar*/); ptr->pos=0; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else ptr->len=FIX2LONG(rb_funcall(ptr->src,sy_size,0)); ptr->ary=NULL;
    it=Add_Implicit_Variables_traverse(self ); FAILTEST(pass1); bind_aset(bind,2/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass1);
 	goto success1;
@@ -192,14 +192,14 @@ it=Qnil; bind_aset(bind,4/*clon*/,it);
 it=Qfalse; bind_aset(bind,5/*changed*/,it);
 it=rb_funcall(self,sy_Add_Implicit_Variables__lp_src_dot_ins,1,bind);  bind_aset(bind,6/*autovar*/,it);
 it=rb_funcall(self,sy_Add_Implicit_Variables_bind_lb_6_rb__eq_,1,bind); cstruct oldpass1=*ptr; int fail1=0;
-          ptr->src=bind_aget(bind,6/*autovar*/); ptr->pos=0; ptr->len=FIX2LONG(rb_funcall(ame_getsrc(self),sy_size,0)); ptr->ary=NULL;
+          ptr->src=bind_aget(bind,6/*autovar*/); ptr->pos=0; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else ptr->len=FIX2LONG(rb_funcall(ptr->src,sy_size,0)); ptr->ary=NULL;
    it=AmethystCore_anything(self ); FAILTEST(pass1); bind_aset(bind,7/*autovar*/,it);
 cstruct oldpass2=*ptr; int fail2=0;
-          ptr->src=bind_aget(bind,7/*autovar*/); ptr->pos=0; ptr->len=FIX2LONG(rb_funcall(ame_getsrc(self),sy_size,0)); ptr->ary=NULL;
+          ptr->src=bind_aget(bind,7/*autovar*/); ptr->pos=0; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else ptr->len=FIX2LONG(rb_funcall(ptr->src,sy_size,0)); ptr->ary=NULL;
  it=rb_ary_new3(0); bind_aset(bind,8/*autovar*/,it);
 int oldpos2; while(1){oldpos2=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break2); bind_aset(bind,9/*autovar*/,it);
 cstruct oldpass3=*ptr; int fail3=0;
-          ptr->src=bind_aget(bind,9/*autovar*/); ptr->pos=0; ptr->len=FIX2LONG(rb_funcall(ame_getsrc(self),sy_size,0)); ptr->ary=NULL;
+          ptr->src=bind_aget(bind,9/*autovar*/); ptr->pos=0; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else ptr->len=FIX2LONG(rb_funcall(ptr->src,sy_size,0)); ptr->ary=NULL;
    it=AmethystCore_anything(self ); FAILTEST(pass3); bind_aset(bind,10/*key*/,it);
 it=rb_funcall(self,sy_Add_Implicit_Variables__at_changed3,1,bind);   it=Add_Implicit_Variables_traverse_item(self ); FAILTEST(pass3); bind_aset(bind,11/*val*/,it);
 it=rb_funcall(self,sy_Add_Implicit_Variables__lp_bind_lb_4_rb_,1,bind);  bind_aset(bind,12/*autovar*/,it);
@@ -234,7 +234,7 @@ ame_setcut(self,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt1_3); bind_aset(bind,2/*autovar*/,it);
 cstruct oldpass1=*ptr; int fail1=0;
-          ptr->src=bind_aget(bind,2/*autovar*/); ptr->pos=0; ptr->len=FIX2LONG(rb_funcall(ame_getsrc(self),sy_size,0)); ptr->ary=NULL;
+          ptr->src=bind_aget(bind,2/*autovar*/); ptr->pos=0; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else ptr->len=FIX2LONG(rb_funcall(ptr->src,sy_size,0)); ptr->ary=NULL;
    it=Add_Implicit_Variables_traverse(self ); FAILTEST(pass1); bind_aset(bind,3/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass1);
 	goto success1;
@@ -259,7 +259,7 @@ ame_setcut(self,Qnil);goto accept2;
 alt2_2: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt2_3); bind_aset(bind,4/*autovar*/,it);
 cstruct oldpass2=*ptr; int fail2=0;
-          ptr->src=bind_aget(bind,4/*autovar*/); ptr->pos=0; ptr->len=FIX2LONG(rb_funcall(ame_getsrc(self),sy_size,0)); ptr->ary=NULL;
+          ptr->src=bind_aget(bind,4/*autovar*/); ptr->pos=0; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else ptr->len=FIX2LONG(rb_funcall(ptr->src,sy_size,0)); ptr->ary=NULL;
  it=rb_ary_new3(0); bind_aset(bind,5/*ar*/,it);
 it=rb_ary_new3(0); bind_aset(bind,6/*autovar*/,it);
 int oldpos3; while(1){oldpos3=ame_getpos(self);   it=Add_Implicit_Variables_traverse_item(self ); FAILTEST(break1); bind_aset(bind,7/*it*/,it);
@@ -302,7 +302,7 @@ int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
  it=bind_aget(bind,1/*autovar*/); bind_aset(bind,2/*autovar*/,it);
 cstruct oldpass1=*ptr; int fail1=0;
-          ptr->src=bind_aget(bind,2/*autovar*/); ptr->pos=0; ptr->len=FIX2LONG(rb_funcall(ame_getsrc(self),sy_size,0)); ptr->ary=NULL;
+          ptr->src=bind_aget(bind,2/*autovar*/); ptr->pos=0; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else ptr->len=FIX2LONG(rb_funcall(ptr->src,sy_size,0)); ptr->ary=NULL;
    it=AmethystCore_anything(self ); FAILTEST(pass1); bind_aset(bind,3/*name*/,it);
 it=rb_ary_new3(0); bind_aset(bind,4/*autovar*/,it);
 int oldpos2; while(1){oldpos2=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break1); bind_aset(bind,5/*autovar*/,it);
@@ -318,7 +318,7 @@ ame_setcut(self,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
  it=bind_aget(bind,1/*autovar*/); bind_aset(bind,8/*autovar*/,it);
 cstruct oldpass2=*ptr; int fail2=0;
-          ptr->src=bind_aget(bind,8/*autovar*/); ptr->pos=0; ptr->len=FIX2LONG(rb_funcall(ame_getsrc(self),sy_size,0)); ptr->ary=NULL;
+          ptr->src=bind_aget(bind,8/*autovar*/); ptr->pos=0; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else ptr->len=FIX2LONG(rb_funcall(ptr->src,sy_size,0)); ptr->ary=NULL;
    it=AmethystCore_anything(self ); FAILTEST(pass2); bind_aset(bind,3/*name*/,it);
 it=rb_ary_new3(0); bind_aset(bind,9/*autovar*/,it);
 int oldpos3; while(1){oldpos3=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break2); bind_aset(bind,10/*autovar*/,it);
@@ -384,4 +384,4 @@ rb_define_method(cls_Add_Implicit_Variables,"root",Add_Implicit_Variables_root,0
 rb_define_method(cls_Add_Implicit_Variables,"traverse",Add_Implicit_Variables_traverse,0);
 rb_define_method(cls_Add_Implicit_Variables,"traverse_item",Add_Implicit_Variables_traverse_item,0);
 rb_define_method(cls_Add_Implicit_Variables,"visit",Add_Implicit_Variables_visit,0);
- rb_eval_string("testversionimplicit_variables('beec97cb17145984eec5a96c884dc57d')");}
+ rb_eval_string("testversionimplicit_variables('121c70df95d0dc1e2f7e4893a72983a8')");}
