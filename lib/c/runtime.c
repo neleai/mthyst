@@ -9,14 +9,14 @@ VALUE ame_setposrb(VALUE self,VALUE val){return INT2FIX(ame_setpos(self,FIX2INT(
 VALUE ame_getlenrb(VALUE self){return INT2FIX(ame_getlen(self));}
 
 VALUE AmethystCore__seq(VALUE self,VALUE str){
+	cstruct  *ptr;
+  Data_Get_Struct(self,cstruct,ptr);
 	int len=RSTRING_LEN(str);
-	VALUE src=ame_getsrc(self);
-	if (TYPE(src)==T_STRING){
-		int input=ame_getpos(self);
+	if (TYPE(ptr->src)==T_STRING){
 		if (strncmp(ame_curstr(self),RSTRING_PTR(str),len)) 
 			{ return failobj; }
 		else {
-			ame_setpos(self,input+len);
+			ptr->pos+=len;
 			return Qnil;
 		}
 	}else{
@@ -29,9 +29,7 @@ VALUE AmethystCore_anything(VALUE self){
   cstruct  *ptr;
   Data_Get_Struct(self,cstruct,ptr);
 	VALUE r;
-  int input=ame_getpos(self);
-	int len=ame_getlen(self);
-	if (len<=input) return failobj;
+	if (ptr->pos>=ptr->len) return failobj;
 	if(TYPE(ptr->src)==T_STRING){
 		int cs=mbs_UTF8(*ame_curstr(self));
 		r=rb_str_new(ame_curstr(self),cs);

@@ -68,3 +68,5 @@ recognize local=
 bind.reset
 
 default arguments?
+
+rewrite rigth recursion by futures
