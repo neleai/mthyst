@@ -62,7 +62,7 @@ static inline VALUE ame_curobj(VALUE self){
 		ptr->ary=RARRAY_PTR(ary);
 		ptr->len=RARRAY_LEN(ary);
 	}
-	if (ptr->len==ptr->pos) return Qnil;
+	if (ptr->len==ptr->pos) return failobj;
   return ptr->ary[ptr->pos];
 }
 

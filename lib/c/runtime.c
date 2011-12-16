@@ -29,8 +29,8 @@ VALUE AmethystCore_anything(VALUE self){
   cstruct  *ptr;
   Data_Get_Struct(self,cstruct,ptr);
 	VALUE r;
-	if (ptr->pos>=ptr->len) return failobj;
 	if(TYPE(ptr->src)==T_STRING){
+		if (ptr->pos>=ptr->len) return failobj;
 		int cs=mbs_UTF8(ptr->str[ptr->pos]);
 		r=rb_str_new(ptr->str+ptr->pos,cs);
 		ptr->pos+=cs;
