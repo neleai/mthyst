@@ -56,7 +56,6 @@ static VALUE sy_Amethyst__lp_bind_lb_3_rb_;
 static VALUE sy_Amethyst__lp_false_rp__sp_;
 static VALUE sy_Amethyst_bind_lb_1_rb__ti_;
 static VALUE sy_apply;
-static VALUE sy_size;
 VALUE Amethyst__(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(2);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
  it=rb_funcall(self,sy_Amethyst__di__lb__bs_s_bs_t_bs_r,1,bind);  arg0=it; it=Amethyst_regch(self ,arg0); FAILTEST(fail); bind_aset(bind,0/*_result*/,it);
@@ -258,7 +257,7 @@ VALUE Amethyst_parse(VALUE self ,VALUE a0,VALUE a1){VALUE vals[2]; VALUE bind=bi
 
 it=bind_aget(bind,0/*obj*/); bind_aset(bind,1/*autovar*/,it);
 cstruct oldpass1=*ptr; int fail1=0;
-          ptr->src=bind_aget(bind,1/*autovar*/); ptr->pos=0; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else ptr->len=FIX2LONG(rb_funcall(ptr->src,sy_size,0)); ptr->ary=NULL;
+          ptr->src=bind_aget(bind,1/*autovar*/); ptr->pos=0; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} ptr->ary=NULL;
   it=bind_aget(bind,2/*rule*/); arg0=it; it=rb_funcall(self,sy_apply,1,arg0); FAILTEST(pass1); bind_aset(bind,3/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass1);
 	goto success1;
@@ -381,7 +380,6 @@ sy_Amethyst__lp_bind_lb_3_rb_=rb_intern("Amethyst__lp_bind_lb_3_rb_");
 sy_Amethyst__lp_false_rp__sp_=rb_intern("Amethyst__lp_false_rp__sp_");
 sy_Amethyst_bind_lb_1_rb__ti_=rb_intern("Amethyst_bind_lb_1_rb__ti_");
 sy_apply=rb_intern("apply");
-sy_size=rb_intern("size");
 rb_define_method(cls_Amethyst,"_",Amethyst__,0);
 rb_define_method(cls_Amethyst,"_false",Amethyst__false,0);
 rb_define_method(cls_Amethyst,"_true",Amethyst__true,0);
@@ -411,4 +409,4 @@ rb_define_method(cls_Amethyst,"token",Amethyst_token,1);
 rb_define_method(cls_Amethyst,"upper",Amethyst_upper,0);
 rb_define_method(cls_Amethyst,"word",Amethyst_word,0);
 rb_define_method(cls_Amethyst,"xdigit",Amethyst_xdigit,0);
- rb_eval_string("testversionamethyst('565f2e085efc6ff619700f9fc20a8626')");}
+ rb_eval_string("testversionamethyst('0b1d55d2278b7ddc2cb65af9b8b95c38')");}

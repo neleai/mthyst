@@ -97,7 +97,7 @@ end
 
 
 def implicit_variables_compiled_by
-'06a274f502fb1ac4226cc05345c0b477'
+'15e1c38f47587b315582c55f3379d77a'
 end
 def implicit_variables_source_hash
 '6a0a31cf7e531a56757bd541162a71ff'
@@ -106,6 +106,6 @@ def testversionimplicit_variables(r)
  raise "invalid version" if r!=implicit_variables_version
 end
 def implicit_variables_version
-'121c70df95d0dc1e2f7e4893a72983a8'
+'b700efbbb93d0bd13afb210e6efa2d80'
 end
   require 'compiled/implicit_variables_c'
