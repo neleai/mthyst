@@ -32,6 +32,9 @@ class AmethystAST
 	def normalize2
 		self.freeze
 	end
+	def [](a)
+		@ary[a]
+	end
 end
 
 $hash_Bnding={}

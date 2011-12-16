@@ -70,9 +70,6 @@ void bind_free(bind_struct *ptr){
 }
 
 ID s_ary;
-VALUE ameast_agetrb(VALUE self,VALUE num){
-	return rb_ary_entry(rb_ivar_get(self,s_ary),FIX2LONG(num));
-}
 void Init_Ame(VALUE self){
 	s_ary_get=rb_intern("[]");
 	s_ary=rb_intern("@ary");
@@ -95,6 +92,4 @@ void Init_Ame(VALUE self){
 	rb_define_method(bindcls,"[]=",bind_asetrb,2);
 	rb_define_method(bindcls,"[]",bind_agetrb,1);
 
-	VALUE ameast=rb_define_class("AmethystAST",rb_cObject);
-	rb_define_method(ameast,"[]",ameast_agetrb,1);
 }
