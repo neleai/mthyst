@@ -13,7 +13,7 @@ VALUE AmethystCore__seq(VALUE self,VALUE str){
   Data_Get_Struct(self,cstruct,ptr);
 	int len=RSTRING_LEN(str);
 	if (TYPE(ptr->src)==T_STRING){
-		if (strncmp(ame_curstr(self),RSTRING_PTR(str),len)) 
+		if (strncmp(ptr->str+ptr->pos,RSTRING_PTR(str),len)) 
 			{ return failobj; }
 		else {
 			ptr->pos+=len;
@@ -31,8 +31,8 @@ VALUE AmethystCore_anything(VALUE self){
 	VALUE r;
 	if (ptr->pos>=ptr->len) return failobj;
 	if(TYPE(ptr->src)==T_STRING){
-		int cs=mbs_UTF8(*ame_curstr(self));
-		r=rb_str_new(ame_curstr(self),cs);
+		int cs=mbs_UTF8(ptr->str[ptr->pos]);
+		r=rb_str_new(ptr->str+ptr->pos,cs);
 		ptr->pos+=cs;
 	}else{
 		r= ame_curobj(self);
