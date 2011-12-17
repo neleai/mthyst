@@ -27,9 +27,6 @@ end
 def Traverser_Clone2_bind_lb_5_rb__lt_(bind)
 bind[5]<<bind[7]
 end
-def Traverser_Clone2_bind_lb_6_rb__eq_(bind)
-bind[6]=[bind[6]]
-end
 def Traverser_Clone2_if_sp_bind_lb_(bind)
 if bind[5]
              @changed=true;bind[4].normalize
@@ -58,15 +55,12 @@ end
 def Visitor__lp_src_dot_ins(bind)
 (src.instance_variables).map{|v| src.instance_variable_get(v)}
 end
-def Visitor_bind_lb_2_rb__eq_(bind)
-bind[2]=[bind[2]]
-end
 
 end
 
 
 def traverser_compiled_by
-'15e1c38f47587b315582c55f3379d77a'
+'005cbb51e8032e32750f2962f54f6849'
 end
 def traverser_source_hash
 '102e4f870eb0748a3420fd0f2398e4a9'
@@ -75,6 +69,6 @@ def testversiontraverser(r)
  raise "invalid version" if r!=traverser_version
 end
 def traverser_version
-'6d7c0f93526c5c7818a244713876c296'
+'d6845bb318ad1ccbc7fb7c4f12776dd3'
 end
   require 'compiled/traverser_c'

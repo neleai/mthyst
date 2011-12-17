@@ -106,9 +106,6 @@ a=ConstantLattice[Bottom]
         											depend.reverse.edges[bind[0]].each{|e| a=a+valof(e)}
 															a
 end
-def Constant_Propagator_bind_lb_1_rb__eq_(bind)
-bind[1]=[bind[1]]
-end
 def Constant_Propagator_src(bind)
 src
 end
@@ -163,9 +160,6 @@ end
 def Constant_Traverser_bind_lb_5_rb__lt_(bind)
 bind[5]<<bind[7]
 end
-def Constant_Traverser_bind_lb_6_rb__eq_(bind)
-bind[6]=[bind[6]]
-end
 def Constant_Traverser_if_sp_bind_lb_(bind)
 if bind[5]
              @changed=true;bind[4].normalize
@@ -185,7 +179,7 @@ end
 
 
 def constant_propagation_compiled_by
-'15e1c38f47587b315582c55f3379d77a'
+'005cbb51e8032e32750f2962f54f6849'
 end
 def constant_propagation_source_hash
 'b507d97e60e0e88d6bb37c3125ee8745'
@@ -194,6 +188,6 @@ def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
 end
 def constant_propagation_version
-'c16a4ab5fbf2a7e93667e20eec9cb6fa'
+'ddc2627123a6690f36805ce922783175'
 end
   require 'compiled/constant_propagation_c'

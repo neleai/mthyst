@@ -38,18 +38,6 @@ end
 def Remove_Left_Recursion__lp_src_dot_nam2(bind)
 (src.name==bind[1]) || FAIL
 end
-def Remove_Left_Recursion_bind_lb_21_rb_(bind)
-bind[21]=[bind[21]]
-end
-def Remove_Left_Recursion_bind_lb_2_rb__eq_(bind)
-bind[2]=[bind[2]]
-end
-def Remove_Left_Recursion_bind_lb_4_rb__eq_(bind)
-bind[4]=[bind[4]]
-end
-def Remove_Left_Recursion_bind_lb_7_rb__eq_(bind)
-bind[7]=[bind[7]]
-end
 def Remove_Left_Recursion_src(bind)
 src
 end
@@ -72,7 +60,7 @@ end
 
 
 def remove_left_rigth_recursion_compiled_by
-'15e1c38f47587b315582c55f3379d77a'
+'005cbb51e8032e32750f2962f54f6849'
 end
 def remove_left_rigth_recursion_source_hash
 '82f5682f26abef9436e5f92f8bc34754'
@@ -81,6 +69,6 @@ def testversionremove_left_rigth_recursion(r)
  raise "invalid version" if r!=remove_left_rigth_recursion_version
 end
 def remove_left_rigth_recursion_version
-'ffc56291b089eaee746a3f8ac19f9826'
+'bb671c413d41a360edf7e510d2835f11'
 end
   require 'compiled/remove_left_rigth_recursion_c'

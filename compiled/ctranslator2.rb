@@ -120,8 +120,10 @@ def AmethystCTranslator_5(bind)
 "it=#{rbcall(bind[4],["bind"])}; #{src.pred ? "FAILTEST(#{@faillabel});" :"" }"
 end
 def AmethystCTranslator_6(bind)
-"cstruct #{bind[9]}=*ptr; int #{bind[11]}=0;
-          ptr->src=#{bget(src.var)}; ptr->pos=0; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} ptr->ary=NULL;
+"cstruct #{bind[9]}=*ptr; int #{bind[11]}=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
+          #{src.enter ?  "ptr->src=#{bget(src.var)}; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}" : 
+                     "ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=#{bget(src.var)};ptr->len=1;"
+          }
  #{bind[15]}
 	goto #{bind[10]};
 	#{bind[8]}: #{bind[11]}=1;
@@ -264,12 +266,6 @@ end
 def AmethystCTranslator_bind_lb_0_rb__pl_2(bind)
 bind[0]+="\nend"; bind[0]
 end
-def AmethystCTranslator_bind_lb_14_rb_(bind)
-bind[14]=[bind[14]]
-end
-def AmethystCTranslator_bind_lb_1_rb__eq_(bind)
-bind[1]=[bind[1]]
-end
 def AmethystCTranslator_bind_lb_1_rb__lt_(bind)
 bind[1]<<bind[8][0];bind[2]<<bind[8][1];bind[0]<<bind[8][2]
 end
@@ -302,9 +298,6 @@ end
 def AmethystCTranslator_bind_lb_20_rb_6(bind)
 bind[20]+=map_index(bind[30]){|i| "#{bind[85]}_#{i+1}: ame_setpos(self,#{bind[79]});if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto #{bind[11]};}\n #{bind[30][i]} \name_setcut(self,Qnil);goto #{bind[77]};\n"}*""
 end
-def AmethystCTranslator_bind_lb_24_rb_(bind)
-bind[24]=[bind[24]]
-end
 def AmethystCTranslator_bind_lb_2_rb__ti_(bind)
 bind[2]*""
 end
@@ -313,9 +306,6 @@ bind[30]*""
 end
 def AmethystCTranslator_bind_lb_48_rb_(bind)
 bind[48]+=1
-end
-def AmethystCTranslator_bind_lb_65_rb_(bind)
-bind[65]=[bind[65]]
 end
 def AmethystCTranslator_bind_lb_86_rb_(bind)
 bind[86]+=1
@@ -368,15 +358,15 @@ end
 
 
 def ctranslator2_compiled_by
-'15e1c38f47587b315582c55f3379d77a'
+'005cbb51e8032e32750f2962f54f6849'
 end
 def ctranslator2_source_hash
-'6fdb8cf2a3a5f28695c7885ac5053379'
+'4fdbc1400dab5dda4d22cba02a2e79e5'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'6a526da8b5ca3d996aa032944791386a'
+'a2ce1238c60046226098fadc01fec835'
 end
   require 'compiled/ctranslator2_c'

@@ -69,9 +69,6 @@ def Left_Factor__lp_src_dot_ins(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
 def Left_Factor_bind_lb_1_rb__eq_(bind)
-bind[1]=[bind[1]]
-end
-def Left_Factor_bind_lb_1_rb__eq_2(bind)
 bind[1]==first(bind[0])
 end
 def Left_Factor_bind_lb_2_rb__pl_(bind)
@@ -91,9 +88,6 @@ bind[5]<<bind[7]
 end
 def Left_Factor_bind_lb_5_rb__pl_(bind)
 bind[5]+merge(bind[3])
-end
-def Left_Factor_bind_lb_6_rb__eq_(bind)
-bind[6]=[bind[6]]
 end
 def Left_Factor_first_lp_bi(bind)
 first(bind[2])
@@ -123,7 +117,7 @@ end
 
 
 def left_factor_compiled_by
-'15e1c38f47587b315582c55f3379d77a'
+'005cbb51e8032e32750f2962f54f6849'
 end
 def left_factor_source_hash
 '69c45f0c350eb4d1ca0a4f019cc7afa8'
@@ -132,6 +126,6 @@ def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version
 end
 def left_factor_version
-'ce01ae4877ab29bf1ad494aa2ab99e8d'
+'344dc4b13758d75f0fdbf47889e98635'
 end
   require 'compiled/left_factor_c'

@@ -78,23 +78,8 @@ end
 def Analyze_Variables2__lp_src_dot_ins(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Analyze_Variables2_bind_lb_0_rb__eq_(bind)
-bind[0]=[bind[0]]
-end
-def Analyze_Variables2_bind_lb_21_rb_(bind)
-bind[21]=[bind[21]]
-end
-def Analyze_Variables2_bind_lb_3_rb__eq_(bind)
-bind[3]=[bind[3]]
-end
-def Analyze_Variables2_bind_lb_5_rb__eq_(bind)
-bind[5]=[bind[5]]
-end
 def Analyze_Variables2_bind_lb_5_rb__lt_(bind)
 bind[5]<<bind[7]
-end
-def Analyze_Variables2_bind_lb_6_rb__eq_(bind)
-bind[6]=[bind[6]]
 end
 def Analyze_Variables2_connects(bind)
 connectstring(bind[23].flatten)
@@ -138,7 +123,7 @@ end
 
 
 def detect_variables2_compiled_by
-'15e1c38f47587b315582c55f3379d77a'
+'005cbb51e8032e32750f2962f54f6849'
 end
 def detect_variables2_source_hash
 'eab18725e78d475e7622db4b6d8f1183'
@@ -147,6 +132,6 @@ def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'69c9d5313d9d0c55cdb4344f1e5da7e5'
+'7835be30aa11e37574cfdcfd9ac250da'
 end
   require 'compiled/detect_variables2_c'

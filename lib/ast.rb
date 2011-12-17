@@ -4,7 +4,7 @@ makeclasses(AmethystAST,
     :Apply,
     [:Bind,:name],
     [:Many],
-		[:Pass,:var,:to],
+		[:Pass,:var,:to,:enter],
 		[:CAct],
     [:Act,:pred,:pure],
     [:Args],
@@ -64,7 +64,7 @@ end
 class Pass
 	def self.[](from,to,enter=nil)
 		a,r=autovar,autovar
-		Seq[_Bind(a,from), (enter ? Placeholder : Act[Args[a,"=[",a,"]"]]) , Pass.create({:to=>Seq[_Bind(r,to),Apply["eof"]],:var=>a}).normalize,r]
+		Seq[_Bind(a,from), Pass.create({:to=>Seq[_Bind(r,to),Apply["eof"]],:var=>a,:enter=>enter}).normalize,r]
 	end
 end
 def _Bind(name,expr,append=nil)

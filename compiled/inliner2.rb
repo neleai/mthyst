@@ -21,9 +21,6 @@ end
 def DetectCalls__lp_src_dot_ins(bind)
 (src.instance_variables).map{|v| src.instance_variable_get(v)}
 end
-def DetectCalls_bind_lb_2_rb__eq_(bind)
-bind[2]=[bind[2]]
-end
 
 end
 
@@ -63,17 +60,8 @@ end
 def Inliner2__lp_src_dot_ins(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Inliner2_bind_lb_2_rb__eq_(bind)
-bind[2]=[bind[2]]
-end
 def Inliner2_bind_lb_5_rb__lt_(bind)
 bind[5]<<bind[7]
-end
-def Inliner2_bind_lb_6_rb__eq_(bind)
-bind[6]=[bind[6]]
-end
-def Inliner2_bind_lb_7_rb__eq_(bind)
-bind[7]=[bind[7]]
 end
 def Inliner2_body_eq__at_bo(bind)
 body=@body; bind[4].each_index{|i| body=Seq[Bind[@args[i],bind[4][i]],body] } ; body
@@ -143,14 +131,8 @@ end
 def Replace_Super__lp_src_dot_ins(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Replace_Super_bind_lb_2_rb__eq_(bind)
-bind[2]=[bind[2]]
-end
 def Replace_Super_bind_lb_5_rb__lt_(bind)
 bind[5]<<bind[7]
-end
-def Replace_Super_bind_lb_6_rb__eq_(bind)
-bind[6]=[bind[6]]
 end
 def Replace_Super_if_sp_bind_lb_(bind)
 if bind[5]
@@ -168,7 +150,7 @@ end
 
 
 def inliner2_compiled_by
-'15e1c38f47587b315582c55f3379d77a'
+'005cbb51e8032e32750f2962f54f6849'
 end
 def inliner2_source_hash
 'eca6429e1f65c5d4367c65294557dc01'
@@ -177,6 +159,6 @@ def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version
 end
 def inliner2_version
-'b78bde275309f2c8537f044e3a068dc1'
+'eb2543f0a42210e92abc790e47c7d80f'
 end
   require 'compiled/inliner2_c'

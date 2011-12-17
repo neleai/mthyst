@@ -268,17 +268,8 @@ end
 def AmethystParser_bind_lb_10_rb_(bind)
 bind[10]+[',']
 end
-def AmethystParser_bind_lb_10_rb_2(bind)
-bind[10]=[bind[10]]
-end
 def AmethystParser_bind_lb_11_rb_(bind)
-bind[11]=[bind[11]]
-end
-def AmethystParser_bind_lb_11_rb_2(bind)
 bind[11]+[',']
-end
-def AmethystParser_bind_lb_12_rb_(bind)
-bind[12]=[bind[12]]
 end
 def AmethystParser_bind_lb_1_rb__eq_(bind)
 bind[1]="Amethyst"
@@ -289,26 +280,17 @@ end
 def AmethystParser_bind_lb_3_rb__eq_(bind)
 bind[3]=Seq[{:ary=>($appends.uniq.map{|a| _Bind(a,Act["[]"])}+[bind[3]])}]; 
 end
-def AmethystParser_bind_lb_3_rb__eq_2(bind)
-bind[3]=[bind[3]]
-end
 def AmethystParser_bind_lb_4_rb__pl_(bind)
 bind[4]+[',']
 end
 def AmethystParser_bind_lb_4_rb__ti_(bind)
 bind[4]*""
 end
-def AmethystParser_bind_lb_5_rb__eq_(bind)
-bind[5]=[bind[5]]
-end
 def AmethystParser_bind_lb_5_rb__pl_(bind)
 bind[5]+[',']
 end
 def AmethystParser_bind_lb_6_rb__eq_(bind)
 bind[6]=Enter[bind[6],bind[13]]
-end
-def AmethystParser_bind_lb_6_rb__eq_2(bind)
-bind[6]=[bind[6]]
 end
 def AmethystParser_bind_lb_9_rb__pl_(bind)
 bind[9]+[',']
@@ -321,7 +303,7 @@ end
 
 
 def parser_compiled_by
-'15e1c38f47587b315582c55f3379d77a'
+'005cbb51e8032e32750f2962f54f6849'
 end
 def parser_source_hash
 '7f24c01c6b6381f81d8ca28ff1275158'
@@ -330,6 +312,6 @@ def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'4646313c84700b21eb9e269efc0f2cc8'
+'94ddf76ad2790a7f304311c030be838b'
 end
   require 'compiled/parser_c'

@@ -136,8 +136,10 @@ failobj=rb_eval_string(\"FAIL\");
 				} ]
 				| Pass[ label("pass"):pass label("oldpass"):oldpass label("success"):success label("fail"):fail
 						rw(pass,`@to=>trans:to`)
-					{  "cstruct #{oldpass}=*ptr; int #{fail}=0;
-          ptr->src=#{bget(@var)}; ptr->pos=0; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} ptr->ary=NULL;
+					{  "cstruct #{oldpass}=*ptr; int #{fail}=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
+          #{@enter ?  "ptr->src=#{bget(@var)}; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}" : 
+                     "ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=#{bget(@var)};ptr->len=1;"
+          }
  #{to}
 	goto #{success};
 	#{pass}: #{fail}=1;

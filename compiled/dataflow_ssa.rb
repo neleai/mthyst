@@ -74,7 +74,7 @@ def Dataflow_Or_lb__ti_bind(bind)
 Or[*bind[0]]
 end
 def Dataflow_Pass_dot_cre(bind)
-Pass.create({:to=>bind[48],:var=>bind[8]}).normalize
+Pass.create({:to=>bind[48],:var=>bind[8],:enter=>src.enter}).normalize
 end
 def Dataflow_Switch_lb_(bind)
 Switch[{:ary=>bind[58],:act=>src.act,:defs=>src.defs,:first=>src.first,:header=>src.header,:init=>src.init}]
@@ -197,49 +197,22 @@ def Dataflow_bind_end(bind)
 bind_end(src)
 end
 def Dataflow_bind_lb_0_rb__eq_(bind)
-bind[0]=[bind[0]]
-end
-def Dataflow_bind_lb_0_rb__eq_2(bind)
 bind[0]=[]
-end
-def Dataflow_bind_lb_15_rb_(bind)
-bind[15]=[bind[15]]
-end
-def Dataflow_bind_lb_2_rb__eq_(bind)
-bind[2]=[bind[2]]
 end
 def Dataflow_bind_lb_41_rb_(bind)
 bind[41]<<oldssanums.clone
 end
-def Dataflow_bind_lb_47_rb_(bind)
-bind[47]=[bind[47]]
-end
-def Dataflow_bind_lb_49_rb_(bind)
-bind[49]=[bind[49]]
-end
 def Dataflow_bind_lb_4_rb__dot_(bind)
 bind[4].ary
 end
-def Dataflow_bind_lb_52_rb_(bind)
-bind[52]=[bind[52]]
-end
 def Dataflow_bind_lb_58_rb_(bind)
 bind[58]<<[bind[61],bind[62]]
-end
-def Dataflow_bind_lb_5_rb__eq_(bind)
-bind[5]=[bind[5]]
 end
 def Dataflow_bind_lb_5_rb__lt_(bind)
 bind[5]<<bind[7]
 end
 def Dataflow_bind_lb_6_rb__dot_(bind)
 bind[6].each{|v| @marked<<ssanum(v)};src.args=bind[6]
-end
-def Dataflow_bind_lb_6_rb__eq_(bind)
-bind[6]=[bind[6]]
-end
-def Dataflow_bind_lb_7_rb__eq_(bind)
-bind[7]=[bind[7]]
 end
 def Dataflow_bind_lb_8_rb__dot_(bind)
 bind[8].each{|v| edges.add(ssanum(v),bind[4]); edges.add(bind[4],newssanum(v));}; bind[4]
@@ -360,14 +333,8 @@ end
 def Dead_Code_Deleter3__lp_src_dot_ins(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Dead_Code_Deleter3_bind_lb_0_rb__eq_(bind)
-bind[0]=[bind[0]]
-end
 def Dead_Code_Deleter3_bind_lb_5_rb__lt_(bind)
 bind[5]<<bind[7]
-end
-def Dead_Code_Deleter3_bind_lb_6_rb__eq_(bind)
-bind[6]=[bind[6]]
 end
 def Dead_Code_Deleter3_if_sp_bind_lb_(bind)
 if bind[5]
@@ -416,14 +383,8 @@ end
 def Forget_SSA__lp_src_dot_ins(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Forget_SSA_bind_lb_0_rb__eq_(bind)
-bind[0]=[bind[0]]
-end
 def Forget_SSA_bind_lb_5_rb__lt_(bind)
 bind[5]<<bind[7]
-end
-def Forget_SSA_bind_lb_6_rb__eq_(bind)
-bind[6]=[bind[6]]
 end
 def Forget_SSA_if_sp_bind_lb_(bind)
 if bind[5]
@@ -444,15 +405,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'15e1c38f47587b315582c55f3379d77a'
+'005cbb51e8032e32750f2962f54f6849'
 end
 def dataflow_ssa_source_hash
-'1a4789d0d73ca1015e10ca86fa683a76'
+'7c8e4cb3bb6398da0fdd36d225497489'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'57a692f85a131e19f851b44260733683'
+'cdd5523e152cb348e7bd4222b0ec9e0b'
 end
   require 'compiled/dataflow_ssa_c'
