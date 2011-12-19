@@ -68,6 +68,14 @@ void bind_free(bind_struct *ptr){
 	free(ptr->ary);
 	free(ptr);
 }
+static inline VALUE bind_reset(VALUE self){
+  bind_struct* ptr;
+  Data_Get_Struct(self,bind_struct,ptr);
+	int i;
+	for(i=0;i<ptr->size;i++) ptr->ary[i]=Qnil;
+	return Qnil;
+}
+
 
 ID s_ary;
 void Init_Ame(VALUE self){
@@ -91,5 +99,5 @@ void Init_Ame(VALUE self){
   rb_define_singleton_method(bindcls,"new",bind_new,1);
 	rb_define_method(bindcls,"[]=",bind_asetrb,2);
 	rb_define_method(bindcls,"[]",bind_agetrb,1);
-
+	rb_define_method(bindcls,"reset",bind_reset,0);
 }
