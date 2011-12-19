@@ -1,6 +1,6 @@
 $debug||=1
 $profiling||=false
-$OPT||="-O1"
+$OPT||=""
 $implicit_variables=false
 $persistent=false
 require 'digest'
