@@ -91,9 +91,6 @@ end
 def AmethystParser_Nested_lb_b(bind)
 Nested[bind[6]]
 end
-def AmethystParser_Object_dot_c(bind)
-Object.const_get(bind[0]).instance_variable_get(:@attrs)
-end
 def AmethystParser_Or_dot_creat(bind)
 Or.create( {:ary=>bind[6] })
 end
@@ -107,7 +104,7 @@ def AmethystParser_Pred_lb_bin(bind)
 Pred[bind[0]]
 end
 def AmethystParser_Result_lb_(bind)
-Result[{:name=>bind[0],:vars=>bind[1]}]
+Result[{:name=>bind[0],:vars=>Object.const_get(bind[0]).instance_variable_get(:@attrs)}]
 end
 def AmethystParser_Rule_dot_cre(bind)
 Rule.create( {:args=>bind[2],:bnding=>bind[0],:body=>bind[3],:locals=>bind[4],:name=>bind[1] })
@@ -303,15 +300,15 @@ end
 
 
 def parser_compiled_by
-'005cbb51e8032e32750f2962f54f6849'
+'92b428064da6a913fda64382ede4c5da'
 end
 def parser_source_hash
-'7f24c01c6b6381f81d8ca28ff1275158'
+'6f16de94d8e44594b739419cb7f9072c'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'94ddf76ad2790a7f304311c030be838b'
+'2c7811902540bfda08d51965b0cb3d32'
 end
   require 'compiled/parser_c'

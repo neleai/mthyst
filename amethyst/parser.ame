@@ -54,16 +54,16 @@ amethyst AmethystParser < Amethyst{
 		 	  | application
  			  | key:{Act[Args[it]]}
 			  | ("->" atomicHostExpr | "" inlineHostExpr):x    ->  Act[x]
-				| "\"" ('"'  break| eChar:s[])*  -> Apply["token" ,quote(s)]
-		 	  | "'"  ('\'' break|  eChar:s[])* -> Apply["seq"   ,quote(s)]
+				| "\"" ('"'  break| eChar:s[])* -> Apply["token" ,quote(s)]
+		 	  | "'"  ('\'' break| eChar:s[])* -> Apply["seq"   ,quote(s)]
  			  | number:{Apply["exactly",it]}
       	| "<" (">" break | eChar:x[])*                            ->  Apply["regch","/[#{x*""}]/"]
 		    | "(" expression:x ")" ( '[]'	collect(x) | empty {x} )
 
 	application = (name:klas '::' name:rule {[klas,rule]} | name):rule argsOpt('(',')'):arg -> Apply[rule,arg]
 
-	key         = "@" className:name {Object.const_get(name).instance_variable_get(:@attrs)}:vars {Result[{:name=>name,:vars=>vars}]}
-              | "@" name:name  {Key[name]}
+	key         = "@" className:name {Result[{:name=>name,:vars=>Object.const_get(name).instance_variable_get(:@attrs)}]}
+              | "@" name:name  ->    Key[name]
 							| "@@" name:name -> Global[name]
 
   collect(ors) = -> a=autovar.normalize; Seq[Or[{:ary=>ors.ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
