@@ -39,9 +39,6 @@ end
 def Amethyst__lp_bind_lb_1_rb_2(bind)
 (bind[1] === bind[2]) || FAIL
 end
-def Amethyst__lp_bind_lb_1_rb_3(bind)
-(bind[1]===bind[0]) || FAIL
-end
 def Amethyst__lp_bind_lb_2_rb_(bind)
 (bind[2] === bind[3]) || FAIL
 end
@@ -65,15 +62,15 @@ end
 
 
 def amethyst_compiled_by
-'42a0a1209b6310a717c4b8682c21ca69'
+'d3ed07370108fb6eed8c02a7441418e7'
 end
 def amethyst_source_hash
-'ba0a754e8a6d97281d9658ae2c14aab1'
+'658aaca9ebd5273ae49c9216a755e115'
 end
 def testversionamethyst(r)
  raise "invalid version" if r!=amethyst_version
 end
 def amethyst_version
-'d846452247aa15af3d1ae1dba4a522ff'
+'4bc07d09425cd65d24245e92691f4530'
 end
   require 'compiled/amethyst_c'

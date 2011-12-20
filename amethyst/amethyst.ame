@@ -42,7 +42,7 @@ amethyst Amethyst < AmethystCore {
 	range_in(a,b) = exactly(a.. b)
 	range_ex(a,b)	= exactly(a...b)
 
-	regch(regex) = .:x &{regex===x} {x}
+	regch(regex) = exactly(regex)
   
 	parse(rule,obj) = {obj}[apply(rule)]
 }
