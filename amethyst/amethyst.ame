@@ -43,9 +43,10 @@ amethyst Amethyst < AmethystCore {
 
   exactly(wanted) = :got &{wanted == got} -> wanted
 
-	_true = exactly(true)
-	_false= exactly(false)	
-
+	true = exactly(true)
+	false= exactly(false)	
+	nil  = exactly(nil) 
+	
 	fails = &{false}
 
   clas(cls) = .:i &{i.is_a?(cls)} {i}	
