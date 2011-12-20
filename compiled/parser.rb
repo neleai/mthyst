@@ -50,9 +50,15 @@ def AmethystParser_Apply_lb_4(bind)
 Apply["seq"   ,quote(bind[0])]
 end
 def AmethystParser_Apply_lb_5(bind)
-Apply["exactly",bind[7]]
+Apply["range_ex",bind[12],bind[13]]
 end
 def AmethystParser_Apply_lb_6(bind)
+Apply["range_in",bind[12],bind[13]]
+end
+def AmethystParser_Apply_lb_7(bind)
+Apply["exactly",bind[7]]
+end
+def AmethystParser_Apply_lb_8(bind)
 Apply["regch","/[#{bind[3]*""}]/"]
 end
 def AmethystParser_Apply_lb_bi(bind)
@@ -140,10 +146,10 @@ def AmethystParser__append_lp_12(bind)
 _append(bind[2],bind[11])
 end
 def AmethystParser__append_lp_13(bind)
-_append(bind[3],bind[16])
+_append(bind[3],bind[18])
 end
 def AmethystParser__append_lp_14(bind)
-_append(bind[14],bind[15])
+_append(bind[16],bind[17])
 end
 def AmethystParser__append_lp_15(bind)
 _append(bind[6],bind[7])
@@ -254,7 +260,7 @@ def AmethystParser__lp_bind_lb_5_rb_(bind)
 (bind[5].is_a? String ) || FAIL
 end
 def AmethystParser_a_eq_autova(bind)
-a=autovar.normalize; Seq[Or[{:ary=>bind[17].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
+a=autovar.normalize; Seq[Or[{:ary=>bind[19].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
 end
 def AmethystParser_a_eq_autova2(bind)
 a=autovar.normalize; Seq[Or[{:ary=>bind[0].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
@@ -300,15 +306,15 @@ end
 
 
 def parser_compiled_by
-'96f7af24b90a9f15d067a22253657ac7'
+'42a0a1209b6310a717c4b8682c21ca69'
 end
 def parser_source_hash
-'6f16de94d8e44594b739419cb7f9072c'
+'d42fe4aa3225aa96c76be80299bbcc6b'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'2c7811902540bfda08d51965b0cb3d32'
+'57686c644c28baf3266fc2692363bda7'
 end
   require 'compiled/parser_c'

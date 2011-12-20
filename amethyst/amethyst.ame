@@ -1,7 +1,4 @@
 amethyst Amethyst < AmethystCore {
-	foo= <^a-c> | <g-i>
-
-	regch(regex) = char:c &{regex.match(c)} -> c
 
   eof= ~.
 
@@ -12,27 +9,15 @@ amethyst Amethyst < AmethystCore {
   endline =  '\r\n' | '\r' | '\n'
 
   space = <\s\t\r\n\f>
-
   spaces= space*
-
 	_     = space
 
   digit=<0-9>
-
   lower=<a-z>
-
   upper=<A-Z>
-
-  letter=lower | upper
-
-  letterOrDigit=letter | digit
-
-  alpha = letter
-
-  alnum = letterOrDigit
-
+  alpha = lower|upper
+  alnum = alpha|digit
   xdigit = <0-9a-fA-F>
-
   word = alpha | '_'
 
 	number= digit+:{(it*"").to_i}
@@ -41,19 +26,23 @@ amethyst Amethyst < AmethystCore {
                          | empty -> []
 	replace(exp) = (apply(exp) | .):{it*""}
 
-  exactly(wanted) = :got &{wanted == got} -> wanted
 
+
+	fails = &{false}
+
+	token(s) = spaces seq(s)
+	seq(s) = _seq(s) {s}
+	
+  exactly(wanted) = .:x &{wanted === x} {x}
 	true = exactly(true)
 	false= exactly(false)	
 	nil  = exactly(nil) 
-	
-	fails = &{false}
 
-  clas(cls) = .:i &{i.is_a?(cls)} {i}	
+  clas(cls)     = exactly(cls)
+	range_in(a,b) = exactly(a.. b)
+	range_ex(a,b)	= exactly(a...b)
 
-	token(s) = spaces seq(s)
-
-	seq(s) = _seq(s) {s}
-
+	regch(regex) = .:x &{regex===x} {x}
+  
 	parse(rule,obj) = {obj}[apply(rule)]
 }

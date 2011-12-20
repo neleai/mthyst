@@ -56,7 +56,9 @@ amethyst AmethystParser < Amethyst{
 			  | ("->" atomicHostExpr | "" inlineHostExpr):x    ->  Act[x]
 				| "\"" ('"'  break| eChar:s[])* -> Apply["token" ,quote(s)]
 		 	  | "'"  ('\'' break| eChar:s[])* -> Apply["seq"   ,quote(s)]
- 			  | number:{Apply["exactly",it]}
+				| number:a '...' number:b {Apply["range_ex",a,b]}
+ 				| number:a '..' number:b {Apply["range_in",a,b]}
+			  | number:{Apply["exactly",it]}
       	| "<" (">" break | eChar:x[])*                            ->  Apply["regch","/[#{x*""}]/"]
 		    | "(" expression:x ")" ( '[]'	collect(x) | empty {x} )
 
@@ -107,7 +109,7 @@ amethyst AmethystParser < Amethyst{
 	procargs2 =	Args[ procargs2* ]
 						| .:a {@@tmp<<a}
 
-	nameFirst      = letter | '_'
+	nameFirst      = alpha | '_'
 
   nameRest       = nameFirst | digit
 
