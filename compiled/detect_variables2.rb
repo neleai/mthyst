@@ -123,7 +123,7 @@ end
 
 
 def detect_variables2_compiled_by
-'f280894dfa24d87154dc83a198031d38'
+'8ab1018fff19d8e236d2390e91e4858d'
 end
 def detect_variables2_source_hash
 'eab18725e78d475e7622db4b6d8f1183'
@@ -134,4 +134,4 @@ end
 def detect_variables2_version
 'bf90d2a9c7cc5feed1041004366d6521'
 end
-  require 'compiled/detect_variables2_c'
+require Amethyst_path+"/compiled/#{RUBY_VERSION}/detect_variables2_c"

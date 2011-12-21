@@ -60,7 +60,7 @@ end
 
 
 def traverser_compiled_by
-'f280894dfa24d87154dc83a198031d38'
+'8ab1018fff19d8e236d2390e91e4858d'
 end
 def traverser_source_hash
 '102e4f870eb0748a3420fd0f2398e4a9'
@@ -71,4 +71,4 @@ end
 def traverser_version
 '9383078f067592b8c43bdd9179aa530d'
 end
-  require 'compiled/traverser_c'
+require Amethyst_path+"/compiled/#{RUBY_VERSION}/traverser_c"

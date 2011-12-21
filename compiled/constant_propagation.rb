@@ -179,7 +179,7 @@ end
 
 
 def constant_propagation_compiled_by
-'f280894dfa24d87154dc83a198031d38'
+'8ab1018fff19d8e236d2390e91e4858d'
 end
 def constant_propagation_source_hash
 'b507d97e60e0e88d6bb37c3125ee8745'
@@ -190,4 +190,4 @@ end
 def constant_propagation_version
 '974d0e94f6d3f0178fe619a4c7d7bbe1'
 end
-  require 'compiled/constant_propagation_c'
+require Amethyst_path+"/compiled/#{RUBY_VERSION}/constant_propagation_c"

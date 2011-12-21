@@ -36,5 +36,5 @@ class <<AmethystCore
 		self.class.new.parse(rule,input)
 	end
 end
-require 'lib/c/Ame'
+require Amethyst_path+"/compiled/#{RUBY_VERSION}/Ame.so"
 

@@ -60,7 +60,7 @@ end
 
 
 def remove_left_rigth_recursion_compiled_by
-'f280894dfa24d87154dc83a198031d38'
+'8ab1018fff19d8e236d2390e91e4858d'
 end
 def remove_left_rigth_recursion_source_hash
 '82f5682f26abef9436e5f92f8bc34754'
@@ -71,4 +71,4 @@ end
 def remove_left_rigth_recursion_version
 'ee7931bc25e8beb915acb8f94673baed'
 end
-  require 'compiled/remove_left_rigth_recursion_c'
+require Amethyst_path+"/compiled/#{RUBY_VERSION}/remove_left_rigth_recursion_c"

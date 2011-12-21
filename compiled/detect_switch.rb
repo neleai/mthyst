@@ -872,7 +872,7 @@ end
 
 
 def detect_switch_compiled_by
-'f280894dfa24d87154dc83a198031d38'
+'8ab1018fff19d8e236d2390e91e4858d'
 end
 def detect_switch_source_hash
 'ab4987e3769638cb0a4ef7af85bc8261'
@@ -883,4 +883,4 @@ end
 def detect_switch_version
 'fd54c92eaafa1a53f49d43fe35a973ed'
 end
-  require 'compiled/detect_switch_c'
+require Amethyst_path+"/compiled/#{RUBY_VERSION}/detect_switch_c"

@@ -3,6 +3,8 @@ require './lib/amethyst'
 $profiling=false
 $OPT=" -march=core2"
 $debug=1
+$compile_1_8_7=true
+$compile_1_9_3=true
 
 COMPILED.each{|f|
 puts f

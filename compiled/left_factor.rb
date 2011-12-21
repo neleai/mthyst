@@ -117,7 +117,7 @@ end
 
 
 def left_factor_compiled_by
-'f280894dfa24d87154dc83a198031d38'
+'8ab1018fff19d8e236d2390e91e4858d'
 end
 def left_factor_source_hash
 '69c45f0c350eb4d1ca0a4f019cc7afa8'
@@ -128,4 +128,4 @@ end
 def left_factor_version
 '352908f4d113c28e5a2819d1b9eee7d7'
 end
-  require 'compiled/left_factor_c'
+require Amethyst_path+"/compiled/#{RUBY_VERSION}/left_factor_c"

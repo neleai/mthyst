@@ -150,7 +150,7 @@ end
 
 
 def inliner2_compiled_by
-'f280894dfa24d87154dc83a198031d38'
+'8ab1018fff19d8e236d2390e91e4858d'
 end
 def inliner2_source_hash
 'eca6429e1f65c5d4367c65294557dc01'
@@ -161,4 +161,4 @@ end
 def inliner2_version
 '45c7fb69d897528ad1c36ebae7aaa280'
 end
-  require 'compiled/inliner2_c'
+require Amethyst_path+"/compiled/#{RUBY_VERSION}/inliner2_c"

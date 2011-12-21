@@ -5,7 +5,7 @@ end
 
 
 def tests_compiled_by
-'f280894dfa24d87154dc83a198031d38'
+'8ab1018fff19d8e236d2390e91e4858d'
 end
 def tests_source_hash
 'cf06821607e17dfe8dd4d086b136a1e3'
@@ -16,4 +16,4 @@ end
 def tests_version
 'f4a5d218d2d7780be030d75314e5ed32'
 end
-  require 'compiled/tests_c'
+require Amethyst_path+"/compiled/#{RUBY_VERSION}/tests_c"

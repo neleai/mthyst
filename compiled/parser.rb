@@ -306,7 +306,7 @@ end
 
 
 def parser_compiled_by
-'f280894dfa24d87154dc83a198031d38'
+'8ab1018fff19d8e236d2390e91e4858d'
 end
 def parser_source_hash
 'd42fe4aa3225aa96c76be80299bbcc6b'
@@ -317,4 +317,4 @@ end
 def parser_version
 '855151a71a4e388095ea3351f336aac2'
 end
-  require 'compiled/parser_c'
+require Amethyst_path+"/compiled/#{RUBY_VERSION}/parser_c"

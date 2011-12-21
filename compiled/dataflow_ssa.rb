@@ -405,7 +405,7 @@ end
 
 
 def dataflow_ssa_compiled_by
-'f280894dfa24d87154dc83a198031d38'
+'8ab1018fff19d8e236d2390e91e4858d'
 end
 def dataflow_ssa_source_hash
 '7c8e4cb3bb6398da0fdd36d225497489'
@@ -416,4 +416,4 @@ end
 def dataflow_ssa_version
 '273ea8f762788a6779246fae8fcb7da6'
 end
-  require 'compiled/dataflow_ssa_c'
+require Amethyst_path+"/compiled/#{RUBY_VERSION}/dataflow_ssa_c"

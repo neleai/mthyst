@@ -62,7 +62,7 @@ end
 
 
 def amethyst_compiled_by
-'f280894dfa24d87154dc83a198031d38'
+'8ab1018fff19d8e236d2390e91e4858d'
 end
 def amethyst_source_hash
 '658aaca9ebd5273ae49c9216a755e115'
@@ -73,4 +73,4 @@ end
 def amethyst_version
 'f5cec2ee1254ba0f1d959c95b38c4a16'
 end
-  require 'compiled/amethyst_c'
+require Amethyst_path+"/compiled/#{RUBY_VERSION}/amethyst_c"

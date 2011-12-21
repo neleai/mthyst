@@ -91,7 +91,7 @@ end
 
 
 def implicit_variables_compiled_by
-'f280894dfa24d87154dc83a198031d38'
+'8ab1018fff19d8e236d2390e91e4858d'
 end
 def implicit_variables_source_hash
 '6a0a31cf7e531a56757bd541162a71ff'
@@ -102,4 +102,4 @@ end
 def implicit_variables_version
 '198925083d9cb80728f5f5d1f540ad7a'
 end
-  require 'compiled/implicit_variables_c'
+require Amethyst_path+"/compiled/#{RUBY_VERSION}/implicit_variables_c"

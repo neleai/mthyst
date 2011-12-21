@@ -358,7 +358,7 @@ end
 
 
 def ctranslator2_compiled_by
-'f280894dfa24d87154dc83a198031d38'
+'8ab1018fff19d8e236d2390e91e4858d'
 end
 def ctranslator2_source_hash
 '4fdbc1400dab5dda4d22cba02a2e79e5'
@@ -369,4 +369,4 @@ end
 def ctranslator2_version
 'f98fa27fe9c35dcf824bbfc8da3e3d92'
 end
-  require 'compiled/ctranslator2_c'
+require Amethyst_path+"/compiled/#{RUBY_VERSION}/ctranslator2_c"
