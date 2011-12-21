@@ -77,31 +77,31 @@ end
 
 class Constant_Propagator < Amethyst
 
-def Constant_Propagator_Constant(bind)
+def Constant_Propagator_ConstantLatt(bind)
 ConstantLattice[src]
 end
-def Constant_Propagator_Constant2(bind)
+def Constant_Propagator_ConstantLatt2(bind)
 ConstantLattice[Top]
 end
-def Constant_Propagator_Constant3(bind)
+def Constant_Propagator_ConstantLatt3(bind)
 ConstantLattice[bind[22]]
 end
-def Constant_Propagator__append_lp_(bind)
+def Constant_Propagator__append_lp_bind(bind)
 _append(bind[5],bind[6])
 end
-def Constant_Propagator__append_lp_2(bind)
+def Constant_Propagator__append_lp_bind2(bind)
 _append(bind[10],bind[11])
 end
-def Constant_Propagator__append_lp_3(bind)
+def Constant_Propagator__append_lp_bind3(bind)
 _append(bind[20],bind[21])
 end
-def Constant_Propagator__append_lp_4(bind)
+def Constant_Propagator__append_lp_bind4(bind)
 _append(bind[26],bind[27])
 end
-def Constant_Propagator__at_depend_eq_(bind)
+def Constant_Propagator__at_depend_eq_bind(bind)
 @depend=bind[0]
 end
-def Constant_Propagator_a_eq_Consta(bind)
+def Constant_Propagator_a_eq_ConstantLa(bind)
 a=ConstantLattice[Bottom]
         											depend.reverse.edges[bind[0]].each{|e| a=a+valof(e)}
 															a
@@ -115,52 +115,52 @@ end
 
 class Constant_Traverser < Traverser_Clone2
 
-def Constant_Traverser_Bind_lb_src(bind)
+def Constant_Traverser_Bind_lb_src_dot_nam(bind)
 Bind[src.name,bind[6]]
 end
-def Constant_Traverser__append_lp_(bind)
+def Constant_Traverser__append_lp_bind(bind)
 _append(bind[1],bind[2])
 end
-def Constant_Traverser__append_lp_2(bind)
+def Constant_Traverser__append_lp_bind2(bind)
 _append(bind[9],bind[10])
 end
-def Constant_Traverser__append_lp_3(bind)
+def Constant_Traverser__append_lp_bind3(bind)
 _append(bind[13],bind[14])
 end
-def Constant_Traverser__append_lp_4(bind)
+def Constant_Traverser__append_lp_bind4(bind)
 _append(bind[6],bind[8])
 end
-def Constant_Traverser__append_lp_5(bind)
+def Constant_Traverser__append_lp_bind5(bind)
 _append(bind[0],bind[1])
 end
-def Constant_Traverser__append_lp_6(bind)
+def Constant_Traverser__append_lp_bind6(bind)
 _append(bind[8],bind[13])
 end
 def Constant_Traverser__at_changed(bind)
-@changed=true
-end
-def Constant_Traverser__at_changed2(bind)
 @changed
 end
-def Constant_Traverser__at_changed3(bind)
+def Constant_Traverser__at_changed_eq_fal(bind)
 @changed=false
 end
-def Constant_Traverser__at_consts_eq_(bind)
+def Constant_Traverser__at_changed_eq_tru(bind)
+@changed=true
+end
+def Constant_Traverser__at_consts_eq_src_dot_(bind)
 @consts=src.consts
 end
-def Constant_Traverser__lp__at_consts(bind)
+def Constant_Traverser__lp__at_consts_lb_src(bind)
 (@consts[src.ssaname] && src[0]!="_result") ? @consts[src.ssaname] : src 
 end
 def Constant_Traverser__lp_bind_lb_4_rb_(bind)
 (bind[4]||=bind[3].dup;bind[5]=true;bind[4].instance_variable_set(bind[10],bind[11])) if @changed && bind[11]!=instance_variable_get(bind[10])
 end
-def Constant_Traverser__lp_src_dot_ins(bind)
+def Constant_Traverser__lp_src_dot_instanc(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Constant_Traverser_bind_lb_5_rb__lt_(bind)
+def Constant_Traverser_bind_lb_5_rb__lt__lt_bin(bind)
 bind[5]<<bind[7]
 end
-def Constant_Traverser_if_sp_bind_lb_(bind)
+def Constant_Traverser_if_sp_bind_lb_5_rb_(bind)
 if bind[5]
              @changed=true;bind[4].normalize
            else
@@ -171,7 +171,7 @@ end
 def Constant_Traverser_src(bind)
 src
 end
-def Constant_Traverser_src_dot_cfg_eq_(bind)
+def Constant_Traverser_src_dot_cfg_eq_nil(bind)
 src.cfg=nil;src.reachable=nil;src.consts=nil
 end
 
@@ -179,7 +179,7 @@ end
 
 
 def constant_propagation_compiled_by
-'39d6f8b3006358f851ff37954bdc433a'
+'472138cdffc8d639efb367af8b54ad09'
 end
 def constant_propagation_source_hash
 'b507d97e60e0e88d6bb37c3125ee8745'
@@ -188,6 +188,6 @@ def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
 end
 def constant_propagation_version
-'ddc2627123a6690f36805ce922783175'
+'e5f4fcc860ba070e7752480c96abaaad'
 end
   require 'compiled/constant_propagation_c'

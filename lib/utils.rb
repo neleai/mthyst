@@ -7,7 +7,7 @@ def leterize(s)
 	s2
 end
 def signature(s)
-	s=leterize(s[0,8])
+	s=leterize(s[0,12])
 	r=""
 	s.each_char{|c|
 		return r unless c=="_" || ("a"<=c && c<="z") || ("A"<=c && c<="Z") || ("0"<=c && c<="9")
