@@ -6,14 +6,14 @@ def leterize(s)
 	s.each{|e|s2+=trans[e]?"_#{trans[e]}_" : e }
 	s2
 end
-def signature(s)
-	s=leterize(s[0,12])
+def signature(s2)
+	s=leterize(s2[0,8])
 	r=""
 	s.each_char{|c|
 		return r unless c=="_" || ("a"<=c && c<="z") || ("A"<=c && c<="Z") || ("0"<=c && c<="9")
 		r<<c
 	}
-	r
+	r+"_"+Digest::MD5.hexdigest(s2)[0,4]
 end
 module Populate
 	def [](*args)

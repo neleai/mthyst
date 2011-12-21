@@ -68,142 +68,142 @@ end
 
 class AmethystCTranslator < Amethyst
 
-def AmethystCTranslator__append_lp_bind(bind)
-_append(bind[0],bind[6])
-end
-def AmethystCTranslator__append_lp_bind10(bind)
-_append(bind[67],bind[68])
-end
-def AmethystCTranslator__append_lp_bind11(bind)
-_append(bind[73],bind[74])
-end
-def AmethystCTranslator__append_lp_bind12(bind)
-_append(bind[87],bind[89])
-end
-def AmethystCTranslator__append_lp_bind2(bind)
-_append(bind[3],bind[7])
-end
-def AmethystCTranslator__append_lp_bind3(bind)
-_append(bind[17],bind[18])
-end
-def AmethystCTranslator__append_lp_bind4(bind)
-_append(bind[0],bind[1])
-end
-def AmethystCTranslator__append_lp_bind5(bind)
-_append(bind[1],bind[2])
-end
-def AmethystCTranslator__append_lp_bind6(bind)
+def AmethystCTranslator__append_lp__3c16(bind)
 _append(bind[28],bind[29])
 end
-def AmethystCTranslator__append_lp_bind7(bind)
-_append(bind[35],bind[38])
+def AmethystCTranslator__append_lp__4297(bind)
+_append(bind[0],bind[6])
 end
-def AmethystCTranslator__append_lp_bind8(bind)
+def AmethystCTranslator__append_lp__5e3c(bind)
+_append(bind[3],bind[7])
+end
+def AmethystCTranslator__append_lp__68c6(bind)
 _append(bind[49],bind[51])
 end
-def AmethystCTranslator__append_lp_bind9(bind)
+def AmethystCTranslator__append_lp__6f53(bind)
+_append(bind[67],bind[68])
+end
+def AmethystCTranslator__append_lp__835a(bind)
+_append(bind[17],bind[18])
+end
+def AmethystCTranslator__append_lp__8a10(bind)
 _append(bind[60],bind[61])
 end
-def AmethystCTranslator__at_callbacks_dot_t(bind)
+def AmethystCTranslator__append_lp__c046(bind)
+_append(bind[73],bind[74])
+end
+def AmethystCTranslator__append_lp__c554(bind)
+_append(bind[35],bind[38])
+end
+def AmethystCTranslator__append_lp__c9ea(bind)
+_append(bind[87],bind[89])
+end
+def AmethystCTranslator__append_lp__cbd1(bind)
+_append(bind[0],bind[1])
+end
+def AmethystCTranslator__append_lp__d113(bind)
+_append(bind[1],bind[2])
+end
+def AmethystCTranslator__at_callbac_2d11(bind)
 @callbacks.to_a.sort
 end
-def AmethystCTranslator__at_callbacks_eq__le_(bind)
+def AmethystCTranslator__at_callbac_e37c(bind)
 @callbacks={}
 end
-def AmethystCTranslator__at_defmethods_eq_(bind)
+def AmethystCTranslator__at_defmeth_456b(bind)
 @defmethods=[]
 end
-def AmethystCTranslator__at_defs_eq__lb__rb_(bind)
+def AmethystCTranslator__at_defs_eq__lb__rb__188f(bind)
 @defs=[]
 end
-def AmethystCTranslator__at_defs_lt__lt_src_dot_d(bind)
+def AmethystCTranslator__at_defs_lt__lt_s_1286(bind)
 @defs<<src.defs if src.defs
 end
-def AmethystCTranslator__at_faillabel(bind)
+def AmethystCTranslator__at_faillab_1610(bind)
 @faillabel
 end
-def AmethystCTranslator__at_faillabel_eq__dq_(bind)
-@faillabel="fail"
-end
-def AmethystCTranslator__at_faillabel_eq_b(bind)
-@faillabel=bind[12] 
-end
-def AmethystCTranslator__at_faillabel_eq_b2(bind)
-@faillabel=bind[13]; bind[17] 
-end
-def AmethystCTranslator__at_faillabel_eq_b3(bind)
-@faillabel=bind[1] 
-end
-def AmethystCTranslator__at_faillabel_eq_b4(bind)
-@faillabel=bind[2]; bind[5] 
-end
-def AmethystCTranslator__at_faillabel_eq_b5(bind)
+def AmethystCTranslator__at_faillab_37e7(bind)
 @faillabel=bind[0]; bind[3] 
 end
-def AmethystCTranslator__at_grammar_eq_src(bind)
+def AmethystCTranslator__at_faillab_4695(bind)
+@faillabel=bind[2]; bind[5] 
+end
+def AmethystCTranslator__at_faillab_8142(bind)
+@faillabel="fail"
+end
+def AmethystCTranslator__at_faillab_e643(bind)
+@faillabel=bind[1] 
+end
+def AmethystCTranslator__at_faillab_ea72(bind)
+@faillabel=bind[12] 
+end
+def AmethystCTranslator__at_faillab_ecff(bind)
+@faillabel=bind[13]; bind[17] 
+end
+def AmethystCTranslator__at_grammar_1337(bind)
 @grammar=src.name;@parent=src.parent
 end
-def AmethystCTranslator__at_header_eq__lb__rb_(bind)
+def AmethystCTranslator__at_header_eq__7aa9(bind)
 @header=[]
 end
-def AmethystCTranslator__at_header_lt__lt__dq_st(bind)
+def AmethystCTranslator__at_header_lt__09ca(bind)
 @header<<"static VALUE #{bind[0]};"; @init<<"#{bind[0]}=#{bind[1]};#{gc_mark_var(bind[0])};"
 end
-def AmethystCTranslator__at_header_lt__lt_src(bind)
+def AmethystCTranslator__at_header_lt__fff4(bind)
 @header<<src.header if src.header
 end
-def AmethystCTranslator__at_init_eq__lb__rb_(bind)
+def AmethystCTranslator__at_init_eq__lb__rb__47da(bind)
 @init=[]
 end
-def AmethystCTranslator__at_init_lt__lt_src_dot_i(bind)
+def AmethystCTranslator__at_init_lt__lt_s_a51d(bind)
 @init<<src.init if src.init
 end
-def AmethystCTranslator__at_lambdas_eq__lb__rb__sp_(bind)
+def AmethystCTranslator__at_lambdas_ecda(bind)
 @lambdas=[] ;@rcallbacks={};@cbhash={}
 end
-def AmethystCTranslator__at_rulename_eq_bi(bind)
+def AmethystCTranslator__at_rulenam_4f24(bind)
 @rulename=bind[23]; Local.resetnumbering;resetlabels;@locls={}
 end
-def AmethystCTranslator__dq_AmethystLam(bind)
+def AmethystCTranslator__dq_Amethys_8b00(bind)
 "AmethystLambda.new(:#{bind[0]},self,bind)" 
 end
-def AmethystCTranslator__dq_VALUE_sp_cls__sh_(bind)
+def AmethystCTranslator__dq_VALUE_sp_c_8bbf(bind)
 "VALUE cls_#{src.name};\n" 
 end
-def AmethystCTranslator__dq__at__sh__le_bind_lb_12_rb_(bind)
+def AmethystCTranslator__dq__at__sh__le_bind_e609(bind)
 "@#{bind[12]}"
 end
-def AmethystCTranslator__dq__sh__le__at_grammar_re_(bind)
+def AmethystCTranslator__dq__sh__le__at_gram_5de9(bind)
 "#{@grammar}_#{@rulename}_#{label("lambda")}"
 end
-def AmethystCTranslator__dq__sh__le_bind_lb_0_rb__re__sp_(bind)
+def AmethystCTranslator__dq__sh__le_bind_lb__055d(bind)
 "#{bind[0]} FAILTEST(#{@faillabel});" 
 end
-def AmethystCTranslator__dq__sh__le_bind_lb_20_rb__re_(bind)
-"#{bind[20]}  #{bind[85]}_#{bind[86]+1}:  ame_setpos(self,#{bind[79]}); goto #{bind[11]};\n #{bind[77]}:;\n"
-end
-def AmethystCTranslator__dq__sh__le_bind_lb_50_rb__re_(bind)
-"#{bind[50]} arg#{bind[48]-1}=it;"
-end
-def AmethystCTranslator__dq__sh__le_bind_lb_53_rb__re_(bind)
-"#{bind[53]} FAILTEST(#{@faillabel});" 
-end
-def AmethystCTranslator__dq__sh__le_bind_lb_57_rb__re_(bind)
+def AmethystCTranslator__dq__sh__le_bind_lb__60d4(bind)
 "#{bind[57]} #{bset(src.name,"it")};\n" 
 end
-def AmethystCTranslator__dq__sh__le_bind_lb_85_rb__re_(bind)
+def AmethystCTranslator__dq__sh__le_bind_lb__82a1(bind)
+"#{bind[50]} arg#{bind[48]-1}=it;"
+end
+def AmethystCTranslator__dq__sh__le_bind_lb__ab4c(bind)
+"#{bind[53]} FAILTEST(#{@faillabel});" 
+end
+def AmethystCTranslator__dq__sh__le_bind_lb__d378(bind)
+"#{bind[20]}  #{bind[85]}_#{bind[86]+1}:  ame_setpos(self,#{bind[79]}); goto #{bind[11]};\n #{bind[77]}:;\n"
+end
+def AmethystCTranslator__dq__sh__le_bind_lb__e11c(bind)
 "#{bind[85]}_#{bind[86]+1}"
 end
-def AmethystCTranslator__dq__sh__le_src_dot_name_re_(bind)
+def AmethystCTranslator__dq__sh__le_src_dot_n_9acf(bind)
 "#{src.name}.create( {#{src.vars.size.times.map{|i| ":#{src.varnames[i]}=>#{rbbget(src.vars[i])}" }.sort*","} })"
 end
-def AmethystCTranslator__dq__sp__sh__le_bind_lb_52_rb_(bind)
+def AmethystCTranslator__dq__sp__sh__le_bind_2d9b(bind)
 " #{bind[52]*""} it=#{callrule(bind[23],bind[48])};"
 end
-def AmethystCTranslator__dq_class_sp__sh__le__at_gr(bind)
+def AmethystCTranslator__dq_class_sp__sh__0b62(bind)
 "class #{@grammar} < #{@parent}\n"
 end
-def AmethystCTranslator__dq_cstruct_sp__sh__le_b(bind)
+def AmethystCTranslator__dq_cstruct_faf6(bind)
 "cstruct #{bind[9]}=*ptr; int #{bind[11]}=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           #{src.enter ?  "ptr->src=#{bget(src.var)}; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}" : 
                      "ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=#{bget(src.var)};ptr->len=1;"
@@ -215,70 +215,79 @@ def AmethystCTranslator__dq_cstruct_sp__sh__le_b(bind)
 	if(#{bind[11]}) goto #{@faillabel};
 " 
 end
-def AmethystCTranslator__dq_def_sp__sh__le_bind_lb_(bind)
+def AmethystCTranslator__dq_def_sp__sh__le_b_5b6b(bind)
 "def #{bind[5]}(bind)\n#{bind[6]}\nend\n"
 end
-def AmethystCTranslator__dq_if_sp__lp_strncmp(bind)
+def AmethystCTranslator__dq_if_sp__lp_str_8e6c(bind)
 "if (strncmp(ame_curstr(self),#{bind[20].inspect},#{bind[20].size})) goto #{@faillabel}; else ame_setpos(self,ame_getpos(self)+#{bind[20].size});"
 end
-def AmethystCTranslator__dq_int_sp__sh__le_bind_lb_(bind)
+def AmethystCTranslator__dq_int_sp__sh__le_b_e9a2(bind)
 "int #{bind[79]}=ame_getpos(self);\n #{bind[30]} x=1; goto #{bind[77]};  #{bind[78]}: x=0; #{bind[77]}: it=Qnil; ame_setpos(self,#{bind[79]}); if (x==0) goto #{@faillabel};"
 end
-def AmethystCTranslator__dq_int_sp__sh__le_bind_lb_2(bind)
+def AmethystCTranslator__dq_int_sp__sh__le_b_eee9(bind)
 "int #{bind[79]}; while(1){#{bind[79]}=ame_getpos(self); #{bind[30]} if (ame_getstop(self)!=Qnil){{#{bind[79]}=ame_getpos(self);goto #{bind[82]};} } } #{bind[82]}: ame_setstop(self,Qnil);  ame_setpos(self,#{bind[79]}); "
 end
-def AmethystCTranslator__dq_it_eq__sh__le_bget_lp_s(bind)
+def AmethystCTranslator__dq_it_eq__sh__le_bg_281f(bind)
 "it=#{bget(src)};" 
 end
-def AmethystCTranslator__dq_it_eq__sh__le_rbcall(bind)
+def AmethystCTranslator__dq_it_eq__sh__le_rb_79a3(bind)
 "it=#{rbcall(bind[4],["bind"])}; #{src.pred ? "FAILTEST(#{@faillabel});" :"" }"
 end
-def AmethystCTranslator__dq_unsigned_sp_ch(bind)
+def AmethystCTranslator__dq_unsigne_9a12(bind)
 "unsigned char #{bind[34]}=#{src.act};  switch(#{bind[34]}){"
 end
-def AmethystCTranslator__lb_bind_lb_1_rb_(bind)
+def AmethystCTranslator__lb_bind_lb_1_rb__dce6(bind)
 [bind[1],bind[2],bind[0]]
 end
-def AmethystCTranslator__lp_bind_lb_12_rb__eq__eq__dq_(bind)
+def AmethystCTranslator__lp_bind_lb_12_6a46(bind)
 (bind[12]=="self") ? "src" : "src.#{bind[12]}"
 end
-def AmethystCTranslator__lp_bind_lb_4_rb__dot_is_(bind)
+def AmethystCTranslator__lp_bind_lb_4_rb__f922(bind)
 (bind[4].is_a? String ) || FAIL
 end
-def AmethystCTranslator_addcallback2(bind)
-addcallback2(bind[0])
-end
-def AmethystCTranslator_addcallback_lp_(bind)
+def AmethystCTranslator_addcallb_68bb(bind)
 addcallback(src.pred ? ["(",bind[3],") || FAIL"] : bind[3])
 end
-def AmethystCTranslator_ar_eq__ti_src_dot_ccod(bind)
+def AmethystCTranslator_addcallb_dcd7(bind)
+addcallback2(bind[0])
+end
+def AmethystCTranslator_ar_eq__ti_src_dot__efea(bind)
 ar=*src.ccode; 
                    @header<<ar[0] if ar[0]
                    @init<<ar[1] if ar[1]
                    "it=#{ar[2]};"
 end
-def AmethystCTranslator_bind_lb_0_rb__lt__lt__at_de(bind)
+def AmethystCTranslator_bind_lb_0_rb__lt__cac1(bind)
 bind[0]<<@defs*"\n";bind[0]<<"\n"
 end
-def AmethystCTranslator_bind_lb_0_rb__pl__eq__dq__bs_n(bind)
+def AmethystCTranslator_bind_lb_0_rb__pl__40f3(bind)
 bind[0]+="\nend"; bind[0]
 end
-def AmethystCTranslator_bind_lb_0_rb__pl__eq_bin(bind)
+def AmethystCTranslator_bind_lb_0_rb__pl__c1a5(bind)
 bind[0]+=bind[8]*""
 end
-def AmethystCTranslator_bind_lb_1_rb__lt__lt_bin(bind)
+def AmethystCTranslator_bind_lb_1_rb__lt__f2e1(bind)
 bind[1]<<bind[8][0];bind[2]<<bind[8][1];bind[0]<<bind[8][2]
 end
-def AmethystCTranslator_bind_lb_20_rb__eq__dq__sh__le_(bind)
+def AmethystCTranslator_bind_lb_20_rb__1f87(bind)
+bind[20]+"}"
+end
+def AmethystCTranslator_bind_lb_20_rb__47ed(bind)
+bind[20]+=map_index(bind[30]){|i| "#{bind[85]}_#{i+1}: ame_setpos(self,#{bind[79]});if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto #{bind[11]};}\n #{bind[30][i]} \name_setcut(self,Qnil);goto #{bind[77]};\n"}*""
+end
+def AmethystCTranslator_bind_lb_20_rb__4d72(bind)
 bind[20]="#{src.name}.create( {#{src.vars.size.times.map{|i| ":#{src.varnames[i]}=>#{rbbget(src.vars[i])}" }.sort*","} })"
 					bind[4]=addcallback(bind[20])
 					"it=#{rbcall(bind[4],["bind"])};"
 				
 end
-def AmethystCTranslator_bind_lb_20_rb__eq__dq_in(bind)
+def AmethystCTranslator_bind_lb_20_rb__4f8e(bind)
+bind[20]+=bind[37].cases(src.first) + " #{bind[30]} break;"
+end
+def AmethystCTranslator_bind_lb_20_rb__50a1(bind)
 bind[20]="int #{bind[79]}=ame_getpos(self);\n"
 end
-def AmethystCTranslator_bind_lb_20_rb__lt__lt__at_h(bind)
+def AmethystCTranslator_bind_lb_20_rb__93fe(bind)
 bind[20]<<@header.uniq.sort*"\n"+"\n"
 							bind[20]<<bind[30].sort*"\n"
 							bind[20]<<@lambdas*"\n"
@@ -289,68 +298,59 @@ failobj=rb_eval_string(\"FAIL\");
 "
 							[bind[20],init,bind[70]] 
 end
-def AmethystCTranslator_bind_lb_20_rb__pl__dq__re__dq_(bind)
-bind[20]+"}"
-end
-def AmethystCTranslator_bind_lb_20_rb__pl__eq_bi(bind)
-bind[20]+=bind[37].cases(src.first) + " #{bind[30]} break;"
-end
-def AmethystCTranslator_bind_lb_20_rb__pl__eq_ma(bind)
-bind[20]+=map_index(bind[30]){|i| "#{bind[85]}_#{i+1}: ame_setpos(self,#{bind[79]});if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto #{bind[11]};}\n #{bind[30][i]} \name_setcut(self,Qnil);goto #{bind[77]};\n"}*""
-end
-def AmethystCTranslator_bind_lb_2_rb__ti__dq__dq_(bind)
+def AmethystCTranslator_bind_lb_2_rb__ti__e7b8(bind)
 bind[2]*""
 end
-def AmethystCTranslator_bind_lb_30_rb__ti__dq__dq_(bind)
+def AmethystCTranslator_bind_lb_30_rb__7d61(bind)
 bind[30]*""
 end
-def AmethystCTranslator_bind_lb_48_rb__pl__eq_1(bind)
+def AmethystCTranslator_bind_lb_48_rb__a323(bind)
 bind[48]+=1
 end
-def AmethystCTranslator_bind_lb_86_rb__pl__eq_1(bind)
+def AmethystCTranslator_bind_lb_86_rb__7e96(bind)
 bind[86]+=1
 end
-def AmethystCTranslator_h_eq__dq_VALUE_sp__sh__le__at_(bind)
+def AmethystCTranslator_h_eq__dq_VALUE_6920(bind)
 h="VALUE #{@grammar}_#{bind[23]}(VALUE self #{map_index(src.args){|i| ",VALUE a#{i}"}*""})" 
 						@header<<h+";"
 						@defmethods<< "rb_define_method(cls_#{@grammar},\"#{src.name}\",#{@grammar}_#{src.name},#{src.args.size});"
 						h+"{VALUE vals[#{src.args.size}]; VALUE bind=bind_new2(#{@locls.size}); #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 \n#{bind[25]}\nreturn it;\nfail: return failobj; }" 
 end
-def AmethystCTranslator_h_eq__dq_VALUE_sp__sh__le_b(bind)
+def AmethystCTranslator_h_eq__dq_VALUE_9d97(bind)
 h="VALUE #{bind[0]}(VALUE self,VALUE bind)"
             @header<<h+";"
 						@defmethods<<"rb_define_method(cls_#{@grammar},\"#{bind[0]}\",#{bind[0]},1);"
             @lambdas<< h+"{VALUE vals[0]; /*todo unify with rule and get args*/  int x;VALUE it;VALUE arg0,arg1,arg2,arg3;\n#{bind[3]}\nreturn it;\nfail: return failobj; }" 
 end
-def AmethystCTranslator_label_lp__dq_accep(bind)
+def AmethystCTranslator_label_lp__dq_a_f49c(bind)
 label("accept")
 end
-def AmethystCTranslator_label_lp__dq_break(bind)
+def AmethystCTranslator_label_lp__dq_b_6df7(bind)
 label("break")
 end
-def AmethystCTranslator_label_lp__dq_oldpo(bind)
+def AmethystCTranslator_label_lp__dq_o_c187(bind)
 label("oldpos")
 end
-def AmethystCTranslator_label_lp__dq_rejec(bind)
+def AmethystCTranslator_label_lp__dq_r_95b2(bind)
 label("reject")
 end
-def AmethystCTranslator_mktable_lp_src_dot_(bind)
+def AmethystCTranslator_mktable_lp__ea79(bind)
 mktable(src.rules)
 end
-def AmethystCTranslator_rbbget_lp_src_rp_(bind)
+def AmethystCTranslator_rbbget_lp_s_68a8(bind)
 rbbget(src)
 end
-def AmethystCTranslator_src_dot_body(bind)
+def AmethystCTranslator_src_dot_body_519e(bind)
 src.body
 end
-def AmethystCTranslator_src_dot_name(bind)
+def AmethystCTranslator_src_dot_name_80f3(bind)
 src.name
 end
-def AmethystCTranslator_src_dot_rules(bind)
+def AmethystCTranslator_src_dot_rule_5acf(bind)
 src.rules
 end
-def AmethystCTranslator_src_dot_to(bind)
+def AmethystCTranslator_src_dot_to_5e99(bind)
 src.to
 end
 
@@ -358,7 +358,7 @@ end
 
 
 def ctranslator2_compiled_by
-'472138cdffc8d639efb367af8b54ad09'
+'f280894dfa24d87154dc83a198031d38'
 end
 def ctranslator2_source_hash
 '4fdbc1400dab5dda4d22cba02a2e79e5'
@@ -367,6 +367,6 @@ def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'d05858c8634b2d6f28c3c715920564d8'
+'f98fa27fe9c35dcf824bbfc8da3e3d92'
 end
   require 'compiled/ctranslator2_c'
