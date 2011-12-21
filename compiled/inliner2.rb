@@ -12,7 +12,7 @@ end
 def DetectCalls__at_calls(bind)
 @calls
 end
-def DetectCalls__at_calls_eq_(bind)
+def DetectCalls__at_calls_eq__le_(bind)
 @calls={}
 end
 def DetectCalls__at_calls_lb_b(bind)
@@ -150,7 +150,7 @@ end
 
 
 def inliner2_compiled_by
-'d3ed07370108fb6eed8c02a7441418e7'
+'39d6f8b3006358f851ff37954bdc433a'
 end
 def inliner2_source_hash
 'eca6429e1f65c5d4367c65294557dc01'
@@ -159,6 +159,6 @@ def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version
 end
 def inliner2_version
-'eb2543f0a42210e92abc790e47c7d80f'
+'fd9b6ce9ae5714cfc8e849e434870138'
 end
   require 'compiled/inliner2_c'

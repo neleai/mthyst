@@ -76,7 +76,7 @@ end
 def Dataflow_Pass_dot_cre(bind)
 Pass.create({:to=>bind[48],:var=>bind[8],:enter=>src.enter}).normalize
 end
-def Dataflow_Switch_lb_(bind)
+def Dataflow_Switch_lb__le_(bind)
 Switch[{:ary=>bind[58],:act=>src.act,:defs=>src.defs,:first=>src.first,:header=>src.header,:init=>src.init}]
 end
 def Dataflow__append_lp_(bind)
@@ -405,7 +405,7 @@ end
 
 
 def dataflow_ssa_compiled_by
-'d3ed07370108fb6eed8c02a7441418e7'
+'39d6f8b3006358f851ff37954bdc433a'
 end
 def dataflow_ssa_source_hash
 '7c8e4cb3bb6398da0fdd36d225497489'
@@ -414,6 +414,6 @@ def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'cdd5523e152cb348e7bd4222b0ec9e0b'
+'c1d6987b2fad5a4578b8560497e6a0c4'
 end
   require 'compiled/dataflow_ssa_c'

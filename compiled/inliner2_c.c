@@ -14,7 +14,7 @@ static VALUE sy_DetectCalls__append_lp_2;
 static VALUE sy_DetectCalls__append_lp_3;
 static VALUE sy_DetectCalls__append_lp_;
 static VALUE sy_DetectCalls__at_calls;
-static VALUE sy_DetectCalls__at_calls_eq_;
+static VALUE sy_DetectCalls__at_calls_eq__le_;
 static VALUE sy_DetectCalls__at_calls_lb_b;
 static VALUE sy_DetectCalls__lp_src_dot_ins;
 VALUE DetectCalls_root(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(3);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -22,7 +22,7 @@ VALUE DetectCalls_root(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(3);  int
  it=c_Rule; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(fail); bind_aset(bind,0/*autovar*/,it);
 cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,0/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
- it=rb_funcall(self,sy_DetectCalls__at_calls_eq_,1,bind);   it=DetectCalls_traverse(self ); FAILTEST(pass1);it=rb_funcall(self,sy_DetectCalls__at_calls,1,bind);  bind_aset(bind,1/*autovar*/,it);
+ it=rb_funcall(self,sy_DetectCalls__at_calls_eq__le_,1,bind);   it=DetectCalls_traverse(self ); FAILTEST(pass1);it=rb_funcall(self,sy_DetectCalls__at_calls,1,bind);  bind_aset(bind,1/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
@@ -540,7 +540,7 @@ sy_DetectCalls__append_lp_2=rb_intern("DetectCalls__append_lp_2");
 sy_DetectCalls__append_lp_3=rb_intern("DetectCalls__append_lp_3");
 sy_DetectCalls__append_lp_=rb_intern("DetectCalls__append_lp_");
 sy_DetectCalls__at_calls=rb_intern("DetectCalls__at_calls");
-sy_DetectCalls__at_calls_eq_=rb_intern("DetectCalls__at_calls_eq_");
+sy_DetectCalls__at_calls_eq__le_=rb_intern("DetectCalls__at_calls_eq__le_");
 sy_DetectCalls__at_calls_lb_b=rb_intern("DetectCalls__at_calls_lb_b");
 sy_DetectCalls__lp_src_dot_ins=rb_intern("DetectCalls__lp_src_dot_ins");
 rb_define_method(cls_DetectCalls,"root",DetectCalls_root,0);
@@ -601,4 +601,4 @@ rb_define_method(cls_Replace_Super,"root",Replace_Super_root,0);
 rb_define_method(cls_Replace_Super,"traverse",Replace_Super_traverse,0);
 rb_define_method(cls_Replace_Super,"traverse_item",Replace_Super_traverse_item,0);
 rb_define_method(cls_Replace_Super,"visit",Replace_Super_visit,0);
- rb_eval_string("testversioninliner2('eb2543f0a42210e92abc790e47c7d80f')");}
+ rb_eval_string("testversioninliner2('fd9b6ce9ae5714cfc8e849e434870138')");}

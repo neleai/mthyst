@@ -559,7 +559,7 @@ end
 def Detect_First__at_name_eq_sr(bind)
 @name=src.name
 end
-def Detect_First__do_rules_eq_(bind)
+def Detect_First__do_rules_eq__le_(bind)
 $rules={};src.rules.each{|r| $rules[r.name]=r}
 end
 def Detect_First_src(bind)
@@ -652,7 +652,7 @@ end
 def Detect_Switch__at_name_eq_sr(bind)
 @name=src.name
 end
-def Detect_Switch__do_rules_eq_(bind)
+def Detect_Switch__do_rules_eq__le_(bind)
 $rules={};src.rules.each{|r| $rules[r.name]=r}
 end
 def Detect_Switch__lp_(bind)
@@ -730,7 +730,7 @@ end
 
 class Detect_ClasSwitch < Detect_First
 
-def Detect_ClasSwitch_Apply_lb_(bind)
+def Detect_ClasSwitch_Apply_lb__dq_a(bind)
 Apply["anything"]
 end
 def Detect_ClasSwitch_Bind_lb_bin(bind)
@@ -790,7 +790,7 @@ end
 def Detect_ClasSwitch__at_name_eq_sr(bind)
 @name=src.name
 end
-def Detect_ClasSwitch__do_rules_eq_(bind)
+def Detect_ClasSwitch__do_rules_eq__le_(bind)
 $rules={};src.rules.each{|r| $rules[r.name]=r}
 end
 def Detect_ClasSwitch__lp_(bind)
@@ -872,7 +872,7 @@ end
 
 
 def detect_switch_compiled_by
-'d3ed07370108fb6eed8c02a7441418e7'
+'39d6f8b3006358f851ff37954bdc433a'
 end
 def detect_switch_source_hash
 'ab4987e3769638cb0a4ef7af85bc8261'
@@ -881,6 +881,6 @@ def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'66e844d3639b85f38200a3ce094934a4'
+'2bce67da12f624932fddf81218fc7c2f'
 end
   require 'compiled/detect_switch_c'
