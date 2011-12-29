@@ -2,7 +2,6 @@
 VALUE cls_Left_Factor;
 VALUE AmethystCore_anything(VALUE self );
 VALUE Amethyst_clas(VALUE self ,VALUE);
-VALUE Amethyst_empty(VALUE self );
 VALUE Amethyst_eof(VALUE self );
 VALUE Amethyst_fails(VALUE self );
 VALUE Left_Factor_binds(VALUE self ,VALUE a0,VALUE a1);
@@ -34,22 +33,14 @@ static VALUE sy_Left_Factor__append_lp__cbd1;
 static VALUE sy_Left_Factor__at_changed_5352;
 static VALUE sy_Left_Factor__at_changed_b885;
 static VALUE sy_Left_Factor__at_changed_c681;
-static VALUE sy_Left_Factor__lb_bind_lb_0_rb__fb2d;
 static VALUE sy_Left_Factor__lb_bind_lb_2_rb__5b5d;
-static VALUE sy_Left_Factor__lb_bind_lb_6_rb__ef11;
 static VALUE sy_Left_Factor__lp_bind_lb_1_rb__68a2;
 static VALUE sy_Left_Factor__lp_bind_lb_4_rb__ba59;
 static VALUE sy_Left_Factor__lp_bind_lb_4_rb__d863;
 static VALUE sy_Left_Factor__lp_src_dot_ins_6a75;
-static VALUE sy_Left_Factor_bind_lb_1_rb__eq__7142;
-static VALUE sy_Left_Factor_bind_lb_2_rb__pl__9bc3;
 static VALUE sy_Left_Factor_bind_lb_3_rb__pl__4c4b;
 static VALUE sy_Left_Factor_bind_lb_3_rb__pl__a9ae;
-static VALUE sy_Left_Factor_bind_lb_4_rb__eq__07a6;
 static VALUE sy_Left_Factor_bind_lb_5_rb__lt__dccc;
-static VALUE sy_Left_Factor_bind_lb_5_rb__pl__1ee4;
-static VALUE sy_Left_Factor_first_lp_bi_16f8;
-static VALUE sy_Left_Factor_first_lp_bi_80ce;
 static VALUE sy_Left_Factor_first_lp_bi_a16c;
 static VALUE sy_Left_Factor_if_sp_bind_lb__b5ce;
 static VALUE sy_Left_Factor_src_25d9;
@@ -128,17 +119,7 @@ alt2_1: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
  
 ame_setcut(self,Qnil);goto accept2;
 alt2_2: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt1_2;}
- int oldpos3=ame_getpos(self);
-alt3_1: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt2_3;}
- it=rb_funcall(self,sy_Left_Factor_bind_lb_1_rb__eq__7142,1,bind); ame_setcut(self,Qtrue);  it=Amethyst_fails(self ); FAILTEST(alt3_2); 
-ame_setcut(self,Qnil);goto accept3;
-alt3_2: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt2_3;}
-   it=Amethyst_empty(self ); FAILTEST(alt3_3); 
-ame_setcut(self,Qnil);goto accept3;
-  alt3_3:  ame_setpos(self,oldpos3); goto alt2_3;
- accept3:;
- it=rb_funcall(self,sy_Left_Factor_bind_lb_2_rb__pl__9bc3,1,bind);  arg0=it;it=rb_funcall(self,sy_Left_Factor_first_lp_bi_16f8,1,bind);  arg1=it;it=rb_funcall(self,sy_Left_Factor__lb_bind_lb_0_rb__fb2d,1,bind);  arg2=it; it=Left_Factor_factor(self ,arg0,arg1,arg2); FAILTEST(alt2_3); bind_aset(bind,4/*_result*/,it);
- 
+   it=Amethyst_fails(self ); FAILTEST(alt2_3); 
 ame_setcut(self,Qnil);goto accept2;
   alt2_3:  ame_setpos(self,oldpos2); goto alt1_2;
  accept2:;
@@ -393,17 +374,7 @@ alt2_1: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
  
 ame_setcut(self,Qnil);goto accept2;
 alt2_2: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt1_2;}
- int oldpos3=ame_getpos(self);
-alt3_1: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt2_3;}
- it=rb_funcall(self,sy_Left_Factor_bind_lb_4_rb__eq__07a6,1,bind); ame_setcut(self,Qtrue);  it=Amethyst_fails(self ); FAILTEST(alt3_2); 
-ame_setcut(self,Qnil);goto accept3;
-alt3_2: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt2_3;}
-   it=Amethyst_empty(self ); FAILTEST(alt3_3); 
-ame_setcut(self,Qnil);goto accept3;
-  alt3_3:  ame_setpos(self,oldpos3); goto alt2_3;
- accept3:;
- it=rb_funcall(self,sy_Left_Factor_bind_lb_5_rb__pl__1ee4,1,bind);  arg0=it;it=rb_funcall(self,sy_Left_Factor_first_lp_bi_80ce,1,bind);  arg1=it;it=rb_funcall(self,sy_Left_Factor__lb_bind_lb_6_rb__ef11,1,bind);  arg2=it; it=Left_Factor_factor(self ,arg0,arg1,arg2); FAILTEST(alt2_3); bind_aset(bind,7/*_result*/,it);
- 
+   it=Amethyst_fails(self ); FAILTEST(alt2_3); 
 ame_setcut(self,Qnil);goto accept2;
   alt2_3:  ame_setpos(self,oldpos2); goto alt1_2;
  accept2:;
@@ -452,22 +423,14 @@ sy_Left_Factor__append_lp__cbd1=rb_intern("Left_Factor__append_lp__cbd1");
 sy_Left_Factor__at_changed_5352=rb_intern("Left_Factor__at_changed_5352");
 sy_Left_Factor__at_changed_b885=rb_intern("Left_Factor__at_changed_b885");
 sy_Left_Factor__at_changed_c681=rb_intern("Left_Factor__at_changed_c681");
-sy_Left_Factor__lb_bind_lb_0_rb__fb2d=rb_intern("Left_Factor__lb_bind_lb_0_rb__fb2d");
 sy_Left_Factor__lb_bind_lb_2_rb__5b5d=rb_intern("Left_Factor__lb_bind_lb_2_rb__5b5d");
-sy_Left_Factor__lb_bind_lb_6_rb__ef11=rb_intern("Left_Factor__lb_bind_lb_6_rb__ef11");
 sy_Left_Factor__lp_bind_lb_1_rb__68a2=rb_intern("Left_Factor__lp_bind_lb_1_rb__68a2");
 sy_Left_Factor__lp_bind_lb_4_rb__ba59=rb_intern("Left_Factor__lp_bind_lb_4_rb__ba59");
 sy_Left_Factor__lp_bind_lb_4_rb__d863=rb_intern("Left_Factor__lp_bind_lb_4_rb__d863");
 sy_Left_Factor__lp_src_dot_ins_6a75=rb_intern("Left_Factor__lp_src_dot_ins_6a75");
-sy_Left_Factor_bind_lb_1_rb__eq__7142=rb_intern("Left_Factor_bind_lb_1_rb__eq__7142");
-sy_Left_Factor_bind_lb_2_rb__pl__9bc3=rb_intern("Left_Factor_bind_lb_2_rb__pl__9bc3");
 sy_Left_Factor_bind_lb_3_rb__pl__4c4b=rb_intern("Left_Factor_bind_lb_3_rb__pl__4c4b");
 sy_Left_Factor_bind_lb_3_rb__pl__a9ae=rb_intern("Left_Factor_bind_lb_3_rb__pl__a9ae");
-sy_Left_Factor_bind_lb_4_rb__eq__07a6=rb_intern("Left_Factor_bind_lb_4_rb__eq__07a6");
 sy_Left_Factor_bind_lb_5_rb__lt__dccc=rb_intern("Left_Factor_bind_lb_5_rb__lt__dccc");
-sy_Left_Factor_bind_lb_5_rb__pl__1ee4=rb_intern("Left_Factor_bind_lb_5_rb__pl__1ee4");
-sy_Left_Factor_first_lp_bi_16f8=rb_intern("Left_Factor_first_lp_bi_16f8");
-sy_Left_Factor_first_lp_bi_80ce=rb_intern("Left_Factor_first_lp_bi_80ce");
 sy_Left_Factor_first_lp_bi_a16c=rb_intern("Left_Factor_first_lp_bi_a16c");
 sy_Left_Factor_if_sp_bind_lb__b5ce=rb_intern("Left_Factor_if_sp_bind_lb__b5ce");
 sy_Left_Factor_src_25d9=rb_intern("Left_Factor_src_25d9");
@@ -480,4 +443,4 @@ rb_define_method(cls_Left_Factor,"root",Left_Factor_root,0);
 rb_define_method(cls_Left_Factor,"traverse",Left_Factor_traverse,0);
 rb_define_method(cls_Left_Factor,"traverse_item",Left_Factor_traverse_item,0);
 rb_define_method(cls_Left_Factor,"visit",Left_Factor_visit,0);
- rb_eval_string("testversionleft_factor('210ffd1576e7fb6f65b62e1bc9dda0a3')");}
+ rb_eval_string("testversionleft_factor('46ea5ab415e260e8204adbaaa5f05563')");}

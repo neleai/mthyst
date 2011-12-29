@@ -206,7 +206,9 @@ class Act
 	end
 end
 class Pred
-def self.[](e)
+def self.[](e,neg=false)
+	puts e.inspect
+	return Apply["fails"] if neg
 	Act[e,true]
 end
 end
