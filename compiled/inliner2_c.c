@@ -166,7 +166,7 @@ static VALUE sy_Inliner2__lp_bind_lb_1_rb__709e;
 static VALUE sy_Inliner2__lp_bind_lb_4_rb__d863;
 static VALUE sy_Inliner2__lp_src_dot_ins_6a75;
 static VALUE sy_Inliner2_bind_lb_5_rb__lt__dccc;
-static VALUE sy_Inliner2_body_eq__at_bo_171b;
+static VALUE sy_Inliner2_body_eq__at_bo_c02f;
 static VALUE sy_Inliner2_if_sp_bind_lb__b5ce;
 static VALUE sy_Inliner2_src_25d9;
 static VALUE sy_Inliner2_src_dot_args_2df5;
@@ -344,7 +344,7 @@ it=rb_funcall(self,sy_Inliner2__append_lp__4de3,1,bind);  if (ame_getstop(self)!
 	pass1: fail1=1;
 	success1: *ptr=oldpass1;
 	if(fail1) goto fail;
-it=rb_funcall(self,sy_Inliner2_body_eq__at_bo_171b,1,bind);  bind_aset(bind,5/*_result*/,it);
+it=rb_funcall(self,sy_Inliner2_body_eq__at_bo_c02f,1,bind);  bind_aset(bind,5/*_result*/,it);
 it=bind_aget(bind,5/*_result*/);
 return it;
 fail: return failobj; }VALUE cls_Replace_Super;
@@ -565,7 +565,7 @@ sy_Inliner2__lp_bind_lb_1_rb__709e=rb_intern("Inliner2__lp_bind_lb_1_rb__709e");
 sy_Inliner2__lp_bind_lb_4_rb__d863=rb_intern("Inliner2__lp_bind_lb_4_rb__d863");
 sy_Inliner2__lp_src_dot_ins_6a75=rb_intern("Inliner2__lp_src_dot_ins_6a75");
 sy_Inliner2_bind_lb_5_rb__lt__dccc=rb_intern("Inliner2_bind_lb_5_rb__lt__dccc");
-sy_Inliner2_body_eq__at_bo_171b=rb_intern("Inliner2_body_eq__at_bo_171b");
+sy_Inliner2_body_eq__at_bo_c02f=rb_intern("Inliner2_body_eq__at_bo_c02f");
 sy_Inliner2_if_sp_bind_lb__b5ce=rb_intern("Inliner2_if_sp_bind_lb__b5ce");
 sy_Inliner2_src_25d9=rb_intern("Inliner2_src_25d9");
 sy_Inliner2_src_dot_args_2df5=rb_intern("Inliner2_src_dot_args_2df5");
@@ -601,4 +601,4 @@ rb_define_method(cls_Replace_Super,"root",Replace_Super_root,0);
 rb_define_method(cls_Replace_Super,"traverse",Replace_Super_traverse,0);
 rb_define_method(cls_Replace_Super,"traverse_item",Replace_Super_traverse_item,0);
 rb_define_method(cls_Replace_Super,"visit",Replace_Super_visit,0);
- rb_eval_string("testversioninliner2('45c7fb69d897528ad1c36ebae7aaa280')");}
+ rb_eval_string("testversioninliner2('29240f0db5f5cb28173ad6bc42a63b76')");}

@@ -179,10 +179,10 @@ end
 
 
 def constant_propagation_compiled_by
-'d35aedf799c19da57d0d78aaef14d5c6'
+'6912e3ab1d3c1587d7722af1a71388e3'
 end
 def constant_propagation_source_hash
-'b507d97e60e0e88d6bb37c3125ee8745'
+'0f3aae569bc723ebabe1a7d8141630cb'
 end
 def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version

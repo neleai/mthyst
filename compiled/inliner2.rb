@@ -63,8 +63,9 @@ end
 def Inliner2_bind_lb_5_rb__lt__dccc(bind)
 bind[5]<<bind[7]
 end
-def Inliner2_body_eq__at_bo_171b(bind)
+def Inliner2_body_eq__at_bo_c02f(bind)
 body=@body; bind[4].each_index{|i| body=Seq[Bind[@args[i],bind[4][i]],body] } ; body
+
 end
 def Inliner2_if_sp_bind_lb__b5ce(bind)
 if bind[5]
@@ -150,7 +151,7 @@ end
 
 
 def inliner2_compiled_by
-'d35aedf799c19da57d0d78aaef14d5c6'
+'6912e3ab1d3c1587d7722af1a71388e3'
 end
 def inliner2_source_hash
 'eca6429e1f65c5d4367c65294557dc01'
@@ -159,6 +160,6 @@ def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version
 end
 def inliner2_version
-'45c7fb69d897528ad1c36ebae7aaa280'
+'29240f0db5f5cb28173ad6bc42a63b76'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/inliner2_c"

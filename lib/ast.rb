@@ -10,7 +10,7 @@ makeclasses(AmethystAST,
     [:Args],
 		[:Strin],
 		[:Local,:ssano],:Bnding,:Global,:Key,[:Result,:name,:varnames,:vars],
-    :Exp,
+    :Lambda,
     [:Lookahead],
     :And,
 		:Memo,
@@ -192,7 +192,7 @@ class Act
 			exp=@ary[0]
 			return exp if exp.is_a?(Act)
 			if  !@pred
-			  return Act.create(exp,{:pure=>true}).freeze if exp.is_a?(Exp)
+			  return Act.create(exp,{:pure=>true}).freeze if exp.is_a?(Lambda)
 				return CAct[[]] if exp=="[]"
 				return CAct[exp.to_i] if exp.is_a?(String) && exp==exp.to_i.to_s
 				return CAct[eval(exp)] if exp=~/^[A-Z][a-zA-Z0-9_]*$/ && eval(exp).is_a?(Class)
@@ -200,7 +200,7 @@ class Act
 				return CAct[eval('"'+exp[1...-1]+'"')] if exp.is_a?(String) && ((exp[0]==?\" && exp[-1]==?\")|| (exp[0]==?' && exp[-1]==?')) && !(exp=~/\#/)
 			end
 		end
-		@pure=true if exp.is_a?(Exp)
+		@pure=true if exp.is_a?(Lambda)
 		@ary=nil if @ary.size==0
 		self.freeze
 	end
@@ -227,7 +227,7 @@ class Apply
 	def normalize2
 		if name=="apply"
 			return Apply[@ary[1][0]] if @ary[1].is_a?(CAct)
-			return @ary[1][0][0] if @ary[1].is_a?(Act) && @ary[1][0].is_a?(Exp)
+			return @ary[1][0][0] if @ary[1].is_a?(Act) && @ary[1][0].is_a?(Lambda)
 		end
 		if name=="_seq"
 			return Placeholder if @ary[1].is_a?(CAct) && @ary[1][0].size==15
@@ -282,12 +282,12 @@ def equalize_by(klas,args)
 					alias_method :==,:equal?
     end")
 end
-[Act,Apply,Args,Bind,Bnding,CAct,Comment,Cut,Exp,Global,Key,Local,Lookahead,Many,Or,Pass,Result,Seq,Stop,Strin,Switch].each{|e| 
+[Act,Apply,Args,Bind,Bnding,CAct,Comment,Cut,Lambda,Global,Key,Local,Lookahead,Many,Or,Pass,Result,Seq,Stop,Strin,Switch].each{|e| 
 by="[#{e.instance_variable_get(:@attrs)*","}]"
 by="ary" if by=="[ary]"
 equalize_by(e,by)
 }
-[CAct,Global,Key,Cut,Stop,Exp,Strin,Args,Comment,Result,Switch].each{|cls|
+[CAct,Global,Key,Cut,Stop,Lambda,Strin,Args,Comment,Result,Switch].each{|cls|
 	eval("class #{cls}
 		def self.[](*args)
 			#{cls}.create(*args).normalize

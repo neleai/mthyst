@@ -18,7 +18,7 @@ end
 #@Or and @Seq are necessary for collect
 
 amethyst AmethystParser < Amethyst{
-	igrammar = ((~'amethyst'   . )+:{it*""} | grammar)*:a -> a
+	igrammar = ((~'amethyst'   . )+:{it.join} | grammar)*:a -> a
 
 	grammar = "amethyst" "" name:name ("<" "" name:parent |empty {parent="Amethyst"} ) 
 "{" rule*:rules "}"  @Grammar
@@ -53,13 +53,13 @@ amethyst AmethystParser < Amethyst{
 				| 'break' -> Seq[Cut[],Stop[]]
 		 	  | application
  			  | key:{Act[it]}
-			  | ("->" line_host_expr | "" host_expr):x    ->  Act[x]
+			  | (line_host_expr | host_expr):x    ->  Act[x]
 				| '"'   ('"'  break| eChar:s[])* -> Apply["token" ,quote(s)]
 		 	  | '\''  ('\'' break| eChar:s[])* -> Apply["seq"   ,quote(s)]
 				| number:a '...' number:b {Apply["range_ex",a,b]}
  				| number:a '..' number:b {Apply["range_in",a,b]}
 			  | number:{Apply["exactly",it]}
-      	| '<' (">" break | eChar:x[])* ->  Apply["regch","/[#{x*""}]/"]
+      	| '<' (">" break | eChar:x[])* ->  Apply["regch","/["+x.join+"]/"]
 		    | '(' expression:x ")" ( '[]'	collect(x) | empty {x} )
 
   collect(ors) = -> a=autovar; Seq[Or[{:ary=>ors.ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
@@ -89,12 +89,12 @@ amethyst AmethystParser < Amethyst{
 
 	__args(o,c) = seq(o) "" rubyarg*:r seq(c) -> r
 		
-	rubyarg  = '`' expression:e '`' -> Exp[_body(e)]
+	rubyarg  = '`' expression:e '`' -> Lambda[_body(e)]
            | _args('(',')')					 | _args('[',']')					 | _args('{','}')
 					 |  '"':s[] ( '"' break |  eChar)*:s[]  -> Strin[connectstring(s)]
 					 | '\'':s[] ('\'' break |  eChar)*:s[]  -> Strin[connectstring(s)]
 					 | ('...' | '..')
-					 | ( ":@":n[] | <$.:>:n[] | empty) ~_ name:n[] -> n*""
+					 | ( ":@":n[] | <$.:>:n[] | empty) ~_ name:n[] -> n.join
 					 | key
 					 | <^`{}()'"\[\]>
 
@@ -107,10 +107,10 @@ amethyst AmethystParser < Amethyst{
 	procargs2 =	Args[ procargs2* ]
 						| .:a {@@tmp<<a}
 
-	name           =  (<_a-zA-Z> <_a-zA-Z0-9>*)[]:{it*""}
-  className      =  (    <A-Z> <_a-zA-Z0-9>*)[]:{it*""}
+	name           =  (<_a-zA-Z> <_a-zA-Z0-9>*)[]:{it.join}
+  className      =  (    <A-Z> <_a-zA-Z0-9>*)[]:{it.join}
 	
 	host_expr = __args('{','}'):r {[Args[{:ary=>r}]]}
 
-	line_host_expr = (~endline .)*:s   {"{#{s*""}}"}=>[ host_expr ]
+	line_host_expr =  '->' (endline break | .)*:s   {"{"+s.join+"}"}=>[ host_expr ]
 }

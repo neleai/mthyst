@@ -27,6 +27,10 @@ end
 def Amethyst__di__lb_a_mi_z_rb__di__8807(bind)
 /[a-z]/
 end
+def Amethyst__lb__rb_(bind)
+[]
+
+end
 def Amethyst__lp_bind_lb_0_rb__9f45(bind)
 (bind[0].is_a? String ) || FAIL
 end
@@ -48,6 +52,10 @@ end
 def Amethyst__lp_false_rp__sp__c3c5(bind)
 (false) || FAIL
 end
+def Amethyst_bind_lb_0_rb_(bind)
+bind[0]
+
+end
 def Amethyst_bind_lb_0_rb__dot__6a2a(bind)
 bind[0]...bind[1]
 end
@@ -57,12 +65,16 @@ end
 def Amethyst_bind_lb_1_rb__ti__cfcb(bind)
 bind[1]*""
 end
+def Amethyst_nil(bind)
+nil
+
+end
 
 end
 
 
 def amethyst_compiled_by
-'d35aedf799c19da57d0d78aaef14d5c6'
+'6912e3ab1d3c1587d7722af1a71388e3'
 end
 def amethyst_source_hash
 '658aaca9ebd5273ae49c9216a755e115'
@@ -71,6 +83,6 @@ def testversionamethyst(r)
  raise "invalid version" if r!=amethyst_version
 end
 def amethyst_version
-'f5cec2ee1254ba0f1d959c95b38c4a16'
+'bcbdab9c5555d3905395ea51a5fd78a1'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/amethyst_c"

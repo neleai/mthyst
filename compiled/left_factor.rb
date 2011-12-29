@@ -11,11 +11,13 @@ class Left_Factor < Traverser_Clone2
 def Left_Factor_Bind_lb_src_4a7e(bind)
 Bind[src.name,bind[7]]
 end
-def Left_Factor_Or_lb__ti__lp_bin_1272(bind)
+def Left_Factor_Or_lb__ti__lp_bin_142c(bind)
 Or[*(bind[2]+merge(bind[3]))]
+
 end
-def Left_Factor_Or_lb__ti__lp_bin_c6d5(bind)
+def Left_Factor_Or_lb__ti__lp_bin_5361(bind)
 Or[*(bind[5]+merge(bind[3]))]
+
 end
 def Left_Factor_Seq_lb__lb_bin_f9f4(bind)
 Seq[[bind[7]]+bind[6]]
@@ -117,7 +119,7 @@ end
 
 
 def left_factor_compiled_by
-'d35aedf799c19da57d0d78aaef14d5c6'
+'6912e3ab1d3c1587d7722af1a71388e3'
 end
 def left_factor_source_hash
 '69c45f0c350eb4d1ca0a4f019cc7afa8'
@@ -126,6 +128,6 @@ def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version
 end
 def left_factor_version
-'352908f4d113c28e5a2819d1b9eee7d7'
+'210ffd1576e7fb6f65b62e1bc9dda0a3'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/left_factor_c"

@@ -22,8 +22,8 @@ VALUE switchhashLeft_Factor3;
 VALUE switchhashTraverser_Clone21;
 static VALUE c_Or;
 static VALUE sy_Left_Factor_Bind_lb_src_4a7e;
-static VALUE sy_Left_Factor_Or_lb__ti__lp_bin_1272;
-static VALUE sy_Left_Factor_Or_lb__ti__lp_bin_c6d5;
+static VALUE sy_Left_Factor_Or_lb__ti__lp_bin_142c;
+static VALUE sy_Left_Factor_Or_lb__ti__lp_bin_5361;
 static VALUE sy_Left_Factor_Seq_lb__lb_bin_f9f4;
 static VALUE sy_Left_Factor__append_lp__088f;
 static VALUE sy_Left_Factor__append_lp__324d;
@@ -145,7 +145,7 @@ ame_setcut(self,Qnil);goto accept2;
  
 ame_setcut(self,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-   it=Amethyst_eof(self ); FAILTEST(alt1_3);it=rb_funcall(self,sy_Left_Factor_Or_lb__ti__lp_bin_1272,1,bind);  bind_aset(bind,4/*_result*/,it);
+   it=Amethyst_eof(self ); FAILTEST(alt1_3);it=rb_funcall(self,sy_Left_Factor_Or_lb__ti__lp_bin_142c,1,bind);  bind_aset(bind,4/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto fail;
@@ -410,7 +410,7 @@ ame_setcut(self,Qnil);goto accept2;
  
 ame_setcut(self,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto pass2;}
-   it=Amethyst_eof(self ); FAILTEST(alt1_3);it=rb_funcall(self,sy_Left_Factor_Or_lb__ti__lp_bin_c6d5,1,bind);  bind_aset(bind,7/*_result*/,it);
+   it=Amethyst_eof(self ); FAILTEST(alt1_3);it=rb_funcall(self,sy_Left_Factor_Or_lb__ti__lp_bin_5361,1,bind);  bind_aset(bind,7/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto pass2;
@@ -440,8 +440,8 @@ switchhashLeft_Factor2=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Seq\nne
 switchhashLeft_Factor3=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Bind\nnext h[k]=1 if k<=Seq\nnext h[k]=2 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashLeft_Factor3);
 switchhashTraverser_Clone21=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashTraverser_Clone21);
 sy_Left_Factor_Bind_lb_src_4a7e=rb_intern("Left_Factor_Bind_lb_src_4a7e");
-sy_Left_Factor_Or_lb__ti__lp_bin_1272=rb_intern("Left_Factor_Or_lb__ti__lp_bin_1272");
-sy_Left_Factor_Or_lb__ti__lp_bin_c6d5=rb_intern("Left_Factor_Or_lb__ti__lp_bin_c6d5");
+sy_Left_Factor_Or_lb__ti__lp_bin_142c=rb_intern("Left_Factor_Or_lb__ti__lp_bin_142c");
+sy_Left_Factor_Or_lb__ti__lp_bin_5361=rb_intern("Left_Factor_Or_lb__ti__lp_bin_5361");
 sy_Left_Factor_Seq_lb__lb_bin_f9f4=rb_intern("Left_Factor_Seq_lb__lb_bin_f9f4");
 sy_Left_Factor__append_lp__088f=rb_intern("Left_Factor__append_lp__088f");
 sy_Left_Factor__append_lp__324d=rb_intern("Left_Factor__append_lp__324d");
@@ -480,4 +480,4 @@ rb_define_method(cls_Left_Factor,"root",Left_Factor_root,0);
 rb_define_method(cls_Left_Factor,"traverse",Left_Factor_traverse,0);
 rb_define_method(cls_Left_Factor,"traverse_item",Left_Factor_traverse_item,0);
 rb_define_method(cls_Left_Factor,"visit",Left_Factor_visit,0);
- rb_eval_string("testversionleft_factor('352908f4d113c28e5a2819d1b9eee7d7')");}
+ rb_eval_string("testversionleft_factor('210ffd1576e7fb6f65b62e1bc9dda0a3')");}

@@ -196,6 +196,10 @@ end
 def Dataflow_bind_end_6e13(bind)
 bind_end(src)
 end
+def Dataflow_bind_lb_0_rb_(bind)
+bind[0]
+
+end
 def Dataflow_bind_lb_0_rb__eq__943e(bind)
 bind[0]=[]
 end
@@ -318,14 +322,16 @@ end
 def Dead_Code_Deleter3__at_reachab_005c(bind)
 @reachable[src.name] ? src : src.expr
 end
+def Dead_Code_Deleter3__at_reachab_725b(bind)
+@reachable[bind[1]] ? bind[1] : Placeholder
+
+end
 def Dead_Code_Deleter3__at_reachab_8588(bind)
 @reachable=src.reachable
 end
-def Dead_Code_Deleter3__at_reachab_e819(bind)
-@reachable[bind[1]] ? bind[1] : Placeholder
-end
 def Dead_Code_Deleter3__lp_(bind)
 (!@reachable[bind[1]] ||(bind[1].pure && !@bounded)) ? Placeholder : bind[1]
+
 end
 def Dead_Code_Deleter3__lp_bind_lb_4_rb__d863(bind)
 (bind[4]||=bind[3].dup;bind[5]=true;bind[4].instance_variable_set(bind[10],bind[11])) if @changed && bind[11]!=instance_variable_get(bind[10])
@@ -405,7 +411,7 @@ end
 
 
 def dataflow_ssa_compiled_by
-'d35aedf799c19da57d0d78aaef14d5c6'
+'6912e3ab1d3c1587d7722af1a71388e3'
 end
 def dataflow_ssa_source_hash
 '7c8e4cb3bb6398da0fdd36d225497489'
@@ -414,6 +420,6 @@ def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'273ea8f762788a6779246fae8fcb7da6'
+'11362f3a16ee26853de1d6f8907505ae'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/dataflow_ssa_c"

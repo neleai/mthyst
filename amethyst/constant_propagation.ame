@@ -83,7 +83,7 @@ amethyst Constant_Propagator{
 															a}]
 								   | Bind[.:expr valof(expr)]
   								 |  Act[ Local[.* valof(@self)]
-								         | Exp[.*{ConstantLattice[@self]}]
+								         | Lambda[.*{ConstantLattice[@self]}]
                        ]
 	  							 | CAct[ .* @self:val {ConstantLattice[val]}]
 									 | . {ConstantLattice[Top]}

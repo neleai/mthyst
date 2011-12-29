@@ -34,7 +34,7 @@ class Gram
 			c.analyze2.each{|k,v|
 			  if v!=Top&&v!=Bottom
 			    r.consts[k]=v
-			    r.consts[k]=Act[v] if v.is_a?(Exp)
+			    r.consts[k]=Act[v] if v.is_a?(Lambda)
 			  end
 			}
 			puts r.inspect if $debug>1

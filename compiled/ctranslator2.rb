@@ -170,8 +170,9 @@ end
 def AmethystCTranslator__dq_VALUE_sp_c_8bbf(bind)
 "VALUE cls_#{src.name};\n" 
 end
-def AmethystCTranslator__dq__at__sh__le_bind_e609(bind)
-"@#{bind[12]}"
+def AmethystCTranslator__dq__at__sh__le_bind_960c(bind)
+"@#{bind[9]}"
+
 end
 def AmethystCTranslator__dq__sh__le__at_gram_5de9(bind)
 "#{@grammar}_#{@rulename}_#{label("lambda")}"
@@ -236,14 +237,16 @@ end
 def AmethystCTranslator__dq_unsigne_9a12(bind)
 "unsigned char #{bind[34]}=#{src.act};  switch(#{bind[34]}){"
 end
-def AmethystCTranslator__lb_bind_lb_1_rb__dce6(bind)
+def AmethystCTranslator__lb_bind_lb_1_rb__8404(bind)
 [bind[1],bind[2],bind[0]]
-end
-def AmethystCTranslator__lp_bind_lb_12_6a46(bind)
-(bind[12]=="self") ? "src" : "src.#{bind[12]}"
+
 end
 def AmethystCTranslator__lp_bind_lb_4_rb__f922(bind)
 (bind[4].is_a? String ) || FAIL
+end
+def AmethystCTranslator__lp_bind_lb_9_rb__6818(bind)
+(bind[9]=="self") ? "src" : "src.#{bind[9]}"
+
 end
 def AmethystCTranslator_addcallb_68bb(bind)
 addcallback(src.pred ? ["(",bind[3],") || FAIL"] : bind[3])
@@ -307,6 +310,10 @@ end
 def AmethystCTranslator_bind_lb_48_rb__a323(bind)
 bind[48]+=1
 end
+def AmethystCTranslator_bind_lb_4_rb_(bind)
+bind[4]
+
+end
 def AmethystCTranslator_bind_lb_86_rb__7e96(bind)
 bind[86]+=1
 end
@@ -358,15 +365,15 @@ end
 
 
 def ctranslator2_compiled_by
-'d35aedf799c19da57d0d78aaef14d5c6'
+'6912e3ab1d3c1587d7722af1a71388e3'
 end
 def ctranslator2_source_hash
-'4fdbc1400dab5dda4d22cba02a2e79e5'
+'82b07b92491dda223219c64ac059ac67'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'f98fa27fe9c35dcf824bbfc8da3e3d92'
+'b1f423a9d05688b487643cca6b546710'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/ctranslator2_c"

@@ -18,7 +18,7 @@ amethyst Protocol_IR{
 			 		| Cact[ :ruby_obj ]
 
 	variable= local
-					| Exp[expr]
+					| Lambda[expr]
 					| Key[:name]
 					| Global[:name]
 					| Result[:klas :varnames :vars]
