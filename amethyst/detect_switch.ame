@@ -250,7 +250,7 @@ amethyst First_Dataflow {
 	root = .:x analyze(x)
 	
 	first =	Switch[&{@first.is_a?(lattice)} .* {@first}]
-				| Seq[{lattice.empty}:val (.:el {el}=>value:nev {val.seqjoin(nev)}:val  (~{empty?(el)} stop | empty) )*   .* {val}]
+				| Seq[{lattice.empty}:val (.:el {el}=>value:nev {val.seqjoin(nev)}:val  (&{!empty?(el)} break | empty) )*   .* {val}]
 				| Many[value:val {val|lattice.empty} ]
 				| Or[value*:{it.inject(:|)}]
 				| Switch[value*:{it.inject(:|)}]

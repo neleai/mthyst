@@ -266,6 +266,9 @@ end
 def First_Dataflow__at_vis_eq_bin_af53(bind)
 @vis=bind[0]; bind[0]
 end
+def First_Dataflow__lp_(bind)
+(!empty?(bind[30])) || FAIL
+end
 def First_Dataflow__lp_src_dot_fir_1e1a(bind)
 (src.first.is_a?(lattice)) || FAIL
 end
@@ -316,6 +319,9 @@ _append(bind[1],bind[2])
 end
 def Sizes_Dataflow__at_vis_eq_bin_af53(bind)
 @vis=bind[0]; bind[0]
+end
+def Sizes_Dataflow__lp_(bind)
+(!empty?(bind[40])) || FAIL
 end
 def Sizes_Dataflow__lp_src_dot_fir_1e1a(bind)
 (src.first.is_a?(lattice)) || FAIL
@@ -370,6 +376,9 @@ _append(bind[1],bind[2])
 end
 def Switch_Dataflow__at_vis_eq_bin_af53(bind)
 @vis=bind[0]; bind[0]
+end
+def Switch_Dataflow__lp_(bind)
+(!empty?(bind[40])) || FAIL
 end
 def Switch_Dataflow__lp_src_dot_fir_1e1a(bind)
 (src.first.is_a?(lattice)) || FAIL
@@ -433,6 +442,9 @@ def ClasSwitch_Dataflow__at_vis_eq_bin_af53(bind)
 end
 def ClasSwitch_Dataflow__do_rules_lb_b_31ab(bind)
 $rules[bind[7]].body
+end
+def ClasSwitch_Dataflow__lp_(bind)
+(!empty?(bind[40])) || FAIL
 end
 def ClasSwitch_Dataflow__lp__do_rules_lb__f54a(bind)
 ($rules[bind[7]]) || FAIL
@@ -863,15 +875,15 @@ end
 
 
 def detect_switch_compiled_by
-'0cf25b901927c63d15a19525cb2f7a86'
+'1a9116204b85cb76e1550067d670fbb6'
 end
 def detect_switch_source_hash
-'ab4987e3769638cb0a4ef7af85bc8261'
+'09a200192e47f7268cef54538a064af7'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'1e0c41e3377ff3830db4519fdd52fc9d'
+'5cd80336ecacac45ed4f5a99d991166d'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/detect_switch_c"
