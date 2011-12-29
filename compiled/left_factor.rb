@@ -117,7 +117,7 @@ end
 
 
 def left_factor_compiled_by
-'06c4f49d02c34502aa1023682de5bad6'
+'4993527458a5b6363eeacdeca8a6a82f'
 end
 def left_factor_source_hash
 '69c45f0c350eb4d1ca0a4f019cc7afa8'
@@ -126,6 +126,6 @@ def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version
 end
 def left_factor_version
-'729642dc48db916b024adc4c89a280b8'
+'352908f4d113c28e5a2819d1b9eee7d7'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/left_factor_c"

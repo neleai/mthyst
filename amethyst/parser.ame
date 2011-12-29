@@ -45,22 +45,22 @@ amethyst AmethystParser < Amethyst{
 																   )
 										):from  )* {from}
 
- 		modifier = term
+ 		modifier = "" term
              | "#" (~endline .)*:c -> Comment[c]
 
-	term  = "" className:cls -> Apply["clas",cls]
-				| "nested" '(' expression:expr ")" -> Nested[expr]
-				| "break" -> Seq[Cut[],Stop[]]
+	term  = className:cls -> Apply["clas",cls]
+				| 'nested' '(' expression:expr ")" -> Nested[expr]
+				| 'break' -> Seq[Cut[],Stop[]]
 		 	  | application
  			  | key:{Act[Args[it]]}
 			  | ("->" atomicHostExpr | "" inlineHostExpr):x    ->  Act[x]
-				| "\"" ('"'  break| eChar:s[])* -> Apply["token" ,quote(s)]
-		 	  | "'"  ('\'' break| eChar:s[])* -> Apply["seq"   ,quote(s)]
+				| '"'   ('"'  break| eChar:s[])* -> Apply["token" ,quote(s)]
+		 	  | '\''  ('\'' break| eChar:s[])* -> Apply["seq"   ,quote(s)]
 				| number:a '...' number:b {Apply["range_ex",a,b]}
  				| number:a '..' number:b {Apply["range_in",a,b]}
 			  | number:{Apply["exactly",it]}
-      	| "<" (">" break | eChar:x[])*                            ->  Apply["regch","/[#{x*""}]/"]
-		    | "(" expression:x ")" ( '[]'	collect(x) | empty {x} )
+      	| '<' (">" break | eChar:x[])* ->  Apply["regch","/[#{x*""}]/"]
+		    | '(' expression:x ")" ( '[]'	collect(x) | empty {x} )
 
   collect(ors) = -> a=autovar; Seq[Or[{:ary=>ors.ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
 	
