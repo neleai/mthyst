@@ -1,6 +1,6 @@
 class Left_Factor < Traverser_Clone2
 	def merge(ary)
-		return ary[0] if ary.size==1
+		return [ary[0]] if ary.size==1
 		a=autovar.normalize
 		[Seq[Bind[a,first(ary[0])],Or[*(ary.map{|e| rest(e,binds(e,a))})]]]
 	end
@@ -8,12 +8,6 @@ end
 
 class Left_Factor < Traverser_Clone2
 
-def Left_Factor_(bind)
-!(bind[4]==first(bind[6]))
-end
-def Left_Factor_2(bind)
-!(bind[1]==first(bind[0]))
-end
 def Left_Factor_Bind_lb_src_4a7e(bind)
 Bind[src.name,bind[7]]
 end
@@ -34,11 +28,11 @@ end
 def Left_Factor__append_lp__324d(bind)
 _append(bind[8],bind[13])
 end
-def Left_Factor__append_lp__37c5(bind)
-_append(bind[6],bind[8])
-end
 def Left_Factor__append_lp__473a(bind)
 _append(bind[13],bind[14])
+end
+def Left_Factor__append_lp__984f(bind)
+_append(bind[12],bind[14])
 end
 def Left_Factor__append_lp__be78(bind)
 _append(bind[11],bind[12])
@@ -64,6 +58,12 @@ end
 def Left_Factor__lb_bind_lb_6_rb__ef11(bind)
 [bind[6]]
 end
+def Left_Factor__lp_(bind)
+(!(bind[4]==first(bind[6]))) || FAIL
+end
+def Left_Factor__lp_2(bind)
+(!(bind[1]==first(bind[0]))) || FAIL
+end
 def Left_Factor__lp_bind_lb_1_rb__68a2(bind)
 (bind[1]==first(bind[0])) || FAIL
 end
@@ -76,6 +76,9 @@ end
 def Left_Factor__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
+def Left_Factor_bind_lb_11_rb__a30c(bind)
+bind[11]<<bind[13]
+end
 def Left_Factor_bind_lb_2_rb__pl__9bc3(bind)
 bind[2]+merge(bind[3])
 end
@@ -84,9 +87,6 @@ bind[3]+[bind[6]]
 end
 def Left_Factor_bind_lb_3_rb__pl__a9ae(bind)
 bind[3]+[bind[0]]
-end
-def Left_Factor_bind_lb_5_rb__lt__dccc(bind)
-bind[5]<<bind[7]
 end
 def Left_Factor_bind_lb_5_rb__pl__1ee4(bind)
 bind[5]+merge(bind[3])
@@ -119,15 +119,15 @@ end
 
 
 def left_factor_compiled_by
-'33cffd8aa8e7a15d77c23a88f6c59cf7'
+'1a9116204b85cb76e1550067d670fbb6'
 end
 def left_factor_source_hash
-'69c45f0c350eb4d1ca0a4f019cc7afa8'
+'13ac88a620044bb451529ded733cdbf5'
 end
 def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version
 end
 def left_factor_version
-'9e1abfe65957ebe1117e5fbaa57be7cc'
+'061fd17201bb91dbb14b04b5ab86f0c1'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/left_factor_c"

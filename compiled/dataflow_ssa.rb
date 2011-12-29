@@ -100,9 +100,6 @@ end
 def Dataflow__append_lp__3262(bind)
 _append(bind[0],bind[25])
 end
-def Dataflow__append_lp__37c5(bind)
-_append(bind[6],bind[8])
-end
 def Dataflow__append_lp__3bb7(bind)
 _append(bind[0],bind[37])
 end
@@ -135,6 +132,9 @@ _append(bind[12],bind[13])
 end
 def Dataflow__append_lp__80de(bind)
 _append(bind[0],bind[15])
+end
+def Dataflow__append_lp__984f(bind)
+_append(bind[12],bind[14])
 end
 def Dataflow__append_lp__9a2e(bind)
 _append(bind[0],bind[31])
@@ -203,6 +203,9 @@ end
 def Dataflow_bind_lb_0_rb__eq__943e(bind)
 bind[0]=[]
 end
+def Dataflow_bind_lb_11_rb__a30c(bind)
+bind[11]<<bind[13]
+end
 def Dataflow_bind_lb_41_rb__d8ab(bind)
 bind[41]<<oldssanums.clone
 end
@@ -211,9 +214,6 @@ bind[4].ary
 end
 def Dataflow_bind_lb_58_rb__3f1d(bind)
 bind[58]<<[bind[61],bind[62]]
-end
-def Dataflow_bind_lb_5_rb__lt__dccc(bind)
-bind[5]<<bind[7]
 end
 def Dataflow_bind_lb_6_rb__dot__aa14(bind)
 bind[6].each{|v| @marked<<ssanum(v)};src.args=bind[6]
@@ -286,14 +286,14 @@ end
 def Dead_Code_Deleter3__append_lp__324d(bind)
 _append(bind[8],bind[13])
 end
-def Dead_Code_Deleter3__append_lp__37c5(bind)
-_append(bind[6],bind[8])
-end
 def Dead_Code_Deleter3__append_lp__473a(bind)
 _append(bind[13],bind[14])
 end
 def Dead_Code_Deleter3__append_lp__4de3(bind)
 _append(bind[2],bind[3])
+end
+def Dead_Code_Deleter3__append_lp__984f(bind)
+_append(bind[12],bind[14])
 end
 def Dead_Code_Deleter3__append_lp__9ca5(bind)
 _append(bind[10],bind[11])
@@ -339,8 +339,8 @@ end
 def Dead_Code_Deleter3__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Dead_Code_Deleter3_bind_lb_5_rb__lt__dccc(bind)
-bind[5]<<bind[7]
+def Dead_Code_Deleter3_bind_lb_11_rb__a30c(bind)
+bind[11]<<bind[13]
 end
 def Dead_Code_Deleter3_if_sp_bind_lb__b5ce(bind)
 if bind[5]
@@ -365,8 +365,8 @@ class Forget_SSA < Traverser_Clone2
 def Forget_SSA__append_lp__324d(bind)
 _append(bind[8],bind[13])
 end
-def Forget_SSA__append_lp__37c5(bind)
-_append(bind[6],bind[8])
+def Forget_SSA__append_lp__984f(bind)
+_append(bind[12],bind[14])
 end
 def Forget_SSA__append_lp__cbd1(bind)
 _append(bind[0],bind[1])
@@ -389,8 +389,8 @@ end
 def Forget_SSA__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Forget_SSA_bind_lb_5_rb__lt__dccc(bind)
-bind[5]<<bind[7]
+def Forget_SSA_bind_lb_11_rb__a30c(bind)
+bind[11]<<bind[13]
 end
 def Forget_SSA_if_sp_bind_lb__b5ce(bind)
 if bind[5]
@@ -411,7 +411,7 @@ end
 
 
 def dataflow_ssa_compiled_by
-'33cffd8aa8e7a15d77c23a88f6c59cf7'
+'1a9116204b85cb76e1550067d670fbb6'
 end
 def dataflow_ssa_source_hash
 '7c8e4cb3bb6398da0fdd36d225497489'
@@ -420,6 +420,6 @@ def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'11362f3a16ee26853de1d6f8907505ae'
+'9541b5cfedc9c1170b6c469ffd0ba7c3'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/dataflow_ssa_c"

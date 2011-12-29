@@ -207,7 +207,7 @@ class Act
 end
 class Pred
 def self.[](e,neg=false)
-	return Act[Args["!(",e,")"]] if neg
+	return Pred[Args["!(",e,")"]] if neg
 	Act[e,true]
 end
 end

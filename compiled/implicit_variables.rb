@@ -6,6 +6,9 @@ end
 def Detect_Implicit_Variables__append_lp__4de3(bind)
 _append(bind[2],bind[3])
 end
+def Detect_Implicit_Variables__append_lp__9ca5(bind)
+_append(bind[10],bind[11])
+end
 def Detect_Implicit_Variables__append_lp__cbd1(bind)
 _append(bind[0],bind[1])
 end
@@ -42,8 +45,8 @@ end
 def Add_Implicit_Variables__append_lp__324d(bind)
 _append(bind[8],bind[13])
 end
-def Add_Implicit_Variables__append_lp__37c5(bind)
-_append(bind[6],bind[8])
+def Add_Implicit_Variables__append_lp__984f(bind)
+_append(bind[12],bind[14])
 end
 def Add_Implicit_Variables__append_lp__cbd1(bind)
 _append(bind[0],bind[1])
@@ -72,8 +75,8 @@ end
 def Add_Implicit_Variables__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Add_Implicit_Variables_bind_lb_5_rb__lt__dccc(bind)
-bind[5]<<bind[7]
+def Add_Implicit_Variables_bind_lb_11_rb__a30c(bind)
+bind[11]<<bind[13]
 end
 def Add_Implicit_Variables_if_sp_bind_lb__b5ce(bind)
 if bind[5]
@@ -91,7 +94,7 @@ end
 
 
 def implicit_variables_compiled_by
-'33cffd8aa8e7a15d77c23a88f6c59cf7'
+'1a9116204b85cb76e1550067d670fbb6'
 end
 def implicit_variables_source_hash
 '6a0a31cf7e531a56757bd541162a71ff'
@@ -100,6 +103,6 @@ def testversionimplicit_variables(r)
  raise "invalid version" if r!=implicit_variables_version
 end
 def implicit_variables_version
-'198925083d9cb80728f5f5d1f540ad7a'
+'871e9c88b0696e636d12a217fdc7b974'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/implicit_variables_c"
