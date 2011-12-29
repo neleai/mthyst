@@ -8,6 +8,12 @@ end
 
 class Left_Factor < Traverser_Clone2
 
+def Left_Factor_(bind)
+!(bind[4]==first(bind[6]))
+end
+def Left_Factor_2(bind)
+!(bind[1]==first(bind[0]))
+end
 def Left_Factor_Bind_lb_src_4a7e(bind)
 Bind[src.name,bind[7]]
 end
@@ -70,9 +76,6 @@ end
 def Left_Factor__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Left_Factor_bind_lb_1_rb__eq__7142(bind)
-bind[1]==first(bind[0])
-end
 def Left_Factor_bind_lb_2_rb__pl__9bc3(bind)
 bind[2]+merge(bind[3])
 end
@@ -81,9 +84,6 @@ bind[3]+[bind[6]]
 end
 def Left_Factor_bind_lb_3_rb__pl__a9ae(bind)
 bind[3]+[bind[0]]
-end
-def Left_Factor_bind_lb_4_rb__eq__07a6(bind)
-bind[4]==first(bind[6])
 end
 def Left_Factor_bind_lb_5_rb__lt__dccc(bind)
 bind[5]<<bind[7]
@@ -119,7 +119,7 @@ end
 
 
 def left_factor_compiled_by
-'6912e3ab1d3c1587d7722af1a71388e3'
+'33cffd8aa8e7a15d77c23a88f6c59cf7'
 end
 def left_factor_source_hash
 '69c45f0c350eb4d1ca0a4f019cc7afa8'
@@ -128,6 +128,6 @@ def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version
 end
 def left_factor_version
-'210ffd1576e7fb6f65b62e1bc9dda0a3'
+'9e1abfe65957ebe1117e5fbaa57be7cc'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/left_factor_c"

@@ -33,8 +33,8 @@ amethyst AmethystParser < Amethyst{
 	
 	sequence =  (nr prefixed)*:ary  @Seq
 
-  prefixed   = "&" host_expr:expr  -> Pred[expr]
-             | ("&" | "~"):neg  prefixed:m -> Lookahead[m,neg=="~"]
+  prefixed   = ("&" | "~"):neg host_expr:expr->   Pred[expr,neg=="~"]
+             | ("&" | "~"):neg prefixed:m    -> Lookahead[m,neg=="~"]
 						 | (modifier | "" &<.:\[> "."? {Apply["anything"]}):from 
 										(~_     (	 "=>" prefixed:{Pass[from,it]} 
 												     | "[" expression:{from=Enter[from,it]} "]" {from}

@@ -245,6 +245,9 @@ class ClasSwitch_Dataflow < First_Dataflow
 end
 class First_Dataflow < Amethyst
 
+def First_Dataflow_(bind)
+!(empty?(bind[30]))
+end
 def First_Dataflow__append_lp__0bba(bind)
 _append(bind[24],bind[25])
 end
@@ -281,9 +284,6 @@ end
 def First_Dataflow_depends_lp__c1cd(bind)
 depends(bind[0]); @vals[bind[0]]
 end
-def First_Dataflow_empty(bind)
-empty?(bind[30])
-end
 def First_Dataflow_lattice_dot__2c4f(bind)
 lattice.empty
 end
@@ -299,6 +299,9 @@ end
 
 class Sizes_Dataflow < First_Dataflow
 
+def Sizes_Dataflow_(bind)
+!(empty?(bind[40]))
+end
 def Sizes_Dataflow__append_lp__0d86(bind)
 _append(bind[9],bind[10])
 end
@@ -332,9 +335,6 @@ end
 def Sizes_Dataflow_bind_lb_26_rb__b4db(bind)
 bind[26].seqjoin(bind[42])
 end
-def Sizes_Dataflow_empty(bind)
-empty?(bind[40])
-end
 def Sizes_Dataflow_lattice_dot__2c4f(bind)
 lattice.empty
 end
@@ -356,6 +356,9 @@ end
 
 class Switch_Dataflow < First_Dataflow
 
+def Switch_Dataflow_(bind)
+!(empty?(bind[40]))
+end
 def Switch_Dataflow__append_lp__0d86(bind)
 _append(bind[9],bind[10])
 end
@@ -389,9 +392,6 @@ end
 def Switch_Dataflow_bind_lb_26_rb__b4db(bind)
 bind[26].seqjoin(bind[42])
 end
-def Switch_Dataflow_empty(bind)
-empty?(bind[40])
-end
 def Switch_Dataflow_firstcha_7cc4(bind)
 firstchar(bind[6])
 end
@@ -416,6 +416,9 @@ end
 
 class ClasSwitch_Dataflow < First_Dataflow
 
+def ClasSwitch_Dataflow_(bind)
+!(empty?(bind[40]))
+end
 def ClasSwitch_Dataflow__append_lp__0d86(bind)
 _append(bind[9],bind[10])
 end
@@ -457,9 +460,6 @@ bind[26]|lattice.empty
 end
 def ClasSwitch_Dataflow_bind_lb_26_rb__b4db(bind)
 bind[26].seqjoin(bind[42])
-end
-def ClasSwitch_Dataflow_empty(bind)
-empty?(bind[40])
 end
 def ClasSwitch_Dataflow_lattice_dot__2c4f(bind)
 lattice.empty
@@ -872,7 +872,7 @@ end
 
 
 def detect_switch_compiled_by
-'6912e3ab1d3c1587d7722af1a71388e3'
+'33cffd8aa8e7a15d77c23a88f6c59cf7'
 end
 def detect_switch_source_hash
 'ab4987e3769638cb0a4ef7af85bc8261'
@@ -881,6 +881,6 @@ def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'fd54c92eaafa1a53f49d43fe35a973ed'
+'67eceaf7ec6e59b234737a261c9c2a99'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/detect_switch_c"
