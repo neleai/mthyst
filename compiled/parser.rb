@@ -229,6 +229,15 @@ end
 def AmethystParser__di__lb_(bind)
 /[^`{}()'"\[\]]/
 end
+def AmethystParser__di__lb_A_mi_Z_rb__di__05b6(bind)
+/[A-Z]/
+end
+def AmethystParser__di__lb__a_mi_zA_mi__6e11(bind)
+/[_a-zA-Z0-9]/
+end
+def AmethystParser__di__lb__a_mi_zA_mi__d9bf(bind)
+/[_a-zA-Z]/
+end
 def AmethystParser__di__lb__do__dot__co__rb__di__68eb(bind)
 /[$.:]/
 end
@@ -292,29 +301,29 @@ end
 def AmethystParser_bind_lb_5_rb__pl__5627(bind)
 bind[5]+[',']
 end
+def AmethystParser_bind_lb_5_rb__ti__66be(bind)
+bind[5]*""
+end
 def AmethystParser_bind_lb_6_rb__eq__9525(bind)
 bind[6]=Enter[bind[6],bind[13]]
 end
 def AmethystParser_bind_lb_9_rb__pl__82ef(bind)
 bind[9]+[',']
 end
-def AmethystParser_leterize_7543(bind)
-leterize(bind[5]*"")
-end
 
 end
 
 
 def parser_compiled_by
-'8ab1018fff19d8e236d2390e91e4858d'
+'a88b0f0806a006c35cbab57e40d9dc96'
 end
 def parser_source_hash
-'d42fe4aa3225aa96c76be80299bbcc6b'
+'f238318b60ab5954d743395b0cab9ad9'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'855151a71a4e388095ea3351f336aac2'
+'887eb516366494682b9e2c332dce8595'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/parser_c"

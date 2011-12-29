@@ -109,14 +109,10 @@ amethyst AmethystParser < Amethyst{
 	procargs2 =	Args[ procargs2* ]
 						| .:a {@@tmp<<a}
 
-	nameFirst      = alpha | '_'
 
-  nameRest       = nameFirst | digit
-
-  className      = "" (upper nameRest* )[]:{leterize(it*"")}
+	name           = "" (<_a-zA-Z> <_a-zA-Z0-9>*)[]:{it*""}
+  className      = ""     (<A-Z> <_a-zA-Z0-9>*)[]:{it*""}
 	
-	name = "" (nameFirst nameRest*)[]:{leterize(it*"")}
-
 	inlineHostExpr = __args('{','}'):r {[Args[{:ary=>r}]]}
 
 	atomicHostExpr = (~endline .)*:s   {"{#{s*""}}"}=>[ inlineHostExpr ]
