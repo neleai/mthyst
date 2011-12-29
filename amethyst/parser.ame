@@ -52,7 +52,7 @@ amethyst AmethystParser < Amethyst{
 				| 'nested' '(' expression:expr ")" -> Nested[expr]
 				| 'break' -> Seq[Cut[],Stop[]]
 		 	  | application
- 			  | key:{Act[Args[it]]}
+ 			  | key:{Act[it]}
 			  | ("->" atomicHostExpr | "" inlineHostExpr):x    ->  Act[x]
 				| '"'   ('"'  break| eChar:s[])* -> Apply["token" ,quote(s)]
 		 	  | '\''  ('\'' break| eChar:s[])* -> Apply["seq"   ,quote(s)]
@@ -94,7 +94,7 @@ amethyst AmethystParser < Amethyst{
 		
 	rubyarg  = '`' expression:e '`' -> Exp[_body(e)]
            | _args('(',')')					 | _args('[',']')					 | _args('{','}')
-					 | '"':s[]  ('"'  break |  eChar)*:s[]  -> Strin[connectstring(s)]
+					 |  '"':s[] ( '"' break |  eChar)*:s[]  -> Strin[connectstring(s)]
 					 | '\'':s[] ('\'' break |  eChar)*:s[]  -> Strin[connectstring(s)]
 					 | ('...' | '..')
 					 | ( ":@":n[] | <$.:>:n[] | empty) ~_ name:n[] -> n*""

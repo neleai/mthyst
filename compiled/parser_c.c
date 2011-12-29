@@ -61,8 +61,8 @@ static VALUE s__re__cbb1;
 static VALUE s__rp__9371;
 static VALUE s__td__4c76;
 static VALUE s__ti__3389;
-static VALUE sy_AmethystParser_Act_lb_Args_140b;
 static VALUE sy_AmethystParser_Act_lb_bind_3e5d;
+static VALUE sy_AmethystParser_Act_lb_bind_aef0;
 static VALUE sy_AmethystParser_Apply_lb__dq_a_eeac;
 static VALUE sy_AmethystParser_Apply_lb__dq_c_efc7;
 static VALUE sy_AmethystParser_Apply_lb__dq_e_84a7;
@@ -1353,7 +1353,7 @@ alt1_4: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
 ame_setcut(self,Qnil);goto accept1;
 alt1_5: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=AmethystParser_key(self ); FAILTEST(alt1_6); bind_aset(bind,7/*it*/,it);
-it=rb_funcall(self,sy_AmethystParser_Act_lb_Args_140b,1,bind);  bind_aset(bind,5/*_result*/,it);
+it=rb_funcall(self,sy_AmethystParser_Act_lb_bind_aef0,1,bind);  bind_aset(bind,5/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
 alt1_6: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
@@ -1493,8 +1493,8 @@ s__rp__9371=rb_str_new2(")");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_m
 s__td__4c76=rb_str_new2("~");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),s__td__4c76);
 s__ti__3389=rb_str_new2("*");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),s__ti__3389);
 switchhashAmethystParser1=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Args\nnext h[k]=1 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashAmethystParser1);
-sy_AmethystParser_Act_lb_Args_140b=rb_intern("AmethystParser_Act_lb_Args_140b");
 sy_AmethystParser_Act_lb_bind_3e5d=rb_intern("AmethystParser_Act_lb_bind_3e5d");
+sy_AmethystParser_Act_lb_bind_aef0=rb_intern("AmethystParser_Act_lb_bind_aef0");
 sy_AmethystParser_Apply_lb__dq_a_eeac=rb_intern("AmethystParser_Apply_lb__dq_a_eeac");
 sy_AmethystParser_Apply_lb__dq_c_efc7=rb_intern("AmethystParser_Apply_lb__dq_c_efc7");
 sy_AmethystParser_Apply_lb__dq_e_84a7=rb_intern("AmethystParser_Apply_lb__dq_e_84a7");
@@ -1617,4 +1617,4 @@ rb_define_method(cls_AmethystParser,"rule",AmethystParser_rule,0);
 rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
 rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
 rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
- rb_eval_string("testversionparser('6b57aa62d86ff7bcb17cd487a36072fa')");}
+ rb_eval_string("testversionparser('3c31eca73a222d34c0ac913e4547294b')");}

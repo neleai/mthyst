@@ -19,11 +19,11 @@ end
 
 class AmethystParser < Amethyst
 
-def AmethystParser_Act_lb_Args_140b(bind)
-Act[Args[bind[7]]]
-end
 def AmethystParser_Act_lb_bind_3e5d(bind)
 Act[bind[3]]
+end
+def AmethystParser_Act_lb_bind_aef0(bind)
+Act[bind[7]]
 end
 def AmethystParser_Apply_lb__dq_a_eeac(bind)
 Apply["anything"]
@@ -315,15 +315,15 @@ end
 
 
 def parser_compiled_by
-'4993527458a5b6363eeacdeca8a6a82f'
+'0fc373eba80e186409f28512e6f37a44'
 end
 def parser_source_hash
-'54c9c061e4ab8446c11afe39911112ab'
+'09e15856815b5848de7e9e8831c12580'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'6b57aa62d86ff7bcb17cd487a36072fa'
+'3c31eca73a222d34c0ac913e4547294b'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/parser_c"
