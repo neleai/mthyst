@@ -21,14 +21,14 @@ end
 def Analyze_Variables2__append_lp__324d(bind)
 _append(bind[8],bind[13])
 end
-def Analyze_Variables2__append_lp__37c5(bind)
-_append(bind[6],bind[8])
-end
 def Analyze_Variables2__append_lp__4548(bind)
 _append(bind[19],bind[20])
 end
 def Analyze_Variables2__append_lp__9160(bind)
 _append(bind[31],bind[32])
+end
+def Analyze_Variables2__append_lp__984f(bind)
+_append(bind[12],bind[14])
 end
 def Analyze_Variables2__append_lp__a10b(bind)
 _append(bind[38],bind[39])
@@ -78,8 +78,8 @@ end
 def Analyze_Variables2__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Analyze_Variables2_bind_lb_5_rb__lt__dccc(bind)
-bind[5]<<bind[7]
+def Analyze_Variables2_bind_lb_11_rb__a30c(bind)
+bind[11]<<bind[13]
 end
 def Analyze_Variables2_connects_f9aa(bind)
 connectstring(bind[23].flatten)
@@ -123,7 +123,7 @@ end
 
 
 def detect_variables2_compiled_by
-'6225232704931f019c6712df52fe9696'
+'0cf25b901927c63d15a19525cb2f7a86'
 end
 def detect_variables2_source_hash
 'eab18725e78d475e7622db4b6d8f1183'
@@ -132,6 +132,6 @@ def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'bf90d2a9c7cc5feed1041004366d6521'
+'2c56760434bad2dd0bdfabcdc39ede59'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/detect_variables2_c"

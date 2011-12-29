@@ -6,6 +6,9 @@ end
 def DetectCalls__append_lp__4de3(bind)
 _append(bind[2],bind[3])
 end
+def DetectCalls__append_lp__9ca5(bind)
+_append(bind[10],bind[11])
+end
 def DetectCalls__append_lp__cbd1(bind)
 _append(bind[0],bind[1])
 end
@@ -30,11 +33,11 @@ class Inliner2 < Traverser_Clone2
 def Inliner2__append_lp__324d(bind)
 _append(bind[8],bind[13])
 end
-def Inliner2__append_lp__37c5(bind)
-_append(bind[6],bind[8])
-end
 def Inliner2__append_lp__4de3(bind)
 _append(bind[2],bind[3])
+end
+def Inliner2__append_lp__984f(bind)
+_append(bind[12],bind[14])
 end
 def Inliner2__append_lp__cbd1(bind)
 _append(bind[0],bind[1])
@@ -60,8 +63,8 @@ end
 def Inliner2__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Inliner2_bind_lb_5_rb__lt__dccc(bind)
-bind[5]<<bind[7]
+def Inliner2_bind_lb_11_rb__a30c(bind)
+bind[11]<<bind[13]
 end
 def Inliner2_body_eq__at_bo_c02f(bind)
 body=@body; bind[4].each_index{|i| body=Seq[Bind[@args[i],bind[4][i]],body] } ; body
@@ -102,11 +105,11 @@ end
 def Replace_Super__append_lp__324d(bind)
 _append(bind[8],bind[13])
 end
-def Replace_Super__append_lp__37c5(bind)
-_append(bind[6],bind[8])
-end
 def Replace_Super__append_lp__4de3(bind)
 _append(bind[2],bind[3])
+end
+def Replace_Super__append_lp__984f(bind)
+_append(bind[12],bind[14])
 end
 def Replace_Super__append_lp__cbd1(bind)
 _append(bind[0],bind[1])
@@ -132,8 +135,8 @@ end
 def Replace_Super__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Replace_Super_bind_lb_5_rb__lt__dccc(bind)
-bind[5]<<bind[7]
+def Replace_Super_bind_lb_11_rb__a30c(bind)
+bind[11]<<bind[13]
 end
 def Replace_Super_if_sp_bind_lb__b5ce(bind)
 if bind[5]
@@ -151,7 +154,7 @@ end
 
 
 def inliner2_compiled_by
-'6225232704931f019c6712df52fe9696'
+'0cf25b901927c63d15a19525cb2f7a86'
 end
 def inliner2_source_hash
 'eca6429e1f65c5d4367c65294557dc01'
@@ -160,6 +163,6 @@ def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version
 end
 def inliner2_version
-'29240f0db5f5cb28173ad6bc42a63b76'
+'bc4d9df78e9ae30d2d975e4e32cb9c33'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/inliner2_c"

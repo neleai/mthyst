@@ -124,11 +124,11 @@ end
 def Constant_Traverser__append_lp__324d(bind)
 _append(bind[8],bind[13])
 end
-def Constant_Traverser__append_lp__37c5(bind)
-_append(bind[6],bind[8])
-end
 def Constant_Traverser__append_lp__473a(bind)
 _append(bind[13],bind[14])
+end
+def Constant_Traverser__append_lp__984f(bind)
+_append(bind[12],bind[14])
 end
 def Constant_Traverser__append_lp__cbd1(bind)
 _append(bind[0],bind[1])
@@ -157,8 +157,8 @@ end
 def Constant_Traverser__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Constant_Traverser_bind_lb_5_rb__lt__dccc(bind)
-bind[5]<<bind[7]
+def Constant_Traverser_bind_lb_11_rb__a30c(bind)
+bind[11]<<bind[13]
 end
 def Constant_Traverser_if_sp_bind_lb__b5ce(bind)
 if bind[5]
@@ -179,7 +179,7 @@ end
 
 
 def constant_propagation_compiled_by
-'6225232704931f019c6712df52fe9696'
+'0cf25b901927c63d15a19525cb2f7a86'
 end
 def constant_propagation_source_hash
 '0f3aae569bc723ebabe1a7d8141630cb'
@@ -188,6 +188,6 @@ def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
 end
 def constant_propagation_version
-'974d0e94f6d3f0178fe619a4c7d7bbe1'
+'d7223c0e102231acb36b293b1ca0f21f'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/constant_propagation_c"

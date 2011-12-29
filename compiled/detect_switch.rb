@@ -611,6 +611,9 @@ end
 def Detect_Switch__append_lp__8bfa(bind)
 _append(bind[15],bind[16])
 end
+def Detect_Switch__append_lp__984f(bind)
+_append(bind[12],bind[14])
+end
 def Detect_Switch__append_lp__b375(bind)
 _append(bind[8],bind[9])
 end
@@ -667,6 +670,9 @@ end
 def Detect_Switch__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
+def Detect_Switch_bind_lb_11_rb__a30c(bind)
+bind[11]<<bind[13]
+end
 def Detect_Switch_bind_lb_1_rb_(bind)
 bind[1]|=first(bind[5])
 end
@@ -678,9 +684,6 @@ bind[2]=bind[2].group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.inject(:|),v[0][1]
 end
 def Detect_Switch_bind_lb_2_rb__lt__9f51(bind)
 bind[2]<<[CharLattice["default"],Apply["fails"]] unless bind[1].include?("default")
-end
-def Detect_Switch_bind_lb_5_rb__lt__dccc(bind)
-bind[5]<<bind[7]
 end
 def Detect_Switch_bind_lb_8_rb__eq__213a(bind)
 bind[8]=unempty(bind[8])
@@ -751,9 +754,6 @@ end
 def Detect_ClasSwitch__append_lp__324d(bind)
 _append(bind[8],bind[13])
 end
-def Detect_ClasSwitch__append_lp__37c5(bind)
-_append(bind[6],bind[8])
-end
 def Detect_ClasSwitch__append_lp__6948(bind)
 _append(bind[3],bind[6])
 end
@@ -762,6 +762,9 @@ _append(bind[4],bind[7])
 end
 def Detect_ClasSwitch__append_lp__73f1(bind)
 _append(bind[0],bind[13])
+end
+def Detect_ClasSwitch__append_lp__984f(bind)
+_append(bind[12],bind[14])
 end
 def Detect_ClasSwitch__append_lp__cbd1(bind)
 _append(bind[0],bind[1])
@@ -805,6 +808,9 @@ end
 def Detect_ClasSwitch__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
+def Detect_ClasSwitch_bind_lb_11_rb__a30c(bind)
+bind[11]<<bind[13]
+end
 def Detect_ClasSwitch_bind_lb_1_rb_(bind)
 bind[1]|=first(bind[5])
 end
@@ -824,9 +830,6 @@ bind[2]=bind[2].map{|o,v| v==Placeholder ? [o,Apply["fails"]] : [o,v]}
 end
 def Detect_ClasSwitch_bind_lb_2_rb__eq__dbd4(bind)
 bind[2]=bind[2].map{|o,v| [ClasLattice[*o],v]}
-end
-def Detect_ClasSwitch_bind_lb_5_rb__lt__dccc(bind)
-bind[5]<<bind[7]
 end
 def Detect_ClasSwitch_c_eq_classs_ed6f(bind)
 c=classswitch(bind[1],bind[8],bind[2])
@@ -860,7 +863,7 @@ end
 
 
 def detect_switch_compiled_by
-'6225232704931f019c6712df52fe9696'
+'0cf25b901927c63d15a19525cb2f7a86'
 end
 def detect_switch_source_hash
 'ab4987e3769638cb0a4ef7af85bc8261'
@@ -869,6 +872,6 @@ def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'43dfa9d0d2332b91018670c372ce8d97'
+'1e0c41e3377ff3830db4519fdd52fc9d'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/detect_switch_c"
