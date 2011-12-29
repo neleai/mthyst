@@ -33,7 +33,7 @@ amethyst AmethystParser < Amethyst{
 	
 	sequence =  (nr prefixed)*:ary  @Seq
 
-  prefixed   = "&" inlineHostExpr:expr  -> Pred[expr]
+  prefixed   = "&" host_expr:expr  -> Pred[expr]
              | ("&" | "~"):neg  prefixed:m -> Lookahead[m,neg=="~"]
 						 | (modifier | "" &<.:\[> "."? {Apply["anything"]}):from 
 										(~_     (	 "=>" prefixed:{Pass[from,it]} 
@@ -41,7 +41,7 @@ amethyst AmethystParser < Amethyst{
 		 												 | ("*"| "+"):one  { Many[from,one=="+"]}
     		                     | "?"  {Or[from,Apply["empty"]]}
 													 	 | ":" (  (key | name):name ('[]'?):append {_Bind(name,from,append=='[]')}
-            		   					        | inlineHostExpr:e  {Seq[ _Bind("it",from) , Act[e] ]}
+            		   					        | host_expr:e  {Seq[ _Bind("it",from) , Act[e] ]}
 																   )
 										):from  )* {from}
 
@@ -53,7 +53,7 @@ amethyst AmethystParser < Amethyst{
 				| 'break' -> Seq[Cut[],Stop[]]
 		 	  | application
  			  | key:{Act[it]}
-			  | ("->" atomicHostExpr | "" inlineHostExpr):x    ->  Act[x]
+			  | ("->" line_host_expr | "" host_expr):x    ->  Act[x]
 				| '"'   ('"'  break| eChar:s[])* -> Apply["token" ,quote(s)]
 		 	  | '\''  ('\'' break| eChar:s[])* -> Apply["seq"   ,quote(s)]
 				| number:a '...' number:b {Apply["range_ex",a,b]}
@@ -64,26 +64,23 @@ amethyst AmethystParser < Amethyst{
 
   collect(ors) = -> a=autovar; Seq[Or[{:ary=>ors.ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
 	
-	application = "" (name:klas '::' name:rule {[klas,rule]} | name):rule argsOpt('(',')'):arg -> Apply[rule,arg]
+	application = "" (name:klas '::' name:rule {[klas,rule]} | name):rule argsOpt:arg -> Apply[rule,arg]
 
-	key         = "@" className:name {Result[{:name=>name,:vars=>Object.const_get(name).instance_variable_get(:@attrs)}]}
-              | "@" name:name  ->    Key[name]
-							| "@@" name:name -> Global[name]
+	key         = '@' className:name -> Result[{:name=>name,:vars=>Object.const_get(name).instance_variable_get(:@attrs)}]
+              | '@'      name:name -> Key[name]
+							| '@@'     name:name -> Global[name]
 
 
 	eChar = '\\' char:c   -> "\\#{c}"
   	  	| _args('#'+'{','}')
 				| char
 
-	ruleargs = (argsOpt('(',')'))=>[addargs]
-
-	addargs= Args[ :name {_Local(name) }:result[] ]* -> result || []
-
+	ruleargs = (argsOpt)=>[ Args[ :name {_Local(name) }:result[] ]* ] ->  result || []
 	
-	nr = ~("" name argsOpt('(',')') "=")
+	nr = ~("" name argsOpt "=")
 	
-	argsOpt(o,c) = args(o,c) 
-                | empty -> []
+	argsOpt = args('(',')') 
+          | {[]}
 
 	args(o,c) = __args(o,c):r { r+[',']}=>[procargs]
 						
@@ -98,7 +95,7 @@ amethyst AmethystParser < Amethyst{
 					 | '\'':s[] ('\'' break |  eChar)*:s[]  -> Strin[connectstring(s)]
 					 | ('...' | '..')
 					 | ( ":@":n[] | <$.:>:n[] | empty) ~_ name:n[] -> n*""
-					 | ~_ key
+					 | key
 					 | <^`{}()'"\[\]>
 
 	procargs = {@@ary=[];@@tmp=[]}
@@ -113,7 +110,7 @@ amethyst AmethystParser < Amethyst{
 	name           =  (<_a-zA-Z> <_a-zA-Z0-9>*)[]:{it*""}
   className      =  (    <A-Z> <_a-zA-Z0-9>*)[]:{it*""}
 	
-	inlineHostExpr = __args('{','}'):r {[Args[{:ary=>r}]]}
+	host_expr = __args('{','}'):r {[Args[{:ary=>r}]]}
 
-	atomicHostExpr = (~endline .)*:s   {"{#{s*""}}"}=>[ inlineHostExpr ]
+	line_host_expr = (~endline .)*:s   {"{#{s*""}}"}=>[ host_expr ]
 }
