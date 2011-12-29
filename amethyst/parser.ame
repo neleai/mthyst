@@ -20,11 +20,11 @@ end
 amethyst AmethystParser < Amethyst{
 	igrammar = ((~'amethyst'   . )+:{it*""} | grammar)*:a -> a
 
-	grammar = "amethyst" name:name ("<" name:parent |empty {parent="Amethyst"} ) 
+	grammar = "amethyst" "" name:name ("<" "" name:parent |empty {parent="Amethyst"} ) 
 "{" rule*:rules "}"  @Grammar
 	
   rule = {@@locals=[];$appends=[];@@bnding=Bnding[]} {@@bnding}:bnding  
-				 name:name  ruleargs:args "=" expression:body  
+				 "" name:name  ruleargs:args "=" expression:body  
 	   		 {_body(body)}:body {@@locals.uniq}:locals {body=Seq[{:ary=>($appends.uniq.map{|a| _Bind(a,Act["[]"])}+[body])}]; }	 @Rule
 
 	expression = choice
@@ -48,7 +48,7 @@ amethyst AmethystParser < Amethyst{
  		modifier = term
              | "#" (~endline .)*:c -> Comment[c]
 
-	term  =  className:cls -> Apply["clas",cls]
+	term  = "" className:cls -> Apply["clas",cls]
 				| "nested" '(' expression:expr ")" -> Nested[expr]
 				| "break" -> Seq[Cut[],Stop[]]
 		 	  | application
@@ -62,13 +62,14 @@ amethyst AmethystParser < Amethyst{
       	| "<" (">" break | eChar:x[])*                            ->  Apply["regch","/[#{x*""}]/"]
 		    | "(" expression:x ")" ( '[]'	collect(x) | empty {x} )
 
-	application = (name:klas '::' name:rule {[klas,rule]} | name):rule argsOpt('(',')'):arg -> Apply[rule,arg]
+  collect(ors) = -> a=autovar; Seq[Or[{:ary=>ors.ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
+	
+	application = "" (name:klas '::' name:rule {[klas,rule]} | name):rule argsOpt('(',')'):arg -> Apply[rule,arg]
 
 	key         = "@" className:name {Result[{:name=>name,:vars=>Object.const_get(name).instance_variable_get(:@attrs)}]}
               | "@" name:name  ->    Key[name]
 							| "@@" name:name -> Global[name]
 
-  collect(ors) = -> a=autovar.normalize; Seq[Or[{:ary=>ors.ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
 
 	eChar = '\\' char:c   -> "\\#{c}"
   	  	| _args('#'+'{','}')
@@ -79,7 +80,7 @@ amethyst AmethystParser < Amethyst{
 	addargs= Args[ :name {_Local(name) }:result[] ]* -> result || []
 
 	
-	nr = ~(name argsOpt('(',')') "=")
+	nr = ~("" name argsOpt('(',')') "=")
 	
 	argsOpt(o,c) = args(o,c) 
                 | empty -> []
@@ -109,9 +110,8 @@ amethyst AmethystParser < Amethyst{
 	procargs2 =	Args[ procargs2* ]
 						| .:a {@@tmp<<a}
 
-
-	name           = "" (<_a-zA-Z> <_a-zA-Z0-9>*)[]:{it*""}
-  className      = ""     (<A-Z> <_a-zA-Z0-9>*)[]:{it*""}
+	name           =  (<_a-zA-Z> <_a-zA-Z0-9>*)[]:{it*""}
+  className      =  (    <A-Z> <_a-zA-Z0-9>*)[]:{it*""}
 	
 	inlineHostExpr = __args('{','}'):r {[Args[{:ary=>r}]]}
 

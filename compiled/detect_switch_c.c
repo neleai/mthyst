@@ -1300,7 +1300,7 @@ VALUE Detect_Switch_traverse(VALUE self );
 VALUE Detect_Switch_traverse_item(VALUE self );
 VALUE Detect_Switch_visit(VALUE self );
 VALUE switchhashDetect_First1;
-VALUE switchhashDetect_Switch1;
+VALUE switchhashDetect_Switch2;
 VALUE switchhashDetect_Switch3;
 VALUE switchhashTraverser_Clone21;
 static VALUE c_Or;
@@ -1424,7 +1424,7 @@ alt1_3: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
  it=bind_aget(bind,1/*p*/); bind_aset(bind,3/*autovar*/,it);
 cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=bind_aget(bind,3/*autovar*/);ptr->len=1;
- unsigned char chr1=FIX2LONG(rb_hash_aref(switchhashDetect_Switch3,rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:;   it=AmethystCore_anything(self ); FAILTEST(pass1); bind_aset(bind,4/*autovar*/,it);
+ unsigned char chr1=FIX2LONG(rb_hash_aref(switchhashDetect_Switch2,rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:;   it=AmethystCore_anything(self ); FAILTEST(pass1); bind_aset(bind,4/*autovar*/,it);
 int oldpos2=ame_getpos(self);
 alt2_1: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto pass1;}
  it=bind_aget(bind,4/*autovar*/); bind_aset(bind,5/*autovar*/,it);
@@ -1520,7 +1520,7 @@ return it;
 fail: return failobj; }
 VALUE Detect_Switch_split(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(16);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-unsigned char chr1=FIX2LONG(rb_hash_aref(switchhashDetect_Switch1,rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:;   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,0/*autovar*/,it);
+unsigned char chr1=FIX2LONG(rb_hash_aref(switchhashDetect_Switch3,rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:;   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,0/*autovar*/,it);
 int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
  it=bind_aget(bind,0/*autovar*/); bind_aset(bind,1/*autovar*/,it);
@@ -2280,8 +2280,8 @@ failobj=rb_eval_string("FAIL");
 c_Or=rb_const_get(rb_cObject, rb_intern("Or"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Or);
 c_Rule=rb_const_get(rb_cObject, rb_intern("Rule"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Rule);
 switchhashDetect_First1=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Grammar\nnext h[k]=1 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashDetect_First1);
-switchhashDetect_Switch1=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Bind\nnext h[k]=1 if k<=Or\nnext h[k]=2 if k<=Seq\nnext h[k]=3 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashDetect_Switch1);
-switchhashDetect_Switch3=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Or\nnext h[k]=1 if k<=Seq\nnext h[k]=2 if k<=Switch\nnext h[k]=3 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashDetect_Switch3);
+switchhashDetect_Switch2=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Or\nnext h[k]=1 if k<=Seq\nnext h[k]=2 if k<=Switch\nnext h[k]=3 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashDetect_Switch2);
+switchhashDetect_Switch3=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Bind\nnext h[k]=1 if k<=Or\nnext h[k]=2 if k<=Seq\nnext h[k]=3 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashDetect_Switch3);
 switchhashTraverser_Clone21=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashTraverser_Clone21);
 sy_Detect_Switch_CharLatt_66f5=rb_intern("Detect_Switch_CharLatt_66f5");
 sy_Detect_Switch_Or_lb__ti_bind_2290=rb_intern("Detect_Switch_Or_lb__ti_bind_2290");
@@ -2393,4 +2393,4 @@ rb_define_method(cls_Detect_ClasSwitch,"root",Detect_ClasSwitch_root,0);
 rb_define_method(cls_Detect_ClasSwitch,"traverse",Detect_ClasSwitch_traverse,0);
 rb_define_method(cls_Detect_ClasSwitch,"traverse_item",Detect_ClasSwitch_traverse_item,0);
 rb_define_method(cls_Detect_ClasSwitch,"visit",Detect_ClasSwitch_visit,0);
- rb_eval_string("testversiondetect_switch('fd54c92eaafa1a53f49d43fe35a973ed')");}
+ rb_eval_string("testversiondetect_switch('6f7519665000f40b0ca15c10b7d79451')");}

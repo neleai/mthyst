@@ -268,11 +268,11 @@ end
 def AmethystParser__qu__sh__qu__pl__qu__le__qu__b26e(bind)
 '#'+'{'
 end
-def AmethystParser_a_eq_autova_a420(bind)
-a=autovar.normalize; Seq[Or[{:ary=>bind[19].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
+def AmethystParser_a_eq_autova_9797(bind)
+a=autovar; Seq[Or[{:ary=>bind[19].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
 end
-def AmethystParser_a_eq_autova_ae6e(bind)
-a=autovar.normalize; Seq[Or[{:ary=>bind[0].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
+def AmethystParser_a_eq_autova_ece2(bind)
+a=autovar; Seq[Or[{:ary=>bind[0].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
 end
 def AmethystParser_bind_lb_0_rb__sp__f8b9(bind)
 bind[0] || []
@@ -315,15 +315,15 @@ end
 
 
 def parser_compiled_by
-'a88b0f0806a006c35cbab57e40d9dc96'
+'06c4f49d02c34502aa1023682de5bad6'
 end
 def parser_source_hash
-'f238318b60ab5954d743395b0cab9ad9'
+'6af57dcbe8b70784816f5005a84c4711'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'887eb516366494682b9e2c332dce8595'
+'8dfa53739657e70633300a2752966083'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/parser_c"

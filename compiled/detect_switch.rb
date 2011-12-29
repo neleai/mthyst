@@ -872,7 +872,7 @@ end
 
 
 def detect_switch_compiled_by
-'a88b0f0806a006c35cbab57e40d9dc96'
+'06c4f49d02c34502aa1023682de5bad6'
 end
 def detect_switch_source_hash
 'ab4987e3769638cb0a4ef7af85bc8261'
@@ -881,6 +881,6 @@ def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'fd54c92eaafa1a53f49d43fe35a973ed'
+'6f7519665000f40b0ca15c10b7d79451'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/detect_switch_c"
