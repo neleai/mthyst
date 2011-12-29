@@ -23,6 +23,6 @@ amethyst Left_Factor < Traverser_Clone2 {
 	visit=Or[ traverse[ .:x factor([],first(x),[x]) ] ]		
 	
 	factor(prev,start,cur) = .:next ( &{start==first(next)} factor(prev,start,cur+[next])
-	  														  | &{!(start==first(next))} factor(prev+merge(cur),first(next),[next]) )
+	  														  | ~{start==first(next)} factor(prev+merge(cur),first(next),[next]) )
 											 | eof -> Or[*(prev+merge(cur))]
 }

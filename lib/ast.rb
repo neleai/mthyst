@@ -207,8 +207,7 @@ class Act
 end
 class Pred
 def self.[](e,neg=false)
-	puts e.inspect
-	return Apply["fails"] if neg
+	return Pred[Args["!(",e,")"]] if neg
 	Act[e,true]
 end
 end
