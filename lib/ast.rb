@@ -231,7 +231,7 @@ class Apply
 			return @ary[1][0][0] if @ary[1].is_a?(Act) && @ary[1][0].is_a?(Lambda)
 		end
 		if name=="_seq"
-			return Placeholder if @ary[1].is_a?(CAct) && @ary[1][0].size==15
+			return Placeholder if @ary[1].is_a?(CAct) && @ary[1][0]==""
 		end 
 		self.freeze
 	end
