@@ -616,8 +616,7 @@ if (strncmp(ame_curstr(self),"?",1)) goto alt2_5; else ame_setpos(self,ame_getpo
  
 ame_setcut(self,Qnil);goto accept2;
 alt2_5: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
- it=rb_obj_clone(s__co__853a); bind_aset(bind,0/*s*/,it);
-  it=Amethyst_spaces(self ); FAILTEST(alt2_6);it=rb_obj_clone(s__co__853a); bind_aset(bind,1/*s*/,it);
+ it=rb_obj_clone(s__co__853a); bind_aset(bind,1/*s*/,it);
 if (strncmp(ame_curstr(self),":",1)) goto alt2_6; else ame_setpos(self,ame_getpos(self)+1);int oldpos5=ame_getpos(self);
 alt4_1: ame_setpos(self,oldpos5);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt2_6;}
  int oldpos6=ame_getpos(self);
@@ -1994,4 +1993,4 @@ rb_define_method(cls_AmethystParser,"rule",AmethystParser_rule,0);
 rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
 rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
 rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
- rb_eval_string("testversionparser('9349c9d8ecd7f698632ad5bc64674c06')");}
+ rb_eval_string("testversionparser('7c7ebf647a60691160e51f6e8f84264d')");}
