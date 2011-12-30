@@ -19,12 +19,11 @@ end
 
 class AmethystParser < Amethyst
 
-def AmethystParser_Act_lb_bind_c395(bind)
-Act[bind[2]]
-
+def AmethystParser_Act_lb_Args_245f(bind)
+Act[Args[{:ary=>bind[4]}]]
 end
-def AmethystParser_Act_lb_bind_ef7e(bind)
-Act[bind[5]]
+def AmethystParser_Act_lb_bind_3e5d(bind)
+Act[bind[3]]
 end
 def AmethystParser_Apply_lb__dq_a_eeac(bind)
 Apply["anything"]
@@ -33,18 +32,18 @@ def AmethystParser_Apply_lb__dq_c_6e5e(bind)
 Apply["clas",bind[3]]
 
 end
-def AmethystParser_Apply_lb__dq_m_bbd9(bind)
-Apply["member",bind[5]]
+def AmethystParser_Apply_lb__dq_m_2ae7(bind)
+Apply["member",bind[3]]
 end
-def AmethystParser_Apply_lb__dq_r_3140(bind)
-Apply["regch","/["+bind[2].join+"]/"]
+def AmethystParser_Apply_lb__dq_r_7fae(bind)
+Apply["regch","/["+bind[1].join+"]/"]
 
 end
-def AmethystParser_Apply_lb__dq_r_6b61(bind)
-Apply["range_in",bind[14],bind[15]]
+def AmethystParser_Apply_lb__dq_r_ee57(bind)
+Apply["range_in",bind[7],bind[8]]
 end
-def AmethystParser_Apply_lb__dq_r_c412(bind)
-Apply["range_ex",bind[14],bind[15]]
+def AmethystParser_Apply_lb__dq_r_f71c(bind)
+Apply["range_ex",bind[7],bind[8]]
 end
 def AmethystParser_Apply_lb__dq_s_59f4(bind)
 Apply["seq"   ,quote(bind[0])]
@@ -74,8 +73,8 @@ def AmethystParser_Args_lb__le__co_a_f34c(bind)
 Args[{:ary=>([bind[0]]+bind[2]+[bind[1]])}]
 
 end
-def AmethystParser_Comment_lb__7662(bind)
-Comment[bind[5]]
+def AmethystParser_Comment_lb__0dad(bind)
+Comment[bind[15]]
 
 end
 def AmethystParser_Global_lb_b_8edb(bind)
@@ -100,8 +99,8 @@ end
 def AmethystParser_Many_lb_bin_8cb5(bind)
 Many[bind[6],bind[8]=="+"]
 end
-def AmethystParser_Nested_lb_b_e419(bind)
-Nested[bind[3]]
+def AmethystParser_Nested_lb_b_40d1(bind)
+Nested[bind[16]]
 
 end
 def AmethystParser_Or_dot_creat_67f0(bind)
@@ -113,8 +112,8 @@ end
 def AmethystParser_Pass_lb_bin_5be3(bind)
 Pass[bind[6],bind[13]]
 end
-def AmethystParser_Pred_lb_bin_f80c(bind)
-Pred[bind[3],bind[2]=="~"]
+def AmethystParser_Pred_lb_bin_bcee(bind)
+Pred[bind[3][0],bind[2]=="~"]
 
 end
 def AmethystParser_Result_lb__le__5876(bind)
@@ -153,12 +152,6 @@ end
 def AmethystParser__append_lp__0e08(bind)
 _append(bind[0],bind[19])
 end
-def AmethystParser__append_lp__159c(bind)
-_append(bind[2],bind[19])
-end
-def AmethystParser__append_lp__2489(bind)
-_append(bind[8],bind[10])
-end
 def AmethystParser__append_lp__29a3(bind)
 _append(bind[0],bind[2])
 end
@@ -180,11 +173,11 @@ end
 def AmethystParser__append_lp__4f82(bind)
 _append(bind[7],bind[9])
 end
-def AmethystParser__append_lp__653e(bind)
-_append(bind[0],bind[9])
-end
 def AmethystParser__append_lp__66a2(bind)
 _append(bind[0],bind[12])
+end
+def AmethystParser__append_lp__69d3(bind)
+_append(bind[0],bind[23])
 end
 def AmethystParser__append_lp__6f56(bind)
 _append(bind[5],bind[6])
@@ -201,11 +194,17 @@ end
 def AmethystParser__append_lp__835a(bind)
 _append(bind[17],bind[18])
 end
-def AmethystParser__append_lp__85a1(bind)
-_append(bind[1],bind[7])
+def AmethystParser__append_lp__9ca5(bind)
+_append(bind[10],bind[11])
+end
+def AmethystParser__append_lp__ae51(bind)
+_append(bind[1],bind[12])
 end
 def AmethystParser__append_lp__b2a5(bind)
 _append(bind[0],bind[4])
+end
+def AmethystParser__append_lp__baa3(bind)
+_append(bind[22],bind[24])
 end
 def AmethystParser__append_lp__be4f(bind)
 _append(bind[1],bind[10])
@@ -216,8 +215,8 @@ end
 def AmethystParser__append_lp__d113(bind)
 _append(bind[1],bind[2])
 end
-def AmethystParser__append_lp__dd73(bind)
-_append(bind[3],bind[4])
+def AmethystParser__append_lp__f960(bind)
+_append(bind[18],bind[20])
 end
 def AmethystParser__at_ary_eq__lb__rb_(bind)
 @ary=[];@tmp=[]
@@ -271,9 +270,6 @@ end
 def AmethystParser__dq__sh__dq__b65f(bind)
 "#"
 end
-def AmethystParser__lb_Args_lb__le__co__7a9f(bind)
-[Args[{:ary=>bind[4]}]]
-end
 def AmethystParser__lb__rb_(bind)
 []
 
@@ -287,12 +283,12 @@ end
 def AmethystParser__qu__sh__qu__pl__qu__le__qu__b26e(bind)
 '#'+'{'
 end
-def AmethystParser_a_eq_autova_7996(bind)
-a=autovar; Seq[Or[{:ary=>bind[20].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
-
-end
 def AmethystParser_a_eq_autova_91af(bind)
 a=autovar; Seq[Or[{:ary=>bind[0].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
+
+end
+def AmethystParser_a_eq_autova_f697(bind)
+a=autovar; Seq[Or[{:ary=>bind[27].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
 
 end
 def AmethystParser_bind_lb_0_rb_(bind)
@@ -353,15 +349,15 @@ end
 
 
 def parser_compiled_by
-'e5473028088c87025d19683c25f0ebbf'
+'3d2c2684d4de2070c0ae407c5e6ed496'
 end
 def parser_source_hash
-'d9ba3c9adcb0fc5a2efa9045cb149908'
+'64bde3c25b4248978e09eb711eb04984'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'8d210322c49877b041a7bff391c363ae'
+'e9d6a3ae206db76959ac77bd0726264e'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/parser_c"
