@@ -58,7 +58,7 @@ amethyst AmethystParser < Amethyst{
 		 	  | '\''  ('\'' break| eChar:s[])* -> Apply["seq"   ,quote(s)]
 				| number:a '...' number:b {Apply["range_ex",a,b]}
  				| number:a '..' number:b {Apply["range_in",a,b]}
-			  | number:{Apply["exactly",it]}
+			  | number:{Apply["member",it]}
       	| '<' (">" break | eChar:x[])* ->  Apply["regch","/["+x.join+"]/"]
 		    | '(' expression:x ")" ( '[]'	collect(x) | empty {x} )
 

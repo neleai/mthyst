@@ -24,6 +24,7 @@ amethyst Amethyst < AmethystCore {
 
   listOf(rule,delim) =  apply(rule):f[] (apply(delim) apply(rule))*:f[] -> f
                          | empty -> []
+	until(exp)   = (apply(exp) break | .)*
 	replace(exp) = (apply(exp) | .):{it*""}
 
 
@@ -33,16 +34,16 @@ amethyst Amethyst < AmethystCore {
 	token(s) = spaces seq(s)
 	seq(s) = _seq(s) {s}
 	
-  exactly(wanted) = .:x &{wanted === x} {x}
-	true = exactly(true)
-	false= exactly(false)	
-	nil  = exactly(nil) 
+  member(x) = .:a &{x === a} {a}
+	true = member(true)
+	false= member(false)	
+	nil  = member(nil) 
 
-  clas(cls)     = exactly(cls)
-	range_in(a,b) = exactly(a.. b)
-	range_ex(a,b)	= exactly(a...b)
+  clas(cls)     = member(cls)
+	range_in(a,b) = member(a.. b)
+	range_ex(a,b)	= member(a...b)
 
-	regch(regex) = exactly(regex)
+	regch(regex) = member(regex)
   
 	parse(rule,obj) = {obj}[apply(rule)]
 }
