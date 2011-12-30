@@ -8,8 +8,8 @@ end
 
 class Left_Factor < Traverser_Clone2
 
-def Left_Factor_Bind_lb_src_4a7e(bind)
-Bind[src.name,bind[7]]
+def Left_Factor_Bind_lb_src_5e26(bind)
+Bind[src.name,bind[5]]
 end
 def Left_Factor_Or_lb__ti__lp_bin_142c(bind)
 Or[*(bind[2]+merge(bind[3]))]
@@ -24,21 +24,6 @@ Seq[[bind[7]]+bind[6]]
 end
 def Left_Factor__append_lp__088f(bind)
 _append(bind[4],bind[5])
-end
-def Left_Factor__append_lp__324d(bind)
-_append(bind[8],bind[13])
-end
-def Left_Factor__append_lp__473a(bind)
-_append(bind[13],bind[14])
-end
-def Left_Factor__append_lp__984f(bind)
-_append(bind[12],bind[14])
-end
-def Left_Factor__append_lp__be78(bind)
-_append(bind[11],bind[12])
-end
-def Left_Factor__append_lp__cbd1(bind)
-_append(bind[0],bind[1])
 end
 def Left_Factor__at_changed_5352(bind)
 @changed=true
@@ -67,17 +52,17 @@ end
 def Left_Factor__lp_bind_lb_1_rb__68a2(bind)
 (bind[1]==first(bind[0])) || FAIL
 end
+def Left_Factor__lp_bind_lb_2_rb__6693(bind)
+(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
+end
 def Left_Factor__lp_bind_lb_4_rb__ba59(bind)
 (bind[4]==first(bind[6])) || FAIL
-end
-def Left_Factor__lp_bind_lb_4_rb__d863(bind)
-(bind[4]||=bind[3].dup;bind[5]=true;bind[4].instance_variable_set(bind[10],bind[11])) if @changed && bind[11]!=instance_variable_get(bind[10])
 end
 def Left_Factor__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Left_Factor_bind_lb_11_rb__a30c(bind)
-bind[11]<<bind[13]
+def Left_Factor_bind_lb_11_rb__6cc7(bind)
+bind[11]<<bind[12]
 end
 def Left_Factor_bind_lb_2_rb__pl__9bc3(bind)
 bind[2]+merge(bind[3])
@@ -100,11 +85,11 @@ end
 def Left_Factor_first_lp_bi_a16c(bind)
 first(bind[2])
 end
-def Left_Factor_if_sp_bind_lb__b5ce(bind)
-if bind[5]
-             @changed=true;bind[4].normalize
+def Left_Factor_if_sp_bind_lb__f1e9(bind)
+if bind[3]
+             @changed=true;bind[2].normalize
            else
-            @changed=bind[2]
+            @changed=bind[0]
             src
           end
 end
@@ -119,7 +104,7 @@ end
 
 
 def left_factor_compiled_by
-'eabdf471dcdcb79d65c42e241aaa379b'
+'d6b7533a0e14a41ce826111ea311175e'
 end
 def left_factor_source_hash
 '13ac88a620044bb451529ded733cdbf5'
@@ -128,6 +113,6 @@ def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version
 end
 def left_factor_version
-'061fd17201bb91dbb14b04b5ab86f0c1'
+'33f3899832caea9205d583f5d00e664e'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/left_factor_c"

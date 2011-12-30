@@ -2,38 +2,35 @@
 
 class Remove_Left_Recursion < Traverser_Clone2
 
-def Remove_Left_Recursion_Bind_lb_bin_90ac(bind)
-Bind[bind[20],bind[22]]
+def Remove_Left_Recursion_Bind_lb_bin_9eb9(bind)
+Bind[bind[19],bind[21]]
 end
 def Remove_Left_Recursion_Bind_lb_bin_b21e(bind)
 Bind[bind[6],bind[8]]
 end
-def Remove_Left_Recursion_Seq_lb_Seq_lb__a971(bind)
-Seq[Seq[bind[9]+[Or[*bind[1]]]],Many[Act[Args["x=",bind[6],";bind.reset;",bind[6],"=x"]],Seq[bind[9]+[Or[*bind[0]]]+bind[34]]],bind[6]]
+def Remove_Left_Recursion_Seq_lb_Seq_lb__5a71(bind)
+Seq[Seq[bind[9]+[Or[*bind[1]]]],Many[Act[Args["x=",bind[6],";bind.reset;",bind[6],"=x"]],Seq[bind[9]+[Or[*bind[0]]]+bind[31]]],bind[6]]
 end
-def Remove_Left_Recursion_Seq_lb__ti__lp__lb_b_e705(bind)
-Seq[*([bind[24]]+bind[27])]
+def Remove_Left_Recursion_Seq_lb__ti__lp__lb_b_0081(bind)
+Seq[*([bind[23]]+bind[26])]
 end
-def Remove_Left_Recursion__append_lp__05b0(bind)
-_append(bind[25],bind[26])
+def Remove_Left_Recursion__append_lp__0bba(bind)
+_append(bind[24],bind[25])
 end
-def Remove_Left_Recursion__append_lp__1c02(bind)
-_append(bind[1],bind[31])
+def Remove_Left_Recursion__append_lp__0bcf(bind)
+_append(bind[29],bind[30])
 end
-def Remove_Left_Recursion__append_lp__50f6(bind)
-_append(bind[0],bind[28])
+def Remove_Left_Recursion__append_lp__32b1(bind)
+_append(bind[1],bind[28])
 end
-def Remove_Left_Recursion__append_lp__b601(bind)
-_append(bind[32],bind[33])
+def Remove_Left_Recursion__append_lp__4b4c(bind)
+_append(bind[0],bind[27])
 end
 def Remove_Left_Recursion__append_lp__b6c7(bind)
 _append(bind[7],bind[8])
 end
-def Remove_Left_Recursion__append_lp__e0fb(bind)
-_append(bind[11],bind[30])
-end
-def Remove_Left_Recursion__lp_src_dot_nam_031a(bind)
-(src.name==bind[15]) || FAIL
+def Remove_Left_Recursion__lp_src_dot_nam_5024(bind)
+(src.name==bind[14]) || FAIL
 end
 def Remove_Left_Recursion__lp_src_dot_nam_58e8(bind)
 (src.name==bind[1]) || FAIL
@@ -60,7 +57,7 @@ end
 
 
 def remove_left_rigth_recursion_compiled_by
-'eabdf471dcdcb79d65c42e241aaa379b'
+'d6b7533a0e14a41ce826111ea311175e'
 end
 def remove_left_rigth_recursion_source_hash
 '82f5682f26abef9436e5f92f8bc34754'
@@ -69,6 +66,6 @@ def testversionremove_left_rigth_recursion(r)
  raise "invalid version" if r!=remove_left_rigth_recursion_version
 end
 def remove_left_rigth_recursion_version
-'ee7931bc25e8beb915acb8f94673baed'
+'4032a3481db8025002cc197f1c6f56c4'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/remove_left_rigth_recursion_c"

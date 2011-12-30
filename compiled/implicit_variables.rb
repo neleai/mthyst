@@ -1,16 +1,10 @@
 class Detect_Implicit_Variables < Visitor
 
-def Detect_Implicit_Variables__append_lp__088f(bind)
-_append(bind[4],bind[5])
-end
 def Detect_Implicit_Variables__append_lp__4de3(bind)
 _append(bind[2],bind[3])
 end
 def Detect_Implicit_Variables__append_lp__9ca5(bind)
 _append(bind[10],bind[11])
-end
-def Detect_Implicit_Variables__append_lp__cbd1(bind)
-_append(bind[0],bind[1])
 end
 def Detect_Implicit_Variables__at_vars_a187(bind)
 @vars
@@ -36,21 +30,6 @@ end
 def Add_Implicit_Variables__Bind_lp_bi_e107(bind)
 _Bind(bind[3],src)
 end
-def Add_Implicit_Variables__append_lp__088f(bind)
-_append(bind[4],bind[5])
-end
-def Add_Implicit_Variables__append_lp__0d86(bind)
-_append(bind[9],bind[10])
-end
-def Add_Implicit_Variables__append_lp__324d(bind)
-_append(bind[8],bind[13])
-end
-def Add_Implicit_Variables__append_lp__984f(bind)
-_append(bind[12],bind[14])
-end
-def Add_Implicit_Variables__append_lp__cbd1(bind)
-_append(bind[0],bind[1])
-end
 def Add_Implicit_Variables__at_changed_5352(bind)
 @changed=true
 end
@@ -69,20 +48,20 @@ end
 def Add_Implicit_Variables__lp__at_vars_lb_b_8beb(bind)
 (@vars[bind[3]]> 1) || FAIL
 end
-def Add_Implicit_Variables__lp_bind_lb_4_rb__d863(bind)
-(bind[4]||=bind[3].dup;bind[5]=true;bind[4].instance_variable_set(bind[10],bind[11])) if @changed && bind[11]!=instance_variable_get(bind[10])
+def Add_Implicit_Variables__lp_bind_lb_2_rb__6693(bind)
+(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
 end
 def Add_Implicit_Variables__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Add_Implicit_Variables_bind_lb_11_rb__a30c(bind)
-bind[11]<<bind[13]
+def Add_Implicit_Variables_bind_lb_11_rb__6cc7(bind)
+bind[11]<<bind[12]
 end
-def Add_Implicit_Variables_if_sp_bind_lb__b5ce(bind)
-if bind[5]
-             @changed=true;bind[4].normalize
+def Add_Implicit_Variables_if_sp_bind_lb__f1e9(bind)
+if bind[3]
+             @changed=true;bind[2].normalize
            else
-            @changed=bind[2]
+            @changed=bind[0]
             src
           end
 end
@@ -94,7 +73,7 @@ end
 
 
 def implicit_variables_compiled_by
-'eabdf471dcdcb79d65c42e241aaa379b'
+'d6b7533a0e14a41ce826111ea311175e'
 end
 def implicit_variables_source_hash
 '6a0a31cf7e531a56757bd541162a71ff'
@@ -103,6 +82,6 @@ def testversionimplicit_variables(r)
  raise "invalid version" if r!=implicit_variables_version
 end
 def implicit_variables_version
-'871e9c88b0696e636d12a217fdc7b974'
+'709b21b41ac13cec6fec7ee39804a100'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/implicit_variables_c"

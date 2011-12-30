@@ -1,14 +1,5 @@
 class Traverser_Clone2 < Amethyst
 
-def Traverser_Clone2__append_lp__2489(bind)
-_append(bind[8],bind[10])
-end
-def Traverser_Clone2__append_lp__324d(bind)
-_append(bind[8],bind[13])
-end
-def Traverser_Clone2__append_lp__cbd1(bind)
-_append(bind[0],bind[1])
-end
 def Traverser_Clone2__at_changed_5352(bind)
 @changed=true
 end
@@ -18,20 +9,20 @@ end
 def Traverser_Clone2__at_changed_c681(bind)
 @changed
 end
-def Traverser_Clone2__lp_bind_lb_4_rb__d863(bind)
-(bind[4]||=bind[3].dup;bind[5]=true;bind[4].instance_variable_set(bind[10],bind[11])) if @changed && bind[11]!=instance_variable_get(bind[10])
+def Traverser_Clone2__lp_bind_lb_2_rb__6693(bind)
+(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
 end
 def Traverser_Clone2__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Traverser_Clone2_bind_lb_7_rb__lt__8604(bind)
-bind[7]<<bind[9]
+def Traverser_Clone2_bind_lb_7_rb__lt__4e47(bind)
+bind[7]<<bind[8]
 end
-def Traverser_Clone2_if_sp_bind_lb__b5ce(bind)
-if bind[5]
-             @changed=true;bind[4].normalize
+def Traverser_Clone2_if_sp_bind_lb__f1e9(bind)
+if bind[3]
+             @changed=true;bind[2].normalize
            else
-            @changed=bind[2]
+            @changed=bind[0]
             src
           end
 end
@@ -46,11 +37,8 @@ end
 
 class Visitor < Amethyst
 
-def Visitor__append_lp__088f(bind)
-_append(bind[4],bind[5])
-end
-def Visitor__append_lp__cbd1(bind)
-_append(bind[0],bind[1])
+def Visitor__append_lp__4de3(bind)
+_append(bind[2],bind[3])
 end
 def Visitor__append_lp__d472(bind)
 _append(bind[6],bind[7])
@@ -63,7 +51,7 @@ end
 
 
 def traverser_compiled_by
-'eabdf471dcdcb79d65c42e241aaa379b'
+'d6b7533a0e14a41ce826111ea311175e'
 end
 def traverser_source_hash
 '102e4f870eb0748a3420fd0f2398e4a9'
@@ -72,6 +60,6 @@ def testversiontraverser(r)
  raise "invalid version" if r!=traverser_version
 end
 def traverser_version
-'342d7354b83b30c2641fc2d790dfcd06'
+'289e385921eea08c893108de5f0d863d'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/traverser_c"

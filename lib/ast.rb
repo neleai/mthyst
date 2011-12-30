@@ -178,13 +178,13 @@ class CAct
 	end
 end
 class Act
-	def self.[](expr=nil,pred=nil)
+	def self.[](expr=nil,pred=nil,pure=nil)
 		expr=expr[0] if expr.is_a?(Array) && expr.size<=1
 		expr=expr[0] if expr.is_a?(Act) && expr.size<=1
 		return expr if expr.is_a?(CAct) || expr.is_a?(Local)
 		return Act.create({:pred=>pred}) if expr==nil
 		expr=[expr] unless expr.is_a?(Array)
-		Act.create({:ary=>expr,:pred=>pred}).normalize
+		Act.create({:ary=>expr,:pred=>pred,:pure=>pure}).normalize
 	end
 	def normalize2
 		return self if !@ary
