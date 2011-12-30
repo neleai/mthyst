@@ -38,9 +38,9 @@ amethyst AmethystParser < Amethyst{
 						 | postfixed
 
 	postfixed =  "" term:from 
-										(~_     (	 "=>" prefixed:{Pass[from,it]} 
-												     | "[" expression:{from=Enter[from,it]} "]" {from}
-		 												 | ("*"| "+"):one  { Many[from,one=="+"]}
+										(~_     (	 '=>' prefixed:{Pass[from,it]} 
+												     | '[' expression:{from=Enter[from,it]} "]" {from}
+		 												 | ('*'| '+'):one  { Many[from,one=="+"]}
     		                     | "?"  {Or[from,Apply["empty"]]}
 													 	 | ":" (  (key | name):name ('[]'?):append {_Bind(name,from,append=='[]')}
             		   					        | host_expr:e  {Seq[ _Bind("it",from) , Act[e] ]}

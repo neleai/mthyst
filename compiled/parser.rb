@@ -97,8 +97,8 @@ def AmethystParser_Lookahea_0dfa(bind)
 Lookahead[bind[5],bind[2]=="~"]
 
 end
-def AmethystParser_Many_lb_bin_b13f(bind)
-Many[bind[2],bind[8]=="+"]
+def AmethystParser_Many_lb_bin_506b(bind)
+Many[bind[2],bind[7]=="+"]
 end
 def AmethystParser_Nested_lb_b_40d1(bind)
 Nested[bind[16]]
@@ -131,15 +131,15 @@ def AmethystParser_Seq_lb_Cut_lb__3505(bind)
 Seq[Cut[],Stop[]]
 
 end
-def AmethystParser_Seq_lb__Bin_c2de(bind)
-Seq[_Bind("it",bind[2]) , Act[bind[11]] ]
+def AmethystParser_Seq_lb__Bin_a08b(bind)
+Seq[_Bind("it",bind[2]) , Act[bind[10]] ]
 end
 def AmethystParser_Strin_lb_co_0638(bind)
 Strin[connectstring(bind[0])]
 
 end
-def AmethystParser__Bind_lp_bi_f1c7(bind)
-_Bind(bind[9],bind[2],bind[10]=='[]')
+def AmethystParser__Bind_lp_bi_732d(bind)
+_Bind(bind[8],bind[2],bind[9]=='[]')
 end
 def AmethystParser__Local_lp_b_1aba(bind)
 _Local(bind[5]) 
@@ -350,15 +350,15 @@ end
 
 
 def parser_compiled_by
-'dcce94fa5af841f0b079807a5872f22a'
+'64b82abe083bc1f63ddf86cd89e2eaa0'
 end
 def parser_source_hash
-'790d68d8a48706db710799cce17d89da'
+'7646533ad508e5cd1b9b9d2f961f060f'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'2292bf997929a7d7420e5194216e30e5'
+'9349c9d8ecd7f698632ad5bc64674c06'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/parser_c"
