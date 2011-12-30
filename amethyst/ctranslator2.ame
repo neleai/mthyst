@@ -72,7 +72,7 @@ amethyst AmethystCTranslator < Amethyst {
 	rbtrans = Local[.* {rbbget(@self)}]
 				 	 | Args[rbtrans2]
 					 | Array[rbtrans2] 
-		       | Key[.:name] -> (name=="self") ? "src" : "src.#{name}"
+		       | Key[.:name rbtrans:args] -> (name=="self") ? "src" : "src.#{name}#{args!="" ? "(#{args})":""}"
       		 | Global[:name] -> "@#{name}"
     		   | Lambda[addlambda ] 
 					 | Result[ {"#{@name}.create( {#{@vars.size.times.map{|i| ":#{@varnames[i]}=>#{rbbget(@vars[i])}" }.sort*","} })"} ]

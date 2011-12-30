@@ -81,8 +81,8 @@ end
 def AmethystParser_Grammar_dot__80c6(bind)
 Grammar.create( {:name=>bind[0],:parent=>bind[1],:rules=>bind[4] })
 end
-def AmethystParser_Key_lb_bind_7be1(bind)
-Key[bind[0]]
+def AmethystParser_Key_lb_bind_20b7(bind)
+Key[bind[0],bind[2]]
 
 end
 def AmethystParser_Lambda_lb___9c37(bind)
@@ -319,10 +319,6 @@ def AmethystParser_bind_lb_2_rb_(bind)
 bind[2]
 
 end
-def AmethystParser_bind_lb_3_rb_(bind)
-bind[3]
-
-end
 def AmethystParser_bind_lb_3_rb__eq__507c(bind)
 bind[3]=Seq[{:ary=>($appends.uniq.map{|a| _Bind(a,Act["[]"])}+[bind[3]])}]; 
 end
@@ -333,15 +329,15 @@ end
 def AmethystParser_bind_lb_4_rb__dot__e4b4(bind)
 bind[4].join
 end
+def AmethystParser_bind_lb_4_rb__pl__13b0(bind)
+bind[4]+[',']
+end
 def AmethystParser_bind_lb_5_rb_(bind)
 bind[5]
 
 end
 def AmethystParser_bind_lb_5_rb__dot__028b(bind)
 bind[5].join
-end
-def AmethystParser_bind_lb_5_rb__pl__5627(bind)
-bind[5]+[',']
 end
 def AmethystParser_bind_lb_6_rb_(bind)
 bind[6]
@@ -362,15 +358,15 @@ end
 
 
 def parser_compiled_by
-'3403c24c3d76d44ace4bd3d7f406d11d'
+'076a4706b36478bd50351f8289471691'
 end
 def parser_source_hash
-'686468da124e62d205fb9f13fc402ca6'
+'e2ebc398059b644db23bdd9c837fbe1b'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'d5b796f3921c726813214e777770c75e'
+'8deae01f6d2dc9924680b1af9ceeb986'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/parser_c"
