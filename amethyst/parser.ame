@@ -37,7 +37,7 @@ amethyst AmethystParser < Amethyst{
              | ("&" | "~"):neg prefixed:m    -> Lookahead[m,neg=="~"]
 						 | postfixed
 
-	postfixed =  "" (term | &<.:\[> "."? {Apply["anything"]}):from 
+	postfixed =  "" term:from 
 										(~_     (	 "=>" prefixed:{Pass[from,it]} 
 												     | "[" expression:{from=Enter[from,it]} "]" {from}
 		 												 | ("*"| "+"):one  { Many[from,one=="+"]}
@@ -51,6 +51,7 @@ amethyst AmethystParser < Amethyst{
 	term  = 'nested(' expression:expr ")" -> Nested[expr]
 				| 'break' -> Seq[Cut[],Stop[]]
 		 	  | call
+				| &<.:\[> '.'? -> Apply["anything"]
  			  | key:{Act[it]}
 			  | host_expr | line_host_expr
 				| '"'   ('"'  break| eChar:s[])* -> Apply["token" ,quote(s)]
