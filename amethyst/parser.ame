@@ -51,7 +51,7 @@ amethyst AmethystParser < Amethyst{
 	term  = className:cls -> Apply["clas",cls]
 				| 'nested' '(' expression:expr ")" -> Nested[expr]
 				| 'break' -> Seq[Cut[],Stop[]]
-		 	  | application
+		 	  | call
  			  | key:{Act[it]}
 			  | (line_host_expr | host_expr):x    ->  Act[x]
 				| '"'   ('"'  break| eChar:s[])* -> Apply["token" ,quote(s)]
@@ -64,8 +64,10 @@ amethyst AmethystParser < Amethyst{
 
   collect(ors) = -> a=autovar; Seq[Or[{:ary=>ors.ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
 	
-	application = "" (name:klas '::' name:rule {[klas,rule]} | name):rule argsOpt:arg -> Apply[rule,arg]
-
+	call = className:klas '::' name:name argsOpt:arg -> Apply[[klas,name],arg]
+			 | className:klas                            -> Apply["member",klas]
+			 |                     name:name argsOpt:arg -> Apply[name,arg]
+ 
 	key         = '@' className:name -> Result[{:name=>name,:vars=>Object.const_get(name).instance_variable_get(:@attrs)}]
               | '@'      name:name argsOpt:arg -> Key[name,arg]
 							| '@@'     name:name -> Global[name]

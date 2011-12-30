@@ -24,7 +24,6 @@ amethyst Amethyst < AmethystCore {
 
   listOf(rule,delim) =  apply(rule):f[] (apply(delim) apply(rule))*:f[] -> f
                          | empty -> []
-	until(exp)   = (apply(exp) break | .)*
 	replace(exp) = (apply(exp) | .):{it*""}
 
 
