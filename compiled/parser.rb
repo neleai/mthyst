@@ -19,12 +19,12 @@ end
 
 class AmethystParser < Amethyst
 
-def AmethystParser_Act_lb_bind_2f85(bind)
-Act[bind[6]]
-end
 def AmethystParser_Act_lb_bind_c395(bind)
 Act[bind[2]]
 
+end
+def AmethystParser_Act_lb_bind_ef7e(bind)
+Act[bind[5]]
 end
 def AmethystParser_Apply_lb__dq_a_eeac(bind)
 Apply["anything"]
@@ -33,22 +33,18 @@ def AmethystParser_Apply_lb__dq_c_6e5e(bind)
 Apply["clas",bind[3]]
 
 end
-def AmethystParser_Apply_lb__dq_m_5158(bind)
-Apply["member",bind[6]]
-end
-def AmethystParser_Apply_lb__dq_m_88b6(bind)
-Apply["member",bind[3]]
-
-end
-def AmethystParser_Apply_lb__dq_r_275b(bind)
-Apply["range_in",bind[15],bind[16]]
+def AmethystParser_Apply_lb__dq_m_bbd9(bind)
+Apply["member",bind[5]]
 end
 def AmethystParser_Apply_lb__dq_r_3140(bind)
 Apply["regch","/["+bind[2].join+"]/"]
 
 end
-def AmethystParser_Apply_lb__dq_r_6d06(bind)
-Apply["range_ex",bind[15],bind[16]]
+def AmethystParser_Apply_lb__dq_r_6b61(bind)
+Apply["range_in",bind[14],bind[15]]
+end
+def AmethystParser_Apply_lb__dq_r_c412(bind)
+Apply["range_ex",bind[14],bind[15]]
 end
 def AmethystParser_Apply_lb__dq_s_59f4(bind)
 Apply["seq"   ,quote(bind[0])]
@@ -104,8 +100,8 @@ end
 def AmethystParser_Many_lb_bin_8cb5(bind)
 Many[bind[6],bind[8]=="+"]
 end
-def AmethystParser_Nested_lb_b_8a16(bind)
-Nested[bind[5]]
+def AmethystParser_Nested_lb_b_e419(bind)
+Nested[bind[3]]
 
 end
 def AmethystParser_Or_dot_creat_67f0(bind)
@@ -157,8 +153,11 @@ end
 def AmethystParser__append_lp__0e08(bind)
 _append(bind[0],bind[19])
 end
-def AmethystParser__append_lp__26c5(bind)
-_append(bind[18],bind[19])
+def AmethystParser__append_lp__159c(bind)
+_append(bind[2],bind[19])
+end
+def AmethystParser__append_lp__2489(bind)
+_append(bind[8],bind[10])
 end
 def AmethystParser__append_lp__29a3(bind)
 _append(bind[0],bind[2])
@@ -181,11 +180,11 @@ end
 def AmethystParser__append_lp__4f82(bind)
 _append(bind[7],bind[9])
 end
+def AmethystParser__append_lp__653e(bind)
+_append(bind[0],bind[9])
+end
 def AmethystParser__append_lp__66a2(bind)
 _append(bind[0],bind[12])
-end
-def AmethystParser__append_lp__6ac6(bind)
-_append(bind[0],bind[7])
 end
 def AmethystParser__append_lp__6f56(bind)
 _append(bind[5],bind[6])
@@ -202,23 +201,14 @@ end
 def AmethystParser__append_lp__835a(bind)
 _append(bind[17],bind[18])
 end
+def AmethystParser__append_lp__85a1(bind)
+_append(bind[1],bind[7])
+end
 def AmethystParser__append_lp__b2a5(bind)
 _append(bind[0],bind[4])
 end
-def AmethystParser__append_lp__b40f(bind)
-_append(bind[1],bind[8])
-end
-def AmethystParser__append_lp__b494(bind)
-_append(bind[0],bind[10])
-end
-def AmethystParser__append_lp__b86d(bind)
-_append(bind[2],bind[20])
-end
 def AmethystParser__append_lp__be4f(bind)
 _append(bind[1],bind[10])
-end
-def AmethystParser__append_lp__c354(bind)
-_append(bind[9],bind[11])
 end
 def AmethystParser__append_lp__cbd1(bind)
 _append(bind[0],bind[1])
@@ -297,12 +287,12 @@ end
 def AmethystParser__qu__sh__qu__pl__qu__le__qu__b26e(bind)
 '#'+'{'
 end
-def AmethystParser_a_eq_autova_91af(bind)
-a=autovar; Seq[Or[{:ary=>bind[0].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
+def AmethystParser_a_eq_autova_7996(bind)
+a=autovar; Seq[Or[{:ary=>bind[20].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
 
 end
-def AmethystParser_a_eq_autova_c9d1(bind)
-a=autovar; Seq[Or[{:ary=>bind[21].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
+def AmethystParser_a_eq_autova_91af(bind)
+a=autovar; Seq[Or[{:ary=>bind[0].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
 
 end
 def AmethystParser_bind_lb_0_rb_(bind)
@@ -363,15 +353,15 @@ end
 
 
 def parser_compiled_by
-'45b5036a31ee126d7c350983dae3e945'
+'e5473028088c87025d19683c25f0ebbf'
 end
 def parser_source_hash
-'0b8d3e3796741d94da4bd051e23c7a34'
+'d9ba3c9adcb0fc5a2efa9045cb149908'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'b16e7016100e5e820c587deef9b790d4'
+'8d210322c49877b041a7bff391c363ae'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/parser_c"

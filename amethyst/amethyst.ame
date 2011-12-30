@@ -34,9 +34,7 @@ amethyst Amethyst < AmethystCore {
 	seq(s) = _seq(s) {s}
 	
   member(x) = .:a &{x === a} {a}
-	true = member(true)
-	false= member(false)	
-	nil  = member(nil) 
+	true = member(true) false = member(false)	nil = member(nil) 
 
   clas(cls)     = member(cls)
 	range_in(a,b) = member(a.. b)

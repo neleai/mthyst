@@ -365,7 +365,7 @@ end
 
 
 def ctranslator2_compiled_by
-'45b5036a31ee126d7c350983dae3e945'
+'e5473028088c87025d19683c25f0ebbf'
 end
 def ctranslator2_source_hash
 'f054ceeca034388154544bd17f3bb7b6'

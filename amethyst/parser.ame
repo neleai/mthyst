@@ -48,8 +48,7 @@ amethyst AmethystParser < Amethyst{
  		modifier = "" term
              | "#" (~endline .)*:c -> Comment[c]
 
-	term  = className:cls -> Apply["clas",cls]
-				| 'nested' '(' expression:expr ")" -> Nested[expr]
+	term  = 'nested(' expression:expr ")" -> Nested[expr]
 				| 'break' -> Seq[Cut[],Stop[]]
 		 	  | call
  			  | key:{Act[it]}
@@ -65,12 +64,12 @@ amethyst AmethystParser < Amethyst{
   collect(ors) = -> a=autovar; Seq[Or[{:ary=>ors.ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
 	
 	call = className:klas '::' name:name argsOpt:arg -> Apply[[klas,name],arg]
-			 | className:klas                            -> Apply["member",klas]
+			 | className:klas                            -> Apply["clas",klas]
 			 |                     name:name argsOpt:arg -> Apply[name,arg]
  
-	key         = '@' className:name -> Result[{:name=>name,:vars=>Object.const_get(name).instance_variable_get(:@attrs)}]
+	key         = '@' className:name             -> Result[{:name=>name,:vars=>Object.const_get(name).instance_variable_get(:@attrs)}]
               | '@'      name:name argsOpt:arg -> Key[name,arg]
-							| '@@'     name:name -> Global[name]
+							| '@@'     name:name             -> Global[name]
 
 
 	eChar = '\\' char:c   -> "\\#{c}"
@@ -86,7 +85,6 @@ amethyst AmethystParser < Amethyst{
 
 	args(o,c) = __args(o,c):r { r+[',']}=>[procargs]
 						
-
 	_args(o,c) = __args(o,c):r -> Args[{:ary=>([o]+r+[c])}]
 
 	__args(o,c) = seq(o) "" rubyarg*:r seq(c) -> r
@@ -113,6 +111,5 @@ amethyst AmethystParser < Amethyst{
   className      =  (    <A-Z> <_a-zA-Z0-9>*)[]:{it.join}
 	
 	host_expr = __args('{','}'):r {[Args[{:ary=>r}]]}
-
 	line_host_expr =  '->' (endline break | .)*:s   {"{"+s.join+"}"}=>[ host_expr ]
 }
