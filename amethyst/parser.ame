@@ -48,7 +48,7 @@ amethyst AmethystParser < Amethyst{
 										):from  )* {from}
 
 	until(e) = ( seq(e) break 
-             | _args('#'+'{','}'):x[]
+             | args('#'+'{','}'):x[]
              | ('\\':x[])? .:x[]
              )* -> x
 
@@ -78,7 +78,7 @@ amethyst AmethystParser < Amethyst{
 
 
 	eChar = '\\' char:c   -> "\\#{c}"
-  	  	| _args('#'+'{','}')
+  	  	| args('#'+'{','}')
 				| char
 	
 
@@ -86,21 +86,8 @@ amethyst AmethystParser < Amethyst{
 	
 	nr = ~("" name argsOpt "=")
 	
-	argsOpt = ~_  __args('(',')'):r { r+[',']}=>[procargs] 
+	argsOpt = ~_  _args('(',')'):r { r+[',']}=>[procargs] 
           | {[]}
-
-	_args(o,c) = __args(o,c):r -> Args[{:ary=>([o]+r+[c])}]
-
-	__args(o,c) = seq(o) "" rubyarg*:r seq(c) -> r
-		
-	rubyarg  = '`' expression:e '`' -> Lambda[_body(e)]
-           | _args('(',')')	| _args('[',']') | _args('{','}')
-					 | '"'  until('"' ):s  -> Strin[connectstring(['"']+s+['"'])]
-					 | '\'' until("'" ):s  -> Strin[connectstring(["'"]+s+["'"])]
-					 | ('...' | '..')
-					 | ( ":@":n[] | <$.:>:n[] )? ~_ name:n[] -> n.join
-					 | key
-					 | <^`'"(){}\[\]>
 
 	procargs = {@@ary=[];@@tmp=[]}
 						 ( .:c &{c==','} {@@ary<<Args[{:ary=>@@tmp}];@@tmp=[]}
@@ -111,9 +98,23 @@ amethyst AmethystParser < Amethyst{
 	procargs2 =	Args[ procargs2* ]
 						| .:a {@@tmp<<a}
 
+
+	args(o,c) = _args(o,c):r -> Args[{:ary=>([o]+r+[c])}]
+
+	_args(o,c) = seq(o) "" rubyarg*:r seq(c) -> r
+		
+	rubyarg  = '`' expression:e '`' -> Lambda[_body(e)]
+           | args('(',')')	| args('[',']') | args('{','}')
+					 | '"'  until('"' ):s  -> Strin[connectstring(['"']+s+['"'])]
+					 | '\'' until("'" ):s  -> Strin[connectstring(["'"]+s+["'"])]
+					 | ('...' | '..')
+					 | ( ":@":n[] | <$.:>:n[] )? ~_ name:n[] -> n.join
+					 | key
+					 | <^`'"(){}\[\]>
+
 	name           =  (<_a-zA-Z> <_a-zA-Z0-9>*)[]:{it.join}
   className      =  (    <A-Z> <_a-zA-Z0-9>*)[]:{it.join}
 	
-	host_expr = __args('{','}'):r {Act[Args[{:ary=>r}]]}
+	host_expr = _args('{','}'):r {Act[Args[{:ary=>r}]]}
 	line_host_expr =  '->' (endline break | .)*:s   {"{"+s.join+"}"}=>[ host_expr ]
 }
