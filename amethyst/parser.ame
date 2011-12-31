@@ -47,7 +47,10 @@ amethyst AmethystParser < Amethyst{
 																   )
 										):from  )* {from}
 
-	until(e) = (seq(e) break | ('\\':x[])? .:x[] )* -> x
+	until(e) = ( seq(e) break 
+             | _args('#'+'{','}'):x[]
+             | ('\\':x[])? .:x[]
+             )* -> x
 
 	term  = 'nested(' expression:expr ")" -> Nested[expr]
 				| 'break' -> Seq[Cut[],Stop[]]
@@ -93,13 +96,13 @@ amethyst AmethystParser < Amethyst{
 	__args(o,c) = seq(o) "" rubyarg*:r seq(c) -> r
 		
 	rubyarg  = '`' expression:e '`' -> Lambda[_body(e)]
-           | _args('(',')')					 | _args('[',']')					 | _args('{','}')
-					 |  '"':s[] ( '"' break |  eChar)*:s[]  -> Strin[connectstring(s)]
-					 | '\'':s[] ('\'' break |  eChar)*:s[]  -> Strin[connectstring(s)]
+           | _args('(',')')	| _args('[',']') | _args('{','}')
+					 | '"'  until('"' ):s  -> Strin[connectstring(['"']+s+['"'])]
+					 | '\'' until("'" ):s  -> Strin[connectstring(["'"]+s+["'"])]
 					 | ('...' | '..')
 					 | ( ":@":n[] | <$.:>:n[] | empty) ~_ name:n[] -> n.join
 					 | key
-					 | <^`{}()'"\[\]>
+					 | <^`'"(){}\[\]>
 
 	procargs = {@@ary=[];@@tmp=[]}
 						 ( .:c &{c==','} {@@ary<<Args[{:ary=>@@tmp}];@@tmp=[]}
