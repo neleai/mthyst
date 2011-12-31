@@ -38,12 +38,12 @@ amethyst AmethystParser < Amethyst{
 						 | "" postfixed
 
 	postfixed =  term:from 
-										(~_     (	 '=>' prefixed:{Pass[from,it]} 
-												     | '[' expression:{from=Enter[from,it]} "]" {from}
-		 												 | <+*>:one  { Many[from,one=="+"]}
-    		                     | '?'  {Or[from,Apply["empty"]]}
-													 	 | ':' (  (key | name):name ('[]'?):append {_Bind(name,from,append=='[]')}
-            		   					        | host_expr:e  {Seq[ _Bind("it",from) , Act[e] ]}
+										(~_     (	 '=>'     term:{Pass[from,it]} 
+												     | '['      expression:{from=Enter[from,it]} "]" -> from
+		 												 | <+*>:one -> Many[from,one=="+"]
+    		                     | '?'      -> Or[from,Apply["empty"]]
+													 	 | ':' (  (key | name):name ('[]'?):append -> _Bind(name,from,append=='[]')
+            		   					        | host_expr:e                      -> Seq[ _Bind("it",from) , Act[e] ]
 																   )
 										):from  )* {from}
 
@@ -51,7 +51,8 @@ amethyst AmethystParser < Amethyst{
 	term  = 'nested(' expression:expr ")" -> Nested[expr]
 				| 'break' -> Seq[Cut[],Stop[]]
 		 	  | call
-				| &<.:\[> '.'? -> Apply["anything"]
+				| &<.:> '.'? -> Apply["anything"]
+				| '[' expression:e "]" -> Enter[Apply["anything"],e]
  			  | key:{Act[it]}
 			  | host_expr | line_host_expr
 				| '"'   ('"'  break| eChar:s[])* -> Apply["token" ,quote(s)]

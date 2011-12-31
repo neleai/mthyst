@@ -36,8 +36,8 @@ end
 def Inliner2__at_changed_c681(bind)
 @changed
 end
-def Inliner2__at_name_eq_bi_2960(bind)
-@name=bind[4];@args=bind[5];@body=bind[6] 
+def Inliner2__at_name_eq_bi_0dee(bind)
+@name=bind[5];@args=bind[6];@body=bind[7] 
 end
 def Inliner2__lp_bind_lb_1_rb__709e(bind)
 (bind[1]==@name) || FAIL
@@ -130,7 +130,7 @@ end
 
 
 def inliner2_compiled_by
-'b238b9f568f9559af313995b79311724'
+'51e10c000f8452bbcfa4fa67fa19b94d'
 end
 def inliner2_source_hash
 'eca6429e1f65c5d4367c65294557dc01'
@@ -139,6 +139,6 @@ def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version
 end
 def inliner2_version
-'9aa54250dc7894ef91b1912a37df971c'
+'23d560d770f5d07774a12bea2ebd4152'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/inliner2_c"

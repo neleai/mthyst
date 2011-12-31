@@ -108,7 +108,7 @@ end
 
 
 def detect_variables2_compiled_by
-'b238b9f568f9559af313995b79311724'
+'51e10c000f8452bbcfa4fa67fa19b94d'
 end
 def detect_variables2_source_hash
 '19672ede401246d1d743b83bf775b7d5'
@@ -117,6 +117,6 @@ def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'4c646118a67f0cdc1173f011872d8eae'
+'2cdee040250af30a93ebe7071fff1349'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/detect_variables2_c"

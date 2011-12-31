@@ -78,6 +78,10 @@ def AmethystParser_Comment_lb__7f66(bind)
 Comment[bind[13]]
 
 end
+def AmethystParser_Enter_lb_Ap_a65d(bind)
+Enter[Apply["anything"],bind[23]]
+
+end
 def AmethystParser_Global_lb_b_8edb(bind)
 Global[bind[0]]
 
@@ -97,8 +101,9 @@ def AmethystParser_Lookahea_d7b5(bind)
 Lookahead[bind[3],bind[1]=="~"]
 
 end
-def AmethystParser_Many_lb_bin_cd8c(bind)
+def AmethystParser_Many_lb_bin_33ac(bind)
 Many[bind[0],bind[1]=="+"]
+
 end
 def AmethystParser_Nested_lb_b_ffed(bind)
 Nested[bind[14]]
@@ -107,8 +112,9 @@ end
 def AmethystParser_Or_dot_creat_67f0(bind)
 Or.create( {:ary=>bind[6] })
 end
-def AmethystParser_Or_lb_bind_lb__0e15(bind)
+def AmethystParser_Or_lb_bind_lb__cb4a(bind)
 Or[bind[0],Apply["empty"]]
+
 end
 def AmethystParser_Pass_lb_bin_2967(bind)
 Pass[bind[0],bind[6]]
@@ -131,15 +137,17 @@ def AmethystParser_Seq_lb_Cut_lb__3505(bind)
 Seq[Cut[],Stop[]]
 
 end
-def AmethystParser_Seq_lb__Bin_435e(bind)
+def AmethystParser_Seq_lb__Bin_6d20(bind)
 Seq[_Bind("it",bind[0]) , Act[bind[5]] ]
+
 end
 def AmethystParser_Strin_lb_co_0638(bind)
 Strin[connectstring(bind[0])]
 
 end
-def AmethystParser__Bind_lp_bi_73aa(bind)
+def AmethystParser__Bind_lp_bi_3fe9(bind)
 _Bind(bind[2],bind[0],bind[3]=='[]')
+
 end
 def AmethystParser__Local_lp_b_cc09(bind)
 _Local(bind[4]) 
@@ -237,8 +245,8 @@ end
 def AmethystParser__di__lb__do__dot__co__rb__di__68eb(bind)
 /[$.:]/
 end
-def AmethystParser__di__lb__dot__co__bs__lb__rb__di__d117(bind)
-/[.:\[]/
+def AmethystParser__di__lb__dot__co__rb__di__8a62(bind)
+/[.:]/
 end
 def AmethystParser__di__lb__pl__ti__rb__di__c64d(bind)
 /[+*]/
@@ -332,15 +340,15 @@ end
 
 
 def parser_compiled_by
-'b238b9f568f9559af313995b79311724'
+'51e10c000f8452bbcfa4fa67fa19b94d'
 end
 def parser_source_hash
-'85ef99ba2cd146e521d58b897605b424'
+'63edbe75f966236a33664ff6b93f819e'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'c11ede0d4938dd851fbb6d7dafe6943f'
+'f0c3924dd8c0895cb58b251c280eccc0'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/parser_c"

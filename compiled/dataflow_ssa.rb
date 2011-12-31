@@ -73,14 +73,14 @@ end
 def Dataflow_Or_lb__ti_bind_2fd2(bind)
 Or[*bind[0]]
 end
-def Dataflow_Pass_dot_cre_3a72(bind)
-Pass.create({:to=>bind[40],:var=>bind[8],:enter=>src.enter}).normalize
+def Dataflow_Pass_dot_cre_fa0a(bind)
+Pass.create({:to=>bind[42],:var=>bind[9],:enter=>src.enter}).normalize
 end
-def Dataflow_Switch_lb__le__0ab2(bind)
-Switch[{:ary=>bind[50],:act=>src.act,:defs=>src.defs,:first=>src.first,:header=>src.header,:init=>src.init}]
+def Dataflow_Switch_lb__le__e3b2(bind)
+Switch[{:ary=>bind[53],:act=>src.act,:defs=>src.defs,:first=>src.first,:header=>src.header,:init=>src.init}]
 end
-def Dataflow__append_lp__088f(bind)
-_append(bind[4],bind[5])
+def Dataflow__append_lp__0860(bind)
+_append(bind[27],bind[28])
 end
 def Dataflow__append_lp__1484(bind)
 _append(bind[0],bind[18])
@@ -88,17 +88,14 @@ end
 def Dataflow__append_lp__2bc4(bind)
 _append(bind[0],bind[21])
 end
-def Dataflow__append_lp__2eb5(bind)
-_append(bind[46],bind[47])
-end
-def Dataflow__append_lp__311c(bind)
-_append(bind[0],bind[36])
-end
-def Dataflow__append_lp__4089(bind)
-_append(bind[26],bind[27])
+def Dataflow__append_lp__3bb7(bind)
+_append(bind[0],bind[37])
 end
 def Dataflow__append_lp__4297(bind)
 _append(bind[0],bind[6])
+end
+def Dataflow__append_lp__473a(bind)
+_append(bind[13],bind[14])
 end
 def Dataflow__append_lp__4de3(bind)
 _append(bind[2],bind[3])
@@ -109,17 +106,20 @@ end
 def Dataflow__append_lp__66a2(bind)
 _append(bind[0],bind[12])
 end
-def Dataflow__append_lp__7140(bind)
-_append(bind[12],bind[13])
+def Dataflow__append_lp__6f56(bind)
+_append(bind[5],bind[6])
 end
 def Dataflow__append_lp__80de(bind)
 _append(bind[0],bind[15])
 end
-def Dataflow__append_lp__9160(bind)
-_append(bind[31],bind[32])
+def Dataflow__append_lp__b601(bind)
+_append(bind[32],bind[33])
 end
 def Dataflow__append_lp__c8ef(bind)
 _append(bind[0],bind[24])
+end
+def Dataflow__append_lp__f794(bind)
+_append(bind[49],bind[50])
 end
 def Dataflow__append_lp__f8f8(bind)
 _append(bind[0],bind[3])
@@ -136,20 +136,20 @@ end
 def Dataflow__at_changed_c681(bind)
 @changed
 end
+def Dataflow__at_marked_lt__3ec2(bind)
+@marked<<bind[9].ssaname
+end
 def Dataflow__at_marked_lt__59bb(bind)
 @marked<<src
 end
 def Dataflow__at_marked_lt__765b(bind)
 @marked<<bind[4] if src.pred || !src.pure
 end
-def Dataflow__at_marked_lt__b8b1(bind)
-@marked<<bind[8].ssaname
+def Dataflow__at_oldssan_28ff(bind)
+@oldssanums=bind[26].clone
 end
-def Dataflow__at_oldssan_3dd6(bind)
-@oldssanums=bind[25].clone
-end
-def Dataflow__at_oldssan_d211(bind)
-@oldssanums=bind[25]
+def Dataflow__at_oldssan_5ad9(bind)
+@oldssanums=bind[26]
 end
 def Dataflow__lp_bind_lb_2_rb__6693(bind)
 (bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
@@ -170,23 +170,23 @@ end
 def Dataflow_bind_lb_11_rb__6cc7(bind)
 bind[11]<<bind[12]
 end
-def Dataflow_bind_lb_35_rb__1b4d(bind)
-bind[35]<<oldssanums.clone
+def Dataflow_bind_lb_36_rb__21ca(bind)
+bind[36]<<oldssanums.clone
 end
 def Dataflow_bind_lb_4_rb__dot__c19e(bind)
 bind[4].ary
 end
-def Dataflow_bind_lb_50_rb__675d(bind)
-bind[50]<<[bind[52],bind[53]]
+def Dataflow_bind_lb_53_rb__04dc(bind)
+bind[53]<<[bind[55],bind[56]]
 end
-def Dataflow_bind_lb_6_rb__dot__aa14(bind)
-bind[6].each{|v| @marked<<ssanum(v)};src.args=bind[6]
+def Dataflow_bind_lb_7_rb__dot__abd8(bind)
+bind[7].each{|v| @marked<<ssanum(v)};src.args=bind[7]
 end
-def Dataflow_bind_lb_8_rb__dot__2cfb(bind)
-bind[8].each{|v| @marked<<ssanum(v)}
+def Dataflow_bind_lb_9_rb__dot__9ffa(bind)
+bind[9].each{|v| @marked<<ssanum(v)}
 end
-def Dataflow_bind_lb_8_rb__dot__3168(bind)
-bind[8].each{|v| edges.add(ssanum(v),bind[4]); edges.add(bind[4],newssanum(v));}; bind[4]
+def Dataflow_bind_lb_9_rb__dot__b1a9(bind)
+bind[9].each{|v| edges.add(ssanum(v),bind[4]); edges.add(bind[4],newssanum(v));}; bind[4]
 end
 def Dataflow_if_sp_bind_lb__f1e9(bind)
 if bind[3]
@@ -196,17 +196,17 @@ if bind[3]
             src
           end
 end
-def Dataflow_many_end_6731(bind)
-many_end(bind[30])
+def Dataflow_many_end_a53b(bind)
+many_end(bind[31])
 end
-def Dataflow_n_eq_Result_9a7c(bind)
-n=Result[{:name=>src.name,:varnames=>src.varnames,:vars=>bind[8]}]; bind[8].each{|w| @edges.add(w.ssaname,n) } ; n
+def Dataflow_n_eq_Result_fb46(bind)
+n=Result[{:name=>src.name,:varnames=>src.varnames,:vars=>bind[9]}]; bind[9].each{|w| @edges.add(w.ssaname,n) } ; n
 end
 def Dataflow_oldssanu_073d(bind)
 oldssanums.clone
 end
-def Dataflow_or_end_lp_b_aeda(bind)
-or_end(bind[35])
+def Dataflow_or_end_lp_b_7477(bind)
+or_end(bind[36])
 end
 def Dataflow_src_25d9(bind)
 src
@@ -217,8 +217,8 @@ end
 def Dataflow_src_dot_body_519e(bind)
 src.body
 end
-def Dataflow_src_dot_body_bba7(bind)
-src.body=bind[9]
+def Dataflow_src_dot_body_e931(bind)
+src.body=bind[10]
 end
 def Dataflow_src_dot_reac_e743(bind)
 src.reachable=@edges.reverse.reachable(@marked+[ssanum(src.body[-1]),src.body]); src.cfg=@edges; 
@@ -339,7 +339,7 @@ end
 
 
 def dataflow_ssa_compiled_by
-'b238b9f568f9559af313995b79311724'
+'51e10c000f8452bbcfa4fa67fa19b94d'
 end
 def dataflow_ssa_source_hash
 '7c8e4cb3bb6398da0fdd36d225497489'
@@ -348,6 +348,6 @@ def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'3b0947730a66defc6681e275060f6c9b'
+'4fc72ec860aea866fc7b8bd33a933e3f'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/dataflow_ssa_c"
