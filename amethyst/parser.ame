@@ -47,6 +47,7 @@ amethyst AmethystParser < Amethyst{
 																   )
 										):from  )* {from}
 
+	until(e) = (seq(e) break | ('\\':x[])? .:x[] )* -> x
 
 	term  = 'nested(' expression:expr ")" -> Nested[expr]
 				| 'break' -> Seq[Cut[],Stop[]]
@@ -55,8 +56,8 @@ amethyst AmethystParser < Amethyst{
 				| '[' expression:e "]" -> Enter[Apply["anything"],e]
  			  | key:{Act[it]}
 			  | host_expr | line_host_expr
-				| '"'   ('"'  break| eChar:s[])* -> Apply["token" ,quote(s)]
-		 	  | '\''  ('\'' break| eChar:s[])* -> Apply["seq"   ,quote(s)]
+				| '"'  until('"' ):s -> Apply["token" ,quote(s)]
+		 	  | '\'' until('\''):s -> Apply["seq"   ,quote(s)]
 				| (number ('...'|'..') number | number):num -> Apply["member",num.join]
       	| '<' (">" break | eChar:x[])* ->  Apply["regch","/["+x.join+"]/"]
 		    | '(' expression:x ")" ( '[]'	collect(x) | empty {x} )
@@ -76,6 +77,7 @@ amethyst AmethystParser < Amethyst{
 	eChar = '\\' char:c   -> "\\#{c}"
   	  	| _args('#'+'{','}')
 				| char
+	
 
 	ruleargs = (argsOpt)=>[ Args[ :name {_Local(name) }:result[] ]* ] ->  result || []
 	
