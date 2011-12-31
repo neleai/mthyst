@@ -31,11 +31,11 @@ amethyst AmethystParser < Amethyst{
 	
 	choice = listOf('sequence',`"|"`):ary @Or
 	
-	sequence =  (nr prefixed)*:ary  @Seq
+	sequence =  (nr "" prefixed)*:ary  @Seq
 
-  prefixed   = ("&" | "~"):neg host_expr:expr->   Pred[expr[0],neg=="~"]
-             | ("&" | "~"):neg prefixed:m    -> Lookahead[m,neg=="~"]
-						 | "" postfixed
+  prefixed   = <&~>:neg host_expr:expr-> Pred[expr[0],neg=="~"]
+             | <&~>:neg prefixed:m    -> Lookahead[m,neg=="~"]
+						 | postfixed
 
 	postfixed =  term:from 
 										(~_     (	 '=>'     term:{Pass[from,it]} 
