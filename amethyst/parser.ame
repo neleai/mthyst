@@ -57,9 +57,7 @@ amethyst AmethystParser < Amethyst{
 			  | host_expr | line_host_expr
 				| '"'   ('"'  break| eChar:s[])* -> Apply["token" ,quote(s)]
 		 	  | '\''  ('\'' break| eChar:s[])* -> Apply["seq"   ,quote(s)]
-				| number:a '...' number:b {Apply["range_ex",a,b]}
- 				| number:a '..' number:b {Apply["range_in",a,b]}
-			  | number:{Apply["member",it]}
+				| (number ('...'|'..') number | number):num -> Apply["member",num.join]
       	| '<' (">" break | eChar:x[])* ->  Apply["regch","/["+x.join+"]/"]
 		    | '(' expression:x ")" ( '[]'	collect(x) | empty {x} )
 				| '#' (~endline .)*:c -> Comment[c]
