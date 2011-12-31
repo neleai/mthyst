@@ -27,11 +27,10 @@ amethyst AmethystParser < Amethyst{
 				 "" name:name  ruleargs:args "=" expression:body  
 	   		 {_body(body)}:body {@@locals.uniq}:locals {body=Seq[{:ary=>($appends.uniq.map{|a| _Bind(a,Act["[]"])}+[body])}]; }	 @Rule
 
-	expression = choice
 	
-	choice = listOf('sequence',`"|"`):ary @Or
-	
+	expression = listOf('sequence',`"|"`):ary @Or	
 	sequence =  (nr "" prefixed)*:ary  @Seq
+	nr = ~("" name argsOpt "=")
 
   prefixed   = <&~>:neg host_expr:expr-> Pred[expr[0],neg=="~"]
              | <&~>:neg prefixed:m    -> Lookahead[m,neg=="~"]
@@ -79,7 +78,6 @@ amethyst AmethystParser < Amethyst{
 
 	ruleargs = (argsOpt)=>[ Args[ :name {_Local(name) }:result[] ]* ] ->  result || []
 	
-	nr = ~("" name argsOpt "=")
 	
 	argsOpt = ~_  _args('(',')'):r { r+[',']}=>[procargs] 
           | {[]}
