@@ -86,11 +86,9 @@ amethyst AmethystParser < Amethyst{
 	
 	nr = ~("" name argsOpt "=")
 	
-	argsOpt = ~_ args('(',')') 
+	argsOpt = ~_  __args('(',')'):r { r+[',']}=>[procargs] 
           | {[]}
 
-	args(o,c) = __args(o,c):r { r+[',']}=>[procargs]
-						
 	_args(o,c) = __args(o,c):r -> Args[{:ary=>([o]+r+[c])}]
 
 	__args(o,c) = seq(o) "" rubyarg*:r seq(c) -> r
@@ -100,7 +98,7 @@ amethyst AmethystParser < Amethyst{
 					 | '"'  until('"' ):s  -> Strin[connectstring(['"']+s+['"'])]
 					 | '\'' until("'" ):s  -> Strin[connectstring(["'"]+s+["'"])]
 					 | ('...' | '..')
-					 | ( ":@":n[] | <$.:>:n[] | empty) ~_ name:n[] -> n.join
+					 | ( ":@":n[] | <$.:>:n[] )? ~_ name:n[] -> n.join
 					 | key
 					 | <^`'"(){}\[\]>
 
