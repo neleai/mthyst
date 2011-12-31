@@ -77,11 +77,6 @@ amethyst AmethystParser < Amethyst{
 							| '@@'     name:name             -> Global[name]
 
 
-	eChar = '\\' char:c   -> "\\#{c}"
-  	  	| args('#'+'{','}')
-				| char
-	
-
 	ruleargs = (argsOpt)=>[ Args[ :name {_Local(name) }:result[] ]* ] ->  result || []
 	
 	nr = ~("" name argsOpt "=")

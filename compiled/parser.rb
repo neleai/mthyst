@@ -65,10 +65,6 @@ def AmethystParser_Args_lb__le__co_a_8c11(bind)
 Args[{:ary=>([bind[6]]+bind[7]+[bind[5]])}]
 
 end
-def AmethystParser_Args_lb__le__co_a_cb1b(bind)
-Args[{:ary=>([bind[1]]+bind[2]+[bind[0]])}]
-
-end
 def AmethystParser_Args_lb__le__co_a_defb(bind)
 Args[{:ary=>([bind[4]]+bind[5]+[bind[3]])}]
 
@@ -261,10 +257,6 @@ end
 def AmethystParser__di__lb__pl__ti__rb__di__c64d(bind)
 /[+*]/
 end
-def AmethystParser__dq__bs__bs__sh__le_bin_f4bd(bind)
-"\\#{bind[7]}"
-
-end
 def AmethystParser__dq__le__dq__pl_bind_eece(bind)
 "{"+bind[2].join+"}"
 end
@@ -280,9 +272,6 @@ def AmethystParser__lb__rb_(bind)
 end
 def AmethystParser__lp_bind_lb_0_rb__418b(bind)
 (bind[0]==',') || FAIL
-end
-def AmethystParser__lp_bind_lb_5_rb__7170(bind)
-(bind[5].is_a? String ) || FAIL
 end
 def AmethystParser__qu__dq__qu__sp__fac1(bind)
 '"' 
@@ -336,10 +325,6 @@ end
 def AmethystParser_bind_lb_4_rb__pl__13b0(bind)
 bind[4]+[',']
 end
-def AmethystParser_bind_lb_5_rb_(bind)
-bind[5]
-
-end
 def AmethystParser_bind_lb_5_rb__dot__028b(bind)
 bind[5].join
 end
@@ -356,15 +341,15 @@ end
 
 
 def parser_compiled_by
-'0f3327952ebd1953e3e7714b5810e8fc'
+'0df4a690015f446fb70d620a664b2cc5'
 end
 def parser_source_hash
-'fa261f5213e1627a92be8d5e459a1f9e'
+'44ad7e503eede6310c80959afb697cc3'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'7eaccf4e47a3e2d4f33676ad88d185e3'
+'8926b26ef270a1075cb8d3f4947ddaa3'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/parser_c"
