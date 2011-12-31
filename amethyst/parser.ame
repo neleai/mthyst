@@ -35,13 +35,13 @@ amethyst AmethystParser < Amethyst{
 
   prefixed   = ("&" | "~"):neg host_expr:expr->   Pred[expr[0],neg=="~"]
              | ("&" | "~"):neg prefixed:m    -> Lookahead[m,neg=="~"]
-						 | postfixed
+						 | "" postfixed
 
-	postfixed =  "" term:from 
+	postfixed =  term:from 
 										(~_     (	 '=>' prefixed:{Pass[from,it]} 
 												     | '[' expression:{from=Enter[from,it]} "]" {from}
-		 												 | ('*'| '+'):one  { Many[from,one=="+"]}
-    		                     | "?"  {Or[from,Apply["empty"]]}
+		 												 | <+*>:one  { Many[from,one=="+"]}
+    		                     | '?'  {Or[from,Apply["empty"]]}
 													 	 | ':' (  (key | name):name ('[]'?):append {_Bind(name,from,append=='[]')}
             		   					        | host_expr:e  {Seq[ _Bind("it",from) , Act[e] ]}
 																   )
