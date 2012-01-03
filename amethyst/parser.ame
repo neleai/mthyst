@@ -20,7 +20,7 @@ end
 amethyst AmethystParser < Amethyst{
 	igrammar = ((~'amethyst'   . )+:{it.join} | grammar)*:a -> a
 
-	grammar = "amethyst" "" name:name ("<" "" name:parent |empty {parent="Amethyst"} ) 
+	grammar = "amethyst" "" name:name ("<" "" name  |{"Amethyst"}):parent
 "{" rule*:rules "}"  @Grammar
 	
   rule = {@@locals=[];$appends=[];@@bnding=Bnding[]} {@@bnding}:bnding  

@@ -305,9 +305,6 @@ def AmethystParser_bind_lb_0_rb__sp__f854(bind)
 bind[0] || []
 
 end
-def AmethystParser_bind_lb_1_rb__eq__4ab4(bind)
-bind[1]="Amethyst"
-end
 def AmethystParser_bind_lb_2_rb_(bind)
 bind[2]
 
@@ -341,15 +338,15 @@ end
 
 
 def parser_compiled_by
-'7d31822ec7a70d490c67b031d5e5093e'
+'f7204dc7ded16630ae019ab931e7d92e'
 end
 def parser_source_hash
-'4049cb0f355db26f5ad672d92fc77c84'
+'f786aad69bdf63df8a8e5d7ffd36e079'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'01970890f405e42ebd685a1ddaf94530'
+'185815e73a45d2cd31eec0f1a6bca9d7'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/parser_c"
