@@ -18,7 +18,9 @@ end
 #@Or and @Seq are necessary for collect
 
 amethyst AmethystParser < Amethyst{
-	igrammar = ((~'amethyst'   . )+:{it.join} | grammar)*:a -> a
+	igrammar = ( (~'amethyst'   . )+:{it.join}
+             | grammar
+             )*
 
 	grammar = "amethyst" "" name:name ("<" "" name  |{"Amethyst"}):parent
 "{" rule*:rules "}"  @Grammar

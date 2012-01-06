@@ -350,15 +350,15 @@ end
 
 
 def parser_compiled_by
-'0ddc46fac218a027216f8b01ce51732c'
+'02aaf9f6bee726856f0202e990a43c94'
 end
 def parser_source_hash
-'11aadf919efc4a2e04b10455331e3679'
+'6a3096f5754c9af9b8f4277f0482f50f'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'14d821614b5dcf09e569451eddc7b162'
+'56a487aa1289663a651de88e6d00b66a'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/parser_c"
