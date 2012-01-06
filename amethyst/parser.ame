@@ -32,7 +32,7 @@ amethyst AmethystParser < Amethyst{
 	sequence =  (nr "" prefixed)*:ary  @Seq
 	nr = ~("" name argsOpt "=")
 
-  prefixed   = <&~>:neg host_expr:expr-> Pred[expr[0],neg=="~"]
+  prefixed   = <&~>:neg inline_host_expr:expr-> Pred[expr[0],neg=="~"]
              | <&~>:neg prefixed:m    -> Lookahead[m,neg=="~"]
 						 | postfixed
 
@@ -42,7 +42,7 @@ amethyst AmethystParser < Amethyst{
 		 												 | <+*>:one -> Many[from,one=="+"]
     		                     | '?'      -> Or[from,Apply["empty"]]
 													 	 | ':' (  (key | name):name ('[]'?):append -> _Bind(name,from,append=='[]')
-            		   					        | host_expr:e                      -> Seq[ _Bind("it",from) , Act[e] ]
+            		   					        | inline_host_expr:e                      -> Seq[ _Bind("it",from) , Act[e] ]
 																   )
 										):from  )* {from}
 
@@ -52,6 +52,7 @@ amethyst AmethystParser < Amethyst{
              )* -> x
 
 	cases =  className:klas  ~'::'                       -> Apply["clas",klas]
+				| (number ('...'|'..') number | number):num -> Apply["member",num.join]
 
 	term  = 'nested(' expression:expr ")" -> Nested[expr]
 				| 'break' -> Seq[Cut[],Stop[]]
@@ -60,12 +61,11 @@ amethyst AmethystParser < Amethyst{
 				| &<.:> '.'? -> Apply["anything"]
 				| '[' expression:e "]" -> Enter[Apply["anything"],e]
  			  | key:{Act[it]}
-			  | host_expr | line_host_expr
+			  | host_expr
 				| '"'  until('"' ):s -> Apply["token" ,quote(s)]
 		 	  | '\'' until('\''):s -> Apply["seq"   ,quote(s)]
       	| '<'  until('>' ):s -> Apply["regch","/["+s.join+"]/"]
 				| '#'  until('\n'):s -> Comment[s]
-				| (number ('...'|'..') number | number):num -> Apply["member",num.join]
 		    | '(' expression:x ")" ( '[]'	collect(x) | empty {x} )
 
   collect(ors) = -> a=autovar; Seq[Or[{:ary=>ors.ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
@@ -110,6 +110,7 @@ amethyst AmethystParser < Amethyst{
 	name           =  (<_a-zA-Z> <_a-zA-Z0-9>*)[]:{it.join}
   className      =  (    <A-Z> <_a-zA-Z0-9>*)[]:{it.join}
 	
-	host_expr = _args('{','}'):r {Act[Args[{:ary=>r}]]}
-	line_host_expr =  '->' line:s   {"{"+s+"}"}=>[ host_expr ]	
+	inline_host_expr = _args('{','}'):r {Act[Args[{:ary=>r}]]}
+	host_expr = inline_host_expr 
+						| '->' line:s   {"{"+s+"}"}=>[ inline_host_expr ]	
 }
