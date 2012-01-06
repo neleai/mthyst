@@ -77,6 +77,11 @@ class <<Compiler
 	def init
 		@grammars={}
 	end
+	def complexity(r) # todo compute
+		return 1000000 if r.args.size>0  && (! ["regch","clas"].include?(r.name))
+		return 100 if  ["char","space"].include?(r.name)
+		return 0
+	end
 	def add_grammar(grammar)
 		ds=Detect_Switch.new;ds.instance_variable_set(:@name,grammar.name)
 		dc=Detect_ClasSwitch.new;dc.instance_variable_set(:@name,grammar.name)
@@ -112,7 +117,7 @@ class <<Compiler
 				callg[name].each{|nm,v|
 					r=g.getrule(nm)
 					if r && topo.index(nm)<topo.index(name) 
-						if r.args.size>0  && (! ["regch","clas"].include?(r.name)) || ["char","space"].include?(r.name)
+						if complexity(r)>10
 							g.inline(nm,name) 
 							inlined=true
 						end
