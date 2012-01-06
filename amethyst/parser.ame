@@ -109,5 +109,5 @@ amethyst AmethystParser < Amethyst{
   className      =  (    <A-Z> <_a-zA-Z0-9>*)[]:{it.join}
 	
 	host_expr = _args('{','}'):r {Act[Args[{:ary=>r}]]}
-	line_host_expr =  '->' (endline break | .)*:s   {"{"+s.join+"}"}=>[ host_expr ]
+	line_host_expr =  '->' line:s   {"{"+s+"}"}=>[ host_expr ]	
 }

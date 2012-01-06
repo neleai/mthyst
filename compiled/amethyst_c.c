@@ -13,6 +13,7 @@ VALUE Amethyst_endline(VALUE self );
 VALUE Amethyst_eof(VALUE self );
 VALUE Amethyst_fails(VALUE self );
 VALUE Amethyst_false(VALUE self );
+VALUE Amethyst_line(VALUE self );
 VALUE Amethyst_listOf(VALUE self ,VALUE a0,VALUE a1);
 VALUE Amethyst_lower(VALUE self );
 VALUE Amethyst_member(VALUE self ,VALUE a0);
@@ -56,6 +57,7 @@ static VALUE sy_Amethyst__append_lp__6ac6;
 static VALUE sy_Amethyst__append_lp__6adb;
 static VALUE sy_Amethyst__append_lp__b375;
 static VALUE sy_Amethyst__append_lp__bc95;
+static VALUE sy_Amethyst__append_lp__cbd1;
 static VALUE sy_Amethyst__append_lp__dd73;
 static VALUE sy_Amethyst__append_lp__f960;
 static VALUE sy_Amethyst__di__lb_01__rb__di__6879;
@@ -79,6 +81,7 @@ static VALUE sy_Amethyst_bind_lb_0_rb_;
 static VALUE sy_Amethyst_bind_lb_0_rb__dot__6a2a;
 static VALUE sy_Amethyst_bind_lb_0_rb__dot__ddb4;
 static VALUE sy_Amethyst_bind_lb_1_rb__ti__cfcb;
+static VALUE sy_Amethyst_bind_lb_2_rb__ti__e7b8;
 static VALUE sy_Amethyst_nil;
 static VALUE sy_apply;
 VALUE Amethyst__(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(2);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -196,6 +199,25 @@ it=Qfalse; bind_aset(bind,0/*x*/,it);
   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,1/*a*/,it);
 it=rb_funcall(self,sy_Amethyst__lp_bind_lb_0_rb__b1f4,1,bind); FAILTEST(fail);it=bind_aget(bind,1/*a*/); bind_aset(bind,2/*_result*/,it);
 it=bind_aget(bind,2/*_result*/); bind_aset(bind,3/*_result*/,it);
+it=bind_aget(bind,3/*_result*/);
+return it;
+fail: return failobj; }
+VALUE Amethyst_line(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(4);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
+
+it=rb_ary_new3(0); bind_aset(bind,0/*autovar*/,it);
+int oldpos1; while(1){oldpos1=ame_getpos(self); int oldpos2=ame_getpos(self);
+alt1_1: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
+   it=Amethyst_endline(self ); FAILTEST(alt1_2);ame_setcut(self,Qtrue); bind_aset(bind,1/*autovar*/,it);
+ame_setstop(self,Qtrue); 
+ame_setcut(self,Qnil);goto accept1;
+alt1_2: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
+   it=AmethystCore_anything(self ); FAILTEST(alt1_3); bind_aset(bind,1/*autovar*/,it);
+ 
+ame_setcut(self,Qnil);goto accept1;
+  alt1_3:  ame_setpos(self,oldpos2); goto break1;
+ accept1:;
+it=rb_funcall(self,sy_Amethyst__append_lp__cbd1,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos1); it=bind_aget(bind,0/*autovar*/); bind_aset(bind,2/*it*/,it);
+it=rb_funcall(self,sy_Amethyst_bind_lb_2_rb__ti__e7b8,1,bind);  bind_aset(bind,3/*_result*/,it);
 it=bind_aget(bind,3/*_result*/);
 return it;
 fail: return failobj; }
@@ -459,6 +481,7 @@ sy_Amethyst__append_lp__6ac6=rb_intern("Amethyst__append_lp__6ac6");
 sy_Amethyst__append_lp__6adb=rb_intern("Amethyst__append_lp__6adb");
 sy_Amethyst__append_lp__b375=rb_intern("Amethyst__append_lp__b375");
 sy_Amethyst__append_lp__bc95=rb_intern("Amethyst__append_lp__bc95");
+sy_Amethyst__append_lp__cbd1=rb_intern("Amethyst__append_lp__cbd1");
 sy_Amethyst__append_lp__dd73=rb_intern("Amethyst__append_lp__dd73");
 sy_Amethyst__append_lp__f960=rb_intern("Amethyst__append_lp__f960");
 sy_Amethyst__di__lb_01__rb__di__6879=rb_intern("Amethyst__di__lb_01__rb__di__6879");
@@ -482,6 +505,7 @@ sy_Amethyst_bind_lb_0_rb_=rb_intern("Amethyst_bind_lb_0_rb_");
 sy_Amethyst_bind_lb_0_rb__dot__6a2a=rb_intern("Amethyst_bind_lb_0_rb__dot__6a2a");
 sy_Amethyst_bind_lb_0_rb__dot__ddb4=rb_intern("Amethyst_bind_lb_0_rb__dot__ddb4");
 sy_Amethyst_bind_lb_1_rb__ti__cfcb=rb_intern("Amethyst_bind_lb_1_rb__ti__cfcb");
+sy_Amethyst_bind_lb_2_rb__ti__e7b8=rb_intern("Amethyst_bind_lb_2_rb__ti__e7b8");
 sy_Amethyst_nil=rb_intern("Amethyst_nil");
 sy_apply=rb_intern("apply");
 rb_define_method(cls_Amethyst,"_",Amethyst__,0);
@@ -495,6 +519,7 @@ rb_define_method(cls_Amethyst,"endline",Amethyst_endline,0);
 rb_define_method(cls_Amethyst,"eof",Amethyst_eof,0);
 rb_define_method(cls_Amethyst,"fails",Amethyst_fails,0);
 rb_define_method(cls_Amethyst,"false",Amethyst_false,0);
+rb_define_method(cls_Amethyst,"line",Amethyst_line,0);
 rb_define_method(cls_Amethyst,"listOf",Amethyst_listOf,2);
 rb_define_method(cls_Amethyst,"lower",Amethyst_lower,0);
 rb_define_method(cls_Amethyst,"member",Amethyst_member,1);
@@ -513,4 +538,4 @@ rb_define_method(cls_Amethyst,"true",Amethyst_true,0);
 rb_define_method(cls_Amethyst,"upper",Amethyst_upper,0);
 rb_define_method(cls_Amethyst,"word",Amethyst_word,0);
 rb_define_method(cls_Amethyst,"xdigit",Amethyst_xdigit,0);
- rb_eval_string("testversionamethyst('facfec74a239648b080919c92c1bd185')");}
+ rb_eval_string("testversionamethyst('51fbb34da26cf392dbc6122be8cd48c3')");}
