@@ -49,11 +49,7 @@ amethyst AmethystParser < Amethyst{
 																   )
 										):from  )* {from}
 
-	until(e) = ( seq(e) break 
-             | args('#'+'{','}'):x[]
-             | ('\\':x[])? .:x[]
-             )* -> x
-
+	
 	cases =  className:klas  ~'::'                       -> Apply["clas",klas]
 				| (number ('...'|'..') number | number):num -> Apply["member",num.join]
       	| '<'  until('>' ):s -> Apply["regch","/["+s.join+"]/"]
@@ -105,12 +101,22 @@ amethyst AmethystParser < Amethyst{
 		
 	rubyarg  = '`' expression:e '`' -> Lambda[_body(e)]
            | args('(',')')	| args('[',']') | args('{','}')
-					 | '"'  until('"' ):s  -> Strin[connectstring(['"']+s+['"'])]
+					 | '"'  interpolated('"' ):s  -> Strin[connectstring(['"']+s+['"'])]
 					 | '\'' until("'" ):s  -> Strin[connectstring(["'"]+s+["'"])]
 					 | ('...' | '..')
 					 | ( ":@":n[] | <$.:>:n[] )? ~_ name:n[] -> n.join
 					 | key
 					 | <^`'"(){}\[\]>
+
+	until(e) = ( seq(e) break 
+             | ('\\':x[])? .:x[]
+             )* -> x
+
+	interpolated(e) = ( seq(e) break 
+             | args('#'+'{','}'):x[]
+             | ('\\':x[])? .:x[]
+             )* -> x
+
 	
 	inline_host_expr = _args('{','}'):r {Act[Args[{:ary=>r}]]}
 	host_expr = inline_host_expr 
