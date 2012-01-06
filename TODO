@@ -73,5 +73,3 @@ rewrite rigth recursion by futures
 like reversing single linked list
 
 assumptions
-
-seq can handle lambda

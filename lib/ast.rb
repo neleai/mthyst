@@ -227,10 +227,11 @@ class Apply
 	end
 	def normalize2
 		if name=="apply"
-			return Apply[@ary[1][0]] if @ary[1].is_a?(CAct)
 			return @ary[1][0][0] if @ary[1].is_a?(Act) && @ary[1][0].is_a?(Lambda)
+			return Apply[@ary[1][0]] if @ary[1].is_a?(CAct)
 		end
 		if name=="_seq"
+			return @ary[1][0][0] if @ary[1].is_a?(Act) && @ary[1][0].is_a?(Lambda)
 			return Placeholder if @ary[1].is_a?(CAct) && @ary[1][0]==""
 		end 
 		self.freeze

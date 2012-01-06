@@ -22,7 +22,7 @@ amethyst Amethyst < AmethystCore {
 
 	number= digit+:{(it*"").to_i}
 
-  listOf(rule,delim) =  apply(rule):f[] (apply(delim) apply(rule))*:f[] -> f
+  listOf(rule,delim) =  apply(rule):f[] (seq(delim) apply(rule))*:f[] -> f
                          | empty -> []
 	replace(exp) = (apply(exp) | .):{it*""}
 
