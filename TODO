@@ -34,6 +34,7 @@ Special case _find(`eof`) consumes everything
 
 adaptive dataflow
 think about suitable decomposition
+cont passing style.
 
 dataflow cantfail, noresult
 as constant propagation

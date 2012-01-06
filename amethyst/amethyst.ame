@@ -12,15 +12,15 @@ amethyst Amethyst < AmethystCore {
   spaces= space*
 	_     = space
 
-  digit=<0-9>
   lower=<a-z>
   upper=<A-Z>
   alpha = lower|upper
   alnum = alpha|digit
+  digit=<0-9>
   xdigit = <0-9a-fA-F>
   word = alpha | '_'
 
-	number= digit+:{(it*"").to_i}
+	number= ('-'|{""}):m ('0x' <0-9a-fA-F_>+ | '0b' <01_>+ | '0o' <0-7_>+ | <0-9_>+)[]:n {(m+n*"").to_i}
 
   listOf(rule,delim) =  apply(rule):f[] (seq(delim) apply(rule))*:f[] -> f
                          | empty -> []
