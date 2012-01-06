@@ -101,7 +101,7 @@ amethyst AmethystParser < Amethyst{
 		
 	rubyarg  = '`' expression:e '`' -> Lambda[_body(e)]
            | args('(',')')	| args('[',']') | args('{','}')
-					 | '"'  interpolated('"' ):s  -> Strin[connectstring(['"']+s+['"'])]
+					 | interpolated:s      -> Strin[connectstring(['"']+s+['"'])]
 					 | '\'' until("'" ):s  -> Strin[connectstring(["'"]+s+["'"])]
 					 | ('...' | '..')
 					 | ( ":@":n[] | <$.:>:n[] )? ~_ name:n[] -> n.join
@@ -112,8 +112,8 @@ amethyst AmethystParser < Amethyst{
              | ('\\':x[])? .:x[]
              )* -> x
 
-	interpolated(e) = ( seq(e) break 
-             | args('#'+'{','}'):x[]
+	interpolated = '"' ( '"' break 
+             | args('#{','}'):x[]
              | ('\\':x[])? .:x[]
              )* -> x
 
