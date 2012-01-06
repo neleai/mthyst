@@ -20,6 +20,7 @@ end
 amethyst AmethystParser < Amethyst{
 	igrammar = ( (~'amethyst'   . )+:{it.join}
              | grammar
+						 | "`" expression '`'
              )*
 
 	grammar = "amethyst" "" name:name ("<" "" name  |{"Amethyst"}):parent
