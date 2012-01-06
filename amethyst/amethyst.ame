@@ -24,6 +24,9 @@ amethyst Amethyst < AmethystCore {
 	int = ('-'|{""}):m ~'_' ('0x' <0-9a-fA-F_>+ | '0b' <01_>+ | '0o' <0-7_>+ | <0-9_>+)[]:n {(m+n*"").to_i}
 	number = int
 
+	until(e) = ( seq(e) break 
+             | ('\\':x[])? .:x[]
+             )* -> x.join
   listOf(rule,delim) =  apply(rule):f[] (seq(delim) apply(rule))*:f[] -> f
                          | empty -> []
 	replace(exp) = (apply(exp) | .):{it*""}

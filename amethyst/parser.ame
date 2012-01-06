@@ -52,7 +52,7 @@ amethyst AmethystParser < Amethyst{
 	
 	cases =  className:klas  ~'::'                       -> Apply["clas",klas]
 				| (number ('...'|'..') number | number):num -> Apply["member",num.join]
-      	| '<'  until('>' ):s -> Apply["regch","/["+s.join+"]/"]
+      	| '<'  until('>' ):s -> Apply["regch","/["+s+"]/"]
 
 	term  = 'nested(' expression:expr ")" -> Nested[expr]
 				| 'break' -> Seq[Cut[],Stop[]]
@@ -64,7 +64,7 @@ amethyst AmethystParser < Amethyst{
 			  | host_expr
 				| '"'  until('"' ):s -> Apply["token" ,quote(s)]
 		 	  | '\'' until('\''):s -> Apply["seq"   ,quote(s)]
-				| '#'  until('\n'):s -> Comment[s]
+				| '#'  line:s        -> Comment[s]
 		    | '(' expression:x ")" ( '[]'	collect(x) | empty {x} )
 
   collect(ors) = -> a=autovar; Seq[Or[{:ary=>ors.ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
@@ -102,16 +102,13 @@ amethyst AmethystParser < Amethyst{
 	rubyarg  = '`' expression:e '`' -> Lambda[_body(e)]
            | args('(',')')	| args('[',']') | args('{','}')
 					 | interpolated:s      -> Strin[connectstring(['"']+s+['"'])]
-					 | '\'' until("'" ):s  -> Strin[connectstring(["'"]+s+["'"])]
+					 | '\'' until("'" ):s  -> Strin[["'"+s+"'"]]
 					 | ('...' | '..')
 					 | ( ":@":n[] | <$.:>:n[] )? ~_ name:n[] -> n.join
 					 | key
 					 | <^`'"(){}\[\]>
 
-	until(e) = ( seq(e) break 
-             | ('\\':x[])? .:x[]
-             )* -> x
-
+	
 	interpolated = '"' ( '"' break 
              | args('#{','}'):x[]
              | ('\\':x[])? .:x[]

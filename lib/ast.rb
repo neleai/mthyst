@@ -45,8 +45,7 @@ class Bnding
 	end
 end
 def quote(s)
-	s=[] if s==nil
-  s=s*""
+	s||=""
   '"'+s.gsub('\\"','"').gsub('"','\\"')+'"'
 end
 
