@@ -101,7 +101,9 @@ amethyst AmethystParser < Amethyst{
 		
 	rubyarg  = '`' expression:e '`' -> Lambda[_body(e)]
            | args('(',')')	| args('[',']') | args('{','}')
-					 | interpolated:s      -> Strin[connectstring(['"']+s+['"'])]
+					 | '"' interpolated("\""):s      -> Strin[connectstring(['"']+s+['"'])]
+					 | <a-z0-9_>:e '<<' -> [e,'<<']
+					 | < \t=>:e '<<' {puts @self[pos,10]} name:heredoc interpolated(`endline seq(heredoc) endline`):s -> [e,Strin[connectstring(['"']+s+['"'])]]
 					 | '\'' until("'" ):s  -> Strin[["'"+s+"'"]]
 					 | ('...' | '..')
 					 | ( ":@":n[] | <$.:>:n[] )? ~_ name:n[] -> n.join
@@ -109,7 +111,7 @@ amethyst AmethystParser < Amethyst{
 					 | <^`'"(){}\[\]>
 
 	
-	interpolated = '"' ( '"' break 
+	interpolated(e) =  ( seq(e) break 
              | args('#{','}'):x[]
              | ('\\':x[])? .:x[]
              )* -> x
