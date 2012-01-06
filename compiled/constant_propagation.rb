@@ -149,7 +149,7 @@ end
 
 
 def constant_propagation_compiled_by
-'d2ecdf814e9a200c8ea3b9b28adb9fd0'
+'0ddc46fac218a027216f8b01ce51732c'
 end
 def constant_propagation_source_hash
 '0f3aae569bc723ebabe1a7d8141630cb'

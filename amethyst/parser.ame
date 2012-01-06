@@ -53,6 +53,7 @@ amethyst AmethystParser < Amethyst{
 
 	cases =  className:klas  ~'::'                       -> Apply["clas",klas]
 				| (number ('...'|'..') number | number):num -> Apply["member",num.join]
+      	| '<'  until('>' ):s -> Apply["regch","/["+s.join+"]/"]
 
 	term  = 'nested(' expression:expr ")" -> Nested[expr]
 				| 'break' -> Seq[Cut[],Stop[]]
@@ -64,7 +65,6 @@ amethyst AmethystParser < Amethyst{
 			  | host_expr
 				| '"'  until('"' ):s -> Apply["token" ,quote(s)]
 		 	  | '\'' until('\''):s -> Apply["seq"   ,quote(s)]
-      	| '<'  until('>' ):s -> Apply["regch","/["+s.join+"]/"]
 				| '#'  until('\n'):s -> Comment[s]
 		    | '(' expression:x ")" ( '[]'	collect(x) | empty {x} )
 
@@ -77,8 +77,10 @@ amethyst AmethystParser < Amethyst{
               | '@'      name:name argsOpt:arg -> Key[name,arg]
 							| '@@'     name:name             -> Global[name]
 
+	name           =  (<_a-zA-Z> <_a-zA-Z0-9>*)[]:{it.join}
+  className      =  (    <A-Z> <_a-zA-Z0-9>*)[]:{it.join}
 
-	ruleargs = (argsOpt)=>[ Args[ :name {_Local(name) }:result[] ]* ] ->  result || []
+	ruleargs = (argsOpt)=>[ Args[ :name {_Local(name) }]* ]
 	
 	
 	argsOpt = ~_  _args('(',')'):r { r+[',']}=>[procargs] 
@@ -106,9 +108,6 @@ amethyst AmethystParser < Amethyst{
 					 | ( ":@":n[] | <$.:>:n[] )? ~_ name:n[] -> n.join
 					 | key
 					 | <^`'"(){}\[\]>
-
-	name           =  (<_a-zA-Z> <_a-zA-Z0-9>*)[]:{it.join}
-  className      =  (    <A-Z> <_a-zA-Z0-9>*)[]:{it.join}
 	
 	inline_host_expr = _args('{','}'):r {Act[Args[{:ary=>r}]]}
 	host_expr = inline_host_expr 
