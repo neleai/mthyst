@@ -1,20 +1,3 @@
-def connectstring(ary)
-	r=[]
-	s=nil
-	ary.each{|a|
-		if a.is_a? String
-			s||=""
-			s+=a
-		else
-			r<<s if s
-			s=nil
-			r<<a
-		end
-	}
-	r<<s if s
-	r
-end
-
 #@Or and @Seq are necessary for collect
 
 class AmethystParser < Amethyst
@@ -140,8 +123,8 @@ def AmethystParser_Strin_lb__lb__dq__66fc(bind)
 Strin[["'"+bind[13]+"'"]]
 
 end
-def AmethystParser_Strin_lb_co_39c9(bind)
-Strin[connectstring(['"']+bind[13]+['"'])]
+def AmethystParser_Strin_lb__lb__qu__15ed(bind)
+Strin[['"']+bind[13]+['"']]
 
 end
 def AmethystParser__Bind_lp_bi_3fe9(bind)
@@ -347,15 +330,15 @@ end
 
 
 def parser_compiled_by
-'835bb66d2511e3eeb5c082f4aaaa8f6a'
+'10d3f061bcde27d0bcfb1d9a68dd804e'
 end
 def parser_source_hash
-'05004d22cb126a24c5c54170176b0070'
+'26f2eb7173e46ebb0ff17c164bbd48ad'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'4e20166546b8eba98202768a627d2fb5'
+'38b52d32b9241b802ab86d299b140831'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/parser_c"

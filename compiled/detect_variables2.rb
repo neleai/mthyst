@@ -1,3 +1,21 @@
+def connectstring(ary)
+	r=[]
+	s=nil
+	ary.each{|a|
+		if a.is_a? String
+			s||=""
+			s+=a
+		else
+			r<<s if s
+			s=nil
+			r<<a
+		end
+	}
+	r<<s if s
+	r
+end
+
+
 class Analyze_Variables2 < Traverser_Clone2
 
 def Analyze_Variables2_Act_lb_bind_1972(bind)
@@ -108,10 +126,10 @@ end
 
 
 def detect_variables2_compiled_by
-'835bb66d2511e3eeb5c082f4aaaa8f6a'
+'10d3f061bcde27d0bcfb1d9a68dd804e'
 end
 def detect_variables2_source_hash
-'19672ede401246d1d743b83bf775b7d5'
+'b0f2bb634ee17e6a470d6d9156322bba'
 end
 def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
