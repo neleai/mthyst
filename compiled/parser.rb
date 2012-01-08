@@ -1,4 +1,5 @@
 #@Or and @Seq are necessary for collect
+CurrentParser[:implicit_variables]=true
 
 class AmethystParser < Amethyst
 
@@ -335,7 +336,7 @@ def parser_compiled_by
 'dbecc6c94196be731c144e9eeaae72e5'
 end
 def parser_source_hash
-'6f504a90d8833720fc7439fd8e1515d5'
+'1d83aa5934ec4625c57a5c8baba2e3de'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version

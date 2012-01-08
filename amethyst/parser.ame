@@ -1,4 +1,5 @@
 #@Or and @Seq are necessary for collect
+CurrentParser[:implicit_variables]=true
 
 amethyst AmethystParser < Amethyst{
 	igrammar = ( (~'amethyst'   . )+:{it.join}

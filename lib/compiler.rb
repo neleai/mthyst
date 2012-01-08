@@ -3,6 +3,7 @@ $profiling||=false
 $OPT||=""
 $implicit_variables=true
 $persistent=false
+CurrentParser={}
 require 'digest'
 require 'set'
 COMPILED=["amethyst","traverser","tests","detect_variables2","parser","dataflow_ssa","inliner2",
@@ -108,7 +109,7 @@ class <<Compiler
 		called.each{|k,v| g.rules[k]=g.getrule(k)}
 		puts called.inspect;puts topo.inspect
 		topo.each{|name|if g.rules[name] && called[name]
-				if $implicit_variables
+				if CurrentParser[:implicit_variables]
 					freq=Detect_Implicit_Variables.new.parse(:root,g.rules[name])
 					g.rules[name]=Add_Implicit_Variables.new.parse(:root,[freq,g.rules[name]])
 				end
@@ -135,6 +136,7 @@ class <<Compiler
 			return unless ["amethyst","traverser"].include? file2 #inheritance
 		end
 		tree=AmethystParser.new.parse(:igrammar,source)
+		CurrentParser.clear
 		pre=tree.reject{|e| e.is_a?(Grammar)}.join
 		eval("module Foo\n#{pre}\nend") 
 		tree=Analyze_Variables2.new.parse(:itrans,tree)
