@@ -39,6 +39,9 @@ end
 def Add_Implicit_Variables__at_changed_c681(bind)
 @changed
 end
+def Add_Implicit_Variables__at_locals_eq__545d(bind)
+@locals=[]
+end
 def Add_Implicit_Variables__at_vars_eq_bi_4318(bind)
 @vars=bind[0]
 end
@@ -57,6 +60,9 @@ end
 def Add_Implicit_Variables_bind_lb_11_rb__6cc7(bind)
 bind[11]<<bind[12]
 end
+def Add_Implicit_Variables_bind_lb_2_rb__dot__bd50(bind)
+bind[2].locals+=@locals;bind[2]
+end
 def Add_Implicit_Variables_if_sp_bind_lb__f1e9(bind)
 if bind[3]
              @changed=true;bind[2].normalize
@@ -73,15 +79,15 @@ end
 
 
 def implicit_variables_compiled_by
-'dbecc6c94196be731c144e9eeaae72e5'
+'49423aced524e15ddb60e70ea1141f77'
 end
 def implicit_variables_source_hash
-'6a0a31cf7e531a56757bd541162a71ff'
+'53e96b8754e7c9037a49314d0c30370e'
 end
 def testversionimplicit_variables(r)
  raise "invalid version" if r!=implicit_variables_version
 end
 def implicit_variables_version
-'709b21b41ac13cec6fec7ee39804a100'
+'809aa03f0014369cdaf73e16ab3cad98'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/implicit_variables_c"

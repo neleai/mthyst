@@ -1,6 +1,10 @@
+CurrentParser[:implicit_variables]=true
+
 amethyst Tests{
 	sw = (('a' |'b') 'c'
 				| 'd') 
 
  test = {1}:from ("a" {from}| {42}):from #42
+
+	foo = foo | bar {foo+bar}
 }

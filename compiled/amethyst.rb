@@ -141,7 +141,7 @@ end
 
 
 def amethyst_compiled_by
-'dbecc6c94196be731c144e9eeaae72e5'
+'49423aced524e15ddb60e70ea1141f77'
 end
 def amethyst_source_hash
 '0a298fec360858589601582526514fa9'

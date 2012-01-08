@@ -144,7 +144,6 @@ class <<Compiler
 		CurrentParser.clear
 		pre=tree.reject{|e| e.is_a?(Grammar)}.join
 		eval("module Foo\n#{pre}\nend") 
-		#tree=Analyze_Variables2.new.parse(:itrans,tree)
 		tree.each{|a|	
 			if a.is_a? Grammar
 				add_grammar(a)
