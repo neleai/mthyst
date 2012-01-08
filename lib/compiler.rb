@@ -84,12 +84,17 @@ class <<Compiler
 		return 0
 	end
 	def add_grammar(grammar)
-		ds=Detect_Switch.new;ds.instance_variable_set(:@name,grammar.name)
-		dc=Detect_ClasSwitch.new;dc.instance_variable_set(:@name,grammar.name)
 		g=@grammars[grammar.name]=Gram.new(grammar)
 		g.callgraph=callg=Oriented_Graph.new
 		g.callgraph=callg=@grammars[grammar.parent].callgraph.clone if @grammars[grammar.parent]
 		names=g.rules.map{|name,code| name}
+		names.each{|name|
+			if CurrentParser[:implicit_variables]
+        freq=Detect_Implicit_Variables.new.parse(:root,g.rules[name])
+        g.rules[name]=Add_Implicit_Variables.new.parse(:root,[freq,g.rules[name]])
+      end
+      g.rules[name]=Analyze_Variables2.new.parse(:root,g.rules[name])
+		}
 		names.dup.each{|nam|#resolve super
 			g.calls[nam]=DetectCalls.new.parse(:root,[g.getrule(nam)])
 			if g.calls[nam].include? "super"
@@ -108,11 +113,11 @@ class <<Compiler
 		called=callg.reverse.reachable(names)
 		called.each{|k,v| g.rules[k]=g.getrule(k)}
 		puts called.inspect;puts topo.inspect
+		
+		ds=Detect_Switch.new;ds.instance_variable_set(:@name,grammar.name)
+		dc=Detect_ClasSwitch.new;dc.instance_variable_set(:@name,grammar.name)
+
 		topo.each{|name|if g.rules[name] && called[name]
-				if CurrentParser[:implicit_variables]
-					freq=Detect_Implicit_Variables.new.parse(:root,g.rules[name])
-					g.rules[name]=Add_Implicit_Variables.new.parse(:root,[freq,g.rules[name]])
-				end
 				g.opt(g.rules[name])
 				inlined=false
 				callg[name].each{|nm,v|
@@ -139,7 +144,7 @@ class <<Compiler
 		CurrentParser.clear
 		pre=tree.reject{|e| e.is_a?(Grammar)}.join
 		eval("module Foo\n#{pre}\nend") 
-		tree=Analyze_Variables2.new.parse(:itrans,tree)
+		#tree=Analyze_Variables2.new.parse(:itrans,tree)
 		tree.each{|a|	
 			if a.is_a? Grammar
 				add_grammar(a)
