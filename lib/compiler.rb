@@ -1,7 +1,7 @@
 $debug||=1
 $profiling||=false
 $OPT||=""
-$implicit_variables=false
+$implicit_variables=true
 $persistent=false
 require 'digest'
 require 'set'

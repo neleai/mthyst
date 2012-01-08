@@ -48,7 +48,7 @@ static VALUE sy_Analyze_Variables2_src_dot_pred_56d4;
 static VALUE sy_Analyze_Variables2_src_dot_pure_41d4;
 static VALUE sy_Analyze_Variables2_src_dot_rule_5acf;
 static VALUE sy_Analyze_Variables2_src_dot_rule_fc90;
-static VALUE sy_Analyze_Variables2_vars_eq__at_lo_f55c;
+static VALUE sy_Analyze_Variables2_vars_eq__at_lo_cf02;
 VALUE Analyze_Variables2_flat(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(9);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
 it=rb_ary_new3(0); bind_aset(bind,0/*autovar*/,it);
@@ -429,7 +429,7 @@ it=bind_aget(bind,29/*autovar*/); bind_aset(bind,15/*_result*/,it);
  break;case 4:;   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,30/*autovar*/,it);
 cstruct oldpass12=*ptr; int fail12=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,30/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
- it=rb_funcall(self,sy_Analyze_Variables2_vars_eq__at_lo_f55c,1,bind);  bind_aset(bind,31/*autovar*/,it);
+ it=rb_funcall(self,sy_Analyze_Variables2_vars_eq__at_lo_cf02,1,bind);  bind_aset(bind,31/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass12);
 	goto success12;
 	pass12: fail12=1;
@@ -493,11 +493,11 @@ sy_Analyze_Variables2_src_dot_pred_56d4=rb_intern("Analyze_Variables2_src_dot_pr
 sy_Analyze_Variables2_src_dot_pure_41d4=rb_intern("Analyze_Variables2_src_dot_pure_41d4");
 sy_Analyze_Variables2_src_dot_rule_5acf=rb_intern("Analyze_Variables2_src_dot_rule_5acf");
 sy_Analyze_Variables2_src_dot_rule_fc90=rb_intern("Analyze_Variables2_src_dot_rule_fc90");
-sy_Analyze_Variables2_vars_eq__at_lo_f55c=rb_intern("Analyze_Variables2_vars_eq__at_lo_f55c");
+sy_Analyze_Variables2_vars_eq__at_lo_cf02=rb_intern("Analyze_Variables2_vars_eq__at_lo_cf02");
 rb_define_method(cls_Analyze_Variables2,"flat",Analyze_Variables2_flat,0);
 rb_define_method(cls_Analyze_Variables2,"itrans",Analyze_Variables2_itrans,0);
 rb_define_method(cls_Analyze_Variables2,"root",Analyze_Variables2_root,0);
 rb_define_method(cls_Analyze_Variables2,"traverse",Analyze_Variables2_traverse,0);
 rb_define_method(cls_Analyze_Variables2,"traverse_item",Analyze_Variables2_traverse_item,0);
 rb_define_method(cls_Analyze_Variables2,"visit",Analyze_Variables2_visit,0);
- rb_eval_string("testversiondetect_variables2('2cdee040250af30a93ebe7071fff1349')");}
+ rb_eval_string("testversiondetect_variables2('99c89c44278459fb2e197150bf2166f1')");}

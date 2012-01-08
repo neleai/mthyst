@@ -116,8 +116,8 @@ end
 def Analyze_Variables2_src_dot_rule_fc90(bind)
 src.rules=bind[9]
 end
-def Analyze_Variables2_vars_eq__at_lo_f55c(bind)
-vars=@locals.select{|aa| src.vars.include? aa[0].to_sym}.uniq ;Result[{:name=>src.name,:vars=>vars,:varnames=>vars.map{|v| v[0]}}]
+def Analyze_Variables2_vars_eq__at_lo_cf02(bind)
+vars=@locals.select{|aa| Object.const_get(src.name).instance_variable_get(:@attrs).include? aa[0].to_sym}.uniq ;Result[{:name=>src.name,:vars=>vars,:varnames=>vars.map{|v| v[0]}}]
 end
 
 end
@@ -126,15 +126,15 @@ end
 
 
 def detect_variables2_compiled_by
-'85307e25edf0bad580df6b4d0b6009c5'
+'dbecc6c94196be731c144e9eeaae72e5'
 end
 def detect_variables2_source_hash
-'b0f2bb634ee17e6a470d6d9156322bba'
+'8280896d9113f6911ff0cfe87a1bf2df'
 end
 def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'2cdee040250af30a93ebe7071fff1349'
+'99c89c44278459fb2e197150bf2166f1'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/detect_variables2_c"

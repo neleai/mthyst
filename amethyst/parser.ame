@@ -55,7 +55,7 @@ amethyst AmethystParser < Amethyst{
 	call = className:klas '::' name:name argsOpt:arg -> Apply[[klas,name],arg]
 			 |                     name:name argsOpt:arg -> Apply[name,arg]
  
-	key         = '@' className:name             -> Result[{:name=>name,:vars=>Object.const_get(name).instance_variable_get(:@attrs)}]
+	key         = '@' className:name             -> Result[{:name=>name}]
               | '@'      name:name argsOpt:arg -> Key[name,arg]
 							| '@@'     name:name             -> Global[name]
 

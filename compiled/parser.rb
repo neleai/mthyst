@@ -106,8 +106,8 @@ def AmethystParser_Pred_lb_bin_bcee(bind)
 Pred[bind[3][0],bind[2]=="~"]
 
 end
-def AmethystParser_Result_lb__le__5876(bind)
-Result[{:name=>bind[0],:vars=>Object.const_get(bind[0]).instance_variable_get(:@attrs)}]
+def AmethystParser_Result_lb__le__ae0e(bind)
+Result[{:name=>bind[0]}]
 
 end
 def AmethystParser_Rule_dot_cre_e3af(bind)
@@ -332,15 +332,15 @@ end
 
 
 def parser_compiled_by
-'85307e25edf0bad580df6b4d0b6009c5'
+'dbecc6c94196be731c144e9eeaae72e5'
 end
 def parser_source_hash
-'86bc747b2bbdf21c1cee8635a9fdd08f'
+'6f504a90d8833720fc7439fd8e1515d5'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'d45f05d19e7654e662d3efacb6bc97f3'
+'9ad21e949a37b498c7524e6032e1ff12'
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/parser_c"
