@@ -66,11 +66,11 @@ flatarray class
 
 recognize local=
 
-bind.reset
-
 default arguments?
 
 rewrite rigth recursion by futures
 like reversing single linked list
 
 assumptions
+
+switch for ints,true,false,nil

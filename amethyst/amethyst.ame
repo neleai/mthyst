@@ -6,8 +6,8 @@ amethyst Amethyst < AmethystCore {
 
   char= .:c &{c.is_a? String } -> c
 
-  endline =  '\r\n' | '\r' | '\n'
-	line = (endline break | .)*:{it*""}
+  newline =  '\r\n' | '\r' | '\n'
+	line = (newline break | .)*:{it*""}
 
   space = <\s\t\r\n\f>
   spaces= space*
