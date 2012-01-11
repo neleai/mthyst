@@ -3,6 +3,9 @@ require 'digest'
 require 'set'
 COMPILED=["amethyst","traverser","tests","detect_variables2","parser","dataflow_ssa","inliner2",
 "detect_switch","left_factor","constant_propagation","ctranslator2","implicit_variables","remove_left_rigth_recursion"]
+def debug_print(t)
+	puts t.inspect if Amethyst::Settings.debug>1
+end
 class Gram
 	attr_accessor :name,:parent,:rules,:calls,:callgraph
 	def initialize(grammar)
@@ -14,12 +17,11 @@ class Gram
 		}
 	end
 	def opt(r)
-	    puts r.inspect if Amethyst::Settings.debug>1
-
+		debug_print(r)
 		dce=[ Dataflow, Dead_Code_Deleter3,Forget_SSA]
 		[dce].flatten.each{|o|
      	r=o.new.parse(:root,r)
-	    puts r.inspect if Amethyst::Settings.debug>1
+			debug_print(r)
 		}
 		
 		[Dataflow].each{|p| r=p.new.parse(:root,r)}
@@ -33,16 +35,16 @@ class Gram
 			    r.consts[k]=Act[v] if v.is_a?(Lambda)
 			  end
 			}
-			puts r.inspect if Amethyst::Settings.debug>1
+      debug_print(r)
 		}
 		[Constant_Traverser].each{|p| 
 			r=p.new.parse(:root,r)
-			puts r.inspect if Amethyst::Settings.debug>1
+			debug_print(r)			
 		}
 		
  		[ dce,	 Left_Factor,	 dce].flatten.each{|o|
 			r=o.new.parse(:root,r)
-			puts r.inspect if Amethyst::Settings.debug>1
+			debug_print(r)
 		}
     @rules[r.name]=r 
 	end
@@ -146,7 +148,7 @@ class <<Compiler
 			else
 			end
 		}
-		puts tree.inspect if Amethyst::Settings.debug >1
+		debug_print tree
 			c,init,rb= AmethystCTranslator.new.parse(:itrans,tree)
 		c=c*""
 		r=Digest::MD5.hexdigest(c)
