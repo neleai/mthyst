@@ -32,11 +32,6 @@ module Populate
 	end
 	alias_method :create,:[]
 end
-class Object
- def self
-    self
-  end
-end
 def deep_clone(o)
 	if o.is_a? Array
 		o.map{|a| deep_clone(a)}
@@ -51,6 +46,9 @@ def deep_clone(o)
 end
 
 class AmethystAST
+	def ary_Amethyst
+		ary
+	end
 	def size
 		ary.size
 	end
