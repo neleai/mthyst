@@ -1,8 +1,3 @@
-$debug||=1
-$profiling||=false
-$OPT||=""
-$implicit_variables=true
-$persistent=false
 CurrentParser={}
 require 'digest'
 require 'set'
@@ -19,12 +14,12 @@ class Gram
 		}
 	end
 	def opt(r)
-	    puts r.inspect if $debug>1
+	    puts r.inspect if Amethyst::Settings.debug>1
 
 		dce=[ Dataflow, Dead_Code_Deleter3,Forget_SSA]
 		[dce].flatten.each{|o|
      	r=o.new.parse(:root,r)
-	    puts r.inspect if $debug>1
+	    puts r.inspect if Amethyst::Settings.debug>1
 		}
 		
 		[Dataflow].each{|p| r=p.new.parse(:root,r)}
@@ -38,16 +33,16 @@ class Gram
 			    r.consts[k]=Act[v] if v.is_a?(Lambda)
 			  end
 			}
-			puts r.inspect if $debug>1
+			puts r.inspect if Amethyst::Settings.debug>1
 		}
 		[Constant_Traverser].each{|p| 
 			r=p.new.parse(:root,r)
-			puts r.inspect if $debug>1
+			puts r.inspect if Amethyst::Settings.debug>1
 		}
 		
  		[ dce,	 Left_Factor,	 dce].flatten.each{|o|
 			r=o.new.parse(:root,r)
-			puts r.inspect if $debug>1
+			puts r.inspect if Amethyst::Settings.debug>1
 		}
     @rules[r.name]=r 
 	end
@@ -137,7 +132,7 @@ class <<Compiler
 	def compile(file,out,file2)
 		source=File.new(file).read
 		source_hash=Digest::MD5.hexdigest(source)
-		if Dir[Amethyst_path+ "/compiled/#{file2}.rb"]!=[] && eval("#{file2}_compiled_by")==$compiled_by && eval("#{file2}_source_hash")==source_hash && $debug<1
+		if Dir[Amethyst_path+ "/compiled/#{file2}.rb"]!=[] && eval("#{file2}_compiled_by")==$compiled_by && eval("#{file2}_source_hash")==source_hash && Amethyst::Settings.debug<1
 			return unless ["amethyst","traverser"].include? file2 #inheritance
 		end
 		tree=AmethystParser.new.parse(:igrammar,source)
@@ -151,7 +146,7 @@ class <<Compiler
 			else
 			end
 		}
-		puts tree.inspect if $debug >1
+		puts tree.inspect if Amethyst::Settings.debug >1
 			c,init,rb= AmethystCTranslator.new.parse(:itrans,tree)
 		c=c*""
 		r=Digest::MD5.hexdigest(c)
@@ -165,16 +160,14 @@ class <<Compiler
       f.puts "\ndef #{file2}_compiled_by\n'#{$compiled_by}'\nend\ndef #{file2}_source_hash\n'#{source_hash}'\nend\ndef testversion#{file2}(r)\n raise \"invalid version\" if r!=#{file2}_version\nend\ndef #{file2}_version\n'#{r}'\nend
 require Amethyst_path+\"/compiled/\#{RUBY_VERSION}/#{file2}_c\""}
 	  withtime("c"){ #todo get flags portable not just 1.8 on x64
-		if !$profiling
-			if $compile_1_9_3
-				`cd compiled;gcc -I. -I/usr/include/ruby-1.9.1/x86_64-linux -I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -fPIC -fno-strict-aliasing -g -g #{$OPT} -fPIC -c #{file2}_c.c -o #{file2}_c.o`
+			if Amethyst::Settings.compile_for.include?("1_9_3")
+				`cd compiled;gcc -I. -I/usr/include/ruby-1.9.1/x86_64-linux -I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -fPIC -fno-strict-aliasing -g -g #{Amethyst::Settings.cflags} -fPIC -c #{file2}_c.c -o #{file2}_c.o`
 				`cd compiled;gcc -shared -o 1.9.3/#{file2}_c.so #{file2}_c.o -L. -L/usr/lib -L. -rdynamic -Wl,-export-dynamic -lruby-1.9.1 -lpthread -lrt -ldl -lcrypt -lm -lc`
 			end
-			if $compile_1_8_7
-		    `cd compiled;gcc -I. -I/usr/lib/ruby/1.8/x86_64-linux -I/usr/lib/ruby/1.8/x86_64-linux -I.   -fPIC -fno-strict-aliasing -g -g #$OPT  -fPIC   -c #{file2}_c.c`
+			if Amethyst::Settings.compile_for.include?("1_8_7")
+		    `cd compiled;gcc -I. -I/usr/lib/ruby/1.8/x86_64-linux -I/usr/lib/ruby/1.8/x86_64-linux -I.   -fPIC -fno-strict-aliasing -g -g #{Amethyst::Settings.cflags}  -fPIC   -c #{file2}_c.c`
 		    `cd compiled;gcc -shared -o 1.8.7/#{file2}_c.so #{file2}_c.o -L. -L/usr/lib -L.  -rdynamic -Wl,-export-dynamic -lruby1.8  -lpthread -lrt -ldl -lcrypt -lm   -lc`
 			end
-		end
   	}
 
 	end
