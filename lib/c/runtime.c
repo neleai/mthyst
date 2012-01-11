@@ -3,7 +3,7 @@
 // write declarations to cthyst.h as without them call from other .so will crash
 VALUE amecore;VALUE bindcls;VALUE failobj;
 ID s_src,s_input,s_call,s_cut,s_ary_get;
-
+ID s_to_a;
 VALUE ame_setlenrb(VALUE self,VALUE val){return INT2FIX(ame_setlen(self,FIX2INT(val)));}
 VALUE ame_setposrb(VALUE self,VALUE val){return INT2FIX(ame_setpos(self,FIX2INT(val)));}
 VALUE ame_getlenrb(VALUE self){return INT2FIX(ame_getlen(self));}
@@ -81,6 +81,7 @@ ID s_ary;
 void Init_Ame(VALUE self){
 	s_ary_get=rb_intern("[]");
 	s_ary=rb_intern("@ary");
+	s_to_a=rb_intern("to_a");
 	failobj=rb_eval_string("FAIL");
 	amecore=rb_define_class("AmethystCore",rb_cObject);
 	rb_define_singleton_method(amecore,"new",ame_new,0);

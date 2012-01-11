@@ -46,8 +46,8 @@ def deep_clone(o)
 end
 
 class AmethystAST
-	def ary_Amethyst
-		ary
+	def to_a
+		@ary
 	end
 	def size
 		ary.size

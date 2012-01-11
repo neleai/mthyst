@@ -32,7 +32,7 @@ typedef struct{
   int pos;int len;
 	VALUE cut;VALUE stop;
 } cstruct;
-extern ID s_ary_get;
+extern ID s_ary_get,s_to_a;
 #define ACCESSOR(type,name) \
 static inline type ame_get##name(VALUE self){\
   cstruct  *ptr;\
@@ -58,7 +58,7 @@ static inline VALUE ame_curobj(VALUE self){
 	if(!ptr->ary){
 		VALUE ary;
 	  if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-		else  ary=rb_funcall(ptr->src,rb_intern("ary"),0);
+		else  ary=rb_funcall(ptr->src,s_to_a,0);
 		ptr->ary=RARRAY_PTR(ary);
 		ptr->len=RARRAY_LEN(ary);
 	}
