@@ -364,4 +364,4 @@ end
 def ctranslator2_version
 '8f48ba941dc9802a21509bbce26aeea2'
 end
-require Amethyst_path+"/compiled/#{RUBY_VERSION}/ctranslator2_c"
+require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"

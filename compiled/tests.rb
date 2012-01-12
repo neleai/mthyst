@@ -21,4 +21,4 @@ end
 def tests_version
 'cb54fb38718fd6ee434438f6d1d382da'
 end
-require Amethyst_path+"/compiled/#{RUBY_VERSION}/tests_c"
+require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/tests_c"

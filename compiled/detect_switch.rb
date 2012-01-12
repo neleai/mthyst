@@ -808,4 +808,4 @@ end
 def detect_switch_version
 '8dddb7f3076929f56696b70e5184935a'
 end
-require Amethyst_path+"/compiled/#{RUBY_VERSION}/detect_switch_c"
+require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

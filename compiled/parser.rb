@@ -344,4 +344,4 @@ end
 def parser_version
 '9ad21e949a37b498c7524e6032e1ff12'
 end
-require Amethyst_path+"/compiled/#{RUBY_VERSION}/parser_c"
+require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/parser_c"

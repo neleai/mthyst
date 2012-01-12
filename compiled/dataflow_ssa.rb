@@ -350,4 +350,4 @@ end
 def dataflow_ssa_version
 '4fc72ec860aea866fc7b8bd33a933e3f'
 end
-require Amethyst_path+"/compiled/#{RUBY_VERSION}/dataflow_ssa_c"
+require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/dataflow_ssa_c"

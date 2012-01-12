@@ -62,4 +62,4 @@ end
 def traverser_version
 '289e385921eea08c893108de5f0d863d'
 end
-require Amethyst_path+"/compiled/#{RUBY_VERSION}/traverser_c"
+require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/traverser_c"

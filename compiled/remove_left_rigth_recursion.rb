@@ -68,4 +68,4 @@ end
 def remove_left_rigth_recursion_version
 'd6f347e8484de33997ced022de3d9a90'
 end
-require Amethyst_path+"/compiled/#{RUBY_VERSION}/remove_left_rigth_recursion_c"
+require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/remove_left_rigth_recursion_c"

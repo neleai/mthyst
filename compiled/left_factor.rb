@@ -115,4 +115,4 @@ end
 def left_factor_version
 '33f3899832caea9205d583f5d00e664e'
 end
-require Amethyst_path+"/compiled/#{RUBY_VERSION}/left_factor_c"
+require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/left_factor_c"

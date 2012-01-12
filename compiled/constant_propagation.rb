@@ -160,4 +160,4 @@ end
 def constant_propagation_version
 '9b92ca141207fd371f318c31e5739f14'
 end
-require Amethyst_path+"/compiled/#{RUBY_VERSION}/constant_propagation_c"
+require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/constant_propagation_c"

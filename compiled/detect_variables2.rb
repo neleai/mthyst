@@ -137,4 +137,4 @@ end
 def detect_variables2_version
 '99c89c44278459fb2e197150bf2166f1'
 end
-require Amethyst_path+"/compiled/#{RUBY_VERSION}/detect_variables2_c"
+require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_variables2_c"

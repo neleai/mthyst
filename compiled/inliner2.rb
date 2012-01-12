@@ -141,4 +141,4 @@ end
 def inliner2_version
 '23d560d770f5d07774a12bea2ebd4152'
 end
-require Amethyst_path+"/compiled/#{RUBY_VERSION}/inliner2_c"
+require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/inliner2_c"

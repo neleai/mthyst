@@ -90,4 +90,4 @@ end
 def implicit_variables_version
 '809aa03f0014369cdaf73e16ab3cad98'
 end
-require Amethyst_path+"/compiled/#{RUBY_VERSION}/implicit_variables_c"
+require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/implicit_variables_c"
