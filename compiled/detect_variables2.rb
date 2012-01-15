@@ -21,23 +21,11 @@ class Analyze_Variables2 < Traverser_Clone2
 def Analyze_Variables2_Act_lb_bind_1972(bind)
 Act[bind[9],bind[1],bind[2]]
 end
-def Analyze_Variables2_Or_lb__ti_bind_6abd(bind)
-Or[*bind[28]]
-end
 def Analyze_Variables2_Placehol_6875(bind)
 Placeholder
 end
-def Analyze_Variables2_Seq_lb__ti_bin_e9ca(bind)
-Seq[*bind[28]]
-end
 def Analyze_Variables2__append_lp__2d45(bind)
 _append(bind[5],bind[8])
-end
-def Analyze_Variables2__append_lp__4089(bind)
-_append(bind[26],bind[27])
-end
-def Analyze_Variables2__append_lp__51dc(bind)
-_append(bind[33],bind[34])
 end
 def Analyze_Variables2__append_lp__b2a5(bind)
 _append(bind[0],bind[4])
@@ -126,15 +114,15 @@ end
 
 
 def detect_variables2_compiled_by
-'37d36eb1058925d11859896c5065f56b'
+'a9ea4d17b41039dd30ac4cedaad0ee5b'
 end
 def detect_variables2_source_hash
-'8280896d9113f6911ff0cfe87a1bf2df'
+'80ba9752eb07fc253bb485b6ee91273b'
 end
 def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'99c89c44278459fb2e197150bf2166f1'
+'acf547496afa5ab2e30cd6645d9f71c1'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_variables2_c"
