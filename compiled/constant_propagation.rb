@@ -19,14 +19,10 @@ class ConstantLattice
 		c.freeze
 	end
 	def +(a)
-		return a if val==Bottom
-		return self if a.val==Bottom
-		return ConstantLattice[Top] if val==Top|| a.val==Top 
-		if val==a.val
-			return self
-		else
-			return ConstantLattice[Top]
-		end		
+		return    a if self.val==Bottom
+		return self if    a.val==Bottom
+		return ConstantLattice[Top] if val!=a.val || val==Top
+		return self
 	end
 	def ==(a)
 		return val==a.val
@@ -159,7 +155,7 @@ def constant_propagation_compiled_by
 'a9ea4d17b41039dd30ac4cedaad0ee5b'
 end
 def constant_propagation_source_hash
-'6537a16d631b2ed861ba27fdea9600cd'
+'4c36db09fc03c1a2922dc15d39c03d47'
 end
 def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version

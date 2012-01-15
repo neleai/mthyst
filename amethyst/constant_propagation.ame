@@ -19,14 +19,10 @@ class ConstantLattice
 		c.freeze
 	end
 	def +(a)
-		return a if val==Bottom
-		return self if a.val==Bottom
-		return ConstantLattice[Top] if val==Top|| a.val==Top 
-		if val==a.val
-			return self
-		else
-			return ConstantLattice[Top]
-		end		
+		return    a if self.val==Bottom
+		return self if    a.val==Bottom
+		return ConstantLattice[Top] if val!=a.val || val==Top
+		return self
 	end
 	def ==(a)
 		return val==a.val

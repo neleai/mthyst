@@ -143,17 +143,16 @@ class <<Compiler
 			end
 		}
 		debug_print tree
-			c,init,rb= AmethystCTranslator.new.parse(:itrans,tree)
+		c,init,rb= AmethystCTranslator.new.parse(:itrans,tree)
 		c=c*""
-		r=Digest::MD5.hexdigest(c)
-
+		hex_digest=Digest::MD5.hexdigest(c)
 		File.open("compiled/#{file2}_c.c","w"){|f|
     f.puts "#include \"cthyst.h\""
     f.puts c
-    f.puts "void Init_#{file2}_c(){ #{init*""} rb_eval_string(\"testversion#{file2}('#{r}')\");}"
+    f.puts "void Init_#{file2}_c(){ #{init*""} rb_eval_string(\"testversion#{file2}('#{hex_digest}')\");}"
     }
     File.open("compiled/#{file2}.rb","w"){|f| f.puts rb; 
-      f.puts "\ndef #{file2}_compiled_by\n'#{$compiled_by}'\nend\ndef #{file2}_source_hash\n'#{source_hash}'\nend\ndef testversion#{file2}(r)\n raise \"invalid version\" if r!=#{file2}_version\nend\ndef #{file2}_version\n'#{r}'\nend
+      f.puts "\ndef #{file2}_compiled_by\n'#{$compiled_by}'\nend\ndef #{file2}_source_hash\n'#{source_hash}'\nend\ndef testversion#{file2}(r)\n raise \"invalid version\" if r!=#{file2}_version\nend\ndef #{file2}_version\n'#{hex_digest}'\nend
 require File.expand_path(File.dirname(__FILE__))+\"/\#{RUBY_VERSION}/#{file2}_c\""}
 	  withtime("c"){ #todo get flags portable not just 1.8 on x64
 			if Amethyst::Settings.compile_for.include?("1_9_3")
