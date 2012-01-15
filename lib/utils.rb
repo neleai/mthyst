@@ -104,3 +104,8 @@ class Array
 		r
 	end
 end
+
+class Consts
+	def initialize(s);@s=s;end
+	def inspect   	 ;@s	;end
+end

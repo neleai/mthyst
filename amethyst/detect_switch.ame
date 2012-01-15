@@ -1,15 +1,6 @@
-class Anything_
-	def inspect
-		"Anything"
-	end
-end
-Anything=Anything_.new
-class Empty_
-  def inspect
-    "Empty"
-  end
-end
-Empty=Empty_.new
+Anything=Consts.new("Anything")
+Empty   =Consts.new("Empty"   )
+
 $hash_SizesLattice={}
 class SizesLattice
 	attr_accessor :size

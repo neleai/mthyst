@@ -1,15 +1,5 @@
-Top=Object.new
-Bottom=Object.new
-class <<Top
-  def inspect
-    "Top"
-  end
-end
-class <<Bottom
-  def inspect
-    "Bottom"
-  end
-end
+Top=Consts.new("Top")
+Bottom=Consts.new("Bottom")
 
 class ConstantLattice
 	attr_accessor :val

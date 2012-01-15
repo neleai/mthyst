@@ -1,15 +1,5 @@
-Top=Object.new
-Bottom=Object.new
-class <<Top
-  def inspect
-    "Top"
-  end
-end
-class <<Bottom
-  def inspect
-    "Bottom"
-  end
-end
+Top=Consts.new("Top")
+Bottom=Consts.new("Bottom")
 
 class ConstantLattice
 	attr_accessor :val
@@ -155,7 +145,7 @@ def constant_propagation_compiled_by
 'a9ea4d17b41039dd30ac4cedaad0ee5b'
 end
 def constant_propagation_source_hash
-'4c36db09fc03c1a2922dc15d39c03d47'
+'24851fdc20d41cfe343910a080792f3b'
 end
 def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version

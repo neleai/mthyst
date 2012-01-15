@@ -1,15 +1,6 @@
-class Anything_
-	def inspect
-		"Anything"
-	end
-end
-Anything=Anything_.new
-class Empty_
-  def inspect
-    "Empty"
-  end
-end
-Empty=Empty_.new
+Anything=Consts.new("Anything")
+Empty   =Consts.new("Empty"   )
+
 $hash_SizesLattice={}
 class SizesLattice
 	attr_accessor :size
@@ -800,7 +791,7 @@ def detect_switch_compiled_by
 'a9ea4d17b41039dd30ac4cedaad0ee5b'
 end
 def detect_switch_source_hash
-'5769319c01896d6809e4539089579b64'
+'e18dd828d27f377de0e54209047cfae5'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
