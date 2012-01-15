@@ -353,7 +353,7 @@ end
 
 
 def ctranslator2_compiled_by
-'49423aced524e15ddb60e70ea1141f77'
+'37d36eb1058925d11859896c5065f56b'
 end
 def ctranslator2_source_hash
 'f054ceeca034388154544bd17f3bb7b6'

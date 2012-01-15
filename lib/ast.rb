@@ -191,12 +191,13 @@ class Act
 			exp=@ary[0]
 			return exp if exp.is_a?(Act)
 			if  !@pred
+				exp = exp.strip if exp.is_a?(String) 
 			  return Act.create(exp,{:pure=>true}).freeze if exp.is_a?(Lambda)
 				return CAct[[]] if exp=="[]"
 				return CAct[exp.to_i] if exp.is_a?(String) && exp==exp.to_i.to_s
 				return CAct[eval(exp)] if exp=~/^[A-Z][a-zA-Z0-9_]*$/ && eval(exp).is_a?(Class)
 				return CAct[eval(exp)] if ["true","false","nil"].include?(exp)
-				return CAct[eval('"'+exp[1...-1]+'"')] if exp.is_a?(String) && ((exp[0]==?\" && exp[-1]==?\")|| (exp[0]==?' && exp[-1]==?')) && !(exp=~/\#/)
+				return CAct[eval(exp)] if exp.is_a?(String) && ((exp[0]==?\" && exp[-1]==?\")|| (exp[0]==?' && exp[-1]==?')) && !(exp=~/\#/)
 			end
 		end
 		@pure=true if exp.is_a?(Lambda)
