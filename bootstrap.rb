@@ -1,10 +1,5 @@
 require './lib/amethyst'
-
-$profiling=false
-$OPT=" -march=core2"
-$debug=1
-$compile_1_8_7=false
-$compile_1_9_3=true
+#Amethyst::Settings.compile_for=["1_8_7","1_9_3"]
 
 COMPILED.each{|f|
 puts f
