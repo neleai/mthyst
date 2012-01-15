@@ -28,13 +28,7 @@ class Gram
 		withtime(Constant_Propagator){
 			c=Constant_Propagator.new
 			c.parse(:root,[r.cfg])
-			r.consts={}
-			c.analyze2.each{|k,v|
-			  if v!=Top&&v!=Bottom
-			    r.consts[k]=v
-			    r.consts[k]=Act[v] if v.is_a?(Lambda)
-			  end
-			}
+			r.consts=c.analyze2
       debug_print(r)
 		}
 		[Constant_Traverser].each{|p| 

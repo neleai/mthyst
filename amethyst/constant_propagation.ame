@@ -62,7 +62,14 @@ class Constant_Propagator < Amethyst
   def analyze2
     @depend.topo_order.each{|e| addactive(e);@vals[e]=ConstantLattice[Bottom]}
     analyze
-    @vals
+		r={}
+    @vals.each{|k,v|
+        if v!=Top&&v!=Bottom
+          r[k]=v
+          r[k]=Act[v] if v.is_a?(Lambda)
+        end
+    }
+		r
   end
   def setval(e,x)
     return vals[e.ssaname]=x if e.is_a?(Local)

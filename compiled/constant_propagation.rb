@@ -62,7 +62,14 @@ class Constant_Propagator < Amethyst
   def analyze2
     @depend.topo_order.each{|e| addactive(e);@vals[e]=ConstantLattice[Bottom]}
     analyze
-    @vals
+		r={}
+    @vals.each{|k,v|
+        if v!=Top&&v!=Bottom
+          r[k]=v
+          r[k]=Act[v] if v.is_a?(Lambda)
+        end
+    }
+		r
   end
   def setval(e,x)
     return vals[e.ssaname]=x if e.is_a?(Local)
@@ -152,7 +159,7 @@ def constant_propagation_compiled_by
 'a9ea4d17b41039dd30ac4cedaad0ee5b'
 end
 def constant_propagation_source_hash
-'0f3aae569bc723ebabe1a7d8141630cb'
+'6537a16d631b2ed861ba27fdea9600cd'
 end
 def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version

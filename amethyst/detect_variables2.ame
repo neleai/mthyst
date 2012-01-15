@@ -1,3 +1,9 @@
+#This converts syntax tree to our immediate reprezentation. It
+#
+# - finds local variables
+# - finds what result binds
+# - removes comments
+
 def connectstring(ary)
 	r=[]
 	s=nil

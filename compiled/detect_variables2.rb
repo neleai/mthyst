@@ -1,3 +1,9 @@
+#This converts syntax tree to our immediate reprezentation. It
+#
+# - finds local variables
+# - finds what result binds
+# - removes comments
+
 def connectstring(ary)
 	r=[]
 	s=nil
@@ -117,7 +123,7 @@ def detect_variables2_compiled_by
 'a9ea4d17b41039dd30ac4cedaad0ee5b'
 end
 def detect_variables2_source_hash
-'80ba9752eb07fc253bb485b6ee91273b'
+'3a603a8fe584420bd462f8809698b864'
 end
 def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
