@@ -133,15 +133,22 @@ class <<Compiler
 		end
 		tree=AmethystParser.new.parse(:igrammar,source)
 		CurrentParser.clear
-		pre=tree.reject{|e| e.is_a?(Grammar)}.join
+
+		#todo write this with less ugly code
+		gno=0
+		$gr=[]
+		$compiler=self
+		$grammars=@grammars
+		pre =tree.map{|e|
+		if e.is_a? Grammar
+			gno+=1
+			$gr[gno]=e
+			"$compiler.add_grammar($gr[#{gno}])\n$gr[#{gno}].rules=$grammars[$gr[#{gno}].name].rules.map{|h,k| k}\n"
+		else
+		e
+		end}.join
 		eval("module Foo\n#{pre}\nend") 
-		tree.each{|a|	
-			if a.is_a? Grammar
-				add_grammar(a)
-				a.rules=@grammars[a.name].rules.map{|h,k| k}
-			else
-			end
-		}
+
 		debug_print tree
 		c,init,rb= AmethystCTranslator.new.parse(:itrans,tree)
 		c=c*""
