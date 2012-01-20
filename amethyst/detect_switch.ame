@@ -4,18 +4,10 @@ Empty   =Consts.new("Empty"   )
 $hash_SizesLattice={}
 class SizesLattice
 	attr_accessor :size
-	def self.bottom
-		self[0]
-	end
-	def self.empty
-		self[0]
-	end
-	def self.default
-		self[0]
-	end
-	def self.top
-		self[1.0/0.0]
-	end
+	def self.bottom ;	self[0];				end
+	def self.empty  ;	self[0];  			end
+	def self.default;	self[0];			  end
+	def self.top	  ; self[1.0/0.0];	end
 	def self.[](a)
 		return $hash_SizesLattice[a] if $hash_SizesLattice[a]
 		l=self.new
@@ -33,12 +25,9 @@ end
 
 class FirstLattice
 	attr_accessor :ary
-  def self.empty
-    self[Empty]
-  end
-  def self.bottom
-    self[]
-  end
+  def self.empty;    self[Empty];  end
+  def self.bottom;   self[];			 end
+	
 	def |(a)
 		self.class[*(ary|a.ary)]
 	end
@@ -49,6 +38,7 @@ class FirstLattice
 		self.class[*(ary&a.ary)]
 	end
 	def seqjoin(a)
+		puts self unless self.ary.include? Empty
     return self unless self.ary.include? Empty
     (self-self.class.empty)|a
   end
@@ -70,12 +60,8 @@ class CharLattice < FirstLattice
 		$hash_CharLattice[ary]=c
 	end
 	alias_method :==,:equal?
-	def self.top
-		CharLattice[[0,255]]
-	end
-	def self.default
-		top|empty
-	end
+	def self.top;	         CharLattice[[0,255]] ;end
+	def self.default;	     top|empty            ;end
 	def cchar(c)
 		#return "UC('\\'')" if c==?'
 		"UC(#{c.ord})"
@@ -135,12 +121,8 @@ class ClasLattice < FirstLattice
     $hash_ClasLattice[ary]=c
   end
 	alias_method :==,:equal?
-  def self.top
-    ClasLattice[Object]
-  end
-	def self.default
-		top|empty
-	end
+  def self.top;     ClasLattice[Object];  end
+	def self.default;	top|empty;            end
 end
 class First_Dataflow < Amethyst
 	def initialize
@@ -207,7 +189,6 @@ class Switch_Dataflow < First_Dataflow
 				chars<<[c,s[i+2].bytes.to_a[0]]
 				i+=3
 			elsif s[i]==?\\
-				raise "stray \\" if i==s.size-1
 				c=eval('"'+s[i,2]+'"')[0].bytes.to_a[0]
 				i+=2
 			else
