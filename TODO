@@ -80,3 +80,5 @@ pass for objects that dont need ary(convention not using .?)
 switch for ints,true,false,nil
 
 foreign rules
+
+negative lookahead and detect_switch

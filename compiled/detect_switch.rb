@@ -38,7 +38,7 @@ class FirstLattice
 		self.class[*(ary&a.ary)]
 	end
 	def seqjoin(a)
-    return self unless self.ary.include? Empty
+    return self unless self.ary.include?(Empty)
     (self-self.class.empty)|a
   end
 
@@ -158,7 +158,9 @@ class First_Dataflow < Amethyst
     end
   end
 
-	def empty?(el)    
+	def empty?(el)
+		puts "emp",$sizedf.analyze(el).size,el.inspect
+		
 		$sizedf.analyze(el).size==0
 	end
 end
@@ -209,38 +211,48 @@ class ClasSwitch_Dataflow < First_Dataflow
 end
 class First_Dataflow < Amethyst
 
-def First_Dataflow__append_lp__19cb(bind)
-_append(bind[20],bind[21])
+def First_Dataflow__append_lp__3c16(bind)
+_append(bind[28],bind[29])
 end
-def First_Dataflow__append_lp__b6c7(bind)
-_append(bind[7],bind[8])
+def First_Dataflow__append_lp__66a2(bind)
+_append(bind[0],bind[12])
+end
+def First_Dataflow__append_lp__8bfa(bind)
+_append(bind[15],bind[16])
 end
 def First_Dataflow__at_vis_eq_bin_af53(bind)
 @vis=bind[0]; bind[0]
 end
 def First_Dataflow__lp_(bind)
-(!(empty?(bind[25]))) || FAIL
+(!(empty?(bind[33]))) || FAIL
+end
+def First_Dataflow__lp_bind_lb_11_35dc(bind)
+(bind[11].ary!=["default"]) || FAIL
 end
 def First_Dataflow__lp_src_dot_fir_1e1a(bind)
 (src.first.is_a?(lattice)) || FAIL
 end
-def First_Dataflow_bind_lb_16_rb__06f7(bind)
-bind[16]|lattice.empty
+def First_Dataflow_bind_lb_17_rb__cd44(bind)
+bind[17].inject(:|)
 end
-def First_Dataflow_bind_lb_16_rb__bfe8(bind)
-bind[16].seqjoin(bind[28])
+def First_Dataflow_bind_lb_24_rb__7e47(bind)
+bind[24]|lattice.empty
 end
-def First_Dataflow_bind_lb_9_rb__dot__05d7(bind)
-bind[9].inject(:|)
-end
-def First_Dataflow_depends_lp__7dbf(bind)
-depends(bind[0]);puts bind[0].inspect;puts @vals[bind[0]].inspect; @vals[bind[0]]
+def First_Dataflow_depends_lp__609f(bind)
+depends(bind[0]);#puts bind[0].inspect;puts @vals[bind[0]].inspect; 
+@vals[bind[0]]
 end
 def First_Dataflow_lattice_dot__2c4f(bind)
 lattice.empty
 end
 def First_Dataflow_lattice_dot__2ce9(bind)
 lattice.default
+end
+def First_Dataflow_puts_sp_bin_64bd(bind)
+puts bind[24].inspect,bind[36].inspect,bind[24].seqjoin(bind[36]).inspect,bind[33].inspect;bind[24].seqjoin(bind[36])
+end
+def First_Dataflow_puts_sp_bin_d830(bind)
+puts bind[0].inspect;bind[0].inject(:|)
 end
 def First_Dataflow_src_dot_firs_8482(bind)
 src.first
@@ -251,29 +263,32 @@ end
 
 class Sizes_Dataflow < First_Dataflow
 
-def Sizes_Dataflow__append_lp__0d86(bind)
-_append(bind[9],bind[10])
+def Sizes_Dataflow__append_lp__0605(bind)
+_append(bind[0],bind[16])
 end
-def Sizes_Dataflow__append_lp__3c16(bind)
-_append(bind[28],bind[29])
+def Sizes_Dataflow__append_lp__4548(bind)
+_append(bind[19],bind[20])
+end
+def Sizes_Dataflow__append_lp__a10b(bind)
+_append(bind[38],bind[39])
 end
 def Sizes_Dataflow__at_vis_eq_bin_af53(bind)
 @vis=bind[0]; bind[0]
 end
 def Sizes_Dataflow__lp_(bind)
-(!(empty?(bind[35]))) || FAIL
+(!(empty?(bind[45]))) || FAIL
+end
+def Sizes_Dataflow__lp_bind_lb_15_6c52(bind)
+(bind[15].ary!=["default"]) || FAIL
 end
 def Sizes_Dataflow__lp_src_dot_fir_1e1a(bind)
 (src.first.is_a?(lattice)) || FAIL
 end
-def Sizes_Dataflow_bind_lb_11_rb__28dd(bind)
-bind[11].inject(:|)
+def Sizes_Dataflow_bind_lb_21_rb__9551(bind)
+bind[21].inject(:|)
 end
-def Sizes_Dataflow_bind_lb_22_rb__6d1c(bind)
-bind[22].seqjoin(bind[38])
-end
-def Sizes_Dataflow_bind_lb_22_rb__a94e(bind)
-bind[22]|lattice.empty
+def Sizes_Dataflow_bind_lb_32_rb__70c3(bind)
+bind[32]|lattice.empty
 end
 def Sizes_Dataflow_lattice_dot__2c4f(bind)
 lattice.empty
@@ -287,6 +302,12 @@ end
 def Sizes_Dataflow_lattice_lb__fdee(bind)
 lattice[1]
 end
+def Sizes_Dataflow_puts_sp_bin_d4b6(bind)
+puts bind[32].inspect,bind[48].inspect,bind[32].seqjoin(bind[48]).inspect,bind[45].inspect;bind[32].seqjoin(bind[48])
+end
+def Sizes_Dataflow_puts_sp_bin_d830(bind)
+puts bind[0].inspect;bind[0].inject(:|)
+end
 def Sizes_Dataflow_src_dot_firs_8482(bind)
 src.first
 end
@@ -296,11 +317,14 @@ end
 
 class Switch_Dataflow < First_Dataflow
 
-def Switch_Dataflow__append_lp__0d86(bind)
-_append(bind[9],bind[10])
+def Switch_Dataflow__append_lp__0605(bind)
+_append(bind[0],bind[16])
 end
-def Switch_Dataflow__append_lp__3c16(bind)
-_append(bind[28],bind[29])
+def Switch_Dataflow__append_lp__4548(bind)
+_append(bind[19],bind[20])
+end
+def Switch_Dataflow__append_lp__a10b(bind)
+_append(bind[38],bind[39])
 end
 def Switch_Dataflow__at_vis_eq_bin_af53(bind)
 @vis=bind[0]; bind[0]
@@ -309,22 +333,22 @@ def Switch_Dataflow__do_rules_lb_b_6b08(bind)
 $rules[bind[16]].body
 end
 def Switch_Dataflow__lp_(bind)
-(!(empty?(bind[35]))) || FAIL
+(!(empty?(bind[45]))) || FAIL
 end
 def Switch_Dataflow__lp__do_rules_lb__fed1(bind)
 ($rules[bind[16]]) || FAIL
 end
+def Switch_Dataflow__lp_bind_lb_15_6c52(bind)
+(bind[15].ary!=["default"]) || FAIL
+end
 def Switch_Dataflow__lp_src_dot_fir_1e1a(bind)
 (src.first.is_a?(lattice)) || FAIL
 end
-def Switch_Dataflow_bind_lb_11_rb__28dd(bind)
-bind[11].inject(:|)
+def Switch_Dataflow_bind_lb_21_rb__9551(bind)
+bind[21].inject(:|)
 end
-def Switch_Dataflow_bind_lb_22_rb__6d1c(bind)
-bind[22].seqjoin(bind[38])
-end
-def Switch_Dataflow_bind_lb_22_rb__a94e(bind)
-bind[22]|lattice.empty
+def Switch_Dataflow_bind_lb_32_rb__70c3(bind)
+bind[32]|lattice.empty
 end
 def Switch_Dataflow_firstcha_7468(bind)
 firstchar(bind[10])
@@ -338,8 +362,14 @@ end
 def Switch_Dataflow_lattice_dot__e0e5(bind)
 lattice.top
 end
-def Switch_Dataflow_puts_sp__dq_re_611e(bind)
-puts "regchar" ;r=regchar(bind[10]);puts r.inspect;r
+def Switch_Dataflow_puts_sp_bin_d4b6(bind)
+puts bind[32].inspect,bind[48].inspect,bind[32].seqjoin(bind[48]).inspect,bind[45].inspect;bind[32].seqjoin(bind[48])
+end
+def Switch_Dataflow_puts_sp_bin_d830(bind)
+puts bind[0].inspect;bind[0].inject(:|)
+end
+def Switch_Dataflow_regchar_lp__0d06(bind)
+regchar(bind[10])
 end
 def Switch_Dataflow_src_dot_firs_8482(bind)
 src.first
@@ -350,11 +380,14 @@ end
 
 class ClasSwitch_Dataflow < First_Dataflow
 
-def ClasSwitch_Dataflow__append_lp__0d86(bind)
-_append(bind[9],bind[10])
+def ClasSwitch_Dataflow__append_lp__0605(bind)
+_append(bind[0],bind[16])
 end
-def ClasSwitch_Dataflow__append_lp__3c16(bind)
-_append(bind[28],bind[29])
+def ClasSwitch_Dataflow__append_lp__4548(bind)
+_append(bind[19],bind[20])
+end
+def ClasSwitch_Dataflow__append_lp__a10b(bind)
+_append(bind[38],bind[39])
 end
 def ClasSwitch_Dataflow__at_vis_eq_bin_af53(bind)
 @vis=bind[0]; bind[0]
@@ -363,22 +396,22 @@ def ClasSwitch_Dataflow__do_rules_lb_b_ab2c(bind)
 $rules[bind[10]].body
 end
 def ClasSwitch_Dataflow__lp_(bind)
-(!(empty?(bind[35]))) || FAIL
+(!(empty?(bind[45]))) || FAIL
 end
 def ClasSwitch_Dataflow__lp__do_rules_lb__9d00(bind)
 ($rules[bind[10]]) || FAIL
 end
+def ClasSwitch_Dataflow__lp_bind_lb_15_6c52(bind)
+(bind[15].ary!=["default"]) || FAIL
+end
 def ClasSwitch_Dataflow__lp_src_dot_fir_1e1a(bind)
 (src.first.is_a?(lattice)) || FAIL
 end
-def ClasSwitch_Dataflow_bind_lb_11_rb__28dd(bind)
-bind[11].inject(:|)
+def ClasSwitch_Dataflow_bind_lb_21_rb__9551(bind)
+bind[21].inject(:|)
 end
-def ClasSwitch_Dataflow_bind_lb_22_rb__6d1c(bind)
-bind[22].seqjoin(bind[38])
-end
-def ClasSwitch_Dataflow_bind_lb_22_rb__a94e(bind)
-bind[22]|lattice.empty
+def ClasSwitch_Dataflow_bind_lb_32_rb__70c3(bind)
+bind[32]|lattice.empty
 end
 def ClasSwitch_Dataflow_lattice_dot__2c4f(bind)
 lattice.empty
@@ -388,6 +421,12 @@ lattice.default
 end
 def ClasSwitch_Dataflow_lattice_lb__9b29(bind)
 lattice[bind[7]]
+end
+def ClasSwitch_Dataflow_puts_sp_bin_d4b6(bind)
+puts bind[32].inspect,bind[48].inspect,bind[32].seqjoin(bind[48]).inspect,bind[45].inspect;bind[32].seqjoin(bind[48])
+end
+def ClasSwitch_Dataflow_puts_sp_bin_d830(bind)
+puts bind[0].inspect;bind[0].inject(:|)
 end
 def ClasSwitch_Dataflow_src_dot_firs_8482(bind)
 src.first
@@ -767,15 +806,15 @@ end
 
 
 def detect_switch_compiled_by
-'b64466aca66b9c1c8c0fac887d48b782'
+'ea8569949873c966cfcd97e2f321f7ff'
 end
 def detect_switch_source_hash
-'cd23e2e08dd44db3b466fb2de26a7afd'
+'2c534de5a9399a18b0d497ff5205330f'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'2611b53c87634e92ab40c8be93472c4d'
+'c81c659eb1a6b02102f78c3d3844ae9d'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

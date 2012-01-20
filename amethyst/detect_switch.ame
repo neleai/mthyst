@@ -38,7 +38,7 @@ class FirstLattice
 		self.class[*(ary&a.ary)]
 	end
 	def seqjoin(a)
-    return self unless self.ary.include? Empty
+    return self unless self.ary.include?(Empty)
     (self-self.class.empty)|a
   end
 
@@ -158,7 +158,9 @@ class First_Dataflow < Amethyst
     end
   end
 
-	def empty?(el)    
+	def empty?(el)
+		puts "emp",$sizedf.analyze(el).size,el.inspect
+		
 		$sizedf.analyze(el).size==0
 	end
 end
@@ -208,13 +210,15 @@ class ClasSwitch_Dataflow < First_Dataflow
 	end
 end
 amethyst First_Dataflow {
-	value =  .:x  {depends(x);puts x.inspect;puts @@vals[x].inspect; @@vals[x]}
+	value =  .:x  {depends(x);#puts x.inspect;puts @@vals[x].inspect; 
+@@vals[x]}
 
 
 	root = .:x analyze(x)
 	
 	first =	Switch[&{@first.is_a?(lattice)} .* {@first}]
-				| Seq[{lattice.empty}:val (.:el {el}=>value:nev {val.seqjoin(nev)}:val  (~{empty?(el)} break | empty) )*   .* {val}]
+				| Switch[ [ .:e (&{e.ary!=["default"]} value:vals[]|.) ]* {puts vals.inspect;vals.inject(:|)} ]
+				| Seq[{lattice.empty}:val (.:el {el}=>value:nev {puts val.inspect,nev.inspect,val.seqjoin(nev).inspect,el.inspect;val.seqjoin(nev)}:val  (~{empty?(el)} break | empty) )*   .* {val}]
 				| Many[value:val {val|lattice.empty} ]
 				| Or[value*:{it.inject(:|)}]
 				| Switch[value*:{it.inject(:|)}]
@@ -234,7 +238,7 @@ amethyst Sizes_Dataflow < First_Dataflow {
 
 amethyst Switch_Dataflow < First_Dataflow{
 	first = Apply[( ["_seq"  ] CAct[.:str] {firstchar(str)}
-								| ["regch" ] Act[.:str]  {puts "regchar" ;r=regchar(str);puts r.inspect;r}
+								| ["regch" ] Act[.:str]  {regchar(str)}
 								| ["anything" ] {lattice.top}
 							  )]
 				| Apply[ :name &{$rules[name]}  { $rules[name].body}=>value ]
