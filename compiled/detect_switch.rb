@@ -522,6 +522,9 @@ end
 def Detect_Switch__append_lp__37c5(bind)
 _append(bind[6],bind[8])
 end
+def Detect_Switch__append_lp__473a(bind)
+_append(bind[13],bind[14])
+end
 def Detect_Switch__append_lp__6adb(bind)
 _append(bind[3],bind[5])
 end
@@ -616,9 +619,6 @@ nary=bind[1].ary
                                  nary=nary.map{|o,v| [o,predicate(bind[0],v)]}.select{|o,v| v!=Placeholder}
                                  Switch[{:act=>bind[1].act,:first=>bind[1].first,:defs=>bind[1].defs,:ary=>nary}]
                               
-end
-def Detect_Switch_puts_sp_src_c03d(bind)
-puts src.inspect ;puts bind[5].inspect;@cases=@cases.map{|c| [c&bind[5],c&~bind[5]]}.flatten.select{|x| x.ary.size>0}.uniq_by{|x|x.ary.inspect}
 end
 def Detect_Switch_s_eq_Switch_a9b0(bind)
 s=Switch[{:act=>"*ame_curstr(self)",:first=>bind[6],:ary=>bind[2]}];puts s.inspect;s
@@ -768,15 +768,15 @@ end
 
 
 def detect_switch_compiled_by
-'518c208be1e1f5f1abe4864cacb3ae9b'
+'fb24cfa16abf022f1bc7898d96c59a6d'
 end
 def detect_switch_source_hash
-'9956462684173d60fc6a079c625d36c6'
+'f9bad12296118e56c2c1f6c460c977a2'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'ded72ba2d51de276292e30547ccb439f'
+'6d4eba03e6bf1f7333cc15e41edc1aca'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

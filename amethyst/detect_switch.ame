@@ -349,8 +349,8 @@ amethyst Detect_Switch < Detect_First {
 		{s=Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>ary3}];puts s.inspect;s}
 	]
 	
-	split = Seq[ split .* first(@self):f {puts @self.inspect ;puts f.inspect;@@cases=@@cases.map{|c| [c&f,c&~f]}.flatten.select{|x| x.ary.size>0}.uniq_by{|x|x.ary.inspect}} ]
-				| Or[ split*]
+	split = Seq[ split*]
+				| Or[ split* ]
 				| Bind[ split ]
 				| .:el first(el):f {@@cases=@@cases.map{|c| [c&f,c&~f]}.flatten.select{|x| x.ary.size>0}.uniq_by{|x|x.ary.inspect} }
 	
