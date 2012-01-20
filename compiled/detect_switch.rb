@@ -177,8 +177,8 @@ class First_Dataflow < Amethyst
     end
   end
 
-	def empty?(el)
-		@vals[el].ary.include?(Empty)
+	def empty?(el)    
+		$sizedf.analyze(s).size==0
 	end
 end
 class Sizes_Dataflow < First_Dataflow
@@ -221,8 +221,7 @@ class Switch_Dataflow < First_Dataflow
 		CharLattice
 	end
   def empty?(s)
-    b=($sizedf.analyze(s).size==0)
-		b
+    ($sizedf.analyze(s).size==0)	
   end
 end
 
@@ -797,7 +796,7 @@ def detect_switch_compiled_by
 '22e4a4b770ad9bca838dd19634db33e9'
 end
 def detect_switch_source_hash
-'c9631c49cae0b5172f14a277dac0a040'
+'eaaf78e05526b75dd009439802fc597f'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version

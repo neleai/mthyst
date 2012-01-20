@@ -177,8 +177,8 @@ class First_Dataflow < Amethyst
     end
   end
 
-	def empty?(el)
-		@vals[el].ary.include?(Empty)
+	def empty?(el)    
+		$sizedf.analyze(s).size==0
 	end
 end
 class Sizes_Dataflow < First_Dataflow
@@ -221,8 +221,7 @@ class Switch_Dataflow < First_Dataflow
 		CharLattice
 	end
   def empty?(s)
-    b=($sizedf.analyze(s).size==0)
-		b
+    ($sizedf.analyze(s).size==0)	
   end
 end
 
