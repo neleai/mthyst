@@ -77,13 +77,13 @@ static VALUE sy_AmethystParser_Global_lb_b_8edb;
 static VALUE sy_AmethystParser_Grammar_dot__80c6;
 static VALUE sy_AmethystParser_Key_lb_bind_20b7;
 static VALUE sy_AmethystParser_Lambda_lb___012f;
-static VALUE sy_AmethystParser_Lookahea_0dfa;
+static VALUE sy_AmethystParser_Lookahea_b11c;
 static VALUE sy_AmethystParser_Many_lb_bin_33ac;
 static VALUE sy_AmethystParser_Nested_lb_b_7d5e;
 static VALUE sy_AmethystParser_Or_dot_creat_67f0;
 static VALUE sy_AmethystParser_Or_lb_bind_lb__cb4a;
 static VALUE sy_AmethystParser_Pass_lb_bin_9af8;
-static VALUE sy_AmethystParser_Pred_lb_bin_bcee;
+static VALUE sy_AmethystParser_Pred_lb_bin_4918;
 static VALUE sy_AmethystParser_Result_lb__le__ae0e;
 static VALUE sy_AmethystParser_Rule_dot_cre_e3af;
 static VALUE sy_AmethystParser_Seq_dot_crea_abce;
@@ -579,114 +579,71 @@ alt1_2: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
 ame_setcut(self,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos2); goto break1;
  accept1:;
-unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC(0) ... UC(57):;case UC(59) ... UC(60):;case UC(62) ... UC(62):;case UC(64) ... UC(90):;case UC(92) ... UC(255):;  it=rb_funcall(self,sy_AmethystParser__di__lb__pl__ti__rb__di__c64d,1,bind);  arg0=it; it=Amethyst_regch(self ,arg0); FAILTEST(break1); bind_aset(bind,1/*one*/,it);
+unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC(42) ... UC(43):;  it=rb_funcall(self,sy_AmethystParser__di__lb__pl__ti__rb__di__c64d,1,bind);  arg0=it; it=Amethyst_regch(self ,arg0); FAILTEST(break1); bind_aset(bind,1/*one*/,it);
 it=rb_funcall(self,sy_AmethystParser_Many_lb_bin_33ac,1,bind);  bind_aset(bind,0/*from*/,it);
- break;case UC(58) ... UC(58):; int oldpos3=ame_getpos(self);
+ break;case UC(58) ... UC(58):; if (strncmp(ame_curstr(self),":",1)) goto break1; else ame_setpos(self,ame_getpos(self)+1);int oldpos3=ame_getpos(self);
 alt2_1: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
-  it=rb_funcall(self,sy_AmethystParser__di__lb__pl__ti__rb__di__c64d,1,bind);  arg0=it; it=Amethyst_regch(self ,arg0); FAILTEST(alt2_2); bind_aset(bind,1/*one*/,it);
-it=rb_funcall(self,sy_AmethystParser_Many_lb_bin_33ac,1,bind);  bind_aset(bind,0/*from*/,it);
+ int oldpos4=ame_getpos(self);
+alt3_1: ame_setpos(self,oldpos4);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt2_2;}
+   it=AmethystParser_key(self ); FAILTEST(alt3_2); bind_aset(bind,2/*name*/,it);
+ 
+ame_setcut(self,Qnil);goto accept3;
+alt3_2: ame_setpos(self,oldpos4);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt2_2;}
+   it=AmethystParser_name(self ); FAILTEST(alt3_3); bind_aset(bind,2/*name*/,it);
+ 
+ame_setcut(self,Qnil);goto accept3;
+  alt3_3:  ame_setpos(self,oldpos4); goto alt2_2;
+ accept3:;
+unsigned char chr2=*ame_curstr(self);  switch(chr2){case UC(0) ... UC(90):;case UC(92) ... UC(255):;   it=Amethyst_empty(self ); FAILTEST(alt2_2); bind_aset(bind,3/*append*/,it);
+ break;case UC(91) ... UC(91):; int oldpos5=ame_getpos(self);
+alt4_1: ame_setpos(self,oldpos5);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt2_2;}
+ if (strncmp(ame_curstr(self),"[]",2)) goto alt4_2; else ame_setpos(self,ame_getpos(self)+2);it=rb_obj_clone(s__lb__rb__d751); bind_aset(bind,4/*_result*/,it);
+it=bind_aget(bind,4/*_result*/); bind_aset(bind,3/*append*/,it);
+ 
+ame_setcut(self,Qnil);goto accept4;
+alt4_2: ame_setpos(self,oldpos5);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt2_2;}
+   it=Amethyst_empty(self ); FAILTEST(alt4_3); bind_aset(bind,3/*append*/,it);
+ 
+ame_setcut(self,Qnil);goto accept4;
+  alt4_3:  ame_setpos(self,oldpos5); goto alt2_2;
+ accept4:;
+ break;}it=rb_funcall(self,sy_AmethystParser__Bind_lp_bi_3fe9,1,bind);  bind_aset(bind,0/*from*/,it);
  
 ame_setcut(self,Qnil);goto accept2;
 alt2_2: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
- if (strncmp(ame_curstr(self),":",1)) goto alt2_3; else ame_setpos(self,ame_getpos(self)+1);int oldpos4=ame_getpos(self);
-alt3_1: ame_setpos(self,oldpos4);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt2_3;}
- int oldpos5=ame_getpos(self);
-alt4_1: ame_setpos(self,oldpos5);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt3_2;}
-   it=AmethystParser_key(self ); FAILTEST(alt4_2); bind_aset(bind,2/*name*/,it);
- 
-ame_setcut(self,Qnil);goto accept4;
-alt4_2: ame_setpos(self,oldpos5);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt3_2;}
-   it=AmethystParser_name(self ); FAILTEST(alt4_3); bind_aset(bind,2/*name*/,it);
- 
-ame_setcut(self,Qnil);goto accept4;
-  alt4_3:  ame_setpos(self,oldpos5); goto alt3_2;
- accept4:;
-unsigned char chr2=*ame_curstr(self);  switch(chr2){case UC(0) ... UC(90):;case UC(92) ... UC(255):;   it=Amethyst_empty(self ); FAILTEST(alt3_2); bind_aset(bind,3/*append*/,it);
- break;case UC(91) ... UC(91):; int oldpos6=ame_getpos(self);
-alt5_1: ame_setpos(self,oldpos6);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt3_2;}
- if (strncmp(ame_curstr(self),"[]",2)) goto alt5_2; else ame_setpos(self,ame_getpos(self)+2);it=rb_obj_clone(s__lb__rb__d751); bind_aset(bind,4/*_result*/,it);
-it=bind_aget(bind,4/*_result*/); bind_aset(bind,3/*append*/,it);
- 
-ame_setcut(self,Qnil);goto accept5;
-alt5_2: ame_setpos(self,oldpos6);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt3_2;}
-   it=Amethyst_empty(self ); FAILTEST(alt5_3); bind_aset(bind,3/*append*/,it);
- 
-ame_setcut(self,Qnil);goto accept5;
-  alt5_3:  ame_setpos(self,oldpos6); goto alt3_2;
- accept5:;
- break;}it=rb_funcall(self,sy_AmethystParser__Bind_lp_bi_3fe9,1,bind);  bind_aset(bind,0/*from*/,it);
- 
-ame_setcut(self,Qnil);goto accept3;
-alt3_2: ame_setpos(self,oldpos4);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt2_3;}
-   it=AmethystParser_inline_host_expr(self ); FAILTEST(alt3_3); bind_aset(bind,5/*e*/,it);
+   it=AmethystParser_inline_host_expr(self ); FAILTEST(alt2_3); bind_aset(bind,5/*e*/,it);
 it=rb_funcall(self,sy_AmethystParser_Seq_lb__Bin_6d20,1,bind);  bind_aset(bind,0/*from*/,it);
- 
-ame_setcut(self,Qnil);goto accept3;
-  alt3_3:  ame_setpos(self,oldpos4); goto alt2_3;
- accept3:;
  
 ame_setcut(self,Qnil);goto accept2;
   alt2_3:  ame_setpos(self,oldpos3); goto break1;
  accept2:;
- break;case UC(61) ... UC(61):; int oldpos7=ame_getpos(self);
-alt6_1: ame_setpos(self,oldpos7);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
- if (strncmp(ame_curstr(self),"=>",2)) goto alt6_2; else ame_setpos(self,ame_getpos(self)+2);  it=AmethystParser_term(self ); FAILTEST(alt6_2); bind_aset(bind,5/*e*/,it);
+ break;case UC(61) ... UC(61):; if (strncmp(ame_curstr(self),"=>",2)) goto break1; else ame_setpos(self,ame_getpos(self)+2);  it=AmethystParser_term(self ); FAILTEST(break1); bind_aset(bind,5/*e*/,it);
 it=rb_funcall(self,sy_AmethystParser_Pass_lb_bin_9af8,1,bind);  bind_aset(bind,0/*from*/,it);
- 
-ame_setcut(self,Qnil);goto accept6;
-alt6_2: ame_setpos(self,oldpos7);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
-  it=rb_funcall(self,sy_AmethystParser__di__lb__pl__ti__rb__di__c64d,1,bind);  arg0=it; it=Amethyst_regch(self ,arg0); FAILTEST(alt6_3); bind_aset(bind,1/*one*/,it);
-it=rb_funcall(self,sy_AmethystParser_Many_lb_bin_33ac,1,bind);  bind_aset(bind,0/*from*/,it);
- 
-ame_setcut(self,Qnil);goto accept6;
-  alt6_3:  ame_setpos(self,oldpos7); goto break1;
- accept6:;
- break;case UC(63) ... UC(63):; int oldpos8=ame_getpos(self);
-alt7_1: ame_setpos(self,oldpos8);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
-  it=rb_funcall(self,sy_AmethystParser__di__lb__pl__ti__rb__di__c64d,1,bind);  arg0=it; it=Amethyst_regch(self ,arg0); FAILTEST(alt7_2); bind_aset(bind,1/*one*/,it);
-it=rb_funcall(self,sy_AmethystParser_Many_lb_bin_33ac,1,bind);  bind_aset(bind,0/*from*/,it);
- 
-ame_setcut(self,Qnil);goto accept7;
-alt7_2: ame_setpos(self,oldpos8);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
- if (strncmp(ame_curstr(self),"?",1)) goto alt7_3; else ame_setpos(self,ame_getpos(self)+1);it=rb_funcall(self,sy_AmethystParser_Or_lb_bind_lb__cb4a,1,bind);  bind_aset(bind,0/*from*/,it);
- 
-ame_setcut(self,Qnil);goto accept7;
-  alt7_3:  ame_setpos(self,oldpos8); goto break1;
- accept7:;
- break;case UC(91) ... UC(91):; int oldpos9=ame_getpos(self);
-alt8_1: ame_setpos(self,oldpos9);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
- if (strncmp(ame_curstr(self),"[",1)) goto alt8_2; else ame_setpos(self,ame_getpos(self)+1);  it=AmethystParser_expression(self ); FAILTEST(alt8_2); bind_aset(bind,5/*e*/,it);
-  it=Amethyst_spaces(self ); FAILTEST(alt8_2);if (strncmp(ame_curstr(self),"]",1)) goto alt8_2; else ame_setpos(self,ame_getpos(self)+1);it=rb_funcall(self,sy_AmethystParser_Enter_lb_bi_68d7,1,bind);  bind_aset(bind,0/*from*/,it);
- 
-ame_setcut(self,Qnil);goto accept8;
-alt8_2: ame_setpos(self,oldpos9);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
-  it=rb_funcall(self,sy_AmethystParser__di__lb__pl__ti__rb__di__c64d,1,bind);  arg0=it; it=Amethyst_regch(self ,arg0); FAILTEST(alt8_3); bind_aset(bind,1/*one*/,it);
-it=rb_funcall(self,sy_AmethystParser_Many_lb_bin_33ac,1,bind);  bind_aset(bind,0/*from*/,it);
- 
-ame_setcut(self,Qnil);goto accept8;
-  alt8_3:  ame_setpos(self,oldpos9); goto break1;
- accept8:;
- break;} if (ame_getstop(self)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos1); it=bind_aget(bind,0/*from*/); bind_aset(bind,6/*_result*/,it);
+ break;case UC(63) ... UC(63):; if (strncmp(ame_curstr(self),"?",1)) goto break1; else ame_setpos(self,ame_getpos(self)+1);it=rb_funcall(self,sy_AmethystParser_Or_lb_bind_lb__cb4a,1,bind);  bind_aset(bind,0/*from*/,it);
+ break;case UC(91) ... UC(91):; if (strncmp(ame_curstr(self),"[",1)) goto break1; else ame_setpos(self,ame_getpos(self)+1);  it=AmethystParser_expression(self ); FAILTEST(break1); bind_aset(bind,5/*e*/,it);
+  it=Amethyst_spaces(self ); FAILTEST(break1);if (strncmp(ame_curstr(self),"]",1)) goto break1; else ame_setpos(self,ame_getpos(self)+1);it=rb_funcall(self,sy_AmethystParser_Enter_lb_bi_68d7,1,bind);  bind_aset(bind,0/*from*/,it);
+ break;default:;   it=Amethyst_fails(self ); FAILTEST(break1); break;} if (ame_getstop(self)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos1); it=bind_aget(bind,0/*from*/); bind_aset(bind,6/*_result*/,it);
 it=bind_aget(bind,6/*_result*/);
 return it;
 fail: return failobj; }
 VALUE AmethystParser_prefixed(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(6);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-int oldpos1=ame_getpos(self);
+unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC(0) ... UC(37):;case UC(39) ... UC(125):;case UC(127) ... UC(255):;   it=AmethystParser_postfixed(self ); FAILTEST(fail); bind_aset(bind,0/*_result*/,it);
+ break;case UC(38) ... UC(38):;case UC(126) ... UC(126):; int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-  it=rb_funcall(self,sy_AmethystParser__di__lb_,1,bind);  arg0=it; it=Amethyst_regch(self ,arg0); FAILTEST(alt1_2); bind_aset(bind,0/*autovar*/,it);
-it=bind_aget(bind,0/*autovar*/); bind_aset(bind,1/*autovar*/,it);
+  it=rb_funcall(self,sy_AmethystParser__di__lb_,1,bind);  arg0=it; it=Amethyst_regch(self ,arg0); FAILTEST(alt1_2); bind_aset(bind,1/*autovar*/,it);
+it=bind_aget(bind,1/*autovar*/); bind_aset(bind,2/*autovar*/,it);
 int oldpos2=ame_getpos(self);
 alt2_1: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt1_2;}
- it=bind_aget(bind,1/*autovar*/); bind_aset(bind,2/*neg*/,it);
-  it=AmethystParser_inline_host_expr(self ); FAILTEST(alt2_2); bind_aset(bind,3/*expr*/,it);
-it=rb_funcall(self,sy_AmethystParser_Pred_lb_bin_bcee,1,bind);  bind_aset(bind,4/*_result*/,it);
+ it=bind_aget(bind,2/*autovar*/); bind_aset(bind,3/*neg*/,it);
+  it=AmethystParser_inline_host_expr(self ); FAILTEST(alt2_2); bind_aset(bind,4/*expr*/,it);
+it=rb_funcall(self,sy_AmethystParser_Pred_lb_bin_4918,1,bind);  bind_aset(bind,0/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept2;
 alt2_2: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt1_2;}
- it=bind_aget(bind,1/*autovar*/); bind_aset(bind,2/*neg*/,it);
+ it=bind_aget(bind,2/*autovar*/); bind_aset(bind,3/*neg*/,it);
   it=AmethystParser_prefixed(self ); FAILTEST(alt2_3); bind_aset(bind,5/*m*/,it);
-it=rb_funcall(self,sy_AmethystParser_Lookahea_0dfa,1,bind);  bind_aset(bind,4/*_result*/,it);
+it=rb_funcall(self,sy_AmethystParser_Lookahea_b11c,1,bind);  bind_aset(bind,0/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept2;
   alt2_3:  ame_setpos(self,oldpos2); goto alt1_2;
@@ -694,12 +651,12 @@ ame_setcut(self,Qnil);goto accept2;
  
 ame_setcut(self,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-   it=AmethystParser_postfixed(self ); FAILTEST(alt1_3); bind_aset(bind,4/*_result*/,it);
+   it=AmethystParser_postfixed(self ); FAILTEST(alt1_3); bind_aset(bind,0/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,4/*_result*/);
+ break;}it=bind_aget(bind,0/*_result*/);
 return it;
 fail: return failobj; }
 VALUE AmethystParser_procargs(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(2);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -752,7 +709,7 @@ fail: return failobj; }
 VALUE AmethystParser_rubyarg(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(22);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
 it=rb_ary_new3(0); bind_aset(bind,0/*n*/,it);
-unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC(0) ... UC(33):;case UC(35) ... UC(38):;case UC(40) ... UC(45):;case UC(47) ... UC(47):;case UC(58) ... UC(94):;case UC(123) ... UC(255):; int oldpos1=ame_getpos(self);
+unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC(0) ... UC(33):;case UC(35) ... UC(38):;case UC(42) ... UC(45):;case UC(47) ... UC(47):;case UC(58) ... UC(59):;case UC(61) ... UC(63):;case UC(91) ... UC(94):;case UC(124) ... UC(124):;case UC(126) ... UC(255):; int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
  it=rb_obj_clone(s__rp__9371); bind_aset(bind,1/*c*/,it);
 it=rb_obj_clone(s__lp__84c4); bind_aset(bind,2/*o*/,it);
@@ -778,7 +735,7 @@ it=bind_aget(bind,4/*_result*/); bind_aset(bind,5/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
 alt1_4: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
- int oldpos2=ame_getpos(self);
+ unsigned char chr2=*ame_curstr(self);  switch(chr2){case UC(0) ... UC(35):;case UC(37) ... UC(45):;case UC(47) ... UC(57):;case UC(59) ... UC(255):; int oldpos2=ame_getpos(self);
 alt2_1: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt1_5;}
    it=Amethyst_spaces(self ); FAILTEST(alt2_2);if (strncmp(ame_curstr(self),":@",2)) goto alt2_2; else ame_setpos(self,ame_getpos(self)+2);it=rb_obj_clone(s__co__at__4bf0); bind_aset(bind,6/*_result*/,it);
 it=bind_aget(bind,6/*_result*/); bind_aset(bind,7/*_result*/,it);
@@ -786,23 +743,35 @@ it=bind_aget(bind,7/*_result*/); bind_aset(bind,8/*autovar*/,it);
 it=rb_funcall(self,sy_AmethystParser__append_lp__0eeb,1,bind);  
 ame_setcut(self,Qnil);goto accept2;
 alt2_2: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt1_5;}
-  it=rb_funcall(self,sy_AmethystParser__di__lb__do__dot__co__rb__di__68eb,1,bind);  arg0=it; it=Amethyst_regch(self ,arg0); FAILTEST(alt2_3); bind_aset(bind,9/*autovar*/,it);
-it=rb_funcall(self,sy_AmethystParser__append_lp__653e,1,bind);  
+   it=Amethyst_empty(self ); FAILTEST(alt2_3); 
 ame_setcut(self,Qnil);goto accept2;
-alt2_3: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt1_5;}
-   it=Amethyst_empty(self ); FAILTEST(alt2_4); 
-ame_setcut(self,Qnil);goto accept2;
-  alt2_4:  ame_setpos(self,oldpos2); goto alt1_5;
+  alt2_3:  ame_setpos(self,oldpos2); goto alt1_5;
  accept2:;
-int oldpos3=ame_getpos(self);
+ break;case UC(36) ... UC(36):;case UC(46) ... UC(46):;case UC(58) ... UC(58):; int oldpos3=ame_getpos(self);
 alt3_1: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt1_5;}
-   it=Amethyst__(self ); FAILTEST(alt3_2);ame_setcut(self,Qtrue);  it=Amethyst_fails(self ); FAILTEST(alt3_2); 
+   it=Amethyst_spaces(self ); FAILTEST(alt3_2);if (strncmp(ame_curstr(self),":@",2)) goto alt3_2; else ame_setpos(self,ame_getpos(self)+2);it=rb_obj_clone(s__co__at__4bf0); bind_aset(bind,6/*_result*/,it);
+it=bind_aget(bind,6/*_result*/); bind_aset(bind,7/*_result*/,it);
+it=bind_aget(bind,7/*_result*/); bind_aset(bind,8/*autovar*/,it);
+it=rb_funcall(self,sy_AmethystParser__append_lp__0eeb,1,bind);  
 ame_setcut(self,Qnil);goto accept3;
 alt3_2: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt1_5;}
-   it=Amethyst_empty(self ); FAILTEST(alt3_3); 
+  it=rb_funcall(self,sy_AmethystParser__di__lb__do__dot__co__rb__di__68eb,1,bind);  arg0=it; it=Amethyst_regch(self ,arg0); FAILTEST(alt3_3); bind_aset(bind,9/*autovar*/,it);
+it=rb_funcall(self,sy_AmethystParser__append_lp__653e,1,bind);  
 ame_setcut(self,Qnil);goto accept3;
-  alt3_3:  ame_setpos(self,oldpos3); goto alt1_5;
+alt3_3: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt1_5;}
+   it=Amethyst_empty(self ); FAILTEST(alt3_4); 
+ame_setcut(self,Qnil);goto accept3;
+  alt3_4:  ame_setpos(self,oldpos3); goto alt1_5;
  accept3:;
+ break;}int oldpos4=ame_getpos(self);
+alt4_1: ame_setpos(self,oldpos4);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt1_5;}
+   it=Amethyst__(self ); FAILTEST(alt4_2);ame_setcut(self,Qtrue);  it=Amethyst_fails(self ); FAILTEST(alt4_2); 
+ame_setcut(self,Qnil);goto accept4;
+alt4_2: ame_setpos(self,oldpos4);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt1_5;}
+   it=Amethyst_empty(self ); FAILTEST(alt4_3); 
+ame_setcut(self,Qnil);goto accept4;
+  alt4_3:  ame_setpos(self,oldpos4); goto alt1_5;
+ accept4:;
   it=AmethystParser_name(self ); FAILTEST(alt1_5); bind_aset(bind,10/*autovar*/,it);
 it=rb_funcall(self,sy_AmethystParser__append_lp__b494,1,bind); it=rb_funcall(self,sy_AmethystParser_bind_lb_0_rb__dot__206f,1,bind);  bind_aset(bind,5/*_result*/,it);
  
@@ -817,430 +786,520 @@ alt1_6: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
 ame_setcut(self,Qnil);goto accept1;
   alt1_7:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
- break;case UC(34) ... UC(34):; int oldpos4=ame_getpos(self);
-alt4_1: ame_setpos(self,oldpos4);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ break;case UC(34) ... UC(34):; int oldpos5=ame_getpos(self);
+alt5_1: ame_setpos(self,oldpos5);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
  it=rb_obj_clone(s__rp__9371); bind_aset(bind,1/*c*/,it);
 it=rb_obj_clone(s__lp__84c4); bind_aset(bind,2/*o*/,it);
- it=rb_obj_clone(s__lp__84c4); arg0=it;it=rb_obj_clone(s__rp__9371); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt4_2); bind_aset(bind,3/*r*/,it);
+ it=rb_obj_clone(s__lp__84c4); arg0=it;it=rb_obj_clone(s__rp__9371); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt5_2); bind_aset(bind,3/*r*/,it);
 it=rb_funcall(self,sy_AmethystParser_Args_lb__le__co_a_4968,1,bind);  bind_aset(bind,4/*_result*/,it);
 it=bind_aget(bind,4/*_result*/); bind_aset(bind,5/*_result*/,it);
  
-ame_setcut(self,Qnil);goto accept4;
-alt4_2: ame_setpos(self,oldpos4);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ame_setcut(self,Qnil);goto accept5;
+alt5_2: ame_setpos(self,oldpos5);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
  it=rb_obj_clone(s__rb__0fbd); bind_aset(bind,1/*c*/,it);
 it=rb_obj_clone(s__lb__8154); bind_aset(bind,2/*o*/,it);
- it=rb_obj_clone(s__lb__8154); arg0=it;it=rb_obj_clone(s__rb__0fbd); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt4_3); bind_aset(bind,3/*r*/,it);
+ it=rb_obj_clone(s__lb__8154); arg0=it;it=rb_obj_clone(s__rb__0fbd); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt5_3); bind_aset(bind,3/*r*/,it);
 it=rb_funcall(self,sy_AmethystParser_Args_lb__le__co_a_4968,1,bind);  bind_aset(bind,4/*_result*/,it);
 it=bind_aget(bind,4/*_result*/); bind_aset(bind,5/*_result*/,it);
  
-ame_setcut(self,Qnil);goto accept4;
-alt4_3: ame_setpos(self,oldpos4);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ame_setcut(self,Qnil);goto accept5;
+alt5_3: ame_setpos(self,oldpos5);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
  it=rb_obj_clone(s__re__cbb1); bind_aset(bind,1/*c*/,it);
 it=rb_obj_clone(s__le__f95b); bind_aset(bind,2/*o*/,it);
- it=rb_obj_clone(s__le__f95b); arg0=it;it=rb_obj_clone(s__re__cbb1); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt4_4); bind_aset(bind,3/*r*/,it);
+ it=rb_obj_clone(s__le__f95b); arg0=it;it=rb_obj_clone(s__re__cbb1); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt5_4); bind_aset(bind,3/*r*/,it);
 it=rb_funcall(self,sy_AmethystParser_Args_lb__le__co_a_4968,1,bind);  bind_aset(bind,4/*_result*/,it);
 it=bind_aget(bind,4/*_result*/); bind_aset(bind,5/*_result*/,it);
  
-ame_setcut(self,Qnil);goto accept4;
-alt4_4: ame_setpos(self,oldpos4);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
- if (strncmp(ame_curstr(self),"\"",1)) goto alt4_5; else ame_setpos(self,ame_getpos(self)+1);it=rb_ary_new3(0); bind_aset(bind,11/*x*/,it);
-int oldpos5; while(1){oldpos5=ame_getpos(self); unsigned char chr2=*ame_curstr(self);  switch(chr2){case UC(0) ... UC(33):;case UC(35) ... UC(255):; int oldpos6=ame_getpos(self);
-alt5_1: ame_setpos(self,oldpos6);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
+ame_setcut(self,Qnil);goto accept5;
+alt5_4: ame_setpos(self,oldpos5);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ if (strncmp(ame_curstr(self),"\"",1)) goto alt5_5; else ame_setpos(self,ame_getpos(self)+1);it=rb_ary_new3(0); bind_aset(bind,11/*x*/,it);
+int oldpos6; while(1){oldpos6=ame_getpos(self); unsigned char chr3=*ame_curstr(self);  switch(chr3){case UC(0) ... UC(33):;case UC(35) ... UC(255):; int oldpos7=ame_getpos(self);
+alt6_1: ame_setpos(self,oldpos7);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
  it=rb_obj_clone(s__re__cbb1); bind_aset(bind,1/*c*/,it);
 it=rb_funcall(self,sy_AmethystParser__qu__sh__le__qu__9722,1,bind);  bind_aset(bind,2/*o*/,it);
- it=bind_aget(bind,2/*o*/); arg0=it;it=rb_obj_clone(s__re__cbb1); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt5_2); bind_aset(bind,3/*r*/,it);
+ it=bind_aget(bind,2/*o*/); arg0=it;it=rb_obj_clone(s__re__cbb1); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt6_2); bind_aset(bind,3/*r*/,it);
 it=rb_funcall(self,sy_AmethystParser_Args_lb__le__co_a_4968,1,bind);  bind_aset(bind,4/*_result*/,it);
 it=bind_aget(bind,4/*_result*/); bind_aset(bind,12/*autovar*/,it);
 it=rb_funcall(self,sy_AmethystParser__append_lp__be78,1,bind);  
-ame_setcut(self,Qnil);goto accept5;
-alt5_2: ame_setpos(self,oldpos6);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
- unsigned char chr3=*ame_curstr(self);  switch(chr3){case UC(0) ... UC(91):;case UC(93) ... UC(255):;   it=Amethyst_empty(self ); FAILTEST(alt5_3); break;case UC(92) ... UC(92):; unsigned char chr4=*ame_curstr(self);  switch(chr4){case UC(0) ... UC(91):;case UC(93) ... UC(255):;   it=Amethyst_empty(self ); FAILTEST(alt5_3); break;case UC(92) ... UC(92):; int oldpos7=ame_getpos(self);
-alt6_1: ame_setpos(self,oldpos7);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt5_3;}
- if (strncmp(ame_curstr(self),"\\",1)) goto alt6_2; else ame_setpos(self,ame_getpos(self)+1);it=rb_obj_clone(s__bs__bs__7f81); bind_aset(bind,6/*_result*/,it);
+ame_setcut(self,Qnil);goto accept6;
+alt6_2: ame_setpos(self,oldpos7);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
+ unsigned char chr4=*ame_curstr(self);  switch(chr4){case UC(0) ... UC(91):;case UC(93) ... UC(255):;   it=Amethyst_empty(self ); FAILTEST(alt6_3); break;case UC(92) ... UC(92):; unsigned char chr5=*ame_curstr(self);  switch(chr5){case UC(0) ... UC(91):;case UC(93) ... UC(255):;   it=Amethyst_empty(self ); FAILTEST(alt6_3); break;case UC(92) ... UC(92):; int oldpos8=ame_getpos(self);
+alt7_1: ame_setpos(self,oldpos8);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt6_3;}
+ if (strncmp(ame_curstr(self),"\\",1)) goto alt7_2; else ame_setpos(self,ame_getpos(self)+1);it=rb_obj_clone(s__bs__bs__7f81); bind_aset(bind,6/*_result*/,it);
 it=bind_aget(bind,6/*_result*/); bind_aset(bind,13/*autovar*/,it);
 it=rb_funcall(self,sy_AmethystParser__append_lp__68be,1,bind);  
-ame_setcut(self,Qnil);goto accept6;
-alt6_2: ame_setpos(self,oldpos7);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt5_3;}
-   it=Amethyst_empty(self ); FAILTEST(alt6_3); 
-ame_setcut(self,Qnil);goto accept6;
-  alt6_3:  ame_setpos(self,oldpos7); goto alt5_3;
- accept6:;
- break;} break;}  it=AmethystCore_anything(self ); FAILTEST(alt5_3); bind_aset(bind,14/*autovar*/,it);
-it=rb_funcall(self,sy_AmethystParser__append_lp__9230,1,bind);  
-ame_setcut(self,Qnil);goto accept5;
-  alt5_3:  ame_setpos(self,oldpos6); goto break1;
- accept5:;
- break;case UC(34) ... UC(34):; int oldpos8=ame_getpos(self);
-alt7_1: ame_setpos(self,oldpos8);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
- if (strncmp(ame_curstr(self),"\"",1)) goto alt7_2; else ame_setpos(self,ame_getpos(self)+1);ame_setcut(self,Qtrue);ame_setstop(self,Qtrue); 
 ame_setcut(self,Qnil);goto accept7;
-alt7_2: ame_setpos(self,oldpos8);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
+alt7_2: ame_setpos(self,oldpos8);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt6_3;}
+   it=Amethyst_empty(self ); FAILTEST(alt7_3); 
+ame_setcut(self,Qnil);goto accept7;
+  alt7_3:  ame_setpos(self,oldpos8); goto alt6_3;
+ accept7:;
+ break;} break;}  it=AmethystCore_anything(self ); FAILTEST(alt6_3); bind_aset(bind,14/*autovar*/,it);
+it=rb_funcall(self,sy_AmethystParser__append_lp__9230,1,bind);  
+ame_setcut(self,Qnil);goto accept6;
+  alt6_3:  ame_setpos(self,oldpos7); goto break1;
+ accept6:;
+ break;case UC(34) ... UC(34):; int oldpos9=ame_getpos(self);
+alt8_1: ame_setpos(self,oldpos9);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
+ if (strncmp(ame_curstr(self),"\"",1)) goto alt8_2; else ame_setpos(self,ame_getpos(self)+1);ame_setcut(self,Qtrue);ame_setstop(self,Qtrue); 
+ame_setcut(self,Qnil);goto accept8;
+alt8_2: ame_setpos(self,oldpos9);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
  it=rb_obj_clone(s__re__cbb1); bind_aset(bind,1/*c*/,it);
 it=rb_funcall(self,sy_AmethystParser__qu__sh__le__qu__9722,1,bind);  bind_aset(bind,2/*o*/,it);
- it=bind_aget(bind,2/*o*/); arg0=it;it=rb_obj_clone(s__re__cbb1); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt7_3); bind_aset(bind,3/*r*/,it);
+ it=bind_aget(bind,2/*o*/); arg0=it;it=rb_obj_clone(s__re__cbb1); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt8_3); bind_aset(bind,3/*r*/,it);
 it=rb_funcall(self,sy_AmethystParser_Args_lb__le__co_a_4968,1,bind);  bind_aset(bind,4/*_result*/,it);
 it=bind_aget(bind,4/*_result*/); bind_aset(bind,12/*autovar*/,it);
 it=rb_funcall(self,sy_AmethystParser__append_lp__be78,1,bind);  
-ame_setcut(self,Qnil);goto accept7;
-alt7_3: ame_setpos(self,oldpos8);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
- unsigned char chr5=*ame_curstr(self);  switch(chr5){case UC(0) ... UC(91):;case UC(93) ... UC(255):;   it=Amethyst_empty(self ); FAILTEST(alt7_4); break;}  it=AmethystCore_anything(self ); FAILTEST(alt7_4); bind_aset(bind,14/*autovar*/,it);
+ame_setcut(self,Qnil);goto accept8;
+alt8_3: ame_setpos(self,oldpos9);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
+ unsigned char chr6=*ame_curstr(self);  switch(chr6){case UC(0) ... UC(91):;case UC(93) ... UC(255):;   it=Amethyst_empty(self ); FAILTEST(alt8_4); break;}  it=AmethystCore_anything(self ); FAILTEST(alt8_4); bind_aset(bind,14/*autovar*/,it);
 it=rb_funcall(self,sy_AmethystParser__append_lp__9230,1,bind);  
-ame_setcut(self,Qnil);goto accept7;
-  alt7_4:  ame_setpos(self,oldpos8); goto break1;
- accept7:;
- break;} if (ame_getstop(self)!=Qnil){{oldpos5=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos5); it=rb_funcall(self,sy_AmethystParser_bind_lb_11_rb__169e,1,bind);  bind_aset(bind,15/*_result*/,it);
+ame_setcut(self,Qnil);goto accept8;
+  alt8_4:  ame_setpos(self,oldpos9); goto break1;
+ accept8:;
+ break;} if (ame_getstop(self)!=Qnil){{oldpos6=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos6); it=rb_funcall(self,sy_AmethystParser_bind_lb_11_rb__169e,1,bind);  bind_aset(bind,15/*_result*/,it);
 it=bind_aget(bind,15/*_result*/); bind_aset(bind,16/*s*/,it);
 it=rb_funcall(self,sy_AmethystParser_Strin_lb__lb__qu__595b,1,bind);  bind_aset(bind,5/*_result*/,it);
  
-ame_setcut(self,Qnil);goto accept4;
-alt4_5: ame_setpos(self,oldpos4);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
- int oldpos9=ame_getpos(self);
-alt8_1: ame_setpos(self,oldpos9);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt4_6;}
-   it=Amethyst_spaces(self ); FAILTEST(alt8_2);if (strncmp(ame_curstr(self),":@",2)) goto alt8_2; else ame_setpos(self,ame_getpos(self)+2);it=rb_obj_clone(s__co__at__4bf0); bind_aset(bind,6/*_result*/,it);
+ame_setcut(self,Qnil);goto accept5;
+alt5_5: ame_setpos(self,oldpos5);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ unsigned char chr7=*ame_curstr(self);  switch(chr7){case UC(0) ... UC(35):;case UC(37) ... UC(45):;case UC(47) ... UC(57):;case UC(59) ... UC(255):; int oldpos10=ame_getpos(self);
+alt9_1: ame_setpos(self,oldpos10);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt5_6;}
+   it=Amethyst_spaces(self ); FAILTEST(alt9_2);if (strncmp(ame_curstr(self),":@",2)) goto alt9_2; else ame_setpos(self,ame_getpos(self)+2);it=rb_obj_clone(s__co__at__4bf0); bind_aset(bind,6/*_result*/,it);
 it=bind_aget(bind,6/*_result*/); bind_aset(bind,7/*_result*/,it);
 it=bind_aget(bind,7/*_result*/); bind_aset(bind,8/*autovar*/,it);
 it=rb_funcall(self,sy_AmethystParser__append_lp__0eeb,1,bind);  
-ame_setcut(self,Qnil);goto accept8;
-alt8_2: ame_setpos(self,oldpos9);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt4_6;}
-  it=rb_funcall(self,sy_AmethystParser__di__lb__do__dot__co__rb__di__68eb,1,bind);  arg0=it; it=Amethyst_regch(self ,arg0); FAILTEST(alt8_3); bind_aset(bind,9/*autovar*/,it);
-it=rb_funcall(self,sy_AmethystParser__append_lp__653e,1,bind);  
-ame_setcut(self,Qnil);goto accept8;
-alt8_3: ame_setpos(self,oldpos9);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt4_6;}
-   it=Amethyst_empty(self ); FAILTEST(alt8_4); 
-ame_setcut(self,Qnil);goto accept8;
-  alt8_4:  ame_setpos(self,oldpos9); goto alt4_6;
- accept8:;
-int oldpos10=ame_getpos(self);
-alt9_1: ame_setpos(self,oldpos10);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt4_6;}
-   it=Amethyst__(self ); FAILTEST(alt9_2);ame_setcut(self,Qtrue);  it=Amethyst_fails(self ); FAILTEST(alt9_2); 
 ame_setcut(self,Qnil);goto accept9;
-alt9_2: ame_setpos(self,oldpos10);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt4_6;}
+alt9_2: ame_setpos(self,oldpos10);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt5_6;}
    it=Amethyst_empty(self ); FAILTEST(alt9_3); 
 ame_setcut(self,Qnil);goto accept9;
-  alt9_3:  ame_setpos(self,oldpos10); goto alt4_6;
+  alt9_3:  ame_setpos(self,oldpos10); goto alt5_6;
  accept9:;
-  it=AmethystParser_name(self ); FAILTEST(alt4_6); bind_aset(bind,10/*autovar*/,it);
+ break;}int oldpos11=ame_getpos(self);
+alt10_1: ame_setpos(self,oldpos11);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt5_6;}
+   it=Amethyst__(self ); FAILTEST(alt10_2);ame_setcut(self,Qtrue);  it=Amethyst_fails(self ); FAILTEST(alt10_2); 
+ame_setcut(self,Qnil);goto accept10;
+alt10_2: ame_setpos(self,oldpos11);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt5_6;}
+   it=Amethyst_empty(self ); FAILTEST(alt10_3); 
+ame_setcut(self,Qnil);goto accept10;
+  alt10_3:  ame_setpos(self,oldpos11); goto alt5_6;
+ accept10:;
+  it=AmethystParser_name(self ); FAILTEST(alt5_6); bind_aset(bind,10/*autovar*/,it);
 it=rb_funcall(self,sy_AmethystParser__append_lp__b494,1,bind); it=rb_funcall(self,sy_AmethystParser_bind_lb_0_rb__dot__206f,1,bind);  bind_aset(bind,5/*_result*/,it);
  
-ame_setcut(self,Qnil);goto accept4;
-alt4_6: ame_setpos(self,oldpos4);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-   it=AmethystParser_key(self ); FAILTEST(alt4_7); bind_aset(bind,5/*_result*/,it);
+ame_setcut(self,Qnil);goto accept5;
+alt5_6: ame_setpos(self,oldpos5);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+   it=AmethystParser_key(self ); FAILTEST(alt5_7); bind_aset(bind,5/*_result*/,it);
  
-ame_setcut(self,Qnil);goto accept4;
-alt4_7: ame_setpos(self,oldpos4);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-  it=rb_funcall(self,sy_AmethystParser__di__lb_2,1,bind);  arg0=it; it=Amethyst_regch(self ,arg0); FAILTEST(alt4_8); bind_aset(bind,5/*_result*/,it);
- 
-ame_setcut(self,Qnil);goto accept4;
-  alt4_8:  ame_setpos(self,oldpos4); goto fail;
- accept4:;
- break;case UC(39) ... UC(39):; int oldpos11=ame_getpos(self);
-alt10_1: ame_setpos(self,oldpos11);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ame_setcut(self,Qnil);goto accept5;
+  alt5_7:  ame_setpos(self,oldpos5); goto fail;
+ accept5:;
+ break;case UC(39) ... UC(39):; int oldpos12=ame_getpos(self);
+alt11_1: ame_setpos(self,oldpos12);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
  it=rb_obj_clone(s__rp__9371); bind_aset(bind,1/*c*/,it);
 it=rb_obj_clone(s__lp__84c4); bind_aset(bind,2/*o*/,it);
- it=rb_obj_clone(s__lp__84c4); arg0=it;it=rb_obj_clone(s__rp__9371); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt10_2); bind_aset(bind,3/*r*/,it);
+ it=rb_obj_clone(s__lp__84c4); arg0=it;it=rb_obj_clone(s__rp__9371); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt11_2); bind_aset(bind,3/*r*/,it);
 it=rb_funcall(self,sy_AmethystParser_Args_lb__le__co_a_4968,1,bind);  bind_aset(bind,4/*_result*/,it);
 it=bind_aget(bind,4/*_result*/); bind_aset(bind,5/*_result*/,it);
  
-ame_setcut(self,Qnil);goto accept10;
-alt10_2: ame_setpos(self,oldpos11);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ame_setcut(self,Qnil);goto accept11;
+alt11_2: ame_setpos(self,oldpos12);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
  it=rb_obj_clone(s__rb__0fbd); bind_aset(bind,1/*c*/,it);
 it=rb_obj_clone(s__lb__8154); bind_aset(bind,2/*o*/,it);
- it=rb_obj_clone(s__lb__8154); arg0=it;it=rb_obj_clone(s__rb__0fbd); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt10_3); bind_aset(bind,3/*r*/,it);
+ it=rb_obj_clone(s__lb__8154); arg0=it;it=rb_obj_clone(s__rb__0fbd); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt11_3); bind_aset(bind,3/*r*/,it);
 it=rb_funcall(self,sy_AmethystParser_Args_lb__le__co_a_4968,1,bind);  bind_aset(bind,4/*_result*/,it);
 it=bind_aget(bind,4/*_result*/); bind_aset(bind,5/*_result*/,it);
  
-ame_setcut(self,Qnil);goto accept10;
-alt10_3: ame_setpos(self,oldpos11);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ame_setcut(self,Qnil);goto accept11;
+alt11_3: ame_setpos(self,oldpos12);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
  it=rb_obj_clone(s__re__cbb1); bind_aset(bind,1/*c*/,it);
 it=rb_obj_clone(s__le__f95b); bind_aset(bind,2/*o*/,it);
- it=rb_obj_clone(s__le__f95b); arg0=it;it=rb_obj_clone(s__re__cbb1); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt10_4); bind_aset(bind,3/*r*/,it);
+ it=rb_obj_clone(s__le__f95b); arg0=it;it=rb_obj_clone(s__re__cbb1); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt11_4); bind_aset(bind,3/*r*/,it);
 it=rb_funcall(self,sy_AmethystParser_Args_lb__le__co_a_4968,1,bind);  bind_aset(bind,4/*_result*/,it);
 it=bind_aget(bind,4/*_result*/); bind_aset(bind,5/*_result*/,it);
  
-ame_setcut(self,Qnil);goto accept10;
-alt10_4: ame_setpos(self,oldpos11);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
- if (strncmp(ame_curstr(self),"'",1)) goto alt10_5; else ame_setpos(self,ame_getpos(self)+1);it=rb_ary_new3(0); bind_aset(bind,17/*x*/,it);
-int oldpos12; while(1){oldpos12=ame_getpos(self); int oldpos13=ame_getpos(self);
-alt11_1: ame_setpos(self,oldpos13);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break2;}
- if (strncmp(ame_curstr(self),"'",1)) goto alt11_2; else ame_setpos(self,ame_getpos(self)+1);ame_setcut(self,Qtrue);ame_setstop(self,Qtrue); 
 ame_setcut(self,Qnil);goto accept11;
-alt11_2: ame_setpos(self,oldpos13);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break2;}
- unsigned char chr6=*ame_curstr(self);  switch(chr6){case UC(0) ... UC(91):;case UC(93) ... UC(255):;   it=Amethyst_empty(self ); FAILTEST(alt11_3); break;case UC(92) ... UC(92):; unsigned char chr7=*ame_curstr(self);  switch(chr7){case UC(0) ... UC(91):;case UC(93) ... UC(255):;   it=Amethyst_empty(self ); FAILTEST(alt11_3); break;case UC(92) ... UC(92):; int oldpos14=ame_getpos(self);
-alt12_1: ame_setpos(self,oldpos14);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt11_3;}
- if (strncmp(ame_curstr(self),"\\",1)) goto alt12_2; else ame_setpos(self,ame_getpos(self)+1);it=rb_obj_clone(s__bs__bs__7f81); bind_aset(bind,6/*_result*/,it);
+alt11_4: ame_setpos(self,oldpos12);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ if (strncmp(ame_curstr(self),"'",1)) goto alt11_5; else ame_setpos(self,ame_getpos(self)+1);it=rb_ary_new3(0); bind_aset(bind,17/*x*/,it);
+int oldpos13; while(1){oldpos13=ame_getpos(self); int oldpos14=ame_getpos(self);
+alt12_1: ame_setpos(self,oldpos14);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break2;}
+ if (strncmp(ame_curstr(self),"'",1)) goto alt12_2; else ame_setpos(self,ame_getpos(self)+1);ame_setcut(self,Qtrue);ame_setstop(self,Qtrue); 
+ame_setcut(self,Qnil);goto accept12;
+alt12_2: ame_setpos(self,oldpos14);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break2;}
+ unsigned char chr8=*ame_curstr(self);  switch(chr8){case UC(0) ... UC(91):;case UC(93) ... UC(255):;   it=Amethyst_empty(self ); FAILTEST(alt12_3); break;case UC(92) ... UC(92):; unsigned char chr9=*ame_curstr(self);  switch(chr9){case UC(0) ... UC(91):;case UC(93) ... UC(255):;   it=Amethyst_empty(self ); FAILTEST(alt12_3); break;case UC(92) ... UC(92):; int oldpos15=ame_getpos(self);
+alt13_1: ame_setpos(self,oldpos15);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt12_3;}
+ if (strncmp(ame_curstr(self),"\\",1)) goto alt13_2; else ame_setpos(self,ame_getpos(self)+1);it=rb_obj_clone(s__bs__bs__7f81); bind_aset(bind,6/*_result*/,it);
 it=bind_aget(bind,6/*_result*/); bind_aset(bind,18/*autovar*/,it);
 it=rb_funcall(self,sy_AmethystParser__append_lp__835a,1,bind);  
-ame_setcut(self,Qnil);goto accept12;
-alt12_2: ame_setpos(self,oldpos14);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt11_3;}
-   it=Amethyst_empty(self ); FAILTEST(alt12_3); 
-ame_setcut(self,Qnil);goto accept12;
-  alt12_3:  ame_setpos(self,oldpos14); goto alt11_3;
- accept12:;
- break;} break;}  it=AmethystCore_anything(self ); FAILTEST(alt11_3); bind_aset(bind,19/*autovar*/,it);
+ame_setcut(self,Qnil);goto accept13;
+alt13_2: ame_setpos(self,oldpos15);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt12_3;}
+   it=Amethyst_empty(self ); FAILTEST(alt13_3); 
+ame_setcut(self,Qnil);goto accept13;
+  alt13_3:  ame_setpos(self,oldpos15); goto alt12_3;
+ accept13:;
+ break;} break;}  it=AmethystCore_anything(self ); FAILTEST(alt12_3); bind_aset(bind,19/*autovar*/,it);
 it=rb_funcall(self,sy_AmethystParser__append_lp__595b,1,bind);  
-ame_setcut(self,Qnil);goto accept11;
-  alt11_3:  ame_setpos(self,oldpos13); goto break2;
- accept11:;
- if (ame_getstop(self)!=Qnil){{oldpos12=ame_getpos(self);goto break2;} } } break2: ame_setstop(self,Qnil);  ame_setpos(self,oldpos12); it=rb_funcall(self,sy_AmethystParser_bind_lb_17_rb__8424,1,bind);  bind_aset(bind,20/*_result*/,it);
+ame_setcut(self,Qnil);goto accept12;
+  alt12_3:  ame_setpos(self,oldpos14); goto break2;
+ accept12:;
+ if (ame_getstop(self)!=Qnil){{oldpos13=ame_getpos(self);goto break2;} } } break2: ame_setstop(self,Qnil);  ame_setpos(self,oldpos13); it=rb_funcall(self,sy_AmethystParser_bind_lb_17_rb__8424,1,bind);  bind_aset(bind,20/*_result*/,it);
 it=bind_aget(bind,20/*_result*/); bind_aset(bind,16/*s*/,it);
 it=rb_funcall(self,sy_AmethystParser_Strin_lb__lb__dq__c057,1,bind);  bind_aset(bind,5/*_result*/,it);
  
-ame_setcut(self,Qnil);goto accept10;
-alt10_5: ame_setpos(self,oldpos11);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
- int oldpos15=ame_getpos(self);
-alt13_1: ame_setpos(self,oldpos15);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt10_6;}
-   it=Amethyst_spaces(self ); FAILTEST(alt13_2);if (strncmp(ame_curstr(self),":@",2)) goto alt13_2; else ame_setpos(self,ame_getpos(self)+2);it=rb_obj_clone(s__co__at__4bf0); bind_aset(bind,6/*_result*/,it);
+ame_setcut(self,Qnil);goto accept11;
+alt11_5: ame_setpos(self,oldpos12);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ unsigned char chr10=*ame_curstr(self);  switch(chr10){case UC(0) ... UC(35):;case UC(37) ... UC(45):;case UC(47) ... UC(57):;case UC(59) ... UC(255):; int oldpos16=ame_getpos(self);
+alt14_1: ame_setpos(self,oldpos16);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt11_6;}
+   it=Amethyst_spaces(self ); FAILTEST(alt14_2);if (strncmp(ame_curstr(self),":@",2)) goto alt14_2; else ame_setpos(self,ame_getpos(self)+2);it=rb_obj_clone(s__co__at__4bf0); bind_aset(bind,6/*_result*/,it);
 it=bind_aget(bind,6/*_result*/); bind_aset(bind,7/*_result*/,it);
 it=bind_aget(bind,7/*_result*/); bind_aset(bind,8/*autovar*/,it);
 it=rb_funcall(self,sy_AmethystParser__append_lp__0eeb,1,bind);  
-ame_setcut(self,Qnil);goto accept13;
-alt13_2: ame_setpos(self,oldpos15);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt10_6;}
-  it=rb_funcall(self,sy_AmethystParser__di__lb__do__dot__co__rb__di__68eb,1,bind);  arg0=it; it=Amethyst_regch(self ,arg0); FAILTEST(alt13_3); bind_aset(bind,9/*autovar*/,it);
-it=rb_funcall(self,sy_AmethystParser__append_lp__653e,1,bind);  
-ame_setcut(self,Qnil);goto accept13;
-alt13_3: ame_setpos(self,oldpos15);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt10_6;}
-   it=Amethyst_empty(self ); FAILTEST(alt13_4); 
-ame_setcut(self,Qnil);goto accept13;
-  alt13_4:  ame_setpos(self,oldpos15); goto alt10_6;
- accept13:;
-int oldpos16=ame_getpos(self);
-alt14_1: ame_setpos(self,oldpos16);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt10_6;}
-   it=Amethyst__(self ); FAILTEST(alt14_2);ame_setcut(self,Qtrue);  it=Amethyst_fails(self ); FAILTEST(alt14_2); 
 ame_setcut(self,Qnil);goto accept14;
-alt14_2: ame_setpos(self,oldpos16);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt10_6;}
+alt14_2: ame_setpos(self,oldpos16);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt11_6;}
    it=Amethyst_empty(self ); FAILTEST(alt14_3); 
 ame_setcut(self,Qnil);goto accept14;
-  alt14_3:  ame_setpos(self,oldpos16); goto alt10_6;
+  alt14_3:  ame_setpos(self,oldpos16); goto alt11_6;
  accept14:;
-  it=AmethystParser_name(self ); FAILTEST(alt10_6); bind_aset(bind,10/*autovar*/,it);
+ break;}int oldpos17=ame_getpos(self);
+alt15_1: ame_setpos(self,oldpos17);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt11_6;}
+   it=Amethyst__(self ); FAILTEST(alt15_2);ame_setcut(self,Qtrue);  it=Amethyst_fails(self ); FAILTEST(alt15_2); 
+ame_setcut(self,Qnil);goto accept15;
+alt15_2: ame_setpos(self,oldpos17);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt11_6;}
+   it=Amethyst_empty(self ); FAILTEST(alt15_3); 
+ame_setcut(self,Qnil);goto accept15;
+  alt15_3:  ame_setpos(self,oldpos17); goto alt11_6;
+ accept15:;
+  it=AmethystParser_name(self ); FAILTEST(alt11_6); bind_aset(bind,10/*autovar*/,it);
 it=rb_funcall(self,sy_AmethystParser__append_lp__b494,1,bind); it=rb_funcall(self,sy_AmethystParser_bind_lb_0_rb__dot__206f,1,bind);  bind_aset(bind,5/*_result*/,it);
  
-ame_setcut(self,Qnil);goto accept10;
-alt10_6: ame_setpos(self,oldpos11);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-   it=AmethystParser_key(self ); FAILTEST(alt10_7); bind_aset(bind,5/*_result*/,it);
+ame_setcut(self,Qnil);goto accept11;
+alt11_6: ame_setpos(self,oldpos12);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+   it=AmethystParser_key(self ); FAILTEST(alt11_7); bind_aset(bind,5/*_result*/,it);
  
-ame_setcut(self,Qnil);goto accept10;
-alt10_7: ame_setpos(self,oldpos11);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-  it=rb_funcall(self,sy_AmethystParser__di__lb_2,1,bind);  arg0=it; it=Amethyst_regch(self ,arg0); FAILTEST(alt10_8); bind_aset(bind,5/*_result*/,it);
- 
-ame_setcut(self,Qnil);goto accept10;
-  alt10_8:  ame_setpos(self,oldpos11); goto fail;
- accept10:;
- break;case UC(46) ... UC(46):; int oldpos17=ame_getpos(self);
-alt15_1: ame_setpos(self,oldpos17);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ame_setcut(self,Qnil);goto accept11;
+  alt11_7:  ame_setpos(self,oldpos12); goto fail;
+ accept11:;
+ break;case UC(40) ... UC(41):;case UC(123) ... UC(123):;case UC(125) ... UC(125):; int oldpos18=ame_getpos(self);
+alt16_1: ame_setpos(self,oldpos18);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
  it=rb_obj_clone(s__rp__9371); bind_aset(bind,1/*c*/,it);
 it=rb_obj_clone(s__lp__84c4); bind_aset(bind,2/*o*/,it);
- it=rb_obj_clone(s__lp__84c4); arg0=it;it=rb_obj_clone(s__rp__9371); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt15_2); bind_aset(bind,3/*r*/,it);
+ it=rb_obj_clone(s__lp__84c4); arg0=it;it=rb_obj_clone(s__rp__9371); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt16_2); bind_aset(bind,3/*r*/,it);
 it=rb_funcall(self,sy_AmethystParser_Args_lb__le__co_a_4968,1,bind);  bind_aset(bind,4/*_result*/,it);
 it=bind_aget(bind,4/*_result*/); bind_aset(bind,5/*_result*/,it);
  
-ame_setcut(self,Qnil);goto accept15;
-alt15_2: ame_setpos(self,oldpos17);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ame_setcut(self,Qnil);goto accept16;
+alt16_2: ame_setpos(self,oldpos18);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
  it=rb_obj_clone(s__rb__0fbd); bind_aset(bind,1/*c*/,it);
 it=rb_obj_clone(s__lb__8154); bind_aset(bind,2/*o*/,it);
- it=rb_obj_clone(s__lb__8154); arg0=it;it=rb_obj_clone(s__rb__0fbd); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt15_3); bind_aset(bind,3/*r*/,it);
+ it=rb_obj_clone(s__lb__8154); arg0=it;it=rb_obj_clone(s__rb__0fbd); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt16_3); bind_aset(bind,3/*r*/,it);
 it=rb_funcall(self,sy_AmethystParser_Args_lb__le__co_a_4968,1,bind);  bind_aset(bind,4/*_result*/,it);
 it=bind_aget(bind,4/*_result*/); bind_aset(bind,5/*_result*/,it);
  
-ame_setcut(self,Qnil);goto accept15;
-alt15_3: ame_setpos(self,oldpos17);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ame_setcut(self,Qnil);goto accept16;
+alt16_3: ame_setpos(self,oldpos18);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
  it=rb_obj_clone(s__re__cbb1); bind_aset(bind,1/*c*/,it);
 it=rb_obj_clone(s__le__f95b); bind_aset(bind,2/*o*/,it);
- it=rb_obj_clone(s__le__f95b); arg0=it;it=rb_obj_clone(s__re__cbb1); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt15_4); bind_aset(bind,3/*r*/,it);
+ it=rb_obj_clone(s__le__f95b); arg0=it;it=rb_obj_clone(s__re__cbb1); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt16_4); bind_aset(bind,3/*r*/,it);
 it=rb_funcall(self,sy_AmethystParser_Args_lb__le__co_a_4968,1,bind);  bind_aset(bind,4/*_result*/,it);
 it=bind_aget(bind,4/*_result*/); bind_aset(bind,5/*_result*/,it);
  
-ame_setcut(self,Qnil);goto accept15;
-alt15_4: ame_setpos(self,oldpos17);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
- if (strncmp(ame_curstr(self),"...",3)) goto alt15_5; else ame_setpos(self,ame_getpos(self)+3);it=rb_obj_clone(s__dot__dot__dot__2f43); bind_aset(bind,6/*_result*/,it);
-it=bind_aget(bind,6/*_result*/); bind_aset(bind,5/*_result*/,it);
- 
-ame_setcut(self,Qnil);goto accept15;
-alt15_5: ame_setpos(self,oldpos17);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
- if (strncmp(ame_curstr(self),"..",2)) goto alt15_6; else ame_setpos(self,ame_getpos(self)+2);it=rb_obj_clone(s__dot__dot__58b9); bind_aset(bind,6/*_result*/,it);
-it=bind_aget(bind,6/*_result*/); bind_aset(bind,5/*_result*/,it);
- 
-ame_setcut(self,Qnil);goto accept15;
-alt15_6: ame_setpos(self,oldpos17);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
- int oldpos18=ame_getpos(self);
-alt16_1: ame_setpos(self,oldpos18);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt15_7;}
-   it=Amethyst_spaces(self ); FAILTEST(alt16_2);if (strncmp(ame_curstr(self),":@",2)) goto alt16_2; else ame_setpos(self,ame_getpos(self)+2);it=rb_obj_clone(s__co__at__4bf0); bind_aset(bind,6/*_result*/,it);
+ame_setcut(self,Qnil);goto accept16;
+alt16_4: ame_setpos(self,oldpos18);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ unsigned char chr11=*ame_curstr(self);  switch(chr11){case UC(0) ... UC(35):;case UC(37) ... UC(45):;case UC(47) ... UC(57):;case UC(59) ... UC(255):; int oldpos19=ame_getpos(self);
+alt17_1: ame_setpos(self,oldpos19);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt16_5;}
+   it=Amethyst_spaces(self ); FAILTEST(alt17_2);if (strncmp(ame_curstr(self),":@",2)) goto alt17_2; else ame_setpos(self,ame_getpos(self)+2);it=rb_obj_clone(s__co__at__4bf0); bind_aset(bind,6/*_result*/,it);
 it=bind_aget(bind,6/*_result*/); bind_aset(bind,7/*_result*/,it);
 it=bind_aget(bind,7/*_result*/); bind_aset(bind,8/*autovar*/,it);
 it=rb_funcall(self,sy_AmethystParser__append_lp__0eeb,1,bind);  
-ame_setcut(self,Qnil);goto accept16;
-alt16_2: ame_setpos(self,oldpos18);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt15_7;}
-  it=rb_funcall(self,sy_AmethystParser__di__lb__do__dot__co__rb__di__68eb,1,bind);  arg0=it; it=Amethyst_regch(self ,arg0); FAILTEST(alt16_3); bind_aset(bind,9/*autovar*/,it);
-it=rb_funcall(self,sy_AmethystParser__append_lp__653e,1,bind);  
-ame_setcut(self,Qnil);goto accept16;
-alt16_3: ame_setpos(self,oldpos18);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt15_7;}
-   it=Amethyst_empty(self ); FAILTEST(alt16_4); 
-ame_setcut(self,Qnil);goto accept16;
-  alt16_4:  ame_setpos(self,oldpos18); goto alt15_7;
- accept16:;
-int oldpos19=ame_getpos(self);
-alt17_1: ame_setpos(self,oldpos19);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt15_7;}
-   it=Amethyst__(self ); FAILTEST(alt17_2);ame_setcut(self,Qtrue);  it=Amethyst_fails(self ); FAILTEST(alt17_2); 
 ame_setcut(self,Qnil);goto accept17;
-alt17_2: ame_setpos(self,oldpos19);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt15_7;}
+alt17_2: ame_setpos(self,oldpos19);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt16_5;}
    it=Amethyst_empty(self ); FAILTEST(alt17_3); 
 ame_setcut(self,Qnil);goto accept17;
-  alt17_3:  ame_setpos(self,oldpos19); goto alt15_7;
+  alt17_3:  ame_setpos(self,oldpos19); goto alt16_5;
  accept17:;
-  it=AmethystParser_name(self ); FAILTEST(alt15_7); bind_aset(bind,10/*autovar*/,it);
-it=rb_funcall(self,sy_AmethystParser__append_lp__b494,1,bind); it=rb_funcall(self,sy_AmethystParser_bind_lb_0_rb__dot__206f,1,bind);  bind_aset(bind,5/*_result*/,it);
- 
-ame_setcut(self,Qnil);goto accept15;
-alt15_7: ame_setpos(self,oldpos17);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-   it=AmethystParser_key(self ); FAILTEST(alt15_8); bind_aset(bind,5/*_result*/,it);
- 
-ame_setcut(self,Qnil);goto accept15;
-alt15_8: ame_setpos(self,oldpos17);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-  it=rb_funcall(self,sy_AmethystParser__di__lb_2,1,bind);  arg0=it; it=Amethyst_regch(self ,arg0); FAILTEST(alt15_9); bind_aset(bind,5/*_result*/,it);
- 
-ame_setcut(self,Qnil);goto accept15;
-  alt15_9:  ame_setpos(self,oldpos17); goto fail;
- accept15:;
- break;case UC(48) ... UC(57):;case UC(95) ... UC(95):;case UC(97) ... UC(122):; int oldpos20=ame_getpos(self);
-alt18_1: ame_setpos(self,oldpos20);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
- it=rb_obj_clone(s__rp__9371); bind_aset(bind,1/*c*/,it);
-it=rb_obj_clone(s__lp__84c4); bind_aset(bind,2/*o*/,it);
- it=rb_obj_clone(s__lp__84c4); arg0=it;it=rb_obj_clone(s__rp__9371); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt18_2); bind_aset(bind,3/*r*/,it);
-it=rb_funcall(self,sy_AmethystParser_Args_lb__le__co_a_4968,1,bind);  bind_aset(bind,4/*_result*/,it);
-it=bind_aget(bind,4/*_result*/); bind_aset(bind,5/*_result*/,it);
- 
+ break;}int oldpos20=ame_getpos(self);
+alt18_1: ame_setpos(self,oldpos20);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt16_5;}
+   it=Amethyst__(self ); FAILTEST(alt18_2);ame_setcut(self,Qtrue);  it=Amethyst_fails(self ); FAILTEST(alt18_2); 
 ame_setcut(self,Qnil);goto accept18;
-alt18_2: ame_setpos(self,oldpos20);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
- it=rb_obj_clone(s__rb__0fbd); bind_aset(bind,1/*c*/,it);
-it=rb_obj_clone(s__lb__8154); bind_aset(bind,2/*o*/,it);
- it=rb_obj_clone(s__lb__8154); arg0=it;it=rb_obj_clone(s__rb__0fbd); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt18_3); bind_aset(bind,3/*r*/,it);
-it=rb_funcall(self,sy_AmethystParser_Args_lb__le__co_a_4968,1,bind);  bind_aset(bind,4/*_result*/,it);
-it=bind_aget(bind,4/*_result*/); bind_aset(bind,5/*_result*/,it);
- 
+alt18_2: ame_setpos(self,oldpos20);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt16_5;}
+   it=Amethyst_empty(self ); FAILTEST(alt18_3); 
 ame_setcut(self,Qnil);goto accept18;
-alt18_3: ame_setpos(self,oldpos20);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
- it=rb_obj_clone(s__re__cbb1); bind_aset(bind,1/*c*/,it);
-it=rb_obj_clone(s__le__f95b); bind_aset(bind,2/*o*/,it);
- it=rb_obj_clone(s__le__f95b); arg0=it;it=rb_obj_clone(s__re__cbb1); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt18_4); bind_aset(bind,3/*r*/,it);
-it=rb_funcall(self,sy_AmethystParser_Args_lb__le__co_a_4968,1,bind);  bind_aset(bind,4/*_result*/,it);
-it=bind_aget(bind,4/*_result*/); bind_aset(bind,5/*_result*/,it);
- 
-ame_setcut(self,Qnil);goto accept18;
-alt18_4: ame_setpos(self,oldpos20);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-  it=rb_funcall(self,sy_AmethystParser__di__lb_a_mi_z0_mi_9_2ffd,1,bind);  arg0=it; it=Amethyst_regch(self ,arg0); FAILTEST(alt18_5); bind_aset(bind,21/*e*/,it);
-if (strncmp(ame_curstr(self),"<<",2)) goto alt18_5; else ame_setpos(self,ame_getpos(self)+2);it=rb_funcall(self,sy_AmethystParser__lb_bind_lb_21_9dcf,1,bind);  bind_aset(bind,5/*_result*/,it);
- 
-ame_setcut(self,Qnil);goto accept18;
-alt18_5: ame_setpos(self,oldpos20);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
- int oldpos21=ame_getpos(self);
-alt19_1: ame_setpos(self,oldpos21);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt18_6;}
-   it=Amethyst_spaces(self ); FAILTEST(alt19_2);if (strncmp(ame_curstr(self),":@",2)) goto alt19_2; else ame_setpos(self,ame_getpos(self)+2);it=rb_obj_clone(s__co__at__4bf0); bind_aset(bind,6/*_result*/,it);
-it=bind_aget(bind,6/*_result*/); bind_aset(bind,7/*_result*/,it);
-it=bind_aget(bind,7/*_result*/); bind_aset(bind,8/*autovar*/,it);
-it=rb_funcall(self,sy_AmethystParser__append_lp__0eeb,1,bind);  
-ame_setcut(self,Qnil);goto accept19;
-alt19_2: ame_setpos(self,oldpos21);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt18_6;}
-  it=rb_funcall(self,sy_AmethystParser__di__lb__do__dot__co__rb__di__68eb,1,bind);  arg0=it; it=Amethyst_regch(self ,arg0); FAILTEST(alt19_3); bind_aset(bind,9/*autovar*/,it);
-it=rb_funcall(self,sy_AmethystParser__append_lp__653e,1,bind);  
-ame_setcut(self,Qnil);goto accept19;
-alt19_3: ame_setpos(self,oldpos21);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt18_6;}
-   it=Amethyst_empty(self ); FAILTEST(alt19_4); 
-ame_setcut(self,Qnil);goto accept19;
-  alt19_4:  ame_setpos(self,oldpos21); goto alt18_6;
- accept19:;
-int oldpos22=ame_getpos(self);
-alt20_1: ame_setpos(self,oldpos22);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt18_6;}
-   it=Amethyst__(self ); FAILTEST(alt20_2);ame_setcut(self,Qtrue);  it=Amethyst_fails(self ); FAILTEST(alt20_2); 
-ame_setcut(self,Qnil);goto accept20;
-alt20_2: ame_setpos(self,oldpos22);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt18_6;}
-   it=Amethyst_empty(self ); FAILTEST(alt20_3); 
-ame_setcut(self,Qnil);goto accept20;
-  alt20_3:  ame_setpos(self,oldpos22); goto alt18_6;
- accept20:;
-  it=AmethystParser_name(self ); FAILTEST(alt18_6); bind_aset(bind,10/*autovar*/,it);
-it=rb_funcall(self,sy_AmethystParser__append_lp__b494,1,bind); it=rb_funcall(self,sy_AmethystParser_bind_lb_0_rb__dot__206f,1,bind);  bind_aset(bind,5/*_result*/,it);
- 
-ame_setcut(self,Qnil);goto accept18;
-alt18_6: ame_setpos(self,oldpos20);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-   it=AmethystParser_key(self ); FAILTEST(alt18_7); bind_aset(bind,5/*_result*/,it);
- 
-ame_setcut(self,Qnil);goto accept18;
-alt18_7: ame_setpos(self,oldpos20);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-  it=rb_funcall(self,sy_AmethystParser__di__lb_2,1,bind);  arg0=it; it=Amethyst_regch(self ,arg0); FAILTEST(alt18_8); bind_aset(bind,5/*_result*/,it);
- 
-ame_setcut(self,Qnil);goto accept18;
-  alt18_8:  ame_setpos(self,oldpos20); goto fail;
+  alt18_3:  ame_setpos(self,oldpos20); goto alt16_5;
  accept18:;
- break;case UC(96) ... UC(96):; int oldpos23=ame_getpos(self);
-alt21_1: ame_setpos(self,oldpos23);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
- if (strncmp(ame_curstr(self),"`",1)) goto alt21_2; else ame_setpos(self,ame_getpos(self)+1);  it=AmethystParser_expression(self ); FAILTEST(alt21_2); bind_aset(bind,21/*e*/,it);
-if (strncmp(ame_curstr(self),"`",1)) goto alt21_2; else ame_setpos(self,ame_getpos(self)+1);it=rb_funcall(self,sy_AmethystParser_Lambda_lb___012f,1,bind);  bind_aset(bind,5/*_result*/,it);
+  it=AmethystParser_name(self ); FAILTEST(alt16_5); bind_aset(bind,10/*autovar*/,it);
+it=rb_funcall(self,sy_AmethystParser__append_lp__b494,1,bind); it=rb_funcall(self,sy_AmethystParser_bind_lb_0_rb__dot__206f,1,bind);  bind_aset(bind,5/*_result*/,it);
  
-ame_setcut(self,Qnil);goto accept21;
-alt21_2: ame_setpos(self,oldpos23);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ame_setcut(self,Qnil);goto accept16;
+alt16_5: ame_setpos(self,oldpos18);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+   it=AmethystParser_key(self ); FAILTEST(alt16_6); bind_aset(bind,5/*_result*/,it);
+ 
+ame_setcut(self,Qnil);goto accept16;
+  alt16_6:  ame_setpos(self,oldpos18); goto fail;
+ accept16:;
+ break;case UC(46) ... UC(46):; int oldpos21=ame_getpos(self);
+alt19_1: ame_setpos(self,oldpos21);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
  it=rb_obj_clone(s__rp__9371); bind_aset(bind,1/*c*/,it);
 it=rb_obj_clone(s__lp__84c4); bind_aset(bind,2/*o*/,it);
- it=rb_obj_clone(s__lp__84c4); arg0=it;it=rb_obj_clone(s__rp__9371); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt21_3); bind_aset(bind,3/*r*/,it);
+ it=rb_obj_clone(s__lp__84c4); arg0=it;it=rb_obj_clone(s__rp__9371); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt19_2); bind_aset(bind,3/*r*/,it);
 it=rb_funcall(self,sy_AmethystParser_Args_lb__le__co_a_4968,1,bind);  bind_aset(bind,4/*_result*/,it);
 it=bind_aget(bind,4/*_result*/); bind_aset(bind,5/*_result*/,it);
  
-ame_setcut(self,Qnil);goto accept21;
-alt21_3: ame_setpos(self,oldpos23);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ame_setcut(self,Qnil);goto accept19;
+alt19_2: ame_setpos(self,oldpos21);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
  it=rb_obj_clone(s__rb__0fbd); bind_aset(bind,1/*c*/,it);
 it=rb_obj_clone(s__lb__8154); bind_aset(bind,2/*o*/,it);
- it=rb_obj_clone(s__lb__8154); arg0=it;it=rb_obj_clone(s__rb__0fbd); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt21_4); bind_aset(bind,3/*r*/,it);
+ it=rb_obj_clone(s__lb__8154); arg0=it;it=rb_obj_clone(s__rb__0fbd); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt19_3); bind_aset(bind,3/*r*/,it);
 it=rb_funcall(self,sy_AmethystParser_Args_lb__le__co_a_4968,1,bind);  bind_aset(bind,4/*_result*/,it);
 it=bind_aget(bind,4/*_result*/); bind_aset(bind,5/*_result*/,it);
  
-ame_setcut(self,Qnil);goto accept21;
-alt21_4: ame_setpos(self,oldpos23);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ame_setcut(self,Qnil);goto accept19;
+alt19_3: ame_setpos(self,oldpos21);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
  it=rb_obj_clone(s__re__cbb1); bind_aset(bind,1/*c*/,it);
 it=rb_obj_clone(s__le__f95b); bind_aset(bind,2/*o*/,it);
- it=rb_obj_clone(s__le__f95b); arg0=it;it=rb_obj_clone(s__re__cbb1); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt21_5); bind_aset(bind,3/*r*/,it);
+ it=rb_obj_clone(s__le__f95b); arg0=it;it=rb_obj_clone(s__re__cbb1); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt19_4); bind_aset(bind,3/*r*/,it);
 it=rb_funcall(self,sy_AmethystParser_Args_lb__le__co_a_4968,1,bind);  bind_aset(bind,4/*_result*/,it);
 it=bind_aget(bind,4/*_result*/); bind_aset(bind,5/*_result*/,it);
  
-ame_setcut(self,Qnil);goto accept21;
-alt21_5: ame_setpos(self,oldpos23);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
- int oldpos24=ame_getpos(self);
-alt22_1: ame_setpos(self,oldpos24);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt21_6;}
-   it=Amethyst_spaces(self ); FAILTEST(alt22_2);if (strncmp(ame_curstr(self),":@",2)) goto alt22_2; else ame_setpos(self,ame_getpos(self)+2);it=rb_obj_clone(s__co__at__4bf0); bind_aset(bind,6/*_result*/,it);
+ame_setcut(self,Qnil);goto accept19;
+alt19_4: ame_setpos(self,oldpos21);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ if (strncmp(ame_curstr(self),"...",3)) goto alt19_5; else ame_setpos(self,ame_getpos(self)+3);it=rb_obj_clone(s__dot__dot__dot__2f43); bind_aset(bind,6/*_result*/,it);
+it=bind_aget(bind,6/*_result*/); bind_aset(bind,5/*_result*/,it);
+ 
+ame_setcut(self,Qnil);goto accept19;
+alt19_5: ame_setpos(self,oldpos21);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ if (strncmp(ame_curstr(self),"..",2)) goto alt19_6; else ame_setpos(self,ame_getpos(self)+2);it=rb_obj_clone(s__dot__dot__58b9); bind_aset(bind,6/*_result*/,it);
+it=bind_aget(bind,6/*_result*/); bind_aset(bind,5/*_result*/,it);
+ 
+ame_setcut(self,Qnil);goto accept19;
+alt19_6: ame_setpos(self,oldpos21);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ unsigned char chr12=*ame_curstr(self);  switch(chr12){case UC(36) ... UC(36):;case UC(46) ... UC(46):;case UC(58) ... UC(58):; int oldpos22=ame_getpos(self);
+alt20_1: ame_setpos(self,oldpos22);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt19_7;}
+   it=Amethyst_spaces(self ); FAILTEST(alt20_2);if (strncmp(ame_curstr(self),":@",2)) goto alt20_2; else ame_setpos(self,ame_getpos(self)+2);it=rb_obj_clone(s__co__at__4bf0); bind_aset(bind,6/*_result*/,it);
 it=bind_aget(bind,6/*_result*/); bind_aset(bind,7/*_result*/,it);
 it=bind_aget(bind,7/*_result*/); bind_aset(bind,8/*autovar*/,it);
 it=rb_funcall(self,sy_AmethystParser__append_lp__0eeb,1,bind);  
-ame_setcut(self,Qnil);goto accept22;
-alt22_2: ame_setpos(self,oldpos24);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt21_6;}
-  it=rb_funcall(self,sy_AmethystParser__di__lb__do__dot__co__rb__di__68eb,1,bind);  arg0=it; it=Amethyst_regch(self ,arg0); FAILTEST(alt22_3); bind_aset(bind,9/*autovar*/,it);
+ame_setcut(self,Qnil);goto accept20;
+alt20_2: ame_setpos(self,oldpos22);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt19_7;}
+  it=rb_funcall(self,sy_AmethystParser__di__lb__do__dot__co__rb__di__68eb,1,bind);  arg0=it; it=Amethyst_regch(self ,arg0); FAILTEST(alt20_3); bind_aset(bind,9/*autovar*/,it);
 it=rb_funcall(self,sy_AmethystParser__append_lp__653e,1,bind);  
+ame_setcut(self,Qnil);goto accept20;
+alt20_3: ame_setpos(self,oldpos22);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt19_7;}
+   it=Amethyst_empty(self ); FAILTEST(alt20_4); 
+ame_setcut(self,Qnil);goto accept20;
+  alt20_4:  ame_setpos(self,oldpos22); goto alt19_7;
+ accept20:;
+ break;}int oldpos23=ame_getpos(self);
+alt21_1: ame_setpos(self,oldpos23);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt19_7;}
+   it=Amethyst__(self ); FAILTEST(alt21_2);ame_setcut(self,Qtrue);  it=Amethyst_fails(self ); FAILTEST(alt21_2); 
+ame_setcut(self,Qnil);goto accept21;
+alt21_2: ame_setpos(self,oldpos23);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt19_7;}
+   it=Amethyst_empty(self ); FAILTEST(alt21_3); 
+ame_setcut(self,Qnil);goto accept21;
+  alt21_3:  ame_setpos(self,oldpos23); goto alt19_7;
+ accept21:;
+  it=AmethystParser_name(self ); FAILTEST(alt19_7); bind_aset(bind,10/*autovar*/,it);
+it=rb_funcall(self,sy_AmethystParser__append_lp__b494,1,bind); it=rb_funcall(self,sy_AmethystParser_bind_lb_0_rb__dot__206f,1,bind);  bind_aset(bind,5/*_result*/,it);
+ 
+ame_setcut(self,Qnil);goto accept19;
+alt19_7: ame_setpos(self,oldpos21);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+   it=AmethystParser_key(self ); FAILTEST(alt19_8); bind_aset(bind,5/*_result*/,it);
+ 
+ame_setcut(self,Qnil);goto accept19;
+alt19_8: ame_setpos(self,oldpos21);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+  it=rb_funcall(self,sy_AmethystParser__di__lb_2,1,bind);  arg0=it; it=Amethyst_regch(self ,arg0); FAILTEST(alt19_9); bind_aset(bind,5/*_result*/,it);
+ 
+ame_setcut(self,Qnil);goto accept19;
+  alt19_9:  ame_setpos(self,oldpos21); goto fail;
+ accept19:;
+ break;case UC(48) ... UC(57):;case UC(95) ... UC(95):;case UC(97) ... UC(122):; int oldpos24=ame_getpos(self);
+alt22_1: ame_setpos(self,oldpos24);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ it=rb_obj_clone(s__rp__9371); bind_aset(bind,1/*c*/,it);
+it=rb_obj_clone(s__lp__84c4); bind_aset(bind,2/*o*/,it);
+ it=rb_obj_clone(s__lp__84c4); arg0=it;it=rb_obj_clone(s__rp__9371); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt22_2); bind_aset(bind,3/*r*/,it);
+it=rb_funcall(self,sy_AmethystParser_Args_lb__le__co_a_4968,1,bind);  bind_aset(bind,4/*_result*/,it);
+it=bind_aget(bind,4/*_result*/); bind_aset(bind,5/*_result*/,it);
+ 
 ame_setcut(self,Qnil);goto accept22;
-alt22_3: ame_setpos(self,oldpos24);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt21_6;}
-   it=Amethyst_empty(self ); FAILTEST(alt22_4); 
+alt22_2: ame_setpos(self,oldpos24);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ it=rb_obj_clone(s__rb__0fbd); bind_aset(bind,1/*c*/,it);
+it=rb_obj_clone(s__lb__8154); bind_aset(bind,2/*o*/,it);
+ it=rb_obj_clone(s__lb__8154); arg0=it;it=rb_obj_clone(s__rb__0fbd); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt22_3); bind_aset(bind,3/*r*/,it);
+it=rb_funcall(self,sy_AmethystParser_Args_lb__le__co_a_4968,1,bind);  bind_aset(bind,4/*_result*/,it);
+it=bind_aget(bind,4/*_result*/); bind_aset(bind,5/*_result*/,it);
+ 
 ame_setcut(self,Qnil);goto accept22;
-  alt22_4:  ame_setpos(self,oldpos24); goto alt21_6;
- accept22:;
-int oldpos25=ame_getpos(self);
-alt23_1: ame_setpos(self,oldpos25);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt21_6;}
-   it=Amethyst__(self ); FAILTEST(alt23_2);ame_setcut(self,Qtrue);  it=Amethyst_fails(self ); FAILTEST(alt23_2); 
+alt22_3: ame_setpos(self,oldpos24);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ it=rb_obj_clone(s__re__cbb1); bind_aset(bind,1/*c*/,it);
+it=rb_obj_clone(s__le__f95b); bind_aset(bind,2/*o*/,it);
+ it=rb_obj_clone(s__le__f95b); arg0=it;it=rb_obj_clone(s__re__cbb1); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt22_4); bind_aset(bind,3/*r*/,it);
+it=rb_funcall(self,sy_AmethystParser_Args_lb__le__co_a_4968,1,bind);  bind_aset(bind,4/*_result*/,it);
+it=bind_aget(bind,4/*_result*/); bind_aset(bind,5/*_result*/,it);
+ 
+ame_setcut(self,Qnil);goto accept22;
+alt22_4: ame_setpos(self,oldpos24);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+  it=rb_funcall(self,sy_AmethystParser__di__lb_a_mi_z0_mi_9_2ffd,1,bind);  arg0=it; it=Amethyst_regch(self ,arg0); FAILTEST(alt22_5); bind_aset(bind,21/*e*/,it);
+if (strncmp(ame_curstr(self),"<<",2)) goto alt22_5; else ame_setpos(self,ame_getpos(self)+2);it=rb_funcall(self,sy_AmethystParser__lb_bind_lb_21_9dcf,1,bind);  bind_aset(bind,5/*_result*/,it);
+ 
+ame_setcut(self,Qnil);goto accept22;
+alt22_5: ame_setpos(self,oldpos24);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ unsigned char chr13=*ame_curstr(self);  switch(chr13){case UC(0) ... UC(35):;case UC(37) ... UC(45):;case UC(47) ... UC(57):;case UC(59) ... UC(255):; int oldpos25=ame_getpos(self);
+alt23_1: ame_setpos(self,oldpos25);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt22_6;}
+   it=Amethyst_spaces(self ); FAILTEST(alt23_2);if (strncmp(ame_curstr(self),":@",2)) goto alt23_2; else ame_setpos(self,ame_getpos(self)+2);it=rb_obj_clone(s__co__at__4bf0); bind_aset(bind,6/*_result*/,it);
+it=bind_aget(bind,6/*_result*/); bind_aset(bind,7/*_result*/,it);
+it=bind_aget(bind,7/*_result*/); bind_aset(bind,8/*autovar*/,it);
+it=rb_funcall(self,sy_AmethystParser__append_lp__0eeb,1,bind);  
 ame_setcut(self,Qnil);goto accept23;
-alt23_2: ame_setpos(self,oldpos25);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt21_6;}
+alt23_2: ame_setpos(self,oldpos25);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt22_6;}
    it=Amethyst_empty(self ); FAILTEST(alt23_3); 
 ame_setcut(self,Qnil);goto accept23;
-  alt23_3:  ame_setpos(self,oldpos25); goto alt21_6;
+  alt23_3:  ame_setpos(self,oldpos25); goto alt22_6;
  accept23:;
-  it=AmethystParser_name(self ); FAILTEST(alt21_6); bind_aset(bind,10/*autovar*/,it);
+ break;}int oldpos26=ame_getpos(self);
+alt24_1: ame_setpos(self,oldpos26);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt22_6;}
+   it=Amethyst__(self ); FAILTEST(alt24_2);ame_setcut(self,Qtrue);  it=Amethyst_fails(self ); FAILTEST(alt24_2); 
+ame_setcut(self,Qnil);goto accept24;
+alt24_2: ame_setpos(self,oldpos26);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt22_6;}
+   it=Amethyst_empty(self ); FAILTEST(alt24_3); 
+ame_setcut(self,Qnil);goto accept24;
+  alt24_3:  ame_setpos(self,oldpos26); goto alt22_6;
+ accept24:;
+  it=AmethystParser_name(self ); FAILTEST(alt22_6); bind_aset(bind,10/*autovar*/,it);
 it=rb_funcall(self,sy_AmethystParser__append_lp__b494,1,bind); it=rb_funcall(self,sy_AmethystParser_bind_lb_0_rb__dot__206f,1,bind);  bind_aset(bind,5/*_result*/,it);
  
-ame_setcut(self,Qnil);goto accept21;
-alt21_6: ame_setpos(self,oldpos23);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-   it=AmethystParser_key(self ); FAILTEST(alt21_7); bind_aset(bind,5/*_result*/,it);
+ame_setcut(self,Qnil);goto accept22;
+alt22_6: ame_setpos(self,oldpos24);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+   it=AmethystParser_key(self ); FAILTEST(alt22_7); bind_aset(bind,5/*_result*/,it);
  
-ame_setcut(self,Qnil);goto accept21;
-alt21_7: ame_setpos(self,oldpos23);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-  it=rb_funcall(self,sy_AmethystParser__di__lb_2,1,bind);  arg0=it; it=Amethyst_regch(self ,arg0); FAILTEST(alt21_8); bind_aset(bind,5/*_result*/,it);
+ame_setcut(self,Qnil);goto accept22;
+alt22_7: ame_setpos(self,oldpos24);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+  it=rb_funcall(self,sy_AmethystParser__di__lb_2,1,bind);  arg0=it; it=Amethyst_regch(self ,arg0); FAILTEST(alt22_8); bind_aset(bind,5/*_result*/,it);
  
-ame_setcut(self,Qnil);goto accept21;
-  alt21_8:  ame_setpos(self,oldpos23); goto fail;
- accept21:;
+ame_setcut(self,Qnil);goto accept22;
+  alt22_8:  ame_setpos(self,oldpos24); goto fail;
+ accept22:;
+ break;case UC(60) ... UC(60):;case UC(64) ... UC(90):; int oldpos27=ame_getpos(self);
+alt25_1: ame_setpos(self,oldpos27);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ it=rb_obj_clone(s__rp__9371); bind_aset(bind,1/*c*/,it);
+it=rb_obj_clone(s__lp__84c4); bind_aset(bind,2/*o*/,it);
+ it=rb_obj_clone(s__lp__84c4); arg0=it;it=rb_obj_clone(s__rp__9371); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt25_2); bind_aset(bind,3/*r*/,it);
+it=rb_funcall(self,sy_AmethystParser_Args_lb__le__co_a_4968,1,bind);  bind_aset(bind,4/*_result*/,it);
+it=bind_aget(bind,4/*_result*/); bind_aset(bind,5/*_result*/,it);
+ 
+ame_setcut(self,Qnil);goto accept25;
+alt25_2: ame_setpos(self,oldpos27);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ it=rb_obj_clone(s__rb__0fbd); bind_aset(bind,1/*c*/,it);
+it=rb_obj_clone(s__lb__8154); bind_aset(bind,2/*o*/,it);
+ it=rb_obj_clone(s__lb__8154); arg0=it;it=rb_obj_clone(s__rb__0fbd); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt25_3); bind_aset(bind,3/*r*/,it);
+it=rb_funcall(self,sy_AmethystParser_Args_lb__le__co_a_4968,1,bind);  bind_aset(bind,4/*_result*/,it);
+it=bind_aget(bind,4/*_result*/); bind_aset(bind,5/*_result*/,it);
+ 
+ame_setcut(self,Qnil);goto accept25;
+alt25_3: ame_setpos(self,oldpos27);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ it=rb_obj_clone(s__re__cbb1); bind_aset(bind,1/*c*/,it);
+it=rb_obj_clone(s__le__f95b); bind_aset(bind,2/*o*/,it);
+ it=rb_obj_clone(s__le__f95b); arg0=it;it=rb_obj_clone(s__re__cbb1); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt25_4); bind_aset(bind,3/*r*/,it);
+it=rb_funcall(self,sy_AmethystParser_Args_lb__le__co_a_4968,1,bind);  bind_aset(bind,4/*_result*/,it);
+it=bind_aget(bind,4/*_result*/); bind_aset(bind,5/*_result*/,it);
+ 
+ame_setcut(self,Qnil);goto accept25;
+alt25_4: ame_setpos(self,oldpos27);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ unsigned char chr14=*ame_curstr(self);  switch(chr14){case UC(0) ... UC(35):;case UC(37) ... UC(45):;case UC(47) ... UC(57):;case UC(59) ... UC(255):; int oldpos28=ame_getpos(self);
+alt26_1: ame_setpos(self,oldpos28);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt25_5;}
+   it=Amethyst_spaces(self ); FAILTEST(alt26_2);if (strncmp(ame_curstr(self),":@",2)) goto alt26_2; else ame_setpos(self,ame_getpos(self)+2);it=rb_obj_clone(s__co__at__4bf0); bind_aset(bind,6/*_result*/,it);
+it=bind_aget(bind,6/*_result*/); bind_aset(bind,7/*_result*/,it);
+it=bind_aget(bind,7/*_result*/); bind_aset(bind,8/*autovar*/,it);
+it=rb_funcall(self,sy_AmethystParser__append_lp__0eeb,1,bind);  
+ame_setcut(self,Qnil);goto accept26;
+alt26_2: ame_setpos(self,oldpos28);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt25_5;}
+   it=Amethyst_empty(self ); FAILTEST(alt26_3); 
+ame_setcut(self,Qnil);goto accept26;
+  alt26_3:  ame_setpos(self,oldpos28); goto alt25_5;
+ accept26:;
+ break;}int oldpos29=ame_getpos(self);
+alt27_1: ame_setpos(self,oldpos29);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt25_5;}
+   it=Amethyst__(self ); FAILTEST(alt27_2);ame_setcut(self,Qtrue);  it=Amethyst_fails(self ); FAILTEST(alt27_2); 
+ame_setcut(self,Qnil);goto accept27;
+alt27_2: ame_setpos(self,oldpos29);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt25_5;}
+   it=Amethyst_empty(self ); FAILTEST(alt27_3); 
+ame_setcut(self,Qnil);goto accept27;
+  alt27_3:  ame_setpos(self,oldpos29); goto alt25_5;
+ accept27:;
+  it=AmethystParser_name(self ); FAILTEST(alt25_5); bind_aset(bind,10/*autovar*/,it);
+it=rb_funcall(self,sy_AmethystParser__append_lp__b494,1,bind); it=rb_funcall(self,sy_AmethystParser_bind_lb_0_rb__dot__206f,1,bind);  bind_aset(bind,5/*_result*/,it);
+ 
+ame_setcut(self,Qnil);goto accept25;
+alt25_5: ame_setpos(self,oldpos27);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+   it=AmethystParser_key(self ); FAILTEST(alt25_6); bind_aset(bind,5/*_result*/,it);
+ 
+ame_setcut(self,Qnil);goto accept25;
+alt25_6: ame_setpos(self,oldpos27);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+  it=rb_funcall(self,sy_AmethystParser__di__lb_2,1,bind);  arg0=it; it=Amethyst_regch(self ,arg0); FAILTEST(alt25_7); bind_aset(bind,5/*_result*/,it);
+ 
+ame_setcut(self,Qnil);goto accept25;
+  alt25_7:  ame_setpos(self,oldpos27); goto fail;
+ accept25:;
+ break;case UC(96) ... UC(96):; int oldpos30=ame_getpos(self);
+alt28_1: ame_setpos(self,oldpos30);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ if (strncmp(ame_curstr(self),"`",1)) goto alt28_2; else ame_setpos(self,ame_getpos(self)+1);  it=AmethystParser_expression(self ); FAILTEST(alt28_2); bind_aset(bind,21/*e*/,it);
+if (strncmp(ame_curstr(self),"`",1)) goto alt28_2; else ame_setpos(self,ame_getpos(self)+1);it=rb_funcall(self,sy_AmethystParser_Lambda_lb___012f,1,bind);  bind_aset(bind,5/*_result*/,it);
+ 
+ame_setcut(self,Qnil);goto accept28;
+alt28_2: ame_setpos(self,oldpos30);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ it=rb_obj_clone(s__rp__9371); bind_aset(bind,1/*c*/,it);
+it=rb_obj_clone(s__lp__84c4); bind_aset(bind,2/*o*/,it);
+ it=rb_obj_clone(s__lp__84c4); arg0=it;it=rb_obj_clone(s__rp__9371); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt28_3); bind_aset(bind,3/*r*/,it);
+it=rb_funcall(self,sy_AmethystParser_Args_lb__le__co_a_4968,1,bind);  bind_aset(bind,4/*_result*/,it);
+it=bind_aget(bind,4/*_result*/); bind_aset(bind,5/*_result*/,it);
+ 
+ame_setcut(self,Qnil);goto accept28;
+alt28_3: ame_setpos(self,oldpos30);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ it=rb_obj_clone(s__rb__0fbd); bind_aset(bind,1/*c*/,it);
+it=rb_obj_clone(s__lb__8154); bind_aset(bind,2/*o*/,it);
+ it=rb_obj_clone(s__lb__8154); arg0=it;it=rb_obj_clone(s__rb__0fbd); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt28_4); bind_aset(bind,3/*r*/,it);
+it=rb_funcall(self,sy_AmethystParser_Args_lb__le__co_a_4968,1,bind);  bind_aset(bind,4/*_result*/,it);
+it=bind_aget(bind,4/*_result*/); bind_aset(bind,5/*_result*/,it);
+ 
+ame_setcut(self,Qnil);goto accept28;
+alt28_4: ame_setpos(self,oldpos30);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ it=rb_obj_clone(s__re__cbb1); bind_aset(bind,1/*c*/,it);
+it=rb_obj_clone(s__le__f95b); bind_aset(bind,2/*o*/,it);
+ it=rb_obj_clone(s__le__f95b); arg0=it;it=rb_obj_clone(s__re__cbb1); arg1=it; it=AmethystParser__args(self ,arg0,arg1); FAILTEST(alt28_5); bind_aset(bind,3/*r*/,it);
+it=rb_funcall(self,sy_AmethystParser_Args_lb__le__co_a_4968,1,bind);  bind_aset(bind,4/*_result*/,it);
+it=bind_aget(bind,4/*_result*/); bind_aset(bind,5/*_result*/,it);
+ 
+ame_setcut(self,Qnil);goto accept28;
+alt28_5: ame_setpos(self,oldpos30);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ unsigned char chr15=*ame_curstr(self);  switch(chr15){case UC(0) ... UC(35):;case UC(37) ... UC(45):;case UC(47) ... UC(57):;case UC(59) ... UC(255):; int oldpos31=ame_getpos(self);
+alt29_1: ame_setpos(self,oldpos31);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt28_6;}
+   it=Amethyst_spaces(self ); FAILTEST(alt29_2);if (strncmp(ame_curstr(self),":@",2)) goto alt29_2; else ame_setpos(self,ame_getpos(self)+2);it=rb_obj_clone(s__co__at__4bf0); bind_aset(bind,6/*_result*/,it);
+it=bind_aget(bind,6/*_result*/); bind_aset(bind,7/*_result*/,it);
+it=bind_aget(bind,7/*_result*/); bind_aset(bind,8/*autovar*/,it);
+it=rb_funcall(self,sy_AmethystParser__append_lp__0eeb,1,bind);  
+ame_setcut(self,Qnil);goto accept29;
+alt29_2: ame_setpos(self,oldpos31);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt28_6;}
+   it=Amethyst_empty(self ); FAILTEST(alt29_3); 
+ame_setcut(self,Qnil);goto accept29;
+  alt29_3:  ame_setpos(self,oldpos31); goto alt28_6;
+ accept29:;
+ break;}int oldpos32=ame_getpos(self);
+alt30_1: ame_setpos(self,oldpos32);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt28_6;}
+   it=Amethyst__(self ); FAILTEST(alt30_2);ame_setcut(self,Qtrue);  it=Amethyst_fails(self ); FAILTEST(alt30_2); 
+ame_setcut(self,Qnil);goto accept30;
+alt30_2: ame_setpos(self,oldpos32);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt28_6;}
+   it=Amethyst_empty(self ); FAILTEST(alt30_3); 
+ame_setcut(self,Qnil);goto accept30;
+  alt30_3:  ame_setpos(self,oldpos32); goto alt28_6;
+ accept30:;
+  it=AmethystParser_name(self ); FAILTEST(alt28_6); bind_aset(bind,10/*autovar*/,it);
+it=rb_funcall(self,sy_AmethystParser__append_lp__b494,1,bind); it=rb_funcall(self,sy_AmethystParser_bind_lb_0_rb__dot__206f,1,bind);  bind_aset(bind,5/*_result*/,it);
+ 
+ame_setcut(self,Qnil);goto accept28;
+alt28_6: ame_setpos(self,oldpos30);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+   it=AmethystParser_key(self ); FAILTEST(alt28_7); bind_aset(bind,5/*_result*/,it);
+ 
+ame_setcut(self,Qnil);goto accept28;
+  alt28_7:  ame_setpos(self,oldpos30); goto fail;
+ accept28:;
  break;}it=bind_aget(bind,5/*_result*/);
 return it;
 fail: return failobj; }
@@ -1476,13 +1535,13 @@ sy_AmethystParser_Global_lb_b_8edb=rb_intern("AmethystParser_Global_lb_b_8edb");
 sy_AmethystParser_Grammar_dot__80c6=rb_intern("AmethystParser_Grammar_dot__80c6");
 sy_AmethystParser_Key_lb_bind_20b7=rb_intern("AmethystParser_Key_lb_bind_20b7");
 sy_AmethystParser_Lambda_lb___012f=rb_intern("AmethystParser_Lambda_lb___012f");
-sy_AmethystParser_Lookahea_0dfa=rb_intern("AmethystParser_Lookahea_0dfa");
+sy_AmethystParser_Lookahea_b11c=rb_intern("AmethystParser_Lookahea_b11c");
 sy_AmethystParser_Many_lb_bin_33ac=rb_intern("AmethystParser_Many_lb_bin_33ac");
 sy_AmethystParser_Nested_lb_b_7d5e=rb_intern("AmethystParser_Nested_lb_b_7d5e");
 sy_AmethystParser_Or_dot_creat_67f0=rb_intern("AmethystParser_Or_dot_creat_67f0");
 sy_AmethystParser_Or_lb_bind_lb__cb4a=rb_intern("AmethystParser_Or_lb_bind_lb__cb4a");
 sy_AmethystParser_Pass_lb_bin_9af8=rb_intern("AmethystParser_Pass_lb_bin_9af8");
-sy_AmethystParser_Pred_lb_bin_bcee=rb_intern("AmethystParser_Pred_lb_bin_bcee");
+sy_AmethystParser_Pred_lb_bin_4918=rb_intern("AmethystParser_Pred_lb_bin_4918");
 sy_AmethystParser_Result_lb__le__ae0e=rb_intern("AmethystParser_Result_lb__le__ae0e");
 sy_AmethystParser_Rule_dot_cre_e3af=rb_intern("AmethystParser_Rule_dot_cre_e3af");
 sy_AmethystParser_Seq_dot_crea_abce=rb_intern("AmethystParser_Seq_dot_crea_abce");
@@ -1573,4 +1632,4 @@ rb_define_method(cls_AmethystParser,"rule",AmethystParser_rule,0);
 rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
 rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
 rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
- rb_eval_string("testversionparser('c2861085107ba87824b2f9344dbf86b0')");}
+ rb_eval_string("testversionparser('d8520891f253dc310a8d2ca6aee66580')");}

@@ -51,7 +51,7 @@ end
 
 
 def traverser_compiled_by
-'fb24cfa16abf022f1bc7898d96c59a6d'
+'b64466aca66b9c1c8c0fac887d48b782'
 end
 def traverser_source_hash
 '102e4f870eb0748a3420fd0f2398e4a9'

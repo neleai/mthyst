@@ -38,7 +38,6 @@ class FirstLattice
 		self.class[*(ary&a.ary)]
 	end
 	def seqjoin(a)
-		puts self unless self.ary.include? Empty
     return self unless self.ary.include? Empty
     (self-self.class.empty)|a
   end
@@ -234,8 +233,8 @@ end
 def First_Dataflow_bind_lb_9_rb__dot__05d7(bind)
 bind[9].inject(:|)
 end
-def First_Dataflow_depends_lp__4dd0(bind)
-depends(bind[0]); puts bind[0].inspect;puts @vals[bind[0]].inspect ;@vals[bind[0]]
+def First_Dataflow_depends_lp__7dbf(bind)
+depends(bind[0]);puts bind[0].inspect;puts @vals[bind[0]].inspect; @vals[bind[0]]
 end
 def First_Dataflow_lattice_dot__2c4f(bind)
 lattice.empty
@@ -282,8 +281,8 @@ end
 def Sizes_Dataflow_lattice_dot__2ce9(bind)
 lattice.default
 end
-def Sizes_Dataflow_lattice_lb__1e4c(bind)
-lattice[bind[10].size]
+def Sizes_Dataflow_lattice_lb__4678(bind)
+lattice[bind[7].size]
 end
 def Sizes_Dataflow_lattice_lb__fdee(bind)
 lattice[1]
@@ -339,8 +338,8 @@ end
 def Switch_Dataflow_lattice_dot__e0e5(bind)
 lattice.top
 end
-def Switch_Dataflow_regchar_lp__0d06(bind)
-regchar(bind[10])
+def Switch_Dataflow_puts_sp__dq_re_611e(bind)
+puts "regchar" ;r=regchar(bind[10]);puts r.inspect;r
 end
 def Switch_Dataflow_src_dot_firs_8482(bind)
 src.first
@@ -768,15 +767,15 @@ end
 
 
 def detect_switch_compiled_by
-'fb24cfa16abf022f1bc7898d96c59a6d'
+'b64466aca66b9c1c8c0fac887d48b782'
 end
 def detect_switch_source_hash
-'f9bad12296118e56c2c1f6c460c977a2'
+'cd23e2e08dd44db3b466fb2de26a7afd'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'6d4eba03e6bf1f7333cc15e41edc1aca'
+'2611b53c87634e92ab40c8be93472c4d'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

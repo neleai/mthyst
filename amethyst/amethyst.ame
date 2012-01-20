@@ -21,7 +21,7 @@ amethyst Amethyst < AmethystCore {
   xdigit = <0-9a-fA-F>
   word = alpha | '_'
 
-	int = ('-'|{""}):m ~'_' ('0x' <0-9a-fA-F_>+ | '0b' <01_>+ | '0o' <0-7_>+ | <0-9_>+)[]:n {(m+n*"").to_i}
+	int = ('-'|{""}):m  ('0x' <0-9a-fA-F>+ | '0b' <01>+ | '0o' <0-7>+ | <0-9>+)[]:n {(m+n*"").to_i}
 	number = int
 
 	until(e) = ( seq(e) break 

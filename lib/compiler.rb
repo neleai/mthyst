@@ -1,7 +1,7 @@
 CurrentParser={}
 require 'digest'
 require 'set'
-COMPILED=["amethyst","traverser","tests","detect_variables2","parser","dataflow_ssa","inliner2",
+COMPILED=["tests","amethyst","traverser","detect_variables2","parser","dataflow_ssa","inliner2",
 "detect_switch","left_factor","constant_propagation","ctranslator2","implicit_variables","remove_left_rigth_recursion"]
 def debug_print(t)
 	puts t.inspect if Amethyst::Settings.debug>1
@@ -150,7 +150,10 @@ class <<Compiler
 		eval("module Foo\n#{pre}\nend") 
 
 		debug_print tree
+		puts "blabla"
+		puts tree.inspect
 		c,init,rb= AmethystCTranslator.new.parse(:itrans,tree)
+		puts c.inspect
 		c=c*""
 		hex_digest=Digest::MD5.hexdigest(c)
 		File.open("compiled/#{file2}_c.c","w"){|f|

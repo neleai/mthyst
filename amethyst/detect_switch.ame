@@ -38,7 +38,6 @@ class FirstLattice
 		self.class[*(ary&a.ary)]
 	end
 	def seqjoin(a)
-		puts self unless self.ary.include? Empty
     return self unless self.ary.include? Empty
     (self-self.class.empty)|a
   end
@@ -209,7 +208,7 @@ class ClasSwitch_Dataflow < First_Dataflow
 	end
 end
 amethyst First_Dataflow {
-	value =  .:x  {depends(x); puts x.inspect;puts @@vals[x].inspect ;@@vals[x]}
+	value =  .:x  {depends(x);puts x.inspect;puts @@vals[x].inspect; @@vals[x]}
 
 
 	root = .:x analyze(x)
@@ -228,15 +227,14 @@ amethyst First_Dataflow {
 
 amethyst Sizes_Dataflow < First_Dataflow {
 	first = Apply[( ["_seq"] CAct[.:str] {lattice[str.size]} 
-								| ["regch" | "clas" | "anything"] {lattice[1]}
+								| ["regch" | "clas" | "anything"] .* {lattice[1]}
 								)]
-				| Apply[ ["clas"] .* {lattice[1]}]
 			  | super
 }
 
 amethyst Switch_Dataflow < First_Dataflow{
 	first = Apply[( ["_seq"  ] CAct[.:str] {firstchar(str)}
-								| ["regch" ] Act[.:str]  {regchar(str)}
+								| ["regch" ] Act[.:str]  {puts "regchar" ;r=regchar(str);puts r.inspect;r}
 								| ["anything" ] {lattice.top}
 							  )]
 				| Apply[ :name &{$rules[name]}  { $rules[name].body}=>value ]
