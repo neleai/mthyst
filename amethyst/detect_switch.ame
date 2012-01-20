@@ -178,7 +178,7 @@ class First_Dataflow < Amethyst
   end
 
 	def empty?(el)    
-		$sizedf.analyze(s).size==0
+		$sizedf.analyze(el).size==0
 	end
 end
 class Sizes_Dataflow < First_Dataflow
@@ -220,18 +220,12 @@ class Switch_Dataflow < First_Dataflow
 	def lattice
 		CharLattice
 	end
-  def empty?(s)
-    ($sizedf.analyze(s).size==0)	
-  end
 end
 
 class ClasSwitch_Dataflow < First_Dataflow
 	def lattice
 		ClasLattice
 	end
-  def empty?(s)
-    $sizedf.analyze(s).size==0
-  end
 end
 amethyst First_Dataflow {
 	value =  .:x  {depends(x); @@vals[x]}
