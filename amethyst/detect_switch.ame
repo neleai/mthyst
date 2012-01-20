@@ -228,7 +228,7 @@ class ClasSwitch_Dataflow < First_Dataflow
 	end
 end
 amethyst First_Dataflow {
-	value =  .:x  {depends(x); @@vals[x]}
+	value =  .:x  {depends(x); puts x.inspect;puts @@vals[x].inspect ;@@vals[x]}
 
 
 	root = .:x analyze(x)
@@ -249,6 +249,7 @@ amethyst Sizes_Dataflow < First_Dataflow {
 	first = Apply[( ["_seq"] CAct[.:str] {lattice[str.size]} 
 								| ["regch" | "clas" | "anything"] {lattice[1]}
 								)]
+				| Apply[ ["clas"] .* {lattice[1]}]
 			  | super
 }
 
@@ -367,7 +368,7 @@ amethyst Detect_Switch < Detect_First {
 		{s=Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>ary3}];puts s.inspect;s}
 	]
 	
-	split = Seq[ split .*]
+	split = Seq[ split .* first(@self):f {puts @self.inspect ;puts f.inspect;@@cases=@@cases.map{|c| [c&f,c&~f]}.flatten.select{|x| x.ary.size>0}.uniq_by{|x|x.ary.inspect}} ]
 				| Or[ split*]
 				| Bind[ split ]
 				| .:el first(el):f {@@cases=@@cases.map{|c| [c&f,c&~f]}.flatten.select{|x| x.ary.size>0}.uniq_by{|x|x.ary.inspect} }
@@ -400,7 +401,7 @@ amethyst Detect_ClasSwitch < Detect_First {
 
 		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.sort_by{|el| el.inspect},v[0][1]]}.sort_by{|el| el.inspect}}
 		{ary3=ary3.map{|o,v| [ClasLattice[*o],v]}}
-	  {c=classswitch(ary2,firs,ary3)}
+	  {c=classswitch(ary2,firs,ary3);puts c.inspect;c}
 	]
 
   predicate(clas,i,p) = &{clas[i]=="default"} {p}

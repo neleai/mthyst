@@ -253,8 +253,8 @@ end
 def First_Dataflow_bind_lb_9_rb__dot__05d7(bind)
 bind[9].inject(:|)
 end
-def First_Dataflow_depends_lp__c1cd(bind)
-depends(bind[0]); @vals[bind[0]]
+def First_Dataflow_depends_lp__4dd0(bind)
+depends(bind[0]); puts bind[0].inspect;puts @vals[bind[0]].inspect ;@vals[bind[0]]
 end
 def First_Dataflow_lattice_dot__2c4f(bind)
 lattice.empty
@@ -301,8 +301,8 @@ end
 def Sizes_Dataflow_lattice_dot__2ce9(bind)
 lattice.default
 end
-def Sizes_Dataflow_lattice_lb__4678(bind)
-lattice[bind[7].size]
+def Sizes_Dataflow_lattice_lb__1e4c(bind)
+lattice[bind[10].size]
 end
 def Sizes_Dataflow_lattice_lb__fdee(bind)
 lattice[1]
@@ -541,9 +541,6 @@ end
 def Detect_Switch__append_lp__37c5(bind)
 _append(bind[6],bind[8])
 end
-def Detect_Switch__append_lp__473a(bind)
-_append(bind[13],bind[14])
-end
 def Detect_Switch__append_lp__6adb(bind)
 _append(bind[3],bind[5])
 end
@@ -638,6 +635,9 @@ nary=bind[1].ary
                                  nary=nary.map{|o,v| [o,predicate(bind[0],v)]}.select{|o,v| v!=Placeholder}
                                  Switch[{:act=>bind[1].act,:first=>bind[1].first,:defs=>bind[1].defs,:ary=>nary}]
                               
+end
+def Detect_Switch_puts_sp_src_c03d(bind)
+puts src.inspect ;puts bind[5].inspect;@cases=@cases.map{|c| [c&bind[5],c&~bind[5]]}.flatten.select{|x| x.ary.size>0}.uniq_by{|x|x.ary.inspect}
 end
 def Detect_Switch_s_eq_Switch_a9b0(bind)
 s=Switch[{:act=>"*ame_curstr(self)",:first=>bind[6],:ary=>bind[2]}];puts s.inspect;s
@@ -755,8 +755,8 @@ end
 def Detect_ClasSwitch_bind_lb_2_rb__eq__dbd4(bind)
 bind[2]=bind[2].map{|o,v| [ClasLattice[*o],v]}
 end
-def Detect_ClasSwitch_c_eq_classs_1204(bind)
-c=classswitch(bind[1],bind[6],bind[2])
+def Detect_ClasSwitch_c_eq_classs_84f8(bind)
+c=classswitch(bind[1],bind[6],bind[2]);puts c.inspect;c
 end
 def Detect_ClasSwitch_if_sp_bind_lb__f1e9(bind)
 if bind[3]
@@ -787,15 +787,15 @@ end
 
 
 def detect_switch_compiled_by
-'22e4a4b770ad9bca838dd19634db33e9'
+'518c208be1e1f5f1abe4864cacb3ae9b'
 end
 def detect_switch_source_hash
-'b05d3ba13f07f3f39af44ed1844bdfd7'
+'d49e02359d1bb786b1e4dd398796d426'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'eb0092d74cf5ffb7a317a80529c4b76a'
+'ded72ba2d51de276292e30547ccb439f'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

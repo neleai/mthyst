@@ -304,3 +304,4 @@ class Key;						def inspect;	"@#{ary[0]}"																									;end;end
 class Global;					def inspect;	"@@#{ary[0]}"																									;end;end
 class <<Placeholder;	def inspect;	"Placeholder"																									;end;end
 class Bind;						def inspect;	"#{ary[0].inspect}:#{name.inspect}"														;end;end
+class Switch; 				def inspect;  "Switch[#{ary.map{|d,k|  "#{d.inspect}: #{k.inspect}\n"}*""}]";end;end
