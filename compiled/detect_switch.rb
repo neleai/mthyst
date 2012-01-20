@@ -332,8 +332,14 @@ end
 def Switch_Dataflow__at_vis_eq_bin_af53(bind)
 @vis=bind[0]; bind[0]
 end
+def Switch_Dataflow__do_rules_lb_b_6b08(bind)
+$rules[bind[16]].body
+end
 def Switch_Dataflow__lp_(bind)
 (!(empty?(bind[35]))) || FAIL
+end
+def Switch_Dataflow__lp__do_rules_lb__fed1(bind)
+($rules[bind[16]]) || FAIL
 end
 def Switch_Dataflow__lp_src_dot_fir_1e1a(bind)
 (src.first.is_a?(lattice)) || FAIL
@@ -347,8 +353,8 @@ end
 def Switch_Dataflow_bind_lb_22_rb__a94e(bind)
 bind[22]|lattice.empty
 end
-def Switch_Dataflow_firstcha_c300(bind)
-firstchar(bind[7])
+def Switch_Dataflow_firstcha_7468(bind)
+firstchar(bind[10])
 end
 def Switch_Dataflow_lattice_dot__2c4f(bind)
 lattice.empty
@@ -359,8 +365,8 @@ end
 def Switch_Dataflow_lattice_dot__e0e5(bind)
 lattice.top
 end
-def Switch_Dataflow_regchar_lp__9b27(bind)
-regchar(bind[7])
+def Switch_Dataflow_regchar_lp__0d06(bind)
+regchar(bind[10])
 end
 def Switch_Dataflow_src_dot_firs_8482(bind)
 src.first
@@ -788,15 +794,15 @@ end
 
 
 def detect_switch_compiled_by
-'5461e8f56c869c8550f75fdd25e8539f'
+'22e4a4b770ad9bca838dd19634db33e9'
 end
 def detect_switch_source_hash
-'acf68be97fe4c76953f23f63b1907e3b'
+'c9631c49cae0b5172f14a277dac0a040'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'9174bed3757d064cf10fd12efe6cc678'
+'eb0092d74cf5ffb7a317a80529c4b76a'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

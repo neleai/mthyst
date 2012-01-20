@@ -264,6 +264,7 @@ amethyst Switch_Dataflow < First_Dataflow{
 								| ["regch" ] Act[.:str]  {regchar(str)}
 								| ["anything" ] {lattice.top}
 							  )]
+				| Apply[ :name &{$rules[name]}  { $rules[name].body}=>value ]
 				| super
 }
 
