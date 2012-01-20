@@ -317,8 +317,8 @@ end
 def Forget_SSA__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Forget_SSA_bind_lb_11_rb__6cc7(bind)
-bind[11]<<bind[12]
+def Forget_SSA_bind_lb_12_rb__bb3e(bind)
+bind[12]<<bind[13]
 end
 def Forget_SSA_if_sp_bind_lb__f1e9(bind)
 if bind[3]
@@ -339,7 +339,7 @@ end
 
 
 def dataflow_ssa_compiled_by
-'a9ea4d17b41039dd30ac4cedaad0ee5b'
+'5461e8f56c869c8550f75fdd25e8539f'
 end
 def dataflow_ssa_source_hash
 '7c8e4cb3bb6398da0fdd36d225497489'
@@ -348,6 +348,6 @@ def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'4fc72ec860aea866fc7b8bd33a933e3f'
+'bf0c3d6c572ee448369a128fa8d173c5'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/dataflow_ssa_c"

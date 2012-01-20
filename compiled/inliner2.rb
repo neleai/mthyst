@@ -3,8 +3,8 @@ class DetectCalls < Visitor
 def DetectCalls__append_lp__4de3(bind)
 _append(bind[2],bind[3])
 end
-def DetectCalls__append_lp__9ca5(bind)
-_append(bind[10],bind[11])
+def DetectCalls__append_lp__be78(bind)
+_append(bind[11],bind[12])
 end
 def DetectCalls__at_calls_7f81(bind)
 @calls
@@ -48,8 +48,8 @@ end
 def Inliner2__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Inliner2_bind_lb_11_rb__6cc7(bind)
-bind[11]<<bind[12]
+def Inliner2_bind_lb_12_rb__bb3e(bind)
+bind[12]<<bind[13]
 end
 def Inliner2_body_eq__at_bo_c02f(bind)
 body=@body; bind[4].each_index{|i| body=Seq[Bind[@args[i],bind[4][i]],body] } ; body
@@ -111,8 +111,8 @@ end
 def Replace_Super__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Replace_Super_bind_lb_11_rb__6cc7(bind)
-bind[11]<<bind[12]
+def Replace_Super_bind_lb_12_rb__bb3e(bind)
+bind[12]<<bind[13]
 end
 def Replace_Super_if_sp_bind_lb__f1e9(bind)
 if bind[3]
@@ -130,7 +130,7 @@ end
 
 
 def inliner2_compiled_by
-'a9ea4d17b41039dd30ac4cedaad0ee5b'
+'5461e8f56c869c8550f75fdd25e8539f'
 end
 def inliner2_source_hash
 'eca6429e1f65c5d4367c65294557dc01'
@@ -139,6 +139,6 @@ def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version
 end
 def inliner2_version
-'23d560d770f5d07774a12bea2ebd4152'
+'01ec9bcf37934134189e57aae709c017'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/inliner2_c"

@@ -149,6 +149,9 @@ VALUE Constant_Traverser_traverse(VALUE self );
 VALUE Constant_Traverser_traverse_item(VALUE self );
 VALUE Constant_Traverser_visit(VALUE self );
 VALUE switchhashConstant_Traverser1;
+VALUE switchhashConstant_Traverser2;
+VALUE switchhashConstant_Traverser3;
+VALUE switchhashConstant_Traverser4;
 VALUE switchhashTraverser_Clone21;
 static VALUE sy_Constant_Traverser_Bind_lb_src_41c9;
 static VALUE sy_Constant_Traverser__at_changed_5352;
@@ -206,7 +209,7 @@ return it;
 fail: return failobj; }
 VALUE Constant_Traverser_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(14);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-unsigned char chr1=FIX2LONG(rb_hash_aref(switchhashTraverser_Clone21,rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:; int oldpos1=ame_getpos(self);
+unsigned char chr1=FIX2LONG(rb_hash_aref(switchhashTraverser_Clone21,rb_obj_class(ame_curobj(self))));  switch(chr1){case 0:; unsigned char chr2=FIX2LONG(rb_hash_aref(switchhashConstant_Traverser2,rb_obj_class(ame_curobj(self))));  switch(chr2){case 0:;case 1:;case 2:;case 3:;case 4:; int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=Constant_Traverser_visit(self ); FAILTEST(alt1_2); bind_aset(bind,0/*a*/,it);
 it=rb_funcall(self,sy_Constant_Traverser__at_changed_5352,1,bind); it=bind_aget(bind,0/*a*/); bind_aset(bind,1/*_result*/,it);
@@ -240,7 +243,7 @@ ame_setcut(self,Qnil);goto accept2;
 ame_setcut(self,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
- break;case 1:; int oldpos3=ame_getpos(self);
+ break;} break;case 1:; unsigned char chr3=FIX2LONG(rb_hash_aref(switchhashConstant_Traverser3,rb_obj_class(ame_curobj(self))));  switch(chr3){case 0:;case 1:;case 2:;case 3:;case 4:; int oldpos3=ame_getpos(self);
 alt3_1: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=Constant_Traverser_visit(self ); FAILTEST(alt3_2); bind_aset(bind,0/*a*/,it);
 it=rb_funcall(self,sy_Constant_Traverser__at_changed_5352,1,bind); it=bind_aget(bind,0/*a*/); bind_aset(bind,1/*_result*/,it);
@@ -276,7 +279,7 @@ ame_setcut(self,Qnil);goto accept4;
 ame_setcut(self,Qnil);goto accept3;
   alt3_3:  ame_setpos(self,oldpos3); goto fail;
  accept3:;
- break;case 2:; int oldpos6=ame_getpos(self);
+ break;} break;case 2:; unsigned char chr4=FIX2LONG(rb_hash_aref(switchhashConstant_Traverser4,rb_obj_class(ame_curobj(self))));  switch(chr4){case 0:;case 1:;case 2:;case 3:;case 4:; int oldpos6=ame_getpos(self);
 alt5_1: ame_setpos(self,oldpos6);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=Constant_Traverser_visit(self ); FAILTEST(alt5_2); bind_aset(bind,0/*a*/,it);
 it=rb_funcall(self,sy_Constant_Traverser__at_changed_5352,1,bind); it=bind_aget(bind,0/*a*/); bind_aset(bind,1/*_result*/,it);
@@ -288,7 +291,7 @@ alt5_2: ame_setpos(self,oldpos6);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
 ame_setcut(self,Qnil);goto accept5;
   alt5_3:  ame_setpos(self,oldpos6); goto fail;
  accept5:;
- break;}it=bind_aget(bind,1/*_result*/);
+ break;} break;}it=bind_aget(bind,1/*_result*/);
 return it;
 fail: return failobj; }
 VALUE Constant_Traverser_visit(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(10);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -355,6 +358,9 @@ rb_define_method(cls_Constant_Propagator,"step",Constant_Propagator_step,1);
  cls_Constant_Traverser=rb_define_class("Constant_Traverser",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2"))); 
 failobj=rb_eval_string("FAIL");
 switchhashConstant_Traverser1=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Act\nnext h[k]=1 if k<=Bind\nnext h[k]=2 if k<=Local\nnext h[k]=3 if k<=Result\nnext h[k]=4 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashConstant_Traverser1);
+switchhashConstant_Traverser2=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Act\nnext h[k]=1 if k<=Bind\nnext h[k]=2 if k<=Local\nnext h[k]=3 if k<=Result\nnext h[k]=4 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashConstant_Traverser2);
+switchhashConstant_Traverser3=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Act\nnext h[k]=1 if k<=Bind\nnext h[k]=2 if k<=Local\nnext h[k]=3 if k<=Result\nnext h[k]=4 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashConstant_Traverser3);
+switchhashConstant_Traverser4=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Act\nnext h[k]=1 if k<=Bind\nnext h[k]=2 if k<=Local\nnext h[k]=3 if k<=Result\nnext h[k]=4 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashConstant_Traverser4);
 switchhashTraverser_Clone21=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashTraverser_Clone21);
 sy_Constant_Traverser_Bind_lb_src_41c9=rb_intern("Constant_Traverser_Bind_lb_src_41c9");
 sy_Constant_Traverser__at_changed_5352=rb_intern("Constant_Traverser__at_changed_5352");
@@ -372,4 +378,4 @@ rb_define_method(cls_Constant_Traverser,"root",Constant_Traverser_root,0);
 rb_define_method(cls_Constant_Traverser,"traverse",Constant_Traverser_traverse,0);
 rb_define_method(cls_Constant_Traverser,"traverse_item",Constant_Traverser_traverse_item,0);
 rb_define_method(cls_Constant_Traverser,"visit",Constant_Traverser_visit,0);
- rb_eval_string("testversionconstant_propagation('9b92ca141207fd371f318c31e5739f14')");}
+ rb_eval_string("testversionconstant_propagation('45034ecc72c0b9148aac2a92aa17099b')");}

@@ -269,8 +269,8 @@ amethyst Switch_Dataflow < First_Dataflow{
 
 amethyst ClasSwitch_Dataflow < First_Dataflow{
   first = Apply[ ["clas"] CAct[.:cls] {lattice[cls]}]
+				| Apply[ :name &{$rules[name]}  { $rules[name].body}=>value ]
         | super
-				| Apply[ :name &{$rules[name]} .* {$rules[name].body}=>value]
 }
 
 class Detect_First< Traverser_Clone2

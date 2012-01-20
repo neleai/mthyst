@@ -308,8 +308,8 @@ end
 def Sizes_Dataflow_lattice_dot__2ce9(bind)
 lattice.default
 end
-def Sizes_Dataflow_lattice_lb__cef9(bind)
-lattice[bind[6].size]
+def Sizes_Dataflow_lattice_lb__4678(bind)
+lattice[bind[7].size]
 end
 def Sizes_Dataflow_lattice_lb__fdee(bind)
 lattice[1]
@@ -347,8 +347,8 @@ end
 def Switch_Dataflow_bind_lb_22_rb__a94e(bind)
 bind[22]|lattice.empty
 end
-def Switch_Dataflow_firstcha_7cc4(bind)
-firstchar(bind[6])
+def Switch_Dataflow_firstcha_c300(bind)
+firstchar(bind[7])
 end
 def Switch_Dataflow_lattice_dot__2c4f(bind)
 lattice.empty
@@ -359,8 +359,8 @@ end
 def Switch_Dataflow_lattice_dot__e0e5(bind)
 lattice.top
 end
-def Switch_Dataflow_regchar_lp__1c32(bind)
-regchar(bind[6])
+def Switch_Dataflow_regchar_lp__9b27(bind)
+regchar(bind[7])
 end
 def Switch_Dataflow_src_dot_firs_8482(bind)
 src.first
@@ -380,14 +380,14 @@ end
 def ClasSwitch_Dataflow__at_vis_eq_bin_af53(bind)
 @vis=bind[0]; bind[0]
 end
-def ClasSwitch_Dataflow__do_rules_lb_b_31ab(bind)
-$rules[bind[7]].body
+def ClasSwitch_Dataflow__do_rules_lb_b_ab2c(bind)
+$rules[bind[10]].body
 end
 def ClasSwitch_Dataflow__lp_(bind)
 (!(empty?(bind[35]))) || FAIL
 end
-def ClasSwitch_Dataflow__lp__do_rules_lb__f54a(bind)
-($rules[bind[7]]) || FAIL
+def ClasSwitch_Dataflow__lp__do_rules_lb__9d00(bind)
+($rules[bind[10]]) || FAIL
 end
 def ClasSwitch_Dataflow__lp_src_dot_fir_1e1a(bind)
 (src.first.is_a?(lattice)) || FAIL
@@ -407,8 +407,8 @@ end
 def ClasSwitch_Dataflow_lattice_dot__2ce9(bind)
 lattice.default
 end
-def ClasSwitch_Dataflow_lattice_lb__d8d7(bind)
-lattice[bind[3]]
+def ClasSwitch_Dataflow_lattice_lb__9b29(bind)
+lattice[bind[7]]
 end
 def ClasSwitch_Dataflow_src_dot_firs_8482(bind)
 src.first
@@ -607,8 +607,8 @@ end
 def Detect_Switch__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Detect_Switch_bind_lb_11_rb__6cc7(bind)
-bind[11]<<bind[12]
+def Detect_Switch_bind_lb_12_rb__bb3e(bind)
+bind[12]<<bind[13]
 end
 def Detect_Switch_bind_lb_1_rb_(bind)
 bind[1]|=first(bind[4])
@@ -733,8 +733,8 @@ end
 def Detect_ClasSwitch__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Detect_ClasSwitch_bind_lb_11_rb__6cc7(bind)
-bind[11]<<bind[12]
+def Detect_ClasSwitch_bind_lb_12_rb__bb3e(bind)
+bind[12]<<bind[13]
 end
 def Detect_ClasSwitch_bind_lb_1_rb_(bind)
 bind[1]|=first(bind[4])
@@ -788,15 +788,15 @@ end
 
 
 def detect_switch_compiled_by
-'a9ea4d17b41039dd30ac4cedaad0ee5b'
+'5461e8f56c869c8550f75fdd25e8539f'
 end
 def detect_switch_source_hash
-'e18dd828d27f377de0e54209047cfae5'
+'acf68be97fe4c76953f23f63b1907e3b'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'8dddb7f3076929f56696b70e5184935a'
+'9174bed3757d064cf10fd12efe6cc678'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

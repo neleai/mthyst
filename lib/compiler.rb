@@ -107,7 +107,7 @@ class <<Compiler
 		
 		ds=Detect_Switch.new;ds.instance_variable_set(:@name,grammar.name)
 		dc=Detect_ClasSwitch.new;dc.instance_variable_set(:@name,grammar.name)
-
+		$rules=g.rules
 		topo.each{|name|if g.rules[name] && called[name]
 				g.opt(g.rules[name])
 				inlined=false
