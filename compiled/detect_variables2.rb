@@ -119,20 +119,52 @@ end
 
 class Resolve_Calls < Traverser_Clone2
 
+def Resolve_Calls__at_changed_5352(bind)
+@changed=true
+end
+def Resolve_Calls__at_changed_b885(bind)
+@changed=false
+end
+def Resolve_Calls__at_changed_c681(bind)
+@changed
+end
+def Resolve_Calls__at_grammar_8783(bind)
+@grammar=bind[0]
+end
+def Resolve_Calls__lp_bind_lb_2_rb__6693(bind)
+(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
+end
+def Resolve_Calls__lp_src_dot_ins_6a75(bind)
+(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
+end
+def Resolve_Calls_bind_lb_12_rb__bb3e(bind)
+bind[12]<<bind[13]
+end
+def Resolve_Calls_if_sp_bind_lb__f1e9(bind)
+if bind[3]
+             @changed=true;bind[2].normalize
+           else
+            @changed=bind[0]
+            src
+          end
+end
+def Resolve_Calls_src_25d9(bind)
+src
+end
 
 end
 
 
 def detect_variables2_compiled_by
-'6c3786f494bb6dfe8b76c1f9e64d3042'
+'c885ad278bb09e67bb266486aa3b62ed'
 end
 def detect_variables2_source_hash
-'15735c034c8cf574d8b20629385e70ab'
+'d436da1b70fdab94adcbd97fb0fef92c'
 end
 def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'c7e5b81414e50a62fa6fd0f89f31b6e4'
+'80e30c6c0ea5023a6e62a81705a117aa'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_variables2_c"
