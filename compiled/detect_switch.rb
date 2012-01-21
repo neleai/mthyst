@@ -309,8 +309,8 @@ end
 def Sizes_Dataflow_lattice_dot__2ce9(bind)
 lattice.default
 end
-def Sizes_Dataflow_lattice_lb__4678(bind)
-lattice[bind[7].size]
+def Sizes_Dataflow_lattice_lb__cef9(bind)
+lattice[bind[6].size]
 end
 def Sizes_Dataflow_lattice_lb__fdee(bind)
 lattice[1]
@@ -342,11 +342,11 @@ end
 def Switch_Dataflow__lp_(bind)
 (!(empty?(bind[29]))) || FAIL
 end
-def Switch_Dataflow__lp_Compile_7981(bind)
-(Compiler.grammars[src.clas]&&Compiler.grammars[src.clas].rules[bind[16]]) || FAIL
-end
 def Switch_Dataflow__lp_bind_lb_11_35dc(bind)
 (bind[11].ary!=["default"]) || FAIL
+end
+def Switch_Dataflow__lp_puts_sp_bi_4f38(bind)
+(puts bind[16], src.clas.inspect;Compiler.grammars[src.clas]&&Compiler.grammars[src.clas].rules[bind[16]]) || FAIL
 end
 def Switch_Dataflow__lp_src_dot_fir_1e1a(bind)
 (src.first.is_a?(lattice)) || FAIL
@@ -366,8 +366,8 @@ end
 def Switch_Dataflow_bind_lb_22_rb__a94e(bind)
 bind[22]|lattice.empty
 end
-def Switch_Dataflow_firstcha_7468(bind)
-firstchar(bind[10])
+def Switch_Dataflow_firstcha_ec42(bind)
+firstchar(bind[9])
 end
 def Switch_Dataflow_lattice_dot__2c4f(bind)
 lattice.empty
@@ -378,8 +378,8 @@ end
 def Switch_Dataflow_lattice_dot__e0e5(bind)
 lattice.top
 end
-def Switch_Dataflow_regchar_lp__0d06(bind)
-regchar(bind[10])
+def Switch_Dataflow_regchar_lp__dfee(bind)
+regchar(bind[9])
 end
 def Switch_Dataflow_src_dot_firs_8482(bind)
 src.first
@@ -390,6 +390,9 @@ end
 
 class ClasSwitch_Dataflow < First_Dataflow
 
+def ClasSwitch_Dataflow_Compiler_6acb(bind)
+Compiler.grammars[src.clas].rules[bind[10]]
+end
 def ClasSwitch_Dataflow__append_lp__05b0(bind)
 _append(bind[25],bind[26])
 end
@@ -402,14 +405,11 @@ end
 def ClasSwitch_Dataflow__at_vis_eq_bin_af53(bind)
 @vis=bind[0]; bind[0]
 end
-def ClasSwitch_Dataflow__do_rules_lb_b_ab2c(bind)
-$rules[bind[10]].body
-end
 def ClasSwitch_Dataflow__lp_(bind)
 (!(empty?(bind[29]))) || FAIL
 end
-def ClasSwitch_Dataflow__lp__do_rules_lb__9d00(bind)
-($rules[bind[10]]) || FAIL
+def ClasSwitch_Dataflow__lp_Compile_bcde(bind)
+(Compiler.grammars[src.clas]&&Compiler.grammars[src.clas].rules[bind[10]]) || FAIL
 end
 def ClasSwitch_Dataflow__lp_bind_lb_11_35dc(bind)
 (bind[11].ary!=["default"]) || FAIL
@@ -438,8 +438,8 @@ end
 def ClasSwitch_Dataflow_lattice_dot__2ce9(bind)
 lattice.default
 end
-def ClasSwitch_Dataflow_lattice_lb__9b29(bind)
-lattice[bind[7]]
+def ClasSwitch_Dataflow_lattice_lb__6173(bind)
+lattice[bind[6]]
 end
 def ClasSwitch_Dataflow_src_dot_firs_8482(bind)
 src.first
@@ -821,15 +821,15 @@ end
 
 
 def detect_switch_compiled_by
-'ffc6d8f64c93a9c759013a67642de8df'
+'f71da81691300b5eaab6ca0b36273e95'
 end
 def detect_switch_source_hash
-'60ecae2f0ab2e63d8a0d4c9745f1b0ce'
+'a21e83f8948a6d1cf96bbae49bf6b181'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'c9d08dbcff7bbdf544f82e2cbba1105e'
+'8694f3e4d45991480d1c53d676540a8c'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

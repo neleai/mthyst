@@ -243,13 +243,13 @@ amethyst Switch_Dataflow < First_Dataflow{
 								| ["regch" ] Act[.:str]  {regchar(str)}
 								| ["anything" ] {lattice.top}
 							  )]
-				| Apply[ :name &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name]}=>value ]
+				| Apply[ :name &{puts name, @clas.inspect;Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name]}=>value ]
 				| super
 }
 
 amethyst ClasSwitch_Dataflow < First_Dataflow{
   first = Apply[ ["clas"] CAct[.:cls] {lattice[cls]}]
-				| Apply[ :name &{$rules[name]}  { $rules[name].body}=>value ]
+				| Apply[ :name &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name]}=>value ]
         | super
 }
 
