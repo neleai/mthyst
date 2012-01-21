@@ -1,4 +1,3 @@
-Anything=Consts.new("Anything")
 Empty   =Consts.new("Empty"   )
 
 $hash_SizesLattice={}
@@ -91,7 +90,7 @@ class CharLattice < FirstLattice
 		nary=[]
 		special=[]
 		ary=@ary
-		[Empty,Anything,"default"].each{|s|
+		[Empty,"default"].each{|s|
 			special<<s if ary.include?(s)
 			ary.delete(s)
 		}
@@ -475,8 +474,7 @@ class Detect_Switch < Detect_First
 		r
 	end
 	def intersects(ar,el)
-		return true if (ar.ary & [Empty,Anything]) != []
-		return true if (el.ary & [Empty,Anything]) != []
+		return true if (ar.ary & [Empty]) != []
 		return true if el.ary.include?("default") || ar.ary.include?("default")
 		return (ar & el).ary !=[]
 	end
@@ -647,8 +645,8 @@ end
 def Detect_Switch_bind_lb_1_rb_(bind)
 bind[1]|=first(bind[4])
 end
-def Detect_Switch_bind_lb_1_rb__eq__2902(bind)
-bind[1]=bind[1].ary.map{|el|  [Anything,Empty].include?(el) ? "default" : el}.uniq
+def Detect_Switch_bind_lb_1_rb__eq__7b3d(bind)
+bind[1]=bind[1].ary.map{|el|  [Empty].include?(el) ? "default" : el}.uniq
 end
 def Detect_Switch_bind_lb_2_rb__eq__0b39(bind)
 bind[2]=bind[2].group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.inject(:|),v[0][1]]}.sort_by{|el| el.inspect}
@@ -827,15 +825,15 @@ end
 
 
 def detect_switch_compiled_by
-'31052fc1cb2fe4692ba36f677490e031'
+'22f56ef0e496591e92868978666dbf6b'
 end
 def detect_switch_source_hash
-'40203bd78f2db5e8e99659db196ca39d'
+'f6841068fc40c00347885fdbd7969127'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'59095a9eb34062e17cd93186dde27ac3'
+'8b72a83911eaae42ab456b99899bff93'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"
