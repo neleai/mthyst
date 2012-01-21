@@ -38,7 +38,7 @@ class FirstLattice
 		self.class[*(ary&a.ary)]
 	end
 	def seqjoin(a)
-    return self unless self.ary.include?(Empty)
+    #return self unless self.ary.include?(Empty)
     (self-self.class.empty)|a
   end
 
@@ -825,10 +825,10 @@ end
 
 
 def detect_switch_compiled_by
-'cce499c388ac9d960c5ef11b5f0dff43'
+'145bc23cd552ebf907b2e09ca1bfee4a'
 end
 def detect_switch_source_hash
-'bddc7a70006876b54215f4b73df22cd9'
+'f9768cbb037c30d985eba4f3cafc44f2'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version

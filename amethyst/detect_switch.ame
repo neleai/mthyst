@@ -38,7 +38,7 @@ class FirstLattice
 		self.class[*(ary&a.ary)]
 	end
 	def seqjoin(a)
-    return self unless self.ary.include?(Empty)
+    #return self unless self.ary.include?(Empty)
     (self-self.class.empty)|a
   end
 
