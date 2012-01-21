@@ -438,13 +438,13 @@ VALUE switchhashResolve_Calls3;
 VALUE switchhashTraverser_Clone21;
 static VALUE c_Apply;
 static VALUE c_Rule;
-static VALUE sy_Resolve_Calls_Apply_lb_bi_15c1;
 static VALUE sy_Resolve_Calls__at_changed_5352;
 static VALUE sy_Resolve_Calls__at_changed_b885;
 static VALUE sy_Resolve_Calls__at_changed_c681;
 static VALUE sy_Resolve_Calls__at_grammar_8783;
 static VALUE sy_Resolve_Calls__lp_bind_lb_2_rb__6693;
 static VALUE sy_Resolve_Calls__lp_src_dot_ins_6a75;
+static VALUE sy_Resolve_Calls_a_eq_Apply_lb__3465;
 static VALUE sy_Resolve_Calls_bind_lb_12_rb__bb3e;
 static VALUE sy_Resolve_Calls_if_sp_bind_lb__f1e9;
 static VALUE sy_Resolve_Calls_src_25d9;
@@ -642,7 +642,7 @@ VALUE Resolve_Calls_visit(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(4);  
 cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,0/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
    it=AmethystCore_anything(self ); FAILTEST(pass1); bind_aset(bind,1/*name*/,it);
-it=rb_funcall(self,sy_Resolve_Calls_Apply_lb_bi_15c1,1,bind);  bind_aset(bind,2/*autovar*/,it);
+it=rb_funcall(self,sy_Resolve_Calls_a_eq_Apply_lb__3465,1,bind);  bind_aset(bind,2/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
@@ -708,13 +708,13 @@ switchhashResolve_Calls1=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Apply
 switchhashResolve_Calls2=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashResolve_Calls2);
 switchhashResolve_Calls3=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashResolve_Calls3);
 switchhashTraverser_Clone21=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashTraverser_Clone21);
-sy_Resolve_Calls_Apply_lb_bi_15c1=rb_intern("Resolve_Calls_Apply_lb_bi_15c1");
 sy_Resolve_Calls__at_changed_5352=rb_intern("Resolve_Calls__at_changed_5352");
 sy_Resolve_Calls__at_changed_b885=rb_intern("Resolve_Calls__at_changed_b885");
 sy_Resolve_Calls__at_changed_c681=rb_intern("Resolve_Calls__at_changed_c681");
 sy_Resolve_Calls__at_grammar_8783=rb_intern("Resolve_Calls__at_grammar_8783");
 sy_Resolve_Calls__lp_bind_lb_2_rb__6693=rb_intern("Resolve_Calls__lp_bind_lb_2_rb__6693");
 sy_Resolve_Calls__lp_src_dot_ins_6a75=rb_intern("Resolve_Calls__lp_src_dot_ins_6a75");
+sy_Resolve_Calls_a_eq_Apply_lb__3465=rb_intern("Resolve_Calls_a_eq_Apply_lb__3465");
 sy_Resolve_Calls_bind_lb_12_rb__bb3e=rb_intern("Resolve_Calls_bind_lb_12_rb__bb3e");
 sy_Resolve_Calls_if_sp_bind_lb__f1e9=rb_intern("Resolve_Calls_if_sp_bind_lb__f1e9");
 sy_Resolve_Calls_src_25d9=rb_intern("Resolve_Calls_src_25d9");
@@ -722,4 +722,4 @@ rb_define_method(cls_Resolve_Calls,"root",Resolve_Calls_root,0);
 rb_define_method(cls_Resolve_Calls,"traverse",Resolve_Calls_traverse,0);
 rb_define_method(cls_Resolve_Calls,"traverse_item",Resolve_Calls_traverse_item,0);
 rb_define_method(cls_Resolve_Calls,"visit",Resolve_Calls_visit,0);
- rb_eval_string("testversiondetect_variables2('6d5c5e00cc04c9f242b57452c1652c89')");}
+ rb_eval_string("testversiondetect_variables2('b2a2eb2c17f11ba1127f68c8cdd27f68')");}

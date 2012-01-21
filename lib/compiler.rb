@@ -153,10 +153,7 @@ class <<Compiler
 		eval("module Foo\n#{pre}\nend") 
 
 		debug_print tree
-		puts "blabla"
-		puts tree.inspect
 		c,init,rb= AmethystCTranslator.new.parse(:itrans,tree)
-		puts c.inspect
 		c=c*""
 		hex_digest=Digest::MD5.hexdigest(c)
 		File.open("compiled/#{file2}_c.c","w"){|f|
