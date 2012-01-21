@@ -117,18 +117,22 @@ end
 end
 
 
+class Resolve_Calls < Traverser_Clone2
+
+
+end
 
 
 def detect_variables2_compiled_by
-'ea8569949873c966cfcd97e2f321f7ff'
+'6c3786f494bb6dfe8b76c1f9e64d3042'
 end
 def detect_variables2_source_hash
-'3a603a8fe584420bd462f8809698b864'
+'15735c034c8cf574d8b20629385e70ab'
 end
 def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'967b72cbadeb60d9e30256358c5b6d97'
+'c7e5b81414e50a62fa6fd0f89f31b6e4'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_variables2_c"

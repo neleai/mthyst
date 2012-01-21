@@ -424,6 +424,14 @@ cstruct oldpass11=*ptr; int fail11=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
 it=bind_aget(bind,26/*autovar*/); bind_aset(bind,15/*_result*/,it);
  break;case 4:;   it=Amethyst_fails(self ); FAILTEST(fail); break;}it=bind_aget(bind,15/*_result*/);
 return it;
+fail: return failobj; }VALUE cls_Resolve_Calls;
+VALUE AmethystCore_anything(VALUE self );
+VALUE Resolve_Calls_root(VALUE self );
+VALUE Resolve_Calls_root(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
+
+  it=AmethystCore_anything(self ); FAILTEST(fail);  it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,0/*_result*/,it);
+it=bind_aget(bind,0/*_result*/);
+return it;
 fail: return failobj; }
 void Init_detect_variables2_c(){ 
  cls_Analyze_Variables2=rb_define_class("Analyze_Variables2",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2"))); 
@@ -472,4 +480,9 @@ rb_define_method(cls_Analyze_Variables2,"root",Analyze_Variables2_root,0);
 rb_define_method(cls_Analyze_Variables2,"traverse",Analyze_Variables2_traverse,0);
 rb_define_method(cls_Analyze_Variables2,"traverse_item",Analyze_Variables2_traverse_item,0);
 rb_define_method(cls_Analyze_Variables2,"visit",Analyze_Variables2_visit,0);
- rb_eval_string("testversiondetect_variables2('967b72cbadeb60d9e30256358c5b6d97')");}
+
+ cls_Resolve_Calls=rb_define_class("Resolve_Calls",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2"))); 
+failobj=rb_eval_string("FAIL");
+
+rb_define_method(cls_Resolve_Calls,"root",Resolve_Calls_root,0);
+ rb_eval_string("testversiondetect_variables2('c7e5b81414e50a62fa6fd0f89f31b6e4')");}

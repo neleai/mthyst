@@ -85,6 +85,7 @@ class <<Compiler
         g.rules[name]=Add_Implicit_Variables.new.parse(:root,[freq,g.rules[name]])
       end
       g.rules[name]=Analyze_Variables2.new.parse(:root,g.rules[name])
+	  	g.rules[name]=Resolve_Calls.new.parse(:root,[g,g.rules[name]])
 		}
 		names.dup.each{|nam|#resolve super
 			g.calls[nam]=DetectCalls.new.parse(:root,[g.getrule(nam)])

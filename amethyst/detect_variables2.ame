@@ -36,4 +36,6 @@ traverse[.*	{@locals=nil} @self] ]
 	flat= (Args[flat] | Strin[flat] |	. )*
 }
 
-
+amethyst Resolve_Calls < Traverser_Clone2 {
+	root = . .
+}
