@@ -17,12 +17,12 @@ def AmethystParser_Apply_lb__dq_c_5c74(bind)
 Apply["clas",bind[0]]
 
 end
-def AmethystParser_Apply_lb__dq_m_8de4(bind)
-Apply["member",bind[5].join]
+def AmethystParser_Apply_lb__dq_m_daa5(bind)
+Apply["member",bind[4].join]
 
 end
-def AmethystParser_Apply_lb__dq_r_c360(bind)
-Apply["regch","/["+bind[12]+"]/"]
+def AmethystParser_Apply_lb__dq_r_1a1d(bind)
+Apply["regch","/["+bind[11]+"]/"]
 
 end
 def AmethystParser_Apply_lb__dq_s_e39b(bind)
@@ -80,8 +80,8 @@ def AmethystParser_Lambda_lb___012f(bind)
 Lambda[_body(bind[21])]
 
 end
-def AmethystParser_Lookahea_b11c(bind)
-Lookahead[bind[5],bind[3]=="~"]
+def AmethystParser_Lookahea_5093(bind)
+Lookahead[bind[4],bind[2]=="~"]
 
 end
 def AmethystParser_Many_lb_bin_33ac(bind)
@@ -103,8 +103,8 @@ def AmethystParser_Pass_lb_bin_9af8(bind)
 Pass[bind[0],bind[5]] 
 
 end
-def AmethystParser_Pred_lb_bin_4918(bind)
-Pred[bind[4][0],bind[3]=="~"]
+def AmethystParser_Pred_lb_bin_bcee(bind)
+Pred[bind[3][0],bind[2]=="~"]
 
 end
 def AmethystParser_Result_lb__le__ae0e(bind)
@@ -143,17 +143,14 @@ end
 def AmethystParser__append_lp__0eeb(bind)
 _append(bind[0],bind[8])
 end
-def AmethystParser__append_lp__1c46(bind)
-_append(bind[7],bind[10])
-end
 def AmethystParser__append_lp__29a3(bind)
 _append(bind[0],bind[2])
 end
+def AmethystParser__append_lp__37c5(bind)
+_append(bind[6],bind[8])
+end
 def AmethystParser__append_lp__4de3(bind)
 _append(bind[2],bind[3])
-end
-def AmethystParser__append_lp__4f82(bind)
-_append(bind[7],bind[9])
 end
 def AmethystParser__append_lp__595b(bind)
 _append(bind[17],bind[19])
@@ -190,6 +187,9 @@ _append(bind[0],bind[4])
 end
 def AmethystParser__append_lp__b494(bind)
 _append(bind[0],bind[10])
+end
+def AmethystParser__append_lp__b7de(bind)
+_append(bind[6],bind[9])
 end
 def AmethystParser__append_lp__b9cb(bind)
 _append(bind[4],bind[6])
@@ -321,8 +321,8 @@ end
 def AmethystParser_bind_lb_5_rb__dot__028b(bind)
 bind[5].join
 end
-def AmethystParser_bind_lb_7_rb__dot__c17d(bind)
-bind[7].join
+def AmethystParser_bind_lb_6_rb__dot__7ac7(bind)
+bind[6].join
 
 end
 
@@ -330,7 +330,7 @@ end
 
 
 def parser_compiled_by
-'8a2cfa9469a358b81ea4ab8932be6097'
+'31052fc1cb2fe4692ba36f677490e031'
 end
 def parser_source_hash
 '26066aa8bfcbc2bed77ea540e666faf6'
@@ -339,6 +339,6 @@ def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'4380c89bb8fc27824fa227c0e8468e11'
+'7b9f1857bbd46117429402f5f399f2ca'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/parser_c"

@@ -24,11 +24,11 @@ end
 
 class Add_Implicit_Variables < Traverser_Clone2
 
-def Add_Implicit_Variables_Append_lb_b_7a4e(bind)
-Append[bind[3],src]
+def Add_Implicit_Variables_Append_lb_b_e8d4(bind)
+Append[bind[2],src]
 end
-def Add_Implicit_Variables__Bind_lp_bi_e107(bind)
-_Bind(bind[3],src)
+def Add_Implicit_Variables__Bind_lp_bi_d3b8(bind)
+_Bind(bind[2],src)
 end
 def Add_Implicit_Variables__at_changed_5352(bind)
 @changed=true
@@ -45,11 +45,11 @@ end
 def Add_Implicit_Variables__at_vars_eq_bi_4318(bind)
 @vars=bind[0]
 end
-def Add_Implicit_Variables__lp__at_vars_lb_b_480a(bind)
-(@vars[bind[3]]>=1) || FAIL
+def Add_Implicit_Variables__lp__at_vars_lb_b_2b5e(bind)
+(@vars[bind[2]]> 1) || FAIL
 end
-def Add_Implicit_Variables__lp__at_vars_lb_b_8beb(bind)
-(@vars[bind[3]]> 1) || FAIL
+def Add_Implicit_Variables__lp__at_vars_lb_b_bb92(bind)
+(@vars[bind[2]]>=1) || FAIL
 end
 def Add_Implicit_Variables__lp_bind_lb_2_rb__6693(bind)
 (bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
@@ -79,7 +79,7 @@ end
 
 
 def implicit_variables_compiled_by
-'8a2cfa9469a358b81ea4ab8932be6097'
+'31052fc1cb2fe4692ba36f677490e031'
 end
 def implicit_variables_source_hash
 '53e96b8754e7c9037a49314d0c30370e'
@@ -88,6 +88,6 @@ def testversionimplicit_variables(r)
  raise "invalid version" if r!=implicit_variables_version
 end
 def implicit_variables_version
-'b146e91d145381262af566e55f54e127'
+'c923ca0ffa92cc2f89ccd0b674b525d8'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/implicit_variables_c"

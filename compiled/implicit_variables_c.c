@@ -141,15 +141,15 @@ VALUE Amethyst_eof(VALUE self );
 VALUE switchhashTraverser_Clone21;
 static VALUE c_Apply;
 static VALUE c_Rule;
-static VALUE sy_Add_Implicit_Variables_Append_lb_b_7a4e;
-static VALUE sy_Add_Implicit_Variables__Bind_lp_bi_e107;
+static VALUE sy_Add_Implicit_Variables_Append_lb_b_e8d4;
+static VALUE sy_Add_Implicit_Variables__Bind_lp_bi_d3b8;
 static VALUE sy_Add_Implicit_Variables__at_changed_5352;
 static VALUE sy_Add_Implicit_Variables__at_changed_b885;
 static VALUE sy_Add_Implicit_Variables__at_changed_c681;
 static VALUE sy_Add_Implicit_Variables__at_locals_eq__545d;
 static VALUE sy_Add_Implicit_Variables__at_vars_eq_bi_4318;
-static VALUE sy_Add_Implicit_Variables__lp__at_vars_lb_b_480a;
-static VALUE sy_Add_Implicit_Variables__lp__at_vars_lb_b_8beb;
+static VALUE sy_Add_Implicit_Variables__lp__at_vars_lb_b_2b5e;
+static VALUE sy_Add_Implicit_Variables__lp__at_vars_lb_b_bb92;
 static VALUE sy_Add_Implicit_Variables__lp_bind_lb_2_rb__6693;
 static VALUE sy_Add_Implicit_Variables__lp_src_dot_ins_6a75;
 static VALUE sy_Add_Implicit_Variables_bind_lb_2_rb__dot__bd50;
@@ -278,42 +278,41 @@ ame_setcut(self,Qnil);goto accept3;
  break;}it=bind_aget(bind,1/*_result*/);
 return it;
 fail: return failobj; }
-VALUE Add_Implicit_Variables_visit(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(8);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
+VALUE Add_Implicit_Variables_visit(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(7);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
  it=c_Apply; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(fail); bind_aset(bind,0/*autovar*/,it);
-it=bind_aget(bind,0/*autovar*/); bind_aset(bind,1/*autovar*/,it);
 int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
- it=bind_aget(bind,1/*autovar*/); bind_aset(bind,2/*autovar*/,it);
+ it=bind_aget(bind,0/*autovar*/); bind_aset(bind,1/*autovar*/,it);
 cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
-          ptr->src=bind_aget(bind,2/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
-   it=AmethystCore_anything(self ); FAILTEST(pass1); bind_aset(bind,3/*name*/,it);
-int oldpos2; while(1){oldpos2=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break1); if (ame_getstop(self)!=Qnil){{oldpos2=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos2); it=rb_funcall(self,sy_Add_Implicit_Variables__lp__at_vars_lb_b_480a,1,bind); FAILTEST(pass1);it=rb_funcall(self,sy_Add_Implicit_Variables__Bind_lp_bi_e107,1,bind);  bind_aset(bind,4/*autovar*/,it);
+          ptr->src=bind_aget(bind,1/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
+   it=AmethystCore_anything(self ); FAILTEST(pass1); bind_aset(bind,2/*name*/,it);
+int oldpos2; while(1){oldpos2=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break1); if (ame_getstop(self)!=Qnil){{oldpos2=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos2); it=rb_funcall(self,sy_Add_Implicit_Variables__lp__at_vars_lb_b_bb92,1,bind); FAILTEST(pass1);it=rb_funcall(self,sy_Add_Implicit_Variables__Bind_lp_bi_d3b8,1,bind);  bind_aset(bind,3/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
 	success1: *ptr=oldpass1;
 	if(fail1) goto alt1_2;
-it=bind_aget(bind,4/*autovar*/); bind_aset(bind,5/*_result*/,it);
+it=bind_aget(bind,3/*autovar*/); bind_aset(bind,4/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
- it=bind_aget(bind,1/*autovar*/); bind_aset(bind,6/*autovar*/,it);
+ it=bind_aget(bind,0/*autovar*/); bind_aset(bind,5/*autovar*/,it);
 cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
-          ptr->src=bind_aget(bind,6/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
-   it=AmethystCore_anything(self ); FAILTEST(pass2); bind_aset(bind,3/*name*/,it);
-int oldpos3; while(1){oldpos3=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break2); if (ame_getstop(self)!=Qnil){{oldpos3=ame_getpos(self);goto break2;} } } break2: ame_setstop(self,Qnil);  ame_setpos(self,oldpos3); it=rb_funcall(self,sy_Add_Implicit_Variables__lp__at_vars_lb_b_8beb,1,bind); FAILTEST(pass2);it=rb_funcall(self,sy_Add_Implicit_Variables_Append_lb_b_7a4e,1,bind);  bind_aset(bind,7/*autovar*/,it);
+          ptr->src=bind_aget(bind,5/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
+   it=AmethystCore_anything(self ); FAILTEST(pass2); bind_aset(bind,2/*name*/,it);
+int oldpos3; while(1){oldpos3=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break2); if (ame_getstop(self)!=Qnil){{oldpos3=ame_getpos(self);goto break2;} } } break2: ame_setstop(self,Qnil);  ame_setpos(self,oldpos3); it=rb_funcall(self,sy_Add_Implicit_Variables__lp__at_vars_lb_b_2b5e,1,bind); FAILTEST(pass2);it=rb_funcall(self,sy_Add_Implicit_Variables_Append_lb_b_e8d4,1,bind);  bind_aset(bind,6/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass2);
 	goto success2;
 	pass2: fail2=1;
 	success2: *ptr=oldpass2;
 	if(fail2) goto alt1_3;
-it=bind_aget(bind,7/*autovar*/); bind_aset(bind,5/*_result*/,it);
+it=bind_aget(bind,6/*autovar*/); bind_aset(bind,4/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,5/*_result*/);
+it=bind_aget(bind,4/*_result*/);
 return it;
 fail: return failobj; }
 void Init_implicit_variables_c(){ 
@@ -337,15 +336,15 @@ failobj=rb_eval_string("FAIL");
 c_Apply=rb_const_get(rb_cObject, rb_intern("Apply"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Apply);
 c_Rule=rb_const_get(rb_cObject, rb_intern("Rule"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Rule);
 switchhashTraverser_Clone21=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashTraverser_Clone21);
-sy_Add_Implicit_Variables_Append_lb_b_7a4e=rb_intern("Add_Implicit_Variables_Append_lb_b_7a4e");
-sy_Add_Implicit_Variables__Bind_lp_bi_e107=rb_intern("Add_Implicit_Variables__Bind_lp_bi_e107");
+sy_Add_Implicit_Variables_Append_lb_b_e8d4=rb_intern("Add_Implicit_Variables_Append_lb_b_e8d4");
+sy_Add_Implicit_Variables__Bind_lp_bi_d3b8=rb_intern("Add_Implicit_Variables__Bind_lp_bi_d3b8");
 sy_Add_Implicit_Variables__at_changed_5352=rb_intern("Add_Implicit_Variables__at_changed_5352");
 sy_Add_Implicit_Variables__at_changed_b885=rb_intern("Add_Implicit_Variables__at_changed_b885");
 sy_Add_Implicit_Variables__at_changed_c681=rb_intern("Add_Implicit_Variables__at_changed_c681");
 sy_Add_Implicit_Variables__at_locals_eq__545d=rb_intern("Add_Implicit_Variables__at_locals_eq__545d");
 sy_Add_Implicit_Variables__at_vars_eq_bi_4318=rb_intern("Add_Implicit_Variables__at_vars_eq_bi_4318");
-sy_Add_Implicit_Variables__lp__at_vars_lb_b_480a=rb_intern("Add_Implicit_Variables__lp__at_vars_lb_b_480a");
-sy_Add_Implicit_Variables__lp__at_vars_lb_b_8beb=rb_intern("Add_Implicit_Variables__lp__at_vars_lb_b_8beb");
+sy_Add_Implicit_Variables__lp__at_vars_lb_b_2b5e=rb_intern("Add_Implicit_Variables__lp__at_vars_lb_b_2b5e");
+sy_Add_Implicit_Variables__lp__at_vars_lb_b_bb92=rb_intern("Add_Implicit_Variables__lp__at_vars_lb_b_bb92");
 sy_Add_Implicit_Variables__lp_bind_lb_2_rb__6693=rb_intern("Add_Implicit_Variables__lp_bind_lb_2_rb__6693");
 sy_Add_Implicit_Variables__lp_src_dot_ins_6a75=rb_intern("Add_Implicit_Variables__lp_src_dot_ins_6a75");
 sy_Add_Implicit_Variables_bind_lb_2_rb__dot__bd50=rb_intern("Add_Implicit_Variables_bind_lb_2_rb__dot__bd50");
@@ -356,4 +355,4 @@ rb_define_method(cls_Add_Implicit_Variables,"root",Add_Implicit_Variables_root,0
 rb_define_method(cls_Add_Implicit_Variables,"traverse",Add_Implicit_Variables_traverse,0);
 rb_define_method(cls_Add_Implicit_Variables,"traverse_item",Add_Implicit_Variables_traverse_item,0);
 rb_define_method(cls_Add_Implicit_Variables,"visit",Add_Implicit_Variables_visit,0);
- rb_eval_string("testversionimplicit_variables('b146e91d145381262af566e55f54e127')");}
+ rb_eval_string("testversionimplicit_variables('c923ca0ffa92cc2f89ccd0b674b525d8')");}
