@@ -454,15 +454,15 @@ end
 
 
 class Detect_First< Traverser_Clone2
+	def empty?(s)	
+		$sizedf.analyze(s).size==0
+	end
 end
 
 class Detect_Switch < Detect_First
 	def initialize
 		$sizedf=Sizes_Dataflow.new
 		$sizedf.parse(:root,[])
-	end
-	def empty?(s)	
-		$sizedf.analyze(s).size==0
 	end
 	def first(s)
 		if !@switchdf
@@ -745,7 +745,7 @@ def Detect_ClasSwitch__do_rules_eq__le__ab16(bind)
 $rules={};src.rules.each{|r| $rules[r.name]=r}
 end
 def Detect_ClasSwitch__lp_(bind)
-(!includes(bind[0],bind[1],first(bind[2]))) || FAIL
+(!empty?(bind[2]) && !includes(bind[0],bind[1],first(bind[2]))) || FAIL
 end
 def Detect_ClasSwitch__lp_bind_lb_0_rb__30a7(bind)
 (bind[0][bind[1]]=="default") || FAIL
@@ -824,15 +824,15 @@ end
 
 
 def detect_switch_compiled_by
-'22f56ef0e496591e92868978666dbf6b'
+'d373d5c2db4ecfb040e8d173c8f01636'
 end
 def detect_switch_source_hash
-'02e2299020c99a96eb3e8d2c3d087c67'
+'6bdf9ae7dfa2b8e662e0bceec0bbd040'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'8b72a83911eaae42ab456b99899bff93'
+'67199632cf613bea524a6e155cccf33c'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"
