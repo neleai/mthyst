@@ -487,7 +487,7 @@ class Detect_ClasSwitch < Detect_First
 		end
 		r=@switchdf.analyze(s)
 		puts "#{empty?(s)} #{r.inspect} #{s.inspect}" if empty?(s) != r.ary.include?(Empty)
-		return (r|ClasLattice.top)-ClasLattice.empty if r.ary.include?(Empty)
+		return (r|ClasLattice.top)-ClasLattice.empty if empty?(s)
 		return r
 	end
 	def assume(str)
@@ -828,7 +828,7 @@ def detect_switch_compiled_by
 'cce499c388ac9d960c5ef11b5f0dff43'
 end
 def detect_switch_source_hash
-'2059857cd36ddc213f5f5a34ef0c7eff'
+'bddc7a70006876b54215f4b73df22cd9'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
