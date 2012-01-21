@@ -474,7 +474,6 @@ class Detect_Switch < Detect_First
 		r
 	end
 	def intersects(ar,el)
-		return true if (ar.ary & [Empty]) != []
 		return true if el.ary.include?("default") || ar.ary.include?("default")
 		return (ar & el).ary !=[]
 	end
@@ -619,7 +618,7 @@ def Detect_Switch__do_rules_eq__le__ab16(bind)
 $rules={};src.rules.each{|r| $rules[r.name]=r}
 end
 def Detect_Switch__lp_(bind)
-(!intersects(first(bind[1]),bind[0])) || FAIL
+(!empty?(bind[1]) && !intersects(first(bind[1]),bind[0])) || FAIL
 end
 def Detect_Switch__lp_bind_lb_0_rb__2cee(bind)
 (bind[0].ary[0]=="default") || FAIL
@@ -828,7 +827,7 @@ def detect_switch_compiled_by
 '22f56ef0e496591e92868978666dbf6b'
 end
 def detect_switch_source_hash
-'f6841068fc40c00347885fdbd7969127'
+'02e2299020c99a96eb3e8d2c3d087c67'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version

@@ -274,7 +274,6 @@ class Detect_Switch < Detect_First
 		r
 	end
 	def intersects(ar,el)
-		return true if (ar.ary & [Empty]) != []
 		return true if el.ary.include?("default") || ar.ary.include?("default")
 		return (ar & el).ary !=[]
 	end
@@ -359,7 +358,7 @@ amethyst Detect_Switch < Detect_First {
 				| .:el first(el):f {@@cases=@@cases.map{|c| [c&f,c&~f]}.flatten.select{|x| x.ary.size>0}.uniq_by{|x|x.ary.inspect} }
 	
 	predicate(chr,p) = &{chr.ary[0]=="default"} {p}
-										| &{!intersects(first(p),chr)} {Placeholder}
+										| &{!empty?(p) && !intersects(first(p),chr)} {Placeholder}
                     |  {p}=>( Seq[ .:e predicate(chr,e):f .*:rest {Seq[*([f]+rest)]} ]
 														| Or[ (.:e predicate(chr,e))*:ary {Or[*ary]} ]
 														| Switch[.*{
