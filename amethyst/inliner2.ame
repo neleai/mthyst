@@ -11,8 +11,3 @@ amethyst Inliner2 < Traverser_Clone2 {
   visit = Apply[:name &{name==@@name} .*:args] ->  body=@@body; args.each_index{|i| body=Seq[Bind[@@args[i],args[i]],body] } ; body
 }
 
-amethyst Replace_Super < Traverser_Clone2 {
-	root = :name :to   {@@name=name;}  {to}=>Rule[traverse]
- 
-  visit = Apply[:name &{name=="super"} .*:args {Apply[*([@@name]+args)] }]
-}

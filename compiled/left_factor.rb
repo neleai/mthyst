@@ -8,8 +8,8 @@ end
 
 class Left_Factor < Traverser_Clone2
 
-def Left_Factor_Bind_lb_src_5e26(bind)
-Bind[src.name,bind[5]]
+def Left_Factor_Bind_lb_src_41c9(bind)
+Bind[src.name,bind[4]]
 end
 def Left_Factor_Or_lb__ti__lp_bin_142c(bind)
 Or[*(bind[2]+merge(bind[3]))]
@@ -19,11 +19,11 @@ def Left_Factor_Or_lb__ti__lp_bin_5361(bind)
 Or[*(bind[5]+merge(bind[3]))]
 
 end
-def Left_Factor_Seq_lb__lb_bin_f9f4(bind)
-Seq[[bind[7]]+bind[6]]
+def Left_Factor_Seq_lb__lb_bin_cbdc(bind)
+Seq[[bind[6]]+bind[5]]
 end
-def Left_Factor__append_lp__088f(bind)
-_append(bind[4],bind[5])
+def Left_Factor__append_lp__dd73(bind)
+_append(bind[3],bind[4])
 end
 def Left_Factor__at_changed_5352(bind)
 @changed=true
@@ -61,9 +61,6 @@ end
 def Left_Factor__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Left_Factor_bind_lb_12_rb__bb3e(bind)
-bind[12]<<bind[13]
-end
 def Left_Factor_bind_lb_2_rb__pl__9bc3(bind)
 bind[2]+merge(bind[3])
 end
@@ -72,6 +69,9 @@ bind[3]+[bind[6]]
 end
 def Left_Factor_bind_lb_3_rb__pl__a9ae(bind)
 bind[3]+[bind[0]]
+end
+def Left_Factor_bind_lb_5_rb__lt__1671(bind)
+bind[5]<<bind[6]
 end
 def Left_Factor_bind_lb_5_rb__pl__1ee4(bind)
 bind[5]+merge(bind[3])
@@ -104,7 +104,7 @@ end
 
 
 def left_factor_compiled_by
-'133bbc7072511d43726b83e246604222'
+'0d90d97083c954495c9fd6ac105f4467'
 end
 def left_factor_source_hash
 '13ac88a620044bb451529ded733cdbf5'
@@ -113,6 +113,6 @@ def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version
 end
 def left_factor_version
-'c2379ecdf44b2f7d3563a530c3eeef1d'
+'638d2f957f5a91eb16bd9cd4b9778a2e'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/left_factor_c"

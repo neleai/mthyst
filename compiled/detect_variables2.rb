@@ -30,17 +30,17 @@ end
 def Analyze_Variables2_Placehol_6875(bind)
 Placeholder
 end
-def Analyze_Variables2__append_lp__2d45(bind)
-_append(bind[5],bind[8])
+def Analyze_Variables2__append_lp__7352(bind)
+_append(bind[4],bind[7])
 end
-def Analyze_Variables2__append_lp__b2a5(bind)
-_append(bind[0],bind[4])
+def Analyze_Variables2__append_lp__b494(bind)
+_append(bind[0],bind[10])
 end
 def Analyze_Variables2__append_lp__b6c7(bind)
 _append(bind[7],bind[8])
 end
-def Analyze_Variables2__append_lp__bc95(bind)
-_append(bind[0],bind[11])
+def Analyze_Variables2__append_lp__f8f8(bind)
+_append(bind[0],bind[3])
 end
 def Analyze_Variables2__at_bnding_eq__b94a(bind)
 @bnding=src.bnding
@@ -72,8 +72,8 @@ end
 def Analyze_Variables2__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Analyze_Variables2_bind_lb_11_rb__6cc7(bind)
-bind[11]<<bind[12]
+def Analyze_Variables2_bind_lb_5_rb__lt__1671(bind)
+bind[5]<<bind[6]
 end
 def Analyze_Variables2_connects_0812(bind)
 connectstring(bind[20].flatten)
@@ -107,8 +107,8 @@ end
 def Analyze_Variables2_src_dot_rule_5acf(bind)
 src.rules
 end
-def Analyze_Variables2_src_dot_rule_fc90(bind)
-src.rules=bind[9]
+def Analyze_Variables2_src_dot_rule_d270(bind)
+src.rules=bind[8]
 end
 def Analyze_Variables2_vars_eq__at_lo_cf02(bind)
 vars=@locals.select{|aa| Object.const_get(src.name).instance_variable_get(:@attrs).include? aa[0].to_sym}.uniq ;Result[{:name=>src.name,:vars=>vars,:varnames=>vars.map{|v| v[0]}}]
@@ -143,8 +143,8 @@ end
 def Resolve_Calls_a_eq_Apply_lb__35a8(bind)
 a=Apply[bind[8],{:clas=>resolvegrammar(@grammar.name,bind[8])}];a
 end
-def Resolve_Calls_bind_lb_12_rb__bb3e(bind)
-bind[12]<<bind[13]
+def Resolve_Calls_bind_lb_5_rb__lt__1671(bind)
+bind[5]<<bind[6]
 end
 def Resolve_Calls_if_sp_bind_lb__f1e9(bind)
 if bind[3]
@@ -172,7 +172,7 @@ end
 
 
 def detect_variables2_compiled_by
-'133bbc7072511d43726b83e246604222'
+'0d90d97083c954495c9fd6ac105f4467'
 end
 def detect_variables2_source_hash
 'c9251d799411111e1943aa35d33a2e58'
@@ -181,6 +181,6 @@ def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'f1d415e2e6e2d1dc0ae9f435727a6b26'
+'e99570f115f57dcbdb7f8e39698ff863'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_variables2_c"

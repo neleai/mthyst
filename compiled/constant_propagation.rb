@@ -70,11 +70,11 @@ end
 
 class Constant_Propagator < Amethyst
 
-def Constant_Propagator_Constant_19d1(bind)
-ConstantLattice[bind[16]]
-end
 def Constant_Propagator_Constant_8840(bind)
 ConstantLattice[src]
+end
+def Constant_Propagator_Constant_ab63(bind)
+ConstantLattice[bind[13]]
 end
 def Constant_Propagator_Constant_bf42(bind)
 ConstantLattice[Top]
@@ -120,8 +120,8 @@ end
 def Constant_Traverser__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Constant_Traverser_bind_lb_11_rb__6cc7(bind)
-bind[11]<<bind[12]
+def Constant_Traverser_bind_lb_5_rb__lt__1671(bind)
+bind[5]<<bind[6]
 end
 def Constant_Traverser_if_sp_bind_lb__f1e9(bind)
 if bind[3]
@@ -142,7 +142,7 @@ end
 
 
 def constant_propagation_compiled_by
-'133bbc7072511d43726b83e246604222'
+'0d90d97083c954495c9fd6ac105f4467'
 end
 def constant_propagation_source_hash
 '24851fdc20d41cfe343910a080792f3b'
@@ -151,6 +151,6 @@ def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
 end
 def constant_propagation_version
-'45034ecc72c0b9148aac2a92aa17099b'
+'634ba7178e74395338b3050ebdfb3d8c'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/constant_propagation_c"

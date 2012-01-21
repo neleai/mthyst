@@ -1,10 +1,10 @@
 class DetectCalls < Visitor
 
+def DetectCalls__append_lp__088f(bind)
+_append(bind[4],bind[5])
+end
 def DetectCalls__append_lp__4de3(bind)
 _append(bind[2],bind[3])
-end
-def DetectCalls__append_lp__be78(bind)
-_append(bind[11],bind[12])
 end
 def DetectCalls__at_calls_7f81(bind)
 @calls
@@ -48,8 +48,8 @@ end
 def Inliner2__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Inliner2_bind_lb_12_rb__bb3e(bind)
-bind[12]<<bind[13]
+def Inliner2_bind_lb_5_rb__lt__1671(bind)
+bind[5]<<bind[6]
 end
 def Inliner2_body_eq__at_bo_c02f(bind)
 body=@body; bind[4].each_index{|i| body=Seq[Bind[@args[i],bind[4][i]],body] } ; body
@@ -82,63 +82,17 @@ end
 end
 
 
-class Replace_Super < Traverser_Clone2
-
-def Replace_Super_Apply_lb__ti__lp__67ec(bind)
-Apply[*([@name]+bind[4])] 
-end
-def Replace_Super__append_lp__4de3(bind)
-_append(bind[2],bind[3])
-end
-def Replace_Super__at_changed_5352(bind)
-@changed=true
-end
-def Replace_Super__at_changed_b885(bind)
-@changed=false
-end
-def Replace_Super__at_changed_c681(bind)
-@changed
-end
-def Replace_Super__at_name_eq_bi_3e1b(bind)
-@name=bind[0];
-end
-def Replace_Super__lp_bind_lb_1_rb__d0f1(bind)
-(bind[1]=="super") || FAIL
-end
-def Replace_Super__lp_bind_lb_2_rb__6693(bind)
-(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
-end
-def Replace_Super__lp_src_dot_ins_6a75(bind)
-(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
-end
-def Replace_Super_bind_lb_12_rb__bb3e(bind)
-bind[12]<<bind[13]
-end
-def Replace_Super_if_sp_bind_lb__f1e9(bind)
-if bind[3]
-             @changed=true;bind[2].normalize
-           else
-            @changed=bind[0]
-            src
-          end
-end
-def Replace_Super_src_25d9(bind)
-src
-end
-
-end
-
 
 def inliner2_compiled_by
-'133bbc7072511d43726b83e246604222'
+'0d90d97083c954495c9fd6ac105f4467'
 end
 def inliner2_source_hash
-'eca6429e1f65c5d4367c65294557dc01'
+'5b5005b034d7aafb802d47d11374b8b3'
 end
 def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version
 end
 def inliner2_version
-'01ec9bcf37934134189e57aae709c017'
+'c3f5aa98a526511932182a4f131daf05'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/inliner2_c"

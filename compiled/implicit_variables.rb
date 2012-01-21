@@ -1,10 +1,10 @@
 class Detect_Implicit_Variables < Visitor
 
+def Detect_Implicit_Variables__append_lp__088f(bind)
+_append(bind[4],bind[5])
+end
 def Detect_Implicit_Variables__append_lp__4de3(bind)
 _append(bind[2],bind[3])
-end
-def Detect_Implicit_Variables__append_lp__be78(bind)
-_append(bind[11],bind[12])
 end
 def Detect_Implicit_Variables__at_vars_a187(bind)
 @vars
@@ -57,11 +57,11 @@ end
 def Add_Implicit_Variables__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Add_Implicit_Variables_bind_lb_12_rb__bb3e(bind)
-bind[12]<<bind[13]
-end
 def Add_Implicit_Variables_bind_lb_2_rb__dot__bd50(bind)
 bind[2].locals+=@locals;bind[2]
+end
+def Add_Implicit_Variables_bind_lb_5_rb__lt__1671(bind)
+bind[5]<<bind[6]
 end
 def Add_Implicit_Variables_if_sp_bind_lb__f1e9(bind)
 if bind[3]
@@ -79,7 +79,7 @@ end
 
 
 def implicit_variables_compiled_by
-'133bbc7072511d43726b83e246604222'
+'0d90d97083c954495c9fd6ac105f4467'
 end
 def implicit_variables_source_hash
 '53e96b8754e7c9037a49314d0c30370e'
@@ -88,6 +88,6 @@ def testversionimplicit_variables(r)
  raise "invalid version" if r!=implicit_variables_version
 end
 def implicit_variables_version
-'872ebe6bff4bf806cbb3a7e9f7cf591b'
+'2437447dd624df63398c58b60a0257d8'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/implicit_variables_c"
