@@ -34,7 +34,7 @@ amethyst AmethystParser < Amethyst{
 										):from  )* {from}
 
 	
-	cases =  className:klas  ~'::'                       -> Apply["clas",klas]
+	cases =  className:clas  ~'::'                    -> Apply["clas",clas]
 				| (number ('...'|'..') number | number):num -> Apply["member",num.join]
       	| '<'  until('>' ):s -> Apply["regch","/["+s+"]/"]
 

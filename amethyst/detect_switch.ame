@@ -21,6 +21,7 @@ class SizesLattice
 	def seqjoin(a)
 		SizesLattice[ size+a.size ]
 	end
+	def inspect; "SizesLattice[#{size}]";end
 end
 
 class FirstLattice

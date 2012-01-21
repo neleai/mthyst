@@ -21,6 +21,7 @@ class SizesLattice
 	def seqjoin(a)
 		SizesLattice[ size+a.size ]
 	end
+	def inspect; "SizesLattice[#{size}]";end
 end
 
 class FirstLattice
@@ -809,7 +810,7 @@ def detect_switch_compiled_by
 'ea8569949873c966cfcd97e2f321f7ff'
 end
 def detect_switch_source_hash
-'2c534de5a9399a18b0d497ff5205330f'
+'50882a9357e78f0c5171018c3b868253'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
