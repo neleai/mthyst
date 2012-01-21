@@ -324,6 +324,9 @@ end
 
 class Switch_Dataflow < First_Dataflow
 
+def Switch_Dataflow_Compiler_01f7(bind)
+Compiler.grammars[src.clas].rules[bind[16]]
+end
 def Switch_Dataflow__append_lp__05b0(bind)
 _append(bind[25],bind[26])
 end
@@ -336,14 +339,11 @@ end
 def Switch_Dataflow__at_vis_eq_bin_af53(bind)
 @vis=bind[0]; bind[0]
 end
-def Switch_Dataflow__do_rules_lb_b_6b08(bind)
-$rules[bind[16]].body
-end
 def Switch_Dataflow__lp_(bind)
 (!(empty?(bind[29]))) || FAIL
 end
-def Switch_Dataflow__lp__do_rules_lb__fed1(bind)
-($rules[bind[16]]) || FAIL
+def Switch_Dataflow__lp_Compile_7981(bind)
+(Compiler.grammars[src.clas]&&Compiler.grammars[src.clas].rules[bind[16]]) || FAIL
 end
 def Switch_Dataflow__lp_bind_lb_11_35dc(bind)
 (bind[11].ary!=["default"]) || FAIL
@@ -821,15 +821,15 @@ end
 
 
 def detect_switch_compiled_by
-'a84cb3fa72c544dc0b19adf0f36ef2ab'
+'ffc6d8f64c93a9c759013a67642de8df'
 end
 def detect_switch_source_hash
-'4914c36352afaa6789a8ac945b8ef5eb'
+'60ecae2f0ab2e63d8a0d4c9745f1b0ce'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'d40f8755f5e88827e93593bb4f247027'
+'c9d08dbcff7bbdf544f82e2cbba1105e'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

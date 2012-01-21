@@ -613,13 +613,13 @@ VALUE switchhashSwitch_Dataflow2;
 VALUE switchhashSwitch_Dataflow3;
 static VALUE c_Act;
 static VALUE c_CAct;
+static VALUE sy_Switch_Dataflow_Compiler_01f7;
 static VALUE sy_Switch_Dataflow__append_lp__05b0;
 static VALUE sy_Switch_Dataflow__append_lp__66a2;
 static VALUE sy_Switch_Dataflow__append_lp__8bfa;
 static VALUE sy_Switch_Dataflow__at_vis_eq_bin_af53;
-static VALUE sy_Switch_Dataflow__do_rules_lb_b_6b08;
 static VALUE sy_Switch_Dataflow__lp_;
-static VALUE sy_Switch_Dataflow__lp__do_rules_lb__fed1;
+static VALUE sy_Switch_Dataflow__lp_Compile_7981;
 static VALUE sy_Switch_Dataflow__lp_bind_lb_11_35dc;
 static VALUE sy_Switch_Dataflow__lp_src_dot_fir_1e1a;
 static VALUE sy_Switch_Dataflow__sh_puts_sp_bi_67f8;
@@ -719,7 +719,7 @@ alt2_2: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
 cstruct oldpass7=*ptr; int fail7=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,15/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
    it=AmethystCore_anything(self ); FAILTEST(pass7); bind_aset(bind,16/*name*/,it);
-it=rb_funcall(self,sy_Switch_Dataflow__lp__do_rules_lb__fed1,1,bind); FAILTEST(pass7);it=rb_funcall(self,sy_Switch_Dataflow__do_rules_lb_b_6b08,1,bind);  bind_aset(bind,17/*autovar*/,it);
+it=rb_funcall(self,sy_Switch_Dataflow__lp_Compile_7981,1,bind); FAILTEST(pass7);it=rb_funcall(self,sy_Switch_Dataflow_Compiler_01f7,1,bind);  bind_aset(bind,17/*autovar*/,it);
 cstruct oldpass8=*ptr; int fail8=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=bind_aget(bind,17/*autovar*/);ptr->len=1;
    it=First_Dataflow_value(self ); FAILTEST(pass8); bind_aset(bind,18/*autovar*/,it);
@@ -2357,13 +2357,13 @@ switchhashFirst_Dataflow1=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Act\
 switchhashFirst_Dataflow2=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Act\nnext h[k]=1 if k<=Bind\nnext h[k]=2 if k<=CAct\nnext h[k]=3 if k<=Cut\nnext h[k]=4 if k<=Local\nnext h[k]=5 if k<=Many\nnext h[k]=6 if k<=Or\nnext h[k]=7 if k<=Result\nnext h[k]=8 if k<=Seq\nnext h[k]=9 if k<=Stop\nnext h[k]=10 if k<=Switch\nnext h[k]=11 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashFirst_Dataflow2);
 switchhashSwitch_Dataflow2=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Act\nnext h[k]=1 if k<=CAct\nnext h[k]=2 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashSwitch_Dataflow2);
 switchhashSwitch_Dataflow3=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Act\nnext h[k]=1 if k<=Apply\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=CAct\nnext h[k]=4 if k<=Cut\nnext h[k]=5 if k<=Local\nnext h[k]=6 if k<=Many\nnext h[k]=7 if k<=Or\nnext h[k]=8 if k<=Result\nnext h[k]=9 if k<=Seq\nnext h[k]=10 if k<=Stop\nnext h[k]=11 if k<=Switch\nnext h[k]=12 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashSwitch_Dataflow3);
+sy_Switch_Dataflow_Compiler_01f7=rb_intern("Switch_Dataflow_Compiler_01f7");
 sy_Switch_Dataflow__append_lp__05b0=rb_intern("Switch_Dataflow__append_lp__05b0");
 sy_Switch_Dataflow__append_lp__66a2=rb_intern("Switch_Dataflow__append_lp__66a2");
 sy_Switch_Dataflow__append_lp__8bfa=rb_intern("Switch_Dataflow__append_lp__8bfa");
 sy_Switch_Dataflow__at_vis_eq_bin_af53=rb_intern("Switch_Dataflow__at_vis_eq_bin_af53");
-sy_Switch_Dataflow__do_rules_lb_b_6b08=rb_intern("Switch_Dataflow__do_rules_lb_b_6b08");
 sy_Switch_Dataflow__lp_=rb_intern("Switch_Dataflow__lp_");
-sy_Switch_Dataflow__lp__do_rules_lb__fed1=rb_intern("Switch_Dataflow__lp__do_rules_lb__fed1");
+sy_Switch_Dataflow__lp_Compile_7981=rb_intern("Switch_Dataflow__lp_Compile_7981");
 sy_Switch_Dataflow__lp_bind_lb_11_35dc=rb_intern("Switch_Dataflow__lp_bind_lb_11_35dc");
 sy_Switch_Dataflow__lp_src_dot_fir_1e1a=rb_intern("Switch_Dataflow__lp_src_dot_fir_1e1a");
 sy_Switch_Dataflow__sh_puts_sp_bi_67f8=rb_intern("Switch_Dataflow__sh_puts_sp_bi_67f8");
@@ -2539,4 +2539,4 @@ rb_define_method(cls_Detect_ClasSwitch,"root",Detect_ClasSwitch_root,0);
 rb_define_method(cls_Detect_ClasSwitch,"traverse",Detect_ClasSwitch_traverse,0);
 rb_define_method(cls_Detect_ClasSwitch,"traverse_item",Detect_ClasSwitch_traverse_item,0);
 rb_define_method(cls_Detect_ClasSwitch,"visit",Detect_ClasSwitch_visit,0);
- rb_eval_string("testversiondetect_switch('d40f8755f5e88827e93593bb4f247027')");}
+ rb_eval_string("testversiondetect_switch('c9d08dbcff7bbdf544f82e2cbba1105e')");}

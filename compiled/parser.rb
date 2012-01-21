@@ -33,12 +33,12 @@ def AmethystParser_Apply_lb__dq_t_6e68(bind)
 Apply["token" ,quote(bind[9])]
 
 end
-def AmethystParser_Apply_lb__lb_b_3c8a(bind)
-Apply[[bind[3],bind[0]],bind[1]]
+def AmethystParser_Apply_lb__lb_b_a4cc(bind)
+Apply[[bind[0],bind[1]],bind[2]]
 
 end
-def AmethystParser_Apply_lb_bi_93ef(bind)
-Apply[bind[0],bind[1]]
+def AmethystParser_Apply_lb_bi_9146(bind)
+Apply[bind[1],bind[2]]
 
 end
 def AmethystParser_Args_lb__le__co_a_4968(bind)
@@ -330,7 +330,7 @@ end
 
 
 def parser_compiled_by
-'a84cb3fa72c544dc0b19adf0f36ef2ab'
+'ffc6d8f64c93a9c759013a67642de8df'
 end
 def parser_source_hash
 '26066aa8bfcbc2bed77ea540e666faf6'
@@ -339,6 +339,6 @@ def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'f772dabd11feb2c2ad3325b53199226e'
+'20a1df45714319981de0bc59a75bda47'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/parser_c"
