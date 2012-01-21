@@ -86,23 +86,13 @@ class <<Compiler
       end
       g.rules[name]=Analyze_Variables2.new.parse(:root,g.rules[name])
 	  	g.rules[name]=Resolve_Calls.new.parse(:root,[g,g.rules[name]])
-			puts g.rules[name].inspect
-		}
-		names.dup.each{|nam|#resolve super
-			g.calls[nam]=DetectCalls.new.parse(:root,[g.getrule(nam)])
-			if g.calls[nam].include? "super"
-          super_name="#{nam}_#{grammar.name}"
-					names<<super_name
-          g.rules[super_name]=deep_clone(@grammars[grammar.parent].getrule(nam))
-          g.rules[super_name].name=super_name
-          g.rules[nam]=Replace_Super.new.parse(:root,[super_name,g.rules[nam]])
-      end
 		}
 		names.dup.each{|nam| #update callgraph
 			g.calls[nam]=DetectCalls.new.parse(:root,[g.getrule(nam)])
 			g.calls[nam].each{|c,t| callg.add(nam,c)}
 		}
 		topo= callg.topo_order
+		#TODO resolve name clashes
 		called=callg.reverse.reachable(names)
 		called.each{|k,v| g.rules[k]=g.getrule(k)}
 		puts called.inspect;puts topo.inspect
