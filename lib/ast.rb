@@ -230,7 +230,10 @@ class Apply
 	def normalize2
 		if name=="apply"
 			return @ary[1][0][0] if @ary[1].is_a?(Act) && @ary[1][0].is_a?(Lambda)
-			return Apply[@ary[1][0]] if @ary[1].is_a?(CAct)
+			if @ary[1].is_a?(CAct)
+				raise "TODO resolve" 
+				return Apply[@ary[1][0]] 
+			end
 		end
 		if name=="_seq"
 			return @ary[1][0][0] if @ary[1].is_a?(Act) && @ary[1][0].is_a?(Lambda)

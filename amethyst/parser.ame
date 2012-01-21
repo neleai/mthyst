@@ -15,7 +15,7 @@ amethyst AmethystParser < Amethyst{
 	   		 {_body(body)}:body {@@locals.uniq}:locals {body=Seq[{:ary=>($appends.uniq.map{|a| _Bind(a,Act["[]"])}+[body])}]; }	 @Rule
 
 	
-	expression = listOf('sequence',`"|"`):ary @Or	
+	expression = listOf(`sequence`,`"|"`):ary @Or	
 	sequence =  (nr "" prefixed)*:ary  @Seq
 	nr = ~("" name argsOpt "=")
 
