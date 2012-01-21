@@ -438,6 +438,7 @@ VALUE switchhashResolve_Calls3;
 VALUE switchhashTraverser_Clone21;
 static VALUE c_Apply;
 static VALUE c_Rule;
+static VALUE sy_Resolve_Calls_Apply_lb_bi_15c1;
 static VALUE sy_Resolve_Calls__at_changed_5352;
 static VALUE sy_Resolve_Calls__at_changed_b885;
 static VALUE sy_Resolve_Calls__at_changed_c681;
@@ -635,19 +636,20 @@ ame_setcut(self,Qnil);goto accept7;
  break;} break;}it=bind_aget(bind,1/*_result*/);
 return it;
 fail: return failobj; }
-VALUE Resolve_Calls_visit(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(3);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
+VALUE Resolve_Calls_visit(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(4);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
  it=c_Apply; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(fail); bind_aset(bind,0/*autovar*/,it);
 cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,0/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
-  bind_aset(bind,1/*autovar*/,it);
+   it=AmethystCore_anything(self ); FAILTEST(pass1); bind_aset(bind,1/*name*/,it);
+it=rb_funcall(self,sy_Resolve_Calls_Apply_lb_bi_15c1,1,bind);  bind_aset(bind,2/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
 	success1: *ptr=oldpass1;
 	if(fail1) goto fail;
-it=bind_aget(bind,1/*autovar*/); bind_aset(bind,2/*_result*/,it);
-it=bind_aget(bind,2/*_result*/);
+it=bind_aget(bind,2/*autovar*/); bind_aset(bind,3/*_result*/,it);
+it=bind_aget(bind,3/*_result*/);
 return it;
 fail: return failobj; }
 void Init_detect_variables2_c(){ 
@@ -706,6 +708,7 @@ switchhashResolve_Calls1=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Apply
 switchhashResolve_Calls2=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashResolve_Calls2);
 switchhashResolve_Calls3=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashResolve_Calls3);
 switchhashTraverser_Clone21=rb_eval_string("Hash.new{|h,k|\nnext h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhashTraverser_Clone21);
+sy_Resolve_Calls_Apply_lb_bi_15c1=rb_intern("Resolve_Calls_Apply_lb_bi_15c1");
 sy_Resolve_Calls__at_changed_5352=rb_intern("Resolve_Calls__at_changed_5352");
 sy_Resolve_Calls__at_changed_b885=rb_intern("Resolve_Calls__at_changed_b885");
 sy_Resolve_Calls__at_changed_c681=rb_intern("Resolve_Calls__at_changed_c681");
@@ -719,4 +722,4 @@ rb_define_method(cls_Resolve_Calls,"root",Resolve_Calls_root,0);
 rb_define_method(cls_Resolve_Calls,"traverse",Resolve_Calls_traverse,0);
 rb_define_method(cls_Resolve_Calls,"traverse_item",Resolve_Calls_traverse_item,0);
 rb_define_method(cls_Resolve_Calls,"visit",Resolve_Calls_visit,0);
- rb_eval_string("testversiondetect_variables2('80e30c6c0ea5023a6e62a81705a117aa')");}
+ rb_eval_string("testversiondetect_variables2('6d5c5e00cc04c9f242b57452c1652c89')");}

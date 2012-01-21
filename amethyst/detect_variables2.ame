@@ -39,5 +39,5 @@ traverse[.*	{@locals=nil} @self] ]
 amethyst Resolve_Calls < Traverser_Clone2 {
 	root = .:@@grammar Rule[ traverse ]
 
-	visit = Apply[ ]
+	visit = Apply[ :name {Apply[name,{:clas=>resolvegrammar(@@grammar,name)}]} ]
 }

@@ -119,6 +119,9 @@ end
 
 class Resolve_Calls < Traverser_Clone2
 
+def Resolve_Calls_Apply_lb_bi_15c1(bind)
+Apply[bind[1],{:clas=>resolvegrammar(@grammar,bind[1])}]
+end
 def Resolve_Calls__at_changed_5352(bind)
 @changed=true
 end
@@ -156,15 +159,15 @@ end
 
 
 def detect_variables2_compiled_by
-'c885ad278bb09e67bb266486aa3b62ed'
+'f6f8c68d63e24b3f5e61d8bb368dd7cf'
 end
 def detect_variables2_source_hash
-'d436da1b70fdab94adcbd97fb0fef92c'
+'195e60a39d58f3d9a549c35226d0824c'
 end
 def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'80e30c6c0ea5023a6e62a81705a117aa'
+'6d5c5e00cc04c9f242b57452c1652c89'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_variables2_c"

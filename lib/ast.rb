@@ -217,10 +217,12 @@ end
 
 class Apply
   def self.[](name,*args)
+		h={}
+		h=args.pop if args[-1].is_a?(Hash)
 		args=args.flatten
 	  args=args.map{|a| Act[a]}
 		 ar=[name]+args
-     Apply.create({:ary=>ar}).normalize
+     Apply.create({:ary=>ar}.merge(h)).normalize
   end
 	def name
 		@ary[0]
@@ -298,7 +300,7 @@ equalize_by(e,by)
 }
 
 
-class Apply;					def inspect;	"#{ary[0]}(#{ary[1..-1].map{|a|a.inspect}*","})"							;end;end
+class Apply;					def inspect;	"#{@clas ? "#{@clas}::":""}#{ary[0]}(#{ary[1..-1].map{|a|a.inspect}*","})"							;end;end
 class Local;					def inspect;	"L[#{ary[0]}#{ary[1].is_a?(Bnding) ? "" : ary[1]}_#{ssano}]"	;end;end
 class Key;						def inspect;	"@#{ary[0]}"																									;end;end
 class Global;					def inspect;	"@@#{ary[0]}"																									;end;end

@@ -160,7 +160,7 @@ class First_Dataflow < Amethyst
   end
 
 	def empty?(el)
-		puts "emp",$sizedf.analyze(el).size,el.inspect
+		#puts "emp",$sizedf.analyze(el).size,el.inspect
 		
 		$sizedf.analyze(el).size==0
 	end
@@ -218,8 +218,9 @@ amethyst First_Dataflow {
 	root = .:x analyze(x)
 	
 	first =	Switch[&{@first.is_a?(lattice)} .* {@first}]
-				| Switch[ [ .:e (&{e.ary!=["default"]} value:vals[]|.) ]* {puts vals.inspect;vals.inject(:|)} ]
-				| Seq[{lattice.empty}:val (.:el {el}=>value:nev {puts val.inspect,nev.inspect,val.seqjoin(nev).inspect,el.inspect;val.seqjoin(nev)}:val  (~{empty?(el)} break | empty) )*   .* {val}]
+				| Switch[ [ .:e (&{e.ary!=["default"]} value:vals[]|.) ]* {vals.inject(:|)} ]
+				| Seq[{lattice.empty}:val (.:el {el}=>value:nev {#puts val.inspect,nev.inspect,val.seqjoin(nev).inspect,el.inspect;}
+				{val.seqjoin(nev)}:val  (~{empty?(el)} break | empty) )*   .* {val}]
 				| Many[value:val {val|lattice.empty} ]
 				| Or[value*:{it.inject(:|)}]
 				| Switch[value*:{it.inject(:|)}]
@@ -349,7 +350,8 @@ amethyst Detect_Switch < Detect_First {
 		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.inject(:|),v[0][1]]}.sort_by{|el| el.inspect}}
 		{ary3<<[CharLattice["default"],Apply["fails"]] unless ary2.include?("default")}
     &{ary3.size>1}
-		{s=Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>ary3}];puts s.inspect;s}
+		{s=Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>ary3}];#puts s.inspect;
+		s}
 	]
 	
 	split = Seq[ split*]
@@ -385,7 +387,8 @@ amethyst Detect_ClasSwitch < Detect_First {
 
 		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.sort_by{|el| el.inspect},v[0][1]]}.sort_by{|el| el.inspect}}
 		{ary3=ary3.map{|o,v| [ClasLattice[*o],v]}}
-	  {c=classswitch(ary2,firs,ary3);puts c.inspect;c}
+	  {c=classswitch(ary2,firs,ary3);#puts c.inspect;
+     c}
 	]
 
   predicate(clas,i,p) = &{clas[i]=="default"} {p}

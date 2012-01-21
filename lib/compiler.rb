@@ -86,6 +86,7 @@ class <<Compiler
       end
       g.rules[name]=Analyze_Variables2.new.parse(:root,g.rules[name])
 	  	g.rules[name]=Resolve_Calls.new.parse(:root,[g,g.rules[name]])
+			puts g.rules[name].inspect
 		}
 		names.dup.each{|nam|#resolve super
 			g.calls[nam]=DetectCalls.new.parse(:root,[g.getrule(nam)])
