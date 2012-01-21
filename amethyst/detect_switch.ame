@@ -225,7 +225,7 @@ amethyst First_Dataflow {
 				| Switch[value*:{it.inject(:|)}]
 	      | Bind[ value] 
 				| (Act|CAct|Local|Result|Cut|Stop)[.* {lattice.empty} ]
-				| . {lattice.default}
+				| .:el {empty?(el) ? lattice.top|lattice.empty : lattice.top}
 
 	 getvalue(v) = {@@vis=v; v}=>first
 }  			
@@ -286,6 +286,7 @@ class Detect_ClasSwitch < Detect_First
 			@switchdf.parse(:root,[])
 		end
 		r=@switchdf.analyze(s)
+		puts "#{empty?(s)} #{r.inspect} #{s.inspect}" if empty?(s) != r.ary.include?(Empty)
 		return (r|ClasLattice.top)-ClasLattice.empty if r.ary.include?(Empty)
 		return r
 	end
