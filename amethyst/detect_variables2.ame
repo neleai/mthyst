@@ -37,7 +37,13 @@ traverse[.*	{@locals=nil} @self] ]
 }
 
 amethyst Resolve_Calls < Traverser_Clone2 {
-	root = .:@@grammar Rule[ traverse ]
+	root = .:@@grammar Rule[ {@name}:@@name traverse ]
 
-	visit = Apply[ :name {a=Apply[name,{:clas=>resolvegrammar(@@grammar.name,name)}];a} ]
+	visit = Apply[ ["super"] {
+					          super_name="#{@@name}_#{@@grammar.name}"
+          					@@grammar.rules[super_name]=deep_clone(Compiler.grammars[@@grammar.parent].getrule(@@name))
+				 	         	@@grammar.rules[super_name].name=super_name
+										Apply[super_name]
+							}]
+				| Apply[ :name {a=Apply[name,{:clas=>resolvegrammar(@@grammar.name,name)}];a} ]
 }

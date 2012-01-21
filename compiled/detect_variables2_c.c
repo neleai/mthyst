@@ -428,6 +428,7 @@ fail: return failobj; }VALUE cls_Resolve_Calls;
 VALUE AmethystCore_anything(VALUE self );
 VALUE Amethyst_clas(VALUE self ,VALUE);
 VALUE Amethyst_eof(VALUE self );
+VALUE Amethyst_spaces(VALUE self );
 VALUE Resolve_Calls_root(VALUE self );
 VALUE Resolve_Calls_traverse(VALUE self );
 VALUE Resolve_Calls_traverse_item(VALUE self );
@@ -442,26 +443,30 @@ static VALUE sy_Resolve_Calls__at_changed_5352;
 static VALUE sy_Resolve_Calls__at_changed_b885;
 static VALUE sy_Resolve_Calls__at_changed_c681;
 static VALUE sy_Resolve_Calls__at_grammar_8783;
+static VALUE sy_Resolve_Calls__at_name_eq_bi_f53d;
 static VALUE sy_Resolve_Calls__lp_bind_lb_2_rb__6693;
 static VALUE sy_Resolve_Calls__lp_src_dot_ins_6a75;
-static VALUE sy_Resolve_Calls_a_eq_Apply_lb__3465;
+static VALUE sy_Resolve_Calls_a_eq_Apply_lb__35a8;
 static VALUE sy_Resolve_Calls_bind_lb_12_rb__bb3e;
 static VALUE sy_Resolve_Calls_if_sp_bind_lb__f1e9;
 static VALUE sy_Resolve_Calls_src_25d9;
-VALUE Resolve_Calls_root(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(4);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
+static VALUE sy_Resolve_Calls_src_dot_name_80f3;
+static VALUE sy_Resolve_Calls_super_na_3133;
+VALUE Resolve_Calls_root(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(5);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,0/*autovar*/,it);
 it=rb_funcall(self,sy_Resolve_Calls__at_grammar_8783,1,bind);  it=c_Rule; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(fail); bind_aset(bind,1/*autovar*/,it);
 cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,1/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
-   it=Resolve_Calls_traverse(self ); FAILTEST(pass1); bind_aset(bind,2/*autovar*/,it);
+ it=rb_funcall(self,sy_Resolve_Calls_src_dot_name_80f3,1,bind);  bind_aset(bind,2/*autovar*/,it);
+it=rb_funcall(self,sy_Resolve_Calls__at_name_eq_bi_f53d,1,bind);   it=Resolve_Calls_traverse(self ); FAILTEST(pass1); bind_aset(bind,3/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
 	success1: *ptr=oldpass1;
 	if(fail1) goto fail;
-it=bind_aget(bind,2/*autovar*/); bind_aset(bind,3/*_result*/,it);
-it=bind_aget(bind,3/*_result*/);
+it=bind_aget(bind,3/*autovar*/); bind_aset(bind,4/*_result*/,it);
+it=bind_aget(bind,4/*_result*/);
 return it;
 fail: return failobj; }
 VALUE Resolve_Calls_traverse(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(10);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -636,20 +641,50 @@ ame_setcut(self,Qnil);goto accept7;
  break;} break;}it=bind_aget(bind,1/*_result*/);
 return it;
 fail: return failobj; }
-VALUE Resolve_Calls_visit(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(4);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
+VALUE Resolve_Calls_visit(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(10);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
  it=c_Apply; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(fail); bind_aset(bind,0/*autovar*/,it);
+it=bind_aget(bind,0/*autovar*/); bind_aset(bind,1/*autovar*/,it);
+it=bind_aget(bind,1/*autovar*/); bind_aset(bind,2/*autovar*/,it);
+int oldpos1=ame_getpos(self);
+alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ it=bind_aget(bind,2/*autovar*/); bind_aset(bind,3/*autovar*/,it);
 cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
-          ptr->src=bind_aget(bind,0/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
-   it=AmethystCore_anything(self ); FAILTEST(pass1); bind_aset(bind,1/*name*/,it);
-it=rb_funcall(self,sy_Resolve_Calls_a_eq_Apply_lb__3465,1,bind);  bind_aset(bind,2/*autovar*/,it);
+          ptr->src=bind_aget(bind,3/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
+   it=AmethystCore_anything(self ); FAILTEST(pass1); bind_aset(bind,4/*autovar*/,it);
+cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
+          ptr->src=bind_aget(bind,4/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
+   it=Amethyst_spaces(self ); FAILTEST(pass2);if (strncmp(ame_curstr(self),"super",5)) goto pass2; else ame_setpos(self,ame_getpos(self)+5);  it=Amethyst_eof(self ); FAILTEST(pass2);
+	goto success2;
+	pass2: fail2=1;
+	success2: *ptr=oldpass2;
+	if(fail2) goto pass1;
+it=rb_funcall(self,sy_Resolve_Calls_super_na_3133,1,bind);  bind_aset(bind,5/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
 	success1: *ptr=oldpass1;
-	if(fail1) goto fail;
-it=bind_aget(bind,2/*autovar*/); bind_aset(bind,3/*_result*/,it);
-it=bind_aget(bind,3/*_result*/);
+	if(fail1) goto alt1_2;
+it=bind_aget(bind,5/*autovar*/); bind_aset(bind,6/*_result*/,it);
+ 
+ame_setcut(self,Qnil);goto accept1;
+alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ it=bind_aget(bind,2/*autovar*/); bind_aset(bind,7/*autovar*/,it);
+cstruct oldpass3=*ptr; int fail3=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
+          ptr->src=bind_aget(bind,7/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
+   it=AmethystCore_anything(self ); FAILTEST(pass3); bind_aset(bind,8/*name*/,it);
+it=rb_funcall(self,sy_Resolve_Calls_a_eq_Apply_lb__35a8,1,bind);  bind_aset(bind,9/*autovar*/,it);
+  it=Amethyst_eof(self ); FAILTEST(pass3);
+	goto success3;
+	pass3: fail3=1;
+	success3: *ptr=oldpass3;
+	if(fail3) goto alt1_3;
+it=bind_aget(bind,9/*autovar*/); bind_aset(bind,6/*_result*/,it);
+ 
+ame_setcut(self,Qnil);goto accept1;
+  alt1_3:  ame_setpos(self,oldpos1); goto fail;
+ accept1:;
+it=bind_aget(bind,6/*_result*/);
 return it;
 fail: return failobj; }
 void Init_detect_variables2_c(){ 
@@ -712,14 +747,17 @@ sy_Resolve_Calls__at_changed_5352=rb_intern("Resolve_Calls__at_changed_5352");
 sy_Resolve_Calls__at_changed_b885=rb_intern("Resolve_Calls__at_changed_b885");
 sy_Resolve_Calls__at_changed_c681=rb_intern("Resolve_Calls__at_changed_c681");
 sy_Resolve_Calls__at_grammar_8783=rb_intern("Resolve_Calls__at_grammar_8783");
+sy_Resolve_Calls__at_name_eq_bi_f53d=rb_intern("Resolve_Calls__at_name_eq_bi_f53d");
 sy_Resolve_Calls__lp_bind_lb_2_rb__6693=rb_intern("Resolve_Calls__lp_bind_lb_2_rb__6693");
 sy_Resolve_Calls__lp_src_dot_ins_6a75=rb_intern("Resolve_Calls__lp_src_dot_ins_6a75");
-sy_Resolve_Calls_a_eq_Apply_lb__3465=rb_intern("Resolve_Calls_a_eq_Apply_lb__3465");
+sy_Resolve_Calls_a_eq_Apply_lb__35a8=rb_intern("Resolve_Calls_a_eq_Apply_lb__35a8");
 sy_Resolve_Calls_bind_lb_12_rb__bb3e=rb_intern("Resolve_Calls_bind_lb_12_rb__bb3e");
 sy_Resolve_Calls_if_sp_bind_lb__f1e9=rb_intern("Resolve_Calls_if_sp_bind_lb__f1e9");
 sy_Resolve_Calls_src_25d9=rb_intern("Resolve_Calls_src_25d9");
+sy_Resolve_Calls_src_dot_name_80f3=rb_intern("Resolve_Calls_src_dot_name_80f3");
+sy_Resolve_Calls_super_na_3133=rb_intern("Resolve_Calls_super_na_3133");
 rb_define_method(cls_Resolve_Calls,"root",Resolve_Calls_root,0);
 rb_define_method(cls_Resolve_Calls,"traverse",Resolve_Calls_traverse,0);
 rb_define_method(cls_Resolve_Calls,"traverse_item",Resolve_Calls_traverse_item,0);
 rb_define_method(cls_Resolve_Calls,"visit",Resolve_Calls_visit,0);
- rb_eval_string("testversiondetect_variables2('b2a2eb2c17f11ba1127f68c8cdd27f68')");}
+ rb_eval_string("testversiondetect_variables2('f1d415e2e6e2d1dc0ae9f435727a6b26')");}
