@@ -233,9 +233,6 @@ end
 def First_Dataflow__lp_src_dot_fir_1e1a(bind)
 (src.first.is_a?(lattice)) || FAIL
 end
-def First_Dataflow__sh_puts_sp_bi_67f8(bind)
-#puts bind[22].inspect,bind[32].inspect,bind[22].seqjoin(bind[32]).inspect,bind[29].inspect;
-end
 def First_Dataflow_bind_lb_0_rb__dot__b660(bind)
 bind[0].inject(:|)
 end
@@ -248,8 +245,8 @@ end
 def First_Dataflow_bind_lb_22_rb__a94e(bind)
 bind[22]|lattice.empty
 end
-def First_Dataflow_depends_lp__609f(bind)
-depends(bind[0]);#puts bind[0].inspect;puts @vals[bind[0]].inspect; 
+def First_Dataflow_depends_lp__b4cd(bind)
+depends(bind[0]);puts "#{bind[0].inspect} #{@vals[bind[0]].inspect}"; 
 @vals[bind[0]]
 end
 def First_Dataflow_lattice_dot__2c4f(bind)
@@ -257,6 +254,9 @@ lattice.empty
 end
 def First_Dataflow_lattice_dot__2ce9(bind)
 lattice.default
+end
+def First_Dataflow_puts_sp__dq__sh__le__86bc(bind)
+puts "#{bind[22].inspect} #{bind[32].inspect} #{bind[22].seqjoin(bind[32]).inspect} #{bind[29].inspect}";
 end
 def First_Dataflow_src_dot_firs_8482(bind)
 src.first
@@ -288,9 +288,6 @@ end
 def Sizes_Dataflow__lp_src_dot_fir_1e1a(bind)
 (src.first.is_a?(lattice)) || FAIL
 end
-def Sizes_Dataflow__sh_puts_sp_bi_67f8(bind)
-#puts bind[22].inspect,bind[32].inspect,bind[22].seqjoin(bind[32]).inspect,bind[29].inspect;
-end
 def Sizes_Dataflow_bind_lb_0_rb__dot__b660(bind)
 bind[0].inject(:|)
 end
@@ -314,6 +311,9 @@ lattice[bind[6].size]
 end
 def Sizes_Dataflow_lattice_lb__fdee(bind)
 lattice[1]
+end
+def Sizes_Dataflow_puts_sp__dq__sh__le__86bc(bind)
+puts "#{bind[22].inspect} #{bind[32].inspect} #{bind[22].seqjoin(bind[32]).inspect} #{bind[29].inspect}";
 end
 def Sizes_Dataflow_src_dot_firs_8482(bind)
 src.first
@@ -342,17 +342,14 @@ end
 def Switch_Dataflow__lp_(bind)
 (!(empty?(bind[29]))) || FAIL
 end
+def Switch_Dataflow__lp_Compile_7981(bind)
+(Compiler.grammars[src.clas]&&Compiler.grammars[src.clas].rules[bind[16]]) || FAIL
+end
 def Switch_Dataflow__lp_bind_lb_11_35dc(bind)
 (bind[11].ary!=["default"]) || FAIL
 end
-def Switch_Dataflow__lp_puts_sp_bi_4f38(bind)
-(puts bind[16], src.clas.inspect;Compiler.grammars[src.clas]&&Compiler.grammars[src.clas].rules[bind[16]]) || FAIL
-end
 def Switch_Dataflow__lp_src_dot_fir_1e1a(bind)
 (src.first.is_a?(lattice)) || FAIL
-end
-def Switch_Dataflow__sh_puts_sp_bi_67f8(bind)
-#puts bind[22].inspect,bind[32].inspect,bind[22].seqjoin(bind[32]).inspect,bind[29].inspect;
 end
 def Switch_Dataflow_bind_lb_0_rb__dot__b660(bind)
 bind[0].inject(:|)
@@ -377,6 +374,9 @@ lattice.default
 end
 def Switch_Dataflow_lattice_dot__e0e5(bind)
 lattice.top
+end
+def Switch_Dataflow_puts_sp__dq__sh__le__86bc(bind)
+puts "#{bind[22].inspect} #{bind[32].inspect} #{bind[22].seqjoin(bind[32]).inspect} #{bind[29].inspect}";
 end
 def Switch_Dataflow_regchar_lp__dfee(bind)
 regchar(bind[9])
@@ -417,9 +417,6 @@ end
 def ClasSwitch_Dataflow__lp_src_dot_fir_1e1a(bind)
 (src.first.is_a?(lattice)) || FAIL
 end
-def ClasSwitch_Dataflow__sh_puts_sp_bi_67f8(bind)
-#puts bind[22].inspect,bind[32].inspect,bind[22].seqjoin(bind[32]).inspect,bind[29].inspect;
-end
 def ClasSwitch_Dataflow_bind_lb_0_rb__dot__b660(bind)
 bind[0].inject(:|)
 end
@@ -440,6 +437,9 @@ lattice.default
 end
 def ClasSwitch_Dataflow_lattice_lb__6173(bind)
 lattice[bind[6]]
+end
+def ClasSwitch_Dataflow_puts_sp__dq__sh__le__86bc(bind)
+puts "#{bind[22].inspect} #{bind[32].inspect} #{bind[22].seqjoin(bind[32]).inspect} #{bind[29].inspect}";
 end
 def ClasSwitch_Dataflow_src_dot_firs_8482(bind)
 src.first
@@ -671,8 +671,8 @@ nary=bind[1].ary
                                  Switch[{:act=>bind[1].act,:first=>bind[1].first,:defs=>bind[1].defs,:ary=>nary}]
                               
 end
-def Detect_Switch_s_eq_Switch_4cee(bind)
-s=Switch[{:act=>"*ame_curstr(self)",:first=>bind[6],:ary=>bind[2]}];#puts s.inspect;
+def Detect_Switch_s_eq_Switch_8871(bind)
+s=Switch[{:act=>"*ame_curstr(self)",:first=>bind[6],:ary=>bind[2]}];puts s.inspect;
 		s
 end
 def Detect_Switch_src_25d9(bind)
@@ -788,8 +788,8 @@ end
 def Detect_ClasSwitch_bind_lb_5_rb__lt__1671(bind)
 bind[5]<<bind[6]
 end
-def Detect_ClasSwitch_c_eq_classs_c612(bind)
-c=classswitch(bind[1],bind[6],bind[2]);#puts c.inspect;
+def Detect_ClasSwitch_c_eq_classs_1d9a(bind)
+c=classswitch(bind[1],bind[6],bind[2]);puts c.inspect;
      c
 end
 def Detect_ClasSwitch_if_sp_bind_lb__f1e9(bind)
@@ -821,15 +821,15 @@ end
 
 
 def detect_switch_compiled_by
-'f71da81691300b5eaab6ca0b36273e95'
+'8a2cfa9469a358b81ea4ab8932be6097'
 end
 def detect_switch_source_hash
-'a21e83f8948a6d1cf96bbae49bf6b181'
+'f172a5596282f171f90526318fa554dc'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'8694f3e4d45991480d1c53d676540a8c'
+'9209cf10a968e049e2fbe73264c1de1f'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"
