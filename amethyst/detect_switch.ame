@@ -356,6 +356,7 @@ amethyst Detect_Switch < Detect_First {
 	split = Seq[ split*]
 				| Or[ split* ]
 				| Bind[ split ]
+				| Switch[ [. split]*]
 				| .:el first(el):f {@@cases=@@cases.map{|c| [c&f,c&~f]}.flatten.select{|x| x.ary.size>0}.uniq_by{|x|x.ary.inspect} }
 	
 	predicate(chr,p) = &{chr.ary[0]=="default"} {p}

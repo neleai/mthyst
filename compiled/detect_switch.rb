@@ -592,6 +592,9 @@ end
 def Detect_Switch__append_lp__d472(bind)
 _append(bind[6],bind[7])
 end
+def Detect_Switch__append_lp__ded9(bind)
+_append(bind[14],bind[17])
+end
 def Detect_Switch__at_cases_dot_e_04b0(bind)
 @cases.each{|ee|bind[4]=ee
 			bind[2]<<[bind[4],predicate(bind[4],bind[7])]
@@ -825,15 +828,15 @@ end
 
 
 def detect_switch_compiled_by
-'145bc23cd552ebf907b2e09ca1bfee4a'
+'61087eada2982886f0babd8f91e63463'
 end
 def detect_switch_source_hash
-'f9768cbb037c30d985eba4f3cafc44f2'
+'60e3e55433aeae53791eaffb3c4bc19f'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'17fc234a822cb5e1e5841f52bf7295ff'
+'48f5b323db580c4a51c5a6948c59cefa'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"
