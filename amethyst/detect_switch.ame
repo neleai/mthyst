@@ -332,25 +332,9 @@ end
 
 
 amethyst Detect_Switch < Detect_First {
-	visit = Or[ {CharLattice[]}:ary2 {[]}:ary3 {[]}:els
-		(traverse_item:e &{first(e)} {e}:els[] {ary2|=first(e)})* &eof
-		{ary2}:firs
-		{ary2=ary2.ary.map{|el|  [Empty].include?(el) ? "default" : el}.uniq}
-		&{ary2.size>1}
-		{Or[*els]}:new_or
-		&{new_or.is_a?(Or)}
-		{firs=unempty(firs)}
-		{@@cases=[firs]} {new_or}=>split 
-		{@@cases.each{|ee|e=ee
-			ary3<<[e,predicate(e,new_or)]
-		}}
-		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.inject(:|),v[0][1]]}.sort_by{|el| el.inspect}}
-		{ary3<<[CharLattice["default"],Apply["fails"]] unless ary2.include?("default")}
-    &{ary3.size>1}
-		{s=Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>ary3}];#puts s.inspect;
-		s}
-	]
-#	| Apply[ ["regch"] .* {first(@self)}:firs {Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>[[firs]]}]}]
+	visit =  Apply[ ["regch"] CAct[.*] {first(@self)}:firs {s=Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>[[firs,@self],[CharLattice["default"],Apply["fails"]]]}]
+puts "#{@self.inspect},#{s.inspect}";s
+}]
 	
 	split = Seq[ split*]
 				| Or[ split* ]
