@@ -217,7 +217,7 @@ amethyst First_Dataflow {
 
 	root = .:x analyze(x)
 	
-	first = Switch[ [ .:p  (Apply[ ["fails"] ] | value:v {p.is_a?(lattice)? p & v : v}:vals[]) ]* {vals.inject(:|)} ]
+	first = Switch[ [ .:p  value:v {p.is_a?(lattice)? p & v : v}:vals[] ]* {vals.inject(:|)} ]
 				| Seq[{lattice.empty}:val (.:el {el}=>value:nev {val.seqjoin(nev)}:val  (~{empty?(el)} break | empty) )*   .* {val}]
 				| Many[value:val {val|lattice.empty} ]
 				| Or[value*:{it.inject(:|)}]
@@ -232,6 +232,7 @@ amethyst First_Dataflow {
 amethyst Sizes_Dataflow < First_Dataflow {
 	first = Apply[( ["_seq"] CAct[.:str] {lattice[str.size]} 
 								| ["regch" | "clas" | "anything"] .* {lattice[1]}
+								| ["fails"] {lattice.top}
 								)]
 				| Apply[ :name &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name].body}=>value ]:v  {puts "#{name} #{v.inspect}";v}
 			  | super
@@ -241,6 +242,7 @@ amethyst Switch_Dataflow < First_Dataflow{
 	first = Apply[( ["_seq"  ] CAct[.:str] {firstchar(str)}
 								| ["regch" ] Act[.:str]  {regchar(str)}
 								| ["anything" ] {lattice.top}
+								| ["fails"] {lattice.bottom}
 							  )]
 				| Apply[ :name &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name].body}=>value ]:v  {puts "#{name} #{v.inspect}";v}
 				| super
@@ -271,9 +273,6 @@ class Detect_Switch < Detect_First
 		r=@switchdf.analyze(s)
 		r|= CharLattice.empty if empty?(s)
 		r
-	end
-	def intersects(ar,el)
-		return (ar & el).ary !=[]
 	end
 end
 
@@ -325,13 +324,11 @@ amethyst Detect_First < Traverser_Clone2 {
 
 	root = traverse
 }
-def unempty(s)
-	s.ary.include?(Empty) ? CharLattice.top	: s
-end
 
 
 amethyst Detect_Switch < Detect_First {
 	visit =  Apply[ ["regch"] Act[.*] {first(@self)}:firs {s=Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>[[firs,Apply["anything"]],[~firs,Apply["fails"]]]}]}]
+				|  Apply[ ["fails"] {@self} ]
 				|	 Apply[ .* {first(@self)}:firs &{!empty?(@self) && firs!=CharLattice.top} {s=Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>[[firs,@self],[~firs,Apply["fails"]]]}];puts s.inspect;s }]
 	
 }
