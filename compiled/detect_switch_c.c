@@ -283,7 +283,7 @@ static VALUE c_Result;
 static VALUE c_Seq;
 static VALUE c_Stop;
 static VALUE c_Switch;
-static VALUE sy_Sizes_Dataflow_Compiler_f995;
+static VALUE sy_Sizes_Dataflow_Compiler_4933;
 static VALUE sy_Sizes_Dataflow__append_lp__0bba;
 static VALUE sy_Sizes_Dataflow__append_lp__4548;
 static VALUE sy_Sizes_Dataflow__append_lp__6ac6;
@@ -374,7 +374,7 @@ alt2_2: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
 cstruct oldpass5=*ptr; int fail5=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,11/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
    it=AmethystCore_anything(self ); FAILTEST(pass5); bind_aset(bind,12/*name*/,it);
-it=rb_funcall(self,sy_Sizes_Dataflow__lp_Compile_b85e,1,bind); FAILTEST(pass5);it=rb_funcall(self,sy_Sizes_Dataflow_Compiler_f995,1,bind);  bind_aset(bind,13/*autovar*/,it);
+it=rb_funcall(self,sy_Sizes_Dataflow__lp_Compile_b85e,1,bind); FAILTEST(pass5);it=rb_funcall(self,sy_Sizes_Dataflow_Compiler_4933,1,bind);  bind_aset(bind,13/*autovar*/,it);
 cstruct oldpass6=*ptr; int fail6=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=bind_aget(bind,13/*autovar*/);ptr->len=1;
    it=First_Dataflow_value(self ); FAILTEST(pass6); bind_aset(bind,14/*autovar*/,it);
@@ -640,6 +640,7 @@ static VALUE c_Result;
 static VALUE c_Seq;
 static VALUE c_Stop;
 static VALUE c_Switch;
+static VALUE sy_Switch_Dataflow_Compiler_5247;
 static VALUE sy_Switch_Dataflow__append_lp__0bba;
 static VALUE sy_Switch_Dataflow__append_lp__4548;
 static VALUE sy_Switch_Dataflow__append_lp__6ac6;
@@ -655,7 +656,6 @@ static VALUE sy_Switch_Dataflow_empty;
 static VALUE sy_Switch_Dataflow_firstcha_c300;
 static VALUE sy_Switch_Dataflow_lattice_dot__2c4f;
 static VALUE sy_Switch_Dataflow_lattice_dot__e0e5;
-static VALUE sy_Switch_Dataflow_puts_sp_bin_191c;
 static VALUE sy_Switch_Dataflow_regchar_lp__9b27;
 static VALUE sy_Switch_Dataflow_src_dot_firs_8482;
 VALUE Switch_Dataflow_first(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(18);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -741,7 +741,7 @@ alt2_2: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
 cstruct oldpass7=*ptr; int fail7=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,13/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
    it=AmethystCore_anything(self ); FAILTEST(pass7); bind_aset(bind,14/*name*/,it);
-it=rb_funcall(self,sy_Switch_Dataflow__lp_Compile_8180,1,bind); FAILTEST(pass7);it=rb_funcall(self,sy_Switch_Dataflow_puts_sp_bin_191c,1,bind);  bind_aset(bind,15/*autovar*/,it);
+it=rb_funcall(self,sy_Switch_Dataflow__lp_Compile_8180,1,bind); FAILTEST(pass7);it=rb_funcall(self,sy_Switch_Dataflow_Compiler_5247,1,bind);  bind_aset(bind,15/*autovar*/,it);
 cstruct oldpass8=*ptr; int fail8=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=bind_aget(bind,15/*autovar*/);ptr->len=1;
    it=First_Dataflow_value(self ); FAILTEST(pass8); bind_aset(bind,16/*autovar*/,it);
@@ -1990,7 +1990,7 @@ c_Result=rb_const_get(rb_cObject, rb_intern("Result"));rb_ary_push(rb_const_get(
 c_Seq=rb_const_get(rb_cObject, rb_intern("Seq"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Seq);
 c_Stop=rb_const_get(rb_cObject, rb_intern("Stop"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Stop);
 c_Switch=rb_const_get(rb_cObject, rb_intern("Switch"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Switch);
-sy_Sizes_Dataflow_Compiler_f995=rb_intern("Sizes_Dataflow_Compiler_f995");
+sy_Sizes_Dataflow_Compiler_4933=rb_intern("Sizes_Dataflow_Compiler_4933");
 sy_Sizes_Dataflow__append_lp__0bba=rb_intern("Sizes_Dataflow__append_lp__0bba");
 sy_Sizes_Dataflow__append_lp__4548=rb_intern("Sizes_Dataflow__append_lp__4548");
 sy_Sizes_Dataflow__append_lp__6ac6=rb_intern("Sizes_Dataflow__append_lp__6ac6");
@@ -2025,6 +2025,7 @@ c_Result=rb_const_get(rb_cObject, rb_intern("Result"));rb_ary_push(rb_const_get(
 c_Seq=rb_const_get(rb_cObject, rb_intern("Seq"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Seq);
 c_Stop=rb_const_get(rb_cObject, rb_intern("Stop"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Stop);
 c_Switch=rb_const_get(rb_cObject, rb_intern("Switch"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Switch);
+sy_Switch_Dataflow_Compiler_5247=rb_intern("Switch_Dataflow_Compiler_5247");
 sy_Switch_Dataflow__append_lp__0bba=rb_intern("Switch_Dataflow__append_lp__0bba");
 sy_Switch_Dataflow__append_lp__4548=rb_intern("Switch_Dataflow__append_lp__4548");
 sy_Switch_Dataflow__append_lp__6ac6=rb_intern("Switch_Dataflow__append_lp__6ac6");
@@ -2040,7 +2041,6 @@ sy_Switch_Dataflow_empty=rb_intern("Switch_Dataflow_empty");
 sy_Switch_Dataflow_firstcha_c300=rb_intern("Switch_Dataflow_firstcha_c300");
 sy_Switch_Dataflow_lattice_dot__2c4f=rb_intern("Switch_Dataflow_lattice_dot__2c4f");
 sy_Switch_Dataflow_lattice_dot__e0e5=rb_intern("Switch_Dataflow_lattice_dot__e0e5");
-sy_Switch_Dataflow_puts_sp_bin_191c=rb_intern("Switch_Dataflow_puts_sp_bin_191c");
 sy_Switch_Dataflow_regchar_lp__9b27=rb_intern("Switch_Dataflow_regchar_lp__9b27");
 sy_Switch_Dataflow_src_dot_firs_8482=rb_intern("Switch_Dataflow_src_dot_firs_8482");
 rb_define_method(cls_Switch_Dataflow,"first",Switch_Dataflow_first,0);
@@ -2182,4 +2182,4 @@ rb_define_method(cls_Detect_ClasSwitch,"root",Detect_ClasSwitch_root,0);
 rb_define_method(cls_Detect_ClasSwitch,"traverse",Detect_ClasSwitch_traverse,0);
 rb_define_method(cls_Detect_ClasSwitch,"traverse_item",Detect_ClasSwitch_traverse_item,0);
 rb_define_method(cls_Detect_ClasSwitch,"visit",Detect_ClasSwitch_visit,0);
- rb_eval_string("testversiondetect_switch('784987dfcbba883e9208cbff42e85771')");}
+ rb_eval_string("testversiondetect_switch('baf900ec6e679b3324e56941017693dc')");}

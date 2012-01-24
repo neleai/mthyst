@@ -261,8 +261,8 @@ end
 
 class Sizes_Dataflow < First_Dataflow
 
-def Sizes_Dataflow_Compiler_f995(bind)
-Compiler.grammars[src.clas].rules[bind[12]]
+def Sizes_Dataflow_Compiler_4933(bind)
+Compiler.grammars[src.clas].rules[bind[12]].body
 end
 def Sizes_Dataflow__append_lp__0bba(bind)
 _append(bind[24],bind[25])
@@ -318,6 +318,9 @@ end
 
 class Switch_Dataflow < First_Dataflow
 
+def Switch_Dataflow_Compiler_5247(bind)
+Compiler.grammars[src.clas].rules[bind[14]].body
+end
 def Switch_Dataflow__append_lp__0bba(bind)
 _append(bind[24],bind[25])
 end
@@ -362,9 +365,6 @@ lattice.empty
 end
 def Switch_Dataflow_lattice_dot__e0e5(bind)
 lattice.top
-end
-def Switch_Dataflow_puts_sp_bin_191c(bind)
-puts bind[14]; Compiler.grammars[src.clas].rules[bind[14]]
 end
 def Switch_Dataflow_regchar_lp__9b27(bind)
 regchar(bind[7])
@@ -724,15 +724,15 @@ end
 
 
 def detect_switch_compiled_by
-'7a46ef5c08dd9fd7e6cb2f1b82dc5d0c'
+'f513a1eec6085d9fd795efa91ac425a9'
 end
 def detect_switch_source_hash
-'9f6fa56b6ac8a98526ff4e3455d8752c'
+'64a644b3fe49ba7a1b20812a72a98fed'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'784987dfcbba883e9208cbff42e85771'
+'baf900ec6e679b3324e56941017693dc'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

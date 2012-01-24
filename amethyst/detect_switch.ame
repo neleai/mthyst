@@ -234,7 +234,7 @@ amethyst Sizes_Dataflow < First_Dataflow {
 	first = Apply[( ["_seq"] CAct[.:str] {lattice[str.size]} 
 								| ["regch" | "clas" | "anything"] .* {lattice[1]}
 								)]
-				| Apply[ :name &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name]}=>value ]
+				| Apply[ :name &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name].body}=>value ]
 			  | super
 }
 
@@ -243,7 +243,7 @@ amethyst Switch_Dataflow < First_Dataflow{
 								| ["regch" ] Act[.:str]  {regchar(str)}
 								| ["anything" ] {lattice.top}
 							  )]
-				| Apply[ :name &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  {puts name; Compiler.grammars[@clas].rules[name]}=>value ]
+				| Apply[ :name &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name].body}=>value ]
 				| super
 }
 
