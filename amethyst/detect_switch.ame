@@ -217,8 +217,7 @@ amethyst First_Dataflow {
 
 	root = .:x analyze(x)
 	
-	first =	Switch[&{@first.is_a?(lattice)} .* {@first}]
-				| Switch[ [ .:e ( value:vals[]|.) ]* {vals.inject(:|)} ]
+	first = Switch[ [ .  (Apply[ ["fails"] ] | value:vals[]) ]* {vals.inject(:|)} ]
 				| Seq[{lattice.empty}:val (.:el {el}=>value:nev {val.seqjoin(nev)}:val  (~{empty?(el)} break | empty) )*   .* {val}]
 				| Many[value:val {val|lattice.empty} ]
 				| Or[value*:{it.inject(:|)}]
@@ -234,7 +233,7 @@ amethyst Sizes_Dataflow < First_Dataflow {
 	first = Apply[( ["_seq"] CAct[.:str] {lattice[str.size]} 
 								| ["regch" | "clas" | "anything"] .* {lattice[1]}
 								)]
-				| Apply[ :name &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name].body}=>value ]
+				| Apply[ :name &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name].body}=>value ]:v  {puts "#{name} #{v.inspect}";v}
 			  | super
 }
 
@@ -243,7 +242,7 @@ amethyst Switch_Dataflow < First_Dataflow{
 								| ["regch" ] Act[.:str]  {regchar(str)}
 								| ["anything" ] {lattice.top}
 							  )]
-				| Apply[ :name &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name].body}=>value ]
+				| Apply[ :name &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name].body}=>value ]:v  {puts "#{name} #{v.inspect}";v}
 				| super
 }
 

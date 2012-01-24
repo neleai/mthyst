@@ -248,7 +248,7 @@ VALUE Amethyst_line(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(4);  int x;
 it=rb_ary_new3(0); bind_aset(bind,0/*autovar*/,it);
 int oldpos1; while(1){oldpos1=ame_getpos(self); int oldpos2=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
-   it=Amethyst_newline(self ); FAILTEST(alt1_2);ame_setcut(self,Qtrue); bind_aset(bind,1/*autovar*/,it);
+ unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC(10) ... UC(10):;case UC(13) ... UC(13):;   it=Amethyst_newline(self ); FAILTEST(alt1_2); break;case UC(0) ... UC(9):;case UC(11) ... UC(12):;case UC(14) ... UC(255):;   it=Amethyst_fails(self ); FAILTEST(alt1_2); break;}ame_setcut(self,Qtrue); bind_aset(bind,1/*autovar*/,it);
 ame_setstop(self,Qtrue); 
 ame_setcut(self,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
@@ -574,4 +574,4 @@ rb_define_method(cls_Amethyst,"until",Amethyst_until,1);
 rb_define_method(cls_Amethyst,"upper",Amethyst_upper,0);
 rb_define_method(cls_Amethyst,"word",Amethyst_word,0);
 rb_define_method(cls_Amethyst,"xdigit",Amethyst_xdigit,0);
- rb_eval_string("testversionamethyst('48740d129118646cf9034a6572a5447a')");}
+ rb_eval_string("testversionamethyst('7cd1104787aec212bf6adbbc46c53999')");}
