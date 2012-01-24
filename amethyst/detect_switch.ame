@@ -211,7 +211,7 @@ class ClasSwitch_Dataflow < First_Dataflow
 	end
 end
 amethyst First_Dataflow {
-	value =  .:x  {depends(x);puts "#{x.inspect} #{@@vals[x].inspect}"; 
+	value =  .:x  {depends(x);#puts "#{x.inspect} #{@@vals[x].inspect}"; 
 @@vals[x]}
 
 
@@ -234,7 +234,7 @@ amethyst Sizes_Dataflow < First_Dataflow {
 								| ["regch" | "clas" | "anything"] .* {lattice[1]}
 								| ["fails"] {lattice.top}
 								)]
-				| Apply[ :name &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name].body}=>value ]:v  {puts "#{name} #{v.inspect}";v}
+				| Apply[ :name &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name].body}=>value ]
 			  | super
 }
 
@@ -244,7 +244,7 @@ amethyst Switch_Dataflow < First_Dataflow{
 								| ["anything" ] {lattice.top}
 								| ["fails"] {lattice.bottom}
 							  )]
-				| Apply[ :name &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name].body}=>value ]:v  {puts "#{name} #{v.inspect}";v}
+				| Apply[ :name &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name].body}=>value ]
 				| super
 }
 
@@ -329,7 +329,7 @@ amethyst Detect_First < Traverser_Clone2 {
 amethyst Detect_Switch < Detect_First {
 	visit =  Apply[ ["regch"] Act[.*] {first(@self)}:firs {s=Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>[[firs,Apply["anything"]],[~firs,Apply["fails"]]]}]}]
 				|  Apply[ ["fails"] {@self} ]
-				|	 Apply[ .* {first(@self)}:firs &{!empty?(@self) && firs!=CharLattice.top} {s=Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>[[firs,@self],[~firs,Apply["fails"]]]}];puts s.inspect;s }]
+				|	 Apply[ .* {first(@self)}:firs &{!empty?(@self) && firs!=CharLattice.top} {s=Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>[[firs,@self],[~firs,Apply["fails"]]]}] }]
 	
 }
 

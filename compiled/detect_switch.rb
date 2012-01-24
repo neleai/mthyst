@@ -242,8 +242,8 @@ end
 def First_Dataflow_bind_lb_9_rb__dot__b02f(bind)
 bind[9].seqjoin(bind[13])
 end
-def First_Dataflow_depends_lp__b4cd(bind)
-depends(bind[0]);puts "#{bind[0].inspect} #{@vals[bind[0]].inspect}"; 
+def First_Dataflow_depends_lp__0807(bind)
+depends(bind[0]);#puts "#{bind[0].inspect} #{@vals[bind[0]].inspect}"; 
 @vals[bind[0]]
 end
 def First_Dataflow_empty(bind)
@@ -309,9 +309,6 @@ end
 def Sizes_Dataflow_lattice_lb__fdee(bind)
 lattice[1]
 end
-def Sizes_Dataflow_puts_sp__dq__sh__le__4d90(bind)
-puts "#{bind[13]} #{bind[17].inspect}";bind[17]
-end
 
 end
 
@@ -368,9 +365,6 @@ lattice.bottom
 end
 def Switch_Dataflow_lattice_dot__e0e5(bind)
 lattice.top
-end
-def Switch_Dataflow_puts_sp__dq__sh__le__04e3(bind)
-puts "#{bind[15]} #{bind[19].inspect}";bind[19]
 end
 def Switch_Dataflow_regchar_lp__9b27(bind)
 regchar(bind[7])
@@ -569,8 +563,8 @@ if bind[3]
             src
           end
 end
-def Detect_Switch_s_eq_Switch_855c(bind)
-s=Switch[{:act=>"*ame_curstr(self)",:first=>bind[5],:ary=>[[bind[5],src],[~bind[5],Apply["fails"]]]}];puts s.inspect;s 
+def Detect_Switch_s_eq_Switch_b4af(bind)
+s=Switch[{:act=>"*ame_curstr(self)",:first=>bind[5],:ary=>[[bind[5],src],[~bind[5],Apply["fails"]]]}] 
 end
 def Detect_Switch_s_eq_Switch_c27e(bind)
 s=Switch[{:act=>"*ame_curstr(self)",:first=>bind[5],:ary=>[[bind[5],Apply["anything"]],[~bind[5],Apply["fails"]]]}]
@@ -718,15 +712,15 @@ end
 
 
 def detect_switch_compiled_by
-'d80860c21291a5e842db3bd2405127b4'
+'3ae0b900b8d566c1cd4e4a34612b4676'
 end
 def detect_switch_source_hash
-'c773705d8dc2d11bcf03a21d1c2e7fbd'
+'c068775c343d65fe0623a39f104aed89'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'1bdfff3893f49c534e9e692edb14ea14'
+'7813df0af271def68d3495e69c4d946e'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"
