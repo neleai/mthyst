@@ -86,4 +86,6 @@ rewrite switch to do bottom-up construction
 
 paralelize compilation
 
+predicated inlining
+
 pseudoprocedures 

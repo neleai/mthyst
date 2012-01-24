@@ -263,7 +263,6 @@ class Detect_Switch < Detect_First
 			@switchdf.parse(:root,[])
 		end
 		r=@switchdf.analyze(s)
-		r|= CharLattice.empty if empty?(s)
 		r
 	end
 end
@@ -343,7 +342,8 @@ amethyst Detect_Switch < Detect_First {
                   {first(@self)}:firs {s=Switch[{:act=>"*ame_curstr(self)",:ary=>[[firs,Seq[Apply["anything"],Apply["_seq",CAct[str[1..-1]]]]],[~firs,Apply["fails"]]]}]}]
 
 				|  Apply[ ["fails"] {@self} ]
-				|	 Apply[ .* {first(@self)}:firs &{!empty?(@self) && firs!=CharLattice.top} {s=Switch[{:act=>"*ame_curstr(self)",:ary=>[[firs,@self],[~firs,Apply["fails"]]]}] }]
+				|  Many[ traverse:t first(t):firs &{!empty?(@self) && firs!=CharLattice.top} {s=Switch[{:act=>"*ame_curstr(self)",:ary=>[[firs,Many[t]],[~firs,Apply["fails"]]]}] }]
+				|	 Apply[ .*  {first(@self)}:firs &{!empty?(@self) && firs!=CharLattice.top} {s=Switch[{:act=>"*ame_curstr(self)",:ary=>[[firs,@self],[~firs,Apply["fails"]]]}] }]
 				| Seq[ traverse_item:frst traverse_item*:rest 	
 						 ( &{frst.is_a?(Switch)}  {s=Switch[{:act=>"*ame_curstr(self)",:ary=>frst.ary.map{|p,a| [p,Seq[[a]+rest]]}}];}
 							 | { Seq[[frst]+rest]}

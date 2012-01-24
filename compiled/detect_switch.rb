@@ -441,7 +441,6 @@ class Detect_Switch < Detect_First
 			@switchdf.parse(:root,[])
 		end
 		r=@switchdf.analyze(s)
-		r|= CharLattice.empty if empty?(s)
 		r
 	end
 end
@@ -538,20 +537,20 @@ end
 
 class Detect_Switch < Detect_First
 
-def Detect_Switch_Or_lb__ti_bind_ab33(bind)
-Or[*bind[27]]
+def Detect_Switch_Or_lb__ti_bind_a2aa(bind)
+Or[*bind[30]]
 end
-def Detect_Switch_Seq_lb__lb_bin_6017(bind)
-Seq[[bind[19]]+bind[22]]
+def Detect_Switch_Seq_lb__lb_bin_880b(bind)
+Seq[[bind[22]]+bind[25]]
 end
-def Detect_Switch__append_lp__05b0(bind)
-_append(bind[25],bind[26])
-end
-def Detect_Switch__append_lp__19cb(bind)
-_append(bind[20],bind[21])
+def Detect_Switch__append_lp__3c16(bind)
+_append(bind[28],bind[29])
 end
 def Detect_Switch__append_lp__7352(bind)
 _append(bind[4],bind[7])
+end
+def Detect_Switch__append_lp__89bf(bind)
+_append(bind[23],bind[24])
 end
 def Detect_Switch__append_lp__b494(bind)
 _append(bind[0],bind[10])
@@ -575,10 +574,10 @@ def Detect_Switch__lp_(bind)
 (!empty?(src) && bind[5]!=CharLattice.top) || FAIL
 end
 def Detect_Switch__lp_2(bind)
-(!bind[28]) || FAIL
+(!bind[31]) || FAIL
 end
-def Detect_Switch__lp_bind_lb_19_34e7(bind)
-(bind[19].is_a?(Switch)) || FAIL
+def Detect_Switch__lp_bind_lb_22_061d(bind)
+(bind[22].is_a?(Switch)) || FAIL
 end
 def Detect_Switch__lp_bind_lb_2_rb__6693(bind)
 (bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
@@ -586,14 +585,14 @@ end
 def Detect_Switch__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Detect_Switch_bind_lb_27_rb__7f13(bind)
-bind[27].each{|i| bind[28]=true if i.is_a?(Switch)}
+def Detect_Switch_bind_lb_30_rb__fcfe(bind)
+bind[30].each{|i| bind[31]=true if i.is_a?(Switch)}
 end
 def Detect_Switch_bind_lb_3_rb__lt__bb51(bind)
 bind[3]<<bind[4]
 end
-def Detect_Switch_c_eq_combin_5936(bind)
-c=combine_or(CharLattice.top,*bind[27]);c
+def Detect_Switch_c_eq_combin_752b(bind)
+c=combine_or(CharLattice.top,*bind[30]);c
 end
 def Detect_Switch_first_lp_sr_3298(bind)
 first(src)
@@ -606,14 +605,11 @@ if bind[3]
             src
           end
 end
-def Detect_Switch_puts_sp_bin_768b(bind)
-puts bind[27].inspect;puts bind[28].inspect
+def Detect_Switch_puts_sp_bin_756b(bind)
+puts bind[30].inspect;puts bind[31].inspect
 end
-def Detect_Switch_s_eq_Switch_01f6(bind)
-s=Switch[{:act=>"*ame_curstr(self)",:ary=>bind[30].map{|k,a| [k,Or[*a].dup.normalize]}}];puts s.inspect;s
-end
-def Detect_Switch_s_eq_Switch_030a(bind)
-s=Switch[{:act=>"*ame_curstr(self)",:ary=>bind[19].ary.map{|p,a| [p,Seq[[a]+bind[22]]]}}];
+def Detect_Switch_s_eq_Switch_3f47(bind)
+s=Switch[{:act=>"*ame_curstr(self)",:ary=>[[bind[5],Many[bind[17]]],[~bind[5],Apply["fails"]]]}] 
 end
 def Detect_Switch_s_eq_Switch_5558(bind)
 s=Switch[{:act=>"*ame_curstr(self)",:ary=>[[bind[5],src],[~bind[5],Apply["fails"]]]}] 
@@ -623,6 +619,12 @@ s=Switch[{:act=>"*ame_curstr(self)",:ary=>[[bind[5],Apply["anything"]],[~bind[5]
 end
 def Detect_Switch_s_eq_Switch_9e88(bind)
 s=Switch[{:act=>"*ame_curstr(self)",:ary=>[[bind[5],Seq[Apply["anything"],Apply["_seq",CAct[bind[11][1..-1]]]]],[~bind[5],Apply["fails"]]]}]
+end
+def Detect_Switch_s_eq_Switch_a407(bind)
+s=Switch[{:act=>"*ame_curstr(self)",:ary=>bind[22].ary.map{|p,a| [p,Seq[[a]+bind[25]]]}}];
+end
+def Detect_Switch_s_eq_Switch_b090(bind)
+s=Switch[{:act=>"*ame_curstr(self)",:ary=>bind[33].map{|k,a| [k,Or[*a].dup.normalize]}}];puts s.inspect;s
 end
 def Detect_Switch_src_25d9(bind)
 src
@@ -767,15 +769,15 @@ end
 
 
 def detect_switch_compiled_by
-'32c7a5b9f82343978fb5a29fd225d206'
+'526e851c915771d505c195de50e60c42'
 end
 def detect_switch_source_hash
-'244a59f70915c3e070230a6a437032d5'
+'0c2620a6daaac20d1ad1e515de7f0867'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'2cd288c0d68fcce0f8c5c880be950464'
+'f41d9fe56750e1fff6aacf2aaad2b7ae'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"
