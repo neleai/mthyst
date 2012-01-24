@@ -323,6 +323,18 @@ amethyst Detect_First < Traverser_Clone2 {
 	root = traverse
 }
 
+def combine_or(pred,frst,*rest)
+	puts pred.inspect,frst.inspect,rest.inspect;
+	r=[]
+	frst.ary.each{|p,alt| if pred&p!=CharLattice.bottom
+		if rest==[]
+			r<<[p&pred,[alt]]
+		else
+			r+=combine_or(p&pred,*rest).map{|s,k| [s,[alt]+k]}
+		end
+	end}
+	r
+end
 
 amethyst Detect_Switch < Detect_First {
 	visit =  Apply[ ["regch"] Act[.*] {first(@self)}:firs {s=Switch[{:act=>"*ame_curstr(self)",:ary=>[[firs,Apply["anything"]],[~firs,Apply["fails"]]]}]}]
@@ -332,9 +344,16 @@ amethyst Detect_Switch < Detect_First {
 				|  Apply[ ["fails"] {@self} ]
 				|	 Apply[ .* {first(@self)}:firs &{!empty?(@self) && firs!=CharLattice.top} {s=Switch[{:act=>"*ame_curstr(self)",:ary=>[[firs,@self],[~firs,Apply["fails"]]]}] }]
 				| Seq[ traverse_item:frst traverse_item*:rest 	
-						 ( &{frst.is_a?(Switch)}  {s=Switch[{:act=>"*ame_curstr(self)",:ary=>frst.ary.map{|p,a| [p,Seq[[a]+rest]]}}];puts s.inspect;s}
+						 ( &{frst.is_a?(Switch)}  {s=Switch[{:act=>"*ame_curstr(self)",:ary=>frst.ary.map{|p,a| [p,Seq[[a]+rest]]}}];}
 							 | { Seq[[frst]+rest]}
 						 )]
+				| Or[ (traverse_item)*:items {false}:unswitch {items.each{|i| unswitch=true if !i.is_a?(Switch)}}
+							{puts items.inspect;puts unswitch.inspect}
+							( &{puts unswitch.inspect;unswitch} {Or[*items]} 
+							| {c=combine_or(CharLattice.top,*items);puts "combined" ;puts c.inspect;c}:comb
+							{Switch[{:act=>"*ame_curstr(self)",:ary=>comb.map{|k,a| [k,Or[*a]]}}]}
+							)
+						]
 }
 
 amethyst Detect_ClasSwitch < Detect_First {

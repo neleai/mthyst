@@ -87,34 +87,70 @@ return it;
 fail: return failobj; }
 VALUE Amethyst_alnum(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-int oldpos1=ame_getpos(self);
+unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC(65) ... UC(90):;case UC(97) ... UC(122):; int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
- unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC(65) ... UC(90):;case UC(97) ... UC(122):;   it=Amethyst_alpha(self ); FAILTEST(alt1_2); bind_aset(bind,0/*_result*/,it);
- break;case UC(0) ... UC(64):;case UC(91) ... UC(96):;case UC(123) ... UC(255):;   it=Amethyst_fails(self ); FAILTEST(alt1_2); break;} 
+   it=Amethyst_alpha(self ); FAILTEST(alt1_2); bind_aset(bind,0/*_result*/,it);
+ 
 ame_setcut(self,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
- unsigned char chr2=*ame_curstr(self);  switch(chr2){case UC(48) ... UC(57):;   it=Amethyst_digit(self ); FAILTEST(alt1_3); bind_aset(bind,0/*_result*/,it);
- break;case UC(0) ... UC(47):;case UC(58) ... UC(255):;   it=Amethyst_fails(self ); FAILTEST(alt1_3); break;} 
+   it=Amethyst_fails(self ); FAILTEST(alt1_3); 
 ame_setcut(self,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,0/*_result*/);
+it=bind_aget(bind,0/*_result*/); break;case UC(48) ... UC(57):; int oldpos2=ame_getpos(self);
+alt2_1: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+   it=Amethyst_fails(self ); FAILTEST(alt2_2); 
+ame_setcut(self,Qnil);goto accept2;
+alt2_2: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+   it=Amethyst_digit(self ); FAILTEST(alt2_3); bind_aset(bind,0/*_result*/,it);
+ 
+ame_setcut(self,Qnil);goto accept2;
+  alt2_3:  ame_setpos(self,oldpos2); goto fail;
+ accept2:;
+it=bind_aget(bind,0/*_result*/); break;case UC(0) ... UC(47):;case UC(58) ... UC(64):;case UC(91) ... UC(96):;case UC(123) ... UC(255):; int oldpos3=ame_getpos(self);
+alt3_1: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+   it=Amethyst_fails(self ); FAILTEST(alt3_2); 
+ame_setcut(self,Qnil);goto accept3;
+alt3_2: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+   it=Amethyst_fails(self ); FAILTEST(alt3_3); 
+ame_setcut(self,Qnil);goto accept3;
+  alt3_3:  ame_setpos(self,oldpos3); goto fail;
+ accept3:;
+it=bind_aget(bind,0/*_result*/); break;}
 return it;
 fail: return failobj; }
 VALUE Amethyst_alpha(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-int oldpos1=ame_getpos(self);
+unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC(97) ... UC(122):; int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
- unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC(97) ... UC(122):;   it=Amethyst_lower(self ); FAILTEST(alt1_2); bind_aset(bind,0/*_result*/,it);
- break;case UC(0) ... UC(96):;case UC(123) ... UC(255):;   it=Amethyst_fails(self ); FAILTEST(alt1_2); break;} 
+   it=Amethyst_lower(self ); FAILTEST(alt1_2); bind_aset(bind,0/*_result*/,it);
+ 
 ame_setcut(self,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
- unsigned char chr2=*ame_curstr(self);  switch(chr2){case UC(65) ... UC(90):;   it=Amethyst_upper(self ); FAILTEST(alt1_3); bind_aset(bind,0/*_result*/,it);
- break;case UC(0) ... UC(64):;case UC(91) ... UC(255):;   it=Amethyst_fails(self ); FAILTEST(alt1_3); break;} 
+   it=Amethyst_fails(self ); FAILTEST(alt1_3); 
 ame_setcut(self,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,0/*_result*/);
+it=bind_aget(bind,0/*_result*/); break;case UC(65) ... UC(90):; int oldpos2=ame_getpos(self);
+alt2_1: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+   it=Amethyst_fails(self ); FAILTEST(alt2_2); 
+ame_setcut(self,Qnil);goto accept2;
+alt2_2: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+   it=Amethyst_upper(self ); FAILTEST(alt2_3); bind_aset(bind,0/*_result*/,it);
+ 
+ame_setcut(self,Qnil);goto accept2;
+  alt2_3:  ame_setpos(self,oldpos2); goto fail;
+ accept2:;
+it=bind_aget(bind,0/*_result*/); break;case UC(0) ... UC(64):;case UC(91) ... UC(96):;case UC(123) ... UC(255):; int oldpos3=ame_getpos(self);
+alt3_1: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+   it=Amethyst_fails(self ); FAILTEST(alt3_2); 
+ame_setcut(self,Qnil);goto accept3;
+alt3_2: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+   it=Amethyst_fails(self ); FAILTEST(alt3_3); 
+ame_setcut(self,Qnil);goto accept3;
+  alt3_3:  ame_setpos(self,oldpos3); goto fail;
+ accept3:;
+it=bind_aget(bind,0/*_result*/); break;}
 return it;
 fail: return failobj; }
 VALUE Amethyst_char(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(2);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -288,25 +324,49 @@ return it;
 fail: return failobj; }
 VALUE Amethyst_newline(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(2);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-int oldpos1=ame_getpos(self);
+unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC(13) ... UC(13):; int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
- unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC(13) ... UC(13):;   it=AmethystCore_anything(self ); FAILTEST(alt1_2);if (strncmp(ame_curstr(self),"\n",1)) goto alt1_2; else ame_setpos(self,ame_getpos(self)+1);it=rb_obj_clone(s__bs_r_bs_n_bdb2); bind_aset(bind,0/*_result*/,it);
+   it=AmethystCore_anything(self ); FAILTEST(alt1_2);if (strncmp(ame_curstr(self),"\n",1)) goto alt1_2; else ame_setpos(self,ame_getpos(self)+1);it=rb_obj_clone(s__bs_r_bs_n_bdb2); bind_aset(bind,0/*_result*/,it);
 it=bind_aget(bind,0/*_result*/); bind_aset(bind,1/*_result*/,it);
- break;case UC(0) ... UC(12):;case UC(14) ... UC(255):;   it=Amethyst_fails(self ); FAILTEST(alt1_2); break;} 
+ 
 ame_setcut(self,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
- unsigned char chr2=*ame_curstr(self);  switch(chr2){case UC(13) ... UC(13):;   it=AmethystCore_anything(self ); FAILTEST(alt1_3);it=rb_obj_clone(s__bs_r_8ce5); bind_aset(bind,0/*_result*/,it);
+   it=AmethystCore_anything(self ); FAILTEST(alt1_3);it=rb_obj_clone(s__bs_r_8ce5); bind_aset(bind,0/*_result*/,it);
 it=bind_aget(bind,0/*_result*/); bind_aset(bind,1/*_result*/,it);
- break;case UC(0) ... UC(12):;case UC(14) ... UC(255):;   it=Amethyst_fails(self ); FAILTEST(alt1_3); break;} 
+ 
 ame_setcut(self,Qnil);goto accept1;
 alt1_3: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
- unsigned char chr3=*ame_curstr(self);  switch(chr3){case UC(10) ... UC(10):;   it=AmethystCore_anything(self ); FAILTEST(alt1_4);it=rb_obj_clone(s__bs_n_1d78); bind_aset(bind,0/*_result*/,it);
-it=bind_aget(bind,0/*_result*/); bind_aset(bind,1/*_result*/,it);
- break;case UC(0) ... UC(9):;case UC(11) ... UC(255):;   it=Amethyst_fails(self ); FAILTEST(alt1_4); break;} 
+   it=Amethyst_fails(self ); FAILTEST(alt1_4); 
 ame_setcut(self,Qnil);goto accept1;
   alt1_4:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,1/*_result*/);
+it=bind_aget(bind,1/*_result*/); break;case UC(10) ... UC(10):; int oldpos2=ame_getpos(self);
+alt2_1: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+   it=Amethyst_fails(self ); FAILTEST(alt2_2); 
+ame_setcut(self,Qnil);goto accept2;
+alt2_2: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+   it=Amethyst_fails(self ); FAILTEST(alt2_3); 
+ame_setcut(self,Qnil);goto accept2;
+alt2_3: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+   it=AmethystCore_anything(self ); FAILTEST(alt2_4);it=rb_obj_clone(s__bs_n_1d78); bind_aset(bind,0/*_result*/,it);
+it=bind_aget(bind,0/*_result*/); bind_aset(bind,1/*_result*/,it);
+ 
+ame_setcut(self,Qnil);goto accept2;
+  alt2_4:  ame_setpos(self,oldpos2); goto fail;
+ accept2:;
+it=bind_aget(bind,1/*_result*/); break;case UC(0) ... UC(9):;case UC(11) ... UC(12):;case UC(14) ... UC(255):; int oldpos3=ame_getpos(self);
+alt3_1: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+   it=Amethyst_fails(self ); FAILTEST(alt3_2); 
+ame_setcut(self,Qnil);goto accept3;
+alt3_2: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+   it=Amethyst_fails(self ); FAILTEST(alt3_3); 
+ame_setcut(self,Qnil);goto accept3;
+alt3_3: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+   it=Amethyst_fails(self ); FAILTEST(alt3_4); 
+ame_setcut(self,Qnil);goto accept3;
+  alt3_4:  ame_setpos(self,oldpos3); goto fail;
+ accept3:;
+it=bind_aget(bind,1/*_result*/); break;}
 return it;
 fail: return failobj; }
 VALUE Amethyst_nil(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(4);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -458,19 +518,37 @@ return it;
 fail: return failobj; }
 VALUE Amethyst_word(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(2);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-int oldpos1=ame_getpos(self);
+unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC(65) ... UC(90):;case UC(97) ... UC(122):; int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
- unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC(65) ... UC(90):;case UC(97) ... UC(122):;   it=Amethyst_alpha(self ); FAILTEST(alt1_2); bind_aset(bind,0/*_result*/,it);
- break;case UC(0) ... UC(64):;case UC(91) ... UC(96):;case UC(123) ... UC(255):;   it=Amethyst_fails(self ); FAILTEST(alt1_2); break;} 
+   it=Amethyst_alpha(self ); FAILTEST(alt1_2); bind_aset(bind,0/*_result*/,it);
+ 
 ame_setcut(self,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
- unsigned char chr2=*ame_curstr(self);  switch(chr2){case UC(95) ... UC(95):;   it=AmethystCore_anything(self ); FAILTEST(alt1_3);it=rb_obj_clone(s___b14a); bind_aset(bind,1/*_result*/,it);
-it=bind_aget(bind,1/*_result*/); bind_aset(bind,0/*_result*/,it);
- break;case UC(0) ... UC(94):;case UC(96) ... UC(255):;   it=Amethyst_fails(self ); FAILTEST(alt1_3); break;} 
+   it=Amethyst_fails(self ); FAILTEST(alt1_3); 
 ame_setcut(self,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,0/*_result*/);
+it=bind_aget(bind,0/*_result*/); break;case UC(95) ... UC(95):; int oldpos2=ame_getpos(self);
+alt2_1: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+   it=Amethyst_fails(self ); FAILTEST(alt2_2); 
+ame_setcut(self,Qnil);goto accept2;
+alt2_2: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+   it=AmethystCore_anything(self ); FAILTEST(alt2_3);it=rb_obj_clone(s___b14a); bind_aset(bind,1/*_result*/,it);
+it=bind_aget(bind,1/*_result*/); bind_aset(bind,0/*_result*/,it);
+ 
+ame_setcut(self,Qnil);goto accept2;
+  alt2_3:  ame_setpos(self,oldpos2); goto fail;
+ accept2:;
+it=bind_aget(bind,0/*_result*/); break;case UC(0) ... UC(64):;case UC(91) ... UC(94):;case UC(96) ... UC(96):;case UC(123) ... UC(255):; int oldpos3=ame_getpos(self);
+alt3_1: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+   it=Amethyst_fails(self ); FAILTEST(alt3_2); 
+ame_setcut(self,Qnil);goto accept3;
+alt3_2: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+   it=Amethyst_fails(self ); FAILTEST(alt3_3); 
+ame_setcut(self,Qnil);goto accept3;
+  alt3_3:  ame_setpos(self,oldpos3); goto fail;
+ accept3:;
+it=bind_aget(bind,0/*_result*/); break;}
 return it;
 fail: return failobj; }
 VALUE Amethyst_xdigit(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -558,4 +636,4 @@ rb_define_method(cls_Amethyst,"until",Amethyst_until,1);
 rb_define_method(cls_Amethyst,"upper",Amethyst_upper,0);
 rb_define_method(cls_Amethyst,"word",Amethyst_word,0);
 rb_define_method(cls_Amethyst,"xdigit",Amethyst_xdigit,0);
- rb_eval_string("testversionamethyst('19648e97e6ffc94f0b53a09899b8da71')");}
+ rb_eval_string("testversionamethyst('c5f785c90118e2d9ca94fac99ada2ff2')");}
