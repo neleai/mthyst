@@ -25,7 +25,7 @@ end
 
 class FirstLattice
 	attr_accessor :ary
-  def self.empty;    self[Empty];  end
+  def self.empty;    self[];  		 end
   def self.bottom;   self[];			 end
 	
 	def |(a)

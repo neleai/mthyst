@@ -25,7 +25,7 @@ end
 
 class FirstLattice
 	attr_accessor :ary
-  def self.empty;    self[Empty];  end
+  def self.empty;    self[];  		 end
   def self.bottom;   self[];			 end
 	
 	def |(a)
@@ -709,7 +709,7 @@ def detect_switch_compiled_by
 '237e4b6c6d213021a16166ba8d8aa563'
 end
 def detect_switch_source_hash
-'edcb565aafbebf517cf4f07486724249'
+'312edb5079e803bf2b97f10ee950aef6'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
