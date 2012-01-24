@@ -210,7 +210,7 @@ class ClasSwitch_Dataflow < First_Dataflow
 	end
 end
 amethyst First_Dataflow {
-	value =  .:x  {depends(x);puts "#{x.inspect} #{@@vals[x].inspect}"; 
+	value =  .:x  {depends(x);#puts "#{x.inspect} #{@@vals[x].inspect}"; 
 @@vals[x]}
 
 
@@ -218,8 +218,7 @@ amethyst First_Dataflow {
 	
 	first =	Switch[&{@first.is_a?(lattice)} .* {@first}]
 				| Switch[ [ .:e (&{e.ary!=["default"]} value:vals[]|.) ]* {vals.inject(:|)} ]
-				| Seq[{lattice.empty}:val (.:el {el}=>value:nev {puts "#{val.inspect} #{nev.inspect} #{val.seqjoin(nev).inspect} #{el.inspect}";}
-				{val.seqjoin(nev)}:val  (~{empty?(el)} break | empty) )*   .* {val}]
+				| Seq[{lattice.empty}:val (.:el {el}=>value:nev {val.seqjoin(nev)}:val  (~{empty?(el)} break | empty) )*   .* {val}]
 				| Many[value:val {val|lattice.empty} ]
 				| Or[value*:{it.inject(:|)}]
 				| Switch[value*:{it.inject(:|)}]
@@ -286,7 +285,6 @@ class Detect_ClasSwitch < Detect_First
 			@switchdf.parse(:root,[])
 		end
 		r=@switchdf.analyze(s)
-		puts "#{empty?(s)} #{r.inspect} #{s.inspect}" if empty?(s) != r.ary.include?(Empty)
 		return (r|ClasLattice.top)-ClasLattice.empty if empty?(s)
 		return r
 	end
@@ -349,7 +347,7 @@ amethyst Detect_Switch < Detect_First {
 		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.inject(:|),v[0][1]]}.sort_by{|el| el.inspect}}
 		{ary3<<[CharLattice["default"],Apply["fails"]] unless ary2.include?("default")}
     &{ary3.size>1}
-		{s=Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>ary3}];puts s.inspect;
+		{s=Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>ary3}];#puts s.inspect;
 		s}
 	]
 	
@@ -387,7 +385,7 @@ amethyst Detect_ClasSwitch < Detect_First {
 
 		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.sort_by{|el| el.inspect},v[0][1]]}.sort_by{|el| el.inspect}}
 		{ary3=ary3.map{|o,v| [ClasLattice[*o],v]}}
-	  {c=classswitch(ary2,firs,ary3);puts c.inspect;
+	  {c=classswitch(ary2,firs,ary3);#puts c.inspect;
      c}
 	]
 
