@@ -351,8 +351,8 @@ amethyst Detect_Switch < Detect_First {
 				| Or[ (traverse_item)*:items {false}:aswitch {items.each{|i| aswitch=true if i.is_a?(Switch)}}
 							{puts items.inspect;puts aswitch.inspect}
 							( &{!aswitch} {Or[*items]} 
-							| {c=combine_or(CharLattice.top,*items);puts "combined" ;puts c.inspect;c}:comb
-							{Switch[{:act=>"*ame_curstr(self)",:ary=>comb.map{|k,a| [k,Or[*a]]}}]}
+							| {c=combine_or(CharLattice.top,*items);c}:comb
+							{s=Switch[{:act=>"*ame_curstr(self)",:ary=>comb.map{|k,a| [k,Or[*a].dup.normalize]}}];puts s.inspect;s}
 							)
 						]
 }

@@ -299,7 +299,7 @@ end
 
 
 def parser_compiled_by
-'b3351cd77013be50625d0af466687118'
+'32c7a5b9f82343978fb5a29fd225d206'
 end
 def parser_source_hash
 '26066aa8bfcbc2bed77ea540e666faf6'
@@ -308,6 +308,6 @@ def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'05771fe6e9b8361d626a0e3e7eb9a8f3'
+'52eed4ad42a158d7aa63d0748c1912ef'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/parser_c"

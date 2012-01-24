@@ -544,9 +544,6 @@ end
 def Detect_Switch_Seq_lb__lb_bin_6017(bind)
 Seq[[bind[19]]+bind[22]]
 end
-def Detect_Switch_Switch_lb__le__6e06(bind)
-Switch[{:act=>"*ame_curstr(self)",:ary=>bind[30].map{|k,a| [k,Or[*a]]}}]
-end
 def Detect_Switch__append_lp__05b0(bind)
 _append(bind[25],bind[26])
 end
@@ -595,8 +592,8 @@ end
 def Detect_Switch_bind_lb_3_rb__lt__bb51(bind)
 bind[3]<<bind[4]
 end
-def Detect_Switch_c_eq_combin_39b5(bind)
-c=combine_or(CharLattice.top,*bind[27]);puts "combined" ;puts c.inspect;c
+def Detect_Switch_c_eq_combin_5936(bind)
+c=combine_or(CharLattice.top,*bind[27]);c
 end
 def Detect_Switch_first_lp_sr_3298(bind)
 first(src)
@@ -611,6 +608,9 @@ if bind[3]
 end
 def Detect_Switch_puts_sp_bin_768b(bind)
 puts bind[27].inspect;puts bind[28].inspect
+end
+def Detect_Switch_s_eq_Switch_01f6(bind)
+s=Switch[{:act=>"*ame_curstr(self)",:ary=>bind[30].map{|k,a| [k,Or[*a].dup.normalize]}}];puts s.inspect;s
 end
 def Detect_Switch_s_eq_Switch_030a(bind)
 s=Switch[{:act=>"*ame_curstr(self)",:ary=>bind[19].ary.map{|p,a| [p,Seq[[a]+bind[22]]]}}];
@@ -767,15 +767,15 @@ end
 
 
 def detect_switch_compiled_by
-'b3351cd77013be50625d0af466687118'
+'32c7a5b9f82343978fb5a29fd225d206'
 end
 def detect_switch_source_hash
-'17d9a93fe619d77b421ca8707399e7f0'
+'244a59f70915c3e070230a6a437032d5'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'ccc29555a641f50f0ca6db10ff1854d7'
+'2cd288c0d68fcce0f8c5c880be950464'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

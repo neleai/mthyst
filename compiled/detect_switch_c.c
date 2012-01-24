@@ -1314,7 +1314,6 @@ static VALUE c_Rule;
 static VALUE c_Seq;
 static VALUE sy_Detect_Switch_Or_lb__ti_bind_ab33;
 static VALUE sy_Detect_Switch_Seq_lb__lb_bin_6017;
-static VALUE sy_Detect_Switch_Switch_lb__le__6e06;
 static VALUE sy_Detect_Switch__append_lp__05b0;
 static VALUE sy_Detect_Switch__append_lp__19cb;
 static VALUE sy_Detect_Switch__append_lp__7352;
@@ -1331,10 +1330,11 @@ static VALUE sy_Detect_Switch__lp_bind_lb_2_rb__6693;
 static VALUE sy_Detect_Switch__lp_src_dot_ins_6a75;
 static VALUE sy_Detect_Switch_bind_lb_27_rb__7f13;
 static VALUE sy_Detect_Switch_bind_lb_3_rb__lt__bb51;
-static VALUE sy_Detect_Switch_c_eq_combin_39b5;
+static VALUE sy_Detect_Switch_c_eq_combin_5936;
 static VALUE sy_Detect_Switch_first_lp_sr_3298;
 static VALUE sy_Detect_Switch_if_sp_bind_lb__f1e9;
 static VALUE sy_Detect_Switch_puts_sp_bin_768b;
+static VALUE sy_Detect_Switch_s_eq_Switch_01f6;
 static VALUE sy_Detect_Switch_s_eq_Switch_030a;
 static VALUE sy_Detect_Switch_s_eq_Switch_5558;
 static VALUE sy_Detect_Switch_s_eq_Switch_904b;
@@ -1632,8 +1632,8 @@ alt4_1: ame_setpos(self,oldpos8);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
  
 ame_setcut(self,Qnil);goto accept4;
 alt4_2: ame_setpos(self,oldpos8);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto pass11;}
- it=rb_funcall(self,sy_Detect_Switch_c_eq_combin_39b5,1,bind);  bind_aset(bind,30/*comb*/,it);
-it=rb_funcall(self,sy_Detect_Switch_Switch_lb__le__6e06,1,bind);  bind_aset(bind,29/*autovar*/,it);
+ it=rb_funcall(self,sy_Detect_Switch_c_eq_combin_5936,1,bind);  bind_aset(bind,30/*comb*/,it);
+it=rb_funcall(self,sy_Detect_Switch_s_eq_Switch_01f6,1,bind);  bind_aset(bind,29/*autovar*/,it);
  
 ame_setcut(self,Qnil);goto accept4;
   alt4_3:  ame_setpos(self,oldpos8); goto pass11;
@@ -2145,7 +2145,6 @@ c_Rule=rb_const_get(rb_cObject, rb_intern("Rule"));rb_ary_push(rb_const_get(rb_c
 c_Seq=rb_const_get(rb_cObject, rb_intern("Seq"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Seq);
 sy_Detect_Switch_Or_lb__ti_bind_ab33=rb_intern("Detect_Switch_Or_lb__ti_bind_ab33");
 sy_Detect_Switch_Seq_lb__lb_bin_6017=rb_intern("Detect_Switch_Seq_lb__lb_bin_6017");
-sy_Detect_Switch_Switch_lb__le__6e06=rb_intern("Detect_Switch_Switch_lb__le__6e06");
 sy_Detect_Switch__append_lp__05b0=rb_intern("Detect_Switch__append_lp__05b0");
 sy_Detect_Switch__append_lp__19cb=rb_intern("Detect_Switch__append_lp__19cb");
 sy_Detect_Switch__append_lp__7352=rb_intern("Detect_Switch__append_lp__7352");
@@ -2162,10 +2161,11 @@ sy_Detect_Switch__lp_bind_lb_2_rb__6693=rb_intern("Detect_Switch__lp_bind_lb_2_r
 sy_Detect_Switch__lp_src_dot_ins_6a75=rb_intern("Detect_Switch__lp_src_dot_ins_6a75");
 sy_Detect_Switch_bind_lb_27_rb__7f13=rb_intern("Detect_Switch_bind_lb_27_rb__7f13");
 sy_Detect_Switch_bind_lb_3_rb__lt__bb51=rb_intern("Detect_Switch_bind_lb_3_rb__lt__bb51");
-sy_Detect_Switch_c_eq_combin_39b5=rb_intern("Detect_Switch_c_eq_combin_39b5");
+sy_Detect_Switch_c_eq_combin_5936=rb_intern("Detect_Switch_c_eq_combin_5936");
 sy_Detect_Switch_first_lp_sr_3298=rb_intern("Detect_Switch_first_lp_sr_3298");
 sy_Detect_Switch_if_sp_bind_lb__f1e9=rb_intern("Detect_Switch_if_sp_bind_lb__f1e9");
 sy_Detect_Switch_puts_sp_bin_768b=rb_intern("Detect_Switch_puts_sp_bin_768b");
+sy_Detect_Switch_s_eq_Switch_01f6=rb_intern("Detect_Switch_s_eq_Switch_01f6");
 sy_Detect_Switch_s_eq_Switch_030a=rb_intern("Detect_Switch_s_eq_Switch_030a");
 sy_Detect_Switch_s_eq_Switch_5558=rb_intern("Detect_Switch_s_eq_Switch_5558");
 sy_Detect_Switch_s_eq_Switch_904b=rb_intern("Detect_Switch_s_eq_Switch_904b");
@@ -2234,4 +2234,4 @@ rb_define_method(cls_Detect_ClasSwitch,"root",Detect_ClasSwitch_root,0);
 rb_define_method(cls_Detect_ClasSwitch,"traverse",Detect_ClasSwitch_traverse,0);
 rb_define_method(cls_Detect_ClasSwitch,"traverse_item",Detect_ClasSwitch_traverse_item,0);
 rb_define_method(cls_Detect_ClasSwitch,"visit",Detect_ClasSwitch_visit,0);
- rb_eval_string("testversiondetect_switch('ccc29555a641f50f0ca6db10ff1854d7')");}
+ rb_eval_string("testversiondetect_switch('2cd288c0d68fcce0f8c5c880be950464')");}
