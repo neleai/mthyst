@@ -24,8 +24,8 @@ end
 
 class Analyze_Variables2 < Traverser_Clone2
 
-def Analyze_Variables2_Act_lb_bind_1972(bind)
-Act[bind[9],bind[1],bind[2]]
+def Analyze_Variables2_Act_lb_bind_14b8(bind)
+Act[bind[5],bind[10],bind[11]]
 end
 def Analyze_Variables2_Placehol_6875(bind)
 Placeholder
@@ -33,11 +33,11 @@ end
 def Analyze_Variables2__append_lp__7352(bind)
 _append(bind[4],bind[7])
 end
+def Analyze_Variables2__append_lp__835a(bind)
+_append(bind[17],bind[18])
+end
 def Analyze_Variables2__append_lp__b494(bind)
 _append(bind[0],bind[10])
-end
-def Analyze_Variables2__append_lp__b6c7(bind)
-_append(bind[7],bind[8])
 end
 def Analyze_Variables2__append_lp__f8f8(bind)
 _append(bind[0],bind[3])
@@ -61,22 +61,22 @@ def Analyze_Variables2__at_variabl_f612(bind)
 @variables=Hash.new{|k,v| k[v]=v} ;(src.locals+src.args).each{|w| @variables[w[0]]=w}
 end
 def Analyze_Variables2__lp_(bind)
-(!bind[1]) || FAIL
+(!bind[10]) || FAIL
 end
 def Analyze_Variables2__lp_bind_lb_2_rb__6693(bind)
 (bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
 end
-def Analyze_Variables2__lp_bind_lb_9_rb__a874(bind)
-(bind[9].size==1&&(bind[9][0].is_a?(Local)||bind[9][0].is_a?(Global)||bind[9][0].is_a?(Key))) ? bind[9][0] : Args[*bind[9]]
+def Analyze_Variables2__lp_bind_lb_5_rb__0a18(bind)
+(bind[5].size==1&&(bind[5][0].is_a?(Local)||bind[5][0].is_a?(Global)||bind[5][0].is_a?(Key))) ? bind[5][0] : Args[*bind[5]]
 end
 def Analyze_Variables2__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Analyze_Variables2_bind_lb_5_rb__lt__1671(bind)
-bind[5]<<bind[6]
+def Analyze_Variables2_bind_lb_3_rb__lt__bb51(bind)
+bind[3]<<bind[4]
 end
-def Analyze_Variables2_connects_0812(bind)
-connectstring(bind[20].flatten)
+def Analyze_Variables2_connects_942c(bind)
+connectstring(bind[4].flatten)
 end
 def Analyze_Variables2_if_sp_bind_lb__f1e9(bind)
 if bind[3]
@@ -143,8 +143,8 @@ end
 def Resolve_Calls_a_eq_Apply_lb__c6ab(bind)
 a=Apply[bind[7],{:clas=>resolvegrammar(@grammar.name,bind[7])}];a
 end
-def Resolve_Calls_bind_lb_5_rb__lt__1671(bind)
-bind[5]<<bind[6]
+def Resolve_Calls_bind_lb_3_rb__lt__bb51(bind)
+bind[3]<<bind[4]
 end
 def Resolve_Calls_if_sp_bind_lb__f1e9(bind)
 if bind[3]
@@ -172,7 +172,7 @@ end
 
 
 def detect_variables2_compiled_by
-'760b91eb1606745a6b87e7de60d49c79'
+'7a46ef5c08dd9fd7e6cb2f1b82dc5d0c'
 end
 def detect_variables2_source_hash
 'c9251d799411111e1943aa35d33a2e58'
@@ -181,6 +181,6 @@ def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'a2c8ac6301ef21e276f0ad72924411b1'
+'463b6a42f023b2e2e90cf3e3bfa70125'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_variables2_c"
