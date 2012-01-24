@@ -138,6 +138,11 @@ class Or
 		return Apply["fails"] if args.size==0
 		Or.create({:ary=>args}).normalize
 	end
+	def normalize2
+		@ary=@ary.select{|e| !(e.is_a?(Apply)&& e.ary[0]=="fails")}
+		return Apply["fails"] if @ary.size==0
+		super
+	end
 end
 
 class PureAct

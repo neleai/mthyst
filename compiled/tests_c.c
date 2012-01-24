@@ -28,36 +28,9 @@ return it;
 fail: return failobj; }
 VALUE Tests_de(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC(32) ... UC(32):;case UC(97) ... UC(99):; int oldpos1=ame_getpos(self);
-alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-   it=Tests_abc(self ); FAILTEST(alt1_2); bind_aset(bind,0/*_result*/,it);
- 
-ame_setcut(self,Qnil);goto accept1;
-alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-   it=rb_funcall(self,sy_fails,0); FAILTEST(alt1_3); 
-ame_setcut(self,Qnil);goto accept1;
-  alt1_3:  ame_setpos(self,oldpos1); goto fail;
- accept1:;
-it=bind_aget(bind,0/*_result*/); break;case UC(100) ... UC(101):; int oldpos2=ame_getpos(self);
-alt2_1: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-   it=rb_funcall(self,sy_fails,0); FAILTEST(alt2_2); 
-ame_setcut(self,Qnil);goto accept2;
-alt2_2: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-   it=AmethystCore_anything(self ); FAILTEST(alt2_3); bind_aset(bind,0/*_result*/,it);
- 
-ame_setcut(self,Qnil);goto accept2;
-  alt2_3:  ame_setpos(self,oldpos2); goto fail;
- accept2:;
-it=bind_aget(bind,0/*_result*/); break;case UC(0) ... UC(31):;case UC(33) ... UC(96):;case UC(102) ... UC(255):; int oldpos3=ame_getpos(self);
-alt3_1: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-   it=rb_funcall(self,sy_fails,0); FAILTEST(alt3_2); 
-ame_setcut(self,Qnil);goto accept3;
-alt3_2: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-   it=rb_funcall(self,sy_fails,0); FAILTEST(alt3_3); 
-ame_setcut(self,Qnil);goto accept3;
-  alt3_3:  ame_setpos(self,oldpos3); goto fail;
- accept3:;
-it=bind_aget(bind,0/*_result*/); break;}
+unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC(32) ... UC(32):;case UC(97) ... UC(99):;   it=Tests_abc(self ); FAILTEST(fail); bind_aset(bind,0/*_result*/,it);
+it=bind_aget(bind,0/*_result*/); break;case UC(100) ... UC(101):;   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,0/*_result*/,it);
+it=bind_aget(bind,0/*_result*/); break;case UC(0) ... UC(31):;case UC(33) ... UC(96):;case UC(102) ... UC(255):;   it=rb_funcall(self,sy_fails,0); FAILTEST(fail); break;}
 return it;
 fail: return failobj; }
 VALUE Tests_foo(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(3);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -160,4 +133,4 @@ rb_define_method(cls_Tests,"foo",Tests_foo,0);
 rb_define_method(cls_Tests,"s2",Tests_s2,0);
 rb_define_method(cls_Tests,"sw",Tests_sw,0);
 rb_define_method(cls_Tests,"test",Tests_test,0);
- rb_eval_string("testversiontests('4910aebdb2e45f7096ec90832b934abd')");}
+ rb_eval_string("testversiontests('0f7254adb09b799308f9a51e8ec9c4e4')");}
