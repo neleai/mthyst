@@ -140,8 +140,8 @@ end
 def Resolve_Calls__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Resolve_Calls_a_eq_Apply_lb__c6ab(bind)
-a=Apply[bind[7],{:clas=>resolvegrammar(@grammar.name,bind[7])}];a
+def Resolve_Calls_a_eq_Apply_lb__35a8(bind)
+a=Apply[bind[8],{:clas=>resolvegrammar(@grammar.name,bind[8])}];a
 end
 def Resolve_Calls_bind_lb_3_rb__lt__bb51(bind)
 bind[3]<<bind[4]
@@ -172,7 +172,7 @@ end
 
 
 def detect_variables2_compiled_by
-'2db6b2126547e7fd036aa8dc54cc5301'
+'274d150c0eee53af015137c2231acd30'
 end
 def detect_variables2_source_hash
 'c9251d799411111e1943aa35d33a2e58'
@@ -181,6 +181,6 @@ def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'7cbccb854331e54ae4b9ac2133cc95ac'
+'1f4077c3aa8e52622897c6b2909beebb'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_variables2_c"
