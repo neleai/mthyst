@@ -333,7 +333,10 @@ amethyst Detect_Switch < Detect_First {
 
 				|  Apply[ ["fails"] {@self} ]
 				|	 Apply[ .* {first(@self)}:firs &{!empty?(@self) && firs!=CharLattice.top} {s=Switch[{:act=>"*ame_curstr(self)",:ary=>[[firs,@self],[~firs,Apply["fails"]]]}] }]
-	
+				| Seq[ traverse_item:frst traverse_item*:rest 	
+						 ( &{frst.is_a?(Switch)}  {s=Switch[{:act=>"*ame_curstr(self)",:ary=>frst.ary.map{|p,a| [p,Seq[[a]+rest]]}}];puts s.inspect;s}
+							 | { Seq[[frst]+rest]}
+						 )]
 }
 
 amethyst Detect_ClasSwitch < Detect_First {

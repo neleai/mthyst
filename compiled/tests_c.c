@@ -23,7 +23,7 @@ static VALUE sy_token;
 VALUE Tests_abc(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
 unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC(32) ... UC(32):;case UC(97) ... UC(97):;case UC(98) ... UC(98):;case UC(99) ... UC(99):;   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,0/*_result*/,it);
- break;case UC(0) ... UC(31):;case UC(33) ... UC(96):;case UC(100) ... UC(255):;   it=rb_funcall(self,sy_fails,0); FAILTEST(fail); break;}it=bind_aget(bind,0/*_result*/);
+it=bind_aget(bind,0/*_result*/); break;case UC(0) ... UC(31):;case UC(33) ... UC(96):;case UC(100) ... UC(255):;   it=rb_funcall(self,sy_fails,0); FAILTEST(fail); break;}
 return it;
 fail: return failobj; }
 VALUE Tests_de(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -67,8 +67,8 @@ alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
  break;case UC(0) ... UC(96):;case UC(99) ... UC(255):;   it=rb_funcall(self,sy_fails,0); FAILTEST(alt1_2); break;} 
 ame_setcut(self,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
- unsigned char chr2=*ame_curstr(self);  switch(chr2){case UC(100) ... UC(100):;case UC(101) ... UC(101):;case UC(102) ... UC(102):;   it=AmethystCore_anything(self ); FAILTEST(alt1_3); break;case UC(0) ... UC(99):;case UC(103) ... UC(255):;   it=rb_funcall(self,sy_fails,0); FAILTEST(alt1_3); break;}it=i_3; bind_aset(bind,0/*_result*/,it);
- 
+ unsigned char chr2=*ame_curstr(self);  switch(chr2){case UC(100) ... UC(100):;case UC(101) ... UC(101):;case UC(102) ... UC(102):;   it=AmethystCore_anything(self ); FAILTEST(alt1_3);it=i_3; bind_aset(bind,0/*_result*/,it);
+ break;case UC(0) ... UC(99):;case UC(103) ... UC(255):;   it=rb_funcall(self,sy_fails,0); FAILTEST(alt1_3); break;} 
 ame_setcut(self,Qnil);goto accept1;
 alt1_3: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
   it=rb_obj_clone(s_g_b2f5); arg0=it; it=rb_funcall(self,sy_seq,1,arg0); FAILTEST(alt1_4); bind_aset(bind,0/*_result*/,it);
@@ -142,4 +142,4 @@ rb_define_method(cls_Tests,"foo",Tests_foo,0);
 rb_define_method(cls_Tests,"s2",Tests_s2,0);
 rb_define_method(cls_Tests,"sw",Tests_sw,0);
 rb_define_method(cls_Tests,"test",Tests_test,0);
- rb_eval_string("testversiontests('38ee7270fff13ad84e358e669f1d90d3')");}
+ rb_eval_string("testversiontests('7e2c118e7d50c3c522de7b6d9ed099ae')");}

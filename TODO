@@ -37,7 +37,7 @@ think about suitable decomposition
 cont passing style.
 
 dataflow cantfail, noresult
-as constant propagation
+as constant propagation?
 
 serialization
 incremental compilation
@@ -85,3 +85,5 @@ resolving rules in apply
 rewrite switch to do bottom-up construction
 
 paralelize compilation
+
+pseudoprocedures 
