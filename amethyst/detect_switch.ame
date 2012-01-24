@@ -191,6 +191,7 @@ class Switch_Dataflow < First_Dataflow
 				i+=3
 			elsif s[i]==?\\
 				c=eval('"'+s[i,2]+'"')[0].bytes.to_a[0]
+				chars<<[c,c]
 				i+=2
 			else
 				chars<<[c,c]
@@ -332,7 +333,7 @@ end
 
 
 amethyst Detect_Switch < Detect_First {
-	visit =  Apply[ ["regch"] CAct[.*] {first(@self)}:firs {s=Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>[[firs,@self],[CharLattice["default"],Apply["fails"]]]}]
+	visit =  Apply[ ["regch"] Act[.*] {first(@self)}:firs {s=Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>[[firs,Apply["anything"]],[CharLattice["default"],Apply["fails"]]]}]
 puts "#{@self.inspect},#{s.inspect}";s
 }]
 	

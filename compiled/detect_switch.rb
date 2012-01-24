@@ -191,6 +191,7 @@ class Switch_Dataflow < First_Dataflow
 				i+=3
 			elsif s[i]==?\\
 				c=eval('"'+s[i,2]+'"')[0].bytes.to_a[0]
+				chars<<[c,c]
 				i+=2
 			else
 				chars<<[c,c]
@@ -624,8 +625,8 @@ nary=bind[1].ary
                                  Switch[{:act=>bind[1].act,:first=>bind[1].first,:defs=>bind[1].defs,:ary=>nary}]
                               
 end
-def Detect_Switch_s_eq_Switch_c957(bind)
-s=Switch[{:act=>"*ame_curstr(self)",:first=>bind[3],:ary=>[[bind[3],src],[CharLattice["default"],Apply["fails"]]]}]
+def Detect_Switch_s_eq_Switch_3f4b(bind)
+s=Switch[{:act=>"*ame_curstr(self)",:first=>bind[3],:ary=>[[bind[3],Apply["anything"]],[CharLattice["default"],Apply["fails"]]]}]
 puts "#{src.inspect},#{s.inspect}";s
 
 end
@@ -775,15 +776,15 @@ end
 
 
 def detect_switch_compiled_by
-'134da89e08a28a5a4f219a84113e9a9d'
+'825027d07087258e17635d501a39dbe1'
 end
 def detect_switch_source_hash
-'54ec343d29c842f785303109eb83b111'
+'13ed421ddbd277e29315fd548fb30ace'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'91f55403a185f7b8ae07468baca94e22'
+'418837f04d419ceb44c0ac4f425c5389'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"
