@@ -1,4 +1,3 @@
-Empty   =Consts.new("Empty"   )
 
 $hash_SizesLattice={}
 class SizesLattice
@@ -38,7 +37,6 @@ class FirstLattice
 		self.class[*(ary&a.ary)]
 	end
 	def seqjoin(a)
-    #return self unless self.ary.include?(Empty)
     (self-self.class.empty)|a
   end
 
@@ -71,7 +69,7 @@ class CharLattice < FirstLattice
 	def ~
 		first=0
 		nary=[]
-		((normalize.ary-[Empty])+[[256,256]]).each{|beg,en|
+		((normalize.ary-[])+[[256,256]]).each{|beg,en|
 			nary<<[first,beg-1] if first<=beg-1
 			first=en+1
 		}
@@ -90,10 +88,6 @@ class CharLattice < FirstLattice
 		nary=[]
 		special=[]
 		ary=@ary
-		[Empty].each{|s|
-			special<<s if ary.include?(s)
-			ary.delete(s)
-		}
 		if ary.size>0
 			first,last=*ary.sort[0]
 			(ary.sort+[[257,257]]).each{|beg,en|
@@ -523,16 +517,23 @@ end
 
 
 def combine_or(pred,frst,*rest)
-	puts pred.inspect,frst.inspect,rest.inspect;
-	r=[]
-	frst.ary.each{|p,alt| if pred&p!=CharLattice.bottom
+	if frst.is_a?(Switch)
+		r=[]
+		frst.ary.each{|p,alt| if pred&p!=CharLattice.bottom
+			if rest==[]
+				r<<[p&pred,[alt]]
+			else
+				r+=combine_or(p&pred,*rest).map{|s,k| [s,[alt]+k]}
+			end
+		end}
+		r
+	else
 		if rest==[]
-			r<<[p&pred,[alt]]
+			return [[pred,[frst]]]
 		else
-			r+=combine_or(p&pred,*rest).map{|s,k| [s,[alt]+k]}
+			return combine_or(pred,*rest).map{|s,k| [s,[[frst]+k]]}
 		end
-	end}
-	r
+	end
 end
 
 class Detect_Switch < Detect_First
@@ -576,20 +577,20 @@ end
 def Detect_Switch__lp_(bind)
 (!empty?(src) && bind[5]!=CharLattice.top) || FAIL
 end
+def Detect_Switch__lp_2(bind)
+(!bind[28]) || FAIL
+end
 def Detect_Switch__lp_bind_lb_19_34e7(bind)
 (bind[19].is_a?(Switch)) || FAIL
 end
 def Detect_Switch__lp_bind_lb_2_rb__6693(bind)
 (bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
 end
-def Detect_Switch__lp_puts_sp_bi_0d0f(bind)
-(puts bind[28].inspect;bind[28]) || FAIL
-end
 def Detect_Switch__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Detect_Switch_bind_lb_27_rb__d098(bind)
-bind[27].each{|i| bind[28]=true if !i.is_a?(Switch)}
+def Detect_Switch_bind_lb_27_rb__7f13(bind)
+bind[27].each{|i| bind[28]=true if i.is_a?(Switch)}
 end
 def Detect_Switch_bind_lb_3_rb__lt__bb51(bind)
 bind[3]<<bind[4]
@@ -766,15 +767,15 @@ end
 
 
 def detect_switch_compiled_by
-'43397d0e0a777dca42e650f786afcfb9'
+'b3351cd77013be50625d0af466687118'
 end
 def detect_switch_source_hash
-'2d96a5850a4118ad29fe54ebc5ea8da6'
+'17d9a93fe619d77b421ca8707399e7f0'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'62f8c0479a500b2b42a01967c199e934'
+'ccc29555a641f50f0ca6db10ff1854d7'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"
