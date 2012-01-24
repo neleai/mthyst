@@ -84,4 +84,4 @@ negative lookahead and detect_switch
 foreign rules
 resolving rules in apply
 
-
+rewrite switch to do bottom-up construction

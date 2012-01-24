@@ -350,6 +350,7 @@ amethyst Detect_Switch < Detect_First {
 		{s=Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>ary3}];#puts s.inspect;
 		s}
 	]
+#	| Apply[ ["regch"] .* {first(@self)}:firs {Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>[[firs]]}]}]
 	
 	split = Seq[ split*]
 				| Or[ split* ]
