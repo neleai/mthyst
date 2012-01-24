@@ -327,9 +327,12 @@ amethyst Detect_First < Traverser_Clone2 {
 
 
 amethyst Detect_Switch < Detect_First {
-	visit =  Apply[ ["regch"] Act[.*] {first(@self)}:firs {s=Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>[[firs,Apply["anything"]],[~firs,Apply["fails"]]]}]}]
+	visit =  Apply[ ["regch"] Act[.*] {first(@self)}:firs {s=Switch[{:act=>"*ame_curstr(self)",:ary=>[[firs,Apply["anything"]],[~firs,Apply["fails"]]]}]}]
+				|  Apply[ ["_seq"] CAct[.:str] 
+                  {first(@self)}:firs {s=Switch[{:act=>"*ame_curstr(self)",:ary=>[[firs,Seq[Apply["anything"],Apply["_seq",CAct[str[1..-1]]]]],[~firs,Apply["fails"]]]}]}]
+
 				|  Apply[ ["fails"] {@self} ]
-				|	 Apply[ .* {first(@self)}:firs &{!empty?(@self) && firs!=CharLattice.top} {s=Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>[[firs,@self],[~firs,Apply["fails"]]]}] }]
+				|	 Apply[ .* {first(@self)}:firs &{!empty?(@self) && firs!=CharLattice.top} {s=Switch[{:act=>"*ame_curstr(self)",:ary=>[[firs,@self],[~firs,Apply["fails"]]]}] }]
 	
 }
 

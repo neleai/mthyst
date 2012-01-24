@@ -563,11 +563,14 @@ if bind[3]
             src
           end
 end
-def Detect_Switch_s_eq_Switch_b4af(bind)
-s=Switch[{:act=>"*ame_curstr(self)",:first=>bind[5],:ary=>[[bind[5],src],[~bind[5],Apply["fails"]]]}] 
+def Detect_Switch_s_eq_Switch_5558(bind)
+s=Switch[{:act=>"*ame_curstr(self)",:ary=>[[bind[5],src],[~bind[5],Apply["fails"]]]}] 
 end
-def Detect_Switch_s_eq_Switch_c27e(bind)
-s=Switch[{:act=>"*ame_curstr(self)",:first=>bind[5],:ary=>[[bind[5],Apply["anything"]],[~bind[5],Apply["fails"]]]}]
+def Detect_Switch_s_eq_Switch_904b(bind)
+s=Switch[{:act=>"*ame_curstr(self)",:ary=>[[bind[5],Apply["anything"]],[~bind[5],Apply["fails"]]]}]
+end
+def Detect_Switch_s_eq_Switch_9e88(bind)
+s=Switch[{:act=>"*ame_curstr(self)",:ary=>[[bind[5],Seq[Apply["anything"],Apply["_seq",CAct[bind[11][1..-1]]]]],[~bind[5],Apply["fails"]]]}]
 end
 def Detect_Switch_src_25d9(bind)
 src
@@ -712,15 +715,15 @@ end
 
 
 def detect_switch_compiled_by
-'3ae0b900b8d566c1cd4e4a34612b4676'
+'2db6b2126547e7fd036aa8dc54cc5301'
 end
 def detect_switch_source_hash
-'c068775c343d65fe0623a39f104aed89'
+'f7a0b7424f7faa78a3a63319de11a3d1'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'7813df0af271def68d3495e69c4d946e'
+'0a7af5c06342dabc83a9d45eec9d56ae'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"
