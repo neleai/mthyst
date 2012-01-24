@@ -243,7 +243,7 @@ amethyst Switch_Dataflow < First_Dataflow{
 								| ["regch" ] Act[.:str]  {regchar(str)}
 								| ["anything" ] {lattice.top}
 							  )]
-				| Apply[ :name &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name]}=>value ]
+				| Apply[ :name &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  {puts name; Compiler.grammars[@clas].rules[name]}=>value ]
 				| super
 }
 
@@ -332,27 +332,9 @@ end
 
 
 amethyst Detect_Switch < Detect_First {
-	visit =  Apply[ ["regch"] Act[.*] {first(@self)}:firs {s=Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>[[firs,Apply["anything"]],[~firs,Apply["fails"]]]}]
-puts "#{@self.inspect},#{s.inspect}";s
-}]
+	visit =  Apply[ ["regch"] Act[.*] {first(@self)}:firs {s=Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>[[firs,Apply["anything"]],[~firs,Apply["fails"]]]}]}]
+				|	 Apply[ .* {first(@self)}:firs &{!empty?(@self) && firs!=CharLattice.top} {s=Switch[{:act=>"*ame_curstr(self)",:first=>firs,:ary=>[[firs,@self],[~firs,Apply["fails"]]]}];puts s.inspect;s }]
 	
-	split = Seq[ split*]
-				| Or[ split* ]
-				| Bind[ split ]
-				| Switch[ [. split]*]
-				| .:el first(el):f {@@cases=@@cases.map{|c| [c&f,c&~f]}.flatten.select{|x| x.ary.size>0}.uniq_by{|x|x.ary.inspect} }
-	
-	predicate(chr,p) =  &{!empty?(p) && !intersects(first(p),chr)} {Placeholder}
-                   |  {p}=>( Seq[ .:e predicate(chr,e):f .*:rest {Seq[*([f]+rest)]} ]
-														| Or[ (.:e predicate(chr,e))*:ary {Or[*ary]} ]
-														| Switch[.*{
-																 nary=p.ary
-                                 nary=nary.select{|o,v| intersects(o,chr)} if p.first.is_a?(CharLattice)
-                                 nary=nary.map{|o,v| [o,predicate(chr,v)]}.select{|o,v| v!=Placeholder}
-                                 Switch[{:act=>p.act,:first=>p.first,:defs=>p.defs,:ary=>nary}]
-                              }]
-														| . 
-														)
 }
 
 amethyst Detect_ClasSwitch < Detect_First {

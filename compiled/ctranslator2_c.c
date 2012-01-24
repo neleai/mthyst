@@ -503,7 +503,7 @@ cstruct oldpass11=*ptr; int fail11=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
    it=AmethystCore_anything(self ); FAILTEST(pass11); bind_aset(bind,42/*autovar*/,it);
 cstruct oldpass12=*ptr; int fail12=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,42/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
-   it=Amethyst_spaces(self ); FAILTEST(pass12);if (strncmp(ame_curstr(self),"_find",5)) goto pass12; else ame_setpos(self,ame_getpos(self)+5);  it=Amethyst_eof(self ); FAILTEST(pass12);
+   it=Amethyst_spaces(self ); FAILTEST(pass12);unsigned char chr2=*ame_curstr(self);  switch(chr2){case UC(95) ... UC(95):; if (strncmp(ame_curstr(self),"_find",5)) goto pass12; else ame_setpos(self,ame_getpos(self)+5); break;case UC(0) ... UC(94):;case UC(96) ... UC(255):;   it=Amethyst_fails(self ); FAILTEST(pass12); break;}  it=Amethyst_eof(self ); FAILTEST(pass12);
 	goto success12;
 	pass12: fail12=1;
 	success12: *ptr=oldpass12;
@@ -523,7 +523,7 @@ cstruct oldpass13=*ptr; int fail13=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
    it=AmethystCore_anything(self ); FAILTEST(pass13); bind_aset(bind,44/*autovar*/,it);
 cstruct oldpass14=*ptr; int fail14=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,44/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
-   it=Amethyst_spaces(self ); FAILTEST(pass14);if (strncmp(ame_curstr(self),"_seq",4)) goto pass14; else ame_setpos(self,ame_getpos(self)+4);  it=Amethyst_eof(self ); FAILTEST(pass14);
+   it=Amethyst_spaces(self ); FAILTEST(pass14);unsigned char chr3=*ame_curstr(self);  switch(chr3){case UC(95) ... UC(95):; if (strncmp(ame_curstr(self),"_seq",4)) goto pass14; else ame_setpos(self,ame_getpos(self)+4); break;case UC(0) ... UC(94):;case UC(96) ... UC(255):;   it=Amethyst_fails(self ); FAILTEST(pass14); break;}  it=Amethyst_eof(self ); FAILTEST(pass14);
 	goto success14;
 	pass14: fail14=1;
 	success14: *ptr=oldpass14;
@@ -814,4 +814,4 @@ rb_define_method(cls_AmethystCTranslator,"rbtrans",AmethystCTranslator_rbtrans,0
 rb_define_method(cls_AmethystCTranslator,"rbtrans2",AmethystCTranslator_rbtrans2,0);
 rb_define_method(cls_AmethystCTranslator,"rw",AmethystCTranslator_rw,2);
 rb_define_method(cls_AmethystCTranslator,"trans",AmethystCTranslator_trans,0);
- rb_eval_string("testversionctranslator2('7bbc146d9bf9ff402162d11a0a333220')");}
+ rb_eval_string("testversionctranslator2('c90ca5d54d3ec62e7efa38ef56ea25fc')");}

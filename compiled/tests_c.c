@@ -1,6 +1,8 @@
 #include "cthyst.h"
 VALUE cls_Tests;
 VALUE AmethystCore_anything(VALUE self );
+VALUE Tests_abc(VALUE self );
+VALUE Tests_de(VALUE self );
 VALUE Tests_foo(VALUE self );
 VALUE Tests_s2(VALUE self );
 VALUE Tests_sw(VALUE self );
@@ -18,6 +20,30 @@ static VALUE sy_bar;
 static VALUE sy_fails;
 static VALUE sy_seq;
 static VALUE sy_token;
+VALUE Tests_abc(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
+
+unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC(32) ... UC(32):;case UC(97) ... UC(97):;case UC(98) ... UC(98):;case UC(99) ... UC(99):;   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,0/*_result*/,it);
+ break;case UC(0) ... UC(31):;case UC(33) ... UC(96):;case UC(100) ... UC(255):;   it=rb_funcall(self,sy_fails,0); FAILTEST(fail); bind_aset(bind,0/*_result*/,it);
+ break;}it=bind_aget(bind,0/*_result*/);
+return it;
+fail: return failobj; }
+VALUE Tests_de(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
+
+int oldpos1=ame_getpos(self);
+alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+   it=Tests_abc(self ); FAILTEST(alt1_2); bind_aset(bind,0/*_result*/,it);
+ 
+ame_setcut(self,Qnil);goto accept1;
+alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC(100) ... UC(100):;case UC(101) ... UC(101):;   it=AmethystCore_anything(self ); FAILTEST(alt1_3); bind_aset(bind,0/*_result*/,it);
+ break;case UC(0) ... UC(99):;case UC(102) ... UC(255):;   it=rb_funcall(self,sy_fails,0); FAILTEST(alt1_3); bind_aset(bind,0/*_result*/,it);
+ break;} 
+ame_setcut(self,Qnil);goto accept1;
+  alt1_3:  ame_setpos(self,oldpos1); goto fail;
+ accept1:;
+it=bind_aget(bind,0/*_result*/);
+return it;
+fail: return failobj; }
 VALUE Tests_foo(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(3);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
 int oldpos1=ame_getpos(self);
@@ -113,8 +139,10 @@ sy_bar=rb_intern("bar");
 sy_fails=rb_intern("fails");
 sy_seq=rb_intern("seq");
 sy_token=rb_intern("token");
+rb_define_method(cls_Tests,"abc",Tests_abc,0);
+rb_define_method(cls_Tests,"de",Tests_de,0);
 rb_define_method(cls_Tests,"foo",Tests_foo,0);
 rb_define_method(cls_Tests,"s2",Tests_s2,0);
 rb_define_method(cls_Tests,"sw",Tests_sw,0);
 rb_define_method(cls_Tests,"test",Tests_test,0);
- rb_eval_string("testversiontests('a66e245189b8807429815cb46336521b')");}
+ rb_eval_string("testversiontests('411cb7f21a2b8b6d2bc158038ecb5abd')");}

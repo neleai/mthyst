@@ -9,4 +9,6 @@ amethyst Tests{
  test = {1}:from ("a" {from}| {42}):from #42
 
 	foo = foo | bar {foo+bar}
+	abc =< abc>
+	de = abc | <de>
 }
