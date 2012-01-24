@@ -218,9 +218,10 @@ amethyst First_Dataflow {
 	root = .:x analyze(x)
 	
 	first = Switch[ [ .:p  value:v {p.is_a?(lattice)? p & v : v}:vals[] ]* {vals.inject(:|)} ]
+				| Or[value*:{it.inject(:|)}]
 				| Seq[{lattice.empty}:val (.:el {el}=>value:nev {val.seqjoin(nev)}:val  (~{empty?(el)} break | empty) )*   .* {val}]
 				| Many[value:val {val|lattice.empty} ]
-				| Or[value*:{it.inject(:|)}]
+				| Apply[ :name &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name].body}=>value ]
 				| Switch[value*:{it.inject(:|)}]
 	      | Bind[ value] 
 				| (Act|CAct|Local|Result|Cut|Stop)[.* {lattice.empty} ]
@@ -234,7 +235,6 @@ amethyst Sizes_Dataflow < First_Dataflow {
 								| ["regch" | "clas" | "anything"] .* {lattice[1]}
 								| ["fails"] {lattice.top}
 								)]
-				| Apply[ :name &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name].body}=>value ]
 			  | super
 }
 
@@ -244,13 +244,11 @@ amethyst Switch_Dataflow < First_Dataflow{
 								| ["anything" ] {lattice.top}
 								| ["fails"] {lattice.bottom}
 							  )]
-				| Apply[ :name &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name].body}=>value ]
 				| super
 }
 
 amethyst ClasSwitch_Dataflow < First_Dataflow{
   first = Apply[ ["clas"] CAct[.:cls] {lattice[cls]}]
-				| Apply[ :name &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name]}=>value ]
         | super
 }
 
