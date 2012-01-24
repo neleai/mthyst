@@ -43,7 +43,7 @@ class FirstLattice
   end
 
 	def cases(first)
-		ary.map{|c| c=="default" ? "default:;" : "case #{c}:;"}*""
+		ary.map{|c| "case #{c}:;"}*""
 	end
 	def inspect
 		self.class.to_s+ary.inspect
@@ -66,7 +66,7 @@ class CharLattice < FirstLattice
 		"UC(#{c.ord})"
 	end
   def cases(first)
-    ary.map{|c| c=="default" ? "default:;" : "case #{cchar(c[0])} ... #{cchar(c[1])}:;"}*""
+    ary.map{|c| "case #{cchar(c[0])} ... #{cchar(c[1])}:;"}*""
   end
 	def ~
 		first=0
@@ -90,7 +90,7 @@ class CharLattice < FirstLattice
 		nary=[]
 		special=[]
 		ary=@ary
-		[Empty,"default"].each{|s|
+		[Empty].each{|s|
 			special<<s if ary.include?(s)
 			ary.delete(s)
 		}
@@ -218,7 +218,7 @@ amethyst First_Dataflow {
 	root = .:x analyze(x)
 	
 	first =	Switch[&{@first.is_a?(lattice)} .* {@first}]
-				| Switch[ [ .:e (&{e.ary!=["default"]} value:vals[]|.) ]* {vals.inject(:|)} ]
+				| Switch[ [ .:e ( value:vals[]|.) ]* {vals.inject(:|)} ]
 				| Seq[{lattice.empty}:val (.:el {el}=>value:nev {val.seqjoin(nev)}:val  (~{empty?(el)} break | empty) )*   .* {val}]
 				| Many[value:val {val|lattice.empty} ]
 				| Or[value*:{it.inject(:|)}]
@@ -274,7 +274,6 @@ class Detect_Switch < Detect_First
 		r
 	end
 	def intersects(ar,el)
-		return true if el.ary.include?("default") || ar.ary.include?("default")
 		return (ar & el).ary !=[]
 	end
 end
@@ -343,9 +342,8 @@ puts "#{@self.inspect},#{s.inspect}";s
 				| Switch[ [. split]*]
 				| .:el first(el):f {@@cases=@@cases.map{|c| [c&f,c&~f]}.flatten.select{|x| x.ary.size>0}.uniq_by{|x|x.ary.inspect} }
 	
-	predicate(chr,p) = &{chr.ary[0]=="default"} {p}
-										| &{!empty?(p) && !intersects(first(p),chr)} {Placeholder}
-                    |  {p}=>( Seq[ .:e predicate(chr,e):f .*:rest {Seq[*([f]+rest)]} ]
+	predicate(chr,p) =  &{!empty?(p) && !intersects(first(p),chr)} {Placeholder}
+                   |  {p}=>( Seq[ .:e predicate(chr,e):f .*:rest {Seq[*([f]+rest)]} ]
 														| Or[ (.:e predicate(chr,e))*:ary {Or[*ary]} ]
 														| Switch[.*{
 																 nary=p.ary
@@ -375,8 +373,7 @@ amethyst Detect_ClasSwitch < Detect_First {
      c}
 	]
 
-  predicate(clas,i,p) = &{clas[i]=="default"} {p}
-											| &{!empty?(p) && !includes(clas,i,first(p))} {Placeholder}	
+  predicate(clas,i,p) = &{!empty?(p) && !includes(clas,i,first(p))} {Placeholder}	
 											|	{p}=>( Seq[ .:e predicate(clas,i,e):f .*:rest {Seq[*([f]+rest)]} ]
 														 | Or[ (.:e predicate(clas,i,e))*:ary {Or[*ary]} ]
 									  				 | Apply[ .:name &{name=="clas"} CAct[.:match] &{child(clas[i],match)&&clas[i]==match} {Apply["anything"]}] 
