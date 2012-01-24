@@ -79,9 +79,9 @@ pass for objects that dont need ary(convention not using .?)
 
 switch for ints,true,false,nil
 
-negative lookahead and detect_switch
-
 foreign rules
 resolving rules in apply
 
 rewrite switch to do bottom-up construction
+
+paralelize compilation
