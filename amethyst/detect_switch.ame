@@ -211,13 +211,13 @@ class ClasSwitch_Dataflow < First_Dataflow
 	end
 end
 amethyst First_Dataflow {
-	value =  .:x  {depends(x);#puts "#{x.inspect} #{@@vals[x].inspect}"; 
+	value =  .:x  {depends(x);puts "#{x.inspect} #{@@vals[x].inspect}"; 
 @@vals[x]}
 
 
 	root = .:x analyze(x)
 	
-	first = Switch[ [ .  (Apply[ ["fails"] ] | value:vals[]) ]* {vals.inject(:|)} ]
+	first = Switch[ [ .:p  (Apply[ ["fails"] ] | value:v {p.is_a?(lattice)? p & v : v}:vals[]) ]* {vals.inject(:|)} ]
 				| Seq[{lattice.empty}:val (.:el {el}=>value:nev {val.seqjoin(nev)}:val  (~{empty?(el)} break | empty) )*   .* {val}]
 				| Many[value:val {val|lattice.empty} ]
 				| Or[value*:{it.inject(:|)}]
