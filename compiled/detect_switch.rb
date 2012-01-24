@@ -625,8 +625,8 @@ nary=bind[1].ary
                                  Switch[{:act=>bind[1].act,:first=>bind[1].first,:defs=>bind[1].defs,:ary=>nary}]
                               
 end
-def Detect_Switch_s_eq_Switch_3f4b(bind)
-s=Switch[{:act=>"*ame_curstr(self)",:first=>bind[3],:ary=>[[bind[3],Apply["anything"]],[CharLattice["default"],Apply["fails"]]]}]
+def Detect_Switch_s_eq_Switch_3d39(bind)
+s=Switch[{:act=>"*ame_curstr(self)",:first=>bind[3],:ary=>[[bind[3],Apply["anything"]],[~bind[3],Apply["fails"]]]}]
 puts "#{src.inspect},#{s.inspect}";s
 
 end
@@ -776,15 +776,15 @@ end
 
 
 def detect_switch_compiled_by
-'825027d07087258e17635d501a39dbe1'
+'73930f7e66924ef44a2d95b23429401c'
 end
 def detect_switch_source_hash
-'13ed421ddbd277e29315fd548fb30ace'
+'9023da11ed80e0670cee3d6af27ae3ee'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'418837f04d419ceb44c0ac4f425c5389'
+'fe064b9d0c438ae1be67cc038da230f2'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

@@ -1726,7 +1726,7 @@ static VALUE sy_Detect_Switch_bind_lb_5_rb__lt__1671;
 static VALUE sy_Detect_Switch_first_lp_sr_3298;
 static VALUE sy_Detect_Switch_if_sp_bind_lb__f1e9;
 static VALUE sy_Detect_Switch_nary_eq_bin_3073;
-static VALUE sy_Detect_Switch_s_eq_Switch_3f4b;
+static VALUE sy_Detect_Switch_s_eq_Switch_3d39;
 static VALUE sy_Detect_Switch_src_25d9;
 static VALUE sy_Detect_Switch_src_dot_rule_5acf;
 static VALUE sy_Detect_Switch_src_dot_rule_d270;
@@ -2129,7 +2129,7 @@ cstruct oldpass3=*ptr; int fail3=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
 	success3: *ptr=oldpass3;
 	if(fail3) goto pass1;
 it=rb_funcall(self,sy_Detect_Switch_first_lp_sr_3298,1,bind);  bind_aset(bind,3/*firs*/,it);
-it=rb_funcall(self,sy_Detect_Switch_s_eq_Switch_3f4b,1,bind);  bind_aset(bind,4/*autovar*/,it);
+it=rb_funcall(self,sy_Detect_Switch_s_eq_Switch_3d39,1,bind);  bind_aset(bind,4/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
@@ -2675,7 +2675,7 @@ sy_Detect_Switch_bind_lb_5_rb__lt__1671=rb_intern("Detect_Switch_bind_lb_5_rb__l
 sy_Detect_Switch_first_lp_sr_3298=rb_intern("Detect_Switch_first_lp_sr_3298");
 sy_Detect_Switch_if_sp_bind_lb__f1e9=rb_intern("Detect_Switch_if_sp_bind_lb__f1e9");
 sy_Detect_Switch_nary_eq_bin_3073=rb_intern("Detect_Switch_nary_eq_bin_3073");
-sy_Detect_Switch_s_eq_Switch_3f4b=rb_intern("Detect_Switch_s_eq_Switch_3f4b");
+sy_Detect_Switch_s_eq_Switch_3d39=rb_intern("Detect_Switch_s_eq_Switch_3d39");
 sy_Detect_Switch_src_25d9=rb_intern("Detect_Switch_src_25d9");
 sy_Detect_Switch_src_dot_rule_5acf=rb_intern("Detect_Switch_src_dot_rule_5acf");
 sy_Detect_Switch_src_dot_rule_d270=rb_intern("Detect_Switch_src_dot_rule_d270");
@@ -2741,4 +2741,4 @@ rb_define_method(cls_Detect_ClasSwitch,"root",Detect_ClasSwitch_root,0);
 rb_define_method(cls_Detect_ClasSwitch,"traverse",Detect_ClasSwitch_traverse,0);
 rb_define_method(cls_Detect_ClasSwitch,"traverse_item",Detect_ClasSwitch_traverse_item,0);
 rb_define_method(cls_Detect_ClasSwitch,"visit",Detect_ClasSwitch_visit,0);
- rb_eval_string("testversiondetect_switch('418837f04d419ceb44c0ac4f425c5389')");}
+ rb_eval_string("testversiondetect_switch('fe064b9d0c438ae1be67cc038da230f2')");}

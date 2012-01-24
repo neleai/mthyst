@@ -40,11 +40,11 @@ VALUE Tests_s2(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(1);  int x;VALUE
 int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
  unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC(97) ... UC(97):;case UC(98) ... UC(98):;   it=AmethystCore_anything(self ); FAILTEST(alt1_2); bind_aset(bind,0/*_result*/,it);
- break;default:;   it=rb_funcall(self,sy_fails,0); FAILTEST(alt1_2); bind_aset(bind,0/*_result*/,it);
+ break;case UC(0) ... UC(96):;case UC(99) ... UC(255):;   it=rb_funcall(self,sy_fails,0); FAILTEST(alt1_2); bind_aset(bind,0/*_result*/,it);
  break;} 
 ame_setcut(self,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
- unsigned char chr2=*ame_curstr(self);  switch(chr2){case UC(100) ... UC(100):;case UC(101) ... UC(101):;case UC(102) ... UC(102):;   it=AmethystCore_anything(self ); FAILTEST(alt1_3); break;default:;   it=rb_funcall(self,sy_fails,0); FAILTEST(alt1_3); break;}it=i_3; bind_aset(bind,0/*_result*/,it);
+ unsigned char chr2=*ame_curstr(self);  switch(chr2){case UC(100) ... UC(100):;case UC(101) ... UC(101):;case UC(102) ... UC(102):;   it=AmethystCore_anything(self ); FAILTEST(alt1_3); break;case UC(0) ... UC(99):;case UC(103) ... UC(255):;   it=rb_funcall(self,sy_fails,0); FAILTEST(alt1_3); break;}it=i_3; bind_aset(bind,0/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
 alt1_3: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
@@ -117,4 +117,4 @@ rb_define_method(cls_Tests,"foo",Tests_foo,0);
 rb_define_method(cls_Tests,"s2",Tests_s2,0);
 rb_define_method(cls_Tests,"sw",Tests_sw,0);
 rb_define_method(cls_Tests,"test",Tests_test,0);
- rb_eval_string("testversiontests('ee14a8616fcbb0d2b72c941e5ffabe2d')");}
+ rb_eval_string("testversiontests('a66e245189b8807429815cb46336521b')");}
