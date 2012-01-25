@@ -534,23 +534,28 @@ def combine_or(pred,frst,*rest)
 		end
 	end
 end
+def combine_seq(frst,*rest)
+       if frst.is_a?(Switch)
+               Switch[{:act=>"*ame_curstr(self)",:ary=>frst.ary.map{|p,a| [p,Seq[*([a]+rest)]]}}]
+       else
+               Seq[*([frst]+rest)]
+       end
+end
+
 
 class Detect_Switch < Detect_First
 
-def Detect_Switch_Or_lb__ti_bind_a2aa(bind)
-Or[*bind[30]]
+def Detect_Switch_Or_lb__ti_bind_6807(bind)
+Or[*bind[24]]
 end
-def Detect_Switch_Seq_lb__lb_bin_880b(bind)
-Seq[[bind[22]]+bind[25]]
+def Detect_Switch__append_lp__0860(bind)
+_append(bind[27],bind[28])
 end
-def Detect_Switch__append_lp__3c16(bind)
-_append(bind[28],bind[29])
+def Detect_Switch__append_lp__58ed(bind)
+_append(bind[22],bind[23])
 end
 def Detect_Switch__append_lp__7352(bind)
 _append(bind[4],bind[7])
-end
-def Detect_Switch__append_lp__89bf(bind)
-_append(bind[23],bind[24])
 end
 def Detect_Switch__append_lp__b494(bind)
 _append(bind[0],bind[10])
@@ -574,10 +579,7 @@ def Detect_Switch__lp_(bind)
 (!empty?(src) && bind[5]!=CharLattice.top) || FAIL
 end
 def Detect_Switch__lp_2(bind)
-(!bind[31]) || FAIL
-end
-def Detect_Switch__lp_bind_lb_22_061d(bind)
-(bind[22].is_a?(Switch)) || FAIL
+(!bind[29]) || FAIL
 end
 def Detect_Switch__lp_bind_lb_2_rb__6693(bind)
 (bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
@@ -585,14 +587,17 @@ end
 def Detect_Switch__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Detect_Switch_bind_lb_30_rb__fcfe(bind)
-bind[30].each{|i| bind[31]=true if i.is_a?(Switch)}
+def Detect_Switch_bind_lb_24_rb__483f(bind)
+bind[24].each{|i| bind[29]=true if i.is_a?(Switch)}
 end
 def Detect_Switch_bind_lb_3_rb__lt__bb51(bind)
 bind[3]<<bind[4]
 end
-def Detect_Switch_c_eq_combin_752b(bind)
-c=combine_or(CharLattice.top,*bind[30]);c
+def Detect_Switch_c_eq_combin_f160(bind)
+c=combine_or(CharLattice.top,*bind[24]);c
+end
+def Detect_Switch_combine__7215(bind)
+combine_seq(*bind[24])
 end
 def Detect_Switch_first_lp_sr_3298(bind)
 first(src)
@@ -605,8 +610,8 @@ if bind[3]
             src
           end
 end
-def Detect_Switch_puts_sp_bin_756b(bind)
-puts bind[30].inspect;puts bind[31].inspect
+def Detect_Switch_puts_sp_bin_1fb6(bind)
+puts bind[24].inspect;puts bind[29].inspect
 end
 def Detect_Switch_s_eq_Switch_3f47(bind)
 s=Switch[{:act=>"*ame_curstr(self)",:ary=>[[bind[5],Many[bind[17]]],[~bind[5],Apply["fails"]]]}] 
@@ -620,11 +625,8 @@ end
 def Detect_Switch_s_eq_Switch_9e88(bind)
 s=Switch[{:act=>"*ame_curstr(self)",:ary=>[[bind[5],Seq[Apply["anything"],Apply["_seq",CAct[bind[11][1..-1]]]]],[~bind[5],Apply["fails"]]]}]
 end
-def Detect_Switch_s_eq_Switch_a407(bind)
-s=Switch[{:act=>"*ame_curstr(self)",:ary=>bind[22].ary.map{|p,a| [p,Seq[[a]+bind[25]]]}}];
-end
-def Detect_Switch_s_eq_Switch_b090(bind)
-s=Switch[{:act=>"*ame_curstr(self)",:ary=>bind[33].map{|k,a| [k,Or[*a].dup.normalize]}}];puts s.inspect;s
+def Detect_Switch_s_eq_Switch_a708(bind)
+s=Switch[{:act=>"*ame_curstr(self)",:ary=>bind[31].map{|k,a| [k,Or[*a].dup.normalize]}}];puts s.inspect;s
 end
 def Detect_Switch_src_25d9(bind)
 src
@@ -769,15 +771,15 @@ end
 
 
 def detect_switch_compiled_by
-'526e851c915771d505c195de50e60c42'
+'cb32584b8cb78132d4b9a0eb9eab89fa'
 end
 def detect_switch_source_hash
-'0c2620a6daaac20d1ad1e515de7f0867'
+'c0e1fc0874db6d9ca1511ecc662538ab'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'f41d9fe56750e1fff6aacf2aaad2b7ae'
+'258a4d9ec4f8cc78deadc6579c0f37b4'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

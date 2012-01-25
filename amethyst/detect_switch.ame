@@ -335,6 +335,14 @@ def combine_or(pred,frst,*rest)
 		end
 	end
 end
+def combine_seq(frst,*rest)
+       if frst.is_a?(Switch)
+               Switch[{:act=>"*ame_curstr(self)",:ary=>frst.ary.map{|p,a| [p,Seq[*([a]+rest)]]}}]
+       else
+               Seq[*([frst]+rest)]
+       end
+end
+
 
 amethyst Detect_Switch < Detect_First {
 	visit =  Apply[ ["regch"] Act[.*] {first(@self)}:firs {s=Switch[{:act=>"*ame_curstr(self)",:ary=>[[firs,Apply["anything"]],[~firs,Apply["fails"]]]}]}]
@@ -344,10 +352,7 @@ amethyst Detect_Switch < Detect_First {
 				|  Apply[ ["fails"] {@self} ]
 				|  Many[ traverse:t first(t):firs &{!empty?(@self) && firs!=CharLattice.top} {s=Switch[{:act=>"*ame_curstr(self)",:ary=>[[firs,Many[t]],[~firs,Apply["fails"]]]}] }]
 				|	 Apply[ .*  {first(@self)}:firs &{!empty?(@self) && firs!=CharLattice.top} {s=Switch[{:act=>"*ame_curstr(self)",:ary=>[[firs,@self],[~firs,Apply["fails"]]]}] }]
-				| Seq[ traverse_item:frst traverse_item*:rest 	
-						 ( &{frst.is_a?(Switch)}  {s=Switch[{:act=>"*ame_curstr(self)",:ary=>frst.ary.map{|p,a| [p,Seq[[a]+rest]]}}];}
-							 | { Seq[[frst]+rest]}
-						 )]
+				| Seq[ traverse_item*:items {combine_seq(*items)}]
 				| Or[ (traverse_item)*:items {false}:aswitch {items.each{|i| aswitch=true if i.is_a?(Switch)}}
 							{puts items.inspect;puts aswitch.inspect}
 							( &{!aswitch} {Or[*items]} 
