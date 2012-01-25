@@ -76,6 +76,9 @@ end
 def Dataflow_Pass_dot_cre_8dc6(bind)
 Pass.create({:to=>bind[29],:var=>bind[7],:enter=>src.enter}).normalize
 end
+def Dataflow_Seq_lb_src_dot__6f68(bind)
+Seq[src.body,Act[Local["_result",src.bnding]]]
+end
 def Dataflow_Switch_lb__le__c402(bind)
 Switch[{:ary=>bind[16],:act=>src.act,:defs=>src.defs,:first=>src.first,:header=>src.header,:init=>src.init}]
 end
@@ -214,14 +217,11 @@ end
 def Dataflow_src_dot_args_2df5(bind)
 src.args
 end
-def Dataflow_src_dot_body_519e(bind)
-src.body
+def Dataflow_src_dot_body_65c9(bind)
+src.body=Seq[bind[10].ary[0..-2]]
 end
-def Dataflow_src_dot_body_e931(bind)
-src.body=bind[10]
-end
-def Dataflow_src_dot_reac_e743(bind)
-src.reachable=@edges.reverse.reachable(@marked+[ssanum(src.body[-1]),src.body]); src.cfg=@edges; 
+def Dataflow_src_dot_reac_3fc5(bind)
+src.reachable=@edges.reverse.reachable(@marked+[ssanum(bind[10][-1])]); src.cfg=@edges; 
 end
 def Dataflow_src_dot_to_5e99(bind)
 src.to
@@ -339,15 +339,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'604ab33264e00deada0786bada16b51d'
+'8b3cfcdbba2ba20b3d22d94eb549c0f3'
 end
 def dataflow_ssa_source_hash
-'cb23787809371f5cfcda6188ef937f8d'
+'c8f1845997fd7971882d53de6fe576cd'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'46d4273874a1bcbac1a10eef23d7ffbd'
+'9cf7f7d0dbbbd083614e4eedfcf60395'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/dataflow_ssa_c"
