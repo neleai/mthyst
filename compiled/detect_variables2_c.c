@@ -84,7 +84,7 @@ ame_setcut(self,Qnil);goto accept1;
   alt1_4:  ame_setpos(self,oldpos2); goto break1;
  accept1:;
 it=rb_funcall(self,sy_Analyze_Variables2__append_lp__f8f8,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos1); it=bind_aget(bind,0/*autovar*/); bind_aset(bind,6/*_result*/,it);
-it=bind_aget(bind,6/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Analyze_Variables2_itrans(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(12);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -139,7 +139,7 @@ ame_setcut(self,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos2); goto break1;
  accept1:;
 it=rb_funcall(self,sy_Analyze_Variables2__append_lp__b494,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos1); it=bind_aget(bind,0/*autovar*/); bind_aset(bind,11/*_result*/,it);
-it=bind_aget(bind,11/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Analyze_Variables2_root(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(7);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -172,7 +172,7 @@ it=bind_aget(bind,4/*autovar*/); bind_aset(bind,5/*autovar*/,it);
 	success2: *ptr=oldpass2;
 	if(fail2) goto fail;
 it=bind_aget(bind,5/*autovar*/); bind_aset(bind,6/*_result*/,it);
-it=bind_aget(bind,6/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Analyze_Variables2_traverse(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(10);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -208,7 +208,7 @@ it=rb_funcall(self,sy_Analyze_Variables2__lp_bind_lb_2_rb__6693,1,bind);   it=Am
 	success1: *ptr=oldpass1;
 	if(fail1) goto fail;
 it=rb_funcall(self,sy_Analyze_Variables2_if_sp_bind_lb__f1e9,1,bind);  bind_aset(bind,9/*_result*/,it);
-it=bind_aget(bind,9/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Analyze_Variables2_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(8);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -253,7 +253,7 @@ alt1_4: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
 ame_setcut(self,Qnil);goto accept1;
   alt1_5:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,1/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Analyze_Variables2_visit(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(27);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -391,7 +391,7 @@ it=bind_aget(bind,26/*autovar*/); bind_aset(bind,8/*_result*/,it);
 ame_setcut(self,Qnil);goto accept1;
   alt1_5:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,8/*_result*/);
+
 return it;
 fail: return failobj; }VALUE cls_Resolve_Calls;
 VALUE AmethystCore_anything(VALUE self );
@@ -433,7 +433,7 @@ it=rb_funcall(self,sy_Resolve_Calls__at_name_eq_bi_f53d,1,bind);   it=Resolve_Ca
 	success1: *ptr=oldpass1;
 	if(fail1) goto fail;
 it=bind_aget(bind,3/*autovar*/); bind_aset(bind,4/*_result*/,it);
-it=bind_aget(bind,4/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Resolve_Calls_traverse(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(10);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -469,7 +469,7 @@ it=rb_funcall(self,sy_Resolve_Calls__lp_bind_lb_2_rb__6693,1,bind);   it=Amethys
 	success1: *ptr=oldpass1;
 	if(fail1) goto fail;
 it=rb_funcall(self,sy_Resolve_Calls_if_sp_bind_lb__f1e9,1,bind);  bind_aset(bind,9/*_result*/,it);
-it=bind_aget(bind,9/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Resolve_Calls_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(8);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -514,7 +514,7 @@ alt1_4: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
 ame_setcut(self,Qnil);goto accept1;
   alt1_5:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,1/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Resolve_Calls_visit(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(9);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -561,7 +561,7 @@ it=bind_aget(bind,8/*autovar*/); bind_aset(bind,5/*_result*/,it);
 ame_setcut(self,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,5/*_result*/);
+
 return it;
 fail: return failobj; }
 void Init_detect_variables2_c(){ 
@@ -635,4 +635,4 @@ rb_define_method(cls_Resolve_Calls,"root",Resolve_Calls_root,0);
 rb_define_method(cls_Resolve_Calls,"traverse",Resolve_Calls_traverse,0);
 rb_define_method(cls_Resolve_Calls,"traverse_item",Resolve_Calls_traverse_item,0);
 rb_define_method(cls_Resolve_Calls,"visit",Resolve_Calls_visit,0);
- rb_eval_string("testversiondetect_variables2('3441a9d269b826c45dc3be1c87b08d4e')");}
+ rb_eval_string("testversiondetect_variables2('330cd52592c8c5da9fa349098939a56d')");}

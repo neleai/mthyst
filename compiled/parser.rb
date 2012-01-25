@@ -88,8 +88,8 @@ def AmethystParser_Nested_lb_b_7d5e(bind)
 Nested[bind[0]]
 
 end
-def AmethystParser_Or_dot_creat_845c(bind)
-Or.create( {:ary=>bind[7] })
+def AmethystParser_Or_dot_creat_67f0(bind)
+Or.create( {:ary=>bind[6] })
 end
 def AmethystParser_Or_lb_bind_lb__cb4a(bind)
 Or[bind[0],Apply["empty"]]
@@ -135,9 +135,6 @@ _Bind(bind[3],bind[0],bind[5]=='[]')
 end
 def AmethystParser__Local_lp_b_cc09(bind)
 _Local(bind[4]) 
-end
-def AmethystParser__append_lp__29a3(bind)
-_append(bind[0],bind[2])
 end
 def AmethystParser__append_lp__2bc4(bind)
 _append(bind[0],bind[21])
@@ -198,9 +195,6 @@ _append(bind[0],bind[1])
 end
 def AmethystParser__append_lp__d113(bind)
 _append(bind[1],bind[2])
-end
-def AmethystParser__append_lp__dd73(bind)
-_append(bind[3],bind[4])
 end
 def AmethystParser__at_ary_eq__lb__rb_(bind)
 @ary=[];@tmp=[]
@@ -299,7 +293,7 @@ end
 
 
 def parser_compiled_by
-'ca8f48b00afc46fbe2056a41992d84af'
+'457a7c05200d39f48a925c7678821ab8'
 end
 def parser_source_hash
 '26066aa8bfcbc2bed77ea540e666faf6'
@@ -308,6 +302,6 @@ def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'b44d40f9b779aa059c01123777e91dcb'
+'cc0681a1d6b52e15219993c6ab687e76'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/parser_c"

@@ -133,7 +133,7 @@ it=rb_funcall(self,sy_Dataflow_src_dot_body_65c9,1,bind); it=rb_funcall(self,sy_
 	success2: *ptr=oldpass2;
 	if(fail2) goto fail;
 it=bind_aget(bind,11/*autovar*/); bind_aset(bind,12/*_result*/,it);
-it=bind_aget(bind,12/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Dataflow_traverse(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(10);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -169,7 +169,7 @@ it=rb_funcall(self,sy_Dataflow__lp_bind_lb_2_rb__6693,1,bind);   it=Amethyst_eof
 	success1: *ptr=oldpass1;
 	if(fail1) goto fail;
 it=rb_funcall(self,sy_Dataflow_if_sp_bind_lb__f1e9,1,bind);  bind_aset(bind,9/*_result*/,it);
-it=bind_aget(bind,9/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Dataflow_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(8);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -214,7 +214,7 @@ alt1_4: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
 ame_setcut(self,Qnil);goto accept1;
   alt1_5:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,1/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Dataflow_vars_in(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(18);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -323,7 +323,7 @@ ame_setcut(self,Qnil);goto accept1;
   alt1_10:  ame_setpos(self,oldpos2); goto break1;
  accept1:;
  if (ame_getstop(self)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos1); it=rb_funcall(self,sy_Dataflow_bind_lb_0_rb_,1,bind);  bind_aset(bind,17/*_result*/,it);
-it=bind_aget(bind,17/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Dataflow_visit(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(58);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -578,7 +578,7 @@ it=bind_aget(bind,57/*autovar*/); bind_aset(bind,9/*_result*/,it);
 ame_setcut(self,Qnil);goto accept1;
   alt1_11:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,9/*_result*/);
+
 return it;
 fail: return failobj; }VALUE cls_Dead_Code_Deleter3;
 VALUE AmethystCore_anything(VALUE self );
@@ -633,7 +633,7 @@ cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
 	success2: *ptr=oldpass2;
 	if(fail2) goto fail;
 it=bind_aget(bind,3/*autovar*/); bind_aset(bind,4/*_result*/,it);
-it=bind_aget(bind,4/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Dead_Code_Deleter3_traverse(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(10);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -669,7 +669,7 @@ it=rb_funcall(self,sy_Dead_Code_Deleter3__lp_bind_lb_2_rb__6693,1,bind);   it=Am
 	success1: *ptr=oldpass1;
 	if(fail1) goto fail;
 it=rb_funcall(self,sy_Dead_Code_Deleter3_if_sp_bind_lb__f1e9,1,bind);  bind_aset(bind,9/*_result*/,it);
-it=bind_aget(bind,9/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Dead_Code_Deleter3_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(8);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -714,7 +714,7 @@ alt1_4: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
 ame_setcut(self,Qnil);goto accept1;
   alt1_5:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,1/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Dead_Code_Deleter3_visit(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(10);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -797,7 +797,7 @@ it=rb_funcall(self,sy_Dead_Code_Deleter3__at_reachab_725b,1,bind);  bind_aset(bi
 ame_setcut(self,Qnil);goto accept1;
   alt1_5:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,2/*_result*/);
+
 return it;
 fail: return failobj; }VALUE cls_Forget_SSA;
 VALUE AmethystCore_anything(VALUE self );
@@ -841,7 +841,7 @@ cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
 	success2: *ptr=oldpass2;
 	if(fail2) goto fail;
 it=bind_aget(bind,3/*autovar*/); bind_aset(bind,4/*_result*/,it);
-it=bind_aget(bind,4/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Forget_SSA_traverse(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(10);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -877,7 +877,7 @@ it=rb_funcall(self,sy_Forget_SSA__lp_bind_lb_2_rb__6693,1,bind);   it=Amethyst_e
 	success1: *ptr=oldpass1;
 	if(fail1) goto fail;
 it=rb_funcall(self,sy_Forget_SSA_if_sp_bind_lb__f1e9,1,bind);  bind_aset(bind,9/*_result*/,it);
-it=bind_aget(bind,9/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Forget_SSA_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(8);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -922,7 +922,7 @@ alt1_4: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
 ame_setcut(self,Qnil);goto accept1;
   alt1_5:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,1/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Forget_SSA_visit(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(3);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -937,7 +937,7 @@ cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
 	success1: *ptr=oldpass1;
 	if(fail1) goto fail;
 it=bind_aget(bind,1/*autovar*/); bind_aset(bind,2/*_result*/,it);
-it=bind_aget(bind,2/*_result*/);
+
 return it;
 fail: return failobj; }
 void Init_dataflow_ssa_c(){ 
@@ -1074,4 +1074,4 @@ rb_define_method(cls_Forget_SSA,"root",Forget_SSA_root,0);
 rb_define_method(cls_Forget_SSA,"traverse",Forget_SSA_traverse,0);
 rb_define_method(cls_Forget_SSA,"traverse_item",Forget_SSA_traverse_item,0);
 rb_define_method(cls_Forget_SSA,"visit",Forget_SSA_visit,0);
- rb_eval_string("testversiondataflow_ssa('9cf7f7d0dbbbd083614e4eedfcf60395')");}
+ rb_eval_string("testversiondataflow_ssa('2ffd41463f244a117476eb14e16f1454')");}

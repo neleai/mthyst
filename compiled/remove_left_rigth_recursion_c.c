@@ -73,7 +73,7 @@ it=bind_aget(bind,10/*autovar*/); bind_aset(bind,4/*_result*/,it);
 ame_setcut(self,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,4/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Remove_Left_Recursion_root(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(34);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -150,7 +150,7 @@ it=bind_aget(bind,23/*autovar*/); bind_aset(bind,17/*_result*/,it);
 ame_setcut(self,Qnil);goto accept2;
   alt2_3:  ame_setpos(self,oldpos4); goto pass5;
  accept2:;
-it=bind_aget(bind,17/*_result*/);it=bind_aget(bind,17/*_result*/); bind_aset(bind,24/*r*/,it);
+it=bind_aget(bind,17/*_result*/); bind_aset(bind,24/*r*/,it);
 it=rb_ary_new3(0); bind_aset(bind,25/*autovar*/,it);
 int oldpos5; while(1){oldpos5=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break3); bind_aset(bind,26/*autovar*/,it);
 it=rb_funcall(self,sy_Remove_Left_Recursion__append_lp__05b0,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos5=ame_getpos(self);goto break3;} } } break3: ame_setstop(self,Qnil);  ame_setpos(self,oldpos5); it=bind_aget(bind,25/*autovar*/); bind_aset(bind,27/*rest*/,it);
@@ -187,7 +187,7 @@ it=rb_funcall(self,sy_Remove_Left_Recursion__append_lp__769c,1,bind);  if (ame_g
 	success1: *ptr=oldpass1;
 	if(fail1) goto fail;
 it=rb_funcall(self,sy_Remove_Left_Recursion_Seq_lb_Seq_lb__f6ac,1,bind);  bind_aset(bind,33/*_result*/,it);
-it=bind_aget(bind,33/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Remove_Left_Recursion_start(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(4);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -228,7 +228,7 @@ it=bind_aget(bind,3/*autovar*/); bind_aset(bind,0/*_result*/,it);
 ame_setcut(self,Qnil);goto accept1;
   alt1_5:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,0/*_result*/);
+
 return it;
 fail: return failobj; }
 void Init_remove_left_rigth_recursion_c(){ 
@@ -261,4 +261,4 @@ sy_Remove_Left_Recursion_src_dot_name_80f3=rb_intern("Remove_Left_Recursion_src_
 rb_define_method(cls_Remove_Left_Recursion,"rec",Remove_Left_Recursion_rec,2);
 rb_define_method(cls_Remove_Left_Recursion,"root",Remove_Left_Recursion_root,0);
 rb_define_method(cls_Remove_Left_Recursion,"start",Remove_Left_Recursion_start,0);
- rb_eval_string("testversionremove_left_rigth_recursion('8d4cdd4c9d7b17d671aae6b3c42c574a')");}
+ rb_eval_string("testversionremove_left_rigth_recursion('a3b20b27911e0670bc1b67d280809b0f')");}

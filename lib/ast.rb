@@ -220,7 +220,7 @@ def self.[](e,neg=false)
 end
 end
 def _body(body)
-	Seq[_Bind("_result",body), PureAct[Args["_result"]]]
+	Seq[_Bind("_result",body)]
 end
 
 class Apply

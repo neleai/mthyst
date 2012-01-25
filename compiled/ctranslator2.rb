@@ -113,11 +113,11 @@ end
 def AmethystCTranslator__at_faillab_37e7(bind)
 @faillabel=bind[0]; bind[3] 
 end
-def AmethystCTranslator__at_faillab_4695(bind)
-@faillabel=bind[2]; bind[5] 
-end
 def AmethystCTranslator__at_faillab_5015(bind)
 @faillabel=bind[61]; bind[62] 
+end
+def AmethystCTranslator__at_faillab_74ee(bind)
+@faillabel=bind[2]; bind[4] 
 end
 def AmethystCTranslator__at_faillab_8142(bind)
 @faillabel="fail"
@@ -356,7 +356,7 @@ end
 
 
 def ctranslator2_compiled_by
-'ca8f48b00afc46fbe2056a41992d84af'
+'457a7c05200d39f48a925c7678821ab8'
 end
 def ctranslator2_source_hash
 'bd797e77705eec6b274e6416c4b865e3'
@@ -365,6 +365,6 @@ def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'9c540df41b60cd34e78495c0a7b4659a'
+'e448d790b9d30da89455d25e8f89feda'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"

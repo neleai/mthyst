@@ -228,7 +228,7 @@ it=rb_funcall(self,sy_First_Dataflow_empty,1,bind);  bind_aset(bind,8/*_result*/
 ame_setcut(self,Qnil);goto accept1;
   alt1_10:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,8/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE First_Dataflow_getvalue(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=bind_new2(4); bind_aset(bind,0/*v*/,a0); int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -243,21 +243,21 @@ cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
 	success1: *ptr=oldpass1;
 	if(fail1) goto fail;
 it=bind_aget(bind,2/*autovar*/); bind_aset(bind,3/*_result*/,it);
-it=bind_aget(bind,3/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE First_Dataflow_root(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(2);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,0/*x*/,it);
  it=bind_aget(bind,0/*x*/); arg0=it; it=rb_funcall(self,sy_analyze,1,arg0); FAILTEST(fail); bind_aset(bind,1/*_result*/,it);
-it=bind_aget(bind,1/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE First_Dataflow_value(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(2);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,0/*x*/,it);
 it=rb_funcall(self,sy_First_Dataflow_depends_lp__0807,1,bind);  bind_aset(bind,1/*_result*/,it);
-it=bind_aget(bind,1/*_result*/);
+
 return it;
 fail: return failobj; }VALUE cls_Sizes_Dataflow;
 VALUE AmethystCore_anything(VALUE self );
@@ -377,7 +377,7 @@ alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
 ame_setcut(self,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,9/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Sizes_Dataflow_first_Sizes_Dataflow(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(35);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -572,7 +572,7 @@ it=rb_funcall(self,sy_Sizes_Dataflow_empty,1,bind);  bind_aset(bind,8/*_result*/
 ame_setcut(self,Qnil);goto accept1;
   alt1_10:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,8/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Sizes_Dataflow_getvalue(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=bind_new2(4); bind_aset(bind,0/*v*/,a0); int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -587,7 +587,7 @@ cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
 	success1: *ptr=oldpass1;
 	if(fail1) goto fail;
 it=bind_aget(bind,2/*autovar*/); bind_aset(bind,3/*_result*/,it);
-it=bind_aget(bind,3/*_result*/);
+
 return it;
 fail: return failobj; }VALUE cls_Switch_Dataflow;
 VALUE AmethystCore_anything(VALUE self );
@@ -729,7 +729,7 @@ alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
 ame_setcut(self,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,11/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Switch_Dataflow_first_Switch_Dataflow(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(35);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -924,7 +924,7 @@ it=rb_funcall(self,sy_Switch_Dataflow_empty,1,bind);  bind_aset(bind,8/*_result*
 ame_setcut(self,Qnil);goto accept1;
   alt1_10:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,8/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Switch_Dataflow_getvalue(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=bind_new2(4); bind_aset(bind,0/*v*/,a0); int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -939,7 +939,7 @@ cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
 	success1: *ptr=oldpass1;
 	if(fail1) goto fail;
 it=bind_aget(bind,2/*autovar*/); bind_aset(bind,3/*_result*/,it);
-it=bind_aget(bind,3/*_result*/);
+
 return it;
 fail: return failobj; }VALUE cls_ClasSwitch_Dataflow;
 VALUE AmethystCore_anything(VALUE self );
@@ -1019,7 +1019,7 @@ alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
 ame_setcut(self,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,5/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE ClasSwitch_Dataflow_first_ClasSwitch_Dataflow(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(35);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -1214,7 +1214,7 @@ it=rb_funcall(self,sy_ClasSwitch_Dataflow_empty,1,bind);  bind_aset(bind,8/*_res
 ame_setcut(self,Qnil);goto accept1;
   alt1_10:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,8/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE ClasSwitch_Dataflow_getvalue(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=bind_new2(4); bind_aset(bind,0/*v*/,a0); int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -1229,7 +1229,7 @@ cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
 	success1: *ptr=oldpass1;
 	if(fail1) goto fail;
 it=bind_aget(bind,2/*autovar*/); bind_aset(bind,3/*_result*/,it);
-it=bind_aget(bind,3/*_result*/);
+
 return it;
 fail: return failobj; }VALUE cls_Detect_First;
 VALUE AmethystCore_anything(VALUE self );
@@ -1299,13 +1299,13 @@ ame_setcut(self,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos2); goto break1;
  accept1:;
 it=rb_funcall(self,sy_Detect_First__append_lp__b494,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos1); it=bind_aget(bind,0/*autovar*/); bind_aset(bind,11/*_result*/,it);
-it=bind_aget(bind,11/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Detect_First_root(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
   it=Traverser_Clone2_traverse(self ); FAILTEST(fail); bind_aset(bind,0/*_result*/,it);
-it=bind_aget(bind,0/*_result*/);
+
 return it;
 fail: return failobj; }VALUE cls_Detect_Switch;
 VALUE AmethystCore_anything(VALUE self );
@@ -1406,7 +1406,7 @@ alt1_3: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
 ame_setcut(self,Qnil);goto accept1;
   alt1_4:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,4/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Detect_Switch_combine_seq(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=bind_new2(10); bind_aset(bind,1/*prefix*/,a0); int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -1456,7 +1456,7 @@ it=rb_funcall(self,sy_Detect_Switch_Seq_lb__ti__lp_bi_99e6,1,bind);  bind_aset(b
 ame_setcut(self,Qnil);goto accept1;
   alt1_4:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,2/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Detect_Switch_itrans(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(12);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -1511,13 +1511,13 @@ ame_setcut(self,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos2); goto break1;
  accept1:;
 it=rb_funcall(self,sy_Detect_Switch__append_lp__b494,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos1); it=bind_aget(bind,0/*autovar*/); bind_aset(bind,11/*_result*/,it);
-it=bind_aget(bind,11/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Detect_Switch_root(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
   it=Detect_Switch_traverse(self ); FAILTEST(fail); bind_aset(bind,0/*_result*/,it);
-it=bind_aget(bind,0/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Detect_Switch_traverse(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(10);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -1553,7 +1553,7 @@ it=rb_funcall(self,sy_Detect_Switch__lp_bind_lb_2_rb__6693,1,bind);   it=Amethys
 	success1: *ptr=oldpass1;
 	if(fail1) goto fail;
 it=rb_funcall(self,sy_Detect_Switch_if_sp_bind_lb__f1e9,1,bind);  bind_aset(bind,9/*_result*/,it);
-it=bind_aget(bind,9/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Detect_Switch_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(8);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -1598,7 +1598,7 @@ alt1_4: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
 ame_setcut(self,Qnil);goto accept1;
   alt1_5:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,1/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Detect_Switch_visit(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(55);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -1787,7 +1787,7 @@ it=rb_funcall(self,sy_Detect_Switch_Seq_lb__ti__lp_bi_f6a5,1,bind);  bind_aset(b
 ame_setcut(self,Qnil);goto accept3;
   alt3_4:  ame_setpos(self,oldpos6); goto pass13;
  accept3:;
-it=bind_aget(bind,28/*_result*/);it=bind_aget(bind,28/*_result*/); bind_aset(bind,36/*autovar*/,it);
+it=bind_aget(bind,28/*_result*/); bind_aset(bind,36/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass13);
 	goto success13;
 	pass13: fail13=1;
@@ -1856,7 +1856,7 @@ alt6_3: ame_setpos(self,oldpos13);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Q
 ame_setcut(self,Qnil);goto accept6;
   alt6_4:  ame_setpos(self,oldpos13); goto pass17;
  accept6:;
-it=bind_aget(bind,51/*_result*/);it=bind_aget(bind,51/*_result*/); bind_aset(bind,53/*autovar*/,it);
+it=bind_aget(bind,51/*_result*/); bind_aset(bind,53/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass17);
 	goto success17;
 	pass17: fail17=1;
@@ -1883,7 +1883,7 @@ it=bind_aget(bind,44/*autovar*/); bind_aset(bind,7/*_result*/,it);
 ame_setcut(self,Qnil);goto accept1;
   alt1_6:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,7/*_result*/);
+
 return it;
 fail: return failobj; }VALUE cls_Detect_ClasSwitch;
 VALUE AmethystCore_anything(VALUE self );
@@ -1995,7 +1995,7 @@ ame_setcut(self,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos2); goto break1;
  accept1:;
 it=rb_funcall(self,sy_Detect_ClasSwitch__append_lp__b494,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos1); it=bind_aget(bind,0/*autovar*/); bind_aset(bind,11/*_result*/,it);
-it=bind_aget(bind,11/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Detect_ClasSwitch_predicate(VALUE self ,VALUE a0,VALUE a1,VALUE a2){VALUE vals[3]; VALUE bind=bind_new2(27); bind_aset(bind,1/*clas*/,a0);bind_aset(bind,2/*i*/,a1);bind_aset(bind,0/*p*/,a2); int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -2100,13 +2100,13 @@ it=bind_aget(bind,12/*autovar*/); bind_aset(bind,3/*_result*/,it);
 ame_setcut(self,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,3/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Detect_ClasSwitch_root(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
   it=Detect_ClasSwitch_traverse(self ); FAILTEST(fail); bind_aset(bind,0/*_result*/,it);
-it=bind_aget(bind,0/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Detect_ClasSwitch_traverse(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(10);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -2142,7 +2142,7 @@ it=rb_funcall(self,sy_Detect_ClasSwitch__lp_bind_lb_2_rb__6693,1,bind);   it=Ame
 	success1: *ptr=oldpass1;
 	if(fail1) goto fail;
 it=rb_funcall(self,sy_Detect_ClasSwitch_if_sp_bind_lb__f1e9,1,bind);  bind_aset(bind,9/*_result*/,it);
-it=bind_aget(bind,9/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Detect_ClasSwitch_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(8);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -2187,7 +2187,7 @@ alt1_4: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
 ame_setcut(self,Qnil);goto accept1;
   alt1_5:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,1/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Detect_ClasSwitch_visit(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(10);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -2210,7 +2210,7 @@ it=rb_funcall(self,sy_Detect_ClasSwitch_bind_lb_1_rb__dot__cd74,1,bind); it=rb_f
 	success1: *ptr=oldpass1;
 	if(fail1) goto fail;
 it=bind_aget(bind,8/*autovar*/); bind_aset(bind,9/*_result*/,it);
-it=bind_aget(bind,9/*_result*/);
+
 return it;
 fail: return failobj; }
 void Init_detect_switch_c(){ 
@@ -2488,4 +2488,4 @@ rb_define_method(cls_Detect_ClasSwitch,"root",Detect_ClasSwitch_root,0);
 rb_define_method(cls_Detect_ClasSwitch,"traverse",Detect_ClasSwitch_traverse,0);
 rb_define_method(cls_Detect_ClasSwitch,"traverse_item",Detect_ClasSwitch_traverse_item,0);
 rb_define_method(cls_Detect_ClasSwitch,"visit",Detect_ClasSwitch_visit,0);
- rb_eval_string("testversiondetect_switch('b77eefe38ffcd350cf1ef298c00bb430')");}
+ rb_eval_string("testversiondetect_switch('95d683696739139a72aa4db0d81c4a2f')");}

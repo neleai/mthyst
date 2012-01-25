@@ -49,7 +49,7 @@ it=rb_funcall(self,sy_Traverser_Clone2__lp_bind_lb_2_rb__6693,1,bind);   it=Amet
 	success1: *ptr=oldpass1;
 	if(fail1) goto fail;
 it=rb_funcall(self,sy_Traverser_Clone2_if_sp_bind_lb__f1e9,1,bind);  bind_aset(bind,9/*_result*/,it);
-it=bind_aget(bind,9/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Traverser_Clone2_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(8);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -94,7 +94,7 @@ alt1_4: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
 ame_setcut(self,Qnil);goto accept1;
   alt1_5:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,1/*_result*/);
+
 return it;
 fail: return failobj; }VALUE cls_Visitor;
 VALUE AmethystCore_anything(VALUE self );
@@ -130,7 +130,7 @@ it=bind_aget(bind,4/*autovar*/); bind_aset(bind,5/*autovar*/,it);
 	success1: *ptr=oldpass1;
 	if(fail1) goto fail;
 it=bind_aget(bind,5/*autovar*/); bind_aset(bind,6/*_result*/,it);
-it=bind_aget(bind,6/*_result*/);
+
 return it;
 fail: return failobj; }
 VALUE Visitor_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(7);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -174,7 +174,7 @@ alt1_4: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
 ame_setcut(self,Qnil);goto accept1;
   alt1_5:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
-it=bind_aget(bind,0/*_result*/);
+
 return it;
 fail: return failobj; }
 void Init_traverser_c(){ 
@@ -203,4 +203,4 @@ sy_Visitor__lp_src_dot_ins_a413=rb_intern("Visitor__lp_src_dot_ins_a413");
 sy_visit=rb_intern("visit");
 rb_define_method(cls_Visitor,"traverse",Visitor_traverse,0);
 rb_define_method(cls_Visitor,"traverse_item",Visitor_traverse_item,0);
- rb_eval_string("testversiontraverser('1a22c17c1a08d92c703d71c21b7ecd37')");}
+ rb_eval_string("testversiontraverser('885ba7fbf9bc859c98c5e8ad53ac1772')");}
