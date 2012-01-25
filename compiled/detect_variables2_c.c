@@ -397,7 +397,6 @@ fail: return failobj; }VALUE cls_Resolve_Calls;
 VALUE AmethystCore_anything(VALUE self );
 VALUE Amethyst_clas(VALUE self ,VALUE);
 VALUE Amethyst_eof(VALUE self );
-VALUE Amethyst_fails(VALUE self );
 VALUE Amethyst_spaces(VALUE self );
 VALUE Resolve_Calls_root(VALUE self );
 VALUE Resolve_Calls_traverse(VALUE self );
@@ -530,7 +529,7 @@ cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
    it=AmethystCore_anything(self ); FAILTEST(pass1); bind_aset(bind,3/*autovar*/,it);
 cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,3/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
-   it=Amethyst_spaces(self ); FAILTEST(pass2);unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC(115) ... UC(115):;   it=AmethystCore_anything(self ); FAILTEST(pass2);if (strncmp(ame_curstr(self),"uper",4)) goto pass2; else ame_setpos(self,ame_getpos(self)+4); break;case UC(0) ... UC(114):;case UC(116) ... UC(255):;   it=Amethyst_fails(self ); FAILTEST(pass2); break;}  it=Amethyst_eof(self ); FAILTEST(pass2);
+   it=Amethyst_spaces(self ); FAILTEST(pass2);unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC(115) ... UC(115):;   it=AmethystCore_anything(self ); FAILTEST(pass2);if (strncmp(ame_curstr(self),"uper",4)) goto pass2; else ame_setpos(self,ame_getpos(self)+4); break;case UC(0) ... UC(114):;case UC(116) ... UC(255):; goto pass2; break;}  it=Amethyst_eof(self ); FAILTEST(pass2);
 	goto success2;
 	pass2: fail2=1;
 	success2: *ptr=oldpass2;
@@ -634,4 +633,4 @@ rb_define_method(cls_Resolve_Calls,"root",Resolve_Calls_root,0);
 rb_define_method(cls_Resolve_Calls,"traverse",Resolve_Calls_traverse,0);
 rb_define_method(cls_Resolve_Calls,"traverse_item",Resolve_Calls_traverse_item,0);
 rb_define_method(cls_Resolve_Calls,"visit",Resolve_Calls_visit,0);
- rb_eval_string("testversiondetect_variables2('7cbccb854331e54ae4b9ac2133cc95ac')");}
+ rb_eval_string("testversiondetect_variables2('dfda81f2e55de14ebcff684d7ee2728b')");}
