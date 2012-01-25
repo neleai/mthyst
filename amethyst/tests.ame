@@ -10,5 +10,5 @@ amethyst Tests{
 
 	foo = foo | bar {foo+bar}
 	abc =< abc>
-	de = abc | <de>
+	de ={1}:foo ({foo+1} abc |{foo+2} <de>)
 }

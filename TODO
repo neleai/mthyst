@@ -84,6 +84,8 @@ resolving rules in apply
 
 rewrite switch to do bottom-up construction
 
+recognize block-scoped locals
+
 paralelize compilation
 
 predicated inlining

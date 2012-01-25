@@ -2,6 +2,12 @@ CurrentParser[:implicit_variables]=true
 
 class Tests < Amethyst
 
+def Tests_bind_lb_0_rb__pl__3b00(bind)
+bind[0]+2
+end
+def Tests_bind_lb_0_rb__pl__fbc2(bind)
+bind[0]+1
+end
 def Tests_bind_lb_2_rb__pl__e5df(bind)
 bind[2]+bind[1]
 end
@@ -10,15 +16,15 @@ end
 
 
 def tests_compiled_by
-'33650760eb263c0eb877165354100a78'
+'d455f09fb93eee48d5c38c83e0b174b1'
 end
 def tests_source_hash
-'125ea8d8c81bf374f2369aa532c0e2ba'
+'2be30090a93f05dadc9b46b3d9713748'
 end
 def testversiontests(r)
  raise "invalid version" if r!=tests_version
 end
 def tests_version
-'787aa179d578758566e048a8c9bf56b1'
+'e193d55bf94c1b0653d813b4abc0a691'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/tests_c"
