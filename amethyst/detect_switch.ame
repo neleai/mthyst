@@ -316,27 +316,6 @@ amethyst Detect_First < Traverser_Clone2 {
 	root = traverse
 }
 
-def combine_or(pred,frst,*rest)
-	if frst.is_a?(Switch)
-		r=[]
-		frst.ary.each{|p,alt| if pred&p!=CharLattice.bottom
-			if rest==[]
-				r<<[p&pred,[alt]]
-			else
-				r+=combine_or(p&pred,*rest).map{|s,k| [s,[alt]+k]}
-			end
-		end}
-		r
-	else
-		if rest==[]
-			return [[pred,[frst]]]
-		else
-			return combine_or(pred,*rest).map{|s,k| [s,[[frst]+k]]}
-		end
-	end
-end
-
-
 amethyst Detect_Switch < Detect_First {
 	visit =  Apply[ ["regch"] Act[.*] {first(@self)}:firs {s=Switch[{:act=>"*ame_curstr(self)",:ary=>[[firs,Apply["anything"]],[~firs,Apply["fails"]]]}]}]
 				|  Apply[ ["_seq"] CAct[.:str] 
@@ -347,16 +326,21 @@ amethyst Detect_Switch < Detect_First {
 				|	 Apply[ .*  {first(@self)}:firs &{!empty?(@self) && firs!=CharLattice.top} {s=Switch[{:act=>"*ame_curstr(self)",:ary=>[[firs,@self],[~firs,Apply["fails"]]]}] }]
 				| Seq[ traverse_item*=>[combine_seq([])] ]
 				| Or[ (traverse_item)*:items {false}:aswitch {items.each{|i| aswitch=true if i.is_a?(Switch)}}
-							{puts items.inspect;puts aswitch.inspect}
 							( &{!aswitch} {Or[*items]} 
-							| {c=combine_or(CharLattice.top,*items);c}:comb
-							{s=Switch[{:act=>"*ame_curstr(self)",:ary=>comb.map{|k,a| [k,Or[*a].dup.normalize]}}];puts s.inspect;s}
+							|  {items}=>[ combine_or([[CharLattice.top,[]]]) ]
 							)
 						]
 				
-				combine_seq(prefix) = (Act|CAct|Bind):s combine_seq(prefix+[s])
-														| Switch[ .* @ary:ary ] .*:rest { Switch[{:act=>"*ame_curstr(self)",:ary=>ary.map{|p,a| [p,Seq[*(prefix+[a]+rest)]]}}] }
-									 	        | .*:ary {Seq[*(prefix+ary)]}
+ combine_seq(prefix) = (Act|CAct|Bind):s combine_seq(prefix+[s])
+ 										 | Switch[ .* @ary:ary ] .*:rest { Switch[{:act=>"*ame_curstr(self)",:ary=>ary.map{|p,a| [p,Seq[*(prefix+[a]+rest)]]}}] }
+					 	         | .*:ary {Seq[*(prefix+ary)]}
+
+ combine_or(list) = Switch[.* @ary:ary] {[]}:newlist
+                           {list.each{|p,a| ary.each{|p2,a2| newlist << [p&p2,a+[a2]] if p&p2!=CharLattice.bottom}}}
+                           combine_or(newlist)
+                  | .:n {list.map{|p,a| [p,a+[n]]}}:newlist                                  
+                           combine_or(newlist)
+								  | eof {Switch[{:act=>"*ame_curstr(self)",:ary=>list.map{|p,a| [p,Or[*a].dup.normalize]}}]}
 }
 
 amethyst Detect_ClasSwitch < Detect_First {
