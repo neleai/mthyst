@@ -61,8 +61,8 @@ class Dataflow < Traverser_Clone2
 def Dataflow_Act_lb_bind_9896(bind)
 Act[bind[0],src.pred]
 end
-def Dataflow_Apply_lb__ti_b_48ab(bind)
-Apply[*bind[0],{:clas=>src.clas}]
+def Dataflow_Apply_lb__ti__lp__911e(bind)
+Apply[*(bind[0]+[{:clas=>src.clas}])]
 end
 def Dataflow_Lookahea_1748(bind)
 Lookahead[*bind[0]]
@@ -339,15 +339,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'d455f09fb93eee48d5c38c83e0b174b1'
+'aa9d06e56cfdbc5127ef4804c28d3ada'
 end
 def dataflow_ssa_source_hash
-'7a7076cc8a965da2b8f49e5422105796'
+'cb23787809371f5cfcda6188ef937f8d'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'3299b706ebceecb46e95f71ec5ef636b'
+'46d4273874a1bcbac1a10eef23d7ffbd'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/dataflow_ssa_c"

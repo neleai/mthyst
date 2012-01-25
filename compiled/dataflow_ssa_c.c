@@ -26,7 +26,7 @@ static VALUE c_Result;
 static VALUE c_Rule;
 static VALUE c_Switch;
 static VALUE sy_Dataflow_Act_lb_bind_9896;
-static VALUE sy_Dataflow_Apply_lb__ti_b_48ab;
+static VALUE sy_Dataflow_Apply_lb__ti__lp__911e;
 static VALUE sy_Dataflow_Lookahea_1748;
 static VALUE sy_Dataflow_Many_dot_cre_2065;
 static VALUE sy_Dataflow_Or_lb__ti_bind_2fd2;
@@ -337,7 +337,7 @@ cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
  it=rb_ary_new3(0); bind_aset(bind,2/*autovar*/,it);
 int oldpos2; while(1){oldpos2=ame_getpos(self);   it=Dataflow_traverse_item(self ); FAILTEST(break1); bind_aset(bind,3/*autovar*/,it);
 it=rb_funcall(self,sy_Dataflow__append_lp__4de3,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos2=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos2); it=bind_aget(bind,2/*autovar*/); bind_aset(bind,0/*t*/,it);
-it=rb_funcall(self,sy_Dataflow_Apply_lb__ti_b_48ab,1,bind);  bind_aset(bind,4/*app*/,it);
+it=rb_funcall(self,sy_Dataflow_Apply_lb__ti__lp__911e,1,bind);  bind_aset(bind,4/*app*/,it);
 it=bind_aget(bind,4/*app*/); bind_aset(bind,5/*autovar*/,it);
 cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=bind_aget(bind,5/*autovar*/);ptr->len=1;
@@ -961,7 +961,7 @@ c_Result=rb_const_get(rb_cObject, rb_intern("Result"));rb_ary_push(rb_const_get(
 c_Rule=rb_const_get(rb_cObject, rb_intern("Rule"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Rule);
 c_Switch=rb_const_get(rb_cObject, rb_intern("Switch"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Switch);
 sy_Dataflow_Act_lb_bind_9896=rb_intern("Dataflow_Act_lb_bind_9896");
-sy_Dataflow_Apply_lb__ti_b_48ab=rb_intern("Dataflow_Apply_lb__ti_b_48ab");
+sy_Dataflow_Apply_lb__ti__lp__911e=rb_intern("Dataflow_Apply_lb__ti__lp__911e");
 sy_Dataflow_Lookahea_1748=rb_intern("Dataflow_Lookahea_1748");
 sy_Dataflow_Many_dot_cre_2065=rb_intern("Dataflow_Many_dot_cre_2065");
 sy_Dataflow_Or_lb__ti_bind_2fd2=rb_intern("Dataflow_Or_lb__ti_bind_2fd2");
@@ -1074,4 +1074,4 @@ rb_define_method(cls_Forget_SSA,"root",Forget_SSA_root,0);
 rb_define_method(cls_Forget_SSA,"traverse",Forget_SSA_traverse,0);
 rb_define_method(cls_Forget_SSA,"traverse_item",Forget_SSA_traverse_item,0);
 rb_define_method(cls_Forget_SSA,"visit",Forget_SSA_visit,0);
- rb_eval_string("testversiondataflow_ssa('3299b706ebceecb46e95f71ec5ef636b')");}
+ rb_eval_string("testversiondataflow_ssa('46d4273874a1bcbac1a10eef23d7ffbd')");}

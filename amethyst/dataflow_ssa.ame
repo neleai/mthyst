@@ -59,7 +59,7 @@ end
 amethyst Dataflow < Traverser_Clone2 {
 	root =  @self=>Rule[ {@@bnding=@bnding} @args=>[traverse_item*:var] {var.each{|v| @@marked<<ssanum(v)};@args=var} ({@body}=>traverse_item):body {@body=body} {@reachable=@@edges.reverse.reachable(@@marked+[ssanum(@body[-1]),@body]); @cfg=@@edges; } {@self} ]
 	
-	visit = Apply[  traverse_item*:t {Apply[*t,{:clas=>@clas}]}:app {app}=>[vars_in:var] {var.each{|v| @@marked<<ssanum(v)}} {app} ]
+	visit = Apply[  traverse_item*:t {Apply[*(t+[{:clas=>@clas}])]}:app {app}=>[vars_in:var] {var.each{|v| @@marked<<ssanum(v)}} {app} ]
 				| Or[	{[]}:join {oldssanums.clone}:old  ({@@oldssanums=old.clone} traverse_item:t[] {join<<oldssanums.clone})* {or_end(join)} {Or[*t]} ]
 				| Switch[ {[]}:alts	{[]}:join {oldssanums.clone}:old  ({@@oldssanums=old.clone} [:pred traverse_item:a {alts<<[pred,a]}] {join<<oldssanums.clone})* {or_end(join)} {Switch[{:ary=>alts,:act=>@act,:defs=>@defs,:first=>@first,:header=>@header,:init=>@init}]} ]
 

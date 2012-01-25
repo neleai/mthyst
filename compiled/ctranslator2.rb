@@ -299,14 +299,14 @@ failobj=rb_eval_string(\"FAIL\");
 "
 							[bind[9],init,bind[8]] 
 end
-def AmethystCTranslator_bind_lb_9_rb__pl__0997(bind)
-bind[9]+=bind[89].cases(src.first) + " #{bind[7]} break;"
-end
 def AmethystCTranslator_bind_lb_9_rb__pl__4c20(bind)
 bind[9]+=map_index(bind[7]){|i| "#{bind[57]}_#{i+1}: ame_setpos(self,#{bind[56]});if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto #{bind[55]};}\n #{bind[7][i]} \name_setcut(self,Qnil);goto #{bind[54]};\n"}*""
 end
 def AmethystCTranslator_bind_lb_9_rb__pl__9cee(bind)
 bind[9]+"}"
+end
+def AmethystCTranslator_bind_lb_9_rb__pl__a579(bind)
+bind[9]+=bind[89].cases(src.first) + " #{bind[7]} break;\n"
 end
 def AmethystCTranslator_h_eq__dq_VALUE_394b(bind)
 h="VALUE #{bind[0]}(VALUE self,VALUE bind)"
@@ -356,15 +356,15 @@ end
 
 
 def ctranslator2_compiled_by
-'d455f09fb93eee48d5c38c83e0b174b1'
+'aa9d06e56cfdbc5127ef4804c28d3ada'
 end
 def ctranslator2_source_hash
-'680e320e3c03153422252b1586d1e427'
+'bd797e77705eec6b274e6416c4b865e3'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'79ba3ef85aee66895aa4392218f0cf09'
+'3451b92c388bd03bcc44b44196ec799a'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"

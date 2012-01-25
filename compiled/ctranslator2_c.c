@@ -113,9 +113,9 @@ static VALUE sy_AmethystCTranslator_bind_lb_7_rb__ti__a05a;
 static VALUE sy_AmethystCTranslator_bind_lb_9_rb__eq__0cf2;
 static VALUE sy_AmethystCTranslator_bind_lb_9_rb__eq__dded;
 static VALUE sy_AmethystCTranslator_bind_lb_9_rb__lt__95b9;
-static VALUE sy_AmethystCTranslator_bind_lb_9_rb__pl__0997;
 static VALUE sy_AmethystCTranslator_bind_lb_9_rb__pl__4c20;
 static VALUE sy_AmethystCTranslator_bind_lb_9_rb__pl__9cee;
+static VALUE sy_AmethystCTranslator_bind_lb_9_rb__pl__a579;
 static VALUE sy_AmethystCTranslator_h_eq__dq_VALUE_394b;
 static VALUE sy_AmethystCTranslator_h_eq__dq_VALUE_7445;
 static VALUE sy_AmethystCTranslator_label_lp__dq_a_f49c;
@@ -453,7 +453,9 @@ cstruct oldpass8=*ptr; int fail8=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
    it=AmethystCore_anything(self ); FAILTEST(pass8); bind_aset(bind,29/*autovar*/,it);
 cstruct oldpass9=*ptr; int fail9=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,29/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
-   it=Amethyst_spaces(self ); FAILTEST(pass9);unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC(95) ... UC(95):;   it=AmethystCore_anything(self ); FAILTEST(pass9);if (strncmp(ame_curstr(self),"find",4)) goto pass9; else ame_setpos(self,ame_getpos(self)+4); break;case UC(0) ... UC(94):;case UC(96) ... UC(255):; goto pass9; break;}  it=Amethyst_eof(self ); FAILTEST(pass9);
+   it=Amethyst_spaces(self ); FAILTEST(pass9);unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC(95) ... UC(95):;   it=AmethystCore_anything(self ); FAILTEST(pass9);if (strncmp(ame_curstr(self),"find",4)) goto pass9; else ame_setpos(self,ame_getpos(self)+4); break;
+case UC(0) ... UC(94):;case UC(96) ... UC(255):; goto pass9; break;
+}  it=Amethyst_eof(self ); FAILTEST(pass9);
 	goto success9;
 	pass9: fail9=1;
 	success9: *ptr=oldpass9;
@@ -473,7 +475,9 @@ cstruct oldpass10=*ptr; int fail10=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
    it=AmethystCore_anything(self ); FAILTEST(pass10); bind_aset(bind,31/*autovar*/,it);
 cstruct oldpass11=*ptr; int fail11=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,31/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
-   it=Amethyst_spaces(self ); FAILTEST(pass11);unsigned char chr2=*ame_curstr(self);  switch(chr2){case UC(102) ... UC(102):;   it=AmethystCore_anything(self ); FAILTEST(pass11);if (strncmp(ame_curstr(self),"ails",4)) goto pass11; else ame_setpos(self,ame_getpos(self)+4); break;case UC(0) ... UC(101):;case UC(103) ... UC(255):; goto pass11; break;}  it=Amethyst_eof(self ); FAILTEST(pass11);
+   it=Amethyst_spaces(self ); FAILTEST(pass11);unsigned char chr2=*ame_curstr(self);  switch(chr2){case UC(102) ... UC(102):;   it=AmethystCore_anything(self ); FAILTEST(pass11);if (strncmp(ame_curstr(self),"ails",4)) goto pass11; else ame_setpos(self,ame_getpos(self)+4); break;
+case UC(0) ... UC(101):;case UC(103) ... UC(255):; goto pass11; break;
+}  it=Amethyst_eof(self ); FAILTEST(pass11);
 	goto success11;
 	pass11: fail11=1;
 	success11: *ptr=oldpass11;
@@ -494,7 +498,9 @@ cstruct oldpass12=*ptr; int fail12=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
    it=AmethystCore_anything(self ); FAILTEST(pass12); bind_aset(bind,34/*autovar*/,it);
 cstruct oldpass13=*ptr; int fail13=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,34/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
-   it=Amethyst_spaces(self ); FAILTEST(pass13);unsigned char chr3=*ame_curstr(self);  switch(chr3){case UC(95) ... UC(95):;   it=AmethystCore_anything(self ); FAILTEST(pass13);if (strncmp(ame_curstr(self),"seq",3)) goto pass13; else ame_setpos(self,ame_getpos(self)+3); break;case UC(0) ... UC(94):;case UC(96) ... UC(255):; goto pass13; break;}  it=Amethyst_eof(self ); FAILTEST(pass13);
+   it=Amethyst_spaces(self ); FAILTEST(pass13);unsigned char chr3=*ame_curstr(self);  switch(chr3){case UC(95) ... UC(95):;   it=AmethystCore_anything(self ); FAILTEST(pass13);if (strncmp(ame_curstr(self),"seq",3)) goto pass13; else ame_setpos(self,ame_getpos(self)+3); break;
+case UC(0) ... UC(94):;case UC(96) ... UC(255):; goto pass13; break;
+}  it=Amethyst_eof(self ); FAILTEST(pass13);
 	goto success13;
 	pass13: fail13=1;
 	success13: *ptr=oldpass13;
@@ -737,7 +743,7 @@ cstruct oldpass28=*ptr; int fail28=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
 	pass28: fail28=1;
 	success28: *ptr=oldpass28;
 	if(fail28) goto break8;
-it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_9_rb__pl__0997,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos11=ame_getpos(self);goto break8;} } } break8: ame_setstop(self,Qnil);  ame_setpos(self,oldpos11); it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_9_rb__pl__9cee,1,bind);  bind_aset(bind,90/*autovar*/,it);
+it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_9_rb__pl__a579,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos11=ame_getpos(self);goto break8;} } } break8: ame_setstop(self,Qnil);  ame_setpos(self,oldpos11); it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_9_rb__pl__9cee,1,bind);  bind_aset(bind,90/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass27);
 	goto success27;
 	pass27: fail27=1;
@@ -853,9 +859,9 @@ sy_AmethystCTranslator_bind_lb_7_rb__ti__a05a=rb_intern("AmethystCTranslator_bin
 sy_AmethystCTranslator_bind_lb_9_rb__eq__0cf2=rb_intern("AmethystCTranslator_bind_lb_9_rb__eq__0cf2");
 sy_AmethystCTranslator_bind_lb_9_rb__eq__dded=rb_intern("AmethystCTranslator_bind_lb_9_rb__eq__dded");
 sy_AmethystCTranslator_bind_lb_9_rb__lt__95b9=rb_intern("AmethystCTranslator_bind_lb_9_rb__lt__95b9");
-sy_AmethystCTranslator_bind_lb_9_rb__pl__0997=rb_intern("AmethystCTranslator_bind_lb_9_rb__pl__0997");
 sy_AmethystCTranslator_bind_lb_9_rb__pl__4c20=rb_intern("AmethystCTranslator_bind_lb_9_rb__pl__4c20");
 sy_AmethystCTranslator_bind_lb_9_rb__pl__9cee=rb_intern("AmethystCTranslator_bind_lb_9_rb__pl__9cee");
+sy_AmethystCTranslator_bind_lb_9_rb__pl__a579=rb_intern("AmethystCTranslator_bind_lb_9_rb__pl__a579");
 sy_AmethystCTranslator_h_eq__dq_VALUE_394b=rb_intern("AmethystCTranslator_h_eq__dq_VALUE_394b");
 sy_AmethystCTranslator_h_eq__dq_VALUE_7445=rb_intern("AmethystCTranslator_h_eq__dq_VALUE_7445");
 sy_AmethystCTranslator_label_lp__dq_a_f49c=rb_intern("AmethystCTranslator_label_lp__dq_a_f49c");
@@ -880,4 +886,4 @@ rb_define_method(cls_AmethystCTranslator,"rbtrans",AmethystCTranslator_rbtrans,0
 rb_define_method(cls_AmethystCTranslator,"rbtrans2",AmethystCTranslator_rbtrans2,0);
 rb_define_method(cls_AmethystCTranslator,"rw",AmethystCTranslator_rw,2);
 rb_define_method(cls_AmethystCTranslator,"trans",AmethystCTranslator_trans,0);
- rb_eval_string("testversionctranslator2('79ba3ef85aee66895aa4392218f0cf09')");}
+ rb_eval_string("testversionctranslator2('3451b92c388bd03bcc44b44196ec799a')");}
