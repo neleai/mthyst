@@ -335,13 +335,6 @@ def combine_or(pred,frst,*rest)
 		end
 	end
 end
-def combine_seq(frst,*rest)
-       if frst.is_a?(Switch)
-               Switch[{:act=>"*ame_curstr(self)",:ary=>frst.ary.map{|p,a| [p,Seq[*([a]+rest)]]}}]
-       else
-               Seq[*([frst]+rest)]
-       end
-end
 
 
 amethyst Detect_Switch < Detect_First {
@@ -352,7 +345,7 @@ amethyst Detect_Switch < Detect_First {
 				|  Apply[ ["fails"] {@self} ]
 				|  Many[ traverse:t first(t):firs &{!empty?(@self) && firs!=CharLattice.top} {s=Switch[{:act=>"*ame_curstr(self)",:ary=>[[firs,Many[t]],[~firs,Apply["fails"]]]}] }]
 				|	 Apply[ .*  {first(@self)}:firs &{!empty?(@self) && firs!=CharLattice.top} {s=Switch[{:act=>"*ame_curstr(self)",:ary=>[[firs,@self],[~firs,Apply["fails"]]]}] }]
-				| Seq[ traverse_item*:items {combine_seq(*items)}]
+				| Seq[ traverse_item*=>combine_seq ]
 				| Or[ (traverse_item)*:items {false}:aswitch {items.each{|i| aswitch=true if i.is_a?(Switch)}}
 							{puts items.inspect;puts aswitch.inspect}
 							( &{!aswitch} {Or[*items]} 
@@ -360,6 +353,9 @@ amethyst Detect_Switch < Detect_First {
 							{s=Switch[{:act=>"*ame_curstr(self)",:ary=>comb.map{|k,a| [k,Or[*a].dup.normalize]}}];puts s.inspect;s}
 							)
 						]
+				
+				combine_seq = Switch[ .* @ary:ary ] .*:rest { Switch[{:act=>"*ame_curstr(self)",:ary=>ary.map{|p,a| [p,Seq[*([a]+rest)]]}}] }
+										| .*:ary {Seq[*ary]}
 }
 
 amethyst Detect_ClasSwitch < Detect_First {
