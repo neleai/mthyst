@@ -329,7 +329,7 @@ alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
 ame_setcut(self,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto pass2;
  accept1:;
-it=bind_aget(bind,7/*_result*/); bind_aset(bind,8/*autovar*/,it);
+it=bind_aget(bind,7/*_result*/);it=bind_aget(bind,7/*_result*/); bind_aset(bind,8/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass2);
 	goto success2;
 	pass2: fail2=1;
@@ -389,4 +389,4 @@ rb_define_method(cls_Left_Factor,"root",Left_Factor_root,0);
 rb_define_method(cls_Left_Factor,"traverse",Left_Factor_traverse,0);
 rb_define_method(cls_Left_Factor,"traverse_item",Left_Factor_traverse_item,0);
 rb_define_method(cls_Left_Factor,"visit",Left_Factor_visit,0);
- rb_eval_string("testversionleft_factor('a14fc4086573a8ce4cbee6118e6767a8')");}
+ rb_eval_string("testversionleft_factor('525c12b5e6823b98b6a41aadaec8244f')");}

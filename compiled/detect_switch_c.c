@@ -1787,7 +1787,7 @@ it=rb_funcall(self,sy_Detect_Switch_Seq_lb__ti__lp_bi_f6a5,1,bind);  bind_aset(b
 ame_setcut(self,Qnil);goto accept3;
   alt3_4:  ame_setpos(self,oldpos6); goto pass13;
  accept3:;
-it=bind_aget(bind,28/*_result*/); bind_aset(bind,36/*autovar*/,it);
+it=bind_aget(bind,28/*_result*/);it=bind_aget(bind,28/*_result*/); bind_aset(bind,36/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass13);
 	goto success13;
 	pass13: fail13=1;
@@ -1856,7 +1856,7 @@ alt6_3: ame_setpos(self,oldpos13);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Q
 ame_setcut(self,Qnil);goto accept6;
   alt6_4:  ame_setpos(self,oldpos13); goto pass17;
  accept6:;
-it=bind_aget(bind,51/*_result*/); bind_aset(bind,53/*autovar*/,it);
+it=bind_aget(bind,51/*_result*/);it=bind_aget(bind,51/*_result*/); bind_aset(bind,53/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass17);
 	goto success17;
 	pass17: fail17=1;
@@ -2488,4 +2488,4 @@ rb_define_method(cls_Detect_ClasSwitch,"root",Detect_ClasSwitch_root,0);
 rb_define_method(cls_Detect_ClasSwitch,"traverse",Detect_ClasSwitch_traverse,0);
 rb_define_method(cls_Detect_ClasSwitch,"traverse_item",Detect_ClasSwitch_traverse_item,0);
 rb_define_method(cls_Detect_ClasSwitch,"visit",Detect_ClasSwitch_visit,0);
- rb_eval_string("testversiondetect_switch('ea729510a03ff9894eee13793ed555ea')");}
+ rb_eval_string("testversiondetect_switch('b77eefe38ffcd350cf1ef298c00bb430')");}

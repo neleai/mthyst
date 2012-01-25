@@ -5,7 +5,7 @@ amethyst DetectCalls < Visitor {
 }
 
 amethyst Inliner2 < Traverser_Clone2 {
-	root = :from :to {from}=>Rule[@name:name @args:args @locals:locals @body:body]  {@@name=name;@@args=args;@@body=body } 
+	root = :from :to {from}=>Rule[@name:name @args:args @locals:locals {Seq[@body,Local["_result",@bnding]]}:body] {@@name=name;@@args=args;@@body=body }
 				 {to}=>Rule[traverse]
  
   visit = Apply[:name &{name==@@name} .*:args] ->  body=@@body; args.each_index{|i| body=Seq[Bind[@@args[i],args[i]],body] } ; body

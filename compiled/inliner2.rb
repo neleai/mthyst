@@ -21,6 +21,9 @@ end
 
 class Inliner2 < Traverser_Clone2
 
+def Inliner2_Seq_lb_src_dot__3406(bind)
+Seq[src.body,Local["_result",src.bnding]]
+end
 def Inliner2__append_lp__4de3(bind)
 _append(bind[2],bind[3])
 end
@@ -66,9 +69,6 @@ end
 def Inliner2_src_dot_args_2df5(bind)
 src.args
 end
-def Inliner2_src_dot_body_519e(bind)
-src.body
-end
 def Inliner2_src_dot_loca_1df0(bind)
 src.locals
 end
@@ -81,15 +81,15 @@ end
 
 
 def inliner2_compiled_by
-'8b3cfcdbba2ba20b3d22d94eb549c0f3'
+'ca8f48b00afc46fbe2056a41992d84af'
 end
 def inliner2_source_hash
-'5b5005b034d7aafb802d47d11374b8b3'
+'101f6c5b9eced53fc2d7672d6b1187d6'
 end
 def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version
 end
 def inliner2_version
-'8a37d121d3ffc07731eaefe05cce6f1b'
+'ebc3fd160122fc5eb127217ea0c1ba17'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/inliner2_c"

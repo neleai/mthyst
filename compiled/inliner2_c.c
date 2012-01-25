@@ -128,6 +128,7 @@ static VALUE c_AmethystAST;
 static VALUE c_Apply;
 static VALUE c_Array;
 static VALUE c_Rule;
+static VALUE sy_Inliner2_Seq_lb_src_dot__3406;
 static VALUE sy_Inliner2__append_lp__4de3;
 static VALUE sy_Inliner2__at_changed_5352;
 static VALUE sy_Inliner2__at_changed_b885;
@@ -141,7 +142,6 @@ static VALUE sy_Inliner2_body_eq__at_bo_c02f;
 static VALUE sy_Inliner2_if_sp_bind_lb__f1e9;
 static VALUE sy_Inliner2_src_25d9;
 static VALUE sy_Inliner2_src_dot_args_2df5;
-static VALUE sy_Inliner2_src_dot_body_519e;
 static VALUE sy_Inliner2_src_dot_loca_1df0;
 static VALUE sy_Inliner2_src_dot_name_80f3;
 VALUE Inliner2_root(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(13);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -162,7 +162,7 @@ cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,4/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  it=rb_funcall(self,sy_Inliner2_src_dot_name_80f3,1,bind);  bind_aset(bind,5/*name*/,it);
 it=rb_funcall(self,sy_Inliner2_src_dot_args_2df5,1,bind);  bind_aset(bind,6/*args*/,it);
-it=rb_funcall(self,sy_Inliner2_src_dot_loca_1df0,1,bind); it=rb_funcall(self,sy_Inliner2_src_dot_body_519e,1,bind);  bind_aset(bind,7/*body*/,it);
+it=rb_funcall(self,sy_Inliner2_src_dot_loca_1df0,1,bind); it=rb_funcall(self,sy_Inliner2_Seq_lb_src_dot__3406,1,bind);  bind_aset(bind,7/*body*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass2);
 	goto success2;
 	pass2: fail2=1;
@@ -312,6 +312,7 @@ c_AmethystAST=rb_const_get(rb_cObject, rb_intern("AmethystAST"));rb_ary_push(rb_
 c_Apply=rb_const_get(rb_cObject, rb_intern("Apply"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Apply);
 c_Array=rb_const_get(rb_cObject, rb_intern("Array"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Array);
 c_Rule=rb_const_get(rb_cObject, rb_intern("Rule"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Rule);
+sy_Inliner2_Seq_lb_src_dot__3406=rb_intern("Inliner2_Seq_lb_src_dot__3406");
 sy_Inliner2__append_lp__4de3=rb_intern("Inliner2__append_lp__4de3");
 sy_Inliner2__at_changed_5352=rb_intern("Inliner2__at_changed_5352");
 sy_Inliner2__at_changed_b885=rb_intern("Inliner2__at_changed_b885");
@@ -325,11 +326,10 @@ sy_Inliner2_body_eq__at_bo_c02f=rb_intern("Inliner2_body_eq__at_bo_c02f");
 sy_Inliner2_if_sp_bind_lb__f1e9=rb_intern("Inliner2_if_sp_bind_lb__f1e9");
 sy_Inliner2_src_25d9=rb_intern("Inliner2_src_25d9");
 sy_Inliner2_src_dot_args_2df5=rb_intern("Inliner2_src_dot_args_2df5");
-sy_Inliner2_src_dot_body_519e=rb_intern("Inliner2_src_dot_body_519e");
 sy_Inliner2_src_dot_loca_1df0=rb_intern("Inliner2_src_dot_loca_1df0");
 sy_Inliner2_src_dot_name_80f3=rb_intern("Inliner2_src_dot_name_80f3");
 rb_define_method(cls_Inliner2,"root",Inliner2_root,0);
 rb_define_method(cls_Inliner2,"traverse",Inliner2_traverse,0);
 rb_define_method(cls_Inliner2,"traverse_item",Inliner2_traverse_item,0);
 rb_define_method(cls_Inliner2,"visit",Inliner2_visit,0);
- rb_eval_string("testversioninliner2('8a37d121d3ffc07731eaefe05cce6f1b')");}
+ rb_eval_string("testversioninliner2('ebc3fd160122fc5eb127217ea0c1ba17')");}
