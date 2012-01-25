@@ -60,7 +60,7 @@ class CharLattice < FirstLattice
 	def self.top;	         CharLattice[[0,255]] ;end
 	def self.default;	     top|empty            ;end
 	def cchar(c)
-		#return "UC('\\'')" if c==?'
+		return "'#{c.chr}'" if c.chr.inspect.size==3 && c.chr.inspect!='"\'"' && c.ord < 128
 		"UC(#{c.ord})"
 	end
   def cases(first)

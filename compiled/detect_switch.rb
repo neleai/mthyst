@@ -60,7 +60,7 @@ class CharLattice < FirstLattice
 	def self.top;	         CharLattice[[0,255]] ;end
 	def self.default;	     top|empty            ;end
 	def cchar(c)
-		#return "UC('\\'')" if c==?'
+		return "'#{c.chr}'" if c.chr.inspect.size==3 && c.chr.inspect!='"\'"' && c.ord < 128
 		"UC(#{c.ord})"
 	end
   def cases(first)
@@ -794,15 +794,15 @@ end
 
 
 def detect_switch_compiled_by
-'aa9d06e56cfdbc5127ef4804c28d3ada'
+'4d2e84d763846258bf3884fdc528d90c'
 end
 def detect_switch_source_hash
-'8deac584cb59c5c782d71a65934d10b4'
+'4e6b7e59702a13b5d2637e7e91036663'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'1c41976f25653c6b296c0752ab623545'
+'00f6c7f09f7d67641a98a5c35d4a6f30'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

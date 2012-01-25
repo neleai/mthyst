@@ -453,8 +453,8 @@ cstruct oldpass8=*ptr; int fail8=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
    it=AmethystCore_anything(self ); FAILTEST(pass8); bind_aset(bind,29/*autovar*/,it);
 cstruct oldpass9=*ptr; int fail9=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,29/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
-   it=Amethyst_spaces(self ); FAILTEST(pass9);unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC(95) ... UC(95):;   it=AmethystCore_anything(self ); FAILTEST(pass9);if (strncmp(ame_curstr(self),"find",4)) goto pass9; else ame_setpos(self,ame_getpos(self)+4); break;
-case UC(0) ... UC(94):;case UC(96) ... UC(255):; goto pass9; break;
+   it=Amethyst_spaces(self ); FAILTEST(pass9);unsigned char chr1=*ame_curstr(self);  switch(chr1){case '_' ... '_':;   it=AmethystCore_anything(self ); FAILTEST(pass9);if (strncmp(ame_curstr(self),"find",4)) goto pass9; else ame_setpos(self,ame_getpos(self)+4); break;
+case UC(0) ... '^':;case '`' ... UC(255):; goto pass9; break;
 }  it=Amethyst_eof(self ); FAILTEST(pass9);
 	goto success9;
 	pass9: fail9=1;
@@ -475,8 +475,8 @@ cstruct oldpass10=*ptr; int fail10=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
    it=AmethystCore_anything(self ); FAILTEST(pass10); bind_aset(bind,31/*autovar*/,it);
 cstruct oldpass11=*ptr; int fail11=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,31/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
-   it=Amethyst_spaces(self ); FAILTEST(pass11);unsigned char chr2=*ame_curstr(self);  switch(chr2){case UC(102) ... UC(102):;   it=AmethystCore_anything(self ); FAILTEST(pass11);if (strncmp(ame_curstr(self),"ails",4)) goto pass11; else ame_setpos(self,ame_getpos(self)+4); break;
-case UC(0) ... UC(101):;case UC(103) ... UC(255):; goto pass11; break;
+   it=Amethyst_spaces(self ); FAILTEST(pass11);unsigned char chr2=*ame_curstr(self);  switch(chr2){case 'f' ... 'f':;   it=AmethystCore_anything(self ); FAILTEST(pass11);if (strncmp(ame_curstr(self),"ails",4)) goto pass11; else ame_setpos(self,ame_getpos(self)+4); break;
+case UC(0) ... 'e':;case 'g' ... UC(255):; goto pass11; break;
 }  it=Amethyst_eof(self ); FAILTEST(pass11);
 	goto success11;
 	pass11: fail11=1;
@@ -498,8 +498,8 @@ cstruct oldpass12=*ptr; int fail12=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
    it=AmethystCore_anything(self ); FAILTEST(pass12); bind_aset(bind,34/*autovar*/,it);
 cstruct oldpass13=*ptr; int fail13=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,34/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
-   it=Amethyst_spaces(self ); FAILTEST(pass13);unsigned char chr3=*ame_curstr(self);  switch(chr3){case UC(95) ... UC(95):;   it=AmethystCore_anything(self ); FAILTEST(pass13);if (strncmp(ame_curstr(self),"seq",3)) goto pass13; else ame_setpos(self,ame_getpos(self)+3); break;
-case UC(0) ... UC(94):;case UC(96) ... UC(255):; goto pass13; break;
+   it=Amethyst_spaces(self ); FAILTEST(pass13);unsigned char chr3=*ame_curstr(self);  switch(chr3){case '_' ... '_':;   it=AmethystCore_anything(self ); FAILTEST(pass13);if (strncmp(ame_curstr(self),"seq",3)) goto pass13; else ame_setpos(self,ame_getpos(self)+3); break;
+case UC(0) ... '^':;case '`' ... UC(255):; goto pass13; break;
 }  it=Amethyst_eof(self ); FAILTEST(pass13);
 	goto success13;
 	pass13: fail13=1;
@@ -886,4 +886,4 @@ rb_define_method(cls_AmethystCTranslator,"rbtrans",AmethystCTranslator_rbtrans,0
 rb_define_method(cls_AmethystCTranslator,"rbtrans2",AmethystCTranslator_rbtrans2,0);
 rb_define_method(cls_AmethystCTranslator,"rw",AmethystCTranslator_rw,2);
 rb_define_method(cls_AmethystCTranslator,"trans",AmethystCTranslator_trans,0);
- rb_eval_string("testversionctranslator2('3451b92c388bd03bcc44b44196ec799a')");}
+ rb_eval_string("testversionctranslator2('14b2e52047025e58357f55fc3281f8fd')");}

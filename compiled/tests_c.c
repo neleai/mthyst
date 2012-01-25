@@ -23,15 +23,15 @@ static VALUE sy_seq;
 static VALUE sy_token;
 VALUE Tests_abc(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC(32) ... UC(32):;case UC(97) ... UC(97):;case UC(98) ... UC(98):;case UC(99) ... UC(99):;   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,0/*_result*/,it);
+unsigned char chr1=*ame_curstr(self);  switch(chr1){case ' ' ... ' ':;case 'a' ... 'a':;case 'b' ... 'b':;case 'c' ... 'c':;   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,0/*_result*/,it);
 it=bind_aget(bind,0/*_result*/); break;
-case UC(0) ... UC(31):;case UC(33) ... UC(96):;case UC(100) ... UC(255):; goto fail; break;
+case UC(0) ... UC(31):;case '!' ... '`':;case 'd' ... UC(255):; goto fail; break;
 }
 return it;
 fail: return failobj; }
 VALUE Tests_de(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(2);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC(32) ... UC(32):;case UC(97) ... UC(99):; it=i_1; bind_aset(bind,0/*foo*/,it);
+unsigned char chr1=*ame_curstr(self);  switch(chr1){case ' ' ... ' ':;case 'a' ... 'c':; it=i_1; bind_aset(bind,0/*foo*/,it);
 int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
  it=rb_funcall(self,sy_Tests_bind_lb_0_rb__pl__fbc2,1,bind);   it=Tests_abc(self ); FAILTEST(alt1_2); bind_aset(bind,1/*_result*/,it);
@@ -43,7 +43,7 @@ ame_setcut(self,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
 it=bind_aget(bind,1/*_result*/); break;
-case UC(100) ... UC(101):; it=i_1; bind_aset(bind,0/*foo*/,it);
+case 'd' ... 'e':; it=i_1; bind_aset(bind,0/*foo*/,it);
 int oldpos2=ame_getpos(self);
 alt2_1: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
  it=rb_funcall(self,sy_Tests_bind_lb_0_rb__pl__fbc2,1,bind); goto alt2_2; 
@@ -55,7 +55,7 @@ ame_setcut(self,Qnil);goto accept2;
   alt2_3:  ame_setpos(self,oldpos2); goto fail;
  accept2:;
 it=bind_aget(bind,1/*_result*/); break;
-case UC(0) ... UC(31):;case UC(33) ... UC(96):;case UC(102) ... UC(255):; it=i_1; bind_aset(bind,0/*foo*/,it);
+case UC(0) ... UC(31):;case '!' ... '`':;case 'f' ... UC(255):; it=i_1; bind_aset(bind,0/*foo*/,it);
 int oldpos3=ame_getpos(self);
 alt3_1: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
  it=rb_funcall(self,sy_Tests_bind_lb_0_rb__pl__fbc2,1,bind); goto alt3_2; 
@@ -88,7 +88,7 @@ return it;
 fail: return failobj; }
 VALUE Tests_s2(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-unsigned char chr1=*ame_curstr(self);  switch(chr1){case UC(97) ... UC(98):; int oldpos1=ame_getpos(self);
+unsigned char chr1=*ame_curstr(self);  switch(chr1){case 'a' ... 'b':; int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt1_2); bind_aset(bind,0/*_result*/,it);
  
@@ -100,7 +100,7 @@ ame_setcut(self,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
 it=bind_aget(bind,0/*_result*/); break;
-case UC(100) ... UC(102):; int oldpos2=ame_getpos(self);
+case 'd' ... 'f':; int oldpos2=ame_getpos(self);
 alt2_1: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt2_2);it=i_3; bind_aset(bind,0/*_result*/,it);
  
@@ -112,7 +112,7 @@ ame_setcut(self,Qnil);goto accept2;
   alt2_3:  ame_setpos(self,oldpos2); goto fail;
  accept2:;
 it=bind_aget(bind,0/*_result*/); break;
-case UC(0) ... UC(96):;case UC(99) ... UC(99):;case UC(103) ... UC(255):;  it=rb_obj_clone(s_g_b2f5); arg0=it; it=rb_funcall(self,sy_seq,1,arg0); FAILTEST(fail); bind_aset(bind,0/*_result*/,it);
+case UC(0) ... '`':;case 'c' ... 'c':;case 'g' ... UC(255):;  it=rb_obj_clone(s_g_b2f5); arg0=it; it=rb_funcall(self,sy_seq,1,arg0); FAILTEST(fail); bind_aset(bind,0/*_result*/,it);
 it=bind_aget(bind,0/*_result*/); break;
 }
 return it;
@@ -181,4 +181,4 @@ rb_define_method(cls_Tests,"foo",Tests_foo,0);
 rb_define_method(cls_Tests,"s2",Tests_s2,0);
 rb_define_method(cls_Tests,"sw",Tests_sw,0);
 rb_define_method(cls_Tests,"test",Tests_test,0);
- rb_eval_string("testversiontests('6feb9d7e47a03efdbbc176c880e29096')");}
+ rb_eval_string("testversiontests('394a6d5507cda29dbab758098e29efd7')");}
