@@ -156,9 +156,9 @@ failobj=rb_eval_string(\"FAIL\");
 										( [.:c trans:t] {s+=c.cases(@first) + " #{t} break;\n"})*
 									{s+"}"}
 								]
-				| Switch_Clas[ label("switchhash"):sh {0}:ii {""}:init
+				| Switch_Clas[ label("switchhash_#{@@grammar}"):sh {0}:ii {""}:init
 											 {@@header<< "VALUE #{sh};"}
-									     {"switch(FIX2LONG(rb_hash_aref(#{sh},rb_obj_class(ame_curobj(self)))))"}:s
+									     {"switch(FIX2LONG(rb_hash_aref(#{sh},rb_obj_class(ame_curobj(self))))){"}:s
 											 ( [.:c trans:t]{s+="case #{ii}: #{t} break;\n"}
                                       {init+="next h[k]=#{ii} if k<=#{c.ary[0]}\\n"} {ii+=1})*
 											 {@@init  <<"#{sh}=rb_eval_string(\"Hash.new{|h,k|#{init}}\");#{gc_mark_var(sh)};"}

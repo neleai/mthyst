@@ -89,6 +89,8 @@ class Bind
 	def normalize2
 		return expr if expr.is_a?(Apply) && expr[0]=="fails"
 		return Switch[{:act=>expr.act,:defs=>expr.defs,:first=>expr.first,:header=>expr.header,:init=>expr.init,:ary=>expr.ary.map{|h,k| [h,_Bind(name,k)]}}] if expr.is_a?(Switch)
+		return Switch_Clas.create({:ary=>expr.ary.map{|h,k| [h,_Bind(name,k)]}}) if expr.is_a?(Switch_Clas)
+
 		return Or[*expr.ary.map{|a|_Bind(name,a)}] if expr.is_a?(Or)
 		return Seq[Bind[name,Seq[*expr.ary[0...-1]]],expr.ary[-1]] if expr.is_a?(Seq) && expr.ary.size>0 && [Comment,Cut,Stop].include?(expr.ary[-1].class)
     return Seq[*(expr.ary[0...-1]+[_Bind(name,expr.ary[-1])])] if expr.is_a?(Seq) && expr.ary.size>0
@@ -300,12 +302,12 @@ def equalize_by(klas,args)
 					alias_method :==,:equal?
     end")
 end
-[Act,Apply,Args,Bind,Bnding,CAct,Comment,Cut,Lambda,Global,Key,Local,Lookahead,Many,Or,Pass,Result,Seq,Stop,Strin,Switch].each{|e| 
+[Act,Apply,Args,Bind,Bnding,CAct,Comment,Cut,Lambda,Global,Key,Local,Lookahead,Many,Or,Pass,Result,Seq,Stop,Strin,Switch,Switch_Clas].each{|e| 
 by="[#{e.instance_variable_get(:@attrs)*","}]"
 by="ary" if by=="[ary]"
 equalize_by(e,by)
 }
-[CAct,Global,Key,Cut,Stop,Lambda,Strin,Args,Comment,Result,Switch].each{|cls|
+[CAct,Global,Key,Cut,Stop,Lambda,Strin,Args,Comment,Result,Switch,Switch_Clas].each{|cls|
 	eval("class #{cls}
 		def self.[](*args)
 			#{cls}.create(*args).normalize
