@@ -344,29 +344,7 @@ amethyst Detect_Switch < Detect_First {
 }
 
 amethyst Detect_ClasSwitch < Detect_First {
-	visit = Or[ {ClasLattice.bottom}:ary2 {[]}:ary3 {[]}:els
- 		(traverse_item:e &{first(e)} {e}:els[] {ary2|=first(e)})* &eof
-		{ary2}:firs
-		{ary2=topsort(ary2.ary+[Object])}
-		&{ary2.size>1}
-		{Or[*els]}:new_or
-    {	ary2.each_index{|i|
-      	ary3<<[i,predicate(ary2,i,new_or)]
-		}}
-    {ary3=ary3.map{|o,v| v==Placeholder ? [o,Apply["fails"]] : [o,v]}}
-
-		{ary3=ary3.group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.sort_by{|el| el.inspect},v[0][1]]}.sort_by{|el| el.inspect}}
-		{ary3=ary3.map{|o,v| [ClasLattice[*o],v]}}
-	  {c=classswitch(ary2,firs,ary3);#puts c.inspect;
-     c}
-	]
-
-  predicate(clas,i,p) = &{!empty?(p) && !includes(clas,i,first(p))} {Placeholder}	
-											|	{p}=>( Seq[ .:e predicate(clas,i,e):f .*:rest {Seq[*([f]+rest)]} ]
-														 | Or[ (.:e predicate(clas,i,e))*:ary {Or[*ary]} ]
-									  				 | Apply[ .:name &{name=="clas"} CAct[.:match] &{child(clas[i],match)&&clas[i]==match} {Apply["anything"]}] 
- 										  			 | Bind[ @name:name .:exp {predicate(clas,i,exp)}:expr  {Bind[name,expr]}]
-											  		 | .
-												  	 )
+	visit = Apply[ ["clas"] .:clas            {ClasSwitch[[ClasLattice[clas],Apply["anything"]],[ClasLattice[Object],Apply["fails"]]] }]
+				| Apply[ .* first(@self):firs &{!empty?(@self) && firs!=CharLattice.top} {ClasSwitch[[firs,@self],[~firs,Apply["fails"]]]   }]  
 }
 

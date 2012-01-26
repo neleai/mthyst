@@ -657,38 +657,14 @@ end
 
 class Detect_ClasSwitch < Detect_First
 
-def Detect_ClasSwitch_Apply_lb__dq_a_eeac(bind)
-Apply["anything"]
+def Detect_ClasSwitch_ClasSwit_7af9(bind)
+ClasSwitch[[ClasLattice[bind[4]],Apply["anything"]],[ClasLattice[Object],Apply["fails"]]] 
 end
-def Detect_ClasSwitch_Bind_lb_bin_aa12(bind)
-Bind[bind[19],bind[25]]
-end
-def Detect_ClasSwitch_ClasLatt_1dca(bind)
-ClasLattice.bottom
-end
-def Detect_ClasSwitch_Or_lb__ti_bind_a0c4(bind)
-Or[*bind[16]]
-end
-def Detect_ClasSwitch_Or_lb__ti_bind_ffe5(bind)
-Or[*bind[3]]
-end
-def Detect_ClasSwitch_Placehol_6875(bind)
-Placeholder
-end
-def Detect_ClasSwitch_Seq_lb__ti__lp__lb_b_70e1(bind)
-Seq[*([bind[7]]+bind[10])]
-end
-def Detect_ClasSwitch__append_lp__6adb(bind)
-_append(bind[3],bind[5])
+def Detect_ClasSwitch_ClasSwit_dc48(bind)
+ClasSwitch[[bind[8],src],[~bind[8],Apply["fails"]]]   
 end
 def Detect_ClasSwitch__append_lp__7352(bind)
 _append(bind[4],bind[7])
-end
-def Detect_ClasSwitch__append_lp__a474(bind)
-_append(bind[14],bind[15])
-end
-def Detect_ClasSwitch__append_lp__b375(bind)
-_append(bind[8],bind[9])
 end
 def Detect_ClasSwitch__append_lp__b494(bind)
 _append(bind[0],bind[10])
@@ -709,52 +685,16 @@ def Detect_ClasSwitch__do_rules_eq__le__ab16(bind)
 $rules={};src.rules.each{|r| $rules[r.name]=r}
 end
 def Detect_ClasSwitch__lp_(bind)
-(!empty?(bind[0]) && !includes(bind[1],bind[2],first(bind[0]))) || FAIL
-end
-def Detect_ClasSwitch__lp_bind_lb_19_a8b7(bind)
-(bind[19]=="clas") || FAIL
-end
-def Detect_ClasSwitch__lp_bind_lb_1_rb__a6f6(bind)
-(bind[1].size>1) || FAIL
+(!empty?(src) && bind[8]!=CharLattice.top) || FAIL
 end
 def Detect_ClasSwitch__lp_bind_lb_2_rb__6693(bind)
 (bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
 end
-def Detect_ClasSwitch__lp_child_lp_b_f23c(bind)
-(child(bind[1][bind[2]],bind[21])&&bind[1][bind[2]]==bind[21]) || FAIL
-end
-def Detect_ClasSwitch__lp_first_lp_b_1c32(bind)
-(first(bind[4])) || FAIL
-end
 def Detect_ClasSwitch__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Detect_ClasSwitch_bind_lb_1_rb_(bind)
-bind[1]|=first(bind[4])
-end
-def Detect_ClasSwitch_bind_lb_1_rb__dot__cd74(bind)
-bind[1].each_index{|i|
-      	bind[2]<<[i,predicate(bind[1],i,bind[7])]
-		}
-end
-def Detect_ClasSwitch_bind_lb_1_rb__eq__bfd4(bind)
-bind[1]=topsort(bind[1].ary+[Object])
-end
-def Detect_ClasSwitch_bind_lb_2_rb__eq__6851(bind)
-bind[2]=bind[2].group_by{|a,b| b}.map{|y,v| [v.map{|k,val| k}.sort_by{|el| el.inspect},v[0][1]]}.sort_by{|el| el.inspect}
-end
-def Detect_ClasSwitch_bind_lb_2_rb__eq__b94b(bind)
-bind[2]=bind[2].map{|o,v| v==Placeholder ? [o,Apply["fails"]] : [o,v]}
-end
-def Detect_ClasSwitch_bind_lb_2_rb__eq__dbd4(bind)
-bind[2]=bind[2].map{|o,v| [ClasLattice[*o],v]}
-end
 def Detect_ClasSwitch_bind_lb_3_rb__lt__bb51(bind)
 bind[3]<<bind[4]
-end
-def Detect_ClasSwitch_c_eq_classs_c612(bind)
-c=classswitch(bind[1],bind[6],bind[2]);#puts c.inspect;
-     c
 end
 def Detect_ClasSwitch_if_sp_bind_lb__f1e9(bind)
 if bind[3]
@@ -764,14 +704,8 @@ if bind[3]
             src
           end
 end
-def Detect_ClasSwitch_predicat_7e3a(bind)
-predicate(bind[1],bind[2],bind[24])
-end
 def Detect_ClasSwitch_src_25d9(bind)
 src
-end
-def Detect_ClasSwitch_src_dot_name_80f3(bind)
-src.name
 end
 def Detect_ClasSwitch_src_dot_rule_5acf(bind)
 src.rules
@@ -788,12 +722,12 @@ def detect_switch_compiled_by
 '646cfa99a84103777cabb4795ab76ed9'
 end
 def detect_switch_source_hash
-'b975ea6752e426494e0f66fcccf9e1e4'
+'db5d40335402df0127f0d0f4128488e3'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'95d683696739139a72aa4db0d81c4a2f'
+'9266d6f3105ed1e79805462c55aff057'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"
