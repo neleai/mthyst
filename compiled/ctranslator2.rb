@@ -149,8 +149,8 @@ end
 def AmethystCTranslator__at_init_lt__lt_s_a51d(bind)
 @init<<src.init if src.init
 end
-def AmethystCTranslator__at_init_sp__sp__lt__6af7(bind)
-@init  <<"#{bind[92]}=rb_eval_string(Hash.new{|h,k|#{bind[10]}});#{gc_mark_var(bind[92])};"
+def AmethystCTranslator__at_init_sp__sp__lt__40c6(bind)
+@init  <<"#{bind[92]}=rb_eval_string(\"Hash.new{|h,k|#{bind[10]}}\");#{gc_mark_var(bind[92])};"
 end
 def AmethystCTranslator__at_lambdas_ecda(bind)
 @lambdas=[] ;@rcallbacks={};@cbhash={}
@@ -269,8 +269,8 @@ end
 def AmethystCTranslator_bind_lb_0_rb__pl__c1a5(bind)
 bind[0]+=bind[8]*""
 end
-def AmethystCTranslator_bind_lb_10_rb__8094(bind)
-bind[10]+="next h[k]=#{bind[39]} if k<=#{bind[89]}\\n"
+def AmethystCTranslator_bind_lb_10_rb__09d7(bind)
+bind[10]+="next h[k]=#{bind[39]} if k<=#{bind[89].ary[0]}\\n"
 end
 def AmethystCTranslator_bind_lb_1_rb__lt__2f50(bind)
 bind[1]<<bind[6][0];bind[2]<<bind[6][1];bind[0]<<bind[6][2]
@@ -336,9 +336,6 @@ h="VALUE #{@grammar}_#{bind[14]}(VALUE self #{map_index(src.args){|i| ",VALUE a#
 						h+"{VALUE vals[#{src.args.size}]; VALUE bind=bind_new2(#{@locls.size}); #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 \n#{bind[17]}\nreturn it;\nfail: return failobj; }" 
 end
-def AmethystCTranslator_i_pl__eq_1_e43a(bind)
-i+=1
-end
 def AmethystCTranslator_label_lp__dq_a_f49c(bind)
 label("accept")
 end
@@ -377,12 +374,12 @@ def ctranslator2_compiled_by
 '4dea8002e94451f6b8f108335b8ebf53'
 end
 def ctranslator2_source_hash
-'56485a8819c12f85975421cbccb49410'
+'9a95430d30b2984eca071a2c5f948c55'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'541fd651ec371c23d605e861e067c452'
+'6458bdf5cd81d63067733ede7c969510'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"

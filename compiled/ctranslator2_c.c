@@ -74,7 +74,7 @@ static VALUE sy_AmethystCTranslator__at_header_lt__4f97;
 static VALUE sy_AmethystCTranslator__at_header_lt__fff4;
 static VALUE sy_AmethystCTranslator__at_init_eq__lb__rb__47da;
 static VALUE sy_AmethystCTranslator__at_init_lt__lt_s_a51d;
-static VALUE sy_AmethystCTranslator__at_init_sp__sp__lt__6af7;
+static VALUE sy_AmethystCTranslator__at_init_sp__sp__lt__40c6;
 static VALUE sy_AmethystCTranslator__at_lambdas_ecda;
 static VALUE sy_AmethystCTranslator__at_rulenam_7d01;
 static VALUE sy_AmethystCTranslator__dq_Amethys_8b00;
@@ -109,7 +109,7 @@ static VALUE sy_AmethystCTranslator_ar_eq__ti_src_dot__efea;
 static VALUE sy_AmethystCTranslator_bind_lb_0_rb__lt__cac1;
 static VALUE sy_AmethystCTranslator_bind_lb_0_rb__pl__40f3;
 static VALUE sy_AmethystCTranslator_bind_lb_0_rb__pl__c1a5;
-static VALUE sy_AmethystCTranslator_bind_lb_10_rb__8094;
+static VALUE sy_AmethystCTranslator_bind_lb_10_rb__09d7;
 static VALUE sy_AmethystCTranslator_bind_lb_1_rb__lt__2f50;
 static VALUE sy_AmethystCTranslator_bind_lb_2_rb__ti__e7b8;
 static VALUE sy_AmethystCTranslator_bind_lb_39_rb__7e24;
@@ -125,7 +125,6 @@ static VALUE sy_AmethystCTranslator_bind_lb_9_rb__pl__a579;
 static VALUE sy_AmethystCTranslator_bind_lb_9_rb__pl__bf3f;
 static VALUE sy_AmethystCTranslator_h_eq__dq_VALUE_394b;
 static VALUE sy_AmethystCTranslator_h_eq__dq_VALUE_c569;
-static VALUE sy_AmethystCTranslator_i_pl__eq_1_e43a;
 static VALUE sy_AmethystCTranslator_label_lp__dq_a_f49c;
 static VALUE sy_AmethystCTranslator_label_lp__dq_b_6df7;
 static VALUE sy_AmethystCTranslator_label_lp__dq_o_c187;
@@ -773,7 +772,7 @@ cstruct oldpass30=*ptr; int fail30=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
 	pass30: fail30=1;
 	success30: *ptr=oldpass30;
 	if(fail30) goto break9;
-it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_9_rb__pl__69a7,1,bind); it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_10_rb__8094,1,bind); it=rb_funcall(self,sy_AmethystCTranslator_i_pl__eq_1_e43a,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos12=ame_getpos(self);goto break9;} } } break9: ame_setstop(self,Qnil);  ame_setpos(self,oldpos12); it=rb_funcall(self,sy_AmethystCTranslator__at_init_sp__sp__lt__6af7,1,bind); it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_9_rb__pl__9cee,1,bind);  bind_aset(bind,94/*autovar*/,it);
+it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_9_rb__pl__69a7,1,bind); it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_10_rb__09d7,1,bind); it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_39_rb__7e24,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos12=ame_getpos(self);goto break9;} } } break9: ame_setstop(self,Qnil);  ame_setpos(self,oldpos12); it=rb_funcall(self,sy_AmethystCTranslator__at_init_sp__sp__lt__40c6,1,bind); it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_9_rb__pl__9cee,1,bind);  bind_aset(bind,94/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass29);
 	goto success29;
 	pass29: fail29=1;
@@ -850,7 +849,7 @@ sy_AmethystCTranslator__at_header_lt__4f97=rb_intern("AmethystCTranslator__at_he
 sy_AmethystCTranslator__at_header_lt__fff4=rb_intern("AmethystCTranslator__at_header_lt__fff4");
 sy_AmethystCTranslator__at_init_eq__lb__rb__47da=rb_intern("AmethystCTranslator__at_init_eq__lb__rb__47da");
 sy_AmethystCTranslator__at_init_lt__lt_s_a51d=rb_intern("AmethystCTranslator__at_init_lt__lt_s_a51d");
-sy_AmethystCTranslator__at_init_sp__sp__lt__6af7=rb_intern("AmethystCTranslator__at_init_sp__sp__lt__6af7");
+sy_AmethystCTranslator__at_init_sp__sp__lt__40c6=rb_intern("AmethystCTranslator__at_init_sp__sp__lt__40c6");
 sy_AmethystCTranslator__at_lambdas_ecda=rb_intern("AmethystCTranslator__at_lambdas_ecda");
 sy_AmethystCTranslator__at_rulenam_7d01=rb_intern("AmethystCTranslator__at_rulenam_7d01");
 sy_AmethystCTranslator__dq_Amethys_8b00=rb_intern("AmethystCTranslator__dq_Amethys_8b00");
@@ -885,7 +884,7 @@ sy_AmethystCTranslator_ar_eq__ti_src_dot__efea=rb_intern("AmethystCTranslator_ar
 sy_AmethystCTranslator_bind_lb_0_rb__lt__cac1=rb_intern("AmethystCTranslator_bind_lb_0_rb__lt__cac1");
 sy_AmethystCTranslator_bind_lb_0_rb__pl__40f3=rb_intern("AmethystCTranslator_bind_lb_0_rb__pl__40f3");
 sy_AmethystCTranslator_bind_lb_0_rb__pl__c1a5=rb_intern("AmethystCTranslator_bind_lb_0_rb__pl__c1a5");
-sy_AmethystCTranslator_bind_lb_10_rb__8094=rb_intern("AmethystCTranslator_bind_lb_10_rb__8094");
+sy_AmethystCTranslator_bind_lb_10_rb__09d7=rb_intern("AmethystCTranslator_bind_lb_10_rb__09d7");
 sy_AmethystCTranslator_bind_lb_1_rb__lt__2f50=rb_intern("AmethystCTranslator_bind_lb_1_rb__lt__2f50");
 sy_AmethystCTranslator_bind_lb_2_rb__ti__e7b8=rb_intern("AmethystCTranslator_bind_lb_2_rb__ti__e7b8");
 sy_AmethystCTranslator_bind_lb_39_rb__7e24=rb_intern("AmethystCTranslator_bind_lb_39_rb__7e24");
@@ -901,7 +900,6 @@ sy_AmethystCTranslator_bind_lb_9_rb__pl__a579=rb_intern("AmethystCTranslator_bin
 sy_AmethystCTranslator_bind_lb_9_rb__pl__bf3f=rb_intern("AmethystCTranslator_bind_lb_9_rb__pl__bf3f");
 sy_AmethystCTranslator_h_eq__dq_VALUE_394b=rb_intern("AmethystCTranslator_h_eq__dq_VALUE_394b");
 sy_AmethystCTranslator_h_eq__dq_VALUE_c569=rb_intern("AmethystCTranslator_h_eq__dq_VALUE_c569");
-sy_AmethystCTranslator_i_pl__eq_1_e43a=rb_intern("AmethystCTranslator_i_pl__eq_1_e43a");
 sy_AmethystCTranslator_label_lp__dq_a_f49c=rb_intern("AmethystCTranslator_label_lp__dq_a_f49c");
 sy_AmethystCTranslator_label_lp__dq_b_6df7=rb_intern("AmethystCTranslator_label_lp__dq_b_6df7");
 sy_AmethystCTranslator_label_lp__dq_o_c187=rb_intern("AmethystCTranslator_label_lp__dq_o_c187");
@@ -924,4 +922,4 @@ rb_define_method(cls_AmethystCTranslator,"rbtrans",AmethystCTranslator_rbtrans,0
 rb_define_method(cls_AmethystCTranslator,"rbtrans2",AmethystCTranslator_rbtrans2,0);
 rb_define_method(cls_AmethystCTranslator,"rw",AmethystCTranslator_rw,2);
 rb_define_method(cls_AmethystCTranslator,"trans",AmethystCTranslator_trans,0);
- rb_eval_string("testversionctranslator2('541fd651ec371c23d605e861e067c452')");}
+ rb_eval_string("testversionctranslator2('6458bdf5cd81d63067733ede7c969510')");}
