@@ -3,7 +3,6 @@ $hash_SizesLattice={}
 class SizesLattice
 	attr_accessor :size
 	def self.bottom ;	self[0];				end
-	def self.default;	self[0];			  end
 	def self.top	  ; self[1.0/0.0];	end
 	def self.[](a)
 		return $hash_SizesLattice[a] if $hash_SizesLattice[a]
@@ -104,8 +103,10 @@ class ClasLattice < FirstLattice
   end
 	alias_method :==,:equal?
   def self.top;     ClasLattice[Object];  end
-	def self.default;	top|empty;            end
+	
+	#TODO operations other than |
 end
+
 class First_Dataflow < Amethyst
 	def initialize
     @depend=Oriented_Graph.new
@@ -265,8 +266,6 @@ class Detect_ClasSwitch < Detect_First
 		r=@switchdf.analyze(s)
 		return r
 	end
-	def assume(str)
-	end
 	def child(par,chld)
 		 #par,chld=eval(par.to_s),eval(chld.to_s)
 		 is_child=(par<=chld)
@@ -281,14 +280,6 @@ class Detect_ClasSwitch < Detect_First
 		}
 		p.ary.each{|f| return true if child(ary[i],f) || child(f,ary[i])}
 		return false
-	end
-	def classswitch(ary,first,ary3)
-		@no=(@no||0)+1
-		#TODO perfect hash
-		init="Hash.new{|h,k|\n"
-		ary.each_with_index{|c,i| init<< "next h[k]=#{i} if k<=#{c}\n"}
-		init+="}\n"
-		Switch[{:header=>"VALUE switchhash#{@name}#{@no};",:init=>"switchhash#{@name}#{@no}=rb_eval_string(#{init.inspect});#{gc_mark_var("switchhash#{@name}#{@no}")}" ,:act=>"FIX2LONG(rb_hash_aref(switchhash#{@name}#{@no},rb_obj_class(ame_curobj(self))))",:first=>first,:ary=>ary3}]
 	end
 	def topsort(a)
 		a=a.uniq.sort_by{|a| a.to_s}
@@ -331,24 +322,9 @@ amethyst Detect_Switch < Detect_First {
 								  | eof {Switch[{:act=>"*ame_curstr(self)",:ary=>list.map{|p,a| [p,Or[*a].dup.normalize]}}]}
 }
 
-class ClasSwitch
-	def self.[](*ary)
-		init="Hash.new{|h,k|\n"
-    ary.each_with_index{|c,i| init<< "next h[k]=#{i} if k<=#{c}\n"}
-    init+="}\n"
-	
-		first= ary.map{|k,v| k}.inject(:|)
-		init
-		alts=[]
-		first.ary.each{|a|
-		}
-		Switch[{:header=>"VALUE switchhash#{@name}#{$swno};",:init=>"switchhash#{@name}#{$swno}=rb_eval_string(#{init.inspect});#{gc_mark_var("switchhash#{@name}#{$swno}")}" ,:act=>"FIX2LONG(rb_hash_aref(switchhash#{@name}#{$swno},rb_obj_class(ame_curobj(self))))",:ary=>ary3}]
-	end
-end
-
 amethyst Detect_ClasSwitch < Detect_First {
-	visit = Apply[ ["clas"] .:clas            {ClasSwitch[[ClasLattice[clas],Apply["anything"]],[ClasLattice[Object],Apply["fails"]]] }]
+	visit = Apply[ ["clas"] .:clas            {Switch_Clas[[ClasLattice[clas],Apply["anything"]],[ClasLattice[Object],Apply["fails"]]] }]
 				| Apply[ ["fails"] {@self} ]
-				| Apply[ .* first(@self):firs &{!empty?(@self) && firs!=CharLattice.top} {ClasSwitch[[firs,@self],[~firs,Apply["fails"]]]   }]  
+#				| Apply[ .* first(@self):firs &{!empty?(@self) && firs!=CharLattice.top} {Switch_Clas[[firs,@self],[~firs,Apply["fails"]]]   }]  
 }
 

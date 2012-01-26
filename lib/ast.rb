@@ -18,8 +18,11 @@ makeclasses(AmethystAST,
 		:Char,
     :Comment,
     :Nested,
-		[:Switch,:act,:defs,:first,:header,:init]
+		[:Switch,:act,:defs,:first,:header,:init],
+		[:Switch_Clas,:act,:defs,:first,:header,:init]
+
 )
+Switch_Char=Switch
 class SeqOr<AmethystAST;end
 makeclasses(SeqOr,:Seq,:Or)
 Placeholder=Object.new

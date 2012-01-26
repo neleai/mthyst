@@ -23,7 +23,7 @@ static VALUE sy_seq;
 static VALUE sy_token;
 VALUE Tests_abc(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-unsigned char chr1=*ame_curstr(self);  switch(chr1){case ' ' ... ' ':;case 'a' ... 'c':;   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,0/*_result*/,it);
+switch((unsigned char)*ame_curstr(self)){case ' ' ... ' ':;case 'a' ... 'c':;   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,0/*_result*/,it);
  break;
 case UC(0) ... UC(31):;case '!' ... '`':;case 'd' ... UC(255):; goto fail; break;
 }
@@ -31,7 +31,7 @@ return it;
 fail: return failobj; }
 VALUE Tests_de(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(2);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-unsigned char chr1=*ame_curstr(self);  switch(chr1){case ' ' ... ' ':;case 'a' ... 'c':; it=i_1; bind_aset(bind,0/*foo*/,it);
+switch((unsigned char)*ame_curstr(self)){case ' ' ... ' ':;case 'a' ... 'c':; it=i_1; bind_aset(bind,0/*foo*/,it);
 int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
  it=rb_funcall(self,sy_Tests_bind_lb_0_rb__pl__fbc2,1,bind);   it=Tests_abc(self ); FAILTEST(alt1_2); bind_aset(bind,1/*_result*/,it);
@@ -88,7 +88,7 @@ return it;
 fail: return failobj; }
 VALUE Tests_s2(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-unsigned char chr1=*ame_curstr(self);  switch(chr1){case 'a' ... 'b':; int oldpos1=ame_getpos(self);
+switch((unsigned char)*ame_curstr(self)){case 'a' ... 'b':; int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt1_2); bind_aset(bind,0/*_result*/,it);
  
@@ -181,4 +181,4 @@ rb_define_method(cls_Tests,"foo",Tests_foo,0);
 rb_define_method(cls_Tests,"s2",Tests_s2,0);
 rb_define_method(cls_Tests,"sw",Tests_sw,0);
 rb_define_method(cls_Tests,"test",Tests_test,0);
- rb_eval_string("testversiontests('c7237c36bb110cbfbb835359054e7ba8')");}
+ rb_eval_string("testversiontests('13f117ddc279a3a6126d952879a0f3ca')");}

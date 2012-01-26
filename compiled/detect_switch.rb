@@ -3,7 +3,6 @@ $hash_SizesLattice={}
 class SizesLattice
 	attr_accessor :size
 	def self.bottom ;	self[0];				end
-	def self.default;	self[0];			  end
 	def self.top	  ; self[1.0/0.0];	end
 	def self.[](a)
 		return $hash_SizesLattice[a] if $hash_SizesLattice[a]
@@ -104,8 +103,10 @@ class ClasLattice < FirstLattice
   end
 	alias_method :==,:equal?
   def self.top;     ClasLattice[Object];  end
-	def self.default;	top|empty;            end
+	
+	#TODO operations other than |
 end
+
 class First_Dataflow < Amethyst
 	def initialize
     @depend=Oriented_Graph.new
@@ -440,8 +441,6 @@ class Detect_ClasSwitch < Detect_First
 		r=@switchdf.analyze(s)
 		return r
 	end
-	def assume(str)
-	end
 	def child(par,chld)
 		 #par,chld=eval(par.to_s),eval(chld.to_s)
 		 is_child=(par<=chld)
@@ -456,14 +455,6 @@ class Detect_ClasSwitch < Detect_First
 		}
 		p.ary.each{|f| return true if child(ary[i],f) || child(f,ary[i])}
 		return false
-	end
-	def classswitch(ary,first,ary3)
-		@no=(@no||0)+1
-		#TODO perfect hash
-		init="Hash.new{|h,k|\n"
-		ary.each_with_index{|c,i| init<< "next h[k]=#{i} if k<=#{c}\n"}
-		init+="}\n"
-		Switch[{:header=>"VALUE switchhash#{@name}#{@no};",:init=>"switchhash#{@name}#{@no}=rb_eval_string(#{init.inspect});#{gc_mark_var("switchhash#{@name}#{@no}")}" ,:act=>"FIX2LONG(rb_hash_aref(switchhash#{@name}#{@no},rb_obj_class(ame_curobj(self))))",:first=>first,:ary=>ary3}]
 	end
 	def topsort(a)
 		a=a.uniq.sort_by{|a| a.to_s}
@@ -640,28 +631,10 @@ end
 end
 
 
-class ClasSwitch
-	def self.[](*ary)
-		init="Hash.new{|h,k|\n"
-    ary.each_with_index{|c,i| init<< "next h[k]=#{i} if k<=#{c}\n"}
-    init+="}\n"
-	
-		first= ary.map{|k,v| k}.inject(:|)
-		init
-		alts=[]
-		first.ary.each{|a|
-		}
-		Switch[{:header=>"VALUE switchhash#{@name}#{$swno};",:init=>"switchhash#{@name}#{$swno}=rb_eval_string(#{init.inspect});#{gc_mark_var("switchhash#{@name}#{$swno}")}" ,:act=>"FIX2LONG(rb_hash_aref(switchhash#{@name}#{$swno},rb_obj_class(ame_curobj(self))))",:ary=>ary3}]
-	end
-end
-
 class Detect_ClasSwitch < Detect_First
 
-def Detect_ClasSwitch_ClasSwit_7af9(bind)
-ClasSwitch[[ClasLattice[bind[4]],Apply["anything"]],[ClasLattice[Object],Apply["fails"]]] 
-end
-def Detect_ClasSwitch_ClasSwit_b6ad(bind)
-ClasSwitch[[bind[11],src],[~bind[11],Apply["fails"]]]   
+def Detect_ClasSwitch_Switch_C_9bae(bind)
+Switch_Clas[[ClasLattice[bind[4]],Apply["anything"]],[ClasLattice[Object],Apply["fails"]]] 
 end
 def Detect_ClasSwitch__append_lp__7352(bind)
 _append(bind[4],bind[7])
@@ -683,9 +656,6 @@ def Detect_ClasSwitch__at_name_eq_sr_362f(bind)
 end
 def Detect_ClasSwitch__do_rules_eq__le__ab16(bind)
 $rules={};src.rules.each{|r| $rules[r.name]=r}
-end
-def Detect_ClasSwitch__lp_(bind)
-(!empty?(src) && bind[11]!=CharLattice.top) || FAIL
 end
 def Detect_ClasSwitch__lp_bind_lb_2_rb__6693(bind)
 (bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
@@ -719,15 +689,15 @@ end
 
 
 def detect_switch_compiled_by
-'518926016ca3371fbf3b739ca2e85d70'
+'4dea8002e94451f6b8f108335b8ebf53'
 end
 def detect_switch_source_hash
-'408f430ad2003b6384859acae182b398'
+'082a3045ff68855bc46bd82b7db50a62'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'46d7f40d3bfb798ecd03bb7c810e7797'
+'5f09d00d5896028c83e0a479d668f209'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

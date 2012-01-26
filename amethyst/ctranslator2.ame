@@ -148,14 +148,22 @@ failobj=rb_eval_string(\"FAIL\");
 	if(#{fail}) goto #{@@faillabel};
 " }
 					]
-				| Switch[ label("chr"):chr 
+				| Switch[ 
 									{@@defs<<@defs if @defs}
 									{@@header<<@header if @header}
 									{@@init<<@init if @init}
-									{"unsigned char #{chr}=#{@act};  switch(#{chr}){"}:s
+									{"switch((unsigned char)#{@act}){"}:s
 										( [.:c trans:t] {s+=c.cases(@first) + " #{t} break;\n"})*
 									{s+"}"}
 								]
+				| Switch_Clas[ label("switchhash"):sh {0}:ii {""}:init
+											 {@@header<< "VALUE #{sh};"}
+									     {"switch(FIX2LONG(rb_hash_aref(#{sh})))"}:s
+											 ( [.:c trans:t]{s+="case #{ii}: #{t} break;\n"}
+                                      {init+="next h[k]=#{ii} if k<=#{c}\\n"} {i+=1})*
+											 {@@init  <<"#{sh}=rb_eval_string(Hash.new{|h,k|#{init}});#{gc_mark_var(sh)};"}
+											 {s+"}"}
+                     ]
 
 	
 	addlambda =  {"#{@@grammar}_#{@@rulename}_#{label("lambda")}"}:lambd  rw('fail',`trans:body`)
