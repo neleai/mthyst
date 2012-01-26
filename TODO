@@ -35,6 +35,7 @@ Special case _find(`eof`) consumes everything
 adaptive dataflow
 think about suitable decomposition
 cont passing style.
+pseudoprocedures 
 
 dataflow cantfail, noresult
 as constant propagation?
@@ -53,9 +54,6 @@ analysis what closures can be saved on stack
 
 replace({"a"=>"b","c"=>"d"})
 
-dataflows to calculate bitmasks and test by (chars|both =ones|both) where ones are bits that must be 1 and both bits than can be 0 or 1
-indexing from end
-
 extract cc from makefile for portability
 
 UTF8
@@ -64,8 +62,6 @@ grammar not necessary
 
 flatarray class
 
-recognize local=
-
 default arguments?
 
 rewrite rigth recursion by futures
@@ -73,19 +69,20 @@ like reversing single linked list
 
 assumptions
 
+dataflows to calculate bitmasks and test by (chars|both =ones|both) where ones are bits that must be 1 and both bits than can be 0 or 1
+indexing from end
 integrate regch with llmatch
 
 pass for objects that dont need ary(convention not using .?)
 
 switch for ints,true,false,nil
 
-foreign rules
 resolving rules in apply
 
 recognize block-scoped locals
+recognize local=
 
 paralelize compilation
 
 predicated inlining
 
-pseudoprocedures 
