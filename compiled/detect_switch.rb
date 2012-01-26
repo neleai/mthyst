@@ -633,8 +633,8 @@ end
 
 class Detect_ClasSwitch < Detect_First
 
-def Detect_ClasSwitch_Switch_C_9bae(bind)
-Switch_Clas[[ClasLattice[bind[4]],Apply["anything"]],[ClasLattice[Object],Apply["fails"]]] 
+def Detect_ClasSwitch_Switch_C_4b2b(bind)
+Switch_Clas[[ClasLattice[bind[4][0]],Apply["anything"]],[ClasLattice[Object],Apply["fails"]]] 
 end
 def Detect_ClasSwitch__append_lp__7352(bind)
 _append(bind[4],bind[7])
@@ -689,15 +689,15 @@ end
 
 
 def detect_switch_compiled_by
-'4dea8002e94451f6b8f108335b8ebf53'
+'7332bcaf8d500d7a17555578e34d0b6d'
 end
 def detect_switch_source_hash
-'082a3045ff68855bc46bd82b7db50a62'
+'510530622f42903711a9d991075c8496'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'5f09d00d5896028c83e0a479d668f209'
+'0fc900da40822c62345c3db4ad7b8b21'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

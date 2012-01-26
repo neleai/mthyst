@@ -1899,7 +1899,7 @@ static VALUE c_Apply;
 static VALUE c_Array;
 static VALUE c_Grammar;
 static VALUE c_Rule;
-static VALUE sy_Detect_ClasSwitch_Switch_C_9bae;
+static VALUE sy_Detect_ClasSwitch_Switch_C_4b2b;
 static VALUE sy_Detect_ClasSwitch__append_lp__7352;
 static VALUE sy_Detect_ClasSwitch__append_lp__b494;
 static VALUE sy_Detect_ClasSwitch__at_changed_5352;
@@ -2076,7 +2076,7 @@ case UC(0) ... 'b':;case 'd' ... UC(255):; goto pass2; break;
 	success2: *ptr=oldpass2;
 	if(fail2) goto pass1;
   it=AmethystCore_anything(self ); FAILTEST(pass1); bind_aset(bind,4/*clas*/,it);
-it=rb_funcall(self,sy_Detect_ClasSwitch_Switch_C_9bae,1,bind);  bind_aset(bind,5/*autovar*/,it);
+it=rb_funcall(self,sy_Detect_ClasSwitch_Switch_C_4b2b,1,bind);  bind_aset(bind,5/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
@@ -2339,7 +2339,7 @@ c_Apply=rb_const_get(rb_cObject, rb_intern("Apply"));rb_ary_push(rb_const_get(rb
 c_Array=rb_const_get(rb_cObject, rb_intern("Array"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Array);
 c_Grammar=rb_const_get(rb_cObject, rb_intern("Grammar"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Grammar);
 c_Rule=rb_const_get(rb_cObject, rb_intern("Rule"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Rule);
-sy_Detect_ClasSwitch_Switch_C_9bae=rb_intern("Detect_ClasSwitch_Switch_C_9bae");
+sy_Detect_ClasSwitch_Switch_C_4b2b=rb_intern("Detect_ClasSwitch_Switch_C_4b2b");
 sy_Detect_ClasSwitch__append_lp__7352=rb_intern("Detect_ClasSwitch__append_lp__7352");
 sy_Detect_ClasSwitch__append_lp__b494=rb_intern("Detect_ClasSwitch__append_lp__b494");
 sy_Detect_ClasSwitch__at_changed_5352=rb_intern("Detect_ClasSwitch__at_changed_5352");
@@ -2359,4 +2359,4 @@ rb_define_method(cls_Detect_ClasSwitch,"root",Detect_ClasSwitch_root,0);
 rb_define_method(cls_Detect_ClasSwitch,"traverse",Detect_ClasSwitch_traverse,0);
 rb_define_method(cls_Detect_ClasSwitch,"traverse_item",Detect_ClasSwitch_traverse_item,0);
 rb_define_method(cls_Detect_ClasSwitch,"visit",Detect_ClasSwitch_visit,0);
- rb_eval_string("testversiondetect_switch('5f09d00d5896028c83e0a479d668f209')");}
+ rb_eval_string("testversiondetect_switch('0fc900da40822c62345c3db4ad7b8b21')");}
