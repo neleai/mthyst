@@ -4,7 +4,6 @@ class SizesLattice
 	attr_accessor :size
 	def self.bottom ;	self[0];				end
 	def self.empty  ;	self[0];  			end
-	def self.default;	self[0];			  end
 	def self.top	  ; self[1.0/0.0];	end
 	def self.[](a)
 		return $hash_SizesLattice[a] if $hash_SizesLattice[a]
@@ -75,7 +74,6 @@ class CharLattice < FirstLattice
 	end
 	alias_method :==,:equal?
 	def self.top;	         CharLattice[[0,255]] ;end
-	def self.default;	     top|empty            ;end
 	def cchar(c)
 		return "'#{c.chr}'" if c.chr.inspect.size==3 && c.chr.inspect!='"\'"' && c.ord < 128
 		"UC(#{c.ord})"
@@ -106,7 +104,6 @@ class ClasLattice < FirstLattice
   end
 	alias_method :==,:equal?
   def self.top;     ClasLattice[Object];  end
-	def self.default;	top|empty;            end
 end
 class First_Dataflow < Amethyst
 	def initialize
@@ -204,13 +201,13 @@ amethyst First_Dataflow {
 	
 	first = Switch[ [ .:p  value:v {p.is_a?(lattice)? p & v : v}:vals[] ]* {vals.inject(:|)} ]
 				| Or[value*:{it.inject(:|)}]
-				| Seq[{lattice.empty}:val (.:el {el}=>value:nev {val.seqjoin(nev)}:val  (~{empty?(el)} break | empty) )*   .* {val}]
-				| Many[value:val {val|lattice.empty} ]
+				| Seq[{lattice.bottom}:val (.:el {el}=>value:nev {val.seqjoin(nev)}:val  (~{empty?(el)} break | empty) )*   .* {val}]
+				| Many[value:val {val|lattice.bottom} ]
 				| Apply[ :name &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name].body}=>value ]
 				| Switch[value*:{it.inject(:|)}]
 	      | Bind[ value] 
-				| (Act|CAct|Local|Result|Cut|Stop)[.* {lattice.empty} ]
-				| .:el {empty?(el) ? lattice.top|lattice.empty : lattice.top}
+				| (Act|CAct|Local|Result|Cut|Stop)[.* {lattice.bottom} ]
+				| .:el {empty?(el) ? lattice.top|lattice.bottom : lattice.top}
 
 	 getvalue(v) = {@@vis=v; v}=>first
 }  			
@@ -265,7 +262,6 @@ class Detect_ClasSwitch < Detect_First
 			@switchdf.parse(:root,[])
 		end
 		r=@switchdf.analyze(s)
-		return (r|ClasLattice.top)-ClasLattice.empty if empty?(s)
 		return r
 	end
 	def assume(str)

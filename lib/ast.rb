@@ -18,6 +18,7 @@ makeclasses(AmethystAST,
 		:Char,
     :Comment,
     :Nested,
+		:Clone,
 		[:Switch,:act,:defs,:first,:header,:init]
 )
 class SeqOr<AmethystAST;end
