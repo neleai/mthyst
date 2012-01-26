@@ -578,7 +578,7 @@ VALUE AmethystParser_className(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(
 unsigned char chr1=*ame_curstr(self);  switch(chr1){case 'A' ... 'Z':; it=rb_ary_new3(0); bind_aset(bind,0/*autovar*/,it);
   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,1/*autovar*/,it);
 it=rb_funcall(self,sy_AmethystParser__append_lp__cbd1,1,bind); it=rb_ary_new3(0); bind_aset(bind,2/*autovar*/,it);
-int oldpos1; while(1){oldpos1=ame_getpos(self); unsigned char chr2=*ame_curstr(self);  switch(chr2){case '_' ... '_':;case 'a' ... 'z':;case 'A' ... 'Z':;case '0' ... '9':;   it=AmethystCore_anything(self ); FAILTEST(break1); bind_aset(bind,3/*autovar*/,it);
+int oldpos1; while(1){oldpos1=ame_getpos(self); unsigned char chr2=*ame_curstr(self);  switch(chr2){case '0' ... '9':;case 'A' ... 'Z':;case '_' ... '_':;case 'a' ... 'z':;   it=AmethystCore_anything(self ); FAILTEST(break1); bind_aset(bind,3/*autovar*/,it);
 it=rb_funcall(self,sy_AmethystParser__append_lp__4de3,1,bind);  break;
 case UC(0) ... '/':;case ':' ... '@':;case '[' ... '^':;case '`' ... '`':;case '{' ... UC(255):; goto break1; break;
 } if (ame_getstop(self)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos1); it=bind_aget(bind,2/*autovar*/); bind_aset(bind,4/*autovar*/,it);
@@ -923,10 +923,10 @@ return it;
 fail: return failobj; }
 VALUE AmethystParser_name(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(7);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-unsigned char chr1=*ame_curstr(self);  switch(chr1){case '_' ... '_':;case 'a' ... 'z':;case 'A' ... 'Z':; it=rb_ary_new3(0); bind_aset(bind,0/*autovar*/,it);
+unsigned char chr1=*ame_curstr(self);  switch(chr1){case 'A' ... 'Z':;case '_' ... '_':;case 'a' ... 'z':; it=rb_ary_new3(0); bind_aset(bind,0/*autovar*/,it);
   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,1/*autovar*/,it);
 it=rb_funcall(self,sy_AmethystParser__append_lp__cbd1,1,bind); it=rb_ary_new3(0); bind_aset(bind,2/*autovar*/,it);
-int oldpos1; while(1){oldpos1=ame_getpos(self); unsigned char chr2=*ame_curstr(self);  switch(chr2){case '_' ... '_':;case 'a' ... 'z':;case 'A' ... 'Z':;case '0' ... '9':;   it=AmethystCore_anything(self ); FAILTEST(break1); bind_aset(bind,3/*autovar*/,it);
+int oldpos1; while(1){oldpos1=ame_getpos(self); unsigned char chr2=*ame_curstr(self);  switch(chr2){case '0' ... '9':;case 'A' ... 'Z':;case '_' ... '_':;case 'a' ... 'z':;   it=AmethystCore_anything(self ); FAILTEST(break1); bind_aset(bind,3/*autovar*/,it);
 it=rb_funcall(self,sy_AmethystParser__append_lp__4de3,1,bind);  break;
 case UC(0) ... '/':;case ':' ... '@':;case '[' ... '^':;case '`' ... '`':;case '{' ... UC(255):; goto break1; break;
 } if (ame_getstop(self)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos1); it=bind_aget(bind,2/*autovar*/); bind_aset(bind,4/*autovar*/,it);
@@ -2634,4 +2634,4 @@ rb_define_method(cls_AmethystParser,"rule",AmethystParser_rule,0);
 rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
 rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
 rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
- rb_eval_string("testversionparser('cc0681a1d6b52e15219993c6ab687e76')");}
+ rb_eval_string("testversionparser('8ddc09c7e3eadf627dc7a4820dfe515c')");}

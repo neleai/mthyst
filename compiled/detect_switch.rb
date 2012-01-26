@@ -30,15 +30,19 @@ class FirstLattice
 	def |(a)
 		self.class[*(ary|a.ary)]
 	end
-	def -(a)
-		self.class[*(ary-a.ary)]
-	end
-	def &(a)
-		self.class[*(ary&a.ary)]
-	end
 	def seqjoin(a)
-    (self-self.class.empty)|a
+    self|a
   end
+
+	def ~
+		raise "Not implemented"
+	end
+	def &(a) #De Morgan's law
+		 ~(~self | ~a)
+	end
+	def -(a)
+		self&(~a)
+	end
 
 	def cases(first)
 		ary.map{|c| "case #{c}:;"}*""
@@ -52,9 +56,22 @@ $hash_CharLattice={}
 class CharLattice < FirstLattice
 	def self.[](*ary)
 		return $hash_CharLattice[ary] if $hash_CharLattice[ary]
+		nary=[]
+		if ary.size>0
+			first,last=*ary.sort[0]
+			(ary.sort+[[257,257]]).each{|beg,en|
+				if beg<=last+1
+					last=[last,en].max
+				else
+					nary<<[first,last]
+					first,last=beg,en
+				end
+			}
+		end
+		return $hash_CharLattice[ary]=$hash_CharLattice[nary] if $hash_CharLattice[nary]
 		c=CharLattice.new
-		c.ary=ary
-		$hash_CharLattice[ary]=c
+		c.ary=nary
+		$hash_CharLattice[ary]=$hash_CharLattice[nary]=c
 	end
 	alias_method :==,:equal?
 	def self.top;	         CharLattice[[0,255]] ;end
@@ -69,37 +86,11 @@ class CharLattice < FirstLattice
 	def ~
 		first=0
 		nary=[]
-		((normalize.ary-[])+[[256,256]]).each{|beg,en|
+		(ary+[[256,256]]).each{|beg,en|
 			nary<<[first,beg-1] if first<=beg-1
 			first=en+1
 		}
 		CharLattice[*nary]
-	end
-	def &(a)
-		r= ~(~self | ~a)
-		r
-	end
-	def |(a)
-		c=CharLattice.new
-		c.ary=ary+a.ary
-		c.normalize
-	end
-	def normalize
-		nary=[]
-		special=[]
-		ary=@ary
-		if ary.size>0
-			first,last=*ary.sort[0]
-			(ary.sort+[[257,257]]).each{|beg,en|
-				if beg<=last+1
-					last=[last,en].max
-				else
-					nary<<[first,last]
-					first,last=beg,en
-				end
-			}
-		end
-		CharLattice[*(nary+special)]
 	end
 end
 
@@ -655,13 +646,28 @@ end
 end
 
 
+class ClasSwitch
+	def self.[](*ary)
+		init="Hash.new{|h,k|\n"
+    ary.each_with_index{|c,i| init<< "next h[k]=#{i} if k<=#{c}\n"}
+    init+="}\n"
+	
+		first= ary.map{|k,v| k}.inject(:|)
+		init
+		alts=[]
+		first.ary.each{|a|
+		}
+		Switch[{:header=>"VALUE switchhash#{@name}#{$swno};",:init=>"switchhash#{@name}#{$swno}=rb_eval_string(#{init.inspect});#{gc_mark_var("switchhash#{@name}#{$swno}")}" ,:act=>"FIX2LONG(rb_hash_aref(switchhash#{@name}#{$swno},rb_obj_class(ame_curobj(self))))",:ary=>ary3}]
+	end
+end
+
 class Detect_ClasSwitch < Detect_First
 
 def Detect_ClasSwitch_ClasSwit_7af9(bind)
 ClasSwitch[[ClasLattice[bind[4]],Apply["anything"]],[ClasLattice[Object],Apply["fails"]]] 
 end
-def Detect_ClasSwitch_ClasSwit_dc48(bind)
-ClasSwitch[[bind[8],src],[~bind[8],Apply["fails"]]]   
+def Detect_ClasSwitch_ClasSwit_b6ad(bind)
+ClasSwitch[[bind[11],src],[~bind[11],Apply["fails"]]]   
 end
 def Detect_ClasSwitch__append_lp__7352(bind)
 _append(bind[4],bind[7])
@@ -685,7 +691,7 @@ def Detect_ClasSwitch__do_rules_eq__le__ab16(bind)
 $rules={};src.rules.each{|r| $rules[r.name]=r}
 end
 def Detect_ClasSwitch__lp_(bind)
-(!empty?(src) && bind[8]!=CharLattice.top) || FAIL
+(!empty?(src) && bind[11]!=CharLattice.top) || FAIL
 end
 def Detect_ClasSwitch__lp_bind_lb_2_rb__6693(bind)
 (bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
@@ -719,15 +725,15 @@ end
 
 
 def detect_switch_compiled_by
-'2578d6d631c4dad4e09975b1d1b768b4'
+'c574831be266a4e4d7f3458aaf2c0d36'
 end
 def detect_switch_source_hash
-'db5d40335402df0127f0d0f4128488e3'
+'948806acdb2550c609c05b93fd9e004e'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'9266d6f3105ed1e79805462c55aff057'
+'040849f39e511c63bb1d1fd134ad55ca'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

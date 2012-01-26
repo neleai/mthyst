@@ -30,15 +30,19 @@ class FirstLattice
 	def |(a)
 		self.class[*(ary|a.ary)]
 	end
-	def -(a)
-		self.class[*(ary-a.ary)]
-	end
-	def &(a)
-		self.class[*(ary&a.ary)]
-	end
 	def seqjoin(a)
-    (self-self.class.empty)|a
+    self|a
   end
+
+	def ~
+		raise "Not implemented"
+	end
+	def &(a) #De Morgan's law
+		 ~(~self | ~a)
+	end
+	def -(a)
+		self&(~a)
+	end
 
 	def cases(first)
 		ary.map{|c| "case #{c}:;"}*""
@@ -52,9 +56,22 @@ $hash_CharLattice={}
 class CharLattice < FirstLattice
 	def self.[](*ary)
 		return $hash_CharLattice[ary] if $hash_CharLattice[ary]
+		nary=[]
+		if ary.size>0
+			first,last=*ary.sort[0]
+			(ary.sort+[[257,257]]).each{|beg,en|
+				if beg<=last+1
+					last=[last,en].max
+				else
+					nary<<[first,last]
+					first,last=beg,en
+				end
+			}
+		end
+		return $hash_CharLattice[ary]=$hash_CharLattice[nary] if $hash_CharLattice[nary]
 		c=CharLattice.new
-		c.ary=ary
-		$hash_CharLattice[ary]=c
+		c.ary=nary
+		$hash_CharLattice[ary]=$hash_CharLattice[nary]=c
 	end
 	alias_method :==,:equal?
 	def self.top;	         CharLattice[[0,255]] ;end
@@ -69,37 +86,11 @@ class CharLattice < FirstLattice
 	def ~
 		first=0
 		nary=[]
-		((normalize.ary-[])+[[256,256]]).each{|beg,en|
+		(ary+[[256,256]]).each{|beg,en|
 			nary<<[first,beg-1] if first<=beg-1
 			first=en+1
 		}
 		CharLattice[*nary]
-	end
-	def &(a)
-		r= ~(~self | ~a)
-		r
-	end
-	def |(a)
-		c=CharLattice.new
-		c.ary=ary+a.ary
-		c.normalize
-	end
-	def normalize
-		nary=[]
-		special=[]
-		ary=@ary
-		if ary.size>0
-			first,last=*ary.sort[0]
-			(ary.sort+[[257,257]]).each{|beg,en|
-				if beg<=last+1
-					last=[last,en].max
-				else
-					nary<<[first,last]
-					first,last=beg,en
-				end
-			}
-		end
-		CharLattice[*(nary+special)]
 	end
 end
 

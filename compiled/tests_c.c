@@ -23,7 +23,7 @@ static VALUE sy_seq;
 static VALUE sy_token;
 VALUE Tests_abc(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-unsigned char chr1=*ame_curstr(self);  switch(chr1){case ' ' ... ' ':;case 'a' ... 'a':;case 'b' ... 'b':;case 'c' ... 'c':;   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,0/*_result*/,it);
+unsigned char chr1=*ame_curstr(self);  switch(chr1){case ' ' ... ' ':;case 'a' ... 'c':;   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,0/*_result*/,it);
  break;
 case UC(0) ... UC(31):;case '!' ... '`':;case 'd' ... UC(255):; goto fail; break;
 }
@@ -181,4 +181,4 @@ rb_define_method(cls_Tests,"foo",Tests_foo,0);
 rb_define_method(cls_Tests,"s2",Tests_s2,0);
 rb_define_method(cls_Tests,"sw",Tests_sw,0);
 rb_define_method(cls_Tests,"test",Tests_test,0);
- rb_eval_string("testversiontests('373c13c02818812e4d8bcf7d107a619b')");}
+ rb_eval_string("testversiontests('c7237c36bb110cbfbb835359054e7ba8')");}
