@@ -4,6 +4,7 @@ class SizesLattice
 	attr_accessor :size
 	def self.bottom ;	self[0];				end
 	def self.empty  ;	self[0];  			end
+	def self.default;	self[0];			  end
 	def self.top	  ; self[1.0/0.0];	end
 	def self.[](a)
 		return $hash_SizesLattice[a] if $hash_SizesLattice[a]
@@ -74,6 +75,7 @@ class CharLattice < FirstLattice
 	end
 	alias_method :==,:equal?
 	def self.top;	         CharLattice[[0,255]] ;end
+	def self.default;	     top|empty            ;end
 	def cchar(c)
 		return "'#{c.chr}'" if c.chr.inspect.size==3 && c.chr.inspect!='"\'"' && c.ord < 128
 		"UC(#{c.ord})"
@@ -104,6 +106,7 @@ class ClasLattice < FirstLattice
   end
 	alias_method :==,:equal?
   def self.top;     ClasLattice[Object];  end
+	def self.default;	top|empty;            end
 end
 class First_Dataflow < Amethyst
 	def initialize
@@ -221,11 +224,11 @@ end
 def First_Dataflow_bind_lb_11_rb__28dd(bind)
 bind[11].inject(:|)
 end
+def First_Dataflow_bind_lb_14_rb__47a4(bind)
+bind[14]|lattice.empty
+end
 def First_Dataflow_bind_lb_14_rb__b1af(bind)
 bind[14].seqjoin(bind[18])
-end
-def First_Dataflow_bind_lb_14_rb__fd91(bind)
-bind[14]|lattice.bottom
 end
 def First_Dataflow_bind_lb_4_rb__dot__2651(bind)
 bind[4].is_a?(lattice)? bind[4] & bind[5] : bind[5]
@@ -235,10 +238,10 @@ depends(bind[0]);#puts "#{bind[0].inspect} #{@vals[bind[0]].inspect}";
 @vals[bind[0]]
 end
 def First_Dataflow_empty(bind)
-empty?(bind[15]) ? lattice.top|lattice.bottom : lattice.top
+empty?(bind[15]) ? lattice.top|lattice.empty : lattice.top
 end
-def First_Dataflow_lattice_dot__5a9e(bind)
-lattice.bottom
+def First_Dataflow_lattice_dot__2c4f(bind)
+lattice.empty
 end
 
 end
@@ -273,20 +276,20 @@ end
 def Sizes_Dataflow_bind_lb_11_rb__28dd(bind)
 bind[11].inject(:|)
 end
+def Sizes_Dataflow_bind_lb_14_rb__47a4(bind)
+bind[14]|lattice.empty
+end
 def Sizes_Dataflow_bind_lb_14_rb__b1af(bind)
 bind[14].seqjoin(bind[18])
-end
-def Sizes_Dataflow_bind_lb_14_rb__fd91(bind)
-bind[14]|lattice.bottom
 end
 def Sizes_Dataflow_bind_lb_4_rb__dot__2651(bind)
 bind[4].is_a?(lattice)? bind[4] & bind[5] : bind[5]
 end
 def Sizes_Dataflow_empty(bind)
-empty?(bind[15]) ? lattice.top|lattice.bottom : lattice.top
+empty?(bind[15]) ? lattice.top|lattice.empty : lattice.top
 end
-def Sizes_Dataflow_lattice_dot__5a9e(bind)
-lattice.bottom
+def Sizes_Dataflow_lattice_dot__2c4f(bind)
+lattice.empty
 end
 def Sizes_Dataflow_lattice_dot__e0e5(bind)
 lattice.top
@@ -330,20 +333,23 @@ end
 def Switch_Dataflow_bind_lb_11_rb__28dd(bind)
 bind[11].inject(:|)
 end
+def Switch_Dataflow_bind_lb_14_rb__47a4(bind)
+bind[14]|lattice.empty
+end
 def Switch_Dataflow_bind_lb_14_rb__b1af(bind)
 bind[14].seqjoin(bind[18])
-end
-def Switch_Dataflow_bind_lb_14_rb__fd91(bind)
-bind[14]|lattice.bottom
 end
 def Switch_Dataflow_bind_lb_4_rb__dot__2651(bind)
 bind[4].is_a?(lattice)? bind[4] & bind[5] : bind[5]
 end
 def Switch_Dataflow_empty(bind)
-empty?(bind[15]) ? lattice.top|lattice.bottom : lattice.top
+empty?(bind[15]) ? lattice.top|lattice.empty : lattice.top
 end
 def Switch_Dataflow_firstcha_647d(bind)
 firstchar(bind[5])
+end
+def Switch_Dataflow_lattice_dot__2c4f(bind)
+lattice.empty
 end
 def Switch_Dataflow_lattice_dot__5a9e(bind)
 lattice.bottom
@@ -387,20 +393,20 @@ end
 def ClasSwitch_Dataflow_bind_lb_11_rb__28dd(bind)
 bind[11].inject(:|)
 end
+def ClasSwitch_Dataflow_bind_lb_14_rb__47a4(bind)
+bind[14]|lattice.empty
+end
 def ClasSwitch_Dataflow_bind_lb_14_rb__b1af(bind)
 bind[14].seqjoin(bind[18])
-end
-def ClasSwitch_Dataflow_bind_lb_14_rb__fd91(bind)
-bind[14]|lattice.bottom
 end
 def ClasSwitch_Dataflow_bind_lb_4_rb__dot__2651(bind)
 bind[4].is_a?(lattice)? bind[4] & bind[5] : bind[5]
 end
 def ClasSwitch_Dataflow_empty(bind)
-empty?(bind[15]) ? lattice.top|lattice.bottom : lattice.top
+empty?(bind[15]) ? lattice.top|lattice.empty : lattice.top
 end
-def ClasSwitch_Dataflow_lattice_dot__5a9e(bind)
-lattice.bottom
+def ClasSwitch_Dataflow_lattice_dot__2c4f(bind)
+lattice.empty
 end
 def ClasSwitch_Dataflow_lattice_lb__d8d7(bind)
 lattice[bind[3]]
@@ -437,6 +443,7 @@ class Detect_ClasSwitch < Detect_First
 			@switchdf.parse(:root,[])
 		end
 		r=@switchdf.analyze(s)
+		return (r|ClasLattice.top)-ClasLattice.empty if empty?(s)
 		return r
 	end
 	def assume(str)
@@ -718,15 +725,15 @@ end
 
 
 def detect_switch_compiled_by
-'518926016ca3371fbf3b739ca2e85d70'
+'c574831be266a4e4d7f3458aaf2c0d36'
 end
 def detect_switch_source_hash
-'b26e3eeb8034dc9d5c066a042d4fd83a'
+'948806acdb2550c609c05b93fd9e004e'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'46d7f40d3bfb798ecd03bb7c810e7797'
+'040849f39e511c63bb1d1fd134ad55ca'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"
