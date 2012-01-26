@@ -323,7 +323,7 @@ amethyst Detect_Switch < Detect_First {
 }
 
 amethyst Detect_ClasSwitch < Detect_First {
-	visit = Apply[ ["clas"] .:clas            {Switch_Clas[[ClasLattice[clas[0]],Apply["anything"]],[ClasLattice[Object],Apply["fails"]]] }]
+	visit = Apply[ ["clas"] .:clas            {Switch_Clas[[ClasLattice[clas[0]],Apply["anything"]],[ClasLattice[Object],Apply["fails"]]].freeze }]
 				| Apply[ ["fails"] {@self} ]
 #				| Apply[ .* first(@self):firs &{!empty?(@self) && firs!=CharLattice.top} {Switch_Clas[[firs,@self],[~firs,Apply["fails"]]]   }]  
 }
