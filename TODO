@@ -82,8 +82,6 @@ switch for ints,true,false,nil
 foreign rules
 resolving rules in apply
 
-rewrite switch to do bottom-up construction
-
 recognize block-scoped locals
 
 paralelize compilation
