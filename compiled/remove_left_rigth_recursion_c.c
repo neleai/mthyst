@@ -12,6 +12,7 @@ VALUE switchhash_Remove_Left_Recursion_4;
 VALUE switchhash_Remove_Left_Recursion_5;
 VALUE switchhash_Remove_Left_Recursion_6;
 VALUE switchhash_Remove_Left_Recursion_7;
+VALUE switchhash_Remove_Left_Recursion_8;
 static VALUE sy_Remove_Left_Recursion_Bind_lb_bin_3e0d;
 static VALUE sy_Remove_Left_Recursion_Bind_lb_bin_d522;
 static VALUE sy_Remove_Left_Recursion_Seq_lb_Seq_lb__f6ac;
@@ -30,7 +31,7 @@ static VALUE sy_Remove_Left_Recursion_src_dot_expr_ef77;
 static VALUE sy_Remove_Left_Recursion_src_dot_name_80f3;
 VALUE Remove_Left_Recursion_rec(VALUE self ,VALUE a0,VALUE a1){VALUE vals[2]; VALUE bind=bind_new2(11); bind_aset(bind,1/*name*/,a0);bind_aset(bind,2/*a*/,a1); int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-switch(FIX2LONG(rb_hash_aref(switchhash_Remove_Left_Recursion_7,rb_obj_class(ame_curobj(self))))){case 0/*Apply*/:;   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,0/*autovar*/,it);
+switch(FIX2LONG(rb_hash_aref(switchhash_Remove_Left_Recursion_8,rb_obj_class(ame_curobj(self))))){case 0/*Apply*/:;   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,0/*autovar*/,it);
 cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,0/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  it=rb_funcall(self,sy_Remove_Left_Recursion__lp_src_dot_nam_58e8,1,bind); FAILTEST(pass1);  it=AmethystCore_anything(self ); FAILTEST(pass1);it=bind_aget(bind,2/*a*/); bind_aset(bind,3/*autovar*/,it);
@@ -194,7 +195,9 @@ cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
  it=rb_funcall(self,sy_Remove_Left_Recursion_src_dot_expr_ef77,1,bind);  bind_aset(bind,2/*autovar*/,it);
 cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=bind_aget(bind,2/*autovar*/);ptr->len=1;
-   it=Remove_Left_Recursion_start(self ); FAILTEST(pass2);it=Qnil;if (ptr->pos<ptr->len) goto pass2;
+ switch(FIX2LONG(rb_hash_aref(switchhash_Remove_Left_Recursion_7,rb_obj_class(ame_curobj(self))))){case 0/*Act*/:case 1/*Bind*/:case 2/*CAct*/:case 3/*Local*/:;   it=Remove_Left_Recursion_start(self ); FAILTEST(pass2);it=Qnil;if (ptr->pos<ptr->len) goto pass2; break;
+case 4/*Object*/:; goto pass2; break;
+}
 	goto success2;
 	pass2: fail2=1;
 	success2: *ptr=oldpass2;
@@ -220,7 +223,8 @@ switchhash_Remove_Left_Recursion_3=rb_eval_string("Hash.new{|h,k|next h[k]=0 if 
 switchhash_Remove_Left_Recursion_4=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Seq\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Remove_Left_Recursion_4);;
 switchhash_Remove_Left_Recursion_5=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Bind\nnext h[k]=2 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Remove_Left_Recursion_5);;
 switchhash_Remove_Left_Recursion_6=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=CAct\nnext h[k]=2 if k<=Local\nnext h[k]=3 if k<=Bind\nnext h[k]=4 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Remove_Left_Recursion_6);;
-switchhash_Remove_Left_Recursion_7=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Bind\nnext h[k]=2 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Remove_Left_Recursion_7);;
+switchhash_Remove_Left_Recursion_7=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Bind\nnext h[k]=2 if k<=CAct\nnext h[k]=3 if k<=Local\nnext h[k]=4 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Remove_Left_Recursion_7);;
+switchhash_Remove_Left_Recursion_8=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Bind\nnext h[k]=2 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Remove_Left_Recursion_8);;
 sy_Remove_Left_Recursion_Bind_lb_bin_3e0d=rb_intern("Remove_Left_Recursion_Bind_lb_bin_3e0d");
 sy_Remove_Left_Recursion_Bind_lb_bin_d522=rb_intern("Remove_Left_Recursion_Bind_lb_bin_d522");
 sy_Remove_Left_Recursion_Seq_lb_Seq_lb__f6ac=rb_intern("Remove_Left_Recursion_Seq_lb_Seq_lb__f6ac");
@@ -240,4 +244,4 @@ sy_Remove_Left_Recursion_src_dot_name_80f3=rb_intern("Remove_Left_Recursion_src_
 rb_define_method(cls_Remove_Left_Recursion,"rec",Remove_Left_Recursion_rec,2);
 rb_define_method(cls_Remove_Left_Recursion,"root",Remove_Left_Recursion_root,0);
 rb_define_method(cls_Remove_Left_Recursion,"start",Remove_Left_Recursion_start,0);
- rb_eval_string("testversionremove_left_rigth_recursion('f7edd8fd00f2d00a91f8bfd8bf76e48f')");}
+ rb_eval_string("testversionremove_left_rigth_recursion('1675c537bdc3beb321fce9964e7f47e6')");}

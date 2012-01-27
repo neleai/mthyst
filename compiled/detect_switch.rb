@@ -614,41 +614,44 @@ end
 
 class Detect_Switch_Clas < Detect_First
 
-def Detect_Switch_Clas_Or_lb__ti_bind_2602(bind)
-Or[*bind[14]]
+def Detect_Switch_Clas_Or_lb__ti_bind_2778(bind)
+Or[*bind[17]]
+end
+def Detect_Switch_Clas_Seq_lb__ti__lp_bi_2290(bind)
+Seq[*(bind[35]+bind[40])]
 end
 def Detect_Switch_Clas_Seq_lb__ti__lp_bi_abc9(bind)
 Seq[*(bind[1]+bind[5])]
 end
-def Detect_Switch_Clas_Seq_lb__ti__lp_bi_ac2f(bind)
-Seq[*(bind[32]+bind[37])]
-end
 def Detect_Switch_Clas_Switch_C_0e01(bind)
 Switch_Clas[{:ary=>bind[3].map{|p,a| [p,Or[*a].dup.normalize]}}]
 end
-def Detect_Switch_Clas_Switch_C_3d84(bind)
-Switch_Clas[{:ary=>bind[37].map{|p,a| [p,Seq[*(bind[32]+[a]+bind[41])]]}}] 
+def Detect_Switch_Clas_Switch_C_83b2(bind)
+Switch_Clas[{:ary=>bind[40].map{|p,a| [p,Seq[*(bind[35]+[a]+bind[44])]]}}] 
 end
 def Detect_Switch_Clas_Switch_C_a9b5(bind)
 Switch_Clas[{:ary=>bind[5].map{|p,a| [p,Seq[*(bind[1]+[a]+bind[9])]]}}] 
 end
-def Detect_Switch_Clas_Switch_C_c0ce(bind)
-Switch_Clas[{:ary=>bind[19].map{|p,a| [p,Or[*a].dup.normalize]}}]
-end
 def Detect_Switch_Clas_Switch_C_ee57(bind)
 Switch_Clas[[Lattice_Clas[bind[5][0]],Apply["anything"]],[Lattice_Clas[Object],Apply["fails"]]].freeze 
 end
-def Detect_Switch_Clas__append_lp__3c16(bind)
-_append(bind[28],bind[29])
+def Detect_Switch_Clas_Switch_C_f93c(bind)
+Switch_Clas[{:ary=>bind[22].map{|p,a| [p,Or[*a].dup.normalize]}}]
 end
-def Detect_Switch_Clas__append_lp__403b(bind)
-_append(bind[39],bind[40])
-end
-def Detect_Switch_Clas__append_lp__7140(bind)
-_append(bind[12],bind[13])
+def Detect_Switch_Clas__append_lp__5f76(bind)
+_append(bind[42],bind[43])
 end
 def Detect_Switch_Clas__append_lp__7352(bind)
 _append(bind[4],bind[7])
+end
+def Detect_Switch_Clas__append_lp__8bfa(bind)
+_append(bind[15],bind[16])
+end
+def Detect_Switch_Clas__append_lp__9160(bind)
+_append(bind[31],bind[32])
+end
+def Detect_Switch_Clas__append_lp__a10b(bind)
+_append(bind[38],bind[39])
 end
 def Detect_Switch_Clas__append_lp__b494(bind)
 _append(bind[0],bind[10])
@@ -658,9 +661,6 @@ _append(bind[7],bind[8])
 end
 def Detect_Switch_Clas__append_lp__dd73(bind)
 _append(bind[3],bind[4])
-end
-def Detect_Switch_Clas__append_lp__f3b0(bind)
-_append(bind[35],bind[36])
 end
 def Detect_Switch_Clas__at_changed_5352(bind)
 @changed=true
@@ -681,7 +681,10 @@ def Detect_Switch_Clas__lb__lb_Lattic_62e5(bind)
 [[Lattice_Clas.top,[]]]
 end
 def Detect_Switch_Clas__lp_(bind)
-(!bind[15]) || FAIL
+(!empty?(src) && !bind[12].ary.include?(Object)) || FAIL
+end
+def Detect_Switch_Clas__lp_2(bind)
+(!bind[18]) || FAIL
 end
 def Detect_Switch_Clas__lp_bind_lb_2_rb__6693(bind)
 (bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
@@ -689,20 +692,20 @@ end
 def Detect_Switch_Clas__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Detect_Switch_Clas_bind_lb_14_rb__baed(bind)
-bind[14].each{|i| bind[15]=true if i.is_a?(Switch_Clas)}
-end
-def Detect_Switch_Clas_bind_lb_19_rb__91bc(bind)
-bind[19].map{|p,a| [p,a+[bind[24]]]}
-end
-def Detect_Switch_Clas_bind_lb_19_rb__faad(bind)
-bind[19].each{|p,a| bind[21].each{|p2,a2| bind[22] << [p&p2,a+[a2]] if p&p2!=Lattice_Clas.bottom}}
+def Detect_Switch_Clas_bind_lb_17_rb__171f(bind)
+bind[17].each{|i| bind[18]=true if i.is_a?(Switch_Clas)}
 end
 def Detect_Switch_Clas_bind_lb_1_rb__pl__42be(bind)
 bind[1]+[bind[0]]
 end
-def Detect_Switch_Clas_bind_lb_32_rb__ff83(bind)
-bind[32]+[bind[33]]
+def Detect_Switch_Clas_bind_lb_22_rb__6728(bind)
+bind[22].each{|p,a| bind[24].each{|p2,a2| bind[25] << [p&p2,a+[a2]] if p&p2!=Lattice_Clas.bottom}}
+end
+def Detect_Switch_Clas_bind_lb_22_rb__e2be(bind)
+bind[22].map{|p,a| [p,a+[bind[27]]]}
+end
+def Detect_Switch_Clas_bind_lb_35_rb__0ac2(bind)
+bind[35]+[bind[36]]
 end
 def Detect_Switch_Clas_bind_lb_3_rb__dot__2d57(bind)
 bind[3].map{|p,a| [p,a+[bind[5]]]}
@@ -712,6 +715,9 @@ bind[3].each{|p,a| bind[1].each{|p2,a2| bind[2] << [p&p2,a+[a2]] if p&p2!=Lattic
 end
 def Detect_Switch_Clas_bind_lb_5_rb__lt__1671(bind)
 bind[5]<<bind[6]
+end
+def Detect_Switch_Clas_c_eq_Switch_f609(bind)
+c=Switch_Clas[{:ary=>bind[12].ary.map{|a| [Lattice_Clas[a],src]}+[[Lattice_Clas[Object],Apply["fails"]]]}];puts c.inspect;c 
 end
 def Detect_Switch_Clas_if_sp_bind_lb__f1e9(bind)
 if bind[3]
@@ -739,15 +745,15 @@ end
 
 
 def detect_switch_compiled_by
-'2752c6b213793c96ca040df65efaa5c4'
+'04a6cb2b91535f01a17a177658b71e0d'
 end
 def detect_switch_source_hash
-'f242a7284e13b8a644a1c482be518e91'
+'bb1a6dfa525049a8daa07f0abe56c9b4'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'89910c80b149b6f2abd085c1f29ab868'
+'230b7aaaeb2ee84cb8412ede07d2f328'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

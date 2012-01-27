@@ -375,7 +375,7 @@ end
 
 
 def ctranslator2_compiled_by
-'2752c6b213793c96ca040df65efaa5c4'
+'04a6cb2b91535f01a17a177658b71e0d'
 end
 def ctranslator2_source_hash
 '3e1e929ea79f3ce24356b82555b2ebcf'
@@ -384,6 +384,6 @@ def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'26a3b70425d1d207098c28ffd1841313'
+'0e5a351cbe01aab5cf7c3a253a528d0f'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"
