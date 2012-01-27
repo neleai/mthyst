@@ -1,7 +1,6 @@
 #include "cthyst.h"
 VALUE cls_Analyze_Variables2;
 VALUE AmethystCore_anything(VALUE self );
-VALUE Amethyst_clas(VALUE self ,VALUE);
 VALUE Amethyst_eof(VALUE self );
 VALUE Analyze_Variables2_flat(VALUE self );
 VALUE Analyze_Variables2_itrans(VALUE self );
@@ -9,16 +8,19 @@ VALUE Analyze_Variables2_root(VALUE self );
 VALUE Analyze_Variables2_traverse(VALUE self );
 VALUE Analyze_Variables2_traverse_item(VALUE self );
 VALUE Analyze_Variables2_visit(VALUE self );
-static VALUE c_Act;
-static VALUE c_AmethystAST;
-static VALUE c_Args;
-static VALUE c_Array;
-static VALUE c_Comment;
-static VALUE c_Grammar;
-static VALUE c_Local;
-static VALUE c_Result;
-static VALUE c_Rule;
-static VALUE c_Strin;
+VALUE switchhash_Analyze_Variables2_10;
+VALUE switchhash_Analyze_Variables2_11;
+VALUE switchhash_Analyze_Variables2_12;
+VALUE switchhash_Analyze_Variables2_13;
+VALUE switchhash_Analyze_Variables2_1;
+VALUE switchhash_Analyze_Variables2_2;
+VALUE switchhash_Analyze_Variables2_3;
+VALUE switchhash_Analyze_Variables2_4;
+VALUE switchhash_Analyze_Variables2_5;
+VALUE switchhash_Analyze_Variables2_6;
+VALUE switchhash_Analyze_Variables2_7;
+VALUE switchhash_Analyze_Variables2_8;
+VALUE switchhash_Analyze_Variables2_9;
 static VALUE sy_Analyze_Variables2_Act_lb_bind_14b8;
 static VALUE sy_Analyze_Variables2_Placehol_6875;
 static VALUE sy_Analyze_Variables2__append_lp__7352;
@@ -52,8 +54,10 @@ VALUE Analyze_Variables2_flat(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(7
 it=rb_ary_new3(0); bind_aset(bind,0/*autovar*/,it);
 int oldpos1; while(1){oldpos1=ame_getpos(self); int oldpos2=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
-  it=c_Args; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(alt1_2); bind_aset(bind,1/*autovar*/,it);
-cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
+ switch(FIX2LONG(rb_hash_aref(switchhash_Analyze_Variables2_10,rb_obj_class(ame_curobj(self))))){case 0:   it=AmethystCore_anything(self ); FAILTEST(alt1_2); bind_aset(bind,1/*autovar*/,it);
+ break;
+case 1: goto alt1_2; break;
+}cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,1/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
    it=Analyze_Variables2_flat(self ); FAILTEST(pass1); bind_aset(bind,2/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass1);
@@ -65,8 +69,10 @@ it=bind_aget(bind,2/*autovar*/); bind_aset(bind,3/*autovar*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
-  it=c_Strin; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(alt1_3); bind_aset(bind,4/*autovar*/,it);
-cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
+ switch(FIX2LONG(rb_hash_aref(switchhash_Analyze_Variables2_11,rb_obj_class(ame_curobj(self))))){case 0:   it=AmethystCore_anything(self ); FAILTEST(alt1_3); bind_aset(bind,4/*autovar*/,it);
+ break;
+case 1: goto alt1_3; break;
+}cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,4/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
    it=Analyze_Variables2_flat(self ); FAILTEST(pass2); bind_aset(bind,5/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass2);
@@ -92,8 +98,10 @@ VALUE Analyze_Variables2_itrans(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2
 it=rb_ary_new3(0); bind_aset(bind,0/*autovar*/,it);
 int oldpos1; while(1){oldpos1=ame_getpos(self); int oldpos2=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
-  it=c_Grammar; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(alt1_2); bind_aset(bind,1/*autovar*/,it);
-cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
+ switch(FIX2LONG(rb_hash_aref(switchhash_Analyze_Variables2_1,rb_obj_class(ame_curobj(self))))){case 0:   it=AmethystCore_anything(self ); FAILTEST(alt1_2); bind_aset(bind,1/*autovar*/,it);
+ break;
+case 1: goto alt1_2; break;
+}cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,1/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  it=rb_funcall(self,sy_Analyze_Variables2_src_dot_rule_5acf,1,bind);  bind_aset(bind,2/*autovar*/,it);
 cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
@@ -102,8 +110,10 @@ cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
 cstruct oldpass3=*ptr; int fail3=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,3/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  it=rb_ary_new3(0); bind_aset(bind,4/*autovar*/,it);
-int oldpos3; while(1){oldpos3=ame_getpos(self);  it=c_Rule; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(break2); bind_aset(bind,5/*autovar*/,it);
-cstruct oldpass4=*ptr; int fail4=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
+int oldpos3; while(1){oldpos3=ame_getpos(self); switch(FIX2LONG(rb_hash_aref(switchhash_Analyze_Variables2_2,rb_obj_class(ame_curobj(self))))){case 0:   it=AmethystCore_anything(self ); FAILTEST(break2); bind_aset(bind,5/*autovar*/,it);
+ break;
+case 1: goto break2; break;
+}cstruct oldpass4=*ptr; int fail4=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,5/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
    it=Analyze_Variables2_root(self ); FAILTEST(pass4); bind_aset(bind,6/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass4);
@@ -147,8 +157,10 @@ VALUE Analyze_Variables2_root(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(7
 it=rb_funcall(self,sy_Analyze_Variables2_src_25d9,1,bind);  bind_aset(bind,0/*autovar*/,it);
 cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=bind_aget(bind,0/*autovar*/);ptr->len=1;
-  it=c_Rule; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(pass1); bind_aset(bind,1/*autovar*/,it);
-  it=Amethyst_eof(self ); FAILTEST(pass1);
+ switch(FIX2LONG(rb_hash_aref(switchhash_Analyze_Variables2_3,rb_obj_class(ame_curobj(self))))){case 0:   it=AmethystCore_anything(self ); FAILTEST(pass1); bind_aset(bind,1/*autovar*/,it);
+ break;
+case 1: goto pass1; break;
+}  it=Amethyst_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
 	success1: *ptr=oldpass1;
@@ -220,8 +232,10 @@ it=rb_funcall(self,sy_Analyze_Variables2__at_changed_5352,1,bind); it=bind_aget(
  
 ame_setcut(self,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-  it=c_Array; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(alt1_3); bind_aset(bind,2/*autovar*/,it);
-cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
+ switch(FIX2LONG(rb_hash_aref(switchhash_Analyze_Variables2_12,rb_obj_class(ame_curobj(self))))){case 0:   it=AmethystCore_anything(self ); FAILTEST(alt1_3); bind_aset(bind,2/*autovar*/,it);
+ break;
+case 1: goto alt1_3; break;
+}cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,2/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  it=rb_ary_new3(0); bind_aset(bind,3/*ar*/,it);
 int oldpos2; while(1){oldpos2=ame_getpos(self);   it=Analyze_Variables2_traverse_item(self ); FAILTEST(break1); bind_aset(bind,4/*it*/,it);
@@ -235,8 +249,10 @@ it=bind_aget(bind,5/*autovar*/); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
 alt1_3: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-  it=c_AmethystAST; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(alt1_4); bind_aset(bind,6/*autovar*/,it);
-cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
+ switch(FIX2LONG(rb_hash_aref(switchhash_Analyze_Variables2_13,rb_obj_class(ame_curobj(self))))){case 0:   it=AmethystCore_anything(self ); FAILTEST(alt1_4); bind_aset(bind,6/*autovar*/,it);
+ break;
+case 1: goto alt1_4; break;
+}cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,6/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
    it=Analyze_Variables2_traverse(self ); FAILTEST(pass2); bind_aset(bind,7/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass2);
@@ -260,8 +276,10 @@ VALUE Analyze_Variables2_visit(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(
 
 int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-  it=c_Args; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(alt1_2); bind_aset(bind,0/*autovar*/,it);
-cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
+ switch(FIX2LONG(rb_hash_aref(switchhash_Analyze_Variables2_4,rb_obj_class(ame_curobj(self))))){case 0:   it=AmethystCore_anything(self ); FAILTEST(alt1_2); bind_aset(bind,0/*autovar*/,it);
+ break;
+case 1: goto alt1_2; break;
+}cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,0/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
    it=Analyze_Variables2_traverse(self ); FAILTEST(pass1); bind_aset(bind,1/*autovar*/,it);
 cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
@@ -300,8 +318,10 @@ it=bind_aget(bind,7/*autovar*/); bind_aset(bind,8/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-  it=c_Act; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(alt1_3); bind_aset(bind,9/*autovar*/,it);
-cstruct oldpass5=*ptr; int fail5=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
+ switch(FIX2LONG(rb_hash_aref(switchhash_Analyze_Variables2_5,rb_obj_class(ame_curobj(self))))){case 0:   it=AmethystCore_anything(self ); FAILTEST(alt1_3); bind_aset(bind,9/*autovar*/,it);
+ break;
+case 1: goto alt1_3; break;
+}cstruct oldpass5=*ptr; int fail5=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,9/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  it=rb_funcall(self,sy_Analyze_Variables2_src_dot_pred_56d4,1,bind);  bind_aset(bind,10/*pred*/,it);
 it=rb_funcall(self,sy_Analyze_Variables2_src_dot_pure_41d4,1,bind);  bind_aset(bind,11/*pure*/,it);
@@ -316,12 +336,16 @@ cstruct oldpass8=*ptr; int fail8=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,14/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  int oldpos4=ame_getpos(self);
 alt2_1: ame_setpos(self,oldpos4);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto pass8;}
- it=rb_funcall(self,sy_Analyze_Variables2__lp_,1,bind); FAILTEST(alt2_2); it=c_Local; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(alt2_2); bind_aset(bind,15/*autovar*/,it);
- 
+ it=rb_funcall(self,sy_Analyze_Variables2__lp_,1,bind); FAILTEST(alt2_2);switch(FIX2LONG(rb_hash_aref(switchhash_Analyze_Variables2_6,rb_obj_class(ame_curobj(self))))){case 0:   it=AmethystCore_anything(self ); FAILTEST(alt2_2); bind_aset(bind,15/*autovar*/,it);
+ break;
+case 1: goto alt2_2; break;
+} 
 ame_setcut(self,Qnil);goto accept2;
 alt2_2: ame_setpos(self,oldpos4);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto pass8;}
-  it=c_Args; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(alt2_3); bind_aset(bind,16/*autovar*/,it);
-cstruct oldpass9=*ptr; int fail9=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
+ switch(FIX2LONG(rb_hash_aref(switchhash_Analyze_Variables2_7,rb_obj_class(ame_curobj(self))))){case 0:   it=AmethystCore_anything(self ); FAILTEST(alt2_3); bind_aset(bind,16/*autovar*/,it);
+ break;
+case 1: goto alt2_3; break;
+}cstruct oldpass9=*ptr; int fail9=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,16/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  it=rb_ary_new3(0); bind_aset(bind,17/*autovar*/,it);
 int oldpos5; while(1){oldpos5=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break3); bind_aset(bind,18/*autovar*/,it);
@@ -364,8 +388,10 @@ it=bind_aget(bind,22/*autovar*/); bind_aset(bind,8/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
 alt1_3: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-  it=c_Result; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(alt1_4); bind_aset(bind,23/*autovar*/,it);
-cstruct oldpass10=*ptr; int fail10=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
+ switch(FIX2LONG(rb_hash_aref(switchhash_Analyze_Variables2_8,rb_obj_class(ame_curobj(self))))){case 0:   it=AmethystCore_anything(self ); FAILTEST(alt1_4); bind_aset(bind,23/*autovar*/,it);
+ break;
+case 1: goto alt1_4; break;
+}cstruct oldpass10=*ptr; int fail10=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,23/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  it=rb_funcall(self,sy_Analyze_Variables2_vars_eq__at_lo_cf02,1,bind);  bind_aset(bind,24/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass10);
@@ -377,8 +403,10 @@ it=bind_aget(bind,24/*autovar*/); bind_aset(bind,8/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
 alt1_4: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-  it=c_Comment; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(alt1_5); bind_aset(bind,25/*autovar*/,it);
-cstruct oldpass11=*ptr; int fail11=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
+ switch(FIX2LONG(rb_hash_aref(switchhash_Analyze_Variables2_9,rb_obj_class(ame_curobj(self))))){case 0:   it=AmethystCore_anything(self ); FAILTEST(alt1_5); bind_aset(bind,25/*autovar*/,it);
+ break;
+case 1: goto alt1_5; break;
+}cstruct oldpass11=*ptr; int fail11=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,25/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  int oldpos6; while(1){oldpos6=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break4); if (ame_getstop(self)!=Qnil){{oldpos6=ame_getpos(self);goto break4;} } } break4: ame_setstop(self,Qnil);  ame_setpos(self,oldpos6); it=rb_funcall(self,sy_Analyze_Variables2_Placehol_6875,1,bind);  bind_aset(bind,26/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass11);
@@ -395,17 +423,17 @@ ame_setcut(self,Qnil);goto accept1;
 return it;
 fail: return failobj; }VALUE cls_Resolve_Calls;
 VALUE AmethystCore_anything(VALUE self );
-VALUE Amethyst_clas(VALUE self ,VALUE);
 VALUE Amethyst_eof(VALUE self );
 VALUE Amethyst_spaces(VALUE self );
 VALUE Resolve_Calls_root(VALUE self );
 VALUE Resolve_Calls_traverse(VALUE self );
 VALUE Resolve_Calls_traverse_item(VALUE self );
 VALUE Resolve_Calls_visit(VALUE self );
-static VALUE c_AmethystAST;
-static VALUE c_Apply;
-static VALUE c_Array;
-static VALUE c_Rule;
+VALUE switchhash_Resolve_Calls_1;
+VALUE switchhash_Resolve_Calls_2;
+VALUE switchhash_Resolve_Calls_3;
+VALUE switchhash_Resolve_Calls_4;
+VALUE switchhash_Resolve_Calls_5;
 static VALUE sy_Resolve_Calls__at_changed_5352;
 static VALUE sy_Resolve_Calls__at_changed_b885;
 static VALUE sy_Resolve_Calls__at_changed_c681;
@@ -423,8 +451,10 @@ static VALUE sy_Resolve_Calls_super_na_3133;
 VALUE Resolve_Calls_root(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(5);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,0/*autovar*/,it);
-it=rb_funcall(self,sy_Resolve_Calls__at_grammar_8783,1,bind);  it=c_Rule; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(fail); bind_aset(bind,1/*autovar*/,it);
-cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
+it=rb_funcall(self,sy_Resolve_Calls__at_grammar_8783,1,bind); switch(FIX2LONG(rb_hash_aref(switchhash_Resolve_Calls_1,rb_obj_class(ame_curobj(self))))){case 0:   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,1/*autovar*/,it);
+ break;
+case 1: goto fail; break;
+}cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,1/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  it=rb_funcall(self,sy_Resolve_Calls_src_dot_name_80f3,1,bind);  bind_aset(bind,2/*autovar*/,it);
 it=rb_funcall(self,sy_Resolve_Calls__at_name_eq_bi_f53d,1,bind);   it=Resolve_Calls_traverse(self ); FAILTEST(pass1); bind_aset(bind,3/*autovar*/,it);
@@ -482,8 +512,10 @@ it=rb_funcall(self,sy_Resolve_Calls__at_changed_5352,1,bind); it=bind_aget(bind,
  
 ame_setcut(self,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-  it=c_Array; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(alt1_3); bind_aset(bind,2/*autovar*/,it);
-cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
+ switch(FIX2LONG(rb_hash_aref(switchhash_Resolve_Calls_4,rb_obj_class(ame_curobj(self))))){case 0:   it=AmethystCore_anything(self ); FAILTEST(alt1_3); bind_aset(bind,2/*autovar*/,it);
+ break;
+case 1: goto alt1_3; break;
+}cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,2/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  it=rb_ary_new3(0); bind_aset(bind,3/*ar*/,it);
 int oldpos2; while(1){oldpos2=ame_getpos(self);   it=Resolve_Calls_traverse_item(self ); FAILTEST(break1); bind_aset(bind,4/*it*/,it);
@@ -497,8 +529,10 @@ it=bind_aget(bind,5/*autovar*/); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
 alt1_3: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-  it=c_AmethystAST; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(alt1_4); bind_aset(bind,6/*autovar*/,it);
-cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
+ switch(FIX2LONG(rb_hash_aref(switchhash_Resolve_Calls_5,rb_obj_class(ame_curobj(self))))){case 0:   it=AmethystCore_anything(self ); FAILTEST(alt1_4); bind_aset(bind,6/*autovar*/,it);
+ break;
+case 1: goto alt1_4; break;
+}cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,6/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
    it=Resolve_Calls_traverse(self ); FAILTEST(pass2); bind_aset(bind,7/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass2);
@@ -520,8 +554,10 @@ return it;
 fail: return failobj; }
 VALUE Resolve_Calls_visit(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(11);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
- it=c_Apply; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(fail); bind_aset(bind,0/*autovar*/,it);
-it=bind_aget(bind,0/*autovar*/); bind_aset(bind,1/*autovar*/,it);
+switch(FIX2LONG(rb_hash_aref(switchhash_Resolve_Calls_2,rb_obj_class(ame_curobj(self))))){case 0:   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,0/*autovar*/,it);
+ break;
+case 1: goto fail; break;
+}it=bind_aget(bind,0/*autovar*/); bind_aset(bind,1/*autovar*/,it);
 int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
  it=bind_aget(bind,1/*autovar*/); bind_aset(bind,2/*autovar*/,it);
@@ -550,8 +586,10 @@ alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
  it=bind_aget(bind,1/*autovar*/); bind_aset(bind,6/*autovar*/,it);
 cstruct oldpass3=*ptr; int fail3=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,6/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
-  it=c_Array; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(pass3); bind_aset(bind,7/*name*/,it);
-it=rb_funcall(self,sy_Resolve_Calls_a_eq_Apply_lb__17e8,1,bind);  bind_aset(bind,8/*autovar*/,it);
+ switch(FIX2LONG(rb_hash_aref(switchhash_Resolve_Calls_3,rb_obj_class(ame_curobj(self))))){case 0:   it=AmethystCore_anything(self ); FAILTEST(pass3); bind_aset(bind,7/*name*/,it);
+ break;
+case 1: goto pass3; break;
+}it=rb_funcall(self,sy_Resolve_Calls_a_eq_Apply_lb__17e8,1,bind);  bind_aset(bind,8/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass3);
 	goto success3;
 	pass3: fail3=1;
@@ -582,16 +620,19 @@ fail: return failobj; }
 void Init_detect_variables2_c(){ 
  cls_Analyze_Variables2=rb_define_class("Analyze_Variables2",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2"))); 
 failobj=rb_eval_string("FAIL");
-c_Act=rb_const_get(rb_cObject, rb_intern("Act"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Act);
-c_AmethystAST=rb_const_get(rb_cObject, rb_intern("AmethystAST"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_AmethystAST);
-c_Args=rb_const_get(rb_cObject, rb_intern("Args"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Args);
-c_Array=rb_const_get(rb_cObject, rb_intern("Array"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Array);
-c_Comment=rb_const_get(rb_cObject, rb_intern("Comment"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Comment);
-c_Grammar=rb_const_get(rb_cObject, rb_intern("Grammar"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Grammar);
-c_Local=rb_const_get(rb_cObject, rb_intern("Local"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Local);
-c_Result=rb_const_get(rb_cObject, rb_intern("Result"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Result);
-c_Rule=rb_const_get(rb_cObject, rb_intern("Rule"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Rule);
-c_Strin=rb_const_get(rb_cObject, rb_intern("Strin"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Strin);
+switchhash_Analyze_Variables2_10=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Args\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Analyze_Variables2_10);;
+switchhash_Analyze_Variables2_11=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Strin\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Analyze_Variables2_11);;
+switchhash_Analyze_Variables2_12=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Array\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Analyze_Variables2_12);;
+switchhash_Analyze_Variables2_13=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Analyze_Variables2_13);;
+switchhash_Analyze_Variables2_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Grammar\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Analyze_Variables2_1);;
+switchhash_Analyze_Variables2_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Rule\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Analyze_Variables2_2);;
+switchhash_Analyze_Variables2_3=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Rule\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Analyze_Variables2_3);;
+switchhash_Analyze_Variables2_4=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Args\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Analyze_Variables2_4);;
+switchhash_Analyze_Variables2_5=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Analyze_Variables2_5);;
+switchhash_Analyze_Variables2_6=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Local\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Analyze_Variables2_6);;
+switchhash_Analyze_Variables2_7=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Args\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Analyze_Variables2_7);;
+switchhash_Analyze_Variables2_8=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Result\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Analyze_Variables2_8);;
+switchhash_Analyze_Variables2_9=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Comment\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Analyze_Variables2_9);;
 sy_Analyze_Variables2_Act_lb_bind_14b8=rb_intern("Analyze_Variables2_Act_lb_bind_14b8");
 sy_Analyze_Variables2_Placehol_6875=rb_intern("Analyze_Variables2_Placehol_6875");
 sy_Analyze_Variables2__append_lp__7352=rb_intern("Analyze_Variables2__append_lp__7352");
@@ -629,10 +670,11 @@ rb_define_method(cls_Analyze_Variables2,"visit",Analyze_Variables2_visit,0);
 
  cls_Resolve_Calls=rb_define_class("Resolve_Calls",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2"))); 
 failobj=rb_eval_string("FAIL");
-c_AmethystAST=rb_const_get(rb_cObject, rb_intern("AmethystAST"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_AmethystAST);
-c_Apply=rb_const_get(rb_cObject, rb_intern("Apply"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Apply);
-c_Array=rb_const_get(rb_cObject, rb_intern("Array"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Array);
-c_Rule=rb_const_get(rb_cObject, rb_intern("Rule"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Rule);
+switchhash_Resolve_Calls_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Rule\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Resolve_Calls_1);;
+switchhash_Resolve_Calls_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Resolve_Calls_2);;
+switchhash_Resolve_Calls_3=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Array\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Resolve_Calls_3);;
+switchhash_Resolve_Calls_4=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Array\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Resolve_Calls_4);;
+switchhash_Resolve_Calls_5=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Resolve_Calls_5);;
 sy_Resolve_Calls__at_changed_5352=rb_intern("Resolve_Calls__at_changed_5352");
 sy_Resolve_Calls__at_changed_b885=rb_intern("Resolve_Calls__at_changed_b885");
 sy_Resolve_Calls__at_changed_c681=rb_intern("Resolve_Calls__at_changed_c681");
@@ -651,4 +693,4 @@ rb_define_method(cls_Resolve_Calls,"root",Resolve_Calls_root,0);
 rb_define_method(cls_Resolve_Calls,"traverse",Resolve_Calls_traverse,0);
 rb_define_method(cls_Resolve_Calls,"traverse_item",Resolve_Calls_traverse_item,0);
 rb_define_method(cls_Resolve_Calls,"visit",Resolve_Calls_visit,0);
- rb_eval_string("testversiondetect_variables2('9cb8b327c5ca0ce5f1b4d1f1855c6cfc')");}
+ rb_eval_string("testversiondetect_variables2('021a5ab70f291672308250f46a44a436')");}

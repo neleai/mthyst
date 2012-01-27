@@ -79,6 +79,9 @@ end
 def Dataflow_Seq_lb_src_dot__6f68(bind)
 Seq[src.body,Act[Local["_result",src.bnding]]]
 end
+def Dataflow_Switch_C_9dcd(bind)
+Switch_Clas[{:ary=>bind[16],:act=>src.act,:defs=>src.defs,:first=>src.first,:header=>src.header,:init=>src.init}]
+end
 def Dataflow_Switch_lb__le__c402(bind)
 Switch[{:ary=>bind[16],:act=>src.act,:defs=>src.defs,:first=>src.first,:header=>src.header,:init=>src.init}]
 end
@@ -339,15 +342,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'d4797a30e9c17b4ffd9a347e1290267f'
+'e8fe12c845b67491809125a9bfb752a6'
 end
 def dataflow_ssa_source_hash
-'4eae8274b3b147cb25336362a5766343'
+'eb7b89189f56300db124640dd5d19d84'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'749027652386cad3c340de3de816fd62'
+'68680ef5b03aebd17947e3f1882d3e3e'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/dataflow_ssa_c"

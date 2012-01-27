@@ -143,7 +143,6 @@ class First_Dataflow < Amethyst
   end
 
 	def empty?(el)
-		#puts "emp",$sizedf.analyze(el).size,el.inspect
 		
 		$sizedf.analyze(el).size==0
 	end
@@ -195,8 +194,7 @@ class ClasSwitch_Dataflow < First_Dataflow
 	end
 end
 amethyst First_Dataflow {
-	value =  .:x  {depends(x);#puts "#{x.inspect} #{@@vals[x].inspect}"; 
-@@vals[x]}
+	value =  .:x  {depends(x);@@vals[x]}
 
 
 	root = .:x analyze(x)
@@ -314,7 +312,7 @@ amethyst Detect_Switch < Detect_First {
  										 | Switch[ .* @ary:ary ] .*:rest { Switch[{:act=>"*ame_curstr(self)",:ary=>ary.map{|p,a| [p,Seq[*(prefix+[a]+rest)]]}}] }
 					 	         | .*:ary {Seq[*(prefix+ary)]}
 
- combine_or(list) = Switch[.* @ary:ary] {[]}:newlist
+ combine_or(list) = Switch[.* @ary:ary] {[]}:newlist 
                            {list.each{|p,a| ary.each{|p2,a2| newlist << [p&p2,a+[a2]] if p&p2!=CharLattice.bottom}}}
                            combine_or(newlist)
                   | .:n {list.map{|p,a| [p,a+[n]]}}:newlist                                  

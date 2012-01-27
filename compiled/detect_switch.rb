@@ -143,7 +143,6 @@ class First_Dataflow < Amethyst
   end
 
 	def empty?(el)
-		#puts "emp",$sizedf.analyze(el).size,el.inspect
 		
 		$sizedf.analyze(el).size==0
 	end
@@ -232,9 +231,8 @@ end
 def First_Dataflow_bind_lb_4_rb__dot__2651(bind)
 bind[4].is_a?(lattice)? bind[4] & bind[5] : bind[5]
 end
-def First_Dataflow_depends_lp__0807(bind)
-depends(bind[0]);#puts "#{bind[0].inspect} #{@vals[bind[0]].inspect}"; 
-@vals[bind[0]]
+def First_Dataflow_depends_lp__5009(bind)
+depends(bind[0]);@vals[bind[0]]
 end
 def First_Dataflow_empty(bind)
 empty?(bind[15]) ? lattice.top|lattice.bottom : lattice.top
@@ -689,15 +687,15 @@ end
 
 
 def detect_switch_compiled_by
-'d4797a30e9c17b4ffd9a347e1290267f'
+'e8fe12c845b67491809125a9bfb752a6'
 end
 def detect_switch_source_hash
-'c26a33a0b684b81f6f28404447cd21c5'
+'33bf4c41708b53bbba295975a1b254fc'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'fb10f004e33bdaf4cf318022a85c66ec'
+'58e0f87e72c0a867cc7ec3e27f482293'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

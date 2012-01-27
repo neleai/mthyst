@@ -1,15 +1,15 @@
 #include "cthyst.h"
 VALUE cls_Constant_Propagator;
 VALUE AmethystCore_anything(VALUE self );
-VALUE Amethyst_clas(VALUE self ,VALUE);
 VALUE Amethyst_eof(VALUE self );
 VALUE Constant_Propagator_root(VALUE self );
 VALUE Constant_Propagator_step(VALUE self ,VALUE a0);
-static VALUE c_Act;
-static VALUE c_Bind;
-static VALUE c_CAct;
-static VALUE c_Lambda;
-static VALUE c_Local;
+VALUE switchhash_Constant_Propagator_1;
+VALUE switchhash_Constant_Propagator_2;
+VALUE switchhash_Constant_Propagator_3;
+VALUE switchhash_Constant_Propagator_4;
+VALUE switchhash_Constant_Propagator_5;
+VALUE switchhash_Constant_Propagator_6;
 static VALUE sy_Constant_Propagator_Constant_1f68;
 static VALUE sy_Constant_Propagator_Constant_8840;
 static VALUE sy_Constant_Propagator_Constant_bf42;
@@ -31,8 +31,10 @@ cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=bind_aget(bind,1/*autovar*/);ptr->len=1;
  int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto pass1;}
-  it=c_Local; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(alt1_2); bind_aset(bind,2/*autovar*/,it);
-cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
+ switch(FIX2LONG(rb_hash_aref(switchhash_Constant_Propagator_1,rb_obj_class(ame_curobj(self))))){case 0:   it=AmethystCore_anything(self ); FAILTEST(alt1_2); bind_aset(bind,2/*autovar*/,it);
+ break;
+case 1: goto alt1_2; break;
+}cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,2/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  int oldpos2; while(1){oldpos2=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break1); if (ame_getstop(self)!=Qnil){{oldpos2=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos2); it=rb_funcall(self,sy_Constant_Propagator_a_eq_Consta_dc3b,1,bind);  bind_aset(bind,3/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass2);
@@ -44,8 +46,10 @@ it=bind_aget(bind,3/*autovar*/); bind_aset(bind,4/*autovar*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto pass1;}
-  it=c_Bind; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(alt1_3); bind_aset(bind,5/*autovar*/,it);
-cstruct oldpass3=*ptr; int fail3=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
+ switch(FIX2LONG(rb_hash_aref(switchhash_Constant_Propagator_2,rb_obj_class(ame_curobj(self))))){case 0:   it=AmethystCore_anything(self ); FAILTEST(alt1_3); bind_aset(bind,5/*autovar*/,it);
+ break;
+case 1: goto alt1_3; break;
+}cstruct oldpass3=*ptr; int fail3=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,5/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
    it=AmethystCore_anything(self ); FAILTEST(pass3); bind_aset(bind,6/*expr*/,it);
  it=bind_aget(bind,6/*expr*/); arg0=it; it=rb_funcall(self,sy_valof,1,arg0); FAILTEST(pass3); bind_aset(bind,7/*autovar*/,it);
@@ -58,13 +62,17 @@ it=bind_aget(bind,7/*autovar*/); bind_aset(bind,4/*autovar*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
 alt1_3: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto pass1;}
-  it=c_Act; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(alt1_4); bind_aset(bind,8/*autovar*/,it);
-cstruct oldpass4=*ptr; int fail4=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
+ switch(FIX2LONG(rb_hash_aref(switchhash_Constant_Propagator_3,rb_obj_class(ame_curobj(self))))){case 0:   it=AmethystCore_anything(self ); FAILTEST(alt1_4); bind_aset(bind,8/*autovar*/,it);
+ break;
+case 1: goto alt1_4; break;
+}cstruct oldpass4=*ptr; int fail4=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,8/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  int oldpos3=ame_getpos(self);
 alt2_1: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto pass4;}
-  it=c_Local; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(alt2_2); bind_aset(bind,9/*autovar*/,it);
-cstruct oldpass5=*ptr; int fail5=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
+ switch(FIX2LONG(rb_hash_aref(switchhash_Constant_Propagator_4,rb_obj_class(ame_curobj(self))))){case 0:   it=AmethystCore_anything(self ); FAILTEST(alt2_2); bind_aset(bind,9/*autovar*/,it);
+ break;
+case 1: goto alt2_2; break;
+}cstruct oldpass5=*ptr; int fail5=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,9/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  int oldpos4; while(1){oldpos4=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break2); if (ame_getstop(self)!=Qnil){{oldpos4=ame_getpos(self);goto break2;} } } break2: ame_setstop(self,Qnil);  ame_setpos(self,oldpos4);  it=rb_funcall(self,sy_Constant_Propagator_src_25d9,1,bind);  arg0=it; it=rb_funcall(self,sy_valof,1,arg0); FAILTEST(pass5); bind_aset(bind,10/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass5);
@@ -76,8 +84,10 @@ it=bind_aget(bind,10/*autovar*/); bind_aset(bind,11/*autovar*/,it);
  
 ame_setcut(self,Qnil);goto accept2;
 alt2_2: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto pass4;}
-  it=c_Lambda; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(alt2_3); bind_aset(bind,12/*autovar*/,it);
-cstruct oldpass6=*ptr; int fail6=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
+ switch(FIX2LONG(rb_hash_aref(switchhash_Constant_Propagator_5,rb_obj_class(ame_curobj(self))))){case 0:   it=AmethystCore_anything(self ); FAILTEST(alt2_3); bind_aset(bind,12/*autovar*/,it);
+ break;
+case 1: goto alt2_3; break;
+}cstruct oldpass6=*ptr; int fail6=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,12/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  int oldpos5; while(1){oldpos5=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break3); if (ame_getstop(self)!=Qnil){{oldpos5=ame_getpos(self);goto break3;} } } break3: ame_setstop(self,Qnil);  ame_setpos(self,oldpos5); it=rb_funcall(self,sy_Constant_Propagator_Constant_8840,1,bind);  bind_aset(bind,13/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass6);
@@ -99,8 +109,10 @@ it=bind_aget(bind,11/*autovar*/); bind_aset(bind,4/*autovar*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
 alt1_4: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto pass1;}
-  it=c_CAct; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(alt1_5); bind_aset(bind,14/*autovar*/,it);
-cstruct oldpass7=*ptr; int fail7=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
+ switch(FIX2LONG(rb_hash_aref(switchhash_Constant_Propagator_6,rb_obj_class(ame_curobj(self))))){case 0:   it=AmethystCore_anything(self ); FAILTEST(alt1_5); bind_aset(bind,14/*autovar*/,it);
+ break;
+case 1: goto alt1_5; break;
+}cstruct oldpass7=*ptr; int fail7=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,14/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  int oldpos6; while(1){oldpos6=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break4); if (ame_getstop(self)!=Qnil){{oldpos6=ame_getpos(self);goto break4;} } } break4: ame_setstop(self,Qnil);  ame_setpos(self,oldpos6); it=rb_funcall(self,sy_Constant_Propagator_src_25d9,1,bind);  bind_aset(bind,15/*val*/,it);
 it=rb_funcall(self,sy_Constant_Propagator_Constant_1f68,1,bind);  bind_aset(bind,16/*autovar*/,it);
@@ -128,18 +140,17 @@ it=bind_aget(bind,4/*autovar*/); bind_aset(bind,17/*_result*/,it);
 return it;
 fail: return failobj; }VALUE cls_Constant_Traverser;
 VALUE AmethystCore_anything(VALUE self );
-VALUE Amethyst_clas(VALUE self ,VALUE);
 VALUE Amethyst_eof(VALUE self );
 VALUE Constant_Traverser_root(VALUE self );
 VALUE Constant_Traverser_traverse(VALUE self );
 VALUE Constant_Traverser_traverse_item(VALUE self );
 VALUE Constant_Traverser_visit(VALUE self );
-static VALUE c_Act;
-static VALUE c_AmethystAST;
-static VALUE c_Array;
-static VALUE c_Bind;
-static VALUE c_Local;
-static VALUE c_Result;
+VALUE switchhash_Constant_Traverser_1;
+VALUE switchhash_Constant_Traverser_2;
+VALUE switchhash_Constant_Traverser_3;
+VALUE switchhash_Constant_Traverser_4;
+VALUE switchhash_Constant_Traverser_5;
+VALUE switchhash_Constant_Traverser_6;
 static VALUE sy_Constant_Traverser_Bind_lb_src_66c4;
 static VALUE sy_Constant_Traverser__at_changed_5352;
 static VALUE sy_Constant_Traverser__at_changed_b885;
@@ -203,8 +214,10 @@ it=rb_funcall(self,sy_Constant_Traverser__at_changed_5352,1,bind); it=bind_aget(
  
 ame_setcut(self,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-  it=c_Array; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(alt1_3); bind_aset(bind,2/*autovar*/,it);
-cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
+ switch(FIX2LONG(rb_hash_aref(switchhash_Constant_Traverser_5,rb_obj_class(ame_curobj(self))))){case 0:   it=AmethystCore_anything(self ); FAILTEST(alt1_3); bind_aset(bind,2/*autovar*/,it);
+ break;
+case 1: goto alt1_3; break;
+}cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,2/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  it=rb_ary_new3(0); bind_aset(bind,3/*ar*/,it);
 int oldpos2; while(1){oldpos2=ame_getpos(self);   it=Constant_Traverser_traverse_item(self ); FAILTEST(break1); bind_aset(bind,4/*it*/,it);
@@ -218,8 +231,10 @@ it=bind_aget(bind,5/*autovar*/); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
 alt1_3: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-  it=c_AmethystAST; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(alt1_4); bind_aset(bind,6/*autovar*/,it);
-cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
+ switch(FIX2LONG(rb_hash_aref(switchhash_Constant_Traverser_6,rb_obj_class(ame_curobj(self))))){case 0:   it=AmethystCore_anything(self ); FAILTEST(alt1_4); bind_aset(bind,6/*autovar*/,it);
+ break;
+case 1: goto alt1_4; break;
+}cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,6/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
    it=Constant_Traverser_traverse(self ); FAILTEST(pass2); bind_aset(bind,7/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass2);
@@ -243,8 +258,10 @@ VALUE Constant_Traverser_visit(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(
 
 int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-  it=c_Bind; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(alt1_2); bind_aset(bind,0/*autovar*/,it);
-cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
+ switch(FIX2LONG(rb_hash_aref(switchhash_Constant_Traverser_1,rb_obj_class(ame_curobj(self))))){case 0:   it=AmethystCore_anything(self ); FAILTEST(alt1_2); bind_aset(bind,0/*autovar*/,it);
+ break;
+case 1: goto alt1_2; break;
+}cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,0/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
    it=Constant_Traverser_traverse_item(self ); FAILTEST(pass1); bind_aset(bind,1/*expr*/,it);
 it=rb_funcall(self,sy_Constant_Traverser_Bind_lb_src_66c4,1,bind);  bind_aset(bind,2/*autovar*/,it);
@@ -257,8 +274,10 @@ it=bind_aget(bind,2/*autovar*/); bind_aset(bind,3/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
 alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-  it=c_Act; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(alt1_3); bind_aset(bind,4/*autovar*/,it);
-cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
+ switch(FIX2LONG(rb_hash_aref(switchhash_Constant_Traverser_2,rb_obj_class(ame_curobj(self))))){case 0:   it=AmethystCore_anything(self ); FAILTEST(alt1_3); bind_aset(bind,4/*autovar*/,it);
+ break;
+case 1: goto alt1_3; break;
+}cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,4/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  int oldpos2; while(1){oldpos2=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break1); if (ame_getstop(self)!=Qnil){{oldpos2=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos2); it=rb_funcall(self,sy_Constant_Traverser_src_25d9,1,bind);  bind_aset(bind,5/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass2);
@@ -270,8 +289,10 @@ it=bind_aget(bind,5/*autovar*/); bind_aset(bind,3/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
 alt1_3: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-  it=c_Result; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(alt1_4); bind_aset(bind,6/*autovar*/,it);
-cstruct oldpass3=*ptr; int fail3=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
+ switch(FIX2LONG(rb_hash_aref(switchhash_Constant_Traverser_3,rb_obj_class(ame_curobj(self))))){case 0:   it=AmethystCore_anything(self ); FAILTEST(alt1_4); bind_aset(bind,6/*autovar*/,it);
+ break;
+case 1: goto alt1_4; break;
+}cstruct oldpass3=*ptr; int fail3=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,6/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  int oldpos3; while(1){oldpos3=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break2); if (ame_getstop(self)!=Qnil){{oldpos3=ame_getpos(self);goto break2;} } } break2: ame_setstop(self,Qnil);  ame_setpos(self,oldpos3); it=rb_funcall(self,sy_Constant_Traverser_src_25d9,1,bind);  bind_aset(bind,7/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass3);
@@ -283,8 +304,10 @@ it=bind_aget(bind,7/*autovar*/); bind_aset(bind,3/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
 alt1_4: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-  it=c_Local; arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(alt1_5); bind_aset(bind,8/*autovar*/,it);
-cstruct oldpass4=*ptr; int fail4=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
+ switch(FIX2LONG(rb_hash_aref(switchhash_Constant_Traverser_4,rb_obj_class(ame_curobj(self))))){case 0:   it=AmethystCore_anything(self ); FAILTEST(alt1_5); bind_aset(bind,8/*autovar*/,it);
+ break;
+case 1: goto alt1_5; break;
+}cstruct oldpass4=*ptr; int fail4=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,8/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  int oldpos4; while(1){oldpos4=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break3); if (ame_getstop(self)!=Qnil){{oldpos4=ame_getpos(self);goto break3;} } } break3: ame_setstop(self,Qnil);  ame_setpos(self,oldpos4); it=rb_funcall(self,sy_Constant_Traverser__lp__at_consts_080b,1,bind);  bind_aset(bind,9/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass4);
@@ -303,11 +326,12 @@ fail: return failobj; }
 void Init_constant_propagation_c(){ 
  cls_Constant_Propagator=rb_define_class("Constant_Propagator",rb_const_get(rb_cObject,rb_intern("Amethyst"))); 
 failobj=rb_eval_string("FAIL");
-c_Act=rb_const_get(rb_cObject, rb_intern("Act"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Act);
-c_Bind=rb_const_get(rb_cObject, rb_intern("Bind"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Bind);
-c_CAct=rb_const_get(rb_cObject, rb_intern("CAct"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_CAct);
-c_Lambda=rb_const_get(rb_cObject, rb_intern("Lambda"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Lambda);
-c_Local=rb_const_get(rb_cObject, rb_intern("Local"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Local);
+switchhash_Constant_Propagator_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Local\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Constant_Propagator_1);;
+switchhash_Constant_Propagator_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Bind\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Constant_Propagator_2);;
+switchhash_Constant_Propagator_3=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Constant_Propagator_3);;
+switchhash_Constant_Propagator_4=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Local\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Constant_Propagator_4);;
+switchhash_Constant_Propagator_5=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Lambda\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Constant_Propagator_5);;
+switchhash_Constant_Propagator_6=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=CAct\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Constant_Propagator_6);;
 sy_Constant_Propagator_Constant_1f68=rb_intern("Constant_Propagator_Constant_1f68");
 sy_Constant_Propagator_Constant_8840=rb_intern("Constant_Propagator_Constant_8840");
 sy_Constant_Propagator_Constant_bf42=rb_intern("Constant_Propagator_Constant_bf42");
@@ -320,12 +344,12 @@ rb_define_method(cls_Constant_Propagator,"step",Constant_Propagator_step,1);
 
  cls_Constant_Traverser=rb_define_class("Constant_Traverser",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2"))); 
 failobj=rb_eval_string("FAIL");
-c_Act=rb_const_get(rb_cObject, rb_intern("Act"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Act);
-c_AmethystAST=rb_const_get(rb_cObject, rb_intern("AmethystAST"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_AmethystAST);
-c_Array=rb_const_get(rb_cObject, rb_intern("Array"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Array);
-c_Bind=rb_const_get(rb_cObject, rb_intern("Bind"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Bind);
-c_Local=rb_const_get(rb_cObject, rb_intern("Local"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Local);
-c_Result=rb_const_get(rb_cObject, rb_intern("Result"));rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),c_Result);
+switchhash_Constant_Traverser_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Bind\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Constant_Traverser_1);;
+switchhash_Constant_Traverser_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Constant_Traverser_2);;
+switchhash_Constant_Traverser_3=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Result\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Constant_Traverser_3);;
+switchhash_Constant_Traverser_4=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Local\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Constant_Traverser_4);;
+switchhash_Constant_Traverser_5=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Array\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Constant_Traverser_5);;
+switchhash_Constant_Traverser_6=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Constant_Traverser_6);;
 sy_Constant_Traverser_Bind_lb_src_66c4=rb_intern("Constant_Traverser_Bind_lb_src_66c4");
 sy_Constant_Traverser__at_changed_5352=rb_intern("Constant_Traverser__at_changed_5352");
 sy_Constant_Traverser__at_changed_b885=rb_intern("Constant_Traverser__at_changed_b885");
@@ -342,4 +366,4 @@ rb_define_method(cls_Constant_Traverser,"root",Constant_Traverser_root,0);
 rb_define_method(cls_Constant_Traverser,"traverse",Constant_Traverser_traverse,0);
 rb_define_method(cls_Constant_Traverser,"traverse_item",Constant_Traverser_traverse_item,0);
 rb_define_method(cls_Constant_Traverser,"visit",Constant_Traverser_visit,0);
- rb_eval_string("testversionconstant_propagation('1b8ef1301ab2b13ffe5fcbee96d5fac9')");}
+ rb_eval_string("testversionconstant_propagation('262c57aa22667af5aadd82de8d2f28bb')");}
