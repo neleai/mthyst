@@ -153,7 +153,7 @@ failobj=rb_eval_string(\"FAIL\");
 									{@@defs<<@defs if @defs}
 									{@@header<<@header if @header}
 									{@@init<<@init if @init}
-									{"switch((unsigned char)#{@act}){"}:s
+									{"switch((unsigned char)*ame_curstr(self)){"}:s
 										( [.:c trans:t] {s+=c.cases(@first) + " #{t} break;\n"})*
 									{s+"}"}
 								]

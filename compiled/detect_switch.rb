@@ -500,17 +500,17 @@ end
 def Detect_Switch_Seq_lb__ti__lp_bi_f6a5(bind)
 Seq[*(bind[26]+bind[30])]
 end
-def Detect_Switch_Switch_lb__le__2aaf(bind)
-Switch[{:act=>"*ame_curstr(self)",:ary=>bind[4].map{|p,a| [p,Seq[*(bind[1]+[a]+bind[7])]]}}] 
+def Detect_Switch_Switch_lb__le__7d0c(bind)
+Switch[{:ary=>bind[4].map{|p,a| [p,Seq[*(bind[1]+[a]+bind[7])]]}}] 
 end
-def Detect_Switch_Switch_lb__le__4bfd(bind)
-Switch[{:act=>"*ame_curstr(self)",:ary=>bind[30].map{|p,a| [p,Seq[*(bind[26]+[a]+bind[33])]]}}] 
+def Detect_Switch_Switch_lb__le__9bd8(bind)
+Switch[{:ary=>bind[47].map{|p,a| [p,Or[*a].dup.normalize]}}]
 end
-def Detect_Switch_Switch_lb__le__ac05(bind)
-Switch[{:act=>"*ame_curstr(self)",:ary=>bind[47].map{|p,a| [p,Or[*a].dup.normalize]}}]
+def Detect_Switch_Switch_lb__le__d0f3(bind)
+Switch[{:ary=>bind[3].map{|p,a| [p,Or[*a].dup.normalize]}}]
 end
-def Detect_Switch_Switch_lb__le__f30c(bind)
-Switch[{:act=>"*ame_curstr(self)",:ary=>bind[3].map{|p,a| [p,Or[*a].dup.normalize]}}]
+def Detect_Switch_Switch_lb__le__f9e5(bind)
+Switch[{:ary=>bind[30].map{|p,a| [p,Seq[*(bind[26]+[a]+bind[33])]]}}] 
 end
 def Detect_Switch__append_lp__58ed(bind)
 _append(bind[22],bind[23])
@@ -601,17 +601,17 @@ if bind[3]
             src
           end
 end
-def Detect_Switch_s_eq_Switch_3f47(bind)
-s=Switch[{:act=>"*ame_curstr(self)",:ary=>[[bind[5],Many[bind[17]]],[~bind[5],Apply["fails"]]]}] 
+def Detect_Switch_s_eq_Switch_01d5(bind)
+s=Switch[{:ary=>[[bind[5],Many[bind[17]]],[~bind[5],Apply["fails"]]]}] 
 end
-def Detect_Switch_s_eq_Switch_5558(bind)
-s=Switch[{:act=>"*ame_curstr(self)",:ary=>[[bind[5],src],[~bind[5],Apply["fails"]]]}] 
+def Detect_Switch_s_eq_Switch_a4f3(bind)
+s=Switch[{:ary=>[[bind[5],Seq[Apply["anything"],Apply["_seq",CAct[bind[11][1..-1]]]]],[~bind[5],Apply["fails"]]]}]
 end
-def Detect_Switch_s_eq_Switch_904b(bind)
-s=Switch[{:act=>"*ame_curstr(self)",:ary=>[[bind[5],Apply["anything"]],[~bind[5],Apply["fails"]]]}]
+def Detect_Switch_s_eq_Switch_b7fc(bind)
+s=Switch[{:ary=>[[bind[5],Apply["anything"]],[~bind[5],Apply["fails"]]]}]
 end
-def Detect_Switch_s_eq_Switch_9e88(bind)
-s=Switch[{:act=>"*ame_curstr(self)",:ary=>[[bind[5],Seq[Apply["anything"],Apply["_seq",CAct[bind[11][1..-1]]]]],[~bind[5],Apply["fails"]]]}]
+def Detect_Switch_s_eq_Switch_eb4f(bind)
+s=Switch[{:ary=>[[bind[5],src],[~bind[5],Apply["fails"]]]}] 
 end
 def Detect_Switch_src_25d9(bind)
 src
@@ -631,11 +631,23 @@ end
 
 class Detect_ClasSwitch < Detect_First
 
+def Detect_ClasSwitch_Seq_lb__ti__lp_bi_99e6(bind)
+Seq[*(bind[1]+bind[4])]
+end
+def Detect_ClasSwitch_Switch_C_4c94(bind)
+Switch_Clas[{:ary=>bind[4].map{|p,a| [p,Seq[*(bind[1]+[a]+bind[7])]]}}] 
+end
 def Detect_ClasSwitch_Switch_C_984d(bind)
 Switch_Clas[[ClasLattice[bind[4][0]],Apply["anything"]],[ClasLattice[Object],Apply["fails"]]].freeze 
 end
+def Detect_ClasSwitch__append_lp__6f56(bind)
+_append(bind[5],bind[6])
+end
 def Detect_ClasSwitch__append_lp__7352(bind)
 _append(bind[4],bind[7])
+end
+def Detect_ClasSwitch__append_lp__b375(bind)
+_append(bind[8],bind[9])
 end
 def Detect_ClasSwitch__append_lp__b494(bind)
 _append(bind[0],bind[10])
@@ -661,6 +673,9 @@ end
 def Detect_ClasSwitch__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
+def Detect_ClasSwitch_bind_lb_1_rb__pl__42be(bind)
+bind[1]+[bind[0]]
+end
 def Detect_ClasSwitch_bind_lb_3_rb__lt__bb51(bind)
 bind[3]<<bind[4]
 end
@@ -675,6 +690,9 @@ end
 def Detect_ClasSwitch_src_25d9(bind)
 src
 end
+def Detect_ClasSwitch_src_dot_ary_d5cf(bind)
+src.ary
+end
 def Detect_ClasSwitch_src_dot_rule_5acf(bind)
 src.rules
 end
@@ -687,15 +705,15 @@ end
 
 
 def detect_switch_compiled_by
-'e8fe12c845b67491809125a9bfb752a6'
+'0e002fe643473735089a694b645bf3c6'
 end
 def detect_switch_source_hash
-'33bf4c41708b53bbba295975a1b254fc'
+'f8c1cdcf45f78860ca2354d097240a95'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'58e0f87e72c0a867cc7ec3e27f482293'
+'106f41da5718c33ea8e66538474e76e0'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"
