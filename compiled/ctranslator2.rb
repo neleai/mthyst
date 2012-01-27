@@ -270,9 +270,6 @@ end
 def AmethystCTranslator_bind_lb_0_rb__pl__c1a5(bind)
 bind[0]+=bind[8]*""
 end
-def AmethystCTranslator_bind_lb_10_rb__b91b(bind)
-bind[10]+="next h[k]=#{bind[40]} if k<=#{bind[90].ary[0]}\\n"
-end
 def AmethystCTranslator_bind_lb_1_rb__lt__2f50(bind)
 bind[1]<<bind[6][0];bind[2]<<bind[6][1];bind[0]<<bind[6][2]
 end
@@ -291,6 +288,9 @@ bind[60]+=1
 end
 def AmethystCTranslator_bind_lb_7_rb__ti__a05a(bind)
 bind[7]*""
+end
+def AmethystCTranslator_bind_lb_90_rb__bf39(bind)
+bind[90].ary.each{|al| bind[10]+="next h[k]=#{bind[40]} if k<=#{al}\\n";bind[9]+="case #{bind[40]}:";bind[40]+=1}
 end
 def AmethystCTranslator_bind_lb_9_rb__eq__1a30(bind)
 bind[9]="#{src.name}.create( {#{src.vars.size.times.map{|i| ":#{src.varnames[i]}=>#{rbbget(src.vars[i])}" }.sort*","} })"
@@ -321,8 +321,8 @@ end
 def AmethystCTranslator_bind_lb_9_rb__pl__9cee(bind)
 bind[9]+"}"
 end
-def AmethystCTranslator_bind_lb_9_rb__pl__cb57(bind)
-bind[9]+="case #{bind[40]}:; #{bind[7]} break;\n"
+def AmethystCTranslator_bind_lb_9_rb__pl__dbc8(bind)
+bind[9]+="; #{bind[7]} break;\n"
 end
 def AmethystCTranslator_h_eq__dq_VALUE_394b(bind)
 h="VALUE #{bind[0]}(VALUE self,VALUE bind)"
@@ -372,15 +372,15 @@ end
 
 
 def ctranslator2_compiled_by
-'c4915e273f5d5e446e8681893869237a'
+'c16f40af7c3d1f248f4135f2d0062d1d'
 end
 def ctranslator2_source_hash
-'0bbe174e08376a1225a56684f516f4b9'
+'fd61ae0c3a2594ec1f116f8bd5835314'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'efb3e68f712e5ba2d67375d60d20be46'
+'365b14c6e265af1f6d0321c473bc0c79'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"
