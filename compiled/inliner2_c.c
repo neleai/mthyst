@@ -1,7 +1,6 @@
 #include "cthyst.h"
 VALUE cls_DetectCalls;
 VALUE AmethystCore_anything(VALUE self );
-VALUE Amethyst_eof(VALUE self );
 VALUE DetectCalls_root(VALUE self );
 VALUE DetectCalls_traverse(VALUE self );
 VALUE DetectCalls_traverse_item(VALUE self );
@@ -21,7 +20,7 @@ switch(FIX2LONG(rb_hash_aref(switchhash_DetectCalls_1,rb_obj_class(ame_curobj(se
 cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,0/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  it=rb_funcall(self,sy_DetectCalls__at_calls_eq__le__39e9,1,bind);   it=DetectCalls_traverse(self ); FAILTEST(pass1);it=rb_funcall(self,sy_DetectCalls__at_calls_7f81,1,bind);  bind_aset(bind,1/*autovar*/,it);
-  it=Amethyst_eof(self ); FAILTEST(pass1);
+it=Qnil;if (ptr->pos<ptr->len) goto pass1;
 	goto success1;
 	pass1: fail1=1;
 	success1: *ptr=oldpass1;
@@ -43,13 +42,13 @@ cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
  it=rb_ary_new3(0); bind_aset(bind,2/*autovar*/,it);
 int oldpos2; while(1){oldpos2=ame_getpos(self);   it=DetectCalls_traverse_item(self ); FAILTEST(break2); bind_aset(bind,3/*autovar*/,it);
 it=rb_funcall(self,sy_DetectCalls__append_lp__4de3,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos2=ame_getpos(self);goto break2;} } } break2: ame_setstop(self,Qnil);  ame_setpos(self,oldpos2); it=bind_aget(bind,2/*autovar*/); bind_aset(bind,4/*autovar*/,it);
-  it=Amethyst_eof(self ); FAILTEST(pass2);
+it=Qnil;if (ptr->pos<ptr->len) goto pass2;
 	goto success2;
 	pass2: fail2=1;
 	success2: *ptr=oldpass2;
 	if(fail2) goto pass1;
 it=bind_aget(bind,4/*autovar*/); bind_aset(bind,5/*autovar*/,it);
-  it=Amethyst_eof(self ); FAILTEST(pass1);
+it=Qnil;if (ptr->pos<ptr->len) goto pass1;
 	goto success1;
 	pass1: fail1=1;
 	success1: *ptr=oldpass1;
@@ -70,7 +69,7 @@ alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
 cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,1/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
    it=DetectCalls_traverse(self ); FAILTEST(pass1); bind_aset(bind,2/*autovar*/,it);
-  it=Amethyst_eof(self ); FAILTEST(pass1);
+it=Qnil;if (ptr->pos<ptr->len) goto pass1;
 	goto success1;
 	pass1: fail1=1;
 	success1: *ptr=oldpass1;
@@ -97,7 +96,7 @@ cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
  it=rb_ary_new3(0); bind_aset(bind,4/*autovar*/,it);
 int oldpos3; while(1){oldpos3=ame_getpos(self);   it=DetectCalls_traverse_item(self ); FAILTEST(break1); bind_aset(bind,5/*autovar*/,it);
 it=rb_funcall(self,sy_DetectCalls__append_lp__088f,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos3=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos3); it=bind_aget(bind,4/*autovar*/); bind_aset(bind,6/*autovar*/,it);
-  it=Amethyst_eof(self ); FAILTEST(pass2);
+it=Qnil;if (ptr->pos<ptr->len) goto pass2;
 	goto success2;
 	pass2: fail2=1;
 	success2: *ptr=oldpass2;
@@ -134,7 +133,7 @@ cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,0/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
    it=AmethystCore_anything(self ); FAILTEST(pass1); bind_aset(bind,1/*name*/,it);
 int oldpos1; while(1){oldpos1=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break1); if (ame_getstop(self)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos1); it=rb_funcall(self,sy_DetectCalls__at_calls_lb_b_e709,1,bind);  bind_aset(bind,2/*autovar*/,it);
-  it=Amethyst_eof(self ); FAILTEST(pass1);
+it=Qnil;if (ptr->pos<ptr->len) goto pass1;
 	goto success1;
 	pass1: fail1=1;
 	success1: *ptr=oldpass1;
@@ -146,7 +145,6 @@ case 1/*Object*/:; goto fail; break;
 return it;
 fail: return failobj; }VALUE cls_Inliner2;
 VALUE AmethystCore_anything(VALUE self );
-VALUE Amethyst_eof(VALUE self );
 VALUE Inliner2_root(VALUE self );
 VALUE Inliner2_traverse(VALUE self );
 VALUE Inliner2_traverse_item(VALUE self );
@@ -179,7 +177,7 @@ it=bind_aget(bind,0/*from*/); bind_aset(bind,2/*autovar*/,it);
 cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=bind_aget(bind,2/*autovar*/);ptr->len=1;
  switch(FIX2LONG(rb_hash_aref(switchhash_Inliner2_1,rb_obj_class(ame_curobj(self))))){case 0/*Rule*/:;   it=AmethystCore_anything(self ); FAILTEST(pass1); bind_aset(bind,3/*autovar*/,it);
-  it=Amethyst_eof(self ); FAILTEST(pass1); break;
+it=Qnil;if (ptr->pos<ptr->len) goto pass1; break;
 case 1/*Object*/:; goto pass1; break;
 }
 	goto success1;
@@ -192,7 +190,7 @@ cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
  it=rb_funcall(self,sy_Inliner2_src_dot_name_80f3,1,bind);  bind_aset(bind,5/*name*/,it);
 it=rb_funcall(self,sy_Inliner2_src_dot_args_2df5,1,bind);  bind_aset(bind,6/*args*/,it);
 it=rb_funcall(self,sy_Inliner2_src_dot_loca_1df0,1,bind); it=rb_funcall(self,sy_Inliner2_Seq_lb_src_dot__3406,1,bind);  bind_aset(bind,7/*body*/,it);
-  it=Amethyst_eof(self ); FAILTEST(pass2);
+it=Qnil;if (ptr->pos<ptr->len) goto pass2;
 	goto success2;
 	pass2: fail2=1;
 	success2: *ptr=oldpass2;
@@ -201,7 +199,7 @@ it=rb_funcall(self,sy_Inliner2__at_name_eq_bi_0dee,1,bind); it=bind_aget(bind,1/
 cstruct oldpass3=*ptr; int fail3=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=bind_aget(bind,8/*autovar*/);ptr->len=1;
  switch(FIX2LONG(rb_hash_aref(switchhash_Inliner2_2,rb_obj_class(ame_curobj(self))))){case 0/*Rule*/:;   it=AmethystCore_anything(self ); FAILTEST(pass3); bind_aset(bind,9/*autovar*/,it);
-  it=Amethyst_eof(self ); FAILTEST(pass3); break;
+it=Qnil;if (ptr->pos<ptr->len) goto pass3; break;
 case 1/*Object*/:; goto pass3; break;
 }
 	goto success3;
@@ -212,7 +210,7 @@ it=bind_aget(bind,9/*autovar*/); bind_aset(bind,10/*autovar*/,it);
 cstruct oldpass4=*ptr; int fail4=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,10/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
    it=Inliner2_traverse(self ); FAILTEST(pass4); bind_aset(bind,11/*autovar*/,it);
-  it=Amethyst_eof(self ); FAILTEST(pass4);
+it=Qnil;if (ptr->pos<ptr->len) goto pass4;
 	goto success4;
 	pass4: fail4=1;
 	success4: *ptr=oldpass4;
@@ -238,17 +236,17 @@ cstruct oldpass3=*ptr; int fail3=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,6/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
    it=AmethystCore_anything(self ); FAILTEST(pass3); bind_aset(bind,7/*key*/,it);
 it=rb_funcall(self,sy_Inliner2__at_changed_b885,1,bind);   it=Inliner2_traverse_item(self ); FAILTEST(pass3); bind_aset(bind,8/*val*/,it);
-it=rb_funcall(self,sy_Inliner2__lp_bind_lb_2_rb__6693,1,bind);   it=Amethyst_eof(self ); FAILTEST(pass3);
+it=rb_funcall(self,sy_Inliner2__lp_bind_lb_2_rb__6693,1,bind); it=Qnil;if (ptr->pos<ptr->len) goto pass3;
 	goto success3;
 	pass3: fail3=1;
 	success3: *ptr=oldpass3;
 	if(fail3) goto break2;
- if (ame_getstop(self)!=Qnil){{oldpos2=ame_getpos(self);goto break2;} } } break2: ame_setstop(self,Qnil);  ame_setpos(self,oldpos2);   it=Amethyst_eof(self ); FAILTEST(pass2);
+ if (ame_getstop(self)!=Qnil){{oldpos2=ame_getpos(self);goto break2;} } } break2: ame_setstop(self,Qnil);  ame_setpos(self,oldpos2); it=Qnil;if (ptr->pos<ptr->len) goto pass2;
 	goto success2;
 	pass2: fail2=1;
 	success2: *ptr=oldpass2;
 	if(fail2) goto pass1;
-  it=Amethyst_eof(self ); FAILTEST(pass1);
+it=Qnil;if (ptr->pos<ptr->len) goto pass1;
 	goto success1;
 	pass1: fail1=1;
 	success1: *ptr=oldpass1;
@@ -270,7 +268,7 @@ alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
 cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,2/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
    it=Inliner2_traverse(self ); FAILTEST(pass1); bind_aset(bind,3/*autovar*/,it);
-  it=Amethyst_eof(self ); FAILTEST(pass1);
+it=Qnil;if (ptr->pos<ptr->len) goto pass1;
 	goto success1;
 	pass1: fail1=1;
 	success1: *ptr=oldpass1;
@@ -298,7 +296,7 @@ cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
  it=rb_ary_new3(0); bind_aset(bind,5/*ar*/,it);
 int oldpos3; while(1){oldpos3=ame_getpos(self);   it=Inliner2_traverse_item(self ); FAILTEST(break1); bind_aset(bind,6/*it*/,it);
 it=rb_funcall(self,sy_Inliner2_bind_lb_5_rb__lt__1671,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos3=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos3); it=bind_aget(bind,5/*ar*/); bind_aset(bind,7/*autovar*/,it);
-  it=Amethyst_eof(self ); FAILTEST(pass2);
+it=Qnil;if (ptr->pos<ptr->len) goto pass2;
 	goto success2;
 	pass2: fail2=1;
 	success2: *ptr=oldpass2;
@@ -338,7 +336,7 @@ cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
 it=rb_funcall(self,sy_Inliner2__lp_bind_lb_1_rb__709e,1,bind); FAILTEST(pass1);it=rb_ary_new3(0); bind_aset(bind,2/*autovar*/,it);
 int oldpos1; while(1){oldpos1=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break1); bind_aset(bind,3/*autovar*/,it);
 it=rb_funcall(self,sy_Inliner2__append_lp__4de3,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos1); it=bind_aget(bind,2/*autovar*/); bind_aset(bind,4/*args*/,it);
-  it=Amethyst_eof(self ); FAILTEST(pass1);
+it=Qnil;if (ptr->pos<ptr->len) goto pass1;
 	goto success1;
 	pass1: fail1=1;
 	success1: *ptr=oldpass1;
@@ -392,4 +390,4 @@ rb_define_method(cls_Inliner2,"root",Inliner2_root,0);
 rb_define_method(cls_Inliner2,"traverse",Inliner2_traverse,0);
 rb_define_method(cls_Inliner2,"traverse_item",Inliner2_traverse_item,0);
 rb_define_method(cls_Inliner2,"visit",Inliner2_visit,0);
- rb_eval_string("testversioninliner2('f89022c58855672f32b97c20a9a12484')");}
+ rb_eval_string("testversioninliner2('a6cc16070b93c12a2c2ca31b0766eab4')");}
