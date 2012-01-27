@@ -97,8 +97,8 @@ class <<Compiler
 		called.each{|k,v| g.rules[k]=g.getrule(k)}
 		puts called.inspect;puts topo.inspect
 		
-		ds=Detect_Switch.new;ds.instance_variable_set(:@name,grammar.name)
-		dc=Detect_ClasSwitch.new;dc.instance_variable_set(:@name,grammar.name)
+		ds=Detect_Switch_Char.new;ds.instance_variable_set(:@name,grammar.name)
+		dc=Detect_Switch_Clas.new;dc.instance_variable_set(:@name,grammar.name)
 		$rules=g.rules
 		topo.each{|name|if g.rules[name] && called[name]
 				g.opt(g.rules[name])
