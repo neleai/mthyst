@@ -191,7 +191,7 @@ class Switch_Char_Dataflow < First_Dataflow
 	def lattice;		Lattice_Char;	end
 end
 
-class ClasSwitch_Char_Dataflow < First_Dataflow
+class Switch_Clas_Dataflow < First_Dataflow
 	def lattice;		Lattice_Clas;	end
 end
 amethyst First_Dataflow {
@@ -230,7 +230,7 @@ amethyst Switch_Char_Dataflow < First_Dataflow{
 				| super
 }
 
-amethyst ClasSwitch_Char_Dataflow < First_Dataflow{
+amethyst Switch_Clas_Dataflow < First_Dataflow{
   first = Apply[ ["clas"] CAct[.:cls] {lattice[cls]}]
         | super
 }
@@ -259,32 +259,11 @@ end
 class Detect_Switch_Clas < Detect_First
 	def first(s)
 		if !@switchdf
-			@switchdf=ClasSwitch_Char_Dataflow.new
+			@switchdf=Switch_Clas_Dataflow.new
 			@switchdf.parse(:root,[])
 		end
 		r=@switchdf.analyze(s)
 		return r
-	end
-	def child(par,chld)
-		 #par,chld=eval(par.to_s),eval(chld.to_s)
-		 is_child=(par<=chld)
-		 assume("#{par.to_s}<=#{chld.to_s}") if is_child
-		 is_child
-	end
-	def includes(ary,i,p)
-		i.times{|ii|
-			s=true
-			p.ary.each{|f| s=false unless child(f,ary[ii])}
-			return false if s
-		}
-		p.ary.each{|f| return true if child(ary[i],f) || child(f,ary[i])}
-		return false
-	end
-	def topsort(a)
-		a=a.uniq.sort_by{|a| a.to_s}
-		g=Oriented_Graph.new
-		a.each{|u| a.each{|v| g.add(u,v) if child(v,u) || (!child(u,v)&& u.to_s>v.to_s)}}
-	 	g.topo_order
 	end
 end
 

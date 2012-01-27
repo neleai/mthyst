@@ -1,6 +1,7 @@
 require './lib/amethyst'
 #Amethyst::Settings.compile_for=["1_8_7","1_9_3"]
 #Amethyst::Settings.debug=2
+#Amethyst::Settings.profiling=true
 COMPILED.each{|f|
 puts f
 Compiler::compile("amethyst/#{f}.ame","compiled/#{f}.rb",f)

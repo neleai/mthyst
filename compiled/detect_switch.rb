@@ -191,7 +191,7 @@ class Switch_Char_Dataflow < First_Dataflow
 	def lattice;		Lattice_Char;	end
 end
 
-class ClasSwitch_Char_Dataflow < First_Dataflow
+class Switch_Clas_Dataflow < First_Dataflow
 	def lattice;		Lattice_Clas;	end
 end
 class First_Dataflow < Amethyst
@@ -359,51 +359,51 @@ end
 end
 
 
-class ClasSwitch_Char_Dataflow < First_Dataflow
+class Switch_Clas_Dataflow < First_Dataflow
 
-def ClasSwitch_Char_Dataflow_Compiler_46ba(bind)
+def Switch_Clas_Dataflow_Compiler_46ba(bind)
 Compiler.grammars[src.clas].rules[bind[27]].body
 end
-def ClasSwitch_Char_Dataflow__append_lp__2a35(bind)
+def Switch_Clas_Dataflow__append_lp__2a35(bind)
 _append(bind[1],bind[16])
 end
-def ClasSwitch_Char_Dataflow__append_lp__4297(bind)
+def Switch_Clas_Dataflow__append_lp__4297(bind)
 _append(bind[0],bind[6])
 end
-def ClasSwitch_Char_Dataflow__append_lp__9ca5(bind)
+def Switch_Clas_Dataflow__append_lp__9ca5(bind)
 _append(bind[10],bind[11])
 end
-def ClasSwitch_Char_Dataflow__at_vis_eq_bin_af53(bind)
+def Switch_Clas_Dataflow__at_vis_eq_bin_af53(bind)
 @vis=bind[0]; bind[0]
 end
-def ClasSwitch_Char_Dataflow__lp_(bind)
+def Switch_Clas_Dataflow__lp_(bind)
 (!(empty?(bind[14]))) || FAIL
 end
-def ClasSwitch_Char_Dataflow__lp_Compile_8023(bind)
+def Switch_Clas_Dataflow__lp_Compile_8023(bind)
 (Compiler.grammars[src.clas]&&Compiler.grammars[src.clas].rules[bind[27]]) || FAIL
 end
-def ClasSwitch_Char_Dataflow_bind_lb_0_rb__dot__b660(bind)
+def Switch_Clas_Dataflow_bind_lb_0_rb__dot__b660(bind)
 bind[0].inject(:|)
 end
-def ClasSwitch_Char_Dataflow_bind_lb_12_rb__900a(bind)
+def Switch_Clas_Dataflow_bind_lb_12_rb__900a(bind)
 bind[12].inject(:|)
 end
-def ClasSwitch_Char_Dataflow_bind_lb_19_rb__2b52(bind)
+def Switch_Clas_Dataflow_bind_lb_19_rb__2b52(bind)
 bind[19]|lattice.bottom
 end
-def ClasSwitch_Char_Dataflow_bind_lb_19_rb__e313(bind)
+def Switch_Clas_Dataflow_bind_lb_19_rb__e313(bind)
 bind[19].seqjoin(bind[22])
 end
-def ClasSwitch_Char_Dataflow_bind_lb_4_rb__dot__2651(bind)
+def Switch_Clas_Dataflow_bind_lb_4_rb__dot__2651(bind)
 bind[4].is_a?(lattice)? bind[4] & bind[5] : bind[5]
 end
-def ClasSwitch_Char_Dataflow_empty(bind)
+def Switch_Clas_Dataflow_empty(bind)
 empty?(bind[14]) ? lattice.top|lattice.bottom : lattice.top
 end
-def ClasSwitch_Char_Dataflow_lattice_dot__5a9e(bind)
+def Switch_Clas_Dataflow_lattice_dot__5a9e(bind)
 lattice.bottom
 end
-def ClasSwitch_Char_Dataflow_lattice_lb__d8d7(bind)
+def Switch_Clas_Dataflow_lattice_lb__d8d7(bind)
 lattice[bind[3]]
 end
 
@@ -434,32 +434,11 @@ end
 class Detect_Switch_Clas < Detect_First
 	def first(s)
 		if !@switchdf
-			@switchdf=ClasSwitch_Char_Dataflow.new
+			@switchdf=Switch_Clas_Dataflow.new
 			@switchdf.parse(:root,[])
 		end
 		r=@switchdf.analyze(s)
 		return r
-	end
-	def child(par,chld)
-		 #par,chld=eval(par.to_s),eval(chld.to_s)
-		 is_child=(par<=chld)
-		 assume("#{par.to_s}<=#{chld.to_s}") if is_child
-		 is_child
-	end
-	def includes(ary,i,p)
-		i.times{|ii|
-			s=true
-			p.ary.each{|f| s=false unless child(f,ary[ii])}
-			return false if s
-		}
-		p.ary.each{|f| return true if child(ary[i],f) || child(f,ary[i])}
-		return false
-	end
-	def topsort(a)
-		a=a.uniq.sort_by{|a| a.to_s}
-		g=Oriented_Graph.new
-		a.each{|u| a.each{|v| g.add(u,v) if child(v,u) || (!child(u,v)&& u.to_s>v.to_s)}}
-	 	g.topo_order
 	end
 end
 
@@ -757,15 +736,15 @@ end
 
 
 def detect_switch_compiled_by
-'2223f9807971ed34fa47d5c6f9b9efc6'
+'c4915e273f5d5e446e8681893869237a'
 end
 def detect_switch_source_hash
-'df570b88e724a5f2113837931e65bd58'
+'619f0d04c00ca7e48ea9f4c7762614db'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'bb3817b676837b29c1f3d4ecada69d40'
+'5b2f06ae8be6f30b598106da722e5a83'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

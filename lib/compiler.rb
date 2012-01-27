@@ -147,6 +147,7 @@ class <<Compiler
 		puts tree.inspect
 		c,init,rb= AmethystCTranslator.new.parse(:itrans,tree)
 		c=c*""
+		if !Amethyst::Settings.profiling #oprofile does not like changing binaries
 		hex_digest=Digest::MD5.hexdigest(c)
 		File.open("compiled/#{file2}_c.c","w"){|f|
     f.puts "#include \"cthyst.h\""
@@ -166,7 +167,7 @@ require File.expand_path(File.dirname(__FILE__))+\"/\#{RUBY_VERSION}/#{file2}_c\
 		    `cd compiled;gcc -shared -o 1.8.7/#{file2}_c.so #{file2}_c.o -L. -L/usr/lib -L.  -rdynamic -Wl,-export-dynamic -lruby1.8  -lpthread -lrt -ldl -lcrypt -lm   -lc`
 			end
   	}
-
+		end
 	end
 end	
 Compiler::init
