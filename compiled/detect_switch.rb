@@ -433,27 +433,33 @@ end
 
 class Detect_Switch_Char < Detect_First
 	def initialize
-		$sizedf=Sizes_Dataflow.new
-		$sizedf.parse(:root,[])
+		if !$sizedf	
+			$sizedf=Sizes_Dataflow.new
+			$sizedf.parse(:root,[])
+		end
+		if !$switchdf_char
+			$switchdf_char=Switch_Char_Dataflow.new
+			$switchdf_char.parse(:root,[])
+		end
 	end
 	def first(s)
-		if !@switchdf
-			@switchdf=Switch_Char_Dataflow.new
-			@switchdf.parse(:root,[])
-		end
-		r=@switchdf.analyze(s)
-		r
+		$switchdf_char.analyze(s)
 	end
 end
 
 class Detect_Switch_Clas < Detect_First
-	def first(s)
-		if !@switchdf
-			@switchdf=Switch_Clas_Dataflow.new
-			@switchdf.parse(:root,[])
+	def initialize
+		if !$sizedf	
+			$sizedf=Sizes_Dataflow.new
+			$sizedf.parse(:root,[])
 		end
-		r=@switchdf.analyze(s)
-		return r
+		if !$switchdf_clas
+			$switchdf_clas=Switch_Clas_Dataflow.new
+			$switchdf_clas.parse(:root,[])
+		end
+	end
+	def first(s)
+		$switchdf_clas.analyze(s)
 	end
 end
 
@@ -760,7 +766,7 @@ def detect_switch_compiled_by
 '9f664cb18765c4d9cd043943cbdfd706'
 end
 def detect_switch_source_hash
-'ecf93119ff7346bdb68fa45ae9de64a3'
+'1fa84a0fc75fd6721fed4c5f01e3eca9'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
