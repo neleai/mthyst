@@ -10,7 +10,7 @@ static VALUE sy_Traverser_Clone2__at_changed_b885;
 static VALUE sy_Traverser_Clone2__at_changed_c681;
 static VALUE sy_Traverser_Clone2__lp_bind_lb_2_rb__6693;
 static VALUE sy_Traverser_Clone2__lp_src_dot_ins_6a75;
-static VALUE sy_Traverser_Clone2_bind_lb_3_rb__lt__bb51;
+static VALUE sy_Traverser_Clone2_bind_lb_5_rb__lt__1671;
 static VALUE sy_Traverser_Clone2_if_sp_bind_lb__f1e9;
 static VALUE sy_Traverser_Clone2_src_25d9;
 static VALUE sy_visit;
@@ -52,7 +52,7 @@ return it;
 fail: return failobj; }
 VALUE Traverser_Clone2_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(8);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-switch(FIX2LONG(rb_hash_aref(switchhash_Traverser_Clone2_1,rb_obj_class(ame_curobj(self))))){case 0/*Array*/:; int oldpos1=ame_getpos(self);
+switch(FIX2LONG(rb_hash_aref(switchhash_Traverser_Clone2_1,rb_obj_class(ame_curobj(self))))){case 0/*AmethystAST*/:; int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=rb_funcall(self,sy_visit,0); FAILTEST(alt1_2); bind_aset(bind,0/*a*/,it);
 it=rb_funcall(self,sy_Traverser_Clone2__at_changed_5352,1,bind); it=bind_aget(bind,0/*a*/); bind_aset(bind,1/*_result*/,it);
@@ -62,15 +62,13 @@ alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
    it=AmethystCore_anything(self ); FAILTEST(alt1_3); bind_aset(bind,2/*autovar*/,it);
 cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,2/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
- it=rb_ary_new3(0); bind_aset(bind,3/*ar*/,it);
-int oldpos2; while(1){oldpos2=ame_getpos(self);   it=Traverser_Clone2_traverse_item(self ); FAILTEST(break1); bind_aset(bind,4/*it*/,it);
-it=rb_funcall(self,sy_Traverser_Clone2_bind_lb_3_rb__lt__bb51,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos2=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos2); it=bind_aget(bind,3/*ar*/); bind_aset(bind,5/*autovar*/,it);
+   it=Traverser_Clone2_traverse(self ); FAILTEST(pass1); bind_aset(bind,3/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
 	success1: *ptr=oldpass1;
 	if(fail1) goto alt1_3;
-it=bind_aget(bind,5/*autovar*/); bind_aset(bind,1/*_result*/,it);
+it=bind_aget(bind,3/*autovar*/); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
 alt1_3: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
@@ -80,17 +78,19 @@ ame_setcut(self,Qnil);goto accept1;
   alt1_4:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
  break;
-case 1/*AmethystAST*/:; int oldpos3=ame_getpos(self);
-alt2_1: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+case 1/*Array*/:; int oldpos2=ame_getpos(self);
+alt2_1: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=rb_funcall(self,sy_visit,0); FAILTEST(alt2_2); bind_aset(bind,0/*a*/,it);
 it=rb_funcall(self,sy_Traverser_Clone2__at_changed_5352,1,bind); it=bind_aget(bind,0/*a*/); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept2;
-alt2_2: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-   it=AmethystCore_anything(self ); FAILTEST(alt2_3); bind_aset(bind,6/*autovar*/,it);
+alt2_2: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+   it=AmethystCore_anything(self ); FAILTEST(alt2_3); bind_aset(bind,4/*autovar*/,it);
 cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
-          ptr->src=bind_aget(bind,6/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
-   it=Traverser_Clone2_traverse(self ); FAILTEST(pass2); bind_aset(bind,7/*autovar*/,it);
+          ptr->src=bind_aget(bind,4/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
+ it=rb_ary_new3(0); bind_aset(bind,5/*ar*/,it);
+int oldpos3; while(1){oldpos3=ame_getpos(self);   it=Traverser_Clone2_traverse_item(self ); FAILTEST(break1); bind_aset(bind,6/*it*/,it);
+it=rb_funcall(self,sy_Traverser_Clone2_bind_lb_5_rb__lt__1671,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos3=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos3); it=bind_aget(bind,5/*ar*/); bind_aset(bind,7/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass2);
 	goto success2;
 	pass2: fail2=1;
@@ -99,11 +99,11 @@ cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
 it=bind_aget(bind,7/*autovar*/); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept2;
-alt2_3: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+alt2_3: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt2_4); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept2;
-  alt2_4:  ame_setpos(self,oldpos3); goto fail;
+  alt2_4:  ame_setpos(self,oldpos2); goto fail;
  accept2:;
  break;
 case 2/*Object*/:; int oldpos4=ame_getpos(self);
@@ -127,6 +127,7 @@ VALUE Amethyst_eof(VALUE self );
 VALUE Visitor_traverse(VALUE self );
 VALUE Visitor_traverse_item(VALUE self );
 VALUE switchhash_Visitor_1;
+static VALUE sy_Visitor__append_lp__088f;
 static VALUE sy_Visitor__append_lp__4de3;
 static VALUE sy_Visitor__lp_src_dot_ins_a413;
 static VALUE sy_visit;
@@ -158,7 +159,7 @@ return it;
 fail: return failobj; }
 VALUE Visitor_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(7);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-switch(FIX2LONG(rb_hash_aref(switchhash_Visitor_1,rb_obj_class(ame_curobj(self))))){case 0/*Array*/:; int oldpos1=ame_getpos(self);
+switch(FIX2LONG(rb_hash_aref(switchhash_Visitor_1,rb_obj_class(ame_curobj(self))))){case 0/*AmethystAST*/:; int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=rb_funcall(self,sy_visit,0); FAILTEST(alt1_2); bind_aset(bind,0/*_result*/,it);
  
@@ -167,15 +168,13 @@ alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qn
    it=AmethystCore_anything(self ); FAILTEST(alt1_3); bind_aset(bind,1/*autovar*/,it);
 cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,1/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
- it=rb_ary_new3(0); bind_aset(bind,2/*autovar*/,it);
-int oldpos2; while(1){oldpos2=ame_getpos(self);   it=Visitor_traverse_item(self ); FAILTEST(break1); bind_aset(bind,3/*autovar*/,it);
-it=rb_funcall(self,sy_Visitor__append_lp__4de3,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos2=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos2); it=bind_aget(bind,2/*autovar*/); bind_aset(bind,4/*autovar*/,it);
+   it=Visitor_traverse(self ); FAILTEST(pass1); bind_aset(bind,2/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass1);
 	goto success1;
 	pass1: fail1=1;
 	success1: *ptr=oldpass1;
 	if(fail1) goto alt1_3;
-it=bind_aget(bind,4/*autovar*/); bind_aset(bind,0/*_result*/,it);
+it=bind_aget(bind,2/*autovar*/); bind_aset(bind,0/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
 alt1_3: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
@@ -185,16 +184,18 @@ ame_setcut(self,Qnil);goto accept1;
   alt1_4:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
  break;
-case 1/*AmethystAST*/:; int oldpos3=ame_getpos(self);
-alt2_1: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+case 1/*Array*/:; int oldpos2=ame_getpos(self);
+alt2_1: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=rb_funcall(self,sy_visit,0); FAILTEST(alt2_2); bind_aset(bind,0/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept2;
-alt2_2: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-   it=AmethystCore_anything(self ); FAILTEST(alt2_3); bind_aset(bind,5/*autovar*/,it);
+alt2_2: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+   it=AmethystCore_anything(self ); FAILTEST(alt2_3); bind_aset(bind,3/*autovar*/,it);
 cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
-          ptr->src=bind_aget(bind,5/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
-   it=Visitor_traverse(self ); FAILTEST(pass2); bind_aset(bind,6/*autovar*/,it);
+          ptr->src=bind_aget(bind,3/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
+ it=rb_ary_new3(0); bind_aset(bind,4/*autovar*/,it);
+int oldpos3; while(1){oldpos3=ame_getpos(self);   it=Visitor_traverse_item(self ); FAILTEST(break1); bind_aset(bind,5/*autovar*/,it);
+it=rb_funcall(self,sy_Visitor__append_lp__088f,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos3=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos3); it=bind_aget(bind,4/*autovar*/); bind_aset(bind,6/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass2);
 	goto success2;
 	pass2: fail2=1;
@@ -203,11 +204,11 @@ cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
 it=bind_aget(bind,6/*autovar*/); bind_aset(bind,0/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept2;
-alt2_3: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+alt2_3: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt2_4); bind_aset(bind,0/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept2;
-  alt2_4:  ame_setpos(self,oldpos3); goto fail;
+  alt2_4:  ame_setpos(self,oldpos2); goto fail;
  accept2:;
  break;
 case 2/*Object*/:; int oldpos4=ame_getpos(self);
@@ -228,13 +229,13 @@ fail: return failobj; }
 void Init_traverser_c(){ 
  cls_Traverser_Clone2=rb_define_class("Traverser_Clone2",rb_const_get(rb_cObject,rb_intern("Amethyst"))); 
 failobj=rb_eval_string("FAIL");
-switchhash_Traverser_Clone2_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Array\nnext h[k]=1 if k<=AmethystAST\nnext h[k]=2 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Traverser_Clone2_1);;
+switchhash_Traverser_Clone2_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Traverser_Clone2_1);;
 sy_Traverser_Clone2__at_changed_5352=rb_intern("Traverser_Clone2__at_changed_5352");
 sy_Traverser_Clone2__at_changed_b885=rb_intern("Traverser_Clone2__at_changed_b885");
 sy_Traverser_Clone2__at_changed_c681=rb_intern("Traverser_Clone2__at_changed_c681");
 sy_Traverser_Clone2__lp_bind_lb_2_rb__6693=rb_intern("Traverser_Clone2__lp_bind_lb_2_rb__6693");
 sy_Traverser_Clone2__lp_src_dot_ins_6a75=rb_intern("Traverser_Clone2__lp_src_dot_ins_6a75");
-sy_Traverser_Clone2_bind_lb_3_rb__lt__bb51=rb_intern("Traverser_Clone2_bind_lb_3_rb__lt__bb51");
+sy_Traverser_Clone2_bind_lb_5_rb__lt__1671=rb_intern("Traverser_Clone2_bind_lb_5_rb__lt__1671");
 sy_Traverser_Clone2_if_sp_bind_lb__f1e9=rb_intern("Traverser_Clone2_if_sp_bind_lb__f1e9");
 sy_Traverser_Clone2_src_25d9=rb_intern("Traverser_Clone2_src_25d9");
 sy_visit=rb_intern("visit");
@@ -243,10 +244,11 @@ rb_define_method(cls_Traverser_Clone2,"traverse_item",Traverser_Clone2_traverse_
 
  cls_Visitor=rb_define_class("Visitor",rb_const_get(rb_cObject,rb_intern("Amethyst"))); 
 failobj=rb_eval_string("FAIL");
-switchhash_Visitor_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Array\nnext h[k]=1 if k<=AmethystAST\nnext h[k]=2 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Visitor_1);;
+switchhash_Visitor_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Visitor_1);;
+sy_Visitor__append_lp__088f=rb_intern("Visitor__append_lp__088f");
 sy_Visitor__append_lp__4de3=rb_intern("Visitor__append_lp__4de3");
 sy_Visitor__lp_src_dot_ins_a413=rb_intern("Visitor__lp_src_dot_ins_a413");
 sy_visit=rb_intern("visit");
 rb_define_method(cls_Visitor,"traverse",Visitor_traverse,0);
 rb_define_method(cls_Visitor,"traverse_item",Visitor_traverse_item,0);
- rb_eval_string("testversiontraverser('0c7e6ebea67831f067e9839b5db7cae6')");}
+ rb_eval_string("testversiontraverser('1492433f5489dedefe4b72737507e676')");}

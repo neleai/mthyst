@@ -15,8 +15,8 @@ end
 def Traverser_Clone2__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Traverser_Clone2_bind_lb_3_rb__lt__bb51(bind)
-bind[3]<<bind[4]
+def Traverser_Clone2_bind_lb_5_rb__lt__1671(bind)
+bind[5]<<bind[6]
 end
 def Traverser_Clone2_if_sp_bind_lb__f1e9(bind)
 if bind[3]
@@ -37,6 +37,9 @@ end
 
 class Visitor < Amethyst
 
+def Visitor__append_lp__088f(bind)
+_append(bind[4],bind[5])
+end
 def Visitor__append_lp__4de3(bind)
 _append(bind[2],bind[3])
 end
@@ -48,7 +51,7 @@ end
 
 
 def traverser_compiled_by
-'3ec97c6fe0ad889c74e97217194b9940'
+'486c2a93c6aab5be4892bc9ae0f398ff'
 end
 def traverser_source_hash
 '102e4f870eb0748a3420fd0f2398e4a9'
@@ -57,6 +60,6 @@ def testversiontraverser(r)
  raise "invalid version" if r!=traverser_version
 end
 def traverser_version
-'0c7e6ebea67831f067e9839b5db7cae6'
+'1492433f5489dedefe4b72737507e676'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/traverser_c"

@@ -8,8 +8,8 @@ end
 
 class Left_Factor < Traverser_Clone2
 
-def Left_Factor_Bind_lb_src_b693(bind)
-Bind[src.name,bind[8]]
+def Left_Factor_Bind_lb_src_41c9(bind)
+Bind[src.name,bind[4]]
 end
 def Left_Factor_Or_lb__ti__lp_bin_142c(bind)
 Or[*(bind[2]+merge(bind[3]))]
@@ -64,14 +64,14 @@ end
 def Left_Factor_bind_lb_2_rb__pl__9bc3(bind)
 bind[2]+merge(bind[3])
 end
-def Left_Factor_bind_lb_3_rb__lt__bb51(bind)
-bind[3]<<bind[4]
-end
 def Left_Factor_bind_lb_3_rb__pl__4c4b(bind)
 bind[3]+[bind[6]]
 end
 def Left_Factor_bind_lb_3_rb__pl__a9ae(bind)
 bind[3]+[bind[0]]
+end
+def Left_Factor_bind_lb_5_rb__lt__1671(bind)
+bind[5]<<bind[6]
 end
 def Left_Factor_bind_lb_5_rb__pl__1ee4(bind)
 bind[5]+merge(bind[3])
@@ -104,7 +104,7 @@ end
 
 
 def left_factor_compiled_by
-'3ec97c6fe0ad889c74e97217194b9940'
+'486c2a93c6aab5be4892bc9ae0f398ff'
 end
 def left_factor_source_hash
 '13ac88a620044bb451529ded733cdbf5'
@@ -113,6 +113,6 @@ def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version
 end
 def left_factor_version
-'65d03e7179dd21a01ea5b836afc24d48'
+'82518ad2c018e9bd000af20bb3334b09'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/left_factor_c"

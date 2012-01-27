@@ -166,7 +166,8 @@ class Switch_Clas
 		@ary.each{|k,v| h[v]<<k}
 		nary=[]
 		h.each{|v,ks| nary<<[ks.inject(:|),v]}
-		#@ary=nary.sort_by{|k,a| k.inspect}
+		#TODO in ctranslator sort by class lattice
+		@ary=nary.sort_by{|k,a| k.ary.include?(Object) ? "zzz" : k.inspect}
 		super
 	end
 end

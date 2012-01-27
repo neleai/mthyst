@@ -1,5 +1,8 @@
 class DetectCalls < Visitor
 
+def DetectCalls__append_lp__088f(bind)
+_append(bind[4],bind[5])
+end
 def DetectCalls__append_lp__4de3(bind)
 _append(bind[2],bind[3])
 end
@@ -48,8 +51,8 @@ end
 def Inliner2__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Inliner2_bind_lb_3_rb__lt__bb51(bind)
-bind[3]<<bind[4]
+def Inliner2_bind_lb_5_rb__lt__1671(bind)
+bind[5]<<bind[6]
 end
 def Inliner2_body_eq__at_bo_c02f(bind)
 body=@body; bind[4].each_index{|i| body=Seq[Bind[@args[i],bind[4][i]],body] } ; body
@@ -81,7 +84,7 @@ end
 
 
 def inliner2_compiled_by
-'3ec97c6fe0ad889c74e97217194b9940'
+'486c2a93c6aab5be4892bc9ae0f398ff'
 end
 def inliner2_source_hash
 '101f6c5b9eced53fc2d7672d6b1187d6'
@@ -90,6 +93,6 @@ def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version
 end
 def inliner2_version
-'265c7c4145831bf4780af3f4171db5d2'
+'f89022c58855672f32b97c20a9a12484'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/inliner2_c"
