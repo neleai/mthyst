@@ -84,3 +84,4 @@ paralelize compilation
 
 predicated inlining
 
+cache dataflow data with objects
