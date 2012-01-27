@@ -312,8 +312,8 @@ failobj=rb_eval_string(\"FAIL\");
 "
 							[bind[9],bind[10],bind[8]] 
 end
-def AmethystCTranslator_bind_lb_9_rb__pl__69a7(bind)
-bind[9]+="case #{bind[39]}: #{bind[7]} break;\n"
+def AmethystCTranslator_bind_lb_9_rb__pl__5395(bind)
+bind[9]+="case #{bind[39]}:; #{bind[7]} break;\n"
 end
 def AmethystCTranslator_bind_lb_9_rb__pl__9cee(bind)
 bind[9]+"}"
@@ -372,15 +372,15 @@ end
 
 
 def ctranslator2_compiled_by
-'6af0bd599a4b3560f98e2f45538782f3'
+'872fdc771072ce96f735a059e83b6bfc'
 end
 def ctranslator2_source_hash
-'b1d9ee6d323254a66237fc9156d9021f'
+'0bbe174e08376a1225a56684f516f4b9'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'993925de1af326e8f23f5ef23fec9740'
+'206af6851b9e56a8a63e2ae825715fab'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"

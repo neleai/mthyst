@@ -95,7 +95,7 @@ $hash_ClasLattice={}
 class ClasLattice < FirstLattice
   attr_accessor :ary
   def self.[](*ary)
-		ary=ary.uniq.sort_by{|a| a.inspect}
+		ary=ary.uniq.sort_by{|a| a.inspect}.map{|a| eval(a.to_s)}
 		return $hash_ClasLattice[ary] if $hash_ClasLattice[ary]
     c=ClasLattice.new
     c.ary=ary
@@ -105,6 +105,12 @@ class ClasLattice < FirstLattice
   def self.top;     ClasLattice[Object];  end
 	
 	#TODO operations other than |
+	#TODO modules
+	def &(a)
+		return self if   ary[0]<=a.ary[0]
+		return a    if a.ary[0]<=  ary[0]
+		ClasLattice.bottom
+	end
 end
 
 class First_Dataflow < Amethyst
@@ -143,7 +149,6 @@ class First_Dataflow < Amethyst
   end
 
 	def empty?(el)
-		
 		$sizedf.analyze(el).size==0
 	end
 end
@@ -183,15 +188,11 @@ class Switch_Dataflow < First_Dataflow
 		end
 		lattice[*chars]
 	end
-	def lattice
-		CharLattice
-	end
+	def lattice;		CharLattice;	end
 end
 
 class ClasSwitch_Dataflow < First_Dataflow
-	def lattice
-		ClasLattice
-	end
+	def lattice;		ClasLattice;	end
 end
 amethyst First_Dataflow {
 	value =  .:x  {depends(x);@@vals[x]}
@@ -325,10 +326,22 @@ amethyst Detect_ClasSwitch < Detect_First {
 				| Apply[ ["fails"] {@self} ]
 #				| Apply[ .* first(@self):firs &{!empty?(@self) && firs!=CharLattice.top} {Switch_Clas[[firs,@self],[~firs,Apply["fails"]]]   }]  
 		    | Seq[ traverse_item*=>[combine_seq([])] ]
+				| Or[ (traverse_item)*:items {false}:aswitch {items.each{|i| aswitch=true if i.is_a?(Switch_Clas)}}
+							( &{!aswitch} {Or[*items]} 
+							|  {items}=>[ combine_or([[ClasLattice.top,[]]]) ]
+							)
+						]
 
- combine_seq(prefix) = (Act|CAct):s combine_seq(prefix+[s])
+	combine_seq(prefix) = (Act|CAct):s combine_seq(prefix+[s])
                      | Switch_Clas[ .* @ary:ary ] .*:rest { Switch_Clas[{:ary=>ary.map{|p,a| [p,Seq[*(prefix+[a]+rest)]]}}] }
                      | .*:ary {Seq[*(prefix+ary)]}
+
+	combine_or(list) = Switch_Clas[.* @ary:ary] {[]}:newlist
+                           {list.each{|p,a| ary.each{|p2,a2| newlist << [p&p2,a+[a2]] if p&p2!=ClasLattice.bottom}}}
+                           combine_or(newlist)
+                  | .:n {list.map{|p,a| [p,a+[n]]}}:newlist
+                           combine_or(newlist)
+                  | eof {Switch_Clas[{:ary=>list.map{|p,a| [p,Or[*a].dup.normalize]}}]}
 
 }
 
