@@ -324,9 +324,9 @@ amethyst Detect_ClasSwitch < Detect_First {
 	visit = Apply[ ["clas"] .:clas            {Switch_Clas[[ClasLattice[clas[0]],Apply["anything"]],[ClasLattice[Object],Apply["fails"]]].freeze }]
 				| Apply[ ["fails"] {@self} ]
 #				| Apply[ .* first(@self):firs &{!empty?(@self) && firs!=CharLattice.top} {Switch_Clas[[firs,@self],[~firs,Apply["fails"]]]   }]  
-#		    | Seq[ traverse_item*=>[combine_seq([])] ]
+		    | Seq[ traverse_item*=>[combine_seq([])] ]
 
- combine_seq(prefix) = (Act|CAct|Bind):s combine_seq(prefix+[s])
+ combine_seq(prefix) = (Act|CAct):s combine_seq(prefix+[s])
                      | Switch_Clas[ .* @ary:ary ] .*:rest { Switch_Clas[{:ary=>ary.map{|p,a| [p,Seq[*(prefix+[a]+rest)]]}}] }
                      | .*:ary {Seq[*(prefix+ary)]}
 
