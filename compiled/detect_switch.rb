@@ -211,6 +211,9 @@ end
 def First_Dataflow__append_lp__c89f(bind)
 _append(bind[0],bind[30])
 end
+def First_Dataflow__append_lp__e378(bind)
+_append(bind[0],bind[38])
+end
 def First_Dataflow__at_vis_eq_bin_af53(bind)
 @vis=bind[0]; bind[0]
 end
@@ -261,6 +264,9 @@ _append(bind[16],bind[17])
 end
 def Sizes_Dataflow__append_lp__c89f(bind)
 _append(bind[0],bind[30])
+end
+def Sizes_Dataflow__append_lp__e378(bind)
+_append(bind[0],bind[38])
 end
 def Sizes_Dataflow__at_vis_eq_bin_af53(bind)
 @vis=bind[0]; bind[0]
@@ -319,6 +325,9 @@ end
 def Switch_Char_Dataflow__append_lp__c89f(bind)
 _append(bind[0],bind[30])
 end
+def Switch_Char_Dataflow__append_lp__e378(bind)
+_append(bind[0],bind[38])
+end
 def Switch_Char_Dataflow__at_vis_eq_bin_af53(bind)
 @vis=bind[0]; bind[0]
 end
@@ -375,6 +384,9 @@ _append(bind[16],bind[17])
 end
 def Switch_Clas_Dataflow__append_lp__c89f(bind)
 _append(bind[0],bind[30])
+end
+def Switch_Clas_Dataflow__append_lp__e378(bind)
+_append(bind[0],bind[38])
 end
 def Switch_Clas_Dataflow__at_vis_eq_bin_af53(bind)
 @vis=bind[0]; bind[0]
@@ -745,15 +757,15 @@ end
 
 
 def detect_switch_compiled_by
-'04a6cb2b91535f01a17a177658b71e0d'
+'9f664cb18765c4d9cd043943cbdfd706'
 end
 def detect_switch_source_hash
-'bb1a6dfa525049a8daa07f0abe56c9b4'
+'ecf93119ff7346bdb68fa45ae9de64a3'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'230b7aaaeb2ee84cb8412ede07d2f328'
+'fe0e7faa0ca7e34dcfbfc40691c0dab8'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

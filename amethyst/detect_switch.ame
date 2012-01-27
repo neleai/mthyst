@@ -204,6 +204,7 @@ amethyst First_Dataflow {
 	root = .:x analyze(x)
 	
 	first = Switch_Char[ [ .:p  value:v {p.is_a?(lattice)? p & v : v}:vals[] ]* {vals.inject(:|)} ]
+				| Switch_Clas[ [ .:p  value:v {p.is_a?(lattice)? p & v : v}:vals[] ]* {vals.inject(:|)} ]
 				| Or[value*:{it.inject(:|)}]
 				| Seq[{lattice.bottom}:val (.:el {el}=>value:nev {val.seqjoin(nev)}:val  (~{empty?(el)} break | empty) )*   .* {val}]
 				| Many[value:val {val|lattice.bottom} ]
