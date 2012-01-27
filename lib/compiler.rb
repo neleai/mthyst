@@ -114,8 +114,8 @@ class <<Compiler
 				}
 				g.opt(g.rules[name]) if inlined
 				#TODO separately as in inherited it dont have to be true
-		    [ds#,dc
-				].each{|o| g.rules[name]=o.parse(:root,g.rules[name])}
+		    ([ds]+ (grammar.name=="Dataflow" ? [dc] : [])
+).each{|o| g.rules[name]=o.parse(:root,g.rules[name])}
 #				g.opt(g.rules[name])	
 		end}
 	end

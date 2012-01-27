@@ -66,6 +66,7 @@ class AmethystCTranslator < Amethyst
 	end
 end
 
+$classlabels=Hash.new(0)
 amethyst AmethystCTranslator < Amethyst {
 	itrans = {[]}:ruby {[]}:c {[]}:init  ( char:ruby[]  | trans:{c<<it[0];init<<it[1];ruby<<it[2]} )* -> [c,init,ruby]
 	
@@ -156,7 +157,7 @@ failobj=rb_eval_string(\"FAIL\");
 										( [.:c trans:t] {s+=c.cases(@first) + " #{t} break;\n"})*
 									{s+"}"}
 								]
-				| Switch_Clas[ label("switchhash_#{@@grammar}"):sh {0}:ii {""}:init
+				| Switch_Clas[ {"switchhash_#{@@grammar}_#{$classlabels[@@grammar]+=1}"}:sh {0}:ii {""}:init
 											 {@@header<< "VALUE #{sh};"}
 									     {"switch(FIX2LONG(rb_hash_aref(#{sh},rb_obj_class(ame_curobj(self))))){"}:s
 											 ( [.:c trans:t]{s+="case #{ii}: #{t} break;\n"}

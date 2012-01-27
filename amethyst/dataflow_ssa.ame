@@ -62,6 +62,8 @@ amethyst Dataflow < Traverser_Clone2 {
 	visit = Apply[  traverse_item*:t {Apply[*(t+[{:clas=>@clas}])]}:app {app}=>[vars_in:var] {var.each{|v| @@marked<<ssanum(v)}} {app} ]
 				| Or[	{[]}:join {oldssanums.clone}:old  ({@@oldssanums=old.clone} traverse_item:t[] {join<<oldssanums.clone})* {or_end(join)} {Or[*t]} ]
 				| Switch[ {[]}:alts	{[]}:join {oldssanums.clone}:old  ({@@oldssanums=old.clone} [:pred traverse_item:a {alts<<[pred,a]}] {join<<oldssanums.clone})* {or_end(join)} {Switch[{:ary=>alts,:act=>@act,:defs=>@defs,:first=>@first,:header=>@header,:init=>@init}]} ]
+			| Switch_Clas[ {[]}:alts	{[]}:join {oldssanums.clone}:old  ({@@oldssanums=old.clone} [:pred traverse_item:a {alts<<[pred,a]}] {join<<oldssanums.clone})* {or_end(join)} {Switch[{:ary=>alts,:act=>@act,:defs=>@defs,:first=>@first,:header=>@header,:init=>@init}]} ]
+
 
 				| Many[  {ssanums.clone}:prev traverse_item*:t {many_end(prev)} {Many.create({:ary=>t}).normalize} ] 
 			  | Pass[ @to=>traverse_item:to @var=>traverse_item:var {@@marked<<var.ssaname} {Pass.create({:to=>to,:var=>var,:enter=>@enter}).normalize} ]
