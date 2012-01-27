@@ -76,7 +76,7 @@ end
 
 
 def implicit_variables_compiled_by
-'c16f40af7c3d1f248f4135f2d0062d1d'
+'3ec97c6fe0ad889c74e97217194b9940'
 end
 def implicit_variables_source_hash
 '53e96b8754e7c9037a49314d0c30370e'
@@ -85,6 +85,6 @@ def testversionimplicit_variables(r)
  raise "invalid version" if r!=implicit_variables_version
 end
 def implicit_variables_version
-'d9da7293124d15e2863df20602d22c6a'
+'2a37c1041ae36abfefe84f9733c18b55'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/implicit_variables_c"

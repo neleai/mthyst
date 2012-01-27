@@ -51,7 +51,7 @@ VALUE Left_Factor_binds(VALUE self ,VALUE a0,VALUE a1){VALUE vals[2]; VALUE bind
 it=bind_aget(bind,0/*s*/); bind_aset(bind,1/*autovar*/,it);
 cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=bind_aget(bind,1/*autovar*/);ptr->len=1;
- switch(FIX2LONG(rb_hash_aref(switchhash_Left_Factor_3,rb_obj_class(ame_curobj(self))))){case 0:; int oldpos1=ame_getpos(self);
+ switch(FIX2LONG(rb_hash_aref(switchhash_Left_Factor_3,rb_obj_class(ame_curobj(self))))){case 0/*Seq*/:; int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto pass1;}
    it=AmethystCore_anything(self ); FAILTEST(alt1_2); bind_aset(bind,2/*autovar*/,it);
 cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
@@ -73,7 +73,7 @@ ame_setcut(self,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto pass1;
  accept1:;
   it=Amethyst_eof(self ); FAILTEST(pass1); break;
-case 1:; int oldpos3=ame_getpos(self);
+case 1/*Bind*/:; int oldpos3=ame_getpos(self);
 alt2_1: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto pass1;}
    it=AmethystCore_anything(self ); FAILTEST(alt2_2); bind_aset(bind,7/*autovar*/,it);
 cstruct oldpass3=*ptr; int fail3=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
@@ -95,7 +95,7 @@ ame_setcut(self,Qnil);goto accept2;
   alt2_3:  ame_setpos(self,oldpos3); goto pass1;
  accept2:;
   it=Amethyst_eof(self ); FAILTEST(pass1); break;
-case 2:;   it=AmethystCore_anything(self ); FAILTEST(pass1);it=bind_aget(bind,4/*a*/); bind_aset(bind,6/*autovar*/,it);
+case 2/*Object*/:;   it=AmethystCore_anything(self ); FAILTEST(pass1);it=bind_aget(bind,4/*a*/); bind_aset(bind,6/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass1); break;
 }
 	goto success1;
@@ -138,7 +138,7 @@ VALUE Left_Factor_first(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=bind_new
 it=bind_aget(bind,0/*s*/); bind_aset(bind,1/*autovar*/,it);
 cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=bind_aget(bind,1/*autovar*/);ptr->len=1;
- switch(FIX2LONG(rb_hash_aref(switchhash_Left_Factor_1,rb_obj_class(ame_curobj(self))))){case 0:; int oldpos1=ame_getpos(self);
+ switch(FIX2LONG(rb_hash_aref(switchhash_Left_Factor_1,rb_obj_class(ame_curobj(self))))){case 0/*Seq*/:; int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto pass1;}
    it=AmethystCore_anything(self ); FAILTEST(alt1_2); bind_aset(bind,2/*autovar*/,it);
 cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
@@ -160,7 +160,7 @@ ame_setcut(self,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto pass1;
  accept1:;
   it=Amethyst_eof(self ); FAILTEST(pass1); break;
-case 1:; int oldpos3=ame_getpos(self);
+case 1/*Bind*/:; int oldpos3=ame_getpos(self);
 alt2_1: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto pass1;}
    it=AmethystCore_anything(self ); FAILTEST(alt2_2); bind_aset(bind,6/*autovar*/,it);
 cstruct oldpass3=*ptr; int fail3=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
@@ -181,7 +181,7 @@ ame_setcut(self,Qnil);goto accept2;
   alt2_3:  ame_setpos(self,oldpos3); goto pass1;
  accept2:;
   it=Amethyst_eof(self ); FAILTEST(pass1); break;
-case 2:;   it=AmethystCore_anything(self ); FAILTEST(pass1); bind_aset(bind,5/*autovar*/,it);
+case 2/*Object*/:;   it=AmethystCore_anything(self ); FAILTEST(pass1); bind_aset(bind,5/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass1); break;
 }
 	goto success1;
@@ -197,7 +197,7 @@ VALUE Left_Factor_rest(VALUE self ,VALUE a0,VALUE a1){VALUE vals[2]; VALUE bind=
 it=bind_aget(bind,0/*s*/); bind_aset(bind,1/*autovar*/,it);
 cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=bind_aget(bind,1/*autovar*/);ptr->len=1;
- switch(FIX2LONG(rb_hash_aref(switchhash_Left_Factor_2,rb_obj_class(ame_curobj(self))))){case 0:; int oldpos1=ame_getpos(self);
+ switch(FIX2LONG(rb_hash_aref(switchhash_Left_Factor_2,rb_obj_class(ame_curobj(self))))){case 0/*Seq*/:; int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto pass1;}
    it=AmethystCore_anything(self ); FAILTEST(alt1_2); bind_aset(bind,2/*autovar*/,it);
 cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
@@ -221,7 +221,7 @@ ame_setcut(self,Qnil);goto accept1;
   alt1_3:  ame_setpos(self,oldpos1); goto pass1;
  accept1:;
   it=Amethyst_eof(self ); FAILTEST(pass1); break;
-case 1:;   it=AmethystCore_anything(self ); FAILTEST(pass1);it=bind_aget(bind,6/*bin*/); bind_aset(bind,8/*autovar*/,it);
+case 1/*Object*/:;   it=AmethystCore_anything(self ); FAILTEST(pass1);it=bind_aget(bind,6/*bin*/); bind_aset(bind,8/*autovar*/,it);
   it=Amethyst_eof(self ); FAILTEST(pass1); break;
 }
 	goto success1;
@@ -276,7 +276,7 @@ return it;
 fail: return failobj; }
 VALUE Left_Factor_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(8);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-switch(FIX2LONG(rb_hash_aref(switchhash_Left_Factor_5,rb_obj_class(ame_curobj(self))))){case 0:; int oldpos1=ame_getpos(self);
+switch(FIX2LONG(rb_hash_aref(switchhash_Left_Factor_5,rb_obj_class(ame_curobj(self))))){case 0/*Array*/:; int oldpos1=ame_getpos(self);
 alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=Left_Factor_visit(self ); FAILTEST(alt1_2); bind_aset(bind,0/*a*/,it);
 it=rb_funcall(self,sy_Left_Factor__at_changed_5352,1,bind); it=bind_aget(bind,0/*a*/); bind_aset(bind,1/*_result*/,it);
@@ -304,7 +304,7 @@ ame_setcut(self,Qnil);goto accept1;
   alt1_4:  ame_setpos(self,oldpos1); goto fail;
  accept1:;
  break;
-case 1:; int oldpos3=ame_getpos(self);
+case 1/*AmethystAST*/:; int oldpos3=ame_getpos(self);
 alt2_1: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=Left_Factor_visit(self ); FAILTEST(alt2_2); bind_aset(bind,0/*a*/,it);
 it=rb_funcall(self,sy_Left_Factor__at_changed_5352,1,bind); it=bind_aget(bind,0/*a*/); bind_aset(bind,1/*_result*/,it);
@@ -330,7 +330,7 @@ ame_setcut(self,Qnil);goto accept2;
   alt2_4:  ame_setpos(self,oldpos3); goto fail;
  accept2:;
  break;
-case 2:; int oldpos4=ame_getpos(self);
+case 2/*Object*/:; int oldpos4=ame_getpos(self);
 alt3_1: ame_setpos(self,oldpos4);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=Left_Factor_visit(self ); FAILTEST(alt3_2); bind_aset(bind,0/*a*/,it);
 it=rb_funcall(self,sy_Left_Factor__at_changed_5352,1,bind); it=bind_aget(bind,0/*a*/); bind_aset(bind,1/*_result*/,it);
@@ -348,7 +348,7 @@ return it;
 fail: return failobj; }
 VALUE Left_Factor_visit(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(11);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-switch(FIX2LONG(rb_hash_aref(switchhash_Left_Factor_4,rb_obj_class(ame_curobj(self))))){case 0:;   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,0/*autovar*/,it);
+switch(FIX2LONG(rb_hash_aref(switchhash_Left_Factor_4,rb_obj_class(ame_curobj(self))))){case 0/*Or*/:;   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,0/*autovar*/,it);
 cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,0/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
    it=Left_Factor_traverse(self ); FAILTEST(pass1); bind_aset(bind,1/*autovar*/,it);
@@ -394,7 +394,7 @@ it=bind_aget(bind,8/*autovar*/); bind_aset(bind,9/*autovar*/,it);
 	if(fail1) goto fail;
 it=bind_aget(bind,9/*autovar*/); bind_aset(bind,10/*_result*/,it);
  break;
-case 1:; goto fail; break;
+case 1/*Object*/:; goto fail; break;
 }
 return it;
 fail: return failobj; }
@@ -442,4 +442,4 @@ rb_define_method(cls_Left_Factor,"root",Left_Factor_root,0);
 rb_define_method(cls_Left_Factor,"traverse",Left_Factor_traverse,0);
 rb_define_method(cls_Left_Factor,"traverse_item",Left_Factor_traverse_item,0);
 rb_define_method(cls_Left_Factor,"visit",Left_Factor_visit,0);
- rb_eval_string("testversionleft_factor('6cb0addcf00068e25160d22f2d0bf458')");}
+ rb_eval_string("testversionleft_factor('65d03e7179dd21a01ea5b836afc24d48')");}

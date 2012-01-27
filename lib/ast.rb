@@ -150,6 +150,26 @@ class Or
 		super
 	end
 end
+class Switch_Char
+	def normalize2
+		h=Hash.new{|h,k| h[k]=[]}
+		@ary.each{|k,v| h[v]<<k}
+		nary=[]
+		h.each{|v,ks| nary<<[ks.inject(:|),v]}
+		@ary=nary.sort_by{|k,a| k.inspect}
+		super
+	end
+end
+class Switch_Clas
+	def normalize2
+		h=Hash.new{|h,k| h[k]=[]}
+		@ary.each{|k,v| h[v]<<k}
+		nary=[]
+		h.each{|v,ks| nary<<[ks.inject(:|),v]}
+		#@ary=nary.sort_by{|k,a| k.inspect}
+		super
+	end
+end
 
 class PureAct
 	def self.[](expr=nil)
