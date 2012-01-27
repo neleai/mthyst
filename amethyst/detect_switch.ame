@@ -107,9 +107,12 @@ class Lattice_Clas < FirstLattice
 	#TODO operations other than |
 	#TODO modules
 	def &(a)
-		return self if   ary[0]<=a.ary[0]
-		return a    if a.ary[0]<=  ary[0]
-		Lattice_Clas.bottom
+		n=[]
+		ary.each{|u| a.ary.each{|v|
+			n<<u if u<=v
+			n<<v if v<=u
+		}}
+		Lattice_Clas[*n.uniq]
 	end
 end
 

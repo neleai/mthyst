@@ -107,9 +107,12 @@ class Lattice_Clas < FirstLattice
 	#TODO operations other than |
 	#TODO modules
 	def &(a)
-		return self if   ary[0]<=a.ary[0]
-		return a    if a.ary[0]<=  ary[0]
-		Lattice_Clas.bottom
+		n=[]
+		ary.each{|u| a.ary.each{|v|
+			n<<u if u<=v
+			n<<v if v<=u
+		}}
+		Lattice_Clas[*n.uniq]
 	end
 end
 
@@ -739,7 +742,7 @@ def detect_switch_compiled_by
 '2752c6b213793c96ca040df65efaa5c4'
 end
 def detect_switch_source_hash
-'619f0d04c00ca7e48ea9f4c7762614db'
+'f242a7284e13b8a644a1c482be518e91'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
