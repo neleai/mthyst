@@ -25,7 +25,8 @@ makeclasses(AmethystAST,
 Switch_Char=Switch
 class SeqOr<AmethystAST;end
 makeclasses(SeqOr,:Seq,:Or)
-Placeholder=Object.new
+Placeholder=Consts.new("Placeholder")
+FAIL=Consts.new("FAIL")
 
 class Array
 	def normalize;	self;	end
@@ -341,6 +342,5 @@ class Apply;					def inspect;	"#{@clas ? "#{@clas}::":""}#{ary[0]}(#{ary[1..-1].
 class Local;					def inspect;	"L[#{ary[0]}#{ary[1].is_a?(Bnding) ? "" : ary[1]}_#{ssano}]"	;end;end
 class Key;						def inspect;	"@#{ary[0]}"																									;end;end
 class Global;					def inspect;	"@@#{ary[0]}"																									;end;end
-class <<Placeholder;	def inspect;	"Placeholder"																									;end;end
 class Bind;						def inspect;	"#{ary[0].inspect}:#{name.inspect}"														;end;end
 class Switch; 				def inspect;  "Switch[#{ary.map{|d,k|  "#{d.inspect}: #{k.inspect}\n"}*""}]";end;end

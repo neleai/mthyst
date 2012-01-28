@@ -3,11 +3,6 @@ $: << Amethyst_path
 ['graph','utils','ast'].each{|r|
 	require Amethyst_path+"/lib/#{r}"
 }
-FAIL=Object.new
-class << FAIL
-	def inspect;		"FAIL";	end
-	alias_method :to_s,:inspect
-end
 
 class AmethystLambda
 	def initialize(call,parser,bind)
