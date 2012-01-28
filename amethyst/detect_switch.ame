@@ -211,7 +211,7 @@ amethyst First_Dataflow {
 				| Apply[ :name &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name].body}=>value ]
 				| Switch_Char[value*:{it.inject(:|)}]
 	      | Bind[ value] 
-				| (Act|CAct|Local|Result|Cut|Stop)[.* {lattice.bottom} ]
+				| (Act|CAct|Local|Result|Cut|Stop|Pass|Lookahead)[.* {lattice.bottom} ]
 				| .:el {empty?(el) ? lattice.top|lattice.bottom : lattice.top}
 
 	 getvalue(v) = {@@vis=v; v}=>first
