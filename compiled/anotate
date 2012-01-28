@@ -1,4 +1,8 @@
-opannotate --source 1.9.3/dataflow_ssa_c.so >dataflow_ssa.annotated.c
-opannotate --assembly 1.9.3/dataflow_ssa_c.so >dataflow_ssa.annotated.as
-opannotate --source 1.9.3/parser_c.so >parser.annotated.c
-opannotate --assembly 1.9.3/parser_c.so >parser.annotated.as
+opannotate --source 1.9.3/dataflow_ssa_c.so   >annotated/dataflow_ssa.annotated.c
+opannotate --assembly 1.9.3/dataflow_ssa_c.so >annotated/dataflow_ssa.annotated.as
+opannotate --source 1.9.3/parser_c.so         >annotated/parser.annotated.c
+opannotate --assembly 1.9.3/parser_c.so       >annotated/parser.annotated.as
+opannotate --source 1.9.3/ctranslator2_c.so         >annotated/ctranslator2.annotated.c
+opannotate --assembly 1.9.3/ctranslator2_c.so       >annotated/ctranslator2.annotated.as
+
+

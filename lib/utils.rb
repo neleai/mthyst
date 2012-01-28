@@ -1,4 +1,3 @@
-require 'lib/compatibility'
 def leterize(s)
 	trans={"."=>"dot","+"=>"pl","-"=>"mi","*"=>"ti","/"=>"di","="=>"eq","<" => "lt",">"=>"gt","$"=>"do","@"=>"at","("=>"lp",")"=>"rp","["=>"lb","]"=>"rb",":"=>"co","\\"=>"bs"," "=>"sp","`"=>"bq","{"=>"le","}"=>"re","~"=>"td","'"=>"qu","\""=>"dq","#"=>"sh"}
 	s2=""
@@ -108,4 +107,10 @@ end
 class Consts
 	def initialize(s);@s=s;end
 	def inspect   	 ;@s	;end
+end
+
+class Integer#compatibility with 1.8
+	def bytes
+		[self]
+	end
 end

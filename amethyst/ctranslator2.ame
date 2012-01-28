@@ -134,10 +134,6 @@ failobj=rb_eval_string(\"FAIL\");
 										 rw(reject,`trans:t`) 
 										 {"int #{oldpos}=ame_getpos(self);\n #{t} x=1; goto #{accept};  #{reject}: x=0; #{accept}: it=Qnil; ame_setpos(self,#{oldpos}); if (x==0) goto #{@@faillabel};"} ]
 				| Local[ .* { "it=#{bget(@self)};" } ]
-				| Result[ { s="#{@name}.create( {#{@vars.size.times.map{|i| ":#{@varnames[i]}=>#{rbbget(@vars[i])}" }.sort*","} })"
-					cbno=addcallback(s)
-					"it=#{rbcall(cbno,["bind"])};"
-				} ]
 				| Pass[ label("pass"):pass label("oldpass"):oldpass label("success"):success label("fail"):fail
 						rw(pass,`@to=>trans:to`)
 					{  "cstruct #{oldpass}=*ptr; int #{fail}=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
