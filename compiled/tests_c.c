@@ -23,7 +23,7 @@ static VALUE sy_seq;
 static VALUE sy_token;
 VALUE Tests_abc(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-switch((unsigned char)*ame_curstr(self)){case UC(0) ... UC(31):;case '!' ... '`':;case 'd' ... UC(255):; goto fail; break;
+switch((unsigned char)*ame_curstr2(ptr)){case UC(0) ... UC(31):;case '!' ... '`':;case 'd' ... UC(255):; goto fail; break;
 case ' ' ... ' ':;case 'a' ... 'c':;   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,0/*_result*/,it);
  break;
 }
@@ -31,7 +31,7 @@ return it;
 fail: return failobj; }
 VALUE Tests_de(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(2);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-switch((unsigned char)*ame_curstr(self)){case UC(0) ... UC(31):;case '!' ... '`':;case 'f' ... UC(255):; it=i_1; bind_aset(bind,0/*foo*/,it);
+switch((unsigned char)*ame_curstr2(ptr)){case UC(0) ... UC(31):;case '!' ... '`':;case 'f' ... UC(255):; it=i_1; bind_aset(bind,0/*foo*/,it);
 int oldpos1=ptr->pos;
 alt1_1:;it=rb_funcall(self,sy_Tests_bind_lb_0_rb__pl__fbc2,1,bind); goto alt1_2;
 ;goto accept1;
@@ -80,7 +80,7 @@ return it;
 fail: return failobj; }
 VALUE Tests_s2(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-switch((unsigned char)*ame_curstr(self)){case UC(0) ... '`':;case 'c' ... 'c':;case 'g' ... UC(255):;  it=rb_obj_clone(s_g_b2f5); arg0=it; it=rb_funcall(self,sy_seq,1,arg0); FAILTEST(fail); bind_aset(bind,0/*_result*/,it);
+switch((unsigned char)*ame_curstr2(ptr)){case UC(0) ... '`':;case 'c' ... 'c':;case 'g' ... UC(255):;  it=rb_obj_clone(s_g_b2f5); arg0=it; it=rb_funcall(self,sy_seq,1,arg0); FAILTEST(fail); bind_aset(bind,0/*_result*/,it);
  break;
 case 'd' ... 'f':; int oldpos1=ptr->pos;
 alt1_1:;  it=AmethystCore_anything(self ); FAILTEST(alt1_2);it=i_3; bind_aset(bind,0/*_result*/,it);
@@ -163,4 +163,4 @@ rb_define_method(cls_Tests,"foo",Tests_foo,0);
 rb_define_method(cls_Tests,"s2",Tests_s2,0);
 rb_define_method(cls_Tests,"sw",Tests_sw,0);
 rb_define_method(cls_Tests,"test",Tests_test,0);
- rb_eval_string("testversiontests('f0bfbbe8892f46fead3b310455e1b55e')");}
+ rb_eval_string("testversiontests('ef3f8e42b7a0eab73edd6f4a606f7e29')");}

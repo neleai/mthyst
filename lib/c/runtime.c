@@ -35,7 +35,7 @@ VALUE AmethystCore_anything(VALUE self){
 		r=rb_str_new(ptr->str+ptr->pos,cs);
 		ptr->pos+=cs;
 	}else{
-		r= ame_curobj(self);
+		r= ame_curobj2(ptr);
 		ptr->pos++;
 	}
 	return r;

@@ -342,7 +342,7 @@ end
 
 
 def dataflow_ssa_compiled_by
-'d37957338d3f3fc6b704ef66183939e9'
+'60609bdb6e6cd6349ae17e2e2591221c'
 end
 def dataflow_ssa_source_hash
 'e00bfb4bb7aa4d086f8de17ba5ceaafb'
@@ -351,6 +351,6 @@ def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'2f5d63991892e5cb786d2541c95c0944'
+'807263bb4a5755b832c475660759efbf'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/dataflow_ssa_c"

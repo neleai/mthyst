@@ -217,8 +217,8 @@ end
 def AmethystCTranslator__dq_goto_sp__sh__le__f772(bind)
 "goto #{@faillabel};"
 end
-def AmethystCTranslator__dq_if_sp__lp_str_7f2a(bind)
-"if (strncmp(ame_curstr(self),#{bind[21].inspect},#{bind[21].size})) goto #{@faillabel}; else ptr->pos+=#{bind[21].size};"
+def AmethystCTranslator__dq_if_sp__lp_str_48cf(bind)
+"if (strncmp(ame_curstr2(ptr),#{bind[21].inspect},#{bind[21].size})) goto #{@faillabel}; else ptr->pos+=#{bind[21].size};"
 end
 def AmethystCTranslator__dq_int_sp__sh__le_b_4814(bind)
 "int #{bind[55]}; while(1){#{bind[55]}=ptr->pos; #{bind[46]} #{@stops ? (@stops=false;"if (ame_getstop(self)!=Qnil){#{bind[55]}=ptr->pos;goto #{bind[67]};}") : ""} } #{bind[67]}: ame_setstop(self,Qnil); ptr->pos=#{bind[55]}; "
@@ -238,8 +238,8 @@ end
 def AmethystCTranslator__dq_it_eq__sh__le_rb_79a3(bind)
 "it=#{rbcall(bind[4],["bind"])}; #{src.pred ? "FAILTEST(#{@faillabel});" :"" }"
 end
-def AmethystCTranslator__dq_switch_lp__3e9e(bind)
-"switch(FIX2LONG(rb_hash_aref(#{bind[99]},rb_obj_class(ame_curobj(self))))){"
+def AmethystCTranslator__dq_switch_lp__d2f9(bind)
+"switch(FIX2LONG(rb_hash_aref(#{bind[99]},rb_obj_class(ame_curobj2(ptr))))){"
 end
 def AmethystCTranslator__dq_switchh_f207(bind)
 "switchhash_#{@grammar}_#{$classlabels[@grammar]+=1}"
@@ -375,15 +375,15 @@ end
 
 
 def ctranslator2_compiled_by
-'d37957338d3f3fc6b704ef66183939e9'
+'60609bdb6e6cd6349ae17e2e2591221c'
 end
 def ctranslator2_source_hash
-'0a6403de01395f75a6c568fce25b6903'
+'913e7050094c98f083de91b3fd7a623f'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'50d66bb793697fba15a1dad15f0096b5'
+'87d985e3f7d9dfe8b301dd936cb03665'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"

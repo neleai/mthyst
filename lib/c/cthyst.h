@@ -65,6 +65,22 @@ static inline VALUE ame_curobj(VALUE self){
 	if (ptr->len==ptr->pos) return failobj;
   return ptr->ary[ptr->pos];
 }
+static inline char* ame_curstr2(cstruct * ptr){
+  return ptr->str+ptr->pos;
+}
+static inline VALUE ame_curobj2(cstruct * ptr){
+	if(!ptr->ary){
+		VALUE ary;
+	  if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+		else  ary=rb_funcall(ptr->src,s_to_a,0);
+		ptr->ary=RARRAY_PTR(ary);
+		ptr->len=RARRAY_LEN(ary);
+	}
+	if (ptr->len==ptr->pos) return failobj;
+  return ptr->ary[ptr->pos];
+}
+
+
 
 typedef struct {
   VALUE *ary;int size;

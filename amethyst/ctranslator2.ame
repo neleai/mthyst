@@ -112,7 +112,7 @@ failobj=rb_eval_string(\"FAIL\");
 				| Apply[ ["fails"] {"goto #{@@faillabel};"} ]
 				| Apply[ ["eof"]   {"it=Qnil;if (ptr->pos<ptr->len) goto #{@@faillabel};"} ]
 
-				| Apply[ ["_seq"] CAct[.:s] {"if (strncmp(ame_curstr(self),#{s.inspect},#{s.size})) goto #{@@faillabel}; else ptr->pos+=#{s.size};"}]
+				| Apply[ ["_seq"] CAct[.:s] {"if (strncmp(ame_curstr2(ptr),#{s.inspect},#{s.size})) goto #{@@faillabel}; else ptr->pos+=#{s.size};"}]
 				| Apply[:name {0}:ii ( trans:aa {ii+=1} {"#{aa} arg#{ii-1}=it;"})*:args 
             failwrap(" #{args*""} it=#{callrule(name,ii)};")]
 				| Bind[trans:e {"#{e} #{bset(@name,"it")};\n" } ]
@@ -154,13 +154,13 @@ failobj=rb_eval_string(\"FAIL\");
 									{@@defs<<@defs if @defs}
 									{@@header<<@header if @header}
 									{@@init<<@init if @init}
-									{"switch((unsigned char)*ame_curstr(self)){"}:s
+									{"switch((unsigned char)*ame_curstr2(ptr)){"}:s
 										( [.:c trans:t] {s+=c.cases(@first) + " #{t} break;\n"})*
 									{s+"}"}
 								]
 				| Switch_Clas[ {"switchhash_#{@@grammar}_#{$classlabels[@@grammar]+=1}"}:sh {0}:ii {""}:init
 											 {@@header<< "VALUE #{sh};"}
-									     {"switch(FIX2LONG(rb_hash_aref(#{sh},rb_obj_class(ame_curobj(self))))){"}:s
+									     {"switch(FIX2LONG(rb_hash_aref(#{sh},rb_obj_class(ame_curobj2(ptr))))){"}:s
 											 ( [.:c trans:t]{c.ary.each{|al| init+="next h[k]=#{ii} if k<=#{al}\\n";s+="case #{ii}/*#{al}*/:";ii+=1}}
 																			{s+="; #{t} break;\n"})*
 											 {@@init  <<"#{sh}=rb_eval_string(\"Hash.new{|h,k|#{init}}\");#{gc_mark_var(sh)};"}
