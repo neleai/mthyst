@@ -125,6 +125,7 @@ failobj=rb_eval_string(\"FAIL\");
 					]
 				| Cut[]   {"ame_setcut(self,Qtrue);"}
 				| Stop[] {"ame_setstop(self,Qtrue);"}
+				| Memo[ .* {"TODO"}]
 				| Many[ Apply[ ["anything"] ] ] -> "ptr->pos=ptr->len;"
 				| Many[ {label("break")}:brk {label("oldpos")}:oldpos
 						rw(brk,`trans:t`)
