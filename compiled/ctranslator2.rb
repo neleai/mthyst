@@ -99,6 +99,9 @@ end
 def AmethystCTranslator__at_callbac_e37c(bind)
 @callbacks={}
 end
+def AmethystCTranslator__at_cuts_eq_tr_8a4f(bind)
+@cuts=true;"ame_setcut(self,Qtrue);"
+end
 def AmethystCTranslator__at_defmeth_456b(bind)
 @defmethods=[]
 end
@@ -158,6 +161,9 @@ def AmethystCTranslator__at_lambdas_ecda(bind)
 end
 def AmethystCTranslator__at_rulenam_295d(bind)
 @rulename=bind[24]; Local.resetnumbering;resetlabels;@locls={}
+end
+def AmethystCTranslator__at_stops_eq_t_70dd(bind)
+@stops=true;"ame_setstop(self,Qtrue);"
 end
 def AmethystCTranslator__dq_Amethys_8b00(bind)
 "AmethystLambda.new(:#{bind[0]},self,bind)" 
@@ -220,11 +226,11 @@ end
 def AmethystCTranslator__dq_if_sp__lp_str_7f2a(bind)
 "if (strncmp(ame_curstr(self),#{bind[21].inspect},#{bind[21].size})) goto #{@faillabel}; else ptr->pos+=#{bind[21].size};"
 end
+def AmethystCTranslator__dq_int_sp__sh__le_b_4814(bind)
+"int #{bind[55]}; while(1){#{bind[55]}=ptr->pos; #{bind[46]} #{@stops ? (@stops=false;"if (ame_getstop(self)!=Qnil){#{bind[55]}=ptr->pos;goto #{bind[67]};}") : ""} } #{bind[67]}: ame_setstop(self,Qnil); ptr->pos=#{bind[55]}; "
+end
 def AmethystCTranslator__dq_int_sp__sh__le_b_bd41(bind)
 "int #{bind[55]}=ptr->pos;\n #{bind[46]} x=1; goto #{bind[53]};  #{bind[54]}: x=0; #{bind[53]}: it=Qnil; ptr->pos=#{bind[55]}; if (x==0) goto #{@faillabel};"
-end
-def AmethystCTranslator__dq_int_sp__sh__le_b_d65a(bind)
-"int #{bind[55]}; while(1){#{bind[55]}=ptr->pos; #{bind[46]} if (ame_getstop(self)!=Qnil){{#{bind[55]}=ptr->pos;goto #{bind[67]};} } } #{bind[67]}: ame_setstop(self,Qnil); ptr->pos=#{bind[55]}; "
 end
 def AmethystCTranslator__dq_it_eq_Qnil_8464(bind)
 "it=Qnil;if (ptr->pos<ptr->len) goto #{@faillabel};"
@@ -369,15 +375,15 @@ end
 
 
 def ctranslator2_compiled_by
-'237cefbee63f7729d73a415022231e96'
+'b65cc0d6dbd48aca01b1d340f256343f'
 end
 def ctranslator2_source_hash
-'85c013f4999a5249cac631b690d67a0a'
+'d19b153f8df8305d37bd5b40d6de90e4'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'82c8e2adaf4ef241b119d77563767560'
+'2e7c613a1870403cbd8b37746f40e7bb'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"

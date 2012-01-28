@@ -123,13 +123,13 @@ failobj=rb_eval_string(\"FAIL\");
            {s+=map_index(t){|i| "#{alt}_#{i+1}: ptr->pos=#{oldpos};if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto #{fail};}\n #{t[i]} \name_setcut(self,Qnil);goto #{accept};\n"}*""}
            {"#{s}  #{alt}_#{altno+1}:  ptr->pos=#{oldpos}; goto #{fail};\n #{accept}:;\n"}
 					]
-				| Cut[]   {"ame_setcut(self,Qtrue);"}
-				| Stop[] {"ame_setstop(self,Qtrue);"}
+				| Cut[]   {@@cuts=true;"ame_setcut(self,Qtrue);"}
+				| Stop[] {@@stops=true;"ame_setstop(self,Qtrue);"}
 				| Memo[ .* {"TODO"}]
 				| Many[ Apply[ ["anything"] ] ] -> "ptr->pos=ptr->len;"
 				| Many[ {label("break")}:brk {label("oldpos")}:oldpos
 						rw(brk,`trans:t`)
-						{"int #{oldpos}; while(1){#{oldpos}=ptr->pos; #{t} if (ame_getstop(self)!=Qnil){{#{oldpos}=ptr->pos;goto #{brk};} } } #{brk}: ame_setstop(self,Qnil); ptr->pos=#{oldpos}; "}
+						{"int #{oldpos}; while(1){#{oldpos}=ptr->pos; #{t} #{@@stops ? (@@stops=false;"if (ame_getstop(self)!=Qnil){#{oldpos}=ptr->pos;goto #{brk};}") : ""} } #{brk}: ame_setstop(self,Qnil); ptr->pos=#{oldpos}; "}
 					]
 				| Lookahead[ {label("accept")}:accept {label("reject")}:reject {label("oldpos")}:oldpos 
 										 rw(reject,`trans:t`) 
