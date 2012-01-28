@@ -92,8 +92,8 @@ cstruct oldpass3=*ptr; int fail3=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
 cstruct oldpass4=*ptr; int fail4=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,4/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  it=rb_ary_new3(0); bind_aset(bind,5/*autovar*/,it);
-int oldpos1; while(1){oldpos1=ame_getpos(self);   it=Dataflow_traverse_item(self ); FAILTEST(break1); bind_aset(bind,6/*autovar*/,it);
-it=rb_funcall(self,sy_Dataflow__append_lp__6f56,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos1); it=bind_aget(bind,5/*autovar*/); bind_aset(bind,7/*var*/,it);
+int oldpos1; while(1){oldpos1=ptr->pos;   it=Dataflow_traverse_item(self ); FAILTEST(break1); bind_aset(bind,6/*autovar*/,it);
+it=rb_funcall(self,sy_Dataflow__append_lp__6f56,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos1=ptr->pos;goto break1;} } } break1: ame_setstop(self,Qnil); ptr->pos=oldpos1; it=bind_aget(bind,5/*autovar*/); bind_aset(bind,7/*var*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass4;
 	goto success4;
 	pass4: fail4=1;
@@ -126,7 +126,7 @@ return it;
 fail: return failobj; }
 VALUE Dataflow_traverse(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(10);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-int oldpos1; while(1){oldpos1=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break1); if (ame_getstop(self)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos1); it=rb_funcall(self,sy_Dataflow__at_changed_c681,1,bind);  bind_aset(bind,0/*oldchanged*/,it);
+ptr->pos=ptr->len;it=rb_funcall(self,sy_Dataflow__at_changed_c681,1,bind);  bind_aset(bind,0/*oldchanged*/,it);
 it=rb_funcall(self,sy_Dataflow_src_25d9,1,bind);  bind_aset(bind,1/*this*/,it);
 it=Qnil; bind_aset(bind,2/*clon*/,it);
 it=Qfalse; bind_aset(bind,3/*changed*/,it);
@@ -136,7 +136,7 @@ cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
    it=AmethystCore_anything(self ); FAILTEST(pass1); bind_aset(bind,5/*autovar*/,it);
 cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,5/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
- int oldpos2; while(1){oldpos2=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break2); bind_aset(bind,6/*autovar*/,it);
+ int oldpos1; while(1){oldpos1=ptr->pos;   it=AmethystCore_anything(self ); FAILTEST(break1); bind_aset(bind,6/*autovar*/,it);
 cstruct oldpass3=*ptr; int fail3=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,6/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
    it=AmethystCore_anything(self ); FAILTEST(pass3); bind_aset(bind,7/*key*/,it);
@@ -145,8 +145,8 @@ it=rb_funcall(self,sy_Dataflow__lp_bind_lb_2_rb__6693,1,bind); it=Qnil;if (ptr->
 	goto success3;
 	pass3: fail3=1;
 	success3: *ptr=oldpass3;
-	if(fail3) goto break2;
- if (ame_getstop(self)!=Qnil){{oldpos2=ame_getpos(self);goto break2;} } } break2: ame_setstop(self,Qnil);  ame_setpos(self,oldpos2); it=Qnil;if (ptr->pos<ptr->len) goto pass2;
+	if(fail3) goto break1;
+ if (ame_getstop(self)!=Qnil){{oldpos1=ptr->pos;goto break1;} } } break1: ame_setstop(self,Qnil); ptr->pos=oldpos1; it=Qnil;if (ptr->pos<ptr->len) goto pass2;
 	goto success2;
 	pass2: fail2=1;
 	success2: *ptr=oldpass2;
@@ -162,13 +162,13 @@ return it;
 fail: return failobj; }
 VALUE Dataflow_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(8);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-switch(FIX2LONG(rb_hash_aref(switchhash_Dataflow_4,rb_obj_class(ame_curobj(self))))){case 0/*AmethystAST*/:; int oldpos1=ame_getpos(self);
-alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+switch(FIX2LONG(rb_hash_aref(switchhash_Dataflow_4,rb_obj_class(ame_curobj(self))))){case 0/*AmethystAST*/:; int oldpos1=ptr->pos;
+alt1_1: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=Dataflow_visit(self ); FAILTEST(alt1_2); bind_aset(bind,0/*a*/,it);
 it=rb_funcall(self,sy_Dataflow__at_changed_5352,1,bind); it=bind_aget(bind,0/*a*/); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
-alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+alt1_2: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt1_3); bind_aset(bind,2/*autovar*/,it);
 cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,2/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
@@ -181,26 +181,26 @@ it=Qnil;if (ptr->pos<ptr->len) goto pass1;
 it=bind_aget(bind,3/*autovar*/); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
-alt1_3: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+alt1_3: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt1_4); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
-  alt1_4:  ame_setpos(self,oldpos1); goto fail;
+  alt1_4:  ptr->pos=oldpos1; goto fail;
  accept1:;
  break;
-case 1/*Array*/:; int oldpos2=ame_getpos(self);
-alt2_1: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+case 1/*Array*/:; int oldpos2=ptr->pos;
+alt2_1: ptr->pos=oldpos2;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=Dataflow_visit(self ); FAILTEST(alt2_2); bind_aset(bind,0/*a*/,it);
 it=rb_funcall(self,sy_Dataflow__at_changed_5352,1,bind); it=bind_aget(bind,0/*a*/); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept2;
-alt2_2: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+alt2_2: ptr->pos=oldpos2;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt2_3); bind_aset(bind,4/*autovar*/,it);
 cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,4/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  it=rb_ary_new3(0); bind_aset(bind,5/*ar*/,it);
-int oldpos3; while(1){oldpos3=ame_getpos(self);   it=Dataflow_traverse_item(self ); FAILTEST(break1); bind_aset(bind,6/*it*/,it);
-it=rb_funcall(self,sy_Dataflow_bind_lb_5_rb__lt__1671,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos3=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos3); it=bind_aget(bind,5/*ar*/); bind_aset(bind,7/*autovar*/,it);
+int oldpos3; while(1){oldpos3=ptr->pos;   it=Dataflow_traverse_item(self ); FAILTEST(break1); bind_aset(bind,6/*it*/,it);
+it=rb_funcall(self,sy_Dataflow_bind_lb_5_rb__lt__1671,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos3=ptr->pos;goto break1;} } } break1: ame_setstop(self,Qnil); ptr->pos=oldpos3; it=bind_aget(bind,5/*ar*/); bind_aset(bind,7/*autovar*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass2;
 	goto success2;
 	pass2: fail2=1;
@@ -209,24 +209,24 @@ it=Qnil;if (ptr->pos<ptr->len) goto pass2;
 it=bind_aget(bind,7/*autovar*/); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept2;
-alt2_3: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+alt2_3: ptr->pos=oldpos2;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt2_4); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept2;
-  alt2_4:  ame_setpos(self,oldpos2); goto fail;
+  alt2_4:  ptr->pos=oldpos2; goto fail;
  accept2:;
  break;
-case 2/*Object*/:; int oldpos4=ame_getpos(self);
-alt3_1: ame_setpos(self,oldpos4);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+case 2/*Object*/:; int oldpos4=ptr->pos;
+alt3_1: ptr->pos=oldpos4;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=Dataflow_visit(self ); FAILTEST(alt3_2); bind_aset(bind,0/*a*/,it);
 it=rb_funcall(self,sy_Dataflow__at_changed_5352,1,bind); it=bind_aget(bind,0/*a*/); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept3;
-alt3_2: ame_setpos(self,oldpos4);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+alt3_2: ptr->pos=oldpos4;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt3_3); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept3;
-  alt3_3:  ame_setpos(self,oldpos4); goto fail;
+  alt3_3:  ptr->pos=oldpos4; goto fail;
  accept3:;
  break;
 }
@@ -235,27 +235,27 @@ fail: return failobj; }
 VALUE Dataflow_vars_in(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(18);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
 it=rb_ary_new3(0); bind_aset(bind,0/*ary*/,it);
-it=rb_funcall(self,sy_Dataflow_bind_lb_0_rb__eq__943e,1,bind); int oldpos1; while(1){oldpos1=ame_getpos(self); switch(FIX2LONG(rb_hash_aref(switchhash_Dataflow_3,rb_obj_class(ame_curobj(self))))){case 0/*Act*/:; int oldpos2=ame_getpos(self);
-alt1_1: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
+it=rb_funcall(self,sy_Dataflow_bind_lb_0_rb__eq__943e,1,bind); int oldpos1; while(1){oldpos1=ptr->pos; switch(FIX2LONG(rb_hash_aref(switchhash_Dataflow_3,rb_obj_class(ame_curobj(self))))){case 0/*Act*/:; int oldpos2=ptr->pos;
+alt1_1: ptr->pos=oldpos2;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
    it=AmethystCore_anything(self ); FAILTEST(alt1_2); bind_aset(bind,1/*autovar*/,it);
 cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,1/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  it=rb_funcall(self,sy_Dataflow_src_25d9,1,bind);  bind_aset(bind,2/*autovar*/,it);
-it=rb_funcall(self,sy_Dataflow__append_lp__29a3,1,bind); int oldpos3; while(1){oldpos3=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break2); if (ame_getstop(self)!=Qnil){{oldpos3=ame_getpos(self);goto break2;} } } break2: ame_setstop(self,Qnil);  ame_setpos(self,oldpos3); it=Qnil;if (ptr->pos<ptr->len) goto pass1;
+it=rb_funcall(self,sy_Dataflow__append_lp__29a3,1,bind); ptr->pos=ptr->len;it=Qnil;if (ptr->pos<ptr->len) goto pass1;
 	goto success1;
 	pass1: fail1=1;
 	success1: *ptr=oldpass1;
 	if(fail1) goto alt1_2;
  
 ame_setcut(self,Qnil);goto accept1;
-alt1_2: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
+alt1_2: ptr->pos=oldpos2;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
    it=AmethystCore_anything(self ); FAILTEST(alt1_3); 
 ame_setcut(self,Qnil);goto accept1;
-  alt1_3:  ame_setpos(self,oldpos2); goto break1;
+  alt1_3:  ptr->pos=oldpos2; goto break1;
  accept1:;
  break;
-case 1/*Args*/:; int oldpos4=ame_getpos(self);
-alt2_1: ame_setpos(self,oldpos4);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
+case 1/*Args*/:; int oldpos3=ptr->pos;
+alt2_1: ptr->pos=oldpos3;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
    it=AmethystCore_anything(self ); FAILTEST(alt2_2); bind_aset(bind,3/*autovar*/,it);
 cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,3/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
@@ -267,14 +267,14 @@ it=rb_funcall(self,sy_Dataflow__append_lp__b2a5,1,bind); it=Qnil;if (ptr->pos<pt
 	if(fail2) goto alt2_2;
  
 ame_setcut(self,Qnil);goto accept2;
-alt2_2: ame_setpos(self,oldpos4);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
+alt2_2: ptr->pos=oldpos3;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
    it=AmethystCore_anything(self ); FAILTEST(alt2_3); 
 ame_setcut(self,Qnil);goto accept2;
-  alt2_3:  ame_setpos(self,oldpos4); goto break1;
+  alt2_3:  ptr->pos=oldpos3; goto break1;
  accept2:;
  break;
-case 2/*Bind*/:; int oldpos5=ame_getpos(self);
-alt3_1: ame_setpos(self,oldpos5);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
+case 2/*Bind*/:; int oldpos4=ptr->pos;
+alt3_1: ptr->pos=oldpos4;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
    it=AmethystCore_anything(self ); FAILTEST(alt3_2); bind_aset(bind,5/*autovar*/,it);
 cstruct oldpass3=*ptr; int fail3=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,5/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
@@ -286,71 +286,71 @@ it=rb_funcall(self,sy_Dataflow__append_lp__4297,1,bind); it=Qnil;if (ptr->pos<pt
 	if(fail3) goto alt3_2;
  
 ame_setcut(self,Qnil);goto accept3;
-alt3_2: ame_setpos(self,oldpos5);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
+alt3_2: ptr->pos=oldpos4;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
    it=AmethystCore_anything(self ); FAILTEST(alt3_3); 
 ame_setcut(self,Qnil);goto accept3;
-  alt3_3:  ame_setpos(self,oldpos5); goto break1;
+  alt3_3:  ptr->pos=oldpos4; goto break1;
  accept3:;
  break;
-case 3/*CAct*/:; int oldpos6=ame_getpos(self);
-alt4_1: ame_setpos(self,oldpos6);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
+case 3/*CAct*/:; int oldpos5=ptr->pos;
+alt4_1: ptr->pos=oldpos5;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
    it=AmethystCore_anything(self ); FAILTEST(alt4_2); bind_aset(bind,7/*autovar*/,it);
 cstruct oldpass4=*ptr; int fail4=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,7/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  it=rb_funcall(self,sy_Dataflow_src_25d9,1,bind);  bind_aset(bind,8/*autovar*/,it);
-it=rb_funcall(self,sy_Dataflow__append_lp__0eeb,1,bind); int oldpos7; while(1){oldpos7=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break3); if (ame_getstop(self)!=Qnil){{oldpos7=ame_getpos(self);goto break3;} } } break3: ame_setstop(self,Qnil);  ame_setpos(self,oldpos7); it=Qnil;if (ptr->pos<ptr->len) goto pass4;
+it=rb_funcall(self,sy_Dataflow__append_lp__0eeb,1,bind); ptr->pos=ptr->len;it=Qnil;if (ptr->pos<ptr->len) goto pass4;
 	goto success4;
 	pass4: fail4=1;
 	success4: *ptr=oldpass4;
 	if(fail4) goto alt4_2;
  
 ame_setcut(self,Qnil);goto accept4;
-alt4_2: ame_setpos(self,oldpos6);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
+alt4_2: ptr->pos=oldpos5;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
    it=AmethystCore_anything(self ); FAILTEST(alt4_3); 
 ame_setcut(self,Qnil);goto accept4;
-  alt4_3:  ame_setpos(self,oldpos6); goto break1;
+  alt4_3:  ptr->pos=oldpos5; goto break1;
  accept4:;
  break;
-case 4/*Global*/:; int oldpos8=ame_getpos(self);
-alt5_1: ame_setpos(self,oldpos8);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
+case 4/*Global*/:; int oldpos6=ptr->pos;
+alt5_1: ptr->pos=oldpos6;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
    it=AmethystCore_anything(self ); FAILTEST(alt5_2); bind_aset(bind,9/*autovar*/,it);
 cstruct oldpass5=*ptr; int fail5=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,9/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  it=rb_funcall(self,sy_Dataflow_src_25d9,1,bind);  bind_aset(bind,10/*autovar*/,it);
-it=rb_funcall(self,sy_Dataflow__append_lp__b494,1,bind); it=rb_funcall(self,sy_Dataflow__at_marked_lt__59bb,1,bind); int oldpos9; while(1){oldpos9=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break4); if (ame_getstop(self)!=Qnil){{oldpos9=ame_getpos(self);goto break4;} } } break4: ame_setstop(self,Qnil);  ame_setpos(self,oldpos9); it=Qnil;if (ptr->pos<ptr->len) goto pass5;
+it=rb_funcall(self,sy_Dataflow__append_lp__b494,1,bind); it=rb_funcall(self,sy_Dataflow__at_marked_lt__59bb,1,bind); ptr->pos=ptr->len;it=Qnil;if (ptr->pos<ptr->len) goto pass5;
 	goto success5;
 	pass5: fail5=1;
 	success5: *ptr=oldpass5;
 	if(fail5) goto alt5_2;
  
 ame_setcut(self,Qnil);goto accept5;
-alt5_2: ame_setpos(self,oldpos8);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
+alt5_2: ptr->pos=oldpos6;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
    it=AmethystCore_anything(self ); FAILTEST(alt5_3); 
 ame_setcut(self,Qnil);goto accept5;
-  alt5_3:  ame_setpos(self,oldpos8); goto break1;
+  alt5_3:  ptr->pos=oldpos6; goto break1;
  accept5:;
  break;
-case 5/*Key*/:; int oldpos10=ame_getpos(self);
-alt6_1: ame_setpos(self,oldpos10);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
+case 5/*Key*/:; int oldpos7=ptr->pos;
+alt6_1: ptr->pos=oldpos7;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
    it=AmethystCore_anything(self ); FAILTEST(alt6_2); bind_aset(bind,11/*autovar*/,it);
 cstruct oldpass6=*ptr; int fail6=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,11/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  it=rb_funcall(self,sy_Dataflow_src_25d9,1,bind);  bind_aset(bind,12/*autovar*/,it);
-it=rb_funcall(self,sy_Dataflow__append_lp__66a2,1,bind); it=rb_funcall(self,sy_Dataflow__at_marked_lt__59bb,1,bind); int oldpos11; while(1){oldpos11=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break5); if (ame_getstop(self)!=Qnil){{oldpos11=ame_getpos(self);goto break5;} } } break5: ame_setstop(self,Qnil);  ame_setpos(self,oldpos11); it=Qnil;if (ptr->pos<ptr->len) goto pass6;
+it=rb_funcall(self,sy_Dataflow__append_lp__66a2,1,bind); it=rb_funcall(self,sy_Dataflow__at_marked_lt__59bb,1,bind); ptr->pos=ptr->len;it=Qnil;if (ptr->pos<ptr->len) goto pass6;
 	goto success6;
 	pass6: fail6=1;
 	success6: *ptr=oldpass6;
 	if(fail6) goto alt6_2;
  
 ame_setcut(self,Qnil);goto accept6;
-alt6_2: ame_setpos(self,oldpos10);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
+alt6_2: ptr->pos=oldpos7;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
    it=AmethystCore_anything(self ); FAILTEST(alt6_3); 
 ame_setcut(self,Qnil);goto accept6;
-  alt6_3:  ame_setpos(self,oldpos10); goto break1;
+  alt6_3:  ptr->pos=oldpos7; goto break1;
  accept6:;
  break;
-case 6/*Local*/:; int oldpos12=ame_getpos(self);
-alt7_1: ame_setpos(self,oldpos12);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
+case 6/*Local*/:; int oldpos8=ptr->pos;
+alt7_1: ptr->pos=oldpos8;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
    it=AmethystCore_anything(self ); FAILTEST(alt7_2); bind_aset(bind,13/*autovar*/,it);
 cstruct oldpass7=*ptr; int fail7=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,13/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
@@ -362,14 +362,14 @@ it=rb_funcall(self,sy_Dataflow__append_lp__4b67,1,bind); it=Qnil;if (ptr->pos<pt
 	if(fail7) goto alt7_2;
  
 ame_setcut(self,Qnil);goto accept7;
-alt7_2: ame_setpos(self,oldpos12);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
+alt7_2: ptr->pos=oldpos8;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
    it=AmethystCore_anything(self ); FAILTEST(alt7_3); 
 ame_setcut(self,Qnil);goto accept7;
-  alt7_3:  ame_setpos(self,oldpos12); goto break1;
+  alt7_3:  ptr->pos=oldpos8; goto break1;
  accept7:;
  break;
-case 7/*Result*/:; int oldpos13=ame_getpos(self);
-alt8_1: ame_setpos(self,oldpos13);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
+case 7/*Result*/:; int oldpos9=ptr->pos;
+alt8_1: ptr->pos=oldpos9;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
    it=AmethystCore_anything(self ); FAILTEST(alt8_2); bind_aset(bind,15/*autovar*/,it);
 cstruct oldpass8=*ptr; int fail8=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,15/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
@@ -381,14 +381,14 @@ it=rb_funcall(self,sy_Dataflow__append_lp__0605,1,bind); it=Qnil;if (ptr->pos<pt
 	if(fail8) goto alt8_2;
  
 ame_setcut(self,Qnil);goto accept8;
-alt8_2: ame_setpos(self,oldpos13);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
+alt8_2: ptr->pos=oldpos9;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break1;}
    it=AmethystCore_anything(self ); FAILTEST(alt8_3); 
 ame_setcut(self,Qnil);goto accept8;
-  alt8_3:  ame_setpos(self,oldpos13); goto break1;
+  alt8_3:  ptr->pos=oldpos9; goto break1;
  accept8:;
  break;
 case 8/*Object*/:;   it=AmethystCore_anything(self ); FAILTEST(break1); break;
-} if (ame_getstop(self)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos1); it=rb_funcall(self,sy_Dataflow_bind_lb_0_rb_,1,bind);  bind_aset(bind,17/*_result*/,it);
+} if (ame_getstop(self)!=Qnil){{oldpos1=ptr->pos;goto break1;} } } break1: ame_setstop(self,Qnil); ptr->pos=oldpos1; it=rb_funcall(self,sy_Dataflow_bind_lb_0_rb_,1,bind);  bind_aset(bind,17/*_result*/,it);
 
 return it;
 fail: return failobj; }
@@ -398,8 +398,8 @@ switch(FIX2LONG(rb_hash_aref(switchhash_Dataflow_2,rb_obj_class(ame_curobj(self)
 cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,0/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  it=rb_ary_new3(0); bind_aset(bind,1/*autovar*/,it);
-int oldpos1; while(1){oldpos1=ame_getpos(self);   it=Dataflow_traverse_item(self ); FAILTEST(break1); bind_aset(bind,2/*autovar*/,it);
-it=rb_funcall(self,sy_Dataflow__append_lp__d113,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos1); it=bind_aget(bind,1/*autovar*/); bind_aset(bind,3/*t*/,it);
+int oldpos1; while(1){oldpos1=ptr->pos;   it=Dataflow_traverse_item(self ); FAILTEST(break1); bind_aset(bind,2/*autovar*/,it);
+it=rb_funcall(self,sy_Dataflow__append_lp__d113,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos1=ptr->pos;goto break1;} } } break1: ame_setstop(self,Qnil); ptr->pos=oldpos1; it=bind_aget(bind,1/*autovar*/); bind_aset(bind,3/*t*/,it);
 it=rb_funcall(self,sy_Dataflow_Act_lb_bind_1a17,1,bind);  bind_aset(bind,4/*act*/,it);
 it=rb_funcall(self,sy_Dataflow__at_marked_lt__765b,1,bind); it=rb_funcall(self,sy_Dataflow_bind_lb_4_rb__dot__c19e,1,bind);  bind_aset(bind,5/*autovar*/,it);
 cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
@@ -432,8 +432,8 @@ case 1/*Apply*/:;   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(b
 cstruct oldpass4=*ptr; int fail4=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,12/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  it=rb_ary_new3(0); bind_aset(bind,13/*autovar*/,it);
-int oldpos2; while(1){oldpos2=ame_getpos(self);   it=Dataflow_traverse_item(self ); FAILTEST(break2); bind_aset(bind,14/*autovar*/,it);
-it=rb_funcall(self,sy_Dataflow__append_lp__473a,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos2=ame_getpos(self);goto break2;} } } break2: ame_setstop(self,Qnil);  ame_setpos(self,oldpos2); it=bind_aget(bind,13/*autovar*/); bind_aset(bind,3/*t*/,it);
+int oldpos2; while(1){oldpos2=ptr->pos;   it=Dataflow_traverse_item(self ); FAILTEST(break2); bind_aset(bind,14/*autovar*/,it);
+it=rb_funcall(self,sy_Dataflow__append_lp__473a,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos2=ptr->pos;goto break2;} } } break2: ame_setstop(self,Qnil); ptr->pos=oldpos2; it=bind_aget(bind,13/*autovar*/); bind_aset(bind,3/*t*/,it);
 it=rb_funcall(self,sy_Dataflow_Apply_lb__ti__lp__43fb,1,bind);  bind_aset(bind,15/*app*/,it);
 it=bind_aget(bind,15/*app*/); bind_aset(bind,16/*autovar*/,it);
 cstruct oldpass5=*ptr; int fail5=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
@@ -463,10 +463,10 @@ it=bind_aget(bind,18/*autovar*/); bind_aset(bind,11/*_result*/,it);
 case 2/*Bind*/:;   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,19/*autovar*/,it);
 cstruct oldpass7=*ptr; int fail7=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,19/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
- int oldpos3; while(1){oldpos3=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break3); if (ame_getstop(self)!=Qnil){{oldpos3=ame_getpos(self);goto break3;} } } break3: ame_setstop(self,Qnil);  ame_setpos(self,oldpos3);   it=Dataflow_traverse(self ); FAILTEST(pass7); bind_aset(bind,20/*autovar*/,it);
+ ptr->pos=ptr->len;  it=Dataflow_traverse(self ); FAILTEST(pass7); bind_aset(bind,20/*autovar*/,it);
 cstruct oldpass8=*ptr; int fail8=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,20/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
- int oldpos4; while(1){oldpos4=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break4); if (ame_getstop(self)!=Qnil){{oldpos4=ame_getpos(self);goto break4;} } } break4: ame_setstop(self,Qnil);  ame_setpos(self,oldpos4); it=rb_funcall(self,sy_Dataflow_bind_end_6e13,1,bind);  bind_aset(bind,21/*autovar*/,it);
+ ptr->pos=ptr->len;it=rb_funcall(self,sy_Dataflow_bind_end_6e13,1,bind);  bind_aset(bind,21/*autovar*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass8;
 	goto success8;
 	pass8: fail8=1;
@@ -483,7 +483,7 @@ it=bind_aget(bind,22/*autovar*/); bind_aset(bind,11/*_result*/,it);
 case 3/*Local*/:;   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,23/*autovar*/,it);
 cstruct oldpass9=*ptr; int fail9=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,23/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
- int oldpos5; while(1){oldpos5=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break5); if (ame_getstop(self)!=Qnil){{oldpos5=ame_getpos(self);goto break5;} } } break5: ame_setstop(self,Qnil);  ame_setpos(self,oldpos5); it=rb_funcall(self,sy_Dataflow_ssanum_lp_s_3920,1,bind);  bind_aset(bind,24/*autovar*/,it);
+ ptr->pos=ptr->len;it=rb_funcall(self,sy_Dataflow_ssanum_lp_s_3920,1,bind);  bind_aset(bind,24/*autovar*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass9;
 	goto success9;
 	pass9: fail9=1;
@@ -496,8 +496,8 @@ cstruct oldpass10=*ptr; int fail10=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,25/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  it=rb_funcall(self,sy_Dataflow_oldssanu_073d,1,bind);  bind_aset(bind,26/*old*/,it);
 it=rb_ary_new3(0); bind_aset(bind,27/*autovar*/,it);
-int oldpos6; while(1){oldpos6=ame_getpos(self);   it=Dataflow_traverse_item(self ); FAILTEST(break6); bind_aset(bind,28/*autovar*/,it);
-it=rb_funcall(self,sy_Dataflow__append_lp__0860,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos6=ame_getpos(self);goto break6;} } } break6: ame_setstop(self,Qnil);  ame_setpos(self,oldpos6); it=bind_aget(bind,27/*autovar*/); bind_aset(bind,3/*t*/,it);
+int oldpos3; while(1){oldpos3=ptr->pos;   it=Dataflow_traverse_item(self ); FAILTEST(break3); bind_aset(bind,28/*autovar*/,it);
+it=rb_funcall(self,sy_Dataflow__append_lp__0860,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos3=ptr->pos;goto break3;} } } break3: ame_setstop(self,Qnil); ptr->pos=oldpos3; it=bind_aget(bind,27/*autovar*/); bind_aset(bind,3/*t*/,it);
 it=rb_funcall(self,sy_Dataflow__at_oldssan_5ad9,1,bind); it=rb_funcall(self,sy_Dataflow_Lookahea_20ca,1,bind);  bind_aset(bind,29/*autovar*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass10;
 	goto success10;
@@ -511,8 +511,8 @@ cstruct oldpass11=*ptr; int fail11=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,30/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  it=rb_funcall(self,sy_Dataflow_ssanums_dot__ae08,1,bind);  bind_aset(bind,31/*prev*/,it);
 it=rb_ary_new3(0); bind_aset(bind,32/*autovar*/,it);
-int oldpos7; while(1){oldpos7=ame_getpos(self);   it=Dataflow_traverse_item(self ); FAILTEST(break7); bind_aset(bind,33/*autovar*/,it);
-it=rb_funcall(self,sy_Dataflow__append_lp__b601,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos7=ame_getpos(self);goto break7;} } } break7: ame_setstop(self,Qnil);  ame_setpos(self,oldpos7); it=bind_aget(bind,32/*autovar*/); bind_aset(bind,3/*t*/,it);
+int oldpos4; while(1){oldpos4=ptr->pos;   it=Dataflow_traverse_item(self ); FAILTEST(break4); bind_aset(bind,33/*autovar*/,it);
+it=rb_funcall(self,sy_Dataflow__append_lp__b601,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos4=ptr->pos;goto break4;} } } break4: ame_setstop(self,Qnil); ptr->pos=oldpos4; it=bind_aget(bind,32/*autovar*/); bind_aset(bind,3/*t*/,it);
 it=rb_funcall(self,sy_Dataflow_many_end_a53b,1,bind); it=rb_funcall(self,sy_Dataflow_Many_dot_cre_9111,1,bind);  bind_aset(bind,34/*autovar*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass11;
 	goto success11;
@@ -527,8 +527,8 @@ cstruct oldpass12=*ptr; int fail12=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,35/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  it=rb_ary_new3(0); bind_aset(bind,36/*join*/,it);
 it=rb_funcall(self,sy_Dataflow_oldssanu_073d,1,bind);  bind_aset(bind,26/*old*/,it);
-int oldpos8; while(1){oldpos8=ame_getpos(self); it=rb_funcall(self,sy_Dataflow__at_oldssan_28ff,1,bind);   it=Dataflow_traverse_item(self ); FAILTEST(break8); bind_aset(bind,37/*autovar*/,it);
-it=rb_funcall(self,sy_Dataflow__append_lp__2f87,1,bind); it=rb_funcall(self,sy_Dataflow_bind_lb_36_rb__21ca,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos8=ame_getpos(self);goto break8;} } } break8: ame_setstop(self,Qnil);  ame_setpos(self,oldpos8); it=rb_funcall(self,sy_Dataflow_or_end_lp_b_7477,1,bind); it=rb_funcall(self,sy_Dataflow_Or_lb__ti_bind_ffe5,1,bind);  bind_aset(bind,38/*autovar*/,it);
+int oldpos5; while(1){oldpos5=ptr->pos; it=rb_funcall(self,sy_Dataflow__at_oldssan_28ff,1,bind);   it=Dataflow_traverse_item(self ); FAILTEST(break5); bind_aset(bind,37/*autovar*/,it);
+it=rb_funcall(self,sy_Dataflow__append_lp__2f87,1,bind); it=rb_funcall(self,sy_Dataflow_bind_lb_36_rb__21ca,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos5=ptr->pos;goto break5;} } } break5: ame_setstop(self,Qnil); ptr->pos=oldpos5; it=rb_funcall(self,sy_Dataflow_or_end_lp_b_7477,1,bind); it=rb_funcall(self,sy_Dataflow_Or_lb__ti_bind_ffe5,1,bind);  bind_aset(bind,38/*autovar*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass12;
 	goto success12;
 	pass12: fail12=1;
@@ -577,8 +577,8 @@ cstruct oldpass17=*ptr; int fail17=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
 cstruct oldpass18=*ptr; int fail18=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,48/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  it=rb_ary_new3(0); bind_aset(bind,49/*autovar*/,it);
-int oldpos9; while(1){oldpos9=ame_getpos(self);   it=Dataflow_traverse_item(self ); FAILTEST(break9); bind_aset(bind,50/*autovar*/,it);
-it=rb_funcall(self,sy_Dataflow__append_lp__f794,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos9=ame_getpos(self);goto break9;} } } break9: ame_setstop(self,Qnil);  ame_setpos(self,oldpos9); it=bind_aget(bind,49/*autovar*/); bind_aset(bind,9/*var*/,it);
+int oldpos6; while(1){oldpos6=ptr->pos;   it=Dataflow_traverse_item(self ); FAILTEST(break6); bind_aset(bind,50/*autovar*/,it);
+it=rb_funcall(self,sy_Dataflow__append_lp__f794,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos6=ptr->pos;goto break6;} } } break6: ame_setstop(self,Qnil); ptr->pos=oldpos6; it=bind_aget(bind,49/*autovar*/); bind_aset(bind,9/*var*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass18;
 	goto success18;
 	pass18: fail18=1;
@@ -603,7 +603,7 @@ cstruct oldpass19=*ptr; int fail19=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
  it=rb_ary_new3(0); bind_aset(bind,53/*alts*/,it);
 it=rb_ary_new3(0); bind_aset(bind,36/*join*/,it);
 it=rb_funcall(self,sy_Dataflow_oldssanu_073d,1,bind);  bind_aset(bind,26/*old*/,it);
-int oldpos10; while(1){oldpos10=ame_getpos(self); it=rb_funcall(self,sy_Dataflow__at_oldssan_28ff,1,bind);   it=AmethystCore_anything(self ); FAILTEST(break10); bind_aset(bind,54/*autovar*/,it);
+int oldpos7; while(1){oldpos7=ptr->pos; it=rb_funcall(self,sy_Dataflow__at_oldssan_28ff,1,bind);   it=AmethystCore_anything(self ); FAILTEST(break7); bind_aset(bind,54/*autovar*/,it);
 cstruct oldpass20=*ptr; int fail20=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,54/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
    it=AmethystCore_anything(self ); FAILTEST(pass20); bind_aset(bind,55/*pred*/,it);
@@ -612,8 +612,8 @@ it=rb_funcall(self,sy_Dataflow_bind_lb_53_rb__04dc,1,bind); it=Qnil;if (ptr->pos
 	goto success20;
 	pass20: fail20=1;
 	success20: *ptr=oldpass20;
-	if(fail20) goto break10;
-it=rb_funcall(self,sy_Dataflow_bind_lb_36_rb__21ca,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos10=ame_getpos(self);goto break10;} } } break10: ame_setstop(self,Qnil);  ame_setpos(self,oldpos10); it=rb_funcall(self,sy_Dataflow_or_end_lp_b_7477,1,bind); it=rb_funcall(self,sy_Dataflow_Switch_lb__le__e3b2,1,bind);  bind_aset(bind,57/*autovar*/,it);
+	if(fail20) goto break7;
+it=rb_funcall(self,sy_Dataflow_bind_lb_36_rb__21ca,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos7=ptr->pos;goto break7;} } } break7: ame_setstop(self,Qnil); ptr->pos=oldpos7; it=rb_funcall(self,sy_Dataflow_or_end_lp_b_7477,1,bind); it=rb_funcall(self,sy_Dataflow_Switch_lb__le__e3b2,1,bind);  bind_aset(bind,57/*autovar*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass19;
 	goto success19;
 	pass19: fail19=1;
@@ -627,7 +627,7 @@ cstruct oldpass21=*ptr; int fail21=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
  it=rb_ary_new3(0); bind_aset(bind,53/*alts*/,it);
 it=rb_ary_new3(0); bind_aset(bind,36/*join*/,it);
 it=rb_funcall(self,sy_Dataflow_oldssanu_073d,1,bind);  bind_aset(bind,26/*old*/,it);
-int oldpos11; while(1){oldpos11=ame_getpos(self); it=rb_funcall(self,sy_Dataflow__at_oldssan_28ff,1,bind);   it=AmethystCore_anything(self ); FAILTEST(break11); bind_aset(bind,59/*autovar*/,it);
+int oldpos8; while(1){oldpos8=ptr->pos; it=rb_funcall(self,sy_Dataflow__at_oldssan_28ff,1,bind);   it=AmethystCore_anything(self ); FAILTEST(break8); bind_aset(bind,59/*autovar*/,it);
 cstruct oldpass22=*ptr; int fail22=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,59/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
    it=AmethystCore_anything(self ); FAILTEST(pass22); bind_aset(bind,55/*pred*/,it);
@@ -636,8 +636,8 @@ it=rb_funcall(self,sy_Dataflow_bind_lb_53_rb__04dc,1,bind); it=Qnil;if (ptr->pos
 	goto success22;
 	pass22: fail22=1;
 	success22: *ptr=oldpass22;
-	if(fail22) goto break11;
-it=rb_funcall(self,sy_Dataflow_bind_lb_36_rb__21ca,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos11=ame_getpos(self);goto break11;} } } break11: ame_setstop(self,Qnil);  ame_setpos(self,oldpos11); it=rb_funcall(self,sy_Dataflow_or_end_lp_b_7477,1,bind); it=rb_funcall(self,sy_Dataflow_Switch_C_7448,1,bind);  bind_aset(bind,60/*autovar*/,it);
+	if(fail22) goto break8;
+it=rb_funcall(self,sy_Dataflow_bind_lb_36_rb__21ca,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos8=ptr->pos;goto break8;} } } break8: ame_setstop(self,Qnil); ptr->pos=oldpos8; it=rb_funcall(self,sy_Dataflow_or_end_lp_b_7477,1,bind); it=rb_funcall(self,sy_Dataflow_Switch_C_7448,1,bind);  bind_aset(bind,60/*autovar*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass21;
 	goto success21;
 	pass21: fail21=1;
@@ -700,7 +700,7 @@ return it;
 fail: return failobj; }
 VALUE Dead_Code_Deleter3_traverse(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(10);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-int oldpos1; while(1){oldpos1=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break1); if (ame_getstop(self)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos1); it=rb_funcall(self,sy_Dead_Code_Deleter3__at_changed_c681,1,bind);  bind_aset(bind,0/*oldchanged*/,it);
+ptr->pos=ptr->len;it=rb_funcall(self,sy_Dead_Code_Deleter3__at_changed_c681,1,bind);  bind_aset(bind,0/*oldchanged*/,it);
 it=rb_funcall(self,sy_Dead_Code_Deleter3_src_25d9,1,bind);  bind_aset(bind,1/*this*/,it);
 it=Qnil; bind_aset(bind,2/*clon*/,it);
 it=Qfalse; bind_aset(bind,3/*changed*/,it);
@@ -710,7 +710,7 @@ cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
    it=AmethystCore_anything(self ); FAILTEST(pass1); bind_aset(bind,5/*autovar*/,it);
 cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,5/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
- int oldpos2; while(1){oldpos2=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break2); bind_aset(bind,6/*autovar*/,it);
+ int oldpos1; while(1){oldpos1=ptr->pos;   it=AmethystCore_anything(self ); FAILTEST(break1); bind_aset(bind,6/*autovar*/,it);
 cstruct oldpass3=*ptr; int fail3=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,6/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
    it=AmethystCore_anything(self ); FAILTEST(pass3); bind_aset(bind,7/*key*/,it);
@@ -719,8 +719,8 @@ it=rb_funcall(self,sy_Dead_Code_Deleter3__lp_bind_lb_2_rb__6693,1,bind); it=Qnil
 	goto success3;
 	pass3: fail3=1;
 	success3: *ptr=oldpass3;
-	if(fail3) goto break2;
- if (ame_getstop(self)!=Qnil){{oldpos2=ame_getpos(self);goto break2;} } } break2: ame_setstop(self,Qnil);  ame_setpos(self,oldpos2); it=Qnil;if (ptr->pos<ptr->len) goto pass2;
+	if(fail3) goto break1;
+ if (ame_getstop(self)!=Qnil){{oldpos1=ptr->pos;goto break1;} } } break1: ame_setstop(self,Qnil); ptr->pos=oldpos1; it=Qnil;if (ptr->pos<ptr->len) goto pass2;
 	goto success2;
 	pass2: fail2=1;
 	success2: *ptr=oldpass2;
@@ -736,13 +736,13 @@ return it;
 fail: return failobj; }
 VALUE Dead_Code_Deleter3_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(8);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-switch(FIX2LONG(rb_hash_aref(switchhash_Dead_Code_Deleter3_3,rb_obj_class(ame_curobj(self))))){case 0/*AmethystAST*/:; int oldpos1=ame_getpos(self);
-alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+switch(FIX2LONG(rb_hash_aref(switchhash_Dead_Code_Deleter3_3,rb_obj_class(ame_curobj(self))))){case 0/*AmethystAST*/:; int oldpos1=ptr->pos;
+alt1_1: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=Dead_Code_Deleter3_visit(self ); FAILTEST(alt1_2); bind_aset(bind,0/*a*/,it);
 it=rb_funcall(self,sy_Dead_Code_Deleter3__at_changed_5352,1,bind); it=bind_aget(bind,0/*a*/); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
-alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+alt1_2: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt1_3); bind_aset(bind,2/*autovar*/,it);
 cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,2/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
@@ -755,26 +755,26 @@ it=Qnil;if (ptr->pos<ptr->len) goto pass1;
 it=bind_aget(bind,3/*autovar*/); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
-alt1_3: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+alt1_3: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt1_4); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
-  alt1_4:  ame_setpos(self,oldpos1); goto fail;
+  alt1_4:  ptr->pos=oldpos1; goto fail;
  accept1:;
  break;
-case 1/*Array*/:; int oldpos2=ame_getpos(self);
-alt2_1: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+case 1/*Array*/:; int oldpos2=ptr->pos;
+alt2_1: ptr->pos=oldpos2;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=Dead_Code_Deleter3_visit(self ); FAILTEST(alt2_2); bind_aset(bind,0/*a*/,it);
 it=rb_funcall(self,sy_Dead_Code_Deleter3__at_changed_5352,1,bind); it=bind_aget(bind,0/*a*/); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept2;
-alt2_2: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+alt2_2: ptr->pos=oldpos2;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt2_3); bind_aset(bind,4/*autovar*/,it);
 cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,4/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  it=rb_ary_new3(0); bind_aset(bind,5/*ar*/,it);
-int oldpos3; while(1){oldpos3=ame_getpos(self);   it=Dead_Code_Deleter3_traverse_item(self ); FAILTEST(break1); bind_aset(bind,6/*it*/,it);
-it=rb_funcall(self,sy_Dead_Code_Deleter3_bind_lb_5_rb__lt__1671,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos3=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos3); it=bind_aget(bind,5/*ar*/); bind_aset(bind,7/*autovar*/,it);
+int oldpos3; while(1){oldpos3=ptr->pos;   it=Dead_Code_Deleter3_traverse_item(self ); FAILTEST(break1); bind_aset(bind,6/*it*/,it);
+it=rb_funcall(self,sy_Dead_Code_Deleter3_bind_lb_5_rb__lt__1671,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos3=ptr->pos;goto break1;} } } break1: ame_setstop(self,Qnil); ptr->pos=oldpos3; it=bind_aget(bind,5/*ar*/); bind_aset(bind,7/*autovar*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass2;
 	goto success2;
 	pass2: fail2=1;
@@ -783,24 +783,24 @@ it=Qnil;if (ptr->pos<ptr->len) goto pass2;
 it=bind_aget(bind,7/*autovar*/); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept2;
-alt2_3: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+alt2_3: ptr->pos=oldpos2;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt2_4); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept2;
-  alt2_4:  ame_setpos(self,oldpos2); goto fail;
+  alt2_4:  ptr->pos=oldpos2; goto fail;
  accept2:;
  break;
-case 2/*Object*/:; int oldpos4=ame_getpos(self);
-alt3_1: ame_setpos(self,oldpos4);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+case 2/*Object*/:; int oldpos4=ptr->pos;
+alt3_1: ptr->pos=oldpos4;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=Dead_Code_Deleter3_visit(self ); FAILTEST(alt3_2); bind_aset(bind,0/*a*/,it);
 it=rb_funcall(self,sy_Dead_Code_Deleter3__at_changed_5352,1,bind); it=bind_aget(bind,0/*a*/); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept3;
-alt3_2: ame_setpos(self,oldpos4);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+alt3_2: ptr->pos=oldpos4;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt3_3); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept3;
-  alt3_3:  ame_setpos(self,oldpos4); goto fail;
+  alt3_3:  ptr->pos=oldpos4; goto fail;
  accept3:;
  break;
 }
@@ -812,7 +812,7 @@ switch(FIX2LONG(rb_hash_aref(switchhash_Dead_Code_Deleter3_2,rb_obj_class(ame_cu
 cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,0/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  it=rb_funcall(self,sy_Dead_Code_Deleter3_src_25d9,1,bind);  bind_aset(bind,1/*this*/,it);
-int oldpos1; while(1){oldpos1=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break1); if (ame_getstop(self)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos1); it=Qnil;if (ptr->pos<ptr->len) goto pass1;
+ptr->pos=ptr->len;it=Qnil;if (ptr->pos<ptr->len) goto pass1;
 	goto success1;
 	pass1: fail1=1;
 	success1: *ptr=oldpass1;
@@ -822,7 +822,7 @@ it=rb_funcall(self,sy_Dead_Code_Deleter3__lp_,1,bind);  bind_aset(bind,2/*_resul
 case 3/*Apply*/:;   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,3/*autovar*/,it);
 cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,3/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
- int oldpos2; while(1){oldpos2=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break2); if (ame_getstop(self)!=Qnil){{oldpos2=ame_getpos(self);goto break2;} } } break2: ame_setstop(self,Qnil);  ame_setpos(self,oldpos2); it=rb_funcall(self,sy_Dead_Code_Deleter3_src_25d9,1,bind);  bind_aset(bind,4/*autovar*/,it);
+ ptr->pos=ptr->len;it=rb_funcall(self,sy_Dead_Code_Deleter3_src_25d9,1,bind);  bind_aset(bind,4/*autovar*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass2;
 	goto success2;
 	pass2: fail2=1;
@@ -833,10 +833,10 @@ it=bind_aget(bind,4/*autovar*/); bind_aset(bind,2/*_result*/,it);
 case 4/*Bind*/:;   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,5/*autovar*/,it);
 cstruct oldpass3=*ptr; int fail3=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,5/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
- int oldpos3; while(1){oldpos3=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break3); if (ame_getstop(self)!=Qnil){{oldpos3=ame_getpos(self);goto break3;} } } break3: ame_setstop(self,Qnil);  ame_setpos(self,oldpos3); it=rb_funcall(self,sy_Dead_Code_Deleter3_src_25d9,1,bind); it=rb_funcall(self,sy_Dead_Code_Deleter3__at_bounded_6bb2,1,bind);   it=Dead_Code_Deleter3_traverse(self ); FAILTEST(pass3); bind_aset(bind,6/*autovar*/,it);
+ ptr->pos=ptr->len;it=rb_funcall(self,sy_Dead_Code_Deleter3_src_25d9,1,bind); it=rb_funcall(self,sy_Dead_Code_Deleter3__at_bounded_6bb2,1,bind);   it=Dead_Code_Deleter3_traverse(self ); FAILTEST(pass3); bind_aset(bind,6/*autovar*/,it);
 cstruct oldpass4=*ptr; int fail4=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,6/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
- int oldpos4; while(1){oldpos4=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break4); if (ame_getstop(self)!=Qnil){{oldpos4=ame_getpos(self);goto break4;} } } break4: ame_setstop(self,Qnil);  ame_setpos(self,oldpos4); it=rb_funcall(self,sy_Dead_Code_Deleter3__at_bounded_7c82,1,bind); it=rb_funcall(self,sy_Dead_Code_Deleter3__at_reachab_005c,1,bind);  bind_aset(bind,7/*autovar*/,it);
+ ptr->pos=ptr->len;it=rb_funcall(self,sy_Dead_Code_Deleter3__at_bounded_7c82,1,bind); it=rb_funcall(self,sy_Dead_Code_Deleter3__at_reachab_005c,1,bind);  bind_aset(bind,7/*autovar*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass4;
 	goto success4;
 	pass4: fail4=1;
@@ -853,7 +853,7 @@ it=bind_aget(bind,8/*autovar*/); bind_aset(bind,2/*_result*/,it);
 case 5/*Local*/:;   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,9/*autovar*/,it);
 cstruct oldpass5=*ptr; int fail5=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,9/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
- int oldpos5; while(1){oldpos5=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break5); if (ame_getstop(self)!=Qnil){{oldpos5=ame_getpos(self);goto break5;} } } break5: ame_setstop(self,Qnil);  ame_setpos(self,oldpos5); it=rb_funcall(self,sy_Dead_Code_Deleter3_src_25d9,1,bind);  bind_aset(bind,1/*this*/,it);
+ ptr->pos=ptr->len;it=rb_funcall(self,sy_Dead_Code_Deleter3_src_25d9,1,bind);  bind_aset(bind,1/*this*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass5;
 	goto success5;
 	pass5: fail5=1;
@@ -910,7 +910,7 @@ return it;
 fail: return failobj; }
 VALUE Forget_SSA_traverse(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(10);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-int oldpos1; while(1){oldpos1=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break1); if (ame_getstop(self)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos1); it=rb_funcall(self,sy_Forget_SSA__at_changed_c681,1,bind);  bind_aset(bind,0/*oldchanged*/,it);
+ptr->pos=ptr->len;it=rb_funcall(self,sy_Forget_SSA__at_changed_c681,1,bind);  bind_aset(bind,0/*oldchanged*/,it);
 it=rb_funcall(self,sy_Forget_SSA_src_25d9,1,bind);  bind_aset(bind,1/*this*/,it);
 it=Qnil; bind_aset(bind,2/*clon*/,it);
 it=Qfalse; bind_aset(bind,3/*changed*/,it);
@@ -920,7 +920,7 @@ cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
    it=AmethystCore_anything(self ); FAILTEST(pass1); bind_aset(bind,5/*autovar*/,it);
 cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,5/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
- int oldpos2; while(1){oldpos2=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break2); bind_aset(bind,6/*autovar*/,it);
+ int oldpos1; while(1){oldpos1=ptr->pos;   it=AmethystCore_anything(self ); FAILTEST(break1); bind_aset(bind,6/*autovar*/,it);
 cstruct oldpass3=*ptr; int fail3=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,6/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
    it=AmethystCore_anything(self ); FAILTEST(pass3); bind_aset(bind,7/*key*/,it);
@@ -929,8 +929,8 @@ it=rb_funcall(self,sy_Forget_SSA__lp_bind_lb_2_rb__6693,1,bind); it=Qnil;if (ptr
 	goto success3;
 	pass3: fail3=1;
 	success3: *ptr=oldpass3;
-	if(fail3) goto break2;
- if (ame_getstop(self)!=Qnil){{oldpos2=ame_getpos(self);goto break2;} } } break2: ame_setstop(self,Qnil);  ame_setpos(self,oldpos2); it=Qnil;if (ptr->pos<ptr->len) goto pass2;
+	if(fail3) goto break1;
+ if (ame_getstop(self)!=Qnil){{oldpos1=ptr->pos;goto break1;} } } break1: ame_setstop(self,Qnil); ptr->pos=oldpos1; it=Qnil;if (ptr->pos<ptr->len) goto pass2;
 	goto success2;
 	pass2: fail2=1;
 	success2: *ptr=oldpass2;
@@ -946,13 +946,13 @@ return it;
 fail: return failobj; }
 VALUE Forget_SSA_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(8);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-switch(FIX2LONG(rb_hash_aref(switchhash_Forget_SSA_3,rb_obj_class(ame_curobj(self))))){case 0/*AmethystAST*/:; int oldpos1=ame_getpos(self);
-alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+switch(FIX2LONG(rb_hash_aref(switchhash_Forget_SSA_3,rb_obj_class(ame_curobj(self))))){case 0/*AmethystAST*/:; int oldpos1=ptr->pos;
+alt1_1: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=Forget_SSA_visit(self ); FAILTEST(alt1_2); bind_aset(bind,0/*a*/,it);
 it=rb_funcall(self,sy_Forget_SSA__at_changed_5352,1,bind); it=bind_aget(bind,0/*a*/); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
-alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+alt1_2: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt1_3); bind_aset(bind,2/*autovar*/,it);
 cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,2/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
@@ -965,26 +965,26 @@ it=Qnil;if (ptr->pos<ptr->len) goto pass1;
 it=bind_aget(bind,3/*autovar*/); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
-alt1_3: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+alt1_3: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt1_4); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
-  alt1_4:  ame_setpos(self,oldpos1); goto fail;
+  alt1_4:  ptr->pos=oldpos1; goto fail;
  accept1:;
  break;
-case 1/*Array*/:; int oldpos2=ame_getpos(self);
-alt2_1: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+case 1/*Array*/:; int oldpos2=ptr->pos;
+alt2_1: ptr->pos=oldpos2;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=Forget_SSA_visit(self ); FAILTEST(alt2_2); bind_aset(bind,0/*a*/,it);
 it=rb_funcall(self,sy_Forget_SSA__at_changed_5352,1,bind); it=bind_aget(bind,0/*a*/); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept2;
-alt2_2: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+alt2_2: ptr->pos=oldpos2;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt2_3); bind_aset(bind,4/*autovar*/,it);
 cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,4/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  it=rb_ary_new3(0); bind_aset(bind,5/*ar*/,it);
-int oldpos3; while(1){oldpos3=ame_getpos(self);   it=Forget_SSA_traverse_item(self ); FAILTEST(break1); bind_aset(bind,6/*it*/,it);
-it=rb_funcall(self,sy_Forget_SSA_bind_lb_5_rb__lt__1671,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos3=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos3); it=bind_aget(bind,5/*ar*/); bind_aset(bind,7/*autovar*/,it);
+int oldpos3; while(1){oldpos3=ptr->pos;   it=Forget_SSA_traverse_item(self ); FAILTEST(break1); bind_aset(bind,6/*it*/,it);
+it=rb_funcall(self,sy_Forget_SSA_bind_lb_5_rb__lt__1671,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos3=ptr->pos;goto break1;} } } break1: ame_setstop(self,Qnil); ptr->pos=oldpos3; it=bind_aget(bind,5/*ar*/); bind_aset(bind,7/*autovar*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass2;
 	goto success2;
 	pass2: fail2=1;
@@ -993,24 +993,24 @@ it=Qnil;if (ptr->pos<ptr->len) goto pass2;
 it=bind_aget(bind,7/*autovar*/); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept2;
-alt2_3: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+alt2_3: ptr->pos=oldpos2;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt2_4); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept2;
-  alt2_4:  ame_setpos(self,oldpos2); goto fail;
+  alt2_4:  ptr->pos=oldpos2; goto fail;
  accept2:;
  break;
-case 2/*Object*/:; int oldpos4=ame_getpos(self);
-alt3_1: ame_setpos(self,oldpos4);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+case 2/*Object*/:; int oldpos4=ptr->pos;
+alt3_1: ptr->pos=oldpos4;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=Forget_SSA_visit(self ); FAILTEST(alt3_2); bind_aset(bind,0/*a*/,it);
 it=rb_funcall(self,sy_Forget_SSA__at_changed_5352,1,bind); it=bind_aget(bind,0/*a*/); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept3;
-alt3_2: ame_setpos(self,oldpos4);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+alt3_2: ptr->pos=oldpos4;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt3_3); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept3;
-  alt3_3:  ame_setpos(self,oldpos4); goto fail;
+  alt3_3:  ptr->pos=oldpos4; goto fail;
  accept3:;
  break;
 }
@@ -1021,7 +1021,7 @@ VALUE Forget_SSA_visit(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(3);  int
 switch(FIX2LONG(rb_hash_aref(switchhash_Forget_SSA_2,rb_obj_class(ame_curobj(self))))){case 0/*Local*/:;   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,0/*autovar*/,it);
 cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,0/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
- int oldpos1; while(1){oldpos1=ame_getpos(self);   it=AmethystCore_anything(self ); FAILTEST(break1); if (ame_getstop(self)!=Qnil){{oldpos1=ame_getpos(self);goto break1;} } } break1: ame_setstop(self,Qnil);  ame_setpos(self,oldpos1); it=rb_funcall(self,sy_Forget_SSA_src_dot_unss_5845,1,bind);  bind_aset(bind,1/*autovar*/,it);
+ ptr->pos=ptr->len;it=rb_funcall(self,sy_Forget_SSA_src_dot_unss_5845,1,bind);  bind_aset(bind,1/*autovar*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass1;
 	goto success1;
 	pass1: fail1=1;
@@ -1148,4 +1148,4 @@ rb_define_method(cls_Forget_SSA,"root",Forget_SSA_root,0);
 rb_define_method(cls_Forget_SSA,"traverse",Forget_SSA_traverse,0);
 rb_define_method(cls_Forget_SSA,"traverse_item",Forget_SSA_traverse_item,0);
 rb_define_method(cls_Forget_SSA,"visit",Forget_SSA_visit,0);
- rb_eval_string("testversiondataflow_ssa('d880382d964a34f32a82ef285688e054')");}
+ rb_eval_string("testversiondataflow_ssa('5bc864eccbbebc5aec0bd7db4b715ea3')");}

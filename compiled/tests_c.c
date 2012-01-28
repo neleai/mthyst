@@ -32,38 +32,38 @@ fail: return failobj; }
 VALUE Tests_de(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(2);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
 switch((unsigned char)*ame_curstr(self)){case UC(0) ... UC(31):;case '!' ... '`':;case 'f' ... UC(255):; it=i_1; bind_aset(bind,0/*foo*/,it);
-int oldpos1=ame_getpos(self);
-alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+int oldpos1=ptr->pos;
+alt1_1: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
  it=rb_funcall(self,sy_Tests_bind_lb_0_rb__pl__fbc2,1,bind); goto alt1_2; 
 ame_setcut(self,Qnil);goto accept1;
-alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+alt1_2: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
  it=rb_funcall(self,sy_Tests_bind_lb_0_rb__pl__3b00,1,bind); goto alt1_3; 
 ame_setcut(self,Qnil);goto accept1;
-  alt1_3:  ame_setpos(self,oldpos1); goto fail;
+  alt1_3:  ptr->pos=oldpos1; goto fail;
  accept1:;
  break;
 case 'd' ... 'e':; it=i_1; bind_aset(bind,0/*foo*/,it);
-int oldpos2=ame_getpos(self);
-alt2_1: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+int oldpos2=ptr->pos;
+alt2_1: ptr->pos=oldpos2;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
  it=rb_funcall(self,sy_Tests_bind_lb_0_rb__pl__fbc2,1,bind); goto alt2_2; 
 ame_setcut(self,Qnil);goto accept2;
-alt2_2: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+alt2_2: ptr->pos=oldpos2;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
  it=rb_funcall(self,sy_Tests_bind_lb_0_rb__pl__3b00,1,bind);   it=AmethystCore_anything(self ); FAILTEST(alt2_3); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept2;
-  alt2_3:  ame_setpos(self,oldpos2); goto fail;
+  alt2_3:  ptr->pos=oldpos2; goto fail;
  accept2:;
  break;
 case ' ' ... ' ':;case 'a' ... 'c':; it=i_1; bind_aset(bind,0/*foo*/,it);
-int oldpos3=ame_getpos(self);
-alt3_1: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+int oldpos3=ptr->pos;
+alt3_1: ptr->pos=oldpos3;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
  it=rb_funcall(self,sy_Tests_bind_lb_0_rb__pl__fbc2,1,bind);   it=Tests_abc(self ); FAILTEST(alt3_2); bind_aset(bind,1/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept3;
-alt3_2: ame_setpos(self,oldpos3);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+alt3_2: ptr->pos=oldpos3;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
  it=rb_funcall(self,sy_Tests_bind_lb_0_rb__pl__3b00,1,bind); goto alt3_3; 
 ame_setcut(self,Qnil);goto accept3;
-  alt3_3:  ame_setpos(self,oldpos3); goto fail;
+  alt3_3:  ptr->pos=oldpos3; goto fail;
  accept3:;
  break;
 }
@@ -71,17 +71,17 @@ return it;
 fail: return failobj; }
 VALUE Tests_foo(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(3);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-int oldpos1=ame_getpos(self);
-alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+int oldpos1=ptr->pos;
+alt1_1: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=Tests_foo(self ); FAILTEST(alt1_2); bind_aset(bind,0/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
-alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+alt1_2: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=rb_funcall(self,sy_bar,0); FAILTEST(alt1_3); bind_aset(bind,1/*bar*/,it);
 it=rb_funcall(self,sy_Tests_bind_lb_2_rb__pl__e5df,1,bind);  bind_aset(bind,0/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
-  alt1_3:  ame_setpos(self,oldpos1); goto fail;
+  alt1_3:  ptr->pos=oldpos1; goto fail;
  accept1:;
 
 return it;
@@ -90,28 +90,28 @@ VALUE Tests_s2(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(1);  int x;VALUE
 
 switch((unsigned char)*ame_curstr(self)){case UC(0) ... '`':;case 'c' ... 'c':;case 'g' ... UC(255):;  it=rb_obj_clone(s_g_b2f5); arg0=it; it=rb_funcall(self,sy_seq,1,arg0); FAILTEST(fail); bind_aset(bind,0/*_result*/,it);
  break;
-case 'd' ... 'f':; int oldpos1=ame_getpos(self);
-alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+case 'd' ... 'f':; int oldpos1=ptr->pos;
+alt1_1: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt1_2);it=i_3; bind_aset(bind,0/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
-alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+alt1_2: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
   it=rb_obj_clone(s_g_b2f5); arg0=it; it=rb_funcall(self,sy_seq,1,arg0); FAILTEST(alt1_3); bind_aset(bind,0/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
-  alt1_3:  ame_setpos(self,oldpos1); goto fail;
+  alt1_3:  ptr->pos=oldpos1; goto fail;
  accept1:;
  break;
-case 'a' ... 'b':; int oldpos2=ame_getpos(self);
-alt2_1: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+case 'a' ... 'b':; int oldpos2=ptr->pos;
+alt2_1: ptr->pos=oldpos2;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
    it=AmethystCore_anything(self ); FAILTEST(alt2_2); bind_aset(bind,0/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept2;
-alt2_2: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+alt2_2: ptr->pos=oldpos2;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
   it=rb_obj_clone(s_g_b2f5); arg0=it; it=rb_funcall(self,sy_seq,1,arg0); FAILTEST(alt2_3); bind_aset(bind,0/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept2;
-  alt2_3:  ame_setpos(self,oldpos2); goto fail;
+  alt2_3:  ptr->pos=oldpos2; goto fail;
  accept2:;
  break;
 }
@@ -119,41 +119,41 @@ return it;
 fail: return failobj; }
 VALUE Tests_sw(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-int oldpos1=ame_getpos(self);
-alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
- int oldpos2=ame_getpos(self);
-alt2_1: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt1_2;}
+int oldpos1=ptr->pos;
+alt1_1: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+ int oldpos2=ptr->pos;
+alt2_1: ptr->pos=oldpos2;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt1_2;}
   it=rb_obj_clone(s_a_0cc1); arg0=it; it=rb_funcall(self,sy_seq,1,arg0); FAILTEST(alt2_2); 
 ame_setcut(self,Qnil);goto accept2;
-alt2_2: ame_setpos(self,oldpos2);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt1_2;}
+alt2_2: ptr->pos=oldpos2;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt1_2;}
   it=rb_obj_clone(s_b_92eb); arg0=it; it=rb_funcall(self,sy_seq,1,arg0); FAILTEST(alt2_3); 
 ame_setcut(self,Qnil);goto accept2;
-  alt2_3:  ame_setpos(self,oldpos2); goto alt1_2;
+  alt2_3:  ptr->pos=oldpos2; goto alt1_2;
  accept2:;
  it=rb_obj_clone(s_c_4a8a); arg0=it; it=rb_funcall(self,sy_seq,1,arg0); FAILTEST(alt1_2); bind_aset(bind,0/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
-alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+alt1_2: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
   it=rb_obj_clone(s_d_8277); arg0=it; it=rb_funcall(self,sy_seq,1,arg0); FAILTEST(alt1_3); bind_aset(bind,0/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
-  alt1_3:  ame_setpos(self,oldpos1); goto fail;
+  alt1_3:  ptr->pos=oldpos1; goto fail;
  accept1:;
 
 return it;
 fail: return failobj; }
 VALUE Tests_test(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-int oldpos1=ame_getpos(self);
-alt1_1: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+int oldpos1=ptr->pos;
+alt1_1: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
   it=rb_obj_clone(s_a_0cc1); arg0=it; it=rb_funcall(self,sy_token,1,arg0); FAILTEST(alt1_2);it=i_1; bind_aset(bind,0/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
-alt1_2: ame_setpos(self,oldpos1);if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
+alt1_2: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
  it=i_42; bind_aset(bind,0/*_result*/,it);
  
 ame_setcut(self,Qnil);goto accept1;
-  alt1_3:  ame_setpos(self,oldpos1); goto fail;
+  alt1_3:  ptr->pos=oldpos1; goto fail;
  accept1:;
 
 return it;
@@ -181,4 +181,4 @@ rb_define_method(cls_Tests,"foo",Tests_foo,0);
 rb_define_method(cls_Tests,"s2",Tests_s2,0);
 rb_define_method(cls_Tests,"sw",Tests_sw,0);
 rb_define_method(cls_Tests,"test",Tests_test,0);
- rb_eval_string("testversiontests('a0ebe559d715fb3e1335944eed632755')");}
+ rb_eval_string("testversiontests('8a57d7a46b7f8fc5d240400ce85226e0')");}

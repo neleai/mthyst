@@ -112,27 +112,27 @@ failobj=rb_eval_string(\"FAIL\");
 				| Apply[ ["fails"] {"goto #{@@faillabel};"} ]
 				| Apply[ ["eof"]   {"it=Qnil;if (ptr->pos<ptr->len) goto #{@@faillabel};"} ]
 
-				| Apply[ ["_seq"] CAct[.:s] {"if (strncmp(ame_curstr(self),#{s.inspect},#{s.size})) goto #{@@faillabel}; else ame_setpos(self,ame_getpos(self)+#{s.size});"}]
+				| Apply[ ["_seq"] CAct[.:s] {"if (strncmp(ame_curstr(self),#{s.inspect},#{s.size})) goto #{@@faillabel}; else ptr->pos+=#{s.size};"}]
 				| Apply[:name {0}:ii ( trans:aa {ii+=1} {"#{aa} arg#{ii-1}=it;"})*:args 
             failwrap(" #{args*""} it=#{callrule(name,ii)};")]
-				| Seq[ trans*:t {t*""} ]
 				| Bind[trans:e {"#{e} #{bset(@name,"it")};\n" } ]
+				| Seq[ trans*:t {t*""} ]
 				| Or[ {label("accept")}:accept {@@faillabel}:fail {label("oldpos")}:oldpos label("alt"):alt {0}:altno
 					 ( &(.) {altno+=1} rw("#{alt}_#{altno+1}",`trans`))*:t
-					 {s="int #{oldpos}=ame_getpos(self);\n"}
-           {s+=map_index(t){|i| "#{alt}_#{i+1}: ame_setpos(self,#{oldpos});if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto #{fail};}\n #{t[i]} \name_setcut(self,Qnil);goto #{accept};\n"}*""}
-           {"#{s}  #{alt}_#{altno+1}:  ame_setpos(self,#{oldpos}); goto #{fail};\n #{accept}:;\n"}
+					 {s="int #{oldpos}=ptr->pos;\n"}
+           {s+=map_index(t){|i| "#{alt}_#{i+1}: ptr->pos=#{oldpos};if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto #{fail};}\n #{t[i]} \name_setcut(self,Qnil);goto #{accept};\n"}*""}
+           {"#{s}  #{alt}_#{altno+1}:  ptr->pos=#{oldpos}; goto #{fail};\n #{accept}:;\n"}
 					]
 				| Cut[]   {"ame_setcut(self,Qtrue);"}
 				| Stop[] {"ame_setstop(self,Qtrue);"}
-
+				| Many[ Apply[ ["anything"] ] ] -> "ptr->pos=ptr->len;"
 				| Many[ {label("break")}:brk {label("oldpos")}:oldpos
 						rw(brk,`trans:t`)
-						{"int #{oldpos}; while(1){#{oldpos}=ame_getpos(self); #{t} if (ame_getstop(self)!=Qnil){{#{oldpos}=ame_getpos(self);goto #{brk};} } } #{brk}: ame_setstop(self,Qnil);  ame_setpos(self,#{oldpos}); "}
+						{"int #{oldpos}; while(1){#{oldpos}=ptr->pos; #{t} if (ame_getstop(self)!=Qnil){{#{oldpos}=ptr->pos;goto #{brk};} } } #{brk}: ame_setstop(self,Qnil); ptr->pos=#{oldpos}; "}
 					]
 				| Lookahead[ {label("accept")}:accept {label("reject")}:reject {label("oldpos")}:oldpos 
 										 rw(reject,`trans:t`) 
-										 {"int #{oldpos}=ame_getpos(self);\n #{t} x=1; goto #{accept};  #{reject}: x=0; #{accept}: it=Qnil; ame_setpos(self,#{oldpos}); if (x==0) goto #{@@faillabel};"} ]
+										 {"int #{oldpos}=ptr->pos;\n #{t} x=1; goto #{accept};  #{reject}: x=0; #{accept}: it=Qnil; ptr->pos=#{oldpos}; if (x==0) goto #{@@faillabel};"} ]
 				| Local[ .* { "it=#{bget(@self)};" } ]
 				| Pass[ label("pass"):pass label("oldpass"):oldpass label("success"):success label("fail"):fail
 						rw(pass,`@to=>trans:to`)
