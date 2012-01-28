@@ -281,6 +281,10 @@ amethyst Detect_First < Traverser_Clone2 {
 	itrans =   (Grammar[ {@@name=@name} {$rules={};@rules.each{|r| $rules[r.name]=r}} @rules=>[ Rule[root]*:rules ] {@rules=rules} @self] | .)*
 
 	root = traverse
+
+	must_empty = Act | CAct
+						 | Bind[ must_empty {@self} ]
+						 
 }
 
 amethyst Detect_Switch_Char < Detect_First {
@@ -298,7 +302,7 @@ amethyst Detect_Switch_Char < Detect_First {
 							)
 						]
 				
- combine_seq(prefix) = (Act|CAct|Bind):s combine_seq(prefix+[s])
+ combine_seq(prefix) = must_empty:s combine_seq(prefix+[s])
  										 | Switch_Char[ .* @ary:ary ] .*:rest { Switch_Char[{:ary=>ary.map{|p,a| [p,Seq[*(prefix+[a]+rest)]]}}] }
 					 	         | .*:ary {Seq[*(prefix+ary)]}
 
@@ -321,7 +325,7 @@ amethyst Detect_Switch_Clas < Detect_First {
 							)
 						]
 
-	combine_seq(prefix) = (Act|CAct):s combine_seq(prefix+[s])
+	combine_seq(prefix) = must_empty:s combine_seq(prefix+[s])
                      | Switch_Clas[ .* @ary:ary ] .*:rest { Switch_Clas[{:ary=>ary.map{|p,a| [p,Seq[*(prefix+[a]+rest)]]}}] }
                      | .*:ary {Seq[*(prefix+ary)]}
 

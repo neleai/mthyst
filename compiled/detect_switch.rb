@@ -199,41 +199,41 @@ class Switch_Clas_Dataflow < First_Dataflow
 end
 class First_Dataflow < Amethyst
 
-def First_Dataflow_Compiler_ef80(bind)
-Compiler.grammars[src.clas].rules[bind[6]].body
+def First_Dataflow_Compiler_cb78(bind)
+Compiler.grammars[src.clas].rules[bind[5]].body
 end
 def First_Dataflow__append_lp__51dc(bind)
 _append(bind[33],bind[34])
 end
-def First_Dataflow__append_lp__54e8(bind)
-_append(bind[16],bind[17])
+def First_Dataflow__append_lp__7b62(bind)
+_append(bind[24],bind[38])
 end
-def First_Dataflow__append_lp__c89f(bind)
-_append(bind[0],bind[30])
+def First_Dataflow__append_lp__8bfa(bind)
+_append(bind[15],bind[16])
 end
-def First_Dataflow__append_lp__e378(bind)
-_append(bind[0],bind[38])
+def First_Dataflow__append_lp__e6cd(bind)
+_append(bind[24],bind[30])
 end
 def First_Dataflow__at_vis_eq_bin_af53(bind)
 @vis=bind[0]; bind[0]
 end
 def First_Dataflow__lp_(bind)
-(!(empty?(bind[4]))) || FAIL
+(!(empty?(bind[3]))) || FAIL
 end
-def First_Dataflow__lp_Compile_4504(bind)
-(Compiler.grammars[src.clas]&&Compiler.grammars[src.clas].rules[bind[6]]) || FAIL
+def First_Dataflow__lp_Compile_f25c(bind)
+(Compiler.grammars[src.clas]&&Compiler.grammars[src.clas].rules[bind[5]]) || FAIL
 end
-def First_Dataflow_bind_lb_0_rb__dot__b660(bind)
-bind[0].inject(:|)
+def First_Dataflow_bind_lb_12_rb__980d(bind)
+bind[12]|lattice.bottom
 end
-def First_Dataflow_bind_lb_13_rb__438d(bind)
-bind[13].seqjoin(bind[23])
+def First_Dataflow_bind_lb_12_rb__9ef5(bind)
+bind[12].seqjoin(bind[22])
 end
-def First_Dataflow_bind_lb_13_rb__f764(bind)
-bind[13]|lattice.bottom
+def First_Dataflow_bind_lb_17_rb__cd44(bind)
+bind[17].inject(:|)
 end
-def First_Dataflow_bind_lb_18_rb__4c01(bind)
-bind[18].inject(:|)
+def First_Dataflow_bind_lb_24_rb__d555(bind)
+bind[24].inject(:|)
 end
 def First_Dataflow_bind_lb_28_rb__f78d(bind)
 bind[28].is_a?(lattice)? bind[28] & bind[29] : bind[29]
@@ -242,7 +242,7 @@ def First_Dataflow_depends_lp__5009(bind)
 depends(bind[0]);@vals[bind[0]]
 end
 def First_Dataflow_empty(bind)
-empty?(bind[4]) ? lattice.top|lattice.bottom : lattice.top
+empty?(bind[3]) ? lattice.top|lattice.bottom : lattice.top
 end
 def First_Dataflow_lattice_dot__5a9e(bind)
 lattice.bottom
@@ -253,47 +253,47 @@ end
 
 class Sizes_Dataflow < First_Dataflow
 
-def Sizes_Dataflow_Compiler_ef80(bind)
-Compiler.grammars[src.clas].rules[bind[6]].body
+def Sizes_Dataflow_Compiler_cb78(bind)
+Compiler.grammars[src.clas].rules[bind[5]].body
 end
 def Sizes_Dataflow__append_lp__51dc(bind)
 _append(bind[33],bind[34])
 end
-def Sizes_Dataflow__append_lp__54e8(bind)
-_append(bind[16],bind[17])
+def Sizes_Dataflow__append_lp__7b62(bind)
+_append(bind[24],bind[38])
 end
-def Sizes_Dataflow__append_lp__c89f(bind)
-_append(bind[0],bind[30])
+def Sizes_Dataflow__append_lp__8bfa(bind)
+_append(bind[15],bind[16])
 end
-def Sizes_Dataflow__append_lp__e378(bind)
-_append(bind[0],bind[38])
+def Sizes_Dataflow__append_lp__e6cd(bind)
+_append(bind[24],bind[30])
 end
 def Sizes_Dataflow__at_vis_eq_bin_af53(bind)
 @vis=bind[0]; bind[0]
 end
 def Sizes_Dataflow__lp_(bind)
-(!(empty?(bind[4]))) || FAIL
+(!(empty?(bind[3]))) || FAIL
 end
-def Sizes_Dataflow__lp_Compile_4504(bind)
-(Compiler.grammars[src.clas]&&Compiler.grammars[src.clas].rules[bind[6]]) || FAIL
+def Sizes_Dataflow__lp_Compile_f25c(bind)
+(Compiler.grammars[src.clas]&&Compiler.grammars[src.clas].rules[bind[5]]) || FAIL
 end
-def Sizes_Dataflow_bind_lb_0_rb__dot__b660(bind)
-bind[0].inject(:|)
+def Sizes_Dataflow_bind_lb_12_rb__980d(bind)
+bind[12]|lattice.bottom
 end
-def Sizes_Dataflow_bind_lb_13_rb__438d(bind)
-bind[13].seqjoin(bind[23])
+def Sizes_Dataflow_bind_lb_12_rb__9ef5(bind)
+bind[12].seqjoin(bind[22])
 end
-def Sizes_Dataflow_bind_lb_13_rb__f764(bind)
-bind[13]|lattice.bottom
+def Sizes_Dataflow_bind_lb_17_rb__cd44(bind)
+bind[17].inject(:|)
 end
-def Sizes_Dataflow_bind_lb_18_rb__4c01(bind)
-bind[18].inject(:|)
+def Sizes_Dataflow_bind_lb_24_rb__d555(bind)
+bind[24].inject(:|)
 end
 def Sizes_Dataflow_bind_lb_28_rb__f78d(bind)
 bind[28].is_a?(lattice)? bind[28] & bind[29] : bind[29]
 end
 def Sizes_Dataflow_empty(bind)
-empty?(bind[4]) ? lattice.top|lattice.bottom : lattice.top
+empty?(bind[3]) ? lattice.top|lattice.bottom : lattice.top
 end
 def Sizes_Dataflow_lattice_dot__5a9e(bind)
 lattice.bottom
@@ -313,47 +313,47 @@ end
 
 class Switch_Char_Dataflow < First_Dataflow
 
-def Switch_Char_Dataflow_Compiler_ef80(bind)
-Compiler.grammars[src.clas].rules[bind[6]].body
+def Switch_Char_Dataflow_Compiler_cb78(bind)
+Compiler.grammars[src.clas].rules[bind[5]].body
 end
 def Switch_Char_Dataflow__append_lp__51dc(bind)
 _append(bind[33],bind[34])
 end
-def Switch_Char_Dataflow__append_lp__54e8(bind)
-_append(bind[16],bind[17])
+def Switch_Char_Dataflow__append_lp__7b62(bind)
+_append(bind[24],bind[38])
 end
-def Switch_Char_Dataflow__append_lp__c89f(bind)
-_append(bind[0],bind[30])
+def Switch_Char_Dataflow__append_lp__8bfa(bind)
+_append(bind[15],bind[16])
 end
-def Switch_Char_Dataflow__append_lp__e378(bind)
-_append(bind[0],bind[38])
+def Switch_Char_Dataflow__append_lp__e6cd(bind)
+_append(bind[24],bind[30])
 end
 def Switch_Char_Dataflow__at_vis_eq_bin_af53(bind)
 @vis=bind[0]; bind[0]
 end
 def Switch_Char_Dataflow__lp_(bind)
-(!(empty?(bind[4]))) || FAIL
+(!(empty?(bind[3]))) || FAIL
 end
-def Switch_Char_Dataflow__lp_Compile_4504(bind)
-(Compiler.grammars[src.clas]&&Compiler.grammars[src.clas].rules[bind[6]]) || FAIL
+def Switch_Char_Dataflow__lp_Compile_f25c(bind)
+(Compiler.grammars[src.clas]&&Compiler.grammars[src.clas].rules[bind[5]]) || FAIL
 end
-def Switch_Char_Dataflow_bind_lb_0_rb__dot__b660(bind)
-bind[0].inject(:|)
+def Switch_Char_Dataflow_bind_lb_12_rb__980d(bind)
+bind[12]|lattice.bottom
 end
-def Switch_Char_Dataflow_bind_lb_13_rb__438d(bind)
-bind[13].seqjoin(bind[23])
+def Switch_Char_Dataflow_bind_lb_12_rb__9ef5(bind)
+bind[12].seqjoin(bind[22])
 end
-def Switch_Char_Dataflow_bind_lb_13_rb__f764(bind)
-bind[13]|lattice.bottom
+def Switch_Char_Dataflow_bind_lb_17_rb__cd44(bind)
+bind[17].inject(:|)
 end
-def Switch_Char_Dataflow_bind_lb_18_rb__4c01(bind)
-bind[18].inject(:|)
+def Switch_Char_Dataflow_bind_lb_24_rb__d555(bind)
+bind[24].inject(:|)
 end
 def Switch_Char_Dataflow_bind_lb_28_rb__f78d(bind)
 bind[28].is_a?(lattice)? bind[28] & bind[29] : bind[29]
 end
 def Switch_Char_Dataflow_empty(bind)
-empty?(bind[4]) ? lattice.top|lattice.bottom : lattice.top
+empty?(bind[3]) ? lattice.top|lattice.bottom : lattice.top
 end
 def Switch_Char_Dataflow_firstcha_7cc4(bind)
 firstchar(bind[6])
@@ -373,47 +373,47 @@ end
 
 class Switch_Clas_Dataflow < First_Dataflow
 
-def Switch_Clas_Dataflow_Compiler_ef80(bind)
-Compiler.grammars[src.clas].rules[bind[6]].body
+def Switch_Clas_Dataflow_Compiler_cb78(bind)
+Compiler.grammars[src.clas].rules[bind[5]].body
 end
 def Switch_Clas_Dataflow__append_lp__51dc(bind)
 _append(bind[33],bind[34])
 end
-def Switch_Clas_Dataflow__append_lp__54e8(bind)
-_append(bind[16],bind[17])
+def Switch_Clas_Dataflow__append_lp__7b62(bind)
+_append(bind[24],bind[38])
 end
-def Switch_Clas_Dataflow__append_lp__c89f(bind)
-_append(bind[0],bind[30])
+def Switch_Clas_Dataflow__append_lp__8bfa(bind)
+_append(bind[15],bind[16])
 end
-def Switch_Clas_Dataflow__append_lp__e378(bind)
-_append(bind[0],bind[38])
+def Switch_Clas_Dataflow__append_lp__e6cd(bind)
+_append(bind[24],bind[30])
 end
 def Switch_Clas_Dataflow__at_vis_eq_bin_af53(bind)
 @vis=bind[0]; bind[0]
 end
 def Switch_Clas_Dataflow__lp_(bind)
-(!(empty?(bind[4]))) || FAIL
+(!(empty?(bind[3]))) || FAIL
 end
-def Switch_Clas_Dataflow__lp_Compile_4504(bind)
-(Compiler.grammars[src.clas]&&Compiler.grammars[src.clas].rules[bind[6]]) || FAIL
+def Switch_Clas_Dataflow__lp_Compile_f25c(bind)
+(Compiler.grammars[src.clas]&&Compiler.grammars[src.clas].rules[bind[5]]) || FAIL
 end
-def Switch_Clas_Dataflow_bind_lb_0_rb__dot__b660(bind)
-bind[0].inject(:|)
+def Switch_Clas_Dataflow_bind_lb_12_rb__980d(bind)
+bind[12]|lattice.bottom
 end
-def Switch_Clas_Dataflow_bind_lb_13_rb__438d(bind)
-bind[13].seqjoin(bind[23])
+def Switch_Clas_Dataflow_bind_lb_12_rb__9ef5(bind)
+bind[12].seqjoin(bind[22])
 end
-def Switch_Clas_Dataflow_bind_lb_13_rb__f764(bind)
-bind[13]|lattice.bottom
+def Switch_Clas_Dataflow_bind_lb_17_rb__cd44(bind)
+bind[17].inject(:|)
 end
-def Switch_Clas_Dataflow_bind_lb_18_rb__4c01(bind)
-bind[18].inject(:|)
+def Switch_Clas_Dataflow_bind_lb_24_rb__d555(bind)
+bind[24].inject(:|)
 end
 def Switch_Clas_Dataflow_bind_lb_28_rb__f78d(bind)
 bind[28].is_a?(lattice)? bind[28] & bind[29] : bind[29]
 end
 def Switch_Clas_Dataflow_empty(bind)
-empty?(bind[4]) ? lattice.top|lattice.bottom : lattice.top
+empty?(bind[3]) ? lattice.top|lattice.bottom : lattice.top
 end
 def Switch_Clas_Dataflow_lattice_dot__5a9e(bind)
 lattice.bottom
@@ -495,17 +495,17 @@ class Detect_Switch_Char < Detect_First
 def Detect_Switch_Char_Or_lb__ti_bind_ab33(bind)
 Or[*bind[27]]
 end
-def Detect_Switch_Char_Seq_lb__ti__lp_bi_abc9(bind)
-Seq[*(bind[1]+bind[5])]
+def Detect_Switch_Char_Seq_lb__ti__lp_bi_99e6(bind)
+Seq[*(bind[1]+bind[4])]
 end
-def Detect_Switch_Char_Seq_lb__ti__lp_bi_d71e(bind)
-Seq[*(bind[45]+bind[50])]
+def Detect_Switch_Char_Seq_lb__ti__lp_bi_e56a(bind)
+Seq[*(bind[45]+bind[49])]
 end
-def Detect_Switch_Char_Switch_C_4c55(bind)
-Switch_Char[{:ary=>bind[5].map{|p,a| [p,Seq[*(bind[1]+[a]+bind[9])]]}}] 
+def Detect_Switch_Char_Switch_C_4343(bind)
+Switch_Char[{:ary=>bind[4].map{|p,a| [p,Seq[*(bind[1]+[a]+bind[7])]]}}] 
 end
-def Detect_Switch_Char_Switch_C_881f(bind)
-Switch_Char[{:ary=>bind[50].map{|p,a| [p,Seq[*(bind[45]+[a]+bind[54])]]}}] 
+def Detect_Switch_Char_Switch_C_605e(bind)
+Switch_Char[{:ary=>bind[49].map{|p,a| [p,Seq[*(bind[45]+[a]+bind[52])]]}}] 
 end
 def Detect_Switch_Char_Switch_C_badf(bind)
 Switch_Char[{:ary=>bind[32].map{|p,a| [p,Or[*a].dup.normalize]}}]
@@ -516,26 +516,26 @@ end
 def Detect_Switch_Char__append_lp__05b0(bind)
 _append(bind[25],bind[26])
 end
+def Detect_Switch_Char__append_lp__3d0f(bind)
+_append(bind[50],bind[51])
+end
 def Detect_Switch_Char__append_lp__599a(bind)
 _append(bind[41],bind[42])
+end
+def Detect_Switch_Char__append_lp__6f56(bind)
+_append(bind[5],bind[6])
 end
 def Detect_Switch_Char__append_lp__7352(bind)
 _append(bind[4],bind[7])
 end
-def Detect_Switch_Char__append_lp__9708(bind)
-_append(bind[48],bind[49])
+def Detect_Switch_Char__append_lp__b375(bind)
+_append(bind[8],bind[9])
 end
 def Detect_Switch_Char__append_lp__b494(bind)
 _append(bind[0],bind[10])
 end
-def Detect_Switch_Char__append_lp__b6c7(bind)
-_append(bind[7],bind[8])
-end
-def Detect_Switch_Char__append_lp__dd73(bind)
-_append(bind[3],bind[4])
-end
-def Detect_Switch_Char__append_lp__e5d1(bind)
-_append(bind[52],bind[53])
+def Detect_Switch_Char__append_lp__c323(bind)
+_append(bind[53],bind[54])
 end
 def Detect_Switch_Char__at_changed_5352(bind)
 @changed=true
@@ -635,20 +635,20 @@ class Detect_Switch_Clas < Detect_First
 def Detect_Switch_Clas_Or_lb__ti_bind_2778(bind)
 Or[*bind[17]]
 end
-def Detect_Switch_Clas_Seq_lb__ti__lp_bi_2290(bind)
-Seq[*(bind[35]+bind[40])]
+def Detect_Switch_Clas_Seq_lb__ti__lp_bi_99e6(bind)
+Seq[*(bind[1]+bind[4])]
 end
-def Detect_Switch_Clas_Seq_lb__ti__lp_bi_abc9(bind)
-Seq[*(bind[1]+bind[5])]
+def Detect_Switch_Clas_Seq_lb__ti__lp_bi_fab8(bind)
+Seq[*(bind[35]+bind[39])]
 end
 def Detect_Switch_Clas_Switch_C_0e01(bind)
 Switch_Clas[{:ary=>bind[3].map{|p,a| [p,Or[*a].dup.normalize]}}]
 end
-def Detect_Switch_Clas_Switch_C_83b2(bind)
-Switch_Clas[{:ary=>bind[40].map{|p,a| [p,Seq[*(bind[35]+[a]+bind[44])]]}}] 
+def Detect_Switch_Clas_Switch_C_4588(bind)
+Switch_Clas[{:ary=>bind[39].map{|p,a| [p,Seq[*(bind[35]+[a]+bind[42])]]}}] 
 end
-def Detect_Switch_Clas_Switch_C_a9b5(bind)
-Switch_Clas[{:ary=>bind[5].map{|p,a| [p,Seq[*(bind[1]+[a]+bind[9])]]}}] 
+def Detect_Switch_Clas_Switch_C_4c94(bind)
+Switch_Clas[{:ary=>bind[4].map{|p,a| [p,Seq[*(bind[1]+[a]+bind[7])]]}}] 
 end
 def Detect_Switch_Clas_Switch_C_ee57(bind)
 Switch_Clas[[Lattice_Clas[bind[5][0]],Apply["anything"]],[Lattice_Clas[Object],Apply["fails"]]].freeze 
@@ -656,8 +656,8 @@ end
 def Detect_Switch_Clas_Switch_C_f93c(bind)
 Switch_Clas[{:ary=>bind[22].map{|p,a| [p,Or[*a].dup.normalize]}}]
 end
-def Detect_Switch_Clas__append_lp__5f76(bind)
-_append(bind[42],bind[43])
+def Detect_Switch_Clas__append_lp__6f56(bind)
+_append(bind[5],bind[6])
 end
 def Detect_Switch_Clas__append_lp__7352(bind)
 _append(bind[4],bind[7])
@@ -668,17 +668,17 @@ end
 def Detect_Switch_Clas__append_lp__9160(bind)
 _append(bind[31],bind[32])
 end
-def Detect_Switch_Clas__append_lp__a10b(bind)
-_append(bind[38],bind[39])
+def Detect_Switch_Clas__append_lp__b375(bind)
+_append(bind[8],bind[9])
 end
 def Detect_Switch_Clas__append_lp__b494(bind)
 _append(bind[0],bind[10])
 end
-def Detect_Switch_Clas__append_lp__b6c7(bind)
-_append(bind[7],bind[8])
+def Detect_Switch_Clas__append_lp__c7ad(bind)
+_append(bind[40],bind[41])
 end
-def Detect_Switch_Clas__append_lp__dd73(bind)
-_append(bind[3],bind[4])
+def Detect_Switch_Clas__append_lp__e512(bind)
+_append(bind[43],bind[44])
 end
 def Detect_Switch_Clas__at_changed_5352(bind)
 @changed=true
@@ -763,15 +763,15 @@ end
 
 
 def detect_switch_compiled_by
-'19691669a3e09852dde90c52d7774288'
+'d19e9eb0a3a6184c49408bf8b5b4c206'
 end
 def detect_switch_source_hash
-'08635b2c3fb8da5a4905c7e12d4cc858'
+'5bb477db5ba4932ffc217151e6e22dbf'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'bda0b3350c2698b11548976ea373951d'
+'22a857b1e9b2766fbd98887149c0d3a3'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

@@ -80,8 +80,8 @@ def AmethystParser_Lambda_lb___012f(bind)
 Lambda[_body(bind[21])]
 
 end
-def AmethystParser_Lookahea_16cc(bind)
-Lookahead[bind[4],bind[3]=="~"]
+def AmethystParser_Lookahea_b11c(bind)
+Lookahead[bind[5],bind[3]=="~"]
 
 end
 def AmethystParser_Many_lb_bin_33ac(bind)
@@ -103,8 +103,8 @@ def AmethystParser_Pass_lb_bin_6bdb(bind)
 Pass[bind[0],bind[2]] 
 
 end
-def AmethystParser_Pred_lb_bin_f3cc(bind)
-Pred[bind[6][0],bind[3]=="~"]
+def AmethystParser_Pred_lb_bin_4918(bind)
+Pred[bind[4][0],bind[3]=="~"]
 
 end
 def AmethystParser_Result_lb__le__ae0e(bind)
@@ -297,7 +297,7 @@ end
 
 
 def parser_compiled_by
-'19691669a3e09852dde90c52d7774288'
+'d19e9eb0a3a6184c49408bf8b5b4c206'
 end
 def parser_source_hash
 '26066aa8bfcbc2bed77ea540e666faf6'
@@ -306,6 +306,6 @@ def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'707321c6c07a153486bef62ba376ebb6'
+'e61f5e9c94f83b16071c9b26cb264c8d'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/parser_c"

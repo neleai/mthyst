@@ -58,20 +58,20 @@ end
 
 class Dataflow < Traverser_Clone2
 
-def Dataflow_Act_lb_bind_9896(bind)
-Act[bind[0],src.pred]
+def Dataflow_Act_lb_bind_1a17(bind)
+Act[bind[3],src.pred]
 end
-def Dataflow_Apply_lb__ti__lp__911e(bind)
-Apply[*(bind[0]+[{:clas=>src.clas}])]
+def Dataflow_Apply_lb__ti__lp__43fb(bind)
+Apply[*(bind[3]+[{:clas=>src.clas}])]
 end
-def Dataflow_Lookahea_1748(bind)
-Lookahead[*bind[0]]
+def Dataflow_Lookahea_20ca(bind)
+Lookahead[*bind[3]]
 end
-def Dataflow_Many_dot_cre_2065(bind)
-Many.create({:ary=>bind[0]}).normalize
+def Dataflow_Many_dot_cre_9111(bind)
+Many.create({:ary=>bind[3]}).normalize
 end
-def Dataflow_Or_lb__ti_bind_2fd2(bind)
-Or[*bind[0]]
+def Dataflow_Or_lb__ti_bind_ffe5(bind)
+Or[*bind[3]]
 end
 def Dataflow_Pass_dot_cre_fa0a(bind)
 Pass.create({:to=>bind[42],:var=>bind[9],:enter=>src.enter}).normalize
@@ -97,8 +97,8 @@ end
 def Dataflow__append_lp__29a3(bind)
 _append(bind[0],bind[2])
 end
-def Dataflow__append_lp__3bb7(bind)
-_append(bind[0],bind[37])
+def Dataflow__append_lp__2f87(bind)
+_append(bind[3],bind[37])
 end
 def Dataflow__append_lp__4297(bind)
 _append(bind[0],bind[6])
@@ -108,9 +108,6 @@ _append(bind[13],bind[14])
 end
 def Dataflow__append_lp__4b67(bind)
 _append(bind[0],bind[14])
-end
-def Dataflow__append_lp__4de3(bind)
-_append(bind[2],bind[3])
 end
 def Dataflow__append_lp__66a2(bind)
 _append(bind[0],bind[12])
@@ -126,6 +123,9 @@ _append(bind[0],bind[10])
 end
 def Dataflow__append_lp__b601(bind)
 _append(bind[32],bind[33])
+end
+def Dataflow__append_lp__d113(bind)
+_append(bind[1],bind[2])
 end
 def Dataflow__append_lp__f794(bind)
 _append(bind[49],bind[50])
@@ -342,7 +342,7 @@ end
 
 
 def dataflow_ssa_compiled_by
-'19691669a3e09852dde90c52d7774288'
+'d19e9eb0a3a6184c49408bf8b5b4c206'
 end
 def dataflow_ssa_source_hash
 'c8fb6a005ad6267388857a2e99804221'
@@ -351,6 +351,6 @@ def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'9b06fbabb466cba40fba266ad8026271'
+'d880382d964a34f32a82ef285688e054'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/dataflow_ssa_c"
