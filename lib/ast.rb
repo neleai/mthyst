@@ -18,11 +18,10 @@ makeclasses(AmethystAST,
 		:Char,
     :Comment,
     :Nested,
-		[:Switch,:act,:defs,:first,:header,:init],
+		[:Switch_Char,:act,:defs,:first,:header,:init],
 		[:Switch_Clas,:act,:defs,:first,:header,:init]
 
 )
-Switch_Char=Switch
 class SeqOr<AmethystAST;end
 makeclasses(SeqOr,:Seq,:Or)
 Placeholder=Consts.new("Placeholder")
@@ -89,7 +88,7 @@ class Bind
 	end
 	def normalize2
 		return expr if expr.is_a?(Apply) && expr[0]=="fails"
-		return Switch[{:act=>expr.act,:defs=>expr.defs,:first=>expr.first,:header=>expr.header,:init=>expr.init,:ary=>expr.ary.map{|h,k| [h,_Bind(name,k)]}}] if expr.is_a?(Switch)
+		return Switch_Char[{:act=>expr.act,:defs=>expr.defs,:first=>expr.first,:header=>expr.header,:init=>expr.init,:ary=>expr.ary.map{|h,k| [h,_Bind(name,k)]}}] if expr.is_a?(Switch_Char)
 		return Switch_Clas.create({:ary=>expr.ary.map{|h,k| [h,_Bind(name,k)]}}) if expr.is_a?(Switch_Clas)
 
 		return Or[*expr.ary.map{|a|_Bind(name,a)}] if expr.is_a?(Or)
@@ -324,12 +323,12 @@ def equalize_by(klas,args)
 					alias_method :==,:equal?
     end")
 end
-[Act,Apply,Args,Bind,Bnding,CAct,Comment,Cut,Lambda,Global,Key,Local,Lookahead,Many,Or,Pass,Result,Seq,Stop,Strin,Switch,Switch_Clas].each{|e| 
+[Act,Apply,Args,Bind,Bnding,CAct,Comment,Cut,Lambda,Global,Key,Local,Lookahead,Many,Or,Pass,Result,Seq,Stop,Strin,Switch_Char,Switch_Clas].each{|e| 
 by="[#{e.instance_variable_get(:@attrs)*","}]"
 by="ary" if by=="[ary]"
 equalize_by(e,by)
 }
-[CAct,Global,Key,Cut,Stop,Lambda,Strin,Args,Comment,Result,Switch,Switch_Clas].each{|cls|
+[CAct,Global,Key,Cut,Stop,Lambda,Strin,Args,Comment,Result,Switch_Char,Switch_Clas].each{|cls|
 	eval("class #{cls}
 		def self.[](*args)
 			#{cls}.create(*args).normalize
@@ -343,4 +342,5 @@ class Local;					def inspect;	"L[#{ary[0]}#{ary[1].is_a?(Bnding) ? "" : ary[1]}_
 class Key;						def inspect;	"@#{ary[0]}"																									;end;end
 class Global;					def inspect;	"@@#{ary[0]}"																									;end;end
 class Bind;						def inspect;	"#{ary[0].inspect}:#{name.inspect}"														;end;end
-class Switch; 				def inspect;  "Switch[#{ary.map{|d,k|  "#{d.inspect}: #{k.inspect}\n"}*""}]";end;end
+class Switch_Char; 				def inspect;  "Switch_Char[#{ary.map{|d,k|  "#{d.inspect}: #{k.inspect}\n"}*""}]";end;end
+class Switch_Clas; 				def inspect;  "Switch_Clas[#{ary.map{|d,k|  "#{d.inspect}: #{k.inspect}\n"}*""}]";end;end

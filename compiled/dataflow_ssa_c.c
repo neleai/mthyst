@@ -17,8 +17,8 @@ static VALUE sy_Dataflow_Many_dot_cre_9111;
 static VALUE sy_Dataflow_Or_lb__ti_bind_ffe5;
 static VALUE sy_Dataflow_Pass_dot_cre_fa0a;
 static VALUE sy_Dataflow_Seq_lb_src_dot__6f68;
-static VALUE sy_Dataflow_Switch_C_7448;
-static VALUE sy_Dataflow_Switch_lb__le__e3b2;
+static VALUE sy_Dataflow_Switch_C_a76e;
+static VALUE sy_Dataflow_Switch_C_c009;
 static VALUE sy_Dataflow__append_lp__0605;
 static VALUE sy_Dataflow__append_lp__0860;
 static VALUE sy_Dataflow__append_lp__0eeb;
@@ -597,7 +597,7 @@ it=Qnil;if (ptr->pos<ptr->len) goto pass16;
 	if(fail16) goto fail;
 it=bind_aget(bind,51/*autovar*/); bind_aset(bind,11/*_result*/,it);
  break;
-case 9/*Switch*/:;   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,52/*autovar*/,it);
+case 9/*Switch_Char*/:;   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,52/*autovar*/,it);
 cstruct oldpass19=*ptr; int fail19=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,52/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  it=rb_ary_new3(0); bind_aset(bind,53/*alts*/,it);
@@ -613,7 +613,7 @@ it=rb_funcall(self,sy_Dataflow_bind_lb_53_rb__04dc,1,bind); it=Qnil;if (ptr->pos
 	pass20: fail20=1;
 	success20: *ptr=oldpass20;
 	if(fail20) goto break7;
-it=rb_funcall(self,sy_Dataflow_bind_lb_36_rb__21ca,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos7=ptr->pos;goto break7;} } } break7: ame_setstop(self,Qnil); ptr->pos=oldpos7; it=rb_funcall(self,sy_Dataflow_or_end_lp_b_7477,1,bind); it=rb_funcall(self,sy_Dataflow_Switch_lb__le__e3b2,1,bind);  bind_aset(bind,57/*autovar*/,it);
+it=rb_funcall(self,sy_Dataflow_bind_lb_36_rb__21ca,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos7=ptr->pos;goto break7;} } } break7: ame_setstop(self,Qnil); ptr->pos=oldpos7; it=rb_funcall(self,sy_Dataflow_or_end_lp_b_7477,1,bind); it=rb_funcall(self,sy_Dataflow_Switch_C_c009,1,bind);  bind_aset(bind,57/*autovar*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass19;
 	goto success19;
 	pass19: fail19=1;
@@ -637,7 +637,7 @@ it=rb_funcall(self,sy_Dataflow_bind_lb_53_rb__04dc,1,bind); it=Qnil;if (ptr->pos
 	pass22: fail22=1;
 	success22: *ptr=oldpass22;
 	if(fail22) goto break8;
-it=rb_funcall(self,sy_Dataflow_bind_lb_36_rb__21ca,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos8=ptr->pos;goto break8;} } } break8: ame_setstop(self,Qnil); ptr->pos=oldpos8; it=rb_funcall(self,sy_Dataflow_or_end_lp_b_7477,1,bind); it=rb_funcall(self,sy_Dataflow_Switch_C_7448,1,bind);  bind_aset(bind,60/*autovar*/,it);
+it=rb_funcall(self,sy_Dataflow_bind_lb_36_rb__21ca,1,bind);  if (ame_getstop(self)!=Qnil){{oldpos8=ptr->pos;goto break8;} } } break8: ame_setstop(self,Qnil); ptr->pos=oldpos8; it=rb_funcall(self,sy_Dataflow_or_end_lp_b_7477,1,bind); it=rb_funcall(self,sy_Dataflow_Switch_C_a76e,1,bind);  bind_aset(bind,60/*autovar*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass21;
 	goto success21;
 	pass21: fail21=1;
@@ -1037,7 +1037,7 @@ void Init_dataflow_ssa_c(){
  cls_Dataflow=rb_define_class("Dataflow",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2"))); 
 failobj=rb_eval_string("FAIL");
 switchhash_Dataflow_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Rule\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Dataflow_1);;
-switchhash_Dataflow_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Apply\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=Local\nnext h[k]=4 if k<=Lookahead\nnext h[k]=5 if k<=Many\nnext h[k]=6 if k<=Or\nnext h[k]=7 if k<=Pass\nnext h[k]=8 if k<=Result\nnext h[k]=9 if k<=Switch\nnext h[k]=10 if k<=Switch_Clas\nnext h[k]=11 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Dataflow_2);;
+switchhash_Dataflow_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Apply\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=Local\nnext h[k]=4 if k<=Lookahead\nnext h[k]=5 if k<=Many\nnext h[k]=6 if k<=Or\nnext h[k]=7 if k<=Pass\nnext h[k]=8 if k<=Result\nnext h[k]=9 if k<=Switch_Char\nnext h[k]=10 if k<=Switch_Clas\nnext h[k]=11 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Dataflow_2);;
 switchhash_Dataflow_3=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Args\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=CAct\nnext h[k]=4 if k<=Global\nnext h[k]=5 if k<=Key\nnext h[k]=6 if k<=Local\nnext h[k]=7 if k<=Result\nnext h[k]=8 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Dataflow_3);;
 switchhash_Dataflow_4=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Dataflow_4);;
 sy_Dataflow_Act_lb_bind_1a17=rb_intern("Dataflow_Act_lb_bind_1a17");
@@ -1047,8 +1047,8 @@ sy_Dataflow_Many_dot_cre_9111=rb_intern("Dataflow_Many_dot_cre_9111");
 sy_Dataflow_Or_lb__ti_bind_ffe5=rb_intern("Dataflow_Or_lb__ti_bind_ffe5");
 sy_Dataflow_Pass_dot_cre_fa0a=rb_intern("Dataflow_Pass_dot_cre_fa0a");
 sy_Dataflow_Seq_lb_src_dot__6f68=rb_intern("Dataflow_Seq_lb_src_dot__6f68");
-sy_Dataflow_Switch_C_7448=rb_intern("Dataflow_Switch_C_7448");
-sy_Dataflow_Switch_lb__le__e3b2=rb_intern("Dataflow_Switch_lb__le__e3b2");
+sy_Dataflow_Switch_C_a76e=rb_intern("Dataflow_Switch_C_a76e");
+sy_Dataflow_Switch_C_c009=rb_intern("Dataflow_Switch_C_c009");
 sy_Dataflow__append_lp__0605=rb_intern("Dataflow__append_lp__0605");
 sy_Dataflow__append_lp__0860=rb_intern("Dataflow__append_lp__0860");
 sy_Dataflow__append_lp__0eeb=rb_intern("Dataflow__append_lp__0eeb");
@@ -1148,4 +1148,4 @@ rb_define_method(cls_Forget_SSA,"root",Forget_SSA_root,0);
 rb_define_method(cls_Forget_SSA,"traverse",Forget_SSA_traverse,0);
 rb_define_method(cls_Forget_SSA,"traverse_item",Forget_SSA_traverse_item,0);
 rb_define_method(cls_Forget_SSA,"visit",Forget_SSA_visit,0);
- rb_eval_string("testversiondataflow_ssa('5bc864eccbbebc5aec0bd7db4b715ea3')");}
+ rb_eval_string("testversiondataflow_ssa('b942a1123577db1433c37a8527b9613e')");}
