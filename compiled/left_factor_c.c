@@ -51,8 +51,7 @@ it=bind_aget(bind,0/*s*/); bind_aset(bind,1/*autovar*/,it);
 cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=bind_aget(bind,1/*autovar*/);ptr->len=1;
  switch(FIX2LONG(rb_hash_aref(switchhash_Left_Factor_3,rb_obj_class(ame_curobj(self))))){case 0/*Bind*/:; int oldpos1=ptr->pos;
-alt1_1: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto pass1;}
-   it=AmethystCore_anything(self ); FAILTEST(alt1_2); bind_aset(bind,2/*autovar*/,it);
+alt1_1: ptr->pos=oldpos1;  it=AmethystCore_anything(self ); FAILTEST(alt1_2); bind_aset(bind,2/*autovar*/,it);
 cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,2/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  ptr->pos=ptr->len; it=rb_funcall(self,sy_Left_Factor_src_dot_expr_ef77,1,bind);  arg0=it;it=bind_aget(bind,3/*a*/); arg1=it; it=Left_Factor_binds(self ,arg0,arg1); FAILTEST(pass2); bind_aset(bind,4/*nexp*/,it);
@@ -63,18 +62,16 @@ it=Qnil;if (ptr->pos<ptr->len) goto pass2;
 	success2: *ptr=oldpass2;
 	if(fail2) goto alt1_2;
 it=bind_aget(bind,5/*autovar*/); bind_aset(bind,6/*autovar*/,it);
- 
-ame_setcut(self,Qnil);goto accept1;
-alt1_2: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto pass1;}
-   it=AmethystCore_anything(self ); FAILTEST(alt1_3);it=bind_aget(bind,3/*a*/); bind_aset(bind,6/*autovar*/,it);
- 
-ame_setcut(self,Qnil);goto accept1;
+
+;goto accept1;
+alt1_2: ptr->pos=oldpos1;  it=AmethystCore_anything(self ); FAILTEST(alt1_3);it=bind_aget(bind,3/*a*/); bind_aset(bind,6/*autovar*/,it);
+
+;goto accept1;
   alt1_3:  ptr->pos=oldpos1; goto pass1;
  accept1:;
 it=Qnil;if (ptr->pos<ptr->len) goto pass1; break;
 case 1/*Seq*/:; int oldpos2=ptr->pos;
-alt2_1: ptr->pos=oldpos2;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto pass1;}
-   it=AmethystCore_anything(self ); FAILTEST(alt2_2); bind_aset(bind,7/*autovar*/,it);
+alt2_1: ptr->pos=oldpos2;  it=AmethystCore_anything(self ); FAILTEST(alt2_2); bind_aset(bind,7/*autovar*/,it);
 cstruct oldpass3=*ptr; int fail3=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,7/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
    it=AmethystCore_anything(self ); FAILTEST(pass3); bind_aset(bind,8/*f*/,it);
@@ -85,12 +82,11 @@ it=Qnil;if (ptr->pos<ptr->len) goto pass3;
 	success3: *ptr=oldpass3;
 	if(fail3) goto alt2_2;
 it=bind_aget(bind,9/*autovar*/); bind_aset(bind,6/*autovar*/,it);
- 
-ame_setcut(self,Qnil);goto accept2;
-alt2_2: ptr->pos=oldpos2;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto pass1;}
-   it=AmethystCore_anything(self ); FAILTEST(alt2_3);it=bind_aget(bind,3/*a*/); bind_aset(bind,6/*autovar*/,it);
- 
-ame_setcut(self,Qnil);goto accept2;
+
+;goto accept2;
+alt2_2: ptr->pos=oldpos2;  it=AmethystCore_anything(self ); FAILTEST(alt2_3);it=bind_aget(bind,3/*a*/); bind_aset(bind,6/*autovar*/,it);
+
+;goto accept2;
   alt2_3:  ptr->pos=oldpos2; goto pass1;
  accept2:;
 it=Qnil;if (ptr->pos<ptr->len) goto pass1; break;
@@ -108,25 +104,21 @@ fail: return failobj; }
 VALUE Left_Factor_factor(VALUE self ,VALUE a0,VALUE a1,VALUE a2){VALUE vals[3]; VALUE bind=bind_new2(5); bind_aset(bind,2/*prev*/,a0);bind_aset(bind,1/*start*/,a1);bind_aset(bind,3/*cur*/,a2); int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
 int oldpos1=ptr->pos;
-alt1_1: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-   it=AmethystCore_anything(self ); FAILTEST(alt1_2); bind_aset(bind,0/*next*/,it);
+alt1_1: ptr->pos=oldpos1;  it=AmethystCore_anything(self ); FAILTEST(alt1_2); bind_aset(bind,0/*next*/,it);
 int oldpos2=ptr->pos;
-alt2_1: ptr->pos=oldpos2;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt1_2;}
- it=rb_funcall(self,sy_Left_Factor__lp_bind_lb_1_rb__68a2,1,bind); FAILTEST(alt2_2); it=bind_aget(bind,2/*prev*/); arg0=it;it=bind_aget(bind,1/*start*/); arg1=it;it=rb_funcall(self,sy_Left_Factor_bind_lb_3_rb__pl__a9ae,1,bind);  arg2=it; it=Left_Factor_factor(self ,arg0,arg1,arg2); FAILTEST(alt2_2); bind_aset(bind,4/*_result*/,it);
- 
-ame_setcut(self,Qnil);goto accept2;
-alt2_2: ptr->pos=oldpos2;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt1_2;}
- it=rb_funcall(self,sy_Left_Factor__lp_2,1,bind); FAILTEST(alt2_3); it=rb_funcall(self,sy_Left_Factor_bind_lb_2_rb__pl__9bc3,1,bind);  arg0=it;it=rb_funcall(self,sy_Left_Factor_first_lp_bi_16f8,1,bind);  arg1=it;it=rb_funcall(self,sy_Left_Factor__lb_bind_lb_0_rb__fb2d,1,bind);  arg2=it; it=Left_Factor_factor(self ,arg0,arg1,arg2); FAILTEST(alt2_3); bind_aset(bind,4/*_result*/,it);
- 
-ame_setcut(self,Qnil);goto accept2;
+alt2_1: ptr->pos=oldpos2;it=rb_funcall(self,sy_Left_Factor__lp_bind_lb_1_rb__68a2,1,bind); FAILTEST(alt2_2); it=bind_aget(bind,2/*prev*/); arg0=it;it=bind_aget(bind,1/*start*/); arg1=it;it=rb_funcall(self,sy_Left_Factor_bind_lb_3_rb__pl__a9ae,1,bind);  arg2=it; it=Left_Factor_factor(self ,arg0,arg1,arg2); FAILTEST(alt2_2); bind_aset(bind,4/*_result*/,it);
+
+;goto accept2;
+alt2_2: ptr->pos=oldpos2;it=rb_funcall(self,sy_Left_Factor__lp_2,1,bind); FAILTEST(alt2_3); it=rb_funcall(self,sy_Left_Factor_bind_lb_2_rb__pl__9bc3,1,bind);  arg0=it;it=rb_funcall(self,sy_Left_Factor_first_lp_bi_16f8,1,bind);  arg1=it;it=rb_funcall(self,sy_Left_Factor__lb_bind_lb_0_rb__fb2d,1,bind);  arg2=it; it=Left_Factor_factor(self ,arg0,arg1,arg2); FAILTEST(alt2_3); bind_aset(bind,4/*_result*/,it);
+
+;goto accept2;
   alt2_3:  ptr->pos=oldpos2; goto alt1_2;
  accept2:;
- 
-ame_setcut(self,Qnil);goto accept1;
-alt1_2: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
- it=Qnil;if (ptr->pos<ptr->len) goto alt1_3;it=rb_funcall(self,sy_Left_Factor_Or_lb__ti__lp_bin_142c,1,bind);  bind_aset(bind,4/*_result*/,it);
- 
-ame_setcut(self,Qnil);goto accept1;
+
+;goto accept1;
+alt1_2: ptr->pos=oldpos1;it=Qnil;if (ptr->pos<ptr->len) goto alt1_3;it=rb_funcall(self,sy_Left_Factor_Or_lb__ti__lp_bin_142c,1,bind);  bind_aset(bind,4/*_result*/,it);
+
+;goto accept1;
   alt1_3:  ptr->pos=oldpos1; goto fail;
  accept1:;
 
@@ -138,8 +130,7 @@ it=bind_aget(bind,0/*s*/); bind_aset(bind,1/*autovar*/,it);
 cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=bind_aget(bind,1/*autovar*/);ptr->len=1;
  switch(FIX2LONG(rb_hash_aref(switchhash_Left_Factor_1,rb_obj_class(ame_curobj(self))))){case 0/*Bind*/:; int oldpos1=ptr->pos;
-alt1_1: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto pass1;}
-   it=AmethystCore_anything(self ); FAILTEST(alt1_2); bind_aset(bind,2/*autovar*/,it);
+alt1_1: ptr->pos=oldpos1;  it=AmethystCore_anything(self ); FAILTEST(alt1_2); bind_aset(bind,2/*autovar*/,it);
 cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,2/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  ptr->pos=ptr->len; it=rb_funcall(self,sy_Left_Factor_src_dot_expr_ef77,1,bind);  arg0=it; it=Left_Factor_first(self ,arg0); FAILTEST(pass2); bind_aset(bind,3/*autovar*/,it);
@@ -149,18 +140,16 @@ it=Qnil;if (ptr->pos<ptr->len) goto pass2;
 	success2: *ptr=oldpass2;
 	if(fail2) goto alt1_2;
 it=bind_aget(bind,3/*autovar*/); bind_aset(bind,4/*autovar*/,it);
- 
-ame_setcut(self,Qnil);goto accept1;
-alt1_2: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto pass1;}
-   it=AmethystCore_anything(self ); FAILTEST(alt1_3); bind_aset(bind,4/*autovar*/,it);
- 
-ame_setcut(self,Qnil);goto accept1;
+
+;goto accept1;
+alt1_2: ptr->pos=oldpos1;  it=AmethystCore_anything(self ); FAILTEST(alt1_3); bind_aset(bind,4/*autovar*/,it);
+
+;goto accept1;
   alt1_3:  ptr->pos=oldpos1; goto pass1;
  accept1:;
 it=Qnil;if (ptr->pos<ptr->len) goto pass1; break;
 case 1/*Seq*/:; int oldpos2=ptr->pos;
-alt2_1: ptr->pos=oldpos2;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto pass1;}
-   it=AmethystCore_anything(self ); FAILTEST(alt2_2); bind_aset(bind,5/*autovar*/,it);
+alt2_1: ptr->pos=oldpos2;  it=AmethystCore_anything(self ); FAILTEST(alt2_2); bind_aset(bind,5/*autovar*/,it);
 cstruct oldpass3=*ptr; int fail3=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,5/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
    it=AmethystCore_anything(self ); FAILTEST(pass3); bind_aset(bind,6/*f*/,it);
@@ -171,12 +160,11 @@ it=Qnil;if (ptr->pos<ptr->len) goto pass3;
 	success3: *ptr=oldpass3;
 	if(fail3) goto alt2_2;
 it=bind_aget(bind,7/*autovar*/); bind_aset(bind,4/*autovar*/,it);
- 
-ame_setcut(self,Qnil);goto accept2;
-alt2_2: ptr->pos=oldpos2;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto pass1;}
-   it=AmethystCore_anything(self ); FAILTEST(alt2_3); bind_aset(bind,4/*autovar*/,it);
- 
-ame_setcut(self,Qnil);goto accept2;
+
+;goto accept2;
+alt2_2: ptr->pos=oldpos2;  it=AmethystCore_anything(self ); FAILTEST(alt2_3); bind_aset(bind,4/*autovar*/,it);
+
+;goto accept2;
   alt2_3:  ptr->pos=oldpos2; goto pass1;
  accept2:;
 it=Qnil;if (ptr->pos<ptr->len) goto pass1; break;
@@ -197,8 +185,7 @@ it=bind_aget(bind,0/*s*/); bind_aset(bind,1/*autovar*/,it);
 cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=bind_aget(bind,1/*autovar*/);ptr->len=1;
  switch(FIX2LONG(rb_hash_aref(switchhash_Left_Factor_2,rb_obj_class(ame_curobj(self))))){case 0/*Seq*/:; int oldpos1=ptr->pos;
-alt1_1: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto pass1;}
-   it=AmethystCore_anything(self ); FAILTEST(alt1_2); bind_aset(bind,2/*autovar*/,it);
+alt1_1: ptr->pos=oldpos1;  it=AmethystCore_anything(self ); FAILTEST(alt1_2); bind_aset(bind,2/*autovar*/,it);
 cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,2/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
    it=AmethystCore_anything(self ); FAILTEST(pass2);it=rb_ary_new3(0); bind_aset(bind,3/*autovar*/,it);
@@ -211,12 +198,11 @@ it=Qnil;if (ptr->pos<ptr->len) goto pass2;
 	success2: *ptr=oldpass2;
 	if(fail2) goto alt1_2;
 it=bind_aget(bind,7/*autovar*/); bind_aset(bind,8/*autovar*/,it);
- 
-ame_setcut(self,Qnil);goto accept1;
-alt1_2: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto pass1;}
-   it=AmethystCore_anything(self ); FAILTEST(alt1_3);it=bind_aget(bind,6/*bin*/); bind_aset(bind,8/*autovar*/,it);
- 
-ame_setcut(self,Qnil);goto accept1;
+
+;goto accept1;
+alt1_2: ptr->pos=oldpos1;  it=AmethystCore_anything(self ); FAILTEST(alt1_3);it=bind_aget(bind,6/*bin*/); bind_aset(bind,8/*autovar*/,it);
+
+;goto accept1;
   alt1_3:  ptr->pos=oldpos1; goto pass1;
  accept1:;
 it=Qnil;if (ptr->pos<ptr->len) goto pass1; break;
@@ -276,13 +262,11 @@ fail: return failobj; }
 VALUE Left_Factor_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(8);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
 switch(FIX2LONG(rb_hash_aref(switchhash_Left_Factor_5,rb_obj_class(ame_curobj(self))))){case 0/*AmethystAST*/:; int oldpos1=ptr->pos;
-alt1_1: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-   it=Left_Factor_visit(self ); FAILTEST(alt1_2); bind_aset(bind,0/*a*/,it);
+alt1_1: ptr->pos=oldpos1;  it=Left_Factor_visit(self ); FAILTEST(alt1_2); bind_aset(bind,0/*a*/,it);
 it=rb_funcall(self,sy_Left_Factor__at_changed_5352,1,bind); it=bind_aget(bind,0/*a*/); bind_aset(bind,1/*_result*/,it);
- 
-ame_setcut(self,Qnil);goto accept1;
-alt1_2: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-   it=AmethystCore_anything(self ); FAILTEST(alt1_3); bind_aset(bind,2/*autovar*/,it);
+
+;goto accept1;
+alt1_2: ptr->pos=oldpos1;  it=AmethystCore_anything(self ); FAILTEST(alt1_3); bind_aset(bind,2/*autovar*/,it);
 cstruct oldpass1=*ptr; int fail1=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,2/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
    it=Left_Factor_traverse(self ); FAILTEST(pass1); bind_aset(bind,3/*autovar*/,it);
@@ -292,23 +276,20 @@ it=Qnil;if (ptr->pos<ptr->len) goto pass1;
 	success1: *ptr=oldpass1;
 	if(fail1) goto alt1_3;
 it=bind_aget(bind,3/*autovar*/); bind_aset(bind,1/*_result*/,it);
- 
-ame_setcut(self,Qnil);goto accept1;
-alt1_3: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-   it=AmethystCore_anything(self ); FAILTEST(alt1_4); bind_aset(bind,1/*_result*/,it);
- 
-ame_setcut(self,Qnil);goto accept1;
+
+;goto accept1;
+alt1_3: ptr->pos=oldpos1;  it=AmethystCore_anything(self ); FAILTEST(alt1_4); bind_aset(bind,1/*_result*/,it);
+
+;goto accept1;
   alt1_4:  ptr->pos=oldpos1; goto fail;
  accept1:;
  break;
 case 1/*Array*/:; int oldpos2=ptr->pos;
-alt2_1: ptr->pos=oldpos2;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-   it=Left_Factor_visit(self ); FAILTEST(alt2_2); bind_aset(bind,0/*a*/,it);
+alt2_1: ptr->pos=oldpos2;  it=Left_Factor_visit(self ); FAILTEST(alt2_2); bind_aset(bind,0/*a*/,it);
 it=rb_funcall(self,sy_Left_Factor__at_changed_5352,1,bind); it=bind_aget(bind,0/*a*/); bind_aset(bind,1/*_result*/,it);
- 
-ame_setcut(self,Qnil);goto accept2;
-alt2_2: ptr->pos=oldpos2;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-   it=AmethystCore_anything(self ); FAILTEST(alt2_3); bind_aset(bind,4/*autovar*/,it);
+
+;goto accept2;
+alt2_2: ptr->pos=oldpos2;  it=AmethystCore_anything(self ); FAILTEST(alt2_3); bind_aset(bind,4/*autovar*/,it);
 cstruct oldpass2=*ptr; int fail2=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,4/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  it=rb_ary_new3(0); bind_aset(bind,5/*ar*/,it);
@@ -320,25 +301,22 @@ it=Qnil;if (ptr->pos<ptr->len) goto pass2;
 	success2: *ptr=oldpass2;
 	if(fail2) goto alt2_3;
 it=bind_aget(bind,7/*autovar*/); bind_aset(bind,1/*_result*/,it);
- 
-ame_setcut(self,Qnil);goto accept2;
-alt2_3: ptr->pos=oldpos2;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-   it=AmethystCore_anything(self ); FAILTEST(alt2_4); bind_aset(bind,1/*_result*/,it);
- 
-ame_setcut(self,Qnil);goto accept2;
+
+;goto accept2;
+alt2_3: ptr->pos=oldpos2;  it=AmethystCore_anything(self ); FAILTEST(alt2_4); bind_aset(bind,1/*_result*/,it);
+
+;goto accept2;
   alt2_4:  ptr->pos=oldpos2; goto fail;
  accept2:;
  break;
 case 2/*Object*/:; int oldpos4=ptr->pos;
-alt3_1: ptr->pos=oldpos4;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-   it=Left_Factor_visit(self ); FAILTEST(alt3_2); bind_aset(bind,0/*a*/,it);
+alt3_1: ptr->pos=oldpos4;  it=Left_Factor_visit(self ); FAILTEST(alt3_2); bind_aset(bind,0/*a*/,it);
 it=rb_funcall(self,sy_Left_Factor__at_changed_5352,1,bind); it=bind_aget(bind,0/*a*/); bind_aset(bind,1/*_result*/,it);
- 
-ame_setcut(self,Qnil);goto accept3;
-alt3_2: ptr->pos=oldpos4;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto fail;}
-   it=AmethystCore_anything(self ); FAILTEST(alt3_3); bind_aset(bind,1/*_result*/,it);
- 
-ame_setcut(self,Qnil);goto accept3;
+
+;goto accept3;
+alt3_2: ptr->pos=oldpos4;  it=AmethystCore_anything(self ); FAILTEST(alt3_3); bind_aset(bind,1/*_result*/,it);
+
+;goto accept3;
   alt3_3:  ptr->pos=oldpos4; goto fail;
  accept3:;
  break;
@@ -358,25 +336,21 @@ it=rb_funcall(self,sy_Left_Factor__lb_bind_lb_2_rb__5b5d,1,bind);  bind_aset(bin
 it=rb_funcall(self,sy_Left_Factor_first_lp_bi_a16c,1,bind);  bind_aset(bind,4/*start*/,it);
 it=rb_ary_new3(0); bind_aset(bind,5/*prev*/,it);
 int oldpos1=ptr->pos;
-alt1_1: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto pass2;}
-   it=AmethystCore_anything(self ); FAILTEST(alt1_2); bind_aset(bind,6/*next*/,it);
+alt1_1: ptr->pos=oldpos1;  it=AmethystCore_anything(self ); FAILTEST(alt1_2); bind_aset(bind,6/*next*/,it);
 int oldpos2=ptr->pos;
-alt2_1: ptr->pos=oldpos2;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt1_2;}
- it=rb_funcall(self,sy_Left_Factor__lp_bind_lb_4_rb__ba59,1,bind); FAILTEST(alt2_2); it=rb_ary_new3(0); arg0=it;it=bind_aget(bind,4/*start*/); arg1=it;it=rb_funcall(self,sy_Left_Factor_bind_lb_3_rb__pl__4c4b,1,bind);  arg2=it; it=Left_Factor_factor(self ,arg0,arg1,arg2); FAILTEST(alt2_2); bind_aset(bind,7/*_result*/,it);
- 
-ame_setcut(self,Qnil);goto accept2;
-alt2_2: ptr->pos=oldpos2;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto alt1_2;}
- it=rb_funcall(self,sy_Left_Factor__lp_,1,bind); FAILTEST(alt2_3); it=rb_funcall(self,sy_Left_Factor_bind_lb_5_rb__pl__1ee4,1,bind);  arg0=it;it=rb_funcall(self,sy_Left_Factor_first_lp_bi_80ce,1,bind);  arg1=it;it=rb_funcall(self,sy_Left_Factor__lb_bind_lb_6_rb__ef11,1,bind);  arg2=it; it=Left_Factor_factor(self ,arg0,arg1,arg2); FAILTEST(alt2_3); bind_aset(bind,7/*_result*/,it);
- 
-ame_setcut(self,Qnil);goto accept2;
+alt2_1: ptr->pos=oldpos2;it=rb_funcall(self,sy_Left_Factor__lp_bind_lb_4_rb__ba59,1,bind); FAILTEST(alt2_2); it=rb_ary_new3(0); arg0=it;it=bind_aget(bind,4/*start*/); arg1=it;it=rb_funcall(self,sy_Left_Factor_bind_lb_3_rb__pl__4c4b,1,bind);  arg2=it; it=Left_Factor_factor(self ,arg0,arg1,arg2); FAILTEST(alt2_2); bind_aset(bind,7/*_result*/,it);
+
+;goto accept2;
+alt2_2: ptr->pos=oldpos2;it=rb_funcall(self,sy_Left_Factor__lp_,1,bind); FAILTEST(alt2_3); it=rb_funcall(self,sy_Left_Factor_bind_lb_5_rb__pl__1ee4,1,bind);  arg0=it;it=rb_funcall(self,sy_Left_Factor_first_lp_bi_80ce,1,bind);  arg1=it;it=rb_funcall(self,sy_Left_Factor__lb_bind_lb_6_rb__ef11,1,bind);  arg2=it; it=Left_Factor_factor(self ,arg0,arg1,arg2); FAILTEST(alt2_3); bind_aset(bind,7/*_result*/,it);
+
+;goto accept2;
   alt2_3:  ptr->pos=oldpos2; goto alt1_2;
  accept2:;
- 
-ame_setcut(self,Qnil);goto accept1;
-alt1_2: ptr->pos=oldpos1;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto pass2;}
- it=Qnil;if (ptr->pos<ptr->len) goto alt1_3;it=rb_funcall(self,sy_Left_Factor_Or_lb__ti__lp_bin_5361,1,bind);  bind_aset(bind,7/*_result*/,it);
- 
-ame_setcut(self,Qnil);goto accept1;
+
+;goto accept1;
+alt1_2: ptr->pos=oldpos1;it=Qnil;if (ptr->pos<ptr->len) goto alt1_3;it=rb_funcall(self,sy_Left_Factor_Or_lb__ti__lp_bin_5361,1,bind);  bind_aset(bind,7/*_result*/,it);
+
+;goto accept1;
   alt1_3:  ptr->pos=oldpos1; goto pass2;
  accept1:;
 it=bind_aget(bind,7/*_result*/); bind_aset(bind,8/*autovar*/,it);
@@ -441,4 +415,4 @@ rb_define_method(cls_Left_Factor,"root",Left_Factor_root,0);
 rb_define_method(cls_Left_Factor,"traverse",Left_Factor_traverse,0);
 rb_define_method(cls_Left_Factor,"traverse_item",Left_Factor_traverse_item,0);
 rb_define_method(cls_Left_Factor,"visit",Left_Factor_visit,0);
- rb_eval_string("testversionleft_factor('541ee8865e68bc389891ef41d60f3986')");}
+ rb_eval_string("testversionleft_factor('efcdec526634a2b4eb4dd6b6825bf65b')");}

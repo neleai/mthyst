@@ -100,8 +100,7 @@ case 1/*Object*/:; goto pass3; break;
 }cstruct oldpass4=*ptr; int fail4=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,11/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  int oldpos2; while(1){oldpos2=ptr->pos; switch(FIX2LONG(rb_hash_aref(switchhash_Remove_Left_Recursion_4,rb_obj_class(ame_curobj(self))))){case 0/*Seq*/:; int oldpos3=ptr->pos;
-alt1_1: ptr->pos=oldpos3;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break2;}
-   it=AmethystCore_anything(self ); FAILTEST(alt1_2); bind_aset(bind,12/*autovar*/,it);
+alt1_1: ptr->pos=oldpos3;  it=AmethystCore_anything(self ); FAILTEST(alt1_2); bind_aset(bind,12/*autovar*/,it);
 cstruct oldpass5=*ptr; int fail5=0; ptr->pos=ptr->len=0; ptr->ary=NULL;
           ptr->src=bind_aget(bind,12/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);}
  it=bind_aget(bind,7/*result*/); bind_aset(bind,13/*a*/,it);
@@ -150,12 +149,11 @@ it=rb_funcall(self,sy_Remove_Left_Recursion__append_lp__50f6,1,bind); it=Qnil;if
 	pass5: fail5=1;
 	success5: *ptr=oldpass5;
 	if(fail5) goto alt1_2;
- 
-ame_setcut(self,Qnil);goto accept1;
-alt1_2: ptr->pos=oldpos3;if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto break2;}
-   it=AmethystCore_anything(self ); FAILTEST(alt1_3); bind_aset(bind,29/*autovar*/,it);
-it=rb_funcall(self,sy_Remove_Left_Recursion__append_lp__fedd,1,bind);  
-ame_setcut(self,Qnil);goto accept1;
+
+;goto accept1;
+alt1_2: ptr->pos=oldpos3;  it=AmethystCore_anything(self ); FAILTEST(alt1_3); bind_aset(bind,29/*autovar*/,it);
+it=rb_funcall(self,sy_Remove_Left_Recursion__append_lp__fedd,1,bind); 
+;goto accept1;
   alt1_3:  ptr->pos=oldpos3; goto break2;
  accept1:;
  break;
@@ -244,4 +242,4 @@ sy_Remove_Left_Recursion_src_dot_name_80f3=rb_intern("Remove_Left_Recursion_src_
 rb_define_method(cls_Remove_Left_Recursion,"rec",Remove_Left_Recursion_rec,2);
 rb_define_method(cls_Remove_Left_Recursion,"root",Remove_Left_Recursion_root,0);
 rb_define_method(cls_Remove_Left_Recursion,"start",Remove_Left_Recursion_start,0);
- rb_eval_string("testversionremove_left_rigth_recursion('bcdd94f1f79ee445262ff3aeddbe4602')");}
+ rb_eval_string("testversionremove_left_rigth_recursion('23ccfb25b690c9ef1eae631d5cb7aabe')");}

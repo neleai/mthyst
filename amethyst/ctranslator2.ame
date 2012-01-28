@@ -118,10 +118,9 @@ failobj=rb_eval_string(\"FAIL\");
 				| Bind[trans:e {"#{e} #{bset(@name,"it")};\n" } ]
 				| Seq[ trans*:t {t*""} ]
 				| Or[ {label("accept")}:accept {@@faillabel}:fail {label("oldpos")}:oldpos label("alt"):alt {0}:altno
-					 ( &(.) {altno+=1} rw("#{alt}_#{altno+1}",`trans`))*:t
-					 {s="int #{oldpos}=ptr->pos;\n"}
-           {s+=map_index(t){|i| "#{alt}_#{i+1}: ptr->pos=#{oldpos};if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto #{fail};}\n #{t[i]} \name_setcut(self,Qnil);goto #{accept};\n"}*""}
-           {"#{s}  #{alt}_#{altno+1}:  ptr->pos=#{oldpos}; goto #{fail};\n #{accept}:;\n"}
+					 {"int #{oldpos}=ptr->pos;\n"}:s
+					 ( &(.) {altno+=1}  {s+="#{alt}_#{altno}: ptr->pos=#{oldpos};#{@@cuts ? (@@cuts=false;"if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto #{fail};}"): ""}"} rw("#{alt}_#{altno+1}",`trans`):t {s+="#{t}\n#{@@cuts ? "ame_setcut(self,Qnil)" : ""};goto #{accept};\n"} )*
+           {"#{s}  #{alt}_#{altno+1}:  ptr->pos=#{oldpos}; goto #{@@faillabel};\n #{accept}:;\n"}
 					]
 				| Cut[]   {@@cuts=true;"ame_setcut(self,Qtrue);"}
 				| Stop[] {@@stops=true;"ame_setstop(self,Qtrue);"}
