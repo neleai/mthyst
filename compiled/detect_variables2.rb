@@ -27,9 +27,6 @@ class Analyze_Variables2 < Traverser_Clone2
 def Analyze_Variables2_Act_lb_bind_1972(bind)
 Act[bind[9],bind[1],bind[2]]
 end
-def Analyze_Variables2_Placehol_6875(bind)
-Placeholder
-end
 def Analyze_Variables2__append_lp__7352(bind)
 _append(bind[4],bind[7])
 end
@@ -175,7 +172,7 @@ end
 
 
 def detect_variables2_compiled_by
-'4aeff9e7bfd267650273d5fb92006cf6'
+'714ad82cea8f2769a997be6e74b1babf'
 end
 def detect_variables2_source_hash
 '14e5135f23224e8f9006dddc0a0f022b'
@@ -184,6 +181,6 @@ def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'9fdaf404422d59f7e56f40e4b4e3f3cf'
+'4b851f92c04d9415ba99d50169ff95dd'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_variables2_c"

@@ -18,6 +18,7 @@ makeclasses(AmethystAST,
 		:Char,
     :Comment,
     :Nested,
+		:Placeholder,:FAIL,
 		[:Switch_Char,:act,:defs,:first,:header,:init],
 		[:Switch_Clas,:act,:defs,:first,:header,:init]
 
@@ -49,8 +50,6 @@ equalize_by(e,by)
 
 
 
-Placeholder=Consts.new("Placeholder")
-FAIL=Consts.new("FAIL")
 
 class Array
 	def normalize;	self;	end
