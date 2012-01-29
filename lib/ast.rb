@@ -194,11 +194,7 @@ class Or
 		#	            | 1 -> ary[0]
 		#	            | . -> Or[ary]
 		return s unless s.is_a?(Or)
-		s.ary=$normalize.parse(:or,[s])
-		return Apply["fails"] if s.ary.size==0
-		return s.ary[0]       if s.ary.size==1
-		s.ary.freeze
-		s.freeze
+		$normalize.parse(:or,[s])
 	end
 end
 class Switch_Char

@@ -5,8 +5,16 @@ VALUE Amethyst_spaces(VALUE self );
 VALUE Normalize_or(VALUE self );
 VALUE switchhash_Normalize_1;
 VALUE switchhash_Normalize_2;
+static VALUE sy_Normalize_0_cfcd;
+static VALUE sy_Normalize_1_c4ca;
+static VALUE sy_Normalize_Apply_lb__dq_f_3881;
 static VALUE sy_Normalize__append_lp__b2a5;
-VALUE Normalize_or(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(7);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
+static VALUE sy_Normalize__lp_bind_lb_7_rb__df2c;
+static VALUE sy_Normalize_bind_lb_0_rb__dot__263e;
+static VALUE sy_Normalize_bind_lb_0_rb__lb__1f45;
+static VALUE sy_Normalize_bind_lb_5_rb__dot__d039;
+static VALUE sy_Normalize_src_25d9;
+VALUE Normalize_or(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(12);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
 switch(FIX2LONG(rb_hash_aref(switchhash_Normalize_1,rb_obj_class(ame_curobj2(ptr))))){case 0/*Or*/:; it=rb_ary_new3(0); bind_aset(bind,0/*ary*/,it);
   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,1/*autovar*/,it);
@@ -39,12 +47,36 @@ alt1_3: ptr->pos=oldpos2;goto break1;
  break;
 case 1/*Object*/:;   it=AmethystCore_anything(self ); FAILTEST(break1); bind_aset(bind,4/*autovar*/,it);
 it=rb_funcall(self,sy_Normalize__append_lp__b2a5,1,bind);  break;
-}  } break1: ame_setstop(self,Qnil); ptr->pos=oldpos1; it=bind_aget(bind,0/*ary*/); bind_aset(bind,5/*autovar*/,it);
+}  } break1: ame_setstop(self,Qnil); ptr->pos=oldpos1; it=rb_funcall(self,sy_Normalize_src_25d9,1,bind);  bind_aset(bind,5/*or*/,it);
+it=rb_funcall(self,sy_Normalize_bind_lb_0_rb__dot__263e,1,bind);  bind_aset(bind,6/*autovar*/,it);
+cstruct oldpass4=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
+          ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=bind_aget(bind,6/*autovar*/);ptr->len=1;
+ int oldpos3=ptr->pos;
+alt2_1:;it=rb_funcall(self,sy_Normalize_0_cfcd,1,bind);  bind_aset(bind,7/*x*/,it);
+  it=AmethystCore_anything(self ); FAILTEST(alt2_2); bind_aset(bind,8/*a*/,it);
+it=rb_funcall(self,sy_Normalize__lp_bind_lb_7_rb__df2c,1,bind); FAILTEST(alt2_2);it=rb_funcall(self,sy_Normalize_Apply_lb__dq_f_3881,1,bind);  bind_aset(bind,9/*autovar*/,it);
+
+;goto accept2;
+alt2_2: ptr->pos=oldpos3;it=rb_funcall(self,sy_Normalize_1_c4ca,1,bind);  bind_aset(bind,7/*x*/,it);
+  it=AmethystCore_anything(self ); FAILTEST(alt2_3); bind_aset(bind,8/*a*/,it);
+it=rb_funcall(self,sy_Normalize__lp_bind_lb_7_rb__df2c,1,bind); FAILTEST(alt2_3);it=rb_funcall(self,sy_Normalize_bind_lb_0_rb__lb__1f45,1,bind);  bind_aset(bind,9/*autovar*/,it);
+
+;goto accept2;
+alt2_3: ptr->pos=oldpos3;  it=AmethystCore_anything(self ); FAILTEST(alt2_4);it=rb_funcall(self,sy_Normalize_bind_lb_5_rb__dot__d039,1,bind);  bind_aset(bind,9/*autovar*/,it);
+
+;goto accept2;
+alt2_4: ptr->pos=oldpos3;goto pass4;
+ accept2:;
+it=Qnil;if (ptr->pos<ptr->len) goto pass4;
+	goto success4;
+	pass4: *ptr=oldpass4; goto pass1;
+	success4: *ptr=oldpass4;
+it=bind_aget(bind,9/*autovar*/); bind_aset(bind,10/*autovar*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass1;
 	goto success1;
 	pass1: *ptr=oldpass1; goto fail;
 	success1: *ptr=oldpass1;
-it=bind_aget(bind,5/*autovar*/); bind_aset(bind,6/*_result*/,it);
+it=bind_aget(bind,10/*autovar*/); bind_aset(bind,11/*_result*/,it);
  break;
 case 1/*Object*/:; goto fail; break;
 }
@@ -55,6 +87,14 @@ void Init_normalize_c(){
 failobj=rb_eval_string("FAIL");
 switchhash_Normalize_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Or\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Normalize_1);;
 switchhash_Normalize_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Normalize_2);;
+sy_Normalize_0_cfcd=rb_intern("Normalize_0_cfcd");
+sy_Normalize_1_c4ca=rb_intern("Normalize_1_c4ca");
+sy_Normalize_Apply_lb__dq_f_3881=rb_intern("Normalize_Apply_lb__dq_f_3881");
 sy_Normalize__append_lp__b2a5=rb_intern("Normalize__append_lp__b2a5");
+sy_Normalize__lp_bind_lb_7_rb__df2c=rb_intern("Normalize__lp_bind_lb_7_rb__df2c");
+sy_Normalize_bind_lb_0_rb__dot__263e=rb_intern("Normalize_bind_lb_0_rb__dot__263e");
+sy_Normalize_bind_lb_0_rb__lb__1f45=rb_intern("Normalize_bind_lb_0_rb__lb__1f45");
+sy_Normalize_bind_lb_5_rb__dot__d039=rb_intern("Normalize_bind_lb_5_rb__dot__d039");
+sy_Normalize_src_25d9=rb_intern("Normalize_src_25d9");
 rb_define_method(cls_Normalize,"or",Normalize_or,0);
- rb_eval_string("testversionnormalize('e477ce3386945ba83348ff6bc15981a5')");}
+ rb_eval_string("testversionnormalize('b920d8b11faffd79c12984f3f985832c')");}
