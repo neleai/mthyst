@@ -120,9 +120,9 @@ class Bind
 		return Switch_Char[{:ary=>expr.ary.map{|h,k| [h,_Bind(name,k)]}}] if expr.is_a?(Switch_Char)
 		return Switch_Clas[{:ary=>expr.ary.map{|h,k| [h,_Bind(name,k)]}}] if expr.is_a?(Switch_Clas)
 
-		return Or[*expr.ary.map{|a|_Bind(name,a)}] if expr.is_a?(Or)
 		return Seq[Bind[name,Seq[*expr.ary[0...-1]]],expr.ary[-1]] if expr.is_a?(Seq) && expr.ary.size>0 && [Comment,Cut,Stop].include?(expr.ary[-1].class)
     return Seq[*(expr.ary[0...-1]+[_Bind(name,expr.ary[-1])])] if expr.is_a?(Seq) && expr.ary.size>0
+		return Or[*expr.ary.map{|a|_Bind(name,a)}] if expr.is_a?(Or)
 		$normalize.parse(:bind,[self])
 	end
 	def expr
@@ -142,19 +142,6 @@ class Many
 	end
 end
 
-class SeqOr
-	 def normalize2
-		#	seqor[ seqor[.*:ary[] ] | Placeholder | .:ary[] ]
-		# {ary}=>( 0 -> Placeholder
-		#        | 1 -> ary[0]
-		#        | . -> seqor[ary]
-    @ary=@ary.map{|i| (i.is_a?(self.class)) ? i.ary : i}.flatten
-    @ary=@ary.select{|e| !(e==Placeholder)}
-    return Placeholder if @ary.size==0
-    return @ary[0] if (@ary.size==1)
-		self
-  end
-end
 class Seq
 	def self.[](*args)
 		args=args[0][:ary] if args.size==1 && args[0].is_a?(Hash)
@@ -167,8 +154,6 @@ end
 class Or
 	def self.[](*args)
 		args=args[0][:ary] if args.size==1 && args[0].is_a?(Hash)
-		args=args.select{|e| !(e.is_a?(Apply)&& e.ary[0]=="fails")}
-		return Apply["fails"] if args.size==0
 		Or.create({:ary=>args}).normalize
 	end
 	def normalize2
