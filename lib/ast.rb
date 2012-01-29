@@ -194,7 +194,7 @@ class Or
 		#	            | 1 -> ary[0]
 		#	            | . -> Or[ary]
 		return s unless s.is_a?(Or)
-		s.ary=s.ary.select{|e| !(e.is_a?(Apply)&& e.ary[0]=="fails")}
+		s.ary=$normalize.parse(:or,[s])
 		return Apply["fails"] if s.ary.size==0
 		return s.ary[0]       if s.ary.size==1
 		s.ary.freeze

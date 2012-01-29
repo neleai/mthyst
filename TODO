@@ -57,6 +57,7 @@ UTF8
 grammar not necessary
 
 flatarray class
+done but too slow to use
 
 default arguments?
 

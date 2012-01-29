@@ -1,6 +1,6 @@
 Amethyst_path=File.expand_path(File.dirname(__FILE__)+"/..")
 $: << Amethyst_path
-['graph','utils','ast'].each{|r|
+['graph','utils','flatarray','ast'].each{|r|
 	require Amethyst_path+"/lib/#{r}"
 }
 

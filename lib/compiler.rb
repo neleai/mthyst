@@ -1,7 +1,7 @@
 CurrentParser={}
 require 'digest'
 require 'set'
-COMPILED=["tests","amethyst","traverser","detect_variables2","parser","dataflow_ssa","inliner2",
+COMPILED=["tests","amethyst","traverser","detect_variables2","parser","dataflow_ssa","inliner2","normalize",
 "detect_switch","left_factor","constant_propagation","ctranslator2","implicit_variables","remove_left_rigth_recursion"]
 def debug_print(t)
 	puts t.inspect if Amethyst::Settings.debug>1
@@ -179,7 +179,7 @@ if Dir[Amethyst_path+"/compiled/#{opt}.rb"]!=[] #new grammars
 end
 }
 $compiled_by=Digest::MD5.hexdigest($compiled_by)
-
+$normalize=Normalize.new;
 
 class Amethyst
 	alias_method :parse2,:parse

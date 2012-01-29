@@ -1,0 +1,5 @@
+amethyst Normalize{
+	or = Or[ (Apply[ ["fails"] ] | .:ary[])* 
+					{ary}
+				]
+}
