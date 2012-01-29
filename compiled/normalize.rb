@@ -31,11 +31,11 @@ end
 def Normalize__append_lp__3aef(bind)
 _append(bind[0],bind[17])
 end
-def Normalize__append_lp__4297(bind)
-_append(bind[0],bind[6])
-end
 def Normalize__append_lp__50ed(bind)
 _append(bind[14],bind[16])
+end
+def Normalize__append_lp__653e(bind)
+_append(bind[0],bind[9])
 end
 def Normalize__append_lp__66a2(bind)
 _append(bind[0],bind[12])
@@ -55,8 +55,14 @@ end
 def Normalize__append_lp__a474(bind)
 _append(bind[14],bind[15])
 end
+def Normalize__append_lp__b494(bind)
+_append(bind[0],bind[10])
+end
 def Normalize__append_lp__b9cb(bind)
 _append(bind[4],bind[6])
+end
+def Normalize__append_lp__bc95(bind)
+_append(bind[0],bind[11])
 end
 def Normalize__append_lp__c354(bind)
 _append(bind[9],bind[11])
@@ -70,14 +76,20 @@ end
 def Normalize__append_lp__f960(bind)
 _append(bind[18],bind[20])
 end
-def Normalize__lp_bind_lb_10_612c(bind)
-(bind[10] === bind[11]) || FAIL
+def Normalize__lp_bind_lb_15_94ac(bind)
+(bind[15] === bind[16]) || FAIL
+end
+def Normalize__lp_bind_lb_16_9270(bind)
+(bind[16] === bind[17]) || FAIL
 end
 def Normalize__lp_bind_lb_1_rb__5a69(bind)
 (bind[1]+bind[22]*"").to_i
 end
-def Normalize__lp_bind_lb_9_rb__e481(bind)
-(bind[9] === bind[10]) || FAIL
+def Normalize__lp_bind_lb_8_rb__1b9f(bind)
+(bind[8]==Placeholder) || FAIL
+end
+def Normalize__lp_bind_lb_9_rb__cfc1(bind)
+(bind[9]==Placeholder) || FAIL
 end
 def Normalize_bind_lb_0_rb_(bind)
 bind[0]
@@ -112,15 +124,15 @@ end
 
 
 def normalize_compiled_by
-'714ad82cea8f2769a997be6e74b1babf'
+'71d2080accdf4b0184367c6bb53f01bb'
 end
 def normalize_source_hash
-'52795b57f0b29872bc5763f8f36978c6'
+'7286cd8332a63da1667296dccd14ed68'
 end
 def testversionnormalize(r)
  raise "invalid version" if r!=normalize_version
 end
 def normalize_version
-'c706b04ba88bbf5d5936312802c676a8'
+'cdf5457213dffffccec28be4772ebc17'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/normalize_c"

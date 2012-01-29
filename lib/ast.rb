@@ -162,9 +162,7 @@ class Seq
 		Seq.create({:ary=>args}).normalize
 	end
 	def normalize2
-		s=super
-		return s unless s.is_a?(Seq)
-		$normalize.parse(:seq,[s])
+		$normalize.parse(:seq,[self])
 	end
 end
 class Or
@@ -178,9 +176,7 @@ class Or
 		# TODO dont consider alternatives after
 		#  Seq[cant_fail* Cut .*]
 		# |Seq[cant_fail*       ]
-		s=super
-		return s unless s.is_a?(Or)
-		$normalize.parse(:or,[s])
+		$normalize.parse(:or,[self])
 	end
 end
 class Switch_Char
