@@ -309,7 +309,7 @@ end
 
 
 def parser_compiled_by
-'27d01e3fa51895435ab2c9ccb95c98f8'
+'d7792b651e318b59cffdd4efdf9cbd07'
 end
 def parser_source_hash
 '9865081eaaa59841bcf738019bf778e3'

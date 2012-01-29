@@ -148,7 +148,7 @@ class Seq
 		Seq.create({:ary=>args}).normalize
 	end
 	def normalize2
-		$normalize.parse(:seq,[self])
+		$normalize.parse(:seq2,[self])
 	end
 end
 class Or
@@ -285,6 +285,7 @@ class Apply
 		# | ["apply"] CAct[.:name] -> Apply[name] #TODO resolve
 		# | ["_seq"] CAct[[ "" ]]  -> Placeholder
 		# | @self
+		return $normalize.parse(:apply2,[self])
 		if name=="apply"
 			return @ary[1][0][0] if @ary[1].is_a?(Act) && @ary[1][0].is_a?(Lambda)
 			if @ary[1].is_a?(CAct)

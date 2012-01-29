@@ -11,7 +11,7 @@ amethyst Normalize{
 											)
 				
 
-	seq = Seq[ @self:seq
+	seq2 = Seq[ @self:seq
              ( Seq[ .* @ary:ary[] ]
              | Apply[ ["fails"] @self:ary[] ] .*
 						 | .:x &{x==Placeholder}
@@ -22,8 +22,15 @@ amethyst Normalize{
                          | . -> seq.ary=ary;seq.ary.freeze;seq.freeze
          								 )
            
-	bind = Bind[
+	bind = Bind[ {@name}:name2
 						   Apply[ ["fails"] {@self} ]
    					 | . -> @self.freeze
 					   ]			 
+
+	apply2 = Apply[   ["apply" | "_seq"] Act[Lambda[.:x]] -> x
+                  | ["apply"] CAct[.:name] -> Apply[name] #TODO resolve
+                  | ["_seq"] CAct[ [] ]  -> Placeholder
+					  			| .* {@self.freeze}
+				 			  ]
+
 }
