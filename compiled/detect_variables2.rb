@@ -175,7 +175,7 @@ end
 
 
 def detect_variables2_compiled_by
-'df4bbfa6ba15b1af9b2a4c186dfb2095'
+'4be60de086cef1bb71bd8f4a8d774e30'
 end
 def detect_variables2_source_hash
 '14e5135f23224e8f9006dddc0a0f022b'
@@ -184,6 +184,6 @@ def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'f702ff50a3053102cac35408640a0c05'
+'9fdaf404422d59f7e56f40e4b4e3f3cf'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_variables2_c"

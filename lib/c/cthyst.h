@@ -49,33 +49,10 @@ ACCESSOR(VALUE,src);ACCESSOR(int,pos);ACCESSOR(int,len);ACCESSOR(VALUE,cut);ACCE
 
 static inline VALUE ame_getposrb(VALUE self){return INT2FIX(ame_getpos(self));}
 
-static inline char* ame_curstr(VALUE self){
-  return RSTRING_PTR(ame_getsrc(self))+ame_getpos(self);
-}
-static inline VALUE ame_curobj(VALUE self){
-  cstruct  *ptr;
-  Data_Get_Struct(self,cstruct,ptr);
-	if(!ptr->ary){
-		VALUE ary;
-	  if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-		else  ary=rb_funcall(ptr->src,s_to_a,0);
-		ptr->ary=RARRAY_PTR(ary);
-		ptr->len=RARRAY_LEN(ary);
-	}
-	if (ptr->len==ptr->pos) return failobj;
-  return ptr->ary[ptr->pos];
-}
 static inline char* ame_curstr2(cstruct * ptr){
   return ptr->str+ptr->pos;
 }
 static inline VALUE ame_curobj2(cstruct * ptr){
-	if(!ptr->ary){
-		VALUE ary;
-	  if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-		else  ary=rb_funcall(ptr->src,s_to_a,0);
-		ptr->ary=RARRAY_PTR(ary);
-		ptr->len=RARRAY_LEN(ary);
-	}
 	if (ptr->len==ptr->pos) return failobj;
   return ptr->ary[ptr->pos];
 }

@@ -766,7 +766,7 @@ end
 
 
 def detect_switch_compiled_by
-'df4bbfa6ba15b1af9b2a4c186dfb2095'
+'4be60de086cef1bb71bd8f4a8d774e30'
 end
 def detect_switch_source_hash
 'fa094b553420cec462298d61eb15e354'
@@ -775,6 +775,6 @@ def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'7e1ccff5979a8642a232bf794e20e978'
+'10019f2aa2c3ad23efa4d1cb914dc873'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"
