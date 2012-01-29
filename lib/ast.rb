@@ -24,6 +24,33 @@ makeclasses(AmethystAST,
 )
 class SeqOr<AmethystAST;end
 makeclasses(SeqOr,:Seq,:Or)
+
+
+def equalize_by(klas,args)
+  eval("$hash_#{klas}={}
+    class #{klas}\n
+          def normalize
+            return $hash_#{klas}[#{args}] if $hash_#{klas}[#{args}]
+            $hash_#{klas}[#{args}]=normalize2
+          end
+					alias_method :hash,:object_id
+					alias_method :eql?,:equal?
+					alias_method :==,:equal?
+    end")
+end
+[Act,Apply,Args,Bind,Bnding,CAct,Comment,Cut,Lambda,Global,Key,Local,Lookahead,Many,Or,Pass,Result,Seq,Stop,Strin,Switch_Char,Switch_Clas].each{|e| 
+by="[#{e.instance_variable_get(:@attrs)*","}]"
+by="ary" if by=="[ary]"
+equalize_by(e,by)
+	eval("class #{e}
+		def self.[](*args)
+			#{e}.create(*args).normalize
+		end
+	end")
+}
+
+
+
 Placeholder=Consts.new("Placeholder")
 FAIL=Consts.new("FAIL")
 
@@ -319,32 +346,6 @@ def _Local(name)
 		instance_eval{@locals << l if @locals}
 		l
 end
-
-def equalize_by(klas,args)
-  eval("$hash_#{klas}={}
-    class #{klas}\n
-          def normalize
-            return $hash_#{klas}[#{args}] if $hash_#{klas}[#{args}]
-            $hash_#{klas}[#{args}]=normalize2
-          end
-					alias_method :hash,:object_id
-					alias_method :eql?,:equal?
-					alias_method :==,:equal?
-    end")
-end
-[Act,Apply,Args,Bind,Bnding,CAct,Comment,Cut,Lambda,Global,Key,Local,Lookahead,Many,Or,Pass,Result,Seq,Stop,Strin,Switch_Char,Switch_Clas].each{|e| 
-by="[#{e.instance_variable_get(:@attrs)*","}]"
-by="ary" if by=="[ary]"
-equalize_by(e,by)
-}
-[CAct,Global,Key,Cut,Stop,Lambda,Strin,Args,Comment,Result,Switch_Char,Switch_Clas].each{|cls|
-	eval("class #{cls}
-		def self.[](*args)
-			#{cls}.create(*args).normalize
-		end
-	end")
-}
-
 
 class Apply;					def inspect;	"#{@clas ? "#{@clas}::":""}#{ary[0]}(#{ary[1..-1].map{|a|a.inspect}*","})"							;end;end
 class Local;					def inspect;	"L[#{ary[0]}#{ary[1].is_a?(Bnding) ? "" : ary[1]}_#{ssano}]"	;end;end
