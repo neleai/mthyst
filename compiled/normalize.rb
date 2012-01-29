@@ -119,20 +119,24 @@ end
 def Normalize_src_dot_ary_d5cf(bind)
 src.ary
 end
+def Normalize_src_dot_free_00b9(bind)
+src.freeze
+
+end
 
 end
 
 
 def normalize_compiled_by
-'71d2080accdf4b0184367c6bb53f01bb'
+'27d01e3fa51895435ab2c9ccb95c98f8'
 end
 def normalize_source_hash
-'7286cd8332a63da1667296dccd14ed68'
+'ad28177189c266943559ef979b365a6c'
 end
 def testversionnormalize(r)
  raise "invalid version" if r!=normalize_version
 end
 def normalize_version
-'cdf5457213dffffccec28be4772ebc17'
+'c34396102ab8452380304da783d16bdc'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/normalize_c"

@@ -22,4 +22,8 @@ amethyst Normalize{
                          | . -> seq.ary=ary;seq.ary.freeze;seq.freeze
          								 )
            
+	bind = Bind[
+						   Apply[ ["fails"] {@self} ]
+   					 | . -> @self.freeze
+					   ]			 
 }

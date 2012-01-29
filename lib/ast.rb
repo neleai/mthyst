@@ -117,14 +117,13 @@ class Bind
 		# Or[ (.:{Bind[name,it])*:ary ] @Or
 		# Seq[ .*:a (Cut|Stop):last ] -> Seq[Bind[name,Seq[a]],e]
 		# Seq[ .*:a .:last          ] -> Seq[a,Bind[name,last]]
-		return expr if expr.is_a?(Apply) && expr[0]=="fails"
 		return Switch_Char[{:ary=>expr.ary.map{|h,k| [h,_Bind(name,k)]}}] if expr.is_a?(Switch_Char)
 		return Switch_Clas[{:ary=>expr.ary.map{|h,k| [h,_Bind(name,k)]}}] if expr.is_a?(Switch_Clas)
 
 		return Or[*expr.ary.map{|a|_Bind(name,a)}] if expr.is_a?(Or)
 		return Seq[Bind[name,Seq[*expr.ary[0...-1]]],expr.ary[-1]] if expr.is_a?(Seq) && expr.ary.size>0 && [Comment,Cut,Stop].include?(expr.ary[-1].class)
     return Seq[*(expr.ary[0...-1]+[_Bind(name,expr.ary[-1])])] if expr.is_a?(Seq) && expr.ary.size>0
-		self.freeze
+		$normalize.parse(:bind,[self])
 	end
 	def expr
 		ary[0]
