@@ -36,8 +36,6 @@ think about suitable decomposition
 cont passing style.
 pseudoprocedures 
 
-dataflow cantfail, noresult
-as constant propagation?
 
 serialization
 incremental compilation
@@ -85,3 +83,10 @@ paralelize compilation
 predicated inlining
 
 cache dataflow data with objects
+
+
+simple dataflows
+cantfail, noresult,mustempty,string_only,object_only
+as constant propagation?
+use to simplify ors
+
