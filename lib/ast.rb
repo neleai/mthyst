@@ -87,9 +87,15 @@ class Bind
 		Bind.create({:name=>name,:ary=>[expr]}).normalize
 	end
 	def normalize2
+		# Apply[ ["fails"] {@self} ]
+		# Switch_Char[]
+		# Switch_Clas[ ]
+		# Or[]
+		# Seq[ .* (Cut|Stop) ]
+		# Seq[ ]
 		return expr if expr.is_a?(Apply) && expr[0]=="fails"
-		return Switch_Char[{:act=>expr.act,:defs=>expr.defs,:first=>expr.first,:header=>expr.header,:init=>expr.init,:ary=>expr.ary.map{|h,k| [h,_Bind(name,k)]}}] if expr.is_a?(Switch_Char)
-		return Switch_Clas.create({:ary=>expr.ary.map{|h,k| [h,_Bind(name,k)]}}) if expr.is_a?(Switch_Clas)
+		return Switch_Char[{:ary=>expr.ary.map{|h,k| [h,_Bind(name,k)]}}] if expr.is_a?(Switch_Char)
+		return Switch_Clas[{:ary=>expr.ary.map{|h,k| [h,_Bind(name,k)]}}] if expr.is_a?(Switch_Clas)
 
 		return Or[*expr.ary.map{|a|_Bind(name,a)}] if expr.is_a?(Or)
 		return Seq[Bind[name,Seq[*expr.ary[0...-1]]],expr.ary[-1]] if expr.is_a?(Seq) && expr.ary.size>0 && [Comment,Cut,Stop].include?(expr.ary[-1].class)
@@ -142,6 +148,9 @@ class Or
 		args=args[0][:ary] if args.size==1 && args[0].is_a?(Hash)
 		args=args.select{|e| !(e.is_a?(Apply)&& e.ary[0]=="fails")}
 		return Apply["fails"] if args.size==0
+		# TODO dont consider alternatives after
+		#  Seq[cant_fail* Cut .*]
+		# |Seq[cant_fail*       ]
 		Or.create({:ary=>args}).normalize
 	end
 	def normalize2
