@@ -26,27 +26,25 @@ class SeqOr<AmethystAST;end
 makeclasses(SeqOr,:Seq,:Or)
 
 
-def equalize_by(klas,args)
-  eval("$hash_#{klas}={}
-    class #{klas}\n
+def equalize_by(clas,args)
+  eval("$hash_#{clas}={}
+    class #{clas}\n
           def normalize
-            return $hash_#{klas}[#{args}] if $hash_#{klas}[#{args}]
-            $hash_#{klas}[#{args}]=normalize2
+            return $hash_#{clas}[#{args}] if $hash_#{clas}[#{args}]
+            $hash_#{clas}[#{args}]=normalize2
           end
 					alias_method :hash,:object_id
 					alias_method :eql?,:equal?
 					alias_method :==,:equal?
+					def self.[](*args)
+						#{clas}.create(*args).normalize
+					end
     end")
 end
 [Act,Apply,Args,Bind,Bnding,CAct,Comment,Cut,Lambda,Global,Key,Local,Lookahead,Many,Or,Pass,Result,Seq,Stop,Strin,Switch_Char,Switch_Clas].each{|e| 
 by="[#{e.instance_variable_get(:@attrs)*","}]"
 by="ary" if by=="[ary]"
 equalize_by(e,by)
-	eval("class #{e}
-		def self.[](*args)
-			#{e}.create(*args).normalize
-		end
-	end")
 }
 
 
