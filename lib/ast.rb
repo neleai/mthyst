@@ -113,11 +113,11 @@ class Bind
 	end
 	def normalize2
 		# Apply[ ["fails"] {@self} ]
-		# Switch_Char[]
-		# Switch_Clas[ ]
-		# Or[]
-		# Seq[ .* (Cut|Stop) ]
-		# Seq[ ]
+		# Switch_Char[ [.:p .:a {[p,_Bind[name,a]]} ]*:ary ] @Switch_Char
+		# Switch_Clas[ [.:p .:a {[p,_Bind[name,a]]} ]*:ary ] @Switch_Char
+		# Or[ (.:{Bind[name,it])*:ary ] @Or
+		# Seq[ .*:a (Cut|Stop):last ] -> Seq[Bind[name,Seq[a]],e]
+		# Seq[ .*:a .:last          ] -> Seq[a,Bind[name,last]]
 		return expr if expr.is_a?(Apply) && expr[0]=="fails"
 		return Switch_Char[{:ary=>expr.ary.map{|h,k| [h,_Bind(name,k)]}}] if expr.is_a?(Switch_Char)
 		return Switch_Clas[{:ary=>expr.ary.map{|h,k| [h,_Bind(name,k)]}}] if expr.is_a?(Switch_Clas)
@@ -146,6 +146,10 @@ end
 
 class SeqOr
 	 def normalize2
+		#	seqor[ seqor[.*:ary[] ] | Placeholder | .:ary[] ]
+		# {ary}=>( 0 -> Placeholder
+		#        | 1 -> ary[0]
+		#        | . -> seqor[ary]
     @ary=@ary.map{|i| (i.is_a?(self.class)) ? i.ary : i}.flatten
     @ary=@ary.select{|e| !(e==Placeholder)}
     return Placeholder if @ary.size==0
@@ -160,6 +164,11 @@ class Seq
 	end
 	def normalize2
 		s=super
+		# ( Apply[ ["fails"] ] .* -> Apply["fails"]
+		# | . ):ary
+		# {ary.size}=>( 0 -> Placeholder
+		# 						| 1 -> ary[0]
+		# 						| . -> Seq[ary]
 		return s if s==Placeholder
 		s.ary.each_index{|i|if i!=s.ary.size-1
 			return Seq[*s.ary[0..i]] if s.ary[i].is_a?(Apply) && s.ary[i][0]=="fails"
@@ -180,9 +189,14 @@ class Or
 		#  Seq[cant_fail* Cut .*]
 		# |Seq[cant_fail*       ]
 		s=super
+		# Or[ (Apply[ ["fails"] ] | .:ary[])*
+		#	{ary.size}=>( 0 -> Apply["fails"]
+		#	            | 1 -> ary[0]
+		#	            | . -> Or[ary]
 		return s unless s.is_a?(Or)
 		s.ary=s.ary.select{|e| !(e.is_a?(Apply)&& e.ary[0]=="fails")}
 		return Apply["fails"] if s.ary.size==0
+		return s.ary[0]       if s.ary.size==1
 		s.ary.freeze
 		s.freeze
 	end
@@ -229,7 +243,7 @@ end
 }
 $cstr={}
 class CAct
-	def ccode #rewrite in amethyst
+	def ccode 
 		$constno+=1
 		return [nil,nil,"rb_ary_new3(0)"] if ary[0].is_a?(Array)
     return [nil,nil,"Q#{ary[0].inspect}"] if [true,false,nil].include?(ary[0])
@@ -257,13 +271,19 @@ class Act
 		Act.create({:ary=>expr,:pred=>pred,:pure=>pure}).normalize
 	end
 	def normalize2
+		#
+		#   ["[]"]        -> CAct[[]]
+		#   [number:n]    -> CAct[n]
+		#   [className:n] -> CAct[eval(n)]
+		#		["true"|"false"|"nil"]:x -> CAct[eval(x)]
+		#		[( '"' .* '"' )[]]:x     -> CAct[eval(x.join)]
 		return self if !@ary
 		if @ary.size==1 
 			exp=@ary[0]
 			return exp if exp.is_a?(Act)
 			if  !@pred
 				exp = exp.strip if exp.is_a?(String) 
-			  return Act.create(exp,{:pure=>true}).freeze if exp.is_a?(Lambda)
+				return Act.create(exp,{:pure=>true}).freeze if exp.is_a?(Lambda)
 				return CAct[[]] if exp=="[]"
 				return CAct[exp.to_i] if exp.is_a?(String) && exp==exp.to_i.to_s
 				return CAct[eval(exp)] if exp=~/^[A-Z][a-zA-Z0-9_]*$/ && eval(exp).is_a?(Class)
@@ -299,6 +319,10 @@ class Apply
 		@ary[0]
 	end
 	def normalize2
+		#	  ["apply" | "_seq"] Lambda[.:x] -> x
+		# | ["apply"] CAct[.:name] -> Apply[name] #TODO resolve
+		# | ["_seq"] CAct[[ "" ]]  -> Placeholder
+		# | @self
 		if name=="apply"
 			return @ary[1][0][0] if @ary[1].is_a?(Act) && @ary[1][0].is_a?(Lambda)
 			if @ary[1].is_a?(CAct)
