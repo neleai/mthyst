@@ -150,8 +150,7 @@ class SeqOr
     @ary=@ary.select{|e| !(e==Placeholder)}
     return Placeholder if @ary.size==0
     return @ary[0] if (@ary.size==1)
-    @ary.freeze
-    self.freeze
+		self
   end
 end
 class Seq
@@ -165,7 +164,8 @@ class Seq
 		s.ary.each_index{|i|if i!=s.ary.size-1
 			return Seq[*s.ary[0..i]] if s.ary[i].is_a?(Apply) && s.ary[i][0]=="fails"
 		end}
-		s
+		s.ary.freeze
+		s.freeze
 	end
 end
 class Or
@@ -173,15 +173,18 @@ class Or
 		args=args[0][:ary] if args.size==1 && args[0].is_a?(Hash)
 		args=args.select{|e| !(e.is_a?(Apply)&& e.ary[0]=="fails")}
 		return Apply["fails"] if args.size==0
-		# TODO dont consider alternatives after
-		#  Seq[cant_fail* Cut .*]
-		# |Seq[cant_fail*       ]
 		Or.create({:ary=>args}).normalize
 	end
 	def normalize2
-		@ary=@ary.select{|e| !(e.is_a?(Apply)&& e.ary[0]=="fails")}
-		return Apply["fails"] if @ary.size==0
-		super
+		# TODO dont consider alternatives after
+		#  Seq[cant_fail* Cut .*]
+		# |Seq[cant_fail*       ]
+		s=super
+		return s unless s.is_a?(Or)
+		s.ary=s.ary.select{|e| !(e.is_a?(Apply)&& e.ary[0]=="fails")}
+		return Apply["fails"] if s.ary.size==0
+		s.ary.freeze
+		s.freeze
 	end
 end
 class Switch_Char

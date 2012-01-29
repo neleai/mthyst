@@ -317,7 +317,7 @@ amethyst Detect_Switch_Char < Detect_First {
                            combine_or(newlist)
                   | .:n {list.map{|p,a| [p,a+[n]]}}:newlist                                  
                            combine_or(newlist)
-								  | eof {Switch_Char[{:ary=>list.map{|p,a| [p,Or[*a].dup.normalize]}}]}
+								  | eof {Switch_Char[{:ary=>list.map{|p,a| [p,Or[*a]]}}]}
 }
 
 amethyst Detect_Switch_Clas < Detect_First {

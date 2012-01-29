@@ -507,14 +507,14 @@ end
 def Detect_Switch_Char_Switch_C_4343(bind)
 Switch_Char[{:ary=>bind[4].map{|p,a| [p,Seq[*(bind[1]+[a]+bind[7])]]}}] 
 end
+def Detect_Switch_Char_Switch_C_525a(bind)
+Switch_Char[{:ary=>bind[3].map{|p,a| [p,Or[*a]]}}]
+end
 def Detect_Switch_Char_Switch_C_605e(bind)
 Switch_Char[{:ary=>bind[49].map{|p,a| [p,Seq[*(bind[45]+[a]+bind[52])]]}}] 
 end
-def Detect_Switch_Char_Switch_C_badf(bind)
-Switch_Char[{:ary=>bind[32].map{|p,a| [p,Or[*a].dup.normalize]}}]
-end
-def Detect_Switch_Char_Switch_C_fe8b(bind)
-Switch_Char[{:ary=>bind[3].map{|p,a| [p,Or[*a].dup.normalize]}}]
+def Detect_Switch_Char_Switch_C_e4f6(bind)
+Switch_Char[{:ary=>bind[32].map{|p,a| [p,Or[*a]]}}]
 end
 def Detect_Switch_Char__append_lp__05b0(bind)
 _append(bind[25],bind[26])
@@ -766,15 +766,15 @@ end
 
 
 def detect_switch_compiled_by
-'e15dc574219b5b1e1cb9357c0419ebd3'
+'df4bbfa6ba15b1af9b2a4c186dfb2095'
 end
 def detect_switch_source_hash
-'40c957a214badcdfea7604bee1abdc7a'
+'fa094b553420cec462298d61eb15e354'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'f2983ec95f9f359320d4b1198f877c32'
+'7e1ccff5979a8642a232bf794e20e978'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"
