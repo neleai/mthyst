@@ -766,7 +766,7 @@ end
 
 
 def detect_switch_compiled_by
-'14ceabb4408b2983b80f2e1af9725e51'
+'5c570a18bb67f0a7c779147393d52503'
 end
 def detect_switch_source_hash
 'fa094b553420cec462298d61eb15e354'

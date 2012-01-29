@@ -35,7 +35,7 @@ amethyst AmethystParser < Amethyst{
 
 	
 	cases =  className:clas  ~'::'                      -> Apply["clas",clas]
-				| (number ('...'|'..') number | number)[]:num -> Apply["member",num.join]
+				| ((number ('...'|'..') number)[]:{it.join} | number):num -> Apply["member",num]
       	| '<'  until('>' ):s -> Apply["regch","/["+s+"]/"]
 
 	term  = 'nested(' expression:expr ")" -> Nested[expr]

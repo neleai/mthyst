@@ -17,8 +17,8 @@ def AmethystParser_Apply_lb__dq_c_c518(bind)
 Apply["clas",bind[17]]
 
 end
-def AmethystParser_Apply_lb__dq_m_4186(bind)
-Apply["member",bind[16].join]
+def AmethystParser_Apply_lb__dq_m_82cb(bind)
+Apply["member",bind[16]]
 
 end
 def AmethystParser_Apply_lb__dq_r_6064(bind)
@@ -146,9 +146,6 @@ end
 def AmethystParser__append_lp__088f(bind)
 _append(bind[4],bind[5])
 end
-def AmethystParser__append_lp__0a14(bind)
-_append(bind[8],bind[15])
-end
 def AmethystParser__append_lp__0d6a(bind)
 _append(bind[1],bind[4])
 end
@@ -272,6 +269,9 @@ def AmethystParser_bind_lb_10_rb__ff8c(bind)
 bind[10]
 
 end
+def AmethystParser_bind_lb_15_rb__9e16(bind)
+bind[15].join
+end
 def AmethystParser_bind_lb_17_rb__8424(bind)
 bind[17].join
 
@@ -309,15 +309,15 @@ end
 
 
 def parser_compiled_by
-'14ceabb4408b2983b80f2e1af9725e51'
+'5c570a18bb67f0a7c779147393d52503'
 end
 def parser_source_hash
-'38ac1c0b422f709f135dbed4b42f779f'
+'9865081eaaa59841bcf738019bf778e3'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'65e94f70dbe5f3e294e1034f507fa313'
+'7ce99026fa65f84d08ac28bf4f90997a'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/parser_c"

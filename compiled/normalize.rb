@@ -8,7 +8,7 @@ end
 
 
 def normalize_compiled_by
-'14ceabb4408b2983b80f2e1af9725e51'
+'5c570a18bb67f0a7c779147393d52503'
 end
 def normalize_source_hash
 '91e3cf7896df0579188f706c0a654b13'
