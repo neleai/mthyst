@@ -284,7 +284,13 @@ amethyst Detect_First < Traverser_Clone2 {
 
 	must_empty = Act | CAct
 						 | Bind[ must_empty {@self} ]
-						 
+
+	cant_fail  = Act | CAct
+						 | Bind[ must_empty {@self} ]
+	
+	string_only = Apply[ ["regch" |"_seq"] .*]
+	
+	object_only = Apply[ ["clas"] .* ]
 }
 
 amethyst Detect_Switch_Char < Detect_First {

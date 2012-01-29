@@ -465,6 +465,9 @@ end
 
 class Detect_First < Traverser_Clone2
 
+def Detect_First__append_lp__4de3(bind)
+_append(bind[2],bind[3])
+end
 def Detect_First__append_lp__7352(bind)
 _append(bind[4],bind[7])
 end
@@ -766,12 +769,12 @@ def detect_switch_compiled_by
 '58c4328babc860e9b16799918399455b'
 end
 def detect_switch_source_hash
-'5bb477db5ba4932ffc217151e6e22dbf'
+'40c957a214badcdfea7604bee1abdc7a'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'80b51d6a9935b7ba1df7064c7b9e3c94'
+'f2983ec95f9f359320d4b1198f877c32'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"
