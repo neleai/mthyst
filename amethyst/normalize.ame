@@ -1,8 +1,21 @@
 amethyst Normalize{
-	or = Or[ (Apply[ ["fails"] ] | .:ary[])* @self:or
+	or = Or[ @self:or 
+           ( Apply[ ["fails"] ]
+           | .:ary[]
+           )* ]
 					{ary.size}=>( 0 -> Apply["fails"]
 											| 1 -> ary[0]
 											| . -> or.ary=ary;or.ary.freeze;or.freeze
 											)
-				]
+				
+
+	seq = Seq[ @self:seq
+             ( Apply[ ["fails"] @self:ary[] ] .*
+             | .:ary[] 
+             )* ]
+             {ary.size}=>( 0 -> Placeholder
+                         | 1 -> ary[0]
+                         | . -> seq.ary=ary;seq.ary.freeze;seq.freeze
+         								 )
+           
 }

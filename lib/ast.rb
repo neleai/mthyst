@@ -164,17 +164,8 @@ class Seq
 	end
 	def normalize2
 		s=super
-		# ( Apply[ ["fails"] ] .* -> Apply["fails"]
-		# | . ):ary
-		# {ary.size}=>( 0 -> Placeholder
-		# 						| 1 -> ary[0]
-		# 						| . -> Seq[ary]
-		return s if s==Placeholder
-		s.ary.each_index{|i|if i!=s.ary.size-1
-			return Seq[*s.ary[0..i]] if s.ary[i].is_a?(Apply) && s.ary[i][0]=="fails"
-		end}
-		s.ary.freeze
-		s.freeze
+		return s unless s.is_a?(Seq)
+		$normalize.parse(:seq,[s])
 	end
 end
 class Or
@@ -189,10 +180,6 @@ class Or
 		#  Seq[cant_fail* Cut .*]
 		# |Seq[cant_fail*       ]
 		s=super
-		# Or[ (Apply[ ["fails"] ] | .:ary[])*
-		#	{ary.size}=>( 0 -> Apply["fails"]
-		#	            | 1 -> ary[0]
-		#	            | . -> Or[ary]
 		return s unless s.is_a?(Or)
 		$normalize.parse(:or,[s])
 	end
