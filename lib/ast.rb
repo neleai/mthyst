@@ -281,23 +281,7 @@ class Apply
 		@ary[0]
 	end
 	def normalize2
-		#	  ["apply" | "_seq"] Lambda[.:x] -> x
-		# | ["apply"] CAct[.:name] -> Apply[name] #TODO resolve
-		# | ["_seq"] CAct[[ "" ]]  -> Placeholder
-		# | @self
-		return $normalize.parse(:apply2,[self])
-		if name=="apply"
-			return @ary[1][0][0] if @ary[1].is_a?(Act) && @ary[1][0].is_a?(Lambda)
-			if @ary[1].is_a?(CAct)
-				raise "TODO resolve" 
-				return Apply[@ary[1][0]] 
-			end
-		end
-		if name=="_seq"
-			return @ary[1][0][0] if @ary[1].is_a?(Act) && @ary[1][0].is_a?(Lambda)
-			return Placeholder if @ary[1].is_a?(CAct) && @ary[1][0]==""
-		end 
-		self.freeze
+		$normalize.parse(:apply2,[self])
 	end
 end
          
