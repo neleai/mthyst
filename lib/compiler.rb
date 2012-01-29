@@ -156,6 +156,7 @@ class <<Compiler
     File.open("compiled/#{file2}.rb","w"){|f| f.puts rb; 
       f.puts "\ndef #{file2}_compiled_by\n'#{$compiled_by}'\nend\ndef #{file2}_source_hash\n'#{source_hash}'\nend\ndef testversion#{file2}(r)\n raise \"invalid version\" if r!=#{file2}_version\nend\ndef #{file2}_version\n'#{hex_digest}'\nend
 require File.expand_path(File.dirname(__FILE__))+\"/\#{RUBY_VERSION}/#{file2}_c\""}
+		fork{
 	  withtime("c"){ #todo get flags portable not just 1.8 on x64
 			if Amethyst::Settings.compile_for.include?("1_9_3")
 				`cd compiled;gcc -I. -I/usr/include/ruby-1.9.1/x86_64-linux -I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -fPIC -fno-strict-aliasing -g -g #{Amethyst::Settings.cflags} -fPIC -c #{file2}_c.c -o #{file2}_c.o`
@@ -165,7 +166,7 @@ require File.expand_path(File.dirname(__FILE__))+\"/\#{RUBY_VERSION}/#{file2}_c\
 		    `cd compiled;gcc -I. -I/usr/lib/ruby/1.8/x86_64-linux -I/usr/lib/ruby/1.8/x86_64-linux -I.   -fPIC -fno-strict-aliasing -g -g #{Amethyst::Settings.cflags}  -fPIC   -c #{file2}_c.c`
 		    `cd compiled;gcc -shared -o 1.8.7/#{file2}_c.so #{file2}_c.o -L. -L/usr/lib -L.  -rdynamic -Wl,-export-dynamic -lruby1.8  -lpthread -lrt -ldl -lcrypt -lm   -lc`
 			end
-  	}
+  	}}
 		end
 	end
 end	
