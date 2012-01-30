@@ -41,6 +41,7 @@ amethyst Normalize{
 										 | '\'' (<'#> break| '\\' . | .)*
 						  			 )  
                     "" ] -> CAct[eval(@ary[0])]
-						| Lambda[ {Act.create(@self,{:pure=>true}).freeze }]
+						| Lambda[ .* {Act.create(@self,{:pure=>true}).freeze }]
+						| Act | CAct | Local
             ]
 }
