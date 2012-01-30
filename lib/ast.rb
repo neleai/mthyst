@@ -111,8 +111,8 @@ class Bind
 		# Or[ (.:{Bind[name,it])*:ary ] @Or
 		# Seq[ .*:a (Cut|Stop):last ] -> Seq[Bind[name,Seq[a]],e]
 		# Seq[ .*:a .:last          ] -> Seq[a,Bind[name,last]]
-		return Switch_Char[{:ary=>expr.ary.map{|h,k| [h,Bind[name,k]]}}] if expr.is_a?(Switch_Char)
-		return Switch_Clas[{:ary=>expr.ary.map{|h,k| [h,Bind[name,k]]}}] if expr.is_a?(Switch_Clas)
+#		return Switch_Char[{:ary=>expr.ary.map{|h,k| [h,Bind[name,k]]}}] if expr.is_a?(Switch_Char)
+#		return Switch_Clas[{:ary=>expr.ary.map{|h,k| [h,Bind[name,k]]}}] if expr.is_a?(Switch_Clas)
 
 		return Seq[Bind[name,Seq[*expr.ary[0...-1]]],expr.ary[-1]] if expr.is_a?(Seq) && expr.ary.size>0 && [Comment,Cut,Stop].include?(expr.ary[-1].class)
     return Seq[*(expr.ary[0...-1]+[Bind[name,expr.ary[-1]]])] if expr.is_a?(Seq) && expr.ary.size>0

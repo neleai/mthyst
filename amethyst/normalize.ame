@@ -24,7 +24,9 @@ amethyst Normalize{
            
 	bind = Bind[ {@name}:name
 						 ( Apply[ ["fails"] {@self} ]
-						 | Or[ (.:{Bind[name,it]})*:ary ] -> Or[*ary]
+						 | Or[ (.:{Bind[name,it]})*:ary ] @Or
+						 | Switch_Char[ {[]}:ary [.:p .:a {ary<<[p,Bind[name,a]]} ]* ] @Switch_Char
+             | Switch_Clas[ {[]}:ary [.:p .:a {ary<<[p,Bind[name,a]]} ]* ] @Switch_Clas
    					 | . -> @self.freeze
 					   ) ]			 
 

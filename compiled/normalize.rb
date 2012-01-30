@@ -18,9 +18,8 @@ def Normalize_CAct_lb_eva_559c(bind)
 CAct[eval(src.ary[0])]
 
 end
-def Normalize_Or_lb__ti_bind_4d35(bind)
-Or[*bind[10]]
-
+def Normalize_Or_dot_creat_fbdf(bind)
+Or.create( {:ary=>bind[10] })
 end
 def Normalize_Placehol_6875(bind)
 Placeholder
@@ -28,6 +27,12 @@ end
 def Normalize_Placehol_a03d(bind)
 Placeholder
 
+end
+def Normalize_Switch_C_775c(bind)
+Switch_Char.create( {:ary=>bind[10] })
+end
+def Normalize_Switch_C_eba2(bind)
+Switch_Clas.create( {:ary=>bind[10] })
 end
 def Normalize__append_lp__0eeb(bind)
 _append(bind[0],bind[8])
@@ -60,6 +65,9 @@ def Normalize_bind_lb_0_rb__lb__1f45(bind)
 bind[0][0]
 
 end
+def Normalize_bind_lb_10_rb__8d40(bind)
+bind[10]<<[bind[13],Bind[bind[5],bind[14]]]
+end
 def Normalize_bind_lb_2_rb__dot__e24b(bind)
 bind[2].ary=bind[0];bind[2].ary.freeze;bind[2].freeze
 
@@ -89,15 +97,15 @@ end
 
 
 def normalize_compiled_by
-'d693017ae3aa5b055045e582acf14720'
+'6aade4b84662abe83e3e537e6d8b7487'
 end
 def normalize_source_hash
-'b154d8a27fe828fda636315b384e7146'
+'0f47729a2c9225bd140871ff65ebbcd0'
 end
 def testversionnormalize(r)
  raise "invalid version" if r!=normalize_version
 end
 def normalize_version
-'941e1e33e012b8eaeb5122dadf170a88'
+'5d9cd77cf26ff7a822e8ba7ba4472ba8'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/normalize_c"
