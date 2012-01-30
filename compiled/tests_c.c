@@ -17,7 +17,8 @@ static VALUE s_d_8277;
 static VALUE s_g_b2f5;
 static VALUE sy_Tests_bind_lb_0_rb__pl__3b00;
 static VALUE sy_Tests_bind_lb_0_rb__pl__fbc2;
-static VALUE sy_Tests_bind_lb_2_rb__pl__e5df;
+static VALUE sy_Tests_bind_lb_1_rb__pl__1730;
+static VALUE sy_Tests_bind_lb_3_rb__eq__0b1b;
 static VALUE sy_bar;
 static VALUE sy_seq;
 static VALUE sy_token;
@@ -63,19 +64,12 @@ alt3_3: ptr->pos=oldpos3;goto fail;
 }
 return it;
 fail: return failobj; }
-VALUE Tests_foo(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(3);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
+VALUE Tests_foo(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(4);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 
-int oldpos1=ptr->pos;
-alt1_1:;  it=Tests_foo(self ); FAILTEST(alt1_2); bind_aset(bind,0/*_result*/,it);
-
-;goto accept1;
-alt1_2: ptr->pos=oldpos1;  it=rb_funcall(self,sy_bar,0); FAILTEST(alt1_3); bind_aset(bind,1/*bar*/,it);
-it=rb_funcall(self,sy_Tests_bind_lb_2_rb__pl__e5df,1,bind);  bind_aset(bind,0/*_result*/,it);
-
-;goto accept1;
-alt1_3: ptr->pos=oldpos1;goto fail;
- accept1:;
-
+  it=rb_funcall(self,sy_bar,0); FAILTEST(fail); bind_aset(bind,0/*bar*/,it);
+it=rb_funcall(self,sy_Tests_bind_lb_1_rb__pl__1730,1,bind);  bind_aset(bind,2/*_result*/,it);
+int oldpos1; while(1){oldpos1=ptr->pos; it=rb_funcall(self,sy_Tests_bind_lb_3_rb__eq__0b1b,1,bind); it=bind_aget(bind,2/*_result*/); bind_aset(bind,2/*_result*/,it);
+  } break1: ame_setstop(self,Qnil); ptr->pos=oldpos1; 
 return it;
 fail: return failobj; }
 VALUE Tests_s2(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -153,7 +147,8 @@ s_d_8277=rb_str_new2("d");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark
 s_g_b2f5=rb_str_new2("g");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),s_g_b2f5);
 sy_Tests_bind_lb_0_rb__pl__3b00=rb_intern("Tests_bind_lb_0_rb__pl__3b00");
 sy_Tests_bind_lb_0_rb__pl__fbc2=rb_intern("Tests_bind_lb_0_rb__pl__fbc2");
-sy_Tests_bind_lb_2_rb__pl__e5df=rb_intern("Tests_bind_lb_2_rb__pl__e5df");
+sy_Tests_bind_lb_1_rb__pl__1730=rb_intern("Tests_bind_lb_1_rb__pl__1730");
+sy_Tests_bind_lb_3_rb__eq__0b1b=rb_intern("Tests_bind_lb_3_rb__eq__0b1b");
 sy_bar=rb_intern("bar");
 sy_seq=rb_intern("seq");
 sy_token=rb_intern("token");
@@ -163,4 +158,4 @@ rb_define_method(cls_Tests,"foo",Tests_foo,0);
 rb_define_method(cls_Tests,"s2",Tests_s2,0);
 rb_define_method(cls_Tests,"sw",Tests_sw,0);
 rb_define_method(cls_Tests,"test",Tests_test,0);
- rb_eval_string("testversiontests('ef3f8e42b7a0eab73edd6f4a606f7e29')");}
+ rb_eval_string("testversiontests('644e2763590be09749b7e4164301158b')");}

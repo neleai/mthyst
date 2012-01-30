@@ -1,6 +1,5 @@
 persistence
 optimizer simplifying =>[ ] to []
-split to separate parser and traverser 
 make AmethystModule +include to mimic ruby module
 parser to produce literal tree and convert to abstract tree
 make position handling explicit as in amethyst/position.ame
@@ -21,8 +20,6 @@ analysis what closures can be saved on stack
 rewrite using backtracking,repeat until...
 continuation passing style
 
-switch and predication by constant propagation?
-predication by splitting to predicated and notpredicated part
 
 optimalization of lookaheads such that x* ~x the ~x is automaticaly satisfied(aka eof)
 in ~space space* the  space* must be empty (predication to fail)
@@ -84,6 +81,7 @@ recognize local=
 paralelize compilation
 
 predicated inlining
+inlining concrete and general form
 
 cache dataflow data with objects
 
@@ -93,3 +91,4 @@ cantfail, noresult,mustempty,string_only,object_only
 as constant propagation?
 use to simplify ors
 
+? warn about a:b(c)

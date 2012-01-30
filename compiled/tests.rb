@@ -8,15 +8,18 @@ end
 def Tests_bind_lb_0_rb__pl__fbc2(bind)
 bind[0]+1
 end
-def Tests_bind_lb_2_rb__pl__e5df(bind)
-bind[2]+bind[1]
+def Tests_bind_lb_1_rb__pl__1730(bind)
+bind[1]+bind[0]
+end
+def Tests_bind_lb_3_rb__eq__0b1b(bind)
+bind[3]=bind[2];bind.reset;bind[2]=bind[3]
 end
 
 end
 
 
 def tests_compiled_by
-'8c5789db4333a8a2e21f5c04309d049a'
+'6b1b0a66c27620073a367599a6350079'
 end
 def tests_source_hash
 '2be30090a93f05dadc9b46b3d9713748'
@@ -25,6 +28,6 @@ def testversiontests(r)
  raise "invalid version" if r!=tests_version
 end
 def tests_version
-'ef3f8e42b7a0eab73edd6f4a606f7e29'
+'644e2763590be09749b7e4164301158b'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/tests_c"

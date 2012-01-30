@@ -87,9 +87,9 @@ class <<Compiler
       g.rules[name]=Analyze_Variables2.new.parse(:root,g.rules[name])
 	  	g.rules[name]=Resolve_Calls.new.parse(:root,[g,g.rules[name]])
 		}
-		names.dup.each{|nam| #update callgraph
-			g.calls[nam]=DetectCalls.new.parse(:root,[g.getrule(nam)])
-			g.calls[nam].each{|c,t| callg.add(nam,c)}
+		names.dup.each{|name| #update callgraph
+			g.calls[name]=DetectCalls.new.parse(:root,[g.getrule(name)])
+			g.calls[name].each{|c,t| callg.add(name,c)}
 		}
 		topo= callg.topo_order
 		#TODO resolve name clashes
@@ -101,6 +101,9 @@ class <<Compiler
 		dc=Detect_Switch_Clas.new;dc.instance_variable_set(:@name,grammar.name)
 		$rules=g.rules
 		topo.each{|name|if g.rules[name] && called[name]
+				if g.calls[name] && g.calls[name].include?(name)
+					g.rules[name]=Remove_Left_Recursion.new.parse(:root,[g.rules[name]])
+				end
 				g.opt(g.rules[name])
 				inlined=false
 				callg[name].each{|nm,v|

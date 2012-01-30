@@ -2,53 +2,91 @@
 
 class Remove_Left_Recursion < Traverser_Clone2
 
-def Remove_Left_Recursion_Bind_lb_bin_3e0d(bind)
-Bind[bind[6],bind[9]]
+def Remove_Left_Recursion_Bind_lb_src_4a7e(bind)
+Bind[src.name,bind[7]]
 end
-def Remove_Left_Recursion_Bind_lb_bin_d522(bind)
-Bind[bind[19],bind[22]]
+def Remove_Left_Recursion_Bind_lb_src_5a69(bind)
+Bind[src.name,bind[10]]
 end
-def Remove_Left_Recursion_Seq_lb_Seq_lb__f6ac(bind)
-Seq[Seq[bind[10]+[Or[*bind[1]]]],Many[Act[Args["x=",bind[7],";bind.reset;",bind[7],"=x"]],Seq[bind[10]+[Or[*bind[0]]]+bind[32]]],bind[7]]
+def Remove_Left_Recursion_Or_lb_bind_lb__1f89(bind)
+Or[bind[12]]
+
 end
-def Remove_Left_Recursion_Seq_lb__ti__lp__lb_b_e705(bind)
-Seq[*([bind[24]]+bind[27])]
+def Remove_Left_Recursion_Or_lb_bind_lb__c41d(bind)
+Or[bind[15]]
+
 end
-def Remove_Left_Recursion__append_lp__05b0(bind)
-_append(bind[25],bind[26])
+def Remove_Left_Recursion_Seq_lb_bind_58ff(bind)
+Seq[bind[16],bind[19]]
+
 end
-def Remove_Left_Recursion__append_lp__50f6(bind)
-_append(bind[0],bind[28])
+def Remove_Left_Recursion_Seq_lb_bind_8d77(bind)
+Seq[bind[21],bind[24]]
+
 end
-def Remove_Left_Recursion__append_lp__769c(bind)
-_append(bind[30],bind[31])
+def Remove_Left_Recursion_Seq_lb_bind_ba02(bind)
+Seq[bind[24]]
 end
-def Remove_Left_Recursion__append_lp__b375(bind)
-_append(bind[8],bind[9])
+def Remove_Left_Recursion_Seq_lb_bind_c986(bind)
+Seq[bind[19]]
 end
-def Remove_Left_Recursion__append_lp__fedd(bind)
-_append(bind[1],bind[29])
+def Remove_Left_Recursion__append_lp__3c16(bind)
+_append(bind[28],bind[29])
 end
-def Remove_Left_Recursion__lp_src_dot_nam_5024(bind)
-(src.name==bind[14]) || FAIL
+def Remove_Left_Recursion__append_lp__473a(bind)
+_append(bind[13],bind[14])
 end
-def Remove_Left_Recursion__lp_src_dot_nam_58e8(bind)
-(src.name==bind[1]) || FAIL
+def Remove_Left_Recursion__append_lp__58ed(bind)
+_append(bind[22],bind[23])
+end
+def Remove_Left_Recursion__append_lp__835a(bind)
+_append(bind[17],bind[18])
+end
+def Remove_Left_Recursion__append_lp__89bf(bind)
+_append(bind[23],bind[24])
+end
+def Remove_Left_Recursion__append_lp__9ca5(bind)
+_append(bind[10],bind[11])
+end
+def Remove_Left_Recursion__at_left_re_c85d(bind)
+@left_rec=true
+end
+def Remove_Left_Recursion__at_name_eq_sr_362f(bind)
+@name=src.name
+end
+def Remove_Left_Recursion__at_result_eq__b6ab(bind)
+@result=Local["_result",src.bnding]
+end
+def Remove_Left_Recursion__lp__at_name_eq__eq__2784(bind)
+(@name==src.name) || FAIL
+end
+def Remove_Left_Recursion_a_eq_autova_de17(bind)
+a=autovar;src.body = Seq[bind[30],Many[Seq[Act[Args[a,"=",@result,";bind.reset;",@result,"=",a]],bind[35]]]] if @left_rec
+end
+def Remove_Left_Recursion_bind_lb_1_rb__sp__4ee5(bind)
+bind[1] ? @result       : Apply["fails"]
+
+end
+def Remove_Left_Recursion_bind_lb_1_rb__sp__a8f8(bind)
+bind[1] ? Apply["fails"] : bind[3]
+
+end
+def Remove_Left_Recursion_bind_lb_2_rb__sp__e623(bind)
+bind[2] ? Apply["fails"] : bind[5]
+
+end
+def Remove_Left_Recursion_bind_lb_2_rb__sp__eada(bind)
+bind[2] ? @result       : Apply["fails"]
+
 end
 def Remove_Left_Recursion_src_25d9(bind)
 src
-end
-def Remove_Left_Recursion_src_dot_ary_lb__d09f(bind)
-src.ary[-1]
 end
 def Remove_Left_Recursion_src_dot_body_519e(bind)
 src.body
 end
 def Remove_Left_Recursion_src_dot_expr_ef77(bind)
 src.expr
-end
-def Remove_Left_Recursion_src_dot_name_80f3(bind)
-src.name
 end
 
 end
@@ -57,15 +95,15 @@ end
 
 
 def remove_left_rigth_recursion_compiled_by
-'8c5789db4333a8a2e21f5c04309d049a'
+'6b1b0a66c27620073a367599a6350079'
 end
 def remove_left_rigth_recursion_source_hash
-'82f5682f26abef9436e5f92f8bc34754'
+'b918cf23eab27ff6cfc5b279497d70ba'
 end
 def testversionremove_left_rigth_recursion(r)
  raise "invalid version" if r!=remove_left_rigth_recursion_version
 end
 def remove_left_rigth_recursion_version
-'f7bbc70006d3496784f8b78a8cc03b61'
+'57d18dbd86361a6fb14e80442d49baaf'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/remove_left_rigth_recursion_c"
