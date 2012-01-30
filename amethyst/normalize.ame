@@ -22,10 +22,11 @@ amethyst Normalize{
                          | . -> seq.ary=ary;seq.ary.freeze;seq.freeze
          								 )
            
-	bind = Bind[ {@name}:name2
-						   Apply[ ["fails"] {@self} ]
+	bind = Bind[ {@name}:name
+						 ( Apply[ ["fails"] {@self} ]
+						 | Or[ (.:{Bind[name,it]})*:ary ] -> Or[*ary]
    					 | . -> @self.freeze
-					   ]			 
+					   ) ]			 
 
 	apply2 = Apply[ ["apply" | "_seq"] Act[Lambda[.:x]] -> x
                 | ["apply"] CAct[.:name] -> Apply[name] #TODO resolve

@@ -11,8 +11,15 @@ def Normalize_Apply_lb_bi_d0b8(bind)
 Apply[bind[11]] #TODO resolve
 
 end
+def Normalize_Bind_lb_bin_bff4(bind)
+Bind[bind[5],bind[8]]
+end
 def Normalize_CAct_lb_eva_559c(bind)
 CAct[eval(src.ary[0])]
+
+end
+def Normalize_Or_lb__ti_bind_4d35(bind)
+Or[*bind[10]]
 
 end
 def Normalize_Placehol_6875(bind)
@@ -27,6 +34,9 @@ _append(bind[0],bind[8])
 end
 def Normalize__append_lp__4297(bind)
 _append(bind[0],bind[6])
+end
+def Normalize__append_lp__4f82(bind)
+_append(bind[7],bind[9])
 end
 def Normalize__append_lp__6ac6(bind)
 _append(bind[0],bind[7])
@@ -79,15 +89,15 @@ end
 
 
 def normalize_compiled_by
-'009d5afe7fbef2e225dd8fec0e456e89'
+'d693017ae3aa5b055045e582acf14720'
 end
 def normalize_source_hash
-'75376e219dc37f7fe5bf5af6392f3f91'
+'b154d8a27fe828fda636315b384e7146'
 end
 def testversionnormalize(r)
  raise "invalid version" if r!=normalize_version
 end
 def normalize_version
-'204d52aec0517d1daa86c3e10149b885'
+'941e1e33e012b8eaeb5122dadf170a88'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/normalize_c"

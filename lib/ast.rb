@@ -116,7 +116,7 @@ class Bind
 
 		return Seq[Bind[name,Seq[*expr.ary[0...-1]]],expr.ary[-1]] if expr.is_a?(Seq) && expr.ary.size>0 && [Comment,Cut,Stop].include?(expr.ary[-1].class)
     return Seq[*(expr.ary[0...-1]+[Bind[name,expr.ary[-1]]])] if expr.is_a?(Seq) && expr.ary.size>0
-		return Or[*expr.ary.map{|a|Bind[name,a]}] if expr.is_a?(Or)
+#		return Or[*expr.ary.map{|a|Bind[name,a]}] if expr.is_a?(Or)
 		$normalize.parse(:bind,[self])
 	end
 	def expr
