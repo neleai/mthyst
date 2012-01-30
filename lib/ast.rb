@@ -84,7 +84,7 @@ end
 
 def Pass.[](from,to,enter=nil)
 	a,r=autovar,autovar
-	Seq[_Bind(a,from), Pass.create({:to=>Seq[_Bind(r,to),Apply["eof"]],:var=>a,:enter=>enter}).normalize,r]
+	Seq[Bind[a,from], Pass.create({:to=>Seq[Bind[r,to],Apply["eof"]],:var=>a,:enter=>enter}).normalize,r]
 end
 
 def _Bind(name,expr,append=nil)
@@ -111,12 +111,12 @@ class Bind
 		# Or[ (.:{Bind[name,it])*:ary ] @Or
 		# Seq[ .*:a (Cut|Stop):last ] -> Seq[Bind[name,Seq[a]],e]
 		# Seq[ .*:a .:last          ] -> Seq[a,Bind[name,last]]
-		return Switch_Char[{:ary=>expr.ary.map{|h,k| [h,_Bind(name,k)]}}] if expr.is_a?(Switch_Char)
-		return Switch_Clas[{:ary=>expr.ary.map{|h,k| [h,_Bind(name,k)]}}] if expr.is_a?(Switch_Clas)
+		return Switch_Char[{:ary=>expr.ary.map{|h,k| [h,Bind[name,k]]}}] if expr.is_a?(Switch_Char)
+		return Switch_Clas[{:ary=>expr.ary.map{|h,k| [h,Bind[name,k]]}}] if expr.is_a?(Switch_Clas)
 
 		return Seq[Bind[name,Seq[*expr.ary[0...-1]]],expr.ary[-1]] if expr.is_a?(Seq) && expr.ary.size>0 && [Comment,Cut,Stop].include?(expr.ary[-1].class)
-    return Seq[*(expr.ary[0...-1]+[_Bind(name,expr.ary[-1])])] if expr.is_a?(Seq) && expr.ary.size>0
-		return Or[*expr.ary.map{|a|_Bind(name,a)}] if expr.is_a?(Or)
+    return Seq[*(expr.ary[0...-1]+[Bind[name,expr.ary[-1]]])] if expr.is_a?(Seq) && expr.ary.size>0
+		return Or[*expr.ary.map{|a|Bind[name,a]}] if expr.is_a?(Or)
 		$normalize.parse(:bind,[self])
 	end
 	def expr
@@ -129,7 +129,7 @@ end
 
 def Many.[](expr,many1=nil)
   a=autovar
-	Seq[{:ary=>( [_Bind(a, Act["[]"])]+(many1 ? [Append[a,expr]] : [])+[Many.create({:ary=>[Append[a,expr]]}).normalize,a])}]
+	Seq[{:ary=>( [Bind[a, Act["[]"]]]+(many1 ? [Append[a,expr]] : [])+[Many.create({:ary=>[Append[a,expr]]}).normalize,a])}]
 end
 
 class Seq
