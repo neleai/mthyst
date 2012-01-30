@@ -27,6 +27,10 @@ amethyst Normalize{
 						 | Or[ (.:{Bind[name,it]})*:ary ] @Or
 						 | Switch_Char[ {[]}:ary [.:p .:a {ary<<[p,Bind[name,a]]} ]* ] @Switch_Char
              | Switch_Clas[ {[]}:ary [.:p .:a {ary<<[p,Bind[name,a]]} ]* ] @Switch_Clas
+						 | Seq[.+:ary] {Seq[ary[0...-1]]}:first {ary[-1]}:last
+							 {last}=>( (Comment|Cut|Stop) -> Seq[Bind[name,first],last]
+											 | .                  -> Seq[first,Bind[name,last]]
+											 )
    					 | . -> @self.freeze
 					   ) ]			 
 

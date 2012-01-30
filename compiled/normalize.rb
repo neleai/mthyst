@@ -28,11 +28,22 @@ def Normalize_Placehol_a03d(bind)
 Placeholder
 
 end
-def Normalize_Switch_C_775c(bind)
-Switch_Char.create( {:ary=>bind[10] })
+def Normalize_Seq_lb_Bind_8f10(bind)
+Seq[Bind[bind[5],bind[15]],bind[16]]
+
 end
-def Normalize_Switch_C_eba2(bind)
-Switch_Clas.create( {:ary=>bind[10] })
+def Normalize_Seq_lb_bind_b52b(bind)
+Seq[bind[10][0...-1]]
+end
+def Normalize_Seq_lb_bind_b71c(bind)
+Seq[bind[15],Bind[bind[5],bind[16]]]
+
+end
+def Normalize_Switch_C_059f(bind)
+Switch_Char.create( {:ary=>bind[10],:first=>bind[15] })
+end
+def Normalize_Switch_C_09b7(bind)
+Switch_Clas.create( {:ary=>bind[10],:first=>bind[15] })
 end
 def Normalize__append_lp__0eeb(bind)
 _append(bind[0],bind[8])
@@ -46,8 +57,14 @@ end
 def Normalize__append_lp__6ac6(bind)
 _append(bind[0],bind[7])
 end
+def Normalize__append_lp__7140(bind)
+_append(bind[12],bind[13])
+end
 def Normalize__append_lp__81ec(bind)
 _append(bind[0],bind[5])
+end
+def Normalize__append_lp__984f(bind)
+_append(bind[12],bind[14])
 end
 def Normalize__lp_bind_lb_10_612c(bind)
 (bind[10] === bind[11]) || FAIL
@@ -65,8 +82,11 @@ def Normalize_bind_lb_0_rb__lb__1f45(bind)
 bind[0][0]
 
 end
-def Normalize_bind_lb_10_rb__8d40(bind)
-bind[10]<<[bind[13],Bind[bind[5],bind[14]]]
+def Normalize_bind_lb_10_rb__46f2(bind)
+bind[10]<<[bind[21],Bind[bind[5],bind[22]]]
+end
+def Normalize_bind_lb_10_rb__c855(bind)
+bind[10][-1]
 end
 def Normalize_bind_lb_2_rb__dot__e24b(bind)
 bind[2].ary=bind[0];bind[2].ary.freeze;bind[2].freeze
@@ -97,15 +117,15 @@ end
 
 
 def normalize_compiled_by
-'6aade4b84662abe83e3e537e6d8b7487'
+'8c5789db4333a8a2e21f5c04309d049a'
 end
 def normalize_source_hash
-'0f47729a2c9225bd140871ff65ebbcd0'
+'840a281010c2c6abc91f42742ef9d57b'
 end
 def testversionnormalize(r)
  raise "invalid version" if r!=normalize_version
 end
 def normalize_version
-'5d9cd77cf26ff7a822e8ba7ba4472ba8'
+'92358617d459156f224e37f89462e524'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/normalize_c"
