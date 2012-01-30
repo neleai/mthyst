@@ -24,7 +24,7 @@ makeclasses(AmethystAST,
 )
 class SeqOr<AmethystAST;end
 makeclasses(SeqOr,:Seq,:Or)
-
+class Enter;end;class Append;end;class PureAct;end;class Pred;end;
 
 def equalize_by(clas,args)
   eval("$hash_#{clas}={}
@@ -63,13 +63,11 @@ class AmethystAST
 	end
 end
 
-$hash_Bnding={}
-class Bnding
-	def self.[]
-		@bno=(@bno||0)+1
-		Bnding.create({:ary=>[@bno]}).normalize
-	end
+def Bnding.[]
+	@bno=(@bno||0)+1
+	Bnding.create({:ary=>[@bno]}).normalize
 end
+
 def quote(s)
 	s||=""
   '"'+s.gsub('\\"','"').gsub('"','\\"')+'"'
@@ -80,18 +78,15 @@ def autovar
 	Local["autovar",$av]
 end
 
-class Enter
-	def self.[](from,to)
-		Pass[from,to,true]
-	end
+def Enter.[](from,to)
+	Pass[from,to,true]
 end
 
-class Pass
-	def self.[](from,to,enter=nil)
-		a,r=autovar,autovar
-		Seq[_Bind(a,from), Pass.create({:to=>Seq[_Bind(r,to),Apply["eof"]],:var=>a,:enter=>enter}).normalize,r]
-	end
+def Pass.[](from,to,enter=nil)
+	a,r=autovar,autovar
+	Seq[_Bind(a,from), Pass.create({:to=>Seq[_Bind(r,to),Apply["eof"]],:var=>a,:enter=>enter}).normalize,r]
 end
+
 def _Bind(name,expr,append=nil)
 	if append
 		a=autovar
@@ -128,17 +123,13 @@ class Bind
 		ary[0]
 	end
 end
-class Append
-	def self.[](name,expr)
-		_Bind(name,expr,true)
-	end
+def Append.[](name,expr)
+	_Bind(name,expr,true)
 end
 
-class Many
-	def self.[](expr,many1=nil)
-	  a=autovar
-		Seq[{:ary=>( [_Bind(a, Act["[]"])]+(many1 ? [Append[a,expr]] : [])+[Many.create({:ary=>[Append[a,expr]]}).normalize,a])}]
-	end
+def Many.[](expr,many1=nil)
+  a=autovar
+	Seq[{:ary=>( [_Bind(a, Act["[]"])]+(many1 ? [Append[a,expr]] : [])+[Many.create({:ary=>[Append[a,expr]]}).normalize,a])}]
 end
 
 class Seq
@@ -184,15 +175,14 @@ class Switch_Clas
 	end
 end
 
-class PureAct
-	def self.[](expr=nil)
-		a=Act[expr].dup
-		if a.is_a?(Act)
-			a.pure=true 
-		end
-		a.normalize
+def PureAct.[](expr=nil)
+	a=Act[expr].dup
+	if a.is_a?(Act)
+		a.pure=true 
 	end
+	a.normalize
 end
+
 $constno=0
 def cact_add_global(name,expr,wrap)
 	["static VALUE #{name};","#{name}=#{expr};#{gc_mark_var(name)}",wrap]
@@ -254,12 +244,11 @@ class Act
 		self.freeze
 	end
 end
-class Pred
-def self.[](e,neg=false)
+def Pred.[](e,neg=false)
 	return Pred[Args["!(",e,")"]] if neg
 	Act[e,true]
 end
-end
+
 def _body(body)
 	Seq[_Bind("_result",body)]
 end
@@ -281,19 +270,15 @@ class Apply
 	end
 end
          
-class Lookahead
-  def self.[](e,neg=nil)
+def Lookahead.[](e,neg=nil)
 		if neg
 			Or[Seq[e,Cut[],Apply["fails"]],Seq[Apply["empty"]]]
 		else
     	Lookahead.create(e).normalize
 		end
-  end
 end
-class Local
-	def self.[](name,bnd,ssano=nil)
+def Local.[](name,bnd,ssano=nil)
     Local.create({:ary=>[name,bnd],:ssano=>ssano}).normalize
-  end
 end
 class Local
 	def desc
