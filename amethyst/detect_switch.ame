@@ -321,7 +321,7 @@ amethyst Detect_Switch_Char < Detect_First {
 }
 
 amethyst Detect_Switch_Clas < Detect_First {
-	visit = Apply[ ["clas"] .:clas            {Switch_Clas[[Lattice_Clas[clas[0]],Apply["anything"]],[Lattice_Clas[Object],Apply["fails"]]].freeze }]
+	visit = Apply[ ["clas"] CAct[Class:clas]   {Switch_Clas[[Lattice_Clas[clas],Apply["anything"]],[Lattice_Clas[Object],Apply["fails"]]].freeze }]
 				| Apply[ ["fails"] {@self} ]
 				| Apply[ .* first(@self):firs &{!empty?(@self) && !firs.ary.include?(Object)} {c=Switch_Clas[{:ary=>firs.ary.map{|a| [Lattice_Clas[a],@self]}+[[Lattice_Clas[Object],Apply["fails"]]]}];puts c.inspect;c }]  
 		    | Seq[ traverse_item*=>[combine_seq([])] ]

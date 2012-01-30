@@ -2,7 +2,7 @@ amethyst Normalize{
 	or = Or[ @self:or 
            ( Or[ .* @ary:ary[] ]
 					 | Apply[ ["fails"] ]
-					 | .:x &{x==Placeholder}
+					 | Placeholder
            | .:ary[]
            )* ]
 					{ary.size}=>( 0 -> Apply["fails"]
@@ -14,7 +14,7 @@ amethyst Normalize{
 	seq2 = Seq[ @self:seq
              ( Seq[ .* @ary:ary[] ]
              | Apply[ ["fails"] @self:ary[] ] .*
-						 | .:x &{x==Placeholder}
+						 | Placeholder
              | .:ary[] 
              )* ]
              {ary.size}=>( 0 -> Placeholder

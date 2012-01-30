@@ -18,7 +18,6 @@ makeclasses(AmethystAST,
 		:Char,
     :Comment,
     :Nested,
-		:Placeholder,:FAIL,
 		[:Switch_Char,:act,:defs,:first,:header,:init],
 		[:Switch_Clas,:act,:defs,:first,:header,:init]
 
@@ -48,7 +47,7 @@ by="ary" if by=="[ary]"
 equalize_by(e,by)
 }
 
-
+Placeholder=Consts.new("Placeholder");FAIL=Consts.new("FAIL")
 
 
 class Array
