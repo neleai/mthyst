@@ -216,19 +216,16 @@ class Act
 	def self.[](expr=nil,pred=nil,pure=nil)
 		expr=expr[0] if expr.is_a?(Array) && expr.size<=1
 		expr=expr[0] if expr.is_a?(Act) && expr.size<=1
-		return Act.create({:pred=>pred}) if expr==nil
 		expr=[expr] unless expr.is_a?(Array)
 		Act.create({:ary=>expr,:pred=>pred,:pure=>pure}).normalize
 	end
 	def normalize2
-		return self if !@ary
 		if @ary.size==1 
 			if  !@pred
 				r=$normalize.parse(:act,[self])
 				return r if r!=FAIL
 			end
 		end
-		@ary=nil if @ary.size==0
 		self.freeze
 	end
 end
