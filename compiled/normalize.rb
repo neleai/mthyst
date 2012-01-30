@@ -1,25 +1,17 @@
 class Normalize < Amethyst
 
-def Normalize_0_cfcd(bind)
-0
-end
-def Normalize_1_c4ca(bind)
-1
-end
-def Normalize_Apply_lb__dq_f_3881(bind)
+def Normalize_Apply_lb__dq_f_1f63(bind)
 Apply["fails"]
-
 end
 def Normalize_Apply_lb_bi_d0b8(bind)
 Apply[bind[11]] #TODO resolve
 
 end
+def Normalize_CAct_lb_eva_8d41(bind)
+CAct[eval(src.ary[0])]
+end
 def Normalize_Placehol_6875(bind)
 Placeholder
-end
-def Normalize_Placehol_a03d(bind)
-Placeholder
-
 end
 def Normalize__append_lp__0eeb(bind)
 _append(bind[0],bind[8])
@@ -38,6 +30,9 @@ def Normalize__lp_bind_lb_10_612c(bind)
 end
 def Normalize__lp_bind_lb_9_rb__e481(bind)
 (bind[9] === bind[10]) || FAIL
+end
+def Normalize__lp_eval_lp_sr_3f78(bind)
+(eval(src).is_a?(Class)) || FAIL
 end
 def Normalize_bind_lb_0_rb__dot__263e(bind)
 bind[0].size
@@ -75,15 +70,15 @@ end
 
 
 def normalize_compiled_by
-'d093ca6048adb2bae1cc7d768381b59d'
+'35858e2bb5a8a3986bcf468cffc9dee3'
 end
 def normalize_source_hash
-'4d9b2660a270ca9b8932761e9a7a859a'
+'1efc33dd073eba268165fc728a003ef9'
 end
 def testversionnormalize(r)
  raise "invalid version" if r!=normalize_version
 end
 def normalize_version
-'e0f72087f861cff4f7934b58f20f07b1'
+'7b0d4c12f8e1dae1d39c887cf1800374'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/normalize_c"

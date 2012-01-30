@@ -107,6 +107,7 @@ end
 class Consts
 	def initialize(s);@s=s;end
 	def inspect   	 ;@s	;end
+	def to_s				 ;@s  ;end
 end
 
 class Integer#compatibility with 1.8

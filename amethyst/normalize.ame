@@ -27,10 +27,17 @@ amethyst Normalize{
    					 | . -> @self.freeze
 					   ]			 
 
-	apply2 = Apply[   ["apply" | "_seq"] Act[Lambda[.:x]] -> x
-                  | ["apply"] CAct[.:name] -> Apply[name] #TODO resolve
-                  | ["_seq"] CAct[ [] ]  -> Placeholder
-					  			| .* {@self.freeze}
+	apply2 = Apply[ ["apply" | "_seq"] Act[Lambda[.:x]] -> x
+                | ["apply"] CAct[.:name] -> Apply[name] #TODO resolve
+                | ["_seq"] CAct[ [] ]  -> Placeholder
+					  		| .* {@self.freeze}
 				 			  ]
 
+	act =  Act[ String[ "[]"	        				
+       			        |	number    						    
+      			  			|	<A-Z> <A-Za-z0-9_>* &{eval(@self).is_a?(Class)}
+       			  			|	"true"|"false"|"nil"
+						  			] 
+						{CAct[eval(@ary[0])]} 
+            ]
 }
