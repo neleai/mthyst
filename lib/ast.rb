@@ -222,19 +222,11 @@ class Act
 		Act.create({:ary=>expr,:pred=>pred,:pure=>pure}).normalize
 	end
 	def normalize2
-		#
-		#   ["[]"]        -> CAct[[]]
-		#   [number:n]    -> CAct[n]
-		#   [className:n] -> CAct[eval(n)]
-		#		["true"|"false"|"nil"]:x -> CAct[eval(x)]
-		#		[( '"' .* '"' )[]]:x     -> CAct[eval(x.join)]
 		return self if !@ary
 		if @ary.size==1 
 			exp=@ary[0]
 			return exp if exp.is_a?(Act)
 			if  !@pred
-				exp = @ary[0] = exp.strip if exp.is_a?(String) 
-				return CAct[eval(exp)] if exp.is_a?(String) && ((exp[0]==?\" && exp[-1]==?\")|| (exp[0]==?' && exp[-1]==?')) && !(exp=~/\#/)
 				r=$normalize.parse(:act,[self])
 				return r if r!=FAIL
 			end

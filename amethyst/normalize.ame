@@ -33,11 +33,14 @@ amethyst Normalize{
 					  		| .* {@self.freeze}
 				 			  ]
 
-	act =  Act[ String[ "[]"	        				
-       			        |	number    						    
-      			  			|	<A-Z> <A-Za-z0-9_>* &{eval(@self).is_a?(Class)}
-       			  			|	"true"|"false"|"nil"
-						  			] -> CAct[eval(@ary[0])]
+	act =  Act[ String[("[]"	        				
+       			         |	number    						    
+      			  			 |	<A-Z> <A-Za-z0-9_>* &{eval(@self).is_a?(Class)}
+       			  			 |	"true"|"false"|"nil"
+										 | '"'  (<"#> break| '\\' . | .)*
+										 | '\'' (<'#> break| '\\' . | .)*
+						  			 )  
+                    "" ] -> CAct[eval(@ary[0])]
 						| Lambda[ {Act.create(@self,{:pure=>true}).freeze }]
             ]
 }

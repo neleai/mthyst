@@ -9,8 +9,9 @@ end
 def AmethystParser_Act_lb_bind_23ab(bind)
 Act[bind[12]]
 end
-def AmethystParser_Apply_lb__dq_a_eeac(bind)
+def AmethystParser_Apply_lb__dq_a_1437(bind)
 Apply["anything"]
+
 end
 def AmethystParser_Apply_lb__dq_c_c518(bind)
 Apply["clas",bind[17]]
@@ -116,8 +117,9 @@ end
 def AmethystParser_Seq_dot_crea_abce(bind)
 Seq.create( {:ary=>bind[2] })
 end
-def AmethystParser_Seq_lb_Cut_lb__44e6(bind)
+def AmethystParser_Seq_lb_Cut_lb__3505(bind)
 Seq[Cut[],Stop[]]
+
 end
 def AmethystParser_Seq_lb__Bin_7997(bind)
 Seq[_Bind("it",bind[0]) , Act[bind[2]] ]
@@ -307,7 +309,7 @@ end
 
 
 def parser_compiled_by
-'e7bc949ac299c654c46aeb6e69bbcc31'
+'9261584c0dc383859461cea4093778b4'
 end
 def parser_source_hash
 'a0cdb248b8cbeb5e29087e288a27e49c'
@@ -316,6 +318,6 @@ def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'a5a86d275a25d787516752b04397832a'
+'834882d7fc629a7bacb3fca23a5bd314'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/parser_c"
