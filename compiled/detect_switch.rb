@@ -644,9 +644,6 @@ end
 def Detect_Switch_Clas_Seq_lb__ti__lp_bi_f058(bind)
 Seq[*(bind[36]+bind[40])]
 end
-def Detect_Switch_Clas_Switch_C_0e01(bind)
-Switch_Clas[{:ary=>bind[3].map{|p,a| [p,Or[*a].dup.normalize]}}]
-end
 def Detect_Switch_Clas_Switch_C_4337(bind)
 Switch_Clas[[Lattice_Clas[bind[6]],Apply["anything"]],[Lattice_Clas[Object],Apply["fails"]]].freeze 
 end
@@ -656,8 +653,11 @@ end
 def Detect_Switch_Clas_Switch_C_5249(bind)
 Switch_Clas[{:ary=>bind[40].map{|p,a| [p,Seq[*(bind[36]+[a]+bind[43])]]}}] 
 end
-def Detect_Switch_Clas_Switch_C_f822(bind)
-Switch_Clas[{:ary=>bind[23].map{|p,a| [p,Or[*a].dup.normalize]}}]
+def Detect_Switch_Clas_Switch_C_5685(bind)
+Switch_Clas[{:ary=>bind[23].map{|p,a| [p,Or[*a]]}}]
+end
+def Detect_Switch_Clas_Switch_C_c382(bind)
+Switch_Clas[{:ary=>bind[3].map{|p,a| [p,Or[*a]]}}]
 end
 def Detect_Switch_Clas__append_lp__54e8(bind)
 _append(bind[16],bind[17])
@@ -766,15 +766,15 @@ end
 
 
 def detect_switch_compiled_by
-'35858e2bb5a8a3986bcf468cffc9dee3'
+'e7bc949ac299c654c46aeb6e69bbcc31'
 end
 def detect_switch_source_hash
-'eb9ba5dafc8e1bcf5457f7cf1ec41f1f'
+'290fa714fd8a46455ebac74b80a04bcc'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'0792b073256363665454248852d37ad4'
+'fb1b99a80f22199249231918d506709d'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

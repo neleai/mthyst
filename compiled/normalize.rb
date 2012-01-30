@@ -1,5 +1,8 @@
 class Normalize < Amethyst
 
+def Normalize_Act_dot_crea_e434(bind)
+Act.create(src,{:pure=>true}).freeze 
+end
 def Normalize_Apply_lb__dq_f_1f63(bind)
 Apply["fails"]
 end
@@ -7,8 +10,9 @@ def Normalize_Apply_lb_bi_d0b8(bind)
 Apply[bind[11]] #TODO resolve
 
 end
-def Normalize_CAct_lb_eva_8d41(bind)
+def Normalize_CAct_lb_eva_559c(bind)
 CAct[eval(src.ary[0])]
+
 end
 def Normalize_Placehol_6875(bind)
 Placeholder
@@ -70,15 +74,15 @@ end
 
 
 def normalize_compiled_by
-'35858e2bb5a8a3986bcf468cffc9dee3'
+'e7bc949ac299c654c46aeb6e69bbcc31'
 end
 def normalize_source_hash
-'1efc33dd073eba268165fc728a003ef9'
+'20741984500efc235283920ef5dd2a53'
 end
 def testversionnormalize(r)
  raise "invalid version" if r!=normalize_version
 end
 def normalize_version
-'7b0d4c12f8e1dae1d39c887cf1800374'
+'6d3c909ff40c446005a746052bd0e5b1'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/normalize_c"

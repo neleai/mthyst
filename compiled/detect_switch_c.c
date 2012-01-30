@@ -2430,11 +2430,11 @@ VALUE switchhash_Detect_Switch_Clas_9;
 static VALUE sy_Detect_Switch_Clas_Or_lb__ti_bind_4a6a;
 static VALUE sy_Detect_Switch_Clas_Seq_lb__ti__lp_bi_99e6;
 static VALUE sy_Detect_Switch_Clas_Seq_lb__ti__lp_bi_f058;
-static VALUE sy_Detect_Switch_Clas_Switch_C_0e01;
 static VALUE sy_Detect_Switch_Clas_Switch_C_4337;
 static VALUE sy_Detect_Switch_Clas_Switch_C_4c94;
 static VALUE sy_Detect_Switch_Clas_Switch_C_5249;
-static VALUE sy_Detect_Switch_Clas_Switch_C_f822;
+static VALUE sy_Detect_Switch_Clas_Switch_C_5685;
+static VALUE sy_Detect_Switch_Clas_Switch_C_c382;
 static VALUE sy_Detect_Switch_Clas__append_lp__54e8;
 static VALUE sy_Detect_Switch_Clas__append_lp__5600;
 static VALUE sy_Detect_Switch_Clas__append_lp__599a;
@@ -2488,7 +2488,7 @@ it=rb_funcall(self,sy_Detect_Switch_Clas_bind_lb_3_rb__dot__2d57,1,bind);  bind_
  it=bind_aget(bind,2/*newlist*/); arg0=it; it=Detect_Switch_Clas_combine_or(self ,arg0); FAILTEST(alt1_3); bind_aset(bind,4/*_result*/,it);
 
 ;goto accept1;
-alt1_3: ptr->pos=oldpos1;it=Qnil;if (ptr->pos<ptr->len) goto alt1_4;it=rb_funcall(self,sy_Detect_Switch_Clas_Switch_C_0e01,1,bind);  bind_aset(bind,4/*_result*/,it);
+alt1_3: ptr->pos=oldpos1;it=Qnil;if (ptr->pos<ptr->len) goto alt1_4;it=rb_funcall(self,sy_Detect_Switch_Clas_Switch_C_c382,1,bind);  bind_aset(bind,4/*_result*/,it);
 
 ;goto accept1;
 alt1_4: ptr->pos=oldpos1;goto fail;
@@ -2500,7 +2500,7 @@ it=rb_funcall(self,sy_Detect_Switch_Clas_bind_lb_3_rb__dot__2d57,1,bind);  bind_
  it=bind_aget(bind,2/*newlist*/); arg0=it; it=Detect_Switch_Clas_combine_or(self ,arg0); FAILTEST(alt2_2); bind_aset(bind,4/*_result*/,it);
 
 ;goto accept2;
-alt2_2: ptr->pos=oldpos2;it=Qnil;if (ptr->pos<ptr->len) goto alt2_3;it=rb_funcall(self,sy_Detect_Switch_Clas_Switch_C_0e01,1,bind);  bind_aset(bind,4/*_result*/,it);
+alt2_2: ptr->pos=oldpos2;it=Qnil;if (ptr->pos<ptr->len) goto alt2_3;it=rb_funcall(self,sy_Detect_Switch_Clas_Switch_C_c382,1,bind);  bind_aset(bind,4/*_result*/,it);
 
 ;goto accept2;
 alt2_3: ptr->pos=oldpos2;goto fail;
@@ -2820,7 +2820,7 @@ it=rb_funcall(self,sy_Detect_Switch_Clas_bind_lb_23_rb__a500,1,bind);  bind_aset
  it=bind_aget(bind,26/*newlist*/); arg0=it; it=Detect_Switch_Clas_combine_or(self ,arg0); FAILTEST(alt3_3); bind_aset(bind,27/*_result*/,it);
 
 ;goto accept3;
-alt3_3: ptr->pos=oldpos4;it=Qnil;if (ptr->pos<ptr->len) goto alt3_4;it=rb_funcall(self,sy_Detect_Switch_Clas_Switch_C_f822,1,bind);  bind_aset(bind,27/*_result*/,it);
+alt3_3: ptr->pos=oldpos4;it=Qnil;if (ptr->pos<ptr->len) goto alt3_4;it=rb_funcall(self,sy_Detect_Switch_Clas_Switch_C_5685,1,bind);  bind_aset(bind,27/*_result*/,it);
 
 ;goto accept3;
 alt3_4: ptr->pos=oldpos4;goto pass9;
@@ -2834,7 +2834,7 @@ it=rb_funcall(self,sy_Detect_Switch_Clas_bind_lb_23_rb__a500,1,bind);  bind_aset
  it=bind_aget(bind,26/*newlist*/); arg0=it; it=Detect_Switch_Clas_combine_or(self ,arg0); FAILTEST(alt4_2); bind_aset(bind,27/*_result*/,it);
 
 ;goto accept4;
-alt4_2: ptr->pos=oldpos5;it=Qnil;if (ptr->pos<ptr->len) goto alt4_3;it=rb_funcall(self,sy_Detect_Switch_Clas_Switch_C_f822,1,bind);  bind_aset(bind,27/*_result*/,it);
+alt4_2: ptr->pos=oldpos5;it=Qnil;if (ptr->pos<ptr->len) goto alt4_3;it=rb_funcall(self,sy_Detect_Switch_Clas_Switch_C_5685,1,bind);  bind_aset(bind,27/*_result*/,it);
 
 ;goto accept4;
 alt4_3: ptr->pos=oldpos5;goto pass9;
@@ -3150,11 +3150,11 @@ switchhash_Detect_Switch_Clas_9=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=
 sy_Detect_Switch_Clas_Or_lb__ti_bind_4a6a=rb_intern("Detect_Switch_Clas_Or_lb__ti_bind_4a6a");
 sy_Detect_Switch_Clas_Seq_lb__ti__lp_bi_99e6=rb_intern("Detect_Switch_Clas_Seq_lb__ti__lp_bi_99e6");
 sy_Detect_Switch_Clas_Seq_lb__ti__lp_bi_f058=rb_intern("Detect_Switch_Clas_Seq_lb__ti__lp_bi_f058");
-sy_Detect_Switch_Clas_Switch_C_0e01=rb_intern("Detect_Switch_Clas_Switch_C_0e01");
 sy_Detect_Switch_Clas_Switch_C_4337=rb_intern("Detect_Switch_Clas_Switch_C_4337");
 sy_Detect_Switch_Clas_Switch_C_4c94=rb_intern("Detect_Switch_Clas_Switch_C_4c94");
 sy_Detect_Switch_Clas_Switch_C_5249=rb_intern("Detect_Switch_Clas_Switch_C_5249");
-sy_Detect_Switch_Clas_Switch_C_f822=rb_intern("Detect_Switch_Clas_Switch_C_f822");
+sy_Detect_Switch_Clas_Switch_C_5685=rb_intern("Detect_Switch_Clas_Switch_C_5685");
+sy_Detect_Switch_Clas_Switch_C_c382=rb_intern("Detect_Switch_Clas_Switch_C_c382");
 sy_Detect_Switch_Clas__append_lp__54e8=rb_intern("Detect_Switch_Clas__append_lp__54e8");
 sy_Detect_Switch_Clas__append_lp__5600=rb_intern("Detect_Switch_Clas__append_lp__5600");
 sy_Detect_Switch_Clas__append_lp__599a=rb_intern("Detect_Switch_Clas__append_lp__599a");
@@ -3195,4 +3195,4 @@ rb_define_method(cls_Detect_Switch_Clas,"root",Detect_Switch_Clas_root,0);
 rb_define_method(cls_Detect_Switch_Clas,"traverse",Detect_Switch_Clas_traverse,0);
 rb_define_method(cls_Detect_Switch_Clas,"traverse_item",Detect_Switch_Clas_traverse_item,0);
 rb_define_method(cls_Detect_Switch_Clas,"visit",Detect_Switch_Clas_visit,0);
- rb_eval_string("testversiondetect_switch('0792b073256363665454248852d37ad4')");}
+ rb_eval_string("testversiondetect_switch('fb1b99a80f22199249231918d506709d')");}
