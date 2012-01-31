@@ -1,102 +1,102 @@
 class Dataflow < Traverser_Clone2
-	attr_accessor :ssanums,:oldssanums,:edges
-	def initialize
-		@edges=Oriented_Graph.new
-		@marked=[]
-		@ssanums=Hash.new(0)
-		@oldssanums=Hash.new(0)
-	end
-	def ssanum(var)
-		return var unless var.is_a? Local
-		var=Local[var[0],var[1],oldssanums[var.unssa]]
-		var.ssaname
-	end
+  attr_accessor :ssanums,:oldssanums,:edges
+  def initialize
+    @edges=Oriented_Graph.new
+    @marked=[]
+    @ssanums=Hash.new(0)
+    @oldssanums=Hash.new(0)
+  end
+  def ssanum(var)
+    return var unless var.is_a? Local
+    var=Local[var[0],var[1],oldssanums[var.unssa]]
+    var.ssaname
+  end
 
-	def newssanum(var)
-		return var unless var.is_a? Local
-		ssanums[var.unssa]+=1
-		oldssanums[var.unssa]=ssanums[var.unssa]
-		ssanum(var.unssa)
-	end
-	def many_end(prev)
-	  ssanums.each{|var,num|
-			if var.is_a?(Local)
-	      if prev[var.unssa]!=num
-					varp=Local[var[0],var[1],prev[var.unssa]]
-					varn=Local[var[0],var[1],ssanums[var.unssa]]
- 	       edges.add(varn.ssaname,varp.ssaname )
- 	     end
-			end
+  def newssanum(var)
+    return var unless var.is_a? Local
+    ssanums[var.unssa]+=1
+    oldssanums[var.unssa]=ssanums[var.unssa]
+    ssanum(var.unssa)
+  end
+  def many_end(prev)
+    ssanums.each{|var,num|
+      if var.is_a?(Local)
+        if prev[var.unssa]!=num
+          varp=Local[var[0],var[1],prev[var.unssa]]
+          varn=Local[var[0],var[1],ssanums[var.unssa]]
+          edges.add(varn.ssaname,varp.ssaname )
+        end
+      end
     }
-	end
-	def bind_end(exp)
-		name=exp.name
-		n=newssanum(name)
-		bnd=Bind[n,exp.expr]
-		val=bnd.expr
-		val=val.expr while val.is_a?(Bind) 
+  end
+  def bind_end(exp)
+    name=exp.name
+    n=newssanum(name)
+    bnd=Bind[n,exp.expr]
+    val=bnd.expr
+    val=val.expr while val.is_a?(Bind) 
     edges.add(val,n)
-		bnd
-	end
-	def or_end(join)
+    bnd
+  end
+  def or_end(join)
    ssanums.clone.each{|k,v|
       u=[]
       join.each{|s| u<<s[k]}
       if u.uniq.size>=1
         n=newssanum(k)
         u.each{|v| l=Local[k[0],k[1],v]
-					edges.add(l.ssaname,n)}
+          edges.add(l.ssaname,n)}
       end
     }
-	end
+  end
 end
 class Local
-	def ssaname
-		self
-	end
+  def ssaname
+    self
+  end
 end
 
 amethyst Dataflow < Traverser_Clone2 {
-	root =  @self=>Rule[ {@@bnding=@bnding} @args=>[traverse_item*:var] {var.each{|v| @@marked<<ssanum(v)};@args=var} ({Seq[@body,Act[Local["_result",@bnding]]]}=>traverse_item):body {@body=Seq[body.ary[0..-2]]} {@reachable=@@edges.reverse.reachable(@@marked+[ssanum(body[-1])]); @cfg=@@edges; } {@self} ]
-	
-	visit = Apply[  traverse_item*:t {Apply[*(t+[{:clas=>@clas}])]}:app {app}=>[vars_in:var] {var.each{|v| @@marked<<ssanum(v)}} {app} ]
-				| Or[	{[]}:join {oldssanums.clone}:old  ({@@oldssanums=old.clone} traverse_item:t[] {join<<oldssanums.clone})* {or_end(join)} {Or[*t]} ]
-				| Switch_Char[ {[]}:alts	{[]}:join {oldssanums.clone}:old  ({@@oldssanums=old.clone} [:pred traverse_item:a {alts<<[pred,a]}] {join<<oldssanums.clone})* {or_end(join)} {Switch_Char[{:ary=>alts}]} ]
- 			  | Switch_Clas[ {[]}:alts	{[]}:join {oldssanums.clone}:old  ({@@oldssanums=old.clone} [:pred traverse_item:a {alts<<[pred,a]}] {join<<oldssanums.clone})* {or_end(join)} {Switch_Clas[{:ary=>alts}]} ]
+  root =  @self=>Rule[ {@@bnding=@bnding} @args=>[traverse_item*:var] {var.each{|v| @@marked<<ssanum(v)};@args=var} ({Seq[@body,Act[Local["_result",@bnding]]]}=>traverse_item):body {@body=Seq[body.ary[0..-2]]} {@reachable=@@edges.reverse.reachable(@@marked+[ssanum(body[-1])]); @cfg=@@edges; } {@self} ]
+  
+  visit = Apply[  traverse_item*:t {Apply[*(t+[{:clas=>@clas}])]}:app {app}=>[vars_in:var] {var.each{|v| @@marked<<ssanum(v)}} {app} ]
+        | Or[  {[]}:join {oldssanums.clone}:old  ({@@oldssanums=old.clone} traverse_item:t[] {join<<oldssanums.clone})* {or_end(join)} {Or[*t]} ]
+        | Switch_Char[ {[]}:alts  {[]}:join {oldssanums.clone}:old  ({@@oldssanums=old.clone} [:pred traverse_item:a {alts<<[pred,a]}] {join<<oldssanums.clone})* {or_end(join)} {Switch_Char[{:ary=>alts}]} ]
+         | Switch_Clas[ {[]}:alts  {[]}:join {oldssanums.clone}:old  ({@@oldssanums=old.clone} [:pred traverse_item:a {alts<<[pred,a]}] {join<<oldssanums.clone})* {or_end(join)} {Switch_Clas[{:ary=>alts}]} ]
 
-				| Many[  {ssanums.clone}:prev traverse_item*:t {many_end(prev)} {Many.create({:ary=>t}).normalize} ] 
-			  | Pass[ @to=>traverse_item:to @var=>traverse_item:var {@@marked<<var.ssaname} {Pass.create({:to=>to,:var=>var,:enter=>@enter}).normalize} ]
-				| Act[ traverse_item*:t {Act[t,@pred]}:act {@@marked<<act if @pred || !@pure} 
-							 {act.ary}=>[vars_in]:var  { var.each{|v| edges.add(ssanum(v),act); edges.add(act,newssanum(v));}; act}
-					]
-				| Bind[.*   traverse[.*  {bind_end(@self)} ] ] 
-				| Result[ @vars=>[traverse_item*:var] {n=Result[{:name=>@name,:varnames=>@varnames,:vars=>var}]; var.each{|w| @@edges.add(w.ssaname,n) } ; n} ]
-				| Lookahead[ {oldssanums.clone}:old traverse_item*:t {@@oldssanums=old} {Lookahead[*t]} ]
-				| Local[ .* {ssanum(@self)} ]
+        | Many[  {ssanums.clone}:prev traverse_item*:t {many_end(prev)} {Many.create({:ary=>t}).normalize} ] 
+        | Pass[ @to=>traverse_item:to @var=>traverse_item:var {@@marked<<var.ssaname} {Pass.create({:to=>to,:var=>var,:enter=>@enter}).normalize} ]
+        | Act[ traverse_item*:t {Act[t,@pred]}:act {@@marked<<act if @pred || !@pure} 
+               {act.ary}=>[vars_in]:var  { var.each{|v| edges.add(ssanum(v),act); edges.add(act,newssanum(v));}; act}
+             ]
+        | Bind[.*   traverse[.*  {bind_end(@self)} ] ] 
+        | Result[ @vars=>[traverse_item*:var] {n=Result[{:name=>@name,:varnames=>@varnames,:vars=>var}]; var.each{|w| @@edges.add(w.ssaname,n) } ; n} ]
+        | Lookahead[ {oldssanums.clone}:old traverse_item*:t {@@oldssanums=old} {Lookahead[*t]} ]
+        | Local[ .* {ssanum(@self)} ]
 
-				vars_in={ary=[]}
-								( Global[ @self:ary[]  {@@marked<<@self} .*]								
-								| Act[ @self:ary[] .*]
-								| CAct[ @self:ary[] .*]
-                | Key[ @self:ary[]    {@@marked<<@self} .*]
-								| Result[ @self:ary[] ]
-								| Args[ vars_in:ary[] ]
-								| Bind[ vars_in:ary[] ]
-								| Local[:name @self:ary[] ]
-								| anything
-								)* -> ary
+        vars_in= {ary=[]}
+                ( Global[.*  @self:ary[]  {@@marked<<@self}]
+                | Act[   .*  @self:ary[] ]
+                | CAct[  .*  @self:ary[] ]
+                | Key[   .*  @self:ary[]  {@@marked<<@self}]
+                | Result[.*  @self:ary[] ]
+                | Local[ .*  @self:ary[] ]
+                | Args[   vars_in:ary[] ]
+                | Bind[   vars_in:ary[] ]
+                | anything
+                )* -> ary
 }
 
 amethyst Dead_Code_Deleter3 < Traverser_Clone2{
-		root = @self=>Rule[ {@@reachable=@reachable} {@reachable=nil;@cfg=nil} traverse]
+    root = @self=>Rule[ {@@reachable=@reachable} {@reachable=nil;@cfg=nil} traverse]
 
-		visit = (Act|CAct|Result)[@self:this .*] -> (!@@reachable[this] ||(this.pure && !@@bounded)) ? Placeholder : this
-					| Apply[.* {@self}]
-					| Bind[.* @self:b {@@bounded||=@@reachable[@name]} traverse[ .* {@@bounded=false} {@@reachable[@name] ? @self : @expr}]]
-					| Local[.* @self:this ] -> @@reachable[this] ? this : Placeholder
+    visit = (Act|CAct|Result)[@self:this .*] -> (!@@reachable[this] ||(this.pure && !@@bounded)) ? Placeholder : this
+          | Apply[.* {@self}]
+          | Bind[.* @self:b {@@bounded||=@@reachable[@name]} traverse[ .* {@@bounded=false} {@@reachable[@name] ? @self : @expr}]]
+          | Local[.* @self:this ] -> @@reachable[this] ? this : Placeholder
 }
 
 amethyst Forget_SSA < Traverser_Clone2 {
-	root = @self=>Rule[traverse]
-	visit = Local[ .* {@unssa} ]
+  root = @self=>Rule[traverse]
+  visit = Local[ .* {@unssa} ]
 }

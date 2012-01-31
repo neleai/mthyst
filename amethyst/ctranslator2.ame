@@ -1,184 +1,183 @@
 
 class AmethystCTranslator < Amethyst 
-	def addcallback2(cb)
-		return @rcallbacks[cb] if @rcallbacks[cb]
-		n="#{@grammar}_#{signature(cb)}"
-		i=1
-		i+=1 while @callbacks[n+(i>1 ? i.to_s : "")]
-		n=n+i.to_s if i>1
-		@rcallbacks[cb]=n
-		@callbacks[n]=cb
-		n
-	end
-	def desc(s)
-		return @locls[s.desc] if @locls[s.desc]
-		@locls[s.desc]=@locls.size
-	end
-	def bget(s)
-		cm=s[0]
-		s=desc(s)
-		return "bind_aget(bind,#{s}/*#{cm}*/)"
-	end
-	def bset(s,e)
-		cm=s[0]
-		s=desc(s)
-		return "bind_aset(bind,#{s}/*#{cm}*/,#{e})"
-	end
-	def rbbget(s)
-		"bind[#{desc(s)}]"
-	end
-	def symb(str)
-		str=str.gsub("@","_at_");
-		sy="sy_#{str}"
-		@header<<"static VALUE #{sy};"
-		@init<<"#{sy}=rb_intern(#{str.inspect});"
-		sy
-	end
-	def iget(s)
-		"rb_ivar_get(self,#{symb("@#{s}")})"
-	end
-	def iset(s,e)
-		"rb_ivar_set(self,#{symb("@#{s}")},#{e})"
-	end
-	def resetlabels
-		@labels=Hash.new(0)
-	end
-	def label(s)
-		@labels[s]+=1
-		"#{s}#{@labels[s]}"
-	end
-	def mktable(r)
-		@ruletable={}
-		r.each{|e| @ruletable[e.name]=e}
-	end
-	def rbcall(name,args)
-		"rb_funcall(self,#{symb(name)},#{args.size}#{args.map{|a| ",#{a}"}*""})"
-	end
-	def callrule(name,argc)
-		margs=argc.times.map{|a| ",arg#{a}"}
-		grammar=resolvegrammar(@grammar,name)
-		if grammar
-			@header<<"VALUE #{grammar}_#{name}(VALUE self #{",VALUE"*argc});"
-			"#{grammar}_#{name}(self #{margs*""})"
-		else
-			rbcall(name,argc.times.map{|a| "arg#{a}"})
-		end
-	end
+  def addcallback2(cb)
+    return @rcallbacks[cb] if @rcallbacks[cb]
+    n="#{@grammar}_#{signature(cb)}"
+    i=1
+    i+=1 while @callbacks[n+(i>1 ? i.to_s : "")]
+    n=n+i.to_s if i>1
+    @rcallbacks[cb]=n
+    @callbacks[n]=cb
+    n
+  end
+  def desc(s)
+    return @locls[s.desc] if @locls[s.desc]
+    @locls[s.desc]=@locls.size
+  end
+  def bget(s)
+    cm=s[0]
+    s=desc(s)
+    return "bind_aget(bind,#{s}/*#{cm}*/)"
+  end
+  def bset(s,e)
+    cm=s[0]
+    s=desc(s)
+    return "bind_aset(bind,#{s}/*#{cm}*/,#{e})"
+  end
+  def rbbget(s)
+    "bind[#{desc(s)}]"
+  end
+  def symb(str)
+    str=str.gsub("@","_at_");
+    sy="sy_#{str}"
+    @header<<"static VALUE #{sy};"
+    @init<<"#{sy}=rb_intern(#{str.inspect});"
+    sy
+  end
+  def iget(s)
+    "rb_ivar_get(self,#{symb("@#{s}")})"
+  end
+  def iset(s,e)
+    "rb_ivar_set(self,#{symb("@#{s}")},#{e})"
+  end
+  def resetlabels
+    @labels=Hash.new(0)
+  end
+  def label(s)
+    @labels[s]+=1
+    "#{s}#{@labels[s]}"
+  end
+  def mktable(r)
+    @ruletable={}
+    r.each{|e| @ruletable[e.name]=e}
+  end
+  def rbcall(name,args)
+    "rb_funcall(self,#{symb(name)},#{args.size}#{args.map{|a| ",#{a}"}*""})"
+  end
+  def callrule(name,argc)
+    margs=argc.times.map{|a| ",arg#{a}"}
+    grammar=resolvegrammar(@grammar,name)
+    if grammar
+      @header<<"VALUE #{grammar}_#{name}(VALUE self #{",VALUE"*argc});"
+      "#{grammar}_#{name}(self #{margs*""})"
+    else
+      rbcall(name,argc.times.map{|a| "arg#{a}"})
+    end
+  end
 end
 
 $classlabels=Hash.new(0)
 amethyst AmethystCTranslator < Amethyst {
-	itrans = {[]}:ruby {[]}:c {[]}:init  ( char:ruby[]  | trans:{c<<it[0];init<<it[1];ruby<<it[2]} )* -> [c,init,ruby]
-	
-	rbtrans = Local[.* {rbbget(@self)}]
-				 	 | Args[rbtrans2]
-					 | Array[rbtrans2] 
-		       | Key[.:name rbtrans:args] -> (name=="self") ? "src" : "src.#{name}#{args!="" ? "(#{args})":""}"
-      		 | Global[:name] -> "@#{name}"
-    		   | Lambda[addlambda ] 
-					 | Result[ {"#{@name}.create( {#{@vars.size.times.map{|i| ":#{@varnames[i]}=>#{rbbget(@vars[i])}" }.sort*","} })"} ]
-		       | .
-	rbtrans2 = rbtrans*:{it*""}
+  itrans = {[]}:ruby {[]}:c {[]}:init  ( char:ruby[]  | trans:{c<<it[0];init<<it[1];ruby<<it[2]} )* -> [c,init,ruby]
+  
+  rbtrans = Local[.* {rbbget(@self)}]
+          | Args[rbtrans2]
+          | Array[rbtrans2] 
+          | Key[.:name rbtrans:args] -> (name=="self") ? "src" : "src.#{name}#{args!="" ? "(#{args})":""}"
+          | Global[:name] -> "@#{name}"
+          | Lambda[addlambda ] 
+          | Result[ {"#{@name}.create( {#{@vars.size.times.map{|i| ":#{@varnames[i]}=>#{rbbget(@vars[i])}" }.sort*","} })"} ]
+          | .
 
-	rbcode = {"class #{@@grammar} < #{@@parent}\n"}:s
-	{s<<@@defs*"\n";s<<"\n"}
-	{@@callbacks.to_a.sort}=>[([:k :v]   {"def #{k}(bind)\n#{v}\nend\n"})*:x ]
-	{s+=x*""}
-	{s+="\nend"; s}
-	
-	trans =  Grammar[ {@@grammar=@name;@@parent=@parent} {@@lambdas=[] ;@@rcallbacks={};@@cbhash={}} {@@defs=[]} {@@defmethods=[]} {@@faillabel="fail"} {@@callbacks={}} {mktable(@rules)} {@@header=[]} {@@init=[]} @rules=>[trans*]:t rbcode:rbcode
-				    { "VALUE cls_#{@name};\n" }:s
-						{	s<<@@header.uniq.sort*"\n"+"\n"
-							s<<t.sort*"\n"
-							s<<@@lambdas*"\n"
-        		  init="\n cls_#{@name}=rb_define_class(\"#{@name}\",rb_const_get(rb_cObject,rb_intern(\"#{@@parent}\"))); 
-failobj=rb_eval_string(\"FAIL\");
-#{@@init.uniq.sort*"\n"}
-#{@@defmethods.sort*"\n" }
-"
-							[s,init,rbcode] } ]
-				|  Rule[@name:name {@@rulename=name; Local.resetnumbering;resetlabels;@@locls={}} @body=>trans:body  
+  rbtrans2 = rbtrans*:{it*""}
+
+  rbcode = {"class #{@@grammar} < #{@@parent}\n"}:s
+           {s<<@@defs*"\n";s<<"\n"}
+           {@@callbacks.to_a.sort}=>[([:k :v]   {"def #{k}(bind)\n#{v}\nend\n"})*:x ]
+           {s+=x*""}
+           {s+="\nend"; s}
+  
+  trans =  Grammar[ {@@grammar=@name;@@parent=@parent} {@@lambdas=[] ;@@rcallbacks={};@@cbhash={}} {@@defs=[]} {@@defmethods=[]} {@@faillabel="fail"} {@@callbacks={}} {mktable(@rules)} {@@header=[]} {@@init=[]} @rules=>[trans*]:t rbcode:rbcode
+            { "VALUE cls_#{@name};\n" }:s
+            { s<<@@header.uniq.sort*"\n"+"\n"
+              s<<t.sort*"\n"
+              s<<@@lambdas*"\n"
+              init="\n cls_#{@name}=rb_define_class(\"#{@name}\",rb_const_get(rb_cObject,rb_intern(\"#{@@parent}\"))); 
+                    failobj=rb_eval_string(\"FAIL\");
+                    #{@@init.uniq.sort*"\n"}
+                    #{@@defmethods.sort*"\n" }
+                   "
+              [s,init,rbcode] } ]
+        |  Rule[@name:name {@@rulename=name; Local.resetnumbering;resetlabels;@@locls={}} @body=>trans:body  
           { h="VALUE #{@@grammar}_#{name}(VALUE self #{map_index(@args){|i| ",VALUE a#{i}"}*""})" 
-						@@header<<h+";"
-						@@defmethods<< "rb_define_method(cls_#{@@grammar},\"#{@name}\",#{@@grammar}_#{@name},#{@args.size});"
-						h+"{VALUE vals[#{@args.size}]; VALUE bind=bind_new2(#{@@locls.size}); #{map_index(@args){|i| bset(@args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
-\n#{body}\nreturn it;\nfail: return failobj; }" } ]
-				| Act[ .*:{addcallback(@pred ? ["(",it,") || FAIL"] : it)}:cbno {"it=#{rbcall(cbno,["bind"])}; #{@pred ? "FAILTEST(#{@@faillabel});" :"" }"} ]
-				| CAct[.* {ar=*@ccode; 
+            @@header<<h+";"
+            @@defmethods<< "rb_define_method(cls_#{@@grammar},\"#{@name}\",#{@@grammar}_#{@name},#{@args.size});"
+            h+"{VALUE vals[#{@args.size}]; VALUE bind=bind_new2(#{@@locls.size}); #{map_index(@args){|i| bset(@args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
+            \n#{body}\nreturn it;\nfail: return failobj; }" } ]
+        | Act[ .*:{addcallback(@pred ? ["(",it,") || FAIL"] : it)}:cbno {"it=#{rbcall(cbno,["bind"])}; #{@pred ? "FAILTEST(#{@@faillabel});" :"" }"} ]
+        | CAct[.* {ar=*@ccode; 
                    @@header<<ar[0] if ar[0]
                    @@init<<ar[1] if ar[1]
                    "it=#{ar[2]};"}]
-				| Apply[ ["_find"]  ]
-				| Apply[ ["fails"] {"goto #{@@faillabel};"} ]
-				| Apply[ ["eof"]   {"it=Qnil;if (ptr->pos<ptr->len) goto #{@@faillabel};"} ]
 
-				| Apply[ ["_seq"] CAct[.:s] {"if (strncmp(ame_curstr2(ptr),#{s.inspect},#{s.size})) goto #{@@faillabel}; else ptr->pos+=#{s.size};"}]
-				| Apply[:name {0}:ii ( trans:aa {ii+=1} {"#{aa} arg#{ii-1}=it;"})*:args 
-            failwrap(" #{args*""} it=#{callrule(name,ii)};")]
-				| Bind[trans:e {"#{e} #{bset(@name,"it")};\n" } ]
-				| Seq[ trans*:t {t*""} ]
-				| Or[ {label("accept")}:accept {label("oldpos")}:oldpos label("alt"):alt {1}:altno
-					 {"int #{oldpos}=ptr->pos;\n#{alt}_#{altno}:;"}:s
-					 ( &(.) {altno+=1}  rw("#{alt}_#{altno}",`trans`):t 
+        | Apply[ ["_find"] {raise "TODO"} ]
+        | Apply[ ["fails"] {"goto #{@@faillabel};"} ]
+        | Apply[ ["eof"]   {"it=Qnil;if (ptr->pos<ptr->len) goto #{@@faillabel};"} ]
+        | Apply[ ["_seq"] CAct[.:s] {"if (strncmp(ame_curstr2(ptr),#{s.inspect},#{s.size})) goto #{@@faillabel}; else ptr->pos+=#{s.size};"}]
+        | Apply[ .:name {0}:ii ( trans:aa {ii+=1} {"#{aa} arg#{ii-1}=it;"})*:args 
+                 failwrap(" #{args*""} it=#{callrule(name,ii)};")]
+
+        | Bind[trans:e {"#{e} #{bset(@name,"it")};\n" } ]
+        | Seq[ trans*:t {t*""} ]
+        | Or[ {label("accept")}:accept {label("oldpos")}:oldpos label("alt"):alt {1}:altno
+           {"int #{oldpos}=ptr->pos;\n#{alt}_#{altno}:;"}:s
+           ( &(.) {altno+=1}  rw("#{alt}_#{altno}",`trans`):t 
              {s+="#{t}\n#{@@cuts ? "ame_setcut(self,Qnil)" : ""};goto #{accept};\n"} 
              {s+="#{alt}_#{altno}: ptr->pos=#{oldpos};#{@@cuts ? (@@cuts=false;"if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto #{@@faillabel};}"): ""}"}  
-					 )*
+           )*
            {s+"goto #{@@faillabel};\n #{accept}:;\n"}
-					]
-				| Cut[]   {@@cuts=true;"ame_setcut(self,Qtrue);"}
-				| Stop[] {@@stops=true;"ame_setstop(self,Qtrue);"}
-				| Memo[ .* {"TODO"}]
-				| Many[ Apply[ ["anything"] ] ] -> "ptr->pos=ptr->len;"
-				| Many[ {label("break")}:brk {label("oldpos")}:oldpos
-						rw(brk,`trans:t`)
-						{"int #{oldpos}; while(1){#{oldpos}=ptr->pos; #{t} #{@@stops ? (@@stops=false;"if (ame_getstop(self)!=Qnil){#{oldpos}=ptr->pos;goto #{brk};}") : ""} } #{brk}: ame_setstop(self,Qnil); ptr->pos=#{oldpos}; "}
-					]
-				| Lookahead[ {label("accept")}:accept {label("reject")}:reject {label("oldpos")}:oldpos 
-										 rw(reject,`trans:t`) 
-										 {"int #{oldpos}=ptr->pos;\n #{t} x=1; goto #{accept};  #{reject}: x=0; #{accept}: it=Qnil; ptr->pos=#{oldpos}; if (x==0) goto #{@@faillabel};"} ]
-				| Local[ .* { "it=#{bget(@self)};" } ]
-				| Pass[ label("pass"):pass label("oldpass"):oldpass label("success"):success
-						rw(pass,`@to=>trans:to`)
-					{  "cstruct #{oldpass}=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-          #{@enter ?  "ptr->src=#{bget(@var)}; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}" : 
-                     "ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=#{bget(@var)};ptr->len=1;"
-          }
- #{to}
-	goto #{success};
-	#{pass}: *ptr=#{oldpass}; goto #{@@faillabel};
-	#{success}: *ptr=#{oldpass};
-" }
-					]
-				| Switch_Char[ 
-									{@@defs<<@defs if @defs}
-									{@@header<<@header if @header}
-									{@@init<<@init if @init}
-									{"switch((unsigned char)*ame_curstr2(ptr)){"}:s
-										( [.:c trans:t] {s+=c.cases(@first) + " #{t} break;\n"})*
-									{s+"}"}
-								]
-				| Switch_Clas[ {"switchhash_#{@@grammar}_#{$classlabels[@@grammar]+=1}"}:sh {0}:ii {""}:init
-											 {@@header<< "VALUE #{sh};"}
-									     {"switch(FIX2LONG(rb_hash_aref(#{sh},rb_obj_class(ame_curobj2(ptr))))){"}:s
-											 ( [.:c trans:t]{c.ary.each{|al| init+="next h[k]=#{ii} if k<=#{al}\\n";s+="case #{ii}/*#{al}*/:";ii+=1}}
-																			{s+="; #{t} break;\n"})*
-											 {@@init  <<"#{sh}=rb_eval_string(\"Hash.new{|h,k|#{init}}\");#{gc_mark_var(sh)};"}
-											 {s+"}"}
+          ]
+        | Cut[]   {@@cuts=true;"ame_setcut(self,Qtrue);"}
+        | Stop[] {@@stops=true;"ame_setstop(self,Qtrue);"}
+        | Memo[ .* {raise "TODO"}]
+        | Many[ Apply[ ["anything"] ] ] -> "ptr->pos=ptr->len;"
+        | Many[ {label("break")}:brk {label("oldpos")}:oldpos
+                rw(brk,`trans:t`)
+                {"int #{oldpos}; while(1){#{oldpos}=ptr->pos; #{t} #{@@stops ? (@@stops=false;"if (ame_getstop(self)!=Qnil){#{oldpos}=ptr->pos;goto #{brk};}") : ""} } #{brk}: ame_setstop(self,Qnil); ptr->pos=#{oldpos}; "}
+              ]
+        | Lookahead[ {label("accept")}:accept {label("reject")}:reject {label("oldpos")}:oldpos 
+                     rw(reject,`trans:t`) 
+                     {"int #{oldpos}=ptr->pos;\n #{t} x=1; goto #{accept};  #{reject}: x=0; #{accept}: it=Qnil; ptr->pos=#{oldpos}; if (x==0) goto #{@@faillabel};"} ]
+        | Local[ .* { "it=#{bget(@self)};" } ]
+        | Pass[ label("pass"):pass label("oldpass"):oldpass label("success"):success
+                rw(pass,`@to=>trans:to`)
+                { "cstruct #{oldpass}=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
+                   #{@enter ?  "ptr->src=#{bget(@var)}; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}" : 
+                    "ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=#{bget(@var)};ptr->len=1;"
+                   }
+                   #{to}
+                   goto #{success};
+                   #{pass}: *ptr=#{oldpass}; goto #{@@faillabel};
+                   #{success}: *ptr=#{oldpass};
+                " }
+              ]
+        | Switch_Char[ 
+                     {"switch((unsigned char)*ame_curstr2(ptr)){"}:s
+                     ( [.:c trans:t] {s+=c.cases(@first) + " #{t} break;\n"})*
+                     {s+"}"}
+                     ]
+        | Switch_Clas[ {"switchhash_#{@@grammar}_#{$classlabels[@@grammar]+=1}"}:sh {0}:ii {""}:init
+                       {@@header<< "VALUE #{sh};"}
+                       {"switch(FIX2LONG(rb_hash_aref(#{sh},rb_obj_class(ame_curobj2(ptr))))){"}:s
+                       ( [.:c trans:t]{c.ary.each{|al| init+="next h[k]=#{ii} if k<=#{al}\\n";s+="case #{ii}/*#{al}*/:";ii+=1}}
+                                      {s+="; #{t} break;\n"})*
+                       {@@init  <<"#{sh}=rb_eval_string(\"Hash.new{|h,k|#{init}}\");#{gc_mark_var(sh)};"}
+                       {s+"}"}
                      ]
 
-	
-	addlambda =  {"#{@@grammar}_#{@@rulename}_#{label("lambda")}"}:lambd  rw('fail',`trans:body`)
-							  { h="VALUE #{lambd}(VALUE self,VALUE bind)"
-            @@header<<h+";"
-						@@defmethods<<"rb_define_method(cls_#{@@grammar},\"#{lambd}\",#{lambd},1);"
-            @@lambdas<< h+"{VALUE vals[0]; /*todo unify with rule and get args*/ cstruct *ptr; int x;VALUE it;VALUE arg0,arg1,arg2,arg3;\n#{body}\nreturn it;\nfail: return failobj; }" }
-							 {"AmethystLambda.new(:#{lambd},self,bind)" }
+  
+  addlambda =  {"#{@@grammar}_#{@@rulename}_#{label("lambda")}"}:lambd  rw('fail',`trans:body`)
+               { h="VALUE #{lambd}(VALUE self,VALUE bind)"
+                 @@header<<h+";"
+                 @@defmethods<<"rb_define_method(cls_#{@@grammar},\"#{lambd}\",#{lambd},1);"
+                 @@lambdas<< h+"{VALUE vals[0]; /*todo unify with rule and get args*/ cstruct *ptr; int x;VALUE it;VALUE arg0,arg1,arg2,arg3;\n#{body}\nreturn it;\nfail: return failobj; }" }
+               {"AmethystLambda.new(:#{lambd},self,bind)" }
 
-	add_c_global(name,expr) = {@@header<<"static VALUE #{name};"; @@init<<"#{name}=#{expr};#{gc_mark_var(name)};"}
+  add_c_global(name,expr) = {@@header<<"static VALUE #{name};"; @@init<<"#{name}=#{expr};#{gc_mark_var(name)};"}
 
-	failwrap(s) = {"#{s} FAILTEST(#{@@faillabel});" }
+  failwrap(s) = {"#{s} FAILTEST(#{@@faillabel});" }
 
-	rw(word,prc) = {@@faillabel}:rwo {@@faillabel=word } apply(prc):x {@@faillabel=rwo; x }
-	
-	addcallback(s) = {s}=>rbtrans2:s {addcallback2(s)} 
+  rw(word,prc) = {@@faillabel}:rwo {@@faillabel=word } apply(prc):x {@@faillabel=rwo; x }
+  
+  addcallback(s) = {s}=>rbtrans2:s {addcallback2(s)} 
 }

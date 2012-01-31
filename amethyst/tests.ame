@@ -1,14 +1,14 @@
 CurrentParser[:implicit_variables]=true
 
 amethyst Tests{
-	sw = (('a' |'b') 'c'
-				| 'd') 
-	
-	s2= <ab> |<def> {3} | 'g'
+  sw = (('a' |'b') 'c'
+        | 'd') 
+  
+  s2= <ab> |<def> {3} | 'g'
 
  test = {1}:from ("a" {from}| {42}):from #42
 
-	foo = foo | bar {foo+bar}
-	abc =< abc>
-	de ={1}:foo ({foo+1} abc |{foo+2} <de>)
+  foo = foo | bar {foo+bar}
+  abc =< abc>
+  de ={1}:foo ({foo+1} abc |{foo+2} <de>)
 }

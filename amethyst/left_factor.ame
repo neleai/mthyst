@@ -1,28 +1,28 @@
 class Left_Factor < Traverser_Clone2
-	def merge(ary)
-		return [ary[0]] if ary.size==1
-		a=autovar.normalize
-		[Seq[Bind[a,first(ary[0])],Or[*(ary.map{|e| rest(e,binds(e,a))})]]]
-	end
+  def merge(ary)
+    return [ary[0]] if ary.size==1
+    a=autovar.normalize
+    [Seq[Bind[a,first(ary[0])],Or[*(ary.map{|e| rest(e,binds(e,a))})]]]
+  end
 end
 
 amethyst Left_Factor < Traverser_Clone2 {
-	first(s)    = {s}=>( Seq[.:f .* first(f) ] 
-				  					 | Bind[.* first(@expr)   ]
-									   | .)
+  first(s)    = {s}=>( Seq[.:f .* first(f) ] 
+                     | Bind[.* first(@expr)   ]
+                     | .)
 
-	rest(s,bin) = {s}=>( Seq[.:f .*:{Seq[[bin]+it]} ]
-										 | . {bin} )
+  rest(s,bin) = {s}=>( Seq[.:f .*:{Seq[[bin]+it]} ]
+                     | . {bin} )
 
-	binds(s,a)  = {s}=>( Seq[.:f .* binds(f,a)]
-										 | Bind[.* binds(@expr,a):nexp {Bind[@name,nexp]} ]
-										 | . {a})
+  binds(s,a)  = {s}=>( Seq[.:f .* binds(f,a)]
+                     | Bind[.* binds(@expr,a):nexp {Bind[@name,nexp]} ]
+                     | . {a})
 
-	root=traverse
+  root=traverse
 
-	visit=Or[ traverse[ .:x factor([],first(x),[x]) ] ]		
-	
-	factor(prev,start,cur) = .:next ( &{start==first(next)} factor(prev,start,cur+[next])
-	  														  | &{start!=first(next)} factor(prev+merge(cur),first(next),[next]) )
-											 | eof -> Or[*(prev+merge(cur))]
+  visit=Or[ traverse[ .:x factor([],first(x),[x]) ] ]    
+  
+  factor(prev,start,cur) = .:next ( &{start==first(next)} factor(prev,start,cur+[next])
+                                  | &{start!=first(next)} factor(prev+merge(cur),first(next),[next]) )
+                         | eof -> Or[*(prev+merge(cur))]
 }

@@ -1,237 +1,236 @@
 
 $hash_Lattice_Sizes={}
 class Lattice_Sizes
-	attr_accessor :size
-	def self.bottom ;	self[0];				end
-	def self.top	  ; self[1.0/0.0];	end
-	def self.[](a)
-		return $hash_Lattice_Sizes[a] if $hash_Lattice_Sizes[a]
-		l=self.new
-		l.size=a
-		$hash_Lattice_Sizes[a]=l
-	end
-	alias_method :==,:equal?
-	def |(a)
-		Lattice_Sizes[ [size,a.size].min ]
-	end
-	def seqjoin(a)
-		Lattice_Sizes[ size+a.size ]
-	end
-	def inspect; "Lattice_Sizes[#{size}]";end
+  attr_accessor :size
+  def self.bottom ; self[0];        end
+  def self.top    ; self[1.0/0.0];  end
+  def self.[](a)
+    return $hash_Lattice_Sizes[a] if $hash_Lattice_Sizes[a]
+    l=self.new
+    l.size=a
+    $hash_Lattice_Sizes[a]=l
+  end
+  alias_method :==,:equal?
+  def |(a)
+    Lattice_Sizes[ [size,a.size].min ]
+  end
+  def seqjoin(a)
+    Lattice_Sizes[ size+a.size ]
+  end
+  def inspect; "Lattice_Sizes[#{size}]";end
 end
 
 class FirstLattice
-	attr_accessor :ary
-  def self.bottom;   self[];			 end
-	
-	def |(a)
-		self.class[*(ary|a.ary)]
-	end
-	def seqjoin(a)
+  attr_accessor :ary
+  def self.bottom;   self[];       end
+  
+  def |(a)
+    self.class[*(ary|a.ary)]
+  end
+  def seqjoin(a)
     self|a
   end
 
-	def ~
-		raise "Not implemented"
-	end
-	def &(a) #De Morgan's law
-		 ~(~self | ~a)
-	end
-	def -(a)
-		self&(~a)
-	end
+  def ~
+    raise "Not implemented"
+  end
+  def &(a) #De Morgan's law
+     ~(~self | ~a)
+  end
+  def -(a)
+    self&(~a)
+  end
 
-	def cases(first)
-		ary.map{|c| "case #{c}:;"}*""
-	end
-	def inspect
-		self.class.to_s+ary.inspect
-	end
+  def cases(first)
+    ary.map{|c| "case #{c}:;"}*""
+  end
+  def inspect
+    self.class.to_s+ary.inspect
+  end
 end
 
 $hash_Lattice_Char={}
 class Lattice_Char < FirstLattice
-	def self.[](*ary)
-		return $hash_Lattice_Char[ary] if $hash_Lattice_Char[ary]
-		nary=[]
-		if ary.size>0
-			first,last=*ary.sort[0]
-			(ary.sort+[[257,257]]).each{|beg,en|
-				if beg<=last+1
-					last=[last,en].max
-				else
-					nary<<[first,last]
-					first,last=beg,en
-				end
-			}
-		end
-		return $hash_Lattice_Char[ary]=$hash_Lattice_Char[nary] if $hash_Lattice_Char[nary]
-		c=Lattice_Char.new
-		c.ary=nary
-		$hash_Lattice_Char[ary]=$hash_Lattice_Char[nary]=c
-	end
-	alias_method :==,:equal?
-	def self.top;	         Lattice_Char[[0,255]] ;end
-	def self.bottom;   		 Lattice_Char[];			 end
-	def cchar(c)
-		return "'#{c.chr}'" if c.chr.inspect.size==3 && c.chr.inspect!='"\'"' && c.ord < 128
-		"UC(#{c.ord})"
-	end
+  def self.[](*ary)
+    return $hash_Lattice_Char[ary] if $hash_Lattice_Char[ary]
+    nary=[]
+    if ary.size>0
+      first,last=*ary.sort[0]
+      (ary.sort+[[257,257]]).each{|beg,en|
+        if beg<=last+1
+          last=[last,en].max
+        else
+          nary<<[first,last]
+          first,last=beg,en
+        end
+      }
+    end
+    return $hash_Lattice_Char[ary]=$hash_Lattice_Char[nary] if $hash_Lattice_Char[nary]
+    c=Lattice_Char.new
+    c.ary=nary
+    $hash_Lattice_Char[ary]=$hash_Lattice_Char[nary]=c
+  end
+  alias_method :==,:equal?
+  def self.top;           Lattice_Char[[0,255]] ;end
+  def self.bottom;        Lattice_Char[]        ;end
+  def cchar(c)
+    return "'#{c.chr}'" if c.chr.inspect.size==3 && c.chr.inspect!='"\'"' && c.ord < 128
+    "UC(#{c.ord})"
+  end
   def cases(first)
     ary.map{|c| "case #{cchar(c[0])} ... #{cchar(c[1])}:;"}*""
   end
-	def ~
-		first=0
-		nary=[]
-		(ary+[[256,256]]).each{|beg,en|
-			nary<<[first,beg-1] if first<=beg-1
-			first=en+1
-		}
-		Lattice_Char[*nary]
-	end
+  def ~
+    first=0
+    nary=[]
+    (ary+[[256,256]]).each{|beg,en|
+      nary<<[first,beg-1] if first<=beg-1
+      first=en+1
+    }
+    Lattice_Char[*nary]
+  end
 end
 
 $hash_Lattice_Clas={}
 class Lattice_Clas < FirstLattice
   attr_accessor :ary
   def self.[](*ary)
-		ary=ary.uniq.sort_by{|a| a.inspect}.map{|a| eval(a.to_s)}
-		return $hash_Lattice_Clas[ary] if $hash_Lattice_Clas[ary]
+    ary=ary.uniq.sort_by{|a| a.inspect}.map{|a| eval(a.to_s)}
+    return $hash_Lattice_Clas[ary] if $hash_Lattice_Clas[ary]
     c=Lattice_Clas.new
     c.ary=ary
     $hash_Lattice_Clas[ary]=c
   end
-	alias_method :==,:equal?
+  alias_method :==,:equal?
   def self.top;     Lattice_Clas[Object];  end
-	
-	#TODO operations other than |
-	#TODO modules
-	def &(a)
-		n=[]
-		ary.each{|u| a.ary.each{|v|
-			n<<u if u<=v
-			n<<v if v<=u
-		}}
-		Lattice_Clas[*n.uniq]
-	end
+  
+  #TODO operations other than |
+  #TODO modules
+  def &(a)
+    n=[]
+    ary.each{|u| a.ary.each{|v|
+      n<<u if u<=v
+      n<<v if v<=u
+    }}
+    Lattice_Clas[*n.uniq]
+  end
 end
 
 class First_Dataflow < Amethyst
-	def initialize
+  def initialize
     @depend=Oriented_Graph.new
     @vals=Hash.new(lattice.bottom)
-		@visited={}
+    @visited={}
   end
 
-	def analyze(e)
+  def analyze(e)
     @active={}
     @activea=[e]
-		while el=@activea.pop
-			@active.delete(el)
+    while el=@activea.pop
+      @active.delete(el)
       val=getvalue(el)
       if val!=@vals[el]
         @vals[el]=val
         @depend.edges[el].each{|d| addactive(d)}
       end
 
-		end
-		@vals[e]
-	end 
-	def depends(e)
-		@depend.add(e,@vis) unless @depend.edges[e].include?(@vis)
-		if !@visited[e]
-			@visited[e]=true
-			addactive(e)
-		end
-	end
-	def addactive(e)
+    end
+    @vals[e]
+  end 
+  def depends(e)
+    @depend.add(e,@vis) unless @depend.edges[e].include?(@vis)
+    if !@visited[e]
+      @visited[e]=true
+      addactive(e)
+    end
+  end
+  def addactive(e)
     if !@active[e]
       @active[e]=true
       @activea<<e
     end
   end
 
-	def empty?(el)
-		$sizedf.analyze(el).size==0
-	end
+  def empty?(el)
+    $sizedf.analyze(el).size==0
+  end
 end
 class Sizes_Dataflow < First_Dataflow
-	def lattice
-		Lattice_Sizes
-	end
-	def empty?(el)
-		true
-	end
+  def lattice
+    Lattice_Sizes
+  end
+  def empty?(el)
+    true
+  end
 end
 
 class Switch_Char_Dataflow < First_Dataflow
   def firstchar(s)
-	  return lattice.empty if s==""
+    return lattice.empty if s==""
     s=s[0].bytes.to_a[0]
-		lattice[[s,s]]
+    lattice[[s,s]]
   end
-	def regchar(s)
-		return ~regchar("/["+s[3...-2]+"]/") if s[2]==?^ 
-		chars=[]
-		s=s[2...-2]
-		i=0
-		while i<s.size
-			c=s[i].bytes.to_a[0]
-			if s[i+1]==?-
-				chars<<[c,s[i+2].bytes.to_a[0]]
-				i+=3
-			elsif s[i]==?\\
-				c=eval('"'+s[i,2]+'"')[0].bytes.to_a[0]
-				chars<<[c,c]
-				i+=2
-			else
-				chars<<[c,c]
-				i+=1
-			end
-		end
-		lattice[*chars]
-	end
-	def lattice;		Lattice_Char;	end
+  def regchar(s)
+    return ~regchar("/["+s[3...-2]+"]/") if s[2]==?^ 
+    chars=[]
+    s=s[2...-2]
+    i=0
+    while i<s.size
+      c=s[i].bytes.to_a[0]
+      if s[i+1]==?-
+        chars<<[c,s[i+2].bytes.to_a[0]]
+        i+=3
+      elsif s[i]==?\\
+        c=eval('"'+s[i,2]+'"')[0].bytes.to_a[0]
+        chars<<[c,c]
+        i+=2
+      else
+        chars<<[c,c]
+        i+=1
+      end
+    end
+    lattice[*chars]
+  end
+  def lattice;    Lattice_Char;  end
 end
 
 class Switch_Clas_Dataflow < First_Dataflow
-	def lattice;		Lattice_Clas;	end
+  def lattice;    Lattice_Clas;  end
 end
 amethyst First_Dataflow {
-	value =  .:x  {depends(x);@@vals[x]}
+  value =  .:x  {depends(x);@@vals[x]}
 
+  root = .:x analyze(x)
+  
+  first = Switch_Char[ [ .:p  value:v {p.is_a?(lattice)? p & v : v}:vals[] ]* {vals.inject(:|)} ]
+        | Switch_Clas[ [ .:p  value:v {p.is_a?(lattice)? p & v : v}:vals[] ]* {vals.inject(:|)} ]
+        | Or[value*:{it.inject(:|)}]
+        | Seq[{lattice.bottom}:val (.:el {el}=>value:nev {val.seqjoin(nev)}:val  (~{empty?(el)} break | empty) )*   .* {val}]
+        | Many[value:val {val|lattice.bottom} ]
+        | Apply[ :name &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name].body}=>value ]
+        | Switch_Char[value*:{it.inject(:|)}]
+        | Bind[ value] 
+        | (Act|CAct|Local|Result|Cut|Stop|Pass|Lookahead)[.* {lattice.bottom} ]
+        | .:el {empty?(el) ? lattice.top|lattice.bottom : lattice.top}
 
-	root = .:x analyze(x)
-	
-	first = Switch_Char[ [ .:p  value:v {p.is_a?(lattice)? p & v : v}:vals[] ]* {vals.inject(:|)} ]
-				| Switch_Clas[ [ .:p  value:v {p.is_a?(lattice)? p & v : v}:vals[] ]* {vals.inject(:|)} ]
-				| Or[value*:{it.inject(:|)}]
-				| Seq[{lattice.bottom}:val (.:el {el}=>value:nev {val.seqjoin(nev)}:val  (~{empty?(el)} break | empty) )*   .* {val}]
-				| Many[value:val {val|lattice.bottom} ]
-				| Apply[ :name &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name].body}=>value ]
-				| Switch_Char[value*:{it.inject(:|)}]
-	      | Bind[ value] 
-				| (Act|CAct|Local|Result|Cut|Stop|Pass|Lookahead)[.* {lattice.bottom} ]
-				| .:el {empty?(el) ? lattice.top|lattice.bottom : lattice.top}
-
-	 getvalue(v) = {@@vis=v; v}=>first
-}  			
+   getvalue(v) = {@@vis=v; v}=>first
+}        
 
 amethyst Sizes_Dataflow < First_Dataflow {
-	first = Apply[( ["_seq"] CAct[.:str] {lattice[str.size]} 
-								| ["regch" | "clas" | "anything"] .* {lattice[1]}
-								| ["fails"] {lattice.top}
-								)]
-			  | super
+  first = Apply[( ["_seq"] CAct[.:str] {lattice[str.size]} 
+                | ["regch" | "clas" | "anything"] .* {lattice[1]}
+                | ["fails"] {lattice.top}
+                )]
+        | super
 }
 
 amethyst Switch_Char_Dataflow < First_Dataflow{
-	first = Apply[( ["_seq"  ] CAct[.:str] {firstchar(str)}
-								| ["regch" ] Act[.:str]  {regchar(str)}
-								| ["anything" ] {lattice.top}
-								| ["fails"] {lattice.bottom}
-							  )]
-				| super
+  first = Apply[( ["_seq"  ] CAct[.:str] {firstchar(str)}
+                | ["regch" ] Act[.:str]  {regchar(str)}
+                | ["anything" ] {lattice.top}
+                | ["fails"] {lattice.bottom}
+                )]
+        | super
 }
 
 amethyst Switch_Clas_Dataflow < First_Dataflow{
@@ -240,102 +239,101 @@ amethyst Switch_Clas_Dataflow < First_Dataflow{
 }
 
 class Detect_First< Traverser_Clone2
-	def empty?(s)	
-		$sizedf.analyze(s).size==0
-	end
+  def empty?(s)  
+    $sizedf.analyze(s).size==0
+  end
 end
 
 class Detect_Switch_Char < Detect_First
-	def initialize
-		if !$sizedf	
-			$sizedf=Sizes_Dataflow.new
-			$sizedf.parse(:root,[])
-		end
-		if !$switchdf_char
-			$switchdf_char=Switch_Char_Dataflow.new
-			$switchdf_char.parse(:root,[])
-		end
-	end
-	def first(s)
-		$switchdf_char.analyze(s)
-	end
+  def initialize
+    if !$sizedf  
+      $sizedf=Sizes_Dataflow.new
+      $sizedf.parse(:root,[])
+    end
+    if !$switchdf_char
+      $switchdf_char=Switch_Char_Dataflow.new
+      $switchdf_char.parse(:root,[])
+    end
+  end
+  def first(s)
+    $switchdf_char.analyze(s)
+  end
 end
 
 class Detect_Switch_Clas < Detect_First
-	def initialize
-		if !$sizedf	
-			$sizedf=Sizes_Dataflow.new
-			$sizedf.parse(:root,[])
-		end
-		if !$switchdf_clas
-			$switchdf_clas=Switch_Clas_Dataflow.new
-			$switchdf_clas.parse(:root,[])
-		end
-	end
-	def first(s)
-		$switchdf_clas.analyze(s)
-	end
+  def initialize
+    if !$sizedf  
+      $sizedf=Sizes_Dataflow.new
+      $sizedf.parse(:root,[])
+    end
+    if !$switchdf_clas
+      $switchdf_clas=Switch_Clas_Dataflow.new
+      $switchdf_clas.parse(:root,[])
+    end
+  end
+  def first(s)
+    $switchdf_clas.analyze(s)
+  end
 end
 
 amethyst Detect_First < Traverser_Clone2 {
-	itrans =   (Grammar[ {@@name=@name} {$rules={};@rules.each{|r| $rules[r.name]=r}} @rules=>[ Rule[root]*:rules ] {@rules=rules} @self] | .)*
+  itrans =   (Grammar[ {@@name=@name} {$rules={};@rules.each{|r| $rules[r.name]=r}} @rules=>[ Rule[root]*:rules ] {@rules=rules} @self] | .)*
 
-	root = traverse
+  root = traverse
 
-	must_empty = Act | CAct
-						 | Bind[ must_empty {@self} ]
+  must_empty = Act | CAct
+             | Bind[ must_empty {@self} ]
 
-	cant_fail  = Act | CAct
-						 | Bind[ must_empty {@self} ]
-	
-	string_only = Apply[ ["regch" |"_seq"] .*]
-	
-	object_only = Apply[ ["clas"] .* ]
+  cant_fail  = Act | CAct
+             | Bind[ cant_fail  {@self} ]
+  
+  string_only = Apply[ ["regch" |"_seq"] .*]
+  
+  object_only = Apply[ ["clas"] .* ]
 }
 
 amethyst Detect_Switch_Char < Detect_First {
-	visit =  Apply[ ["regch"] Act[.*] {first(@self)}:firs {s=Switch_Char[{:ary=>[[firs,Apply["anything"]],[~firs,Apply["fails"]]]}]}]
-				|  Apply[ ["_seq"] CAct[.:str] 
+  visit = Apply[ ["regch"] Act[.*] {first(@self)}:firs {s=Switch_Char[{:ary=>[[firs,Apply["anything"]],[~firs,Apply["fails"]]]}]}]
+        | Apply[ ["_seq"] CAct[.:str] 
                   {first(@self)}:firs {s=Switch_Char[{:ary=>[[firs,Seq[Apply["anything"],Apply["_seq",CAct[str[1..-1]]]]],[~firs,Apply["fails"]]]}]}]
-
-				|  Apply[ ["fails"] {@self} ]
-				|  Many[ traverse:t first(t):firs &{!empty?(@self) && firs!=Lattice_Char.top} {s=Switch_Char[{:ary=>[[firs,Many[t]],[~firs,Apply["fails"]]]}] }]
-				|	 Apply[ .*  {first(@self)}:firs &{!empty?(@self) && firs!=Lattice_Char.top} {s=Switch_Char[{:ary=>[[firs,@self],[~firs,Apply["fails"]]]}] }]
-				| Seq[ traverse_item*=>[combine_seq([])] ]
-				| Or[ (traverse_item)*:items {false}:aswitch {items.each{|i| aswitch=true if i.is_a?(Switch_Char)}}
-							( &{!aswitch} {Or[*items]} 
-							|  {items}=>[ combine_or([[Lattice_Char.top,[]]]) ]
-							)
-						]
-				
+        | Apply[ ["fails"] {@self} ]
+        | Apply[ .*  {first(@self)}:firs &{!empty?(@self) && firs!=Lattice_Char.top} {s=Switch_Char[{:ary=>[[firs,@self],[~firs,Apply["fails"]]]}] }]
+        | Many[ traverse:t first(t):firs &{!empty?(@self) && firs!=Lattice_Char.top} {s=Switch_Char[{:ary=>[[firs,Many[t]],[~firs,Apply["fails"]]]}] }]
+        | Seq[ traverse_item*=>[combine_seq([])] ]
+        | Or[ (traverse_item)*:items {false}:aswitch {items.each{|i| aswitch=true if i.is_a?(Switch_Char)}}
+              ( &{!aswitch} {Or[*items]} 
+              |  {items}=>[ combine_or([[Lattice_Char.top,[]]]) ]
+              )
+            ]
+        
  combine_seq(prefix) = must_empty:s combine_seq(prefix+[s])
- 										 | Switch_Char[ .* @ary:ary ] .*:rest { Switch_Char[{:ary=>ary.map{|p,a| [p,Seq[*(prefix+[a]+rest)]]}}] }
-					 	         | .*:ary {Seq[*(prefix+ary)]}
+                      | Switch_Char[ .* @ary:ary ] .*:rest { Switch_Char[{:ary=>ary.map{|p,a| [p,Seq[*(prefix+[a]+rest)]]}}] }
+                      | .*:ary {Seq[*(prefix+ary)]}
 
  combine_or(list) = Switch_Char[.* @ary:ary] {[]}:newlist 
                            {list.each{|p,a| ary.each{|p2,a2| newlist << [p&p2,a+[a2]] if p&p2!=Lattice_Char.bottom}}}
                            combine_or(newlist)
                   | .:n {list.map{|p,a| [p,a+[n]]}}:newlist                                  
                            combine_or(newlist)
-								  | eof {Switch_Char[{:ary=>list.map{|p,a| [p,Or[*a]]}}]}
+                  | eof {Switch_Char[{:ary=>list.map{|p,a| [p,Or[*a]]}}]}
 }
 
 amethyst Detect_Switch_Clas < Detect_First {
-	visit = Apply[ ["clas"] CAct[Class:clas]   {Switch_Clas[[Lattice_Clas[clas],Apply["anything"]],[Lattice_Clas[Object],Apply["fails"]]].freeze }]
-				| Apply[ ["fails"] {@self} ]
-				| Apply[ .* first(@self):firs &{!empty?(@self) && !firs.ary.include?(Object)} {c=Switch_Clas[{:ary=>firs.ary.map{|a| [Lattice_Clas[a],@self]}+[[Lattice_Clas[Object],Apply["fails"]]]}];puts c.inspect;c }]  
-		    | Seq[ traverse_item*=>[combine_seq([])] ]
-				| Or[ (traverse_item)*:items {false}:aswitch {items.each{|i| aswitch=true if i.is_a?(Switch_Clas)}}
-							( &{!aswitch} {Or[*items]} 
-							|  {items}=>[ combine_or([[Lattice_Clas.top,[]]]) ]
-							)
-						]
+  visit = Apply[ ["clas"] CAct[Class:clas]   {Switch_Clas[[Lattice_Clas[clas],Apply["anything"]],[Lattice_Clas[Object],Apply["fails"]]].freeze }]
+        | Apply[ ["fails"] {@self} ]
+        | Apply[ .* first(@self):firs &{!empty?(@self) && !firs.ary.include?(Object)} {c=Switch_Clas[{:ary=>firs.ary.map{|a| [Lattice_Clas[a],@self]}+[[Lattice_Clas[Object],Apply["fails"]]]}];puts c.inspect;c }]  
+        | Seq[ traverse_item*=>[combine_seq([])] ]
+        | Or[ (traverse_item)*:items {false}:aswitch {items.each{|i| aswitch=true if i.is_a?(Switch_Clas)}}
+              ( &{!aswitch} {Or[*items]} 
+              |  {items}=>[ combine_or([[Lattice_Clas.top,[]]]) ]
+              )
+            ]
 
-	combine_seq(prefix) = must_empty:s combine_seq(prefix+[s])
+  combine_seq(prefix) = must_empty:s combine_seq(prefix+[s])
                      | Switch_Clas[ .* @ary:ary ] .*:rest { Switch_Clas[{:ary=>ary.map{|p,a| [p,Seq[*(prefix+[a]+rest)]]}}] }
                      | .*:ary {Seq[*(prefix+ary)]}
 
-	combine_or(list) = Switch_Clas[.* @ary:ary] {[]}:newlist
+  combine_or(list) = Switch_Clas[.* @ary:ary] {[]}:newlist
                            {list.each{|p,a| ary.each{|p2,a2| newlist << [p&p2,a+[a2]] if p&p2!=Lattice_Clas.bottom}}}
                            combine_or(newlist)
                   | .:n {list.map{|p,a| [p,a+[n]]}}:newlist

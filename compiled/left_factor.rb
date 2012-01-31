@@ -1,9 +1,9 @@
 class Left_Factor < Traverser_Clone2
-	def merge(ary)
-		return [ary[0]] if ary.size==1
-		a=autovar.normalize
-		[Seq[Bind[a,first(ary[0])],Or[*(ary.map{|e| rest(e,binds(e,a))})]]]
-	end
+  def merge(ary)
+    return [ary[0]] if ary.size==1
+    a=autovar.normalize
+    [Seq[Bind[a,first(ary[0])],Or[*(ary.map{|e| rest(e,binds(e,a))})]]]
+  end
 end
 
 class Left_Factor < Traverser_Clone2
@@ -104,15 +104,15 @@ end
 
 
 def left_factor_compiled_by
-'6b1b0a66c27620073a367599a6350079'
+'e7ad92ac4f50044ef4577901b2cf92f4'
 end
 def left_factor_source_hash
-'9b295ffb1631519b54ea452c40fb2fdb'
+'288fcdcac0f7906111e6e729c09b18a6'
 end
 def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version
 end
 def left_factor_version
-'c9495ee0224e6d07cd23e6df834584ae'
+'02180526bf1bf1d6b4586de1753bfecb'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/left_factor_c"

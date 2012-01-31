@@ -5,46 +5,46 @@
 # - removes comments
 
 def connectstring(ary)
-	r=[]
-	s=nil
-	ary.each{|a|
-		if a.is_a? String
-			s||=""
-			s+=a
-		else
-			r<<s if s
-			s=nil
-			r<<a
-		end
-	}
-	r<<s if s
-	r
+  r=[]
+  s=nil
+  ary.each{|a|
+    if a.is_a? String
+      s||=""
+      s+=a
+    else
+      r<<s if s
+      s=nil
+      r<<a
+    end
+  }
+  r<<s if s
+  r
 end
 
 
 amethyst Analyze_Variables2 < Traverser_Clone2 {
-	itrans =   (Grammar[ @rules=>[ Rule[root]*:rules ] {@rules=rules} @self] | .)*
+  itrans =   (Grammar[ @rules=>[ Rule[root]*:rules ] {@rules=rules} @self] | .)*
   root = @self=>Rule[ {@@bnding=@bnding} {@@variables=Hash.new{|k,v| k[v]=v} ;(@locals+@args).each{|w| @@variables[w[0]]=w}} {@@locals=@locals} 
-traverse[.*	{@locals=nil} @self] ]
+traverse[.*  {@locals=nil} @self] ]
 
-	visit = Args[ traverse[.* {@ary.map{|aa| @@variables[aa] }}=>[flat:a]  {connectstring(a.flatten)}:ary  {(ary.size==1&&(ary[0].is_a?(Local)||ary[0].is_a?(Global)||ary[0].is_a?(Key))) ? ary[0] : Args[*ary]}]]
-				| Act[ @pred:pred @pure:pure traverse[.* @ary=>[(&{!pred} Local| Args[ .*:ary {Act[ary,pred,pure]}])] ] ]
-				| Result[ {vars=@@locals.select{|aa| Object.const_get(@name).instance_variable_get(:@attrs).include? aa[0].to_sym}.uniq ;Result[{:name=>@name,:vars=>vars,:varnames=>vars.map{|v| v[0]}}]}]
-				| Comment[.*{Placeholder}]
+  visit = Args[ traverse[.* {@ary.map{|aa| @@variables[aa] }}=>[flat:a]  {connectstring(a.flatten)}:ary  {(ary.size==1&&(ary[0].is_a?(Local)||ary[0].is_a?(Global)||ary[0].is_a?(Key))) ? ary[0] : Args[*ary]}]]
+        | Act[ @pred:pred @pure:pure traverse[.* @ary=>[(&{!pred} Local| Args[ .*:ary {Act[ary,pred,pure]}])] ] ]
+        | Result[ {vars=@@locals.select{|aa| Object.const_get(@name).instance_variable_get(:@attrs).include? aa[0].to_sym}.uniq ;Result[{:name=>@name,:vars=>vars,:varnames=>vars.map{|v| v[0]}}]}]
+        | Comment[.*{Placeholder}]
 
 
-	flat= (Args[flat] | Strin[flat] |	. )*
+  flat= (Args[flat] | Strin[flat] |  . )*
 }
 
 amethyst Resolve_Calls < Traverser_Clone2 {
-	root = .:@@grammar Rule[ {@name}:@@name traverse ]
+  root = .:@@grammar Rule[ {@name}:@@name traverse ]
 
-	visit = Apply[ ["super"] {
-					          super_name="#{@@name}_#{@@grammar.name}"
-          					@@grammar.rules[super_name]=deep_clone(Compiler.grammars[@@grammar.parent].getrule(@@name))
-				 	         	@@grammar.rules[super_name].name=super_name
-										Apply[super_name]
-							}]
-				| Apply[ Array:name {a=Apply[name[1],{:clas=>resolvegrammar(Compiler.grammars[name[0]],name[1])}]} ]
-				| Apply[     .:name {a=Apply[name,   {:clas=>resolvegrammar(@@grammar.name,name)}];a} ]
+  visit = Apply[ ["super"] {
+                    super_name="#{@@name}_#{@@grammar.name}"
+                    @@grammar.rules[super_name]=deep_clone(Compiler.grammars[@@grammar.parent].getrule(@@name))
+                    @@grammar.rules[super_name].name=super_name
+                    Apply[super_name]
+              }]
+        | Apply[ Array:name {a=Apply[name[1],{:clas=>resolvegrammar(Compiler.grammars[name[0]],name[1])}]} ]
+        | Apply[     .:name {a=Apply[name,   {:clas=>resolvegrammar(@@grammar.name,name)}];a} ]
 }

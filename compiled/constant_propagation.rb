@@ -2,21 +2,21 @@ Top=Consts.new("Top")
 Bottom=Consts.new("Bottom")
 
 class ConstantLattice
-	attr_accessor :val
-	def self.[](val)
-		c=ConstantLattice.new
-		c.val=val
-		c.freeze
-	end
-	def +(a)
-		return    a if self.val==Bottom
-		return self if    a.val==Bottom
-		return ConstantLattice[Top] if val!=a.val || val==Top
-		return self
-	end
-	def ==(a)
-		return val==a.val
-	end
+  attr_accessor :val
+  def self.[](val)
+    c=ConstantLattice.new
+    c.val=val
+    c.freeze
+  end
+  def +(a)
+    return    a if self.val==Bottom
+    return self if    a.val==Bottom
+    return ConstantLattice[Top] if val!=a.val || val==Top
+    return self
+  end
+  def ==(a)
+    return val==a.val
+  end
 end
 
 class Constant_Propagator < Amethyst
@@ -48,14 +48,14 @@ class Constant_Propagator < Amethyst
   def analyze2
     @depend.topo_order.each{|e| addactive(e);@vals[e]=ConstantLattice[Bottom]}
     analyze
-		r={}
+    r={}
     @vals.each{|k,v|
         if v!=Top&&v!=Bottom
           r[k]=v
           r[k]=Act[v] if v.is_a?(Lambda)
         end
     }
-		r
+    r
   end
   def setval(e,x)
     return vals[e.ssaname]=x if e.is_a?(Local)
@@ -82,10 +82,10 @@ end
 def Constant_Propagator__at_depend_eq__f9fc(bind)
 @depend=bind[0]
 end
-def Constant_Propagator_a_eq_Consta_dc3b(bind)
+def Constant_Propagator_a_eq_Consta_aedc(bind)
 a=ConstantLattice[Bottom]
-        											depend.reverse.edges[bind[0]].each{|e| a=a+valof(e)}
-															a
+                               depend.reverse.edges[bind[0]].each{|e| a=a+valof(e)}
+                               a
 end
 def Constant_Propagator_src_25d9(bind)
 src
@@ -142,15 +142,15 @@ end
 
 
 def constant_propagation_compiled_by
-'6b1b0a66c27620073a367599a6350079'
+'e7ad92ac4f50044ef4577901b2cf92f4'
 end
 def constant_propagation_source_hash
-'24851fdc20d41cfe343910a080792f3b'
+'6b920ef806a3d66a9e237c1280cf5119'
 end
 def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
 end
 def constant_propagation_version
-'f50dd940f396c9b56bd1f35df3945b21'
+'38ac0950bc572afbbe75c9d8210900a1'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/constant_propagation_c"

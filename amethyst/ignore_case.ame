@@ -1,7 +1,7 @@
 amethyst Ignore_Case < Traverser_Clone2{
-	root = Rule[traverse]
-	visit = Apply[ ["ignore_case"] Exp[ignore_case]]
-	
-	ignore_case = Apply[ ["regch"] ]
+  root = Rule[traverse]
+  visit = Apply[ ["ignore_case"] Exp[ignore_case]]
+  
+  ignore_case = Apply[ ["regch"] ]
               | Apply[ ["seq"]   ]
 }

@@ -5,20 +5,20 @@
 # - removes comments
 
 def connectstring(ary)
-	r=[]
-	s=nil
-	ary.each{|a|
-		if a.is_a? String
-			s||=""
-			s+=a
-		else
-			r<<s if s
-			s=nil
-			r<<a
-		end
-	}
-	r<<s if s
-	r
+  r=[]
+  s=nil
+  ary.each{|a|
+    if a.is_a? String
+      s||=""
+      s+=a
+    else
+      r<<s if s
+      s=nil
+      r<<a
+    end
+  }
+  r<<s if s
+  r
 end
 
 
@@ -163,27 +163,27 @@ end
 def Resolve_Calls_src_dot_name_80f3(bind)
 src.name
 end
-def Resolve_Calls_super_na_3133(bind)
+def Resolve_Calls_super_na_7b4c(bind)
 super_name="#{@name}_#{@grammar.name}"
-          					@grammar.rules[super_name]=deep_clone(Compiler.grammars[@grammar.parent].getrule(@name))
-				 	         	@grammar.rules[super_name].name=super_name
-										Apply[super_name]
-							
+                    @grammar.rules[super_name]=deep_clone(Compiler.grammars[@grammar.parent].getrule(@name))
+                    @grammar.rules[super_name].name=super_name
+                    Apply[super_name]
+              
 end
 
 end
 
 
 def detect_variables2_compiled_by
-'6b1b0a66c27620073a367599a6350079'
+'e7ad92ac4f50044ef4577901b2cf92f4'
 end
 def detect_variables2_source_hash
-'14e5135f23224e8f9006dddc0a0f022b'
+'8ba918d60b4d99e8234c4ba033db2d49'
 end
 def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'9fdaf404422d59f7e56f40e4b4e3f3cf'
+'0858c55a0e7b112ef9dc6fdc0c5b0553'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_variables2_c"

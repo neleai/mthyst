@@ -1,59 +1,59 @@
 class Dataflow < Traverser_Clone2
-	attr_accessor :ssanums,:oldssanums,:edges
-	def initialize
-		@edges=Oriented_Graph.new
-		@marked=[]
-		@ssanums=Hash.new(0)
-		@oldssanums=Hash.new(0)
-	end
-	def ssanum(var)
-		return var unless var.is_a? Local
-		var=Local[var[0],var[1],oldssanums[var.unssa]]
-		var.ssaname
-	end
+  attr_accessor :ssanums,:oldssanums,:edges
+  def initialize
+    @edges=Oriented_Graph.new
+    @marked=[]
+    @ssanums=Hash.new(0)
+    @oldssanums=Hash.new(0)
+  end
+  def ssanum(var)
+    return var unless var.is_a? Local
+    var=Local[var[0],var[1],oldssanums[var.unssa]]
+    var.ssaname
+  end
 
-	def newssanum(var)
-		return var unless var.is_a? Local
-		ssanums[var.unssa]+=1
-		oldssanums[var.unssa]=ssanums[var.unssa]
-		ssanum(var.unssa)
-	end
-	def many_end(prev)
-	  ssanums.each{|var,num|
-			if var.is_a?(Local)
-	      if prev[var.unssa]!=num
-					varp=Local[var[0],var[1],prev[var.unssa]]
-					varn=Local[var[0],var[1],ssanums[var.unssa]]
- 	       edges.add(varn.ssaname,varp.ssaname )
- 	     end
-			end
+  def newssanum(var)
+    return var unless var.is_a? Local
+    ssanums[var.unssa]+=1
+    oldssanums[var.unssa]=ssanums[var.unssa]
+    ssanum(var.unssa)
+  end
+  def many_end(prev)
+    ssanums.each{|var,num|
+      if var.is_a?(Local)
+        if prev[var.unssa]!=num
+          varp=Local[var[0],var[1],prev[var.unssa]]
+          varn=Local[var[0],var[1],ssanums[var.unssa]]
+          edges.add(varn.ssaname,varp.ssaname )
+        end
+      end
     }
-	end
-	def bind_end(exp)
-		name=exp.name
-		n=newssanum(name)
-		bnd=Bind[n,exp.expr]
-		val=bnd.expr
-		val=val.expr while val.is_a?(Bind) 
+  end
+  def bind_end(exp)
+    name=exp.name
+    n=newssanum(name)
+    bnd=Bind[n,exp.expr]
+    val=bnd.expr
+    val=val.expr while val.is_a?(Bind) 
     edges.add(val,n)
-		bnd
-	end
-	def or_end(join)
+    bnd
+  end
+  def or_end(join)
    ssanums.clone.each{|k,v|
       u=[]
       join.each{|s| u<<s[k]}
       if u.uniq.size>=1
         n=newssanum(k)
         u.each{|v| l=Local[k[0],k[1],v]
-					edges.add(l.ssaname,n)}
+          edges.add(l.ssaname,n)}
       end
     }
-	end
+  end
 end
 class Local
-	def ssaname
-		self
-	end
+  def ssaname
+    self
+  end
 end
 
 class Dataflow < Traverser_Clone2
@@ -342,15 +342,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'6b1b0a66c27620073a367599a6350079'
+'e7ad92ac4f50044ef4577901b2cf92f4'
 end
 def dataflow_ssa_source_hash
-'e00bfb4bb7aa4d086f8de17ba5ceaafb'
+'0035e7db32236eaf324fdd235629b37e'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'df4b53ed8ac9acea7bb383165e1c2b43'
+'3b750d0ef156f0db0194b1383bcaa953'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/dataflow_ssa_c"

@@ -2,21 +2,21 @@ Top=Consts.new("Top")
 Bottom=Consts.new("Bottom")
 
 class ConstantLattice
-	attr_accessor :val
-	def self.[](val)
-		c=ConstantLattice.new
-		c.val=val
-		c.freeze
-	end
-	def +(a)
-		return    a if self.val==Bottom
-		return self if    a.val==Bottom
-		return ConstantLattice[Top] if val!=a.val || val==Top
-		return self
-	end
-	def ==(a)
-		return val==a.val
-	end
+  attr_accessor :val
+  def self.[](val)
+    c=ConstantLattice.new
+    c.val=val
+    c.freeze
+  end
+  def +(a)
+    return    a if self.val==Bottom
+    return self if    a.val==Bottom
+    return ConstantLattice[Top] if val!=a.val || val==Top
+    return self
+  end
+  def ==(a)
+    return val==a.val
+  end
 end
 
 class Constant_Propagator < Amethyst
@@ -48,14 +48,14 @@ class Constant_Propagator < Amethyst
   def analyze2
     @depend.topo_order.each{|e| addactive(e);@vals[e]=ConstantLattice[Bottom]}
     analyze
-		r={}
+    r={}
     @vals.each{|k,v|
         if v!=Top&&v!=Bottom
           r[k]=v
           r[k]=Act[v] if v.is_a?(Lambda)
         end
     }
-		r
+    r
   end
   def setval(e,x)
     return vals[e.ssaname]=x if e.is_a?(Local)
@@ -69,24 +69,25 @@ end
 
 
 amethyst Constant_Propagator{
-	root= .:{@@depend=it}
+  root= .:{@@depend=it}
 
-	step(el) = {el}=>( Local[.*  {a=ConstantLattice[Bottom]
-        											depend.reverse.edges[el].each{|e| a=a+valof(e)}
-															a}]
-								   | Bind[.:expr valof(expr)]
-  								 |  Act[ Local[.* valof(@self)]
-								         | Lambda[.*{ConstantLattice[@self]}]
-                       ]
-	  							 | CAct[ .* @self:val {ConstantLattice[val]}]
-									 | . {ConstantLattice[Top]}
-		  				     )
+  step(el) = {el}=>( Local[.* {a=ConstantLattice[Bottom]
+                               depend.reverse.edges[el].each{|e| a=a+valof(e)}
+                               a}]
+                   | Bind[.:expr valof(expr)]
+                   |  Act[ Local[.* valof(@self)]
+                         | Lambda[.*{ConstantLattice[@self]}]
+                         ]
+                   | CAct[ .* @self:val {ConstantLattice[val]}]
+                   | . {ConstantLattice[Top]}
+                   )
 }
 
 amethyst Constant_Traverser < Traverser_Clone2 {
-	root = {@@consts=@consts}  {@cfg=nil;@reachable=nil;@consts=nil} traverse  
-	visit = Bind[traverse_item:expr {Bind[@name,expr]} ]
-				| Act[.* {@self}]
-				| Result[.* {@self}]
-				| Local[ .* {(@@consts[@ssaname] && @self[0]!="_result") ? @@consts[@ssaname] : @self } ]
+  root = {@@consts=@consts}  {@cfg=nil;@reachable=nil;@consts=nil} traverse  
+
+  visit = Bind[traverse_item:expr {Bind[@name,expr]} ]
+        | Act[.* {@self}]
+        | Result[.* {@self}]
+        | Local[ .* {(@@consts[@ssaname] && @self[0]!="_result") ? @@consts[@ssaname] : @self } ]
 }

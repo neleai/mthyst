@@ -1,21 +1,21 @@
 #todo bind.reset to reset locals
 
 amethyst Remove_Left_Recursion < Traverser_Clone2 {
-	root =	Rule[ {@@name=@name} {@@result=Local["_result",@bnding]} @body:oldbody (@body=>first(false)):first (@body=>first(true)):follow
-								{a=autovar;@body = Seq[first,Many[Seq[Act[Args[a,"=",@@result,";bind.reset;",@@result,"=",a]],follow]]] if @@left_rec}
-								{@self}
+  root =  Rule[ {@@name=@name} {@@result=Local["_result",@bnding]} @body:oldbody (@body=>first(false)):first (@body=>first(true)):follow
+                {a=autovar;@body = Seq[first,Many[Seq[Act[Args[a,"=",@@result,";bind.reset;",@@result,"=",a]],follow]]] if @@left_rec}
+                {@self}
               ]
 
-	
-	must_empty = Act | CAct | Local
+  
+  must_empty = Act | CAct | Local
              | Bind[ @expr=>must_empty {@self}]
 
-	first(follow) = Bind[ .=>first(follow):expr {Bind[@name,expr]} ]
-					 		  | Seq[ must_empty:first    .*:rest {Seq[rest]}=>first(follow):rest] -> Seq[first,rest]
-								| Seq[ first(follow):first .*:rest ]                             -> Seq[first,rest]
-								| Or[  first(follow)*:ary ]                                       -> Or[ary]
-								| Apply[&{@@name==@name} .* {@@left_rec=true}] -> follow ? @@result       : Apply["fails"]
-								| .:x                                          -> follow ? Apply["fails"] : x
+  first(follow) = Bind[ .=>first(follow):expr {Bind[@name,expr]} ]
+                | Seq[ must_empty:first    .*:rest {Seq[rest]}=>first(follow):rest] -> Seq[first,rest]
+                | Seq[ first(follow):first .*:rest ]                                -> Seq[first,rest]
+                | Or[  first(follow)*:ary ]                     -> Or[ary]
+                | Apply[&{@@name==@name} .* {@@left_rec=true}]  -> follow ? @@result       : Apply["fails"]
+                | .:x                                           -> follow ? Apply["fails"] : x
 
 }
 

@@ -1,54 +1,54 @@
 amethyst Normalize{
-	or = Or[ @self:or 
+  or = Or[ @self:or 
            ( Or[ .* @ary:ary[] ]
-					 | Apply[ ["fails"] ]
-					 | Placeholder
+           | Apply[ ["fails"] ]
+           | Placeholder
            | .:ary[]
            )* ]
-					{ary.size}=>( 0 -> Apply["fails"]
-											| 1 -> ary[0]
-											| . -> or.ary=ary;or.ary.freeze;or.freeze
-											)
-				
+          {ary.size}=>( 0 -> Apply["fails"]
+                      | 1 -> ary[0]
+                      | . -> or.ary=ary;or.ary.freeze;or.freeze
+                      )
+        
 
-	seq2 = Seq[ @self:seq
+  seq2 = Seq[ @self:seq
              ( Seq[ .* @ary:ary[] ]
              | Apply[ ["fails"] @self:ary[] ] .*
-						 | Placeholder
+             | Placeholder
              | .:ary[] 
              )* ]
              {ary.size}=>( 0 -> Placeholder
                          | 1 -> ary[0]
                          | . -> seq.ary=ary;seq.ary.freeze;seq.freeze
-         								 )
+                         )
            
-	bind = Bind[ {@name}:name
-						 ( Apply[ ["fails"] {@self} ]
-						 | Or[ (.:{Bind[name,it]})*:ary ] @Or
-						 | Switch_Char[ {[]}:ary [.:p .:a {ary<<[p,Bind[name,a]]} ]* ] @Switch_Char
+  bind = Bind[ {@name}:name
+             ( Apply[ ["fails"] {@self} ]
+             | Or[ (.:{Bind[name,it]})*:ary ] @Or
+             | Switch_Char[ {[]}:ary [.:p .:a {ary<<[p,Bind[name,a]]} ]* ] @Switch_Char
              | Switch_Clas[ {[]}:ary [.:p .:a {ary<<[p,Bind[name,a]]} ]* ] @Switch_Clas
-						 | Seq[.+:ary] {Seq[ary[0...-1]]}:first {ary[-1]}:last
-							 {last}=>( (Comment|Cut|Stop) -> Seq[Bind[name,first],last]
-											 | .                  -> Seq[first,Bind[name,last]]
-											 )
-   					 | . -> @self.freeze
-					   ) ]			 
+             | Seq[.+:ary] {Seq[ary[0...-1]]}:first {ary[-1]}:last
+               {last}=>( (Comment|Cut|Stop) -> Seq[Bind[name,first],last]
+                       | .                  -> Seq[first,Bind[name,last]]
+                       )
+             | . -> @self.freeze
+             ) ]       
 
-	apply2 = Apply[ ["apply" | "_seq"] Act[Lambda[.:x]] -> x
+  apply2 = Apply[ ["apply" | "_seq"] Act[Lambda[.:x]] -> x
                 | ["apply"] CAct[.:name] -> Apply[name] #TODO resolve
                 | ["_seq"] CAct[ [] ]  -> Placeholder
-					  		| .* {@self.freeze}
-				 			  ]
+                | .* {@self.freeze}
+                ]
 
-	act =  Act[ String[("[]"	        				
-       			         |	number    						    
-      			  			 |	<A-Z> <A-Za-z0-9_>* &{eval(@self).is_a?(Class)}
-       			  			 |	"true"|"false"|"nil"
-										 | '"'  (<"#> break| '\\' . | .)*
-										 | '\'' (<'#> break| '\\' . | .)*
-						  			 )  
+  act =  Act[ String[("[]"                  
+                     |  number                    
+                     |  <A-Z> <A-Za-z0-9_>* &{eval(@self).is_a?(Class)}
+                     |  "true"|"false"|"nil"
+                     | '"'  (<"#> break| '\\' . | .)*
+                     | '\'' (<'#> break| '\\' . | .)*
+                     )  
                     "" ] -> CAct[eval(@ary[0])]
-						| Lambda[ .* {Act.create(@self,{:pure=>true}).freeze }]
-						| Act | CAct | Local
+            | Lambda[ .* {Act.create(@self,{:pure=>true}).freeze }]
+            | Act | CAct | Local
             ]
 }
