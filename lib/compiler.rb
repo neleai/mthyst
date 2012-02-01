@@ -75,6 +75,7 @@ class <<Compiler
 		return 0
 	end
 	def add_grammar(grammar)
+		$current_grammar_name=grammar.name #TODO hack for resolving apply. think of better way of supplying context
 		g=@grammars[grammar.name]=Gram.new(grammar)
 		g.callgraph=callg=Oriented_Graph.new
 		g.callgraph=callg=@grammars[grammar.parent].callgraph.clone if @grammars[grammar.parent]

@@ -72,18 +72,19 @@ pass for objects that dont need ary(convention not using .?)
 
 switch for ints,true,false,nil
 
-resolving rules in apply
-
 recognize block-scoped locals
 recognize local=
 
 paralelize compilation
+
+separate dataflow and dead code elimination
 
 predicated inlining
 inlining concrete and general form
 
 cache dataflow data with objects
 
+predication of sizes
 
 simple dataflows
 string_only,object_only

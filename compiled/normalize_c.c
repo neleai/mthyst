@@ -34,7 +34,7 @@ static VALUE s__bs__dq__3bd8;
 static VALUE s__qu__3590;
 static VALUE sy_Normalize_Act_dot_crea_e434;
 static VALUE sy_Normalize_Apply_lb__dq_f_3881;
-static VALUE sy_Normalize_Apply_lb_bi_b806;
+static VALUE sy_Normalize_Apply_lb_bi_8afb;
 static VALUE sy_Normalize_Bind_lb_bin_bff4;
 static VALUE sy_Normalize_CAct_lb_eva_559c;
 static VALUE sy_Normalize_Or_dot_creat_fbdf;
@@ -366,7 +366,7 @@ it=Qnil;if (ptr->pos<ptr->len) goto pass9;
                    goto success9;
                    pass9: *ptr=oldpass9; goto alt3_3;
                    success9: *ptr=oldpass9;
-                it=rb_funcall(self,sy_Normalize_Apply_lb_bi_b806,1,bind);  bind_aset(bind,8/*autovar*/,it);
+                it=rb_funcall(self,sy_Normalize_Apply_lb_bi_8afb,1,bind);  bind_aset(bind,8/*autovar*/,it);
 
 ;goto accept3;
 alt3_3: ptr->pos=oldpos3;it=bind_aget(bind,11/*autovar*/); bind_aset(bind,10/*autovar*/,it);
@@ -483,7 +483,7 @@ it=Qnil;if (ptr->pos<ptr->len) goto pass20;
                    goto success20;
                    pass20: *ptr=oldpass20; goto alt5_3;
                    success20: *ptr=oldpass20;
-                it=rb_funcall(self,sy_Normalize_Apply_lb_bi_b806,1,bind);  bind_aset(bind,8/*autovar*/,it);
+                it=rb_funcall(self,sy_Normalize_Apply_lb_bi_8afb,1,bind);  bind_aset(bind,8/*autovar*/,it);
 
 ;goto accept5;
 alt5_3: ptr->pos=oldpos5;it=bind_aget(bind,17/*autovar*/); bind_aset(bind,10/*autovar*/,it);
@@ -980,7 +980,7 @@ switchhash_Normalize_8=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nne
 switchhash_Normalize_9=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Comment\nnext h[k]=1 if k<=Cut\nnext h[k]=2 if k<=Stop\nnext h[k]=3 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Normalize_9);;
 sy_Normalize_Act_dot_crea_e434=rb_intern("Normalize_Act_dot_crea_e434");
 sy_Normalize_Apply_lb__dq_f_3881=rb_intern("Normalize_Apply_lb__dq_f_3881");
-sy_Normalize_Apply_lb_bi_b806=rb_intern("Normalize_Apply_lb_bi_b806");
+sy_Normalize_Apply_lb_bi_8afb=rb_intern("Normalize_Apply_lb_bi_8afb");
 sy_Normalize_Bind_lb_bin_bff4=rb_intern("Normalize_Bind_lb_bin_bff4");
 sy_Normalize_CAct_lb_eva_559c=rb_intern("Normalize_CAct_lb_eva_559c");
 sy_Normalize_Or_dot_creat_fbdf=rb_intern("Normalize_Or_dot_creat_fbdf");
@@ -1022,4 +1022,4 @@ rb_define_method(cls_Normalize,"cant_fail",Normalize_cant_fail,0);
 rb_define_method(cls_Normalize,"must_empty",Normalize_must_empty,0);
 rb_define_method(cls_Normalize,"or",Normalize_or,0);
 rb_define_method(cls_Normalize,"seq2",Normalize_seq2,0);
-                    rb_eval_string("testversionnormalize('ea6f4e08cf1793b0143408359385b2e2')");}
+                    rb_eval_string("testversionnormalize('de9719b50ddd0ee96325eefea6a43b8d')");}
