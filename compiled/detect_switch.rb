@@ -499,9 +499,9 @@ class Detect_First< Traverser_Clone2
   def empty?(s)
     $sizedf.analyze(s).size==0
   end
-	def must_empty?(s)
-		$must_empty_df.analyze(s).value
-	end
+end
+def must_empty?(s)
+	$must_empty_df.analyze(s).value
 end
 
 class Detect_Switch_Char < Detect_First
@@ -555,8 +555,8 @@ end
 def Detect_First__do_rules_eq__le__ab16(bind)
 $rules={};src.rules.each{|r| $rules[r.name]=r}
 end
-def Detect_First__lp_puts_sp_bi_967b(bind)
-(puts bind[0].inspect,must_empty?(bind[0]).inspect;must_empty?(bind[0])) || FAIL
+def Detect_First__lp_must_em_e2d0(bind)
+(must_empty?(bind[0])) || FAIL
 end
 def Detect_First_src_25d9(bind)
 src
@@ -844,15 +844,15 @@ end
 
 
 def detect_switch_compiled_by
-'fe602c2c7fcf745d7dd3eabea5579bb1'
+'db18b6628b0304edda084f59c19d3204'
 end
 def detect_switch_source_hash
-'3de29197ee312f82c1d8363ab8952575'
+'71c64e14dd13348ca7a5ef5536be1425'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'9c05b50f1f765029e86063da3d530d15'
+'a00467afef3b1c3bd549aa7efb20aa35'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

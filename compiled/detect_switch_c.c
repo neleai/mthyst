@@ -2011,7 +2011,7 @@ static VALUE sy_Detect_First__append_lp__7352;
 static VALUE sy_Detect_First__append_lp__b494;
 static VALUE sy_Detect_First__at_name_eq_sr_362f;
 static VALUE sy_Detect_First__do_rules_eq__le__ab16;
-static VALUE sy_Detect_First__lp_puts_sp_bi_967b;
+static VALUE sy_Detect_First__lp_must_em_e2d0;
 static VALUE sy_Detect_First_src_25d9;
 static VALUE sy_Detect_First_src_dot_rule_5acf;
 static VALUE sy_Detect_First_src_dot_rule_d270;
@@ -2092,7 +2092,7 @@ fail: return failobj; }
 VALUE Detect_First_must_empty(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(2);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
             
   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,0/*e*/,it);
-it=rb_funcall(self,sy_Detect_First__lp_puts_sp_bi_967b,1,bind); FAILTEST(fail);it=bind_aget(bind,0/*e*/); bind_aset(bind,1/*_result*/,it);
+it=rb_funcall(self,sy_Detect_First__lp_must_em_e2d0,1,bind); FAILTEST(fail);it=bind_aget(bind,0/*e*/); bind_aset(bind,1/*_result*/,it);
 
 return it;
 fail: return failobj; }
@@ -3408,7 +3408,7 @@ sy_Detect_First__append_lp__7352=rb_intern("Detect_First__append_lp__7352");
 sy_Detect_First__append_lp__b494=rb_intern("Detect_First__append_lp__b494");
 sy_Detect_First__at_name_eq_sr_362f=rb_intern("Detect_First__at_name_eq_sr_362f");
 sy_Detect_First__do_rules_eq__le__ab16=rb_intern("Detect_First__do_rules_eq__le__ab16");
-sy_Detect_First__lp_puts_sp_bi_967b=rb_intern("Detect_First__lp_puts_sp_bi_967b");
+sy_Detect_First__lp_must_em_e2d0=rb_intern("Detect_First__lp_must_em_e2d0");
 sy_Detect_First_src_25d9=rb_intern("Detect_First_src_25d9");
 sy_Detect_First_src_dot_rule_5acf=rb_intern("Detect_First_src_dot_rule_5acf");
 sy_Detect_First_src_dot_rule_d270=rb_intern("Detect_First_src_dot_rule_d270");
@@ -3543,4 +3543,4 @@ rb_define_method(cls_Detect_Switch_Clas,"root",Detect_Switch_Clas_root,0);
 rb_define_method(cls_Detect_Switch_Clas,"traverse",Detect_Switch_Clas_traverse,0);
 rb_define_method(cls_Detect_Switch_Clas,"traverse_item",Detect_Switch_Clas_traverse_item,0);
 rb_define_method(cls_Detect_Switch_Clas,"visit",Detect_Switch_Clas_visit,0);
-                    rb_eval_string("testversiondetect_switch('9c05b50f1f765029e86063da3d530d15')");}
+                    rb_eval_string("testversiondetect_switch('a00467afef3b1c3bd549aa7efb20aa35')");}
