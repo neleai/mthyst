@@ -2,7 +2,7 @@
 #include "../../compiled/cthyst.h"
 // write declarations to cthyst.h as without them call from other .so will crash
 VALUE amecore;VALUE bindcls;VALUE failobj;
-ID s_src,s_input,s_call,s_cut,s_ary_get;
+ID s_src,s_input,s_call,s_ary_get;
 ID s_to_a;
 VALUE ame_setlenrb(VALUE self,VALUE val){return INT2FIX(ame_setlen(self,FIX2INT(val)));}
 VALUE ame_setposrb(VALUE self,VALUE val){return INT2FIX(ame_setpos(self,FIX2INT(val)));}
@@ -55,7 +55,6 @@ VALUE AmethystCore_append(VALUE self,VALUE ary,VALUE el){
 
 VALUE ame_new(VALUE clas){
 	cstruct *ptr=ALLOC(cstruct);
-	ptr->cut=ptr->stop=Qnil;
   VALUE o=Data_Wrap_Struct(clas,0,0,ptr);
 	VALUE argv[0]; rb_obj_call_init(o,0,argv);
 	return o;

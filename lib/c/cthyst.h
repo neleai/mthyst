@@ -30,7 +30,6 @@ typedef struct{
   VALUE src;
 	char *str;VALUE *ary;
   int pos;int len;
-	VALUE cut;VALUE stop;
 } cstruct;
 extern ID s_ary_get,s_to_a;
 #define ACCESSOR(type,name) \
@@ -45,7 +44,7 @@ static inline type ame_set##name(VALUE self,type val){\
   ptr->name=val;\
   return val;\
 }
-ACCESSOR(VALUE,src);ACCESSOR(int,pos);ACCESSOR(int,len);ACCESSOR(VALUE,cut);ACCESSOR(VALUE,stop);
+ACCESSOR(VALUE,src);ACCESSOR(int,pos);ACCESSOR(int,len);
 
 static inline VALUE ame_getposrb(VALUE self){return INT2FIX(ame_getpos(self));}
 
