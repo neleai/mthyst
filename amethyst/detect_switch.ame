@@ -169,23 +169,26 @@ class First_Dataflow < Amethyst
     end
   end
 
-  def empty?(el)
-    $sizedf.analyze(el).size==0
-  end
 end
 
 class Switch_Clas_Dataflow < First_Dataflow;  def lattice;    Lattice_Clas;        end; end
 class Switch_Char_Dataflow < First_Dataflow;  def lattice;    Lattice_Char;        end; end
 class Sizes_Dataflow < First_Dataflow      ;  def lattice;    Lattice_Sizes;       end; end
 class Must_Empty_Dataflow < First_Dataflow ;  def lattice;    Lattice_Must_Empty;  end; end
+class Cant_Fail_Dataflow  < First_Dataflow ;  def lattice;    Lattice_Must_Empty;  end; end
 
-class Sizes_Dataflow < First_Dataflow;       def empty?(el);    true;  end; end
-class Must_Empty_Dataflow < First_Dataflow;  def empty?(el);    true;  end; end
+
+class                       First_Dataflow;  def can_empty?(el);    $sizedf.analyze(el).size==0;  end; end
+class Sizes_Dataflow      < First_Dataflow;  def can_empty?(el);    true;                         end; end
+class Must_Empty_Dataflow < First_Dataflow;  def can_empty?(el);    true;                         end; end
+class Cant_Fail_Dataflow  < First_Dataflow;  def can_empty?(el);    true;                         end; end
+
 
 class Lattice_Clas;       def self.top;    self[Object];      end;def self.bottom; self[]          ; end; end
 class Lattice_Char;       def self.top;    self[[0,255]];     end;def self.bottom; self[]          ; end; end
 class Lattice_Sizes;      def self.top;    self[1.0/0.0];     end;def self.bottom; self[0]         ; end; end
 class Lattice_Must_Empty; def self.top;    self[false];       end;def self.bottom; self[true]      ; end; end
+class Lattice_Cant_Fail;  def self.top;    self[false];       end;def self.bottom; self[true]      ; end; end
 
 class Switch_Char_Dataflow < First_Dataflow
   def firstchar(s)
@@ -224,13 +227,12 @@ amethyst First_Dataflow {
   first = Switch_Char[ [ .:p  value:v {p.is_a?(lattice)? p & v : v}:vals[] ]* ] -> vals.inject(:|)
         | Switch_Clas[ [ .:p  value:v {p.is_a?(lattice)? p & v : v}:vals[] ]* ] -> vals.inject(:|)
         | Or[ value*:vals ]                                                     -> vals.inject(:|)
-        | Seq[{lattice.bottom}:val (.:el {el}=>value:nev {val.seqjoin(nev)}:val  (~{empty?(el)} break | empty) )*   .* {val}]
+        | Seq[{lattice.bottom}:val (.:el {el}=>value:nev {val.seqjoin(nev)}:val  (~{can_empty?(el)} break | {}) )*   .* {val}]
         | Many[value:val {val|lattice.bottom} ]
         | Apply[ :name &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name].body}=>value ]
-        | Switch_Char[value*:{it.inject(:|)}]
         | Bind[ value] 
         | (Act|CAct|Local|Result|Cut|Stop|Pass|Lookahead)[.* {lattice.bottom} ]
-        | .:el {empty?(el) ? lattice.top|lattice.bottom : lattice.top}
+        | .:el {lattice.top|lattice.bottom}
 
    getvalue(v) = {@@vis=v; v}=>first
 }        
@@ -261,26 +263,27 @@ amethyst Must_Empty_Dataflow < First_Dataflow{
   first = super
 }
 
-class Detect_First< Traverser_Clone2
-  def empty?(s)
-    $sizedf.analyze(s).size==0
-  end
-end
-def must_empty?(s)
-  $must_empty_df.analyze(s).value
-end
+amethyst Cant_Fail_Dataflow < First_Dataflow{
+	first = Act[ .* &{@pred} ] -> lattice.top
+				| Pass[ value ]
+				| super
+}
+
+class Detect_First< Traverser_Clone2;   def can_empty?(s);    $sizedf.analyze(s).size==0;  end; end
+
+def must_empty?(s);  $must_empty_df.analyze(s).value; end
+def cant_fail?(s);   $cant_fail_df.analyze(s).value;  end
+
 
 class Detect_Switch_Char < Detect_First
   def initialize
     if !$sizedf  
-      $sizedf=Sizes_Dataflow.new
-      $sizedf.parse(:root,[])
-      $must_empty_df=Must_Empty_Dataflow.new
-      $must_empty_df.parse(:root,[])
+      $sizedf=Sizes_Dataflow.new;                  $sizedf.parse(:root,[])
+      $must_empty_df=Must_Empty_Dataflow.new;      $must_empty_df.parse(:root,[])
+      $cant_fail_df =Cant_Fail_Dataflow.new;       $cant_fail_df.parse(:root,[])
     end
     if !$switchdf_char
-      $switchdf_char=Switch_Char_Dataflow.new
-      $switchdf_char.parse(:root,[])
+      $switchdf_char=Switch_Char_Dataflow.new;     $switchdf_char.parse(:root,[])
     end
   end
   def first(s)
@@ -310,9 +313,8 @@ amethyst Detect_First < Traverser_Clone2 {
   root = traverse
 
   must_empty = .:e &{must_empty?(e)} {e}
+	cant_fail  = .:e &{cant_fail?(e) } {e}
 
-  cant_fail  = Act | CAct
-             | Bind[ cant_fail  {@self} ]
   
   string_only = Apply[ ["regch" |"_seq"] .*]
   
@@ -324,8 +326,8 @@ amethyst Detect_Switch_Char < Detect_First {
         | Apply[ ["_seq"] CAct[.:str] 
                   {first(@self)}:firs {s=Switch_Char[{:ary=>[[firs,Seq[Apply["anything"],Apply["_seq",CAct[str[1..-1]]]]],[~firs,Apply["fails"]]]}]}]
         | Apply[ ["fails"] {@self} ]
-        | Apply[ .*  {first(@self)}:firs &{!empty?(@self) && firs!=Lattice_Char.top} {s=Switch_Char[{:ary=>[[firs,@self],[~firs,Apply["fails"]]]}] }]
-        | Many[ traverse:t first(t):firs &{!empty?(@self) && firs!=Lattice_Char.top} {s=Switch_Char[{:ary=>[[firs,Many[t]],[~firs,Apply["fails"]]]}] }]
+        | Apply[ .*  {first(@self)}:firs &{!can_empty?(@self) && firs!=Lattice_Char.top} {s=Switch_Char[{:ary=>[[firs,@self],[~firs,Apply["fails"]]]}] }]
+        | Many[ traverse:t first(t):firs &{!can_empty?(@self) && firs!=Lattice_Char.top} {s=Switch_Char[{:ary=>[[firs,Many[t]],[~firs,Apply["fails"]]]}] }]
         | Seq[ traverse_item*=>[combine_seq([])] ]
         | Or[ (traverse_item)*:items {false}:aswitch {items.each{|i| aswitch=true if i.is_a?(Switch_Char)}}
               ( &{!aswitch} {Or[*items]} 
@@ -348,7 +350,7 @@ amethyst Detect_Switch_Char < Detect_First {
 amethyst Detect_Switch_Clas < Detect_First {
   visit = Apply[ ["clas"] CAct[Class:clas]   {Switch_Clas[[Lattice_Clas[clas],Apply["anything"]],[Lattice_Clas[Object],Apply["fails"]]].freeze }]
         | Apply[ ["fails"] {@self} ]
-        | Apply[ .* first(@self):firs &{!empty?(@self) && !firs.ary.include?(Object)} {c=Switch_Clas[{:ary=>firs.ary.map{|a| [Lattice_Clas[a],@self]}+[[Lattice_Clas[Object],Apply["fails"]]]}];puts c.inspect;c }]  
+        | Apply[ .* first(@self):firs &{!can_empty?(@self) && !firs.ary.include?(Object)} {c=Switch_Clas[{:ary=>firs.ary.map{|a| [Lattice_Clas[a],@self]}+[[Lattice_Clas[Object],Apply["fails"]]]}];puts c.inspect;c }]  
         | Seq[ traverse_item*=>[combine_seq([])] ]
         | Or[ (traverse_item)*:items {false}:aswitch {items.each{|i| aswitch=true if i.is_a?(Switch_Clas)}}
               ( &{!aswitch} {Or[*items]} 

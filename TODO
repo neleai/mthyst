@@ -86,7 +86,7 @@ cache dataflow data with objects
 
 
 simple dataflows
-cantfail, noresult,mustempty,string_only,object_only
+string_only,object_only
 as constant propagation?
 use to simplify ors
 
