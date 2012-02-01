@@ -56,7 +56,7 @@ return it;
 fail: return failobj; }
 VALUE DetectCalls_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(7);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
             
-switch(FIX2LONG(rb_hash_aref(switchhash_DetectCalls_3,rb_obj_class(ame_curobj2(ptr))))){case 0/*AmethystAST*/:; int oldpos1=ptr->pos;
+switch(FIX2LONG(rb_hash_aref(switchhash_DetectCalls_3,rb_obj_class(ame_curobj2(ptr))))){case 0/*AmethystAST*/:; int oldpos1=ptr->pos;int cut1=0;
 alt1_1:;  it=DetectCalls_visit(self ); FAILTEST(alt1_2); bind_aset(bind,0/*_result*/,it);
 
 ;goto accept1;
@@ -77,7 +77,7 @@ alt1_3: ptr->pos=oldpos1;  it=AmethystCore_anything(self ); FAILTEST(alt1_4); bi
 alt1_4: ptr->pos=oldpos1;goto fail;
  accept1:;
  break;
-case 1/*Array*/:; int oldpos2=ptr->pos;
+case 1/*Array*/:; int oldpos2=ptr->pos;int cut2=0;
 alt2_1:;  it=DetectCalls_visit(self ); FAILTEST(alt2_2); bind_aset(bind,0/*_result*/,it);
 
 ;goto accept2;
@@ -100,7 +100,7 @@ alt2_3: ptr->pos=oldpos2;  it=AmethystCore_anything(self ); FAILTEST(alt2_4); bi
 alt2_4: ptr->pos=oldpos2;goto fail;
  accept2:;
  break;
-case 2/*Object*/:; int oldpos4=ptr->pos;
+case 2/*Object*/:; int oldpos4=ptr->pos;int cut3=0;
 alt3_1:;  it=DetectCalls_visit(self ); FAILTEST(alt3_2); bind_aset(bind,0/*_result*/,it);
 
 ;goto accept4;
@@ -236,7 +236,7 @@ return it;
 fail: return failobj; }
 VALUE Inliner2_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(8);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
             
-switch(FIX2LONG(rb_hash_aref(switchhash_Inliner2_4,rb_obj_class(ame_curobj2(ptr))))){case 0/*AmethystAST*/:; int oldpos1=ptr->pos;
+switch(FIX2LONG(rb_hash_aref(switchhash_Inliner2_4,rb_obj_class(ame_curobj2(ptr))))){case 0/*AmethystAST*/:; int oldpos1=ptr->pos;int cut1=0;
 alt1_1:;  it=Inliner2_visit(self ); FAILTEST(alt1_2); bind_aset(bind,0/*a*/,it);
 it=rb_funcall(self,sy_Inliner2__at_changed_5352,1,bind); it=bind_aget(bind,0/*a*/); bind_aset(bind,1/*_result*/,it);
 
@@ -258,7 +258,7 @@ alt1_3: ptr->pos=oldpos1;  it=AmethystCore_anything(self ); FAILTEST(alt1_4); bi
 alt1_4: ptr->pos=oldpos1;goto fail;
  accept1:;
  break;
-case 1/*Array*/:; int oldpos2=ptr->pos;
+case 1/*Array*/:; int oldpos2=ptr->pos;int cut2=0;
 alt2_1:;  it=Inliner2_visit(self ); FAILTEST(alt2_2); bind_aset(bind,0/*a*/,it);
 it=rb_funcall(self,sy_Inliner2__at_changed_5352,1,bind); it=bind_aget(bind,0/*a*/); bind_aset(bind,1/*_result*/,it);
 
@@ -282,7 +282,7 @@ alt2_3: ptr->pos=oldpos2;  it=AmethystCore_anything(self ); FAILTEST(alt2_4); bi
 alt2_4: ptr->pos=oldpos2;goto fail;
  accept2:;
  break;
-case 2/*Object*/:; int oldpos4=ptr->pos;
+case 2/*Object*/:; int oldpos4=ptr->pos;int cut3=0;
 alt3_1:;  it=Inliner2_visit(self ); FAILTEST(alt3_2); bind_aset(bind,0/*a*/,it);
 it=rb_funcall(self,sy_Inliner2__at_changed_5352,1,bind); it=bind_aget(bind,0/*a*/); bind_aset(bind,1/*_result*/,it);
 
@@ -358,4 +358,4 @@ sy_Inliner2_src_dot_name_80f3=rb_intern("Inliner2_src_dot_name_80f3");
 rb_define_method(cls_Inliner2,"traverse",Inliner2_traverse,0);
 rb_define_method(cls_Inliner2,"traverse_item",Inliner2_traverse_item,0);
 rb_define_method(cls_Inliner2,"visit",Inliner2_visit,0);
-                    rb_eval_string("testversioninliner2('97022ef016909b257a929f7fac0dcb50')");}
+                    rb_eval_string("testversioninliner2('bdc8774a33654ccac08f7225d0f298fa')");}

@@ -96,8 +96,14 @@ end
 def AmethystCTranslator__at_callbac_e37c(bind)
 @callbacks={}
 end
-def AmethystCTranslator__at_cuts_eq_tr_9b95(bind)
-@cuts=true; "ame_setcut(self,Qtrue);"
+def AmethystCTranslator__at_cutlabe_2acf(bind)
+@cutlabel=nil;bind[22]+"goto #{@faillabel};\n #{bind[54]}:;\n"
+end
+def AmethystCTranslator__at_cutlabe_c515(bind)
+@cutlabel=label("cut")
+end
+def AmethystCTranslator__at_cuts_eq_tr_13c6(bind)
+@cuts=true;  @cutlabel ? "#{@cutlabel}=1;"  : ""
 end
 def AmethystCTranslator__at_defmeth_456b(bind)
 @defmethods=[]
@@ -216,8 +222,8 @@ end
 def AmethystCTranslator__dq_int_sp__sh__le_b_38ad(bind)
 "int #{bind[56]}=ptr->pos;\n #{bind[47]} x=1; goto #{bind[54]};  #{bind[55]}: x=0; #{bind[54]}: it=Qnil; ptr->pos=#{bind[56]}; if (x==0) goto #{@faillabel};"
 end
-def AmethystCTranslator__dq_int_sp__sh__le_b_edcd(bind)
-"int #{bind[56]}=ptr->pos;\n#{bind[73]}_#{bind[74]}:;"
+def AmethystCTranslator__dq_int_sp__sh__le_b_68c7(bind)
+"int #{bind[56]}=ptr->pos;int #{@cutlabel}=0;\n#{bind[73]}_#{bind[74]}:;"
 end
 def AmethystCTranslator__dq_it_eq_Qnil_8464(bind)
 "it=Qnil;if (ptr->pos<ptr->len) goto #{@faillabel};"
@@ -269,20 +275,17 @@ end
 def AmethystCTranslator_bind_lb_1_rb__lt__2f50(bind)
 bind[1]<<bind[6][0];bind[2]<<bind[6][1];bind[0]<<bind[6][2]
 end
+def AmethystCTranslator_bind_lb_22_rb__24a8(bind)
+bind[22]+="#{bind[47]}\n;goto #{bind[54]};\n"
+end
 def AmethystCTranslator_bind_lb_22_rb__2594(bind)
 bind[22]+=bind[97].cases(src.first) + " #{bind[47]} break;\n"
 end
 def AmethystCTranslator_bind_lb_22_rb__336a(bind)
 bind[22]+="; #{bind[47]} break;\n"
 end
-def AmethystCTranslator_bind_lb_22_rb__40fa(bind)
-bind[22]+="#{bind[47]}\n#{@cuts ? "ame_setcut(self,Qnil)" : ""};goto #{bind[54]};\n"
-end
 def AmethystCTranslator_bind_lb_22_rb__5156(bind)
 bind[22]+"}"
-end
-def AmethystCTranslator_bind_lb_22_rb__59b2(bind)
-bind[22]+"goto #{@faillabel};\n #{bind[54]}:;\n"
 end
 def AmethystCTranslator_bind_lb_22_rb__6b71(bind)
 bind[22]<<@header.uniq.sort*"\n"+"\n"
@@ -295,8 +298,8 @@ bind[22]<<@header.uniq.sort*"\n"+"\n"
                    "
               [bind[22],bind[49],bind[48]] 
 end
-def AmethystCTranslator_bind_lb_22_rb__8251(bind)
-bind[22]+="#{bind[73]}_#{bind[74]}: ptr->pos=#{bind[56]};#{@cuts ? (@cuts=false;"if (ame_getcut(self)!=Qnil) {ame_setcut(self,Qnil); goto #{@faillabel};}"): ""}"
+def AmethystCTranslator_bind_lb_22_rb__b1fd(bind)
+bind[22]+="#{bind[73]}_#{bind[74]}: ptr->pos=#{bind[56]};#{@cuts ? (@cuts=false;"if (#{@cutlabel}) goto #{@faillabel};"): ""}"
 end
 def AmethystCTranslator_bind_lb_22_rb__d832(bind)
 bind[22]="int #{bind[56]}; #{@stops ? "int #{@stoplabel}=0;":""} while(1){#{bind[56]}=ptr->pos; #{bind[47]} #{@stops ? "if (#{@stoplabel}) goto #{bind[54]}; } #{bind[68]}: goto #{@faillabel}; #{bind[54]}:;" : "} #{bind[68]}: ptr->pos=#{bind[56]};"}   "
@@ -374,15 +377,15 @@ end
 
 
 def ctranslator2_compiled_by
-'8e2bc93ee223f52996e50bd1212819d9'
+'9281c81b5215ca156e678c92ea18725a'
 end
 def ctranslator2_source_hash
-'b0e8a37a7672f5bfec55360c39496f9e'
+'1a2f4a7428e2e2583c4f8bd5ea871041'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'e1055040b4d1a5b4ce145652a679fd94'
+'2f8587f9a83c6db0d211513ead4323f0'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"
