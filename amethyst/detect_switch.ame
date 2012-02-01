@@ -2,8 +2,6 @@
 $hash_Lattice_Sizes={}
 class Lattice_Sizes
   attr_accessor :size
-  def self.bottom ; self[0];        end
-  def self.top    ; self[1.0/0.0];  end
   def self.[](a)
     return $hash_Lattice_Sizes[a] if $hash_Lattice_Sizes[a]
     l=self.new
@@ -11,12 +9,8 @@ class Lattice_Sizes
     $hash_Lattice_Sizes[a]=l
   end
   alias_method :==,:equal?
-  def |(a)
-    Lattice_Sizes[ [size,a.size].min ]
-  end
-  def seqjoin(a)
-    Lattice_Sizes[ size+a.size ]
-  end
+  def |(a);       Lattice_Sizes[ [size,a.size].min ]; end
+  def seqjoin(a); Lattice_Sizes[ size+a.size       ]; end
   def inspect; "Lattice_Sizes[#{size}]";end
 end
 
@@ -114,20 +108,31 @@ end
 
 $hash_Lattice_Must_Empty={}
 class Lattice_Must_Empty < FirstLattice
-	attr_accessor :value
-	def self.[](value)
-		return $hash_Lattice_Must_Empty[value] if $hash_Lattice_Must_Empty[value]
-		c=Lattice_Must_Empty.new
-		c.value=value
-		$hash_Lattice_Must_Empty[value]=c
-	end
-	def |(a)
-		Lattice_Must_Empty[value & a.value]
-	end
-	def seqjoin(a)
-		Lattice_Must_Empty[value & a.value]
-	end
+  attr_accessor :value
+  def self.[](value)
+    return $hash_Lattice_Must_Empty[value] if $hash_Lattice_Must_Empty[value]
+    c=Lattice_Must_Empty.new
+    c.value=value
+    $hash_Lattice_Must_Empty[value]=c
+  end
+  def |(a);          Lattice_Must_Empty[value & a.value];  end
+  def seqjoin(a);    Lattice_Must_Empty[value & a.value];  end
 end
+
+$hash_Lattice_Cant_Fail={}
+class Lattice_Cant_Fail < FirstLattice
+  attr_accessor :value
+  def self.[](value)
+    return $hash_Lattice_Cant_Fail[value] if $hash_Lattice_Cant_Fail[value]
+    c=Lattice_Cant_Fail.new
+    c.value=value
+    $hash_Lattice_Cant_Fail[value]=c
+  end
+  def |(a)      ;    Lattice_Cant_Fail[value & a.value];  end
+  def seqjoin(a);    Lattice_Cant_Fail[value & a.value];  end
+end
+
+
 
 class First_Dataflow < Amethyst
   def initialize
@@ -172,7 +177,7 @@ end
 class Switch_Clas_Dataflow < First_Dataflow;  def lattice;    Lattice_Clas;        end; end
 class Switch_Char_Dataflow < First_Dataflow;  def lattice;    Lattice_Char;        end; end
 class Sizes_Dataflow < First_Dataflow      ;  def lattice;    Lattice_Sizes;       end; end
-class Must_Empty_Dataflow < First_Dataflow ;	def lattice;    Lattice_Must_Empty;  end; end
+class Must_Empty_Dataflow < First_Dataflow ;  def lattice;    Lattice_Must_Empty;  end; end
 
 class Sizes_Dataflow < First_Dataflow;       def empty?(el);    true;  end; end
 class Must_Empty_Dataflow < First_Dataflow;  def empty?(el);    true;  end; end
@@ -180,7 +185,7 @@ class Must_Empty_Dataflow < First_Dataflow;  def empty?(el);    true;  end; end
 class Lattice_Clas;       def self.top;    self[Object];      end;def self.bottom; self[]          ; end; end
 class Lattice_Char;       def self.top;    self[[0,255]];     end;def self.bottom; self[]          ; end; end
 class Lattice_Sizes;      def self.top;    self[1.0/0.0];     end;def self.bottom; self[0]         ; end; end
-class Lattice_Must_Empty;	def self.top;    self[false];       end;def self.bottom; self[true]      ; end; end
+class Lattice_Must_Empty; def self.top;    self[false];       end;def self.bottom; self[true]      ; end; end
 
 class Switch_Char_Dataflow < First_Dataflow
   def firstchar(s)
@@ -253,7 +258,7 @@ amethyst Switch_Clas_Dataflow < First_Dataflow{
 }
 
 amethyst Must_Empty_Dataflow < First_Dataflow{
-	first = super
+  first = super
 }
 
 class Detect_First< Traverser_Clone2
@@ -262,7 +267,7 @@ class Detect_First< Traverser_Clone2
   end
 end
 def must_empty?(s)
-	$must_empty_df.analyze(s).value
+  $must_empty_df.analyze(s).value
 end
 
 class Detect_Switch_Char < Detect_First
