@@ -190,4 +190,4 @@ class Amethyst
 		withtime(self.class){	parse2(rule,obj) }
 	end
 end
-
+d=Detect_Switch_Char.new

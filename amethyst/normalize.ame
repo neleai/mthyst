@@ -1,8 +1,12 @@
 amethyst Normalize{
+  must_empty = .:e &{must_empty?(e)} {e}
+	cant_fail  = .:e &{cant_fail?(e) } {e}
+
   or = Or[ @self:or 
            ( Or[ .* @ary:ary[] ]
            | Apply[ ["fails"] ]
            | Placeholder
+					 | Seq[cant_fail* Cut .* {@self}:ary[] ] .*
            | .:ary[]
            )* ]
           {ary.size}=>( 0 -> Apply["fails"]

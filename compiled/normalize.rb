@@ -54,6 +54,9 @@ end
 def Normalize__append_lp__4f82(bind)
 _append(bind[7],bind[9])
 end
+def Normalize__append_lp__653e(bind)
+_append(bind[0],bind[9])
+end
 def Normalize__append_lp__6ac6(bind)
 _append(bind[0],bind[7])
 end
@@ -69,11 +72,17 @@ end
 def Normalize__lp_bind_lb_10_612c(bind)
 (bind[10] === bind[11]) || FAIL
 end
-def Normalize__lp_bind_lb_9_rb__e481(bind)
-(bind[9] === bind[10]) || FAIL
+def Normalize__lp_bind_lb_11_4586(bind)
+(bind[11] === bind[12]) || FAIL
+end
+def Normalize__lp_cant_fa_6b5d(bind)
+(cant_fail?(bind[0]) ) || FAIL
 end
 def Normalize__lp_eval_lp_sr_3f78(bind)
 (eval(src).is_a?(Class)) || FAIL
+end
+def Normalize__lp_must_em_e2d0(bind)
+(must_empty?(bind[0])) || FAIL
 end
 def Normalize_bind_lb_0_rb__dot__263e(bind)
 bind[0].size
@@ -117,15 +126,15 @@ end
 
 
 def normalize_compiled_by
-'2324860865e451b22cb02e4b9171ca1b'
+'46871eb20c215e2b940484827fea2162'
 end
 def normalize_source_hash
-'05a5cc4f0a48cd07e5e3835c6a37e6f7'
+'aa3d21da96d813dd455618257b03ec6f'
 end
 def testversionnormalize(r)
  raise "invalid version" if r!=normalize_version
 end
 def normalize_version
-'8f8859b1a8337cac277ac9b5d20254b2'
+'95958a159cba73bd964bca5cfc95d484'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/normalize_c"
