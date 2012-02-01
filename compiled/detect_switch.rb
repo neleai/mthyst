@@ -116,16 +116,16 @@ $hash_Lattice_Must_Empty={}
 class Lattice_Must_Empty < FirstLattice
 	attr_accessor :value
 	def self.[](value)
-		return $hash_Lattice_Must_Empty[value] if $hash_Lattice_Must_Empty
+		return $hash_Lattice_Must_Empty[value] if $hash_Lattice_Must_Empty[value]
 		c=Lattice_Must_Empty.new
 		c.value=value
 		$hash_Lattice_Must_Empty[value]=c
 	end
 	def |(a)
-		value & a.value
+		Lattice_Must_Empty[value & a.value]
 	end
 	def seqjoin(a)
-		value & a.value
+		Lattice_Must_Empty[value & a.value]
 	end
 end
 
@@ -168,16 +168,14 @@ class First_Dataflow < Amethyst
     $sizedf.analyze(el).size==0
   end
 end
-class Sizes_Dataflow < First_Dataflow
-  def empty?(el)
-    true
-  end
-end
 
 class Switch_Clas_Dataflow < First_Dataflow;  def lattice;    Lattice_Clas;        end; end
 class Switch_Char_Dataflow < First_Dataflow;  def lattice;    Lattice_Char;        end; end
 class Sizes_Dataflow < First_Dataflow      ;  def lattice;    Lattice_Sizes;       end; end
 class Must_Empty_Dataflow < First_Dataflow ;	def lattice;    Lattice_Must_Empty;  end; end
+
+class Sizes_Dataflow < First_Dataflow;       def empty?(el);    true;  end; end
+class Must_Empty_Dataflow < First_Dataflow;  def empty?(el);    true;  end; end
 
 class Lattice_Clas;       def self.top;    self[Object];      end;def self.bottom; self[]          ; end; end
 class Lattice_Char;       def self.top;    self[[0,255]];     end;def self.bottom; self[]          ; end; end
@@ -374,8 +372,8 @@ end
 def Switch_Char_Dataflow_empty(bind)
 empty?(bind[3]) ? lattice.top|lattice.bottom : lattice.top
 end
-def Switch_Char_Dataflow_firstcha_7cc4(bind)
-firstchar(bind[6])
+def Switch_Char_Dataflow_firstcha_c300(bind)
+firstchar(bind[7])
 end
 def Switch_Char_Dataflow_lattice_dot__5a9e(bind)
 lattice.bottom
@@ -383,8 +381,8 @@ end
 def Switch_Char_Dataflow_lattice_dot__e0e5(bind)
 lattice.top
 end
-def Switch_Char_Dataflow_regchar_lp__1c32(bind)
-regchar(bind[6])
+def Switch_Char_Dataflow_regchar_lp__9b27(bind)
+regchar(bind[7])
 end
 
 end
@@ -556,6 +554,9 @@ def Detect_First__at_name_eq_sr_362f(bind)
 end
 def Detect_First__do_rules_eq__le__ab16(bind)
 $rules={};src.rules.each{|r| $rules[r.name]=r}
+end
+def Detect_First__lp_puts_sp_bi_967b(bind)
+(puts bind[0].inspect,must_empty?(bind[0]).inspect;must_empty?(bind[0])) || FAIL
 end
 def Detect_First_src_25d9(bind)
 src
@@ -843,15 +844,15 @@ end
 
 
 def detect_switch_compiled_by
-'ff0a162c5ed9519c92791541b62cfa57'
+'fe602c2c7fcf745d7dd3eabea5579bb1'
 end
 def detect_switch_source_hash
-'1190f7c0f78ba76a952952b7e11b4813'
+'3de29197ee312f82c1d8363ab8952575'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'8b497776ec8139009664019432b8fa1b'
+'9c05b50f1f765029e86063da3d530d15'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

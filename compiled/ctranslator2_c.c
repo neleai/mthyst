@@ -581,17 +581,19 @@ it=Qnil;if (ptr->pos<ptr->len) goto pass18;
 case 7/*Lookahead*/:;   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,53/*autovar*/,it);
 cstruct oldpass19=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
                    ptr->src=bind_aget(bind,53/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                   it=rb_funcall(self,sy_AmethystCTranslator_label_lp__dq_a_f49c,1,bind);  bind_aset(bind,54/*accept*/,it);
+                   switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_7,rb_obj_class(ame_curobj2(ptr))))){case 0/*Act*/:case 1/*Apply*/:case 2/*Bind*/:case 3/*CAct*/:case 4/*Cut*/:case 5/*Grammar*/:case 6/*Local*/:case 7/*Lookahead*/:case 8/*Many*/:case 9/*Memo*/:case 10/*Or*/:case 11/*Pass*/:case 12/*Rule*/:case 13/*Seq*/:case 14/*Stop*/:case 15/*Switch_Char*/:case 16/*Switch_Clas*/:; it=rb_funcall(self,sy_AmethystCTranslator_label_lp__dq_a_f49c,1,bind);  bind_aset(bind,54/*accept*/,it);
 it=rb_funcall(self,sy_AmethystCTranslator_label_lp__dq_r_95b2,1,bind);  bind_aset(bind,55/*reject*/,it);
 it=rb_funcall(self,sy_AmethystCTranslator_label_lp__dq_o_c187,1,bind);  bind_aset(bind,56/*oldpos*/,it);
 it=bind_aget(bind,55/*reject*/); bind_aset(bind,57/*word*/,it);
 it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_1610,1,bind);  bind_aset(bind,58/*rwo*/,it);
-it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_9ef5,1,bind); switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_7,rb_obj_class(ame_curobj2(ptr))))){case 0/*Act*/:case 1/*Apply*/:case 2/*Bind*/:case 3/*CAct*/:case 4/*Cut*/:case 5/*Grammar*/:case 6/*Local*/:case 7/*Lookahead*/:case 8/*Many*/:case 9/*Memo*/:case 10/*Or*/:case 11/*Pass*/:case 12/*Rule*/:case 13/*Seq*/:case 14/*Stop*/:case 15/*Switch_Char*/:case 16/*Switch_Clas*/:;   it=AmethystCTranslator_trans(self ); FAILTEST(pass19); bind_aset(bind,47/*t*/,it);
+it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_9ef5,1,bind);   it=AmethystCTranslator_trans(self ); FAILTEST(pass19); bind_aset(bind,47/*t*/,it);
  bind_aset(bind,59/*x*/,it);
- break;
-case 17/*Object*/:; goto pass19; break;
-}it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_628e,1,bind); it=rb_funcall(self,sy_AmethystCTranslator__dq_int_sp__sh__le_b_38ad,1,bind);  bind_aset(bind,60/*autovar*/,it);
-it=Qnil;if (ptr->pos<ptr->len) goto pass19;
+it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_628e,1,bind); it=rb_funcall(self,sy_AmethystCTranslator__dq_int_sp__sh__le_b_38ad,1,bind);  bind_aset(bind,60/*autovar*/,it);
+it=Qnil;if (ptr->pos<ptr->len) goto pass19; break;
+case 17/*Object*/:; it=rb_funcall(self,sy_AmethystCTranslator_label_lp__dq_a_f49c,1,bind); it=rb_funcall(self,sy_AmethystCTranslator_label_lp__dq_r_95b2,1,bind);  bind_aset(bind,55/*reject*/,it);
+it=rb_funcall(self,sy_AmethystCTranslator_label_lp__dq_o_c187,1,bind); it=bind_aget(bind,55/*reject*/); bind_aset(bind,57/*word*/,it);
+it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_1610,1,bind); it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_9ef5,1,bind); goto pass19; break;
+}
                    goto success19;
                    pass19: *ptr=oldpass19; goto fail;
                    success19: *ptr=oldpass19;
@@ -632,16 +634,18 @@ case 1/*Object*/:; goto pass20; break;
 alt2_2: ptr->pos=oldpos5;it=bind_aget(bind,63/*autovar*/); bind_aset(bind,67/*autovar*/,it);
 cstruct oldpass23=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
                    ptr->src=bind_aget(bind,67/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                   it=rb_funcall(self,sy_AmethystCTranslator_label_lp__dq_b_6df7,1,bind);  bind_aset(bind,68/*brk*/,it);
+                   switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_9,rb_obj_class(ame_curobj2(ptr))))){case 0/*Act*/:case 1/*Apply*/:case 2/*Bind*/:case 3/*CAct*/:case 4/*Cut*/:case 5/*Grammar*/:case 6/*Local*/:case 7/*Lookahead*/:case 8/*Many*/:case 9/*Memo*/:case 10/*Or*/:case 11/*Pass*/:case 12/*Rule*/:case 13/*Seq*/:case 14/*Stop*/:case 15/*Switch_Char*/:case 16/*Switch_Clas*/:; it=rb_funcall(self,sy_AmethystCTranslator_label_lp__dq_b_6df7,1,bind);  bind_aset(bind,68/*brk*/,it);
 it=rb_funcall(self,sy_AmethystCTranslator_label_lp__dq_o_c187,1,bind);  bind_aset(bind,56/*oldpos*/,it);
 it=bind_aget(bind,68/*brk*/); bind_aset(bind,57/*word*/,it);
 it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_1610,1,bind);  bind_aset(bind,58/*rwo*/,it);
-it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_9ef5,1,bind); switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_9,rb_obj_class(ame_curobj2(ptr))))){case 0/*Act*/:case 1/*Apply*/:case 2/*Bind*/:case 3/*CAct*/:case 4/*Cut*/:case 5/*Grammar*/:case 6/*Local*/:case 7/*Lookahead*/:case 8/*Many*/:case 9/*Memo*/:case 10/*Or*/:case 11/*Pass*/:case 12/*Rule*/:case 13/*Seq*/:case 14/*Stop*/:case 15/*Switch_Char*/:case 16/*Switch_Clas*/:;   it=AmethystCTranslator_trans(self ); FAILTEST(pass23); bind_aset(bind,47/*t*/,it);
+it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_9ef5,1,bind);   it=AmethystCTranslator_trans(self ); FAILTEST(pass23); bind_aset(bind,47/*t*/,it);
  bind_aset(bind,59/*x*/,it);
- break;
-case 17/*Object*/:; goto pass23; break;
-}it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_628e,1,bind); it=rb_funcall(self,sy_AmethystCTranslator__dq_int_sp__sh__le_b_479f,1,bind);  bind_aset(bind,69/*autovar*/,it);
-it=Qnil;if (ptr->pos<ptr->len) goto pass23;
+it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_628e,1,bind); it=rb_funcall(self,sy_AmethystCTranslator__dq_int_sp__sh__le_b_479f,1,bind);  bind_aset(bind,69/*autovar*/,it);
+it=Qnil;if (ptr->pos<ptr->len) goto pass23; break;
+case 17/*Object*/:; it=rb_funcall(self,sy_AmethystCTranslator_label_lp__dq_b_6df7,1,bind);  bind_aset(bind,68/*brk*/,it);
+it=rb_funcall(self,sy_AmethystCTranslator_label_lp__dq_o_c187,1,bind); it=bind_aget(bind,68/*brk*/); bind_aset(bind,57/*word*/,it);
+it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_1610,1,bind); it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_9ef5,1,bind); goto pass23; break;
+}
                    goto success23;
                    pass23: *ptr=oldpass23; goto alt2_3;
                    success23: *ptr=oldpass23;
@@ -669,16 +673,18 @@ it=rb_funcall(self,sy_AmethystCTranslator_label_lp__dq_o_c187,1,bind);  bind_ase
  it=rb_obj_clone(s_alt_3482); arg0=it; it=rb_funcall(self,sy_label,1,arg0); FAILTEST(pass25); bind_aset(bind,73/*alt*/,it);
 it=i_1; bind_aset(bind,74/*altno*/,it);
 it=rb_funcall(self,sy_AmethystCTranslator__dq_int_sp__sh__le_b_edcd,1,bind);  bind_aset(bind,22/*s*/,it);
-int oldpos6; while(1){oldpos6=ptr->pos; int oldpos7=ptr->pos;
+int oldpos6; while(1){oldpos6=ptr->pos; switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_10,rb_obj_class(ame_curobj2(ptr))))){case 0/*Act*/:case 1/*Apply*/:case 2/*Bind*/:case 3/*CAct*/:case 4/*Cut*/:case 5/*Grammar*/:case 6/*Local*/:case 7/*Lookahead*/:case 8/*Many*/:case 9/*Memo*/:case 10/*Or*/:case 11/*Pass*/:case 12/*Rule*/:case 13/*Seq*/:case 14/*Stop*/:case 15/*Switch_Char*/:case 16/*Switch_Clas*/:; int oldpos7=ptr->pos;
    it=AmethystCore_anything(self ); FAILTEST(reject1); x=1; goto accept3;  reject1: x=0; accept3: it=Qnil; ptr->pos=oldpos7; if (x==0) goto break4;it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_74_rb__945f,1,bind); it=rb_funcall(self,sy_AmethystCTranslator__dq__sh__le_bind_lb__15a1,1,bind);  bind_aset(bind,57/*word*/,it);
 it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_1610,1,bind);  bind_aset(bind,58/*rwo*/,it);
-it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_9ef5,1,bind); switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_10,rb_obj_class(ame_curobj2(ptr))))){case 0/*Act*/:case 1/*Apply*/:case 2/*Bind*/:case 3/*CAct*/:case 4/*Cut*/:case 5/*Grammar*/:case 6/*Local*/:case 7/*Lookahead*/:case 8/*Many*/:case 9/*Memo*/:case 10/*Or*/:case 11/*Pass*/:case 12/*Rule*/:case 13/*Seq*/:case 14/*Stop*/:case 15/*Switch_Char*/:case 16/*Switch_Clas*/:;   it=AmethystCTranslator_trans(self ); FAILTEST(break4); bind_aset(bind,6/*_result*/,it);
+it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_9ef5,1,bind);   it=AmethystCTranslator_trans(self ); FAILTEST(break4); bind_aset(bind,6/*_result*/,it);
  bind_aset(bind,59/*x*/,it);
- break;
-case 17/*Object*/:; goto break4; break;
-}it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_628e,1,bind);  bind_aset(bind,75/*_result*/,it);
+it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_628e,1,bind);  bind_aset(bind,75/*_result*/,it);
 it=bind_aget(bind,75/*_result*/); bind_aset(bind,47/*t*/,it);
-it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_22_rb__40fa,1,bind); it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_22_rb__8251,1,bind);   } break4: ame_setstop(self,Qnil); ptr->pos=oldpos6; it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_22_rb__59b2,1,bind);  bind_aset(bind,76/*autovar*/,it);
+it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_22_rb__40fa,1,bind); it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_22_rb__8251,1,bind);  break;
+case 17/*Object*/:; int oldpos8=ptr->pos;
+   it=AmethystCore_anything(self ); FAILTEST(reject2); x=1; goto accept4;  reject2: x=0; accept4: it=Qnil; ptr->pos=oldpos8; if (x==0) goto break4;it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_74_rb__945f,1,bind); it=rb_funcall(self,sy_AmethystCTranslator__dq__sh__le_bind_lb__15a1,1,bind);  bind_aset(bind,57/*word*/,it);
+it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_1610,1,bind); it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_9ef5,1,bind); goto break4; break;
+}  } break4: ame_setstop(self,Qnil); ptr->pos=oldpos6; it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_22_rb__59b2,1,bind);  bind_aset(bind,76/*autovar*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass25;
                    goto success25;
                    pass25: *ptr=oldpass25; goto fail;
@@ -738,10 +744,10 @@ case 13/*Seq*/:;   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bi
 cstruct oldpass30=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
                    ptr->src=bind_aget(bind,90/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
                    it=rb_ary_new3(0); bind_aset(bind,91/*autovar*/,it);
-int oldpos8; while(1){oldpos8=ptr->pos; switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_13,rb_obj_class(ame_curobj2(ptr))))){case 0/*Act*/:case 1/*Apply*/:case 2/*Bind*/:case 3/*CAct*/:case 4/*Cut*/:case 5/*Grammar*/:case 6/*Local*/:case 7/*Lookahead*/:case 8/*Many*/:case 9/*Memo*/:case 10/*Or*/:case 11/*Pass*/:case 12/*Rule*/:case 13/*Seq*/:case 14/*Stop*/:case 15/*Switch_Char*/:case 16/*Switch_Clas*/:;   it=AmethystCTranslator_trans(self ); FAILTEST(break5); bind_aset(bind,92/*autovar*/,it);
+int oldpos9; while(1){oldpos9=ptr->pos; switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_13,rb_obj_class(ame_curobj2(ptr))))){case 0/*Act*/:case 1/*Apply*/:case 2/*Bind*/:case 3/*CAct*/:case 4/*Cut*/:case 5/*Grammar*/:case 6/*Local*/:case 7/*Lookahead*/:case 8/*Many*/:case 9/*Memo*/:case 10/*Or*/:case 11/*Pass*/:case 12/*Rule*/:case 13/*Seq*/:case 14/*Stop*/:case 15/*Switch_Char*/:case 16/*Switch_Clas*/:;   it=AmethystCTranslator_trans(self ); FAILTEST(break5); bind_aset(bind,92/*autovar*/,it);
 it=rb_funcall(self,sy_AmethystCTranslator__append_lp__ffb2,1,bind);  break;
 case 17/*Object*/:; goto break5; break;
-}  } break5: ame_setstop(self,Qnil); ptr->pos=oldpos8; it=bind_aget(bind,91/*autovar*/); bind_aset(bind,47/*t*/,it);
+}  } break5: ame_setstop(self,Qnil); ptr->pos=oldpos9; it=bind_aget(bind,91/*autovar*/); bind_aset(bind,47/*t*/,it);
 it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_47_rb__d405,1,bind);  bind_aset(bind,93/*autovar*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass30;
                    goto success30;
@@ -762,7 +768,7 @@ case 15/*Switch_Char*/:;   it=AmethystCore_anything(self ); FAILTEST(fail); bind
 cstruct oldpass32=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
                    ptr->src=bind_aget(bind,95/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
                    it=rb_obj_clone(s_switch_lp__lp__a839); bind_aset(bind,22/*s*/,it);
-int oldpos9; while(1){oldpos9=ptr->pos;   it=AmethystCore_anything(self ); FAILTEST(break6); bind_aset(bind,96/*autovar*/,it);
+int oldpos10; while(1){oldpos10=ptr->pos;   it=AmethystCore_anything(self ); FAILTEST(break6); bind_aset(bind,96/*autovar*/,it);
 cstruct oldpass33=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
                    ptr->src=bind_aget(bind,96/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
                      it=AmethystCore_anything(self ); FAILTEST(pass33); bind_aset(bind,97/*c*/,it);
@@ -773,7 +779,7 @@ case 17/*Object*/:; goto pass33; break;
                    goto success33;
                    pass33: *ptr=oldpass33; goto break6;
                    success33: *ptr=oldpass33;
-                it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_22_rb__2594,1,bind);   } break6: ame_setstop(self,Qnil); ptr->pos=oldpos9; it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_22_rb__5156,1,bind);  bind_aset(bind,98/*autovar*/,it);
+                it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_22_rb__2594,1,bind);   } break6: ame_setstop(self,Qnil); ptr->pos=oldpos10; it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_22_rb__5156,1,bind);  bind_aset(bind,98/*autovar*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass32;
                    goto success32;
                    pass32: *ptr=oldpass32; goto fail;
@@ -787,7 +793,7 @@ cstruct oldpass34=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
 it=i_0; bind_aset(bind,26/*ii*/,it);
 it=rb_obj_clone(s__d41d); bind_aset(bind,49/*init*/,it);
 it=rb_funcall(self,sy_AmethystCTranslator__at_header_lt__eba3,1,bind); it=rb_funcall(self,sy_AmethystCTranslator__dq_switch_lp__0fc0,1,bind);  bind_aset(bind,22/*s*/,it);
-int oldpos10; while(1){oldpos10=ptr->pos;   it=AmethystCore_anything(self ); FAILTEST(break7); bind_aset(bind,101/*autovar*/,it);
+int oldpos11; while(1){oldpos11=ptr->pos;   it=AmethystCore_anything(self ); FAILTEST(break7); bind_aset(bind,101/*autovar*/,it);
 cstruct oldpass35=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
                    ptr->src=bind_aget(bind,101/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
                      it=AmethystCore_anything(self ); FAILTEST(pass35); bind_aset(bind,97/*c*/,it);
@@ -798,7 +804,7 @@ case 17/*Object*/:; goto pass35; break;
                    goto success35;
                    pass35: *ptr=oldpass35; goto break7;
                    success35: *ptr=oldpass35;
-                it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_97_rb__769d,1,bind); it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_22_rb__336a,1,bind);   } break7: ame_setstop(self,Qnil); ptr->pos=oldpos10; it=rb_funcall(self,sy_AmethystCTranslator__at_init_sp__sp__lt__807c,1,bind); it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_22_rb__5156,1,bind);  bind_aset(bind,102/*autovar*/,it);
+                it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_97_rb__769d,1,bind); it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_22_rb__336a,1,bind);   } break7: ame_setstop(self,Qnil); ptr->pos=oldpos11; it=rb_funcall(self,sy_AmethystCTranslator__at_init_sp__sp__lt__807c,1,bind); it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_22_rb__5156,1,bind);  bind_aset(bind,102/*autovar*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass34;
                    goto success34;
                    pass34: *ptr=oldpass34; goto fail;
@@ -937,4 +943,4 @@ rb_define_method(cls_AmethystCTranslator,"rbtrans",AmethystCTranslator_rbtrans,0
 rb_define_method(cls_AmethystCTranslator,"rbtrans2",AmethystCTranslator_rbtrans2,0);
 rb_define_method(cls_AmethystCTranslator,"rw",AmethystCTranslator_rw,2);
 rb_define_method(cls_AmethystCTranslator,"trans",AmethystCTranslator_trans,0);
-                    rb_eval_string("testversionctranslator2('6127667b74d7340c92f5dbe7eda8ee99')");}
+                    rb_eval_string("testversionctranslator2('9520e1d3d7e1cf9f52ea74f7a96eabae')");}
