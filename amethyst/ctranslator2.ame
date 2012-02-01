@@ -111,6 +111,7 @@ amethyst AmethystCTranslator < Amethyst {
                    "it=#{ar[2]};"}]
 
         | Apply[ ["_find"] {raise "TODO"} ]
+				| Apply[ ["_test_size"] CAct[.:s] ] -> "if(ptr->pos+#{s}>=ptr->len) goto #{@@faillabel};"
         | Apply[ ["fails"] {"goto #{@@faillabel};"} ]
         | Apply[ ["eof"]   {"it=Qnil;if (ptr->pos<ptr->len) goto #{@@faillabel};"} ]
         | Apply[ ["_seq"] CAct[.:s] {"if (strncmp(ame_curstr2(ptr),#{s.inspect},#{s.size})) goto #{@@faillabel}; else ptr->pos+=#{s.size};"}]

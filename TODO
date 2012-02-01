@@ -12,6 +12,7 @@ bind cut,stop to corresponding many,or
 Add id of cut stop to many/or
 
 code motion of acts and binds
+dataflow for pureness (alias analysis with trackable host language)
 
 documentation
 
@@ -88,7 +89,12 @@ predication of sizes
 
 simple dataflows
 string_only,object_only
+generalize must_empty to max_size
 as constant propagation?
 use to simplify ors
 
 ? warn about a:b(c)
+
+at class level use one hash for determining class numbers? perhaps slower with inheritance
+
+labels use hash of body do decrease changes
