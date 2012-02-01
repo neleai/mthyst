@@ -220,8 +220,8 @@ def AmethystCTranslator__dq_if_lp_ptr_mi__6e29(bind)
 "if(ptr->pos+#{bind[16]}>=ptr->len) goto #{@faillabel};"
 
 end
-def AmethystCTranslator__dq_if_sp__lp_str_ca9a(bind)
-"if (strncmp(ame_curstr2(ptr),#{bind[16].inspect},#{bind[16].size})) goto #{@faillabel}; else ptr->pos+=#{bind[16].size};"
+def AmethystCTranslator__dq_if_sp__lp__sh__le_a_11e0(bind)
+"if (#{ary=bind[16].split("");map_index(ary){|i| "ame_curstr2(ptr)[#{i}]==#{Lattice_Char.new.cchar(ary[i])}" }*"&&" })  ptr->pos+=#{bind[16].size}; else goto #{@faillabel};"
 end
 def AmethystCTranslator__dq_int_sp__sh__le_b_3ff3(bind)
 "int #{bind[59]}=ptr->pos;\n #{bind[50]} x=1; goto #{bind[57]};  #{bind[58]}: x=0; #{bind[57]}: it=Qnil; ptr->pos=#{bind[59]}; if (x==0) goto #{@faillabel};"
@@ -381,15 +381,15 @@ end
 
 
 def ctranslator2_compiled_by
-'ec340e2dd04922317a96e00cac1c163f'
+'2da60522ec362027d4ac70f415ed0a3a'
 end
 def ctranslator2_source_hash
-'b33d80f0b3dfa9108aadd64d7240afa4'
+'206ae8c14b0c649ad9b2578c9936cebc'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'d01e96dd990a7285870e033c88db31e7'
+'f3db941c4a71b66c8a2449eeb6c502d9'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"

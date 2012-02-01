@@ -114,7 +114,7 @@ amethyst AmethystCTranslator < Amethyst {
 				| Apply[ ["_test_size"] CAct[.:s] ] -> "if(ptr->pos+#{s}>=ptr->len) goto #{@@faillabel};"
         | Apply[ ["fails"] {"goto #{@@faillabel};"} ]
         | Apply[ ["eof"]   {"it=Qnil;if (ptr->pos<ptr->len) goto #{@@faillabel};"} ]
-        | Apply[ ["_seq"] CAct[.:s] {"if (strncmp(ame_curstr2(ptr),#{s.inspect},#{s.size})) goto #{@@faillabel}; else ptr->pos+=#{s.size};"}]
+        | Apply[ ["_seq"] CAct[.:s] {"if (#{ary=s.split("");map_index(ary){|i| "ame_curstr2(ptr)[#{i}]==#{Lattice_Char.new.cchar(ary[i])}" }*"&&" })  ptr->pos+=#{s.size}; else goto #{@@faillabel};"}]
         | Apply[ .:name {0}:ii ( trans:aa {ii+=1} {"#{aa} arg#{ii-1}=it;"})*:args 
                  failwrap(" #{args*""} it=#{callrule(name,ii)};")]
 

@@ -69,8 +69,8 @@ VALUE Tests_foo(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(4);  int x;VALU
             
   it=rb_funcall(self,sy_bar,0); FAILTEST(fail); bind_aset(bind,0/*bar*/,it);
 it=rb_funcall(self,sy_Tests_bind_lb_1_rb__pl__1730,1,bind);  bind_aset(bind,2/*_result*/,it);
-int oldpos1; int stop1=0; while(1){oldpos1=ptr->pos; it=rb_funcall(self,sy_Tests_bind_lb_3_rb__eq__0b1b,1,bind); it=bind_aget(bind,2/*_result*/); bind_aset(bind,2/*_result*/,it);
- if (stop1) goto accept1; } break1: goto fail; accept1:;   
+int oldpos1;  while(1){oldpos1=ptr->pos; it=rb_funcall(self,sy_Tests_bind_lb_3_rb__eq__0b1b,1,bind); it=bind_aget(bind,2/*_result*/); bind_aset(bind,2/*_result*/,it);
+ } break1: ptr->pos=oldpos1;   
 return it;
 fail: return failobj; }
 VALUE Tests_gh(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -174,4 +174,4 @@ rb_define_method(cls_Tests,"gh",Tests_gh,0);
 rb_define_method(cls_Tests,"s2",Tests_s2,0);
 rb_define_method(cls_Tests,"sw",Tests_sw,0);
 rb_define_method(cls_Tests,"test",Tests_test,0);
-                    rb_eval_string("testversiontests('f7d47b4effc2a4ae3a4d760412ac347e')");}
+                    rb_eval_string("testversiontests('76c3383318f36392c53b237a81792654')");}
