@@ -22,7 +22,6 @@ end
 
 class FirstLattice
   attr_accessor :ary
-  def self.bottom;   self[];       end
   
   def |(a)
     self.class[*(ary|a.ary)]
@@ -71,8 +70,6 @@ class Lattice_Char < FirstLattice
     $hash_Lattice_Char[ary]=$hash_Lattice_Char[nary]=c
   end
   alias_method :==,:equal?
-  def self.top;           Lattice_Char[[0,255]] ;end
-  def self.bottom;        Lattice_Char[]        ;end
   def cchar(c)
     return "'#{c.chr}'" if c.chr.inspect.size==3 && c.chr.inspect!='"\'"' && c.ord < 128
     "UC(#{c.ord})"
@@ -102,7 +99,6 @@ class Lattice_Clas < FirstLattice
     $hash_Lattice_Clas[ary]=c
   end
   alias_method :==,:equal?
-  def self.top;     Lattice_Clas[Object];  end
   
   #TODO operations other than |
   #TODO modules
@@ -114,6 +110,23 @@ class Lattice_Clas < FirstLattice
     }}
     Lattice_Clas[*n.uniq]
   end
+end
+
+$hash_Lattice_Must_Empty={}
+class Lattice_Must_Empty < FirstLattice
+	attr_accessor :value
+	def self.[](value)
+		return $hash_Lattice_Must_Empty[value] if $hash_Lattice_Must_Empty
+		c=Lattice_Must_Empty.new
+		c.value=value
+		$hash_Lattice_Must_Empty[value]=c
+	end
+	def |(a)
+		value & a.value
+	end
+	def seqjoin(a)
+		value & a.value
+	end
 end
 
 class First_Dataflow < Amethyst
@@ -156,13 +169,20 @@ class First_Dataflow < Amethyst
   end
 end
 class Sizes_Dataflow < First_Dataflow
-  def lattice
-    Lattice_Sizes
-  end
   def empty?(el)
     true
   end
 end
+
+class Switch_Clas_Dataflow < First_Dataflow;  def lattice;    Lattice_Clas;        end; end
+class Switch_Char_Dataflow < First_Dataflow;  def lattice;    Lattice_Char;        end; end
+class Sizes_Dataflow < First_Dataflow      ;  def lattice;    Lattice_Sizes;       end; end
+class Must_Empty_Dataflow < First_Dataflow ;	def lattice;    Lattice_Must_Empty;  end; end
+
+class Lattice_Clas;       def self.top;    self[Object];      end;def self.bottom; self[]          ; end; end
+class Lattice_Char;       def self.top;    self[[0,255]];     end;def self.bottom; self[]          ; end; end
+class Lattice_Sizes;      def self.top;    self[1.0/0.0];     end;def self.bottom; self[0]         ; end; end
+class Lattice_Must_Empty;	def self.top;    self[false];       end;def self.bottom; self[true]      ; end; end
 
 class Switch_Char_Dataflow < First_Dataflow
   def firstchar(s)
@@ -191,20 +211,16 @@ class Switch_Char_Dataflow < First_Dataflow
     end
     lattice[*chars]
   end
-  def lattice;    Lattice_Char;  end
 end
 
-class Switch_Clas_Dataflow < First_Dataflow
-  def lattice;    Lattice_Clas;  end
-end
 amethyst First_Dataflow {
   value =  .:x  {depends(x);@@vals[x]}
 
   root = .:x analyze(x)
   
-  first = Switch_Char[ [ .:p  value:v {p.is_a?(lattice)? p & v : v}:vals[] ]* {vals.inject(:|)} ]
-        | Switch_Clas[ [ .:p  value:v {p.is_a?(lattice)? p & v : v}:vals[] ]* {vals.inject(:|)} ]
-        | Or[value*:{it.inject(:|)}]
+  first = Switch_Char[ [ .:p  value:v {p.is_a?(lattice)? p & v : v}:vals[] ]* ] -> vals.inject(:|)
+        | Switch_Clas[ [ .:p  value:v {p.is_a?(lattice)? p & v : v}:vals[] ]* ] -> vals.inject(:|)
+        | Or[ value*:vals ]                                                     -> vals.inject(:|)
         | Seq[{lattice.bottom}:val (.:el {el}=>value:nev {val.seqjoin(nev)}:val  (~{empty?(el)} break | empty) )*   .* {val}]
         | Many[value:val {val|lattice.bottom} ]
         | Apply[ :name &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name].body}=>value ]
@@ -238,10 +254,17 @@ amethyst Switch_Clas_Dataflow < First_Dataflow{
         | super
 }
 
+amethyst Must_Empty_Dataflow < First_Dataflow{
+	first = super
+}
+
 class Detect_First< Traverser_Clone2
-  def empty?(s)  
+  def empty?(s)
     $sizedf.analyze(s).size==0
   end
+	def must_empty?(s)
+		$must_empty_df.analyze(s).value
+	end
 end
 
 class Detect_Switch_Char < Detect_First
@@ -249,6 +272,8 @@ class Detect_Switch_Char < Detect_First
     if !$sizedf  
       $sizedf=Sizes_Dataflow.new
       $sizedf.parse(:root,[])
+      $must_empty_df=Must_Empty_Dataflow.new
+      $must_empty_df.parse(:root,[])
     end
     if !$switchdf_char
       $switchdf_char=Switch_Char_Dataflow.new

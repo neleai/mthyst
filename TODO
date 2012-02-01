@@ -40,6 +40,7 @@ incremental compilation
 support for provable refactorization and migrations
 
 functor for case insensivity
+reverse functor
 
 copy propagation, expression variables
 Constant propagation also do value numbering to register renaming scheme.
