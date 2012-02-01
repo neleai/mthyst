@@ -127,13 +127,16 @@ amethyst AmethystCTranslator < Amethyst {
            )*
            {s+"goto #{@@faillabel};\n #{accept}:;\n"}
           ]
-        | Cut[]   {@@cuts=true;"ame_setcut(self,Qtrue);"}
-        | Stop[] {@@stops=true;"ame_setstop(self,Qtrue);"}
+        | Cut[]  {@@cuts=true; "ame_setcut(self,Qtrue);"}
+        | Stop[] {@@stops=true; @@stoplabel? "#{@@stoplabel}=1;" : ""}
         | Memo[ .* {raise "TODO"}]
         | Many[ Apply[ ["anything"] ] ] -> "ptr->pos=ptr->len;"
-        | Many[ {label("break")}:brk {label("oldpos")}:oldpos
+        | Many[ {label("break")}:brk {label("oldpos")}:oldpos {label("accept")}:accept {@@stoplabel=label("stop")}
                 rw(brk,`trans:t`)
-                {"int #{oldpos}; while(1){#{oldpos}=ptr->pos; #{t} #{@@stops ? (@@stops=false;"if (ame_getstop(self)!=Qnil){#{oldpos}=ptr->pos;goto #{brk};}") : ""} } #{brk}: ame_setstop(self,Qnil); ptr->pos=#{oldpos}; "}
+                {s="int #{oldpos}; #{@@stops ? "int #{@@stoplabel}=0;":""} while(1){#{oldpos}=ptr->pos; #{t} #{@@stops ? "if (#{@@stoplabel}) goto #{accept}; } #{brk}: goto #{@@faillabel}; #{accept}:;" : "} #{brk}: ptr->pos=#{oldpos};"}   "
+									@@stops=@@stoplabel=nil
+									s
+								}
               ]
         | Lookahead[ {label("accept")}:accept {label("reject")}:reject {label("oldpos")}:oldpos 
                      rw(reject,`trans:t`) 

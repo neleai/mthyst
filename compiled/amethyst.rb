@@ -103,7 +103,7 @@ end
 
 
 def amethyst_compiled_by
-'e00fab1144f7fb4a1d26e7806f6b5d18'
+'8e2bc93ee223f52996e50bd1212819d9'
 end
 def amethyst_source_hash
 'a23f6ab6e90190c75471355d76a05974'
@@ -112,6 +112,6 @@ def testversionamethyst(r)
  raise "invalid version" if r!=amethyst_version
 end
 def amethyst_version
-'75c4310ba1e9224099130e62fa479cf8'
+'131e900d9e418a066660ee86d747c0d2'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/amethyst_c"
