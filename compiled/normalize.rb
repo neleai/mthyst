@@ -39,12 +39,6 @@ def Normalize_Seq_lb_bind_b71c(bind)
 Seq[bind[15],Bind[bind[5],bind[16]]]
 
 end
-def Normalize_Switch_C_775c(bind)
-Switch_Char.create( {:ary=>bind[10] })
-end
-def Normalize_Switch_C_eba2(bind)
-Switch_Clas.create( {:ary=>bind[10] })
-end
 def Normalize__append_lp__0eeb(bind)
 _append(bind[0],bind[8])
 end
@@ -111,6 +105,9 @@ end
 def Normalize_src_dot_ary_d5cf(bind)
 src.ary
 end
+def Normalize_src_dot_clas_b345(bind)
+src.class[{:ary=>bind[10]}]
+end
 def Normalize_src_dot_free_00b9(bind)
 src.freeze
 
@@ -126,15 +123,15 @@ end
 
 
 def normalize_compiled_by
-'f0f3e6bd2db69decf0d4ff76f3c902f4'
+'4c2828f3f11aff1ca4552952bacab0f1'
 end
 def normalize_source_hash
-'1c77c419139ad8ef1ba0abaf2cdd0d36'
+'aaa808125f976d514628f5fefb32fd3d'
 end
 def testversionnormalize(r)
  raise "invalid version" if r!=normalize_version
 end
 def normalize_version
-'63b7b1842b42f2d58a00c7ca1e05ea3e'
+'66d08962c30fa8128d169578f2de5b19'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/normalize_c"

@@ -229,9 +229,6 @@ end
 def First_Dataflow__append_lp__a474(bind)
 _append(bind[14],bind[15])
 end
-def First_Dataflow__append_lp__e555(bind)
-_append(bind[16],bind[30])
-end
 def First_Dataflow__at_vis_eq_bin_af53(bind)
 @vis=bind[0]; bind[0]
 end
@@ -280,9 +277,6 @@ _append(bind[16],bind[27])
 end
 def Minsize_Dataflow__append_lp__a474(bind)
 _append(bind[14],bind[15])
-end
-def Minsize_Dataflow__append_lp__e555(bind)
-_append(bind[16],bind[30])
 end
 def Minsize_Dataflow__at_vis_eq_bin_af53(bind)
 @vis=bind[0]; bind[0]
@@ -339,9 +333,6 @@ end
 def Maxsize_Dataflow__append_lp__a474(bind)
 _append(bind[14],bind[15])
 end
-def Maxsize_Dataflow__append_lp__e555(bind)
-_append(bind[16],bind[30])
-end
 def Maxsize_Dataflow__at_vis_eq_bin_af53(bind)
 @vis=bind[0]; bind[0]
 end
@@ -396,9 +387,6 @@ _append(bind[16],bind[27])
 end
 def Switch_Char_Dataflow__append_lp__a474(bind)
 _append(bind[14],bind[15])
-end
-def Switch_Char_Dataflow__append_lp__e555(bind)
-_append(bind[16],bind[30])
 end
 def Switch_Char_Dataflow__at_vis_eq_bin_af53(bind)
 @vis=bind[0]; bind[0]
@@ -455,9 +443,6 @@ end
 def Switch_Clas_Dataflow__append_lp__a474(bind)
 _append(bind[14],bind[15])
 end
-def Switch_Clas_Dataflow__append_lp__e555(bind)
-_append(bind[16],bind[30])
-end
 def Switch_Clas_Dataflow__at_vis_eq_bin_af53(bind)
 @vis=bind[0]; bind[0]
 end
@@ -507,9 +492,6 @@ _append(bind[16],bind[27])
 end
 def Cant_Fail_Dataflow__append_lp__a474(bind)
 _append(bind[14],bind[15])
-end
-def Cant_Fail_Dataflow__append_lp__e555(bind)
-_append(bind[16],bind[30])
 end
 def Cant_Fail_Dataflow__at_vis_eq_bin_af53(bind)
 @vis=bind[0]; bind[0]
@@ -958,15 +940,15 @@ end
 
 
 def detect_switch_compiled_by
-'f0f3e6bd2db69decf0d4ff76f3c902f4'
+'4c2828f3f11aff1ca4552952bacab0f1'
 end
 def detect_switch_source_hash
-'c2a2108c7534a1fada136501921e19b6'
+'d3b8b009a48f245a79f681b4914082b1'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'96b7a86b89b886da859635d2365ba848'
+'dd382494dd4297868614ee068a2f8d93'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

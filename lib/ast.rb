@@ -18,11 +18,10 @@ makeclasses(AmethystAST,
 		:Char,
     :Comment,
     :Nested,
-		[:Switch_Char],
-		[:Switch_Clas],
-		[:Switch_Or],
+		:Switch,
 		:Seq,:Or
 )
+makeclasses(Switch,:Switch_Char,:Switch_Clas,:Switch_Or)
 class Enter;end;class Append;end;class PureAct;end;class Pred;end;
 
 def equalize_by(clas,args)
