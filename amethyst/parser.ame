@@ -63,7 +63,7 @@ amethyst AmethystParser < Amethyst{
   name           =  (<_a-zA-Z> <_a-zA-Z0-9>*)[]:{it.join}
   className      =  (    <A-Z> <_a-zA-Z0-9>*)[]:{it.join}
 
-  ruleargs = (argsOpt)=>[ Args[ :name {_Local(name) }]* ]
+  ruleargs = (argsOpt)=>[ Args[ :name {local(name) }]* ]
   
   
   argsOpt = ~_  _args('(',')'):r { r+[',']}=>[procargs] 
@@ -103,4 +103,6 @@ amethyst AmethystParser < Amethyst{
   inline_host_expr = _args('{','}'):r {Act[Args[{:ary=>r}]]}
   host_expr = inline_host_expr 
             | '->' line:s   {"{"+s+"}"}=>[ inline_host_expr ]  
+
+	local(x) = {l=Local[x,@@bnding];@@locals<<l;l}
 }
