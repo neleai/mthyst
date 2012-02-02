@@ -102,10 +102,14 @@ class Bind
 	def self.[](name,expr,append=nil)
 		if append
 	    a=autovar
-  	  $appends<<name if $appends
     	return Seq[Bind[a,expr],PureAct[Args["_append(",name,",",a,")"]],a]
 	  end
-		Bind.create({:name=>name,:ary=>[expr]}).normalize
+		if name.is_a?(Local)
+			Bind.create({:name=>name,:ary=>[expr]}).normalize
+		else
+			 a=autovar
+	    Seq[Bind[a,expr],PureAct[Args[name,'=',a]]]
+		end
 	end
 	def normalize2
 		$normalize.parse(:bind,[self])

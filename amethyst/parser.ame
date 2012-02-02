@@ -12,7 +12,7 @@ amethyst AmethystParser < Amethyst{
   
   rule = {@@locals=[];@@appends=[];@@bnding=Bnding[]} {@@bnding}:bnding  
          "" name:name  ruleargs:args "=" expression:body  
-          {_body(body)}:body {@@locals.uniq}:locals {body=Seq[{:ary=>(@@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[body])}]; }   @Rule
+          {Bind[local("_result"),body]}:body {@@locals.uniq}:locals {body=Seq[{:ary=>(@@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[body])}]; }   @Rule
 
   
   expression = listOf(`sequence`,`"|"`):ary @Or_AST  
@@ -28,8 +28,8 @@ amethyst AmethystParser < Amethyst{
                             | '['      expression:e "]" -> Enter[from,e]
                             | <+*>:one -> Many[from,one=="+"]
                             | '?'      -> Or_AST[from,Apply["empty"]]
-                            | ':' (  (key | name):name ('[]'?):append ->@@appends<< local(name) if append; _Bind(name,from,append=='[]')
-                                  | inline_host_expr:e                      -> Seq[ _Bind("it",from) , Act[e] ]
+                            | ':' (  (key | name):name ('[]'?):append -> @@appends<< local(name) if append; Bind[local(name),from,append=='[]']
+                                  | inline_host_expr:e                      -> Seq[ Bind[local("it"),from] , Act[e] ]
                                   )
                     ):from  )* {from}
 
@@ -83,7 +83,7 @@ amethyst AmethystParser < Amethyst{
 
   _args(o,c) = seq(o) "" rubyarg*:r seq(c) -> r
     
-  rubyarg  = '`' expression:e '`' -> Lambda[_body(e)]
+  rubyarg  = '`' expression:e '`' -> Lambda[Bind[local("_result"),e]]
            | args('(',')')  | args('[',']') | args('{','}')
            | '"' interpolated("\""):s      -> Strin[['"']+s+['"']]
            | <a-z0-9_>:e '<<' -> [e,'<<']
@@ -104,5 +104,5 @@ amethyst AmethystParser < Amethyst{
   host_expr = inline_host_expr 
             | '->' line:s   {"{"+s+"}"}=>[ inline_host_expr ]  
 
-	local(x) = {l=Local[x,@@bnding];@@locals<<l;l}
+	local(x) = {x.is_a?(String) ? (l=Local[x,@@bnding];@@locals<<l;l) : x}
 }
