@@ -548,6 +548,9 @@ end
 def Cant_Fail_Dataflow_lattice_dot__b0f6(bind)
 lattice.top|lattice.bottom
 end
+def Cant_Fail_Dataflow_src_dot_to_5e99(bind)
+src.to
+end
 
 end
 
@@ -899,15 +902,15 @@ end
 
 
 def detect_switch_compiled_by
-'16b4fa87f02788dbba0f0e07875a8368'
+'ae23cd294bf7dc9dc3a1ecd9adedb28d'
 end
 def detect_switch_source_hash
-'be06cb42606c248ba322afced05f5460'
+'7df3853dbb716a8ce6d70a1ce8090a0e'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'cc0df2c54952f3c6cfa522ae358f333e'
+'874a695fb7c59a0ce8b67d0d76b7c036'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

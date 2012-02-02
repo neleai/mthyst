@@ -135,9 +135,6 @@ class Or
 		Or.create({:ary=>args}).normalize
 	end
 	def normalize2
-		# TODO dont consider alternatives after
-		#  Seq[cant_fail* Cut .*]
-		# |Seq[cant_fail*       ]
 		$normalize.parse(:or,[self])
 	end
 end

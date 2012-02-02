@@ -273,7 +273,8 @@ amethyst Must_Empty_Dataflow < First_Dataflow{
 
 amethyst Cant_Fail_Dataflow < First_Dataflow{
 	first = Act[ .* &{@pred} ] -> lattice.top
-				| Pass[ value ]
+				| Lookahead[.* ]     -> lattice.top
+				| Pass[ @to=>value ]
 				| super
 }
 
