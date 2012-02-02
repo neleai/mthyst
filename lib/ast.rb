@@ -85,19 +85,6 @@ def Pass.[](from,to,enter=nil)
 	Seq[Bind[a,from], Pass.create({:to=>Seq[Bind[r,to],Apply["eof"]],:var=>a,:enter=>enter}).normalize,r]
 end
 
-def _Bind(name,expr,append=nil)
-	if append
-		a=autovar
-		$appends<<name if $appends
-	  return Seq[_Bind(a,expr),PureAct[Args["_append(",_Local(name),",",a,")"]],a]
-	end	
-	if name.is_a?(Local) || name.is_a?(String)
-		Bind.create({:name=>_Local(name),:ary=>[expr]}).normalize
-	else
-		a=autovar
-		Seq[_Bind(a,expr),PureAct[Args[name,'=',a]]]
-	end
-end
 class Bind
 	def self.[](name,expr,append=nil)
 		if append
@@ -119,7 +106,7 @@ class Bind
 	end
 end
 def Append.[](name,expr)
-	_Bind(name,expr,true)
+	Bind[name,expr,true]
 end
 
 def Many.[](expr,many1=nil)
@@ -222,10 +209,6 @@ end
 def Pred.[](e,neg=false)
 	return Pred[Args["!(",e,")"]] if neg
 	Act[e,true]
-end
-
-def _body(body)
-	Seq[_Bind("_result",body)]
 end
 
 class Apply
