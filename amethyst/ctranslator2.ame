@@ -120,22 +120,22 @@ amethyst AmethystCTranslator < Amethyst {
 
         | Bind[trans:e {"#{e} #{bset(@name,"it")};\n" } ]
         | Seq[ trans*:t {t*""} ]
-        | Or[ {label("accept")}:accept {label("oldpos")}:oldpos label("alt"):alt {1}:altno {@@cutlabel=label("cut")}
+        | Or[ {label("accept")}:accept {label("oldpos")}:oldpos label("alt"):alt {1}:altno {@@cutlabel}:oldcutlabel {@@cuts}:oldcuts {@@cuts=nil;@@cutlabel=label("cut")}
            {"int #{oldpos}=ptr->pos;int #{@@cutlabel}=0;\n#{alt}_#{altno}:;"}:s
            ( &(.) {altno+=1}  rw("#{alt}_#{altno}",`trans`):t 
              {s+="#{t}\n;goto #{accept};\n"} 
-             {s+="#{alt}_#{altno}: ptr->pos=#{oldpos};#{@@cuts ? (@@cuts=false;"if (#{@@cutlabel}) goto #{@@faillabel};"): ""}"}  
+             {s+="#{alt}_#{altno}: ptr->pos=#{oldpos};#{@@cuts ? (@@cuts=nil;"if (#{@@cutlabel}) goto #{@@faillabel};"): ""}"}  
            )*
-           {@@cutlabel=nil;s+"goto #{@@faillabel};\n #{accept}:;\n"}
+           {@@cutlabel=oldcutlabel;@@cuts=oldcuts;s+"goto #{@@faillabel};\n #{accept}:;\n"}
           ]
         | Cut[]  {@@cuts=true;  @@cutlabel ? "#{@@cutlabel}=1;"  : ""}
         | Stop[] {@@stops=true; @@stoplabel? "#{@@stoplabel}=1;" : ""}
         | Memo[ .* {raise "TODO"}]
         | Many[ Apply[ ["anything"] ] ] -> "ptr->pos=ptr->len;"
-        | Many[ {label("break")}:brk {label("oldpos")}:oldpos {label("accept")}:accept {@@stoplabel=label("stop")}
+        | Many[ {label("break")}:brk {label("oldpos")}:oldpos {label("accept")}:accept {@@stops}:oldstops {@@stoplabel}:oldstoplabel {@@stops=nil}  {@@stoplabel=label("stop")}
                 rw(brk,`trans:t`)
                 {s="int #{oldpos}; #{@@stops ? "int #{@@stoplabel}=0;":""} while(1){#{oldpos}=ptr->pos; #{t} #{@@stops ? "if (#{@@stoplabel}) goto #{accept}; } #{brk}: goto #{@@faillabel}; #{accept}:;" : "} #{brk}: ptr->pos=#{oldpos};"}   "
-									@@stops=@@stoplabel=nil
+									@@stops=oldstops; @@stoplabel=oldstoplabel
 									s
 								}
               ]

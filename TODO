@@ -98,3 +98,7 @@ use to simplify ors
 at class level use one hash for determining class numbers? perhaps slower with inheritance
 
 labels use hash of body do decrease changes
+
+write or normalization correctly (optimize out empty?)
+
+how inline _args and indirectly  recursive parametric in general
