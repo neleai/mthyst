@@ -1,22 +1,47 @@
 
-$hash_Lattice_Sizes={}
-class Lattice_Sizes
+$hash_Lattice_Minsize={}
+class Lattice_Minsize
   attr_accessor :size
   def self.[](a)
-    return $hash_Lattice_Sizes[a] if $hash_Lattice_Sizes[a]
+    return $hash_Lattice_Minsize[a] if $hash_Lattice_Minsize[a]
     l=self.new
     l.size=a
-    $hash_Lattice_Sizes[a]=l
+    $hash_Lattice_Minsize[a]=l
   end
   alias_method :==,:equal?
-  def |(a);       Lattice_Sizes[ [size,a.size].min ]; end
-  def seqjoin(a); Lattice_Sizes[ size+a.size       ]; end
-  def inspect; "Lattice_Sizes[#{size}]";end
+  def |(a);       Lattice_Minsize[ [size,a.size].min ]; end
+  def seqjoin(a); Lattice_Minsize[ size+a.size       ]; end
+  def inspect; "Lattice_Minsize[#{size}]";end
 end
 
+$hash_Lattice_Maxsize={}
+class Lattice_Maxsize
+  attr_accessor :size
+  def self.[](a)
+		a=1.0/0.0 if a>16
+    return $hash_Lattice_Maxsize[a] if $hash_Lattice_Maxsize[a]
+    l=self.new
+    l.size=a
+    $hash_Lattice_Maxsize[a]=l
+  end
+  alias_method :==,:equal?
+  def |(a);       Lattice_Maxsize[ [size,a.size].max ]; end
+  def seqjoin(a); Lattice_Maxsize[ size+a.size       ]; end
+  def inspect;   "Lattice_Maxsize[#{size}            ]";end
+end
+
+
+$hash_Lattices={}
 class FirstLattice
   attr_accessor :ary
-  
+	def self.[](clas,*ary)
+		$hash_Lattices[clas]||={}
+		return $hash_Lattices[clas][ary] if $hash_Lattices[clas][ary]
+		s=clas.new
+		s.ary=ary
+		$hash_Lattices[clas][ary]=s
+	end  
+
   def |(a)
     self.class[*(ary|a.ary)]
   end
@@ -58,10 +83,7 @@ class Lattice_Char < FirstLattice
         end
       }
     end
-    return $hash_Lattice_Char[ary]=$hash_Lattice_Char[nary] if $hash_Lattice_Char[nary]
-    c=Lattice_Char.new
-    c.ary=nary
-    $hash_Lattice_Char[ary]=$hash_Lattice_Char[nary]=c
+		FirstLattice[Lattice_Char,*nary]
   end
   alias_method :==,:equal?
   def cchar(c)
@@ -84,13 +106,9 @@ end
 
 $hash_Lattice_Clas={}
 class Lattice_Clas < FirstLattice
-  attr_accessor :ary
   def self.[](*ary)
     ary=ary.uniq.sort_by{|a| a.inspect}.map{|a| eval(a.to_s)}
-    return $hash_Lattice_Clas[ary] if $hash_Lattice_Clas[ary]
-    c=Lattice_Clas.new
-    c.ary=ary
-    $hash_Lattice_Clas[ary]=c
+		FirstLattice[Lattice_Clas,*ary]
   end
   alias_method :==,:equal?
   
@@ -173,20 +191,20 @@ end
 
 class Switch_Clas_Dataflow < First_Dataflow;  def lattice;    Lattice_Clas;        end; end
 class Switch_Char_Dataflow < First_Dataflow;  def lattice;    Lattice_Char;        end; end
-class Sizes_Dataflow < First_Dataflow      ;  def lattice;    Lattice_Sizes;       end; end
+class Minsize_Dataflow < First_Dataflow      ;  def lattice;    Lattice_Minsize;       end; end
 class Must_Empty_Dataflow < First_Dataflow ;  def lattice;    Lattice_Must_Empty;  end; end
 class Cant_Fail_Dataflow  < First_Dataflow ;  def lattice;    Lattice_Must_Empty;  end; end
 
 
 class                       First_Dataflow;  def can_empty?(el);    $sizedf.analyze(el).size==0;  end; end
-class Sizes_Dataflow      < First_Dataflow;  def can_empty?(el);    true;                         end; end
+class Minsize_Dataflow      < First_Dataflow;  def can_empty?(el);    true;                         end; end
 class Must_Empty_Dataflow < First_Dataflow;  def can_empty?(el);    true;                         end; end
 class Cant_Fail_Dataflow  < First_Dataflow;  def can_empty?(el);    true;                         end; end
 
 
 class Lattice_Clas;       def self.top;    self[Object];      end;def self.bottom; self[]          ; end; end
 class Lattice_Char;       def self.top;    self[[0,255]];     end;def self.bottom; self[]          ; end; end
-class Lattice_Sizes;      def self.top;    self[1.0/0.0];     end;def self.bottom; self[0]         ; end; end
+class Lattice_Minsize;      def self.top;    self[1.0/0.0];     end;def self.bottom; self[0]         ; end; end
 class Lattice_Must_Empty; def self.top;    self[false];       end;def self.bottom; self[true]      ; end; end
 class Lattice_Cant_Fail;  def self.top;    self[false];       end;def self.bottom; self[true]      ; end; end
 
@@ -271,58 +289,58 @@ end
 end
         
 
-class Sizes_Dataflow < First_Dataflow
+class Minsize_Dataflow < First_Dataflow
 
-def Sizes_Dataflow_Compiler_ad51(bind)
+def Minsize_Dataflow_Compiler_ad51(bind)
 Compiler.grammars[src.clas].rules[bind[4]].body
 end
-def Sizes_Dataflow__append_lp__3f99(bind)
+def Minsize_Dataflow__append_lp__3f99(bind)
 _append(bind[16],bind[27])
 end
-def Sizes_Dataflow__append_lp__a474(bind)
+def Minsize_Dataflow__append_lp__a474(bind)
 _append(bind[14],bind[15])
 end
-def Sizes_Dataflow__append_lp__e555(bind)
+def Minsize_Dataflow__append_lp__e555(bind)
 _append(bind[16],bind[30])
 end
-def Sizes_Dataflow__at_vis_eq_bin_af53(bind)
+def Minsize_Dataflow__at_vis_eq_bin_af53(bind)
 @vis=bind[0]; bind[0]
 end
-def Sizes_Dataflow__d41d(bind)
+def Minsize_Dataflow__d41d(bind)
 
 end
-def Sizes_Dataflow__lp_(bind)
+def Minsize_Dataflow__lp_(bind)
 (!(can_empty?(bind[18]))) || FAIL
 end
-def Sizes_Dataflow__lp_Compile_bc2b(bind)
+def Minsize_Dataflow__lp_Compile_bc2b(bind)
 (Compiler.grammars[src.clas]&&Compiler.grammars[src.clas].rules[bind[4]]) || FAIL
 end
-def Sizes_Dataflow_bind_lb_11_rb__4dc0(bind)
+def Minsize_Dataflow_bind_lb_11_rb__4dc0(bind)
 bind[11]|lattice.bottom
 end
-def Sizes_Dataflow_bind_lb_11_rb__7d69(bind)
+def Minsize_Dataflow_bind_lb_11_rb__7d69(bind)
 bind[11].seqjoin(bind[21])
 end
-def Sizes_Dataflow_bind_lb_16_rb__6275(bind)
+def Minsize_Dataflow_bind_lb_16_rb__6275(bind)
 bind[16].inject(:|)
 
 end
-def Sizes_Dataflow_bind_lb_25_rb__eb7c(bind)
+def Minsize_Dataflow_bind_lb_25_rb__eb7c(bind)
 bind[25].is_a?(lattice)? bind[25] & bind[26] : bind[26]
 end
-def Sizes_Dataflow_lattice_dot__5a9e(bind)
+def Minsize_Dataflow_lattice_dot__5a9e(bind)
 lattice.bottom
 end
-def Sizes_Dataflow_lattice_dot__b0f6(bind)
+def Minsize_Dataflow_lattice_dot__b0f6(bind)
 lattice.top|lattice.bottom
 end
-def Sizes_Dataflow_lattice_dot__e0e5(bind)
+def Minsize_Dataflow_lattice_dot__e0e5(bind)
 lattice.top
 end
-def Sizes_Dataflow_lattice_lb__cef9(bind)
+def Minsize_Dataflow_lattice_lb__cef9(bind)
 lattice[bind[6].size]
 end
-def Sizes_Dataflow_lattice_lb__fdee(bind)
+def Minsize_Dataflow_lattice_lb__fdee(bind)
 lattice[1]
 end
 
@@ -553,7 +571,7 @@ def cant_fail?(s);   $cant_fail_df.analyze(s).value;  end
 class Detect_Switch_Char < Detect_First
   def initialize
     if !$sizedf  
-      $sizedf=Sizes_Dataflow.new;                  $sizedf.parse(:root,[])
+      $sizedf=Minsize_Dataflow.new;                  $sizedf.parse(:root,[])
       $must_empty_df=Must_Empty_Dataflow.new;      $must_empty_df.parse(:root,[])
       $cant_fail_df =Cant_Fail_Dataflow.new;       $cant_fail_df.parse(:root,[])
     end
@@ -569,7 +587,7 @@ end
 class Detect_Switch_Clas < Detect_First
   def initialize
     if !$sizedf  
-      $sizedf=Sizes_Dataflow.new
+      $sizedf=Minsize_Dataflow.new
       $sizedf.parse(:root,[])
     end
     if !$switchdf_clas
@@ -891,15 +909,15 @@ end
 
 
 def detect_switch_compiled_by
-'2da60522ec362027d4ac70f415ed0a3a'
+'16b4fa87f02788dbba0f0e07875a8368'
 end
 def detect_switch_source_hash
-'ad053a993c9c3404fa46c472aaf50cad'
+'2b0b1694128e2b59b320ecf7b51e375b'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'32337773a67e984a34c48de5a7931287'
+'cc0df2c54952f3c6cfa522ae358f333e'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"
