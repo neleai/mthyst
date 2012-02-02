@@ -23,6 +23,7 @@ VALUE AmethystCore__seq(VALUE self,VALUE str){
 		 rb_raise(rb_eArgError, "called seq when not in string");
 	}
 }
+//TODO handle unicode
 #define mbs_UTF8(c) mbsize_UTF8[c/16]
 char mbsize_UTF8[]={1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,3,4};
 VALUE AmethystCore_anything(VALUE self){
@@ -31,7 +32,7 @@ VALUE AmethystCore_anything(VALUE self){
 	VALUE r;
 	if(TYPE(ptr->src)==T_STRING){
 		if (ptr->pos>=ptr->len) return failobj;
-		int cs=mbs_UTF8(ptr->str[ptr->pos]);
+		int cs=1; //mbs_UTF8(ptr->str[ptr->pos]);
 		r=rb_str_new(ptr->str+ptr->pos,cs);
 		ptr->pos+=cs;
 	}else{

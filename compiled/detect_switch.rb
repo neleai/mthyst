@@ -539,6 +539,10 @@ end
 def Cant_Fail_Dataflow_bind_lb_25_rb__eb7c(bind)
 bind[25].is_a?(lattice)? bind[25] & bind[26] : bind[26]
 end
+def Cant_Fail_Dataflow_lattice_dot__3340(bind)
+lattice.bottom
+
+end
 def Cant_Fail_Dataflow_lattice_dot__4869(bind)
 lattice.top
 
@@ -560,7 +564,6 @@ class Detect_First< Traverser_Clone2;   def can_empty?(s);    $sizedf.analyze(s)
 
 def must_empty?(s);  $maxsize_df.analyze(s).size==0; end
 def cant_fail?(s);   $cant_fail_df.analyze(s).value;  end
-
 
 class Detect_Switch_Char < Detect_First
   def initialize
@@ -629,6 +632,8 @@ end
 
 end
 
+
+#TODO we can do unicode almost unchanged but we need test againist first byte of character
 
 class Detect_Switch_Char < Detect_First
 
@@ -742,14 +747,14 @@ if bind[3]
             src
           end
 end
-def Detect_Switch_Char_s_eq_Switch_00af(bind)
-s=Switch_Char[{:ary=>[[bind[6],Apply["anything"]],[~bind[6],Apply["fails"]]]}]
+def Detect_Switch_Char_s_eq_Switch_33aa(bind)
+s=Switch_Char[{:ary=>[[bind[6],Apply["advance_char"]],[~bind[6],Apply["fails"]]]}]
 end
 def Detect_Switch_Char_s_eq_Switch_a189(bind)
 s=Switch_Char[{:ary=>[[bind[6],Many[bind[20]]],[~bind[6],Apply["fails"]]]}] 
 end
-def Detect_Switch_Char_s_eq_Switch_fa57(bind)
-s=Switch_Char[{:ary=>[[bind[6],Seq[Apply["anything"],Apply["_seq",CAct[bind[12][1..-1]]]]],[~bind[6],Apply["fails"]]]}]
+def Detect_Switch_Char_s_eq_Switch_bce7(bind)
+s=Switch_Char[{:ary=>[[bind[6],Seq[Apply["advance_char"],Apply["_seq",CAct[bind[12][1..-1]]]]],[~bind[6],Apply["fails"]]]}]
 end
 def Detect_Switch_Char_s_eq_Switch_fcb6(bind)
 s=Switch_Char[{:ary=>[[bind[6],src],[~bind[6],Apply["fails"]]]}] 
@@ -781,9 +786,6 @@ end
 def Detect_Switch_Clas_Seq_lb__ti__lp_bi_f058(bind)
 Seq[*(bind[36]+bind[40])]
 end
-def Detect_Switch_Clas_Switch_C_4337(bind)
-Switch_Clas[[Lattice_Clas[bind[6]],Apply["anything"]],[Lattice_Clas[Object],Apply["fails"]]].freeze 
-end
 def Detect_Switch_Clas_Switch_C_4c94(bind)
 Switch_Clas[{:ary=>bind[4].map{|p,a| [p,Seq[*(bind[1]+[a]+bind[7])]]}}] 
 end
@@ -792,6 +794,9 @@ Switch_Clas[{:ary=>bind[40].map{|p,a| [p,Seq[*(bind[36]+[a]+bind[43])]]}}]
 end
 def Detect_Switch_Clas_Switch_C_5685(bind)
 Switch_Clas[{:ary=>bind[23].map{|p,a| [p,Or[*a]]}}]
+end
+def Detect_Switch_Clas_Switch_C_690a(bind)
+Switch_Clas[[Lattice_Clas[bind[6]],Apply["advance_clas"]],[Lattice_Clas[Object],Apply["fails"]]].freeze 
 end
 def Detect_Switch_Clas_Switch_C_c382(bind)
 Switch_Clas[{:ary=>bind[3].map{|p,a| [p,Or[*a]]}}]
@@ -953,15 +958,15 @@ end
 
 
 def detect_switch_compiled_by
-'6bd9e1cfea814424657298e32d95d0ff'
+'f0f3e6bd2db69decf0d4ff76f3c902f4'
 end
 def detect_switch_source_hash
-'8b71a9e43fd93d0ac24bee80faf74677'
+'cb6df7058ffe6a342f896da5b617c236'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'52aa96e54f0b146bf533d4dea019905c'
+'96b7a86b89b886da859635d2365ba848'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

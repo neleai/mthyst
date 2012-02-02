@@ -238,7 +238,7 @@ amethyst First_Dataflow {
 
 amethyst Minsize_Dataflow < First_Dataflow {
   first = Apply[( ["_seq"] CAct[.:str] {lattice[str.size]} 
-                | ["regch" | "clas" | "anything"] .* {lattice[1]}
+                | ["regch" | "clas" | "anything" | "advance_char" | "advance_clas"] .* {lattice[1]}
                 | ["fails"] {lattice.top}
                 )]
         | super
@@ -246,7 +246,7 @@ amethyst Minsize_Dataflow < First_Dataflow {
 
 amethyst Maxsize_Dataflow < First_Dataflow {
   first = Apply[( ["_seq"] CAct[.:str] {lattice[str.size]} 
-                | ["regch" | "clas" | "anything"] .* {lattice[1]}
+                | ["regch" | "clas" | "anything" | "advance_char" | "advance_clas"] .* {lattice[1]}
                 | ["fails"] {lattice.top}
                 )]
         | super
@@ -268,8 +268,9 @@ amethyst Switch_Clas_Dataflow < First_Dataflow{
 
 
 amethyst Cant_Fail_Dataflow < First_Dataflow{
-	first = Act[ .* &{@pred} ] -> lattice.top
-				| Lookahead[.* ]     -> lattice.top
+	first = Act[ .* &{@pred} ]   -> lattice.top
+				| Lookahead[.* ]       -> lattice.top
+				| Apply[ ["advance_char" | "advance_clas"] ] -> lattice.bottom
 				| Pass[ @to=>value ]
 				| super
 }
@@ -278,7 +279,6 @@ class Detect_First< Traverser_Clone2;   def can_empty?(s);    $sizedf.analyze(s)
 
 def must_empty?(s);  $maxsize_df.analyze(s).size==0; end
 def cant_fail?(s);   $cant_fail_df.analyze(s).value;  end
-
 
 class Detect_Switch_Char < Detect_First
   def initialize
@@ -326,10 +326,12 @@ amethyst Detect_First < Traverser_Clone2 {
   object_only = Apply[ ["clas"] .* ]
 }
 
+#TODO we can do unicode almost unchanged but we need test againist first byte of character
+
 amethyst Detect_Switch_Char < Detect_First {
-  visit = Apply[ ["regch"] Act[.*] {first(@self)}:firs {s=Switch_Char[{:ary=>[[firs,Apply["anything"]],[~firs,Apply["fails"]]]}]}]
+  visit = Apply[ ["regch"] Act[.*] {first(@self)}:firs {s=Switch_Char[{:ary=>[[firs,Apply["advance_char"]],[~firs,Apply["fails"]]]}]}]
         | Apply[ ["_seq"] CAct[.:str] 
-                  {first(@self)}:firs {s=Switch_Char[{:ary=>[[firs,Seq[Apply["anything"],Apply["_seq",CAct[str[1..-1]]]]],[~firs,Apply["fails"]]]}]}]
+                  {first(@self)}:firs {s=Switch_Char[{:ary=>[[firs,Seq[Apply["advance_char"],Apply["_seq",CAct[str[1..-1]]]]],[~firs,Apply["fails"]]]}]}]
         | Apply[ ["fails"] {@self} ]
         | Apply[ .*  {first(@self)}:firs &{!can_empty?(@self) && firs!=Lattice_Char.top} {s=Switch_Char[{:ary=>[[firs,@self],[~firs,Apply["fails"]]]}] }]
         | Many[ traverse:t first(t):firs &{!can_empty?(@self) && firs!=Lattice_Char.top} {s=Switch_Char[{:ary=>[[firs,Many[t]],[~firs,Apply["fails"]]]}] }]
@@ -353,7 +355,7 @@ amethyst Detect_Switch_Char < Detect_First {
 }
 
 amethyst Detect_Switch_Clas < Detect_First {
-  visit = Apply[ ["clas"] CAct[Class:clas]   {Switch_Clas[[Lattice_Clas[clas],Apply["anything"]],[Lattice_Clas[Object],Apply["fails"]]].freeze }]
+  visit = Apply[ ["clas"] CAct[Class:clas]   {Switch_Clas[[Lattice_Clas[clas],Apply["advance_clas"]],[Lattice_Clas[Object],Apply["fails"]]].freeze }]
         | Apply[ ["fails"] {@self} ]
         | Apply[ .* first(@self):firs &{!can_empty?(@self) && !firs.ary.include?(Object)} {c=Switch_Clas[{:ary=>firs.ary.map{|a| [Lattice_Clas[a],@self]}+[[Lattice_Clas[Object],Apply["fails"]]]}];puts c.inspect;c }]  
         | Seq[ traverse_item*=>[combine_seq([])] ]

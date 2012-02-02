@@ -115,7 +115,8 @@ amethyst AmethystCTranslator < Amethyst {
         | Apply[ ["fails"] {"goto #{@@faillabel};"} ]
         | Apply[ ["eof"]   {"it=Qnil;if (ptr->pos<ptr->len) goto #{@@faillabel};"} ]
         | Apply[ ["empty"]   {"it=Qnil;"} ]
-				| Apply[ ["advance"] {"it=AmethystCore_anything(self);"} ]
+				| Apply[ ["advance_char"] {"it=rb_str_new(ptr->str+ptr->pos,1);ptr->pos++;"} ]
+				| Apply[ ["advance_clas"] {"it=ame_curobj2(ptr)               ;ptr->pos++;"} ]
 
         | Apply[ ["_seq"] CAct[.:s] {"if (#{ary=s.split("");map_index(ary){|i| "ame_curstr2(ptr)[#{i}]==#{Lattice_Char.new.cchar(ary[i])}" }*"&&" })  ptr->pos+=#{s.size}; else goto #{@@faillabel};"}]
         | Apply[ .:name {0}:ii ( trans:aa {ii+=1} {"#{aa} arg#{ii-1}=it;"})*:args @self:app]

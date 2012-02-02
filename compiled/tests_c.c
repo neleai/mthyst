@@ -1,6 +1,5 @@
 #include "cthyst.h"
 VALUE cls_Tests;
-VALUE AmethystCore_anything(VALUE self );
 VALUE Tests_abc(VALUE self );
 VALUE Tests_de(VALUE self );
 VALUE Tests_foo(VALUE self );
@@ -26,7 +25,7 @@ static VALUE sy_token;
 VALUE Tests_abc(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(1);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
             
 switch((unsigned char)*ame_curstr2(ptr)){case UC(0) ... UC(31):;case '!' ... '`':;case 'd' ... UC(255):; goto fail; break;
-case ' ' ... ' ':;case 'a' ... 'c':;   it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,0/*_result*/,it);
+case ' ' ... ' ':;case 'a' ... 'c':; it=rb_str_new(ptr->str+ptr->pos,1);ptr->pos++; bind_aset(bind,0/*_result*/,it);
  break;
 }
 return it;
@@ -46,7 +45,7 @@ case 'd' ... 'e':; it=i_1; bind_aset(bind,0/*foo*/,it);
 int oldpos2=ptr->pos;int cut2=0;
 alt2_1:;it=rb_funcall(self,sy_Tests_bind_lb_0_rb__pl__fbc2,1,bind); goto alt2_2;
 ;goto accept2;
-alt2_2: ptr->pos=oldpos2;it=rb_funcall(self,sy_Tests_bind_lb_0_rb__pl__3b00,1,bind);   it=AmethystCore_anything(self ); FAILTEST(alt2_3); bind_aset(bind,1/*_result*/,it);
+alt2_2: ptr->pos=oldpos2;it=rb_funcall(self,sy_Tests_bind_lb_0_rb__pl__3b00,1,bind); it=rb_str_new(ptr->str+ptr->pos,1);ptr->pos++; bind_aset(bind,1/*_result*/,it);
 
 ;goto accept2;
 alt2_3: ptr->pos=oldpos2;goto fail;
@@ -91,8 +90,10 @@ VALUE Tests_s2(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(1);  int x;VALUE
             
 switch((unsigned char)*ame_curstr2(ptr)){case UC(0) ... '`':;case 'c' ... 'c':;case 'g' ... UC(255):;  it=rb_obj_clone(s_g_b2f5); arg0=it; it=rb_funcall(self,sy_seq,1,arg0); FAILTEST(fail); bind_aset(bind,0/*_result*/,it);
  break;
-case 'd' ... 'f':; int oldpos1=ptr->pos;int cut1=0;
-alt1_1:;  it=AmethystCore_anything(self ); FAILTEST(alt1_2);it=i_3; bind_aset(bind,0/*_result*/,it);
+case 'd' ... 'f':; it=rb_str_new(ptr->str+ptr->pos,1);ptr->pos++;it=i_3; bind_aset(bind,0/*_result*/,it);
+ break;
+case 'a' ... 'b':; int oldpos1=ptr->pos;int cut1=0;
+alt1_1:;it=rb_str_new(ptr->str+ptr->pos,1);ptr->pos++; bind_aset(bind,0/*_result*/,it);
 
 ;goto accept1;
 alt1_2: ptr->pos=oldpos1; it=rb_obj_clone(s_g_b2f5); arg0=it; it=rb_funcall(self,sy_seq,1,arg0); FAILTEST(alt1_3); bind_aset(bind,0/*_result*/,it);
@@ -100,16 +101,6 @@ alt1_2: ptr->pos=oldpos1; it=rb_obj_clone(s_g_b2f5); arg0=it; it=rb_funcall(self
 ;goto accept1;
 alt1_3: ptr->pos=oldpos1;goto fail;
  accept1:;
- break;
-case 'a' ... 'b':; int oldpos2=ptr->pos;int cut2=0;
-alt2_1:;  it=AmethystCore_anything(self ); FAILTEST(alt2_2); bind_aset(bind,0/*_result*/,it);
-
-;goto accept2;
-alt2_2: ptr->pos=oldpos2; it=rb_obj_clone(s_g_b2f5); arg0=it; it=rb_funcall(self,sy_seq,1,arg0); FAILTEST(alt2_3); bind_aset(bind,0/*_result*/,it);
-
-;goto accept2;
-alt2_3: ptr->pos=oldpos2;goto fail;
- accept2:;
  break;
 }
 return it;
@@ -174,4 +165,4 @@ rb_define_method(cls_Tests,"gh",Tests_gh,0);
 rb_define_method(cls_Tests,"s2",Tests_s2,0);
 rb_define_method(cls_Tests,"sw",Tests_sw,0);
 rb_define_method(cls_Tests,"test",Tests_test,0);
-                    rb_eval_string("testversiontests('76c3383318f36392c53b237a81792654')");}
+                    rb_eval_string("testversiontests('f18cbf21b6cff45ffe3da1364ca8b508')");}
