@@ -19,7 +19,7 @@ makeclasses(AmethystAST,
     :Comment,
     :Nested,
 		:Switch,
-		:Seq,:Or
+		:Seq,:Or,:Seq_AST,:Or_AST
 )
 makeclasses(Switch,:Switch_Char,:Switch_Clas,:Switch_Or)
 class Enter;end;class Append;end;class PureAct;end;class Pred;end;
@@ -121,7 +121,7 @@ end
 class Seq
 	def self.[](*args)
 		args=args[0][:ary] if args.size==1 && args[0].is_a?(Hash)
-		Seq.create({:ary=>args}).normalize
+		Seq.create({:ary=>args.flatten}).normalize
 	end
 	def normalize2
 		$normalize.parse(:seq2,[self])
@@ -130,7 +130,7 @@ end
 class Or
 	def self.[](*args)
 		args=args[0][:ary] if args.size==1 && args[0].is_a?(Hash)
-		Or.create({:ary=>args}).normalize
+		Or.create({:ary=>args.flatten}).normalize
 	end
 	def normalize2
 		$normalize.parse(:or,[self])

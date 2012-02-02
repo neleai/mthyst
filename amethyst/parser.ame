@@ -1,4 +1,4 @@
-#@Or and @Seq are necessary for collect
+#@Or_AST and @Seq are necessary for collect
 #CurrentParser[:implicit_variables]=true
 
 amethyst AmethystParser < Amethyst{
@@ -15,7 +15,7 @@ amethyst AmethystParser < Amethyst{
           {_body(body)}:body {@@locals.uniq}:locals {body=Seq[{:ary=>($appends.uniq.map{|a| _Bind(a,Act["[]"])}+[body])}]; }   @Rule
 
   
-  expression = listOf(`sequence`,`"|"`):ary @Or  
+  expression = listOf(`sequence`,`"|"`):ary @Or_AST  
   sequence =  (nr "" prefixed)*:ary  @Seq
   nr = ~("" name argsOpt "=")
 
@@ -27,7 +27,7 @@ amethyst AmethystParser < Amethyst{
                     (~_     (  '=>'     term:e           -> Pass[from,e] 
                             | '['      expression:e "]" -> Enter[from,e]
                             | <+*>:one -> Many[from,one=="+"]
-                            | '?'      -> Or[from,Apply["empty"]]
+                            | '?'      -> Or_AST[from,Apply["empty"]]
                             | ':' (  (key | name):name ('[]'?):append -> _Bind(name,from,append=='[]')
                                   | inline_host_expr:e                      -> Seq[ _Bind("it",from) , Act[e] ]
                                   )
@@ -51,7 +51,7 @@ amethyst AmethystParser < Amethyst{
         | '#'  line:s        -> Comment[s]
         | '(' expression:x ")" ( '[]'  collect(x) | empty {x} )
 
-  collect(ors) = -> a=autovar; Seq[Or[{:ary=>ors.ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
+  collect(ors) = -> a=autovar; Seq[Or_AST[{:ary=>ors.ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
   
   call = className:klas '::' name:name argsOpt:arg -> Apply[[klas,name],arg]
        |                     name:name argsOpt:arg -> Apply[name,arg]

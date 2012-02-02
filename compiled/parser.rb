@@ -1,4 +1,4 @@
-#@Or and @Seq are necessary for collect
+#@Or_AST and @Seq are necessary for collect
 #CurrentParser[:implicit_variables]=true
 
 class AmethystParser < Amethyst
@@ -92,11 +92,11 @@ def AmethystParser_Nested_lb_b_ab2c(bind)
 Nested[bind[4]]
 
 end
-def AmethystParser_Or_dot_creat_67f0(bind)
-Or.create( {:ary=>bind[6] })
+def AmethystParser_Or_AST_dot_c_163b(bind)
+Or_AST.create( {:ary=>bind[6] })
 end
-def AmethystParser_Or_lb_bind_lb__cb4a(bind)
-Or[bind[0],Apply["empty"]]
+def AmethystParser_Or_AST_lb_b_1d9d(bind)
+Or_AST[bind[0],Apply["empty"]]
 
 end
 def AmethystParser_Pass_lb_bin_9af8(bind)
@@ -264,12 +264,12 @@ end
 def AmethystParser__qu__sh__le__qu__9722(bind)
 '#{'
 end
-def AmethystParser_a_eq_autova_91af(bind)
-a=autovar; Seq[Or[{:ary=>bind[0].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
+def AmethystParser_a_eq_autova_3ea7(bind)
+a=autovar; Seq[Or_AST[{:ary=>bind[11].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
 
 end
-def AmethystParser_a_eq_autova_bae6(bind)
-a=autovar; Seq[Or[{:ary=>bind[11].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
+def AmethystParser_a_eq_autova_a9cb(bind)
+a=autovar; Seq[Or_AST[{:ary=>bind[0].ary.map{|ands| Seq[{:ary=>ands.ary.map{|expr| Append[a,expr]}}]}}],a]
 
 end
 def AmethystParser_bind_lb_0_rb_(bind)
@@ -336,15 +336,15 @@ end
 
 
 def parser_compiled_by
-'4c2828f3f11aff1ca4552952bacab0f1'
+'717632f9e51fe1ce4fa72f99fde4c607'
 end
 def parser_source_hash
-'054aa997ee4218b34b41be9004fe8d16'
+'b1b621c0ea9fea387d70ab72d5db61d4'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'44ee064c330d62c4bc52d66974fea406'
+'d42ced618e5f6ec34d9ffaf3a36c6956'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/parser_c"

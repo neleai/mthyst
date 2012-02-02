@@ -31,6 +31,8 @@ traverse[.*  {@locals=nil} @self] ]
         | Act[ @pred:pred @pure:pure traverse[.* @ary=>[(&{!pred} Local| Args[ .*:ary {Act[ary,pred,pure]}])] ] ]
         | Result[ {vars=@@locals.select{|aa| Object.const_get(@name).instance_variable_get(:@attrs).include? aa[0].to_sym}.uniq ;Result[{:name=>@name,:vars=>vars,:varnames=>vars.map{|v| v[0]}}]}]
         | Comment[.*{Placeholder}]
+				| Seq_AST[traverse_item*:ary] -> Seq[*ary]
+				|  Or_AST[traverse_item*:ary] ->  Or[*ary]
 
 
   flat= (Args[flat] | Strin[flat] |  . )*
