@@ -109,7 +109,7 @@ class <<Compiler
 				inlined=false
 				callg[name].each{|nm,v|
 					r=g.getrule(nm)
-					if r && topo.index(nm)<topo.index(name) 
+					if r && nm!=name
 						if complexity(r)>10
 							g.inline(nm,name) 
 							inlined=true
@@ -160,7 +160,7 @@ class <<Compiler
     File.open("compiled/#{file2}.rb","w"){|f| f.puts rb; 
       f.puts "\ndef #{file2}_compiled_by\n'#{$compiled_by}'\nend\ndef #{file2}_source_hash\n'#{source_hash}'\nend\ndef testversion#{file2}(r)\n raise \"invalid version\" if r!=#{file2}_version\nend\ndef #{file2}_version\n'#{hex_digest}'\nend
 require File.expand_path(File.dirname(__FILE__))+\"/\#{RUBY_VERSION}/#{file2}_c\""}
-		#fork{todo need join
+		#fork{#makes time measurement more difficult disabled for now
 	  withtime("c"){ #todo get flags portable not just 1.8 on x64
 			if Amethyst::Settings.compile_for.include?("1_9_3")
 				`cd compiled;gcc -I. -I/usr/include/ruby-1.9.1/x86_64-linux -I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -fPIC -fno-strict-aliasing -g -g #{Amethyst::Settings.cflags} -fPIC -c #{file2}_c.c -o #{file2}_c.o`
