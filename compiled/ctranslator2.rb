@@ -314,8 +314,8 @@ end
 def AmethystCTranslator_bind_lb_16_rb__878f(bind)
 bind[16]+="#{bind[54]}\n;goto #{bind[61]};\n"
 end
-def AmethystCTranslator_bind_lb_16_rb__b085(bind)
-bind[16]+=bind[108].cases(src.first) + " #{bind[54]} break;\n"
+def AmethystCTranslator_bind_lb_16_rb__d43f(bind)
+bind[16]+=bind[108].cases() + " #{bind[54]} break;\n"
 end
 def AmethystCTranslator_bind_lb_1_rb__lt__2f50(bind)
 bind[1]<<bind[6][0];bind[2]<<bind[6][1];bind[0]<<bind[6][2]
@@ -397,12 +397,12 @@ def ctranslator2_compiled_by
 'f0f3e6bd2db69decf0d4ff76f3c902f4'
 end
 def ctranslator2_source_hash
-'d0f83755a43f9106b0c883947366ff06'
+'a05c6e8b1511f62656a2d43919e6a796'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'7fb5b37ca1b48ad2c88d1073732cca4c'
+'e8d7540823ad48174da90c342a24c2da'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"

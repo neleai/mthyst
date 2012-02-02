@@ -59,7 +59,7 @@ class FirstLattice
     self&(~a)
   end
 
-  def cases(first)
+  def cases()
     ary.map{|c| "case #{c}:;"}*""
   end
   def inspect
@@ -88,7 +88,7 @@ class Lattice_Char < FirstLattice
     return "'#{c.chr}'" if c.chr.inspect.size==3 && c.chr.inspect!='"\'"' && c.ord < 128
     "UC(#{c.ord})"
   end
-  def cases(first)
+  def cases()
     ary.map{|c| "case #{cchar(c[0])} ... #{cchar(c[1])}:;"}*""
   end
   def ~
@@ -961,7 +961,7 @@ def detect_switch_compiled_by
 'f0f3e6bd2db69decf0d4ff76f3c902f4'
 end
 def detect_switch_source_hash
-'cb6df7058ffe6a342f896da5b617c236'
+'c2a2108c7534a1fada136501921e19b6'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version

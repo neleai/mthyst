@@ -161,7 +161,7 @@ amethyst AmethystCTranslator < Amethyst {
               ]
         | Switch_Char[ 
                      {"switch((unsigned char)*ame_curstr2(ptr)){"}:s
-                     ( [.:c trans:t] {s+=c.cases(@first) + " #{t} break;\n"})*
+                     ( [.:c trans:t] {s+=c.cases() + " #{t} break;\n"})*
                      {s+"}"}
                      ]
         | Switch_Clas[ {"switchhash_#{@@grammar}_#{$classlabels[@@grammar]+=1}"}:sh {0}:ii {""}:init

@@ -39,11 +39,11 @@ def Normalize_Seq_lb_bind_b71c(bind)
 Seq[bind[15],Bind[bind[5],bind[16]]]
 
 end
-def Normalize_Switch_C_059f(bind)
-Switch_Char.create( {:ary=>bind[10],:first=>bind[15] })
+def Normalize_Switch_C_775c(bind)
+Switch_Char.create( {:ary=>bind[10] })
 end
-def Normalize_Switch_C_09b7(bind)
-Switch_Clas.create( {:ary=>bind[10],:first=>bind[15] })
+def Normalize_Switch_C_eba2(bind)
+Switch_Clas.create( {:ary=>bind[10] })
 end
 def Normalize__append_lp__0eeb(bind)
 _append(bind[0],bind[8])
@@ -135,6 +135,6 @@ def testversionnormalize(r)
  raise "invalid version" if r!=normalize_version
 end
 def normalize_version
-'b40d91a3ad4551bae298f76a75c18e35'
+'63b7b1842b42f2d58a00c7ca1e05ea3e'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/normalize_c"

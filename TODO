@@ -82,6 +82,7 @@ separate dataflow and dead code elimination
 
 predicated inlining
 inlining concrete and general form
+can use overaproximation from more general form?
 
 cache dataflow data with objects
 
@@ -89,7 +90,6 @@ predication of sizes
 
 simple dataflows
 string_only,object_only
-generalize must_empty to max_size
 as constant propagation?
 use to simplify ors
 

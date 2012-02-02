@@ -18,12 +18,11 @@ makeclasses(AmethystAST,
 		:Char,
     :Comment,
     :Nested,
-		[:Switch_Char,:act,:defs,:first,:header,:init],
-		[:Switch_Clas,:act,:defs,:first,:header,:init]
-
+		[:Switch_Char],
+		[:Switch_Clas],
+		[:Switch_Or],
+		:Seq,:Or
 )
-class SeqOr<AmethystAST;end
-makeclasses(SeqOr,:Seq,:Or)
 class Enter;end;class Append;end;class PureAct;end;class Pred;end;
 
 def equalize_by(clas,args)

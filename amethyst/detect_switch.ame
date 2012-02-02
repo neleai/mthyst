@@ -59,7 +59,7 @@ class FirstLattice
     self&(~a)
   end
 
-  def cases(first)
+  def cases()
     ary.map{|c| "case #{c}:;"}*""
   end
   def inspect
@@ -88,7 +88,7 @@ class Lattice_Char < FirstLattice
     return "'#{c.chr}'" if c.chr.inspect.size==3 && c.chr.inspect!='"\'"' && c.ord < 128
     "UC(#{c.ord})"
   end
-  def cases(first)
+  def cases()
     ary.map{|c| "case #{cchar(c[0])} ... #{cchar(c[1])}:;"}*""
   end
   def ~
