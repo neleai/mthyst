@@ -336,7 +336,7 @@ end
 
 
 def parser_compiled_by
-'717632f9e51fe1ce4fa72f99fde4c607'
+'60974949cee6c51cf99681ea159d676f'
 end
 def parser_source_hash
 'b1b621c0ea9fea387d70ab72d5db61d4'

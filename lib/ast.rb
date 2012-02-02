@@ -39,7 +39,7 @@ def equalize_by(clas,args)
 					end
     end")
 end
-[Act,Apply,Args,Bind,Bnding,CAct,Comment,Cut,Lambda,Global,Key,Local,Lookahead,Many,Or,Pass,Result,Seq,Stop,Strin,Switch_Char,Switch_Clas].each{|e| 
+[Act,Apply,Args,Bind,Bnding,CAct,Comment,Cut,Lambda,Global,Key,Local,Lookahead,Many,Or,Pass,Result,Seq,Stop,Strin,Switch_Char,Switch_Clas,Switch_Or].each{|e| 
 by="[#{e.instance_variable_get(:@attrs)*","}]"
 by="ary" if by=="[ary]"
 equalize_by(e,by)
@@ -99,7 +99,12 @@ def _Bind(name,expr,append=nil)
 	end
 end
 class Bind
-	def self.[](name,expr)
+	def self.[](name,expr,append=nil)
+		if append
+	    a=autovar
+  	  $appends<<name if $appends
+    	return Seq[Bind[a,expr],PureAct[Args["_append(",name,",",a,")"]],a]
+	  end
 		Bind.create({:name=>name,:ary=>[expr]}).normalize
 	end
 	def normalize2
@@ -271,5 +276,4 @@ class Local;					def inspect;	"L[#{ary[0]}#{ary[1].is_a?(Bnding) ? "" : ary[1]}_
 class Key;						def inspect;	"@#{ary[0]}"																									;end;end
 class Global;					def inspect;	"@@#{ary[0]}"																									;end;end
 class Bind;						def inspect;	"#{ary[0].inspect}:#{name.inspect}"														;end;end
-class Switch_Char; 				def inspect;  "Switch_Char[#{ary.map{|d,k|  "#{d.inspect}: #{k.inspect}\n"}*""}]";end;end
-class Switch_Clas; 				def inspect;  "Switch_Clas[#{ary.map{|d,k|  "#{d.inspect}: #{k.inspect}\n"}*""}]";end;end
+class Switch; 				def inspect;  "#{self.class}[#{ary.map{|d,k|  "#{d.inspect}: #{k.inspect}\n"}*""}]";end;end

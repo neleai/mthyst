@@ -24,11 +24,8 @@ end
 
 class Add_Implicit_Variables < Traverser_Clone2
 
-def Add_Implicit_Variables_Append_lb_b_7a4e(bind)
-Append[bind[3],src]
-end
-def Add_Implicit_Variables__Bind_lp_bi_e107(bind)
-_Bind(bind[3],src)
+def Add_Implicit_Variables__at_bnding_eq__b94a(bind)
+@bnding=src.bnding
 end
 def Add_Implicit_Variables__at_changed_5352(bind)
 @changed=true
@@ -71,6 +68,12 @@ if bind[3]
             src
           end
 end
+def Add_Implicit_Variables_l_eq_Local_lb__9eab(bind)
+l=Local[bind[3],@bnding];@locals<<l;Bind[l,src]
+end
+def Add_Implicit_Variables_l_eq_Local_lb__a586(bind)
+l=Local[bind[3],@bnding];@locals<<l;Append[bind[3],src]
+end
 def Add_Implicit_Variables_src_25d9(bind)
 src
 end
@@ -79,15 +82,15 @@ end
 
 
 def implicit_variables_compiled_by
-'717632f9e51fe1ce4fa72f99fde4c607'
+'60974949cee6c51cf99681ea159d676f'
 end
 def implicit_variables_source_hash
-'f4765f36a8fb8939aca651743ad9445e'
+'322999144ec82b0fd6ab316082e79398'
 end
 def testversionimplicit_variables(r)
  raise "invalid version" if r!=implicit_variables_version
 end
 def implicit_variables_version
-'4f6ca967331a06188ac0e428f5ee3b7f'
+'0a01f7323d311a017353377c38b86669'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/implicit_variables_c"
