@@ -67,10 +67,8 @@ class FirstLattice
   end
 end
 
-$hash_Lattice_Char={}
 class Lattice_Char < FirstLattice
   def self.[](*ary)
-    return $hash_Lattice_Char[ary] if $hash_Lattice_Char[ary]
     nary=[]
     if ary.size>0
       first,last=*ary.sort[0]
@@ -104,7 +102,6 @@ class Lattice_Char < FirstLattice
   end
 end
 
-$hash_Lattice_Clas={}
 class Lattice_Clas < FirstLattice
   def self.[](*ary)
     ary=ary.uniq.sort_by{|a| a.inspect}.map{|a| eval(a.to_s)}
@@ -124,14 +121,10 @@ class Lattice_Clas < FirstLattice
   end
 end
 
-$hash_Lattice_Must_Empty={}
 class Lattice_Must_Empty < FirstLattice
-  attr_accessor :value
-  def self.[](value)
-    return $hash_Lattice_Must_Empty[value] if $hash_Lattice_Must_Empty[value]
-    c=Lattice_Must_Empty.new
-    c.value=value
-    $hash_Lattice_Must_Empty[value]=c
+	def value;ary[0];end
+  def self.[](val)
+		FirstLattice[Lattice_Must_Empty,val]
   end
   def |(a);          Lattice_Must_Empty[value & a.value];  end
   def seqjoin(a);    Lattice_Must_Empty[value & a.value];  end
@@ -139,12 +132,9 @@ end
 
 $hash_Lattice_Cant_Fail={}
 class Lattice_Cant_Fail < FirstLattice
-  attr_accessor :value
-  def self.[](value)
-    return $hash_Lattice_Cant_Fail[value] if $hash_Lattice_Cant_Fail[value]
-    c=Lattice_Cant_Fail.new
-    c.value=value
-    $hash_Lattice_Cant_Fail[value]=c
+	def value;ary[0];end
+  def self.[](val)
+		FirstLattice[Lattice_Cant_Fail,val]
   end
   def |(a)      ;    Lattice_Cant_Fail[value & a.value];  end
   def seqjoin(a);    Lattice_Cant_Fail[value & a.value];  end

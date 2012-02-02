@@ -67,10 +67,8 @@ class FirstLattice
   end
 end
 
-$hash_Lattice_Char={}
 class Lattice_Char < FirstLattice
   def self.[](*ary)
-    return $hash_Lattice_Char[ary] if $hash_Lattice_Char[ary]
     nary=[]
     if ary.size>0
       first,last=*ary.sort[0]
@@ -104,7 +102,6 @@ class Lattice_Char < FirstLattice
   end
 end
 
-$hash_Lattice_Clas={}
 class Lattice_Clas < FirstLattice
   def self.[](*ary)
     ary=ary.uniq.sort_by{|a| a.inspect}.map{|a| eval(a.to_s)}
@@ -124,14 +121,10 @@ class Lattice_Clas < FirstLattice
   end
 end
 
-$hash_Lattice_Must_Empty={}
 class Lattice_Must_Empty < FirstLattice
-  attr_accessor :value
-  def self.[](value)
-    return $hash_Lattice_Must_Empty[value] if $hash_Lattice_Must_Empty[value]
-    c=Lattice_Must_Empty.new
-    c.value=value
-    $hash_Lattice_Must_Empty[value]=c
+	def value;ary[0];end
+  def self.[](val)
+		FirstLattice[Lattice_Must_Empty,val]
   end
   def |(a);          Lattice_Must_Empty[value & a.value];  end
   def seqjoin(a);    Lattice_Must_Empty[value & a.value];  end
@@ -139,12 +132,9 @@ end
 
 $hash_Lattice_Cant_Fail={}
 class Lattice_Cant_Fail < FirstLattice
-  attr_accessor :value
-  def self.[](value)
-    return $hash_Lattice_Cant_Fail[value] if $hash_Lattice_Cant_Fail[value]
-    c=Lattice_Cant_Fail.new
-    c.value=value
-    $hash_Lattice_Cant_Fail[value]=c
+	def value;ary[0];end
+  def self.[](val)
+		FirstLattice[Lattice_Cant_Fail,val]
   end
   def |(a)      ;    Lattice_Cant_Fail[value & a.value];  end
   def seqjoin(a);    Lattice_Cant_Fail[value & a.value];  end
@@ -912,7 +902,7 @@ def detect_switch_compiled_by
 '16b4fa87f02788dbba0f0e07875a8368'
 end
 def detect_switch_source_hash
-'2b0b1694128e2b59b320ecf7b51e375b'
+'be06cb42606c248ba322afced05f5460'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
