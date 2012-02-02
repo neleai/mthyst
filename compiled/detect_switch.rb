@@ -901,17 +901,67 @@ end
 end
 
 
+class Detect_Size < Amethyst
+
+def Detect_Size_Or_dot_creat_e046(bind)
+Or.create( {:ary=>bind[12] })
+end
+def Detect_Size_Seq_dot_crea_c73f(bind)
+Seq.create( {:ary=>bind[12] })
+end
+def Detect_Size__append_lp__50ed(bind)
+_append(bind[14],bind[16])
+end
+def Detect_Size__append_lp__b93e(bind)
+_append(bind[3],bind[11])
+end
+def Detect_Size__append_lp__c354(bind)
+_append(bind[9],bind[11])
+end
+def Detect_Size__lb_bind_lb_3_rb__5ee3(bind)
+[bind[3],bind[1]].max
+end
+def Detect_Size__lb_bind_lb_5_rb__a14a(bind)
+[bind[5],bind[7]].max
+end
+def Detect_Size__sh_lowleve_46e8(bind)
+#lowlevel representation that cant fail
+
+end
+def Detect_Size_bind_lb_1_rb__gt__c449(bind)
+bind[1]>bind[3] ? Seq[Apply["test_size",Act[bind[1]]],bind[0]] : bind[0]
+
+end
+def Detect_Size_bind_lb_4_rb__eq__2130(bind)
+bind[4]=[bind[4]-maxsize(bind[15]),0].max
+end
+def Detect_Size_bind_lb_7_rb__eq__59fb(bind)
+bind[7]=[bind[7]-maxsize(bind[15]),0].max
+end
+def Detect_Size_bind_lb_7_rb__gt__20b4(bind)
+bind[7]>bind[5] ? Seq[Apply["test_size",Act[bind[7]]],bind[6]] : bind[6]
+
+end
+def Detect_Size_minsize_lp__b431(bind)
+minsize(bind[6])
+end
+def Detect_Size_minsize_lp__d769(bind)
+minsize(bind[0])
+end
+
+end
+
 
 def detect_switch_compiled_by
-'641cbd9ebcf69005d08c85ba80b3917c'
+'ca192381fe63462b460f447d35ad9f21'
 end
 def detect_switch_source_hash
-'fef0dfb0596267967f7e63f322d4f5f6'
+'8b71a9e43fd93d0ac24bee80faf74677'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'f542eed0cd5a7c1124a53bc693b6eed7'
+'52aa96e54f0b146bf533d4dea019905c'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

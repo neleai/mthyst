@@ -141,7 +141,7 @@ VALUE Amethyst_eof(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(1);  int x;V
 int oldpos1=ptr->pos;int cut1=0;
 alt1_1:;  it=AmethystCore_anything(self ); FAILTEST(alt1_2);cut1=1;goto alt1_2;
 ;goto accept1;
-alt1_2: ptr->pos=oldpos1;if (cut1) goto fail;  it=Amethyst_empty(self ); FAILTEST(alt1_3); bind_aset(bind,0/*_result*/,it);
+alt1_2: ptr->pos=oldpos1;if (cut1) goto fail;it=Qnil; bind_aset(bind,0/*_result*/,it);
 
 ;goto accept1;
 alt1_3: ptr->pos=oldpos1;goto fail;
@@ -339,7 +339,7 @@ it=rb_funcall(self,sy_Amethyst__append_lp__6948,1,bind);  } break1: ptr->pos=old
 it=rb_funcall(self,sy_Amethyst__append_lp__6ac6,1,bind); it=rb_funcall(self,sy_Amethyst_bind_lb_0_rb_,1,bind);  bind_aset(bind,8/*_result*/,it);
 
 ;goto accept1;
-alt1_2: ptr->pos=oldpos1;  it=Amethyst_empty(self ); FAILTEST(alt1_3);it=rb_ary_new3(0); bind_aset(bind,8/*_result*/,it);
+alt1_2: ptr->pos=oldpos1;it=Qnil;it=rb_ary_new3(0); bind_aset(bind,8/*_result*/,it);
 
 ;goto accept1;
 alt1_3: ptr->pos=oldpos1;goto fail;
@@ -503,7 +503,7 @@ int oldpos1; int stop1=0; while(1){oldpos1=ptr->pos; switch((unsigned char)*ame_
 alt1_1:;it=bind_aget(bind,1/*e*/); bind_aset(bind,2/*s*/,it);
  it=bind_aget(bind,2/*s*/); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(alt1_2);it=bind_aget(bind,2/*s*/);cut1=1;stop1=1;
 ;goto accept2;
-alt1_2: ptr->pos=oldpos2;if (cut1) goto break1;  it=Amethyst_empty(self ); FAILTEST(alt1_3);  it=AmethystCore_anything(self ); FAILTEST(alt1_3); bind_aset(bind,3/*autovar*/,it);
+alt1_2: ptr->pos=oldpos2;if (cut1) goto break1;it=Qnil;  it=AmethystCore_anything(self ); FAILTEST(alt1_3); bind_aset(bind,3/*autovar*/,it);
 it=rb_funcall(self,sy_Amethyst__append_lp__f8f8,1,bind); 
 ;goto accept2;
 alt1_3: ptr->pos=oldpos2;goto break1;
@@ -518,7 +518,7 @@ alt3_1:;  it=AmethystCore_anything(self ); FAILTEST(alt3_2);it=rb_obj_clone(s__b
 it=bind_aget(bind,4/*_result*/); bind_aset(bind,5/*autovar*/,it);
 it=rb_funcall(self,sy_Amethyst__append_lp__81ec,1,bind); 
 ;goto accept4;
-alt3_2: ptr->pos=oldpos4;  it=Amethyst_empty(self ); FAILTEST(alt3_3);
+alt3_2: ptr->pos=oldpos4;it=Qnil;
 ;goto accept4;
 alt3_3: ptr->pos=oldpos4;goto alt2_3;
  accept4:;
@@ -637,4 +637,4 @@ rb_define_method(cls_Amethyst,"until",Amethyst_until,1);
 rb_define_method(cls_Amethyst,"upper",Amethyst_upper,0);
 rb_define_method(cls_Amethyst,"word",Amethyst_word,0);
 rb_define_method(cls_Amethyst,"xdigit",Amethyst_xdigit,0);
-                    rb_eval_string("testversionamethyst('c2c3d4e43c3c59015156b7f56339ae72')");}
+                    rb_eval_string("testversionamethyst('fe591739748ac8cae3fdbac472f10cb7')");}

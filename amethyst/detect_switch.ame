@@ -376,3 +376,11 @@ amethyst Detect_Switch_Clas < Detect_First {
 
 }
 
+amethyst Detect_Size {
+	predicate(s) = .:el {minsize(el)}:msize {el}=>predicate2([s,msize].max):el -> msize>s ? Seq[Apply["test_size",Act[msize]],el] : el
+
+ 	predicate2(s) = Seq[ (  predicate(s):el {s=[s-maxsize(el),0].max} {el} )*:ary ] @Seq
+                | Or[ predicate(s)*:ary ]                                         @Or
+								| Apply["anything"] -> #lowlevel representation that cant fail
+
+}
