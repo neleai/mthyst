@@ -220,9 +220,6 @@ def Pred.[](e,neg=false)
 	Act[e,true]
 end
 
-def _body(body)
-	Seq[_Bind("_result",body)]
-end
 
 class Apply
   def self.[](name,*args)

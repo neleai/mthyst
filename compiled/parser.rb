@@ -53,6 +53,9 @@ def AmethystParser_Args_lb__le__co_a_fc0c(bind)
 Args[{:ary=>([bind[2]]+bind[8]+[bind[0]])}]
 
 end
+def AmethystParser_Bind_lb_loc_eddf(bind)
+Bind[local("_result"),bind[3]]
+end
 def AmethystParser_Comment_lb__f189(bind)
 Comment[bind[3]]
 
@@ -76,8 +79,8 @@ def AmethystParser_Key_lb_bind_20b7(bind)
 Key[bind[0],bind[2]]
 
 end
-def AmethystParser_Lambda_lb___e59d(bind)
-Lambda[_body(bind[27])]
+def AmethystParser_Lambda_lb_B_5cdf(bind)
+Lambda[Bind[local("_result"),bind[27]]]
 
 end
 def AmethystParser_Lookahea_b11c(bind)
@@ -117,12 +120,12 @@ end
 def AmethystParser_Seq_dot_crea_abce(bind)
 Seq.create( {:ary=>bind[2] })
 end
-def AmethystParser_Seq_lb_Cut_lb__3505(bind)
-Seq[Cut[],Stop[]]
+def AmethystParser_Seq_lb_Bind_50cd(bind)
+Seq[Bind[local("it"),bind[0]] , Act[bind[5]] ]
 
 end
-def AmethystParser_Seq_lb__Bin_6d20(bind)
-Seq[_Bind("it",bind[0]) , Act[bind[5]] ]
+def AmethystParser_Seq_lb_Cut_lb__3505(bind)
+Seq[Cut[],Stop[]]
 
 end
 def AmethystParser_Strin_lb__lb__dq__41d8(bind)
@@ -211,8 +214,8 @@ end
 def AmethystParser__append_lp__dd73(bind)
 _append(bind[3],bind[4])
 end
-def AmethystParser__at_appends_fd76(bind)
-@appends<< local(bind[2]) if bind[3]; _Bind(bind[2],bind[0],bind[3]=='[]')
+def AmethystParser__at_appends_5d33(bind)
+@appends<< local(bind[2]) if bind[3]; Bind[local(bind[2]),bind[0],bind[3]=='[]']
 
 end
 def AmethystParser__at_ary_eq__lb__rb_(bind)
@@ -235,9 +238,6 @@ def AmethystParser__at_locals_eq__4fc1(bind)
 end
 def AmethystParser__at_tmp_lt__lt_bi_c4f3(bind)
 @tmp<<bind[5]
-end
-def AmethystParser__body_lp_bi_152d(bind)
-_body(bind[3])
 end
 def AmethystParser__dq__le__dq__pl_bind_567e(bind)
 "{"+bind[1]+"}"
@@ -336,12 +336,12 @@ def parser_compiled_by
 '2065d6907124025144e9e81748f583cc'
 end
 def parser_source_hash
-'e5c72cb969fbd5be3cb58f08d8d90fa1'
+'697fc8e9995b3eb006b575685c3311a9'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'f4d16020025c7a7ded69ddacd0bafbbf'
+'145ef671060e17698098a8cdba999919'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/parser_c"
