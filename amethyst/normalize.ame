@@ -6,7 +6,7 @@ amethyst Normalize{
            ( Or[ .* @ary:ary[] ]
            | Apply[ ["fails"] ]
            | Placeholder
-					 | Seq[(Cut .*| cant_fail)* eof  {@self}:ary[] ] .*
+					 | Seq[(~Cut cant_fail)* Cut .* {@self}:ary[] ] .*
            | .:ary[]
            )* ]
           {ary.size}=>( 0 -> Apply["fails"]
