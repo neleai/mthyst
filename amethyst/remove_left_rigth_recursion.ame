@@ -1,7 +1,4 @@
 #todo bind.reset to reset locals
-def must_empty?(s)
-	$must_empty_df.analyze(s).value
-end
 
 amethyst Remove_Left_Recursion < Traverser_Clone2 {
   root =  Rule[ {@@name=@name} {@@result=Local["_result",@bnding]} @body:oldbody (@body=>first(false)):first (@body=>first(true)):follow

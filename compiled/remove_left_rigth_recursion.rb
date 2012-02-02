@@ -1,7 +1,4 @@
 #todo bind.reset to reset locals
-def must_empty?(s)
-	$must_empty_df.analyze(s).value
-end
 
 class Remove_Left_Recursion < Traverser_Clone2
 
@@ -98,10 +95,10 @@ end
 
 
 def remove_left_rigth_recursion_compiled_by
-'ae23cd294bf7dc9dc3a1ecd9adedb28d'
+'4feddfa28e441f44bce73ba78f00a03e'
 end
 def remove_left_rigth_recursion_source_hash
-'d4f256543211c4acfa68e0f3de5be511'
+'0c5137caf49e57c254371395d36326a2'
 end
 def testversionremove_left_rigth_recursion(r)
  raise "invalid version" if r!=remove_left_rigth_recursion_version

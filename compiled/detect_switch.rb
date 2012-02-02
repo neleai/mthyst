@@ -121,15 +121,6 @@ class Lattice_Clas < FirstLattice
   end
 end
 
-class Lattice_Must_Empty < FirstLattice
-	def value;ary[0];end
-  def self.[](val)
-		FirstLattice[Lattice_Must_Empty,val]
-  end
-  def |(a);          Lattice_Must_Empty[value & a.value];  end
-  def seqjoin(a);    Lattice_Must_Empty[value & a.value];  end
-end
-
 $hash_Lattice_Cant_Fail={}
 class Lattice_Cant_Fail < FirstLattice
 	def value;ary[0];end
@@ -182,20 +173,20 @@ end
 class Switch_Clas_Dataflow < First_Dataflow;  def lattice;    Lattice_Clas;        end; end
 class Switch_Char_Dataflow < First_Dataflow;  def lattice;    Lattice_Char;        end; end
 class Minsize_Dataflow < First_Dataflow      ;  def lattice;    Lattice_Minsize;       end; end
-class Must_Empty_Dataflow < First_Dataflow ;  def lattice;    Lattice_Must_Empty;  end; end
-class Cant_Fail_Dataflow  < First_Dataflow ;  def lattice;    Lattice_Must_Empty;  end; end
+class Maxsize_Dataflow < First_Dataflow      ;  def lattice;    Lattice_Maxsize;       end; end
+class Cant_Fail_Dataflow  < First_Dataflow ;  def lattice;    Lattice_Cant_Fail;  end; end
 
 
 class                       First_Dataflow;  def can_empty?(el);    $sizedf.analyze(el).size==0;  end; end
 class Minsize_Dataflow      < First_Dataflow;  def can_empty?(el);    true;                         end; end
-class Must_Empty_Dataflow < First_Dataflow;  def can_empty?(el);    true;                         end; end
+class Maxsize_Dataflow      < First_Dataflow;  def can_empty?(el);    true;                         end; end
 class Cant_Fail_Dataflow  < First_Dataflow;  def can_empty?(el);    true;                         end; end
 
 
 class Lattice_Clas;       def self.top;    self[Object];      end;def self.bottom; self[]          ; end; end
 class Lattice_Char;       def self.top;    self[[0,255]];     end;def self.bottom; self[]          ; end; end
 class Lattice_Minsize;      def self.top;    self[1.0/0.0];     end;def self.bottom; self[0]         ; end; end
-class Lattice_Must_Empty; def self.top;    self[false];       end;def self.bottom; self[true]      ; end; end
+class Lattice_Maxsize;      def self.top;    self[1.0/0.0];     end;def self.bottom; self[0]         ; end; end
 class Lattice_Cant_Fail;  def self.top;    self[false];       end;def self.bottom; self[true]      ; end; end
 
 class Switch_Char_Dataflow < First_Dataflow
@@ -337,6 +328,64 @@ end
 end
 
 
+class Maxsize_Dataflow < First_Dataflow
+
+def Maxsize_Dataflow_Compiler_ad51(bind)
+Compiler.grammars[src.clas].rules[bind[4]].body
+end
+def Maxsize_Dataflow__append_lp__3f99(bind)
+_append(bind[16],bind[27])
+end
+def Maxsize_Dataflow__append_lp__a474(bind)
+_append(bind[14],bind[15])
+end
+def Maxsize_Dataflow__append_lp__e555(bind)
+_append(bind[16],bind[30])
+end
+def Maxsize_Dataflow__at_vis_eq_bin_af53(bind)
+@vis=bind[0]; bind[0]
+end
+def Maxsize_Dataflow__d41d(bind)
+
+end
+def Maxsize_Dataflow__lp_(bind)
+(!(can_empty?(bind[18]))) || FAIL
+end
+def Maxsize_Dataflow__lp_Compile_bc2b(bind)
+(Compiler.grammars[src.clas]&&Compiler.grammars[src.clas].rules[bind[4]]) || FAIL
+end
+def Maxsize_Dataflow_bind_lb_11_rb__4dc0(bind)
+bind[11]|lattice.bottom
+end
+def Maxsize_Dataflow_bind_lb_11_rb__7d69(bind)
+bind[11].seqjoin(bind[21])
+end
+def Maxsize_Dataflow_bind_lb_16_rb__6275(bind)
+bind[16].inject(:|)
+
+end
+def Maxsize_Dataflow_bind_lb_25_rb__eb7c(bind)
+bind[25].is_a?(lattice)? bind[25] & bind[26] : bind[26]
+end
+def Maxsize_Dataflow_lattice_dot__5a9e(bind)
+lattice.bottom
+end
+def Maxsize_Dataflow_lattice_dot__b0f6(bind)
+lattice.top|lattice.bottom
+end
+def Maxsize_Dataflow_lattice_dot__e0e5(bind)
+lattice.top
+end
+def Maxsize_Dataflow_lattice_lb__cef9(bind)
+lattice[bind[6].size]
+end
+def Maxsize_Dataflow_lattice_lb__fdee(bind)
+lattice[1]
+end
+
+end
+
+
 class Switch_Char_Dataflow < First_Dataflow
 
 def Switch_Char_Dataflow_Compiler_ad51(bind)
@@ -447,54 +496,6 @@ end
 end
 
 
-class Must_Empty_Dataflow < First_Dataflow
-
-def Must_Empty_Dataflow_Compiler_ad51(bind)
-Compiler.grammars[src.clas].rules[bind[4]].body
-end
-def Must_Empty_Dataflow__append_lp__3f99(bind)
-_append(bind[16],bind[27])
-end
-def Must_Empty_Dataflow__append_lp__a474(bind)
-_append(bind[14],bind[15])
-end
-def Must_Empty_Dataflow__append_lp__e555(bind)
-_append(bind[16],bind[30])
-end
-def Must_Empty_Dataflow__at_vis_eq_bin_af53(bind)
-@vis=bind[0]; bind[0]
-end
-def Must_Empty_Dataflow__d41d(bind)
-
-end
-def Must_Empty_Dataflow__lp_(bind)
-(!(can_empty?(bind[18]))) || FAIL
-end
-def Must_Empty_Dataflow__lp_Compile_bc2b(bind)
-(Compiler.grammars[src.clas]&&Compiler.grammars[src.clas].rules[bind[4]]) || FAIL
-end
-def Must_Empty_Dataflow_bind_lb_11_rb__4dc0(bind)
-bind[11]|lattice.bottom
-end
-def Must_Empty_Dataflow_bind_lb_11_rb__7d69(bind)
-bind[11].seqjoin(bind[21])
-end
-def Must_Empty_Dataflow_bind_lb_16_rb__6275(bind)
-bind[16].inject(:|)
-
-end
-def Must_Empty_Dataflow_bind_lb_25_rb__eb7c(bind)
-bind[25].is_a?(lattice)? bind[25] & bind[26] : bind[26]
-end
-def Must_Empty_Dataflow_lattice_dot__5a9e(bind)
-lattice.bottom
-end
-def Must_Empty_Dataflow_lattice_dot__b0f6(bind)
-lattice.top|lattice.bottom
-end
-
-end
-
 
 class Cant_Fail_Dataflow < First_Dataflow
 
@@ -557,15 +558,15 @@ end
 
 class Detect_First< Traverser_Clone2;   def can_empty?(s);    $sizedf.analyze(s).size==0;  end; end
 
-def must_empty?(s);  $must_empty_df.analyze(s).value; end
+def must_empty?(s);  $maxsize_df.analyze(s).size==0; end
 def cant_fail?(s);   $cant_fail_df.analyze(s).value;  end
 
 
 class Detect_Switch_Char < Detect_First
   def initialize
     if !$sizedf  
-      $sizedf=Minsize_Dataflow.new;                  $sizedf.parse(:root,[])
-      $must_empty_df=Must_Empty_Dataflow.new;      $must_empty_df.parse(:root,[])
+      $sizedf    =Minsize_Dataflow.new;      $sizedf.parse(:root,[])
+      $maxsize_df=Maxsize_Dataflow.new;      $maxsize_df.parse(:root,[])
       $cant_fail_df =Cant_Fail_Dataflow.new;       $cant_fail_df.parse(:root,[])
     end
     if !$switchdf_char
@@ -902,15 +903,15 @@ end
 
 
 def detect_switch_compiled_by
-'ae23cd294bf7dc9dc3a1ecd9adedb28d'
+'4feddfa28e441f44bce73ba78f00a03e'
 end
 def detect_switch_source_hash
-'7df3853dbb716a8ce6d70a1ce8090a0e'
+'fef0dfb0596267967f7e63f322d4f5f6'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'874a695fb7c59a0ce8b67d0d76b7c036'
+'f542eed0cd5a7c1124a53bc693b6eed7'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

@@ -121,15 +121,6 @@ class Lattice_Clas < FirstLattice
   end
 end
 
-class Lattice_Must_Empty < FirstLattice
-	def value;ary[0];end
-  def self.[](val)
-		FirstLattice[Lattice_Must_Empty,val]
-  end
-  def |(a);          Lattice_Must_Empty[value & a.value];  end
-  def seqjoin(a);    Lattice_Must_Empty[value & a.value];  end
-end
-
 $hash_Lattice_Cant_Fail={}
 class Lattice_Cant_Fail < FirstLattice
 	def value;ary[0];end
@@ -182,20 +173,20 @@ end
 class Switch_Clas_Dataflow < First_Dataflow;  def lattice;    Lattice_Clas;        end; end
 class Switch_Char_Dataflow < First_Dataflow;  def lattice;    Lattice_Char;        end; end
 class Minsize_Dataflow < First_Dataflow      ;  def lattice;    Lattice_Minsize;       end; end
-class Must_Empty_Dataflow < First_Dataflow ;  def lattice;    Lattice_Must_Empty;  end; end
-class Cant_Fail_Dataflow  < First_Dataflow ;  def lattice;    Lattice_Must_Empty;  end; end
+class Maxsize_Dataflow < First_Dataflow      ;  def lattice;    Lattice_Maxsize;       end; end
+class Cant_Fail_Dataflow  < First_Dataflow ;  def lattice;    Lattice_Cant_Fail;  end; end
 
 
 class                       First_Dataflow;  def can_empty?(el);    $sizedf.analyze(el).size==0;  end; end
 class Minsize_Dataflow      < First_Dataflow;  def can_empty?(el);    true;                         end; end
-class Must_Empty_Dataflow < First_Dataflow;  def can_empty?(el);    true;                         end; end
+class Maxsize_Dataflow      < First_Dataflow;  def can_empty?(el);    true;                         end; end
 class Cant_Fail_Dataflow  < First_Dataflow;  def can_empty?(el);    true;                         end; end
 
 
 class Lattice_Clas;       def self.top;    self[Object];      end;def self.bottom; self[]          ; end; end
 class Lattice_Char;       def self.top;    self[[0,255]];     end;def self.bottom; self[]          ; end; end
 class Lattice_Minsize;      def self.top;    self[1.0/0.0];     end;def self.bottom; self[0]         ; end; end
-class Lattice_Must_Empty; def self.top;    self[false];       end;def self.bottom; self[true]      ; end; end
+class Lattice_Maxsize;      def self.top;    self[1.0/0.0];     end;def self.bottom; self[0]         ; end; end
 class Lattice_Cant_Fail;  def self.top;    self[false];       end;def self.bottom; self[true]      ; end; end
 
 class Switch_Char_Dataflow < First_Dataflow
@@ -253,6 +244,14 @@ amethyst Minsize_Dataflow < First_Dataflow {
         | super
 }
 
+amethyst Maxsize_Dataflow < First_Dataflow {
+  first = Apply[( ["_seq"] CAct[.:str] {lattice[str.size]} 
+                | ["regch" | "clas" | "anything"] .* {lattice[1]}
+                | ["fails"] {lattice.top}
+                )]
+        | super
+}
+
 amethyst Switch_Char_Dataflow < First_Dataflow{
   first = Apply[( ["_seq"  ] CAct[.:str] {firstchar(str)}
                 | ["regch" ] Act[.:str]  {regchar(str)}
@@ -267,9 +266,6 @@ amethyst Switch_Clas_Dataflow < First_Dataflow{
         | super
 }
 
-amethyst Must_Empty_Dataflow < First_Dataflow{
-  first = super
-}
 
 amethyst Cant_Fail_Dataflow < First_Dataflow{
 	first = Act[ .* &{@pred} ] -> lattice.top
@@ -280,15 +276,15 @@ amethyst Cant_Fail_Dataflow < First_Dataflow{
 
 class Detect_First< Traverser_Clone2;   def can_empty?(s);    $sizedf.analyze(s).size==0;  end; end
 
-def must_empty?(s);  $must_empty_df.analyze(s).value; end
+def must_empty?(s);  $maxsize_df.analyze(s).size==0; end
 def cant_fail?(s);   $cant_fail_df.analyze(s).value;  end
 
 
 class Detect_Switch_Char < Detect_First
   def initialize
     if !$sizedf  
-      $sizedf=Minsize_Dataflow.new;                  $sizedf.parse(:root,[])
-      $must_empty_df=Must_Empty_Dataflow.new;      $must_empty_df.parse(:root,[])
+      $sizedf    =Minsize_Dataflow.new;      $sizedf.parse(:root,[])
+      $maxsize_df=Maxsize_Dataflow.new;      $maxsize_df.parse(:root,[])
       $cant_fail_df =Cant_Fail_Dataflow.new;       $cant_fail_df.parse(:root,[])
     end
     if !$switchdf_char
