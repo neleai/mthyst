@@ -1,6 +1,6 @@
 #@Or_AST and @Seq are necessary for collect
 #CurrentParser[:implicit_variables]=true
-
+CurrentParser[:memoize]=["argsOpt"]
 amethyst AmethystParser < Amethyst{
   igrammar = ( (~'amethyst'   . )+:{it.join}
              | grammar

@@ -90,6 +90,8 @@ amethyst AmethystCTranslator < Amethyst {
   trans =  Grammar[ {@@grammar=@name;@@parent=@parent} {@@lambdas=[] ;@@rcallbacks={};@@cbhash={}} {@@defs=[]} {@@defmethods=[]} {@@faillabel="fail"} {@@callbacks={}} {mktable(@rules)} {@@header=[]} {@@init=[]} @rules=>[trans*]:t rbcode:rbcode
             { "VALUE cls_#{@name};\n" }:s
             { s<<@@header.uniq.sort*"\n"+"\n"
+							s<<"\n#include \"../lib/c/memo.c\"\n memo_struct *mem;" if CurrentParser[:memoize]
+							@@init<<"mem=memo_init();" if CurrentParser[:memoize]
               s<<t.sort*"\n"
               s<<@@lambdas*"\n"
               init="\n cls_#{@name}=rb_define_class(\"#{@name}\",rb_const_get(rb_cObject,rb_intern(\"#{@@parent}\"))); 
@@ -99,14 +101,12 @@ amethyst AmethystCTranslator < Amethyst {
                    "
               [s,init,rbcode] } ]
 
-         |  Rule[@name:name &{name=="argsOpt"} {@@rulename=name; Local.resetnumbering;resetlabels;@@locls={}} @body=>trans:body  
+         |  Rule[@name:name &{CurrentParser[:memoize]&&CurrentParser[:memoize].include?(name)} {@@rulename=name; Local.resetnumbering;resetlabels;@@locls={}} @body=>trans:body  
           { h="VALUE #{@@grammar}_#{name}(VALUE self #{map_index(@args){|i| ",VALUE a#{i}"}*""})" 
             @@header<<h+";"
-						@@header<<"\n#include \"../lib/c/memo.c\"\n memo_struct *mem;"
-						@@init<<"mem=memo_init();"
             @@defmethods<< "rb_define_method(cls_#{@@grammar},\"#{@name}\",#{@@grammar}_#{@name},#{@args.size});"
 						s=h+"{VALUE vals[#{@args.size}]; VALUE bind=bind_new2(#{@@locls.size}); #{map_index(@args){|i| bset(@args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
-int oldpos=ptr->pos;if (memo_pos(mem,1,ptr->src,ptr->pos)!=-1) {it=memo_value(mem,1,ptr->src,ptr->pos);ptr->pos=memo_pos(mem,1,ptr->src,ptr->pos);return it;} #{body}\n memo_add(mem,1,ptr->src,oldpos,it,ptr->pos); return it;\nfail: memo_add(mem,1,ptr->src,oldpos,failobj,ptr->pos); return failobj; }" } ]
+int oldpos=ptr->pos;if (memo_pos(mem,#{@@memo_no=(@@memo_no||111)+2},ptr->src,ptr->pos)!=-1) {it=memo_value(mem,#{@@memo_no},ptr->src,ptr->pos);ptr->pos=memo_pos(mem,#{@@memo_no},ptr->src,ptr->pos);return it;} #{body}\n memo_add(mem,#{@@memo_no},ptr->src,oldpos,it,ptr->pos); return it;\nfail: memo_add(mem,#{@@memo_no},ptr->src,oldpos,failobj,ptr->pos); return failobj; }" } ]
 
 
        |  Rule[@name:name {@@rulename=name; Local.resetnumbering;resetlabels;@@locls={}} @body=>trans:body  
