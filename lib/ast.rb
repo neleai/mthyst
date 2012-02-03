@@ -272,10 +272,10 @@ $meming_pos=Hash.new{|h,k| h[k]=[]}
 
 def mem_get(src,pos)
 $meming[src][pos]
-nil
+
 end
 def mem_getlen(src,pos)
-deep_clone($meming_pos[src][pos])
+$meming_pos[src][pos]
 
 end
 def mem_add(src,pos,oldpos,ret)

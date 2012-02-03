@@ -170,7 +170,7 @@ it=rb_funcall(self,sy_AmethystParser_Args_lb__le__co_a_34c4,1,bind);  bind_aset(
 return it;
 fail: return failobj; }
 VALUE AmethystParser_argsOpt(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(10);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
-int oldpos=ptr->pos;if (rb_funcall(self,sy_mem_get,2,ptr->src,INT2FIX(ptr->pos))!=Qnil) {ptr->pos=FIX2INT(rb_funcall(self,sy_mem_getlen,2,ptr->src,INT2FIX(ptr->pos)));return rb_funcall(self,sy_mem_get,2,ptr->src,INT2FIX(ptr->pos));} int oldpos1=ptr->pos;int cut1=0;
+int oldpos=ptr->pos;if ((it=rb_funcall(self,sy_mem_get,2,ptr->src,INT2FIX(ptr->pos)))!=Qnil) {ptr->pos=FIX2INT(rb_funcall(self,sy_mem_getlen,2,ptr->src,INT2FIX(ptr->pos)));return it;} int oldpos1=ptr->pos;int cut1=0;
 alt1_1:;int oldpos2=ptr->pos;int cut2=0;
 alt2_1:;  it=Amethyst__(self ); FAILTEST(alt2_2);cut2=1;goto alt2_2;
 ;goto accept2;
@@ -1724,4 +1724,4 @@ rb_define_method(cls_AmethystParser,"rule",AmethystParser_rule,0);
 rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
 rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
 rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-                    rb_eval_string("testversionparser('5071b9c9dc72514f917b4013c40281ef')");}
+                    rb_eval_string("testversionparser('712e3f07652ab9fd86d168974cc84a65')");}

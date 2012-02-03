@@ -5,7 +5,7 @@
  *  0    No memoization
  *  k>0  Use cache of with 2**k elements.
  * */
-#define MEMORY 16
+#define MEMORY 20
 VALUE not_present;
 typedef struct {
 	int rule;VALUE src;int pos;VALUE val;
