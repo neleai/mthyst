@@ -8,7 +8,7 @@
 #define MEMORY 20
 VALUE not_present;
 typedef struct {
-	int rule;VALUE src;int pos;VALUE val;
+	int rule;VALUE src;int pos;VALUE val;int newpos;
 } elem_struct;
 typedef struct {
 		elem_struct *els;
@@ -29,21 +29,26 @@ static VALUE memo_test(memo_struct m,int rule,VALUE src,int pos){
 static void memo_add(memo_struct m,int rule,VALUE src,int pos,VALUE val){
 }
 #else
-static memo_struct memo_init(){
-	memo_struct m;
-	m.els=(elem_struct *) calloc(sizeof(elem_struct),1<<MEMORY);
+static memo_struct *memo_init(){
+	memo_struct *m=malloc(sizeof(memo_struct));
+	m->els=(elem_struct *) calloc(sizeof(elem_struct),1<<MEMORY);
 	return m;
 }
 static int memo_hash(int rule,int pos){return (rule*pos)&((1<<MEMORY)-1);}
-static VALUE memo_test(memo_struct m,int rule,VALUE src,int pos){
-	elem_struct el=m.els[memo_hash(rule,pos)];
+static VALUE memo_value(memo_struct *m,int rule,VALUE src,int pos){
+	elem_struct el=m->els[memo_hash(rule,pos)];
 	if (el.rule==rule&& el.src==src && el.pos==pos) return el.val;
-	return not_present;
+	return Qnil;
 }
-static void memo_add(memo_struct m,int rule,VALUE src,int pos,VALUE val){
+static int memo_pos(memo_struct *m,int rule,VALUE src,int pos){
+	elem_struct el=m->els[memo_hash(rule,pos)];
+	if (el.rule==rule&& el.src==src && el.pos==pos) return el.newpos;
+	return -1;
+}
+static void memo_add(memo_struct *m,int rule,VALUE src,int pos,VALUE val,int newpos){
 	elem_struct el;
-	el.rule=rule;el.src=src;el.pos=pos;el.val=val;
-	m.els[memo_hash(rule,pos)]=el;
+	el.rule=rule;el.src=src;el.pos=pos;el.val=val;el.newpos=newpos;
+	m->els[memo_hash(rule,pos)]=el;
 }
 
 #endif

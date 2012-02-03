@@ -339,19 +339,21 @@ end
 def AmethystCTranslator_bind_lb_83_rb__7cae(bind)
 bind[83]+=1
 end
+def AmethystCTranslator_h_eq__dq_VALUE_4a29(bind)
+h="VALUE #{@grammar}_#{bind[34]}(VALUE self #{map_index(src.args){|i| ",VALUE a#{i}"}*""})" 
+            @header<<h+";"
+						@header<<"\n#include \"../lib/c/memo.c\"\n memo_struct *mem;"
+						@init<<"mem=memo_init();"
+            @defmethods<< "rb_define_method(cls_#{@grammar},\"#{src.name}\",#{@grammar}_#{src.name},#{src.args.size});"
+						bind[16]=h+"{VALUE vals[#{src.args.size}]; VALUE bind=bind_new2(#{@locls.size}); #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
+int oldpos=ptr->pos;if (memo_pos(mem,1,ptr->src,ptr->pos)!=-1) {it=memo_value(mem,1,ptr->src,ptr->pos);ptr->pos=memo_pos(mem,1,ptr->src,ptr->pos);return it;} #{bind[102]}\n memo_add(mem,1,ptr->src,oldpos,it,ptr->pos); return it;\nfail: memo_add(mem,1,ptr->src,oldpos,failobj,ptr->pos); return failobj; }" 
+end
 def AmethystCTranslator_h_eq__dq_VALUE_5d11(bind)
 h="VALUE #{@grammar}_#{bind[34]}(VALUE self #{map_index(src.args){|i| ",VALUE a#{i}"}*""})" 
             @header<<h+";"
             @defmethods<< "rb_define_method(cls_#{@grammar},\"#{src.name}\",#{@grammar}_#{src.name},#{src.args.size});"
             h+"{VALUE vals[#{src.args.size}]; VALUE bind=bind_new2(#{@locls.size}); #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
             \n#{bind[102]}\nreturn it;\nfail: return failobj; }" 
-end
-def AmethystCTranslator_h_eq__dq_VALUE_b60f(bind)
-h="VALUE #{@grammar}_#{bind[34]}(VALUE self #{map_index(src.args){|i| ",VALUE a#{i}"}*""})" 
-            @header<<h+";"
-            @defmethods<< "rb_define_method(cls_#{@grammar},\"#{src.name}\",#{@grammar}_#{src.name},#{src.args.size});"
-						bind[16]=h+"{VALUE vals[#{src.args.size}]; VALUE bind=bind_new2(#{@locls.size}); #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
-int oldpos=ptr->pos;if ((it=#{rbcall("mem_get",["ptr->src","INT2FIX(ptr->pos)"])})!=Qnil) {ptr->pos=FIX2INT(#{rbcall("mem_getlen",["ptr->src","INT2FIX(ptr->pos)"])});return it;} #{bind[102]}\n #{rbcall("mem_add",["ptr->src","INT2FIX(ptr->pos)","INT2FIX(oldpos)","it"])}; return it;\nfail: #{rbcall("mem_add",["ptr->src","INT2FIX(ptr->pos)","INT2FIX(oldpos)","failobj"])};return failobj; }" 
 end
 def AmethystCTranslator_h_eq__dq_VALUE_f86b(bind)
 h="VALUE #{bind[0]}(VALUE self,VALUE bind)"
@@ -404,15 +406,15 @@ end
 
 
 def ctranslator2_compiled_by
-'03cb39ee47ce29af919ee3d86ac08ec2'
+'4fa17f43745eac980f76887e889ec26c'
 end
 def ctranslator2_source_hash
-'576ac14449028716b8ff43638026da12'
+'44f8ebcf9a2c9f73d76490b400e44bcc'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'621cd160f4267e929dd81ce3414d85d3'
+'c04e118a0137f394c498ffbac93ce9e3'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"
