@@ -69,6 +69,9 @@ end
 $classlabels=Hash.new(0)
 class AmethystCTranslator < Amethyst
 
+def AmethystCTranslator__append_lp__3a29(bind)
+_append(bind[109],bind[110])
+end
 def AmethystCTranslator__append_lp__3d0f(bind)
 _append(bind[50],bind[51])
 end
@@ -80,9 +83,6 @@ _append(bind[36],bind[38])
 end
 def AmethystCTranslator__append_lp__81ec(bind)
 _append(bind[0],bind[5])
-end
-def AmethystCTranslator__append_lp__b64d(bind)
-_append(bind[102],bind[103])
 end
 def AmethystCTranslator__append_lp__cbd1(bind)
 _append(bind[0],bind[1])
@@ -147,14 +147,14 @@ end
 def AmethystCTranslator__at_header_lt__09ca(bind)
 @header<<"static VALUE #{bind[0]};"; @init<<"#{bind[0]}=#{bind[1]};#{gc_mark_var(bind[0])};"
 end
-def AmethystCTranslator__at_header_lt__d1b4(bind)
-@header<< "VALUE #{bind[111]};"
+def AmethystCTranslator__at_header_lt__62d2(bind)
+@header<< "VALUE #{bind[118]};"
 end
 def AmethystCTranslator__at_init_eq__lb__rb__47da(bind)
 @init=[]
 end
-def AmethystCTranslator__at_init_sp__sp__lt__9a42(bind)
-@init  <<"#{bind[111]}=rb_eval_string(\"Hash.new{|h,k|#{bind[56]}}\");#{gc_mark_var(bind[111])};"
+def AmethystCTranslator__at_init_sp__sp__lt__ea5b(bind)
+@init  <<"#{bind[118]}=rb_eval_string(\"Hash.new{|h,k|#{bind[56]}}\");#{gc_mark_var(bind[118])};"
 end
 def AmethystCTranslator__at_lambdas_ecda(bind)
 @lambdas=[] ;@rcallbacks={};@cbhash={}
@@ -244,8 +244,8 @@ end
 def AmethystCTranslator__dq_it_eq__sh__le_rb_79a3(bind)
 "it=#{rbcall(bind[4],["bind"])}; #{src.pred ? "FAILTEST(#{@faillabel});" :"" }"
 end
-def AmethystCTranslator__dq_switch_lp__4f01(bind)
-"switch(FIX2LONG(rb_hash_aref(#{bind[111]},rb_obj_class(ame_curobj2(ptr))))){"
+def AmethystCTranslator__dq_switch_lp__e906(bind)
+"switch(FIX2LONG(rb_hash_aref(#{bind[118]},rb_obj_class(ame_curobj2(ptr))))){"
 end
 def AmethystCTranslator__dq_switchh_f207(bind)
 "switchhash_#{@grammar}_#{$classlabels[@grammar]+=1}"
@@ -253,6 +253,9 @@ end
 def AmethystCTranslator__lb_bind_lb_1_rb__8404(bind)
 [bind[1],bind[2],bind[0]]
 
+end
+def AmethystCTranslator__lp_bind_lb_34_6f5d(bind)
+(bind[34]=="argsOpt") || FAIL
 end
 def AmethystCTranslator__lp_bind_lb_3_rb__e49d(bind)
 (bind[3].is_a? String ) || FAIL
@@ -282,8 +285,8 @@ end
 def AmethystCTranslator_bind_lb_0_rb__pl__c1a5(bind)
 bind[0]+=bind[8]*""
 end
-def AmethystCTranslator_bind_lb_108_564f(bind)
-bind[108].ary.each{|al| bind[56]+="next h[k]=#{bind[35]} if k<=#{al}\\n";bind[16]+="case #{bind[35]}/*#{al}*/:";bind[35]+=1}
+def AmethystCTranslator_bind_lb_115_c115(bind)
+bind[115].ary.each{|al| bind[56]+="next h[k]=#{bind[35]} if k<=#{al}\\n";bind[16]+="case #{bind[35]}/*#{al}*/:";bind[35]+=1}
 end
 def AmethystCTranslator_bind_lb_16_rb__1922(bind)
 bind[16]+"}"
@@ -293,6 +296,9 @@ bind[16]+="; #{bind[54]} break;\n"
 end
 def AmethystCTranslator_bind_lb_16_rb__2732(bind)
 bind[16]+="#{bind[82]}_#{bind[83]}: ptr->pos=#{bind[63]};#{@cuts ? (@cuts=nil;"if (#{@cutlabel}) goto #{@faillabel};"): ""}"
+end
+def AmethystCTranslator_bind_lb_16_rb__4555(bind)
+bind[16]+=bind[115].cases() + " #{bind[54]} break;\n"
 end
 def AmethystCTranslator_bind_lb_16_rb__4e8b(bind)
 bind[16]<<@header.uniq.sort*"\n"+"\n"
@@ -314,9 +320,6 @@ end
 def AmethystCTranslator_bind_lb_16_rb__878f(bind)
 bind[16]+="#{bind[54]}\n;goto #{bind[61]};\n"
 end
-def AmethystCTranslator_bind_lb_16_rb__d43f(bind)
-bind[16]+=bind[108].cases() + " #{bind[54]} break;\n"
-end
 def AmethystCTranslator_bind_lb_1_rb__lt__2f50(bind)
 bind[1]<<bind[6][0];bind[2]<<bind[6][1];bind[0]<<bind[6][2]
 end
@@ -336,12 +339,19 @@ end
 def AmethystCTranslator_bind_lb_83_rb__7cae(bind)
 bind[83]+=1
 end
-def AmethystCTranslator_h_eq__dq_VALUE_4d8c(bind)
+def AmethystCTranslator_h_eq__dq_VALUE_5d11(bind)
 h="VALUE #{@grammar}_#{bind[34]}(VALUE self #{map_index(src.args){|i| ",VALUE a#{i}"}*""})" 
             @header<<h+";"
             @defmethods<< "rb_define_method(cls_#{@grammar},\"#{src.name}\",#{@grammar}_#{src.name},#{src.args.size});"
             h+"{VALUE vals[#{src.args.size}]; VALUE bind=bind_new2(#{@locls.size}); #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
-            \n#{bind[99]}\nreturn it;\nfail: return failobj; }" 
+            \n#{bind[102]}\nreturn it;\nfail: return failobj; }" 
+end
+def AmethystCTranslator_h_eq__dq_VALUE_73e4(bind)
+h="VALUE #{@grammar}_#{bind[34]}(VALUE self #{map_index(src.args){|i| ",VALUE a#{i}"}*""})" 
+            @header<<h+";"
+            @defmethods<< "rb_define_method(cls_#{@grammar},\"#{src.name}\",#{@grammar}_#{src.name},#{src.args.size});"
+						bind[16]=h+"{VALUE vals[#{src.args.size}]; VALUE bind=bind_new2(#{@locls.size}); #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
+int oldpos=ptr->pos;if (#{rbcall("mem_get",["ptr->src","INT2FIX(ptr->pos)"])}!=Qnil) {ptr->pos=FIX2INT(#{rbcall("mem_getlen",["ptr->src","INT2FIX(ptr->pos)"])});return #{rbcall("mem_get",["ptr->src","INT2FIX(ptr->pos)"])};} #{bind[102]}\n #{rbcall("mem_add",["ptr->src","INT2FIX(ptr->pos)","INT2FIX(oldpos)","it"])}; return it;\nfail: return failobj; }" 
 end
 def AmethystCTranslator_h_eq__dq_VALUE_f86b(bind)
 h="VALUE #{bind[0]}(VALUE self,VALUE bind)"
@@ -394,15 +404,15 @@ end
 
 
 def ctranslator2_compiled_by
-'62d0f909c265635659cb72ba20daf5e3'
+'bbd3736752cef99567813ae637821496'
 end
 def ctranslator2_source_hash
-'a05c6e8b1511f62656a2d43919e6a796'
+'c68a06a8ad0ae7d4a2034dc3bf1cdbb2'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'e8d7540823ad48174da90c342a24c2da'
+'48507d1d0a09cb82a84fe7533af8e612'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"

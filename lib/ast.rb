@@ -1,3 +1,4 @@
+
 makeclasses(AmethystAST,
     [:Grammar,:name,:parent,:rules],
     [:Rule,:name,:args,:locals,:body,:cfg,:reachable,:bnding,:consts],
@@ -264,3 +265,20 @@ class Key;						def inspect;	"@#{ary[0]}"																									;end;end
 class Global;					def inspect;	"@@#{ary[0]}"																									;end;end
 class Bind;						def inspect;	"#{ary[0].inspect}:#{name.inspect}"														;end;end
 class Switch; 				def inspect;  "#{self.class}[#{ary.map{|d,k|  "#{d.inspect}: #{k.inspect}\n"}*""}]";end;end
+
+
+$meming=Hash.new{|h,k| h[k]=[]}
+$meming_pos=Hash.new{|h,k| h[k]=[]}
+
+def mem_get(src,pos)
+$meming[src][pos]
+nil
+end
+def mem_getlen(src,pos)
+$meming_pos[src][pos]
+
+end
+def mem_add(src,pos,oldpos,ret)
+	$meming[src][oldpos]=ret
+	$meming_pos[src][oldpos]=pos
+end
