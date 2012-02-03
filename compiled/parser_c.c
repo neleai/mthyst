@@ -213,7 +213,7 @@ alt1_3: ptr->pos=oldpos1;goto fail;
  accept1:;
 
  rb_funcall(self,sy_mem_add,4,ptr->src,INT2FIX(ptr->pos),INT2FIX(oldpos),it); return it;
-fail: return failobj; }
+fail: rb_funcall(self,sy_mem_add,4,ptr->src,INT2FIX(ptr->pos),INT2FIX(oldpos),failobj);return failobj; }
 VALUE AmethystParser_call(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(4);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
             
 int oldpos1=ptr->pos;int cut1=0;
@@ -1724,4 +1724,4 @@ rb_define_method(cls_AmethystParser,"rule",AmethystParser_rule,0);
 rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
 rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
 rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-                    rb_eval_string("testversionparser('774ead056029aad5699f37ab301c40d1')");}
+                    rb_eval_string("testversionparser('5071b9c9dc72514f917b4013c40281ef')");}

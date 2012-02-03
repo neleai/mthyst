@@ -275,10 +275,12 @@ $meming[src][pos]
 nil
 end
 def mem_getlen(src,pos)
-$meming_pos[src][pos]
+deep_clone($meming_pos[src][pos])
 
 end
 def mem_add(src,pos,oldpos,ret)
+#	puts src.inspect,pos,oldpos,"ret",ret.inspect,$meming[src][oldpos].inspect
+#	raise if $meming[src][oldpos] && $meming[src][oldpos].inspect!=ret.inspect
 	$meming[src][oldpos]=ret
 	$meming_pos[src][oldpos]=pos
 end

@@ -104,7 +104,7 @@ amethyst AmethystCTranslator < Amethyst {
             @@header<<h+";"
             @@defmethods<< "rb_define_method(cls_#{@@grammar},\"#{@name}\",#{@@grammar}_#{@name},#{@args.size});"
 						s=h+"{VALUE vals[#{@args.size}]; VALUE bind=bind_new2(#{@@locls.size}); #{map_index(@args){|i| bset(@args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
-int oldpos=ptr->pos;if (#{rbcall("mem_get",["ptr->src","INT2FIX(ptr->pos)"])}!=Qnil) {ptr->pos=FIX2INT(#{rbcall("mem_getlen",["ptr->src","INT2FIX(ptr->pos)"])});return #{rbcall("mem_get",["ptr->src","INT2FIX(ptr->pos)"])};} #{body}\n #{rbcall("mem_add",["ptr->src","INT2FIX(ptr->pos)","INT2FIX(oldpos)","it"])}; return it;\nfail: return failobj; }" } ]
+int oldpos=ptr->pos;if (#{rbcall("mem_get",["ptr->src","INT2FIX(ptr->pos)"])}!=Qnil) {ptr->pos=FIX2INT(#{rbcall("mem_getlen",["ptr->src","INT2FIX(ptr->pos)"])});return #{rbcall("mem_get",["ptr->src","INT2FIX(ptr->pos)"])};} #{body}\n #{rbcall("mem_add",["ptr->src","INT2FIX(ptr->pos)","INT2FIX(oldpos)","it"])}; return it;\nfail: #{rbcall("mem_add",["ptr->src","INT2FIX(ptr->pos)","INT2FIX(oldpos)","failobj"])};return failobj; }" } ]
 
 
        |  Rule[@name:name {@@rulename=name; Local.resetnumbering;resetlabels;@@locls={}} @body=>trans:body  

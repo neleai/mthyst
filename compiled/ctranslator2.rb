@@ -346,12 +346,12 @@ h="VALUE #{@grammar}_#{bind[34]}(VALUE self #{map_index(src.args){|i| ",VALUE a#
             h+"{VALUE vals[#{src.args.size}]; VALUE bind=bind_new2(#{@locls.size}); #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
             \n#{bind[102]}\nreturn it;\nfail: return failobj; }" 
 end
-def AmethystCTranslator_h_eq__dq_VALUE_73e4(bind)
+def AmethystCTranslator_h_eq__dq_VALUE_9d57(bind)
 h="VALUE #{@grammar}_#{bind[34]}(VALUE self #{map_index(src.args){|i| ",VALUE a#{i}"}*""})" 
             @header<<h+";"
             @defmethods<< "rb_define_method(cls_#{@grammar},\"#{src.name}\",#{@grammar}_#{src.name},#{src.args.size});"
 						bind[16]=h+"{VALUE vals[#{src.args.size}]; VALUE bind=bind_new2(#{@locls.size}); #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
-int oldpos=ptr->pos;if (#{rbcall("mem_get",["ptr->src","INT2FIX(ptr->pos)"])}!=Qnil) {ptr->pos=FIX2INT(#{rbcall("mem_getlen",["ptr->src","INT2FIX(ptr->pos)"])});return #{rbcall("mem_get",["ptr->src","INT2FIX(ptr->pos)"])};} #{bind[102]}\n #{rbcall("mem_add",["ptr->src","INT2FIX(ptr->pos)","INT2FIX(oldpos)","it"])}; return it;\nfail: return failobj; }" 
+int oldpos=ptr->pos;if (#{rbcall("mem_get",["ptr->src","INT2FIX(ptr->pos)"])}!=Qnil) {ptr->pos=FIX2INT(#{rbcall("mem_getlen",["ptr->src","INT2FIX(ptr->pos)"])});return #{rbcall("mem_get",["ptr->src","INT2FIX(ptr->pos)"])};} #{bind[102]}\n #{rbcall("mem_add",["ptr->src","INT2FIX(ptr->pos)","INT2FIX(oldpos)","it"])}; return it;\nfail: #{rbcall("mem_add",["ptr->src","INT2FIX(ptr->pos)","INT2FIX(oldpos)","failobj"])};return failobj; }" 
 end
 def AmethystCTranslator_h_eq__dq_VALUE_f86b(bind)
 h="VALUE #{bind[0]}(VALUE self,VALUE bind)"
@@ -404,15 +404,15 @@ end
 
 
 def ctranslator2_compiled_by
-'bbd3736752cef99567813ae637821496'
+'6f6a1b5f08489c15168fcd0f194746c9'
 end
 def ctranslator2_source_hash
-'c68a06a8ad0ae7d4a2034dc3bf1cdbb2'
+'154264c74f01147dd50fc0d39880336f'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'48507d1d0a09cb82a84fe7533af8e612'
+'800098315678e0648002a377f743f65f'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"
