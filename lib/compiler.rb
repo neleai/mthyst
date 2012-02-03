@@ -118,6 +118,9 @@ class <<Compiler
 						end
 					end
 				}
+				DetectCalls.new.parse(:root,[g.getrule(name)]).each{|nm,t| r=g.getrule(nm)
+					 g.inline(nm,name) if r && (nm=="seq" || nm=="token")
+				}
 				g.opt(g.rules[name]) if inlined
 		end}
 		topo.each{|name|if g.rules[name] && called[name]
