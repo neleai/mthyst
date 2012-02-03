@@ -1,6 +1,6 @@
 #@Or_AST and @Seq are necessary for collect
 #CurrentParser[:implicit_variables]=true
-CurrentParser[:memoize]=["argsOpt"]
+CurrentParser[:memoize]=["argsOpt","name"]
 class AmethystParser < Amethyst
 
 def AmethystParser_Act_lb_Args_245f(bind)
@@ -321,15 +321,15 @@ end
 
 
 def parser_compiled_by
-'512e44ed6eec29372e03540a2bd5a606'
+'78d0add76ff23482ad94bca79ef87577'
 end
 def parser_source_hash
-'ae91090659f0cda568ecc3d6893d56e0'
+'6983ac61916c925faf70afbde6fa579d'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'cdcd8df727a80da99f74ea63877eed5c'
+'93253ec0a74727ec689c3f4490c244dc'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/parser_c"
