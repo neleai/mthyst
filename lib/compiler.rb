@@ -106,6 +106,8 @@ class <<Compiler
 					g.rules[name]=Remove_Left_Recursion.new.parse(:root,[g.rules[name]])
 				end
 				g.opt(g.rules[name])
+		end}
+		topo.each{|name|if g.rules[name] && called[name]
 				inlined=false
 				callg[name].each{|nm,v|
 					r=g.getrule(nm)
@@ -117,6 +119,8 @@ class <<Compiler
 					end
 				}
 				g.opt(g.rules[name]) if inlined
+		end}
+		topo.each{|name|if g.rules[name] && called[name]
 				#TODO separately as in inherited it dont have to be true
 		    [ds,dc].each{|o| g.rules[name]=o.parse(:root,g.rules[name])}
 				g.opt(g.rules[name])	

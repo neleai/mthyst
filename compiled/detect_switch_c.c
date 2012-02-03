@@ -3198,9 +3198,7 @@ cstruct oldpass1=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
 cstruct oldpass2=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
                    ptr->src=bind_aget(bind,4/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
                      it=Amethyst_spaces(self ); FAILTEST(pass2);switch((unsigned char)*ame_curstr2(ptr)){case UC(0) ... '`':;case 'b' ... UC(255):; goto pass2; break;
-case 'a' ... 'a':; it=rb_str_new(ptr->str+ptr->pos,1);ptr->pos++;switch((unsigned char)*ame_curstr2(ptr)){case UC(0) ... 'm':;case 'o' ... UC(255):; goto pass2; break;
-case 'n' ... 'n':; it=rb_str_new(ptr->str+ptr->pos,1);ptr->pos++;if (ame_curstr2(ptr)[0]=='y'&&ame_curstr2(ptr)[1]=='t'&&ame_curstr2(ptr)[2]=='h'&&ame_curstr2(ptr)[3]=='i'&&ame_curstr2(ptr)[4]=='n'&&ame_curstr2(ptr)[5]=='g')  ptr->pos+=6; else goto pass2; break;
-} break;
+case 'a' ... 'a':; it=rb_str_new(ptr->str+ptr->pos,1);ptr->pos++;if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7; else goto pass2; break;
 }it=Qnil;if (ptr->pos<ptr->len) goto pass2;
                    goto success2;
                    pass2: *ptr=oldpass2; goto pass1;
@@ -3657,4 +3655,4 @@ sy_Detect_Size_minsize_lp__b431=rb_intern("Detect_Size_minsize_lp__b431");
 sy_Detect_Size_minsize_lp__d769=rb_intern("Detect_Size_minsize_lp__d769");
                     rb_define_method(cls_Detect_Size,"predicate",Detect_Size_predicate,1);
 rb_define_method(cls_Detect_Size,"predicate2",Detect_Size_predicate2,1);
-                    rb_eval_string("testversiondetect_switch('dd382494dd4297868614ee068a2f8d93')");}
+                    rb_eval_string("testversiondetect_switch('0173f11e522959debe19965847146170')");}

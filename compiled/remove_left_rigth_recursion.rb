@@ -16,28 +16,28 @@ def Remove_Left_Recursion_Or_lb_bind_lb__c41d(bind)
 Or[bind[15]]
 
 end
+def Remove_Left_Recursion_Seq_lb_bind_0162(bind)
+Seq[bind[20],bind[23]]
+
+end
 def Remove_Left_Recursion_Seq_lb_bind_58ff(bind)
 Seq[bind[16],bind[19]]
 
 end
-def Remove_Left_Recursion_Seq_lb_bind_8d77(bind)
-Seq[bind[21],bind[24]]
-
-end
-def Remove_Left_Recursion_Seq_lb_bind_ba02(bind)
-Seq[bind[24]]
+def Remove_Left_Recursion_Seq_lb_bind_8de3(bind)
+Seq[bind[23]]
 end
 def Remove_Left_Recursion_Seq_lb_bind_c986(bind)
 Seq[bind[19]]
 end
-def Remove_Left_Recursion__append_lp__3c16(bind)
-_append(bind[28],bind[29])
+def Remove_Left_Recursion__append_lp__0860(bind)
+_append(bind[27],bind[28])
+end
+def Remove_Left_Recursion__append_lp__0df6(bind)
+_append(bind[21],bind[22])
 end
 def Remove_Left_Recursion__append_lp__473a(bind)
 _append(bind[13],bind[14])
-end
-def Remove_Left_Recursion__append_lp__58ed(bind)
-_append(bind[22],bind[23])
 end
 def Remove_Left_Recursion__append_lp__835a(bind)
 _append(bind[17],bind[18])
@@ -63,8 +63,8 @@ end
 def Remove_Left_Recursion__lp_must_em_e2d0(bind)
 (must_empty?(bind[0])) || FAIL
 end
-def Remove_Left_Recursion_a_eq_autova_de17(bind)
-a=autovar;src.body = Seq[bind[30],Many[Seq[Act[Args[a,"=",@result,";bind.reset;",@result,"=",a]],bind[35]]]] if @left_rec
+def Remove_Left_Recursion_a_eq_autova_3b48(bind)
+a=autovar;src.body = Seq[bind[29],Many[Seq[Act[Args[a,"=",@result,";bind.reset;",@result,"=",a]],bind[34]]]] if @left_rec
 end
 def Remove_Left_Recursion_bind_lb_1_rb__sp__4ee5(bind)
 bind[1] ? @result       : Apply["fails"]
@@ -95,7 +95,7 @@ end
 
 
 def remove_left_rigth_recursion_compiled_by
-'bc1a5fe624692c50d6355ac734a36bcf'
+'b762b8acb40f9cf360bdb275b33d0eef'
 end
 def remove_left_rigth_recursion_source_hash
 '0c5137caf49e57c254371395d36326a2'
@@ -104,6 +104,6 @@ def testversionremove_left_rigth_recursion(r)
  raise "invalid version" if r!=remove_left_rigth_recursion_version
 end
 def remove_left_rigth_recursion_version
-'4760a85b4312bb9ed41f2d202ca8974e'
+'fd71bf2b18d46b2c5cd91520c79bb871'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/remove_left_rigth_recursion_c"
