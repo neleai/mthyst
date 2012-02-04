@@ -158,9 +158,9 @@ int oldpos=ptr->pos;if (memo_pos(mem,#{@@memo_no=(@@memo_no||111)+2},ptr->src,pt
         | Stop[] {@@stops=true; @@stoplabel? "#{@@stoplabel}=1;" : ""}
         | Memo[ .* {raise "TODO"}]
         | Many[ Apply[ ["anything"] ] ] -> "ptr->pos=ptr->len;"
-        | Many[ {label("break")}:brk {label("oldpos")}:oldpos {label("accept")}:accept {@@stops}:oldstops {@@stoplabel}:oldstoplabel {@@stops=nil}  {@@stoplabel=label("stop")}
-                rw(brk,`trans:t`)
-                {s="int #{oldpos}; #{@@stops ? "int #{@@stoplabel}=0;":""} while(1){#{oldpos}=ptr->pos; #{t} #{@@stops ? "if (#{@@stoplabel}) goto #{accept}; } #{brk}: goto #{@@faillabel}; #{accept}:;" : "} #{brk}: ptr->pos=#{oldpos};"}   "
+        | Many[ {@@stops}:oldstops {@@stoplabel}:oldstoplabel {@@stops=nil}  {@@stoplabel=label("stop")}
+                trans:t
+                { s="int #{@@stoplabel}=0; while(!#{@@stoplabel}){ #{t} } "
 									@@stops=oldstops; @@stoplabel=oldstoplabel
 									s
 								}

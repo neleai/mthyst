@@ -74,8 +74,8 @@ VALUE Tests_foo(VALUE self ){VALUE vals[0];  VALUE var0;VALUE var1;VALUE var2;VA
             
   it=rb_funcall(self,sy_bar,0); FAILTEST(fail); var0/*bar*/=it;;
 bind_aset(bind2,1,var1/*foo*/);bind_aset(bind2,2,var0/*bar*/);it=rb_funcall(self,sy_Tests_bind_lb_1_rb__pl__3b73,1,bind2);var1/*foo*/=bind_aget(bind2,1);;var0/*bar*/=bind_aget(bind2,2);; var2/*_result*/=it;;
-int oldpos1;  while(1){oldpos1=ptr->pos; bind_aset(bind2,1,var3/*autovar*/);bind_aset(bind2,2,var2/*_result*/);it=rb_funcall(self,sy_Tests_bind_lb_1_rb__eq__58f9,1,bind2);var3/*autovar*/=bind_aget(bind2,1);;var2/*_result*/=bind_aget(bind2,2);;it=var2/*_result*/; var2/*_result*/=it;;
- } break1: ptr->pos=oldpos1;   
+int stop1=0; while(!stop1){ bind_aset(bind2,1,var3/*autovar*/);bind_aset(bind2,2,var2/*_result*/);it=rb_funcall(self,sy_Tests_bind_lb_1_rb__eq__58f9,1,bind2);var3/*autovar*/=bind_aget(bind2,1);;var2/*_result*/=bind_aget(bind2,2);;it=var2/*_result*/; var2/*_result*/=it;;
+ } 
 return it;
 fail: return failobj; }
 VALUE Tests_gh(VALUE self ){VALUE vals[0];  VALUE var0; ;VALUE bind2=bind_new2(16);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -171,4 +171,4 @@ rb_define_method(cls_Tests,"gh",Tests_gh,0);
 rb_define_method(cls_Tests,"s2",Tests_s2,0);
 rb_define_method(cls_Tests,"sw",Tests_sw,0);
 rb_define_method(cls_Tests,"test",Tests_test,0);
-                    rb_eval_string("testversiontests('5ed349cc0bd0ec03d6ed4e533d3944ee')");}
+                    rb_eval_string("testversiontests('495dde5fac33fec08badeb94d8079d8c')");}

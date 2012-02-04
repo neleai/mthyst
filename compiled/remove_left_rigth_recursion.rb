@@ -58,7 +58,7 @@ end
 
 
 def remove_left_rigth_recursion_compiled_by
-'7447de6bab8a76ac1734c644975fc59a'
+'19c0eec80c824b6bc9c1875ee0fc4da1'
 end
 def remove_left_rigth_recursion_source_hash
 '0c5137caf49e57c254371395d36326a2'
@@ -67,6 +67,6 @@ def testversionremove_left_rigth_recursion(r)
  raise "invalid version" if r!=remove_left_rigth_recursion_version
 end
 def remove_left_rigth_recursion_version
-'c2a6fb6225cee35a7799c26db63216b8'
+'c45d910c72e1f9b377feeb410723c6b6'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/remove_left_rigth_recursion_c"
