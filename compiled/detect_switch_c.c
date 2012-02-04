@@ -71,7 +71,7 @@ VALUE First_Dataflow_first(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -126,7 +126,7 @@ accept1:
         int cut2=0;
 alt2_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var3/*autovar*/=it;;
         cstruct oldpass2=*ptr;
@@ -209,7 +209,7 @@ accept2:
         int cut3=0;
 alt3_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var8/*autovar*/=it;;
         cstruct oldpass4=*ptr;
@@ -264,7 +264,7 @@ accept3:
         int cut4=0;
 alt4_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var10/*autovar*/=it;;
         cstruct oldpass5=*ptr;
@@ -323,7 +323,7 @@ accept4:
         int cut5=0;
 alt5_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var13/*autovar*/=it;;
         cstruct oldpass6=*ptr;
@@ -408,7 +408,7 @@ accept5:
         int cut7=0;
 alt7_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var17/*autovar*/=it;;
         cstruct oldpass7=*ptr;
@@ -538,7 +538,7 @@ accept7:
         int cut10=0;
 alt10_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var23/*autovar*/=it;;
         cstruct oldpass9=*ptr;
@@ -804,7 +804,7 @@ VALUE Minsize_Dataflow_first(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -877,7 +877,7 @@ pass2:
             goto alt2_2;
 success2:
             *ptr=oldpass2;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var5/*autovar*/=it;;
             cstruct oldpass3=*ptr;
@@ -1343,7 +1343,7 @@ VALUE Minsize_Dataflow_first_Minsize_Dataflow(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -1398,7 +1398,7 @@ accept1:
         int cut2=0;
 alt2_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var3/*autovar*/=it;;
         cstruct oldpass2=*ptr;
@@ -1481,7 +1481,7 @@ accept2:
         int cut3=0;
 alt3_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var8/*autovar*/=it;;
         cstruct oldpass4=*ptr;
@@ -1536,7 +1536,7 @@ accept3:
         int cut4=0;
 alt4_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var10/*autovar*/=it;;
         cstruct oldpass5=*ptr;
@@ -1595,7 +1595,7 @@ accept4:
         int cut5=0;
 alt5_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var13/*autovar*/=it;;
         cstruct oldpass6=*ptr;
@@ -1680,7 +1680,7 @@ accept5:
         int cut7=0;
 alt7_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var17/*autovar*/=it;;
         cstruct oldpass7=*ptr;
@@ -1810,7 +1810,7 @@ accept7:
         int cut10=0;
 alt10_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var23/*autovar*/=it;;
         cstruct oldpass9=*ptr;
@@ -2029,7 +2029,7 @@ VALUE Maxsize_Dataflow_first(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -2102,7 +2102,7 @@ pass2:
             goto alt2_2;
 success2:
             *ptr=oldpass2;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var5/*autovar*/=it;;
             cstruct oldpass3=*ptr;
@@ -2568,7 +2568,7 @@ VALUE Maxsize_Dataflow_first_Maxsize_Dataflow(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -2623,7 +2623,7 @@ accept1:
         int cut2=0;
 alt2_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var3/*autovar*/=it;;
         cstruct oldpass2=*ptr;
@@ -2706,7 +2706,7 @@ accept2:
         int cut3=0;
 alt3_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var8/*autovar*/=it;;
         cstruct oldpass4=*ptr;
@@ -2761,7 +2761,7 @@ accept3:
         int cut4=0;
 alt4_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var10/*autovar*/=it;;
         cstruct oldpass5=*ptr;
@@ -2820,7 +2820,7 @@ accept4:
         int cut5=0;
 alt5_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var13/*autovar*/=it;;
         cstruct oldpass6=*ptr;
@@ -2905,7 +2905,7 @@ accept5:
         int cut7=0;
 alt7_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var17/*autovar*/=it;;
         cstruct oldpass7=*ptr;
@@ -3035,7 +3035,7 @@ accept7:
         int cut10=0;
 alt10_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var23/*autovar*/=it;;
         cstruct oldpass9=*ptr;
@@ -3257,7 +3257,7 @@ VALUE Switch_Char_Dataflow_first(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -3376,7 +3376,7 @@ pass3:
             goto alt2_3;
 success3:
             *ptr=oldpass3;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var6/*autovar*/=it;;
             cstruct oldpass4=*ptr;
@@ -3563,7 +3563,7 @@ pass7:
             goto alt3_2;
 success7:
             *ptr=oldpass7;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var12/*autovar*/=it;;
             cstruct oldpass8=*ptr;
@@ -4037,7 +4037,7 @@ VALUE Switch_Char_Dataflow_first_Switch_Char_Dataflow(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -4092,7 +4092,7 @@ accept1:
         int cut2=0;
 alt2_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var3/*autovar*/=it;;
         cstruct oldpass2=*ptr;
@@ -4175,7 +4175,7 @@ accept2:
         int cut3=0;
 alt3_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var8/*autovar*/=it;;
         cstruct oldpass4=*ptr;
@@ -4230,7 +4230,7 @@ accept3:
         int cut4=0;
 alt4_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var10/*autovar*/=it;;
         cstruct oldpass5=*ptr;
@@ -4289,7 +4289,7 @@ accept4:
         int cut5=0;
 alt5_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var13/*autovar*/=it;;
         cstruct oldpass6=*ptr;
@@ -4374,7 +4374,7 @@ accept5:
         int cut7=0;
 alt7_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var17/*autovar*/=it;;
         cstruct oldpass7=*ptr;
@@ -4504,7 +4504,7 @@ accept7:
         int cut10=0;
 alt10_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var23/*autovar*/=it;;
         cstruct oldpass9=*ptr;
@@ -4716,7 +4716,7 @@ VALUE Switch_Clas_Dataflow_first(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -4779,7 +4779,7 @@ success2:
         switch(FIX2LONG(rb_hash_aref(switchhash_Switch_Clas_Dataflow_2,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*CAct*/:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var2/*autovar*/=it;;
             break;
@@ -4806,7 +4806,7 @@ success2:
         switch(FIX2LONG(rb_hash_aref(switchhash_Switch_Clas_Dataflow_3,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*Class*/:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var3/*cls*/=it;;
             it=Qnil;
@@ -4916,7 +4916,7 @@ VALUE Switch_Clas_Dataflow_first_Switch_Clas_Dataflow(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -4971,7 +4971,7 @@ accept1:
         int cut2=0;
 alt2_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var3/*autovar*/=it;;
         cstruct oldpass2=*ptr;
@@ -5054,7 +5054,7 @@ accept2:
         int cut3=0;
 alt3_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var8/*autovar*/=it;;
         cstruct oldpass4=*ptr;
@@ -5109,7 +5109,7 @@ accept3:
         int cut4=0;
 alt4_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var10/*autovar*/=it;;
         cstruct oldpass5=*ptr;
@@ -5168,7 +5168,7 @@ accept4:
         int cut5=0;
 alt5_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var13/*autovar*/=it;;
         cstruct oldpass6=*ptr;
@@ -5253,7 +5253,7 @@ accept5:
         int cut7=0;
 alt7_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var17/*autovar*/=it;;
         cstruct oldpass7=*ptr;
@@ -5383,7 +5383,7 @@ accept7:
         int cut10=0;
 alt10_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var23/*autovar*/=it;;
         cstruct oldpass9=*ptr;
@@ -5607,7 +5607,7 @@ VALUE Cant_Fail_Dataflow_first(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -5661,7 +5661,7 @@ accept1:
         int cut2=0;
 alt2_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var2/*autovar*/=it;;
         cstruct oldpass2=*ptr;
@@ -5771,7 +5771,7 @@ accept2:
         int cut4=0;
 alt4_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var4/*autovar*/=it;;
         cstruct oldpass4=*ptr;
@@ -5823,7 +5823,7 @@ accept4:
         int cut5=0;
 alt5_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var5/*autovar*/=it;;
         cstruct oldpass5=*ptr;
@@ -5848,7 +5848,7 @@ alt5_1:
             switch(FIX2LONG(rb_hash_aref(switchhash_Cant_Fail_Dataflow_2,rb_obj_class(ame_curobj2(ptr))))) {
             case 0/*Cut*/:
                 ;
-                it=ame_curobj2(ptr)               ;
+                it=ptr->ary[ptr->pos];            ;
                 ptr->pos++;
                 cut5=1;
                 goto pass5;
@@ -5863,7 +5863,7 @@ alt6_1:
                 int cut7=0;
 alt7_1:
                 ;
-                it=ame_curobj2(ptr)               ;
+                it=ptr->ary[ptr->pos];            ;
                 ptr->pos++;
                 var7/*autovar*/=it;;
                 cstruct oldpass6=*ptr;
@@ -5886,7 +5886,7 @@ alt7_1:
                     switch(FIX2LONG(rb_hash_aref(switchhash_Cant_Fail_Dataflow_3,rb_obj_class(ame_curobj2(ptr))))) {
                     case 0/*Cut*/:
                         ;
-                        it=ame_curobj2(ptr)               ;
+                        it=ptr->ary[ptr->pos];            ;
                         ptr->pos++;
                         ptr->pos=ptr->len;
                         cut7=1;
@@ -6011,7 +6011,7 @@ accept5:
         int cut9=0;
 alt9_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var10/*autovar*/=it;;
         cstruct oldpass7=*ptr;
@@ -6140,7 +6140,7 @@ VALUE Cant_Fail_Dataflow_first_Cant_Fail_Dataflow(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -6195,7 +6195,7 @@ accept1:
         int cut2=0;
 alt2_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var3/*autovar*/=it;;
         cstruct oldpass2=*ptr;
@@ -6278,7 +6278,7 @@ accept2:
         int cut3=0;
 alt3_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var8/*autovar*/=it;;
         cstruct oldpass4=*ptr;
@@ -6333,7 +6333,7 @@ accept3:
         int cut4=0;
 alt4_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var10/*autovar*/=it;;
         cstruct oldpass5=*ptr;
@@ -6392,7 +6392,7 @@ accept4:
         int cut5=0;
 alt5_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var13/*autovar*/=it;;
         cstruct oldpass6=*ptr;
@@ -6477,7 +6477,7 @@ accept5:
         int cut7=0;
 alt7_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var17/*autovar*/=it;;
         cstruct oldpass7=*ptr;
@@ -6607,7 +6607,7 @@ accept7:
         int cut10=0;
 alt10_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var23/*autovar*/=it;;
         cstruct oldpass9=*ptr;
@@ -6856,7 +6856,7 @@ alt1_1:
             int cut2=0;
 alt2_1:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var1/*autovar*/=it;;
             cstruct oldpass1=*ptr;
@@ -6914,7 +6914,7 @@ alt2_1:
                     int cut3=0;
 alt3_1:
                     ;
-                    it=ame_curobj2(ptr)               ;
+                    it=ptr->ary[ptr->pos];            ;
                     ptr->pos++;
                     var5/*autovar*/=it;;
                     cstruct oldpass4=*ptr;
@@ -7115,7 +7115,7 @@ VALUE Detect_First_object_only(VALUE self ) {
     switch(FIX2LONG(rb_hash_aref(switchhash_Detect_First_4,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Apply*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -7262,7 +7262,7 @@ VALUE Detect_First_string_only(VALUE self ) {
     switch(FIX2LONG(rb_hash_aref(switchhash_Detect_First_3,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Apply*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -7459,7 +7459,7 @@ VALUE Detect_Switch_Char_combine_or(VALUE self ,VALUE a0) {
         int cut1=0;
 alt1_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -7630,7 +7630,7 @@ alt1_1:
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var3/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -7859,7 +7859,7 @@ alt1_1:
             int cut2=0;
 alt2_1:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var1/*autovar*/=it;;
             cstruct oldpass1=*ptr;
@@ -7917,7 +7917,7 @@ alt2_1:
                     int cut3=0;
 alt3_1:
                     ;
-                    it=ame_curobj2(ptr)               ;
+                    it=ptr->ary[ptr->pos];            ;
                     ptr->pos++;
                     var5/*autovar*/=it;;
                     cstruct oldpass4=*ptr;
@@ -8276,7 +8276,7 @@ alt1_1:
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var2/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -8341,7 +8341,7 @@ alt2_1:
         goto accept2;
 alt2_2:
         ptr->pos=oldpos2;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var4/*autovar*/=it;;
         cstruct oldpass2=*ptr;
@@ -8519,7 +8519,7 @@ VALUE Detect_Switch_Char_visit(VALUE self ) {
     switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Switch_Char_1,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Apply*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         it=var0/*autovar*/;
@@ -8592,7 +8592,7 @@ success2:
         switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Switch_Char_2,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*Act*/:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var5/*autovar*/=it;;
             break;
@@ -8708,7 +8708,7 @@ success5:
         switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Switch_Char_3,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*CAct*/:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var11/*autovar*/=it;;
             break;
@@ -8891,7 +8891,7 @@ accept1:
         break;
     case 1/*Many*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var19/*autovar*/=it;;
         cstruct oldpass10=*ptr;
@@ -8940,7 +8940,7 @@ success10:
         break;
     case 2/*Or*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var22/*autovar*/=it;;
         cstruct oldpass11=*ptr;
@@ -9049,7 +9049,7 @@ alt3_2:
             int cut4=0;
 alt4_1:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var31/*autovar*/=it;;
             cstruct oldpass14=*ptr;
@@ -9221,7 +9221,7 @@ success11:
         break;
     case 3/*Seq*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var38/*autovar*/=it;;
         cstruct oldpass15=*ptr;
@@ -9321,7 +9321,7 @@ alt7_1:
             goto accept7;
 alt7_2:
             ptr->pos=oldpos7;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var46/*autovar*/=it;;
             cstruct oldpass18=*ptr;
@@ -9632,7 +9632,7 @@ VALUE Detect_Switch_Clas_combine_or(VALUE self ,VALUE a0) {
         int cut1=0;
 alt1_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -9803,7 +9803,7 @@ alt1_1:
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var3/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -10032,7 +10032,7 @@ alt1_1:
             int cut2=0;
 alt2_1:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var1/*autovar*/=it;;
             cstruct oldpass1=*ptr;
@@ -10090,7 +10090,7 @@ alt2_1:
                     int cut3=0;
 alt3_1:
                     ;
-                    it=ame_curobj2(ptr)               ;
+                    it=ptr->ary[ptr->pos];            ;
                     ptr->pos++;
                     var5/*autovar*/=it;;
                     cstruct oldpass4=*ptr;
@@ -10449,7 +10449,7 @@ alt1_1:
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var2/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -10514,7 +10514,7 @@ alt2_1:
         goto accept2;
 alt2_2:
         ptr->pos=oldpos2;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var4/*autovar*/=it;;
         cstruct oldpass2=*ptr;
@@ -10685,7 +10685,7 @@ VALUE Detect_Switch_Clas_visit(VALUE self ) {
     switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Switch_Clas_1,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Apply*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         it=var0/*autovar*/;
@@ -10758,7 +10758,7 @@ success2:
         switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Switch_Clas_2,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*CAct*/:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var5/*autovar*/=it;;
             break;
@@ -10785,7 +10785,7 @@ success2:
         switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Switch_Clas_3,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*Class*/:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var6/*clas*/=it;;
             it=Qnil;
@@ -10949,7 +10949,7 @@ accept1:
         break;
     case 1/*Or*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var15/*autovar*/=it;;
         cstruct oldpass7=*ptr;
@@ -11058,7 +11058,7 @@ alt3_2:
             int cut4=0;
 alt4_1:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var24/*autovar*/=it;;
             cstruct oldpass10=*ptr;
@@ -11230,7 +11230,7 @@ success7:
         break;
     case 2/*Seq*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var31/*autovar*/=it;;
         cstruct oldpass11=*ptr;
@@ -11330,7 +11330,7 @@ alt7_1:
             goto accept7;
 alt7_2:
             ptr->pos=oldpos7;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var39/*autovar*/=it;;
             cstruct oldpass14=*ptr;
@@ -11634,7 +11634,7 @@ VALUE Detect_Size_predicate(VALUE self ,VALUE a0) {
         it=rb_funcall(self,sy_Detect_Size__lb_bind_lb_1_rb__2d76,1,bind2);
         var3/*s*/=bind_aget(bind2,1);;
         var1/*msize*/=bind_aget(bind2,2);;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var4/*autovar*/=it;;
         cstruct oldpass2=*ptr;
@@ -11691,7 +11691,7 @@ success2:
         var3/*s*/=bind_aget(bind2,1);;
         var1/*msize*/=bind_aget(bind2,2);;
         var7/*s*/=it;;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var8/*autovar*/=it;;
         cstruct oldpass3=*ptr;
@@ -11809,7 +11809,7 @@ success3:
         var3/*s*/=bind_aget(bind2,1);;
         var1/*msize*/=bind_aget(bind2,2);;
         var7/*s*/=it;;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var13/*autovar*/=it;;
         cstruct oldpass5=*ptr;
@@ -11987,7 +11987,7 @@ VALUE Detect_Size_predicate2(VALUE self ,VALUE a0) {
     switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Size_2,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Apply*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -12034,7 +12034,7 @@ success1:
         break;
     case 1/*Or*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var2/*autovar*/=it;;
         cstruct oldpass2=*ptr;
@@ -12142,7 +12142,7 @@ success2:
         break;
     case 2/*Seq*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var13/*autovar*/=it;;
         cstruct oldpass4=*ptr;
@@ -12587,5 +12587,5 @@ void Init_detect_switch_c() {
     sy_Detect_Size_minsize_lp__01f0=rb_intern("Detect_Size_minsize_lp__01f0");
     rb_define_method(cls_Detect_Size,"predicate",Detect_Size_predicate,1);
     rb_define_method(cls_Detect_Size,"predicate2",Detect_Size_predicate2,1);
-    rb_eval_string("testversiondetect_switch('87261d19e107443386f298998ccc3e53')");
+    rb_eval_string("testversiondetect_switch('b826971a4de8442ca76796d346f3812f')");
 }

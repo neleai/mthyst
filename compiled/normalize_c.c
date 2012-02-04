@@ -77,7 +77,7 @@ VALUE Normalize_act(VALUE self ) {
     switch(FIX2LONG(rb_hash_aref(switchhash_Normalize_12,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Act*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -100,7 +100,7 @@ VALUE Normalize_act(VALUE self ) {
         case 1/*CAct*/:
         case 2/*Local*/:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var1/*autovar*/=it;;
             it=Qnil;
@@ -108,7 +108,7 @@ VALUE Normalize_act(VALUE self ) {
             break;
         case 3/*Lambda*/:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var2/*autovar*/=it;;
             cstruct oldpass2=*ptr;
@@ -144,7 +144,7 @@ success2:
             break;
         case 4/*String*/:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var4/*autovar*/=it;;
             cstruct oldpass3=*ptr;
@@ -982,7 +982,7 @@ VALUE Normalize_apply2(VALUE self ) {
     switch(FIX2LONG(rb_hash_aref(switchhash_Normalize_9,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Apply*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -1068,7 +1068,7 @@ pass2:
             goto alt2_2;
 success2:
             *ptr=oldpass2;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var5/*autovar*/=it;;
             cstruct oldpass3=*ptr;
@@ -1089,7 +1089,7 @@ success2:
             switch(FIX2LONG(rb_hash_aref(switchhash_Normalize_11,rb_obj_class(ame_curobj2(ptr))))) {
             case 0/*Lambda*/:
                 ;
-                it=ame_curobj2(ptr)               ;
+                it=ptr->ary[ptr->pos];            ;
                 ptr->pos++;
                 var6/*autovar*/=it;;
                 cstruct oldpass4=*ptr;
@@ -1341,7 +1341,7 @@ pass8:
             goto alt3_3;
 success8:
             *ptr=oldpass8;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var12/*autovar*/=it;;
             cstruct oldpass9=*ptr;
@@ -1420,7 +1420,7 @@ pass10:
             goto alt3_4;
 success10:
             *ptr=oldpass10;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var14/*autovar*/=it;;
             cstruct oldpass11=*ptr;
@@ -1587,7 +1587,7 @@ pass14:
             goto alt4_3;
 success14:
             *ptr=oldpass14;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var12/*autovar*/=it;;
             cstruct oldpass15=*ptr;
@@ -1825,7 +1825,7 @@ pass19:
             goto alt5_4;
 success19:
             *ptr=oldpass19;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var14/*autovar*/=it;;
             cstruct oldpass20=*ptr;
@@ -2120,7 +2120,7 @@ VALUE Normalize_bind(VALUE self ) {
     switch(FIX2LONG(rb_hash_aref(switchhash_Normalize_6,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Bind*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -2146,7 +2146,7 @@ VALUE Normalize_bind(VALUE self ) {
             int cut1=0;
 alt1_1:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var1/*autovar*/=it;;
             cstruct oldpass2=*ptr;
@@ -2246,7 +2246,7 @@ accept1:
             int cut2=0;
 alt2_1:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var6/*autovar*/=it;;
             cstruct oldpass4=*ptr;
@@ -2341,7 +2341,7 @@ accept2:
             int cut4=0;
 alt4_1:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var11/*autovar*/=it;;
             cstruct oldpass5=*ptr;
@@ -2428,7 +2428,7 @@ success5:
             case 1/*Cut*/:
             case 2/*Stop*/:
                 ;
-                it=ame_curobj2(ptr)               ;
+                it=ptr->ary[ptr->pos];            ;
                 ptr->pos++;
                 bind_aset(bind2,1,var5/*name*/);
                 bind_aset(bind2,2,var15/*first*/);
@@ -2493,7 +2493,7 @@ accept4:
             int cut6=0;
 alt6_1:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var19/*autovar*/=it;;
             cstruct oldpass7=*ptr;
@@ -2718,7 +2718,7 @@ VALUE Normalize_or(VALUE self ) {
         ;
         it=rb_ary_new3(0);
         var0/*ary*/=it;;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var1/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -2747,7 +2747,7 @@ VALUE Normalize_or(VALUE self ) {
                 int cut1=0;
 alt1_1:
                 ;
-                it=ame_curobj2(ptr)               ;
+                it=ptr->ary[ptr->pos];            ;
                 ptr->pos++;
                 var3/*autovar*/=it;;
                 cstruct oldpass2=*ptr;
@@ -2855,7 +2855,7 @@ accept1:
                 int cut2=0;
 alt2_1:
                 ;
-                it=ame_curobj2(ptr)               ;
+                it=ptr->ary[ptr->pos];            ;
                 ptr->pos++;
                 var6/*autovar*/=it;;
                 cstruct oldpass4=*ptr;
@@ -2937,7 +2937,7 @@ alt3_1:
                 goto accept3;
 alt3_2:
                 ptr->pos=oldpos3;
-                it=ame_curobj2(ptr)               ;
+                it=ptr->ary[ptr->pos];            ;
                 ptr->pos++;
                 var8/*autovar*/=it;;
                 cstruct oldpass5=*ptr;
@@ -2960,7 +2960,7 @@ alt3_2:
                     switch(FIX2LONG(rb_hash_aref(switchhash_Normalize_3,rb_obj_class(ame_curobj2(ptr))))) {
                     case 0/*Cut*/:
                         ;
-                        it=ame_curobj2(ptr)               ;
+                        it=ptr->ary[ptr->pos];            ;
                         ptr->pos++;
                         ptr->pos=ptr->len;
                         break;
@@ -3196,7 +3196,7 @@ VALUE Normalize_seq2(VALUE self ) {
         ;
         it=rb_ary_new3(0);
         var0/*ary*/=it;;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var1/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -3225,7 +3225,7 @@ VALUE Normalize_seq2(VALUE self ) {
                 int cut1=0;
 alt1_1:
                 ;
-                it=ame_curobj2(ptr)               ;
+                it=ptr->ary[ptr->pos];            ;
                 ptr->pos++;
                 var3/*autovar*/=it;;
                 cstruct oldpass2=*ptr;
@@ -3340,7 +3340,7 @@ accept1:
                 int cut2=0;
 alt2_1:
                 ;
-                it=ame_curobj2(ptr)               ;
+                it=ptr->ary[ptr->pos];            ;
                 ptr->pos++;
                 var7/*autovar*/=it;;
                 cstruct oldpass4=*ptr;
@@ -3618,5 +3618,5 @@ void Init_normalize_c() {
     rb_define_method(cls_Normalize,"must_empty",Normalize_must_empty,0);
     rb_define_method(cls_Normalize,"or",Normalize_or,0);
     rb_define_method(cls_Normalize,"seq2",Normalize_seq2,0);
-    rb_eval_string("testversionnormalize('347c34bd73aee19ca8efb462ecc18a38')");
+    rb_eval_string("testversionnormalize('4e5b17b96e66cd5444f709de43e26c6b')");
 }

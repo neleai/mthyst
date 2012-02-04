@@ -35,7 +35,7 @@ static VALUE s__d41d;
 static VALUE s_alt_3482;
 static VALUE s_fail_e111;
 static VALUE s_it_eq_Qnil;
-static VALUE s_it_eq_ame_c_4b8d;
+static VALUE s_it_eq_ptr_mi__gt__d2bb;
 static VALUE s_it_eq_rb_st_ee66;
 static VALUE s_oldpass_6559;
 static VALUE s_pass_1a1d;
@@ -487,7 +487,7 @@ VALUE AmethystCTranslator_rbtrans(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -540,7 +540,7 @@ accept1:
         int cut2=0;
 alt2_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var3/*autovar*/=it;;
         cstruct oldpass2=*ptr;
@@ -593,7 +593,7 @@ accept2:
         int cut3=0;
 alt3_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var5/*autovar*/=it;;
         cstruct oldpass3=*ptr;
@@ -649,7 +649,7 @@ accept3:
         int cut4=0;
 alt4_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var7/*autovar*/=it;;
         cstruct oldpass4=*ptr;
@@ -710,7 +710,7 @@ accept4:
         int cut5=0;
 alt5_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var9/*autovar*/=it;;
         cstruct oldpass5=*ptr;
@@ -764,7 +764,7 @@ accept5:
         int cut6=0;
 alt6_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var11/*autovar*/=it;;
         cstruct oldpass6=*ptr;
@@ -818,7 +818,7 @@ accept6:
         int cut7=0;
 alt7_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var13/*autovar*/=it;;
         cstruct oldpass7=*ptr;
@@ -1100,7 +1100,7 @@ VALUE AmethystCTranslator_trans(VALUE self ) {
     switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_2,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Act*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -1171,7 +1171,7 @@ success1:
         break;
     case 1/*Apply*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var7/*autovar*/=it;;
         it=var7/*autovar*/;
@@ -1320,7 +1320,7 @@ success5:
         switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_3,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*CAct*/:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var15/*autovar*/=it;;
             break;
@@ -1739,7 +1739,7 @@ pass15:
         goto alt2_8;
 success15:
         *ptr=oldpass15;
-        it=rb_obj_clone(s_it_eq_ame_c_4b8d);
+        it=rb_obj_clone(s_it_eq_ptr_mi__gt__d2bb);
         var6/*_result*/=it;;
 
         ;
@@ -1808,7 +1808,7 @@ success18:
         switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_4,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*CAct*/:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var31/*autovar*/=it;;
             break;
@@ -1980,7 +1980,7 @@ accept2:
         break;
     case 2/*Bind*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var41/*autovar*/=it;;
         cstruct oldpass21=*ptr;
@@ -2043,7 +2043,7 @@ success21:
         break;
     case 3/*CAct*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var44/*autovar*/=it;;
         cstruct oldpass22=*ptr;
@@ -2077,7 +2077,7 @@ success22:
         break;
     case 4/*Cut*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var46/*autovar*/=it;;
         cstruct oldpass23=*ptr;
@@ -2108,7 +2108,7 @@ success23:
         break;
     case 5/*Grammar*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var47/*autovar*/=it;;
         cstruct oldpass24=*ptr;
@@ -2266,7 +2266,7 @@ success24:
         break;
     case 6/*Local*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var58/*autovar*/=it;;
         cstruct oldpass27=*ptr;
@@ -2300,7 +2300,7 @@ success27:
         break;
     case 7/*Lookahead*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var60/*autovar*/=it;;
         cstruct oldpass28=*ptr;
@@ -2388,7 +2388,7 @@ success28:
         break;
     case 8/*Many*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var68/*autovar*/=it;;
         it=var68/*autovar*/;
@@ -2419,7 +2419,7 @@ alt5_1:
         switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_9,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*Or*/:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var72/*autovar*/=it;;
             cstruct oldpass30=*ptr;
@@ -2440,7 +2440,7 @@ alt5_1:
             switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_10,rb_obj_class(ame_curobj2(ptr))))) {
             case 0/*Apply*/:
                 ;
-                it=ame_curobj2(ptr)               ;
+                it=ptr->ary[ptr->pos];            ;
                 ptr->pos++;
                 var73/*autovar*/=it;;
                 cstruct oldpass31=*ptr;
@@ -2511,7 +2511,7 @@ success31:
                 switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_11,rb_obj_class(ame_curobj2(ptr))))) {
                 case 0/*Stop*/:
                     ;
-                    it=ame_curobj2(ptr)               ;
+                    it=ptr->ary[ptr->pos];            ;
                     ptr->pos++;
                     var75/*autovar*/=it;;
                     break;
@@ -2664,7 +2664,7 @@ accept5:
         break;
     case 9/*Memo*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var80/*autovar*/=it;;
         cstruct oldpass35=*ptr;
@@ -2698,7 +2698,7 @@ success35:
         break;
     case 10/*Or*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var82/*autovar*/=it;;
         cstruct oldpass36=*ptr;
@@ -2900,7 +2900,7 @@ success36:
         break;
     case 11/*Pass*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var89/*autovar*/=it;;
         cstruct oldpass37=*ptr;
@@ -3016,7 +3016,7 @@ success37:
         break;
     case 12/*Rule*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var97/*autovar*/=it;;
         it=var97/*autovar*/;
@@ -3219,7 +3219,7 @@ accept10:
         break;
     case 13/*Seq*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var109/*autovar*/=it;;
         cstruct oldpass43=*ptr;
@@ -3310,7 +3310,7 @@ success43:
         break;
     case 14/*Stop*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var113/*autovar*/=it;;
         cstruct oldpass44=*ptr;
@@ -3341,7 +3341,7 @@ success44:
         break;
     case 15/*Switch_Char*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var114/*autovar*/=it;;
         cstruct oldpass45=*ptr;
@@ -3461,7 +3461,7 @@ success45:
         break;
     case 16/*Switch_Clas*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var118/*autovar*/=it;;
         cstruct oldpass47=*ptr;
@@ -3626,8 +3626,8 @@ void Init_ctranslator2_c() {
     rb_global_variable(&s_fail_e111);
     s_it_eq_Qnil=rb_str_new2("it=Qnil;");
     rb_global_variable(&s_it_eq_Qnil);
-    s_it_eq_ame_c_4b8d=rb_str_new2("it=ame_curobj2(ptr)               ;ptr->pos++;");
-    rb_global_variable(&s_it_eq_ame_c_4b8d);
+    s_it_eq_ptr_mi__gt__d2bb=rb_str_new2("it=ptr->ary[ptr->pos];            ;ptr->pos++;");
+    rb_global_variable(&s_it_eq_ptr_mi__gt__d2bb);
     s_it_eq_rb_st_ee66=rb_str_new2("it=rb_str_new(ptr->str+ptr->pos,1);ptr->pos++;");
     rb_global_variable(&s_it_eq_rb_st_ee66);
     s_oldpass_6559=rb_str_new2("oldpass");
@@ -3773,5 +3773,5 @@ void Init_ctranslator2_c() {
     rb_define_method(cls_AmethystCTranslator,"rbtrans2",AmethystCTranslator_rbtrans2,0);
     rb_define_method(cls_AmethystCTranslator,"rw",AmethystCTranslator_rw,2);
     rb_define_method(cls_AmethystCTranslator,"trans",AmethystCTranslator_trans,0);
-    rb_eval_string("testversionctranslator2('ef8953ab372dbf4fedebf74cec8d72cb')");
+    rb_eval_string("testversionctranslator2('cbb242e127db648b4ed8b92aaee1c1fc')");
 }

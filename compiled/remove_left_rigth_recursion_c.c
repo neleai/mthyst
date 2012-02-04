@@ -66,7 +66,7 @@ VALUE Remove_Left_Recursion_first(VALUE self ,VALUE a0) {
         int cut1=0;
 alt1_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -129,7 +129,7 @@ accept1:
         int cut2=0;
 alt2_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var4/*autovar*/=it;;
         cstruct oldpass2=*ptr;
@@ -215,7 +215,7 @@ accept2:
         int cut3=0;
 alt3_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var9/*autovar*/=it;;
         cstruct oldpass4=*ptr;
@@ -307,7 +307,7 @@ accept3:
         int cut5=0;
 alt5_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var13/*autovar*/=it;;
         it=var13/*autovar*/;
@@ -601,7 +601,7 @@ VALUE Remove_Left_Recursion_root(VALUE self ) {
     switch(FIX2LONG(rb_hash_aref(switchhash_Remove_Left_Recursion_1,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Rule*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -638,7 +638,7 @@ VALUE Remove_Left_Recursion_root(VALUE self ) {
             int cut1=0;
 alt1_1:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var2/*autovar*/=it;;
             cstruct oldpass3=*ptr;
@@ -709,7 +709,7 @@ accept1:
             int cut2=0;
 alt2_1:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var7/*autovar*/=it;;
             cstruct oldpass4=*ptr;
@@ -801,7 +801,7 @@ accept2:
             int cut3=0;
 alt3_1:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var12/*autovar*/=it;;
             cstruct oldpass6=*ptr;
@@ -899,7 +899,7 @@ accept3:
             int cut5=0;
 alt5_1:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var16/*autovar*/=it;;
             it=var16/*autovar*/;
@@ -1153,7 +1153,7 @@ success2:
             int cut9=0;
 alt9_1:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var2/*autovar*/=it;;
             cstruct oldpass11=*ptr;
@@ -1224,7 +1224,7 @@ accept9:
             int cut10=0;
 alt10_1:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var7/*autovar*/=it;;
             cstruct oldpass12=*ptr;
@@ -1316,7 +1316,7 @@ accept10:
             int cut11=0;
 alt11_1:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var12/*autovar*/=it;;
             cstruct oldpass14=*ptr;
@@ -1414,7 +1414,7 @@ accept11:
             int cut13=0;
 alt13_1:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var16/*autovar*/=it;;
             it=var16/*autovar*/;
@@ -1708,5 +1708,5 @@ void Init_remove_left_rigth_recursion_c() {
     rb_define_method(cls_Remove_Left_Recursion,"first",Remove_Left_Recursion_first,1);
     rb_define_method(cls_Remove_Left_Recursion,"must_empty",Remove_Left_Recursion_must_empty,0);
     rb_define_method(cls_Remove_Left_Recursion,"root",Remove_Left_Recursion_root,0);
-    rb_eval_string("testversionremove_left_rigth_recursion('dd194be3b85047222f94c06634844e33')");
+    rb_eval_string("testversionremove_left_rigth_recursion('1de16bc51d61ba1d2421f3d89432abab')");
 }

@@ -28,7 +28,7 @@ VALUE DetectCalls_root(VALUE self ) {
     switch(FIX2LONG(rb_hash_aref(switchhash_DetectCalls_1,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Rule*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -202,7 +202,7 @@ alt1_1:
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var1/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -264,7 +264,7 @@ alt2_1:
         goto accept2;
 alt2_2:
         ptr->pos=oldpos2;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var3/*autovar*/=it;;
         cstruct oldpass2=*ptr;
@@ -387,7 +387,7 @@ VALUE DetectCalls_visit(VALUE self ) {
     switch(FIX2LONG(rb_hash_aref(switchhash_DetectCalls_2,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Apply*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -499,7 +499,7 @@ VALUE Inliner2_root(VALUE self ) {
     switch(FIX2LONG(rb_hash_aref(switchhash_Inliner2_1,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Rule*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var3/*autovar*/=it;;
         it=Qnil;
@@ -567,7 +567,7 @@ success2:
     switch(FIX2LONG(rb_hash_aref(switchhash_Inliner2_2,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Rule*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var9/*autovar*/=it;;
         it=Qnil;
@@ -802,7 +802,7 @@ alt1_1:
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var2/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -867,7 +867,7 @@ alt2_1:
         goto accept2;
 alt2_2:
         ptr->pos=oldpos2;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var4/*autovar*/=it;;
         cstruct oldpass2=*ptr;
@@ -995,7 +995,7 @@ VALUE Inliner2_visit(VALUE self ) {
     switch(FIX2LONG(rb_hash_aref(switchhash_Inliner2_3,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Apply*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -1122,5 +1122,5 @@ void Init_inliner2_c() {
     rb_define_method(cls_Inliner2,"traverse",Inliner2_traverse,0);
     rb_define_method(cls_Inliner2,"traverse_item",Inliner2_traverse_item,0);
     rb_define_method(cls_Inliner2,"visit",Inliner2_visit,0);
-    rb_eval_string("testversioninliner2('e19e2092ce38581fa2f3a84f3864afde')");
+    rb_eval_string("testversioninliner2('821728e6fa47c44ab4b0eddda9cc715e')");
 }

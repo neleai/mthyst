@@ -88,7 +88,7 @@ VALUE Dataflow_root(VALUE self ) {
     switch(FIX2LONG(rb_hash_aref(switchhash_Dataflow_1,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Rule*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var1/*autovar*/=it;;
         it=Qnil;
@@ -428,7 +428,7 @@ alt1_1:
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var2/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -493,7 +493,7 @@ alt2_1:
         goto accept2;
 alt2_2:
         ptr->pos=oldpos2;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var4/*autovar*/=it;;
         cstruct oldpass2=*ptr;
@@ -644,7 +644,7 @@ VALUE Dataflow_vars_in(VALUE self ) {
             int cut1=0;
 alt1_1:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var1/*autovar*/=it;;
             cstruct oldpass1=*ptr;
@@ -704,7 +704,7 @@ accept1:
             int cut2=0;
 alt2_1:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var3/*autovar*/=it;;
             cstruct oldpass2=*ptr;
@@ -763,7 +763,7 @@ accept2:
             int cut3=0;
 alt3_1:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var5/*autovar*/=it;;
             cstruct oldpass3=*ptr;
@@ -822,7 +822,7 @@ accept3:
             int cut4=0;
 alt4_1:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var7/*autovar*/=it;;
             cstruct oldpass4=*ptr;
@@ -882,7 +882,7 @@ accept4:
             int cut5=0;
 alt5_1:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var9/*autovar*/=it;;
             cstruct oldpass5=*ptr;
@@ -943,7 +943,7 @@ accept5:
             int cut6=0;
 alt6_1:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var11/*autovar*/=it;;
             cstruct oldpass6=*ptr;
@@ -1004,7 +1004,7 @@ accept6:
             int cut7=0;
 alt7_1:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var13/*autovar*/=it;;
             cstruct oldpass7=*ptr;
@@ -1064,7 +1064,7 @@ accept7:
             int cut8=0;
 alt8_1:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var15/*autovar*/=it;;
             cstruct oldpass8=*ptr;
@@ -1220,7 +1220,7 @@ VALUE Dataflow_visit(VALUE self ) {
     switch(FIX2LONG(rb_hash_aref(switchhash_Dataflow_2,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Act*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -1346,7 +1346,7 @@ success1:
         break;
     case 1/*Apply*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var12/*autovar*/=it;;
         cstruct oldpass4=*ptr;
@@ -1462,7 +1462,7 @@ success4:
         break;
     case 2/*Bind*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var19/*autovar*/=it;;
         cstruct oldpass7=*ptr;
@@ -1525,7 +1525,7 @@ success7:
         break;
     case 3/*Local*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var23/*autovar*/=it;;
         cstruct oldpass9=*ptr;
@@ -1559,7 +1559,7 @@ success9:
         break;
     case 4/*Lookahead*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var25/*autovar*/=it;;
         cstruct oldpass10=*ptr;
@@ -1630,7 +1630,7 @@ success10:
         break;
     case 5/*Many*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var30/*autovar*/=it;;
         cstruct oldpass11=*ptr;
@@ -1703,7 +1703,7 @@ success11:
         ;
         it=rb_ary_new3(0);
         var3/*t*/=it;;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var35/*autovar*/=it;;
         cstruct oldpass12=*ptr;
@@ -1778,7 +1778,7 @@ success12:
         break;
     case 7/*Pass*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var39/*autovar*/=it;;
         cstruct oldpass13=*ptr;
@@ -1862,7 +1862,7 @@ success13:
         break;
     case 8/*Result*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var46/*autovar*/=it;;
         cstruct oldpass16=*ptr;
@@ -1971,7 +1971,7 @@ success16:
         break;
     case 9/*Switch*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var52/*autovar*/=it;;
         cstruct oldpass19=*ptr;
@@ -2136,7 +2136,7 @@ VALUE Dead_Code_Deleter3_root(VALUE self ) {
     switch(FIX2LONG(rb_hash_aref(switchhash_Dead_Code_Deleter3_1,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Rule*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var1/*autovar*/=it;;
         it=Qnil;
@@ -2373,7 +2373,7 @@ alt1_1:
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var2/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -2438,7 +2438,7 @@ alt2_1:
         goto accept2;
 alt2_2:
         ptr->pos=oldpos2;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var4/*autovar*/=it;;
         cstruct oldpass2=*ptr;
@@ -2572,7 +2572,7 @@ VALUE Dead_Code_Deleter3_visit(VALUE self ) {
     case 1/*CAct*/:
     case 2/*Result*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -2608,7 +2608,7 @@ success1:
         break;
     case 3/*Apply*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var3/*autovar*/=it;;
         cstruct oldpass2=*ptr;
@@ -2642,7 +2642,7 @@ success2:
         break;
     case 4/*Bind*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var5/*autovar*/=it;;
         cstruct oldpass3=*ptr;
@@ -2708,7 +2708,7 @@ success3:
         break;
     case 5/*Local*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var9/*autovar*/=it;;
         cstruct oldpass5=*ptr;
@@ -2795,7 +2795,7 @@ VALUE Forget_SSA_root(VALUE self ) {
     switch(FIX2LONG(rb_hash_aref(switchhash_Forget_SSA_1,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Rule*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var1/*autovar*/=it;;
         it=Qnil;
@@ -3030,7 +3030,7 @@ alt1_1:
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var2/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -3095,7 +3095,7 @@ alt2_1:
         goto accept2;
 alt2_2:
         ptr->pos=oldpos2;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var4/*autovar*/=it;;
         cstruct oldpass2=*ptr;
@@ -3220,7 +3220,7 @@ VALUE Forget_SSA_visit(VALUE self ) {
     switch(FIX2LONG(rb_hash_aref(switchhash_Forget_SSA_2,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Local*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -3371,5 +3371,5 @@ void Init_dataflow_ssa_c() {
     rb_define_method(cls_Forget_SSA,"traverse",Forget_SSA_traverse,0);
     rb_define_method(cls_Forget_SSA,"traverse_item",Forget_SSA_traverse_item,0);
     rb_define_method(cls_Forget_SSA,"visit",Forget_SSA_visit,0);
-    rb_eval_string("testversiondataflow_ssa('545cdb9600f4aee91efa1619e9e54e7a')");
+    rb_eval_string("testversiondataflow_ssa('b15fcbcafadf7ddd20283efc968c0ccd')");
 }

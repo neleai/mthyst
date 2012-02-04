@@ -79,7 +79,7 @@ VALUE Constant_Propagator_step(VALUE self ,VALUE a0) {
         int cut1=0;
 alt1_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var2/*autovar*/=it;;
         cstruct oldpass2=*ptr;
@@ -100,7 +100,7 @@ alt1_1:
         switch(FIX2LONG(rb_hash_aref(switchhash_Constant_Propagator_2,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*Lambda*/:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var3/*autovar*/=it;;
             cstruct oldpass3=*ptr;
@@ -136,7 +136,7 @@ success3:
             break;
         case 1/*Local*/:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var6/*autovar*/=it;;
             cstruct oldpass4=*ptr;
@@ -212,7 +212,7 @@ accept1:
         int cut2=0;
 alt2_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var9/*autovar*/=it;;
         cstruct oldpass5=*ptr;
@@ -274,7 +274,7 @@ accept2:
         int cut3=0;
 alt3_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var12/*autovar*/=it;;
         cstruct oldpass6=*ptr;
@@ -335,7 +335,7 @@ accept3:
         int cut4=0;
 alt4_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var15/*autovar*/=it;;
         cstruct oldpass7=*ptr;
@@ -462,7 +462,7 @@ VALUE Constant_Traverser_consts(VALUE self ) {
             int cut1=0;
 alt1_1:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var1/*autovar*/=it;;
             cstruct oldpass1=*ptr;
@@ -751,7 +751,7 @@ alt1_1:
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var2/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -816,7 +816,7 @@ alt2_1:
         goto accept2;
 alt2_2:
         ptr->pos=oldpos2;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var4/*autovar*/=it;;
         cstruct oldpass2=*ptr;
@@ -949,7 +949,7 @@ VALUE Constant_Traverser_visit(VALUE self ) {
     switch(FIX2LONG(rb_hash_aref(switchhash_Constant_Traverser_2,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Act*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -986,7 +986,7 @@ success1:
         break;
     case 1/*Bind*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var4/*autovar*/=it;;
         cstruct oldpass2=*ptr;
@@ -1024,7 +1024,7 @@ success2:
         break;
     case 2/*Local*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var7/*autovar*/=it;;
         cstruct oldpass3=*ptr;
@@ -1060,7 +1060,7 @@ success3:
         break;
     case 3/*Result*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var9/*autovar*/=it;;
         cstruct oldpass4=*ptr;
@@ -1148,5 +1148,5 @@ void Init_constant_propagation_c() {
     rb_define_method(cls_Constant_Traverser,"traverse",Constant_Traverser_traverse,0);
     rb_define_method(cls_Constant_Traverser,"traverse_item",Constant_Traverser_traverse_item,0);
     rb_define_method(cls_Constant_Traverser,"visit",Constant_Traverser_visit,0);
-    rb_eval_string("testversionconstant_propagation('e4a7f8c83720e207a7fa6011fec78a72')");
+    rb_eval_string("testversionconstant_propagation('01c837281b99145fbe7f275ea0754495')");
 }

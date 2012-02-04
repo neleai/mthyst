@@ -196,7 +196,7 @@ alt1_1:
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var2/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -261,7 +261,7 @@ alt2_1:
         goto accept2;
 alt2_2:
         ptr->pos=oldpos2;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var4/*autovar*/=it;;
         cstruct oldpass2=*ptr;
@@ -510,7 +510,7 @@ alt1_1:
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var1/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -572,7 +572,7 @@ alt2_1:
         goto accept2;
 alt2_2:
         ptr->pos=oldpos2;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var3/*autovar*/=it;;
         cstruct oldpass2=*ptr;
@@ -705,5 +705,5 @@ void Init_traverser_c() {
     sy_visit=rb_intern("visit");
     rb_define_method(cls_Visitor,"traverse",Visitor_traverse,0);
     rb_define_method(cls_Visitor,"traverse_item",Visitor_traverse_item,0);
-    rb_eval_string("testversiontraverser('e6d09b6967038a833b8a057edf32e7bc')");
+    rb_eval_string("testversiontraverser('b4a4f666b141f0be2ba1bb8e8081c9a1')");
 }

@@ -138,7 +138,7 @@ int oldpos=ptr->pos;if (memo_pos(mem,#{@@memo_no=(@@memo_no||111)+2},ptr->src,pt
         | Apply[ ["eof"]   {"it=Qnil;if (ptr->pos<ptr->len) goto #{@@faillabel};"} ]
         | Apply[ ["empty"]   {"it=Qnil;"} ]
 				| Apply[ ["advance_char"] {"it=rb_str_new(ptr->str+ptr->pos,1);ptr->pos++;"} ]
-				| Apply[ ["advance_clas"] {"it=ame_curobj2(ptr)               ;ptr->pos++;"} ]
+				| Apply[ ["advance_clas"] {"it=ptr->ary[ptr->pos];            ;ptr->pos++;"} ]
 
         | Apply[ ["_seq"] CAct[.:s] {"if (#{ary=s.split("");map_index(ary){|i| "ame_curstr2(ptr)[#{i}]==#{Lattice_Char.new.cchar(ary[i])}" }*"&&" })  ptr->pos+=#{s.size}; else goto #{@@faillabel};"}]
         | Apply[ .:name {0}:ii ( trans:aa {ii+=1} {"#{aa} arg#{ii-1}=it;"})*:args @self:app]

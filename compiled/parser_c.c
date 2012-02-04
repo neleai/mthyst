@@ -4001,7 +4001,7 @@ VALUE AmethystParser_procargs2(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -6520,7 +6520,7 @@ VALUE AmethystParser_ruleargs(VALUE self ) {
             int cut1=0;
 alt1_1:
             ;
-            it=ame_curobj2(ptr)               ;
+            it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             var3/*autovar*/=it;;
             cstruct oldpass3=*ptr;
@@ -7840,5 +7840,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('5b229fe5e397cf4cffd2b33e4638d7c2')");
+    rb_eval_string("testversionparser('968ee42561bcb816030570a517d0c749')");
 }

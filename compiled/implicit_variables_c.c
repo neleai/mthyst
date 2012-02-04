@@ -163,7 +163,7 @@ alt1_1:
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var1/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -225,7 +225,7 @@ alt2_1:
         goto accept2;
 alt2_2:
         ptr->pos=oldpos2;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var3/*autovar*/=it;;
         cstruct oldpass2=*ptr;
@@ -350,7 +350,7 @@ VALUE Detect_Implicit_Variables_visit(VALUE self ) {
     switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Implicit_Variables_1,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Apply*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -473,7 +473,7 @@ VALUE Add_Implicit_Variables_root(VALUE self ) {
     switch(FIX2LONG(rb_hash_aref(switchhash_Add_Implicit_Variables_1,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Rule*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var1/*autovar*/=it;;
         break;
@@ -704,7 +704,7 @@ alt1_1:
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var2/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -769,7 +769,7 @@ alt2_1:
         goto accept2;
 alt2_2:
         ptr->pos=oldpos2;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var4/*autovar*/=it;;
         cstruct oldpass2=*ptr;
@@ -899,7 +899,7 @@ VALUE Add_Implicit_Variables_visit(VALUE self ) {
     switch(FIX2LONG(rb_hash_aref(switchhash_Add_Implicit_Variables_2,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Apply*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         it=var0/*autovar*/;
@@ -1054,5 +1054,5 @@ void Init_implicit_variables_c() {
     rb_define_method(cls_Add_Implicit_Variables,"traverse",Add_Implicit_Variables_traverse,0);
     rb_define_method(cls_Add_Implicit_Variables,"traverse_item",Add_Implicit_Variables_traverse_item,0);
     rb_define_method(cls_Add_Implicit_Variables,"visit",Add_Implicit_Variables_visit,0);
-    rb_eval_string("testversionimplicit_variables('d7724ae9c61c95264d803d65f5a9ff07')");
+    rb_eval_string("testversionimplicit_variables('9a6a49f2cb11fb60894e06f6e1e55e8e')");
 }

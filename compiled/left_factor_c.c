@@ -74,7 +74,7 @@ VALUE Left_Factor_binds(VALUE self ,VALUE a0,VALUE a1) {
         int cut1=0;
 alt1_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var2/*autovar*/=it;;
         cstruct oldpass2=*ptr;
@@ -140,7 +140,7 @@ accept1:
         int cut2=0;
 alt2_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var7/*autovar*/=it;;
         cstruct oldpass3=*ptr;
@@ -366,7 +366,7 @@ VALUE Left_Factor_first(VALUE self ,VALUE a0) {
         int cut1=0;
 alt1_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var2/*autovar*/=it;;
         cstruct oldpass2=*ptr;
@@ -425,7 +425,7 @@ accept1:
         int cut2=0;
 alt2_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var5/*autovar*/=it;;
         cstruct oldpass3=*ptr;
@@ -540,7 +540,7 @@ VALUE Left_Factor_rest(VALUE self ,VALUE a0,VALUE a1) {
         int cut1=0;
 alt1_1:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var2/*autovar*/=it;;
         cstruct oldpass2=*ptr;
@@ -851,7 +851,7 @@ alt1_1:
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var2/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -916,7 +916,7 @@ alt2_1:
         goto accept2;
 alt2_2:
         ptr->pos=oldpos2;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var4/*autovar*/=it;;
         cstruct oldpass2=*ptr;
@@ -1049,7 +1049,7 @@ VALUE Left_Factor_visit(VALUE self ) {
     switch(FIX2LONG(rb_hash_aref(switchhash_Left_Factor_4,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Or*/:
         ;
-        it=ame_curobj2(ptr)               ;
+        it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         var0/*autovar*/=it;;
         cstruct oldpass1=*ptr;
@@ -1257,5 +1257,5 @@ void Init_left_factor_c() {
     rb_define_method(cls_Left_Factor,"traverse",Left_Factor_traverse,0);
     rb_define_method(cls_Left_Factor,"traverse_item",Left_Factor_traverse_item,0);
     rb_define_method(cls_Left_Factor,"visit",Left_Factor_visit,0);
-    rb_eval_string("testversionleft_factor('b177dbdfd3083392d1eca892bdfc36df')");
+    rb_eval_string("testversionleft_factor('cb91845af9c7b131e68c748549da0cb7')");
 }
