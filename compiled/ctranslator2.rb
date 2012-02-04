@@ -17,12 +17,14 @@ class AmethystCTranslator < Amethyst
   def bget(s)
     cm=s[0]
     s=desc(s)
-    return "bind_aget(bind,#{s}/*#{cm}*/)"
+ #   return "bind_aget(bind,#{s}/*#{cm}*/)"
+		return "var#{s}/*#{cm}*/"
   end
   def bset(s,e)
     cm=s[0]
     s=desc(s)
-    return "bind_aset(bind,#{s}/*#{cm}*/,#{e})"
+#    return "bind_aset(bind,#{s}/*#{cm}*/,#{e})"
+		return "var#{s}/*#{cm}*/=#{e};"
   end
   def rbbget(s)
 		return "bind[#{@binds[s]}]" if @binds[s]
@@ -315,25 +317,25 @@ end
 def AmethystCTranslator_bind_lb_1_rb__ti__cfcb(bind)
 bind[1]*""
 end
-def AmethystCTranslator_h_eq__dq_VALUE_2653(bind)
-h="VALUE #{@grammar}_#{bind[1]}(VALUE self #{map_index(src.args){|i| ",VALUE a#{i}"}*""})" 
-            @header<<h+";"
-            @defmethods<< "rb_define_method(cls_#{@grammar},\"#{src.name}\",#{@grammar}_#{src.name},#{src.args.size});"
-						bind[2]=h+"{VALUE vals[#{src.args.size}]; VALUE bind=bind_new2(#{@locls.size});VALUE bind2=bind_new2(16); #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
-int oldpos=ptr->pos;if (memo_pos(mem,#{@memo_no=(@memo_no||111)+2},ptr->src,ptr->pos)!=-1) {it=memo_value(mem,#{@memo_no},ptr->src,ptr->pos);ptr->pos=memo_pos(mem,#{@memo_no},ptr->src,ptr->pos);return it;} #{bind[3]}\n memo_add(mem,#{@memo_no},ptr->src,oldpos,it,ptr->pos); return it;\nfail: memo_add(mem,#{@memo_no},ptr->src,oldpos,failobj,ptr->pos); return failobj; }" 
-end
 def AmethystCTranslator_h_eq__dq_VALUE_3d5e(bind)
 h="VALUE #{bind[1]}(VALUE self,VALUE bind)"
                  @header<<h+";"
                  @defmethods<<"rb_define_method(cls_#{@grammar},\"#{bind[1]}\",#{bind[1]},1);"
                  @lambdas<< h+"{VALUE vals[0]; /*todo unify with rule and get args*/ cstruct *ptr; int x;VALUE it;VALUE arg0,arg1,arg2,arg3;\n#{bind[2]}\nreturn it;\nfail: return failobj; }" 
 end
-def AmethystCTranslator_h_eq__dq_VALUE_ae61(bind)
+def AmethystCTranslator_h_eq__dq_VALUE_c505(bind)
 h="VALUE #{@grammar}_#{bind[1]}(VALUE self #{map_index(src.args){|i| ",VALUE a#{i}"}*""})" 
             @header<<h+";"
             @defmethods<< "rb_define_method(cls_#{@grammar},\"#{src.name}\",#{@grammar}_#{src.name},#{src.args.size});"
-            h+"{VALUE vals[#{src.args.size}]; VALUE bind=bind_new2(#{@locls.size});VALUE bind2=bind_new2(16); #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
+            h+"{VALUE vals[#{src.args.size}];  #{map_index(@locls){|i| "VALUE var#{i};"}*""} ;VALUE bind2=bind_new2(16); #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
             \n#{bind[2]}\nreturn it;\nfail: return failobj; }" 
+end
+def AmethystCTranslator_h_eq__dq_VALUE_c6bd(bind)
+h="VALUE #{@grammar}_#{bind[1]}(VALUE self #{map_index(src.args){|i| ",VALUE a#{i}"}*""})" 
+            @header<<h+";"
+            @defmethods<< "rb_define_method(cls_#{@grammar},\"#{src.name}\",#{@grammar}_#{src.name},#{src.args.size});"
+						bind[2]=h+"{VALUE vals[#{src.args.size}]; #{map_index(@locls){|i| "VALUE var#{i};"}*""};VALUE bind2=bind_new2(16); #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
+int oldpos=ptr->pos;if (memo_pos(mem,#{@memo_no=(@memo_no||111)+2},ptr->src,ptr->pos)!=-1) {it=memo_value(mem,#{@memo_no},ptr->src,ptr->pos);ptr->pos=memo_pos(mem,#{@memo_no},ptr->src,ptr->pos);return it;} #{bind[3]}\n memo_add(mem,#{@memo_no},ptr->src,oldpos,it,ptr->pos); return it;\nfail: memo_add(mem,#{@memo_no},ptr->src,oldpos,failobj,ptr->pos); return failobj; }" 
 end
 def AmethystCTranslator_label_lp__dq_a_f49c(bind)
 label("accept")
@@ -380,15 +382,15 @@ end
 
 
 def ctranslator2_compiled_by
-'22777392771fde1461dd937fada749ef'
+'a82fa73838f0bffc190ae161fc65d4a2'
 end
 def ctranslator2_source_hash
-'9df96fc7322172ea188e7459b74dd4ea'
+'c4d292df703820f66410b84ed375b67f'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'5a8ea1620bbd1fe0926be5ded99b72b7'
+'1bfd0b2ee0407109dea603af2b3f8dc7'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"

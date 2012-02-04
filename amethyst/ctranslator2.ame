@@ -17,12 +17,14 @@ class AmethystCTranslator < Amethyst
   def bget(s)
     cm=s[0]
     s=desc(s)
-    return "bind_aget(bind,#{s}/*#{cm}*/)"
+ #   return "bind_aget(bind,#{s}/*#{cm}*/)"
+		return "var#{s}/*#{cm}*/"
   end
   def bset(s,e)
     cm=s[0]
     s=desc(s)
-    return "bind_aset(bind,#{s}/*#{cm}*/,#{e})"
+#    return "bind_aset(bind,#{s}/*#{cm}*/,#{e})"
+		return "var#{s}/*#{cm}*/=#{e};"
   end
   def rbbget(s)
 		return "bind[#{@binds[s]}]" if @binds[s]
@@ -112,7 +114,7 @@ amethyst AmethystCTranslator < Amethyst {
           { h="VALUE #{@@grammar}_#{name}(VALUE self #{map_index(@args){|i| ",VALUE a#{i}"}*""})" 
             @@header<<h+";"
             @@defmethods<< "rb_define_method(cls_#{@@grammar},\"#{@name}\",#{@@grammar}_#{@name},#{@args.size});"
-						s=h+"{VALUE vals[#{@args.size}]; VALUE bind=bind_new2(#{@@locls.size});VALUE bind2=bind_new2(16); #{map_index(@args){|i| bset(@args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
+						s=h+"{VALUE vals[#{@args.size}]; #{map_index(@@locls){|i| "VALUE var#{i};"}*""};VALUE bind2=bind_new2(16); #{map_index(@args){|i| bset(@args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
 int oldpos=ptr->pos;if (memo_pos(mem,#{@@memo_no=(@@memo_no||111)+2},ptr->src,ptr->pos)!=-1) {it=memo_value(mem,#{@@memo_no},ptr->src,ptr->pos);ptr->pos=memo_pos(mem,#{@@memo_no},ptr->src,ptr->pos);return it;} #{body}\n memo_add(mem,#{@@memo_no},ptr->src,oldpos,it,ptr->pos); return it;\nfail: memo_add(mem,#{@@memo_no},ptr->src,oldpos,failobj,ptr->pos); return failobj; }" } ]
 
 
@@ -120,7 +122,7 @@ int oldpos=ptr->pos;if (memo_pos(mem,#{@@memo_no=(@@memo_no||111)+2},ptr->src,pt
           { h="VALUE #{@@grammar}_#{name}(VALUE self #{map_index(@args){|i| ",VALUE a#{i}"}*""})" 
             @@header<<h+";"
             @@defmethods<< "rb_define_method(cls_#{@@grammar},\"#{@name}\",#{@@grammar}_#{@name},#{@args.size});"
-            h+"{VALUE vals[#{@args.size}]; VALUE bind=bind_new2(#{@@locls.size});VALUE bind2=bind_new2(16); #{map_index(@args){|i| bset(@args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
+            h+"{VALUE vals[#{@args.size}];  #{map_index(@@locls){|i| "VALUE var#{i};"}*""} ;VALUE bind2=bind_new2(16); #{map_index(@args){|i| bset(@args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
             \n#{body}\nreturn it;\nfail: return failobj; }" } ]
         | Act[ {@@bindno=0;@@binds={}}
 								.*:{addcallback(@pred ? ["(",it,") || FAIL"] : it)}:cbno 

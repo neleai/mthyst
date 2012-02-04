@@ -41,77 +41,77 @@ static VALUE sy_Analyze_Variables2_src_dot_pure_41d4;
 static VALUE sy_Analyze_Variables2_src_dot_rule_5acf;
 static VALUE sy_Analyze_Variables2_src_dot_rule_a719;
 static VALUE sy_Analyze_Variables2_vars_eq__at_lo_cf02;
-VALUE Analyze_Variables2_flat(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(7);VALUE bind2=bind_new2(16);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
+VALUE Analyze_Variables2_flat(VALUE self ){VALUE vals[0];  VALUE var0;VALUE var1;VALUE var2;VALUE var3;VALUE var4;VALUE var5;VALUE var6; ;VALUE bind2=bind_new2(16);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
             
-it=rb_ary_new3(0); bind_aset(bind,0/*autovar*/,it);
+it=rb_ary_new3(0); var0/*autovar*/=it;;
 int oldpos1;  while(1){oldpos1=ptr->pos; switch(FIX2LONG(rb_hash_aref(switchhash_Analyze_Variables2_6,rb_obj_class(ame_curobj2(ptr))))){case 0/*Args*/:; int oldpos2=ptr->pos;int cut1=0;
-alt1_1:;it=ame_curobj2(ptr)               ;ptr->pos++; bind_aset(bind,1/*autovar*/,it);
+alt1_1:;it=ame_curobj2(ptr)               ;ptr->pos++; var1/*autovar*/=it;;
 cstruct oldpass1=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,1/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                     it=Analyze_Variables2_flat(self ); FAILTEST(pass1); bind_aset(bind,2/*autovar*/,it);
+                   ptr->src=var1/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                     it=Analyze_Variables2_flat(self ); FAILTEST(pass1); var2/*autovar*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass1;
                    goto success1;
                    pass1: *ptr=oldpass1; goto alt1_2;
                    success1: *ptr=oldpass1;
-                it=bind_aget(bind,2/*autovar*/); bind_aset(bind,3/*autovar*/,it);
+                it=var2/*autovar*/; var3/*autovar*/=it;;
 
 ;goto accept2;
-alt1_2: ptr->pos=oldpos2;  it=AmethystCore_anything(self ); FAILTEST(alt1_3); bind_aset(bind,3/*autovar*/,it);
+alt1_2: ptr->pos=oldpos2;  it=AmethystCore_anything(self ); FAILTEST(alt1_3); var3/*autovar*/=it;;
 
 ;goto accept2;
 alt1_3: ptr->pos=oldpos2;goto break1;
  accept2:;
-bind_aset(bind2,1,bind_aget(bind,0/*autovar*/));bind_aset(bind2,2,bind_aget(bind,3/*autovar*/));it=rb_funcall(self,sy_Analyze_Variables2__append_lp__d113,1,bind2);bind_aset(bind,0/*autovar*/,bind_aget(bind2,1));bind_aset(bind,3/*autovar*/,bind_aget(bind2,2)); break;
+bind_aset(bind2,1,var0/*autovar*/);bind_aset(bind2,2,var3/*autovar*/);it=rb_funcall(self,sy_Analyze_Variables2__append_lp__d113,1,bind2);var0/*autovar*/=bind_aget(bind2,1);;var3/*autovar*/=bind_aget(bind2,2);; break;
 case 1/*Strin*/:; int oldpos3=ptr->pos;int cut2=0;
-alt2_1:;it=ame_curobj2(ptr)               ;ptr->pos++; bind_aset(bind,4/*autovar*/,it);
+alt2_1:;it=ame_curobj2(ptr)               ;ptr->pos++; var4/*autovar*/=it;;
 cstruct oldpass2=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,4/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                     it=Analyze_Variables2_flat(self ); FAILTEST(pass2); bind_aset(bind,5/*autovar*/,it);
+                   ptr->src=var4/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                     it=Analyze_Variables2_flat(self ); FAILTEST(pass2); var5/*autovar*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass2;
                    goto success2;
                    pass2: *ptr=oldpass2; goto alt2_2;
                    success2: *ptr=oldpass2;
-                it=bind_aget(bind,5/*autovar*/); bind_aset(bind,3/*autovar*/,it);
+                it=var5/*autovar*/; var3/*autovar*/=it;;
 
 ;goto accept3;
-alt2_2: ptr->pos=oldpos3;  it=AmethystCore_anything(self ); FAILTEST(alt2_3); bind_aset(bind,3/*autovar*/,it);
+alt2_2: ptr->pos=oldpos3;  it=AmethystCore_anything(self ); FAILTEST(alt2_3); var3/*autovar*/=it;;
 
 ;goto accept3;
 alt2_3: ptr->pos=oldpos3;goto break1;
  accept3:;
-bind_aset(bind2,1,bind_aget(bind,0/*autovar*/));bind_aset(bind2,2,bind_aget(bind,3/*autovar*/));it=rb_funcall(self,sy_Analyze_Variables2__append_lp__d113,1,bind2);bind_aset(bind,0/*autovar*/,bind_aget(bind2,1));bind_aset(bind,3/*autovar*/,bind_aget(bind2,2)); break;
-case 2/*Object*/:;   it=AmethystCore_anything(self ); FAILTEST(break1); bind_aset(bind,3/*autovar*/,it);
-bind_aset(bind2,1,bind_aget(bind,0/*autovar*/));bind_aset(bind2,2,bind_aget(bind,3/*autovar*/));it=rb_funcall(self,sy_Analyze_Variables2__append_lp__d113,1,bind2);bind_aset(bind,0/*autovar*/,bind_aget(bind2,1));bind_aset(bind,3/*autovar*/,bind_aget(bind2,2)); break;
-} } break1: ptr->pos=oldpos1;   it=bind_aget(bind,0/*autovar*/); bind_aset(bind,6/*_result*/,it);
+bind_aset(bind2,1,var0/*autovar*/);bind_aset(bind2,2,var3/*autovar*/);it=rb_funcall(self,sy_Analyze_Variables2__append_lp__d113,1,bind2);var0/*autovar*/=bind_aget(bind2,1);;var3/*autovar*/=bind_aget(bind2,2);; break;
+case 2/*Object*/:;   it=AmethystCore_anything(self ); FAILTEST(break1); var3/*autovar*/=it;;
+bind_aset(bind2,1,var0/*autovar*/);bind_aset(bind2,2,var3/*autovar*/);it=rb_funcall(self,sy_Analyze_Variables2__append_lp__d113,1,bind2);var0/*autovar*/=bind_aget(bind2,1);;var3/*autovar*/=bind_aget(bind2,2);; break;
+} } break1: ptr->pos=oldpos1;   it=var0/*autovar*/; var6/*_result*/=it;;
 
 return it;
 fail: return failobj; }
-VALUE Analyze_Variables2_itrans(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(12);VALUE bind2=bind_new2(16);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
+VALUE Analyze_Variables2_itrans(VALUE self ){VALUE vals[0];  VALUE var0;VALUE var1;VALUE var2;VALUE var3;VALUE var4;VALUE var5;VALUE var6;VALUE var7;VALUE var8;VALUE var9;VALUE var10;VALUE var11; ;VALUE bind2=bind_new2(16);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
             
-it=rb_ary_new3(0); bind_aset(bind,0/*autovar*/,it);
+it=rb_ary_new3(0); var0/*autovar*/=it;;
 int oldpos1;  while(1){oldpos1=ptr->pos; switch(FIX2LONG(rb_hash_aref(switchhash_Analyze_Variables2_1,rb_obj_class(ame_curobj2(ptr))))){case 0/*Grammar*/:; int oldpos2=ptr->pos;int cut1=0;
-alt1_1:;it=ame_curobj2(ptr)               ;ptr->pos++; bind_aset(bind,1/*autovar*/,it);
+alt1_1:;it=ame_curobj2(ptr)               ;ptr->pos++; var1/*autovar*/=it;;
 cstruct oldpass1=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,1/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                   it=rb_funcall(self,sy_Analyze_Variables2_src_dot_rule_5acf,1,bind2); bind_aset(bind,2/*autovar*/,it);
+                   ptr->src=var1/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                   it=rb_funcall(self,sy_Analyze_Variables2_src_dot_rule_5acf,1,bind2); var2/*autovar*/=it;;
 cstruct oldpass2=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=bind_aget(bind,2/*autovar*/);ptr->len=1;
-                     it=AmethystCore_anything(self ); FAILTEST(pass2); bind_aset(bind,3/*autovar*/,it);
+                   ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=var2/*autovar*/;ptr->len=1;
+                     it=AmethystCore_anything(self ); FAILTEST(pass2); var3/*autovar*/=it;;
 cstruct oldpass3=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,3/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                   it=rb_ary_new3(0); bind_aset(bind,4/*autovar*/,it);
-int oldpos3;  while(1){oldpos3=ptr->pos; switch(FIX2LONG(rb_hash_aref(switchhash_Analyze_Variables2_2,rb_obj_class(ame_curobj2(ptr))))){case 0/*Rule*/:; it=ame_curobj2(ptr)               ;ptr->pos++; bind_aset(bind,5/*autovar*/,it);
+                   ptr->src=var3/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                   it=rb_ary_new3(0); var4/*autovar*/=it;;
+int oldpos3;  while(1){oldpos3=ptr->pos; switch(FIX2LONG(rb_hash_aref(switchhash_Analyze_Variables2_2,rb_obj_class(ame_curobj2(ptr))))){case 0/*Rule*/:; it=ame_curobj2(ptr)               ;ptr->pos++; var5/*autovar*/=it;;
 cstruct oldpass4=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,5/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                     it=Analyze_Variables2_root(self ); FAILTEST(pass4); bind_aset(bind,6/*autovar*/,it);
+                   ptr->src=var5/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                     it=Analyze_Variables2_root(self ); FAILTEST(pass4); var6/*autovar*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass4;
                    goto success4;
                    pass4: *ptr=oldpass4; goto break2;
                    success4: *ptr=oldpass4;
-                it=bind_aget(bind,6/*autovar*/); bind_aset(bind,7/*autovar*/,it);
-bind_aset(bind2,1,bind_aget(bind,4/*autovar*/));bind_aset(bind2,2,bind_aget(bind,7/*autovar*/));it=rb_funcall(self,sy_Analyze_Variables2__append_lp__d113,1,bind2);bind_aset(bind,4/*autovar*/,bind_aget(bind2,1));bind_aset(bind,7/*autovar*/,bind_aget(bind2,2)); break;
+                it=var6/*autovar*/; var7/*autovar*/=it;;
+bind_aset(bind2,1,var4/*autovar*/);bind_aset(bind2,2,var7/*autovar*/);it=rb_funcall(self,sy_Analyze_Variables2__append_lp__d113,1,bind2);var4/*autovar*/=bind_aget(bind2,1);;var7/*autovar*/=bind_aget(bind2,2);; break;
 case 1/*Object*/:; goto break2; break;
-} } break2: ptr->pos=oldpos3;   it=bind_aget(bind,4/*autovar*/); bind_aset(bind,8/*rules*/,it);
+} } break2: ptr->pos=oldpos3;   it=var4/*autovar*/; var8/*rules*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass3;
                    goto success3;
                    pass3: *ptr=oldpass3; goto pass2;
@@ -120,76 +120,76 @@ it=Qnil;if (ptr->pos<ptr->len) goto pass3;
                    goto success2;
                    pass2: *ptr=oldpass2; goto pass1;
                    success2: *ptr=oldpass2;
-                bind_aset(bind2,1,bind_aget(bind,8/*rules*/));it=rb_funcall(self,sy_Analyze_Variables2_src_dot_rule_a719,1,bind2);bind_aset(bind,8/*rules*/,bind_aget(bind2,1));it=rb_funcall(self,sy_Analyze_Variables2_src_25d9,1,bind2); bind_aset(bind,9/*autovar*/,it);
+                bind_aset(bind2,1,var8/*rules*/);it=rb_funcall(self,sy_Analyze_Variables2_src_dot_rule_a719,1,bind2);var8/*rules*/=bind_aget(bind2,1);;it=rb_funcall(self,sy_Analyze_Variables2_src_25d9,1,bind2); var9/*autovar*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass1;
                    goto success1;
                    pass1: *ptr=oldpass1; goto alt1_2;
                    success1: *ptr=oldpass1;
-                it=bind_aget(bind,9/*autovar*/); bind_aset(bind,10/*autovar*/,it);
+                it=var9/*autovar*/; var10/*autovar*/=it;;
 
 ;goto accept2;
-alt1_2: ptr->pos=oldpos2;  it=AmethystCore_anything(self ); FAILTEST(alt1_3); bind_aset(bind,10/*autovar*/,it);
+alt1_2: ptr->pos=oldpos2;  it=AmethystCore_anything(self ); FAILTEST(alt1_3); var10/*autovar*/=it;;
 
 ;goto accept2;
 alt1_3: ptr->pos=oldpos2;goto break1;
  accept2:;
-bind_aset(bind2,1,bind_aget(bind,0/*autovar*/));bind_aset(bind2,2,bind_aget(bind,10/*autovar*/));it=rb_funcall(self,sy_Analyze_Variables2__append_lp__d113,1,bind2);bind_aset(bind,0/*autovar*/,bind_aget(bind2,1));bind_aset(bind,10/*autovar*/,bind_aget(bind2,2)); break;
-case 1/*Object*/:;   it=AmethystCore_anything(self ); FAILTEST(break1); bind_aset(bind,10/*autovar*/,it);
-bind_aset(bind2,1,bind_aget(bind,0/*autovar*/));bind_aset(bind2,2,bind_aget(bind,10/*autovar*/));it=rb_funcall(self,sy_Analyze_Variables2__append_lp__d113,1,bind2);bind_aset(bind,0/*autovar*/,bind_aget(bind2,1));bind_aset(bind,10/*autovar*/,bind_aget(bind2,2)); break;
-} } break1: ptr->pos=oldpos1;   it=bind_aget(bind,0/*autovar*/); bind_aset(bind,11/*_result*/,it);
+bind_aset(bind2,1,var0/*autovar*/);bind_aset(bind2,2,var10/*autovar*/);it=rb_funcall(self,sy_Analyze_Variables2__append_lp__d113,1,bind2);var0/*autovar*/=bind_aget(bind2,1);;var10/*autovar*/=bind_aget(bind2,2);; break;
+case 1/*Object*/:;   it=AmethystCore_anything(self ); FAILTEST(break1); var10/*autovar*/=it;;
+bind_aset(bind2,1,var0/*autovar*/);bind_aset(bind2,2,var10/*autovar*/);it=rb_funcall(self,sy_Analyze_Variables2__append_lp__d113,1,bind2);var0/*autovar*/=bind_aget(bind2,1);;var10/*autovar*/=bind_aget(bind2,2);; break;
+} } break1: ptr->pos=oldpos1;   it=var0/*autovar*/; var11/*_result*/=it;;
 
 return it;
 fail: return failobj; }
-VALUE Analyze_Variables2_root(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(7);VALUE bind2=bind_new2(16);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
+VALUE Analyze_Variables2_root(VALUE self ){VALUE vals[0];  VALUE var0;VALUE var1;VALUE var2;VALUE var3;VALUE var4;VALUE var5;VALUE var6; ;VALUE bind2=bind_new2(16);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
             
-it=rb_funcall(self,sy_Analyze_Variables2_src_25d9,1,bind2); bind_aset(bind,0/*autovar*/,it);
+it=rb_funcall(self,sy_Analyze_Variables2_src_25d9,1,bind2); var0/*autovar*/=it;;
 cstruct oldpass1=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=bind_aget(bind,0/*autovar*/);ptr->len=1;
-                   switch(FIX2LONG(rb_hash_aref(switchhash_Analyze_Variables2_3,rb_obj_class(ame_curobj2(ptr))))){case 0/*Rule*/:; it=ame_curobj2(ptr)               ;ptr->pos++; bind_aset(bind,1/*autovar*/,it);
+                   ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=var0/*autovar*/;ptr->len=1;
+                   switch(FIX2LONG(rb_hash_aref(switchhash_Analyze_Variables2_3,rb_obj_class(ame_curobj2(ptr))))){case 0/*Rule*/:; it=ame_curobj2(ptr)               ;ptr->pos++; var1/*autovar*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass1; break;
 case 1/*Object*/:; goto pass1; break;
 }
                    goto success1;
                    pass1: *ptr=oldpass1; goto fail;
                    success1: *ptr=oldpass1;
-                it=bind_aget(bind,1/*autovar*/); bind_aset(bind,2/*autovar*/,it);
+                it=var1/*autovar*/; var2/*autovar*/=it;;
 cstruct oldpass2=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,2/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                   it=rb_funcall(self,sy_Analyze_Variables2__at_bnding_eq__b94a,1,bind2);it=rb_funcall(self,sy_Analyze_Variables2__at_variabl_f612,1,bind2);it=rb_funcall(self,sy_Analyze_Variables2__at_locals_eq__02ce,1,bind2);  it=Analyze_Variables2_traverse(self ); FAILTEST(pass2); bind_aset(bind,3/*autovar*/,it);
+                   ptr->src=var2/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                   it=rb_funcall(self,sy_Analyze_Variables2__at_bnding_eq__b94a,1,bind2);it=rb_funcall(self,sy_Analyze_Variables2__at_variabl_f612,1,bind2);it=rb_funcall(self,sy_Analyze_Variables2__at_locals_eq__02ce,1,bind2);  it=Analyze_Variables2_traverse(self ); FAILTEST(pass2); var3/*autovar*/=it;;
 cstruct oldpass3=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,3/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                   ptr->pos=ptr->len;it=rb_funcall(self,sy_Analyze_Variables2_src_dot_loca_ab74,1,bind2);it=rb_funcall(self,sy_Analyze_Variables2_src_25d9,1,bind2); bind_aset(bind,4/*autovar*/,it);
+                   ptr->src=var3/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                   ptr->pos=ptr->len;it=rb_funcall(self,sy_Analyze_Variables2_src_dot_loca_ab74,1,bind2);it=rb_funcall(self,sy_Analyze_Variables2_src_25d9,1,bind2); var4/*autovar*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass3;
                    goto success3;
                    pass3: *ptr=oldpass3; goto pass2;
                    success3: *ptr=oldpass3;
-                it=bind_aget(bind,4/*autovar*/); bind_aset(bind,5/*autovar*/,it);
+                it=var4/*autovar*/; var5/*autovar*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass2;
                    goto success2;
                    pass2: *ptr=oldpass2; goto fail;
                    success2: *ptr=oldpass2;
-                it=bind_aget(bind,5/*autovar*/); bind_aset(bind,6/*_result*/,it);
+                it=var5/*autovar*/; var6/*_result*/=it;;
 
 return it;
 fail: return failobj; }
-VALUE Analyze_Variables2_traverse(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(10);VALUE bind2=bind_new2(16);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
+VALUE Analyze_Variables2_traverse(VALUE self ){VALUE vals[0];  VALUE var0;VALUE var1;VALUE var2;VALUE var3;VALUE var4;VALUE var5;VALUE var6;VALUE var7;VALUE var8;VALUE var9; ;VALUE bind2=bind_new2(16);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
             
-ptr->pos=ptr->len;it=rb_funcall(self,sy_Analyze_Variables2__at_changed_c681,1,bind2); bind_aset(bind,0/*oldchanged*/,it);
-it=rb_funcall(self,sy_Analyze_Variables2_src_25d9,1,bind2); bind_aset(bind,1/*this*/,it);
-it=Qnil; bind_aset(bind,2/*clon*/,it);
-it=Qfalse; bind_aset(bind,3/*changed*/,it);
-it=rb_funcall(self,sy_Analyze_Variables2__lp_src_dot_ins_6a75,1,bind2); bind_aset(bind,4/*autovar*/,it);
+ptr->pos=ptr->len;it=rb_funcall(self,sy_Analyze_Variables2__at_changed_c681,1,bind2); var0/*oldchanged*/=it;;
+it=rb_funcall(self,sy_Analyze_Variables2_src_25d9,1,bind2); var1/*this*/=it;;
+it=Qnil; var2/*clon*/=it;;
+it=Qfalse; var3/*changed*/=it;;
+it=rb_funcall(self,sy_Analyze_Variables2__lp_src_dot_ins_6a75,1,bind2); var4/*autovar*/=it;;
 cstruct oldpass1=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=bind_aget(bind,4/*autovar*/);ptr->len=1;
-                     it=AmethystCore_anything(self ); FAILTEST(pass1); bind_aset(bind,5/*autovar*/,it);
+                   ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=var4/*autovar*/;ptr->len=1;
+                     it=AmethystCore_anything(self ); FAILTEST(pass1); var5/*autovar*/=it;;
 cstruct oldpass2=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,5/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                   int oldpos1;  while(1){oldpos1=ptr->pos;   it=AmethystCore_anything(self ); FAILTEST(break1); bind_aset(bind,6/*autovar*/,it);
+                   ptr->src=var5/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                   int oldpos1;  while(1){oldpos1=ptr->pos;   it=AmethystCore_anything(self ); FAILTEST(break1); var6/*autovar*/=it;;
 cstruct oldpass3=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,6/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                     it=AmethystCore_anything(self ); FAILTEST(pass3); bind_aset(bind,7/*key*/,it);
-it=rb_funcall(self,sy_Analyze_Variables2__at_changed_b885,1,bind2);  it=Analyze_Variables2_traverse_item(self ); FAILTEST(pass3); bind_aset(bind,8/*val*/,it);
-bind_aset(bind2,1,bind_aget(bind,2/*clon*/));bind_aset(bind2,2,bind_aget(bind,1/*this*/));bind_aset(bind2,3,bind_aget(bind,3/*changed*/));bind_aset(bind2,4,bind_aget(bind,7/*key*/));bind_aset(bind2,5,bind_aget(bind,8/*val*/));it=rb_funcall(self,sy_Analyze_Variables2__lp_bind_lb_1_rb__ee3d,1,bind2);bind_aset(bind,2/*clon*/,bind_aget(bind2,1));bind_aset(bind,1/*this*/,bind_aget(bind2,2));bind_aset(bind,3/*changed*/,bind_aget(bind2,3));bind_aset(bind,7/*key*/,bind_aget(bind2,4));bind_aset(bind,8/*val*/,bind_aget(bind2,5));it=Qnil;if (ptr->pos<ptr->len) goto pass3;
+                   ptr->src=var6/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                     it=AmethystCore_anything(self ); FAILTEST(pass3); var7/*key*/=it;;
+it=rb_funcall(self,sy_Analyze_Variables2__at_changed_b885,1,bind2);  it=Analyze_Variables2_traverse_item(self ); FAILTEST(pass3); var8/*val*/=it;;
+bind_aset(bind2,1,var2/*clon*/);bind_aset(bind2,2,var1/*this*/);bind_aset(bind2,3,var3/*changed*/);bind_aset(bind2,4,var7/*key*/);bind_aset(bind2,5,var8/*val*/);it=rb_funcall(self,sy_Analyze_Variables2__lp_bind_lb_1_rb__ee3d,1,bind2);var2/*clon*/=bind_aget(bind2,1);;var1/*this*/=bind_aget(bind2,2);;var3/*changed*/=bind_aget(bind2,3);;var7/*key*/=bind_aget(bind2,4);;var8/*val*/=bind_aget(bind2,5);;it=Qnil;if (ptr->pos<ptr->len) goto pass3;
                    goto success3;
                    pass3: *ptr=oldpass3; goto break1;
                    success3: *ptr=oldpass3;
@@ -201,64 +201,64 @@ bind_aset(bind2,1,bind_aget(bind,2/*clon*/));bind_aset(bind2,2,bind_aget(bind,1/
                    goto success1;
                    pass1: *ptr=oldpass1; goto fail;
                    success1: *ptr=oldpass1;
-                bind_aset(bind2,1,bind_aget(bind,3/*changed*/));bind_aset(bind2,2,bind_aget(bind,2/*clon*/));bind_aset(bind2,3,bind_aget(bind,0/*oldchanged*/));it=rb_funcall(self,sy_Analyze_Variables2_if_sp_bind_lb__8e0b,1,bind2);bind_aset(bind,3/*changed*/,bind_aget(bind2,1));bind_aset(bind,2/*clon*/,bind_aget(bind2,2));bind_aset(bind,0/*oldchanged*/,bind_aget(bind2,3)); bind_aset(bind,9/*_result*/,it);
+                bind_aset(bind2,1,var3/*changed*/);bind_aset(bind2,2,var2/*clon*/);bind_aset(bind2,3,var0/*oldchanged*/);it=rb_funcall(self,sy_Analyze_Variables2_if_sp_bind_lb__8e0b,1,bind2);var3/*changed*/=bind_aget(bind2,1);;var2/*clon*/=bind_aget(bind2,2);;var0/*oldchanged*/=bind_aget(bind2,3);; var9/*_result*/=it;;
 
 return it;
 fail: return failobj; }
-VALUE Analyze_Variables2_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(8);VALUE bind2=bind_new2(16);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
+VALUE Analyze_Variables2_traverse_item(VALUE self ){VALUE vals[0];  VALUE var0;VALUE var1;VALUE var2;VALUE var3;VALUE var4;VALUE var5;VALUE var6;VALUE var7; ;VALUE bind2=bind_new2(16);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
             
 switch(FIX2LONG(rb_hash_aref(switchhash_Analyze_Variables2_7,rb_obj_class(ame_curobj2(ptr))))){case 0/*AmethystAST*/:; int oldpos1=ptr->pos;int cut1=0;
-alt1_1:;  it=Analyze_Variables2_visit(self ); FAILTEST(alt1_2); bind_aset(bind,0/*a*/,it);
-it=rb_funcall(self,sy_Analyze_Variables2__at_changed_5352,1,bind2);it=bind_aget(bind,0/*a*/); bind_aset(bind,1/*_result*/,it);
+alt1_1:;  it=Analyze_Variables2_visit(self ); FAILTEST(alt1_2); var0/*a*/=it;;
+it=rb_funcall(self,sy_Analyze_Variables2__at_changed_5352,1,bind2);it=var0/*a*/; var1/*_result*/=it;;
 
 ;goto accept1;
-alt1_2: ptr->pos=oldpos1;it=ame_curobj2(ptr)               ;ptr->pos++; bind_aset(bind,2/*autovar*/,it);
+alt1_2: ptr->pos=oldpos1;it=ame_curobj2(ptr)               ;ptr->pos++; var2/*autovar*/=it;;
 cstruct oldpass1=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,2/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                     it=Analyze_Variables2_traverse(self ); FAILTEST(pass1); bind_aset(bind,3/*autovar*/,it);
+                   ptr->src=var2/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                     it=Analyze_Variables2_traverse(self ); FAILTEST(pass1); var3/*autovar*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass1;
                    goto success1;
                    pass1: *ptr=oldpass1; goto alt1_3;
                    success1: *ptr=oldpass1;
-                it=bind_aget(bind,3/*autovar*/); bind_aset(bind,1/*_result*/,it);
+                it=var3/*autovar*/; var1/*_result*/=it;;
 
 ;goto accept1;
-alt1_3: ptr->pos=oldpos1;  it=AmethystCore_anything(self ); FAILTEST(alt1_4); bind_aset(bind,1/*_result*/,it);
+alt1_3: ptr->pos=oldpos1;  it=AmethystCore_anything(self ); FAILTEST(alt1_4); var1/*_result*/=it;;
 
 ;goto accept1;
 alt1_4: ptr->pos=oldpos1;goto fail;
  accept1:;
  break;
 case 1/*Array*/:; int oldpos2=ptr->pos;int cut2=0;
-alt2_1:;  it=Analyze_Variables2_visit(self ); FAILTEST(alt2_2); bind_aset(bind,0/*a*/,it);
-it=rb_funcall(self,sy_Analyze_Variables2__at_changed_5352,1,bind2);it=bind_aget(bind,0/*a*/); bind_aset(bind,1/*_result*/,it);
+alt2_1:;  it=Analyze_Variables2_visit(self ); FAILTEST(alt2_2); var0/*a*/=it;;
+it=rb_funcall(self,sy_Analyze_Variables2__at_changed_5352,1,bind2);it=var0/*a*/; var1/*_result*/=it;;
 
 ;goto accept2;
-alt2_2: ptr->pos=oldpos2;it=ame_curobj2(ptr)               ;ptr->pos++; bind_aset(bind,4/*autovar*/,it);
+alt2_2: ptr->pos=oldpos2;it=ame_curobj2(ptr)               ;ptr->pos++; var4/*autovar*/=it;;
 cstruct oldpass2=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,4/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                   it=rb_ary_new3(0); bind_aset(bind,5/*ar*/,it);
-int oldpos3;  while(1){oldpos3=ptr->pos;   it=Analyze_Variables2_traverse_item(self ); FAILTEST(break1); bind_aset(bind,6/*it*/,it);
-bind_aset(bind2,1,bind_aget(bind,5/*ar*/));bind_aset(bind2,2,bind_aget(bind,6/*it*/));it=rb_funcall(self,sy_Analyze_Variables2_bind_lb_1_rb__lt__7b20,1,bind2);bind_aset(bind,5/*ar*/,bind_aget(bind2,1));bind_aset(bind,6/*it*/,bind_aget(bind2,2)); } break1: ptr->pos=oldpos3;   it=bind_aget(bind,5/*ar*/); bind_aset(bind,7/*autovar*/,it);
+                   ptr->src=var4/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                   it=rb_ary_new3(0); var5/*ar*/=it;;
+int oldpos3;  while(1){oldpos3=ptr->pos;   it=Analyze_Variables2_traverse_item(self ); FAILTEST(break1); var6/*it*/=it;;
+bind_aset(bind2,1,var5/*ar*/);bind_aset(bind2,2,var6/*it*/);it=rb_funcall(self,sy_Analyze_Variables2_bind_lb_1_rb__lt__7b20,1,bind2);var5/*ar*/=bind_aget(bind2,1);;var6/*it*/=bind_aget(bind2,2);; } break1: ptr->pos=oldpos3;   it=var5/*ar*/; var7/*autovar*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass2;
                    goto success2;
                    pass2: *ptr=oldpass2; goto alt2_3;
                    success2: *ptr=oldpass2;
-                it=bind_aget(bind,7/*autovar*/); bind_aset(bind,1/*_result*/,it);
+                it=var7/*autovar*/; var1/*_result*/=it;;
 
 ;goto accept2;
-alt2_3: ptr->pos=oldpos2;  it=AmethystCore_anything(self ); FAILTEST(alt2_4); bind_aset(bind,1/*_result*/,it);
+alt2_3: ptr->pos=oldpos2;  it=AmethystCore_anything(self ); FAILTEST(alt2_4); var1/*_result*/=it;;
 
 ;goto accept2;
 alt2_4: ptr->pos=oldpos2;goto fail;
  accept2:;
  break;
 case 2/*Object*/:; int oldpos4=ptr->pos;int cut3=0;
-alt3_1:;  it=Analyze_Variables2_visit(self ); FAILTEST(alt3_2); bind_aset(bind,0/*a*/,it);
-it=rb_funcall(self,sy_Analyze_Variables2__at_changed_5352,1,bind2);it=bind_aget(bind,0/*a*/); bind_aset(bind,1/*_result*/,it);
+alt3_1:;  it=Analyze_Variables2_visit(self ); FAILTEST(alt3_2); var0/*a*/=it;;
+it=rb_funcall(self,sy_Analyze_Variables2__at_changed_5352,1,bind2);it=var0/*a*/; var1/*_result*/=it;;
 
 ;goto accept4;
-alt3_2: ptr->pos=oldpos4;  it=AmethystCore_anything(self ); FAILTEST(alt3_3); bind_aset(bind,1/*_result*/,it);
+alt3_2: ptr->pos=oldpos4;  it=AmethystCore_anything(self ); FAILTEST(alt3_3); var1/*_result*/=it;;
 
 ;goto accept4;
 alt3_3: ptr->pos=oldpos4;goto fail;
@@ -267,79 +267,79 @@ alt3_3: ptr->pos=oldpos4;goto fail;
 }
 return it;
 fail: return failobj; }
-VALUE Analyze_Variables2_visit(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(33);VALUE bind2=bind_new2(16);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
+VALUE Analyze_Variables2_visit(VALUE self ){VALUE vals[0];  VALUE var0;VALUE var1;VALUE var2;VALUE var3;VALUE var4;VALUE var5;VALUE var6;VALUE var7;VALUE var8;VALUE var9;VALUE var10;VALUE var11;VALUE var12;VALUE var13;VALUE var14;VALUE var15;VALUE var16;VALUE var17;VALUE var18;VALUE var19;VALUE var20;VALUE var21;VALUE var22;VALUE var23;VALUE var24;VALUE var25;VALUE var26;VALUE var27;VALUE var28;VALUE var29;VALUE var30;VALUE var31;VALUE var32; ;VALUE bind2=bind_new2(16);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
             
-switch(FIX2LONG(rb_hash_aref(switchhash_Analyze_Variables2_4,rb_obj_class(ame_curobj2(ptr))))){case 0/*Act*/:; it=ame_curobj2(ptr)               ;ptr->pos++; bind_aset(bind,0/*autovar*/,it);
+switch(FIX2LONG(rb_hash_aref(switchhash_Analyze_Variables2_4,rb_obj_class(ame_curobj2(ptr))))){case 0/*Act*/:; it=ame_curobj2(ptr)               ;ptr->pos++; var0/*autovar*/=it;;
 cstruct oldpass1=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,0/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                   it=rb_funcall(self,sy_Analyze_Variables2_src_dot_pred_56d4,1,bind2); bind_aset(bind,1/*pred*/,it);
-it=rb_funcall(self,sy_Analyze_Variables2_src_dot_pure_41d4,1,bind2); bind_aset(bind,2/*pure*/,it);
-  it=Analyze_Variables2_traverse(self ); FAILTEST(pass1); bind_aset(bind,3/*autovar*/,it);
+                   ptr->src=var0/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                   it=rb_funcall(self,sy_Analyze_Variables2_src_dot_pred_56d4,1,bind2); var1/*pred*/=it;;
+it=rb_funcall(self,sy_Analyze_Variables2_src_dot_pure_41d4,1,bind2); var2/*pure*/=it;;
+  it=Analyze_Variables2_traverse(self ); FAILTEST(pass1); var3/*autovar*/=it;;
 cstruct oldpass2=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,3/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                   ptr->pos=ptr->len;it=rb_funcall(self,sy_Analyze_Variables2_src_dot_ary_d5cf,1,bind2); bind_aset(bind,4/*autovar*/,it);
+                   ptr->src=var3/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                   ptr->pos=ptr->len;it=rb_funcall(self,sy_Analyze_Variables2_src_dot_ary_d5cf,1,bind2); var4/*autovar*/=it;;
 cstruct oldpass3=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=bind_aget(bind,4/*autovar*/);ptr->len=1;
-                     it=AmethystCore_anything(self ); FAILTEST(pass3); bind_aset(bind,5/*autovar*/,it);
+                   ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=var4/*autovar*/;ptr->len=1;
+                     it=AmethystCore_anything(self ); FAILTEST(pass3); var5/*autovar*/=it;;
 cstruct oldpass4=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,5/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                   ptr->src=var5/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
                    switch(FIX2LONG(rb_hash_aref(switchhash_Analyze_Variables2_5,rb_obj_class(ame_curobj2(ptr))))){case 0/*Args*/:; int oldpos1=ptr->pos;int cut1=0;
-alt1_1:;bind_aset(bind2,1,bind_aget(bind,1/*pred*/));it=rb_funcall(self,sy_Analyze_Variables2__lp_,1,bind2);bind_aset(bind,1/*pred*/,bind_aget(bind2,1));FAILTEST(alt1_2);goto alt1_2;
+alt1_1:;bind_aset(bind2,1,var1/*pred*/);it=rb_funcall(self,sy_Analyze_Variables2__lp_,1,bind2);var1/*pred*/=bind_aget(bind2,1);;FAILTEST(alt1_2);goto alt1_2;
 ;goto accept1;
-alt1_2: ptr->pos=oldpos1;it=ame_curobj2(ptr)               ;ptr->pos++; bind_aset(bind,6/*autovar*/,it);
+alt1_2: ptr->pos=oldpos1;it=ame_curobj2(ptr)               ;ptr->pos++; var6/*autovar*/=it;;
 cstruct oldpass5=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,6/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                   it=rb_ary_new3(0); bind_aset(bind,7/*autovar*/,it);
-int oldpos2;  while(1){oldpos2=ptr->pos;   it=AmethystCore_anything(self ); FAILTEST(break1); bind_aset(bind,8/*autovar*/,it);
-bind_aset(bind2,1,bind_aget(bind,7/*autovar*/));bind_aset(bind2,2,bind_aget(bind,8/*autovar*/));it=rb_funcall(self,sy_Analyze_Variables2__append_lp__d113,1,bind2);bind_aset(bind,7/*autovar*/,bind_aget(bind2,1));bind_aset(bind,8/*autovar*/,bind_aget(bind2,2)); } break1: ptr->pos=oldpos2;   it=bind_aget(bind,7/*autovar*/); bind_aset(bind,9/*ary*/,it);
-bind_aset(bind2,1,bind_aget(bind,9/*ary*/));bind_aset(bind2,2,bind_aget(bind,1/*pred*/));bind_aset(bind2,3,bind_aget(bind,2/*pure*/));it=rb_funcall(self,sy_Analyze_Variables2_Act_lb_bind_4ccd,1,bind2);bind_aset(bind,9/*ary*/,bind_aget(bind2,1));bind_aset(bind,1/*pred*/,bind_aget(bind2,2));bind_aset(bind,2/*pure*/,bind_aget(bind2,3)); bind_aset(bind,10/*autovar*/,it);
+                   ptr->src=var6/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                   it=rb_ary_new3(0); var7/*autovar*/=it;;
+int oldpos2;  while(1){oldpos2=ptr->pos;   it=AmethystCore_anything(self ); FAILTEST(break1); var8/*autovar*/=it;;
+bind_aset(bind2,1,var7/*autovar*/);bind_aset(bind2,2,var8/*autovar*/);it=rb_funcall(self,sy_Analyze_Variables2__append_lp__d113,1,bind2);var7/*autovar*/=bind_aget(bind2,1);;var8/*autovar*/=bind_aget(bind2,2);; } break1: ptr->pos=oldpos2;   it=var7/*autovar*/; var9/*ary*/=it;;
+bind_aset(bind2,1,var9/*ary*/);bind_aset(bind2,2,var1/*pred*/);bind_aset(bind2,3,var2/*pure*/);it=rb_funcall(self,sy_Analyze_Variables2_Act_lb_bind_4ccd,1,bind2);var9/*ary*/=bind_aget(bind2,1);;var1/*pred*/=bind_aget(bind2,2);;var2/*pure*/=bind_aget(bind2,3);; var10/*autovar*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass5;
                    goto success5;
                    pass5: *ptr=oldpass5; goto alt1_3;
                    success5: *ptr=oldpass5;
-                it=bind_aget(bind,10/*autovar*/); bind_aset(bind,11/*autovar*/,it);
+                it=var10/*autovar*/; var11/*autovar*/=it;;
 
 ;goto accept1;
 alt1_3: ptr->pos=oldpos1;goto pass4;
  accept1:;
 it=Qnil;if (ptr->pos<ptr->len) goto pass4; break;
-case 1/*Local*/:; bind_aset(bind2,1,bind_aget(bind,1/*pred*/));it=rb_funcall(self,sy_Analyze_Variables2__lp_,1,bind2);bind_aset(bind,1/*pred*/,bind_aget(bind2,1));FAILTEST(pass4);it=ame_curobj2(ptr)               ;ptr->pos++; bind_aset(bind,11/*autovar*/,it);
+case 1/*Local*/:; bind_aset(bind2,1,var1/*pred*/);it=rb_funcall(self,sy_Analyze_Variables2__lp_,1,bind2);var1/*pred*/=bind_aget(bind2,1);;FAILTEST(pass4);it=ame_curobj2(ptr)               ;ptr->pos++; var11/*autovar*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass4; break;
-case 2/*Object*/:; bind_aset(bind2,1,bind_aget(bind,1/*pred*/));it=rb_funcall(self,sy_Analyze_Variables2__lp_,1,bind2);bind_aset(bind,1/*pred*/,bind_aget(bind2,1));FAILTEST(pass4);goto pass4; break;
+case 2/*Object*/:; bind_aset(bind2,1,var1/*pred*/);it=rb_funcall(self,sy_Analyze_Variables2__lp_,1,bind2);var1/*pred*/=bind_aget(bind2,1);;FAILTEST(pass4);goto pass4; break;
 }
                    goto success4;
                    pass4: *ptr=oldpass4; goto pass3;
                    success4: *ptr=oldpass4;
-                it=bind_aget(bind,11/*autovar*/); bind_aset(bind,12/*autovar*/,it);
+                it=var11/*autovar*/; var12/*autovar*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass3;
                    goto success3;
                    pass3: *ptr=oldpass3; goto pass2;
                    success3: *ptr=oldpass3;
-                it=bind_aget(bind,12/*autovar*/); bind_aset(bind,13/*autovar*/,it);
+                it=var12/*autovar*/; var13/*autovar*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass2;
                    goto success2;
                    pass2: *ptr=oldpass2; goto pass1;
                    success2: *ptr=oldpass2;
-                it=bind_aget(bind,13/*autovar*/); bind_aset(bind,14/*autovar*/,it);
+                it=var13/*autovar*/; var14/*autovar*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass1;
                    goto success1;
                    pass1: *ptr=oldpass1; goto fail;
                    success1: *ptr=oldpass1;
-                it=bind_aget(bind,14/*autovar*/); bind_aset(bind,15/*_result*/,it);
+                it=var14/*autovar*/; var15/*_result*/=it;;
  break;
-case 1/*Args*/:; it=ame_curobj2(ptr)               ;ptr->pos++; bind_aset(bind,16/*autovar*/,it);
+case 1/*Args*/:; it=ame_curobj2(ptr)               ;ptr->pos++; var16/*autovar*/=it;;
 cstruct oldpass6=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,16/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                     it=Analyze_Variables2_traverse(self ); FAILTEST(pass6); bind_aset(bind,17/*autovar*/,it);
+                   ptr->src=var16/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                     it=Analyze_Variables2_traverse(self ); FAILTEST(pass6); var17/*autovar*/=it;;
 cstruct oldpass7=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,17/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                   ptr->pos=ptr->len;it=rb_funcall(self,sy_Analyze_Variables2_src_dot_ary_dot__dd8c,1,bind2); bind_aset(bind,18/*autovar*/,it);
+                   ptr->src=var17/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                   ptr->pos=ptr->len;it=rb_funcall(self,sy_Analyze_Variables2_src_dot_ary_dot__dd8c,1,bind2); var18/*autovar*/=it;;
 cstruct oldpass8=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=bind_aget(bind,18/*autovar*/);ptr->len=1;
-                     it=AmethystCore_anything(self ); FAILTEST(pass8); bind_aset(bind,19/*autovar*/,it);
+                   ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=var18/*autovar*/;ptr->len=1;
+                     it=AmethystCore_anything(self ); FAILTEST(pass8); var19/*autovar*/=it;;
 cstruct oldpass9=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,19/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                     it=Analyze_Variables2_flat(self ); FAILTEST(pass9); bind_aset(bind,20/*a*/,it);
+                   ptr->src=var19/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                     it=Analyze_Variables2_flat(self ); FAILTEST(pass9); var20/*a*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass9;
                    goto success9;
                    pass9: *ptr=oldpass9; goto pass8;
@@ -348,62 +348,62 @@ it=Qnil;if (ptr->pos<ptr->len) goto pass9;
                    goto success8;
                    pass8: *ptr=oldpass8; goto pass7;
                    success8: *ptr=oldpass8;
-                bind_aset(bind2,1,bind_aget(bind,20/*a*/));it=rb_funcall(self,sy_Analyze_Variables2_connects_04d2,1,bind2);bind_aset(bind,20/*a*/,bind_aget(bind2,1)); bind_aset(bind,9/*ary*/,it);
-bind_aset(bind2,1,bind_aget(bind,9/*ary*/));it=rb_funcall(self,sy_Analyze_Variables2__lp_bind_lb_1_rb__e3f1,1,bind2);bind_aset(bind,9/*ary*/,bind_aget(bind2,1)); bind_aset(bind,21/*autovar*/,it);
+                bind_aset(bind2,1,var20/*a*/);it=rb_funcall(self,sy_Analyze_Variables2_connects_04d2,1,bind2);var20/*a*/=bind_aget(bind2,1);; var9/*ary*/=it;;
+bind_aset(bind2,1,var9/*ary*/);it=rb_funcall(self,sy_Analyze_Variables2__lp_bind_lb_1_rb__e3f1,1,bind2);var9/*ary*/=bind_aget(bind2,1);; var21/*autovar*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass7;
                    goto success7;
                    pass7: *ptr=oldpass7; goto pass6;
                    success7: *ptr=oldpass7;
-                it=bind_aget(bind,21/*autovar*/); bind_aset(bind,22/*autovar*/,it);
+                it=var21/*autovar*/; var22/*autovar*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass6;
                    goto success6;
                    pass6: *ptr=oldpass6; goto fail;
                    success6: *ptr=oldpass6;
-                it=bind_aget(bind,22/*autovar*/); bind_aset(bind,15/*_result*/,it);
+                it=var22/*autovar*/; var15/*_result*/=it;;
  break;
-case 2/*Comment*/:; it=ame_curobj2(ptr)               ;ptr->pos++; bind_aset(bind,23/*autovar*/,it);
+case 2/*Comment*/:; it=ame_curobj2(ptr)               ;ptr->pos++; var23/*autovar*/=it;;
 cstruct oldpass10=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,23/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                   ptr->pos=ptr->len;it=rb_funcall(self,sy_Analyze_Variables2_Placehol_6875,1,bind2); bind_aset(bind,24/*autovar*/,it);
+                   ptr->src=var23/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                   ptr->pos=ptr->len;it=rb_funcall(self,sy_Analyze_Variables2_Placehol_6875,1,bind2); var24/*autovar*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass10;
                    goto success10;
                    pass10: *ptr=oldpass10; goto fail;
                    success10: *ptr=oldpass10;
-                it=bind_aget(bind,24/*autovar*/); bind_aset(bind,15/*_result*/,it);
+                it=var24/*autovar*/; var15/*_result*/=it;;
  break;
-case 3/*Or_AST*/:; it=ame_curobj2(ptr)               ;ptr->pos++; bind_aset(bind,25/*autovar*/,it);
+case 3/*Or_AST*/:; it=ame_curobj2(ptr)               ;ptr->pos++; var25/*autovar*/=it;;
 cstruct oldpass11=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,25/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                   it=rb_ary_new3(0); bind_aset(bind,26/*autovar*/,it);
-int oldpos3;  while(1){oldpos3=ptr->pos;   it=Analyze_Variables2_traverse_item(self ); FAILTEST(break2); bind_aset(bind,27/*autovar*/,it);
-bind_aset(bind2,1,bind_aget(bind,26/*autovar*/));bind_aset(bind2,2,bind_aget(bind,27/*autovar*/));it=rb_funcall(self,sy_Analyze_Variables2__append_lp__d113,1,bind2);bind_aset(bind,26/*autovar*/,bind_aget(bind2,1));bind_aset(bind,27/*autovar*/,bind_aget(bind2,2)); } break2: ptr->pos=oldpos3;   it=bind_aget(bind,26/*autovar*/); bind_aset(bind,9/*ary*/,it);
+                   ptr->src=var25/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                   it=rb_ary_new3(0); var26/*autovar*/=it;;
+int oldpos3;  while(1){oldpos3=ptr->pos;   it=Analyze_Variables2_traverse_item(self ); FAILTEST(break2); var27/*autovar*/=it;;
+bind_aset(bind2,1,var26/*autovar*/);bind_aset(bind2,2,var27/*autovar*/);it=rb_funcall(self,sy_Analyze_Variables2__append_lp__d113,1,bind2);var26/*autovar*/=bind_aget(bind2,1);;var27/*autovar*/=bind_aget(bind2,2);; } break2: ptr->pos=oldpos3;   it=var26/*autovar*/; var9/*ary*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass11;
                    goto success11;
                    pass11: *ptr=oldpass11; goto fail;
                    success11: *ptr=oldpass11;
-                bind_aset(bind2,1,bind_aget(bind,9/*ary*/));it=rb_funcall(self,sy_Analyze_Variables2_Or_lb__ti_bind_5a27,1,bind2);bind_aset(bind,9/*ary*/,bind_aget(bind2,1)); bind_aset(bind,15/*_result*/,it);
+                bind_aset(bind2,1,var9/*ary*/);it=rb_funcall(self,sy_Analyze_Variables2_Or_lb__ti_bind_5a27,1,bind2);var9/*ary*/=bind_aget(bind2,1);; var15/*_result*/=it;;
  break;
-case 4/*Result*/:; it=ame_curobj2(ptr)               ;ptr->pos++; bind_aset(bind,28/*autovar*/,it);
+case 4/*Result*/:; it=ame_curobj2(ptr)               ;ptr->pos++; var28/*autovar*/=it;;
 cstruct oldpass12=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,28/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                   it=rb_funcall(self,sy_Analyze_Variables2_vars_eq__at_lo_cf02,1,bind2); bind_aset(bind,29/*autovar*/,it);
+                   ptr->src=var28/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                   it=rb_funcall(self,sy_Analyze_Variables2_vars_eq__at_lo_cf02,1,bind2); var29/*autovar*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass12;
                    goto success12;
                    pass12: *ptr=oldpass12; goto fail;
                    success12: *ptr=oldpass12;
-                it=bind_aget(bind,29/*autovar*/); bind_aset(bind,15/*_result*/,it);
+                it=var29/*autovar*/; var15/*_result*/=it;;
  break;
-case 5/*Seq_AST*/:; it=ame_curobj2(ptr)               ;ptr->pos++; bind_aset(bind,30/*autovar*/,it);
+case 5/*Seq_AST*/:; it=ame_curobj2(ptr)               ;ptr->pos++; var30/*autovar*/=it;;
 cstruct oldpass13=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,30/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                   it=rb_ary_new3(0); bind_aset(bind,31/*autovar*/,it);
-int oldpos4;  while(1){oldpos4=ptr->pos;   it=Analyze_Variables2_traverse_item(self ); FAILTEST(break3); bind_aset(bind,32/*autovar*/,it);
-bind_aset(bind2,1,bind_aget(bind,31/*autovar*/));bind_aset(bind2,2,bind_aget(bind,32/*autovar*/));it=rb_funcall(self,sy_Analyze_Variables2__append_lp__d113,1,bind2);bind_aset(bind,31/*autovar*/,bind_aget(bind2,1));bind_aset(bind,32/*autovar*/,bind_aget(bind2,2)); } break3: ptr->pos=oldpos4;   it=bind_aget(bind,31/*autovar*/); bind_aset(bind,9/*ary*/,it);
+                   ptr->src=var30/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                   it=rb_ary_new3(0); var31/*autovar*/=it;;
+int oldpos4;  while(1){oldpos4=ptr->pos;   it=Analyze_Variables2_traverse_item(self ); FAILTEST(break3); var32/*autovar*/=it;;
+bind_aset(bind2,1,var31/*autovar*/);bind_aset(bind2,2,var32/*autovar*/);it=rb_funcall(self,sy_Analyze_Variables2__append_lp__d113,1,bind2);var31/*autovar*/=bind_aget(bind2,1);;var32/*autovar*/=bind_aget(bind2,2);; } break3: ptr->pos=oldpos4;   it=var31/*autovar*/; var9/*ary*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass13;
                    goto success13;
                    pass13: *ptr=oldpass13; goto fail;
                    success13: *ptr=oldpass13;
-                bind_aset(bind2,1,bind_aget(bind,9/*ary*/));it=rb_funcall(self,sy_Analyze_Variables2_Seq_lb__ti_bin_1174,1,bind2);bind_aset(bind,9/*ary*/,bind_aget(bind2,1)); bind_aset(bind,15/*_result*/,it);
+                bind_aset(bind2,1,var9/*ary*/);it=rb_funcall(self,sy_Analyze_Variables2_Seq_lb__ti_bin_1174,1,bind2);var9/*ary*/=bind_aget(bind2,1);; var15/*_result*/=it;;
  break;
 case 6/*Object*/:; goto fail; break;
 }
@@ -433,42 +433,42 @@ static VALUE sy_Resolve_Calls_if_sp_bind_lb__8e0b;
 static VALUE sy_Resolve_Calls_src_25d9;
 static VALUE sy_Resolve_Calls_src_dot_name_80f3;
 static VALUE sy_Resolve_Calls_super_na_7b4c;
-VALUE Resolve_Calls_root(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(5);VALUE bind2=bind_new2(16);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
+VALUE Resolve_Calls_root(VALUE self ){VALUE vals[0];  VALUE var0;VALUE var1;VALUE var2;VALUE var3;VALUE var4; ;VALUE bind2=bind_new2(16);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
             
-  it=AmethystCore_anything(self ); FAILTEST(fail); bind_aset(bind,0/*autovar*/,it);
-bind_aset(bind2,1,bind_aget(bind,0/*autovar*/));it=rb_funcall(self,sy_Resolve_Calls__at_grammar_c8c8,1,bind2);bind_aset(bind,0/*autovar*/,bind_aget(bind2,1));switch(FIX2LONG(rb_hash_aref(switchhash_Resolve_Calls_1,rb_obj_class(ame_curobj2(ptr))))){case 0/*Rule*/:; it=ame_curobj2(ptr)               ;ptr->pos++; bind_aset(bind,1/*autovar*/,it);
+  it=AmethystCore_anything(self ); FAILTEST(fail); var0/*autovar*/=it;;
+bind_aset(bind2,1,var0/*autovar*/);it=rb_funcall(self,sy_Resolve_Calls__at_grammar_c8c8,1,bind2);var0/*autovar*/=bind_aget(bind2,1);;switch(FIX2LONG(rb_hash_aref(switchhash_Resolve_Calls_1,rb_obj_class(ame_curobj2(ptr))))){case 0/*Rule*/:; it=ame_curobj2(ptr)               ;ptr->pos++; var1/*autovar*/=it;;
  break;
 case 1/*Object*/:; goto fail; break;
 }cstruct oldpass1=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,1/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                   it=rb_funcall(self,sy_Resolve_Calls_src_dot_name_80f3,1,bind2); bind_aset(bind,2/*autovar*/,it);
-bind_aset(bind2,1,bind_aget(bind,2/*autovar*/));it=rb_funcall(self,sy_Resolve_Calls__at_name_eq_bi_0e7f,1,bind2);bind_aset(bind,2/*autovar*/,bind_aget(bind2,1));  it=Resolve_Calls_traverse(self ); FAILTEST(pass1); bind_aset(bind,3/*autovar*/,it);
+                   ptr->src=var1/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                   it=rb_funcall(self,sy_Resolve_Calls_src_dot_name_80f3,1,bind2); var2/*autovar*/=it;;
+bind_aset(bind2,1,var2/*autovar*/);it=rb_funcall(self,sy_Resolve_Calls__at_name_eq_bi_0e7f,1,bind2);var2/*autovar*/=bind_aget(bind2,1);;  it=Resolve_Calls_traverse(self ); FAILTEST(pass1); var3/*autovar*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass1;
                    goto success1;
                    pass1: *ptr=oldpass1; goto fail;
                    success1: *ptr=oldpass1;
-                it=bind_aget(bind,3/*autovar*/); bind_aset(bind,4/*_result*/,it);
+                it=var3/*autovar*/; var4/*_result*/=it;;
 
 return it;
 fail: return failobj; }
-VALUE Resolve_Calls_traverse(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(10);VALUE bind2=bind_new2(16);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
+VALUE Resolve_Calls_traverse(VALUE self ){VALUE vals[0];  VALUE var0;VALUE var1;VALUE var2;VALUE var3;VALUE var4;VALUE var5;VALUE var6;VALUE var7;VALUE var8;VALUE var9; ;VALUE bind2=bind_new2(16);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
             
-ptr->pos=ptr->len;it=rb_funcall(self,sy_Resolve_Calls__at_changed_c681,1,bind2); bind_aset(bind,0/*oldchanged*/,it);
-it=rb_funcall(self,sy_Resolve_Calls_src_25d9,1,bind2); bind_aset(bind,1/*this*/,it);
-it=Qnil; bind_aset(bind,2/*clon*/,it);
-it=Qfalse; bind_aset(bind,3/*changed*/,it);
-it=rb_funcall(self,sy_Resolve_Calls__lp_src_dot_ins_6a75,1,bind2); bind_aset(bind,4/*autovar*/,it);
+ptr->pos=ptr->len;it=rb_funcall(self,sy_Resolve_Calls__at_changed_c681,1,bind2); var0/*oldchanged*/=it;;
+it=rb_funcall(self,sy_Resolve_Calls_src_25d9,1,bind2); var1/*this*/=it;;
+it=Qnil; var2/*clon*/=it;;
+it=Qfalse; var3/*changed*/=it;;
+it=rb_funcall(self,sy_Resolve_Calls__lp_src_dot_ins_6a75,1,bind2); var4/*autovar*/=it;;
 cstruct oldpass1=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=bind_aget(bind,4/*autovar*/);ptr->len=1;
-                     it=AmethystCore_anything(self ); FAILTEST(pass1); bind_aset(bind,5/*autovar*/,it);
+                   ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=var4/*autovar*/;ptr->len=1;
+                     it=AmethystCore_anything(self ); FAILTEST(pass1); var5/*autovar*/=it;;
 cstruct oldpass2=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,5/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                   int oldpos1;  while(1){oldpos1=ptr->pos;   it=AmethystCore_anything(self ); FAILTEST(break1); bind_aset(bind,6/*autovar*/,it);
+                   ptr->src=var5/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                   int oldpos1;  while(1){oldpos1=ptr->pos;   it=AmethystCore_anything(self ); FAILTEST(break1); var6/*autovar*/=it;;
 cstruct oldpass3=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,6/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                     it=AmethystCore_anything(self ); FAILTEST(pass3); bind_aset(bind,7/*key*/,it);
-it=rb_funcall(self,sy_Resolve_Calls__at_changed_b885,1,bind2);  it=Resolve_Calls_traverse_item(self ); FAILTEST(pass3); bind_aset(bind,8/*val*/,it);
-bind_aset(bind2,1,bind_aget(bind,2/*clon*/));bind_aset(bind2,2,bind_aget(bind,1/*this*/));bind_aset(bind2,3,bind_aget(bind,3/*changed*/));bind_aset(bind2,4,bind_aget(bind,7/*key*/));bind_aset(bind2,5,bind_aget(bind,8/*val*/));it=rb_funcall(self,sy_Resolve_Calls__lp_bind_lb_1_rb__ee3d,1,bind2);bind_aset(bind,2/*clon*/,bind_aget(bind2,1));bind_aset(bind,1/*this*/,bind_aget(bind2,2));bind_aset(bind,3/*changed*/,bind_aget(bind2,3));bind_aset(bind,7/*key*/,bind_aget(bind2,4));bind_aset(bind,8/*val*/,bind_aget(bind2,5));it=Qnil;if (ptr->pos<ptr->len) goto pass3;
+                   ptr->src=var6/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                     it=AmethystCore_anything(self ); FAILTEST(pass3); var7/*key*/=it;;
+it=rb_funcall(self,sy_Resolve_Calls__at_changed_b885,1,bind2);  it=Resolve_Calls_traverse_item(self ); FAILTEST(pass3); var8/*val*/=it;;
+bind_aset(bind2,1,var2/*clon*/);bind_aset(bind2,2,var1/*this*/);bind_aset(bind2,3,var3/*changed*/);bind_aset(bind2,4,var7/*key*/);bind_aset(bind2,5,var8/*val*/);it=rb_funcall(self,sy_Resolve_Calls__lp_bind_lb_1_rb__ee3d,1,bind2);var2/*clon*/=bind_aget(bind2,1);;var1/*this*/=bind_aget(bind2,2);;var3/*changed*/=bind_aget(bind2,3);;var7/*key*/=bind_aget(bind2,4);;var8/*val*/=bind_aget(bind2,5);;it=Qnil;if (ptr->pos<ptr->len) goto pass3;
                    goto success3;
                    pass3: *ptr=oldpass3; goto break1;
                    success3: *ptr=oldpass3;
@@ -480,64 +480,64 @@ bind_aset(bind2,1,bind_aget(bind,2/*clon*/));bind_aset(bind2,2,bind_aget(bind,1/
                    goto success1;
                    pass1: *ptr=oldpass1; goto fail;
                    success1: *ptr=oldpass1;
-                bind_aset(bind2,1,bind_aget(bind,3/*changed*/));bind_aset(bind2,2,bind_aget(bind,2/*clon*/));bind_aset(bind2,3,bind_aget(bind,0/*oldchanged*/));it=rb_funcall(self,sy_Resolve_Calls_if_sp_bind_lb__8e0b,1,bind2);bind_aset(bind,3/*changed*/,bind_aget(bind2,1));bind_aset(bind,2/*clon*/,bind_aget(bind2,2));bind_aset(bind,0/*oldchanged*/,bind_aget(bind2,3)); bind_aset(bind,9/*_result*/,it);
+                bind_aset(bind2,1,var3/*changed*/);bind_aset(bind2,2,var2/*clon*/);bind_aset(bind2,3,var0/*oldchanged*/);it=rb_funcall(self,sy_Resolve_Calls_if_sp_bind_lb__8e0b,1,bind2);var3/*changed*/=bind_aget(bind2,1);;var2/*clon*/=bind_aget(bind2,2);;var0/*oldchanged*/=bind_aget(bind2,3);; var9/*_result*/=it;;
 
 return it;
 fail: return failobj; }
-VALUE Resolve_Calls_traverse_item(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(8);VALUE bind2=bind_new2(16);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
+VALUE Resolve_Calls_traverse_item(VALUE self ){VALUE vals[0];  VALUE var0;VALUE var1;VALUE var2;VALUE var3;VALUE var4;VALUE var5;VALUE var6;VALUE var7; ;VALUE bind2=bind_new2(16);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
             
 switch(FIX2LONG(rb_hash_aref(switchhash_Resolve_Calls_4,rb_obj_class(ame_curobj2(ptr))))){case 0/*AmethystAST*/:; int oldpos1=ptr->pos;int cut1=0;
-alt1_1:;  it=Resolve_Calls_visit(self ); FAILTEST(alt1_2); bind_aset(bind,0/*a*/,it);
-it=rb_funcall(self,sy_Resolve_Calls__at_changed_5352,1,bind2);it=bind_aget(bind,0/*a*/); bind_aset(bind,1/*_result*/,it);
+alt1_1:;  it=Resolve_Calls_visit(self ); FAILTEST(alt1_2); var0/*a*/=it;;
+it=rb_funcall(self,sy_Resolve_Calls__at_changed_5352,1,bind2);it=var0/*a*/; var1/*_result*/=it;;
 
 ;goto accept1;
-alt1_2: ptr->pos=oldpos1;it=ame_curobj2(ptr)               ;ptr->pos++; bind_aset(bind,2/*autovar*/,it);
+alt1_2: ptr->pos=oldpos1;it=ame_curobj2(ptr)               ;ptr->pos++; var2/*autovar*/=it;;
 cstruct oldpass1=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,2/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                     it=Resolve_Calls_traverse(self ); FAILTEST(pass1); bind_aset(bind,3/*autovar*/,it);
+                   ptr->src=var2/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                     it=Resolve_Calls_traverse(self ); FAILTEST(pass1); var3/*autovar*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass1;
                    goto success1;
                    pass1: *ptr=oldpass1; goto alt1_3;
                    success1: *ptr=oldpass1;
-                it=bind_aget(bind,3/*autovar*/); bind_aset(bind,1/*_result*/,it);
+                it=var3/*autovar*/; var1/*_result*/=it;;
 
 ;goto accept1;
-alt1_3: ptr->pos=oldpos1;  it=AmethystCore_anything(self ); FAILTEST(alt1_4); bind_aset(bind,1/*_result*/,it);
+alt1_3: ptr->pos=oldpos1;  it=AmethystCore_anything(self ); FAILTEST(alt1_4); var1/*_result*/=it;;
 
 ;goto accept1;
 alt1_4: ptr->pos=oldpos1;goto fail;
  accept1:;
  break;
 case 1/*Array*/:; int oldpos2=ptr->pos;int cut2=0;
-alt2_1:;  it=Resolve_Calls_visit(self ); FAILTEST(alt2_2); bind_aset(bind,0/*a*/,it);
-it=rb_funcall(self,sy_Resolve_Calls__at_changed_5352,1,bind2);it=bind_aget(bind,0/*a*/); bind_aset(bind,1/*_result*/,it);
+alt2_1:;  it=Resolve_Calls_visit(self ); FAILTEST(alt2_2); var0/*a*/=it;;
+it=rb_funcall(self,sy_Resolve_Calls__at_changed_5352,1,bind2);it=var0/*a*/; var1/*_result*/=it;;
 
 ;goto accept2;
-alt2_2: ptr->pos=oldpos2;it=ame_curobj2(ptr)               ;ptr->pos++; bind_aset(bind,4/*autovar*/,it);
+alt2_2: ptr->pos=oldpos2;it=ame_curobj2(ptr)               ;ptr->pos++; var4/*autovar*/=it;;
 cstruct oldpass2=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,4/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                   it=rb_ary_new3(0); bind_aset(bind,5/*ar*/,it);
-int oldpos3;  while(1){oldpos3=ptr->pos;   it=Resolve_Calls_traverse_item(self ); FAILTEST(break1); bind_aset(bind,6/*it*/,it);
-bind_aset(bind2,1,bind_aget(bind,5/*ar*/));bind_aset(bind2,2,bind_aget(bind,6/*it*/));it=rb_funcall(self,sy_Resolve_Calls_bind_lb_1_rb__lt__7b20,1,bind2);bind_aset(bind,5/*ar*/,bind_aget(bind2,1));bind_aset(bind,6/*it*/,bind_aget(bind2,2)); } break1: ptr->pos=oldpos3;   it=bind_aget(bind,5/*ar*/); bind_aset(bind,7/*autovar*/,it);
+                   ptr->src=var4/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                   it=rb_ary_new3(0); var5/*ar*/=it;;
+int oldpos3;  while(1){oldpos3=ptr->pos;   it=Resolve_Calls_traverse_item(self ); FAILTEST(break1); var6/*it*/=it;;
+bind_aset(bind2,1,var5/*ar*/);bind_aset(bind2,2,var6/*it*/);it=rb_funcall(self,sy_Resolve_Calls_bind_lb_1_rb__lt__7b20,1,bind2);var5/*ar*/=bind_aget(bind2,1);;var6/*it*/=bind_aget(bind2,2);; } break1: ptr->pos=oldpos3;   it=var5/*ar*/; var7/*autovar*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass2;
                    goto success2;
                    pass2: *ptr=oldpass2; goto alt2_3;
                    success2: *ptr=oldpass2;
-                it=bind_aget(bind,7/*autovar*/); bind_aset(bind,1/*_result*/,it);
+                it=var7/*autovar*/; var1/*_result*/=it;;
 
 ;goto accept2;
-alt2_3: ptr->pos=oldpos2;  it=AmethystCore_anything(self ); FAILTEST(alt2_4); bind_aset(bind,1/*_result*/,it);
+alt2_3: ptr->pos=oldpos2;  it=AmethystCore_anything(self ); FAILTEST(alt2_4); var1/*_result*/=it;;
 
 ;goto accept2;
 alt2_4: ptr->pos=oldpos2;goto fail;
  accept2:;
  break;
 case 2/*Object*/:; int oldpos4=ptr->pos;int cut3=0;
-alt3_1:;  it=Resolve_Calls_visit(self ); FAILTEST(alt3_2); bind_aset(bind,0/*a*/,it);
-it=rb_funcall(self,sy_Resolve_Calls__at_changed_5352,1,bind2);it=bind_aget(bind,0/*a*/); bind_aset(bind,1/*_result*/,it);
+alt3_1:;  it=Resolve_Calls_visit(self ); FAILTEST(alt3_2); var0/*a*/=it;;
+it=rb_funcall(self,sy_Resolve_Calls__at_changed_5352,1,bind2);it=var0/*a*/; var1/*_result*/=it;;
 
 ;goto accept4;
-alt3_2: ptr->pos=oldpos4;  it=AmethystCore_anything(self ); FAILTEST(alt3_3); bind_aset(bind,1/*_result*/,it);
+alt3_2: ptr->pos=oldpos4;  it=AmethystCore_anything(self ); FAILTEST(alt3_3); var1/*_result*/=it;;
 
 ;goto accept4;
 alt3_3: ptr->pos=oldpos4;goto fail;
@@ -546,56 +546,56 @@ alt3_3: ptr->pos=oldpos4;goto fail;
 }
 return it;
 fail: return failobj; }
-VALUE Resolve_Calls_visit(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(12);VALUE bind2=bind_new2(16);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
+VALUE Resolve_Calls_visit(VALUE self ){VALUE vals[0];  VALUE var0;VALUE var1;VALUE var2;VALUE var3;VALUE var4;VALUE var5;VALUE var6;VALUE var7;VALUE var8;VALUE var9;VALUE var10;VALUE var11; ;VALUE bind2=bind_new2(16);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
             
-switch(FIX2LONG(rb_hash_aref(switchhash_Resolve_Calls_2,rb_obj_class(ame_curobj2(ptr))))){case 0/*Apply*/:; it=ame_curobj2(ptr)               ;ptr->pos++; bind_aset(bind,0/*autovar*/,it);
-it=bind_aget(bind,0/*autovar*/); bind_aset(bind,1/*autovar*/,it);
-it=bind_aget(bind,1/*autovar*/); bind_aset(bind,2/*autovar*/,it);
+switch(FIX2LONG(rb_hash_aref(switchhash_Resolve_Calls_2,rb_obj_class(ame_curobj2(ptr))))){case 0/*Apply*/:; it=ame_curobj2(ptr)               ;ptr->pos++; var0/*autovar*/=it;;
+it=var0/*autovar*/; var1/*autovar*/=it;;
+it=var1/*autovar*/; var2/*autovar*/=it;;
 int oldpos1=ptr->pos;int cut1=0;
-alt1_1:;it=bind_aget(bind,2/*autovar*/); bind_aset(bind,3/*autovar*/,it);
+alt1_1:;it=var2/*autovar*/; var3/*autovar*/=it;;
 cstruct oldpass1=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,3/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                     it=AmethystCore_anything(self ); FAILTEST(pass1); bind_aset(bind,4/*autovar*/,it);
+                   ptr->src=var3/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                     it=AmethystCore_anything(self ); FAILTEST(pass1); var4/*autovar*/=it;;
 cstruct oldpass2=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,4/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                   ptr->src=var4/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
                      it=Amethyst_spaces(self ); FAILTEST(pass2);switch((unsigned char)*ame_curstr2(ptr)){case UC(0) ... 'r':;case 't' ... UC(255):; goto pass2; break;
 case 's' ... 's':; it=rb_str_new(ptr->str+ptr->pos,1);ptr->pos++;if (ame_curstr2(ptr)[0]=='u'&&ame_curstr2(ptr)[1]=='p'&&ame_curstr2(ptr)[2]=='e'&&ame_curstr2(ptr)[3]=='r')  ptr->pos+=4; else goto pass2; break;
 }it=Qnil;if (ptr->pos<ptr->len) goto pass2;
                    goto success2;
                    pass2: *ptr=oldpass2; goto pass1;
                    success2: *ptr=oldpass2;
-                it=rb_funcall(self,sy_Resolve_Calls_super_na_7b4c,1,bind2); bind_aset(bind,5/*autovar*/,it);
+                it=rb_funcall(self,sy_Resolve_Calls_super_na_7b4c,1,bind2); var5/*autovar*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass1;
                    goto success1;
                    pass1: *ptr=oldpass1; goto alt1_2;
                    success1: *ptr=oldpass1;
-                it=bind_aget(bind,5/*autovar*/); bind_aset(bind,6/*_result*/,it);
+                it=var5/*autovar*/; var6/*_result*/=it;;
 
 ;goto accept1;
-alt1_2: ptr->pos=oldpos1;it=bind_aget(bind,2/*autovar*/); bind_aset(bind,7/*autovar*/,it);
+alt1_2: ptr->pos=oldpos1;it=var2/*autovar*/; var7/*autovar*/=it;;
 cstruct oldpass3=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,7/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                   switch(FIX2LONG(rb_hash_aref(switchhash_Resolve_Calls_3,rb_obj_class(ame_curobj2(ptr))))){case 0/*Array*/:; it=ame_curobj2(ptr)               ;ptr->pos++; bind_aset(bind,8/*name*/,it);
-bind_aset(bind2,1,bind_aget(bind,8/*name*/));it=rb_funcall(self,sy_Resolve_Calls_a_eq_Apply_lb__36f8,1,bind2);bind_aset(bind,8/*name*/,bind_aget(bind2,1)); bind_aset(bind,9/*autovar*/,it);
+                   ptr->src=var7/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                   switch(FIX2LONG(rb_hash_aref(switchhash_Resolve_Calls_3,rb_obj_class(ame_curobj2(ptr))))){case 0/*Array*/:; it=ame_curobj2(ptr)               ;ptr->pos++; var8/*name*/=it;;
+bind_aset(bind2,1,var8/*name*/);it=rb_funcall(self,sy_Resolve_Calls_a_eq_Apply_lb__36f8,1,bind2);var8/*name*/=bind_aget(bind2,1);; var9/*autovar*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass3; break;
 case 1/*Object*/:; goto pass3; break;
 }
                    goto success3;
                    pass3: *ptr=oldpass3; goto alt1_3;
                    success3: *ptr=oldpass3;
-                it=bind_aget(bind,9/*autovar*/); bind_aset(bind,6/*_result*/,it);
+                it=var9/*autovar*/; var6/*_result*/=it;;
 
 ;goto accept1;
-alt1_3: ptr->pos=oldpos1;it=bind_aget(bind,2/*autovar*/); bind_aset(bind,10/*autovar*/,it);
+alt1_3: ptr->pos=oldpos1;it=var2/*autovar*/; var10/*autovar*/=it;;
 cstruct oldpass4=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,10/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                     it=AmethystCore_anything(self ); FAILTEST(pass4); bind_aset(bind,8/*name*/,it);
-bind_aset(bind2,1,bind_aget(bind,8/*name*/));it=rb_funcall(self,sy_Resolve_Calls_a_eq_Apply_lb__1315,1,bind2);bind_aset(bind,8/*name*/,bind_aget(bind2,1)); bind_aset(bind,11/*autovar*/,it);
+                   ptr->src=var10/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                     it=AmethystCore_anything(self ); FAILTEST(pass4); var8/*name*/=it;;
+bind_aset(bind2,1,var8/*name*/);it=rb_funcall(self,sy_Resolve_Calls_a_eq_Apply_lb__1315,1,bind2);var8/*name*/=bind_aget(bind2,1);; var11/*autovar*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass4;
                    goto success4;
                    pass4: *ptr=oldpass4; goto alt1_4;
                    success4: *ptr=oldpass4;
-                it=bind_aget(bind,11/*autovar*/); bind_aset(bind,6/*_result*/,it);
+                it=var11/*autovar*/; var6/*_result*/=it;;
 
 ;goto accept1;
 alt1_4: ptr->pos=oldpos1;goto fail;
@@ -673,4 +673,4 @@ sy_Resolve_Calls_super_na_7b4c=rb_intern("Resolve_Calls_super_na_7b4c");
 rb_define_method(cls_Resolve_Calls,"traverse",Resolve_Calls_traverse,0);
 rb_define_method(cls_Resolve_Calls,"traverse_item",Resolve_Calls_traverse_item,0);
 rb_define_method(cls_Resolve_Calls,"visit",Resolve_Calls_visit,0);
-                    rb_eval_string("testversiondetect_variables2('a4c7db6fb8460a3c15cbea8c20a47f79')");}
+                    rb_eval_string("testversiondetect_variables2('5bba88b14e84cdebd46db197e781f500')");}
