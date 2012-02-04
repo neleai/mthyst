@@ -93,7 +93,9 @@ amethyst AmethystCTranslator < Amethyst {
             { "VALUE cls_#{@name};\n" }:s
             { s<<@@header.uniq.sort*"\n"+"\n"
 							s<<"\n#include \"../lib/c/memo.c\"\n memo_struct *mem;VALUE memo_val;" if CurrentParser[:memoize]
+							s<<"VALUE profile_report(VALUE self){printf(\"\\nhit: %i miss: %i hit: %i miss: %i\\n\",mem->hits[113],mem->miss[113],mem->hits[115],mem->miss[115]);return Qnil;}" if CurrentParser[:memoize]
 							@@init<<"mem=memo_init(); memo_val=Data_Wrap_Struct(cls_AmethystParser,memo_mark,memo_free,mem); rb_global_variable(&memo_val); " if CurrentParser[:memoize]
+							@@init<<"rb_define_method(cls_AmethystParser,\"profile_report\",profile_report,0);" if CurrentParser[:memoize]
               s<<t.sort*"\n"
               s<<@@lambdas*"\n"
               init="\n cls_#{@name}=rb_define_class(\"#{@name}\",rb_const_get(rb_cObject,rb_intern(\"#{@@parent}\"))); 

@@ -135,7 +135,9 @@ class <<Compiler
 		if Dir[Amethyst_path+ "/compiled/#{file2}.rb"]!=[] && eval("#{file2}_compiled_by")==$compiled_by && eval("#{file2}_source_hash")==source_hash && Amethyst::Settings.debug<1
 			return unless ["amethyst","traverser"].include? file2 #inheritance
 		end
-		tree=AmethystParser.new.parse(:igrammar,source)
+		p=AmethystParser.new
+		tree=p.parse(:igrammar,source)
+		p.profile_report
 		CurrentParser.clear
 
 		#todo write this with less ugly code

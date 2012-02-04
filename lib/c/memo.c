@@ -11,7 +11,7 @@ typedef struct {
 	int rule;VALUE src;int pos;VALUE val;int newpos;
 } elem_struct;
 typedef struct {
-		elem_struct *els;
+		elem_struct *els;int *hits, *miss;
 } memo_struct;
 #if MEMORY==-1
 static VALUE memo_test(memo_struct m,int rule,VALUE src,int pos){
@@ -31,6 +31,7 @@ static void memo_add(memo_struct m,int rule,VALUE src,int pos,VALUE val){
 #else
 static memo_struct *memo_init(){
 	memo_struct *m=malloc(sizeof(memo_struct));
+	m->hits=calloc(sizeof(int)*256,1);	m->miss=calloc(sizeof(int)*256,1);
 	m->els=(elem_struct *) calloc(sizeof(elem_struct),1<<MEMORY);
 	return m;
 }
@@ -42,8 +43,9 @@ static VALUE memo_value(memo_struct *m,int rule,VALUE src,int pos){
 }
 static int memo_pos(memo_struct *m,int rule,VALUE src,int pos){
 	elem_struct el=m->els[memo_hash(rule,pos)];
-	if (el.rule==rule&& el.src==src && el.pos==pos) return el.newpos;
-	return -1;
+	if (el.rule==rule&& el.src==src && el.pos==pos){ m->hits[rule]++; return el.newpos;
+	} else {	                                       m->miss[rule]++; return -1;
+  }
 }
 static void memo_add(memo_struct *m,int rule,VALUE src,int pos,VALUE val,int newpos){
 	elem_struct el;
@@ -55,5 +57,5 @@ static void memo_add(memo_struct *m,int rule,VALUE src,int pos,VALUE val,int new
 void memo_mark(memo_struct *m){ /*we want weak link to src so we dont mark it*/
 	int i;for(i=0;i<(1<<MEMORY);i++) if(m->els[i].rule) rb_gc_mark(m->els[i].val);
 }
-void memo_free(memo_struct *m){ free(m->els);free(m);}
+void memo_free(memo_struct *m){ free(m->els);free(m->hits);free(m->miss);free(m);}
 #endif
