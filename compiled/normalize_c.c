@@ -708,14 +708,7 @@ alt3_1:; it=rb_funcall(self,sy_Normalize_Placehol_6875,1,bind2); arg0=it; it=Ame
 alt3_2: ptr->pos=oldpos4;it=ame_curobj2(ptr)               ;ptr->pos++; var8/*autovar*/=it;;
 cstruct oldpass5=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
                    ptr->src=var8/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                   int oldpos5;  while(1){oldpos5=ptr->pos; switch(FIX2LONG(rb_hash_aref(switchhash_Normalize_3,rb_obj_class(ame_curobj2(ptr))))){case 0/*Cut*/:; int oldpos6=ptr->pos;int cut4=0;
-alt4_1:;it=ame_curobj2(ptr)               ;ptr->pos++;ptr->pos=ptr->len;
-;goto accept6;
-alt4_2: ptr->pos=oldpos6;  it=Normalize_cant_fail(self ); FAILTEST(alt4_3);
-;goto accept6;
-alt4_3: ptr->pos=oldpos6;goto break2;
- accept6:;
- break;
+                   int oldpos5;  while(1){oldpos5=ptr->pos; switch(FIX2LONG(rb_hash_aref(switchhash_Normalize_3,rb_obj_class(ame_curobj2(ptr))))){case 0/*Cut*/:; it=ame_curobj2(ptr)               ;ptr->pos++;ptr->pos=ptr->len; break;
 case 1/*Object*/:;   it=Normalize_cant_fail(self ); FAILTEST(break2); break;
 } } break2: ptr->pos=oldpos5;   it=Qnil;if (ptr->pos<ptr->len) goto pass5;it=rb_funcall(self,sy_Normalize_src_25d9,1,bind2); var9/*autovar*/=it;;
 bind_aset(bind2,1,var0/*ary*/);bind_aset(bind2,2,var9/*autovar*/);it=rb_funcall(self,sy_Normalize__append_lp__d113,1,bind2);var0/*ary*/=bind_aget(bind2,1);;var9/*autovar*/=bind_aget(bind2,2);;it=Qnil;if (ptr->pos<ptr->len) goto pass5;
@@ -730,14 +723,14 @@ bind_aset(bind2,1,var0/*ary*/);bind_aset(bind2,2,var5/*autovar*/);it=rb_funcall(
 alt3_4: ptr->pos=oldpos4;goto break1;
  accept4:;
  break;
-case 3/*Object*/:; int oldpos7=ptr->pos;int cut5=0;
-alt5_1:; it=rb_funcall(self,sy_Normalize_Placehol_6875,1,bind2); arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(alt5_2);
-;goto accept7;
-alt5_2: ptr->pos=oldpos7;  it=AmethystCore_anything(self ); FAILTEST(alt5_3); var5/*autovar*/=it;;
+case 3/*Object*/:; int oldpos6=ptr->pos;int cut4=0;
+alt4_1:; it=rb_funcall(self,sy_Normalize_Placehol_6875,1,bind2); arg0=it; it=Amethyst_clas(self ,arg0); FAILTEST(alt4_2);
+;goto accept6;
+alt4_2: ptr->pos=oldpos6;  it=AmethystCore_anything(self ); FAILTEST(alt4_3); var5/*autovar*/=it;;
 bind_aset(bind2,1,var0/*ary*/);bind_aset(bind2,2,var5/*autovar*/);it=rb_funcall(self,sy_Normalize__append_lp__d113,1,bind2);var0/*ary*/=bind_aget(bind2,1);;var5/*autovar*/=bind_aget(bind2,2);;
-;goto accept7;
-alt5_3: ptr->pos=oldpos7;goto break1;
- accept7:;
+;goto accept6;
+alt4_3: ptr->pos=oldpos6;goto break1;
+ accept6:;
  break;
 } } break1: ptr->pos=oldpos1;   it=Qnil;if (ptr->pos<ptr->len) goto pass1;
                    goto success1;
@@ -748,22 +741,22 @@ cstruct oldpass6=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
                    ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=var10/*autovar*/;ptr->len=1;
                      it=AmethystCore_anything(self ); FAILTEST(pass6); var11/*autovar*/=it;;
 it=var11/*autovar*/; var12/*autovar*/=it;;
-int oldpos8=ptr->pos;int cut6=0;
-alt6_1:;it=var12/*autovar*/; var13/*a*/=it;;
+int oldpos7=ptr->pos;int cut5=0;
+alt5_1:;it=var12/*autovar*/; var13/*a*/=it;;
 it=i_0; var14/*x*/=it;;
-bind_aset(bind2,1,var14/*x*/);bind_aset(bind2,2,var13/*a*/);it=rb_funcall(self,sy_Normalize__lp_bind_lb_1_rb__abc3,1,bind2);var14/*x*/=bind_aget(bind2,1);;var13/*a*/=bind_aget(bind2,2);;FAILTEST(alt6_2);it=rb_funcall(self,sy_Normalize_Apply_lb__dq_f_3881,1,bind2); var15/*autovar*/=it;;
+bind_aset(bind2,1,var14/*x*/);bind_aset(bind2,2,var13/*a*/);it=rb_funcall(self,sy_Normalize__lp_bind_lb_1_rb__abc3,1,bind2);var14/*x*/=bind_aget(bind2,1);;var13/*a*/=bind_aget(bind2,2);;FAILTEST(alt5_2);it=rb_funcall(self,sy_Normalize_Apply_lb__dq_f_3881,1,bind2); var15/*autovar*/=it;;
 
-;goto accept8;
-alt6_2: ptr->pos=oldpos8;it=var12/*autovar*/; var13/*a*/=it;;
+;goto accept7;
+alt5_2: ptr->pos=oldpos7;it=var12/*autovar*/; var13/*a*/=it;;
 it=i_1; var14/*x*/=it;;
-bind_aset(bind2,1,var14/*x*/);bind_aset(bind2,2,var13/*a*/);it=rb_funcall(self,sy_Normalize__lp_bind_lb_1_rb__abc3,1,bind2);var14/*x*/=bind_aget(bind2,1);;var13/*a*/=bind_aget(bind2,2);;FAILTEST(alt6_3);bind_aset(bind2,1,var0/*ary*/);it=rb_funcall(self,sy_Normalize_bind_lb_1_rb__lb__79d7,1,bind2);var0/*ary*/=bind_aget(bind2,1);; var15/*autovar*/=it;;
+bind_aset(bind2,1,var14/*x*/);bind_aset(bind2,2,var13/*a*/);it=rb_funcall(self,sy_Normalize__lp_bind_lb_1_rb__abc3,1,bind2);var14/*x*/=bind_aget(bind2,1);;var13/*a*/=bind_aget(bind2,2);;FAILTEST(alt5_3);bind_aset(bind2,1,var0/*ary*/);it=rb_funcall(self,sy_Normalize_bind_lb_1_rb__lb__79d7,1,bind2);var0/*ary*/=bind_aget(bind2,1);; var15/*autovar*/=it;;
 
-;goto accept8;
-alt6_3: ptr->pos=oldpos8;it=var12/*autovar*/;bind_aset(bind2,1,var2/*or*/);bind_aset(bind2,2,var0/*ary*/);it=rb_funcall(self,sy_Normalize_bind_lb_1_rb__dot__f29b,1,bind2);var2/*or*/=bind_aget(bind2,1);;var0/*ary*/=bind_aget(bind2,2);; var15/*autovar*/=it;;
+;goto accept7;
+alt5_3: ptr->pos=oldpos7;it=var12/*autovar*/;bind_aset(bind2,1,var2/*or*/);bind_aset(bind2,2,var0/*ary*/);it=rb_funcall(self,sy_Normalize_bind_lb_1_rb__dot__f29b,1,bind2);var2/*or*/=bind_aget(bind2,1);;var0/*ary*/=bind_aget(bind2,2);; var15/*autovar*/=it;;
 
-;goto accept8;
-alt6_4: ptr->pos=oldpos8;goto pass6;
- accept8:;
+;goto accept7;
+alt5_4: ptr->pos=oldpos7;goto pass6;
+ accept7:;
 it=Qnil;if (ptr->pos<ptr->len) goto pass6;
                    goto success6;
                    pass6: *ptr=oldpass6; goto fail;
@@ -928,4 +921,4 @@ rb_define_method(cls_Normalize,"cant_fail",Normalize_cant_fail,0);
 rb_define_method(cls_Normalize,"must_empty",Normalize_must_empty,0);
 rb_define_method(cls_Normalize,"or",Normalize_or,0);
 rb_define_method(cls_Normalize,"seq2",Normalize_seq2,0);
-                    rb_eval_string("testversionnormalize('e2752360438180ab6114114d8e25c481')");}
+                    rb_eval_string("testversionnormalize('ce8bd944dff46faaa052761b6d1d4809')");}

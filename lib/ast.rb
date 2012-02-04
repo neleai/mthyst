@@ -187,7 +187,7 @@ class CAct
 			i+=1 while ($cstr[sig+i.to_s] || ary[0].inspect) !=  ary[0].inspect
 			$cstr[sig+i.to_s]=ary[0].inspect
 			sig=sig+i.to_s if i>1
-			return cact_add_global(sig,"rb_str_new2(#{ary[0].inspect})","rb_obj_clone(#{sig})")
+			return cact_add_global(sig,"rb_str_new2(#{ary[0].inspect.gsub("\\#","#")})","rb_obj_clone(#{sig})")
 		end
 		[nil,nil,ary[0]]
 	end

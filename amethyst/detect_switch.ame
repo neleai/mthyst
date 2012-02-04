@@ -269,6 +269,7 @@ amethyst Switch_Clas_Dataflow < First_Dataflow{
 amethyst Cant_Fail_Dataflow < First_Dataflow{
 	first = Act[ .* &{@pred} ]   -> lattice.top
 				| Lookahead[.* ]       -> lattice.top
+				| Many[ .* ]           -> lattice.bottom
 				| Apply[ ["advance_char" | "advance_clas"] ] -> lattice.bottom
 				| Pass[ @to=>value ]
 				| super
