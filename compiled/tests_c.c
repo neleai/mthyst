@@ -15,9 +15,9 @@ static VALUE s_b_92eb;
 static VALUE s_c_4a8a;
 static VALUE s_d_8277;
 static VALUE s_g_b2f5;
-static VALUE sy_Tests_bind_lb_0_rb__pl__3b00;
-static VALUE sy_Tests_bind_lb_0_rb__pl__fbc2;
+static VALUE sy_Tests_bind_lb_1_rb__pl__0a71;
 static VALUE sy_Tests_bind_lb_1_rb__pl__1730;
+static VALUE sy_Tests_bind_lb_1_rb__pl__61a1;
 static VALUE sy_Tests_bind_lb_3_rb__eq__0b1b;
 static VALUE sy_bar;
 static VALUE sy_seq;
@@ -30,33 +30,39 @@ case ' ' ... ' ':;case 'a' ... 'c':; it=rb_str_new(ptr->str+ptr->pos,1);ptr->pos
 }
 return it;
 fail: return failobj; }
-VALUE Tests_de(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(2);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
+VALUE Tests_de(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(5);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
             
-switch((unsigned char)*ame_curstr2(ptr)){case UC(0) ... UC(31):;case '!' ... '`':;case 'f' ... UC(255):; it=i_1; bind_aset(bind,0/*foo*/,it);
+switch((unsigned char)*ame_curstr2(ptr)){case UC(0) ... UC(31):;case '!' ... '`':;case 'f' ... UC(255):; it=i_1; bind_aset(bind,0/*autovar*/,it);
 int oldpos1=ptr->pos;int cut1=0;
-alt1_1:;it=rb_funcall(self,sy_Tests_bind_lb_0_rb__pl__fbc2,1,bind); goto alt1_2;
+alt1_1:;it=bind_aget(bind,0/*autovar*/); bind_aset(bind,1/*foo*/,it);
+it=rb_funcall(self,sy_Tests_bind_lb_1_rb__pl__61a1,1,bind); goto alt1_2;
 ;goto accept1;
-alt1_2: ptr->pos=oldpos1;it=rb_funcall(self,sy_Tests_bind_lb_0_rb__pl__3b00,1,bind); goto alt1_3;
+alt1_2: ptr->pos=oldpos1;it=bind_aget(bind,0/*autovar*/); bind_aset(bind,1/*foo*/,it);
+it=rb_funcall(self,sy_Tests_bind_lb_1_rb__pl__0a71,1,bind); goto alt1_3;
 ;goto accept1;
 alt1_3: ptr->pos=oldpos1;goto fail;
  accept1:;
  break;
-case 'd' ... 'e':; it=i_1; bind_aset(bind,0/*foo*/,it);
+case 'd' ... 'e':; it=i_1; bind_aset(bind,2/*autovar*/,it);
 int oldpos2=ptr->pos;int cut2=0;
-alt2_1:;it=rb_funcall(self,sy_Tests_bind_lb_0_rb__pl__fbc2,1,bind); goto alt2_2;
+alt2_1:;it=bind_aget(bind,2/*autovar*/); bind_aset(bind,1/*foo*/,it);
+it=rb_funcall(self,sy_Tests_bind_lb_1_rb__pl__61a1,1,bind); goto alt2_2;
 ;goto accept2;
-alt2_2: ptr->pos=oldpos2;it=rb_funcall(self,sy_Tests_bind_lb_0_rb__pl__3b00,1,bind); it=rb_str_new(ptr->str+ptr->pos,1);ptr->pos++; bind_aset(bind,1/*_result*/,it);
+alt2_2: ptr->pos=oldpos2;it=bind_aget(bind,2/*autovar*/); bind_aset(bind,1/*foo*/,it);
+it=rb_funcall(self,sy_Tests_bind_lb_1_rb__pl__0a71,1,bind); it=rb_str_new(ptr->str+ptr->pos,1);ptr->pos++; bind_aset(bind,3/*_result*/,it);
 
 ;goto accept2;
 alt2_3: ptr->pos=oldpos2;goto fail;
  accept2:;
  break;
-case ' ' ... ' ':;case 'a' ... 'c':; it=i_1; bind_aset(bind,0/*foo*/,it);
+case ' ' ... ' ':;case 'a' ... 'c':; it=i_1; bind_aset(bind,4/*autovar*/,it);
 int oldpos3=ptr->pos;int cut3=0;
-alt3_1:;it=rb_funcall(self,sy_Tests_bind_lb_0_rb__pl__fbc2,1,bind);   it=Tests_abc(self ); FAILTEST(alt3_2); bind_aset(bind,1/*_result*/,it);
+alt3_1:;it=bind_aget(bind,4/*autovar*/); bind_aset(bind,1/*foo*/,it);
+it=rb_funcall(self,sy_Tests_bind_lb_1_rb__pl__61a1,1,bind);   it=Tests_abc(self ); FAILTEST(alt3_2); bind_aset(bind,3/*_result*/,it);
 
 ;goto accept3;
-alt3_2: ptr->pos=oldpos3;it=rb_funcall(self,sy_Tests_bind_lb_0_rb__pl__3b00,1,bind); goto alt3_3;
+alt3_2: ptr->pos=oldpos3;it=bind_aget(bind,4/*autovar*/); bind_aset(bind,1/*foo*/,it);
+it=rb_funcall(self,sy_Tests_bind_lb_1_rb__pl__0a71,1,bind); goto alt3_3;
 ;goto accept3;
 alt3_3: ptr->pos=oldpos3;goto fail;
  accept3:;
@@ -151,9 +157,9 @@ s_b_92eb=rb_str_new2("b");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark
 s_c_4a8a=rb_str_new2("c");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),s_c_4a8a);
 s_d_8277=rb_str_new2("d");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),s_d_8277);
 s_g_b2f5=rb_str_new2("g");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),s_g_b2f5);
-sy_Tests_bind_lb_0_rb__pl__3b00=rb_intern("Tests_bind_lb_0_rb__pl__3b00");
-sy_Tests_bind_lb_0_rb__pl__fbc2=rb_intern("Tests_bind_lb_0_rb__pl__fbc2");
+sy_Tests_bind_lb_1_rb__pl__0a71=rb_intern("Tests_bind_lb_1_rb__pl__0a71");
 sy_Tests_bind_lb_1_rb__pl__1730=rb_intern("Tests_bind_lb_1_rb__pl__1730");
+sy_Tests_bind_lb_1_rb__pl__61a1=rb_intern("Tests_bind_lb_1_rb__pl__61a1");
 sy_Tests_bind_lb_3_rb__eq__0b1b=rb_intern("Tests_bind_lb_3_rb__eq__0b1b");
 sy_bar=rb_intern("bar");
 sy_seq=rb_intern("seq");
@@ -165,4 +171,4 @@ rb_define_method(cls_Tests,"gh",Tests_gh,0);
 rb_define_method(cls_Tests,"s2",Tests_s2,0);
 rb_define_method(cls_Tests,"sw",Tests_sw,0);
 rb_define_method(cls_Tests,"test",Tests_test,0);
-                    rb_eval_string("testversiontests('f18cbf21b6cff45ffe3da1364ca8b508')");}
+                    rb_eval_string("testversiontests('aa04bea13779d04b028f7590318b6102')");}

@@ -31,8 +31,8 @@ static VALUE sy_Remove_Left_Recursion__lp_must_em_e2d0;
 static VALUE sy_Remove_Left_Recursion_a_eq_autova_3b48;
 static VALUE sy_Remove_Left_Recursion_bind_lb_1_rb__sp__4ee5;
 static VALUE sy_Remove_Left_Recursion_bind_lb_1_rb__sp__a8f8;
-static VALUE sy_Remove_Left_Recursion_bind_lb_2_rb__sp__e623;
-static VALUE sy_Remove_Left_Recursion_bind_lb_2_rb__sp__eada;
+static VALUE sy_Remove_Left_Recursion_bind_lb_3_rb__sp__a242;
+static VALUE sy_Remove_Left_Recursion_bind_lb_3_rb__sp__fe64;
 static VALUE sy_Remove_Left_Recursion_src_25d9;
 static VALUE sy_Remove_Left_Recursion_src_dot_body_519e;
 VALUE Remove_Left_Recursion_first(VALUE self ,VALUE a0){VALUE vals[1]; VALUE bind=bind_new2(25); bind_aset(bind,1/*follow*/,a0); int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
@@ -177,28 +177,28 @@ cstruct oldpass1=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
                    it=rb_funcall(self,sy_Remove_Left_Recursion__at_name_eq_sr_362f,1,bind); it=rb_funcall(self,sy_Remove_Left_Recursion__at_result_eq__b6ab,1,bind); it=rb_funcall(self,sy_Remove_Left_Recursion_src_dot_body_519e,1,bind); it=rb_funcall(self,sy_Remove_Left_Recursion_src_dot_body_519e,1,bind);  bind_aset(bind,1/*autovar*/,it);
 cstruct oldpass2=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
                    ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=bind_aget(bind,1/*autovar*/);ptr->len=1;
-                   switch(FIX2LONG(rb_hash_aref(switchhash_Remove_Left_Recursion_2,rb_obj_class(ame_curobj2(ptr))))){case 0/*Apply*/:; it=Qfalse; bind_aset(bind,2/*follow*/,it);
-int oldpos1=ptr->pos;int cut1=0;
-alt1_1:;it=ame_curobj2(ptr)               ;ptr->pos++; bind_aset(bind,3/*autovar*/,it);
+                   switch(FIX2LONG(rb_hash_aref(switchhash_Remove_Left_Recursion_2,rb_obj_class(ame_curobj2(ptr))))){case 0/*Apply*/:; int oldpos1=ptr->pos;int cut1=0;
+alt1_1:;it=ame_curobj2(ptr)               ;ptr->pos++; bind_aset(bind,2/*autovar*/,it);
 cstruct oldpass3=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,3/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                   ptr->src=bind_aget(bind,2/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
                    it=rb_funcall(self,sy_Remove_Left_Recursion__lp__at_name_eq__eq__2784,1,bind); FAILTEST(pass3);ptr->pos=ptr->len;it=rb_funcall(self,sy_Remove_Left_Recursion__at_left_re_c85d,1,bind); it=Qnil;if (ptr->pos<ptr->len) goto pass3;
                    goto success3;
                    pass3: *ptr=oldpass3; goto alt1_2;
                    success3: *ptr=oldpass3;
-                it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_2_rb__sp__eada,1,bind);  bind_aset(bind,4/*_result*/,it);
+                it=Qfalse; bind_aset(bind,3/*follow*/,it);
+it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_3_rb__sp__fe64,1,bind);  bind_aset(bind,4/*_result*/,it);
 
 ;goto accept1;
 alt1_2: ptr->pos=oldpos1;  it=AmethystCore_anything(self ); FAILTEST(alt1_3); bind_aset(bind,5/*x*/,it);
-it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_2_rb__sp__e623,1,bind);  bind_aset(bind,4/*_result*/,it);
+it=Qfalse; bind_aset(bind,3/*follow*/,it);
+it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_3_rb__sp__a242,1,bind);  bind_aset(bind,4/*_result*/,it);
 
 ;goto accept1;
 alt1_3: ptr->pos=oldpos1;goto pass2;
  accept1:;
 it=bind_aget(bind,4/*_result*/); bind_aset(bind,6/*autovar*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass2; break;
-case 1/*Bind*/:; it=Qfalse; bind_aset(bind,2/*follow*/,it);
-int oldpos2=ptr->pos;int cut2=0;
+case 1/*Bind*/:; int oldpos2=ptr->pos;int cut2=0;
 alt2_1:;it=ame_curobj2(ptr)               ;ptr->pos++; bind_aset(bind,7/*autovar*/,it);
 cstruct oldpass4=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
                    ptr->src=bind_aget(bind,7/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
@@ -220,15 +220,15 @@ it=Qnil;if (ptr->pos<ptr->len) goto pass4;
 
 ;goto accept2;
 alt2_2: ptr->pos=oldpos2;  it=AmethystCore_anything(self ); FAILTEST(alt2_3); bind_aset(bind,5/*x*/,it);
-it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_2_rb__sp__e623,1,bind);  bind_aset(bind,4/*_result*/,it);
+it=Qfalse; bind_aset(bind,3/*follow*/,it);
+it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_3_rb__sp__a242,1,bind);  bind_aset(bind,4/*_result*/,it);
 
 ;goto accept2;
 alt2_3: ptr->pos=oldpos2;goto pass2;
  accept2:;
 it=bind_aget(bind,4/*_result*/); bind_aset(bind,6/*autovar*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass2; break;
-case 2/*Or*/:; it=Qfalse; bind_aset(bind,2/*follow*/,it);
-int oldpos3=ptr->pos;int cut3=0;
+case 2/*Or*/:; int oldpos3=ptr->pos;int cut3=0;
 alt3_1:;it=ame_curobj2(ptr)               ;ptr->pos++; bind_aset(bind,12/*autovar*/,it);
 cstruct oldpass6=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
                    ptr->src=bind_aget(bind,12/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
@@ -243,15 +243,15 @@ it=Qnil;if (ptr->pos<ptr->len) goto pass6;
 
 ;goto accept3;
 alt3_2: ptr->pos=oldpos3;  it=AmethystCore_anything(self ); FAILTEST(alt3_3); bind_aset(bind,5/*x*/,it);
-it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_2_rb__sp__e623,1,bind);  bind_aset(bind,4/*_result*/,it);
+it=Qfalse; bind_aset(bind,3/*follow*/,it);
+it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_3_rb__sp__a242,1,bind);  bind_aset(bind,4/*_result*/,it);
 
 ;goto accept3;
 alt3_3: ptr->pos=oldpos3;goto pass2;
  accept3:;
 it=bind_aget(bind,4/*_result*/); bind_aset(bind,6/*autovar*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass2; break;
-case 3/*Seq*/:; it=Qfalse; bind_aset(bind,2/*follow*/,it);
-int oldpos5=ptr->pos;int cut4=0;
+case 3/*Seq*/:; int oldpos5=ptr->pos;int cut4=0;
 alt4_1:;it=ame_curobj2(ptr)               ;ptr->pos++; bind_aset(bind,16/*autovar*/,it);
 it=bind_aget(bind,16/*autovar*/); bind_aset(bind,17/*autovar*/,it);
 it=bind_aget(bind,17/*autovar*/); bind_aset(bind,18/*autovar*/,it);
@@ -298,16 +298,17 @@ alt5_3: ptr->pos=oldpos6;goto alt4_2;
 
 ;goto accept5;
 alt4_2: ptr->pos=oldpos5;  it=AmethystCore_anything(self ); FAILTEST(alt4_3); bind_aset(bind,5/*x*/,it);
-it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_2_rb__sp__e623,1,bind);  bind_aset(bind,4/*_result*/,it);
+it=Qfalse; bind_aset(bind,3/*follow*/,it);
+it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_3_rb__sp__a242,1,bind);  bind_aset(bind,4/*_result*/,it);
 
 ;goto accept5;
 alt4_3: ptr->pos=oldpos5;goto pass2;
  accept5:;
 it=bind_aget(bind,4/*_result*/); bind_aset(bind,6/*autovar*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass2; break;
-case 4/*Object*/:; it=Qfalse; bind_aset(bind,2/*follow*/,it);
-  it=AmethystCore_anything(self ); FAILTEST(pass2); bind_aset(bind,5/*x*/,it);
-it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_2_rb__sp__e623,1,bind);  bind_aset(bind,4/*_result*/,it);
+case 4/*Object*/:;   it=AmethystCore_anything(self ); FAILTEST(pass2); bind_aset(bind,5/*x*/,it);
+it=Qfalse; bind_aset(bind,3/*follow*/,it);
+it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_3_rb__sp__a242,1,bind);  bind_aset(bind,4/*_result*/,it);
 it=bind_aget(bind,4/*_result*/); bind_aset(bind,6/*autovar*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass2; break;
 }
@@ -318,28 +319,28 @@ it=Qnil;if (ptr->pos<ptr->len) goto pass2; break;
 it=rb_funcall(self,sy_Remove_Left_Recursion_src_dot_body_519e,1,bind);  bind_aset(bind,30/*autovar*/,it);
 cstruct oldpass10=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
                    ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=bind_aget(bind,30/*autovar*/);ptr->len=1;
-                   switch(FIX2LONG(rb_hash_aref(switchhash_Remove_Left_Recursion_3,rb_obj_class(ame_curobj2(ptr))))){case 0/*Apply*/:; it=Qtrue; bind_aset(bind,2/*follow*/,it);
-int oldpos9=ptr->pos;int cut6=0;
-alt6_1:;it=ame_curobj2(ptr)               ;ptr->pos++; bind_aset(bind,3/*autovar*/,it);
+                   switch(FIX2LONG(rb_hash_aref(switchhash_Remove_Left_Recursion_3,rb_obj_class(ame_curobj2(ptr))))){case 0/*Apply*/:; int oldpos9=ptr->pos;int cut6=0;
+alt6_1:;it=ame_curobj2(ptr)               ;ptr->pos++; bind_aset(bind,2/*autovar*/,it);
 cstruct oldpass11=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   ptr->src=bind_aget(bind,3/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
+                   ptr->src=bind_aget(bind,2/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
                    it=rb_funcall(self,sy_Remove_Left_Recursion__lp__at_name_eq__eq__2784,1,bind); FAILTEST(pass11);ptr->pos=ptr->len;it=rb_funcall(self,sy_Remove_Left_Recursion__at_left_re_c85d,1,bind); it=Qnil;if (ptr->pos<ptr->len) goto pass11;
                    goto success11;
                    pass11: *ptr=oldpass11; goto alt6_2;
                    success11: *ptr=oldpass11;
-                it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_2_rb__sp__eada,1,bind);  bind_aset(bind,4/*_result*/,it);
+                it=Qtrue; bind_aset(bind,3/*follow*/,it);
+it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_3_rb__sp__fe64,1,bind);  bind_aset(bind,4/*_result*/,it);
 
 ;goto accept9;
 alt6_2: ptr->pos=oldpos9;  it=AmethystCore_anything(self ); FAILTEST(alt6_3); bind_aset(bind,5/*x*/,it);
-it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_2_rb__sp__e623,1,bind);  bind_aset(bind,4/*_result*/,it);
+it=Qtrue; bind_aset(bind,3/*follow*/,it);
+it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_3_rb__sp__a242,1,bind);  bind_aset(bind,4/*_result*/,it);
 
 ;goto accept9;
 alt6_3: ptr->pos=oldpos9;goto pass10;
  accept9:;
 it=bind_aget(bind,4/*_result*/); bind_aset(bind,31/*autovar*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass10; break;
-case 1/*Bind*/:; it=Qtrue; bind_aset(bind,2/*follow*/,it);
-int oldpos10=ptr->pos;int cut7=0;
+case 1/*Bind*/:; int oldpos10=ptr->pos;int cut7=0;
 alt7_1:;it=ame_curobj2(ptr)               ;ptr->pos++; bind_aset(bind,7/*autovar*/,it);
 cstruct oldpass12=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
                    ptr->src=bind_aget(bind,7/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
@@ -361,15 +362,15 @@ it=Qnil;if (ptr->pos<ptr->len) goto pass12;
 
 ;goto accept10;
 alt7_2: ptr->pos=oldpos10;  it=AmethystCore_anything(self ); FAILTEST(alt7_3); bind_aset(bind,5/*x*/,it);
-it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_2_rb__sp__e623,1,bind);  bind_aset(bind,4/*_result*/,it);
+it=Qtrue; bind_aset(bind,3/*follow*/,it);
+it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_3_rb__sp__a242,1,bind);  bind_aset(bind,4/*_result*/,it);
 
 ;goto accept10;
 alt7_3: ptr->pos=oldpos10;goto pass10;
  accept10:;
 it=bind_aget(bind,4/*_result*/); bind_aset(bind,31/*autovar*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass10; break;
-case 2/*Or*/:; it=Qtrue; bind_aset(bind,2/*follow*/,it);
-int oldpos11=ptr->pos;int cut8=0;
+case 2/*Or*/:; int oldpos11=ptr->pos;int cut8=0;
 alt8_1:;it=ame_curobj2(ptr)               ;ptr->pos++; bind_aset(bind,12/*autovar*/,it);
 cstruct oldpass14=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
                    ptr->src=bind_aget(bind,12/*autovar*/); if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
@@ -384,15 +385,15 @@ it=Qnil;if (ptr->pos<ptr->len) goto pass14;
 
 ;goto accept11;
 alt8_2: ptr->pos=oldpos11;  it=AmethystCore_anything(self ); FAILTEST(alt8_3); bind_aset(bind,5/*x*/,it);
-it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_2_rb__sp__e623,1,bind);  bind_aset(bind,4/*_result*/,it);
+it=Qtrue; bind_aset(bind,3/*follow*/,it);
+it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_3_rb__sp__a242,1,bind);  bind_aset(bind,4/*_result*/,it);
 
 ;goto accept11;
 alt8_3: ptr->pos=oldpos11;goto pass10;
  accept11:;
 it=bind_aget(bind,4/*_result*/); bind_aset(bind,31/*autovar*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass10; break;
-case 3/*Seq*/:; it=Qtrue; bind_aset(bind,2/*follow*/,it);
-int oldpos13=ptr->pos;int cut9=0;
+case 3/*Seq*/:; int oldpos13=ptr->pos;int cut9=0;
 alt9_1:;it=ame_curobj2(ptr)               ;ptr->pos++; bind_aset(bind,16/*autovar*/,it);
 it=bind_aget(bind,16/*autovar*/); bind_aset(bind,32/*autovar*/,it);
 it=bind_aget(bind,32/*autovar*/); bind_aset(bind,33/*autovar*/,it);
@@ -439,16 +440,17 @@ alt10_3: ptr->pos=oldpos14;goto alt9_2;
 
 ;goto accept13;
 alt9_2: ptr->pos=oldpos13;  it=AmethystCore_anything(self ); FAILTEST(alt9_3); bind_aset(bind,5/*x*/,it);
-it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_2_rb__sp__e623,1,bind);  bind_aset(bind,4/*_result*/,it);
+it=Qtrue; bind_aset(bind,3/*follow*/,it);
+it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_3_rb__sp__a242,1,bind);  bind_aset(bind,4/*_result*/,it);
 
 ;goto accept13;
 alt9_3: ptr->pos=oldpos13;goto pass10;
  accept13:;
 it=bind_aget(bind,4/*_result*/); bind_aset(bind,31/*autovar*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass10; break;
-case 4/*Object*/:; it=Qtrue; bind_aset(bind,2/*follow*/,it);
-  it=AmethystCore_anything(self ); FAILTEST(pass10); bind_aset(bind,5/*x*/,it);
-it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_2_rb__sp__e623,1,bind);  bind_aset(bind,4/*_result*/,it);
+case 4/*Object*/:;   it=AmethystCore_anything(self ); FAILTEST(pass10); bind_aset(bind,5/*x*/,it);
+it=Qtrue; bind_aset(bind,3/*follow*/,it);
+it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_3_rb__sp__a242,1,bind);  bind_aset(bind,4/*_result*/,it);
 it=bind_aget(bind,4/*_result*/); bind_aset(bind,31/*autovar*/,it);
 it=Qnil;if (ptr->pos<ptr->len) goto pass10; break;
 }
@@ -496,11 +498,11 @@ sy_Remove_Left_Recursion__lp_must_em_e2d0=rb_intern("Remove_Left_Recursion__lp_m
 sy_Remove_Left_Recursion_a_eq_autova_3b48=rb_intern("Remove_Left_Recursion_a_eq_autova_3b48");
 sy_Remove_Left_Recursion_bind_lb_1_rb__sp__4ee5=rb_intern("Remove_Left_Recursion_bind_lb_1_rb__sp__4ee5");
 sy_Remove_Left_Recursion_bind_lb_1_rb__sp__a8f8=rb_intern("Remove_Left_Recursion_bind_lb_1_rb__sp__a8f8");
-sy_Remove_Left_Recursion_bind_lb_2_rb__sp__e623=rb_intern("Remove_Left_Recursion_bind_lb_2_rb__sp__e623");
-sy_Remove_Left_Recursion_bind_lb_2_rb__sp__eada=rb_intern("Remove_Left_Recursion_bind_lb_2_rb__sp__eada");
+sy_Remove_Left_Recursion_bind_lb_3_rb__sp__a242=rb_intern("Remove_Left_Recursion_bind_lb_3_rb__sp__a242");
+sy_Remove_Left_Recursion_bind_lb_3_rb__sp__fe64=rb_intern("Remove_Left_Recursion_bind_lb_3_rb__sp__fe64");
 sy_Remove_Left_Recursion_src_25d9=rb_intern("Remove_Left_Recursion_src_25d9");
 sy_Remove_Left_Recursion_src_dot_body_519e=rb_intern("Remove_Left_Recursion_src_dot_body_519e");
                     rb_define_method(cls_Remove_Left_Recursion,"first",Remove_Left_Recursion_first,1);
 rb_define_method(cls_Remove_Left_Recursion,"must_empty",Remove_Left_Recursion_must_empty,0);
 rb_define_method(cls_Remove_Left_Recursion,"root",Remove_Left_Recursion_root,0);
-                    rb_eval_string("testversionremove_left_rigth_recursion('fd71bf2b18d46b2c5cd91520c79bb871')");}
+                    rb_eval_string("testversionremove_left_rigth_recursion('37b7af2bee1a12dec6200661a910e6e8')");}

@@ -31,7 +31,7 @@ class Gram
 			r.consts=c.analyze2
       debug_print(r)
 		}
-		[Constant_Traverser].each{|p| 
+		[Constant_Traverser,Forget_SSA].each{|p| 
 			r=p.new.parse(:root,r)
 			debug_print(r)			
 		}

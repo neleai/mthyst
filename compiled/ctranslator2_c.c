@@ -45,11 +45,12 @@ static VALUE sy_AmethystCTranslator__at_cuts_eq_tr_13c6;
 static VALUE sy_AmethystCTranslator__at_defmeth_456b;
 static VALUE sy_AmethystCTranslator__at_defs_eq__lb__rb__188f;
 static VALUE sy_AmethystCTranslator__at_faillab_1610;
+static VALUE sy_AmethystCTranslator__at_faillab_296d;
 static VALUE sy_AmethystCTranslator__at_faillab_37e7;
 static VALUE sy_AmethystCTranslator__at_faillab_4a73;
 static VALUE sy_AmethystCTranslator__at_faillab_5f0a;
-static VALUE sy_AmethystCTranslator__at_faillab_74ee;
 static VALUE sy_AmethystCTranslator__at_faillab_8142;
+static VALUE sy_AmethystCTranslator__at_faillab_81c6;
 static VALUE sy_AmethystCTranslator__at_faillab_e643;
 static VALUE sy_AmethystCTranslator__at_grammar_1337;
 static VALUE sy_AmethystCTranslator__at_header_eq__7aa9;
@@ -144,11 +145,11 @@ fail: return failobj; }
 VALUE AmethystCTranslator_addlambda(VALUE self ){VALUE vals[0]; VALUE bind=bind_new2(6);  int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
             
 it=rb_funcall(self,sy_AmethystCTranslator__dq__sh__le__at_gram_5de9,1,bind);  bind_aset(bind,0/*lambd*/,it);
-it=rb_obj_clone(s_fail_e111); bind_aset(bind,1/*word*/,it);
-it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_1610,1,bind);  bind_aset(bind,2/*rwo*/,it);
-it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_e643,1,bind);   it=AmethystCTranslator_trans(self ); FAILTEST(fail); bind_aset(bind,3/*body*/,it);
+it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_1610,1,bind);  bind_aset(bind,1/*rwo*/,it);
+it=rb_obj_clone(s_fail_e111); bind_aset(bind,2/*word*/,it);
+it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_81c6,1,bind);   it=AmethystCTranslator_trans(self ); FAILTEST(fail); bind_aset(bind,3/*body*/,it);
  bind_aset(bind,4/*x*/,it);
-it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_74ee,1,bind); it=rb_funcall(self,sy_AmethystCTranslator_h_eq__dq_VALUE_f86b,1,bind); it=rb_funcall(self,sy_AmethystCTranslator__dq_Amethys_8b00,1,bind);  bind_aset(bind,5/*_result*/,it);
+it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_296d,1,bind); it=rb_funcall(self,sy_AmethystCTranslator_h_eq__dq_VALUE_f86b,1,bind); it=rb_funcall(self,sy_AmethystCTranslator__dq_Amethys_8b00,1,bind);  bind_aset(bind,5/*_result*/,it);
 
 return it;
 fail: return failobj; }
@@ -930,11 +931,12 @@ sy_AmethystCTranslator__at_cuts_eq_tr_13c6=rb_intern("AmethystCTranslator__at_cu
 sy_AmethystCTranslator__at_defmeth_456b=rb_intern("AmethystCTranslator__at_defmeth_456b");
 sy_AmethystCTranslator__at_defs_eq__lb__rb__188f=rb_intern("AmethystCTranslator__at_defs_eq__lb__rb__188f");
 sy_AmethystCTranslator__at_faillab_1610=rb_intern("AmethystCTranslator__at_faillab_1610");
+sy_AmethystCTranslator__at_faillab_296d=rb_intern("AmethystCTranslator__at_faillab_296d");
 sy_AmethystCTranslator__at_faillab_37e7=rb_intern("AmethystCTranslator__at_faillab_37e7");
 sy_AmethystCTranslator__at_faillab_4a73=rb_intern("AmethystCTranslator__at_faillab_4a73");
 sy_AmethystCTranslator__at_faillab_5f0a=rb_intern("AmethystCTranslator__at_faillab_5f0a");
-sy_AmethystCTranslator__at_faillab_74ee=rb_intern("AmethystCTranslator__at_faillab_74ee");
 sy_AmethystCTranslator__at_faillab_8142=rb_intern("AmethystCTranslator__at_faillab_8142");
+sy_AmethystCTranslator__at_faillab_81c6=rb_intern("AmethystCTranslator__at_faillab_81c6");
 sy_AmethystCTranslator__at_faillab_e643=rb_intern("AmethystCTranslator__at_faillab_e643");
 sy_AmethystCTranslator__at_grammar_1337=rb_intern("AmethystCTranslator__at_grammar_1337");
 sy_AmethystCTranslator__at_header_eq__7aa9=rb_intern("AmethystCTranslator__at_header_eq__7aa9");
@@ -1019,4 +1021,4 @@ rb_define_method(cls_AmethystCTranslator,"rbtrans",AmethystCTranslator_rbtrans,0
 rb_define_method(cls_AmethystCTranslator,"rbtrans2",AmethystCTranslator_rbtrans2,0);
 rb_define_method(cls_AmethystCTranslator,"rw",AmethystCTranslator_rw,2);
 rb_define_method(cls_AmethystCTranslator,"trans",AmethystCTranslator_trans,0);
-                    rb_eval_string("testversionctranslator2('b30c5078827c6f11a0c00ecbc4af322e')");}
+                    rb_eval_string("testversionctranslator2('3ca469a90d1a17bfc911dcab12b88940')");}

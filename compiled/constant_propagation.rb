@@ -96,8 +96,17 @@ end
 
 class Constant_Traverser < Traverser_Clone2
 
-def Constant_Traverser_Bind_lb_src_41c9(bind)
-Bind[src.name,bind[4]]
+def Constant_Traverser_Bind_lb_src_5e26(bind)
+Bind[src.name,bind[5]]
+end
+def Constant_Traverser_Bind_lb_src_9cb6(bind)
+Bind[src,@consts[src.ssaname]]
+end
+def Constant_Traverser_Seq_lb_bind_95dc(bind)
+Seq[bind[1],src]
+end
+def Constant_Traverser__append_lp__29a3(bind)
+_append(bind[0],bind[2])
 end
 def Constant_Traverser__at_changed_5352(bind)
 @changed=true
@@ -111,8 +120,14 @@ end
 def Constant_Traverser__at_consts_eq__b621(bind)
 @consts=src.consts
 end
-def Constant_Traverser__lp__at_consts_080b(bind)
-(@consts[src.ssaname] && src[0]!="_result") ? @consts[src.ssaname] : src 
+def Constant_Traverser__at_consts_lb__abf4(bind)
+@consts[src.ssaname]
+end
+def Constant_Traverser__lp__lp__at_const_463e(bind)
+((@consts[src.ssaname] && !(@consts[src.ssaname].is_a?(CAct)&&@consts[src.ssaname][0]==[]) &&src[0]!="_result") ) || FAIL
+end
+def Constant_Traverser__lp__lp__at_const_5d8f(bind)
+((@consts[src.ssaname] && src[0]!="_result") ) || FAIL
 end
 def Constant_Traverser__lp_bind_lb_2_rb__6693(bind)
 (bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
@@ -142,15 +157,15 @@ end
 
 
 def constant_propagation_compiled_by
-'85ed120450436fb433c0d96274ac648a'
+'fa5c5fa85ebaf89fb3c3a2ccdc088436'
 end
 def constant_propagation_source_hash
-'6b920ef806a3d66a9e237c1280cf5119'
+'bcca214b59974f470c5395adafe72fab'
 end
 def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
 end
 def constant_propagation_version
-'099c8629ab190a675edaf09a0fa168f9'
+'cfff1f00e7a680522fc8eb88a07abea8'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/constant_propagation_c"
