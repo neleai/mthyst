@@ -140,7 +140,7 @@ static VALUE sy_AmethystParser_bind_lb_7_rb__dot__35cf;
 static VALUE sy_AmethystParser_local_lp_bi_4bf2;
 
 #include "../lib/c/memo.c"
- memo_struct *mem;VALUE memo_val;VALUE profile_report(VALUE self){printf("\nhit: %i miss: %i hit: %i miss: %i\n",mem->hits[113],mem->miss[113],mem->hits[115],mem->miss[115]);return Qnil;}VALUE AmethystParser__args(VALUE self ,VALUE a0,VALUE a1){VALUE vals[2]; VALUE bind=bind_new2(7); bind_aset(bind,0/*o*/,a0);bind_aset(bind,5/*c*/,a1); int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
+ memo_struct *mem;VALUE memo_val;VALUE profile_report(VALUE self){printf("argsOpt hit: %i miss: %i\n",mem->hits[113],mem->miss[113]);printf("name hit: %i miss: %i\n",mem->hits[115],mem->miss[115]);return Qnil;}VALUE AmethystParser__args(VALUE self ,VALUE a0,VALUE a1){VALUE vals[2]; VALUE bind=bind_new2(7); bind_aset(bind,0/*o*/,a0);bind_aset(bind,5/*c*/,a1); int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
             
 it=bind_aget(bind,0/*o*/); bind_aset(bind,1/*s*/,it);
  it=bind_aget(bind,1/*s*/); arg0=it; it=AmethystCore__seq(self ,arg0); FAILTEST(fail);it=bind_aget(bind,1/*s*/);  it=Amethyst_spaces(self ); FAILTEST(fail);it=rb_ary_new3(0); bind_aset(bind,2/*autovar*/,it);
@@ -1689,4 +1689,4 @@ rb_define_method(cls_AmethystParser,"rule",AmethystParser_rule,0);
 rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
 rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
 rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-                    rb_eval_string("testversionparser('3067d2bb690158490e181ba7e813fe82')");}
+                    rb_eval_string("testversionparser('f0d9bb6b75e79f3dabe591d551612d27')");}

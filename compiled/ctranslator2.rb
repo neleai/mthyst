@@ -299,6 +299,21 @@ end
 def AmethystCTranslator_bind_lb_16_rb__2732(bind)
 bind[16]+="#{bind[82]}_#{bind[83]}: ptr->pos=#{bind[63]};#{@cuts ? (@cuts=nil;"if (#{@cutlabel}) goto #{@faillabel};"): ""}"
 end
+def AmethystCTranslator_bind_lb_16_rb__2ff6(bind)
+bind[16]<<@header.uniq.sort*"\n"+"\n"
+							bind[16]<<"\n#include \"../lib/c/memo.c\"\n memo_struct *mem;VALUE memo_val;" if CurrentParser[:memoize]
+							bind[16]<<"VALUE profile_report(VALUE self){#{map_index(CurrentParser[:memoize]){|i| "printf(\"#{CurrentParser[:memoize][i]} hit: %i miss: %i\\n\",mem->hits[#{113+2*i}],mem->miss[#{113+2*i}]);"}*""}return Qnil;}" if CurrentParser[:memoize]
+							@init<<"mem=memo_init(); memo_val=Data_Wrap_Struct(cls_AmethystParser,memo_mark,memo_free,mem); rb_global_variable(&memo_val); " if CurrentParser[:memoize]
+							@init<<"rb_define_method(cls_AmethystParser,\"profile_report\",profile_report,0);" if CurrentParser[:memoize]
+              bind[16]<<bind[54].sort*"\n"
+              bind[16]<<@lambdas*"\n"
+              bind[56]="\n cls_#{src.name}=rb_define_class(\"#{src.name}\",rb_const_get(rb_cObject,rb_intern(\"#{@parent}\"))); 
+                    failobj=rb_eval_string(\"FAIL\");
+                    #{@init.uniq.sort*"\n"}
+                    #{@defmethods.sort*"\n" }
+                   "
+              [bind[16],bind[56],bind[55]] 
+end
 def AmethystCTranslator_bind_lb_16_rb__4555(bind)
 bind[16]+=bind[115].cases() + " #{bind[54]} break;\n"
 end
@@ -310,21 +325,6 @@ bind[16]="int #{bind[63]}; #{@stops ? "int #{@stoplabel}=0;":""} while(1){#{bind
 end
 def AmethystCTranslator_bind_lb_16_rb__878f(bind)
 bind[16]+="#{bind[54]}\n;goto #{bind[61]};\n"
-end
-def AmethystCTranslator_bind_lb_16_rb__fbc0(bind)
-bind[16]<<@header.uniq.sort*"\n"+"\n"
-							bind[16]<<"\n#include \"../lib/c/memo.c\"\n memo_struct *mem;VALUE memo_val;" if CurrentParser[:memoize]
-							bind[16]<<"VALUE profile_report(VALUE self){printf(\"\\nhit: %i miss: %i hit: %i miss: %i\\n\",mem->hits[113],mem->miss[113],mem->hits[115],mem->miss[115]);return Qnil;}" if CurrentParser[:memoize]
-							@init<<"mem=memo_init(); memo_val=Data_Wrap_Struct(cls_AmethystParser,memo_mark,memo_free,mem); rb_global_variable(&memo_val); " if CurrentParser[:memoize]
-							@init<<"rb_define_method(cls_AmethystParser,\"profile_report\",profile_report,0);" if CurrentParser[:memoize]
-              bind[16]<<bind[54].sort*"\n"
-              bind[16]<<@lambdas*"\n"
-              bind[56]="\n cls_#{src.name}=rb_define_class(\"#{src.name}\",rb_const_get(rb_cObject,rb_intern(\"#{@parent}\"))); 
-                    failobj=rb_eval_string(\"FAIL\");
-                    #{@init.uniq.sort*"\n"}
-                    #{@defmethods.sort*"\n" }
-                   "
-              [bind[16],bind[56],bind[55]] 
 end
 def AmethystCTranslator_bind_lb_1_rb__lt__2f50(bind)
 bind[1]<<bind[6][0];bind[2]<<bind[6][1];bind[0]<<bind[6][2]
@@ -410,15 +410,15 @@ end
 
 
 def ctranslator2_compiled_by
-'0cb2f38acd6c89a9f970ae3f6d3df313'
+'2e12af80915fe13e8fbeb162b072116f'
 end
 def ctranslator2_source_hash
-'fbe8fe6986a4ab70850fb91ba4d02e1f'
+'30967994fe43292781c927f2d4e3e34c'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'87d0baa57750b28b4526d9664e7da425'
+'60a702a7c45e730a1a994646dd2fbb03'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"
