@@ -1,10 +1,7 @@
 class DetectCalls < Visitor
 
-def DetectCalls__append_lp__088f(bind)
-_append(bind[4],bind[5])
-end
-def DetectCalls__append_lp__4de3(bind)
-_append(bind[2],bind[3])
+def DetectCalls__append_lp__d113(bind)
+_append(bind[1],bind[2])
 end
 def DetectCalls__at_calls_7f81(bind)
 @calls
@@ -27,8 +24,8 @@ class Inliner2 < Traverser_Clone2
 def Inliner2_Seq_lb_src_dot__3406(bind)
 Seq[src.body,Local["_result",src.bnding]]
 end
-def Inliner2__append_lp__4de3(bind)
-_append(bind[2],bind[3])
+def Inliner2__append_lp__d113(bind)
+_append(bind[1],bind[2])
 end
 def Inliner2__at_changed_5352(bind)
 @changed=true
@@ -39,30 +36,30 @@ end
 def Inliner2__at_changed_c681(bind)
 @changed
 end
-def Inliner2__at_name_eq_bi_0dee(bind)
-@name=bind[5];@args=bind[6];@body=bind[7] 
+def Inliner2__at_name_eq_bi_5da3(bind)
+@name=bind[1];@args=bind[2];@body=bind[3] 
 end
 def Inliner2__lp_bind_lb_1_rb__709e(bind)
 (bind[1]==@name) || FAIL
 end
-def Inliner2__lp_bind_lb_2_rb__6693(bind)
-(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
+def Inliner2__lp_bind_lb_1_rb__ee3d(bind)
+(bind[1]||=bind[2].dup;bind[3]=true;bind[1].instance_variable_set(bind[4],bind[5])) if @changed && bind[5]!=instance_variable_get(bind[4])
 end
 def Inliner2__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Inliner2_bind_lb_5_rb__lt__1671(bind)
-bind[5]<<bind[6]
+def Inliner2_bind_lb_1_rb__lt__7b20(bind)
+bind[1]<<bind[2]
 end
-def Inliner2_body_eq__at_bo_c02f(bind)
-body=@body; bind[4].each_index{|i| body=Seq[Bind[@args[i],bind[4][i]],body] } ; body
+def Inliner2_body_eq__at_bo_4270(bind)
+body=@body; bind[1].each_index{|i| body=Seq[Bind[@args[i],bind[1][i]],body] } ; body
 
 end
-def Inliner2_if_sp_bind_lb__f1e9(bind)
-if bind[3]
+def Inliner2_if_sp_bind_lb__8e0b(bind)
+if bind[1]
              @changed=true;bind[2].normalize
            else
-            @changed=bind[0]
+            @changed=bind[3]
             src
           end
 end
@@ -84,7 +81,7 @@ end
 
 
 def inliner2_compiled_by
-'2e12af80915fe13e8fbeb162b072116f'
+'22777392771fde1461dd937fada749ef'
 end
 def inliner2_source_hash
 '8b55baa0765b22b5c8f5c6d36559323d'
@@ -93,6 +90,6 @@ def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version
 end
 def inliner2_version
-'ec9ab60ba8b2bfc56ac8bd9864b3dc1f'
+'63f98731db61c6c3f45596e9129ced7a'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/inliner2_c"

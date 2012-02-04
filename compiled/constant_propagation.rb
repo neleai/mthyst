@@ -73,18 +73,18 @@ class Constant_Propagator < Amethyst
 def Constant_Propagator_Constant_8840(bind)
 ConstantLattice[src]
 end
-def Constant_Propagator_Constant_ab63(bind)
-ConstantLattice[bind[13]]
-end
 def Constant_Propagator_Constant_bf42(bind)
 ConstantLattice[Top]
 end
-def Constant_Propagator__at_depend_eq__f9fc(bind)
-@depend=bind[0]
+def Constant_Propagator_Constant_db03(bind)
+ConstantLattice[bind[1]]
 end
-def Constant_Propagator_a_eq_Consta_aedc(bind)
+def Constant_Propagator__at_depend_eq__07a9(bind)
+@depend=bind[1]
+end
+def Constant_Propagator_a_eq_Consta_2e1d(bind)
 a=ConstantLattice[Bottom]
-                               depend.reverse.edges[bind[0]].each{|e| a=a+valof(e)}
+                               depend.reverse.edges[bind[1]].each{|e| a=a+valof(e)}
                                a
 end
 def Constant_Propagator_src_25d9(bind)
@@ -96,8 +96,8 @@ end
 
 class Constant_Traverser < Traverser_Clone2
 
-def Constant_Traverser_Bind_lb_src_5e26(bind)
-Bind[src.name,bind[5]]
+def Constant_Traverser_Bind_lb_src_66c4(bind)
+Bind[src.name,bind[1]]
 end
 def Constant_Traverser_Bind_lb_src_9cb6(bind)
 Bind[src,@consts[src.ssaname]]
@@ -105,8 +105,8 @@ end
 def Constant_Traverser_Seq_lb_bind_95dc(bind)
 Seq[bind[1],src]
 end
-def Constant_Traverser__append_lp__29a3(bind)
-_append(bind[0],bind[2])
+def Constant_Traverser__append_lp__d113(bind)
+_append(bind[1],bind[2])
 end
 def Constant_Traverser__at_changed_5352(bind)
 @changed=true
@@ -129,20 +129,20 @@ end
 def Constant_Traverser__lp__lp__at_const_5d8f(bind)
 ((@consts[src.ssaname] && src[0]!="_result") ) || FAIL
 end
-def Constant_Traverser__lp_bind_lb_2_rb__6693(bind)
-(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
+def Constant_Traverser__lp_bind_lb_1_rb__ee3d(bind)
+(bind[1]||=bind[2].dup;bind[3]=true;bind[1].instance_variable_set(bind[4],bind[5])) if @changed && bind[5]!=instance_variable_get(bind[4])
 end
 def Constant_Traverser__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Constant_Traverser_bind_lb_5_rb__lt__1671(bind)
-bind[5]<<bind[6]
+def Constant_Traverser_bind_lb_1_rb__lt__7b20(bind)
+bind[1]<<bind[2]
 end
-def Constant_Traverser_if_sp_bind_lb__f1e9(bind)
-if bind[3]
+def Constant_Traverser_if_sp_bind_lb__8e0b(bind)
+if bind[1]
              @changed=true;bind[2].normalize
            else
-            @changed=bind[0]
+            @changed=bind[3]
             src
           end
 end
@@ -157,7 +157,7 @@ end
 
 
 def constant_propagation_compiled_by
-'2e12af80915fe13e8fbeb162b072116f'
+'22777392771fde1461dd937fada749ef'
 end
 def constant_propagation_source_hash
 'bcca214b59974f470c5395adafe72fab'
@@ -166,6 +166,6 @@ def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
 end
 def constant_propagation_version
-'cfff1f00e7a680522fc8eb88a07abea8'
+'c2a500ca404c78466b417491104eeaef'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/constant_propagation_c"

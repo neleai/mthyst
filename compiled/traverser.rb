@@ -9,20 +9,20 @@ end
 def Traverser_Clone2__at_changed_c681(bind)
 @changed
 end
-def Traverser_Clone2__lp_bind_lb_2_rb__6693(bind)
-(bind[2]||=bind[1].dup;bind[3]=true;bind[2].instance_variable_set(bind[7],bind[8])) if @changed && bind[8]!=instance_variable_get(bind[7])
+def Traverser_Clone2__lp_bind_lb_1_rb__ee3d(bind)
+(bind[1]||=bind[2].dup;bind[3]=true;bind[1].instance_variable_set(bind[4],bind[5])) if @changed && bind[5]!=instance_variable_get(bind[4])
 end
 def Traverser_Clone2__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
 end
-def Traverser_Clone2_bind_lb_5_rb__lt__1671(bind)
-bind[5]<<bind[6]
+def Traverser_Clone2_bind_lb_1_rb__lt__7b20(bind)
+bind[1]<<bind[2]
 end
-def Traverser_Clone2_if_sp_bind_lb__f1e9(bind)
-if bind[3]
+def Traverser_Clone2_if_sp_bind_lb__8e0b(bind)
+if bind[1]
              @changed=true;bind[2].normalize
            else
-            @changed=bind[0]
+            @changed=bind[3]
             src
           end
 end
@@ -37,11 +37,8 @@ end
 
 class Visitor < Amethyst
 
-def Visitor__append_lp__088f(bind)
-_append(bind[4],bind[5])
-end
-def Visitor__append_lp__4de3(bind)
-_append(bind[2],bind[3])
+def Visitor__append_lp__d113(bind)
+_append(bind[1],bind[2])
 end
 def Visitor__lp_src_dot_ins_a413(bind)
 (src.instance_variables).map{|v| src.instance_variable_get(v)}
@@ -51,7 +48,7 @@ end
 
 
 def traverser_compiled_by
-'2e12af80915fe13e8fbeb162b072116f'
+'22777392771fde1461dd937fada749ef'
 end
 def traverser_source_hash
 'b51d0673f97b5e6304d9738ea9045b3e'
@@ -60,6 +57,6 @@ def testversiontraverser(r)
  raise "invalid version" if r!=traverser_version
 end
 def traverser_version
-'7bffd42b0a0163128cec47911e4c34bd'
+'517383ea56f939188f845ace1bbc786d'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/traverser_c"
