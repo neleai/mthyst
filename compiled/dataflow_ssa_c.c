@@ -259,7 +259,7 @@ case 1/*Args*/:; int oldpos3=ptr->pos;int cut3=0;
 alt3_1:;it=ame_curobj2(ptr)               ;ptr->pos++; var3/*autovar*/=it;;
 cstruct oldpass2=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
                    ptr->src=var3/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                     it=Dataflow_vars_in(self ); FAILTEST(pass2); var4/*autovar*/=it;;
+                     it=Dataflow_vars_in(self ); var4/*autovar*/=it;;
 bind_aset(bind2,1,var0/*ary*/);bind_aset(bind2,2,var4/*autovar*/);it=rb_funcall(self,sy_Dataflow__append_lp__d113,1,bind2);var0/*ary*/=bind_aget(bind2,1);;var4/*autovar*/=bind_aget(bind2,2);;it=Qnil;if (ptr->pos<ptr->len) goto pass2;
                    goto success2;
                    pass2: *ptr=oldpass2; goto alt3_2;
@@ -277,7 +277,7 @@ case 2/*Bind*/:; int oldpos4=ptr->pos;int cut4=0;
 alt4_1:;it=ame_curobj2(ptr)               ;ptr->pos++; var5/*autovar*/=it;;
 cstruct oldpass3=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
                    ptr->src=var5/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                     it=Dataflow_vars_in(self ); FAILTEST(pass3); var6/*autovar*/=it;;
+                     it=Dataflow_vars_in(self ); var6/*autovar*/=it;;
 bind_aset(bind2,1,var0/*ary*/);bind_aset(bind2,2,var6/*autovar*/);it=rb_funcall(self,sy_Dataflow__append_lp__d113,1,bind2);var0/*ary*/=bind_aget(bind2,1);;var6/*autovar*/=bind_aget(bind2,2);;it=Qnil;if (ptr->pos<ptr->len) goto pass3;
                    goto success3;
                    pass3: *ptr=oldpass3; goto alt4_2;
@@ -450,7 +450,7 @@ cstruct oldpass2=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
                      it=AmethystCore_anything(self ); FAILTEST(pass2); var6/*autovar*/=it;;
 cstruct oldpass3=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
                    ptr->src=var6/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                     it=Dataflow_vars_in(self ); FAILTEST(pass3); var7/*autovar*/=it;;
+                     it=Dataflow_vars_in(self ); var7/*autovar*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass3;
                    goto success3;
                    pass3: *ptr=oldpass3; goto pass2;
@@ -488,7 +488,7 @@ cstruct oldpass5=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
                      it=AmethystCore_anything(self ); FAILTEST(pass5); var17/*autovar*/=it;;
 cstruct oldpass6=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
                    ptr->src=var17/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                     it=Dataflow_vars_in(self ); FAILTEST(pass6); var9/*var*/=it;;
+                     it=Dataflow_vars_in(self ); var9/*var*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass6;
                    goto success6;
                    pass6: *ptr=oldpass6; goto pass5;
@@ -1243,4 +1243,4 @@ sy_Forget_SSA_src_dot_unss_5845=rb_intern("Forget_SSA_src_dot_unss_5845");
 rb_define_method(cls_Forget_SSA,"traverse",Forget_SSA_traverse,0);
 rb_define_method(cls_Forget_SSA,"traverse_item",Forget_SSA_traverse_item,0);
 rb_define_method(cls_Forget_SSA,"visit",Forget_SSA_visit,0);
-                    rb_eval_string("testversiondataflow_ssa('ea9f548fcccd63ac3174b9f64f9275e3')");}
+                    rb_eval_string("testversiondataflow_ssa('99bfcb7ed8d7fe3d9f85339bebf95687')");}

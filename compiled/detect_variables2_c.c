@@ -55,7 +55,7 @@ alt1_1:;int oldpos2=ptr->pos;int cut2=0;
 alt2_1:;it=ame_curobj2(ptr)               ;ptr->pos++; var1/*autovar*/=it;;
 cstruct oldpass1=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
                    ptr->src=var1/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                     it=Analyze_Variables2_flat(self ); FAILTEST(pass1); var2/*autovar*/=it;;
+                     it=Analyze_Variables2_flat(self ); var2/*autovar*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass1;
                    goto success1;
                    pass1: *ptr=oldpass1; goto alt2_2;
@@ -80,7 +80,7 @@ alt3_1:;int oldpos4=ptr->pos;int cut4=0;
 alt4_1:;it=ame_curobj2(ptr)               ;ptr->pos++; var4/*autovar*/=it;;
 cstruct oldpass2=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
                    ptr->src=var4/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                     it=Analyze_Variables2_flat(self ); FAILTEST(pass2); var5/*autovar*/=it;;
+                     it=Analyze_Variables2_flat(self ); var5/*autovar*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass2;
                    goto success2;
                    pass2: *ptr=oldpass2; goto alt4_2;
@@ -436,7 +436,7 @@ cstruct oldpass8=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
                      it=AmethystCore_anything(self ); FAILTEST(pass8); var19/*autovar*/=it;;
 cstruct oldpass9=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
                    ptr->src=var19/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                     it=Analyze_Variables2_flat(self ); FAILTEST(pass9); var20/*a*/=it;;
+                     it=Analyze_Variables2_flat(self ); var20/*a*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass9;
                    goto success9;
                    pass9: *ptr=oldpass9; goto pass8;
@@ -840,4 +840,4 @@ sy_Resolve_Calls_super_na_7b4c=rb_intern("Resolve_Calls_super_na_7b4c");
 rb_define_method(cls_Resolve_Calls,"traverse",Resolve_Calls_traverse,0);
 rb_define_method(cls_Resolve_Calls,"traverse_item",Resolve_Calls_traverse_item,0);
 rb_define_method(cls_Resolve_Calls,"visit",Resolve_Calls_visit,0);
-                    rb_eval_string("testversiondetect_variables2('d5390494910eab89853cd8765a217cdd')");}
+                    rb_eval_string("testversiondetect_variables2('39f523cfd37310fb8343509a04486740')");}

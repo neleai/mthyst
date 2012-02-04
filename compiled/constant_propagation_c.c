@@ -349,7 +349,7 @@ VALUE Constant_Traverser_visit(VALUE self ){VALUE vals[0];  VALUE var0;VALUE var
 switch(FIX2LONG(rb_hash_aref(switchhash_Constant_Traverser_2,rb_obj_class(ame_curobj2(ptr))))){case 0/*Act*/:; it=ame_curobj2(ptr)               ;ptr->pos++; var0/*autovar*/=it;;
 cstruct oldpass1=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
                    ptr->src=var0/*autovar*/; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}
-                     it=Constant_Traverser_consts(self ); FAILTEST(pass1); var1/*a*/=it;;
+                     it=Constant_Traverser_consts(self ); var1/*a*/=it;;
 bind_aset(bind2,1,var1/*a*/);it=rb_funcall(self,sy_Constant_Traverser_Seq_lb_bind_95dc,1,bind2);var1/*a*/=bind_aget(bind2,1);; var2/*autovar*/=it;;
 it=Qnil;if (ptr->pos<ptr->len) goto pass1;
                    goto success1;
@@ -448,4 +448,4 @@ rb_define_method(cls_Constant_Traverser,"root",Constant_Traverser_root,0);
 rb_define_method(cls_Constant_Traverser,"traverse",Constant_Traverser_traverse,0);
 rb_define_method(cls_Constant_Traverser,"traverse_item",Constant_Traverser_traverse_item,0);
 rb_define_method(cls_Constant_Traverser,"visit",Constant_Traverser_visit,0);
-                    rb_eval_string("testversionconstant_propagation('34544188d963d97df88b6be63ac759a1')");}
+                    rb_eval_string("testversionconstant_propagation('181e4dfbb6e93e4959f61e0a8e4d4cae')");}

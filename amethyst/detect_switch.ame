@@ -271,7 +271,7 @@ amethyst Cant_Fail_Dataflow < First_Dataflow{
 				| Lookahead[.* ]       -> lattice.top
 				| Apply[ ["advance_char" | "advance_clas"] ] -> lattice.bottom
 				| Pass[ @to=>value ]
-#				| Or[ value*:ary   ] -> lattice[ary.map{|e|e.value}.inject(:|)]
+				| Or[ (~(Cut | Seq[ (Cut .* break | .)* ]) value)*:ary   ] -> lattice[ary.map{|e|e.value}.inject(:|)]
 				| super
 }
 
