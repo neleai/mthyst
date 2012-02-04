@@ -171,6 +171,7 @@ class <<Compiler
 require File.expand_path(File.dirname(__FILE__))+\"/\#{RUBY_VERSION}/#{file2}_c\""}
 		#fork{#makes time measurement more difficult disabled for now
 	  withtime("c"){ #todo get flags portable not just 1.8 on x64
+			`astyle compiled/#{file2}_c.c`
 			if Amethyst::Settings.compile_for.include?("1_9_3")
 				`cd compiled;gcc -I. -I/usr/include/ruby-1.9.1/x86_64-linux -I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -fPIC -fno-strict-aliasing -g -g #{Amethyst::Settings.cflags} -fPIC -c #{file2}_c.c -o #{file2}_c.o`
 				`cd compiled;gcc -shared -o 1.9.3/#{file2}_c.so #{file2}_c.o -L. -L/usr/lib -L. -rdynamic -Wl,-export-dynamic -lruby-1.9.1 -lpthread -lrt -ldl -lcrypt -lm -lc`

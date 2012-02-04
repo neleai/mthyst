@@ -1,8 +1,7 @@
 amethyst(mthyst) is ruby top-down parser generator
 
 #For initial build type
-reset    #or
-reset1.9 #for ruby1.9
+reset    
 
 
 #then feel free to change grammars. Recompiling is done by
@@ -12,3 +11,4 @@ ruby bootstrap
 #For improving speed we look at profile output. You need to install and run oprofile. Run script
 compiled/anotate #to get anotated source and assembly after you ran oprofile.
 
+When you have astyle installed generated c files will be formatted with it
