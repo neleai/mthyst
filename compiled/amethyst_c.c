@@ -602,16 +602,16 @@ fail: return failobj; }
 void Init_amethyst_c(){ 
  cls_Amethyst=rb_define_class("Amethyst",rb_const_get(rb_cObject,rb_intern("AmethystCore"))); 
                     failobj=rb_eval_string("FAIL");
-                    s_0b_3470=rb_str_new2("0b");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),s_0b_3470);
-s_0o_6f57=rb_str_new2("0o");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),s_0o_6f57);
-s_0x_f6f8=rb_str_new2("0x");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),s_0x_f6f8);
-s___b14a=rb_str_new2("_");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),s___b14a);
-s__bs__bs__7f81=rb_str_new2("\\");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),s__bs__bs__7f81);
-s__bs_n_1d78=rb_str_new2("\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),s__bs_n_1d78);
-s__bs_r_8ce5=rb_str_new2("\r");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),s__bs_r_8ce5);
-s__bs_r_bs_n_bdb2=rb_str_new2("\r\n");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),s__bs_r_bs_n_bdb2);
-s__d41d=rb_str_new2("");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),s__d41d);
-s__mi__336d=rb_str_new2("-");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),s__mi__336d);
+                    s_0b_3470=rb_str_new2("0b");rb_global_variable(&s_0b_3470);
+s_0o_6f57=rb_str_new2("0o");rb_global_variable(&s_0o_6f57);
+s_0x_f6f8=rb_str_new2("0x");rb_global_variable(&s_0x_f6f8);
+s___b14a=rb_str_new2("_");rb_global_variable(&s___b14a);
+s__bs__bs__7f81=rb_str_new2("\\");rb_global_variable(&s__bs__bs__7f81);
+s__bs_n_1d78=rb_str_new2("\n");rb_global_variable(&s__bs_n_1d78);
+s__bs_r_8ce5=rb_str_new2("\r");rb_global_variable(&s__bs_r_8ce5);
+s__bs_r_bs_n_bdb2=rb_str_new2("\r\n");rb_global_variable(&s__bs_r_bs_n_bdb2);
+s__d41d=rb_str_new2("");rb_global_variable(&s__d41d);
+s__mi__336d=rb_str_new2("-");rb_global_variable(&s__mi__336d);
 sy_Amethyst__append_lp__088f=rb_intern("Amethyst__append_lp__088f");
 sy_Amethyst__append_lp__0d86=rb_intern("Amethyst__append_lp__0d86");
 sy_Amethyst__append_lp__2081=rb_intern("Amethyst__append_lp__2081");

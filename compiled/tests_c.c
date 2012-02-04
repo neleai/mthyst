@@ -149,14 +149,14 @@ fail: return failobj; }
 void Init_tests_c(){ 
  cls_Tests=rb_define_class("Tests",rb_const_get(rb_cObject,rb_intern("Amethyst"))); 
                     failobj=rb_eval_string("FAIL");
-                    i_1=rb_funcall(rb_str_new2("1"),rb_intern("to_i"),0);rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),i_1);
-i_3=rb_funcall(rb_str_new2("3"),rb_intern("to_i"),0);rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),i_3);
-i_42=rb_funcall(rb_str_new2("42"),rb_intern("to_i"),0);rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),i_42);
-s_a_0cc1=rb_str_new2("a");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),s_a_0cc1);
-s_b_92eb=rb_str_new2("b");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),s_b_92eb);
-s_c_4a8a=rb_str_new2("c");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),s_c_4a8a);
-s_d_8277=rb_str_new2("d");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),s_d_8277);
-s_g_b2f5=rb_str_new2("g");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),s_g_b2f5);
+                    i_1=rb_funcall(rb_str_new2("1"),rb_intern("to_i"),0);rb_global_variable(&i_1);
+i_3=rb_funcall(rb_str_new2("3"),rb_intern("to_i"),0);rb_global_variable(&i_3);
+i_42=rb_funcall(rb_str_new2("42"),rb_intern("to_i"),0);rb_global_variable(&i_42);
+s_a_0cc1=rb_str_new2("a");rb_global_variable(&s_a_0cc1);
+s_b_92eb=rb_str_new2("b");rb_global_variable(&s_b_92eb);
+s_c_4a8a=rb_str_new2("c");rb_global_variable(&s_c_4a8a);
+s_d_8277=rb_str_new2("d");rb_global_variable(&s_d_8277);
+s_g_b2f5=rb_str_new2("g");rb_global_variable(&s_g_b2f5);
 sy_Tests_bind_lb_1_rb__pl__0a71=rb_intern("Tests_bind_lb_1_rb__pl__0a71");
 sy_Tests_bind_lb_1_rb__pl__1730=rb_intern("Tests_bind_lb_1_rb__pl__1730");
 sy_Tests_bind_lb_1_rb__pl__61a1=rb_intern("Tests_bind_lb_1_rb__pl__61a1");

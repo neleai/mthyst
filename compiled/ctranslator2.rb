@@ -65,7 +65,9 @@ class AmethystCTranslator < Amethyst
     end
   end
 end
-
+def gc_mark_var(v)
+	"rb_global_variable(&#{v});"
+end
 $classlabels=Hash.new(0)
 class AmethystCTranslator < Amethyst
 
@@ -409,7 +411,7 @@ def ctranslator2_compiled_by
 'fa5c5fa85ebaf89fb3c3a2ccdc088436'
 end
 def ctranslator2_source_hash
-'7c940307632024d85fa7da6ade2d4e27'
+'5c37b50cf1e4b25c231d30a68f574943'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version

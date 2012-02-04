@@ -65,7 +65,9 @@ class AmethystCTranslator < Amethyst
     end
   end
 end
-
+def gc_mark_var(v)
+	"rb_global_variable(&#{v});"
+end
 $classlabels=Hash.new(0)
 amethyst AmethystCTranslator < Amethyst {
   itrans = {[]}:ruby {[]}:c {[]}:init  ( char:ruby[]  | trans:{c<<it[0];init<<it[1];ruby<<it[2]} )* -> [c,init,ruby]

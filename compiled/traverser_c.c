@@ -202,7 +202,7 @@ fail: return failobj; }
 void Init_traverser_c(){ 
  cls_Traverser_Clone2=rb_define_class("Traverser_Clone2",rb_const_get(rb_cObject,rb_intern("Amethyst"))); 
                     failobj=rb_eval_string("FAIL");
-                    switchhash_Traverser_Clone2_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Traverser_Clone2_1);;
+                    switchhash_Traverser_Clone2_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}");rb_global_variable(&switchhash_Traverser_Clone2_1);;
 sy_Traverser_Clone2__at_changed_5352=rb_intern("Traverser_Clone2__at_changed_5352");
 sy_Traverser_Clone2__at_changed_b885=rb_intern("Traverser_Clone2__at_changed_b885");
 sy_Traverser_Clone2__at_changed_c681=rb_intern("Traverser_Clone2__at_changed_c681");
@@ -217,7 +217,7 @@ rb_define_method(cls_Traverser_Clone2,"traverse_item",Traverser_Clone2_traverse_
                    
  cls_Visitor=rb_define_class("Visitor",rb_const_get(rb_cObject,rb_intern("Amethyst"))); 
                     failobj=rb_eval_string("FAIL");
-                    switchhash_Visitor_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}");rb_ary_push(rb_const_get(rb_cObject,rb_intern("GC_mark")),switchhash_Visitor_1);;
+                    switchhash_Visitor_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}");rb_global_variable(&switchhash_Visitor_1);;
 sy_Visitor__append_lp__088f=rb_intern("Visitor__append_lp__088f");
 sy_Visitor__append_lp__4de3=rb_intern("Visitor__append_lp__4de3");
 sy_Visitor__lp_src_dot_ins_a413=rb_intern("Visitor__lp_src_dot_ins_a413");
