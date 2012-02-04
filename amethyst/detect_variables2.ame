@@ -3,6 +3,7 @@
 # - finds local variables
 # - finds what result binds
 # - removes comments
+# - binds break to many and or
 
 def connectstring(ary)
   r=[]
@@ -21,7 +22,6 @@ def connectstring(ary)
   r
 end
 
-
 amethyst Analyze_Variables2 < Traverser_Clone2 {
   itrans =   (Grammar[ @rules=>[ Rule[root]*:rules ] {@rules=rules} @self] | .)*
   root = @self=>Rule[ {@@bnding=@bnding} {@@variables=Hash.new{|k,v| k[v]=v} ;(@locals+@args).each{|w| @@variables[w[0]]=w}} {@@locals=@locals} 
@@ -33,6 +33,9 @@ traverse[.*  {@locals=nil} @self] ]
         | Comment[.*{Placeholder}]
 				| Seq_AST[traverse_item*:ary] -> Seq[*ary]
 				|  Or_AST[traverse_item*:ary] ->  Or[*ary]
+				| Many[ {@@stop}:oldstop {@@stop=false} traverse_item:ary2  { Many.create({:ary=>[@@stop ? ary2 : Or[ary2,Stop[]] ] }) }:ret {@@stop=oldstop}  ] -> ret
+				| Stop[ {@@stop=true;@self} ]
+
 
 
   flat= (Args[flat] | Strin[flat] |  . )*

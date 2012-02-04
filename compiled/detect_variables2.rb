@@ -3,6 +3,7 @@
 # - finds local variables
 # - finds what result binds
 # - removes comments
+# - binds break to many and or
 
 def connectstring(ary)
   r=[]
@@ -21,11 +22,13 @@ def connectstring(ary)
   r
 end
 
-
 class Analyze_Variables2 < Traverser_Clone2
 
 def Analyze_Variables2_Act_lb_bind_4ccd(bind)
 Act[bind[1],bind[2],bind[3]]
+end
+def Analyze_Variables2_Many_dot_cre_6376(bind)
+Many.create({:ary=>[@stop ? bind[1] : Or[bind[1],Stop[]] ] }) 
 end
 def Analyze_Variables2_Or_lb__ti_bind_5a27(bind)
 Or[*bind[1]]
@@ -56,6 +59,18 @@ end
 def Analyze_Variables2__at_locals_eq__02ce(bind)
 @locals=src.locals
 end
+def Analyze_Variables2__at_stop_8c46(bind)
+@stop
+end
+def Analyze_Variables2__at_stop_eq_bi_5f9f(bind)
+@stop=bind[1]
+end
+def Analyze_Variables2__at_stop_eq_fa_620e(bind)
+@stop=false
+end
+def Analyze_Variables2__at_stop_eq_tr_52d4(bind)
+@stop=true;src
+end
 def Analyze_Variables2__at_variabl_f612(bind)
 @variables=Hash.new{|k,v| k[v]=v} ;(src.locals+src.args).each{|w| @variables[w[0]]=w}
 end
@@ -70,6 +85,10 @@ def Analyze_Variables2__lp_bind_lb_1_rb__ee3d(bind)
 end
 def Analyze_Variables2__lp_src_dot_ins_6a75(bind)
 (src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
+end
+def Analyze_Variables2_bind_lb_1_rb_(bind)
+bind[1]
+
 end
 def Analyze_Variables2_bind_lb_1_rb__lt__7b20(bind)
 bind[1]<<bind[2]
@@ -174,15 +193,15 @@ end
 
 
 def detect_variables2_compiled_by
-'cb8dfd717f954e6b85d407ff2be87626'
+'7447de6bab8a76ac1734c644975fc59a'
 end
 def detect_variables2_source_hash
-'31a91f77c98ec22f0e9e0b09f777e3bb'
+'005c2ba3a5c2c24b6b8b7c0151cca0aa'
 end
 def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'5bba88b14e84cdebd46db197e781f500'
+'d728c06facbe6c0d217577fc3bb97cd7'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_variables2_c"

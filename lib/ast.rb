@@ -4,7 +4,7 @@ makeclasses(AmethystAST,
     [:Rule,:name,:args,:locals,:body,:cfg,:reachable,:bnding,:consts],
     [:Apply,:name,:clas],
     [:Bind,:name],
-    [:Many],
+    [:Many,:has_stop],
 		[:Pass,:var,:to,:enter],
 		[:CAct],
     [:Act,:pred,:pure],
@@ -20,7 +20,9 @@ makeclasses(AmethystAST,
     :Comment,
     :Nested,
 		:Switch,
-		:Seq,:Or,:Seq_AST,:Or_AST
+		:Seq,
+		[:Or,:has_cut],
+		:Seq_AST,:Or_AST
 )
 makeclasses(Switch,:Switch_Char,:Switch_Clas,:Switch_Or)
 class Enter;end;class Append;end;class PureAct;end;class Pred;end;
