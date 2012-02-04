@@ -51,4 +51,9 @@ static void memo_add(memo_struct *m,int rule,VALUE src,int pos,VALUE val,int new
 	m->els[memo_hash(rule,pos)]=el;
 }
 
+
+void memo_mark(memo_struct *m){ /*we want weak link to src so we dont mark it*/
+	int i;for(i=0;i<(1<<MEMORY);i++) if(m->els[i].rule) rb_gc_mark(m->els[i].val);
+}
+void memo_free(memo_struct *m){ free(m->els);free(m);}
 #endif

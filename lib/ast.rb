@@ -267,20 +267,3 @@ class Bind;						def inspect;	"#{ary[0].inspect}:#{name.inspect}"														;
 class Switch; 				def inspect;  "#{self.class}[#{ary.map{|d,k|  "#{d.inspect}: #{k.inspect}\n"}*""}]";end;end
 
 
-$meming=Hash.new{|h,k| h[k]=[]}
-$meming_pos=Hash.new{|h,k| h[k]=[]}
-
-def mem_get(src,pos)
-$meming[src][pos]
-
-end
-def mem_getlen(src,pos)
-$meming_pos[src][pos]
-
-end
-def mem_add(src,pos,oldpos,ret)
-#	puts src.inspect,pos,oldpos,"ret",ret.inspect,$meming[src][oldpos].inspect
-#	raise if $meming[src][oldpos] && $meming[src][oldpos].inspect!=ret.inspect
-	$meming[src][oldpos]=ret
-	$meming_pos[src][oldpos]=pos
-end
