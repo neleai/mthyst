@@ -157,7 +157,7 @@ int oldpos=ptr->pos;if (memo_pos(mem,#{@@memo_no=(@@memo_no||111)+2},ptr->src,pt
         | Cut[]  {@@cuts=true;  @@cutlabel ? "#{@@cutlabel}=1;"  : ""}
         | Stop[] {@@stops=true; @@stoplabel? "#{@@stoplabel}=1;" : ""}
         | Memo[ .* {raise "TODO"}]
-        | Many[ Apply[ ["anything"] ] ] -> "ptr->pos=ptr->len;"
+        | Many[ Or[ Apply[ ["anything"] ]  Stop[] ]]  -> "ptr->pos=ptr->len;"
         | Many[ {@@stops}:oldstops {@@stoplabel}:oldstoplabel {@@stops=nil}  {@@stoplabel=label("stop")}
                 trans:t
                 { s="int #{@@stoplabel}=0; while(!#{@@stoplabel}){ #{t} } "

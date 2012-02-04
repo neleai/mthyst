@@ -157,7 +157,7 @@ end
 
 
 def constant_propagation_compiled_by
-'e49de81d16bf6377fdb26c62d0a1df96'
+'efb0d91549b4c1af07a8c30ef9baab77'
 end
 def constant_propagation_source_hash
 'bcca214b59974f470c5395adafe72fab'
@@ -166,6 +166,6 @@ def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
 end
 def constant_propagation_version
-'181e4dfbb6e93e4959f61e0a8e4d4cae'
+'e4a7f8c83720e207a7fa6011fec78a72'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/constant_propagation_c"
