@@ -17,6 +17,7 @@ class Gram
 		}
 	end
 	def opt(r)
+		GC::disable
 		debug_print(r)
 		dce=[ Dataflow, Dead_Code_Deleter3,Forget_SSA]
 		[dce].flatten.each{|o|
@@ -40,6 +41,7 @@ class Gram
 			r=o.new.parse(:root,r)
 			debug_print(r)
 		}
+		GC::enable
     @rules[r.name]=r 
 	end
 	def getrule(name)
