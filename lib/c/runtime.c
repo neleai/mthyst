@@ -76,15 +76,60 @@ static inline VALUE bind_reset(VALUE self){
 	return Qnil;
 }
 
+typedef struct {
+	VALUE * ary;
+	VALUE * res;
+} bind_cache;
+bind_cache *b;VALUE bg;
+bind_cache * bind_cache_init(){
+	bind_cache *b;
+	b=malloc(sizeof(bind_cache));
+	b->ary=calloc(1<<20,sizeof(VALUE));
+	b->res=calloc(1<<20,sizeof(VALUE));
+
+	return b;
+}
+void bind_cache_mark(bind_cache *b){int i;
+	for(i=0;i<(1<<20);i++) rb_gc_mark(b->ary[i]);
+	for(i=0;i<(1<<20);i++) rb_gc_mark(b->res[i]);
+}
+void bind_cache_free(bind_cache *b){}
+
+VALUE bind_normalize(VALUE self,VALUE bind){
+	VALUE name=rb_iv_get(bind,"@name");
+	VALUE expr=rb_ary_entry(rb_iv_get(bind,"@ary"),0);
+	int hash= (11*((int)name)+((int)expr))&((1<<20)-1);
+	VALUE bind2=b->ary[hash];
+	if ((int)bind2!=0){
+	VALUE name2=rb_iv_get(bind2,"@name");
+	VALUE expr2=rb_ary_entry(rb_iv_get(bind2,"@ary"),0);
+	if ((name==name2)&& expr==expr2) return b->res[hash];
+	}
+	VALUE bind3=rb_funcall(bind,rb_intern("normalize2"),0);
+	if (rb_obj_is_kind_of(bind3, rb_obj_class(bind))){
+		VALUE name3=rb_iv_get(bind3,"@name");
+		VALUE expr3=rb_ary_entry(rb_iv_get(bind3,"@ary"),0);
+		int hash3= (11*((int)name3)+((int)expr3))&((1<<20)-1);
+		b->ary[hash3]=bind3;
+		b->res[hash3]=bind3;
+	}
+	b->ary[hash]=bind;
+	b->res[hash]=bind3;
+	return bind3;
+}
 
 ID s_ary;
 void Init_Ame(VALUE self){
+	b=bind_cache_init(); 
+  bg=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,b);
+	rb_global_variable(&bg);
 	s_ary_get=rb_intern("[]");
 	s_ary=rb_intern("@ary");
 	s_to_a=rb_intern("to_a");
 	failobj=rb_eval_string("FAIL");
 	amecore=rb_define_class("AmethystCore",rb_cObject);
 	rb_define_singleton_method(amecore,"new",ame_new,0);
+	rb_define_singleton_method(amecore,"bind_normalize",bind_normalize,1);
 	rb_define_method(amecore,"pos=",ame_setposrb,1);
 	rb_define_method(amecore,"pos",ame_getposrb,0);
 	rb_define_method(amecore,"len=",ame_setlenrb,1);

@@ -31,8 +31,9 @@ def equalize_by(clas,args)
   eval("$hash_#{clas}={}
     class #{clas}\n
           def normalize
-            return $hash_#{clas}[#{args}] if $hash_#{clas}[#{args}]
-            $hash_#{clas}[#{args}]=normalize2
+						a=#{args}
+            return $hash_#{clas}[a] if $hash_#{clas}[a]
+            $hash_#{clas}[a] = $hash_#{clas}[#{args}]=normalize2
           end
 					alias_method :hash,:object_id
 					alias_method :eql?,:equal?
@@ -47,6 +48,15 @@ by="[#{e.instance_variable_get(:@attrs)*","}]"
 by="ary" if by=="[ary]"
 equalize_by(e,by)
 }
+class Bind
+	def normalize
+		b=AmethystCore::bind_normalize(self)
+		#puts "norm"
+		#puts self.inspect
+		#puts b.inspect
+		b
+	end
+end
 
 Placeholder=Consts.new("Placeholder");FAIL=Consts.new("FAIL")
 
