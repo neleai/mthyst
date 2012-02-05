@@ -38,26 +38,14 @@ static VALUE sy_Left_Factor_src_25d9;
 static VALUE sy_Left_Factor_src_dot_expr_ef77;
 VALUE Left_Factor_binds(VALUE self ,VALUE a0,VALUE a1) {
     VALUE vals[2];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10;
     VALUE bind2=bind_new2(16);
     var0/*s*/=a0;;
     var3/*a*/=a1;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=var0/*s*/;
     var1/*autovar*/=it;;
     cstruct oldpass1=*ptr;
@@ -224,21 +212,15 @@ fail:
 }
 VALUE Left_Factor_factor(VALUE self ,VALUE a0,VALUE a1,VALUE a2) {
     VALUE vals[3];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4; ;
+    VALUE it ,var0,var1,var2,var3,var4;
     VALUE bind2=bind_new2(16);
     var2/*prev*/=a0;;
     var1/*start*/=a1;;
     var3/*cur*/=a2;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     int oldpos1=ptr->pos;
     int cut1=0;
 alt1_1:
@@ -333,23 +315,13 @@ fail:
 }
 VALUE Left_Factor_first(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8;
     VALUE bind2=bind_new2(16);
     var0/*s*/=a0;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=var0/*s*/;
     var1/*autovar*/=it;;
     cstruct oldpass1=*ptr;
@@ -505,25 +477,14 @@ fail:
 }
 VALUE Left_Factor_rest(VALUE self ,VALUE a0,VALUE a1) {
     VALUE vals[2];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9;
     VALUE bind2=bind_new2(16);
     var0/*s*/=a0;;
     var6/*bin*/=a1;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=var0/*s*/;
     var1/*autovar*/=it;;
     cstruct oldpass1=*ptr;
@@ -652,14 +613,12 @@ fail:
 }
 VALUE Left_Factor_root(VALUE self ) {
     VALUE vals[0];
-    VALUE var0; ;
+    VALUE it ,var0;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=Left_Factor_traverse(self );
     FAILTEST(fail);
     var0/*_result*/=it;;
@@ -670,23 +629,12 @@ fail:
 }
 VALUE Left_Factor_traverse(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     ptr->pos=ptr->len;
     it=rb_funcall(self,sy_Left_Factor__at_changed_c681,1,bind2);
     var0/*oldchanged*/=it;;
@@ -818,21 +766,12 @@ fail:
 }
 VALUE Left_Factor_traverse_item(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Left_Factor_5,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*AmethystAST*/:
         ;
@@ -1028,24 +967,12 @@ fail:
 }
 VALUE Left_Factor_visit(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Left_Factor_4,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Or*/:
         ;
@@ -1257,5 +1184,5 @@ void Init_left_factor_c() {
     rb_define_method(cls_Left_Factor,"traverse",Left_Factor_traverse,0);
     rb_define_method(cls_Left_Factor,"traverse_item",Left_Factor_traverse_item,0);
     rb_define_method(cls_Left_Factor,"visit",Left_Factor_visit,0);
-    rb_eval_string("testversionleft_factor('cb91845af9c7b131e68c748549da0cb7')");
+    rb_eval_string("testversionleft_factor('b14af1194d3a71b7e25f7156de4b6170')");
 }

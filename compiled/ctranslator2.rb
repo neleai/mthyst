@@ -234,9 +234,6 @@ def AmethystCTranslator__lb_bind_lb_1_rb__8fa4(bind)
 [bind[1],bind[2],bind[3]]
 
 end
-def AmethystCTranslator__lp_Current_bc00(bind)
-(CurrentParser[:memoize]&&CurrentParser[:memoize].include?(bind[1])) || FAIL
-end
 def AmethystCTranslator__lp_bind_lb_1_rb__a948(bind)
 (bind[1].is_a? String ) || FAIL
 end
@@ -317,25 +314,26 @@ end
 def AmethystCTranslator_bind_lb_1_rb__ti__cfcb(bind)
 bind[1]*""
 end
+def AmethystCTranslator_h_eq__dq_VALUE_043c(bind)
+h="VALUE #{@grammar}_#{bind[1]}(VALUE self #{map_index(src.args){|i| ",VALUE a#{i}"}*""})" 
+            @header<<h+";"
+            @defmethods<< "rb_define_method(cls_#{@grammar},\"#{src.name}\",#{@grammar}_#{src.name},#{src.args.size});"
+						bind[2]=h+"{VALUE vals[#{src.args.size}]; VALUE it #{map_index(@locls){|i| ",var#{i}"}*""};VALUE bind2=bind_new2(16); #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);"
+bind[2]+="int oldpos=ptr->pos;if (memo_pos(mem,#{@memo_no=(@memo_no||111)+2},ptr->src,ptr->pos)!=-1) {it=memo_value(mem,#{@memo_no},ptr->src,ptr->pos);ptr->pos=memo_pos(mem,#{@memo_no},ptr->src,ptr->pos);return it;}" if CurrentParser[:memoize]&&CurrentParser[:memoize].include?(bind[1])
+bind[2]+="#{bind[3]}\n" 
+if CurrentParser[:memoize]&&CurrentParser[:memoize].include?(bind[1])
+bind[2]+="memo_add(mem,#{@memo_no},ptr->src,oldpos,it,ptr->pos); return it;\nfail: memo_add(mem,#{@memo_no},ptr->src,oldpos,failobj,ptr->pos); return failobj; }" 
+else
+bind[2]+="return it;\nfail: return failobj;}"
+end
+bind[2]
+
+end
 def AmethystCTranslator_h_eq__dq_VALUE_3d5e(bind)
 h="VALUE #{bind[1]}(VALUE self,VALUE bind)"
                  @header<<h+";"
                  @defmethods<<"rb_define_method(cls_#{@grammar},\"#{bind[1]}\",#{bind[1]},1);"
                  @lambdas<< h+"{VALUE vals[0]; /*todo unify with rule and get args*/ cstruct *ptr; int x;VALUE it;VALUE arg0,arg1,arg2,arg3;\n#{bind[2]}\nreturn it;\nfail: return failobj; }" 
-end
-def AmethystCTranslator_h_eq__dq_VALUE_c505(bind)
-h="VALUE #{@grammar}_#{bind[1]}(VALUE self #{map_index(src.args){|i| ",VALUE a#{i}"}*""})" 
-            @header<<h+";"
-            @defmethods<< "rb_define_method(cls_#{@grammar},\"#{src.name}\",#{@grammar}_#{src.name},#{src.args.size});"
-            h+"{VALUE vals[#{src.args.size}];  #{map_index(@locls){|i| "VALUE var#{i};"}*""} ;VALUE bind2=bind_new2(16); #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
-            \n#{bind[2]}\nreturn it;\nfail: return failobj; }" 
-end
-def AmethystCTranslator_h_eq__dq_VALUE_c6bd(bind)
-h="VALUE #{@grammar}_#{bind[1]}(VALUE self #{map_index(src.args){|i| ",VALUE a#{i}"}*""})" 
-            @header<<h+";"
-            @defmethods<< "rb_define_method(cls_#{@grammar},\"#{src.name}\",#{@grammar}_#{src.name},#{src.args.size});"
-						bind[2]=h+"{VALUE vals[#{src.args.size}]; #{map_index(@locls){|i| "VALUE var#{i};"}*""};VALUE bind2=bind_new2(16); #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
-int oldpos=ptr->pos;if (memo_pos(mem,#{@memo_no=(@memo_no||111)+2},ptr->src,ptr->pos)!=-1) {it=memo_value(mem,#{@memo_no},ptr->src,ptr->pos);ptr->pos=memo_pos(mem,#{@memo_no},ptr->src,ptr->pos);return it;} #{bind[3]}\n memo_add(mem,#{@memo_no},ptr->src,oldpos,it,ptr->pos); return it;\nfail: memo_add(mem,#{@memo_no},ptr->src,oldpos,failobj,ptr->pos); return failobj; }" 
 end
 def AmethystCTranslator_label_lp__dq_a_f49c(bind)
 label("accept")
@@ -379,15 +377,15 @@ end
 
 
 def ctranslator2_compiled_by
-'5ef0b2a2f4c2ea4cee04a5a5c07c74f8'
+'a5d98894adfc37b50290755e8557967d'
 end
 def ctranslator2_source_hash
-'03dba164abcf9fd2aa44123891128314'
+'929bac51a9e7f759d2631edd74d65b90'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'cbb242e127db648b4ed8b92aaee1c1fc'
+'02781a39e1ebfc8a5df28e593adb3a3a'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"

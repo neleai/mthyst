@@ -15,23 +15,12 @@ static VALUE sy_Traverser_Clone2_src_25d9;
 static VALUE sy_visit;
 VALUE Traverser_Clone2_traverse(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     ptr->pos=ptr->len;
     it=rb_funcall(self,sy_Traverser_Clone2__at_changed_c681,1,bind2);
     var0/*oldchanged*/=it;;
@@ -163,21 +152,12 @@ fail:
 }
 VALUE Traverser_Clone2_traverse_item(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Traverser_Clone2_1,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*AmethystAST*/:
         ;
@@ -381,20 +361,12 @@ static VALUE sy_Visitor__lp_src_dot_ins_a413;
 static VALUE sy_visit;
 VALUE Visitor_traverse(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     ptr->pos=ptr->len;
     it=rb_funcall(self,sy_Visitor__lp_src_dot_ins_a413,1,bind2);
     var0/*autovar*/=it;;
@@ -481,20 +453,12 @@ fail:
 }
 VALUE Visitor_traverse_item(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Visitor_1,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*AmethystAST*/:
         ;
@@ -705,5 +669,5 @@ void Init_traverser_c() {
     sy_visit=rb_intern("visit");
     rb_define_method(cls_Visitor,"traverse",Visitor_traverse,0);
     rb_define_method(cls_Visitor,"traverse_item",Visitor_traverse_item,0);
-    rb_eval_string("testversiontraverser('b4a4f666b141f0be2ba1bb8e8081c9a1')");
+    rb_eval_string("testversiontraverser('873f8dfc6f030d07a49fd57fa57fafb6')");
 }

@@ -24,14 +24,12 @@ static VALUE sy_seq;
 static VALUE sy_token;
 VALUE Tests_abc(VALUE self ) {
     VALUE vals[0];
-    VALUE var0; ;
+    VALUE it ,var0;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch((unsigned char)*ame_curstr2(ptr)) {
     case UC(0) ... UC(31):
         ;
@@ -56,18 +54,12 @@ fail:
 }
 VALUE Tests_de(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4; ;
+    VALUE it ,var0,var1,var2,var3,var4;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch((unsigned char)*ame_curstr2(ptr)) {
     case UC(0) ... UC(31):
         ;
@@ -184,17 +176,12 @@ fail:
 }
 VALUE Tests_foo(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3; ;
+    VALUE it ,var0,var1,var2,var3;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=rb_funcall(self,sy_bar,0);
     FAILTEST(fail);
     var0/*bar*/=it;;
@@ -220,14 +207,12 @@ fail:
 }
 VALUE Tests_gh(VALUE self ) {
     VALUE vals[0];
-    VALUE var0; ;
+    VALUE it ,var0;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     int oldpos1=ptr->pos;
     int cut1=0;
 alt1_1:
@@ -259,14 +244,12 @@ fail:
 }
 VALUE Tests_s2(VALUE self ) {
     VALUE vals[0];
-    VALUE var0; ;
+    VALUE it ,var0;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch((unsigned char)*ame_curstr2(ptr)) {
     case UC(0) ... '`':
         ;
@@ -322,14 +305,12 @@ fail:
 }
 VALUE Tests_sw(VALUE self ) {
     VALUE vals[0];
-    VALUE var0; ;
+    VALUE it ,var0;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     int oldpos1=ptr->pos;
     int cut1=0;
 alt1_1:
@@ -387,14 +368,12 @@ fail:
 }
 VALUE Tests_test(VALUE self ) {
     VALUE vals[0];
-    VALUE var0; ;
+    VALUE it ,var0;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     int oldpos1=ptr->pos;
     int cut1=0;
 alt1_1:
@@ -458,5 +437,5 @@ void Init_tests_c() {
     rb_define_method(cls_Tests,"s2",Tests_s2,0);
     rb_define_method(cls_Tests,"sw",Tests_sw,0);
     rb_define_method(cls_Tests,"test",Tests_test,0);
-    rb_eval_string("testversiontests('495dde5fac33fec08badeb94d8079d8c')");
+    rb_eval_string("testversiontests('1d0de235d57593b3e4cadbc3070703fb')");
 }

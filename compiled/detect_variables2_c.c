@@ -49,20 +49,12 @@ static VALUE sy_Analyze_Variables2_src_dot_rule_a719;
 static VALUE sy_Analyze_Variables2_vars_eq__at_lo_cf02;
 VALUE Analyze_Variables2_flat(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=rb_ary_new3(0);
     var0/*autovar*/=it;;
     int stop1=0;
@@ -254,25 +246,12 @@ fail:
 }
 VALUE Analyze_Variables2_itrans(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10;
-    VALUE var11; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=rb_ary_new3(0);
     var0/*autovar*/=it;;
     int stop1=0;
@@ -504,20 +483,12 @@ fail:
 }
 VALUE Analyze_Variables2_root(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=rb_funcall(self,sy_Analyze_Variables2_src_25d9,1,bind2);
     var0/*autovar*/=it;;
     cstruct oldpass1=*ptr;
@@ -616,23 +587,12 @@ fail:
 }
 VALUE Analyze_Variables2_traverse(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     ptr->pos=ptr->len;
     it=rb_funcall(self,sy_Analyze_Variables2__at_changed_c681,1,bind2);
     var0/*oldchanged*/=it;;
@@ -764,21 +724,12 @@ fail:
 }
 VALUE Analyze_Variables2_traverse_item(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Analyze_Variables2_7,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*AmethystAST*/:
         ;
@@ -974,52 +925,12 @@ fail:
 }
 VALUE Analyze_Variables2_visit(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10;
-    VALUE var11;
-    VALUE var12;
-    VALUE var13;
-    VALUE var14;
-    VALUE var15;
-    VALUE var16;
-    VALUE var17;
-    VALUE var18;
-    VALUE var19;
-    VALUE var20;
-    VALUE var21;
-    VALUE var22;
-    VALUE var23;
-    VALUE var24;
-    VALUE var25;
-    VALUE var26;
-    VALUE var27;
-    VALUE var28;
-    VALUE var29;
-    VALUE var30;
-    VALUE var31;
-    VALUE var32;
-    VALUE var33;
-    VALUE var34;
-    VALUE var35;
-    VALUE var36;
-    VALUE var37;
-    VALUE var38; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14,var15,var16,var17,var18,var19,var20,var21,var22,var23,var24,var25,var26,var27,var28,var29,var30,var31,var32,var33,var34,var35,var36,var37,var38;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Analyze_Variables2_4,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Act*/:
         ;
@@ -1668,18 +1579,12 @@ static VALUE sy_Resolve_Calls_src_dot_name_80f3;
 static VALUE sy_Resolve_Calls_super_na_7b4c;
 VALUE Resolve_Calls_root(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4; ;
+    VALUE it ,var0,var1,var2,var3,var4;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=AmethystCore_anything(self );
     FAILTEST(fail);
     var0/*autovar*/=it;;
@@ -1738,23 +1643,12 @@ fail:
 }
 VALUE Resolve_Calls_traverse(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     ptr->pos=ptr->len;
     it=rb_funcall(self,sy_Resolve_Calls__at_changed_c681,1,bind2);
     var0/*oldchanged*/=it;;
@@ -1886,21 +1780,12 @@ fail:
 }
 VALUE Resolve_Calls_traverse_item(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Resolve_Calls_4,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*AmethystAST*/:
         ;
@@ -2096,25 +1981,12 @@ fail:
 }
 VALUE Resolve_Calls_visit(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10;
-    VALUE var11; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Resolve_Calls_2,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Apply*/:
         ;
@@ -2390,5 +2262,5 @@ void Init_detect_variables2_c() {
     rb_define_method(cls_Resolve_Calls,"traverse",Resolve_Calls_traverse,0);
     rb_define_method(cls_Resolve_Calls,"traverse_item",Resolve_Calls_traverse_item,0);
     rb_define_method(cls_Resolve_Calls,"visit",Resolve_Calls_visit,0);
-    rb_eval_string("testversiondetect_variables2('ca1b872bad2684e364f6d00333e09db3')");
+    rb_eval_string("testversiondetect_variables2('5ae945c898f1f5447c4e28ab4600d933')");
 }

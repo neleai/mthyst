@@ -60,20 +60,12 @@ static VALUE sy_Normalize_src_dot_free_3d49;
 static VALUE sy_Normalize_src_dot_name_80f3;
 VALUE Normalize_act(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Normalize_12,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Act*/:
         ;
@@ -952,33 +944,12 @@ fail:
 }
 VALUE Normalize_apply2(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10;
-    VALUE var11;
-    VALUE var12;
-    VALUE var13;
-    VALUE var14;
-    VALUE var15;
-    VALUE var16;
-    VALUE var17;
-    VALUE var18;
-    VALUE var19; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14,var15,var16,var17,var18,var19;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Normalize_9,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Apply*/:
         ;
@@ -2085,38 +2056,12 @@ fail:
 }
 VALUE Normalize_bind(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10;
-    VALUE var11;
-    VALUE var12;
-    VALUE var13;
-    VALUE var14;
-    VALUE var15;
-    VALUE var16;
-    VALUE var17;
-    VALUE var18;
-    VALUE var19;
-    VALUE var20;
-    VALUE var21;
-    VALUE var22;
-    VALUE var23;
-    VALUE var24; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14,var15,var16,var17,var18,var19,var20,var21,var22,var23,var24;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Normalize_6,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Bind*/:
         ;
@@ -2639,15 +2584,12 @@ fail:
 }
 VALUE Normalize_cant_fail(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1; ;
+    VALUE it ,var0,var1;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=AmethystCore_anything(self );
     FAILTEST(fail);
     var0/*e*/=it;;
@@ -2664,15 +2606,12 @@ fail:
 }
 VALUE Normalize_must_empty(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1; ;
+    VALUE it ,var0,var1;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=AmethystCore_anything(self );
     FAILTEST(fail);
     var0/*e*/=it;;
@@ -2689,30 +2628,12 @@ fail:
 }
 VALUE Normalize_or(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10;
-    VALUE var11;
-    VALUE var12;
-    VALUE var13;
-    VALUE var14;
-    VALUE var15;
-    VALUE var16; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14,var15,var16;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Normalize_1,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Or*/:
         ;
@@ -3168,29 +3089,12 @@ fail:
 }
 VALUE Normalize_seq2(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10;
-    VALUE var11;
-    VALUE var12;
-    VALUE var13;
-    VALUE var14;
-    VALUE var15; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14,var15;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Normalize_4,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Seq*/:
         ;
@@ -3618,5 +3522,5 @@ void Init_normalize_c() {
     rb_define_method(cls_Normalize,"must_empty",Normalize_must_empty,0);
     rb_define_method(cls_Normalize,"or",Normalize_or,0);
     rb_define_method(cls_Normalize,"seq2",Normalize_seq2,0);
-    rb_eval_string("testversionnormalize('4e5b17b96e66cd5444f709de43e26c6b')");
+    rb_eval_string("testversionnormalize('17dc04cbd20a7467785c2d42f167298a')");
 }

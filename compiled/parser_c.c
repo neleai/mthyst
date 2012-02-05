@@ -114,22 +114,14 @@ VALUE profile_report(VALUE self) {
 }
 VALUE AmethystParser__args(VALUE self ,VALUE a0,VALUE a1) {
     VALUE vals[2];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6;
     VALUE bind2=bind_new2(16);
     var0/*o*/=a0;;
     var5/*c*/=a1;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=var0/*o*/;
     var1/*s*/=it;;
     it=var1/*s*/;
@@ -206,26 +198,14 @@ fail:
 }
 VALUE AmethystParser_args(VALUE self ,VALUE a0,VALUE a1) {
     VALUE vals[2];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10;
     VALUE bind2=bind_new2(16);
     var2/*o*/=a0;;
     var0/*c*/=a1;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=var0/*c*/;
     var1/*c*/=it;;
     it=var2/*o*/;
@@ -316,20 +296,10 @@ fail:
 }
 VALUE AmethystParser_argsOpt(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     int oldpos=ptr->pos;
@@ -692,17 +662,12 @@ fail:
 }
 VALUE AmethystParser_call(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3; ;
+    VALUE it ,var0,var1,var2,var3;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch((unsigned char)*ame_curstr2(ptr)) {
     case UC(0) ... '@':
         ;
@@ -818,28 +783,12 @@ fail:
 }
 VALUE AmethystParser_cases(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10;
-    VALUE var11;
-    VALUE var12;
-    VALUE var13;
-    VALUE var14; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch((unsigned char)*ame_curstr2(ptr)) {
     case UC(0) ... ',':
         ;
@@ -1428,20 +1377,12 @@ fail:
 }
 VALUE AmethystParser_className(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch((unsigned char)*ame_curstr2(ptr)) {
     case UC(0) ... '@':
         ;
@@ -1518,16 +1459,13 @@ fail:
 }
 VALUE AmethystParser_collect(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE var0;
-    VALUE var1; ;
+    VALUE it ,var0,var1;
     VALUE bind2=bind_new2(16);
     var0/*ors*/=a0;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     bind_aset(bind2,1,var0/*ors*/);
     it=rb_funcall(self,sy_AmethystParser_a_eq_autova_5b84,1,bind2);
     var0/*ors*/=bind_aget(bind2,1);;
@@ -1539,21 +1477,12 @@ fail:
 }
 VALUE AmethystParser_expression(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=rb_ary_new3(0);
     var0/*f*/=it;;
     it=AmethystParser_sequence(self );
@@ -1618,19 +1547,12 @@ fail:
 }
 VALUE AmethystParser_grammar(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=Amethyst_spaces(self );
     switch((unsigned char)*ame_curstr2(ptr)) {
     case UC(0) ... '`':
@@ -1830,19 +1752,12 @@ fail:
 }
 VALUE AmethystParser_host_expr(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch((unsigned char)*ame_curstr2(ptr)) {
     case UC(0) ... ',':
         ;
@@ -1938,21 +1853,12 @@ fail:
 }
 VALUE AmethystParser_igrammar(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=rb_ary_new3(0);
     var0/*autovar*/=it;;
     int stop1=0;
@@ -2544,19 +2450,12 @@ fail:
 }
 VALUE AmethystParser_inline_host_expr(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch((unsigned char)*ame_curstr2(ptr)) {
     case UC(0) ... 'z':
         ;
@@ -2650,29 +2549,13 @@ fail:
 }
 VALUE AmethystParser_interpolated(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10;
-    VALUE var11;
-    VALUE var12;
-    VALUE var13;
-    VALUE var14; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14;
     VALUE bind2=bind_new2(16);
     var1/*e*/=a0;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=rb_ary_new3(0);
     var0/*x*/=it;;
     int stop1=0;
@@ -2911,16 +2794,12 @@ fail:
 }
 VALUE AmethystParser_key(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2; ;
+    VALUE it ,var0,var1,var2;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch((unsigned char)*ame_curstr2(ptr)) {
     case UC(0) ... '?':
         ;
@@ -3050,16 +2929,13 @@ fail:
 }
 VALUE AmethystParser_local(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE var0;
-    VALUE var1; ;
+    VALUE it ,var0,var1;
     VALUE bind2=bind_new2(16);
     var0/*x*/=a0;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     bind_aset(bind2,1,var0/*x*/);
     it=rb_funcall(self,sy_AmethystParser_bind_lb_1_rb__dot__cc9d,1,bind2);
     var0/*x*/=bind_aget(bind2,1);;
@@ -3071,17 +2947,10 @@ fail:
 }
 VALUE AmethystParser_name(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     int oldpos=ptr->pos;
@@ -3176,14 +3045,12 @@ fail:
 }
 VALUE AmethystParser_nr(VALUE self ) {
     VALUE vals[0];
-    VALUE var0; ;
+    VALUE it ,var0;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     int oldpos1=ptr->pos;
     int cut1=0;
 alt1_1:
@@ -3249,20 +3116,12 @@ fail:
 }
 VALUE AmethystParser_postfixed(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=AmethystParser_term(self );
     FAILTEST(fail);
     var0/*from*/=it;;
@@ -3788,20 +3647,12 @@ fail:
 }
 VALUE AmethystParser_prefixed(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch((unsigned char)*ame_curstr2(ptr)) {
     case UC(0) ... '%':
         ;
@@ -3929,15 +3780,12 @@ fail:
 }
 VALUE AmethystParser_procargs(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1; ;
+    VALUE it ,var0,var1;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=rb_funcall(self,sy_AmethystParser__at_ary_eq__lb__rb_,1,bind2);
     int stop1=0;
     while(!stop1) {
@@ -3981,19 +3829,12 @@ fail:
 }
 VALUE AmethystParser_procargs2(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_AmethystParser_2,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Args*/:
         ;
@@ -4098,38 +3939,12 @@ fail:
 }
 VALUE AmethystParser_rubyarg(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10;
-    VALUE var11;
-    VALUE var12;
-    VALUE var13;
-    VALUE var14;
-    VALUE var15;
-    VALUE var16;
-    VALUE var17;
-    VALUE var18;
-    VALUE var19;
-    VALUE var20;
-    VALUE var21;
-    VALUE var22;
-    VALUE var23;
-    VALUE var24; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14,var15,var16,var17,var18,var19,var20,var21,var22,var23,var24;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch((unsigned char)*ame_curstr2(ptr)) {
     case UC(0) ... '!':
         ;
@@ -6379,19 +6194,12 @@ fail:
 }
 VALUE AmethystParser_rule(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=rb_funcall(self,sy_AmethystParser__at_locals_eq__4fc1,1,bind2);
     it=rb_funcall(self,sy_AmethystParser__at_bnding_7d3c,1,bind2);
     var0/*bnding*/=it;;
@@ -6465,23 +6273,12 @@ fail:
 }
 VALUE AmethystParser_ruleargs(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=AmethystParser_argsOpt(self );
     var0/*autovar*/=it;;
     cstruct oldpass1=*ptr;
@@ -6608,17 +6405,12 @@ fail:
 }
 VALUE AmethystParser_sequence(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3; ;
+    VALUE it ,var0,var1,var2,var3;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=rb_ary_new3(0);
     var0/*autovar*/=it;;
     int stop1=0;
@@ -6664,25 +6456,12 @@ fail:
 }
 VALUE AmethystParser_term(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10;
-    VALUE var11; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch((unsigned char)*ame_curstr2(ptr)) {
     case UC(0) ... '!':
         ;
@@ -7840,5 +7619,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('968ee42561bcb816030570a517d0c749')");
+    rb_eval_string("testversionparser('54088717e811b4acb7df5e0949550ca8')");
 }

@@ -14,14 +14,12 @@ static VALUE sy_Detect_Implicit_Variables__at_vars_lb_bi_edce;
 static VALUE sy_Detect_Implicit_Variables__lp_src_dot_ins_a413;
 VALUE Detect_Implicit_Variables_root(VALUE self ) {
     VALUE vals[0];
-    VALUE var0; ;
+    VALUE it ,var0;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=rb_funcall(self,sy_Detect_Implicit_Variables__at_vars_eq_Ha_dec8,1,bind2);
     it=Detect_Implicit_Variables_traverse(self );
     FAILTEST(fail);
@@ -34,20 +32,12 @@ fail:
 }
 VALUE Detect_Implicit_Variables_traverse(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     ptr->pos=ptr->len;
     it=rb_funcall(self,sy_Detect_Implicit_Variables__lp_src_dot_ins_a413,1,bind2);
     var0/*autovar*/=it;;
@@ -134,20 +124,12 @@ fail:
 }
 VALUE Detect_Implicit_Variables_traverse_item(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Implicit_Variables_2,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*AmethystAST*/:
         ;
@@ -334,19 +316,12 @@ fail:
 }
 VALUE Detect_Implicit_Variables_visit(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Implicit_Variables_1,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Apply*/:
         ;
@@ -452,18 +427,12 @@ static VALUE sy_Add_Implicit_Variables_l_eq_Local_lb__a11b;
 static VALUE sy_Add_Implicit_Variables_src_25d9;
 VALUE Add_Implicit_Variables_root(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4; ;
+    VALUE it ,var0,var1,var2,var3,var4;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=AmethystCore_anything(self );
     FAILTEST(fail);
     var0/*autovar*/=it;;
@@ -523,23 +492,12 @@ fail:
 }
 VALUE Add_Implicit_Variables_traverse(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     ptr->pos=ptr->len;
     it=rb_funcall(self,sy_Add_Implicit_Variables__at_changed_c681,1,bind2);
     var0/*oldchanged*/=it;;
@@ -671,21 +629,12 @@ fail:
 }
 VALUE Add_Implicit_Variables_traverse_item(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Add_Implicit_Variables_3,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*AmethystAST*/:
         ;
@@ -881,21 +830,12 @@ fail:
 }
 VALUE Add_Implicit_Variables_visit(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Add_Implicit_Variables_2,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Apply*/:
         ;
@@ -1054,5 +994,5 @@ void Init_implicit_variables_c() {
     rb_define_method(cls_Add_Implicit_Variables,"traverse",Add_Implicit_Variables_traverse,0);
     rb_define_method(cls_Add_Implicit_Variables,"traverse_item",Add_Implicit_Variables_traverse_item,0);
     rb_define_method(cls_Add_Implicit_Variables,"visit",Add_Implicit_Variables_visit,0);
-    rb_eval_string("testversionimplicit_variables('9a6a49f2cb11fb60894e06f6e1e55e8e')");
+    rb_eval_string("testversionimplicit_variables('92147855747bbde86cb42770265d8611')");
 }

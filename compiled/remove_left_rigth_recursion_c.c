@@ -26,39 +26,13 @@ static VALUE sy_Remove_Left_Recursion_src_25d9;
 static VALUE sy_Remove_Left_Recursion_src_dot_body_519e;
 VALUE Remove_Left_Recursion_first(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10;
-    VALUE var11;
-    VALUE var12;
-    VALUE var13;
-    VALUE var14;
-    VALUE var15;
-    VALUE var16;
-    VALUE var17;
-    VALUE var18;
-    VALUE var19;
-    VALUE var20;
-    VALUE var21;
-    VALUE var22;
-    VALUE var23;
-    VALUE var24; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14,var15,var16,var17,var18,var19,var20,var21,var22,var23,var24;
     VALUE bind2=bind_new2(16);
     var1/*follow*/=a0;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Remove_Left_Recursion_4,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Apply*/:
         ;
@@ -529,15 +503,12 @@ fail:
 }
 VALUE Remove_Left_Recursion_must_empty(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1; ;
+    VALUE it ,var0,var1;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=AmethystCore_anything(self );
     FAILTEST(fail);
     var0/*e*/=it;;
@@ -554,50 +525,12 @@ fail:
 }
 VALUE Remove_Left_Recursion_root(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10;
-    VALUE var11;
-    VALUE var12;
-    VALUE var13;
-    VALUE var14;
-    VALUE var15;
-    VALUE var16;
-    VALUE var17;
-    VALUE var18;
-    VALUE var19;
-    VALUE var20;
-    VALUE var21;
-    VALUE var22;
-    VALUE var23;
-    VALUE var24;
-    VALUE var25;
-    VALUE var26;
-    VALUE var27;
-    VALUE var28;
-    VALUE var29;
-    VALUE var30;
-    VALUE var31;
-    VALUE var32;
-    VALUE var33;
-    VALUE var34;
-    VALUE var35;
-    VALUE var36; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14,var15,var16,var17,var18,var19,var20,var21,var22,var23,var24,var25,var26,var27,var28,var29,var30,var31,var32,var33,var34,var35,var36;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Remove_Left_Recursion_1,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Rule*/:
         ;
@@ -1708,5 +1641,5 @@ void Init_remove_left_rigth_recursion_c() {
     rb_define_method(cls_Remove_Left_Recursion,"first",Remove_Left_Recursion_first,1);
     rb_define_method(cls_Remove_Left_Recursion,"must_empty",Remove_Left_Recursion_must_empty,0);
     rb_define_method(cls_Remove_Left_Recursion,"root",Remove_Left_Recursion_root,0);
-    rb_eval_string("testversionremove_left_rigth_recursion('1de16bc51d61ba1d2421f3d89432abab')");
+    rb_eval_string("testversionremove_left_rigth_recursion('7e345aa2b56841a45b2e560e51caf67b')");
 }

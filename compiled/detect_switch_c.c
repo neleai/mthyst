@@ -22,41 +22,12 @@ static VALUE sy_First_Dataflow_lattice_dot__b0f6;
 static VALUE sy_analyze;
 VALUE First_Dataflow_first(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10;
-    VALUE var11;
-    VALUE var12;
-    VALUE var13;
-    VALUE var14;
-    VALUE var15;
-    VALUE var16;
-    VALUE var17;
-    VALUE var18;
-    VALUE var19;
-    VALUE var20;
-    VALUE var21;
-    VALUE var22;
-    VALUE var23;
-    VALUE var24;
-    VALUE var25;
-    VALUE var26;
-    VALUE var27; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14,var15,var16,var17,var18,var19,var20,var21,var22,var23,var24,var25,var26,var27;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_First_Dataflow_1,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Act*/:
     case 1/*CAct*/:
@@ -663,18 +634,13 @@ fail:
 }
 VALUE First_Dataflow_getvalue(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3; ;
+    VALUE it ,var0,var1,var2,var3;
     VALUE bind2=bind_new2(16);
     var0/*v*/=a0;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     bind_aset(bind2,1,var0/*v*/);
     it=rb_funcall(self,sy_First_Dataflow__at_vis_eq_bin_8b89,1,bind2);
     var0/*v*/=bind_aget(bind2,1);;
@@ -706,15 +672,12 @@ fail:
 }
 VALUE First_Dataflow_root(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1; ;
+    VALUE it ,var0,var1;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=AmethystCore_anything(self );
     FAILTEST(fail);
     var0/*x*/=it;;
@@ -730,15 +693,12 @@ fail:
 }
 VALUE First_Dataflow_value(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1; ;
+    VALUE it ,var0,var1;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=AmethystCore_anything(self );
     FAILTEST(fail);
     var0/*x*/=it;;
@@ -778,25 +738,12 @@ static VALUE sy_Minsize_Dataflow_lattice_lb__bbba;
 static VALUE sy_Minsize_Dataflow_lattice_lb__fdee;
 VALUE Minsize_Dataflow_first(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10;
-    VALUE var11; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Minsize_Dataflow_1,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Apply*/:
         ;
@@ -1294,41 +1241,12 @@ fail:
 }
 VALUE Minsize_Dataflow_first_Minsize_Dataflow(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10;
-    VALUE var11;
-    VALUE var12;
-    VALUE var13;
-    VALUE var14;
-    VALUE var15;
-    VALUE var16;
-    VALUE var17;
-    VALUE var18;
-    VALUE var19;
-    VALUE var20;
-    VALUE var21;
-    VALUE var22;
-    VALUE var23;
-    VALUE var24;
-    VALUE var25;
-    VALUE var26;
-    VALUE var27; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14,var15,var16,var17,var18,var19,var20,var21,var22,var23,var24,var25,var26,var27;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Minsize_Dataflow_3,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Act*/:
     case 1/*CAct*/:
@@ -1935,18 +1853,13 @@ fail:
 }
 VALUE Minsize_Dataflow_getvalue(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3; ;
+    VALUE it ,var0,var1,var2,var3;
     VALUE bind2=bind_new2(16);
     var0/*v*/=a0;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     bind_aset(bind2,1,var0/*v*/);
     it=rb_funcall(self,sy_Minsize_Dataflow__at_vis_eq_bin_8b89,1,bind2);
     var0/*v*/=bind_aget(bind2,1);;
@@ -2003,25 +1916,12 @@ static VALUE sy_Maxsize_Dataflow_lattice_lb__bbba;
 static VALUE sy_Maxsize_Dataflow_lattice_lb__fdee;
 VALUE Maxsize_Dataflow_first(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10;
-    VALUE var11; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Maxsize_Dataflow_1,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Apply*/:
         ;
@@ -2519,41 +2419,12 @@ fail:
 }
 VALUE Maxsize_Dataflow_first_Maxsize_Dataflow(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10;
-    VALUE var11;
-    VALUE var12;
-    VALUE var13;
-    VALUE var14;
-    VALUE var15;
-    VALUE var16;
-    VALUE var17;
-    VALUE var18;
-    VALUE var19;
-    VALUE var20;
-    VALUE var21;
-    VALUE var22;
-    VALUE var23;
-    VALUE var24;
-    VALUE var25;
-    VALUE var26;
-    VALUE var27; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14,var15,var16,var17,var18,var19,var20,var21,var22,var23,var24,var25,var26,var27;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Maxsize_Dataflow_3,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Act*/:
     case 1/*CAct*/:
@@ -3160,18 +3031,13 @@ fail:
 }
 VALUE Maxsize_Dataflow_getvalue(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3; ;
+    VALUE it ,var0,var1,var2,var3;
     VALUE bind2=bind_new2(16);
     var0/*v*/=a0;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     bind_aset(bind2,1,var0/*v*/);
     it=rb_funcall(self,sy_Maxsize_Dataflow__at_vis_eq_bin_8b89,1,bind2);
     var0/*v*/=bind_aget(bind2,1);;
@@ -3228,28 +3094,12 @@ static VALUE sy_Switch_Char_Dataflow_lattice_dot__e0e5;
 static VALUE sy_Switch_Char_Dataflow_regchar_lp__90af;
 VALUE Switch_Char_Dataflow_first(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10;
-    VALUE var11;
-    VALUE var12;
-    VALUE var13;
-    VALUE var14; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Switch_Char_Dataflow_1,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Apply*/:
         ;
@@ -3988,41 +3838,12 @@ fail:
 }
 VALUE Switch_Char_Dataflow_first_Switch_Char_Dataflow(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10;
-    VALUE var11;
-    VALUE var12;
-    VALUE var13;
-    VALUE var14;
-    VALUE var15;
-    VALUE var16;
-    VALUE var17;
-    VALUE var18;
-    VALUE var19;
-    VALUE var20;
-    VALUE var21;
-    VALUE var22;
-    VALUE var23;
-    VALUE var24;
-    VALUE var25;
-    VALUE var26;
-    VALUE var27; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14,var15,var16,var17,var18,var19,var20,var21,var22,var23,var24,var25,var26,var27;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Switch_Char_Dataflow_3,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Act*/:
     case 1/*CAct*/:
@@ -4629,18 +4450,13 @@ fail:
 }
 VALUE Switch_Char_Dataflow_getvalue(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3; ;
+    VALUE it ,var0,var1,var2,var3;
     VALUE bind2=bind_new2(16);
     var0/*v*/=a0;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     bind_aset(bind2,1,var0/*v*/);
     it=rb_funcall(self,sy_Switch_Char_Dataflow__at_vis_eq_bin_8b89,1,bind2);
     var0/*v*/=bind_aget(bind2,1);;
@@ -4696,19 +4512,12 @@ static VALUE sy_Switch_Clas_Dataflow_lattice_dot__b0f6;
 static VALUE sy_Switch_Clas_Dataflow_lattice_lb__78fa;
 VALUE Switch_Clas_Dataflow_first(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Switch_Clas_Dataflow_1,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Apply*/:
         ;
@@ -4867,41 +4676,12 @@ fail:
 }
 VALUE Switch_Clas_Dataflow_first_Switch_Clas_Dataflow(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10;
-    VALUE var11;
-    VALUE var12;
-    VALUE var13;
-    VALUE var14;
-    VALUE var15;
-    VALUE var16;
-    VALUE var17;
-    VALUE var18;
-    VALUE var19;
-    VALUE var20;
-    VALUE var21;
-    VALUE var22;
-    VALUE var23;
-    VALUE var24;
-    VALUE var25;
-    VALUE var26;
-    VALUE var27; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14,var15,var16,var17,var18,var19,var20,var21,var22,var23,var24,var25,var26,var27;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Switch_Clas_Dataflow_4,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Act*/:
     case 1/*CAct*/:
@@ -5508,18 +5288,13 @@ fail:
 }
 VALUE Switch_Clas_Dataflow_getvalue(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3; ;
+    VALUE it ,var0,var1,var2,var3;
     VALUE bind2=bind_new2(16);
     var0/*v*/=a0;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     bind_aset(bind2,1,var0/*v*/);
     it=rb_funcall(self,sy_Switch_Clas_Dataflow__at_vis_eq_bin_8b89,1,bind2);
     var0/*v*/=bind_aget(bind2,1);;
@@ -5579,27 +5354,12 @@ static VALUE sy_Cant_Fail_Dataflow_lattice_lb__0ff9;
 static VALUE sy_Cant_Fail_Dataflow_src_dot_to_5e99;
 VALUE Cant_Fail_Dataflow_first(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10;
-    VALUE var11;
-    VALUE var12;
-    VALUE var13; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Cant_Fail_Dataflow_1,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Act*/:
         ;
@@ -6091,41 +5851,12 @@ fail:
 }
 VALUE Cant_Fail_Dataflow_first_Cant_Fail_Dataflow(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10;
-    VALUE var11;
-    VALUE var12;
-    VALUE var13;
-    VALUE var14;
-    VALUE var15;
-    VALUE var16;
-    VALUE var17;
-    VALUE var18;
-    VALUE var19;
-    VALUE var20;
-    VALUE var21;
-    VALUE var22;
-    VALUE var23;
-    VALUE var24;
-    VALUE var25;
-    VALUE var26;
-    VALUE var27; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14,var15,var16,var17,var18,var19,var20,var21,var22,var23,var24,var25,var26,var27;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Cant_Fail_Dataflow_4,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Act*/:
     case 1/*CAct*/:
@@ -6732,18 +6463,13 @@ fail:
 }
 VALUE Cant_Fail_Dataflow_getvalue(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3; ;
+    VALUE it ,var0,var1,var2,var3;
     VALUE bind2=bind_new2(16);
     var0/*v*/=a0;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     bind_aset(bind2,1,var0/*v*/);
     it=rb_funcall(self,sy_Cant_Fail_Dataflow__at_vis_eq_bin_8b89,1,bind2);
     var0/*v*/=bind_aget(bind2,1);;
@@ -6797,15 +6523,12 @@ static VALUE sy_Detect_First_src_dot_rule_5acf;
 static VALUE sy_Detect_First_src_dot_rule_a719;
 VALUE Detect_First_cant_fail(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1; ;
+    VALUE it ,var0,var1;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=AmethystCore_anything(self );
     FAILTEST(fail);
     var0/*e*/=it;;
@@ -6822,25 +6545,12 @@ fail:
 }
 VALUE Detect_First_itrans(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10;
-    VALUE var11; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=rb_ary_new3(0);
     var0/*autovar*/=it;;
     int stop1=0;
@@ -7074,15 +6784,12 @@ fail:
 }
 VALUE Detect_First_must_empty(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1; ;
+    VALUE it ,var0,var1;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=AmethystCore_anything(self );
     FAILTEST(fail);
     var0/*e*/=it;;
@@ -7099,19 +6806,12 @@ fail:
 }
 VALUE Detect_First_object_only(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Detect_First_4,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Apply*/:
         ;
@@ -7228,14 +6928,12 @@ fail:
 }
 VALUE Detect_First_root(VALUE self ) {
     VALUE vals[0];
-    VALUE var0; ;
+    VALUE it ,var0;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=Traverser_Clone2_traverse(self );
     FAILTEST(fail);
     var0/*_result*/=it;;
@@ -7246,19 +6944,12 @@ fail:
 }
 VALUE Detect_First_string_only(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Detect_First_3,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Apply*/:
         ;
@@ -7438,20 +7129,13 @@ static VALUE sy_Detect_Switch_Char_src_dot_rule_a719;
 static VALUE sy_first;
 VALUE Detect_Switch_Char_combine_or(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5;
     VALUE bind2=bind_new2(16);
     var3/*list*/=a0;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Switch_Char_7,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Switch_Char*/:
         ;
@@ -7588,24 +7272,13 @@ fail:
 }
 VALUE Detect_Switch_Char_combine_seq(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9;
     VALUE bind2=bind_new2(16);
     var1/*prefix*/=a0;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Switch_Char_6,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Switch_Char*/:
         ;
@@ -7825,25 +7498,12 @@ fail:
 }
 VALUE Detect_Switch_Char_itrans(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10;
-    VALUE var11; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=rb_ary_new3(0);
     var0/*autovar*/=it;;
     int stop1=0;
@@ -8077,14 +7737,12 @@ fail:
 }
 VALUE Detect_Switch_Char_root(VALUE self ) {
     VALUE vals[0];
-    VALUE var0; ;
+    VALUE it ,var0;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=Detect_Switch_Char_traverse(self );
     FAILTEST(fail);
     var0/*_result*/=it;;
@@ -8095,23 +7753,12 @@ fail:
 }
 VALUE Detect_Switch_Char_traverse(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     ptr->pos=ptr->len;
     it=rb_funcall(self,sy_Detect_Switch_Char__at_changed_c681,1,bind2);
     var0/*oldchanged*/=it;;
@@ -8243,21 +7890,12 @@ fail:
 }
 VALUE Detect_Switch_Char_traverse_item(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Switch_Char_8,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*AmethystAST*/:
         ;
@@ -8453,69 +8091,12 @@ fail:
 }
 VALUE Detect_Switch_Char_visit(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10;
-    VALUE var11;
-    VALUE var12;
-    VALUE var13;
-    VALUE var14;
-    VALUE var15;
-    VALUE var16;
-    VALUE var17;
-    VALUE var18;
-    VALUE var19;
-    VALUE var20;
-    VALUE var21;
-    VALUE var22;
-    VALUE var23;
-    VALUE var24;
-    VALUE var25;
-    VALUE var26;
-    VALUE var27;
-    VALUE var28;
-    VALUE var29;
-    VALUE var30;
-    VALUE var31;
-    VALUE var32;
-    VALUE var33;
-    VALUE var34;
-    VALUE var35;
-    VALUE var36;
-    VALUE var37;
-    VALUE var38;
-    VALUE var39;
-    VALUE var40;
-    VALUE var41;
-    VALUE var42;
-    VALUE var43;
-    VALUE var44;
-    VALUE var45;
-    VALUE var46;
-    VALUE var47;
-    VALUE var48;
-    VALUE var49;
-    VALUE var50;
-    VALUE var51;
-    VALUE var52;
-    VALUE var53;
-    VALUE var54;
-    VALUE var55; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14,var15,var16,var17,var18,var19,var20,var21,var22,var23,var24,var25,var26,var27,var28,var29,var30,var31,var32,var33,var34,var35,var36,var37,var38,var39,var40,var41,var42,var43,var44,var45,var46,var47,var48,var49,var50,var51,var52,var53,var54,var55;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Switch_Char_1,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Apply*/:
         ;
@@ -9611,20 +9192,13 @@ static VALUE sy_Detect_Switch_Clas_src_dot_rule_a719;
 static VALUE sy_first;
 VALUE Detect_Switch_Clas_combine_or(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5;
     VALUE bind2=bind_new2(16);
     var3/*list*/=a0;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Switch_Clas_7,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Switch_Clas*/:
         ;
@@ -9761,24 +9335,13 @@ fail:
 }
 VALUE Detect_Switch_Clas_combine_seq(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9;
     VALUE bind2=bind_new2(16);
     var1/*prefix*/=a0;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Switch_Clas_6,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Switch_Clas*/:
         ;
@@ -9998,25 +9561,12 @@ fail:
 }
 VALUE Detect_Switch_Clas_itrans(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10;
-    VALUE var11; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=rb_ary_new3(0);
     var0/*autovar*/=it;;
     int stop1=0;
@@ -10250,14 +9800,12 @@ fail:
 }
 VALUE Detect_Switch_Clas_root(VALUE self ) {
     VALUE vals[0];
-    VALUE var0; ;
+    VALUE it ,var0;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=Detect_Switch_Clas_traverse(self );
     FAILTEST(fail);
     var0/*_result*/=it;;
@@ -10268,23 +9816,12 @@ fail:
 }
 VALUE Detect_Switch_Clas_traverse(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     ptr->pos=ptr->len;
     it=rb_funcall(self,sy_Detect_Switch_Clas__at_changed_c681,1,bind2);
     var0/*oldchanged*/=it;;
@@ -10416,21 +9953,12 @@ fail:
 }
 VALUE Detect_Switch_Clas_traverse_item(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Switch_Clas_8,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*AmethystAST*/:
         ;
@@ -10626,62 +10154,12 @@ fail:
 }
 VALUE Detect_Switch_Clas_visit(VALUE self ) {
     VALUE vals[0];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10;
-    VALUE var11;
-    VALUE var12;
-    VALUE var13;
-    VALUE var14;
-    VALUE var15;
-    VALUE var16;
-    VALUE var17;
-    VALUE var18;
-    VALUE var19;
-    VALUE var20;
-    VALUE var21;
-    VALUE var22;
-    VALUE var23;
-    VALUE var24;
-    VALUE var25;
-    VALUE var26;
-    VALUE var27;
-    VALUE var28;
-    VALUE var29;
-    VALUE var30;
-    VALUE var31;
-    VALUE var32;
-    VALUE var33;
-    VALUE var34;
-    VALUE var35;
-    VALUE var36;
-    VALUE var37;
-    VALUE var38;
-    VALUE var39;
-    VALUE var40;
-    VALUE var41;
-    VALUE var42;
-    VALUE var43;
-    VALUE var44;
-    VALUE var45;
-    VALUE var46;
-    VALUE var47;
-    VALUE var48; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14,var15,var16,var17,var18,var19,var20,var21,var22,var23,var24,var25,var26,var27,var28,var29,var30,var31,var32,var33,var34,var35,var36,var37,var38,var39,var40,var41,var42,var43,var44,var45,var46,var47,var48;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Switch_Clas_1,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Apply*/:
         ;
@@ -11585,31 +11063,13 @@ static VALUE sy_Detect_Size_bind_lb_1_rb__gt__f573;
 static VALUE sy_Detect_Size_minsize_lp__01f0;
 VALUE Detect_Size_predicate(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10;
-    VALUE var11;
-    VALUE var12;
-    VALUE var13;
-    VALUE var14;
-    VALUE var15;
-    VALUE var16; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14,var15,var16;
     VALUE bind2=bind_new2(16);
     var3/*s*/=a0;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     it=AmethystCore_anything(self );
     FAILTEST(fail);
     var0/*el*/=it;;
@@ -11959,31 +11419,13 @@ fail:
 }
 VALUE Detect_Size_predicate2(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE var0;
-    VALUE var1;
-    VALUE var2;
-    VALUE var3;
-    VALUE var4;
-    VALUE var5;
-    VALUE var6;
-    VALUE var7;
-    VALUE var8;
-    VALUE var9;
-    VALUE var10;
-    VALUE var11;
-    VALUE var12;
-    VALUE var13;
-    VALUE var14;
-    VALUE var15;
-    VALUE var16; ;
+    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14,var15,var16;
     VALUE bind2=bind_new2(16);
     var4/*s*/=a0;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
-    VALUE it;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-
     switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Size_2,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Apply*/:
         ;
@@ -12587,5 +12029,5 @@ void Init_detect_switch_c() {
     sy_Detect_Size_minsize_lp__01f0=rb_intern("Detect_Size_minsize_lp__01f0");
     rb_define_method(cls_Detect_Size,"predicate",Detect_Size_predicate,1);
     rb_define_method(cls_Detect_Size,"predicate2",Detect_Size_predicate2,1);
-    rb_eval_string("testversiondetect_switch('b826971a4de8442ca76796d346f3812f')");
+    rb_eval_string("testversiondetect_switch('043584bea4f6fa248e0c464768903ba5')");
 }

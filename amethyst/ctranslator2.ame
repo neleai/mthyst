@@ -110,20 +110,22 @@ amethyst AmethystCTranslator < Amethyst {
                    "
               [s,init,rbcode] } ]
 
-         |  Rule[@name:name &{CurrentParser[:memoize]&&CurrentParser[:memoize].include?(name)} {@@rulename=name; Local.resetnumbering;resetlabels;@@locls={}} @body=>trans:body  
+         |  Rule[@name:name {@@rulename=name; Local.resetnumbering;resetlabels;@@locls={}} @body=>trans:body  
           { h="VALUE #{@@grammar}_#{name}(VALUE self #{map_index(@args){|i| ",VALUE a#{i}"}*""})" 
             @@header<<h+";"
             @@defmethods<< "rb_define_method(cls_#{@@grammar},\"#{@name}\",#{@@grammar}_#{@name},#{@args.size});"
-						s=h+"{VALUE vals[#{@args.size}]; #{map_index(@@locls){|i| "VALUE var#{i};"}*""};VALUE bind2=bind_new2(16); #{map_index(@args){|i| bset(@args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
-int oldpos=ptr->pos;if (memo_pos(mem,#{@@memo_no=(@@memo_no||111)+2},ptr->src,ptr->pos)!=-1) {it=memo_value(mem,#{@@memo_no},ptr->src,ptr->pos);ptr->pos=memo_pos(mem,#{@@memo_no},ptr->src,ptr->pos);return it;} #{body}\n memo_add(mem,#{@@memo_no},ptr->src,oldpos,it,ptr->pos); return it;\nfail: memo_add(mem,#{@@memo_no},ptr->src,oldpos,failobj,ptr->pos); return failobj; }" } ]
+						s=h+"{VALUE vals[#{@args.size}]; VALUE it #{map_index(@@locls){|i| ",var#{i}"}*""};VALUE bind2=bind_new2(16); #{map_index(@args){|i| bset(@args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);"
+s+="int oldpos=ptr->pos;if (memo_pos(mem,#{@@memo_no=(@@memo_no||111)+2},ptr->src,ptr->pos)!=-1) {it=memo_value(mem,#{@@memo_no},ptr->src,ptr->pos);ptr->pos=memo_pos(mem,#{@@memo_no},ptr->src,ptr->pos);return it;}" if CurrentParser[:memoize]&&CurrentParser[:memoize].include?(name)
+s+="#{body}\n" 
+if CurrentParser[:memoize]&&CurrentParser[:memoize].include?(name)
+s+="memo_add(mem,#{@@memo_no},ptr->src,oldpos,it,ptr->pos); return it;\nfail: memo_add(mem,#{@@memo_no},ptr->src,oldpos,failobj,ptr->pos); return failobj; }" 
+else
+s+="return it;\nfail: return failobj;}"
+end
+s
+} ]
 
 
-       |  Rule[@name:name {@@rulename=name; Local.resetnumbering;resetlabels;@@locls={}} @body=>trans:body  
-          { h="VALUE #{@@grammar}_#{name}(VALUE self #{map_index(@args){|i| ",VALUE a#{i}"}*""})" 
-            @@header<<h+";"
-            @@defmethods<< "rb_define_method(cls_#{@@grammar},\"#{@name}\",#{@@grammar}_#{@name},#{@args.size});"
-            h+"{VALUE vals[#{@args.size}];  #{map_index(@@locls){|i| "VALUE var#{i};"}*""} ;VALUE bind2=bind_new2(16); #{map_index(@args){|i| bset(@args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3;VALUE it; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);
-            \n#{body}\nreturn it;\nfail: return failobj; }" } ]
         | Act[ {@@bindno=0;@@binds={}}
 								.*:{addcallback(@pred ? ["(",it,") || FAIL"] : it)}:cbno 
 								{@@binds.map{|k,v| "bind_aset(bind2,#{v},#{bget(k)});"}*"" + "it=#{rbcall(cbno,["bind2"])};"+@@binds.map{|k,v|"#{bset(k,"bind_aget(bind2,#{v})")};"}*"" +"#{@pred ? "FAILTEST(#{@@faillabel});" :"" }"} ]
