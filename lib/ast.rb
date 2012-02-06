@@ -50,14 +50,14 @@ equalize_by(e,by)
 }
 class Bind
 	def normalize
-		b=AmethystCore::bind_normalize(self)
-		#puts "norm"
-		#puts self.inspect
-		#puts b.inspect
-		b
+		AmethystCore::bind_normalize(self)
 	end
 end
-
+class Seq
+	def normalize
+		AmethystCore::seq_normalize(self);
+	end
+end
 Placeholder=Consts.new("Placeholder");FAIL=Consts.new("FAIL")
 
 
@@ -131,7 +131,9 @@ end
 class Seq
 	def self.[](*args)
 		args=args[0][:ary] if args.size==1 && args[0].is_a?(Hash)
-		Seq.create({:ary=>args.flatten}).normalize
+		#puts args.inspect
+		#Seq.create({:ary=>args.flatten}).normalize
+		Amethyst::seq_create2(args.flatten)
 	end
 	def normalize2
 		$normalize.parse(:seq2,[self])
