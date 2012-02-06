@@ -306,8 +306,7 @@ VALUE AmethystParser_argsOpt(VALUE self ) {
     Data_Get_Struct(self,cstruct,ptr);
     if (ptr->mem==NULL) {
         ptr->mem=memo_init();
-        memo_val=Data_Wrap_Struct(cls_AmethystParser,memo_mark,memo_free,ptr->mem);
-        rb_global_variable(&memo_val);
+        ptr->memgc=Data_Wrap_Struct(cls_AmethystParser,memo_mark,memo_free,ptr->mem);
     }
     int oldpos=ptr->pos;
     if (memo_pos(ptr->mem,115,ptr->src,ptr->pos)!=-1) {
@@ -2944,8 +2943,7 @@ VALUE AmethystParser_name(VALUE self ) {
     Data_Get_Struct(self,cstruct,ptr);
     if (ptr->mem==NULL) {
         ptr->mem=memo_init();
-        memo_val=Data_Wrap_Struct(cls_AmethystParser,memo_mark,memo_free,ptr->mem);
-        rb_global_variable(&memo_val);
+        ptr->memgc=Data_Wrap_Struct(cls_AmethystParser,memo_mark,memo_free,ptr->mem);
     }
     int oldpos=ptr->pos;
     if (memo_pos(ptr->mem,113,ptr->src,ptr->pos)!=-1) {
@@ -7608,5 +7606,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('0010e4e1f3c173839d7f1a0cf6d9c24a')");
+    rb_eval_string("testversionparser('386eb851e44901044352e138bcf21223')");
 }

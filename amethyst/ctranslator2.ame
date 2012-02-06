@@ -114,7 +114,7 @@ amethyst AmethystCTranslator < Amethyst {
             @@header<<h+";"
             @@defmethods<< "rb_define_method(cls_#{@@grammar},\"#{@name}\",#{@@grammar}_#{@name},#{@args.size});"
 						s=h+"{VALUE vals[#{@args.size}]; VALUE it #{map_index(@@locls){|i| ",var#{i}"}*""};VALUE bind2=bind_new2(16); #{map_index(@args){|i| bset(@args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);"
-s+="if (ptr->mem==NULL){ptr->mem=memo_init();memo_val=Data_Wrap_Struct(cls_AmethystParser,memo_mark,memo_free,ptr->mem); rb_global_variable(&memo_val);}" if CurrentParser[:memoize]&&CurrentParser[:memoize].include?(name)
+s+="if (ptr->mem==NULL){ptr->mem=memo_init();ptr->memgc=Data_Wrap_Struct(cls_AmethystParser,memo_mark,memo_free,ptr->mem);}" if CurrentParser[:memoize]&&CurrentParser[:memoize].include?(name)
 s+="int oldpos=ptr->pos;if (memo_pos(ptr->mem,#{@@memo_no=(@@memo_no||111)+2},ptr->src,ptr->pos)!=-1) {it=memo_value(ptr->mem,#{@@memo_no},ptr->src,ptr->pos);ptr->pos=memo_pos(ptr->mem,#{@@memo_no},ptr->src,ptr->pos);return it;}" if CurrentParser[:memoize]&&CurrentParser[:memoize].include?(name)
 s+="#{body}\n" 
 if CurrentParser[:memoize]&&CurrentParser[:memoize].include?(name)

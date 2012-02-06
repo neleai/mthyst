@@ -319,12 +319,12 @@ h="VALUE #{bind[1]}(VALUE self,VALUE bind)"
                  @defmethods<<"rb_define_method(cls_#{@grammar},\"#{bind[1]}\",#{bind[1]},1);"
                  @lambdas<< h+"{VALUE vals[0]; /*todo unify with rule and get args*/ cstruct *ptr; int x;VALUE it;VALUE arg0,arg1,arg2,arg3;\n#{bind[2]}\nreturn it;\nfail: return failobj; }" 
 end
-def AmethystCTranslator_h_eq__dq_VALUE_575f(bind)
+def AmethystCTranslator_h_eq__dq_VALUE_8fed(bind)
 h="VALUE #{@grammar}_#{bind[1]}(VALUE self #{map_index(src.args){|i| ",VALUE a#{i}"}*""})" 
             @header<<h+";"
             @defmethods<< "rb_define_method(cls_#{@grammar},\"#{src.name}\",#{@grammar}_#{src.name},#{src.args.size});"
 						bind[2]=h+"{VALUE vals[#{src.args.size}]; VALUE it #{map_index(@locls){|i| ",var#{i}"}*""};VALUE bind2=bind_new2(16); #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);"
-bind[2]+="if (ptr->mem==NULL){ptr->mem=memo_init();memo_val=Data_Wrap_Struct(cls_AmethystParser,memo_mark,memo_free,ptr->mem); rb_global_variable(&memo_val);}" if CurrentParser[:memoize]&&CurrentParser[:memoize].include?(bind[1])
+bind[2]+="if (ptr->mem==NULL){ptr->mem=memo_init();ptr->memgc=Data_Wrap_Struct(cls_AmethystParser,memo_mark,memo_free,ptr->mem);}" if CurrentParser[:memoize]&&CurrentParser[:memoize].include?(bind[1])
 bind[2]+="int oldpos=ptr->pos;if (memo_pos(ptr->mem,#{@memo_no=(@memo_no||111)+2},ptr->src,ptr->pos)!=-1) {it=memo_value(ptr->mem,#{@memo_no},ptr->src,ptr->pos);ptr->pos=memo_pos(ptr->mem,#{@memo_no},ptr->src,ptr->pos);return it;}" if CurrentParser[:memoize]&&CurrentParser[:memoize].include?(bind[1])
 bind[2]+="#{bind[3]}\n" 
 if CurrentParser[:memoize]&&CurrentParser[:memoize].include?(bind[1])
@@ -377,15 +377,15 @@ end
 
 
 def ctranslator2_compiled_by
-'000966a173c919fcff474ac96da776f3'
+'c0d7a8d0235ef08d2f6ec1ca34fc3927'
 end
 def ctranslator2_source_hash
-'929d4428117c593847a4690e4b6054d5'
+'902063acbfcdb89bc80e5538ed7def3d'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'5d88ce40ed5dddcdd613d9d96548123e'
+'d5b5d09706fd2b7273cd731490c36b5e'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"

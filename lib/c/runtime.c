@@ -53,12 +53,11 @@ VALUE AmethystCore_append(VALUE self,VALUE ary,VALUE el){
 	}
 	return ary;
 }
-void ame_mark(cstruct *ptr){
-}
+void ame_mark(cstruct *ptr){ rb_gc_mark( ptr->memgc);}
 void ame_free(cstruct* ptr){ free(ptr);}
 VALUE ame_new(VALUE clas){
 	cstruct *ptr=ALLOC(cstruct);
-	ptr->mem=NULL;
+	ptr->mem=NULL;ptr->memgc=Qnil;
   VALUE o=Data_Wrap_Struct(clas,ame_mark,ame_free,ptr);
 	VALUE argv[0]; rb_obj_call_init(o,0,argv);
 	return o;
