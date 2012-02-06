@@ -97,6 +97,8 @@ void bind_cache_mark(bind_cache *b){int i;
 }
 void bind_cache_free(bind_cache *b){}
 
+int nhit=0;
+int nmiss=0;
 VALUE bind_normalize(VALUE self,VALUE bind){
 	VALUE name=rb_iv_get(bind,"@name");
 	VALUE expr=rb_ary_entry(rb_iv_get(bind,"@ary"),0);
@@ -105,7 +107,7 @@ VALUE bind_normalize(VALUE self,VALUE bind){
 	if ((int)bind2!=0){
 	  VALUE name2=rb_iv_get(bind2,"@name");
 	  VALUE expr2=rb_ary_entry(rb_iv_get(bind2,"@ary"),0);
-	  if ( name==name2 && expr==expr2) return b->res[hash];
+	  if ( name==name2 && expr==expr2){nhit++; return b->res[hash];}
 	}
 	VALUE bind3=rb_funcall(bind,rb_intern("normalize2"),0);
 	if (rb_obj_is_kind_of(bind3, rb_obj_class(bind))){
@@ -117,6 +119,7 @@ VALUE bind_normalize(VALUE self,VALUE bind){
 	}
 	b->ary[hash]=bind;
 	b->res[hash]=bind3;
+	nmiss++;
 	return bind3;
 }
 VALUE bind_create2(VALUE self,VALUE name,VALUE ary){
@@ -133,7 +136,10 @@ VALUE bind_create2(VALUE self,VALUE name,VALUE ary){
 	rb_iv_set(o,"@ary",ary);
 	return bind_normalize(self,o);
 }
-
+VALUE report_normalize(VALUE self){
+	printf("normalize bind hit: %i miss: %i\n",nhit,nmiss);
+	return Qnil;
+}
 ID s_ary;
 void Init_Ame(VALUE self){
 	b=bind_cache_init(); 
@@ -147,6 +153,7 @@ void Init_Ame(VALUE self){
 	rb_define_singleton_method(amecore,"new",ame_new,0);
 	rb_define_singleton_method(amecore,"bind_normalize",bind_normalize,1);
 	rb_define_singleton_method(amecore,"bind_create2",bind_create2,2);
+	rb_define_singleton_method(amecore,"report_normalize",report_normalize,0);
 
 	rb_define_method(amecore,"pos=",ame_setposrb,1);
 	rb_define_method(amecore,"pos",ame_getposrb,0);
