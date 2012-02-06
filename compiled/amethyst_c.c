@@ -54,6 +54,7 @@ static VALUE sy_Amethyst_bind_lb_1_rb__dot__03c2;
 static VALUE sy_Amethyst_bind_lb_1_rb__dot__c3ef;
 static VALUE sy_Amethyst_bind_lb_1_rb__dot__e879;
 static VALUE sy_Amethyst_bind_lb_1_rb__ti__cfcb;
+static VALUE sy_Amethyst_self_dot_pro_e13d;
 static VALUE sy_apply;
 VALUE Amethyst__(VALUE self ) {
     VALUE vals[0];
@@ -1747,7 +1748,7 @@ fail:
 }
 VALUE Amethyst_parse(VALUE self ,VALUE a0,VALUE a1) {
     VALUE vals[2];
-    VALUE it ,var0,var1,var2,var3,var4;
+    VALUE it ,var0,var1,var2,var3,var4,var5;
     VALUE bind2=bind_new2(16);
     var2/*rule*/=a0;;
     var0/*obj*/=a1;;
@@ -1776,7 +1777,11 @@ VALUE Amethyst_parse(VALUE self ,VALUE a0,VALUE a1) {
     arg0=it;
     it=rb_funcall(self,sy_apply,1,arg0);
     FAILTEST(pass1);
-    var3/*autovar*/=it;;
+    var3/*r*/=it;;
+    bind_aset(bind2,1,var3/*r*/);
+    it=rb_funcall(self,sy_Amethyst_self_dot_pro_e13d,1,bind2);
+    var3/*r*/=bind_aget(bind2,1);;
+    var4/*autovar*/=it;;
     it=Qnil;
     if (ptr->pos<ptr->len) goto pass1;
     goto success1;
@@ -1785,8 +1790,8 @@ pass1:
     goto fail;
 success1:
     *ptr=oldpass1;
-    it=var3/*autovar*/;
-    var4/*_result*/=it;;
+    it=var4/*autovar*/;
+    var5/*_result*/=it;;
 
     return it;
 fail:
@@ -2331,6 +2336,7 @@ void Init_amethyst_c() {
     sy_Amethyst_bind_lb_1_rb__dot__c3ef=rb_intern("Amethyst_bind_lb_1_rb__dot__c3ef");
     sy_Amethyst_bind_lb_1_rb__dot__e879=rb_intern("Amethyst_bind_lb_1_rb__dot__e879");
     sy_Amethyst_bind_lb_1_rb__ti__cfcb=rb_intern("Amethyst_bind_lb_1_rb__ti__cfcb");
+    sy_Amethyst_self_dot_pro_e13d=rb_intern("Amethyst_self_dot_pro_e13d");
     sy_apply=rb_intern("apply");
     rb_define_method(cls_Amethyst,"_",Amethyst__,0);
     rb_define_method(cls_Amethyst,"alnum",Amethyst_alnum,0);
@@ -2364,5 +2370,5 @@ void Init_amethyst_c() {
     rb_define_method(cls_Amethyst,"upper",Amethyst_upper,0);
     rb_define_method(cls_Amethyst,"word",Amethyst_word,0);
     rb_define_method(cls_Amethyst,"xdigit",Amethyst_xdigit,0);
-    rb_eval_string("testversionamethyst('b67b0ec03480a76299fc49949374d5d0')");
+    rb_eval_string("testversionamethyst('623e1746f2ce1a31342b1b810c0a239c')");
 }

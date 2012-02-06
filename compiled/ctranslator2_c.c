@@ -100,7 +100,7 @@ static VALUE sy_AmethystCTranslator_bind_lb_1_rb__dot__1364;
 static VALUE sy_AmethystCTranslator_bind_lb_1_rb__eq__7d1a;
 static VALUE sy_AmethystCTranslator_bind_lb_1_rb__lt__98f3;
 static VALUE sy_AmethystCTranslator_bind_lb_1_rb__lt__acb7;
-static VALUE sy_AmethystCTranslator_bind_lb_1_rb__lt__c72d;
+static VALUE sy_AmethystCTranslator_bind_lb_1_rb__lt__f2f5;
 static VALUE sy_AmethystCTranslator_bind_lb_1_rb__pl__1b5e;
 static VALUE sy_AmethystCTranslator_bind_lb_1_rb__pl__1dcb;
 static VALUE sy_AmethystCTranslator_bind_lb_1_rb__pl__22c0;
@@ -110,8 +110,8 @@ static VALUE sy_AmethystCTranslator_bind_lb_1_rb__pl__4db9;
 static VALUE sy_AmethystCTranslator_bind_lb_1_rb__pl__891b;
 static VALUE sy_AmethystCTranslator_bind_lb_1_rb__pl__916b;
 static VALUE sy_AmethystCTranslator_bind_lb_1_rb__ti__cfcb;
-static VALUE sy_AmethystCTranslator_h_eq__dq_VALUE_043c;
 static VALUE sy_AmethystCTranslator_h_eq__dq_VALUE_3d5e;
+static VALUE sy_AmethystCTranslator_h_eq__dq_VALUE_575f;
 static VALUE sy_AmethystCTranslator_label_lp__dq_a_f49c;
 static VALUE sy_AmethystCTranslator_label_lp__dq_o_c187;
 static VALUE sy_AmethystCTranslator_label_lp__dq_r_95b2;
@@ -2062,7 +2062,7 @@ success25:
         bind_aset(bind2,2,var54/*t*/);
         bind_aset(bind2,3,var56/*init*/);
         bind_aset(bind2,4,var55/*rbcode*/);
-        it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_1_rb__lt__c72d,1,bind2);
+        it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_1_rb__lt__f2f5,1,bind2);
         var16/*s*/=bind_aget(bind2,1);;
         var54/*t*/=bind_aget(bind2,2);;
         var56/*init*/=bind_aget(bind2,3);;
@@ -2904,7 +2904,7 @@ success40:
         bind_aset(bind2,1,var34/*name*/);
         bind_aset(bind2,2,var16/*s*/);
         bind_aset(bind2,3,var100/*body*/);
-        it=rb_funcall(self,sy_AmethystCTranslator_h_eq__dq_VALUE_043c,1,bind2);
+        it=rb_funcall(self,sy_AmethystCTranslator_h_eq__dq_VALUE_575f,1,bind2);
         var34/*name*/=bind_aget(bind2,1);;
         var16/*s*/=bind_aget(bind2,2);;
         var100/*body*/=bind_aget(bind2,3);;
@@ -3438,7 +3438,7 @@ void Init_ctranslator2_c() {
     sy_AmethystCTranslator_bind_lb_1_rb__eq__7d1a=rb_intern("AmethystCTranslator_bind_lb_1_rb__eq__7d1a");
     sy_AmethystCTranslator_bind_lb_1_rb__lt__98f3=rb_intern("AmethystCTranslator_bind_lb_1_rb__lt__98f3");
     sy_AmethystCTranslator_bind_lb_1_rb__lt__acb7=rb_intern("AmethystCTranslator_bind_lb_1_rb__lt__acb7");
-    sy_AmethystCTranslator_bind_lb_1_rb__lt__c72d=rb_intern("AmethystCTranslator_bind_lb_1_rb__lt__c72d");
+    sy_AmethystCTranslator_bind_lb_1_rb__lt__f2f5=rb_intern("AmethystCTranslator_bind_lb_1_rb__lt__f2f5");
     sy_AmethystCTranslator_bind_lb_1_rb__pl__1b5e=rb_intern("AmethystCTranslator_bind_lb_1_rb__pl__1b5e");
     sy_AmethystCTranslator_bind_lb_1_rb__pl__1dcb=rb_intern("AmethystCTranslator_bind_lb_1_rb__pl__1dcb");
     sy_AmethystCTranslator_bind_lb_1_rb__pl__22c0=rb_intern("AmethystCTranslator_bind_lb_1_rb__pl__22c0");
@@ -3448,8 +3448,8 @@ void Init_ctranslator2_c() {
     sy_AmethystCTranslator_bind_lb_1_rb__pl__891b=rb_intern("AmethystCTranslator_bind_lb_1_rb__pl__891b");
     sy_AmethystCTranslator_bind_lb_1_rb__pl__916b=rb_intern("AmethystCTranslator_bind_lb_1_rb__pl__916b");
     sy_AmethystCTranslator_bind_lb_1_rb__ti__cfcb=rb_intern("AmethystCTranslator_bind_lb_1_rb__ti__cfcb");
-    sy_AmethystCTranslator_h_eq__dq_VALUE_043c=rb_intern("AmethystCTranslator_h_eq__dq_VALUE_043c");
     sy_AmethystCTranslator_h_eq__dq_VALUE_3d5e=rb_intern("AmethystCTranslator_h_eq__dq_VALUE_3d5e");
+    sy_AmethystCTranslator_h_eq__dq_VALUE_575f=rb_intern("AmethystCTranslator_h_eq__dq_VALUE_575f");
     sy_AmethystCTranslator_label_lp__dq_a_f49c=rb_intern("AmethystCTranslator_label_lp__dq_a_f49c");
     sy_AmethystCTranslator_label_lp__dq_o_c187=rb_intern("AmethystCTranslator_label_lp__dq_o_c187");
     sy_AmethystCTranslator_label_lp__dq_r_95b2=rb_intern("AmethystCTranslator_label_lp__dq_r_95b2");
@@ -3472,5 +3472,5 @@ void Init_ctranslator2_c() {
     rb_define_method(cls_AmethystCTranslator,"rbtrans2",AmethystCTranslator_rbtrans2,0);
     rb_define_method(cls_AmethystCTranslator,"rw",AmethystCTranslator_rw,2);
     rb_define_method(cls_AmethystCTranslator,"trans",AmethystCTranslator_trans,0);
-    rb_eval_string("testversionctranslator2('02781a39e1ebfc8a5df28e593adb3a3a')");
+    rb_eval_string("testversionctranslator2('5d88ce40ed5dddcdd613d9d96548123e')");
 }

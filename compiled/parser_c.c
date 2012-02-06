@@ -106,8 +106,12 @@ static VALUE sy_AmethystParser_local_lp_bi_196b;
 memo_struct *mem;
 VALUE memo_val;
 VALUE profile_report(VALUE self) {
-    printf("argsOpt hit: %i miss: %i\n",mem->hits[113],mem->miss[113]);
-    printf("name hit: %i miss: %i\n",mem->hits[115],mem->miss[115]);
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    if(ptr->mem) {
+        printf("argsOpt hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
+        printf("name hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[115],((memo_struct *)ptr->mem)->miss[115]);
+    }
     return Qnil;
 }
 VALUE AmethystParser__args(VALUE self ,VALUE a0,VALUE a1) {
@@ -300,10 +304,15 @@ VALUE AmethystParser_argsOpt(VALUE self ) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
+    if (ptr->mem==NULL) {
+        ptr->mem=memo_init();
+        memo_val=Data_Wrap_Struct(cls_AmethystParser,memo_mark,memo_free,ptr->mem);
+        rb_global_variable(&memo_val);
+    }
     int oldpos=ptr->pos;
-    if (memo_pos(mem,115,ptr->src,ptr->pos)!=-1) {
-        it=memo_value(mem,115,ptr->src,ptr->pos);
-        ptr->pos=memo_pos(mem,115,ptr->src,ptr->pos);
+    if (memo_pos(ptr->mem,115,ptr->src,ptr->pos)!=-1) {
+        it=memo_value(ptr->mem,115,ptr->src,ptr->pos);
+        ptr->pos=memo_pos(ptr->mem,115,ptr->src,ptr->pos);
         return it;
     }
     switch((unsigned char)*ame_curstr2(ptr)) {
@@ -652,10 +661,10 @@ accept3:
         ;
         break;
     }
-    memo_add(mem,115,ptr->src,oldpos,it,ptr->pos);
+    memo_add(ptr->mem,115,ptr->src,oldpos,it,ptr->pos);
     return it;
 fail:
-    memo_add(mem,115,ptr->src,oldpos,failobj,ptr->pos);
+    memo_add(ptr->mem,115,ptr->src,oldpos,failobj,ptr->pos);
     return failobj;
 }
 VALUE AmethystParser_call(VALUE self ) {
@@ -2933,10 +2942,15 @@ VALUE AmethystParser_name(VALUE self ) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
+    if (ptr->mem==NULL) {
+        ptr->mem=memo_init();
+        memo_val=Data_Wrap_Struct(cls_AmethystParser,memo_mark,memo_free,ptr->mem);
+        rb_global_variable(&memo_val);
+    }
     int oldpos=ptr->pos;
-    if (memo_pos(mem,113,ptr->src,ptr->pos)!=-1) {
-        it=memo_value(mem,113,ptr->src,ptr->pos);
-        ptr->pos=memo_pos(mem,113,ptr->src,ptr->pos);
+    if (memo_pos(ptr->mem,113,ptr->src,ptr->pos)!=-1) {
+        it=memo_value(ptr->mem,113,ptr->src,ptr->pos);
+        ptr->pos=memo_pos(ptr->mem,113,ptr->src,ptr->pos);
         return it;
     }
     switch((unsigned char)*ame_curstr2(ptr)) {
@@ -3017,10 +3031,10 @@ VALUE AmethystParser_name(VALUE self ) {
         var6/*_result*/=it;;
         break;
     }
-    memo_add(mem,113,ptr->src,oldpos,it,ptr->pos);
+    memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos);
     return it;
 fail:
-    memo_add(mem,113,ptr->src,oldpos,failobj,ptr->pos);
+    memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos);
     return failobj;
 }
 VALUE AmethystParser_nr(VALUE self ) {
@@ -7480,9 +7494,6 @@ fail:
 void Init_parser_c() {
     cls_AmethystParser=rb_define_class("AmethystParser",rb_const_get(rb_cObject,rb_intern("Amethyst")));
     failobj=rb_eval_string("FAIL");
-    mem=memo_init();
-    memo_val=Data_Wrap_Struct(cls_AmethystParser,memo_mark,memo_free,mem);
-    rb_global_variable(&memo_val);
     rb_define_method(cls_AmethystParser,"profile_report",profile_report,0);
     s_Amethyst_fe41=rb_str_new2("Amethyst");
     rb_global_variable(&s_Amethyst_fe41);
@@ -7597,5 +7608,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('96739acd2b39887751f898438307b205')");
+    rb_eval_string("testversionparser('0010e4e1f3c173839d7f1a0cf6d9c24a')");
 }

@@ -25,11 +25,12 @@ VALUE failobj;
 //you need this declaration, with implicit it will crash
 VALUE AmethystCore_anything(VALUE self);
 VALUE AmethystCore__seq(VALUE self,VALUE str);
-
+struct memo_struct;
 typedef struct{
   VALUE src;
 	char *str;VALUE *ary;
   int pos;int len;
+	struct memo_struct *mem;VALUE memgc;
 } cstruct;
 extern ID s_ary_get,s_to_a;
 #define ACCESSOR(type,name) \

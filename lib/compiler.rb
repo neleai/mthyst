@@ -139,7 +139,6 @@ class <<Compiler
 		end
 		p=AmethystParser.new
 		tree=p.parse(:igrammar,source)
-		p.profile_report
 		CurrentParser.clear
 
 		#todo write this with less ugly code
@@ -158,7 +157,6 @@ class <<Compiler
 		eval("module Foo\n#{pre}\nend") 
 
 		debug_print tree
-		puts tree.inspect
 		c,init,rb= AmethystCTranslator.new.parse(:itrans,tree)
 		c=c*""
 		if !Amethyst::Settings.profiling #oprofile does not like changing binaries

@@ -1,0 +1,15 @@
+rm logdiff -f
+ruby1.9.1 bootstrap.rb  
+ruby1.9.1 bootstrap.rb 
+cd compiled
+for I in *.c; do
+cp $I tmpdiff/$I
+done
+cd ..
+ruby1.9.1 bootstrap.rb
+cd compiled
+for I in *.c; do
+diff $I tmpdiff/$I >>../logdiff
+done
+cd ..
+cat logdiff

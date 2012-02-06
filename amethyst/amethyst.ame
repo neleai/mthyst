@@ -47,5 +47,5 @@ amethyst Amethyst < AmethystCore {
 
   regch(regex) = member(regex)
   
-  parse(rule,obj) = {obj}[apply(rule)]
+  parse(rule,obj) = {obj}[apply(rule):r {self.profile_report if self.is_a?(AmethystParser);r}]
 }
