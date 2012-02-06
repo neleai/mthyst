@@ -16,7 +16,6 @@ VALUE AmethystParser_igrammar(VALUE self );
 VALUE AmethystParser_inline_host_expr(VALUE self );
 VALUE AmethystParser_interpolated(VALUE self ,VALUE a0);
 VALUE AmethystParser_key(VALUE self );
-VALUE AmethystParser_local(VALUE self ,VALUE a0);
 VALUE AmethystParser_name(VALUE self );
 VALUE AmethystParser_nr(VALUE self );
 VALUE AmethystParser_postfixed(VALUE self );
@@ -98,7 +97,6 @@ static VALUE sy_AmethystParser__lp_bind_lb_1_rb__a724;
 static VALUE sy_AmethystParser_a_eq_autova_5b84;
 static VALUE sy_AmethystParser_bind_lb_1_rb_;
 static VALUE sy_AmethystParser_bind_lb_1_rb__dot__7b93;
-static VALUE sy_AmethystParser_bind_lb_1_rb__dot__cc9d;
 static VALUE sy_AmethystParser_bind_lb_1_rb__dot__e879;
 static VALUE sy_AmethystParser_bind_lb_1_rb__eq__f15c;
 static VALUE sy_AmethystParser_bind_lb_1_rb__pl__b087;
@@ -2923,24 +2921,6 @@ accept1:
         ;
         break;
     }
-    return it;
-fail:
-    return failobj;
-}
-VALUE AmethystParser_local(VALUE self ,VALUE a0) {
-    VALUE vals[1];
-    VALUE it ,var0,var1;
-    VALUE bind2=bind_new2(16);
-    var0/*x*/=a0;;
-    int x;
-    VALUE arg0,arg1,arg2,arg3;
-    cstruct *ptr;
-    Data_Get_Struct(self,cstruct,ptr);
-    bind_aset(bind2,1,var0/*x*/);
-    it=rb_funcall(self,sy_AmethystParser_bind_lb_1_rb__dot__cc9d,1,bind2);
-    var0/*x*/=bind_aget(bind2,1);;
-    var1/*_result*/=it;;
-
     return it;
 fail:
     return failobj;
@@ -7588,7 +7568,6 @@ void Init_parser_c() {
     sy_AmethystParser_a_eq_autova_5b84=rb_intern("AmethystParser_a_eq_autova_5b84");
     sy_AmethystParser_bind_lb_1_rb_=rb_intern("AmethystParser_bind_lb_1_rb_");
     sy_AmethystParser_bind_lb_1_rb__dot__7b93=rb_intern("AmethystParser_bind_lb_1_rb__dot__7b93");
-    sy_AmethystParser_bind_lb_1_rb__dot__cc9d=rb_intern("AmethystParser_bind_lb_1_rb__dot__cc9d");
     sy_AmethystParser_bind_lb_1_rb__dot__e879=rb_intern("AmethystParser_bind_lb_1_rb__dot__e879");
     sy_AmethystParser_bind_lb_1_rb__eq__f15c=rb_intern("AmethystParser_bind_lb_1_rb__eq__f15c");
     sy_AmethystParser_bind_lb_1_rb__pl__b087=rb_intern("AmethystParser_bind_lb_1_rb__pl__b087");
@@ -7607,7 +7586,6 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"inline_host_expr",AmethystParser_inline_host_expr,0);
     rb_define_method(cls_AmethystParser,"interpolated",AmethystParser_interpolated,1);
     rb_define_method(cls_AmethystParser,"key",AmethystParser_key,0);
-    rb_define_method(cls_AmethystParser,"local",AmethystParser_local,1);
     rb_define_method(cls_AmethystParser,"name",AmethystParser_name,0);
     rb_define_method(cls_AmethystParser,"nr",AmethystParser_nr,0);
     rb_define_method(cls_AmethystParser,"postfixed",AmethystParser_postfixed,0);
@@ -7619,5 +7597,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('54088717e811b4acb7df5e0949550ca8')");
+    rb_eval_string("testversionparser('96739acd2b39887751f898438307b205')");
 }

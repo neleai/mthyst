@@ -1,7 +1,7 @@
 #@Or_AST and @Seq are necessary for collect
 #CurrentParser[:implicit_variables]=true
 CurrentParser[:memoize]=["argsOpt","name"]
-amethyst AmethystParser < Amethyst{
+amethyst AmethystParser {
   igrammar = ( (~'amethyst'   . )+:{it.join}
              | grammar
              | "`" expression '`'
@@ -104,5 +104,10 @@ amethyst AmethystParser < Amethyst{
   host_expr = inline_host_expr 
             | '->' line:s   {"{"+s+"}"}=>[ inline_host_expr ]  
 
-	local(x) = {x.is_a?(String) ? (l=Local[x,@@bnding];@@locals<<l;l) : x}
 }
+
+class AmethystParser < Amethyst
+	def local(x)
+		x.is_a?(String) ? (l=Local[x,@bnding];@locals<<l;l) : x
+	end
+end
