@@ -84,6 +84,7 @@ typedef struct {
 } bind_cache;
 bind_cache *b;VALUE bg;
 bind_cache *seqcache;VALUE seqcachegc;
+bind_cache *orcache;VALUE orcachegc;
 
 bind_cache * bind_cache_init(){
 	bind_cache *b;
@@ -199,9 +200,71 @@ VALUE seq_create2(VALUE self,VALUE ary){
 	return seq_normalize(self,o);
 }
 
+int nhit3;int nmiss3;
+VALUE or_normalize(VALUE self,VALUE or){
+	int i;
+	VALUE ary=rb_iv_get(or,"@ary");
+	int len=RARRAY_LEN(ary);
+	VALUE *els=RARRAY_PTR(ary);
+	int hash=0;
+	for (i=0;i<len;i++) hash=((int) els[i])+11*hash;
+	hash=hash&((1<<20)-1);
+	VALUE or2=orcache->ary[hash];
+	if ((int)or2!=0){
+		VALUE ary2=rb_iv_get(or2,"@ary");
+		int len2=RARRAY_LEN(ary2);
+		VALUE *els2=RARRAY_PTR(ary2);
+		if (len!=len2) goto next;
+		for(i=0;i<len;i++) if (els[i]!=els2[i]) goto next;
+		nhit3++;
+	  return orcache->res[hash];
+		next:;
+	}
+	VALUE or3=rb_funcall(or,rb_intern("normalize2"),0);
+	if (rb_obj_is_kind_of(or3, rb_obj_class(or))){
+		VALUE ary3=rb_iv_get(or3,"@ary");
+  	int len3=RARRAY_LEN(ary3);
+  	VALUE *els3=RARRAY_PTR(ary3);
+  	int hash3=0;
+  	for (i=0;i<len;i++) hash3=((int) els3[i])+11*hash3;
+  	hash3=hash3&((1<<20)-1);
+		orcache->ary[hash3]=or3;
+		orcache->res[hash3]=or3;
+  }
+	orcache->ary[hash]=or;
+	orcache->res[hash]=or3;
+	nmiss3++;
+	return or3;
+}
+VALUE or_create2(VALUE self,VALUE ary){
+	int i;
+	if (ary!=Qnil){
+  	int len=RARRAY_LEN(ary);
+	  VALUE *els=RARRAY_PTR(ary);
+  	int hash=0;
+	  for (i=0;i<len;i++) hash=((int) els[i])+11*hash;
+	  hash=hash&((1<<20)-1);
+  	VALUE or2=orcache->ary[hash];
+	  if ((int)or2!=0){
+    	VALUE ary2=rb_iv_get(or2,"@ary");
+  	  int len2=RARRAY_LEN(ary2);
+	    VALUE *els2=RARRAY_PTR(ary2);
+    	if (len!=len2) goto next;
+  	  for(i=0;i<len;i++) if (els[i]!=els2[i]) goto next;
+	    nhit3++;
+    	return orcache->res[hash];
+  	  next:;
+	  }
+	}
+	VALUE o=rb_obj_alloc(rb_const_get(rb_cObject,rb_intern("Or")));
+	rb_iv_set(o,"@ary",ary);
+	return or_normalize(self,o);
+}
+
 VALUE report_normalize(VALUE self){
 	printf("normalize bind hit: %i miss: %i\n",nhit ,nmiss );
 	printf("normalize seq  hit: %i miss: %i\n",nhit2,nmiss2);
+	printf("normalize or   hit: %i miss: %i\n",nhit3,nmiss3);
 
 	return Qnil;
 }
@@ -214,6 +277,9 @@ void Init_Ame(VALUE self){
 	seqcache=bind_cache_init(); 
   seqcachegc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,seqcache);
 	rb_global_variable(&seqcachegc);
+	orcache=bind_cache_init(); 
+  orcachegc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,orcache);
+	rb_global_variable(&orcachegc);
 	s_ary_get=rb_intern("[]");
 	s_ary=rb_intern("@ary");
 	s_to_a=rb_intern("to_a");
@@ -224,6 +290,9 @@ void Init_Ame(VALUE self){
 	rb_define_singleton_method(amecore,"bind_create2",bind_create2,2);
 	rb_define_singleton_method(amecore,"seq_normalize",seq_normalize,1);
 	rb_define_singleton_method(amecore,"seq_create2",seq_create2,1);
+	rb_define_singleton_method(amecore,"or_normalize",or_normalize,1);
+	rb_define_singleton_method(amecore,"or_create2",or_create2,1);
+
 	rb_define_singleton_method(amecore,"report_normalize",report_normalize,0);
 
 	rb_define_method(amecore,"pos=",ame_setposrb,1);

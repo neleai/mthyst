@@ -58,6 +58,11 @@ class Seq
 		AmethystCore::seq_normalize(self);
 	end
 end
+class Or
+	def normalize
+		AmethystCore::or_normalize(self);
+	end
+end
 Placeholder=Consts.new("Placeholder");FAIL=Consts.new("FAIL")
 
 
@@ -142,7 +147,8 @@ end
 class Or
 	def self.[](*args)
 		args=args[0][:ary] if args.size==1 && args[0].is_a?(Hash)
-		Or.create({:ary=>args.flatten}).normalize
+		#Or.create({:ary=>args.flatten}).normalize
+		Amethyst::or_create2(args.flatten)
 	end
 	def normalize2
 		$normalize.parse(:or,[self])
