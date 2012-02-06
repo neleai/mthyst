@@ -105,7 +105,8 @@ class Bind
     	return Seq[Bind[a,expr],PureAct[Args["_append(",name,",",a,")"]],a]
 	  end
 		if name.is_a?(Local)
-			Bind.create({:name=>name,:ary=>[expr]}).normalize
+			#Bind.create({:name=>name,:ary=>[expr]}).normalize
+			AmethystCore::bind_create2(name,[expr])
 		else
 			 a=autovar
 	    Seq[Bind[a,expr],PureAct[Args[name,'=',a]]]

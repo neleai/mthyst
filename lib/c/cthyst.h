@@ -81,7 +81,6 @@ static inline VALUE bind_aset(VALUE self,long no,VALUE val){
 static inline VALUE bind_aget(VALUE self,long no){
   bind_struct* ptr;
   Data_Get_Struct(self,bind_struct,ptr);
-	if (!ptr->ary[no]) return Qnil;
   return ptr->ary[no];
 }
 VALUE bind_asetrb(VALUE self,VALUE no,VALUE val){return bind_aset(self,FIX2LONG(no),val);}

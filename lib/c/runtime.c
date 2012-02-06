@@ -103,9 +103,9 @@ VALUE bind_normalize(VALUE self,VALUE bind){
 	int hash= (11*((int)name)+((int)expr))&((1<<20)-1);
 	VALUE bind2=b->ary[hash];
 	if ((int)bind2!=0){
-	VALUE name2=rb_iv_get(bind2,"@name");
-	VALUE expr2=rb_ary_entry(rb_iv_get(bind2,"@ary"),0);
-	if ((name==name2)&& expr==expr2) return b->res[hash];
+	  VALUE name2=rb_iv_get(bind2,"@name");
+	  VALUE expr2=rb_ary_entry(rb_iv_get(bind2,"@ary"),0);
+	  if ( name==name2 && expr==expr2) return b->res[hash];
 	}
 	VALUE bind3=rb_funcall(bind,rb_intern("normalize2"),0);
 	if (rb_obj_is_kind_of(bind3, rb_obj_class(bind))){
@@ -118,6 +118,20 @@ VALUE bind_normalize(VALUE self,VALUE bind){
 	b->ary[hash]=bind;
 	b->res[hash]=bind3;
 	return bind3;
+}
+VALUE bind_create2(VALUE self,VALUE name,VALUE ary){
+	 VALUE expr=rb_ary_entry(ary,0);
+	 int hash= (11*((int)name)+((int)expr))&((1<<20)-1);
+   VALUE bind2=b->ary[hash];
+   if ((int)bind2!=0){
+     VALUE name2=rb_iv_get(bind2,"@name");
+     VALUE expr2=rb_ary_entry(rb_iv_get(bind2,"@ary"),0);
+     if (name==name2 && expr==expr2) return b->res[hash];
+	}
+	VALUE o=rb_obj_alloc(rb_const_get(rb_cObject,rb_intern("Bind")));
+	rb_iv_set(o,"@name",name);
+	rb_iv_set(o,"@ary",ary);
+	return bind_normalize(self,o);
 }
 
 ID s_ary;
@@ -132,6 +146,8 @@ void Init_Ame(VALUE self){
 	amecore=rb_define_class("AmethystCore",rb_cObject);
 	rb_define_singleton_method(amecore,"new",ame_new,0);
 	rb_define_singleton_method(amecore,"bind_normalize",bind_normalize,1);
+	rb_define_singleton_method(amecore,"bind_create2",bind_create2,2);
+
 	rb_define_method(amecore,"pos=",ame_setposrb,1);
 	rb_define_method(amecore,"pos",ame_getposrb,0);
 	rb_define_method(amecore,"len=",ame_setlenrb,1);
