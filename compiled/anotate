@@ -1,8 +1,13 @@
-opannotate --source 1.9.3/dataflow_ssa_c.so   >annotated/dataflow_ssa.annotated.c
-opannotate --assembly 1.9.3/dataflow_ssa_c.so >annotated/dataflow_ssa.annotated.as
-opannotate --source 1.9.3/parser_c.so         >annotated/parser.annotated.c
-opannotate --assembly 1.9.3/parser_c.so       >annotated/parser.annotated.as
-opannotate --source 1.9.3/ctranslator2_c.so         >annotated/ctranslator2.annotated.c
-opannotate --assembly 1.9.3/ctranslator2_c.so       >annotated/ctranslator2.annotated.as
+comp(){
+echo $1
+opannotate --source   1.9.3/$1_c.so > annotated/$1.annotated.c
+opannotate --assembly 1.9.3/$1_c.so > annotated/$1.annotated.as
+
+}
+for I in *.rb ;do
+comp `basename $I .rb`
+done
+opannotate --source   1.9.3/Ame.so > annotated/runtime.annotated.c
+opannotate --assembly 1.9.3/Ame.so > annotated/runtime.annotated.as
 
 

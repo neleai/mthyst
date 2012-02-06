@@ -92,8 +92,8 @@ bind_cache * bind_cache_init(){
 	return b;
 }
 void bind_cache_mark(bind_cache *b){int i;
-	for(i=0;i<(1<<20);i++) rb_gc_mark(b->ary[i]);
-	for(i=0;i<(1<<20);i++) rb_gc_mark(b->res[i]);
+	for(i=0;i<(1<<20);i++) if (b->ary[i])rb_gc_mark(b->ary[i]);
+	for(i=0;i<(1<<20);i++) if (b->res[i])rb_gc_mark(b->res[i]);
 }
 void bind_cache_free(bind_cache *b){}
 
