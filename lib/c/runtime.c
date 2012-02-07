@@ -82,207 +82,49 @@ typedef struct {
 	VALUE * ary;
 	VALUE * res;
 } bind_cache;
-bind_cache *b;VALUE bg;
-bind_cache *seqcache;VALUE seqcachegc;
-bind_cache *orcache;VALUE orcachegc;
-
 bind_cache * bind_cache_init(){
-	bind_cache *b;
-	b=malloc(sizeof(bind_cache));
-	b->ary=calloc(1<<20,sizeof(VALUE));
-	b->res=calloc(1<<20,sizeof(VALUE));
+       bind_cache *b;
+       b=malloc(sizeof(bind_cache));
+       b->ary=calloc(1<<20,sizeof(VALUE));
+       b->res=calloc(1<<20,sizeof(VALUE));
 
-	return b;
+       return b;
 }
 void bind_cache_mark(bind_cache *b){int i;
-	for(i=0;i<(1<<20);i++) if (b->ary[i])rb_gc_mark(b->ary[i]);
-	for(i=0;i<(1<<20);i++) if (b->res[i])rb_gc_mark(b->res[i]);
+       for(i=0;i<(1<<20);i++) if (b->ary[i])rb_gc_mark(b->ary[i]);
+       for(i=0;i<(1<<20);i++) if (b->res[i])rb_gc_mark(b->res[i]);
 }
 void bind_cache_free(bind_cache *b){}
 
-int nhit=0;
-int nmiss=0;
-VALUE bind_normalize(VALUE self,VALUE bind){
-	VALUE name=rb_iv_get(bind,"@name");
-	VALUE expr=rb_ary_entry(rb_iv_get(bind,"@ary"),0);
-	int hash= (11*((int)name)+((int)expr))&((1<<20)-1);
-	VALUE bind2=b->ary[hash];
-	if ((int)bind2!=0){
-	  VALUE name2=rb_iv_get(bind2,"@name");
-	  VALUE expr2=rb_ary_entry(rb_iv_get(bind2,"@ary"),0);
-	  if ( name==name2 && expr==expr2){nhit++; return b->res[hash];}
-	}
-	VALUE bind3=rb_funcall(bind,rb_intern("normalize2"),0);
-	if (rb_obj_is_kind_of(bind3, rb_obj_class(bind))){
-		VALUE name3=rb_iv_get(bind3,"@name");
-		VALUE expr3=rb_ary_entry(rb_iv_get(bind3,"@ary"),0);
-		int hash3= (11*((int)name3)+((int)expr3))&((1<<20)-1);
-		b->ary[hash3]=bind3;
-		b->res[hash3]=bind3;
-	}
-	b->ary[hash]=bind;
-	b->res[hash]=bind3;
-	nmiss++;
-	return bind3;
-}
-VALUE bind_create2(VALUE self,VALUE name,VALUE ary){
-	 VALUE expr=rb_ary_entry(ary,0);
-	 int hash= (11*((int)name)+((int)expr))&((1<<20)-1);
-   VALUE bind2=b->ary[hash];
-   if ((int)bind2!=0){
-     VALUE name2=rb_iv_get(bind2,"@name");
-     VALUE expr2=rb_ary_entry(rb_iv_get(bind2,"@ary"),0);
-     if (name==name2 && expr==expr2) {nhit++;return b->res[hash];}
-	}
-	VALUE o=rb_obj_alloc(rb_const_get(rb_cObject,rb_intern("Bind")));
-	rb_iv_set(o,"@name",name);
-	rb_iv_set(o,"@ary",ary);
-	return bind_normalize(self,o);
-}
-int nhit2;int nmiss2;
-VALUE seq_normalize(VALUE self,VALUE seq){
-	int i;
-	VALUE ary=rb_iv_get(seq,"@ary");
-	int len=RARRAY_LEN(ary);
-	VALUE *els=RARRAY_PTR(ary);
-	int hash=0;
-	for (i=0;i<len;i++) hash=((int) els[i])+11*hash;
-	hash=hash&((1<<20)-1);
-	VALUE seq2=seqcache->ary[hash];
-	if ((int)seq2!=0){
-		VALUE ary2=rb_iv_get(seq2,"@ary");
-		int len2=RARRAY_LEN(ary2);
-		VALUE *els2=RARRAY_PTR(ary2);
-		if (len!=len2) goto next;
-		for(i=0;i<len;i++) if (els[i]!=els2[i]) goto next;
-		nhit2++;
-	  return seqcache->res[hash];
-		next:;
-	}
-	VALUE seq3=rb_funcall(seq,rb_intern("normalize2"),0);
-	if (rb_obj_is_kind_of(seq3, rb_obj_class(seq))){
-		VALUE ary3=rb_iv_get(seq3,"@ary");
-  	int len3=RARRAY_LEN(ary3);
-  	VALUE *els3=RARRAY_PTR(ary3);
-  	int hash3=0;
-  	for (i=0;i<len;i++) hash3=((int) els3[i])+11*hash3;
-  	hash3=hash3&((1<<20)-1);
-		seqcache->ary[hash3]=seq3;
-		seqcache->res[hash3]=seq3;
-  }
-	seqcache->ary[hash]=seq;
-	seqcache->res[hash]=seq3;
-	nmiss2++;
-	return seq3;
-}
-VALUE seq_create2(VALUE self,VALUE ary){
-	int i;
-	if (ary!=Qnil){
-  	int len=RARRAY_LEN(ary);
-	  VALUE *els=RARRAY_PTR(ary);
-  	int hash=0;
-	  for (i=0;i<len;i++) hash=((int) els[i])+11*hash;
-	  hash=hash&((1<<20)-1);
-  	VALUE seq2=seqcache->ary[hash];
-	  if ((int)seq2!=0){
-    	VALUE ary2=rb_iv_get(seq2,"@ary");
-  	  int len2=RARRAY_LEN(ary2);
-	    VALUE *els2=RARRAY_PTR(ary2);
-    	if (len!=len2) goto next;
-  	  for(i=0;i<len;i++) if (els[i]!=els2[i]) goto next;
-	    nhit2++;
-    	return seqcache->res[hash];
-  	  next:;
-	  }
-	}
-	VALUE o=rb_obj_alloc(rb_const_get(rb_cObject,rb_intern("Seq")));
-	rb_iv_set(o,"@ary",ary);
-	return seq_normalize(self,o);
-}
-
-int nhit3;int nmiss3;
-VALUE or_normalize(VALUE self,VALUE or){
-	int i;
-	VALUE ary=rb_iv_get(or,"@ary");
-	int len=RARRAY_LEN(ary);
-	VALUE *els=RARRAY_PTR(ary);
-	int hash=0;
-	for (i=0;i<len;i++) hash=((int) els[i])+11*hash;
-	hash=hash&((1<<20)-1);
-	VALUE or2=orcache->ary[hash];
-	if ((int)or2!=0){
-		VALUE ary2=rb_iv_get(or2,"@ary");
-		int len2=RARRAY_LEN(ary2);
-		VALUE *els2=RARRAY_PTR(ary2);
-		if (len!=len2) goto next;
-		for(i=0;i<len;i++) if (els[i]!=els2[i]) goto next;
-		nhit3++;
-	  return orcache->res[hash];
-		next:;
-	}
-	VALUE or3=rb_funcall(or,rb_intern("normalize2"),0);
-	if (rb_obj_is_kind_of(or3, rb_obj_class(or))){
-		VALUE ary3=rb_iv_get(or3,"@ary");
-  	int len3=RARRAY_LEN(ary3);
-  	VALUE *els3=RARRAY_PTR(ary3);
-  	int hash3=0;
-  	for (i=0;i<len;i++) hash3=((int) els3[i])+11*hash3;
-  	hash3=hash3&((1<<20)-1);
-		orcache->ary[hash3]=or3;
-		orcache->res[hash3]=or3;
-  }
-	orcache->ary[hash]=or;
-	orcache->res[hash]=or3;
-	nmiss3++;
-	return or3;
-}
-VALUE or_create2(VALUE self,VALUE ary){
-	int i;
-	if (ary!=Qnil){
-  	int len=RARRAY_LEN(ary);
-	  VALUE *els=RARRAY_PTR(ary);
-  	int hash=0;
-	  for (i=0;i<len;i++) hash=((int) els[i])+11*hash;
-	  hash=hash&((1<<20)-1);
-  	VALUE or2=orcache->ary[hash];
-	  if ((int)or2!=0){
-    	VALUE ary2=rb_iv_get(or2,"@ary");
-  	  int len2=RARRAY_LEN(ary2);
-	    VALUE *els2=RARRAY_PTR(ary2);
-    	if (len!=len2) goto next;
-  	  for(i=0;i<len;i++) if (els[i]!=els2[i]) goto next;
-	    nhit3++;
-    	return orcache->res[hash];
-  	  next:;
-	  }
-	}
-	VALUE o=rb_obj_alloc(rb_const_get(rb_cObject,rb_intern("Or")));
-	rb_iv_set(o,"@ary",ary);
-	return or_normalize(self,o);
-}
+extern int hits_Bind,hits_Seq,hits_Or,miss_Bind,miss_Seq,miss_Or;
 VALUE report_normalize(VALUE self){
-	printf("normalize bind hit: %i miss: %i\n",nhit ,nmiss );
-	printf("normalize seq  hit: %i miss: %i\n",nhit2,nmiss2);
-	printf("normalize or   hit: %i miss: %i\n",nhit3,nmiss3);
+	printf("normalize bind hit: %i miss: %i\n",hits_Bind,miss_Bind );
+	printf("normalize seq  hit: %i miss: %i\n",hits_Seq,miss_Seq);
+	printf("normalize or   hit: %i miss: %i\n",hits_Or,miss_Or);
 
 	return Qnil;
 }
 extern bind_cache *cache_Bind;VALUE cache_Bind_gc;
 VALUE normalize_Bind(VALUE,VALUE);
+extern bind_cache *cache_Or;VALUE cache_Or_gc;
+VALUE normalize_Or(VALUE,VALUE);
+extern bind_cache *cache_Seq;VALUE cache_Seq_gc;
+VALUE normalize_Seq(VALUE,VALUE);
+
 ID s_ary;
 void Init_Ame(VALUE self){
-	b=bind_cache_init(); 
-  bg=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,b);
-	rb_global_variable(&bg);
-	seqcache=bind_cache_init(); 
-  seqcachegc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,seqcache);
-	rb_global_variable(&seqcachegc);
-	orcache=bind_cache_init(); 
-  orcachegc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,orcache);
-	rb_global_variable(&orcachegc);
+
 	cache_Bind=bind_cache_init(); 
   cache_Bind_gc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,cache_Bind);
 	rb_global_variable(&cache_Bind_gc);
+	cache_Seq=bind_cache_init(); 
+  cache_Seq_gc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,cache_Seq);
+	rb_global_variable(&cache_Seq_gc);
+	cache_Or=bind_cache_init(); 
+  cache_Or_gc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,cache_Or);
+	rb_global_variable(&cache_Or_gc);
+
+
 
 	s_ary_get=rb_intern("[]");
 	s_ary=rb_intern("@ary");
@@ -291,11 +133,8 @@ void Init_Ame(VALUE self){
 	amecore=rb_define_class("AmethystCore",rb_cObject);
 	rb_define_singleton_method(amecore,"new",ame_new,0);
 	rb_define_singleton_method(amecore,"bind_normalize",normalize_Bind,1);
-	rb_define_singleton_method(amecore,"bind_create2",bind_create2,2);
-	rb_define_singleton_method(amecore,"seq_normalize",seq_normalize,1);
-	rb_define_singleton_method(amecore,"seq_create2",seq_create2,1);
-	rb_define_singleton_method(amecore,"or_normalize",or_normalize,1);
-	rb_define_singleton_method(amecore,"or_create2",or_create2,1);
+	rb_define_singleton_method(amecore,"seq_normalize",normalize_Seq,1);
+	rb_define_singleton_method(amecore,"or_normalize",normalize_Or,1);
 
 	rb_define_singleton_method(amecore,"report_normalize",report_normalize,0);
 

@@ -69,7 +69,7 @@ VALUE normalize_#{e}(VALUE self,VALUE obj){int i;
 	VALUE obj2=cache_#{e}->ary[hash];
 	if((int)obj2){
 		#{(e.instance_variable_get(:@attrs)-[:ary]).map{|e| "if (rb_iv_get(obj,\"@#{e.to_s}\")!=rb_iv_get(obj2,\"@#{e.to_s}\")) goto next;"}*""}
-		VALUE ary2=rb_iv_get(obj,\"@ary\");
+		VALUE ary2=rb_iv_get(obj2,\"@ary\");
 		if (ary2==Qnil) goto next;
 		len2=RARRAY_LEN(ary2);
 	  els2=RARRAY_PTR(ary2);
@@ -83,7 +83,7 @@ VALUE normalize_#{e}(VALUE self,VALUE obj){int i;
 	miss_#{e}++;
 	if (rb_obj_is_kind_of(obj3, rb_obj_class(obj))){
 		int hash3=0;
-		VALUE ary3=rb_iv_get(obj,\"@ary\");
+		VALUE ary3=rb_iv_get(obj3,\"@ary\");
 		if (ary3!=Qnil){
 		  len3=RARRAY_LEN(ary3);
 		  els3=RARRAY_PTR(ary3);
@@ -198,8 +198,8 @@ class Seq
 	def self.[](*args)
 		args=args[0][:ary] if args.size==1 && args[0].is_a?(Hash)
 		#puts args.inspect
-		#Seq.create({:ary=>args.flatten}).normalize
-		Amethyst::seq_create2(args.flatten)
+		Seq.create({:ary=>args.flatten}).normalize
+#		Amethyst::seq_create2(args.flatten)
 	end
 	def normalize2
 		$normalize.parse(:seq2,[self])
@@ -208,8 +208,8 @@ end
 class Or
 	def self.[](*args)
 		args=args[0][:ary] if args.size==1 && args[0].is_a?(Hash)
-		#Or.create({:ary=>args.flatten}).normalize
-		Amethyst::or_create2(args.flatten)
+		Or.create({:ary=>args.flatten}).normalize
+		#Amethyst::or_create2(args.flatten)
 	end
 	def normalize2
 		$normalize.parse(:or,[self])

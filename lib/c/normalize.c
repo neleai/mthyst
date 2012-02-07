@@ -18,7 +18,7 @@ VALUE normalize_Act(VALUE self,VALUE obj){int i;
 	VALUE obj2=cache_Act->ary[hash];
 	if((int)obj2){
 		if (rb_iv_get(obj,"@pred")!=rb_iv_get(obj2,"@pred")) goto next;if (rb_iv_get(obj,"@pure")!=rb_iv_get(obj2,"@pure")) goto next;
-		VALUE ary2=rb_iv_get(obj,"@ary");
+		VALUE ary2=rb_iv_get(obj2,"@ary");
 		if (ary2==Qnil) goto next;
 		len2=RARRAY_LEN(ary2);
 	  els2=RARRAY_PTR(ary2);
@@ -32,7 +32,7 @@ VALUE normalize_Act(VALUE self,VALUE obj){int i;
 	miss_Act++;
 	if (rb_obj_is_kind_of(obj3, rb_obj_class(obj))){
 		int hash3=0;
-		VALUE ary3=rb_iv_get(obj,"@ary");
+		VALUE ary3=rb_iv_get(obj3,"@ary");
 		if (ary3!=Qnil){
 		  len3=RARRAY_LEN(ary3);
 		  els3=RARRAY_PTR(ary3);
@@ -62,7 +62,7 @@ VALUE normalize_Apply(VALUE self,VALUE obj){int i;
 	VALUE obj2=cache_Apply->ary[hash];
 	if((int)obj2){
 		if (rb_iv_get(obj,"@name")!=rb_iv_get(obj2,"@name")) goto next;if (rb_iv_get(obj,"@clas")!=rb_iv_get(obj2,"@clas")) goto next;
-		VALUE ary2=rb_iv_get(obj,"@ary");
+		VALUE ary2=rb_iv_get(obj2,"@ary");
 		if (ary2==Qnil) goto next;
 		len2=RARRAY_LEN(ary2);
 	  els2=RARRAY_PTR(ary2);
@@ -76,7 +76,7 @@ VALUE normalize_Apply(VALUE self,VALUE obj){int i;
 	miss_Apply++;
 	if (rb_obj_is_kind_of(obj3, rb_obj_class(obj))){
 		int hash3=0;
-		VALUE ary3=rb_iv_get(obj,"@ary");
+		VALUE ary3=rb_iv_get(obj3,"@ary");
 		if (ary3!=Qnil){
 		  len3=RARRAY_LEN(ary3);
 		  els3=RARRAY_PTR(ary3);
@@ -106,7 +106,7 @@ VALUE normalize_Args(VALUE self,VALUE obj){int i;
 	VALUE obj2=cache_Args->ary[hash];
 	if((int)obj2){
 		
-		VALUE ary2=rb_iv_get(obj,"@ary");
+		VALUE ary2=rb_iv_get(obj2,"@ary");
 		if (ary2==Qnil) goto next;
 		len2=RARRAY_LEN(ary2);
 	  els2=RARRAY_PTR(ary2);
@@ -120,7 +120,7 @@ VALUE normalize_Args(VALUE self,VALUE obj){int i;
 	miss_Args++;
 	if (rb_obj_is_kind_of(obj3, rb_obj_class(obj))){
 		int hash3=0;
-		VALUE ary3=rb_iv_get(obj,"@ary");
+		VALUE ary3=rb_iv_get(obj3,"@ary");
 		if (ary3!=Qnil){
 		  len3=RARRAY_LEN(ary3);
 		  els3=RARRAY_PTR(ary3);
@@ -150,7 +150,7 @@ VALUE normalize_Bind(VALUE self,VALUE obj){int i;
 	VALUE obj2=cache_Bind->ary[hash];
 	if((int)obj2){
 		if (rb_iv_get(obj,"@name")!=rb_iv_get(obj2,"@name")) goto next;
-		VALUE ary2=rb_iv_get(obj,"@ary");
+		VALUE ary2=rb_iv_get(obj2,"@ary");
 		if (ary2==Qnil) goto next;
 		len2=RARRAY_LEN(ary2);
 	  els2=RARRAY_PTR(ary2);
@@ -164,7 +164,7 @@ VALUE normalize_Bind(VALUE self,VALUE obj){int i;
 	miss_Bind++;
 	if (rb_obj_is_kind_of(obj3, rb_obj_class(obj))){
 		int hash3=0;
-		VALUE ary3=rb_iv_get(obj,"@ary");
+		VALUE ary3=rb_iv_get(obj3,"@ary");
 		if (ary3!=Qnil){
 		  len3=RARRAY_LEN(ary3);
 		  els3=RARRAY_PTR(ary3);
@@ -194,7 +194,7 @@ VALUE normalize_Bnding(VALUE self,VALUE obj){int i;
 	VALUE obj2=cache_Bnding->ary[hash];
 	if((int)obj2){
 		
-		VALUE ary2=rb_iv_get(obj,"@ary");
+		VALUE ary2=rb_iv_get(obj2,"@ary");
 		if (ary2==Qnil) goto next;
 		len2=RARRAY_LEN(ary2);
 	  els2=RARRAY_PTR(ary2);
@@ -208,7 +208,7 @@ VALUE normalize_Bnding(VALUE self,VALUE obj){int i;
 	miss_Bnding++;
 	if (rb_obj_is_kind_of(obj3, rb_obj_class(obj))){
 		int hash3=0;
-		VALUE ary3=rb_iv_get(obj,"@ary");
+		VALUE ary3=rb_iv_get(obj3,"@ary");
 		if (ary3!=Qnil){
 		  len3=RARRAY_LEN(ary3);
 		  els3=RARRAY_PTR(ary3);
@@ -238,7 +238,7 @@ VALUE normalize_CAct(VALUE self,VALUE obj){int i;
 	VALUE obj2=cache_CAct->ary[hash];
 	if((int)obj2){
 		
-		VALUE ary2=rb_iv_get(obj,"@ary");
+		VALUE ary2=rb_iv_get(obj2,"@ary");
 		if (ary2==Qnil) goto next;
 		len2=RARRAY_LEN(ary2);
 	  els2=RARRAY_PTR(ary2);
@@ -252,7 +252,7 @@ VALUE normalize_CAct(VALUE self,VALUE obj){int i;
 	miss_CAct++;
 	if (rb_obj_is_kind_of(obj3, rb_obj_class(obj))){
 		int hash3=0;
-		VALUE ary3=rb_iv_get(obj,"@ary");
+		VALUE ary3=rb_iv_get(obj3,"@ary");
 		if (ary3!=Qnil){
 		  len3=RARRAY_LEN(ary3);
 		  els3=RARRAY_PTR(ary3);
@@ -282,7 +282,7 @@ VALUE normalize_Comment(VALUE self,VALUE obj){int i;
 	VALUE obj2=cache_Comment->ary[hash];
 	if((int)obj2){
 		
-		VALUE ary2=rb_iv_get(obj,"@ary");
+		VALUE ary2=rb_iv_get(obj2,"@ary");
 		if (ary2==Qnil) goto next;
 		len2=RARRAY_LEN(ary2);
 	  els2=RARRAY_PTR(ary2);
@@ -296,7 +296,7 @@ VALUE normalize_Comment(VALUE self,VALUE obj){int i;
 	miss_Comment++;
 	if (rb_obj_is_kind_of(obj3, rb_obj_class(obj))){
 		int hash3=0;
-		VALUE ary3=rb_iv_get(obj,"@ary");
+		VALUE ary3=rb_iv_get(obj3,"@ary");
 		if (ary3!=Qnil){
 		  len3=RARRAY_LEN(ary3);
 		  els3=RARRAY_PTR(ary3);
@@ -326,7 +326,7 @@ VALUE normalize_Cut(VALUE self,VALUE obj){int i;
 	VALUE obj2=cache_Cut->ary[hash];
 	if((int)obj2){
 		
-		VALUE ary2=rb_iv_get(obj,"@ary");
+		VALUE ary2=rb_iv_get(obj2,"@ary");
 		if (ary2==Qnil) goto next;
 		len2=RARRAY_LEN(ary2);
 	  els2=RARRAY_PTR(ary2);
@@ -340,7 +340,7 @@ VALUE normalize_Cut(VALUE self,VALUE obj){int i;
 	miss_Cut++;
 	if (rb_obj_is_kind_of(obj3, rb_obj_class(obj))){
 		int hash3=0;
-		VALUE ary3=rb_iv_get(obj,"@ary");
+		VALUE ary3=rb_iv_get(obj3,"@ary");
 		if (ary3!=Qnil){
 		  len3=RARRAY_LEN(ary3);
 		  els3=RARRAY_PTR(ary3);
@@ -370,7 +370,7 @@ VALUE normalize_Lambda(VALUE self,VALUE obj){int i;
 	VALUE obj2=cache_Lambda->ary[hash];
 	if((int)obj2){
 		
-		VALUE ary2=rb_iv_get(obj,"@ary");
+		VALUE ary2=rb_iv_get(obj2,"@ary");
 		if (ary2==Qnil) goto next;
 		len2=RARRAY_LEN(ary2);
 	  els2=RARRAY_PTR(ary2);
@@ -384,7 +384,7 @@ VALUE normalize_Lambda(VALUE self,VALUE obj){int i;
 	miss_Lambda++;
 	if (rb_obj_is_kind_of(obj3, rb_obj_class(obj))){
 		int hash3=0;
-		VALUE ary3=rb_iv_get(obj,"@ary");
+		VALUE ary3=rb_iv_get(obj3,"@ary");
 		if (ary3!=Qnil){
 		  len3=RARRAY_LEN(ary3);
 		  els3=RARRAY_PTR(ary3);
@@ -414,7 +414,7 @@ VALUE normalize_Global(VALUE self,VALUE obj){int i;
 	VALUE obj2=cache_Global->ary[hash];
 	if((int)obj2){
 		
-		VALUE ary2=rb_iv_get(obj,"@ary");
+		VALUE ary2=rb_iv_get(obj2,"@ary");
 		if (ary2==Qnil) goto next;
 		len2=RARRAY_LEN(ary2);
 	  els2=RARRAY_PTR(ary2);
@@ -428,7 +428,7 @@ VALUE normalize_Global(VALUE self,VALUE obj){int i;
 	miss_Global++;
 	if (rb_obj_is_kind_of(obj3, rb_obj_class(obj))){
 		int hash3=0;
-		VALUE ary3=rb_iv_get(obj,"@ary");
+		VALUE ary3=rb_iv_get(obj3,"@ary");
 		if (ary3!=Qnil){
 		  len3=RARRAY_LEN(ary3);
 		  els3=RARRAY_PTR(ary3);
@@ -458,7 +458,7 @@ VALUE normalize_Key(VALUE self,VALUE obj){int i;
 	VALUE obj2=cache_Key->ary[hash];
 	if((int)obj2){
 		
-		VALUE ary2=rb_iv_get(obj,"@ary");
+		VALUE ary2=rb_iv_get(obj2,"@ary");
 		if (ary2==Qnil) goto next;
 		len2=RARRAY_LEN(ary2);
 	  els2=RARRAY_PTR(ary2);
@@ -472,7 +472,7 @@ VALUE normalize_Key(VALUE self,VALUE obj){int i;
 	miss_Key++;
 	if (rb_obj_is_kind_of(obj3, rb_obj_class(obj))){
 		int hash3=0;
-		VALUE ary3=rb_iv_get(obj,"@ary");
+		VALUE ary3=rb_iv_get(obj3,"@ary");
 		if (ary3!=Qnil){
 		  len3=RARRAY_LEN(ary3);
 		  els3=RARRAY_PTR(ary3);
@@ -502,7 +502,7 @@ VALUE normalize_Local(VALUE self,VALUE obj){int i;
 	VALUE obj2=cache_Local->ary[hash];
 	if((int)obj2){
 		if (rb_iv_get(obj,"@ssano")!=rb_iv_get(obj2,"@ssano")) goto next;
-		VALUE ary2=rb_iv_get(obj,"@ary");
+		VALUE ary2=rb_iv_get(obj2,"@ary");
 		if (ary2==Qnil) goto next;
 		len2=RARRAY_LEN(ary2);
 	  els2=RARRAY_PTR(ary2);
@@ -516,7 +516,7 @@ VALUE normalize_Local(VALUE self,VALUE obj){int i;
 	miss_Local++;
 	if (rb_obj_is_kind_of(obj3, rb_obj_class(obj))){
 		int hash3=0;
-		VALUE ary3=rb_iv_get(obj,"@ary");
+		VALUE ary3=rb_iv_get(obj3,"@ary");
 		if (ary3!=Qnil){
 		  len3=RARRAY_LEN(ary3);
 		  els3=RARRAY_PTR(ary3);
@@ -546,7 +546,7 @@ VALUE normalize_Lookahead(VALUE self,VALUE obj){int i;
 	VALUE obj2=cache_Lookahead->ary[hash];
 	if((int)obj2){
 		
-		VALUE ary2=rb_iv_get(obj,"@ary");
+		VALUE ary2=rb_iv_get(obj2,"@ary");
 		if (ary2==Qnil) goto next;
 		len2=RARRAY_LEN(ary2);
 	  els2=RARRAY_PTR(ary2);
@@ -560,7 +560,7 @@ VALUE normalize_Lookahead(VALUE self,VALUE obj){int i;
 	miss_Lookahead++;
 	if (rb_obj_is_kind_of(obj3, rb_obj_class(obj))){
 		int hash3=0;
-		VALUE ary3=rb_iv_get(obj,"@ary");
+		VALUE ary3=rb_iv_get(obj3,"@ary");
 		if (ary3!=Qnil){
 		  len3=RARRAY_LEN(ary3);
 		  els3=RARRAY_PTR(ary3);
@@ -590,7 +590,7 @@ VALUE normalize_Many(VALUE self,VALUE obj){int i;
 	VALUE obj2=cache_Many->ary[hash];
 	if((int)obj2){
 		if (rb_iv_get(obj,"@has_stop")!=rb_iv_get(obj2,"@has_stop")) goto next;
-		VALUE ary2=rb_iv_get(obj,"@ary");
+		VALUE ary2=rb_iv_get(obj2,"@ary");
 		if (ary2==Qnil) goto next;
 		len2=RARRAY_LEN(ary2);
 	  els2=RARRAY_PTR(ary2);
@@ -604,7 +604,7 @@ VALUE normalize_Many(VALUE self,VALUE obj){int i;
 	miss_Many++;
 	if (rb_obj_is_kind_of(obj3, rb_obj_class(obj))){
 		int hash3=0;
-		VALUE ary3=rb_iv_get(obj,"@ary");
+		VALUE ary3=rb_iv_get(obj3,"@ary");
 		if (ary3!=Qnil){
 		  len3=RARRAY_LEN(ary3);
 		  els3=RARRAY_PTR(ary3);
@@ -634,7 +634,7 @@ VALUE normalize_Or(VALUE self,VALUE obj){int i;
 	VALUE obj2=cache_Or->ary[hash];
 	if((int)obj2){
 		if (rb_iv_get(obj,"@has_cut")!=rb_iv_get(obj2,"@has_cut")) goto next;
-		VALUE ary2=rb_iv_get(obj,"@ary");
+		VALUE ary2=rb_iv_get(obj2,"@ary");
 		if (ary2==Qnil) goto next;
 		len2=RARRAY_LEN(ary2);
 	  els2=RARRAY_PTR(ary2);
@@ -648,7 +648,7 @@ VALUE normalize_Or(VALUE self,VALUE obj){int i;
 	miss_Or++;
 	if (rb_obj_is_kind_of(obj3, rb_obj_class(obj))){
 		int hash3=0;
-		VALUE ary3=rb_iv_get(obj,"@ary");
+		VALUE ary3=rb_iv_get(obj3,"@ary");
 		if (ary3!=Qnil){
 		  len3=RARRAY_LEN(ary3);
 		  els3=RARRAY_PTR(ary3);
@@ -678,7 +678,7 @@ VALUE normalize_Pass(VALUE self,VALUE obj){int i;
 	VALUE obj2=cache_Pass->ary[hash];
 	if((int)obj2){
 		if (rb_iv_get(obj,"@var")!=rb_iv_get(obj2,"@var")) goto next;if (rb_iv_get(obj,"@to")!=rb_iv_get(obj2,"@to")) goto next;if (rb_iv_get(obj,"@enter")!=rb_iv_get(obj2,"@enter")) goto next;
-		VALUE ary2=rb_iv_get(obj,"@ary");
+		VALUE ary2=rb_iv_get(obj2,"@ary");
 		if (ary2==Qnil) goto next;
 		len2=RARRAY_LEN(ary2);
 	  els2=RARRAY_PTR(ary2);
@@ -692,7 +692,7 @@ VALUE normalize_Pass(VALUE self,VALUE obj){int i;
 	miss_Pass++;
 	if (rb_obj_is_kind_of(obj3, rb_obj_class(obj))){
 		int hash3=0;
-		VALUE ary3=rb_iv_get(obj,"@ary");
+		VALUE ary3=rb_iv_get(obj3,"@ary");
 		if (ary3!=Qnil){
 		  len3=RARRAY_LEN(ary3);
 		  els3=RARRAY_PTR(ary3);
@@ -722,7 +722,7 @@ VALUE normalize_Result(VALUE self,VALUE obj){int i;
 	VALUE obj2=cache_Result->ary[hash];
 	if((int)obj2){
 		if (rb_iv_get(obj,"@name")!=rb_iv_get(obj2,"@name")) goto next;if (rb_iv_get(obj,"@varnames")!=rb_iv_get(obj2,"@varnames")) goto next;if (rb_iv_get(obj,"@vars")!=rb_iv_get(obj2,"@vars")) goto next;
-		VALUE ary2=rb_iv_get(obj,"@ary");
+		VALUE ary2=rb_iv_get(obj2,"@ary");
 		if (ary2==Qnil) goto next;
 		len2=RARRAY_LEN(ary2);
 	  els2=RARRAY_PTR(ary2);
@@ -736,7 +736,7 @@ VALUE normalize_Result(VALUE self,VALUE obj){int i;
 	miss_Result++;
 	if (rb_obj_is_kind_of(obj3, rb_obj_class(obj))){
 		int hash3=0;
-		VALUE ary3=rb_iv_get(obj,"@ary");
+		VALUE ary3=rb_iv_get(obj3,"@ary");
 		if (ary3!=Qnil){
 		  len3=RARRAY_LEN(ary3);
 		  els3=RARRAY_PTR(ary3);
@@ -766,7 +766,7 @@ VALUE normalize_Seq(VALUE self,VALUE obj){int i;
 	VALUE obj2=cache_Seq->ary[hash];
 	if((int)obj2){
 		
-		VALUE ary2=rb_iv_get(obj,"@ary");
+		VALUE ary2=rb_iv_get(obj2,"@ary");
 		if (ary2==Qnil) goto next;
 		len2=RARRAY_LEN(ary2);
 	  els2=RARRAY_PTR(ary2);
@@ -780,7 +780,7 @@ VALUE normalize_Seq(VALUE self,VALUE obj){int i;
 	miss_Seq++;
 	if (rb_obj_is_kind_of(obj3, rb_obj_class(obj))){
 		int hash3=0;
-		VALUE ary3=rb_iv_get(obj,"@ary");
+		VALUE ary3=rb_iv_get(obj3,"@ary");
 		if (ary3!=Qnil){
 		  len3=RARRAY_LEN(ary3);
 		  els3=RARRAY_PTR(ary3);
@@ -810,7 +810,7 @@ VALUE normalize_Stop(VALUE self,VALUE obj){int i;
 	VALUE obj2=cache_Stop->ary[hash];
 	if((int)obj2){
 		
-		VALUE ary2=rb_iv_get(obj,"@ary");
+		VALUE ary2=rb_iv_get(obj2,"@ary");
 		if (ary2==Qnil) goto next;
 		len2=RARRAY_LEN(ary2);
 	  els2=RARRAY_PTR(ary2);
@@ -824,7 +824,7 @@ VALUE normalize_Stop(VALUE self,VALUE obj){int i;
 	miss_Stop++;
 	if (rb_obj_is_kind_of(obj3, rb_obj_class(obj))){
 		int hash3=0;
-		VALUE ary3=rb_iv_get(obj,"@ary");
+		VALUE ary3=rb_iv_get(obj3,"@ary");
 		if (ary3!=Qnil){
 		  len3=RARRAY_LEN(ary3);
 		  els3=RARRAY_PTR(ary3);
@@ -854,7 +854,7 @@ VALUE normalize_Strin(VALUE self,VALUE obj){int i;
 	VALUE obj2=cache_Strin->ary[hash];
 	if((int)obj2){
 		
-		VALUE ary2=rb_iv_get(obj,"@ary");
+		VALUE ary2=rb_iv_get(obj2,"@ary");
 		if (ary2==Qnil) goto next;
 		len2=RARRAY_LEN(ary2);
 	  els2=RARRAY_PTR(ary2);
@@ -868,7 +868,7 @@ VALUE normalize_Strin(VALUE self,VALUE obj){int i;
 	miss_Strin++;
 	if (rb_obj_is_kind_of(obj3, rb_obj_class(obj))){
 		int hash3=0;
-		VALUE ary3=rb_iv_get(obj,"@ary");
+		VALUE ary3=rb_iv_get(obj3,"@ary");
 		if (ary3!=Qnil){
 		  len3=RARRAY_LEN(ary3);
 		  els3=RARRAY_PTR(ary3);
@@ -898,7 +898,7 @@ VALUE normalize_Switch_Char(VALUE self,VALUE obj){int i;
 	VALUE obj2=cache_Switch_Char->ary[hash];
 	if((int)obj2){
 		
-		VALUE ary2=rb_iv_get(obj,"@ary");
+		VALUE ary2=rb_iv_get(obj2,"@ary");
 		if (ary2==Qnil) goto next;
 		len2=RARRAY_LEN(ary2);
 	  els2=RARRAY_PTR(ary2);
@@ -912,7 +912,7 @@ VALUE normalize_Switch_Char(VALUE self,VALUE obj){int i;
 	miss_Switch_Char++;
 	if (rb_obj_is_kind_of(obj3, rb_obj_class(obj))){
 		int hash3=0;
-		VALUE ary3=rb_iv_get(obj,"@ary");
+		VALUE ary3=rb_iv_get(obj3,"@ary");
 		if (ary3!=Qnil){
 		  len3=RARRAY_LEN(ary3);
 		  els3=RARRAY_PTR(ary3);
@@ -942,7 +942,7 @@ VALUE normalize_Switch_Clas(VALUE self,VALUE obj){int i;
 	VALUE obj2=cache_Switch_Clas->ary[hash];
 	if((int)obj2){
 		
-		VALUE ary2=rb_iv_get(obj,"@ary");
+		VALUE ary2=rb_iv_get(obj2,"@ary");
 		if (ary2==Qnil) goto next;
 		len2=RARRAY_LEN(ary2);
 	  els2=RARRAY_PTR(ary2);
@@ -956,7 +956,7 @@ VALUE normalize_Switch_Clas(VALUE self,VALUE obj){int i;
 	miss_Switch_Clas++;
 	if (rb_obj_is_kind_of(obj3, rb_obj_class(obj))){
 		int hash3=0;
-		VALUE ary3=rb_iv_get(obj,"@ary");
+		VALUE ary3=rb_iv_get(obj3,"@ary");
 		if (ary3!=Qnil){
 		  len3=RARRAY_LEN(ary3);
 		  els3=RARRAY_PTR(ary3);
@@ -986,7 +986,7 @@ VALUE normalize_Switch_Or(VALUE self,VALUE obj){int i;
 	VALUE obj2=cache_Switch_Or->ary[hash];
 	if((int)obj2){
 		
-		VALUE ary2=rb_iv_get(obj,"@ary");
+		VALUE ary2=rb_iv_get(obj2,"@ary");
 		if (ary2==Qnil) goto next;
 		len2=RARRAY_LEN(ary2);
 	  els2=RARRAY_PTR(ary2);
@@ -1000,7 +1000,7 @@ VALUE normalize_Switch_Or(VALUE self,VALUE obj){int i;
 	miss_Switch_Or++;
 	if (rb_obj_is_kind_of(obj3, rb_obj_class(obj))){
 		int hash3=0;
-		VALUE ary3=rb_iv_get(obj,"@ary");
+		VALUE ary3=rb_iv_get(obj3,"@ary");
 		if (ary3!=Qnil){
 		  len3=RARRAY_LEN(ary3);
 		  els3=RARRAY_PTR(ary3);
