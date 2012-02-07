@@ -260,7 +260,6 @@ VALUE or_create2(VALUE self,VALUE ary){
 	rb_iv_set(o,"@ary",ary);
 	return or_normalize(self,o);
 }
-
 VALUE report_normalize(VALUE self){
 	printf("normalize bind hit: %i miss: %i\n",nhit ,nmiss );
 	printf("normalize seq  hit: %i miss: %i\n",nhit2,nmiss2);
@@ -268,7 +267,8 @@ VALUE report_normalize(VALUE self){
 
 	return Qnil;
 }
-
+extern bind_cache *cache_Bind;VALUE cache_Bind_gc;
+VALUE normalize_Bind(VALUE,VALUE);
 ID s_ary;
 void Init_Ame(VALUE self){
 	b=bind_cache_init(); 
@@ -280,13 +280,17 @@ void Init_Ame(VALUE self){
 	orcache=bind_cache_init(); 
   orcachegc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,orcache);
 	rb_global_variable(&orcachegc);
+	cache_Bind=bind_cache_init(); 
+  cache_Bind_gc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,cache_Bind);
+	rb_global_variable(&cache_Bind_gc);
+
 	s_ary_get=rb_intern("[]");
 	s_ary=rb_intern("@ary");
 	s_to_a=rb_intern("to_a");
 	failobj=rb_eval_string("FAIL");
 	amecore=rb_define_class("AmethystCore",rb_cObject);
 	rb_define_singleton_method(amecore,"new",ame_new,0);
-	rb_define_singleton_method(amecore,"bind_normalize",bind_normalize,1);
+	rb_define_singleton_method(amecore,"bind_normalize",normalize_Bind,1);
 	rb_define_singleton_method(amecore,"bind_create2",bind_create2,2);
 	rb_define_singleton_method(amecore,"seq_normalize",seq_normalize,1);
 	rb_define_singleton_method(amecore,"seq_create2",seq_create2,1);

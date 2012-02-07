@@ -63,12 +63,12 @@ VALUE normalize_#{e}(VALUE self,VALUE obj){int i;
 	  els=RARRAY_PTR(ary);
 		for (i=0;i<len;i++) hash=((int) els[i])+11*hash;
 	}
-	#{(e.instance_variable_get(:@attrs)-[:ary]).map{|e| "hash=11&hash+rb_iv_get(obj,\"@#{e.to_s}\");"}*""}
+	#{(e.instance_variable_get(:@attrs)-[:ary]).map{|e| "hash=11*hash+rb_iv_get(obj,\"@#{e.to_s}\");"}*""}
 	hash=hash&((1<<20)-1);
 
 	VALUE obj2=cache_#{e}->ary[hash];
 	if((int)obj2){
-		#{(e.instance_variable_get(:@attrs)-[:ary]).map{|e| "if (rb_iv_get(obj,\"@#{e.to_s}\")!=rb_iv_get(obj,\"@#{e.to_s}\")) goto next;"}*""}
+		#{(e.instance_variable_get(:@attrs)-[:ary]).map{|e| "if (rb_iv_get(obj,\"@#{e.to_s}\")!=rb_iv_get(obj2,\"@#{e.to_s}\")) goto next;"}*""}
 		VALUE ary2=rb_iv_get(obj,\"@ary\");
 		if (ary2==Qnil) goto next;
 		len2=RARRAY_LEN(ary2);
@@ -89,7 +89,7 @@ VALUE normalize_#{e}(VALUE self,VALUE obj){int i;
 		  els3=RARRAY_PTR(ary3);
 		  for (i=0;i<len3;i++) hash3=((int) els3[i])+11*hash3;
 		}
-		#{(e.instance_variable_get(:@attrs)-[:ary]).map{|e| "hash3=11&hash3+rb_iv_get(obj,\"@#{e.to_s}\");"}*""}
+		#{(e.instance_variable_get(:@attrs)-[:ary]).map{|e| "hash3=11*hash3+rb_iv_get(obj,\"@#{e.to_s}\");"}*""}
 		hash3=hash3&((1<<20)-1);
 		cache_#{e}->ary[hash3]=obj3;
   	cache_#{e}->ret[hash3]=obj3;
@@ -114,6 +114,16 @@ class Or
 		AmethystCore::or_normalize(self);
 	end
 end
+#class Apply
+#	def normalize
+#		r=AmethystCore::normalize_Apply(self);
+		#puts self.ary.inspect
+		#puts self.inspect
+		#puts r.inspect
+#		r
+#	end
+#end
+
 Placeholder=Consts.new("Placeholder");FAIL=Consts.new("FAIL")
 
 
@@ -161,8 +171,8 @@ class Bind
     	return Seq[Bind[a,expr],PureAct[Args["_append(",name,",",a,")"]],a]
 	  end
 		if name.is_a?(Local)
-			#Bind.create({:name=>name,:ary=>[expr]}).normalize
-			AmethystCore::bind_create2(name,[expr])
+			#AmethystCore::bind_create2(name,[expr])
+			Bind.create({:name=>name,:ary=>[expr]}).normalize
 		else
 			 a=autovar
 	    Seq[Bind[a,expr],PureAct[Args[name,'=',a]]]
