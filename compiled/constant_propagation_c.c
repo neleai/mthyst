@@ -14,7 +14,7 @@ static VALUE sy_Constant_Propagator_src_25d9;
 static VALUE sy_valof;
 VALUE Constant_Propagator_root(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0,var1;
+    VALUE it ,_it,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -22,11 +22,11 @@ VALUE Constant_Propagator_root(VALUE self ) {
     Data_Get_Struct(self,cstruct,ptr);
     it=AmethystCore_anything(self );
     FAILTEST(fail);
-    var0/*it*/=it;;
-    bind_aset(bind2,1,var0/*it*/);
+    _it=it;;
+    bind_aset(bind2,1,_it);
     it=rb_funcall(self,sy_Constant_Propagator__at_depend_eq__07a9,1,bind2);
-    var0/*it*/=bind_aget(bind2,1);;
-    var1/*_result*/=it;;
+    _it=bind_aget(bind2,1);;
+    __result=it;;
 
     return it;
 fail:
@@ -34,21 +34,21 @@ fail:
 }
 VALUE Constant_Propagator_step(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14,var15,var16,var17;
+    VALUE it ,_el,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,_autovar_7,_autovar_8,_autovar_9,_expr,_autovar_10,_autovar_11,_val,_autovar_12,_autovar_13,_autovar_14,__result;
     VALUE bind2=bind_new2(16);
-    var0/*el*/=a0;;
+    _el=a0;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    it=var0/*el*/;
-    var1/*autovar*/=it;;
+    it=_el;
+    _autovar=it;;
     cstruct oldpass1=*ptr;
     ptr->pos=ptr->len=0;
     ptr->ary=NULL;
     ptr->src=failobj;
     ptr->ary=alloca(sizeof(VALUE));
-    ptr->ary[0]=var1/*autovar*/;
+    ptr->ary[0]=_autovar;
     ptr->len=1;
     switch(FIX2LONG(rb_hash_aref(switchhash_Constant_Propagator_1,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Act*/:
@@ -59,11 +59,11 @@ alt1_1:
         ;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        var2/*autovar*/=it;;
+        _autovar_2=it;;
         cstruct oldpass2=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=var2/*autovar*/;
+        ptr->src=_autovar_2;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -80,11 +80,11 @@ alt1_1:
             ;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
-            var3/*autovar*/=it;;
+            _autovar_3=it;;
             cstruct oldpass3=*ptr;
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
-            ptr->src=var3/*autovar*/;
+            ptr->src=_autovar_3;
             if(TYPE(ptr->src)==T_STRING) {
                 ptr->str=RSTRING_PTR(ptr->src);
                 ptr->len=RSTRING_LEN(ptr->src);
@@ -98,7 +98,7 @@ alt1_1:
             }
             ptr->pos=ptr->len;
             it=rb_funcall(self,sy_Constant_Propagator_Constant_8840,1,bind2);
-            var4/*autovar*/=it;;
+            _autovar_4=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass3;
             goto success3;
@@ -107,8 +107,8 @@ pass3:
             goto pass2;
 success3:
             *ptr=oldpass3;
-            it=var4/*autovar*/;
-            var5/*autovar*/=it;;
+            it=_autovar_4;
+            _autovar_5=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass2;
             break;
@@ -116,11 +116,11 @@ success3:
             ;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
-            var6/*autovar*/=it;;
+            _autovar_6=it;;
             cstruct oldpass4=*ptr;
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
-            ptr->src=var6/*autovar*/;
+            ptr->src=_autovar_6;
             if(TYPE(ptr->src)==T_STRING) {
                 ptr->str=RSTRING_PTR(ptr->src);
                 ptr->len=RSTRING_LEN(ptr->src);
@@ -137,7 +137,7 @@ success3:
             arg0=it;
             it=rb_funcall(self,sy_valof,1,arg0);
             FAILTEST(pass4);
-            var7/*autovar*/=it;;
+            _autovar_7=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass4;
             goto success4;
@@ -146,8 +146,8 @@ pass4:
             goto pass2;
 success4:
             *ptr=oldpass4;
-            it=var7/*autovar*/;
-            var5/*autovar*/=it;;
+            it=_autovar_7;
+            _autovar_5=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass2;
             break;
@@ -162,8 +162,8 @@ pass2:
         goto alt1_2;
 success2:
         *ptr=oldpass2;
-        it=var5/*autovar*/;
-        var8/*autovar*/=it;;
+        it=_autovar_5;
+        _autovar_8=it;;
 
         ;
         goto accept1;
@@ -172,7 +172,7 @@ alt1_2:
         it=AmethystCore_anything(self );
         FAILTEST(alt1_3);
         it=rb_funcall(self,sy_Constant_Propagator_Constant_bf42,1,bind2);
-        var8/*autovar*/=it;;
+        _autovar_8=it;;
 
         ;
         goto accept1;
@@ -192,11 +192,11 @@ alt2_1:
         ;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        var9/*autovar*/=it;;
+        _autovar_9=it;;
         cstruct oldpass5=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=var9/*autovar*/;
+        ptr->src=_autovar_9;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -210,12 +210,12 @@ alt2_1:
         }
         it=AmethystCore_anything(self );
         FAILTEST(pass5);
-        var10/*expr*/=it;;
-        it=var10/*expr*/;
+        _expr=it;;
+        it=_expr;
         arg0=it;
         it=rb_funcall(self,sy_valof,1,arg0);
         FAILTEST(pass5);
-        var11/*autovar*/=it;;
+        _autovar_10=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass5;
         goto success5;
@@ -224,8 +224,8 @@ pass5:
         goto alt2_2;
 success5:
         *ptr=oldpass5;
-        it=var11/*autovar*/;
-        var8/*autovar*/=it;;
+        it=_autovar_10;
+        _autovar_8=it;;
 
         ;
         goto accept2;
@@ -234,7 +234,7 @@ alt2_2:
         it=AmethystCore_anything(self );
         FAILTEST(alt2_3);
         it=rb_funcall(self,sy_Constant_Propagator_Constant_bf42,1,bind2);
-        var8/*autovar*/=it;;
+        _autovar_8=it;;
 
         ;
         goto accept2;
@@ -254,11 +254,11 @@ alt3_1:
         ;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        var12/*autovar*/=it;;
+        _autovar_11=it;;
         cstruct oldpass6=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=var12/*autovar*/;
+        ptr->src=_autovar_11;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -272,11 +272,11 @@ alt3_1:
         }
         ptr->pos=ptr->len;
         it=rb_funcall(self,sy_Constant_Propagator_src_25d9,1,bind2);
-        var13/*val*/=it;;
-        bind_aset(bind2,1,var13/*val*/);
+        _val=it;;
+        bind_aset(bind2,1,_val);
         it=rb_funcall(self,sy_Constant_Propagator_Constant_db03,1,bind2);
-        var13/*val*/=bind_aget(bind2,1);;
-        var14/*autovar*/=it;;
+        _val=bind_aget(bind2,1);;
+        _autovar_12=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass6;
         goto success6;
@@ -285,8 +285,8 @@ pass6:
         goto alt3_2;
 success6:
         *ptr=oldpass6;
-        it=var14/*autovar*/;
-        var8/*autovar*/=it;;
+        it=_autovar_12;
+        _autovar_8=it;;
 
         ;
         goto accept3;
@@ -295,7 +295,7 @@ alt3_2:
         it=AmethystCore_anything(self );
         FAILTEST(alt3_3);
         it=rb_funcall(self,sy_Constant_Propagator_Constant_bf42,1,bind2);
-        var8/*autovar*/=it;;
+        _autovar_8=it;;
 
         ;
         goto accept3;
@@ -315,11 +315,11 @@ alt4_1:
         ;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        var15/*autovar*/=it;;
+        _autovar_13=it;;
         cstruct oldpass7=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=var15/*autovar*/;
+        ptr->src=_autovar_13;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -332,10 +332,10 @@ alt4_1:
             ptr->len=RARRAY_LEN(ary);
         }
         ptr->pos=ptr->len;
-        bind_aset(bind2,1,var0/*el*/);
+        bind_aset(bind2,1,_el);
         it=rb_funcall(self,sy_Constant_Propagator_a_eq_Consta_2e1d,1,bind2);
-        var0/*el*/=bind_aget(bind2,1);;
-        var16/*autovar*/=it;;
+        _el=bind_aget(bind2,1);;
+        _autovar_14=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass7;
         goto success7;
@@ -344,8 +344,8 @@ pass7:
         goto alt4_2;
 success7:
         *ptr=oldpass7;
-        it=var16/*autovar*/;
-        var8/*autovar*/=it;;
+        it=_autovar_14;
+        _autovar_8=it;;
 
         ;
         goto accept4;
@@ -354,7 +354,7 @@ alt4_2:
         it=AmethystCore_anything(self );
         FAILTEST(alt4_3);
         it=rb_funcall(self,sy_Constant_Propagator_Constant_bf42,1,bind2);
-        var8/*autovar*/=it;;
+        _autovar_8=it;;
 
         ;
         goto accept4;
@@ -371,7 +371,7 @@ accept4:
         it=AmethystCore_anything(self );
         FAILTEST(pass1);
         it=rb_funcall(self,sy_Constant_Propagator_Constant_bf42,1,bind2);
-        var8/*autovar*/=it;;
+        _autovar_8=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass1;
         break;
@@ -382,8 +382,8 @@ pass1:
     goto fail;
 success1:
     *ptr=oldpass1;
-    it=var8/*autovar*/;
-    var17/*_result*/=it;;
+    it=_autovar_8;
+    __result=it;;
 
     return it;
 fail:
@@ -418,14 +418,14 @@ static VALUE sy_Constant_Traverser_src_25d9;
 static VALUE sy_Constant_Traverser_src_dot_cfg_eq__15aa;
 VALUE Constant_Traverser_consts(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0,var1,var2,var3;
+    VALUE it ,_ary,_autovar,_autovar_2,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     it=rb_ary_new3(0);
-    var0/*ary*/=it;;
+    _ary=it;;
     int stop1=0;
     while(!stop1) {
         switch(FIX2LONG(rb_hash_aref(switchhash_Constant_Traverser_1,rb_obj_class(ame_curobj2(ptr))))) {
@@ -437,11 +437,11 @@ alt1_1:
             ;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
-            var1/*autovar*/=it;;
+            _autovar=it;;
             cstruct oldpass1=*ptr;
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
-            ptr->src=var1/*autovar*/;
+            ptr->src=_autovar;
             if(TYPE(ptr->src)==T_STRING) {
                 ptr->str=RSTRING_PTR(ptr->src);
                 ptr->len=RSTRING_LEN(ptr->src);
@@ -457,12 +457,12 @@ alt1_1:
             it=rb_funcall(self,sy_Constant_Traverser__lp__lp__at_const_463e,1,bind2);
             FAILTEST(pass1);
             it=rb_funcall(self,sy_Constant_Traverser_Bind_lb_src_9cb6,1,bind2);
-            var2/*autovar*/=it;;
-            bind_aset(bind2,1,var0/*ary*/);
-            bind_aset(bind2,2,var2/*autovar*/);
+            _autovar_2=it;;
+            bind_aset(bind2,1,_ary);
+            bind_aset(bind2,2,_autovar_2);
             it=rb_funcall(self,sy_Constant_Traverser__append_lp__d113,1,bind2);
-            var0/*ary*/=bind_aget(bind2,1);;
-            var2/*autovar*/=bind_aget(bind2,2);;
+            _ary=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,2);;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass1;
             goto success1;
@@ -514,8 +514,8 @@ accept2:
             break;
         }
     }
-    it=var0/*ary*/;
-    var3/*_result*/=it;;
+    it=_ary;
+    __result=it;;
 
     return it;
 fail:
@@ -523,7 +523,7 @@ fail:
 }
 VALUE Constant_Traverser_root(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0;
+    VALUE it ,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -533,7 +533,7 @@ VALUE Constant_Traverser_root(VALUE self ) {
     it=rb_funcall(self,sy_Constant_Traverser_src_dot_cfg_eq__15aa,1,bind2);
     it=Constant_Traverser_traverse(self );
     FAILTEST(fail);
-    var0/*_result*/=it;;
+    __result=it;;
 
     return it;
 fail:
@@ -541,7 +541,7 @@ fail:
 }
 VALUE Constant_Traverser_traverse(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9;
+    VALUE it ,_oldchanged,_this,_clon,_changed,_autovar,_autovar_2,_autovar_3,_key,_val,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -549,29 +549,29 @@ VALUE Constant_Traverser_traverse(VALUE self ) {
     Data_Get_Struct(self,cstruct,ptr);
     ptr->pos=ptr->len;
     it=rb_funcall(self,sy_Constant_Traverser__at_changed_c681,1,bind2);
-    var0/*oldchanged*/=it;;
+    _oldchanged=it;;
     it=rb_funcall(self,sy_Constant_Traverser_src_25d9,1,bind2);
-    var1/*this*/=it;;
+    _this=it;;
     it=Qnil;
-    var2/*clon*/=it;;
+    _clon=it;;
     it=Qfalse;
-    var3/*changed*/=it;;
+    _changed=it;;
     it=rb_funcall(self,sy_Constant_Traverser__lp_src_dot_ins_6a75,1,bind2);
-    var4/*autovar*/=it;;
+    _autovar=it;;
     cstruct oldpass1=*ptr;
     ptr->pos=ptr->len=0;
     ptr->ary=NULL;
     ptr->src=failobj;
     ptr->ary=alloca(sizeof(VALUE));
-    ptr->ary[0]=var4/*autovar*/;
+    ptr->ary[0]=_autovar;
     ptr->len=1;
     it=AmethystCore_anything(self );
     FAILTEST(pass1);
-    var5/*autovar*/=it;;
+    _autovar_2=it;;
     cstruct oldpass2=*ptr;
     ptr->pos=ptr->len=0;
     ptr->ary=NULL;
-    ptr->src=var5/*autovar*/;
+    ptr->src=_autovar_2;
     if(TYPE(ptr->src)==T_STRING) {
         ptr->str=RSTRING_PTR(ptr->src);
         ptr->len=RSTRING_LEN(ptr->src);
@@ -591,11 +591,11 @@ alt1_1:
         ;
         it=AmethystCore_anything(self );
         FAILTEST(alt1_2);
-        var6/*autovar*/=it;;
+        _autovar_3=it;;
         cstruct oldpass3=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=var6/*autovar*/;
+        ptr->src=_autovar_3;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -609,22 +609,22 @@ alt1_1:
         }
         it=AmethystCore_anything(self );
         FAILTEST(pass3);
-        var7/*key*/=it;;
+        _key=it;;
         it=rb_funcall(self,sy_Constant_Traverser__at_changed_b885,1,bind2);
         it=Constant_Traverser_traverse_item(self );
         FAILTEST(pass3);
-        var8/*val*/=it;;
-        bind_aset(bind2,1,var2/*clon*/);
-        bind_aset(bind2,2,var1/*this*/);
-        bind_aset(bind2,3,var3/*changed*/);
-        bind_aset(bind2,4,var7/*key*/);
-        bind_aset(bind2,5,var8/*val*/);
+        _val=it;;
+        bind_aset(bind2,1,_clon);
+        bind_aset(bind2,2,_this);
+        bind_aset(bind2,3,_changed);
+        bind_aset(bind2,4,_key);
+        bind_aset(bind2,5,_val);
         it=rb_funcall(self,sy_Constant_Traverser__lp_bind_lb_1_rb__ee3d,1,bind2);
-        var2/*clon*/=bind_aget(bind2,1);;
-        var1/*this*/=bind_aget(bind2,2);;
-        var3/*changed*/=bind_aget(bind2,3);;
-        var7/*key*/=bind_aget(bind2,4);;
-        var8/*val*/=bind_aget(bind2,5);;
+        _clon=bind_aget(bind2,1);;
+        _this=bind_aget(bind2,2);;
+        _changed=bind_aget(bind2,3);;
+        _key=bind_aget(bind2,4);;
+        _val=bind_aget(bind2,5);;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass3;
         goto success3;
@@ -663,14 +663,14 @@ pass1:
     goto fail;
 success1:
     *ptr=oldpass1;
-    bind_aset(bind2,1,var3/*changed*/);
-    bind_aset(bind2,2,var2/*clon*/);
-    bind_aset(bind2,3,var0/*oldchanged*/);
+    bind_aset(bind2,1,_changed);
+    bind_aset(bind2,2,_clon);
+    bind_aset(bind2,3,_oldchanged);
     it=rb_funcall(self,sy_Constant_Traverser_if_sp_bind_lb__8e0b,1,bind2);
-    var3/*changed*/=bind_aget(bind2,1);;
-    var2/*clon*/=bind_aget(bind2,2);;
-    var0/*oldchanged*/=bind_aget(bind2,3);;
-    var9/*_result*/=it;;
+    _changed=bind_aget(bind2,1);;
+    _clon=bind_aget(bind2,2);;
+    _oldchanged=bind_aget(bind2,3);;
+    __result=it;;
 
     return it;
 fail:
@@ -678,7 +678,7 @@ fail:
 }
 VALUE Constant_Traverser_traverse_item(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7;
+    VALUE it ,_a,__result,_autovar,_autovar_2,_autovar_3,_ar,_it,_autovar_4;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -693,10 +693,10 @@ alt1_1:
         ;
         it=Constant_Traverser_visit(self );
         FAILTEST(alt1_2);
-        var0/*a*/=it;;
+        _a=it;;
         it=rb_funcall(self,sy_Constant_Traverser__at_changed_5352,1,bind2);
-        it=var0/*a*/;
-        var1/*_result*/=it;;
+        it=_a;
+        __result=it;;
 
         ;
         goto accept1;
@@ -704,11 +704,11 @@ alt1_2:
         ptr->pos=oldpos1;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        var2/*autovar*/=it;;
+        _autovar=it;;
         cstruct oldpass1=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=var2/*autovar*/;
+        ptr->src=_autovar;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -722,7 +722,7 @@ alt1_2:
         }
         it=Constant_Traverser_traverse(self );
         FAILTEST(pass1);
-        var3/*autovar*/=it;;
+        _autovar_2=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass1;
         goto success1;
@@ -731,8 +731,8 @@ pass1:
         goto alt1_3;
 success1:
         *ptr=oldpass1;
-        it=var3/*autovar*/;
-        var1/*_result*/=it;;
+        it=_autovar_2;
+        __result=it;;
 
         ;
         goto accept1;
@@ -740,7 +740,7 @@ alt1_3:
         ptr->pos=oldpos1;
         it=AmethystCore_anything(self );
         FAILTEST(alt1_4);
-        var1/*_result*/=it;;
+        __result=it;;
 
         ;
         goto accept1;
@@ -758,10 +758,10 @@ alt2_1:
         ;
         it=Constant_Traverser_visit(self );
         FAILTEST(alt2_2);
-        var0/*a*/=it;;
+        _a=it;;
         it=rb_funcall(self,sy_Constant_Traverser__at_changed_5352,1,bind2);
-        it=var0/*a*/;
-        var1/*_result*/=it;;
+        it=_a;
+        __result=it;;
 
         ;
         goto accept2;
@@ -769,11 +769,11 @@ alt2_2:
         ptr->pos=oldpos2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        var4/*autovar*/=it;;
+        _autovar_3=it;;
         cstruct oldpass2=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=var4/*autovar*/;
+        ptr->src=_autovar_3;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -786,7 +786,7 @@ alt2_2:
             ptr->len=RARRAY_LEN(ary);
         }
         it=rb_ary_new3(0);
-        var5/*ar*/=it;;
+        _ar=it;;
         int stop1=0;
         while(!stop1) {
             int oldpos3=ptr->pos;
@@ -795,12 +795,12 @@ alt3_1:
             ;
             it=Constant_Traverser_traverse_item(self );
             FAILTEST(alt3_2);
-            var6/*it*/=it;;
-            bind_aset(bind2,1,var5/*ar*/);
-            bind_aset(bind2,2,var6/*it*/);
+            _it=it;;
+            bind_aset(bind2,1,_ar);
+            bind_aset(bind2,2,_it);
             it=rb_funcall(self,sy_Constant_Traverser_bind_lb_1_rb__lt__7b20,1,bind2);
-            var5/*ar*/=bind_aget(bind2,1);;
-            var6/*it*/=bind_aget(bind2,2);;
+            _ar=bind_aget(bind2,1);;
+            _it=bind_aget(bind2,2);;
             ;
             goto accept3;
 alt3_2:
@@ -814,8 +814,8 @@ alt3_3:
 accept3:
             ;
         }
-        it=var5/*ar*/;
-        var7/*autovar*/=it;;
+        it=_ar;
+        _autovar_4=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass2;
         goto success2;
@@ -824,8 +824,8 @@ pass2:
         goto alt2_3;
 success2:
         *ptr=oldpass2;
-        it=var7/*autovar*/;
-        var1/*_result*/=it;;
+        it=_autovar_4;
+        __result=it;;
 
         ;
         goto accept2;
@@ -833,7 +833,7 @@ alt2_3:
         ptr->pos=oldpos2;
         it=AmethystCore_anything(self );
         FAILTEST(alt2_4);
-        var1/*_result*/=it;;
+        __result=it;;
 
         ;
         goto accept2;
@@ -851,10 +851,10 @@ alt4_1:
         ;
         it=Constant_Traverser_visit(self );
         FAILTEST(alt4_2);
-        var0/*a*/=it;;
+        _a=it;;
         it=rb_funcall(self,sy_Constant_Traverser__at_changed_5352,1,bind2);
-        it=var0/*a*/;
-        var1/*_result*/=it;;
+        it=_a;
+        __result=it;;
 
         ;
         goto accept4;
@@ -862,7 +862,7 @@ alt4_2:
         ptr->pos=oldpos4;
         it=AmethystCore_anything(self );
         FAILTEST(alt4_3);
-        var1/*_result*/=it;;
+        __result=it;;
 
         ;
         goto accept4;
@@ -879,7 +879,7 @@ fail:
 }
 VALUE Constant_Traverser_visit(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10;
+    VALUE it ,_autovar,_a,_autovar_2,__result,_autovar_3,_expr,_autovar_4,_autovar_5,_autovar_6,_autovar_7,_autovar_8;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -890,11 +890,11 @@ VALUE Constant_Traverser_visit(VALUE self ) {
         ;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        var0/*autovar*/=it;;
+        _autovar=it;;
         cstruct oldpass1=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=var0/*autovar*/;
+        ptr->src=_autovar;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -907,11 +907,11 @@ VALUE Constant_Traverser_visit(VALUE self ) {
             ptr->len=RARRAY_LEN(ary);
         }
         it=Constant_Traverser_consts(self );
-        var1/*a*/=it;;
-        bind_aset(bind2,1,var1/*a*/);
+        _a=it;;
+        bind_aset(bind2,1,_a);
         it=rb_funcall(self,sy_Constant_Traverser_Seq_lb_bind_95dc,1,bind2);
-        var1/*a*/=bind_aget(bind2,1);;
-        var2/*autovar*/=it;;
+        _a=bind_aget(bind2,1);;
+        _autovar_2=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass1;
         goto success1;
@@ -920,18 +920,18 @@ pass1:
         goto fail;
 success1:
         *ptr=oldpass1;
-        it=var2/*autovar*/;
-        var3/*_result*/=it;;
+        it=_autovar_2;
+        __result=it;;
         break;
     case 1/*Bind*/:
         ;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        var4/*autovar*/=it;;
+        _autovar_3=it;;
         cstruct oldpass2=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=var4/*autovar*/;
+        ptr->src=_autovar_3;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -945,11 +945,11 @@ success1:
         }
         it=Constant_Traverser_traverse_item(self );
         FAILTEST(pass2);
-        var5/*expr*/=it;;
-        bind_aset(bind2,1,var5/*expr*/);
+        _expr=it;;
+        bind_aset(bind2,1,_expr);
         it=rb_funcall(self,sy_Constant_Traverser_Bind_lb_src_66c4,1,bind2);
-        var5/*expr*/=bind_aget(bind2,1);;
-        var6/*autovar*/=it;;
+        _expr=bind_aget(bind2,1);;
+        _autovar_4=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass2;
         goto success2;
@@ -958,18 +958,18 @@ pass2:
         goto fail;
 success2:
         *ptr=oldpass2;
-        it=var6/*autovar*/;
-        var3/*_result*/=it;;
+        it=_autovar_4;
+        __result=it;;
         break;
     case 2/*Local*/:
         ;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        var7/*autovar*/=it;;
+        _autovar_5=it;;
         cstruct oldpass3=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=var7/*autovar*/;
+        ptr->src=_autovar_5;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -985,7 +985,7 @@ success2:
         it=rb_funcall(self,sy_Constant_Traverser__lp__lp__at_const_5d8f,1,bind2);
         FAILTEST(pass3);
         it=rb_funcall(self,sy_Constant_Traverser__at_consts_lb__abf4,1,bind2);
-        var8/*autovar*/=it;;
+        _autovar_6=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass3;
         goto success3;
@@ -994,18 +994,18 @@ pass3:
         goto fail;
 success3:
         *ptr=oldpass3;
-        it=var8/*autovar*/;
-        var3/*_result*/=it;;
+        it=_autovar_6;
+        __result=it;;
         break;
     case 3/*Result*/:
         ;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        var9/*autovar*/=it;;
+        _autovar_7=it;;
         cstruct oldpass4=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=var9/*autovar*/;
+        ptr->src=_autovar_7;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -1019,7 +1019,7 @@ success3:
         }
         ptr->pos=ptr->len;
         it=rb_funcall(self,sy_Constant_Traverser_src_25d9,1,bind2);
-        var10/*autovar*/=it;;
+        _autovar_8=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass4;
         goto success4;
@@ -1028,8 +1028,8 @@ pass4:
         goto fail;
 success4:
         *ptr=oldpass4;
-        it=var10/*autovar*/;
-        var3/*_result*/=it;;
+        it=_autovar_8;
+        __result=it;;
         break;
     case 4/*Object*/:
         ;
@@ -1087,5 +1087,5 @@ void Init_constant_propagation_c() {
     rb_define_method(cls_Constant_Traverser,"traverse",Constant_Traverser_traverse,0);
     rb_define_method(cls_Constant_Traverser,"traverse_item",Constant_Traverser_traverse_item,0);
     rb_define_method(cls_Constant_Traverser,"visit",Constant_Traverser_visit,0);
-    rb_eval_string("testversionconstant_propagation('8e6ed87e4b4eac34c7b8f62e43acf461')");
+    rb_eval_string("testversionconstant_propagation('9eff622d798633c4ac967ac35f58b7c9')");
 }

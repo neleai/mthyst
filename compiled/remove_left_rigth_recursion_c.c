@@ -26,9 +26,9 @@ static VALUE sy_Remove_Left_Recursion_src_25d9;
 static VALUE sy_Remove_Left_Recursion_src_dot_body_519e;
 VALUE Remove_Left_Recursion_first(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14,var15,var16,var17,var18,var19,var20,var21,var22,var23,var24;
+    VALUE it ,_autovar,_follow,__result,_x,_autovar_2,_autovar_3,_autovar_4,_expr,_autovar_5,_autovar_6,_autovar_7,_autovar_8,_ary,_autovar_9,_autovar_10,_autovar_11,_first,_autovar_12,_autovar_13,_rest,_autovar_14,_autovar_15,_autovar_16,_autovar_17,_autovar_18;
     VALUE bind2=bind_new2(16);
-    var1/*follow*/=a0;;
+    _follow=a0;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
@@ -42,11 +42,11 @@ alt1_1:
         ;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        var0/*autovar*/=it;;
+        _autovar=it;;
         cstruct oldpass1=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=var0/*autovar*/;
+        ptr->src=_autovar;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -70,10 +70,10 @@ pass1:
         goto alt1_2;
 success1:
         *ptr=oldpass1;
-        bind_aset(bind2,1,var1/*follow*/);
+        bind_aset(bind2,1,_follow);
         it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__4ee5,1,bind2);
-        var1/*follow*/=bind_aget(bind2,1);;
-        var2/*_result*/=it;;
+        _follow=bind_aget(bind2,1);;
+        __result=it;;
 
         ;
         goto accept1;
@@ -81,13 +81,13 @@ alt1_2:
         ptr->pos=oldpos1;
         it=AmethystCore_anything(self );
         FAILTEST(alt1_3);
-        var3/*x*/=it;;
-        bind_aset(bind2,1,var1/*follow*/);
-        bind_aset(bind2,2,var3/*x*/);
+        _x=it;;
+        bind_aset(bind2,1,_follow);
+        bind_aset(bind2,2,_x);
         it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213,1,bind2);
-        var1/*follow*/=bind_aget(bind2,1);;
-        var3/*x*/=bind_aget(bind2,2);;
-        var2/*_result*/=it;;
+        _follow=bind_aget(bind2,1);;
+        _x=bind_aget(bind2,2);;
+        __result=it;;
 
         ;
         goto accept1;
@@ -105,11 +105,11 @@ alt2_1:
         ;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        var4/*autovar*/=it;;
+        _autovar_2=it;;
         cstruct oldpass2=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=var4/*autovar*/;
+        ptr->src=_autovar_2;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -123,19 +123,19 @@ alt2_1:
         }
         it=AmethystCore_anything(self );
         FAILTEST(pass2);
-        var5/*autovar*/=it;;
+        _autovar_3=it;;
         cstruct oldpass3=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ptr->src=failobj;
         ptr->ary=alloca(sizeof(VALUE));
-        ptr->ary[0]=var5/*autovar*/;
+        ptr->ary[0]=_autovar_3;
         ptr->len=1;
-        it=var1/*follow*/;
+        it=_follow;
         arg0=it;
         it=Remove_Left_Recursion_first(self ,arg0);
         FAILTEST(pass3);
-        var6/*autovar*/=it;;
+        _autovar_4=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass3;
         goto success3;
@@ -144,12 +144,12 @@ pass3:
         goto pass2;
 success3:
         *ptr=oldpass3;
-        it=var6/*autovar*/;
-        var7/*expr*/=it;;
-        bind_aset(bind2,1,var7/*expr*/);
+        it=_autovar_4;
+        _expr=it;;
+        bind_aset(bind2,1,_expr);
         it=rb_funcall(self,sy_Remove_Left_Recursion_Bind_lb_src_66c4,1,bind2);
-        var7/*expr*/=bind_aget(bind2,1);;
-        var8/*autovar*/=it;;
+        _expr=bind_aget(bind2,1);;
+        _autovar_5=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass2;
         goto success2;
@@ -158,8 +158,8 @@ pass2:
         goto alt2_2;
 success2:
         *ptr=oldpass2;
-        it=var8/*autovar*/;
-        var2/*_result*/=it;;
+        it=_autovar_5;
+        __result=it;;
 
         ;
         goto accept2;
@@ -167,13 +167,13 @@ alt2_2:
         ptr->pos=oldpos2;
         it=AmethystCore_anything(self );
         FAILTEST(alt2_3);
-        var3/*x*/=it;;
-        bind_aset(bind2,1,var1/*follow*/);
-        bind_aset(bind2,2,var3/*x*/);
+        _x=it;;
+        bind_aset(bind2,1,_follow);
+        bind_aset(bind2,2,_x);
         it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213,1,bind2);
-        var1/*follow*/=bind_aget(bind2,1);;
-        var3/*x*/=bind_aget(bind2,2);;
-        var2/*_result*/=it;;
+        _follow=bind_aget(bind2,1);;
+        _x=bind_aget(bind2,2);;
+        __result=it;;
 
         ;
         goto accept2;
@@ -191,11 +191,11 @@ alt3_1:
         ;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        var9/*autovar*/=it;;
+        _autovar_6=it;;
         cstruct oldpass4=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=var9/*autovar*/;
+        ptr->src=_autovar_6;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -208,23 +208,23 @@ alt3_1:
             ptr->len=RARRAY_LEN(ary);
         }
         it=rb_ary_new3(0);
-        var10/*autovar*/=it;;
+        _autovar_7=it;;
         int stop1=0;
         while(!stop1) {
             int oldpos4=ptr->pos;
             int cut4=0;
 alt4_1:
             ;
-            it=var1/*follow*/;
+            it=_follow;
             arg0=it;
             it=Remove_Left_Recursion_first(self ,arg0);
             FAILTEST(alt4_2);
-            var11/*autovar*/=it;;
-            bind_aset(bind2,1,var10/*autovar*/);
-            bind_aset(bind2,2,var11/*autovar*/);
+            _autovar_8=it;;
+            bind_aset(bind2,1,_autovar_7);
+            bind_aset(bind2,2,_autovar_8);
             it=rb_funcall(self,sy_Remove_Left_Recursion__append_lp__d113,1,bind2);
-            var10/*autovar*/=bind_aget(bind2,1);;
-            var11/*autovar*/=bind_aget(bind2,2);;
+            _autovar_7=bind_aget(bind2,1);;
+            _autovar_8=bind_aget(bind2,2);;
             ;
             goto accept4;
 alt4_2:
@@ -238,8 +238,8 @@ alt4_3:
 accept4:
             ;
         }
-        it=var10/*autovar*/;
-        var12/*ary*/=it;;
+        it=_autovar_7;
+        _ary=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass4;
         goto success4;
@@ -248,10 +248,10 @@ pass4:
         goto alt3_2;
 success4:
         *ptr=oldpass4;
-        bind_aset(bind2,1,var12/*ary*/);
+        bind_aset(bind2,1,_ary);
         it=rb_funcall(self,sy_Remove_Left_Recursion_Or_lb_bind_lb__3169,1,bind2);
-        var12/*ary*/=bind_aget(bind2,1);;
-        var2/*_result*/=it;;
+        _ary=bind_aget(bind2,1);;
+        __result=it;;
 
         ;
         goto accept3;
@@ -259,13 +259,13 @@ alt3_2:
         ptr->pos=oldpos3;
         it=AmethystCore_anything(self );
         FAILTEST(alt3_3);
-        var3/*x*/=it;;
-        bind_aset(bind2,1,var1/*follow*/);
-        bind_aset(bind2,2,var3/*x*/);
+        _x=it;;
+        bind_aset(bind2,1,_follow);
+        bind_aset(bind2,2,_x);
         it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213,1,bind2);
-        var1/*follow*/=bind_aget(bind2,1);;
-        var3/*x*/=bind_aget(bind2,2);;
-        var2/*_result*/=it;;
+        _follow=bind_aget(bind2,1);;
+        _x=bind_aget(bind2,2);;
+        __result=it;;
 
         ;
         goto accept3;
@@ -283,19 +283,19 @@ alt5_1:
         ;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        var13/*autovar*/=it;;
-        it=var13/*autovar*/;
-        var14/*autovar*/=it;;
+        _autovar_9=it;;
+        it=_autovar_9;
+        _autovar_10=it;;
         int oldpos6=ptr->pos;
         int cut6=0;
 alt6_1:
         ;
-        it=var14/*autovar*/;
-        var15/*autovar*/=it;;
+        it=_autovar_10;
+        _autovar_11=it;;
         cstruct oldpass5=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=var15/*autovar*/;
+        ptr->src=_autovar_11;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -309,9 +309,9 @@ alt6_1:
         }
         it=Remove_Left_Recursion_must_empty(self );
         FAILTEST(pass5);
-        var16/*first*/=it;;
+        _first=it;;
         it=rb_ary_new3(0);
-        var17/*autovar*/=it;;
+        _autovar_12=it;;
         int stop2=0;
         while(!stop2) {
             int oldpos7=ptr->pos;
@@ -320,12 +320,12 @@ alt7_1:
             ;
             it=AmethystCore_anything(self );
             FAILTEST(alt7_2);
-            var18/*autovar*/=it;;
-            bind_aset(bind2,1,var17/*autovar*/);
-            bind_aset(bind2,2,var18/*autovar*/);
+            _autovar_13=it;;
+            bind_aset(bind2,1,_autovar_12);
+            bind_aset(bind2,2,_autovar_13);
             it=rb_funcall(self,sy_Remove_Left_Recursion__append_lp__d113,1,bind2);
-            var17/*autovar*/=bind_aget(bind2,1);;
-            var18/*autovar*/=bind_aget(bind2,2);;
+            _autovar_12=bind_aget(bind2,1);;
+            _autovar_13=bind_aget(bind2,2);;
             ;
             goto accept7;
 alt7_2:
@@ -339,24 +339,24 @@ alt7_3:
 accept7:
             ;
         }
-        it=var17/*autovar*/;
-        var19/*rest*/=it;;
-        bind_aset(bind2,1,var19/*rest*/);
+        it=_autovar_12;
+        _rest=it;;
+        bind_aset(bind2,1,_rest);
         it=rb_funcall(self,sy_Remove_Left_Recursion_Seq_lb_bind_e0fb,1,bind2);
-        var19/*rest*/=bind_aget(bind2,1);;
-        var20/*autovar*/=it;;
+        _rest=bind_aget(bind2,1);;
+        _autovar_14=it;;
         cstruct oldpass6=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ptr->src=failobj;
         ptr->ary=alloca(sizeof(VALUE));
-        ptr->ary[0]=var20/*autovar*/;
+        ptr->ary[0]=_autovar_14;
         ptr->len=1;
-        it=var1/*follow*/;
+        it=_follow;
         arg0=it;
         it=Remove_Left_Recursion_first(self ,arg0);
         FAILTEST(pass6);
-        var21/*autovar*/=it;;
+        _autovar_15=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass6;
         goto success6;
@@ -365,8 +365,8 @@ pass6:
         goto pass5;
 success6:
         *ptr=oldpass6;
-        it=var21/*autovar*/;
-        var19/*rest*/=it;;
+        it=_autovar_15;
+        _rest=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass5;
         goto success5;
@@ -375,23 +375,23 @@ pass5:
         goto alt6_2;
 success5:
         *ptr=oldpass5;
-        bind_aset(bind2,1,var16/*first*/);
-        bind_aset(bind2,2,var19/*rest*/);
+        bind_aset(bind2,1,_first);
+        bind_aset(bind2,2,_rest);
         it=rb_funcall(self,sy_Remove_Left_Recursion_Seq_lb_bind_f95b,1,bind2);
-        var16/*first*/=bind_aget(bind2,1);;
-        var19/*rest*/=bind_aget(bind2,2);;
-        var2/*_result*/=it;;
+        _first=bind_aget(bind2,1);;
+        _rest=bind_aget(bind2,2);;
+        __result=it;;
 
         ;
         goto accept6;
 alt6_2:
         ptr->pos=oldpos6;
-        it=var14/*autovar*/;
-        var22/*autovar*/=it;;
+        it=_autovar_10;
+        _autovar_16=it;;
         cstruct oldpass7=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=var22/*autovar*/;
+        ptr->src=_autovar_16;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -403,13 +403,13 @@ alt6_2:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=var1/*follow*/;
+        it=_follow;
         arg0=it;
         it=Remove_Left_Recursion_first(self ,arg0);
         FAILTEST(pass7);
-        var16/*first*/=it;;
+        _first=it;;
         it=rb_ary_new3(0);
-        var23/*autovar*/=it;;
+        _autovar_17=it;;
         int stop3=0;
         while(!stop3) {
             int oldpos8=ptr->pos;
@@ -418,12 +418,12 @@ alt8_1:
             ;
             it=AmethystCore_anything(self );
             FAILTEST(alt8_2);
-            var24/*autovar*/=it;;
-            bind_aset(bind2,1,var23/*autovar*/);
-            bind_aset(bind2,2,var24/*autovar*/);
+            _autovar_18=it;;
+            bind_aset(bind2,1,_autovar_17);
+            bind_aset(bind2,2,_autovar_18);
             it=rb_funcall(self,sy_Remove_Left_Recursion__append_lp__d113,1,bind2);
-            var23/*autovar*/=bind_aget(bind2,1);;
-            var24/*autovar*/=bind_aget(bind2,2);;
+            _autovar_17=bind_aget(bind2,1);;
+            _autovar_18=bind_aget(bind2,2);;
             ;
             goto accept8;
 alt8_2:
@@ -437,8 +437,8 @@ alt8_3:
 accept8:
             ;
         }
-        it=var23/*autovar*/;
-        var19/*rest*/=it;;
+        it=_autovar_17;
+        _rest=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass7;
         goto success7;
@@ -447,12 +447,12 @@ pass7:
         goto alt6_3;
 success7:
         *ptr=oldpass7;
-        bind_aset(bind2,1,var16/*first*/);
-        bind_aset(bind2,2,var19/*rest*/);
+        bind_aset(bind2,1,_first);
+        bind_aset(bind2,2,_rest);
         it=rb_funcall(self,sy_Remove_Left_Recursion_Seq_lb_bind_f95b,1,bind2);
-        var16/*first*/=bind_aget(bind2,1);;
-        var19/*rest*/=bind_aget(bind2,2);;
-        var2/*_result*/=it;;
+        _first=bind_aget(bind2,1);;
+        _rest=bind_aget(bind2,2);;
+        __result=it;;
 
         ;
         goto accept6;
@@ -468,13 +468,13 @@ alt5_2:
         ptr->pos=oldpos5;
         it=AmethystCore_anything(self );
         FAILTEST(alt5_3);
-        var3/*x*/=it;;
-        bind_aset(bind2,1,var1/*follow*/);
-        bind_aset(bind2,2,var3/*x*/);
+        _x=it;;
+        bind_aset(bind2,1,_follow);
+        bind_aset(bind2,2,_x);
         it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213,1,bind2);
-        var1/*follow*/=bind_aget(bind2,1);;
-        var3/*x*/=bind_aget(bind2,2);;
-        var2/*_result*/=it;;
+        _follow=bind_aget(bind2,1);;
+        _x=bind_aget(bind2,2);;
+        __result=it;;
 
         ;
         goto accept5;
@@ -488,13 +488,13 @@ accept5:
         ;
         it=AmethystCore_anything(self );
         FAILTEST(fail);
-        var3/*x*/=it;;
-        bind_aset(bind2,1,var1/*follow*/);
-        bind_aset(bind2,2,var3/*x*/);
+        _x=it;;
+        bind_aset(bind2,1,_follow);
+        bind_aset(bind2,2,_x);
         it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213,1,bind2);
-        var1/*follow*/=bind_aget(bind2,1);;
-        var3/*x*/=bind_aget(bind2,2);;
-        var2/*_result*/=it;;
+        _follow=bind_aget(bind2,1);;
+        _x=bind_aget(bind2,2);;
+        __result=it;;
         break;
     }
     return it;
@@ -503,7 +503,7 @@ fail:
 }
 VALUE Remove_Left_Recursion_must_empty(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0,var1;
+    VALUE it ,_e,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -511,13 +511,13 @@ VALUE Remove_Left_Recursion_must_empty(VALUE self ) {
     Data_Get_Struct(self,cstruct,ptr);
     it=AmethystCore_anything(self );
     FAILTEST(fail);
-    var0/*e*/=it;;
-    bind_aset(bind2,1,var0/*e*/);
+    _e=it;;
+    bind_aset(bind2,1,_e);
     it=rb_funcall(self,sy_Remove_Left_Recursion__lp_must_em_43e9,1,bind2);
-    var0/*e*/=bind_aget(bind2,1);;
+    _e=bind_aget(bind2,1);;
     FAILTEST(fail);
-    it=var0/*e*/;
-    var1/*_result*/=it;;
+    it=_e;
+    __result=it;;
 
     return it;
 fail:
@@ -525,7 +525,7 @@ fail:
 }
 VALUE Remove_Left_Recursion_root(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14,var15,var16,var17,var18,var19,var20,var21,var22,var23,var24,var25,var26,var27,var28,var29,var30,var31,var32,var33,var34,var35,var36;
+    VALUE it ,_autovar,_autovar_2,_autovar_3,_follow,__result,_x,_autovar_4,_autovar_5,_autovar_6,_autovar_7,_expr,_autovar_8,_autovar_9,_autovar_10,_autovar_11,_ary,_autovar_12,_autovar_13,_autovar_14,_autovar_15,_first,_autovar_16,_autovar_17,_rest,_autovar_18,_autovar_19,_autovar_20,_autovar_21,_autovar_22,_first_2,_autovar_23,_autovar_24,_autovar_25,_autovar_26,_follow_2,_autovar_27,__result_2;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -536,11 +536,11 @@ VALUE Remove_Left_Recursion_root(VALUE self ) {
         ;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        var0/*autovar*/=it;;
+        _autovar=it;;
         cstruct oldpass1=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=var0/*autovar*/;
+        ptr->src=_autovar;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -556,13 +556,13 @@ VALUE Remove_Left_Recursion_root(VALUE self ) {
         it=rb_funcall(self,sy_Remove_Left_Recursion__at_result_eq__b6ab,1,bind2);
         it=rb_funcall(self,sy_Remove_Left_Recursion_src_dot_body_519e,1,bind2);
         it=rb_funcall(self,sy_Remove_Left_Recursion_src_dot_body_519e,1,bind2);
-        var1/*autovar*/=it;;
+        _autovar_2=it;;
         cstruct oldpass2=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ptr->src=failobj;
         ptr->ary=alloca(sizeof(VALUE));
-        ptr->ary[0]=var1/*autovar*/;
+        ptr->ary[0]=_autovar_2;
         ptr->len=1;
         switch(FIX2LONG(rb_hash_aref(switchhash_Remove_Left_Recursion_2,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*Apply*/:
@@ -573,11 +573,11 @@ alt1_1:
             ;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
-            var2/*autovar*/=it;;
+            _autovar_3=it;;
             cstruct oldpass3=*ptr;
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
-            ptr->src=var2/*autovar*/;
+            ptr->src=_autovar_3;
             if(TYPE(ptr->src)==T_STRING) {
                 ptr->str=RSTRING_PTR(ptr->src);
                 ptr->len=RSTRING_LEN(ptr->src);
@@ -602,11 +602,11 @@ pass3:
 success3:
             *ptr=oldpass3;
             it=Qfalse;
-            var3/*follow*/=it;;
-            bind_aset(bind2,1,var3/*follow*/);
+            _follow=it;;
+            bind_aset(bind2,1,_follow);
             it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__4ee5,1,bind2);
-            var3/*follow*/=bind_aget(bind2,1);;
-            var4/*_result*/=it;;
+            _follow=bind_aget(bind2,1);;
+            __result=it;;
 
             ;
             goto accept1;
@@ -614,15 +614,15 @@ alt1_2:
             ptr->pos=oldpos1;
             it=AmethystCore_anything(self );
             FAILTEST(alt1_3);
-            var5/*x*/=it;;
+            _x=it;;
             it=Qfalse;
-            var3/*follow*/=it;;
-            bind_aset(bind2,1,var3/*follow*/);
-            bind_aset(bind2,2,var5/*x*/);
+            _follow=it;;
+            bind_aset(bind2,1,_follow);
+            bind_aset(bind2,2,_x);
             it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213,1,bind2);
-            var3/*follow*/=bind_aget(bind2,1);;
-            var5/*x*/=bind_aget(bind2,2);;
-            var4/*_result*/=it;;
+            _follow=bind_aget(bind2,1);;
+            _x=bind_aget(bind2,2);;
+            __result=it;;
 
             ;
             goto accept1;
@@ -631,8 +631,8 @@ alt1_3:
             goto pass2;
 accept1:
             ;
-            it=var4/*_result*/;
-            var6/*autovar*/=it;;
+            it=__result;
+            _autovar_4=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass2;
             break;
@@ -644,11 +644,11 @@ alt2_1:
             ;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
-            var7/*autovar*/=it;;
+            _autovar_5=it;;
             cstruct oldpass4=*ptr;
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
-            ptr->src=var7/*autovar*/;
+            ptr->src=_autovar_5;
             if(TYPE(ptr->src)==T_STRING) {
                 ptr->str=RSTRING_PTR(ptr->src);
                 ptr->len=RSTRING_LEN(ptr->src);
@@ -662,19 +662,19 @@ alt2_1:
             }
             it=AmethystCore_anything(self );
             FAILTEST(pass4);
-            var8/*autovar*/=it;;
+            _autovar_6=it;;
             cstruct oldpass5=*ptr;
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
             ptr->src=failobj;
             ptr->ary=alloca(sizeof(VALUE));
-            ptr->ary[0]=var8/*autovar*/;
+            ptr->ary[0]=_autovar_6;
             ptr->len=1;
             it=Qfalse;
             arg0=it;
             it=Remove_Left_Recursion_first(self ,arg0);
             FAILTEST(pass5);
-            var9/*autovar*/=it;;
+            _autovar_7=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass5;
             goto success5;
@@ -683,12 +683,12 @@ pass5:
             goto pass4;
 success5:
             *ptr=oldpass5;
-            it=var9/*autovar*/;
-            var10/*expr*/=it;;
-            bind_aset(bind2,1,var10/*expr*/);
+            it=_autovar_7;
+            _expr=it;;
+            bind_aset(bind2,1,_expr);
             it=rb_funcall(self,sy_Remove_Left_Recursion_Bind_lb_src_66c4,1,bind2);
-            var10/*expr*/=bind_aget(bind2,1);;
-            var11/*autovar*/=it;;
+            _expr=bind_aget(bind2,1);;
+            _autovar_8=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass4;
             goto success4;
@@ -697,8 +697,8 @@ pass4:
             goto alt2_2;
 success4:
             *ptr=oldpass4;
-            it=var11/*autovar*/;
-            var4/*_result*/=it;;
+            it=_autovar_8;
+            __result=it;;
 
             ;
             goto accept2;
@@ -706,15 +706,15 @@ alt2_2:
             ptr->pos=oldpos2;
             it=AmethystCore_anything(self );
             FAILTEST(alt2_3);
-            var5/*x*/=it;;
+            _x=it;;
             it=Qfalse;
-            var3/*follow*/=it;;
-            bind_aset(bind2,1,var3/*follow*/);
-            bind_aset(bind2,2,var5/*x*/);
+            _follow=it;;
+            bind_aset(bind2,1,_follow);
+            bind_aset(bind2,2,_x);
             it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213,1,bind2);
-            var3/*follow*/=bind_aget(bind2,1);;
-            var5/*x*/=bind_aget(bind2,2);;
-            var4/*_result*/=it;;
+            _follow=bind_aget(bind2,1);;
+            _x=bind_aget(bind2,2);;
+            __result=it;;
 
             ;
             goto accept2;
@@ -723,8 +723,8 @@ alt2_3:
             goto pass2;
 accept2:
             ;
-            it=var4/*_result*/;
-            var6/*autovar*/=it;;
+            it=__result;
+            _autovar_4=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass2;
             break;
@@ -736,11 +736,11 @@ alt3_1:
             ;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
-            var12/*autovar*/=it;;
+            _autovar_9=it;;
             cstruct oldpass6=*ptr;
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
-            ptr->src=var12/*autovar*/;
+            ptr->src=_autovar_9;
             if(TYPE(ptr->src)==T_STRING) {
                 ptr->str=RSTRING_PTR(ptr->src);
                 ptr->len=RSTRING_LEN(ptr->src);
@@ -753,7 +753,7 @@ alt3_1:
                 ptr->len=RARRAY_LEN(ary);
             }
             it=rb_ary_new3(0);
-            var13/*autovar*/=it;;
+            _autovar_10=it;;
             int stop1=0;
             while(!stop1) {
                 int oldpos4=ptr->pos;
@@ -764,12 +764,12 @@ alt4_1:
                 arg0=it;
                 it=Remove_Left_Recursion_first(self ,arg0);
                 FAILTEST(alt4_2);
-                var14/*autovar*/=it;;
-                bind_aset(bind2,1,var13/*autovar*/);
-                bind_aset(bind2,2,var14/*autovar*/);
+                _autovar_11=it;;
+                bind_aset(bind2,1,_autovar_10);
+                bind_aset(bind2,2,_autovar_11);
                 it=rb_funcall(self,sy_Remove_Left_Recursion__append_lp__d113,1,bind2);
-                var13/*autovar*/=bind_aget(bind2,1);;
-                var14/*autovar*/=bind_aget(bind2,2);;
+                _autovar_10=bind_aget(bind2,1);;
+                _autovar_11=bind_aget(bind2,2);;
                 ;
                 goto accept4;
 alt4_2:
@@ -783,8 +783,8 @@ alt4_3:
 accept4:
                 ;
             }
-            it=var13/*autovar*/;
-            var15/*ary*/=it;;
+            it=_autovar_10;
+            _ary=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass6;
             goto success6;
@@ -793,10 +793,10 @@ pass6:
             goto alt3_2;
 success6:
             *ptr=oldpass6;
-            bind_aset(bind2,1,var15/*ary*/);
+            bind_aset(bind2,1,_ary);
             it=rb_funcall(self,sy_Remove_Left_Recursion_Or_lb_bind_lb__3169,1,bind2);
-            var15/*ary*/=bind_aget(bind2,1);;
-            var4/*_result*/=it;;
+            _ary=bind_aget(bind2,1);;
+            __result=it;;
 
             ;
             goto accept3;
@@ -804,15 +804,15 @@ alt3_2:
             ptr->pos=oldpos3;
             it=AmethystCore_anything(self );
             FAILTEST(alt3_3);
-            var5/*x*/=it;;
+            _x=it;;
             it=Qfalse;
-            var3/*follow*/=it;;
-            bind_aset(bind2,1,var3/*follow*/);
-            bind_aset(bind2,2,var5/*x*/);
+            _follow=it;;
+            bind_aset(bind2,1,_follow);
+            bind_aset(bind2,2,_x);
             it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213,1,bind2);
-            var3/*follow*/=bind_aget(bind2,1);;
-            var5/*x*/=bind_aget(bind2,2);;
-            var4/*_result*/=it;;
+            _follow=bind_aget(bind2,1);;
+            _x=bind_aget(bind2,2);;
+            __result=it;;
 
             ;
             goto accept3;
@@ -821,8 +821,8 @@ alt3_3:
             goto pass2;
 accept3:
             ;
-            it=var4/*_result*/;
-            var6/*autovar*/=it;;
+            it=__result;
+            _autovar_4=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass2;
             break;
@@ -834,21 +834,21 @@ alt5_1:
             ;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
-            var16/*autovar*/=it;;
-            it=var16/*autovar*/;
-            var17/*autovar*/=it;;
-            it=var17/*autovar*/;
-            var18/*autovar*/=it;;
+            _autovar_12=it;;
+            it=_autovar_12;
+            _autovar_13=it;;
+            it=_autovar_13;
+            _autovar_14=it;;
             int oldpos6=ptr->pos;
             int cut6=0;
 alt6_1:
             ;
-            it=var18/*autovar*/;
-            var19/*autovar*/=it;;
+            it=_autovar_14;
+            _autovar_15=it;;
             cstruct oldpass7=*ptr;
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
-            ptr->src=var19/*autovar*/;
+            ptr->src=_autovar_15;
             if(TYPE(ptr->src)==T_STRING) {
                 ptr->str=RSTRING_PTR(ptr->src);
                 ptr->len=RSTRING_LEN(ptr->src);
@@ -862,9 +862,9 @@ alt6_1:
             }
             it=Remove_Left_Recursion_must_empty(self );
             FAILTEST(pass7);
-            var20/*first*/=it;;
+            _first=it;;
             it=rb_ary_new3(0);
-            var21/*autovar*/=it;;
+            _autovar_16=it;;
             int stop2=0;
             while(!stop2) {
                 int oldpos7=ptr->pos;
@@ -873,12 +873,12 @@ alt7_1:
                 ;
                 it=AmethystCore_anything(self );
                 FAILTEST(alt7_2);
-                var22/*autovar*/=it;;
-                bind_aset(bind2,1,var21/*autovar*/);
-                bind_aset(bind2,2,var22/*autovar*/);
+                _autovar_17=it;;
+                bind_aset(bind2,1,_autovar_16);
+                bind_aset(bind2,2,_autovar_17);
                 it=rb_funcall(self,sy_Remove_Left_Recursion__append_lp__d113,1,bind2);
-                var21/*autovar*/=bind_aget(bind2,1);;
-                var22/*autovar*/=bind_aget(bind2,2);;
+                _autovar_16=bind_aget(bind2,1);;
+                _autovar_17=bind_aget(bind2,2);;
                 ;
                 goto accept7;
 alt7_2:
@@ -892,24 +892,24 @@ alt7_3:
 accept7:
                 ;
             }
-            it=var21/*autovar*/;
-            var23/*rest*/=it;;
-            bind_aset(bind2,1,var23/*rest*/);
+            it=_autovar_16;
+            _rest=it;;
+            bind_aset(bind2,1,_rest);
             it=rb_funcall(self,sy_Remove_Left_Recursion_Seq_lb_bind_e0fb,1,bind2);
-            var23/*rest*/=bind_aget(bind2,1);;
-            var24/*autovar*/=it;;
+            _rest=bind_aget(bind2,1);;
+            _autovar_18=it;;
             cstruct oldpass8=*ptr;
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
             ptr->src=failobj;
             ptr->ary=alloca(sizeof(VALUE));
-            ptr->ary[0]=var24/*autovar*/;
+            ptr->ary[0]=_autovar_18;
             ptr->len=1;
             it=Qfalse;
             arg0=it;
             it=Remove_Left_Recursion_first(self ,arg0);
             FAILTEST(pass8);
-            var25/*autovar*/=it;;
+            _autovar_19=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass8;
             goto success8;
@@ -918,8 +918,8 @@ pass8:
             goto pass7;
 success8:
             *ptr=oldpass8;
-            it=var25/*autovar*/;
-            var23/*rest*/=it;;
+            it=_autovar_19;
+            _rest=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass7;
             goto success7;
@@ -928,23 +928,23 @@ pass7:
             goto alt6_2;
 success7:
             *ptr=oldpass7;
-            bind_aset(bind2,1,var20/*first*/);
-            bind_aset(bind2,2,var23/*rest*/);
+            bind_aset(bind2,1,_first);
+            bind_aset(bind2,2,_rest);
             it=rb_funcall(self,sy_Remove_Left_Recursion_Seq_lb_bind_f95b,1,bind2);
-            var20/*first*/=bind_aget(bind2,1);;
-            var23/*rest*/=bind_aget(bind2,2);;
-            var4/*_result*/=it;;
+            _first=bind_aget(bind2,1);;
+            _rest=bind_aget(bind2,2);;
+            __result=it;;
 
             ;
             goto accept6;
 alt6_2:
             ptr->pos=oldpos6;
-            it=var18/*autovar*/;
-            var26/*autovar*/=it;;
+            it=_autovar_14;
+            _autovar_20=it;;
             cstruct oldpass9=*ptr;
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
-            ptr->src=var26/*autovar*/;
+            ptr->src=_autovar_20;
             if(TYPE(ptr->src)==T_STRING) {
                 ptr->str=RSTRING_PTR(ptr->src);
                 ptr->len=RSTRING_LEN(ptr->src);
@@ -960,9 +960,9 @@ alt6_2:
             arg0=it;
             it=Remove_Left_Recursion_first(self ,arg0);
             FAILTEST(pass9);
-            var20/*first*/=it;;
+            _first=it;;
             it=rb_ary_new3(0);
-            var27/*autovar*/=it;;
+            _autovar_21=it;;
             int stop3=0;
             while(!stop3) {
                 int oldpos8=ptr->pos;
@@ -971,12 +971,12 @@ alt8_1:
                 ;
                 it=AmethystCore_anything(self );
                 FAILTEST(alt8_2);
-                var28/*autovar*/=it;;
-                bind_aset(bind2,1,var27/*autovar*/);
-                bind_aset(bind2,2,var28/*autovar*/);
+                _autovar_22=it;;
+                bind_aset(bind2,1,_autovar_21);
+                bind_aset(bind2,2,_autovar_22);
                 it=rb_funcall(self,sy_Remove_Left_Recursion__append_lp__d113,1,bind2);
-                var27/*autovar*/=bind_aget(bind2,1);;
-                var28/*autovar*/=bind_aget(bind2,2);;
+                _autovar_21=bind_aget(bind2,1);;
+                _autovar_22=bind_aget(bind2,2);;
                 ;
                 goto accept8;
 alt8_2:
@@ -990,8 +990,8 @@ alt8_3:
 accept8:
                 ;
             }
-            it=var27/*autovar*/;
-            var23/*rest*/=it;;
+            it=_autovar_21;
+            _rest=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass9;
             goto success9;
@@ -1000,12 +1000,12 @@ pass9:
             goto alt6_3;
 success9:
             *ptr=oldpass9;
-            bind_aset(bind2,1,var20/*first*/);
-            bind_aset(bind2,2,var23/*rest*/);
+            bind_aset(bind2,1,_first);
+            bind_aset(bind2,2,_rest);
             it=rb_funcall(self,sy_Remove_Left_Recursion_Seq_lb_bind_f95b,1,bind2);
-            var20/*first*/=bind_aget(bind2,1);;
-            var23/*rest*/=bind_aget(bind2,2);;
-            var4/*_result*/=it;;
+            _first=bind_aget(bind2,1);;
+            _rest=bind_aget(bind2,2);;
+            __result=it;;
 
             ;
             goto accept6;
@@ -1021,15 +1021,15 @@ alt5_2:
             ptr->pos=oldpos5;
             it=AmethystCore_anything(self );
             FAILTEST(alt5_3);
-            var5/*x*/=it;;
+            _x=it;;
             it=Qfalse;
-            var3/*follow*/=it;;
-            bind_aset(bind2,1,var3/*follow*/);
-            bind_aset(bind2,2,var5/*x*/);
+            _follow=it;;
+            bind_aset(bind2,1,_follow);
+            bind_aset(bind2,2,_x);
             it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213,1,bind2);
-            var3/*follow*/=bind_aget(bind2,1);;
-            var5/*x*/=bind_aget(bind2,2);;
-            var4/*_result*/=it;;
+            _follow=bind_aget(bind2,1);;
+            _x=bind_aget(bind2,2);;
+            __result=it;;
 
             ;
             goto accept5;
@@ -1038,8 +1038,8 @@ alt5_3:
             goto pass2;
 accept5:
             ;
-            it=var4/*_result*/;
-            var6/*autovar*/=it;;
+            it=__result;
+            _autovar_4=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass2;
             break;
@@ -1047,17 +1047,17 @@ accept5:
             ;
             it=AmethystCore_anything(self );
             FAILTEST(pass2);
-            var5/*x*/=it;;
+            _x=it;;
             it=Qfalse;
-            var3/*follow*/=it;;
-            bind_aset(bind2,1,var3/*follow*/);
-            bind_aset(bind2,2,var5/*x*/);
+            _follow=it;;
+            bind_aset(bind2,1,_follow);
+            bind_aset(bind2,2,_x);
             it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213,1,bind2);
-            var3/*follow*/=bind_aget(bind2,1);;
-            var5/*x*/=bind_aget(bind2,2);;
-            var4/*_result*/=it;;
-            it=var4/*_result*/;
-            var6/*autovar*/=it;;
+            _follow=bind_aget(bind2,1);;
+            _x=bind_aget(bind2,2);;
+            __result=it;;
+            it=__result;
+            _autovar_4=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass2;
             break;
@@ -1068,16 +1068,16 @@ pass2:
         goto pass1;
 success2:
         *ptr=oldpass2;
-        it=var6/*autovar*/;
-        var29/*first*/=it;;
+        it=_autovar_4;
+        _first_2=it;;
         it=rb_funcall(self,sy_Remove_Left_Recursion_src_dot_body_519e,1,bind2);
-        var30/*autovar*/=it;;
+        _autovar_23=it;;
         cstruct oldpass10=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ptr->src=failobj;
         ptr->ary=alloca(sizeof(VALUE));
-        ptr->ary[0]=var30/*autovar*/;
+        ptr->ary[0]=_autovar_23;
         ptr->len=1;
         switch(FIX2LONG(rb_hash_aref(switchhash_Remove_Left_Recursion_3,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*Apply*/:
@@ -1088,11 +1088,11 @@ alt9_1:
             ;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
-            var2/*autovar*/=it;;
+            _autovar_3=it;;
             cstruct oldpass11=*ptr;
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
-            ptr->src=var2/*autovar*/;
+            ptr->src=_autovar_3;
             if(TYPE(ptr->src)==T_STRING) {
                 ptr->str=RSTRING_PTR(ptr->src);
                 ptr->len=RSTRING_LEN(ptr->src);
@@ -1117,11 +1117,11 @@ pass11:
 success11:
             *ptr=oldpass11;
             it=Qtrue;
-            var3/*follow*/=it;;
-            bind_aset(bind2,1,var3/*follow*/);
+            _follow=it;;
+            bind_aset(bind2,1,_follow);
             it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__4ee5,1,bind2);
-            var3/*follow*/=bind_aget(bind2,1);;
-            var4/*_result*/=it;;
+            _follow=bind_aget(bind2,1);;
+            __result=it;;
 
             ;
             goto accept9;
@@ -1129,15 +1129,15 @@ alt9_2:
             ptr->pos=oldpos9;
             it=AmethystCore_anything(self );
             FAILTEST(alt9_3);
-            var5/*x*/=it;;
+            _x=it;;
             it=Qtrue;
-            var3/*follow*/=it;;
-            bind_aset(bind2,1,var3/*follow*/);
-            bind_aset(bind2,2,var5/*x*/);
+            _follow=it;;
+            bind_aset(bind2,1,_follow);
+            bind_aset(bind2,2,_x);
             it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213,1,bind2);
-            var3/*follow*/=bind_aget(bind2,1);;
-            var5/*x*/=bind_aget(bind2,2);;
-            var4/*_result*/=it;;
+            _follow=bind_aget(bind2,1);;
+            _x=bind_aget(bind2,2);;
+            __result=it;;
 
             ;
             goto accept9;
@@ -1146,8 +1146,8 @@ alt9_3:
             goto pass10;
 accept9:
             ;
-            it=var4/*_result*/;
-            var31/*autovar*/=it;;
+            it=__result;
+            _autovar_24=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass10;
             break;
@@ -1159,11 +1159,11 @@ alt10_1:
             ;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
-            var7/*autovar*/=it;;
+            _autovar_5=it;;
             cstruct oldpass12=*ptr;
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
-            ptr->src=var7/*autovar*/;
+            ptr->src=_autovar_5;
             if(TYPE(ptr->src)==T_STRING) {
                 ptr->str=RSTRING_PTR(ptr->src);
                 ptr->len=RSTRING_LEN(ptr->src);
@@ -1177,19 +1177,19 @@ alt10_1:
             }
             it=AmethystCore_anything(self );
             FAILTEST(pass12);
-            var8/*autovar*/=it;;
+            _autovar_6=it;;
             cstruct oldpass13=*ptr;
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
             ptr->src=failobj;
             ptr->ary=alloca(sizeof(VALUE));
-            ptr->ary[0]=var8/*autovar*/;
+            ptr->ary[0]=_autovar_6;
             ptr->len=1;
             it=Qtrue;
             arg0=it;
             it=Remove_Left_Recursion_first(self ,arg0);
             FAILTEST(pass13);
-            var9/*autovar*/=it;;
+            _autovar_7=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass13;
             goto success13;
@@ -1198,12 +1198,12 @@ pass13:
             goto pass12;
 success13:
             *ptr=oldpass13;
-            it=var9/*autovar*/;
-            var10/*expr*/=it;;
-            bind_aset(bind2,1,var10/*expr*/);
+            it=_autovar_7;
+            _expr=it;;
+            bind_aset(bind2,1,_expr);
             it=rb_funcall(self,sy_Remove_Left_Recursion_Bind_lb_src_66c4,1,bind2);
-            var10/*expr*/=bind_aget(bind2,1);;
-            var11/*autovar*/=it;;
+            _expr=bind_aget(bind2,1);;
+            _autovar_8=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass12;
             goto success12;
@@ -1212,8 +1212,8 @@ pass12:
             goto alt10_2;
 success12:
             *ptr=oldpass12;
-            it=var11/*autovar*/;
-            var4/*_result*/=it;;
+            it=_autovar_8;
+            __result=it;;
 
             ;
             goto accept10;
@@ -1221,15 +1221,15 @@ alt10_2:
             ptr->pos=oldpos10;
             it=AmethystCore_anything(self );
             FAILTEST(alt10_3);
-            var5/*x*/=it;;
+            _x=it;;
             it=Qtrue;
-            var3/*follow*/=it;;
-            bind_aset(bind2,1,var3/*follow*/);
-            bind_aset(bind2,2,var5/*x*/);
+            _follow=it;;
+            bind_aset(bind2,1,_follow);
+            bind_aset(bind2,2,_x);
             it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213,1,bind2);
-            var3/*follow*/=bind_aget(bind2,1);;
-            var5/*x*/=bind_aget(bind2,2);;
-            var4/*_result*/=it;;
+            _follow=bind_aget(bind2,1);;
+            _x=bind_aget(bind2,2);;
+            __result=it;;
 
             ;
             goto accept10;
@@ -1238,8 +1238,8 @@ alt10_3:
             goto pass10;
 accept10:
             ;
-            it=var4/*_result*/;
-            var31/*autovar*/=it;;
+            it=__result;
+            _autovar_24=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass10;
             break;
@@ -1251,11 +1251,11 @@ alt11_1:
             ;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
-            var12/*autovar*/=it;;
+            _autovar_9=it;;
             cstruct oldpass14=*ptr;
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
-            ptr->src=var12/*autovar*/;
+            ptr->src=_autovar_9;
             if(TYPE(ptr->src)==T_STRING) {
                 ptr->str=RSTRING_PTR(ptr->src);
                 ptr->len=RSTRING_LEN(ptr->src);
@@ -1268,7 +1268,7 @@ alt11_1:
                 ptr->len=RARRAY_LEN(ary);
             }
             it=rb_ary_new3(0);
-            var13/*autovar*/=it;;
+            _autovar_10=it;;
             int stop4=0;
             while(!stop4) {
                 int oldpos12=ptr->pos;
@@ -1279,12 +1279,12 @@ alt12_1:
                 arg0=it;
                 it=Remove_Left_Recursion_first(self ,arg0);
                 FAILTEST(alt12_2);
-                var14/*autovar*/=it;;
-                bind_aset(bind2,1,var13/*autovar*/);
-                bind_aset(bind2,2,var14/*autovar*/);
+                _autovar_11=it;;
+                bind_aset(bind2,1,_autovar_10);
+                bind_aset(bind2,2,_autovar_11);
                 it=rb_funcall(self,sy_Remove_Left_Recursion__append_lp__d113,1,bind2);
-                var13/*autovar*/=bind_aget(bind2,1);;
-                var14/*autovar*/=bind_aget(bind2,2);;
+                _autovar_10=bind_aget(bind2,1);;
+                _autovar_11=bind_aget(bind2,2);;
                 ;
                 goto accept12;
 alt12_2:
@@ -1298,8 +1298,8 @@ alt12_3:
 accept12:
                 ;
             }
-            it=var13/*autovar*/;
-            var15/*ary*/=it;;
+            it=_autovar_10;
+            _ary=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass14;
             goto success14;
@@ -1308,10 +1308,10 @@ pass14:
             goto alt11_2;
 success14:
             *ptr=oldpass14;
-            bind_aset(bind2,1,var15/*ary*/);
+            bind_aset(bind2,1,_ary);
             it=rb_funcall(self,sy_Remove_Left_Recursion_Or_lb_bind_lb__3169,1,bind2);
-            var15/*ary*/=bind_aget(bind2,1);;
-            var4/*_result*/=it;;
+            _ary=bind_aget(bind2,1);;
+            __result=it;;
 
             ;
             goto accept11;
@@ -1319,15 +1319,15 @@ alt11_2:
             ptr->pos=oldpos11;
             it=AmethystCore_anything(self );
             FAILTEST(alt11_3);
-            var5/*x*/=it;;
+            _x=it;;
             it=Qtrue;
-            var3/*follow*/=it;;
-            bind_aset(bind2,1,var3/*follow*/);
-            bind_aset(bind2,2,var5/*x*/);
+            _follow=it;;
+            bind_aset(bind2,1,_follow);
+            bind_aset(bind2,2,_x);
             it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213,1,bind2);
-            var3/*follow*/=bind_aget(bind2,1);;
-            var5/*x*/=bind_aget(bind2,2);;
-            var4/*_result*/=it;;
+            _follow=bind_aget(bind2,1);;
+            _x=bind_aget(bind2,2);;
+            __result=it;;
 
             ;
             goto accept11;
@@ -1336,8 +1336,8 @@ alt11_3:
             goto pass10;
 accept11:
             ;
-            it=var4/*_result*/;
-            var31/*autovar*/=it;;
+            it=__result;
+            _autovar_24=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass10;
             break;
@@ -1349,21 +1349,21 @@ alt13_1:
             ;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
-            var16/*autovar*/=it;;
-            it=var16/*autovar*/;
-            var32/*autovar*/=it;;
-            it=var32/*autovar*/;
-            var33/*autovar*/=it;;
+            _autovar_12=it;;
+            it=_autovar_12;
+            _autovar_25=it;;
+            it=_autovar_25;
+            _autovar_26=it;;
             int oldpos14=ptr->pos;
             int cut14=0;
 alt14_1:
             ;
-            it=var33/*autovar*/;
-            var19/*autovar*/=it;;
+            it=_autovar_26;
+            _autovar_15=it;;
             cstruct oldpass15=*ptr;
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
-            ptr->src=var19/*autovar*/;
+            ptr->src=_autovar_15;
             if(TYPE(ptr->src)==T_STRING) {
                 ptr->str=RSTRING_PTR(ptr->src);
                 ptr->len=RSTRING_LEN(ptr->src);
@@ -1377,9 +1377,9 @@ alt14_1:
             }
             it=Remove_Left_Recursion_must_empty(self );
             FAILTEST(pass15);
-            var20/*first*/=it;;
+            _first=it;;
             it=rb_ary_new3(0);
-            var21/*autovar*/=it;;
+            _autovar_16=it;;
             int stop5=0;
             while(!stop5) {
                 int oldpos15=ptr->pos;
@@ -1388,12 +1388,12 @@ alt15_1:
                 ;
                 it=AmethystCore_anything(self );
                 FAILTEST(alt15_2);
-                var22/*autovar*/=it;;
-                bind_aset(bind2,1,var21/*autovar*/);
-                bind_aset(bind2,2,var22/*autovar*/);
+                _autovar_17=it;;
+                bind_aset(bind2,1,_autovar_16);
+                bind_aset(bind2,2,_autovar_17);
                 it=rb_funcall(self,sy_Remove_Left_Recursion__append_lp__d113,1,bind2);
-                var21/*autovar*/=bind_aget(bind2,1);;
-                var22/*autovar*/=bind_aget(bind2,2);;
+                _autovar_16=bind_aget(bind2,1);;
+                _autovar_17=bind_aget(bind2,2);;
                 ;
                 goto accept15;
 alt15_2:
@@ -1407,24 +1407,24 @@ alt15_3:
 accept15:
                 ;
             }
-            it=var21/*autovar*/;
-            var23/*rest*/=it;;
-            bind_aset(bind2,1,var23/*rest*/);
+            it=_autovar_16;
+            _rest=it;;
+            bind_aset(bind2,1,_rest);
             it=rb_funcall(self,sy_Remove_Left_Recursion_Seq_lb_bind_e0fb,1,bind2);
-            var23/*rest*/=bind_aget(bind2,1);;
-            var24/*autovar*/=it;;
+            _rest=bind_aget(bind2,1);;
+            _autovar_18=it;;
             cstruct oldpass16=*ptr;
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
             ptr->src=failobj;
             ptr->ary=alloca(sizeof(VALUE));
-            ptr->ary[0]=var24/*autovar*/;
+            ptr->ary[0]=_autovar_18;
             ptr->len=1;
             it=Qtrue;
             arg0=it;
             it=Remove_Left_Recursion_first(self ,arg0);
             FAILTEST(pass16);
-            var25/*autovar*/=it;;
+            _autovar_19=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass16;
             goto success16;
@@ -1433,8 +1433,8 @@ pass16:
             goto pass15;
 success16:
             *ptr=oldpass16;
-            it=var25/*autovar*/;
-            var23/*rest*/=it;;
+            it=_autovar_19;
+            _rest=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass15;
             goto success15;
@@ -1443,23 +1443,23 @@ pass15:
             goto alt14_2;
 success15:
             *ptr=oldpass15;
-            bind_aset(bind2,1,var20/*first*/);
-            bind_aset(bind2,2,var23/*rest*/);
+            bind_aset(bind2,1,_first);
+            bind_aset(bind2,2,_rest);
             it=rb_funcall(self,sy_Remove_Left_Recursion_Seq_lb_bind_f95b,1,bind2);
-            var20/*first*/=bind_aget(bind2,1);;
-            var23/*rest*/=bind_aget(bind2,2);;
-            var4/*_result*/=it;;
+            _first=bind_aget(bind2,1);;
+            _rest=bind_aget(bind2,2);;
+            __result=it;;
 
             ;
             goto accept14;
 alt14_2:
             ptr->pos=oldpos14;
-            it=var33/*autovar*/;
-            var26/*autovar*/=it;;
+            it=_autovar_26;
+            _autovar_20=it;;
             cstruct oldpass17=*ptr;
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
-            ptr->src=var26/*autovar*/;
+            ptr->src=_autovar_20;
             if(TYPE(ptr->src)==T_STRING) {
                 ptr->str=RSTRING_PTR(ptr->src);
                 ptr->len=RSTRING_LEN(ptr->src);
@@ -1475,9 +1475,9 @@ alt14_2:
             arg0=it;
             it=Remove_Left_Recursion_first(self ,arg0);
             FAILTEST(pass17);
-            var20/*first*/=it;;
+            _first=it;;
             it=rb_ary_new3(0);
-            var27/*autovar*/=it;;
+            _autovar_21=it;;
             int stop6=0;
             while(!stop6) {
                 int oldpos16=ptr->pos;
@@ -1486,12 +1486,12 @@ alt16_1:
                 ;
                 it=AmethystCore_anything(self );
                 FAILTEST(alt16_2);
-                var28/*autovar*/=it;;
-                bind_aset(bind2,1,var27/*autovar*/);
-                bind_aset(bind2,2,var28/*autovar*/);
+                _autovar_22=it;;
+                bind_aset(bind2,1,_autovar_21);
+                bind_aset(bind2,2,_autovar_22);
                 it=rb_funcall(self,sy_Remove_Left_Recursion__append_lp__d113,1,bind2);
-                var27/*autovar*/=bind_aget(bind2,1);;
-                var28/*autovar*/=bind_aget(bind2,2);;
+                _autovar_21=bind_aget(bind2,1);;
+                _autovar_22=bind_aget(bind2,2);;
                 ;
                 goto accept16;
 alt16_2:
@@ -1505,8 +1505,8 @@ alt16_3:
 accept16:
                 ;
             }
-            it=var27/*autovar*/;
-            var23/*rest*/=it;;
+            it=_autovar_21;
+            _rest=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass17;
             goto success17;
@@ -1515,12 +1515,12 @@ pass17:
             goto alt14_3;
 success17:
             *ptr=oldpass17;
-            bind_aset(bind2,1,var20/*first*/);
-            bind_aset(bind2,2,var23/*rest*/);
+            bind_aset(bind2,1,_first);
+            bind_aset(bind2,2,_rest);
             it=rb_funcall(self,sy_Remove_Left_Recursion_Seq_lb_bind_f95b,1,bind2);
-            var20/*first*/=bind_aget(bind2,1);;
-            var23/*rest*/=bind_aget(bind2,2);;
-            var4/*_result*/=it;;
+            _first=bind_aget(bind2,1);;
+            _rest=bind_aget(bind2,2);;
+            __result=it;;
 
             ;
             goto accept14;
@@ -1536,15 +1536,15 @@ alt13_2:
             ptr->pos=oldpos13;
             it=AmethystCore_anything(self );
             FAILTEST(alt13_3);
-            var5/*x*/=it;;
+            _x=it;;
             it=Qtrue;
-            var3/*follow*/=it;;
-            bind_aset(bind2,1,var3/*follow*/);
-            bind_aset(bind2,2,var5/*x*/);
+            _follow=it;;
+            bind_aset(bind2,1,_follow);
+            bind_aset(bind2,2,_x);
             it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213,1,bind2);
-            var3/*follow*/=bind_aget(bind2,1);;
-            var5/*x*/=bind_aget(bind2,2);;
-            var4/*_result*/=it;;
+            _follow=bind_aget(bind2,1);;
+            _x=bind_aget(bind2,2);;
+            __result=it;;
 
             ;
             goto accept13;
@@ -1553,8 +1553,8 @@ alt13_3:
             goto pass10;
 accept13:
             ;
-            it=var4/*_result*/;
-            var31/*autovar*/=it;;
+            it=__result;
+            _autovar_24=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass10;
             break;
@@ -1562,17 +1562,17 @@ accept13:
             ;
             it=AmethystCore_anything(self );
             FAILTEST(pass10);
-            var5/*x*/=it;;
+            _x=it;;
             it=Qtrue;
-            var3/*follow*/=it;;
-            bind_aset(bind2,1,var3/*follow*/);
-            bind_aset(bind2,2,var5/*x*/);
+            _follow=it;;
+            bind_aset(bind2,1,_follow);
+            bind_aset(bind2,2,_x);
             it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213,1,bind2);
-            var3/*follow*/=bind_aget(bind2,1);;
-            var5/*x*/=bind_aget(bind2,2);;
-            var4/*_result*/=it;;
-            it=var4/*_result*/;
-            var31/*autovar*/=it;;
+            _follow=bind_aget(bind2,1);;
+            _x=bind_aget(bind2,2);;
+            __result=it;;
+            it=__result;
+            _autovar_24=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass10;
             break;
@@ -1583,15 +1583,15 @@ pass10:
         goto pass1;
 success10:
         *ptr=oldpass10;
-        it=var31/*autovar*/;
-        var34/*follow*/=it;;
-        bind_aset(bind2,1,var29/*first*/);
-        bind_aset(bind2,2,var34/*follow*/);
+        it=_autovar_24;
+        _follow_2=it;;
+        bind_aset(bind2,1,_first_2);
+        bind_aset(bind2,2,_follow_2);
         it=rb_funcall(self,sy_Remove_Left_Recursion_a_eq_autova_d0a0,1,bind2);
-        var29/*first*/=bind_aget(bind2,1);;
-        var34/*follow*/=bind_aget(bind2,2);;
+        _first_2=bind_aget(bind2,1);;
+        _follow_2=bind_aget(bind2,2);;
         it=rb_funcall(self,sy_Remove_Left_Recursion_src_25d9,1,bind2);
-        var35/*autovar*/=it;;
+        _autovar_27=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass1;
         goto success1;
@@ -1600,8 +1600,8 @@ pass1:
         goto fail;
 success1:
         *ptr=oldpass1;
-        it=var35/*autovar*/;
-        var36/*_result*/=it;;
+        it=_autovar_27;
+        __result_2=it;;
         break;
     case 1/*Object*/:
         ;
@@ -1641,5 +1641,5 @@ void Init_remove_left_rigth_recursion_c() {
     rb_define_method(cls_Remove_Left_Recursion,"first",Remove_Left_Recursion_first,1);
     rb_define_method(cls_Remove_Left_Recursion,"must_empty",Remove_Left_Recursion_must_empty,0);
     rb_define_method(cls_Remove_Left_Recursion,"root",Remove_Left_Recursion_root,0);
-    rb_eval_string("testversionremove_left_rigth_recursion('7e345aa2b56841a45b2e560e51caf67b')");
+    rb_eval_string("testversionremove_left_rigth_recursion('4faea07208cb5281969926255dfe0e48')");
 }

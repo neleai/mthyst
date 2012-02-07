@@ -114,9 +114,9 @@ class Or
 		AmethystCore::or_normalize(self);
 	end
 end
-#class Apply
+#class Act
 #	def normalize
-#		r=AmethystCore::normalize_Apply(self);
+#		r=AmethystCore::act_normalize(self);
 		#puts self.ary.inspect
 		#puts self.inspect
 		#puts r.inspect

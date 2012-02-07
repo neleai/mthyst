@@ -24,7 +24,7 @@ static VALUE sy_seq;
 static VALUE sy_token;
 VALUE Tests_abc(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0;
+    VALUE it ,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -45,7 +45,7 @@ VALUE Tests_abc(VALUE self ) {
         ;
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
-        var0/*_result*/=it;;
+        __result=it;;
         break;
     }
     return it;
@@ -54,7 +54,7 @@ fail:
 }
 VALUE Tests_de(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0,var1,var2,var3,var4;
+    VALUE it ,_autovar,_foo,_autovar_2,__result,_autovar_3;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -68,26 +68,26 @@ VALUE Tests_de(VALUE self ) {
     case 'f' ... UC(255):
         ;
         it=i_1;
-        var0/*autovar*/=it;;
+        _autovar=it;;
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
         ;
-        it=var0/*autovar*/;
-        var1/*foo*/=it;;
-        bind_aset(bind2,1,var1/*foo*/);
+        it=_autovar;
+        _foo=it;;
+        bind_aset(bind2,1,_foo);
         it=rb_funcall(self,sy_Tests_bind_lb_1_rb__pl__61a1,1,bind2);
-        var1/*foo*/=bind_aget(bind2,1);;
+        _foo=bind_aget(bind2,1);;
         goto alt1_2;
         ;
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
-        it=var0/*autovar*/;
-        var1/*foo*/=it;;
-        bind_aset(bind2,1,var1/*foo*/);
+        it=_autovar;
+        _foo=it;;
+        bind_aset(bind2,1,_foo);
         it=rb_funcall(self,sy_Tests_bind_lb_1_rb__pl__0a71,1,bind2);
-        var1/*foo*/=bind_aget(bind2,1);;
+        _foo=bind_aget(bind2,1);;
         goto alt1_3;
         ;
         goto accept1;
@@ -100,29 +100,29 @@ accept1:
     case 'd' ... 'e':
         ;
         it=i_1;
-        var2/*autovar*/=it;;
+        _autovar_2=it;;
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
         ;
-        it=var2/*autovar*/;
-        var1/*foo*/=it;;
-        bind_aset(bind2,1,var1/*foo*/);
+        it=_autovar_2;
+        _foo=it;;
+        bind_aset(bind2,1,_foo);
         it=rb_funcall(self,sy_Tests_bind_lb_1_rb__pl__61a1,1,bind2);
-        var1/*foo*/=bind_aget(bind2,1);;
+        _foo=bind_aget(bind2,1);;
         goto alt2_2;
         ;
         goto accept2;
 alt2_2:
         ptr->pos=oldpos2;
-        it=var2/*autovar*/;
-        var1/*foo*/=it;;
-        bind_aset(bind2,1,var1/*foo*/);
+        it=_autovar_2;
+        _foo=it;;
+        bind_aset(bind2,1,_foo);
         it=rb_funcall(self,sy_Tests_bind_lb_1_rb__pl__0a71,1,bind2);
-        var1/*foo*/=bind_aget(bind2,1);;
+        _foo=bind_aget(bind2,1);;
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
-        var3/*_result*/=it;;
+        __result=it;;
 
         ;
         goto accept2;
@@ -137,29 +137,29 @@ accept2:
     case 'a' ... 'c':
         ;
         it=i_1;
-        var4/*autovar*/=it;;
+        _autovar_3=it;;
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
         ;
-        it=var4/*autovar*/;
-        var1/*foo*/=it;;
-        bind_aset(bind2,1,var1/*foo*/);
+        it=_autovar_3;
+        _foo=it;;
+        bind_aset(bind2,1,_foo);
         it=rb_funcall(self,sy_Tests_bind_lb_1_rb__pl__61a1,1,bind2);
-        var1/*foo*/=bind_aget(bind2,1);;
+        _foo=bind_aget(bind2,1);;
         it=Tests_abc(self );
         FAILTEST(alt3_2);
-        var3/*_result*/=it;;
+        __result=it;;
 
         ;
         goto accept3;
 alt3_2:
         ptr->pos=oldpos3;
-        it=var4/*autovar*/;
-        var1/*foo*/=it;;
-        bind_aset(bind2,1,var1/*foo*/);
+        it=_autovar_3;
+        _foo=it;;
+        bind_aset(bind2,1,_foo);
         it=rb_funcall(self,sy_Tests_bind_lb_1_rb__pl__0a71,1,bind2);
-        var1/*foo*/=bind_aget(bind2,1);;
+        _foo=bind_aget(bind2,1);;
         goto alt3_3;
         ;
         goto accept3;
@@ -176,7 +176,7 @@ fail:
 }
 VALUE Tests_foo(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0,var1,var2,var3;
+    VALUE it ,_bar,_foo,__result,_autovar;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -184,22 +184,22 @@ VALUE Tests_foo(VALUE self ) {
     Data_Get_Struct(self,cstruct,ptr);
     it=rb_funcall(self,sy_bar,0);
     FAILTEST(fail);
-    var0/*bar*/=it;;
-    bind_aset(bind2,1,var1/*foo*/);
-    bind_aset(bind2,2,var0/*bar*/);
+    _bar=it;;
+    bind_aset(bind2,1,_foo);
+    bind_aset(bind2,2,_bar);
     it=rb_funcall(self,sy_Tests_bind_lb_1_rb__pl__3b73,1,bind2);
-    var1/*foo*/=bind_aget(bind2,1);;
-    var0/*bar*/=bind_aget(bind2,2);;
-    var2/*_result*/=it;;
+    _foo=bind_aget(bind2,1);;
+    _bar=bind_aget(bind2,2);;
+    __result=it;;
     int stop1=0;
     while(!stop1) {
-        bind_aset(bind2,1,var3/*autovar*/);
-        bind_aset(bind2,2,var2/*_result*/);
+        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,2,__result);
         it=rb_funcall(self,sy_Tests_bind_lb_1_rb__eq__58f9,1,bind2);
-        var3/*autovar*/=bind_aget(bind2,1);;
-        var2/*_result*/=bind_aget(bind2,2);;
-        it=var2/*_result*/;
-        var2/*_result*/=it;;
+        _autovar=bind_aget(bind2,1);;
+        __result=bind_aget(bind2,2);;
+        it=__result;
+        __result=it;;
     }
     return it;
 fail:
@@ -207,7 +207,7 @@ fail:
 }
 VALUE Tests_gh(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0;
+    VALUE it ,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -219,7 +219,7 @@ alt1_1:
     ;
     it=Tests_foo(self );
     FAILTEST(alt1_2);
-    var0/*_result*/=it;;
+    __result=it;;
 
     ;
     goto accept1;
@@ -227,7 +227,7 @@ alt1_2:
     ptr->pos=oldpos1;
     cut1=1;
     it=i_42;
-    var0/*_result*/=it;;
+    __result=it;;
 
     ;
     goto accept1;
@@ -244,7 +244,7 @@ fail:
 }
 VALUE Tests_s2(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0;
+    VALUE it ,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -261,14 +261,14 @@ VALUE Tests_s2(VALUE self ) {
         arg0=it;
         it=rb_funcall(self,sy_seq,1,arg0);
         FAILTEST(fail);
-        var0/*_result*/=it;;
+        __result=it;;
         break;
     case 'd' ... 'f':
         ;
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
         it=i_3;
-        var0/*_result*/=it;;
+        __result=it;;
         break;
     case 'a' ... 'b':
         ;
@@ -278,7 +278,7 @@ alt1_1:
         ;
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
-        var0/*_result*/=it;;
+        __result=it;;
 
         ;
         goto accept1;
@@ -288,7 +288,7 @@ alt1_2:
         arg0=it;
         it=rb_funcall(self,sy_seq,1,arg0);
         FAILTEST(alt1_3);
-        var0/*_result*/=it;;
+        __result=it;;
 
         ;
         goto accept1;
@@ -305,7 +305,7 @@ fail:
 }
 VALUE Tests_sw(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0;
+    VALUE it ,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -342,7 +342,7 @@ accept2:
     arg0=it;
     it=rb_funcall(self,sy_seq,1,arg0);
     FAILTEST(alt1_2);
-    var0/*_result*/=it;;
+    __result=it;;
 
     ;
     goto accept1;
@@ -352,7 +352,7 @@ alt1_2:
     arg0=it;
     it=rb_funcall(self,sy_seq,1,arg0);
     FAILTEST(alt1_3);
-    var0/*_result*/=it;;
+    __result=it;;
 
     ;
     goto accept1;
@@ -368,7 +368,7 @@ fail:
 }
 VALUE Tests_test(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0;
+    VALUE it ,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -383,14 +383,14 @@ alt1_1:
     it=rb_funcall(self,sy_token,1,arg0);
     FAILTEST(alt1_2);
     it=i_1;
-    var0/*_result*/=it;;
+    __result=it;;
 
     ;
     goto accept1;
 alt1_2:
     ptr->pos=oldpos1;
     it=i_42;
-    var0/*_result*/=it;;
+    __result=it;;
 
     ;
     goto accept1;
@@ -437,5 +437,5 @@ void Init_tests_c() {
     rb_define_method(cls_Tests,"s2",Tests_s2,0);
     rb_define_method(cls_Tests,"sw",Tests_sw,0);
     rb_define_method(cls_Tests,"test",Tests_test,0);
-    rb_eval_string("testversiontests('1d0de235d57593b3e4cadbc3070703fb')");
+    rb_eval_string("testversiontests('d9fffd929e27b9e66f129b49cb7822fd')");
 }

@@ -58,7 +58,7 @@ static VALUE sy_Amethyst_self_dot_pro_e13d;
 static VALUE sy_apply;
 VALUE Amethyst__(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0,var1;
+    VALUE it ,__result,__result_2;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -83,9 +83,9 @@ VALUE Amethyst__(VALUE self ) {
         ;
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
-        var0/*_result*/=it;;
-        it=var0/*_result*/;
-        var1/*_result*/=it;;
+        __result=it;;
+        it=__result;
+        __result_2=it;;
         break;
     }
     return it;
@@ -94,7 +94,7 @@ fail:
 }
 VALUE Amethyst_alnum(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0;
+    VALUE it ,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -115,7 +115,7 @@ VALUE Amethyst_alnum(VALUE self ) {
         ;
         it=Amethyst_digit(self );
         FAILTEST(fail);
-        var0/*_result*/=it;;
+        __result=it;;
         break;
     case 'A' ... 'Z':
         ;
@@ -123,7 +123,7 @@ VALUE Amethyst_alnum(VALUE self ) {
         ;
         it=Amethyst_alpha(self );
         FAILTEST(fail);
-        var0/*_result*/=it;;
+        __result=it;;
         break;
     }
     return it;
@@ -132,7 +132,7 @@ fail:
 }
 VALUE Amethyst_alpha(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0;
+    VALUE it ,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -151,13 +151,13 @@ VALUE Amethyst_alpha(VALUE self ) {
         ;
         it=Amethyst_upper(self );
         FAILTEST(fail);
-        var0/*_result*/=it;;
+        __result=it;;
         break;
     case 'a' ... 'z':
         ;
         it=Amethyst_lower(self );
         FAILTEST(fail);
-        var0/*_result*/=it;;
+        __result=it;;
         break;
     }
     return it;
@@ -166,7 +166,7 @@ fail:
 }
 VALUE Amethyst_char(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0,var1;
+    VALUE it ,_c,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -174,15 +174,15 @@ VALUE Amethyst_char(VALUE self ) {
     Data_Get_Struct(self,cstruct,ptr);
     it=AmethystCore_anything(self );
     FAILTEST(fail);
-    var0/*c*/=it;;
-    bind_aset(bind2,1,var0/*c*/);
+    _c=it;;
+    bind_aset(bind2,1,_c);
     it=rb_funcall(self,sy_Amethyst__lp_bind_lb_1_rb__a948,1,bind2);
-    var0/*c*/=bind_aget(bind2,1);;
+    _c=bind_aget(bind2,1);;
     FAILTEST(fail);
-    bind_aset(bind2,1,var0/*c*/);
+    bind_aset(bind2,1,_c);
     it=rb_funcall(self,sy_Amethyst_bind_lb_1_rb_,1,bind2);
-    var0/*c*/=bind_aget(bind2,1);;
-    var1/*_result*/=it;;
+    _c=bind_aget(bind2,1);;
+    __result=it;;
 
     return it;
 fail:
@@ -190,28 +190,28 @@ fail:
 }
 VALUE Amethyst_clas(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE it ,var0,var1,var2,var3,var4;
+    VALUE it ,_cls,_x,_a,__result,__result_2;
     VALUE bind2=bind_new2(16);
-    var0/*cls*/=a0;;
+    _cls=a0;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    it=var0/*cls*/;
-    var1/*x*/=it;;
+    it=_cls;
+    _x=it;;
     it=AmethystCore_anything(self );
     FAILTEST(fail);
-    var2/*a*/=it;;
-    bind_aset(bind2,1,var1/*x*/);
-    bind_aset(bind2,2,var2/*a*/);
+    _a=it;;
+    bind_aset(bind2,1,_x);
+    bind_aset(bind2,2,_a);
     it=rb_funcall(self,sy_Amethyst__lp_bind_lb_1_rb__abc3,1,bind2);
-    var1/*x*/=bind_aget(bind2,1);;
-    var2/*a*/=bind_aget(bind2,2);;
+    _x=bind_aget(bind2,1);;
+    _a=bind_aget(bind2,2);;
     FAILTEST(fail);
-    it=var2/*a*/;
-    var3/*_result*/=it;;
-    it=var3/*_result*/;
-    var4/*_result*/=it;;
+    it=_a;
+    __result=it;;
+    it=__result;
+    __result_2=it;;
 
     return it;
 fail:
@@ -219,7 +219,7 @@ fail:
 }
 VALUE Amethyst_digit(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0;
+    VALUE it ,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -236,7 +236,7 @@ VALUE Amethyst_digit(VALUE self ) {
         ;
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
-        var0/*_result*/=it;;
+        __result=it;;
         break;
     }
     return it;
@@ -245,14 +245,14 @@ fail:
 }
 VALUE Amethyst_empty(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0;
+    VALUE it ,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     it=Qnil;
-    var0/*_result*/=it;;
+    __result=it;;
 
     return it;
 fail:
@@ -260,7 +260,7 @@ fail:
 }
 VALUE Amethyst_eof(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0;
+    VALUE it ,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -280,7 +280,7 @@ alt1_2:
     ptr->pos=oldpos1;
     if (cut1) goto fail;
     it=Qnil;
-    var0/*_result*/=it;;
+    __result=it;;
 
     ;
     goto accept1;
@@ -296,7 +296,7 @@ fail:
 }
 VALUE Amethyst_fails(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0;
+    VALUE it ,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -304,7 +304,7 @@ VALUE Amethyst_fails(VALUE self ) {
     Data_Get_Struct(self,cstruct,ptr);
     it=rb_funcall(self,sy_Amethyst__lp_false_rp__sp__c3c5,1,bind2);
     FAILTEST(fail);
-    var0/*_result*/=it;;
+    __result=it;;
 
     return it;
 fail:
@@ -312,7 +312,7 @@ fail:
 }
 VALUE Amethyst_false(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0,var1,var2,var3;
+    VALUE it ,_a,_x,__result,__result_2;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -320,19 +320,19 @@ VALUE Amethyst_false(VALUE self ) {
     Data_Get_Struct(self,cstruct,ptr);
     it=AmethystCore_anything(self );
     FAILTEST(fail);
-    var0/*a*/=it;;
+    _a=it;;
     it=Qfalse;
-    var1/*x*/=it;;
-    bind_aset(bind2,1,var1/*x*/);
-    bind_aset(bind2,2,var0/*a*/);
+    _x=it;;
+    bind_aset(bind2,1,_x);
+    bind_aset(bind2,2,_a);
     it=rb_funcall(self,sy_Amethyst__lp_bind_lb_1_rb__abc3,1,bind2);
-    var1/*x*/=bind_aget(bind2,1);;
-    var0/*a*/=bind_aget(bind2,2);;
+    _x=bind_aget(bind2,1);;
+    _a=bind_aget(bind2,2);;
     FAILTEST(fail);
-    it=var0/*a*/;
-    var2/*_result*/=it;;
-    it=var2/*_result*/;
-    var3/*_result*/=it;;
+    it=_a;
+    __result=it;;
+    it=__result;
+    __result_2=it;;
 
     return it;
 fail:
@@ -340,7 +340,7 @@ fail:
 }
 VALUE Amethyst_int(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14,var15,var16,var17,var18,var19,var20,var21,var22,var23,var24,var25,var26,var27,var28;
+    VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,_autovar_7,_autovar_8,_autovar_9,_autovar_10,_autovar_11,_autovar_12,_autovar_13,_autovar_14,_autovar_15,_autovar_16,_autovar_17,_autovar_18,_autovar_19,_autovar_20,_autovar_21,_autovar_22,_autovar_23,_n,_m,__result,_autovar_24,_autovar_25,_autovar_26;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -357,38 +357,38 @@ VALUE Amethyst_int(VALUE self ) {
         case ':' ... UC(255):
             ;
             it=rb_ary_new3(0);
-            var0/*autovar*/=it;;
+            _autovar=it;;
             int oldpos1=ptr->pos;
             int cut1=0;
 alt1_1:
             ;
-            it=var0/*autovar*/;
-            var1/*autovar*/=it;;
+            it=_autovar;
+            _autovar_2=it;;
             goto alt1_2;
             ;
             goto accept1;
 alt1_2:
             ptr->pos=oldpos1;
-            it=var0/*autovar*/;
-            var1/*autovar*/=it;;
+            it=_autovar;
+            _autovar_2=it;;
             goto alt1_3;
             ;
             goto accept1;
 alt1_3:
             ptr->pos=oldpos1;
-            it=var0/*autovar*/;
-            var1/*autovar*/=it;;
+            it=_autovar;
+            _autovar_2=it;;
             if (ame_curstr2(ptr)[0]=='0'&&ame_curstr2(ptr)[1]=='o')  ptr->pos+=2;
             else goto alt1_4;
             it=rb_obj_clone(s_0o_6f57);
-            var2/*autovar*/=it;;
-            bind_aset(bind2,1,var1/*autovar*/);
-            bind_aset(bind2,2,var2/*autovar*/);
+            _autovar_3=it;;
+            bind_aset(bind2,1,_autovar_2);
+            bind_aset(bind2,2,_autovar_3);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var1/*autovar*/=bind_aget(bind2,1);;
-            var2/*autovar*/=bind_aget(bind2,2);;
+            _autovar_2=bind_aget(bind2,1);;
+            _autovar_3=bind_aget(bind2,2);;
             it=rb_ary_new3(0);
-            var3/*autovar*/=it;;
+            _autovar_4=it;;
             switch((unsigned char)*ame_curstr2(ptr)) {
             case UC(0) ... '/':
                 ;
@@ -400,14 +400,14 @@ alt1_3:
                 ;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
-                var4/*autovar*/=it;;
+                _autovar_5=it;;
                 break;
             }
-            bind_aset(bind2,1,var3/*autovar*/);
-            bind_aset(bind2,2,var4/*autovar*/);
+            bind_aset(bind2,1,_autovar_4);
+            bind_aset(bind2,2,_autovar_5);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var3/*autovar*/=bind_aget(bind2,1);;
-            var4/*autovar*/=bind_aget(bind2,2);;
+            _autovar_4=bind_aget(bind2,1);;
+            _autovar_5=bind_aget(bind2,2);;
             int stop1=0;
             while(!stop1) {
                 switch((unsigned char)*ame_curstr2(ptr)) {
@@ -421,28 +421,28 @@ alt1_3:
                     ;
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
-                    var5/*autovar*/=it;;
-                    bind_aset(bind2,1,var3/*autovar*/);
-                    bind_aset(bind2,2,var5/*autovar*/);
+                    _autovar_6=it;;
+                    bind_aset(bind2,1,_autovar_4);
+                    bind_aset(bind2,2,_autovar_6);
                     it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-                    var3/*autovar*/=bind_aget(bind2,1);;
-                    var5/*autovar*/=bind_aget(bind2,2);;
+                    _autovar_4=bind_aget(bind2,1);;
+                    _autovar_6=bind_aget(bind2,2);;
                     break;
                 }
             }
-            it=var3/*autovar*/;
-            var6/*autovar*/=it;;
-            bind_aset(bind2,1,var1/*autovar*/);
-            bind_aset(bind2,2,var6/*autovar*/);
+            it=_autovar_4;
+            _autovar_7=it;;
+            bind_aset(bind2,1,_autovar_2);
+            bind_aset(bind2,2,_autovar_7);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var1/*autovar*/=bind_aget(bind2,1);;
-            var6/*autovar*/=bind_aget(bind2,2);;
+            _autovar_2=bind_aget(bind2,1);;
+            _autovar_7=bind_aget(bind2,2);;
             ;
             goto accept1;
 alt1_4:
             ptr->pos=oldpos1;
-            it=var0/*autovar*/;
-            var1/*autovar*/=it;;
+            it=_autovar;
+            _autovar_2=it;;
             goto alt1_5;
             ;
             goto accept1;
@@ -455,26 +455,26 @@ accept1:
         case '0' ... '0':
             ;
             it=rb_ary_new3(0);
-            var7/*autovar*/=it;;
+            _autovar_8=it;;
             int oldpos2=ptr->pos;
             int cut2=0;
 alt2_1:
             ;
-            it=var7/*autovar*/;
-            var1/*autovar*/=it;;
+            it=_autovar_8;
+            _autovar_2=it;;
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
             if (ame_curstr2(ptr)[0]=='x')  ptr->pos+=1;
             else goto alt2_2;
             it=rb_obj_clone(s_0x_f6f8);
-            var8/*autovar*/=it;;
-            bind_aset(bind2,1,var1/*autovar*/);
-            bind_aset(bind2,2,var8/*autovar*/);
+            _autovar_9=it;;
+            bind_aset(bind2,1,_autovar_2);
+            bind_aset(bind2,2,_autovar_9);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var1/*autovar*/=bind_aget(bind2,1);;
-            var8/*autovar*/=bind_aget(bind2,2);;
+            _autovar_2=bind_aget(bind2,1);;
+            _autovar_9=bind_aget(bind2,2);;
             it=rb_ary_new3(0);
-            var9/*autovar*/=it;;
+            _autovar_10=it;;
             switch((unsigned char)*ame_curstr2(ptr)) {
             case UC(0) ... '/':
                 ;
@@ -494,14 +494,14 @@ alt2_1:
                 ;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
-                var10/*autovar*/=it;;
+                _autovar_11=it;;
                 break;
             }
-            bind_aset(bind2,1,var9/*autovar*/);
-            bind_aset(bind2,2,var10/*autovar*/);
+            bind_aset(bind2,1,_autovar_10);
+            bind_aset(bind2,2,_autovar_11);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var9/*autovar*/=bind_aget(bind2,1);;
-            var10/*autovar*/=bind_aget(bind2,2);;
+            _autovar_10=bind_aget(bind2,1);;
+            _autovar_11=bind_aget(bind2,2);;
             int stop2=0;
             while(!stop2) {
                 switch((unsigned char)*ame_curstr2(ptr)) {
@@ -523,41 +523,41 @@ alt2_1:
                     ;
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
-                    var11/*autovar*/=it;;
-                    bind_aset(bind2,1,var9/*autovar*/);
-                    bind_aset(bind2,2,var11/*autovar*/);
+                    _autovar_12=it;;
+                    bind_aset(bind2,1,_autovar_10);
+                    bind_aset(bind2,2,_autovar_12);
                     it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-                    var9/*autovar*/=bind_aget(bind2,1);;
-                    var11/*autovar*/=bind_aget(bind2,2);;
+                    _autovar_10=bind_aget(bind2,1);;
+                    _autovar_12=bind_aget(bind2,2);;
                     break;
                 }
             }
-            it=var9/*autovar*/;
-            var12/*autovar*/=it;;
-            bind_aset(bind2,1,var1/*autovar*/);
-            bind_aset(bind2,2,var12/*autovar*/);
+            it=_autovar_10;
+            _autovar_13=it;;
+            bind_aset(bind2,1,_autovar_2);
+            bind_aset(bind2,2,_autovar_13);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var1/*autovar*/=bind_aget(bind2,1);;
-            var12/*autovar*/=bind_aget(bind2,2);;
+            _autovar_2=bind_aget(bind2,1);;
+            _autovar_13=bind_aget(bind2,2);;
             ;
             goto accept2;
 alt2_2:
             ptr->pos=oldpos2;
-            it=var7/*autovar*/;
-            var1/*autovar*/=it;;
+            it=_autovar_8;
+            _autovar_2=it;;
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
             if (ame_curstr2(ptr)[0]=='b')  ptr->pos+=1;
             else goto alt2_3;
             it=rb_obj_clone(s_0b_3470);
-            var13/*autovar*/=it;;
-            bind_aset(bind2,1,var1/*autovar*/);
-            bind_aset(bind2,2,var13/*autovar*/);
+            _autovar_14=it;;
+            bind_aset(bind2,1,_autovar_2);
+            bind_aset(bind2,2,_autovar_14);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var1/*autovar*/=bind_aget(bind2,1);;
-            var13/*autovar*/=bind_aget(bind2,2);;
+            _autovar_2=bind_aget(bind2,1);;
+            _autovar_14=bind_aget(bind2,2);;
             it=rb_ary_new3(0);
-            var14/*autovar*/=it;;
+            _autovar_15=it;;
             switch((unsigned char)*ame_curstr2(ptr)) {
             case UC(0) ... '/':
                 ;
@@ -569,14 +569,14 @@ alt2_2:
                 ;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
-                var15/*autovar*/=it;;
+                _autovar_16=it;;
                 break;
             }
-            bind_aset(bind2,1,var14/*autovar*/);
-            bind_aset(bind2,2,var15/*autovar*/);
+            bind_aset(bind2,1,_autovar_15);
+            bind_aset(bind2,2,_autovar_16);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var14/*autovar*/=bind_aget(bind2,1);;
-            var15/*autovar*/=bind_aget(bind2,2);;
+            _autovar_15=bind_aget(bind2,1);;
+            _autovar_16=bind_aget(bind2,2);;
             int stop3=0;
             while(!stop3) {
                 switch((unsigned char)*ame_curstr2(ptr)) {
@@ -590,39 +590,39 @@ alt2_2:
                     ;
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
-                    var16/*autovar*/=it;;
-                    bind_aset(bind2,1,var14/*autovar*/);
-                    bind_aset(bind2,2,var16/*autovar*/);
+                    _autovar_17=it;;
+                    bind_aset(bind2,1,_autovar_15);
+                    bind_aset(bind2,2,_autovar_17);
                     it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-                    var14/*autovar*/=bind_aget(bind2,1);;
-                    var16/*autovar*/=bind_aget(bind2,2);;
+                    _autovar_15=bind_aget(bind2,1);;
+                    _autovar_17=bind_aget(bind2,2);;
                     break;
                 }
             }
-            it=var14/*autovar*/;
-            var17/*autovar*/=it;;
-            bind_aset(bind2,1,var1/*autovar*/);
-            bind_aset(bind2,2,var17/*autovar*/);
+            it=_autovar_15;
+            _autovar_18=it;;
+            bind_aset(bind2,1,_autovar_2);
+            bind_aset(bind2,2,_autovar_18);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var1/*autovar*/=bind_aget(bind2,1);;
-            var17/*autovar*/=bind_aget(bind2,2);;
+            _autovar_2=bind_aget(bind2,1);;
+            _autovar_18=bind_aget(bind2,2);;
             ;
             goto accept2;
 alt2_3:
             ptr->pos=oldpos2;
-            it=var7/*autovar*/;
-            var1/*autovar*/=it;;
+            it=_autovar_8;
+            _autovar_2=it;;
             if (ame_curstr2(ptr)[0]=='0'&&ame_curstr2(ptr)[1]=='o')  ptr->pos+=2;
             else goto alt2_4;
             it=rb_obj_clone(s_0o_6f57);
-            var2/*autovar*/=it;;
-            bind_aset(bind2,1,var1/*autovar*/);
-            bind_aset(bind2,2,var2/*autovar*/);
+            _autovar_3=it;;
+            bind_aset(bind2,1,_autovar_2);
+            bind_aset(bind2,2,_autovar_3);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var1/*autovar*/=bind_aget(bind2,1);;
-            var2/*autovar*/=bind_aget(bind2,2);;
+            _autovar_2=bind_aget(bind2,1);;
+            _autovar_3=bind_aget(bind2,2);;
             it=rb_ary_new3(0);
-            var3/*autovar*/=it;;
+            _autovar_4=it;;
             switch((unsigned char)*ame_curstr2(ptr)) {
             case UC(0) ... '/':
                 ;
@@ -634,14 +634,14 @@ alt2_3:
                 ;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
-                var4/*autovar*/=it;;
+                _autovar_5=it;;
                 break;
             }
-            bind_aset(bind2,1,var3/*autovar*/);
-            bind_aset(bind2,2,var4/*autovar*/);
+            bind_aset(bind2,1,_autovar_4);
+            bind_aset(bind2,2,_autovar_5);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var3/*autovar*/=bind_aget(bind2,1);;
-            var4/*autovar*/=bind_aget(bind2,2);;
+            _autovar_4=bind_aget(bind2,1);;
+            _autovar_5=bind_aget(bind2,2);;
             int stop4=0;
             while(!stop4) {
                 switch((unsigned char)*ame_curstr2(ptr)) {
@@ -655,38 +655,38 @@ alt2_3:
                     ;
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
-                    var5/*autovar*/=it;;
-                    bind_aset(bind2,1,var3/*autovar*/);
-                    bind_aset(bind2,2,var5/*autovar*/);
+                    _autovar_6=it;;
+                    bind_aset(bind2,1,_autovar_4);
+                    bind_aset(bind2,2,_autovar_6);
                     it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-                    var3/*autovar*/=bind_aget(bind2,1);;
-                    var5/*autovar*/=bind_aget(bind2,2);;
+                    _autovar_4=bind_aget(bind2,1);;
+                    _autovar_6=bind_aget(bind2,2);;
                     break;
                 }
             }
-            it=var3/*autovar*/;
-            var6/*autovar*/=it;;
-            bind_aset(bind2,1,var1/*autovar*/);
-            bind_aset(bind2,2,var6/*autovar*/);
+            it=_autovar_4;
+            _autovar_7=it;;
+            bind_aset(bind2,1,_autovar_2);
+            bind_aset(bind2,2,_autovar_7);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var1/*autovar*/=bind_aget(bind2,1);;
-            var6/*autovar*/=bind_aget(bind2,2);;
+            _autovar_2=bind_aget(bind2,1);;
+            _autovar_7=bind_aget(bind2,2);;
             ;
             goto accept2;
 alt2_4:
             ptr->pos=oldpos2;
-            it=var7/*autovar*/;
-            var1/*autovar*/=it;;
+            it=_autovar_8;
+            _autovar_2=it;;
             it=rb_ary_new3(0);
-            var18/*autovar*/=it;;
+            _autovar_19=it;;
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
-            var19/*autovar*/=it;;
-            bind_aset(bind2,1,var18/*autovar*/);
-            bind_aset(bind2,2,var19/*autovar*/);
+            _autovar_20=it;;
+            bind_aset(bind2,1,_autovar_19);
+            bind_aset(bind2,2,_autovar_20);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var18/*autovar*/=bind_aget(bind2,1);;
-            var19/*autovar*/=bind_aget(bind2,2);;
+            _autovar_19=bind_aget(bind2,1);;
+            _autovar_20=bind_aget(bind2,2);;
             int stop5=0;
             while(!stop5) {
                 switch((unsigned char)*ame_curstr2(ptr)) {
@@ -700,22 +700,22 @@ alt2_4:
                     ;
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
-                    var20/*autovar*/=it;;
-                    bind_aset(bind2,1,var18/*autovar*/);
-                    bind_aset(bind2,2,var20/*autovar*/);
+                    _autovar_21=it;;
+                    bind_aset(bind2,1,_autovar_19);
+                    bind_aset(bind2,2,_autovar_21);
                     it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-                    var18/*autovar*/=bind_aget(bind2,1);;
-                    var20/*autovar*/=bind_aget(bind2,2);;
+                    _autovar_19=bind_aget(bind2,1);;
+                    _autovar_21=bind_aget(bind2,2);;
                     break;
                 }
             }
-            it=var18/*autovar*/;
-            var21/*autovar*/=it;;
-            bind_aset(bind2,1,var1/*autovar*/);
-            bind_aset(bind2,2,var21/*autovar*/);
+            it=_autovar_19;
+            _autovar_22=it;;
+            bind_aset(bind2,1,_autovar_2);
+            bind_aset(bind2,2,_autovar_22);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var1/*autovar*/=bind_aget(bind2,1);;
-            var21/*autovar*/=bind_aget(bind2,2);;
+            _autovar_2=bind_aget(bind2,1);;
+            _autovar_22=bind_aget(bind2,2);;
             ;
             goto accept2;
 alt2_5:
@@ -727,38 +727,38 @@ accept2:
         case '1' ... '9':
             ;
             it=rb_ary_new3(0);
-            var22/*autovar*/=it;;
+            _autovar_23=it;;
             int oldpos3=ptr->pos;
             int cut3=0;
 alt3_1:
             ;
-            it=var22/*autovar*/;
-            var1/*autovar*/=it;;
+            it=_autovar_23;
+            _autovar_2=it;;
             goto alt3_2;
             ;
             goto accept3;
 alt3_2:
             ptr->pos=oldpos3;
-            it=var22/*autovar*/;
-            var1/*autovar*/=it;;
+            it=_autovar_23;
+            _autovar_2=it;;
             goto alt3_3;
             ;
             goto accept3;
 alt3_3:
             ptr->pos=oldpos3;
-            it=var22/*autovar*/;
-            var1/*autovar*/=it;;
+            it=_autovar_23;
+            _autovar_2=it;;
             if (ame_curstr2(ptr)[0]=='0'&&ame_curstr2(ptr)[1]=='o')  ptr->pos+=2;
             else goto alt3_4;
             it=rb_obj_clone(s_0o_6f57);
-            var2/*autovar*/=it;;
-            bind_aset(bind2,1,var1/*autovar*/);
-            bind_aset(bind2,2,var2/*autovar*/);
+            _autovar_3=it;;
+            bind_aset(bind2,1,_autovar_2);
+            bind_aset(bind2,2,_autovar_3);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var1/*autovar*/=bind_aget(bind2,1);;
-            var2/*autovar*/=bind_aget(bind2,2);;
+            _autovar_2=bind_aget(bind2,1);;
+            _autovar_3=bind_aget(bind2,2);;
             it=rb_ary_new3(0);
-            var3/*autovar*/=it;;
+            _autovar_4=it;;
             switch((unsigned char)*ame_curstr2(ptr)) {
             case UC(0) ... '/':
                 ;
@@ -770,14 +770,14 @@ alt3_3:
                 ;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
-                var4/*autovar*/=it;;
+                _autovar_5=it;;
                 break;
             }
-            bind_aset(bind2,1,var3/*autovar*/);
-            bind_aset(bind2,2,var4/*autovar*/);
+            bind_aset(bind2,1,_autovar_4);
+            bind_aset(bind2,2,_autovar_5);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var3/*autovar*/=bind_aget(bind2,1);;
-            var4/*autovar*/=bind_aget(bind2,2);;
+            _autovar_4=bind_aget(bind2,1);;
+            _autovar_5=bind_aget(bind2,2);;
             int stop6=0;
             while(!stop6) {
                 switch((unsigned char)*ame_curstr2(ptr)) {
@@ -791,38 +791,38 @@ alt3_3:
                     ;
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
-                    var5/*autovar*/=it;;
-                    bind_aset(bind2,1,var3/*autovar*/);
-                    bind_aset(bind2,2,var5/*autovar*/);
+                    _autovar_6=it;;
+                    bind_aset(bind2,1,_autovar_4);
+                    bind_aset(bind2,2,_autovar_6);
                     it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-                    var3/*autovar*/=bind_aget(bind2,1);;
-                    var5/*autovar*/=bind_aget(bind2,2);;
+                    _autovar_4=bind_aget(bind2,1);;
+                    _autovar_6=bind_aget(bind2,2);;
                     break;
                 }
             }
-            it=var3/*autovar*/;
-            var6/*autovar*/=it;;
-            bind_aset(bind2,1,var1/*autovar*/);
-            bind_aset(bind2,2,var6/*autovar*/);
+            it=_autovar_4;
+            _autovar_7=it;;
+            bind_aset(bind2,1,_autovar_2);
+            bind_aset(bind2,2,_autovar_7);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var1/*autovar*/=bind_aget(bind2,1);;
-            var6/*autovar*/=bind_aget(bind2,2);;
+            _autovar_2=bind_aget(bind2,1);;
+            _autovar_7=bind_aget(bind2,2);;
             ;
             goto accept3;
 alt3_4:
             ptr->pos=oldpos3;
-            it=var22/*autovar*/;
-            var1/*autovar*/=it;;
+            it=_autovar_23;
+            _autovar_2=it;;
             it=rb_ary_new3(0);
-            var18/*autovar*/=it;;
+            _autovar_19=it;;
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
-            var19/*autovar*/=it;;
-            bind_aset(bind2,1,var18/*autovar*/);
-            bind_aset(bind2,2,var19/*autovar*/);
+            _autovar_20=it;;
+            bind_aset(bind2,1,_autovar_19);
+            bind_aset(bind2,2,_autovar_20);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var18/*autovar*/=bind_aget(bind2,1);;
-            var19/*autovar*/=bind_aget(bind2,2);;
+            _autovar_19=bind_aget(bind2,1);;
+            _autovar_20=bind_aget(bind2,2);;
             int stop7=0;
             while(!stop7) {
                 switch((unsigned char)*ame_curstr2(ptr)) {
@@ -836,22 +836,22 @@ alt3_4:
                     ;
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
-                    var20/*autovar*/=it;;
-                    bind_aset(bind2,1,var18/*autovar*/);
-                    bind_aset(bind2,2,var20/*autovar*/);
+                    _autovar_21=it;;
+                    bind_aset(bind2,1,_autovar_19);
+                    bind_aset(bind2,2,_autovar_21);
                     it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-                    var18/*autovar*/=bind_aget(bind2,1);;
-                    var20/*autovar*/=bind_aget(bind2,2);;
+                    _autovar_19=bind_aget(bind2,1);;
+                    _autovar_21=bind_aget(bind2,2);;
                     break;
                 }
             }
-            it=var18/*autovar*/;
-            var21/*autovar*/=it;;
-            bind_aset(bind2,1,var1/*autovar*/);
-            bind_aset(bind2,2,var21/*autovar*/);
+            it=_autovar_19;
+            _autovar_22=it;;
+            bind_aset(bind2,1,_autovar_2);
+            bind_aset(bind2,2,_autovar_22);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var1/*autovar*/=bind_aget(bind2,1);;
-            var21/*autovar*/=bind_aget(bind2,2);;
+            _autovar_2=bind_aget(bind2,1);;
+            _autovar_22=bind_aget(bind2,2);;
             ;
             goto accept3;
 alt3_5:
@@ -861,16 +861,16 @@ accept3:
             ;
             break;
         }
-        it=var1/*autovar*/;
-        var23/*n*/=it;;
+        it=_autovar_2;
+        _n=it;;
         it=rb_obj_clone(s__d41d);
-        var24/*m*/=it;;
-        bind_aset(bind2,1,var24/*m*/);
-        bind_aset(bind2,2,var23/*n*/);
+        _m=it;;
+        bind_aset(bind2,1,_m);
+        bind_aset(bind2,2,_n);
         it=rb_funcall(self,sy_Amethyst__lp_bind_lb_1_rb__afaa,1,bind2);
-        var24/*m*/=bind_aget(bind2,1);;
-        var23/*n*/=bind_aget(bind2,2);;
-        var25/*_result*/=it;;
+        _m=bind_aget(bind2,1);;
+        _n=bind_aget(bind2,2);;
+        __result=it;;
         break;
     case '-' ... '-':
         ;
@@ -882,38 +882,38 @@ accept3:
         case ':' ... UC(255):
             ;
             it=rb_ary_new3(0);
-            var26/*autovar*/=it;;
+            _autovar_24=it;;
             int oldpos4=ptr->pos;
             int cut4=0;
 alt4_1:
             ;
-            it=var26/*autovar*/;
-            var1/*autovar*/=it;;
+            it=_autovar_24;
+            _autovar_2=it;;
             goto alt4_2;
             ;
             goto accept4;
 alt4_2:
             ptr->pos=oldpos4;
-            it=var26/*autovar*/;
-            var1/*autovar*/=it;;
+            it=_autovar_24;
+            _autovar_2=it;;
             goto alt4_3;
             ;
             goto accept4;
 alt4_3:
             ptr->pos=oldpos4;
-            it=var26/*autovar*/;
-            var1/*autovar*/=it;;
+            it=_autovar_24;
+            _autovar_2=it;;
             if (ame_curstr2(ptr)[0]=='0'&&ame_curstr2(ptr)[1]=='o')  ptr->pos+=2;
             else goto alt4_4;
             it=rb_obj_clone(s_0o_6f57);
-            var2/*autovar*/=it;;
-            bind_aset(bind2,1,var1/*autovar*/);
-            bind_aset(bind2,2,var2/*autovar*/);
+            _autovar_3=it;;
+            bind_aset(bind2,1,_autovar_2);
+            bind_aset(bind2,2,_autovar_3);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var1/*autovar*/=bind_aget(bind2,1);;
-            var2/*autovar*/=bind_aget(bind2,2);;
+            _autovar_2=bind_aget(bind2,1);;
+            _autovar_3=bind_aget(bind2,2);;
             it=rb_ary_new3(0);
-            var3/*autovar*/=it;;
+            _autovar_4=it;;
             switch((unsigned char)*ame_curstr2(ptr)) {
             case UC(0) ... '/':
                 ;
@@ -925,14 +925,14 @@ alt4_3:
                 ;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
-                var4/*autovar*/=it;;
+                _autovar_5=it;;
                 break;
             }
-            bind_aset(bind2,1,var3/*autovar*/);
-            bind_aset(bind2,2,var4/*autovar*/);
+            bind_aset(bind2,1,_autovar_4);
+            bind_aset(bind2,2,_autovar_5);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var3/*autovar*/=bind_aget(bind2,1);;
-            var4/*autovar*/=bind_aget(bind2,2);;
+            _autovar_4=bind_aget(bind2,1);;
+            _autovar_5=bind_aget(bind2,2);;
             int stop8=0;
             while(!stop8) {
                 switch((unsigned char)*ame_curstr2(ptr)) {
@@ -946,28 +946,28 @@ alt4_3:
                     ;
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
-                    var5/*autovar*/=it;;
-                    bind_aset(bind2,1,var3/*autovar*/);
-                    bind_aset(bind2,2,var5/*autovar*/);
+                    _autovar_6=it;;
+                    bind_aset(bind2,1,_autovar_4);
+                    bind_aset(bind2,2,_autovar_6);
                     it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-                    var3/*autovar*/=bind_aget(bind2,1);;
-                    var5/*autovar*/=bind_aget(bind2,2);;
+                    _autovar_4=bind_aget(bind2,1);;
+                    _autovar_6=bind_aget(bind2,2);;
                     break;
                 }
             }
-            it=var3/*autovar*/;
-            var6/*autovar*/=it;;
-            bind_aset(bind2,1,var1/*autovar*/);
-            bind_aset(bind2,2,var6/*autovar*/);
+            it=_autovar_4;
+            _autovar_7=it;;
+            bind_aset(bind2,1,_autovar_2);
+            bind_aset(bind2,2,_autovar_7);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var1/*autovar*/=bind_aget(bind2,1);;
-            var6/*autovar*/=bind_aget(bind2,2);;
+            _autovar_2=bind_aget(bind2,1);;
+            _autovar_7=bind_aget(bind2,2);;
             ;
             goto accept4;
 alt4_4:
             ptr->pos=oldpos4;
-            it=var26/*autovar*/;
-            var1/*autovar*/=it;;
+            it=_autovar_24;
+            _autovar_2=it;;
             goto alt4_5;
             ;
             goto accept4;
@@ -980,26 +980,26 @@ accept4:
         case '0' ... '0':
             ;
             it=rb_ary_new3(0);
-            var27/*autovar*/=it;;
+            _autovar_25=it;;
             int oldpos5=ptr->pos;
             int cut5=0;
 alt5_1:
             ;
-            it=var27/*autovar*/;
-            var1/*autovar*/=it;;
+            it=_autovar_25;
+            _autovar_2=it;;
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
             if (ame_curstr2(ptr)[0]=='x')  ptr->pos+=1;
             else goto alt5_2;
             it=rb_obj_clone(s_0x_f6f8);
-            var8/*autovar*/=it;;
-            bind_aset(bind2,1,var1/*autovar*/);
-            bind_aset(bind2,2,var8/*autovar*/);
+            _autovar_9=it;;
+            bind_aset(bind2,1,_autovar_2);
+            bind_aset(bind2,2,_autovar_9);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var1/*autovar*/=bind_aget(bind2,1);;
-            var8/*autovar*/=bind_aget(bind2,2);;
+            _autovar_2=bind_aget(bind2,1);;
+            _autovar_9=bind_aget(bind2,2);;
             it=rb_ary_new3(0);
-            var9/*autovar*/=it;;
+            _autovar_10=it;;
             switch((unsigned char)*ame_curstr2(ptr)) {
             case UC(0) ... '/':
                 ;
@@ -1019,14 +1019,14 @@ alt5_1:
                 ;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
-                var10/*autovar*/=it;;
+                _autovar_11=it;;
                 break;
             }
-            bind_aset(bind2,1,var9/*autovar*/);
-            bind_aset(bind2,2,var10/*autovar*/);
+            bind_aset(bind2,1,_autovar_10);
+            bind_aset(bind2,2,_autovar_11);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var9/*autovar*/=bind_aget(bind2,1);;
-            var10/*autovar*/=bind_aget(bind2,2);;
+            _autovar_10=bind_aget(bind2,1);;
+            _autovar_11=bind_aget(bind2,2);;
             int stop9=0;
             while(!stop9) {
                 switch((unsigned char)*ame_curstr2(ptr)) {
@@ -1048,41 +1048,41 @@ alt5_1:
                     ;
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
-                    var11/*autovar*/=it;;
-                    bind_aset(bind2,1,var9/*autovar*/);
-                    bind_aset(bind2,2,var11/*autovar*/);
+                    _autovar_12=it;;
+                    bind_aset(bind2,1,_autovar_10);
+                    bind_aset(bind2,2,_autovar_12);
                     it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-                    var9/*autovar*/=bind_aget(bind2,1);;
-                    var11/*autovar*/=bind_aget(bind2,2);;
+                    _autovar_10=bind_aget(bind2,1);;
+                    _autovar_12=bind_aget(bind2,2);;
                     break;
                 }
             }
-            it=var9/*autovar*/;
-            var12/*autovar*/=it;;
-            bind_aset(bind2,1,var1/*autovar*/);
-            bind_aset(bind2,2,var12/*autovar*/);
+            it=_autovar_10;
+            _autovar_13=it;;
+            bind_aset(bind2,1,_autovar_2);
+            bind_aset(bind2,2,_autovar_13);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var1/*autovar*/=bind_aget(bind2,1);;
-            var12/*autovar*/=bind_aget(bind2,2);;
+            _autovar_2=bind_aget(bind2,1);;
+            _autovar_13=bind_aget(bind2,2);;
             ;
             goto accept5;
 alt5_2:
             ptr->pos=oldpos5;
-            it=var27/*autovar*/;
-            var1/*autovar*/=it;;
+            it=_autovar_25;
+            _autovar_2=it;;
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
             if (ame_curstr2(ptr)[0]=='b')  ptr->pos+=1;
             else goto alt5_3;
             it=rb_obj_clone(s_0b_3470);
-            var13/*autovar*/=it;;
-            bind_aset(bind2,1,var1/*autovar*/);
-            bind_aset(bind2,2,var13/*autovar*/);
+            _autovar_14=it;;
+            bind_aset(bind2,1,_autovar_2);
+            bind_aset(bind2,2,_autovar_14);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var1/*autovar*/=bind_aget(bind2,1);;
-            var13/*autovar*/=bind_aget(bind2,2);;
+            _autovar_2=bind_aget(bind2,1);;
+            _autovar_14=bind_aget(bind2,2);;
             it=rb_ary_new3(0);
-            var14/*autovar*/=it;;
+            _autovar_15=it;;
             switch((unsigned char)*ame_curstr2(ptr)) {
             case UC(0) ... '/':
                 ;
@@ -1094,14 +1094,14 @@ alt5_2:
                 ;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
-                var15/*autovar*/=it;;
+                _autovar_16=it;;
                 break;
             }
-            bind_aset(bind2,1,var14/*autovar*/);
-            bind_aset(bind2,2,var15/*autovar*/);
+            bind_aset(bind2,1,_autovar_15);
+            bind_aset(bind2,2,_autovar_16);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var14/*autovar*/=bind_aget(bind2,1);;
-            var15/*autovar*/=bind_aget(bind2,2);;
+            _autovar_15=bind_aget(bind2,1);;
+            _autovar_16=bind_aget(bind2,2);;
             int stop10=0;
             while(!stop10) {
                 switch((unsigned char)*ame_curstr2(ptr)) {
@@ -1115,39 +1115,39 @@ alt5_2:
                     ;
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
-                    var16/*autovar*/=it;;
-                    bind_aset(bind2,1,var14/*autovar*/);
-                    bind_aset(bind2,2,var16/*autovar*/);
+                    _autovar_17=it;;
+                    bind_aset(bind2,1,_autovar_15);
+                    bind_aset(bind2,2,_autovar_17);
                     it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-                    var14/*autovar*/=bind_aget(bind2,1);;
-                    var16/*autovar*/=bind_aget(bind2,2);;
+                    _autovar_15=bind_aget(bind2,1);;
+                    _autovar_17=bind_aget(bind2,2);;
                     break;
                 }
             }
-            it=var14/*autovar*/;
-            var17/*autovar*/=it;;
-            bind_aset(bind2,1,var1/*autovar*/);
-            bind_aset(bind2,2,var17/*autovar*/);
+            it=_autovar_15;
+            _autovar_18=it;;
+            bind_aset(bind2,1,_autovar_2);
+            bind_aset(bind2,2,_autovar_18);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var1/*autovar*/=bind_aget(bind2,1);;
-            var17/*autovar*/=bind_aget(bind2,2);;
+            _autovar_2=bind_aget(bind2,1);;
+            _autovar_18=bind_aget(bind2,2);;
             ;
             goto accept5;
 alt5_3:
             ptr->pos=oldpos5;
-            it=var27/*autovar*/;
-            var1/*autovar*/=it;;
+            it=_autovar_25;
+            _autovar_2=it;;
             if (ame_curstr2(ptr)[0]=='0'&&ame_curstr2(ptr)[1]=='o')  ptr->pos+=2;
             else goto alt5_4;
             it=rb_obj_clone(s_0o_6f57);
-            var2/*autovar*/=it;;
-            bind_aset(bind2,1,var1/*autovar*/);
-            bind_aset(bind2,2,var2/*autovar*/);
+            _autovar_3=it;;
+            bind_aset(bind2,1,_autovar_2);
+            bind_aset(bind2,2,_autovar_3);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var1/*autovar*/=bind_aget(bind2,1);;
-            var2/*autovar*/=bind_aget(bind2,2);;
+            _autovar_2=bind_aget(bind2,1);;
+            _autovar_3=bind_aget(bind2,2);;
             it=rb_ary_new3(0);
-            var3/*autovar*/=it;;
+            _autovar_4=it;;
             switch((unsigned char)*ame_curstr2(ptr)) {
             case UC(0) ... '/':
                 ;
@@ -1159,14 +1159,14 @@ alt5_3:
                 ;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
-                var4/*autovar*/=it;;
+                _autovar_5=it;;
                 break;
             }
-            bind_aset(bind2,1,var3/*autovar*/);
-            bind_aset(bind2,2,var4/*autovar*/);
+            bind_aset(bind2,1,_autovar_4);
+            bind_aset(bind2,2,_autovar_5);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var3/*autovar*/=bind_aget(bind2,1);;
-            var4/*autovar*/=bind_aget(bind2,2);;
+            _autovar_4=bind_aget(bind2,1);;
+            _autovar_5=bind_aget(bind2,2);;
             int stop11=0;
             while(!stop11) {
                 switch((unsigned char)*ame_curstr2(ptr)) {
@@ -1180,38 +1180,38 @@ alt5_3:
                     ;
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
-                    var5/*autovar*/=it;;
-                    bind_aset(bind2,1,var3/*autovar*/);
-                    bind_aset(bind2,2,var5/*autovar*/);
+                    _autovar_6=it;;
+                    bind_aset(bind2,1,_autovar_4);
+                    bind_aset(bind2,2,_autovar_6);
                     it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-                    var3/*autovar*/=bind_aget(bind2,1);;
-                    var5/*autovar*/=bind_aget(bind2,2);;
+                    _autovar_4=bind_aget(bind2,1);;
+                    _autovar_6=bind_aget(bind2,2);;
                     break;
                 }
             }
-            it=var3/*autovar*/;
-            var6/*autovar*/=it;;
-            bind_aset(bind2,1,var1/*autovar*/);
-            bind_aset(bind2,2,var6/*autovar*/);
+            it=_autovar_4;
+            _autovar_7=it;;
+            bind_aset(bind2,1,_autovar_2);
+            bind_aset(bind2,2,_autovar_7);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var1/*autovar*/=bind_aget(bind2,1);;
-            var6/*autovar*/=bind_aget(bind2,2);;
+            _autovar_2=bind_aget(bind2,1);;
+            _autovar_7=bind_aget(bind2,2);;
             ;
             goto accept5;
 alt5_4:
             ptr->pos=oldpos5;
-            it=var27/*autovar*/;
-            var1/*autovar*/=it;;
+            it=_autovar_25;
+            _autovar_2=it;;
             it=rb_ary_new3(0);
-            var18/*autovar*/=it;;
+            _autovar_19=it;;
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
-            var19/*autovar*/=it;;
-            bind_aset(bind2,1,var18/*autovar*/);
-            bind_aset(bind2,2,var19/*autovar*/);
+            _autovar_20=it;;
+            bind_aset(bind2,1,_autovar_19);
+            bind_aset(bind2,2,_autovar_20);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var18/*autovar*/=bind_aget(bind2,1);;
-            var19/*autovar*/=bind_aget(bind2,2);;
+            _autovar_19=bind_aget(bind2,1);;
+            _autovar_20=bind_aget(bind2,2);;
             int stop12=0;
             while(!stop12) {
                 switch((unsigned char)*ame_curstr2(ptr)) {
@@ -1225,22 +1225,22 @@ alt5_4:
                     ;
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
-                    var20/*autovar*/=it;;
-                    bind_aset(bind2,1,var18/*autovar*/);
-                    bind_aset(bind2,2,var20/*autovar*/);
+                    _autovar_21=it;;
+                    bind_aset(bind2,1,_autovar_19);
+                    bind_aset(bind2,2,_autovar_21);
                     it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-                    var18/*autovar*/=bind_aget(bind2,1);;
-                    var20/*autovar*/=bind_aget(bind2,2);;
+                    _autovar_19=bind_aget(bind2,1);;
+                    _autovar_21=bind_aget(bind2,2);;
                     break;
                 }
             }
-            it=var18/*autovar*/;
-            var21/*autovar*/=it;;
-            bind_aset(bind2,1,var1/*autovar*/);
-            bind_aset(bind2,2,var21/*autovar*/);
+            it=_autovar_19;
+            _autovar_22=it;;
+            bind_aset(bind2,1,_autovar_2);
+            bind_aset(bind2,2,_autovar_22);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var1/*autovar*/=bind_aget(bind2,1);;
-            var21/*autovar*/=bind_aget(bind2,2);;
+            _autovar_2=bind_aget(bind2,1);;
+            _autovar_22=bind_aget(bind2,2);;
             ;
             goto accept5;
 alt5_5:
@@ -1252,38 +1252,38 @@ accept5:
         case '1' ... '9':
             ;
             it=rb_ary_new3(0);
-            var28/*autovar*/=it;;
+            _autovar_26=it;;
             int oldpos6=ptr->pos;
             int cut6=0;
 alt6_1:
             ;
-            it=var28/*autovar*/;
-            var1/*autovar*/=it;;
+            it=_autovar_26;
+            _autovar_2=it;;
             goto alt6_2;
             ;
             goto accept6;
 alt6_2:
             ptr->pos=oldpos6;
-            it=var28/*autovar*/;
-            var1/*autovar*/=it;;
+            it=_autovar_26;
+            _autovar_2=it;;
             goto alt6_3;
             ;
             goto accept6;
 alt6_3:
             ptr->pos=oldpos6;
-            it=var28/*autovar*/;
-            var1/*autovar*/=it;;
+            it=_autovar_26;
+            _autovar_2=it;;
             if (ame_curstr2(ptr)[0]=='0'&&ame_curstr2(ptr)[1]=='o')  ptr->pos+=2;
             else goto alt6_4;
             it=rb_obj_clone(s_0o_6f57);
-            var2/*autovar*/=it;;
-            bind_aset(bind2,1,var1/*autovar*/);
-            bind_aset(bind2,2,var2/*autovar*/);
+            _autovar_3=it;;
+            bind_aset(bind2,1,_autovar_2);
+            bind_aset(bind2,2,_autovar_3);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var1/*autovar*/=bind_aget(bind2,1);;
-            var2/*autovar*/=bind_aget(bind2,2);;
+            _autovar_2=bind_aget(bind2,1);;
+            _autovar_3=bind_aget(bind2,2);;
             it=rb_ary_new3(0);
-            var3/*autovar*/=it;;
+            _autovar_4=it;;
             switch((unsigned char)*ame_curstr2(ptr)) {
             case UC(0) ... '/':
                 ;
@@ -1295,14 +1295,14 @@ alt6_3:
                 ;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
-                var4/*autovar*/=it;;
+                _autovar_5=it;;
                 break;
             }
-            bind_aset(bind2,1,var3/*autovar*/);
-            bind_aset(bind2,2,var4/*autovar*/);
+            bind_aset(bind2,1,_autovar_4);
+            bind_aset(bind2,2,_autovar_5);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var3/*autovar*/=bind_aget(bind2,1);;
-            var4/*autovar*/=bind_aget(bind2,2);;
+            _autovar_4=bind_aget(bind2,1);;
+            _autovar_5=bind_aget(bind2,2);;
             int stop13=0;
             while(!stop13) {
                 switch((unsigned char)*ame_curstr2(ptr)) {
@@ -1316,38 +1316,38 @@ alt6_3:
                     ;
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
-                    var5/*autovar*/=it;;
-                    bind_aset(bind2,1,var3/*autovar*/);
-                    bind_aset(bind2,2,var5/*autovar*/);
+                    _autovar_6=it;;
+                    bind_aset(bind2,1,_autovar_4);
+                    bind_aset(bind2,2,_autovar_6);
                     it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-                    var3/*autovar*/=bind_aget(bind2,1);;
-                    var5/*autovar*/=bind_aget(bind2,2);;
+                    _autovar_4=bind_aget(bind2,1);;
+                    _autovar_6=bind_aget(bind2,2);;
                     break;
                 }
             }
-            it=var3/*autovar*/;
-            var6/*autovar*/=it;;
-            bind_aset(bind2,1,var1/*autovar*/);
-            bind_aset(bind2,2,var6/*autovar*/);
+            it=_autovar_4;
+            _autovar_7=it;;
+            bind_aset(bind2,1,_autovar_2);
+            bind_aset(bind2,2,_autovar_7);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var1/*autovar*/=bind_aget(bind2,1);;
-            var6/*autovar*/=bind_aget(bind2,2);;
+            _autovar_2=bind_aget(bind2,1);;
+            _autovar_7=bind_aget(bind2,2);;
             ;
             goto accept6;
 alt6_4:
             ptr->pos=oldpos6;
-            it=var28/*autovar*/;
-            var1/*autovar*/=it;;
+            it=_autovar_26;
+            _autovar_2=it;;
             it=rb_ary_new3(0);
-            var18/*autovar*/=it;;
+            _autovar_19=it;;
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
-            var19/*autovar*/=it;;
-            bind_aset(bind2,1,var18/*autovar*/);
-            bind_aset(bind2,2,var19/*autovar*/);
+            _autovar_20=it;;
+            bind_aset(bind2,1,_autovar_19);
+            bind_aset(bind2,2,_autovar_20);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var18/*autovar*/=bind_aget(bind2,1);;
-            var19/*autovar*/=bind_aget(bind2,2);;
+            _autovar_19=bind_aget(bind2,1);;
+            _autovar_20=bind_aget(bind2,2);;
             int stop14=0;
             while(!stop14) {
                 switch((unsigned char)*ame_curstr2(ptr)) {
@@ -1361,22 +1361,22 @@ alt6_4:
                     ;
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
-                    var20/*autovar*/=it;;
-                    bind_aset(bind2,1,var18/*autovar*/);
-                    bind_aset(bind2,2,var20/*autovar*/);
+                    _autovar_21=it;;
+                    bind_aset(bind2,1,_autovar_19);
+                    bind_aset(bind2,2,_autovar_21);
                     it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-                    var18/*autovar*/=bind_aget(bind2,1);;
-                    var20/*autovar*/=bind_aget(bind2,2);;
+                    _autovar_19=bind_aget(bind2,1);;
+                    _autovar_21=bind_aget(bind2,2);;
                     break;
                 }
             }
-            it=var18/*autovar*/;
-            var21/*autovar*/=it;;
-            bind_aset(bind2,1,var1/*autovar*/);
-            bind_aset(bind2,2,var21/*autovar*/);
+            it=_autovar_19;
+            _autovar_22=it;;
+            bind_aset(bind2,1,_autovar_2);
+            bind_aset(bind2,2,_autovar_22);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var1/*autovar*/=bind_aget(bind2,1);;
-            var21/*autovar*/=bind_aget(bind2,2);;
+            _autovar_2=bind_aget(bind2,1);;
+            _autovar_22=bind_aget(bind2,2);;
             ;
             goto accept6;
 alt6_5:
@@ -1386,16 +1386,16 @@ accept6:
             ;
             break;
         }
-        it=var1/*autovar*/;
-        var23/*n*/=it;;
+        it=_autovar_2;
+        _n=it;;
         it=rb_obj_clone(s__mi__336d);
-        var24/*m*/=it;;
-        bind_aset(bind2,1,var24/*m*/);
-        bind_aset(bind2,2,var23/*n*/);
+        _m=it;;
+        bind_aset(bind2,1,_m);
+        bind_aset(bind2,2,_n);
         it=rb_funcall(self,sy_Amethyst__lp_bind_lb_1_rb__afaa,1,bind2);
-        var24/*m*/=bind_aget(bind2,1);;
-        var23/*n*/=bind_aget(bind2,2);;
-        var25/*_result*/=it;;
+        _m=bind_aget(bind2,1);;
+        _n=bind_aget(bind2,2);;
+        __result=it;;
         break;
     }
     return it;
@@ -1404,14 +1404,14 @@ fail:
 }
 VALUE Amethyst_line(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0,var1,var2,var3;
+    VALUE it ,_autovar,_autovar_2,_it,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     it=rb_ary_new3(0);
-    var0/*autovar*/=it;;
+    _autovar=it;;
     int stop1=0;
     while(!stop1) {
         switch((unsigned char)*ame_curstr2(ptr)) {
@@ -1423,12 +1423,12 @@ VALUE Amethyst_line(VALUE self ) {
             ;
             it=AmethystCore_anything(self );
             FAILTEST(fail);
-            var1/*autovar*/=it;;
-            bind_aset(bind2,1,var0/*autovar*/);
-            bind_aset(bind2,2,var1/*autovar*/);
+            _autovar_2=it;;
+            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,2,_autovar_2);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var0/*autovar*/=bind_aget(bind2,1);;
-            var1/*autovar*/=bind_aget(bind2,2);;
+            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,2);;
             break;
         case UC(10) ... UC(10):
             ;
@@ -1440,7 +1440,7 @@ alt1_1:
             ;
             it=Amethyst_newline(self );
             FAILTEST(alt1_2);
-            var1/*autovar*/=it;;
+            _autovar_2=it;;
             cut1=1;
             stop1=1;
             ;
@@ -1450,7 +1450,7 @@ alt1_2:
             if (cut1) goto fail;
             it=AmethystCore_anything(self );
             FAILTEST(alt1_3);
-            var1/*autovar*/=it;;
+            _autovar_2=it;;
 
             ;
             goto accept1;
@@ -1459,20 +1459,20 @@ alt1_3:
             goto fail;
 accept1:
             ;
-            bind_aset(bind2,1,var0/*autovar*/);
-            bind_aset(bind2,2,var1/*autovar*/);
+            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,2,_autovar_2);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var0/*autovar*/=bind_aget(bind2,1);;
-            var1/*autovar*/=bind_aget(bind2,2);;
+            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,2);;
             break;
         }
     }
-    it=var0/*autovar*/;
-    var2/*it*/=it;;
-    bind_aset(bind2,1,var2/*it*/);
+    it=_autovar;
+    _it=it;;
+    bind_aset(bind2,1,_it);
     it=rb_funcall(self,sy_Amethyst_bind_lb_1_rb__ti__cfcb,1,bind2);
-    var2/*it*/=bind_aget(bind2,1);;
-    var3/*_result*/=it;;
+    _it=bind_aget(bind2,1);;
+    __result=it;;
 
     return it;
 fail:
@@ -1480,55 +1480,55 @@ fail:
 }
 VALUE Amethyst_listOf(VALUE self ,VALUE a0,VALUE a1) {
     VALUE vals[2];
-    VALUE it ,var0,var1,var2,var3,var4,var5,var6,var7,var8;
+    VALUE it ,_f,_rule,_autovar,_autovar_2,_delim,_s,_autovar_3,_autovar_4,__result;
     VALUE bind2=bind_new2(16);
-    var1/*rule*/=a0;;
-    var4/*delim*/=a1;;
+    _rule=a0;;
+    _delim=a1;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     it=rb_ary_new3(0);
-    var0/*f*/=it;;
+    _f=it;;
     int oldpos1=ptr->pos;
     int cut1=0;
 alt1_1:
     ;
-    it=var1/*rule*/;
+    it=_rule;
     arg0=it;
     it=rb_funcall(self,sy_apply,1,arg0);
     FAILTEST(alt1_2);
-    var2/*autovar*/=it;;
-    bind_aset(bind2,1,var0/*f*/);
-    bind_aset(bind2,2,var2/*autovar*/);
+    _autovar=it;;
+    bind_aset(bind2,1,_f);
+    bind_aset(bind2,2,_autovar);
     it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-    var0/*f*/=bind_aget(bind2,1);;
-    var2/*autovar*/=bind_aget(bind2,2);;
+    _f=bind_aget(bind2,1);;
+    _autovar=bind_aget(bind2,2);;
     it=rb_ary_new3(0);
-    var3/*autovar*/=it;;
+    _autovar_2=it;;
     int stop1=0;
     while(!stop1) {
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
         ;
-        it=var4/*delim*/;
-        var5/*s*/=it;;
-        it=var5/*s*/;
+        it=_delim;
+        _s=it;;
+        it=_s;
         arg0=it;
         it=AmethystCore__seq(self ,arg0);
         FAILTEST(alt2_2);
-        it=var5/*s*/;
-        it=var1/*rule*/;
+        it=_s;
+        it=_rule;
         arg0=it;
         it=rb_funcall(self,sy_apply,1,arg0);
         FAILTEST(alt2_2);
-        var6/*autovar*/=it;;
-        bind_aset(bind2,1,var3/*autovar*/);
-        bind_aset(bind2,2,var6/*autovar*/);
+        _autovar_3=it;;
+        bind_aset(bind2,1,_autovar_2);
+        bind_aset(bind2,2,_autovar_3);
         it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-        var3/*autovar*/=bind_aget(bind2,1);;
-        var6/*autovar*/=bind_aget(bind2,2);;
+        _autovar_2=bind_aget(bind2,1);;
+        _autovar_3=bind_aget(bind2,2);;
         ;
         goto accept2;
 alt2_2:
@@ -1542,17 +1542,17 @@ alt2_3:
 accept2:
         ;
     }
-    it=var3/*autovar*/;
-    var7/*autovar*/=it;;
-    bind_aset(bind2,1,var0/*f*/);
-    bind_aset(bind2,2,var7/*autovar*/);
+    it=_autovar_2;
+    _autovar_4=it;;
+    bind_aset(bind2,1,_f);
+    bind_aset(bind2,2,_autovar_4);
     it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-    var0/*f*/=bind_aget(bind2,1);;
-    var7/*autovar*/=bind_aget(bind2,2);;
-    bind_aset(bind2,1,var0/*f*/);
+    _f=bind_aget(bind2,1);;
+    _autovar_4=bind_aget(bind2,2);;
+    bind_aset(bind2,1,_f);
     it=rb_funcall(self,sy_Amethyst_bind_lb_1_rb_,1,bind2);
-    var0/*f*/=bind_aget(bind2,1);;
-    var8/*_result*/=it;;
+    _f=bind_aget(bind2,1);;
+    __result=it;;
 
     ;
     goto accept1;
@@ -1560,7 +1560,7 @@ alt1_2:
     ptr->pos=oldpos1;
     it=Qnil;
     it=rb_ary_new3(0);
-    var8/*_result*/=it;;
+    __result=it;;
 
     ;
     goto accept1;
@@ -1576,7 +1576,7 @@ fail:
 }
 VALUE Amethyst_lower(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0;
+    VALUE it ,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -1593,7 +1593,7 @@ VALUE Amethyst_lower(VALUE self ) {
         ;
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
-        var0/*_result*/=it;;
+        __result=it;;
         break;
     }
     return it;
@@ -1602,24 +1602,24 @@ fail:
 }
 VALUE Amethyst_member(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE it ,var0,var1,var2;
+    VALUE it ,_a,_x,__result;
     VALUE bind2=bind_new2(16);
-    var1/*x*/=a0;;
+    _x=a0;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     it=AmethystCore_anything(self );
     FAILTEST(fail);
-    var0/*a*/=it;;
-    bind_aset(bind2,1,var1/*x*/);
-    bind_aset(bind2,2,var0/*a*/);
+    _a=it;;
+    bind_aset(bind2,1,_x);
+    bind_aset(bind2,2,_a);
     it=rb_funcall(self,sy_Amethyst__lp_bind_lb_1_rb__abc3,1,bind2);
-    var1/*x*/=bind_aget(bind2,1);;
-    var0/*a*/=bind_aget(bind2,2);;
+    _x=bind_aget(bind2,1);;
+    _a=bind_aget(bind2,2);;
     FAILTEST(fail);
-    it=var0/*a*/;
-    var2/*_result*/=it;;
+    it=_a;
+    __result=it;;
 
     return it;
 fail:
@@ -1627,7 +1627,7 @@ fail:
 }
 VALUE Amethyst_newline(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0,var1;
+    VALUE it ,__result,__result_2;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -1647,9 +1647,9 @@ VALUE Amethyst_newline(VALUE self ) {
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
         it=rb_obj_clone(s__bs_n_1d78);
-        var0/*_result*/=it;;
-        it=var0/*_result*/;
-        var1/*_result*/=it;;
+        __result=it;;
+        it=__result;
+        __result_2=it;;
         break;
     case UC(13) ... UC(13):
         ;
@@ -1662,18 +1662,18 @@ alt1_1:
         if (ame_curstr2(ptr)[0]==UC(10))  ptr->pos+=1;
         else goto alt1_2;
         it=rb_obj_clone(s__bs_r_bs_n_bdb2);
-        var0/*_result*/=it;;
-        it=var0/*_result*/;
-        var1/*_result*/=it;;
+        __result=it;;
+        it=__result;
+        __result_2=it;;
 
         ;
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
         it=rb_obj_clone(s__bs_r_8ce5);
-        var0/*_result*/=it;;
-        it=var0/*_result*/;
-        var1/*_result*/=it;;
+        __result=it;;
+        it=__result;
+        __result_2=it;;
 
         ;
         goto accept1;
@@ -1690,7 +1690,7 @@ fail:
 }
 VALUE Amethyst_nil(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0,var1,var2,var3;
+    VALUE it ,_a,_x,__result,__result_2;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -1698,19 +1698,19 @@ VALUE Amethyst_nil(VALUE self ) {
     Data_Get_Struct(self,cstruct,ptr);
     it=AmethystCore_anything(self );
     FAILTEST(fail);
-    var0/*a*/=it;;
+    _a=it;;
     it=Qnil;
-    var1/*x*/=it;;
-    bind_aset(bind2,1,var1/*x*/);
-    bind_aset(bind2,2,var0/*a*/);
+    _x=it;;
+    bind_aset(bind2,1,_x);
+    bind_aset(bind2,2,_a);
     it=rb_funcall(self,sy_Amethyst__lp_bind_lb_1_rb__abc3,1,bind2);
-    var1/*x*/=bind_aget(bind2,1);;
-    var0/*a*/=bind_aget(bind2,2);;
+    _x=bind_aget(bind2,1);;
+    _a=bind_aget(bind2,2);;
     FAILTEST(fail);
-    it=var0/*a*/;
-    var2/*_result*/=it;;
-    it=var2/*_result*/;
-    var3/*_result*/=it;;
+    it=_a;
+    __result=it;;
+    it=__result;
+    __result_2=it;;
 
     return it;
 fail:
@@ -1718,7 +1718,7 @@ fail:
 }
 VALUE Amethyst_number(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0;
+    VALUE it ,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -1739,7 +1739,7 @@ VALUE Amethyst_number(VALUE self ) {
         ;
         it=Amethyst_int(self );
         FAILTEST(fail);
-        var0/*_result*/=it;;
+        __result=it;;
         break;
     }
     return it;
@@ -1748,20 +1748,20 @@ fail:
 }
 VALUE Amethyst_parse(VALUE self ,VALUE a0,VALUE a1) {
     VALUE vals[2];
-    VALUE it ,var0,var1,var2,var3,var4,var5;
+    VALUE it ,_obj,_autovar,_rule,_r,_autovar_2,__result;
     VALUE bind2=bind_new2(16);
-    var2/*rule*/=a0;;
-    var0/*obj*/=a1;;
+    _rule=a0;;
+    _obj=a1;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    it=var0/*obj*/;
-    var1/*autovar*/=it;;
+    it=_obj;
+    _autovar=it;;
     cstruct oldpass1=*ptr;
     ptr->pos=ptr->len=0;
     ptr->ary=NULL;
-    ptr->src=var1/*autovar*/;
+    ptr->src=_autovar;
     if(TYPE(ptr->src)==T_STRING) {
         ptr->str=RSTRING_PTR(ptr->src);
         ptr->len=RSTRING_LEN(ptr->src);
@@ -1773,15 +1773,15 @@ VALUE Amethyst_parse(VALUE self ,VALUE a0,VALUE a1) {
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
-    it=var2/*rule*/;
+    it=_rule;
     arg0=it;
     it=rb_funcall(self,sy_apply,1,arg0);
     FAILTEST(pass1);
-    var3/*r*/=it;;
-    bind_aset(bind2,1,var3/*r*/);
+    _r=it;;
+    bind_aset(bind2,1,_r);
     it=rb_funcall(self,sy_Amethyst_self_dot_pro_e13d,1,bind2);
-    var3/*r*/=bind_aget(bind2,1);;
-    var4/*autovar*/=it;;
+    _r=bind_aget(bind2,1);;
+    _autovar_2=it;;
     it=Qnil;
     if (ptr->pos<ptr->len) goto pass1;
     goto success1;
@@ -1790,8 +1790,8 @@ pass1:
     goto fail;
 success1:
     *ptr=oldpass1;
-    it=var4/*autovar*/;
-    var5/*_result*/=it;;
+    it=_autovar_2;
+    __result=it;;
 
     return it;
 fail:
@@ -1799,33 +1799,33 @@ fail:
 }
 VALUE Amethyst_range_ex(VALUE self ,VALUE a0,VALUE a1) {
     VALUE vals[2];
-    VALUE it ,var0,var1,var2,var3,var4,var5;
+    VALUE it ,_a,_b,_x,_a_2,__result,__result_2;
     VALUE bind2=bind_new2(16);
-    var0/*a*/=a0;;
-    var1/*b*/=a1;;
+    _a=a0;;
+    _b=a1;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    bind_aset(bind2,1,var0/*a*/);
-    bind_aset(bind2,2,var1/*b*/);
+    bind_aset(bind2,1,_a);
+    bind_aset(bind2,2,_b);
     it=rb_funcall(self,sy_Amethyst_bind_lb_1_rb__dot__c3ef,1,bind2);
-    var0/*a*/=bind_aget(bind2,1);;
-    var1/*b*/=bind_aget(bind2,2);;
-    var2/*x*/=it;;
+    _a=bind_aget(bind2,1);;
+    _b=bind_aget(bind2,2);;
+    _x=it;;
     it=AmethystCore_anything(self );
     FAILTEST(fail);
-    var3/*a*/=it;;
-    bind_aset(bind2,1,var2/*x*/);
-    bind_aset(bind2,2,var3/*a*/);
+    _a_2=it;;
+    bind_aset(bind2,1,_x);
+    bind_aset(bind2,2,_a_2);
     it=rb_funcall(self,sy_Amethyst__lp_bind_lb_1_rb__abc3,1,bind2);
-    var2/*x*/=bind_aget(bind2,1);;
-    var3/*a*/=bind_aget(bind2,2);;
+    _x=bind_aget(bind2,1);;
+    _a_2=bind_aget(bind2,2);;
     FAILTEST(fail);
-    it=var3/*a*/;
-    var4/*_result*/=it;;
-    it=var4/*_result*/;
-    var5/*_result*/=it;;
+    it=_a_2;
+    __result=it;;
+    it=__result;
+    __result_2=it;;
 
     return it;
 fail:
@@ -1833,33 +1833,33 @@ fail:
 }
 VALUE Amethyst_range_in(VALUE self ,VALUE a0,VALUE a1) {
     VALUE vals[2];
-    VALUE it ,var0,var1,var2,var3,var4,var5;
+    VALUE it ,_a,_b,_x,_a_2,__result,__result_2;
     VALUE bind2=bind_new2(16);
-    var0/*a*/=a0;;
-    var1/*b*/=a1;;
+    _a=a0;;
+    _b=a1;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    bind_aset(bind2,1,var0/*a*/);
-    bind_aset(bind2,2,var1/*b*/);
+    bind_aset(bind2,1,_a);
+    bind_aset(bind2,2,_b);
     it=rb_funcall(self,sy_Amethyst_bind_lb_1_rb__dot__03c2,1,bind2);
-    var0/*a*/=bind_aget(bind2,1);;
-    var1/*b*/=bind_aget(bind2,2);;
-    var2/*x*/=it;;
+    _a=bind_aget(bind2,1);;
+    _b=bind_aget(bind2,2);;
+    _x=it;;
     it=AmethystCore_anything(self );
     FAILTEST(fail);
-    var3/*a*/=it;;
-    bind_aset(bind2,1,var2/*x*/);
-    bind_aset(bind2,2,var3/*a*/);
+    _a_2=it;;
+    bind_aset(bind2,1,_x);
+    bind_aset(bind2,2,_a_2);
     it=rb_funcall(self,sy_Amethyst__lp_bind_lb_1_rb__abc3,1,bind2);
-    var2/*x*/=bind_aget(bind2,1);;
-    var3/*a*/=bind_aget(bind2,2);;
+    _x=bind_aget(bind2,1);;
+    _a_2=bind_aget(bind2,2);;
     FAILTEST(fail);
-    it=var3/*a*/;
-    var4/*_result*/=it;;
-    it=var4/*_result*/;
-    var5/*_result*/=it;;
+    it=_a_2;
+    __result=it;;
+    it=__result;
+    __result_2=it;;
 
     return it;
 fail:
@@ -1867,28 +1867,28 @@ fail:
 }
 VALUE Amethyst_regch(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE it ,var0,var1,var2,var3,var4;
+    VALUE it ,_regex,_x,_a,__result,__result_2;
     VALUE bind2=bind_new2(16);
-    var0/*regex*/=a0;;
+    _regex=a0;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    it=var0/*regex*/;
-    var1/*x*/=it;;
+    it=_regex;
+    _x=it;;
     it=AmethystCore_anything(self );
     FAILTEST(fail);
-    var2/*a*/=it;;
-    bind_aset(bind2,1,var1/*x*/);
-    bind_aset(bind2,2,var2/*a*/);
+    _a=it;;
+    bind_aset(bind2,1,_x);
+    bind_aset(bind2,2,_a);
     it=rb_funcall(self,sy_Amethyst__lp_bind_lb_1_rb__abc3,1,bind2);
-    var1/*x*/=bind_aget(bind2,1);;
-    var2/*a*/=bind_aget(bind2,2);;
+    _x=bind_aget(bind2,1);;
+    _a=bind_aget(bind2,2);;
     FAILTEST(fail);
-    it=var2/*a*/;
-    var3/*_result*/=it;;
-    it=var3/*_result*/;
-    var4/*_result*/=it;;
+    it=_a;
+    __result=it;;
+    it=__result;
+    __result_2=it;;
 
     return it;
 fail:
@@ -1896,9 +1896,9 @@ fail:
 }
 VALUE Amethyst_replace(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE it ,var0,var1,var2;
+    VALUE it ,_exp,_it,__result;
     VALUE bind2=bind_new2(16);
-    var0/*exp*/=a0;;
+    _exp=a0;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
@@ -1907,11 +1907,11 @@ VALUE Amethyst_replace(VALUE self ,VALUE a0) {
     int cut1=0;
 alt1_1:
     ;
-    it=var0/*exp*/;
+    it=_exp;
     arg0=it;
     it=rb_funcall(self,sy_apply,1,arg0);
     FAILTEST(alt1_2);
-    var1/*it*/=it;;
+    _it=it;;
 
     ;
     goto accept1;
@@ -1919,7 +1919,7 @@ alt1_2:
     ptr->pos=oldpos1;
     it=AmethystCore_anything(self );
     FAILTEST(alt1_3);
-    var1/*it*/=it;;
+    _it=it;;
 
     ;
     goto accept1;
@@ -1928,10 +1928,10 @@ alt1_3:
     goto fail;
 accept1:
     ;
-    bind_aset(bind2,1,var1/*it*/);
+    bind_aset(bind2,1,_it);
     it=rb_funcall(self,sy_Amethyst_bind_lb_1_rb__ti__cfcb,1,bind2);
-    var1/*it*/=bind_aget(bind2,1);;
-    var2/*_result*/=it;;
+    _it=bind_aget(bind2,1);;
+    __result=it;;
 
     return it;
 fail:
@@ -1939,19 +1939,19 @@ fail:
 }
 VALUE Amethyst_seq(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE it ,var0,var1;
+    VALUE it ,_s,__result;
     VALUE bind2=bind_new2(16);
-    var0/*s*/=a0;;
+    _s=a0;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    it=var0/*s*/;
+    it=_s;
     arg0=it;
     it=AmethystCore__seq(self ,arg0);
     FAILTEST(fail);
-    it=var0/*s*/;
-    var1/*_result*/=it;;
+    it=_s;
+    __result=it;;
 
     return it;
 fail:
@@ -1959,7 +1959,7 @@ fail:
 }
 VALUE Amethyst_space(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0;
+    VALUE it ,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -1984,7 +1984,7 @@ VALUE Amethyst_space(VALUE self ) {
         ;
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
-        var0/*_result*/=it;;
+        __result=it;;
         break;
     }
     return it;
@@ -1993,14 +1993,14 @@ fail:
 }
 VALUE Amethyst_spaces(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0,var1,var2,var3;
+    VALUE it ,_autovar,__result,_autovar_2,__result_2;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     it=rb_ary_new3(0);
-    var0/*autovar*/=it;;
+    _autovar=it;;
     int stop1=0;
     while(!stop1) {
         switch((unsigned char)*ame_curstr2(ptr)) {
@@ -2022,19 +2022,19 @@ VALUE Amethyst_spaces(VALUE self ) {
             ;
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
-            var1/*_result*/=it;;
-            it=var1/*_result*/;
-            var2/*autovar*/=it;;
-            bind_aset(bind2,1,var0/*autovar*/);
-            bind_aset(bind2,2,var2/*autovar*/);
+            __result=it;;
+            it=__result;
+            _autovar_2=it;;
+            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,2,_autovar_2);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var0/*autovar*/=bind_aget(bind2,1);;
-            var2/*autovar*/=bind_aget(bind2,2);;
+            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,2);;
             break;
         }
     }
-    it=var0/*autovar*/;
-    var3/*_result*/=it;;
+    it=_autovar;
+    __result_2=it;;
 
     return it;
 fail:
@@ -2042,24 +2042,24 @@ fail:
 }
 VALUE Amethyst_token(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE it ,var0,var1,var2,var3;
+    VALUE it ,_s,_s_2,__result,__result_2;
     VALUE bind2=bind_new2(16);
-    var0/*s*/=a0;;
+    _s=a0;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     it=Amethyst_spaces(self );
-    it=var0/*s*/;
-    var1/*s*/=it;;
-    it=var1/*s*/;
+    it=_s;
+    _s_2=it;;
+    it=_s_2;
     arg0=it;
     it=AmethystCore__seq(self ,arg0);
     FAILTEST(fail);
-    it=var1/*s*/;
-    var2/*_result*/=it;;
-    it=var2/*_result*/;
-    var3/*_result*/=it;;
+    it=_s_2;
+    __result=it;;
+    it=__result;
+    __result_2=it;;
 
     return it;
 fail:
@@ -2067,7 +2067,7 @@ fail:
 }
 VALUE Amethyst_true(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0,var1,var2,var3;
+    VALUE it ,_a,_x,__result,__result_2;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -2075,19 +2075,19 @@ VALUE Amethyst_true(VALUE self ) {
     Data_Get_Struct(self,cstruct,ptr);
     it=AmethystCore_anything(self );
     FAILTEST(fail);
-    var0/*a*/=it;;
+    _a=it;;
     it=Qtrue;
-    var1/*x*/=it;;
-    bind_aset(bind2,1,var1/*x*/);
-    bind_aset(bind2,2,var0/*a*/);
+    _x=it;;
+    bind_aset(bind2,1,_x);
+    bind_aset(bind2,2,_a);
     it=rb_funcall(self,sy_Amethyst__lp_bind_lb_1_rb__abc3,1,bind2);
-    var1/*x*/=bind_aget(bind2,1);;
-    var0/*a*/=bind_aget(bind2,2);;
+    _x=bind_aget(bind2,1);;
+    _a=bind_aget(bind2,2);;
     FAILTEST(fail);
-    it=var0/*a*/;
-    var2/*_result*/=it;;
-    it=var2/*_result*/;
-    var3/*_result*/=it;;
+    it=_a;
+    __result=it;;
+    it=__result;
+    __result_2=it;;
 
     return it;
 fail:
@@ -2095,15 +2095,15 @@ fail:
 }
 VALUE Amethyst_until(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE it ,var0,var1,var2,var3,var4,var5;
+    VALUE it ,_x,_e,_s,_autovar,_autovar_2,__result;
     VALUE bind2=bind_new2(16);
-    var1/*e*/=a0;;
+    _e=a0;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     it=rb_ary_new3(0);
-    var0/*x*/=it;;
+    _x=it;;
     int stop1=0;
     while(!stop1) {
         switch((unsigned char)*ame_curstr2(ptr)) {
@@ -2115,13 +2115,13 @@ VALUE Amethyst_until(VALUE self ,VALUE a0) {
             int cut1=0;
 alt1_1:
             ;
-            it=var1/*e*/;
-            var2/*s*/=it;;
-            it=var2/*s*/;
+            it=_e;
+            _s=it;;
+            it=_s;
             arg0=it;
             it=AmethystCore__seq(self ,arg0);
             FAILTEST(alt1_2);
-            it=var2/*s*/;
+            it=_s;
             cut1=1;
             stop1=1;
             ;
@@ -2132,12 +2132,12 @@ alt1_2:
             it=Qnil;
             it=AmethystCore_anything(self );
             FAILTEST(alt1_3);
-            var3/*autovar*/=it;;
-            bind_aset(bind2,1,var0/*x*/);
-            bind_aset(bind2,2,var3/*autovar*/);
+            _autovar=it;;
+            bind_aset(bind2,1,_x);
+            bind_aset(bind2,2,_autovar);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var0/*x*/=bind_aget(bind2,1);;
-            var3/*autovar*/=bind_aget(bind2,2);;
+            _x=bind_aget(bind2,1);;
+            _autovar=bind_aget(bind2,2);;
             ;
             goto accept1;
 alt1_3:
@@ -2152,13 +2152,13 @@ accept1:
             int cut2=0;
 alt2_1:
             ;
-            it=var1/*e*/;
-            var2/*s*/=it;;
-            it=var2/*s*/;
+            it=_e;
+            _s=it;;
+            it=_s;
             arg0=it;
             it=AmethystCore__seq(self ,arg0);
             FAILTEST(alt2_2);
-            it=var2/*s*/;
+            it=_s;
             cut2=1;
             stop1=1;
             ;
@@ -2169,20 +2169,20 @@ alt2_2:
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
             it=rb_obj_clone(s__bs__bs__7f81);
-            var4/*autovar*/=it;;
-            bind_aset(bind2,1,var0/*x*/);
-            bind_aset(bind2,2,var4/*autovar*/);
+            _autovar_2=it;;
+            bind_aset(bind2,1,_x);
+            bind_aset(bind2,2,_autovar_2);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var0/*x*/=bind_aget(bind2,1);;
-            var4/*autovar*/=bind_aget(bind2,2);;
+            _x=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,2);;
             it=AmethystCore_anything(self );
             FAILTEST(alt2_3);
-            var3/*autovar*/=it;;
-            bind_aset(bind2,1,var0/*x*/);
-            bind_aset(bind2,2,var3/*autovar*/);
+            _autovar=it;;
+            bind_aset(bind2,1,_x);
+            bind_aset(bind2,2,_autovar);
             it=rb_funcall(self,sy_Amethyst__append_lp__d113,1,bind2);
-            var0/*x*/=bind_aget(bind2,1);;
-            var3/*autovar*/=bind_aget(bind2,2);;
+            _x=bind_aget(bind2,1);;
+            _autovar=bind_aget(bind2,2);;
             ;
             goto accept2;
 alt2_3:
@@ -2193,10 +2193,10 @@ accept2:
             break;
         }
     }
-    bind_aset(bind2,1,var0/*x*/);
+    bind_aset(bind2,1,_x);
     it=rb_funcall(self,sy_Amethyst_bind_lb_1_rb__dot__e879,1,bind2);
-    var0/*x*/=bind_aget(bind2,1);;
-    var5/*_result*/=it;;
+    _x=bind_aget(bind2,1);;
+    __result=it;;
 
     return it;
 fail:
@@ -2204,7 +2204,7 @@ fail:
 }
 VALUE Amethyst_upper(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0;
+    VALUE it ,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -2221,7 +2221,7 @@ VALUE Amethyst_upper(VALUE self ) {
         ;
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
-        var0/*_result*/=it;;
+        __result=it;;
         break;
     }
     return it;
@@ -2230,7 +2230,7 @@ fail:
 }
 VALUE Amethyst_word(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0,var1;
+    VALUE it ,__result,__result_2;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -2253,16 +2253,16 @@ VALUE Amethyst_word(VALUE self ) {
         ;
         it=Amethyst_alpha(self );
         FAILTEST(fail);
-        var0/*_result*/=it;;
+        __result=it;;
         break;
     case '_' ... '_':
         ;
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
         it=rb_obj_clone(s___b14a);
-        var1/*_result*/=it;;
-        it=var1/*_result*/;
-        var0/*_result*/=it;;
+        __result_2=it;;
+        it=__result_2;
+        __result=it;;
         break;
     }
     return it;
@@ -2271,7 +2271,7 @@ fail:
 }
 VALUE Amethyst_xdigit(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,var0;
+    VALUE it ,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -2296,7 +2296,7 @@ VALUE Amethyst_xdigit(VALUE self ) {
         ;
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
-        var0/*_result*/=it;;
+        __result=it;;
         break;
     }
     return it;
@@ -2370,5 +2370,5 @@ void Init_amethyst_c() {
     rb_define_method(cls_Amethyst,"upper",Amethyst_upper,0);
     rb_define_method(cls_Amethyst,"word",Amethyst_word,0);
     rb_define_method(cls_Amethyst,"xdigit",Amethyst_xdigit,0);
-    rb_eval_string("testversionamethyst('623e1746f2ce1a31342b1b810c0a239c')");
+    rb_eval_string("testversionamethyst('511aa26332156f47a1beb14a33a24bd9')");
 }

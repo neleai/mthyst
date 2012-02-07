@@ -99,7 +99,7 @@ end
 
 
 def normalize_compiled_by
-'c0d7a8d0235ef08d2f6ec1ca34fc3927'
+'7df1ba792135a7d116214ab5bae3508c'
 end
 def normalize_source_hash
 '12c635bfcb9d24e7943569a24ab64c6b'
@@ -108,6 +108,6 @@ def testversionnormalize(r)
  raise "invalid version" if r!=normalize_version
 end
 def normalize_version
-'17dc04cbd20a7467785c2d42f167298a'
+'7d843d9cb760a70d53dff9202a9da04e'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/normalize_c"
