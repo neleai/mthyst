@@ -2,7 +2,7 @@
 #CurrentParser[:implicit_variables]=true
 CurrentParser[:memoize]=["argsOpt","name"]
 amethyst AmethystParser {
-  igrammar = ( (~'amethyst'   . )+:{it.join}
+  file     = ( (~'amethyst'   . )+:{it.join}
              | grammar
              | "`" expression '`'
              )*

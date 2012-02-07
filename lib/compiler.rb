@@ -138,7 +138,7 @@ class <<Compiler
 			return unless ["amethyst","traverser"].include? file2 #inheritance
 		end
 		p=AmethystParser.new
-		tree=p.parse(:igrammar,source)
+		tree=p.parse(:file,source)
 		CurrentParser.clear
 
 		#todo write this with less ugly code

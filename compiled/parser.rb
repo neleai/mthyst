@@ -201,15 +201,15 @@ class AmethystParser < Amethyst
 end
 
 def parser_compiled_by
-'7df1ba792135a7d116214ab5bae3508c'
+'ea626545245dd39955d2ff1457e3677d'
 end
 def parser_source_hash
-'9a39d547470a9214eca077fb91e8e81c'
+'a47a8125d2ccadbb61ba7a4458dc9bf0'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'4dfa3310ac4a41510428d74594b7da1f'
+'eaba310ab6fc9ba389df2b7ed8485a96'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/parser_c"

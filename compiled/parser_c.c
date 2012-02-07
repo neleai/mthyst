@@ -10,9 +10,9 @@ VALUE AmethystParser_cases(VALUE self );
 VALUE AmethystParser_className(VALUE self );
 VALUE AmethystParser_collect(VALUE self ,VALUE a0);
 VALUE AmethystParser_expression(VALUE self );
+VALUE AmethystParser_file(VALUE self );
 VALUE AmethystParser_grammar(VALUE self );
 VALUE AmethystParser_host_expr(VALUE self );
-VALUE AmethystParser_igrammar(VALUE self );
 VALUE AmethystParser_inline_host_expr(VALUE self );
 VALUE AmethystParser_interpolated(VALUE self ,VALUE a0);
 VALUE AmethystParser_key(VALUE self );
@@ -1551,313 +1551,7 @@ accept1:
 fail:
     return failobj;
 }
-VALUE AmethystParser_grammar(VALUE self ) {
-    VALUE vals[0];
-    VALUE it ,_name,_parent,_autovar,_autovar_2,_rules,__result;
-    VALUE bind2=bind_new2(16);
-    int x;
-    VALUE arg0,arg1,arg2,arg3;
-    cstruct *ptr;
-    Data_Get_Struct(self,cstruct,ptr);
-    it=Amethyst_spaces(self );
-    switch((unsigned char)*ame_curstr2(ptr)) {
-    case UC(0) ... '`':
-        ;
-    case 'b' ... UC(255):
-        ;
-        goto fail;
-        break;
-    case 'a' ... 'a':
-        ;
-        it=rb_str_new(ptr->str+ptr->pos,1);
-        ptr->pos++;
-        if (ame_curstr2(ptr)[0]=='m'&&ame_curstr2(ptr)[1]=='e'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='y'&&ame_curstr2(ptr)[5]=='s'&&ame_curstr2(ptr)[6]=='t')  ptr->pos+=7;
-        else goto fail;
-        break;
-    }
-    it=Amethyst_spaces(self );
-    switch((unsigned char)*ame_curstr2(ptr)) {
-    case UC(0) ... '@':
-        ;
-    case '[' ... '^':
-        ;
-    case '`' ... '`':
-        ;
-    case '{' ... UC(255):
-        ;
-        goto fail;
-        break;
-    case 'A' ... 'Z':
-        ;
-    case '_' ... '_':
-        ;
-    case 'a' ... 'z':
-        ;
-        it=AmethystParser_name(self );
-        FAILTEST(fail);
-        _name=it;;
-        break;
-    }
-    int oldpos1=ptr->pos;
-    int cut1=0;
-alt1_1:
-    ;
-    it=Amethyst_spaces(self );
-    switch((unsigned char)*ame_curstr2(ptr)) {
-    case UC(0) ... ';':
-        ;
-    case '=' ... UC(255):
-        ;
-        goto alt1_2;
-        break;
-    case '<' ... '<':
-        ;
-        it=rb_str_new(ptr->str+ptr->pos,1);
-        ptr->pos++;
-        break;
-    }
-    it=Amethyst_spaces(self );
-    switch((unsigned char)*ame_curstr2(ptr)) {
-    case UC(0) ... '@':
-        ;
-    case '[' ... '^':
-        ;
-    case '`' ... '`':
-        ;
-    case '{' ... UC(255):
-        ;
-        goto alt1_2;
-        break;
-    case 'A' ... 'Z':
-        ;
-    case '_' ... '_':
-        ;
-    case 'a' ... 'z':
-        ;
-        it=AmethystParser_name(self );
-        FAILTEST(alt1_2);
-        _parent=it;;
-        break;
-    }
-    ;
-    goto accept1;
-alt1_2:
-    ptr->pos=oldpos1;
-    it=rb_obj_clone(s_Amethyst_fe41);
-    _parent=it;;
-
-    ;
-    goto accept1;
-alt1_3:
-    ptr->pos=oldpos1;
-    goto fail;
-accept1:
-    ;
-    it=Amethyst_spaces(self );
-    switch((unsigned char)*ame_curstr2(ptr)) {
-    case UC(0) ... 'z':
-        ;
-    case '|' ... UC(255):
-        ;
-        goto fail;
-        break;
-    case '{' ... '{':
-        ;
-        it=rb_str_new(ptr->str+ptr->pos,1);
-        ptr->pos++;
-        break;
-    }
-    it=rb_ary_new3(0);
-    _autovar=it;;
-    int stop1=0;
-    while(!stop1) {
-        switch((unsigned char)*ame_curstr2(ptr)) {
-        case UC(0) ... UC(8):
-            ;
-        case UC(11) ... UC(11):
-            ;
-        case UC(14) ... UC(31):
-            ;
-        case '!' ... '@':
-            ;
-        case '[' ... '^':
-            ;
-        case '`' ... '`':
-            ;
-        case '{' ... UC(255):
-            ;
-            stop1=1;
-            break;
-        case UC(9) ... UC(10):
-            ;
-        case UC(12) ... UC(13):
-            ;
-        case ' ' ... ' ':
-            ;
-        case 'A' ... 'Z':
-            ;
-        case '_' ... '_':
-            ;
-        case 'a' ... 'z':
-            ;
-            int oldpos2=ptr->pos;
-            int cut2=0;
-alt2_1:
-            ;
-            it=AmethystParser_rule(self );
-            FAILTEST(alt2_2);
-            _autovar_2=it;;
-            bind_aset(bind2,1,_autovar);
-            bind_aset(bind2,2,_autovar_2);
-            it=rb_funcall(self,sy_AmethystParser__append_lp__d113,1,bind2);
-            _autovar=bind_aget(bind2,1);;
-            _autovar_2=bind_aget(bind2,2);;
-            ;
-            goto accept2;
-alt2_2:
-            ptr->pos=oldpos2;
-            stop1=1;
-            ;
-            goto accept2;
-alt2_3:
-            ptr->pos=oldpos2;
-            goto fail;
-accept2:
-            ;
-            break;
-        }
-    }
-    it=_autovar;
-    _rules=it;;
-    it=Amethyst_spaces(self );
-    switch((unsigned char)*ame_curstr2(ptr)) {
-    case UC(0) ... '|':
-        ;
-    case '~' ... UC(255):
-        ;
-        goto fail;
-        break;
-    case '}' ... '}':
-        ;
-        it=rb_str_new(ptr->str+ptr->pos,1);
-        ptr->pos++;
-        break;
-    }
-    bind_aset(bind2,1,_name);
-    bind_aset(bind2,2,_parent);
-    bind_aset(bind2,3,_rules);
-    it=rb_funcall(self,sy_AmethystParser_Grammar_dot__a510,1,bind2);
-    _name=bind_aget(bind2,1);;
-    _parent=bind_aget(bind2,2);;
-    _rules=bind_aget(bind2,3);;
-    __result=it;;
-
-    return it;
-fail:
-    return failobj;
-}
-VALUE AmethystParser_host_expr(VALUE self ) {
-    VALUE vals[0];
-    VALUE it ,__result,_s,_autovar,_autovar_2,_autovar_3,_autovar_4;
-    VALUE bind2=bind_new2(16);
-    int x;
-    VALUE arg0,arg1,arg2,arg3;
-    cstruct *ptr;
-    Data_Get_Struct(self,cstruct,ptr);
-    switch((unsigned char)*ame_curstr2(ptr)) {
-    case UC(0) ... ',':
-        ;
-    case '.' ... 'z':
-        ;
-    case '|' ... UC(255):
-        ;
-        goto fail;
-        break;
-    case '{' ... '{':
-        ;
-        it=AmethystParser_inline_host_expr(self );
-        FAILTEST(fail);
-        __result=it;;
-        break;
-    case '-' ... '-':
-        ;
-        it=rb_str_new(ptr->str+ptr->pos,1);
-        ptr->pos++;
-        if (ame_curstr2(ptr)[0]=='>')  ptr->pos+=1;
-        else goto fail;
-        it=Amethyst_line(self );
-        FAILTEST(fail);
-        _s=it;;
-        bind_aset(bind2,1,_s);
-        it=rb_funcall(self,sy_AmethystParser__dq__le__dq__pl_bind_567e,1,bind2);
-        _s=bind_aget(bind2,1);;
-        _autovar=it;;
-        cstruct oldpass1=*ptr;
-        ptr->pos=ptr->len=0;
-        ptr->ary=NULL;
-        ptr->src=failobj;
-        ptr->ary=alloca(sizeof(VALUE));
-        ptr->ary[0]=_autovar;
-        ptr->len=1;
-        it=AmethystCore_anything(self );
-        FAILTEST(pass1);
-        _autovar_2=it;;
-        cstruct oldpass2=*ptr;
-        ptr->pos=ptr->len=0;
-        ptr->ary=NULL;
-        ptr->src=_autovar_2;
-        if(TYPE(ptr->src)==T_STRING) {
-            ptr->str=RSTRING_PTR(ptr->src);
-            ptr->len=RSTRING_LEN(ptr->src);
-        }
-        else {
-            VALUE ary;
-            if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
-            ptr->ary=RARRAY_PTR(ary);
-            ptr->len=RARRAY_LEN(ary);
-        }
-        switch((unsigned char)*ame_curstr2(ptr)) {
-        case UC(0) ... 'z':
-            ;
-        case '|' ... UC(255):
-            ;
-            goto pass2;
-            break;
-        case '{' ... '{':
-            ;
-            it=AmethystParser_inline_host_expr(self );
-            FAILTEST(pass2);
-            _autovar_3=it;;
-            it=Qnil;
-            if (ptr->pos<ptr->len) goto pass2;
-            break;
-        }
-        goto success2;
-pass2:
-        *ptr=oldpass2;
-        goto pass1;
-success2:
-        *ptr=oldpass2;
-        it=_autovar_3;
-        _autovar_4=it;;
-        it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
-        goto success1;
-pass1:
-        *ptr=oldpass1;
-        goto fail;
-success1:
-        *ptr=oldpass1;
-        it=_autovar_4;
-        __result=it;;
-        break;
-    }
-    return it;
-fail:
-    return failobj;
-}
-VALUE AmethystParser_igrammar(VALUE self ) {
+VALUE AmethystParser_file(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_it,_autovar_5,__result,__result_2;
     VALUE bind2=bind_new2(16);
@@ -2450,6 +2144,312 @@ accept11:
     it=_autovar;
     __result_2=it;;
 
+    return it;
+fail:
+    return failobj;
+}
+VALUE AmethystParser_grammar(VALUE self ) {
+    VALUE vals[0];
+    VALUE it ,_name,_parent,_autovar,_autovar_2,_rules,__result;
+    VALUE bind2=bind_new2(16);
+    int x;
+    VALUE arg0,arg1,arg2,arg3;
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    it=Amethyst_spaces(self );
+    switch((unsigned char)*ame_curstr2(ptr)) {
+    case UC(0) ... '`':
+        ;
+    case 'b' ... UC(255):
+        ;
+        goto fail;
+        break;
+    case 'a' ... 'a':
+        ;
+        it=rb_str_new(ptr->str+ptr->pos,1);
+        ptr->pos++;
+        if (ame_curstr2(ptr)[0]=='m'&&ame_curstr2(ptr)[1]=='e'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='y'&&ame_curstr2(ptr)[5]=='s'&&ame_curstr2(ptr)[6]=='t')  ptr->pos+=7;
+        else goto fail;
+        break;
+    }
+    it=Amethyst_spaces(self );
+    switch((unsigned char)*ame_curstr2(ptr)) {
+    case UC(0) ... '@':
+        ;
+    case '[' ... '^':
+        ;
+    case '`' ... '`':
+        ;
+    case '{' ... UC(255):
+        ;
+        goto fail;
+        break;
+    case 'A' ... 'Z':
+        ;
+    case '_' ... '_':
+        ;
+    case 'a' ... 'z':
+        ;
+        it=AmethystParser_name(self );
+        FAILTEST(fail);
+        _name=it;;
+        break;
+    }
+    int oldpos1=ptr->pos;
+    int cut1=0;
+alt1_1:
+    ;
+    it=Amethyst_spaces(self );
+    switch((unsigned char)*ame_curstr2(ptr)) {
+    case UC(0) ... ';':
+        ;
+    case '=' ... UC(255):
+        ;
+        goto alt1_2;
+        break;
+    case '<' ... '<':
+        ;
+        it=rb_str_new(ptr->str+ptr->pos,1);
+        ptr->pos++;
+        break;
+    }
+    it=Amethyst_spaces(self );
+    switch((unsigned char)*ame_curstr2(ptr)) {
+    case UC(0) ... '@':
+        ;
+    case '[' ... '^':
+        ;
+    case '`' ... '`':
+        ;
+    case '{' ... UC(255):
+        ;
+        goto alt1_2;
+        break;
+    case 'A' ... 'Z':
+        ;
+    case '_' ... '_':
+        ;
+    case 'a' ... 'z':
+        ;
+        it=AmethystParser_name(self );
+        FAILTEST(alt1_2);
+        _parent=it;;
+        break;
+    }
+    ;
+    goto accept1;
+alt1_2:
+    ptr->pos=oldpos1;
+    it=rb_obj_clone(s_Amethyst_fe41);
+    _parent=it;;
+
+    ;
+    goto accept1;
+alt1_3:
+    ptr->pos=oldpos1;
+    goto fail;
+accept1:
+    ;
+    it=Amethyst_spaces(self );
+    switch((unsigned char)*ame_curstr2(ptr)) {
+    case UC(0) ... 'z':
+        ;
+    case '|' ... UC(255):
+        ;
+        goto fail;
+        break;
+    case '{' ... '{':
+        ;
+        it=rb_str_new(ptr->str+ptr->pos,1);
+        ptr->pos++;
+        break;
+    }
+    it=rb_ary_new3(0);
+    _autovar=it;;
+    int stop1=0;
+    while(!stop1) {
+        switch((unsigned char)*ame_curstr2(ptr)) {
+        case UC(0) ... UC(8):
+            ;
+        case UC(11) ... UC(11):
+            ;
+        case UC(14) ... UC(31):
+            ;
+        case '!' ... '@':
+            ;
+        case '[' ... '^':
+            ;
+        case '`' ... '`':
+            ;
+        case '{' ... UC(255):
+            ;
+            stop1=1;
+            break;
+        case UC(9) ... UC(10):
+            ;
+        case UC(12) ... UC(13):
+            ;
+        case ' ' ... ' ':
+            ;
+        case 'A' ... 'Z':
+            ;
+        case '_' ... '_':
+            ;
+        case 'a' ... 'z':
+            ;
+            int oldpos2=ptr->pos;
+            int cut2=0;
+alt2_1:
+            ;
+            it=AmethystParser_rule(self );
+            FAILTEST(alt2_2);
+            _autovar_2=it;;
+            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,2,_autovar_2);
+            it=rb_funcall(self,sy_AmethystParser__append_lp__d113,1,bind2);
+            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,2);;
+            ;
+            goto accept2;
+alt2_2:
+            ptr->pos=oldpos2;
+            stop1=1;
+            ;
+            goto accept2;
+alt2_3:
+            ptr->pos=oldpos2;
+            goto fail;
+accept2:
+            ;
+            break;
+        }
+    }
+    it=_autovar;
+    _rules=it;;
+    it=Amethyst_spaces(self );
+    switch((unsigned char)*ame_curstr2(ptr)) {
+    case UC(0) ... '|':
+        ;
+    case '~' ... UC(255):
+        ;
+        goto fail;
+        break;
+    case '}' ... '}':
+        ;
+        it=rb_str_new(ptr->str+ptr->pos,1);
+        ptr->pos++;
+        break;
+    }
+    bind_aset(bind2,1,_name);
+    bind_aset(bind2,2,_parent);
+    bind_aset(bind2,3,_rules);
+    it=rb_funcall(self,sy_AmethystParser_Grammar_dot__a510,1,bind2);
+    _name=bind_aget(bind2,1);;
+    _parent=bind_aget(bind2,2);;
+    _rules=bind_aget(bind2,3);;
+    __result=it;;
+
+    return it;
+fail:
+    return failobj;
+}
+VALUE AmethystParser_host_expr(VALUE self ) {
+    VALUE vals[0];
+    VALUE it ,__result,_s,_autovar,_autovar_2,_autovar_3,_autovar_4;
+    VALUE bind2=bind_new2(16);
+    int x;
+    VALUE arg0,arg1,arg2,arg3;
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    switch((unsigned char)*ame_curstr2(ptr)) {
+    case UC(0) ... ',':
+        ;
+    case '.' ... 'z':
+        ;
+    case '|' ... UC(255):
+        ;
+        goto fail;
+        break;
+    case '{' ... '{':
+        ;
+        it=AmethystParser_inline_host_expr(self );
+        FAILTEST(fail);
+        __result=it;;
+        break;
+    case '-' ... '-':
+        ;
+        it=rb_str_new(ptr->str+ptr->pos,1);
+        ptr->pos++;
+        if (ame_curstr2(ptr)[0]=='>')  ptr->pos+=1;
+        else goto fail;
+        it=Amethyst_line(self );
+        FAILTEST(fail);
+        _s=it;;
+        bind_aset(bind2,1,_s);
+        it=rb_funcall(self,sy_AmethystParser__dq__le__dq__pl_bind_567e,1,bind2);
+        _s=bind_aget(bind2,1);;
+        _autovar=it;;
+        cstruct oldpass1=*ptr;
+        ptr->pos=ptr->len=0;
+        ptr->ary=NULL;
+        ptr->src=failobj;
+        ptr->ary=alloca(sizeof(VALUE));
+        ptr->ary[0]=_autovar;
+        ptr->len=1;
+        it=AmethystCore_anything(self );
+        FAILTEST(pass1);
+        _autovar_2=it;;
+        cstruct oldpass2=*ptr;
+        ptr->pos=ptr->len=0;
+        ptr->ary=NULL;
+        ptr->src=_autovar_2;
+        if(TYPE(ptr->src)==T_STRING) {
+            ptr->str=RSTRING_PTR(ptr->src);
+            ptr->len=RSTRING_LEN(ptr->src);
+        }
+        else {
+            VALUE ary;
+            if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            ptr->ary=RARRAY_PTR(ary);
+            ptr->len=RARRAY_LEN(ary);
+        }
+        switch((unsigned char)*ame_curstr2(ptr)) {
+        case UC(0) ... 'z':
+            ;
+        case '|' ... UC(255):
+            ;
+            goto pass2;
+            break;
+        case '{' ... '{':
+            ;
+            it=AmethystParser_inline_host_expr(self );
+            FAILTEST(pass2);
+            _autovar_3=it;;
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass2;
+            break;
+        }
+        goto success2;
+pass2:
+        *ptr=oldpass2;
+        goto pass1;
+success2:
+        *ptr=oldpass2;
+        it=_autovar_3;
+        _autovar_4=it;;
+        it=Qnil;
+        if (ptr->pos<ptr->len) goto pass1;
+        goto success1;
+pass1:
+        *ptr=oldpass1;
+        goto fail;
+success1:
+        *ptr=oldpass1;
+        it=_autovar_4;
+        __result=it;;
+        break;
+    }
     return it;
 fail:
     return failobj;
@@ -7589,9 +7589,9 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"className",AmethystParser_className,0);
     rb_define_method(cls_AmethystParser,"collect",AmethystParser_collect,1);
     rb_define_method(cls_AmethystParser,"expression",AmethystParser_expression,0);
+    rb_define_method(cls_AmethystParser,"file",AmethystParser_file,0);
     rb_define_method(cls_AmethystParser,"grammar",AmethystParser_grammar,0);
     rb_define_method(cls_AmethystParser,"host_expr",AmethystParser_host_expr,0);
-    rb_define_method(cls_AmethystParser,"igrammar",AmethystParser_igrammar,0);
     rb_define_method(cls_AmethystParser,"inline_host_expr",AmethystParser_inline_host_expr,0);
     rb_define_method(cls_AmethystParser,"interpolated",AmethystParser_interpolated,1);
     rb_define_method(cls_AmethystParser,"key",AmethystParser_key,0);
@@ -7606,5 +7606,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('4dfa3310ac4a41510428d74594b7da1f')");
+    rb_eval_string("testversionparser('eaba310ab6fc9ba389df2b7ed8485a96')");
 }
