@@ -179,6 +179,7 @@ require File.expand_path(File.dirname(__FILE__))+\"/\#{RUBY_VERSION}/#{file2}_c\
 			if Amethyst::Settings.compile_for.include?("1_8_7")
 		    `cd compiled;gcc -I. -I/usr/lib/ruby/1.8/x86_64-linux -I/usr/lib/ruby/1.8/x86_64-linux -I.   -fPIC -fno-strict-aliasing -g -g #{Amethyst::Settings.cflags}  -fPIC   -c #{file2}_c.c`
 		    `cd compiled;gcc -shared -o 1.8.7/#{file2}_c.so #{file2}_c.o -L. -L/usr/lib -L.  -rdynamic -Wl,-export-dynamic -lruby1.8  -lpthread -lrt -ldl -lcrypt -lm   -lc`
+				`rm compiled/#{file2}_c.o`
 			end
   	}#}
 		end

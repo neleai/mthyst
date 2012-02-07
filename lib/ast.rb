@@ -21,6 +21,7 @@ makeclasses(AmethystAST,
     :Nested,
 		:Switch,
 		:Seq,
+		:Relabel,
 		[:Or,:has_cut],
 		:Seq_AST,:Or_AST
 )
@@ -43,10 +44,54 @@ def equalize_by(clas,args)
 					end
     end")
 end
+norm=File.new("lib/c/normalize.c","w")
 [Act,Apply,Args,Bind,Bnding,CAct,Comment,Cut,Lambda,Global,Key,Local,Lookahead,Many,Or,Pass,Result,Seq,Stop,Strin,Switch_Char,Switch_Clas,Switch_Or].each{|e| 
 by="[#{e.instance_variable_get(:@attrs)*","}]"
 by="ary" if by=="[ary]"
 equalize_by(e,by)
+norm.puts "int hits_#{e}=0;int miss_#{e}=0;
+VALUE normalize_#{e}(VALUE self,VALUE obj){int i;
+	int hash=0;
+	VALUE ary=rb_iv_get(obj,\"@ary\");
+	if (ary!=Qnil){
+		int len=RARRAY_LEN(ary);
+	  VALUE *els=RARRAY_PTR(ary);
+		for (i=0;i<len;i++) hash=((int) els[i])+11*hash;
+	}
+	#{(e.instance_variable_get(:@attrs)-[:ary]).map{|e| "hash=11&hash+rb_iv_get(obj,\"@#{e.to_s}\");"}*""}
+	hash=hash&((1<<20)-1);
+
+	VALUE obj2=cache_#{e}->ary[hash];
+	if((int)obj2){
+		#{(e.instance_variable_get(:@attrs)-[:ary]).map{|e| "if (rb_iv_get(obj,\"@#{e.to_s}\")!=rb_iv_get(obj,\"@#{e.to_s}\")) goto next;"}*""}
+		VALUE ary2=rb_iv_get(obj,\"@ary\");
+		int len2=RARRAY_LEN(ary2);
+	  VALUE *els2=RARRAY_PTR(ary2);
+		if (len!=len2) goto next;
+		for(i=0;i<len;i++) if(els[i]!=els2[i]) goto next;
+		hits_#{e}++;
+		return cache_#{e}->ret[hash];
+		next:;
+	}
+  VALUE obj3=rb_funcall(bind,rb_intern(\"normalize2\"),0);
+	miss_#{e}++;
+	if (rb_obj_is_kind_of(obj3, rb_obj_class(obj))){
+		int hash3=0;
+		VALUE ary3=rb_iv_get(obj,\"@ary\");
+		if (ary3!=Qnil){
+		  int len3=RARRAY_LEN(ary3);
+		  VALUE *els3=RARRAY_PTR(ary3);
+		  for (i=0;i<len3;i++) hash3=((int) els3[i])+11*hash3;
+		}
+		#{(e.instance_variable_get(:@attrs)-[:ary]).map{|e| "hash3=11&hash3+rb_iv_get(obj,\"@#{e.to_s}\");"}*""}
+		hash3=hash3&((1<<20)-1);
+		cache_#{e}->ary[hash3]=obj3;
+  	cache_#{e}->ret[hash3]=obj3;
+	}
+	cache_#{e}->ary[hash]=obj;
+	cache_#{e}->ret[hash]=obj3;
+	return obj3;
+}"
 }
 class Bind
 	def normalize

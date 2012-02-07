@@ -115,3 +115,11 @@ class Integer#compatibility with 1.8
 		[self]
 	end
 end
+class String
+#	def chr
+#		self
+#	end
+#	def ord
+#		self[0]
+#	end
+end
