@@ -51,14 +51,25 @@ norm.puts "typedef struct {
   VALUE * ret;
 } normalize_cache;"
 norm.puts "
-	VALUE normalize_el(VALUE el){ int len;VALUE *els;int i;
+	normalize_cache *cache_Array;
+	VALUE normalize_el(VALUE el){ VALUE el2;int len,len2;VALUE *els,*els2;int i;
 		if(TYPE(el)==T_ARRAY){
+			if (rb_iv_get(el,\"@hash\")!=Qnil) return el;
 			int hash=0;
 			len=RARRAY_LEN(el);
 	    els=RARRAY_PTR(el);
-  	  for (i=0;i<len;i++) hash=((int) els[i])+11*hash;
+  	  for (i=0;i<len;i++) hash=((int) els[i]>>6)+11*hash;
 			hash=hash&((1<<20)-1);
+			if (el2=cache_Array->ret[hash]) {
+				len2=RARRAY_LEN(el2);
+	    	els2=RARRAY_PTR(el2);
+				if (len!=len2) goto next;
+				for(i=0;i<len;i++) if (els[i]!=els2[i]) goto next;
+				return el2;
+				next:;
+			}
 			rb_iv_set(el,\"@hash\",INT2FIX(hash));
+			cache_Array->ret[hash]=el;
 			return el;
 		} else {
 			return el;

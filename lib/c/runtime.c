@@ -128,6 +128,7 @@ extern bind_cache *cache_Seq;VALUE cache_Seq_gc;
 VALUE normalize_Seq(VALUE,VALUE);
 extern bind_cache *cache_Act;VALUE cache_Act_gc;
 VALUE normalize_Act(VALUE,VALUE);
+extern bind_cache *cache_Array;VALUE cache_Array_gc;
 
 
 ID s_ary;
@@ -142,6 +143,9 @@ void Init_Ame(VALUE self){
 	cache_Or=bind_cache_init(); 
   cache_Or_gc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,cache_Or);
 	rb_global_variable(&cache_Or_gc);
+	cache_Array=bind_cache_init(); 
+  cache_Array_gc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,cache_Array);
+	rb_global_variable(&cache_Array_gc);
 
 
 	s_ary_get=rb_intern("[]");
