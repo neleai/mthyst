@@ -135,6 +135,10 @@ def AmethystParser__at_appends_975f(bind)
 @appends<< local(bind[1]) if bind[2]; Bind[local(bind[1]),bind[3],bind[2]=='[]']
 
 end
+def AmethystParser__at_appends_9f26(bind)
+@appends<< local(bind[1]); Append[local(bind[1]),bind[2]]
+
+end
 def AmethystParser__at_ary_eq__lb__rb_(bind)
 @ary=[];@tmp=[]
 end
@@ -201,15 +205,15 @@ class AmethystParser < Amethyst
 end
 
 def parser_compiled_by
-'4d0517a157863d23f6ec7a167d12807a'
+'7fcb0e4633ef3c6eb25cc5fb6618a273'
 end
 def parser_source_hash
-'a47a8125d2ccadbb61ba7a4458dc9bf0'
+'06acf00e02bfacb0afcc12c6d04062f6'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'5ce7fe9dc08bbe4aa9deba11bedb9f93'
+'f770d74d7af465b3cb91348d31f03ce5'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/parser_c"

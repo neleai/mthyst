@@ -129,6 +129,29 @@ VALUE normalize_Seq(VALUE,VALUE);
 extern bind_cache *cache_Act;VALUE cache_Act_gc;
 VALUE normalize_Act(VALUE,VALUE);
 
+VALUE *norm_string,*hash_string;
+VALUE *norm_array, *hash_array;
+
+VALUE normalize_el(VALUE el){ VALUE el2,el3;int i;
+	if (TYPE(el)==T_ARRAY){
+		return el;
+		if (norm_array[el&((1<<20)-1)]==el) return el;
+	} else if (TYPE(el)==T_STRING) {
+		if (norm_string[el&((1<<20)-1)]==el) return el;
+		char *ptr=RSTRING_PTR(el);
+		int   len=RSTRING_LEN(el);
+		int hash=0;
+		for(i=0;i<len;i++) hash=ptr[i]+11*hash;//TODO by long chunks
+		if (el2=hash_string[hash&((1<<20)-1)]){
+			char *ptr2=RSTRING_PTR(el2);
+			int len2=RSTRING_LEN(el2);
+			if (len==len2 && !strncmp(ptr,ptr2,len)) return el2;
+			norm_string[  el&((1<<20)-1)]=el;
+			hash_string[hash&((1<<20)-1)]=el;
+		}
+	}
+	return el;
+}
 
 ID s_ary;
 void Init_Ame(VALUE self){

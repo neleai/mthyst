@@ -28,6 +28,7 @@ amethyst AmethystParser {
                             | '['      expression:e "]" -> Enter[from,e]
                             | <+*>:one -> Many[from,one=="+"]
                             | '?'      -> Or_AST[from,Apply["empty"]]
+                            | ':' '[' (key | name):name ']' ->  @@appends<< local(name); Append[local(name),from]
                             | ':' (  (key | name):name ('[]'?):append -> @@appends<< local(name) if append; Bind[local(name),from,append=='[]']
                                   | inline_host_expr:e                      -> Seq[ Bind[local("it"),from] , Act[e] ]
                                   )
@@ -89,14 +90,14 @@ amethyst AmethystParser {
            | <a-z0-9_>:e '<<' -> [e,'<<']
            | '\'' until("'" ):s  -> Strin[["'"+s+"'"]]
            | ('...' | '..')
-           | ( ":@":n[] | <$.:>:n[] )? ~_ name:n[] -> n.join
+           | ( ":@":[n] | <$.:>:[n] )? ~_ name:[n] -> n.join
            | key
            | <^`'"(){}\[\]>
 
   
   interpolated(e) =  ( seq(e) break 
-             | args('#{','}'):x[]
-             | ('\\':x[])? .:x[]
+             | args('#{','}'):[x]
+             | ('\\':[x])? .:[x]
              )* -> x
 
   

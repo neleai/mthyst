@@ -84,6 +84,7 @@ static VALUE sy_AmethystParser_Strin_lb__lb__dq__b20e;
 static VALUE sy_AmethystParser_Strin_lb__lb__qu__88c8;
 static VALUE sy_AmethystParser__append_lp__d113;
 static VALUE sy_AmethystParser__at_appends_975f;
+static VALUE sy_AmethystParser__at_appends_9f26;
 static VALUE sy_AmethystParser__at_ary_eq__lb__rb_;
 static VALUE sy_AmethystParser__at_ary_ff69;
 static VALUE sy_AmethystParser__at_ary_lt__lt_Ar_59e3;
@@ -3170,7 +3171,7 @@ alt1_1:
                 switch((unsigned char)*ame_curstr2(ptr)) {
                 case UC(0) ... '?':
                     ;
-                case '[' ... '^':
+                case UC(92) ... '^':
                     ;
                 case '`' ... '`':
                     ;
@@ -3298,6 +3299,58 @@ accept3:
                     _name=bind_aget(bind2,1);;
                     _append=bind_aget(bind2,2);;
                     _from=bind_aget(bind2,3);;
+                    _from=it;;
+                    break;
+                case '[' ... '[':
+                    ;
+                    it=rb_str_new(ptr->str+ptr->pos,1);
+                    ptr->pos++;
+                    switch((unsigned char)*ame_curstr2(ptr)) {
+                    case UC(0) ... '?':
+                        ;
+                    case '[' ... '^':
+                        ;
+                    case '`' ... '`':
+                        ;
+                    case '{' ... UC(255):
+                        ;
+                        goto alt1_2;
+                        break;
+                    case '@' ... '@':
+                        ;
+                        it=AmethystParser_key(self );
+                        FAILTEST(alt1_2);
+                        _name=it;;
+                        break;
+                    case 'A' ... 'Z':
+                        ;
+                    case '_' ... '_':
+                        ;
+                    case 'a' ... 'z':
+                        ;
+                        it=AmethystParser_name(self );
+                        FAILTEST(alt1_2);
+                        _name=it;;
+                        break;
+                    }
+                    switch((unsigned char)*ame_curstr2(ptr)) {
+                    case UC(0) ... UC(92):
+                        ;
+                    case '^' ... UC(255):
+                        ;
+                        goto alt1_2;
+                        break;
+                    case ']' ... ']':
+                        ;
+                        it=rb_str_new(ptr->str+ptr->pos,1);
+                        ptr->pos++;
+                        break;
+                    }
+                    bind_aset(bind2,1,_name);
+                    bind_aset(bind2,2,_from);
+                    it=rb_funcall(self,sy_AmethystParser__at_appends_9f26,1,bind2);
+                    _name=bind_aget(bind2,1);;
+                    _from=bind_aget(bind2,2);;
                     _from=it;;
                     break;
                 }
@@ -3433,7 +3486,7 @@ accept5:
                 switch((unsigned char)*ame_curstr2(ptr)) {
                 case UC(0) ... '?':
                     ;
-                case '[' ... '^':
+                case UC(92) ... '^':
                     ;
                 case '`' ... '`':
                     ;
@@ -3561,6 +3614,58 @@ accept7:
                     _name=bind_aget(bind2,1);;
                     _append=bind_aget(bind2,2);;
                     _from=bind_aget(bind2,3);;
+                    _from=it;;
+                    break;
+                case '[' ... '[':
+                    ;
+                    it=rb_str_new(ptr->str+ptr->pos,1);
+                    ptr->pos++;
+                    switch((unsigned char)*ame_curstr2(ptr)) {
+                    case UC(0) ... '?':
+                        ;
+                    case '[' ... '^':
+                        ;
+                    case '`' ... '`':
+                        ;
+                    case '{' ... UC(255):
+                        ;
+                        goto alt4_2;
+                        break;
+                    case '@' ... '@':
+                        ;
+                        it=AmethystParser_key(self );
+                        FAILTEST(alt4_2);
+                        _name=it;;
+                        break;
+                    case 'A' ... 'Z':
+                        ;
+                    case '_' ... '_':
+                        ;
+                    case 'a' ... 'z':
+                        ;
+                        it=AmethystParser_name(self );
+                        FAILTEST(alt4_2);
+                        _name=it;;
+                        break;
+                    }
+                    switch((unsigned char)*ame_curstr2(ptr)) {
+                    case UC(0) ... UC(92):
+                        ;
+                    case '^' ... UC(255):
+                        ;
+                        goto alt4_2;
+                        break;
+                    case ']' ... ']':
+                        ;
+                        it=rb_str_new(ptr->str+ptr->pos,1);
+                        ptr->pos++;
+                        break;
+                    }
+                    bind_aset(bind2,1,_name);
+                    bind_aset(bind2,2,_from);
+                    it=rb_funcall(self,sy_AmethystParser__at_appends_9f26,1,bind2);
+                    _name=bind_aget(bind2,1);;
+                    _from=bind_aget(bind2,2);;
                     _from=it;;
                     break;
                 }
@@ -7570,6 +7675,7 @@ void Init_parser_c() {
     sy_AmethystParser_Strin_lb__lb__qu__88c8=rb_intern("AmethystParser_Strin_lb__lb__qu__88c8");
     sy_AmethystParser__append_lp__d113=rb_intern("AmethystParser__append_lp__d113");
     sy_AmethystParser__at_appends_975f=rb_intern("AmethystParser__at_appends_975f");
+    sy_AmethystParser__at_appends_9f26=rb_intern("AmethystParser__at_appends_9f26");
     sy_AmethystParser__at_ary_eq__lb__rb_=rb_intern("AmethystParser__at_ary_eq__lb__rb_");
     sy_AmethystParser__at_ary_ff69=rb_intern("AmethystParser__at_ary_ff69");
     sy_AmethystParser__at_ary_lt__lt_Ar_59e3=rb_intern("AmethystParser__at_ary_lt__lt_Ar_59e3");
@@ -7612,5 +7718,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('5ce7fe9dc08bbe4aa9deba11bedb9f93')");
+    rb_eval_string("testversionparser('f770d74d7af465b3cb91348d31f03ce5')");
 }
