@@ -50,6 +50,21 @@ norm.puts "typedef struct {
   VALUE * ary;
   VALUE * ret;
 } normalize_cache;"
+norm.puts "
+	VALUE normalize_el(VALUE el){ int len;VALUE *els;int i;
+		if(TYPE(el)==T_ARRAY){
+			int hash=0;
+			len=RARRAY_LEN(el);
+	    els=RARRAY_PTR(el);
+  	  for (i=0;i<len;i++) hash=((int) els[i])+11*hash;
+			hash=hash&((1<<20)-1);
+			rb_iv_set(el,\"@hash\",INT2FIX(hash));
+			return el;
+		} else {
+			return el;
+		}
+	}
+"
 [Act,Apply,Args,Bind,Bnding,CAct,Comment,Cut,Lambda,Global,Key,Local,Lookahead,Many,Or,Pass,Result,Seq,Stop,Strin,Switch_Char,Switch_Clas,Switch_Or].each{|e| 
 by="[#{e.instance_variable_get(:@attrs)*","}]"
 by="ary" if by=="[ary]"
@@ -58,11 +73,8 @@ norm.puts "int hits_#{e}=0;int miss_#{e}=0; normalize_cache *cache_#{e};
 VALUE normalize_#{e}(VALUE self,VALUE obj){int i;
 	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;
 	VALUE ary=rb_iv_get(obj,\"@ary\");
-	if (ary!=Qnil){
-		len=RARRAY_LEN(ary);
-	  els=RARRAY_PTR(ary);
-		for (i=0;i<len;i++) hash=((int) els[i])+11*hash;
-	}
+	ary=normalize_el(ary);
+	hash=11*hash+rb_iv_get(ary,\"@hash\");
 	#{(e.instance_variable_get(:@attrs)-[:ary]).map{|e| "hash=11*hash+(rb_iv_get(obj,\"@#{e.to_s}\")>>6);"}*""}
 	hash=hash&((1<<20)-1);
 
@@ -71,6 +83,8 @@ VALUE normalize_#{e}(VALUE self,VALUE obj){int i;
 		#{(e.instance_variable_get(:@attrs)-[:ary]).map{|e| "if (rb_iv_get(obj,\"@#{e.to_s}\")!=rb_iv_get(obj2,\"@#{e.to_s}\")) goto next;"}*""}
 		VALUE ary2=rb_iv_get(obj2,\"@ary\");
 		if (ary2==Qnil) goto next;
+		len=RARRAY_LEN(ary);
+	  els=RARRAY_PTR(ary);
 		len2=RARRAY_LEN(ary2);
 	  els2=RARRAY_PTR(ary2);
 		if (len!=len2) goto next;
@@ -84,11 +98,8 @@ VALUE normalize_#{e}(VALUE self,VALUE obj){int i;
 	if (rb_obj_is_kind_of(obj3, rb_obj_class(obj))){
 		int hash3=0;
 		VALUE ary3=rb_iv_get(obj3,\"@ary\");
-		if (ary3!=Qnil){
-		  len3=RARRAY_LEN(ary3);
-		  els3=RARRAY_PTR(ary3);
-		  for (i=0;i<len3;i++) hash3=((int) els3[i])+11*hash3;
-		}
+		ary3=normalize_el(ary3);
+		hash3=11*hash3+rb_iv_get(ary3,\"@hash\");
 		#{(e.instance_variable_get(:@attrs)-[:ary]).map{|e| "hash3=11*hash3+(rb_iv_get(obj,\"@#{e.to_s}\")>>6);"}*""}
 		hash3=hash3&((1<<20)-1);
 		cache_#{e}->ary[hash3]=obj3;

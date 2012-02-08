@@ -129,33 +129,6 @@ VALUE normalize_Seq(VALUE,VALUE);
 extern bind_cache *cache_Act;VALUE cache_Act_gc;
 VALUE normalize_Act(VALUE,VALUE);
 
-bind_cache *cache_Array;VALUE cache_Array_gc;
-
-VALUE normalize_el(VALUE el){ VALUE el2,el3;int i;
-	if (rb_obj_frozen_p(el)==Qtrue) return el;
-	if (TYPE(el)==T_ARRAY){
-		VALUE *ptr=RARRAY_PTR(el);
-    int    len=RARRAY_LEN(el);
-    int hash=0;
-    for(i=0;i<len;i++) hash=((int)ptr[i]>>6)+11*hash;
-		hash=hash&((1<<20)-1);
-    if (el2=cache_Array->res[hash]){
-      VALUE *ptr2=RARRAY_PTR(el2);
-      int    len2=RARRAY_LEN(el2);
-      if (len!=len2 ) goto next;
-			for (i=0;i<len;i++) if (ptr[i]!=ptr2[i]) goto next;
-			return el2;
-			next:;
-    }
-		rb_obj_freeze(el);
-    cache_Array->res[hash&((1<<20)-1)]=el;
-  	return el;
-	} else if (TYPE(el)==T_STRING) {
-		return el;
-	} else {
-		return el;
-	}
-}
 
 ID s_ary;
 void Init_Ame(VALUE self){
@@ -169,9 +142,6 @@ void Init_Ame(VALUE self){
 	cache_Or=bind_cache_init(); 
   cache_Or_gc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,cache_Or);
 	rb_global_variable(&cache_Or_gc);
-	cache_Array=bind_cache_init(); 
-  cache_Array_gc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,cache_Array);
-	rb_global_variable(&cache_Array_gc);
 
 
 	s_ary_get=rb_intern("[]");
