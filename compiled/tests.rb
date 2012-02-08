@@ -19,7 +19,7 @@ end
 
 
 def tests_compiled_by
-'9b31f2b0800d9fb669e1e82290366dd1'
+'4d0517a157863d23f6ec7a167d12807a'
 end
 def tests_source_hash
 'c556c5c12e940562aaf03765db66233f'

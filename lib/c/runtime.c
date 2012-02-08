@@ -54,7 +54,7 @@ amethystCore__reverse(VALUE self,VALUE reversed){
 		len=RARRAY_LEN(reversed);
 	}
 	int tmppos=ptr->pos,tmplen=ptr->len;
-	ptr->pos=len-tpmlen; ptr->len=len-tmppos;
+	ptr->pos=len-tmplen; ptr->len=len-tmppos;
 	return Qnil;
 }
 

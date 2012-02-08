@@ -39,6 +39,7 @@ VALUE DetectCalls_root(VALUE self ) {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
             else  ary=rb_funcall(ptr->src,s_to_a,0);
+            ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
@@ -100,6 +101,7 @@ VALUE DetectCalls_traverse(VALUE self ) {
         VALUE ary;
         if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
         else  ary=rb_funcall(ptr->src,s_to_a,0);
+        ptr->ary2=ary;
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
@@ -197,6 +199,7 @@ alt1_2:
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
             else  ary=rb_funcall(ptr->src,s_to_a,0);
+            ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
@@ -259,6 +262,7 @@ alt2_2:
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
             else  ary=rb_funcall(ptr->src,s_to_a,0);
+            ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
@@ -377,6 +381,7 @@ VALUE DetectCalls_visit(VALUE self ) {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
             else  ary=rb_funcall(ptr->src,s_to_a,0);
+            ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
@@ -491,6 +496,7 @@ success1:
         VALUE ary;
         if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
         else  ary=rb_funcall(ptr->src,s_to_a,0);
+        ptr->ary2=ary;
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
@@ -559,6 +565,7 @@ success3:
         VALUE ary;
         if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
         else  ary=rb_funcall(ptr->src,s_to_a,0);
+        ptr->ary2=ary;
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
@@ -621,6 +628,7 @@ VALUE Inliner2_traverse(VALUE self ) {
         VALUE ary;
         if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
         else  ary=rb_funcall(ptr->src,s_to_a,0);
+        ptr->ary2=ary;
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
@@ -645,6 +653,7 @@ alt1_1:
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
             else  ary=rb_funcall(ptr->src,s_to_a,0);
+            ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
@@ -758,6 +767,7 @@ alt1_2:
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
             else  ary=rb_funcall(ptr->src,s_to_a,0);
+            ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
@@ -823,6 +833,7 @@ alt2_2:
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
             else  ary=rb_funcall(ptr->src,s_to_a,0);
+            ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
@@ -944,6 +955,7 @@ VALUE Inliner2_visit(VALUE self ) {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
             else  ary=rb_funcall(ptr->src,s_to_a,0);
+            ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
@@ -1056,5 +1068,5 @@ void Init_inliner2_c() {
     rb_define_method(cls_Inliner2,"traverse",Inliner2_traverse,0);
     rb_define_method(cls_Inliner2,"traverse_item",Inliner2_traverse_item,0);
     rb_define_method(cls_Inliner2,"visit",Inliner2_visit,0);
-    rb_eval_string("testversioninliner2('7ff6244b3e6db19d5333788204e31842')");
+    rb_eval_string("testversioninliner2('b9b505375ed761806a5cae8ed01a14f3')");
 }

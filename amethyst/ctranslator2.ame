@@ -178,7 +178,7 @@ s
         | Pass[ label("pass"):pass label("oldpass"):oldpass label("success"):success
                 rw(pass,`@to=>trans:to`)
                 { "cstruct #{oldpass}=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   #{@enter ?  "ptr->src=#{bget(@var)}; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);    ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}" : 
+                   #{@enter ?  "ptr->src=#{bget(@var)}; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);  ptr->ary2=ary;  ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}" : 
                     "ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=#{bget(@var)};ptr->len=1;"
                    }
                    #{to}

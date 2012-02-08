@@ -437,6 +437,7 @@ accept2:
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
             else  ary=rb_funcall(ptr->src,s_to_a,0);
+            ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
@@ -618,6 +619,7 @@ accept5:
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
             else  ary=rb_funcall(ptr->src,s_to_a,0);
+            ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
@@ -2411,6 +2413,7 @@ VALUE AmethystParser_host_expr(VALUE self ) {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
             else  ary=rb_funcall(ptr->src,s_to_a,0);
+            ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
@@ -3849,6 +3852,7 @@ alt1_1:
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
             else  ary=rb_funcall(ptr->src,s_to_a,0);
+            ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
@@ -6295,6 +6299,7 @@ VALUE AmethystParser_ruleargs(VALUE self ) {
         VALUE ary;
         if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
         else  ary=rb_funcall(ptr->src,s_to_a,0);
+        ptr->ary2=ary;
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
@@ -6324,6 +6329,7 @@ alt1_1:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -7606,5 +7612,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('eaba310ab6fc9ba389df2b7ed8485a96')");
+    rb_eval_string("testversionparser('5ce7fe9dc08bbe4aa9deba11bedb9f93')");
 }

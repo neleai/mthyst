@@ -28,7 +28,7 @@ VALUE AmethystCore__seq(VALUE self,VALUE str);
 struct memo_struct;
 typedef struct{
   VALUE src;
-	char *str;VALUE *ary;
+	char *str;VALUE *ary;VALUE ary2;
   int pos;int len;
 	struct memo_struct *mem;VALUE memgc;
 } cstruct;

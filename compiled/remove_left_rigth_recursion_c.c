@@ -55,6 +55,7 @@ alt1_1:
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
             else  ary=rb_funcall(ptr->src,s_to_a,0);
+            ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
@@ -118,6 +119,7 @@ alt2_1:
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
             else  ary=rb_funcall(ptr->src,s_to_a,0);
+            ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
@@ -204,6 +206,7 @@ alt3_1:
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
             else  ary=rb_funcall(ptr->src,s_to_a,0);
+            ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
@@ -304,6 +307,7 @@ alt6_1:
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
             else  ary=rb_funcall(ptr->src,s_to_a,0);
+            ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
@@ -400,6 +404,7 @@ alt6_2:
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
             else  ary=rb_funcall(ptr->src,s_to_a,0);
+            ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
@@ -549,6 +554,7 @@ VALUE Remove_Left_Recursion_root(VALUE self ) {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
             else  ary=rb_funcall(ptr->src,s_to_a,0);
+            ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
@@ -586,6 +592,7 @@ alt1_1:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -657,6 +664,7 @@ alt2_1:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -749,6 +757,7 @@ alt3_1:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -857,6 +866,7 @@ alt6_1:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -953,6 +963,7 @@ alt6_2:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -1101,6 +1112,7 @@ alt9_1:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -1172,6 +1184,7 @@ alt10_1:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -1264,6 +1277,7 @@ alt11_1:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -1372,6 +1386,7 @@ alt14_1:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -1468,6 +1483,7 @@ alt14_2:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -1641,5 +1657,5 @@ void Init_remove_left_rigth_recursion_c() {
     rb_define_method(cls_Remove_Left_Recursion,"first",Remove_Left_Recursion_first,1);
     rb_define_method(cls_Remove_Left_Recursion,"must_empty",Remove_Left_Recursion_must_empty,0);
     rb_define_method(cls_Remove_Left_Recursion,"root",Remove_Left_Recursion_root,0);
-    rb_eval_string("testversionremove_left_rigth_recursion('4faea07208cb5281969926255dfe0e48')");
+    rb_eval_string("testversionremove_left_rigth_recursion('8a1e0de52d1a5f5d346ed0fb62cb707d')");
 }

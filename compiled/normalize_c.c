@@ -84,6 +84,7 @@ VALUE Normalize_act(VALUE self ) {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
             else  ary=rb_funcall(ptr->src,s_to_a,0);
+            ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
@@ -115,6 +116,7 @@ VALUE Normalize_act(VALUE self ) {
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -151,6 +153,7 @@ success2:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -968,6 +971,7 @@ VALUE Normalize_apply2(VALUE self ) {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
             else  ary=rb_funcall(ptr->src,s_to_a,0);
+            ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
@@ -1003,6 +1007,7 @@ alt2_1:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -1054,6 +1059,7 @@ success2:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -1075,6 +1081,7 @@ success2:
                     VALUE ary;
                     if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                     else  ary=rb_funcall(ptr->src,s_to_a,0);
+                    ptr->ary2=ary;
                     ptr->ary=RARRAY_PTR(ary);
                     ptr->len=RARRAY_LEN(ary);
                 }
@@ -1126,6 +1133,7 @@ alt2_2:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -1172,6 +1180,7 @@ alt2_3:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -1230,6 +1239,7 @@ alt3_1:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -1285,6 +1295,7 @@ alt3_2:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -1327,6 +1338,7 @@ success8:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -1364,6 +1376,7 @@ alt3_3:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -1406,6 +1419,7 @@ success10:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -1424,6 +1438,7 @@ success10:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -1476,6 +1491,7 @@ alt4_1:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -1531,6 +1547,7 @@ alt4_2:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -1573,6 +1590,7 @@ success14:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -1610,6 +1628,7 @@ alt4_3:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -1668,6 +1687,7 @@ alt5_1:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -1723,6 +1743,7 @@ alt5_2:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -1769,6 +1790,7 @@ alt5_3:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -1811,6 +1833,7 @@ success19:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -1829,6 +1852,7 @@ success19:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -1881,6 +1905,7 @@ alt6_1:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -1936,6 +1961,7 @@ alt6_2:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -1982,6 +2008,7 @@ alt6_3:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -2080,6 +2107,7 @@ VALUE Normalize_bind(VALUE self ) {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
             else  ary=rb_funcall(ptr->src,s_to_a,0);
+            ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
@@ -2106,6 +2134,7 @@ alt1_1:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -2124,6 +2153,7 @@ alt1_1:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -2206,6 +2236,7 @@ alt2_1:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -2301,6 +2332,7 @@ alt4_1:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -2453,6 +2485,7 @@ alt6_1:
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                 else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
@@ -2479,6 +2512,7 @@ alt7_1:
                     VALUE ary;
                     if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                     else  ary=rb_funcall(ptr->src,s_to_a,0);
+                    ptr->ary2=ary;
                     ptr->ary=RARRAY_PTR(ary);
                     ptr->len=RARRAY_LEN(ary);
                 }
@@ -2654,6 +2688,7 @@ VALUE Normalize_or(VALUE self ) {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
             else  ary=rb_funcall(ptr->src,s_to_a,0);
+            ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
@@ -2683,6 +2718,7 @@ alt1_1:
                     VALUE ary;
                     if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                     else  ary=rb_funcall(ptr->src,s_to_a,0);
+                    ptr->ary2=ary;
                     ptr->ary=RARRAY_PTR(ary);
                     ptr->len=RARRAY_LEN(ary);
                 }
@@ -2701,6 +2737,7 @@ alt1_1:
                     VALUE ary;
                     if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                     else  ary=rb_funcall(ptr->src,s_to_a,0);
+                    ptr->ary2=ary;
                     ptr->ary=RARRAY_PTR(ary);
                     ptr->len=RARRAY_LEN(ary);
                 }
@@ -2791,6 +2828,7 @@ alt2_1:
                     VALUE ary;
                     if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                     else  ary=rb_funcall(ptr->src,s_to_a,0);
+                    ptr->ary2=ary;
                     ptr->ary=RARRAY_PTR(ary);
                     ptr->len=RARRAY_LEN(ary);
                 }
@@ -2873,6 +2911,7 @@ alt3_2:
                     VALUE ary;
                     if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                     else  ary=rb_funcall(ptr->src,s_to_a,0);
+                    ptr->ary2=ary;
                     ptr->ary=RARRAY_PTR(ary);
                     ptr->len=RARRAY_LEN(ary);
                 }
@@ -3115,6 +3154,7 @@ VALUE Normalize_seq2(VALUE self ) {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
             else  ary=rb_funcall(ptr->src,s_to_a,0);
+            ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
@@ -3144,6 +3184,7 @@ alt1_1:
                     VALUE ary;
                     if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                     else  ary=rb_funcall(ptr->src,s_to_a,0);
+                    ptr->ary2=ary;
                     ptr->ary=RARRAY_PTR(ary);
                     ptr->len=RARRAY_LEN(ary);
                 }
@@ -3162,6 +3203,7 @@ alt1_1:
                     VALUE ary;
                     if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                     else  ary=rb_funcall(ptr->src,s_to_a,0);
+                    ptr->ary2=ary;
                     ptr->ary=RARRAY_PTR(ary);
                     ptr->len=RARRAY_LEN(ary);
                 }
@@ -3259,6 +3301,7 @@ alt2_1:
                     VALUE ary;
                     if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
                     else  ary=rb_funcall(ptr->src,s_to_a,0);
+                    ptr->ary2=ary;
                     ptr->ary=RARRAY_PTR(ary);
                     ptr->len=RARRAY_LEN(ary);
                 }
@@ -3522,5 +3565,5 @@ void Init_normalize_c() {
     rb_define_method(cls_Normalize,"must_empty",Normalize_must_empty,0);
     rb_define_method(cls_Normalize,"or",Normalize_or,0);
     rb_define_method(cls_Normalize,"seq2",Normalize_seq2,0);
-    rb_eval_string("testversionnormalize('7d843d9cb760a70d53dff9202a9da04e')");
+    rb_eval_string("testversionnormalize('0e9af0f270a67a41ae3fcc7a0e527fa5')");
 }

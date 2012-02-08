@@ -1774,6 +1774,7 @@ VALUE Amethyst_parse(VALUE self ,VALUE a0,VALUE a1) {
         VALUE ary;
         if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
         else  ary=rb_funcall(ptr->src,s_to_a,0);
+        ptr->ary2=ary;
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
@@ -2408,5 +2409,5 @@ void Init_amethyst_c() {
     rb_define_method(cls_Amethyst,"upper",Amethyst_upper,0);
     rb_define_method(cls_Amethyst,"word",Amethyst_word,0);
     rb_define_method(cls_Amethyst,"xdigit",Amethyst_xdigit,0);
-    rb_eval_string("testversionamethyst('97fd57b8ffed2066ac5738adda9eda6e')");
+    rb_eval_string("testversionamethyst('36e8942e0fd0b9cf99ab4ea36e3003af')");
 }

@@ -54,6 +54,7 @@ VALUE Traverser_Clone2_traverse(VALUE self ) {
         VALUE ary;
         if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
         else  ary=rb_funcall(ptr->src,s_to_a,0);
+        ptr->ary2=ary;
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
@@ -78,6 +79,7 @@ alt1_1:
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
             else  ary=rb_funcall(ptr->src,s_to_a,0);
+            ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
@@ -191,6 +193,7 @@ alt1_2:
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
             else  ary=rb_funcall(ptr->src,s_to_a,0);
+            ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
@@ -256,6 +259,7 @@ alt2_2:
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
             else  ary=rb_funcall(ptr->src,s_to_a,0);
+            ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
@@ -392,6 +396,7 @@ VALUE Visitor_traverse(VALUE self ) {
         VALUE ary;
         if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
         else  ary=rb_funcall(ptr->src,s_to_a,0);
+        ptr->ary2=ary;
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
@@ -489,6 +494,7 @@ alt1_2:
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
             else  ary=rb_funcall(ptr->src,s_to_a,0);
+            ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
@@ -551,6 +557,7 @@ alt2_2:
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
             else  ary=rb_funcall(ptr->src,s_to_a,0);
+            ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
@@ -669,5 +676,5 @@ void Init_traverser_c() {
     sy_visit=rb_intern("visit");
     rb_define_method(cls_Visitor,"traverse",Visitor_traverse,0);
     rb_define_method(cls_Visitor,"traverse_item",Visitor_traverse_item,0);
-    rb_eval_string("testversiontraverser('7e6ba64f88283ee05305e8f6a3e16710')");
+    rb_eval_string("testversiontraverser('5fd87325effa05f01332bca2829022c1')");
 }

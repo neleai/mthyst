@@ -102,3 +102,5 @@ labels use hash of body do decrease changes
 write or normalization correctly (optimize out empty?)
 
 apply["success"] instead of placeholder
+
+mark arrays used in pass for garbage collection
