@@ -12,7 +12,7 @@ VALUE normalize_Act(VALUE self,VALUE obj){int i;
 	  els=RARRAY_PTR(ary);
 		for (i=0;i<len;i++) hash=((int) els[i])+11*hash;
 	}
-	hash=11*hash+rb_iv_get(obj,"@pred");hash=11*hash+rb_iv_get(obj,"@pure");
+	hash=11*hash+(rb_iv_get(obj,"@pred")>>6);hash=11*hash+(rb_iv_get(obj,"@pure")>>6);
 	hash=hash&((1<<20)-1);
 
 	VALUE obj2=cache_Act->ary[hash];
@@ -38,7 +38,7 @@ VALUE normalize_Act(VALUE self,VALUE obj){int i;
 		  els3=RARRAY_PTR(ary3);
 		  for (i=0;i<len3;i++) hash3=((int) els3[i])+11*hash3;
 		}
-		hash3=11*hash3+rb_iv_get(obj,"@pred");hash3=11*hash3+rb_iv_get(obj,"@pure");
+		hash3=11*hash3+(rb_iv_get(obj,"@pred")>>6);hash3=11*hash3+(rb_iv_get(obj,"@pure")>>6);
 		hash3=hash3&((1<<20)-1);
 		cache_Act->ary[hash3]=obj3;
   	cache_Act->ret[hash3]=obj3;
@@ -56,7 +56,7 @@ VALUE normalize_Apply(VALUE self,VALUE obj){int i;
 	  els=RARRAY_PTR(ary);
 		for (i=0;i<len;i++) hash=((int) els[i])+11*hash;
 	}
-	hash=11*hash+rb_iv_get(obj,"@name");hash=11*hash+rb_iv_get(obj,"@clas");
+	hash=11*hash+(rb_iv_get(obj,"@name")>>6);hash=11*hash+(rb_iv_get(obj,"@clas")>>6);
 	hash=hash&((1<<20)-1);
 
 	VALUE obj2=cache_Apply->ary[hash];
@@ -82,7 +82,7 @@ VALUE normalize_Apply(VALUE self,VALUE obj){int i;
 		  els3=RARRAY_PTR(ary3);
 		  for (i=0;i<len3;i++) hash3=((int) els3[i])+11*hash3;
 		}
-		hash3=11*hash3+rb_iv_get(obj,"@name");hash3=11*hash3+rb_iv_get(obj,"@clas");
+		hash3=11*hash3+(rb_iv_get(obj,"@name")>>6);hash3=11*hash3+(rb_iv_get(obj,"@clas")>>6);
 		hash3=hash3&((1<<20)-1);
 		cache_Apply->ary[hash3]=obj3;
   	cache_Apply->ret[hash3]=obj3;
@@ -144,7 +144,7 @@ VALUE normalize_Bind(VALUE self,VALUE obj){int i;
 	  els=RARRAY_PTR(ary);
 		for (i=0;i<len;i++) hash=((int) els[i])+11*hash;
 	}
-	hash=11*hash+rb_iv_get(obj,"@name");
+	hash=11*hash+(rb_iv_get(obj,"@name")>>6);
 	hash=hash&((1<<20)-1);
 
 	VALUE obj2=cache_Bind->ary[hash];
@@ -170,7 +170,7 @@ VALUE normalize_Bind(VALUE self,VALUE obj){int i;
 		  els3=RARRAY_PTR(ary3);
 		  for (i=0;i<len3;i++) hash3=((int) els3[i])+11*hash3;
 		}
-		hash3=11*hash3+rb_iv_get(obj,"@name");
+		hash3=11*hash3+(rb_iv_get(obj,"@name")>>6);
 		hash3=hash3&((1<<20)-1);
 		cache_Bind->ary[hash3]=obj3;
   	cache_Bind->ret[hash3]=obj3;
@@ -496,7 +496,7 @@ VALUE normalize_Local(VALUE self,VALUE obj){int i;
 	  els=RARRAY_PTR(ary);
 		for (i=0;i<len;i++) hash=((int) els[i])+11*hash;
 	}
-	hash=11*hash+rb_iv_get(obj,"@ssano");
+	hash=11*hash+(rb_iv_get(obj,"@ssano")>>6);
 	hash=hash&((1<<20)-1);
 
 	VALUE obj2=cache_Local->ary[hash];
@@ -522,7 +522,7 @@ VALUE normalize_Local(VALUE self,VALUE obj){int i;
 		  els3=RARRAY_PTR(ary3);
 		  for (i=0;i<len3;i++) hash3=((int) els3[i])+11*hash3;
 		}
-		hash3=11*hash3+rb_iv_get(obj,"@ssano");
+		hash3=11*hash3+(rb_iv_get(obj,"@ssano")>>6);
 		hash3=hash3&((1<<20)-1);
 		cache_Local->ary[hash3]=obj3;
   	cache_Local->ret[hash3]=obj3;
@@ -584,7 +584,7 @@ VALUE normalize_Many(VALUE self,VALUE obj){int i;
 	  els=RARRAY_PTR(ary);
 		for (i=0;i<len;i++) hash=((int) els[i])+11*hash;
 	}
-	hash=11*hash+rb_iv_get(obj,"@has_stop");
+	hash=11*hash+(rb_iv_get(obj,"@has_stop")>>6);
 	hash=hash&((1<<20)-1);
 
 	VALUE obj2=cache_Many->ary[hash];
@@ -610,7 +610,7 @@ VALUE normalize_Many(VALUE self,VALUE obj){int i;
 		  els3=RARRAY_PTR(ary3);
 		  for (i=0;i<len3;i++) hash3=((int) els3[i])+11*hash3;
 		}
-		hash3=11*hash3+rb_iv_get(obj,"@has_stop");
+		hash3=11*hash3+(rb_iv_get(obj,"@has_stop")>>6);
 		hash3=hash3&((1<<20)-1);
 		cache_Many->ary[hash3]=obj3;
   	cache_Many->ret[hash3]=obj3;
@@ -628,7 +628,7 @@ VALUE normalize_Or(VALUE self,VALUE obj){int i;
 	  els=RARRAY_PTR(ary);
 		for (i=0;i<len;i++) hash=((int) els[i])+11*hash;
 	}
-	hash=11*hash+rb_iv_get(obj,"@has_cut");
+	hash=11*hash+(rb_iv_get(obj,"@has_cut")>>6);
 	hash=hash&((1<<20)-1);
 
 	VALUE obj2=cache_Or->ary[hash];
@@ -654,7 +654,7 @@ VALUE normalize_Or(VALUE self,VALUE obj){int i;
 		  els3=RARRAY_PTR(ary3);
 		  for (i=0;i<len3;i++) hash3=((int) els3[i])+11*hash3;
 		}
-		hash3=11*hash3+rb_iv_get(obj,"@has_cut");
+		hash3=11*hash3+(rb_iv_get(obj,"@has_cut")>>6);
 		hash3=hash3&((1<<20)-1);
 		cache_Or->ary[hash3]=obj3;
   	cache_Or->ret[hash3]=obj3;
@@ -672,7 +672,7 @@ VALUE normalize_Pass(VALUE self,VALUE obj){int i;
 	  els=RARRAY_PTR(ary);
 		for (i=0;i<len;i++) hash=((int) els[i])+11*hash;
 	}
-	hash=11*hash+rb_iv_get(obj,"@var");hash=11*hash+rb_iv_get(obj,"@to");hash=11*hash+rb_iv_get(obj,"@enter");
+	hash=11*hash+(rb_iv_get(obj,"@var")>>6);hash=11*hash+(rb_iv_get(obj,"@to")>>6);hash=11*hash+(rb_iv_get(obj,"@enter")>>6);
 	hash=hash&((1<<20)-1);
 
 	VALUE obj2=cache_Pass->ary[hash];
@@ -698,7 +698,7 @@ VALUE normalize_Pass(VALUE self,VALUE obj){int i;
 		  els3=RARRAY_PTR(ary3);
 		  for (i=0;i<len3;i++) hash3=((int) els3[i])+11*hash3;
 		}
-		hash3=11*hash3+rb_iv_get(obj,"@var");hash3=11*hash3+rb_iv_get(obj,"@to");hash3=11*hash3+rb_iv_get(obj,"@enter");
+		hash3=11*hash3+(rb_iv_get(obj,"@var")>>6);hash3=11*hash3+(rb_iv_get(obj,"@to")>>6);hash3=11*hash3+(rb_iv_get(obj,"@enter")>>6);
 		hash3=hash3&((1<<20)-1);
 		cache_Pass->ary[hash3]=obj3;
   	cache_Pass->ret[hash3]=obj3;
@@ -716,7 +716,7 @@ VALUE normalize_Result(VALUE self,VALUE obj){int i;
 	  els=RARRAY_PTR(ary);
 		for (i=0;i<len;i++) hash=((int) els[i])+11*hash;
 	}
-	hash=11*hash+rb_iv_get(obj,"@name");hash=11*hash+rb_iv_get(obj,"@varnames");hash=11*hash+rb_iv_get(obj,"@vars");
+	hash=11*hash+(rb_iv_get(obj,"@name")>>6);hash=11*hash+(rb_iv_get(obj,"@varnames")>>6);hash=11*hash+(rb_iv_get(obj,"@vars")>>6);
 	hash=hash&((1<<20)-1);
 
 	VALUE obj2=cache_Result->ary[hash];
@@ -742,7 +742,7 @@ VALUE normalize_Result(VALUE self,VALUE obj){int i;
 		  els3=RARRAY_PTR(ary3);
 		  for (i=0;i<len3;i++) hash3=((int) els3[i])+11*hash3;
 		}
-		hash3=11*hash3+rb_iv_get(obj,"@name");hash3=11*hash3+rb_iv_get(obj,"@varnames");hash3=11*hash3+rb_iv_get(obj,"@vars");
+		hash3=11*hash3+(rb_iv_get(obj,"@name")>>6);hash3=11*hash3+(rb_iv_get(obj,"@varnames")>>6);hash3=11*hash3+(rb_iv_get(obj,"@vars")>>6);
 		hash3=hash3&((1<<20)-1);
 		cache_Result->ary[hash3]=obj3;
   	cache_Result->ret[hash3]=obj3;

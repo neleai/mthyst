@@ -63,7 +63,7 @@ VALUE normalize_#{e}(VALUE self,VALUE obj){int i;
 	  els=RARRAY_PTR(ary);
 		for (i=0;i<len;i++) hash=((int) els[i])+11*hash;
 	}
-	#{(e.instance_variable_get(:@attrs)-[:ary]).map{|e| "hash=11*hash+rb_iv_get(obj,\"@#{e.to_s}\");"}*""}
+	#{(e.instance_variable_get(:@attrs)-[:ary]).map{|e| "hash=11*hash+(rb_iv_get(obj,\"@#{e.to_s}\")>>6);"}*""}
 	hash=hash&((1<<20)-1);
 
 	VALUE obj2=cache_#{e}->ary[hash];
@@ -89,7 +89,7 @@ VALUE normalize_#{e}(VALUE self,VALUE obj){int i;
 		  els3=RARRAY_PTR(ary3);
 		  for (i=0;i<len3;i++) hash3=((int) els3[i])+11*hash3;
 		}
-		#{(e.instance_variable_get(:@attrs)-[:ary]).map{|e| "hash3=11*hash3+rb_iv_get(obj,\"@#{e.to_s}\");"}*""}
+		#{(e.instance_variable_get(:@attrs)-[:ary]).map{|e| "hash3=11*hash3+(rb_iv_get(obj,\"@#{e.to_s}\")>>6);"}*""}
 		hash3=hash3&((1<<20)-1);
 		cache_#{e}->ary[hash3]=obj3;
   	cache_#{e}->ret[hash3]=obj3;

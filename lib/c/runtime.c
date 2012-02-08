@@ -132,13 +132,12 @@ VALUE normalize_Act(VALUE,VALUE);
 bind_cache *cache_Array;VALUE cache_Array_gc;
 
 VALUE normalize_el(VALUE el){ VALUE el2,el3;int i;
+	if (rb_obj_frozen_p(el)==Qtrue) return el;
 	if (TYPE(el)==T_ARRAY){
-		return el;
-		if (cache_Array->ary[el&((1<<20)-1)]==el) return el;
 		VALUE *ptr=RARRAY_PTR(el);
     int    len=RARRAY_LEN(el);
     int hash=0;
-    for(i=0;i<len;i++) hash=ptr[i]+11*hash;
+    for(i=0;i<len;i++) hash=((int)ptr[i]>>6)+11*hash;
 		hash=hash&((1<<20)-1);
     if (el2=cache_Array->res[hash]){
       VALUE *ptr2=RARRAY_PTR(el2);
@@ -148,7 +147,7 @@ VALUE normalize_el(VALUE el){ VALUE el2,el3;int i;
 			return el2;
 			next:;
     }
-    cache_Array->ary[  el&((1<<20)-1)]=el;
+		rb_obj_freeze(el);
     cache_Array->res[hash&((1<<20)-1)]=el;
   	return el;
 	} else if (TYPE(el)==T_STRING) {

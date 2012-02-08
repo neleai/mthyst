@@ -61,8 +61,8 @@ end
 def Normalize_bind_lb_1_rb__dot__30f4(bind)
 bind[1].size
 end
-def Normalize_bind_lb_1_rb__dot__f29b(bind)
-bind[1].ary=bind[2];bind[1].ary.freeze;bind[1].freeze
+def Normalize_bind_lb_1_rb__dot__cbb9(bind)
+bind[1].ary=bind[2];bind[1].freeze
 
 end
 def Normalize_bind_lb_1_rb__lb__64e3(bind)
@@ -99,15 +99,15 @@ end
 
 
 def normalize_compiled_by
-'1b1dc4e3609c7ec67a5c7b0f768beb57'
+'db30fe46ee07db64ba102a9c3d496bab'
 end
 def normalize_source_hash
-'12c635bfcb9d24e7943569a24ab64c6b'
+'14b78782aa90599a50cecd8152381602'
 end
 def testversionnormalize(r)
  raise "invalid version" if r!=normalize_version
 end
 def normalize_version
-'0e9af0f270a67a41ae3fcc7a0e527fa5'
+'48682f8f17b82d127628a834576e416d'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/normalize_c"

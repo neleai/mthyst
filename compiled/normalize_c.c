@@ -48,7 +48,7 @@ static VALUE sy_Normalize__lp_eval_lp_sr_3f78;
 static VALUE sy_Normalize__lp_must_em_43e9;
 static VALUE sy_Normalize_bind_lb_1_rb_;
 static VALUE sy_Normalize_bind_lb_1_rb__dot__30f4;
-static VALUE sy_Normalize_bind_lb_1_rb__dot__f29b;
+static VALUE sy_Normalize_bind_lb_1_rb__dot__cbb9;
 static VALUE sy_Normalize_bind_lb_1_rb__lb__64e3;
 static VALUE sy_Normalize_bind_lb_1_rb__lb__79d7;
 static VALUE sy_Normalize_bind_lb_1_rb__lt__f738;
@@ -3094,7 +3094,7 @@ alt6_3:
         it=_autovar_11;
         bind_aset(bind2,1,_or);
         bind_aset(bind2,2,_ary);
-        it=rb_funcall(self,sy_Normalize_bind_lb_1_rb__dot__f29b,1,bind2);
+        it=rb_funcall(self,sy_Normalize_bind_lb_1_rb__dot__cbb9,1,bind2);
         _or=bind_aget(bind2,1);;
         _ary=bind_aget(bind2,2);;
         _autovar_12=it;;
@@ -3459,7 +3459,7 @@ alt4_3:
         it=_autovar_10;
         bind_aset(bind2,1,_seq);
         bind_aset(bind2,2,_ary);
-        it=rb_funcall(self,sy_Normalize_bind_lb_1_rb__dot__f29b,1,bind2);
+        it=rb_funcall(self,sy_Normalize_bind_lb_1_rb__dot__cbb9,1,bind2);
         _seq=bind_aget(bind2,1);;
         _ary=bind_aget(bind2,2);;
         _autovar_11=it;;
@@ -3548,7 +3548,7 @@ void Init_normalize_c() {
     sy_Normalize__lp_must_em_43e9=rb_intern("Normalize__lp_must_em_43e9");
     sy_Normalize_bind_lb_1_rb_=rb_intern("Normalize_bind_lb_1_rb_");
     sy_Normalize_bind_lb_1_rb__dot__30f4=rb_intern("Normalize_bind_lb_1_rb__dot__30f4");
-    sy_Normalize_bind_lb_1_rb__dot__f29b=rb_intern("Normalize_bind_lb_1_rb__dot__f29b");
+    sy_Normalize_bind_lb_1_rb__dot__cbb9=rb_intern("Normalize_bind_lb_1_rb__dot__cbb9");
     sy_Normalize_bind_lb_1_rb__lb__64e3=rb_intern("Normalize_bind_lb_1_rb__lb__64e3");
     sy_Normalize_bind_lb_1_rb__lb__79d7=rb_intern("Normalize_bind_lb_1_rb__lb__79d7");
     sy_Normalize_bind_lb_1_rb__lt__f738=rb_intern("Normalize_bind_lb_1_rb__lt__f738");
@@ -3565,5 +3565,5 @@ void Init_normalize_c() {
     rb_define_method(cls_Normalize,"must_empty",Normalize_must_empty,0);
     rb_define_method(cls_Normalize,"or",Normalize_or,0);
     rb_define_method(cls_Normalize,"seq2",Normalize_seq2,0);
-    rb_eval_string("testversionnormalize('0e9af0f270a67a41ae3fcc7a0e527fa5')");
+    rb_eval_string("testversionnormalize('48682f8f17b82d127628a834576e416d')");
 }
