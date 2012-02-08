@@ -129,28 +129,33 @@ VALUE normalize_Seq(VALUE,VALUE);
 extern bind_cache *cache_Act;VALUE cache_Act_gc;
 VALUE normalize_Act(VALUE,VALUE);
 
-VALUE *norm_string,*hash_string;
-VALUE *norm_array, *hash_array;
+bind_cache *cache_Array;VALUE cache_Array_gc;
 
 VALUE normalize_el(VALUE el){ VALUE el2,el3;int i;
 	if (TYPE(el)==T_ARRAY){
 		return el;
-		if (norm_array[el&((1<<20)-1)]==el) return el;
+		if (cache_Array->ary[el&((1<<20)-1)]==el) return el;
+		VALUE *ptr=RARRAY_PTR(el);
+    int    len=RARRAY_LEN(el);
+    int hash=0;
+    for(i=0;i<len;i++) hash=ptr[i]+11*hash;
+		hash=hash&((1<<20)-1);
+    if (el2=cache_Array->res[hash]){
+      VALUE *ptr2=RARRAY_PTR(el2);
+      int    len2=RARRAY_LEN(el2);
+      if (len!=len2 ) goto next;
+			for (i=0;i<len;i++) if (ptr[i]!=ptr2[i]) goto next;
+			return el2;
+			next:;
+    }
+    cache_Array->ary[  el&((1<<20)-1)]=el;
+    cache_Array->res[hash&((1<<20)-1)]=el;
+  	return el;
 	} else if (TYPE(el)==T_STRING) {
-		if (norm_string[el&((1<<20)-1)]==el) return el;
-		char *ptr=RSTRING_PTR(el);
-		int   len=RSTRING_LEN(el);
-		int hash=0;
-		for(i=0;i<len;i++) hash=ptr[i]+11*hash;//TODO by long chunks
-		if (el2=hash_string[hash&((1<<20)-1)]){
-			char *ptr2=RSTRING_PTR(el2);
-			int len2=RSTRING_LEN(el2);
-			if (len==len2 && !strncmp(ptr,ptr2,len)) return el2;
-			norm_string[  el&((1<<20)-1)]=el;
-			hash_string[hash&((1<<20)-1)]=el;
-		}
+		return el;
+	} else {
+		return el;
 	}
-	return el;
 }
 
 ID s_ary;
@@ -165,9 +170,9 @@ void Init_Ame(VALUE self){
 	cache_Or=bind_cache_init(); 
   cache_Or_gc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,cache_Or);
 	rb_global_variable(&cache_Or_gc);
-	cache_Act=bind_cache_init(); 
-  cache_Act_gc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,cache_Act);
-	rb_global_variable(&cache_Act_gc);
+	cache_Array=bind_cache_init(); 
+  cache_Array_gc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,cache_Array);
+	rb_global_variable(&cache_Array_gc);
 
 
 	s_ary_get=rb_intern("[]");
