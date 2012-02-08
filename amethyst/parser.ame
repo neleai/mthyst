@@ -60,6 +60,8 @@ amethyst AmethystParser {
   key         = '@' className:name             -> Result[{:name=>name}]
               | '@'      name:name argsOpt:arg -> Key[name,arg]
               | '@@'     name:name             -> Global[name]
+              | '@>'     name:name             -> Contextual_Argument[name]
+              | '@<'     name:name             -> Contextual_Return[name]
 
   name           =  (<_a-zA-Z> <_a-zA-Z0-9>*)[]:{it.join}
   className      =  (    <A-Z> <_a-zA-Z0-9>*)[]:{it.join}

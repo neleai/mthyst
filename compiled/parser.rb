@@ -52,6 +52,14 @@ def AmethystParser_Comment_lb__ed6f(bind)
 Comment[bind[1]]
 
 end
+def AmethystParser_Contextu_32ad(bind)
+Contextual_Return[bind[1]]
+
+end
+def AmethystParser_Contextu_4e8d(bind)
+Contextual_Argument[bind[1]]
+
+end
 def AmethystParser_Enter_lb_Ap_7d1f(bind)
 Enter[Apply["anything"],bind[1]]
 
@@ -205,15 +213,15 @@ class AmethystParser < Amethyst
 end
 
 def parser_compiled_by
-'7fcb0e4633ef3c6eb25cc5fb6618a273'
+'1b1dc4e3609c7ec67a5c7b0f768beb57'
 end
 def parser_source_hash
-'06acf00e02bfacb0afcc12c6d04062f6'
+'1b1c19c0a810df8784ce4330769a0aac'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'f770d74d7af465b3cb91348d31f03ce5'
+'6a72989bc09e1e639c2bea9a9e5c65df'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/parser_c"
