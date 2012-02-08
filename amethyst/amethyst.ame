@@ -46,6 +46,8 @@ amethyst Amethyst < AmethystCore {
   range_ex(a,b) = member(a...b)
 
   regch(regex) = member(regex)
+
+	reverse(l) = {@@rev||=Hash.new{|h,k| h[k]=k.reverse }} _reverse(@@rev[@self]) apply(l):rev _reverse(@@rev[@self]) {rev} #TODO array reversal likewise
   
   parse(rule,obj) = {obj}[apply(rule):r {self.profile_report if self.is_a?(AmethystParser);r}]
 }

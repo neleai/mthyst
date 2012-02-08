@@ -3,6 +3,12 @@ class Amethyst < AmethystCore
 def Amethyst__append_lp__d113(bind)
 _append(bind[1],bind[2])
 end
+def Amethyst__at_rev(bind)
+@rev||=Hash.new{|h,k| h[k]=k.reverse }
+end
+def Amethyst__at_rev_lb_src_704d(bind)
+@rev[src]
+end
 def Amethyst__lp_bind_lb_1_rb__a948(bind)
 (bind[1].is_a? String ) || FAIL
 end
@@ -40,15 +46,15 @@ end
 
 
 def amethyst_compiled_by
-'ea626545245dd39955d2ff1457e3677d'
+'9b31f2b0800d9fb669e1e82290366dd1'
 end
 def amethyst_source_hash
-'135d7ca0ba2e9498d191f2a8aa4f8baa'
+'d11bfc58e96428cc1add216bcfcbe2df'
 end
 def testversionamethyst(r)
  raise "invalid version" if r!=amethyst_version
 end
 def amethyst_version
-'511aa26332156f47a1beb14a33a24bd9'
+'97fd57b8ffed2066ac5738adda9eda6e'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/amethyst_c"

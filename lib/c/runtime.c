@@ -42,6 +42,22 @@ VALUE AmethystCore_anything(VALUE self){
 	return r;
 }
 
+amethystCore__reverse(VALUE self,VALUE reversed){
+	cstruct  *ptr;
+  Data_Get_Struct(self,cstruct,ptr);
+	int len;
+	if (TYPE(reversed)==T_STRING){
+		ptr->str=RSTRING_PTR(reversed);
+		len=RSTRING_LEN(reversed);
+	} else {
+		ptr->ary=RARRAY_PTR(reversed);
+		len=RARRAY_LEN(reversed);
+	}
+	int tmppos=ptr->pos,tmplen=ptr->len;
+	ptr->pos=len-tpmlen; ptr->len=len-tmppos;
+	return Qnil;
+}
+
 VALUE AmethystCore_append(VALUE self,VALUE ary,VALUE el){
 	if (TYPE(ary)!=T_ARRAY){
 	 rb_raise(rb_eArgError,"first argument is not array");
