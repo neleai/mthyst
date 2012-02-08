@@ -51,7 +51,7 @@ norm.puts "typedef struct {
   VALUE * ret;
 } normalize_cache;"
 norm.puts "
-	normalize_cache *cache_Array;
+	normalize_cache *cache_Array;  normalize_cache *cache_String;
 	VALUE normalize_el(VALUE el){ VALUE el2;int len,len2;VALUE *els,*els2;int i;
 		if(TYPE(el)==T_ARRAY){
 			if (rb_iv_get(el,\"@hash\")!=Qnil) return el;
@@ -71,6 +71,24 @@ norm.puts "
 			rb_iv_set(el,\"@hash\",INT2FIX(hash));
 			cache_Array->ret[hash]=el;
 			return el;
+		} else if (TYPE(el)==T_STRING){
+      if (rb_iv_get(el,\"@hash\")!=Qnil) return el;
+      int hash=0;
+      len=RSTRING_LEN(el);
+      char *chrs=RSTRING_PTR(el);
+      for (i=0;i<len;i++) hash=((int) chrs[i])+11*hash;
+      hash=hash&((1<<20)-1);
+      if (el2=cache_String->ret[hash]) {
+        len2=RSTRING_LEN(el2);
+        char *chrs2=RSTRING_PTR(el2);
+        if (len!=len2) goto next2;
+        for(i=0;i<len;i++) if (chrs[i]!=chrs2[i]) goto next2;
+        return el2;
+        next2:;
+      }
+      rb_iv_set(el,\"@hash\",INT2FIX(hash));
+      cache_String->ret[hash]=el;
+      return el;
 		} else {
 			return el;
 		}
@@ -110,6 +128,12 @@ VALUE normalize_#{e}(VALUE self,VALUE obj){int i;
 		int hash3=0;
 		VALUE ary3=rb_iv_get(obj3,\"@ary\");
 		ary3=normalize_el(ary3);
+		obj=rb_obj_dup(obj);
+		rb_iv_set(obj,\"@ary\",ary);
+		rb_obj_freeze(obj);
+		obj3=rb_obj_dup(obj3);
+		rb_iv_set(obj3,\"@ary\",ary3);
+		rb_obj_freeze(obj3);
 		hash3=11*hash3+rb_iv_get(ary3,\"@hash\");
 		#{(e.instance_variable_get(:@attrs)-[:ary]).map{|e| "hash3=11*hash3+(rb_iv_get(obj,\"@#{e.to_s}\")>>6);"}*""}
 		hash3=hash3&((1<<20)-1);
