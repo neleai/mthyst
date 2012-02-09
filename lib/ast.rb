@@ -59,8 +59,11 @@ norm.puts "
 			len=RARRAY_LEN(el);
 	    els=RARRAY_PTR(el);
   	  for (i=0;i<len;i++) hash=((int) els[i]>>6)+11*hash;
+			rb_iv_set(el,\"@hash\",LONG2FIX(hash/2));
 			hash=hash&((1<<20)-1);
 			if (el2=cache_Array->ret[hash]) {
+				if (el==el2) return el;
+				if (rb_iv_get(el,\"@hash\")!=rb_iv_get(el2,\"@hash\")) goto next;
 				len2=RARRAY_LEN(el2);
 	    	els2=RARRAY_PTR(el2);
 				if (len!=len2) goto next;
@@ -68,7 +71,6 @@ norm.puts "
 				return el2;
 				next:;
 			}
-			rb_iv_set(el,\"@hash\",INT2FIX(hash));
 			cache_Array->ret[hash]=el;
 			return el;
 		} else if (TYPE(el)==T_STRING){
