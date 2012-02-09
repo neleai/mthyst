@@ -16,7 +16,6 @@ makeclasses(AmethystAST,
     :And,
 		:Memo,
 		:Cut,:Stop,
-		:Char,
     :Comment,
     :Nested,
 		:Switch,
@@ -88,8 +87,9 @@ norm.puts "
 			}
 			rb_iv_set(el,\"@hash\",LONG2FIX(hash/2));
 			hash=hash&((1<<20)-1);
-			if (el2=cache_Array->ret[hash]) {
+			while (el2=cache_Array->ret[hash]) {
 				if (els_equal(el,el2)) return el2;
+				hash=(hash+1)&((1<<20)-1);
 			}
 			cache_Array->ret[hash]=el;
 			return el;
@@ -102,8 +102,9 @@ norm.puts "
 			rb_iv_set(el,\"@hash\",LONG2FIX(hash/2));
       hash=hash&((1<<20)-1);
 			el2=cache_String->ret[hash];
-			if (el2=cache_String->ret[hash]) {
+			while (el2=cache_String->ret[hash]) {
 				if (els_equal(el,el2)) return el2;
+				hash=(hash+1)&((1<<20)-1);
 			}
       cache_String->ret[hash]=el;
       return el;
@@ -157,7 +158,7 @@ VALUE normalize_#{e}(VALUE obj){int i;
 	return obj3;
 }"
 }
-cn=[Bind,Seq,Or,Act,Apply,Many]
+cn=[Bind,Seq,Or,Act,Apply,Many,Pass]
 norm.puts "
 normalize_cache * normalize_cache_init(){
        normalize_cache *b;
