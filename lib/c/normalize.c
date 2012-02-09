@@ -65,7 +65,7 @@ typedef struct {
 		}
 	}
 int hits_Act=0;int miss_Act=0; normalize_cache *cache_Act;
-VALUE normalize_Act(VALUE self,VALUE obj){int i;
+VALUE normalize_Act(VALUE obj){int i;
 	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;
 	VALUE ary=rb_iv_get(obj,"@ary");
 	if (rb_obj_frozen_p(obj)!=Qtrue){
@@ -105,7 +105,7 @@ VALUE normalize_Act(VALUE self,VALUE obj){int i;
 	return obj3;
 }
 int hits_Apply=0;int miss_Apply=0; normalize_cache *cache_Apply;
-VALUE normalize_Apply(VALUE self,VALUE obj){int i;
+VALUE normalize_Apply(VALUE obj){int i;
 	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;
 	VALUE ary=rb_iv_get(obj,"@ary");
 	if (rb_obj_frozen_p(obj)!=Qtrue){
@@ -145,7 +145,7 @@ VALUE normalize_Apply(VALUE self,VALUE obj){int i;
 	return obj3;
 }
 int hits_Args=0;int miss_Args=0; normalize_cache *cache_Args;
-VALUE normalize_Args(VALUE self,VALUE obj){int i;
+VALUE normalize_Args(VALUE obj){int i;
 	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;
 	VALUE ary=rb_iv_get(obj,"@ary");
 	if (rb_obj_frozen_p(obj)!=Qtrue){
@@ -185,7 +185,7 @@ VALUE normalize_Args(VALUE self,VALUE obj){int i;
 	return obj3;
 }
 int hits_Bind=0;int miss_Bind=0; normalize_cache *cache_Bind;
-VALUE normalize_Bind(VALUE self,VALUE obj){int i;
+VALUE normalize_Bind(VALUE obj){int i;
 	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;
 	VALUE ary=rb_iv_get(obj,"@ary");
 	if (rb_obj_frozen_p(obj)!=Qtrue){
@@ -225,7 +225,7 @@ VALUE normalize_Bind(VALUE self,VALUE obj){int i;
 	return obj3;
 }
 int hits_Bnding=0;int miss_Bnding=0; normalize_cache *cache_Bnding;
-VALUE normalize_Bnding(VALUE self,VALUE obj){int i;
+VALUE normalize_Bnding(VALUE obj){int i;
 	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;
 	VALUE ary=rb_iv_get(obj,"@ary");
 	if (rb_obj_frozen_p(obj)!=Qtrue){
@@ -265,7 +265,7 @@ VALUE normalize_Bnding(VALUE self,VALUE obj){int i;
 	return obj3;
 }
 int hits_CAct=0;int miss_CAct=0; normalize_cache *cache_CAct;
-VALUE normalize_CAct(VALUE self,VALUE obj){int i;
+VALUE normalize_CAct(VALUE obj){int i;
 	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;
 	VALUE ary=rb_iv_get(obj,"@ary");
 	if (rb_obj_frozen_p(obj)!=Qtrue){
@@ -305,7 +305,7 @@ VALUE normalize_CAct(VALUE self,VALUE obj){int i;
 	return obj3;
 }
 int hits_Comment=0;int miss_Comment=0; normalize_cache *cache_Comment;
-VALUE normalize_Comment(VALUE self,VALUE obj){int i;
+VALUE normalize_Comment(VALUE obj){int i;
 	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;
 	VALUE ary=rb_iv_get(obj,"@ary");
 	if (rb_obj_frozen_p(obj)!=Qtrue){
@@ -345,7 +345,7 @@ VALUE normalize_Comment(VALUE self,VALUE obj){int i;
 	return obj3;
 }
 int hits_Cut=0;int miss_Cut=0; normalize_cache *cache_Cut;
-VALUE normalize_Cut(VALUE self,VALUE obj){int i;
+VALUE normalize_Cut(VALUE obj){int i;
 	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;
 	VALUE ary=rb_iv_get(obj,"@ary");
 	if (rb_obj_frozen_p(obj)!=Qtrue){
@@ -385,7 +385,7 @@ VALUE normalize_Cut(VALUE self,VALUE obj){int i;
 	return obj3;
 }
 int hits_Lambda=0;int miss_Lambda=0; normalize_cache *cache_Lambda;
-VALUE normalize_Lambda(VALUE self,VALUE obj){int i;
+VALUE normalize_Lambda(VALUE obj){int i;
 	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;
 	VALUE ary=rb_iv_get(obj,"@ary");
 	if (rb_obj_frozen_p(obj)!=Qtrue){
@@ -425,7 +425,7 @@ VALUE normalize_Lambda(VALUE self,VALUE obj){int i;
 	return obj3;
 }
 int hits_Global=0;int miss_Global=0; normalize_cache *cache_Global;
-VALUE normalize_Global(VALUE self,VALUE obj){int i;
+VALUE normalize_Global(VALUE obj){int i;
 	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;
 	VALUE ary=rb_iv_get(obj,"@ary");
 	if (rb_obj_frozen_p(obj)!=Qtrue){
@@ -465,7 +465,7 @@ VALUE normalize_Global(VALUE self,VALUE obj){int i;
 	return obj3;
 }
 int hits_Key=0;int miss_Key=0; normalize_cache *cache_Key;
-VALUE normalize_Key(VALUE self,VALUE obj){int i;
+VALUE normalize_Key(VALUE obj){int i;
 	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;
 	VALUE ary=rb_iv_get(obj,"@ary");
 	if (rb_obj_frozen_p(obj)!=Qtrue){
@@ -505,7 +505,7 @@ VALUE normalize_Key(VALUE self,VALUE obj){int i;
 	return obj3;
 }
 int hits_Local=0;int miss_Local=0; normalize_cache *cache_Local;
-VALUE normalize_Local(VALUE self,VALUE obj){int i;
+VALUE normalize_Local(VALUE obj){int i;
 	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;
 	VALUE ary=rb_iv_get(obj,"@ary");
 	if (rb_obj_frozen_p(obj)!=Qtrue){
@@ -545,7 +545,7 @@ VALUE normalize_Local(VALUE self,VALUE obj){int i;
 	return obj3;
 }
 int hits_Lookahead=0;int miss_Lookahead=0; normalize_cache *cache_Lookahead;
-VALUE normalize_Lookahead(VALUE self,VALUE obj){int i;
+VALUE normalize_Lookahead(VALUE obj){int i;
 	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;
 	VALUE ary=rb_iv_get(obj,"@ary");
 	if (rb_obj_frozen_p(obj)!=Qtrue){
@@ -585,7 +585,7 @@ VALUE normalize_Lookahead(VALUE self,VALUE obj){int i;
 	return obj3;
 }
 int hits_Many=0;int miss_Many=0; normalize_cache *cache_Many;
-VALUE normalize_Many(VALUE self,VALUE obj){int i;
+VALUE normalize_Many(VALUE obj){int i;
 	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;
 	VALUE ary=rb_iv_get(obj,"@ary");
 	if (rb_obj_frozen_p(obj)!=Qtrue){
@@ -625,7 +625,7 @@ VALUE normalize_Many(VALUE self,VALUE obj){int i;
 	return obj3;
 }
 int hits_Or=0;int miss_Or=0; normalize_cache *cache_Or;
-VALUE normalize_Or(VALUE self,VALUE obj){int i;
+VALUE normalize_Or(VALUE obj){int i;
 	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;
 	VALUE ary=rb_iv_get(obj,"@ary");
 	if (rb_obj_frozen_p(obj)!=Qtrue){
@@ -665,7 +665,7 @@ VALUE normalize_Or(VALUE self,VALUE obj){int i;
 	return obj3;
 }
 int hits_Pass=0;int miss_Pass=0; normalize_cache *cache_Pass;
-VALUE normalize_Pass(VALUE self,VALUE obj){int i;
+VALUE normalize_Pass(VALUE obj){int i;
 	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;
 	VALUE ary=rb_iv_get(obj,"@ary");
 	if (rb_obj_frozen_p(obj)!=Qtrue){
@@ -705,7 +705,7 @@ VALUE normalize_Pass(VALUE self,VALUE obj){int i;
 	return obj3;
 }
 int hits_Result=0;int miss_Result=0; normalize_cache *cache_Result;
-VALUE normalize_Result(VALUE self,VALUE obj){int i;
+VALUE normalize_Result(VALUE obj){int i;
 	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;
 	VALUE ary=rb_iv_get(obj,"@ary");
 	if (rb_obj_frozen_p(obj)!=Qtrue){
@@ -745,7 +745,7 @@ VALUE normalize_Result(VALUE self,VALUE obj){int i;
 	return obj3;
 }
 int hits_Seq=0;int miss_Seq=0; normalize_cache *cache_Seq;
-VALUE normalize_Seq(VALUE self,VALUE obj){int i;
+VALUE normalize_Seq(VALUE obj){int i;
 	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;
 	VALUE ary=rb_iv_get(obj,"@ary");
 	if (rb_obj_frozen_p(obj)!=Qtrue){
@@ -785,7 +785,7 @@ VALUE normalize_Seq(VALUE self,VALUE obj){int i;
 	return obj3;
 }
 int hits_Stop=0;int miss_Stop=0; normalize_cache *cache_Stop;
-VALUE normalize_Stop(VALUE self,VALUE obj){int i;
+VALUE normalize_Stop(VALUE obj){int i;
 	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;
 	VALUE ary=rb_iv_get(obj,"@ary");
 	if (rb_obj_frozen_p(obj)!=Qtrue){
@@ -825,7 +825,7 @@ VALUE normalize_Stop(VALUE self,VALUE obj){int i;
 	return obj3;
 }
 int hits_Strin=0;int miss_Strin=0; normalize_cache *cache_Strin;
-VALUE normalize_Strin(VALUE self,VALUE obj){int i;
+VALUE normalize_Strin(VALUE obj){int i;
 	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;
 	VALUE ary=rb_iv_get(obj,"@ary");
 	if (rb_obj_frozen_p(obj)!=Qtrue){
@@ -865,7 +865,7 @@ VALUE normalize_Strin(VALUE self,VALUE obj){int i;
 	return obj3;
 }
 int hits_Switch_Char=0;int miss_Switch_Char=0; normalize_cache *cache_Switch_Char;
-VALUE normalize_Switch_Char(VALUE self,VALUE obj){int i;
+VALUE normalize_Switch_Char(VALUE obj){int i;
 	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;
 	VALUE ary=rb_iv_get(obj,"@ary");
 	if (rb_obj_frozen_p(obj)!=Qtrue){
@@ -905,7 +905,7 @@ VALUE normalize_Switch_Char(VALUE self,VALUE obj){int i;
 	return obj3;
 }
 int hits_Switch_Clas=0;int miss_Switch_Clas=0; normalize_cache *cache_Switch_Clas;
-VALUE normalize_Switch_Clas(VALUE self,VALUE obj){int i;
+VALUE normalize_Switch_Clas(VALUE obj){int i;
 	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;
 	VALUE ary=rb_iv_get(obj,"@ary");
 	if (rb_obj_frozen_p(obj)!=Qtrue){
@@ -945,7 +945,7 @@ VALUE normalize_Switch_Clas(VALUE self,VALUE obj){int i;
 	return obj3;
 }
 int hits_Switch_Or=0;int miss_Switch_Or=0; normalize_cache *cache_Switch_Or;
-VALUE normalize_Switch_Or(VALUE self,VALUE obj){int i;
+VALUE normalize_Switch_Or(VALUE obj){int i;
 	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;
 	VALUE ary=rb_iv_get(obj,"@ary");
 	if (rb_obj_frozen_p(obj)!=Qtrue){
@@ -983,4 +983,37 @@ VALUE normalize_Switch_Or(VALUE self,VALUE obj){int i;
 	cache_Switch_Or->ary[hash]=obj;
 	cache_Switch_Or->ret[hash]=obj3;
 	return obj3;
+}
+
+normalize_cache * normalize_cache_init(){
+       normalize_cache *b;
+       b=malloc(sizeof(normalize_cache));
+       b->ary=calloc(1<<20,sizeof(VALUE));
+       b->ret=calloc(1<<20,sizeof(VALUE));
+
+       return b;
+}
+void normalize_cache_mark(normalize_cache *b){int i;
+       for(i=0;i<(1<<20);i++) if (b->ary[i])rb_gc_mark(b->ary[i]);
+       for(i=0;i<(1<<20);i++) if (b->ret[i])rb_gc_mark(b->ret[i]);
+}
+void normalize_cache_free(normalize_cache *b){}
+VALUE cache_Bind_gc;VALUE cache_Seq_gc;VALUE cache_Or_gc;VALUE cache_Act_gc;VALUE cache_Apply_gc;
+void init_normalize(){
+cache_Bind=normalize_cache_init();
+	cache_Bind_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_Bind);
+	rb_global_variable(&cache_Bind_gc);
+  rb_define_method(rb_const_get(rb_cObject,rb_intern("Bind")),"normalize",normalize_Bind,0);cache_Seq=normalize_cache_init();
+	cache_Seq_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_Seq);
+	rb_global_variable(&cache_Seq_gc);
+  rb_define_method(rb_const_get(rb_cObject,rb_intern("Seq")),"normalize",normalize_Seq,0);cache_Or=normalize_cache_init();
+	cache_Or_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_Or);
+	rb_global_variable(&cache_Or_gc);
+  rb_define_method(rb_const_get(rb_cObject,rb_intern("Or")),"normalize",normalize_Or,0);cache_Act=normalize_cache_init();
+	cache_Act_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_Act);
+	rb_global_variable(&cache_Act_gc);
+  rb_define_method(rb_const_get(rb_cObject,rb_intern("Act")),"normalize",normalize_Act,0);cache_Apply=normalize_cache_init();
+	cache_Apply_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_Apply);
+	rb_global_variable(&cache_Apply_gc);
+  rb_define_method(rb_const_get(rb_cObject,rb_intern("Apply")),"normalize",normalize_Apply,0);
 }

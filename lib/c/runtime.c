@@ -136,29 +136,9 @@ extern bind_cache *cache_Apply;VALUE cache_Apply_gc;
 VALUE normalize_Apply(VALUE,VALUE);
 
 
-
+void init_normalize();
 ID s_ary;
 void Init_Ame(VALUE self){
-
-	cache_Bind=bind_cache_init(); 
-  cache_Bind_gc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,cache_Bind);
-	rb_global_variable(&cache_Bind_gc);
-	cache_Seq=bind_cache_init(); 
-  cache_Seq_gc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,cache_Seq);
-	rb_global_variable(&cache_Seq_gc);
-	cache_Or=bind_cache_init(); 
-  cache_Or_gc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,cache_Or);
-	rb_global_variable(&cache_Or_gc);
-	cache_Act=bind_cache_init(); 
-  cache_Act_gc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,cache_Act);
-	rb_global_variable(&cache_Act_gc);
-cache_Or=bind_cache_init(); 
-  cache_Or_gc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,cache_Or);
-	rb_global_variable(&cache_Or_gc);
-cache_Apply=bind_cache_init(); 
-  cache_Apply_gc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,cache_Apply);
-	rb_global_variable(&cache_Apply_gc);
-
 
 	cache_Array=bind_cache_init(); 
   cache_Array_gc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,cache_Array);
@@ -167,7 +147,7 @@ cache_Apply=bind_cache_init();
   cache_String_gc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,cache_String);
 	rb_global_variable(&cache_String_gc);
 
-
+	init_normalize();
 
 	s_ary_get=rb_intern("[]");
 	s_ary=rb_intern("@ary");
@@ -175,12 +155,6 @@ cache_Apply=bind_cache_init();
 	failobj=rb_eval_string("FAIL");
 	amecore=rb_define_class("AmethystCore",rb_cObject);
 	rb_define_singleton_method(amecore,"new",ame_new,0);
-	rb_define_singleton_method(amecore,"normalize_Bind",normalize_Bind,1);
-	rb_define_singleton_method(amecore,"normalize_Seq",normalize_Seq,1);
-	rb_define_singleton_method(amecore,"normalize_Or",normalize_Or,1);
-	rb_define_singleton_method(amecore,"normalize_Act",normalize_Act,1);
-  rb_define_singleton_method(amecore,"normalize_Apply",normalize_Apply,1);
-
 	rb_define_singleton_method(amecore,"report_normalize",report_normalize,0);
 
 	rb_define_method(amecore,"pos=",ame_setposrb,1);

@@ -117,7 +117,7 @@ by="[#{e.instance_variable_get(:@attrs)*","}]"
 by="ary" if by=="[ary]"
 equalize_by(e,by)
 norm.puts "int hits_#{e}=0;int miss_#{e}=0; normalize_cache *cache_#{e};
-VALUE normalize_#{e}(VALUE self,VALUE obj){int i;
+VALUE normalize_#{e}(VALUE obj){int i;
 	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;
 	VALUE ary=rb_iv_get(obj,\"@ary\");
 	if (rb_obj_frozen_p(obj)!=Qtrue){
@@ -157,14 +157,31 @@ VALUE normalize_#{e}(VALUE self,VALUE obj){int i;
 	return obj3;
 }"
 }
-[Bind,Seq,Or,Act,Apply].each{|k|
-	eval "
-class #{k} 
-	def normalize
-		AmethystCore::normalize_#{k}(self)
-	end
-end"
+cn=[Bind,Seq,Or,Act,Apply]
+norm.puts "
+normalize_cache * normalize_cache_init(){
+       normalize_cache *b;
+       b=malloc(sizeof(normalize_cache));
+       b->ary=calloc(1<<20,sizeof(VALUE));
+       b->ret=calloc(1<<20,sizeof(VALUE));
+
+       return b;
 }
+void normalize_cache_mark(normalize_cache *b){int i;
+       for(i=0;i<(1<<20);i++) if (b->ary[i])rb_gc_mark(b->ary[i]);
+       for(i=0;i<(1<<20);i++) if (b->ret[i])rb_gc_mark(b->ret[i]);
+}
+void normalize_cache_free(normalize_cache *b){}
+#{cn.map{|e| "VALUE cache_#{e}_gc;"}*""}
+void init_normalize(){
+#{cn.map{|e| "cache_#{e}=normalize_cache_init();
+	cache_#{e}_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_#{e});
+	rb_global_variable(&cache_#{e}_gc);
+  rb_define_method(rb_const_get(rb_cObject,rb_intern(\"#{e}\")),\"normalize\",normalize_#{e},0);"
+}*""}
+}
+"
+
 
 Placeholder=Consts.new("Placeholder");FAIL=Consts.new("FAIL")
 
