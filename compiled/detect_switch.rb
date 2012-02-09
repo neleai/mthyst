@@ -832,6 +832,6 @@ def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'2b1082307705c6b513f054ee72756406'
+'cf37dd42b2bb9e128e4883790c6e5f3c'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

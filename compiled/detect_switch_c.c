@@ -746,7 +746,7 @@ static VALUE sy_Minsize_Dataflow_lattice_lb__bbba;
 static VALUE sy_Minsize_Dataflow_lattice_lb__fdee;
 VALUE Minsize_Dataflow_first(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,_autovar_2,_autovar_3,_str,_autovar_4,_autovar_5,_autovar_6,__result;
+    VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,_str,_autovar_7,_autovar_8,_autovar_9,_autovar_10,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -778,246 +778,445 @@ alt1_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        int oldpos2=ptr->pos;
-        int cut2=0;
-alt2_1:
-        ;
         it=AmethystCore_anything(self );
-        FAILTEST(alt2_2);
+        FAILTEST(pass1);
         _autovar_2=it;;
-        cstruct oldpass2=*ptr;
-        ptr->pos=ptr->len=0;
-        ptr->ary=NULL;
-        ptr->src=_autovar_2;
-        if(TYPE(ptr->src)==T_STRING) {
-            ptr->str=RSTRING_PTR(ptr->src);
-            ptr->len=RSTRING_LEN(ptr->src);
-        }
-        else {
-            VALUE ary;
-            if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
-            ptr->ary2=ary;
-            ptr->ary=RARRAY_PTR(ary);
-            ptr->len=RARRAY_LEN(ary);
-        }
-        it=Amethyst_spaces(self );
-        switch((unsigned char)*ame_curstr2(ptr)) {
-        case UC(0) ... '^':
-            ;
-        case '`' ... UC(255):
-            ;
-            goto pass2;
-            break;
-        case '_' ... '_':
-            ;
-            it=rb_str_new(ptr->str+ptr->pos,1);
-            ptr->pos++;
-            if (ame_curstr2(ptr)[0]=='s'&&ame_curstr2(ptr)[1]=='e'&&ame_curstr2(ptr)[2]=='q')  ptr->pos+=3;
-            else goto pass2;
-            break;
-        }
-        it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
-        goto success2;
-pass2:
-        *ptr=oldpass2;
-        goto alt2_2;
-success2:
-        *ptr=oldpass2;
+        it=_autovar_2;
+        _autovar_3=it;;
         switch(FIX2LONG(rb_hash_aref(switchhash_Minsize_Dataflow_2,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*CAct*/:
             ;
+            it=_autovar_3;
+            _autovar_4=it;;
+            int oldpos2=ptr->pos;
+            int cut2=0;
+alt2_1:
+            ;
+            it=_autovar_4;
+            _autovar_5=it;;
+            cstruct oldpass2=*ptr;
+            ptr->pos=ptr->len=0;
+            ptr->ary=NULL;
+            ptr->src=_autovar_5;
+            if(TYPE(ptr->src)==T_STRING) {
+                ptr->str=RSTRING_PTR(ptr->src);
+                ptr->len=RSTRING_LEN(ptr->src);
+            }
+            else {
+                VALUE ary;
+                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
+                ptr->ary=RARRAY_PTR(ary);
+                ptr->len=RARRAY_LEN(ary);
+            }
+            it=Amethyst_spaces(self );
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... '^':
+                ;
+            case '`' ... UC(255):
+                ;
+                goto pass2;
+                break;
+            case '_' ... '_':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='s'&&ame_curstr2(ptr)[1]=='e'&&ame_curstr2(ptr)[2]=='q')  ptr->pos+=3;
+                else goto pass2;
+                break;
+            }
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass2;
+            goto success2;
+pass2:
+            *ptr=oldpass2;
+            goto alt2_2;
+success2:
+            *ptr=oldpass2;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
-            _autovar_3=it;;
+            _autovar_6=it;;
+            cstruct oldpass3=*ptr;
+            ptr->pos=ptr->len=0;
+            ptr->ary=NULL;
+            ptr->src=_autovar_6;
+            if(TYPE(ptr->src)==T_STRING) {
+                ptr->str=RSTRING_PTR(ptr->src);
+                ptr->len=RSTRING_LEN(ptr->src);
+            }
+            else {
+                VALUE ary;
+                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
+                ptr->ary=RARRAY_PTR(ary);
+                ptr->len=RARRAY_LEN(ary);
+            }
+            it=AmethystCore_anything(self );
+            FAILTEST(pass3);
+            _str=it;;
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass3;
+            goto success3;
+pass3:
+            *ptr=oldpass3;
+            goto alt2_2;
+success3:
+            *ptr=oldpass3;
+            bind_aset(bind2,1,_str);
+            it=rb_funcall(self,sy_Minsize_Dataflow_lattice_lb__bbba,1,bind2);
+            _str=bind_aget(bind2,1);;
+            _autovar_7=it;;
+
+            ;
+            goto accept2;
+alt2_2:
+            ptr->pos=oldpos2;
+            it=_autovar_4;
+            _autovar_8=it;;
+            cstruct oldpass4=*ptr;
+            ptr->pos=ptr->len=0;
+            ptr->ary=NULL;
+            ptr->src=_autovar_8;
+            if(TYPE(ptr->src)==T_STRING) {
+                ptr->str=RSTRING_PTR(ptr->src);
+                ptr->len=RSTRING_LEN(ptr->src);
+            }
+            else {
+                VALUE ary;
+                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
+                ptr->ary=RARRAY_PTR(ary);
+                ptr->len=RARRAY_LEN(ary);
+            }
+            it=Amethyst_spaces(self );
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... '`':
+                ;
+            case 'b' ... 'b':
+                ;
+            case 'd' ... 'q':
+                ;
+            case 's' ... UC(255):
+                ;
+                goto pass4;
+                break;
+            case 'r' ... 'r':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='g'&&ame_curstr2(ptr)[2]=='c'&&ame_curstr2(ptr)[3]=='h')  ptr->pos+=4;
+                else goto pass4;
+                break;
+            case 'a' ... 'a':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                int oldpos3=ptr->pos;
+                int cut3=0;
+alt3_1:
+                ;
+                if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
+                else goto alt3_2;
+                ;
+                goto accept3;
+alt3_2:
+                ptr->pos=oldpos3;
+                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='h'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='r')  ptr->pos+=11;
+                else goto alt3_3;
+                ;
+                goto accept3;
+alt3_3:
+                ptr->pos=oldpos3;
+                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
+                else goto alt3_4;
+                ;
+                goto accept3;
+alt3_4:
+                ptr->pos=oldpos3;
+                goto pass4;
+accept3:
+                ;
+                break;
+            case 'c' ... 'c':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='l'&&ame_curstr2(ptr)[1]=='a'&&ame_curstr2(ptr)[2]=='s')  ptr->pos+=3;
+                else goto pass4;
+                break;
+            }
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass4;
+            goto success4;
+pass4:
+            *ptr=oldpass4;
+            goto alt2_3;
+success4:
+            *ptr=oldpass4;
+            ptr->pos=ptr->len;
+            it=rb_funcall(self,sy_Minsize_Dataflow_lattice_lb__fdee,1,bind2);
+            _autovar_7=it;;
+
+            ;
+            goto accept2;
+alt2_3:
+            ptr->pos=oldpos2;
+            it=_autovar_4;
+            _autovar_9=it;;
+            cstruct oldpass5=*ptr;
+            ptr->pos=ptr->len=0;
+            ptr->ary=NULL;
+            ptr->src=_autovar_9;
+            if(TYPE(ptr->src)==T_STRING) {
+                ptr->str=RSTRING_PTR(ptr->src);
+                ptr->len=RSTRING_LEN(ptr->src);
+            }
+            else {
+                VALUE ary;
+                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
+                ptr->ary=RARRAY_PTR(ary);
+                ptr->len=RARRAY_LEN(ary);
+            }
+            it=Amethyst_spaces(self );
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... 'e':
+                ;
+            case 'g' ... UC(255):
+                ;
+                goto pass5;
+                break;
+            case 'f' ... 'f':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='a'&&ame_curstr2(ptr)[1]=='i'&&ame_curstr2(ptr)[2]=='l'&&ame_curstr2(ptr)[3]=='s')  ptr->pos+=4;
+                else goto pass5;
+                break;
+            }
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass5;
+            goto success5;
+pass5:
+            *ptr=oldpass5;
+            goto alt2_4;
+success5:
+            *ptr=oldpass5;
+            it=rb_funcall(self,sy_Minsize_Dataflow_lattice_dot__e0e5,1,bind2);
+            _autovar_7=it;;
+
+            ;
+            goto accept2;
+alt2_4:
+            ptr->pos=oldpos2;
+            goto pass1;
+accept2:
+            ;
             break;
         case 1/*Object*/:
             ;
-            goto alt2_2;
-            break;
-        }
-        cstruct oldpass3=*ptr;
-        ptr->pos=ptr->len=0;
-        ptr->ary=NULL;
-        ptr->src=_autovar_3;
-        if(TYPE(ptr->src)==T_STRING) {
-            ptr->str=RSTRING_PTR(ptr->src);
-            ptr->len=RSTRING_LEN(ptr->src);
-        }
-        else {
-            VALUE ary;
-            if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
-            ptr->ary2=ary;
-            ptr->ary=RARRAY_PTR(ary);
-            ptr->len=RARRAY_LEN(ary);
-        }
-        it=AmethystCore_anything(self );
-        FAILTEST(pass3);
-        _str=it;;
-        it=Qnil;
-        if (ptr->pos<ptr->len) goto pass3;
-        goto success3;
-pass3:
-        *ptr=oldpass3;
-        goto alt2_2;
-success3:
-        *ptr=oldpass3;
-        bind_aset(bind2,1,_str);
-        it=rb_funcall(self,sy_Minsize_Dataflow_lattice_lb__bbba,1,bind2);
-        _str=bind_aget(bind2,1);;
-        _autovar_4=it;;
+            it=_autovar_3;
+            _autovar_10=it;;
+            int oldpos4=ptr->pos;
+            int cut4=0;
+alt4_1:
+            ;
+            it=_autovar_10;
+            _autovar_5=it;;
+            cstruct oldpass6=*ptr;
+            ptr->pos=ptr->len=0;
+            ptr->ary=NULL;
+            ptr->src=_autovar_5;
+            if(TYPE(ptr->src)==T_STRING) {
+                ptr->str=RSTRING_PTR(ptr->src);
+                ptr->len=RSTRING_LEN(ptr->src);
+            }
+            else {
+                VALUE ary;
+                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
+                ptr->ary=RARRAY_PTR(ary);
+                ptr->len=RARRAY_LEN(ary);
+            }
+            it=Amethyst_spaces(self );
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... '^':
+                ;
+            case '`' ... UC(255):
+                ;
+                goto pass6;
+                break;
+            case '_' ... '_':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='s'&&ame_curstr2(ptr)[1]=='e'&&ame_curstr2(ptr)[2]=='q')  ptr->pos+=3;
+                else goto pass6;
+                break;
+            }
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass6;
+            goto success6;
+pass6:
+            *ptr=oldpass6;
+            goto alt4_2;
+success6:
+            *ptr=oldpass6;
+            goto alt4_2;
+            ;
+            goto accept4;
+alt4_2:
+            ptr->pos=oldpos4;
+            it=_autovar_10;
+            _autovar_8=it;;
+            cstruct oldpass7=*ptr;
+            ptr->pos=ptr->len=0;
+            ptr->ary=NULL;
+            ptr->src=_autovar_8;
+            if(TYPE(ptr->src)==T_STRING) {
+                ptr->str=RSTRING_PTR(ptr->src);
+                ptr->len=RSTRING_LEN(ptr->src);
+            }
+            else {
+                VALUE ary;
+                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
+                ptr->ary=RARRAY_PTR(ary);
+                ptr->len=RARRAY_LEN(ary);
+            }
+            it=Amethyst_spaces(self );
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... '`':
+                ;
+            case 'b' ... 'b':
+                ;
+            case 'd' ... 'q':
+                ;
+            case 's' ... UC(255):
+                ;
+                goto pass7;
+                break;
+            case 'r' ... 'r':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='g'&&ame_curstr2(ptr)[2]=='c'&&ame_curstr2(ptr)[3]=='h')  ptr->pos+=4;
+                else goto pass7;
+                break;
+            case 'a' ... 'a':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                int oldpos5=ptr->pos;
+                int cut5=0;
+alt5_1:
+                ;
+                if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
+                else goto alt5_2;
+                ;
+                goto accept5;
+alt5_2:
+                ptr->pos=oldpos5;
+                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='h'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='r')  ptr->pos+=11;
+                else goto alt5_3;
+                ;
+                goto accept5;
+alt5_3:
+                ptr->pos=oldpos5;
+                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
+                else goto alt5_4;
+                ;
+                goto accept5;
+alt5_4:
+                ptr->pos=oldpos5;
+                goto pass7;
+accept5:
+                ;
+                break;
+            case 'c' ... 'c':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='l'&&ame_curstr2(ptr)[1]=='a'&&ame_curstr2(ptr)[2]=='s')  ptr->pos+=3;
+                else goto pass7;
+                break;
+            }
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass7;
+            goto success7;
+pass7:
+            *ptr=oldpass7;
+            goto alt4_3;
+success7:
+            *ptr=oldpass7;
+            ptr->pos=ptr->len;
+            it=rb_funcall(self,sy_Minsize_Dataflow_lattice_lb__fdee,1,bind2);
+            _autovar_7=it;;
 
-        ;
-        goto accept2;
-alt2_2:
-        ptr->pos=oldpos2;
-        it=AmethystCore_anything(self );
-        FAILTEST(alt2_3);
-        _autovar_5=it;;
-        cstruct oldpass4=*ptr;
-        ptr->pos=ptr->len=0;
-        ptr->ary=NULL;
-        ptr->src=_autovar_5;
-        if(TYPE(ptr->src)==T_STRING) {
-            ptr->str=RSTRING_PTR(ptr->src);
-            ptr->len=RSTRING_LEN(ptr->src);
-        }
-        else {
-            VALUE ary;
-            if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
-            ptr->ary2=ary;
-            ptr->ary=RARRAY_PTR(ary);
-            ptr->len=RARRAY_LEN(ary);
-        }
-        it=Amethyst_spaces(self );
-        switch((unsigned char)*ame_curstr2(ptr)) {
-        case UC(0) ... '`':
             ;
-        case 'b' ... 'b':
-            ;
-        case 'd' ... 'q':
-            ;
-        case 's' ... UC(255):
-            ;
-            goto pass4;
-            break;
-        case 'r' ... 'r':
-            ;
-            it=rb_str_new(ptr->str+ptr->pos,1);
-            ptr->pos++;
-            if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='g'&&ame_curstr2(ptr)[2]=='c'&&ame_curstr2(ptr)[3]=='h')  ptr->pos+=4;
-            else goto pass4;
-            break;
-        case 'a' ... 'a':
-            ;
-            it=rb_str_new(ptr->str+ptr->pos,1);
-            ptr->pos++;
-            int oldpos3=ptr->pos;
-            int cut3=0;
-alt3_1:
-            ;
-            if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
-            else goto alt3_2;
-            ;
-            goto accept3;
-alt3_2:
-            ptr->pos=oldpos3;
-            if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='h'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='r')  ptr->pos+=11;
-            else goto alt3_3;
-            ;
-            goto accept3;
-alt3_3:
-            ptr->pos=oldpos3;
-            if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
-            else goto alt3_4;
-            ;
-            goto accept3;
-alt3_4:
-            ptr->pos=oldpos3;
-            goto pass4;
-accept3:
-            ;
-            break;
-        case 'c' ... 'c':
-            ;
-            it=rb_str_new(ptr->str+ptr->pos,1);
-            ptr->pos++;
-            if (ame_curstr2(ptr)[0]=='l'&&ame_curstr2(ptr)[1]=='a'&&ame_curstr2(ptr)[2]=='s')  ptr->pos+=3;
-            else goto pass4;
-            break;
-        }
-        it=Qnil;
-        if (ptr->pos<ptr->len) goto pass4;
-        goto success4;
-pass4:
-        *ptr=oldpass4;
-        goto alt2_3;
-success4:
-        *ptr=oldpass4;
-        ptr->pos=ptr->len;
-        it=rb_funcall(self,sy_Minsize_Dataflow_lattice_lb__fdee,1,bind2);
-        _autovar_4=it;;
+            goto accept4;
+alt4_3:
+            ptr->pos=oldpos4;
+            it=_autovar_10;
+            _autovar_9=it;;
+            cstruct oldpass8=*ptr;
+            ptr->pos=ptr->len=0;
+            ptr->ary=NULL;
+            ptr->src=_autovar_9;
+            if(TYPE(ptr->src)==T_STRING) {
+                ptr->str=RSTRING_PTR(ptr->src);
+                ptr->len=RSTRING_LEN(ptr->src);
+            }
+            else {
+                VALUE ary;
+                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
+                ptr->ary=RARRAY_PTR(ary);
+                ptr->len=RARRAY_LEN(ary);
+            }
+            it=Amethyst_spaces(self );
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... 'e':
+                ;
+            case 'g' ... UC(255):
+                ;
+                goto pass8;
+                break;
+            case 'f' ... 'f':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='a'&&ame_curstr2(ptr)[1]=='i'&&ame_curstr2(ptr)[2]=='l'&&ame_curstr2(ptr)[3]=='s')  ptr->pos+=4;
+                else goto pass8;
+                break;
+            }
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass8;
+            goto success8;
+pass8:
+            *ptr=oldpass8;
+            goto alt4_4;
+success8:
+            *ptr=oldpass8;
+            it=rb_funcall(self,sy_Minsize_Dataflow_lattice_dot__e0e5,1,bind2);
+            _autovar_7=it;;
 
-        ;
-        goto accept2;
-alt2_3:
-        ptr->pos=oldpos2;
-        it=AmethystCore_anything(self );
-        FAILTEST(alt2_4);
-        _autovar_6=it;;
-        cstruct oldpass5=*ptr;
-        ptr->pos=ptr->len=0;
-        ptr->ary=NULL;
-        ptr->src=_autovar_6;
-        if(TYPE(ptr->src)==T_STRING) {
-            ptr->str=RSTRING_PTR(ptr->src);
-            ptr->len=RSTRING_LEN(ptr->src);
-        }
-        else {
-            VALUE ary;
-            if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
-            ptr->ary2=ary;
-            ptr->ary=RARRAY_PTR(ary);
-            ptr->len=RARRAY_LEN(ary);
-        }
-        it=Amethyst_spaces(self );
-        switch((unsigned char)*ame_curstr2(ptr)) {
-        case UC(0) ... 'e':
             ;
-        case 'g' ... UC(255):
+            goto accept4;
+alt4_4:
+            ptr->pos=oldpos4;
+            goto pass1;
+accept4:
             ;
-            goto pass5;
-            break;
-        case 'f' ... 'f':
-            ;
-            it=rb_str_new(ptr->str+ptr->pos,1);
-            ptr->pos++;
-            if (ame_curstr2(ptr)[0]=='a'&&ame_curstr2(ptr)[1]=='i'&&ame_curstr2(ptr)[2]=='l'&&ame_curstr2(ptr)[3]=='s')  ptr->pos+=4;
-            else goto pass5;
             break;
         }
-        it=Qnil;
-        if (ptr->pos<ptr->len) goto pass5;
-        goto success5;
-pass5:
-        *ptr=oldpass5;
-        goto alt2_4;
-success5:
-        *ptr=oldpass5;
-        it=rb_funcall(self,sy_Minsize_Dataflow_lattice_dot__e0e5,1,bind2);
-        _autovar_4=it;;
-
-        ;
-        goto accept2;
-alt2_4:
-        ptr->pos=oldpos2;
-        goto pass1;
-accept2:
-        ;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass1;
         goto success1;
@@ -1026,7 +1225,7 @@ pass1:
         goto alt1_2;
 success1:
         *ptr=oldpass1;
-        it=_autovar_4;
+        it=_autovar_7;
         __result=it;;
 
         ;
@@ -1741,7 +1940,7 @@ static VALUE sy_Maxsize_Dataflow_lattice_lb__bbba;
 static VALUE sy_Maxsize_Dataflow_lattice_lb__fdee;
 VALUE Maxsize_Dataflow_first(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,_autovar_2,_autovar_3,_str,_autovar_4,_autovar_5,_autovar_6,__result;
+    VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,_str,_autovar_7,_autovar_8,_autovar_9,_autovar_10,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -1773,246 +1972,445 @@ alt1_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        int oldpos2=ptr->pos;
-        int cut2=0;
-alt2_1:
-        ;
         it=AmethystCore_anything(self );
-        FAILTEST(alt2_2);
+        FAILTEST(pass1);
         _autovar_2=it;;
-        cstruct oldpass2=*ptr;
-        ptr->pos=ptr->len=0;
-        ptr->ary=NULL;
-        ptr->src=_autovar_2;
-        if(TYPE(ptr->src)==T_STRING) {
-            ptr->str=RSTRING_PTR(ptr->src);
-            ptr->len=RSTRING_LEN(ptr->src);
-        }
-        else {
-            VALUE ary;
-            if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
-            ptr->ary2=ary;
-            ptr->ary=RARRAY_PTR(ary);
-            ptr->len=RARRAY_LEN(ary);
-        }
-        it=Amethyst_spaces(self );
-        switch((unsigned char)*ame_curstr2(ptr)) {
-        case UC(0) ... '^':
-            ;
-        case '`' ... UC(255):
-            ;
-            goto pass2;
-            break;
-        case '_' ... '_':
-            ;
-            it=rb_str_new(ptr->str+ptr->pos,1);
-            ptr->pos++;
-            if (ame_curstr2(ptr)[0]=='s'&&ame_curstr2(ptr)[1]=='e'&&ame_curstr2(ptr)[2]=='q')  ptr->pos+=3;
-            else goto pass2;
-            break;
-        }
-        it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
-        goto success2;
-pass2:
-        *ptr=oldpass2;
-        goto alt2_2;
-success2:
-        *ptr=oldpass2;
+        it=_autovar_2;
+        _autovar_3=it;;
         switch(FIX2LONG(rb_hash_aref(switchhash_Maxsize_Dataflow_2,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*CAct*/:
             ;
+            it=_autovar_3;
+            _autovar_4=it;;
+            int oldpos2=ptr->pos;
+            int cut2=0;
+alt2_1:
+            ;
+            it=_autovar_4;
+            _autovar_5=it;;
+            cstruct oldpass2=*ptr;
+            ptr->pos=ptr->len=0;
+            ptr->ary=NULL;
+            ptr->src=_autovar_5;
+            if(TYPE(ptr->src)==T_STRING) {
+                ptr->str=RSTRING_PTR(ptr->src);
+                ptr->len=RSTRING_LEN(ptr->src);
+            }
+            else {
+                VALUE ary;
+                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
+                ptr->ary=RARRAY_PTR(ary);
+                ptr->len=RARRAY_LEN(ary);
+            }
+            it=Amethyst_spaces(self );
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... '^':
+                ;
+            case '`' ... UC(255):
+                ;
+                goto pass2;
+                break;
+            case '_' ... '_':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='s'&&ame_curstr2(ptr)[1]=='e'&&ame_curstr2(ptr)[2]=='q')  ptr->pos+=3;
+                else goto pass2;
+                break;
+            }
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass2;
+            goto success2;
+pass2:
+            *ptr=oldpass2;
+            goto alt2_2;
+success2:
+            *ptr=oldpass2;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
-            _autovar_3=it;;
+            _autovar_6=it;;
+            cstruct oldpass3=*ptr;
+            ptr->pos=ptr->len=0;
+            ptr->ary=NULL;
+            ptr->src=_autovar_6;
+            if(TYPE(ptr->src)==T_STRING) {
+                ptr->str=RSTRING_PTR(ptr->src);
+                ptr->len=RSTRING_LEN(ptr->src);
+            }
+            else {
+                VALUE ary;
+                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
+                ptr->ary=RARRAY_PTR(ary);
+                ptr->len=RARRAY_LEN(ary);
+            }
+            it=AmethystCore_anything(self );
+            FAILTEST(pass3);
+            _str=it;;
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass3;
+            goto success3;
+pass3:
+            *ptr=oldpass3;
+            goto alt2_2;
+success3:
+            *ptr=oldpass3;
+            bind_aset(bind2,1,_str);
+            it=rb_funcall(self,sy_Maxsize_Dataflow_lattice_lb__bbba,1,bind2);
+            _str=bind_aget(bind2,1);;
+            _autovar_7=it;;
+
+            ;
+            goto accept2;
+alt2_2:
+            ptr->pos=oldpos2;
+            it=_autovar_4;
+            _autovar_8=it;;
+            cstruct oldpass4=*ptr;
+            ptr->pos=ptr->len=0;
+            ptr->ary=NULL;
+            ptr->src=_autovar_8;
+            if(TYPE(ptr->src)==T_STRING) {
+                ptr->str=RSTRING_PTR(ptr->src);
+                ptr->len=RSTRING_LEN(ptr->src);
+            }
+            else {
+                VALUE ary;
+                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
+                ptr->ary=RARRAY_PTR(ary);
+                ptr->len=RARRAY_LEN(ary);
+            }
+            it=Amethyst_spaces(self );
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... '`':
+                ;
+            case 'b' ... 'b':
+                ;
+            case 'd' ... 'q':
+                ;
+            case 's' ... UC(255):
+                ;
+                goto pass4;
+                break;
+            case 'r' ... 'r':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='g'&&ame_curstr2(ptr)[2]=='c'&&ame_curstr2(ptr)[3]=='h')  ptr->pos+=4;
+                else goto pass4;
+                break;
+            case 'a' ... 'a':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                int oldpos3=ptr->pos;
+                int cut3=0;
+alt3_1:
+                ;
+                if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
+                else goto alt3_2;
+                ;
+                goto accept3;
+alt3_2:
+                ptr->pos=oldpos3;
+                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='h'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='r')  ptr->pos+=11;
+                else goto alt3_3;
+                ;
+                goto accept3;
+alt3_3:
+                ptr->pos=oldpos3;
+                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
+                else goto alt3_4;
+                ;
+                goto accept3;
+alt3_4:
+                ptr->pos=oldpos3;
+                goto pass4;
+accept3:
+                ;
+                break;
+            case 'c' ... 'c':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='l'&&ame_curstr2(ptr)[1]=='a'&&ame_curstr2(ptr)[2]=='s')  ptr->pos+=3;
+                else goto pass4;
+                break;
+            }
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass4;
+            goto success4;
+pass4:
+            *ptr=oldpass4;
+            goto alt2_3;
+success4:
+            *ptr=oldpass4;
+            ptr->pos=ptr->len;
+            it=rb_funcall(self,sy_Maxsize_Dataflow_lattice_lb__fdee,1,bind2);
+            _autovar_7=it;;
+
+            ;
+            goto accept2;
+alt2_3:
+            ptr->pos=oldpos2;
+            it=_autovar_4;
+            _autovar_9=it;;
+            cstruct oldpass5=*ptr;
+            ptr->pos=ptr->len=0;
+            ptr->ary=NULL;
+            ptr->src=_autovar_9;
+            if(TYPE(ptr->src)==T_STRING) {
+                ptr->str=RSTRING_PTR(ptr->src);
+                ptr->len=RSTRING_LEN(ptr->src);
+            }
+            else {
+                VALUE ary;
+                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
+                ptr->ary=RARRAY_PTR(ary);
+                ptr->len=RARRAY_LEN(ary);
+            }
+            it=Amethyst_spaces(self );
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... 'e':
+                ;
+            case 'g' ... UC(255):
+                ;
+                goto pass5;
+                break;
+            case 'f' ... 'f':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='a'&&ame_curstr2(ptr)[1]=='i'&&ame_curstr2(ptr)[2]=='l'&&ame_curstr2(ptr)[3]=='s')  ptr->pos+=4;
+                else goto pass5;
+                break;
+            }
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass5;
+            goto success5;
+pass5:
+            *ptr=oldpass5;
+            goto alt2_4;
+success5:
+            *ptr=oldpass5;
+            it=rb_funcall(self,sy_Maxsize_Dataflow_lattice_dot__e0e5,1,bind2);
+            _autovar_7=it;;
+
+            ;
+            goto accept2;
+alt2_4:
+            ptr->pos=oldpos2;
+            goto pass1;
+accept2:
+            ;
             break;
         case 1/*Object*/:
             ;
-            goto alt2_2;
-            break;
-        }
-        cstruct oldpass3=*ptr;
-        ptr->pos=ptr->len=0;
-        ptr->ary=NULL;
-        ptr->src=_autovar_3;
-        if(TYPE(ptr->src)==T_STRING) {
-            ptr->str=RSTRING_PTR(ptr->src);
-            ptr->len=RSTRING_LEN(ptr->src);
-        }
-        else {
-            VALUE ary;
-            if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
-            ptr->ary2=ary;
-            ptr->ary=RARRAY_PTR(ary);
-            ptr->len=RARRAY_LEN(ary);
-        }
-        it=AmethystCore_anything(self );
-        FAILTEST(pass3);
-        _str=it;;
-        it=Qnil;
-        if (ptr->pos<ptr->len) goto pass3;
-        goto success3;
-pass3:
-        *ptr=oldpass3;
-        goto alt2_2;
-success3:
-        *ptr=oldpass3;
-        bind_aset(bind2,1,_str);
-        it=rb_funcall(self,sy_Maxsize_Dataflow_lattice_lb__bbba,1,bind2);
-        _str=bind_aget(bind2,1);;
-        _autovar_4=it;;
+            it=_autovar_3;
+            _autovar_10=it;;
+            int oldpos4=ptr->pos;
+            int cut4=0;
+alt4_1:
+            ;
+            it=_autovar_10;
+            _autovar_5=it;;
+            cstruct oldpass6=*ptr;
+            ptr->pos=ptr->len=0;
+            ptr->ary=NULL;
+            ptr->src=_autovar_5;
+            if(TYPE(ptr->src)==T_STRING) {
+                ptr->str=RSTRING_PTR(ptr->src);
+                ptr->len=RSTRING_LEN(ptr->src);
+            }
+            else {
+                VALUE ary;
+                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
+                ptr->ary=RARRAY_PTR(ary);
+                ptr->len=RARRAY_LEN(ary);
+            }
+            it=Amethyst_spaces(self );
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... '^':
+                ;
+            case '`' ... UC(255):
+                ;
+                goto pass6;
+                break;
+            case '_' ... '_':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='s'&&ame_curstr2(ptr)[1]=='e'&&ame_curstr2(ptr)[2]=='q')  ptr->pos+=3;
+                else goto pass6;
+                break;
+            }
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass6;
+            goto success6;
+pass6:
+            *ptr=oldpass6;
+            goto alt4_2;
+success6:
+            *ptr=oldpass6;
+            goto alt4_2;
+            ;
+            goto accept4;
+alt4_2:
+            ptr->pos=oldpos4;
+            it=_autovar_10;
+            _autovar_8=it;;
+            cstruct oldpass7=*ptr;
+            ptr->pos=ptr->len=0;
+            ptr->ary=NULL;
+            ptr->src=_autovar_8;
+            if(TYPE(ptr->src)==T_STRING) {
+                ptr->str=RSTRING_PTR(ptr->src);
+                ptr->len=RSTRING_LEN(ptr->src);
+            }
+            else {
+                VALUE ary;
+                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
+                ptr->ary=RARRAY_PTR(ary);
+                ptr->len=RARRAY_LEN(ary);
+            }
+            it=Amethyst_spaces(self );
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... '`':
+                ;
+            case 'b' ... 'b':
+                ;
+            case 'd' ... 'q':
+                ;
+            case 's' ... UC(255):
+                ;
+                goto pass7;
+                break;
+            case 'r' ... 'r':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='g'&&ame_curstr2(ptr)[2]=='c'&&ame_curstr2(ptr)[3]=='h')  ptr->pos+=4;
+                else goto pass7;
+                break;
+            case 'a' ... 'a':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                int oldpos5=ptr->pos;
+                int cut5=0;
+alt5_1:
+                ;
+                if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
+                else goto alt5_2;
+                ;
+                goto accept5;
+alt5_2:
+                ptr->pos=oldpos5;
+                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='h'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='r')  ptr->pos+=11;
+                else goto alt5_3;
+                ;
+                goto accept5;
+alt5_3:
+                ptr->pos=oldpos5;
+                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
+                else goto alt5_4;
+                ;
+                goto accept5;
+alt5_4:
+                ptr->pos=oldpos5;
+                goto pass7;
+accept5:
+                ;
+                break;
+            case 'c' ... 'c':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='l'&&ame_curstr2(ptr)[1]=='a'&&ame_curstr2(ptr)[2]=='s')  ptr->pos+=3;
+                else goto pass7;
+                break;
+            }
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass7;
+            goto success7;
+pass7:
+            *ptr=oldpass7;
+            goto alt4_3;
+success7:
+            *ptr=oldpass7;
+            ptr->pos=ptr->len;
+            it=rb_funcall(self,sy_Maxsize_Dataflow_lattice_lb__fdee,1,bind2);
+            _autovar_7=it;;
 
-        ;
-        goto accept2;
-alt2_2:
-        ptr->pos=oldpos2;
-        it=AmethystCore_anything(self );
-        FAILTEST(alt2_3);
-        _autovar_5=it;;
-        cstruct oldpass4=*ptr;
-        ptr->pos=ptr->len=0;
-        ptr->ary=NULL;
-        ptr->src=_autovar_5;
-        if(TYPE(ptr->src)==T_STRING) {
-            ptr->str=RSTRING_PTR(ptr->src);
-            ptr->len=RSTRING_LEN(ptr->src);
-        }
-        else {
-            VALUE ary;
-            if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
-            ptr->ary2=ary;
-            ptr->ary=RARRAY_PTR(ary);
-            ptr->len=RARRAY_LEN(ary);
-        }
-        it=Amethyst_spaces(self );
-        switch((unsigned char)*ame_curstr2(ptr)) {
-        case UC(0) ... '`':
             ;
-        case 'b' ... 'b':
-            ;
-        case 'd' ... 'q':
-            ;
-        case 's' ... UC(255):
-            ;
-            goto pass4;
-            break;
-        case 'r' ... 'r':
-            ;
-            it=rb_str_new(ptr->str+ptr->pos,1);
-            ptr->pos++;
-            if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='g'&&ame_curstr2(ptr)[2]=='c'&&ame_curstr2(ptr)[3]=='h')  ptr->pos+=4;
-            else goto pass4;
-            break;
-        case 'a' ... 'a':
-            ;
-            it=rb_str_new(ptr->str+ptr->pos,1);
-            ptr->pos++;
-            int oldpos3=ptr->pos;
-            int cut3=0;
-alt3_1:
-            ;
-            if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
-            else goto alt3_2;
-            ;
-            goto accept3;
-alt3_2:
-            ptr->pos=oldpos3;
-            if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='h'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='r')  ptr->pos+=11;
-            else goto alt3_3;
-            ;
-            goto accept3;
-alt3_3:
-            ptr->pos=oldpos3;
-            if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
-            else goto alt3_4;
-            ;
-            goto accept3;
-alt3_4:
-            ptr->pos=oldpos3;
-            goto pass4;
-accept3:
-            ;
-            break;
-        case 'c' ... 'c':
-            ;
-            it=rb_str_new(ptr->str+ptr->pos,1);
-            ptr->pos++;
-            if (ame_curstr2(ptr)[0]=='l'&&ame_curstr2(ptr)[1]=='a'&&ame_curstr2(ptr)[2]=='s')  ptr->pos+=3;
-            else goto pass4;
-            break;
-        }
-        it=Qnil;
-        if (ptr->pos<ptr->len) goto pass4;
-        goto success4;
-pass4:
-        *ptr=oldpass4;
-        goto alt2_3;
-success4:
-        *ptr=oldpass4;
-        ptr->pos=ptr->len;
-        it=rb_funcall(self,sy_Maxsize_Dataflow_lattice_lb__fdee,1,bind2);
-        _autovar_4=it;;
+            goto accept4;
+alt4_3:
+            ptr->pos=oldpos4;
+            it=_autovar_10;
+            _autovar_9=it;;
+            cstruct oldpass8=*ptr;
+            ptr->pos=ptr->len=0;
+            ptr->ary=NULL;
+            ptr->src=_autovar_9;
+            if(TYPE(ptr->src)==T_STRING) {
+                ptr->str=RSTRING_PTR(ptr->src);
+                ptr->len=RSTRING_LEN(ptr->src);
+            }
+            else {
+                VALUE ary;
+                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
+                ptr->ary=RARRAY_PTR(ary);
+                ptr->len=RARRAY_LEN(ary);
+            }
+            it=Amethyst_spaces(self );
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... 'e':
+                ;
+            case 'g' ... UC(255):
+                ;
+                goto pass8;
+                break;
+            case 'f' ... 'f':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='a'&&ame_curstr2(ptr)[1]=='i'&&ame_curstr2(ptr)[2]=='l'&&ame_curstr2(ptr)[3]=='s')  ptr->pos+=4;
+                else goto pass8;
+                break;
+            }
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass8;
+            goto success8;
+pass8:
+            *ptr=oldpass8;
+            goto alt4_4;
+success8:
+            *ptr=oldpass8;
+            it=rb_funcall(self,sy_Maxsize_Dataflow_lattice_dot__e0e5,1,bind2);
+            _autovar_7=it;;
 
-        ;
-        goto accept2;
-alt2_3:
-        ptr->pos=oldpos2;
-        it=AmethystCore_anything(self );
-        FAILTEST(alt2_4);
-        _autovar_6=it;;
-        cstruct oldpass5=*ptr;
-        ptr->pos=ptr->len=0;
-        ptr->ary=NULL;
-        ptr->src=_autovar_6;
-        if(TYPE(ptr->src)==T_STRING) {
-            ptr->str=RSTRING_PTR(ptr->src);
-            ptr->len=RSTRING_LEN(ptr->src);
-        }
-        else {
-            VALUE ary;
-            if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
-            ptr->ary2=ary;
-            ptr->ary=RARRAY_PTR(ary);
-            ptr->len=RARRAY_LEN(ary);
-        }
-        it=Amethyst_spaces(self );
-        switch((unsigned char)*ame_curstr2(ptr)) {
-        case UC(0) ... 'e':
             ;
-        case 'g' ... UC(255):
+            goto accept4;
+alt4_4:
+            ptr->pos=oldpos4;
+            goto pass1;
+accept4:
             ;
-            goto pass5;
-            break;
-        case 'f' ... 'f':
-            ;
-            it=rb_str_new(ptr->str+ptr->pos,1);
-            ptr->pos++;
-            if (ame_curstr2(ptr)[0]=='a'&&ame_curstr2(ptr)[1]=='i'&&ame_curstr2(ptr)[2]=='l'&&ame_curstr2(ptr)[3]=='s')  ptr->pos+=4;
-            else goto pass5;
             break;
         }
-        it=Qnil;
-        if (ptr->pos<ptr->len) goto pass5;
-        goto success5;
-pass5:
-        *ptr=oldpass5;
-        goto alt2_4;
-success5:
-        *ptr=oldpass5;
-        it=rb_funcall(self,sy_Maxsize_Dataflow_lattice_dot__e0e5,1,bind2);
-        _autovar_4=it;;
-
-        ;
-        goto accept2;
-alt2_4:
-        ptr->pos=oldpos2;
-        goto pass1;
-accept2:
-        ;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass1;
         goto success1;
@@ -2021,7 +2419,7 @@ pass1:
         goto alt1_2;
 success1:
         *ptr=oldpass1;
-        it=_autovar_4;
+        it=_autovar_7;
         __result=it;;
 
         ;
@@ -2719,7 +3117,6 @@ VALUE Switch_Char_Dataflow_getvalue(VALUE self ,VALUE a0);
 VALUE switchhash_Switch_Char_Dataflow_1;
 VALUE switchhash_Switch_Char_Dataflow_2;
 VALUE switchhash_Switch_Char_Dataflow_3;
-VALUE switchhash_Switch_Char_Dataflow_4;
 static VALUE sy_Switch_Char_Dataflow_Compiler_558e;
 static VALUE sy_Switch_Char_Dataflow__append_lp__d113;
 static VALUE sy_Switch_Char_Dataflow__at_vis_eq_bin_8b89;
@@ -2737,7 +3134,7 @@ static VALUE sy_Switch_Char_Dataflow_lattice_dot__e0e5;
 static VALUE sy_Switch_Char_Dataflow_regchar_lp__90af;
 VALUE Switch_Char_Dataflow_first(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,_autovar_2,_autovar_3,_str,_autovar_4,_autovar_5,_autovar_6,_autovar_7,_autovar_8,__result;
+    VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,_autovar_7,_str,_autovar_8,_autovar_9,_autovar_10,_autovar_11,_autovar_12,_autovar_13,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -2769,295 +3166,693 @@ alt1_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        int oldpos2=ptr->pos;
-        int cut2=0;
-alt2_1:
-        ;
         it=AmethystCore_anything(self );
-        FAILTEST(alt2_2);
+        FAILTEST(pass1);
         _autovar_2=it;;
-        cstruct oldpass2=*ptr;
-        ptr->pos=ptr->len=0;
-        ptr->ary=NULL;
-        ptr->src=_autovar_2;
-        if(TYPE(ptr->src)==T_STRING) {
-            ptr->str=RSTRING_PTR(ptr->src);
-            ptr->len=RSTRING_LEN(ptr->src);
-        }
-        else {
-            VALUE ary;
-            if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
-            ptr->ary2=ary;
-            ptr->ary=RARRAY_PTR(ary);
-            ptr->len=RARRAY_LEN(ary);
-        }
-        it=Amethyst_spaces(self );
-        switch((unsigned char)*ame_curstr2(ptr)) {
-        case UC(0) ... '^':
-            ;
-        case '`' ... UC(255):
-            ;
-            goto pass2;
-            break;
-        case '_' ... '_':
-            ;
-            it=rb_str_new(ptr->str+ptr->pos,1);
-            ptr->pos++;
-            if (ame_curstr2(ptr)[0]=='s'&&ame_curstr2(ptr)[1]=='e'&&ame_curstr2(ptr)[2]=='q')  ptr->pos+=3;
-            else goto pass2;
-            break;
-        }
-        it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
-        goto success2;
-pass2:
-        *ptr=oldpass2;
-        goto alt2_2;
-success2:
-        *ptr=oldpass2;
+        it=_autovar_2;
+        _autovar_3=it;;
         switch(FIX2LONG(rb_hash_aref(switchhash_Switch_Char_Dataflow_2,rb_obj_class(ame_curobj2(ptr))))) {
-        case 0/*CAct*/:
-            ;
-            it=ptr->ary[ptr->pos];            ;
-            ptr->pos++;
-            _autovar_3=it;;
-            break;
-        case 1/*Object*/:
-            ;
-            goto alt2_2;
-            break;
-        }
-        cstruct oldpass3=*ptr;
-        ptr->pos=ptr->len=0;
-        ptr->ary=NULL;
-        ptr->src=_autovar_3;
-        if(TYPE(ptr->src)==T_STRING) {
-            ptr->str=RSTRING_PTR(ptr->src);
-            ptr->len=RSTRING_LEN(ptr->src);
-        }
-        else {
-            VALUE ary;
-            if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
-            ptr->ary2=ary;
-            ptr->ary=RARRAY_PTR(ary);
-            ptr->len=RARRAY_LEN(ary);
-        }
-        it=AmethystCore_anything(self );
-        FAILTEST(pass3);
-        _str=it;;
-        it=Qnil;
-        if (ptr->pos<ptr->len) goto pass3;
-        goto success3;
-pass3:
-        *ptr=oldpass3;
-        goto alt2_2;
-success3:
-        *ptr=oldpass3;
-        bind_aset(bind2,1,_str);
-        it=rb_funcall(self,sy_Switch_Char_Dataflow_firstcha_f284,1,bind2);
-        _str=bind_aget(bind2,1);;
-        _autovar_4=it;;
-
-        ;
-        goto accept2;
-alt2_2:
-        ptr->pos=oldpos2;
-        it=AmethystCore_anything(self );
-        FAILTEST(alt2_3);
-        _autovar_5=it;;
-        cstruct oldpass4=*ptr;
-        ptr->pos=ptr->len=0;
-        ptr->ary=NULL;
-        ptr->src=_autovar_5;
-        if(TYPE(ptr->src)==T_STRING) {
-            ptr->str=RSTRING_PTR(ptr->src);
-            ptr->len=RSTRING_LEN(ptr->src);
-        }
-        else {
-            VALUE ary;
-            if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
-            ptr->ary2=ary;
-            ptr->ary=RARRAY_PTR(ary);
-            ptr->len=RARRAY_LEN(ary);
-        }
-        it=Amethyst_spaces(self );
-        switch((unsigned char)*ame_curstr2(ptr)) {
-        case UC(0) ... 'q':
-            ;
-        case 's' ... UC(255):
-            ;
-            goto pass4;
-            break;
-        case 'r' ... 'r':
-            ;
-            it=rb_str_new(ptr->str+ptr->pos,1);
-            ptr->pos++;
-            if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='g'&&ame_curstr2(ptr)[2]=='c'&&ame_curstr2(ptr)[3]=='h')  ptr->pos+=4;
-            else goto pass4;
-            break;
-        }
-        it=Qnil;
-        if (ptr->pos<ptr->len) goto pass4;
-        goto success4;
-pass4:
-        *ptr=oldpass4;
-        goto alt2_3;
-success4:
-        *ptr=oldpass4;
-        switch(FIX2LONG(rb_hash_aref(switchhash_Switch_Char_Dataflow_3,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*Act*/:
             ;
+            it=_autovar_3;
+            _autovar_4=it;;
+            int oldpos2=ptr->pos;
+            int cut2=0;
+alt2_1:
+            ;
+            it=_autovar_4;
+            _autovar_5=it;;
+            cstruct oldpass2=*ptr;
+            ptr->pos=ptr->len=0;
+            ptr->ary=NULL;
+            ptr->src=_autovar_5;
+            if(TYPE(ptr->src)==T_STRING) {
+                ptr->str=RSTRING_PTR(ptr->src);
+                ptr->len=RSTRING_LEN(ptr->src);
+            }
+            else {
+                VALUE ary;
+                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
+                ptr->ary=RARRAY_PTR(ary);
+                ptr->len=RARRAY_LEN(ary);
+            }
+            it=Amethyst_spaces(self );
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... '^':
+                ;
+            case '`' ... UC(255):
+                ;
+                goto pass2;
+                break;
+            case '_' ... '_':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='s'&&ame_curstr2(ptr)[1]=='e'&&ame_curstr2(ptr)[2]=='q')  ptr->pos+=3;
+                else goto pass2;
+                break;
+            }
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass2;
+            goto success2;
+pass2:
+            *ptr=oldpass2;
+            goto alt2_2;
+success2:
+            *ptr=oldpass2;
+            goto alt2_2;
+            ;
+            goto accept2;
+alt2_2:
+            ptr->pos=oldpos2;
+            it=_autovar_4;
+            _autovar_6=it;;
+            cstruct oldpass3=*ptr;
+            ptr->pos=ptr->len=0;
+            ptr->ary=NULL;
+            ptr->src=_autovar_6;
+            if(TYPE(ptr->src)==T_STRING) {
+                ptr->str=RSTRING_PTR(ptr->src);
+                ptr->len=RSTRING_LEN(ptr->src);
+            }
+            else {
+                VALUE ary;
+                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
+                ptr->ary=RARRAY_PTR(ary);
+                ptr->len=RARRAY_LEN(ary);
+            }
+            it=Amethyst_spaces(self );
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... 'q':
+                ;
+            case 's' ... UC(255):
+                ;
+                goto pass3;
+                break;
+            case 'r' ... 'r':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='g'&&ame_curstr2(ptr)[2]=='c'&&ame_curstr2(ptr)[3]=='h')  ptr->pos+=4;
+                else goto pass3;
+                break;
+            }
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass3;
+            goto success3;
+pass3:
+            *ptr=oldpass3;
+            goto alt2_3;
+success3:
+            *ptr=oldpass3;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
-            _autovar_6=it;;
-            break;
-        case 1/*Object*/:
-            ;
+            _autovar_7=it;;
+            cstruct oldpass4=*ptr;
+            ptr->pos=ptr->len=0;
+            ptr->ary=NULL;
+            ptr->src=_autovar_7;
+            if(TYPE(ptr->src)==T_STRING) {
+                ptr->str=RSTRING_PTR(ptr->src);
+                ptr->len=RSTRING_LEN(ptr->src);
+            }
+            else {
+                VALUE ary;
+                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
+                ptr->ary=RARRAY_PTR(ary);
+                ptr->len=RARRAY_LEN(ary);
+            }
+            it=AmethystCore_anything(self );
+            FAILTEST(pass4);
+            _str=it;;
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass4;
+            goto success4;
+pass4:
+            *ptr=oldpass4;
             goto alt2_3;
-            break;
-        }
-        cstruct oldpass5=*ptr;
-        ptr->pos=ptr->len=0;
-        ptr->ary=NULL;
-        ptr->src=_autovar_6;
-        if(TYPE(ptr->src)==T_STRING) {
-            ptr->str=RSTRING_PTR(ptr->src);
-            ptr->len=RSTRING_LEN(ptr->src);
-        }
-        else {
-            VALUE ary;
-            if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
-            ptr->ary2=ary;
-            ptr->ary=RARRAY_PTR(ary);
-            ptr->len=RARRAY_LEN(ary);
-        }
-        it=AmethystCore_anything(self );
-        FAILTEST(pass5);
-        _str=it;;
-        it=Qnil;
-        if (ptr->pos<ptr->len) goto pass5;
-        goto success5;
-pass5:
-        *ptr=oldpass5;
-        goto alt2_3;
-success5:
-        *ptr=oldpass5;
-        bind_aset(bind2,1,_str);
-        it=rb_funcall(self,sy_Switch_Char_Dataflow_regchar_lp__90af,1,bind2);
-        _str=bind_aget(bind2,1);;
-        _autovar_4=it;;
+success4:
+            *ptr=oldpass4;
+            bind_aset(bind2,1,_str);
+            it=rb_funcall(self,sy_Switch_Char_Dataflow_regchar_lp__90af,1,bind2);
+            _str=bind_aget(bind2,1);;
+            _autovar_8=it;;
 
-        ;
-        goto accept2;
+            ;
+            goto accept2;
 alt2_3:
-        ptr->pos=oldpos2;
-        it=AmethystCore_anything(self );
-        FAILTEST(alt2_4);
-        _autovar_7=it;;
-        cstruct oldpass6=*ptr;
-        ptr->pos=ptr->len=0;
-        ptr->ary=NULL;
-        ptr->src=_autovar_7;
-        if(TYPE(ptr->src)==T_STRING) {
-            ptr->str=RSTRING_PTR(ptr->src);
-            ptr->len=RSTRING_LEN(ptr->src);
-        }
-        else {
-            VALUE ary;
-            if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
-            ptr->ary2=ary;
-            ptr->ary=RARRAY_PTR(ary);
-            ptr->len=RARRAY_LEN(ary);
-        }
-        it=Amethyst_spaces(self );
-        switch((unsigned char)*ame_curstr2(ptr)) {
-        case UC(0) ... '`':
-            ;
-        case 'b' ... UC(255):
-            ;
-            goto pass6;
-            break;
-        case 'a' ... 'a':
-            ;
-            it=rb_str_new(ptr->str+ptr->pos,1);
-            ptr->pos++;
-            if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
-            else goto pass6;
-            break;
-        }
-        it=Qnil;
-        if (ptr->pos<ptr->len) goto pass6;
-        goto success6;
-pass6:
-        *ptr=oldpass6;
-        goto alt2_4;
-success6:
-        *ptr=oldpass6;
-        it=rb_funcall(self,sy_Switch_Char_Dataflow_lattice_dot__e0e5,1,bind2);
-        _autovar_4=it;;
+            ptr->pos=oldpos2;
+            it=_autovar_4;
+            _autovar_9=it;;
+            cstruct oldpass5=*ptr;
+            ptr->pos=ptr->len=0;
+            ptr->ary=NULL;
+            ptr->src=_autovar_9;
+            if(TYPE(ptr->src)==T_STRING) {
+                ptr->str=RSTRING_PTR(ptr->src);
+                ptr->len=RSTRING_LEN(ptr->src);
+            }
+            else {
+                VALUE ary;
+                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
+                ptr->ary=RARRAY_PTR(ary);
+                ptr->len=RARRAY_LEN(ary);
+            }
+            it=Amethyst_spaces(self );
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... '`':
+                ;
+            case 'b' ... UC(255):
+                ;
+                goto pass5;
+                break;
+            case 'a' ... 'a':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
+                else goto pass5;
+                break;
+            }
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass5;
+            goto success5;
+pass5:
+            *ptr=oldpass5;
+            goto alt2_4;
+success5:
+            *ptr=oldpass5;
+            it=rb_funcall(self,sy_Switch_Char_Dataflow_lattice_dot__e0e5,1,bind2);
+            _autovar_8=it;;
 
-        ;
-        goto accept2;
+            ;
+            goto accept2;
 alt2_4:
-        ptr->pos=oldpos2;
-        it=AmethystCore_anything(self );
-        FAILTEST(alt2_5);
-        _autovar_8=it;;
-        cstruct oldpass7=*ptr;
-        ptr->pos=ptr->len=0;
-        ptr->ary=NULL;
-        ptr->src=_autovar_8;
-        if(TYPE(ptr->src)==T_STRING) {
-            ptr->str=RSTRING_PTR(ptr->src);
-            ptr->len=RSTRING_LEN(ptr->src);
-        }
-        else {
-            VALUE ary;
-            if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
-            ptr->ary2=ary;
-            ptr->ary=RARRAY_PTR(ary);
-            ptr->len=RARRAY_LEN(ary);
-        }
-        it=Amethyst_spaces(self );
-        switch((unsigned char)*ame_curstr2(ptr)) {
-        case UC(0) ... 'e':
-            ;
-        case 'g' ... UC(255):
-            ;
-            goto pass7;
-            break;
-        case 'f' ... 'f':
-            ;
-            it=rb_str_new(ptr->str+ptr->pos,1);
-            ptr->pos++;
-            if (ame_curstr2(ptr)[0]=='a'&&ame_curstr2(ptr)[1]=='i'&&ame_curstr2(ptr)[2]=='l'&&ame_curstr2(ptr)[3]=='s')  ptr->pos+=4;
-            else goto pass7;
-            break;
-        }
-        it=Qnil;
-        if (ptr->pos<ptr->len) goto pass7;
-        goto success7;
-pass7:
-        *ptr=oldpass7;
-        goto alt2_5;
-success7:
-        *ptr=oldpass7;
-        it=rb_funcall(self,sy_Switch_Char_Dataflow_lattice_dot__5a9e,1,bind2);
-        _autovar_4=it;;
+            ptr->pos=oldpos2;
+            it=_autovar_4;
+            _autovar_10=it;;
+            cstruct oldpass6=*ptr;
+            ptr->pos=ptr->len=0;
+            ptr->ary=NULL;
+            ptr->src=_autovar_10;
+            if(TYPE(ptr->src)==T_STRING) {
+                ptr->str=RSTRING_PTR(ptr->src);
+                ptr->len=RSTRING_LEN(ptr->src);
+            }
+            else {
+                VALUE ary;
+                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
+                ptr->ary=RARRAY_PTR(ary);
+                ptr->len=RARRAY_LEN(ary);
+            }
+            it=Amethyst_spaces(self );
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... 'e':
+                ;
+            case 'g' ... UC(255):
+                ;
+                goto pass6;
+                break;
+            case 'f' ... 'f':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='a'&&ame_curstr2(ptr)[1]=='i'&&ame_curstr2(ptr)[2]=='l'&&ame_curstr2(ptr)[3]=='s')  ptr->pos+=4;
+                else goto pass6;
+                break;
+            }
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass6;
+            goto success6;
+pass6:
+            *ptr=oldpass6;
+            goto alt2_5;
+success6:
+            *ptr=oldpass6;
+            it=rb_funcall(self,sy_Switch_Char_Dataflow_lattice_dot__5a9e,1,bind2);
+            _autovar_8=it;;
 
-        ;
-        goto accept2;
+            ;
+            goto accept2;
 alt2_5:
-        ptr->pos=oldpos2;
-        goto pass1;
+            ptr->pos=oldpos2;
+            goto pass1;
 accept2:
-        ;
+            ;
+            break;
+        case 1/*CAct*/:
+            ;
+            it=_autovar_3;
+            _autovar_11=it;;
+            int oldpos3=ptr->pos;
+            int cut3=0;
+alt3_1:
+            ;
+            it=_autovar_11;
+            _autovar_5=it;;
+            cstruct oldpass7=*ptr;
+            ptr->pos=ptr->len=0;
+            ptr->ary=NULL;
+            ptr->src=_autovar_5;
+            if(TYPE(ptr->src)==T_STRING) {
+                ptr->str=RSTRING_PTR(ptr->src);
+                ptr->len=RSTRING_LEN(ptr->src);
+            }
+            else {
+                VALUE ary;
+                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
+                ptr->ary=RARRAY_PTR(ary);
+                ptr->len=RARRAY_LEN(ary);
+            }
+            it=Amethyst_spaces(self );
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... '^':
+                ;
+            case '`' ... UC(255):
+                ;
+                goto pass7;
+                break;
+            case '_' ... '_':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='s'&&ame_curstr2(ptr)[1]=='e'&&ame_curstr2(ptr)[2]=='q')  ptr->pos+=3;
+                else goto pass7;
+                break;
+            }
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass7;
+            goto success7;
+pass7:
+            *ptr=oldpass7;
+            goto alt3_2;
+success7:
+            *ptr=oldpass7;
+            it=ptr->ary[ptr->pos];            ;
+            ptr->pos++;
+            _autovar_12=it;;
+            cstruct oldpass8=*ptr;
+            ptr->pos=ptr->len=0;
+            ptr->ary=NULL;
+            ptr->src=_autovar_12;
+            if(TYPE(ptr->src)==T_STRING) {
+                ptr->str=RSTRING_PTR(ptr->src);
+                ptr->len=RSTRING_LEN(ptr->src);
+            }
+            else {
+                VALUE ary;
+                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
+                ptr->ary=RARRAY_PTR(ary);
+                ptr->len=RARRAY_LEN(ary);
+            }
+            it=AmethystCore_anything(self );
+            FAILTEST(pass8);
+            _str=it;;
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass8;
+            goto success8;
+pass8:
+            *ptr=oldpass8;
+            goto alt3_2;
+success8:
+            *ptr=oldpass8;
+            bind_aset(bind2,1,_str);
+            it=rb_funcall(self,sy_Switch_Char_Dataflow_firstcha_f284,1,bind2);
+            _str=bind_aget(bind2,1);;
+            _autovar_8=it;;
+
+            ;
+            goto accept3;
+alt3_2:
+            ptr->pos=oldpos3;
+            it=_autovar_11;
+            _autovar_6=it;;
+            cstruct oldpass9=*ptr;
+            ptr->pos=ptr->len=0;
+            ptr->ary=NULL;
+            ptr->src=_autovar_6;
+            if(TYPE(ptr->src)==T_STRING) {
+                ptr->str=RSTRING_PTR(ptr->src);
+                ptr->len=RSTRING_LEN(ptr->src);
+            }
+            else {
+                VALUE ary;
+                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
+                ptr->ary=RARRAY_PTR(ary);
+                ptr->len=RARRAY_LEN(ary);
+            }
+            it=Amethyst_spaces(self );
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... 'q':
+                ;
+            case 's' ... UC(255):
+                ;
+                goto pass9;
+                break;
+            case 'r' ... 'r':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='g'&&ame_curstr2(ptr)[2]=='c'&&ame_curstr2(ptr)[3]=='h')  ptr->pos+=4;
+                else goto pass9;
+                break;
+            }
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass9;
+            goto success9;
+pass9:
+            *ptr=oldpass9;
+            goto alt3_3;
+success9:
+            *ptr=oldpass9;
+            goto alt3_3;
+            ;
+            goto accept3;
+alt3_3:
+            ptr->pos=oldpos3;
+            it=_autovar_11;
+            _autovar_9=it;;
+            cstruct oldpass10=*ptr;
+            ptr->pos=ptr->len=0;
+            ptr->ary=NULL;
+            ptr->src=_autovar_9;
+            if(TYPE(ptr->src)==T_STRING) {
+                ptr->str=RSTRING_PTR(ptr->src);
+                ptr->len=RSTRING_LEN(ptr->src);
+            }
+            else {
+                VALUE ary;
+                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
+                ptr->ary=RARRAY_PTR(ary);
+                ptr->len=RARRAY_LEN(ary);
+            }
+            it=Amethyst_spaces(self );
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... '`':
+                ;
+            case 'b' ... UC(255):
+                ;
+                goto pass10;
+                break;
+            case 'a' ... 'a':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
+                else goto pass10;
+                break;
+            }
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass10;
+            goto success10;
+pass10:
+            *ptr=oldpass10;
+            goto alt3_4;
+success10:
+            *ptr=oldpass10;
+            it=rb_funcall(self,sy_Switch_Char_Dataflow_lattice_dot__e0e5,1,bind2);
+            _autovar_8=it;;
+
+            ;
+            goto accept3;
+alt3_4:
+            ptr->pos=oldpos3;
+            it=_autovar_11;
+            _autovar_10=it;;
+            cstruct oldpass11=*ptr;
+            ptr->pos=ptr->len=0;
+            ptr->ary=NULL;
+            ptr->src=_autovar_10;
+            if(TYPE(ptr->src)==T_STRING) {
+                ptr->str=RSTRING_PTR(ptr->src);
+                ptr->len=RSTRING_LEN(ptr->src);
+            }
+            else {
+                VALUE ary;
+                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
+                ptr->ary=RARRAY_PTR(ary);
+                ptr->len=RARRAY_LEN(ary);
+            }
+            it=Amethyst_spaces(self );
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... 'e':
+                ;
+            case 'g' ... UC(255):
+                ;
+                goto pass11;
+                break;
+            case 'f' ... 'f':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='a'&&ame_curstr2(ptr)[1]=='i'&&ame_curstr2(ptr)[2]=='l'&&ame_curstr2(ptr)[3]=='s')  ptr->pos+=4;
+                else goto pass11;
+                break;
+            }
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass11;
+            goto success11;
+pass11:
+            *ptr=oldpass11;
+            goto alt3_5;
+success11:
+            *ptr=oldpass11;
+            it=rb_funcall(self,sy_Switch_Char_Dataflow_lattice_dot__5a9e,1,bind2);
+            _autovar_8=it;;
+
+            ;
+            goto accept3;
+alt3_5:
+            ptr->pos=oldpos3;
+            goto pass1;
+accept3:
+            ;
+            break;
+        case 2/*Object*/:
+            ;
+            it=_autovar_3;
+            _autovar_13=it;;
+            int oldpos4=ptr->pos;
+            int cut4=0;
+alt4_1:
+            ;
+            it=_autovar_13;
+            _autovar_5=it;;
+            cstruct oldpass12=*ptr;
+            ptr->pos=ptr->len=0;
+            ptr->ary=NULL;
+            ptr->src=_autovar_5;
+            if(TYPE(ptr->src)==T_STRING) {
+                ptr->str=RSTRING_PTR(ptr->src);
+                ptr->len=RSTRING_LEN(ptr->src);
+            }
+            else {
+                VALUE ary;
+                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
+                ptr->ary=RARRAY_PTR(ary);
+                ptr->len=RARRAY_LEN(ary);
+            }
+            it=Amethyst_spaces(self );
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... '^':
+                ;
+            case '`' ... UC(255):
+                ;
+                goto pass12;
+                break;
+            case '_' ... '_':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='s'&&ame_curstr2(ptr)[1]=='e'&&ame_curstr2(ptr)[2]=='q')  ptr->pos+=3;
+                else goto pass12;
+                break;
+            }
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass12;
+            goto success12;
+pass12:
+            *ptr=oldpass12;
+            goto alt4_2;
+success12:
+            *ptr=oldpass12;
+            goto alt4_2;
+            ;
+            goto accept4;
+alt4_2:
+            ptr->pos=oldpos4;
+            it=_autovar_13;
+            _autovar_6=it;;
+            cstruct oldpass13=*ptr;
+            ptr->pos=ptr->len=0;
+            ptr->ary=NULL;
+            ptr->src=_autovar_6;
+            if(TYPE(ptr->src)==T_STRING) {
+                ptr->str=RSTRING_PTR(ptr->src);
+                ptr->len=RSTRING_LEN(ptr->src);
+            }
+            else {
+                VALUE ary;
+                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
+                ptr->ary=RARRAY_PTR(ary);
+                ptr->len=RARRAY_LEN(ary);
+            }
+            it=Amethyst_spaces(self );
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... 'q':
+                ;
+            case 's' ... UC(255):
+                ;
+                goto pass13;
+                break;
+            case 'r' ... 'r':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='g'&&ame_curstr2(ptr)[2]=='c'&&ame_curstr2(ptr)[3]=='h')  ptr->pos+=4;
+                else goto pass13;
+                break;
+            }
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass13;
+            goto success13;
+pass13:
+            *ptr=oldpass13;
+            goto alt4_3;
+success13:
+            *ptr=oldpass13;
+            goto alt4_3;
+            ;
+            goto accept4;
+alt4_3:
+            ptr->pos=oldpos4;
+            it=_autovar_13;
+            _autovar_9=it;;
+            cstruct oldpass14=*ptr;
+            ptr->pos=ptr->len=0;
+            ptr->ary=NULL;
+            ptr->src=_autovar_9;
+            if(TYPE(ptr->src)==T_STRING) {
+                ptr->str=RSTRING_PTR(ptr->src);
+                ptr->len=RSTRING_LEN(ptr->src);
+            }
+            else {
+                VALUE ary;
+                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
+                ptr->ary=RARRAY_PTR(ary);
+                ptr->len=RARRAY_LEN(ary);
+            }
+            it=Amethyst_spaces(self );
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... '`':
+                ;
+            case 'b' ... UC(255):
+                ;
+                goto pass14;
+                break;
+            case 'a' ... 'a':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
+                else goto pass14;
+                break;
+            }
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass14;
+            goto success14;
+pass14:
+            *ptr=oldpass14;
+            goto alt4_4;
+success14:
+            *ptr=oldpass14;
+            it=rb_funcall(self,sy_Switch_Char_Dataflow_lattice_dot__e0e5,1,bind2);
+            _autovar_8=it;;
+
+            ;
+            goto accept4;
+alt4_4:
+            ptr->pos=oldpos4;
+            it=_autovar_13;
+            _autovar_10=it;;
+            cstruct oldpass15=*ptr;
+            ptr->pos=ptr->len=0;
+            ptr->ary=NULL;
+            ptr->src=_autovar_10;
+            if(TYPE(ptr->src)==T_STRING) {
+                ptr->str=RSTRING_PTR(ptr->src);
+                ptr->len=RSTRING_LEN(ptr->src);
+            }
+            else {
+                VALUE ary;
+                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
+                ptr->ary=RARRAY_PTR(ary);
+                ptr->len=RARRAY_LEN(ary);
+            }
+            it=Amethyst_spaces(self );
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... 'e':
+                ;
+            case 'g' ... UC(255):
+                ;
+                goto pass15;
+                break;
+            case 'f' ... 'f':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='a'&&ame_curstr2(ptr)[1]=='i'&&ame_curstr2(ptr)[2]=='l'&&ame_curstr2(ptr)[3]=='s')  ptr->pos+=4;
+                else goto pass15;
+                break;
+            }
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass15;
+            goto success15;
+pass15:
+            *ptr=oldpass15;
+            goto alt4_5;
+success15:
+            *ptr=oldpass15;
+            it=rb_funcall(self,sy_Switch_Char_Dataflow_lattice_dot__5a9e,1,bind2);
+            _autovar_8=it;;
+
+            ;
+            goto accept4;
+alt4_5:
+            ptr->pos=oldpos4;
+            goto pass1;
+accept4:
+            ;
+            break;
+        }
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass1;
         goto success1;
@@ -3066,7 +3861,7 @@ pass1:
         goto alt1_2;
 success1:
         *ptr=oldpass1;
-        it=_autovar_4;
+        it=_autovar_8;
         __result=it;;
 
         ;
@@ -3104,7 +3899,7 @@ VALUE Switch_Char_Dataflow_first_Switch_Char_Dataflow(VALUE self ) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    switch(FIX2LONG(rb_hash_aref(switchhash_Switch_Char_Dataflow_4,rb_obj_class(ame_curobj2(ptr))))) {
+    switch(FIX2LONG(rb_hash_aref(switchhash_Switch_Char_Dataflow_3,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Act*/:
     case 1/*CAct*/:
     case 2/*Cut*/:
@@ -11141,12 +11936,10 @@ void Init_detect_switch_c() {
     failobj=rb_eval_string("FAIL");
     switchhash_Switch_Char_Dataflow_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_Switch_Char_Dataflow_1);;
-    switchhash_Switch_Char_Dataflow_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=CAct\nnext h[k]=1 if k<=Object\n}");
+    switchhash_Switch_Char_Dataflow_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=CAct\nnext h[k]=2 if k<=Object\n}");
     rb_global_variable(&switchhash_Switch_Char_Dataflow_2);;
-    switchhash_Switch_Char_Dataflow_3=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Object\n}");
+    switchhash_Switch_Char_Dataflow_3=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=CAct\nnext h[k]=2 if k<=Cut\nnext h[k]=3 if k<=Local\nnext h[k]=4 if k<=Lookahead\nnext h[k]=5 if k<=Pass\nnext h[k]=6 if k<=Result\nnext h[k]=7 if k<=Stop\nnext h[k]=8 if k<=Apply\nnext h[k]=9 if k<=Bind\nnext h[k]=10 if k<=Many\nnext h[k]=11 if k<=Or\nnext h[k]=12 if k<=Seq\nnext h[k]=13 if k<=Switch\nnext h[k]=14 if k<=Object\n}");
     rb_global_variable(&switchhash_Switch_Char_Dataflow_3);;
-    switchhash_Switch_Char_Dataflow_4=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=CAct\nnext h[k]=2 if k<=Cut\nnext h[k]=3 if k<=Local\nnext h[k]=4 if k<=Lookahead\nnext h[k]=5 if k<=Pass\nnext h[k]=6 if k<=Result\nnext h[k]=7 if k<=Stop\nnext h[k]=8 if k<=Apply\nnext h[k]=9 if k<=Bind\nnext h[k]=10 if k<=Many\nnext h[k]=11 if k<=Or\nnext h[k]=12 if k<=Seq\nnext h[k]=13 if k<=Switch\nnext h[k]=14 if k<=Object\n}");
-    rb_global_variable(&switchhash_Switch_Char_Dataflow_4);;
     sy_Switch_Char_Dataflow_Compiler_558e=rb_intern("Switch_Char_Dataflow_Compiler_558e");
     sy_Switch_Char_Dataflow__append_lp__d113=rb_intern("Switch_Char_Dataflow__append_lp__d113");
     sy_Switch_Char_Dataflow__at_vis_eq_bin_8b89=rb_intern("Switch_Char_Dataflow__at_vis_eq_bin_8b89");
@@ -11384,5 +12177,5 @@ void Init_detect_switch_c() {
     sy_Detect_Size_minsize_lp__01f0=rb_intern("Detect_Size_minsize_lp__01f0");
     rb_define_method(cls_Detect_Size,"predicate",Detect_Size_predicate,1);
     rb_define_method(cls_Detect_Size,"predicate2",Detect_Size_predicate2,1);
-    rb_eval_string("testversiondetect_switch('2b1082307705c6b513f054ee72756406')");
+    rb_eval_string("testversiondetect_switch('cf37dd42b2bb9e128e4883790c6e5f3c')");
 }

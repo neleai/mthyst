@@ -3816,7 +3816,7 @@ fail:
 }
 VALUE AmethystParser_prefixed(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,__result,_autovar,_autovar_2,_neg,_m,_autovar_3,_expr;
+    VALUE it ,__result,_autovar,_neg,_expr,_m;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -3844,88 +3844,57 @@ alt1_1:
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
         _autovar=it;;
+        int oldpos2=ptr->pos;
+        int cut2=0;
+alt2_1:
+        ;
+        it=_autovar;
+        _neg=it;;
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... 'z':
             ;
         case '|' ... UC(255):
             ;
-            it=_autovar;
-            _autovar_2=it;;
-            int oldpos2=ptr->pos;
-            int cut2=0;
-alt2_1:
-            ;
-            it=_autovar_2;
             goto alt2_2;
-            ;
-            goto accept2;
-alt2_2:
-            ptr->pos=oldpos2;
-            it=_autovar_2;
-            _neg=it;;
-            it=AmethystParser_prefixed(self );
-            FAILTEST(alt2_3);
-            _m=it;;
-            bind_aset(bind2,1,_m);
-            bind_aset(bind2,2,_neg);
-            it=rb_funcall(self,sy_AmethystParser_Lookahea_0946,1,bind2);
-            _m=bind_aget(bind2,1);;
-            _neg=bind_aget(bind2,2);;
-            __result=it;;
-
-            ;
-            goto accept2;
-alt2_3:
-            ptr->pos=oldpos2;
-            goto alt1_2;
-accept2:
-            ;
             break;
         case '{' ... '{':
             ;
-            it=_autovar;
-            _autovar_3=it;;
-            int oldpos3=ptr->pos;
-            int cut3=0;
-alt3_1:
-            ;
-            it=_autovar_3;
-            _neg=it;;
             it=AmethystParser_inline_host_expr(self );
-            FAILTEST(alt3_2);
+            FAILTEST(alt2_2);
             _expr=it;;
-            bind_aset(bind2,1,_expr);
-            bind_aset(bind2,2,_neg);
-            it=rb_funcall(self,sy_AmethystParser_Pred_lb_bin_ae38,1,bind2);
-            _expr=bind_aget(bind2,1);;
-            _neg=bind_aget(bind2,2);;
-            __result=it;;
-
-            ;
-            goto accept3;
-alt3_2:
-            ptr->pos=oldpos3;
-            it=_autovar_3;
-            _neg=it;;
-            it=AmethystParser_prefixed(self );
-            FAILTEST(alt3_3);
-            _m=it;;
-            bind_aset(bind2,1,_m);
-            bind_aset(bind2,2,_neg);
-            it=rb_funcall(self,sy_AmethystParser_Lookahea_0946,1,bind2);
-            _m=bind_aget(bind2,1);;
-            _neg=bind_aget(bind2,2);;
-            __result=it;;
-
-            ;
-            goto accept3;
-alt3_3:
-            ptr->pos=oldpos3;
-            goto alt1_2;
-accept3:
-            ;
             break;
         }
+        bind_aset(bind2,1,_expr);
+        bind_aset(bind2,2,_neg);
+        it=rb_funcall(self,sy_AmethystParser_Pred_lb_bin_ae38,1,bind2);
+        _expr=bind_aget(bind2,1);;
+        _neg=bind_aget(bind2,2);;
+        __result=it;;
+
+        ;
+        goto accept2;
+alt2_2:
+        ptr->pos=oldpos2;
+        it=_autovar;
+        _neg=it;;
+        it=AmethystParser_prefixed(self );
+        FAILTEST(alt2_3);
+        _m=it;;
+        bind_aset(bind2,1,_m);
+        bind_aset(bind2,2,_neg);
+        it=rb_funcall(self,sy_AmethystParser_Lookahea_0946,1,bind2);
+        _m=bind_aget(bind2,1);;
+        _neg=bind_aget(bind2,2);;
+        __result=it;;
+
+        ;
+        goto accept2;
+alt2_3:
+        ptr->pos=oldpos2;
+        goto alt1_2;
+accept2:
+        ;
+
         ;
         goto accept1;
 alt1_2:
@@ -7792,5 +7761,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('83b4051164f50bb01100645f70dc0000')");
+    rb_eval_string("testversionparser('275107ab7700c9227cb66cb56acf465c')");
 }

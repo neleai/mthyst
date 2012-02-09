@@ -121,18 +121,16 @@ norm.puts "int hits_#{e}=0;int miss_#{e}=0; normalize_cache *cache_#{e};
 VALUE normalize_#{e}(VALUE obj){int i;
 	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;
 	VALUE ary=rb_iv_get(obj,\"@ary\");
-	if (rb_obj_frozen_p(obj)!=Qtrue){
-		ary=normalize_el(ary);
-		rb_iv_set(obj,\"@ary\",ary);
-		rb_obj_freeze(obj);
-	}
-	hash=11*hash+rb_iv_get(ary,\"@hash\");
-	#{(e.instance_variable_get(:@attrs)-[:ary]).map{|e| "hash=11*hash+(rb_iv_get(obj,\"@#{e.to_s}\")>>6);"}*""}
+	if (rb_obj_frozen_p(obj)==Qtrue)
+		obj=rb_obj_dup(obj);
+	#{e.instance_variable_get(:@attrs).map{|e| "rb_iv_set(obj,\"@#{e.to_s}\",normalize_el(rb_iv_get(obj,\"@#{e.to_s}\")));hash=11*hash+rb_iv_get(obj,\"@#{e.to_s}\");"}*""}
+	rb_iv_set(obj,\"@hash\",LONG2FIX(hash));
+	rb_obj_freeze(obj);
 	hash=hash&((1<<20)-1);
 
 	VALUE obj2=cache_#{e}->ary[hash];
 	if((int)obj2){
-		#{(e.instance_variable_get(:@attrs)).map{|e| "if (!els_equal(rb_iv_get(obj,\"@#{e.to_s}\"),rb_iv_get(obj2,\"@#{e.to_s}\"))) goto next;"}*""}
+		#{e.instance_variable_get(:@attrs).map{|e| "if (!els_equal(rb_iv_get(obj,\"@#{e.to_s}\"),rb_iv_get(obj2,\"@#{e.to_s}\"))) goto next;"}*""}
 		hits_#{e}++;
 		return cache_#{e}->ret[hash];
 		next:;
@@ -141,14 +139,11 @@ VALUE normalize_#{e}(VALUE obj){int i;
 	miss_#{e}++;
 	if (rb_obj_is_kind_of(obj3, rb_obj_class(obj))){
 		int hash3=0;
-		VALUE ary3=rb_iv_get(obj3,\"@ary\");
-		if (rb_obj_frozen_p(obj3)!=Qtrue){
-			ary3=normalize_el(ary3);
-			rb_iv_set(obj3,\"@ary\",ary3);
-			rb_obj_freeze(obj3);
-		}
-		hash3=11*hash3+rb_iv_get(ary3,\"@hash\");
-		#{(e.instance_variable_get(:@attrs)-[:ary]).map{|e| "hash3=11*hash3+(rb_iv_get(obj,\"@#{e.to_s}\")>>6);"}*""}
+	  if (rb_obj_frozen_p(obj3)==Qtrue)
+	    obj3=rb_obj_dup(obj3);
+	  #{e.instance_variable_get(:@attrs).map{|e| "rb_iv_set(obj3,\"@#{e.to_s}\",normalize_el(rb_iv_get(obj3,\"@#{e.to_s}\")));hash3=11*hash3+rb_iv_get(obj3,\"@#{e.to_s}\");"}*""}
+  	rb_iv_set(obj3,\"@hash\",LONG2FIX(hash3));
+    rb_obj_freeze(obj3);    
 		hash3=hash3&((1<<20)-1);
 		cache_#{e}->ary[hash3]=obj3;
   	cache_#{e}->ret[hash3]=obj3;

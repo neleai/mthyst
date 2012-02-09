@@ -225,6 +225,6 @@ def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'83b4051164f50bb01100645f70dc0000'
+'275107ab7700c9227cb66cb56acf465c'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/parser_c"
