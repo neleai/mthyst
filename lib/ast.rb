@@ -51,6 +51,22 @@ norm.puts "typedef struct {
   VALUE * ret;
 } normalize_cache;"
 norm.puts "
+	int els_equal(VALUE el,VALUE el2){
+		if (el==el2) return 1;
+		if (rb_iv_get(el,\"@hash\")!=rb_iv_get(el2,\"@hash\")) return 0;
+		if (TYPE(el)!=TYPE(el2)) return 0;
+		if(TYPE(el)==T_ARRAY) {int i;
+			int len=RARRAY_LEN(el);
+	    VALUE *els=RARRAY_PTR(el);
+			int len2=RARRAY_LEN(el2);
+  	  VALUE *els2=RARRAY_PTR(el2);
+			if (len!=len2) return 0;
+			for(i=0;i<len;i++) if(!els_equal(els[i],els2[i])) return 0;
+			return 1;
+		} else {
+			return 0;
+		}
+	}
 	normalize_cache *cache_Array;  normalize_cache *cache_String;
 	VALUE normalize_el(VALUE el){ VALUE el2;int len,len2;VALUE *els,*els2;int i;
 		if(TYPE(el)==T_ARRAY){
@@ -62,14 +78,7 @@ norm.puts "
 			rb_iv_set(el,\"@hash\",LONG2FIX(hash/2));
 			hash=hash&((1<<20)-1);
 			if (el2=cache_Array->ret[hash]) {
-				if (el==el2) return el;
-				if (rb_iv_get(el,\"@hash\")!=rb_iv_get(el2,\"@hash\")) goto next;
-				len2=RARRAY_LEN(el2);
-	    	els2=RARRAY_PTR(el2);
-				if (len!=len2) goto next;
-				for(i=0;i<len;i++) if (els[i]!=els2[i]) goto next;
-				return el2;
-				next:;
+				if (els_equal(el,el2)) return el2;
 			}
 			cache_Array->ret[hash]=el;
 			return el;
