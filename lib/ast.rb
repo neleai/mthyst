@@ -151,6 +151,21 @@ VALUE normalize_#{e}(VALUE obj){int i;
 	cache_#{e}->ary[hash]=obj;
 	cache_#{e}->ret[hash]=obj3;
 	return obj3;
+}
+VALUE create2_#{e}(VALUE self #{e.instance_variable_get(:@attrs).map{|el| ",VALUE #{el}"}*""}){
+	int hash=0;
+	#{e.instance_variable_get(:@attrs).map{|el| "#{el}=normalize_el(#{el});hash=11*hash+#{el};"}*""}
+	hash=hash&((1<<20)-1);
+	VALUE obj2=cache_#{e}->ary[hash];
+  if((int)obj2){
+    #{e.instance_variable_get(:@attrs).map{|el| "if (!els_equal(#{el},rb_iv_get(obj2,\"@#{el.to_s}\"))) goto next;"}*""}
+    hits_#{e}++;
+    return cache_#{e}->ret[hash];
+    next:;
+  }
+	VALUE obj3=rb_obj_alloc(rb_const_get(rb_cObject,rb_intern(\"#{e}\")));
+	#{e.instance_variable_get(:@attrs).map{|el| "rb_iv_set(obj3,\"@#{el}\",#{el});"}*""}
+	return normalize_#{e}(obj3);
 }"
 }
 cn=[Bind,Seq,Or,Act,Apply,Many,Pass,Local]
@@ -173,7 +188,9 @@ void init_normalize(){
 #{cn.map{|e| "cache_#{e}=normalize_cache_init();
 	cache_#{e}_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_#{e});
 	rb_global_variable(&cache_#{e}_gc);
-  rb_define_method(rb_const_get(rb_cObject,rb_intern(\"#{e}\")),\"normalize\",normalize_#{e},0);"
+  rb_define_method(rb_const_get(rb_cObject,rb_intern(\"#{e}\")),\"normalize\",normalize_#{e},0);
+	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern(\"#{e}\")),\"create2\",create2_#{e},#{e.instance_variable_get(:@attrs).size});"
+
 }*""}
 }
 void normalize_stats(){
@@ -388,7 +405,7 @@ class Local
     @@numb=Hash.new{|h,k|h[k]={}}
 	end
 	def unssa
-		Local.create({:ary=>@ary}).normalize
+		Local.create2(nil,@ary)
 	end
 end
 class Apply;					def inspect;	"#{@clas ? "#{@clas}::":""}#{ary[0]}(#{ary[1..-1].map{|a|a.inspect}*","})"							;end;end
