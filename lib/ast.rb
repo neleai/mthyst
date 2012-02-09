@@ -81,8 +81,10 @@ norm.puts "
 	    els=RARRAY_PTR(el);
   	  for (i=0;i<len;i++){ 
 				els[i]=normalize_el(els[i]);
-//        hash=((int) rb_iv_get(els[i],\"@hash\"))+11*hash;
-					hash=els[i]+11*hash;
+					if (TYPE(els[i])==T_ARRAY || TYPE(els[i])==T_STRING)
+	        	hash=((int) rb_iv_get(els[i],\"@hash\"))+11*hash;
+					else
+						hash=els[i]+11*hash;
 			}
 			rb_iv_set(el,\"@hash\",LONG2FIX(hash/2));
 			hash=hash&((1<<20)-1);
@@ -170,15 +172,11 @@ class Or
 		AmethystCore::or_normalize(self);
 	end
 end
-#class Act
-#	def normalize
-#		r=AmethystCore::act_normalize(self);
-		#puts self.ary.inspect
-		#puts self.inspect
-		#puts r.inspect
-#		r
-#	end
-#end
+class Act
+	def normalize
+		AmethystCore::act_normalize(self);
+	end
+end
 
 Placeholder=Consts.new("Placeholder");FAIL=Consts.new("FAIL")
 

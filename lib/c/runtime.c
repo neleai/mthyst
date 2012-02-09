@@ -112,11 +112,12 @@ void bind_cache_mark(bind_cache *b){int i;
 }
 void bind_cache_free(bind_cache *b){}
 
-extern int hits_Bind,hits_Seq,hits_Or,miss_Bind,miss_Seq,miss_Or;
+extern int hits_Bind,hits_Seq,hits_Or,miss_Bind,miss_Seq,miss_Or,hits_Act,miss_Act;
 VALUE report_normalize(VALUE self){
 	printf("normalize bind hit: %i miss: %i\n",hits_Bind,miss_Bind );
 	printf("normalize seq  hit: %i miss: %i\n",hits_Seq,miss_Seq);
 	printf("normalize or   hit: %i miss: %i\n",hits_Or,miss_Or);
+	printf("normalize act  hit: %i miss: %i\n",hits_Act,miss_Act);
 
 	return Qnil;
 }
@@ -145,6 +146,13 @@ void Init_Ame(VALUE self){
 	cache_Or=bind_cache_init(); 
   cache_Or_gc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,cache_Or);
 	rb_global_variable(&cache_Or_gc);
+	cache_Act=bind_cache_init(); 
+  cache_Act_gc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,cache_Act);
+	rb_global_variable(&cache_Act_gc);
+cache_Or=bind_cache_init(); 
+  cache_Or_gc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,cache_Or);
+	rb_global_variable(&cache_Or_gc);
+
 	cache_Array=bind_cache_init(); 
   cache_Array_gc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,cache_Array);
 	rb_global_variable(&cache_Array_gc);
