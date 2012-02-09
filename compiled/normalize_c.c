@@ -37,8 +37,10 @@ static VALUE sy_Normalize_Apply_lb_bi_4b34;
 static VALUE sy_Normalize_Bind_lb_bin_8a31;
 static VALUE sy_Normalize_CAct_lb_eva_559c;
 static VALUE sy_Normalize_Or_dot_creat_49b2;
+static VALUE sy_Normalize_Or_dot_creat_a50c;
 static VALUE sy_Normalize_Placehol_6875;
 static VALUE sy_Normalize_Placehol_a03d;
+static VALUE sy_Normalize_Seq_dot_crea_0a81;
 static VALUE sy_Normalize_Seq_lb_Bind_1036;
 static VALUE sy_Normalize_Seq_lb_bind_b819;
 static VALUE sy_Normalize_Seq_lb_bind_c98f;
@@ -49,7 +51,6 @@ static VALUE sy_Normalize__lp_eval_lp_sr_3f78;
 static VALUE sy_Normalize__lp_must_em_43e9;
 static VALUE sy_Normalize_bind_lb_1_rb_;
 static VALUE sy_Normalize_bind_lb_1_rb__dot__30f4;
-static VALUE sy_Normalize_bind_lb_1_rb__eq__6a6c;
 static VALUE sy_Normalize_bind_lb_1_rb__lb__64e3;
 static VALUE sy_Normalize_bind_lb_1_rb__lb__79d7;
 static VALUE sy_Normalize_bind_lb_1_rb__lt__f738;
@@ -2665,7 +2666,7 @@ fail:
 }
 VALUE Normalize_or(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_ary,_autovar,_or,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,_autovar_7,_autovar_8,_autovar_9,_autovar_10,_autovar_11,_autovar_12,_a,_x,_autovar_13,__result;
+    VALUE it ,_ary,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,_autovar_7,_autovar_8,_autovar_9,_autovar_10,_autovar_11,_autovar_12,_a,_x,_autovar_13,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -2696,7 +2697,6 @@ VALUE Normalize_or(VALUE self ) {
             ptr->len=RARRAY_LEN(ary);
         }
         it=rb_funcall(self,sy_Normalize_src_25d9,1,bind2);
-        _or=it;;
         int stop1=0;
         while(!stop1) {
             switch(FIX2LONG(rb_hash_aref(switchhash_Normalize_2,rb_obj_class(ame_curobj2(ptr))))) {
@@ -3127,11 +3127,9 @@ alt6_2:
 alt6_3:
         ptr->pos=oldpos6;
         it=_autovar_12;
-        bind_aset(bind2,1,_or);
-        bind_aset(bind2,2,_ary);
-        it=rb_funcall(self,sy_Normalize_bind_lb_1_rb__eq__6a6c,1,bind2);
-        _or=bind_aget(bind2,1);;
-        _ary=bind_aget(bind2,2);;
+        bind_aset(bind2,1,_ary);
+        it=rb_funcall(self,sy_Normalize_Or_dot_creat_a50c,1,bind2);
+        _ary=bind_aget(bind2,1);;
         _autovar_13=it;;
 
         ;
@@ -3163,7 +3161,7 @@ fail:
 }
 VALUE Normalize_seq2(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_ary,_autovar,_seq,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,_autovar_7,_autovar_8,_autovar_9,_autovar_10,_a,_x,_autovar_11,__result;
+    VALUE it ,_ary,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,_autovar_7,_autovar_8,_autovar_9,_autovar_10,_a,_x,_autovar_11,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -3194,7 +3192,6 @@ VALUE Normalize_seq2(VALUE self ) {
             ptr->len=RARRAY_LEN(ary);
         }
         it=rb_funcall(self,sy_Normalize_src_25d9,1,bind2);
-        _seq=it;;
         int stop1=0;
         while(!stop1) {
             switch(FIX2LONG(rb_hash_aref(switchhash_Normalize_5,rb_obj_class(ame_curobj2(ptr))))) {
@@ -3492,11 +3489,9 @@ alt4_2:
 alt4_3:
         ptr->pos=oldpos4;
         it=_autovar_10;
-        bind_aset(bind2,1,_seq);
-        bind_aset(bind2,2,_ary);
-        it=rb_funcall(self,sy_Normalize_bind_lb_1_rb__eq__6a6c,1,bind2);
-        _seq=bind_aget(bind2,1);;
-        _ary=bind_aget(bind2,2);;
+        bind_aset(bind2,1,_ary);
+        it=rb_funcall(self,sy_Normalize_Seq_dot_crea_0a81,1,bind2);
+        _ary=bind_aget(bind2,1);;
         _autovar_11=it;;
 
         ;
@@ -3572,8 +3567,10 @@ void Init_normalize_c() {
     sy_Normalize_Bind_lb_bin_8a31=rb_intern("Normalize_Bind_lb_bin_8a31");
     sy_Normalize_CAct_lb_eva_559c=rb_intern("Normalize_CAct_lb_eva_559c");
     sy_Normalize_Or_dot_creat_49b2=rb_intern("Normalize_Or_dot_creat_49b2");
+    sy_Normalize_Or_dot_creat_a50c=rb_intern("Normalize_Or_dot_creat_a50c");
     sy_Normalize_Placehol_6875=rb_intern("Normalize_Placehol_6875");
     sy_Normalize_Placehol_a03d=rb_intern("Normalize_Placehol_a03d");
+    sy_Normalize_Seq_dot_crea_0a81=rb_intern("Normalize_Seq_dot_crea_0a81");
     sy_Normalize_Seq_lb_Bind_1036=rb_intern("Normalize_Seq_lb_Bind_1036");
     sy_Normalize_Seq_lb_bind_b819=rb_intern("Normalize_Seq_lb_bind_b819");
     sy_Normalize_Seq_lb_bind_c98f=rb_intern("Normalize_Seq_lb_bind_c98f");
@@ -3584,7 +3581,6 @@ void Init_normalize_c() {
     sy_Normalize__lp_must_em_43e9=rb_intern("Normalize__lp_must_em_43e9");
     sy_Normalize_bind_lb_1_rb_=rb_intern("Normalize_bind_lb_1_rb_");
     sy_Normalize_bind_lb_1_rb__dot__30f4=rb_intern("Normalize_bind_lb_1_rb__dot__30f4");
-    sy_Normalize_bind_lb_1_rb__eq__6a6c=rb_intern("Normalize_bind_lb_1_rb__eq__6a6c");
     sy_Normalize_bind_lb_1_rb__lb__64e3=rb_intern("Normalize_bind_lb_1_rb__lb__64e3");
     sy_Normalize_bind_lb_1_rb__lb__79d7=rb_intern("Normalize_bind_lb_1_rb__lb__79d7");
     sy_Normalize_bind_lb_1_rb__lt__f738=rb_intern("Normalize_bind_lb_1_rb__lt__f738");
@@ -3601,5 +3597,5 @@ void Init_normalize_c() {
     rb_define_method(cls_Normalize,"must_empty",Normalize_must_empty,0);
     rb_define_method(cls_Normalize,"or",Normalize_or,0);
     rb_define_method(cls_Normalize,"seq2",Normalize_seq2,0);
-    rb_eval_string("testversionnormalize('3feacdcdccf88f66a1fb7715b9643416')");
+    rb_eval_string("testversionnormalize('69aeb07c93f1180a7db6551f7f480b4d')");
 }

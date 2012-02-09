@@ -11,7 +11,7 @@ amethyst Normalize{
            )* ]
           {ary.size}=>( 0 -> Apply["fails"]
                       | 1 -> ary[0]
-                      | . -> or=or.dup;or.ary=ary;or
+                      | . -> Or.create({:ary=>ary})
                       )
         
 
@@ -23,7 +23,7 @@ amethyst Normalize{
              )* ]
              {ary.size}=>( 0 -> Placeholder
                          | 1 -> ary[0]
-                         | . -> seq=seq.dup;seq.ary=ary;seq
+                         | . -> Seq.create({:ary=>ary})
                          )
            
   bind = Bind[ {@name}:name

@@ -24,11 +24,19 @@ end
 def Normalize_Or_dot_creat_49b2(bind)
 Or.create( {:ary=>bind[1] })
 end
+def Normalize_Or_dot_creat_a50c(bind)
+Or.create({:ary=>bind[1]})
+
+end
 def Normalize_Placehol_6875(bind)
 Placeholder
 end
 def Normalize_Placehol_a03d(bind)
 Placeholder
+
+end
+def Normalize_Seq_dot_crea_0a81(bind)
+Seq.create({:ary=>bind[1]})
 
 end
 def Normalize_Seq_lb_Bind_1036(bind)
@@ -64,10 +72,6 @@ end
 def Normalize_bind_lb_1_rb__dot__30f4(bind)
 bind[1].size
 end
-def Normalize_bind_lb_1_rb__eq__6a6c(bind)
-bind[1]=bind[1].dup;bind[1].ary=bind[2];bind[1]
-
-end
 def Normalize_bind_lb_1_rb__lb__64e3(bind)
 bind[1][-1]
 end
@@ -102,15 +106,15 @@ end
 
 
 def normalize_compiled_by
-'fe8f839f2e1e48d4f9cf131de44f4f39'
+'7b11c6ea4f8f6c3c884a40acce9bf498'
 end
 def normalize_source_hash
-'45e940e85c161929eb9b159ba3371cd5'
+'29c56ed9777646dcd7a78f503e9f777c'
 end
 def testversionnormalize(r)
  raise "invalid version" if r!=normalize_version
 end
 def normalize_version
-'3feacdcdccf88f66a1fb7715b9643416'
+'69aeb07c93f1180a7db6551f7f480b4d'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/normalize_c"

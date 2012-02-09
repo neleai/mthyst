@@ -246,8 +246,7 @@ class Bind
     	return Seq[Bind[a,expr],PureAct[Args["_append(",name,",",a,")"]],a]
 	  end
 		if name.is_a?(Local)
-			#AmethystCore::bind_create2(name,[expr])
-			Bind.create({:name=>name,:ary=>[expr]}).normalize
+			Bind.create2(name,[expr])
 		else
 			 a=autovar
 	    Seq[Bind[a,expr],PureAct[Args[name,'=',a]]]
@@ -272,9 +271,7 @@ end
 class Seq
 	def self.[](*args)
 		args=args[0][:ary] if args.size==1 && args[0].is_a?(Hash)
-		#puts args.inspect
-		Seq.create({:ary=>args.flatten}).normalize
-#		Amethyst::seq_create2(args.flatten)
+		Seq.create2(args.flatten)
 	end
 	def normalize2
 		$normalize.parse(:seq2,[self])
@@ -283,8 +280,7 @@ end
 class Or
 	def self.[](*args)
 		args=args[0][:ary] if args.size==1 && args[0].is_a?(Hash)
-		Or.create({:ary=>args.flatten}).normalize
-		#Amethyst::or_create2(args.flatten)
+		Or.create2(nil,args.flatten)
 	end
 	def normalize2
 		$normalize.parse(:or,[self])
