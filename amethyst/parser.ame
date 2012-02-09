@@ -50,7 +50,7 @@ amethyst AmethystParser {
         | '"'  until('"' ):s -> Apply["token" ,quote(s)]
         | '\'' until('\''):s -> Apply["seq"   ,quote(s)]
         | '#'  line:s        -> Comment[s]
-        | '(' expression:x ")" ( '[]'  collect(x) | empty {x} )
+        | '(' expression:x ")" ( '[]'  collect(x) | {Parenthesis[x]} )
 
   collect(ors) = -> a=autovar; Seq[Or_AST[{:ary=>ors.ary.map{|ands| Seq[{:ary=>[Bind[a,Act["[]"]]]+ands.ary.map{|expr| Append[a,expr]}}]}}],a]
   

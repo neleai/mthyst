@@ -33,6 +33,7 @@ traverse[.*  {@locals=nil} @self] ]
         | Comment[.*{Placeholder}]
 				| Seq_AST[traverse_item*:ary] -> Seq[*ary]
 				|  Or_AST[traverse_item*:ary] ->  Or[*ary]
+				| Parenthesis[ traverse_item ]
 				| Many[ {@@stop}:oldstop {@@stop=false} traverse_item:ary2  { Many.create({:ary=>[@@stop ? ary2 : Or[ary2,Stop[]] ] }) }:ret {@@stop=oldstop}  ] -> ret
 				| Stop[ {@@stop=true;@self} ]
 

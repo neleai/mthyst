@@ -75,6 +75,7 @@ static VALUE sy_AmethystParser_Many_lb_bin_14d1;
 static VALUE sy_AmethystParser_Nested_lb_b_1ac2;
 static VALUE sy_AmethystParser_Or_AST_dot_c_19e2;
 static VALUE sy_AmethystParser_Or_AST_lb_b_0657;
+static VALUE sy_AmethystParser_Parenthe_261b;
 static VALUE sy_AmethystParser_Pass_lb_bin_2f93;
 static VALUE sy_AmethystParser_Pred_lb_bin_ae38;
 static VALUE sy_AmethystParser_Result_lb__le__a3b4;
@@ -7202,8 +7203,9 @@ alt6_3:
             ;
         case UC(92) ... UC(255):
             ;
-            it=Qnil;
-            it=_x_2;
+            bind_aset(bind2,1,_x_2);
+            it=rb_funcall(self,sy_AmethystParser_Parenthe_261b,1,bind2);
+            _x_2=bind_aget(bind2,1);;
             __result=it;;
             break;
         case '[' ... '[':
@@ -7229,8 +7231,9 @@ alt7_1:
             goto accept13;
 alt7_2:
             ptr->pos=oldpos13;
-            it=Qnil;
-            it=_x_2;
+            bind_aset(bind2,1,_x_2);
+            it=rb_funcall(self,sy_AmethystParser_Parenthe_261b,1,bind2);
+            _x_2=bind_aget(bind2,1);;
             __result=it;;
 
             ;
@@ -7734,6 +7737,7 @@ void Init_parser_c() {
     sy_AmethystParser_Nested_lb_b_1ac2=rb_intern("AmethystParser_Nested_lb_b_1ac2");
     sy_AmethystParser_Or_AST_dot_c_19e2=rb_intern("AmethystParser_Or_AST_dot_c_19e2");
     sy_AmethystParser_Or_AST_lb_b_0657=rb_intern("AmethystParser_Or_AST_lb_b_0657");
+    sy_AmethystParser_Parenthe_261b=rb_intern("AmethystParser_Parenthe_261b");
     sy_AmethystParser_Pass_lb_bin_2f93=rb_intern("AmethystParser_Pass_lb_bin_2f93");
     sy_AmethystParser_Pred_lb_bin_ae38=rb_intern("AmethystParser_Pred_lb_bin_ae38");
     sy_AmethystParser_Result_lb__le__a3b4=rb_intern("AmethystParser_Result_lb__le__a3b4");
@@ -7788,5 +7792,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('6a72989bc09e1e639c2bea9a9e5c65df')");
+    rb_eval_string("testversionparser('83b4051164f50bb01100645f70dc0000')");
 }

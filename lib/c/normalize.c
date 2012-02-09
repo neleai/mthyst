@@ -16,6 +16,11 @@ typedef struct {
 			if (len!=len2) return 0;
 			for(i=0;i<len;i++) if(!els_equal(els[i],els2[i])) return 0;
 			return 1;
+		} else if (TYPE(el)==T_STRING) {
+			int len=RSTRING_LEN(el);
+			int len2=RSTRING_LEN(el2);
+			if (len!=len2) return 0;
+			return strncmp(RSTRING_PTR(el),RSTRING_PTR(el2),len)==0;
 		} else {
 			return 0;
 		}
@@ -29,7 +34,8 @@ typedef struct {
 	    els=RARRAY_PTR(el);
   	  for (i=0;i<len;i++){ 
 				els[i]=normalize_el(els[i]);
-        hash=((int) rb_iv_get(els[i],"@hash")+11*hash;
+//        hash=((int) rb_iv_get(els[i],"@hash"))+11*hash;
+					hash=els[i]+11*hash;
 			}
 			rb_iv_set(el,"@hash",LONG2FIX(hash/2));
 			hash=hash&((1<<20)-1);
@@ -43,17 +49,13 @@ typedef struct {
       int hash=0;
       len=RSTRING_LEN(el);
       char *chrs=RSTRING_PTR(el);
-      for (i=0;i<len;i++) hash=((int) chrs[i])+11*hash;
+      for (i=0;i<len;i++) hash=((int) chrs[i])+11*hash;//TODO use long
+			rb_iv_set(el,"@hash",LONG2FIX(hash/2));
       hash=hash&((1<<20)-1);
-      if (el2=cache_String->ret[hash]) {
-        len2=RSTRING_LEN(el2);
-        char *chrs2=RSTRING_PTR(el2);
-        if (len!=len2) goto next2;
-        for(i=0;i<len;i++) if (chrs[i]!=chrs2[i]) goto next2;
-        return el2;
-        next2:;
-      }
-      rb_iv_set(el,"@hash",INT2FIX(hash));
+			el2=cache_String->ret[hash];
+			if (el2=cache_String->ret[hash]) {
+				if (els_equal(el,el2)) return el2;
+			}
       cache_String->ret[hash]=el;
       return el;
 		} else {

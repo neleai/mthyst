@@ -102,6 +102,9 @@ def AmethystParser_Or_AST_lb_b_0657(bind)
 Or_AST[bind[1],Apply["empty"]]
 
 end
+def AmethystParser_Parenthe_261b(bind)
+Parenthesis[bind[1]]
+end
 def AmethystParser_Pass_lb_bin_2f93(bind)
 Pass[bind[1],bind[2]] 
 
@@ -213,15 +216,15 @@ class AmethystParser < Amethyst
 end
 
 def parser_compiled_by
-'a0a5aadc7c3967913cf25b96305132f7'
+'782e58ce8fbeedb030b83501a9b8736e'
 end
 def parser_source_hash
-'1b1c19c0a810df8784ce4330769a0aac'
+'49570d883349a40ce30e0fbdeec5f117'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'6a72989bc09e1e639c2bea9a9e5c65df'
+'83b4051164f50bb01100645f70dc0000'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/parser_c"
