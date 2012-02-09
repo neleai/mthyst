@@ -32,6 +32,7 @@ traverse[.*  {@locals=nil} @self] ]
         | Result[ {vars=@@locals.select{|aa| Object.const_get(@name).instance_variable_get(:@attrs).include? aa[0].to_sym}.uniq ;Result[{:name=>@name,:vars=>vars,:varnames=>vars.map{|v| v[0]}}]}]
         | Comment[.*{Placeholder}]
 				| Seq_AST[traverse_item*:ary] -> Seq[*ary]
+				| Seq[traverse_item*:ary] -> Seq[*ary]
 				|  Or_AST[traverse_item*:ary] ->  Or[*ary]
 				| Parenthesis[ traverse_item ]
 				| Many[ {@@stop}:oldstop {@@stop=false} traverse_item:ary2  { Many.create({:ary=>[@@stop ? ary2 : Or[ary2,Stop[]] ] }) }:ret {@@stop=oldstop}  ] -> ret

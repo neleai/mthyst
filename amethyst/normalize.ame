@@ -5,7 +5,7 @@ amethyst Normalize{
   or = Or[ @self:or 
            ( Or[ .* @ary:ary[] ]
            | Apply[ ["fails"] ]
-           | Placeholder
+           | Placeholder .* {Apply["empty"]}:ary[]  
 					 | Seq[(Cut .* | cant_fail)* eof {@self}:ary[] ] .*
            | .:ary[]
            )* ]

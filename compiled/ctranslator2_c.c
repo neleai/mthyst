@@ -1943,6 +1943,7 @@ success22:
             ptr->len=RARRAY_LEN(ary);
         }
         it=Qnil;
+        it=Qnil;
         if (ptr->pos<ptr->len) goto pass23;
         goto success23;
 pass23:
@@ -2391,6 +2392,7 @@ success31:
                     ptr->ary=RARRAY_PTR(ary);
                     ptr->len=RARRAY_LEN(ary);
                 }
+                it=Qnil;
                 it=Qnil;
                 if (ptr->pos<ptr->len) goto pass33;
                 goto success33;
@@ -3080,6 +3082,7 @@ success41:
             ptr->len=RARRAY_LEN(ary);
         }
         it=Qnil;
+        it=Qnil;
         if (ptr->pos<ptr->len) goto pass42;
         goto success42;
 pass42:
@@ -3524,5 +3527,5 @@ void Init_ctranslator2_c() {
     rb_define_method(cls_AmethystCTranslator,"rbtrans2",AmethystCTranslator_rbtrans2,0);
     rb_define_method(cls_AmethystCTranslator,"rw",AmethystCTranslator_rw,2);
     rb_define_method(cls_AmethystCTranslator,"trans",AmethystCTranslator_trans,0);
-    rb_eval_string("testversionctranslator2('ccdebcbac04fd81b7f9bb126393e1e3e')");
+    rb_eval_string("testversionctranslator2('e89b829c415d1113beab070d2cdc0a1b')");
 }
