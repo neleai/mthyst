@@ -157,26 +157,14 @@ VALUE normalize_#{e}(VALUE self,VALUE obj){int i;
 	return obj3;
 }"
 }
-class Bind
+[Bind,Seq,Or,Act,Apply].each{|k|
+	eval "
+class #{k} 
 	def normalize
-		AmethystCore::bind_normalize(self)
+		AmethystCore::normalize_#{k}(self)
 	end
-end
-class Seq
-	def normalize
-		AmethystCore::seq_normalize(self);
-	end
-end
-class Or
-	def normalize
-		AmethystCore::or_normalize(self);
-	end
-end
-class Act
-	def normalize
-		AmethystCore::act_normalize(self);
-	end
-end
+end"
+}
 
 Placeholder=Consts.new("Placeholder");FAIL=Consts.new("FAIL")
 

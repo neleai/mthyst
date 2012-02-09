@@ -111,6 +111,6 @@ def testversionnormalize(r)
  raise "invalid version" if r!=normalize_version
 end
 def normalize_version
-'3feacdcdccf88f66a1fb7715b9643416'
+'769582d702522834a482a2642e638278'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/normalize_c"

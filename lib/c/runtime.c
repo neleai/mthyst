@@ -112,12 +112,13 @@ void bind_cache_mark(bind_cache *b){int i;
 }
 void bind_cache_free(bind_cache *b){}
 
-extern int hits_Bind,hits_Seq,hits_Or,miss_Bind,miss_Seq,miss_Or,hits_Act,miss_Act;
+extern int hits_Bind,hits_Seq,hits_Or,miss_Bind,miss_Seq,miss_Or,hits_Act,miss_Act,hits_Apply,miss_Apply;
 VALUE report_normalize(VALUE self){
-	printf("normalize bind hit: %i miss: %i\n",hits_Bind,miss_Bind );
-	printf("normalize seq  hit: %i miss: %i\n",hits_Seq,miss_Seq);
-	printf("normalize or   hit: %i miss: %i\n",hits_Or,miss_Or);
-	printf("normalize act  hit: %i miss: %i\n",hits_Act,miss_Act);
+	printf("normalize bind  hit: %i miss: %i\n",hits_Bind,miss_Bind );
+	printf("normalize seq   hit: %i miss: %i\n",hits_Seq,miss_Seq);
+	printf("normalize or    hit: %i miss: %i\n",hits_Or,miss_Or);
+	printf("normalize act   hit: %i miss: %i\n",hits_Act,miss_Act);
+	printf("normalize apply hit: %i miss: %i\n",hits_Apply,miss_Apply);
 
 	return Qnil;
 }
@@ -131,6 +132,8 @@ extern bind_cache *cache_Act;VALUE cache_Act_gc;
 VALUE normalize_Act(VALUE,VALUE);
 extern bind_cache *cache_Array;VALUE cache_Array_gc;
 extern bind_cache *cache_String;VALUE cache_String_gc;
+extern bind_cache *cache_Apply;VALUE cache_Apply_gc;
+VALUE normalize_Apply(VALUE,VALUE);
 
 
 
@@ -152,6 +155,10 @@ void Init_Ame(VALUE self){
 cache_Or=bind_cache_init(); 
   cache_Or_gc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,cache_Or);
 	rb_global_variable(&cache_Or_gc);
+cache_Apply=bind_cache_init(); 
+  cache_Apply_gc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,cache_Apply);
+	rb_global_variable(&cache_Apply_gc);
+
 
 	cache_Array=bind_cache_init(); 
   cache_Array_gc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,cache_Array);
@@ -168,10 +175,11 @@ cache_Or=bind_cache_init();
 	failobj=rb_eval_string("FAIL");
 	amecore=rb_define_class("AmethystCore",rb_cObject);
 	rb_define_singleton_method(amecore,"new",ame_new,0);
-	rb_define_singleton_method(amecore,"bind_normalize",normalize_Bind,1);
-	rb_define_singleton_method(amecore,"seq_normalize",normalize_Seq,1);
-	rb_define_singleton_method(amecore,"or_normalize",normalize_Or,1);
-	rb_define_singleton_method(amecore,"act_normalize",normalize_Act,1);
+	rb_define_singleton_method(amecore,"normalize_Bind",normalize_Bind,1);
+	rb_define_singleton_method(amecore,"normalize_Seq",normalize_Seq,1);
+	rb_define_singleton_method(amecore,"normalize_Or",normalize_Or,1);
+	rb_define_singleton_method(amecore,"normalize_Act",normalize_Act,1);
+  rb_define_singleton_method(amecore,"normalize_Apply",normalize_Apply,1);
 
 	rb_define_singleton_method(amecore,"report_normalize",report_normalize,0);
 
