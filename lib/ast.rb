@@ -124,15 +124,7 @@ VALUE normalize_#{e}(VALUE self,VALUE obj){int i;
 
 	VALUE obj2=cache_#{e}->ary[hash];
 	if((int)obj2){
-		#{(e.instance_variable_get(:@attrs)-[:ary]).map{|e| "if (rb_iv_get(obj,\"@#{e.to_s}\")!=rb_iv_get(obj2,\"@#{e.to_s}\")) goto next;"}*""}
-		VALUE ary2=rb_iv_get(obj2,\"@ary\");
-		if (ary2==Qnil) goto next;
-		len=RARRAY_LEN(ary);
-	  els=RARRAY_PTR(ary);
-		len2=RARRAY_LEN(ary2);
-	  els2=RARRAY_PTR(ary2);
-		if (len!=len2) goto next;
-		for(i=0;i<len;i++) if(els[i]!=els2[i]) goto next;
+		#{(e.instance_variable_get(:@attrs)).map{|e| "if (!els_equal(rb_iv_get(obj,\"@#{e.to_s}\"),rb_iv_get(obj2,\"@#{e.to_s}\"))) goto next;"}*""}
 		hits_#{e}++;
 		return cache_#{e}->ret[hash];
 		next:;

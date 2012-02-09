@@ -72,15 +72,7 @@ VALUE normalize_Act(VALUE self,VALUE obj){int i;
 
 	VALUE obj2=cache_Act->ary[hash];
 	if((int)obj2){
-		if (rb_iv_get(obj,"@pred")!=rb_iv_get(obj2,"@pred")) goto next;if (rb_iv_get(obj,"@pure")!=rb_iv_get(obj2,"@pure")) goto next;
-		VALUE ary2=rb_iv_get(obj2,"@ary");
-		if (ary2==Qnil) goto next;
-		len=RARRAY_LEN(ary);
-	  els=RARRAY_PTR(ary);
-		len2=RARRAY_LEN(ary2);
-	  els2=RARRAY_PTR(ary2);
-		if (len!=len2) goto next;
-		for(i=0;i<len;i++) if(els[i]!=els2[i]) goto next;
+		if (!els_equal(rb_iv_get(obj,"@pred"),rb_iv_get(obj2,"@pred"))) goto next;if (!els_equal(rb_iv_get(obj,"@pure"),rb_iv_get(obj2,"@pure"))) goto next;if (!els_equal(rb_iv_get(obj,"@ary"),rb_iv_get(obj2,"@ary"))) goto next;
 		hits_Act++;
 		return cache_Act->ret[hash];
 		next:;
@@ -120,15 +112,7 @@ VALUE normalize_Apply(VALUE self,VALUE obj){int i;
 
 	VALUE obj2=cache_Apply->ary[hash];
 	if((int)obj2){
-		if (rb_iv_get(obj,"@name")!=rb_iv_get(obj2,"@name")) goto next;if (rb_iv_get(obj,"@clas")!=rb_iv_get(obj2,"@clas")) goto next;
-		VALUE ary2=rb_iv_get(obj2,"@ary");
-		if (ary2==Qnil) goto next;
-		len=RARRAY_LEN(ary);
-	  els=RARRAY_PTR(ary);
-		len2=RARRAY_LEN(ary2);
-	  els2=RARRAY_PTR(ary2);
-		if (len!=len2) goto next;
-		for(i=0;i<len;i++) if(els[i]!=els2[i]) goto next;
+		if (!els_equal(rb_iv_get(obj,"@name"),rb_iv_get(obj2,"@name"))) goto next;if (!els_equal(rb_iv_get(obj,"@clas"),rb_iv_get(obj2,"@clas"))) goto next;if (!els_equal(rb_iv_get(obj,"@ary"),rb_iv_get(obj2,"@ary"))) goto next;
 		hits_Apply++;
 		return cache_Apply->ret[hash];
 		next:;
@@ -168,15 +152,7 @@ VALUE normalize_Args(VALUE self,VALUE obj){int i;
 
 	VALUE obj2=cache_Args->ary[hash];
 	if((int)obj2){
-		
-		VALUE ary2=rb_iv_get(obj2,"@ary");
-		if (ary2==Qnil) goto next;
-		len=RARRAY_LEN(ary);
-	  els=RARRAY_PTR(ary);
-		len2=RARRAY_LEN(ary2);
-	  els2=RARRAY_PTR(ary2);
-		if (len!=len2) goto next;
-		for(i=0;i<len;i++) if(els[i]!=els2[i]) goto next;
+		if (!els_equal(rb_iv_get(obj,"@ary"),rb_iv_get(obj2,"@ary"))) goto next;
 		hits_Args++;
 		return cache_Args->ret[hash];
 		next:;
@@ -216,15 +192,7 @@ VALUE normalize_Bind(VALUE self,VALUE obj){int i;
 
 	VALUE obj2=cache_Bind->ary[hash];
 	if((int)obj2){
-		if (rb_iv_get(obj,"@name")!=rb_iv_get(obj2,"@name")) goto next;
-		VALUE ary2=rb_iv_get(obj2,"@ary");
-		if (ary2==Qnil) goto next;
-		len=RARRAY_LEN(ary);
-	  els=RARRAY_PTR(ary);
-		len2=RARRAY_LEN(ary2);
-	  els2=RARRAY_PTR(ary2);
-		if (len!=len2) goto next;
-		for(i=0;i<len;i++) if(els[i]!=els2[i]) goto next;
+		if (!els_equal(rb_iv_get(obj,"@name"),rb_iv_get(obj2,"@name"))) goto next;if (!els_equal(rb_iv_get(obj,"@ary"),rb_iv_get(obj2,"@ary"))) goto next;
 		hits_Bind++;
 		return cache_Bind->ret[hash];
 		next:;
@@ -264,15 +232,7 @@ VALUE normalize_Bnding(VALUE self,VALUE obj){int i;
 
 	VALUE obj2=cache_Bnding->ary[hash];
 	if((int)obj2){
-		
-		VALUE ary2=rb_iv_get(obj2,"@ary");
-		if (ary2==Qnil) goto next;
-		len=RARRAY_LEN(ary);
-	  els=RARRAY_PTR(ary);
-		len2=RARRAY_LEN(ary2);
-	  els2=RARRAY_PTR(ary2);
-		if (len!=len2) goto next;
-		for(i=0;i<len;i++) if(els[i]!=els2[i]) goto next;
+		if (!els_equal(rb_iv_get(obj,"@ary"),rb_iv_get(obj2,"@ary"))) goto next;
 		hits_Bnding++;
 		return cache_Bnding->ret[hash];
 		next:;
@@ -312,15 +272,7 @@ VALUE normalize_CAct(VALUE self,VALUE obj){int i;
 
 	VALUE obj2=cache_CAct->ary[hash];
 	if((int)obj2){
-		
-		VALUE ary2=rb_iv_get(obj2,"@ary");
-		if (ary2==Qnil) goto next;
-		len=RARRAY_LEN(ary);
-	  els=RARRAY_PTR(ary);
-		len2=RARRAY_LEN(ary2);
-	  els2=RARRAY_PTR(ary2);
-		if (len!=len2) goto next;
-		for(i=0;i<len;i++) if(els[i]!=els2[i]) goto next;
+		if (!els_equal(rb_iv_get(obj,"@ary"),rb_iv_get(obj2,"@ary"))) goto next;
 		hits_CAct++;
 		return cache_CAct->ret[hash];
 		next:;
@@ -360,15 +312,7 @@ VALUE normalize_Comment(VALUE self,VALUE obj){int i;
 
 	VALUE obj2=cache_Comment->ary[hash];
 	if((int)obj2){
-		
-		VALUE ary2=rb_iv_get(obj2,"@ary");
-		if (ary2==Qnil) goto next;
-		len=RARRAY_LEN(ary);
-	  els=RARRAY_PTR(ary);
-		len2=RARRAY_LEN(ary2);
-	  els2=RARRAY_PTR(ary2);
-		if (len!=len2) goto next;
-		for(i=0;i<len;i++) if(els[i]!=els2[i]) goto next;
+		if (!els_equal(rb_iv_get(obj,"@ary"),rb_iv_get(obj2,"@ary"))) goto next;
 		hits_Comment++;
 		return cache_Comment->ret[hash];
 		next:;
@@ -408,15 +352,7 @@ VALUE normalize_Cut(VALUE self,VALUE obj){int i;
 
 	VALUE obj2=cache_Cut->ary[hash];
 	if((int)obj2){
-		
-		VALUE ary2=rb_iv_get(obj2,"@ary");
-		if (ary2==Qnil) goto next;
-		len=RARRAY_LEN(ary);
-	  els=RARRAY_PTR(ary);
-		len2=RARRAY_LEN(ary2);
-	  els2=RARRAY_PTR(ary2);
-		if (len!=len2) goto next;
-		for(i=0;i<len;i++) if(els[i]!=els2[i]) goto next;
+		if (!els_equal(rb_iv_get(obj,"@ary"),rb_iv_get(obj2,"@ary"))) goto next;
 		hits_Cut++;
 		return cache_Cut->ret[hash];
 		next:;
@@ -456,15 +392,7 @@ VALUE normalize_Lambda(VALUE self,VALUE obj){int i;
 
 	VALUE obj2=cache_Lambda->ary[hash];
 	if((int)obj2){
-		
-		VALUE ary2=rb_iv_get(obj2,"@ary");
-		if (ary2==Qnil) goto next;
-		len=RARRAY_LEN(ary);
-	  els=RARRAY_PTR(ary);
-		len2=RARRAY_LEN(ary2);
-	  els2=RARRAY_PTR(ary2);
-		if (len!=len2) goto next;
-		for(i=0;i<len;i++) if(els[i]!=els2[i]) goto next;
+		if (!els_equal(rb_iv_get(obj,"@ary"),rb_iv_get(obj2,"@ary"))) goto next;
 		hits_Lambda++;
 		return cache_Lambda->ret[hash];
 		next:;
@@ -504,15 +432,7 @@ VALUE normalize_Global(VALUE self,VALUE obj){int i;
 
 	VALUE obj2=cache_Global->ary[hash];
 	if((int)obj2){
-		
-		VALUE ary2=rb_iv_get(obj2,"@ary");
-		if (ary2==Qnil) goto next;
-		len=RARRAY_LEN(ary);
-	  els=RARRAY_PTR(ary);
-		len2=RARRAY_LEN(ary2);
-	  els2=RARRAY_PTR(ary2);
-		if (len!=len2) goto next;
-		for(i=0;i<len;i++) if(els[i]!=els2[i]) goto next;
+		if (!els_equal(rb_iv_get(obj,"@ary"),rb_iv_get(obj2,"@ary"))) goto next;
 		hits_Global++;
 		return cache_Global->ret[hash];
 		next:;
@@ -552,15 +472,7 @@ VALUE normalize_Key(VALUE self,VALUE obj){int i;
 
 	VALUE obj2=cache_Key->ary[hash];
 	if((int)obj2){
-		
-		VALUE ary2=rb_iv_get(obj2,"@ary");
-		if (ary2==Qnil) goto next;
-		len=RARRAY_LEN(ary);
-	  els=RARRAY_PTR(ary);
-		len2=RARRAY_LEN(ary2);
-	  els2=RARRAY_PTR(ary2);
-		if (len!=len2) goto next;
-		for(i=0;i<len;i++) if(els[i]!=els2[i]) goto next;
+		if (!els_equal(rb_iv_get(obj,"@ary"),rb_iv_get(obj2,"@ary"))) goto next;
 		hits_Key++;
 		return cache_Key->ret[hash];
 		next:;
@@ -600,15 +512,7 @@ VALUE normalize_Local(VALUE self,VALUE obj){int i;
 
 	VALUE obj2=cache_Local->ary[hash];
 	if((int)obj2){
-		if (rb_iv_get(obj,"@ssano")!=rb_iv_get(obj2,"@ssano")) goto next;
-		VALUE ary2=rb_iv_get(obj2,"@ary");
-		if (ary2==Qnil) goto next;
-		len=RARRAY_LEN(ary);
-	  els=RARRAY_PTR(ary);
-		len2=RARRAY_LEN(ary2);
-	  els2=RARRAY_PTR(ary2);
-		if (len!=len2) goto next;
-		for(i=0;i<len;i++) if(els[i]!=els2[i]) goto next;
+		if (!els_equal(rb_iv_get(obj,"@ssano"),rb_iv_get(obj2,"@ssano"))) goto next;if (!els_equal(rb_iv_get(obj,"@ary"),rb_iv_get(obj2,"@ary"))) goto next;
 		hits_Local++;
 		return cache_Local->ret[hash];
 		next:;
@@ -648,15 +552,7 @@ VALUE normalize_Lookahead(VALUE self,VALUE obj){int i;
 
 	VALUE obj2=cache_Lookahead->ary[hash];
 	if((int)obj2){
-		
-		VALUE ary2=rb_iv_get(obj2,"@ary");
-		if (ary2==Qnil) goto next;
-		len=RARRAY_LEN(ary);
-	  els=RARRAY_PTR(ary);
-		len2=RARRAY_LEN(ary2);
-	  els2=RARRAY_PTR(ary2);
-		if (len!=len2) goto next;
-		for(i=0;i<len;i++) if(els[i]!=els2[i]) goto next;
+		if (!els_equal(rb_iv_get(obj,"@ary"),rb_iv_get(obj2,"@ary"))) goto next;
 		hits_Lookahead++;
 		return cache_Lookahead->ret[hash];
 		next:;
@@ -696,15 +592,7 @@ VALUE normalize_Many(VALUE self,VALUE obj){int i;
 
 	VALUE obj2=cache_Many->ary[hash];
 	if((int)obj2){
-		if (rb_iv_get(obj,"@has_stop")!=rb_iv_get(obj2,"@has_stop")) goto next;
-		VALUE ary2=rb_iv_get(obj2,"@ary");
-		if (ary2==Qnil) goto next;
-		len=RARRAY_LEN(ary);
-	  els=RARRAY_PTR(ary);
-		len2=RARRAY_LEN(ary2);
-	  els2=RARRAY_PTR(ary2);
-		if (len!=len2) goto next;
-		for(i=0;i<len;i++) if(els[i]!=els2[i]) goto next;
+		if (!els_equal(rb_iv_get(obj,"@has_stop"),rb_iv_get(obj2,"@has_stop"))) goto next;if (!els_equal(rb_iv_get(obj,"@ary"),rb_iv_get(obj2,"@ary"))) goto next;
 		hits_Many++;
 		return cache_Many->ret[hash];
 		next:;
@@ -744,15 +632,7 @@ VALUE normalize_Or(VALUE self,VALUE obj){int i;
 
 	VALUE obj2=cache_Or->ary[hash];
 	if((int)obj2){
-		if (rb_iv_get(obj,"@has_cut")!=rb_iv_get(obj2,"@has_cut")) goto next;
-		VALUE ary2=rb_iv_get(obj2,"@ary");
-		if (ary2==Qnil) goto next;
-		len=RARRAY_LEN(ary);
-	  els=RARRAY_PTR(ary);
-		len2=RARRAY_LEN(ary2);
-	  els2=RARRAY_PTR(ary2);
-		if (len!=len2) goto next;
-		for(i=0;i<len;i++) if(els[i]!=els2[i]) goto next;
+		if (!els_equal(rb_iv_get(obj,"@has_cut"),rb_iv_get(obj2,"@has_cut"))) goto next;if (!els_equal(rb_iv_get(obj,"@ary"),rb_iv_get(obj2,"@ary"))) goto next;
 		hits_Or++;
 		return cache_Or->ret[hash];
 		next:;
@@ -792,15 +672,7 @@ VALUE normalize_Pass(VALUE self,VALUE obj){int i;
 
 	VALUE obj2=cache_Pass->ary[hash];
 	if((int)obj2){
-		if (rb_iv_get(obj,"@var")!=rb_iv_get(obj2,"@var")) goto next;if (rb_iv_get(obj,"@to")!=rb_iv_get(obj2,"@to")) goto next;if (rb_iv_get(obj,"@enter")!=rb_iv_get(obj2,"@enter")) goto next;
-		VALUE ary2=rb_iv_get(obj2,"@ary");
-		if (ary2==Qnil) goto next;
-		len=RARRAY_LEN(ary);
-	  els=RARRAY_PTR(ary);
-		len2=RARRAY_LEN(ary2);
-	  els2=RARRAY_PTR(ary2);
-		if (len!=len2) goto next;
-		for(i=0;i<len;i++) if(els[i]!=els2[i]) goto next;
+		if (!els_equal(rb_iv_get(obj,"@var"),rb_iv_get(obj2,"@var"))) goto next;if (!els_equal(rb_iv_get(obj,"@to"),rb_iv_get(obj2,"@to"))) goto next;if (!els_equal(rb_iv_get(obj,"@enter"),rb_iv_get(obj2,"@enter"))) goto next;if (!els_equal(rb_iv_get(obj,"@ary"),rb_iv_get(obj2,"@ary"))) goto next;
 		hits_Pass++;
 		return cache_Pass->ret[hash];
 		next:;
@@ -840,15 +712,7 @@ VALUE normalize_Result(VALUE self,VALUE obj){int i;
 
 	VALUE obj2=cache_Result->ary[hash];
 	if((int)obj2){
-		if (rb_iv_get(obj,"@name")!=rb_iv_get(obj2,"@name")) goto next;if (rb_iv_get(obj,"@varnames")!=rb_iv_get(obj2,"@varnames")) goto next;if (rb_iv_get(obj,"@vars")!=rb_iv_get(obj2,"@vars")) goto next;
-		VALUE ary2=rb_iv_get(obj2,"@ary");
-		if (ary2==Qnil) goto next;
-		len=RARRAY_LEN(ary);
-	  els=RARRAY_PTR(ary);
-		len2=RARRAY_LEN(ary2);
-	  els2=RARRAY_PTR(ary2);
-		if (len!=len2) goto next;
-		for(i=0;i<len;i++) if(els[i]!=els2[i]) goto next;
+		if (!els_equal(rb_iv_get(obj,"@name"),rb_iv_get(obj2,"@name"))) goto next;if (!els_equal(rb_iv_get(obj,"@varnames"),rb_iv_get(obj2,"@varnames"))) goto next;if (!els_equal(rb_iv_get(obj,"@vars"),rb_iv_get(obj2,"@vars"))) goto next;if (!els_equal(rb_iv_get(obj,"@ary"),rb_iv_get(obj2,"@ary"))) goto next;
 		hits_Result++;
 		return cache_Result->ret[hash];
 		next:;
@@ -888,15 +752,7 @@ VALUE normalize_Seq(VALUE self,VALUE obj){int i;
 
 	VALUE obj2=cache_Seq->ary[hash];
 	if((int)obj2){
-		
-		VALUE ary2=rb_iv_get(obj2,"@ary");
-		if (ary2==Qnil) goto next;
-		len=RARRAY_LEN(ary);
-	  els=RARRAY_PTR(ary);
-		len2=RARRAY_LEN(ary2);
-	  els2=RARRAY_PTR(ary2);
-		if (len!=len2) goto next;
-		for(i=0;i<len;i++) if(els[i]!=els2[i]) goto next;
+		if (!els_equal(rb_iv_get(obj,"@ary"),rb_iv_get(obj2,"@ary"))) goto next;
 		hits_Seq++;
 		return cache_Seq->ret[hash];
 		next:;
@@ -936,15 +792,7 @@ VALUE normalize_Stop(VALUE self,VALUE obj){int i;
 
 	VALUE obj2=cache_Stop->ary[hash];
 	if((int)obj2){
-		
-		VALUE ary2=rb_iv_get(obj2,"@ary");
-		if (ary2==Qnil) goto next;
-		len=RARRAY_LEN(ary);
-	  els=RARRAY_PTR(ary);
-		len2=RARRAY_LEN(ary2);
-	  els2=RARRAY_PTR(ary2);
-		if (len!=len2) goto next;
-		for(i=0;i<len;i++) if(els[i]!=els2[i]) goto next;
+		if (!els_equal(rb_iv_get(obj,"@ary"),rb_iv_get(obj2,"@ary"))) goto next;
 		hits_Stop++;
 		return cache_Stop->ret[hash];
 		next:;
@@ -984,15 +832,7 @@ VALUE normalize_Strin(VALUE self,VALUE obj){int i;
 
 	VALUE obj2=cache_Strin->ary[hash];
 	if((int)obj2){
-		
-		VALUE ary2=rb_iv_get(obj2,"@ary");
-		if (ary2==Qnil) goto next;
-		len=RARRAY_LEN(ary);
-	  els=RARRAY_PTR(ary);
-		len2=RARRAY_LEN(ary2);
-	  els2=RARRAY_PTR(ary2);
-		if (len!=len2) goto next;
-		for(i=0;i<len;i++) if(els[i]!=els2[i]) goto next;
+		if (!els_equal(rb_iv_get(obj,"@ary"),rb_iv_get(obj2,"@ary"))) goto next;
 		hits_Strin++;
 		return cache_Strin->ret[hash];
 		next:;
@@ -1032,15 +872,7 @@ VALUE normalize_Switch_Char(VALUE self,VALUE obj){int i;
 
 	VALUE obj2=cache_Switch_Char->ary[hash];
 	if((int)obj2){
-		
-		VALUE ary2=rb_iv_get(obj2,"@ary");
-		if (ary2==Qnil) goto next;
-		len=RARRAY_LEN(ary);
-	  els=RARRAY_PTR(ary);
-		len2=RARRAY_LEN(ary2);
-	  els2=RARRAY_PTR(ary2);
-		if (len!=len2) goto next;
-		for(i=0;i<len;i++) if(els[i]!=els2[i]) goto next;
+		if (!els_equal(rb_iv_get(obj,"@ary"),rb_iv_get(obj2,"@ary"))) goto next;
 		hits_Switch_Char++;
 		return cache_Switch_Char->ret[hash];
 		next:;
@@ -1080,15 +912,7 @@ VALUE normalize_Switch_Clas(VALUE self,VALUE obj){int i;
 
 	VALUE obj2=cache_Switch_Clas->ary[hash];
 	if((int)obj2){
-		
-		VALUE ary2=rb_iv_get(obj2,"@ary");
-		if (ary2==Qnil) goto next;
-		len=RARRAY_LEN(ary);
-	  els=RARRAY_PTR(ary);
-		len2=RARRAY_LEN(ary2);
-	  els2=RARRAY_PTR(ary2);
-		if (len!=len2) goto next;
-		for(i=0;i<len;i++) if(els[i]!=els2[i]) goto next;
+		if (!els_equal(rb_iv_get(obj,"@ary"),rb_iv_get(obj2,"@ary"))) goto next;
 		hits_Switch_Clas++;
 		return cache_Switch_Clas->ret[hash];
 		next:;
@@ -1128,15 +952,7 @@ VALUE normalize_Switch_Or(VALUE self,VALUE obj){int i;
 
 	VALUE obj2=cache_Switch_Or->ary[hash];
 	if((int)obj2){
-		
-		VALUE ary2=rb_iv_get(obj2,"@ary");
-		if (ary2==Qnil) goto next;
-		len=RARRAY_LEN(ary);
-	  els=RARRAY_PTR(ary);
-		len2=RARRAY_LEN(ary2);
-	  els2=RARRAY_PTR(ary2);
-		if (len!=len2) goto next;
-		for(i=0;i<len;i++) if(els[i]!=els2[i]) goto next;
+		if (!els_equal(rb_iv_get(obj,"@ary"),rb_iv_get(obj2,"@ary"))) goto next;
 		hits_Switch_Or++;
 		return cache_Switch_Or->ret[hash];
 		next:;
