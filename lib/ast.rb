@@ -168,7 +168,7 @@ VALUE create2_#{e}(VALUE self #{e.instance_variable_get(:@attrs).map{|el| ",VALU
 	return normalize_#{e}(obj3);
 }"
 }
-cn=[Bind,Seq,Or,Act,Apply,Many,Pass,Local]
+cn=[Act,Apply,Args,Bind,Bnding,CAct,Comment,Cut,Lambda,Global,Key,Local,Lookahead,Many,Or,Pass,Result,Seq,Stop,Strin] #Switch_Char,Switch_Clas,Switch_Or]
 norm.puts "
 normalize_cache * normalize_cache_init(){
        normalize_cache *b;
