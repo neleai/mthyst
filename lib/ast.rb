@@ -102,7 +102,11 @@ norm.puts "int hits_#{e}=0;int miss_#{e}=0; normalize_cache *cache_#{e};
 VALUE normalize_#{e}(VALUE self,VALUE obj){int i;
 	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;
 	VALUE ary=rb_iv_get(obj,\"@ary\");
-	ary=normalize_el(ary);
+	if (rb_obj_frozen_p(obj)!=Qtrue){
+		ary=normalize_el(ary);
+		rb_iv_set(obj,\"@ary\",ary);
+		rb_obj_freeze(obj);
+	}
 	hash=11*hash+rb_iv_get(ary,\"@hash\");
 	#{(e.instance_variable_get(:@attrs)-[:ary]).map{|e| "hash=11*hash+(rb_iv_get(obj,\"@#{e.to_s}\")>>6);"}*""}
 	hash=hash&((1<<20)-1);
@@ -127,11 +131,11 @@ VALUE normalize_#{e}(VALUE self,VALUE obj){int i;
 	if (rb_obj_is_kind_of(obj3, rb_obj_class(obj))){
 		int hash3=0;
 		VALUE ary3=rb_iv_get(obj3,\"@ary\");
-		ary3=normalize_el(ary3);
-		rb_iv_set(obj,\"@ary\",ary);
-		rb_obj_freeze(obj);
-		rb_iv_set(obj3,\"@ary\",ary3);
-		rb_obj_freeze(obj3);
+		if (rb_obj_frozen_p(obj3)!=Qtrue){
+			ary3=normalize_el(ary3);
+			rb_iv_set(obj3,\"@ary\",ary3);
+			rb_obj_freeze(obj3);
+		}
 		hash3=11*hash3+rb_iv_get(ary3,\"@hash\");
 		#{(e.instance_variable_get(:@attrs)-[:ary]).map{|e| "hash3=11*hash3+(rb_iv_get(obj,\"@#{e.to_s}\")>>6);"}*""}
 		hash3=hash3&((1<<20)-1);
