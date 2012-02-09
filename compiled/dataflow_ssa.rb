@@ -85,15 +85,6 @@ end
 def Dataflow__at_bnding_eq__b94a(bind)
 @bnding=src.bnding
 end
-def Dataflow__at_changed_5352(bind)
-@changed=true
-end
-def Dataflow__at_changed_b885(bind)
-@changed=false
-end
-def Dataflow__at_changed_c681(bind)
-@changed
-end
 def Dataflow__at_marked_lt__59bb(bind)
 @marked<<src
 end
@@ -109,11 +100,8 @@ end
 def Dataflow__at_oldssan_e953(bind)
 @oldssanums=bind[1]
 end
-def Dataflow__lp_bind_lb_1_rb__ee3d(bind)
-(bind[1]||=bind[2].dup;bind[3]=true;bind[1].instance_variable_set(bind[4],bind[5])) if @changed && bind[5]!=instance_variable_get(bind[4])
-end
-def Dataflow__lp_src_dot_ins_6a75(bind)
-(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
+def Dataflow__lp_src_dot_cla_e144(bind)
+(src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
 def Dataflow_bind_end_6e13(bind)
 bind_end(src)
@@ -146,13 +134,16 @@ end
 def Dataflow_bind_lb_1_rb__lt__eda2(bind)
 bind[1]<<oldssanums.clone
 end
-def Dataflow_if_sp_bind_lb__8e0b(bind)
-if bind[1]
-             @changed=true;bind[2].normalize
-           else
-            @changed=bind[3]
-            src
-          end
+def Dataflow_bind_lb_1_rb__sp__6af0(bind)
+bind[1] << bind[2]
+end
+def Dataflow_if_sp_bind_lb__1bed(bind)
+if bind[1]==bind[2]
+						  src
+						else
+							src.class.create2(*bind[2])
+					  end 
+          
 end
 def Dataflow_many_end_0563(bind)
 many_end(bind[1])
@@ -208,15 +199,6 @@ end
 def Dead_Code_Deleter3__at_bounded_7c82(bind)
 @bounded=false
 end
-def Dead_Code_Deleter3__at_changed_5352(bind)
-@changed=true
-end
-def Dead_Code_Deleter3__at_changed_b885(bind)
-@changed=false
-end
-def Dead_Code_Deleter3__at_changed_c681(bind)
-@changed
-end
 def Dead_Code_Deleter3__at_reachab_005c(bind)
 @reachable[src.name] ? src : src.expr
 end
@@ -231,22 +213,22 @@ def Dead_Code_Deleter3__lp_(bind)
 (!@reachable[bind[1]] ||(bind[1].pure && !@bounded)) ? Placeholder : bind[1]
 
 end
-def Dead_Code_Deleter3__lp_bind_lb_1_rb__ee3d(bind)
-(bind[1]||=bind[2].dup;bind[3]=true;bind[1].instance_variable_set(bind[4],bind[5])) if @changed && bind[5]!=instance_variable_get(bind[4])
-end
-def Dead_Code_Deleter3__lp_src_dot_ins_6a75(bind)
-(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
+def Dead_Code_Deleter3__lp_src_dot_cla_e144(bind)
+(src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
 def Dead_Code_Deleter3_bind_lb_1_rb__lt__7b20(bind)
 bind[1]<<bind[2]
 end
-def Dead_Code_Deleter3_if_sp_bind_lb__8e0b(bind)
-if bind[1]
-             @changed=true;bind[2].normalize
-           else
-            @changed=bind[3]
-            src
-          end
+def Dead_Code_Deleter3_bind_lb_1_rb__sp__6af0(bind)
+bind[1] << bind[2]
+end
+def Dead_Code_Deleter3_if_sp_bind_lb__1bed(bind)
+if bind[1]==bind[2]
+						  src
+						else
+							src.class.create2(*bind[2])
+					  end 
+          
 end
 def Dead_Code_Deleter3_src_25d9(bind)
 src
@@ -260,31 +242,22 @@ end
 
 class Forget_SSA < Traverser_Clone2
 
-def Forget_SSA__at_changed_5352(bind)
-@changed=true
-end
-def Forget_SSA__at_changed_b885(bind)
-@changed=false
-end
-def Forget_SSA__at_changed_c681(bind)
-@changed
-end
-def Forget_SSA__lp_bind_lb_1_rb__ee3d(bind)
-(bind[1]||=bind[2].dup;bind[3]=true;bind[1].instance_variable_set(bind[4],bind[5])) if @changed && bind[5]!=instance_variable_get(bind[4])
-end
-def Forget_SSA__lp_src_dot_ins_6a75(bind)
-(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
+def Forget_SSA__lp_src_dot_cla_e144(bind)
+(src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
 def Forget_SSA_bind_lb_1_rb__lt__7b20(bind)
 bind[1]<<bind[2]
 end
-def Forget_SSA_if_sp_bind_lb__8e0b(bind)
-if bind[1]
-             @changed=true;bind[2].normalize
-           else
-            @changed=bind[3]
-            src
-          end
+def Forget_SSA_bind_lb_1_rb__sp__6af0(bind)
+bind[1] << bind[2]
+end
+def Forget_SSA_if_sp_bind_lb__1bed(bind)
+if bind[1]==bind[2]
+						  src
+						else
+							src.class.create2(*bind[2])
+					  end 
+          
 end
 def Forget_SSA_src_25d9(bind)
 src
@@ -297,7 +270,7 @@ end
 
 
 def dataflow_ssa_compiled_by
-'7b11c6ea4f8f6c3c884a40acce9bf498'
+'667471082c129eb6791f6496951520c0'
 end
 def dataflow_ssa_source_hash
 '9f4abb6cb87cae8b660578e2fd453a17'
@@ -306,6 +279,6 @@ def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'555d09e3908816962d26dfe1ea397bc2'
+'e8e59386428c716fb898232475a42fa7'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/dataflow_ssa_c"

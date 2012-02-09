@@ -27,44 +27,32 @@ end
 def Inliner2__append_lp__d113(bind)
 _append(bind[1],bind[2])
 end
-def Inliner2__at_changed_5352(bind)
-@changed=true
-end
-def Inliner2__at_changed_b885(bind)
-@changed=false
-end
-def Inliner2__at_changed_c681(bind)
-@changed
-end
 def Inliner2__at_name_eq_bi_5da3(bind)
 @name=bind[1];@args=bind[2];@body=bind[3] 
 end
 def Inliner2__lp_bind_lb_1_rb__709e(bind)
 (bind[1]==@name) || FAIL
 end
-def Inliner2__lp_bind_lb_1_rb__ee3d(bind)
-(bind[1]||=bind[2].dup;bind[3]=true;bind[1].instance_variable_set(bind[4],bind[5])) if @changed && bind[5]!=instance_variable_get(bind[4])
-end
-def Inliner2__lp_src_dot_ins_6a75(bind)
-(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
+def Inliner2__lp_src_dot_cla_e144(bind)
+(src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
 def Inliner2_bind_lb_1_rb__lt__7b20(bind)
 bind[1]<<bind[2]
+end
+def Inliner2_bind_lb_1_rb__sp__6af0(bind)
+bind[1] << bind[2]
 end
 def Inliner2_body_eq__at_bo_4270(bind)
 body=@body; bind[1].each_index{|i| body=Seq[Bind[@args[i],bind[1][i]],body] } ; body
 
 end
-def Inliner2_if_sp_bind_lb__8e0b(bind)
-if bind[1]
-             @changed=true;bind[2].normalize
-           else
-            @changed=bind[3]
-            src
-          end
-end
-def Inliner2_src_25d9(bind)
-src
+def Inliner2_if_sp_bind_lb__1bed(bind)
+if bind[1]==bind[2]
+						  src
+						else
+							src.class.create2(*bind[2])
+					  end 
+          
 end
 def Inliner2_src_dot_args_2df5(bind)
 src.args
@@ -81,7 +69,7 @@ end
 
 
 def inliner2_compiled_by
-'7b11c6ea4f8f6c3c884a40acce9bf498'
+'667471082c129eb6791f6496951520c0'
 end
 def inliner2_source_hash
 '8b55baa0765b22b5c8f5c6d36559323d'
@@ -90,6 +78,6 @@ def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version
 end
 def inliner2_version
-'b9b505375ed761806a5cae8ed01a14f3'
+'42106adf6ffa0437347762cc5200a80b'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/inliner2_c"

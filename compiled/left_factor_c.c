@@ -1,6 +1,7 @@
 #include "cthyst.h"
 VALUE cls_Left_Factor;
 VALUE AmethystCore_anything(VALUE self );
+VALUE Amethyst_nil(VALUE self );
 VALUE Left_Factor_binds(VALUE self ,VALUE a0,VALUE a1);
 VALUE Left_Factor_binds(VALUE self ,VALUE,VALUE);
 VALUE Left_Factor_factor(VALUE self ,VALUE a0,VALUE a1,VALUE a2);
@@ -21,20 +22,16 @@ static VALUE sy_Left_Factor_Bind_lb_src_66c4;
 static VALUE sy_Left_Factor_Or_lb__ti__lp_bin_849e;
 static VALUE sy_Left_Factor_Seq_lb__lb_bin_4ce0;
 static VALUE sy_Left_Factor__append_lp__d113;
-static VALUE sy_Left_Factor__at_changed_5352;
-static VALUE sy_Left_Factor__at_changed_b885;
-static VALUE sy_Left_Factor__at_changed_c681;
 static VALUE sy_Left_Factor__lb_bind_lb_1_rb__1906;
 static VALUE sy_Left_Factor__lp_bind_lb_1_rb__34a7;
 static VALUE sy_Left_Factor__lp_bind_lb_1_rb__b868;
-static VALUE sy_Left_Factor__lp_bind_lb_1_rb__ee3d;
-static VALUE sy_Left_Factor__lp_src_dot_ins_6a75;
+static VALUE sy_Left_Factor__lp_src_dot_cla_e144;
 static VALUE sy_Left_Factor_bind_lb_1_rb__lt__7b20;
 static VALUE sy_Left_Factor_bind_lb_1_rb__pl__4651;
 static VALUE sy_Left_Factor_bind_lb_1_rb__pl__4c53;
+static VALUE sy_Left_Factor_bind_lb_1_rb__sp__6af0;
 static VALUE sy_Left_Factor_first_lp_bi_150a;
-static VALUE sy_Left_Factor_if_sp_bind_lb__8e0b;
-static VALUE sy_Left_Factor_src_25d9;
+static VALUE sy_Left_Factor_if_sp_bind_lb__1bed;
 static VALUE sy_Left_Factor_src_dot_expr_ef77;
 VALUE Left_Factor_binds(VALUE self ,VALUE a0,VALUE a1) {
     VALUE vals[2];
@@ -634,22 +631,18 @@ fail:
 }
 VALUE Left_Factor_traverse(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_oldchanged,_this,_clon,_changed,_autovar,_autovar_2,_autovar_3,_key,_val,__result;
+    VALUE it ,_nvars,_ivars,_autovar,_autovar_2,_it,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     ptr->pos=ptr->len;
-    it=rb_funcall(self,sy_Left_Factor__at_changed_c681,1,bind2);
-    _oldchanged=it;;
-    it=rb_funcall(self,sy_Left_Factor_src_25d9,1,bind2);
-    _this=it;;
-    it=Qnil;
-    _clon=it;;
-    it=Qfalse;
-    _changed=it;;
-    it=rb_funcall(self,sy_Left_Factor__lp_src_dot_ins_6a75,1,bind2);
+    it=rb_ary_new3(0);
+    _nvars=it;;
+    it=rb_funcall(self,sy_Left_Factor__lp_src_dot_cla_e144,1,bind2);
+    _ivars=it;;
+    it=_ivars;
     _autovar=it;;
     cstruct oldpass1=*ptr;
     ptr->pos=ptr->len=0;
@@ -683,52 +676,14 @@ VALUE Left_Factor_traverse(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=AmethystCore_anything(self );
-        FAILTEST(alt1_2);
-        _autovar_3=it;;
-        cstruct oldpass3=*ptr;
-        ptr->pos=ptr->len=0;
-        ptr->ary=NULL;
-        ptr->src=_autovar_3;
-        if(TYPE(ptr->src)==T_STRING) {
-            ptr->str=RSTRING_PTR(ptr->src);
-            ptr->len=RSTRING_LEN(ptr->src);
-        }
-        else {
-            VALUE ary;
-            if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
-            ptr->ary2=ary;
-            ptr->ary=RARRAY_PTR(ary);
-            ptr->len=RARRAY_LEN(ary);
-        }
-        it=AmethystCore_anything(self );
-        FAILTEST(pass3);
-        _key=it;;
-        it=rb_funcall(self,sy_Left_Factor__at_changed_b885,1,bind2);
         it=Left_Factor_traverse_item(self );
-        FAILTEST(pass3);
-        _val=it;;
-        bind_aset(bind2,1,_clon);
-        bind_aset(bind2,2,_this);
-        bind_aset(bind2,3,_changed);
-        bind_aset(bind2,4,_key);
-        bind_aset(bind2,5,_val);
-        it=rb_funcall(self,sy_Left_Factor__lp_bind_lb_1_rb__ee3d,1,bind2);
-        _clon=bind_aget(bind2,1);;
-        _this=bind_aget(bind2,2);;
-        _changed=bind_aget(bind2,3);;
-        _key=bind_aget(bind2,4);;
-        _val=bind_aget(bind2,5);;
-        it=Qnil;
-        if (ptr->pos<ptr->len) goto pass3;
-        goto success3;
-pass3:
-        *ptr=oldpass3;
-        goto alt1_2;
-success3:
-        *ptr=oldpass3;
-
+        FAILTEST(alt1_2);
+        _it=it;;
+        bind_aset(bind2,1,_nvars);
+        bind_aset(bind2,2,_it);
+        it=rb_funcall(self,sy_Left_Factor_bind_lb_1_rb__sp__6af0,1,bind2);
+        _nvars=bind_aget(bind2,1);;
+        _it=bind_aget(bind2,2);;
         ;
         goto accept1;
 alt1_2:
@@ -758,13 +713,11 @@ pass1:
     goto fail;
 success1:
     *ptr=oldpass1;
-    bind_aset(bind2,1,_changed);
-    bind_aset(bind2,2,_clon);
-    bind_aset(bind2,3,_oldchanged);
-    it=rb_funcall(self,sy_Left_Factor_if_sp_bind_lb__8e0b,1,bind2);
-    _changed=bind_aget(bind2,1);;
-    _clon=bind_aget(bind2,2);;
-    _oldchanged=bind_aget(bind2,3);;
+    bind_aset(bind2,1,_ivars);
+    bind_aset(bind2,2,_nvars);
+    it=rb_funcall(self,sy_Left_Factor_if_sp_bind_lb__1bed,1,bind2);
+    _ivars=bind_aget(bind2,1);;
+    _nvars=bind_aget(bind2,2);;
     __result=it;;
 
     return it;
@@ -773,7 +726,7 @@ fail:
 }
 VALUE Left_Factor_traverse_item(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_a,__result,_autovar,_autovar_2,_autovar_3,_ar,_it,_autovar_4;
+    VALUE it ,__result,_autovar,_autovar_2,_autovar_3,_ar,_it,_autovar_4;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -786,16 +739,21 @@ VALUE Left_Factor_traverse_item(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=Left_Factor_visit(self );
+        it=Amethyst_nil(self );
         FAILTEST(alt1_2);
-        _a=it;;
-        it=rb_funcall(self,sy_Left_Factor__at_changed_5352,1,bind2);
-        it=_a;
         __result=it;;
 
         ;
         goto accept1;
 alt1_2:
+        ptr->pos=oldpos1;
+        it=Left_Factor_visit(self );
+        FAILTEST(alt1_3);
+        __result=it;;
+
+        ;
+        goto accept1;
+alt1_3:
         ptr->pos=oldpos1;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -824,7 +782,7 @@ alt1_2:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto alt1_3;
+        goto alt1_4;
 success1:
         *ptr=oldpass1;
         it=_autovar_2;
@@ -832,15 +790,15 @@ success1:
 
         ;
         goto accept1;
-alt1_3:
+alt1_4:
         ptr->pos=oldpos1;
         it=AmethystCore_anything(self );
-        FAILTEST(alt1_4);
+        FAILTEST(alt1_5);
         __result=it;;
 
         ;
         goto accept1;
-alt1_4:
+alt1_5:
         ptr->pos=oldpos1;
         goto fail;
 accept1:
@@ -852,16 +810,21 @@ accept1:
         int cut2=0;
 alt2_1:
         ;
-        it=Left_Factor_visit(self );
+        it=Amethyst_nil(self );
         FAILTEST(alt2_2);
-        _a=it;;
-        it=rb_funcall(self,sy_Left_Factor__at_changed_5352,1,bind2);
-        it=_a;
         __result=it;;
 
         ;
         goto accept2;
 alt2_2:
+        ptr->pos=oldpos2;
+        it=Left_Factor_visit(self );
+        FAILTEST(alt2_3);
+        __result=it;;
+
+        ;
+        goto accept2;
+alt2_3:
         ptr->pos=oldpos2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -918,7 +881,7 @@ accept3:
         goto success2;
 pass2:
         *ptr=oldpass2;
-        goto alt2_3;
+        goto alt2_4;
 success2:
         *ptr=oldpass2;
         it=_autovar_4;
@@ -926,15 +889,15 @@ success2:
 
         ;
         goto accept2;
-alt2_3:
+alt2_4:
         ptr->pos=oldpos2;
         it=AmethystCore_anything(self );
-        FAILTEST(alt2_4);
+        FAILTEST(alt2_5);
         __result=it;;
 
         ;
         goto accept2;
-alt2_4:
+alt2_5:
         ptr->pos=oldpos2;
         goto fail;
 accept2:
@@ -946,24 +909,29 @@ accept2:
         int cut4=0;
 alt4_1:
         ;
-        it=Left_Factor_visit(self );
+        it=Amethyst_nil(self );
         FAILTEST(alt4_2);
-        _a=it;;
-        it=rb_funcall(self,sy_Left_Factor__at_changed_5352,1,bind2);
-        it=_a;
         __result=it;;
 
         ;
         goto accept4;
 alt4_2:
         ptr->pos=oldpos4;
-        it=AmethystCore_anything(self );
+        it=Left_Factor_visit(self );
         FAILTEST(alt4_3);
         __result=it;;
 
         ;
         goto accept4;
 alt4_3:
+        ptr->pos=oldpos4;
+        it=AmethystCore_anything(self );
+        FAILTEST(alt4_4);
+        __result=it;;
+
+        ;
+        goto accept4;
+alt4_4:
         ptr->pos=oldpos4;
         goto fail;
 accept4:
@@ -1172,20 +1140,16 @@ void Init_left_factor_c() {
     sy_Left_Factor_Or_lb__ti__lp_bin_849e=rb_intern("Left_Factor_Or_lb__ti__lp_bin_849e");
     sy_Left_Factor_Seq_lb__lb_bin_4ce0=rb_intern("Left_Factor_Seq_lb__lb_bin_4ce0");
     sy_Left_Factor__append_lp__d113=rb_intern("Left_Factor__append_lp__d113");
-    sy_Left_Factor__at_changed_5352=rb_intern("Left_Factor__at_changed_5352");
-    sy_Left_Factor__at_changed_b885=rb_intern("Left_Factor__at_changed_b885");
-    sy_Left_Factor__at_changed_c681=rb_intern("Left_Factor__at_changed_c681");
     sy_Left_Factor__lb_bind_lb_1_rb__1906=rb_intern("Left_Factor__lb_bind_lb_1_rb__1906");
     sy_Left_Factor__lp_bind_lb_1_rb__34a7=rb_intern("Left_Factor__lp_bind_lb_1_rb__34a7");
     sy_Left_Factor__lp_bind_lb_1_rb__b868=rb_intern("Left_Factor__lp_bind_lb_1_rb__b868");
-    sy_Left_Factor__lp_bind_lb_1_rb__ee3d=rb_intern("Left_Factor__lp_bind_lb_1_rb__ee3d");
-    sy_Left_Factor__lp_src_dot_ins_6a75=rb_intern("Left_Factor__lp_src_dot_ins_6a75");
+    sy_Left_Factor__lp_src_dot_cla_e144=rb_intern("Left_Factor__lp_src_dot_cla_e144");
     sy_Left_Factor_bind_lb_1_rb__lt__7b20=rb_intern("Left_Factor_bind_lb_1_rb__lt__7b20");
     sy_Left_Factor_bind_lb_1_rb__pl__4651=rb_intern("Left_Factor_bind_lb_1_rb__pl__4651");
     sy_Left_Factor_bind_lb_1_rb__pl__4c53=rb_intern("Left_Factor_bind_lb_1_rb__pl__4c53");
+    sy_Left_Factor_bind_lb_1_rb__sp__6af0=rb_intern("Left_Factor_bind_lb_1_rb__sp__6af0");
     sy_Left_Factor_first_lp_bi_150a=rb_intern("Left_Factor_first_lp_bi_150a");
-    sy_Left_Factor_if_sp_bind_lb__8e0b=rb_intern("Left_Factor_if_sp_bind_lb__8e0b");
-    sy_Left_Factor_src_25d9=rb_intern("Left_Factor_src_25d9");
+    sy_Left_Factor_if_sp_bind_lb__1bed=rb_intern("Left_Factor_if_sp_bind_lb__1bed");
     sy_Left_Factor_src_dot_expr_ef77=rb_intern("Left_Factor_src_dot_expr_ef77");
     rb_define_method(cls_Left_Factor,"binds",Left_Factor_binds,2);
     rb_define_method(cls_Left_Factor,"factor",Left_Factor_factor,3);
@@ -1195,5 +1159,5 @@ void Init_left_factor_c() {
     rb_define_method(cls_Left_Factor,"traverse",Left_Factor_traverse,0);
     rb_define_method(cls_Left_Factor,"traverse_item",Left_Factor_traverse_item,0);
     rb_define_method(cls_Left_Factor,"visit",Left_Factor_visit,0);
-    rb_eval_string("testversionleft_factor('2f19cb780f4b466415454023af421d26')");
+    rb_eval_string("testversionleft_factor('5219f395dcc104b46a08705ca11c95d8')");
 }

@@ -614,15 +614,6 @@ end
 def Detect_Switch_Char__append_lp__d113(bind)
 _append(bind[1],bind[2])
 end
-def Detect_Switch_Char__at_changed_5352(bind)
-@changed=true
-end
-def Detect_Switch_Char__at_changed_b885(bind)
-@changed=false
-end
-def Detect_Switch_Char__at_changed_c681(bind)
-@changed
-end
 def Detect_Switch_Char__at_name_eq_sr_362f(bind)
 @name=src.name
 end
@@ -638,11 +629,8 @@ end
 def Detect_Switch_Char__lp_2(bind)
 (!bind[1]) || FAIL
 end
-def Detect_Switch_Char__lp_bind_lb_1_rb__ee3d(bind)
-(bind[1]||=bind[2].dup;bind[3]=true;bind[1].instance_variable_set(bind[4],bind[5])) if @changed && bind[5]!=instance_variable_get(bind[4])
-end
-def Detect_Switch_Char__lp_src_dot_ins_6a75(bind)
-(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
+def Detect_Switch_Char__lp_src_dot_cla_e144(bind)
+(src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
 def Detect_Switch_Char_bind_lb_1_rb__dot__0b68(bind)
 bind[1].each{|p,a| bind[2].each{|p2,a2| bind[3] << [p&p2,a+[a2]] if p&p2!=Lattice_Char.bottom}}
@@ -659,16 +647,19 @@ end
 def Detect_Switch_Char_bind_lb_1_rb__pl__4651(bind)
 bind[1]+[bind[2]]
 end
+def Detect_Switch_Char_bind_lb_1_rb__sp__6af0(bind)
+bind[1] << bind[2]
+end
 def Detect_Switch_Char_first_lp_sr_3298(bind)
 first(src)
 end
-def Detect_Switch_Char_if_sp_bind_lb__8e0b(bind)
-if bind[1]
-             @changed=true;bind[2].normalize
-           else
-            @changed=bind[3]
-            src
-          end
+def Detect_Switch_Char_if_sp_bind_lb__1bed(bind)
+if bind[1]==bind[2]
+						  src
+						else
+							src.class.create2(*bind[2])
+					  end 
+          
 end
 def Detect_Switch_Char_s_eq_Switch_78a6(bind)
 s=Switch_Char[{:ary=>[[bind[1],Seq[Apply["advance_char"],Apply["_seq",CAct[bind[2][1..-1]]]]],[~bind[1],Apply["fails"]]]}]
@@ -718,15 +709,6 @@ end
 def Detect_Switch_Clas__append_lp__d113(bind)
 _append(bind[1],bind[2])
 end
-def Detect_Switch_Clas__at_changed_5352(bind)
-@changed=true
-end
-def Detect_Switch_Clas__at_changed_b885(bind)
-@changed=false
-end
-def Detect_Switch_Clas__at_changed_c681(bind)
-@changed
-end
 def Detect_Switch_Clas__at_name_eq_sr_362f(bind)
 @name=src.name
 end
@@ -742,11 +724,8 @@ end
 def Detect_Switch_Clas__lp_2(bind)
 (!bind[1]) || FAIL
 end
-def Detect_Switch_Clas__lp_bind_lb_1_rb__ee3d(bind)
-(bind[1]||=bind[2].dup;bind[3]=true;bind[1].instance_variable_set(bind[4],bind[5])) if @changed && bind[5]!=instance_variable_get(bind[4])
-end
-def Detect_Switch_Clas__lp_src_dot_ins_6a75(bind)
-(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
+def Detect_Switch_Clas__lp_src_dot_cla_e144(bind)
+(src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
 def Detect_Switch_Clas_bind_lb_1_rb__dot__6945(bind)
 bind[1].each{|p,a| bind[2].each{|p2,a2| bind[3] << [p&p2,a+[a2]] if p&p2!=Lattice_Clas.bottom}}
@@ -763,16 +742,19 @@ end
 def Detect_Switch_Clas_bind_lb_1_rb__pl__4651(bind)
 bind[1]+[bind[2]]
 end
+def Detect_Switch_Clas_bind_lb_1_rb__sp__6af0(bind)
+bind[1] << bind[2]
+end
 def Detect_Switch_Clas_c_eq_Switch_4e5f(bind)
 c=Switch_Clas[{:ary=>bind[1].ary.map{|a| [Lattice_Clas[a],src]}+[[Lattice_Clas[Object],Apply["fails"]]]}];puts c.inspect;c 
 end
-def Detect_Switch_Clas_if_sp_bind_lb__8e0b(bind)
-if bind[1]
-             @changed=true;bind[2].normalize
-           else
-            @changed=bind[3]
-            src
-          end
+def Detect_Switch_Clas_if_sp_bind_lb__1bed(bind)
+if bind[1]==bind[2]
+						  src
+						else
+							src.class.create2(*bind[2])
+					  end 
+          
 end
 def Detect_Switch_Clas_src_25d9(bind)
 src
@@ -823,7 +805,7 @@ end
 
 
 def detect_switch_compiled_by
-'7b11c6ea4f8f6c3c884a40acce9bf498'
+'667471082c129eb6791f6496951520c0'
 end
 def detect_switch_source_hash
 '6be51e3cb0591ae2379e3296a95ae660'
@@ -832,6 +814,6 @@ def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'cf37dd42b2bb9e128e4883790c6e5f3c'
+'0de3674da6e72074102c8a7d41031ae8'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

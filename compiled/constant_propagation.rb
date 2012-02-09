@@ -108,15 +108,6 @@ end
 def Constant_Traverser__append_lp__d113(bind)
 _append(bind[1],bind[2])
 end
-def Constant_Traverser__at_changed_5352(bind)
-@changed=true
-end
-def Constant_Traverser__at_changed_b885(bind)
-@changed=false
-end
-def Constant_Traverser__at_changed_c681(bind)
-@changed
-end
 def Constant_Traverser__at_consts_eq__b621(bind)
 @consts=src.consts
 end
@@ -129,22 +120,22 @@ end
 def Constant_Traverser__lp__lp__at_const_5d8f(bind)
 ((@consts[src.ssaname] && src[0]!="_result") ) || FAIL
 end
-def Constant_Traverser__lp_bind_lb_1_rb__ee3d(bind)
-(bind[1]||=bind[2].dup;bind[3]=true;bind[1].instance_variable_set(bind[4],bind[5])) if @changed && bind[5]!=instance_variable_get(bind[4])
-end
-def Constant_Traverser__lp_src_dot_ins_6a75(bind)
-(src.instance_variables).map{|v| [v,src.instance_variable_get(v)] }
+def Constant_Traverser__lp_src_dot_cla_e144(bind)
+(src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
 def Constant_Traverser_bind_lb_1_rb__lt__7b20(bind)
 bind[1]<<bind[2]
 end
-def Constant_Traverser_if_sp_bind_lb__8e0b(bind)
-if bind[1]
-             @changed=true;bind[2].normalize
-           else
-            @changed=bind[3]
-            src
-          end
+def Constant_Traverser_bind_lb_1_rb__sp__6af0(bind)
+bind[1] << bind[2]
+end
+def Constant_Traverser_if_sp_bind_lb__1bed(bind)
+if bind[1]==bind[2]
+						  src
+						else
+							src.class.create2(*bind[2])
+					  end 
+          
 end
 def Constant_Traverser_src_25d9(bind)
 src
@@ -157,7 +148,7 @@ end
 
 
 def constant_propagation_compiled_by
-'7b11c6ea4f8f6c3c884a40acce9bf498'
+'667471082c129eb6791f6496951520c0'
 end
 def constant_propagation_source_hash
 'bcca214b59974f470c5395adafe72fab'
@@ -166,6 +157,6 @@ def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
 end
 def constant_propagation_version
-'ad26efefae18edc25dc1457996ad27a3'
+'6f7dcb3320a5ebe8a0fe1c7022dad428'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/constant_propagation_c"

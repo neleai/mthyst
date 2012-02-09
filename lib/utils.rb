@@ -20,6 +20,7 @@ module Populate
 		hsh=args[-1]
 		if hsh.is_a? Hash
 			args.pop	
+      hsh[:ary]=[hsh[:ary]] if hsh[:ary].is_a?(Fixnum) #Bnding needs this now
 			args=hsh[:ary] + args if hsh[:ary]
 			hsh.each{|k,v| s.instance_variable_set("@"+k.to_s,v) if v!=nil} 
 		end
@@ -59,10 +60,14 @@ end
 def makeclasses(parent,*ary)
 	ary.each{|a| 
 		a=[a] unless a.is_a? Array
+		args=a[1..-1]+[:ary]
 		eval " class #{a[0]} < #{parent}
-						@attrs=#{(a[1..-1]+[:ary]).inspect}
+						@attrs=#{args.inspect}
 						attr_accessor *@attrs
 						extend Populate
+						def self.create2(#{args*","})
+							#{a[0]}.create({#{args.map{|ar| ":#{ar}=>#{ar}"}*","}})
+						end
 					end"
 	}
 

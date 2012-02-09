@@ -1,21 +1,18 @@
 amethyst Traverser_Clone2 {
-  traverse_item = visit:a  {@@changed=true} {a}
-                      | Array[ {[]}:ar (traverse_item:{ar<<it})* {ar}]
-                      | AmethystAST[ traverse ]
-                      | .
-  traverse = .*
-          {@@changed}:oldchanged {@self}:this {nil}:clon {false}:changed
-          {(@self.instance_variables).map{|v| [v,@self.instance_variable_get(v)] }}=>[
-            [ :key {@@changed=false} traverse_item:val
-                 { (clon||=this.dup;changed=true;clon.instance_variable_set(key,val)) if @@changed && val!=instance_variable_get(key)}
-            ]*
-          ]
-          {if changed
-             @@changed=true;clon.normalize
-           else
-            @@changed=oldchanged
-            @self
-          end}
+  traverse_item = nil 
+								| visit
+                | Array[ {[]}:ar (traverse_item:{ar<<it})* {ar}]
+                | AmethystAST[ traverse ]
+                | .
+  traverse = .* {[]}:nvars
+          {(@self.class.instance_variable_get(:@attrs)).map{|v| @self.instance_variable_get("@"+v.to_s) }}:ivars {ivars}=>[  traverse_item:{nvars << it}* ]
+					{ 
+            if ivars==nvars
+						  @self
+						else
+							@self.class.create2(*nvars)
+					  end 
+          }
 }
 
  

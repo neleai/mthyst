@@ -217,7 +217,8 @@ end
 
 def Bnding.[]
 	@bno=(@bno||0)+1
-	Bnding.create({:ary=>[@bno]}).normalize
+  a={:ary=>[@bno]}
+	Bnding.create(a).normalize
 end
 
 def quote(s)
