@@ -48,14 +48,14 @@ static VALUE sy_Normalize__lp_eval_lp_sr_3f78;
 static VALUE sy_Normalize__lp_must_em_43e9;
 static VALUE sy_Normalize_bind_lb_1_rb_;
 static VALUE sy_Normalize_bind_lb_1_rb__dot__30f4;
-static VALUE sy_Normalize_bind_lb_1_rb__dot__cbb9;
+static VALUE sy_Normalize_bind_lb_1_rb__dot__762f;
 static VALUE sy_Normalize_bind_lb_1_rb__lb__64e3;
 static VALUE sy_Normalize_bind_lb_1_rb__lb__79d7;
 static VALUE sy_Normalize_bind_lb_1_rb__lt__f738;
+static VALUE sy_Normalize_src;
 static VALUE sy_Normalize_src_25d9;
 static VALUE sy_Normalize_src_dot_ary_d5cf;
 static VALUE sy_Normalize_src_dot_clas_68f9;
-static VALUE sy_Normalize_src_dot_free_00b9;
 static VALUE sy_Normalize_src_dot_free_3d49;
 static VALUE sy_Normalize_src_dot_name_80f3;
 VALUE Normalize_act(VALUE self ) {
@@ -2200,7 +2200,7 @@ alt1_2:
             ptr->pos=oldpos1;
             it=AmethystCore_anything(self );
             FAILTEST(alt1_3);
-            it=rb_funcall(self,sy_Normalize_src_dot_free_00b9,1,bind2);
+            it=rb_funcall(self,sy_Normalize_src,1,bind2);
             _autovar_5=it;;
 
             ;
@@ -2296,7 +2296,7 @@ alt2_2:
             ptr->pos=oldpos2;
             it=AmethystCore_anything(self );
             FAILTEST(alt2_3);
-            it=rb_funcall(self,sy_Normalize_src_dot_free_00b9,1,bind2);
+            it=rb_funcall(self,sy_Normalize_src,1,bind2);
             _autovar_5=it;;
 
             ;
@@ -2449,7 +2449,7 @@ alt4_2:
             ptr->pos=oldpos4;
             it=AmethystCore_anything(self );
             FAILTEST(alt4_3);
-            it=rb_funcall(self,sy_Normalize_src_dot_free_00b9,1,bind2);
+            it=rb_funcall(self,sy_Normalize_src,1,bind2);
             _autovar_5=it;;
 
             ;
@@ -2574,7 +2574,7 @@ alt6_2:
             ptr->pos=oldpos6;
             it=AmethystCore_anything(self );
             FAILTEST(alt6_3);
-            it=rb_funcall(self,sy_Normalize_src_dot_free_00b9,1,bind2);
+            it=rb_funcall(self,sy_Normalize_src,1,bind2);
             _autovar_5=it;;
 
             ;
@@ -2592,7 +2592,7 @@ accept6:
             it=rb_funcall(self,sy_Normalize_src_dot_name_80f3,1,bind2);
             it=AmethystCore_anything(self );
             FAILTEST(pass1);
-            it=rb_funcall(self,sy_Normalize_src_dot_free_00b9,1,bind2);
+            it=rb_funcall(self,sy_Normalize_src,1,bind2);
             _autovar_5=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass1;
@@ -3094,7 +3094,7 @@ alt6_3:
         it=_autovar_11;
         bind_aset(bind2,1,_or);
         bind_aset(bind2,2,_ary);
-        it=rb_funcall(self,sy_Normalize_bind_lb_1_rb__dot__cbb9,1,bind2);
+        it=rb_funcall(self,sy_Normalize_bind_lb_1_rb__dot__762f,1,bind2);
         _or=bind_aget(bind2,1);;
         _ary=bind_aget(bind2,2);;
         _autovar_12=it;;
@@ -3459,7 +3459,7 @@ alt4_3:
         it=_autovar_10;
         bind_aset(bind2,1,_seq);
         bind_aset(bind2,2,_ary);
-        it=rb_funcall(self,sy_Normalize_bind_lb_1_rb__dot__cbb9,1,bind2);
+        it=rb_funcall(self,sy_Normalize_bind_lb_1_rb__dot__762f,1,bind2);
         _seq=bind_aget(bind2,1);;
         _ary=bind_aget(bind2,2);;
         _autovar_11=it;;
@@ -3548,14 +3548,14 @@ void Init_normalize_c() {
     sy_Normalize__lp_must_em_43e9=rb_intern("Normalize__lp_must_em_43e9");
     sy_Normalize_bind_lb_1_rb_=rb_intern("Normalize_bind_lb_1_rb_");
     sy_Normalize_bind_lb_1_rb__dot__30f4=rb_intern("Normalize_bind_lb_1_rb__dot__30f4");
-    sy_Normalize_bind_lb_1_rb__dot__cbb9=rb_intern("Normalize_bind_lb_1_rb__dot__cbb9");
+    sy_Normalize_bind_lb_1_rb__dot__762f=rb_intern("Normalize_bind_lb_1_rb__dot__762f");
     sy_Normalize_bind_lb_1_rb__lb__64e3=rb_intern("Normalize_bind_lb_1_rb__lb__64e3");
     sy_Normalize_bind_lb_1_rb__lb__79d7=rb_intern("Normalize_bind_lb_1_rb__lb__79d7");
     sy_Normalize_bind_lb_1_rb__lt__f738=rb_intern("Normalize_bind_lb_1_rb__lt__f738");
+    sy_Normalize_src=rb_intern("Normalize_src");
     sy_Normalize_src_25d9=rb_intern("Normalize_src_25d9");
     sy_Normalize_src_dot_ary_d5cf=rb_intern("Normalize_src_dot_ary_d5cf");
     sy_Normalize_src_dot_clas_68f9=rb_intern("Normalize_src_dot_clas_68f9");
-    sy_Normalize_src_dot_free_00b9=rb_intern("Normalize_src_dot_free_00b9");
     sy_Normalize_src_dot_free_3d49=rb_intern("Normalize_src_dot_free_3d49");
     sy_Normalize_src_dot_name_80f3=rb_intern("Normalize_src_dot_name_80f3");
     rb_define_method(cls_Normalize,"act",Normalize_act,0);
@@ -3565,5 +3565,5 @@ void Init_normalize_c() {
     rb_define_method(cls_Normalize,"must_empty",Normalize_must_empty,0);
     rb_define_method(cls_Normalize,"or",Normalize_or,0);
     rb_define_method(cls_Normalize,"seq2",Normalize_seq2,0);
-    rb_eval_string("testversionnormalize('48682f8f17b82d127628a834576e416d')");
+    rb_eval_string("testversionnormalize('7cfe42d99568d52c77043ae61c981b6e')");
 }

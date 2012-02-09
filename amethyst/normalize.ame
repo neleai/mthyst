@@ -11,7 +11,7 @@ amethyst Normalize{
            )* ]
           {ary.size}=>( 0 -> Apply["fails"]
                       | 1 -> ary[0]
-                      | . -> or.ary=ary;or.freeze
+                      | . -> or.ary=ary;or
                       )
         
 
@@ -23,7 +23,7 @@ amethyst Normalize{
              )* ]
              {ary.size}=>( 0 -> Placeholder
                          | 1 -> ary[0]
-                         | . -> seq.ary=ary;seq.freeze
+                         | . -> seq.ary=ary;seq
                          )
            
   bind = Bind[ {@name}:name
@@ -34,7 +34,7 @@ amethyst Normalize{
                {last}=>( (Comment|Cut|Stop) -> Seq[Bind[name,first],last]
                        | .                  -> Seq[first,Bind[name,last]]
                        )
-             | . -> @self.freeze
+             | . -> @self
              ) ]       
 
   apply2 = Apply[ ["apply" | "_seq"] Act[Lambda[.:x]] -> x
