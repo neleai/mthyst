@@ -1230,7 +1230,7 @@ void normalize_cache_mark(normalize_cache *b){int i;
        for(i=0;i<(1<<20);i++) if (b->ret[i])rb_gc_mark(b->ret[i]);
 }
 void normalize_cache_free(normalize_cache *b){}
-VALUE cache_Act_gc;VALUE cache_Apply_gc;VALUE cache_Args_gc;VALUE cache_Bind_gc;VALUE cache_Bnding_gc;VALUE cache_CAct_gc;VALUE cache_Comment_gc;VALUE cache_Cut_gc;VALUE cache_Lambda_gc;VALUE cache_Global_gc;VALUE cache_Key_gc;VALUE cache_Local_gc;VALUE cache_Lookahead_gc;VALUE cache_Many_gc;VALUE cache_Or_gc;VALUE cache_Pass_gc;VALUE cache_Result_gc;VALUE cache_Seq_gc;VALUE cache_Stop_gc;VALUE cache_Strin_gc;
+VALUE cache_Act_gc;VALUE cache_Apply_gc;VALUE cache_Args_gc;VALUE cache_Bind_gc;VALUE cache_Bnding_gc;VALUE cache_CAct_gc;VALUE cache_Comment_gc;VALUE cache_Cut_gc;VALUE cache_Lambda_gc;VALUE cache_Global_gc;VALUE cache_Key_gc;VALUE cache_Local_gc;VALUE cache_Lookahead_gc;VALUE cache_Many_gc;VALUE cache_Or_gc;VALUE cache_Pass_gc;VALUE cache_Result_gc;VALUE cache_Seq_gc;VALUE cache_Stop_gc;VALUE cache_Strin_gc;VALUE cache_Switch_Char_gc;
 void init_normalize(){
 cache_Act=normalize_cache_init();
 	cache_Act_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_Act);
@@ -1312,8 +1312,12 @@ cache_Act=normalize_cache_init();
 	cache_Strin_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_Strin);
 	rb_global_variable(&cache_Strin_gc);
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Strin")),"normalize",normalize_Strin,0);
-	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Strin")),"create2",create2_Strin,1);
+	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Strin")),"create2",create2_Strin,1);cache_Switch_Char=normalize_cache_init();
+	cache_Switch_Char_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_Switch_Char);
+	rb_global_variable(&cache_Switch_Char_gc);
+  rb_define_method(rb_const_get(rb_cObject,rb_intern("Switch_Char")),"normalize",normalize_Switch_Char,0);
+	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Switch_Char")),"create2",create2_Switch_Char,1);
 }
 void normalize_stats(){
-	printf("Act hits: %i miss: %i\n",hits_Act,miss_Act);printf("Apply hits: %i miss: %i\n",hits_Apply,miss_Apply);printf("Args hits: %i miss: %i\n",hits_Args,miss_Args);printf("Bind hits: %i miss: %i\n",hits_Bind,miss_Bind);printf("Bnding hits: %i miss: %i\n",hits_Bnding,miss_Bnding);printf("CAct hits: %i miss: %i\n",hits_CAct,miss_CAct);printf("Comment hits: %i miss: %i\n",hits_Comment,miss_Comment);printf("Cut hits: %i miss: %i\n",hits_Cut,miss_Cut);printf("Lambda hits: %i miss: %i\n",hits_Lambda,miss_Lambda);printf("Global hits: %i miss: %i\n",hits_Global,miss_Global);printf("Key hits: %i miss: %i\n",hits_Key,miss_Key);printf("Local hits: %i miss: %i\n",hits_Local,miss_Local);printf("Lookahead hits: %i miss: %i\n",hits_Lookahead,miss_Lookahead);printf("Many hits: %i miss: %i\n",hits_Many,miss_Many);printf("Or hits: %i miss: %i\n",hits_Or,miss_Or);printf("Pass hits: %i miss: %i\n",hits_Pass,miss_Pass);printf("Result hits: %i miss: %i\n",hits_Result,miss_Result);printf("Seq hits: %i miss: %i\n",hits_Seq,miss_Seq);printf("Stop hits: %i miss: %i\n",hits_Stop,miss_Stop);printf("Strin hits: %i miss: %i\n",hits_Strin,miss_Strin);
+	printf("Act hits: %i miss: %i\n",hits_Act,miss_Act);printf("Apply hits: %i miss: %i\n",hits_Apply,miss_Apply);printf("Args hits: %i miss: %i\n",hits_Args,miss_Args);printf("Bind hits: %i miss: %i\n",hits_Bind,miss_Bind);printf("Bnding hits: %i miss: %i\n",hits_Bnding,miss_Bnding);printf("CAct hits: %i miss: %i\n",hits_CAct,miss_CAct);printf("Comment hits: %i miss: %i\n",hits_Comment,miss_Comment);printf("Cut hits: %i miss: %i\n",hits_Cut,miss_Cut);printf("Lambda hits: %i miss: %i\n",hits_Lambda,miss_Lambda);printf("Global hits: %i miss: %i\n",hits_Global,miss_Global);printf("Key hits: %i miss: %i\n",hits_Key,miss_Key);printf("Local hits: %i miss: %i\n",hits_Local,miss_Local);printf("Lookahead hits: %i miss: %i\n",hits_Lookahead,miss_Lookahead);printf("Many hits: %i miss: %i\n",hits_Many,miss_Many);printf("Or hits: %i miss: %i\n",hits_Or,miss_Or);printf("Pass hits: %i miss: %i\n",hits_Pass,miss_Pass);printf("Result hits: %i miss: %i\n",hits_Result,miss_Result);printf("Seq hits: %i miss: %i\n",hits_Seq,miss_Seq);printf("Stop hits: %i miss: %i\n",hits_Stop,miss_Stop);printf("Strin hits: %i miss: %i\n",hits_Strin,miss_Strin);printf("Switch_Char hits: %i miss: %i\n",hits_Switch_Char,miss_Switch_Char);
 }

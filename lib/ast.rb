@@ -168,7 +168,7 @@ VALUE create2_#{e}(VALUE self #{e.instance_variable_get(:@attrs).map{|el| ",VALU
 	return normalize_#{e}(obj3);
 }"
 }
-cn=[Act,Apply,Args,Bind,Bnding,CAct,Comment,Cut,Lambda,Global,Key,Local,Lookahead,Many,Or,Pass,Result,Seq,Stop,Strin] #Switch_Char,Switch_Clas,Switch_Or]
+cn=[Act,Apply,Args,Bind,Bnding,CAct,Comment,Cut,Lambda,Global,Key,Local,Lookahead,Many,Or,Pass,Result,Seq,Stop,Strin,Switch_Char] #Switch_Char,Switch_Clas,Switch_Or]
 norm.puts "
 normalize_cache * normalize_cache_init(){
        normalize_cache *b;
@@ -293,8 +293,9 @@ class Switch_Char
 		@ary.each{|k,v| h[v]<<k}
 		nary=[]
 		h.each{|v,ks| nary<<[ks.inject(:|),v]}
-		@ary=nary.sort_by{|k,a| k.inspect}
-		super
+    s=self.dup
+		s.ary=nary.sort_by{|k,a| k.inspect}
+    s
 	end
 end
 class Switch_Clas
@@ -304,8 +305,9 @@ class Switch_Clas
 		nary=[]
 		h.each{|v,ks| nary<<[ks.inject(:|),v]}
 		#TODO in ctranslator sort by class lattice
-		@ary=nary.sort_by{|k,a| k.ary.include?(Object) ? "zzz" : k.inspect}
-		super
+		s=self.dup
+		s.ary=nary.sort_by{|k,a| k.ary.include?(Object) ? "zzz" : k.inspect}
+    s
 	end
 end
 
