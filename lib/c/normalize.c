@@ -998,7 +998,7 @@ void normalize_cache_mark(normalize_cache *b){int i;
        for(i=0;i<(1<<20);i++) if (b->ret[i])rb_gc_mark(b->ret[i]);
 }
 void normalize_cache_free(normalize_cache *b){}
-VALUE cache_Bind_gc;VALUE cache_Seq_gc;VALUE cache_Or_gc;VALUE cache_Act_gc;VALUE cache_Apply_gc;
+VALUE cache_Bind_gc;VALUE cache_Seq_gc;VALUE cache_Or_gc;VALUE cache_Act_gc;VALUE cache_Apply_gc;VALUE cache_Many_gc;
 void init_normalize(){
 cache_Bind=normalize_cache_init();
 	cache_Bind_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_Bind);
@@ -1015,5 +1015,11 @@ cache_Bind=normalize_cache_init();
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Act")),"normalize",normalize_Act,0);cache_Apply=normalize_cache_init();
 	cache_Apply_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_Apply);
 	rb_global_variable(&cache_Apply_gc);
-  rb_define_method(rb_const_get(rb_cObject,rb_intern("Apply")),"normalize",normalize_Apply,0);
+  rb_define_method(rb_const_get(rb_cObject,rb_intern("Apply")),"normalize",normalize_Apply,0);cache_Many=normalize_cache_init();
+	cache_Many_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_Many);
+	rb_global_variable(&cache_Many_gc);
+  rb_define_method(rb_const_get(rb_cObject,rb_intern("Many")),"normalize",normalize_Many,0);
+}
+void normalize_stats(){
+	printf("Bind hits: %i miss: %i\n",hits_Bind,miss_Bind);printf("Seq hits: %i miss: %i\n",hits_Seq,miss_Seq);printf("Or hits: %i miss: %i\n",hits_Or,miss_Or);printf("Act hits: %i miss: %i\n",hits_Act,miss_Act);printf("Apply hits: %i miss: %i\n",hits_Apply,miss_Apply);printf("Many hits: %i miss: %i\n",hits_Many,miss_Many);
 }

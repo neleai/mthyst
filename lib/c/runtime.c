@@ -112,14 +112,9 @@ void bind_cache_mark(bind_cache *b){int i;
 }
 void bind_cache_free(bind_cache *b){}
 
-extern int hits_Bind,hits_Seq,hits_Or,miss_Bind,miss_Seq,miss_Or,hits_Act,miss_Act,hits_Apply,miss_Apply;
+void normalize_stats();
 VALUE report_normalize(VALUE self){
-	printf("normalize bind  hit: %i miss: %i\n",hits_Bind,miss_Bind );
-	printf("normalize seq   hit: %i miss: %i\n",hits_Seq,miss_Seq);
-	printf("normalize or    hit: %i miss: %i\n",hits_Or,miss_Or);
-	printf("normalize act   hit: %i miss: %i\n",hits_Act,miss_Act);
-	printf("normalize apply hit: %i miss: %i\n",hits_Apply,miss_Apply);
-
+	normalize_stats();
 	return Qnil;
 }
 extern bind_cache *cache_Bind;VALUE cache_Bind_gc;

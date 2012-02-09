@@ -157,7 +157,7 @@ VALUE normalize_#{e}(VALUE obj){int i;
 	return obj3;
 }"
 }
-cn=[Bind,Seq,Or,Act,Apply]
+cn=[Bind,Seq,Or,Act,Apply,Many]
 norm.puts "
 normalize_cache * normalize_cache_init(){
        normalize_cache *b;
@@ -179,6 +179,9 @@ void init_normalize(){
 	rb_global_variable(&cache_#{e}_gc);
   rb_define_method(rb_const_get(rb_cObject,rb_intern(\"#{e}\")),\"normalize\",normalize_#{e},0);"
 }*""}
+}
+void normalize_stats(){
+	#{cn.map{|e| "printf(\"#{e} hits: %i miss: %i\\n\",hits_#{e},miss_#{e});"}*""}
 }
 "
 
