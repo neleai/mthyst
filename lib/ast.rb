@@ -153,7 +153,7 @@ VALUE normalize_#{e}(VALUE obj){int i;
 	return obj3;
 }"
 }
-cn=[Bind,Seq,Or,Act,Apply,Many,Pass]
+cn=[Bind,Seq,Or,Act,Apply,Many,Pass,Local]
 norm.puts "
 normalize_cache * normalize_cache_init(){
        normalize_cache *b;
@@ -388,17 +388,9 @@ class Local
     @@numb=Hash.new{|h,k|h[k]={}}
 	end
 	def unssa
-		$hash_Local[[nil,ary]]
+		Local.create({:ary=>@ary}).normalize
 	end
 end
-def _Local(name)
-		return name if !name.is_a?(String)
-		bnding=instance_eval{@bnding}
-		l=Local[name,bnding]
-		instance_eval{@locals << l if @locals}
-		l
-end
-
 class Apply;					def inspect;	"#{@clas ? "#{@clas}::":""}#{ary[0]}(#{ary[1..-1].map{|a|a.inspect}*","})"							;end;end
 class Local;					def inspect;	"L[#{ary[0]}#{ary[1].is_a?(Bnding) ? "" : ary[1]}_#{ssano}]"	;end;end
 class Key;						def inspect;	"@#{ary[0]}"																									;end;end

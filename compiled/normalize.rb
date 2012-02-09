@@ -102,7 +102,7 @@ end
 
 
 def normalize_compiled_by
-'291d7f158caf055cd2565d0e90e442b6'
+'fe8f839f2e1e48d4f9cf131de44f4f39'
 end
 def normalize_source_hash
 '45e940e85c161929eb9b159ba3371cd5'

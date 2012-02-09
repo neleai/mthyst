@@ -11,6 +11,6 @@ Compiler::compile("amethyst/#{f}.ame","compiled/#{f}.rb",f)
 Process.waitall
 totaltime
 AmethystCore::report_normalize
-r=Rule[{:name=>"foo",:body=>Seq[Act[42],Or[Seq[Apply["foo"],Act[42]],Act[22],Seq[Apply["bar"],Act[21]]],Act[222],Act[333],_Local("_result")]}]
+r=Rule[{:name=>"foo",:body=>Seq[Act[42],Or[Seq[Apply["foo"],Act[42]],Act[22],Seq[Apply["bar"],Act[21]]],Act[222],Act[333],Local["_result"]]}]
 puts Remove_Left_Recursion.new.parse(:root,[r]).inspect
 #pp Compiler.grammars["AmethystParser"]
