@@ -415,7 +415,6 @@ fail:
 }
 VALUE cls_Inliner2;
 VALUE AmethystCore_anything(VALUE self );
-VALUE Amethyst_nil(VALUE self );
 VALUE Inliner2_root(VALUE self );
 VALUE Inliner2_traverse(VALUE self );
 VALUE Inliner2_traverse_item(VALUE self );
@@ -694,21 +693,13 @@ VALUE Inliner2_traverse_item(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=Amethyst_nil(self );
+        it=Inliner2_visit(self );
         FAILTEST(alt1_2);
         __result=it;;
 
         ;
         goto accept1;
 alt1_2:
-        ptr->pos=oldpos1;
-        it=Inliner2_visit(self );
-        FAILTEST(alt1_3);
-        __result=it;;
-
-        ;
-        goto accept1;
-alt1_3:
         ptr->pos=oldpos1;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -737,7 +728,7 @@ alt1_3:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto alt1_4;
+        goto alt1_3;
 success1:
         *ptr=oldpass1;
         it=_autovar_2;
@@ -745,15 +736,15 @@ success1:
 
         ;
         goto accept1;
-alt1_4:
+alt1_3:
         ptr->pos=oldpos1;
         it=AmethystCore_anything(self );
-        FAILTEST(alt1_5);
+        FAILTEST(alt1_4);
         __result=it;;
 
         ;
         goto accept1;
-alt1_5:
+alt1_4:
         ptr->pos=oldpos1;
         goto fail;
 accept1:
@@ -765,21 +756,13 @@ accept1:
         int cut2=0;
 alt2_1:
         ;
-        it=Amethyst_nil(self );
+        it=Inliner2_visit(self );
         FAILTEST(alt2_2);
         __result=it;;
 
         ;
         goto accept2;
 alt2_2:
-        ptr->pos=oldpos2;
-        it=Inliner2_visit(self );
-        FAILTEST(alt2_3);
-        __result=it;;
-
-        ;
-        goto accept2;
-alt2_3:
         ptr->pos=oldpos2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -836,7 +819,7 @@ accept3:
         goto success2;
 pass2:
         *ptr=oldpass2;
-        goto alt2_4;
+        goto alt2_3;
 success2:
         *ptr=oldpass2;
         it=_autovar_4;
@@ -844,15 +827,15 @@ success2:
 
         ;
         goto accept2;
-alt2_4:
+alt2_3:
         ptr->pos=oldpos2;
         it=AmethystCore_anything(self );
-        FAILTEST(alt2_5);
+        FAILTEST(alt2_4);
         __result=it;;
 
         ;
         goto accept2;
-alt2_5:
+alt2_4:
         ptr->pos=oldpos2;
         goto fail;
 accept2:
@@ -864,7 +847,7 @@ accept2:
         int cut4=0;
 alt4_1:
         ;
-        it=Amethyst_nil(self );
+        it=Inliner2_visit(self );
         FAILTEST(alt4_2);
         __result=it;;
 
@@ -872,21 +855,13 @@ alt4_1:
         goto accept4;
 alt4_2:
         ptr->pos=oldpos4;
-        it=Inliner2_visit(self );
+        it=AmethystCore_anything(self );
         FAILTEST(alt4_3);
         __result=it;;
 
         ;
         goto accept4;
 alt4_3:
-        ptr->pos=oldpos4;
-        it=AmethystCore_anything(self );
-        FAILTEST(alt4_4);
-        __result=it;;
-
-        ;
-        goto accept4;
-alt4_4:
         ptr->pos=oldpos4;
         goto fail;
 accept4:
@@ -1032,5 +1007,5 @@ void Init_inliner2_c() {
     rb_define_method(cls_Inliner2,"traverse",Inliner2_traverse,0);
     rb_define_method(cls_Inliner2,"traverse_item",Inliner2_traverse_item,0);
     rb_define_method(cls_Inliner2,"visit",Inliner2_visit,0);
-    rb_eval_string("testversioninliner2('42106adf6ffa0437347762cc5200a80b')");
+    rb_eval_string("testversioninliner2('a906e9c0558f70577fe83fc245a818aa')");
 }

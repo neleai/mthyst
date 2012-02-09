@@ -1,7 +1,6 @@
 #include "cthyst.h"
 VALUE cls_Left_Factor;
 VALUE AmethystCore_anything(VALUE self );
-VALUE Amethyst_nil(VALUE self );
 VALUE Left_Factor_binds(VALUE self ,VALUE a0,VALUE a1);
 VALUE Left_Factor_binds(VALUE self ,VALUE,VALUE);
 VALUE Left_Factor_factor(VALUE self ,VALUE a0,VALUE a1,VALUE a2);
@@ -739,21 +738,13 @@ VALUE Left_Factor_traverse_item(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=Amethyst_nil(self );
+        it=Left_Factor_visit(self );
         FAILTEST(alt1_2);
         __result=it;;
 
         ;
         goto accept1;
 alt1_2:
-        ptr->pos=oldpos1;
-        it=Left_Factor_visit(self );
-        FAILTEST(alt1_3);
-        __result=it;;
-
-        ;
-        goto accept1;
-alt1_3:
         ptr->pos=oldpos1;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -782,7 +773,7 @@ alt1_3:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto alt1_4;
+        goto alt1_3;
 success1:
         *ptr=oldpass1;
         it=_autovar_2;
@@ -790,15 +781,15 @@ success1:
 
         ;
         goto accept1;
-alt1_4:
+alt1_3:
         ptr->pos=oldpos1;
         it=AmethystCore_anything(self );
-        FAILTEST(alt1_5);
+        FAILTEST(alt1_4);
         __result=it;;
 
         ;
         goto accept1;
-alt1_5:
+alt1_4:
         ptr->pos=oldpos1;
         goto fail;
 accept1:
@@ -810,21 +801,13 @@ accept1:
         int cut2=0;
 alt2_1:
         ;
-        it=Amethyst_nil(self );
+        it=Left_Factor_visit(self );
         FAILTEST(alt2_2);
         __result=it;;
 
         ;
         goto accept2;
 alt2_2:
-        ptr->pos=oldpos2;
-        it=Left_Factor_visit(self );
-        FAILTEST(alt2_3);
-        __result=it;;
-
-        ;
-        goto accept2;
-alt2_3:
         ptr->pos=oldpos2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -881,7 +864,7 @@ accept3:
         goto success2;
 pass2:
         *ptr=oldpass2;
-        goto alt2_4;
+        goto alt2_3;
 success2:
         *ptr=oldpass2;
         it=_autovar_4;
@@ -889,15 +872,15 @@ success2:
 
         ;
         goto accept2;
-alt2_4:
+alt2_3:
         ptr->pos=oldpos2;
         it=AmethystCore_anything(self );
-        FAILTEST(alt2_5);
+        FAILTEST(alt2_4);
         __result=it;;
 
         ;
         goto accept2;
-alt2_5:
+alt2_4:
         ptr->pos=oldpos2;
         goto fail;
 accept2:
@@ -909,7 +892,7 @@ accept2:
         int cut4=0;
 alt4_1:
         ;
-        it=Amethyst_nil(self );
+        it=Left_Factor_visit(self );
         FAILTEST(alt4_2);
         __result=it;;
 
@@ -917,21 +900,13 @@ alt4_1:
         goto accept4;
 alt4_2:
         ptr->pos=oldpos4;
-        it=Left_Factor_visit(self );
+        it=AmethystCore_anything(self );
         FAILTEST(alt4_3);
         __result=it;;
 
         ;
         goto accept4;
 alt4_3:
-        ptr->pos=oldpos4;
-        it=AmethystCore_anything(self );
-        FAILTEST(alt4_4);
-        __result=it;;
-
-        ;
-        goto accept4;
-alt4_4:
         ptr->pos=oldpos4;
         goto fail;
 accept4:
@@ -1159,5 +1134,5 @@ void Init_left_factor_c() {
     rb_define_method(cls_Left_Factor,"traverse",Left_Factor_traverse,0);
     rb_define_method(cls_Left_Factor,"traverse_item",Left_Factor_traverse_item,0);
     rb_define_method(cls_Left_Factor,"visit",Left_Factor_visit,0);
-    rb_eval_string("testversionleft_factor('5219f395dcc104b46a08705ca11c95d8')");
+    rb_eval_string("testversionleft_factor('bc07c9fbf6f3d5ee2c2a8bde9f48a348')");
 }

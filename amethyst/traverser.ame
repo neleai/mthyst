@@ -1,6 +1,5 @@
 amethyst Traverser_Clone2 {
-  traverse_item = nil 
-								| visit
+  traverse_item = visit
                 | Array[ {[]}:ar (traverse_item:{ar<<it})* {ar}]
                 | AmethystAST[ traverse ]
                 | .

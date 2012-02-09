@@ -7171,7 +7171,6 @@ fail:
 }
 VALUE cls_Detect_Switch_Char;
 VALUE AmethystCore_anything(VALUE self );
-VALUE Amethyst_nil(VALUE self );
 VALUE Amethyst_spaces(VALUE self );
 VALUE Detect_First_must_empty(VALUE self );
 VALUE Detect_Switch_Char_combine_or(VALUE self ,VALUE a0);
@@ -7960,21 +7959,13 @@ VALUE Detect_Switch_Char_traverse_item(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=Amethyst_nil(self );
+        it=Detect_Switch_Char_visit(self );
         FAILTEST(alt1_2);
         __result=it;;
 
         ;
         goto accept1;
 alt1_2:
-        ptr->pos=oldpos1;
-        it=Detect_Switch_Char_visit(self );
-        FAILTEST(alt1_3);
-        __result=it;;
-
-        ;
-        goto accept1;
-alt1_3:
         ptr->pos=oldpos1;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -8003,7 +7994,7 @@ alt1_3:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto alt1_4;
+        goto alt1_3;
 success1:
         *ptr=oldpass1;
         it=_autovar_2;
@@ -8011,15 +8002,15 @@ success1:
 
         ;
         goto accept1;
-alt1_4:
+alt1_3:
         ptr->pos=oldpos1;
         it=AmethystCore_anything(self );
-        FAILTEST(alt1_5);
+        FAILTEST(alt1_4);
         __result=it;;
 
         ;
         goto accept1;
-alt1_5:
+alt1_4:
         ptr->pos=oldpos1;
         goto fail;
 accept1:
@@ -8031,21 +8022,13 @@ accept1:
         int cut2=0;
 alt2_1:
         ;
-        it=Amethyst_nil(self );
+        it=Detect_Switch_Char_visit(self );
         FAILTEST(alt2_2);
         __result=it;;
 
         ;
         goto accept2;
 alt2_2:
-        ptr->pos=oldpos2;
-        it=Detect_Switch_Char_visit(self );
-        FAILTEST(alt2_3);
-        __result=it;;
-
-        ;
-        goto accept2;
-alt2_3:
         ptr->pos=oldpos2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -8102,7 +8085,7 @@ accept3:
         goto success2;
 pass2:
         *ptr=oldpass2;
-        goto alt2_4;
+        goto alt2_3;
 success2:
         *ptr=oldpass2;
         it=_autovar_4;
@@ -8110,15 +8093,15 @@ success2:
 
         ;
         goto accept2;
-alt2_4:
+alt2_3:
         ptr->pos=oldpos2;
         it=AmethystCore_anything(self );
-        FAILTEST(alt2_5);
+        FAILTEST(alt2_4);
         __result=it;;
 
         ;
         goto accept2;
-alt2_5:
+alt2_4:
         ptr->pos=oldpos2;
         goto fail;
 accept2:
@@ -8130,7 +8113,7 @@ accept2:
         int cut4=0;
 alt4_1:
         ;
-        it=Amethyst_nil(self );
+        it=Detect_Switch_Char_visit(self );
         FAILTEST(alt4_2);
         __result=it;;
 
@@ -8138,21 +8121,13 @@ alt4_1:
         goto accept4;
 alt4_2:
         ptr->pos=oldpos4;
-        it=Detect_Switch_Char_visit(self );
+        it=AmethystCore_anything(self );
         FAILTEST(alt4_3);
         __result=it;;
 
         ;
         goto accept4;
 alt4_3:
-        ptr->pos=oldpos4;
-        it=AmethystCore_anything(self );
-        FAILTEST(alt4_4);
-        __result=it;;
-
-        ;
-        goto accept4;
-alt4_4:
         ptr->pos=oldpos4;
         goto fail;
 accept4:
@@ -9231,7 +9206,6 @@ fail:
 }
 VALUE cls_Detect_Switch_Clas;
 VALUE AmethystCore_anything(VALUE self );
-VALUE Amethyst_nil(VALUE self );
 VALUE Amethyst_spaces(VALUE self );
 VALUE Detect_First_must_empty(VALUE self );
 VALUE Detect_Switch_Clas_combine_or(VALUE self ,VALUE a0);
@@ -10017,21 +9991,13 @@ VALUE Detect_Switch_Clas_traverse_item(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=Amethyst_nil(self );
+        it=Detect_Switch_Clas_visit(self );
         FAILTEST(alt1_2);
         __result=it;;
 
         ;
         goto accept1;
 alt1_2:
-        ptr->pos=oldpos1;
-        it=Detect_Switch_Clas_visit(self );
-        FAILTEST(alt1_3);
-        __result=it;;
-
-        ;
-        goto accept1;
-alt1_3:
         ptr->pos=oldpos1;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -10060,7 +10026,7 @@ alt1_3:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto alt1_4;
+        goto alt1_3;
 success1:
         *ptr=oldpass1;
         it=_autovar_2;
@@ -10068,15 +10034,15 @@ success1:
 
         ;
         goto accept1;
-alt1_4:
+alt1_3:
         ptr->pos=oldpos1;
         it=AmethystCore_anything(self );
-        FAILTEST(alt1_5);
+        FAILTEST(alt1_4);
         __result=it;;
 
         ;
         goto accept1;
-alt1_5:
+alt1_4:
         ptr->pos=oldpos1;
         goto fail;
 accept1:
@@ -10088,21 +10054,13 @@ accept1:
         int cut2=0;
 alt2_1:
         ;
-        it=Amethyst_nil(self );
+        it=Detect_Switch_Clas_visit(self );
         FAILTEST(alt2_2);
         __result=it;;
 
         ;
         goto accept2;
 alt2_2:
-        ptr->pos=oldpos2;
-        it=Detect_Switch_Clas_visit(self );
-        FAILTEST(alt2_3);
-        __result=it;;
-
-        ;
-        goto accept2;
-alt2_3:
         ptr->pos=oldpos2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -10159,7 +10117,7 @@ accept3:
         goto success2;
 pass2:
         *ptr=oldpass2;
-        goto alt2_4;
+        goto alt2_3;
 success2:
         *ptr=oldpass2;
         it=_autovar_4;
@@ -10167,15 +10125,15 @@ success2:
 
         ;
         goto accept2;
-alt2_4:
+alt2_3:
         ptr->pos=oldpos2;
         it=AmethystCore_anything(self );
-        FAILTEST(alt2_5);
+        FAILTEST(alt2_4);
         __result=it;;
 
         ;
         goto accept2;
-alt2_5:
+alt2_4:
         ptr->pos=oldpos2;
         goto fail;
 accept2:
@@ -10187,7 +10145,7 @@ accept2:
         int cut4=0;
 alt4_1:
         ;
-        it=Amethyst_nil(self );
+        it=Detect_Switch_Clas_visit(self );
         FAILTEST(alt4_2);
         __result=it;;
 
@@ -10195,21 +10153,13 @@ alt4_1:
         goto accept4;
 alt4_2:
         ptr->pos=oldpos4;
-        it=Detect_Switch_Clas_visit(self );
+        it=AmethystCore_anything(self );
         FAILTEST(alt4_3);
         __result=it;;
 
         ;
         goto accept4;
 alt4_3:
-        ptr->pos=oldpos4;
-        it=AmethystCore_anything(self );
-        FAILTEST(alt4_4);
-        __result=it;;
-
-        ;
-        goto accept4;
-alt4_4:
         ptr->pos=oldpos4;
         goto fail;
 accept4:
@@ -12109,5 +12059,5 @@ void Init_detect_switch_c() {
     sy_Detect_Size_minsize_lp__01f0=rb_intern("Detect_Size_minsize_lp__01f0");
     rb_define_method(cls_Detect_Size,"predicate",Detect_Size_predicate,1);
     rb_define_method(cls_Detect_Size,"predicate2",Detect_Size_predicate2,1);
-    rb_eval_string("testversiondetect_switch('0de3674da6e72074102c8a7d41031ae8')");
+    rb_eval_string("testversiondetect_switch('73690737fec77150079485a8fa5f03d5')");
 }

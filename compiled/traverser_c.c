@@ -1,7 +1,6 @@
 #include "cthyst.h"
 VALUE cls_Traverser_Clone2;
 VALUE AmethystCore_anything(VALUE self );
-VALUE Amethyst_nil(VALUE self );
 VALUE Traverser_Clone2_traverse(VALUE self );
 VALUE Traverser_Clone2_traverse_item(VALUE self );
 VALUE switchhash_Traverser_Clone2_1;
@@ -120,21 +119,13 @@ VALUE Traverser_Clone2_traverse_item(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=Amethyst_nil(self );
+        it=rb_funcall(self,sy_visit,0);
         FAILTEST(alt1_2);
         __result=it;;
 
         ;
         goto accept1;
 alt1_2:
-        ptr->pos=oldpos1;
-        it=rb_funcall(self,sy_visit,0);
-        FAILTEST(alt1_3);
-        __result=it;;
-
-        ;
-        goto accept1;
-alt1_3:
         ptr->pos=oldpos1;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -163,7 +154,7 @@ alt1_3:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto alt1_4;
+        goto alt1_3;
 success1:
         *ptr=oldpass1;
         it=_autovar_2;
@@ -171,15 +162,15 @@ success1:
 
         ;
         goto accept1;
-alt1_4:
+alt1_3:
         ptr->pos=oldpos1;
         it=AmethystCore_anything(self );
-        FAILTEST(alt1_5);
+        FAILTEST(alt1_4);
         __result=it;;
 
         ;
         goto accept1;
-alt1_5:
+alt1_4:
         ptr->pos=oldpos1;
         goto fail;
 accept1:
@@ -191,21 +182,13 @@ accept1:
         int cut2=0;
 alt2_1:
         ;
-        it=Amethyst_nil(self );
+        it=rb_funcall(self,sy_visit,0);
         FAILTEST(alt2_2);
         __result=it;;
 
         ;
         goto accept2;
 alt2_2:
-        ptr->pos=oldpos2;
-        it=rb_funcall(self,sy_visit,0);
-        FAILTEST(alt2_3);
-        __result=it;;
-
-        ;
-        goto accept2;
-alt2_3:
         ptr->pos=oldpos2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -262,7 +245,7 @@ accept3:
         goto success2;
 pass2:
         *ptr=oldpass2;
-        goto alt2_4;
+        goto alt2_3;
 success2:
         *ptr=oldpass2;
         it=_autovar_4;
@@ -270,15 +253,15 @@ success2:
 
         ;
         goto accept2;
-alt2_4:
+alt2_3:
         ptr->pos=oldpos2;
         it=AmethystCore_anything(self );
-        FAILTEST(alt2_5);
+        FAILTEST(alt2_4);
         __result=it;;
 
         ;
         goto accept2;
-alt2_5:
+alt2_4:
         ptr->pos=oldpos2;
         goto fail;
 accept2:
@@ -290,7 +273,7 @@ accept2:
         int cut4=0;
 alt4_1:
         ;
-        it=Amethyst_nil(self );
+        it=rb_funcall(self,sy_visit,0);
         FAILTEST(alt4_2);
         __result=it;;
 
@@ -298,21 +281,13 @@ alt4_1:
         goto accept4;
 alt4_2:
         ptr->pos=oldpos4;
-        it=rb_funcall(self,sy_visit,0);
+        it=AmethystCore_anything(self );
         FAILTEST(alt4_3);
         __result=it;;
 
         ;
         goto accept4;
 alt4_3:
-        ptr->pos=oldpos4;
-        it=AmethystCore_anything(self );
-        FAILTEST(alt4_4);
-        __result=it;;
-
-        ;
-        goto accept4;
-alt4_4:
         ptr->pos=oldpos4;
         goto fail;
 accept4:
@@ -640,5 +615,5 @@ void Init_traverser_c() {
     sy_visit=rb_intern("visit");
     rb_define_method(cls_Visitor,"traverse",Visitor_traverse,0);
     rb_define_method(cls_Visitor,"traverse_item",Visitor_traverse_item,0);
-    rb_eval_string("testversiontraverser('29a82bfa209d89d3c5c2484e7af78e9d')");
+    rb_eval_string("testversiontraverser('1735b5befa65428d22c572a8807fb1ee')");
 }
