@@ -109,7 +109,7 @@ static VALUE sy_AmethystParser_local_lp_bi_196b;
 #include "../lib/c/memo.c"
 memo_struct *mem;
 VALUE memo_val;
-VALUE profile_report(VALUE self) {
+VALUE profile_report_AmethystParser(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     if(ptr->mem) {
@@ -310,7 +310,7 @@ VALUE AmethystParser_argsOpt(VALUE self ) {
     Data_Get_Struct(self,cstruct,ptr);
     if (ptr->mem==NULL) {
         ptr->mem=memo_init();
-        ptr->memgc=Data_Wrap_Struct(cls_AmethystParser,memo_mark,memo_free,ptr->mem);
+        ptr->memgc=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,ptr->mem);
     }
     int oldpos=ptr->pos;
     if (memo_pos(ptr->mem,115,ptr->src,ptr->pos)!=-1) {
@@ -3016,7 +3016,7 @@ VALUE AmethystParser_name(VALUE self ) {
     Data_Get_Struct(self,cstruct,ptr);
     if (ptr->mem==NULL) {
         ptr->mem=memo_init();
-        ptr->memgc=Data_Wrap_Struct(cls_AmethystParser,memo_mark,memo_free,ptr->mem);
+        ptr->memgc=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,ptr->mem);
     }
     int oldpos=ptr->pos;
     if (memo_pos(ptr->mem,113,ptr->src,ptr->pos)!=-1) {
@@ -7643,7 +7643,7 @@ fail:
 void Init_parser_c() {
     cls_AmethystParser=rb_define_class("AmethystParser",rb_const_get(rb_cObject,rb_intern("Amethyst")));
     failobj=rb_eval_string("FAIL");
-    rb_define_method(cls_AmethystParser,"profile_report",profile_report,0);
+    rb_define_method(cls_AmethystParser,"profile_report",profile_report_AmethystParser,0);
     s_Amethyst_fe41=rb_str_new2("Amethyst");
     rb_global_variable(&s_Amethyst_fe41);
     s__bq__8333=rb_str_new2("`");
@@ -7761,5 +7761,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('275107ab7700c9227cb66cb56acf465c')");
+    rb_eval_string("testversionparser('abfb2dbcd34024d3469718d077463d38')");
 }

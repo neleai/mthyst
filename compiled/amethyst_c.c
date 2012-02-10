@@ -344,7 +344,7 @@ fail:
 }
 VALUE Amethyst_int(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,_autovar_7,_autovar_8,_autovar_9,_autovar_10,_autovar_11,_autovar_12,_autovar_13,_autovar_14,_autovar_15,_autovar_16,_autovar_17,_autovar_18,_autovar_19,_autovar_20,_autovar_21,_autovar_22,_autovar_23,_n,_m,__result,_autovar_24,_autovar_25,_autovar_26;
+    VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,_autovar_7,_autovar_8,_autovar_9,_autovar_10,_autovar_11,_autovar_12,_autovar_13,_autovar_14,_autovar_15,_autovar_16,_autovar_17,_autovar_18,_autovar_19,_autovar_20,_autovar_21,_autovar_22,_autovar_23,_n,_m,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -886,26 +886,26 @@ accept3:
         case ':' ... UC(255):
             ;
             it=rb_ary_new3(0);
-            _autovar_24=it;;
+            _autovar=it;;
             int oldpos4=ptr->pos;
             int cut4=0;
 alt4_1:
             ;
-            it=_autovar_24;
+            it=_autovar;
             _autovar_2=it;;
             goto alt4_2;
             ;
             goto accept4;
 alt4_2:
             ptr->pos=oldpos4;
-            it=_autovar_24;
+            it=_autovar;
             _autovar_2=it;;
             goto alt4_3;
             ;
             goto accept4;
 alt4_3:
             ptr->pos=oldpos4;
-            it=_autovar_24;
+            it=_autovar;
             _autovar_2=it;;
             if (ame_curstr2(ptr)[0]=='0'&&ame_curstr2(ptr)[1]=='o')  ptr->pos+=2;
             else goto alt4_4;
@@ -970,7 +970,7 @@ alt4_3:
             goto accept4;
 alt4_4:
             ptr->pos=oldpos4;
-            it=_autovar_24;
+            it=_autovar;
             _autovar_2=it;;
             goto alt4_5;
             ;
@@ -984,12 +984,12 @@ accept4:
         case '0' ... '0':
             ;
             it=rb_ary_new3(0);
-            _autovar_25=it;;
+            _autovar_8=it;;
             int oldpos5=ptr->pos;
             int cut5=0;
 alt5_1:
             ;
-            it=_autovar_25;
+            it=_autovar_8;
             _autovar_2=it;;
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
@@ -1072,7 +1072,7 @@ alt5_1:
             goto accept5;
 alt5_2:
             ptr->pos=oldpos5;
-            it=_autovar_25;
+            it=_autovar_8;
             _autovar_2=it;;
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
@@ -1139,7 +1139,7 @@ alt5_2:
             goto accept5;
 alt5_3:
             ptr->pos=oldpos5;
-            it=_autovar_25;
+            it=_autovar_8;
             _autovar_2=it;;
             if (ame_curstr2(ptr)[0]=='0'&&ame_curstr2(ptr)[1]=='o')  ptr->pos+=2;
             else goto alt5_4;
@@ -1204,7 +1204,7 @@ alt5_3:
             goto accept5;
 alt5_4:
             ptr->pos=oldpos5;
-            it=_autovar_25;
+            it=_autovar_8;
             _autovar_2=it;;
             it=rb_ary_new3(0);
             _autovar_19=it;;
@@ -1256,26 +1256,26 @@ accept5:
         case '1' ... '9':
             ;
             it=rb_ary_new3(0);
-            _autovar_26=it;;
+            _autovar_23=it;;
             int oldpos6=ptr->pos;
             int cut6=0;
 alt6_1:
             ;
-            it=_autovar_26;
+            it=_autovar_23;
             _autovar_2=it;;
             goto alt6_2;
             ;
             goto accept6;
 alt6_2:
             ptr->pos=oldpos6;
-            it=_autovar_26;
+            it=_autovar_23;
             _autovar_2=it;;
             goto alt6_3;
             ;
             goto accept6;
 alt6_3:
             ptr->pos=oldpos6;
-            it=_autovar_26;
+            it=_autovar_23;
             _autovar_2=it;;
             if (ame_curstr2(ptr)[0]=='0'&&ame_curstr2(ptr)[1]=='o')  ptr->pos+=2;
             else goto alt6_4;
@@ -1340,7 +1340,7 @@ alt6_3:
             goto accept6;
 alt6_4:
             ptr->pos=oldpos6;
-            it=_autovar_26;
+            it=_autovar_23;
             _autovar_2=it;;
             it=rb_ary_new3(0);
             _autovar_19=it;;
@@ -2409,5 +2409,5 @@ void Init_amethyst_c() {
     rb_define_method(cls_Amethyst,"upper",Amethyst_upper,0);
     rb_define_method(cls_Amethyst,"word",Amethyst_word,0);
     rb_define_method(cls_Amethyst,"xdigit",Amethyst_xdigit,0);
-    rb_eval_string("testversionamethyst('36e8942e0fd0b9cf99ab4ea36e3003af')");
+    rb_eval_string("testversionamethyst('d3a50cced77d04ea21d2b3fb20b08690')");
 }

@@ -32,6 +32,18 @@ static VALUE sy_Left_Factor_bind_lb_1_rb__sp__6af0;
 static VALUE sy_Left_Factor_first_lp_bi_150a;
 static VALUE sy_Left_Factor_if_sp_bind_lb__1bed;
 static VALUE sy_Left_Factor_src_dot_expr_ef77;
+
+#include "../lib/c/memo.c"
+memo_struct *mem;
+VALUE memo_val;
+VALUE profile_report_Left_Factor(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    if(ptr->mem) {
+        printf("traverse hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
+    }
+    return Qnil;
+}
 VALUE Left_Factor_binds(VALUE self ,VALUE a0,VALUE a1) {
     VALUE vals[2];
     VALUE it ,_s,_autovar,_autovar_2,_a,_nexp,_autovar_3,_autovar_4,_autovar_5,_f,_autovar_6,__result;
@@ -636,6 +648,16 @@ VALUE Left_Factor_traverse(VALUE self ) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
+    if (ptr->mem==NULL) {
+        ptr->mem=memo_init();
+        ptr->memgc=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,ptr->mem);
+    }
+    int oldpos=ptr->pos;
+    if (memo_pos(ptr->mem,113,ptr->src,ptr->pos)!=-1) {
+        it=memo_value(ptr->mem,113,ptr->src,ptr->pos);
+        ptr->pos=memo_pos(ptr->mem,113,ptr->src,ptr->pos);
+        return it;
+    }
     ptr->pos=ptr->len;
     it=rb_ary_new3(0);
     _nvars=it;;
@@ -719,8 +741,10 @@ success1:
     _nvars=bind_aget(bind2,2);;
     __result=it;;
 
+    memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos);
     return it;
 fail:
+    memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos);
     return failobj;
 }
 VALUE Left_Factor_traverse_item(VALUE self ) {
@@ -1101,6 +1125,7 @@ fail:
 void Init_left_factor_c() {
     cls_Left_Factor=rb_define_class("Left_Factor",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2")));
     failobj=rb_eval_string("FAIL");
+    rb_define_method(cls_Left_Factor,"profile_report",profile_report_Left_Factor,0);
     switchhash_Left_Factor_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Bind\nnext h[k]=1 if k<=Seq\nnext h[k]=2 if k<=Object\n}");
     rb_global_variable(&switchhash_Left_Factor_1);;
     switchhash_Left_Factor_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Seq\nnext h[k]=1 if k<=Object\n}");
@@ -1134,5 +1159,5 @@ void Init_left_factor_c() {
     rb_define_method(cls_Left_Factor,"traverse",Left_Factor_traverse,0);
     rb_define_method(cls_Left_Factor,"traverse_item",Left_Factor_traverse_item,0);
     rb_define_method(cls_Left_Factor,"visit",Left_Factor_visit,0);
-    rb_eval_string("testversionleft_factor('bc07c9fbf6f3d5ee2c2a8bde9f48a348')");
+    rb_eval_string("testversionleft_factor('8eb6d16399d24a35bafaea446b7f004d')");
 }
