@@ -48,7 +48,11 @@ norm.puts "#include \"ruby.h\""
 norm.puts "typedef struct {
   VALUE * ary;
   VALUE * ret;
-} normalize_cache;"
+} normalize_cache;
+typedef struct {
+  VALUE *ary;
+  int no;
+} gc_objs; gc_objs* gc_obj;"
 norm.puts "
 	int els_equal(VALUE el,VALUE el2){
 		if (el==el2) return 1;
@@ -92,6 +96,7 @@ norm.puts "
 				hash=(hash+1)&((1<<20)-1);
 			}
 			cache_Array->ret[hash]=el;
+      gc_obj->ary[gc_obj->no++]=el;
 			return el;
 		} else if (TYPE(el)==T_STRING){
       if (rb_iv_get(el,\"@hash\")!=Qnil) return el;
@@ -107,6 +112,7 @@ norm.puts "
 				hash=(hash+1)&((1<<20)-1);
 			}
       cache_String->ret[hash]=el;
+      gc_obj->ary[gc_obj->no++]=el;
       return el;
 		} else {
 			return el;
@@ -150,6 +156,8 @@ VALUE normalize_#{e}(VALUE obj){int i;
 	}
 	cache_#{e}->ary[hash]=obj;
 	cache_#{e}->ret[hash]=obj3;
+  gc_obj->ary[gc_obj->no++]=obj;
+  gc_obj->ary[gc_obj->no++]=obj3;
 	return obj3;
 }
 VALUE create2_#{e}(VALUE self #{e.instance_variable_get(:@attrs).map{|el| ",VALUE #{el}"}*""}){
@@ -179,19 +187,20 @@ normalize_cache * normalize_cache_init(){
        return b;
 }
 void normalize_cache_mark(normalize_cache *b){int i;
-       for(i=0;i<(1<<20);i++) if (b->ary[i])rb_gc_mark(b->ary[i]);
-       for(i=0;i<(1<<20);i++) if (b->ret[i])rb_gc_mark(b->ret[i]);
+  for(i=0;i<gc_obj->no;i++) rb_gc_mark(gc_obj->ary[i]);
 }
 void normalize_cache_free(normalize_cache *b){}
-#{cn.map{|e| "VALUE cache_#{e}_gc;"}*""}
+VALUE gc_cache;
 void init_normalize(){
 #{cn.map{|e| "cache_#{e}=normalize_cache_init();
-	cache_#{e}_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_#{e});
-	rb_global_variable(&cache_#{e}_gc);
   rb_define_method(rb_const_get(rb_cObject,rb_intern(\"#{e}\")),\"normalize\",normalize_#{e},0);
 	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern(\"#{e}\")),\"create2\",create2_#{e},#{e.instance_variable_get(:@attrs).size});"
 
 }*""}
+  gc_obj=malloc(sizeof(gc_objs));gc_obj->ary=calloc(1<<20,sizeof(VALUE));gc_obj->no=0;
+	gc_cache=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,gc_obj);
+	rb_global_variable(&gc_cache);
+
 }
 void normalize_stats(){
 	#{cn.map{|e| "printf(\"#{e} hits: %i miss: %i\\n\",hits_#{e},miss_#{e});"}*""}

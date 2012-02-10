@@ -3,6 +3,10 @@ typedef struct {
   VALUE * ary;
   VALUE * ret;
 } normalize_cache;
+typedef struct {
+  VALUE *ary;
+  int no;
+} gc_objs; gc_objs* gc_obj;
 
 	int els_equal(VALUE el,VALUE el2){
 		if (el==el2) return 1;
@@ -46,6 +50,7 @@ typedef struct {
 				hash=(hash+1)&((1<<20)-1);
 			}
 			cache_Array->ret[hash]=el;
+      gc_obj->ary[gc_obj->no++]=el;
 			return el;
 		} else if (TYPE(el)==T_STRING){
       if (rb_iv_get(el,"@hash")!=Qnil) return el;
@@ -61,6 +66,7 @@ typedef struct {
 				hash=(hash+1)&((1<<20)-1);
 			}
       cache_String->ret[hash]=el;
+      gc_obj->ary[gc_obj->no++]=el;
       return el;
 		} else {
 			return el;
@@ -99,6 +105,8 @@ VALUE normalize_Act(VALUE obj){int i;
 	}
 	cache_Act->ary[hash]=obj;
 	cache_Act->ret[hash]=obj3;
+  gc_obj->ary[gc_obj->no++]=obj;
+  gc_obj->ary[gc_obj->no++]=obj3;
 	return obj3;
 }
 VALUE create2_Act(VALUE self ,VALUE pred,VALUE pure,VALUE ary){
@@ -149,6 +157,8 @@ VALUE normalize_Apply(VALUE obj){int i;
 	}
 	cache_Apply->ary[hash]=obj;
 	cache_Apply->ret[hash]=obj3;
+  gc_obj->ary[gc_obj->no++]=obj;
+  gc_obj->ary[gc_obj->no++]=obj3;
 	return obj3;
 }
 VALUE create2_Apply(VALUE self ,VALUE name,VALUE clas,VALUE ary){
@@ -199,6 +209,8 @@ VALUE normalize_Args(VALUE obj){int i;
 	}
 	cache_Args->ary[hash]=obj;
 	cache_Args->ret[hash]=obj3;
+  gc_obj->ary[gc_obj->no++]=obj;
+  gc_obj->ary[gc_obj->no++]=obj3;
 	return obj3;
 }
 VALUE create2_Args(VALUE self ,VALUE ary){
@@ -249,6 +261,8 @@ VALUE normalize_Bind(VALUE obj){int i;
 	}
 	cache_Bind->ary[hash]=obj;
 	cache_Bind->ret[hash]=obj3;
+  gc_obj->ary[gc_obj->no++]=obj;
+  gc_obj->ary[gc_obj->no++]=obj3;
 	return obj3;
 }
 VALUE create2_Bind(VALUE self ,VALUE name,VALUE ary){
@@ -299,6 +313,8 @@ VALUE normalize_Bnding(VALUE obj){int i;
 	}
 	cache_Bnding->ary[hash]=obj;
 	cache_Bnding->ret[hash]=obj3;
+  gc_obj->ary[gc_obj->no++]=obj;
+  gc_obj->ary[gc_obj->no++]=obj3;
 	return obj3;
 }
 VALUE create2_Bnding(VALUE self ,VALUE ary){
@@ -349,6 +365,8 @@ VALUE normalize_CAct(VALUE obj){int i;
 	}
 	cache_CAct->ary[hash]=obj;
 	cache_CAct->ret[hash]=obj3;
+  gc_obj->ary[gc_obj->no++]=obj;
+  gc_obj->ary[gc_obj->no++]=obj3;
 	return obj3;
 }
 VALUE create2_CAct(VALUE self ,VALUE ary){
@@ -399,6 +417,8 @@ VALUE normalize_Comment(VALUE obj){int i;
 	}
 	cache_Comment->ary[hash]=obj;
 	cache_Comment->ret[hash]=obj3;
+  gc_obj->ary[gc_obj->no++]=obj;
+  gc_obj->ary[gc_obj->no++]=obj3;
 	return obj3;
 }
 VALUE create2_Comment(VALUE self ,VALUE ary){
@@ -449,6 +469,8 @@ VALUE normalize_Cut(VALUE obj){int i;
 	}
 	cache_Cut->ary[hash]=obj;
 	cache_Cut->ret[hash]=obj3;
+  gc_obj->ary[gc_obj->no++]=obj;
+  gc_obj->ary[gc_obj->no++]=obj3;
 	return obj3;
 }
 VALUE create2_Cut(VALUE self ,VALUE ary){
@@ -499,6 +521,8 @@ VALUE normalize_Lambda(VALUE obj){int i;
 	}
 	cache_Lambda->ary[hash]=obj;
 	cache_Lambda->ret[hash]=obj3;
+  gc_obj->ary[gc_obj->no++]=obj;
+  gc_obj->ary[gc_obj->no++]=obj3;
 	return obj3;
 }
 VALUE create2_Lambda(VALUE self ,VALUE ary){
@@ -549,6 +573,8 @@ VALUE normalize_Global(VALUE obj){int i;
 	}
 	cache_Global->ary[hash]=obj;
 	cache_Global->ret[hash]=obj3;
+  gc_obj->ary[gc_obj->no++]=obj;
+  gc_obj->ary[gc_obj->no++]=obj3;
 	return obj3;
 }
 VALUE create2_Global(VALUE self ,VALUE ary){
@@ -599,6 +625,8 @@ VALUE normalize_Key(VALUE obj){int i;
 	}
 	cache_Key->ary[hash]=obj;
 	cache_Key->ret[hash]=obj3;
+  gc_obj->ary[gc_obj->no++]=obj;
+  gc_obj->ary[gc_obj->no++]=obj3;
 	return obj3;
 }
 VALUE create2_Key(VALUE self ,VALUE ary){
@@ -649,6 +677,8 @@ VALUE normalize_Local(VALUE obj){int i;
 	}
 	cache_Local->ary[hash]=obj;
 	cache_Local->ret[hash]=obj3;
+  gc_obj->ary[gc_obj->no++]=obj;
+  gc_obj->ary[gc_obj->no++]=obj3;
 	return obj3;
 }
 VALUE create2_Local(VALUE self ,VALUE ssano,VALUE ary){
@@ -699,6 +729,8 @@ VALUE normalize_Lookahead(VALUE obj){int i;
 	}
 	cache_Lookahead->ary[hash]=obj;
 	cache_Lookahead->ret[hash]=obj3;
+  gc_obj->ary[gc_obj->no++]=obj;
+  gc_obj->ary[gc_obj->no++]=obj3;
 	return obj3;
 }
 VALUE create2_Lookahead(VALUE self ,VALUE ary){
@@ -749,6 +781,8 @@ VALUE normalize_Many(VALUE obj){int i;
 	}
 	cache_Many->ary[hash]=obj;
 	cache_Many->ret[hash]=obj3;
+  gc_obj->ary[gc_obj->no++]=obj;
+  gc_obj->ary[gc_obj->no++]=obj3;
 	return obj3;
 }
 VALUE create2_Many(VALUE self ,VALUE has_stop,VALUE ary){
@@ -799,6 +833,8 @@ VALUE normalize_Or(VALUE obj){int i;
 	}
 	cache_Or->ary[hash]=obj;
 	cache_Or->ret[hash]=obj3;
+  gc_obj->ary[gc_obj->no++]=obj;
+  gc_obj->ary[gc_obj->no++]=obj3;
 	return obj3;
 }
 VALUE create2_Or(VALUE self ,VALUE has_cut,VALUE ary){
@@ -849,6 +885,8 @@ VALUE normalize_Pass(VALUE obj){int i;
 	}
 	cache_Pass->ary[hash]=obj;
 	cache_Pass->ret[hash]=obj3;
+  gc_obj->ary[gc_obj->no++]=obj;
+  gc_obj->ary[gc_obj->no++]=obj3;
 	return obj3;
 }
 VALUE create2_Pass(VALUE self ,VALUE var,VALUE to,VALUE enter,VALUE ary){
@@ -899,6 +937,8 @@ VALUE normalize_Result(VALUE obj){int i;
 	}
 	cache_Result->ary[hash]=obj;
 	cache_Result->ret[hash]=obj3;
+  gc_obj->ary[gc_obj->no++]=obj;
+  gc_obj->ary[gc_obj->no++]=obj3;
 	return obj3;
 }
 VALUE create2_Result(VALUE self ,VALUE name,VALUE varnames,VALUE vars,VALUE ary){
@@ -949,6 +989,8 @@ VALUE normalize_Seq(VALUE obj){int i;
 	}
 	cache_Seq->ary[hash]=obj;
 	cache_Seq->ret[hash]=obj3;
+  gc_obj->ary[gc_obj->no++]=obj;
+  gc_obj->ary[gc_obj->no++]=obj3;
 	return obj3;
 }
 VALUE create2_Seq(VALUE self ,VALUE ary){
@@ -999,6 +1041,8 @@ VALUE normalize_Stop(VALUE obj){int i;
 	}
 	cache_Stop->ary[hash]=obj;
 	cache_Stop->ret[hash]=obj3;
+  gc_obj->ary[gc_obj->no++]=obj;
+  gc_obj->ary[gc_obj->no++]=obj3;
 	return obj3;
 }
 VALUE create2_Stop(VALUE self ,VALUE ary){
@@ -1049,6 +1093,8 @@ VALUE normalize_Strin(VALUE obj){int i;
 	}
 	cache_Strin->ary[hash]=obj;
 	cache_Strin->ret[hash]=obj3;
+  gc_obj->ary[gc_obj->no++]=obj;
+  gc_obj->ary[gc_obj->no++]=obj3;
 	return obj3;
 }
 VALUE create2_Strin(VALUE self ,VALUE ary){
@@ -1099,6 +1145,8 @@ VALUE normalize_Switch_Char(VALUE obj){int i;
 	}
 	cache_Switch_Char->ary[hash]=obj;
 	cache_Switch_Char->ret[hash]=obj3;
+  gc_obj->ary[gc_obj->no++]=obj;
+  gc_obj->ary[gc_obj->no++]=obj3;
 	return obj3;
 }
 VALUE create2_Switch_Char(VALUE self ,VALUE ary){
@@ -1149,6 +1197,8 @@ VALUE normalize_Switch_Clas(VALUE obj){int i;
 	}
 	cache_Switch_Clas->ary[hash]=obj;
 	cache_Switch_Clas->ret[hash]=obj3;
+  gc_obj->ary[gc_obj->no++]=obj;
+  gc_obj->ary[gc_obj->no++]=obj3;
 	return obj3;
 }
 VALUE create2_Switch_Clas(VALUE self ,VALUE ary){
@@ -1199,6 +1249,8 @@ VALUE normalize_Switch_Or(VALUE obj){int i;
 	}
 	cache_Switch_Or->ary[hash]=obj;
 	cache_Switch_Or->ret[hash]=obj3;
+  gc_obj->ary[gc_obj->no++]=obj;
+  gc_obj->ary[gc_obj->no++]=obj3;
 	return obj3;
 }
 VALUE create2_Switch_Or(VALUE self ,VALUE ary){
@@ -1226,97 +1278,58 @@ normalize_cache * normalize_cache_init(){
        return b;
 }
 void normalize_cache_mark(normalize_cache *b){int i;
-       for(i=0;i<(1<<20);i++) if (b->ary[i])rb_gc_mark(b->ary[i]);
-       for(i=0;i<(1<<20);i++) if (b->ret[i])rb_gc_mark(b->ret[i]);
+  for(i=0;i<gc_obj->no;i++) rb_gc_mark(gc_obj->ary[i]);
 }
 void normalize_cache_free(normalize_cache *b){}
-VALUE cache_Act_gc;VALUE cache_Apply_gc;VALUE cache_Args_gc;VALUE cache_Bind_gc;VALUE cache_Bnding_gc;VALUE cache_CAct_gc;VALUE cache_Comment_gc;VALUE cache_Cut_gc;VALUE cache_Lambda_gc;VALUE cache_Global_gc;VALUE cache_Key_gc;VALUE cache_Local_gc;VALUE cache_Lookahead_gc;VALUE cache_Many_gc;VALUE cache_Or_gc;VALUE cache_Pass_gc;VALUE cache_Result_gc;VALUE cache_Seq_gc;VALUE cache_Stop_gc;VALUE cache_Strin_gc;VALUE cache_Switch_Char_gc;
+VALUE gc_cache;
 void init_normalize(){
 cache_Act=normalize_cache_init();
-	cache_Act_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_Act);
-	rb_global_variable(&cache_Act_gc);
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Act")),"normalize",normalize_Act,0);
 	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Act")),"create2",create2_Act,3);cache_Apply=normalize_cache_init();
-	cache_Apply_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_Apply);
-	rb_global_variable(&cache_Apply_gc);
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Apply")),"normalize",normalize_Apply,0);
 	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Apply")),"create2",create2_Apply,3);cache_Args=normalize_cache_init();
-	cache_Args_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_Args);
-	rb_global_variable(&cache_Args_gc);
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Args")),"normalize",normalize_Args,0);
 	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Args")),"create2",create2_Args,1);cache_Bind=normalize_cache_init();
-	cache_Bind_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_Bind);
-	rb_global_variable(&cache_Bind_gc);
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Bind")),"normalize",normalize_Bind,0);
 	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Bind")),"create2",create2_Bind,2);cache_Bnding=normalize_cache_init();
-	cache_Bnding_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_Bnding);
-	rb_global_variable(&cache_Bnding_gc);
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Bnding")),"normalize",normalize_Bnding,0);
 	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Bnding")),"create2",create2_Bnding,1);cache_CAct=normalize_cache_init();
-	cache_CAct_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_CAct);
-	rb_global_variable(&cache_CAct_gc);
   rb_define_method(rb_const_get(rb_cObject,rb_intern("CAct")),"normalize",normalize_CAct,0);
 	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("CAct")),"create2",create2_CAct,1);cache_Comment=normalize_cache_init();
-	cache_Comment_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_Comment);
-	rb_global_variable(&cache_Comment_gc);
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Comment")),"normalize",normalize_Comment,0);
 	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Comment")),"create2",create2_Comment,1);cache_Cut=normalize_cache_init();
-	cache_Cut_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_Cut);
-	rb_global_variable(&cache_Cut_gc);
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Cut")),"normalize",normalize_Cut,0);
 	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Cut")),"create2",create2_Cut,1);cache_Lambda=normalize_cache_init();
-	cache_Lambda_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_Lambda);
-	rb_global_variable(&cache_Lambda_gc);
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Lambda")),"normalize",normalize_Lambda,0);
 	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Lambda")),"create2",create2_Lambda,1);cache_Global=normalize_cache_init();
-	cache_Global_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_Global);
-	rb_global_variable(&cache_Global_gc);
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Global")),"normalize",normalize_Global,0);
 	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Global")),"create2",create2_Global,1);cache_Key=normalize_cache_init();
-	cache_Key_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_Key);
-	rb_global_variable(&cache_Key_gc);
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Key")),"normalize",normalize_Key,0);
 	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Key")),"create2",create2_Key,1);cache_Local=normalize_cache_init();
-	cache_Local_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_Local);
-	rb_global_variable(&cache_Local_gc);
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Local")),"normalize",normalize_Local,0);
 	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Local")),"create2",create2_Local,2);cache_Lookahead=normalize_cache_init();
-	cache_Lookahead_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_Lookahead);
-	rb_global_variable(&cache_Lookahead_gc);
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Lookahead")),"normalize",normalize_Lookahead,0);
 	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Lookahead")),"create2",create2_Lookahead,1);cache_Many=normalize_cache_init();
-	cache_Many_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_Many);
-	rb_global_variable(&cache_Many_gc);
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Many")),"normalize",normalize_Many,0);
 	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Many")),"create2",create2_Many,2);cache_Or=normalize_cache_init();
-	cache_Or_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_Or);
-	rb_global_variable(&cache_Or_gc);
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Or")),"normalize",normalize_Or,0);
 	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Or")),"create2",create2_Or,2);cache_Pass=normalize_cache_init();
-	cache_Pass_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_Pass);
-	rb_global_variable(&cache_Pass_gc);
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Pass")),"normalize",normalize_Pass,0);
 	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Pass")),"create2",create2_Pass,4);cache_Result=normalize_cache_init();
-	cache_Result_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_Result);
-	rb_global_variable(&cache_Result_gc);
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Result")),"normalize",normalize_Result,0);
 	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Result")),"create2",create2_Result,4);cache_Seq=normalize_cache_init();
-	cache_Seq_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_Seq);
-	rb_global_variable(&cache_Seq_gc);
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Seq")),"normalize",normalize_Seq,0);
 	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Seq")),"create2",create2_Seq,1);cache_Stop=normalize_cache_init();
-	cache_Stop_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_Stop);
-	rb_global_variable(&cache_Stop_gc);
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Stop")),"normalize",normalize_Stop,0);
 	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Stop")),"create2",create2_Stop,1);cache_Strin=normalize_cache_init();
-	cache_Strin_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_Strin);
-	rb_global_variable(&cache_Strin_gc);
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Strin")),"normalize",normalize_Strin,0);
 	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Strin")),"create2",create2_Strin,1);cache_Switch_Char=normalize_cache_init();
-	cache_Switch_Char_gc=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,cache_Switch_Char);
-	rb_global_variable(&cache_Switch_Char_gc);
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Switch_Char")),"normalize",normalize_Switch_Char,0);
 	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Switch_Char")),"create2",create2_Switch_Char,1);
+  gc_obj=malloc(sizeof(gc_objs));gc_obj->ary=calloc(1<<20,sizeof(VALUE));gc_obj->no=0;
+	gc_cache=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,gc_obj);
+	rb_global_variable(&gc_cache);
+
 }
 void normalize_stats(){
 	printf("Act hits: %i miss: %i\n",hits_Act,miss_Act);printf("Apply hits: %i miss: %i\n",hits_Apply,miss_Apply);printf("Args hits: %i miss: %i\n",hits_Args,miss_Args);printf("Bind hits: %i miss: %i\n",hits_Bind,miss_Bind);printf("Bnding hits: %i miss: %i\n",hits_Bnding,miss_Bnding);printf("CAct hits: %i miss: %i\n",hits_CAct,miss_CAct);printf("Comment hits: %i miss: %i\n",hits_Comment,miss_Comment);printf("Cut hits: %i miss: %i\n",hits_Cut,miss_Cut);printf("Lambda hits: %i miss: %i\n",hits_Lambda,miss_Lambda);printf("Global hits: %i miss: %i\n",hits_Global,miss_Global);printf("Key hits: %i miss: %i\n",hits_Key,miss_Key);printf("Local hits: %i miss: %i\n",hits_Local,miss_Local);printf("Lookahead hits: %i miss: %i\n",hits_Lookahead,miss_Lookahead);printf("Many hits: %i miss: %i\n",hits_Many,miss_Many);printf("Or hits: %i miss: %i\n",hits_Or,miss_Or);printf("Pass hits: %i miss: %i\n",hits_Pass,miss_Pass);printf("Result hits: %i miss: %i\n",hits_Result,miss_Result);printf("Seq hits: %i miss: %i\n",hits_Seq,miss_Seq);printf("Stop hits: %i miss: %i\n",hits_Stop,miss_Stop);printf("Strin hits: %i miss: %i\n",hits_Strin,miss_Strin);printf("Switch_Char hits: %i miss: %i\n",hits_Switch_Char,miss_Switch_Char);
