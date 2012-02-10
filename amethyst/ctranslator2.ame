@@ -21,13 +21,11 @@ class AmethystCTranslator < Amethyst
   def bget(s)
     cm=s[0]
     s=desc(s)
- #   return "bind_aget(bind,#{s}/*#{cm}*/)"
 		return "_#{s}"
   end
   def bset(s,e)
     cm=s[0]
     s=desc(s)
-#    return "bind_aset(bind,#{s}/*#{cm}*/,#{e})"
 		"_#{s}=#{e};"
   end
   def rbbget(s)
@@ -43,22 +41,12 @@ class AmethystCTranslator < Amethyst
     @init<<"#{sy}=rb_intern(#{str.inspect});"
     sy
   end
-  def iget(s)
-    "rb_ivar_get(self,#{symb("@#{s}")})"
-  end
-  def iset(s,e)
-    "rb_ivar_set(self,#{symb("@#{s}")},#{e})"
-  end
   def resetlabels
     @labels=Hash.new(0)
   end
   def label(s)
     @labels[s]+=1
     "#{s}#{@labels[s]}"
-  end
-  def mktable(r)
-    @ruletable={}
-    r.each{|e| @ruletable[e.name]=e}
   end
   def rbcall(name,args)
     "rb_funcall(self,#{symb(name)},#{args.size}#{args.map{|a| ",#{a}"}*""})"
@@ -98,7 +86,7 @@ amethyst AmethystCTranslator < Amethyst {
            {s+=x*""}
            {s+="\nend"; s}
   
-  trans =  Grammar[ {@@grammar=@name;@@parent=@parent} {@@lambdas=[] ;@@rcallbacks={};@@cbhash={}} {@@defs=[]} {@@defmethods=[]} {@@faillabel="fail"} {@@callbacks={}} {mktable(@rules)} {@@header=[]} {@@init=[]} @rules=>[trans*]:t rbcode:rbcode
+  trans =  Grammar[ {@@grammar=@name;@@parent=@parent} {@@lambdas=[] ;@@rcallbacks={};@@cbhash={}} {@@defs=[]} {@@defmethods=[]} {@@faillabel="fail"} {@@callbacks={}} {@@header=[]} {@@init=[]} @rules=>[trans*]:t rbcode:rbcode
             { "VALUE cls_#{@name};\n" }:s
             { s<<@@header.uniq.sort*"\n"+"\n"
 							s<<"\n#include \"../lib/c/memo.c\"\n memo_struct *mem;VALUE memo_val;" if CurrentParser[:memoize]

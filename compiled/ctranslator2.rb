@@ -21,13 +21,11 @@ class AmethystCTranslator < Amethyst
   def bget(s)
     cm=s[0]
     s=desc(s)
- #   return "bind_aget(bind,#{s}/*#{cm}*/)"
 		return "_#{s}"
   end
   def bset(s,e)
     cm=s[0]
     s=desc(s)
-#    return "bind_aset(bind,#{s}/*#{cm}*/,#{e})"
 		"_#{s}=#{e};"
   end
   def rbbget(s)
@@ -43,22 +41,12 @@ class AmethystCTranslator < Amethyst
     @init<<"#{sy}=rb_intern(#{str.inspect});"
     sy
   end
-  def iget(s)
-    "rb_ivar_get(self,#{symb("@#{s}")})"
-  end
-  def iset(s,e)
-    "rb_ivar_set(self,#{symb("@#{s}")},#{e})"
-  end
   def resetlabels
     @labels=Hash.new(0)
   end
   def label(s)
     @labels[s]+=1
     "#{s}#{@labels[s]}"
-  end
-  def mktable(r)
-    @ruletable={}
-    r.each{|e| @ruletable[e.name]=e}
   end
   def rbcall(name,args)
     "rb_funcall(self,#{symb(name)},#{args.size}#{args.map{|a| ",#{a}"}*""})"
@@ -348,9 +336,6 @@ end
 def AmethystCTranslator_label_lp__dq_r_95b2(bind)
 label("reject")
 end
-def AmethystCTranslator_mktable_lp__ea79(bind)
-mktable(src.rules)
-end
 def AmethystCTranslator_r_eq__dq__sp__sh__le_bi_10a8(bind)
 r=" #{bind[1]*""} it=#{callrule(bind[2],bind[3])};"; cant_fail?(bind[4]) ? r : "#{r} FAILTEST(#{@faillabel});"
 
@@ -381,15 +366,15 @@ end
 
 
 def ctranslator2_compiled_by
-'4a99686344672ecfbe756c649410c345'
+'48982e25ed0c9353b49311821c1dd469'
 end
 def ctranslator2_source_hash
-'13d271fe8d1e49663adc22fcaebde61f'
+'820dd5b22fc09eada2611aa51a47015c'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'e89b829c415d1113beab070d2cdc0a1b'
+'19e72d52690be206ca5a5598a51223e8'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"
