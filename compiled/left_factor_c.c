@@ -34,7 +34,7 @@ static VALUE sy_Left_Factor_if_sp_bind_lb__1bed;
 static VALUE sy_Left_Factor_src_dot_expr_ef77;
 
 #include "../lib/c/memo.c"
-memo_struct *mem;
+memo_struct *mem=NULL;
 VALUE memo_val;
 VALUE profile_report_Left_Factor(VALUE self) {
     cstruct *ptr;
@@ -54,6 +54,9 @@ VALUE Left_Factor_binds(VALUE self ,VALUE a0,VALUE a1) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
+    if (ptr->mem==NULL) {
+        ptr->mem=mem;
+    }
     it=_s;
     _autovar=it;;
     cstruct oldpass1=*ptr;
@@ -231,6 +234,9 @@ VALUE Left_Factor_factor(VALUE self ,VALUE a0,VALUE a1,VALUE a2) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
+    if (ptr->mem==NULL) {
+        ptr->mem=mem;
+    }
     int oldpos1=ptr->pos;
     int cut1=0;
 alt1_1:
@@ -332,6 +338,9 @@ VALUE Left_Factor_first(VALUE self ,VALUE a0) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
+    if (ptr->mem==NULL) {
+        ptr->mem=mem;
+    }
     it=_s;
     _autovar=it;;
     cstruct oldpass1=*ptr;
@@ -497,6 +506,9 @@ VALUE Left_Factor_rest(VALUE self ,VALUE a0,VALUE a1) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
+    if (ptr->mem==NULL) {
+        ptr->mem=mem;
+    }
     it=_s;
     _autovar=it;;
     cstruct oldpass1=*ptr;
@@ -632,6 +644,9 @@ VALUE Left_Factor_root(VALUE self ) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
+    if (ptr->mem==NULL) {
+        ptr->mem=mem;
+    }
     it=Left_Factor_traverse(self );
     FAILTEST(fail);
     __result=it;;
@@ -648,6 +663,9 @@ VALUE Left_Factor_traverse(VALUE self ) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
+    if (ptr->mem==NULL) {
+        ptr->mem=mem;
+    }
     if (ptr->mem==NULL) {
         ptr->mem=memo_init();
         ptr->memgc=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,ptr->mem);
@@ -755,6 +773,9 @@ VALUE Left_Factor_traverse_item(VALUE self ) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
+    if (ptr->mem==NULL) {
+        ptr->mem=mem;
+    }
     switch(FIX2LONG(rb_hash_aref(switchhash_Left_Factor_5,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*AmethystAST*/:
         ;
@@ -949,6 +970,9 @@ VALUE Left_Factor_visit(VALUE self ) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
+    if (ptr->mem==NULL) {
+        ptr->mem=mem;
+    }
     switch(FIX2LONG(rb_hash_aref(switchhash_Left_Factor_4,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Or*/:
         ;
@@ -1125,6 +1149,9 @@ fail:
 void Init_left_factor_c() {
     cls_Left_Factor=rb_define_class("Left_Factor",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2")));
     failobj=rb_eval_string("FAIL");
+    mem=memo_init();
+    memo_val=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,mem);
+    rb_global_variable(&memo_val);
     rb_define_method(cls_Left_Factor,"profile_report",profile_report_Left_Factor,0);
     switchhash_Left_Factor_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Bind\nnext h[k]=1 if k<=Seq\nnext h[k]=2 if k<=Object\n}");
     rb_global_variable(&switchhash_Left_Factor_1);;
@@ -1159,5 +1186,5 @@ void Init_left_factor_c() {
     rb_define_method(cls_Left_Factor,"traverse",Left_Factor_traverse,0);
     rb_define_method(cls_Left_Factor,"traverse_item",Left_Factor_traverse_item,0);
     rb_define_method(cls_Left_Factor,"visit",Left_Factor_visit,0);
-    rb_eval_string("testversionleft_factor('8eb6d16399d24a35bafaea446b7f004d')");
+    rb_eval_string("testversionleft_factor('9227807ede42de9f285d9662139dbd2a')");
 }

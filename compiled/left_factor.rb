@@ -1,4 +1,5 @@
 CurrentParser[:memoize]=["traverse"]
+CurrentParser[:global_memo]=true
 class Left_Factor < Traverser_Clone2
   def merge(ary)
     return [ary[0]] if ary.size==1
@@ -65,15 +66,15 @@ end
 
 
 def left_factor_compiled_by
-'6d03fa566f2154ee5fb8109c04592eb0'
+'cc4a7505c86430a8104b3ed8be9ef44b'
 end
 def left_factor_source_hash
-'cb41f04f989ae76528a3defaa07ae869'
+'d3a646a1bffa0fed2b9c494804fbe042'
 end
 def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version
 end
 def left_factor_version
-'8eb6d16399d24a35bafaea446b7f004d'
+'9227807ede42de9f285d9662139dbd2a'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/left_factor_c"

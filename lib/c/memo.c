@@ -10,7 +10,7 @@ VALUE not_present;
 typedef struct {
 	int rule;VALUE src;int pos;VALUE val;int newpos;
 } elem_struct;
-typedef struct {
+typedef struct memo_struct {
 		elem_struct *els;int *hits, *miss;
 } memo_struct;
 #if MEMORY==-1
@@ -19,7 +19,7 @@ static VALUE memo_test(memo_struct m,int rule,VALUE src,int pos){
 static void memo_add(int rule,VALUE src,int pos,VALUE val){
 }
 #elif MEMORY==0
-static memo_struct memo_init(){
+static memo_struct *memo_init(){
 	memo_struct m;
 	return m;
 }
