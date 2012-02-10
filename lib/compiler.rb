@@ -17,7 +17,6 @@ class Gram
 		}
 	end
 	def opt(r)
-		GC::disable
 		debug_print(r)
 		dce=[ Dataflow, Dead_Code_Deleter3,Forget_SSA]
 		[dce].flatten.each{|o|
@@ -41,7 +40,6 @@ class Gram
 			r=o.new.parse(:root,r)
 			debug_print(r)
 		}
-		GC::enable
     @rules[r.name]=r 
 	end
 	def getrule(name)
@@ -133,6 +131,7 @@ class <<Compiler
 		end}
 	end
 	def compile(file,out,file2)
+    GC::disable
 		source=File.new(file).read
 		source_hash=Digest::MD5.hexdigest(source)
 		if Dir[Amethyst_path+ "/compiled/#{file2}.rb"]!=[] && eval("#{file2}_compiled_by")==$compiled_by && eval("#{file2}_source_hash")==source_hash && Amethyst::Settings.debug<1
@@ -160,6 +159,7 @@ class <<Compiler
 		debug_print tree
 		c,init,rb= AmethystCTranslator.new.parse(:itrans,tree)
 		c=c*""
+    GC::enable
 		if !Amethyst::Settings.profiling #oprofile does not like changing binaries
 		hex_digest=Digest::MD5.hexdigest(c)
 		File.open("compiled/#{file2}_c.c","w"){|f|
