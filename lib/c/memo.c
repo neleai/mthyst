@@ -35,14 +35,14 @@ static memo_struct *memo_init(){
 	m->els=(elem_struct *) calloc(sizeof(elem_struct),1<<MEMORY);
 	return m;
 }
-static int memo_hash(int rule,int pos){return (rule*pos)&((1<<MEMORY)-1);}
+static int memo_hash(int rule,int src,int pos){return (src+rule*pos)&((1<<MEMORY)-1);}
 static VALUE memo_value(memo_struct *m,int rule,VALUE src,int pos){
-	elem_struct el=m->els[memo_hash(rule,pos)];
+	elem_struct el=m->els[memo_hash(rule,src,pos)];
 	if (el.rule==rule&& el.src==src && el.pos==pos) return el.val;
 	return Qnil;
 }
 static int memo_pos(memo_struct *m,int rule,VALUE src,int pos){
-	elem_struct el=m->els[memo_hash(rule,pos)];
+	elem_struct el=m->els[memo_hash(rule,src,pos)];
 	if (el.rule==rule&& el.src==src && el.pos==pos){ m->hits[rule]++; return el.newpos;
 	} else {	                                       m->miss[rule]++; return -1;
   }
@@ -50,7 +50,7 @@ static int memo_pos(memo_struct *m,int rule,VALUE src,int pos){
 static void memo_add(memo_struct *m,int rule,VALUE src,int pos,VALUE val,int newpos){
 	elem_struct el;
 	el.rule=rule;el.src=src;el.pos=pos;el.val=val;el.newpos=newpos;
-	m->els[memo_hash(rule,pos)]=el;
+	m->els[memo_hash(rule,src,pos)]=el;
 }
 
 
