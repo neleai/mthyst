@@ -2544,6 +2544,18 @@ static VALUE sy_Forget_SSA_bind_lb_1_rb__sp__6af0;
 static VALUE sy_Forget_SSA_if_sp_bind_lb__1bed;
 static VALUE sy_Forget_SSA_src_25d9;
 static VALUE sy_Forget_SSA_src_dot_unss_5845;
+
+#include "../lib/c/memo.c"
+memo_struct *mem_Forget_SSA=NULL;
+VALUE memo_val_Forget_SSA;
+VALUE profile_report_Forget_SSA(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    if(ptr->mem) {
+        printf("traverse_item hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
+    }
+    return Qnil;
+}
 VALUE Forget_SSA_root(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,__result;
@@ -2720,6 +2732,19 @@ VALUE Forget_SSA_traverse_item(VALUE self ) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
+    if (ptr->mem==NULL) {
+        ptr->mem=mem_Forget_SSA;
+    }
+    if (ptr->mem==NULL) {
+        ptr->mem=memo_init();
+        ptr->memgc=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,ptr->mem);
+    }
+    int oldpos=ptr->pos;
+    if (memo_pos(ptr->mem,113,ptr->src,ptr->pos)!=-1) {
+        it=memo_value(ptr->mem,113,ptr->src,ptr->pos);
+        ptr->pos=memo_pos(ptr->mem,113,ptr->src,ptr->pos);
+        return it;
+    }
     switch(FIX2LONG(rb_hash_aref(switchhash_Forget_SSA_3,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*AmethystAST*/:
         ;
@@ -2902,8 +2927,10 @@ accept4:
         ;
         break;
     }
+    memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos);
     return it;
 fail:
+    memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos);
     return failobj;
 }
 VALUE Forget_SSA_visit(VALUE self ) {
@@ -3044,6 +3071,10 @@ void Init_dataflow_ssa_c() {
 
     cls_Forget_SSA=rb_define_class("Forget_SSA",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2")));
     failobj=rb_eval_string("FAIL");
+    mem_Forget_SSA=memo_init();
+    memo_val_Forget_SSA=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,mem_Forget_SSA);
+    rb_global_variable(&memo_val_Forget_SSA);
+    rb_define_method(cls_Forget_SSA,"profile_report",profile_report_Forget_SSA,0);
     switchhash_Forget_SSA_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Rule\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_Forget_SSA_1);;
     switchhash_Forget_SSA_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Local\nnext h[k]=1 if k<=Object\n}");
@@ -3060,5 +3091,5 @@ void Init_dataflow_ssa_c() {
     rb_define_method(cls_Forget_SSA,"traverse",Forget_SSA_traverse,0);
     rb_define_method(cls_Forget_SSA,"traverse_item",Forget_SSA_traverse_item,0);
     rb_define_method(cls_Forget_SSA,"visit",Forget_SSA_visit,0);
-    rb_eval_string("testversiondataflow_ssa('07722dea1fe5e6607826162329814ee8')");
+    rb_eval_string("testversiondataflow_ssa('68ebe43df6a6cad04089dca9d4f04c5b')");
 }
