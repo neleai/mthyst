@@ -258,12 +258,18 @@ bind[1]="int #{@stoplabel}=0; while(!#{@stoplabel}){ #{bind[2]} } "
 									bind[1]
 								
 end
-def AmethystCTranslator_bind_lb_1_rb__lt__1acb(bind)
+def AmethystCTranslator_bind_lb_1_rb__lt__98f3(bind)
+bind[1]<<bind[2][0];bind[3]<<bind[2][1];bind[4]<<bind[2][2]
+end
+def AmethystCTranslator_bind_lb_1_rb__lt__acb7(bind)
+bind[1]<<@defs*"\n";bind[1]<<"\n"
+end
+def AmethystCTranslator_bind_lb_1_rb__lt__b5d6(bind)
 bind[1]<<@header.uniq.sort*"\n"+"\n"
-							bind[1]<<"\n#include \"../lib/c/memo.c\"\n memo_struct *mem=NULL;VALUE memo_val;" if CurrentParser[:memoize]
+							bind[1]<<"\n#include \"../lib/c/memo.c\"\n memo_struct *mem_#{src.name}=NULL;VALUE memo_val;" if CurrentParser[:memoize]
 							bind[1]<<"VALUE profile_report_#{src.name}(VALUE self){cstruct *ptr; Data_Get_Struct(self,cstruct,ptr); if(ptr->mem){#{map_index(CurrentParser[:memoize]){|i| "printf(\"#{CurrentParser[:memoize][i]} hit: %i miss: %i\\n\",((memo_struct *)ptr->mem)->hits[#{113+2*i}],((memo_struct *)ptr->mem)->miss[#{113+2*i}]);"}*""}}return Qnil;}" if CurrentParser[:memoize]
 							@init<<"rb_define_method(cls_#{src.name},\"profile_report\",profile_report_#{src.name},0);" if CurrentParser[:memoize]
-              @init<<"mem=memo_init();memo_val=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,mem);rb_global_variable(&memo_val);" if CurrentParser[:global_memo]
+              @init<<"mem_#{src.name}=memo_init();memo_val=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,mem_#{src.name});rb_global_variable(&memo_val);" if CurrentParser[:global_memo]
               bind[1]<<bind[2].sort*"\n"
               bind[1]<<@lambdas*"\n"
               bind[3]="\n cls_#{src.name}=rb_define_class(\"#{src.name}\",rb_const_get(rb_cObject,rb_intern(\"#{@parent}\"))); 
@@ -272,12 +278,6 @@ bind[1]<<@header.uniq.sort*"\n"+"\n"
                     #{@defmethods.sort*"\n" }
                    "
               [bind[1],bind[3],bind[4]] 
-end
-def AmethystCTranslator_bind_lb_1_rb__lt__98f3(bind)
-bind[1]<<bind[2][0];bind[3]<<bind[2][1];bind[4]<<bind[2][2]
-end
-def AmethystCTranslator_bind_lb_1_rb__lt__acb7(bind)
-bind[1]<<@defs*"\n";bind[1]<<"\n"
 end
 def AmethystCTranslator_bind_lb_1_rb__pl__1b5e(bind)
 bind[1]+=bind[2]*""
@@ -312,13 +312,13 @@ h="VALUE #{bind[1]}(VALUE self,VALUE bind)"
                  @defmethods<<"rb_define_method(cls_#{@grammar},\"#{bind[1]}\",#{bind[1]},1);"
                  @lambdas<< h+"{VALUE vals[0]; /*todo unify with rule and get args*/ cstruct *ptr; int x;VALUE it;VALUE arg0,arg1,arg2,arg3;\n#{bind[2]}\nreturn it;\nfail: return failobj; }" 
 end
-def AmethystCTranslator_h_eq__dq_VALUE_4ec5(bind)
+def AmethystCTranslator_h_eq__dq_VALUE_9dc3(bind)
 h="VALUE #{@grammar}_#{bind[1]}(VALUE self #{map_index(src.args){|i| ",VALUE a#{i}"}*""})" 
             @header<<h+";"
             @defmethods<< "rb_define_method(cls_#{@grammar},\"#{src.name}\",#{@grammar}_#{src.name},#{src.args.size});"
 						bind[2]=h+"{VALUE vals[#{src.args.size}]; VALUE it #{@locls.map{|k,v| ",_#{k}"}*""};VALUE bind2=bind_new2(16); #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);"
-bind[2]+="if (ptr->mem==NULL){ptr->mem=mem;}" if CurrentParser[:global_memo]
-bind[2]+="if (ptr->mem==NULL){ptr->mem=memo_init();ptr->memgc=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,ptr->mem);}" if CurrentParser[:memoize]&&CurrentParser[:memoize].include?(bind[1])
+bind[2]+="if (ptr->mem==NULL){ptr->mem=mem_#{@grammar};}" if CurrentParser[:global_memo] &&CurrentParser[:memoize]&&CurrentParser[:memoize].include?(bind[1])
+bind[2]+="if (ptr->mem==NULL){ptr->mem=memo_init();ptr->memgc=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,ptr->mem);}" if CurrentParser[:memoize]&&CurrentParser[:memoize].include?(bind[1]) 
 bind[2]+="int oldpos=ptr->pos;if (memo_pos(ptr->mem,#{@memo_no=(@memo_no||111)+2},ptr->src,ptr->pos)!=-1) {it=memo_value(ptr->mem,#{@memo_no},ptr->src,ptr->pos);ptr->pos=memo_pos(ptr->mem,#{@memo_no},ptr->src,ptr->pos);return it;}" if CurrentParser[:memoize]&&CurrentParser[:memoize].include?(bind[1])
 bind[2]+="#{bind[3]}\n" 
 if CurrentParser[:memoize]&&CurrentParser[:memoize].include?(bind[1])
@@ -368,15 +368,15 @@ end
 
 
 def ctranslator2_compiled_by
-'eeca23e0324ddfbfac177ebf9d5e30e4'
+'5892653b6b24fdb311fdc1f10d88f6f8'
 end
 def ctranslator2_source_hash
-'8ba44ace735ef1605f28d2f651d66142'
+'92dddc2a4d9f5d297f7cb2515b7bf5ba'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'27805d0cc5c651fd2050ff3f16d888f3'
+'e590e0af105821fe548910d0a628462b'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"

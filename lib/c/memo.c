@@ -1,6 +1,6 @@
 #include <ruby.h>
 /* 
- * You can choose memory requirements as follows. We cache 2**16  elements by default.
+ * You can choose memory requirements as follows. We cache 2**20  elements by default.
  * -1    Memoization
  *  0    No memoization
  *  k>0  Use cache of with 2**k elements.
@@ -55,7 +55,7 @@ static void memo_add(memo_struct *m,int rule,VALUE src,int pos,VALUE val,int new
 
 
 void memo_mark(memo_struct *m){ /*we want weak link to src so we dont mark it*/
-	int i;for(i=0;i<(1<<MEMORY);i++) if(m->els[i].rule) rb_gc_mark(m->els[i].val);
+	int i;for(i=0;i<(1<<MEMORY);i++) if(m->els[i].rule) {rb_gc_mark(m->els[i].src);rb_gc_mark(m->els[i].val);}
 }
 void memo_free(memo_struct *m){ free(m->els);free(m->hits);free(m->miss);free(m);}
 #endif
