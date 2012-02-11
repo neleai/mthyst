@@ -239,6 +239,8 @@ end
 
 end
 
+#CurrentParser[:memoize]=["visit"]
+#CurrentParser[:global_memo]=true
 
 class Forget_SSA < Traverser_Clone2
 
@@ -270,10 +272,10 @@ end
 
 
 def dataflow_ssa_compiled_by
-'5892653b6b24fdb311fdc1f10d88f6f8'
+'9577c1d11ab452986bd426f883623f32'
 end
 def dataflow_ssa_source_hash
-'9f4abb6cb87cae8b660578e2fd453a17'
+'3f2a07faa00f96f695f8296f50d8f89c'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version

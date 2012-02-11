@@ -35,7 +35,7 @@ static VALUE sy_Left_Factor_src_dot_expr_ef77;
 
 #include "../lib/c/memo.c"
 memo_struct *mem_Left_Factor=NULL;
-VALUE memo_val;
+VALUE memo_val_Left_Factor;
 VALUE profile_report_Left_Factor(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -1129,8 +1129,8 @@ void Init_left_factor_c() {
     cls_Left_Factor=rb_define_class("Left_Factor",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2")));
     failobj=rb_eval_string("FAIL");
     mem_Left_Factor=memo_init();
-    memo_val=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,mem_Left_Factor);
-    rb_global_variable(&memo_val);
+    memo_val_Left_Factor=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,mem_Left_Factor);
+    rb_global_variable(&memo_val_Left_Factor);
     rb_define_method(cls_Left_Factor,"profile_report",profile_report_Left_Factor,0);
     switchhash_Left_Factor_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Bind\nnext h[k]=1 if k<=Seq\nnext h[k]=2 if k<=Object\n}");
     rb_global_variable(&switchhash_Left_Factor_1);;
@@ -1165,5 +1165,5 @@ void Init_left_factor_c() {
     rb_define_method(cls_Left_Factor,"traverse",Left_Factor_traverse,0);
     rb_define_method(cls_Left_Factor,"traverse_item",Left_Factor_traverse_item,0);
     rb_define_method(cls_Left_Factor,"visit",Left_Factor_visit,0);
-    rb_eval_string("testversionleft_factor('8039937dbce2f00113c227e016ba3fb4')");
+    rb_eval_string("testversionleft_factor('84f09210f30227df988bb0d309b796e2')");
 }

@@ -21,11 +21,12 @@ def Normalize_CAct_lb_eva_559c(bind)
 CAct[eval(src.ary[0])]
 
 end
-def Normalize_Or_dot_creat_49b2(bind)
-Or.create( {:ary=>bind[1] })
-end
 def Normalize_Or_dot_creat_a50c(bind)
 Or.create({:ary=>bind[1]})
+
+end
+def Normalize_Or_lb_bind_lb__3169(bind)
+Or[bind[1]]
 
 end
 def Normalize_Placehol_6875(bind)
@@ -106,15 +107,15 @@ end
 
 
 def normalize_compiled_by
-'5892653b6b24fdb311fdc1f10d88f6f8'
+'9577c1d11ab452986bd426f883623f32'
 end
 def normalize_source_hash
-'29c56ed9777646dcd7a78f503e9f777c'
+'4c1006f753d3f23c38dc424b8cde490a'
 end
 def testversionnormalize(r)
  raise "invalid version" if r!=normalize_version
 end
 def normalize_version
-'8b3362638fb48b612507e7662ed2cbed'
+'ff1f5235053607fd7a87d449630952a8'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/normalize_c"

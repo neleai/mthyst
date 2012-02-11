@@ -108,7 +108,7 @@ static VALUE sy_AmethystParser_local_lp_bi_196b;
 
 #include "../lib/c/memo.c"
 memo_struct *mem_AmethystParser=NULL;
-VALUE memo_val;
+VALUE memo_val_AmethystParser;
 VALUE profile_report_AmethystParser(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -7761,5 +7761,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('49f85b76b94d325e0213879e0c7b5e53')");
+    rb_eval_string("testversionparser('25f2b9db7336b4dc29499799ccaadb9a')");
 }
