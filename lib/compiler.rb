@@ -142,23 +142,36 @@ class <<Compiler
 		CurrentParser.clear
 
 		#todo write this with less ugly code
-		gno=0
 		$gr=[]
 		$compiler=self
 		$grammars=@grammars
+    $glrb={}
+    $glinit={}
+    $glc={}
+    $ctr=AmethystCTranslator
+		gno=0
 		pre =tree.map{|e|
 		if e.is_a? Grammar
 			gno+=1
 			$gr[gno]=e
-			"$compiler.add_grammar($gr[#{gno}])\n$gr[#{gno}].rules=$grammars[$gr[#{gno}].name].rules.map{|h,k| k}\n"
+			"$compiler.add_grammar($gr[#{gno}])\n$gr[#{gno}].rules=$grammars[$gr[#{gno}].name].rules.map{|h,k| k}\nc,init,rb=$ctr.new.parse(:itrans,[$gr[#{gno}]]);$glc[#{gno}]=c;$glinit[#{gno}]=init;$glrb[#{gno}]=rb\n"
 		else
 		e
 		end}.join
 		eval("module Foo\n#{pre}\nend") 
 
 		debug_print tree
-		c,init,rb= AmethystCTranslator.new.parse(:itrans,tree)
-		c=c*""
+    c,init,rb=[],[],[]
+    gno=0
+    tree.map{|e|
+      if e.is_a? Grammar
+        gno+=1
+        c<<$glc[gno];rb<<$glrb[gno];init<<$glinit[gno]
+      else
+        rb<< e
+      end
+    }
+    c=c*""
     GC::enable
 		if !Amethyst::Settings.profiling #oprofile does not like changing binaries
 		hex_digest=Digest::MD5.hexdigest(c)

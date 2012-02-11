@@ -100,3 +100,4 @@ labels use hash of body do decrease changes
 
 apply["success"] instead of placeholder
 
+call ctranslator at add_grammar

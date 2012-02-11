@@ -22,7 +22,7 @@ class AmethystCore
 		end
 	end
 	def self.parse(rule,input)
-		self.class.new.parse(rule,input)
+		self.new.parse(rule,input)
 	end
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/Ame.so"

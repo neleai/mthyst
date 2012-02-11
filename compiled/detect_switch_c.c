@@ -6634,7 +6634,7 @@ fail:
 }
 VALUE Detect_First_itrans(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,_autovar_7,_autovar_8,_autovar_9,_rules,_autovar_10,_autovar_11,_autovar_12,_autovar_13,_autovar_14,_autovar_15,_autovar_16,_autovar_17,_autovar_18,_autovar_19,__result;
+    VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,_autovar_7,_autovar_8,_rules,_autovar_9,_autovar_10,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -6661,7 +6661,7 @@ alt2_1:
             cstruct oldpass1=*ptr;
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
-            ptr->src=_autovar_13;
+            ptr->src=_autovar_2;
             if(TYPE(ptr->src)==T_STRING) {
                 ptr->str=RSTRING_PTR(ptr->src);
                 ptr->len=RSTRING_LEN(ptr->src);
@@ -6683,7 +6683,7 @@ alt2_1:
             ptr->ary=NULL;
             ptr->src=failobj;
             ptr->ary=alloca(sizeof(VALUE));
-            ptr->ary[0]=_autovar_11;
+            ptr->ary[0]=_autovar_3;
             ptr->len=1;
             it=AmethystCore_anything(self );
             FAILTEST(pass2);
@@ -6691,7 +6691,7 @@ alt2_1:
             cstruct oldpass3=*ptr;
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
-            ptr->src=_autovar_10;
+            ptr->src=_autovar_4;
             if(TYPE(ptr->src)==T_STRING) {
                 ptr->str=RSTRING_PTR(ptr->src);
                 ptr->len=RSTRING_LEN(ptr->src);
@@ -6771,7 +6771,7 @@ accept3:
                     break;
                 }
             }
-            it=_autovar_9;
+            it=_autovar_5;
             _rules=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass3;
@@ -6793,7 +6793,7 @@ success2:
             it=rb_funcall(self,sy_Detect_First_src_dot_rule_a719,1,bind2);
             _rules=bind_aget(bind2,1);;
             it=rb_funcall(self,sy_Detect_First_src_25d9,1,bind2);
-            _autovar_12=it;;
+            _autovar_9=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass1;
             goto success1;
@@ -6802,8 +6802,8 @@ pass1:
             goto alt2_2;
 success1:
             *ptr=oldpass1;
-            it=_autovar_12;
-            _autovar_14=it;;
+            it=_autovar_9;
+            _autovar_10=it;;
 
             ;
             goto accept2;
@@ -6811,7 +6811,7 @@ alt2_2:
             ptr->pos=oldpos2;
             it=AmethystCore_anything(self );
             FAILTEST(alt2_3);
-            _autovar_15=it;;
+            _autovar_10=it;;
 
             ;
             goto accept2;
@@ -6820,11 +6820,11 @@ alt2_3:
             goto alt1_2;
 accept2:
             ;
-            bind_aset(bind2,1,_autovar_16);
-            bind_aset(bind2,2,_autovar_17);
+            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,2,_autovar_10);
             it=rb_funcall(self,sy_Detect_First__append_lp__d113,1,bind2);
-            _autovar_16=bind_aget(bind2,1);;
-            _autovar_17=bind_aget(bind2,2);;
+            _autovar=bind_aget(bind2,1);;
+            _autovar_10=bind_aget(bind2,2);;
             ;
             goto accept1;
 alt1_2:
@@ -6846,12 +6846,12 @@ alt4_1:
             ;
             it=AmethystCore_anything(self );
             FAILTEST(alt4_2);
-            _autovar_18=it;;
+            _autovar_10=it;;
             bind_aset(bind2,1,_autovar);
-            bind_aset(bind2,2,_autovar_18);
+            bind_aset(bind2,2,_autovar_10);
             it=rb_funcall(self,sy_Detect_First__append_lp__d113,1,bind2);
             _autovar=bind_aget(bind2,1);;
-            _autovar_18=bind_aget(bind2,2);;
+            _autovar_10=bind_aget(bind2,2);;
             ;
             goto accept4;
 alt4_2:
@@ -6867,7 +6867,7 @@ accept4:
             break;
         }
     }
-    it=_autovar_19;
+    it=_autovar;
     __result=it;;
 
     return it;
@@ -12059,5 +12059,5 @@ void Init_detect_switch_c() {
     sy_Detect_Size_minsize_lp__01f0=rb_intern("Detect_Size_minsize_lp__01f0");
     rb_define_method(cls_Detect_Size,"predicate",Detect_Size_predicate,1);
     rb_define_method(cls_Detect_Size,"predicate2",Detect_Size_predicate2,1);
-    rb_eval_string("testversiondetect_switch('73690737fec77150079485a8fa5f03d5')");
+    rb_eval_string("testversiondetect_switch('5d1ff7084611b31d2546018bc55cf0a8')");
 }

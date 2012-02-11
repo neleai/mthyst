@@ -9,7 +9,7 @@ cd ..
 ruby1.9.1 bootstrap.rb
 cd compiled
 for I in *.c; do
-diff $I tmpdiff/$I >>../logdiff
+diff -u tmpdiff/$I $I >>../logdiff
 done
 cd ..
 cat logdiff
