@@ -69,7 +69,7 @@ end
 
 
 def inliner2_compiled_by
-'5892653b6b24fdb311fdc1f10d88f6f8'
+'0fbd4ae7985b0317d65b1d3f74307ce8'
 end
 def inliner2_source_hash
 '8b55baa0765b22b5c8f5c6d36559323d'
