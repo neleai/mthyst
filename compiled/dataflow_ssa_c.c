@@ -46,6 +46,7 @@ static VALUE sy_Dataflow_src_25d9;
 static VALUE sy_Dataflow_src_dot_args_2df5;
 static VALUE sy_Dataflow_src_dot_body_b7c1;
 static VALUE sy_Dataflow_src_dot_clas_68f9;
+static VALUE sy_Dataflow_src_dot_dup_d768;
 static VALUE sy_Dataflow_src_dot_reac_9ae4;
 static VALUE sy_Dataflow_src_dot_to_5e99;
 static VALUE sy_Dataflow_src_dot_var_3a88;
@@ -60,7 +61,7 @@ VALUE Dataflow_root(VALUE self ) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    it=rb_funcall(self,sy_Dataflow_src_25d9,1,bind2);
+    it=rb_funcall(self,sy_Dataflow_src_dot_dup_d768,1,bind2);
     _autovar=it;;
     cstruct oldpass1=*ptr;
     ptr->pos=ptr->len=0;
@@ -1968,6 +1969,7 @@ static VALUE sy_Dead_Code_Deleter3_bind_lb_1_rb__lt__7b20;
 static VALUE sy_Dead_Code_Deleter3_bind_lb_1_rb__sp__6af0;
 static VALUE sy_Dead_Code_Deleter3_if_sp_bind_lb__1bed;
 static VALUE sy_Dead_Code_Deleter3_src_25d9;
+static VALUE sy_Dead_Code_Deleter3_src_dot_dup_d768;
 static VALUE sy_Dead_Code_Deleter3_src_dot_reac_cd39;
 VALUE Dead_Code_Deleter3_root(VALUE self ) {
     VALUE vals[0];
@@ -1977,7 +1979,7 @@ VALUE Dead_Code_Deleter3_root(VALUE self ) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    it=rb_funcall(self,sy_Dead_Code_Deleter3_src_25d9,1,bind2);
+    it=rb_funcall(self,sy_Dead_Code_Deleter3_src_dot_dup_d768,1,bind2);
     _autovar=it;;
     cstruct oldpass1=*ptr;
     ptr->pos=ptr->len=0;
@@ -3032,6 +3034,7 @@ void Init_dataflow_ssa_c() {
     sy_Dataflow_src_dot_args_2df5=rb_intern("Dataflow_src_dot_args_2df5");
     sy_Dataflow_src_dot_body_b7c1=rb_intern("Dataflow_src_dot_body_b7c1");
     sy_Dataflow_src_dot_clas_68f9=rb_intern("Dataflow_src_dot_clas_68f9");
+    sy_Dataflow_src_dot_dup_d768=rb_intern("Dataflow_src_dot_dup_d768");
     sy_Dataflow_src_dot_reac_9ae4=rb_intern("Dataflow_src_dot_reac_9ae4");
     sy_Dataflow_src_dot_to_5e99=rb_intern("Dataflow_src_dot_to_5e99");
     sy_Dataflow_src_dot_var_3a88=rb_intern("Dataflow_src_dot_var_3a88");
@@ -3063,6 +3066,7 @@ void Init_dataflow_ssa_c() {
     sy_Dead_Code_Deleter3_bind_lb_1_rb__sp__6af0=rb_intern("Dead_Code_Deleter3_bind_lb_1_rb__sp__6af0");
     sy_Dead_Code_Deleter3_if_sp_bind_lb__1bed=rb_intern("Dead_Code_Deleter3_if_sp_bind_lb__1bed");
     sy_Dead_Code_Deleter3_src_25d9=rb_intern("Dead_Code_Deleter3_src_25d9");
+    sy_Dead_Code_Deleter3_src_dot_dup_d768=rb_intern("Dead_Code_Deleter3_src_dot_dup_d768");
     sy_Dead_Code_Deleter3_src_dot_reac_cd39=rb_intern("Dead_Code_Deleter3_src_dot_reac_cd39");
     rb_define_method(cls_Dead_Code_Deleter3,"root",Dead_Code_Deleter3_root,0);
     rb_define_method(cls_Dead_Code_Deleter3,"traverse",Dead_Code_Deleter3_traverse,0);
@@ -3091,5 +3095,5 @@ void Init_dataflow_ssa_c() {
     rb_define_method(cls_Forget_SSA,"traverse",Forget_SSA_traverse,0);
     rb_define_method(cls_Forget_SSA,"traverse_item",Forget_SSA_traverse_item,0);
     rb_define_method(cls_Forget_SSA,"visit",Forget_SSA_visit,0);
-    rb_eval_string("testversiondataflow_ssa('f12a9b486921a27ac81076803e303b38')");
+    rb_eval_string("testversiondataflow_ssa('d518f417ee7e195462cab183411a3bd4')");
 }

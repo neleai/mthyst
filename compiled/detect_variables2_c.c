@@ -39,6 +39,7 @@ static VALUE sy_Analyze_Variables2_if_sp_bind_lb__1bed;
 static VALUE sy_Analyze_Variables2_src_25d9;
 static VALUE sy_Analyze_Variables2_src_dot_ary_d5cf;
 static VALUE sy_Analyze_Variables2_src_dot_ary_dot__dd8c;
+static VALUE sy_Analyze_Variables2_src_dot_dup_d768;
 static VALUE sy_Analyze_Variables2_src_dot_loca_ab74;
 static VALUE sy_Analyze_Variables2_src_dot_pred_56d4;
 static VALUE sy_Analyze_Variables2_src_dot_pure_41d4;
@@ -492,7 +493,7 @@ VALUE Analyze_Variables2_root(VALUE self ) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    it=rb_funcall(self,sy_Analyze_Variables2_src_25d9,1,bind2);
+    it=rb_funcall(self,sy_Analyze_Variables2_src_dot_dup_d768,1,bind2);
     _autovar=it;;
     cstruct oldpass1=*ptr;
     ptr->pos=ptr->len=0;
@@ -2239,6 +2240,7 @@ void Init_detect_variables2_c() {
     sy_Analyze_Variables2_src_25d9=rb_intern("Analyze_Variables2_src_25d9");
     sy_Analyze_Variables2_src_dot_ary_d5cf=rb_intern("Analyze_Variables2_src_dot_ary_d5cf");
     sy_Analyze_Variables2_src_dot_ary_dot__dd8c=rb_intern("Analyze_Variables2_src_dot_ary_dot__dd8c");
+    sy_Analyze_Variables2_src_dot_dup_d768=rb_intern("Analyze_Variables2_src_dot_dup_d768");
     sy_Analyze_Variables2_src_dot_loca_ab74=rb_intern("Analyze_Variables2_src_dot_loca_ab74");
     sy_Analyze_Variables2_src_dot_pred_56d4=rb_intern("Analyze_Variables2_src_dot_pred_56d4");
     sy_Analyze_Variables2_src_dot_pure_41d4=rb_intern("Analyze_Variables2_src_dot_pure_41d4");
@@ -2276,5 +2278,5 @@ void Init_detect_variables2_c() {
     rb_define_method(cls_Resolve_Calls,"traverse",Resolve_Calls_traverse,0);
     rb_define_method(cls_Resolve_Calls,"traverse_item",Resolve_Calls_traverse_item,0);
     rb_define_method(cls_Resolve_Calls,"visit",Resolve_Calls_visit,0);
-    rb_eval_string("testversiondetect_variables2('85d940ef33d84a585b42d9d6906350c8')");
+    rb_eval_string("testversiondetect_variables2('53c6a928df52e07aa0ba069e56297ee3')");
 }

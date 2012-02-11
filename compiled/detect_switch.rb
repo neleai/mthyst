@@ -809,7 +809,7 @@ end
 
 
 def detect_switch_compiled_by
-'f4c735433b8aae4670dc868c0c0bc19d'
+'a5167e9e023bec198edee4050fddb409'
 end
 def detect_switch_source_hash
 'e4d09776b220386f8f2b89b17b6562c8'

@@ -169,6 +169,9 @@ end
 def Dataflow_src_dot_clas_68f9(bind)
 src.class[{:ary=>bind[1]}]
 end
+def Dataflow_src_dot_dup_d768(bind)
+src.dup
+end
 def Dataflow_src_dot_reac_9ae4(bind)
 src.reachable=@edges.reverse.reachable(@marked+[ssanum(bind[1][-1])]); src.cfg=@edges; 
 end
@@ -233,6 +236,9 @@ end
 def Dead_Code_Deleter3_src_25d9(bind)
 src
 end
+def Dead_Code_Deleter3_src_dot_dup_d768(bind)
+src.dup
+end
 def Dead_Code_Deleter3_src_dot_reac_cd39(bind)
 src.reachable=nil;src.cfg=nil
 end
@@ -272,15 +278,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'f4c735433b8aae4670dc868c0c0bc19d'
+'a5167e9e023bec198edee4050fddb409'
 end
 def dataflow_ssa_source_hash
-'465c3a3ce2d5606d082a4bd4b4b8ee1e'
+'56d641c20ee2b672db7644bb4028d473'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'f12a9b486921a27ac81076803e303b38'
+'d518f417ee7e195462cab183411a3bd4'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/dataflow_ssa_c"
