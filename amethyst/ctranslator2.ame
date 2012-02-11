@@ -89,10 +89,10 @@ amethyst AmethystCTranslator < Amethyst {
   trans =  Grammar[ {@@grammar=@name;@@parent=@parent} {@@lambdas=[] ;@@rcallbacks={};@@cbhash={}} {@@defs=[]} {@@defmethods=[]} {@@faillabel="fail"} {@@callbacks={}} {@@header=[]} {@@init=[]} @rules=>[trans*]:t rbcode:rbcode
             { "VALUE cls_#{@name};\n" }:s
             { s<<@@header.uniq.sort*"\n"+"\n"
-							s<<"\n#include \"../lib/c/memo.c\"\n memo_struct *mem_#{@name}=NULL;VALUE memo_val_#{@name};" if CurrentParser[:memoize]
+							s<<"\n#include \"../lib/c/memo.c\"\n memo_struct *mem_#{@name}=NULL;VALUE memo_val;" if CurrentParser[:memoize]
 							s<<"VALUE profile_report_#{@name}(VALUE self){cstruct *ptr; Data_Get_Struct(self,cstruct,ptr); if(ptr->mem){#{map_index(CurrentParser[:memoize]){|i| "printf(\"#{CurrentParser[:memoize][i]} hit: %i miss: %i\\n\",((memo_struct *)ptr->mem)->hits[#{113+2*i}],((memo_struct *)ptr->mem)->miss[#{113+2*i}]);"}*""}}return Qnil;}" if CurrentParser[:memoize]
 							@@init<<"rb_define_method(cls_#{@name},\"profile_report\",profile_report_#{@name},0);" if CurrentParser[:memoize]
-              @@init<<"mem_#{@name}=memo_init();memo_val_#{@name}=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,mem_#{@name});rb_global_variable(&memo_val_#{@name});" if CurrentParser[:global_memo]
+              @@init<<"mem_#{@name}=memo_init();memo_val=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,mem_#{@name});rb_global_variable(&memo_val);" if CurrentParser[:global_memo]
               s<<t.sort*"\n"
               s<<@@lambdas*"\n"
               init="\n cls_#{@name}=rb_define_class(\"#{@name}\",rb_const_get(rb_cObject,rb_intern(\"#{@@parent}\"))); 

@@ -93,8 +93,7 @@ amethyst Dead_Code_Deleter3 < Traverser_Clone2{
           | Bind[.* @self:b {@@bounded||=@@reachable[@name]} traverse[ .* {@@bounded=false} {@@reachable[@name] ? @self : @expr}]]
           | Local[.* @self:this ] -> @@reachable[this] ? this : Placeholder
 }
-CurrentParser[:memoize]=["traverse"]
-CurrentParser[:global_memo]=true
+
 amethyst Forget_SSA < Traverser_Clone2 {
   root = @self=>Rule[traverse]
   visit = Local[ .* {@unssa} ]

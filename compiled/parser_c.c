@@ -108,7 +108,7 @@ static VALUE sy_AmethystParser_local_lp_bi_196b;
 
 #include "../lib/c/memo.c"
 memo_struct *mem_AmethystParser=NULL;
-VALUE memo_val_AmethystParser;
+VALUE memo_val;
 VALUE profile_report_AmethystParser(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -3231,6 +3231,7 @@ alt1_1:
                 it=rb_funcall(self,sy_AmethystParser_Many_lb_bin_14d1,1,bind2);
                 _from=bind_aget(bind2,1);;
                 _one=bind_aget(bind2,2);;
+                _from=it;;
                 break;
             case ':' ... ':':
                 ;
@@ -3257,6 +3258,7 @@ alt1_1:
                     it=rb_funcall(self,sy_AmethystParser_Seq_lb_Bind_bbb6,1,bind2);
                     _from=bind_aget(bind2,1);;
                     _e=bind_aget(bind2,2);;
+                    _from=it;;
                     break;
                 case '@' ... '@':
                     ;
@@ -3309,6 +3311,7 @@ accept2:
                     _name=bind_aget(bind2,1);;
                     _append=bind_aget(bind2,2);;
                     _from=bind_aget(bind2,3);;
+                    _from=it;;
                     break;
                 case 'A' ... 'Z':
                     ;
@@ -3365,6 +3368,7 @@ accept3:
                     _name=bind_aget(bind2,1);;
                     _append=bind_aget(bind2,2);;
                     _from=bind_aget(bind2,3);;
+                    _from=it;;
                     break;
                 case '[' ... '[':
                     ;
@@ -3416,6 +3420,7 @@ accept3:
                     it=rb_funcall(self,sy_AmethystParser__at_appends_9f26,1,bind2);
                     _name=bind_aget(bind2,1);;
                     _from=bind_aget(bind2,2);;
+                    _from=it;;
                     break;
                 }
                 break;
@@ -3433,6 +3438,7 @@ accept3:
                 it=rb_funcall(self,sy_AmethystParser_Pass_lb_bin_2f93,1,bind2);
                 _from=bind_aget(bind2,1);;
                 _e=bind_aget(bind2,2);;
+                _from=it;;
                 break;
             case '?' ... '?':
                 ;
@@ -3441,6 +3447,7 @@ accept3:
                 bind_aset(bind2,1,_from);
                 it=rb_funcall(self,sy_AmethystParser_Or_AST_lb_b_0657,1,bind2);
                 _from=bind_aget(bind2,1);;
+                _from=it;;
                 break;
             case '[' ... '[':
                 ;
@@ -3467,6 +3474,7 @@ accept3:
                 it=rb_funcall(self,sy_AmethystParser_Enter_lb_bi_9246,1,bind2);
                 _from=bind_aget(bind2,1);;
                 _e=bind_aget(bind2,2);;
+                _from=it;;
                 break;
             }
             ;
@@ -3538,6 +3546,7 @@ accept5:
                 it=rb_funcall(self,sy_AmethystParser_Many_lb_bin_14d1,1,bind2);
                 _from=bind_aget(bind2,1);;
                 _one=bind_aget(bind2,2);;
+                _from=it;;
                 break;
             case ':' ... ':':
                 ;
@@ -3564,6 +3573,7 @@ accept5:
                     it=rb_funcall(self,sy_AmethystParser_Seq_lb_Bind_bbb6,1,bind2);
                     _from=bind_aget(bind2,1);;
                     _e=bind_aget(bind2,2);;
+                    _from=it;;
                     break;
                 case '@' ... '@':
                     ;
@@ -3616,6 +3626,7 @@ accept6:
                     _name=bind_aget(bind2,1);;
                     _append=bind_aget(bind2,2);;
                     _from=bind_aget(bind2,3);;
+                    _from=it;;
                     break;
                 case 'A' ... 'Z':
                     ;
@@ -3672,6 +3683,7 @@ accept7:
                     _name=bind_aget(bind2,1);;
                     _append=bind_aget(bind2,2);;
                     _from=bind_aget(bind2,3);;
+                    _from=it;;
                     break;
                 case '[' ... '[':
                     ;
@@ -3741,6 +3753,7 @@ accept7:
                 it=rb_funcall(self,sy_AmethystParser_Pass_lb_bin_2f93,1,bind2);
                 _from=bind_aget(bind2,1);;
                 _e=bind_aget(bind2,2);;
+                _from=it;;
                 break;
             case '?' ... '?':
                 ;
@@ -3776,6 +3789,7 @@ accept7:
                 it=rb_funcall(self,sy_AmethystParser_Enter_lb_bi_9246,1,bind2);
                 _from=bind_aget(bind2,1);;
                 _e=bind_aget(bind2,2);;
+                _from=it;;
                 break;
             }
             ;
@@ -7747,5 +7761,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('e0a7e0ab3757932b7a846db4e75d0c12')");
+    rb_eval_string("testversionparser('49f85b76b94d325e0213879e0c7b5e53')");
 }
