@@ -691,8 +691,8 @@ end
 end
 
 
-#CurrentParser[:memoize]=["traverse_item"]
-#CurrentParser[:global_memo]=true
+CurrentParser[:memoize]=["traverse_item"]
+CurrentParser[:global_memo]=true
 class Detect_Switch_Clas < Detect_First
 
 def Detect_Switch_Clas_Or_lb__ti_bind_d486(bind)
@@ -809,15 +809,15 @@ end
 
 
 def detect_switch_compiled_by
-'ddee934141dc68391dae68c59c02608f'
+'f4c735433b8aae4670dc868c0c0bc19d'
 end
 def detect_switch_source_hash
-'2281d9236b120d1127e33140386d2aca'
+'e4d09776b220386f8f2b89b17b6562c8'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'44ff75e71dbc1c57e01ca45d716ac537'
+'18f6de065b91dcf8571ca09bd8dab8c9'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"
