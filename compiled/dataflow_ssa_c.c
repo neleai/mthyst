@@ -2554,7 +2554,7 @@ VALUE profile_report_Forget_SSA(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     if(ptr->mem) {
-        printf("traverse_item hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
+        printf("traverse hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
     }
     return Qnil;
 }
@@ -2639,6 +2639,19 @@ VALUE Forget_SSA_traverse(VALUE self ) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
+    if (ptr->mem==NULL) {
+        ptr->mem=mem_Forget_SSA;
+    }
+    if (ptr->mem==NULL) {
+        ptr->mem=memo_init();
+        ptr->memgc=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,ptr->mem);
+    }
+    int oldpos=ptr->pos;
+    if (memo_pos(ptr->mem,113,ptr->src,ptr->pos)!=-1) {
+        it=memo_value(ptr->mem,113,ptr->src,ptr->pos);
+        ptr->pos=memo_pos(ptr->mem,113,ptr->src,ptr->pos);
+        return it;
+    }
     ptr->pos=ptr->len;
     it=rb_ary_new3(0);
     _nvars=it;;
@@ -2722,8 +2735,10 @@ success1:
     _nvars=bind_aget(bind2,2);;
     __result=it;;
 
+    memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos);
     return it;
 fail:
+    memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos);
     return failobj;
 }
 VALUE Forget_SSA_traverse_item(VALUE self ) {
@@ -2734,19 +2749,6 @@ VALUE Forget_SSA_traverse_item(VALUE self ) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    if (ptr->mem==NULL) {
-        ptr->mem=mem_Forget_SSA;
-    }
-    if (ptr->mem==NULL) {
-        ptr->mem=memo_init();
-        ptr->memgc=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,ptr->mem);
-    }
-    int oldpos=ptr->pos;
-    if (memo_pos(ptr->mem,113,ptr->src,ptr->pos)!=-1) {
-        it=memo_value(ptr->mem,113,ptr->src,ptr->pos);
-        ptr->pos=memo_pos(ptr->mem,113,ptr->src,ptr->pos);
-        return it;
-    }
     switch(FIX2LONG(rb_hash_aref(switchhash_Forget_SSA_3,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*AmethystAST*/:
         ;
@@ -2929,10 +2931,8 @@ accept4:
         ;
         break;
     }
-    memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos);
     return it;
 fail:
-    memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos);
     return failobj;
 }
 VALUE Forget_SSA_visit(VALUE self ) {
@@ -3095,5 +3095,5 @@ void Init_dataflow_ssa_c() {
     rb_define_method(cls_Forget_SSA,"traverse",Forget_SSA_traverse,0);
     rb_define_method(cls_Forget_SSA,"traverse_item",Forget_SSA_traverse_item,0);
     rb_define_method(cls_Forget_SSA,"visit",Forget_SSA_visit,0);
-    rb_eval_string("testversiondataflow_ssa('d518f417ee7e195462cab183411a3bd4')");
+    rb_eval_string("testversiondataflow_ssa('abebb468c39af7ff207a1005a67d197b')");
 }

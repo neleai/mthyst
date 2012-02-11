@@ -7228,7 +7228,7 @@ VALUE profile_report_Detect_Switch_Char(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     if(ptr->mem) {
-        printf("traverse_item hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
+        printf("traverse hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
     }
     return Qnil;
 }
@@ -7869,6 +7869,19 @@ VALUE Detect_Switch_Char_traverse(VALUE self ) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
+    if (ptr->mem==NULL) {
+        ptr->mem=mem_Detect_Switch_Char;
+    }
+    if (ptr->mem==NULL) {
+        ptr->mem=memo_init();
+        ptr->memgc=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,ptr->mem);
+    }
+    int oldpos=ptr->pos;
+    if (memo_pos(ptr->mem,113,ptr->src,ptr->pos)!=-1) {
+        it=memo_value(ptr->mem,113,ptr->src,ptr->pos);
+        ptr->pos=memo_pos(ptr->mem,113,ptr->src,ptr->pos);
+        return it;
+    }
     ptr->pos=ptr->len;
     it=rb_ary_new3(0);
     _nvars=it;;
@@ -7952,8 +7965,10 @@ success1:
     _nvars=bind_aget(bind2,2);;
     __result=it;;
 
+    memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos);
     return it;
 fail:
+    memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos);
     return failobj;
 }
 VALUE Detect_Switch_Char_traverse_item(VALUE self ) {
@@ -7964,19 +7979,6 @@ VALUE Detect_Switch_Char_traverse_item(VALUE self ) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    if (ptr->mem==NULL) {
-        ptr->mem=mem_Detect_Switch_Char;
-    }
-    if (ptr->mem==NULL) {
-        ptr->mem=memo_init();
-        ptr->memgc=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,ptr->mem);
-    }
-    int oldpos=ptr->pos;
-    if (memo_pos(ptr->mem,113,ptr->src,ptr->pos)!=-1) {
-        it=memo_value(ptr->mem,113,ptr->src,ptr->pos);
-        ptr->pos=memo_pos(ptr->mem,113,ptr->src,ptr->pos);
-        return it;
-    }
     switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Switch_Char_8,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*AmethystAST*/:
         ;
@@ -8159,10 +8161,8 @@ accept4:
         ;
         break;
     }
-    memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos);
     return it;
 fail:
-    memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos);
     return failobj;
 }
 VALUE Detect_Switch_Char_visit(VALUE self ) {
@@ -9286,7 +9286,7 @@ VALUE profile_report_Detect_Switch_Clas(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     if(ptr->mem) {
-        printf("traverse_item hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
+        printf("traverse hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
     }
     return Qnil;
 }
@@ -9927,6 +9927,19 @@ VALUE Detect_Switch_Clas_traverse(VALUE self ) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
+    if (ptr->mem==NULL) {
+        ptr->mem=mem_Detect_Switch_Clas;
+    }
+    if (ptr->mem==NULL) {
+        ptr->mem=memo_init();
+        ptr->memgc=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,ptr->mem);
+    }
+    int oldpos=ptr->pos;
+    if (memo_pos(ptr->mem,113,ptr->src,ptr->pos)!=-1) {
+        it=memo_value(ptr->mem,113,ptr->src,ptr->pos);
+        ptr->pos=memo_pos(ptr->mem,113,ptr->src,ptr->pos);
+        return it;
+    }
     ptr->pos=ptr->len;
     it=rb_ary_new3(0);
     _nvars=it;;
@@ -10010,8 +10023,10 @@ success1:
     _nvars=bind_aget(bind2,2);;
     __result=it;;
 
+    memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos);
     return it;
 fail:
+    memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos);
     return failobj;
 }
 VALUE Detect_Switch_Clas_traverse_item(VALUE self ) {
@@ -10022,19 +10037,6 @@ VALUE Detect_Switch_Clas_traverse_item(VALUE self ) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    if (ptr->mem==NULL) {
-        ptr->mem=mem_Detect_Switch_Clas;
-    }
-    if (ptr->mem==NULL) {
-        ptr->mem=memo_init();
-        ptr->memgc=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,ptr->mem);
-    }
-    int oldpos=ptr->pos;
-    if (memo_pos(ptr->mem,113,ptr->src,ptr->pos)!=-1) {
-        it=memo_value(ptr->mem,113,ptr->src,ptr->pos);
-        ptr->pos=memo_pos(ptr->mem,113,ptr->src,ptr->pos);
-        return it;
-    }
     switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Switch_Clas_8,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*AmethystAST*/:
         ;
@@ -10217,10 +10219,8 @@ accept4:
         ;
         break;
     }
-    memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos);
     return it;
 fail:
-    memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos);
     return failobj;
 }
 VALUE Detect_Switch_Clas_visit(VALUE self ) {
@@ -12120,5 +12120,5 @@ void Init_detect_switch_c() {
     sy_Detect_Size_minsize_lp__01f0=rb_intern("Detect_Size_minsize_lp__01f0");
     rb_define_method(cls_Detect_Size,"predicate",Detect_Size_predicate,1);
     rb_define_method(cls_Detect_Size,"predicate2",Detect_Size_predicate2,1);
-    rb_eval_string("testversiondetect_switch('18f6de065b91dcf8571ca09bd8dab8c9')");
+    rb_eval_string("testversiondetect_switch('74e4ab273d7215dc29f012b571a21563')");
 }

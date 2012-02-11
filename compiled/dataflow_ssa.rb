@@ -245,7 +245,7 @@ end
 
 end
 
-CurrentParser[:memoize]=["traverse_item"]
+CurrentParser[:memoize]=["traverse"]
 CurrentParser[:global_memo]=true
 
 class Forget_SSA < Traverser_Clone2
@@ -278,15 +278,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'a5167e9e023bec198edee4050fddb409'
+'245ec77ab3c3031bf60df4ee59e3edd4'
 end
 def dataflow_ssa_source_hash
-'56d641c20ee2b672db7644bb4028d473'
+'48ace14f2188c56e5dcd52ee91143716'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'d518f417ee7e195462cab183411a3bd4'
+'abebb468c39af7ff207a1005a67d197b'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/dataflow_ssa_c"
