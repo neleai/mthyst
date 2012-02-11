@@ -1,4 +1,5 @@
 #include "cthyst.h"
+#include "memo.c"
 VALUE cls_Analyze_Variables2;
 VALUE AmethystCore_anything(VALUE self );
 VALUE Analyze_Variables2_flat(VALUE self );

@@ -1,4 +1,5 @@
 #include "cthyst.h"
+#include "memo.c"
 VALUE cls_Left_Factor;
 VALUE AmethystCore_anything(VALUE self );
 VALUE Left_Factor_binds(VALUE self ,VALUE a0,VALUE a1);
@@ -33,7 +34,6 @@ static VALUE sy_Left_Factor_first_lp_bi_150a;
 static VALUE sy_Left_Factor_if_sp_bind_lb__1bed;
 static VALUE sy_Left_Factor_src_dot_expr_ef77;
 
-#include "../lib/c/memo.c"
 memo_struct *mem_Left_Factor=NULL;
 VALUE memo_val_Left_Factor;
 VALUE profile_report_Left_Factor(VALUE self) {
@@ -1165,5 +1165,5 @@ void Init_left_factor_c() {
     rb_define_method(cls_Left_Factor,"traverse",Left_Factor_traverse,0);
     rb_define_method(cls_Left_Factor,"traverse_item",Left_Factor_traverse_item,0);
     rb_define_method(cls_Left_Factor,"visit",Left_Factor_visit,0);
-    rb_eval_string("testversionleft_factor('84f09210f30227df988bb0d309b796e2')");
+    rb_eval_string("testversionleft_factor('6417f13da2adf89ffcf9e8a66d4216e5')");
 }

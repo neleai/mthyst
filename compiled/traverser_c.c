@@ -1,4 +1,5 @@
 #include "cthyst.h"
+#include "memo.c"
 VALUE cls_Traverser_Clone2;
 VALUE AmethystCore_anything(VALUE self );
 VALUE Traverser_Clone2_traverse(VALUE self );

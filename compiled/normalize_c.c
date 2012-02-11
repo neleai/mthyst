@@ -1,4 +1,5 @@
 #include "cthyst.h"
+#include "memo.c"
 VALUE cls_Normalize;
 VALUE AmethystCore__seq(VALUE self ,VALUE);
 VALUE AmethystCore_anything(VALUE self );

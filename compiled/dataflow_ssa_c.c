@@ -1,4 +1,5 @@
 #include "cthyst.h"
+#include "memo.c"
 VALUE cls_Dataflow;
 VALUE AmethystCore_anything(VALUE self );
 VALUE Dataflow_root(VALUE self );
@@ -2545,7 +2546,6 @@ static VALUE sy_Forget_SSA_if_sp_bind_lb__1bed;
 static VALUE sy_Forget_SSA_src_25d9;
 static VALUE sy_Forget_SSA_src_dot_unss_5845;
 
-#include "../lib/c/memo.c"
 memo_struct *mem_Forget_SSA=NULL;
 VALUE memo_val_Forget_SSA;
 VALUE profile_report_Forget_SSA(VALUE self) {
@@ -3091,5 +3091,5 @@ void Init_dataflow_ssa_c() {
     rb_define_method(cls_Forget_SSA,"traverse",Forget_SSA_traverse,0);
     rb_define_method(cls_Forget_SSA,"traverse_item",Forget_SSA_traverse_item,0);
     rb_define_method(cls_Forget_SSA,"visit",Forget_SSA_visit,0);
-    rb_eval_string("testversiondataflow_ssa('68ebe43df6a6cad04089dca9d4f04c5b')");
+    rb_eval_string("testversiondataflow_ssa('f12a9b486921a27ac81076803e303b38')");
 }

@@ -1,4 +1,5 @@
 #include "cthyst.h"
+#include "memo.c"
 VALUE cls_Tests;
 VALUE Tests_abc(VALUE self );
 VALUE Tests_de(VALUE self );

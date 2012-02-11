@@ -1,4 +1,5 @@
 #include "cthyst.h"
+#include "memo.c"
 VALUE cls_Constant_Propagator;
 VALUE AmethystCore_anything(VALUE self );
 VALUE Constant_Propagator_root(VALUE self );

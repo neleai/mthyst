@@ -66,7 +66,7 @@ end
 
 
 def left_factor_compiled_by
-'b9f26d81dd1bbc32526dc98c67a2d516'
+'ddee934141dc68391dae68c59c02608f'
 end
 def left_factor_source_hash
 'd3a646a1bffa0fed2b9c494804fbe042'
@@ -75,6 +75,6 @@ def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version
 end
 def left_factor_version
-'84f09210f30227df988bb0d309b796e2'
+'6417f13da2adf89ffcf9e8a66d4216e5'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/left_factor_c"

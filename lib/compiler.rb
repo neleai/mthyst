@@ -154,7 +154,7 @@ class <<Compiler
 		if e.is_a? Grammar
 			gno+=1
 			$gr[gno]=e
-			"$compiler.add_grammar($gr[#{gno}])\n$gr[#{gno}].rules=$grammars[$gr[#{gno}].name].rules.map{|h,k| k}\nc,init,rb=$ctr.new.parse(:itrans,[$gr[#{gno}]]);$glc[#{gno}]=c;$glinit[#{gno}]=init;$glrb[#{gno}]=rb\n"
+			"$compiler.add_grammar($gr[#{gno}])\n$gr[#{gno}].rules=$grammars[$gr[#{gno}].name].rules.map{|h,k| k}\nc,init,rb=$ctr.new.parse(:itrans,[$gr[#{gno}]]);$glc[#{gno}]=c;$glinit[#{gno}]=init;$glrb[#{gno}]=rb;CurrentParser.clear\n"
 		else
 		e
 		end}.join
@@ -177,6 +177,7 @@ class <<Compiler
 		hex_digest=Digest::MD5.hexdigest(c)
 		File.open("compiled/#{file2}_c.c","w"){|f|
     f.puts "#include \"cthyst.h\""
+    f.puts "#include \"memo.c\""
     f.puts c
     f.puts "void Init_#{file2}_c(){ #{init*""} rb_eval_string(\"testversion#{file2}('#{hex_digest}')\");}"
     }

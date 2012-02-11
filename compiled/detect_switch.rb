@@ -597,6 +597,8 @@ end
 
 #TODO we can do unicode almost unchanged but we need test againist first byte of character
 
+CurrentParser[:memoize]=["traverse_item"]
+CurrentParser[:global_memo]=true
 class Detect_Switch_Char < Detect_First
 
 def Detect_Switch_Char_Or_lb__ti_bind_d486(bind)
@@ -689,6 +691,8 @@ end
 end
 
 
+#CurrentParser[:memoize]=["traverse_item"]
+#CurrentParser[:global_memo]=true
 class Detect_Switch_Clas < Detect_First
 
 def Detect_Switch_Clas_Or_lb__ti_bind_d486(bind)
@@ -805,15 +809,15 @@ end
 
 
 def detect_switch_compiled_by
-'b9f26d81dd1bbc32526dc98c67a2d516'
+'ddee934141dc68391dae68c59c02608f'
 end
 def detect_switch_source_hash
-'6be51e3cb0591ae2379e3296a95ae660'
+'2281d9236b120d1127e33140386d2aca'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'5d1ff7084611b31d2546018bc55cf0a8'
+'44ff75e71dbc1c57e01ca45d716ac537'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

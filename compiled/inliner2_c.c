@@ -1,4 +1,5 @@
 #include "cthyst.h"
+#include "memo.c"
 VALUE cls_DetectCalls;
 VALUE AmethystCore_anything(VALUE self );
 VALUE DetectCalls_root(VALUE self );

@@ -1,4 +1,5 @@
 #include "cthyst.h"
+#include "memo.c"
 VALUE cls_First_Dataflow;
 VALUE AmethystCore_anything(VALUE self );
 VALUE First_Dataflow_first(VALUE self );
@@ -7220,6 +7221,17 @@ static VALUE sy_Detect_Switch_Char_src_dot_ary_d5cf;
 static VALUE sy_Detect_Switch_Char_src_dot_rule_5acf;
 static VALUE sy_Detect_Switch_Char_src_dot_rule_a719;
 static VALUE sy_first;
+
+memo_struct *mem_Detect_Switch_Char=NULL;
+VALUE memo_val_Detect_Switch_Char;
+VALUE profile_report_Detect_Switch_Char(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    if(ptr->mem) {
+        printf("traverse_item hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
+    }
+    return Qnil;
+}
 VALUE Detect_Switch_Char_combine_or(VALUE self ,VALUE a0) {
     VALUE vals[1];
     VALUE it ,_autovar,_ary,_newlist,_list,__result,_n;
@@ -7952,6 +7964,19 @@ VALUE Detect_Switch_Char_traverse_item(VALUE self ) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
+    if (ptr->mem==NULL) {
+        ptr->mem=mem_Detect_Switch_Char;
+    }
+    if (ptr->mem==NULL) {
+        ptr->mem=memo_init();
+        ptr->memgc=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,ptr->mem);
+    }
+    int oldpos=ptr->pos;
+    if (memo_pos(ptr->mem,113,ptr->src,ptr->pos)!=-1) {
+        it=memo_value(ptr->mem,113,ptr->src,ptr->pos);
+        ptr->pos=memo_pos(ptr->mem,113,ptr->src,ptr->pos);
+        return it;
+    }
     switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Switch_Char_8,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*AmethystAST*/:
         ;
@@ -8134,8 +8159,10 @@ accept4:
         ;
         break;
     }
+    memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos);
     return it;
 fail:
+    memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos);
     return failobj;
 }
 VALUE Detect_Switch_Char_visit(VALUE self ) {
@@ -11932,6 +11959,10 @@ void Init_detect_switch_c() {
 
     cls_Detect_Switch_Char=rb_define_class("Detect_Switch_Char",rb_const_get(rb_cObject,rb_intern("Detect_First")));
     failobj=rb_eval_string("FAIL");
+    mem_Detect_Switch_Char=memo_init();
+    memo_val_Detect_Switch_Char=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,mem_Detect_Switch_Char);
+    rb_global_variable(&memo_val_Detect_Switch_Char);
+    rb_define_method(cls_Detect_Switch_Char,"profile_report",profile_report_Detect_Switch_Char,0);
     switchhash_Detect_Switch_Char_10=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Rule\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_Detect_Switch_Char_10);;
     switchhash_Detect_Switch_Char_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Many\nnext h[k]=2 if k<=Or\nnext h[k]=3 if k<=Seq\nnext h[k]=4 if k<=Object\n}");
@@ -12059,5 +12090,5 @@ void Init_detect_switch_c() {
     sy_Detect_Size_minsize_lp__01f0=rb_intern("Detect_Size_minsize_lp__01f0");
     rb_define_method(cls_Detect_Size,"predicate",Detect_Size_predicate,1);
     rb_define_method(cls_Detect_Size,"predicate2",Detect_Size_predicate2,1);
-    rb_eval_string("testversiondetect_switch('5d1ff7084611b31d2546018bc55cf0a8')");
+    rb_eval_string("testversiondetect_switch('44ff75e71dbc1c57e01ca45d716ac537')");
 }

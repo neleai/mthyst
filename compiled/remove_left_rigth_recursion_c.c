@@ -1,4 +1,5 @@
 #include "cthyst.h"
+#include "memo.c"
 VALUE cls_Remove_Left_Recursion;
 VALUE AmethystCore_anything(VALUE self );
 VALUE Remove_Left_Recursion_first(VALUE self ,VALUE a0);

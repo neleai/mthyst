@@ -1,4 +1,5 @@
 #include "cthyst.h"
+#include "memo.c"
 VALUE cls_AmethystParser;
 VALUE AmethystCore__seq(VALUE self ,VALUE);
 VALUE AmethystCore_anything(VALUE self );
@@ -106,7 +107,6 @@ static VALUE sy_AmethystParser_bind_lb_1_rb__eq__f15c;
 static VALUE sy_AmethystParser_bind_lb_1_rb__pl__b087;
 static VALUE sy_AmethystParser_local_lp_bi_196b;
 
-#include "../lib/c/memo.c"
 memo_struct *mem_AmethystParser=NULL;
 VALUE memo_val_AmethystParser;
 VALUE profile_report_AmethystParser(VALUE self) {
@@ -7761,5 +7761,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('25f2b9db7336b4dc29499799ccaadb9a')");
+    rb_eval_string("testversionparser('e55ed081c6ae005788d1035be3d2f51a')");
 }

@@ -1,4 +1,5 @@
 #include "cthyst.h"
+#include "memo.c"
 VALUE cls_Detect_Implicit_Variables;
 VALUE AmethystCore_anything(VALUE self );
 VALUE Detect_Implicit_Variables_root(VALUE self );
@@ -32,7 +33,7 @@ fail:
 }
 VALUE Detect_Implicit_Variables_traverse(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,__result;
+    VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,_autovar_7,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -116,7 +117,7 @@ pass1:
     goto fail;
 success1:
     *ptr=oldpass1;
-    it=_autovar_6;
+    it=_autovar_7;
     __result=it;;
 
     return it;
@@ -944,5 +945,5 @@ void Init_implicit_variables_c() {
     rb_define_method(cls_Add_Implicit_Variables,"traverse",Add_Implicit_Variables_traverse,0);
     rb_define_method(cls_Add_Implicit_Variables,"traverse_item",Add_Implicit_Variables_traverse_item,0);
     rb_define_method(cls_Add_Implicit_Variables,"visit",Add_Implicit_Variables_visit,0);
-    rb_eval_string("testversionimplicit_variables('97b0314565f37eb13b3cda9619d0b41e')");
+    rb_eval_string("testversionimplicit_variables('2e6a015dd8421c54450fd38340c27238')");
 }
