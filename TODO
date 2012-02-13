@@ -46,8 +46,6 @@ copy propagation, expression variables
 Constant propagation also do value numbering to register renaming scheme.
 
 
-replace({"a"=>"b","c"=>"d"}) ?
-
 extract cc from makefile for portability
 
 UTF8
@@ -90,7 +88,6 @@ predication of sizes
 simple dataflows
 string_only,object_only
 as constant propagation?
-use to simplify ors
 
 ? warn about a:b(c)
 
@@ -102,3 +99,6 @@ apply["success"] instead of placeholder
 
 make rule immutable
 
+left factor inside normalization of or
+
+local DCE?

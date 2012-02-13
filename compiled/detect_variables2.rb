@@ -163,9 +163,9 @@ end
 def Resolve_Calls_src_dot_name_80f3(bind)
 src.name
 end
-def Resolve_Calls_super_na_7b4c(bind)
+def Resolve_Calls_super_na_c8c2(bind)
 super_name="#{@name}_#{@grammar.name}"
-                    @grammar.rules[super_name]=deep_clone(Compiler.grammars[@grammar.parent].getrule(@name))
+                    @grammar.rules[super_name]=Compiler.grammars[@grammar.parent].getrule(@name).dup
                     @grammar.rules[super_name].name=super_name
                     Apply[super_name]
               
@@ -175,15 +175,15 @@ end
 
 
 def detect_variables2_compiled_by
-'245ec77ab3c3031bf60df4ee59e3edd4'
+'295396d512a343745051d923bdf8af00'
 end
 def detect_variables2_source_hash
-'5066744d48144f48065cc8c5eb2b23ef'
+'a6f466d09671b3df387e8361eaa70741'
 end
 def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'53c6a928df52e07aa0ba069e56297ee3'
+'6df3399fa8aa6c29c268d2b4462f5289'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_variables2_c"

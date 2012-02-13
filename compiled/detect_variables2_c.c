@@ -1642,7 +1642,7 @@ static VALUE sy_Resolve_Calls_bind_lb_1_rb__lt__7b20;
 static VALUE sy_Resolve_Calls_bind_lb_1_rb__sp__6af0;
 static VALUE sy_Resolve_Calls_if_sp_bind_lb__1bed;
 static VALUE sy_Resolve_Calls_src_dot_name_80f3;
-static VALUE sy_Resolve_Calls_super_na_7b4c;
+static VALUE sy_Resolve_Calls_super_na_c8c2;
 VALUE Resolve_Calls_root(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,__result;
@@ -2080,7 +2080,7 @@ pass2:
         goto pass1;
 success2:
         *ptr=oldpass2;
-        it=rb_funcall(self,sy_Resolve_Calls_super_na_7b4c,1,bind2);
+        it=rb_funcall(self,sy_Resolve_Calls_super_na_c8c2,1,bind2);
         _autovar_6=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass1;
@@ -2273,10 +2273,10 @@ void Init_detect_variables2_c() {
     sy_Resolve_Calls_bind_lb_1_rb__sp__6af0=rb_intern("Resolve_Calls_bind_lb_1_rb__sp__6af0");
     sy_Resolve_Calls_if_sp_bind_lb__1bed=rb_intern("Resolve_Calls_if_sp_bind_lb__1bed");
     sy_Resolve_Calls_src_dot_name_80f3=rb_intern("Resolve_Calls_src_dot_name_80f3");
-    sy_Resolve_Calls_super_na_7b4c=rb_intern("Resolve_Calls_super_na_7b4c");
+    sy_Resolve_Calls_super_na_c8c2=rb_intern("Resolve_Calls_super_na_c8c2");
     rb_define_method(cls_Resolve_Calls,"root",Resolve_Calls_root,0);
     rb_define_method(cls_Resolve_Calls,"traverse",Resolve_Calls_traverse,0);
     rb_define_method(cls_Resolve_Calls,"traverse_item",Resolve_Calls_traverse_item,0);
     rb_define_method(cls_Resolve_Calls,"visit",Resolve_Calls_visit,0);
-    rb_eval_string("testversiondetect_variables2('53c6a928df52e07aa0ba069e56297ee3')");
+    rb_eval_string("testversiondetect_variables2('6df3399fa8aa6c29c268d2b4462f5289')");
 }

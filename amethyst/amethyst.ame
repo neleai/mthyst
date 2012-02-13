@@ -29,8 +29,8 @@ amethyst Amethyst < AmethystCore {
              )* -> x.join
   listOf(rule,delim) =  apply(rule):f[] (seq(delim) apply(rule))*:f[] -> f
                          | empty -> []
+  
   replace(exp) = (apply(exp) | .):{it*""}
-
 
 
   fails = &{false}

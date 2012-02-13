@@ -48,7 +48,7 @@ amethyst Resolve_Calls < Traverser_Clone2 {
 
   visit = Apply[ ["super"] {
                     super_name="#{@@name}_#{@@grammar.name}"
-                    @@grammar.rules[super_name]=deep_clone(Compiler.grammars[@@grammar.parent].getrule(@@name))
+                    @@grammar.rules[super_name]=Compiler.grammars[@@grammar.parent].getrule(@@name).dup
                     @@grammar.rules[super_name].name=super_name
                     Apply[super_name]
               }]

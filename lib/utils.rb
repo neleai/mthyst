@@ -36,7 +36,6 @@ def deep_clone(o)
 	if o.is_a? Array
 		o.map{|a| deep_clone(a)}
 	elsif o.is_a? AmethystAST
-#		raise "unfrozen #{ o.inspect}" unless o.frozen? || o.is_a?(Grammar) || o.is_a?(Rule)
 		n=o.class.new
 		o.instance_variables.each{|v| n.instance_variable_set(v,deep_clone(o.instance_variable_get(v)))}
 		n.normalize
