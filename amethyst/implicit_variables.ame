@@ -5,7 +5,7 @@ amethyst Detect_Implicit_Variables < Visitor {
 }
 
 amethyst Add_Implicit_Variables < Traverser_Clone2 {
-  root = .:@@vars Rule[ {@@bnding=@bnding} {@@locals=[]} traverse:t {t.locals+=@@locals;t} ]
+  root = .:@@vars Rule[ {@@bnding=@bnding} {@@locals=[]} traverse:t {t=t.dup;t.locals+=@@locals;t.freeze} ]
 
   visit = Apply[ :name .* &{@@vars[name]>=1} {l=Local[name,@@bnding];@@locals<<l;Bind[l,@self]}]
         | Apply[ :name .* &{@@vars[name]> 1} {l=Local[name,@@bnding];@@locals<<l;Append[name,@self]}]

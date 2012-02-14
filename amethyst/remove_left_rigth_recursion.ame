@@ -1,7 +1,7 @@
 #todo bind.reset to reset locals
 
 amethyst Remove_Left_Recursion < Traverser_Clone2 {
-  root =  Rule[ {@@name=@name} {@@result=Local["_result",@bnding]} @body:oldbody (@body=>first(false)):first (@body=>first(true)):follow
+  root =  .:a  {a.dup}=>Rule[ {@@name=@name} {@@result=Local["_result",@bnding]} @body:oldbody (@body=>first(false)):first (@body=>first(true)):follow
                 {a=autovar;@body = Seq[first,Many[Seq[Act[Args[a,"=",@@result,";bind.reset;",@@result,"=",a]],follow]]] if @@left_rec}
                 {@self}
               ]

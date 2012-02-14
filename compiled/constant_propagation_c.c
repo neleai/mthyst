@@ -416,7 +416,7 @@ static VALUE sy_Constant_Traverser__at_consts_lb__abf4;
 static VALUE sy_Constant_Traverser__lp__lp__at_const_463e;
 static VALUE sy_Constant_Traverser__lp__lp__at_const_5d8f;
 static VALUE sy_Constant_Traverser__lp_src_dot_cla_e144;
-static VALUE sy_Constant_Traverser_bind_lb_1_rb__dot__8385;
+static VALUE sy_Constant_Traverser_bind_lb_1_rb__dot__f702;
 static VALUE sy_Constant_Traverser_bind_lb_1_rb__lt__7b20;
 static VALUE sy_Constant_Traverser_bind_lb_1_rb__sp__6af0;
 static VALUE sy_Constant_Traverser_if_sp_bind_lb__1bed;
@@ -531,7 +531,7 @@ fail:
 }
 VALUE Constant_Traverser_root(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,_autovar_2,_autovar_3,_t,__result;
+    VALUE it ,_autovar,_autovar_2,_autovar_3,_it,_autovar_4,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -588,7 +588,11 @@ success1:
     it=rb_funcall(self,sy_Constant_Traverser_src_dot_cfg_eq__15aa,1,bind2);
     it=Constant_Traverser_traverse(self );
     FAILTEST(pass2);
-    _t=it;;
+    _it=it;;
+    bind_aset(bind2,1,_it);
+    it=rb_funcall(self,sy_Constant_Traverser_bind_lb_1_rb__dot__f702,1,bind2);
+    _it=bind_aget(bind2,1);;
+    _autovar_4=it;;
     it=Qnil;
     if (ptr->pos<ptr->len) goto pass2;
     goto success2;
@@ -597,9 +601,7 @@ pass2:
     goto fail;
 success2:
     *ptr=oldpass2;
-    bind_aset(bind2,1,_t);
-    it=rb_funcall(self,sy_Constant_Traverser_bind_lb_1_rb__dot__8385,1,bind2);
-    _t=bind_aget(bind2,1);;
+    it=_autovar_4;
     __result=it;;
 
     return it;
@@ -1098,7 +1100,7 @@ void Init_constant_propagation_c() {
     sy_Constant_Traverser__lp__lp__at_const_463e=rb_intern("Constant_Traverser__lp__lp__at_const_463e");
     sy_Constant_Traverser__lp__lp__at_const_5d8f=rb_intern("Constant_Traverser__lp__lp__at_const_5d8f");
     sy_Constant_Traverser__lp_src_dot_cla_e144=rb_intern("Constant_Traverser__lp_src_dot_cla_e144");
-    sy_Constant_Traverser_bind_lb_1_rb__dot__8385=rb_intern("Constant_Traverser_bind_lb_1_rb__dot__8385");
+    sy_Constant_Traverser_bind_lb_1_rb__dot__f702=rb_intern("Constant_Traverser_bind_lb_1_rb__dot__f702");
     sy_Constant_Traverser_bind_lb_1_rb__lt__7b20=rb_intern("Constant_Traverser_bind_lb_1_rb__lt__7b20");
     sy_Constant_Traverser_bind_lb_1_rb__sp__6af0=rb_intern("Constant_Traverser_bind_lb_1_rb__sp__6af0");
     sy_Constant_Traverser_if_sp_bind_lb__1bed=rb_intern("Constant_Traverser_if_sp_bind_lb__1bed");
@@ -1110,5 +1112,5 @@ void Init_constant_propagation_c() {
     rb_define_method(cls_Constant_Traverser,"traverse",Constant_Traverser_traverse,0);
     rb_define_method(cls_Constant_Traverser,"traverse_item",Constant_Traverser_traverse_item,0);
     rb_define_method(cls_Constant_Traverser,"visit",Constant_Traverser_visit,0);
-    rb_eval_string("testversionconstant_propagation('2c41c8706b5795c207da25744222ba83')");
+    rb_eval_string("testversionconstant_propagation('45e100db0294c28e1fb126779d4708ba')");
 }
