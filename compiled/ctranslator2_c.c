@@ -23,6 +23,9 @@ VALUE switchhash_AmethystCTranslator_18;
 VALUE switchhash_AmethystCTranslator_19;
 VALUE switchhash_AmethystCTranslator_1;
 VALUE switchhash_AmethystCTranslator_20;
+VALUE switchhash_AmethystCTranslator_21;
+VALUE switchhash_AmethystCTranslator_22;
+VALUE switchhash_AmethystCTranslator_23;
 VALUE switchhash_AmethystCTranslator_2;
 VALUE switchhash_AmethystCTranslator_3;
 VALUE switchhash_AmethystCTranslator_4;
@@ -177,34 +180,65 @@ VALUE AmethystCTranslator_addlambda(VALUE self ) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    it=rb_funcall(self,sy_AmethystCTranslator__dq__sh__le__at_gram_5de9,1,bind2);
-    _lambd=it;;
-    it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_1610,1,bind2);
-    _rwo=it;;
-    it=rb_obj_clone(s_fail_e111);
-    _word=it;;
-    bind_aset(bind2,1,_word);
-    it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_e643,1,bind2);
-    _word=bind_aget(bind2,1);;
-    it=AmethystCTranslator_trans(self );
-    FAILTEST(fail);
-    _body=it;;
-    _x=it;;
-    bind_aset(bind2,1,_rwo);
-    bind_aset(bind2,2,_x);
-    it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_e174,1,bind2);
-    _rwo=bind_aget(bind2,1);;
-    _x=bind_aget(bind2,2);;
-    bind_aset(bind2,1,_lambd);
-    bind_aset(bind2,2,_body);
-    it=rb_funcall(self,sy_AmethystCTranslator_h_eq__dq_VALUE_3d5e,1,bind2);
-    _lambd=bind_aget(bind2,1);;
-    _body=bind_aget(bind2,2);;
-    bind_aset(bind2,1,_lambd);
-    it=rb_funcall(self,sy_AmethystCTranslator__dq_Amethys_2ed8,1,bind2);
-    _lambd=bind_aget(bind2,1);;
-    __result=it;;
-
+    switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_23,rb_obj_class(ame_curobj2(ptr))))) {
+    case 0/*Act*/:
+    case 1/*Apply*/:
+    case 2/*Bind*/:
+    case 3/*CAct*/:
+    case 4/*Cut*/:
+    case 5/*Grammar*/:
+    case 6/*Local*/:
+    case 7/*Lookahead*/:
+    case 8/*Many*/:
+    case 9/*Memo*/:
+    case 10/*Or*/:
+    case 11/*Pass*/:
+    case 12/*Rule*/:
+    case 13/*Seq*/:
+    case 14/*Stop*/:
+    case 15/*Switch_Char*/:
+    case 16/*Switch_Clas*/:
+        ;
+        it=rb_funcall(self,sy_AmethystCTranslator__dq__sh__le__at_gram_5de9,1,bind2);
+        _lambd=it;;
+        it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_1610,1,bind2);
+        _rwo=it;;
+        it=rb_obj_clone(s_fail_e111);
+        _word=it;;
+        bind_aset(bind2,1,_word);
+        it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_e643,1,bind2);
+        _word=bind_aget(bind2,1);;
+        it=AmethystCTranslator_trans(self );
+        FAILTEST(fail);
+        _body=it;;
+        _x=it;;
+        bind_aset(bind2,1,_rwo);
+        bind_aset(bind2,2,_x);
+        it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_e174,1,bind2);
+        _rwo=bind_aget(bind2,1);;
+        _x=bind_aget(bind2,2);;
+        bind_aset(bind2,1,_lambd);
+        bind_aset(bind2,2,_body);
+        it=rb_funcall(self,sy_AmethystCTranslator_h_eq__dq_VALUE_3d5e,1,bind2);
+        _lambd=bind_aget(bind2,1);;
+        _body=bind_aget(bind2,2);;
+        bind_aset(bind2,1,_lambd);
+        it=rb_funcall(self,sy_AmethystCTranslator__dq_Amethys_2ed8,1,bind2);
+        _lambd=bind_aget(bind2,1);;
+        __result=it;;
+        break;
+    case 17/*Object*/:
+        ;
+        it=rb_funcall(self,sy_AmethystCTranslator__dq__sh__le__at_gram_5de9,1,bind2);
+        it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_1610,1,bind2);
+        it=rb_obj_clone(s_fail_e111);
+        _word=it;;
+        bind_aset(bind2,1,_word);
+        it=rb_funcall(self,sy_AmethystCTranslator__at_faillab_e643,1,bind2);
+        _word=bind_aget(bind2,1);;
+        goto fail;
+        break;
+    }
     return it;
 fail:
     return failobj;
@@ -225,56 +259,114 @@ VALUE AmethystCTranslator_itrans(VALUE self ) {
     _init=it;;
     int stop1=0;
     while(!stop1) {
-        int oldpos1=ptr->pos;
-        int cut1=0;
+        switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_1,rb_obj_class(ame_curobj2(ptr))))) {
+        case 0/*Act*/:
+        case 1/*Apply*/:
+        case 2/*Bind*/:
+        case 3/*CAct*/:
+        case 4/*Cut*/:
+        case 5/*Grammar*/:
+        case 6/*Local*/:
+        case 7/*Lookahead*/:
+        case 8/*Many*/:
+        case 9/*Memo*/:
+        case 10/*Or*/:
+        case 11/*Pass*/:
+        case 12/*Rule*/:
+        case 13/*Seq*/:
+        case 14/*Stop*/:
+        case 15/*Switch_Char*/:
+        case 16/*Switch_Clas*/:
+            ;
+            int oldpos1=ptr->pos;
+            int cut1=0;
 alt1_1:
-        ;
-        it=AmethystCore_anything(self );
-        FAILTEST(alt1_2);
-        _c_2=it;;
-        bind_aset(bind2,1,_c_2);
-        it=rb_funcall(self,sy_AmethystCTranslator__lp_bind_lb_1_rb__a948,1,bind2);
-        _c_2=bind_aget(bind2,1);;
-        FAILTEST(alt1_2);
-        bind_aset(bind2,1,_c_2);
-        it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_1_rb_,1,bind2);
-        _c_2=bind_aget(bind2,1);;
-        __result=it;;
-        it=__result;
-        _autovar=it;;
-        bind_aset(bind2,1,_ruby);
-        bind_aset(bind2,2,_autovar);
-        it=rb_funcall(self,sy_AmethystCTranslator__append_lp__d113,1,bind2);
-        _ruby=bind_aget(bind2,1);;
-        _autovar=bind_aget(bind2,2);;
-        ;
-        goto accept1;
+            ;
+            it=AmethystCore_anything(self );
+            FAILTEST(alt1_2);
+            _c_2=it;;
+            bind_aset(bind2,1,_c_2);
+            it=rb_funcall(self,sy_AmethystCTranslator__lp_bind_lb_1_rb__a948,1,bind2);
+            _c_2=bind_aget(bind2,1);;
+            FAILTEST(alt1_2);
+            bind_aset(bind2,1,_c_2);
+            it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_1_rb_,1,bind2);
+            _c_2=bind_aget(bind2,1);;
+            __result=it;;
+            it=__result;
+            _autovar=it;;
+            bind_aset(bind2,1,_ruby);
+            bind_aset(bind2,2,_autovar);
+            it=rb_funcall(self,sy_AmethystCTranslator__append_lp__d113,1,bind2);
+            _ruby=bind_aget(bind2,1);;
+            _autovar=bind_aget(bind2,2);;
+            ;
+            goto accept1;
 alt1_2:
-        ptr->pos=oldpos1;
-        it=AmethystCTranslator_trans(self );
-        FAILTEST(alt1_3);
-        _it=it;;
-        bind_aset(bind2,1,_c);
-        bind_aset(bind2,2,_it);
-        bind_aset(bind2,3,_init);
-        bind_aset(bind2,4,_ruby);
-        it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_1_rb__lt__98f3,1,bind2);
-        _c=bind_aget(bind2,1);;
-        _it=bind_aget(bind2,2);;
-        _init=bind_aget(bind2,3);;
-        _ruby=bind_aget(bind2,4);;
-        ;
-        goto accept1;
+            ptr->pos=oldpos1;
+            it=AmethystCTranslator_trans(self );
+            FAILTEST(alt1_3);
+            _it=it;;
+            bind_aset(bind2,1,_c);
+            bind_aset(bind2,2,_it);
+            bind_aset(bind2,3,_init);
+            bind_aset(bind2,4,_ruby);
+            it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_1_rb__lt__98f3,1,bind2);
+            _c=bind_aget(bind2,1);;
+            _it=bind_aget(bind2,2);;
+            _init=bind_aget(bind2,3);;
+            _ruby=bind_aget(bind2,4);;
+            ;
+            goto accept1;
 alt1_3:
-        ptr->pos=oldpos1;
-        stop1=1;
-        ;
-        goto accept1;
+            ptr->pos=oldpos1;
+            stop1=1;
+            ;
+            goto accept1;
 alt1_4:
-        ptr->pos=oldpos1;
-        goto fail;
+            ptr->pos=oldpos1;
+            goto fail;
 accept1:
-        ;
+            ;
+            break;
+        case 17/*Object*/:
+            ;
+            int oldpos2=ptr->pos;
+            int cut2=0;
+alt2_1:
+            ;
+            it=AmethystCore_anything(self );
+            FAILTEST(alt2_2);
+            _c_2=it;;
+            bind_aset(bind2,1,_c_2);
+            it=rb_funcall(self,sy_AmethystCTranslator__lp_bind_lb_1_rb__a948,1,bind2);
+            _c_2=bind_aget(bind2,1);;
+            FAILTEST(alt2_2);
+            bind_aset(bind2,1,_c_2);
+            it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_1_rb_,1,bind2);
+            _c_2=bind_aget(bind2,1);;
+            __result=it;;
+            it=__result;
+            _autovar=it;;
+            bind_aset(bind2,1,_ruby);
+            bind_aset(bind2,2,_autovar);
+            it=rb_funcall(self,sy_AmethystCTranslator__append_lp__d113,1,bind2);
+            _ruby=bind_aget(bind2,1);;
+            _autovar=bind_aget(bind2,2);;
+            ;
+            goto accept2;
+alt2_2:
+            ptr->pos=oldpos2;
+            stop1=1;
+            ;
+            goto accept2;
+alt2_3:
+            ptr->pos=oldpos2;
+            goto fail;
+accept2:
+            ;
+            break;
+        }
     }
     bind_aset(bind2,1,_c);
     bind_aset(bind2,2,_init);
@@ -435,7 +527,7 @@ VALUE AmethystCTranslator_rbtrans(VALUE self ) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_1,rb_obj_class(ame_curobj2(ptr))))) {
+    switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_2,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Args*/:
         ;
         int oldpos1=ptr->pos;
@@ -688,11 +780,36 @@ alt5_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=AmethystCTranslator_addlambda(self );
-        FAILTEST(pass5);
-        _autovar_8=it;;
-        it=Qnil;
-        if (ptr->pos<ptr->len) goto pass5;
+        switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_3,rb_obj_class(ame_curobj2(ptr))))) {
+        case 0/*Act*/:
+        case 1/*Apply*/:
+        case 2/*Bind*/:
+        case 3/*CAct*/:
+        case 4/*Cut*/:
+        case 5/*Grammar*/:
+        case 6/*Local*/:
+        case 7/*Lookahead*/:
+        case 8/*Many*/:
+        case 9/*Memo*/:
+        case 10/*Or*/:
+        case 11/*Pass*/:
+        case 12/*Rule*/:
+        case 13/*Seq*/:
+        case 14/*Stop*/:
+        case 15/*Switch_Char*/:
+        case 16/*Switch_Clas*/:
+            ;
+            it=AmethystCTranslator_addlambda(self );
+            FAILTEST(pass5);
+            _autovar_8=it;;
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass5;
+            break;
+        case 17/*Object*/:
+            ;
+            goto pass5;
+            break;
+        }
         goto success5;
 pass5:
         *ptr=oldpass5;
@@ -925,7 +1042,7 @@ VALUE AmethystCTranslator_trans(VALUE self ) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_2,rb_obj_class(ame_curobj2(ptr))))) {
+    switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_4,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Act*/:
         ;
         it=ptr->ary[ptr->pos];            ;
@@ -1150,7 +1267,7 @@ pass5:
         goto pass4;
 success5:
         *ptr=oldpass5;
-        switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_3,rb_obj_class(ame_curobj2(ptr))))) {
+        switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_5,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*CAct*/:
             ;
             it=ptr->ary[ptr->pos];            ;
@@ -1651,7 +1768,7 @@ pass18:
         goto pass17;
 success18:
         *ptr=oldpass18;
-        switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_4,rb_obj_class(ame_curobj2(ptr))))) {
+        switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_6,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*CAct*/:
             ;
             it=ptr->ary[ptr->pos];            ;
@@ -1736,7 +1853,7 @@ alt2_9:
         _autovar_31=it;;
         int stop2=0;
         while(!stop2) {
-            switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_5,rb_obj_class(ame_curobj2(ptr))))) {
+            switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_7,rb_obj_class(ame_curobj2(ptr))))) {
             case 0/*Act*/:
             case 1/*Apply*/:
             case 2/*Bind*/:
@@ -1847,7 +1964,7 @@ accept2:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_6,rb_obj_class(ame_curobj2(ptr))))) {
+        switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_8,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*Act*/:
         case 1/*Apply*/:
         case 2/*Bind*/:
@@ -2019,7 +2136,7 @@ success23:
         _autovar_41=it;;
         int stop3=0;
         while(!stop3) {
-            switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_7,rb_obj_class(ame_curobj2(ptr))))) {
+            switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_9,rb_obj_class(ame_curobj2(ptr))))) {
             case 0/*Act*/:
             case 1/*Apply*/:
             case 2/*Bind*/:
@@ -2173,7 +2290,7 @@ success27:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_8,rb_obj_class(ame_curobj2(ptr))))) {
+        switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_10,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*Act*/:
         case 1/*Apply*/:
         case 2/*Bind*/:
@@ -2282,7 +2399,7 @@ alt5_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_9,rb_obj_class(ame_curobj2(ptr))))) {
+        switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_11,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*Or*/:
             ;
             it=ptr->ary[ptr->pos];            ;
@@ -2304,7 +2421,7 @@ alt5_1:
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
-            switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_10,rb_obj_class(ame_curobj2(ptr))))) {
+            switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_12,rb_obj_class(ame_curobj2(ptr))))) {
             case 0/*Apply*/:
                 ;
                 it=ptr->ary[ptr->pos];            ;
@@ -2377,7 +2494,7 @@ pass31:
                 goto pass30;
 success31:
                 *ptr=oldpass31;
-                switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_11,rb_obj_class(ame_curobj2(ptr))))) {
+                switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_13,rb_obj_class(ame_curobj2(ptr))))) {
                 case 0/*Stop*/:
                     ;
                     it=ptr->ary[ptr->pos];            ;
@@ -2467,7 +2584,7 @@ alt5_2:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_12,rb_obj_class(ame_curobj2(ptr))))) {
+        switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_14,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*Act*/:
         case 1/*Apply*/:
         case 2/*Bind*/:
@@ -2561,7 +2678,7 @@ alt6_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_13,rb_obj_class(ame_curobj2(ptr))))) {
+        switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_15,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*Act*/:
         case 1/*Apply*/:
         case 2/*Bind*/:
@@ -2690,7 +2807,7 @@ accept6:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_14,rb_obj_class(ame_curobj2(ptr))))) {
+        switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_16,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*Act*/:
         case 1/*Apply*/:
         case 2/*Bind*/:
@@ -2836,7 +2953,7 @@ success38:
         _s=it;;
         int stop4=0;
         while(!stop4) {
-            switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_15,rb_obj_class(ame_curobj2(ptr))))) {
+            switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_17,rb_obj_class(ame_curobj2(ptr))))) {
             case 0/*Act*/:
             case 1/*Apply*/:
             case 2/*Bind*/:
@@ -3044,7 +3161,7 @@ success39:
         ptr->ary=alloca(sizeof(VALUE));
         ptr->ary[0]=_autovar_67;
         ptr->len=1;
-        switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_16,rb_obj_class(ame_curobj2(ptr))))) {
+        switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_18,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*Act*/:
         case 1/*Apply*/:
         case 2/*Bind*/:
@@ -3146,7 +3263,7 @@ success40:
         ptr->ary=alloca(sizeof(VALUE));
         ptr->ary[0]=_autovar_71;
         ptr->len=1;
-        switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_17,rb_obj_class(ame_curobj2(ptr))))) {
+        switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_19,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*Act*/:
         case 1/*Apply*/:
         case 2/*Bind*/:
@@ -3228,7 +3345,7 @@ success42:
         _autovar_75=it;;
         int stop5=0;
         while(!stop5) {
-            switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_18,rb_obj_class(ame_curobj2(ptr))))) {
+            switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_20,rb_obj_class(ame_curobj2(ptr))))) {
             case 0/*Act*/:
             case 1/*Apply*/:
             case 2/*Bind*/:
@@ -3379,7 +3496,7 @@ alt10_1:
             it=AmethystCore_anything(self );
             FAILTEST(pass47);
             _c=it;;
-            switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_19,rb_obj_class(ame_curobj2(ptr))))) {
+            switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_21,rb_obj_class(ame_curobj2(ptr))))) {
             case 0/*Act*/:
             case 1/*Apply*/:
             case 2/*Bind*/:
@@ -3512,7 +3629,7 @@ alt11_1:
             it=AmethystCore_anything(self );
             FAILTEST(pass49);
             _c=it;;
-            switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_20,rb_obj_class(ame_curobj2(ptr))))) {
+            switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_22,rb_obj_class(ame_curobj2(ptr))))) {
             case 0/*Act*/:
             case 1/*Apply*/:
             case 2/*Bind*/:
@@ -3635,13 +3752,13 @@ void Init_ctranslator2_c() {
     rb_global_variable(&s_success_260c);
     s_switch_lp__lp__a839=rb_str_new2("switch((unsigned char)*ame_curstr2(ptr)){");
     rb_global_variable(&s_switch_lp__lp__a839);
-    switchhash_AmethystCTranslator_10=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Object\n}");
+    switchhash_AmethystCTranslator_10=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Apply\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=CAct\nnext h[k]=4 if k<=Cut\nnext h[k]=5 if k<=Grammar\nnext h[k]=6 if k<=Local\nnext h[k]=7 if k<=Lookahead\nnext h[k]=8 if k<=Many\nnext h[k]=9 if k<=Memo\nnext h[k]=10 if k<=Or\nnext h[k]=11 if k<=Pass\nnext h[k]=12 if k<=Rule\nnext h[k]=13 if k<=Seq\nnext h[k]=14 if k<=Stop\nnext h[k]=15 if k<=Switch_Char\nnext h[k]=16 if k<=Switch_Clas\nnext h[k]=17 if k<=Object\n}");
     rb_global_variable(&switchhash_AmethystCTranslator_10);;
-    switchhash_AmethystCTranslator_11=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Stop\nnext h[k]=1 if k<=Object\n}");
+    switchhash_AmethystCTranslator_11=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Or\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_AmethystCTranslator_11);;
-    switchhash_AmethystCTranslator_12=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Apply\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=CAct\nnext h[k]=4 if k<=Cut\nnext h[k]=5 if k<=Grammar\nnext h[k]=6 if k<=Local\nnext h[k]=7 if k<=Lookahead\nnext h[k]=8 if k<=Many\nnext h[k]=9 if k<=Memo\nnext h[k]=10 if k<=Or\nnext h[k]=11 if k<=Pass\nnext h[k]=12 if k<=Rule\nnext h[k]=13 if k<=Seq\nnext h[k]=14 if k<=Stop\nnext h[k]=15 if k<=Switch_Char\nnext h[k]=16 if k<=Switch_Clas\nnext h[k]=17 if k<=Object\n}");
+    switchhash_AmethystCTranslator_12=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_AmethystCTranslator_12);;
-    switchhash_AmethystCTranslator_13=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Apply\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=CAct\nnext h[k]=4 if k<=Cut\nnext h[k]=5 if k<=Grammar\nnext h[k]=6 if k<=Local\nnext h[k]=7 if k<=Lookahead\nnext h[k]=8 if k<=Many\nnext h[k]=9 if k<=Memo\nnext h[k]=10 if k<=Or\nnext h[k]=11 if k<=Pass\nnext h[k]=12 if k<=Rule\nnext h[k]=13 if k<=Seq\nnext h[k]=14 if k<=Stop\nnext h[k]=15 if k<=Switch_Char\nnext h[k]=16 if k<=Switch_Clas\nnext h[k]=17 if k<=Object\n}");
+    switchhash_AmethystCTranslator_13=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Stop\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_AmethystCTranslator_13);;
     switchhash_AmethystCTranslator_14=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Apply\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=CAct\nnext h[k]=4 if k<=Cut\nnext h[k]=5 if k<=Grammar\nnext h[k]=6 if k<=Local\nnext h[k]=7 if k<=Lookahead\nnext h[k]=8 if k<=Many\nnext h[k]=9 if k<=Memo\nnext h[k]=10 if k<=Or\nnext h[k]=11 if k<=Pass\nnext h[k]=12 if k<=Rule\nnext h[k]=13 if k<=Seq\nnext h[k]=14 if k<=Stop\nnext h[k]=15 if k<=Switch_Char\nnext h[k]=16 if k<=Switch_Clas\nnext h[k]=17 if k<=Object\n}");
     rb_global_variable(&switchhash_AmethystCTranslator_14);;
@@ -3655,25 +3772,31 @@ void Init_ctranslator2_c() {
     rb_global_variable(&switchhash_AmethystCTranslator_18);;
     switchhash_AmethystCTranslator_19=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Apply\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=CAct\nnext h[k]=4 if k<=Cut\nnext h[k]=5 if k<=Grammar\nnext h[k]=6 if k<=Local\nnext h[k]=7 if k<=Lookahead\nnext h[k]=8 if k<=Many\nnext h[k]=9 if k<=Memo\nnext h[k]=10 if k<=Or\nnext h[k]=11 if k<=Pass\nnext h[k]=12 if k<=Rule\nnext h[k]=13 if k<=Seq\nnext h[k]=14 if k<=Stop\nnext h[k]=15 if k<=Switch_Char\nnext h[k]=16 if k<=Switch_Clas\nnext h[k]=17 if k<=Object\n}");
     rb_global_variable(&switchhash_AmethystCTranslator_19);;
-    switchhash_AmethystCTranslator_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Args\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Global\nnext h[k]=3 if k<=Key\nnext h[k]=4 if k<=Lambda\nnext h[k]=5 if k<=Local\nnext h[k]=6 if k<=Result\nnext h[k]=7 if k<=Object\n}");
+    switchhash_AmethystCTranslator_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Apply\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=CAct\nnext h[k]=4 if k<=Cut\nnext h[k]=5 if k<=Grammar\nnext h[k]=6 if k<=Local\nnext h[k]=7 if k<=Lookahead\nnext h[k]=8 if k<=Many\nnext h[k]=9 if k<=Memo\nnext h[k]=10 if k<=Or\nnext h[k]=11 if k<=Pass\nnext h[k]=12 if k<=Rule\nnext h[k]=13 if k<=Seq\nnext h[k]=14 if k<=Stop\nnext h[k]=15 if k<=Switch_Char\nnext h[k]=16 if k<=Switch_Clas\nnext h[k]=17 if k<=Object\n}");
     rb_global_variable(&switchhash_AmethystCTranslator_1);;
     switchhash_AmethystCTranslator_20=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Apply\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=CAct\nnext h[k]=4 if k<=Cut\nnext h[k]=5 if k<=Grammar\nnext h[k]=6 if k<=Local\nnext h[k]=7 if k<=Lookahead\nnext h[k]=8 if k<=Many\nnext h[k]=9 if k<=Memo\nnext h[k]=10 if k<=Or\nnext h[k]=11 if k<=Pass\nnext h[k]=12 if k<=Rule\nnext h[k]=13 if k<=Seq\nnext h[k]=14 if k<=Stop\nnext h[k]=15 if k<=Switch_Char\nnext h[k]=16 if k<=Switch_Clas\nnext h[k]=17 if k<=Object\n}");
     rb_global_variable(&switchhash_AmethystCTranslator_20);;
-    switchhash_AmethystCTranslator_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Apply\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=CAct\nnext h[k]=4 if k<=Cut\nnext h[k]=5 if k<=Grammar\nnext h[k]=6 if k<=Local\nnext h[k]=7 if k<=Lookahead\nnext h[k]=8 if k<=Many\nnext h[k]=9 if k<=Memo\nnext h[k]=10 if k<=Memo\nnext h[k]=11 if k<=Memo\nnext h[k]=12 if k<=Or\nnext h[k]=13 if k<=Pass\nnext h[k]=14 if k<=Rule\nnext h[k]=15 if k<=Seq\nnext h[k]=16 if k<=Stop\nnext h[k]=17 if k<=Switch_Char\nnext h[k]=18 if k<=Switch_Clas\nnext h[k]=19 if k<=Object\n}");
+    switchhash_AmethystCTranslator_21=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Apply\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=CAct\nnext h[k]=4 if k<=Cut\nnext h[k]=5 if k<=Grammar\nnext h[k]=6 if k<=Local\nnext h[k]=7 if k<=Lookahead\nnext h[k]=8 if k<=Many\nnext h[k]=9 if k<=Memo\nnext h[k]=10 if k<=Or\nnext h[k]=11 if k<=Pass\nnext h[k]=12 if k<=Rule\nnext h[k]=13 if k<=Seq\nnext h[k]=14 if k<=Stop\nnext h[k]=15 if k<=Switch_Char\nnext h[k]=16 if k<=Switch_Clas\nnext h[k]=17 if k<=Object\n}");
+    rb_global_variable(&switchhash_AmethystCTranslator_21);;
+    switchhash_AmethystCTranslator_22=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Apply\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=CAct\nnext h[k]=4 if k<=Cut\nnext h[k]=5 if k<=Grammar\nnext h[k]=6 if k<=Local\nnext h[k]=7 if k<=Lookahead\nnext h[k]=8 if k<=Many\nnext h[k]=9 if k<=Memo\nnext h[k]=10 if k<=Or\nnext h[k]=11 if k<=Pass\nnext h[k]=12 if k<=Rule\nnext h[k]=13 if k<=Seq\nnext h[k]=14 if k<=Stop\nnext h[k]=15 if k<=Switch_Char\nnext h[k]=16 if k<=Switch_Clas\nnext h[k]=17 if k<=Object\n}");
+    rb_global_variable(&switchhash_AmethystCTranslator_22);;
+    switchhash_AmethystCTranslator_23=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Apply\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=CAct\nnext h[k]=4 if k<=Cut\nnext h[k]=5 if k<=Grammar\nnext h[k]=6 if k<=Local\nnext h[k]=7 if k<=Lookahead\nnext h[k]=8 if k<=Many\nnext h[k]=9 if k<=Memo\nnext h[k]=10 if k<=Or\nnext h[k]=11 if k<=Pass\nnext h[k]=12 if k<=Rule\nnext h[k]=13 if k<=Seq\nnext h[k]=14 if k<=Stop\nnext h[k]=15 if k<=Switch_Char\nnext h[k]=16 if k<=Switch_Clas\nnext h[k]=17 if k<=Object\n}");
+    rb_global_variable(&switchhash_AmethystCTranslator_23);;
+    switchhash_AmethystCTranslator_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Args\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Global\nnext h[k]=3 if k<=Key\nnext h[k]=4 if k<=Lambda\nnext h[k]=5 if k<=Local\nnext h[k]=6 if k<=Result\nnext h[k]=7 if k<=Object\n}");
     rb_global_variable(&switchhash_AmethystCTranslator_2);;
-    switchhash_AmethystCTranslator_3=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=CAct\nnext h[k]=1 if k<=Object\n}");
+    switchhash_AmethystCTranslator_3=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Apply\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=CAct\nnext h[k]=4 if k<=Cut\nnext h[k]=5 if k<=Grammar\nnext h[k]=6 if k<=Local\nnext h[k]=7 if k<=Lookahead\nnext h[k]=8 if k<=Many\nnext h[k]=9 if k<=Memo\nnext h[k]=10 if k<=Or\nnext h[k]=11 if k<=Pass\nnext h[k]=12 if k<=Rule\nnext h[k]=13 if k<=Seq\nnext h[k]=14 if k<=Stop\nnext h[k]=15 if k<=Switch_Char\nnext h[k]=16 if k<=Switch_Clas\nnext h[k]=17 if k<=Object\n}");
     rb_global_variable(&switchhash_AmethystCTranslator_3);;
-    switchhash_AmethystCTranslator_4=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=CAct\nnext h[k]=1 if k<=Object\n}");
+    switchhash_AmethystCTranslator_4=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Apply\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=CAct\nnext h[k]=4 if k<=Cut\nnext h[k]=5 if k<=Grammar\nnext h[k]=6 if k<=Local\nnext h[k]=7 if k<=Lookahead\nnext h[k]=8 if k<=Many\nnext h[k]=9 if k<=Memo\nnext h[k]=10 if k<=Memo\nnext h[k]=11 if k<=Memo\nnext h[k]=12 if k<=Or\nnext h[k]=13 if k<=Pass\nnext h[k]=14 if k<=Rule\nnext h[k]=15 if k<=Seq\nnext h[k]=16 if k<=Stop\nnext h[k]=17 if k<=Switch_Char\nnext h[k]=18 if k<=Switch_Clas\nnext h[k]=19 if k<=Object\n}");
     rb_global_variable(&switchhash_AmethystCTranslator_4);;
-    switchhash_AmethystCTranslator_5=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Apply\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=CAct\nnext h[k]=4 if k<=Cut\nnext h[k]=5 if k<=Grammar\nnext h[k]=6 if k<=Local\nnext h[k]=7 if k<=Lookahead\nnext h[k]=8 if k<=Many\nnext h[k]=9 if k<=Memo\nnext h[k]=10 if k<=Or\nnext h[k]=11 if k<=Pass\nnext h[k]=12 if k<=Rule\nnext h[k]=13 if k<=Seq\nnext h[k]=14 if k<=Stop\nnext h[k]=15 if k<=Switch_Char\nnext h[k]=16 if k<=Switch_Clas\nnext h[k]=17 if k<=Object\n}");
+    switchhash_AmethystCTranslator_5=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=CAct\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_AmethystCTranslator_5);;
-    switchhash_AmethystCTranslator_6=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Apply\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=CAct\nnext h[k]=4 if k<=Cut\nnext h[k]=5 if k<=Grammar\nnext h[k]=6 if k<=Local\nnext h[k]=7 if k<=Lookahead\nnext h[k]=8 if k<=Many\nnext h[k]=9 if k<=Memo\nnext h[k]=10 if k<=Or\nnext h[k]=11 if k<=Pass\nnext h[k]=12 if k<=Rule\nnext h[k]=13 if k<=Seq\nnext h[k]=14 if k<=Stop\nnext h[k]=15 if k<=Switch_Char\nnext h[k]=16 if k<=Switch_Clas\nnext h[k]=17 if k<=Object\n}");
+    switchhash_AmethystCTranslator_6=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=CAct\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_AmethystCTranslator_6);;
     switchhash_AmethystCTranslator_7=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Apply\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=CAct\nnext h[k]=4 if k<=Cut\nnext h[k]=5 if k<=Grammar\nnext h[k]=6 if k<=Local\nnext h[k]=7 if k<=Lookahead\nnext h[k]=8 if k<=Many\nnext h[k]=9 if k<=Memo\nnext h[k]=10 if k<=Or\nnext h[k]=11 if k<=Pass\nnext h[k]=12 if k<=Rule\nnext h[k]=13 if k<=Seq\nnext h[k]=14 if k<=Stop\nnext h[k]=15 if k<=Switch_Char\nnext h[k]=16 if k<=Switch_Clas\nnext h[k]=17 if k<=Object\n}");
     rb_global_variable(&switchhash_AmethystCTranslator_7);;
     switchhash_AmethystCTranslator_8=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Apply\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=CAct\nnext h[k]=4 if k<=Cut\nnext h[k]=5 if k<=Grammar\nnext h[k]=6 if k<=Local\nnext h[k]=7 if k<=Lookahead\nnext h[k]=8 if k<=Many\nnext h[k]=9 if k<=Memo\nnext h[k]=10 if k<=Or\nnext h[k]=11 if k<=Pass\nnext h[k]=12 if k<=Rule\nnext h[k]=13 if k<=Seq\nnext h[k]=14 if k<=Stop\nnext h[k]=15 if k<=Switch_Char\nnext h[k]=16 if k<=Switch_Clas\nnext h[k]=17 if k<=Object\n}");
     rb_global_variable(&switchhash_AmethystCTranslator_8);;
-    switchhash_AmethystCTranslator_9=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Or\nnext h[k]=1 if k<=Object\n}");
+    switchhash_AmethystCTranslator_9=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Apply\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=CAct\nnext h[k]=4 if k<=Cut\nnext h[k]=5 if k<=Grammar\nnext h[k]=6 if k<=Local\nnext h[k]=7 if k<=Lookahead\nnext h[k]=8 if k<=Many\nnext h[k]=9 if k<=Memo\nnext h[k]=10 if k<=Or\nnext h[k]=11 if k<=Pass\nnext h[k]=12 if k<=Rule\nnext h[k]=13 if k<=Seq\nnext h[k]=14 if k<=Stop\nnext h[k]=15 if k<=Switch_Char\nnext h[k]=16 if k<=Switch_Clas\nnext h[k]=17 if k<=Object\n}");
     rb_global_variable(&switchhash_AmethystCTranslator_9);;
     sy_AmethystCTranslator__append_lp__d113=rb_intern("AmethystCTranslator__append_lp__d113");
     sy_AmethystCTranslator__at_bindno_eq__e294=rb_intern("AmethystCTranslator__at_bindno_eq__e294");
@@ -3768,5 +3891,5 @@ void Init_ctranslator2_c() {
     rb_define_method(cls_AmethystCTranslator,"rbtrans2",AmethystCTranslator_rbtrans2,0);
     rb_define_method(cls_AmethystCTranslator,"rw",AmethystCTranslator_rw,2);
     rb_define_method(cls_AmethystCTranslator,"trans",AmethystCTranslator_trans,0);
-    rb_eval_string("testversionctranslator2('e7b4ae357fef88c1d8f39b52074aa2d3')");
+    rb_eval_string("testversionctranslator2('dd0886027b3597230e2453e51979391b')");
 }

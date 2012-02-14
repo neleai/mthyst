@@ -457,14 +457,19 @@ end
 def Switch_Clas_Dataflow_bind_lb_1_rb__dot__c5d5(bind)
 bind[1].is_a?(lattice)? bind[1] & bind[2] : bind[2]
 end
+def Switch_Clas_Dataflow_lattice_dot__3340(bind)
+lattice.bottom
+
+end
 def Switch_Clas_Dataflow_lattice_dot__5a9e(bind)
 lattice.bottom
 end
 def Switch_Clas_Dataflow_lattice_dot__b0f6(bind)
 lattice.top|lattice.bottom
 end
-def Switch_Clas_Dataflow_lattice_lb__78fa(bind)
+def Switch_Clas_Dataflow_lattice_lb__becc(bind)
 lattice[bind[1]]
+
 end
 
 end
@@ -834,15 +839,15 @@ end
 
 
 def detect_switch_compiled_by
-'1f08c84b4a458a88ece05021222c62b9'
+'e704edc5829b48aa46ed13ccf6f5d04e'
 end
 def detect_switch_source_hash
-'6e26c70c1741c6ca44b16b4553212db7'
+'098adfaec1b485f27a56d17bfa1c69b5'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'de44a54d3b3a62ba5494c0a517bc9760'
+'a2368f7d6d9a3efac78d608b7993aabb'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

@@ -264,7 +264,8 @@ amethyst Switch_Char_Dataflow < First_Dataflow{
 }
 
 amethyst Switch_Clas_Dataflow < First_Dataflow{
-  first = Apply[ ["clas"] CAct[Class:cls] {lattice[cls]}]
+  first = Apply[ ["clas"] CAct[Class:cls] ] -> lattice[cls]
+        | Apply[ ["fails"] ]                -> lattice.bottom
         | super
 }
 
