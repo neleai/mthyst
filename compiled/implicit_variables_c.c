@@ -420,7 +420,7 @@ static VALUE sy_Add_Implicit_Variables__at_vars_eq_bi_1ca4;
 static VALUE sy_Add_Implicit_Variables__lp__at_vars_lb_b_160d;
 static VALUE sy_Add_Implicit_Variables__lp__at_vars_lb_b_5cb3;
 static VALUE sy_Add_Implicit_Variables__lp_src_dot_cla_e144;
-static VALUE sy_Add_Implicit_Variables_bind_lb_1_rb__eq__1818;
+static VALUE sy_Add_Implicit_Variables_bind_lb_1_rb__dot__1ef4;
 static VALUE sy_Add_Implicit_Variables_bind_lb_1_rb__lt__7b20;
 static VALUE sy_Add_Implicit_Variables_bind_lb_1_rb__sp__6af0;
 static VALUE sy_Add_Implicit_Variables_if_sp_bind_lb__1bed;
@@ -474,7 +474,7 @@ VALUE Add_Implicit_Variables_root(VALUE self ) {
     FAILTEST(pass1);
     _t=it;;
     bind_aset(bind2,1,_t);
-    it=rb_funcall(self,sy_Add_Implicit_Variables_bind_lb_1_rb__eq__1818,1,bind2);
+    it=rb_funcall(self,sy_Add_Implicit_Variables_bind_lb_1_rb__dot__1ef4,1,bind2);
     _t=bind_aget(bind2,1);;
     _autovar_3=it;;
     it=Qnil;
@@ -935,7 +935,7 @@ void Init_implicit_variables_c() {
     sy_Add_Implicit_Variables__lp__at_vars_lb_b_160d=rb_intern("Add_Implicit_Variables__lp__at_vars_lb_b_160d");
     sy_Add_Implicit_Variables__lp__at_vars_lb_b_5cb3=rb_intern("Add_Implicit_Variables__lp__at_vars_lb_b_5cb3");
     sy_Add_Implicit_Variables__lp_src_dot_cla_e144=rb_intern("Add_Implicit_Variables__lp_src_dot_cla_e144");
-    sy_Add_Implicit_Variables_bind_lb_1_rb__eq__1818=rb_intern("Add_Implicit_Variables_bind_lb_1_rb__eq__1818");
+    sy_Add_Implicit_Variables_bind_lb_1_rb__dot__1ef4=rb_intern("Add_Implicit_Variables_bind_lb_1_rb__dot__1ef4");
     sy_Add_Implicit_Variables_bind_lb_1_rb__lt__7b20=rb_intern("Add_Implicit_Variables_bind_lb_1_rb__lt__7b20");
     sy_Add_Implicit_Variables_bind_lb_1_rb__sp__6af0=rb_intern("Add_Implicit_Variables_bind_lb_1_rb__sp__6af0");
     sy_Add_Implicit_Variables_if_sp_bind_lb__1bed=rb_intern("Add_Implicit_Variables_if_sp_bind_lb__1bed");
@@ -945,5 +945,5 @@ void Init_implicit_variables_c() {
     rb_define_method(cls_Add_Implicit_Variables,"traverse",Add_Implicit_Variables_traverse,0);
     rb_define_method(cls_Add_Implicit_Variables,"traverse_item",Add_Implicit_Variables_traverse_item,0);
     rb_define_method(cls_Add_Implicit_Variables,"visit",Add_Implicit_Variables_visit,0);
-    rb_eval_string("testversionimplicit_variables('0f16345aa476b1243f054033e27fbf15')");
+    rb_eval_string("testversionimplicit_variables('97b0314565f37eb13b3cda9619d0b41e')");
 }

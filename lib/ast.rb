@@ -119,7 +119,7 @@ norm.puts "
 		}
 	}
 "
-[Act,Apply,Args,Bind,Bnding,CAct,Comment,Cut,Lambda,Global,Key,Local,Lookahead,Many,Or,Pass,Result,Rule,Seq,Stop,Strin,Switch_Char,Switch_Clas,Switch_Or].each{|e| 
+[Act,Apply,Args,Bind,Bnding,CAct,Comment,Cut,Lambda,Global,Key,Local,Lookahead,Many,Or,Pass,Result,Seq,Stop,Strin,Switch_Char,Switch_Clas,Switch_Or].each{|e| 
 by="[#{e.instance_variable_get(:@attrs)*","}]"
 by="ary" if by=="[ary]"
 equalize_by(e,by)
@@ -176,7 +176,7 @@ VALUE create2_#{e}(VALUE self #{e.instance_variable_get(:@attrs).map{|el| ",VALU
 	return normalize_#{e}(obj3);
 }"
 }
-cn=[Act,Apply,Args,Bind,Bnding,CAct,Comment,Cut,Lambda,Global,Key,Local,Lookahead,Many,Or,Pass,Result,Rule,Seq,Stop,Strin,Switch_Char,Switch_Clas]
+cn=[Act,Apply,Args,Bind,Bnding,CAct,Comment,Cut,Lambda,Global,Key,Local,Lookahead,Many,Or,Pass,Result,Seq,Stop,Strin,Switch_Char,Switch_Clas]
 norm.puts "
 normalize_cache * normalize_cache_init(){
        normalize_cache *b;
@@ -223,6 +223,7 @@ class AmethystAST
 		@ary[a]
 	end
 end
+
 def Bnding.[]
 	@bno=(@bno||0)+1
   a={:ary=>[@bno]}

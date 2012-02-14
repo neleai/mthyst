@@ -35,12 +35,13 @@ static VALUE sy_Analyze_Variables2_bind_lb_1_rb_;
 static VALUE sy_Analyze_Variables2_bind_lb_1_rb__lt__7b20;
 static VALUE sy_Analyze_Variables2_bind_lb_1_rb__sp__6af0;
 static VALUE sy_Analyze_Variables2_connects_04d2;
-static VALUE sy_Analyze_Variables2_d_eq_src_dot_du_2c72;
 static VALUE sy_Analyze_Variables2_if_sp_bind_lb__1bed;
 static VALUE sy_Analyze_Variables2_src_25d9;
 static VALUE sy_Analyze_Variables2_src_dot_ary_d5cf;
 static VALUE sy_Analyze_Variables2_src_dot_ary_dot__dd8c;
 static VALUE sy_Analyze_Variables2_src_dot_dup_d768;
+static VALUE sy_Analyze_Variables2_src_dot_free_3d49;
+static VALUE sy_Analyze_Variables2_src_dot_loca_ab74;
 static VALUE sy_Analyze_Variables2_src_dot_pred_56d4;
 static VALUE sy_Analyze_Variables2_src_dot_pure_41d4;
 static VALUE sy_Analyze_Variables2_src_dot_rule_5acf;
@@ -563,7 +564,8 @@ success1:
         ptr->len=RARRAY_LEN(ary);
     }
     ptr->pos=ptr->len;
-    it=rb_funcall(self,sy_Analyze_Variables2_d_eq_src_dot_du_2c72,1,bind2);
+    it=rb_funcall(self,sy_Analyze_Variables2_src_dot_loca_ab74,1,bind2);
+    it=rb_funcall(self,sy_Analyze_Variables2_src_dot_free_3d49,1,bind2);
     _autovar_5=it;;
     it=Qnil;
     if (ptr->pos<ptr->len) goto pass3;
@@ -2235,12 +2237,13 @@ void Init_detect_variables2_c() {
     sy_Analyze_Variables2_bind_lb_1_rb__lt__7b20=rb_intern("Analyze_Variables2_bind_lb_1_rb__lt__7b20");
     sy_Analyze_Variables2_bind_lb_1_rb__sp__6af0=rb_intern("Analyze_Variables2_bind_lb_1_rb__sp__6af0");
     sy_Analyze_Variables2_connects_04d2=rb_intern("Analyze_Variables2_connects_04d2");
-    sy_Analyze_Variables2_d_eq_src_dot_du_2c72=rb_intern("Analyze_Variables2_d_eq_src_dot_du_2c72");
     sy_Analyze_Variables2_if_sp_bind_lb__1bed=rb_intern("Analyze_Variables2_if_sp_bind_lb__1bed");
     sy_Analyze_Variables2_src_25d9=rb_intern("Analyze_Variables2_src_25d9");
     sy_Analyze_Variables2_src_dot_ary_d5cf=rb_intern("Analyze_Variables2_src_dot_ary_d5cf");
     sy_Analyze_Variables2_src_dot_ary_dot__dd8c=rb_intern("Analyze_Variables2_src_dot_ary_dot__dd8c");
     sy_Analyze_Variables2_src_dot_dup_d768=rb_intern("Analyze_Variables2_src_dot_dup_d768");
+    sy_Analyze_Variables2_src_dot_free_3d49=rb_intern("Analyze_Variables2_src_dot_free_3d49");
+    sy_Analyze_Variables2_src_dot_loca_ab74=rb_intern("Analyze_Variables2_src_dot_loca_ab74");
     sy_Analyze_Variables2_src_dot_pred_56d4=rb_intern("Analyze_Variables2_src_dot_pred_56d4");
     sy_Analyze_Variables2_src_dot_pure_41d4=rb_intern("Analyze_Variables2_src_dot_pure_41d4");
     sy_Analyze_Variables2_src_dot_rule_5acf=rb_intern("Analyze_Variables2_src_dot_rule_5acf");
@@ -2277,5 +2280,5 @@ void Init_detect_variables2_c() {
     rb_define_method(cls_Resolve_Calls,"traverse",Resolve_Calls_traverse,0);
     rb_define_method(cls_Resolve_Calls,"traverse_item",Resolve_Calls_traverse_item,0);
     rb_define_method(cls_Resolve_Calls,"visit",Resolve_Calls_visit,0);
-    rb_eval_string("testversiondetect_variables2('84a4f821d0012ee760680b12ed165043')");
+    rb_eval_string("testversiondetect_variables2('05263cad061a0b82105da3ab45314e15')");
 }

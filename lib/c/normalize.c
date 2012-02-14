@@ -956,58 +956,6 @@ VALUE create2_Result(VALUE self ,VALUE name,VALUE varnames,VALUE vars,VALUE ary)
 	rb_iv_set(obj3,"@name",name);rb_iv_set(obj3,"@varnames",varnames);rb_iv_set(obj3,"@vars",vars);rb_iv_set(obj3,"@ary",ary);
 	return normalize_Result(obj3);
 }
-int hits_Rule=0;int miss_Rule=0; normalize_cache *cache_Rule;
-VALUE normalize_Rule(VALUE obj){int i;
-	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;
-	VALUE ary=rb_iv_get(obj,"@ary");
-	if (rb_obj_frozen_p(obj)==Qtrue)
-		obj=rb_obj_dup(obj);
-	rb_iv_set(obj,"@name",normalize_el(rb_iv_get(obj,"@name")));hash=11*hash+rb_iv_get(obj,"@name");rb_iv_set(obj,"@args",normalize_el(rb_iv_get(obj,"@args")));hash=11*hash+rb_iv_get(obj,"@args");rb_iv_set(obj,"@locals",normalize_el(rb_iv_get(obj,"@locals")));hash=11*hash+rb_iv_get(obj,"@locals");rb_iv_set(obj,"@body",normalize_el(rb_iv_get(obj,"@body")));hash=11*hash+rb_iv_get(obj,"@body");rb_iv_set(obj,"@cfg",normalize_el(rb_iv_get(obj,"@cfg")));hash=11*hash+rb_iv_get(obj,"@cfg");rb_iv_set(obj,"@reachable",normalize_el(rb_iv_get(obj,"@reachable")));hash=11*hash+rb_iv_get(obj,"@reachable");rb_iv_set(obj,"@bnding",normalize_el(rb_iv_get(obj,"@bnding")));hash=11*hash+rb_iv_get(obj,"@bnding");rb_iv_set(obj,"@consts",normalize_el(rb_iv_get(obj,"@consts")));hash=11*hash+rb_iv_get(obj,"@consts");rb_iv_set(obj,"@ary",normalize_el(rb_iv_get(obj,"@ary")));hash=11*hash+rb_iv_get(obj,"@ary");
-	rb_iv_set(obj,"@hash",LONG2FIX(hash));
-	rb_obj_freeze(obj);
-	hash=hash&((1<<20)-1);
-
-	VALUE obj2=cache_Rule->ary[hash];
-	if((int)obj2){
-		if (!els_equal(rb_iv_get(obj,"@name"),rb_iv_get(obj2,"@name"))) goto next;if (!els_equal(rb_iv_get(obj,"@args"),rb_iv_get(obj2,"@args"))) goto next;if (!els_equal(rb_iv_get(obj,"@locals"),rb_iv_get(obj2,"@locals"))) goto next;if (!els_equal(rb_iv_get(obj,"@body"),rb_iv_get(obj2,"@body"))) goto next;if (!els_equal(rb_iv_get(obj,"@cfg"),rb_iv_get(obj2,"@cfg"))) goto next;if (!els_equal(rb_iv_get(obj,"@reachable"),rb_iv_get(obj2,"@reachable"))) goto next;if (!els_equal(rb_iv_get(obj,"@bnding"),rb_iv_get(obj2,"@bnding"))) goto next;if (!els_equal(rb_iv_get(obj,"@consts"),rb_iv_get(obj2,"@consts"))) goto next;if (!els_equal(rb_iv_get(obj,"@ary"),rb_iv_get(obj2,"@ary"))) goto next;
-		hits_Rule++;
-		return cache_Rule->ret[hash];
-		next:;
-	}
-  VALUE obj3=rb_funcall(obj,rb_intern("normalize2"),0);
-	miss_Rule++;
-	if (rb_obj_is_kind_of(obj3, rb_obj_class(obj))){
-		int hash3=0;
-	  if (rb_obj_frozen_p(obj3)==Qtrue)
-	    obj3=rb_obj_dup(obj3);
-	  rb_iv_set(obj3,"@name",normalize_el(rb_iv_get(obj3,"@name")));hash3=11*hash3+rb_iv_get(obj3,"@name");rb_iv_set(obj3,"@args",normalize_el(rb_iv_get(obj3,"@args")));hash3=11*hash3+rb_iv_get(obj3,"@args");rb_iv_set(obj3,"@locals",normalize_el(rb_iv_get(obj3,"@locals")));hash3=11*hash3+rb_iv_get(obj3,"@locals");rb_iv_set(obj3,"@body",normalize_el(rb_iv_get(obj3,"@body")));hash3=11*hash3+rb_iv_get(obj3,"@body");rb_iv_set(obj3,"@cfg",normalize_el(rb_iv_get(obj3,"@cfg")));hash3=11*hash3+rb_iv_get(obj3,"@cfg");rb_iv_set(obj3,"@reachable",normalize_el(rb_iv_get(obj3,"@reachable")));hash3=11*hash3+rb_iv_get(obj3,"@reachable");rb_iv_set(obj3,"@bnding",normalize_el(rb_iv_get(obj3,"@bnding")));hash3=11*hash3+rb_iv_get(obj3,"@bnding");rb_iv_set(obj3,"@consts",normalize_el(rb_iv_get(obj3,"@consts")));hash3=11*hash3+rb_iv_get(obj3,"@consts");rb_iv_set(obj3,"@ary",normalize_el(rb_iv_get(obj3,"@ary")));hash3=11*hash3+rb_iv_get(obj3,"@ary");
-  	rb_iv_set(obj3,"@hash",LONG2FIX(hash3));
-    rb_obj_freeze(obj3);    
-		hash3=hash3&((1<<20)-1);
-		cache_Rule->ary[hash3]=obj3;
-  	cache_Rule->ret[hash3]=obj3;
-	}
-	cache_Rule->ary[hash]=obj;
-	cache_Rule->ret[hash]=obj3;
-  gc_obj->ary[gc_obj->no++]=obj;
-  gc_obj->ary[gc_obj->no++]=obj3;
-	return obj3;
-}
-VALUE create2_Rule(VALUE self ,VALUE name,VALUE args,VALUE locals,VALUE body,VALUE cfg,VALUE reachable,VALUE bnding,VALUE consts,VALUE ary){
-	int hash=0;
-	name=normalize_el(name);hash=11*hash+name;args=normalize_el(args);hash=11*hash+args;locals=normalize_el(locals);hash=11*hash+locals;body=normalize_el(body);hash=11*hash+body;cfg=normalize_el(cfg);hash=11*hash+cfg;reachable=normalize_el(reachable);hash=11*hash+reachable;bnding=normalize_el(bnding);hash=11*hash+bnding;consts=normalize_el(consts);hash=11*hash+consts;ary=normalize_el(ary);hash=11*hash+ary;
-	hash=hash&((1<<20)-1);
-	VALUE obj2=cache_Rule->ary[hash];
-  if((int)obj2){
-    if (!els_equal(name,rb_iv_get(obj2,"@name"))) goto next;if (!els_equal(args,rb_iv_get(obj2,"@args"))) goto next;if (!els_equal(locals,rb_iv_get(obj2,"@locals"))) goto next;if (!els_equal(body,rb_iv_get(obj2,"@body"))) goto next;if (!els_equal(cfg,rb_iv_get(obj2,"@cfg"))) goto next;if (!els_equal(reachable,rb_iv_get(obj2,"@reachable"))) goto next;if (!els_equal(bnding,rb_iv_get(obj2,"@bnding"))) goto next;if (!els_equal(consts,rb_iv_get(obj2,"@consts"))) goto next;if (!els_equal(ary,rb_iv_get(obj2,"@ary"))) goto next;
-    hits_Rule++;
-    return cache_Rule->ret[hash];
-    next:;
-  }
-	VALUE obj3=rb_obj_alloc(rb_const_get(rb_cObject,rb_intern("Rule")));
-	rb_iv_set(obj3,"@name",name);rb_iv_set(obj3,"@args",args);rb_iv_set(obj3,"@locals",locals);rb_iv_set(obj3,"@body",body);rb_iv_set(obj3,"@cfg",cfg);rb_iv_set(obj3,"@reachable",reachable);rb_iv_set(obj3,"@bnding",bnding);rb_iv_set(obj3,"@consts",consts);rb_iv_set(obj3,"@ary",ary);
-	return normalize_Rule(obj3);
-}
 int hits_Seq=0;int miss_Seq=0; normalize_cache *cache_Seq;
 VALUE normalize_Seq(VALUE obj){int i;
 	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;
@@ -1369,9 +1317,7 @@ cache_Act=normalize_cache_init();
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Pass")),"normalize",normalize_Pass,0);
 	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Pass")),"create2",create2_Pass,4);cache_Result=normalize_cache_init();
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Result")),"normalize",normalize_Result,0);
-	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Result")),"create2",create2_Result,4);cache_Rule=normalize_cache_init();
-  rb_define_method(rb_const_get(rb_cObject,rb_intern("Rule")),"normalize",normalize_Rule,0);
-	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Rule")),"create2",create2_Rule,9);cache_Seq=normalize_cache_init();
+	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Result")),"create2",create2_Result,4);cache_Seq=normalize_cache_init();
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Seq")),"normalize",normalize_Seq,0);
 	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Seq")),"create2",create2_Seq,1);cache_Stop=normalize_cache_init();
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Stop")),"normalize",normalize_Stop,0);
@@ -1388,5 +1334,5 @@ cache_Act=normalize_cache_init();
 
 }
 void normalize_stats(){
-	printf("Act hits: %i miss: %i\n",hits_Act,miss_Act);printf("Apply hits: %i miss: %i\n",hits_Apply,miss_Apply);printf("Args hits: %i miss: %i\n",hits_Args,miss_Args);printf("Bind hits: %i miss: %i\n",hits_Bind,miss_Bind);printf("Bnding hits: %i miss: %i\n",hits_Bnding,miss_Bnding);printf("CAct hits: %i miss: %i\n",hits_CAct,miss_CAct);printf("Comment hits: %i miss: %i\n",hits_Comment,miss_Comment);printf("Cut hits: %i miss: %i\n",hits_Cut,miss_Cut);printf("Lambda hits: %i miss: %i\n",hits_Lambda,miss_Lambda);printf("Global hits: %i miss: %i\n",hits_Global,miss_Global);printf("Key hits: %i miss: %i\n",hits_Key,miss_Key);printf("Local hits: %i miss: %i\n",hits_Local,miss_Local);printf("Lookahead hits: %i miss: %i\n",hits_Lookahead,miss_Lookahead);printf("Many hits: %i miss: %i\n",hits_Many,miss_Many);printf("Or hits: %i miss: %i\n",hits_Or,miss_Or);printf("Pass hits: %i miss: %i\n",hits_Pass,miss_Pass);printf("Result hits: %i miss: %i\n",hits_Result,miss_Result);printf("Rule hits: %i miss: %i\n",hits_Rule,miss_Rule);printf("Seq hits: %i miss: %i\n",hits_Seq,miss_Seq);printf("Stop hits: %i miss: %i\n",hits_Stop,miss_Stop);printf("Strin hits: %i miss: %i\n",hits_Strin,miss_Strin);printf("Switch_Char hits: %i miss: %i\n",hits_Switch_Char,miss_Switch_Char);printf("Switch_Clas hits: %i miss: %i\n",hits_Switch_Clas,miss_Switch_Clas);
+	printf("Act hits: %i miss: %i\n",hits_Act,miss_Act);printf("Apply hits: %i miss: %i\n",hits_Apply,miss_Apply);printf("Args hits: %i miss: %i\n",hits_Args,miss_Args);printf("Bind hits: %i miss: %i\n",hits_Bind,miss_Bind);printf("Bnding hits: %i miss: %i\n",hits_Bnding,miss_Bnding);printf("CAct hits: %i miss: %i\n",hits_CAct,miss_CAct);printf("Comment hits: %i miss: %i\n",hits_Comment,miss_Comment);printf("Cut hits: %i miss: %i\n",hits_Cut,miss_Cut);printf("Lambda hits: %i miss: %i\n",hits_Lambda,miss_Lambda);printf("Global hits: %i miss: %i\n",hits_Global,miss_Global);printf("Key hits: %i miss: %i\n",hits_Key,miss_Key);printf("Local hits: %i miss: %i\n",hits_Local,miss_Local);printf("Lookahead hits: %i miss: %i\n",hits_Lookahead,miss_Lookahead);printf("Many hits: %i miss: %i\n",hits_Many,miss_Many);printf("Or hits: %i miss: %i\n",hits_Or,miss_Or);printf("Pass hits: %i miss: %i\n",hits_Pass,miss_Pass);printf("Result hits: %i miss: %i\n",hits_Result,miss_Result);printf("Seq hits: %i miss: %i\n",hits_Seq,miss_Seq);printf("Stop hits: %i miss: %i\n",hits_Stop,miss_Stop);printf("Strin hits: %i miss: %i\n",hits_Strin,miss_Strin);printf("Switch_Char hits: %i miss: %i\n",hits_Switch_Char,miss_Switch_Char);printf("Switch_Clas hits: %i miss: %i\n",hits_Switch_Clas,miss_Switch_Clas);
 }

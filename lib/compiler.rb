@@ -86,11 +86,8 @@ class <<Compiler
 		g.callgraph=callg=@grammars[grammar.parent].callgraph.clone if @grammars[grammar.parent]
 		names=g.rules.map{|name,code| name}
 		names.each{|name|
-			if CurrentParser[:implicit_variables] && false
-        g.rules[name]=g.rules[name].dup
+			if CurrentParser[:implicit_variables]
         freq=Detect_Implicit_Variables.new.parse(:root,g.rules[name])
-        g.rules[name]=g.rules[name].dup
-        puts self.inspect
         g.rules[name]=Add_Implicit_Variables.new.parse(:root,[freq,g.rules[name]])
       end
       g.rules[name]=Analyze_Variables2.new.parse(:root,g.rules[name])

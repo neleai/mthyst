@@ -87,9 +87,6 @@ end
 def Analyze_Variables2_connects_04d2(bind)
 connectstring(bind[1].flatten)
 end
-def Analyze_Variables2_d_eq_src_dot_du_2c72(bind)
-d=src.dup;d.locals=nil;d.freeze
-end
 def Analyze_Variables2_if_sp_bind_lb__1bed(bind)
 if bind[1]==bind[2]
 						  src
@@ -109,6 +106,12 @@ src.ary.map{|aa| @variables[aa] }
 end
 def Analyze_Variables2_src_dot_dup_d768(bind)
 src.dup
+end
+def Analyze_Variables2_src_dot_free_3d49(bind)
+src.freeze
+end
+def Analyze_Variables2_src_dot_loca_ab74(bind)
+src.locals=nil
 end
 def Analyze_Variables2_src_dot_pred_56d4(bind)
 src.pred
@@ -175,15 +178,15 @@ end
 
 
 def detect_variables2_compiled_by
-'05268c7601647f5214fdd08cdda5b8aa'
+'24ed2a6c964e0d5e201acf7e654e5383'
 end
 def detect_variables2_source_hash
-'d68e0fd5a94161c607efb8805fad2811'
+'50e0186dc06eec5f2e81b7aa8940787f'
 end
 def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'84a4f821d0012ee760680b12ed165043'
+'05263cad061a0b82105da3ab45314e15'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_variables2_c"

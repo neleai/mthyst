@@ -164,7 +164,7 @@ fail:
 }
 VALUE DetectCalls_traverse_item(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,__result,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,_autovar_7;
+    VALUE it ,__result,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -254,7 +254,7 @@ alt2_2:
         cstruct oldpass2=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_7;
+        ptr->src=_autovar_3;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -1008,5 +1008,5 @@ void Init_inliner2_c() {
     rb_define_method(cls_Inliner2,"traverse",Inliner2_traverse,0);
     rb_define_method(cls_Inliner2,"traverse_item",Inliner2_traverse_item,0);
     rb_define_method(cls_Inliner2,"visit",Inliner2_visit,0);
-    rb_eval_string("testversioninliner2('786238d102fe2b671db67c12810e08af')");
+    rb_eval_string("testversioninliner2('a906e9c0558f70577fe83fc245a818aa')");
 }
