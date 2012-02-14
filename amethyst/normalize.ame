@@ -28,14 +28,18 @@ amethyst Normalize{
            
   bind = Bind[ {@name}:name
              ( Apply[ ["fails"] {@self} ]
-             | Or[ (.:{Bind[name,it]})*:ary ] -> Or[ary]
-             | Switch[ {[]}:ary [.:p .:a {ary<<[p,Bind[name,a]]} ]* {@self.class[{:ary=>ary}]} ] 
+             | switch[ {[]}:ary [.:p .:a {ary<<[p,Bind[name,a]]} ]* {@self.class[{:ary=>ary}]} ] 
              | Seq[.+:ary] {Seq[ary[0...-1]]}:first {ary[-1]}:last
                {last}=>( (Comment|Cut|Stop) -> Seq[Bind[name,first],last]
                        | .                  -> Seq[first,Bind[name,last]]
                        )
              | . -> @self
              ) ]       
+
+  
+  switch = Switch_Char | Switch_Clas
+         | Or[.*:ary] -> Switch_Or.create(:ary=>ary.map{|k| [nil,k]})
+
 
   apply2 = Apply[ ["apply" | "_seq"] Act[Lambda[.:x]] -> x
                 | ["apply"] CAct[.:name] -> Apply[name,{:clas=> resolvegrammar($current_grammar_name,name)}] 

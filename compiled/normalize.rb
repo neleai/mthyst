@@ -14,19 +14,12 @@ def Normalize_Apply_lb_bi_4b34(bind)
 Apply[bind[1],{:clas=> resolvegrammar($current_grammar_name,bind[1])}] 
 
 end
-def Normalize_Bind_lb_bin_8a31(bind)
-Bind[bind[1],bind[2]]
-end
 def Normalize_CAct_lb_eva_559c(bind)
 CAct[eval(src.ary[0])]
 
 end
 def Normalize_Or_dot_creat_a50c(bind)
 Or.create({:ary=>bind[1]})
-
-end
-def Normalize_Or_lb_bind_lb__3169(bind)
-Or[bind[1]]
 
 end
 def Normalize_Placehol_6875(bind)
@@ -50,6 +43,10 @@ Seq[bind[1],Bind[bind[2],bind[3]]]
 end
 def Normalize_Seq_lb_bind_c98f(bind)
 Seq[bind[1][0...-1]]
+end
+def Normalize_Switch_O_5445(bind)
+Switch_Or.create(:ary=>bind[1].map{|k| [nil,k]})
+
 end
 def Normalize__append_lp__d113(bind)
 _append(bind[1],bind[2])
@@ -107,15 +104,15 @@ end
 
 
 def normalize_compiled_by
-'bee34994cd81321cbd86db1296dec6c8'
+'e3139a8862b867fba16be8a78ea19f44'
 end
 def normalize_source_hash
-'4c1006f753d3f23c38dc424b8cde490a'
+'3c45ffd637a8102ddaeb41009ab4e56e'
 end
 def testversionnormalize(r)
  raise "invalid version" if r!=normalize_version
 end
 def normalize_version
-'3dec5b86dc0cb589c8f80ed23139526f'
+'1f8455eb8ee7c69eb22fef04fd4d09be'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/normalize_c"
