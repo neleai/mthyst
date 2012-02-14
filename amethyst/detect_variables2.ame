@@ -25,7 +25,7 @@ end
 amethyst Analyze_Variables2 < Traverser_Clone2 {
   itrans =   (Grammar[ @rules=>[ Rule[root]*:rules ] {@rules=rules} @self] | .)*
   root = @dup=>Rule[ {@@bnding=@bnding} {@@variables=Hash.new{|k,v| k[v]=v} ;(@locals+@args).each{|w| @@variables[w[0]]=w}} {@@locals=@locals} 
-traverse[.*  {@locals=nil} @self] ]
+traverse[.*  {@locals=nil} {@self.freeze} ] ]
 
   visit = Args[ traverse[.* {@ary.map{|aa| @@variables[aa] }}=>[flat:a]  {connectstring(a.flatten)}:ary  {(ary.size==1&&(ary[0].is_a?(Local)||ary[0].is_a?(Global)||ary[0].is_a?(Key))) ? ary[0] : Args[*ary]}]]
         | Act[ @pred:pred @pure:pure traverse[.* @ary=>[(&{!pred} Local| Args[ .*:ary {Act[ary,pred,pure]}])] ] ]

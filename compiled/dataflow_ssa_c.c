@@ -47,6 +47,7 @@ static VALUE sy_Dataflow_src_dot_args_2df5;
 static VALUE sy_Dataflow_src_dot_body_b7c1;
 static VALUE sy_Dataflow_src_dot_clas_68f9;
 static VALUE sy_Dataflow_src_dot_dup_d768;
+static VALUE sy_Dataflow_src_dot_free_3d49;
 static VALUE sy_Dataflow_src_dot_reac_9ae4;
 static VALUE sy_Dataflow_src_dot_to_5e99;
 static VALUE sy_Dataflow_src_dot_var_3a88;
@@ -215,7 +216,7 @@ success5:
     bind_aset(bind2,1,_body);
     it=rb_funcall(self,sy_Dataflow_src_dot_reac_9ae4,1,bind2);
     _body=bind_aget(bind2,1);;
-    it=rb_funcall(self,sy_Dataflow_src_25d9,1,bind2);
+    it=rb_funcall(self,sy_Dataflow_src_dot_free_3d49,1,bind2);
     _autovar_10=it;;
     it=Qnil;
     if (ptr->pos<ptr->len) goto pass2;
@@ -3035,6 +3036,7 @@ void Init_dataflow_ssa_c() {
     sy_Dataflow_src_dot_body_b7c1=rb_intern("Dataflow_src_dot_body_b7c1");
     sy_Dataflow_src_dot_clas_68f9=rb_intern("Dataflow_src_dot_clas_68f9");
     sy_Dataflow_src_dot_dup_d768=rb_intern("Dataflow_src_dot_dup_d768");
+    sy_Dataflow_src_dot_free_3d49=rb_intern("Dataflow_src_dot_free_3d49");
     sy_Dataflow_src_dot_reac_9ae4=rb_intern("Dataflow_src_dot_reac_9ae4");
     sy_Dataflow_src_dot_to_5e99=rb_intern("Dataflow_src_dot_to_5e99");
     sy_Dataflow_src_dot_var_3a88=rb_intern("Dataflow_src_dot_var_3a88");
@@ -3095,5 +3097,5 @@ void Init_dataflow_ssa_c() {
     rb_define_method(cls_Forget_SSA,"traverse",Forget_SSA_traverse,0);
     rb_define_method(cls_Forget_SSA,"traverse_item",Forget_SSA_traverse_item,0);
     rb_define_method(cls_Forget_SSA,"visit",Forget_SSA_visit,0);
-    rb_eval_string("testversiondataflow_ssa('abebb468c39af7ff207a1005a67d197b')");
+    rb_eval_string("testversiondataflow_ssa('8178bf79eab9775c5fc4e12da5d33857')");
 }

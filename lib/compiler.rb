@@ -26,13 +26,17 @@ class Gram
 		
 		[Dataflow].each{|p| r=p.new.parse(:root,r)}
 		withtime(Constant_Propagator){
+      r=r.dup
 			c=Constant_Propagator.new
 			c.parse(:root,[r.cfg])
 			r.consts=c.analyze2
+      r.freeze
       debug_print(r)
 		}
 		[Constant_Traverser,Forget_SSA].each{|p| 
+      r=r.dup
 			r=p.new.parse(:root,r)
+      r.freeze
 			debug_print(r)			
 		}
 		

@@ -107,6 +107,9 @@ end
 def Analyze_Variables2_src_dot_dup_d768(bind)
 src.dup
 end
+def Analyze_Variables2_src_dot_free_3d49(bind)
+src.freeze
+end
 def Analyze_Variables2_src_dot_loca_ab74(bind)
 src.locals=nil
 end
@@ -175,15 +178,15 @@ end
 
 
 def detect_variables2_compiled_by
-'295396d512a343745051d923bdf8af00'
+'d6f85cbea3ef05c357d8d9829e5f6f9f'
 end
 def detect_variables2_source_hash
-'a6f466d09671b3df387e8361eaa70741'
+'50e0186dc06eec5f2e81b7aa8940787f'
 end
 def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'6df3399fa8aa6c29c268d2b4462f5289'
+'05263cad061a0b82105da3ab45314e15'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_variables2_c"

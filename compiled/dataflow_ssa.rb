@@ -172,6 +172,9 @@ end
 def Dataflow_src_dot_dup_d768(bind)
 src.dup
 end
+def Dataflow_src_dot_free_3d49(bind)
+src.freeze
+end
 def Dataflow_src_dot_reac_9ae4(bind)
 src.reachable=@edges.reverse.reachable(@marked+[ssanum(bind[1][-1])]); src.cfg=@edges; 
 end
@@ -278,15 +281,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'295396d512a343745051d923bdf8af00'
+'d6f85cbea3ef05c357d8d9829e5f6f9f'
 end
 def dataflow_ssa_source_hash
-'48ace14f2188c56e5dcd52ee91143716'
+'3f35e485e87fcd66bbefaa3045f3634c'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'abebb468c39af7ff207a1005a67d197b'
+'8178bf79eab9775c5fc4e12da5d33857'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/dataflow_ssa_c"
