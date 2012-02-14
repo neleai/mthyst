@@ -585,6 +585,15 @@ end
 def Detect_First__lp_must_em_43e9(bind)
 (must_empty?(bind[1])) || FAIL
 end
+def Detect_First_bind_lb_1_rb__dot__642a(bind)
+bind[1].each{|p,a| bind[2].each{|p2,a2| bind[3] << [p&p2,a+[a2]] if p&p2!=bind[4].bottom}}
+end
+def Detect_First_bind_lb_1_rb__dot__a482(bind)
+bind[1].map{|p,a| [p,a+[bind[2]]]}
+end
+def Detect_First_bind_lb_1_rb__lb__0f18(bind)
+bind[1][{:ary=>bind[2].map{|p,a| [p,Or[*a]]}}]
+end
 def Detect_First_bind_lb_1_rb__lb__75a5(bind)
 bind[1][{:ary=>bind[2].map{|p,a| [p,Seq[*(bind[3]+[a]+bind[4])]]}}] 
 end
@@ -619,9 +628,6 @@ end
 def Detect_Switch_Char_Seq_lb__ti__lp_bi_a321(bind)
 Seq[*(bind[1]+bind[2])]
 end
-def Detect_Switch_Char_Switch_C_6b05(bind)
-Switch_Char[{:ary=>bind[1].map{|p,a| [p,Or[*a]]}}]
-end
 def Detect_Switch_Char__append_lp__d113(bind)
 _append(bind[1],bind[2])
 end
@@ -643,14 +649,17 @@ end
 def Detect_Switch_Char__lp_src_dot_cla_e144(bind)
 (src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
-def Detect_Switch_Char_bind_lb_1_rb__dot__0b68(bind)
-bind[1].each{|p,a| bind[2].each{|p2,a2| bind[3] << [p&p2,a+[a2]] if p&p2!=Lattice_Char.bottom}}
+def Detect_Switch_Char_bind_lb_1_rb__dot__642a(bind)
+bind[1].each{|p,a| bind[2].each{|p2,a2| bind[3] << [p&p2,a+[a2]] if p&p2!=bind[4].bottom}}
 end
 def Detect_Switch_Char_bind_lb_1_rb__dot__a482(bind)
 bind[1].map{|p,a| [p,a+[bind[2]]]}
 end
 def Detect_Switch_Char_bind_lb_1_rb__dot__bb04(bind)
 bind[1].each{|i| bind[2]=true if i.is_a?(Switch_Char)}
+end
+def Detect_Switch_Char_bind_lb_1_rb__lb__0f18(bind)
+bind[1][{:ary=>bind[2].map{|p,a| [p,Or[*a]]}}]
 end
 def Detect_Switch_Char_bind_lb_1_rb__lb__75a5(bind)
 bind[1][{:ary=>bind[2].map{|p,a| [p,Seq[*(bind[3]+[a]+bind[4])]]}}] 
@@ -713,9 +722,6 @@ end
 def Detect_Switch_Clas_Seq_lb__ti__lp_bi_a321(bind)
 Seq[*(bind[1]+bind[2])]
 end
-def Detect_Switch_Clas_Switch_C_06c2(bind)
-Switch_Clas[{:ary=>bind[1].map{|p,a| [p,Or[*a]]}}]
-end
 def Detect_Switch_Clas_Switch_C_63f7(bind)
 Switch_Clas[[Lattice_Clas[bind[1]],Apply["advance_clas"]],[Lattice_Clas[Object],Apply["fails"]]].freeze 
 end
@@ -740,14 +746,17 @@ end
 def Detect_Switch_Clas__lp_src_dot_cla_e144(bind)
 (src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
-def Detect_Switch_Clas_bind_lb_1_rb__dot__6945(bind)
-bind[1].each{|p,a| bind[2].each{|p2,a2| bind[3] << [p&p2,a+[a2]] if p&p2!=Lattice_Clas.bottom}}
+def Detect_Switch_Clas_bind_lb_1_rb__dot__642a(bind)
+bind[1].each{|p,a| bind[2].each{|p2,a2| bind[3] << [p&p2,a+[a2]] if p&p2!=bind[4].bottom}}
 end
 def Detect_Switch_Clas_bind_lb_1_rb__dot__76da(bind)
 bind[1].each{|i| bind[2]=true if i.is_a?(Switch_Clas)}
 end
 def Detect_Switch_Clas_bind_lb_1_rb__dot__a482(bind)
 bind[1].map{|p,a| [p,a+[bind[2]]]}
+end
+def Detect_Switch_Clas_bind_lb_1_rb__lb__0f18(bind)
+bind[1][{:ary=>bind[2].map{|p,a| [p,Or[*a]]}}]
 end
 def Detect_Switch_Clas_bind_lb_1_rb__lb__75a5(bind)
 bind[1][{:ary=>bind[2].map{|p,a| [p,Seq[*(bind[3]+[a]+bind[4])]]}}] 
@@ -821,15 +830,15 @@ end
 
 
 def detect_switch_compiled_by
-'ba079dbc69090f91c591603f2fdc575d'
+'bee34994cd81321cbd86db1296dec6c8'
 end
 def detect_switch_source_hash
-'8c16bc2ab2f813def447145ede40b893'
+'ad7c240aa601472852805737208cace1'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'06d941cc4e6d1972273df9c48812d7fb'
+'e32104f586250d515afd84af2e1a7fdd'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

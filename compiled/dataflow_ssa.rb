@@ -70,14 +70,15 @@ end
 def Dataflow_Many_dot_cre_2107(bind)
 Many.create({:ary=>bind[1]}).normalize
 end
-def Dataflow_Or_lb__ti_bind_d486(bind)
-Or[*bind[1]]
-end
 def Dataflow_Pass_dot_cre_5b5c(bind)
 Pass.create({:to=>bind[1],:var=>bind[2],:enter=>src.enter}).normalize
 end
 def Dataflow_Seq_lb_src_dot__6f68(bind)
 Seq[src.body,Act[Local["_result",src.bnding]]]
+end
+def Dataflow_Switch_O_5445(bind)
+Switch_Or.create(:ary=>bind[1].map{|k| [nil,k]})
+
 end
 def Dataflow__append_lp__d113(bind)
 _append(bind[1],bind[2])
@@ -281,15 +282,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'ba079dbc69090f91c591603f2fdc575d'
+'bee34994cd81321cbd86db1296dec6c8'
 end
 def dataflow_ssa_source_hash
-'3f35e485e87fcd66bbefaa3045f3634c'
+'42397659c8d663fc0415845064c5a2fc'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'d2bfdb4df8cbf7a538434ccbc190e61e'
+'f3336b3bb309199075deed817cac4815'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/dataflow_ssa_c"

@@ -302,6 +302,12 @@ class Or
 		$normalize.parse(:or,[self])
 	end
 end
+class Switch_Or
+  def self.[](args)
+    args=args[:ary] if args.is_a?(Hash)
+    Or[args.map{|k,v| v}]
+  end
+end
 class Switch_Char
 	def normalize2
 		h=Hash.new{|h,k| h[k]=[]}

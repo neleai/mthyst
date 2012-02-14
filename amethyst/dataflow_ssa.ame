@@ -60,8 +60,7 @@ amethyst Dataflow < Traverser_Clone2 {
   root =  @dup=>Rule[ {@@bnding=@bnding} @args=>[traverse_item*:var] {var.each{|v| @@marked<<ssanum(v)};@args=var} ({Seq[@body,Act[Local["_result",@bnding]]]}=>traverse_item):body {@body=Seq[body.ary[0..-2]]} {@reachable=@@edges.reverse.reachable(@@marked+[ssanum(body[-1])]); @cfg=@@edges; } {@self.freeze} ]
   
   visit = Apply[  traverse_item*:t {Apply[*(t+[{:clas=>@clas}])]}:app {app}=>[vars_in:var] {var.each{|v| @@marked<<ssanum(v)}} {app} ]
-        | Or[  {[]}:join {oldssanums.clone}:old  ({@@oldssanums=old.clone} traverse_item:t[] {join<<oldssanums.clone})* {or_end(join)} {Or[*t]} ]
-        | Switch[ {[]}:alts  {[]}:join {oldssanums.clone}:old  ({@@oldssanums=old.clone} [:pred traverse_item:a {alts<<[pred,a]}] {join<<oldssanums.clone})* {or_end(join)} {@self.class[{:ary=>alts}]} ]
+        | switch[ {[]}:alts  {[]}:join {oldssanums.clone}:old  ({@@oldssanums=old.clone} [:pred traverse_item:a {alts<<[pred,a]}] {join<<oldssanums.clone})* {or_end(join)} {@self.class[{:ary=>alts}]} ]
         | Many[  {ssanums.clone}:prev traverse_item*:t {many_end(prev)} {Many.create({:ary=>t}).normalize} ] 
         | Pass[ @to=>traverse_item:to @var=>traverse_item:var {@@marked<<var.ssaname} {Pass.create({:to=>to,:var=>var,:enter=>@enter}).normalize} ]
         | Act[ traverse_item*:t {Act[t,@pred]}:act {@@marked<<act if @pred || !@pure} 
@@ -83,6 +82,10 @@ amethyst Dataflow < Traverser_Clone2 {
                 | Bind[   vars_in:ary[] ]
                 | anything
                 )* -> ary
+
+  switch = Switch_Char | Switch_Clas
+         | Or[.*:ary] -> Switch_Or.create(:ary=>ary.map{|k| [nil,k]})
+    
 }
 
 amethyst Dead_Code_Deleter3 < Traverser_Clone2{
