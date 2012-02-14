@@ -95,10 +95,10 @@ at class level use one hash for determining class numbers? perhaps slower with i
 
 labels use hash of body do decrease changes
 
-apply["success"] instead of placeholder
-
-make rule immutable
+apply["success"] instead of placeholder?
 
 left factor inside normalization of or
 
 local DCE?
+
+simplify =>Class[ sth ] pattern

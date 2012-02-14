@@ -35,16 +35,59 @@ end
 end
 
 
+class Add_Contextual_Returns < Traverser_Clone2
+
+def Add_Contextual_Returns_Seq_lb_src(bind)
+Seq[src,Act[[Global["contextual_return"],".each{|k,v| ",@a,"[k]+=v};",Global["contextual_return"],"=nil"]]]
+end
+def Add_Contextual_Returns__at_a_eq_autov_5323(bind)
+@a=autovar
+end
+def Add_Contextual_Returns__lb__at_a(bind)
+[@a,"[:#{bind[1]}]"]
+
+end
+def Add_Contextual_Returns__lp_src_dot_cla_e144(bind)
+(src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
+end
+def Add_Contextual_Returns_bind_lb_1_rb__eq__4390(bind)
+bind[1]=bind[1].dup
+                                          bind[1].body=Seq[Act[[@a,"=Hash.new{|h,k| h[k]=[]}"]],bind[1].body,Act[[Global["contextual_return"],"=",@a]]]
+                                          bind[1]
+end
+def Add_Contextual_Returns_bind_lb_1_rb__lt__7b20(bind)
+bind[1]<<bind[2]
+end
+def Add_Contextual_Returns_bind_lb_1_rb__sp__6af0(bind)
+bind[1] << bind[2]
+end
+def Add_Contextual_Returns_if_sp_bind_lb__1bed(bind)
+if bind[1]==bind[2]
+						  src
+						else
+							src.class.create2(*bind[2])
+					  end 
+          
+end
+def Add_Contextual_Returns_src_dot_dup_d768(bind)
+src.dup
+end
+
+end
+
+
+
+
 def contextual_argument_return_compiled_by
-'24f3b7282e7eac736165cca5a08980c6'
+'5f6dc97994d3b471784165e8fa3d72c5'
 end
 def contextual_argument_return_source_hash
-'0309a73c4c9d00284be0c29beb9ffe26'
+'8ce57f8d8ac33ce9853e7d0e78c218b3'
 end
 def testversioncontextual_argument_return(r)
  raise "invalid version" if r!=contextual_argument_return_version
 end
 def contextual_argument_return_version
-'8b38728c9e2b37b08afba5e0a6e8be6c'
+'dbd42b050f32d273845bf1de4048cc30'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/contextual_argument_return_c"

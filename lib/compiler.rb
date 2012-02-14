@@ -89,6 +89,7 @@ class <<Compiler
       end
       g.rules[name]=Analyze_Variables2.new.parse(:root,g.rules[name])
       g.rules[name]=Add_Contextual_Arguments.new.parse(:root,g.rules[name])
+      g.rules[name]=Add_Contextual_Returns.new.parse(:root,g.rules[name]) if CurrentParser[:contextual_returns]
 	  	g.rules[name]=Resolve_Calls.new.parse(:root,[g,g.rules[name]])
 		}
 		names.dup.each{|name| #update callgraph
