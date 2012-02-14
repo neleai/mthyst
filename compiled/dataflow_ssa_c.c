@@ -2643,10 +2643,6 @@ VALUE Forget_SSA_traverse(VALUE self ) {
     if (ptr->mem==NULL) {
         ptr->mem=mem_Forget_SSA;
     }
-    if (ptr->mem==NULL) {
-        ptr->mem=memo_init();
-        ptr->memgc=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,ptr->mem);
-    }
     int oldpos=ptr->pos;
     if (memo_pos(ptr->mem,113,ptr->src,ptr->pos)!=-1) {
         it=memo_value(ptr->mem,113,ptr->src,ptr->pos);
@@ -2726,7 +2722,7 @@ success2:
     goto success1;
 pass1:
     *ptr=oldpass1;
-    goto fail;
+    goto memo_fail;
 success1:
     *ptr=oldpass1;
     bind_aset(bind2,1,_ivars);
@@ -2735,11 +2731,14 @@ success1:
     _ivars=bind_aget(bind2,1);;
     _nvars=bind_aget(bind2,2);;
     __result=it;;
-
     memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos);
     return it;
-fail:
+memo_fail:
     memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos);
+    return failobj;
+
+    return it;
+fail:
     return failobj;
 }
 VALUE Forget_SSA_traverse_item(VALUE self ) {
@@ -3097,5 +3096,5 @@ void Init_dataflow_ssa_c() {
     rb_define_method(cls_Forget_SSA,"traverse",Forget_SSA_traverse,0);
     rb_define_method(cls_Forget_SSA,"traverse_item",Forget_SSA_traverse_item,0);
     rb_define_method(cls_Forget_SSA,"visit",Forget_SSA_visit,0);
-    rb_eval_string("testversiondataflow_ssa('8178bf79eab9775c5fc4e12da5d33857')");
+    rb_eval_string("testversiondataflow_ssa('d2bfdb4df8cbf7a538434ccbc190e61e')");
 }

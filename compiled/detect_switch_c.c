@@ -7872,10 +7872,6 @@ VALUE Detect_Switch_Char_traverse(VALUE self ) {
     if (ptr->mem==NULL) {
         ptr->mem=mem_Detect_Switch_Char;
     }
-    if (ptr->mem==NULL) {
-        ptr->mem=memo_init();
-        ptr->memgc=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,ptr->mem);
-    }
     int oldpos=ptr->pos;
     if (memo_pos(ptr->mem,113,ptr->src,ptr->pos)!=-1) {
         it=memo_value(ptr->mem,113,ptr->src,ptr->pos);
@@ -7955,7 +7951,7 @@ success2:
     goto success1;
 pass1:
     *ptr=oldpass1;
-    goto fail;
+    goto memo_fail;
 success1:
     *ptr=oldpass1;
     bind_aset(bind2,1,_ivars);
@@ -7964,11 +7960,14 @@ success1:
     _ivars=bind_aget(bind2,1);;
     _nvars=bind_aget(bind2,2);;
     __result=it;;
-
     memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos);
     return it;
-fail:
+memo_fail:
     memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos);
+    return failobj;
+
+    return it;
+fail:
     return failobj;
 }
 VALUE Detect_Switch_Char_traverse_item(VALUE self ) {
@@ -9930,10 +9929,6 @@ VALUE Detect_Switch_Clas_traverse(VALUE self ) {
     if (ptr->mem==NULL) {
         ptr->mem=mem_Detect_Switch_Clas;
     }
-    if (ptr->mem==NULL) {
-        ptr->mem=memo_init();
-        ptr->memgc=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,ptr->mem);
-    }
     int oldpos=ptr->pos;
     if (memo_pos(ptr->mem,113,ptr->src,ptr->pos)!=-1) {
         it=memo_value(ptr->mem,113,ptr->src,ptr->pos);
@@ -10013,7 +10008,7 @@ success2:
     goto success1;
 pass1:
     *ptr=oldpass1;
-    goto fail;
+    goto memo_fail;
 success1:
     *ptr=oldpass1;
     bind_aset(bind2,1,_ivars);
@@ -10022,11 +10017,14 @@ success1:
     _ivars=bind_aget(bind2,1);;
     _nvars=bind_aget(bind2,2);;
     __result=it;;
-
     memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos);
     return it;
-fail:
+memo_fail:
     memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos);
+    return failobj;
+
+    return it;
+fail:
     return failobj;
 }
 VALUE Detect_Switch_Clas_traverse_item(VALUE self ) {
@@ -12120,5 +12118,5 @@ void Init_detect_switch_c() {
     sy_Detect_Size_minsize_lp__01f0=rb_intern("Detect_Size_minsize_lp__01f0");
     rb_define_method(cls_Detect_Size,"predicate",Detect_Size_predicate,1);
     rb_define_method(cls_Detect_Size,"predicate2",Detect_Size_predicate2,1);
-    rb_eval_string("testversiondetect_switch('74e4ab273d7215dc29f012b571a21563')");
+    rb_eval_string("testversiondetect_switch('fe7c6cb869d65bb8a961928d846904fe')");
 }

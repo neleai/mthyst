@@ -479,7 +479,7 @@ alt1_2:
         goto accept1;
 alt1_3:
         ptr->pos=oldpos1;
-        goto fail;
+        goto memo_fail;
 accept1:
         ;
         break;
@@ -661,15 +661,19 @@ alt3_2:
         goto accept3;
 alt3_3:
         ptr->pos=oldpos3;
-        goto fail;
+        goto memo_fail;
 accept3:
         ;
         break;
     }
     memo_add(ptr->mem,115,ptr->src,oldpos,it,ptr->pos);
     return it;
-fail:
+memo_fail:
     memo_add(ptr->mem,115,ptr->src,oldpos,failobj,ptr->pos);
+    return failobj;
+
+    return it;
+fail:
     return failobj;
 }
 VALUE AmethystParser_call(VALUE self ) {
@@ -3033,7 +3037,7 @@ VALUE AmethystParser_name(VALUE self ) {
         ;
     case '{' ... UC(255):
         ;
-        goto fail;
+        goto memo_fail;
         break;
     case 'A' ... 'Z':
         ;
@@ -3104,8 +3108,12 @@ VALUE AmethystParser_name(VALUE self ) {
     }
     memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos);
     return it;
-fail:
+memo_fail:
     memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos);
+    return failobj;
+
+    return it;
+fail:
     return failobj;
 }
 VALUE AmethystParser_nr(VALUE self ) {
@@ -7761,5 +7769,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('e55ed081c6ae005788d1035be3d2f51a')");
+    rb_eval_string("testversionparser('1425781982bade7ce38f493c2712b29f')");
 }

@@ -34,9 +34,7 @@ class Gram
       debug_print(r)
 		}
 		[Constant_Traverser,Forget_SSA].each{|p| 
-      r=r.dup
 			r=p.new.parse(:root,r)
-      r.freeze
 			debug_print(r)			
 		}
 		

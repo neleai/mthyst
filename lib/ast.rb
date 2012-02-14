@@ -21,6 +21,7 @@ makeclasses(AmethystAST,
 		:Switch,
 		:Seq,:Parenthesis,
 		:Relabel,
+    :Contextual_Argument,:Contextual_Return,
 		[:Or,:has_cut],
 		:Seq_AST,:Or_AST
 )

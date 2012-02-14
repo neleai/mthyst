@@ -651,10 +651,6 @@ VALUE Left_Factor_traverse(VALUE self ) {
     if (ptr->mem==NULL) {
         ptr->mem=mem_Left_Factor;
     }
-    if (ptr->mem==NULL) {
-        ptr->mem=memo_init();
-        ptr->memgc=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,ptr->mem);
-    }
     int oldpos=ptr->pos;
     if (memo_pos(ptr->mem,113,ptr->src,ptr->pos)!=-1) {
         it=memo_value(ptr->mem,113,ptr->src,ptr->pos);
@@ -734,7 +730,7 @@ success2:
     goto success1;
 pass1:
     *ptr=oldpass1;
-    goto fail;
+    goto memo_fail;
 success1:
     *ptr=oldpass1;
     bind_aset(bind2,1,_ivars);
@@ -743,11 +739,14 @@ success1:
     _ivars=bind_aget(bind2,1);;
     _nvars=bind_aget(bind2,2);;
     __result=it;;
-
     memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos);
     return it;
-fail:
+memo_fail:
     memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos);
+    return failobj;
+
+    return it;
+fail:
     return failobj;
 }
 VALUE Left_Factor_traverse_item(VALUE self ) {
@@ -1165,5 +1164,5 @@ void Init_left_factor_c() {
     rb_define_method(cls_Left_Factor,"traverse",Left_Factor_traverse,0);
     rb_define_method(cls_Left_Factor,"traverse_item",Left_Factor_traverse_item,0);
     rb_define_method(cls_Left_Factor,"visit",Left_Factor_visit,0);
-    rb_eval_string("testversionleft_factor('6417f13da2adf89ffcf9e8a66d4216e5')");
+    rb_eval_string("testversionleft_factor('dc52dc11121f88423580e068d51b4c71')");
 }

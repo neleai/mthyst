@@ -102,24 +102,27 @@ amethyst AmethystCTranslator < Amethyst {
                    "
               [s,init,rbcode] } ]
 
-         |  Rule[@name:name {@@rulename=name; Local.resetnumbering;resetlabels;@@locls={}} @body=>trans:body  
+         |  Rule[@name:name {@@rulename=name; Local.resetnumbering;resetlabels;@@locls={}} {(CurrentParser[:memoize] && CurrentParser[:memoize].include?(name)) ? Memo[@body] : @body}=>trans:body  
           { h="VALUE #{@@grammar}_#{name}(VALUE self #{map_index(@args){|i| ",VALUE a#{i}"}*""})" 
             @@header<<h+";"
             @@defmethods<< "rb_define_method(cls_#{@@grammar},\"#{@name}\",#{@@grammar}_#{@name},#{@args.size});"
 						s=h+"{VALUE vals[#{@args.size}]; VALUE it #{@@locls.map{|k,v| ",_#{k}"}*""};VALUE bind2=bind_new2(16); #{map_index(@args){|i| bset(@args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);"
-s+="if (ptr->mem==NULL){ptr->mem=mem_#{@@grammar};}" if CurrentParser[:global_memo] &&CurrentParser[:memoize]&&CurrentParser[:memoize].include?(name)
-s+="if (ptr->mem==NULL){ptr->mem=memo_init();ptr->memgc=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,ptr->mem);}" if CurrentParser[:memoize]&&CurrentParser[:memoize].include?(name) 
-s+="int oldpos=ptr->pos;if (memo_pos(ptr->mem,#{@@memo_no=(@@memo_no||111)+2},ptr->src,ptr->pos)!=-1) {it=memo_value(ptr->mem,#{@@memo_no},ptr->src,ptr->pos);ptr->pos=memo_pos(ptr->mem,#{@@memo_no},ptr->src,ptr->pos);return it;}" if CurrentParser[:memoize]&&CurrentParser[:memoize].include?(name)
 s+="#{body}\n" 
-if CurrentParser[:memoize]&&CurrentParser[:memoize].include?(name)
-s+="memo_add(ptr->mem,#{@@memo_no},ptr->src,oldpos,it,ptr->pos); return it;\nfail: memo_add(ptr->mem,#{@@memo_no},ptr->src,oldpos,failobj,ptr->pos); return failobj; }" 
-else
 s+="return it;\nfail: return failobj;}"
-end
 s
 } ]
-
-
+        | Memo[ rw('memo_fail',`trans`):t ] 
+                {s=""
+                 if CurrentParser[:global_memo]
+                   s+="if (ptr->mem==NULL){ptr->mem=mem_#{@@grammar};}" 
+                 else
+                   s+="if (ptr->mem==NULL){ptr->mem=memo_init();ptr->memgc=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,ptr->mem);}"
+                 end
+                 s+="int oldpos=ptr->pos;if (memo_pos(ptr->mem,#{@@memo_no=(@@memo_no||111)+2},ptr->src,ptr->pos)!=-1) {it=memo_value(ptr->mem,#{@@memo_no},ptr->src,ptr->pos);ptr->pos=memo_pos(ptr->mem,#{@@memo_no},ptr->src,ptr->pos);return it;}"
+                 s+=t
+                 s+="memo_add(ptr->mem,#{@@memo_no},ptr->src,oldpos,it,ptr->pos); return it;\n"
+                 s+="memo_fail:  memo_add(ptr->mem,#{@@memo_no},ptr->src,oldpos,failobj,ptr->pos); return failobj;\n"
+                 s}
         | Act[ {@@bindno=0;@@binds={}}
 								.*:{addcallback(@pred ? ["(",it,") || FAIL"] : it)}:cbno 
 								{@@binds.map{|k,v| "bind_aset(bind2,#{v},#{bget(k)});"}*"" + "it=#{rbcall(cbno,["bind2"])};"+@@binds.map{|k,v|"#{bset(k,"bind_aget(bind2,#{v})")};"}*"" +"#{@pred ? "FAILTEST(#{@@faillabel});" :"" }"} ]
