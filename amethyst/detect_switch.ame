@@ -324,6 +324,11 @@ amethyst Detect_First < Traverser_Clone2 {
   string_only = Apply[ ["regch" |"_seq"] .*]
   
   object_only = Apply[ ["clas"] .* ]
+
+
+ combine_seq(cls,prefix) = must_empty:s combine_seq(cls,prefix+[s])
+                      | clas(cls)[ .* @ary:ary ] .*:rest { cls[{:ary=>ary.map{|p,a| [p,Seq[*(prefix+[a]+rest)]]}}] }
+                      | .*:ary {Seq[*(prefix+ary)]}
 }
 
 #TODO we can do unicode almost unchanged but we need test againist first byte of character
@@ -337,16 +342,13 @@ amethyst Detect_Switch_Char < Detect_First {
         | Apply[ ["fails"] {@self} ]
         | Apply[ .*  {first(@self)}:firs &{!can_empty?(@self) && firs!=Lattice_Char.top} {s=Switch_Char[{:ary=>[[firs,@self],[~firs,Apply["fails"]]]}] }]
         | Many[ traverse:t first(t):firs &{!can_empty?(@self) && firs!=Lattice_Char.top} {s=Switch_Char[{:ary=>[[firs,Many[t]],[~firs,Apply["fails"]]]}] }]
-        | Seq[ traverse_item*=>[combine_seq([])] ]
+        | Seq[ traverse_item*=>[combine_seq(Switch_Char,[])] ]
         | Or[ (traverse_item)*:items {false}:aswitch {items.each{|i| aswitch=true if i.is_a?(Switch_Char)}}
               ( &{!aswitch} {Or[*items]} 
               |  {items}=>[ combine_or([[Lattice_Char.top,[]]]) ]
               )
             ]
         
- combine_seq(prefix) = must_empty:s combine_seq(prefix+[s])
-                      | Switch_Char[ .* @ary:ary ] .*:rest { Switch_Char[{:ary=>ary.map{|p,a| [p,Seq[*(prefix+[a]+rest)]]}}] }
-                      | .*:ary {Seq[*(prefix+ary)]}
 
  combine_or(list) = Switch_Char[.* @ary:ary] {[]}:newlist 
                            {list.each{|p,a| ary.each{|p2,a2| newlist << [p&p2,a+[a2]] if p&p2!=Lattice_Char.bottom}}}
@@ -362,16 +364,12 @@ amethyst Detect_Switch_Clas < Detect_First {
   visit = Apply[ ["clas"] CAct[Class:clas]   {Switch_Clas[[Lattice_Clas[clas],Apply["advance_clas"]],[Lattice_Clas[Object],Apply["fails"]]].freeze }]
         | Apply[ ["fails"] {@self} ]
         | Apply[ .* first(@self):firs &{!can_empty?(@self) && !firs.ary.include?(Object)} {c=Switch_Clas[{:ary=>firs.ary.map{|a| [Lattice_Clas[a],@self]}+[[Lattice_Clas[Object],Apply["fails"]]]}];puts c.inspect;c }]  
-        | Seq[ traverse_item*=>[combine_seq([])] ]
+        | Seq[ traverse_item*=>[combine_seq(Switch_Clas,[])] ]
         | Or[ (traverse_item)*:items {false}:aswitch {items.each{|i| aswitch=true if i.is_a?(Switch_Clas)}}
               ( &{!aswitch} {Or[*items]} 
               |  {items}=>[ combine_or([[Lattice_Clas.top,[]]]) ]
               )
             ]
-
-  combine_seq(prefix) = must_empty:s combine_seq(prefix+[s])
-                     | Switch_Clas[ .* @ary:ary ] .*:rest { Switch_Clas[{:ary=>ary.map{|p,a| [p,Seq[*(prefix+[a]+rest)]]}}] }
-                     | .*:ary {Seq[*(prefix+ary)]}
 
   combine_or(list) = Switch_Clas[.* @ary:ary] {[]}:newlist
                            {list.each{|p,a| ary.each{|p2,a2| newlist << [p&p2,a+[a2]] if p&p2!=Lattice_Clas.bottom}}}
