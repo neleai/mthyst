@@ -2,6 +2,7 @@
 #include "memo.c"
 VALUE cls_Tests;
 VALUE Tests_abc(VALUE self );
+VALUE Tests_context(VALUE self );
 VALUE Tests_de(VALUE self );
 VALUE Tests_foo(VALUE self );
 VALUE Tests_gh(VALUE self );
@@ -16,6 +17,9 @@ static VALUE s_b_92eb;
 static VALUE s_c_4a8a;
 static VALUE s_d_8277;
 static VALUE s_g_b2f5;
+static VALUE sy_Tests__at__contex_2556;
+static VALUE sy_Tests__at__contex_b845;
+static VALUE sy_Tests__at__contex_d6d5;
 static VALUE sy_Tests_bind_lb_1_rb__eq__58f9;
 static VALUE sy_Tests_bind_lb_1_rb__pl__0a71;
 static VALUE sy_Tests_bind_lb_1_rb__pl__3b73;
@@ -49,6 +53,26 @@ VALUE Tests_abc(VALUE self ) {
         __result=it;;
         break;
     }
+    return it;
+fail:
+    return failobj;
+}
+VALUE Tests_context(VALUE self ) {
+    VALUE vals[0];
+    VALUE it ,_autovar,__result;
+    VALUE bind2=bind_new2(16);
+    int x;
+    VALUE arg0,arg1,arg2,arg3;
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    bind_aset(bind2,1,_autovar);
+    it=rb_funcall(self,sy_Tests__at__contex_2556,1,bind2);
+    _autovar=bind_aget(bind2,1);;
+    it=rb_funcall(self,sy_Tests__at__contex_b845,1,bind2);
+    __result=it;;
+    bind_aset(bind2,1,_autovar);
+    it=rb_funcall(self,sy_Tests__at__contex_d6d5,1,bind2);
+    _autovar=bind_aget(bind2,1);;
     return it;
 fail:
     return failobj;
@@ -424,6 +448,9 @@ void Init_tests_c() {
     rb_global_variable(&s_d_8277);
     s_g_b2f5=rb_str_new2("g");
     rb_global_variable(&s_g_b2f5);
+    sy_Tests__at__contex_2556=rb_intern("Tests__at__contex_2556");
+    sy_Tests__at__contex_b845=rb_intern("Tests__at__contex_b845");
+    sy_Tests__at__contex_d6d5=rb_intern("Tests__at__contex_d6d5");
     sy_Tests_bind_lb_1_rb__eq__58f9=rb_intern("Tests_bind_lb_1_rb__eq__58f9");
     sy_Tests_bind_lb_1_rb__pl__0a71=rb_intern("Tests_bind_lb_1_rb__pl__0a71");
     sy_Tests_bind_lb_1_rb__pl__3b73=rb_intern("Tests_bind_lb_1_rb__pl__3b73");
@@ -432,11 +459,12 @@ void Init_tests_c() {
     sy_seq=rb_intern("seq");
     sy_token=rb_intern("token");
     rb_define_method(cls_Tests,"abc",Tests_abc,0);
+    rb_define_method(cls_Tests,"context",Tests_context,0);
     rb_define_method(cls_Tests,"de",Tests_de,0);
     rb_define_method(cls_Tests,"foo",Tests_foo,0);
     rb_define_method(cls_Tests,"gh",Tests_gh,0);
     rb_define_method(cls_Tests,"s2",Tests_s2,0);
     rb_define_method(cls_Tests,"sw",Tests_sw,0);
     rb_define_method(cls_Tests,"test",Tests_test,0);
-    rb_eval_string("testversiontests('d9fffd929e27b9e66f129b49cb7822fd')");
+    rb_eval_string("testversiontests('aa4dc2ea67d3e8c7d536ec4a80c9fbc1')");
 }

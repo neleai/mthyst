@@ -1,0 +1,10 @@
+amethyst Add_Contextual_Arguments < Traverser_Clone2{
+  root  = @dup=>Rule[ traverse:t {t=t.dup; 
+                                  if @@contextual_arguments
+                                    a=autovar;g=Global["_context_arguments"]
+                                    t.body=Seq[Act[[g,"||={};",a,"=",g,";",g,"=",g,".dup"]],t.body,Act[[g,"=",a]]]
+                                  end 
+                                  t}]                  
+
+  visit = Contextual_Argument[.:name {@@contextual_arguments=true;[Global["_context_arguments"],"[:",name,"]"] } ]
+}

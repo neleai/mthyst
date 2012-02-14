@@ -2,7 +2,7 @@ CurrentParser={}
 require 'digest'
 require 'set'
 COMPILED=["tests","amethyst","traverser","detect_variables2","parser","dataflow_ssa","inliner2","normalize",
-"detect_switch","left_factor","constant_propagation","ctranslator2","implicit_variables","remove_left_rigth_recursion"]
+"detect_switch","left_factor","constant_propagation","ctranslator2","implicit_variables","remove_left_rigth_recursion","contextual_argument_return"]
 def debug_print(t)
 	puts t.inspect if Amethyst::Settings.debug>1
 end
@@ -77,7 +77,6 @@ class <<Compiler
 		return 0
 	end
 	def add_grammar(grammar)
-#		grammar=deep_clone(grammar)
 		$current_grammar_name=grammar.name #TODO hack for resolving apply. think of better way of supplying context
 		g=@grammars[grammar.name]=Gram.new(grammar)
 		g.callgraph=callg=Oriented_Graph.new
@@ -89,6 +88,7 @@ class <<Compiler
         g.rules[name]=Add_Implicit_Variables.new.parse(:root,[freq,g.rules[name]])
       end
       g.rules[name]=Analyze_Variables2.new.parse(:root,g.rules[name])
+      g.rules[name]=Add_Contextual_Arguments.new.parse(:root,g.rules[name])
 	  	g.rules[name]=Resolve_Calls.new.parse(:root,[g,g.rules[name]])
 		}
 		names.dup.each{|name| #update callgraph

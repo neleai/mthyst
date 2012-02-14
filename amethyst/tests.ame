@@ -12,5 +12,6 @@ amethyst Tests{
   abc =< abc>
   de ={1}:foo ({foo+1} abc |{foo+2} <de>)
 
-	gh= foo | break {42} | bar
+	gh= foo | break {42} | bar 
+  context ={ @>a=32;puts 32}
 }
