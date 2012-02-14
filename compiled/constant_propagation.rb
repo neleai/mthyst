@@ -123,6 +123,10 @@ end
 def Constant_Traverser__lp_src_dot_cla_e144(bind)
 (src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
+def Constant_Traverser_bind_lb_1_rb__dot__8385(bind)
+bind[1].freeze
+
+end
 def Constant_Traverser_bind_lb_1_rb__lt__7b20(bind)
 bind[1]<<bind[2]
 end
@@ -143,20 +147,23 @@ end
 def Constant_Traverser_src_dot_cfg_eq__15aa(bind)
 src.cfg=nil;src.reachable=nil;src.consts=nil
 end
+def Constant_Traverser_src_dot_dup_d768(bind)
+src.dup
+end
 
 end
 
 
 def constant_propagation_compiled_by
-'d6f85cbea3ef05c357d8d9829e5f6f9f'
+'24ed2a6c964e0d5e201acf7e654e5383'
 end
 def constant_propagation_source_hash
-'bcca214b59974f470c5395adafe72fab'
+'b549ebc965c3c10f7e888e551d03710d'
 end
 def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
 end
 def constant_propagation_version
-'874494ce71d29eba51da609c88fa1a9a'
+'2c41c8706b5795c207da25744222ba83'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/constant_propagation_c"

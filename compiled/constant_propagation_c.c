@@ -406,6 +406,7 @@ VALUE Constant_Traverser_visit(VALUE self );
 VALUE switchhash_Constant_Traverser_1;
 VALUE switchhash_Constant_Traverser_2;
 VALUE switchhash_Constant_Traverser_3;
+VALUE switchhash_Constant_Traverser_4;
 static VALUE sy_Constant_Traverser_Bind_lb_src_66c4;
 static VALUE sy_Constant_Traverser_Bind_lb_src_9cb6;
 static VALUE sy_Constant_Traverser_Seq_lb_bind_95dc;
@@ -415,11 +416,13 @@ static VALUE sy_Constant_Traverser__at_consts_lb__abf4;
 static VALUE sy_Constant_Traverser__lp__lp__at_const_463e;
 static VALUE sy_Constant_Traverser__lp__lp__at_const_5d8f;
 static VALUE sy_Constant_Traverser__lp_src_dot_cla_e144;
+static VALUE sy_Constant_Traverser_bind_lb_1_rb__dot__8385;
 static VALUE sy_Constant_Traverser_bind_lb_1_rb__lt__7b20;
 static VALUE sy_Constant_Traverser_bind_lb_1_rb__sp__6af0;
 static VALUE sy_Constant_Traverser_if_sp_bind_lb__1bed;
 static VALUE sy_Constant_Traverser_src_25d9;
 static VALUE sy_Constant_Traverser_src_dot_cfg_eq__15aa;
+static VALUE sy_Constant_Traverser_src_dot_dup_d768;
 VALUE Constant_Traverser_consts(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_ary,_autovar,_autovar_2,__result;
@@ -432,7 +435,7 @@ VALUE Constant_Traverser_consts(VALUE self ) {
     _ary=it;;
     int stop1=0;
     while(!stop1) {
-        switch(FIX2LONG(rb_hash_aref(switchhash_Constant_Traverser_1,rb_obj_class(ame_curobj2(ptr))))) {
+        switch(FIX2LONG(rb_hash_aref(switchhash_Constant_Traverser_2,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*Local*/:
             ;
             int oldpos1=ptr->pos;
@@ -528,16 +531,75 @@ fail:
 }
 VALUE Constant_Traverser_root(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,__result;
+    VALUE it ,_autovar,_autovar_2,_autovar_3,_t,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
+    it=rb_funcall(self,sy_Constant_Traverser_src_dot_dup_d768,1,bind2);
+    _autovar=it;;
+    cstruct oldpass1=*ptr;
+    ptr->pos=ptr->len=0;
+    ptr->ary=NULL;
+    ptr->src=failobj;
+    ptr->ary=alloca(sizeof(VALUE));
+    ptr->ary[0]=_autovar;
+    ptr->len=1;
+    switch(FIX2LONG(rb_hash_aref(switchhash_Constant_Traverser_1,rb_obj_class(ame_curobj2(ptr))))) {
+    case 0/*Rule*/:
+        ;
+        it=ptr->ary[ptr->pos];            ;
+        ptr->pos++;
+        _autovar_2=it;;
+        it=Qnil;
+        if (ptr->pos<ptr->len) goto pass1;
+        break;
+    case 1/*Object*/:
+        ;
+        goto pass1;
+        break;
+    }
+    goto success1;
+pass1:
+    *ptr=oldpass1;
+    goto fail;
+success1:
+    *ptr=oldpass1;
+    it=_autovar_2;
+    _autovar_3=it;;
+    cstruct oldpass2=*ptr;
+    ptr->pos=ptr->len=0;
+    ptr->ary=NULL;
+    ptr->src=_autovar_3;
+    if(TYPE(ptr->src)==T_STRING) {
+        ptr->str=RSTRING_PTR(ptr->src);
+        ptr->len=RSTRING_LEN(ptr->src);
+    }
+    else {
+        VALUE ary;
+        if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+        else  ary=rb_funcall(ptr->src,s_to_a,0);
+        ptr->ary2=ary;
+        ptr->ary=RARRAY_PTR(ary);
+        ptr->len=RARRAY_LEN(ary);
+    }
     it=rb_funcall(self,sy_Constant_Traverser__at_consts_eq__b621,1,bind2);
     it=rb_funcall(self,sy_Constant_Traverser_src_dot_cfg_eq__15aa,1,bind2);
     it=Constant_Traverser_traverse(self );
-    FAILTEST(fail);
+    FAILTEST(pass2);
+    _t=it;;
+    it=Qnil;
+    if (ptr->pos<ptr->len) goto pass2;
+    goto success2;
+pass2:
+    *ptr=oldpass2;
+    goto fail;
+success2:
+    *ptr=oldpass2;
+    bind_aset(bind2,1,_t);
+    it=rb_funcall(self,sy_Constant_Traverser_bind_lb_1_rb__dot__8385,1,bind2);
+    _t=bind_aget(bind2,1);;
     __result=it;;
 
     return it;
@@ -647,7 +709,7 @@ VALUE Constant_Traverser_traverse_item(VALUE self ) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    switch(FIX2LONG(rb_hash_aref(switchhash_Constant_Traverser_3,rb_obj_class(ame_curobj2(ptr))))) {
+    switch(FIX2LONG(rb_hash_aref(switchhash_Constant_Traverser_4,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*AmethystAST*/:
         ;
         int oldpos1=ptr->pos;
@@ -841,7 +903,7 @@ VALUE Constant_Traverser_visit(VALUE self ) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    switch(FIX2LONG(rb_hash_aref(switchhash_Constant_Traverser_2,rb_obj_class(ame_curobj2(ptr))))) {
+    switch(FIX2LONG(rb_hash_aref(switchhash_Constant_Traverser_3,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Act*/:
         ;
         it=ptr->ary[ptr->pos];            ;
@@ -1019,12 +1081,14 @@ void Init_constant_propagation_c() {
 
     cls_Constant_Traverser=rb_define_class("Constant_Traverser",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2")));
     failobj=rb_eval_string("FAIL");
-    switchhash_Constant_Traverser_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Local\nnext h[k]=1 if k<=Object\n}");
+    switchhash_Constant_Traverser_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Rule\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_Constant_Traverser_1);;
-    switchhash_Constant_Traverser_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Bind\nnext h[k]=2 if k<=Local\nnext h[k]=3 if k<=Result\nnext h[k]=4 if k<=Object\n}");
+    switchhash_Constant_Traverser_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Local\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_Constant_Traverser_2);;
-    switchhash_Constant_Traverser_3=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}");
+    switchhash_Constant_Traverser_3=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Bind\nnext h[k]=2 if k<=Local\nnext h[k]=3 if k<=Result\nnext h[k]=4 if k<=Object\n}");
     rb_global_variable(&switchhash_Constant_Traverser_3);;
+    switchhash_Constant_Traverser_4=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}");
+    rb_global_variable(&switchhash_Constant_Traverser_4);;
     sy_Constant_Traverser_Bind_lb_src_66c4=rb_intern("Constant_Traverser_Bind_lb_src_66c4");
     sy_Constant_Traverser_Bind_lb_src_9cb6=rb_intern("Constant_Traverser_Bind_lb_src_9cb6");
     sy_Constant_Traverser_Seq_lb_bind_95dc=rb_intern("Constant_Traverser_Seq_lb_bind_95dc");
@@ -1034,15 +1098,17 @@ void Init_constant_propagation_c() {
     sy_Constant_Traverser__lp__lp__at_const_463e=rb_intern("Constant_Traverser__lp__lp__at_const_463e");
     sy_Constant_Traverser__lp__lp__at_const_5d8f=rb_intern("Constant_Traverser__lp__lp__at_const_5d8f");
     sy_Constant_Traverser__lp_src_dot_cla_e144=rb_intern("Constant_Traverser__lp_src_dot_cla_e144");
+    sy_Constant_Traverser_bind_lb_1_rb__dot__8385=rb_intern("Constant_Traverser_bind_lb_1_rb__dot__8385");
     sy_Constant_Traverser_bind_lb_1_rb__lt__7b20=rb_intern("Constant_Traverser_bind_lb_1_rb__lt__7b20");
     sy_Constant_Traverser_bind_lb_1_rb__sp__6af0=rb_intern("Constant_Traverser_bind_lb_1_rb__sp__6af0");
     sy_Constant_Traverser_if_sp_bind_lb__1bed=rb_intern("Constant_Traverser_if_sp_bind_lb__1bed");
     sy_Constant_Traverser_src_25d9=rb_intern("Constant_Traverser_src_25d9");
     sy_Constant_Traverser_src_dot_cfg_eq__15aa=rb_intern("Constant_Traverser_src_dot_cfg_eq__15aa");
+    sy_Constant_Traverser_src_dot_dup_d768=rb_intern("Constant_Traverser_src_dot_dup_d768");
     rb_define_method(cls_Constant_Traverser,"consts",Constant_Traverser_consts,0);
     rb_define_method(cls_Constant_Traverser,"root",Constant_Traverser_root,0);
     rb_define_method(cls_Constant_Traverser,"traverse",Constant_Traverser_traverse,0);
     rb_define_method(cls_Constant_Traverser,"traverse_item",Constant_Traverser_traverse_item,0);
     rb_define_method(cls_Constant_Traverser,"visit",Constant_Traverser_visit,0);
-    rb_eval_string("testversionconstant_propagation('874494ce71d29eba51da609c88fa1a9a')");
+    rb_eval_string("testversionconstant_propagation('2c41c8706b5795c207da25744222ba83')");
 }
