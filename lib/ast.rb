@@ -125,7 +125,7 @@ by="ary" if by=="[ary]"
 equalize_by(e,by)
 norm.puts "int hits_#{e}=0;int miss_#{e}=0; normalize_cache *cache_#{e};
 VALUE normalize_#{e}(VALUE obj){int i;
-	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;
+	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;VALUE obj2;
 	VALUE ary=rb_iv_get(obj,\"@ary\");
 	if (rb_obj_frozen_p(obj)==Qtrue)
 		obj=rb_obj_dup(obj);
@@ -133,14 +133,13 @@ VALUE normalize_#{e}(VALUE obj){int i;
 	rb_iv_set(obj,\"@hash\",LONG2FIX(hash));
 	rb_obj_freeze(obj);
 	hash=hash&((1<<20)-1);
-
-	VALUE obj2=cache_#{e}->ary[hash];
-	if((int)obj2){
-		#{e.instance_variable_get(:@attrs).map{|e| "if (!els_equal(rb_iv_get(obj,\"@#{e.to_s}\"),rb_iv_get(obj2,\"@#{e.to_s}\"))) goto next;"}*""}
-		hits_#{e}++;
-		return cache_#{e}->ret[hash];
-		next:;
-	}
+  while(obj2=cache_#{e}->ary[hash]){
+	 	#{e.instance_variable_get(:@attrs).map{|e| "if (!els_equal(rb_iv_get(obj,\"@#{e.to_s}\"),rb_iv_get(obj2,\"@#{e.to_s}\"))) goto next;"}*""}
+	 	hits_#{e}++;
+	 	return cache_#{e}->ret[hash];
+	 	next:;
+    hash=(hash+1)&((1<<20)-1);
+  }
   VALUE obj3=rb_funcall(obj,rb_intern(\"normalize2\"),0);
 	miss_#{e}++;
 	if (rb_obj_is_kind_of(obj3, rb_obj_class(obj))){
@@ -151,6 +150,12 @@ VALUE normalize_#{e}(VALUE obj){int i;
   	rb_iv_set(obj3,\"@hash\",LONG2FIX(hash3));
     rb_obj_freeze(obj3);    
 		hash3=hash3&((1<<20)-1);
+    while(obj2=cache_#{e}->ary[hash3]){
+	   	#{e.instance_variable_get(:@attrs).map{|e| "if (!els_equal(rb_iv_get(obj3,\"@#{e.to_s}\"),rb_iv_get(obj2,\"@#{e.to_s}\"))) goto next2;"}*""}
+	 	  break;
+      next2:;
+      hash3=(hash3+1)&((1<<20)-1);
+    }
 		cache_#{e}->ary[hash3]=obj3;
   	cache_#{e}->ret[hash3]=obj3;
 	}
