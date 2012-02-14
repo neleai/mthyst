@@ -223,6 +223,10 @@ class First_Dataflow < Amethyst
 def First_Dataflow_Compiler_558e(bind)
 Compiler.grammars[src.clas].rules[bind[1]].body
 end
+def First_Dataflow_Switch_O_5445(bind)
+Switch_Or.create(:ary=>bind[1].map{|k| [nil,k]})
+
+end
 def First_Dataflow__append_lp__d113(bind)
 _append(bind[1],bind[2])
 end
@@ -830,15 +834,15 @@ end
 
 
 def detect_switch_compiled_by
-'e3139a8862b867fba16be8a78ea19f44'
+'1f08c84b4a458a88ece05021222c62b9'
 end
 def detect_switch_source_hash
-'ad7c240aa601472852805737208cace1'
+'6e26c70c1741c6ca44b16b4553212db7'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'e32104f586250d515afd84af2e1a7fdd'
+'de44a54d3b3a62ba5494c0a517bc9760'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"
