@@ -254,6 +254,14 @@ amethyst Maxsize_Dataflow < First_Dataflow {
         | super
 }
 
+amethyst Complexity_Dataflow < First_Dataflow {
+  first = Apply[ :name &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name].body}=>value:v ] -> lattice[2*v.value]
+        | Many[ value:v ]            -> lattice[20*v.value]
+        | Seq[ value*:v ]            -> lattice[v.map{|w| w.value}.inject(:+)]
+        | switch[ [ . value:v[] ]* ] -> lattice[v.map{|w| w.value}.max+1]
+        | .                          -> lattice[1]
+}
+
 amethyst Switch_Char_Dataflow < First_Dataflow{
   first = Apply[( ["_seq"  ] CAct[.:str] {firstchar(str)}
                 | ["regch" ] Act[.:str]  {regchar(str)}

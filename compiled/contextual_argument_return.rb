@@ -79,7 +79,7 @@ end
 
 
 def contextual_argument_return_compiled_by
-'e704edc5829b48aa46ed13ccf6f5d04e'
+'d8f06798269aa62c621d7d85c87c7f99'
 end
 def contextual_argument_return_source_hash
 '8ce57f8d8ac33ce9853e7d0e78c218b3'

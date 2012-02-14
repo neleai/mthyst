@@ -372,6 +372,44 @@ end
 end
 
 
+class Complexity_Dataflow < First_Dataflow
+
+def Complexity_Dataflow_Compiler_558e(bind)
+Compiler.grammars[src.clas].rules[bind[1]].body
+end
+def Complexity_Dataflow__append_lp__d113(bind)
+_append(bind[1],bind[2])
+end
+def Complexity_Dataflow__at_vis_eq_bin_8b89(bind)
+@vis=bind[1]; bind[1]
+end
+def Complexity_Dataflow__lp_Compile_7f7b(bind)
+(Compiler.grammars[src.clas]&&Compiler.grammars[src.clas].rules[bind[1]]) || FAIL
+end
+def Complexity_Dataflow_lattice_lb__11f0(bind)
+lattice[20*bind[1].value]
+
+end
+def Complexity_Dataflow_lattice_lb__5911(bind)
+lattice[bind[1].map{|w| w.value}.inject(:+)]
+
+end
+def Complexity_Dataflow_lattice_lb__6ee3(bind)
+lattice[1]
+
+end
+def Complexity_Dataflow_lattice_lb__ba7e(bind)
+lattice[2*bind[1].value]
+
+end
+def Complexity_Dataflow_lattice_lb__f621(bind)
+lattice[bind[1].map{|w| w.value}.max+1]
+
+end
+
+end
+
+
 class Switch_Char_Dataflow < First_Dataflow
 
 def Switch_Char_Dataflow_Compiler_558e(bind)
@@ -839,15 +877,15 @@ end
 
 
 def detect_switch_compiled_by
-'e704edc5829b48aa46ed13ccf6f5d04e'
+'d8f06798269aa62c621d7d85c87c7f99'
 end
 def detect_switch_source_hash
-'098adfaec1b485f27a56d17bfa1c69b5'
+'d57e055bdd61be1cb99513a3804e6f50'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'a2368f7d6d9a3efac78d608b7993aabb'
+'1d4abe4a87d32109f3e433868a4656ca'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

@@ -56,6 +56,17 @@ static VALUE sy_Dataflow_src_dot_var_3a88;
 static VALUE sy_Dataflow_src_dot_vars_2db1;
 static VALUE sy_Dataflow_ssanum_lp_s_3920;
 static VALUE sy_Dataflow_ssanums_dot__ae08;
+
+memo_struct *mem_Dataflow=NULL;
+VALUE memo_val_Dataflow;
+VALUE profile_report_Dataflow(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    if(ptr->mem) {
+        printf("root hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
+    }
+    return Qnil;
+}
 VALUE Dataflow_root(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,_autovar_7,_var,_autovar_8,_autovar_9,_body,_autovar_10,__result;
@@ -64,6 +75,15 @@ VALUE Dataflow_root(VALUE self ) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
+    if (ptr->mem==NULL) {
+        ptr->mem=mem_Dataflow;
+    }
+    int oldpos=ptr->pos;
+    if (memo_pos(ptr->mem,113,ptr->src,ptr->pos)!=-1) {
+        it=memo_value(ptr->mem,113,ptr->src,ptr->pos);
+        ptr->pos=memo_pos(ptr->mem,113,ptr->src,ptr->pos);
+        return it;
+    }
     it=rb_funcall(self,sy_Dataflow_src_dot_dup_d768,1,bind2);
     _autovar=it;;
     cstruct oldpass1=*ptr;
@@ -90,7 +110,7 @@ VALUE Dataflow_root(VALUE self ) {
     goto success1;
 pass1:
     *ptr=oldpass1;
-    goto fail;
+    goto memo_fail;
 success1:
     *ptr=oldpass1;
     it=_autovar_2;
@@ -225,11 +245,16 @@ success5:
     goto success2;
 pass2:
     *ptr=oldpass2;
-    goto fail;
+    goto memo_fail;
 success2:
     *ptr=oldpass2;
     it=_autovar_10;
     __result=it;;
+    memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos);
+    return it;
+memo_fail:
+    memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos);
+    return failobj;
 
     return it;
 fail:
@@ -3007,6 +3032,10 @@ fail:
 void Init_dataflow_ssa_c() {
     cls_Dataflow=rb_define_class("Dataflow",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2")));
     failobj=rb_eval_string("FAIL");
+    mem_Dataflow=memo_init();
+    memo_val_Dataflow=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,mem_Dataflow);
+    rb_global_variable(&memo_val_Dataflow);
+    rb_define_method(cls_Dataflow,"profile_report",profile_report_Dataflow,0);
     switchhash_Dataflow_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Rule\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_Dataflow_1);;
     switchhash_Dataflow_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Apply\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=Local\nnext h[k]=4 if k<=Lookahead\nnext h[k]=5 if k<=Many\nnext h[k]=6 if k<=Or\nnext h[k]=7 if k<=Switch_Char\nnext h[k]=8 if k<=Switch_Clas\nnext h[k]=9 if k<=Pass\nnext h[k]=10 if k<=Result\nnext h[k]=11 if k<=Object\n}");
@@ -3115,5 +3144,5 @@ void Init_dataflow_ssa_c() {
     rb_define_method(cls_Forget_SSA,"traverse",Forget_SSA_traverse,0);
     rb_define_method(cls_Forget_SSA,"traverse_item",Forget_SSA_traverse_item,0);
     rb_define_method(cls_Forget_SSA,"visit",Forget_SSA_visit,0);
-    rb_eval_string("testversiondataflow_ssa('e7ed90bf7ea636b289154b1d94068d56')");
+    rb_eval_string("testversiondataflow_ssa('1478e7f99c3212db8c855bcc8ffe1967')");
 }
