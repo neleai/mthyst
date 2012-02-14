@@ -18,8 +18,8 @@ static VALUE s_d_8277;
 static VALUE s_g_b2f5;
 static VALUE sy_Tests_bind_lb_1_rb__eq__58f9;
 static VALUE sy_Tests_bind_lb_1_rb__pl__0a71;
-static VALUE sy_Tests_bind_lb_1_rb__pl__3b73;
 static VALUE sy_Tests_bind_lb_1_rb__pl__61a1;
+static VALUE sy_Tests_foo_pl_bar_ac93;
 static VALUE sy_bar;
 static VALUE sy_seq;
 static VALUE sy_token;
@@ -177,7 +177,7 @@ fail:
 }
 VALUE Tests_foo(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_bar,_foo,__result,_autovar;
+    VALUE it ,__result,_autovar;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -185,12 +185,7 @@ VALUE Tests_foo(VALUE self ) {
     Data_Get_Struct(self,cstruct,ptr);
     it=rb_funcall(self,sy_bar,0);
     FAILTEST(fail);
-    _bar=it;;
-    bind_aset(bind2,1,_foo);
-    bind_aset(bind2,2,_bar);
-    it=rb_funcall(self,sy_Tests_bind_lb_1_rb__pl__3b73,1,bind2);
-    _foo=bind_aget(bind2,1);;
-    _bar=bind_aget(bind2,2);;
+    it=rb_funcall(self,sy_Tests_foo_pl_bar_ac93,1,bind2);
     __result=it;;
     int stop1=0;
     while(!stop1) {
@@ -426,8 +421,8 @@ void Init_tests_c() {
     rb_global_variable(&s_g_b2f5);
     sy_Tests_bind_lb_1_rb__eq__58f9=rb_intern("Tests_bind_lb_1_rb__eq__58f9");
     sy_Tests_bind_lb_1_rb__pl__0a71=rb_intern("Tests_bind_lb_1_rb__pl__0a71");
-    sy_Tests_bind_lb_1_rb__pl__3b73=rb_intern("Tests_bind_lb_1_rb__pl__3b73");
     sy_Tests_bind_lb_1_rb__pl__61a1=rb_intern("Tests_bind_lb_1_rb__pl__61a1");
+    sy_Tests_foo_pl_bar_ac93=rb_intern("Tests_foo_pl_bar_ac93");
     sy_bar=rb_intern("bar");
     sy_seq=rb_intern("seq");
     sy_token=rb_intern("token");
@@ -438,5 +433,5 @@ void Init_tests_c() {
     rb_define_method(cls_Tests,"s2",Tests_s2,0);
     rb_define_method(cls_Tests,"sw",Tests_sw,0);
     rb_define_method(cls_Tests,"test",Tests_test,0);
-    rb_eval_string("testversiontests('d9fffd929e27b9e66f129b49cb7822fd')");
+    rb_eval_string("testversiontests('a13f1bf02e5d69c6d0274a214f332f9d')");
 }

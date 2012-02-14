@@ -34,8 +34,11 @@ end
 def Remove_Left_Recursion__lp_must_em_43e9(bind)
 (must_empty?(bind[1])) || FAIL
 end
-def Remove_Left_Recursion_a_eq_autova_d0a0(bind)
-a=autovar;src.body = Seq[bind[1],Many[Seq[Act[Args[a,"=",@result,";bind.reset;",@result,"=",a]],bind[2]]]] if @left_rec
+def Remove_Left_Recursion_bind_lb_1_rb__dot__44a5(bind)
+bind[1].dup
+end
+def Remove_Left_Recursion_bind_lb_1_rb__eq__56ab(bind)
+bind[1]=autovar;src.body = Seq[bind[2],Many[Seq[Act[Args[bind[1],"=",@result,";bind.reset;",@result,"=",bind[1]]],bind[3]]]] if @left_rec
 end
 def Remove_Left_Recursion_bind_lb_1_rb__sp__4ee5(bind)
 bind[1] ? @result       : Apply["fails"]
@@ -58,15 +61,15 @@ end
 
 
 def remove_left_rigth_recursion_compiled_by
-'24ed2a6c964e0d5e201acf7e654e5383'
+'05268c7601647f5214fdd08cdda5b8aa'
 end
 def remove_left_rigth_recursion_source_hash
-'0c5137caf49e57c254371395d36326a2'
+'cad4af78a099c679de40b4fc88272c9a'
 end
 def testversionremove_left_rigth_recursion(r)
  raise "invalid version" if r!=remove_left_rigth_recursion_version
 end
 def remove_left_rigth_recursion_version
-'8a1e0de52d1a5f5d346ed0fb62cb707d'
+'30b57ce44a4eea99172f1ebc372e86ce'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/remove_left_rigth_recursion_c"
