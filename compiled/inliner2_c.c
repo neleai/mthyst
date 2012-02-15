@@ -14,6 +14,11 @@ static VALUE sy_DetectCalls__at_calls_7f81;
 static VALUE sy_DetectCalls__at_calls_eq__le__39e9;
 static VALUE sy_DetectCalls__at_calls_lb_b_e709;
 static VALUE sy_DetectCalls__lp_src_dot_ins_a413;
+VALUE profile_report_DetectCalls(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    if(ptr->mem) {} return Qnil;
+}
 VALUE DetectCalls_root(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,__result;
@@ -436,6 +441,11 @@ static VALUE sy_Inliner2_if_sp_bind_lb__1bed;
 static VALUE sy_Inliner2_src_dot_args_2df5;
 static VALUE sy_Inliner2_src_dot_loca_1df0;
 static VALUE sy_Inliner2_src_dot_name_80f3;
+VALUE profile_report_Inliner2(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    if(ptr->mem) {} return Qnil;
+}
 VALUE Inliner2_root(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_from,_to,_autovar,_autovar_2,_autovar_3,_name,_args,_body,_autovar_4,_autovar_5,_autovar_6,_autovar_7,__result;
@@ -966,6 +976,7 @@ fail:
 void Init_inliner2_c() {
     cls_DetectCalls=rb_define_class("DetectCalls",rb_const_get(rb_cObject,rb_intern("Visitor")));
     failobj=rb_eval_string("FAIL");
+    rb_define_method(cls_DetectCalls,"profile_report",profile_report_DetectCalls,0);
     switchhash_DetectCalls_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Rule\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_DetectCalls_1);;
     switchhash_DetectCalls_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Object\n}");
@@ -984,6 +995,7 @@ void Init_inliner2_c() {
 
     cls_Inliner2=rb_define_class("Inliner2",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2")));
     failobj=rb_eval_string("FAIL");
+    rb_define_method(cls_Inliner2,"profile_report",profile_report_Inliner2,0);
     switchhash_Inliner2_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Rule\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_Inliner2_1);;
     switchhash_Inliner2_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Rule\nnext h[k]=1 if k<=Object\n}");
@@ -1008,5 +1020,5 @@ void Init_inliner2_c() {
     rb_define_method(cls_Inliner2,"traverse",Inliner2_traverse,0);
     rb_define_method(cls_Inliner2,"traverse_item",Inliner2_traverse_item,0);
     rb_define_method(cls_Inliner2,"visit",Inliner2_visit,0);
-    rb_eval_string("testversioninliner2('a906e9c0558f70577fe83fc245a818aa')");
+    rb_eval_string("testversioninliner2('3f62d1d9cf52b642edcd6401e4ae6066')");
 }

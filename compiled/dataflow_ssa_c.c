@@ -63,7 +63,9 @@ VALUE profile_report_Dataflow(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     if(ptr->mem) {
-        printf("root hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
+        fprintf(profile_report,"memo Dataflow::root hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
+        ((memo_struct *)ptr->mem)->hits[113]=0;
+        ((memo_struct *)ptr->mem)->miss[113]=0;
     }
     return Qnil;
 }
@@ -2013,6 +2015,11 @@ static VALUE sy_Dead_Code_Deleter3_if_sp_bind_lb__1bed;
 static VALUE sy_Dead_Code_Deleter3_src_25d9;
 static VALUE sy_Dead_Code_Deleter3_src_dot_dup_d768;
 static VALUE sy_Dead_Code_Deleter3_src_dot_reac_cd39;
+VALUE profile_report_Dead_Code_Deleter3(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    if(ptr->mem) {} return Qnil;
+}
 VALUE Dead_Code_Deleter3_root(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,__result;
@@ -2596,7 +2603,9 @@ VALUE profile_report_Forget_SSA(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     if(ptr->mem) {
-        printf("traverse hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
+        fprintf(profile_report,"memo Forget_SSA::traverse hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
+        ((memo_struct *)ptr->mem)->hits[113]=0;
+        ((memo_struct *)ptr->mem)->miss[113]=0;
     }
     return Qnil;
 }
@@ -3098,6 +3107,7 @@ void Init_dataflow_ssa_c() {
 
     cls_Dead_Code_Deleter3=rb_define_class("Dead_Code_Deleter3",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2")));
     failobj=rb_eval_string("FAIL");
+    rb_define_method(cls_Dead_Code_Deleter3,"profile_report",profile_report_Dead_Code_Deleter3,0);
     switchhash_Dead_Code_Deleter3_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Rule\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_Dead_Code_Deleter3_1);;
     switchhash_Dead_Code_Deleter3_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=CAct\nnext h[k]=2 if k<=Result\nnext h[k]=3 if k<=Apply\nnext h[k]=4 if k<=Bind\nnext h[k]=5 if k<=Local\nnext h[k]=6 if k<=Object\n}");
@@ -3144,5 +3154,5 @@ void Init_dataflow_ssa_c() {
     rb_define_method(cls_Forget_SSA,"traverse",Forget_SSA_traverse,0);
     rb_define_method(cls_Forget_SSA,"traverse_item",Forget_SSA_traverse_item,0);
     rb_define_method(cls_Forget_SSA,"visit",Forget_SSA_visit,0);
-    rb_eval_string("testversiondataflow_ssa('1478e7f99c3212db8c855bcc8ffe1967')");
+    rb_eval_string("testversiondataflow_ssa('9f725d6d7aac16a6206c4be58d0180e1')");
 }

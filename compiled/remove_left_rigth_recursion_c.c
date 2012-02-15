@@ -26,6 +26,11 @@ static VALUE sy_Remove_Left_Recursion_bind_lb_1_rb__sp__4ee5;
 static VALUE sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213;
 static VALUE sy_Remove_Left_Recursion_src_25d9;
 static VALUE sy_Remove_Left_Recursion_src_dot_body_519e;
+VALUE profile_report_Remove_Left_Recursion(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    if(ptr->mem) {} return Qnil;
+}
 VALUE Remove_Left_Recursion_first(VALUE self ,VALUE a0) {
     VALUE vals[1];
     VALUE it ,_autovar,_follow,__result,_x,_autovar_2,_autovar_3,_autovar_4,_expr,_autovar_5,_autovar_6,_autovar_7,_autovar_8,_ary,_autovar_9,_autovar_10,_autovar_11,_first,_autovar_12,_autovar_13,_rest,_autovar_14,_autovar_15,_autovar_16,_autovar_17,_autovar_18;
@@ -1660,6 +1665,7 @@ fail:
 void Init_remove_left_rigth_recursion_c() {
     cls_Remove_Left_Recursion=rb_define_class("Remove_Left_Recursion",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2")));
     failobj=rb_eval_string("FAIL");
+    rb_define_method(cls_Remove_Left_Recursion,"profile_report",profile_report_Remove_Left_Recursion,0);
     switchhash_Remove_Left_Recursion_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Rule\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_Remove_Left_Recursion_1);;
     switchhash_Remove_Left_Recursion_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Bind\nnext h[k]=2 if k<=Or\nnext h[k]=3 if k<=Seq\nnext h[k]=4 if k<=Object\n}");
@@ -1687,5 +1693,5 @@ void Init_remove_left_rigth_recursion_c() {
     rb_define_method(cls_Remove_Left_Recursion,"first",Remove_Left_Recursion_first,1);
     rb_define_method(cls_Remove_Left_Recursion,"must_empty",Remove_Left_Recursion_must_empty,0);
     rb_define_method(cls_Remove_Left_Recursion,"root",Remove_Left_Recursion_root,0);
-    rb_eval_string("testversionremove_left_rigth_recursion('30b57ce44a4eea99172f1ebc372e86ce')");
+    rb_eval_string("testversionremove_left_rigth_recursion('da2dbbc879672a4cb066f919c5b9fa14')");
 }

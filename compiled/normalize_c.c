@@ -62,6 +62,11 @@ static VALUE sy_Normalize_src_dot_ary_d5cf;
 static VALUE sy_Normalize_src_dot_clas_68f9;
 static VALUE sy_Normalize_src_dot_free_3d49;
 static VALUE sy_Normalize_src_dot_name_80f3;
+VALUE profile_report_Normalize(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    if(ptr->mem) {} return Qnil;
+}
 VALUE Normalize_act(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_s,__result;
@@ -3526,6 +3531,7 @@ void Init_normalize_c() {
     rb_global_variable(&i_0);
     i_1=rb_funcall(rb_str_new2("1"),rb_intern("to_i"),0);
     rb_global_variable(&i_1);
+    rb_define_method(cls_Normalize,"profile_report",profile_report_Normalize,0);
     s__bs__bs__7f81=rb_str_new2("\\");
     rb_global_variable(&s__bs__bs__7f81);
     s__bs__dq__3bd8=rb_str_new2("\"");
@@ -3597,5 +3603,5 @@ void Init_normalize_c() {
     rb_define_method(cls_Normalize,"or",Normalize_or,0);
     rb_define_method(cls_Normalize,"seq2",Normalize_seq2,0);
     rb_define_method(cls_Normalize,"switch",Normalize_switch,0);
-    rb_eval_string("testversionnormalize('2d1108cda28eaf0276dad2b34d9f0332')");
+    rb_eval_string("testversionnormalize('ef40cd173264a4d7ab0f80c8e4c306aa')");
 }

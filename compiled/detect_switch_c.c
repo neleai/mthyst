@@ -24,6 +24,11 @@ static VALUE sy_First_Dataflow_depends_lp__7463;
 static VALUE sy_First_Dataflow_lattice_dot__5a9e;
 static VALUE sy_First_Dataflow_lattice_dot__b0f6;
 static VALUE sy_analyze;
+VALUE profile_report_First_Dataflow(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    if(ptr->mem) {} return Qnil;
+}
 VALUE First_Dataflow_first(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,__result,_autovar_3,_name,_autovar_4,_autovar_5,_autovar_6,_autovar_7,_autovar_8,_autovar_9,_val,_autovar_10,_vals,_autovar_11,_autovar_12,_p,_v,_autovar_13,_autovar_14,_el,_autovar_15,_autovar_16,_nev,_autovar_17;
@@ -755,6 +760,11 @@ static VALUE sy_Minsize_Dataflow_lattice_dot__b0f6;
 static VALUE sy_Minsize_Dataflow_lattice_dot__e0e5;
 static VALUE sy_Minsize_Dataflow_lattice_lb__bbba;
 static VALUE sy_Minsize_Dataflow_lattice_lb__fdee;
+VALUE profile_report_Minsize_Dataflow(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    if(ptr->mem) {} return Qnil;
+}
 VALUE Minsize_Dataflow_first(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,_str,_autovar_7,_autovar_8,_autovar_9,_autovar_10,__result;
@@ -1866,6 +1876,11 @@ static VALUE sy_Maxsize_Dataflow_lattice_dot__b0f6;
 static VALUE sy_Maxsize_Dataflow_lattice_dot__e0e5;
 static VALUE sy_Maxsize_Dataflow_lattice_lb__bbba;
 static VALUE sy_Maxsize_Dataflow_lattice_lb__fdee;
+VALUE profile_report_Maxsize_Dataflow(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    if(ptr->mem) {} return Qnil;
+}
 VALUE Maxsize_Dataflow_first(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,_str,_autovar_7,_autovar_8,_autovar_9,_autovar_10,__result;
@@ -2967,6 +2982,11 @@ static VALUE sy_Complexity_Dataflow_lattice_lb__5911;
 static VALUE sy_Complexity_Dataflow_lattice_lb__6ee3;
 static VALUE sy_Complexity_Dataflow_lattice_lb__ba7e;
 static VALUE sy_Complexity_Dataflow_lattice_lb__f621;
+VALUE profile_report_Complexity_Dataflow(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    if(ptr->mem) {} return Qnil;
+}
 VALUE Complexity_Dataflow_first(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_name,_autovar_2,_autovar_3,_v,__result,_autovar_4,_autovar_5,_autovar_6,_autovar_7,_autovar_8,_autovar_9,_autovar_10;
@@ -3398,6 +3418,11 @@ static VALUE sy_Switch_Char_Dataflow_lattice_dot__5a9e;
 static VALUE sy_Switch_Char_Dataflow_lattice_dot__b0f6;
 static VALUE sy_Switch_Char_Dataflow_lattice_dot__e0e5;
 static VALUE sy_Switch_Char_Dataflow_regchar_lp__90af;
+VALUE profile_report_Switch_Char_Dataflow(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    if(ptr->mem) {} return Qnil;
+}
 VALUE Switch_Char_Dataflow_first(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,_autovar_7,_str,_autovar_8,_autovar_9,_autovar_10,_autovar_11,_autovar_12,_autovar_13,__result;
@@ -4757,6 +4782,11 @@ static VALUE sy_Switch_Clas_Dataflow_lattice_dot__3340;
 static VALUE sy_Switch_Clas_Dataflow_lattice_dot__5a9e;
 static VALUE sy_Switch_Clas_Dataflow_lattice_dot__b0f6;
 static VALUE sy_Switch_Clas_Dataflow_lattice_lb__becc;
+VALUE profile_report_Switch_Clas_Dataflow(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    if(ptr->mem) {} return Qnil;
+}
 VALUE Switch_Clas_Dataflow_first(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,_cls,__result,_autovar_7,_autovar_8;
@@ -5619,6 +5649,11 @@ static VALUE sy_Cant_Fail_Dataflow_lattice_dot__5a9e;
 static VALUE sy_Cant_Fail_Dataflow_lattice_dot__b0f6;
 static VALUE sy_Cant_Fail_Dataflow_lattice_lb__0ff9;
 static VALUE sy_Cant_Fail_Dataflow_src_dot_to_5e99;
+VALUE profile_report_Cant_Fail_Dataflow(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    if(ptr->mem) {} return Qnil;
+}
 VALUE Cant_Fail_Dataflow_first(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,__result,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,_autovar_7,_autovar_8,_ary,_autovar_9,_autovar_10,_autovar_11,_autovar_12;
@@ -6731,6 +6766,11 @@ static VALUE sy_Detect_First_src_25d9;
 static VALUE sy_Detect_First_src_dot_ary_d5cf;
 static VALUE sy_Detect_First_src_dot_rule_5acf;
 static VALUE sy_Detect_First_src_dot_rule_a719;
+VALUE profile_report_Detect_First(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    if(ptr->mem) {} return Qnil;
+}
 VALUE Detect_First_cant_fail(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_e,__result;
@@ -7623,7 +7663,9 @@ VALUE profile_report_Detect_Switch_Char(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     if(ptr->mem) {
-        printf("traverse hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
+        fprintf(profile_report,"memo Detect_Switch_Char::traverse hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
+        ((memo_struct *)ptr->mem)->hits[113]=0;
+        ((memo_struct *)ptr->mem)->miss[113]=0;
     }
     return Qnil;
 }
@@ -9339,7 +9381,9 @@ VALUE profile_report_Detect_Switch_Clas(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     if(ptr->mem) {
-        printf("traverse hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
+        fprintf(profile_report,"memo Detect_Switch_Clas::traverse hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
+        ((memo_struct *)ptr->mem)->hits[113]=0;
+        ((memo_struct *)ptr->mem)->miss[113]=0;
     }
     return Qnil;
 }
@@ -10857,6 +10901,11 @@ static VALUE sy_Detect_Size__sh_lowleve_46e8;
 static VALUE sy_Detect_Size_bind_lb_1_rb__eq__28f0;
 static VALUE sy_Detect_Size_bind_lb_1_rb__gt__f573;
 static VALUE sy_Detect_Size_minsize_lp__01f0;
+VALUE profile_report_Detect_Size(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    if(ptr->mem) {} return Qnil;
+}
 VALUE Detect_Size_predicate(VALUE self ,VALUE a0) {
     VALUE vals[1];
     VALUE it ,_el,_msize,_autovar,_s,_autovar_2,__result,_autovar_3,_s_2,_autovar_4,_autovar_5,__result_2,_autovar_6,_ary,_autovar_7,_autovar_8,_el_2,_autovar_9;
@@ -11511,6 +11560,7 @@ fail:
 void Init_detect_switch_c() {
     cls_First_Dataflow=rb_define_class("First_Dataflow",rb_const_get(rb_cObject,rb_intern("Amethyst")));
     failobj=rb_eval_string("FAIL");
+    rb_define_method(cls_First_Dataflow,"profile_report",profile_report_First_Dataflow,0);
     switchhash_First_Dataflow_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=CAct\nnext h[k]=2 if k<=Cut\nnext h[k]=3 if k<=Local\nnext h[k]=4 if k<=Lookahead\nnext h[k]=5 if k<=Pass\nnext h[k]=6 if k<=Result\nnext h[k]=7 if k<=Stop\nnext h[k]=8 if k<=Apply\nnext h[k]=9 if k<=Bind\nnext h[k]=10 if k<=Many\nnext h[k]=11 if k<=Or\nnext h[k]=12 if k<=Switch_Char\nnext h[k]=13 if k<=Switch_Clas\nnext h[k]=14 if k<=Seq\nnext h[k]=15 if k<=Object\n}");
     rb_global_variable(&switchhash_First_Dataflow_1);;
     switchhash_First_Dataflow_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Or\nnext h[k]=1 if k<=Switch_Char\nnext h[k]=2 if k<=Switch_Clas\nnext h[k]=3 if k<=Object\n}");
@@ -11538,6 +11588,7 @@ void Init_detect_switch_c() {
 
     cls_Minsize_Dataflow=rb_define_class("Minsize_Dataflow",rb_const_get(rb_cObject,rb_intern("First_Dataflow")));
     failobj=rb_eval_string("FAIL");
+    rb_define_method(cls_Minsize_Dataflow,"profile_report",profile_report_Minsize_Dataflow,0);
     switchhash_Minsize_Dataflow_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_Minsize_Dataflow_1);;
     switchhash_Minsize_Dataflow_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=CAct\nnext h[k]=1 if k<=Object\n}");
@@ -11565,6 +11616,7 @@ void Init_detect_switch_c() {
 
     cls_Maxsize_Dataflow=rb_define_class("Maxsize_Dataflow",rb_const_get(rb_cObject,rb_intern("First_Dataflow")));
     failobj=rb_eval_string("FAIL");
+    rb_define_method(cls_Maxsize_Dataflow,"profile_report",profile_report_Maxsize_Dataflow,0);
     switchhash_Maxsize_Dataflow_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_Maxsize_Dataflow_1);;
     switchhash_Maxsize_Dataflow_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=CAct\nnext h[k]=1 if k<=Object\n}");
@@ -11592,6 +11644,7 @@ void Init_detect_switch_c() {
 
     cls_Complexity_Dataflow=rb_define_class("Complexity_Dataflow",rb_const_get(rb_cObject,rb_intern("First_Dataflow")));
     failobj=rb_eval_string("FAIL");
+    rb_define_method(cls_Complexity_Dataflow,"profile_report",profile_report_Complexity_Dataflow,0);
     switchhash_Complexity_Dataflow_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Many\nnext h[k]=2 if k<=Or\nnext h[k]=3 if k<=Switch_Char\nnext h[k]=4 if k<=Switch_Clas\nnext h[k]=5 if k<=Seq\nnext h[k]=6 if k<=Object\n}");
     rb_global_variable(&switchhash_Complexity_Dataflow_1);;
     sy_Complexity_Dataflow_Compiler_558e=rb_intern("Complexity_Dataflow_Compiler_558e");
@@ -11608,6 +11661,7 @@ void Init_detect_switch_c() {
 
     cls_Switch_Char_Dataflow=rb_define_class("Switch_Char_Dataflow",rb_const_get(rb_cObject,rb_intern("First_Dataflow")));
     failobj=rb_eval_string("FAIL");
+    rb_define_method(cls_Switch_Char_Dataflow,"profile_report",profile_report_Switch_Char_Dataflow,0);
     switchhash_Switch_Char_Dataflow_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_Switch_Char_Dataflow_1);;
     switchhash_Switch_Char_Dataflow_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=CAct\nnext h[k]=2 if k<=Object\n}");
@@ -11635,6 +11689,7 @@ void Init_detect_switch_c() {
 
     cls_Switch_Clas_Dataflow=rb_define_class("Switch_Clas_Dataflow",rb_const_get(rb_cObject,rb_intern("First_Dataflow")));
     failobj=rb_eval_string("FAIL");
+    rb_define_method(cls_Switch_Clas_Dataflow,"profile_report",profile_report_Switch_Clas_Dataflow,0);
     switchhash_Switch_Clas_Dataflow_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_Switch_Clas_Dataflow_1);;
     switchhash_Switch_Clas_Dataflow_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=CAct\nnext h[k]=1 if k<=Object\n}");
@@ -11663,6 +11718,7 @@ void Init_detect_switch_c() {
 
     cls_Cant_Fail_Dataflow=rb_define_class("Cant_Fail_Dataflow",rb_const_get(rb_cObject,rb_intern("First_Dataflow")));
     failobj=rb_eval_string("FAIL");
+    rb_define_method(cls_Cant_Fail_Dataflow,"profile_report",profile_report_Cant_Fail_Dataflow,0);
     switchhash_Cant_Fail_Dataflow_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Apply\nnext h[k]=2 if k<=Lookahead\nnext h[k]=3 if k<=Or\nnext h[k]=4 if k<=Pass\nnext h[k]=5 if k<=Object\n}");
     rb_global_variable(&switchhash_Cant_Fail_Dataflow_1);;
     switchhash_Cant_Fail_Dataflow_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Cut\nnext h[k]=1 if k<=Seq\nnext h[k]=2 if k<=Object\n}");
@@ -11694,6 +11750,7 @@ void Init_detect_switch_c() {
 
     cls_Detect_First=rb_define_class("Detect_First",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2")));
     failobj=rb_eval_string("FAIL");
+    rb_define_method(cls_Detect_First,"profile_report",profile_report_Detect_First,0);
     switchhash_Detect_First_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Grammar\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_Detect_First_1);;
     switchhash_Detect_First_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Rule\nnext h[k]=1 if k<=Object\n}");
@@ -11845,6 +11902,7 @@ void Init_detect_switch_c() {
 
     cls_Detect_Size=rb_define_class("Detect_Size",rb_const_get(rb_cObject,rb_intern("Amethyst")));
     failobj=rb_eval_string("FAIL");
+    rb_define_method(cls_Detect_Size,"profile_report",profile_report_Detect_Size,0);
     switchhash_Detect_Size_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Or\nnext h[k]=2 if k<=Seq\nnext h[k]=3 if k<=Object\n}");
     rb_global_variable(&switchhash_Detect_Size_1);;
     switchhash_Detect_Size_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Or\nnext h[k]=2 if k<=Seq\nnext h[k]=3 if k<=Object\n}");
@@ -11859,5 +11917,5 @@ void Init_detect_switch_c() {
     sy_Detect_Size_minsize_lp__01f0=rb_intern("Detect_Size_minsize_lp__01f0");
     rb_define_method(cls_Detect_Size,"predicate",Detect_Size_predicate,1);
     rb_define_method(cls_Detect_Size,"predicate2",Detect_Size_predicate2,1);
-    rb_eval_string("testversiondetect_switch('1d4abe4a87d32109f3e433868a4656ca')");
+    rb_eval_string("testversiondetect_switch('e9d138ab003abcff90905bef7d8e65ef')");
 }

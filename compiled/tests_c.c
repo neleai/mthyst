@@ -30,6 +30,11 @@ static VALUE sy_Tests_bind_lb_1_rb__pl__61a1;
 static VALUE sy_bar;
 static VALUE sy_seq;
 static VALUE sy_token;
+VALUE profile_report_Tests(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    if(ptr->mem) {} return Qnil;
+}
 VALUE Tests_abc(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,__result;
@@ -517,6 +522,7 @@ void Init_tests_c() {
     rb_global_variable(&i_3);
     i_42=rb_funcall(rb_str_new2("42"),rb_intern("to_i"),0);
     rb_global_variable(&i_42);
+    rb_define_method(cls_Tests,"profile_report",profile_report_Tests,0);
     s_a_0cc1=rb_str_new2("a");
     rb_global_variable(&s_a_0cc1);
     s_b_92eb=rb_str_new2("b");
@@ -548,5 +554,5 @@ void Init_tests_c() {
     rb_define_method(cls_Tests,"s2",Tests_s2,0);
     rb_define_method(cls_Tests,"sw",Tests_sw,0);
     rb_define_method(cls_Tests,"test",Tests_test,0);
-    rb_eval_string("testversiontests('efec2fbcd429dbf27baa9d0bca065707')");
+    rb_eval_string("testversiontests('17ae53979f55cf4ad1071ada3a8a894c')");
 }

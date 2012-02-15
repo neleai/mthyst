@@ -13,6 +13,11 @@ static VALUE sy_Constant_Propagator__at_depend_eq__07a9;
 static VALUE sy_Constant_Propagator_a_eq_Consta_2e1d;
 static VALUE sy_Constant_Propagator_src_25d9;
 static VALUE sy_valof;
+VALUE profile_report_Constant_Propagator(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    if(ptr->mem) {} return Qnil;
+}
 VALUE Constant_Propagator_root(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_it,__result;
@@ -423,6 +428,11 @@ static VALUE sy_Constant_Traverser_if_sp_bind_lb__1bed;
 static VALUE sy_Constant_Traverser_src_25d9;
 static VALUE sy_Constant_Traverser_src_dot_cfg_eq__15aa;
 static VALUE sy_Constant_Traverser_src_dot_dup_d768;
+VALUE profile_report_Constant_Traverser(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    if(ptr->mem) {} return Qnil;
+}
 VALUE Constant_Traverser_consts(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_ary,_autovar,_autovar_2,__result;
@@ -1067,6 +1077,7 @@ fail:
 void Init_constant_propagation_c() {
     cls_Constant_Propagator=rb_define_class("Constant_Propagator",rb_const_get(rb_cObject,rb_intern("Amethyst")));
     failobj=rb_eval_string("FAIL");
+    rb_define_method(cls_Constant_Propagator,"profile_report",profile_report_Constant_Propagator,0);
     switchhash_Constant_Propagator_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Bind\nnext h[k]=2 if k<=CAct\nnext h[k]=3 if k<=Local\nnext h[k]=4 if k<=Object\n}");
     rb_global_variable(&switchhash_Constant_Propagator_1);;
     switchhash_Constant_Propagator_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Lambda\nnext h[k]=1 if k<=Local\nnext h[k]=2 if k<=Object\n}");
@@ -1083,6 +1094,7 @@ void Init_constant_propagation_c() {
 
     cls_Constant_Traverser=rb_define_class("Constant_Traverser",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2")));
     failobj=rb_eval_string("FAIL");
+    rb_define_method(cls_Constant_Traverser,"profile_report",profile_report_Constant_Traverser,0);
     switchhash_Constant_Traverser_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Rule\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_Constant_Traverser_1);;
     switchhash_Constant_Traverser_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Local\nnext h[k]=1 if k<=Object\n}");
@@ -1112,5 +1124,5 @@ void Init_constant_propagation_c() {
     rb_define_method(cls_Constant_Traverser,"traverse",Constant_Traverser_traverse,0);
     rb_define_method(cls_Constant_Traverser,"traverse_item",Constant_Traverser_traverse_item,0);
     rb_define_method(cls_Constant_Traverser,"visit",Constant_Traverser_visit,0);
-    rb_eval_string("testversionconstant_propagation('45e100db0294c28e1fb126779d4708ba')");
+    rb_eval_string("testversionconstant_propagation('546f44b12f674f4e4529a88bdc131644')");
 }

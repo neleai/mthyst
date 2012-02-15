@@ -38,23 +38,23 @@ end
 def Amethyst_bind_lb_1_rb__ti__cfcb(bind)
 bind[1]*""
 end
-def Amethyst_self_dot_pro_e13d(bind)
-self.profile_report if self.is_a?(AmethystParser);bind[1]
+def Amethyst_self_dot_pro_8089(bind)
+self.profile_report;bind[1]
 end
 
 end
 
 
 def amethyst_compiled_by
-'d8f06798269aa62c621d7d85c87c7f99'
+'da5c76dc77c352f68ed45137114e7490'
 end
 def amethyst_source_hash
-'10835d24021df3341dcf3619352ee770'
+'3cb7f3495f49f0204f0b63d2d8d5e451'
 end
 def testversionamethyst(r)
  raise "invalid version" if r!=amethyst_version
 end
 def amethyst_version
-'d3a50cced77d04ea21d2b3fb20b08690'
+'2644a67784db888f2bc982474b468762'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/amethyst_c"

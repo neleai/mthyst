@@ -13,6 +13,11 @@ static VALUE sy_Detect_Implicit_Variables__at_vars_a187;
 static VALUE sy_Detect_Implicit_Variables__at_vars_eq_Ha_dec8;
 static VALUE sy_Detect_Implicit_Variables__at_vars_lb_bi_edce;
 static VALUE sy_Detect_Implicit_Variables__lp_src_dot_ins_a413;
+VALUE profile_report_Detect_Implicit_Variables(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    if(ptr->mem) {} return Qnil;
+}
 VALUE Detect_Implicit_Variables_root(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result;
@@ -426,6 +431,11 @@ static VALUE sy_Add_Implicit_Variables_bind_lb_1_rb__sp__6af0;
 static VALUE sy_Add_Implicit_Variables_if_sp_bind_lb__1bed;
 static VALUE sy_Add_Implicit_Variables_l_eq_Local_lb__2887;
 static VALUE sy_Add_Implicit_Variables_l_eq_Local_lb__a11b;
+VALUE profile_report_Add_Implicit_Variables(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    if(ptr->mem) {} return Qnil;
+}
 VALUE Add_Implicit_Variables_root(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_t,_autovar_3,__result;
@@ -907,6 +917,7 @@ fail:
 void Init_implicit_variables_c() {
     cls_Detect_Implicit_Variables=rb_define_class("Detect_Implicit_Variables",rb_const_get(rb_cObject,rb_intern("Visitor")));
     failobj=rb_eval_string("FAIL");
+    rb_define_method(cls_Detect_Implicit_Variables,"profile_report",profile_report_Detect_Implicit_Variables,0);
     switchhash_Detect_Implicit_Variables_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_Detect_Implicit_Variables_1);;
     switchhash_Detect_Implicit_Variables_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}");
@@ -923,6 +934,7 @@ void Init_implicit_variables_c() {
 
     cls_Add_Implicit_Variables=rb_define_class("Add_Implicit_Variables",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2")));
     failobj=rb_eval_string("FAIL");
+    rb_define_method(cls_Add_Implicit_Variables,"profile_report",profile_report_Add_Implicit_Variables,0);
     switchhash_Add_Implicit_Variables_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Rule\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_Add_Implicit_Variables_1);;
     switchhash_Add_Implicit_Variables_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Object\n}");
@@ -945,5 +957,5 @@ void Init_implicit_variables_c() {
     rb_define_method(cls_Add_Implicit_Variables,"traverse",Add_Implicit_Variables_traverse,0);
     rb_define_method(cls_Add_Implicit_Variables,"traverse_item",Add_Implicit_Variables_traverse_item,0);
     rb_define_method(cls_Add_Implicit_Variables,"visit",Add_Implicit_Variables_visit,0);
-    rb_eval_string("testversionimplicit_variables('0f16345aa476b1243f054033e27fbf15')");
+    rb_eval_string("testversionimplicit_variables('abdd2b9ca5d88b7649f7eeaa9be61a9e')");
 }

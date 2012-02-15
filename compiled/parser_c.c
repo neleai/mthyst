@@ -113,8 +113,12 @@ VALUE profile_report_AmethystParser(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     if(ptr->mem) {
-        printf("argsOpt hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
-        printf("name hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[115],((memo_struct *)ptr->mem)->miss[115]);
+        fprintf(profile_report,"memo AmethystParser::argsOpt hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
+        ((memo_struct *)ptr->mem)->hits[113]=0;
+        ((memo_struct *)ptr->mem)->miss[113]=0;
+        fprintf(profile_report,"memo AmethystParser::name hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[115],((memo_struct *)ptr->mem)->miss[115]);
+        ((memo_struct *)ptr->mem)->hits[115]=0;
+        ((memo_struct *)ptr->mem)->miss[115]=0;
     }
     return Qnil;
 }
@@ -7769,5 +7773,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('1425781982bade7ce38f493c2712b29f')");
+    rb_eval_string("testversionparser('fb8ed106b715a65fbb101ac9a0a343a5')");
 }

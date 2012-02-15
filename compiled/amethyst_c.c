@@ -58,9 +58,14 @@ static VALUE sy_Amethyst_bind_lb_1_rb__dot__03c2;
 static VALUE sy_Amethyst_bind_lb_1_rb__dot__c3ef;
 static VALUE sy_Amethyst_bind_lb_1_rb__dot__e879;
 static VALUE sy_Amethyst_bind_lb_1_rb__ti__cfcb;
-static VALUE sy_Amethyst_self_dot_pro_e13d;
+static VALUE sy_Amethyst_self_dot_pro_8089;
 static VALUE sy__reverse;
 static VALUE sy_apply;
+VALUE profile_report_Amethyst(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    if(ptr->mem) {} return Qnil;
+}
 VALUE Amethyst__(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result,__result_2;
@@ -1785,7 +1790,7 @@ VALUE Amethyst_parse(VALUE self ,VALUE a0,VALUE a1) {
     FAILTEST(pass1);
     _r=it;;
     bind_aset(bind2,1,_r);
-    it=rb_funcall(self,sy_Amethyst_self_dot_pro_e13d,1,bind2);
+    it=rb_funcall(self,sy_Amethyst_self_dot_pro_8089,1,bind2);
     _r=bind_aget(bind2,1);;
     _autovar_2=it;;
     it=Qnil;
@@ -2342,6 +2347,7 @@ fail:
 void Init_amethyst_c() {
     cls_Amethyst=rb_define_class("Amethyst",rb_const_get(rb_cObject,rb_intern("AmethystCore")));
     failobj=rb_eval_string("FAIL");
+    rb_define_method(cls_Amethyst,"profile_report",profile_report_Amethyst,0);
     s_0b_3470=rb_str_new2("0b");
     rb_global_variable(&s_0b_3470);
     s_0o_6f57=rb_str_new2("0o");
@@ -2374,7 +2380,7 @@ void Init_amethyst_c() {
     sy_Amethyst_bind_lb_1_rb__dot__c3ef=rb_intern("Amethyst_bind_lb_1_rb__dot__c3ef");
     sy_Amethyst_bind_lb_1_rb__dot__e879=rb_intern("Amethyst_bind_lb_1_rb__dot__e879");
     sy_Amethyst_bind_lb_1_rb__ti__cfcb=rb_intern("Amethyst_bind_lb_1_rb__ti__cfcb");
-    sy_Amethyst_self_dot_pro_e13d=rb_intern("Amethyst_self_dot_pro_e13d");
+    sy_Amethyst_self_dot_pro_8089=rb_intern("Amethyst_self_dot_pro_8089");
     sy__reverse=rb_intern("_reverse");
     sy_apply=rb_intern("apply");
     rb_define_method(cls_Amethyst,"_",Amethyst__,0);
@@ -2410,5 +2416,5 @@ void Init_amethyst_c() {
     rb_define_method(cls_Amethyst,"upper",Amethyst_upper,0);
     rb_define_method(cls_Amethyst,"word",Amethyst_word,0);
     rb_define_method(cls_Amethyst,"xdigit",Amethyst_xdigit,0);
-    rb_eval_string("testversionamethyst('d3a50cced77d04ea21d2b3fb20b08690')");
+    rb_eval_string("testversionamethyst('2644a67784db888f2bc982474b468762')");
 }

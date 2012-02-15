@@ -10,6 +10,11 @@ static VALUE sy_Traverser_Clone2_bind_lb_1_rb__lt__7b20;
 static VALUE sy_Traverser_Clone2_bind_lb_1_rb__sp__6af0;
 static VALUE sy_Traverser_Clone2_if_sp_bind_lb__1bed;
 static VALUE sy_visit;
+VALUE profile_report_Traverser_Clone2(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    if(ptr->mem) {} return Qnil;
+}
 VALUE Traverser_Clone2_traverse(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_nvars,_ivars,_autovar,_autovar_2,_it,__result;
@@ -307,6 +312,11 @@ VALUE switchhash_Visitor_1;
 static VALUE sy_Visitor__append_lp__d113;
 static VALUE sy_Visitor__lp_src_dot_ins_a413;
 static VALUE sy_visit;
+VALUE profile_report_Visitor(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    if(ptr->mem) {} return Qnil;
+}
 VALUE Visitor_traverse(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,__result;
@@ -597,6 +607,7 @@ fail:
 void Init_traverser_c() {
     cls_Traverser_Clone2=rb_define_class("Traverser_Clone2",rb_const_get(rb_cObject,rb_intern("Amethyst")));
     failobj=rb_eval_string("FAIL");
+    rb_define_method(cls_Traverser_Clone2,"profile_report",profile_report_Traverser_Clone2,0);
     switchhash_Traverser_Clone2_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}");
     rb_global_variable(&switchhash_Traverser_Clone2_1);;
     sy_Traverser_Clone2__lp_src_dot_cla_e144=rb_intern("Traverser_Clone2__lp_src_dot_cla_e144");
@@ -609,6 +620,7 @@ void Init_traverser_c() {
 
     cls_Visitor=rb_define_class("Visitor",rb_const_get(rb_cObject,rb_intern("Amethyst")));
     failobj=rb_eval_string("FAIL");
+    rb_define_method(cls_Visitor,"profile_report",profile_report_Visitor,0);
     switchhash_Visitor_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}");
     rb_global_variable(&switchhash_Visitor_1);;
     sy_Visitor__append_lp__d113=rb_intern("Visitor__append_lp__d113");
@@ -616,5 +628,5 @@ void Init_traverser_c() {
     sy_visit=rb_intern("visit");
     rb_define_method(cls_Visitor,"traverse",Visitor_traverse,0);
     rb_define_method(cls_Visitor,"traverse_item",Visitor_traverse_item,0);
-    rb_eval_string("testversiontraverser('1735b5befa65428d22c572a8807fb1ee')");
+    rb_eval_string("testversiontraverser('5932c17225235af9f721f686a9326769')");
 }

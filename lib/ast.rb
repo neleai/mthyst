@@ -45,15 +45,19 @@ def equalize_by(clas,args)
     end")
 end
 norm=File.new("lib/c/normalize.c","w");
-norm.puts "#include \"ruby.h\""
-norm.puts "typedef struct {
+norm.puts "
+#include \"ruby.h\"
+#include <stdio.h>
+extern FILE * profile_report;
+typedef struct {
   VALUE * ary;
   VALUE * ret;
 } normalize_cache;
 typedef struct {
   VALUE *ary;
   int no;
-} gc_objs; gc_objs* gc_obj;"
+} gc_objs; gc_objs* gc_obj;
+"
 norm.puts "
 	int els_equal(VALUE el,VALUE el2){
 		if (el==el2) return 1;
@@ -209,7 +213,7 @@ void init_normalize(){
 
 }
 void normalize_stats(){
-	#{cn.map{|e| "printf(\"#{e} hits: %i miss: %i\\n\",hits_#{e},miss_#{e});"}*""}
+	#{cn.map{|e| "fprintf(profile_report,\"normalize #{e} hits: %i miss: %i\\n\",hits_#{e},miss_#{e});"}*""}
 }
 "
 

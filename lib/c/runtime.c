@@ -1,5 +1,5 @@
-#include "ruby.h"
 #include "../../compiled/cthyst.h"
+FILE * profile_report;
 // write declarations to cthyst.h as without them call from other .so will crash
 VALUE amecore;VALUE bindcls;VALUE failobj;
 ID s_src,s_input,s_call,s_ary_get;
@@ -134,7 +134,7 @@ VALUE normalize_Apply(VALUE,VALUE);
 void init_normalize();
 ID s_ary;
 void Init_Ame(VALUE self){
-
+  profile_report=fopen("profile_report","w");
 	cache_Array=bind_cache_init(); 
   cache_Array_gc=Data_Wrap_Struct(amecore,bind_cache_mark,bind_cache_free,cache_Array);
 	rb_global_variable(&cache_Array_gc);

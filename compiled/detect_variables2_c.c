@@ -46,6 +46,11 @@ static VALUE sy_Analyze_Variables2_src_dot_pure_41d4;
 static VALUE sy_Analyze_Variables2_src_dot_rule_5acf;
 static VALUE sy_Analyze_Variables2_src_dot_rule_a719;
 static VALUE sy_Analyze_Variables2_vars_eq__at_lo_cf02;
+VALUE profile_report_Analyze_Variables2(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    if(ptr->mem) {} return Qnil;
+}
 VALUE Analyze_Variables2_flat(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,__result;
@@ -1642,6 +1647,11 @@ static VALUE sy_Resolve_Calls_bind_lb_1_rb__sp__6af0;
 static VALUE sy_Resolve_Calls_if_sp_bind_lb__1bed;
 static VALUE sy_Resolve_Calls_src_dot_name_80f3;
 static VALUE sy_Resolve_Calls_super_na_c8c2;
+VALUE profile_report_Resolve_Calls(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    if(ptr->mem) {} return Qnil;
+}
 VALUE Resolve_Calls_root(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,__result;
@@ -2201,6 +2211,7 @@ fail:
 void Init_detect_variables2_c() {
     cls_Analyze_Variables2=rb_define_class("Analyze_Variables2",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2")));
     failobj=rb_eval_string("FAIL");
+    rb_define_method(cls_Analyze_Variables2,"profile_report",profile_report_Analyze_Variables2,0);
     switchhash_Analyze_Variables2_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Grammar\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_Analyze_Variables2_1);;
     switchhash_Analyze_Variables2_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Rule\nnext h[k]=1 if k<=Object\n}");
@@ -2255,6 +2266,7 @@ void Init_detect_variables2_c() {
 
     cls_Resolve_Calls=rb_define_class("Resolve_Calls",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2")));
     failobj=rb_eval_string("FAIL");
+    rb_define_method(cls_Resolve_Calls,"profile_report",profile_report_Resolve_Calls,0);
     switchhash_Resolve_Calls_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Rule\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_Resolve_Calls_1);;
     switchhash_Resolve_Calls_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Object\n}");
@@ -2277,5 +2289,5 @@ void Init_detect_variables2_c() {
     rb_define_method(cls_Resolve_Calls,"traverse",Resolve_Calls_traverse,0);
     rb_define_method(cls_Resolve_Calls,"traverse_item",Resolve_Calls_traverse_item,0);
     rb_define_method(cls_Resolve_Calls,"visit",Resolve_Calls_visit,0);
-    rb_eval_string("testversiondetect_variables2('84a4f821d0012ee760680b12ed165043')");
+    rb_eval_string("testversiondetect_variables2('469364e70fabae42c7e773182564e367')");
 }

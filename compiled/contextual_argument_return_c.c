@@ -16,6 +16,11 @@ static VALUE sy_Add_Contextual_Arguments_bind_lb_1_rb__lt__7b20;
 static VALUE sy_Add_Contextual_Arguments_bind_lb_1_rb__sp__6af0;
 static VALUE sy_Add_Contextual_Arguments_if_sp_bind_lb__1bed;
 static VALUE sy_Add_Contextual_Arguments_src_dot_dup_d768;
+VALUE profile_report_Add_Contextual_Arguments(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    if(ptr->mem) {} return Qnil;
+}
 VALUE Add_Contextual_Arguments_root(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_autovar_3,_t,_autovar_4,__result;
@@ -457,6 +462,11 @@ static VALUE sy_Add_Contextual_Returns_bind_lb_1_rb__lt__7b20;
 static VALUE sy_Add_Contextual_Returns_bind_lb_1_rb__sp__6af0;
 static VALUE sy_Add_Contextual_Returns_if_sp_bind_lb__1bed;
 static VALUE sy_Add_Contextual_Returns_src_dot_dup_d768;
+VALUE profile_report_Add_Contextual_Returns(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    if(ptr->mem) {} return Qnil;
+}
 VALUE Add_Contextual_Returns_root(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_autovar_3,_t,__result;
@@ -915,6 +925,7 @@ fail:
 void Init_contextual_argument_return_c() {
     cls_Add_Contextual_Arguments=rb_define_class("Add_Contextual_Arguments",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2")));
     failobj=rb_eval_string("FAIL");
+    rb_define_method(cls_Add_Contextual_Arguments,"profile_report",profile_report_Add_Contextual_Arguments,0);
     switchhash_Add_Contextual_Arguments_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Rule\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_Add_Contextual_Arguments_1);;
     switchhash_Add_Contextual_Arguments_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Contextual_Argument\nnext h[k]=1 if k<=Object\n}");
@@ -935,6 +946,7 @@ void Init_contextual_argument_return_c() {
 
     cls_Add_Contextual_Returns=rb_define_class("Add_Contextual_Returns",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2")));
     failobj=rb_eval_string("FAIL");
+    rb_define_method(cls_Add_Contextual_Returns,"profile_report",profile_report_Add_Contextual_Returns,0);
     switchhash_Add_Contextual_Returns_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Rule\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_Add_Contextual_Returns_1);;
     switchhash_Add_Contextual_Returns_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Contextual_Return\nnext h[k]=2 if k<=Object\n}");
@@ -954,5 +966,5 @@ void Init_contextual_argument_return_c() {
     rb_define_method(cls_Add_Contextual_Returns,"traverse",Add_Contextual_Returns_traverse,0);
     rb_define_method(cls_Add_Contextual_Returns,"traverse_item",Add_Contextual_Returns_traverse_item,0);
     rb_define_method(cls_Add_Contextual_Returns,"visit",Add_Contextual_Returns_visit,0);
-    rb_eval_string("testversioncontextual_argument_return('dbd42b050f32d273845bf1de4048cc30')");
+    rb_eval_string("testversioncontextual_argument_return('7249c54798641369b8a8a8309cd4415e')");
 }
