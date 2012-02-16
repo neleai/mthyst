@@ -740,9 +740,6 @@ end
 def Detect_Switch_Char_s_eq_Switch_df23(bind)
 s=Switch_Char[{:ary=>[[bind[1],Apply["advance_char"]],[~bind[1],Apply["fails"]]]}]
 end
-def Detect_Switch_Char_s_eq_Switch_eb1e(bind)
-s=Switch_Char[{:ary=>[[bind[1],Many[bind[2]]],[~bind[1],Apply["fails"]]]}] 
-end
 def Detect_Switch_Char_src_25d9(bind)
 src
 end
@@ -877,15 +874,15 @@ end
 
 
 def detect_switch_compiled_by
-'480c7962933fc604fedf3613bea6c0ef'
+'407cf00a6106bc7ff08a1b83f898da76'
 end
 def detect_switch_source_hash
-'d57e055bdd61be1cb99513a3804e6f50'
+'49a00ce1daf3351e18a9be5fe3014620'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'07c29f57db55b5c77c05db181c8cf32c'
+'064b4329469d9fc97811bb72216ea07f'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"
