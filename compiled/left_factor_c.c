@@ -40,7 +40,7 @@ VALUE profile_report_Left_Factor(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     if(ptr->mem) {
-        fprintf(profile_report,"memo Left_Factor::traverse hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
+        fprintf(profile_report,"memo Left_Factor::traverse  hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
         ((memo_struct *)ptr->mem)->hits[113]=0;
         ((memo_struct *)ptr->mem)->miss[113]=0;
     }
@@ -1166,5 +1166,5 @@ void Init_left_factor_c() {
     rb_define_method(cls_Left_Factor,"traverse",Left_Factor_traverse,0);
     rb_define_method(cls_Left_Factor,"traverse_item",Left_Factor_traverse_item,0);
     rb_define_method(cls_Left_Factor,"visit",Left_Factor_visit,0);
-    rb_eval_string("testversionleft_factor('9c3c7999a1abdedb51ebb21b318a90fa')");
+    rb_eval_string("testversionleft_factor('3ac94b42f73e4768191b3dc23f8a5b7a')");
 }

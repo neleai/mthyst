@@ -63,7 +63,7 @@ VALUE profile_report_Dataflow(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     if(ptr->mem) {
-        fprintf(profile_report,"memo Dataflow::root hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
+        fprintf(profile_report,"memo Dataflow::root  hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
         ((memo_struct *)ptr->mem)->hits[113]=0;
         ((memo_struct *)ptr->mem)->miss[113]=0;
     }
@@ -2018,7 +2018,7 @@ static VALUE sy_Dead_Code_Deleter3_src_dot_reac_cd39;
 VALUE profile_report_Dead_Code_Deleter3(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    if(ptr->mem) {} return Qnil;
+    return Qnil;
 }
 VALUE Dead_Code_Deleter3_root(VALUE self ) {
     VALUE vals[0];
@@ -2603,7 +2603,7 @@ VALUE profile_report_Forget_SSA(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     if(ptr->mem) {
-        fprintf(profile_report,"memo Forget_SSA::traverse hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
+        fprintf(profile_report,"memo Forget_SSA::traverse  hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
         ((memo_struct *)ptr->mem)->hits[113]=0;
         ((memo_struct *)ptr->mem)->miss[113]=0;
     }
@@ -3154,5 +3154,5 @@ void Init_dataflow_ssa_c() {
     rb_define_method(cls_Forget_SSA,"traverse",Forget_SSA_traverse,0);
     rb_define_method(cls_Forget_SSA,"traverse_item",Forget_SSA_traverse_item,0);
     rb_define_method(cls_Forget_SSA,"visit",Forget_SSA_visit,0);
-    rb_eval_string("testversiondataflow_ssa('9f725d6d7aac16a6206c4be58d0180e1')");
+    rb_eval_string("testversiondataflow_ssa('3d074ee1ea94bf7a2b2ff0a6b288f289')");
 }

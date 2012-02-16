@@ -27,7 +27,7 @@ static VALUE sy_analyze;
 VALUE profile_report_First_Dataflow(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    if(ptr->mem) {} return Qnil;
+    return Qnil;
 }
 VALUE First_Dataflow_first(VALUE self ) {
     VALUE vals[0];
@@ -763,7 +763,7 @@ static VALUE sy_Minsize_Dataflow_lattice_lb__fdee;
 VALUE profile_report_Minsize_Dataflow(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    if(ptr->mem) {} return Qnil;
+    return Qnil;
 }
 VALUE Minsize_Dataflow_first(VALUE self ) {
     VALUE vals[0];
@@ -1879,7 +1879,7 @@ static VALUE sy_Maxsize_Dataflow_lattice_lb__fdee;
 VALUE profile_report_Maxsize_Dataflow(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    if(ptr->mem) {} return Qnil;
+    return Qnil;
 }
 VALUE Maxsize_Dataflow_first(VALUE self ) {
     VALUE vals[0];
@@ -2985,7 +2985,7 @@ static VALUE sy_Complexity_Dataflow_lattice_lb__f621;
 VALUE profile_report_Complexity_Dataflow(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    if(ptr->mem) {} return Qnil;
+    return Qnil;
 }
 VALUE Complexity_Dataflow_first(VALUE self ) {
     VALUE vals[0];
@@ -3421,7 +3421,7 @@ static VALUE sy_Switch_Char_Dataflow_regchar_lp__90af;
 VALUE profile_report_Switch_Char_Dataflow(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    if(ptr->mem) {} return Qnil;
+    return Qnil;
 }
 VALUE Switch_Char_Dataflow_first(VALUE self ) {
     VALUE vals[0];
@@ -4785,7 +4785,7 @@ static VALUE sy_Switch_Clas_Dataflow_lattice_lb__becc;
 VALUE profile_report_Switch_Clas_Dataflow(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    if(ptr->mem) {} return Qnil;
+    return Qnil;
 }
 VALUE Switch_Clas_Dataflow_first(VALUE self ) {
     VALUE vals[0];
@@ -5652,7 +5652,7 @@ static VALUE sy_Cant_Fail_Dataflow_src_dot_to_5e99;
 VALUE profile_report_Cant_Fail_Dataflow(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    if(ptr->mem) {} return Qnil;
+    return Qnil;
 }
 VALUE Cant_Fail_Dataflow_first(VALUE self ) {
     VALUE vals[0];
@@ -6769,7 +6769,7 @@ static VALUE sy_Detect_First_src_dot_rule_a719;
 VALUE profile_report_Detect_First(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    if(ptr->mem) {} return Qnil;
+    return Qnil;
 }
 VALUE Detect_First_cant_fail(VALUE self ) {
     VALUE vals[0];
@@ -7663,7 +7663,7 @@ VALUE profile_report_Detect_Switch_Char(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     if(ptr->mem) {
-        fprintf(profile_report,"memo Detect_Switch_Char::traverse hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
+        fprintf(profile_report,"memo Detect_Switch_Char::traverse  hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
         ((memo_struct *)ptr->mem)->hits[113]=0;
         ((memo_struct *)ptr->mem)->miss[113]=0;
     }
@@ -9381,7 +9381,7 @@ VALUE profile_report_Detect_Switch_Clas(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     if(ptr->mem) {
-        fprintf(profile_report,"memo Detect_Switch_Clas::traverse hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
+        fprintf(profile_report,"memo Detect_Switch_Clas::traverse  hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
         ((memo_struct *)ptr->mem)->hits[113]=0;
         ((memo_struct *)ptr->mem)->miss[113]=0;
     }
@@ -10904,7 +10904,7 @@ static VALUE sy_Detect_Size_minsize_lp__01f0;
 VALUE profile_report_Detect_Size(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    if(ptr->mem) {} return Qnil;
+    return Qnil;
 }
 VALUE Detect_Size_predicate(VALUE self ,VALUE a0) {
     VALUE vals[1];
@@ -11917,5 +11917,5 @@ void Init_detect_switch_c() {
     sy_Detect_Size_minsize_lp__01f0=rb_intern("Detect_Size_minsize_lp__01f0");
     rb_define_method(cls_Detect_Size,"predicate",Detect_Size_predicate,1);
     rb_define_method(cls_Detect_Size,"predicate2",Detect_Size_predicate2,1);
-    rb_eval_string("testversiondetect_switch('e9d138ab003abcff90905bef7d8e65ef')");
+    rb_eval_string("testversiondetect_switch('07c29f57db55b5c77c05db181c8cf32c')");
 }

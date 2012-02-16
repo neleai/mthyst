@@ -17,7 +17,7 @@ static VALUE sy_DetectCalls__lp_src_dot_ins_a413;
 VALUE profile_report_DetectCalls(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    if(ptr->mem) {} return Qnil;
+    return Qnil;
 }
 VALUE DetectCalls_root(VALUE self ) {
     VALUE vals[0];
@@ -444,7 +444,7 @@ static VALUE sy_Inliner2_src_dot_name_80f3;
 VALUE profile_report_Inliner2(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    if(ptr->mem) {} return Qnil;
+    return Qnil;
 }
 VALUE Inliner2_root(VALUE self ) {
     VALUE vals[0];
@@ -1020,5 +1020,5 @@ void Init_inliner2_c() {
     rb_define_method(cls_Inliner2,"traverse",Inliner2_traverse,0);
     rb_define_method(cls_Inliner2,"traverse_item",Inliner2_traverse_item,0);
     rb_define_method(cls_Inliner2,"visit",Inliner2_visit,0);
-    rb_eval_string("testversioninliner2('3f62d1d9cf52b642edcd6401e4ae6066')");
+    rb_eval_string("testversioninliner2('0ba36724972d327bff701223818d4e64')");
 }

@@ -16,7 +16,7 @@ static VALUE sy_valof;
 VALUE profile_report_Constant_Propagator(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    if(ptr->mem) {} return Qnil;
+    return Qnil;
 }
 VALUE Constant_Propagator_root(VALUE self ) {
     VALUE vals[0];
@@ -431,7 +431,7 @@ static VALUE sy_Constant_Traverser_src_dot_dup_d768;
 VALUE profile_report_Constant_Traverser(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    if(ptr->mem) {} return Qnil;
+    return Qnil;
 }
 VALUE Constant_Traverser_consts(VALUE self ) {
     VALUE vals[0];
@@ -1124,5 +1124,5 @@ void Init_constant_propagation_c() {
     rb_define_method(cls_Constant_Traverser,"traverse",Constant_Traverser_traverse,0);
     rb_define_method(cls_Constant_Traverser,"traverse_item",Constant_Traverser_traverse_item,0);
     rb_define_method(cls_Constant_Traverser,"visit",Constant_Traverser_visit,0);
-    rb_eval_string("testversionconstant_propagation('546f44b12f674f4e4529a88bdc131644')");
+    rb_eval_string("testversionconstant_propagation('5cf01780d3f5077bde220acc0ffbe797')");
 }

@@ -65,7 +65,7 @@ static VALUE sy_Normalize_src_dot_name_80f3;
 VALUE profile_report_Normalize(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    if(ptr->mem) {} return Qnil;
+    return Qnil;
 }
 VALUE Normalize_act(VALUE self ) {
     VALUE vals[0];
@@ -3603,5 +3603,5 @@ void Init_normalize_c() {
     rb_define_method(cls_Normalize,"or",Normalize_or,0);
     rb_define_method(cls_Normalize,"seq2",Normalize_seq2,0);
     rb_define_method(cls_Normalize,"switch",Normalize_switch,0);
-    rb_eval_string("testversionnormalize('ef40cd173264a4d7ab0f80c8e4c306aa')");
+    rb_eval_string("testversionnormalize('891062ad611d92e260f53bb990a733d1')");
 }

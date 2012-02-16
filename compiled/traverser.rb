@@ -36,7 +36,7 @@ end
 
 
 def traverser_compiled_by
-'da5c76dc77c352f68ed45137114e7490'
+'a6452d6d2af67efa4b6feedcbec6f2f4'
 end
 def traverser_source_hash
 '866d34ac8914c3c5a6d593638f413dd3'
@@ -45,6 +45,6 @@ def testversiontraverser(r)
  raise "invalid version" if r!=traverser_version
 end
 def traverser_version
-'5932c17225235af9f721f686a9326769'
+'21f3367f117043948b21c7be7a9d6228'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/traverser_c"

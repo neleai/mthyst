@@ -13,7 +13,7 @@ static VALUE sy_visit;
 VALUE profile_report_Traverser_Clone2(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    if(ptr->mem) {} return Qnil;
+    return Qnil;
 }
 VALUE Traverser_Clone2_traverse(VALUE self ) {
     VALUE vals[0];
@@ -315,7 +315,7 @@ static VALUE sy_visit;
 VALUE profile_report_Visitor(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    if(ptr->mem) {} return Qnil;
+    return Qnil;
 }
 VALUE Visitor_traverse(VALUE self ) {
     VALUE vals[0];
@@ -628,5 +628,5 @@ void Init_traverser_c() {
     sy_visit=rb_intern("visit");
     rb_define_method(cls_Visitor,"traverse",Visitor_traverse,0);
     rb_define_method(cls_Visitor,"traverse_item",Visitor_traverse_item,0);
-    rb_eval_string("testversiontraverser('5932c17225235af9f721f686a9326769')");
+    rb_eval_string("testversiontraverser('21f3367f117043948b21c7be7a9d6228')");
 }

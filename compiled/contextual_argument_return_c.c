@@ -19,7 +19,7 @@ static VALUE sy_Add_Contextual_Arguments_src_dot_dup_d768;
 VALUE profile_report_Add_Contextual_Arguments(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    if(ptr->mem) {} return Qnil;
+    return Qnil;
 }
 VALUE Add_Contextual_Arguments_root(VALUE self ) {
     VALUE vals[0];
@@ -465,7 +465,7 @@ static VALUE sy_Add_Contextual_Returns_src_dot_dup_d768;
 VALUE profile_report_Add_Contextual_Returns(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    if(ptr->mem) {} return Qnil;
+    return Qnil;
 }
 VALUE Add_Contextual_Returns_root(VALUE self ) {
     VALUE vals[0];
@@ -966,5 +966,5 @@ void Init_contextual_argument_return_c() {
     rb_define_method(cls_Add_Contextual_Returns,"traverse",Add_Contextual_Returns_traverse,0);
     rb_define_method(cls_Add_Contextual_Returns,"traverse_item",Add_Contextual_Returns_traverse_item,0);
     rb_define_method(cls_Add_Contextual_Returns,"visit",Add_Contextual_Returns_visit,0);
-    rb_eval_string("testversioncontextual_argument_return('7249c54798641369b8a8a8309cd4415e')");
+    rb_eval_string("testversioncontextual_argument_return('90220231fc022f759defdff7e7dcf138')");
 }

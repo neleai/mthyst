@@ -33,7 +33,7 @@ static VALUE sy_token;
 VALUE profile_report_Tests(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    if(ptr->mem) {} return Qnil;
+    return Qnil;
 }
 VALUE Tests_abc(VALUE self ) {
     VALUE vals[0];
@@ -554,5 +554,5 @@ void Init_tests_c() {
     rb_define_method(cls_Tests,"s2",Tests_s2,0);
     rb_define_method(cls_Tests,"sw",Tests_sw,0);
     rb_define_method(cls_Tests,"test",Tests_test,0);
-    rb_eval_string("testversiontests('17ae53979f55cf4ad1071ada3a8a894c')");
+    rb_eval_string("testversiontests('918570b254c6ff88c768231e5f2a7d77')");
 }

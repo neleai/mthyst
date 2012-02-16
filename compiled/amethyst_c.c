@@ -64,7 +64,7 @@ static VALUE sy_apply;
 VALUE profile_report_Amethyst(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    if(ptr->mem) {} return Qnil;
+    return Qnil;
 }
 VALUE Amethyst__(VALUE self ) {
     VALUE vals[0];
@@ -2416,5 +2416,5 @@ void Init_amethyst_c() {
     rb_define_method(cls_Amethyst,"upper",Amethyst_upper,0);
     rb_define_method(cls_Amethyst,"word",Amethyst_word,0);
     rb_define_method(cls_Amethyst,"xdigit",Amethyst_xdigit,0);
-    rb_eval_string("testversionamethyst('2644a67784db888f2bc982474b468762')");
+    rb_eval_string("testversionamethyst('0564eaeb7be1bff29c53dbfce57f595e')");
 }

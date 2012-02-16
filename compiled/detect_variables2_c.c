@@ -49,7 +49,7 @@ static VALUE sy_Analyze_Variables2_vars_eq__at_lo_cf02;
 VALUE profile_report_Analyze_Variables2(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    if(ptr->mem) {} return Qnil;
+    return Qnil;
 }
 VALUE Analyze_Variables2_flat(VALUE self ) {
     VALUE vals[0];
@@ -1650,7 +1650,7 @@ static VALUE sy_Resolve_Calls_super_na_c8c2;
 VALUE profile_report_Resolve_Calls(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    if(ptr->mem) {} return Qnil;
+    return Qnil;
 }
 VALUE Resolve_Calls_root(VALUE self ) {
     VALUE vals[0];
@@ -2289,5 +2289,5 @@ void Init_detect_variables2_c() {
     rb_define_method(cls_Resolve_Calls,"traverse",Resolve_Calls_traverse,0);
     rb_define_method(cls_Resolve_Calls,"traverse_item",Resolve_Calls_traverse_item,0);
     rb_define_method(cls_Resolve_Calls,"visit",Resolve_Calls_visit,0);
-    rb_eval_string("testversiondetect_variables2('469364e70fabae42c7e773182564e367')");
+    rb_eval_string("testversiondetect_variables2('b1ace13df86d3e506b23f22b422169ea')");
 }

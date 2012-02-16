@@ -29,7 +29,7 @@ static VALUE sy_Remove_Left_Recursion_src_dot_body_519e;
 VALUE profile_report_Remove_Left_Recursion(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    if(ptr->mem) {} return Qnil;
+    return Qnil;
 }
 VALUE Remove_Left_Recursion_first(VALUE self ,VALUE a0) {
     VALUE vals[1];
@@ -1693,5 +1693,5 @@ void Init_remove_left_rigth_recursion_c() {
     rb_define_method(cls_Remove_Left_Recursion,"first",Remove_Left_Recursion_first,1);
     rb_define_method(cls_Remove_Left_Recursion,"must_empty",Remove_Left_Recursion_must_empty,0);
     rb_define_method(cls_Remove_Left_Recursion,"root",Remove_Left_Recursion_root,0);
-    rb_eval_string("testversionremove_left_rigth_recursion('da2dbbc879672a4cb066f919c5b9fa14')");
+    rb_eval_string("testversionremove_left_rigth_recursion('25f41e1529355ae5f8462385e45c939e')");
 }

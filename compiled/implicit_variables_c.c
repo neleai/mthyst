@@ -16,7 +16,7 @@ static VALUE sy_Detect_Implicit_Variables__lp_src_dot_ins_a413;
 VALUE profile_report_Detect_Implicit_Variables(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    if(ptr->mem) {} return Qnil;
+    return Qnil;
 }
 VALUE Detect_Implicit_Variables_root(VALUE self ) {
     VALUE vals[0];
@@ -434,7 +434,7 @@ static VALUE sy_Add_Implicit_Variables_l_eq_Local_lb__a11b;
 VALUE profile_report_Add_Implicit_Variables(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    if(ptr->mem) {} return Qnil;
+    return Qnil;
 }
 VALUE Add_Implicit_Variables_root(VALUE self ) {
     VALUE vals[0];
@@ -957,5 +957,5 @@ void Init_implicit_variables_c() {
     rb_define_method(cls_Add_Implicit_Variables,"traverse",Add_Implicit_Variables_traverse,0);
     rb_define_method(cls_Add_Implicit_Variables,"traverse_item",Add_Implicit_Variables_traverse_item,0);
     rb_define_method(cls_Add_Implicit_Variables,"visit",Add_Implicit_Variables_visit,0);
-    rb_eval_string("testversionimplicit_variables('abdd2b9ca5d88b7649f7eeaa9be61a9e')");
+    rb_eval_string("testversionimplicit_variables('d31e2c85822e26e80436d2ce3c05c748')");
 }

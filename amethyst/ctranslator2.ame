@@ -86,11 +86,11 @@ amethyst AmethystCTranslator < Amethyst {
            {s+=x*""}
            {s+="\nend"; s}
   
-  trans =  Grammar[ {@@grammar=@name;@@parent=@parent} {@@lambdas=[] ;@@rcallbacks={};@@cbhash={}} {@@defs=[]} {@@defmethods=[]} {@@faillabel="fail"} {@@callbacks={}} {@@header=[]} {@@init=[]} @rules=>[trans*]:t rbcode:rbcode
+  trans =  Grammar[ {@@grammar=@name;@@parent=@parent} {@@lambdas=[] ;@@rcallbacks={};@@cbhash={}} {@@defs=[];@@defmethods=[];@@profile_report=[]} {@@faillabel="fail"} {@@callbacks={}} {@@header=[]} {@@init=[]} @rules=>[trans*]:t rbcode:rbcode
             { "VALUE cls_#{@name};\n" }:s
             { s<<@@header.uniq.sort*"\n"+"\n"
 							s<<"\n memo_struct *mem_#{@name}=NULL;VALUE memo_val_#{@name};" if CurrentParser[:memoize]
-							s<<"VALUE profile_report_#{@name}(VALUE self){cstruct *ptr; Data_Get_Struct(self,cstruct,ptr); if(ptr->mem){#{map_index(CurrentParser[:memoize]||[]){|i| "fprintf(profile_report,\"memo #{@name}::#{CurrentParser[:memoize][i]} hit: %i miss: %i\\n\",((memo_struct *)ptr->mem)->hits[#{113+2*i}],((memo_struct *)ptr->mem)->miss[#{113+2*i}]);((memo_struct *)ptr->mem)->hits[#{113+2*i}]=0;((memo_struct *)ptr->mem)->miss[#{113+2*i}]=0;"}*""}}return Qnil;}" 
+							s<<"VALUE profile_report_#{@name}(VALUE self){cstruct *ptr; Data_Get_Struct(self,cstruct,ptr); #{@@profile_report*""} return Qnil;}" 
 							@@init<<"rb_define_method(cls_#{@name},\"profile_report\",profile_report_#{@name},0);"
               @@init<<"mem_#{@name}=memo_init();memo_val_#{@name}=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,mem_#{@name});rb_global_variable(&memo_val_#{@name});" if CurrentParser[:global_memo]
               s<<t.sort*"\n"
@@ -122,6 +122,7 @@ s
                  s+=t
                  s+="memo_add(ptr->mem,#{@@memo_no},ptr->src,oldpos,it,ptr->pos); return it;\n"
                  s+="memo_fail:  memo_add(ptr->mem,#{@@memo_no},ptr->src,oldpos,failobj,ptr->pos); return failobj;\n"
+                 @@profile_report << "if(ptr->mem){fprintf(profile_report,\"memo #{@@grammar}::#{@@rulename}  hit: %i miss: %i\\n\",((memo_struct *)ptr->mem)->hits[#{@@memo_no}],((memo_struct *)ptr->mem)->miss[#{@@memo_no}]);((memo_struct *)ptr->mem)->hits[#{@@memo_no}]=0;((memo_struct *)ptr->mem)->miss[#{@@memo_no}]=0;}"
                  s}
         | Act[ {@@bindno=0;@@binds={}}
 								.*:{addcallback(@pred ? ["(",it,") || FAIL"] : it)}:cbno 
