@@ -9,12 +9,16 @@ VALUE AmethystCore_anything(VALUE self );
 VALUE switchhash_Add_Contextual_Arguments_1;
 VALUE switchhash_Add_Contextual_Arguments_2;
 VALUE switchhash_Add_Contextual_Arguments_3;
-static VALUE sy_Add_Contextual_Arguments__at_context_8c62;
+static VALUE sy_Add_Contextual_Arguments_Seq_lb_Act_lb__fa12;
+static VALUE sy_Add_Contextual_Arguments__at_context_2257;
+static VALUE sy_Add_Contextual_Arguments__at_context_25cc;
+static VALUE sy_Add_Contextual_Arguments__at_g_eq_Globa_f5d3;
 static VALUE sy_Add_Contextual_Arguments__lp_src_dot_cla_e144;
-static VALUE sy_Add_Contextual_Arguments_bind_lb_1_rb__eq__daa8;
+static VALUE sy_Add_Contextual_Arguments_bind_lb_1_rb__eq__2fcd;
 static VALUE sy_Add_Contextual_Arguments_bind_lb_1_rb__lt__7b20;
 static VALUE sy_Add_Contextual_Arguments_bind_lb_1_rb__sp__6af0;
 static VALUE sy_Add_Contextual_Arguments_if_sp_bind_lb__1bed;
+static VALUE sy_Add_Contextual_Arguments_src_25d9;
 static VALUE sy_Add_Contextual_Arguments_src_dot_dup_d768;
 VALUE profile_report_Add_Contextual_Arguments(VALUE self) {
     cstruct *ptr;
@@ -23,7 +27,7 @@ VALUE profile_report_Add_Contextual_Arguments(VALUE self) {
 }
 VALUE Add_Contextual_Arguments_root(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,_autovar_2,_autovar_3,_t,_autovar_4,__result;
+    VALUE it ,_autovar,_autovar_2,_autovar_3,_s,_t,_autovar_4,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -76,12 +80,18 @@ success1:
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
+    it=rb_funcall(self,sy_Add_Contextual_Arguments__at_g_eq_Globa_f5d3,1,bind2);
+    it=rb_funcall(self,sy_Add_Contextual_Arguments_src_25d9,1,bind2);
+    _s=it;;
+    it=rb_funcall(self,sy_Add_Contextual_Arguments__at_context_25cc,1,bind2);
     it=Add_Contextual_Arguments_traverse(self );
     FAILTEST(pass2);
     _t=it;;
     bind_aset(bind2,1,_t);
-    it=rb_funcall(self,sy_Add_Contextual_Arguments_bind_lb_1_rb__eq__daa8,1,bind2);
+    bind_aset(bind2,2,_s);
+    it=rb_funcall(self,sy_Add_Contextual_Arguments_bind_lb_1_rb__eq__2fcd,1,bind2);
     _t=bind_aget(bind2,1);;
+    _s=bind_aget(bind2,2);;
     _autovar_4=it;;
     it=Qnil;
     if (ptr->pos<ptr->len) goto pass2;
@@ -389,14 +399,14 @@ fail:
 }
 VALUE Add_Contextual_Arguments_visit(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,_name,_autovar_2,__result;
+    VALUE it ,_autovar,_t,__result,_autovar_2,_name,_autovar_3;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     switch(FIX2LONG(rb_hash_aref(switchhash_Add_Contextual_Arguments_2,rb_obj_class(ame_curobj2(ptr))))) {
-    case 0/*Contextual_Argument*/:
+    case 0/*Apply*/:
         ;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -417,13 +427,9 @@ VALUE Add_Contextual_Arguments_visit(VALUE self ) {
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=AmethystCore_anything(self );
+        it=Add_Contextual_Arguments_traverse(self );
         FAILTEST(pass1);
-        _name=it;;
-        bind_aset(bind2,1,_name);
-        it=rb_funcall(self,sy_Add_Contextual_Arguments__at_context_8c62,1,bind2);
-        _name=bind_aget(bind2,1);;
-        _autovar_2=it;;
+        _t=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass1;
         goto success1;
@@ -432,10 +438,51 @@ pass1:
         goto fail;
 success1:
         *ptr=oldpass1;
-        it=_autovar_2;
+        bind_aset(bind2,1,_t);
+        it=rb_funcall(self,sy_Add_Contextual_Arguments_Seq_lb_Act_lb__fa12,1,bind2);
+        _t=bind_aget(bind2,1);;
         __result=it;;
         break;
-    case 1/*Object*/:
+    case 1/*Contextual_Argument*/:
+        ;
+        it=ptr->ary[ptr->pos];            ;
+        ptr->pos++;
+        _autovar_2=it;;
+        cstruct oldpass2=*ptr;
+        ptr->pos=ptr->len=0;
+        ptr->ary=NULL;
+        ptr->src=_autovar_2;
+        if(TYPE(ptr->src)==T_STRING) {
+            ptr->str=RSTRING_PTR(ptr->src);
+            ptr->len=RSTRING_LEN(ptr->src);
+        }
+        else {
+            VALUE ary;
+            if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            ptr->ary2=ary;
+            ptr->ary=RARRAY_PTR(ary);
+            ptr->len=RARRAY_LEN(ary);
+        }
+        it=AmethystCore_anything(self );
+        FAILTEST(pass2);
+        _name=it;;
+        bind_aset(bind2,1,_name);
+        it=rb_funcall(self,sy_Add_Contextual_Arguments__at_context_2257,1,bind2);
+        _name=bind_aget(bind2,1);;
+        _autovar_3=it;;
+        it=Qnil;
+        if (ptr->pos<ptr->len) goto pass2;
+        goto success2;
+pass2:
+        *ptr=oldpass2;
+        goto fail;
+success2:
+        *ptr=oldpass2;
+        it=_autovar_3;
+        __result=it;;
+        break;
+    case 2/*Object*/:
         ;
         goto fail;
         break;
@@ -928,16 +975,20 @@ void Init_contextual_argument_return_c() {
     rb_define_method(cls_Add_Contextual_Arguments,"profile_report",profile_report_Add_Contextual_Arguments,0);
     switchhash_Add_Contextual_Arguments_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Rule\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_Add_Contextual_Arguments_1);;
-    switchhash_Add_Contextual_Arguments_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Contextual_Argument\nnext h[k]=1 if k<=Object\n}");
+    switchhash_Add_Contextual_Arguments_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Contextual_Argument\nnext h[k]=2 if k<=Object\n}");
     rb_global_variable(&switchhash_Add_Contextual_Arguments_2);;
     switchhash_Add_Contextual_Arguments_3=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}");
     rb_global_variable(&switchhash_Add_Contextual_Arguments_3);;
-    sy_Add_Contextual_Arguments__at_context_8c62=rb_intern("Add_Contextual_Arguments__at_context_8c62");
+    sy_Add_Contextual_Arguments_Seq_lb_Act_lb__fa12=rb_intern("Add_Contextual_Arguments_Seq_lb_Act_lb__fa12");
+    sy_Add_Contextual_Arguments__at_context_2257=rb_intern("Add_Contextual_Arguments__at_context_2257");
+    sy_Add_Contextual_Arguments__at_context_25cc=rb_intern("Add_Contextual_Arguments__at_context_25cc");
+    sy_Add_Contextual_Arguments__at_g_eq_Globa_f5d3=rb_intern("Add_Contextual_Arguments__at_g_eq_Globa_f5d3");
     sy_Add_Contextual_Arguments__lp_src_dot_cla_e144=rb_intern("Add_Contextual_Arguments__lp_src_dot_cla_e144");
-    sy_Add_Contextual_Arguments_bind_lb_1_rb__eq__daa8=rb_intern("Add_Contextual_Arguments_bind_lb_1_rb__eq__daa8");
+    sy_Add_Contextual_Arguments_bind_lb_1_rb__eq__2fcd=rb_intern("Add_Contextual_Arguments_bind_lb_1_rb__eq__2fcd");
     sy_Add_Contextual_Arguments_bind_lb_1_rb__lt__7b20=rb_intern("Add_Contextual_Arguments_bind_lb_1_rb__lt__7b20");
     sy_Add_Contextual_Arguments_bind_lb_1_rb__sp__6af0=rb_intern("Add_Contextual_Arguments_bind_lb_1_rb__sp__6af0");
     sy_Add_Contextual_Arguments_if_sp_bind_lb__1bed=rb_intern("Add_Contextual_Arguments_if_sp_bind_lb__1bed");
+    sy_Add_Contextual_Arguments_src_25d9=rb_intern("Add_Contextual_Arguments_src_25d9");
     sy_Add_Contextual_Arguments_src_dot_dup_d768=rb_intern("Add_Contextual_Arguments_src_dot_dup_d768");
     rb_define_method(cls_Add_Contextual_Arguments,"root",Add_Contextual_Arguments_root,0);
     rb_define_method(cls_Add_Contextual_Arguments,"traverse",Add_Contextual_Arguments_traverse,0);
@@ -966,5 +1017,5 @@ void Init_contextual_argument_return_c() {
     rb_define_method(cls_Add_Contextual_Returns,"traverse",Add_Contextual_Returns_traverse,0);
     rb_define_method(cls_Add_Contextual_Returns,"traverse_item",Add_Contextual_Returns_traverse_item,0);
     rb_define_method(cls_Add_Contextual_Returns,"visit",Add_Contextual_Returns_visit,0);
-    rb_eval_string("testversioncontextual_argument_return('90220231fc022f759defdff7e7dcf138')");
+    rb_eval_string("testversioncontextual_argument_return('219ce7a4d217e4b97111027dc11cd383')");
 }

@@ -1,12 +1,13 @@
 amethyst Add_Contextual_Arguments < Traverser_Clone2{
-  root  = @dup=>Rule[ traverse:t {t=t.dup; 
-                                  if @@contextual_arguments
-                                    a=autovar;g=Global["_context_arguments"]
-                                    t.body=Seq[Act[[g,"||={};",a,"=",g,";",g,"=",g,".dup"]],t.body,Act[[g,"=",a]]]
-                                  end 
-                                  t}]                  
+  root  = @dup=>Rule[ {@@g=Global["_context_arguments"];@@a=autovar} {@self}:s {@@context_arg=false}
+                      traverse:t 
+                      {t=t.dup; 
+                       t.body=Seq[Act[[@@g,"||={};",@@a,"=",@@g,".dup"]],t.body] 
+                       @@context_arg ? t : s
+                      }]
 
-  visit = Contextual_Argument[.:name {@@contextual_arguments=true;[Global["_context_arguments"],"[:",name,"]"] } ]
+  visit = Contextual_Argument[.:name {@@context_arg=true; [@@a,"[:",name,"]"] } ]
+        | Apply[ traverse:t ] -> Seq[Act[@@g,"=",@@a],t]
 }
 
 amethyst Add_Contextual_Returns < Traverser_Clone2{
