@@ -1,7 +1,7 @@
 class Add_Contextual_Arguments < Traverser_Clone2
 
-def Add_Contextual_Arguments_Seq_lb_Act_lb__fa12(bind)
-Seq[Act[@g,"=",@a],bind[1]]
+def Add_Contextual_Arguments_Seq_lb_Act_lb__8b65(bind)
+Seq[Act[[@g,"=",@a]],bind[1]]
 
 end
 def Add_Contextual_Arguments__at_context_2257(bind)
@@ -90,15 +90,15 @@ end
 
 
 def contextual_argument_return_compiled_by
-'3d1503f15fdbbb4c149506411cbd9429'
+'480c7962933fc604fedf3613bea6c0ef'
 end
 def contextual_argument_return_source_hash
-'f8a038873befdcbbd477999c862815f7'
+'323e7cc01f032ea92b039a6926ccbc0c'
 end
 def testversioncontextual_argument_return(r)
  raise "invalid version" if r!=contextual_argument_return_version
 end
 def contextual_argument_return_version
-'219ce7a4d217e4b97111027dc11cd383'
+'175d114eb2262d48dd477cd864a68f5f'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/contextual_argument_return_c"

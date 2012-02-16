@@ -99,8 +99,8 @@ class Constant_Traverser < Traverser_Clone2
 def Constant_Traverser_Bind_lb_src_66c4(bind)
 Bind[src.name,bind[1]]
 end
-def Constant_Traverser_Bind_lb_src_9cb6(bind)
-Bind[src,@consts[src.ssaname]]
+def Constant_Traverser_Bind_lb_src_91ed(bind)
+Bind[src,bind[1][:consts][src.ssaname]]
 end
 def Constant_Traverser_Seq_lb_bind_95dc(bind)
 Seq[bind[1],src]
@@ -108,23 +108,29 @@ end
 def Constant_Traverser__append_lp__d113(bind)
 _append(bind[1],bind[2])
 end
-def Constant_Traverser__at_consts_eq__b621(bind)
-@consts=src.consts
+def Constant_Traverser__at__contex_160a(bind)
+@_context_arguments||={};bind[1]=@_context_arguments.dup
 end
-def Constant_Traverser__at_consts_lb__abf4(bind)
-@consts[src.ssaname]
+def Constant_Traverser__at__contex_d6d5(bind)
+@_context_arguments=bind[1]
 end
-def Constant_Traverser__lp__lp__at_const_463e(bind)
-((@consts[src.ssaname] && !(@consts[src.ssaname].is_a?(CAct)&&@consts[src.ssaname][0]==[]) &&src[0]!="_result") ) || FAIL
+def Constant_Traverser__lp__lp_bind_lb_1_1e7f(bind)
+((bind[1][:consts][src.ssaname] && !(bind[1][:consts][src.ssaname].is_a?(CAct)&&bind[1][:consts][src.ssaname][0]==[]) &&src[0]!="_result") ) || FAIL
 end
-def Constant_Traverser__lp__lp__at_const_5d8f(bind)
-((@consts[src.ssaname] && src[0]!="_result") ) || FAIL
+def Constant_Traverser__lp__lp_bind_lb_1_42f7(bind)
+((bind[1][:consts][src.ssaname] && src[0]!="_result") ) || FAIL
 end
 def Constant_Traverser__lp_src_dot_cla_e144(bind)
 (src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
 def Constant_Traverser_bind_lb_1_rb__dot__f702(bind)
 bind[1].freeze
+end
+def Constant_Traverser_bind_lb_1_rb__lb__a394(bind)
+bind[1][:consts][src.ssaname]
+end
+def Constant_Traverser_bind_lb_1_rb__lb__cf87(bind)
+bind[1][:consts]=src.consts;
 end
 def Constant_Traverser_bind_lb_1_rb__lt__7b20(bind)
 bind[1]<<bind[2]
@@ -154,15 +160,15 @@ end
 
 
 def constant_propagation_compiled_by
-'3d1503f15fdbbb4c149506411cbd9429'
+'480c7962933fc604fedf3613bea6c0ef'
 end
 def constant_propagation_source_hash
-'2a6a2d2a5bf913d4b489eb0d212b1756'
+'afbe0dd7e39b6a400ad015d1d943a0d8'
 end
 def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
 end
 def constant_propagation_version
-'5cf01780d3f5077bde220acc0ffbe797'
+'e0b0aeb1e451d2116f3880f737d368a1'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/constant_propagation_c"

@@ -9,7 +9,7 @@ VALUE AmethystCore_anything(VALUE self );
 VALUE switchhash_Add_Contextual_Arguments_1;
 VALUE switchhash_Add_Contextual_Arguments_2;
 VALUE switchhash_Add_Contextual_Arguments_3;
-static VALUE sy_Add_Contextual_Arguments_Seq_lb_Act_lb__fa12;
+static VALUE sy_Add_Contextual_Arguments_Seq_lb_Act_lb__8b65;
 static VALUE sy_Add_Contextual_Arguments__at_context_2257;
 static VALUE sy_Add_Contextual_Arguments__at_context_25cc;
 static VALUE sy_Add_Contextual_Arguments__at_g_eq_Globa_f5d3;
@@ -430,6 +430,7 @@ VALUE Add_Contextual_Arguments_visit(VALUE self ) {
         it=Add_Contextual_Arguments_traverse(self );
         FAILTEST(pass1);
         _t=it;;
+        ptr->pos=ptr->len;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass1;
         goto success1;
@@ -439,7 +440,7 @@ pass1:
 success1:
         *ptr=oldpass1;
         bind_aset(bind2,1,_t);
-        it=rb_funcall(self,sy_Add_Contextual_Arguments_Seq_lb_Act_lb__fa12,1,bind2);
+        it=rb_funcall(self,sy_Add_Contextual_Arguments_Seq_lb_Act_lb__8b65,1,bind2);
         _t=bind_aget(bind2,1);;
         __result=it;;
         break;
@@ -979,7 +980,7 @@ void Init_contextual_argument_return_c() {
     rb_global_variable(&switchhash_Add_Contextual_Arguments_2);;
     switchhash_Add_Contextual_Arguments_3=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}");
     rb_global_variable(&switchhash_Add_Contextual_Arguments_3);;
-    sy_Add_Contextual_Arguments_Seq_lb_Act_lb__fa12=rb_intern("Add_Contextual_Arguments_Seq_lb_Act_lb__fa12");
+    sy_Add_Contextual_Arguments_Seq_lb_Act_lb__8b65=rb_intern("Add_Contextual_Arguments_Seq_lb_Act_lb__8b65");
     sy_Add_Contextual_Arguments__at_context_2257=rb_intern("Add_Contextual_Arguments__at_context_2257");
     sy_Add_Contextual_Arguments__at_context_25cc=rb_intern("Add_Contextual_Arguments__at_context_25cc");
     sy_Add_Contextual_Arguments__at_g_eq_Globa_f5d3=rb_intern("Add_Contextual_Arguments__at_g_eq_Globa_f5d3");
@@ -1017,5 +1018,5 @@ void Init_contextual_argument_return_c() {
     rb_define_method(cls_Add_Contextual_Returns,"traverse",Add_Contextual_Returns_traverse,0);
     rb_define_method(cls_Add_Contextual_Returns,"traverse_item",Add_Contextual_Returns_traverse_item,0);
     rb_define_method(cls_Add_Contextual_Returns,"visit",Add_Contextual_Returns_visit,0);
-    rb_eval_string("testversioncontextual_argument_return('219ce7a4d217e4b97111027dc11cd383')");
+    rb_eval_string("testversioncontextual_argument_return('175d114eb2262d48dd477cd864a68f5f')");
 }

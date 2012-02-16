@@ -84,14 +84,14 @@ amethyst Constant_Propagator{
 }
 
 amethyst Constant_Traverser < Traverser_Clone2 {
-  root = {@dup}=>Rule[{@@consts=@consts}  {@cfg=nil;@reachable=nil;@consts=nil} traverse:{it.freeze} ] 
+  root = {@dup}=>Rule[{@>consts=@consts;}  {@cfg=nil;@reachable=nil;@consts=nil} traverse:{it.freeze} ] 
 	
-	consts = ( Local[ .* &{(@@consts[@ssaname] && !(@@consts[@ssaname].is_a?(CAct)&&@@consts[@ssaname][0]==[]) &&@self[0]!="_result") } {Bind[@self,@@consts[@ssaname]]}:ary[] ] 
+	consts = ( Local[ .* &{(@>consts[@ssaname] && !(@>consts[@ssaname].is_a?(CAct)&&@>consts[@ssaname][0]==[]) &&@self[0]!="_result") } {Bind[@self,@>consts[@ssaname]]}:ary[] ] 
            | . )*
 					 {ary}
 
   visit = Bind[traverse_item:expr {Bind[@name,expr]} ]
         | Act[ consts:a {Seq[a,@self]}  ]
         | Result[.* {@self}]
-        | Local[ .* &{(@@consts[@ssaname] && @self[0]!="_result") } {@@consts[@ssaname]} ]
+        | Local[ .* &{(@>consts[@ssaname] && @self[0]!="_result") } {@>consts[@ssaname]} ]
 }
