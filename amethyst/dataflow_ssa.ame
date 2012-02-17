@@ -94,9 +94,9 @@ amethyst Dataflow < Traverser_Clone2 {
 amethyst Dead_Code_Deleter3 < Traverser_Clone2{
     root = @dup=>Rule[ {@@reachable=@reachable} {@reachable=nil;@cfg=nil} traverse]
 
-    visit = (Act|CAct|Result)[@self:this .*] -> (!@@reachable[this] ||(this.pure && !@@bounded)) ? Placeholder : this
-          | Apply[.* {@self}]
-          | Bind[.* @self:b {@@bounded||=@@reachable[@name]} traverse[ .* {@@bounded=false} {@@reachable[@name] ? @self : @expr}]]
+    visit = (Act|CAct|Result)[@self:this .*] -> (!@@reachable[this] ||(this.pure && !@@bound)) ? Placeholder : this
+          | Apply[.* {d=@dup;d.bound=@@bound;d.normalize}]
+          | Bind[.* @self:b {@@bound||=@@reachable[@name]} traverse[ .* {@@bound=false} {@@reachable[@name] ? @self : @expr}]]
           | Local[.* @self:this ] -> @@reachable[this] ? this : Placeholder
 }
 

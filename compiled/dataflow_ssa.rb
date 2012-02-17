@@ -203,11 +203,11 @@ end
 
 class Dead_Code_Deleter3 < Traverser_Clone2
 
-def Dead_Code_Deleter3__at_bounded_6bb2(bind)
-@bounded||=@reachable[src.name]
+def Dead_Code_Deleter3__at_bound(bind)
+@bound||=@reachable[src.name]
 end
-def Dead_Code_Deleter3__at_bounded_7c82(bind)
-@bounded=false
+def Dead_Code_Deleter3__at_bound_eq_f_5875(bind)
+@bound=false
 end
 def Dead_Code_Deleter3__at_reachab_005c(bind)
 @reachable[src.name] ? src : src.expr
@@ -220,7 +220,7 @@ def Dead_Code_Deleter3__at_reachab_8588(bind)
 @reachable=src.reachable
 end
 def Dead_Code_Deleter3__lp_(bind)
-(!@reachable[bind[1]] ||(bind[1].pure && !@bounded)) ? Placeholder : bind[1]
+(!@reachable[bind[1]] ||(bind[1].pure && !@bound)) ? Placeholder : bind[1]
 
 end
 def Dead_Code_Deleter3__lp_src_dot_cla_e144(bind)
@@ -231,6 +231,9 @@ bind[1]<<bind[2]
 end
 def Dead_Code_Deleter3_bind_lb_1_rb__sp__6af0(bind)
 bind[1] << bind[2]
+end
+def Dead_Code_Deleter3_d_eq_src_dot_du_7d16(bind)
+d=src.dup;d.bound=@bound;d.normalize
 end
 def Dead_Code_Deleter3_if_sp_bind_lb__1bed(bind)
 if bind[1]==bind[2]
@@ -285,15 +288,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'407cf00a6106bc7ff08a1b83f898da76'
+'1daba39aa225c8d67b3981fae396659d'
 end
 def dataflow_ssa_source_hash
-'a8f2719b7a07381f2e9ece4e9f127a9e'
+'0d20bc03b65c38af5fe5f43a5899cd04'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'3d074ee1ea94bf7a2b2ff0a6b288f289'
+'74cc8b55422a155742708b26bb495fa7'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/dataflow_ssa_c"

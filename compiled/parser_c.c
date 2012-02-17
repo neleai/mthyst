@@ -2832,12 +2832,12 @@ VALUE AmethystParser_key(VALUE self ) {
         break;
     case '@' ... '@':
         ;
-        it=rb_str_new(ptr->str+ptr->pos,1);
-        ptr->pos++;
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
         ;
+        it=rb_str_new(ptr->str+ptr->pos,1);
+        ptr->pos++;
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... '@':
             ;
@@ -2908,8 +2908,14 @@ accept2:
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
+        it=rb_str_new(ptr->str+ptr->pos,1);
+        ptr->pos++;
+        int oldpos3=ptr->pos;
+        int cut3=0;
+alt3_1:
+        ;
         if (ame_curstr2(ptr)[0]=='@')  ptr->pos+=1;
-        else goto alt1_3;
+        else goto alt3_2;
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... '@':
             ;
@@ -2919,7 +2925,7 @@ alt1_2:
             ;
         case '{' ... UC(255):
             ;
-            goto alt1_3;
+            goto alt3_2;
             break;
         case 'A' ... 'Z':
             ;
@@ -2928,7 +2934,7 @@ alt1_2:
         case 'a' ... 'z':
             ;
             it=AmethystParser_name(self );
-            FAILTEST(alt1_3);
+            FAILTEST(alt3_2);
             _name=it;;
             break;
         }
@@ -2938,11 +2944,11 @@ alt1_2:
         __result=it;;
 
         ;
-        goto accept1;
-alt1_3:
-        ptr->pos=oldpos1;
+        goto accept3;
+alt3_2:
+        ptr->pos=oldpos3;
         if (ame_curstr2(ptr)[0]=='>')  ptr->pos+=1;
-        else goto alt1_4;
+        else goto alt3_3;
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... '@':
             ;
@@ -2952,7 +2958,7 @@ alt1_3:
             ;
         case '{' ... UC(255):
             ;
-            goto alt1_4;
+            goto alt3_3;
             break;
         case 'A' ... 'Z':
             ;
@@ -2961,7 +2967,7 @@ alt1_3:
         case 'a' ... 'z':
             ;
             it=AmethystParser_name(self );
-            FAILTEST(alt1_4);
+            FAILTEST(alt3_3);
             _name=it;;
             break;
         }
@@ -2971,11 +2977,11 @@ alt1_3:
         __result=it;;
 
         ;
-        goto accept1;
-alt1_4:
-        ptr->pos=oldpos1;
+        goto accept3;
+alt3_3:
+        ptr->pos=oldpos3;
         if (ame_curstr2(ptr)[0]=='<')  ptr->pos+=1;
-        else goto alt1_5;
+        else goto alt3_4;
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... '@':
             ;
@@ -2985,7 +2991,7 @@ alt1_4:
             ;
         case '{' ... UC(255):
             ;
-            goto alt1_5;
+            goto alt3_4;
             break;
         case 'A' ... 'Z':
             ;
@@ -2994,7 +3000,7 @@ alt1_4:
         case 'a' ... 'z':
             ;
             it=AmethystParser_name(self );
-            FAILTEST(alt1_5);
+            FAILTEST(alt3_4);
             _name=it;;
             break;
         }
@@ -3004,8 +3010,16 @@ alt1_4:
         __result=it;;
 
         ;
+        goto accept3;
+alt3_4:
+        ptr->pos=oldpos3;
+        goto alt1_3;
+accept3:
+        ;
+
+        ;
         goto accept1;
-alt1_5:
+alt1_3:
         ptr->pos=oldpos1;
         goto fail;
 accept1:
@@ -7775,5 +7789,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('258274d5cfdeecc04302bfd3f0d71536')");
+    rb_eval_string("testversionparser('3662dbb97a8c48c64831d3096e807a56')");
 }

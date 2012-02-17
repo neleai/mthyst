@@ -2002,8 +2002,8 @@ VALUE Dead_Code_Deleter3_visit(VALUE self );
 VALUE switchhash_Dead_Code_Deleter3_1;
 VALUE switchhash_Dead_Code_Deleter3_2;
 VALUE switchhash_Dead_Code_Deleter3_3;
-static VALUE sy_Dead_Code_Deleter3__at_bounded_6bb2;
-static VALUE sy_Dead_Code_Deleter3__at_bounded_7c82;
+static VALUE sy_Dead_Code_Deleter3__at_bound;
+static VALUE sy_Dead_Code_Deleter3__at_bound_eq_f_5875;
 static VALUE sy_Dead_Code_Deleter3__at_reachab_005c;
 static VALUE sy_Dead_Code_Deleter3__at_reachab_725b;
 static VALUE sy_Dead_Code_Deleter3__at_reachab_8588;
@@ -2011,6 +2011,7 @@ static VALUE sy_Dead_Code_Deleter3__lp_;
 static VALUE sy_Dead_Code_Deleter3__lp_src_dot_cla_e144;
 static VALUE sy_Dead_Code_Deleter3_bind_lb_1_rb__lt__7b20;
 static VALUE sy_Dead_Code_Deleter3_bind_lb_1_rb__sp__6af0;
+static VALUE sy_Dead_Code_Deleter3_d_eq_src_dot_du_7d16;
 static VALUE sy_Dead_Code_Deleter3_if_sp_bind_lb__1bed;
 static VALUE sy_Dead_Code_Deleter3_src_25d9;
 static VALUE sy_Dead_Code_Deleter3_src_dot_dup_d768;
@@ -2454,7 +2455,7 @@ success1:
             ptr->len=RARRAY_LEN(ary);
         }
         ptr->pos=ptr->len;
-        it=rb_funcall(self,sy_Dead_Code_Deleter3_src_25d9,1,bind2);
+        it=rb_funcall(self,sy_Dead_Code_Deleter3_d_eq_src_dot_du_7d16,1,bind2);
         _autovar_3=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass2;
@@ -2490,7 +2491,7 @@ success2:
         }
         ptr->pos=ptr->len;
         it=rb_funcall(self,sy_Dead_Code_Deleter3_src_25d9,1,bind2);
-        it=rb_funcall(self,sy_Dead_Code_Deleter3__at_bounded_6bb2,1,bind2);
+        it=rb_funcall(self,sy_Dead_Code_Deleter3__at_bound,1,bind2);
         it=Dead_Code_Deleter3_traverse(self );
         FAILTEST(pass3);
         _autovar_5=it;;
@@ -2511,7 +2512,7 @@ success2:
             ptr->len=RARRAY_LEN(ary);
         }
         ptr->pos=ptr->len;
-        it=rb_funcall(self,sy_Dead_Code_Deleter3__at_bounded_7c82,1,bind2);
+        it=rb_funcall(self,sy_Dead_Code_Deleter3__at_bound_eq_f_5875,1,bind2);
         it=rb_funcall(self,sy_Dead_Code_Deleter3__at_reachab_005c,1,bind2);
         _autovar_6=it;;
         it=Qnil;
@@ -3114,8 +3115,8 @@ void Init_dataflow_ssa_c() {
     rb_global_variable(&switchhash_Dead_Code_Deleter3_2);;
     switchhash_Dead_Code_Deleter3_3=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}");
     rb_global_variable(&switchhash_Dead_Code_Deleter3_3);;
-    sy_Dead_Code_Deleter3__at_bounded_6bb2=rb_intern("Dead_Code_Deleter3__at_bounded_6bb2");
-    sy_Dead_Code_Deleter3__at_bounded_7c82=rb_intern("Dead_Code_Deleter3__at_bounded_7c82");
+    sy_Dead_Code_Deleter3__at_bound=rb_intern("Dead_Code_Deleter3__at_bound");
+    sy_Dead_Code_Deleter3__at_bound_eq_f_5875=rb_intern("Dead_Code_Deleter3__at_bound_eq_f_5875");
     sy_Dead_Code_Deleter3__at_reachab_005c=rb_intern("Dead_Code_Deleter3__at_reachab_005c");
     sy_Dead_Code_Deleter3__at_reachab_725b=rb_intern("Dead_Code_Deleter3__at_reachab_725b");
     sy_Dead_Code_Deleter3__at_reachab_8588=rb_intern("Dead_Code_Deleter3__at_reachab_8588");
@@ -3123,6 +3124,7 @@ void Init_dataflow_ssa_c() {
     sy_Dead_Code_Deleter3__lp_src_dot_cla_e144=rb_intern("Dead_Code_Deleter3__lp_src_dot_cla_e144");
     sy_Dead_Code_Deleter3_bind_lb_1_rb__lt__7b20=rb_intern("Dead_Code_Deleter3_bind_lb_1_rb__lt__7b20");
     sy_Dead_Code_Deleter3_bind_lb_1_rb__sp__6af0=rb_intern("Dead_Code_Deleter3_bind_lb_1_rb__sp__6af0");
+    sy_Dead_Code_Deleter3_d_eq_src_dot_du_7d16=rb_intern("Dead_Code_Deleter3_d_eq_src_dot_du_7d16");
     sy_Dead_Code_Deleter3_if_sp_bind_lb__1bed=rb_intern("Dead_Code_Deleter3_if_sp_bind_lb__1bed");
     sy_Dead_Code_Deleter3_src_25d9=rb_intern("Dead_Code_Deleter3_src_25d9");
     sy_Dead_Code_Deleter3_src_dot_dup_d768=rb_intern("Dead_Code_Deleter3_src_dot_dup_d768");
@@ -3154,5 +3156,5 @@ void Init_dataflow_ssa_c() {
     rb_define_method(cls_Forget_SSA,"traverse",Forget_SSA_traverse,0);
     rb_define_method(cls_Forget_SSA,"traverse_item",Forget_SSA_traverse_item,0);
     rb_define_method(cls_Forget_SSA,"visit",Forget_SSA_visit,0);
-    rb_eval_string("testversiondataflow_ssa('3d074ee1ea94bf7a2b2ff0a6b288f289')");
+    rb_eval_string("testversiondataflow_ssa('74cc8b55422a155742708b26bb495fa7')");
 }

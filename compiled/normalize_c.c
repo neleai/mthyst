@@ -1585,48 +1585,14 @@ pass14:
             goto alt4_3;
 success14:
             *ptr=oldpass14;
-            it=ptr->ary[ptr->pos];            ;
-            ptr->pos++;
-            _autovar_12=it;;
-            cstruct oldpass15=*ptr;
-            ptr->pos=ptr->len=0;
-            ptr->ary=NULL;
-            ptr->src=_autovar_12;
-            if(TYPE(ptr->src)==T_STRING) {
-                ptr->str=RSTRING_PTR(ptr->src);
-                ptr->len=RSTRING_LEN(ptr->src);
-            }
-            else {
-                VALUE ary;
-                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-                else  ary=rb_funcall(ptr->src,s_to_a,0);
-                ptr->ary2=ary;
-                ptr->ary=RARRAY_PTR(ary);
-                ptr->len=RARRAY_LEN(ary);
-            }
-            it=AmethystCore_anything(self );
-            FAILTEST(pass15);
-            _name=it;;
-            it=Qnil;
-            if (ptr->pos<ptr->len) goto pass15;
-            goto success15;
-pass15:
-            *ptr=oldpass15;
             goto alt4_3;
-success15:
-            *ptr=oldpass15;
-            bind_aset(bind2,1,_name);
-            it=rb_funcall(self,sy_Normalize_Apply_lb_bi_4b34,1,bind2);
-            _name=bind_aget(bind2,1);;
-            _autovar_8=it;;
-
             ;
             goto accept4;
 alt4_3:
             ptr->pos=oldpos4;
             it=_autovar_15;
             _autovar_10=it;;
-            cstruct oldpass16=*ptr;
+            cstruct oldpass15=*ptr;
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
             ptr->src=_autovar_10;
@@ -1648,16 +1614,71 @@ alt4_3:
                 ;
             case '`' ... UC(255):
                 ;
-                goto pass16;
+                goto pass15;
                 break;
             case '_' ... '_':
                 ;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='s'&&ame_curstr2(ptr)[1]=='e'&&ame_curstr2(ptr)[2]=='q')  ptr->pos+=3;
-                else goto pass16;
+                else goto pass15;
                 break;
             }
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass15;
+            goto success15;
+pass15:
+            *ptr=oldpass15;
+            goto alt4_4;
+success15:
+            *ptr=oldpass15;
+            it=ptr->ary[ptr->pos];            ;
+            ptr->pos++;
+            _autovar_13=it;;
+            cstruct oldpass16=*ptr;
+            ptr->pos=ptr->len=0;
+            ptr->ary=NULL;
+            ptr->src=_autovar_13;
+            if(TYPE(ptr->src)==T_STRING) {
+                ptr->str=RSTRING_PTR(ptr->src);
+                ptr->len=RSTRING_LEN(ptr->src);
+            }
+            else {
+                VALUE ary;
+                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
+                ptr->ary=RARRAY_PTR(ary);
+                ptr->len=RARRAY_LEN(ary);
+            }
+            it=AmethystCore_anything(self );
+            FAILTEST(pass16);
+            _autovar_14=it;;
+            cstruct oldpass17=*ptr;
+            ptr->pos=ptr->len=0;
+            ptr->ary=NULL;
+            ptr->src=_autovar_14;
+            if(TYPE(ptr->src)==T_STRING) {
+                ptr->str=RSTRING_PTR(ptr->src);
+                ptr->len=RSTRING_LEN(ptr->src);
+            }
+            else {
+                VALUE ary;
+                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
+                ptr->ary=RARRAY_PTR(ary);
+                ptr->len=RARRAY_LEN(ary);
+            }
+            it=Qnil;
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass17;
+            goto success17;
+pass17:
+            *ptr=oldpass17;
+            goto pass16;
+success17:
+            *ptr=oldpass17;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass16;
             goto success16;
@@ -1666,7 +1687,9 @@ pass16:
             goto alt4_4;
 success16:
             *ptr=oldpass16;
-            goto alt4_4;
+            it=rb_funcall(self,sy_Normalize_Placehol_a03d,1,bind2);
+            _autovar_8=it;;
+
             ;
             goto accept4;
 alt4_4:
@@ -1685,7 +1708,7 @@ alt5_1:
             ;
             it=_autovar_16;
             _autovar_5=it;;
-            cstruct oldpass17=*ptr;
+            cstruct oldpass18=*ptr;
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
             ptr->src=_autovar_5;
@@ -1709,31 +1732,31 @@ alt5_1:
                 ;
             case 'b' ... UC(255):
                 ;
-                goto pass17;
+                goto pass18;
                 break;
             case '_' ... '_':
                 ;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='s'&&ame_curstr2(ptr)[1]=='e'&&ame_curstr2(ptr)[2]=='q')  ptr->pos+=3;
-                else goto pass17;
+                else goto pass18;
                 break;
             case 'a' ... 'a':
                 ;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='p'&&ame_curstr2(ptr)[1]=='p'&&ame_curstr2(ptr)[2]=='l'&&ame_curstr2(ptr)[3]=='y')  ptr->pos+=4;
-                else goto pass17;
+                else goto pass18;
                 break;
             }
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass17;
-            goto success17;
-pass17:
-            *ptr=oldpass17;
+            if (ptr->pos<ptr->len) goto pass18;
+            goto success18;
+pass18:
+            *ptr=oldpass18;
             goto alt5_2;
-success17:
-            *ptr=oldpass17;
+success18:
+            *ptr=oldpass18;
             goto alt5_2;
             ;
             goto accept5;
@@ -1741,7 +1764,7 @@ alt5_2:
             ptr->pos=oldpos5;
             it=_autovar_16;
             _autovar_9=it;;
-            cstruct oldpass18=*ptr;
+            cstruct oldpass19=*ptr;
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
             ptr->src=_autovar_9;
@@ -1763,32 +1786,66 @@ alt5_2:
                 ;
             case 'b' ... UC(255):
                 ;
-                goto pass18;
+                goto pass19;
                 break;
             case 'a' ... 'a':
                 ;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='p'&&ame_curstr2(ptr)[1]=='p'&&ame_curstr2(ptr)[2]=='l'&&ame_curstr2(ptr)[3]=='y')  ptr->pos+=4;
-                else goto pass18;
+                else goto pass19;
                 break;
             }
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass18;
-            goto success18;
-pass18:
-            *ptr=oldpass18;
+            if (ptr->pos<ptr->len) goto pass19;
+            goto success19;
+pass19:
+            *ptr=oldpass19;
             goto alt5_3;
-success18:
-            *ptr=oldpass18;
+success19:
+            *ptr=oldpass19;
+            it=ptr->ary[ptr->pos];            ;
+            ptr->pos++;
+            _autovar_12=it;;
+            cstruct oldpass20=*ptr;
+            ptr->pos=ptr->len=0;
+            ptr->ary=NULL;
+            ptr->src=_autovar_12;
+            if(TYPE(ptr->src)==T_STRING) {
+                ptr->str=RSTRING_PTR(ptr->src);
+                ptr->len=RSTRING_LEN(ptr->src);
+            }
+            else {
+                VALUE ary;
+                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                ptr->ary2=ary;
+                ptr->ary=RARRAY_PTR(ary);
+                ptr->len=RARRAY_LEN(ary);
+            }
+            it=AmethystCore_anything(self );
+            FAILTEST(pass20);
+            _name=it;;
+            it=Qnil;
+            if (ptr->pos<ptr->len) goto pass20;
+            goto success20;
+pass20:
+            *ptr=oldpass20;
             goto alt5_3;
+success20:
+            *ptr=oldpass20;
+            bind_aset(bind2,1,_name);
+            it=rb_funcall(self,sy_Normalize_Apply_lb_bi_4b34,1,bind2);
+            _name=bind_aget(bind2,1);;
+            _autovar_8=it;;
+
             ;
             goto accept5;
 alt5_3:
             ptr->pos=oldpos5;
             it=_autovar_16;
             _autovar_10=it;;
-            cstruct oldpass19=*ptr;
+            cstruct oldpass21=*ptr;
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
             ptr->src=_autovar_10;
@@ -1810,82 +1867,25 @@ alt5_3:
                 ;
             case '`' ... UC(255):
                 ;
-                goto pass19;
+                goto pass21;
                 break;
             case '_' ... '_':
                 ;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='s'&&ame_curstr2(ptr)[1]=='e'&&ame_curstr2(ptr)[2]=='q')  ptr->pos+=3;
-                else goto pass19;
+                else goto pass21;
                 break;
             }
-            it=Qnil;
-            if (ptr->pos<ptr->len) goto pass19;
-            goto success19;
-pass19:
-            *ptr=oldpass19;
-            goto alt5_4;
-success19:
-            *ptr=oldpass19;
-            it=ptr->ary[ptr->pos];            ;
-            ptr->pos++;
-            _autovar_13=it;;
-            cstruct oldpass20=*ptr;
-            ptr->pos=ptr->len=0;
-            ptr->ary=NULL;
-            ptr->src=_autovar_13;
-            if(TYPE(ptr->src)==T_STRING) {
-                ptr->str=RSTRING_PTR(ptr->src);
-                ptr->len=RSTRING_LEN(ptr->src);
-            }
-            else {
-                VALUE ary;
-                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-                else  ary=rb_funcall(ptr->src,s_to_a,0);
-                ptr->ary2=ary;
-                ptr->ary=RARRAY_PTR(ary);
-                ptr->len=RARRAY_LEN(ary);
-            }
-            it=AmethystCore_anything(self );
-            FAILTEST(pass20);
-            _autovar_14=it;;
-            cstruct oldpass21=*ptr;
-            ptr->pos=ptr->len=0;
-            ptr->ary=NULL;
-            ptr->src=_autovar_14;
-            if(TYPE(ptr->src)==T_STRING) {
-                ptr->str=RSTRING_PTR(ptr->src);
-                ptr->len=RSTRING_LEN(ptr->src);
-            }
-            else {
-                VALUE ary;
-                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-                else  ary=rb_funcall(ptr->src,s_to_a,0);
-                ptr->ary2=ary;
-                ptr->ary=RARRAY_PTR(ary);
-                ptr->len=RARRAY_LEN(ary);
-            }
-            it=Qnil;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass21;
             goto success21;
 pass21:
             *ptr=oldpass21;
-            goto pass20;
+            goto alt5_4;
 success21:
             *ptr=oldpass21;
-            it=Qnil;
-            if (ptr->pos<ptr->len) goto pass20;
-            goto success20;
-pass20:
-            *ptr=oldpass20;
             goto alt5_4;
-success20:
-            *ptr=oldpass20;
-            it=rb_funcall(self,sy_Normalize_Placehol_a03d,1,bind2);
-            _autovar_8=it;;
-
             ;
             goto accept5;
 alt5_4:
@@ -2994,14 +2994,18 @@ success1:
         ptr->ary=alloca(sizeof(VALUE));
         ptr->ary[0]=_autovar_10;
         ptr->len=1;
-        it=AmethystCore_anything(self );
-        FAILTEST(pass6);
-        _autovar_11=it;;
-        it=_autovar_11;
-        _autovar_12=it;;
         int oldpos6=ptr->pos;
         int cut6=0;
 alt6_1:
+        ;
+        it=AmethystCore_anything(self );
+        FAILTEST(alt6_2);
+        _autovar_11=it;;
+        it=_autovar_11;
+        _autovar_12=it;;
+        int oldpos7=ptr->pos;
+        int cut7=0;
+alt7_1:
         ;
         it=_autovar_12;
         _a=it;;
@@ -3012,14 +3016,14 @@ alt6_1:
         it=rb_funcall(self,sy_Normalize__lp_bind_lb_1_rb__abc3,1,bind2);
         _x=bind_aget(bind2,1);;
         _a=bind_aget(bind2,2);;
-        FAILTEST(alt6_2);
+        FAILTEST(alt7_2);
         it=rb_funcall(self,sy_Normalize_Apply_lb__dq_f_3881,1,bind2);
         _autovar_13=it;;
 
         ;
-        goto accept6;
-alt6_2:
-        ptr->pos=oldpos6;
+        goto accept7;
+alt7_2:
+        ptr->pos=oldpos7;
         it=_autovar_12;
         _a=it;;
         it=i_1;
@@ -3029,17 +3033,26 @@ alt6_2:
         it=rb_funcall(self,sy_Normalize__lp_bind_lb_1_rb__abc3,1,bind2);
         _x=bind_aget(bind2,1);;
         _a=bind_aget(bind2,2);;
-        FAILTEST(alt6_3);
+        FAILTEST(alt7_3);
         bind_aset(bind2,1,_ary);
         it=rb_funcall(self,sy_Normalize_bind_lb_1_rb__lb__79d7,1,bind2);
         _ary=bind_aget(bind2,1);;
         _autovar_13=it;;
 
         ;
+        goto accept7;
+alt7_3:
+        ptr->pos=oldpos7;
+        goto alt6_2;
+accept7:
+        ;
+
+        ;
         goto accept6;
-alt6_3:
+alt6_2:
         ptr->pos=oldpos6;
-        it=_autovar_12;
+        it=AmethystCore_anything(self );
+        FAILTEST(alt6_3);
         bind_aset(bind2,1,_ary);
         it=rb_funcall(self,sy_Normalize_Or_dot_creat_a50c,1,bind2);
         _ary=bind_aget(bind2,1);;
@@ -3047,7 +3060,7 @@ alt6_3:
 
         ;
         goto accept6;
-alt6_4:
+alt6_3:
         ptr->pos=oldpos6;
         goto pass6;
 accept6:
@@ -3356,14 +3369,18 @@ success1:
         ptr->ary=alloca(sizeof(VALUE));
         ptr->ary[0]=_autovar_8;
         ptr->len=1;
-        it=AmethystCore_anything(self );
-        FAILTEST(pass5);
-        _autovar_9=it;;
-        it=_autovar_9;
-        _autovar_10=it;;
         int oldpos4=ptr->pos;
         int cut4=0;
 alt4_1:
+        ;
+        it=AmethystCore_anything(self );
+        FAILTEST(alt4_2);
+        _autovar_9=it;;
+        it=_autovar_9;
+        _autovar_10=it;;
+        int oldpos5=ptr->pos;
+        int cut5=0;
+alt5_1:
         ;
         it=_autovar_10;
         _a=it;;
@@ -3374,14 +3391,14 @@ alt4_1:
         it=rb_funcall(self,sy_Normalize__lp_bind_lb_1_rb__abc3,1,bind2);
         _x=bind_aget(bind2,1);;
         _a=bind_aget(bind2,2);;
-        FAILTEST(alt4_2);
+        FAILTEST(alt5_2);
         it=rb_funcall(self,sy_Normalize_Placehol_a03d,1,bind2);
         _autovar_11=it;;
 
         ;
-        goto accept4;
-alt4_2:
-        ptr->pos=oldpos4;
+        goto accept5;
+alt5_2:
+        ptr->pos=oldpos5;
         it=_autovar_10;
         _a=it;;
         it=i_1;
@@ -3391,17 +3408,26 @@ alt4_2:
         it=rb_funcall(self,sy_Normalize__lp_bind_lb_1_rb__abc3,1,bind2);
         _x=bind_aget(bind2,1);;
         _a=bind_aget(bind2,2);;
-        FAILTEST(alt4_3);
+        FAILTEST(alt5_3);
         bind_aset(bind2,1,_ary);
         it=rb_funcall(self,sy_Normalize_bind_lb_1_rb__lb__79d7,1,bind2);
         _ary=bind_aget(bind2,1);;
         _autovar_11=it;;
 
         ;
+        goto accept5;
+alt5_3:
+        ptr->pos=oldpos5;
+        goto alt4_2;
+accept5:
+        ;
+
+        ;
         goto accept4;
-alt4_3:
+alt4_2:
         ptr->pos=oldpos4;
-        it=_autovar_10;
+        it=AmethystCore_anything(self );
+        FAILTEST(alt4_3);
         bind_aset(bind2,1,_ary);
         it=rb_funcall(self,sy_Normalize_Seq_dot_crea_0a81,1,bind2);
         _ary=bind_aget(bind2,1);;
@@ -3409,7 +3435,7 @@ alt4_3:
 
         ;
         goto accept4;
-alt4_4:
+alt4_3:
         ptr->pos=oldpos4;
         goto pass5;
 accept4:
@@ -3603,5 +3629,5 @@ void Init_normalize_c() {
     rb_define_method(cls_Normalize,"or",Normalize_or,0);
     rb_define_method(cls_Normalize,"seq2",Normalize_seq2,0);
     rb_define_method(cls_Normalize,"switch",Normalize_switch,0);
-    rb_eval_string("testversionnormalize('891062ad611d92e260f53bb990a733d1')");
+    rb_eval_string("testversionnormalize('f69c14df3f71373f77ab66a0c640ba89')");
 }

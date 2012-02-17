@@ -2,7 +2,7 @@
 makeclasses(AmethystAST,
     [:Grammar,:name,:parent,:rules],
     [:Rule,:name,:args,:locals,:body,:cfg,:reachable,:bnding,:consts],
-    [:Apply,:name,:clas,:noresult],
+    [:Apply,:name,:clas,:bound],
     [:Bind,:name],
     [:Many,:has_stop],
 		[:Pass,:var,:to,:enter],
