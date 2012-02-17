@@ -177,7 +177,6 @@ class Maxsize_Dataflow < First_Dataflow      ;  def lattice;    Lattice_Maxsize;
 class Cant_Fail_Dataflow  < First_Dataflow ;  def lattice;    Lattice_Cant_Fail;  end; end
 
 
-class                       First_Dataflow;  def can_empty?(el);    $sizedf.analyze(el).size==0;  end; end
 class Minsize_Dataflow      < First_Dataflow;  def can_empty?(el);    true;                         end; end
 class Maxsize_Dataflow      < First_Dataflow;  def can_empty?(el);    true;                         end; end
 class Cant_Fail_Dataflow  < First_Dataflow;  def can_empty?(el);    true;                         end; end
@@ -577,6 +576,7 @@ end
 
 class Detect_First< Traverser_Clone2;   def can_empty?(s);    $sizedf.analyze(s).size==0;  end; end
 
+def can_empty?(el);    $sizedf.analyze(el).size==0;  end
 def must_empty?(s);  $maxsize_df.analyze(s).size==0; end
 def cant_fail?(s);   $cant_fail_df.analyze(s).value;  end
 
@@ -877,7 +877,7 @@ def detect_switch_compiled_by
 '407cf00a6106bc7ff08a1b83f898da76'
 end
 def detect_switch_source_hash
-'49a00ce1daf3351e18a9be5fe3014620'
+'046ce3b4122bf586c4596b0f0ce7963f'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
