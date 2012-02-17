@@ -177,7 +177,6 @@ class Maxsize_Dataflow < First_Dataflow      ;  def lattice;    Lattice_Maxsize;
 class Cant_Fail_Dataflow  < First_Dataflow ;  def lattice;    Lattice_Cant_Fail;  end; end
 
 
-class                       First_Dataflow;  def can_empty?(el);    $sizedf.analyze(el).size==0;  end; end
 class Minsize_Dataflow      < First_Dataflow;  def can_empty?(el);    true;                         end; end
 class Maxsize_Dataflow      < First_Dataflow;  def can_empty?(el);    true;                         end; end
 class Cant_Fail_Dataflow  < First_Dataflow;  def can_empty?(el);    true;                         end; end
@@ -289,6 +288,7 @@ amethyst Cant_Fail_Dataflow < First_Dataflow{
 
 class Detect_First< Traverser_Clone2;   def can_empty?(s);    $sizedf.analyze(s).size==0;  end; end
 
+def can_empty?(el);    $sizedf.analyze(el).size==0;  end
 def must_empty?(s);  $maxsize_df.analyze(s).size==0; end
 def cant_fail?(s);   $cant_fail_df.analyze(s).value;  end
 
