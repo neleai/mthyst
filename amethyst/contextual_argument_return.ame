@@ -1,24 +1,24 @@
 amethyst Add_Contextual_Arguments < Traverser_Clone2{
-  root  = @dup=>Rule[ {@@g=Global["_context_arguments"];@@a=autovar} {@self}:s {@@context_arg=false}
+  root  = @dup=>Rule[ {@>g=Global["_context_arguments"];@>a=autovar} {@self}:s {@@context_arg=false}
                       traverse:t 
                       {t=t.dup; 
-                       t.body=Seq[Act[[@@g,"||={};",@@a,"=",@@g,".dup"]],t.body] 
+                       t.body=Seq[Act[[@>g,"||={};",@>a,"=",@>g,".dup"]],t.body] 
                        @@context_arg ? t : s
                       }]
 
-  visit = Contextual_Argument[.:name {@@context_arg=true; [@@a,"[:",name,"]"] } ]
-        | Apply[ traverse:t .* ] -> Seq[Act[[@@g,"=",@@a]],t]
+  visit = Contextual_Argument[.:name {@@context_arg=true; [@>a,"[:",name,"]"] } ]
+        | Apply[ traverse:t .* ] -> Seq[Act[[@>g,"=",@>a]],t]
 }
 
 amethyst Add_Contextual_Returns < Traverser_Clone2{
-root = @dup=>Rule[ {@@a=autovar} traverse:t ] 
+root = @dup=>Rule[ {@>a=autovar} traverse:t ] 
                                          {t=t.dup
-                                          t.body=Seq[Act[[@@a,"=Hash.new{|h,k| h[k]=[]}"]],t.body,Act[[Global["contextual_return"],"=",@@a]]]
+                                          t.body=Seq[Act[[@>a,"=Hash.new{|h,k| h[k]=[]}"]],t.body,Act[[Global["contextual_return"],"=",@>a]]]
                                           t}                            
   
 
-  visit = Apply[ .*  {Seq[@self,Act[[Global["contextual_return"],".each{|k,v| ",@@a,"[k]+=v};",Global["contextual_return"],"=nil"]]]} ]
-        | Contextual_Return[ .:name ] ->  [@@a,"[:#{name}]"]
+  visit = Apply[ .*  {Seq[@self,Act[[Global["contextual_return"],".each{|k,v| ",@>a,"[k]+=v};",Global["contextual_return"],"=nil"]]]} ]
+        | Contextual_Return[ .:name ] ->  [@>a,"[:#{name}]"]
 }
 
 
