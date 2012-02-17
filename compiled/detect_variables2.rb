@@ -24,73 +24,73 @@ end
 
 class Analyze_Variables2 < Traverser_Clone2
 
-def Analyze_Variables2_Act_lb_bind_4ccd(bind)
+def _Act_lb_bind_4ccd(bind)
 Act[bind[1],bind[2],bind[3]]
 end
-def Analyze_Variables2_Many_dot_cre_6376(bind)
+def _Many_dot_cre_6376(bind)
 Many.create({:ary=>[@stop ? bind[1] : Or[bind[1],Stop[]] ] }) 
 end
-def Analyze_Variables2_Or_lb__ti_bind_5a27(bind)
+def _Or_lb__ti_bind_5a27(bind)
 Or[*bind[1]]
 
 end
-def Analyze_Variables2_Placehol_6875(bind)
+def _Placehol_6875(bind)
 Placeholder
 end
-def Analyze_Variables2_Seq_lb__ti_bin_1174(bind)
+def _Seq_lb__ti_bin_1174(bind)
 Seq[*bind[1]]
 
 end
-def Analyze_Variables2__append_lp__d113(bind)
+def __append_lp__d113(bind)
 _append(bind[1],bind[2])
 end
-def Analyze_Variables2__at_bnding_eq__b94a(bind)
+def __at_bnding_eq__b94a(bind)
 @bnding=src.bnding
 end
-def Analyze_Variables2__at_locals_eq__02ce(bind)
+def __at_locals_eq__02ce(bind)
 @locals=src.locals
 end
-def Analyze_Variables2__at_stop_8c46(bind)
+def __at_stop_8c46(bind)
 @stop
 end
-def Analyze_Variables2__at_stop_eq_bi_5f9f(bind)
+def __at_stop_eq_bi_5f9f(bind)
 @stop=bind[1]
 end
-def Analyze_Variables2__at_stop_eq_fa_620e(bind)
+def __at_stop_eq_fa_620e(bind)
 @stop=false
 end
-def Analyze_Variables2__at_stop_eq_tr_52d4(bind)
+def __at_stop_eq_tr_52d4(bind)
 @stop=true;src
 end
-def Analyze_Variables2__at_variabl_f612(bind)
+def __at_variabl_f612(bind)
 @variables=Hash.new{|k,v| k[v]=v} ;(src.locals+src.args).each{|w| @variables[w[0]]=w}
 end
-def Analyze_Variables2__lp_(bind)
+def __lp_(bind)
 (!bind[1]) || FAIL
 end
-def Analyze_Variables2__lp_bind_lb_1_rb__e3f1(bind)
+def __lp_bind_lb_1_rb__e3f1(bind)
 (bind[1].size==1&&(bind[1][0].is_a?(Local)||bind[1][0].is_a?(Global)||bind[1][0].is_a?(Key))) ? bind[1][0] : Args[*bind[1]]
 end
-def Analyze_Variables2__lp_src_dot_cla_e144(bind)
+def __lp_src_dot_cla_e144(bind)
 (src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
-def Analyze_Variables2_bind_lb_1_rb_(bind)
+def _bind_lb_1_rb_(bind)
 bind[1]
 
 end
-def Analyze_Variables2_bind_lb_1_rb__lt__7b20(bind)
+def _bind_lb_1_rb__lt__7b20(bind)
 bind[1]<<bind[2]
 end
-def Analyze_Variables2_bind_lb_1_rb__sp__6af0(bind)
+def _bind_lb_1_rb__sp__6af0(bind)
 bind[1] << bind[2]
 end
-def Analyze_Variables2_connects_04d2(bind)
+def _connects_04d2(bind)
 connectstring(bind[1].flatten)
 end
-def Analyze_Variables2_d_eq_src_dot_du_2c72(bind)
+def _d_eq_src_dot_du_2c72(bind)
 d=src.dup;d.locals=nil;d.freeze
 end
-def Analyze_Variables2_if_sp_bind_lb__1bed(bind)
+def _if_sp_bind_lb__1bed(bind)
 if bind[1]==bind[2]
 						  src
 						else
@@ -98,31 +98,31 @@ if bind[1]==bind[2]
 					  end 
           
 end
-def Analyze_Variables2_src_25d9(bind)
+def _src_25d9(bind)
 src
 end
-def Analyze_Variables2_src_dot_ary_d5cf(bind)
+def _src_dot_ary_d5cf(bind)
 src.ary
 end
-def Analyze_Variables2_src_dot_ary_dot__dd8c(bind)
+def _src_dot_ary_dot__dd8c(bind)
 src.ary.map{|aa| @variables[aa] }
 end
-def Analyze_Variables2_src_dot_dup_d768(bind)
+def _src_dot_dup_d768(bind)
 src.dup
 end
-def Analyze_Variables2_src_dot_pred_56d4(bind)
+def _src_dot_pred_56d4(bind)
 src.pred
 end
-def Analyze_Variables2_src_dot_pure_41d4(bind)
+def _src_dot_pure_41d4(bind)
 src.pure
 end
-def Analyze_Variables2_src_dot_rule_5acf(bind)
+def _src_dot_rule_5acf(bind)
 src.rules
 end
-def Analyze_Variables2_src_dot_rule_a719(bind)
+def _src_dot_rule_a719(bind)
 src.rules=bind[1]
 end
-def Analyze_Variables2_vars_eq__at_lo_cf02(bind)
+def _vars_eq__at_lo_cf02(bind)
 vars=@locals.select{|aa| Object.const_get(src.name).instance_variable_get(:@attrs).include? aa[0].to_sym}.uniq ;Result[{:name=>src.name,:vars=>vars,:varnames=>vars.map{|v| v[0]}}]
 end
 
@@ -131,28 +131,28 @@ end
 
 class Resolve_Calls < Traverser_Clone2
 
-def Resolve_Calls__at_grammar_c8c8(bind)
+def __at_grammar_c8c8(bind)
 @grammar=bind[1]
 end
-def Resolve_Calls__at_name_eq_bi_0e7f(bind)
+def __at_name_eq_bi_0e7f(bind)
 @name=bind[1]
 end
-def Resolve_Calls__lp_src_dot_cla_e144(bind)
+def __lp_src_dot_cla_e144(bind)
 (src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
-def Resolve_Calls_a_eq_Apply_lb__1315(bind)
+def _a_eq_Apply_lb__1315(bind)
 a=Apply[bind[1],   {:clas=>resolvegrammar(@grammar.name,bind[1])}];a
 end
-def Resolve_Calls_a_eq_Apply_lb__36f8(bind)
+def _a_eq_Apply_lb__36f8(bind)
 a=Apply[bind[1][1],{:clas=>resolvegrammar(Compiler.grammars[bind[1][0]],bind[1][1])}]
 end
-def Resolve_Calls_bind_lb_1_rb__lt__7b20(bind)
+def _bind_lb_1_rb__lt__7b20(bind)
 bind[1]<<bind[2]
 end
-def Resolve_Calls_bind_lb_1_rb__sp__6af0(bind)
+def _bind_lb_1_rb__sp__6af0(bind)
 bind[1] << bind[2]
 end
-def Resolve_Calls_if_sp_bind_lb__1bed(bind)
+def _if_sp_bind_lb__1bed(bind)
 if bind[1]==bind[2]
 						  src
 						else
@@ -160,10 +160,10 @@ if bind[1]==bind[2]
 					  end 
           
 end
-def Resolve_Calls_src_dot_name_80f3(bind)
+def _src_dot_name_80f3(bind)
 src.name
 end
-def Resolve_Calls_super_na_c8c2(bind)
+def _super_na_c8c2(bind)
 super_name="#{@name}_#{@grammar.name}"
                     @grammar.rules[super_name]=Compiler.grammars[@grammar.parent].getrule(@name).dup
                     @grammar.rules[super_name].name=super_name
@@ -175,7 +175,7 @@ end
 
 
 def detect_variables2_compiled_by
-'bd18b69cab5d786eb9659a855a9960fb'
+'09cd215b63778a251028c3ab326dbf85'
 end
 def detect_variables2_source_hash
 'd68e0fd5a94161c607efb8805fad2811'
@@ -184,6 +184,6 @@ def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'b1ace13df86d3e506b23f22b422169ea'
+'41b274eb6c8f371db742b14b3ec2fb91'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_variables2_c"

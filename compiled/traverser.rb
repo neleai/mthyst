@@ -1,15 +1,15 @@
 class Traverser_Clone2 < Amethyst
 
-def Traverser_Clone2__lp_src_dot_cla_e144(bind)
+def __lp_src_dot_cla_e144(bind)
 (src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
-def Traverser_Clone2_bind_lb_1_rb__lt__7b20(bind)
+def _bind_lb_1_rb__lt__7b20(bind)
 bind[1]<<bind[2]
 end
-def Traverser_Clone2_bind_lb_1_rb__sp__6af0(bind)
+def _bind_lb_1_rb__sp__6af0(bind)
 bind[1] << bind[2]
 end
-def Traverser_Clone2_if_sp_bind_lb__1bed(bind)
+def _if_sp_bind_lb__1bed(bind)
 if bind[1]==bind[2]
 						  src
 						else
@@ -25,10 +25,10 @@ end
 
 class Visitor < Amethyst
 
-def Visitor__append_lp__d113(bind)
+def __append_lp__d113(bind)
 _append(bind[1],bind[2])
 end
-def Visitor__lp_src_dot_ins_a413(bind)
+def __lp_src_dot_ins_a413(bind)
 (src.instance_variables).map{|v| src.instance_variable_get(v)}
 end
 
@@ -36,7 +36,7 @@ end
 
 
 def traverser_compiled_by
-'bd18b69cab5d786eb9659a855a9960fb'
+'09cd215b63778a251028c3ab326dbf85'
 end
 def traverser_source_hash
 '866d34ac8914c3c5a6d593638f413dd3'
@@ -45,6 +45,6 @@ def testversiontraverser(r)
  raise "invalid version" if r!=traverser_version
 end
 def traverser_version
-'21f3367f117043948b21c7be7a9d6228'
+'4eeaa254defb2efbc51e4edd27568134'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/traverser_c"

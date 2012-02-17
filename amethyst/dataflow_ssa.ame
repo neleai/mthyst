@@ -60,7 +60,7 @@ end
 CurrentParser[:memoize]=["root"]
 CurrentParser[:global_memo]=true
 amethyst Dataflow < Traverser_Clone2 {
-  root =  @dup=>Rule[ {@@bnding=@bnding} @args=>[traverse_item*:var] {var.each{|v| @@marked<<ssanum(v)};@args=var} ({Seq[@body,Act[Local["_result",@bnding]]]}=>traverse_item):body {@body=Seq[body.ary[0..-2]]} {@reachable=@@edges.reverse.reachable(@@marked+[ssanum(body[-1])]); @cfg=@@edges; } {@self.freeze} ]
+  root =  @dup=>Rule[ {@>bnding=@bnding} @args=>[traverse_item*:var] {var.each{|v| @@marked<<ssanum(v)};@args=var} ({Seq[@body,Act[Local["_result",@bnding]]]}=>traverse_item):body {@body=Seq[body.ary[0..-2]]} {@reachable=@@edges.reverse.reachable(@@marked+[ssanum(body[-1])]); @cfg=@@edges; } {@self.freeze} ]
   
   visit = Apply[  traverse_item*:t {Apply[*(t+[{:clas=>@clas}])]}:app {app}=>[vars_in:var] {var.each{|v| @@marked<<ssanum(v)}} {app} ]
         | switch[ {[]}:alts  {[]}:join {oldssanums.clone}:old  ({@@oldssanums=old.clone} [:pred traverse_item:a {alts<<[pred,a]}] {join<<oldssanums.clone})* {or_end(join)} {@self.class[{:ary=>alts}]} ]
@@ -92,12 +92,12 @@ amethyst Dataflow < Traverser_Clone2 {
 }
 
 amethyst Dead_Code_Deleter3 < Traverser_Clone2{
-    root = @dup=>Rule[ {@@reachable=@reachable} {@reachable=nil;@cfg=nil} traverse]
+    root = @dup=>Rule[ {@>reachable=@reachable} {@reachable=nil;@cfg=nil} traverse]
 
-    visit = (Act|CAct|Result)[@self:this .*] -> (!@@reachable[this] ||(this.pure && !@@bound)) ? Placeholder : this
+    visit = (Act|CAct|Result)[@self:this .*] -> (!@>reachable[this] ||(this.pure && !@@bound)) ? Placeholder : this
           | Apply[.* {d=@dup;d.bound=@@bound;d.normalize}]
-          | Bind[.* @self:b {@@bound||=@@reachable[@name]} traverse[ .* {@@bound=false} {@@reachable[@name] ? @self : @expr}]]
-          | Local[.* @self:this ] -> @@reachable[this] ? this : Placeholder
+          | Bind[.* @self:b {@@bound||=@>reachable[@name]} traverse[ .* {@@bound=false} {@>reachable[@name] ? @self : @expr}]]
+          | Local[.* @self:this ] -> @>reachable[this] ? this : Placeholder
 }
 
 CurrentParser[:memoize]=["traverse"]

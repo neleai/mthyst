@@ -61,87 +61,93 @@ CurrentParser[:memoize]=["root"]
 CurrentParser[:global_memo]=true
 class Dataflow < Traverser_Clone2
 
-def Dataflow_Act_lb_bind_7d8f(bind)
+def _Act_lb_bind_7d8f(bind)
 Act[bind[1],src.pred]
 end
-def Dataflow_Apply_lb__ti__lp__753f(bind)
+def _Apply_lb__ti__lp__753f(bind)
 Apply[*(bind[1]+[{:clas=>src.clas}])]
 end
-def Dataflow_Lookahea_2972(bind)
+def _Lookahea_2972(bind)
 Lookahead[*bind[1]]
 end
-def Dataflow_Many_dot_cre_2107(bind)
+def _Many_dot_cre_2107(bind)
 Many.create({:ary=>bind[1]}).normalize
 end
-def Dataflow_Pass_dot_cre_5b5c(bind)
+def _Pass_dot_cre_5b5c(bind)
 Pass.create({:to=>bind[1],:var=>bind[2],:enter=>src.enter}).normalize
 end
-def Dataflow_Seq_lb_src_dot__6f68(bind)
+def _Seq_lb_src_dot__6f68(bind)
 Seq[src.body,Act[Local["_result",src.bnding]]]
 end
-def Dataflow_Switch_O_5445(bind)
+def _Switch_O_5445(bind)
 Switch_Or.create(:ary=>bind[1].map{|k| [nil,k]})
 
 end
-def Dataflow__append_lp__d113(bind)
+def __append_lp__d113(bind)
 _append(bind[1],bind[2])
 end
-def Dataflow__at_bnding_eq__b94a(bind)
-@bnding=src.bnding
+def __at__contex_160a(bind)
+@_context_arguments||={};bind[1]=@_context_arguments.dup
 end
-def Dataflow__at_marked_lt__59bb(bind)
+def __at__contex_d6d5(bind)
+@_context_arguments=bind[1]
+end
+def __at_marked_lt__59bb(bind)
 @marked<<src
 end
-def Dataflow__at_marked_lt__d910(bind)
+def __at_marked_lt__d910(bind)
 @marked<<bind[1] if src.pred || !src.pure
 end
-def Dataflow__at_marked_lt__f9b9(bind)
+def __at_marked_lt__f9b9(bind)
 @marked<<bind[1].ssaname
 end
-def Dataflow__at_oldssan_37c2(bind)
+def __at_oldssan_37c2(bind)
 @oldssanums=bind[1].clone
 end
-def Dataflow__at_oldssan_e953(bind)
+def __at_oldssan_e953(bind)
 @oldssanums=bind[1]
 end
-def Dataflow__lp_src_dot_cla_e144(bind)
+def __lp_src_dot_cla_e144(bind)
 (src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
-def Dataflow_bind_end_6e13(bind)
+def _bind_end_6e13(bind)
 bind_end(src)
 end
-def Dataflow_bind_lb_1_rb_(bind)
+def _bind_lb_1_rb_(bind)
 bind[1]
 
 end
-def Dataflow_bind_lb_1_rb__dot__6099(bind)
+def _bind_lb_1_rb__dot__6099(bind)
 bind[1].each{|v| @marked<<ssanum(v)};src.args=bind[1]
 end
-def Dataflow_bind_lb_1_rb__dot__9da9(bind)
+def _bind_lb_1_rb__dot__9da9(bind)
 bind[1].each{|v| edges.add(ssanum(v),bind[2]); edges.add(bind[2],newssanum(v));}; bind[2]
 end
-def Dataflow_bind_lb_1_rb__dot__ce70(bind)
+def _bind_lb_1_rb__dot__ce70(bind)
 bind[1].each{|v| @marked<<ssanum(v)}
 end
-def Dataflow_bind_lb_1_rb__dot__dbae(bind)
+def _bind_lb_1_rb__dot__dbae(bind)
 bind[1].ary
 end
-def Dataflow_bind_lb_1_rb__eq__fe02(bind)
+def _bind_lb_1_rb__eq__fe02(bind)
 bind[1]=[]
 end
-def Dataflow_bind_lb_1_rb__lt__7b20(bind)
+def _bind_lb_1_rb__lb__9337(bind)
+bind[1][:bnding]=src.bnding
+end
+def _bind_lb_1_rb__lt__7b20(bind)
 bind[1]<<bind[2]
 end
-def Dataflow_bind_lb_1_rb__lt__c37a(bind)
+def _bind_lb_1_rb__lt__c37a(bind)
 bind[1]<<[bind[2],bind[3]]
 end
-def Dataflow_bind_lb_1_rb__lt__eda2(bind)
+def _bind_lb_1_rb__lt__eda2(bind)
 bind[1]<<oldssanums.clone
 end
-def Dataflow_bind_lb_1_rb__sp__6af0(bind)
+def _bind_lb_1_rb__sp__6af0(bind)
 bind[1] << bind[2]
 end
-def Dataflow_if_sp_bind_lb__1bed(bind)
+def _if_sp_bind_lb__1bed(bind)
 if bind[1]==bind[2]
 						  src
 						else
@@ -149,52 +155,52 @@ if bind[1]==bind[2]
 					  end 
           
 end
-def Dataflow_many_end_0563(bind)
+def _many_end_0563(bind)
 many_end(bind[1])
 end
-def Dataflow_n_eq_Result_d8be(bind)
+def _n_eq_Result_d8be(bind)
 n=Result[{:name=>src.name,:varnames=>src.varnames,:vars=>bind[1]}]; bind[1].each{|w| @edges.add(w.ssaname,n) } ; n
 end
-def Dataflow_oldssanu_073d(bind)
+def _oldssanu_073d(bind)
 oldssanums.clone
 end
-def Dataflow_or_end_lp_b_33b4(bind)
+def _or_end_lp_b_33b4(bind)
 or_end(bind[1])
 end
-def Dataflow_src_25d9(bind)
+def _src_25d9(bind)
 src
 end
-def Dataflow_src_dot_args_2df5(bind)
+def _src_dot_args_2df5(bind)
 src.args
 end
-def Dataflow_src_dot_body_b7c1(bind)
+def _src_dot_body_b7c1(bind)
 src.body=Seq[bind[1].ary[0..-2]]
 end
-def Dataflow_src_dot_clas_68f9(bind)
+def _src_dot_clas_68f9(bind)
 src.class[{:ary=>bind[1]}]
 end
-def Dataflow_src_dot_dup_d768(bind)
+def _src_dot_dup_d768(bind)
 src.dup
 end
-def Dataflow_src_dot_free_3d49(bind)
+def _src_dot_free_3d49(bind)
 src.freeze
 end
-def Dataflow_src_dot_reac_9ae4(bind)
+def _src_dot_reac_9ae4(bind)
 src.reachable=@edges.reverse.reachable(@marked+[ssanum(bind[1][-1])]); src.cfg=@edges; 
 end
-def Dataflow_src_dot_to_5e99(bind)
+def _src_dot_to_5e99(bind)
 src.to
 end
-def Dataflow_src_dot_var_3a88(bind)
+def _src_dot_var_3a88(bind)
 src.var
 end
-def Dataflow_src_dot_vars_2db1(bind)
+def _src_dot_vars_2db1(bind)
 src.vars
 end
-def Dataflow_ssanum_lp_s_3920(bind)
+def _ssanum_lp_s_3920(bind)
 ssanum(src)
 end
-def Dataflow_ssanums_dot__ae08(bind)
+def _ssanums_dot__ae08(bind)
 ssanums.clone
 end
 
@@ -203,39 +209,45 @@ end
 
 class Dead_Code_Deleter3 < Traverser_Clone2
 
-def Dead_Code_Deleter3__at_bound(bind)
-@bound||=@reachable[src.name]
+def __at__contex_160a(bind)
+@_context_arguments||={};bind[1]=@_context_arguments.dup
 end
-def Dead_Code_Deleter3__at_bound_eq_f_5875(bind)
+def __at__contex_d6d5(bind)
+@_context_arguments=bind[1]
+end
+def __at_bound(bind)
+@bound||=bind[1][:reachable][src.name]
+end
+def __at_bound_eq_f_5875(bind)
 @bound=false
 end
-def Dead_Code_Deleter3__at_reachab_005c(bind)
-@reachable[src.name] ? src : src.expr
-end
-def Dead_Code_Deleter3__at_reachab_725b(bind)
-@reachable[bind[1]] ? bind[1] : Placeholder
+def __lp_(bind)
+(!bind[1][:reachable][bind[2]] ||(bind[2].pure && !@bound)) ? Placeholder : bind[2]
 
 end
-def Dead_Code_Deleter3__at_reachab_8588(bind)
-@reachable=src.reachable
-end
-def Dead_Code_Deleter3__lp_(bind)
-(!@reachable[bind[1]] ||(bind[1].pure && !@bound)) ? Placeholder : bind[1]
-
-end
-def Dead_Code_Deleter3__lp_src_dot_cla_e144(bind)
+def __lp_src_dot_cla_e144(bind)
 (src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
-def Dead_Code_Deleter3_bind_lb_1_rb__lt__7b20(bind)
+def _bind_lb_1_rb__lb__1f9e(bind)
+bind[1][:reachable]=src.reachable
+end
+def _bind_lb_1_rb__lb__6818(bind)
+bind[1][:reachable][bind[2]] ? bind[2] : Placeholder
+
+end
+def _bind_lb_1_rb__lb__8eca(bind)
+bind[1][:reachable][src.name] ? src : src.expr
+end
+def _bind_lb_1_rb__lt__7b20(bind)
 bind[1]<<bind[2]
 end
-def Dead_Code_Deleter3_bind_lb_1_rb__sp__6af0(bind)
+def _bind_lb_1_rb__sp__6af0(bind)
 bind[1] << bind[2]
 end
-def Dead_Code_Deleter3_d_eq_src_dot_du_7d16(bind)
+def _d_eq_src_dot_du_7d16(bind)
 d=src.dup;d.bound=@bound;d.normalize
 end
-def Dead_Code_Deleter3_if_sp_bind_lb__1bed(bind)
+def _if_sp_bind_lb__1bed(bind)
 if bind[1]==bind[2]
 						  src
 						else
@@ -243,13 +255,13 @@ if bind[1]==bind[2]
 					  end 
           
 end
-def Dead_Code_Deleter3_src_25d9(bind)
+def _src_25d9(bind)
 src
 end
-def Dead_Code_Deleter3_src_dot_dup_d768(bind)
+def _src_dot_dup_d768(bind)
 src.dup
 end
-def Dead_Code_Deleter3_src_dot_reac_cd39(bind)
+def _src_dot_reac_cd39(bind)
 src.reachable=nil;src.cfg=nil
 end
 
@@ -260,16 +272,16 @@ CurrentParser[:memoize]=["traverse"]
 CurrentParser[:global_memo]=true
 class Forget_SSA < Traverser_Clone2
 
-def Forget_SSA__lp_src_dot_cla_e144(bind)
+def __lp_src_dot_cla_e144(bind)
 (src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
-def Forget_SSA_bind_lb_1_rb__lt__7b20(bind)
+def _bind_lb_1_rb__lt__7b20(bind)
 bind[1]<<bind[2]
 end
-def Forget_SSA_bind_lb_1_rb__sp__6af0(bind)
+def _bind_lb_1_rb__sp__6af0(bind)
 bind[1] << bind[2]
 end
-def Forget_SSA_if_sp_bind_lb__1bed(bind)
+def _if_sp_bind_lb__1bed(bind)
 if bind[1]==bind[2]
 						  src
 						else
@@ -277,10 +289,10 @@ if bind[1]==bind[2]
 					  end 
           
 end
-def Forget_SSA_src_25d9(bind)
+def _src_25d9(bind)
 src
 end
-def Forget_SSA_src_dot_unss_5845(bind)
+def _src_dot_unss_5845(bind)
 src.unssa
 end
 
@@ -288,15 +300,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'bd18b69cab5d786eb9659a855a9960fb'
+'09cd215b63778a251028c3ab326dbf85'
 end
 def dataflow_ssa_source_hash
-'0d20bc03b65c38af5fe5f43a5899cd04'
+'bd50932bb272d84a91c762d67a589f01'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'74cc8b55422a155742708b26bb495fa7'
+'3d0ca5b509a37be4d422bbf8a0d81cc5'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/dataflow_ssa_c"

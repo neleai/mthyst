@@ -9,11 +9,14 @@ VALUE DetectCalls_visit(VALUE self );
 VALUE switchhash_DetectCalls_1;
 VALUE switchhash_DetectCalls_2;
 VALUE switchhash_DetectCalls_3;
-static VALUE sy_DetectCalls__append_lp__d113;
-static VALUE sy_DetectCalls__at_calls_7f81;
-static VALUE sy_DetectCalls__at_calls_eq__le__39e9;
-static VALUE sy_DetectCalls__at_calls_lb_b_e709;
-static VALUE sy_DetectCalls__lp_src_dot_ins_a413;
+static VALUE sy___append_lp__d113;
+static VALUE sy___at_calls_7f81;
+static VALUE sy___at_calls_eq__le__39e9;
+static VALUE sy___at_calls_lb_b_e709;
+static VALUE sy___lp_src_dot_ins_a413;
+static VALUE sy_traverse;
+static VALUE sy_traverse_item;
+static VALUE sy_visit;
 VALUE profile_report_DetectCalls(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -49,10 +52,10 @@ VALUE DetectCalls_root(VALUE self ) {
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=rb_funcall(self,sy_DetectCalls__at_calls_eq__le__39e9,1,bind2);
-        it=DetectCalls_traverse(self );
+        it=rb_funcall(self,sy___at_calls_eq__le__39e9,1,bind2);
+        it=rb_funcall(self,sy_traverse,0);
         FAILTEST(pass1);
-        it=rb_funcall(self,sy_DetectCalls__at_calls_7f81,1,bind2);
+        it=rb_funcall(self,sy___at_calls_7f81,1,bind2);
         _autovar_2=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass1;
@@ -83,7 +86,7 @@ VALUE DetectCalls_traverse(VALUE self ) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     ptr->pos=ptr->len;
-    it=rb_funcall(self,sy_DetectCalls__lp_src_dot_ins_a413,1,bind2);
+    it=rb_funcall(self,sy___lp_src_dot_ins_a413,1,bind2);
     _autovar=it;;
     cstruct oldpass1=*ptr;
     ptr->pos=ptr->len=0;
@@ -119,12 +122,12 @@ VALUE DetectCalls_traverse(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=DetectCalls_traverse_item(self );
+        it=rb_funcall(self,sy_traverse_item,0);
         FAILTEST(alt1_2);
         _autovar_4=it;;
         bind_aset(bind2,1,_autovar_3);
         bind_aset(bind2,2,_autovar_4);
-        it=rb_funcall(self,sy_DetectCalls__append_lp__d113,1,bind2);
+        it=rb_funcall(self,sy___append_lp__d113,1,bind2);
         _autovar_3=bind_aget(bind2,1);;
         _autovar_4=bind_aget(bind2,2);;
         ;
@@ -182,7 +185,7 @@ VALUE DetectCalls_traverse_item(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=DetectCalls_visit(self );
+        it=rb_funcall(self,sy_visit,0);
         FAILTEST(alt1_2);
         __result=it;;
 
@@ -209,7 +212,7 @@ alt1_2:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=DetectCalls_traverse(self );
+        it=rb_funcall(self,sy_traverse,0);
         FAILTEST(pass1);
         _autovar_2=it;;
         it=Qnil;
@@ -245,7 +248,7 @@ accept1:
         int cut2=0;
 alt2_1:
         ;
-        it=DetectCalls_visit(self );
+        it=rb_funcall(self,sy_visit,0);
         FAILTEST(alt2_2);
         __result=it;;
 
@@ -280,12 +283,12 @@ alt2_2:
             int cut3=0;
 alt3_1:
             ;
-            it=DetectCalls_traverse_item(self );
+            it=rb_funcall(self,sy_traverse_item,0);
             FAILTEST(alt3_2);
             _autovar_5=it;;
             bind_aset(bind2,1,_autovar_4);
             bind_aset(bind2,2,_autovar_5);
-            it=rb_funcall(self,sy_DetectCalls__append_lp__d113,1,bind2);
+            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
             _autovar_4=bind_aget(bind2,1);;
             _autovar_5=bind_aget(bind2,2);;
             ;
@@ -336,7 +339,7 @@ accept2:
         int cut4=0;
 alt4_1:
         ;
-        it=DetectCalls_visit(self );
+        it=rb_funcall(self,sy_visit,0);
         FAILTEST(alt4_2);
         __result=it;;
 
@@ -396,7 +399,7 @@ VALUE DetectCalls_visit(VALUE self ) {
         _name=it;;
         ptr->pos=ptr->len;
         bind_aset(bind2,1,_name);
-        it=rb_funcall(self,sy_DetectCalls__at_calls_lb_b_e709,1,bind2);
+        it=rb_funcall(self,sy___at_calls_lb_b_e709,1,bind2);
         _name=bind_aget(bind2,1);;
         _autovar_2=it;;
         it=Qnil;
@@ -429,18 +432,21 @@ VALUE switchhash_Inliner2_1;
 VALUE switchhash_Inliner2_2;
 VALUE switchhash_Inliner2_3;
 VALUE switchhash_Inliner2_4;
-static VALUE sy_Inliner2_Seq_lb_src_dot__3406;
-static VALUE sy_Inliner2__append_lp__d113;
-static VALUE sy_Inliner2__at_name_eq_bi_5da3;
-static VALUE sy_Inliner2__lp_bind_lb_1_rb__709e;
-static VALUE sy_Inliner2__lp_src_dot_cla_e144;
-static VALUE sy_Inliner2_bind_lb_1_rb__lt__7b20;
-static VALUE sy_Inliner2_bind_lb_1_rb__sp__6af0;
-static VALUE sy_Inliner2_body_eq__at_bo_4270;
-static VALUE sy_Inliner2_if_sp_bind_lb__1bed;
-static VALUE sy_Inliner2_src_dot_args_2df5;
-static VALUE sy_Inliner2_src_dot_loca_1df0;
-static VALUE sy_Inliner2_src_dot_name_80f3;
+static VALUE sy__Seq_lb_src_dot__3406;
+static VALUE sy___append_lp__d113;
+static VALUE sy___at_name_eq_bi_5da3;
+static VALUE sy___lp_bind_lb_1_rb__709e;
+static VALUE sy___lp_src_dot_cla_e144;
+static VALUE sy__bind_lb_1_rb__lt__7b20;
+static VALUE sy__bind_lb_1_rb__sp__6af0;
+static VALUE sy__body_eq__at_bo_4270;
+static VALUE sy__if_sp_bind_lb__1bed;
+static VALUE sy__src_dot_args_2df5;
+static VALUE sy__src_dot_loca_1df0;
+static VALUE sy__src_dot_name_80f3;
+static VALUE sy_traverse;
+static VALUE sy_traverse_item;
+static VALUE sy_visit;
 VALUE profile_report_Inliner2(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -507,12 +513,12 @@ success1:
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
-    it=rb_funcall(self,sy_Inliner2_src_dot_name_80f3,1,bind2);
+    it=rb_funcall(self,sy__src_dot_name_80f3,1,bind2);
     _name=it;;
-    it=rb_funcall(self,sy_Inliner2_src_dot_args_2df5,1,bind2);
+    it=rb_funcall(self,sy__src_dot_args_2df5,1,bind2);
     _args=it;;
-    it=rb_funcall(self,sy_Inliner2_src_dot_loca_1df0,1,bind2);
-    it=rb_funcall(self,sy_Inliner2_Seq_lb_src_dot__3406,1,bind2);
+    it=rb_funcall(self,sy__src_dot_loca_1df0,1,bind2);
+    it=rb_funcall(self,sy__Seq_lb_src_dot__3406,1,bind2);
     _body=it;;
     it=Qnil;
     if (ptr->pos<ptr->len) goto pass2;
@@ -525,7 +531,7 @@ success2:
     bind_aset(bind2,1,_name);
     bind_aset(bind2,2,_args);
     bind_aset(bind2,3,_body);
-    it=rb_funcall(self,sy_Inliner2__at_name_eq_bi_5da3,1,bind2);
+    it=rb_funcall(self,sy___at_name_eq_bi_5da3,1,bind2);
     _name=bind_aget(bind2,1);;
     _args=bind_aget(bind2,2);;
     _body=bind_aget(bind2,3);;
@@ -576,7 +582,7 @@ success3:
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
-    it=Inliner2_traverse(self );
+    it=rb_funcall(self,sy_traverse,0);
     FAILTEST(pass4);
     _autovar_7=it;;
     it=Qnil;
@@ -605,7 +611,7 @@ VALUE Inliner2_traverse(VALUE self ) {
     ptr->pos=ptr->len;
     it=rb_ary_new3(0);
     _nvars=it;;
-    it=rb_funcall(self,sy_Inliner2__lp_src_dot_cla_e144,1,bind2);
+    it=rb_funcall(self,sy___lp_src_dot_cla_e144,1,bind2);
     _ivars=it;;
     it=_ivars;
     _autovar=it;;
@@ -641,12 +647,12 @@ VALUE Inliner2_traverse(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=Inliner2_traverse_item(self );
+        it=rb_funcall(self,sy_traverse_item,0);
         FAILTEST(alt1_2);
         _it=it;;
         bind_aset(bind2,1,_nvars);
         bind_aset(bind2,2,_it);
-        it=rb_funcall(self,sy_Inliner2_bind_lb_1_rb__sp__6af0,1,bind2);
+        it=rb_funcall(self,sy__bind_lb_1_rb__sp__6af0,1,bind2);
         _nvars=bind_aget(bind2,1);;
         _it=bind_aget(bind2,2);;
         ;
@@ -680,7 +686,7 @@ success1:
     *ptr=oldpass1;
     bind_aset(bind2,1,_ivars);
     bind_aset(bind2,2,_nvars);
-    it=rb_funcall(self,sy_Inliner2_if_sp_bind_lb__1bed,1,bind2);
+    it=rb_funcall(self,sy__if_sp_bind_lb__1bed,1,bind2);
     _ivars=bind_aget(bind2,1);;
     _nvars=bind_aget(bind2,2);;
     __result=it;;
@@ -704,7 +710,7 @@ VALUE Inliner2_traverse_item(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=Inliner2_visit(self );
+        it=rb_funcall(self,sy_visit,0);
         FAILTEST(alt1_2);
         __result=it;;
 
@@ -731,7 +737,7 @@ alt1_2:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=Inliner2_traverse(self );
+        it=rb_funcall(self,sy_traverse,0);
         FAILTEST(pass1);
         _autovar_2=it;;
         it=Qnil;
@@ -767,7 +773,7 @@ accept1:
         int cut2=0;
 alt2_1:
         ;
-        it=Inliner2_visit(self );
+        it=rb_funcall(self,sy_visit,0);
         FAILTEST(alt2_2);
         __result=it;;
 
@@ -802,12 +808,12 @@ alt2_2:
             int cut3=0;
 alt3_1:
             ;
-            it=Inliner2_traverse_item(self );
+            it=rb_funcall(self,sy_traverse_item,0);
             FAILTEST(alt3_2);
             _it=it;;
             bind_aset(bind2,1,_ar);
             bind_aset(bind2,2,_it);
-            it=rb_funcall(self,sy_Inliner2_bind_lb_1_rb__lt__7b20,1,bind2);
+            it=rb_funcall(self,sy__bind_lb_1_rb__lt__7b20,1,bind2);
             _ar=bind_aget(bind2,1);;
             _it=bind_aget(bind2,2);;
             ;
@@ -858,7 +864,7 @@ accept2:
         int cut4=0;
 alt4_1:
         ;
-        it=Inliner2_visit(self );
+        it=rb_funcall(self,sy_visit,0);
         FAILTEST(alt4_2);
         __result=it;;
 
@@ -917,7 +923,7 @@ VALUE Inliner2_visit(VALUE self ) {
         FAILTEST(pass1);
         _name=it;;
         bind_aset(bind2,1,_name);
-        it=rb_funcall(self,sy_Inliner2__lp_bind_lb_1_rb__709e,1,bind2);
+        it=rb_funcall(self,sy___lp_bind_lb_1_rb__709e,1,bind2);
         _name=bind_aget(bind2,1);;
         FAILTEST(pass1);
         it=rb_ary_new3(0);
@@ -933,7 +939,7 @@ alt1_1:
             _autovar_3=it;;
             bind_aset(bind2,1,_autovar_2);
             bind_aset(bind2,2,_autovar_3);
-            it=rb_funcall(self,sy_Inliner2__append_lp__d113,1,bind2);
+            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
             _autovar_2=bind_aget(bind2,1);;
             _autovar_3=bind_aget(bind2,2);;
             ;
@@ -960,7 +966,7 @@ pass1:
 success1:
         *ptr=oldpass1;
         bind_aset(bind2,1,_args);
-        it=rb_funcall(self,sy_Inliner2_body_eq__at_bo_4270,1,bind2);
+        it=rb_funcall(self,sy__body_eq__at_bo_4270,1,bind2);
         _args=bind_aget(bind2,1);;
         __result=it;;
         break;
@@ -983,11 +989,14 @@ void Init_inliner2_c() {
     rb_global_variable(&switchhash_DetectCalls_2);;
     switchhash_DetectCalls_3=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}");
     rb_global_variable(&switchhash_DetectCalls_3);;
-    sy_DetectCalls__append_lp__d113=rb_intern("DetectCalls__append_lp__d113");
-    sy_DetectCalls__at_calls_7f81=rb_intern("DetectCalls__at_calls_7f81");
-    sy_DetectCalls__at_calls_eq__le__39e9=rb_intern("DetectCalls__at_calls_eq__le__39e9");
-    sy_DetectCalls__at_calls_lb_b_e709=rb_intern("DetectCalls__at_calls_lb_b_e709");
-    sy_DetectCalls__lp_src_dot_ins_a413=rb_intern("DetectCalls__lp_src_dot_ins_a413");
+    sy___append_lp__d113=rb_intern("__append_lp__d113");
+    sy___at_calls_7f81=rb_intern("__at_calls_7f81");
+    sy___at_calls_eq__le__39e9=rb_intern("__at_calls_eq__le__39e9");
+    sy___at_calls_lb_b_e709=rb_intern("__at_calls_lb_b_e709");
+    sy___lp_src_dot_ins_a413=rb_intern("__lp_src_dot_ins_a413");
+    sy_traverse=rb_intern("traverse");
+    sy_traverse_item=rb_intern("traverse_item");
+    sy_visit=rb_intern("visit");
     rb_define_method(cls_DetectCalls,"root",DetectCalls_root,0);
     rb_define_method(cls_DetectCalls,"traverse",DetectCalls_traverse,0);
     rb_define_method(cls_DetectCalls,"traverse_item",DetectCalls_traverse_item,0);
@@ -1004,21 +1013,24 @@ void Init_inliner2_c() {
     rb_global_variable(&switchhash_Inliner2_3);;
     switchhash_Inliner2_4=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}");
     rb_global_variable(&switchhash_Inliner2_4);;
-    sy_Inliner2_Seq_lb_src_dot__3406=rb_intern("Inliner2_Seq_lb_src_dot__3406");
-    sy_Inliner2__append_lp__d113=rb_intern("Inliner2__append_lp__d113");
-    sy_Inliner2__at_name_eq_bi_5da3=rb_intern("Inliner2__at_name_eq_bi_5da3");
-    sy_Inliner2__lp_bind_lb_1_rb__709e=rb_intern("Inliner2__lp_bind_lb_1_rb__709e");
-    sy_Inliner2__lp_src_dot_cla_e144=rb_intern("Inliner2__lp_src_dot_cla_e144");
-    sy_Inliner2_bind_lb_1_rb__lt__7b20=rb_intern("Inliner2_bind_lb_1_rb__lt__7b20");
-    sy_Inliner2_bind_lb_1_rb__sp__6af0=rb_intern("Inliner2_bind_lb_1_rb__sp__6af0");
-    sy_Inliner2_body_eq__at_bo_4270=rb_intern("Inliner2_body_eq__at_bo_4270");
-    sy_Inliner2_if_sp_bind_lb__1bed=rb_intern("Inliner2_if_sp_bind_lb__1bed");
-    sy_Inliner2_src_dot_args_2df5=rb_intern("Inliner2_src_dot_args_2df5");
-    sy_Inliner2_src_dot_loca_1df0=rb_intern("Inliner2_src_dot_loca_1df0");
-    sy_Inliner2_src_dot_name_80f3=rb_intern("Inliner2_src_dot_name_80f3");
+    sy__Seq_lb_src_dot__3406=rb_intern("_Seq_lb_src_dot__3406");
+    sy___append_lp__d113=rb_intern("__append_lp__d113");
+    sy___at_name_eq_bi_5da3=rb_intern("__at_name_eq_bi_5da3");
+    sy___lp_bind_lb_1_rb__709e=rb_intern("__lp_bind_lb_1_rb__709e");
+    sy___lp_src_dot_cla_e144=rb_intern("__lp_src_dot_cla_e144");
+    sy__bind_lb_1_rb__lt__7b20=rb_intern("_bind_lb_1_rb__lt__7b20");
+    sy__bind_lb_1_rb__sp__6af0=rb_intern("_bind_lb_1_rb__sp__6af0");
+    sy__body_eq__at_bo_4270=rb_intern("_body_eq__at_bo_4270");
+    sy__if_sp_bind_lb__1bed=rb_intern("_if_sp_bind_lb__1bed");
+    sy__src_dot_args_2df5=rb_intern("_src_dot_args_2df5");
+    sy__src_dot_loca_1df0=rb_intern("_src_dot_loca_1df0");
+    sy__src_dot_name_80f3=rb_intern("_src_dot_name_80f3");
+    sy_traverse=rb_intern("traverse");
+    sy_traverse_item=rb_intern("traverse_item");
+    sy_visit=rb_intern("visit");
     rb_define_method(cls_Inliner2,"root",Inliner2_root,0);
     rb_define_method(cls_Inliner2,"traverse",Inliner2_traverse,0);
     rb_define_method(cls_Inliner2,"traverse_item",Inliner2_traverse_item,0);
     rb_define_method(cls_Inliner2,"visit",Inliner2_visit,0);
-    rb_eval_string("testversioninliner2('0ba36724972d327bff701223818d4e64')");
+    rb_eval_string("testversioninliner2('e2bbcae49f1aeea9f7e747490c9e09ab')");
 }

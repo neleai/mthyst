@@ -80,13 +80,13 @@ amethyst AmethystCTranslator < Amethyst {
 
   rbtrans2 = rbtrans*:{it*""}
 
-  rbcode = {"class #{@@grammar} < #{@@parent}\n"}:s
+  rbcode = {"class #{@>grammar} < #{@>parent}\n"}:s
            {s<<@@defs*"\n";s<<"\n"}
            {@@callbacks.to_a.sort}=>[([:k :v]   {"def #{k}(bind)\n#{v}\nend\n"})*:x ]
            {s+=x*""}
            {s+="\nend"; s}
   
-  trans =  Grammar[ {@@grammar=@name;@@parent=@parent} {@@lambdas=[] ;@@rcallbacks={};@@cbhash={}} {@@defs=[];@@defmethods=[];@@profile_report=[]} {@@faillabel="fail"} {@@callbacks={}} {@@header=[]} {@@init=[]} @rules=>[trans*]:t rbcode:rbcode
+  trans =  Grammar[ {@>grammar=@name;@>parent=@parent} {@@lambdas=[] ;@@rcallbacks={};@@cbhash={}} {@@defs=[];@@defmethods=[];@@profile_report=[]} {@@faillabel="fail"} {@@callbacks={}} {@@header=[]} {@@init=[]} @rules=>[trans*]:t rbcode:rbcode
             { "VALUE cls_#{@name};\n" }:s
             { s<<@@header.uniq.sort*"\n"+"\n"
 							s<<"\n memo_struct *mem_#{@name}=NULL;VALUE memo_val_#{@name};" if CurrentParser[:memoize]
@@ -95,17 +95,17 @@ amethyst AmethystCTranslator < Amethyst {
               @@init<<"mem_#{@name}=memo_init();memo_val_#{@name}=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,mem_#{@name});rb_global_variable(&memo_val_#{@name});" if CurrentParser[:global_memo]
               s<<t.sort*"\n"
               s<<@@lambdas*"\n"
-              init="\n cls_#{@name}=rb_define_class(\"#{@name}\",rb_const_get(rb_cObject,rb_intern(\"#{@@parent}\"))); 
+              init="\n cls_#{@name}=rb_define_class(\"#{@name}\",rb_const_get(rb_cObject,rb_intern(\"#{@>parent}\"))); 
                     failobj=rb_eval_string(\"FAIL\");
                     #{@@init.uniq.sort*"\n"}
                     #{@@defmethods.sort*"\n" }
                    "
               [s,init,rbcode] } ]
 
-         |  Rule[@name:name {@@rulename=name; Local.resetnumbering;resetlabels;@@locls={}} {(CurrentParser[:memoize] && CurrentParser[:memoize].include?(name)) ? Memo[@body] : @body}=>trans:body  
-          { h="VALUE #{@@grammar}_#{name}(VALUE self #{map_index(@args){|i| ",VALUE a#{i}"}*""})" 
+         |  Rule[@name:name {@>rulename=name; Local.resetnumbering;resetlabels;@@locls={}} {(CurrentParser[:memoize] && CurrentParser[:memoize].include?(name)) ? Memo[@body] : @body}=>trans:body  
+          { h="VALUE #{@>grammar}_#{name}(VALUE self #{map_index(@args){|i| ",VALUE a#{i}"}*""})" 
             @@header<<h+";"
-            @@defmethods<< "rb_define_method(cls_#{@@grammar},\"#{@name}\",#{@@grammar}_#{@name},#{@args.size});"
+            @@defmethods<< "rb_define_method(cls_#{@>grammar},\"#{@name}\",#{@>grammar}_#{@name},#{@args.size});"
 						s=h+"{VALUE vals[#{@args.size}]; VALUE it #{@@locls.map{|k,v| ",_#{k}"}*""};VALUE bind2=bind_new2(16); #{map_index(@args){|i| bset(@args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);"
 s+="#{body}\n" 
 s+="return it;\nfail: return failobj;}"
@@ -114,7 +114,7 @@ s
         | Memo[ rw('memo_fail',`trans`):t ] 
                 {s=""
                  if CurrentParser[:global_memo]
-                   s+="if (ptr->mem==NULL){ptr->mem=mem_#{@@grammar};}" 
+                   s+="if (ptr->mem==NULL){ptr->mem=mem_#{@>grammar};}" 
                  else
                    s+="if (ptr->mem==NULL){ptr->mem=memo_init();ptr->memgc=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,ptr->mem);}"
                  end
@@ -122,7 +122,7 @@ s
                  s+=t
                  s+="memo_add(ptr->mem,#{@@memo_no},ptr->src,oldpos,it,ptr->pos); return it;\n"
                  s+="memo_fail:  memo_add(ptr->mem,#{@@memo_no},ptr->src,oldpos,failobj,ptr->pos); return failobj;\n"
-                 @@profile_report << "if(ptr->mem){fprintf(profile_report,\"memo #{@@grammar}::#{@@rulename}  hit: %i miss: %i\\n\",((memo_struct *)ptr->mem)->hits[#{@@memo_no}],((memo_struct *)ptr->mem)->miss[#{@@memo_no}]);((memo_struct *)ptr->mem)->hits[#{@@memo_no}]=0;((memo_struct *)ptr->mem)->miss[#{@@memo_no}]=0;}"
+                 @@profile_report << "if(ptr->mem){fprintf(profile_report,\"memo #{@>grammar}::#{@>rulename}  hit: %i miss: %i\\n\",((memo_struct *)ptr->mem)->hits[#{@@memo_no}],((memo_struct *)ptr->mem)->miss[#{@@memo_no}]);((memo_struct *)ptr->mem)->hits[#{@@memo_no}]=0;((memo_struct *)ptr->mem)->miss[#{@@memo_no}]=0;}"
                  s}
         | Act[ {@@bindno=0;@@binds={}}
 								.*:{addcallback(@pred ? ["(",it,") || FAIL"] : it)}:cbno 
@@ -186,7 +186,7 @@ s
                      ( [.:c trans:t] {s+=c.cases() + " #{t} break;\n"})*
                      {s+"}"}
                      ]
-        | Switch_Clas[ {"switchhash_#{@@grammar}_#{$classlabels[@@grammar]+=1}"}:sh {0}:ii {""}:init
+        | Switch_Clas[ {"switchhash_#{@>grammar}_#{$classlabels[@>grammar]+=1}"}:sh {0}:ii {""}:init
                        {@@header<< "VALUE #{sh};"}
                        {"switch(FIX2LONG(rb_hash_aref(#{sh},rb_obj_class(ame_curobj2(ptr))))){"}:s
                        ( [.:c trans:t]{c.ary.each{|al| init+="next h[k]=#{ii} if k<=#{al}\\n";s+="case #{ii}/*#{al}*/:";ii+=1}}
@@ -196,10 +196,10 @@ s
                      ]
 
   
-  addlambda =  {"#{@@grammar}_#{@@rulename}_#{label("lambda")}"}:lambd  rw('fail',`trans:body`)
+  addlambda =  {"#{@>grammar}_#{@>rulename}_#{label("lambda")}"}:lambd  rw('fail',`trans:body`)
                { h="VALUE #{lambd}(VALUE self,VALUE bind)"
                  @@header<<h+";"
-                 @@defmethods<<"rb_define_method(cls_#{@@grammar},\"#{lambd}\",#{lambd},1);"
+                 @@defmethods<<"rb_define_method(cls_#{@>grammar},\"#{lambd}\",#{lambd},1);"
                  @@lambdas<< h+"{VALUE vals[0]; /*todo unify with rule and get args*/ cstruct *ptr; int x;VALUE it;VALUE arg0,arg1,arg2,arg3;\n#{body}\nreturn it;\nfail: return failobj; }" }
                {"AmethystLambda.new(:#{lambd},self,bind)" }
 

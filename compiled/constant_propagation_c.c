@@ -6,12 +6,12 @@ VALUE Constant_Propagator_root(VALUE self );
 VALUE Constant_Propagator_step(VALUE self ,VALUE a0);
 VALUE switchhash_Constant_Propagator_1;
 VALUE switchhash_Constant_Propagator_2;
-static VALUE sy_Constant_Propagator_Constant_8840;
-static VALUE sy_Constant_Propagator_Constant_bf42;
-static VALUE sy_Constant_Propagator_Constant_db03;
-static VALUE sy_Constant_Propagator__at_depend_eq__07a9;
-static VALUE sy_Constant_Propagator_a_eq_Consta_2e1d;
-static VALUE sy_Constant_Propagator_src_25d9;
+static VALUE sy__Constant_8840;
+static VALUE sy__Constant_bf42;
+static VALUE sy__Constant_db03;
+static VALUE sy___at_depend_eq__07a9;
+static VALUE sy__a_eq_Consta_2e1d;
+static VALUE sy__src_25d9;
 static VALUE sy_valof;
 VALUE profile_report_Constant_Propagator(VALUE self) {
     cstruct *ptr;
@@ -30,7 +30,7 @@ VALUE Constant_Propagator_root(VALUE self ) {
     FAILTEST(fail);
     _it=it;;
     bind_aset(bind2,1,_it);
-    it=rb_funcall(self,sy_Constant_Propagator__at_depend_eq__07a9,1,bind2);
+    it=rb_funcall(self,sy___at_depend_eq__07a9,1,bind2);
     _it=bind_aget(bind2,1);;
     __result=it;;
 
@@ -105,7 +105,7 @@ alt1_1:
                 ptr->len=RARRAY_LEN(ary);
             }
             ptr->pos=ptr->len;
-            it=rb_funcall(self,sy_Constant_Propagator_Constant_8840,1,bind2);
+            it=rb_funcall(self,sy__Constant_8840,1,bind2);
             _autovar_4=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass3;
@@ -142,7 +142,7 @@ success3:
                 ptr->len=RARRAY_LEN(ary);
             }
             ptr->pos=ptr->len;
-            it=rb_funcall(self,sy_Constant_Propagator_src_25d9,1,bind2);
+            it=rb_funcall(self,sy__src_25d9,1,bind2);
             arg0=it;
             it=rb_funcall(self,sy_valof,1,arg0);
             FAILTEST(pass4);
@@ -180,7 +180,7 @@ alt1_2:
         ptr->pos=oldpos1;
         it=AmethystCore_anything(self );
         FAILTEST(alt1_3);
-        it=rb_funcall(self,sy_Constant_Propagator_Constant_bf42,1,bind2);
+        it=rb_funcall(self,sy__Constant_bf42,1,bind2);
         _autovar_8=it;;
 
         ;
@@ -243,7 +243,7 @@ alt2_2:
         ptr->pos=oldpos2;
         it=AmethystCore_anything(self );
         FAILTEST(alt2_3);
-        it=rb_funcall(self,sy_Constant_Propagator_Constant_bf42,1,bind2);
+        it=rb_funcall(self,sy__Constant_bf42,1,bind2);
         _autovar_8=it;;
 
         ;
@@ -282,10 +282,10 @@ alt3_1:
             ptr->len=RARRAY_LEN(ary);
         }
         ptr->pos=ptr->len;
-        it=rb_funcall(self,sy_Constant_Propagator_src_25d9,1,bind2);
+        it=rb_funcall(self,sy__src_25d9,1,bind2);
         _val=it;;
         bind_aset(bind2,1,_val);
-        it=rb_funcall(self,sy_Constant_Propagator_Constant_db03,1,bind2);
+        it=rb_funcall(self,sy__Constant_db03,1,bind2);
         _val=bind_aget(bind2,1);;
         _autovar_12=it;;
         it=Qnil;
@@ -305,7 +305,7 @@ alt3_2:
         ptr->pos=oldpos3;
         it=AmethystCore_anything(self );
         FAILTEST(alt3_3);
-        it=rb_funcall(self,sy_Constant_Propagator_Constant_bf42,1,bind2);
+        it=rb_funcall(self,sy__Constant_bf42,1,bind2);
         _autovar_8=it;;
 
         ;
@@ -345,7 +345,7 @@ alt4_1:
         }
         ptr->pos=ptr->len;
         bind_aset(bind2,1,_el);
-        it=rb_funcall(self,sy_Constant_Propagator_a_eq_Consta_2e1d,1,bind2);
+        it=rb_funcall(self,sy__a_eq_Consta_2e1d,1,bind2);
         _el=bind_aget(bind2,1);;
         _autovar_14=it;;
         it=Qnil;
@@ -365,7 +365,7 @@ alt4_2:
         ptr->pos=oldpos4;
         it=AmethystCore_anything(self );
         FAILTEST(alt4_3);
-        it=rb_funcall(self,sy_Constant_Propagator_Constant_bf42,1,bind2);
+        it=rb_funcall(self,sy__Constant_bf42,1,bind2);
         _autovar_8=it;;
 
         ;
@@ -382,7 +382,7 @@ accept4:
         ;
         it=AmethystCore_anything(self );
         FAILTEST(pass1);
-        it=rb_funcall(self,sy_Constant_Propagator_Constant_bf42,1,bind2);
+        it=rb_funcall(self,sy__Constant_bf42,1,bind2);
         _autovar_8=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass1;
@@ -412,24 +412,28 @@ VALUE switchhash_Constant_Traverser_1;
 VALUE switchhash_Constant_Traverser_2;
 VALUE switchhash_Constant_Traverser_3;
 VALUE switchhash_Constant_Traverser_4;
-static VALUE sy_Constant_Traverser_Bind_lb_src_66c4;
-static VALUE sy_Constant_Traverser_Bind_lb_src_91ed;
-static VALUE sy_Constant_Traverser_Seq_lb_bind_95dc;
-static VALUE sy_Constant_Traverser__append_lp__d113;
-static VALUE sy_Constant_Traverser__at__contex_160a;
-static VALUE sy_Constant_Traverser__at__contex_d6d5;
-static VALUE sy_Constant_Traverser__lp__lp_bind_lb_1_1e7f;
-static VALUE sy_Constant_Traverser__lp__lp_bind_lb_1_42f7;
-static VALUE sy_Constant_Traverser__lp_src_dot_cla_e144;
-static VALUE sy_Constant_Traverser_bind_lb_1_rb__dot__f702;
-static VALUE sy_Constant_Traverser_bind_lb_1_rb__lb__a394;
-static VALUE sy_Constant_Traverser_bind_lb_1_rb__lb__cf87;
-static VALUE sy_Constant_Traverser_bind_lb_1_rb__lt__7b20;
-static VALUE sy_Constant_Traverser_bind_lb_1_rb__sp__6af0;
-static VALUE sy_Constant_Traverser_if_sp_bind_lb__1bed;
-static VALUE sy_Constant_Traverser_src_25d9;
-static VALUE sy_Constant_Traverser_src_dot_cfg_eq__15aa;
-static VALUE sy_Constant_Traverser_src_dot_dup_d768;
+static VALUE sy__Bind_lb_src_66c4;
+static VALUE sy__Bind_lb_src_91ed;
+static VALUE sy__Seq_lb_bind_95dc;
+static VALUE sy___append_lp__d113;
+static VALUE sy___at__contex_160a;
+static VALUE sy___at__contex_d6d5;
+static VALUE sy___lp__lp_bind_lb_1_1e7f;
+static VALUE sy___lp__lp_bind_lb_1_42f7;
+static VALUE sy___lp_src_dot_cla_e144;
+static VALUE sy__bind_lb_1_rb__dot__f702;
+static VALUE sy__bind_lb_1_rb__lb__a394;
+static VALUE sy__bind_lb_1_rb__lb__cf87;
+static VALUE sy__bind_lb_1_rb__lt__7b20;
+static VALUE sy__bind_lb_1_rb__sp__6af0;
+static VALUE sy__if_sp_bind_lb__1bed;
+static VALUE sy__src_25d9;
+static VALUE sy__src_dot_cfg_eq__15aa;
+static VALUE sy__src_dot_dup_d768;
+static VALUE sy_consts;
+static VALUE sy_traverse;
+static VALUE sy_traverse_item;
+static VALUE sy_visit;
 VALUE profile_report_Constant_Traverser(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -444,7 +448,7 @@ VALUE Constant_Traverser_consts(VALUE self ) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     bind_aset(bind2,1,_autovar);
-    it=rb_funcall(self,sy_Constant_Traverser__at__contex_160a,1,bind2);
+    it=rb_funcall(self,sy___at__contex_160a,1,bind2);
     _autovar=bind_aget(bind2,1);;
     it=rb_ary_new3(0);
     _ary=it;;
@@ -458,7 +462,7 @@ VALUE Constant_Traverser_consts(VALUE self ) {
 alt1_1:
             ;
             bind_aset(bind2,1,_autovar);
-            it=rb_funcall(self,sy_Constant_Traverser__at__contex_d6d5,1,bind2);
+            it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
             _autovar=bind_aget(bind2,1);;
             int oldpos2=ptr->pos;
             int cut2=0;
@@ -490,7 +494,7 @@ alt2_1:
 alt3_1:
                 ;
                 bind_aset(bind2,1,_autovar);
-                it=rb_funcall(self,sy_Constant_Traverser__at__contex_d6d5,1,bind2);
+                it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
                 _autovar=bind_aget(bind2,1);;
                 it=AmethystCore_anything(self );
                 FAILTEST(alt3_2);
@@ -508,20 +512,20 @@ accept3:
                 ;
             }
             bind_aset(bind2,1,_autovar);
-            it=rb_funcall(self,sy_Constant_Traverser__lp__lp_bind_lb_1_1e7f,1,bind2);
+            it=rb_funcall(self,sy___lp__lp_bind_lb_1_1e7f,1,bind2);
             _autovar=bind_aget(bind2,1);;
             FAILTEST(pass1);
             bind_aset(bind2,1,_autovar);
-            it=rb_funcall(self,sy_Constant_Traverser_Bind_lb_src_91ed,1,bind2);
+            it=rb_funcall(self,sy__Bind_lb_src_91ed,1,bind2);
             _autovar=bind_aget(bind2,1);;
             _autovar_3=it;;
             bind_aset(bind2,1,_ary);
             bind_aset(bind2,2,_autovar_3);
-            it=rb_funcall(self,sy_Constant_Traverser__append_lp__d113,1,bind2);
+            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
             _ary=bind_aget(bind2,1);;
             _autovar_3=bind_aget(bind2,2);;
             bind_aset(bind2,1,_autovar);
-            it=rb_funcall(self,sy_Constant_Traverser__at__contex_d6d5,1,bind2);
+            it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
             _autovar=bind_aget(bind2,1);;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass1;
@@ -566,7 +570,7 @@ accept1:
 alt4_1:
             ;
             bind_aset(bind2,1,_autovar);
-            it=rb_funcall(self,sy_Constant_Traverser__at__contex_d6d5,1,bind2);
+            it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
             _autovar=bind_aget(bind2,1);;
             it=AmethystCore_anything(self );
             FAILTEST(alt4_2);
@@ -601,9 +605,9 @@ VALUE Constant_Traverser_root(VALUE self ) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     bind_aset(bind2,1,_autovar);
-    it=rb_funcall(self,sy_Constant_Traverser__at__contex_160a,1,bind2);
+    it=rb_funcall(self,sy___at__contex_160a,1,bind2);
     _autovar=bind_aget(bind2,1);;
-    it=rb_funcall(self,sy_Constant_Traverser_src_dot_dup_d768,1,bind2);
+    it=rb_funcall(self,sy__src_dot_dup_d768,1,bind2);
     _autovar_2=it;;
     cstruct oldpass1=*ptr;
     ptr->pos=ptr->len=0;
@@ -616,13 +620,13 @@ VALUE Constant_Traverser_root(VALUE self ) {
     case 0/*Rule*/:
         ;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy_Constant_Traverser__at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar_3=it;;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy_Constant_Traverser__at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass1;
@@ -630,7 +634,7 @@ VALUE Constant_Traverser_root(VALUE self ) {
     case 1/*Object*/:
         ;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy_Constant_Traverser__at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         goto pass1;
         break;
@@ -660,21 +664,21 @@ success1:
         ptr->len=RARRAY_LEN(ary);
     }
     bind_aset(bind2,1,_autovar);
-    it=rb_funcall(self,sy_Constant_Traverser_bind_lb_1_rb__lb__cf87,1,bind2);
+    it=rb_funcall(self,sy__bind_lb_1_rb__lb__cf87,1,bind2);
     _autovar=bind_aget(bind2,1);;
-    it=rb_funcall(self,sy_Constant_Traverser_src_dot_cfg_eq__15aa,1,bind2);
+    it=rb_funcall(self,sy__src_dot_cfg_eq__15aa,1,bind2);
     bind_aset(bind2,1,_autovar);
-    it=rb_funcall(self,sy_Constant_Traverser__at__contex_d6d5,1,bind2);
+    it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
     _autovar=bind_aget(bind2,1);;
-    it=Constant_Traverser_traverse(self );
+    it=rb_funcall(self,sy_traverse,0);
     FAILTEST(pass2);
     _it=it;;
     bind_aset(bind2,1,_it);
-    it=rb_funcall(self,sy_Constant_Traverser_bind_lb_1_rb__dot__f702,1,bind2);
+    it=rb_funcall(self,sy__bind_lb_1_rb__dot__f702,1,bind2);
     _it=bind_aget(bind2,1);;
     _autovar_5=it;;
     bind_aset(bind2,1,_autovar);
-    it=rb_funcall(self,sy_Constant_Traverser__at__contex_d6d5,1,bind2);
+    it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
     _autovar=bind_aget(bind2,1);;
     it=Qnil;
     if (ptr->pos<ptr->len) goto pass2;
@@ -702,7 +706,7 @@ VALUE Constant_Traverser_traverse(VALUE self ) {
     ptr->pos=ptr->len;
     it=rb_ary_new3(0);
     _nvars=it;;
-    it=rb_funcall(self,sy_Constant_Traverser__lp_src_dot_cla_e144,1,bind2);
+    it=rb_funcall(self,sy___lp_src_dot_cla_e144,1,bind2);
     _ivars=it;;
     it=_ivars;
     _autovar=it;;
@@ -738,12 +742,12 @@ VALUE Constant_Traverser_traverse(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=Constant_Traverser_traverse_item(self );
+        it=rb_funcall(self,sy_traverse_item,0);
         FAILTEST(alt1_2);
         _it=it;;
         bind_aset(bind2,1,_nvars);
         bind_aset(bind2,2,_it);
-        it=rb_funcall(self,sy_Constant_Traverser_bind_lb_1_rb__sp__6af0,1,bind2);
+        it=rb_funcall(self,sy__bind_lb_1_rb__sp__6af0,1,bind2);
         _nvars=bind_aget(bind2,1);;
         _it=bind_aget(bind2,2);;
         ;
@@ -777,7 +781,7 @@ success1:
     *ptr=oldpass1;
     bind_aset(bind2,1,_ivars);
     bind_aset(bind2,2,_nvars);
-    it=rb_funcall(self,sy_Constant_Traverser_if_sp_bind_lb__1bed,1,bind2);
+    it=rb_funcall(self,sy__if_sp_bind_lb__1bed,1,bind2);
     _ivars=bind_aget(bind2,1);;
     _nvars=bind_aget(bind2,2);;
     __result=it;;
@@ -801,7 +805,7 @@ VALUE Constant_Traverser_traverse_item(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=Constant_Traverser_visit(self );
+        it=rb_funcall(self,sy_visit,0);
         FAILTEST(alt1_2);
         __result=it;;
 
@@ -828,7 +832,7 @@ alt1_2:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=Constant_Traverser_traverse(self );
+        it=rb_funcall(self,sy_traverse,0);
         FAILTEST(pass1);
         _autovar_2=it;;
         it=Qnil;
@@ -864,7 +868,7 @@ accept1:
         int cut2=0;
 alt2_1:
         ;
-        it=Constant_Traverser_visit(self );
+        it=rb_funcall(self,sy_visit,0);
         FAILTEST(alt2_2);
         __result=it;;
 
@@ -899,12 +903,12 @@ alt2_2:
             int cut3=0;
 alt3_1:
             ;
-            it=Constant_Traverser_traverse_item(self );
+            it=rb_funcall(self,sy_traverse_item,0);
             FAILTEST(alt3_2);
             _it=it;;
             bind_aset(bind2,1,_ar);
             bind_aset(bind2,2,_it);
-            it=rb_funcall(self,sy_Constant_Traverser_bind_lb_1_rb__lt__7b20,1,bind2);
+            it=rb_funcall(self,sy__bind_lb_1_rb__lt__7b20,1,bind2);
             _ar=bind_aget(bind2,1);;
             _it=bind_aget(bind2,2);;
             ;
@@ -955,7 +959,7 @@ accept2:
         int cut4=0;
 alt4_1:
         ;
-        it=Constant_Traverser_visit(self );
+        it=rb_funcall(self,sy_visit,0);
         FAILTEST(alt4_2);
         __result=it;;
 
@@ -992,10 +996,10 @@ VALUE Constant_Traverser_visit(VALUE self ) {
     case 0/*Act*/:
         ;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy_Constant_Traverser__at__contex_160a,1,bind2);
+        it=rb_funcall(self,sy___at__contex_160a,1,bind2);
         _autovar=bind_aget(bind2,1);;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy_Constant_Traverser__at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -1017,16 +1021,16 @@ VALUE Constant_Traverser_visit(VALUE self ) {
             ptr->len=RARRAY_LEN(ary);
         }
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy_Constant_Traverser__at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        it=Constant_Traverser_consts(self );
+        it=rb_funcall(self,sy_consts,0);
         _a=it;;
         bind_aset(bind2,1,_a);
-        it=rb_funcall(self,sy_Constant_Traverser_Seq_lb_bind_95dc,1,bind2);
+        it=rb_funcall(self,sy__Seq_lb_bind_95dc,1,bind2);
         _a=bind_aget(bind2,1);;
         _autovar_3=it;;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy_Constant_Traverser__at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass1;
@@ -1042,10 +1046,10 @@ success1:
     case 1/*Bind*/:
         ;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy_Constant_Traverser__at__contex_160a,1,bind2);
+        it=rb_funcall(self,sy___at__contex_160a,1,bind2);
         _autovar=bind_aget(bind2,1);;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy_Constant_Traverser__at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -1067,17 +1071,17 @@ success1:
             ptr->len=RARRAY_LEN(ary);
         }
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy_Constant_Traverser__at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        it=Constant_Traverser_traverse_item(self );
+        it=rb_funcall(self,sy_traverse_item,0);
         FAILTEST(pass2);
         _expr=it;;
         bind_aset(bind2,1,_expr);
-        it=rb_funcall(self,sy_Constant_Traverser_Bind_lb_src_66c4,1,bind2);
+        it=rb_funcall(self,sy__Bind_lb_src_66c4,1,bind2);
         _expr=bind_aget(bind2,1);;
         _autovar_5=it;;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy_Constant_Traverser__at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass2;
@@ -1093,10 +1097,10 @@ success2:
     case 2/*Local*/:
         ;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy_Constant_Traverser__at__contex_160a,1,bind2);
+        it=rb_funcall(self,sy___at__contex_160a,1,bind2);
         _autovar=bind_aget(bind2,1);;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy_Constant_Traverser__at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -1124,7 +1128,7 @@ success2:
 alt1_1:
             ;
             bind_aset(bind2,1,_autovar);
-            it=rb_funcall(self,sy_Constant_Traverser__at__contex_d6d5,1,bind2);
+            it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
             _autovar=bind_aget(bind2,1);;
             it=AmethystCore_anything(self );
             FAILTEST(alt1_2);
@@ -1142,15 +1146,15 @@ accept1:
             ;
         }
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy_Constant_Traverser__lp__lp_bind_lb_1_42f7,1,bind2);
+        it=rb_funcall(self,sy___lp__lp_bind_lb_1_42f7,1,bind2);
         _autovar=bind_aget(bind2,1);;
         FAILTEST(pass3);
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy_Constant_Traverser_bind_lb_1_rb__lb__a394,1,bind2);
+        it=rb_funcall(self,sy__bind_lb_1_rb__lb__a394,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_7=it;;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy_Constant_Traverser__at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass3;
@@ -1166,10 +1170,10 @@ success3:
     case 3/*Result*/:
         ;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy_Constant_Traverser__at__contex_160a,1,bind2);
+        it=rb_funcall(self,sy___at__contex_160a,1,bind2);
         _autovar=bind_aget(bind2,1);;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy_Constant_Traverser__at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -1197,7 +1201,7 @@ success3:
 alt2_1:
             ;
             bind_aset(bind2,1,_autovar);
-            it=rb_funcall(self,sy_Constant_Traverser__at__contex_d6d5,1,bind2);
+            it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
             _autovar=bind_aget(bind2,1);;
             it=AmethystCore_anything(self );
             FAILTEST(alt2_2);
@@ -1214,10 +1218,10 @@ alt2_3:
 accept2:
             ;
         }
-        it=rb_funcall(self,sy_Constant_Traverser_src_25d9,1,bind2);
+        it=rb_funcall(self,sy__src_25d9,1,bind2);
         _autovar_9=it;;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy_Constant_Traverser__at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass4;
@@ -1233,10 +1237,10 @@ success4:
     case 4/*Object*/:
         ;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy_Constant_Traverser__at__contex_160a,1,bind2);
+        it=rb_funcall(self,sy___at__contex_160a,1,bind2);
         _autovar=bind_aget(bind2,1);;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy_Constant_Traverser__at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         goto fail;
         break;
@@ -1253,12 +1257,12 @@ void Init_constant_propagation_c() {
     rb_global_variable(&switchhash_Constant_Propagator_1);;
     switchhash_Constant_Propagator_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Lambda\nnext h[k]=1 if k<=Local\nnext h[k]=2 if k<=Object\n}");
     rb_global_variable(&switchhash_Constant_Propagator_2);;
-    sy_Constant_Propagator_Constant_8840=rb_intern("Constant_Propagator_Constant_8840");
-    sy_Constant_Propagator_Constant_bf42=rb_intern("Constant_Propagator_Constant_bf42");
-    sy_Constant_Propagator_Constant_db03=rb_intern("Constant_Propagator_Constant_db03");
-    sy_Constant_Propagator__at_depend_eq__07a9=rb_intern("Constant_Propagator__at_depend_eq__07a9");
-    sy_Constant_Propagator_a_eq_Consta_2e1d=rb_intern("Constant_Propagator_a_eq_Consta_2e1d");
-    sy_Constant_Propagator_src_25d9=rb_intern("Constant_Propagator_src_25d9");
+    sy__Constant_8840=rb_intern("_Constant_8840");
+    sy__Constant_bf42=rb_intern("_Constant_bf42");
+    sy__Constant_db03=rb_intern("_Constant_db03");
+    sy___at_depend_eq__07a9=rb_intern("__at_depend_eq__07a9");
+    sy__a_eq_Consta_2e1d=rb_intern("_a_eq_Consta_2e1d");
+    sy__src_25d9=rb_intern("_src_25d9");
     sy_valof=rb_intern("valof");
     rb_define_method(cls_Constant_Propagator,"root",Constant_Propagator_root,0);
     rb_define_method(cls_Constant_Propagator,"step",Constant_Propagator_step,1);
@@ -1274,28 +1278,32 @@ void Init_constant_propagation_c() {
     rb_global_variable(&switchhash_Constant_Traverser_3);;
     switchhash_Constant_Traverser_4=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}");
     rb_global_variable(&switchhash_Constant_Traverser_4);;
-    sy_Constant_Traverser_Bind_lb_src_66c4=rb_intern("Constant_Traverser_Bind_lb_src_66c4");
-    sy_Constant_Traverser_Bind_lb_src_91ed=rb_intern("Constant_Traverser_Bind_lb_src_91ed");
-    sy_Constant_Traverser_Seq_lb_bind_95dc=rb_intern("Constant_Traverser_Seq_lb_bind_95dc");
-    sy_Constant_Traverser__append_lp__d113=rb_intern("Constant_Traverser__append_lp__d113");
-    sy_Constant_Traverser__at__contex_160a=rb_intern("Constant_Traverser__at__contex_160a");
-    sy_Constant_Traverser__at__contex_d6d5=rb_intern("Constant_Traverser__at__contex_d6d5");
-    sy_Constant_Traverser__lp__lp_bind_lb_1_1e7f=rb_intern("Constant_Traverser__lp__lp_bind_lb_1_1e7f");
-    sy_Constant_Traverser__lp__lp_bind_lb_1_42f7=rb_intern("Constant_Traverser__lp__lp_bind_lb_1_42f7");
-    sy_Constant_Traverser__lp_src_dot_cla_e144=rb_intern("Constant_Traverser__lp_src_dot_cla_e144");
-    sy_Constant_Traverser_bind_lb_1_rb__dot__f702=rb_intern("Constant_Traverser_bind_lb_1_rb__dot__f702");
-    sy_Constant_Traverser_bind_lb_1_rb__lb__a394=rb_intern("Constant_Traverser_bind_lb_1_rb__lb__a394");
-    sy_Constant_Traverser_bind_lb_1_rb__lb__cf87=rb_intern("Constant_Traverser_bind_lb_1_rb__lb__cf87");
-    sy_Constant_Traverser_bind_lb_1_rb__lt__7b20=rb_intern("Constant_Traverser_bind_lb_1_rb__lt__7b20");
-    sy_Constant_Traverser_bind_lb_1_rb__sp__6af0=rb_intern("Constant_Traverser_bind_lb_1_rb__sp__6af0");
-    sy_Constant_Traverser_if_sp_bind_lb__1bed=rb_intern("Constant_Traverser_if_sp_bind_lb__1bed");
-    sy_Constant_Traverser_src_25d9=rb_intern("Constant_Traverser_src_25d9");
-    sy_Constant_Traverser_src_dot_cfg_eq__15aa=rb_intern("Constant_Traverser_src_dot_cfg_eq__15aa");
-    sy_Constant_Traverser_src_dot_dup_d768=rb_intern("Constant_Traverser_src_dot_dup_d768");
+    sy__Bind_lb_src_66c4=rb_intern("_Bind_lb_src_66c4");
+    sy__Bind_lb_src_91ed=rb_intern("_Bind_lb_src_91ed");
+    sy__Seq_lb_bind_95dc=rb_intern("_Seq_lb_bind_95dc");
+    sy___append_lp__d113=rb_intern("__append_lp__d113");
+    sy___at__contex_160a=rb_intern("__at__contex_160a");
+    sy___at__contex_d6d5=rb_intern("__at__contex_d6d5");
+    sy___lp__lp_bind_lb_1_1e7f=rb_intern("__lp__lp_bind_lb_1_1e7f");
+    sy___lp__lp_bind_lb_1_42f7=rb_intern("__lp__lp_bind_lb_1_42f7");
+    sy___lp_src_dot_cla_e144=rb_intern("__lp_src_dot_cla_e144");
+    sy__bind_lb_1_rb__dot__f702=rb_intern("_bind_lb_1_rb__dot__f702");
+    sy__bind_lb_1_rb__lb__a394=rb_intern("_bind_lb_1_rb__lb__a394");
+    sy__bind_lb_1_rb__lb__cf87=rb_intern("_bind_lb_1_rb__lb__cf87");
+    sy__bind_lb_1_rb__lt__7b20=rb_intern("_bind_lb_1_rb__lt__7b20");
+    sy__bind_lb_1_rb__sp__6af0=rb_intern("_bind_lb_1_rb__sp__6af0");
+    sy__if_sp_bind_lb__1bed=rb_intern("_if_sp_bind_lb__1bed");
+    sy__src_25d9=rb_intern("_src_25d9");
+    sy__src_dot_cfg_eq__15aa=rb_intern("_src_dot_cfg_eq__15aa");
+    sy__src_dot_dup_d768=rb_intern("_src_dot_dup_d768");
+    sy_consts=rb_intern("consts");
+    sy_traverse=rb_intern("traverse");
+    sy_traverse_item=rb_intern("traverse_item");
+    sy_visit=rb_intern("visit");
     rb_define_method(cls_Constant_Traverser,"consts",Constant_Traverser_consts,0);
     rb_define_method(cls_Constant_Traverser,"root",Constant_Traverser_root,0);
     rb_define_method(cls_Constant_Traverser,"traverse",Constant_Traverser_traverse,0);
     rb_define_method(cls_Constant_Traverser,"traverse_item",Constant_Traverser_traverse_item,0);
     rb_define_method(cls_Constant_Traverser,"visit",Constant_Traverser_visit,0);
-    rb_eval_string("testversionconstant_propagation('e0b0aeb1e451d2116f3880f737d368a1')");
+    rb_eval_string("testversionconstant_propagation('bd91c7fd0d3968046d9d85856a595e7c')");
 }
