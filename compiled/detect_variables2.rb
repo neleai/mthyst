@@ -44,11 +44,11 @@ end
 def __append_lp__d113(bind)
 _append(bind[1],bind[2])
 end
-def __at_bnding_eq__b94a(bind)
-@bnding=src.bnding
+def __at__contex_160a(bind)
+@_context_arguments||={};bind[1]=@_context_arguments.dup
 end
-def __at_locals_eq__02ce(bind)
-@locals=src.locals
+def __at__contex_d6d5(bind)
+@_context_arguments=bind[1]
 end
 def __at_stop_8c46(bind)
 @stop
@@ -62,9 +62,6 @@ end
 def __at_stop_eq_tr_52d4(bind)
 @stop=true;src
 end
-def __at_variabl_f612(bind)
-@variables=Hash.new{|k,v| k[v]=v} ;(src.locals+src.args).each{|w| @variables[w[0]]=w}
-end
 def __lp_(bind)
 (!bind[1]) || FAIL
 end
@@ -77,6 +74,15 @@ end
 def _bind_lb_1_rb_(bind)
 bind[1]
 
+end
+def _bind_lb_1_rb__lb__12e8(bind)
+bind[1][:variables]=Hash.new{|k,v| k[v]=v} ;(src.locals+src.args).each{|w| bind[1][:variables][w[0]]=w}
+end
+def _bind_lb_1_rb__lb__9337(bind)
+bind[1][:bnding]=src.bnding
+end
+def _bind_lb_1_rb__lb__eb3a(bind)
+bind[1][:locals]=src.locals
 end
 def _bind_lb_1_rb__lt__7b20(bind)
 bind[1]<<bind[2]
@@ -104,8 +110,8 @@ end
 def _src_dot_ary_d5cf(bind)
 src.ary
 end
-def _src_dot_ary_dot__dd8c(bind)
-src.ary.map{|aa| @variables[aa] }
+def _src_dot_ary_dot__be44(bind)
+src.ary.map{|aa| bind[1][:variables][aa] }
 end
 def _src_dot_dup_d768(bind)
 src.dup
@@ -122,8 +128,8 @@ end
 def _src_dot_rule_a719(bind)
 src.rules=bind[1]
 end
-def _vars_eq__at_lo_cf02(bind)
-vars=@locals.select{|aa| Object.const_get(src.name).instance_variable_get(:@attrs).include? aa[0].to_sym}.uniq ;Result[{:name=>src.name,:vars=>vars,:varnames=>vars.map{|v| v[0]}}]
+def _vars_eq_bin_a707(bind)
+vars=bind[1][:locals].select{|aa| Object.const_get(src.name).instance_variable_get(:@attrs).include? aa[0].to_sym}.uniq ;Result[{:name=>src.name,:vars=>vars,:varnames=>vars.map{|v| v[0]}}]
 end
 
 end
@@ -131,20 +137,26 @@ end
 
 class Resolve_Calls < Traverser_Clone2
 
-def __at_grammar_c8c8(bind)
-@grammar=bind[1]
+def __at__contex_160a(bind)
+@_context_arguments||={};bind[1]=@_context_arguments.dup
 end
-def __at_name_eq_bi_0e7f(bind)
-@name=bind[1]
+def __at__contex_d6d5(bind)
+@_context_arguments=bind[1]
 end
 def __lp_src_dot_cla_e144(bind)
 (src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
-def _a_eq_Apply_lb__1315(bind)
-a=Apply[bind[1],   {:clas=>resolvegrammar(@grammar.name,bind[1])}];a
-end
 def _a_eq_Apply_lb__36f8(bind)
 a=Apply[bind[1][1],{:clas=>resolvegrammar(Compiler.grammars[bind[1][0]],bind[1][1])}]
+end
+def _a_eq_Apply_lb__f488(bind)
+a=Apply[bind[1],   {:clas=>resolvegrammar(bind[2][:grammar].name,bind[1])}];a
+end
+def _bind_lb_1_rb__lb__7c6b(bind)
+bind[1][:grammar]=bind[2]
+end
+def _bind_lb_1_rb__lb__9d9a(bind)
+bind[1][:name]=bind[2]
 end
 def _bind_lb_1_rb__lt__7b20(bind)
 bind[1]<<bind[2]
@@ -163,10 +175,10 @@ end
 def _src_dot_name_80f3(bind)
 src.name
 end
-def _super_na_c8c2(bind)
-super_name="#{@name}_#{@grammar.name}"
-                    @grammar.rules[super_name]=Compiler.grammars[@grammar.parent].getrule(@name).dup
-                    @grammar.rules[super_name].name=super_name
+def _super_na_296f(bind)
+super_name="#{bind[1][:name]}_#{bind[1][:grammar].name}"
+                    bind[1][:grammar].rules[super_name]=Compiler.grammars[bind[1][:grammar].parent].getrule(bind[1][:name]).dup
+                    bind[1][:grammar].rules[super_name].name=super_name
                     Apply[super_name]
               
 end
@@ -175,15 +187,15 @@ end
 
 
 def detect_variables2_compiled_by
-'09cd215b63778a251028c3ab326dbf85'
+'013c5eab9076a2a7afdcd0500b69c87c'
 end
 def detect_variables2_source_hash
-'d68e0fd5a94161c607efb8805fad2811'
+'c9bd361cf4ddd41ed652e4054172710c'
 end
 def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'41b274eb6c8f371db742b14b3ec2fb91'
+'4f9d46afb646f79947fd7bd3e80253a4'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_variables2_c"

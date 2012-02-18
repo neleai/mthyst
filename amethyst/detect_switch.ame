@@ -325,7 +325,7 @@ class Detect_Switch_Clas < Detect_First
 end
 
 amethyst Detect_First < Traverser_Clone2 {
-  itrans =   (Grammar[ {@@name=@name} {$rules={};@rules.each{|r| $rules[r.name]=r}} @rules=>[ Rule[root]*:rules ] {@rules=rules} @self] | .)*
+  itrans =   (Grammar[ {@>name=@name} {$rules={};@rules.each{|r| $rules[r.name]=r}} @rules=>[ Rule[root]*:rules ] {@rules=rules} @self] | .)*
 
   root = traverse
 

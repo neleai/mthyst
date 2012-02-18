@@ -620,8 +620,11 @@ end
 def __append_lp__d113(bind)
 _append(bind[1],bind[2])
 end
-def __at_name_eq_sr_362f(bind)
-@name=src.name
+def __at__contex_160a(bind)
+@_context_arguments||={};bind[1]=@_context_arguments.dup
+end
+def __at__contex_d6d5(bind)
+@_context_arguments=bind[1]
 end
 def __do_rules_eq__le__ab16(bind)
 $rules={};src.rules.each{|r| $rules[r.name]=r}
@@ -643,6 +646,9 @@ bind[1][{:ary=>bind[2].map{|p,a| [p,Or[*a]]}}]
 end
 def _bind_lb_1_rb__lb__75a5(bind)
 bind[1][{:ary=>bind[2].map{|p,a| [p,Seq[*(bind[3]+[a]+bind[4])]]}}] 
+end
+def _bind_lb_1_rb__lb__fa06(bind)
+bind[1][:name]=src.name
 end
 def _bind_lb_1_rb__pl__4651(bind)
 bind[1]+[bind[2]]
@@ -678,8 +684,11 @@ end
 def __append_lp__d113(bind)
 _append(bind[1],bind[2])
 end
-def __at_name_eq_sr_362f(bind)
-@name=src.name
+def __at__contex_160a(bind)
+@_context_arguments||={};bind[1]=@_context_arguments.dup
+end
+def __at__contex_d6d5(bind)
+@_context_arguments=bind[1]
 end
 def __do_rules_eq__le__ab16(bind)
 $rules={};src.rules.each{|r| $rules[r.name]=r}
@@ -710,6 +719,9 @@ bind[1][{:ary=>bind[2].map{|p,a| [p,Or[*a]]}}]
 end
 def _bind_lb_1_rb__lb__75a5(bind)
 bind[1][{:ary=>bind[2].map{|p,a| [p,Seq[*(bind[3]+[a]+bind[4])]]}}] 
+end
+def _bind_lb_1_rb__lb__fa06(bind)
+bind[1][:name]=src.name
 end
 def _bind_lb_1_rb__lt__7b20(bind)
 bind[1]<<bind[2]
@@ -772,8 +784,11 @@ end
 def __append_lp__d113(bind)
 _append(bind[1],bind[2])
 end
-def __at_name_eq_sr_362f(bind)
-@name=src.name
+def __at__contex_160a(bind)
+@_context_arguments||={};bind[1]=@_context_arguments.dup
+end
+def __at__contex_d6d5(bind)
+@_context_arguments=bind[1]
 end
 def __do_rules_eq__le__ab16(bind)
 $rules={};src.rules.each{|r| $rules[r.name]=r}
@@ -804,6 +819,9 @@ bind[1][{:ary=>bind[2].map{|p,a| [p,Or[*a]]}}]
 end
 def _bind_lb_1_rb__lb__75a5(bind)
 bind[1][{:ary=>bind[2].map{|p,a| [p,Seq[*(bind[3]+[a]+bind[4])]]}}] 
+end
+def _bind_lb_1_rb__lb__fa06(bind)
+bind[1][:name]=src.name
 end
 def _bind_lb_1_rb__lt__7b20(bind)
 bind[1]<<bind[2]
@@ -874,15 +892,15 @@ end
 
 
 def detect_switch_compiled_by
-'09cd215b63778a251028c3ab326dbf85'
+'013c5eab9076a2a7afdcd0500b69c87c'
 end
 def detect_switch_source_hash
-'046ce3b4122bf586c4596b0f0ce7963f'
+'df5ce510ffeb2bde1653d29c0e08783d'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'6654f2af1efd99db2fbf4878954ce3ad'
+'c520543b0675714b7eff9daec89e9b72'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

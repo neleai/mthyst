@@ -27,8 +27,14 @@ end
 def __append_lp__d113(bind)
 _append(bind[1],bind[2])
 end
-def __at_name_eq_bi_5da3(bind)
-@name=bind[1];@args=bind[2];@body=bind[3] 
+def __at__contex_160a(bind)
+@_context_arguments||={};bind[1]=@_context_arguments.dup
+end
+def __at__contex_d6d5(bind)
+@_context_arguments=bind[1]
+end
+def __at_name_eq_bi_118d(bind)
+@name=bind[1];bind[2][:args]=bind[3];bind[2][:body]=bind[4] 
 end
 def __lp_bind_lb_1_rb__709e(bind)
 (bind[1]==@name) || FAIL
@@ -42,8 +48,8 @@ end
 def _bind_lb_1_rb__sp__6af0(bind)
 bind[1] << bind[2]
 end
-def _body_eq__at_bo_4270(bind)
-body=@body; bind[1].each_index{|i| body=Seq[Bind[@args[i],bind[1][i]],body] } ; body
+def _body_eq_bin_3feb(bind)
+body=bind[1][:body]; bind[2].each_index{|i| body=Seq[Bind[bind[1][:args][i],bind[2][i]],body] } ; body
 
 end
 def _if_sp_bind_lb__1bed(bind)
@@ -69,15 +75,15 @@ end
 
 
 def inliner2_compiled_by
-'09cd215b63778a251028c3ab326dbf85'
+'013c5eab9076a2a7afdcd0500b69c87c'
 end
 def inliner2_source_hash
-'8b55baa0765b22b5c8f5c6d36559323d'
+'ccb4238b3948e1d7730b8c07b91b1561'
 end
 def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version
 end
 def inliner2_version
-'e2bbcae49f1aeea9f7e747490c9e09ab'
+'628e6f1113473d3b4678f2279598164c'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/inliner2_c"

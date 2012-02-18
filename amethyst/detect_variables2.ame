@@ -24,12 +24,12 @@ end
 
 amethyst Analyze_Variables2 < Traverser_Clone2 {
   itrans =   (Grammar[ @rules=>[ Rule[root]*:rules ] {@rules=rules} @self] | .)*
-  root = @dup=>Rule[ {@@bnding=@bnding} {@@variables=Hash.new{|k,v| k[v]=v} ;(@locals+@args).each{|w| @@variables[w[0]]=w}} {@@locals=@locals} 
+  root = @dup=>Rule[ {@>bnding=@bnding} {@>variables=Hash.new{|k,v| k[v]=v} ;(@locals+@args).each{|w| @>variables[w[0]]=w}} {@>locals=@locals} 
 traverse[.* {d=@dup;d.locals=nil;d.freeze} ] ]
 
-  visit = Args[ traverse[.* {@ary.map{|aa| @@variables[aa] }}=>[flat:a]  {connectstring(a.flatten)}:ary  {(ary.size==1&&(ary[0].is_a?(Local)||ary[0].is_a?(Global)||ary[0].is_a?(Key))) ? ary[0] : Args[*ary]}]]
+  visit = Args[ traverse[.* {@ary.map{|aa| @>variables[aa] }}=>[flat:a]  {connectstring(a.flatten)}:ary  {(ary.size==1&&(ary[0].is_a?(Local)||ary[0].is_a?(Global)||ary[0].is_a?(Key))) ? ary[0] : Args[*ary]}]]
         | Act[ @pred:pred @pure:pure traverse[.* @ary=>[(&{!pred} Local| Args[ .*:ary {Act[ary,pred,pure]}])] ] ]
-        | Result[ {vars=@@locals.select{|aa| Object.const_get(@name).instance_variable_get(:@attrs).include? aa[0].to_sym}.uniq ;Result[{:name=>@name,:vars=>vars,:varnames=>vars.map{|v| v[0]}}]}]
+        | Result[ {vars=@>locals.select{|aa| Object.const_get(@name).instance_variable_get(:@attrs).include? aa[0].to_sym}.uniq ;Result[{:name=>@name,:vars=>vars,:varnames=>vars.map{|v| v[0]}}]}]
         | Comment[.*{Placeholder}]
 				| Seq_AST[traverse_item*:ary] -> Seq[*ary]
 				| Seq[traverse_item*:ary] -> Seq[*ary]
@@ -44,14 +44,14 @@ traverse[.* {d=@dup;d.locals=nil;d.freeze} ] ]
 }
 
 amethyst Resolve_Calls < Traverser_Clone2 {
-  root = .:@@grammar Rule[ {@name}:@@name traverse ]
+  root = .:@>grammar Rule[ {@name}:@>name traverse ]
 
   visit = Apply[ ["super"] {
-                    super_name="#{@@name}_#{@@grammar.name}"
-                    @@grammar.rules[super_name]=Compiler.grammars[@@grammar.parent].getrule(@@name).dup
-                    @@grammar.rules[super_name].name=super_name
+                    super_name="#{@>name}_#{@>grammar.name}"
+                    @>grammar.rules[super_name]=Compiler.grammars[@>grammar.parent].getrule(@>name).dup
+                    @>grammar.rules[super_name].name=super_name
                     Apply[super_name]
               }]
         | Apply[ Array:name {a=Apply[name[1],{:clas=>resolvegrammar(Compiler.grammars[name[0]],name[1])}]} ]
-        | Apply[     .:name {a=Apply[name,   {:clas=>resolvegrammar(@@grammar.name,name)}];a} ]
+        | Apply[     .:name {a=Apply[name,   {:clas=>resolvegrammar(@>grammar.name,name)}];a} ]
 }

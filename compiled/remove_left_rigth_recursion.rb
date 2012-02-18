@@ -19,17 +19,20 @@ end
 def __append_lp__d113(bind)
 _append(bind[1],bind[2])
 end
+def __at__contex_160a(bind)
+@_context_arguments||={};bind[1]=@_context_arguments.dup
+end
+def __at__contex_d6d5(bind)
+@_context_arguments=bind[1]
+end
 def __at_left_re_c85d(bind)
 @left_rec=true
-end
-def __at_name_eq_sr_362f(bind)
-@name=src.name
 end
 def __at_result_eq__b6ab(bind)
 @result=Local["_result",src.bnding]
 end
-def __lp__at_name_eq__eq__2784(bind)
-(@name==src.name) || FAIL
+def __lp_bind_lb_1_rb__5b9e(bind)
+(bind[1][:name]==src.name) || FAIL
 end
 def __lp_must_em_43e9(bind)
 (must_empty?(bind[1])) || FAIL
@@ -39,6 +42,9 @@ bind[1].dup
 end
 def _bind_lb_1_rb__eq__56ab(bind)
 bind[1]=autovar;src.body = Seq[bind[2],Many[Seq[Act[Args[bind[1],"=",@result,";bind.reset;",@result,"=",bind[1]]],bind[3]]]] if @left_rec
+end
+def _bind_lb_1_rb__lb__fa06(bind)
+bind[1][:name]=src.name
 end
 def _bind_lb_1_rb__sp__4ee5(bind)
 bind[1] ? @result       : Apply["fails"]
@@ -61,15 +67,15 @@ end
 
 
 def remove_left_rigth_recursion_compiled_by
-'09cd215b63778a251028c3ab326dbf85'
+'013c5eab9076a2a7afdcd0500b69c87c'
 end
 def remove_left_rigth_recursion_source_hash
-'cad4af78a099c679de40b4fc88272c9a'
+'7df03514fffe38a851a13686ca4c4fc0'
 end
 def testversionremove_left_rigth_recursion(r)
  raise "invalid version" if r!=remove_left_rigth_recursion_version
 end
 def remove_left_rigth_recursion_version
-'576f459fe7baa36508029de6bdb68b62'
+'54a1bb7779b8bcdb164bd53ad64da922'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/remove_left_rigth_recursion_c"
