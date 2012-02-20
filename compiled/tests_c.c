@@ -105,7 +105,7 @@ fail:
 }
 VALUE Tests_de(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,_autovar_2,_foo,_autovar_3,__result,_autovar_4;
+    VALUE it ,_autovar,_autovar_2,_foo,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -138,6 +138,7 @@ alt1_1:
 alt1_2:
         ptr->pos=oldpos1;
         it=_autovar_2;
+        it=i_1;
         _foo=it;;
         bind_aset(bind2,1,_foo);
         it=rb_funcall(self,sy__bind_lb_1_rb__pl__0a71,1,bind2);
@@ -160,12 +161,12 @@ accept1:
         it=rb_funcall(self,sy__bind_lb_1_rb__eq__f4b0,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=i_1;
-        _autovar_3=it;;
+        it=i_1;
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
         ;
-        it=_autovar_3;
+        it=i_1;
         _foo=it;;
         bind_aset(bind2,1,_foo);
         it=rb_funcall(self,sy__bind_lb_1_rb__pl__61a1,1,bind2);
@@ -175,7 +176,7 @@ alt2_1:
         goto accept2;
 alt2_2:
         ptr->pos=oldpos2;
-        it=_autovar_3;
+        it=i_1;
         _foo=it;;
         bind_aset(bind2,1,_foo);
         it=rb_funcall(self,sy__bind_lb_1_rb__pl__0a71,1,bind2);
@@ -206,12 +207,12 @@ accept2:
         it=rb_funcall(self,sy__bind_lb_1_rb__eq__f4b0,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=i_1;
-        _autovar_4=it;;
+        it=i_1;
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
         ;
-        it=_autovar_4;
+        it=i_1;
         _foo=it;;
         bind_aset(bind2,1,_foo);
         it=rb_funcall(self,sy__bind_lb_1_rb__pl__61a1,1,bind2);
@@ -227,7 +228,7 @@ alt3_1:
         goto accept3;
 alt3_2:
         ptr->pos=oldpos3;
-        it=_autovar_4;
+        it=i_1;
         _foo=it;;
         bind_aset(bind2,1,_foo);
         it=rb_funcall(self,sy__bind_lb_1_rb__pl__0a71,1,bind2);
@@ -555,5 +556,5 @@ void Init_tests_c() {
     rb_define_method(cls_Tests,"s2",Tests_s2,0);
     rb_define_method(cls_Tests,"sw",Tests_sw,0);
     rb_define_method(cls_Tests,"test",Tests_test,0);
-    rb_eval_string("testversiontests('7db91e0c4f331bb15c15c898b642c86d')");
+    rb_eval_string("testversiontests('fda5c9780b7c4455cbe32c0fc4a33586')");
 }

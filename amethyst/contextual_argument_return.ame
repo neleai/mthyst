@@ -21,4 +21,7 @@ root = @dup=>Rule[ {@>a=autovar} traverse:t ]
         | Contextual_Return[ .:name ] ->  [@>a,"[:#{name}]"]
 }
 
+# We do following optimalizations
+# Pass contextual arguments only to rules that use them. When none uses we delete relevant definitions.
 
+# With contextual returns situation is similar. We can delete definitions that are not used. We dont have to merge first contextual return.

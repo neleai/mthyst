@@ -176,6 +176,7 @@ VALUE Add_Contextual_Arguments_traverse(VALUE self ) {
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
+    it=rb_ary_new3(0);
     int stop1=0;
     while(!stop1) {
         int oldpos1=ptr->pos;
@@ -337,6 +338,7 @@ alt2_2:
         }
         it=rb_ary_new3(0);
         _ar=it;;
+        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos3=ptr->pos;
@@ -743,6 +745,7 @@ VALUE Add_Contextual_Returns_traverse(VALUE self ) {
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
+    it=rb_ary_new3(0);
     int stop1=0;
     while(!stop1) {
         int oldpos1=ptr->pos;
@@ -904,6 +907,7 @@ alt2_2:
         }
         it=rb_ary_new3(0);
         _ar=it;;
+        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos3=ptr->pos;
@@ -1193,5 +1197,5 @@ void Init_contextual_argument_return_c() {
     rb_define_method(cls_Add_Contextual_Returns,"traverse",Add_Contextual_Returns_traverse,0);
     rb_define_method(cls_Add_Contextual_Returns,"traverse_item",Add_Contextual_Returns_traverse_item,0);
     rb_define_method(cls_Add_Contextual_Returns,"visit",Add_Contextual_Returns_visit,0);
-    rb_eval_string("testversioncontextual_argument_return('9b6acf2eca802f48e9e28c80f75040d6')");
+    rb_eval_string("testversioncontextual_argument_return('6ba5bc54fc902fea7a41c7aecb9b39d3')");
 }

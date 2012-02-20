@@ -693,6 +693,7 @@ VALUE Analyze_Variables2_traverse(VALUE self ) {
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
+    it=rb_ary_new3(0);
     int stop1=0;
     while(!stop1) {
         int oldpos1=ptr->pos;
@@ -854,6 +855,7 @@ alt2_2:
         }
         it=rb_ary_new3(0);
         _ar=it;;
+        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos3=ptr->pos;
@@ -1003,6 +1005,7 @@ VALUE Analyze_Variables2_visit(VALUE self ) {
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
+        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos1=ptr->pos;
@@ -1339,6 +1342,7 @@ success1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
+        it=rb_ary_new3(0);
         int stop3=0;
         while(!stop3) {
             int oldpos6=ptr->pos;
@@ -1485,6 +1489,7 @@ success6:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
+        it=rb_ary_new3(0);
         int stop4=0;
         while(!stop4) {
             int oldpos7=ptr->pos;
@@ -2121,6 +2126,7 @@ VALUE Resolve_Calls_traverse(VALUE self ) {
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
+    it=rb_ary_new3(0);
     int stop1=0;
     while(!stop1) {
         int oldpos1=ptr->pos;
@@ -2282,6 +2288,7 @@ alt2_2:
         }
         it=rb_ary_new3(0);
         _ar=it;;
+        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos3=ptr->pos;
@@ -2706,5 +2713,5 @@ void Init_detect_variables2_c() {
     rb_define_method(cls_Resolve_Calls,"traverse",Resolve_Calls_traverse,0);
     rb_define_method(cls_Resolve_Calls,"traverse_item",Resolve_Calls_traverse_item,0);
     rb_define_method(cls_Resolve_Calls,"visit",Resolve_Calls_visit,0);
-    rb_eval_string("testversiondetect_variables2('4f9d46afb646f79947fd7bd3e80253a4')");
+    rb_eval_string("testversiondetect_variables2('a1ea00b1254fbf98d0ce9151421328bd')");
 }

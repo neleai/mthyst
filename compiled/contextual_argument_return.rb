@@ -99,18 +99,21 @@ end
 end
 
 
+# We do following optimalizations
+# Pass contextual arguments only to rules that use them. When none uses we delete relevant definitions.
 
+# With contextual returns situation is similar. We can delete definitions that are not used. We dont have to merge first contextual return.
 
 def contextual_argument_return_compiled_by
-'013c5eab9076a2a7afdcd0500b69c87c'
+'ca0facf10faf5ca89fc0c73cd5b3a472'
 end
 def contextual_argument_return_source_hash
-'e0f9c6b4ef154f587d67659479319e13'
+'29431c612f243b1cc1b97ef0082973ed'
 end
 def testversioncontextual_argument_return(r)
  raise "invalid version" if r!=contextual_argument_return_version
 end
 def contextual_argument_return_version
-'9b6acf2eca802f48e9e28c80f75040d6'
+'6ba5bc54fc902fea7a41c7aecb9b39d3'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/contextual_argument_return_c"

@@ -681,6 +681,7 @@ VALUE Inliner2_traverse(VALUE self ) {
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
+    it=rb_ary_new3(0);
     int stop1=0;
     while(!stop1) {
         int oldpos1=ptr->pos;
@@ -842,6 +843,7 @@ alt2_2:
         }
         it=rb_ary_new3(0);
         _ar=it;;
+        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos3=ptr->pos;
@@ -1097,5 +1099,5 @@ void Init_inliner2_c() {
     rb_define_method(cls_Inliner2,"traverse",Inliner2_traverse,0);
     rb_define_method(cls_Inliner2,"traverse_item",Inliner2_traverse_item,0);
     rb_define_method(cls_Inliner2,"visit",Inliner2_visit,0);
-    rb_eval_string("testversioninliner2('628e6f1113473d3b4678f2279598164c')");
+    rb_eval_string("testversioninliner2('58085810ae6058843ba6614c21c55bd7')");
 }

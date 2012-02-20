@@ -73,6 +73,7 @@ alt1_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
+        it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
         _autovar_2=it;;
@@ -106,6 +107,7 @@ accept1:
         break;
     case 8/*Apply*/:
         ;
+        it=rb_ary_new3(0);
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
@@ -190,6 +192,7 @@ accept2:
         break;
     case 9/*Bind*/:
         ;
+        it=rb_ary_new3(0);
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
@@ -246,6 +249,7 @@ accept3:
         break;
     case 10/*Many*/:
         ;
+        it=rb_ary_new3(0);
         int oldpos4=ptr->pos;
         int cut4=0;
 alt4_1:
@@ -333,6 +337,7 @@ alt5_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
+        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos6=ptr->pos;
@@ -429,6 +434,7 @@ accept5:
         break;
     case 14/*Seq*/:
         ;
+        it=rb_ary_new3(0);
         int oldpos7=ptr->pos;
         int cut7=0;
 alt7_1:
@@ -454,6 +460,7 @@ alt7_1:
         }
         it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
         _val=it;;
+        it=rb_ary_new3(0);
         int stop2=0;
         while(!stop2) {
             int oldpos8=ptr->pos;
@@ -499,6 +506,7 @@ alt9_1:
             it=rb_funcall(self,sy___lp_,1,bind2);
             _el=bind_aget(bind2,1);;
             FAILTEST(alt9_2);
+            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             ;
             goto accept9;
@@ -558,6 +566,7 @@ accept7:
         break;
     case 15/*Object*/:
         ;
+        it=rb_ary_new3(0);
         it=AmethystCore_anything(self );
         FAILTEST(fail);
         it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
@@ -918,62 +927,108 @@ alt2_2:
                 ptr->len=RARRAY_LEN(ary);
             }
             it=rb_funcall(self,sy_spaces,0);
+            int oldpos3=ptr->pos;
+            int cut3=0;
+alt3_1:
+            ;
             switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... '`':
-                ;
-            case 'b' ... 'b':
-                ;
-            case 'd' ... 'q':
+            case UC(0) ... 'q':
                 ;
             case 's' ... UC(255):
                 ;
-                goto pass4;
+                goto alt3_2;
                 break;
             case 'r' ... 'r':
                 ;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='g'&&ame_curstr2(ptr)[2]=='c'&&ame_curstr2(ptr)[3]=='h')  ptr->pos+=4;
-                else goto pass4;
-                break;
-            case 'a' ... 'a':
-                ;
-                it=rb_str_new(ptr->str+ptr->pos,1);
-                ptr->pos++;
-                int oldpos3=ptr->pos;
-                int cut3=0;
-alt3_1:
-                ;
-                if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
                 else goto alt3_2;
-                ;
-                goto accept3;
+                break;
+            }
+            ;
+            goto accept3;
 alt3_2:
-                ptr->pos=oldpos3;
-                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='h'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='r')  ptr->pos+=11;
-                else goto alt3_3;
+            ptr->pos=oldpos3;
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... 'b':
                 ;
-                goto accept3;
-alt3_3:
-                ptr->pos=oldpos3;
-                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
-                else goto alt3_4;
+            case 'd' ... UC(255):
                 ;
-                goto accept3;
-alt3_4:
-                ptr->pos=oldpos3;
-                goto pass4;
-accept3:
-                ;
+                goto alt3_3;
                 break;
             case 'c' ... 'c':
                 ;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='l'&&ame_curstr2(ptr)[1]=='a'&&ame_curstr2(ptr)[2]=='s')  ptr->pos+=3;
-                else goto pass4;
+                else goto alt3_3;
                 break;
             }
+            ;
+            goto accept3;
+alt3_3:
+            ptr->pos=oldpos3;
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... '`':
+                ;
+            case 'b' ... UC(255):
+                ;
+                goto alt3_4;
+                break;
+            case 'a' ... 'a':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
+                else goto alt3_4;
+                break;
+            }
+            ;
+            goto accept3;
+alt3_4:
+            ptr->pos=oldpos3;
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... '`':
+                ;
+            case 'b' ... UC(255):
+                ;
+                goto alt3_5;
+                break;
+            case 'a' ... 'a':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='h'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='r')  ptr->pos+=11;
+                else goto alt3_5;
+                break;
+            }
+            ;
+            goto accept3;
+alt3_5:
+            ptr->pos=oldpos3;
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... '`':
+                ;
+            case 'b' ... UC(255):
+                ;
+                goto alt3_6;
+                break;
+            case 'a' ... 'a':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
+                else goto alt3_6;
+                break;
+            }
+            ;
+            goto accept3;
+alt3_6:
+            ptr->pos=oldpos3;
+            goto pass4;
+accept3:
+            ;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass4;
             goto success4;
@@ -1117,62 +1172,108 @@ alt4_2:
                 ptr->len=RARRAY_LEN(ary);
             }
             it=rb_funcall(self,sy_spaces,0);
+            int oldpos5=ptr->pos;
+            int cut5=0;
+alt5_1:
+            ;
             switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... '`':
-                ;
-            case 'b' ... 'b':
-                ;
-            case 'd' ... 'q':
+            case UC(0) ... 'q':
                 ;
             case 's' ... UC(255):
                 ;
-                goto pass7;
+                goto alt5_2;
                 break;
             case 'r' ... 'r':
                 ;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='g'&&ame_curstr2(ptr)[2]=='c'&&ame_curstr2(ptr)[3]=='h')  ptr->pos+=4;
-                else goto pass7;
-                break;
-            case 'a' ... 'a':
-                ;
-                it=rb_str_new(ptr->str+ptr->pos,1);
-                ptr->pos++;
-                int oldpos5=ptr->pos;
-                int cut5=0;
-alt5_1:
-                ;
-                if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
                 else goto alt5_2;
-                ;
-                goto accept5;
+                break;
+            }
+            ;
+            goto accept5;
 alt5_2:
-                ptr->pos=oldpos5;
-                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='h'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='r')  ptr->pos+=11;
-                else goto alt5_3;
+            ptr->pos=oldpos5;
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... 'b':
                 ;
-                goto accept5;
-alt5_3:
-                ptr->pos=oldpos5;
-                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
-                else goto alt5_4;
+            case 'd' ... UC(255):
                 ;
-                goto accept5;
-alt5_4:
-                ptr->pos=oldpos5;
-                goto pass7;
-accept5:
-                ;
+                goto alt5_3;
                 break;
             case 'c' ... 'c':
                 ;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='l'&&ame_curstr2(ptr)[1]=='a'&&ame_curstr2(ptr)[2]=='s')  ptr->pos+=3;
-                else goto pass7;
+                else goto alt5_3;
                 break;
             }
+            ;
+            goto accept5;
+alt5_3:
+            ptr->pos=oldpos5;
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... '`':
+                ;
+            case 'b' ... UC(255):
+                ;
+                goto alt5_4;
+                break;
+            case 'a' ... 'a':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
+                else goto alt5_4;
+                break;
+            }
+            ;
+            goto accept5;
+alt5_4:
+            ptr->pos=oldpos5;
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... '`':
+                ;
+            case 'b' ... UC(255):
+                ;
+                goto alt5_5;
+                break;
+            case 'a' ... 'a':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='h'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='r')  ptr->pos+=11;
+                else goto alt5_5;
+                break;
+            }
+            ;
+            goto accept5;
+alt5_5:
+            ptr->pos=oldpos5;
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... '`':
+                ;
+            case 'b' ... UC(255):
+                ;
+                goto alt5_6;
+                break;
+            case 'a' ... 'a':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
+                else goto alt5_6;
+                break;
+            }
+            ;
+            goto accept5;
+alt5_6:
+            ptr->pos=oldpos5;
+            goto pass7;
+accept5:
+            ;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass7;
             goto success7;
@@ -1322,6 +1423,7 @@ alt1_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
+        it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
         _autovar_2=it;;
@@ -1355,6 +1457,7 @@ accept1:
         break;
     case 8/*Apply*/:
         ;
+        it=rb_ary_new3(0);
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
@@ -1439,6 +1542,7 @@ accept2:
         break;
     case 9/*Bind*/:
         ;
+        it=rb_ary_new3(0);
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
@@ -1495,6 +1599,7 @@ accept3:
         break;
     case 10/*Many*/:
         ;
+        it=rb_ary_new3(0);
         int oldpos4=ptr->pos;
         int cut4=0;
 alt4_1:
@@ -1582,6 +1687,7 @@ alt5_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
+        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos6=ptr->pos;
@@ -1678,6 +1784,7 @@ accept5:
         break;
     case 14/*Seq*/:
         ;
+        it=rb_ary_new3(0);
         int oldpos7=ptr->pos;
         int cut7=0;
 alt7_1:
@@ -1703,6 +1810,7 @@ alt7_1:
         }
         it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
         _val=it;;
+        it=rb_ary_new3(0);
         int stop2=0;
         while(!stop2) {
             int oldpos8=ptr->pos;
@@ -1748,6 +1856,7 @@ alt9_1:
             it=rb_funcall(self,sy___lp_,1,bind2);
             _el=bind_aget(bind2,1);;
             FAILTEST(alt9_2);
+            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             ;
             goto accept9;
@@ -1807,6 +1916,7 @@ accept7:
         break;
     case 15/*Object*/:
         ;
+        it=rb_ary_new3(0);
         it=AmethystCore_anything(self );
         FAILTEST(fail);
         it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
@@ -2036,62 +2146,108 @@ alt2_2:
                 ptr->len=RARRAY_LEN(ary);
             }
             it=rb_funcall(self,sy_spaces,0);
+            int oldpos3=ptr->pos;
+            int cut3=0;
+alt3_1:
+            ;
             switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... '`':
-                ;
-            case 'b' ... 'b':
-                ;
-            case 'd' ... 'q':
+            case UC(0) ... 'q':
                 ;
             case 's' ... UC(255):
                 ;
-                goto pass4;
+                goto alt3_2;
                 break;
             case 'r' ... 'r':
                 ;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='g'&&ame_curstr2(ptr)[2]=='c'&&ame_curstr2(ptr)[3]=='h')  ptr->pos+=4;
-                else goto pass4;
-                break;
-            case 'a' ... 'a':
-                ;
-                it=rb_str_new(ptr->str+ptr->pos,1);
-                ptr->pos++;
-                int oldpos3=ptr->pos;
-                int cut3=0;
-alt3_1:
-                ;
-                if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
                 else goto alt3_2;
-                ;
-                goto accept3;
+                break;
+            }
+            ;
+            goto accept3;
 alt3_2:
-                ptr->pos=oldpos3;
-                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='h'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='r')  ptr->pos+=11;
-                else goto alt3_3;
+            ptr->pos=oldpos3;
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... 'b':
                 ;
-                goto accept3;
-alt3_3:
-                ptr->pos=oldpos3;
-                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
-                else goto alt3_4;
+            case 'd' ... UC(255):
                 ;
-                goto accept3;
-alt3_4:
-                ptr->pos=oldpos3;
-                goto pass4;
-accept3:
-                ;
+                goto alt3_3;
                 break;
             case 'c' ... 'c':
                 ;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='l'&&ame_curstr2(ptr)[1]=='a'&&ame_curstr2(ptr)[2]=='s')  ptr->pos+=3;
-                else goto pass4;
+                else goto alt3_3;
                 break;
             }
+            ;
+            goto accept3;
+alt3_3:
+            ptr->pos=oldpos3;
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... '`':
+                ;
+            case 'b' ... UC(255):
+                ;
+                goto alt3_4;
+                break;
+            case 'a' ... 'a':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
+                else goto alt3_4;
+                break;
+            }
+            ;
+            goto accept3;
+alt3_4:
+            ptr->pos=oldpos3;
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... '`':
+                ;
+            case 'b' ... UC(255):
+                ;
+                goto alt3_5;
+                break;
+            case 'a' ... 'a':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='h'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='r')  ptr->pos+=11;
+                else goto alt3_5;
+                break;
+            }
+            ;
+            goto accept3;
+alt3_5:
+            ptr->pos=oldpos3;
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... '`':
+                ;
+            case 'b' ... UC(255):
+                ;
+                goto alt3_6;
+                break;
+            case 'a' ... 'a':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
+                else goto alt3_6;
+                break;
+            }
+            ;
+            goto accept3;
+alt3_6:
+            ptr->pos=oldpos3;
+            goto pass4;
+accept3:
+            ;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass4;
             goto success4;
@@ -2235,62 +2391,108 @@ alt4_2:
                 ptr->len=RARRAY_LEN(ary);
             }
             it=rb_funcall(self,sy_spaces,0);
+            int oldpos5=ptr->pos;
+            int cut5=0;
+alt5_1:
+            ;
             switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... '`':
-                ;
-            case 'b' ... 'b':
-                ;
-            case 'd' ... 'q':
+            case UC(0) ... 'q':
                 ;
             case 's' ... UC(255):
                 ;
-                goto pass7;
+                goto alt5_2;
                 break;
             case 'r' ... 'r':
                 ;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='g'&&ame_curstr2(ptr)[2]=='c'&&ame_curstr2(ptr)[3]=='h')  ptr->pos+=4;
-                else goto pass7;
-                break;
-            case 'a' ... 'a':
-                ;
-                it=rb_str_new(ptr->str+ptr->pos,1);
-                ptr->pos++;
-                int oldpos5=ptr->pos;
-                int cut5=0;
-alt5_1:
-                ;
-                if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
                 else goto alt5_2;
-                ;
-                goto accept5;
+                break;
+            }
+            ;
+            goto accept5;
 alt5_2:
-                ptr->pos=oldpos5;
-                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='h'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='r')  ptr->pos+=11;
-                else goto alt5_3;
+            ptr->pos=oldpos5;
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... 'b':
                 ;
-                goto accept5;
-alt5_3:
-                ptr->pos=oldpos5;
-                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
-                else goto alt5_4;
+            case 'd' ... UC(255):
                 ;
-                goto accept5;
-alt5_4:
-                ptr->pos=oldpos5;
-                goto pass7;
-accept5:
-                ;
+                goto alt5_3;
                 break;
             case 'c' ... 'c':
                 ;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='l'&&ame_curstr2(ptr)[1]=='a'&&ame_curstr2(ptr)[2]=='s')  ptr->pos+=3;
-                else goto pass7;
+                else goto alt5_3;
                 break;
             }
+            ;
+            goto accept5;
+alt5_3:
+            ptr->pos=oldpos5;
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... '`':
+                ;
+            case 'b' ... UC(255):
+                ;
+                goto alt5_4;
+                break;
+            case 'a' ... 'a':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
+                else goto alt5_4;
+                break;
+            }
+            ;
+            goto accept5;
+alt5_4:
+            ptr->pos=oldpos5;
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... '`':
+                ;
+            case 'b' ... UC(255):
+                ;
+                goto alt5_5;
+                break;
+            case 'a' ... 'a':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='h'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='r')  ptr->pos+=11;
+                else goto alt5_5;
+                break;
+            }
+            ;
+            goto accept5;
+alt5_5:
+            ptr->pos=oldpos5;
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... '`':
+                ;
+            case 'b' ... UC(255):
+                ;
+                goto alt5_6;
+                break;
+            case 'a' ... 'a':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
+                else goto alt5_6;
+                break;
+            }
+            ;
+            goto accept5;
+alt5_6:
+            ptr->pos=oldpos5;
+            goto pass7;
+accept5:
+            ;
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass7;
             goto success7;
@@ -2440,6 +2642,7 @@ alt1_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
+        it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
         _autovar_2=it;;
@@ -2473,6 +2676,7 @@ accept1:
         break;
     case 8/*Apply*/:
         ;
+        it=rb_ary_new3(0);
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
@@ -2557,6 +2761,7 @@ accept2:
         break;
     case 9/*Bind*/:
         ;
+        it=rb_ary_new3(0);
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
@@ -2613,6 +2818,7 @@ accept3:
         break;
     case 10/*Many*/:
         ;
+        it=rb_ary_new3(0);
         int oldpos4=ptr->pos;
         int cut4=0;
 alt4_1:
@@ -2700,6 +2906,7 @@ alt5_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
+        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos6=ptr->pos;
@@ -2796,6 +3003,7 @@ accept5:
         break;
     case 14/*Seq*/:
         ;
+        it=rb_ary_new3(0);
         int oldpos7=ptr->pos;
         int cut7=0;
 alt7_1:
@@ -2821,6 +3029,7 @@ alt7_1:
         }
         it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
         _val=it;;
+        it=rb_ary_new3(0);
         int stop2=0;
         while(!stop2) {
             int oldpos8=ptr->pos;
@@ -2866,6 +3075,7 @@ alt9_1:
             it=rb_funcall(self,sy___lp_,1,bind2);
             _el=bind_aget(bind2,1);;
             FAILTEST(alt9_2);
+            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             ;
             goto accept9;
@@ -2925,6 +3135,7 @@ accept7:
         break;
     case 15/*Object*/:
         ;
+        it=rb_ary_new3(0);
         it=AmethystCore_anything(self );
         FAILTEST(fail);
         it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
@@ -3092,6 +3303,7 @@ accept1:
         break;
     case 1/*Many*/:
         ;
+        it=rb_ary_new3(0);
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
@@ -3177,6 +3389,7 @@ alt3_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
+        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos4=ptr->pos;
@@ -3266,6 +3479,7 @@ accept3:
         break;
     case 5/*Seq*/:
         ;
+        it=rb_ary_new3(0);
         int oldpos5=ptr->pos;
         int cut5=0;
 alt5_1:
@@ -3352,6 +3566,7 @@ accept5:
         break;
     case 6/*Object*/:
         ;
+        it=rb_ary_new3(0);
         it=AmethystCore_anything(self );
         FAILTEST(fail);
         it=rb_funcall(self,sy__lattice_lb__6ee3,1,bind2);
@@ -4233,6 +4448,7 @@ alt1_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
+        it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
         _autovar_2=it;;
@@ -4266,6 +4482,7 @@ accept1:
         break;
     case 8/*Apply*/:
         ;
+        it=rb_ary_new3(0);
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
@@ -4350,6 +4567,7 @@ accept2:
         break;
     case 9/*Bind*/:
         ;
+        it=rb_ary_new3(0);
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
@@ -4406,6 +4624,7 @@ accept3:
         break;
     case 10/*Many*/:
         ;
+        it=rb_ary_new3(0);
         int oldpos4=ptr->pos;
         int cut4=0;
 alt4_1:
@@ -4493,6 +4712,7 @@ alt5_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
+        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos6=ptr->pos;
@@ -4589,6 +4809,7 @@ accept5:
         break;
     case 14/*Seq*/:
         ;
+        it=rb_ary_new3(0);
         int oldpos7=ptr->pos;
         int cut7=0;
 alt7_1:
@@ -4614,6 +4835,7 @@ alt7_1:
         }
         it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
         _val=it;;
+        it=rb_ary_new3(0);
         int stop2=0;
         while(!stop2) {
             int oldpos8=ptr->pos;
@@ -4659,6 +4881,7 @@ alt9_1:
             it=rb_funcall(self,sy___lp_,1,bind2);
             _el=bind_aget(bind2,1);;
             FAILTEST(alt9_2);
+            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             ;
             goto accept9;
@@ -4718,6 +4941,7 @@ accept7:
         break;
     case 15/*Object*/:
         ;
+        it=rb_ary_new3(0);
         it=AmethystCore_anything(self );
         FAILTEST(fail);
         it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
@@ -5099,6 +5323,7 @@ alt1_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
+        it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
         _autovar_2=it;;
@@ -5132,6 +5357,7 @@ accept1:
         break;
     case 8/*Apply*/:
         ;
+        it=rb_ary_new3(0);
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
@@ -5216,6 +5442,7 @@ accept2:
         break;
     case 9/*Bind*/:
         ;
+        it=rb_ary_new3(0);
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
@@ -5272,6 +5499,7 @@ accept3:
         break;
     case 10/*Many*/:
         ;
+        it=rb_ary_new3(0);
         int oldpos4=ptr->pos;
         int cut4=0;
 alt4_1:
@@ -5359,6 +5587,7 @@ alt5_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
+        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos6=ptr->pos;
@@ -5455,6 +5684,7 @@ accept5:
         break;
     case 14/*Seq*/:
         ;
+        it=rb_ary_new3(0);
         int oldpos7=ptr->pos;
         int cut7=0;
 alt7_1:
@@ -5480,6 +5710,7 @@ alt7_1:
         }
         it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
         _val=it;;
+        it=rb_ary_new3(0);
         int stop2=0;
         while(!stop2) {
             int oldpos8=ptr->pos;
@@ -5525,6 +5756,7 @@ alt9_1:
             it=rb_funcall(self,sy___lp_,1,bind2);
             _el=bind_aget(bind2,1);;
             FAILTEST(alt9_2);
+            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             ;
             goto accept9;
@@ -5584,6 +5816,7 @@ accept7:
         break;
     case 15/*Object*/:
         ;
+        it=rb_ary_new3(0);
         it=AmethystCore_anything(self );
         FAILTEST(fail);
         it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
@@ -5702,6 +5935,7 @@ alt1_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
+        it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=rb_funcall(self,sy___lp_src_dot_pre_c6b8,1,bind2);
         FAILTEST(pass1);
@@ -5777,38 +6011,51 @@ alt2_1:
             ptr->len=RARRAY_LEN(ary);
         }
         it=rb_funcall(self,sy_spaces,0);
+        int oldpos3=ptr->pos;
+        int cut3=0;
+alt3_1:
+        ;
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... '`':
             ;
         case 'b' ... UC(255):
             ;
-            goto pass3;
+            goto alt3_2;
             break;
         case 'a' ... 'a':
             ;
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
-            int oldpos3=ptr->pos;
-            int cut3=0;
-alt3_1:
-            ;
             if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='h'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='r')  ptr->pos+=11;
             else goto alt3_2;
-            ;
-            goto accept3;
-alt3_2:
-            ptr->pos=oldpos3;
-            if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
-            else goto alt3_3;
-            ;
-            goto accept3;
-alt3_3:
-            ptr->pos=oldpos3;
-            goto pass3;
-accept3:
-            ;
             break;
         }
+        ;
+        goto accept3;
+alt3_2:
+        ptr->pos=oldpos3;
+        switch((unsigned char)*ame_curstr2(ptr)) {
+        case UC(0) ... '`':
+            ;
+        case 'b' ... UC(255):
+            ;
+            goto alt3_3;
+            break;
+        case 'a' ... 'a':
+            ;
+            it=rb_str_new(ptr->str+ptr->pos,1);
+            ptr->pos++;
+            if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
+            else goto alt3_3;
+            break;
+        }
+        ;
+        goto accept3;
+alt3_3:
+        ptr->pos=oldpos3;
+        goto pass3;
+accept3:
+        ;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass3;
         goto success3;
@@ -5869,6 +6116,7 @@ alt4_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
+        it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass4;
@@ -5963,6 +6211,7 @@ alt7_1:
                     ptr->ary=RARRAY_PTR(ary);
                     ptr->len=RARRAY_LEN(ary);
                 }
+                it=rb_ary_new3(0);
                 int stop2=0;
                 while(!stop2) {
                     switch(FIX2LONG(rb_hash_aref(switchhash_Cant_Fail_Dataflow_3,rb_obj_class(ame_curobj2(ptr))))) {
@@ -5970,6 +6219,7 @@ alt7_1:
                         ;
                         it=ptr->ary[ptr->pos];            ;
                         ptr->pos++;
+                        it=rb_ary_new3(0);
                         ptr->pos=ptr->len;
                         cut7=1;
                         stop2=1;
@@ -6213,6 +6463,7 @@ alt1_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
+        it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
         _autovar_2=it;;
@@ -6246,6 +6497,7 @@ accept1:
         break;
     case 8/*Apply*/:
         ;
+        it=rb_ary_new3(0);
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
@@ -6330,6 +6582,7 @@ accept2:
         break;
     case 9/*Bind*/:
         ;
+        it=rb_ary_new3(0);
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
@@ -6386,6 +6639,7 @@ accept3:
         break;
     case 10/*Many*/:
         ;
+        it=rb_ary_new3(0);
         int oldpos4=ptr->pos;
         int cut4=0;
 alt4_1:
@@ -6473,6 +6727,7 @@ alt5_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
+        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos6=ptr->pos;
@@ -6569,6 +6824,7 @@ accept5:
         break;
     case 14/*Seq*/:
         ;
+        it=rb_ary_new3(0);
         int oldpos7=ptr->pos;
         int cut7=0;
 alt7_1:
@@ -6594,6 +6850,7 @@ alt7_1:
         }
         it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
         _val=it;;
+        it=rb_ary_new3(0);
         int stop2=0;
         while(!stop2) {
             int oldpos8=ptr->pos;
@@ -6639,6 +6896,7 @@ alt9_1:
             it=rb_funcall(self,sy___lp_,1,bind2);
             _el=bind_aget(bind2,1);;
             FAILTEST(alt9_2);
+            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             ;
             goto accept9;
@@ -6698,6 +6956,7 @@ accept7:
         break;
     case 15/*Object*/:
         ;
+        it=rb_ary_new3(0);
         it=AmethystCore_anything(self );
         FAILTEST(fail);
         it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
@@ -6847,6 +7106,7 @@ alt1_1:
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
+    it=rb_ary_new3(0);
     ptr->pos=ptr->len;
     it=rb_funcall(self,sy__src_dot_ary_d5cf,1,bind2);
     _ary=it;;
@@ -6981,6 +7241,7 @@ alt1_2:
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
+    it=rb_ary_new3(0);
     ptr->pos=ptr->len;
     it=rb_funcall(self,sy__src_dot_ary_d5cf,1,bind2);
     _ary=it;;
@@ -7593,30 +7854,51 @@ VALUE Detect_First_string_only(VALUE self ) {
             ptr->len=RARRAY_LEN(ary);
         }
         it=rb_funcall(self,sy_spaces,0);
+        int oldpos1=ptr->pos;
+        int cut1=0;
+alt1_1:
+        ;
         switch((unsigned char)*ame_curstr2(ptr)) {
-        case UC(0) ... '^':
-            ;
-        case '`' ... 'q':
+        case UC(0) ... 'q':
             ;
         case 's' ... UC(255):
             ;
-            goto pass2;
+            goto alt1_2;
             break;
         case 'r' ... 'r':
             ;
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
             if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='g'&&ame_curstr2(ptr)[2]=='c'&&ame_curstr2(ptr)[3]=='h')  ptr->pos+=4;
-            else goto pass2;
+            else goto alt1_2;
+            break;
+        }
+        ;
+        goto accept1;
+alt1_2:
+        ptr->pos=oldpos1;
+        switch((unsigned char)*ame_curstr2(ptr)) {
+        case UC(0) ... '^':
+            ;
+        case '`' ... UC(255):
+            ;
+            goto alt1_3;
             break;
         case '_' ... '_':
             ;
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
             if (ame_curstr2(ptr)[0]=='s'&&ame_curstr2(ptr)[1]=='e'&&ame_curstr2(ptr)[2]=='q')  ptr->pos+=3;
-            else goto pass2;
+            else goto alt1_3;
             break;
         }
+        ;
+        goto accept1;
+alt1_3:
+        ptr->pos=oldpos1;
+        goto pass2;
+accept1:
+        ;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass2;
         goto success2;
@@ -7629,12 +7911,12 @@ success2:
         _autovar_3=it;;
         int stop1=0;
         while(!stop1) {
-            int oldpos1=ptr->pos;
-            int cut1=0;
-alt1_1:
+            int oldpos2=ptr->pos;
+            int cut2=0;
+alt2_1:
             ;
             it=AmethystCore_anything(self );
-            FAILTEST(alt1_2);
+            FAILTEST(alt2_2);
             _autovar_4=it;;
             bind_aset(bind2,1,_autovar_3);
             bind_aset(bind2,2,_autovar_4);
@@ -7642,16 +7924,16 @@ alt1_1:
             _autovar_3=bind_aget(bind2,1);;
             _autovar_4=bind_aget(bind2,2);;
             ;
-            goto accept1;
-alt1_2:
-            ptr->pos=oldpos1;
+            goto accept2;
+alt2_2:
+            ptr->pos=oldpos2;
             stop1=1;
             ;
-            goto accept1;
-alt1_3:
-            ptr->pos=oldpos1;
+            goto accept2;
+alt2_3:
+            ptr->pos=oldpos2;
             goto pass1;
-accept1:
+accept2:
             ;
         }
         it=_autovar_3;
@@ -8101,6 +8383,7 @@ VALUE Detect_Switch_Char_traverse(VALUE self ) {
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
+    it=rb_ary_new3(0);
     int stop1=0;
     while(!stop1) {
         int oldpos1=ptr->pos;
@@ -8267,6 +8550,7 @@ alt2_2:
         }
         it=rb_ary_new3(0);
         _ar=it;;
+        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos3=ptr->pos;
@@ -8465,6 +8749,7 @@ success2:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
+        it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass3;
@@ -8714,6 +8999,7 @@ alt1_4:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
+        it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=rb_funcall(self,sy__first_lp_sr_3298,1,bind2);
         _firs=it;;
@@ -8797,6 +9083,9 @@ accept2:
         it=_autovar_18;
         _items=it;;
         it=Qfalse;
+        it=Qfalse;
+        it=Qfalse;
+        it=Qfalse;
         _aswitch=it;;
         bind_aset(bind2,1,_items);
         bind_aset(bind2,2,_aswitch);
@@ -8853,6 +9142,8 @@ alt3_2:
             ;
             it=rb_funcall(self,sy___lb__lb_Lattic_d322,1,bind2);
             _list=it;;
+            it=c_Lattice_Char;
+            it=c_Switch_Char;
             int oldpos4=ptr->pos;
             int cut4=0;
 alt4_1:
@@ -8876,6 +9167,7 @@ alt4_1:
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
+            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             it=rb_funcall(self,sy__src_dot_ary_d5cf,1,bind2);
             _ary=it;;
@@ -8889,6 +9181,7 @@ success13:
             *ptr=oldpass13;
             it=rb_ary_new3(0);
             _newlist=it;;
+            it=c_Lattice_Char;
             it=c_Lattice_Char;
             _lat=it;;
             bind_aset(bind2,1,_list);
@@ -8940,6 +9233,7 @@ alt4_3:
             it=Qnil;
             if (ptr->pos<ptr->len) goto alt4_4;
             it=c_Switch_Char;
+            it=c_Switch_Char;
             _cls=it;;
             bind_aset(bind2,1,_cls);
             bind_aset(bind2,2,_list);
@@ -8964,6 +9258,8 @@ accept4:
             ;
             it=rb_funcall(self,sy___lb__lb_Lattic_d322,1,bind2);
             _list=it;;
+            it=c_Lattice_Char;
+            it=c_Switch_Char;
             int oldpos5=ptr->pos;
             int cut5=0;
 alt5_1:
@@ -8993,6 +9289,7 @@ alt5_2:
             ptr->pos=oldpos5;
             it=Qnil;
             if (ptr->pos<ptr->len) goto alt5_3;
+            it=c_Switch_Char;
             it=c_Switch_Char;
             _cls=it;;
             bind_aset(bind2,1,_cls);
@@ -9135,6 +9432,7 @@ accept6:
             ;
             it=rb_ary_new3(0);
             _prefix=it;;
+            it=c_Switch_Char;
             int oldpos7=ptr->pos;
             int cut7=0;
 alt7_1:
@@ -9177,6 +9475,7 @@ alt7_2:
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
+            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             it=rb_funcall(self,sy__src_dot_ary_d5cf,1,bind2);
             _ary_2=it;;
@@ -9219,6 +9518,7 @@ accept8:
             }
             it=_autovar_32;
             _rest=it;;
+            it=c_Switch_Char;
             it=c_Switch_Char;
             _cls_2=it;;
             bind_aset(bind2,1,_cls_2);
@@ -9290,6 +9590,7 @@ accept7:
             ;
             it=rb_ary_new3(0);
             _prefix=it;;
+            it=c_Switch_Char;
             int oldpos10=ptr->pos;
             int cut10=0;
 alt10_1:
@@ -9826,6 +10127,7 @@ VALUE Detect_Switch_Clas_traverse(VALUE self ) {
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
+    it=rb_ary_new3(0);
     int stop1=0;
     while(!stop1) {
         int oldpos1=ptr->pos;
@@ -9992,6 +10294,7 @@ alt2_2:
         }
         it=rb_ary_new3(0);
         _ar=it;;
+        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos3=ptr->pos;
@@ -10325,6 +10628,7 @@ alt1_3:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
+        it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=rb_funcall(self,sy__src_25d9,1,bind2);
         arg0=it;
@@ -10411,6 +10715,9 @@ accept2:
         it=_autovar_14;
         _items=it;;
         it=Qfalse;
+        it=Qfalse;
+        it=Qfalse;
+        it=Qfalse;
         _aswitch=it;;
         bind_aset(bind2,1,_items);
         bind_aset(bind2,2,_aswitch);
@@ -10467,6 +10774,8 @@ alt3_2:
             ;
             it=rb_funcall(self,sy___lb__lb_Lattic_62e5,1,bind2);
             _list=it;;
+            it=c_Lattice_Clas;
+            it=c_Switch_Clas;
             int oldpos4=ptr->pos;
             int cut4=0;
 alt4_1:
@@ -10490,6 +10799,7 @@ alt4_1:
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
+            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             it=rb_funcall(self,sy__src_dot_ary_d5cf,1,bind2);
             _ary=it;;
@@ -10503,6 +10813,7 @@ success10:
             *ptr=oldpass10;
             it=rb_ary_new3(0);
             _newlist=it;;
+            it=c_Lattice_Clas;
             it=c_Lattice_Clas;
             _lat=it;;
             bind_aset(bind2,1,_list);
@@ -10554,6 +10865,7 @@ alt4_3:
             it=Qnil;
             if (ptr->pos<ptr->len) goto alt4_4;
             it=c_Switch_Clas;
+            it=c_Switch_Clas;
             _cls=it;;
             bind_aset(bind2,1,_cls);
             bind_aset(bind2,2,_list);
@@ -10578,6 +10890,8 @@ accept4:
             ;
             it=rb_funcall(self,sy___lb__lb_Lattic_62e5,1,bind2);
             _list=it;;
+            it=c_Lattice_Clas;
+            it=c_Switch_Clas;
             int oldpos5=ptr->pos;
             int cut5=0;
 alt5_1:
@@ -10607,6 +10921,7 @@ alt5_2:
             ptr->pos=oldpos5;
             it=Qnil;
             if (ptr->pos<ptr->len) goto alt5_3;
+            it=c_Switch_Clas;
             it=c_Switch_Clas;
             _cls=it;;
             bind_aset(bind2,1,_cls);
@@ -10749,6 +11064,7 @@ accept6:
             ;
             it=rb_ary_new3(0);
             _prefix=it;;
+            it=c_Switch_Clas;
             int oldpos7=ptr->pos;
             int cut7=0;
 alt7_1:
@@ -10791,6 +11107,7 @@ alt7_2:
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
+            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             it=rb_funcall(self,sy__src_dot_ary_d5cf,1,bind2);
             _ary_2=it;;
@@ -10833,6 +11150,7 @@ accept8:
             }
             it=_autovar_28;
             _rest=it;;
+            it=c_Switch_Clas;
             it=c_Switch_Clas;
             _cls_2=it;;
             bind_aset(bind2,1,_cls_2);
@@ -10904,6 +11222,7 @@ accept7:
             ;
             it=rb_ary_new3(0);
             _prefix=it;;
+            it=c_Switch_Clas;
             int oldpos10=ptr->pos;
             int cut10=0;
 alt10_1:
@@ -12108,5 +12427,5 @@ void Init_detect_switch_c() {
     sy_spaces=rb_intern("spaces");
     rb_define_method(cls_Detect_Size,"predicate",Detect_Size_predicate,1);
     rb_define_method(cls_Detect_Size,"predicate2",Detect_Size_predicate2,1);
-    rb_eval_string("testversiondetect_switch('c520543b0675714b7eff9daec89e9b72')");
+    rb_eval_string("testversiondetect_switch('808936569278112419a707c7817bd05a')");
 }

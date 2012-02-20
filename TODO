@@ -4,9 +4,6 @@ make AmethystModule +include to mimic ruby module
 parser to produce literal tree and convert to abstract tree
 make position handling explicit as in amethyst/position.ame
 
-generic parent(Class) in tree traversal
-variable cget,cset,rbget,rbset or some other generalization
-consider pseudovariables
 
 bind cut to corresponding or
 Add id of cut to or
@@ -102,3 +99,7 @@ left factor inside normalization of or
 local DCE?
 
 simplify =>Class[ sth ] pattern
+
+as pass Apply takes only locals as arguments.
+
+@>parents contextual argument

@@ -215,18 +215,15 @@ end
 def __at__contex_d6d5(bind)
 @_context_arguments=bind[1]
 end
-def __at_bound(bind)
-@bound||=bind[1][:reachable][src.name]
-end
-def __at_bound_eq_f_5875(bind)
-@bound=false
-end
 def __lp_(bind)
-(!bind[1][:reachable][bind[2]] ||(bind[2].pure && !@bound)) ? Placeholder : bind[2]
+(!bind[1][:reachable][bind[2]] ||(bind[2].pure && !bind[1][:bound])) ? Placeholder : bind[2]
 
 end
 def __lp_src_dot_cla_e144(bind)
 (src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
+end
+def _bind_lb_1_rb__lb__146c(bind)
+bind[1][:bound]||=bind[1][:reachable][src.name]
 end
 def _bind_lb_1_rb__lb__1f9e(bind)
 bind[1][:reachable]=src.reachable
@@ -244,8 +241,9 @@ end
 def _bind_lb_1_rb__sp__6af0(bind)
 bind[1] << bind[2]
 end
-def _d_eq_src_dot_du_7d16(bind)
-d=src.dup;d.bound=@bound;d.normalize
+def _d_eq_src_dot_du_2b46(bind)
+d=src.dup;#d.bound=bind[1][:bound];
+                      d.normalize
 end
 def _if_sp_bind_lb__1bed(bind)
 if bind[1]==bind[2]
@@ -300,15 +298,15 @@ end
 
 
 def dataflow_ssa_compiled_by
-'013c5eab9076a2a7afdcd0500b69c87c'
+'ca0facf10faf5ca89fc0c73cd5b3a472'
 end
 def dataflow_ssa_source_hash
-'bd50932bb272d84a91c762d67a589f01'
+'42aa19e398b9d8a7ad85f0090eb01e59'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'3d0ca5b509a37be4d422bbf8a0d81cc5'
+'863b2d21400d1af82d9c281558504e52'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/dataflow_ssa_c"

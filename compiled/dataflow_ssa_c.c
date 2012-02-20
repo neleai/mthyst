@@ -435,6 +435,7 @@ VALUE Dataflow_traverse(VALUE self ) {
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
+    it=rb_ary_new3(0);
     int stop1=0;
     while(!stop1) {
         int oldpos1=ptr->pos;
@@ -596,6 +597,7 @@ alt2_2:
         }
         it=rb_ary_new3(0);
         _ar=it;;
+        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos3=ptr->pos;
@@ -696,6 +698,7 @@ VALUE Dataflow_vars_in(VALUE self ) {
     bind_aset(bind2,1,_ary);
     it=rb_funcall(self,sy__bind_lb_1_rb__eq__fe02,1,bind2);
     _ary=bind_aget(bind2,1);;
+    it=rb_ary_new3(0);
     int stop1=0;
     while(!stop1) {
         switch(FIX2LONG(rb_hash_aref(switchhash_Dataflow_3,rb_obj_class(ame_curobj2(ptr))))) {
@@ -724,6 +727,7 @@ alt1_1:
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
+            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             it=rb_funcall(self,sy__src_25d9,1,bind2);
             _autovar_2=it;;
@@ -905,6 +909,7 @@ alt4_1:
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
+            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             it=rb_funcall(self,sy__src_25d9,1,bind2);
             _autovar_8=it;;
@@ -966,6 +971,7 @@ alt5_1:
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
+            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             it=rb_funcall(self,sy__src_25d9,1,bind2);
             _autovar_10=it;;
@@ -1028,6 +1034,7 @@ alt6_1:
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
+            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             it=rb_funcall(self,sy__src_25d9,1,bind2);
             _autovar_12=it;;
@@ -1090,6 +1097,7 @@ alt7_1:
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
+            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             it=rb_funcall(self,sy__src_25d9,1,bind2);
             _autovar_14=it;;
@@ -1151,6 +1159,7 @@ alt8_1:
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
+            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             it=rb_funcall(self,sy__src_25d9,1,bind2);
             _autovar_16=it;;
@@ -1495,6 +1504,7 @@ success4:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
+        it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=rb_funcall(self,sy_traverse,0);
         FAILTEST(pass7);
@@ -1515,6 +1525,7 @@ success4:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
+        it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=rb_funcall(self,sy__bind_end_6e13,1,bind2);
         _autovar_17=it;;
@@ -1560,6 +1571,7 @@ success7:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
+        it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=rb_funcall(self,sy__ssanum_lp_s_3920,1,bind2);
         _autovar_20=it;;
@@ -1747,6 +1759,7 @@ success11:
         _join=it;;
         it=rb_funcall(self,sy__oldssanu_073d,1,bind2);
         _old=it;;
+        it=rb_ary_new3(0);
         int stop5=0;
         while(!stop5) {
             int oldpos5=ptr->pos;
@@ -2046,16 +2059,15 @@ VALUE switchhash_Dead_Code_Deleter3_2;
 VALUE switchhash_Dead_Code_Deleter3_3;
 static VALUE sy___at__contex_160a;
 static VALUE sy___at__contex_d6d5;
-static VALUE sy___at_bound;
-static VALUE sy___at_bound_eq_f_5875;
 static VALUE sy___lp_;
 static VALUE sy___lp_src_dot_cla_e144;
+static VALUE sy__bind_lb_1_rb__lb__146c;
 static VALUE sy__bind_lb_1_rb__lb__1f9e;
 static VALUE sy__bind_lb_1_rb__lb__6818;
 static VALUE sy__bind_lb_1_rb__lb__8eca;
 static VALUE sy__bind_lb_1_rb__lt__7b20;
 static VALUE sy__bind_lb_1_rb__sp__6af0;
-static VALUE sy__d_eq_src_dot_du_7d16;
+static VALUE sy__d_eq_src_dot_du_2b46;
 static VALUE sy__if_sp_bind_lb__1bed;
 static VALUE sy__src_25d9;
 static VALUE sy__src_dot_dup_d768;
@@ -2204,6 +2216,7 @@ VALUE Dead_Code_Deleter3_traverse(VALUE self ) {
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
+    it=rb_ary_new3(0);
     int stop1=0;
     while(!stop1) {
         int oldpos1=ptr->pos;
@@ -2365,6 +2378,7 @@ alt2_2:
         }
         it=rb_ary_new3(0);
         _ar=it;;
+        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos3=ptr->pos;
@@ -2585,7 +2599,9 @@ alt2_3:
 accept2:
             ;
         }
-        it=rb_funcall(self,sy__d_eq_src_dot_du_7d16,1,bind2);
+        bind_aset(bind2,1,_autovar);
+        it=rb_funcall(self,sy__d_eq_src_dot_du_2b46,1,bind2);
+        _autovar=bind_aget(bind2,1);;
         _autovar_4=it;;
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
@@ -2654,7 +2670,7 @@ accept3:
         }
         it=rb_funcall(self,sy__src_25d9,1,bind2);
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at_bound,1,bind2);
+        it=rb_funcall(self,sy__bind_lb_1_rb__lb__146c,1,bind2);
         _autovar=bind_aget(bind2,1);;
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
@@ -2702,7 +2718,6 @@ alt4_3:
 accept4:
             ;
         }
-        it=rb_funcall(self,sy___at_bound_eq_f_5875,1,bind2);
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy__bind_lb_1_rb__lb__8eca,1,bind2);
         _autovar=bind_aget(bind2,1);;
@@ -2974,6 +2989,7 @@ VALUE Forget_SSA_traverse(VALUE self ) {
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
+    it=rb_ary_new3(0);
     int stop1=0;
     while(!stop1) {
         int oldpos1=ptr->pos;
@@ -3140,6 +3156,7 @@ alt2_2:
         }
         it=rb_ary_new3(0);
         _ar=it;;
+        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos3=ptr->pos;
@@ -3365,16 +3382,15 @@ void Init_dataflow_ssa_c() {
     rb_global_variable(&switchhash_Dead_Code_Deleter3_3);;
     sy___at__contex_160a=rb_intern("__at__contex_160a");
     sy___at__contex_d6d5=rb_intern("__at__contex_d6d5");
-    sy___at_bound=rb_intern("__at_bound");
-    sy___at_bound_eq_f_5875=rb_intern("__at_bound_eq_f_5875");
     sy___lp_=rb_intern("__lp_");
     sy___lp_src_dot_cla_e144=rb_intern("__lp_src_dot_cla_e144");
+    sy__bind_lb_1_rb__lb__146c=rb_intern("_bind_lb_1_rb__lb__146c");
     sy__bind_lb_1_rb__lb__1f9e=rb_intern("_bind_lb_1_rb__lb__1f9e");
     sy__bind_lb_1_rb__lb__6818=rb_intern("_bind_lb_1_rb__lb__6818");
     sy__bind_lb_1_rb__lb__8eca=rb_intern("_bind_lb_1_rb__lb__8eca");
     sy__bind_lb_1_rb__lt__7b20=rb_intern("_bind_lb_1_rb__lt__7b20");
     sy__bind_lb_1_rb__sp__6af0=rb_intern("_bind_lb_1_rb__sp__6af0");
-    sy__d_eq_src_dot_du_7d16=rb_intern("_d_eq_src_dot_du_7d16");
+    sy__d_eq_src_dot_du_2b46=rb_intern("_d_eq_src_dot_du_2b46");
     sy__if_sp_bind_lb__1bed=rb_intern("_if_sp_bind_lb__1bed");
     sy__src_25d9=rb_intern("_src_25d9");
     sy__src_dot_dup_d768=rb_intern("_src_dot_dup_d768");
@@ -3412,5 +3428,5 @@ void Init_dataflow_ssa_c() {
     rb_define_method(cls_Forget_SSA,"traverse",Forget_SSA_traverse,0);
     rb_define_method(cls_Forget_SSA,"traverse_item",Forget_SSA_traverse_item,0);
     rb_define_method(cls_Forget_SSA,"visit",Forget_SSA_visit,0);
-    rb_eval_string("testversiondataflow_ssa('3d0ca5b509a37be4d422bbf8a0d81cc5')");
+    rb_eval_string("testversiondataflow_ssa('863b2d21400d1af82d9c281558504e52')");
 }
