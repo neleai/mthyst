@@ -96,11 +96,15 @@ class <<Compiler
 			g.calls[name]=DetectCalls.new.parse(:root,[g.getrule(name)])
 			g.calls[name].each{|c,t| callg.add(name,c)}
 		}
+#    c=Context_Graph.new
+    names.dup.each{|name|
+ #     c.arguments=Detect_Contextual_Arguments.new.parse(:root,g.rules[name])
+    }
 		topo= callg.topo_order
 		#TODO resolve name clashes
 		called=callg.reverse.reachable(names)
 		called.each{|k,v| g.rules[k]=g.getrule(k)}
-		puts called.inspect;puts topo.inspect
+		puts called.inspect;
 		
 		ds=Detect_Switch_Char.new;ds.instance_variable_set(:@name,grammar.name)
 		dc=Detect_Switch_Clas.new;dc.instance_variable_set(:@name,grammar.name)

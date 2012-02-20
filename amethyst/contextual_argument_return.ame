@@ -25,3 +25,12 @@ root = @dup=>Rule[ {@>a=autovar} traverse:t ]
 # Pass contextual arguments only to rules that use them. When none uses we delete relevant definitions.
 
 # With contextual returns situation is similar. We can delete definitions that are not used. We dont have to merge first contextual return.
+
+class Context_Graph
+end
+
+amethyst Detect_Contextual_Arguments < Traverser_Clone2 {
+  root = {@@arguments=[]} traverse {@@arguments.uniq.sort}
+
+  visit = Contextual_Argument[ .:@@arguments[] ]
+}

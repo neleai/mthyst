@@ -104,16 +104,54 @@ end
 
 # With contextual returns situation is similar. We can delete definitions that are not used. We dont have to merge first contextual return.
 
+class Context_Graph
+end
+
+class Detect_Contextual_Arguments < Traverser_Clone2
+
+def __append_lp__6b01(bind)
+_append(@arguments,bind[1])
+end
+def __at_argumen_a3fb(bind)
+@arguments.uniq.sort
+end
+def __at_argumen_c331(bind)
+@arguments=[]
+end
+def __at_argumen_d057(bind)
+@arguments=bind[1]
+end
+def __lp_src_dot_cla_e144(bind)
+(src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
+end
+def _bind_lb_1_rb__lt__7b20(bind)
+bind[1]<<bind[2]
+end
+def _bind_lb_1_rb__sp__6af0(bind)
+bind[1] << bind[2]
+end
+def _if_sp_bind_lb__1bed(bind)
+if bind[1]==bind[2]
+						  src
+						else
+							src.class.create2(*bind[2])
+					  end 
+          
+end
+
+end
+
+
 def contextual_argument_return_compiled_by
-'ca0facf10faf5ca89fc0c73cd5b3a472'
+'fbc86debcdabb39e79f0a134753db4ed'
 end
 def contextual_argument_return_source_hash
-'29431c612f243b1cc1b97ef0082973ed'
+'c58f273fba1da2ca6575be1e452f5976'
 end
 def testversioncontextual_argument_return(r)
  raise "invalid version" if r!=contextual_argument_return_version
 end
 def contextual_argument_return_version
-'6ba5bc54fc902fea7a41c7aecb9b39d3'
+'cf5222e16edd61f59e7188a374660f02'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/contextual_argument_return_c"

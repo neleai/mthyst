@@ -9,4 +9,5 @@ amethyst Add_Implicit_Variables < Traverser_Clone2 {
 
   visit = Apply[ :name .* &{@@vars[name]>=1} {l=Local[name,@>bnding];@@locals<<l;Bind[l,@self]}]
         | Apply[ :name .* &{@@vars[name]> 1} {l=Local[name,@>bnding];@@locals<<l;Append[name,@self]}]
+      # | Key[ :name {l=Local[name,@>bnding];@@locals<<l;Bind[l,@self]} ]
 }
