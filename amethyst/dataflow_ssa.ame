@@ -75,14 +75,14 @@ amethyst Dataflow < Traverser_Clone2 {
         | Local[ .* {ssanum(@self)} ]
 
         vars_in= {ary=[]}
-                ( Global[.*  @self:ary[]  {@@marked<<@self}]
-                | Act[   .*  @self:ary[] ]
-                | CAct[  .*  @self:ary[] ]
-                | Key[   .*  @self:ary[]  {@@marked<<@self}]
-                | Result[.*  @self:ary[] ]
-                | Local[ .*  @self:ary[] ]
-                | Args[   vars_in:ary[] ]
-                | Bind[   vars_in:ary[] ]
+                ( Global[.*  @self:[ary]  {@@marked<<@self}]
+                | Act[   .*  @self:[ary] ]
+                | CAct[  .*  @self:[ary] ]
+                | Key[   .*  @self:[ary]  {@@marked<<@self}]
+                | Result[.*  @self:[ary] ]
+                | Local[ .*  @self:[ary] ]
+                | Args[   vars_in:[ary] ]
+                | Bind[   vars_in:[ary] ]
                 | anything
                 )* -> ary
 
