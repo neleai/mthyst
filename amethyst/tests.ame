@@ -1,5 +1,7 @@
-CurrentParser[:implicit_variables]=true
-CurrentParser[:contextual_returns]=true
+class Tests < Amethyst
+  use_implicit_variables
+  use_contextual_returns
+end
 amethyst Tests{
   sw = (('a' |'b') 'c'
         | 'd') 

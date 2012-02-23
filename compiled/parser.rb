@@ -1,6 +1,8 @@
 #@Or_AST and @Seq are necessary for collect
-#CurrentParser[:implicit_variables]=true
-CurrentParser[:memoize]=["argsOpt","name"]
+class AmethystParser < Amethyst
+  memoize "name","argsOpt"
+  #use_implicit_variables
+end
 class AmethystParser < Amethyst
 
 def _Act_lb_Args_23b1(bind)
@@ -219,7 +221,7 @@ def parser_compiled_by
 'fbc86debcdabb39e79f0a134753db4ed'
 end
 def parser_source_hash
-'49570d883349a40ce30e0fbdeec5f117'
+'cbd93c5125bdfff5f296afad0fca8dac'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version

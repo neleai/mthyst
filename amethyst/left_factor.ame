@@ -1,5 +1,7 @@
-CurrentParser[:memoize]=["traverse"]
-CurrentParser[:global_memo]=true
+class Left_Factor < Traverser_Clone2
+  memoize "traverse"
+  use_global_memo
+end
 class Left_Factor < Traverser_Clone2
   def merge(ary)
     return [ary[0]] if ary.size==1

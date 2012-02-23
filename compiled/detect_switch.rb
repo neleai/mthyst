@@ -671,8 +671,10 @@ end
 
 #TODO we can do unicode almost unchanged but we need test againist first byte of character
 
-CurrentParser[:memoize]=["traverse"]
-CurrentParser[:global_memo]=true
+class Detect_Switch_Char < Detect_First
+  memoize "traverse"
+  use_global_memo
+end
 class Detect_Switch_Char < Detect_First
 
 def _Or_lb__ti_bind_d486(bind)
@@ -768,8 +770,10 @@ end
 end
 
 
-CurrentParser[:memoize]=["traverse"]
-CurrentParser[:global_memo]=true
+class Detect_Switch_Clas < Detect_First
+  memoize "traverse"
+  use_global_memo
+end
 class Detect_Switch_Clas < Detect_First
 
 def _Or_lb__ti_bind_d486(bind)
@@ -895,7 +899,7 @@ def detect_switch_compiled_by
 'fbc86debcdabb39e79f0a134753db4ed'
 end
 def detect_switch_source_hash
-'df5ce510ffeb2bde1653d29c0e08783d'
+'db1b99a9478567e449dc48d0774c821b'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version

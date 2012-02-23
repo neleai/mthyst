@@ -57,8 +57,10 @@ class Local
 end
 
 
-CurrentParser[:memoize]=["root"]
-CurrentParser[:global_memo]=true
+class Dataflow < Traverser_Clone2
+  memoize "root"
+  use_global_memo
+end
 amethyst Dataflow < Traverser_Clone2 {
   root =  @dup=>Rule[ {@>bnding=@bnding} @args=>[traverse_item*:var] {var.each{|v| @@marked<<ssanum(v)};@args=var} ({Seq[@body,Act[Local["_result",@bnding]]]}=>traverse_item):body {@body=Seq[body.ary[0..-2]]} {@reachable=@@edges.reverse.reachable(@@marked+[ssanum(body[-1])]); @cfg=@@edges; } {@self.freeze} ]
   
@@ -101,8 +103,10 @@ amethyst Dead_Code_Deleter3 < Traverser_Clone2{
           | Local[.* @self:this ] -> @>reachable[this] ? this : Placeholder
 }
 
-CurrentParser[:memoize]=["traverse"]
-CurrentParser[:global_memo]=true
+class Forget_SSA < Traverser_Clone2
+  memoize "traverse"
+  use_global_memo
+end
 amethyst Forget_SSA < Traverser_Clone2 {
   root = @self=>Rule[traverse]
   visit = Local[ .* {@unssa} ]

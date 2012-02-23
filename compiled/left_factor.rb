@@ -1,5 +1,7 @@
-CurrentParser[:memoize]=["traverse"]
-CurrentParser[:global_memo]=true
+class Left_Factor < Traverser_Clone2
+  memoize "traverse"
+  use_global_memo
+end
 class Left_Factor < Traverser_Clone2
   def merge(ary)
     return [ary[0]] if ary.size==1
@@ -69,7 +71,7 @@ def left_factor_compiled_by
 'fbc86debcdabb39e79f0a134753db4ed'
 end
 def left_factor_source_hash
-'d3a646a1bffa0fed2b9c494804fbe042'
+'cec6a4e793cc0036d9ff7a336cb4230b'
 end
 def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version

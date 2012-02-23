@@ -57,8 +57,10 @@ class Local
 end
 
 
-CurrentParser[:memoize]=["root"]
-CurrentParser[:global_memo]=true
+class Dataflow < Traverser_Clone2
+  memoize "root"
+  use_global_memo
+end
 class Dataflow < Traverser_Clone2
 
 def _Act_lb_bind_7d8f(bind)
@@ -266,8 +268,10 @@ end
 end
 
 
-CurrentParser[:memoize]=["traverse"]
-CurrentParser[:global_memo]=true
+class Forget_SSA < Traverser_Clone2
+  memoize "traverse"
+  use_global_memo
+end
 class Forget_SSA < Traverser_Clone2
 
 def __lp_src_dot_cla_e144(bind)
@@ -301,7 +305,7 @@ def dataflow_ssa_compiled_by
 'fbc86debcdabb39e79f0a134753db4ed'
 end
 def dataflow_ssa_source_hash
-'c7b95e0682e3147517cfb689a40872d4'
+'82824db11baad047ee9468a9d66deac6'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version

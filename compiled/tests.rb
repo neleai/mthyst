@@ -1,5 +1,7 @@
-CurrentParser[:implicit_variables]=true
-CurrentParser[:contextual_returns]=true
+class Tests < Amethyst
+  use_implicit_variables
+  use_contextual_returns
+end
 class Tests < Amethyst
 
 def __at__contex_160a(bind)
@@ -37,7 +39,7 @@ def tests_compiled_by
 'fbc86debcdabb39e79f0a134753db4ed'
 end
 def tests_source_hash
-'5dd1840626b95ccfd9ec79614a1913d8'
+'5efd9bb3ba58d343e1270a8afada8067'
 end
 def testversiontests(r)
  raise "invalid version" if r!=tests_version
