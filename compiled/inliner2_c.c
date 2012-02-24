@@ -438,7 +438,7 @@ static VALUE sy___at__contex_160a;
 static VALUE sy___at__contex_d6d5;
 static VALUE sy___at_name_eq_bi_118d;
 static VALUE sy___lp_bind_lb_1_rb__709e;
-static VALUE sy___lp_src_dot_cla_e144;
+static VALUE sy___lp_src_dot_cla_2024;
 static VALUE sy__bind_lb_1_rb__lt__7b20;
 static VALUE sy__bind_lb_1_rb__sp__6af0;
 static VALUE sy__body_eq_bin_3feb;
@@ -651,7 +651,7 @@ VALUE Inliner2_traverse(VALUE self ) {
     ptr->pos=ptr->len;
     it=rb_ary_new3(0);
     _nvars=it;;
-    it=rb_funcall(self,sy___lp_src_dot_cla_e144,1,bind2);
+    it=rb_funcall(self,sy___lp_src_dot_cla_2024,1,bind2);
     _ivars=it;;
     it=_ivars;
     _autovar=it;;
@@ -1084,7 +1084,7 @@ void Init_inliner2_c() {
     sy___at__contex_d6d5=rb_intern("__at__contex_d6d5");
     sy___at_name_eq_bi_118d=rb_intern("__at_name_eq_bi_118d");
     sy___lp_bind_lb_1_rb__709e=rb_intern("__lp_bind_lb_1_rb__709e");
-    sy___lp_src_dot_cla_e144=rb_intern("__lp_src_dot_cla_e144");
+    sy___lp_src_dot_cla_2024=rb_intern("__lp_src_dot_cla_2024");
     sy__bind_lb_1_rb__lt__7b20=rb_intern("_bind_lb_1_rb__lt__7b20");
     sy__bind_lb_1_rb__sp__6af0=rb_intern("_bind_lb_1_rb__sp__6af0");
     sy__body_eq_bin_3feb=rb_intern("_body_eq_bin_3feb");
@@ -1099,5 +1099,5 @@ void Init_inliner2_c() {
     rb_define_method(cls_Inliner2,"traverse",Inliner2_traverse,0);
     rb_define_method(cls_Inliner2,"traverse_item",Inliner2_traverse_item,0);
     rb_define_method(cls_Inliner2,"visit",Inliner2_visit,0);
-    rb_eval_string("testversioninliner2('58085810ae6058843ba6614c21c55bd7')");
+    rb_eval_string("testversioninliner2('6733336f75d2690a1508306e380ed15a')");
 }

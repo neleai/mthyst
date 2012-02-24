@@ -39,8 +39,8 @@ end
 def __lp_bind_lb_1_rb__709e(bind)
 (bind[1]==@name) || FAIL
 end
-def __lp_src_dot_cla_e144(bind)
-(src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
+def __lp_src_dot_cla_2024(bind)
+(src.class.attributes).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
 def _bind_lb_1_rb__lt__7b20(bind)
 bind[1]<<bind[2]
@@ -75,7 +75,7 @@ end
 
 
 def inliner2_compiled_by
-'fbc86debcdabb39e79f0a134753db4ed'
+'5c1f7afec2544ad21e4acaa04236182d'
 end
 def inliner2_source_hash
 'ccb4238b3948e1d7730b8c07b91b1561'
@@ -84,6 +84,6 @@ def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version
 end
 def inliner2_version
-'58085810ae6058843ba6614c21c55bd7'
+'6733336f75d2690a1508306e380ed15a'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/inliner2_c"

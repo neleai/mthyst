@@ -4,7 +4,7 @@ amethyst Traverser_Clone2 {
                 | AmethystAST[ traverse ]
                 | .
   traverse = .* {[]}:nvars
-          {(@self.class.instance_variable_get(:@attrs)).map{|v| @self.instance_variable_get("@"+v.to_s) }}:ivars {ivars}=>[  traverse_item:{nvars << it}* ]
+          {(@self.class.attributes).map{|v| @self.instance_variable_get("@"+v.to_s) }}:ivars {ivars}=>[  traverse_item:{nvars << it}* ]
 					{ 
             if ivars==nvars
 						  @self

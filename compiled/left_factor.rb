@@ -34,8 +34,8 @@ end
 def __lp_bind_lb_1_rb__b868(bind)
 (bind[1]!=first(bind[2])) || FAIL
 end
-def __lp_src_dot_cla_e144(bind)
-(src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
+def __lp_src_dot_cla_2024(bind)
+(src.class.attributes).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
 def _bind_lb_1_rb__lt__7b20(bind)
 bind[1]<<bind[2]
@@ -68,7 +68,7 @@ end
 
 
 def left_factor_compiled_by
-'fbc86debcdabb39e79f0a134753db4ed'
+'5c1f7afec2544ad21e4acaa04236182d'
 end
 def left_factor_source_hash
 'cec6a4e793cc0036d9ff7a336cb4230b'
@@ -77,6 +77,6 @@ def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version
 end
 def left_factor_version
-'92816252a35922712ce40cd072a34243'
+'ed5a04ec3850fac3b67e2f3f01ced863'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/left_factor_c"

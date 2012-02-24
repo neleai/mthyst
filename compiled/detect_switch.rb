@@ -704,8 +704,8 @@ end
 def __lp_2(bind)
 (!bind[1]) || FAIL
 end
-def __lp_src_dot_cla_e144(bind)
-(src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
+def __lp_src_dot_cla_2024(bind)
+(src.class.attributes).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
 def _bind_lb_1_rb__dot__642a(bind)
 bind[1].each{|p,a| bind[2].each{|p2,a2| bind[3] << [p&p2,a+[a2]] if p&p2!=bind[4].bottom}}
@@ -806,8 +806,8 @@ end
 def __lp_2(bind)
 (!bind[1]) || FAIL
 end
-def __lp_src_dot_cla_e144(bind)
-(src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
+def __lp_src_dot_cla_2024(bind)
+(src.class.attributes).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
 def _bind_lb_1_rb__dot__642a(bind)
 bind[1].each{|p,a| bind[2].each{|p2,a2| bind[3] << [p&p2,a+[a2]] if p&p2!=bind[4].bottom}}
@@ -896,7 +896,7 @@ end
 
 
 def detect_switch_compiled_by
-'fbc86debcdabb39e79f0a134753db4ed'
+'5c1f7afec2544ad21e4acaa04236182d'
 end
 def detect_switch_source_hash
 'db1b99a9478567e449dc48d0774c821b'
@@ -905,6 +905,6 @@ def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'808936569278112419a707c7817bd05a'
+'443f6f7473f3129c5354e5ecf69c3ae6'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

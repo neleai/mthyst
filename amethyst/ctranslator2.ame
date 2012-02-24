@@ -155,8 +155,6 @@ s
            {@@cutlabel=oldcutlabel;@@cuts=oldcuts;s+"goto #{@@faillabel};\n #{accept}:;\n"}
           ]
         | Cut[]  {@@cuts=true;  @@cutlabel ? "#{@@cutlabel}=1;"  : ""}
-        | Stop[] {@@stops=true; @@stoplabel? "#{@@stoplabel}=1;" : ""}
-        | Memo[ .* {raise "TODO"}]
         | Many[ Or[ Apply[ ["anything"] ]  Stop[] ]]  -> "ptr->pos=ptr->len;"
         | Many[ {@@stops}:oldstops {@@stoplabel}:oldstoplabel {@@stops=nil}  {@@stoplabel=label("stop")}
                 trans:t
@@ -165,6 +163,7 @@ s
 									s
 								}
               ]
+        | Stop[] {@@stops=true; @@stoplabel? "#{@@stoplabel}=1;" : ""}
         | Lookahead[ {label("accept")}:accept {label("reject")}:reject {label("oldpos")}:oldpos 
                      rw(reject,`trans:t`) 
                      {"int #{oldpos}=ptr->pos;\n #{t} x=1; goto #{accept};  #{reject}: x=0; #{accept}: it=Qnil; ptr->pos=#{oldpos}; if (x==0) goto #{@@faillabel};"} ]

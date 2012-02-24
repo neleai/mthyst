@@ -28,7 +28,7 @@ static VALUE sy___at_marked_lt__d910;
 static VALUE sy___at_marked_lt__f9b9;
 static VALUE sy___at_oldssan_37c2;
 static VALUE sy___at_oldssan_e953;
-static VALUE sy___lp_src_dot_cla_e144;
+static VALUE sy___lp_src_dot_cla_2024;
 static VALUE sy__bind_end_6e13;
 static VALUE sy__bind_lb_1_rb_;
 static VALUE sy__bind_lb_1_rb__dot__6099;
@@ -405,7 +405,7 @@ VALUE Dataflow_traverse(VALUE self ) {
     ptr->pos=ptr->len;
     it=rb_ary_new3(0);
     _nvars=it;;
-    it=rb_funcall(self,sy___lp_src_dot_cla_e144,1,bind2);
+    it=rb_funcall(self,sy___lp_src_dot_cla_2024,1,bind2);
     _ivars=it;;
     it=_ivars;
     _autovar=it;;
@@ -2060,7 +2060,7 @@ VALUE switchhash_Dead_Code_Deleter3_3;
 static VALUE sy___at__contex_160a;
 static VALUE sy___at__contex_d6d5;
 static VALUE sy___lp_;
-static VALUE sy___lp_src_dot_cla_e144;
+static VALUE sy___lp_src_dot_cla_2024;
 static VALUE sy__bind_lb_1_rb__lb__146c;
 static VALUE sy__bind_lb_1_rb__lb__1f9e;
 static VALUE sy__bind_lb_1_rb__lb__6818;
@@ -2186,7 +2186,7 @@ VALUE Dead_Code_Deleter3_traverse(VALUE self ) {
     ptr->pos=ptr->len;
     it=rb_ary_new3(0);
     _nvars=it;;
-    it=rb_funcall(self,sy___lp_src_dot_cla_e144,1,bind2);
+    it=rb_funcall(self,sy___lp_src_dot_cla_2024,1,bind2);
     _ivars=it;;
     it=_ivars;
     _autovar=it;;
@@ -2844,7 +2844,7 @@ VALUE Forget_SSA_visit(VALUE self );
 VALUE switchhash_Forget_SSA_1;
 VALUE switchhash_Forget_SSA_2;
 VALUE switchhash_Forget_SSA_3;
-static VALUE sy___lp_src_dot_cla_e144;
+static VALUE sy___lp_src_dot_cla_2024;
 static VALUE sy__bind_lb_1_rb__lt__7b20;
 static VALUE sy__bind_lb_1_rb__sp__6af0;
 static VALUE sy__if_sp_bind_lb__1bed;
@@ -2959,7 +2959,7 @@ VALUE Forget_SSA_traverse(VALUE self ) {
     ptr->pos=ptr->len;
     it=rb_ary_new3(0);
     _nvars=it;;
-    it=rb_funcall(self,sy___lp_src_dot_cla_e144,1,bind2);
+    it=rb_funcall(self,sy___lp_src_dot_cla_2024,1,bind2);
     _ivars=it;;
     it=_ivars;
     _autovar=it;;
@@ -3329,7 +3329,7 @@ void Init_dataflow_ssa_c() {
     sy___at_marked_lt__f9b9=rb_intern("__at_marked_lt__f9b9");
     sy___at_oldssan_37c2=rb_intern("__at_oldssan_37c2");
     sy___at_oldssan_e953=rb_intern("__at_oldssan_e953");
-    sy___lp_src_dot_cla_e144=rb_intern("__lp_src_dot_cla_e144");
+    sy___lp_src_dot_cla_2024=rb_intern("__lp_src_dot_cla_2024");
     sy__bind_end_6e13=rb_intern("_bind_end_6e13");
     sy__bind_lb_1_rb_=rb_intern("_bind_lb_1_rb_");
     sy__bind_lb_1_rb__dot__6099=rb_intern("_bind_lb_1_rb__dot__6099");
@@ -3383,7 +3383,7 @@ void Init_dataflow_ssa_c() {
     sy___at__contex_160a=rb_intern("__at__contex_160a");
     sy___at__contex_d6d5=rb_intern("__at__contex_d6d5");
     sy___lp_=rb_intern("__lp_");
-    sy___lp_src_dot_cla_e144=rb_intern("__lp_src_dot_cla_e144");
+    sy___lp_src_dot_cla_2024=rb_intern("__lp_src_dot_cla_2024");
     sy__bind_lb_1_rb__lb__146c=rb_intern("_bind_lb_1_rb__lb__146c");
     sy__bind_lb_1_rb__lb__1f9e=rb_intern("_bind_lb_1_rb__lb__1f9e");
     sy__bind_lb_1_rb__lb__6818=rb_intern("_bind_lb_1_rb__lb__6818");
@@ -3415,7 +3415,7 @@ void Init_dataflow_ssa_c() {
     rb_global_variable(&switchhash_Forget_SSA_2);;
     switchhash_Forget_SSA_3=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}");
     rb_global_variable(&switchhash_Forget_SSA_3);;
-    sy___lp_src_dot_cla_e144=rb_intern("__lp_src_dot_cla_e144");
+    sy___lp_src_dot_cla_2024=rb_intern("__lp_src_dot_cla_2024");
     sy__bind_lb_1_rb__lt__7b20=rb_intern("_bind_lb_1_rb__lt__7b20");
     sy__bind_lb_1_rb__sp__6af0=rb_intern("_bind_lb_1_rb__sp__6af0");
     sy__if_sp_bind_lb__1bed=rb_intern("_if_sp_bind_lb__1bed");
@@ -3428,5 +3428,5 @@ void Init_dataflow_ssa_c() {
     rb_define_method(cls_Forget_SSA,"traverse",Forget_SSA_traverse,0);
     rb_define_method(cls_Forget_SSA,"traverse_item",Forget_SSA_traverse_item,0);
     rb_define_method(cls_Forget_SSA,"visit",Forget_SSA_visit,0);
-    rb_eval_string("testversiondataflow_ssa('863b2d21400d1af82d9c281558504e52')");
+    rb_eval_string("testversiondataflow_ssa('790f5f292e8074dd05843e97d963435a')");
 }

@@ -5,7 +5,7 @@ VALUE AmethystCore_anything(VALUE self );
 VALUE Traverser_Clone2_traverse(VALUE self );
 VALUE Traverser_Clone2_traverse_item(VALUE self );
 VALUE switchhash_Traverser_Clone2_1;
-static VALUE sy___lp_src_dot_cla_e144;
+static VALUE sy___lp_src_dot_cla_2024;
 static VALUE sy__bind_lb_1_rb__lt__7b20;
 static VALUE sy__bind_lb_1_rb__sp__6af0;
 static VALUE sy__if_sp_bind_lb__1bed;
@@ -28,7 +28,7 @@ VALUE Traverser_Clone2_traverse(VALUE self ) {
     ptr->pos=ptr->len;
     it=rb_ary_new3(0);
     _nvars=it;;
-    it=rb_funcall(self,sy___lp_src_dot_cla_e144,1,bind2);
+    it=rb_funcall(self,sy___lp_src_dot_cla_2024,1,bind2);
     _ivars=it;;
     it=_ivars;
     _autovar=it;;
@@ -616,7 +616,7 @@ void Init_traverser_c() {
     rb_define_method(cls_Traverser_Clone2,"profile_report",profile_report_Traverser_Clone2,0);
     switchhash_Traverser_Clone2_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}");
     rb_global_variable(&switchhash_Traverser_Clone2_1);;
-    sy___lp_src_dot_cla_e144=rb_intern("__lp_src_dot_cla_e144");
+    sy___lp_src_dot_cla_2024=rb_intern("__lp_src_dot_cla_2024");
     sy__bind_lb_1_rb__lt__7b20=rb_intern("_bind_lb_1_rb__lt__7b20");
     sy__bind_lb_1_rb__sp__6af0=rb_intern("_bind_lb_1_rb__sp__6af0");
     sy__if_sp_bind_lb__1bed=rb_intern("_if_sp_bind_lb__1bed");
@@ -638,5 +638,5 @@ void Init_traverser_c() {
     sy_visit=rb_intern("visit");
     rb_define_method(cls_Visitor,"traverse",Visitor_traverse,0);
     rb_define_method(cls_Visitor,"traverse_item",Visitor_traverse_item,0);
-    rb_eval_string("testversiontraverser('e301d8da6b51751a13e4b0de1273987e')");
+    rb_eval_string("testversiontraverser('fd0dbbcb4550c2b13ace6010bff36b3b')");
 }

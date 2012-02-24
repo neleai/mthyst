@@ -16,8 +16,8 @@ end
 def __at_context_54ee(bind)
 @context_arg=true; [bind[1][:a],"[:",bind[2],"]"] 
 end
-def __lp_src_dot_cla_e144(bind)
-(src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
+def __lp_src_dot_cla_2024(bind)
+(src.class.attributes).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
 def _bind_lb_1_rb__eq__de89(bind)
 bind[1]=bind[1].dup; 
@@ -67,8 +67,8 @@ def __lb_bind_lb_1_rb__1469(bind)
 [bind[1][:a],"[:#{bind[2]}]"]
 
 end
-def __lp_src_dot_cla_e144(bind)
-(src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
+def __lp_src_dot_cla_2024(bind)
+(src.class.attributes).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
 def _bind_lb_1_rb__eq__e05f(bind)
 bind[1]=bind[1].dup
@@ -121,8 +121,8 @@ end
 def __at_argumen_d057(bind)
 @arguments=bind[1]
 end
-def __lp_src_dot_cla_e144(bind)
-(src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
+def __lp_src_dot_cla_2024(bind)
+(src.class.attributes).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
 def _bind_lb_1_rb__lt__7b20(bind)
 bind[1]<<bind[2]
@@ -143,7 +143,7 @@ end
 
 
 def contextual_argument_return_compiled_by
-'fbc86debcdabb39e79f0a134753db4ed'
+'5c1f7afec2544ad21e4acaa04236182d'
 end
 def contextual_argument_return_source_hash
 'c58f273fba1da2ca6575be1e452f5976'
@@ -152,6 +152,6 @@ def testversioncontextual_argument_return(r)
  raise "invalid version" if r!=contextual_argument_return_version
 end
 def contextual_argument_return_version
-'cf5222e16edd61f59e7188a374660f02'
+'4c443837d65f7fe40e669945559bd28f'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/contextual_argument_return_c"

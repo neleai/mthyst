@@ -109,8 +109,8 @@ end
 def __at_oldssan_e953(bind)
 @oldssanums=bind[1]
 end
-def __lp_src_dot_cla_e144(bind)
-(src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
+def __lp_src_dot_cla_2024(bind)
+(src.class.attributes).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
 def _bind_end_6e13(bind)
 bind_end(src)
@@ -221,8 +221,8 @@ def __lp_(bind)
 (!bind[1][:reachable][bind[2]] ||(bind[2].pure && !bind[1][:bound])) ? Placeholder : bind[2]
 
 end
-def __lp_src_dot_cla_e144(bind)
-(src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
+def __lp_src_dot_cla_2024(bind)
+(src.class.attributes).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
 def _bind_lb_1_rb__lb__146c(bind)
 bind[1][:bound]||=bind[1][:reachable][src.name]
@@ -274,8 +274,8 @@ class Forget_SSA < Traverser_Clone2
 end
 class Forget_SSA < Traverser_Clone2
 
-def __lp_src_dot_cla_e144(bind)
-(src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
+def __lp_src_dot_cla_2024(bind)
+(src.class.attributes).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
 def _bind_lb_1_rb__lt__7b20(bind)
 bind[1]<<bind[2]
@@ -302,7 +302,7 @@ end
 
 
 def dataflow_ssa_compiled_by
-'fbc86debcdabb39e79f0a134753db4ed'
+'5c1f7afec2544ad21e4acaa04236182d'
 end
 def dataflow_ssa_source_hash
 '82824db11baad047ee9468a9d66deac6'
@@ -311,6 +311,6 @@ def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'863b2d21400d1af82d9c281558504e52'
+'790f5f292e8074dd05843e97d963435a'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/dataflow_ssa_c"

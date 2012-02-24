@@ -68,8 +68,8 @@ end
 def __lp_bind_lb_1_rb__e3f1(bind)
 (bind[1].size==1&&(bind[1][0].is_a?(Local)||bind[1][0].is_a?(Global)||bind[1][0].is_a?(Key))) ? bind[1][0] : Args[*bind[1]]
 end
-def __lp_src_dot_cla_e144(bind)
-(src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
+def __lp_src_dot_cla_2024(bind)
+(src.class.attributes).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
 def _bind_lb_1_rb_(bind)
 bind[1]
@@ -128,8 +128,8 @@ end
 def _src_dot_rule_a719(bind)
 src.rules=bind[1]
 end
-def _vars_eq_bin_a707(bind)
-vars=bind[1][:locals].select{|aa| Object.const_get(src.name).instance_variable_get(:@attrs).include? aa[0].to_sym}.uniq ;Result[{:name=>src.name,:vars=>vars,:varnames=>vars.map{|v| v[0]}}]
+def _vars_eq_bin_7a4d(bind)
+vars=bind[1][:locals].select{|aa| Object.const_get(src.name).attributes.include? aa[0].to_sym}.uniq ;Result[{:name=>src.name,:vars=>vars,:varnames=>vars.map{|v| v[0]}}]
 end
 
 end
@@ -143,8 +143,8 @@ end
 def __at__contex_d6d5(bind)
 @_context_arguments=bind[1]
 end
-def __lp_src_dot_cla_e144(bind)
-(src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
+def __lp_src_dot_cla_2024(bind)
+(src.class.attributes).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
 def _a_eq_Apply_lb__36f8(bind)
 a=Apply[bind[1][1],{:clas=>resolvegrammar(Compiler.grammars[bind[1][0]],bind[1][1])}]
@@ -187,15 +187,15 @@ end
 
 
 def detect_variables2_compiled_by
-'fbc86debcdabb39e79f0a134753db4ed'
+'5c1f7afec2544ad21e4acaa04236182d'
 end
 def detect_variables2_source_hash
-'c9bd361cf4ddd41ed652e4054172710c'
+'2b8e253a4bc16d429937265e9ff41624'
 end
 def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'a1ea00b1254fbf98d0ce9151421328bd'
+'476d96dd858370380c6da0c334c0781b'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_variables2_c"

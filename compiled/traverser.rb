@@ -1,7 +1,7 @@
 class Traverser_Clone2 < Amethyst
 
-def __lp_src_dot_cla_e144(bind)
-(src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
+def __lp_src_dot_cla_2024(bind)
+(src.class.attributes).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
 def _bind_lb_1_rb__lt__7b20(bind)
 bind[1]<<bind[2]
@@ -36,15 +36,15 @@ end
 
 
 def traverser_compiled_by
-'fbc86debcdabb39e79f0a134753db4ed'
+'5c1f7afec2544ad21e4acaa04236182d'
 end
 def traverser_source_hash
-'866d34ac8914c3c5a6d593638f413dd3'
+'c8627489f00dc4fe77fe244f73a261e1'
 end
 def testversiontraverser(r)
  raise "invalid version" if r!=traverser_version
 end
 def traverser_version
-'e301d8da6b51751a13e4b0de1273987e'
+'fd0dbbcb4550c2b13ace6010bff36b3b'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/traverser_c"

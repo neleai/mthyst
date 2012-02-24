@@ -420,7 +420,7 @@ static VALUE sy___at__contex_160a;
 static VALUE sy___at__contex_d6d5;
 static VALUE sy___lp__lp_bind_lb_1_1e7f;
 static VALUE sy___lp__lp_bind_lb_1_42f7;
-static VALUE sy___lp_src_dot_cla_e144;
+static VALUE sy___lp_src_dot_cla_2024;
 static VALUE sy__bind_lb_1_rb__dot__f702;
 static VALUE sy__bind_lb_1_rb__lb__a394;
 static VALUE sy__bind_lb_1_rb__lb__cf87;
@@ -708,7 +708,7 @@ VALUE Constant_Traverser_traverse(VALUE self ) {
     ptr->pos=ptr->len;
     it=rb_ary_new3(0);
     _nvars=it;;
-    it=rb_funcall(self,sy___lp_src_dot_cla_e144,1,bind2);
+    it=rb_funcall(self,sy___lp_src_dot_cla_2024,1,bind2);
     _ivars=it;;
     it=_ivars;
     _autovar=it;;
@@ -1290,7 +1290,7 @@ void Init_constant_propagation_c() {
     sy___at__contex_d6d5=rb_intern("__at__contex_d6d5");
     sy___lp__lp_bind_lb_1_1e7f=rb_intern("__lp__lp_bind_lb_1_1e7f");
     sy___lp__lp_bind_lb_1_42f7=rb_intern("__lp__lp_bind_lb_1_42f7");
-    sy___lp_src_dot_cla_e144=rb_intern("__lp_src_dot_cla_e144");
+    sy___lp_src_dot_cla_2024=rb_intern("__lp_src_dot_cla_2024");
     sy__bind_lb_1_rb__dot__f702=rb_intern("_bind_lb_1_rb__dot__f702");
     sy__bind_lb_1_rb__lb__a394=rb_intern("_bind_lb_1_rb__lb__a394");
     sy__bind_lb_1_rb__lb__cf87=rb_intern("_bind_lb_1_rb__lb__cf87");
@@ -1309,5 +1309,5 @@ void Init_constant_propagation_c() {
     rb_define_method(cls_Constant_Traverser,"traverse",Constant_Traverser_traverse,0);
     rb_define_method(cls_Constant_Traverser,"traverse_item",Constant_Traverser_traverse_item,0);
     rb_define_method(cls_Constant_Traverser,"visit",Constant_Traverser_visit,0);
-    rb_eval_string("testversionconstant_propagation('ea7849e0d4fe13ff30a289ccf51527d6')");
+    rb_eval_string("testversionconstant_propagation('75c0291a1c3ee1a8730dd9eaa55cb22a')");
 }

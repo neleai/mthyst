@@ -39,8 +39,8 @@ end
 def __lp__at_vars_lb_b_5cb3(bind)
 (@vars[bind[1]]> 1) || FAIL
 end
-def __lp_src_dot_cla_e144(bind)
-(src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
+def __lp_src_dot_cla_2024(bind)
+(src.class.attributes).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
 def _bind_lb_1_rb__eq__1818(bind)
 bind[1]=bind[1].dup;bind[1].locals+=@locals;bind[1].freeze
@@ -73,7 +73,7 @@ end
 
 
 def implicit_variables_compiled_by
-'fbc86debcdabb39e79f0a134753db4ed'
+'5c1f7afec2544ad21e4acaa04236182d'
 end
 def implicit_variables_source_hash
 '7902bddeb33ad0be079983548a91f729'
@@ -82,6 +82,6 @@ def testversionimplicit_variables(r)
  raise "invalid version" if r!=implicit_variables_version
 end
 def implicit_variables_version
-'864cfc5957eea8bb387a844392095ba1'
+'c7ddb4332e12cf4f5d2f42df2732bb10'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/implicit_variables_c"

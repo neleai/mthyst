@@ -62,6 +62,9 @@ def makeclasses(parent,*ary)
 		args=a[1..-1]+[:ary]
 		eval " class #{a[0]} < #{parent}
 						@attrs=#{args.inspect}
+            def self.attributes
+              @attrs
+            end 
 						attr_accessor *@attrs
 						extend Populate
 						def self.create2(#{args*","})

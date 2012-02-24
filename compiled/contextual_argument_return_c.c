@@ -14,7 +14,7 @@ static VALUE sy___at__contex_160a;
 static VALUE sy___at__contex_d6d5;
 static VALUE sy___at_context_25cc;
 static VALUE sy___at_context_54ee;
-static VALUE sy___lp_src_dot_cla_e144;
+static VALUE sy___lp_src_dot_cla_2024;
 static VALUE sy__bind_lb_1_rb__eq__de89;
 static VALUE sy__bind_lb_1_rb__lb__6ab8;
 static VALUE sy__bind_lb_1_rb__lt__7b20;
@@ -146,7 +146,7 @@ VALUE Add_Contextual_Arguments_traverse(VALUE self ) {
     ptr->pos=ptr->len;
     it=rb_ary_new3(0);
     _nvars=it;;
-    it=rb_funcall(self,sy___lp_src_dot_cla_e144,1,bind2);
+    it=rb_funcall(self,sy___lp_src_dot_cla_2024,1,bind2);
     _ivars=it;;
     it=_ivars;
     _autovar=it;;
@@ -591,7 +591,7 @@ static VALUE sy__Seq_lb_src;
 static VALUE sy___at__contex_160a;
 static VALUE sy___at__contex_d6d5;
 static VALUE sy___lb_bind_lb_1_rb__1469;
-static VALUE sy___lp_src_dot_cla_e144;
+static VALUE sy___lp_src_dot_cla_2024;
 static VALUE sy__bind_lb_1_rb__eq__e05f;
 static VALUE sy__bind_lb_1_rb__lb__ec72;
 static VALUE sy__bind_lb_1_rb__lt__7b20;
@@ -715,7 +715,7 @@ VALUE Add_Contextual_Returns_traverse(VALUE self ) {
     ptr->pos=ptr->len;
     it=rb_ary_new3(0);
     _nvars=it;;
-    it=rb_funcall(self,sy___lp_src_dot_cla_e144,1,bind2);
+    it=rb_funcall(self,sy___lp_src_dot_cla_2024,1,bind2);
     _ivars=it;;
     it=_ivars;
     _autovar=it;;
@@ -1151,7 +1151,7 @@ static VALUE sy___append_lp__6b01;
 static VALUE sy___at_argumen_a3fb;
 static VALUE sy___at_argumen_c331;
 static VALUE sy___at_argumen_d057;
-static VALUE sy___lp_src_dot_cla_e144;
+static VALUE sy___lp_src_dot_cla_2024;
 static VALUE sy__bind_lb_1_rb__lt__7b20;
 static VALUE sy__bind_lb_1_rb__sp__6af0;
 static VALUE sy__if_sp_bind_lb__1bed;
@@ -1192,7 +1192,7 @@ VALUE Detect_Contextual_Arguments_traverse(VALUE self ) {
     ptr->pos=ptr->len;
     it=rb_ary_new3(0);
     _nvars=it;;
-    it=rb_funcall(self,sy___lp_src_dot_cla_e144,1,bind2);
+    it=rb_funcall(self,sy___lp_src_dot_cla_2024,1,bind2);
     _ivars=it;;
     it=_ivars;
     _autovar=it;;
@@ -1555,7 +1555,7 @@ void Init_contextual_argument_return_c() {
     sy___at__contex_d6d5=rb_intern("__at__contex_d6d5");
     sy___at_context_25cc=rb_intern("__at_context_25cc");
     sy___at_context_54ee=rb_intern("__at_context_54ee");
-    sy___lp_src_dot_cla_e144=rb_intern("__lp_src_dot_cla_e144");
+    sy___lp_src_dot_cla_2024=rb_intern("__lp_src_dot_cla_2024");
     sy__bind_lb_1_rb__eq__de89=rb_intern("_bind_lb_1_rb__eq__de89");
     sy__bind_lb_1_rb__lb__6ab8=rb_intern("_bind_lb_1_rb__lb__6ab8");
     sy__bind_lb_1_rb__lt__7b20=rb_intern("_bind_lb_1_rb__lt__7b20");
@@ -1584,7 +1584,7 @@ void Init_contextual_argument_return_c() {
     sy___at__contex_160a=rb_intern("__at__contex_160a");
     sy___at__contex_d6d5=rb_intern("__at__contex_d6d5");
     sy___lb_bind_lb_1_rb__1469=rb_intern("__lb_bind_lb_1_rb__1469");
-    sy___lp_src_dot_cla_e144=rb_intern("__lp_src_dot_cla_e144");
+    sy___lp_src_dot_cla_2024=rb_intern("__lp_src_dot_cla_2024");
     sy__bind_lb_1_rb__eq__e05f=rb_intern("_bind_lb_1_rb__eq__e05f");
     sy__bind_lb_1_rb__lb__ec72=rb_intern("_bind_lb_1_rb__lb__ec72");
     sy__bind_lb_1_rb__lt__7b20=rb_intern("_bind_lb_1_rb__lt__7b20");
@@ -1610,7 +1610,7 @@ void Init_contextual_argument_return_c() {
     sy___at_argumen_a3fb=rb_intern("__at_argumen_a3fb");
     sy___at_argumen_c331=rb_intern("__at_argumen_c331");
     sy___at_argumen_d057=rb_intern("__at_argumen_d057");
-    sy___lp_src_dot_cla_e144=rb_intern("__lp_src_dot_cla_e144");
+    sy___lp_src_dot_cla_2024=rb_intern("__lp_src_dot_cla_2024");
     sy__bind_lb_1_rb__lt__7b20=rb_intern("_bind_lb_1_rb__lt__7b20");
     sy__bind_lb_1_rb__sp__6af0=rb_intern("_bind_lb_1_rb__sp__6af0");
     sy__if_sp_bind_lb__1bed=rb_intern("_if_sp_bind_lb__1bed");
@@ -1621,5 +1621,5 @@ void Init_contextual_argument_return_c() {
     rb_define_method(cls_Detect_Contextual_Arguments,"traverse",Detect_Contextual_Arguments_traverse,0);
     rb_define_method(cls_Detect_Contextual_Arguments,"traverse_item",Detect_Contextual_Arguments_traverse_item,0);
     rb_define_method(cls_Detect_Contextual_Arguments,"visit",Detect_Contextual_Arguments_visit,0);
-    rb_eval_string("testversioncontextual_argument_return('cf5222e16edd61f59e7188a374660f02')");
+    rb_eval_string("testversioncontextual_argument_return('4c443837d65f7fe40e669945559bd28f')");
 }

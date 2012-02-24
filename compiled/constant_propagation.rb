@@ -120,8 +120,8 @@ end
 def __lp__lp_bind_lb_1_42f7(bind)
 ((bind[1][:consts][src.ssaname] && src[0]!="_result") ) || FAIL
 end
-def __lp_src_dot_cla_e144(bind)
-(src.class.instance_variable_get(:@attrs)).map{|v| src.instance_variable_get("@"+v.to_s) }
+def __lp_src_dot_cla_2024(bind)
+(src.class.attributes).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
 def _bind_lb_1_rb__dot__f702(bind)
 bind[1].freeze
@@ -160,7 +160,7 @@ end
 
 
 def constant_propagation_compiled_by
-'fbc86debcdabb39e79f0a134753db4ed'
+'5c1f7afec2544ad21e4acaa04236182d'
 end
 def constant_propagation_source_hash
 'afbe0dd7e39b6a400ad015d1d943a0d8'
@@ -169,6 +169,6 @@ def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
 end
 def constant_propagation_version
-'ea7849e0d4fe13ff30a289ccf51527d6'
+'75c0291a1c3ee1a8730dd9eaa55cb22a'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/constant_propagation_c"

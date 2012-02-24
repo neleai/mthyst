@@ -7984,7 +7984,7 @@ static VALUE sy___do_rules_eq__le__ab16;
 static VALUE sy___lb__lb_Lattic_d322;
 static VALUE sy___lp_2;
 static VALUE sy___lp_;
-static VALUE sy___lp_src_dot_cla_e144;
+static VALUE sy___lp_src_dot_cla_2024;
 static VALUE sy__bind_lb_1_rb__dot__642a;
 static VALUE sy__bind_lb_1_rb__dot__a482;
 static VALUE sy__bind_lb_1_rb__dot__bb04;
@@ -8353,7 +8353,7 @@ VALUE Detect_Switch_Char_traverse(VALUE self ) {
     ptr->pos=ptr->len;
     it=rb_ary_new3(0);
     _nvars=it;;
-    it=rb_funcall(self,sy___lp_src_dot_cla_e144,1,bind2);
+    it=rb_funcall(self,sy___lp_src_dot_cla_2024,1,bind2);
     _ivars=it;;
     it=_ivars;
     _autovar=it;;
@@ -9730,7 +9730,7 @@ static VALUE sy___do_rules_eq__le__ab16;
 static VALUE sy___lb__lb_Lattic_62e5;
 static VALUE sy___lp_2;
 static VALUE sy___lp_;
-static VALUE sy___lp_src_dot_cla_e144;
+static VALUE sy___lp_src_dot_cla_2024;
 static VALUE sy__bind_lb_1_rb__dot__642a;
 static VALUE sy__bind_lb_1_rb__dot__76da;
 static VALUE sy__bind_lb_1_rb__dot__a482;
@@ -10097,7 +10097,7 @@ VALUE Detect_Switch_Clas_traverse(VALUE self ) {
     ptr->pos=ptr->len;
     it=rb_ary_new3(0);
     _nvars=it;;
-    it=rb_funcall(self,sy___lp_src_dot_cla_e144,1,bind2);
+    it=rb_funcall(self,sy___lp_src_dot_cla_2024,1,bind2);
     _ivars=it;;
     it=_ivars;
     _autovar=it;;
@@ -12308,7 +12308,7 @@ void Init_detect_switch_c() {
     sy___lb__lb_Lattic_d322=rb_intern("__lb__lb_Lattic_d322");
     sy___lp_2=rb_intern("__lp_2");
     sy___lp_=rb_intern("__lp_");
-    sy___lp_src_dot_cla_e144=rb_intern("__lp_src_dot_cla_e144");
+    sy___lp_src_dot_cla_2024=rb_intern("__lp_src_dot_cla_2024");
     sy__bind_lb_1_rb__dot__642a=rb_intern("_bind_lb_1_rb__dot__642a");
     sy__bind_lb_1_rb__dot__a482=rb_intern("_bind_lb_1_rb__dot__a482");
     sy__bind_lb_1_rb__dot__bb04=rb_intern("_bind_lb_1_rb__dot__bb04");
@@ -12377,7 +12377,7 @@ void Init_detect_switch_c() {
     sy___lb__lb_Lattic_62e5=rb_intern("__lb__lb_Lattic_62e5");
     sy___lp_2=rb_intern("__lp_2");
     sy___lp_=rb_intern("__lp_");
-    sy___lp_src_dot_cla_e144=rb_intern("__lp_src_dot_cla_e144");
+    sy___lp_src_dot_cla_2024=rb_intern("__lp_src_dot_cla_2024");
     sy__bind_lb_1_rb__dot__642a=rb_intern("_bind_lb_1_rb__dot__642a");
     sy__bind_lb_1_rb__dot__76da=rb_intern("_bind_lb_1_rb__dot__76da");
     sy__bind_lb_1_rb__dot__a482=rb_intern("_bind_lb_1_rb__dot__a482");
@@ -12427,5 +12427,5 @@ void Init_detect_switch_c() {
     sy_spaces=rb_intern("spaces");
     rb_define_method(cls_Detect_Size,"predicate",Detect_Size_predicate,1);
     rb_define_method(cls_Detect_Size,"predicate2",Detect_Size_predicate2,1);
-    rb_eval_string("testversiondetect_switch('808936569278112419a707c7817bd05a')");
+    rb_eval_string("testversiondetect_switch('443f6f7473f3129c5354e5ecf69c3ae6')");
 }

@@ -103,3 +103,5 @@ simplify =>Class[ sth ] pattern
 as pass Apply takes only locals as arguments.
 
 @>parents contextual argument
+
+ask classes directly about properties
