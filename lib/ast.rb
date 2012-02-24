@@ -125,7 +125,7 @@ norm.puts "
 	}
 "
 [Act,Apply,Args,Bind,Bnding,CAct,Comment,Cut,Lambda,Global,Key,Local,Lookahead,Many,Or,Pass,Result,Rule,Seq,Stop,Strin,Switch_Char,Switch_Clas,Switch_Or].each{|e| 
-by="[#{e.instance_variable_get(:@attrs)*","}]"
+by="[#{e.attributes*","}]"
 by="ary" if by=="[ary]"
 equalize_by(e,by)
 norm.puts "int hits_#{e}=0;int miss_#{e}=0; normalize_cache *cache_#{e};
@@ -134,12 +134,12 @@ VALUE normalize_#{e}(VALUE obj){int i;
 	VALUE ary=rb_iv_get(obj,\"@ary\");
 	if (rb_obj_frozen_p(obj)==Qtrue)
 		obj=rb_obj_dup(obj);
-	#{e.instance_variable_get(:@attrs).map{|e| "rb_iv_set(obj,\"@#{e.to_s}\",normalize_el(rb_iv_get(obj,\"@#{e.to_s}\")));hash=11*hash+rb_iv_get(obj,\"@#{e.to_s}\");"}*""}
+	#{e.attributes.map{|e| "rb_iv_set(obj,\"@#{e.to_s}\",normalize_el(rb_iv_get(obj,\"@#{e.to_s}\")));hash=11*hash+rb_iv_get(obj,\"@#{e.to_s}\");"}*""}
 	rb_iv_set(obj,\"@hash\",LONG2FIX(hash));
 	rb_obj_freeze(obj);
 	hash=hash&((1<<20)-1);
   while(obj2=cache_#{e}->ary[hash]){
-	 	#{e.instance_variable_get(:@attrs).map{|e| "if (!els_equal(rb_iv_get(obj,\"@#{e.to_s}\"),rb_iv_get(obj2,\"@#{e.to_s}\"))) goto next;"}*""}
+	 	#{e.attributes.map{|e| "if (!els_equal(rb_iv_get(obj,\"@#{e.to_s}\"),rb_iv_get(obj2,\"@#{e.to_s}\"))) goto next;"}*""}
 	 	hits_#{e}++;
 	 	return cache_#{e}->ret[hash];
 	 	next:;
@@ -151,12 +151,12 @@ VALUE normalize_#{e}(VALUE obj){int i;
 		int hash3=0;
 	  if (rb_obj_frozen_p(obj3)==Qtrue)
 	    obj3=rb_obj_dup(obj3);
-	  #{e.instance_variable_get(:@attrs).map{|e| "rb_iv_set(obj3,\"@#{e.to_s}\",normalize_el(rb_iv_get(obj3,\"@#{e.to_s}\")));hash3=11*hash3+rb_iv_get(obj3,\"@#{e.to_s}\");"}*""}
+	  #{e.attributes.map{|e| "rb_iv_set(obj3,\"@#{e.to_s}\",normalize_el(rb_iv_get(obj3,\"@#{e.to_s}\")));hash3=11*hash3+rb_iv_get(obj3,\"@#{e.to_s}\");"}*""}
   	rb_iv_set(obj3,\"@hash\",LONG2FIX(hash3));
     rb_obj_freeze(obj3);    
 		hash3=hash3&((1<<20)-1);
     while(obj2=cache_#{e}->ary[hash3]){
-	   	#{e.instance_variable_get(:@attrs).map{|e| "if (!els_equal(rb_iv_get(obj3,\"@#{e.to_s}\"),rb_iv_get(obj2,\"@#{e.to_s}\"))) goto next2;"}*""}
+	   	#{e.attributes.map{|e| "if (!els_equal(rb_iv_get(obj3,\"@#{e.to_s}\"),rb_iv_get(obj2,\"@#{e.to_s}\"))) goto next2;"}*""}
 	 	  break;
       next2:;
       hash3=(hash3+1)&((1<<20)-1);
@@ -170,19 +170,19 @@ VALUE normalize_#{e}(VALUE obj){int i;
   gc_obj->ary[gc_obj->no++]=obj3;
 	return obj3;
 }
-VALUE create2_#{e}(VALUE self #{e.instance_variable_get(:@attrs).map{|el| ",VALUE #{el}"}*""}){
+VALUE create2_#{e}(VALUE self #{e.attributes.map{|el| ",VALUE #{el}"}*""}){
 	int hash=0;
-	#{e.instance_variable_get(:@attrs).map{|el| "#{el}=normalize_el(#{el});hash=11*hash+#{el};"}*""}
+	#{e.attributes.map{|el| "#{el}=normalize_el(#{el});hash=11*hash+#{el};"}*""}
 	hash=hash&((1<<20)-1);
 	VALUE obj2=cache_#{e}->ary[hash];
   if((int)obj2){
-    #{e.instance_variable_get(:@attrs).map{|el| "if (!els_equal(#{el},rb_iv_get(obj2,\"@#{el.to_s}\"))) goto next;"}*""}
+    #{e.attributes.map{|el| "if (!els_equal(#{el},rb_iv_get(obj2,\"@#{el.to_s}\"))) goto next;"}*""}
     hits_#{e}++;
     return cache_#{e}->ret[hash];
     next:;
   }
 	VALUE obj3=rb_obj_alloc(rb_const_get(rb_cObject,rb_intern(\"#{e}\")));
-	#{e.instance_variable_get(:@attrs).map{|el| "rb_iv_set(obj3,\"@#{el}\",#{el});"}*""}
+	#{e.attributes.map{|el| "rb_iv_set(obj3,\"@#{el}\",#{el});"}*""}
 	return normalize_#{e}(obj3);
 }"
 }
@@ -204,7 +204,7 @@ VALUE gc_cache;
 void init_normalize(){
 #{cn.map{|e| "cache_#{e}=normalize_cache_init();
   rb_define_method(rb_const_get(rb_cObject,rb_intern(\"#{e}\")),\"normalize\",normalize_#{e},0);
-	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern(\"#{e}\")),\"create2\",create2_#{e},#{e.instance_variable_get(:@attrs).size});"
+	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern(\"#{e}\")),\"create2\",create2_#{e},#{e.attributes.size});"
 
 }*""}
   gc_obj=malloc(sizeof(gc_objs));gc_obj->ary=calloc(1<<20,sizeof(VALUE));gc_obj->no=0;
