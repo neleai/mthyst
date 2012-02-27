@@ -9,7 +9,6 @@ VALUE DetectCalls_visit(VALUE self );
 VALUE switchhash_DetectCalls_1;
 VALUE switchhash_DetectCalls_2;
 VALUE switchhash_DetectCalls_3;
-static VALUE sy___append_lp__d113;
 static VALUE sy___at_calls_7f81;
 static VALUE sy___at_calls_eq__le__39e9;
 static VALUE sy___at_calls_lb_b_e709;
@@ -125,11 +124,7 @@ alt1_1:
         it=rb_funcall(self,sy_traverse_item,0);
         FAILTEST(alt1_2);
         _autovar_4=it;;
-        bind_aset(bind2,1,_autovar_3);
-        bind_aset(bind2,2,_autovar_4);
-        it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-        _autovar_3=bind_aget(bind2,1);;
-        _autovar_4=bind_aget(bind2,2);;
+        it=AmethystCore_append(self,_autovar_3,_autovar_4);
         ;
         goto accept1;
 alt1_2:
@@ -286,11 +281,7 @@ alt3_1:
             it=rb_funcall(self,sy_traverse_item,0);
             FAILTEST(alt3_2);
             _autovar_5=it;;
-            bind_aset(bind2,1,_autovar_4);
-            bind_aset(bind2,2,_autovar_5);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_4=bind_aget(bind2,1);;
-            _autovar_5=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_4,_autovar_5);
             ;
             goto accept3;
 alt3_2:
@@ -433,7 +424,6 @@ VALUE switchhash_Inliner2_2;
 VALUE switchhash_Inliner2_3;
 VALUE switchhash_Inliner2_4;
 static VALUE sy__Seq_lb_src_dot__3406;
-static VALUE sy___append_lp__d113;
 static VALUE sy___at__contex_160a;
 static VALUE sy___at__contex_d6d5;
 static VALUE sy___at_name_eq_bi_118d;
@@ -991,11 +981,7 @@ alt1_1:
             it=AmethystCore_anything(self );
             FAILTEST(alt1_2);
             _autovar_4=it;;
-            bind_aset(bind2,1,_autovar_3);
-            bind_aset(bind2,2,_autovar_4);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_3=bind_aget(bind2,1);;
-            _autovar_4=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_3,_autovar_4);
             ;
             goto accept1;
 alt1_2:
@@ -1054,7 +1040,6 @@ void Init_inliner2_c() {
     rb_global_variable(&switchhash_DetectCalls_2);;
     switchhash_DetectCalls_3=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}");
     rb_global_variable(&switchhash_DetectCalls_3);;
-    sy___append_lp__d113=rb_intern("__append_lp__d113");
     sy___at_calls_7f81=rb_intern("__at_calls_7f81");
     sy___at_calls_eq__le__39e9=rb_intern("__at_calls_eq__le__39e9");
     sy___at_calls_lb_b_e709=rb_intern("__at_calls_lb_b_e709");
@@ -1079,7 +1064,6 @@ void Init_inliner2_c() {
     switchhash_Inliner2_4=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}");
     rb_global_variable(&switchhash_Inliner2_4);;
     sy__Seq_lb_src_dot__3406=rb_intern("_Seq_lb_src_dot__3406");
-    sy___append_lp__d113=rb_intern("__append_lp__d113");
     sy___at__contex_160a=rb_intern("__at__contex_160a");
     sy___at__contex_d6d5=rb_intern("__at__contex_d6d5");
     sy___at_name_eq_bi_118d=rb_intern("__at_name_eq_bi_118d");
@@ -1099,5 +1083,5 @@ void Init_inliner2_c() {
     rb_define_method(cls_Inliner2,"traverse",Inliner2_traverse,0);
     rb_define_method(cls_Inliner2,"traverse_item",Inliner2_traverse_item,0);
     rb_define_method(cls_Inliner2,"visit",Inliner2_visit,0);
-    rb_eval_string("testversioninliner2('6733336f75d2690a1508306e380ed15a')");
+    rb_eval_string("testversioninliner2('84e7122ed399d3301a57b46ef7814d01')");
 }

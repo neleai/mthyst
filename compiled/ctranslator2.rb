@@ -68,9 +68,6 @@ end
 $classlabels=Hash.new(0)
 class AmethystCTranslator < Amethyst
 
-def __append_lp__d113(bind)
-_append(bind[1],bind[2])
-end
 def __at__contex_160a(bind)
 @_context_arguments||={};bind[1]=@_context_arguments.dup
 end
@@ -207,6 +204,10 @@ end
 def __dq_int_sp__sh__le_b_0b60(bind)
 "int #{bind[1]}=ptr->pos;int #{@cutlabel}=0;\n#{bind[2]}_#{bind[3]}:;"
 end
+def __dq_it_eq_Amet_82ce(bind)
+"it=AmethystCore_append(self,#{bget(bind[1])},#{bget(bind[2])});"
+
+end
 def __dq_it_eq_Qnil_8464(bind)
 "it=Qnil;if (ptr->pos<ptr->len) goto #{@faillabel};"
 end
@@ -232,6 +233,9 @@ end
 def __lp_bind_lb_1_rb__d1fd(bind)
 (bind[1]=="self") ? "src" : "src.#{bind[1]}#{bind[2]!="" ? "(#{bind[2]})":""}"
 
+end
+def __lp_bind_lb_1_rb__dbc9(bind)
+(bind[1]=="_append(") || FAIL
 end
 def _addcallb_0461(bind)
 addcallback(src.pred ? ["(",bind[1],") || FAIL"] : bind[1])
@@ -378,15 +382,15 @@ end
 
 
 def ctranslator2_compiled_by
-'2a9b7c4ed8c7f985f118062e80aa4486'
+'213e3d6a190f04c0688e1fbfa3c126f4'
 end
 def ctranslator2_source_hash
-'88c4d48c9c2ccaccf47037fd0cfbadae'
+'c560043aee0d7124f2989698b6c601f6'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'d0154a15434f38332d8fb6c529a818da'
+'8b4c18a7f599611796a8503422351f8b'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"

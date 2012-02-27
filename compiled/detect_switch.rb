@@ -226,9 +226,6 @@ def _Switch_O_5445(bind)
 Switch_Or.create(:ary=>bind[1].map{|k| [nil,k]})
 
 end
-def __append_lp__d113(bind)
-_append(bind[1],bind[2])
-end
 def __at_vis_eq_bin_8b89(bind)
 @vis=bind[1]; bind[1]
 end
@@ -271,9 +268,6 @@ class Minsize_Dataflow < First_Dataflow
 
 def _Compiler_558e(bind)
 Compiler.grammars[src.clas].rules[bind[1]].body
-end
-def __append_lp__d113(bind)
-_append(bind[1],bind[2])
 end
 def __at_vis_eq_bin_8b89(bind)
 @vis=bind[1]; bind[1]
@@ -324,9 +318,6 @@ class Maxsize_Dataflow < First_Dataflow
 def _Compiler_558e(bind)
 Compiler.grammars[src.clas].rules[bind[1]].body
 end
-def __append_lp__d113(bind)
-_append(bind[1],bind[2])
-end
 def __at_vis_eq_bin_8b89(bind)
 @vis=bind[1]; bind[1]
 end
@@ -376,9 +367,6 @@ class Complexity_Dataflow < First_Dataflow
 def _Compiler_558e(bind)
 Compiler.grammars[src.clas].rules[bind[1]].body
 end
-def __append_lp__d113(bind)
-_append(bind[1],bind[2])
-end
 def __at_vis_eq_bin_8b89(bind)
 @vis=bind[1]; bind[1]
 end
@@ -413,9 +401,6 @@ class Switch_Char_Dataflow < First_Dataflow
 
 def _Compiler_558e(bind)
 Compiler.grammars[src.clas].rules[bind[1]].body
-end
-def __append_lp__d113(bind)
-_append(bind[1],bind[2])
 end
 def __at_vis_eq_bin_8b89(bind)
 @vis=bind[1]; bind[1]
@@ -466,9 +451,6 @@ class Switch_Clas_Dataflow < First_Dataflow
 def _Compiler_558e(bind)
 Compiler.grammars[src.clas].rules[bind[1]].body
 end
-def __append_lp__d113(bind)
-_append(bind[1],bind[2])
-end
 def __at_vis_eq_bin_8b89(bind)
 @vis=bind[1]; bind[1]
 end
@@ -517,9 +499,6 @@ class Cant_Fail_Dataflow < First_Dataflow
 
 def _Compiler_558e(bind)
 Compiler.grammars[src.clas].rules[bind[1]].body
-end
-def __append_lp__d113(bind)
-_append(bind[1],bind[2])
 end
 def __at_vis_eq_bin_8b89(bind)
 @vis=bind[1]; bind[1]
@@ -617,9 +596,6 @@ class Detect_First < Traverser_Clone2
 def _Seq_lb__ti__lp_bi_a321(bind)
 Seq[*(bind[1]+bind[2])]
 end
-def __append_lp__d113(bind)
-_append(bind[1],bind[2])
-end
 def __at__contex_160a(bind)
 @_context_arguments||={};bind[1]=@_context_arguments.dup
 end
@@ -682,9 +658,6 @@ Or[*bind[1]]
 end
 def _Seq_lb__ti__lp_bi_a321(bind)
 Seq[*(bind[1]+bind[2])]
-end
-def __append_lp__d113(bind)
-_append(bind[1],bind[2])
 end
 def __at__contex_160a(bind)
 @_context_arguments||={};bind[1]=@_context_arguments.dup
@@ -785,9 +758,6 @@ end
 def _Switch_C_63f7(bind)
 Switch_Clas[[Lattice_Clas[bind[1]],Apply["advance_clas"]],[Lattice_Clas[Object],Apply["fails"]]].freeze 
 end
-def __append_lp__d113(bind)
-_append(bind[1],bind[2])
-end
 def __at__contex_160a(bind)
 @_context_arguments||={};bind[1]=@_context_arguments.dup
 end
@@ -871,9 +841,6 @@ end
 def _Seq_dot_crea_bfbb(bind)
 Seq.create( {:ary=>bind[1] })
 end
-def __append_lp__d113(bind)
-_append(bind[1],bind[2])
-end
 def __lb_bind_lb_1_rb__2d76(bind)
 [bind[1],bind[2]].max
 end
@@ -896,7 +863,7 @@ end
 
 
 def detect_switch_compiled_by
-'2a9b7c4ed8c7f985f118062e80aa4486'
+'213e3d6a190f04c0688e1fbfa3c126f4'
 end
 def detect_switch_source_hash
 'db1b99a9478567e449dc48d0774c821b'
@@ -905,6 +872,6 @@ def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'86bb4f6441f6d056c11f8083d4fcb54b'
+'eff8f04ce84bad9b35a4a46d795355e4'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

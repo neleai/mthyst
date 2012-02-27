@@ -1,8 +1,5 @@
 class Detect_Implicit_Variables < Visitor
 
-def __append_lp__d113(bind)
-_append(bind[1],bind[2])
-end
 def __at_vars_a187(bind)
 @vars
 end
@@ -73,7 +70,7 @@ end
 
 
 def implicit_variables_compiled_by
-'2a9b7c4ed8c7f985f118062e80aa4486'
+'213e3d6a190f04c0688e1fbfa3c126f4'
 end
 def implicit_variables_source_hash
 '7902bddeb33ad0be079983548a91f729'
@@ -82,6 +79,6 @@ def testversionimplicit_variables(r)
  raise "invalid version" if r!=implicit_variables_version
 end
 def implicit_variables_version
-'c7ddb4332e12cf4f5d2f42df2732bb10'
+'f8e1a73c0d637b095604648d244020c8'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/implicit_variables_c"

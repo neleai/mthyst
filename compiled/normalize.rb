@@ -48,9 +48,6 @@ def _Switch_O_5445(bind)
 Switch_Or.create(:ary=>bind[1].map{|k| [nil,k]})
 
 end
-def __append_lp__d113(bind)
-_append(bind[1],bind[2])
-end
 def __lp_bind_lb_1_rb__abc3(bind)
 (bind[1] === bind[2]) || FAIL
 end
@@ -104,7 +101,7 @@ end
 
 
 def normalize_compiled_by
-'2a9b7c4ed8c7f985f118062e80aa4486'
+'213e3d6a190f04c0688e1fbfa3c126f4'
 end
 def normalize_source_hash
 '157cddd16645afc8b27b70c89dd12ac3'
@@ -113,6 +110,6 @@ def testversionnormalize(r)
  raise "invalid version" if r!=normalize_version
 end
 def normalize_version
-'1a0fc7c8aebb87dbb09dd07f9839b540'
+'ce12c90865493bd06d9c6412073b83ab'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/normalize_c"

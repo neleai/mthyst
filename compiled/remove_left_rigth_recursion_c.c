@@ -13,7 +13,6 @@ static VALUE sy__Bind_lb_src_66c4;
 static VALUE sy__Or_lb_bind_lb__3169;
 static VALUE sy__Seq_lb_bind_e0fb;
 static VALUE sy__Seq_lb_bind_f95b;
-static VALUE sy___append_lp__d113;
 static VALUE sy___at__contex_160a;
 static VALUE sy___at__contex_d6d5;
 static VALUE sy___at_left_re_c85d;
@@ -295,11 +294,7 @@ alt5_1:
             it=rb_funcall(self,sy_first,1,arg0);
             FAILTEST(alt5_2);
             _autovar_9=it;;
-            bind_aset(bind2,1,_autovar_8);
-            bind_aset(bind2,2,_autovar_9);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_8=bind_aget(bind2,1);;
-            _autovar_9=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_8,_autovar_9);
             ;
             goto accept5;
 alt5_2:
@@ -410,11 +405,7 @@ alt8_1:
             it=AmethystCore_anything(self );
             FAILTEST(alt8_2);
             _autovar_13=it;;
-            bind_aset(bind2,1,_autovar_12);
-            bind_aset(bind2,2,_autovar_13);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_12=bind_aget(bind2,1);;
-            _autovar_13=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_12,_autovar_13);
             ;
             goto accept8;
 alt8_2:
@@ -524,11 +515,7 @@ alt9_1:
             it=AmethystCore_anything(self );
             FAILTEST(alt9_2);
             _autovar_18=it;;
-            bind_aset(bind2,1,_autovar_17);
-            bind_aset(bind2,2,_autovar_18);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_17=bind_aget(bind2,1);;
-            _autovar_18=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_17,_autovar_18);
             ;
             goto accept9;
 alt9_2:
@@ -643,11 +630,7 @@ alt11_1:
             it=AmethystCore_anything(self );
             FAILTEST(alt11_2);
             _autovar_13=it;;
-            bind_aset(bind2,1,_autovar_12);
-            bind_aset(bind2,2,_autovar_13);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_12=bind_aget(bind2,1);;
-            _autovar_13=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_12,_autovar_13);
             ;
             goto accept11;
 alt11_2:
@@ -788,11 +771,7 @@ alt13_1:
             it=AmethystCore_anything(self );
             FAILTEST(alt13_2);
             _autovar_18=it;;
-            bind_aset(bind2,1,_autovar_17);
-            bind_aset(bind2,2,_autovar_18);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_17=bind_aget(bind2,1);;
-            _autovar_18=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_17,_autovar_18);
             ;
             goto accept13;
 alt13_2:
@@ -1269,11 +1248,7 @@ alt5_1:
             it=rb_funcall(self,sy_first,1,arg0);
             FAILTEST(alt5_2);
             _autovar_15=it;;
-            bind_aset(bind2,1,_autovar_14);
-            bind_aset(bind2,2,_autovar_15);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_14=bind_aget(bind2,1);;
-            _autovar_15=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_14,_autovar_15);
             ;
             goto accept5;
 alt5_2:
@@ -1400,11 +1375,7 @@ alt8_1:
             it=AmethystCore_anything(self );
             FAILTEST(alt8_2);
             _autovar_20=it;;
-            bind_aset(bind2,1,_autovar_19);
-            bind_aset(bind2,2,_autovar_20);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_19=bind_aget(bind2,1);;
-            _autovar_20=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_19,_autovar_20);
             ;
             goto accept8;
 alt8_2:
@@ -1514,11 +1485,7 @@ alt9_1:
             it=AmethystCore_anything(self );
             FAILTEST(alt9_2);
             _autovar_25=it;;
-            bind_aset(bind2,1,_autovar_24);
-            bind_aset(bind2,2,_autovar_25);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_24=bind_aget(bind2,1);;
-            _autovar_25=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_24,_autovar_25);
             ;
             goto accept9;
 alt9_2:
@@ -1929,11 +1896,7 @@ alt14_1:
             it=rb_funcall(self,sy_first,1,arg0);
             FAILTEST(alt14_2);
             _autovar_15=it;;
-            bind_aset(bind2,1,_autovar_14);
-            bind_aset(bind2,2,_autovar_15);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_14=bind_aget(bind2,1);;
-            _autovar_15=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_14,_autovar_15);
             ;
             goto accept14;
 alt14_2:
@@ -2060,11 +2023,7 @@ alt17_1:
             it=AmethystCore_anything(self );
             FAILTEST(alt17_2);
             _autovar_20=it;;
-            bind_aset(bind2,1,_autovar_19);
-            bind_aset(bind2,2,_autovar_20);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_19=bind_aget(bind2,1);;
-            _autovar_20=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_19,_autovar_20);
             ;
             goto accept17;
 alt17_2:
@@ -2174,11 +2133,7 @@ alt18_1:
             it=AmethystCore_anything(self );
             FAILTEST(alt18_2);
             _autovar_25=it;;
-            bind_aset(bind2,1,_autovar_24);
-            bind_aset(bind2,2,_autovar_25);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_24=bind_aget(bind2,1);;
-            _autovar_25=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_24,_autovar_25);
             ;
             goto accept18;
 alt18_2:
@@ -2336,7 +2291,6 @@ void Init_remove_left_rigth_recursion_c() {
     sy__Or_lb_bind_lb__3169=rb_intern("_Or_lb_bind_lb__3169");
     sy__Seq_lb_bind_e0fb=rb_intern("_Seq_lb_bind_e0fb");
     sy__Seq_lb_bind_f95b=rb_intern("_Seq_lb_bind_f95b");
-    sy___append_lp__d113=rb_intern("__append_lp__d113");
     sy___at__contex_160a=rb_intern("__at__contex_160a");
     sy___at__contex_d6d5=rb_intern("__at__contex_d6d5");
     sy___at_left_re_c85d=rb_intern("__at_left_re_c85d");
@@ -2355,5 +2309,5 @@ void Init_remove_left_rigth_recursion_c() {
     rb_define_method(cls_Remove_Left_Recursion,"first",Remove_Left_Recursion_first,1);
     rb_define_method(cls_Remove_Left_Recursion,"must_empty",Remove_Left_Recursion_must_empty,0);
     rb_define_method(cls_Remove_Left_Recursion,"root",Remove_Left_Recursion_root,0);
-    rb_eval_string("testversionremove_left_rigth_recursion('3b37f6879e5052cc2dc3af6e5088844f')");
+    rb_eval_string("testversionremove_left_rigth_recursion('cc97cc191155568579a92d0ce87da7f9')");
 }

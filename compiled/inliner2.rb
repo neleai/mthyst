@@ -1,8 +1,5 @@
 class DetectCalls < Visitor
 
-def __append_lp__d113(bind)
-_append(bind[1],bind[2])
-end
 def __at_calls_7f81(bind)
 @calls
 end
@@ -23,9 +20,6 @@ class Inliner2 < Traverser_Clone2
 
 def _Seq_lb_src_dot__3406(bind)
 Seq[src.body,Local["_result",src.bnding]]
-end
-def __append_lp__d113(bind)
-_append(bind[1],bind[2])
 end
 def __at__contex_160a(bind)
 @_context_arguments||={};bind[1]=@_context_arguments.dup
@@ -75,7 +69,7 @@ end
 
 
 def inliner2_compiled_by
-'2a9b7c4ed8c7f985f118062e80aa4486'
+'213e3d6a190f04c0688e1fbfa3c126f4'
 end
 def inliner2_source_hash
 'ccb4238b3948e1d7730b8c07b91b1561'
@@ -84,6 +78,6 @@ def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version
 end
 def inliner2_version
-'6733336f75d2690a1508306e380ed15a'
+'84e7122ed399d3301a57b46ef7814d01'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/inliner2_c"

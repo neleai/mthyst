@@ -8,7 +8,6 @@ VALUE Detect_Implicit_Variables_traverse_item(VALUE self );
 VALUE Detect_Implicit_Variables_visit(VALUE self );
 VALUE switchhash_Detect_Implicit_Variables_1;
 VALUE switchhash_Detect_Implicit_Variables_2;
-static VALUE sy___append_lp__d113;
 static VALUE sy___at_vars_a187;
 static VALUE sy___at_vars_eq_Ha_dec8;
 static VALUE sy___at_vars_lb_bi_edce;
@@ -87,11 +86,7 @@ alt1_1:
         it=rb_funcall(self,sy_traverse_item,0);
         FAILTEST(alt1_2);
         _autovar_4=it;;
-        bind_aset(bind2,1,_autovar_3);
-        bind_aset(bind2,2,_autovar_4);
-        it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-        _autovar_3=bind_aget(bind2,1);;
-        _autovar_4=bind_aget(bind2,2);;
+        it=AmethystCore_append(self,_autovar_3,_autovar_4);
         ;
         goto accept1;
 alt1_2:
@@ -248,11 +243,7 @@ alt3_1:
             it=rb_funcall(self,sy_traverse_item,0);
             FAILTEST(alt3_2);
             _autovar_5=it;;
-            bind_aset(bind2,1,_autovar_4);
-            bind_aset(bind2,2,_autovar_5);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_4=bind_aget(bind2,1);;
-            _autovar_5=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_4,_autovar_5);
             ;
             goto accept3;
 alt3_2:
@@ -373,11 +364,7 @@ alt1_1:
             it=AmethystCore_anything(self );
             FAILTEST(alt1_2);
             _autovar_3=it;;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_3);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_3=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_3);
             ;
             goto accept1;
 alt1_2:
@@ -1183,7 +1170,6 @@ void Init_implicit_variables_c() {
     rb_global_variable(&switchhash_Detect_Implicit_Variables_1);;
     switchhash_Detect_Implicit_Variables_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}");
     rb_global_variable(&switchhash_Detect_Implicit_Variables_2);;
-    sy___append_lp__d113=rb_intern("__append_lp__d113");
     sy___at_vars_a187=rb_intern("__at_vars_a187");
     sy___at_vars_eq_Ha_dec8=rb_intern("__at_vars_eq_Ha_dec8");
     sy___at_vars_lb_bi_edce=rb_intern("__at_vars_lb_bi_edce");
@@ -1226,5 +1212,5 @@ void Init_implicit_variables_c() {
     rb_define_method(cls_Add_Implicit_Variables,"traverse",Add_Implicit_Variables_traverse,0);
     rb_define_method(cls_Add_Implicit_Variables,"traverse_item",Add_Implicit_Variables_traverse_item,0);
     rb_define_method(cls_Add_Implicit_Variables,"visit",Add_Implicit_Variables_visit,0);
-    rb_eval_string("testversionimplicit_variables('c7ddb4332e12cf4f5d2f42df2732bb10')");
+    rb_eval_string("testversionimplicit_variables('f8e1a73c0d637b095604648d244020c8')");
 }

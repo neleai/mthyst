@@ -415,7 +415,6 @@ VALUE switchhash_Constant_Traverser_4;
 static VALUE sy__Bind_lb_src_66c4;
 static VALUE sy__Bind_lb_src_91ed;
 static VALUE sy__Seq_lb_bind_95dc;
-static VALUE sy___append_lp__d113;
 static VALUE sy___at__contex_160a;
 static VALUE sy___at__contex_d6d5;
 static VALUE sy___lp__lp_bind_lb_1_1e7f;
@@ -521,11 +520,7 @@ accept3:
             it=rb_funcall(self,sy__Bind_lb_src_91ed,1,bind2);
             _autovar=bind_aget(bind2,1);;
             _autovar_3=it;;
-            bind_aset(bind2,1,_ary);
-            bind_aset(bind2,2,_autovar_3);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _ary=bind_aget(bind2,1);;
-            _autovar_3=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_ary,_autovar_3);
             bind_aset(bind2,1,_autovar);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
             _autovar=bind_aget(bind2,1);;
@@ -1285,7 +1280,6 @@ void Init_constant_propagation_c() {
     sy__Bind_lb_src_66c4=rb_intern("_Bind_lb_src_66c4");
     sy__Bind_lb_src_91ed=rb_intern("_Bind_lb_src_91ed");
     sy__Seq_lb_bind_95dc=rb_intern("_Seq_lb_bind_95dc");
-    sy___append_lp__d113=rb_intern("__append_lp__d113");
     sy___at__contex_160a=rb_intern("__at__contex_160a");
     sy___at__contex_d6d5=rb_intern("__at__contex_d6d5");
     sy___lp__lp_bind_lb_1_1e7f=rb_intern("__lp__lp_bind_lb_1_1e7f");
@@ -1309,5 +1303,5 @@ void Init_constant_propagation_c() {
     rb_define_method(cls_Constant_Traverser,"traverse",Constant_Traverser_traverse,0);
     rb_define_method(cls_Constant_Traverser,"traverse_item",Constant_Traverser_traverse_item,0);
     rb_define_method(cls_Constant_Traverser,"visit",Constant_Traverser_visit,0);
-    rb_eval_string("testversionconstant_propagation('75c0291a1c3ee1a8730dd9eaa55cb22a')");
+    rb_eval_string("testversionconstant_propagation('87b64b5ad6c70e433477914f23b6aa0b')");
 }

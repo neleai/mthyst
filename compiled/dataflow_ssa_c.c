@@ -20,7 +20,6 @@ static VALUE sy__Many_dot_cre_2107;
 static VALUE sy__Pass_dot_cre_5b5c;
 static VALUE sy__Seq_lb_src_dot__6f68;
 static VALUE sy__Switch_O_5445;
-static VALUE sy___append_lp__d113;
 static VALUE sy___at__contex_160a;
 static VALUE sy___at__contex_d6d5;
 static VALUE sy___at_marked_lt__59bb;
@@ -202,11 +201,7 @@ alt1_1:
         it=rb_funcall(self,sy_traverse_item,0);
         FAILTEST(alt1_2);
         _autovar_8=it;;
-        bind_aset(bind2,1,_autovar_7);
-        bind_aset(bind2,2,_autovar_8);
-        it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-        _autovar_7=bind_aget(bind2,1);;
-        _autovar_8=bind_aget(bind2,2);;
+        it=AmethystCore_append(self,_autovar_7,_autovar_8);
         ;
         goto accept1;
 alt1_2:
@@ -351,11 +346,7 @@ alt1_1:
             it=AmethystCore_anything(self );
             FAILTEST(alt1_2);
             _autovar_3=it;;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_3);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_3=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_3);
             ;
             goto accept1;
 alt1_2:
@@ -737,11 +728,7 @@ alt1_1:
             ptr->pos=ptr->len;
             it=rb_funcall(self,sy__src_25d9,1,bind2);
             _autovar_2=it;;
-            bind_aset(bind2,1,_ary);
-            bind_aset(bind2,2,_autovar_2);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _ary=bind_aget(bind2,1);;
-            _autovar_2=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_ary,_autovar_2);
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass1;
             goto success1;
@@ -797,11 +784,7 @@ alt2_1:
             }
             it=rb_funcall(self,sy_vars_in,0);
             _autovar_4=it;;
-            bind_aset(bind2,1,_ary);
-            bind_aset(bind2,2,_autovar_4);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _ary=bind_aget(bind2,1);;
-            _autovar_4=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_ary,_autovar_4);
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass2;
             goto success2;
@@ -857,11 +840,7 @@ alt3_1:
             }
             it=rb_funcall(self,sy_vars_in,0);
             _autovar_6=it;;
-            bind_aset(bind2,1,_ary);
-            bind_aset(bind2,2,_autovar_6);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _ary=bind_aget(bind2,1);;
-            _autovar_6=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_ary,_autovar_6);
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass3;
             goto success3;
@@ -919,11 +898,7 @@ alt4_1:
             ptr->pos=ptr->len;
             it=rb_funcall(self,sy__src_25d9,1,bind2);
             _autovar_8=it;;
-            bind_aset(bind2,1,_ary);
-            bind_aset(bind2,2,_autovar_8);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _ary=bind_aget(bind2,1);;
-            _autovar_8=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_ary,_autovar_8);
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass4;
             goto success4;
@@ -981,11 +956,7 @@ alt5_1:
             ptr->pos=ptr->len;
             it=rb_funcall(self,sy__src_25d9,1,bind2);
             _autovar_10=it;;
-            bind_aset(bind2,1,_ary);
-            bind_aset(bind2,2,_autovar_10);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _ary=bind_aget(bind2,1);;
-            _autovar_10=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_ary,_autovar_10);
             it=rb_funcall(self,sy___at_marked_lt__59bb,1,bind2);
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass5;
@@ -1044,11 +1015,7 @@ alt6_1:
             ptr->pos=ptr->len;
             it=rb_funcall(self,sy__src_25d9,1,bind2);
             _autovar_12=it;;
-            bind_aset(bind2,1,_ary);
-            bind_aset(bind2,2,_autovar_12);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _ary=bind_aget(bind2,1);;
-            _autovar_12=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_ary,_autovar_12);
             it=rb_funcall(self,sy___at_marked_lt__59bb,1,bind2);
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass6;
@@ -1107,11 +1074,7 @@ alt7_1:
             ptr->pos=ptr->len;
             it=rb_funcall(self,sy__src_25d9,1,bind2);
             _autovar_14=it;;
-            bind_aset(bind2,1,_ary);
-            bind_aset(bind2,2,_autovar_14);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _ary=bind_aget(bind2,1);;
-            _autovar_14=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_ary,_autovar_14);
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass7;
             goto success7;
@@ -1169,11 +1132,7 @@ alt8_1:
             ptr->pos=ptr->len;
             it=rb_funcall(self,sy__src_25d9,1,bind2);
             _autovar_16=it;;
-            bind_aset(bind2,1,_ary);
-            bind_aset(bind2,2,_autovar_16);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _ary=bind_aget(bind2,1);;
-            _autovar_16=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_ary,_autovar_16);
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass8;
             goto success8;
@@ -1275,11 +1234,7 @@ alt1_1:
             it=rb_funcall(self,sy_traverse_item,0);
             FAILTEST(alt1_2);
             _autovar_3=it;;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_3);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_3=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_3);
             ;
             goto accept1;
 alt1_2:
@@ -1403,11 +1358,7 @@ alt2_1:
             it=rb_funcall(self,sy_traverse_item,0);
             FAILTEST(alt2_2);
             _autovar_11=it;;
-            bind_aset(bind2,1,_autovar_10);
-            bind_aset(bind2,2,_autovar_11);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_10=bind_aget(bind2,1);;
-            _autovar_11=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_10,_autovar_11);
             ;
             goto accept2;
 alt2_2:
@@ -1626,11 +1577,7 @@ alt3_1:
             it=rb_funcall(self,sy_traverse_item,0);
             FAILTEST(alt3_2);
             _autovar_23=it;;
-            bind_aset(bind2,1,_autovar_22);
-            bind_aset(bind2,2,_autovar_23);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_22=bind_aget(bind2,1);;
-            _autovar_23=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_22,_autovar_23);
             ;
             goto accept3;
 alt3_2:
@@ -1698,11 +1645,7 @@ alt4_1:
             it=rb_funcall(self,sy_traverse_item,0);
             FAILTEST(alt4_2);
             _autovar_27=it;;
-            bind_aset(bind2,1,_autovar_26);
-            bind_aset(bind2,2,_autovar_27);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_26=bind_aget(bind2,1);;
-            _autovar_27=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_26,_autovar_27);
             ;
             goto accept4;
 alt4_2:
@@ -1994,11 +1937,7 @@ alt6_1:
             it=rb_funcall(self,sy_traverse_item,0);
             FAILTEST(alt6_2);
             _autovar_42=it;;
-            bind_aset(bind2,1,_autovar_41);
-            bind_aset(bind2,2,_autovar_42);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_41=bind_aget(bind2,1);;
-            _autovar_42=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_41,_autovar_42);
             ;
             goto accept6;
 alt6_2:
@@ -3333,7 +3272,6 @@ void Init_dataflow_ssa_c() {
     sy__Pass_dot_cre_5b5c=rb_intern("_Pass_dot_cre_5b5c");
     sy__Seq_lb_src_dot__6f68=rb_intern("_Seq_lb_src_dot__6f68");
     sy__Switch_O_5445=rb_intern("_Switch_O_5445");
-    sy___append_lp__d113=rb_intern("__append_lp__d113");
     sy___at__contex_160a=rb_intern("__at__contex_160a");
     sy___at__contex_d6d5=rb_intern("__at__contex_d6d5");
     sy___at_marked_lt__59bb=rb_intern("__at_marked_lt__59bb");
@@ -3440,5 +3378,5 @@ void Init_dataflow_ssa_c() {
     rb_define_method(cls_Forget_SSA,"traverse",Forget_SSA_traverse,0);
     rb_define_method(cls_Forget_SSA,"traverse_item",Forget_SSA_traverse_item,0);
     rb_define_method(cls_Forget_SSA,"visit",Forget_SSA_visit,0);
-    rb_eval_string("testversiondataflow_ssa('19e9aa6ee003b82811bc3082454919ef')");
+    rb_eval_string("testversiondataflow_ssa('3e68489d1f5c5edfcc7bb83e72ed715d')");
 }

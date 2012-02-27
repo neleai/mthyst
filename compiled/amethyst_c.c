@@ -46,7 +46,6 @@ static VALUE s__bs_r_8ce5;
 static VALUE s__bs_r_bs_n_bdb2;
 static VALUE s__d41d;
 static VALUE s__mi__336d;
-static VALUE sy___append_lp__d113;
 static VALUE sy___at_rev;
 static VALUE sy___at_rev_lb_src_704d;
 static VALUE sy___lp_bind_lb_1_rb__a948;
@@ -404,11 +403,7 @@ alt1_3:
             it=rb_obj_clone(s_0o_6f57);
             it=rb_obj_clone(s_0o_6f57);
             _autovar_3=it;;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_3);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_3=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_3);
             it=rb_ary_new3(0);
             _autovar_4=it;;
             switch((unsigned char)*ame_curstr2(ptr)) {
@@ -425,11 +420,7 @@ alt1_3:
                 _autovar_5=it;;
                 break;
             }
-            bind_aset(bind2,1,_autovar_4);
-            bind_aset(bind2,2,_autovar_5);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_4=bind_aget(bind2,1);;
-            _autovar_5=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_4,_autovar_5);
             int stop1=0;
             while(!stop1) {
                 switch((unsigned char)*ame_curstr2(ptr)) {
@@ -444,21 +435,13 @@ alt1_3:
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
                     _autovar_6=it;;
-                    bind_aset(bind2,1,_autovar_4);
-                    bind_aset(bind2,2,_autovar_6);
-                    it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-                    _autovar_4=bind_aget(bind2,1);;
-                    _autovar_6=bind_aget(bind2,2);;
+                    it=AmethystCore_append(self,_autovar_4,_autovar_6);
                     break;
                 }
             }
             it=_autovar_4;
             _autovar_7=it;;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_7);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_7=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_7);
             ;
             goto accept1;
 alt1_4:
@@ -494,11 +477,7 @@ alt2_1:
             it=rb_obj_clone(s_0x_f6f8);
             it=rb_obj_clone(s_0x_f6f8);
             _autovar_9=it;;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_9);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_9=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_9);
             it=rb_ary_new3(0);
             _autovar_10=it;;
             switch((unsigned char)*ame_curstr2(ptr)) {
@@ -523,11 +502,7 @@ alt2_1:
                 _autovar_11=it;;
                 break;
             }
-            bind_aset(bind2,1,_autovar_10);
-            bind_aset(bind2,2,_autovar_11);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_10=bind_aget(bind2,1);;
-            _autovar_11=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_10,_autovar_11);
             int stop2=0;
             while(!stop2) {
                 switch((unsigned char)*ame_curstr2(ptr)) {
@@ -550,21 +525,13 @@ alt2_1:
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
                     _autovar_12=it;;
-                    bind_aset(bind2,1,_autovar_10);
-                    bind_aset(bind2,2,_autovar_12);
-                    it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-                    _autovar_10=bind_aget(bind2,1);;
-                    _autovar_12=bind_aget(bind2,2);;
+                    it=AmethystCore_append(self,_autovar_10,_autovar_12);
                     break;
                 }
             }
             it=_autovar_10;
             _autovar_13=it;;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_13);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_13=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_13);
             ;
             goto accept2;
 alt2_2:
@@ -580,11 +547,7 @@ alt2_2:
             it=rb_obj_clone(s_0b_3470);
             it=rb_obj_clone(s_0b_3470);
             _autovar_14=it;;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_14);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_14=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_14);
             it=rb_ary_new3(0);
             _autovar_15=it;;
             switch((unsigned char)*ame_curstr2(ptr)) {
@@ -601,11 +564,7 @@ alt2_2:
                 _autovar_16=it;;
                 break;
             }
-            bind_aset(bind2,1,_autovar_15);
-            bind_aset(bind2,2,_autovar_16);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_15=bind_aget(bind2,1);;
-            _autovar_16=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_15,_autovar_16);
             int stop3=0;
             while(!stop3) {
                 switch((unsigned char)*ame_curstr2(ptr)) {
@@ -620,21 +579,13 @@ alt2_2:
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
                     _autovar_17=it;;
-                    bind_aset(bind2,1,_autovar_15);
-                    bind_aset(bind2,2,_autovar_17);
-                    it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-                    _autovar_15=bind_aget(bind2,1);;
-                    _autovar_17=bind_aget(bind2,2);;
+                    it=AmethystCore_append(self,_autovar_15,_autovar_17);
                     break;
                 }
             }
             it=_autovar_15;
             _autovar_18=it;;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_18);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_18=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_18);
             ;
             goto accept2;
 alt2_3:
@@ -647,11 +598,7 @@ alt2_3:
             it=rb_obj_clone(s_0o_6f57);
             it=rb_obj_clone(s_0o_6f57);
             _autovar_3=it;;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_3);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_3=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_3);
             it=rb_ary_new3(0);
             _autovar_4=it;;
             switch((unsigned char)*ame_curstr2(ptr)) {
@@ -668,11 +615,7 @@ alt2_3:
                 _autovar_5=it;;
                 break;
             }
-            bind_aset(bind2,1,_autovar_4);
-            bind_aset(bind2,2,_autovar_5);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_4=bind_aget(bind2,1);;
-            _autovar_5=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_4,_autovar_5);
             int stop4=0;
             while(!stop4) {
                 switch((unsigned char)*ame_curstr2(ptr)) {
@@ -687,21 +630,13 @@ alt2_3:
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
                     _autovar_6=it;;
-                    bind_aset(bind2,1,_autovar_4);
-                    bind_aset(bind2,2,_autovar_6);
-                    it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-                    _autovar_4=bind_aget(bind2,1);;
-                    _autovar_6=bind_aget(bind2,2);;
+                    it=AmethystCore_append(self,_autovar_4,_autovar_6);
                     break;
                 }
             }
             it=_autovar_4;
             _autovar_7=it;;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_7);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_7=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_7);
             ;
             goto accept2;
 alt2_4:
@@ -713,11 +648,7 @@ alt2_4:
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
             _autovar_20=it;;
-            bind_aset(bind2,1,_autovar_19);
-            bind_aset(bind2,2,_autovar_20);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_19=bind_aget(bind2,1);;
-            _autovar_20=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_19,_autovar_20);
             int stop5=0;
             while(!stop5) {
                 switch((unsigned char)*ame_curstr2(ptr)) {
@@ -732,21 +663,13 @@ alt2_4:
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
                     _autovar_21=it;;
-                    bind_aset(bind2,1,_autovar_19);
-                    bind_aset(bind2,2,_autovar_21);
-                    it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-                    _autovar_19=bind_aget(bind2,1);;
-                    _autovar_21=bind_aget(bind2,2);;
+                    it=AmethystCore_append(self,_autovar_19,_autovar_21);
                     break;
                 }
             }
             it=_autovar_19;
             _autovar_22=it;;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_22);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_22=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_22);
             ;
             goto accept2;
 alt2_5:
@@ -787,11 +710,7 @@ alt3_3:
             it=rb_obj_clone(s_0o_6f57);
             it=rb_obj_clone(s_0o_6f57);
             _autovar_3=it;;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_3);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_3=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_3);
             it=rb_ary_new3(0);
             _autovar_4=it;;
             switch((unsigned char)*ame_curstr2(ptr)) {
@@ -808,11 +727,7 @@ alt3_3:
                 _autovar_5=it;;
                 break;
             }
-            bind_aset(bind2,1,_autovar_4);
-            bind_aset(bind2,2,_autovar_5);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_4=bind_aget(bind2,1);;
-            _autovar_5=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_4,_autovar_5);
             int stop6=0;
             while(!stop6) {
                 switch((unsigned char)*ame_curstr2(ptr)) {
@@ -827,21 +742,13 @@ alt3_3:
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
                     _autovar_6=it;;
-                    bind_aset(bind2,1,_autovar_4);
-                    bind_aset(bind2,2,_autovar_6);
-                    it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-                    _autovar_4=bind_aget(bind2,1);;
-                    _autovar_6=bind_aget(bind2,2);;
+                    it=AmethystCore_append(self,_autovar_4,_autovar_6);
                     break;
                 }
             }
             it=_autovar_4;
             _autovar_7=it;;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_7);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_7=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_7);
             ;
             goto accept3;
 alt3_4:
@@ -853,11 +760,7 @@ alt3_4:
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
             _autovar_20=it;;
-            bind_aset(bind2,1,_autovar_19);
-            bind_aset(bind2,2,_autovar_20);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_19=bind_aget(bind2,1);;
-            _autovar_20=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_19,_autovar_20);
             int stop7=0;
             while(!stop7) {
                 switch((unsigned char)*ame_curstr2(ptr)) {
@@ -872,21 +775,13 @@ alt3_4:
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
                     _autovar_21=it;;
-                    bind_aset(bind2,1,_autovar_19);
-                    bind_aset(bind2,2,_autovar_21);
-                    it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-                    _autovar_19=bind_aget(bind2,1);;
-                    _autovar_21=bind_aget(bind2,2);;
+                    it=AmethystCore_append(self,_autovar_19,_autovar_21);
                     break;
                 }
             }
             it=_autovar_19;
             _autovar_22=it;;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_22);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_22=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_22);
             ;
             goto accept3;
 alt3_5:
@@ -950,11 +845,7 @@ alt4_3:
             it=rb_obj_clone(s_0o_6f57);
             it=rb_obj_clone(s_0o_6f57);
             _autovar_3=it;;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_3);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_3=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_3);
             it=rb_ary_new3(0);
             _autovar_4=it;;
             switch((unsigned char)*ame_curstr2(ptr)) {
@@ -971,11 +862,7 @@ alt4_3:
                 _autovar_5=it;;
                 break;
             }
-            bind_aset(bind2,1,_autovar_4);
-            bind_aset(bind2,2,_autovar_5);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_4=bind_aget(bind2,1);;
-            _autovar_5=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_4,_autovar_5);
             int stop8=0;
             while(!stop8) {
                 switch((unsigned char)*ame_curstr2(ptr)) {
@@ -990,21 +877,13 @@ alt4_3:
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
                     _autovar_6=it;;
-                    bind_aset(bind2,1,_autovar_4);
-                    bind_aset(bind2,2,_autovar_6);
-                    it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-                    _autovar_4=bind_aget(bind2,1);;
-                    _autovar_6=bind_aget(bind2,2);;
+                    it=AmethystCore_append(self,_autovar_4,_autovar_6);
                     break;
                 }
             }
             it=_autovar_4;
             _autovar_7=it;;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_7);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_7=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_7);
             ;
             goto accept4;
 alt4_4:
@@ -1040,11 +919,7 @@ alt5_1:
             it=rb_obj_clone(s_0x_f6f8);
             it=rb_obj_clone(s_0x_f6f8);
             _autovar_9=it;;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_9);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_9=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_9);
             it=rb_ary_new3(0);
             _autovar_10=it;;
             switch((unsigned char)*ame_curstr2(ptr)) {
@@ -1069,11 +944,7 @@ alt5_1:
                 _autovar_11=it;;
                 break;
             }
-            bind_aset(bind2,1,_autovar_10);
-            bind_aset(bind2,2,_autovar_11);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_10=bind_aget(bind2,1);;
-            _autovar_11=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_10,_autovar_11);
             int stop9=0;
             while(!stop9) {
                 switch((unsigned char)*ame_curstr2(ptr)) {
@@ -1096,21 +967,13 @@ alt5_1:
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
                     _autovar_12=it;;
-                    bind_aset(bind2,1,_autovar_10);
-                    bind_aset(bind2,2,_autovar_12);
-                    it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-                    _autovar_10=bind_aget(bind2,1);;
-                    _autovar_12=bind_aget(bind2,2);;
+                    it=AmethystCore_append(self,_autovar_10,_autovar_12);
                     break;
                 }
             }
             it=_autovar_10;
             _autovar_13=it;;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_13);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_13=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_13);
             ;
             goto accept5;
 alt5_2:
@@ -1126,11 +989,7 @@ alt5_2:
             it=rb_obj_clone(s_0b_3470);
             it=rb_obj_clone(s_0b_3470);
             _autovar_14=it;;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_14);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_14=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_14);
             it=rb_ary_new3(0);
             _autovar_15=it;;
             switch((unsigned char)*ame_curstr2(ptr)) {
@@ -1147,11 +1006,7 @@ alt5_2:
                 _autovar_16=it;;
                 break;
             }
-            bind_aset(bind2,1,_autovar_15);
-            bind_aset(bind2,2,_autovar_16);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_15=bind_aget(bind2,1);;
-            _autovar_16=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_15,_autovar_16);
             int stop10=0;
             while(!stop10) {
                 switch((unsigned char)*ame_curstr2(ptr)) {
@@ -1166,21 +1021,13 @@ alt5_2:
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
                     _autovar_17=it;;
-                    bind_aset(bind2,1,_autovar_15);
-                    bind_aset(bind2,2,_autovar_17);
-                    it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-                    _autovar_15=bind_aget(bind2,1);;
-                    _autovar_17=bind_aget(bind2,2);;
+                    it=AmethystCore_append(self,_autovar_15,_autovar_17);
                     break;
                 }
             }
             it=_autovar_15;
             _autovar_18=it;;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_18);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_18=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_18);
             ;
             goto accept5;
 alt5_3:
@@ -1193,11 +1040,7 @@ alt5_3:
             it=rb_obj_clone(s_0o_6f57);
             it=rb_obj_clone(s_0o_6f57);
             _autovar_3=it;;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_3);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_3=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_3);
             it=rb_ary_new3(0);
             _autovar_4=it;;
             switch((unsigned char)*ame_curstr2(ptr)) {
@@ -1214,11 +1057,7 @@ alt5_3:
                 _autovar_5=it;;
                 break;
             }
-            bind_aset(bind2,1,_autovar_4);
-            bind_aset(bind2,2,_autovar_5);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_4=bind_aget(bind2,1);;
-            _autovar_5=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_4,_autovar_5);
             int stop11=0;
             while(!stop11) {
                 switch((unsigned char)*ame_curstr2(ptr)) {
@@ -1233,21 +1072,13 @@ alt5_3:
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
                     _autovar_6=it;;
-                    bind_aset(bind2,1,_autovar_4);
-                    bind_aset(bind2,2,_autovar_6);
-                    it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-                    _autovar_4=bind_aget(bind2,1);;
-                    _autovar_6=bind_aget(bind2,2);;
+                    it=AmethystCore_append(self,_autovar_4,_autovar_6);
                     break;
                 }
             }
             it=_autovar_4;
             _autovar_7=it;;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_7);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_7=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_7);
             ;
             goto accept5;
 alt5_4:
@@ -1259,11 +1090,7 @@ alt5_4:
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
             _autovar_20=it;;
-            bind_aset(bind2,1,_autovar_19);
-            bind_aset(bind2,2,_autovar_20);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_19=bind_aget(bind2,1);;
-            _autovar_20=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_19,_autovar_20);
             int stop12=0;
             while(!stop12) {
                 switch((unsigned char)*ame_curstr2(ptr)) {
@@ -1278,21 +1105,13 @@ alt5_4:
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
                     _autovar_21=it;;
-                    bind_aset(bind2,1,_autovar_19);
-                    bind_aset(bind2,2,_autovar_21);
-                    it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-                    _autovar_19=bind_aget(bind2,1);;
-                    _autovar_21=bind_aget(bind2,2);;
+                    it=AmethystCore_append(self,_autovar_19,_autovar_21);
                     break;
                 }
             }
             it=_autovar_19;
             _autovar_22=it;;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_22);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_22=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_22);
             ;
             goto accept5;
 alt5_5:
@@ -1333,11 +1152,7 @@ alt6_3:
             it=rb_obj_clone(s_0o_6f57);
             it=rb_obj_clone(s_0o_6f57);
             _autovar_3=it;;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_3);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_3=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_3);
             it=rb_ary_new3(0);
             _autovar_4=it;;
             switch((unsigned char)*ame_curstr2(ptr)) {
@@ -1354,11 +1169,7 @@ alt6_3:
                 _autovar_5=it;;
                 break;
             }
-            bind_aset(bind2,1,_autovar_4);
-            bind_aset(bind2,2,_autovar_5);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_4=bind_aget(bind2,1);;
-            _autovar_5=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_4,_autovar_5);
             int stop13=0;
             while(!stop13) {
                 switch((unsigned char)*ame_curstr2(ptr)) {
@@ -1373,21 +1184,13 @@ alt6_3:
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
                     _autovar_6=it;;
-                    bind_aset(bind2,1,_autovar_4);
-                    bind_aset(bind2,2,_autovar_6);
-                    it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-                    _autovar_4=bind_aget(bind2,1);;
-                    _autovar_6=bind_aget(bind2,2);;
+                    it=AmethystCore_append(self,_autovar_4,_autovar_6);
                     break;
                 }
             }
             it=_autovar_4;
             _autovar_7=it;;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_7);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_7=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_7);
             ;
             goto accept6;
 alt6_4:
@@ -1399,11 +1202,7 @@ alt6_4:
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
             _autovar_20=it;;
-            bind_aset(bind2,1,_autovar_19);
-            bind_aset(bind2,2,_autovar_20);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_19=bind_aget(bind2,1);;
-            _autovar_20=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_19,_autovar_20);
             int stop14=0;
             while(!stop14) {
                 switch((unsigned char)*ame_curstr2(ptr)) {
@@ -1418,21 +1217,13 @@ alt6_4:
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
                     _autovar_21=it;;
-                    bind_aset(bind2,1,_autovar_19);
-                    bind_aset(bind2,2,_autovar_21);
-                    it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-                    _autovar_19=bind_aget(bind2,1);;
-                    _autovar_21=bind_aget(bind2,2);;
+                    it=AmethystCore_append(self,_autovar_19,_autovar_21);
                     break;
                 }
             }
             it=_autovar_19;
             _autovar_22=it;;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_22);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_22=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_22);
             ;
             goto accept6;
 alt6_5:
@@ -1480,11 +1271,7 @@ VALUE Amethyst_line(VALUE self ) {
             it=AmethystCore_anything(self );
             FAILTEST(fail);
             _autovar_2=it;;
-            bind_aset(bind2,1,_autovar);
-            bind_aset(bind2,2,_autovar_2);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar=bind_aget(bind2,1);;
-            _autovar_2=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar,_autovar_2);
             break;
         case UC(10) ... UC(10):
             ;
@@ -1515,11 +1302,7 @@ alt1_3:
             goto fail;
 accept1:
             ;
-            bind_aset(bind2,1,_autovar);
-            bind_aset(bind2,2,_autovar_2);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar=bind_aget(bind2,1);;
-            _autovar_2=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar,_autovar_2);
             break;
         }
     }
@@ -1555,11 +1338,7 @@ alt1_1:
     it=rb_funcall(self,sy_apply,1,arg0);
     FAILTEST(alt1_2);
     _autovar=it;;
-    bind_aset(bind2,1,_f);
-    bind_aset(bind2,2,_autovar);
-    it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-    _f=bind_aget(bind2,1);;
-    _autovar=bind_aget(bind2,2);;
+    it=AmethystCore_append(self,_f,_autovar);
     it=rb_ary_new3(0);
     _autovar_2=it;;
     int stop1=0;
@@ -1580,11 +1359,7 @@ alt2_1:
         it=rb_funcall(self,sy_apply,1,arg0);
         FAILTEST(alt2_2);
         _autovar_3=it;;
-        bind_aset(bind2,1,_autovar_2);
-        bind_aset(bind2,2,_autovar_3);
-        it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-        _autovar_2=bind_aget(bind2,1);;
-        _autovar_3=bind_aget(bind2,2);;
+        it=AmethystCore_append(self,_autovar_2,_autovar_3);
         ;
         goto accept2;
 alt2_2:
@@ -1600,11 +1375,7 @@ accept2:
     }
     it=_autovar_2;
     _autovar_4=it;;
-    bind_aset(bind2,1,_f);
-    bind_aset(bind2,2,_autovar_4);
-    it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-    _f=bind_aget(bind2,1);;
-    _autovar_4=bind_aget(bind2,2);;
+    it=AmethystCore_append(self,_f,_autovar_4);
     bind_aset(bind2,1,_f);
     it=rb_funcall(self,sy__bind_lb_1_rb_,1,bind2);
     _f=bind_aget(bind2,1);;
@@ -2116,11 +1887,7 @@ VALUE Amethyst_spaces(VALUE self ) {
             __result=it;;
             it=__result;
             _autovar_2=it;;
-            bind_aset(bind2,1,_autovar);
-            bind_aset(bind2,2,_autovar_2);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar=bind_aget(bind2,1);;
-            _autovar_2=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar,_autovar_2);
             break;
         }
     }
@@ -2243,11 +2010,7 @@ accept2:
             it=AmethystCore_anything(self );
             FAILTEST(alt1_3);
             _autovar=it;;
-            bind_aset(bind2,1,_x);
-            bind_aset(bind2,2,_autovar);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _x=bind_aget(bind2,1);;
-            _autovar=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_x,_autovar);
             ;
             goto accept1;
 alt1_3:
@@ -2283,19 +2046,11 @@ alt3_2:
             it=rb_obj_clone(s__bs__bs__7f81);
             it=rb_obj_clone(s__bs__bs__7f81);
             _autovar_2=it;;
-            bind_aset(bind2,1,_x);
-            bind_aset(bind2,2,_autovar_2);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _x=bind_aget(bind2,1);;
-            _autovar_2=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_x,_autovar_2);
             it=AmethystCore_anything(self );
             FAILTEST(alt3_3);
             _autovar=it;;
-            bind_aset(bind2,1,_x);
-            bind_aset(bind2,2,_autovar);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _x=bind_aget(bind2,1);;
-            _autovar=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_x,_autovar);
             ;
             goto accept3;
 alt3_3:
@@ -2459,7 +2214,6 @@ void Init_amethyst_c() {
     rb_global_variable(&s__d41d);
     s__mi__336d=rb_str_new2("-");
     rb_global_variable(&s__mi__336d);
-    sy___append_lp__d113=rb_intern("__append_lp__d113");
     sy___at_rev=rb_intern("__at_rev");
     sy___at_rev_lb_src_704d=rb_intern("__at_rev_lb_src_704d");
     sy___lp_bind_lb_1_rb__a948=rb_intern("__lp_bind_lb_1_rb__a948");
@@ -2514,5 +2268,5 @@ void Init_amethyst_c() {
     rb_define_method(cls_Amethyst,"upper",Amethyst_upper,0);
     rb_define_method(cls_Amethyst,"word",Amethyst_word,0);
     rb_define_method(cls_Amethyst,"xdigit",Amethyst_xdigit,0);
-    rb_eval_string("testversionamethyst('f5a46c0b8422dbd0b1c04ed915a0dae7')");
+    rb_eval_string("testversionamethyst('1b18503256de2aeb1ea36a489f99e2be')");
 }

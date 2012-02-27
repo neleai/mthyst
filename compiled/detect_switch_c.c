@@ -11,7 +11,6 @@ VALUE switchhash_First_Dataflow_1;
 VALUE switchhash_First_Dataflow_2;
 static VALUE sy__Compiler_558e;
 static VALUE sy__Switch_O_5445;
-static VALUE sy___append_lp__d113;
 static VALUE sy___at_vis_eq_bin_8b89;
 static VALUE sy___d41d;
 static VALUE sy___lp_;
@@ -375,11 +374,7 @@ alt6_1:
             _p=bind_aget(bind2,1);;
             _v=bind_aget(bind2,2);;
             _autovar_13=it;;
-            bind_aset(bind2,1,_vals);
-            bind_aset(bind2,2,_autovar_13);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _vals=bind_aget(bind2,1);;
-            _autovar_13=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_vals,_autovar_13);
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass7;
             goto success7;
@@ -677,11 +672,7 @@ alt1_1:
             it=AmethystCore_anything(self );
             FAILTEST(alt1_2);
             _autovar_3=it;;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_3);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_3=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_3);
             ;
             goto accept1;
 alt1_2:
@@ -755,7 +746,6 @@ VALUE switchhash_Minsize_Dataflow_1;
 VALUE switchhash_Minsize_Dataflow_2;
 VALUE switchhash_Minsize_Dataflow_3;
 static VALUE sy__Compiler_558e;
-static VALUE sy___append_lp__d113;
 static VALUE sy___at_vis_eq_bin_8b89;
 static VALUE sy___d41d;
 static VALUE sy___lp_;
@@ -1725,11 +1715,7 @@ alt6_1:
             _p=bind_aget(bind2,1);;
             _v=bind_aget(bind2,2);;
             _autovar_13=it;;
-            bind_aset(bind2,1,_vals);
-            bind_aset(bind2,2,_autovar_13);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _vals=bind_aget(bind2,1);;
-            _autovar_13=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_vals,_autovar_13);
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass7;
             goto success7;
@@ -1974,7 +1960,6 @@ VALUE switchhash_Maxsize_Dataflow_1;
 VALUE switchhash_Maxsize_Dataflow_2;
 VALUE switchhash_Maxsize_Dataflow_3;
 static VALUE sy__Compiler_558e;
-static VALUE sy___append_lp__d113;
 static VALUE sy___at_vis_eq_bin_8b89;
 static VALUE sy___d41d;
 static VALUE sy___lp_;
@@ -2944,11 +2929,7 @@ alt6_1:
             _p=bind_aget(bind2,1);;
             _v=bind_aget(bind2,2);;
             _autovar_13=it;;
-            bind_aset(bind2,1,_vals);
-            bind_aset(bind2,2,_autovar_13);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _vals=bind_aget(bind2,1);;
-            _autovar_13=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_vals,_autovar_13);
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass7;
             goto success7;
@@ -3190,7 +3171,6 @@ VALUE Complexity_Dataflow_first(VALUE self );
 VALUE Complexity_Dataflow_getvalue(VALUE self ,VALUE a0);
 VALUE switchhash_Complexity_Dataflow_1;
 static VALUE sy__Compiler_558e;
-static VALUE sy___append_lp__d113;
 static VALUE sy___at_vis_eq_bin_8b89;
 static VALUE sy___lp_Compile_7f7b;
 static VALUE sy__lattice_lb__11f0;
@@ -3420,11 +3400,7 @@ alt4_1:
             it=rb_funcall(self,sy_value,0);
             FAILTEST(pass5);
             _autovar_7=it;;
-            bind_aset(bind2,1,_v);
-            bind_aset(bind2,2,_autovar_7);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _v=bind_aget(bind2,1);;
-            _autovar_7=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_v,_autovar_7);
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass5;
             goto success5;
@@ -3514,11 +3490,7 @@ alt6_1:
             it=rb_funcall(self,sy_value,0);
             FAILTEST(alt6_2);
             _autovar_10=it;;
-            bind_aset(bind2,1,_autovar_9);
-            bind_aset(bind2,2,_autovar_10);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_9=bind_aget(bind2,1);;
-            _autovar_10=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_9,_autovar_10);
             ;
             goto accept6;
 alt6_2:
@@ -3624,7 +3596,6 @@ VALUE switchhash_Switch_Char_Dataflow_1;
 VALUE switchhash_Switch_Char_Dataflow_2;
 VALUE switchhash_Switch_Char_Dataflow_3;
 static VALUE sy__Compiler_558e;
-static VALUE sy___append_lp__d113;
 static VALUE sy___at_vis_eq_bin_8b89;
 static VALUE sy___d41d;
 static VALUE sy___lp_;
@@ -4750,11 +4721,7 @@ alt6_1:
             _p=bind_aget(bind2,1);;
             _v=bind_aget(bind2,2);;
             _autovar_13=it;;
-            bind_aset(bind2,1,_vals);
-            bind_aset(bind2,2,_autovar_13);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _vals=bind_aget(bind2,1);;
-            _autovar_13=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_vals,_autovar_13);
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass7;
             goto success7;
@@ -5000,7 +4967,6 @@ VALUE switchhash_Switch_Clas_Dataflow_2;
 VALUE switchhash_Switch_Clas_Dataflow_3;
 VALUE switchhash_Switch_Clas_Dataflow_4;
 static VALUE sy__Compiler_558e;
-static VALUE sy___append_lp__d113;
 static VALUE sy___at_vis_eq_bin_8b89;
 static VALUE sy___d41d;
 static VALUE sy___lp_;
@@ -5625,11 +5591,7 @@ alt6_1:
             _p=bind_aget(bind2,1);;
             _v=bind_aget(bind2,2);;
             _autovar_13=it;;
-            bind_aset(bind2,1,_vals);
-            bind_aset(bind2,2,_autovar_13);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _vals=bind_aget(bind2,1);;
-            _autovar_13=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_vals,_autovar_13);
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass7;
             goto success7;
@@ -5875,7 +5837,6 @@ VALUE switchhash_Cant_Fail_Dataflow_2;
 VALUE switchhash_Cant_Fail_Dataflow_3;
 VALUE switchhash_Cant_Fail_Dataflow_4;
 static VALUE sy__Compiler_558e;
-static VALUE sy___append_lp__d113;
 static VALUE sy___at_vis_eq_bin_8b89;
 static VALUE sy___d41d;
 static VALUE sy___lp_;
@@ -6257,11 +6218,7 @@ accept7:
                 it=rb_funcall(self,sy_value,0);
                 FAILTEST(alt6_2);
                 _autovar_8=it;;
-                bind_aset(bind2,1,_autovar_6);
-                bind_aset(bind2,2,_autovar_8);
-                it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-                _autovar_6=bind_aget(bind2,1);;
-                _autovar_8=bind_aget(bind2,2);;
+                it=AmethystCore_append(self,_autovar_6,_autovar_8);
                 ;
                 goto accept6;
 alt6_2:
@@ -6285,11 +6242,7 @@ alt8_1:
                 it=rb_funcall(self,sy_value,0);
                 FAILTEST(alt8_2);
                 _autovar_8=it;;
-                bind_aset(bind2,1,_autovar_6);
-                bind_aset(bind2,2,_autovar_8);
-                it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-                _autovar_6=bind_aget(bind2,1);;
-                _autovar_8=bind_aget(bind2,2);;
+                it=AmethystCore_append(self,_autovar_6,_autovar_8);
                 ;
                 goto accept8;
 alt8_2:
@@ -6765,11 +6718,7 @@ alt6_1:
             _p=bind_aget(bind2,1);;
             _v=bind_aget(bind2,2);;
             _autovar_13=it;;
-            bind_aset(bind2,1,_vals);
-            bind_aset(bind2,2,_autovar_13);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _vals=bind_aget(bind2,1);;
-            _autovar_13=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_vals,_autovar_13);
             it=Qnil;
             if (ptr->pos<ptr->len) goto pass7;
             goto success7;
@@ -7020,7 +6969,6 @@ VALUE switchhash_Detect_First_2;
 VALUE switchhash_Detect_First_3;
 VALUE switchhash_Detect_First_4;
 static VALUE sy__Seq_lb__ti__lp_bi_a321;
-static VALUE sy___append_lp__d113;
 static VALUE sy___at__contex_160a;
 static VALUE sy___at__contex_d6d5;
 static VALUE sy___do_rules_eq__le__ab16;
@@ -7264,11 +7212,7 @@ alt2_1:
         it=AmethystCore_anything(self );
         FAILTEST(alt2_2);
         _autovar_3=it;;
-        bind_aset(bind2,1,_autovar_2);
-        bind_aset(bind2,2,_autovar_3);
-        it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-        _autovar_2=bind_aget(bind2,1);;
-        _autovar_3=bind_aget(bind2,2);;
+        it=AmethystCore_append(self,_autovar_2,_autovar_3);
         ;
         goto accept2;
 alt2_2:
@@ -7310,11 +7254,7 @@ alt3_1:
         it=AmethystCore_anything(self );
         FAILTEST(alt3_2);
         _autovar_5=it;;
-        bind_aset(bind2,1,_autovar_4);
-        bind_aset(bind2,2,_autovar_5);
-        it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-        _autovar_4=bind_aget(bind2,1);;
-        _autovar_5=bind_aget(bind2,2);;
+        it=AmethystCore_append(self,_autovar_4,_autovar_5);
         ;
         goto accept3;
 alt3_2:
@@ -7484,11 +7424,7 @@ success4:
                     *ptr=oldpass4;
                     it=_autovar_8;
                     _autovar_9=it;;
-                    bind_aset(bind2,1,_autovar_6);
-                    bind_aset(bind2,2,_autovar_9);
-                    it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-                    _autovar_6=bind_aget(bind2,1);;
-                    _autovar_9=bind_aget(bind2,2);;
+                    it=AmethystCore_append(self,_autovar_6,_autovar_9);
                     ;
                     goto accept3;
 alt3_2:
@@ -7585,11 +7521,7 @@ alt2_3:
             goto alt1_2;
 accept2:
             ;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_11);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_11=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_11);
             ;
             goto accept1;
 alt1_2:
@@ -7615,11 +7547,7 @@ alt5_1:
             it=AmethystCore_anything(self );
             FAILTEST(alt5_2);
             _autovar_11=it;;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_11);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_11=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_11);
             ;
             goto accept5;
 alt5_2:
@@ -7748,11 +7676,7 @@ alt1_1:
             it=AmethystCore_anything(self );
             FAILTEST(alt1_2);
             _autovar_4=it;;
-            bind_aset(bind2,1,_autovar_3);
-            bind_aset(bind2,2,_autovar_4);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_3=bind_aget(bind2,1);;
-            _autovar_4=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_3,_autovar_4);
             ;
             goto accept1;
 alt1_2:
@@ -7918,11 +7842,7 @@ alt2_1:
             it=AmethystCore_anything(self );
             FAILTEST(alt2_2);
             _autovar_4=it;;
-            bind_aset(bind2,1,_autovar_3);
-            bind_aset(bind2,2,_autovar_4);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_3=bind_aget(bind2,1);;
-            _autovar_4=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_3,_autovar_4);
             ;
             goto accept2;
 alt2_2:
@@ -7977,7 +7897,6 @@ static VALUE c_Lattice_Char;
 static VALUE c_Switch_Char;
 static VALUE sy__Or_lb__ti_bind_d486;
 static VALUE sy__Seq_lb__ti__lp_bi_a321;
-static VALUE sy___append_lp__d113;
 static VALUE sy___at__contex_160a;
 static VALUE sy___at__contex_d6d5;
 static VALUE sy___do_rules_eq__le__ab16;
@@ -8160,11 +8079,7 @@ success4:
                     *ptr=oldpass4;
                     it=_autovar_8;
                     _autovar_9=it;;
-                    bind_aset(bind2,1,_autovar_6);
-                    bind_aset(bind2,2,_autovar_9);
-                    it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-                    _autovar_6=bind_aget(bind2,1);;
-                    _autovar_9=bind_aget(bind2,2);;
+                    it=AmethystCore_append(self,_autovar_6,_autovar_9);
                     ;
                     goto accept3;
 alt3_2:
@@ -8261,11 +8176,7 @@ alt2_3:
             goto alt1_2;
 accept2:
             ;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_11);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_11=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_11);
             ;
             goto accept1;
 alt1_2:
@@ -8291,11 +8202,7 @@ alt5_1:
             it=AmethystCore_anything(self );
             FAILTEST(alt5_2);
             _autovar_11=it;;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_11);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_11=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_11);
             ;
             goto accept5;
 alt5_2:
@@ -9068,11 +8975,7 @@ alt2_1:
             it=rb_funcall(self,sy_traverse_item,0);
             FAILTEST(alt2_2);
             _autovar_19=it;;
-            bind_aset(bind2,1,_autovar_18);
-            bind_aset(bind2,2,_autovar_19);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_18=bind_aget(bind2,1);;
-            _autovar_19=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_18,_autovar_19);
             ;
             goto accept2;
 alt2_2:
@@ -9387,11 +9290,7 @@ alt6_1:
             it=rb_funcall(self,sy_traverse_item,0);
             FAILTEST(alt6_2);
             _autovar_28=it;;
-            bind_aset(bind2,1,_autovar_27);
-            bind_aset(bind2,2,_autovar_28);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_27=bind_aget(bind2,1);;
-            _autovar_28=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_27,_autovar_28);
             ;
             goto accept6;
 alt6_2:
@@ -9504,11 +9403,7 @@ alt8_1:
                 it=AmethystCore_anything(self );
                 FAILTEST(alt8_2);
                 _autovar_33=it;;
-                bind_aset(bind2,1,_autovar_32);
-                bind_aset(bind2,2,_autovar_33);
-                it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-                _autovar_32=bind_aget(bind2,1);;
-                _autovar_33=bind_aget(bind2,2);;
+                it=AmethystCore_append(self,_autovar_32,_autovar_33);
                 ;
                 goto accept8;
 alt8_2:
@@ -9553,11 +9448,7 @@ alt9_1:
                 it=AmethystCore_anything(self );
                 FAILTEST(alt9_2);
                 _autovar_35=it;;
-                bind_aset(bind2,1,_autovar_34);
-                bind_aset(bind2,2,_autovar_35);
-                it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-                _autovar_34=bind_aget(bind2,1);;
-                _autovar_35=bind_aget(bind2,2);;
+                it=AmethystCore_append(self,_autovar_34,_autovar_35);
                 ;
                 goto accept9;
 alt9_2:
@@ -9631,11 +9522,7 @@ alt11_1:
                 it=AmethystCore_anything(self );
                 FAILTEST(alt11_2);
                 _autovar_35=it;;
-                bind_aset(bind2,1,_autovar_34);
-                bind_aset(bind2,2,_autovar_35);
-                it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-                _autovar_34=bind_aget(bind2,1);;
-                _autovar_35=bind_aget(bind2,2);;
+                it=AmethystCore_append(self,_autovar_34,_autovar_35);
                 ;
                 goto accept11;
 alt11_2:
@@ -9729,7 +9616,6 @@ static VALUE c_Switch_Clas;
 static VALUE sy__Or_lb__ti_bind_d486;
 static VALUE sy__Seq_lb__ti__lp_bi_a321;
 static VALUE sy__Switch_C_63f7;
-static VALUE sy___append_lp__d113;
 static VALUE sy___at__contex_160a;
 static VALUE sy___at__contex_d6d5;
 static VALUE sy___do_rules_eq__le__ab16;
@@ -9910,11 +9796,7 @@ success4:
                     *ptr=oldpass4;
                     it=_autovar_8;
                     _autovar_9=it;;
-                    bind_aset(bind2,1,_autovar_6);
-                    bind_aset(bind2,2,_autovar_9);
-                    it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-                    _autovar_6=bind_aget(bind2,1);;
-                    _autovar_9=bind_aget(bind2,2);;
+                    it=AmethystCore_append(self,_autovar_6,_autovar_9);
                     ;
                     goto accept3;
 alt3_2:
@@ -10011,11 +9893,7 @@ alt2_3:
             goto alt1_2;
 accept2:
             ;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_11);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_11=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_11);
             ;
             goto accept1;
 alt1_2:
@@ -10041,11 +9919,7 @@ alt5_1:
             it=AmethystCore_anything(self );
             FAILTEST(alt5_2);
             _autovar_11=it;;
-            bind_aset(bind2,1,_autovar_2);
-            bind_aset(bind2,2,_autovar_11);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            _autovar_11=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_2,_autovar_11);
             ;
             goto accept5;
 alt5_2:
@@ -10706,11 +10580,7 @@ alt2_1:
             it=rb_funcall(self,sy_traverse_item,0);
             FAILTEST(alt2_2);
             _autovar_15=it;;
-            bind_aset(bind2,1,_autovar_14);
-            bind_aset(bind2,2,_autovar_15);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_14=bind_aget(bind2,1);;
-            _autovar_15=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_14,_autovar_15);
             ;
             goto accept2;
 alt2_2:
@@ -11025,11 +10895,7 @@ alt6_1:
             it=rb_funcall(self,sy_traverse_item,0);
             FAILTEST(alt6_2);
             _autovar_24=it;;
-            bind_aset(bind2,1,_autovar_23);
-            bind_aset(bind2,2,_autovar_24);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_23=bind_aget(bind2,1);;
-            _autovar_24=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_23,_autovar_24);
             ;
             goto accept6;
 alt6_2:
@@ -11142,11 +11008,7 @@ alt8_1:
                 it=AmethystCore_anything(self );
                 FAILTEST(alt8_2);
                 _autovar_29=it;;
-                bind_aset(bind2,1,_autovar_28);
-                bind_aset(bind2,2,_autovar_29);
-                it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-                _autovar_28=bind_aget(bind2,1);;
-                _autovar_29=bind_aget(bind2,2);;
+                it=AmethystCore_append(self,_autovar_28,_autovar_29);
                 ;
                 goto accept8;
 alt8_2:
@@ -11191,11 +11053,7 @@ alt9_1:
                 it=AmethystCore_anything(self );
                 FAILTEST(alt9_2);
                 _autovar_31=it;;
-                bind_aset(bind2,1,_autovar_30);
-                bind_aset(bind2,2,_autovar_31);
-                it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-                _autovar_30=bind_aget(bind2,1);;
-                _autovar_31=bind_aget(bind2,2);;
+                it=AmethystCore_append(self,_autovar_30,_autovar_31);
                 ;
                 goto accept9;
 alt9_2:
@@ -11269,11 +11127,7 @@ alt11_1:
                 it=AmethystCore_anything(self );
                 FAILTEST(alt11_2);
                 _autovar_31=it;;
-                bind_aset(bind2,1,_autovar_30);
-                bind_aset(bind2,2,_autovar_31);
-                it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-                _autovar_30=bind_aget(bind2,1);;
-                _autovar_31=bind_aget(bind2,2);;
+                it=AmethystCore_append(self,_autovar_30,_autovar_31);
                 ;
                 goto accept11;
 alt11_2:
@@ -11355,7 +11209,6 @@ VALUE switchhash_Detect_Size_1;
 VALUE switchhash_Detect_Size_2;
 static VALUE sy__Or_dot_creat_49b2;
 static VALUE sy__Seq_dot_crea_bfbb;
-static VALUE sy___append_lp__d113;
 static VALUE sy___lb_bind_lb_1_rb__2d76;
 static VALUE sy___sh_lowleve_46e8;
 static VALUE sy__bind_lb_1_rb__eq__28f0;
@@ -11533,11 +11386,7 @@ success4:
             __result_2=it;;
             it=__result_2;
             _autovar_6=it;;
-            bind_aset(bind2,1,_autovar_5);
-            bind_aset(bind2,2,_autovar_6);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_5=bind_aget(bind2,1);;
-            _autovar_6=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_5,_autovar_6);
             ;
             goto accept1;
 alt1_2:
@@ -11659,11 +11508,7 @@ success6:
             _el_2=bind_aget(bind2,2);;
             it=_el_2;
             _autovar_9=it;;
-            bind_aset(bind2,1,_autovar_8);
-            bind_aset(bind2,2,_autovar_9);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_8=bind_aget(bind2,1);;
-            _autovar_9=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_8,_autovar_9);
             ;
             goto accept2;
 alt2_2:
@@ -11861,11 +11706,7 @@ success3:
             __result_2=it;;
             it=__result_2;
             _autovar_6=it;;
-            bind_aset(bind2,1,_autovar_3);
-            bind_aset(bind2,2,_autovar_6);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_3=bind_aget(bind2,1);;
-            _autovar_6=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_3,_autovar_6);
             ;
             goto accept1;
 alt1_2:
@@ -11977,11 +11818,7 @@ success5:
             _el_2=bind_aget(bind2,2);;
             it=_el_2;
             _autovar_9=it;;
-            bind_aset(bind2,1,_autovar_8);
-            bind_aset(bind2,2,_autovar_9);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_8=bind_aget(bind2,1);;
-            _autovar_9=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_8,_autovar_9);
             ;
             goto accept2;
 alt2_2:
@@ -12029,7 +11866,6 @@ void Init_detect_switch_c() {
     rb_global_variable(&switchhash_First_Dataflow_2);;
     sy__Compiler_558e=rb_intern("_Compiler_558e");
     sy__Switch_O_5445=rb_intern("_Switch_O_5445");
-    sy___append_lp__d113=rb_intern("__append_lp__d113");
     sy___at_vis_eq_bin_8b89=rb_intern("__at_vis_eq_bin_8b89");
     sy___d41d=rb_intern("__d41d");
     sy___lp_=rb_intern("__lp_");
@@ -12061,7 +11897,6 @@ void Init_detect_switch_c() {
     switchhash_Minsize_Dataflow_3=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=CAct\nnext h[k]=2 if k<=Cut\nnext h[k]=3 if k<=Local\nnext h[k]=4 if k<=Lookahead\nnext h[k]=5 if k<=Pass\nnext h[k]=6 if k<=Result\nnext h[k]=7 if k<=Stop\nnext h[k]=8 if k<=Apply\nnext h[k]=9 if k<=Bind\nnext h[k]=10 if k<=Many\nnext h[k]=11 if k<=Or\nnext h[k]=12 if k<=Switch_Char\nnext h[k]=13 if k<=Switch_Clas\nnext h[k]=14 if k<=Seq\nnext h[k]=15 if k<=Object\n}");
     rb_global_variable(&switchhash_Minsize_Dataflow_3);;
     sy__Compiler_558e=rb_intern("_Compiler_558e");
-    sy___append_lp__d113=rb_intern("__append_lp__d113");
     sy___at_vis_eq_bin_8b89=rb_intern("__at_vis_eq_bin_8b89");
     sy___d41d=rb_intern("__d41d");
     sy___lp_=rb_intern("__lp_");
@@ -12094,7 +11929,6 @@ void Init_detect_switch_c() {
     switchhash_Maxsize_Dataflow_3=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=CAct\nnext h[k]=2 if k<=Cut\nnext h[k]=3 if k<=Local\nnext h[k]=4 if k<=Lookahead\nnext h[k]=5 if k<=Pass\nnext h[k]=6 if k<=Result\nnext h[k]=7 if k<=Stop\nnext h[k]=8 if k<=Apply\nnext h[k]=9 if k<=Bind\nnext h[k]=10 if k<=Many\nnext h[k]=11 if k<=Or\nnext h[k]=12 if k<=Switch_Char\nnext h[k]=13 if k<=Switch_Clas\nnext h[k]=14 if k<=Seq\nnext h[k]=15 if k<=Object\n}");
     rb_global_variable(&switchhash_Maxsize_Dataflow_3);;
     sy__Compiler_558e=rb_intern("_Compiler_558e");
-    sy___append_lp__d113=rb_intern("__append_lp__d113");
     sy___at_vis_eq_bin_8b89=rb_intern("__at_vis_eq_bin_8b89");
     sy___d41d=rb_intern("__d41d");
     sy___lp_=rb_intern("__lp_");
@@ -12123,7 +11957,6 @@ void Init_detect_switch_c() {
     switchhash_Complexity_Dataflow_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Many\nnext h[k]=2 if k<=Or\nnext h[k]=3 if k<=Switch_Char\nnext h[k]=4 if k<=Switch_Clas\nnext h[k]=5 if k<=Seq\nnext h[k]=6 if k<=Object\n}");
     rb_global_variable(&switchhash_Complexity_Dataflow_1);;
     sy__Compiler_558e=rb_intern("_Compiler_558e");
-    sy___append_lp__d113=rb_intern("__append_lp__d113");
     sy___at_vis_eq_bin_8b89=rb_intern("__at_vis_eq_bin_8b89");
     sy___lp_Compile_7f7b=rb_intern("__lp_Compile_7f7b");
     sy__lattice_lb__11f0=rb_intern("_lattice_lb__11f0");
@@ -12147,7 +11980,6 @@ void Init_detect_switch_c() {
     switchhash_Switch_Char_Dataflow_3=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=CAct\nnext h[k]=2 if k<=Cut\nnext h[k]=3 if k<=Local\nnext h[k]=4 if k<=Lookahead\nnext h[k]=5 if k<=Pass\nnext h[k]=6 if k<=Result\nnext h[k]=7 if k<=Stop\nnext h[k]=8 if k<=Apply\nnext h[k]=9 if k<=Bind\nnext h[k]=10 if k<=Many\nnext h[k]=11 if k<=Or\nnext h[k]=12 if k<=Switch_Char\nnext h[k]=13 if k<=Switch_Clas\nnext h[k]=14 if k<=Seq\nnext h[k]=15 if k<=Object\n}");
     rb_global_variable(&switchhash_Switch_Char_Dataflow_3);;
     sy__Compiler_558e=rb_intern("_Compiler_558e");
-    sy___append_lp__d113=rb_intern("__append_lp__d113");
     sy___at_vis_eq_bin_8b89=rb_intern("__at_vis_eq_bin_8b89");
     sy___d41d=rb_intern("__d41d");
     sy___lp_=rb_intern("__lp_");
@@ -12182,7 +12014,6 @@ void Init_detect_switch_c() {
     switchhash_Switch_Clas_Dataflow_4=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=CAct\nnext h[k]=2 if k<=Cut\nnext h[k]=3 if k<=Local\nnext h[k]=4 if k<=Lookahead\nnext h[k]=5 if k<=Pass\nnext h[k]=6 if k<=Result\nnext h[k]=7 if k<=Stop\nnext h[k]=8 if k<=Apply\nnext h[k]=9 if k<=Bind\nnext h[k]=10 if k<=Many\nnext h[k]=11 if k<=Or\nnext h[k]=12 if k<=Switch_Char\nnext h[k]=13 if k<=Switch_Clas\nnext h[k]=14 if k<=Seq\nnext h[k]=15 if k<=Object\n}");
     rb_global_variable(&switchhash_Switch_Clas_Dataflow_4);;
     sy__Compiler_558e=rb_intern("_Compiler_558e");
-    sy___append_lp__d113=rb_intern("__append_lp__d113");
     sy___at_vis_eq_bin_8b89=rb_intern("__at_vis_eq_bin_8b89");
     sy___d41d=rb_intern("__d41d");
     sy___lp_=rb_intern("__lp_");
@@ -12216,7 +12047,6 @@ void Init_detect_switch_c() {
     switchhash_Cant_Fail_Dataflow_4=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=CAct\nnext h[k]=2 if k<=Cut\nnext h[k]=3 if k<=Local\nnext h[k]=4 if k<=Lookahead\nnext h[k]=5 if k<=Pass\nnext h[k]=6 if k<=Result\nnext h[k]=7 if k<=Stop\nnext h[k]=8 if k<=Apply\nnext h[k]=9 if k<=Bind\nnext h[k]=10 if k<=Many\nnext h[k]=11 if k<=Or\nnext h[k]=12 if k<=Switch_Char\nnext h[k]=13 if k<=Switch_Clas\nnext h[k]=14 if k<=Seq\nnext h[k]=15 if k<=Object\n}");
     rb_global_variable(&switchhash_Cant_Fail_Dataflow_4);;
     sy__Compiler_558e=rb_intern("_Compiler_558e");
-    sy___append_lp__d113=rb_intern("__append_lp__d113");
     sy___at_vis_eq_bin_8b89=rb_intern("__at_vis_eq_bin_8b89");
     sy___d41d=rb_intern("__d41d");
     sy___lp_=rb_intern("__lp_");
@@ -12253,7 +12083,6 @@ void Init_detect_switch_c() {
     switchhash_Detect_First_4=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_Detect_First_4);;
     sy__Seq_lb__ti__lp_bi_a321=rb_intern("_Seq_lb__ti__lp_bi_a321");
-    sy___append_lp__d113=rb_intern("__append_lp__d113");
     sy___at__contex_160a=rb_intern("__at__contex_160a");
     sy___at__contex_d6d5=rb_intern("__at__contex_d6d5");
     sy___do_rules_eq__le__ab16=rb_intern("__do_rules_eq__le__ab16");
@@ -12313,7 +12142,6 @@ void Init_detect_switch_c() {
     rb_global_variable(&switchhash_Detect_Switch_Char_8);;
     sy__Or_lb__ti_bind_d486=rb_intern("_Or_lb__ti_bind_d486");
     sy__Seq_lb__ti__lp_bi_a321=rb_intern("_Seq_lb__ti__lp_bi_a321");
-    sy___append_lp__d113=rb_intern("__append_lp__d113");
     sy___at__contex_160a=rb_intern("__at__contex_160a");
     sy___at__contex_d6d5=rb_intern("__at__contex_d6d5");
     sy___do_rules_eq__le__ab16=rb_intern("__do_rules_eq__le__ab16");
@@ -12382,7 +12210,6 @@ void Init_detect_switch_c() {
     sy__Or_lb__ti_bind_d486=rb_intern("_Or_lb__ti_bind_d486");
     sy__Seq_lb__ti__lp_bi_a321=rb_intern("_Seq_lb__ti__lp_bi_a321");
     sy__Switch_C_63f7=rb_intern("_Switch_C_63f7");
-    sy___append_lp__d113=rb_intern("__append_lp__d113");
     sy___at__contex_160a=rb_intern("__at__contex_160a");
     sy___at__contex_d6d5=rb_intern("__at__contex_d6d5");
     sy___do_rules_eq__le__ab16=rb_intern("__do_rules_eq__le__ab16");
@@ -12429,7 +12256,6 @@ void Init_detect_switch_c() {
     rb_global_variable(&switchhash_Detect_Size_2);;
     sy__Or_dot_creat_49b2=rb_intern("_Or_dot_creat_49b2");
     sy__Seq_dot_crea_bfbb=rb_intern("_Seq_dot_crea_bfbb");
-    sy___append_lp__d113=rb_intern("__append_lp__d113");
     sy___lb_bind_lb_1_rb__2d76=rb_intern("__lb_bind_lb_1_rb__2d76");
     sy___sh_lowleve_46e8=rb_intern("__sh_lowleve_46e8");
     sy__bind_lb_1_rb__eq__28f0=rb_intern("_bind_lb_1_rb__eq__28f0");
@@ -12439,5 +12265,5 @@ void Init_detect_switch_c() {
     sy_spaces=rb_intern("spaces");
     rb_define_method(cls_Detect_Size,"predicate",Detect_Size_predicate,1);
     rb_define_method(cls_Detect_Size,"predicate2",Detect_Size_predicate2,1);
-    rb_eval_string("testversiondetect_switch('86bb4f6441f6d056c11f8083d4fcb54b')");
+    rb_eval_string("testversiondetect_switch('eff8f04ce84bad9b35a4a46d795355e4')");
 }

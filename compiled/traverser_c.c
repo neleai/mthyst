@@ -313,7 +313,6 @@ VALUE AmethystCore_anything(VALUE self );
 VALUE Visitor_traverse(VALUE self );
 VALUE Visitor_traverse_item(VALUE self );
 VALUE switchhash_Visitor_1;
-static VALUE sy___append_lp__d113;
 static VALUE sy___lp_src_dot_ins_a413;
 static VALUE sy_traverse;
 static VALUE sy_traverse_item;
@@ -371,11 +370,7 @@ alt1_1:
         it=rb_funcall(self,sy_traverse_item,0);
         FAILTEST(alt1_2);
         _autovar_4=it;;
-        bind_aset(bind2,1,_autovar_3);
-        bind_aset(bind2,2,_autovar_4);
-        it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-        _autovar_3=bind_aget(bind2,1);;
-        _autovar_4=bind_aget(bind2,2);;
+        it=AmethystCore_append(self,_autovar_3,_autovar_4);
         ;
         goto accept1;
 alt1_2:
@@ -532,11 +527,7 @@ alt3_1:
             it=rb_funcall(self,sy_traverse_item,0);
             FAILTEST(alt3_2);
             _autovar_5=it;;
-            bind_aset(bind2,1,_autovar_4);
-            bind_aset(bind2,2,_autovar_5);
-            it=rb_funcall(self,sy___append_lp__d113,1,bind2);
-            _autovar_4=bind_aget(bind2,1);;
-            _autovar_5=bind_aget(bind2,2);;
+            it=AmethystCore_append(self,_autovar_4,_autovar_5);
             ;
             goto accept3;
 alt3_2:
@@ -631,12 +622,11 @@ void Init_traverser_c() {
     rb_define_method(cls_Visitor,"profile_report",profile_report_Visitor,0);
     switchhash_Visitor_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}");
     rb_global_variable(&switchhash_Visitor_1);;
-    sy___append_lp__d113=rb_intern("__append_lp__d113");
     sy___lp_src_dot_ins_a413=rb_intern("__lp_src_dot_ins_a413");
     sy_traverse=rb_intern("traverse");
     sy_traverse_item=rb_intern("traverse_item");
     sy_visit=rb_intern("visit");
     rb_define_method(cls_Visitor,"traverse",Visitor_traverse,0);
     rb_define_method(cls_Visitor,"traverse_item",Visitor_traverse_item,0);
-    rb_eval_string("testversiontraverser('fd0dbbcb4550c2b13ace6010bff36b3b')");
+    rb_eval_string("testversiontraverser('89d2c6edfd47f416076de901222d84ef')");
 }

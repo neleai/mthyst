@@ -105,9 +105,6 @@ end
 def _Seq_lb_bind_95dc(bind)
 Seq[bind[1],src]
 end
-def __append_lp__d113(bind)
-_append(bind[1],bind[2])
-end
 def __at__contex_160a(bind)
 @_context_arguments||={};bind[1]=@_context_arguments.dup
 end
@@ -160,7 +157,7 @@ end
 
 
 def constant_propagation_compiled_by
-'2a9b7c4ed8c7f985f118062e80aa4486'
+'213e3d6a190f04c0688e1fbfa3c126f4'
 end
 def constant_propagation_source_hash
 'afbe0dd7e39b6a400ad015d1d943a0d8'
@@ -169,6 +166,6 @@ def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
 end
 def constant_propagation_version
-'75c0291a1c3ee1a8730dd9eaa55cb22a'
+'87b64b5ad6c70e433477914f23b6aa0b'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/constant_propagation_c"

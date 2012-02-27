@@ -141,9 +141,6 @@ def _Strin_lb__lb__qu__88c8(bind)
 Strin[['"']+bind[1]+['"']]
 
 end
-def __append_lp__d113(bind)
-_append(bind[1],bind[2])
-end
 def __at_appends_975f(bind)
 @appends<< local(bind[1]) if bind[2]; Bind[local(bind[1]),bind[3],bind[2]=='[]']
 
@@ -218,7 +215,7 @@ class AmethystParser < Amethyst
 end
 
 def parser_compiled_by
-'2a9b7c4ed8c7f985f118062e80aa4486'
+'213e3d6a190f04c0688e1fbfa3c126f4'
 end
 def parser_source_hash
 'cbd93c5125bdfff5f296afad0fca8dac'
@@ -227,6 +224,6 @@ def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'8373862ba9dcd653b7cb7e4228bd4deb'
+'b3d4361dd39eb446f2da20e27c27aea2'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/parser_c"

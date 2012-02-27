@@ -109,9 +109,6 @@ end
 
 class Detect_Contextual_Arguments < Traverser_Clone2
 
-def __append_lp__6b01(bind)
-_append(@arguments,bind[1])
-end
 def __at_argumen_a3fb(bind)
 @arguments.uniq.sort
 end
@@ -143,7 +140,7 @@ end
 
 
 def contextual_argument_return_compiled_by
-'2a9b7c4ed8c7f985f118062e80aa4486'
+'213e3d6a190f04c0688e1fbfa3c126f4'
 end
 def contextual_argument_return_source_hash
 'c58f273fba1da2ca6575be1e452f5976'
@@ -152,6 +149,6 @@ def testversioncontextual_argument_return(r)
  raise "invalid version" if r!=contextual_argument_return_version
 end
 def contextual_argument_return_version
-'4c443837d65f7fe40e669945559bd28f'
+'f4e1c132d24830d6c54a37fefae32539'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/contextual_argument_return_c"
