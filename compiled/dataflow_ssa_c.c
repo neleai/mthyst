@@ -70,9 +70,10 @@ VALUE profile_report_Dataflow(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     if(ptr->mem) {
-        fprintf(profile_report,"memo Dataflow::root  hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
+        fprintf(profile_report,"memo Dataflow::root  hit: %i miss: %i ticks: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113],((memo_struct *)ptr->mem)->ticks[113]);
         ((memo_struct *)ptr->mem)->hits[113]=0;
         ((memo_struct *)ptr->mem)->miss[113]=0;
+        ((memo_struct *)ptr->mem)->ticks[113]=0;
     }
     return Qnil;
 }
@@ -87,6 +88,7 @@ VALUE Dataflow_root(VALUE self ) {
     if (ptr->mem==NULL) {
         ptr->mem=mem_Dataflow;
     }
+    ticks oldticks=read_timestamp_counter(),newticks;
     int oldpos=ptr->pos;
     if (memo_pos(ptr->mem,113,ptr->src,ptr->pos)!=-1) {
         it=memo_value(ptr->mem,113,ptr->src,ptr->pos);
@@ -295,9 +297,13 @@ success2:
     it=_autovar_11;
     __result=it;;
     memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos);
+    newticks=read_timestamp_counter();
+    ptr->mem->ticks[113]+=newticks-oldticks;
     return it;
 memo_fail:
     memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos);
+    newticks=read_timestamp_counter();
+    ptr->mem->ticks[113]+=newticks-oldticks;
     return failobj;
 
     return it;
@@ -2860,9 +2866,10 @@ VALUE profile_report_Forget_SSA(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     if(ptr->mem) {
-        fprintf(profile_report,"memo Forget_SSA::traverse  hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
+        fprintf(profile_report,"memo Forget_SSA::traverse  hit: %i miss: %i ticks: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113],((memo_struct *)ptr->mem)->ticks[113]);
         ((memo_struct *)ptr->mem)->hits[113]=0;
         ((memo_struct *)ptr->mem)->miss[113]=0;
+        ((memo_struct *)ptr->mem)->ticks[113]=0;
     }
     return Qnil;
 }
@@ -2950,6 +2957,7 @@ VALUE Forget_SSA_traverse(VALUE self ) {
     if (ptr->mem==NULL) {
         ptr->mem=mem_Forget_SSA;
     }
+    ticks oldticks=read_timestamp_counter(),newticks;
     int oldpos=ptr->pos;
     if (memo_pos(ptr->mem,113,ptr->src,ptr->pos)!=-1) {
         it=memo_value(ptr->mem,113,ptr->src,ptr->pos);
@@ -3040,9 +3048,13 @@ success1:
     _nvars=bind_aget(bind2,2);;
     __result=it;;
     memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos);
+    newticks=read_timestamp_counter();
+    ptr->mem->ticks[113]+=newticks-oldticks;
     return it;
 memo_fail:
     memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos);
+    newticks=read_timestamp_counter();
+    ptr->mem->ticks[113]+=newticks-oldticks;
     return failobj;
 
     return it;
@@ -3428,5 +3440,5 @@ void Init_dataflow_ssa_c() {
     rb_define_method(cls_Forget_SSA,"traverse",Forget_SSA_traverse,0);
     rb_define_method(cls_Forget_SSA,"traverse_item",Forget_SSA_traverse_item,0);
     rb_define_method(cls_Forget_SSA,"visit",Forget_SSA_visit,0);
-    rb_eval_string("testversiondataflow_ssa('790f5f292e8074dd05843e97d963435a')");
+    rb_eval_string("testversiondataflow_ssa('19e9aa6ee003b82811bc3082454919ef')");
 }

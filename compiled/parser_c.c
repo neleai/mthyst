@@ -134,14 +134,16 @@ VALUE profile_report_AmethystParser(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     if(ptr->mem) {
-        fprintf(profile_report,"memo AmethystParser::name  hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
+        fprintf(profile_report,"memo AmethystParser::name  hit: %i miss: %i ticks: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113],((memo_struct *)ptr->mem)->ticks[113]);
         ((memo_struct *)ptr->mem)->hits[113]=0;
         ((memo_struct *)ptr->mem)->miss[113]=0;
+        ((memo_struct *)ptr->mem)->ticks[113]=0;
     }
     if(ptr->mem) {
-        fprintf(profile_report,"memo AmethystParser::argsOpt  hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[115],((memo_struct *)ptr->mem)->miss[115]);
+        fprintf(profile_report,"memo AmethystParser::argsOpt  hit: %i miss: %i ticks: %i\n",((memo_struct *)ptr->mem)->hits[115],((memo_struct *)ptr->mem)->miss[115],((memo_struct *)ptr->mem)->ticks[115]);
         ((memo_struct *)ptr->mem)->hits[115]=0;
         ((memo_struct *)ptr->mem)->miss[115]=0;
+        ((memo_struct *)ptr->mem)->ticks[115]=0;
     }
     return Qnil;
 }
@@ -339,6 +341,7 @@ VALUE AmethystParser_argsOpt(VALUE self ) {
         ptr->mem=memo_init();
         ptr->memgc=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,ptr->mem);
     }
+    ticks oldticks=read_timestamp_counter(),newticks;
     int oldpos=ptr->pos;
     if (memo_pos(ptr->mem,115,ptr->src,ptr->pos)!=-1) {
         it=memo_value(ptr->mem,115,ptr->src,ptr->pos);
@@ -354,6 +357,7 @@ VALUE AmethystParser_argsOpt(VALUE self ) {
         ;
     case '!' ... UC(255):
         ;
+
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
@@ -386,6 +390,7 @@ alt1_1:
                 ;
             case '~' ... UC(255):
                 ;
+
                 int oldpos2=ptr->pos;
                 int cut2=0;
 alt2_1:
@@ -694,9 +699,13 @@ accept3:
         break;
     }
     memo_add(ptr->mem,115,ptr->src,oldpos,it,ptr->pos);
+    newticks=read_timestamp_counter();
+    ptr->mem->ticks[115]+=newticks-oldticks;
     return it;
 memo_fail:
     memo_add(ptr->mem,115,ptr->src,oldpos,failobj,ptr->pos);
+    newticks=read_timestamp_counter();
+    ptr->mem->ticks[115]+=newticks-oldticks;
     return failobj;
 
     return it;
@@ -3238,12 +3247,19 @@ VALUE AmethystParser_name(VALUE self ) {
         ptr->mem=memo_init();
         ptr->memgc=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,ptr->mem);
     }
+    ticks oldticks=read_timestamp_counter(),newticks;
     int oldpos=ptr->pos;
     if (memo_pos(ptr->mem,113,ptr->src,ptr->pos)!=-1) {
         it=memo_value(ptr->mem,113,ptr->src,ptr->pos);
         ptr->pos=memo_pos(ptr->mem,113,ptr->src,ptr->pos);
         return it;
     }
+     newticks=read_timestamp_counter(); printf("mem %i\n",newticks-oldticks);oldticks=read_timestamp_counter();
+     newticks=read_timestamp_counter(); printf("mem %i\n",newticks-oldticks);oldticks=read_timestamp_counter();
+     newticks=read_timestamp_counter(); printf("mem %i\n",newticks-oldticks);oldticks=read_timestamp_counter();
+     newticks=read_timestamp_counter(); printf("mem %i\n",newticks-oldticks);oldticks=read_timestamp_counter();
+     newticks=read_timestamp_counter(); printf("mem %i\n",newticks-oldticks);oldticks=read_timestamp_counter();
+
     switch((unsigned char)*ame_curstr2(ptr)) {
     case UC(0) ... '@':
         ;
@@ -3253,6 +3269,8 @@ VALUE AmethystParser_name(VALUE self ) {
         ;
     case '{' ... UC(255):
         ;
+    newticks=read_timestamp_counter(); printf("fail %i\n",newticks-oldticks);oldticks=read_timestamp_counter();
+
         goto memo_fail;
         break;
     case 'A' ... 'Z':
@@ -3261,14 +3279,19 @@ VALUE AmethystParser_name(VALUE self ) {
         ;
     case 'a' ... 'z':
         ;
+    newticks=read_timestamp_counter(); printf("success %i\n",newticks-oldticks);oldticks=read_timestamp_counter();
+
         it=rb_ary_new3(0);
         _autovar=it;;
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
         _autovar_2=it;;
+    newticks=read_timestamp_counter(); printf("arrays %i\n",newticks-oldticks);oldticks=read_timestamp_counter();
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_2);
+    newticks=read_timestamp_counter(); printf("setting %i\n",newticks-oldticks);oldticks=read_timestamp_counter();
         it=rb_funcall(self,sy___append_lp__d113,1,bind2);
+    newticks=read_timestamp_counter(); printf("setting %i\n",newticks-oldticks);oldticks=read_timestamp_counter();
         _autovar=bind_aget(bind2,1);;
         _autovar_2=bind_aget(bind2,2);;
         it=rb_ary_new3(0);
@@ -3323,9 +3346,13 @@ VALUE AmethystParser_name(VALUE self ) {
         break;
     }
     memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos);
+    newticks=read_timestamp_counter();
+    ptr->mem->ticks[113]+=newticks-oldticks;
     return it;
 memo_fail:
     memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos);
+    newticks=read_timestamp_counter();
+    ptr->mem->ticks[113]+=newticks-oldticks;
     return failobj;
 
     return it;
@@ -8790,5 +8817,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('b8cadafb3d75b12ae12707672a55b08f')");
+    rb_eval_string("testversionparser('8373862ba9dcd653b7cb7e4228bd4deb')");
 }

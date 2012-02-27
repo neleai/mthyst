@@ -8018,9 +8018,10 @@ VALUE profile_report_Detect_Switch_Char(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     if(ptr->mem) {
-        fprintf(profile_report,"memo Detect_Switch_Char::traverse  hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
+        fprintf(profile_report,"memo Detect_Switch_Char::traverse  hit: %i miss: %i ticks: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113],((memo_struct *)ptr->mem)->ticks[113]);
         ((memo_struct *)ptr->mem)->hits[113]=0;
         ((memo_struct *)ptr->mem)->miss[113]=0;
+        ((memo_struct *)ptr->mem)->ticks[113]=0;
     }
     return Qnil;
 }
@@ -8344,6 +8345,7 @@ VALUE Detect_Switch_Char_traverse(VALUE self ) {
     if (ptr->mem==NULL) {
         ptr->mem=mem_Detect_Switch_Char;
     }
+    ticks oldticks=read_timestamp_counter(),newticks;
     int oldpos=ptr->pos;
     if (memo_pos(ptr->mem,113,ptr->src,ptr->pos)!=-1) {
         it=memo_value(ptr->mem,113,ptr->src,ptr->pos);
@@ -8434,9 +8436,13 @@ success1:
     _nvars=bind_aget(bind2,2);;
     __result=it;;
     memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos);
+    newticks=read_timestamp_counter();
+    ptr->mem->ticks[113]+=newticks-oldticks;
     return it;
 memo_fail:
     memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos);
+    newticks=read_timestamp_counter();
+    ptr->mem->ticks[113]+=newticks-oldticks;
     return failobj;
 
     return it;
@@ -9762,9 +9768,10 @@ VALUE profile_report_Detect_Switch_Clas(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     if(ptr->mem) {
-        fprintf(profile_report,"memo Detect_Switch_Clas::traverse  hit: %i miss: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113]);
+        fprintf(profile_report,"memo Detect_Switch_Clas::traverse  hit: %i miss: %i ticks: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113],((memo_struct *)ptr->mem)->ticks[113]);
         ((memo_struct *)ptr->mem)->hits[113]=0;
         ((memo_struct *)ptr->mem)->miss[113]=0;
+        ((memo_struct *)ptr->mem)->ticks[113]=0;
     }
     return Qnil;
 }
@@ -10088,6 +10095,7 @@ VALUE Detect_Switch_Clas_traverse(VALUE self ) {
     if (ptr->mem==NULL) {
         ptr->mem=mem_Detect_Switch_Clas;
     }
+    ticks oldticks=read_timestamp_counter(),newticks;
     int oldpos=ptr->pos;
     if (memo_pos(ptr->mem,113,ptr->src,ptr->pos)!=-1) {
         it=memo_value(ptr->mem,113,ptr->src,ptr->pos);
@@ -10178,9 +10186,13 @@ success1:
     _nvars=bind_aget(bind2,2);;
     __result=it;;
     memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos);
+    newticks=read_timestamp_counter();
+    ptr->mem->ticks[113]+=newticks-oldticks;
     return it;
 memo_fail:
     memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos);
+    newticks=read_timestamp_counter();
+    ptr->mem->ticks[113]+=newticks-oldticks;
     return failobj;
 
     return it;
@@ -12427,5 +12439,5 @@ void Init_detect_switch_c() {
     sy_spaces=rb_intern("spaces");
     rb_define_method(cls_Detect_Size,"predicate",Detect_Size_predicate,1);
     rb_define_method(cls_Detect_Size,"predicate2",Detect_Size_predicate2,1);
-    rb_eval_string("testversiondetect_switch('443f6f7473f3129c5354e5ecf69c3ae6')");
+    rb_eval_string("testversiondetect_switch('86bb4f6441f6d056c11f8083d4fcb54b')");
 }

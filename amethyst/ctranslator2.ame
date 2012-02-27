@@ -118,11 +118,11 @@ s
                  else
                    s+="if (ptr->mem==NULL){ptr->mem=memo_init();ptr->memgc=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,ptr->mem);}"
                  end
-                 s+="int oldpos=ptr->pos;if (memo_pos(ptr->mem,#{@@memo_no=(@@memo_no||111)+2},ptr->src,ptr->pos)!=-1) {it=memo_value(ptr->mem,#{@@memo_no},ptr->src,ptr->pos);ptr->pos=memo_pos(ptr->mem,#{@@memo_no},ptr->src,ptr->pos);return it;}"
+                 s+="ticks oldticks=read_timestamp_counter(),newticks; int oldpos=ptr->pos;if (memo_pos(ptr->mem,#{@@memo_no=(@@memo_no||111)+2},ptr->src,ptr->pos)!=-1) {it=memo_value(ptr->mem,#{@@memo_no},ptr->src,ptr->pos);ptr->pos=memo_pos(ptr->mem,#{@@memo_no},ptr->src,ptr->pos);return it;}"
                  s+=t
-                 s+="memo_add(ptr->mem,#{@@memo_no},ptr->src,oldpos,it,ptr->pos); return it;\n"
-                 s+="memo_fail:  memo_add(ptr->mem,#{@@memo_no},ptr->src,oldpos,failobj,ptr->pos); return failobj;\n"
-                 @@profile_report << "if(ptr->mem){fprintf(profile_report,\"memo #{@>grammar}::#{@>rulename}  hit: %i miss: %i\\n\",((memo_struct *)ptr->mem)->hits[#{@@memo_no}],((memo_struct *)ptr->mem)->miss[#{@@memo_no}]);((memo_struct *)ptr->mem)->hits[#{@@memo_no}]=0;((memo_struct *)ptr->mem)->miss[#{@@memo_no}]=0;}"
+                 s+="memo_add(ptr->mem,#{@@memo_no},ptr->src,oldpos,it,ptr->pos); newticks=read_timestamp_counter(); ptr->mem->ticks[#{@@memo_no}]+=newticks-oldticks; return it;\n"
+                 s+="memo_fail:  memo_add(ptr->mem,#{@@memo_no},ptr->src,oldpos,failobj,ptr->pos); newticks=read_timestamp_counter(); ptr->mem->ticks[#{@@memo_no}]+=newticks-oldticks; return failobj;\n"
+                 @@profile_report << "if(ptr->mem){fprintf(profile_report,\"memo #{@>grammar}::#{@>rulename}  hit: %i miss: %i ticks: %i\\n\",((memo_struct *)ptr->mem)->hits[#{@@memo_no}],((memo_struct *)ptr->mem)->miss[#{@@memo_no}],((memo_struct *)ptr->mem)->ticks[#{@@memo_no}]);((memo_struct *)ptr->mem)->hits[#{@@memo_no}]=0;((memo_struct *)ptr->mem)->miss[#{@@memo_no}]=0;((memo_struct *)ptr->mem)->ticks[#{@@memo_no}]=0;}"
                  s}
         | Act[ {@@bindno=0;@@binds={}}
 								.*:{addcallback(@pred ? ["(",it,") || FAIL"] : it)}:cbno 

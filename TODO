@@ -31,7 +31,6 @@ think about suitable decomposition
 cont passing style.
 pseudoprocedures 
 
-
 serialization
 incremental compilation
 
@@ -41,7 +40,6 @@ functor for case insensivity
 
 copy propagation, expression variables
 Constant propagation also do value numbering to register renaming scheme.
-
 
 extract cc from makefile for portability
 

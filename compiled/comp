@@ -1,7 +1,7 @@
 O="-O2"
 comp(){
 echo $1
-gcc -I. -I/usr/include/ruby-1.9.1/x86_64-linux -I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -fPIC -fno-strict-aliasing -g -g -fPIC -c $1_c.c -o $1_c.o 
+gcc -O3  -I. -I/usr/include/ruby-1.9.1/x86_64-linux -I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -fPIC -fno-strict-aliasing -g -g -fPIC -c $1_c.c -o $1_c.o 
 gcc -shared -o 1.9.3/$1_c.so $1_c.o -L. -L/usr/lib -L. -rdynamic -Wl,-export-dynamic -lruby-1.9.1 -lpthread -lrt -ldl -lcrypt -lm -lc
 }
 for I in *.rb ;do

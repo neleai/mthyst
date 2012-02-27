@@ -11,7 +11,7 @@ typedef struct {
 	int rule;VALUE src;int pos;VALUE val;int newpos;
 } elem_struct;
 typedef struct memo_struct {
-		elem_struct *els;int *hits, *miss;
+		elem_struct *els;int *hits, *miss,*ticks;
 } memo_struct;
 #if MEMORY==-1
 static VALUE memo_test(memo_struct m,int rule,VALUE src,int pos){
@@ -31,7 +31,7 @@ static void memo_add(memo_struct m,int rule,VALUE src,int pos,VALUE val){
 #else
 static memo_struct *memo_init(){
 	memo_struct *m=malloc(sizeof(memo_struct));
-	m->hits=calloc(sizeof(int)*256,1);	m->miss=calloc(sizeof(int)*256,1);
+	m->hits=calloc(sizeof(int)*256,1);	m->miss=calloc(sizeof(int)*256,1);m->ticks=calloc(sizeof(int)*256,1);
 	m->els=(elem_struct *) calloc(sizeof(elem_struct),1<<MEMORY);
 	return m;
 }
@@ -59,3 +59,16 @@ void memo_mark(memo_struct *m){ /*we want weak link to src so we dont mark it*/
 }
 void memo_free(memo_struct *m){ free(m->els);free(m->hits);free(m->miss);free(m);}
 #endif
+#include <stdint.h>
+typedef uint64_t ticks;
+static __inline__ ticks read_timestamp_counter(void)
+{
+ uint32_t lo, hi;
+//    __asm__ __volatile__ (      // serialize
+//    "xorl %%eax,%%eax \n        cpuid"
+ //   ::: "%rax", "%rbx", "%rcx", "%rdx");
+    /* We cannot use "=A", since this would use %rax on x86_64 and return only the lower 32bits of the TSC */
+    __asm__ __volatile__ ("rdtsc" : "=a" (lo), "=d" (hi));
+    return (uint64_t)hi << 32 | lo;
+}
+

@@ -36,7 +36,7 @@ end
 
 
 def tests_compiled_by
-'5c1f7afec2544ad21e4acaa04236182d'
+'2a9b7c4ed8c7f985f118062e80aa4486'
 end
 def tests_source_hash
 '5efd9bb3ba58d343e1270a8afada8067'
