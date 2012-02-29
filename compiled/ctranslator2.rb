@@ -224,8 +224,8 @@ def __lb_bind_lb_1_rb__8fa4(bind)
 [bind[1],bind[2],bind[3]]
 
 end
-def __lp_Current_c458(bind)
-(CurrentParser[:memoize] && CurrentParser[:memoize].include?(bind[1])) ? Memo[src.body] : src.body
+def __lp_Current_39be(bind)
+(CurrentParser[:memoize] && ((CurrentParser[:memoize]==:all)||CurrentParser[:memoize].include?(bind[1]))) ? Memo[src.body] : src.body
 end
 def __lp_bind_lb_1_rb__a948(bind)
 (bind[1].is_a? String ) || FAIL
@@ -382,15 +382,15 @@ end
 
 
 def ctranslator2_compiled_by
-'213e3d6a190f04c0688e1fbfa3c126f4'
+'c17e4c3286f9eb7e63bd24ac089aa013'
 end
 def ctranslator2_source_hash
-'c560043aee0d7124f2989698b6c601f6'
+'0c612d24babc635560940e368c9d7d15'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'8b4c18a7f599611796a8503422351f8b'
+'fc9199021cb84b83e835981ed92ad251'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"

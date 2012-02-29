@@ -94,7 +94,7 @@ static VALUE sy___dq_it_eq__sh__le_bg_281f;
 static VALUE sy___dq_switch_lp__f722;
 static VALUE sy___dq_switchh_698e;
 static VALUE sy___lb_bind_lb_1_rb__8fa4;
-static VALUE sy___lp_Current_c458;
+static VALUE sy___lp_Current_39be;
 static VALUE sy___lp_bind_lb_1_rb__a948;
 static VALUE sy___lp_bind_lb_1_rb__d1fd;
 static VALUE sy___lp_bind_lb_1_rb__dbc9;
@@ -3667,7 +3667,7 @@ success38:
         _autovar=bind_aget(bind2,1);;
         _name=bind_aget(bind2,2);;
         bind_aset(bind2,1,_name);
-        it=rb_funcall(self,sy___lp_Current_c458,1,bind2);
+        it=rb_funcall(self,sy___lp_Current_39be,1,bind2);
         _name=bind_aget(bind2,1);;
         _autovar_70=it;;
         cstruct oldpass41=*ptr;
@@ -4364,7 +4364,7 @@ void Init_ctranslator2_c() {
     sy___dq_switch_lp__f722=rb_intern("__dq_switch_lp__f722");
     sy___dq_switchh_698e=rb_intern("__dq_switchh_698e");
     sy___lb_bind_lb_1_rb__8fa4=rb_intern("__lb_bind_lb_1_rb__8fa4");
-    sy___lp_Current_c458=rb_intern("__lp_Current_c458");
+    sy___lp_Current_39be=rb_intern("__lp_Current_39be");
     sy___lp_bind_lb_1_rb__a948=rb_intern("__lp_bind_lb_1_rb__a948");
     sy___lp_bind_lb_1_rb__d1fd=rb_intern("__lp_bind_lb_1_rb__d1fd");
     sy___lp_bind_lb_1_rb__dbc9=rb_intern("__lp_bind_lb_1_rb__dbc9");
@@ -4417,5 +4417,5 @@ void Init_ctranslator2_c() {
     rb_define_method(cls_AmethystCTranslator,"rbtrans2",AmethystCTranslator_rbtrans2,0);
     rb_define_method(cls_AmethystCTranslator,"rw",AmethystCTranslator_rw,2);
     rb_define_method(cls_AmethystCTranslator,"trans",AmethystCTranslator_trans,0);
-    rb_eval_string("testversionctranslator2('8b4c18a7f599611796a8503422351f8b')");
+    rb_eval_string("testversionctranslator2('fc9199021cb84b83e835981ed92ad251')");
 }

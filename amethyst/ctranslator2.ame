@@ -102,7 +102,7 @@ amethyst AmethystCTranslator < Amethyst {
                    "
               [s,init,rbcode] } ]
 
-         |  Rule[@name:name {@>rulename=name; Local.resetnumbering;resetlabels;@@locls={}} {(CurrentParser[:memoize] && CurrentParser[:memoize].include?(name)) ? Memo[@body] : @body}=>trans:body  
+         |  Rule[@name:name {@>rulename=name; Local.resetnumbering;resetlabels;@@locls={}} {(CurrentParser[:memoize] && ((CurrentParser[:memoize]==:all)||CurrentParser[:memoize].include?(name))) ? Memo[@body] : @body}=>trans:body  
           { h="VALUE #{@>grammar}_#{name}(VALUE self #{map_index(@args){|i| ",VALUE a#{i}"}*""})" 
             @@header<<h+";"
             @@defmethods<< "rb_define_method(cls_#{@>grammar},\"#{@name}\",#{@>grammar}_#{@name},#{@args.size});"

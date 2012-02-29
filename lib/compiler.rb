@@ -1,13 +1,4 @@
 CurrentParser={}
-class Class
-  def memoize(*a)
-    CurrentParser[:memoize]=a
-  end
-  def use_global_memo;           CurrentParser[:global_memo       ]=true;  end
-  def use_implicit_variables;    CurrentParser[:implicit_variables]=true;  end  
-  def use_contextual_returns;    CurrentParser[:contextual_returns]=true;  end
-end
-
 require 'digest'
 require 'set'
 COMPILED=["tests","amethyst","traverser","detect_variables2","parser","dataflow_ssa","inliner2","normalize",
