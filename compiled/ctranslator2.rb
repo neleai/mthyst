@@ -256,17 +256,17 @@ end
 def _bind_lb_1_rb__dot__1364(bind)
 bind[1].ary.each{|al| bind[2]+="next h[k]=#{bind[3]} if k<=#{al}\\n";bind[4]+="case #{bind[3]}/*#{al}*/:";bind[3]+=1}
 end
-def _bind_lb_1_rb__eq__07c2(bind)
+def _bind_lb_1_rb__eq__35ba(bind)
 bind[1]=""
                  if CurrentParser[:global_memo]
                    bind[1]+="if (ptr->mem==NULL){ptr->mem=mem_#{bind[2][:grammar]};}" 
                  else
                    bind[1]+="if (ptr->mem==NULL){ptr->mem=memo_init();ptr->memgc=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,ptr->mem);}"
                  end
-                 bind[1]+="ticks oldticks=read_timestamp_counter(),newticks; int oldpos=ptr->pos;if (memo_pos(ptr->mem,#{@memo_no=(@memo_no||111)+2},ptr->src,ptr->pos)!=-1) {it=memo_value(ptr->mem,#{@memo_no},ptr->src,ptr->pos);ptr->pos=memo_pos(ptr->mem,#{@memo_no},ptr->src,ptr->pos);return it;}"
+                 bind[1]+="time_struct time_old=memo_get(ptr->mem,#{@memo_no=(@memo_no||111)+2},ptr->src,ptr->pos); if (time_old.pos!=-1) {ptr->pos=time_old.pos;return time_old.result;} int oldpos=ptr->pos;"
                  bind[1]+=bind[3]
-                 bind[1]+="memo_add(ptr->mem,#{@memo_no},ptr->src,oldpos,it,ptr->pos); newticks=read_timestamp_counter(); ptr->mem->ticks[#{@memo_no}]+=newticks-oldticks; return it;\n"
-                 bind[1]+="memo_fail:  memo_add(ptr->mem,#{@memo_no},ptr->src,oldpos,failobj,ptr->pos); newticks=read_timestamp_counter(); ptr->mem->ticks[#{@memo_no}]+=newticks-oldticks; return failobj;\n"
+                 bind[1]+="memo_add(ptr->mem,#{@memo_no},ptr->src,oldpos,it,ptr->pos); return it;\n"
+                 bind[1]+="memo_fail:  memo_add(ptr->mem,#{@memo_no},ptr->src,oldpos,failobj,ptr->pos); return failobj;\n"
                  @profile_report << "if(ptr->mem){fprintf(profile_report,\"memo #{bind[2][:grammar]}::#{bind[2][:rulename]}  hit: %i miss: %i ticks: %i\\n\",((memo_struct *)ptr->mem)->hits[#{@memo_no}],((memo_struct *)ptr->mem)->miss[#{@memo_no}],((memo_struct *)ptr->mem)->ticks[#{@memo_no}]);((memo_struct *)ptr->mem)->hits[#{@memo_no}]=0;((memo_struct *)ptr->mem)->miss[#{@memo_no}]=0;((memo_struct *)ptr->mem)->ticks[#{@memo_no}]=0;}"
                  bind[1]
 end
@@ -382,15 +382,15 @@ end
 
 
 def ctranslator2_compiled_by
-'c17e4c3286f9eb7e63bd24ac089aa013'
+'ff7d4a97e2274c18064bc39cbfd5e398'
 end
 def ctranslator2_source_hash
-'0c612d24babc635560940e368c9d7d15'
+'b288cef4b491a05359936ebb099cd333'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'fc9199021cb84b83e835981ed92ad251'
+'8e1c8a256d877745dd126703f61d84ca'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"

@@ -332,13 +332,12 @@ VALUE AmethystParser_argsOpt(VALUE self ) {
         ptr->mem=memo_init();
         ptr->memgc=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,ptr->mem);
     }
-    ticks oldticks=read_timestamp_counter(),newticks;
-    int oldpos=ptr->pos;
-    if (memo_pos(ptr->mem,115,ptr->src,ptr->pos)!=-1) {
-        it=memo_value(ptr->mem,115,ptr->src,ptr->pos);
-        ptr->pos=memo_pos(ptr->mem,115,ptr->src,ptr->pos);
-        return it;
+    time_struct time_old=memo_get(ptr->mem,115,ptr->src,ptr->pos);
+    if (time_old.pos!=-1) {
+        ptr->pos=time_old.pos;
+        return time_old.result;
     }
+    int oldpos=ptr->pos;
     switch((unsigned char)*ame_curstr2(ptr)) {
     case UC(0) ... UC(8):
         ;
@@ -680,13 +679,9 @@ accept3:
         break;
     }
     memo_add(ptr->mem,115,ptr->src,oldpos,it,ptr->pos);
-    newticks=read_timestamp_counter();
-    ptr->mem->ticks[115]+=newticks-oldticks;
     return it;
 memo_fail:
     memo_add(ptr->mem,115,ptr->src,oldpos,failobj,ptr->pos);
-    newticks=read_timestamp_counter();
-    ptr->mem->ticks[115]+=newticks-oldticks;
     return failobj;
 
     return it;
@@ -3076,13 +3071,12 @@ VALUE AmethystParser_name(VALUE self ) {
         ptr->mem=memo_init();
         ptr->memgc=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,ptr->mem);
     }
-    ticks oldticks=read_timestamp_counter(),newticks;
-    int oldpos=ptr->pos;
-    if (memo_pos(ptr->mem,113,ptr->src,ptr->pos)!=-1) {
-        it=memo_value(ptr->mem,113,ptr->src,ptr->pos);
-        ptr->pos=memo_pos(ptr->mem,113,ptr->src,ptr->pos);
-        return it;
+    time_struct time_old=memo_get(ptr->mem,113,ptr->src,ptr->pos);
+    if (time_old.pos!=-1) {
+        ptr->pos=time_old.pos;
+        return time_old.result;
     }
+    int oldpos=ptr->pos;
     switch((unsigned char)*ame_curstr2(ptr)) {
     case UC(0) ... '@':
         ;
@@ -3150,13 +3144,9 @@ VALUE AmethystParser_name(VALUE self ) {
         break;
     }
     memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos);
-    newticks=read_timestamp_counter();
-    ptr->mem->ticks[113]+=newticks-oldticks;
     return it;
 memo_fail:
     memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos);
-    newticks=read_timestamp_counter();
-    ptr->mem->ticks[113]+=newticks-oldticks;
     return failobj;
 
     return it;
@@ -8432,5 +8422,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('b3d4361dd39eb446f2da20e27c27aea2')");
+    rb_eval_string("testversionparser('fb06fd5b7cf27ea5b4cf4394fcbee573')");
 }

@@ -652,13 +652,12 @@ VALUE Left_Factor_traverse(VALUE self ) {
     if (ptr->mem==NULL) {
         ptr->mem=mem_Left_Factor;
     }
-    ticks oldticks=read_timestamp_counter(),newticks;
-    int oldpos=ptr->pos;
-    if (memo_pos(ptr->mem,113,ptr->src,ptr->pos)!=-1) {
-        it=memo_value(ptr->mem,113,ptr->src,ptr->pos);
-        ptr->pos=memo_pos(ptr->mem,113,ptr->src,ptr->pos);
-        return it;
+    time_struct time_old=memo_get(ptr->mem,113,ptr->src,ptr->pos);
+    if (time_old.pos!=-1) {
+        ptr->pos=time_old.pos;
+        return time_old.result;
     }
+    int oldpos=ptr->pos;
     ptr->pos=ptr->len;
     it=rb_ary_new3(0);
     _nvars=it;;
@@ -743,13 +742,9 @@ success1:
     _nvars=bind_aget(bind2,2);;
     __result=it;;
     memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos);
-    newticks=read_timestamp_counter();
-    ptr->mem->ticks[113]+=newticks-oldticks;
     return it;
 memo_fail:
     memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos);
-    newticks=read_timestamp_counter();
-    ptr->mem->ticks[113]+=newticks-oldticks;
     return failobj;
 
     return it;
@@ -1177,5 +1172,5 @@ void Init_left_factor_c() {
     rb_define_method(cls_Left_Factor,"traverse",Left_Factor_traverse,0);
     rb_define_method(cls_Left_Factor,"traverse_item",Left_Factor_traverse_item,0);
     rb_define_method(cls_Left_Factor,"visit",Left_Factor_visit,0);
-    rb_eval_string("testversionleft_factor('de7cbaf2e88bebb56766a7aed257dac2')");
+    rb_eval_string("testversionleft_factor('5457db4c1d4a6f55059a66956c94b4d0')");
 }
