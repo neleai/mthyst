@@ -256,7 +256,13 @@ end
 def _bind_lb_1_rb__dot__1364(bind)
 bind[1].ary.each{|al| bind[2]+="next h[k]=#{bind[3]} if k<=#{al}\\n";bind[4]+="case #{bind[3]}/*#{al}*/:";bind[3]+=1}
 end
-def _bind_lb_1_rb__eq__35ba(bind)
+def _bind_lb_1_rb__eq__7d1a(bind)
+bind[1]="int #{@stoplabel}=0; while(!#{@stoplabel}){ #{bind[2]} } "
+									@stops=bind[3]; @stoplabel=bind[4]
+									bind[1]
+								
+end
+def _bind_lb_1_rb__eq__7d7c(bind)
 bind[1]=""
                  if CurrentParser[:global_memo]
                    bind[1]+="if (ptr->mem==NULL){ptr->mem=mem_#{bind[2][:grammar]};}" 
@@ -265,16 +271,10 @@ bind[1]=""
                  end
                  bind[1]+="time_struct time_old=memo_get(ptr->mem,#{@memo_no=(@memo_no||111)+2},ptr->src,ptr->pos); if (time_old.pos!=-1) {ptr->pos=time_old.pos;return time_old.result;} int oldpos=ptr->pos;"
                  bind[1]+=bind[3]
-                 bind[1]+="memo_add(ptr->mem,#{@memo_no},ptr->src,oldpos,it,ptr->pos); return it;\n"
-                 bind[1]+="memo_fail:  memo_add(ptr->mem,#{@memo_no},ptr->src,oldpos,failobj,ptr->pos); return failobj;\n"
+                 bind[1]+="memo_add(ptr->mem,#{@memo_no},ptr->src,oldpos,it,ptr->pos,time_old); return it;\n"
+                 bind[1]+="memo_fail:  memo_add(ptr->mem,#{@memo_no},ptr->src,oldpos,failobj,ptr->pos,time_old); return failobj;\n"
                  @profile_report << "if(ptr->mem){fprintf(profile_report,\"memo #{bind[2][:grammar]}::#{bind[2][:rulename]}  hit: %i miss: %i ticks: %i\\n\",((memo_struct *)ptr->mem)->hits[#{@memo_no}],((memo_struct *)ptr->mem)->miss[#{@memo_no}],((memo_struct *)ptr->mem)->ticks[#{@memo_no}]);((memo_struct *)ptr->mem)->hits[#{@memo_no}]=0;((memo_struct *)ptr->mem)->miss[#{@memo_no}]=0;((memo_struct *)ptr->mem)->ticks[#{@memo_no}]=0;}"
                  bind[1]
-end
-def _bind_lb_1_rb__eq__7d1a(bind)
-bind[1]="int #{@stoplabel}=0; while(!#{@stoplabel}){ #{bind[2]} } "
-									@stops=bind[3]; @stoplabel=bind[4]
-									bind[1]
-								
 end
 def _bind_lb_1_rb__lb__230a(bind)
 bind[1][:grammar]=src.name;bind[1][:parent]=src.parent
@@ -382,15 +382,15 @@ end
 
 
 def ctranslator2_compiled_by
-'ff7d4a97e2274c18064bc39cbfd5e398'
+'3d152f93a4d747dde4fd9bfb7fda90b0'
 end
 def ctranslator2_source_hash
-'b288cef4b491a05359936ebb099cd333'
+'4cc17c189f64f7a95013af82a792a627'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'8e1c8a256d877745dd126703f61d84ca'
+'f49f68b0933bc0eb6f919f9c47e66731'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"

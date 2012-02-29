@@ -290,10 +290,10 @@ success2:
     *ptr=oldpass2;
     it=_autovar_11;
     __result=it;;
-    memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos);
+    memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos,time_old);
     return it;
 memo_fail:
-    memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos);
+    memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos,time_old);
     return failobj;
 
     return it;
@@ -2980,10 +2980,10 @@ success1:
     _ivars=bind_aget(bind2,1);;
     _nvars=bind_aget(bind2,2);;
     __result=it;;
-    memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos);
+    memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos,time_old);
     return it;
 memo_fail:
-    memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos);
+    memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos,time_old);
     return failobj;
 
     return it;
@@ -3368,5 +3368,5 @@ void Init_dataflow_ssa_c() {
     rb_define_method(cls_Forget_SSA,"traverse",Forget_SSA_traverse,0);
     rb_define_method(cls_Forget_SSA,"traverse_item",Forget_SSA_traverse_item,0);
     rb_define_method(cls_Forget_SSA,"visit",Forget_SSA_visit,0);
-    rb_eval_string("testversiondataflow_ssa('540b8080b52f00695f43b7c1afb753f2')");
+    rb_eval_string("testversiondataflow_ssa('08e3b4677faa8dd3b6a94f53cf773b4f')");
 }

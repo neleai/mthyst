@@ -8341,10 +8341,10 @@ success1:
     _ivars=bind_aget(bind2,1);;
     _nvars=bind_aget(bind2,2);;
     __result=it;;
-    memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos);
+    memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos,time_old);
     return it;
 memo_fail:
-    memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos);
+    memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos,time_old);
     return failobj;
 
     return it;
@@ -10053,10 +10053,10 @@ success1:
     _ivars=bind_aget(bind2,1);;
     _nvars=bind_aget(bind2,2);;
     __result=it;;
-    memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos);
+    memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos,time_old);
     return it;
 memo_fail:
-    memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos);
+    memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos,time_old);
     return failobj;
 
     return it;
@@ -12255,5 +12255,5 @@ void Init_detect_switch_c() {
     sy_spaces=rb_intern("spaces");
     rb_define_method(cls_Detect_Size,"predicate",Detect_Size_predicate,1);
     rb_define_method(cls_Detect_Size,"predicate2",Detect_Size_predicate2,1);
-    rb_eval_string("testversiondetect_switch('0f6cf14ba60e2a91cf5813ac89533fd9')");
+    rb_eval_string("testversiondetect_switch('e59b37271e7073f3c7f50c3c55f3b060')");
 }

@@ -678,10 +678,10 @@ accept3:
         ;
         break;
     }
-    memo_add(ptr->mem,115,ptr->src,oldpos,it,ptr->pos);
+    memo_add(ptr->mem,115,ptr->src,oldpos,it,ptr->pos,time_old);
     return it;
 memo_fail:
-    memo_add(ptr->mem,115,ptr->src,oldpos,failobj,ptr->pos);
+    memo_add(ptr->mem,115,ptr->src,oldpos,failobj,ptr->pos,time_old);
     return failobj;
 
     return it;
@@ -3143,10 +3143,10 @@ VALUE AmethystParser_name(VALUE self ) {
         __result=it;;
         break;
     }
-    memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos);
+    memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos,time_old);
     return it;
 memo_fail:
-    memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos);
+    memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos,time_old);
     return failobj;
 
     return it;
@@ -8422,5 +8422,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('fb06fd5b7cf27ea5b4cf4394fcbee573')");
+    rb_eval_string("testversionparser('c730eb11b4dd7a9716e0d75b2f0a50f2')");
 }
