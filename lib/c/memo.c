@@ -48,7 +48,10 @@ static time_struct memo_get(memo_struct *m,int rule,VALUE src,int pos){
 }
 
 static void memo_add(memo_struct *m,int rule,VALUE src,int pos,VALUE val,int newpos,time_struct time_old){
-  m->ticks[rule]+=timestamp.time-time_old.time;
+  long time  = timestamp.time  - time_old.time;
+  long saved = timestamp.saved - time_old.saved;
+  timestamp.saved += time-saved;
+  m->ticks[rule]+=time-saved;
 	elem_struct el;int i;
 	el.rule=rule;el.src=src;el.pos=pos;el.val=val;el.newpos=newpos;
   m->cache[(rule+pos)&(CACHE_SIZE-1)]=el;
