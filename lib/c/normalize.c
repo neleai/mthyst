@@ -822,12 +822,12 @@ VALUE normalize_Many(VALUE obj){int i;
 	VALUE ary=rb_iv_get(obj,"@ary");
 	if (rb_obj_frozen_p(obj)==Qtrue)
 		obj=rb_obj_dup(obj);
-	rb_iv_set(obj,"@has_stop",normalize_el(rb_iv_get(obj,"@has_stop")));hash=11*hash+rb_iv_get(obj,"@has_stop");rb_iv_set(obj,"@ary",normalize_el(rb_iv_get(obj,"@ary")));hash=11*hash+rb_iv_get(obj,"@ary");
+	rb_iv_set(obj,"@ary",normalize_el(rb_iv_get(obj,"@ary")));hash=11*hash+rb_iv_get(obj,"@ary");
 	rb_iv_set(obj,"@hash",LONG2FIX(hash));
 	rb_obj_freeze(obj);
 	hash=hash&((1<<20)-1);
   while(obj2=cache_Many->ary[hash]){
-	 	if (!els_equal(rb_iv_get(obj,"@has_stop"),rb_iv_get(obj2,"@has_stop"))) goto next;if (!els_equal(rb_iv_get(obj,"@ary"),rb_iv_get(obj2,"@ary"))) goto next;
+	 	if (!els_equal(rb_iv_get(obj,"@ary"),rb_iv_get(obj2,"@ary"))) goto next;
 	 	hits_Many++;
 	 	return cache_Many->ret[hash];
 	 	next:;
@@ -839,12 +839,12 @@ VALUE normalize_Many(VALUE obj){int i;
 		int hash3=0;
 	  if (rb_obj_frozen_p(obj3)==Qtrue)
 	    obj3=rb_obj_dup(obj3);
-	  rb_iv_set(obj3,"@has_stop",normalize_el(rb_iv_get(obj3,"@has_stop")));hash3=11*hash3+rb_iv_get(obj3,"@has_stop");rb_iv_set(obj3,"@ary",normalize_el(rb_iv_get(obj3,"@ary")));hash3=11*hash3+rb_iv_get(obj3,"@ary");
+	  rb_iv_set(obj3,"@ary",normalize_el(rb_iv_get(obj3,"@ary")));hash3=11*hash3+rb_iv_get(obj3,"@ary");
   	rb_iv_set(obj3,"@hash",LONG2FIX(hash3));
     rb_obj_freeze(obj3);    
 		hash3=hash3&((1<<20)-1);
     while(obj2=cache_Many->ary[hash3]){
-	   	if (!els_equal(rb_iv_get(obj3,"@has_stop"),rb_iv_get(obj2,"@has_stop"))) goto next2;if (!els_equal(rb_iv_get(obj3,"@ary"),rb_iv_get(obj2,"@ary"))) goto next2;
+	   	if (!els_equal(rb_iv_get(obj3,"@ary"),rb_iv_get(obj2,"@ary"))) goto next2;
 	 	  break;
       next2:;
       hash3=(hash3+1)&((1<<20)-1);
@@ -858,19 +858,19 @@ VALUE normalize_Many(VALUE obj){int i;
   gc_obj->ary[gc_obj->no++]=obj3;
 	return obj3;
 }
-VALUE create2_Many(VALUE self ,VALUE has_stop,VALUE ary){
+VALUE create2_Many(VALUE self ,VALUE ary){
 	int hash=0;
-	has_stop=normalize_el(has_stop);hash=11*hash+has_stop;ary=normalize_el(ary);hash=11*hash+ary;
+	ary=normalize_el(ary);hash=11*hash+ary;
 	hash=hash&((1<<20)-1);
 	VALUE obj2=cache_Many->ary[hash];
   if((int)obj2){
-    if (!els_equal(has_stop,rb_iv_get(obj2,"@has_stop"))) goto next;if (!els_equal(ary,rb_iv_get(obj2,"@ary"))) goto next;
+    if (!els_equal(ary,rb_iv_get(obj2,"@ary"))) goto next;
     hits_Many++;
     return cache_Many->ret[hash];
     next:;
   }
 	VALUE obj3=rb_obj_alloc(rb_const_get(rb_cObject,rb_intern("Many")));
-	rb_iv_set(obj3,"@has_stop",has_stop);rb_iv_set(obj3,"@ary",ary);
+	rb_iv_set(obj3,"@ary",ary);
 	return normalize_Many(obj3);
 }
 int hits_Or=0;int miss_Or=0; normalize_cache *cache_Or;
@@ -1486,7 +1486,7 @@ cache_Act=normalize_cache_init();
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Lookahead")),"normalize",normalize_Lookahead,0);
 	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Lookahead")),"create2",create2_Lookahead,1);cache_Many=normalize_cache_init();
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Many")),"normalize",normalize_Many,0);
-	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Many")),"create2",create2_Many,2);cache_Or=normalize_cache_init();
+	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Many")),"create2",create2_Many,1);cache_Or=normalize_cache_init();
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Or")),"normalize",normalize_Or,0);
 	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Or")),"create2",create2_Or,2);cache_Pass=normalize_cache_init();
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Pass")),"normalize",normalize_Pass,0);

@@ -2798,7 +2798,6 @@ VALUE Normalize_or(VALUE self ) {
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=rb_funcall(self,sy__src_25d9,1,bind2);
         it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
@@ -3265,7 +3264,6 @@ VALUE Normalize_seq2(VALUE self ) {
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=rb_funcall(self,sy__src_25d9,1,bind2);
         it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
@@ -3750,5 +3748,5 @@ void Init_normalize_c() {
     rb_define_method(cls_Normalize,"or",Normalize_or,0);
     rb_define_method(cls_Normalize,"seq2",Normalize_seq2,0);
     rb_define_method(cls_Normalize,"switch",Normalize_switch,0);
-    rb_eval_string("testversionnormalize('ce12c90865493bd06d9c6412073b83ab')");
+    rb_eval_string("testversionnormalize('368aa6ef354614d73854e52b0f90d7b3')");
 }
