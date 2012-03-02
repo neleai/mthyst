@@ -69,10 +69,10 @@ VALUE profile_report_Dataflow(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     if(ptr->mem) {
-        fprintf(profile_report,"memo Dataflow::root  hit: %i miss: %i ticks: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113],((memo_struct *)ptr->mem)->ticks[113]);
-        ((memo_struct *)ptr->mem)->hits[113]=0;
-        ((memo_struct *)ptr->mem)->miss[113]=0;
-        ((memo_struct *)ptr->mem)->ticks[113]=0;
+        fprintf(profile_report,"memo Dataflow::root  hit: %i miss: %i ticks: %i\n",((memo_struct *)ptr->mem)->hits[117],((memo_struct *)ptr->mem)->miss[117],((memo_struct *)ptr->mem)->ticks[117]);
+        ((memo_struct *)ptr->mem)->hits[117]=0;
+        ((memo_struct *)ptr->mem)->miss[117]=0;
+        ((memo_struct *)ptr->mem)->ticks[117]=0;
     }
     return Qnil;
 }
@@ -87,7 +87,7 @@ VALUE Dataflow_root(VALUE self ) {
     if (ptr->mem==NULL) {
         ptr->mem=mem_Dataflow;
     }
-    time_struct time_old=memo_get(ptr->mem,113,ptr->src,ptr->pos);
+    time_struct time_old=memo_get(ptr->mem,117,ptr->src,ptr->pos);
     if (time_old.pos!=-1) {
         ptr->pos=time_old.pos;
         return time_old.result;
@@ -290,10 +290,10 @@ success2:
     *ptr=oldpass2;
     it=_autovar_11;
     __result=it;;
-    memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos,time_old);
+    memo_add(ptr->mem,117,ptr->src,oldpos,it,ptr->pos,time_old);
     return it;
 memo_fail:
-    memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos,time_old);
+    memo_add(ptr->mem,117,ptr->src,oldpos,failobj,ptr->pos,time_old);
     return failobj;
 
     return it;
@@ -2800,10 +2800,10 @@ VALUE profile_report_Forget_SSA(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     if(ptr->mem) {
-        fprintf(profile_report,"memo Forget_SSA::traverse  hit: %i miss: %i ticks: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113],((memo_struct *)ptr->mem)->ticks[113]);
-        ((memo_struct *)ptr->mem)->hits[113]=0;
-        ((memo_struct *)ptr->mem)->miss[113]=0;
-        ((memo_struct *)ptr->mem)->ticks[113]=0;
+        fprintf(profile_report,"memo Forget_SSA::traverse  hit: %i miss: %i ticks: %i\n",((memo_struct *)ptr->mem)->hits[117],((memo_struct *)ptr->mem)->miss[117],((memo_struct *)ptr->mem)->ticks[117]);
+        ((memo_struct *)ptr->mem)->hits[117]=0;
+        ((memo_struct *)ptr->mem)->miss[117]=0;
+        ((memo_struct *)ptr->mem)->ticks[117]=0;
     }
     return Qnil;
 }
@@ -2891,7 +2891,7 @@ VALUE Forget_SSA_traverse(VALUE self ) {
     if (ptr->mem==NULL) {
         ptr->mem=mem_Forget_SSA;
     }
-    time_struct time_old=memo_get(ptr->mem,113,ptr->src,ptr->pos);
+    time_struct time_old=memo_get(ptr->mem,117,ptr->src,ptr->pos);
     if (time_old.pos!=-1) {
         ptr->pos=time_old.pos;
         return time_old.result;
@@ -2980,10 +2980,10 @@ success1:
     _ivars=bind_aget(bind2,1);;
     _nvars=bind_aget(bind2,2);;
     __result=it;;
-    memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos,time_old);
+    memo_add(ptr->mem,117,ptr->src,oldpos,it,ptr->pos,time_old);
     return it;
 memo_fail:
-    memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos,time_old);
+    memo_add(ptr->mem,117,ptr->src,oldpos,failobj,ptr->pos,time_old);
     return failobj;
 
     return it;
@@ -3368,5 +3368,5 @@ void Init_dataflow_ssa_c() {
     rb_define_method(cls_Forget_SSA,"traverse",Forget_SSA_traverse,0);
     rb_define_method(cls_Forget_SSA,"traverse_item",Forget_SSA_traverse_item,0);
     rb_define_method(cls_Forget_SSA,"visit",Forget_SSA_visit,0);
-    rb_eval_string("testversiondataflow_ssa('08e3b4677faa8dd3b6a94f53cf773b4f')");
+    rb_eval_string("testversiondataflow_ssa('d98a09b9ffe83712e88008f7a33ace64')");
 }

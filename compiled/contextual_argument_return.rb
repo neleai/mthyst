@@ -140,7 +140,7 @@ end
 
 
 def contextual_argument_return_compiled_by
-'0d708a6d4c40966c22a31f60626dfa59'
+'bc8b9836da9a8f546598a8c83101f2c6'
 end
 def contextual_argument_return_source_hash
 'c58f273fba1da2ca6575be1e452f5976'

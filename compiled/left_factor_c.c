@@ -42,10 +42,10 @@ VALUE profile_report_Left_Factor(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     if(ptr->mem) {
-        fprintf(profile_report,"memo Left_Factor::traverse  hit: %i miss: %i ticks: %i\n",((memo_struct *)ptr->mem)->hits[113],((memo_struct *)ptr->mem)->miss[113],((memo_struct *)ptr->mem)->ticks[113]);
-        ((memo_struct *)ptr->mem)->hits[113]=0;
-        ((memo_struct *)ptr->mem)->miss[113]=0;
-        ((memo_struct *)ptr->mem)->ticks[113]=0;
+        fprintf(profile_report,"memo Left_Factor::traverse  hit: %i miss: %i ticks: %i\n",((memo_struct *)ptr->mem)->hits[117],((memo_struct *)ptr->mem)->miss[117],((memo_struct *)ptr->mem)->ticks[117]);
+        ((memo_struct *)ptr->mem)->hits[117]=0;
+        ((memo_struct *)ptr->mem)->miss[117]=0;
+        ((memo_struct *)ptr->mem)->ticks[117]=0;
     }
     return Qnil;
 }
@@ -652,7 +652,7 @@ VALUE Left_Factor_traverse(VALUE self ) {
     if (ptr->mem==NULL) {
         ptr->mem=mem_Left_Factor;
     }
-    time_struct time_old=memo_get(ptr->mem,113,ptr->src,ptr->pos);
+    time_struct time_old=memo_get(ptr->mem,117,ptr->src,ptr->pos);
     if (time_old.pos!=-1) {
         ptr->pos=time_old.pos;
         return time_old.result;
@@ -741,10 +741,10 @@ success1:
     _ivars=bind_aget(bind2,1);;
     _nvars=bind_aget(bind2,2);;
     __result=it;;
-    memo_add(ptr->mem,113,ptr->src,oldpos,it,ptr->pos,time_old);
+    memo_add(ptr->mem,117,ptr->src,oldpos,it,ptr->pos,time_old);
     return it;
 memo_fail:
-    memo_add(ptr->mem,113,ptr->src,oldpos,failobj,ptr->pos,time_old);
+    memo_add(ptr->mem,117,ptr->src,oldpos,failobj,ptr->pos,time_old);
     return failobj;
 
     return it;
@@ -1172,5 +1172,5 @@ void Init_left_factor_c() {
     rb_define_method(cls_Left_Factor,"traverse",Left_Factor_traverse,0);
     rb_define_method(cls_Left_Factor,"traverse_item",Left_Factor_traverse_item,0);
     rb_define_method(cls_Left_Factor,"visit",Left_Factor_visit,0);
-    rb_eval_string("testversionleft_factor('750e47d83143f3ae5804b7d09446ce3f')");
+    rb_eval_string("testversionleft_factor('22f162dec2bfa34614983885ae796c58')");
 }

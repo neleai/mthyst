@@ -1,3 +1,19 @@
+class Gram
+  def memo_no
+    if !@memo_no
+      if @name=="Amethyst"
+        @memo_no=111
+      else
+        @memo_no=Compiler.grammars[parent].memo_no+2
+      end
+    else
+      @memo_no
+    end
+  end
+  def memo_inc
+    @memo_no=memo_no+2
+  end
+end
 
 class AmethystCTranslator < Amethyst 
   def addcallback2(cb)
@@ -262,18 +278,19 @@ bind[1]="int #{@stoplabel}=0; while(!#{@stoplabel}){ #{bind[2]} } "
 									bind[1]
 								
 end
-def _bind_lb_1_rb__eq__7d7c(bind)
+def _bind_lb_1_rb__eq__c125(bind)
 bind[1]=""
                  if CurrentParser[:global_memo]
                    bind[1]+="if (ptr->mem==NULL){ptr->mem=mem_#{bind[2][:grammar]};}" 
                  else
                    bind[1]+="if (ptr->mem==NULL){ptr->mem=memo_init();ptr->memgc=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,ptr->mem);}"
                  end
-                 bind[1]+="time_struct time_old=memo_get(ptr->mem,#{@memo_no=(@memo_no||111)+2},ptr->src,ptr->pos); if (time_old.pos!=-1) {ptr->pos=time_old.pos;return time_old.result;} int oldpos=ptr->pos;"
+                 memo_no=Compiler.grammars[bind[2][:grammar]].memo_inc
+                 bind[1]+="time_struct time_old=memo_get(ptr->mem,#{memo_no},ptr->src,ptr->pos); if (time_old.pos!=-1) {ptr->pos=time_old.pos;return time_old.result;} int oldpos=ptr->pos;"
                  bind[1]+=bind[3]
-                 bind[1]+="memo_add(ptr->mem,#{@memo_no},ptr->src,oldpos,it,ptr->pos,time_old); return it;\n"
-                 bind[1]+="memo_fail:  memo_add(ptr->mem,#{@memo_no},ptr->src,oldpos,failobj,ptr->pos,time_old); return failobj;\n"
-                 @profile_report << "if(ptr->mem){fprintf(profile_report,\"memo #{bind[2][:grammar]}::#{bind[2][:rulename]}  hit: %i miss: %i ticks: %i\\n\",((memo_struct *)ptr->mem)->hits[#{@memo_no}],((memo_struct *)ptr->mem)->miss[#{@memo_no}],((memo_struct *)ptr->mem)->ticks[#{@memo_no}]);((memo_struct *)ptr->mem)->hits[#{@memo_no}]=0;((memo_struct *)ptr->mem)->miss[#{@memo_no}]=0;((memo_struct *)ptr->mem)->ticks[#{@memo_no}]=0;}"
+                 bind[1]+="memo_add(ptr->mem,#{memo_no},ptr->src,oldpos,it,ptr->pos,time_old); return it;\n"
+                 bind[1]+="memo_fail:  memo_add(ptr->mem,#{memo_no},ptr->src,oldpos,failobj,ptr->pos,time_old); return failobj;\n"
+                 @profile_report << "if(ptr->mem){fprintf(profile_report,\"memo #{bind[2][:grammar]}::#{bind[2][:rulename]}  hit: %i miss: %i ticks: %i\\n\",((memo_struct *)ptr->mem)->hits[#{memo_no}],((memo_struct *)ptr->mem)->miss[#{memo_no}],((memo_struct *)ptr->mem)->ticks[#{memo_no}]);((memo_struct *)ptr->mem)->hits[#{memo_no}]=0;((memo_struct *)ptr->mem)->miss[#{memo_no}]=0;((memo_struct *)ptr->mem)->ticks[#{memo_no}]=0;}"
                  bind[1]
 end
 def _bind_lb_1_rb__lb__230a(bind)
@@ -382,15 +399,15 @@ end
 
 
 def ctranslator2_compiled_by
-'0d708a6d4c40966c22a31f60626dfa59'
+'bc8b9836da9a8f546598a8c83101f2c6'
 end
 def ctranslator2_source_hash
-'4cc17c189f64f7a95013af82a792a627'
+'d3acf3ebe469abe6dcce369abad6f891'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'f49f68b0933bc0eb6f919f9c47e66731'
+'fa51aa1b582421d9c0fdf48fac028004'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"
