@@ -7193,6 +7193,36 @@ alt1_1:
         ;
         it=rb_funcall(self,sy_nr,0);
         FAILTEST(alt1_2);
+        int oldpos2=ptr->pos;
+        int cut2=0;
+alt2_1:
+        ;
+        it=rb_funcall(self,sy_spaces,0);
+        switch((unsigned char)*ame_curstr2(ptr)) {
+        case UC(0) ... '+':
+            ;
+        case '-' ... UC(255):
+            ;
+            goto alt2_2;
+            break;
+        case ',' ... ',':
+            ;
+            it=rb_str_new(ptr->str+ptr->pos,1);
+            ptr->pos++;
+            break;
+        }
+        ;
+        goto accept2;
+alt2_2:
+        ptr->pos=oldpos2;
+        it=Qnil;
+        ;
+        goto accept2;
+alt2_3:
+        ptr->pos=oldpos2;
+        goto alt1_2;
+accept2:
+        ;
         it=rb_funcall(self,sy_spaces,0);
         it=rb_funcall(self,sy_prefixed,0);
         FAILTEST(alt1_2);
@@ -8422,5 +8452,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('c730eb11b4dd7a9716e0d75b2f0a50f2')");
+    rb_eval_string("testversionparser('464a220b4b916064e67a1305da7fdd00')");
 }

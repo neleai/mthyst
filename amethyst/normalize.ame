@@ -39,9 +39,9 @@ amethyst Normalize{
          | Or[.*:ary] -> Switch_Or.create(:ary=>ary.map{|k| [nil,k]})
 
 
-  apply2 = Apply[ ["apply" | "_seq"] Act[Lambda[.:x]] -> x
-                | ["apply"] CAct[.:name] -> Apply[name,{:clas=> resolvegrammar($current_grammar_name,name)}] 
-                | ["_seq"] CAct[ [] ]  -> Placeholder
+  apply2 = Apply[ ["apply" | "_seq"],Act[Lambda[.:x]] -> x
+                | ["apply"]         ,CAct[.:name] -> Apply[name,{:clas=> resolvegrammar($current_grammar_name,name)}] 
+                | ["_seq"]          ,CAct[ [] ]  -> Placeholder
                 | .* {@self.freeze}
                 ]
 

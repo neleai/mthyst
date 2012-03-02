@@ -18,7 +18,7 @@ amethyst AmethystParser {
 
   
   expression = listOf(`sequence`,`"|"`):ary @Or_AST  
-  sequence =  (nr "" prefixed)*:ary  @Seq
+  sequence =  (nr ","? "" prefixed)*:ary  @Seq
   nr = ~("" name argsOpt "=")
 
   prefixed   = <&~>:neg inline_host_expr:expr-> Pred[expr[0],neg=="~"]

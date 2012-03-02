@@ -101,10 +101,10 @@ end
 
 
 def normalize_compiled_by
-'cdacf0557920643944aaed2c292a2545'
+'0d708a6d4c40966c22a31f60626dfa59'
 end
 def normalize_source_hash
-'14caddf2a5998a722f4fc726adbe6131'
+'8188790c9ff8ef247b581afed610cfbb'
 end
 def testversionnormalize(r)
  raise "invalid version" if r!=normalize_version
