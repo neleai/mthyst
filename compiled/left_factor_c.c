@@ -117,7 +117,10 @@ alt1_1:
         goto success2;
 pass2:
         *ptr=oldpass2;
-        goto alt1_2;
+        if (1) {
+            it=failobj;
+            goto alt1_2;
+        }
 success2:
         *ptr=oldpass2;
         it=_autovar_3;
@@ -201,7 +204,10 @@ alt2_1:
         goto success3;
 pass3:
         *ptr=oldpass3;
-        goto alt2_2;
+        if (1) {
+            it=failobj;
+            goto alt2_2;
+        }
 success3:
         *ptr=oldpass3;
         it=_autovar_6;
@@ -254,15 +260,17 @@ accept2:
     goto success1;
 pass1:
     *ptr=oldpass1;
-    goto fail;
+    if (1) {
+        it=failobj;
+        goto fail;
+    }
 success1:
     *ptr=oldpass1;
     it=_autovar_4;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Left_Factor_factor(VALUE self ,VALUE a0,VALUE a1,VALUE a2) {
     VALUE vals[3];
@@ -387,9 +395,8 @@ alt1_3:
 accept1:
     ;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Left_Factor_first(VALUE self ,VALUE a0) {
     VALUE vals[1];
@@ -452,7 +459,10 @@ alt1_1:
         goto success2;
 pass2:
         *ptr=oldpass2;
-        goto alt1_2;
+        if (1) {
+            it=failobj;
+            goto alt1_2;
+        }
 success2:
         *ptr=oldpass2;
         it=_autovar_3;
@@ -533,7 +543,10 @@ alt2_1:
         goto success3;
 pass3:
         *ptr=oldpass3;
-        goto alt2_2;
+        if (1) {
+            it=failobj;
+            goto alt2_2;
+        }
 success3:
         *ptr=oldpass3;
         it=_autovar_6;
@@ -584,15 +597,17 @@ accept2:
     goto success1;
 pass1:
     *ptr=oldpass1;
-    goto fail;
+    if (1) {
+        it=failobj;
+        goto fail;
+    }
 success1:
     *ptr=oldpass1;
     it=_autovar_4;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Left_Factor_rest(VALUE self ,VALUE a0,VALUE a1) {
     VALUE vals[2];
@@ -691,7 +706,10 @@ accept2:
         goto success2;
 pass2:
         *ptr=oldpass2;
-        goto alt1_2;
+        if (1) {
+            it=failobj;
+            goto alt1_2;
+        }
 success2:
         *ptr=oldpass2;
         it=_autovar_5;
@@ -744,15 +762,17 @@ accept1:
     goto success1;
 pass1:
     *ptr=oldpass1;
-    goto fail;
+    if (1) {
+        it=failobj;
+        goto fail;
+    }
 success1:
     *ptr=oldpass1;
     it=_autovar_6;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Left_Factor_root(VALUE self ) {
     VALUE vals[0];
@@ -769,9 +789,8 @@ VALUE Left_Factor_root(VALUE self ) {
     }
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Left_Factor_traverse(VALUE self ) {
     VALUE vals[0];
@@ -868,7 +887,10 @@ accept1:
     goto success2;
 pass2:
     *ptr=oldpass2;
-    goto pass1;
+    if (1) {
+        it=failobj;
+        goto pass1;
+    }
 success2:
     *ptr=oldpass2;
     it=Qnil;
@@ -879,7 +901,10 @@ success2:
     goto success1;
 pass1:
     *ptr=oldpass1;
-    goto memo_fail;
+    if (1) {
+        it=failobj;
+        goto memo_fail;
+    }
 success1:
     *ptr=oldpass1;
     bind_aset(bind2,1,_ivars);
@@ -888,15 +913,12 @@ success1:
     _ivars=bind_aget(bind2,1);;
     _nvars=bind_aget(bind2,2);;
     __result=it;;
+memo_fail:
     memo_add(ptr->mem,117,ptr->src,oldpos,it,ptr->pos,time_old);
     return it;
-memo_fail:
-    memo_add(ptr->mem,117,ptr->src,oldpos,failobj,ptr->pos,time_old);
-    return failobj;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Left_Factor_traverse_item(VALUE self ) {
     VALUE vals[0];
@@ -957,7 +979,10 @@ alt1_2:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto alt1_3;
+        if (1) {
+            it=failobj;
+            goto alt1_3;
+        }
 success1:
         *ptr=oldpass1;
         it=_autovar_2;
@@ -1067,7 +1092,10 @@ accept3:
         goto success2;
 pass2:
         *ptr=oldpass2;
-        goto alt2_3;
+        if (1) {
+            it=failobj;
+            goto alt2_3;
+        }
 success2:
         *ptr=oldpass2;
         it=_autovar_4;
@@ -1131,9 +1159,8 @@ accept4:
         ;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Left_Factor_visit(VALUE self ) {
     VALUE vals[0];
@@ -1324,7 +1351,10 @@ accept1:
         goto success2;
 pass2:
         *ptr=oldpass2;
-        goto pass1;
+        if (1) {
+            it=failobj;
+            goto pass1;
+        }
 success2:
         *ptr=oldpass2;
         it=_autovar_3;
@@ -1337,7 +1367,10 @@ success2:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success1:
         *ptr=oldpass1;
         it=_autovar_4;
@@ -1351,9 +1384,8 @@ success1:
         }
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 void Init_left_factor_c() {
     cls_Left_Factor=rb_define_class("Left_Factor",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2")));
@@ -1400,5 +1432,5 @@ void Init_left_factor_c() {
     rb_define_method(cls_Left_Factor,"traverse",Left_Factor_traverse,0);
     rb_define_method(cls_Left_Factor,"traverse_item",Left_Factor_traverse_item,0);
     rb_define_method(cls_Left_Factor,"visit",Left_Factor_visit,0);
-    rb_eval_string("testversionleft_factor('6645956c0f2d17becc07e8e607088749')");
+    rb_eval_string("testversionleft_factor('447b6298339fd271ea5449884e48d96e')");
 }

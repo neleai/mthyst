@@ -37,9 +37,8 @@ VALUE Detect_Implicit_Variables_root(VALUE self ) {
     it=rb_funcall(self,sy___at_vars_a187,1,bind2);
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Detect_Implicit_Variables_traverse(VALUE self ) {
     VALUE vals[0];
@@ -122,7 +121,10 @@ accept1:
     goto success2;
 pass2:
     *ptr=oldpass2;
-    goto pass1;
+    if (1) {
+        it=failobj;
+        goto pass1;
+    }
 success2:
     *ptr=oldpass2;
     it=_autovar_5;
@@ -135,15 +137,17 @@ success2:
     goto success1;
 pass1:
     *ptr=oldpass1;
-    goto fail;
+    if (1) {
+        it=failobj;
+        goto fail;
+    }
 success1:
     *ptr=oldpass1;
     it=_autovar_6;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Detect_Implicit_Variables_traverse_item(VALUE self ) {
     VALUE vals[0];
@@ -204,7 +208,10 @@ alt1_2:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto alt1_3;
+        if (1) {
+            it=failobj;
+            goto alt1_3;
+        }
 success1:
         *ptr=oldpass1;
         it=_autovar_2;
@@ -309,7 +316,10 @@ accept3:
         goto success2;
 pass2:
         *ptr=oldpass2;
-        goto alt2_3;
+        if (1) {
+            it=failobj;
+            goto alt2_3;
+        }
 success2:
         *ptr=oldpass2;
         it=_autovar_6;
@@ -373,9 +383,8 @@ accept4:
         ;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Detect_Implicit_Variables_visit(VALUE self ) {
     VALUE vals[0];
@@ -457,7 +466,10 @@ accept1:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success1:
         *ptr=oldpass1;
         it=_autovar_4;
@@ -471,9 +483,8 @@ success1:
         }
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE cls_Add_Implicit_Variables;
 VALUE Add_Implicit_Variables_root(VALUE self );
@@ -591,15 +602,17 @@ VALUE Add_Implicit_Variables_root(VALUE self ) {
     goto success1;
 pass1:
     *ptr=oldpass1;
-    goto fail;
+    if (1) {
+        it=failobj;
+        goto fail;
+    }
 success1:
     *ptr=oldpass1;
     it=_autovar_4;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Add_Implicit_Variables_traverse(VALUE self ) {
     VALUE vals[0];
@@ -687,7 +700,10 @@ accept1:
     goto success2;
 pass2:
     *ptr=oldpass2;
-    goto pass1;
+    if (1) {
+        it=failobj;
+        goto pass1;
+    }
 success2:
     *ptr=oldpass2;
     it=Qnil;
@@ -698,7 +714,10 @@ success2:
     goto success1;
 pass1:
     *ptr=oldpass1;
-    goto fail;
+    if (1) {
+        it=failobj;
+        goto fail;
+    }
 success1:
     *ptr=oldpass1;
     bind_aset(bind2,1,_ivars);
@@ -708,9 +727,8 @@ success1:
     _nvars=bind_aget(bind2,2);;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Add_Implicit_Variables_traverse_item(VALUE self ) {
     VALUE vals[0];
@@ -771,7 +789,10 @@ alt1_2:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto alt1_3;
+        if (1) {
+            it=failobj;
+            goto alt1_3;
+        }
 success1:
         *ptr=oldpass1;
         it=_autovar_2;
@@ -881,7 +902,10 @@ accept3:
         goto success2;
 pass2:
         *ptr=oldpass2;
-        goto alt2_3;
+        if (1) {
+            it=failobj;
+            goto alt2_3;
+        }
 success2:
         *ptr=oldpass2;
         it=_autovar_4;
@@ -945,9 +969,8 @@ accept4:
         ;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Add_Implicit_Variables_visit(VALUE self ) {
     VALUE vals[0];
@@ -1054,7 +1077,10 @@ accept2:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto alt1_2;
+        if (1) {
+            it=failobj;
+            goto alt1_2;
+        }
 success1:
         *ptr=oldpass1;
         it=_autovar_4;
@@ -1145,7 +1171,10 @@ accept3:
         goto success2;
 pass2:
         *ptr=oldpass2;
-        goto alt1_3;
+        if (1) {
+            it=failobj;
+            goto alt1_3;
+        }
 success2:
         *ptr=oldpass2;
         it=_autovar_6;
@@ -1252,7 +1281,10 @@ accept4:
         goto success3;
 pass3:
         *ptr=oldpass3;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success3:
         *ptr=oldpass3;
         it=_autovar_4;
@@ -1348,7 +1380,10 @@ accept5:
         goto success4;
 pass4:
         *ptr=oldpass4;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success4:
         *ptr=oldpass4;
         it=_autovar_6;
@@ -1368,9 +1403,8 @@ success4:
         }
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 void Init_implicit_variables_c() {
     cls_Detect_Implicit_Variables=rb_define_class("Detect_Implicit_Variables",rb_const_get(rb_cObject,rb_intern("Visitor")));
@@ -1422,5 +1456,5 @@ void Init_implicit_variables_c() {
     rb_define_method(cls_Add_Implicit_Variables,"traverse",Add_Implicit_Variables_traverse,0);
     rb_define_method(cls_Add_Implicit_Variables,"traverse_item",Add_Implicit_Variables_traverse_item,0);
     rb_define_method(cls_Add_Implicit_Variables,"visit",Add_Implicit_Variables_visit,0);
-    rb_eval_string("testversionimplicit_variables('801592bf3c32081684f6f3807da09aaa')");
+    rb_eval_string("testversionimplicit_variables('d71653d50292b3e19c6354d416b586a6')");
 }

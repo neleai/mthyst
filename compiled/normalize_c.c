@@ -144,7 +144,10 @@ VALUE Normalize_act(VALUE self ) {
             goto success2;
 pass2:
             *ptr=oldpass2;
-            goto pass1;
+            if (1) {
+                it=failobj;
+                goto pass1;
+            }
 success2:
             *ptr=oldpass2;
             it=_autovar_4;
@@ -1275,7 +1278,10 @@ accept13:
             goto success3;
 pass3:
             *ptr=oldpass3;
-            goto pass1;
+            if (1) {
+                it=failobj;
+                goto pass1;
+            }
 success3:
             *ptr=oldpass3;
             it=rb_funcall(self,sy__CAct_lb_eva_559c,1,bind2);
@@ -1297,7 +1303,10 @@ success3:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success1:
         *ptr=oldpass1;
         it=_autovar_2;
@@ -1311,9 +1320,8 @@ success1:
         }
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Normalize_apply2(VALUE self ) {
     VALUE vals[0];
@@ -1453,7 +1461,10 @@ accept3:
             goto success2;
 pass2:
             *ptr=oldpass2;
-            goto alt2_2;
+            if (1) {
+                it=failobj;
+                goto alt2_2;
+            }
 success2:
             *ptr=oldpass2;
             it=ptr->ary[ptr->pos];            ;
@@ -1511,7 +1522,10 @@ success2:
                 goto success4;
 pass4:
                 *ptr=oldpass4;
-                goto pass3;
+                if (1) {
+                    it=failobj;
+                    goto pass3;
+                }
 success4:
                 *ptr=oldpass4;
                 it=Qnil;
@@ -1531,7 +1545,10 @@ success4:
             goto success3;
 pass3:
             *ptr=oldpass3;
-            goto alt2_2;
+            if (1) {
+                it=failobj;
+                goto alt2_2;
+            }
 success3:
             *ptr=oldpass3;
             bind_aset(bind2,1,_x);
@@ -1591,7 +1608,10 @@ alt2_2:
             goto success5;
 pass5:
             *ptr=oldpass5;
-            goto alt2_3;
+            if (1) {
+                it=failobj;
+                goto alt2_3;
+            }
 success5:
             *ptr=oldpass5;
             if (1) {
@@ -1650,7 +1670,10 @@ alt2_3:
             goto success6;
 pass6:
             *ptr=oldpass6;
-            goto alt2_4;
+            if (1) {
+                it=failobj;
+                goto alt2_4;
+            }
 success6:
             *ptr=oldpass6;
             if (1) {
@@ -1763,7 +1786,10 @@ accept5:
             goto success7;
 pass7:
             *ptr=oldpass7;
-            goto alt4_2;
+            if (1) {
+                it=failobj;
+                goto alt4_2;
+            }
 success7:
             *ptr=oldpass7;
             if (1) {
@@ -1822,7 +1848,10 @@ alt4_2:
             goto success8;
 pass8:
             *ptr=oldpass8;
-            goto alt4_3;
+            if (1) {
+                it=failobj;
+                goto alt4_3;
+            }
 success8:
             *ptr=oldpass8;
             it=ptr->ary[ptr->pos];            ;
@@ -1858,7 +1887,10 @@ success8:
             goto success9;
 pass9:
             *ptr=oldpass9;
-            goto alt4_3;
+            if (1) {
+                it=failobj;
+                goto alt4_3;
+            }
 success9:
             *ptr=oldpass9;
             bind_aset(bind2,1,_name);
@@ -1918,7 +1950,10 @@ alt4_3:
             goto success10;
 pass10:
             *ptr=oldpass10;
-            goto alt4_4;
+            if (1) {
+                it=failobj;
+                goto alt4_4;
+            }
 success10:
             *ptr=oldpass10;
             it=ptr->ary[ptr->pos];            ;
@@ -1971,7 +2006,10 @@ success10:
             goto success12;
 pass12:
             *ptr=oldpass12;
-            goto pass11;
+            if (1) {
+                it=failobj;
+                goto pass11;
+            }
 success12:
             *ptr=oldpass12;
             it=Qnil;
@@ -1982,7 +2020,10 @@ success12:
             goto success11;
 pass11:
             *ptr=oldpass11;
-            goto alt4_4;
+            if (1) {
+                it=failobj;
+                goto alt4_4;
+            }
 success11:
             *ptr=oldpass11;
             it=rb_funcall(self,sy__Placehol_a03d,1,bind2);
@@ -2094,7 +2135,10 @@ accept7:
             goto success13;
 pass13:
             *ptr=oldpass13;
-            goto alt6_2;
+            if (1) {
+                it=failobj;
+                goto alt6_2;
+            }
 success13:
             *ptr=oldpass13;
             if (1) {
@@ -2153,7 +2197,10 @@ alt6_2:
             goto success14;
 pass14:
             *ptr=oldpass14;
-            goto alt6_3;
+            if (1) {
+                it=failobj;
+                goto alt6_3;
+            }
 success14:
             *ptr=oldpass14;
             it=ptr->ary[ptr->pos];            ;
@@ -2189,7 +2236,10 @@ success14:
             goto success15;
 pass15:
             *ptr=oldpass15;
-            goto alt6_3;
+            if (1) {
+                it=failobj;
+                goto alt6_3;
+            }
 success15:
             *ptr=oldpass15;
             bind_aset(bind2,1,_name);
@@ -2249,7 +2299,10 @@ alt6_3:
             goto success16;
 pass16:
             *ptr=oldpass16;
-            goto alt6_4;
+            if (1) {
+                it=failobj;
+                goto alt6_4;
+            }
 success16:
             *ptr=oldpass16;
             if (1) {
@@ -2362,7 +2415,10 @@ accept9:
             goto success17;
 pass17:
             *ptr=oldpass17;
-            goto alt8_2;
+            if (1) {
+                it=failobj;
+                goto alt8_2;
+            }
 success17:
             *ptr=oldpass17;
             if (1) {
@@ -2421,7 +2477,10 @@ alt8_2:
             goto success18;
 pass18:
             *ptr=oldpass18;
-            goto alt8_3;
+            if (1) {
+                it=failobj;
+                goto alt8_3;
+            }
 success18:
             *ptr=oldpass18;
             if (1) {
@@ -2480,7 +2539,10 @@ alt8_3:
             goto success19;
 pass19:
             *ptr=oldpass19;
-            goto alt8_4;
+            if (1) {
+                it=failobj;
+                goto alt8_4;
+            }
 success19:
             *ptr=oldpass19;
             it=ptr->ary[ptr->pos];            ;
@@ -2533,7 +2595,10 @@ success19:
             goto success21;
 pass21:
             *ptr=oldpass21;
-            goto pass20;
+            if (1) {
+                it=failobj;
+                goto pass20;
+            }
 success21:
             *ptr=oldpass21;
             it=Qnil;
@@ -2544,7 +2609,10 @@ success21:
             goto success20;
 pass20:
             *ptr=oldpass20;
-            goto alt8_4;
+            if (1) {
+                it=failobj;
+                goto alt8_4;
+            }
 success20:
             *ptr=oldpass20;
             it=rb_funcall(self,sy__Placehol_a03d,1,bind2);
@@ -2656,7 +2724,10 @@ accept11:
             goto success22;
 pass22:
             *ptr=oldpass22;
-            goto alt10_2;
+            if (1) {
+                it=failobj;
+                goto alt10_2;
+            }
 success22:
             *ptr=oldpass22;
             if (1) {
@@ -2715,7 +2786,10 @@ alt10_2:
             goto success23;
 pass23:
             *ptr=oldpass23;
-            goto alt10_3;
+            if (1) {
+                it=failobj;
+                goto alt10_3;
+            }
 success23:
             *ptr=oldpass23;
             if (1) {
@@ -2774,7 +2848,10 @@ alt10_3:
             goto success24;
 pass24:
             *ptr=oldpass24;
-            goto alt10_4;
+            if (1) {
+                it=failobj;
+                goto alt10_4;
+            }
 success24:
             *ptr=oldpass24;
             if (1) {
@@ -2819,7 +2896,10 @@ accept1:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success1:
         *ptr=oldpass1;
         it=_autovar_8;
@@ -2833,9 +2913,8 @@ success1:
         }
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Normalize_bind(VALUE self ) {
     VALUE vals[0];
@@ -2946,7 +3025,10 @@ alt1_1:
             goto success3;
 pass3:
             *ptr=oldpass3;
-            goto pass2;
+            if (1) {
+                it=failobj;
+                goto pass2;
+            }
 success3:
             *ptr=oldpass3;
             it=rb_funcall(self,sy__src_25d9,1,bind2);
@@ -2959,7 +3041,10 @@ success3:
             goto success2;
 pass2:
             *ptr=oldpass2;
-            goto alt1_2;
+            if (1) {
+                it=failobj;
+                goto alt1_2;
+            }
 success2:
             *ptr=oldpass2;
             it=_autovar_4;
@@ -3085,7 +3170,10 @@ alt3_1:
                 goto success5;
 pass5:
                 *ptr=oldpass5;
-                goto alt3_2;
+                if (1) {
+                    it=failobj;
+                    goto alt3_2;
+                }
 success5:
                 *ptr=oldpass5;
 
@@ -3117,7 +3205,10 @@ accept3:
             goto success4;
 pass4:
             *ptr=oldpass4;
-            goto alt2_2;
+            if (1) {
+                it=failobj;
+                goto alt2_2;
+            }
 success4:
             *ptr=oldpass4;
             it=_autovar_8;
@@ -3226,7 +3317,10 @@ accept5:
             goto success6;
 pass6:
             *ptr=oldpass6;
-            goto alt4_2;
+            if (1) {
+                it=failobj;
+                goto alt4_2;
+            }
 success6:
             *ptr=oldpass6;
             bind_aset(bind2,1,_ary);
@@ -3292,7 +3386,10 @@ success6:
             goto success7;
 pass7:
             *ptr=oldpass7;
-            goto alt4_2;
+            if (1) {
+                it=failobj;
+                goto alt4_2;
+            }
 success7:
             *ptr=oldpass7;
             it=_autovar_14;
@@ -3346,7 +3443,10 @@ accept4:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success1:
         *ptr=oldpass1;
         it=_autovar_5;
@@ -3360,9 +3460,8 @@ success1:
         }
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Normalize_cant_fail(VALUE self ) {
     VALUE vals[0];
@@ -3388,9 +3487,8 @@ VALUE Normalize_cant_fail(VALUE self ) {
     it=_e;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Normalize_must_empty(VALUE self ) {
     VALUE vals[0];
@@ -3416,9 +3514,8 @@ VALUE Normalize_must_empty(VALUE self ) {
     it=_e;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Normalize_or(VALUE self ) {
     VALUE vals[0];
@@ -3533,7 +3630,10 @@ alt1_1:
                 goto success3;
 pass3:
                 *ptr=oldpass3;
-                goto pass2;
+                if (1) {
+                    it=failobj;
+                    goto pass2;
+                }
 success3:
                 *ptr=oldpass3;
                 it=Qnil;
@@ -3544,7 +3644,10 @@ success3:
                 goto success2;
 pass2:
                 *ptr=oldpass2;
-                goto alt1_2;
+                if (1) {
+                    it=failobj;
+                    goto alt1_2;
+                }
 success2:
                 *ptr=oldpass2;
 
@@ -3629,7 +3732,10 @@ alt2_1:
                 goto success4;
 pass4:
                 *ptr=oldpass4;
-                goto alt2_2;
+                if (1) {
+                    it=failobj;
+                    goto alt2_2;
+                }
 success4:
                 *ptr=oldpass4;
 
@@ -3773,7 +3879,10 @@ accept4:
                 goto success5;
 pass5:
                 *ptr=oldpass5;
-                goto alt3_3;
+                if (1) {
+                    it=failobj;
+                    goto alt3_3;
+                }
 success5:
                 *ptr=oldpass5;
                 it=rb_ary_new3(0);
@@ -3860,7 +3969,10 @@ accept5:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success1:
         *ptr=oldpass1;
         bind_aset(bind2,1,_ary);
@@ -3960,7 +4072,10 @@ accept6:
         goto success6;
 pass6:
         *ptr=oldpass6;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success6:
         *ptr=oldpass6;
         it=_autovar_11;
@@ -3975,9 +4090,8 @@ success6:
         }
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Normalize_seq2(VALUE self ) {
     VALUE vals[0];
@@ -4092,7 +4206,10 @@ alt1_1:
                 goto success3;
 pass3:
                 *ptr=oldpass3;
-                goto pass2;
+                if (1) {
+                    it=failobj;
+                    goto pass2;
+                }
 success3:
                 *ptr=oldpass3;
                 it=rb_funcall(self,sy__src_25d9,1,bind2);
@@ -4106,7 +4223,10 @@ success3:
                 goto success2;
 pass2:
                 *ptr=oldpass2;
-                goto alt1_2;
+                if (1) {
+                    it=failobj;
+                    goto alt1_2;
+                }
 success2:
                 *ptr=oldpass2;
                 it=rb_ary_new3(0);
@@ -4187,7 +4307,10 @@ alt2_1:
                 goto success4;
 pass4:
                 *ptr=oldpass4;
-                goto alt2_2;
+                if (1) {
+                    it=failobj;
+                    goto alt2_2;
+                }
 success4:
                 *ptr=oldpass4;
 
@@ -4279,7 +4402,10 @@ accept3:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success1:
         *ptr=oldpass1;
         bind_aset(bind2,1,_ary);
@@ -4379,7 +4505,10 @@ accept4:
         goto success5;
 pass5:
         *ptr=oldpass5;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success5:
         *ptr=oldpass5;
         it=_autovar_9;
@@ -4394,9 +4523,8 @@ success5:
         }
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Normalize_switch(VALUE self ) {
     VALUE vals[0];
@@ -4469,7 +4597,10 @@ accept1:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success1:
         *ptr=oldpass1;
         bind_aset(bind2,1,_ary);
@@ -4492,9 +4623,8 @@ success1:
         }
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 void Init_normalize_c() {
     cls_Normalize=rb_define_class("Normalize",rb_const_get(rb_cObject,rb_intern("Amethyst")));
@@ -4579,5 +4709,5 @@ void Init_normalize_c() {
     rb_define_method(cls_Normalize,"or",Normalize_or,0);
     rb_define_method(cls_Normalize,"seq2",Normalize_seq2,0);
     rb_define_method(cls_Normalize,"switch",Normalize_switch,0);
-    rb_eval_string("testversionnormalize('77a136684e7fcbddc99b80c7be0647bd')");
+    rb_eval_string("testversionnormalize('130fc49cc9cc1e1189b5a9cc2ebeb915')");
 }

@@ -127,7 +127,7 @@ amethyst AmethystCTranslator < Amethyst {
             @@defmethods<< "rb_define_method(cls_#{@>grammar},\"#{@name}\",#{@>grammar}_#{@name},#{@args.size});"
 						s=h+"{VALUE vals[#{@args.size}]; VALUE it #{@@locls.map{|k,v| ",_#{k}"}*""};VALUE bind2=bind_new2(16); #{map_index(@args){|i| bset(@args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);"
 s+="#{body}\n" 
-s+="return it;\nfail: return failobj;}"
+s+="fail: return it;\n}"
 s
 } ]
         | Memo[ rw('memo_fail',`trans`):t ] 
@@ -140,8 +140,7 @@ s
                  memo_no=Compiler.grammars[@>grammar].memo_inc
                  s+="time_struct time_old=memo_get(ptr->mem,#{memo_no},ptr->src,ptr->pos); if (time_old.pos!=-1) {ptr->pos=time_old.pos;return time_old.result;} int oldpos=ptr->pos;"
                  s+=t
-                 s+="memo_add(ptr->mem,#{memo_no},ptr->src,oldpos,it,ptr->pos,time_old); return it;\n"
-                 s+="memo_fail:  memo_add(ptr->mem,#{memo_no},ptr->src,oldpos,failobj,ptr->pos,time_old); return failobj;\n"
+                 s+="memo_fail:  memo_add(ptr->mem,#{memo_no},ptr->src,oldpos,it,ptr->pos,time_old); return it;\n"
                  @@profile_report << "if(ptr->mem){fprintf(profile_report,\"memo #{@>grammar}::#{@>rulename}  hit: %i miss: %i ticks: %i\\n\",((memo_struct *)ptr->mem)->hits[#{memo_no}],((memo_struct *)ptr->mem)->miss[#{memo_no}],((memo_struct *)ptr->mem)->ticks[#{memo_no}]);((memo_struct *)ptr->mem)->hits[#{memo_no}]=0;((memo_struct *)ptr->mem)->miss[#{memo_no}]=0;((memo_struct *)ptr->mem)->ticks[#{memo_no}]=0;}"
                  s}
         | Act[ .:a &{a=="_append("} .:x . .:y  . ] -> "it=AmethystCore_append(self,#{bget(x)},#{bget(y)});"
@@ -187,7 +186,7 @@ s
         | Stop[] {@@stops=true; @@stoplabel? "#{@@stoplabel}=1;" : ""}
         | Lookahead[ {label("accept")}:accept {label("reject")}:reject {label("oldpos")}:oldpos 
                      rw(reject,`trans:t`) 
-                     {"int #{oldpos}=ptr->pos;\n #{t} x=1; goto #{accept};  #{reject}: x=0; #{accept}: it=Qnil; ptr->pos=#{oldpos}; if (x==0) goto #{@@faillabel};"} ]
+                     {"int #{oldpos}=ptr->pos;\n #{t} x=1; goto #{accept};  #{reject}: x=0; #{accept}: it=Qnil; ptr->pos=#{oldpos}; #{failwhen("x==0")}"} ]
         | Local[ .* { "it=#{bget(@self)};" } ]
         | Pass[ label("pass"):pass label("oldpass"):oldpass label("success"):success
                 rw(pass,`@to=>trans:to`)
@@ -197,7 +196,7 @@ s
                    }
                    #{to}
                    goto #{success};
-                   #{pass}: *ptr=#{oldpass}; goto #{@@faillabel};
+                   #{pass}: *ptr=#{oldpass};#{failwhen("1")}
                    #{success}: *ptr=#{oldpass};
                 " }
               ]

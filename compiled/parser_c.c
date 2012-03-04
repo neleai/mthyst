@@ -234,9 +234,8 @@ accept1:
     _r=bind_aget(bind2,1);;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE AmethystParser_args(VALUE self ,VALUE a0,VALUE a1) {
     VALUE vals[2];
@@ -340,9 +339,8 @@ accept1:
     _c=bind_aget(bind2,3);;
     __result_2=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE AmethystParser_argsOpt(VALUE self ) {
     VALUE vals[0];
@@ -510,7 +508,10 @@ accept2:
         goto success2;
 pass2:
         *ptr=oldpass2;
-        goto pass1;
+        if (1) {
+            it=failobj;
+            goto pass1;
+        }
 success2:
         *ptr=oldpass2;
         it=_autovar_5;
@@ -523,7 +524,10 @@ success2:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto alt1_2;
+        if (1) {
+            it=failobj;
+            goto alt1_2;
+        }
 success1:
         *ptr=oldpass1;
         it=_autovar_6;
@@ -724,7 +728,10 @@ accept5:
         goto success4;
 pass4:
         *ptr=oldpass4;
-        goto pass3;
+        if (1) {
+            it=failobj;
+            goto pass3;
+        }
 success4:
         *ptr=oldpass4;
         it=_autovar_5;
@@ -737,7 +744,10 @@ success4:
         goto success3;
 pass3:
         *ptr=oldpass3;
-        goto alt3_2;
+        if (1) {
+            it=failobj;
+            goto alt3_2;
+        }
 success3:
         *ptr=oldpass3;
         it=_autovar_6;
@@ -762,15 +772,12 @@ accept3:
         ;
         break;
     }
+memo_fail:
     memo_add(ptr->mem,117,ptr->src,oldpos,it,ptr->pos,time_old);
     return it;
-memo_fail:
-    memo_add(ptr->mem,117,ptr->src,oldpos,failobj,ptr->pos,time_old);
-    return failobj;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE AmethystParser_call(VALUE self ) {
     VALUE vals[0];
@@ -916,9 +923,8 @@ accept1:
         __result=it;;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE AmethystParser_cases(VALUE self ) {
     VALUE vals[0];
@@ -1712,9 +1718,8 @@ accept11:
         ;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE AmethystParser_className(VALUE self ) {
     VALUE vals[0];
@@ -1785,9 +1790,8 @@ VALUE AmethystParser_className(VALUE self ) {
         __result=it;;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE AmethystParser_collect(VALUE self ,VALUE a0) {
     VALUE vals[1];
@@ -1803,9 +1807,8 @@ VALUE AmethystParser_collect(VALUE self ,VALUE a0) {
     _ors=bind_aget(bind2,1);;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE AmethystParser_expression(VALUE self ) {
     VALUE vals[0];
@@ -1870,9 +1873,8 @@ accept1:
     _ary=bind_aget(bind2,1);;
     __result_2=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE AmethystParser_file(VALUE self ) {
     VALUE vals[0];
@@ -2566,9 +2568,8 @@ accept11:
     it=_autovar;
     __result_2=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE AmethystParser_grammar(VALUE self ) {
     VALUE vals[0];
@@ -2803,9 +2804,8 @@ accept2:
     _rules=bind_aget(bind2,3);;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE AmethystParser_host_expr(VALUE self ) {
     VALUE vals[0];
@@ -2912,7 +2912,10 @@ VALUE AmethystParser_host_expr(VALUE self ) {
         goto success2;
 pass2:
         *ptr=oldpass2;
-        goto pass1;
+        if (1) {
+            it=failobj;
+            goto pass1;
+        }
 success2:
         *ptr=oldpass2;
         it=_autovar_3;
@@ -2925,16 +2928,18 @@ success2:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success1:
         *ptr=oldpass1;
         it=_autovar_4;
         __result=it;;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE AmethystParser_inline_host_expr(VALUE self ) {
     VALUE vals[0];
@@ -3039,9 +3044,8 @@ accept1:
         __result_2=it;;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE AmethystParser_interpolated(VALUE self ,VALUE a0) {
     VALUE vals[1];
@@ -3394,9 +3398,8 @@ accept6:
     _x=bind_aget(bind2,1);;
     __result_3=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE AmethystParser_key(VALUE self ) {
     VALUE vals[0];
@@ -3643,9 +3646,8 @@ accept1:
         ;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE AmethystParser_name(VALUE self ) {
     VALUE vals[0];
@@ -3734,15 +3736,12 @@ VALUE AmethystParser_name(VALUE self ) {
         __result=it;;
         break;
     }
+memo_fail:
     memo_add(ptr->mem,115,ptr->src,oldpos,it,ptr->pos,time_old);
     return it;
-memo_fail:
-    memo_add(ptr->mem,115,ptr->src,oldpos,failobj,ptr->pos,time_old);
-    return failobj;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE AmethystParser_nr(VALUE self ) {
     VALUE vals[0];
@@ -3829,9 +3828,8 @@ alt1_3:
 accept1:
     ;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE AmethystParser_postfixed(VALUE self ) {
     VALUE vals[0];
@@ -4691,9 +4689,8 @@ accept6:
     it=_from;
     __result_2=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE AmethystParser_prefixed(VALUE self ) {
     VALUE vals[0];
@@ -4814,9 +4811,8 @@ accept1:
         ;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE AmethystParser_procargs(VALUE self ) {
     VALUE vals[0];
@@ -4875,9 +4871,8 @@ accept1:
     it=rb_funcall(self,sy___at_ary_ff69,1,bind2);
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE AmethystParser_procargs2(VALUE self ) {
     VALUE vals[0];
@@ -4954,7 +4949,10 @@ accept2:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto alt1_2;
+        if (1) {
+            it=failobj;
+            goto alt1_2;
+        }
 success1:
         *ptr=oldpass1;
         it=_autovar_4;
@@ -5000,9 +4998,8 @@ accept1:
         __result=it;;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE AmethystParser_rubyarg(VALUE self ) {
     VALUE vals[0];
@@ -8399,9 +8396,8 @@ accept44:
         ;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE AmethystParser_rule(VALUE self ) {
     VALUE vals[0];
@@ -8490,9 +8486,8 @@ VALUE AmethystParser_rule(VALUE self ) {
     _locals=bind_aget(bind2,5);;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE AmethystParser_ruleargs(VALUE self ) {
     VALUE vals[0];
@@ -8581,7 +8576,10 @@ alt1_1:
             goto success3;
 pass3:
             *ptr=oldpass3;
-            goto alt1_2;
+            if (1) {
+                it=failobj;
+                goto alt1_2;
+            }
 success3:
             *ptr=oldpass3;
             it=_autovar_5;
@@ -8619,7 +8617,10 @@ accept1:
     goto success2;
 pass2:
     *ptr=oldpass2;
-    goto pass1;
+    if (1) {
+        it=failobj;
+        goto pass1;
+    }
 success2:
     *ptr=oldpass2;
     it=_autovar_7;
@@ -8632,15 +8633,17 @@ success2:
     goto success1;
 pass1:
     *ptr=oldpass1;
-    goto fail;
+    if (1) {
+        it=failobj;
+        goto fail;
+    }
 success1:
     *ptr=oldpass1;
     it=_autovar_8;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE AmethystParser_sequence(VALUE self ) {
     VALUE vals[0];
@@ -8730,9 +8733,8 @@ accept1:
     _ary=bind_aget(bind2,1);;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE AmethystParser_term(VALUE self ) {
     VALUE vals[0];
@@ -8800,7 +8802,10 @@ reject1:
 accept2:
         it=Qnil;
         ptr->pos=oldpos2;
-        if (x==0) goto alt1_3;
+        if (x==0) {
+            it=failobj;
+            goto alt1_3;
+        }
         it=Qnil;
         it=rb_funcall(self,sy__Apply_lb__dq_a_1437,1,bind2);
         __result=it;;
@@ -8907,7 +8912,10 @@ reject2:
 accept4:
         it=Qnil;
         ptr->pos=oldpos4;
-        if (x==0) goto alt2_5;
+        if (x==0) {
+            it=failobj;
+            goto alt2_5;
+        }
         it=Qnil;
         it=rb_funcall(self,sy__Apply_lb__dq_a_1437,1,bind2);
         __result=it;;
@@ -8968,7 +8976,10 @@ reject3:
 accept6:
         it=Qnil;
         ptr->pos=oldpos6;
-        if (x==0) goto alt3_3;
+        if (x==0) {
+            it=failobj;
+            goto alt3_3;
+        }
         it=Qnil;
         it=rb_funcall(self,sy__Apply_lb__dq_a_1437,1,bind2);
         __result=it;;
@@ -9142,7 +9153,10 @@ reject4:
 accept9:
         it=Qnil;
         ptr->pos=oldpos9;
-        if (x==0) goto alt5_3;
+        if (x==0) {
+            it=failobj;
+            goto alt5_3;
+        }
         it=Qnil;
         it=rb_funcall(self,sy__Apply_lb__dq_a_1437,1,bind2);
         __result=it;;
@@ -9220,7 +9234,10 @@ reject5:
 accept11:
         it=Qnil;
         ptr->pos=oldpos11;
-        if (x==0) goto alt6_3;
+        if (x==0) {
+            it=failobj;
+            goto alt6_3;
+        }
         it=Qnil;
         it=rb_funcall(self,sy__Apply_lb__dq_a_1437,1,bind2);
         __result=it;;
@@ -9394,7 +9411,10 @@ reject6:
 accept14:
         it=Qnil;
         ptr->pos=oldpos14;
-        if (x==0) goto alt8_3;
+        if (x==0) {
+            it=failobj;
+            goto alt8_3;
+        }
         it=Qnil;
         it=rb_funcall(self,sy__Apply_lb__dq_a_1437,1,bind2);
         __result=it;;
@@ -9535,7 +9555,10 @@ reject7:
 accept17:
         it=Qnil;
         ptr->pos=oldpos17;
-        if (x==0) goto alt10_3;
+        if (x==0) {
+            it=failobj;
+            goto alt10_3;
+        }
         it=Qnil;
         it=rb_funcall(self,sy__Apply_lb__dq_a_1437,1,bind2);
         __result=it;;
@@ -9607,7 +9630,10 @@ reject8:
 accept19:
         it=Qnil;
         ptr->pos=oldpos19;
-        if (x==0) goto alt11_3;
+        if (x==0) {
+            it=failobj;
+            goto alt11_3;
+        }
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
         it=rb_funcall(self,sy__Apply_lb__dq_a_1437,1,bind2);
@@ -9669,7 +9695,10 @@ reject9:
 accept21:
         it=Qnil;
         ptr->pos=oldpos21;
-        if (x==0) goto alt12_3;
+        if (x==0) {
+            it=failobj;
+            goto alt12_3;
+        }
         it=Qnil;
         it=rb_funcall(self,sy__Apply_lb__dq_a_1437,1,bind2);
         __result=it;;
@@ -9764,7 +9793,10 @@ reject10:
 accept23:
         it=Qnil;
         ptr->pos=oldpos23;
-        if (x==0) goto alt13_4;
+        if (x==0) {
+            it=failobj;
+            goto alt13_4;
+        }
         it=Qnil;
         it=rb_funcall(self,sy__Apply_lb__dq_a_1437,1,bind2);
         __result=it;;
@@ -9825,7 +9857,10 @@ reject11:
 accept25:
         it=Qnil;
         ptr->pos=oldpos25;
-        if (x==0) goto alt14_3;
+        if (x==0) {
+            it=failobj;
+            goto alt14_3;
+        }
         it=Qnil;
         it=rb_funcall(self,sy__Apply_lb__dq_a_1437,1,bind2);
         __result=it;;
@@ -9944,7 +9979,10 @@ reject12:
 accept27:
         it=Qnil;
         ptr->pos=oldpos27;
-        if (x==0) goto alt15_5;
+        if (x==0) {
+            it=failobj;
+            goto alt15_5;
+        }
         it=Qnil;
         it=rb_funcall(self,sy__Apply_lb__dq_a_1437,1,bind2);
         __result=it;;
@@ -9961,9 +9999,8 @@ accept26:
         ;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 void Init_parser_c() {
     cls_AmethystParser=rb_define_class("AmethystParser",rb_const_get(rb_cObject,rb_intern("Amethyst")));
@@ -10111,5 +10148,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('0be6186c4936503bdf5fe9e07f138ad4')");
+    rb_eval_string("testversionparser('e0ae56251f2a8297e938812bf435b78c')");
 }

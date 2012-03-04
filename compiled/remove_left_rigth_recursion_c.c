@@ -124,7 +124,10 @@ accept2:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto alt1_2;
+        if (1) {
+            it=failobj;
+            goto alt1_2;
+        }
 success1:
         *ptr=oldpass1;
         bind_aset(bind2,1,_follow);
@@ -229,7 +232,10 @@ alt3_1:
         goto success3;
 pass3:
         *ptr=oldpass3;
-        goto pass2;
+        if (1) {
+            it=failobj;
+            goto pass2;
+        }
 success3:
         *ptr=oldpass3;
         it=_autovar_5;
@@ -249,7 +255,10 @@ success3:
         goto success2;
 pass2:
         *ptr=oldpass2;
-        goto alt3_2;
+        if (1) {
+            it=failobj;
+            goto alt3_2;
+        }
 success2:
         *ptr=oldpass2;
         it=_autovar_6;
@@ -363,7 +372,10 @@ accept5:
         goto success4;
 pass4:
         *ptr=oldpass4;
-        goto alt4_2;
+        if (1) {
+            it=failobj;
+            goto alt4_2;
+        }
 success4:
         *ptr=oldpass4;
         bind_aset(bind2,1,_ary);
@@ -514,7 +526,10 @@ accept8:
         goto success6;
 pass6:
         *ptr=oldpass6;
-        goto pass5;
+        if (1) {
+            it=failobj;
+            goto pass5;
+        }
 success6:
         *ptr=oldpass6;
         it=_autovar_15;
@@ -530,7 +545,10 @@ success6:
         goto success5;
 pass5:
         *ptr=oldpass5;
-        goto alt7_2;
+        if (1) {
+            it=failobj;
+            goto alt7_2;
+        }
 success5:
         *ptr=oldpass5;
         bind_aset(bind2,1,_first);
@@ -620,7 +638,10 @@ accept9:
         goto success7;
 pass7:
         *ptr=oldpass7;
-        goto alt7_3;
+        if (1) {
+            it=failobj;
+            goto alt7_3;
+        }
 success7:
         *ptr=oldpass7;
         bind_aset(bind2,1,_first);
@@ -778,7 +799,10 @@ accept11:
         goto success9;
 pass9:
         *ptr=oldpass9;
-        goto pass8;
+        if (1) {
+            it=failobj;
+            goto pass8;
+        }
 success9:
         *ptr=oldpass9;
         it=_autovar_15;
@@ -794,7 +818,10 @@ success9:
         goto success8;
 pass8:
         *ptr=oldpass8;
-        goto alt10_2;
+        if (1) {
+            it=failobj;
+            goto alt10_2;
+        }
 success8:
         *ptr=oldpass8;
         bind_aset(bind2,1,_first);
@@ -921,7 +948,10 @@ accept13:
         goto success10;
 pass10:
         *ptr=oldpass10;
-        goto alt12_2;
+        if (1) {
+            it=failobj;
+            goto alt12_2;
+        }
 success10:
         *ptr=oldpass10;
         bind_aset(bind2,1,_first);
@@ -981,9 +1011,8 @@ accept12:
         __result=it;;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Remove_Left_Recursion_must_empty(VALUE self ) {
     VALUE vals[0];
@@ -1009,9 +1038,8 @@ VALUE Remove_Left_Recursion_must_empty(VALUE self ) {
     it=_e;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Remove_Left_Recursion_root(VALUE self ) {
     VALUE vals[0];
@@ -1076,7 +1104,10 @@ VALUE Remove_Left_Recursion_root(VALUE self ) {
     goto success1;
 pass1:
     *ptr=oldpass1;
-    goto fail;
+    if (1) {
+        it=failobj;
+        goto fail;
+    }
 success1:
     *ptr=oldpass1;
     it=_autovar_3;
@@ -1197,7 +1228,10 @@ accept2:
         goto success4;
 pass4:
         *ptr=oldpass4;
-        goto alt1_2;
+        if (1) {
+            it=failobj;
+            goto alt1_2;
+        }
 success4:
         *ptr=oldpass4;
         it=Qfalse;
@@ -1322,7 +1356,10 @@ alt3_1:
         goto success6;
 pass6:
         *ptr=oldpass6;
-        goto pass5;
+        if (1) {
+            it=failobj;
+            goto pass5;
+        }
 success6:
         *ptr=oldpass6;
         it=_autovar_11;
@@ -1342,7 +1379,10 @@ success6:
         goto success5;
 pass5:
         *ptr=oldpass5;
-        goto alt3_2;
+        if (1) {
+            it=failobj;
+            goto alt3_2;
+        }
 success5:
         *ptr=oldpass5;
         it=_autovar_12;
@@ -1473,7 +1513,10 @@ accept5:
         goto success7;
 pass7:
         *ptr=oldpass7;
-        goto alt4_2;
+        if (1) {
+            it=failobj;
+            goto alt4_2;
+        }
 success7:
         *ptr=oldpass7;
         bind_aset(bind2,1,_ary);
@@ -1643,7 +1686,10 @@ accept8:
         goto success9;
 pass9:
         *ptr=oldpass9;
-        goto pass8;
+        if (1) {
+            it=failobj;
+            goto pass8;
+        }
 success9:
         *ptr=oldpass9;
         it=_autovar_22;
@@ -1659,7 +1705,10 @@ success9:
         goto success8;
 pass8:
         *ptr=oldpass8;
-        goto alt7_2;
+        if (1) {
+            it=failobj;
+            goto alt7_2;
+        }
 success8:
         *ptr=oldpass8;
         bind_aset(bind2,1,_first);
@@ -1749,7 +1798,10 @@ accept9:
         goto success10;
 pass10:
         *ptr=oldpass10;
-        goto alt7_3;
+        if (1) {
+            it=failobj;
+            goto alt7_3;
+        }
 success10:
         *ptr=oldpass10;
         bind_aset(bind2,1,_first);
@@ -1853,7 +1905,10 @@ accept6:
     goto success3;
 pass3:
     *ptr=oldpass3;
-    goto pass2;
+    if (1) {
+        it=failobj;
+        goto pass2;
+    }
 success3:
     *ptr=oldpass3;
     it=_autovar_8;
@@ -1953,7 +2008,10 @@ accept11:
         goto success12;
 pass12:
         *ptr=oldpass12;
-        goto alt10_2;
+        if (1) {
+            it=failobj;
+            goto alt10_2;
+        }
 success12:
         *ptr=oldpass12;
         it=Qtrue;
@@ -2078,7 +2136,10 @@ alt12_1:
         goto success14;
 pass14:
         *ptr=oldpass14;
-        goto pass13;
+        if (1) {
+            it=failobj;
+            goto pass13;
+        }
 success14:
         *ptr=oldpass14;
         it=_autovar_11;
@@ -2098,7 +2159,10 @@ success14:
         goto success13;
 pass13:
         *ptr=oldpass13;
-        goto alt12_2;
+        if (1) {
+            it=failobj;
+            goto alt12_2;
+        }
 success13:
         *ptr=oldpass13;
         it=_autovar_12;
@@ -2229,7 +2293,10 @@ accept14:
         goto success15;
 pass15:
         *ptr=oldpass15;
-        goto alt13_2;
+        if (1) {
+            it=failobj;
+            goto alt13_2;
+        }
 success15:
         *ptr=oldpass15;
         bind_aset(bind2,1,_ary);
@@ -2399,7 +2466,10 @@ accept17:
         goto success17;
 pass17:
         *ptr=oldpass17;
-        goto pass16;
+        if (1) {
+            it=failobj;
+            goto pass16;
+        }
 success17:
         *ptr=oldpass17;
         it=_autovar_22;
@@ -2415,7 +2485,10 @@ success17:
         goto success16;
 pass16:
         *ptr=oldpass16;
-        goto alt16_2;
+        if (1) {
+            it=failobj;
+            goto alt16_2;
+        }
 success16:
         *ptr=oldpass16;
         bind_aset(bind2,1,_first);
@@ -2505,7 +2578,10 @@ accept18:
         goto success18;
 pass18:
         *ptr=oldpass18;
-        goto alt16_3;
+        if (1) {
+            it=failobj;
+            goto alt16_3;
+        }
 success18:
         *ptr=oldpass18;
         bind_aset(bind2,1,_first);
@@ -2609,7 +2685,10 @@ accept15:
     goto success11;
 pass11:
     *ptr=oldpass11;
-    goto pass2;
+    if (1) {
+        it=failobj;
+        goto pass2;
+    }
 success11:
     *ptr=oldpass11;
     it=_autovar_27;
@@ -2634,15 +2713,17 @@ success11:
     goto success2;
 pass2:
     *ptr=oldpass2;
-    goto fail;
+    if (1) {
+        it=failobj;
+        goto fail;
+    }
 success2:
     *ptr=oldpass2;
     it=_autovar_30;
     __result_2=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 void Init_remove_left_rigth_recursion_c() {
     cls_Remove_Left_Recursion=rb_define_class("Remove_Left_Recursion",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2")));
@@ -2678,5 +2759,5 @@ void Init_remove_left_rigth_recursion_c() {
     rb_define_method(cls_Remove_Left_Recursion,"first",Remove_Left_Recursion_first,1);
     rb_define_method(cls_Remove_Left_Recursion,"must_empty",Remove_Left_Recursion_must_empty,0);
     rb_define_method(cls_Remove_Left_Recursion,"root",Remove_Left_Recursion_root,0);
-    rb_eval_string("testversionremove_left_rigth_recursion('1aa029e1ca105b1164db2e31f8c8e12a')");
+    rb_eval_string("testversionremove_left_rigth_recursion('eab0795f9bc0157cc3443b637181806c')");
 }

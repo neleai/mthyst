@@ -196,14 +196,14 @@ end
 def __dq_class_sp__sh__cf48(bind)
 "class #{bind[1][:grammar]} < #{bind[1][:parent]}\n"
 end
-def __dq_cstruct_ff45(bind)
+def __dq_cstruct_99cc(bind)
 "cstruct #{bind[1]}=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
                    #{src.enter ?  "ptr->src=#{bget(src.var)}; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);  ptr->ary2=ary;  ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}" : 
                     "ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=#{bget(src.var)};ptr->len=1;"
                    }
                    #{bind[2]}
                    goto #{bind[3]};
-                   #{bind[4]}: *ptr=#{bind[1]}; goto #{@faillabel};
+                   #{bind[4]}: *ptr=#{bind[1]};#{failwhen("1")}
                    #{bind[3]}: *ptr=#{bind[1]};
                 " 
 end
@@ -217,11 +217,11 @@ end
 def __dq_if_sp__lp__sh__le_a_1643(bind)
 "if (#{ary=bind[1].split("");map_index(ary){|i| "ame_curstr2(ptr)[#{i}]==#{Lattice_Char.new.cchar(ary[i])}" }*"&&" })  ptr->pos+=#{bind[1].size}; else #{failwhen("1")}"
 end
-def __dq_int_sp__sh__le_b_0a35(bind)
-"int #{bind[1]}=ptr->pos;\n #{bind[2]} x=1; goto #{bind[3]};  #{bind[4]}: x=0; #{bind[3]}: it=Qnil; ptr->pos=#{bind[1]}; if (x==0) goto #{@faillabel};"
-end
 def __dq_int_sp__sh__le_b_0b60(bind)
 "int #{bind[1]}=ptr->pos;int #{@cutlabel}=0;\n#{bind[2]}_#{bind[3]}:;"
+end
+def __dq_int_sp__sh__le_b_c039(bind)
+"int #{bind[1]}=ptr->pos;\n #{bind[2]} x=1; goto #{bind[3]};  #{bind[4]}: x=0; #{bind[3]}: it=Qnil; ptr->pos=#{bind[1]}; #{failwhen("x==0")}"
 end
 def __dq_it_eq_Amet_82ce(bind)
 "it=AmethystCore_append(self,#{bget(bind[1])},#{bget(bind[2])});"
@@ -281,7 +281,7 @@ bind[1]="int #{@stoplabel}=0; while(!#{@stoplabel}){ #{bind[2]} } "
 									bind[1]
 								
 end
-def _bind_lb_1_rb__eq__c125(bind)
+def _bind_lb_1_rb__eq__83f5(bind)
 bind[1]=""
                  if CurrentParser[:global_memo]
                    bind[1]+="if (ptr->mem==NULL){ptr->mem=mem_#{bind[2][:grammar]};}" 
@@ -291,8 +291,7 @@ bind[1]=""
                  memo_no=Compiler.grammars[bind[2][:grammar]].memo_inc
                  bind[1]+="time_struct time_old=memo_get(ptr->mem,#{memo_no},ptr->src,ptr->pos); if (time_old.pos!=-1) {ptr->pos=time_old.pos;return time_old.result;} int oldpos=ptr->pos;"
                  bind[1]+=bind[3]
-                 bind[1]+="memo_add(ptr->mem,#{memo_no},ptr->src,oldpos,it,ptr->pos,time_old); return it;\n"
-                 bind[1]+="memo_fail:  memo_add(ptr->mem,#{memo_no},ptr->src,oldpos,failobj,ptr->pos,time_old); return failobj;\n"
+                 bind[1]+="memo_fail:  memo_add(ptr->mem,#{memo_no},ptr->src,oldpos,it,ptr->pos,time_old); return it;\n"
                  @profile_report << "if(ptr->mem){fprintf(profile_report,\"memo #{bind[2][:grammar]}::#{bind[2][:rulename]}  hit: %i miss: %i ticks: %i\\n\",((memo_struct *)ptr->mem)->hits[#{memo_no}],((memo_struct *)ptr->mem)->miss[#{memo_no}],((memo_struct *)ptr->mem)->ticks[#{memo_no}]);((memo_struct *)ptr->mem)->hits[#{memo_no}]=0;((memo_struct *)ptr->mem)->miss[#{memo_no}]=0;((memo_struct *)ptr->mem)->ticks[#{memo_no}]=0;}"
                  bind[1]
 end
@@ -350,21 +349,21 @@ end
 def _bind_lb_1_rb__ti__cfcb(bind)
 bind[1]*""
 end
-def _h_eq__dq_VALUE_037c(bind)
-h="VALUE #{bind[1][:grammar]}_#{bind[2]}(VALUE self #{map_index(src.args){|i| ",VALUE a#{i}"}*""})" 
-            @header<<h+";"
-            @defmethods<< "rb_define_method(cls_#{bind[1][:grammar]},\"#{src.name}\",#{bind[1][:grammar]}_#{src.name},#{src.args.size});"
-						bind[3]=h+"{VALUE vals[#{src.args.size}]; VALUE it #{@locls.map{|k,v| ",_#{k}"}*""};VALUE bind2=bind_new2(16); #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);"
-bind[3]+="#{bind[4]}\n" 
-bind[3]+="return it;\nfail: return failobj;}"
-bind[3]
-
-end
 def _h_eq__dq_VALUE_481e(bind)
 h="VALUE #{bind[1]}(VALUE self,VALUE bind)"
                  @header<<h+";"
                  @defmethods<<"rb_define_method(cls_#{bind[2][:grammar]},\"#{bind[1]}\",#{bind[1]},1);"
                  @lambdas<< h+"{VALUE vals[0]; /*todo unify with rule and get args*/ cstruct *ptr; int x;VALUE it;VALUE arg0,arg1,arg2,arg3;\n#{bind[3]}\nreturn it;\nfail: return failobj; }" 
+end
+def _h_eq__dq_VALUE_c5fb(bind)
+h="VALUE #{bind[1][:grammar]}_#{bind[2]}(VALUE self #{map_index(src.args){|i| ",VALUE a#{i}"}*""})" 
+            @header<<h+";"
+            @defmethods<< "rb_define_method(cls_#{bind[1][:grammar]},\"#{src.name}\",#{bind[1][:grammar]}_#{src.name},#{src.args.size});"
+						bind[3]=h+"{VALUE vals[#{src.args.size}]; VALUE it #{@locls.map{|k,v| ",_#{k}"}*""};VALUE bind2=bind_new2(16); #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);"
+bind[3]+="#{bind[4]}\n" 
+bind[3]+="fail: return it;\n}"
+bind[3]
+
 end
 def _label_lp__dq_a_f49c(bind)
 label("accept")
@@ -402,15 +401,15 @@ end
 
 
 def ctranslator2_compiled_by
-'6530e1c95b23c79881881e11eeb07f8e'
+'7316f66b56ffa89630e28daa24d490cc'
 end
 def ctranslator2_source_hash
-'87ba8ea7b7f27fef50a865750c7cd535'
+'487824f6c67aa3a1a3a566cd5e010c5f'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'3f79d76b5b30189c2ae0d1fff817cf75'
+'515914d8f317730f6f8ffd6ed60651ec'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"

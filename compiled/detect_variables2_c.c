@@ -109,7 +109,10 @@ alt2_1:
             goto success1;
 pass1:
             *ptr=oldpass1;
-            goto alt2_2;
+            if (1) {
+                it=failobj;
+                goto alt2_2;
+            }
 success1:
             *ptr=oldpass1;
             it=_autovar_3;
@@ -192,7 +195,10 @@ alt4_1:
             goto success2;
 pass2:
             *ptr=oldpass2;
-            goto alt4_2;
+            if (1) {
+                it=failobj;
+                goto alt4_2;
+            }
 success2:
             *ptr=oldpass2;
             it=_autovar_6;
@@ -270,9 +276,8 @@ accept5:
     it=_autovar;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Analyze_Variables2_itrans(VALUE self ) {
     VALUE vals[0];
@@ -391,7 +396,10 @@ alt3_1:
                     goto success4;
 pass4:
                     *ptr=oldpass4;
-                    goto alt3_2;
+                    if (1) {
+                        it=failobj;
+                        goto alt3_2;
+                    }
 success4:
                     *ptr=oldpass4;
                     it=_autovar_7;
@@ -429,7 +437,10 @@ accept3:
             goto success3;
 pass3:
             *ptr=oldpass3;
-            goto pass2;
+            if (1) {
+                it=failobj;
+                goto pass2;
+            }
 success3:
             *ptr=oldpass3;
             it=Qnil;
@@ -440,7 +451,10 @@ success3:
             goto success2;
 pass2:
             *ptr=oldpass2;
-            goto pass1;
+            if (1) {
+                it=failobj;
+                goto pass1;
+            }
 success2:
             *ptr=oldpass2;
             bind_aset(bind2,1,_rules);
@@ -456,7 +470,10 @@ success2:
             goto success1;
 pass1:
             *ptr=oldpass1;
-            goto alt2_2;
+            if (1) {
+                it=failobj;
+                goto alt2_2;
+            }
 success1:
             *ptr=oldpass1;
             it=_autovar_9;
@@ -534,9 +551,8 @@ accept4:
     it=_autovar;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Analyze_Variables2_root(VALUE self ) {
     VALUE vals[0];
@@ -590,7 +606,10 @@ VALUE Analyze_Variables2_root(VALUE self ) {
     goto success1;
 pass1:
     *ptr=oldpass1;
-    goto fail;
+    if (1) {
+        it=failobj;
+        goto fail;
+    }
 success1:
     *ptr=oldpass1;
     it=_autovar_3;
@@ -688,7 +707,10 @@ accept1:
     goto success3;
 pass3:
     *ptr=oldpass3;
-    goto pass2;
+    if (1) {
+        it=failobj;
+        goto pass2;
+    }
 success3:
     *ptr=oldpass3;
     it=_autovar_6;
@@ -704,15 +726,17 @@ success3:
     goto success2;
 pass2:
     *ptr=oldpass2;
-    goto fail;
+    if (1) {
+        it=failobj;
+        goto fail;
+    }
 success2:
     *ptr=oldpass2;
     it=_autovar_7;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Analyze_Variables2_traverse(VALUE self ) {
     VALUE vals[0];
@@ -800,7 +824,10 @@ accept1:
     goto success2;
 pass2:
     *ptr=oldpass2;
-    goto pass1;
+    if (1) {
+        it=failobj;
+        goto pass1;
+    }
 success2:
     *ptr=oldpass2;
     it=Qnil;
@@ -811,7 +838,10 @@ success2:
     goto success1;
 pass1:
     *ptr=oldpass1;
-    goto fail;
+    if (1) {
+        it=failobj;
+        goto fail;
+    }
 success1:
     *ptr=oldpass1;
     bind_aset(bind2,1,_ivars);
@@ -821,9 +851,8 @@ success1:
     _nvars=bind_aget(bind2,2);;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Analyze_Variables2_traverse_item(VALUE self ) {
     VALUE vals[0];
@@ -884,7 +913,10 @@ alt1_2:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto alt1_3;
+        if (1) {
+            it=failobj;
+            goto alt1_3;
+        }
 success1:
         *ptr=oldpass1;
         it=_autovar_2;
@@ -994,7 +1026,10 @@ accept3:
         goto success2;
 pass2:
         *ptr=oldpass2;
-        goto alt2_3;
+        if (1) {
+            it=failobj;
+            goto alt2_3;
+        }
 success2:
         *ptr=oldpass2;
         it=_autovar_4;
@@ -1058,9 +1093,8 @@ accept4:
         ;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Analyze_Variables2_visit(VALUE self ) {
     VALUE vals[0];
@@ -1294,7 +1328,10 @@ accept3:
             goto success5;
 pass5:
             *ptr=oldpass5;
-            goto alt2_3;
+            if (1) {
+                it=failobj;
+                goto alt2_3;
+            }
 success5:
             *ptr=oldpass5;
             it=_autovar_9;
@@ -1423,7 +1460,10 @@ accept5:
         goto success4;
 pass4:
         *ptr=oldpass4;
-        goto pass3;
+        if (1) {
+            it=failobj;
+            goto pass3;
+        }
 success4:
         *ptr=oldpass4;
         it=_autovar_10;
@@ -1439,7 +1479,10 @@ success4:
         goto success3;
 pass3:
         *ptr=oldpass3;
-        goto pass2;
+        if (1) {
+            it=failobj;
+            goto pass2;
+        }
 success3:
         *ptr=oldpass3;
         it=_autovar_11;
@@ -1455,7 +1498,10 @@ success3:
         goto success2;
 pass2:
         *ptr=oldpass2;
-        goto pass1;
+        if (1) {
+            it=failobj;
+            goto pass1;
+        }
 success2:
         *ptr=oldpass2;
         it=_autovar_12;
@@ -1471,7 +1517,10 @@ success2:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success1:
         *ptr=oldpass1;
         it=_autovar_13;
@@ -1612,7 +1661,10 @@ accept6:
         goto success9;
 pass9:
         *ptr=oldpass9;
-        goto pass8;
+        if (1) {
+            it=failobj;
+            goto pass8;
+        }
 success9:
         *ptr=oldpass9;
         bind_aset(bind2,1,_autovar);
@@ -1626,7 +1678,10 @@ success9:
         goto success8;
 pass8:
         *ptr=oldpass8;
-        goto pass7;
+        if (1) {
+            it=failobj;
+            goto pass7;
+        }
 success8:
         *ptr=oldpass8;
         bind_aset(bind2,1,_a);
@@ -1648,7 +1703,10 @@ success8:
         goto success7;
 pass7:
         *ptr=oldpass7;
-        goto pass6;
+        if (1) {
+            it=failobj;
+            goto pass6;
+        }
 success7:
         *ptr=oldpass7;
         it=_autovar_18;
@@ -1664,7 +1722,10 @@ success7:
         goto success6;
 pass6:
         *ptr=oldpass6;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success6:
         *ptr=oldpass6;
         it=_autovar_19;
@@ -1741,7 +1802,10 @@ accept7:
         goto success10;
 pass10:
         *ptr=oldpass10;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success10:
         *ptr=oldpass10;
         it=_autovar_21;
@@ -1804,7 +1868,10 @@ success10:
         goto success11;
 pass11:
         *ptr=oldpass11;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success11:
         *ptr=oldpass11;
         bind_aset(bind2,1,_ret);
@@ -1886,7 +1953,10 @@ accept8:
         goto success12;
 pass12:
         *ptr=oldpass12;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success12:
         *ptr=oldpass12;
         bind_aset(bind2,1,_ary);
@@ -1941,7 +2011,10 @@ success12:
         goto success13;
 pass13:
         *ptr=oldpass13;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success13:
         *ptr=oldpass13;
         it=_autovar_27;
@@ -1989,7 +2062,10 @@ success13:
         goto success14;
 pass14:
         *ptr=oldpass14;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success14:
         *ptr=oldpass14;
         it=_autovar_29;
@@ -2069,7 +2145,10 @@ accept9:
         goto success15;
 pass15:
         *ptr=oldpass15;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success15:
         *ptr=oldpass15;
         bind_aset(bind2,1,_ary);
@@ -2151,7 +2230,10 @@ accept10:
         goto success16;
 pass16:
         *ptr=oldpass16;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success16:
         *ptr=oldpass16;
         bind_aset(bind2,1,_ary);
@@ -2199,7 +2281,10 @@ success16:
         goto success17;
 pass17:
         *ptr=oldpass17;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success17:
         *ptr=oldpass17;
         it=_autovar_37;
@@ -2219,9 +2304,8 @@ success17:
         }
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE cls_Resolve_Calls;
 VALUE AmethystCore_anything(VALUE self );
@@ -2340,15 +2424,17 @@ VALUE Resolve_Calls_root(VALUE self ) {
     goto success1;
 pass1:
     *ptr=oldpass1;
-    goto fail;
+    if (1) {
+        it=failobj;
+        goto fail;
+    }
 success1:
     *ptr=oldpass1;
     it=_autovar_5;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Resolve_Calls_traverse(VALUE self ) {
     VALUE vals[0];
@@ -2436,7 +2522,10 @@ accept1:
     goto success2;
 pass2:
     *ptr=oldpass2;
-    goto pass1;
+    if (1) {
+        it=failobj;
+        goto pass1;
+    }
 success2:
     *ptr=oldpass2;
     it=Qnil;
@@ -2447,7 +2536,10 @@ success2:
     goto success1;
 pass1:
     *ptr=oldpass1;
-    goto fail;
+    if (1) {
+        it=failobj;
+        goto fail;
+    }
 success1:
     *ptr=oldpass1;
     bind_aset(bind2,1,_ivars);
@@ -2457,9 +2549,8 @@ success1:
     _nvars=bind_aget(bind2,2);;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Resolve_Calls_traverse_item(VALUE self ) {
     VALUE vals[0];
@@ -2520,7 +2611,10 @@ alt1_2:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto alt1_3;
+        if (1) {
+            it=failobj;
+            goto alt1_3;
+        }
 success1:
         *ptr=oldpass1;
         it=_autovar_2;
@@ -2630,7 +2724,10 @@ accept3:
         goto success2;
 pass2:
         *ptr=oldpass2;
-        goto alt2_3;
+        if (1) {
+            it=failobj;
+            goto alt2_3;
+        }
 success2:
         *ptr=oldpass2;
         it=_autovar_4;
@@ -2694,9 +2791,8 @@ accept4:
         ;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Resolve_Calls_visit(VALUE self ) {
     VALUE vals[0];
@@ -2803,7 +2899,10 @@ alt1_1:
         goto success2;
 pass2:
         *ptr=oldpass2;
-        goto pass1;
+        if (1) {
+            it=failobj;
+            goto pass1;
+        }
 success2:
         *ptr=oldpass2;
         bind_aset(bind2,1,_autovar);
@@ -2821,7 +2920,10 @@ success2:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto alt1_2;
+        if (1) {
+            it=failobj;
+            goto alt1_2;
+        }
 success1:
         *ptr=oldpass1;
         it=_autovar_6;
@@ -2885,7 +2987,10 @@ alt1_2:
         goto success3;
 pass3:
         *ptr=oldpass3;
-        goto alt1_3;
+        if (1) {
+            it=failobj;
+            goto alt1_3;
+        }
 success3:
         *ptr=oldpass3;
         it=_autovar_8;
@@ -2939,7 +3044,10 @@ alt1_3:
         goto success4;
 pass4:
         *ptr=oldpass4;
-        goto alt1_4;
+        if (1) {
+            it=failobj;
+            goto alt1_4;
+        }
 success4:
         *ptr=oldpass4;
         it=_autovar_10;
@@ -2970,9 +3078,8 @@ accept1:
         }
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 void Init_detect_variables2_c() {
     cls_Analyze_Variables2=rb_define_class("Analyze_Variables2",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2")));
@@ -3067,5 +3174,5 @@ void Init_detect_variables2_c() {
     rb_define_method(cls_Resolve_Calls,"traverse",Resolve_Calls_traverse,0);
     rb_define_method(cls_Resolve_Calls,"traverse_item",Resolve_Calls_traverse_item,0);
     rb_define_method(cls_Resolve_Calls,"visit",Resolve_Calls_visit,0);
-    rb_eval_string("testversiondetect_variables2('74cbf074a2261e7f45980d7dfc790724')");
+    rb_eval_string("testversiondetect_variables2('1981a89508d0372703128f2ce3498d71')");
 }

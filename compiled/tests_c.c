@@ -77,9 +77,8 @@ VALUE Tests_abc(VALUE self ) {
         _autovar=bind_aget(bind2,1);;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Tests_context(VALUE self ) {
     VALUE vals[0];
@@ -102,9 +101,8 @@ VALUE Tests_context(VALUE self ) {
     bind_aset(bind2,1,_autovar);
     it=rb_funcall(self,sy___at_context_2721,1,bind2);
     _autovar=bind_aget(bind2,1);;
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Tests_de(VALUE self ) {
     VALUE vals[0];
@@ -273,9 +271,8 @@ accept3:
         _autovar=bind_aget(bind2,1);;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Tests_foo(VALUE self ) {
     VALUE vals[0];
@@ -324,9 +321,8 @@ VALUE Tests_foo(VALUE self ) {
         it=rb_funcall(self,sy___at_context_2721,1,bind2);
         _autovar=bind_aget(bind2,1);;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Tests_gh(VALUE self ) {
     VALUE vals[0];
@@ -351,9 +347,8 @@ VALUE Tests_gh(VALUE self ) {
     bind_aset(bind2,1,_autovar);
     it=rb_funcall(self,sy___at_context_2721,1,bind2);
     _autovar=bind_aget(bind2,1);;
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Tests_s2(VALUE self ) {
     VALUE vals[0];
@@ -420,9 +415,8 @@ VALUE Tests_s2(VALUE self ) {
         _autovar=bind_aget(bind2,1);;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Tests_sw(VALUE self ) {
     VALUE vals[0];
@@ -518,9 +512,8 @@ accept1:
     bind_aset(bind2,1,_autovar);
     it=rb_funcall(self,sy___at_context_2721,1,bind2);
     _autovar=bind_aget(bind2,1);;
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Tests_test(VALUE self ) {
     VALUE vals[0];
@@ -570,9 +563,8 @@ accept1:
     bind_aset(bind2,1,_autovar);
     it=rb_funcall(self,sy___at_context_2721,1,bind2);
     _autovar=bind_aget(bind2,1);;
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 void Init_tests_c() {
     cls_Tests=rb_define_class("Tests",rb_const_get(rb_cObject,rb_intern("Amethyst")));
@@ -616,5 +608,5 @@ void Init_tests_c() {
     rb_define_method(cls_Tests,"s2",Tests_s2,0);
     rb_define_method(cls_Tests,"sw",Tests_sw,0);
     rb_define_method(cls_Tests,"test",Tests_test,0);
-    rb_eval_string("testversiontests('d5e8e9002b3a2f39c565eb925a517dc1')");
+    rb_eval_string("testversiontests('3b18cb109cf963b2d45834c7aaefaad9')");
 }

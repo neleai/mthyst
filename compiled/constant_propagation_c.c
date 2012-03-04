@@ -37,9 +37,8 @@ VALUE Constant_Propagator_root(VALUE self ) {
     _it=bind_aget(bind2,1);;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Constant_Propagator_step(VALUE self ,VALUE a0) {
     VALUE vals[1];
@@ -118,7 +117,10 @@ alt1_1:
             goto success3;
 pass3:
             *ptr=oldpass3;
-            goto pass2;
+            if (1) {
+                it=failobj;
+                goto pass2;
+            }
 success3:
             *ptr=oldpass3;
             it=_autovar_4;
@@ -167,7 +169,10 @@ success3:
             goto success4;
 pass4:
             *ptr=oldpass4;
-            goto pass2;
+            if (1) {
+                it=failobj;
+                goto pass2;
+            }
 success4:
             *ptr=oldpass4;
             it=_autovar_7;
@@ -189,7 +194,10 @@ success4:
         goto success2;
 pass2:
         *ptr=oldpass2;
-        goto alt1_2;
+        if (1) {
+            it=failobj;
+            goto alt1_2;
+        }
 success2:
         *ptr=oldpass2;
         it=_autovar_5;
@@ -270,7 +278,10 @@ alt2_1:
         goto success5;
 pass5:
         *ptr=oldpass5;
-        goto alt2_2;
+        if (1) {
+            it=failobj;
+            goto alt2_2;
+        }
 success5:
         *ptr=oldpass5;
         it=_autovar_10;
@@ -344,7 +355,10 @@ alt3_1:
         goto success6;
 pass6:
         *ptr=oldpass6;
-        goto alt3_2;
+        if (1) {
+            it=failobj;
+            goto alt3_2;
+        }
 success6:
         *ptr=oldpass6;
         it=_autovar_12;
@@ -416,7 +430,10 @@ alt4_1:
         goto success7;
 pass7:
         *ptr=oldpass7;
-        goto alt4_2;
+        if (1) {
+            it=failobj;
+            goto alt4_2;
+        }
 success7:
         *ptr=oldpass7;
         it=_autovar_14;
@@ -469,15 +486,17 @@ accept4:
     goto success1;
 pass1:
     *ptr=oldpass1;
-    goto fail;
+    if (1) {
+        it=failobj;
+        goto fail;
+    }
 success1:
     *ptr=oldpass1;
     it=_autovar_8;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE cls_Constant_Traverser;
 VALUE AmethystCore_anything(VALUE self );
@@ -619,7 +638,10 @@ accept3:
             goto success1;
 pass1:
             *ptr=oldpass1;
-            goto alt2_2;
+            if (1) {
+                it=failobj;
+                goto alt2_2;
+            }
 success1:
             *ptr=oldpass1;
 
@@ -694,9 +716,8 @@ accept4:
     it=_ary;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Constant_Traverser_root(VALUE self ) {
     VALUE vals[0];
@@ -750,7 +771,10 @@ VALUE Constant_Traverser_root(VALUE self ) {
     goto success1;
 pass1:
     *ptr=oldpass1;
-    goto fail;
+    if (1) {
+        it=failobj;
+        goto fail;
+    }
 success1:
     *ptr=oldpass1;
     it=_autovar_3;
@@ -799,15 +823,17 @@ success1:
     goto success2;
 pass2:
     *ptr=oldpass2;
-    goto fail;
+    if (1) {
+        it=failobj;
+        goto fail;
+    }
 success2:
     *ptr=oldpass2;
     it=_autovar_5;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Constant_Traverser_traverse(VALUE self ) {
     VALUE vals[0];
@@ -895,7 +921,10 @@ accept1:
     goto success2;
 pass2:
     *ptr=oldpass2;
-    goto pass1;
+    if (1) {
+        it=failobj;
+        goto pass1;
+    }
 success2:
     *ptr=oldpass2;
     it=Qnil;
@@ -906,7 +935,10 @@ success2:
     goto success1;
 pass1:
     *ptr=oldpass1;
-    goto fail;
+    if (1) {
+        it=failobj;
+        goto fail;
+    }
 success1:
     *ptr=oldpass1;
     bind_aset(bind2,1,_ivars);
@@ -916,9 +948,8 @@ success1:
     _nvars=bind_aget(bind2,2);;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Constant_Traverser_traverse_item(VALUE self ) {
     VALUE vals[0];
@@ -979,7 +1010,10 @@ alt1_2:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto alt1_3;
+        if (1) {
+            it=failobj;
+            goto alt1_3;
+        }
 success1:
         *ptr=oldpass1;
         it=_autovar_2;
@@ -1089,7 +1123,10 @@ accept3:
         goto success2;
 pass2:
         *ptr=oldpass2;
-        goto alt2_3;
+        if (1) {
+            it=failobj;
+            goto alt2_3;
+        }
 success2:
         *ptr=oldpass2;
         it=_autovar_4;
@@ -1153,9 +1190,8 @@ accept4:
         ;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Constant_Traverser_visit(VALUE self ) {
     VALUE vals[0];
@@ -1213,7 +1249,10 @@ VALUE Constant_Traverser_visit(VALUE self ) {
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success1:
         *ptr=oldpass1;
         it=_autovar_3;
@@ -1270,7 +1309,10 @@ success1:
         goto success2;
 pass2:
         *ptr=oldpass2;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success2:
         *ptr=oldpass2;
         it=_autovar_5;
@@ -1355,7 +1397,10 @@ accept1:
         goto success3;
 pass3:
         *ptr=oldpass3;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success3:
         *ptr=oldpass3;
         it=_autovar_7;
@@ -1431,7 +1476,10 @@ accept2:
         goto success4;
 pass4:
         *ptr=oldpass4;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success4:
         *ptr=oldpass4;
         it=_autovar_9;
@@ -1451,9 +1499,8 @@ success4:
         }
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 void Init_constant_propagation_c() {
     cls_Constant_Propagator=rb_define_class("Constant_Propagator",rb_const_get(rb_cObject,rb_intern("Amethyst")));
@@ -1510,5 +1557,5 @@ void Init_constant_propagation_c() {
     rb_define_method(cls_Constant_Traverser,"traverse",Constant_Traverser_traverse,0);
     rb_define_method(cls_Constant_Traverser,"traverse_item",Constant_Traverser_traverse_item,0);
     rb_define_method(cls_Constant_Traverser,"visit",Constant_Traverser_visit,0);
-    rb_eval_string("testversionconstant_propagation('d8b8d74aecf3a8844ce970734588ffce')");
+    rb_eval_string("testversionconstant_propagation('c89530139694b48987f61135b1ff6ac5')");
 }

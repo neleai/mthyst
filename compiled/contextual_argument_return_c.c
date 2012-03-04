@@ -82,7 +82,10 @@ VALUE Add_Contextual_Arguments_root(VALUE self ) {
     goto success1;
 pass1:
     *ptr=oldpass1;
-    goto fail;
+    if (1) {
+        it=failobj;
+        goto fail;
+    }
 success1:
     *ptr=oldpass1;
     it=_autovar_3;
@@ -137,15 +140,17 @@ success1:
     goto success2;
 pass2:
     *ptr=oldpass2;
-    goto fail;
+    if (1) {
+        it=failobj;
+        goto fail;
+    }
 success2:
     *ptr=oldpass2;
     it=_autovar_5;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Add_Contextual_Arguments_traverse(VALUE self ) {
     VALUE vals[0];
@@ -233,7 +238,10 @@ accept1:
     goto success2;
 pass2:
     *ptr=oldpass2;
-    goto pass1;
+    if (1) {
+        it=failobj;
+        goto pass1;
+    }
 success2:
     *ptr=oldpass2;
     it=Qnil;
@@ -244,7 +252,10 @@ success2:
     goto success1;
 pass1:
     *ptr=oldpass1;
-    goto fail;
+    if (1) {
+        it=failobj;
+        goto fail;
+    }
 success1:
     *ptr=oldpass1;
     bind_aset(bind2,1,_ivars);
@@ -254,9 +265,8 @@ success1:
     _nvars=bind_aget(bind2,2);;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Add_Contextual_Arguments_traverse_item(VALUE self ) {
     VALUE vals[0];
@@ -317,7 +327,10 @@ alt1_2:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto alt1_3;
+        if (1) {
+            it=failobj;
+            goto alt1_3;
+        }
 success1:
         *ptr=oldpass1;
         it=_autovar_2;
@@ -427,7 +440,10 @@ accept3:
         goto success2;
 pass2:
         *ptr=oldpass2;
-        goto alt2_3;
+        if (1) {
+            it=failobj;
+            goto alt2_3;
+        }
 success2:
         *ptr=oldpass2;
         it=_autovar_4;
@@ -491,9 +507,8 @@ accept4:
         ;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Add_Contextual_Arguments_visit(VALUE self ) {
     VALUE vals[0];
@@ -581,7 +596,10 @@ accept1:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success1:
         *ptr=oldpass1;
         bind_aset(bind2,1,_autovar);
@@ -644,7 +662,10 @@ success1:
         goto success2;
 pass2:
         *ptr=oldpass2;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success2:
         *ptr=oldpass2;
         it=_autovar_4;
@@ -664,9 +685,8 @@ success2:
         }
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE cls_Add_Contextual_Returns;
 VALUE Add_Contextual_Returns_root(VALUE self );
@@ -748,7 +768,10 @@ VALUE Add_Contextual_Returns_root(VALUE self ) {
     goto success1;
 pass1:
     *ptr=oldpass1;
-    goto fail;
+    if (1) {
+        it=failobj;
+        goto fail;
+    }
 success1:
     *ptr=oldpass1;
     it=_autovar_3;
@@ -792,7 +815,10 @@ success1:
     goto success2;
 pass2:
     *ptr=oldpass2;
-    goto fail;
+    if (1) {
+        it=failobj;
+        goto fail;
+    }
 success2:
     *ptr=oldpass2;
     bind_aset(bind2,1,_t);
@@ -802,9 +828,8 @@ success2:
     _autovar=bind_aget(bind2,2);;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Add_Contextual_Returns_traverse(VALUE self ) {
     VALUE vals[0];
@@ -892,7 +917,10 @@ accept1:
     goto success2;
 pass2:
     *ptr=oldpass2;
-    goto pass1;
+    if (1) {
+        it=failobj;
+        goto pass1;
+    }
 success2:
     *ptr=oldpass2;
     it=Qnil;
@@ -903,7 +931,10 @@ success2:
     goto success1;
 pass1:
     *ptr=oldpass1;
-    goto fail;
+    if (1) {
+        it=failobj;
+        goto fail;
+    }
 success1:
     *ptr=oldpass1;
     bind_aset(bind2,1,_ivars);
@@ -913,9 +944,8 @@ success1:
     _nvars=bind_aget(bind2,2);;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Add_Contextual_Returns_traverse_item(VALUE self ) {
     VALUE vals[0];
@@ -976,7 +1006,10 @@ alt1_2:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto alt1_3;
+        if (1) {
+            it=failobj;
+            goto alt1_3;
+        }
 success1:
         *ptr=oldpass1;
         it=_autovar_2;
@@ -1086,7 +1119,10 @@ accept3:
         goto success2;
 pass2:
         *ptr=oldpass2;
-        goto alt2_3;
+        if (1) {
+            it=failobj;
+            goto alt2_3;
+        }
 success2:
         *ptr=oldpass2;
         it=_autovar_4;
@@ -1150,9 +1186,8 @@ accept4:
         ;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Add_Contextual_Returns_visit(VALUE self ) {
     VALUE vals[0];
@@ -1235,7 +1270,10 @@ accept1:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success1:
         *ptr=oldpass1;
         it=_autovar_3;
@@ -1288,7 +1326,10 @@ success1:
         goto success2;
 pass2:
         *ptr=oldpass2;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success2:
         *ptr=oldpass2;
         bind_aset(bind2,1,_autovar);
@@ -1312,9 +1353,8 @@ success2:
         }
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE cls_Detect_Contextual_Arguments;
 VALUE AmethystCore_anything(VALUE self );
@@ -1356,9 +1396,8 @@ VALUE Detect_Contextual_Arguments_root(VALUE self ) {
     it=rb_funcall(self,sy___at_argumen_a3fb,1,bind2);
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Detect_Contextual_Arguments_traverse(VALUE self ) {
     VALUE vals[0];
@@ -1446,7 +1485,10 @@ accept1:
     goto success2;
 pass2:
     *ptr=oldpass2;
-    goto pass1;
+    if (1) {
+        it=failobj;
+        goto pass1;
+    }
 success2:
     *ptr=oldpass2;
     it=Qnil;
@@ -1457,7 +1499,10 @@ success2:
     goto success1;
 pass1:
     *ptr=oldpass1;
-    goto fail;
+    if (1) {
+        it=failobj;
+        goto fail;
+    }
 success1:
     *ptr=oldpass1;
     bind_aset(bind2,1,_ivars);
@@ -1467,9 +1512,8 @@ success1:
     _nvars=bind_aget(bind2,2);;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Detect_Contextual_Arguments_traverse_item(VALUE self ) {
     VALUE vals[0];
@@ -1530,7 +1574,10 @@ alt1_2:
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto alt1_3;
+        if (1) {
+            it=failobj;
+            goto alt1_3;
+        }
 success1:
         *ptr=oldpass1;
         it=_autovar_2;
@@ -1640,7 +1687,10 @@ accept3:
         goto success2;
 pass2:
         *ptr=oldpass2;
-        goto alt2_3;
+        if (1) {
+            it=failobj;
+            goto alt2_3;
+        }
 success2:
         *ptr=oldpass2;
         it=_autovar_4;
@@ -1704,9 +1754,8 @@ accept4:
         ;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Detect_Contextual_Arguments_visit(VALUE self ) {
     VALUE vals[0];
@@ -1760,7 +1809,10 @@ VALUE Detect_Contextual_Arguments_visit(VALUE self ) {
         goto success1;
 pass1:
         *ptr=oldpass1;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
 success1:
         *ptr=oldpass1;
         it=_autovar_4;
@@ -1779,9 +1831,8 @@ success1:
         }
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 void Init_contextual_argument_return_c() {
     cls_Add_Contextual_Arguments=rb_define_class("Add_Contextual_Arguments",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2")));
@@ -1863,5 +1914,5 @@ void Init_contextual_argument_return_c() {
     rb_define_method(cls_Detect_Contextual_Arguments,"traverse",Detect_Contextual_Arguments_traverse,0);
     rb_define_method(cls_Detect_Contextual_Arguments,"traverse_item",Detect_Contextual_Arguments_traverse_item,0);
     rb_define_method(cls_Detect_Contextual_Arguments,"visit",Detect_Contextual_Arguments_visit,0);
-    rb_eval_string("testversioncontextual_argument_return('86ccbca4d5001dc7a5a1139a474e4b1f')");
+    rb_eval_string("testversioncontextual_argument_return('20691deef69ca1fac0c621e6ea33f356')");
 }

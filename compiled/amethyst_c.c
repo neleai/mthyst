@@ -107,9 +107,8 @@ VALUE Amethyst__(VALUE self ) {
         __result_2=it;;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_alnum(VALUE self ) {
     VALUE vals[0];
@@ -154,9 +153,8 @@ VALUE Amethyst_alnum(VALUE self ) {
         __result=it;;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_alpha(VALUE self ) {
     VALUE vals[0];
@@ -197,9 +195,8 @@ VALUE Amethyst_alpha(VALUE self ) {
         __result=it;;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_char(VALUE self ) {
     VALUE vals[0];
@@ -227,9 +224,8 @@ VALUE Amethyst_char(VALUE self ) {
     _c=bind_aget(bind2,1);;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_clas(VALUE self ,VALUE a0) {
     VALUE vals[1];
@@ -262,9 +258,8 @@ VALUE Amethyst_clas(VALUE self ,VALUE a0) {
     it=__result;
     __result_2=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_digit(VALUE self ) {
     VALUE vals[0];
@@ -291,9 +286,8 @@ VALUE Amethyst_digit(VALUE self ) {
         __result=it;;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_empty(VALUE self ) {
     VALUE vals[0];
@@ -306,9 +300,8 @@ VALUE Amethyst_empty(VALUE self ) {
     it=Qnil;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_eof(VALUE self ) {
     VALUE vals[0];
@@ -354,9 +347,8 @@ alt1_3:
 accept1:
     ;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_fails(VALUE self ) {
     VALUE vals[0];
@@ -373,9 +365,8 @@ VALUE Amethyst_fails(VALUE self ) {
     };
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_false(VALUE self ) {
     VALUE vals[0];
@@ -408,9 +399,8 @@ VALUE Amethyst_false(VALUE self ) {
     it=__result;
     __result_2=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_int(VALUE self ) {
     VALUE vals[0];
@@ -1410,9 +1400,8 @@ accept6:
         __result=it;;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_line(VALUE self ) {
     VALUE vals[0];
@@ -1493,9 +1482,8 @@ accept1:
     _it=bind_aget(bind2,1);;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_listOf(VALUE self ,VALUE a0,VALUE a1) {
     VALUE vals[2];
@@ -1592,9 +1580,8 @@ alt1_3:
 accept1:
     ;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_lower(VALUE self ) {
     VALUE vals[0];
@@ -1621,9 +1608,8 @@ VALUE Amethyst_lower(VALUE self ) {
         __result=it;;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_member(VALUE self ,VALUE a0) {
     VALUE vals[1];
@@ -1652,9 +1638,8 @@ VALUE Amethyst_member(VALUE self ,VALUE a0) {
     it=_a;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_newline(VALUE self ) {
     VALUE vals[0];
@@ -1727,9 +1712,8 @@ accept1:
         ;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_nil(VALUE self ) {
     VALUE vals[0];
@@ -1762,9 +1746,8 @@ VALUE Amethyst_nil(VALUE self ) {
     it=__result;
     __result_2=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_number(VALUE self ) {
     VALUE vals[0];
@@ -1798,9 +1781,8 @@ VALUE Amethyst_number(VALUE self ) {
         __result=it;;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_parse(VALUE self ,VALUE a0,VALUE a1) {
     VALUE vals[2];
@@ -1850,15 +1832,17 @@ VALUE Amethyst_parse(VALUE self ,VALUE a0,VALUE a1) {
     goto success1;
 pass1:
     *ptr=oldpass1;
-    goto fail;
+    if (1) {
+        it=failobj;
+        goto fail;
+    }
 success1:
     *ptr=oldpass1;
     it=_autovar_2;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_range_ex(VALUE self ,VALUE a0,VALUE a1) {
     VALUE vals[2];
@@ -1896,9 +1880,8 @@ VALUE Amethyst_range_ex(VALUE self ,VALUE a0,VALUE a1) {
     it=__result;
     __result_2=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_range_in(VALUE self ,VALUE a0,VALUE a1) {
     VALUE vals[2];
@@ -1936,9 +1919,8 @@ VALUE Amethyst_range_in(VALUE self ,VALUE a0,VALUE a1) {
     it=__result;
     __result_2=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_regch(VALUE self ,VALUE a0) {
     VALUE vals[1];
@@ -1971,9 +1953,8 @@ VALUE Amethyst_regch(VALUE self ,VALUE a0) {
     it=__result;
     __result_2=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_replace(VALUE self ,VALUE a0) {
     VALUE vals[1];
@@ -2023,9 +2004,8 @@ accept1:
     _it=bind_aget(bind2,1);;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_reverse(VALUE self ,VALUE a0) {
     VALUE vals[1];
@@ -2062,9 +2042,8 @@ VALUE Amethyst_reverse(VALUE self ,VALUE a0) {
     it=_rev;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_seq(VALUE self ,VALUE a0) {
     VALUE vals[1];
@@ -2085,9 +2064,8 @@ VALUE Amethyst_seq(VALUE self ,VALUE a0) {
     it=_s;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_space(VALUE self ) {
     VALUE vals[0];
@@ -2122,9 +2100,8 @@ VALUE Amethyst_space(VALUE self ) {
         __result=it;;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_spaces(VALUE self ) {
     VALUE vals[0];
@@ -2167,9 +2144,8 @@ VALUE Amethyst_spaces(VALUE self ) {
     it=_autovar;
     __result_2=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_token(VALUE self ,VALUE a0) {
     VALUE vals[1];
@@ -2195,9 +2171,8 @@ VALUE Amethyst_token(VALUE self ,VALUE a0) {
     it=__result;
     __result_2=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_true(VALUE self ) {
     VALUE vals[0];
@@ -2230,9 +2205,8 @@ VALUE Amethyst_true(VALUE self ) {
     it=__result;
     __result_2=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_until(VALUE self ,VALUE a0) {
     VALUE vals[1];
@@ -2378,9 +2352,8 @@ accept3:
     _x=bind_aget(bind2,1);;
     __result=it;;
 
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_upper(VALUE self ) {
     VALUE vals[0];
@@ -2407,9 +2380,8 @@ VALUE Amethyst_upper(VALUE self ) {
         __result=it;;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_word(VALUE self ) {
     VALUE vals[0];
@@ -2479,9 +2451,8 @@ accept1:
         __result=it;;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 VALUE Amethyst_xdigit(VALUE self ) {
     VALUE vals[0];
@@ -2516,9 +2487,8 @@ VALUE Amethyst_xdigit(VALUE self ) {
         __result=it;;
         break;
     }
-    return it;
 fail:
-    return failobj;
+    return it;
 }
 void Init_amethyst_c() {
     cls_Amethyst=rb_define_class("Amethyst",rb_const_get(rb_cObject,rb_intern("AmethystCore")));
@@ -2598,5 +2568,5 @@ void Init_amethyst_c() {
     rb_define_method(cls_Amethyst,"upper",Amethyst_upper,0);
     rb_define_method(cls_Amethyst,"word",Amethyst_word,0);
     rb_define_method(cls_Amethyst,"xdigit",Amethyst_xdigit,0);
-    rb_eval_string("testversionamethyst('3e7ffd672d80ba2bc36babb6f1f1327b')");
+    rb_eval_string("testversionamethyst('b7b9ef66c24458d10a16fd897d94d7d1')");
 }
