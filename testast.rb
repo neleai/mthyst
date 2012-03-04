@@ -6,7 +6,7 @@ Compiler::compile("amethyst/#{f}.ame","compiled/#{f}.rb",f)
 require "./compiled/#{f}"
 }
 
-exp="foo|bar:x (bla | as 'xxx') baz \"yyy\" <abc> {4+2}"
+exp="foo|bar:x (bla | as 'xxx') baz(4,5) \"yyy\" <abc> {4+2}"
 wrap="amethyst Foo{foo=#{exp} }"
 s=AmethystParser.new.parse(:file,wrap)
 #s=s[0].rules[0].body
