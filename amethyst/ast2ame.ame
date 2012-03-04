@@ -1,6 +1,26 @@
+$ids=0
+def color_by(text,color)
+  "<span style=\"color:#{color}\">#{text}</span>"
+end
 amethyst AST2Amethyst {
   trans = Or[  trans*:ary  ]            ->     ary*"|"
-        | Seq[ trans*:ary  ]            -> "("+ary*" "+")"
+        | Seq[ trans*:ary  ]            ->     ary*" "
         | Apply[ .:name ]               -> name
         | Bind[ trans:expr @name:name ] -> "("+expr+"):"+name[0]
+}
+
+amethyst Syntax_Highligth {
+  trans = Or_AST[  trans*:ary  ]        {
+ $ids+=1;"<span id=id#{$ids}>#{ary*"<span onmouseover='document.getElementById(\"id#{$ids}\").style.background=\"green\";' 
+                                   onmouseout ='document.getElementById(\"id#{$ids}\").style.background=\"black\";'>|</span>"}</span>"
+}
+        | Parenthesis[ trans:t ]           -> "(#{t })"
+        | Seq[ trans*:ary  ]               -> " #{ary*" "} "
+        | Act[ Args[.*:ary]      ]         -> color_by("{#{ary*""}}","brown")
+        | Apply[ [ "seq" ] CAct[.:str] ]   ->  "'#{str}'"
+        | Apply[ ["token"] CAct[.:str] ]   -> "\"#{str}\""
+        | Apply[ ["regch"]  Act[.:str] ]   -> "&lt;#{str[2...-2]}&gt;"
+
+        | Apply[ .:name ]                  -> color_by(name,"blue")
+        | Bind[ trans:expr @name:name ]    -> "#{expr}#{color_by(":#{name[0]}","red")}"
 }
