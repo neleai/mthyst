@@ -30,5 +30,5 @@ amethyst Syntax_Highligth {
         | Apply[ .:name ]                  -> color_by(name,"blue")
         | Bind[ trans:expr @name:name ]    -> "#{expr}#{color_by(":#{name[0]}","red")}"
 
-  trans2 = Act[ Args[.*:ary]      ] -> color_by(ary*"","brown")
+  trans2 = Act[ Args[ (Lambda[.:x {x[0]}=>trans:t {color_by("`","yellow")+ "#{t}"+color_by("`","yellow")} ]  | .)*:ary]      ] -> color_by(ary*"","brown")
 }
