@@ -111,7 +111,10 @@ accept2:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -201,7 +204,10 @@ alt3_1:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass3;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass3;
+        }
         goto success3;
 pass3:
         *ptr=oldpass3;
@@ -218,7 +224,10 @@ success3:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass2;
+        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -317,7 +326,10 @@ accept5:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass4;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass4;
+        }
         goto success4;
 pass4:
         *ptr=oldpass4;
@@ -447,7 +459,10 @@ accept8:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass6;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass6;
+        }
         goto success6;
 pass6:
         *ptr=oldpass6;
@@ -460,7 +475,10 @@ success6:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass5;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass5;
+        }
         goto success5;
 pass5:
         *ptr=oldpass5;
@@ -538,7 +556,10 @@ accept9:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass7;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass7;
+        }
         goto success7;
 pass7:
         *ptr=oldpass7;
@@ -672,7 +693,10 @@ accept11:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass9;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass9;
+        }
         goto success9;
 pass9:
         *ptr=oldpass9;
@@ -685,7 +709,10 @@ success9:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass8;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass8;
+        }
         goto success8;
 pass8:
         *ptr=oldpass8;
@@ -794,7 +821,10 @@ accept13:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass10;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass10;
+        }
         goto success10;
 pass10:
         *ptr=oldpass10;
@@ -919,7 +949,10 @@ VALUE Remove_Left_Recursion_root(VALUE self ) {
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         break;
     case 1/*Object*/:
         ;
@@ -1040,7 +1073,10 @@ accept2:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass4;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass4;
+        }
         goto success4;
 pass4:
         *ptr=oldpass4;
@@ -1085,7 +1121,10 @@ accept1:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass3;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass3;
+        }
         break;
     case 1/*Bind*/:
         ;
@@ -1147,7 +1186,10 @@ alt3_1:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass6;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass6;
+        }
         goto success6;
 pass6:
         *ptr=oldpass6;
@@ -1164,7 +1206,10 @@ success6:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass5;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass5;
+        }
         goto success5;
 pass5:
         *ptr=oldpass5;
@@ -1204,7 +1249,10 @@ accept3:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass3;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass3;
+        }
         break;
     case 2/*Or*/:
         ;
@@ -1277,7 +1325,10 @@ accept5:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass7;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass7;
+        }
         goto success7;
 pass7:
         *ptr=oldpass7;
@@ -1319,7 +1370,10 @@ accept4:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass3;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass3;
+        }
         break;
     case 3/*Seq*/:
         ;
@@ -1423,7 +1477,10 @@ accept8:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass9;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass9;
+        }
         goto success9;
 pass9:
         *ptr=oldpass9;
@@ -1436,7 +1493,10 @@ success9:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass8;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass8;
+        }
         goto success8;
 pass8:
         *ptr=oldpass8;
@@ -1514,7 +1574,10 @@ accept9:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass10;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass10;
+        }
         goto success10;
 pass10:
         *ptr=oldpass10;
@@ -1566,7 +1629,10 @@ accept6:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass3;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass3;
+        }
         break;
     case 4/*Object*/:
         ;
@@ -1598,7 +1664,10 @@ accept6:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass3;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass3;
+        }
         break;
     }
     goto success3;
@@ -1691,7 +1760,10 @@ accept11:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass12;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass12;
+        }
         goto success12;
 pass12:
         *ptr=oldpass12;
@@ -1736,7 +1808,10 @@ accept10:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass11;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass11;
+        }
         break;
     case 1/*Bind*/:
         ;
@@ -1798,7 +1873,10 @@ alt12_1:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass14;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass14;
+        }
         goto success14;
 pass14:
         *ptr=oldpass14;
@@ -1815,7 +1893,10 @@ success14:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass13;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass13;
+        }
         goto success13;
 pass13:
         *ptr=oldpass13;
@@ -1855,7 +1936,10 @@ accept12:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass11;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass11;
+        }
         break;
     case 2/*Or*/:
         ;
@@ -1928,7 +2012,10 @@ accept14:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass15;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass15;
+        }
         goto success15;
 pass15:
         *ptr=oldpass15;
@@ -1970,7 +2057,10 @@ accept13:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass11;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass11;
+        }
         break;
     case 3/*Seq*/:
         ;
@@ -2074,7 +2164,10 @@ accept17:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass17;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass17;
+        }
         goto success17;
 pass17:
         *ptr=oldpass17;
@@ -2087,7 +2180,10 @@ success17:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass16;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass16;
+        }
         goto success16;
 pass16:
         *ptr=oldpass16;
@@ -2165,7 +2261,10 @@ accept18:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass18;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass18;
+        }
         goto success18;
 pass18:
         *ptr=oldpass18;
@@ -2217,7 +2316,10 @@ accept15:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass11;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass11;
+        }
         break;
     case 4/*Object*/:
         ;
@@ -2249,7 +2351,10 @@ accept15:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass11;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass11;
+        }
         break;
     }
     goto success11;
@@ -2273,7 +2378,10 @@ success11:
     it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
     _autovar=bind_aget(bind2,1);;
     it=Qnil;
-    if (ptr->pos<ptr->len) goto pass2;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto pass2;
+    }
     goto success2;
 pass2:
     *ptr=oldpass2;
@@ -2321,5 +2429,5 @@ void Init_remove_left_rigth_recursion_c() {
     rb_define_method(cls_Remove_Left_Recursion,"first",Remove_Left_Recursion_first,1);
     rb_define_method(cls_Remove_Left_Recursion,"must_empty",Remove_Left_Recursion_must_empty,0);
     rb_define_method(cls_Remove_Left_Recursion,"root",Remove_Left_Recursion_root,0);
-    rb_eval_string("testversionremove_left_rigth_recursion('c8dceff58149971b240f8da1cec5344b')");
+    rb_eval_string("testversionremove_left_rigth_recursion('de689c1ae4921ef6b427525feddc48bb')");
 }

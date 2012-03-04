@@ -156,12 +156,12 @@ s
         | Apply[ ["_find"] {raise "TODO"} ]
 				| Apply[ ["_test_size"] CAct[.:s] ] -> "if(ptr->pos+#{s}>=ptr->len) #{failwhen("1")}"
         | Apply[ ["fails"] {"goto #{@@faillabel};"} ]
-        | Apply[ ["eof"]   {"it=Qnil;if (ptr->pos<ptr->len) goto #{@@faillabel};"} ]
+        | Apply[ ["eof"]   {"it=Qnil;#{failwhen("ptr->pos<ptr->len")}"} ]
         | Apply[ ["empty"]   {"it=Qnil;"} ]
 				| Apply[ ["advance_char"] {"it=rb_str_new(ptr->str+ptr->pos,1);ptr->pos++;"} ]
 				| Apply[ ["advance_clas"] {"it=ptr->ary[ptr->pos];            ;ptr->pos++;"} ]
 
-        | Apply[ ["_seq"] CAct[.:s] {"if (#{ary=s.split("");map_index(ary){|i| "ame_curstr2(ptr)[#{i}]==#{Lattice_Char.new.cchar(ary[i])}" }*"&&" })  ptr->pos+=#{s.size}; else goto #{@@faillabel};"}]
+        | Apply[ ["_seq"] CAct[.:s] {"if (#{ary=s.split("");map_index(ary){|i| "ame_curstr2(ptr)[#{i}]==#{Lattice_Char.new.cchar(ary[i])}" }*"&&" })  ptr->pos+=#{s.size}; else #{failwhen("1")}"}]
         | Apply[ .:name {0}:ii ( trans:aa {ii+=1} {"#{aa} arg#{ii-1}=it;"})*:args @self:app]
                  -> r=" #{args*""} it=#{callrule(name,ii)};"; cant_fail?(app) ? r : "#{r} FAILTEST(#{@@faillabel});"
 

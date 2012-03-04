@@ -63,7 +63,10 @@ VALUE Add_Contextual_Arguments_root(VALUE self ) {
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         break;
     case 1/*Object*/:
         ;
@@ -121,7 +124,10 @@ success1:
     it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
     _autovar=bind_aget(bind2,1);;
     it=Qnil;
-    if (ptr->pos<ptr->len) goto pass2;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto pass2;
+    }
     goto success2;
 pass2:
     *ptr=oldpass2;
@@ -205,7 +211,10 @@ accept1:
         ;
     }
     it=Qnil;
-    if (ptr->pos<ptr->len) goto pass2;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto pass2;
+    }
     goto success2;
 pass2:
     *ptr=oldpass2;
@@ -213,7 +222,10 @@ pass2:
 success2:
     *ptr=oldpass2;
     it=Qnil;
-    if (ptr->pos<ptr->len) goto pass1;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto pass1;
+    }
     goto success1;
 pass1:
     *ptr=oldpass1;
@@ -277,7 +289,10 @@ alt1_2:
         FAILTEST(pass1);
         _autovar_2=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -369,7 +384,10 @@ accept3:
         it=_ar;
         _autovar_4=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass2;
+        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -496,7 +514,10 @@ accept1:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -553,7 +574,10 @@ success1:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass2;
+        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -639,7 +663,10 @@ VALUE Add_Contextual_Returns_root(VALUE self ) {
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         break;
     case 1/*Object*/:
         ;
@@ -686,7 +713,10 @@ success1:
     it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
     _autovar=bind_aget(bind2,1);;
     it=Qnil;
-    if (ptr->pos<ptr->len) goto pass2;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto pass2;
+    }
     goto success2;
 pass2:
     *ptr=oldpass2;
@@ -774,7 +804,10 @@ accept1:
         ;
     }
     it=Qnil;
-    if (ptr->pos<ptr->len) goto pass2;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto pass2;
+    }
     goto success2;
 pass2:
     *ptr=oldpass2;
@@ -782,7 +815,10 @@ pass2:
 success2:
     *ptr=oldpass2;
     it=Qnil;
-    if (ptr->pos<ptr->len) goto pass1;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto pass1;
+    }
     goto success1;
 pass1:
     *ptr=oldpass1;
@@ -846,7 +882,10 @@ alt1_2:
         FAILTEST(pass1);
         _autovar_2=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -938,7 +977,10 @@ accept3:
         it=_ar;
         _autovar_4=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass2;
+        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -1063,7 +1105,10 @@ accept1:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -1110,7 +1155,10 @@ success1:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass2;
+        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -1250,7 +1298,10 @@ accept1:
         ;
     }
     it=Qnil;
-    if (ptr->pos<ptr->len) goto pass2;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto pass2;
+    }
     goto success2;
 pass2:
     *ptr=oldpass2;
@@ -1258,7 +1309,10 @@ pass2:
 success2:
     *ptr=oldpass2;
     it=Qnil;
-    if (ptr->pos<ptr->len) goto pass1;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto pass1;
+    }
     goto success1;
 pass1:
     *ptr=oldpass1;
@@ -1322,7 +1376,10 @@ alt1_2:
         FAILTEST(pass1);
         _autovar_2=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -1414,7 +1471,10 @@ accept3:
         it=_ar;
         _autovar_4=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass2;
+        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -1513,7 +1573,10 @@ VALUE Detect_Contextual_Arguments_visit(VALUE self ) {
         it=_autovar_3;
         _autovar_4=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -1617,5 +1680,5 @@ void Init_contextual_argument_return_c() {
     rb_define_method(cls_Detect_Contextual_Arguments,"traverse",Detect_Contextual_Arguments_traverse,0);
     rb_define_method(cls_Detect_Contextual_Arguments,"traverse_item",Detect_Contextual_Arguments_traverse_item,0);
     rb_define_method(cls_Detect_Contextual_Arguments,"visit",Detect_Contextual_Arguments_visit,0);
-    rb_eval_string("testversioncontextual_argument_return('f4e1c132d24830d6c54a37fefae32539')");
+    rb_eval_string("testversioncontextual_argument_return('bfbab18323376582aa0d0e0e81648432')");
 }

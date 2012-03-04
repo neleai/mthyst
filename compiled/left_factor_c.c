@@ -107,7 +107,10 @@ alt1_1:
         _nexp=bind_aget(bind2,1);;
         _autovar_3=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass2;
+        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -134,7 +137,10 @@ alt1_3:
 accept1:
         ;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         break;
     case 1/*Seq*/:
         ;
@@ -173,7 +179,10 @@ alt2_1:
         FAILTEST(pass3);
         _autovar_6=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass3;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass3;
+        }
         goto success3;
 pass3:
         *ptr=oldpass3;
@@ -200,7 +209,10 @@ alt2_3:
 accept2:
         ;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         break;
     case 2/*Object*/:
         ;
@@ -209,7 +221,10 @@ accept2:
         it=_a;
         _autovar_4=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         break;
     }
     goto success1;
@@ -314,7 +329,10 @@ accept2:
 alt1_2:
     ptr->pos=oldpos1;
     it=Qnil;
-    if (ptr->pos<ptr->len) goto alt1_3;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto alt1_3;
+    }
     bind_aset(bind2,1,_prev);
     bind_aset(bind2,2,_cur);
     it=rb_funcall(self,sy__Or_lb__ti__lp_bin_849e,1,bind2);
@@ -385,7 +403,10 @@ alt1_1:
         FAILTEST(pass2);
         _autovar_3=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass2;
+        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -411,7 +432,10 @@ alt1_3:
 accept1:
         ;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         break;
     case 1/*Seq*/:
         ;
@@ -448,7 +472,10 @@ alt2_1:
         FAILTEST(pass3);
         _autovar_6=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass3;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass3;
+        }
         goto success3;
 pass3:
         *ptr=oldpass3;
@@ -474,7 +501,10 @@ alt2_3:
 accept2:
         ;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         break;
     case 2/*Object*/:
         ;
@@ -482,7 +512,10 @@ accept2:
         FAILTEST(pass1);
         _autovar_4=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         break;
     }
     goto success1;
@@ -579,7 +612,10 @@ accept2:
         _it=bind_aget(bind2,2);;
         _autovar_5=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass2;
+        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -606,7 +642,10 @@ alt1_3:
 accept1:
         ;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         break;
     case 1/*Object*/:
         ;
@@ -615,7 +654,10 @@ accept1:
         it=_bin;
         _autovar_6=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         break;
     }
     goto success1;
@@ -726,7 +768,10 @@ accept1:
         ;
     }
     it=Qnil;
-    if (ptr->pos<ptr->len) goto pass2;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto pass2;
+    }
     goto success2;
 pass2:
     *ptr=oldpass2;
@@ -734,7 +779,10 @@ pass2:
 success2:
     *ptr=oldpass2;
     it=Qnil;
-    if (ptr->pos<ptr->len) goto pass1;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto pass1;
+    }
     goto success1;
 pass1:
     *ptr=oldpass1;
@@ -803,7 +851,10 @@ alt1_2:
         FAILTEST(pass1);
         _autovar_2=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -895,7 +946,10 @@ accept3:
         it=_ar;
         _autovar_4=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass2;
+        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -1092,7 +1146,10 @@ accept2:
 alt1_2:
         ptr->pos=oldpos1;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto alt1_3;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto alt1_3;
+        }
         bind_aset(bind2,1,_prev);
         bind_aset(bind2,2,_cur);
         it=rb_funcall(self,sy__Or_lb__ti__lp_bin_849e,1,bind2);
@@ -1110,7 +1167,10 @@ accept1:
         it=__result;
         _autovar_3=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass2;
+        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -1120,7 +1180,10 @@ success2:
         it=_autovar_3;
         _autovar_4=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -1184,5 +1247,5 @@ void Init_left_factor_c() {
     rb_define_method(cls_Left_Factor,"traverse",Left_Factor_traverse,0);
     rb_define_method(cls_Left_Factor,"traverse_item",Left_Factor_traverse_item,0);
     rb_define_method(cls_Left_Factor,"visit",Left_Factor_visit,0);
-    rb_eval_string("testversionleft_factor('5699f55ec49885a55b56e0719b44f791')");
+    rb_eval_string("testversionleft_factor('6570c0b80ae872d9a2c62ad9d7961a4e')");
 }

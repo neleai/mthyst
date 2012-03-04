@@ -69,7 +69,7 @@ end
 
 
 def inliner2_compiled_by
-'e9f529fad0490795de86e452e0ffaa3d'
+'2d751ddda15b029da7579346bd3bec1c'
 end
 def inliner2_source_hash
 'ccb4238b3948e1d7730b8c07b91b1561'
@@ -78,6 +78,6 @@ def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version
 end
 def inliner2_version
-'7d30589e63a1e1bbf0154f4914c6a354'
+'ce04c1f5bddad709516744d93f35aeee'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/inliner2_c"

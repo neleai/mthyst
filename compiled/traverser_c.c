@@ -87,7 +87,10 @@ accept1:
         ;
     }
     it=Qnil;
-    if (ptr->pos<ptr->len) goto pass2;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto pass2;
+    }
     goto success2;
 pass2:
     *ptr=oldpass2;
@@ -95,7 +98,10 @@ pass2:
 success2:
     *ptr=oldpass2;
     it=Qnil;
-    if (ptr->pos<ptr->len) goto pass1;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto pass1;
+    }
     goto success1;
 pass1:
     *ptr=oldpass1;
@@ -159,7 +165,10 @@ alt1_2:
         FAILTEST(pass1);
         _autovar_2=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -251,7 +260,10 @@ accept3:
         it=_ar;
         _autovar_4=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass2;
+        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -387,7 +399,10 @@ accept1:
     it=_autovar_3;
     _autovar_5=it;;
     it=Qnil;
-    if (ptr->pos<ptr->len) goto pass2;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto pass2;
+    }
     goto success2;
 pass2:
     *ptr=oldpass2;
@@ -397,7 +412,10 @@ success2:
     it=_autovar_5;
     _autovar_6=it;;
     it=Qnil;
-    if (ptr->pos<ptr->len) goto pass1;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto pass1;
+    }
     goto success1;
 pass1:
     *ptr=oldpass1;
@@ -457,7 +475,10 @@ alt1_2:
         FAILTEST(pass1);
         _autovar_2=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -544,7 +565,10 @@ accept3:
         it=_autovar_4;
         _autovar_6=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass2;
+        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -628,5 +652,5 @@ void Init_traverser_c() {
     sy_visit=rb_intern("visit");
     rb_define_method(cls_Visitor,"traverse",Visitor_traverse,0);
     rb_define_method(cls_Visitor,"traverse_item",Visitor_traverse_item,0);
-    rb_eval_string("testversiontraverser('89d2c6edfd47f416076de901222d84ef')");
+    rb_eval_string("testversiontraverser('751972674f5794688717fe854e0d9b0d')");
 }

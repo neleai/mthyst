@@ -411,7 +411,10 @@ alt1_3:
             _autovar_2=it;;
             it=rb_obj_clone(s_0o_6f57);
             if (ame_curstr2(ptr)[0]=='0'&&ame_curstr2(ptr)[1]=='o')  ptr->pos+=2;
-            else goto alt1_4;
+            else if (1) {
+                it=failobj;
+                goto alt1_4;
+            }
             it=rb_obj_clone(s_0o_6f57);
             it=rb_obj_clone(s_0o_6f57);
             _autovar_3=it;;
@@ -484,7 +487,10 @@ alt2_1:
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
             if (ame_curstr2(ptr)[0]=='x')  ptr->pos+=1;
-            else goto alt2_2;
+            else if (1) {
+                it=failobj;
+                goto alt2_2;
+            }
             it=rb_obj_clone(s_0x_f6f8);
             it=rb_obj_clone(s_0x_f6f8);
             it=rb_obj_clone(s_0x_f6f8);
@@ -554,7 +560,10 @@ alt2_2:
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
             if (ame_curstr2(ptr)[0]=='b')  ptr->pos+=1;
-            else goto alt2_3;
+            else if (1) {
+                it=failobj;
+                goto alt2_3;
+            }
             it=rb_obj_clone(s_0b_3470);
             it=rb_obj_clone(s_0b_3470);
             it=rb_obj_clone(s_0b_3470);
@@ -606,7 +615,10 @@ alt2_3:
             _autovar_2=it;;
             it=rb_obj_clone(s_0o_6f57);
             if (ame_curstr2(ptr)[0]=='0'&&ame_curstr2(ptr)[1]=='o')  ptr->pos+=2;
-            else goto alt2_4;
+            else if (1) {
+                it=failobj;
+                goto alt2_4;
+            }
             it=rb_obj_clone(s_0o_6f57);
             it=rb_obj_clone(s_0o_6f57);
             _autovar_3=it;;
@@ -718,7 +730,10 @@ alt3_3:
             _autovar_2=it;;
             it=rb_obj_clone(s_0o_6f57);
             if (ame_curstr2(ptr)[0]=='0'&&ame_curstr2(ptr)[1]=='o')  ptr->pos+=2;
-            else goto alt3_4;
+            else if (1) {
+                it=failobj;
+                goto alt3_4;
+            }
             it=rb_obj_clone(s_0o_6f57);
             it=rb_obj_clone(s_0o_6f57);
             _autovar_3=it;;
@@ -853,7 +868,10 @@ alt4_3:
             _autovar_2=it;;
             it=rb_obj_clone(s_0o_6f57);
             if (ame_curstr2(ptr)[0]=='0'&&ame_curstr2(ptr)[1]=='o')  ptr->pos+=2;
-            else goto alt4_4;
+            else if (1) {
+                it=failobj;
+                goto alt4_4;
+            }
             it=rb_obj_clone(s_0o_6f57);
             it=rb_obj_clone(s_0o_6f57);
             _autovar_3=it;;
@@ -926,7 +944,10 @@ alt5_1:
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
             if (ame_curstr2(ptr)[0]=='x')  ptr->pos+=1;
-            else goto alt5_2;
+            else if (1) {
+                it=failobj;
+                goto alt5_2;
+            }
             it=rb_obj_clone(s_0x_f6f8);
             it=rb_obj_clone(s_0x_f6f8);
             it=rb_obj_clone(s_0x_f6f8);
@@ -996,7 +1017,10 @@ alt5_2:
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
             if (ame_curstr2(ptr)[0]=='b')  ptr->pos+=1;
-            else goto alt5_3;
+            else if (1) {
+                it=failobj;
+                goto alt5_3;
+            }
             it=rb_obj_clone(s_0b_3470);
             it=rb_obj_clone(s_0b_3470);
             it=rb_obj_clone(s_0b_3470);
@@ -1048,7 +1072,10 @@ alt5_3:
             _autovar_2=it;;
             it=rb_obj_clone(s_0o_6f57);
             if (ame_curstr2(ptr)[0]=='0'&&ame_curstr2(ptr)[1]=='o')  ptr->pos+=2;
-            else goto alt5_4;
+            else if (1) {
+                it=failobj;
+                goto alt5_4;
+            }
             it=rb_obj_clone(s_0o_6f57);
             it=rb_obj_clone(s_0o_6f57);
             _autovar_3=it;;
@@ -1160,7 +1187,10 @@ alt6_3:
             _autovar_2=it;;
             it=rb_obj_clone(s_0o_6f57);
             if (ame_curstr2(ptr)[0]=='0'&&ame_curstr2(ptr)[1]=='o')  ptr->pos+=2;
-            else goto alt6_4;
+            else if (1) {
+                it=failobj;
+                goto alt6_4;
+            }
             it=rb_obj_clone(s_0o_6f57);
             it=rb_obj_clone(s_0o_6f57);
             _autovar_3=it;;
@@ -1502,7 +1532,10 @@ alt1_1:
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
         if (ame_curstr2(ptr)[0]==UC(10))  ptr->pos+=1;
-        else goto alt1_2;
+        else if (1) {
+            it=failobj;
+            goto alt1_2;
+        }
         it=rb_obj_clone(s__bs_r_bs_n_bdb2);
         __result=it;;
         it=__result;
@@ -1633,7 +1666,10 @@ VALUE Amethyst_parse(VALUE self ,VALUE a0,VALUE a1) {
     _r=bind_aget(bind2,1);;
     _autovar_2=it;;
     it=Qnil;
-    if (ptr->pos<ptr->len) goto pass1;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto pass1;
+    }
     goto success1;
 pass1:
     *ptr=oldpass1;
@@ -2298,5 +2334,5 @@ void Init_amethyst_c() {
     rb_define_method(cls_Amethyst,"upper",Amethyst_upper,0);
     rb_define_method(cls_Amethyst,"word",Amethyst_word,0);
     rb_define_method(cls_Amethyst,"xdigit",Amethyst_xdigit,0);
-    rb_eval_string("testversionamethyst('3fcee5cdc2468b0936886979bd8862a2')");
+    rb_eval_string("testversionamethyst('812e914ad1d2eae4acb5301c4c6df8ce')");
 }

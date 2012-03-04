@@ -214,8 +214,8 @@ def __dq_if_lp_ptr_mi__19f0(bind)
 "if(ptr->pos+#{bind[1]}>=ptr->len) #{failwhen("1")}"
 
 end
-def __dq_if_sp__lp__sh__le_a_0233(bind)
-"if (#{ary=bind[1].split("");map_index(ary){|i| "ame_curstr2(ptr)[#{i}]==#{Lattice_Char.new.cchar(ary[i])}" }*"&&" })  ptr->pos+=#{bind[1].size}; else goto #{@faillabel};"
+def __dq_if_sp__lp__sh__le_a_1643(bind)
+"if (#{ary=bind[1].split("");map_index(ary){|i| "ame_curstr2(ptr)[#{i}]==#{Lattice_Char.new.cchar(ary[i])}" }*"&&" })  ptr->pos+=#{bind[1].size}; else #{failwhen("1")}"
 end
 def __dq_int_sp__sh__le_b_0a35(bind)
 "int #{bind[1]}=ptr->pos;\n #{bind[2]} x=1; goto #{bind[3]};  #{bind[4]}: x=0; #{bind[3]}: it=Qnil; ptr->pos=#{bind[1]}; if (x==0) goto #{@faillabel};"
@@ -227,8 +227,8 @@ def __dq_it_eq_Amet_82ce(bind)
 "it=AmethystCore_append(self,#{bget(bind[1])},#{bget(bind[2])});"
 
 end
-def __dq_it_eq_Qnil_8464(bind)
-"it=Qnil;if (ptr->pos<ptr->len) goto #{@faillabel};"
+def __dq_it_eq_Qnil_a6d5(bind)
+"it=Qnil;#{failwhen("ptr->pos<ptr->len")}"
 end
 def __dq_it_eq__sh__le_bg_281f(bind)
 "it=#{bget(src)};" 
@@ -402,15 +402,15 @@ end
 
 
 def ctranslator2_compiled_by
-'e9f529fad0490795de86e452e0ffaa3d'
+'2d751ddda15b029da7579346bd3bec1c'
 end
 def ctranslator2_source_hash
-'0e761d5c3715d3910ee9e13b9525bed1'
+'782609ae481307d984cce7ac378b80d9'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'575f8ff425fe05bfa5640743c577df73'
+'465f7e1a8171280e2c084a56847d6359'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"

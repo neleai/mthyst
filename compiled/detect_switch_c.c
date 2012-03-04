@@ -77,7 +77,10 @@ alt1_1:
         it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
         _autovar_2=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -155,7 +158,10 @@ alt2_1:
         FAILTEST(pass3);
         _autovar_5=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass3;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass3;
+        }
         goto success3;
 pass3:
         *ptr=oldpass3;
@@ -165,7 +171,10 @@ success3:
         it=_autovar_5;
         _autovar_6=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass2;
+        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -222,7 +231,10 @@ alt3_1:
         FAILTEST(pass4);
         _autovar_8=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass4;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass4;
+        }
         goto success4;
 pass4:
         *ptr=oldpass4;
@@ -283,7 +295,10 @@ alt4_1:
         _val=bind_aget(bind2,1);;
         _autovar_10=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass5;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass5;
+        }
         goto success5;
 pass5:
         *ptr=oldpass5;
@@ -379,7 +394,10 @@ alt6_1:
             _autovar_13=it;;
             it=AmethystCore_append(self,_vals,_autovar_13);
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass7;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass7;
+            }
             goto success7;
 pass7:
             *ptr=oldpass7;
@@ -401,7 +419,10 @@ accept6:
             ;
         }
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass6;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass6;
+        }
         goto success6;
 pass6:
         *ptr=oldpass6;
@@ -481,7 +502,10 @@ alt8_1:
             FAILTEST(pass9);
             _autovar_16=it;;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass9;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass9;
+            }
             goto success9;
 pass9:
             *ptr=oldpass9;
@@ -538,7 +562,10 @@ accept8:
         it=_val;
         _autovar_17=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass8;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass8;
+        }
         goto success8;
 pass8:
         *ptr=oldpass8;
@@ -602,7 +629,10 @@ VALUE First_Dataflow_getvalue(VALUE self ,VALUE a0) {
     FAILTEST(pass1);
     _autovar_2=it;;
     it=Qnil;
-    if (ptr->pos<ptr->len) goto pass1;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto pass1;
+    }
     goto success1;
 pass1:
     *ptr=oldpass1;
@@ -695,7 +725,10 @@ accept1:
         it=_autovar_2;
         _ary=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -854,11 +887,17 @@ alt2_1:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='s'&&ame_curstr2(ptr)[1]=='e'&&ame_curstr2(ptr)[2]=='q')  ptr->pos+=3;
-                else goto pass2;
+                else if (1) {
+                    it=failobj;
+                    goto pass2;
+                }
                 break;
             }
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass2;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass2;
+            }
             goto success2;
 pass2:
             *ptr=oldpass2;
@@ -888,7 +927,10 @@ success2:
             FAILTEST(pass3);
             _str=it;;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass3;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass3;
+            }
             goto success3;
 pass3:
             *ptr=oldpass3;
@@ -939,7 +981,10 @@ alt3_1:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='g'&&ame_curstr2(ptr)[2]=='c'&&ame_curstr2(ptr)[3]=='h')  ptr->pos+=4;
-                else goto alt3_2;
+                else if (1) {
+                    it=failobj;
+                    goto alt3_2;
+                }
                 break;
             }
             ;
@@ -958,7 +1003,10 @@ alt3_2:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='l'&&ame_curstr2(ptr)[1]=='a'&&ame_curstr2(ptr)[2]=='s')  ptr->pos+=3;
-                else goto alt3_3;
+                else if (1) {
+                    it=failobj;
+                    goto alt3_3;
+                }
                 break;
             }
             ;
@@ -977,7 +1025,10 @@ alt3_3:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
-                else goto alt3_4;
+                else if (1) {
+                    it=failobj;
+                    goto alt3_4;
+                }
                 break;
             }
             ;
@@ -996,7 +1047,10 @@ alt3_4:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='h'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='r')  ptr->pos+=11;
-                else goto alt3_5;
+                else if (1) {
+                    it=failobj;
+                    goto alt3_5;
+                }
                 break;
             }
             ;
@@ -1015,7 +1069,10 @@ alt3_5:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
-                else goto alt3_6;
+                else if (1) {
+                    it=failobj;
+                    goto alt3_6;
+                }
                 break;
             }
             ;
@@ -1026,7 +1083,10 @@ alt3_6:
 accept3:
             ;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass4;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass4;
+            }
             goto success4;
 pass4:
             *ptr=oldpass4;
@@ -1072,11 +1132,17 @@ alt2_3:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='a'&&ame_curstr2(ptr)[1]=='i'&&ame_curstr2(ptr)[2]=='l'&&ame_curstr2(ptr)[3]=='s')  ptr->pos+=4;
-                else goto pass5;
+                else if (1) {
+                    it=failobj;
+                    goto pass5;
+                }
                 break;
             }
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass5;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass5;
+            }
             goto success5;
 pass5:
             *ptr=oldpass5;
@@ -1133,11 +1199,17 @@ alt4_1:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='s'&&ame_curstr2(ptr)[1]=='e'&&ame_curstr2(ptr)[2]=='q')  ptr->pos+=3;
-                else goto pass6;
+                else if (1) {
+                    it=failobj;
+                    goto pass6;
+                }
                 break;
             }
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass6;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass6;
+            }
             goto success6;
 pass6:
             *ptr=oldpass6;
@@ -1184,7 +1256,10 @@ alt5_1:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='g'&&ame_curstr2(ptr)[2]=='c'&&ame_curstr2(ptr)[3]=='h')  ptr->pos+=4;
-                else goto alt5_2;
+                else if (1) {
+                    it=failobj;
+                    goto alt5_2;
+                }
                 break;
             }
             ;
@@ -1203,7 +1278,10 @@ alt5_2:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='l'&&ame_curstr2(ptr)[1]=='a'&&ame_curstr2(ptr)[2]=='s')  ptr->pos+=3;
-                else goto alt5_3;
+                else if (1) {
+                    it=failobj;
+                    goto alt5_3;
+                }
                 break;
             }
             ;
@@ -1222,7 +1300,10 @@ alt5_3:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
-                else goto alt5_4;
+                else if (1) {
+                    it=failobj;
+                    goto alt5_4;
+                }
                 break;
             }
             ;
@@ -1241,7 +1322,10 @@ alt5_4:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='h'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='r')  ptr->pos+=11;
-                else goto alt5_5;
+                else if (1) {
+                    it=failobj;
+                    goto alt5_5;
+                }
                 break;
             }
             ;
@@ -1260,7 +1344,10 @@ alt5_5:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
-                else goto alt5_6;
+                else if (1) {
+                    it=failobj;
+                    goto alt5_6;
+                }
                 break;
             }
             ;
@@ -1271,7 +1358,10 @@ alt5_6:
 accept5:
             ;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass7;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass7;
+            }
             goto success7;
 pass7:
             *ptr=oldpass7;
@@ -1317,11 +1407,17 @@ alt4_3:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='a'&&ame_curstr2(ptr)[1]=='i'&&ame_curstr2(ptr)[2]=='l'&&ame_curstr2(ptr)[3]=='s')  ptr->pos+=4;
-                else goto pass8;
+                else if (1) {
+                    it=failobj;
+                    goto pass8;
+                }
                 break;
             }
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass8;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass8;
+            }
             goto success8;
 pass8:
             *ptr=oldpass8;
@@ -1341,7 +1437,10 @@ accept4:
             break;
         }
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -1424,7 +1523,10 @@ alt1_1:
         it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
         _autovar_2=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -1502,7 +1604,10 @@ alt2_1:
         FAILTEST(pass3);
         _autovar_5=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass3;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass3;
+        }
         goto success3;
 pass3:
         *ptr=oldpass3;
@@ -1512,7 +1617,10 @@ success3:
         it=_autovar_5;
         _autovar_6=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass2;
+        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -1569,7 +1677,10 @@ alt3_1:
         FAILTEST(pass4);
         _autovar_8=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass4;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass4;
+        }
         goto success4;
 pass4:
         *ptr=oldpass4;
@@ -1630,7 +1741,10 @@ alt4_1:
         _val=bind_aget(bind2,1);;
         _autovar_10=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass5;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass5;
+        }
         goto success5;
 pass5:
         *ptr=oldpass5;
@@ -1726,7 +1840,10 @@ alt6_1:
             _autovar_13=it;;
             it=AmethystCore_append(self,_vals,_autovar_13);
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass7;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass7;
+            }
             goto success7;
 pass7:
             *ptr=oldpass7;
@@ -1748,7 +1865,10 @@ accept6:
             ;
         }
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass6;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass6;
+        }
         goto success6;
 pass6:
         *ptr=oldpass6;
@@ -1828,7 +1948,10 @@ alt8_1:
             FAILTEST(pass9);
             _autovar_16=it;;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass9;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass9;
+            }
             goto success9;
 pass9:
             *ptr=oldpass9;
@@ -1885,7 +2008,10 @@ accept8:
         it=_val;
         _autovar_17=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass8;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass8;
+        }
         goto success8;
 pass8:
         *ptr=oldpass8;
@@ -1949,7 +2075,10 @@ VALUE Minsize_Dataflow_getvalue(VALUE self ,VALUE a0) {
     FAILTEST(pass1);
     _autovar_2=it;;
     it=Qnil;
-    if (ptr->pos<ptr->len) goto pass1;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto pass1;
+    }
     goto success1;
 pass1:
     *ptr=oldpass1;
@@ -2074,11 +2203,17 @@ alt2_1:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='s'&&ame_curstr2(ptr)[1]=='e'&&ame_curstr2(ptr)[2]=='q')  ptr->pos+=3;
-                else goto pass2;
+                else if (1) {
+                    it=failobj;
+                    goto pass2;
+                }
                 break;
             }
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass2;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass2;
+            }
             goto success2;
 pass2:
             *ptr=oldpass2;
@@ -2108,7 +2243,10 @@ success2:
             FAILTEST(pass3);
             _str=it;;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass3;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass3;
+            }
             goto success3;
 pass3:
             *ptr=oldpass3;
@@ -2159,7 +2297,10 @@ alt3_1:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='g'&&ame_curstr2(ptr)[2]=='c'&&ame_curstr2(ptr)[3]=='h')  ptr->pos+=4;
-                else goto alt3_2;
+                else if (1) {
+                    it=failobj;
+                    goto alt3_2;
+                }
                 break;
             }
             ;
@@ -2178,7 +2319,10 @@ alt3_2:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='l'&&ame_curstr2(ptr)[1]=='a'&&ame_curstr2(ptr)[2]=='s')  ptr->pos+=3;
-                else goto alt3_3;
+                else if (1) {
+                    it=failobj;
+                    goto alt3_3;
+                }
                 break;
             }
             ;
@@ -2197,7 +2341,10 @@ alt3_3:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
-                else goto alt3_4;
+                else if (1) {
+                    it=failobj;
+                    goto alt3_4;
+                }
                 break;
             }
             ;
@@ -2216,7 +2363,10 @@ alt3_4:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='h'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='r')  ptr->pos+=11;
-                else goto alt3_5;
+                else if (1) {
+                    it=failobj;
+                    goto alt3_5;
+                }
                 break;
             }
             ;
@@ -2235,7 +2385,10 @@ alt3_5:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
-                else goto alt3_6;
+                else if (1) {
+                    it=failobj;
+                    goto alt3_6;
+                }
                 break;
             }
             ;
@@ -2246,7 +2399,10 @@ alt3_6:
 accept3:
             ;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass4;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass4;
+            }
             goto success4;
 pass4:
             *ptr=oldpass4;
@@ -2292,11 +2448,17 @@ alt2_3:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='a'&&ame_curstr2(ptr)[1]=='i'&&ame_curstr2(ptr)[2]=='l'&&ame_curstr2(ptr)[3]=='s')  ptr->pos+=4;
-                else goto pass5;
+                else if (1) {
+                    it=failobj;
+                    goto pass5;
+                }
                 break;
             }
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass5;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass5;
+            }
             goto success5;
 pass5:
             *ptr=oldpass5;
@@ -2353,11 +2515,17 @@ alt4_1:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='s'&&ame_curstr2(ptr)[1]=='e'&&ame_curstr2(ptr)[2]=='q')  ptr->pos+=3;
-                else goto pass6;
+                else if (1) {
+                    it=failobj;
+                    goto pass6;
+                }
                 break;
             }
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass6;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass6;
+            }
             goto success6;
 pass6:
             *ptr=oldpass6;
@@ -2404,7 +2572,10 @@ alt5_1:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='g'&&ame_curstr2(ptr)[2]=='c'&&ame_curstr2(ptr)[3]=='h')  ptr->pos+=4;
-                else goto alt5_2;
+                else if (1) {
+                    it=failobj;
+                    goto alt5_2;
+                }
                 break;
             }
             ;
@@ -2423,7 +2594,10 @@ alt5_2:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='l'&&ame_curstr2(ptr)[1]=='a'&&ame_curstr2(ptr)[2]=='s')  ptr->pos+=3;
-                else goto alt5_3;
+                else if (1) {
+                    it=failobj;
+                    goto alt5_3;
+                }
                 break;
             }
             ;
@@ -2442,7 +2616,10 @@ alt5_3:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
-                else goto alt5_4;
+                else if (1) {
+                    it=failobj;
+                    goto alt5_4;
+                }
                 break;
             }
             ;
@@ -2461,7 +2638,10 @@ alt5_4:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='h'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='r')  ptr->pos+=11;
-                else goto alt5_5;
+                else if (1) {
+                    it=failobj;
+                    goto alt5_5;
+                }
                 break;
             }
             ;
@@ -2480,7 +2660,10 @@ alt5_5:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
-                else goto alt5_6;
+                else if (1) {
+                    it=failobj;
+                    goto alt5_6;
+                }
                 break;
             }
             ;
@@ -2491,7 +2674,10 @@ alt5_6:
 accept5:
             ;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass7;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass7;
+            }
             goto success7;
 pass7:
             *ptr=oldpass7;
@@ -2537,11 +2723,17 @@ alt4_3:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='a'&&ame_curstr2(ptr)[1]=='i'&&ame_curstr2(ptr)[2]=='l'&&ame_curstr2(ptr)[3]=='s')  ptr->pos+=4;
-                else goto pass8;
+                else if (1) {
+                    it=failobj;
+                    goto pass8;
+                }
                 break;
             }
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass8;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass8;
+            }
             goto success8;
 pass8:
             *ptr=oldpass8;
@@ -2561,7 +2753,10 @@ accept4:
             break;
         }
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -2644,7 +2839,10 @@ alt1_1:
         it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
         _autovar_2=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -2722,7 +2920,10 @@ alt2_1:
         FAILTEST(pass3);
         _autovar_5=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass3;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass3;
+        }
         goto success3;
 pass3:
         *ptr=oldpass3;
@@ -2732,7 +2933,10 @@ success3:
         it=_autovar_5;
         _autovar_6=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass2;
+        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -2789,7 +2993,10 @@ alt3_1:
         FAILTEST(pass4);
         _autovar_8=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass4;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass4;
+        }
         goto success4;
 pass4:
         *ptr=oldpass4;
@@ -2850,7 +3057,10 @@ alt4_1:
         _val=bind_aget(bind2,1);;
         _autovar_10=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass5;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass5;
+        }
         goto success5;
 pass5:
         *ptr=oldpass5;
@@ -2946,7 +3156,10 @@ alt6_1:
             _autovar_13=it;;
             it=AmethystCore_append(self,_vals,_autovar_13);
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass7;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass7;
+            }
             goto success7;
 pass7:
             *ptr=oldpass7;
@@ -2968,7 +3181,10 @@ accept6:
             ;
         }
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass6;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass6;
+        }
         goto success6;
 pass6:
         *ptr=oldpass6;
@@ -3048,7 +3264,10 @@ alt8_1:
             FAILTEST(pass9);
             _autovar_16=it;;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass9;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass9;
+            }
             goto success9;
 pass9:
             *ptr=oldpass9;
@@ -3105,7 +3324,10 @@ accept8:
         it=_val;
         _autovar_17=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass8;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass8;
+        }
         goto success8;
 pass8:
         *ptr=oldpass8;
@@ -3169,7 +3391,10 @@ VALUE Maxsize_Dataflow_getvalue(VALUE self ,VALUE a0) {
     FAILTEST(pass1);
     _autovar_2=it;;
     it=Qnil;
-    if (ptr->pos<ptr->len) goto pass1;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto pass1;
+    }
     goto success1;
 pass1:
     *ptr=oldpass1;
@@ -3263,7 +3488,10 @@ alt1_1:
         FAILTEST(pass2);
         _autovar_3=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass2;
+        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -3273,7 +3501,10 @@ success2:
         it=_autovar_3;
         _v=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -3332,7 +3563,10 @@ alt2_1:
         FAILTEST(pass3);
         _v=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass3;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass3;
+        }
         goto success3;
 pass3:
         *ptr=oldpass3;
@@ -3423,7 +3657,10 @@ alt4_1:
             _autovar_7=it;;
             it=AmethystCore_append(self,_v,_autovar_7);
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass5;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass5;
+            }
             goto success5;
 pass5:
             *ptr=oldpass5;
@@ -3445,7 +3682,10 @@ accept4:
             ;
         }
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass4;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass4;
+        }
         goto success4;
 pass4:
         *ptr=oldpass4;
@@ -3528,7 +3768,10 @@ accept6:
         it=_autovar_9;
         _v=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass6;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass6;
+        }
         goto success6;
 pass6:
         *ptr=oldpass6;
@@ -3594,7 +3837,10 @@ VALUE Complexity_Dataflow_getvalue(VALUE self ,VALUE a0) {
     FAILTEST(pass1);
     _autovar_2=it;;
     it=Qnil;
-    if (ptr->pos<ptr->len) goto pass1;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto pass1;
+    }
     goto success1;
 pass1:
     *ptr=oldpass1;
@@ -3719,11 +3965,17 @@ alt2_1:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='s'&&ame_curstr2(ptr)[1]=='e'&&ame_curstr2(ptr)[2]=='q')  ptr->pos+=3;
-                else goto pass2;
+                else if (1) {
+                    it=failobj;
+                    goto pass2;
+                }
                 break;
             }
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass2;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass2;
+            }
             goto success2;
 pass2:
             *ptr=oldpass2;
@@ -3766,11 +4018,17 @@ alt2_2:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='g'&&ame_curstr2(ptr)[2]=='c'&&ame_curstr2(ptr)[3]=='h')  ptr->pos+=4;
-                else goto pass3;
+                else if (1) {
+                    it=failobj;
+                    goto pass3;
+                }
                 break;
             }
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass3;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass3;
+            }
             goto success3;
 pass3:
             *ptr=oldpass3;
@@ -3800,7 +4058,10 @@ success3:
             FAILTEST(pass4);
             _str=it;;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass4;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass4;
+            }
             goto success4;
 pass4:
             *ptr=oldpass4;
@@ -3847,11 +4108,17 @@ alt2_3:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
-                else goto pass5;
+                else if (1) {
+                    it=failobj;
+                    goto pass5;
+                }
                 break;
             }
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass5;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass5;
+            }
             goto success5;
 pass5:
             *ptr=oldpass5;
@@ -3896,11 +4163,17 @@ alt2_4:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='a'&&ame_curstr2(ptr)[1]=='i'&&ame_curstr2(ptr)[2]=='l'&&ame_curstr2(ptr)[3]=='s')  ptr->pos+=4;
-                else goto pass6;
+                else if (1) {
+                    it=failobj;
+                    goto pass6;
+                }
                 break;
             }
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass6;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass6;
+            }
             goto success6;
 pass6:
             *ptr=oldpass6;
@@ -3957,11 +4230,17 @@ alt3_1:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='s'&&ame_curstr2(ptr)[1]=='e'&&ame_curstr2(ptr)[2]=='q')  ptr->pos+=3;
-                else goto pass7;
+                else if (1) {
+                    it=failobj;
+                    goto pass7;
+                }
                 break;
             }
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass7;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass7;
+            }
             goto success7;
 pass7:
             *ptr=oldpass7;
@@ -3991,7 +4270,10 @@ success7:
             FAILTEST(pass8);
             _str=it;;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass8;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass8;
+            }
             goto success8;
 pass8:
             *ptr=oldpass8;
@@ -4038,11 +4320,17 @@ alt3_2:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='g'&&ame_curstr2(ptr)[2]=='c'&&ame_curstr2(ptr)[3]=='h')  ptr->pos+=4;
-                else goto pass9;
+                else if (1) {
+                    it=failobj;
+                    goto pass9;
+                }
                 break;
             }
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass9;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass9;
+            }
             goto success9;
 pass9:
             *ptr=oldpass9;
@@ -4085,11 +4373,17 @@ alt3_3:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
-                else goto pass10;
+                else if (1) {
+                    it=failobj;
+                    goto pass10;
+                }
                 break;
             }
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass10;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass10;
+            }
             goto success10;
 pass10:
             *ptr=oldpass10;
@@ -4134,11 +4428,17 @@ alt3_4:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='a'&&ame_curstr2(ptr)[1]=='i'&&ame_curstr2(ptr)[2]=='l'&&ame_curstr2(ptr)[3]=='s')  ptr->pos+=4;
-                else goto pass11;
+                else if (1) {
+                    it=failobj;
+                    goto pass11;
+                }
                 break;
             }
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass11;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass11;
+            }
             goto success11;
 pass11:
             *ptr=oldpass11;
@@ -4195,11 +4495,17 @@ alt4_1:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='s'&&ame_curstr2(ptr)[1]=='e'&&ame_curstr2(ptr)[2]=='q')  ptr->pos+=3;
-                else goto pass12;
+                else if (1) {
+                    it=failobj;
+                    goto pass12;
+                }
                 break;
             }
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass12;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass12;
+            }
             goto success12;
 pass12:
             *ptr=oldpass12;
@@ -4242,11 +4548,17 @@ alt4_2:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='g'&&ame_curstr2(ptr)[2]=='c'&&ame_curstr2(ptr)[3]=='h')  ptr->pos+=4;
-                else goto pass13;
+                else if (1) {
+                    it=failobj;
+                    goto pass13;
+                }
                 break;
             }
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass13;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass13;
+            }
             goto success13;
 pass13:
             *ptr=oldpass13;
@@ -4289,11 +4601,17 @@ alt4_3:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
-                else goto pass14;
+                else if (1) {
+                    it=failobj;
+                    goto pass14;
+                }
                 break;
             }
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass14;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass14;
+            }
             goto success14;
 pass14:
             *ptr=oldpass14;
@@ -4338,11 +4656,17 @@ alt4_4:
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
                 if (ame_curstr2(ptr)[0]=='a'&&ame_curstr2(ptr)[1]=='i'&&ame_curstr2(ptr)[2]=='l'&&ame_curstr2(ptr)[3]=='s')  ptr->pos+=4;
-                else goto pass15;
+                else if (1) {
+                    it=failobj;
+                    goto pass15;
+                }
                 break;
             }
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass15;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass15;
+            }
             goto success15;
 pass15:
             *ptr=oldpass15;
@@ -4362,7 +4686,10 @@ accept4:
             break;
         }
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -4445,7 +4772,10 @@ alt1_1:
         it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
         _autovar_2=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -4523,7 +4853,10 @@ alt2_1:
         FAILTEST(pass3);
         _autovar_5=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass3;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass3;
+        }
         goto success3;
 pass3:
         *ptr=oldpass3;
@@ -4533,7 +4866,10 @@ success3:
         it=_autovar_5;
         _autovar_6=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass2;
+        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -4590,7 +4926,10 @@ alt3_1:
         FAILTEST(pass4);
         _autovar_8=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass4;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass4;
+        }
         goto success4;
 pass4:
         *ptr=oldpass4;
@@ -4651,7 +4990,10 @@ alt4_1:
         _val=bind_aget(bind2,1);;
         _autovar_10=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass5;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass5;
+        }
         goto success5;
 pass5:
         *ptr=oldpass5;
@@ -4747,7 +5089,10 @@ alt6_1:
             _autovar_13=it;;
             it=AmethystCore_append(self,_vals,_autovar_13);
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass7;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass7;
+            }
             goto success7;
 pass7:
             *ptr=oldpass7;
@@ -4769,7 +5114,10 @@ accept6:
             ;
         }
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass6;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass6;
+        }
         goto success6;
 pass6:
         *ptr=oldpass6;
@@ -4849,7 +5197,10 @@ alt8_1:
             FAILTEST(pass9);
             _autovar_16=it;;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass9;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass9;
+            }
             goto success9;
 pass9:
             *ptr=oldpass9;
@@ -4906,7 +5257,10 @@ accept8:
         it=_val;
         _autovar_17=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass8;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass8;
+        }
         goto success8;
 pass8:
         *ptr=oldpass8;
@@ -4970,7 +5324,10 @@ VALUE Switch_Char_Dataflow_getvalue(VALUE self ,VALUE a0) {
     FAILTEST(pass1);
     _autovar_2=it;;
     it=Qnil;
-    if (ptr->pos<ptr->len) goto pass1;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto pass1;
+    }
     goto success1;
 pass1:
     *ptr=oldpass1;
@@ -5092,11 +5449,17 @@ alt2_1:
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
             if (ame_curstr2(ptr)[0]=='l'&&ame_curstr2(ptr)[1]=='a'&&ame_curstr2(ptr)[2]=='s')  ptr->pos+=3;
-            else goto pass2;
+            else if (1) {
+                it=failobj;
+                goto pass2;
+            }
             break;
         }
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass2;
+        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -5138,7 +5501,10 @@ success2:
             ptr->pos++;
             _cls=it;;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass3;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass3;
+            }
             break;
         case 1/*Object*/:
             ;
@@ -5152,7 +5518,10 @@ pass3:
 success3:
         *ptr=oldpass3;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -5218,11 +5587,17 @@ alt2_2:
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
             if (ame_curstr2(ptr)[0]=='a'&&ame_curstr2(ptr)[1]=='i'&&ame_curstr2(ptr)[2]=='l'&&ame_curstr2(ptr)[3]=='s')  ptr->pos+=4;
-            else goto pass5;
+            else if (1) {
+                it=failobj;
+                goto pass5;
+            }
             break;
         }
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass5;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass5;
+        }
         goto success5;
 pass5:
         *ptr=oldpass5;
@@ -5230,7 +5605,10 @@ pass5:
 success5:
         *ptr=oldpass5;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass4;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass4;
+        }
         goto success4;
 pass4:
         *ptr=oldpass4;
@@ -5321,7 +5699,10 @@ alt1_1:
         it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
         _autovar_2=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -5399,7 +5780,10 @@ alt2_1:
         FAILTEST(pass3);
         _autovar_5=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass3;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass3;
+        }
         goto success3;
 pass3:
         *ptr=oldpass3;
@@ -5409,7 +5793,10 @@ success3:
         it=_autovar_5;
         _autovar_6=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass2;
+        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -5466,7 +5853,10 @@ alt3_1:
         FAILTEST(pass4);
         _autovar_8=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass4;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass4;
+        }
         goto success4;
 pass4:
         *ptr=oldpass4;
@@ -5527,7 +5917,10 @@ alt4_1:
         _val=bind_aget(bind2,1);;
         _autovar_10=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass5;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass5;
+        }
         goto success5;
 pass5:
         *ptr=oldpass5;
@@ -5623,7 +6016,10 @@ alt6_1:
             _autovar_13=it;;
             it=AmethystCore_append(self,_vals,_autovar_13);
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass7;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass7;
+            }
             goto success7;
 pass7:
             *ptr=oldpass7;
@@ -5645,7 +6041,10 @@ accept6:
             ;
         }
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass6;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass6;
+        }
         goto success6;
 pass6:
         *ptr=oldpass6;
@@ -5725,7 +6124,10 @@ alt8_1:
             FAILTEST(pass9);
             _autovar_16=it;;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass9;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass9;
+            }
             goto success9;
 pass9:
             *ptr=oldpass9;
@@ -5782,7 +6184,10 @@ accept8:
         it=_val;
         _autovar_17=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass8;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass8;
+        }
         goto success8;
 pass8:
         *ptr=oldpass8;
@@ -5846,7 +6251,10 @@ VALUE Switch_Clas_Dataflow_getvalue(VALUE self ,VALUE a0) {
     FAILTEST(pass1);
     _autovar_2=it;;
     it=Qnil;
-    if (ptr->pos<ptr->len) goto pass1;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto pass1;
+    }
     goto success1;
 pass1:
     *ptr=oldpass1;
@@ -5937,7 +6345,10 @@ alt1_1:
             goto pass1;
         };
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -6024,7 +6435,10 @@ alt3_1:
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
             if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='h'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='r')  ptr->pos+=11;
-            else goto alt3_2;
+            else if (1) {
+                it=failobj;
+                goto alt3_2;
+            }
             break;
         }
         ;
@@ -6043,7 +6457,10 @@ alt3_2:
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
             if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
-            else goto alt3_3;
+            else if (1) {
+                it=failobj;
+                goto alt3_3;
+            }
             break;
         }
         ;
@@ -6054,7 +6471,10 @@ alt3_3:
 accept3:
         ;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass3;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass3;
+        }
         goto success3;
 pass3:
         *ptr=oldpass3;
@@ -6062,7 +6482,10 @@ pass3:
 success3:
         *ptr=oldpass3;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass2;
+        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -6116,7 +6539,10 @@ alt4_1:
         it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass4;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass4;
+        }
         goto success4;
 pass4:
         *ptr=oldpass4;
@@ -6229,7 +6655,10 @@ alt7_1:
                     }
                 }
                 it=Qnil;
-                if (ptr->pos<ptr->len) goto pass6;
+                if (ptr->pos<ptr->len) {
+                    it=failobj;
+                    goto pass6;
+                }
                 goto success6;
 pass6:
                 *ptr=oldpass6;
@@ -6297,7 +6726,10 @@ accept8:
         it=_autovar_6;
         _ary=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass5;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass5;
+        }
         goto success5;
 pass5:
         *ptr=oldpass5;
@@ -6364,7 +6796,10 @@ alt9_1:
         FAILTEST(pass8);
         _autovar_11=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass8;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass8;
+        }
         goto success8;
 pass8:
         *ptr=oldpass8;
@@ -6374,7 +6809,10 @@ success8:
         it=_autovar_11;
         _autovar_12=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass7;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass7;
+        }
         goto success7;
 pass7:
         *ptr=oldpass7;
@@ -6457,7 +6895,10 @@ alt1_1:
         it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
         _autovar_2=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -6535,7 +6976,10 @@ alt2_1:
         FAILTEST(pass3);
         _autovar_5=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass3;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass3;
+        }
         goto success3;
 pass3:
         *ptr=oldpass3;
@@ -6545,7 +6989,10 @@ success3:
         it=_autovar_5;
         _autovar_6=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass2;
+        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -6602,7 +7049,10 @@ alt3_1:
         FAILTEST(pass4);
         _autovar_8=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass4;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass4;
+        }
         goto success4;
 pass4:
         *ptr=oldpass4;
@@ -6663,7 +7113,10 @@ alt4_1:
         _val=bind_aget(bind2,1);;
         _autovar_10=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass5;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass5;
+        }
         goto success5;
 pass5:
         *ptr=oldpass5;
@@ -6759,7 +7212,10 @@ alt6_1:
             _autovar_13=it;;
             it=AmethystCore_append(self,_vals,_autovar_13);
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass7;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass7;
+            }
             goto success7;
 pass7:
             *ptr=oldpass7;
@@ -6781,7 +7237,10 @@ accept6:
             ;
         }
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass6;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass6;
+        }
         goto success6;
 pass6:
         *ptr=oldpass6;
@@ -6861,7 +7320,10 @@ alt8_1:
             FAILTEST(pass9);
             _autovar_16=it;;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass9;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass9;
+            }
             goto success9;
 pass9:
             *ptr=oldpass9;
@@ -6918,7 +7380,10 @@ accept8:
         it=_val;
         _autovar_17=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass8;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass8;
+        }
         goto success8;
 pass8:
         *ptr=oldpass8;
@@ -6982,7 +7447,10 @@ VALUE Cant_Fail_Dataflow_getvalue(VALUE self ,VALUE a0) {
     FAILTEST(pass1);
     _autovar_2=it;;
     it=Qnil;
-    if (ptr->pos<ptr->len) goto pass1;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto pass1;
+    }
     goto success1;
 pass1:
     *ptr=oldpass1;
@@ -7104,7 +7572,10 @@ alt1_1:
     it=rb_funcall(self,sy__src_dot_ary_d5cf,1,bind2);
     _ary=it;;
     it=Qnil;
-    if (ptr->pos<ptr->len) goto pass1;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto pass1;
+    }
     goto success1;
 pass1:
     *ptr=oldpass1;
@@ -7160,7 +7631,10 @@ alt1_2:
 alt1_3:
     ptr->pos=oldpos1;
     it=Qnil;
-    if (ptr->pos<ptr->len) goto alt1_4;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto alt1_4;
+    }
     bind_aset(bind2,1,_cls);
     bind_aset(bind2,2,_list);
     it=rb_funcall(self,sy__bind_lb_1_rb__lb__0f18,1,bind2);
@@ -7239,7 +7713,10 @@ alt1_2:
     it=rb_funcall(self,sy__src_dot_ary_d5cf,1,bind2);
     _ary=it;;
     it=Qnil;
-    if (ptr->pos<ptr->len) goto pass1;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto pass1;
+    }
     goto success1;
 pass1:
     *ptr=oldpass1;
@@ -7460,7 +7937,10 @@ alt3_1:
                     it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
                     _autovar=bind_aget(bind2,1);;
                     it=Qnil;
-                    if (ptr->pos<ptr->len) goto pass4;
+                    if (ptr->pos<ptr->len) {
+                        it=failobj;
+                        goto pass4;
+                    }
                     goto success4;
 pass4:
                     *ptr=oldpass4;
@@ -7514,7 +7994,10 @@ accept4:
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
             _autovar=bind_aget(bind2,1);;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass3;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass3;
+            }
             goto success3;
 pass3:
             *ptr=oldpass3;
@@ -7525,7 +8008,10 @@ success3:
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
             _autovar=bind_aget(bind2,1);;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass2;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass2;
+            }
             goto success2;
 pass2:
             *ptr=oldpass2;
@@ -7541,7 +8027,10 @@ success2:
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
             _autovar=bind_aget(bind2,1);;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass1;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass1;
+            }
             goto success1;
 pass1:
             *ptr=oldpass1;
@@ -7702,11 +8191,17 @@ VALUE Detect_First_object_only(VALUE self ) {
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
             if (ame_curstr2(ptr)[0]=='l'&&ame_curstr2(ptr)[1]=='a'&&ame_curstr2(ptr)[2]=='s')  ptr->pos+=3;
-            else goto pass2;
+            else if (1) {
+                it=failobj;
+                goto pass2;
+            }
             break;
         }
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass2;
+        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -7741,7 +8236,10 @@ accept1:
         it=_autovar_3;
         _autovar_5=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -7842,7 +8340,10 @@ alt1_1:
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
             if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='g'&&ame_curstr2(ptr)[2]=='c'&&ame_curstr2(ptr)[3]=='h')  ptr->pos+=4;
-            else goto alt1_2;
+            else if (1) {
+                it=failobj;
+                goto alt1_2;
+            }
             break;
         }
         ;
@@ -7861,7 +8362,10 @@ alt1_2:
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
             if (ame_curstr2(ptr)[0]=='s'&&ame_curstr2(ptr)[1]=='e'&&ame_curstr2(ptr)[2]=='q')  ptr->pos+=3;
-            else goto alt1_3;
+            else if (1) {
+                it=failobj;
+                goto alt1_3;
+            }
             break;
         }
         ;
@@ -7872,7 +8376,10 @@ alt1_3:
 accept1:
         ;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass2;
+        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -7907,7 +8414,10 @@ accept2:
         it=_autovar_3;
         _autovar_5=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -8118,7 +8628,10 @@ alt3_1:
                     it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
                     _autovar=bind_aget(bind2,1);;
                     it=Qnil;
-                    if (ptr->pos<ptr->len) goto pass4;
+                    if (ptr->pos<ptr->len) {
+                        it=failobj;
+                        goto pass4;
+                    }
                     goto success4;
 pass4:
                     *ptr=oldpass4;
@@ -8172,7 +8685,10 @@ accept4:
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
             _autovar=bind_aget(bind2,1);;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass3;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass3;
+            }
             goto success3;
 pass3:
             *ptr=oldpass3;
@@ -8183,7 +8699,10 @@ success3:
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
             _autovar=bind_aget(bind2,1);;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass2;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass2;
+            }
             goto success2;
 pass2:
             *ptr=oldpass2;
@@ -8199,7 +8718,10 @@ success2:
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
             _autovar=bind_aget(bind2,1);;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass1;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass1;
+            }
             goto success1;
 pass1:
             *ptr=oldpass1;
@@ -8368,7 +8890,10 @@ accept1:
         ;
     }
     it=Qnil;
-    if (ptr->pos<ptr->len) goto pass2;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto pass2;
+    }
     goto success2;
 pass2:
     *ptr=oldpass2;
@@ -8376,7 +8901,10 @@ pass2:
 success2:
     *ptr=oldpass2;
     it=Qnil;
-    if (ptr->pos<ptr->len) goto pass1;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto pass1;
+    }
     goto success1;
 pass1:
     *ptr=oldpass1;
@@ -8445,7 +8973,10 @@ alt1_2:
         FAILTEST(pass1);
         _autovar_2=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -8537,7 +9068,10 @@ accept3:
         it=_ar;
         _autovar_4=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass2;
+        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -8666,11 +9200,17 @@ alt1_1:
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
             if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='g'&&ame_curstr2(ptr)[2]=='c'&&ame_curstr2(ptr)[3]=='h')  ptr->pos+=4;
-            else goto pass2;
+            else if (1) {
+                it=failobj;
+                goto pass2;
+            }
             break;
         }
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass2;
+        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -8708,7 +9248,10 @@ success2:
         it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass3;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass3;
+        }
         goto success3;
 pass3:
         *ptr=oldpass3;
@@ -8722,7 +9265,10 @@ success3:
         _firs=bind_aget(bind2,1);;
         _autovar_7=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -8786,11 +9332,17 @@ alt1_2:
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
             if (ame_curstr2(ptr)[0]=='s'&&ame_curstr2(ptr)[1]=='e'&&ame_curstr2(ptr)[2]=='q')  ptr->pos+=3;
-            else goto pass5;
+            else if (1) {
+                it=failobj;
+                goto pass5;
+            }
             break;
         }
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass5;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass5;
+        }
         goto success5;
 pass5:
         *ptr=oldpass5;
@@ -8829,7 +9381,10 @@ success5:
         FAILTEST(pass6);
         _str=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass6;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass6;
+        }
         goto success6;
 pass6:
         *ptr=oldpass6;
@@ -8845,7 +9400,10 @@ success6:
         _str=bind_aget(bind2,2);;
         _autovar_11=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass4;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass4;
+        }
         goto success4;
 pass4:
         *ptr=oldpass4;
@@ -8909,11 +9467,17 @@ alt1_3:
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
             if (ame_curstr2(ptr)[0]=='a'&&ame_curstr2(ptr)[1]=='i'&&ame_curstr2(ptr)[2]=='l'&&ame_curstr2(ptr)[3]=='s')  ptr->pos+=4;
-            else goto pass8;
+            else if (1) {
+                it=failobj;
+                goto pass8;
+            }
             break;
         }
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass8;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass8;
+        }
         goto success8;
 pass8:
         *ptr=oldpass8;
@@ -8923,7 +9487,10 @@ success8:
         it=rb_funcall(self,sy__src_25d9,1,bind2);
         _autovar_14=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass7;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass7;
+        }
         goto success7;
 pass7:
         *ptr=oldpass7;
@@ -8971,7 +9538,10 @@ alt1_4:
         _firs=bind_aget(bind2,1);;
         _autovar_16=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass9;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass9;
+        }
         goto success9;
 pass9:
         *ptr=oldpass9;
@@ -9130,7 +9700,10 @@ alt4_1:
             it=rb_funcall(self,sy__src_dot_ary_d5cf,1,bind2);
             _ary=it;;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass13;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass13;
+            }
             goto success13;
 pass13:
             *ptr=oldpass13;
@@ -9189,7 +9762,10 @@ alt4_2:
 alt4_3:
             ptr->pos=oldpos4;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto alt4_4;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto alt4_4;
+            }
             it=c_Switch_Char;
             it=c_Switch_Char;
             _cls=it;;
@@ -9210,7 +9786,10 @@ accept4:
             it=__result_2;
             _autovar_24=it;;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass12;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass12;
+            }
             break;
         case 1/*Object*/:
             ;
@@ -9246,7 +9825,10 @@ alt5_1:
 alt5_2:
             ptr->pos=oldpos5;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto alt5_3;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto alt5_3;
+            }
             it=c_Switch_Char;
             it=c_Switch_Char;
             _cls=it;;
@@ -9267,7 +9849,10 @@ accept5:
             it=__result_2;
             _autovar_24=it;;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass12;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass12;
+            }
             break;
         }
         goto success12;
@@ -9279,7 +9864,10 @@ success12:
         it=_autovar_24;
         _autovar_25=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass11;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass11;
+        }
         goto success11;
 pass11:
         *ptr=oldpass11;
@@ -9297,7 +9885,10 @@ alt3_3:
 accept3:
         ;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass10;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass10;
+        }
         goto success10;
 pass10:
         *ptr=oldpass10;
@@ -9434,7 +10025,10 @@ alt7_2:
             it=rb_funcall(self,sy__src_dot_ary_d5cf,1,bind2);
             _ary_2=it;;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass17;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass17;
+            }
             goto success17;
 pass17:
             *ptr=oldpass17;
@@ -9530,7 +10124,10 @@ accept7:
             it=__result_3;
             _autovar_36=it;;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass16;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass16;
+            }
             break;
         case 1/*Object*/:
             ;
@@ -9604,7 +10201,10 @@ accept10:
             it=__result_3;
             _autovar_36=it;;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass16;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass16;
+            }
             break;
         }
         goto success16;
@@ -9616,7 +10216,10 @@ success16:
         it=_autovar_36;
         _autovar_37=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass15;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass15;
+        }
         goto success15;
 pass15:
         *ptr=oldpass15;
@@ -9626,7 +10229,10 @@ success15:
         it=_autovar_37;
         _autovar_38=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass14;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass14;
+        }
         goto success14;
 pass14:
         *ptr=oldpass14;
@@ -9836,7 +10442,10 @@ alt3_1:
                     it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
                     _autovar=bind_aget(bind2,1);;
                     it=Qnil;
-                    if (ptr->pos<ptr->len) goto pass4;
+                    if (ptr->pos<ptr->len) {
+                        it=failobj;
+                        goto pass4;
+                    }
                     goto success4;
 pass4:
                     *ptr=oldpass4;
@@ -9890,7 +10499,10 @@ accept4:
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
             _autovar=bind_aget(bind2,1);;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass3;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass3;
+            }
             goto success3;
 pass3:
             *ptr=oldpass3;
@@ -9901,7 +10513,10 @@ success3:
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
             _autovar=bind_aget(bind2,1);;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass2;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass2;
+            }
             goto success2;
 pass2:
             *ptr=oldpass2;
@@ -9917,7 +10532,10 @@ success2:
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
             _autovar=bind_aget(bind2,1);;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass1;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass1;
+            }
             goto success1;
 pass1:
             *ptr=oldpass1;
@@ -10086,7 +10704,10 @@ accept1:
         ;
     }
     it=Qnil;
-    if (ptr->pos<ptr->len) goto pass2;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto pass2;
+    }
     goto success2;
 pass2:
     *ptr=oldpass2;
@@ -10094,7 +10715,10 @@ pass2:
 success2:
     *ptr=oldpass2;
     it=Qnil;
-    if (ptr->pos<ptr->len) goto pass1;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto pass1;
+    }
     goto success1;
 pass1:
     *ptr=oldpass1;
@@ -10163,7 +10787,10 @@ alt1_2:
         FAILTEST(pass1);
         _autovar_2=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -10255,7 +10882,10 @@ accept3:
         it=_ar;
         _autovar_4=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass2;
+        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -10384,11 +11014,17 @@ alt1_1:
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
             if (ame_curstr2(ptr)[0]=='l'&&ame_curstr2(ptr)[1]=='a'&&ame_curstr2(ptr)[2]=='s')  ptr->pos+=3;
-            else goto pass2;
+            else if (1) {
+                it=failobj;
+                goto pass2;
+            }
             break;
         }
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass2;
+        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -10430,7 +11066,10 @@ success2:
             ptr->pos++;
             _clas=it;;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass3;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass3;
+            }
             break;
         case 1/*Object*/:
             ;
@@ -10448,7 +11087,10 @@ success3:
         _clas=bind_aget(bind2,1);;
         _autovar_7=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -10512,11 +11154,17 @@ alt1_2:
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
             if (ame_curstr2(ptr)[0]=='a'&&ame_curstr2(ptr)[1]=='i'&&ame_curstr2(ptr)[2]=='l'&&ame_curstr2(ptr)[3]=='s')  ptr->pos+=4;
-            else goto pass5;
+            else if (1) {
+                it=failobj;
+                goto pass5;
+            }
             break;
         }
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass5;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass5;
+        }
         goto success5;
 pass5:
         *ptr=oldpass5;
@@ -10526,7 +11174,10 @@ success5:
         it=rb_funcall(self,sy__src_25d9,1,bind2);
         _autovar_10=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass4;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass4;
+        }
         goto success4;
 pass4:
         *ptr=oldpass4;
@@ -10577,7 +11228,10 @@ alt1_3:
         _firs=bind_aget(bind2,1);;
         _autovar_12=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass6;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass6;
+        }
         goto success6;
 pass6:
         *ptr=oldpass6;
@@ -10736,7 +11390,10 @@ alt4_1:
             it=rb_funcall(self,sy__src_dot_ary_d5cf,1,bind2);
             _ary=it;;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass10;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass10;
+            }
             goto success10;
 pass10:
             *ptr=oldpass10;
@@ -10795,7 +11452,10 @@ alt4_2:
 alt4_3:
             ptr->pos=oldpos4;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto alt4_4;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto alt4_4;
+            }
             it=c_Switch_Clas;
             it=c_Switch_Clas;
             _cls=it;;
@@ -10816,7 +11476,10 @@ accept4:
             it=__result_2;
             _autovar_20=it;;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass9;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass9;
+            }
             break;
         case 1/*Object*/:
             ;
@@ -10852,7 +11515,10 @@ alt5_1:
 alt5_2:
             ptr->pos=oldpos5;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto alt5_3;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto alt5_3;
+            }
             it=c_Switch_Clas;
             it=c_Switch_Clas;
             _cls=it;;
@@ -10873,7 +11539,10 @@ accept5:
             it=__result_2;
             _autovar_20=it;;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass9;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass9;
+            }
             break;
         }
         goto success9;
@@ -10885,7 +11554,10 @@ success9:
         it=_autovar_20;
         _autovar_21=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass8;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass8;
+        }
         goto success8;
 pass8:
         *ptr=oldpass8;
@@ -10903,7 +11575,10 @@ alt3_3:
 accept3:
         ;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass7;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass7;
+        }
         goto success7;
 pass7:
         *ptr=oldpass7;
@@ -11040,7 +11715,10 @@ alt7_2:
             it=rb_funcall(self,sy__src_dot_ary_d5cf,1,bind2);
             _ary_2=it;;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass14;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass14;
+            }
             goto success14;
 pass14:
             *ptr=oldpass14;
@@ -11136,7 +11814,10 @@ accept7:
             it=__result_3;
             _autovar_32=it;;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass13;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass13;
+            }
             break;
         case 1/*Object*/:
             ;
@@ -11210,7 +11891,10 @@ accept10:
             it=__result_3;
             _autovar_32=it;;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass13;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass13;
+            }
             break;
         }
         goto success13;
@@ -11222,7 +11906,10 @@ success13:
         it=_autovar_32;
         _autovar_33=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass12;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass12;
+        }
         goto success12;
 pass12:
         *ptr=oldpass12;
@@ -11232,7 +11919,10 @@ success12:
         it=_autovar_33;
         _autovar_34=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass11;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass11;
+        }
         goto success11;
 pass11:
         *ptr=oldpass11;
@@ -11336,11 +12026,17 @@ VALUE Detect_Size_predicate(VALUE self ,VALUE a0) {
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
             if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
-            else goto pass2;
+            else if (1) {
+                it=failobj;
+                goto pass2;
+            }
             break;
         }
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass2;
+        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -11352,7 +12048,10 @@ success2:
         it=__result;
         _autovar_3=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         break;
     case 1/*Or*/:
         ;
@@ -11417,7 +12116,10 @@ alt1_1:
             FAILTEST(pass4);
             _autovar_3=it;;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass4;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass4;
+            }
             goto success4;
 pass4:
             *ptr=oldpass4;
@@ -11453,7 +12155,10 @@ accept1:
         it=_autovar_5;
         _ary=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass3;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass3;
+        }
         goto success3;
 pass3:
         *ptr=oldpass3;
@@ -11467,7 +12172,10 @@ success3:
         it=__result;
         _autovar_3=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         break;
     case 2/*Seq*/:
         ;
@@ -11532,7 +12240,10 @@ alt2_1:
             FAILTEST(pass6);
             _autovar_3=it;;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass6;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass6;
+            }
             goto success6;
 pass6:
             *ptr=oldpass6;
@@ -11575,7 +12286,10 @@ accept2:
         it=_autovar_8;
         _ary=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass5;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass5;
+        }
         goto success5;
 pass5:
         *ptr=oldpass5;
@@ -11589,7 +12303,10 @@ success5:
         it=__result;
         _autovar_3=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         break;
     case 3/*Object*/:
         ;
@@ -11666,11 +12383,17 @@ VALUE Detect_Size_predicate2(VALUE self ,VALUE a0) {
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
             if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
-            else goto pass1;
+            else if (1) {
+                it=failobj;
+                goto pass1;
+            }
             break;
         }
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass1;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass1;
+        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -11737,7 +12460,10 @@ alt1_1:
             FAILTEST(pass3);
             _autovar_5=it;;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass3;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass3;
+            }
             goto success3;
 pass3:
             *ptr=oldpass3;
@@ -11773,7 +12499,10 @@ accept1:
         it=_autovar_3;
         _ary=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass2;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass2;
+        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -11842,7 +12571,10 @@ alt2_1:
             FAILTEST(pass5);
             _autovar_5=it;;
             it=Qnil;
-            if (ptr->pos<ptr->len) goto pass5;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass5;
+            }
             goto success5;
 pass5:
             *ptr=oldpass5;
@@ -11885,7 +12617,10 @@ accept2:
         it=_autovar_8;
         _ary=it;;
         it=Qnil;
-        if (ptr->pos<ptr->len) goto pass4;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass4;
+        }
         goto success4;
 pass4:
         *ptr=oldpass4;
@@ -12315,5 +13050,5 @@ void Init_detect_switch_c() {
     sy_spaces=rb_intern("spaces");
     rb_define_method(cls_Detect_Size,"predicate",Detect_Size_predicate,1);
     rb_define_method(cls_Detect_Size,"predicate2",Detect_Size_predicate2,1);
-    rb_eval_string("testversiondetect_switch('01b589fbfa86bdbfd2c2d54a88898bfa')");
+    rb_eval_string("testversiondetect_switch('bdbc44ec3bb8af6ebd8ad48bc36718d3')");
 }

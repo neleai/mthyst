@@ -140,7 +140,7 @@ end
 
 
 def contextual_argument_return_compiled_by
-'e9f529fad0490795de86e452e0ffaa3d'
+'2d751ddda15b029da7579346bd3bec1c'
 end
 def contextual_argument_return_source_hash
 'c58f273fba1da2ca6575be1e452f5976'
@@ -149,6 +149,6 @@ def testversioncontextual_argument_return(r)
  raise "invalid version" if r!=contextual_argument_return_version
 end
 def contextual_argument_return_version
-'f4e1c132d24830d6c54a37fefae32539'
+'bfbab18323376582aa0d0e0e81648432'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/contextual_argument_return_c"
