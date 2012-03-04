@@ -215,7 +215,7 @@ class AmethystParser < Amethyst
 end
 
 def parser_compiled_by
-'7316f66b56ffa89630e28daa24d490cc'
+'114cc2cef7e8443cf4efb6f36aa22e0d'
 end
 def parser_source_hash
 '1b39a6878eb54510ed87cc1353bca487'

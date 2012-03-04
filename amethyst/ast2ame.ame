@@ -1,0 +1,6 @@
+amethyst AST2Amethyst {
+  trans = Or[  trans*:ary  ]            ->     ary*"|"
+        | Seq[ trans*:ary  ]            -> "("+ary*" "+")"
+        | Apply[ .:name ]               -> name
+        | Bind[ trans:expr @name:name ] -> "("+expr+"):"+name[0]
+}

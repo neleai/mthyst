@@ -2,7 +2,7 @@ CurrentParser={}
 require 'digest'
 require 'set'
 COMPILED=["tests","amethyst","traverser","detect_variables2","parser","dataflow_ssa","inliner2","normalize",
-"detect_switch","left_factor","constant_propagation","ctranslator2","implicit_variables","remove_left_rigth_recursion","contextual_argument_return"]
+"detect_switch","left_factor","constant_propagation","ctranslator2","implicit_variables","remove_left_rigth_recursion","contextual_argument_return","ast2ame"]
 def debug_print(t)
 	puts t.inspect if Amethyst::Settings.debug>1
 end
