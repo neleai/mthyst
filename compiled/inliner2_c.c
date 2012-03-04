@@ -966,7 +966,10 @@ VALUE Inliner2_visit(VALUE self ) {
         bind_aset(bind2,1,_name);
         it=rb_funcall(self,sy___lp_bind_lb_1_rb__709e,1,bind2);
         _name=bind_aget(bind2,1);;
-        FAILTEST(pass1);
+        if (it==failobj) {
+            it=failobj;
+            goto pass1;
+        };
         it=rb_ary_new3(0);
         _autovar_3=it;;
         int stop1=0;
@@ -1083,5 +1086,5 @@ void Init_inliner2_c() {
     rb_define_method(cls_Inliner2,"traverse",Inliner2_traverse,0);
     rb_define_method(cls_Inliner2,"traverse_item",Inliner2_traverse_item,0);
     rb_define_method(cls_Inliner2,"visit",Inliner2_visit,0);
-    rb_eval_string("testversioninliner2('84e7122ed399d3301a57b46ef7814d01')");
+    rb_eval_string("testversioninliner2('7d30589e63a1e1bbf0154f4914c6a354')");
 }

@@ -515,7 +515,10 @@ accept3:
             bind_aset(bind2,1,_autovar);
             it=rb_funcall(self,sy___lp__lp_bind_lb_1_1e7f,1,bind2);
             _autovar=bind_aget(bind2,1);;
-            FAILTEST(pass1);
+            if (it==failobj) {
+                it=failobj;
+                goto pass1;
+            };
             bind_aset(bind2,1,_autovar);
             it=rb_funcall(self,sy__Bind_lb_src_91ed,1,bind2);
             _autovar=bind_aget(bind2,1);;
@@ -1147,7 +1150,10 @@ accept1:
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___lp__lp_bind_lb_1_42f7,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        FAILTEST(pass3);
+        if (it==failobj) {
+            it=failobj;
+            goto pass3;
+        };
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy__bind_lb_1_rb__lb__a394,1,bind2);
         _autovar=bind_aget(bind2,1);;
@@ -1303,5 +1309,5 @@ void Init_constant_propagation_c() {
     rb_define_method(cls_Constant_Traverser,"traverse",Constant_Traverser_traverse,0);
     rb_define_method(cls_Constant_Traverser,"traverse_item",Constant_Traverser_traverse_item,0);
     rb_define_method(cls_Constant_Traverser,"visit",Constant_Traverser_visit,0);
-    rb_eval_string("testversionconstant_propagation('87b64b5ad6c70e433477914f23b6aa0b')");
+    rb_eval_string("testversionconstant_propagation('f52711c6e54625ab74e8dfacb9d9e4b1')");
 }

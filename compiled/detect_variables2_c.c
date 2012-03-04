@@ -1046,7 +1046,10 @@ alt2_1:
             bind_aset(bind2,1,_pred);
             it=rb_funcall(self,sy___lp_,1,bind2);
             _pred=bind_aget(bind2,1);;
-            FAILTEST(alt2_2);
+            if (it==failobj) {
+                it=failobj;
+                goto alt2_2;
+            };
             bind_aset(bind2,1,_autovar);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
             _autovar=bind_aget(bind2,1);;
@@ -1151,7 +1154,10 @@ alt4_1:
             bind_aset(bind2,1,_pred);
             it=rb_funcall(self,sy___lp_,1,bind2);
             _pred=bind_aget(bind2,1);;
-            FAILTEST(alt4_2);
+            if (it==failobj) {
+                it=failobj;
+                goto alt4_2;
+            };
             bind_aset(bind2,1,_autovar);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
             _autovar=bind_aget(bind2,1);;
@@ -1189,7 +1195,10 @@ alt5_1:
             bind_aset(bind2,1,_pred);
             it=rb_funcall(self,sy___lp_,1,bind2);
             _pred=bind_aget(bind2,1);;
-            FAILTEST(alt5_2);
+            if (it==failobj) {
+                it=failobj;
+                goto alt5_2;
+            };
             bind_aset(bind2,1,_autovar);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
             _autovar=bind_aget(bind2,1);;
@@ -2671,5 +2680,5 @@ void Init_detect_variables2_c() {
     rb_define_method(cls_Resolve_Calls,"traverse",Resolve_Calls_traverse,0);
     rb_define_method(cls_Resolve_Calls,"traverse_item",Resolve_Calls_traverse_item,0);
     rb_define_method(cls_Resolve_Calls,"visit",Resolve_Calls_visit,0);
-    rb_eval_string("testversiondetect_variables2('081cdba83e61c7c66c2b45aee414a5d0')");
+    rb_eval_string("testversiondetect_variables2('b3a4a795c70a2c374340f6fc21946d58')");
 }

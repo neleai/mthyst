@@ -77,6 +77,9 @@ class AmethystCTranslator < Amethyst
       rbcall(name,argc.times.map{|a| "arg#{a}"})
     end
   end
+  def failwhen(cond)
+    "if (#{cond}){it=failobj;goto #{@faillabel};}"
+  end
 end
 def gc_mark_var(v)
 	"rb_global_variable(&#{v});"
@@ -93,8 +96,8 @@ end
 def __at_bindno_eq__e294(bind)
 @bindno=0;@binds={}
 end
-def __at_binds_dot_m_4c7b(bind)
-@binds.map{|k,v| "bind_aset(bind2,#{v},#{bget(k)});"}*"" + "it=#{rbcall(bind[1],["bind2"])};"+@binds.map{|k,v|"#{bset(k,"bind_aget(bind2,#{v})")};"}*"" +"#{src.pred ? "FAILTEST(#{@faillabel});" :"" }"
+def __at_binds_dot_m_9a36(bind)
+@binds.map{|k,v| "bind_aset(bind2,#{v},#{bget(k)});"}*"" + "it=#{rbcall(bind[1],["bind2"])};"+@binds.map{|k,v|"#{bset(k,"bind_aget(bind2,#{v})")};"}*"" +"#{src.pred ? "#{failwhen("it==failobj")};" :"" }"
 end
 def __at_callbac_2d11(bind)
 @callbacks.to_a.sort
@@ -207,8 +210,8 @@ end
 def __dq_goto_sp__sh__le__f772(bind)
 "goto #{@faillabel};"
 end
-def __dq_if_lp_ptr_mi__033b(bind)
-"if(ptr->pos+#{bind[1]}>=ptr->len) goto #{@faillabel};"
+def __dq_if_lp_ptr_mi__19f0(bind)
+"if(ptr->pos+#{bind[1]}>=ptr->len) #{failwhen("1")}"
 
 end
 def __dq_if_sp__lp__sh__le_a_0233(bind)
@@ -399,15 +402,15 @@ end
 
 
 def ctranslator2_compiled_by
-'bc8b9836da9a8f546598a8c83101f2c6'
+'e9f529fad0490795de86e452e0ffaa3d'
 end
 def ctranslator2_source_hash
-'d3acf3ebe469abe6dcce369abad6f891'
+'0e761d5c3715d3910ee9e13b9525bed1'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'fa51aa1b582421d9c0fdf48fac028004'
+'575f8ff425fe05bfa5640743c577df73'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"

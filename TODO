@@ -105,3 +105,5 @@ as pass Apply takes only locals as arguments.
 ask classes directly about properties
 
 try speed vs various other parsers.
+
+always signal failure by assigning fail

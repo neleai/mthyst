@@ -77,6 +77,9 @@ class AmethystCTranslator < Amethyst
       rbcall(name,argc.times.map{|a| "arg#{a}"})
     end
   end
+  def failwhen(cond)
+    "if (#{cond}){it=failobj;goto #{@faillabel};}"
+  end
 end
 def gc_mark_var(v)
 	"rb_global_variable(&#{v});"
@@ -144,14 +147,14 @@ s
         | Act[ .:a &{a=="_append("} .:x . .:y  . ] -> "it=AmethystCore_append(self,#{bget(x)},#{bget(y)});"
         | Act[ {@@bindno=0;@@binds={}}
 								.*:{addcallback(@pred ? ["(",it,") || FAIL"] : it)}:cbno 
-								{@@binds.map{|k,v| "bind_aset(bind2,#{v},#{bget(k)});"}*"" + "it=#{rbcall(cbno,["bind2"])};"+@@binds.map{|k,v|"#{bset(k,"bind_aget(bind2,#{v})")};"}*"" +"#{@pred ? "FAILTEST(#{@@faillabel});" :"" }"} ]
+								{@@binds.map{|k,v| "bind_aset(bind2,#{v},#{bget(k)});"}*"" + "it=#{rbcall(cbno,["bind2"])};"+@@binds.map{|k,v|"#{bset(k,"bind_aget(bind2,#{v})")};"}*"" +"#{@pred ? "#{failwhen("it==failobj")};" :"" }"} ]
         | CAct[.* {ar=*@ccode; 
                    @@header<<ar[0] if ar[0]
                    @@init<<ar[1] if ar[1]
                    "it=#{ar[2]};"}]
 
         | Apply[ ["_find"] {raise "TODO"} ]
-				| Apply[ ["_test_size"] CAct[.:s] ] -> "if(ptr->pos+#{s}>=ptr->len) goto #{@@faillabel};"
+				| Apply[ ["_test_size"] CAct[.:s] ] -> "if(ptr->pos+#{s}>=ptr->len) #{failwhen("1")}"
         | Apply[ ["fails"] {"goto #{@@faillabel};"} ]
         | Apply[ ["eof"]   {"it=Qnil;if (ptr->pos<ptr->len) goto #{@@faillabel};"} ]
         | Apply[ ["empty"]   {"it=Qnil;"} ]

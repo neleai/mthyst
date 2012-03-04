@@ -194,7 +194,10 @@ VALUE Amethyst_char(VALUE self ) {
     bind_aset(bind2,1,_c);
     it=rb_funcall(self,sy___lp_bind_lb_1_rb__a948,1,bind2);
     _c=bind_aget(bind2,1);;
-    FAILTEST(fail);
+    if (it==failobj) {
+        it=failobj;
+        goto fail;
+    };
     bind_aset(bind2,1,_c);
     it=rb_funcall(self,sy__bind_lb_1_rb_,1,bind2);
     _c=bind_aget(bind2,1);;
@@ -223,7 +226,10 @@ VALUE Amethyst_clas(VALUE self ,VALUE a0) {
     it=rb_funcall(self,sy___lp_bind_lb_1_rb__abc3,1,bind2);
     _x=bind_aget(bind2,1);;
     _a=bind_aget(bind2,2);;
-    FAILTEST(fail);
+    if (it==failobj) {
+        it=failobj;
+        goto fail;
+    };
     it=_a;
     __result=it;;
     it=__result;
@@ -319,7 +325,10 @@ VALUE Amethyst_fails(VALUE self ) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     it=rb_funcall(self,sy___lp_false_rp__sp__c3c5,1,bind2);
-    FAILTEST(fail);
+    if (it==failobj) {
+        it=failobj;
+        goto fail;
+    };
     __result=it;;
 
     return it;
@@ -345,7 +354,10 @@ VALUE Amethyst_false(VALUE self ) {
     it=rb_funcall(self,sy___lp_bind_lb_1_rb__abc3,1,bind2);
     _x=bind_aget(bind2,1);;
     _a=bind_aget(bind2,2);;
-    FAILTEST(fail);
+    if (it==failobj) {
+        it=failobj;
+        goto fail;
+    };
     it=_a;
     __result=it;;
     it=__result;
@@ -1444,7 +1456,10 @@ VALUE Amethyst_member(VALUE self ,VALUE a0) {
     it=rb_funcall(self,sy___lp_bind_lb_1_rb__abc3,1,bind2);
     _x=bind_aget(bind2,1);;
     _a=bind_aget(bind2,2);;
-    FAILTEST(fail);
+    if (it==failobj) {
+        it=failobj;
+        goto fail;
+    };
     it=_a;
     __result=it;;
 
@@ -1537,7 +1552,10 @@ VALUE Amethyst_nil(VALUE self ) {
     it=rb_funcall(self,sy___lp_bind_lb_1_rb__abc3,1,bind2);
     _x=bind_aget(bind2,1);;
     _a=bind_aget(bind2,2);;
-    FAILTEST(fail);
+    if (it==failobj) {
+        it=failobj;
+        goto fail;
+    };
     it=_a;
     __result=it;;
     it=__result;
@@ -1653,7 +1671,10 @@ VALUE Amethyst_range_ex(VALUE self ,VALUE a0,VALUE a1) {
     it=rb_funcall(self,sy___lp_bind_lb_1_rb__abc3,1,bind2);
     _x=bind_aget(bind2,1);;
     _a_2=bind_aget(bind2,2);;
-    FAILTEST(fail);
+    if (it==failobj) {
+        it=failobj;
+        goto fail;
+    };
     it=_a_2;
     __result=it;;
     it=__result;
@@ -1687,7 +1708,10 @@ VALUE Amethyst_range_in(VALUE self ,VALUE a0,VALUE a1) {
     it=rb_funcall(self,sy___lp_bind_lb_1_rb__abc3,1,bind2);
     _x=bind_aget(bind2,1);;
     _a_2=bind_aget(bind2,2);;
-    FAILTEST(fail);
+    if (it==failobj) {
+        it=failobj;
+        goto fail;
+    };
     it=_a_2;
     __result=it;;
     it=__result;
@@ -1716,7 +1740,10 @@ VALUE Amethyst_regch(VALUE self ,VALUE a0) {
     it=rb_funcall(self,sy___lp_bind_lb_1_rb__abc3,1,bind2);
     _x=bind_aget(bind2,1);;
     _a=bind_aget(bind2,2);;
-    FAILTEST(fail);
+    if (it==failobj) {
+        it=failobj;
+        goto fail;
+    };
     it=_a;
     __result=it;;
     it=__result;
@@ -1942,7 +1969,10 @@ VALUE Amethyst_true(VALUE self ) {
     it=rb_funcall(self,sy___lp_bind_lb_1_rb__abc3,1,bind2);
     _x=bind_aget(bind2,1);;
     _a=bind_aget(bind2,2);;
-    FAILTEST(fail);
+    if (it==failobj) {
+        it=failobj;
+        goto fail;
+    };
     it=_a;
     __result=it;;
     it=__result;
@@ -2268,5 +2298,5 @@ void Init_amethyst_c() {
     rb_define_method(cls_Amethyst,"upper",Amethyst_upper,0);
     rb_define_method(cls_Amethyst,"word",Amethyst_word,0);
     rb_define_method(cls_Amethyst,"xdigit",Amethyst_xdigit,0);
-    rb_eval_string("testversionamethyst('1b18503256de2aeb1ea36a489f99e2be')");
+    rb_eval_string("testversionamethyst('3fcee5cdc2468b0936886979bd8862a2')");
 }

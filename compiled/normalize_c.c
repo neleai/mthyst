@@ -772,7 +772,10 @@ accept14:
                     }
                 }
                 it=rb_funcall(self,sy___lp_eval_lp_sr_3f78,1,bind2);
-                FAILTEST(alt13_3);
+                if (it==failobj) {
+                    it=failobj;
+                    goto alt13_3;
+                };
                 ;
                 goto accept13;
 alt13_3:
@@ -2736,7 +2739,10 @@ VALUE Normalize_cant_fail(VALUE self ) {
     bind_aset(bind2,1,_e);
     it=rb_funcall(self,sy___lp_cant_fa_17ef,1,bind2);
     _e=bind_aget(bind2,1);;
-    FAILTEST(fail);
+    if (it==failobj) {
+        it=failobj;
+        goto fail;
+    };
     it=_e;
     __result=it;;
 
@@ -2758,7 +2764,10 @@ VALUE Normalize_must_empty(VALUE self ) {
     bind_aset(bind2,1,_e);
     it=rb_funcall(self,sy___lp_must_em_43e9,1,bind2);
     _e=bind_aget(bind2,1);;
-    FAILTEST(fail);
+    if (it==failobj) {
+        it=failobj;
+        goto fail;
+    };
     it=_e;
     __result=it;;
 
@@ -3167,7 +3176,10 @@ alt6_1:
         it=rb_funcall(self,sy___lp_bind_lb_1_rb__abc3,1,bind2);
         _x=bind_aget(bind2,1);;
         _a=bind_aget(bind2,2);;
-        FAILTEST(alt6_2);
+        if (it==failobj) {
+            it=failobj;
+            goto alt6_2;
+        };
         it=rb_funcall(self,sy__Apply_lb__dq_f_3881,1,bind2);
         _autovar_11=it;;
 
@@ -3187,7 +3199,10 @@ alt6_2:
         it=rb_funcall(self,sy___lp_bind_lb_1_rb__abc3,1,bind2);
         _x=bind_aget(bind2,1);;
         _a=bind_aget(bind2,2);;
-        FAILTEST(alt6_3);
+        if (it==failobj) {
+            it=failobj;
+            goto alt6_3;
+        };
         bind_aset(bind2,1,_ary);
         it=rb_funcall(self,sy__bind_lb_1_rb__lb__79d7,1,bind2);
         _ary=bind_aget(bind2,1);;
@@ -3514,7 +3529,10 @@ alt4_1:
         it=rb_funcall(self,sy___lp_bind_lb_1_rb__abc3,1,bind2);
         _x=bind_aget(bind2,1);;
         _a=bind_aget(bind2,2);;
-        FAILTEST(alt4_2);
+        if (it==failobj) {
+            it=failobj;
+            goto alt4_2;
+        };
         it=rb_funcall(self,sy__Placehol_a03d,1,bind2);
         _autovar_9=it;;
 
@@ -3534,7 +3552,10 @@ alt4_2:
         it=rb_funcall(self,sy___lp_bind_lb_1_rb__abc3,1,bind2);
         _x=bind_aget(bind2,1);;
         _a=bind_aget(bind2,2);;
-        FAILTEST(alt4_3);
+        if (it==failobj) {
+            it=failobj;
+            goto alt4_3;
+        };
         bind_aset(bind2,1,_ary);
         it=rb_funcall(self,sy__bind_lb_1_rb__lb__79d7,1,bind2);
         _ary=bind_aget(bind2,1);;
@@ -3748,5 +3769,5 @@ void Init_normalize_c() {
     rb_define_method(cls_Normalize,"or",Normalize_or,0);
     rb_define_method(cls_Normalize,"seq2",Normalize_seq2,0);
     rb_define_method(cls_Normalize,"switch",Normalize_switch,0);
-    rb_eval_string("testversionnormalize('368aa6ef354614d73854e52b0f90d7b3')");
+    rb_eval_string("testversionnormalize('7437f5c5b7fdbf2a8f51cb2fbae4dec7')");
 }

@@ -77,7 +77,10 @@ alt1_1:
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___lp_bind_lb_1_rb__5b9e,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        FAILTEST(pass1);
+        if (it==failobj) {
+            it=failobj;
+            goto pass1;
+        };
         it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
@@ -864,7 +867,10 @@ VALUE Remove_Left_Recursion_must_empty(VALUE self ) {
     bind_aset(bind2,1,_e);
     it=rb_funcall(self,sy___lp_must_em_43e9,1,bind2);
     _e=bind_aget(bind2,1);;
-    FAILTEST(fail);
+    if (it==failobj) {
+        it=failobj;
+        goto fail;
+    };
     it=_e;
     __result=it;;
 
@@ -1000,7 +1006,10 @@ alt1_1:
         bind_aset(bind2,1,_autovar_6);
         it=rb_funcall(self,sy___lp_bind_lb_1_rb__5b9e,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
-        FAILTEST(pass4);
+        if (it==failobj) {
+            it=failobj;
+            goto pass4;
+        };
         it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
@@ -1648,7 +1657,10 @@ alt10_1:
         bind_aset(bind2,1,_autovar_6);
         it=rb_funcall(self,sy___lp_bind_lb_1_rb__5b9e,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
-        FAILTEST(pass12);
+        if (it==failobj) {
+            it=failobj;
+            goto pass12;
+        };
         it=rb_ary_new3(0);
         int stop5=0;
         while(!stop5) {
@@ -2309,5 +2321,5 @@ void Init_remove_left_rigth_recursion_c() {
     rb_define_method(cls_Remove_Left_Recursion,"first",Remove_Left_Recursion_first,1);
     rb_define_method(cls_Remove_Left_Recursion,"must_empty",Remove_Left_Recursion_must_empty,0);
     rb_define_method(cls_Remove_Left_Recursion,"root",Remove_Left_Recursion_root,0);
-    rb_eval_string("testversionremove_left_rigth_recursion('cc97cc191155568579a92d0ce87da7f9')");
+    rb_eval_string("testversionremove_left_rigth_recursion('c8dceff58149971b240f8da1cec5344b')");
 }

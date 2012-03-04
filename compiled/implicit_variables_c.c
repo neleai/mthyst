@@ -880,7 +880,10 @@ accept2:
         bind_aset(bind2,1,_name);
         it=rb_funcall(self,sy___lp__at_vars_lb_b_160d,1,bind2);
         _name=bind_aget(bind2,1);;
-        FAILTEST(pass1);
+        if (it==failobj) {
+            it=failobj;
+            goto pass1;
+        };
         bind_aset(bind2,1,_name);
         bind_aset(bind2,2,_autovar);
         it=rb_funcall(self,sy__l_eq_Local_lb__f6a4,1,bind2);
@@ -956,7 +959,10 @@ accept3:
         bind_aset(bind2,1,_name);
         it=rb_funcall(self,sy___lp__at_vars_lb_b_5cb3,1,bind2);
         _name=bind_aget(bind2,1);;
-        FAILTEST(pass2);
+        if (it==failobj) {
+            it=failobj;
+            goto pass2;
+        };
         bind_aset(bind2,1,_name);
         bind_aset(bind2,2,_autovar);
         it=rb_funcall(self,sy__l_eq_Local_lb__348c,1,bind2);
@@ -1045,7 +1051,10 @@ accept4:
         bind_aset(bind2,1,_name);
         it=rb_funcall(self,sy___lp__at_vars_lb_b_160d,1,bind2);
         _name=bind_aget(bind2,1);;
-        FAILTEST(pass3);
+        if (it==failobj) {
+            it=failobj;
+            goto pass3;
+        };
         bind_aset(bind2,1,_name);
         bind_aset(bind2,2,_autovar);
         it=rb_funcall(self,sy__l_eq_Local_lb__f6a4,1,bind2);
@@ -1126,7 +1135,10 @@ accept5:
         bind_aset(bind2,1,_name);
         it=rb_funcall(self,sy___lp__at_vars_lb_b_5cb3,1,bind2);
         _name=bind_aget(bind2,1);;
-        FAILTEST(pass4);
+        if (it==failobj) {
+            it=failobj;
+            goto pass4;
+        };
         bind_aset(bind2,1,_name);
         bind_aset(bind2,2,_autovar);
         it=rb_funcall(self,sy__l_eq_Local_lb__348c,1,bind2);
@@ -1212,5 +1224,5 @@ void Init_implicit_variables_c() {
     rb_define_method(cls_Add_Implicit_Variables,"traverse",Add_Implicit_Variables_traverse,0);
     rb_define_method(cls_Add_Implicit_Variables,"traverse_item",Add_Implicit_Variables_traverse_item,0);
     rb_define_method(cls_Add_Implicit_Variables,"visit",Add_Implicit_Variables_visit,0);
-    rb_eval_string("testversionimplicit_variables('f8e1a73c0d637b095604648d244020c8')");
+    rb_eval_string("testversionimplicit_variables('b936e1fe2a6b4b12a9fd5010786f7977')");
 }

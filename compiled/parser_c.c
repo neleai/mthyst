@@ -4068,7 +4068,10 @@ alt1_1:
         bind_aset(bind2,1,_c);
         it=rb_funcall(self,sy___lp_bind_lb_1_rb__a724,1,bind2);
         _c=bind_aget(bind2,1);;
-        FAILTEST(alt1_2);
+        if (it==failobj) {
+            it=failobj;
+            goto alt1_2;
+        };
         it=rb_funcall(self,sy___at_ary_lt__lt_Ar_59e3,1,bind2);
         ;
         goto accept1;
@@ -8452,5 +8455,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('bfd0efc4ed9cd1358f7aefa13f84f443')");
+    rb_eval_string("testversionparser('6ed292629a63bf951241b7367e556a25')");
 }

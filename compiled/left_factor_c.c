@@ -252,7 +252,10 @@ alt2_1:
     it=rb_funcall(self,sy___lp_bind_lb_1_rb__34a7,1,bind2);
     _start=bind_aget(bind2,1);;
     _next=bind_aget(bind2,2);;
-    FAILTEST(alt2_2);
+    if (it==failobj) {
+        it=failobj;
+        goto alt2_2;
+    };
     it=_prev;
     arg0=it;
     it=_start;
@@ -276,7 +279,10 @@ alt2_2:
     it=rb_funcall(self,sy___lp_bind_lb_1_rb__b868,1,bind2);
     _start=bind_aget(bind2,1);;
     _next=bind_aget(bind2,2);;
-    FAILTEST(alt2_3);
+    if (it==failobj) {
+        it=failobj;
+        goto alt2_3;
+    };
     bind_aset(bind2,1,_prev);
     bind_aset(bind2,2,_cur);
     it=rb_funcall(self,sy__bind_lb_1_rb__pl__4c53,1,bind2);
@@ -1024,7 +1030,10 @@ alt2_1:
         it=rb_funcall(self,sy___lp_bind_lb_1_rb__34a7,1,bind2);
         _start=bind_aget(bind2,1);;
         _next=bind_aget(bind2,2);;
-        FAILTEST(alt2_2);
+        if (it==failobj) {
+            it=failobj;
+            goto alt2_2;
+        };
         it=rb_ary_new3(0);
         arg0=it;
         it=_start;
@@ -1048,7 +1057,10 @@ alt2_2:
         it=rb_funcall(self,sy___lp_bind_lb_1_rb__b868,1,bind2);
         _start=bind_aget(bind2,1);;
         _next=bind_aget(bind2,2);;
-        FAILTEST(alt2_3);
+        if (it==failobj) {
+            it=failobj;
+            goto alt2_3;
+        };
         bind_aset(bind2,1,_prev);
         bind_aset(bind2,2,_cur);
         it=rb_funcall(self,sy__bind_lb_1_rb__pl__4c53,1,bind2);
@@ -1172,5 +1184,5 @@ void Init_left_factor_c() {
     rb_define_method(cls_Left_Factor,"traverse",Left_Factor_traverse,0);
     rb_define_method(cls_Left_Factor,"traverse_item",Left_Factor_traverse_item,0);
     rb_define_method(cls_Left_Factor,"visit",Left_Factor_visit,0);
-    rb_eval_string("testversionleft_factor('22f162dec2bfa34614983885ae796c58')");
+    rb_eval_string("testversionleft_factor('5699f55ec49885a55b56e0719b44f791')");
 }

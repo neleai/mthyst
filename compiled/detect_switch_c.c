@@ -136,7 +136,10 @@ alt2_1:
         bind_aset(bind2,1,_name);
         it=rb_funcall(self,sy___lp_Compile_7f7b,1,bind2);
         _name=bind_aget(bind2,1);;
-        FAILTEST(pass2);
+        if (it==failobj) {
+            it=failobj;
+            goto pass2;
+        };
         bind_aset(bind2,1,_name);
         it=rb_funcall(self,sy__Compiler_558e,1,bind2);
         _name=bind_aget(bind2,1);;
@@ -500,7 +503,10 @@ alt9_1:
             bind_aset(bind2,1,_el);
             it=rb_funcall(self,sy___lp_,1,bind2);
             _el=bind_aget(bind2,1);;
-            FAILTEST(alt9_2);
+            if (it==failobj) {
+                it=failobj;
+                goto alt9_2;
+            };
             it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             ;
@@ -1477,7 +1483,10 @@ alt2_1:
         bind_aset(bind2,1,_name);
         it=rb_funcall(self,sy___lp_Compile_7f7b,1,bind2);
         _name=bind_aget(bind2,1);;
-        FAILTEST(pass2);
+        if (it==failobj) {
+            it=failobj;
+            goto pass2;
+        };
         bind_aset(bind2,1,_name);
         it=rb_funcall(self,sy__Compiler_558e,1,bind2);
         _name=bind_aget(bind2,1);;
@@ -1841,7 +1850,10 @@ alt9_1:
             bind_aset(bind2,1,_el);
             it=rb_funcall(self,sy___lp_,1,bind2);
             _el=bind_aget(bind2,1);;
-            FAILTEST(alt9_2);
+            if (it==failobj) {
+                it=failobj;
+                goto alt9_2;
+            };
             it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             ;
@@ -2691,7 +2703,10 @@ alt2_1:
         bind_aset(bind2,1,_name);
         it=rb_funcall(self,sy___lp_Compile_7f7b,1,bind2);
         _name=bind_aget(bind2,1);;
-        FAILTEST(pass2);
+        if (it==failobj) {
+            it=failobj;
+            goto pass2;
+        };
         bind_aset(bind2,1,_name);
         it=rb_funcall(self,sy__Compiler_558e,1,bind2);
         _name=bind_aget(bind2,1);;
@@ -3055,7 +3070,10 @@ alt9_1:
             bind_aset(bind2,1,_el);
             it=rb_funcall(self,sy___lp_,1,bind2);
             _el=bind_aget(bind2,1);;
-            FAILTEST(alt9_2);
+            if (it==failobj) {
+                it=failobj;
+                goto alt9_2;
+            };
             it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             ;
@@ -3226,7 +3244,10 @@ alt1_1:
         bind_aset(bind2,1,_name);
         it=rb_funcall(self,sy___lp_Compile_7f7b,1,bind2);
         _name=bind_aget(bind2,1);;
-        FAILTEST(pass1);
+        if (it==failobj) {
+            it=failobj;
+            goto pass1;
+        };
         bind_aset(bind2,1,_name);
         it=rb_funcall(self,sy__Compiler_558e,1,bind2);
         _name=bind_aget(bind2,1);;
@@ -4483,7 +4504,10 @@ alt2_1:
         bind_aset(bind2,1,_name);
         it=rb_funcall(self,sy___lp_Compile_7f7b,1,bind2);
         _name=bind_aget(bind2,1);;
-        FAILTEST(pass2);
+        if (it==failobj) {
+            it=failobj;
+            goto pass2;
+        };
         bind_aset(bind2,1,_name);
         it=rb_funcall(self,sy__Compiler_558e,1,bind2);
         _name=bind_aget(bind2,1);;
@@ -4847,7 +4871,10 @@ alt9_1:
             bind_aset(bind2,1,_el);
             it=rb_funcall(self,sy___lp_,1,bind2);
             _el=bind_aget(bind2,1);;
-            FAILTEST(alt9_2);
+            if (it==failobj) {
+                it=failobj;
+                goto alt9_2;
+            };
             it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             ;
@@ -5353,7 +5380,10 @@ alt2_1:
         bind_aset(bind2,1,_name);
         it=rb_funcall(self,sy___lp_Compile_7f7b,1,bind2);
         _name=bind_aget(bind2,1);;
-        FAILTEST(pass2);
+        if (it==failobj) {
+            it=failobj;
+            goto pass2;
+        };
         bind_aset(bind2,1,_name);
         it=rb_funcall(self,sy__Compiler_558e,1,bind2);
         _name=bind_aget(bind2,1);;
@@ -5717,7 +5747,10 @@ alt9_1:
             bind_aset(bind2,1,_el);
             it=rb_funcall(self,sy___lp_,1,bind2);
             _el=bind_aget(bind2,1);;
-            FAILTEST(alt9_2);
+            if (it==failobj) {
+                it=failobj;
+                goto alt9_2;
+            };
             it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             ;
@@ -5899,7 +5932,10 @@ alt1_1:
         it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=rb_funcall(self,sy___lp_src_dot_pre_c6b8,1,bind2);
-        FAILTEST(pass1);
+        if (it==failobj) {
+            it=failobj;
+            goto pass1;
+        };
         it=Qnil;
         if (ptr->pos<ptr->len) goto pass1;
         goto success1;
@@ -6480,7 +6516,10 @@ alt2_1:
         bind_aset(bind2,1,_name);
         it=rb_funcall(self,sy___lp_Compile_7f7b,1,bind2);
         _name=bind_aget(bind2,1);;
-        FAILTEST(pass2);
+        if (it==failobj) {
+            it=failobj;
+            goto pass2;
+        };
         bind_aset(bind2,1,_name);
         it=rb_funcall(self,sy__Compiler_558e,1,bind2);
         _name=bind_aget(bind2,1);;
@@ -6844,7 +6883,10 @@ alt9_1:
             bind_aset(bind2,1,_el);
             it=rb_funcall(self,sy___lp_,1,bind2);
             _el=bind_aget(bind2,1);;
-            FAILTEST(alt9_2);
+            if (it==failobj) {
+                it=failobj;
+                goto alt9_2;
+            };
             it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             ;
@@ -7010,7 +7052,10 @@ VALUE Detect_First_cant_fail(VALUE self ) {
     bind_aset(bind2,1,_e);
     it=rb_funcall(self,sy___lp_cant_fa_17ef,1,bind2);
     _e=bind_aget(bind2,1);;
-    FAILTEST(fail);
+    if (it==failobj) {
+        it=failobj;
+        goto fail;
+    };
     it=_e;
     __result=it;;
 
@@ -7584,7 +7629,10 @@ VALUE Detect_First_must_empty(VALUE self ) {
     bind_aset(bind2,1,_e);
     it=rb_funcall(self,sy___lp_must_em_43e9,1,bind2);
     _e=bind_aget(bind2,1);;
-    FAILTEST(fail);
+    if (it==failobj) {
+        it=failobj;
+        goto fail;
+    };
     it=_e;
     __result=it;;
 
@@ -8914,7 +8962,10 @@ alt1_4:
         bind_aset(bind2,1,_firs);
         it=rb_funcall(self,sy___lp_,1,bind2);
         _firs=bind_aget(bind2,1);;
-        FAILTEST(pass9);
+        if (it==failobj) {
+            it=failobj;
+            goto pass9;
+        };
         bind_aset(bind2,1,_firs);
         it=rb_funcall(self,sy__s_eq_Switch_7c35,1,bind2);
         _firs=bind_aget(bind2,1);;
@@ -9003,7 +9054,10 @@ alt3_1:
         bind_aset(bind2,1,_aswitch);
         it=rb_funcall(self,sy___lp_2,1,bind2);
         _aswitch=bind_aget(bind2,1);;
-        FAILTEST(alt3_2);
+        if (it==failobj) {
+            it=failobj;
+            goto alt3_2;
+        };
         bind_aset(bind2,1,_items);
         it=rb_funcall(self,sy__Or_lb__ti_bind_d486,1,bind2);
         _items=bind_aget(bind2,1);;
@@ -10514,7 +10568,10 @@ alt1_3:
         bind_aset(bind2,1,_firs);
         it=rb_funcall(self,sy___lp_,1,bind2);
         _firs=bind_aget(bind2,1);;
-        FAILTEST(pass6);
+        if (it==failobj) {
+            it=failobj;
+            goto pass6;
+        };
         bind_aset(bind2,1,_firs);
         it=rb_funcall(self,sy__c_eq_Switch_4e5f,1,bind2);
         _firs=bind_aget(bind2,1);;
@@ -10603,7 +10660,10 @@ alt3_1:
         bind_aset(bind2,1,_aswitch);
         it=rb_funcall(self,sy___lp_2,1,bind2);
         _aswitch=bind_aget(bind2,1);;
-        FAILTEST(alt3_2);
+        if (it==failobj) {
+            it=failobj;
+            goto alt3_2;
+        };
         bind_aset(bind2,1,_items);
         it=rb_funcall(self,sy__Or_lb__ti_bind_d486,1,bind2);
         _items=bind_aget(bind2,1);;
@@ -12255,5 +12315,5 @@ void Init_detect_switch_c() {
     sy_spaces=rb_intern("spaces");
     rb_define_method(cls_Detect_Size,"predicate",Detect_Size_predicate,1);
     rb_define_method(cls_Detect_Size,"predicate2",Detect_Size_predicate2,1);
-    rb_eval_string("testversiondetect_switch('14bc99af918d59f396539c272b518a1f')");
+    rb_eval_string("testversiondetect_switch('01b589fbfa86bdbfd2c2d54a88898bfa')");
 }
