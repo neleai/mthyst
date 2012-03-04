@@ -53,7 +53,10 @@ VALUE DetectCalls_root(VALUE self ) {
         }
         it=rb_funcall(self,sy___at_calls_eq__le__39e9,1,bind2);
         it=rb_funcall(self,sy_traverse,0);
-        FAILTEST(pass1);
+        if (it==failobj) {
+            it=failobj;
+            goto pass1;
+        }
         it=rb_funcall(self,sy___at_calls_7f81,1,bind2);
         _autovar_2=it;;
         it=Qnil;
@@ -72,7 +75,10 @@ success1:
         break;
     case 1/*Object*/:
         ;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
         break;
     }
     return it;
@@ -98,7 +104,10 @@ VALUE DetectCalls_traverse(VALUE self ) {
     ptr->ary[0]=_autovar;
     ptr->len=1;
     it=AmethystCore_anything(self );
-    FAILTEST(pass1);
+    if (it==failobj) {
+        it=failobj;
+        goto pass1;
+    }
     _autovar_2=it;;
     cstruct oldpass2=*ptr;
     ptr->pos=ptr->len=0;
@@ -125,7 +134,10 @@ VALUE DetectCalls_traverse(VALUE self ) {
 alt1_1:
         ;
         it=rb_funcall(self,sy_traverse_item,0);
-        FAILTEST(alt1_2);
+        if (it==failobj) {
+            it=failobj;
+            goto alt1_2;
+        }
         _autovar_4=it;;
         it=AmethystCore_append(self,_autovar_3,_autovar_4);
         ;
@@ -137,7 +149,10 @@ alt1_2:
         goto accept1;
 alt1_3:
         ptr->pos=oldpos1;
-        goto pass2;
+        if (1) {
+            it=failobj;
+            goto pass2;
+        };
 accept1:
         ;
     }
@@ -190,7 +205,10 @@ VALUE DetectCalls_traverse_item(VALUE self ) {
 alt1_1:
         ;
         it=rb_funcall(self,sy_visit,0);
-        FAILTEST(alt1_2);
+        if (it==failobj) {
+            it=failobj;
+            goto alt1_2;
+        }
         __result=it;;
 
         ;
@@ -217,7 +235,10 @@ alt1_2:
             ptr->len=RARRAY_LEN(ary);
         }
         it=rb_funcall(self,sy_traverse,0);
-        FAILTEST(pass1);
+        if (it==failobj) {
+            it=failobj;
+            goto pass1;
+        }
         _autovar_2=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
@@ -238,14 +259,20 @@ success1:
 alt1_3:
         ptr->pos=oldpos1;
         it=AmethystCore_anything(self );
-        FAILTEST(alt1_4);
+        if (it==failobj) {
+            it=failobj;
+            goto alt1_4;
+        }
         __result=it;;
 
         ;
         goto accept1;
 alt1_4:
         ptr->pos=oldpos1;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        };
 accept1:
         ;
         break;
@@ -256,7 +283,10 @@ accept1:
 alt2_1:
         ;
         it=rb_funcall(self,sy_visit,0);
-        FAILTEST(alt2_2);
+        if (it==failobj) {
+            it=failobj;
+            goto alt2_2;
+        }
         __result=it;;
 
         ;
@@ -291,7 +321,10 @@ alt2_2:
 alt3_1:
             ;
             it=rb_funcall(self,sy_traverse_item,0);
-            FAILTEST(alt3_2);
+            if (it==failobj) {
+                it=failobj;
+                goto alt3_2;
+            }
             _autovar_5=it;;
             it=AmethystCore_append(self,_autovar_4,_autovar_5);
             ;
@@ -303,7 +336,10 @@ alt3_2:
             goto accept3;
 alt3_3:
             ptr->pos=oldpos3;
-            goto pass2;
+            if (1) {
+                it=failobj;
+                goto pass2;
+            };
 accept3:
             ;
         }
@@ -328,14 +364,20 @@ success2:
 alt2_3:
         ptr->pos=oldpos2;
         it=AmethystCore_anything(self );
-        FAILTEST(alt2_4);
+        if (it==failobj) {
+            it=failobj;
+            goto alt2_4;
+        }
         __result=it;;
 
         ;
         goto accept2;
 alt2_4:
         ptr->pos=oldpos2;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        };
 accept2:
         ;
         break;
@@ -346,7 +388,10 @@ accept2:
 alt4_1:
         ;
         it=rb_funcall(self,sy_visit,0);
-        FAILTEST(alt4_2);
+        if (it==failobj) {
+            it=failobj;
+            goto alt4_2;
+        }
         __result=it;;
 
         ;
@@ -354,14 +399,20 @@ alt4_1:
 alt4_2:
         ptr->pos=oldpos4;
         it=AmethystCore_anything(self );
-        FAILTEST(alt4_3);
+        if (it==failobj) {
+            it=failobj;
+            goto alt4_3;
+        }
         __result=it;;
 
         ;
         goto accept4;
 alt4_3:
         ptr->pos=oldpos4;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        };
 accept4:
         ;
         break;
@@ -401,7 +452,10 @@ VALUE DetectCalls_visit(VALUE self ) {
             ptr->len=RARRAY_LEN(ary);
         }
         it=AmethystCore_anything(self );
-        FAILTEST(pass1);
+        if (it==failobj) {
+            it=failobj;
+            goto pass1;
+        }
         _name=it;;
         ptr->pos=ptr->len;
         bind_aset(bind2,1,_name);
@@ -424,7 +478,10 @@ success1:
         break;
     case 1/*Object*/:
         ;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
         break;
     }
     return it;
@@ -477,13 +534,19 @@ VALUE Inliner2_root(VALUE self ) {
     it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
     _autovar=bind_aget(bind2,1);;
     it=AmethystCore_anything(self );
-    FAILTEST(fail);
+    if (it==failobj) {
+        it=failobj;
+        goto fail;
+    }
     _from=it;;
     bind_aset(bind2,1,_autovar);
     it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
     _autovar=bind_aget(bind2,1);;
     it=AmethystCore_anything(self );
-    FAILTEST(fail);
+    if (it==failobj) {
+        it=failobj;
+        goto fail;
+    }
     _to=it;;
     it=_from;
     _autovar_2=it;;
@@ -517,7 +580,10 @@ VALUE Inliner2_root(VALUE self ) {
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        goto pass1;
+        if (1) {
+            it=failobj;
+            goto pass1;
+        }
         break;
     }
     goto success1;
@@ -606,7 +672,10 @@ success2:
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        goto pass3;
+        if (1) {
+            it=failobj;
+            goto pass3;
+        }
         break;
     }
     goto success3;
@@ -637,7 +706,10 @@ success3:
     it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
     _autovar=bind_aget(bind2,1);;
     it=rb_funcall(self,sy_traverse,0);
-    FAILTEST(pass4);
+    if (it==failobj) {
+        it=failobj;
+        goto pass4;
+    }
     _autovar_8=it;;
     bind_aset(bind2,1,_autovar);
     it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
@@ -683,7 +755,10 @@ VALUE Inliner2_traverse(VALUE self ) {
     ptr->ary[0]=_autovar;
     ptr->len=1;
     it=AmethystCore_anything(self );
-    FAILTEST(pass1);
+    if (it==failobj) {
+        it=failobj;
+        goto pass1;
+    }
     _autovar_2=it;;
     cstruct oldpass2=*ptr;
     ptr->pos=ptr->len=0;
@@ -709,7 +784,10 @@ VALUE Inliner2_traverse(VALUE self ) {
 alt1_1:
         ;
         it=rb_funcall(self,sy_traverse_item,0);
-        FAILTEST(alt1_2);
+        if (it==failobj) {
+            it=failobj;
+            goto alt1_2;
+        }
         _it=it;;
         bind_aset(bind2,1,_nvars);
         bind_aset(bind2,2,_it);
@@ -725,7 +803,10 @@ alt1_2:
         goto accept1;
 alt1_3:
         ptr->pos=oldpos1;
-        goto pass2;
+        if (1) {
+            it=failobj;
+            goto pass2;
+        };
 accept1:
         ;
     }
@@ -778,7 +859,10 @@ VALUE Inliner2_traverse_item(VALUE self ) {
 alt1_1:
         ;
         it=rb_funcall(self,sy_visit,0);
-        FAILTEST(alt1_2);
+        if (it==failobj) {
+            it=failobj;
+            goto alt1_2;
+        }
         __result=it;;
 
         ;
@@ -805,7 +889,10 @@ alt1_2:
             ptr->len=RARRAY_LEN(ary);
         }
         it=rb_funcall(self,sy_traverse,0);
-        FAILTEST(pass1);
+        if (it==failobj) {
+            it=failobj;
+            goto pass1;
+        }
         _autovar_2=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
@@ -826,14 +913,20 @@ success1:
 alt1_3:
         ptr->pos=oldpos1;
         it=AmethystCore_anything(self );
-        FAILTEST(alt1_4);
+        if (it==failobj) {
+            it=failobj;
+            goto alt1_4;
+        }
         __result=it;;
 
         ;
         goto accept1;
 alt1_4:
         ptr->pos=oldpos1;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        };
 accept1:
         ;
         break;
@@ -844,7 +937,10 @@ accept1:
 alt2_1:
         ;
         it=rb_funcall(self,sy_visit,0);
-        FAILTEST(alt2_2);
+        if (it==failobj) {
+            it=failobj;
+            goto alt2_2;
+        }
         __result=it;;
 
         ;
@@ -880,7 +976,10 @@ alt2_2:
 alt3_1:
             ;
             it=rb_funcall(self,sy_traverse_item,0);
-            FAILTEST(alt3_2);
+            if (it==failobj) {
+                it=failobj;
+                goto alt3_2;
+            }
             _it=it;;
             bind_aset(bind2,1,_ar);
             bind_aset(bind2,2,_it);
@@ -896,7 +995,10 @@ alt3_2:
             goto accept3;
 alt3_3:
             ptr->pos=oldpos3;
-            goto pass2;
+            if (1) {
+                it=failobj;
+                goto pass2;
+            };
 accept3:
             ;
         }
@@ -921,14 +1023,20 @@ success2:
 alt2_3:
         ptr->pos=oldpos2;
         it=AmethystCore_anything(self );
-        FAILTEST(alt2_4);
+        if (it==failobj) {
+            it=failobj;
+            goto alt2_4;
+        }
         __result=it;;
 
         ;
         goto accept2;
 alt2_4:
         ptr->pos=oldpos2;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        };
 accept2:
         ;
         break;
@@ -939,7 +1047,10 @@ accept2:
 alt4_1:
         ;
         it=rb_funcall(self,sy_visit,0);
-        FAILTEST(alt4_2);
+        if (it==failobj) {
+            it=failobj;
+            goto alt4_2;
+        }
         __result=it;;
 
         ;
@@ -947,14 +1058,20 @@ alt4_1:
 alt4_2:
         ptr->pos=oldpos4;
         it=AmethystCore_anything(self );
-        FAILTEST(alt4_3);
+        if (it==failobj) {
+            it=failobj;
+            goto alt4_3;
+        }
         __result=it;;
 
         ;
         goto accept4;
 alt4_3:
         ptr->pos=oldpos4;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        };
 accept4:
         ;
         break;
@@ -1003,7 +1120,10 @@ VALUE Inliner2_visit(VALUE self ) {
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=AmethystCore_anything(self );
-        FAILTEST(pass1);
+        if (it==failobj) {
+            it=failobj;
+            goto pass1;
+        }
         _name=it;;
         bind_aset(bind2,1,_name);
         it=rb_funcall(self,sy___lp_bind_lb_1_rb__709e,1,bind2);
@@ -1024,7 +1144,10 @@ alt1_1:
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
             _autovar=bind_aget(bind2,1);;
             it=AmethystCore_anything(self );
-            FAILTEST(alt1_2);
+            if (it==failobj) {
+                it=failobj;
+                goto alt1_2;
+            }
             _autovar_4=it;;
             it=AmethystCore_append(self,_autovar_3,_autovar_4);
             ;
@@ -1036,7 +1159,10 @@ alt1_2:
             goto accept1;
 alt1_3:
             ptr->pos=oldpos1;
-            goto pass1;
+            if (1) {
+                it=failobj;
+                goto pass1;
+            };
 accept1:
             ;
         }
@@ -1071,7 +1197,10 @@ success1:
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
         break;
     }
     return it;
@@ -1131,5 +1260,5 @@ void Init_inliner2_c() {
     rb_define_method(cls_Inliner2,"traverse",Inliner2_traverse,0);
     rb_define_method(cls_Inliner2,"traverse_item",Inliner2_traverse_item,0);
     rb_define_method(cls_Inliner2,"visit",Inliner2_visit,0);
-    rb_eval_string("testversioninliner2('ce04c1f5bddad709516744d93f35aeee')");
+    rb_eval_string("testversioninliner2('44c5fff9ff3ee7b71ecbeecfe584eeb6')");
 }

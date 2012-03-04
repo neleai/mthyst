@@ -108,8 +108,8 @@ end
 def __at_cutlabe_7393(bind)
 @cutlabel
 end
-def __at_cutlabe_d8d6(bind)
-@cutlabel=bind[1];@cuts=bind[2];bind[3]+"goto #{@faillabel};\n #{bind[4]}:;\n"
+def __at_cutlabe_7ebc(bind)
+@cutlabel=bind[1];@cuts=bind[2];bind[3]+"#{failwhen(1)};\n #{bind[4]}:;\n"
 end
 def __at_cuts_7bbc(bind)
 @cuts
@@ -187,6 +187,9 @@ end
 def __dq__sh__le_bind_lb__9cfd(bind)
 "#{bind[1]} #{bset(src.name,"it")};\n" 
 end
+def __dq__sh__le_failw_5360(bind)
+"#{failwhen("1")}"
+end
 def __dq__sh__le_src_dot_n_9acf(bind)
 "#{src.name}.create( {#{src.vars.size.times.map{|i| ":#{src.varnames[i]}=>#{rbbget(src.vars[i])}" }.sort*","} })"
 end
@@ -206,9 +209,6 @@ def __dq_cstruct_ff45(bind)
 end
 def __dq_def_sp__sh__le_b_b73d(bind)
 "def #{bind[1]}(bind)\n#{bind[2]}\nend\n"
-end
-def __dq_goto_sp__sh__le__f772(bind)
-"goto #{@faillabel};"
 end
 def __dq_if_lp_ptr_mi__19f0(bind)
 "if(ptr->pos+#{bind[1]}>=ptr->len) #{failwhen("1")}"
@@ -329,9 +329,6 @@ end
 def _bind_lb_1_rb__pl__1dcb(bind)
 bind[1]+="; #{bind[2]} break;\n"
 end
-def _bind_lb_1_rb__pl__22c0(bind)
-bind[1]+="#{bind[2]}_#{bind[3]}: ptr->pos=#{bind[4]};#{@cuts ? (@cuts=nil;"if (#{@cutlabel}) goto #{@faillabel};"): ""}"
-end
 def _bind_lb_1_rb__pl__252c(bind)
 bind[1]+=bind[2].cases() + " #{bind[3]} break;\n"
 end
@@ -346,6 +343,9 @@ bind[1]+=1
 end
 def _bind_lb_1_rb__pl__916b(bind)
 bind[1]+="\nend"; bind[1]
+end
+def _bind_lb_1_rb__pl__9a26(bind)
+bind[1]+="#{bind[2]}_#{bind[3]}: ptr->pos=#{bind[4]};#{@cuts ? (@cuts=nil;failwhen(@cutlabel)): ""}"
 end
 def _bind_lb_1_rb__ti__cfcb(bind)
 bind[1]*""
@@ -375,8 +375,8 @@ end
 def _label_lp__dq_r_95b2(bind)
 label("reject")
 end
-def _r_eq__dq__sp__sh__le_bi_10a8(bind)
-r=" #{bind[1]*""} it=#{callrule(bind[2],bind[3])};"; cant_fail?(bind[4]) ? r : "#{r} FAILTEST(#{@faillabel});"
+def _r_eq__dq__sp__sh__le_bi_917c(bind)
+r=" #{bind[1]*""} it=#{callrule(bind[2],bind[3])};"; cant_fail?(bind[4]) ? r : "#{r} #{failwhen("it==failobj")}"
 
 end
 def _raise_sp__dq_T_0ab1(bind)
@@ -402,15 +402,15 @@ end
 
 
 def ctranslator2_compiled_by
-'2d751ddda15b029da7579346bd3bec1c'
+'6530e1c95b23c79881881e11eeb07f8e'
 end
 def ctranslator2_source_hash
-'782609ae481307d984cce7ac378b80d9'
+'87ba8ea7b7f27fef50a865750c7cd535'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'465f7e1a8171280e2c084a56847d6359'
+'3f79d76b5b30189c2ae0d1fff817cf75'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"

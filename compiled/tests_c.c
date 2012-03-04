@@ -54,7 +54,10 @@ VALUE Tests_abc(VALUE self ) {
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy__bind_lb_1_rb__eq__f4b0,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
         break;
     case ' ' ... ' ':
         ;
@@ -132,7 +135,10 @@ alt1_1:
         bind_aset(bind2,1,_foo);
         it=rb_funcall(self,sy__bind_lb_1_rb__pl__61a1,1,bind2);
         _foo=bind_aget(bind2,1);;
-        goto alt1_2;
+        if (1) {
+            it=failobj;
+            goto alt1_2;
+        }
         ;
         goto accept1;
 alt1_2:
@@ -143,12 +149,18 @@ alt1_2:
         bind_aset(bind2,1,_foo);
         it=rb_funcall(self,sy__bind_lb_1_rb__pl__0a71,1,bind2);
         _foo=bind_aget(bind2,1);;
-        goto alt1_3;
+        if (1) {
+            it=failobj;
+            goto alt1_3;
+        }
         ;
         goto accept1;
 alt1_3:
         ptr->pos=oldpos1;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        };
 accept1:
         ;
         bind_aset(bind2,1,_autovar);
@@ -171,7 +183,10 @@ alt2_1:
         bind_aset(bind2,1,_foo);
         it=rb_funcall(self,sy__bind_lb_1_rb__pl__61a1,1,bind2);
         _foo=bind_aget(bind2,1);;
-        goto alt2_2;
+        if (1) {
+            it=failobj;
+            goto alt2_2;
+        }
         ;
         goto accept2;
 alt2_2:
@@ -192,7 +207,10 @@ alt2_2:
         goto accept2;
 alt2_3:
         ptr->pos=oldpos2;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        };
 accept2:
         ;
         bind_aset(bind2,1,_autovar);
@@ -218,7 +236,10 @@ alt3_1:
         it=rb_funcall(self,sy__bind_lb_1_rb__pl__61a1,1,bind2);
         _foo=bind_aget(bind2,1);;
         it=rb_funcall(self,sy_abc,0);
-        FAILTEST(alt3_2);
+        if (it==failobj) {
+            it=failobj;
+            goto alt3_2;
+        }
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at_context_0dcc,1,bind2);
         _autovar=bind_aget(bind2,1);;
@@ -233,12 +254,18 @@ alt3_2:
         bind_aset(bind2,1,_foo);
         it=rb_funcall(self,sy__bind_lb_1_rb__pl__0a71,1,bind2);
         _foo=bind_aget(bind2,1);;
-        goto alt3_3;
+        if (1) {
+            it=failobj;
+            goto alt3_3;
+        }
         ;
         goto accept3;
 alt3_3:
         ptr->pos=oldpos3;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        };
 accept3:
         ;
         bind_aset(bind2,1,_autovar);
@@ -262,7 +289,10 @@ VALUE Tests_foo(VALUE self ) {
     it=rb_funcall(self,sy__bind_lb_1_rb__eq__f4b0,1,bind2);
     _autovar=bind_aget(bind2,1);;
     it=rb_funcall(self,sy_bar,0);
-    FAILTEST(fail);
+    if (it==failobj) {
+        it=failobj;
+        goto fail;
+    }
     bind_aset(bind2,1,_autovar);
     it=rb_funcall(self,sy___at_context_0dcc,1,bind2);
     _autovar=bind_aget(bind2,1);;
@@ -310,7 +340,10 @@ VALUE Tests_gh(VALUE self ) {
     it=rb_funcall(self,sy__bind_lb_1_rb__eq__f4b0,1,bind2);
     _autovar=bind_aget(bind2,1);;
     it=rb_funcall(self,sy_foo,0);
-    FAILTEST(fail);
+    if (it==failobj) {
+        it=failobj;
+        goto fail;
+    }
     bind_aset(bind2,1,_autovar);
     it=rb_funcall(self,sy___at_context_0dcc,1,bind2);
     _autovar=bind_aget(bind2,1);;
@@ -343,7 +376,10 @@ VALUE Tests_s2(VALUE self ) {
         it=rb_obj_clone(s_g_b2f5);
         arg0=it;
         it=rb_funcall(self,sy_seq,1,arg0);
-        FAILTEST(fail);
+        if (it==failobj) {
+            it=failobj;
+            goto fail;
+        }
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at_context_0dcc,1,bind2);
         _autovar=bind_aget(bind2,1);;
@@ -410,7 +446,10 @@ alt2_1:
     it=rb_obj_clone(s_a_0cc1);
     arg0=it;
     it=rb_funcall(self,sy_seq,1,arg0);
-    FAILTEST(alt2_2);
+    if (it==failobj) {
+        it=failobj;
+        goto alt2_2;
+    }
     bind_aset(bind2,1,_autovar);
     it=rb_funcall(self,sy___at_context_0dcc,1,bind2);
     _autovar=bind_aget(bind2,1);;
@@ -421,7 +460,10 @@ alt2_2:
     it=rb_obj_clone(s_b_92eb);
     arg0=it;
     it=rb_funcall(self,sy_seq,1,arg0);
-    FAILTEST(alt2_3);
+    if (it==failobj) {
+        it=failobj;
+        goto alt2_3;
+    }
     bind_aset(bind2,1,_autovar);
     it=rb_funcall(self,sy___at_context_0dcc,1,bind2);
     _autovar=bind_aget(bind2,1);;
@@ -429,13 +471,19 @@ alt2_2:
     goto accept2;
 alt2_3:
     ptr->pos=oldpos2;
-    goto alt1_2;
+    if (1) {
+        it=failobj;
+        goto alt1_2;
+    };
 accept2:
     ;
     it=rb_obj_clone(s_c_4a8a);
     arg0=it;
     it=rb_funcall(self,sy_seq,1,arg0);
-    FAILTEST(alt1_2);
+    if (it==failobj) {
+        it=failobj;
+        goto alt1_2;
+    }
     bind_aset(bind2,1,_autovar);
     it=rb_funcall(self,sy___at_context_0dcc,1,bind2);
     _autovar=bind_aget(bind2,1);;
@@ -448,7 +496,10 @@ alt1_2:
     it=rb_obj_clone(s_d_8277);
     arg0=it;
     it=rb_funcall(self,sy_seq,1,arg0);
-    FAILTEST(alt1_3);
+    if (it==failobj) {
+        it=failobj;
+        goto alt1_3;
+    }
     bind_aset(bind2,1,_autovar);
     it=rb_funcall(self,sy___at_context_0dcc,1,bind2);
     _autovar=bind_aget(bind2,1);;
@@ -458,7 +509,10 @@ alt1_2:
     goto accept1;
 alt1_3:
     ptr->pos=oldpos1;
-    goto fail;
+    if (1) {
+        it=failobj;
+        goto fail;
+    };
 accept1:
     ;
     bind_aset(bind2,1,_autovar);
@@ -486,7 +540,10 @@ alt1_1:
     it=rb_obj_clone(s_a_0cc1);
     arg0=it;
     it=rb_funcall(self,sy_token,1,arg0);
-    FAILTEST(alt1_2);
+    if (it==failobj) {
+        it=failobj;
+        goto alt1_2;
+    }
     bind_aset(bind2,1,_autovar);
     it=rb_funcall(self,sy___at_context_0dcc,1,bind2);
     _autovar=bind_aget(bind2,1);;
@@ -504,7 +561,10 @@ alt1_2:
     goto accept1;
 alt1_3:
     ptr->pos=oldpos1;
-    goto fail;
+    if (1) {
+        it=failobj;
+        goto fail;
+    };
 accept1:
     ;
     bind_aset(bind2,1,_autovar);
@@ -556,5 +616,5 @@ void Init_tests_c() {
     rb_define_method(cls_Tests,"s2",Tests_s2,0);
     rb_define_method(cls_Tests,"sw",Tests_sw,0);
     rb_define_method(cls_Tests,"test",Tests_test,0);
-    rb_eval_string("testversiontests('fda5c9780b7c4455cbe32c0fc4a33586')");
+    rb_eval_string("testversiontests('d5e8e9002b3a2f39c565eb925a517dc1')");
 }

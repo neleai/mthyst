@@ -27,7 +27,10 @@ VALUE Constant_Propagator_root(VALUE self ) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     it=AmethystCore_anything(self );
-    FAILTEST(fail);
+    if (it==failobj) {
+        it=failobj;
+        goto fail;
+    }
     _it=it;;
     bind_aset(bind2,1,_it);
     it=rb_funcall(self,sy___at_depend_eq__07a9,1,bind2);
@@ -151,7 +154,10 @@ success3:
             it=rb_funcall(self,sy__src_25d9,1,bind2);
             arg0=it;
             it=rb_funcall(self,sy_valof,1,arg0);
-            FAILTEST(pass4);
+            if (it==failobj) {
+                it=failobj;
+                goto pass4;
+            }
             _autovar_7=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) {
@@ -174,7 +180,10 @@ success4:
             break;
         case 2/*Object*/:
             ;
-            goto pass2;
+            if (1) {
+                it=failobj;
+                goto pass2;
+            }
             break;
         }
         goto success2;
@@ -191,7 +200,10 @@ success2:
 alt1_2:
         ptr->pos=oldpos1;
         it=AmethystCore_anything(self );
-        FAILTEST(alt1_3);
+        if (it==failobj) {
+            it=failobj;
+            goto alt1_3;
+        }
         it=rb_funcall(self,sy__Constant_bf42,1,bind2);
         _autovar_8=it;;
 
@@ -199,7 +211,10 @@ alt1_2:
         goto accept1;
 alt1_3:
         ptr->pos=oldpos1;
-        goto pass1;
+        if (1) {
+            it=failobj;
+            goto pass1;
+        };
 accept1:
         ;
         it=Qnil;
@@ -234,12 +249,18 @@ alt2_1:
             ptr->len=RARRAY_LEN(ary);
         }
         it=AmethystCore_anything(self );
-        FAILTEST(pass5);
+        if (it==failobj) {
+            it=failobj;
+            goto pass5;
+        }
         _expr=it;;
         it=_expr;
         arg0=it;
         it=rb_funcall(self,sy_valof,1,arg0);
-        FAILTEST(pass5);
+        if (it==failobj) {
+            it=failobj;
+            goto pass5;
+        }
         _autovar_10=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
@@ -260,7 +281,10 @@ success5:
 alt2_2:
         ptr->pos=oldpos2;
         it=AmethystCore_anything(self );
-        FAILTEST(alt2_3);
+        if (it==failobj) {
+            it=failobj;
+            goto alt2_3;
+        }
         it=rb_funcall(self,sy__Constant_bf42,1,bind2);
         _autovar_8=it;;
 
@@ -268,7 +292,10 @@ alt2_2:
         goto accept2;
 alt2_3:
         ptr->pos=oldpos2;
-        goto pass1;
+        if (1) {
+            it=failobj;
+            goto pass1;
+        };
 accept2:
         ;
         it=Qnil;
@@ -328,7 +355,10 @@ success6:
 alt3_2:
         ptr->pos=oldpos3;
         it=AmethystCore_anything(self );
-        FAILTEST(alt3_3);
+        if (it==failobj) {
+            it=failobj;
+            goto alt3_3;
+        }
         it=rb_funcall(self,sy__Constant_bf42,1,bind2);
         _autovar_8=it;;
 
@@ -336,7 +366,10 @@ alt3_2:
         goto accept3;
 alt3_3:
         ptr->pos=oldpos3;
-        goto pass1;
+        if (1) {
+            it=failobj;
+            goto pass1;
+        };
 accept3:
         ;
         it=Qnil;
@@ -394,7 +427,10 @@ success7:
 alt4_2:
         ptr->pos=oldpos4;
         it=AmethystCore_anything(self );
-        FAILTEST(alt4_3);
+        if (it==failobj) {
+            it=failobj;
+            goto alt4_3;
+        }
         it=rb_funcall(self,sy__Constant_bf42,1,bind2);
         _autovar_8=it;;
 
@@ -402,7 +438,10 @@ alt4_2:
         goto accept4;
 alt4_3:
         ptr->pos=oldpos4;
-        goto pass1;
+        if (1) {
+            it=failobj;
+            goto pass1;
+        };
 accept4:
         ;
         it=Qnil;
@@ -414,7 +453,10 @@ accept4:
     case 4/*Object*/:
         ;
         it=AmethystCore_anything(self );
-        FAILTEST(pass1);
+        if (it==failobj) {
+            it=failobj;
+            goto pass1;
+        }
         it=rb_funcall(self,sy__Constant_bf42,1,bind2);
         _autovar_8=it;;
         it=Qnil;
@@ -534,7 +576,10 @@ alt3_1:
                 it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
                 _autovar=bind_aget(bind2,1);;
                 it=AmethystCore_anything(self );
-                FAILTEST(alt3_2);
+                if (it==failobj) {
+                    it=failobj;
+                    goto alt3_2;
+                }
                 ;
                 goto accept3;
 alt3_2:
@@ -544,7 +589,10 @@ alt3_2:
                 goto accept3;
 alt3_3:
                 ptr->pos=oldpos3;
-                goto pass1;
+                if (1) {
+                    it=failobj;
+                    goto pass1;
+                };
 accept3:
                 ;
             }
@@ -580,12 +628,18 @@ success1:
 alt2_2:
             ptr->pos=oldpos2;
             it=AmethystCore_anything(self );
-            FAILTEST(alt2_3);
+            if (it==failobj) {
+                it=failobj;
+                goto alt2_3;
+            }
             ;
             goto accept2;
 alt2_3:
             ptr->pos=oldpos2;
-            goto alt1_2;
+            if (1) {
+                it=failobj;
+                goto alt1_2;
+            };
 accept2:
             ;
 
@@ -598,7 +652,10 @@ alt1_2:
             goto accept1;
 alt1_3:
             ptr->pos=oldpos1;
-            goto fail;
+            if (1) {
+                it=failobj;
+                goto fail;
+            };
 accept1:
             ;
             break;
@@ -612,7 +669,10 @@ alt4_1:
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
             _autovar=bind_aget(bind2,1);;
             it=AmethystCore_anything(self );
-            FAILTEST(alt4_2);
+            if (it==failobj) {
+                it=failobj;
+                goto alt4_2;
+            }
             ;
             goto accept4;
 alt4_2:
@@ -622,7 +682,10 @@ alt4_2:
             goto accept4;
 alt4_3:
             ptr->pos=oldpos4;
-            goto fail;
+            if (1) {
+                it=failobj;
+                goto fail;
+            };
 accept4:
             ;
             break;
@@ -678,7 +741,10 @@ VALUE Constant_Traverser_root(VALUE self ) {
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        goto pass1;
+        if (1) {
+            it=failobj;
+            goto pass1;
+        }
         break;
     }
     goto success1;
@@ -713,7 +779,10 @@ success1:
     it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
     _autovar=bind_aget(bind2,1);;
     it=rb_funcall(self,sy_traverse,0);
-    FAILTEST(pass2);
+    if (it==failobj) {
+        it=failobj;
+        goto pass2;
+    }
     _it=it;;
     bind_aset(bind2,1,_it);
     it=rb_funcall(self,sy__bind_lb_1_rb__dot__f702,1,bind2);
@@ -763,7 +832,10 @@ VALUE Constant_Traverser_traverse(VALUE self ) {
     ptr->ary[0]=_autovar;
     ptr->len=1;
     it=AmethystCore_anything(self );
-    FAILTEST(pass1);
+    if (it==failobj) {
+        it=failobj;
+        goto pass1;
+    }
     _autovar_2=it;;
     cstruct oldpass2=*ptr;
     ptr->pos=ptr->len=0;
@@ -789,7 +861,10 @@ VALUE Constant_Traverser_traverse(VALUE self ) {
 alt1_1:
         ;
         it=rb_funcall(self,sy_traverse_item,0);
-        FAILTEST(alt1_2);
+        if (it==failobj) {
+            it=failobj;
+            goto alt1_2;
+        }
         _it=it;;
         bind_aset(bind2,1,_nvars);
         bind_aset(bind2,2,_it);
@@ -805,7 +880,10 @@ alt1_2:
         goto accept1;
 alt1_3:
         ptr->pos=oldpos1;
-        goto pass2;
+        if (1) {
+            it=failobj;
+            goto pass2;
+        };
 accept1:
         ;
     }
@@ -858,7 +936,10 @@ VALUE Constant_Traverser_traverse_item(VALUE self ) {
 alt1_1:
         ;
         it=rb_funcall(self,sy_visit,0);
-        FAILTEST(alt1_2);
+        if (it==failobj) {
+            it=failobj;
+            goto alt1_2;
+        }
         __result=it;;
 
         ;
@@ -885,7 +966,10 @@ alt1_2:
             ptr->len=RARRAY_LEN(ary);
         }
         it=rb_funcall(self,sy_traverse,0);
-        FAILTEST(pass1);
+        if (it==failobj) {
+            it=failobj;
+            goto pass1;
+        }
         _autovar_2=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
@@ -906,14 +990,20 @@ success1:
 alt1_3:
         ptr->pos=oldpos1;
         it=AmethystCore_anything(self );
-        FAILTEST(alt1_4);
+        if (it==failobj) {
+            it=failobj;
+            goto alt1_4;
+        }
         __result=it;;
 
         ;
         goto accept1;
 alt1_4:
         ptr->pos=oldpos1;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        };
 accept1:
         ;
         break;
@@ -924,7 +1014,10 @@ accept1:
 alt2_1:
         ;
         it=rb_funcall(self,sy_visit,0);
-        FAILTEST(alt2_2);
+        if (it==failobj) {
+            it=failobj;
+            goto alt2_2;
+        }
         __result=it;;
 
         ;
@@ -960,7 +1053,10 @@ alt2_2:
 alt3_1:
             ;
             it=rb_funcall(self,sy_traverse_item,0);
-            FAILTEST(alt3_2);
+            if (it==failobj) {
+                it=failobj;
+                goto alt3_2;
+            }
             _it=it;;
             bind_aset(bind2,1,_ar);
             bind_aset(bind2,2,_it);
@@ -976,7 +1072,10 @@ alt3_2:
             goto accept3;
 alt3_3:
             ptr->pos=oldpos3;
-            goto pass2;
+            if (1) {
+                it=failobj;
+                goto pass2;
+            };
 accept3:
             ;
         }
@@ -1001,14 +1100,20 @@ success2:
 alt2_3:
         ptr->pos=oldpos2;
         it=AmethystCore_anything(self );
-        FAILTEST(alt2_4);
+        if (it==failobj) {
+            it=failobj;
+            goto alt2_4;
+        }
         __result=it;;
 
         ;
         goto accept2;
 alt2_4:
         ptr->pos=oldpos2;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        };
 accept2:
         ;
         break;
@@ -1019,7 +1124,10 @@ accept2:
 alt4_1:
         ;
         it=rb_funcall(self,sy_visit,0);
-        FAILTEST(alt4_2);
+        if (it==failobj) {
+            it=failobj;
+            goto alt4_2;
+        }
         __result=it;;
 
         ;
@@ -1027,14 +1135,20 @@ alt4_1:
 alt4_2:
         ptr->pos=oldpos4;
         it=AmethystCore_anything(self );
-        FAILTEST(alt4_3);
+        if (it==failobj) {
+            it=failobj;
+            goto alt4_3;
+        }
         __result=it;;
 
         ;
         goto accept4;
 alt4_3:
         ptr->pos=oldpos4;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        };
 accept4:
         ;
         break;
@@ -1136,7 +1250,10 @@ success1:
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
         it=rb_funcall(self,sy_traverse_item,0);
-        FAILTEST(pass2);
+        if (it==failobj) {
+            it=failobj;
+            goto pass2;
+        }
         _expr=it;;
         bind_aset(bind2,1,_expr);
         it=rb_funcall(self,sy__Bind_lb_src_66c4,1,bind2);
@@ -1196,7 +1313,10 @@ alt1_1:
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
             _autovar=bind_aget(bind2,1);;
             it=AmethystCore_anything(self );
-            FAILTEST(alt1_2);
+            if (it==failobj) {
+                it=failobj;
+                goto alt1_2;
+            }
             ;
             goto accept1;
 alt1_2:
@@ -1206,7 +1326,10 @@ alt1_2:
             goto accept1;
 alt1_3:
             ptr->pos=oldpos1;
-            goto pass3;
+            if (1) {
+                it=failobj;
+                goto pass3;
+            };
 accept1:
             ;
         }
@@ -1275,7 +1398,10 @@ alt2_1:
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
             _autovar=bind_aget(bind2,1);;
             it=AmethystCore_anything(self );
-            FAILTEST(alt2_2);
+            if (it==failobj) {
+                it=failobj;
+                goto alt2_2;
+            }
             ;
             goto accept2;
 alt2_2:
@@ -1285,7 +1411,10 @@ alt2_2:
             goto accept2;
 alt2_3:
             ptr->pos=oldpos2;
-            goto pass4;
+            if (1) {
+                it=failobj;
+                goto pass4;
+            };
 accept2:
             ;
         }
@@ -1316,7 +1445,10 @@ success4:
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        goto fail;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
         break;
     }
     return it;
@@ -1378,5 +1510,5 @@ void Init_constant_propagation_c() {
     rb_define_method(cls_Constant_Traverser,"traverse",Constant_Traverser_traverse,0);
     rb_define_method(cls_Constant_Traverser,"traverse_item",Constant_Traverser_traverse_item,0);
     rb_define_method(cls_Constant_Traverser,"visit",Constant_Traverser_visit,0);
-    rb_eval_string("testversionconstant_propagation('d9c99c81b0b78d7d0daac31d96f12c48')");
+    rb_eval_string("testversionconstant_propagation('d8b8d74aecf3a8844ce970734588ffce')");
 }

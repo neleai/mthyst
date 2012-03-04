@@ -155,7 +155,7 @@ s
 
         | Apply[ ["_find"] {raise "TODO"} ]
 				| Apply[ ["_test_size"] CAct[.:s] ] -> "if(ptr->pos+#{s}>=ptr->len) #{failwhen("1")}"
-        | Apply[ ["fails"] {"goto #{@@faillabel};"} ]
+        | Apply[ ["fails"] {"#{failwhen("1")}"} ]
         | Apply[ ["eof"]   {"it=Qnil;#{failwhen("ptr->pos<ptr->len")}"} ]
         | Apply[ ["empty"]   {"it=Qnil;"} ]
 				| Apply[ ["advance_char"] {"it=rb_str_new(ptr->str+ptr->pos,1);ptr->pos++;"} ]
@@ -163,7 +163,7 @@ s
 
         | Apply[ ["_seq"] CAct[.:s] {"if (#{ary=s.split("");map_index(ary){|i| "ame_curstr2(ptr)[#{i}]==#{Lattice_Char.new.cchar(ary[i])}" }*"&&" })  ptr->pos+=#{s.size}; else #{failwhen("1")}"}]
         | Apply[ .:name {0}:ii ( trans:aa {ii+=1} {"#{aa} arg#{ii-1}=it;"})*:args @self:app]
-                 -> r=" #{args*""} it=#{callrule(name,ii)};"; cant_fail?(app) ? r : "#{r} FAILTEST(#{@@faillabel});"
+                 -> r=" #{args*""} it=#{callrule(name,ii)};"; cant_fail?(app) ? r : "#{r} #{failwhen("it==failobj")}"
 
         | Bind[trans:e {"#{e} #{bset(@name,"it")};\n" } ]
         | Seq[ trans*:t {t*""} ]
@@ -171,9 +171,9 @@ s
            {"int #{oldpos}=ptr->pos;int #{@@cutlabel}=0;\n#{alt}_#{altno}:;"}:s
            ( &(.) {altno+=1}  rw("#{alt}_#{altno}",`trans`):t 
              {s+="#{t}\n;goto #{accept};\n"} 
-             {s+="#{alt}_#{altno}: ptr->pos=#{oldpos};#{@@cuts ? (@@cuts=nil;"if (#{@@cutlabel}) goto #{@@faillabel};"): ""}"}  
+             {s+="#{alt}_#{altno}: ptr->pos=#{oldpos};#{@@cuts ? (@@cuts=nil;failwhen(@@cutlabel)): ""}"}  
            )*
-           {@@cutlabel=oldcutlabel;@@cuts=oldcuts;s+"goto #{@@faillabel};\n #{accept}:;\n"}
+           {@@cutlabel=oldcutlabel;@@cuts=oldcuts;s+"#{failwhen(1)};\n #{accept}:;\n"}
           ]
         | Cut[]  {@@cuts=true;  @@cutlabel ? "#{@@cutlabel}=1;"  : ""}
         | Many[ Or[ Apply[ ["anything"] ]  Stop[] ]]  -> "ptr->pos=ptr->len;"
