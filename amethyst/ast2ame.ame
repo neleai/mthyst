@@ -10,6 +10,12 @@ amethyst AST2Amethyst {
 }
 
 amethyst Syntax_Highligth {
+  root = ( Grammar[ {puts @self.inspect} @rules=>[rule*]:rules -> "amethyst #{@name} < #{@parent} {\n #{rules*""} }"
+           ] | .)*:{it*""}
+  
+  rule = Rule[ {puts @self.inspect} {@body[0]}=>trans:body  -> "#{@name} = #{body}\n"
+             ]
+
   trans = Or_AST[  trans*:ary  ]        {
  $ids+=1;"<span id=id#{$ids}>#{ary*"<span onmouseover='document.getElementById(\"id#{$ids}\").style.background=\"green\";' 
                                    onmouseout ='document.getElementById(\"id#{$ids}\").style.background=\"black\";'>|</span>"}</span>"

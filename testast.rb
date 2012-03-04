@@ -9,10 +9,10 @@ require "./compiled/#{f}"
 exp="foo|bar:x (bla | as 'xxx') baz \"yyy\" <abc> {4+2}"
 wrap="amethyst Foo{foo=#{exp} }"
 s=AmethystParser.new.parse(:file,wrap)
-s=s[0].rules[0].body
+#s=s[0].rules[0].body
 puts s.inspect
 
-r= Syntax_Highligth.new.parse(:trans,[s])
+r= Syntax_Highligth.new.parse(:root,s)
 f=File.new("test.html","w")
 puts r.inspect
 f.puts "<body bgcolor=black> <pre><div style=\"color:white\">"
