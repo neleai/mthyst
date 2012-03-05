@@ -5,9 +5,16 @@ class AmethystParser_Highligth < Amethyst
 		x.is_a?(String) ? (l=Local[x,@bnding];@locals<<l;l) : x
 	end
 end
-
+$gno=0
+def newgroup
+  $gno+=1
+end
 amethyst AmethystParser_Highligth {
-  withcolor(color,lam) = {pos}:oldpos apply(lam):r {oldpos.upto(pos-1){|i| $colors[i]||=color};r}
+  withcolor(color,lam) = {pos}:oldpos apply(lam):r {oldpos.upto(pos-1){|i| $colors[src][i]||=color};r}
+  
+  group_mark(no,lam) = {pos}:oldpos apply(lam):r {oldpos.upto(pos-1){|i| $group_mark[src][i]||=no};r}
+  
+  group_hl(no,lam)   = {pos}:oldpos apply(lam):r {$group_start[src][oldpos]<<no;$group_end[src][pos]<<no;r}
 
   file     = ( (~'amethyst'   . )+:{it.join}
              | grammar
@@ -57,7 +64,10 @@ amethyst AmethystParser_Highligth {
         | '"'  until('"' ):s -> Apply["token" ,quote(s)]
         | '\'' until('\''):s -> Apply["seq"   ,quote(s)]
         | '#'  line:s        -> Comment[s]
-        | '(' expression:x ")" ( '[]'  collect(x) | {Parenthesis[x]} )
+        | {newgroup}:g group_hl(g,`ob(g) expression:x cb(g)`) ( '[]'  collect(x) | {Parenthesis[x]} ) 
+
+  ob(g) = group_mark(g,`'('`)
+  cb(g) = group_mark(g,`")"`)
 
   collect(ors) = -> a=autovar; Seq[Or_AST[{:ary=>ors.ary.map{|ands| Seq[{:ary=>[Bind[a,Act["[]"]]]+ands.ary.map{|expr| Append_AST[a,expr]}}]}}],a]
   
@@ -110,7 +120,7 @@ amethyst AmethystParser_Highligth {
              )* -> x
 
   
-  inline_host_expr = _args('{','}'):r {Act[Args[{:ary=>r}]]}
+  inline_host_expr = withcolor("brown",`_args('{','}'):r`) {Act[Args[{:ary=>r}]]}
   host_expr = inline_host_expr 
             | '->' line:s   {"{"+s+"}"}=>[ inline_host_expr ]  
 
