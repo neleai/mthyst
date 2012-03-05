@@ -64,8 +64,8 @@ amethyst AmethystParser_Highligth {
         | '"'  until('"' ):s -> Apply["token" ,quote(s)]
         | '\'' until('\''):s -> Apply["seq"   ,quote(s)]
         | '#'  line:s        -> Comment[s]
-        | {newgroup}:g group_hl(g,`ob(g) expression:x cb(g)`) ( '[]'  collect(x) | {Parenthesis[x]} ) 
-
+        | {newgroup}:g group_hl(g,`ob(g) expression:x cb(g) ( '[]'  collect(x) | {Parenthesis[x]} )   `)
+ 
   ob(g) = group_mark(g,`'('`)
   cb(g) = group_mark(g,`")"`)
 

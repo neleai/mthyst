@@ -5,6 +5,7 @@ end
 amethyst Tests{
   sw = (('a' |'b') 'c'
         | 'd') 
+
   
   s2= <ab> |<def> {3} | 'g'
 

@@ -6,7 +6,7 @@ end
 amethyst AmethystParser {
   file     = ( (~'amethyst'   . )+:{it.join}
              | grammar
-             | "`" expression '`'
+             | "`" expression "`"
              )*
 
   grammar = "amethyst" "" name:name ("<" "" name  |{"Amethyst"}):parent
@@ -88,7 +88,7 @@ amethyst AmethystParser {
 
   _args(o,c) = seq(o) "" rubyarg*:r seq(c) -> r
     
-  rubyarg  = '`' expression:e '`' -> Lambda[Bind[local("_result"),e]]
+  rubyarg  = '`' expression:e "`" -> Lambda[Bind[local("_result"),e]]
            | args('(',')')  | args('[',']') | args('{','}')
            | '"' interpolated("\""):s      -> Strin[['"']+s+['"']]
            | <a-z0-9_>:e '<<' -> [e,'<<']
