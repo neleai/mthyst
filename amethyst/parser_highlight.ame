@@ -64,10 +64,8 @@ amethyst AmethystParser_Highligth {
         | '"'  until('"' ):s -> Apply["token" ,quote(s)]
         | '\'' until('\''):s -> Apply["seq"   ,quote(s)]
         | '#'  line:s        -> Comment[s]
-        | {newgroup}:g group_hl(g,`ob(g) expression:x cb(g) ( '[]'  collect(x) | {Parenthesis[x]} )   `)
+        | {newgroup}:g group_hl(g,` group_mark(g,`'('`) expression:x  group_mark(g,`")"`) ( '[]'  collect(x) | {Parenthesis[x]} )   `)
  
-  ob(g) = group_mark(g,`'('`)
-  cb(g) = group_mark(g,`")"`)
 
   collect(ors) = -> a=autovar; Seq[Or_AST[{:ary=>ors.ary.map{|ands| Seq[{:ary=>[Bind[a,Act["[]"]]]+ands.ary.map{|expr| Append_AST[a,expr]}}]}}],a]
   

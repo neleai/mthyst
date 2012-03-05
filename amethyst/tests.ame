@@ -2,6 +2,11 @@ class Tests < Amethyst
   use_implicit_variables
   use_contextual_returns
 end
+amethyst Lam{
+  foo(x) = apply(x)
+  baz(x) = apply(x)
+  lam = foo(`bar | baz(`lam`)`)
+}
 amethyst Tests{
   sw = (('a' |'b') 'c'
         | 'd') 

@@ -1,5 +1,141 @@
 #include "cthyst.h"
 #include "memo.c"
+VALUE cls_Lam;
+VALUE Lam_baz(VALUE self ,VALUE a0);
+VALUE Lam_foo(VALUE self ,VALUE a0);
+VALUE Lam_lam(VALUE self );
+static VALUE sy___at_context_0dcc;
+static VALUE sy___at_context_2721;
+static VALUE sy__bind_lb_1_rb__eq__f4b0;
+static VALUE sy_apply;
+static VALUE sy_bar;
+static VALUE sy_lam;
+VALUE profile_report_Lam(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    return Qnil;
+}
+VALUE Lam_baz(VALUE self ,VALUE a0) {
+    VALUE vals[1];
+    VALUE it ,_autovar,_x,__result;
+    VALUE bind2=bind_new2(16);
+    _x=a0;;
+    int x;
+    VALUE arg0,arg1,arg2,arg3;
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    bind_aset(bind2,1,_autovar);
+    it=rb_funcall(self,sy__bind_lb_1_rb__eq__f4b0,1,bind2);
+    _autovar=bind_aget(bind2,1);;
+    it=_x;
+    arg0=it;
+    it=rb_funcall(self,sy_apply,1,arg0);
+    if (it==failobj) {
+        it=failobj;
+        goto fail;
+    }
+    bind_aset(bind2,1,_autovar);
+    it=rb_funcall(self,sy___at_context_0dcc,1,bind2);
+    _autovar=bind_aget(bind2,1);;
+    __result=it;;
+    bind_aset(bind2,1,_autovar);
+    it=rb_funcall(self,sy___at_context_2721,1,bind2);
+    _autovar=bind_aget(bind2,1);;
+fail:
+    return it;
+}
+VALUE Lam_foo(VALUE self ,VALUE a0) {
+    VALUE vals[1];
+    VALUE it ,_autovar,_x,__result;
+    VALUE bind2=bind_new2(16);
+    _x=a0;;
+    int x;
+    VALUE arg0,arg1,arg2,arg3;
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    bind_aset(bind2,1,_autovar);
+    it=rb_funcall(self,sy__bind_lb_1_rb__eq__f4b0,1,bind2);
+    _autovar=bind_aget(bind2,1);;
+    it=_x;
+    arg0=it;
+    it=rb_funcall(self,sy_apply,1,arg0);
+    if (it==failobj) {
+        it=failobj;
+        goto fail;
+    }
+    bind_aset(bind2,1,_autovar);
+    it=rb_funcall(self,sy___at_context_0dcc,1,bind2);
+    _autovar=bind_aget(bind2,1);;
+    __result=it;;
+    bind_aset(bind2,1,_autovar);
+    it=rb_funcall(self,sy___at_context_2721,1,bind2);
+    _autovar=bind_aget(bind2,1);;
+fail:
+    return it;
+}
+VALUE Lam_lam(VALUE self ) {
+    VALUE vals[0];
+    VALUE it ,_autovar,_autovar_2,_autovar_3,__result;
+    VALUE bind2=bind_new2(16);
+    int x;
+    VALUE arg0,arg1,arg2,arg3;
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    bind_aset(bind2,1,_autovar);
+    it=rb_funcall(self,sy__bind_lb_1_rb__eq__f4b0,1,bind2);
+    _autovar=bind_aget(bind2,1);;
+    bind_aset(bind2,1,_autovar_2);
+    it=rb_funcall(self,sy__bind_lb_1_rb__eq__f4b0,1,bind2);
+    _autovar_2=bind_aget(bind2,1);;
+    int oldpos1=ptr->pos;
+    int cut1=0;
+alt1_1:
+    ;
+    it=rb_funcall(self,sy_bar,0);
+    if (it==failobj) {
+        it=failobj;
+        goto alt1_2;
+    }
+    ;
+    goto accept1;
+alt1_2:
+    ptr->pos=oldpos1;
+    bind_aset(bind2,1,_autovar_3);
+    it=rb_funcall(self,sy__bind_lb_1_rb__eq__f4b0,1,bind2);
+    _autovar_3=bind_aget(bind2,1);;
+    it=rb_funcall(self,sy_lam,0);
+    bind_aset(bind2,1,_autovar_3);
+    it=rb_funcall(self,sy___at_context_0dcc,1,bind2);
+    _autovar_3=bind_aget(bind2,1);;
+    bind_aset(bind2,1,_autovar_3);
+    it=rb_funcall(self,sy___at_context_2721,1,bind2);
+    _autovar_3=bind_aget(bind2,1);;
+    ;
+    goto accept1;
+alt1_3:
+    ptr->pos=oldpos1;
+    if (1) {
+        it=failobj;
+        goto fail;
+    };
+accept1:
+    ;
+    bind_aset(bind2,1,_autovar_2);
+    it=rb_funcall(self,sy___at_context_0dcc,1,bind2);
+    _autovar_2=bind_aget(bind2,1);;
+    bind_aset(bind2,1,_autovar_2);
+    it=rb_funcall(self,sy___at_context_2721,1,bind2);
+    _autovar_2=bind_aget(bind2,1);;
+    bind_aset(bind2,1,_autovar);
+    it=rb_funcall(self,sy___at_context_0dcc,1,bind2);
+    _autovar=bind_aget(bind2,1);;
+    __result=it;;
+    bind_aset(bind2,1,_autovar);
+    it=rb_funcall(self,sy___at_context_2721,1,bind2);
+    _autovar=bind_aget(bind2,1);;
+fail:
+    return it;
+}
 VALUE cls_Tests;
 VALUE Tests_abc(VALUE self );
 VALUE Tests_context(VALUE self );
@@ -18,14 +154,11 @@ static VALUE s_c_4a8a;
 static VALUE s_d_8277;
 static VALUE s_g_b2f5;
 static VALUE sy___at__contex_160a;
-static VALUE sy___at_context_0dcc;
-static VALUE sy___at_context_2721;
 static VALUE sy__bind_lb_1_rb__eq__58f9;
-static VALUE sy__bind_lb_1_rb__eq__f4b0;
 static VALUE sy__bind_lb_1_rb__lb__6e1f;
 static VALUE sy__bind_lb_1_rb__pl__0a71;
-static VALUE sy__bind_lb_1_rb__pl__3b73;
 static VALUE sy__bind_lb_1_rb__pl__61a1;
+static VALUE sy__foo_pl_bar_ac93;
 static VALUE sy_abc;
 static VALUE sy_bar;
 static VALUE sy_foo;
@@ -38,7 +171,7 @@ VALUE profile_report_Tests(VALUE self) {
 }
 VALUE Tests_abc(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,__result;
+    VALUE it ,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -51,9 +184,6 @@ VALUE Tests_abc(VALUE self ) {
         ;
     case 'd' ... UC(255):
         ;
-        bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy__bind_lb_1_rb__eq__f4b0,1,bind2);
-        _autovar=bind_aget(bind2,1);;
         if (1) {
             it=failobj;
             goto fail;
@@ -63,18 +193,9 @@ VALUE Tests_abc(VALUE self ) {
         ;
     case 'a' ... 'c':
         ;
-        bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy__bind_lb_1_rb__eq__f4b0,1,bind2);
-        _autovar=bind_aget(bind2,1);;
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
-        bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at_context_0dcc,1,bind2);
-        _autovar=bind_aget(bind2,1);;
         __result=it;;
-        bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at_context_2721,1,bind2);
-        _autovar=bind_aget(bind2,1);;
         break;
     }
 fail:
@@ -82,31 +203,26 @@ fail:
 }
 VALUE Tests_context(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,_autovar_2,__result;
+    VALUE it ,_autovar,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     bind_aset(bind2,1,_autovar);
-    it=rb_funcall(self,sy__bind_lb_1_rb__eq__f4b0,1,bind2);
-    _autovar=bind_aget(bind2,1);;
-    bind_aset(bind2,1,_autovar_2);
     it=rb_funcall(self,sy___at__contex_160a,1,bind2);
-    _autovar_2=bind_aget(bind2,1);;
-    bind_aset(bind2,1,_autovar_2);
-    it=rb_funcall(self,sy__bind_lb_1_rb__lb__6e1f,1,bind2);
-    _autovar_2=bind_aget(bind2,1);;
-    __result=it;;
-    bind_aset(bind2,1,_autovar);
-    it=rb_funcall(self,sy___at_context_2721,1,bind2);
     _autovar=bind_aget(bind2,1);;
+    bind_aset(bind2,1,_autovar);
+    it=rb_funcall(self,sy__bind_lb_1_rb__lb__6e1f,1,bind2);
+    _autovar=bind_aget(bind2,1);;
+    __result=it;;
+
 fail:
     return it;
 }
 VALUE Tests_de(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,_autovar_2,_foo,__result;
+    VALUE it ,_autovar,_foo,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -119,16 +235,13 @@ VALUE Tests_de(VALUE self ) {
         ;
     case 'f' ... UC(255):
         ;
-        bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy__bind_lb_1_rb__eq__f4b0,1,bind2);
-        _autovar=bind_aget(bind2,1);;
         it=i_1;
-        _autovar_2=it;;
+        _autovar=it;;
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
         ;
-        it=_autovar_2;
+        it=_autovar;
         _foo=it;;
         bind_aset(bind2,1,_foo);
         it=rb_funcall(self,sy__bind_lb_1_rb__pl__61a1,1,bind2);
@@ -141,7 +254,7 @@ alt1_1:
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
-        it=_autovar_2;
+        it=_autovar;
         it=i_1;
         _foo=it;;
         bind_aset(bind2,1,_foo);
@@ -161,15 +274,9 @@ alt1_3:
         };
 accept1:
         ;
-        bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at_context_2721,1,bind2);
-        _autovar=bind_aget(bind2,1);;
         break;
     case 'd' ... 'e':
         ;
-        bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy__bind_lb_1_rb__eq__f4b0,1,bind2);
-        _autovar=bind_aget(bind2,1);;
         it=i_1;
         it=i_1;
         int oldpos2=ptr->pos;
@@ -196,9 +303,6 @@ alt2_2:
         _foo=bind_aget(bind2,1);;
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
-        bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at_context_0dcc,1,bind2);
-        _autovar=bind_aget(bind2,1);;
         __result=it;;
 
         ;
@@ -211,17 +315,11 @@ alt2_3:
         };
 accept2:
         ;
-        bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at_context_2721,1,bind2);
-        _autovar=bind_aget(bind2,1);;
         break;
     case ' ' ... ' ':
         ;
     case 'a' ... 'c':
         ;
-        bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy__bind_lb_1_rb__eq__f4b0,1,bind2);
-        _autovar=bind_aget(bind2,1);;
         it=i_1;
         it=i_1;
         int oldpos3=ptr->pos;
@@ -238,9 +336,6 @@ alt3_1:
             it=failobj;
             goto alt3_2;
         }
-        bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at_context_0dcc,1,bind2);
-        _autovar=bind_aget(bind2,1);;
         __result=it;;
 
         ;
@@ -266,9 +361,6 @@ alt3_3:
         };
 accept3:
         ;
-        bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at_context_2721,1,bind2);
-        _autovar=bind_aget(bind2,1);;
         break;
     }
 fail:
@@ -276,83 +368,80 @@ fail:
 }
 VALUE Tests_foo(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,_bar,_foo,__result,_autovar_2;
+    VALUE it ,__result,_autovar;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    bind_aset(bind2,1,_autovar);
-    it=rb_funcall(self,sy__bind_lb_1_rb__eq__f4b0,1,bind2);
-    _autovar=bind_aget(bind2,1);;
     it=rb_funcall(self,sy_bar,0);
     if (it==failobj) {
         it=failobj;
         goto fail;
     }
-    bind_aset(bind2,1,_autovar);
-    it=rb_funcall(self,sy___at_context_0dcc,1,bind2);
-    _autovar=bind_aget(bind2,1);;
-    _bar=it;;
-    bind_aset(bind2,1,_foo);
-    bind_aset(bind2,2,_bar);
-    it=rb_funcall(self,sy__bind_lb_1_rb__pl__3b73,1,bind2);
-    _foo=bind_aget(bind2,1);;
-    _bar=bind_aget(bind2,2);;
+    it=rb_funcall(self,sy__foo_pl_bar_ac93,1,bind2);
     __result=it;;
-    bind_aset(bind2,1,_autovar);
-    it=rb_funcall(self,sy___at_context_2721,1,bind2);
-    _autovar=bind_aget(bind2,1);;
     int stop1=0;
     while(!stop1) {
-        bind_aset(bind2,1,_autovar_2);
+        bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,__result);
         it=rb_funcall(self,sy__bind_lb_1_rb__eq__58f9,1,bind2);
-        _autovar_2=bind_aget(bind2,1);;
+        _autovar=bind_aget(bind2,1);;
         __result=bind_aget(bind2,2);;
-        bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy__bind_lb_1_rb__eq__f4b0,1,bind2);
-        _autovar=bind_aget(bind2,1);;
-        bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at_context_0dcc,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        it=__result;
         __result=it;;
-        bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at_context_2721,1,bind2);
-        _autovar=bind_aget(bind2,1);;
     }
 fail:
     return it;
 }
 VALUE Tests_gh(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,__result;
+    VALUE it ,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    bind_aset(bind2,1,_autovar);
-    it=rb_funcall(self,sy__bind_lb_1_rb__eq__f4b0,1,bind2);
-    _autovar=bind_aget(bind2,1);;
+    int oldpos1=ptr->pos;
+    int cut1=0;
+alt1_1:
+    ;
     it=rb_funcall(self,sy_foo,0);
     if (it==failobj) {
         it=failobj;
+        goto alt1_2;
+    }
+    __result=it;;
+
+    ;
+    goto accept1;
+alt1_2:
+    ptr->pos=oldpos1;
+    cut1=1;
+    it=i_42;
+    __result=it;;
+
+    ;
+    goto accept1;
+alt1_3:
+    ptr->pos=oldpos1;
+    if (cut1) {
+        it=failobj;
         goto fail;
     }
-    bind_aset(bind2,1,_autovar);
-    it=rb_funcall(self,sy___at_context_0dcc,1,bind2);
-    _autovar=bind_aget(bind2,1);;
-    __result=it;;
-    bind_aset(bind2,1,_autovar);
-    it=rb_funcall(self,sy___at_context_2721,1,bind2);
-    _autovar=bind_aget(bind2,1);;
+    if (1) {
+        it=failobj;
+        goto fail;
+    };
+accept1:
+    ;
+
 fail:
     return it;
 }
 VALUE Tests_s2(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,__result;
+    VALUE it ,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -365,9 +454,6 @@ VALUE Tests_s2(VALUE self ) {
         ;
     case 'g' ... UC(255):
         ;
-        bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy__bind_lb_1_rb__eq__f4b0,1,bind2);
-        _autovar=bind_aget(bind2,1);;
         it=rb_obj_clone(s_g_b2f5);
         arg0=it;
         it=rb_funcall(self,sy_seq,1,arg0);
@@ -375,44 +461,48 @@ VALUE Tests_s2(VALUE self ) {
             it=failobj;
             goto fail;
         }
-        bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at_context_0dcc,1,bind2);
-        _autovar=bind_aget(bind2,1);;
         __result=it;;
-        bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at_context_2721,1,bind2);
-        _autovar=bind_aget(bind2,1);;
         break;
     case 'd' ... 'f':
         ;
-        bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy__bind_lb_1_rb__eq__f4b0,1,bind2);
-        _autovar=bind_aget(bind2,1);;
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
-        bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at_context_0dcc,1,bind2);
-        _autovar=bind_aget(bind2,1);;
         it=i_3;
         __result=it;;
-        bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at_context_2721,1,bind2);
-        _autovar=bind_aget(bind2,1);;
         break;
     case 'a' ... 'b':
         ;
-        bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy__bind_lb_1_rb__eq__f4b0,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        int oldpos1=ptr->pos;
+        int cut1=0;
+alt1_1:
+        ;
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
-        bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at_context_0dcc,1,bind2);
-        _autovar=bind_aget(bind2,1);;
         __result=it;;
-        bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at_context_2721,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+
+        ;
+        goto accept1;
+alt1_2:
+        ptr->pos=oldpos1;
+        it=rb_obj_clone(s_g_b2f5);
+        arg0=it;
+        it=rb_funcall(self,sy_seq,1,arg0);
+        if (it==failobj) {
+            it=failobj;
+            goto alt1_3;
+        }
+        __result=it;;
+
+        ;
+        goto accept1;
+alt1_3:
+        ptr->pos=oldpos1;
+        if (1) {
+            it=failobj;
+            goto fail;
+        };
+accept1:
+        ;
         break;
     }
 fail:
@@ -420,15 +510,12 @@ fail:
 }
 VALUE Tests_sw(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,__result;
+    VALUE it ,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    bind_aset(bind2,1,_autovar);
-    it=rb_funcall(self,sy__bind_lb_1_rb__eq__f4b0,1,bind2);
-    _autovar=bind_aget(bind2,1);;
     int oldpos1=ptr->pos;
     int cut1=0;
 alt1_1:
@@ -444,9 +531,6 @@ alt2_1:
         it=failobj;
         goto alt2_2;
     }
-    bind_aset(bind2,1,_autovar);
-    it=rb_funcall(self,sy___at_context_0dcc,1,bind2);
-    _autovar=bind_aget(bind2,1);;
     ;
     goto accept2;
 alt2_2:
@@ -458,9 +542,6 @@ alt2_2:
         it=failobj;
         goto alt2_3;
     }
-    bind_aset(bind2,1,_autovar);
-    it=rb_funcall(self,sy___at_context_0dcc,1,bind2);
-    _autovar=bind_aget(bind2,1);;
     ;
     goto accept2;
 alt2_3:
@@ -478,9 +559,6 @@ accept2:
         it=failobj;
         goto alt1_2;
     }
-    bind_aset(bind2,1,_autovar);
-    it=rb_funcall(self,sy___at_context_0dcc,1,bind2);
-    _autovar=bind_aget(bind2,1);;
     __result=it;;
 
     ;
@@ -494,9 +572,6 @@ alt1_2:
         it=failobj;
         goto alt1_3;
     }
-    bind_aset(bind2,1,_autovar);
-    it=rb_funcall(self,sy___at_context_0dcc,1,bind2);
-    _autovar=bind_aget(bind2,1);;
     __result=it;;
 
     ;
@@ -509,23 +584,18 @@ alt1_3:
     };
 accept1:
     ;
-    bind_aset(bind2,1,_autovar);
-    it=rb_funcall(self,sy___at_context_2721,1,bind2);
-    _autovar=bind_aget(bind2,1);;
+
 fail:
     return it;
 }
 VALUE Tests_test(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,__result;
+    VALUE it ,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    bind_aset(bind2,1,_autovar);
-    it=rb_funcall(self,sy__bind_lb_1_rb__eq__f4b0,1,bind2);
-    _autovar=bind_aget(bind2,1);;
     int oldpos1=ptr->pos;
     int cut1=0;
 alt1_1:
@@ -537,9 +607,6 @@ alt1_1:
         it=failobj;
         goto alt1_2;
     }
-    bind_aset(bind2,1,_autovar);
-    it=rb_funcall(self,sy___at_context_0dcc,1,bind2);
-    _autovar=bind_aget(bind2,1);;
     it=i_1;
     __result=it;;
 
@@ -560,13 +627,24 @@ alt1_3:
     };
 accept1:
     ;
-    bind_aset(bind2,1,_autovar);
-    it=rb_funcall(self,sy___at_context_2721,1,bind2);
-    _autovar=bind_aget(bind2,1);;
+
 fail:
     return it;
 }
 void Init_tests_c() {
+    cls_Lam=rb_define_class("Lam",rb_const_get(rb_cObject,rb_intern("Amethyst")));
+    failobj=rb_eval_string("FAIL");
+    rb_define_method(cls_Lam,"profile_report",profile_report_Lam,0);
+    sy___at_context_0dcc=rb_intern("__at_context_0dcc");
+    sy___at_context_2721=rb_intern("__at_context_2721");
+    sy__bind_lb_1_rb__eq__f4b0=rb_intern("_bind_lb_1_rb__eq__f4b0");
+    sy_apply=rb_intern("apply");
+    sy_bar=rb_intern("bar");
+    sy_lam=rb_intern("lam");
+    rb_define_method(cls_Lam,"baz",Lam_baz,1);
+    rb_define_method(cls_Lam,"foo",Lam_foo,1);
+    rb_define_method(cls_Lam,"lam",Lam_lam,0);
+
     cls_Tests=rb_define_class("Tests",rb_const_get(rb_cObject,rb_intern("Amethyst")));
     failobj=rb_eval_string("FAIL");
     i_1=rb_funcall(rb_str_new2("1"),rb_intern("to_i"),0);
@@ -587,14 +665,11 @@ void Init_tests_c() {
     s_g_b2f5=rb_str_new2("g");
     rb_global_variable(&s_g_b2f5);
     sy___at__contex_160a=rb_intern("__at__contex_160a");
-    sy___at_context_0dcc=rb_intern("__at_context_0dcc");
-    sy___at_context_2721=rb_intern("__at_context_2721");
     sy__bind_lb_1_rb__eq__58f9=rb_intern("_bind_lb_1_rb__eq__58f9");
-    sy__bind_lb_1_rb__eq__f4b0=rb_intern("_bind_lb_1_rb__eq__f4b0");
     sy__bind_lb_1_rb__lb__6e1f=rb_intern("_bind_lb_1_rb__lb__6e1f");
     sy__bind_lb_1_rb__pl__0a71=rb_intern("_bind_lb_1_rb__pl__0a71");
-    sy__bind_lb_1_rb__pl__3b73=rb_intern("_bind_lb_1_rb__pl__3b73");
     sy__bind_lb_1_rb__pl__61a1=rb_intern("_bind_lb_1_rb__pl__61a1");
+    sy__foo_pl_bar_ac93=rb_intern("_foo_pl_bar_ac93");
     sy_abc=rb_intern("abc");
     sy_bar=rb_intern("bar");
     sy_foo=rb_intern("foo");
@@ -608,5 +683,5 @@ void Init_tests_c() {
     rb_define_method(cls_Tests,"s2",Tests_s2,0);
     rb_define_method(cls_Tests,"sw",Tests_sw,0);
     rb_define_method(cls_Tests,"test",Tests_test,0);
-    rb_eval_string("testversiontests('3b18cb109cf963b2d45834c7aaefaad9')");
+    rb_eval_string("testversiontests('0d32c7be06d8f57626a961fb5cd5fa8b')");
 }

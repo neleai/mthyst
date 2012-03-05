@@ -50,10 +50,6 @@ class Gram
 		return Compiler.grammars[grammar].rules[name] if grammar
 		return nil
 	end
-	def inline(from,to)
-		puts from
-		@rules[to]=Inliner2.new.parse(:root,[getrule(from), @rules[to]])
-	end
 end
 def resolvegrammar(grammar,name)
 	#TODO add header
@@ -116,20 +112,28 @@ class <<Compiler
 				g.opt(g.rules[name])
 		end}
 		topo.each{|name|if g.rules[name] && called[name]
-				inlined=false
-				callg[name].each{|nm,v|
-					r=g.getrule(nm)
-					if r && nm!=name
-						if complexity(r)>10
-							g.inline(nm,name) 
-							inlined=true
-						end
-					end
-				}
+        repeat=true
+        while repeat
+				  inlined=false
+          g.calls[name]=DetectCalls.new.parse(:root,[g.getrule(name)])
+			  	g.calls[name].each{|nm,v|
+				  	r=g.getrule(nm)
+			  		if r && nm!=name
+					  	if complexity(r)>10
+                puts "inlined #{nm} in #{name}"
+		            g.rules[name]=Inliner2.new.parse(:root,[g.getrule(nm), g.rules[name]])
+			  				inlined=true
+		  				end
+	  				end
+  				}
+				  g.opt(g.rules[name]) if inlined
+          repeat=false if !inlined || (!["lam","term"].include?(name))#we want turn it to on where we can resolve lambdas.
+        end
 				DetectCalls.new.parse(:root,[g.getrule(name)]).each{|nm,t| r=g.getrule(nm)
-					 g.inline(nm,name) if r && (nm=="seq" || nm=="token")
+					 if r && (nm=="seq" || nm=="token")
+            g.rules[name]=Inliner2.new.parse(:root,[g.getrule(nm), g.rules[name]])
+           end
 				}
-				g.opt(g.rules[name]) if inlined
 		end}
 		topo.each{|name|if g.rules[name] && called[name]
 				#TODO separately as in inherited it dont have to be true
