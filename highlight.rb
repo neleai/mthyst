@@ -11,7 +11,7 @@ wrap="amethyst Foo{
   foo=foo|bar:x (bla | as:[foo] 'xxx') baz(4,`a|b`) \"yyy\" <abc> {4+2}
   bar= foo:bar baz[ aa ] {2+2}=>foo
 }"
-wrap=File.new("amethyst/amethyst.ame").read
+wrap=File.new(ARGV[0]).read
 $colors=Hash.new{|h,k| h[k]=[]}
 
 $group_mark=Hash.new{|h,k| h[k]=[]}
@@ -38,11 +38,7 @@ wrap.size.times{|i|
 
   r<<c
 }
-puts $group_start.inspect
-puts $group_end.inspect
-puts $group_mark.inspect
-puts r.inspect
-f=File.new("test.html","w")
+f=File.new(ARGV[1],"w")
 f.print "<body bgcolor=black> <pre><div style=\"color:white\">"
 f.puts(r)
 f.puts "</pre></div></body>"

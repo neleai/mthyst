@@ -127,7 +127,7 @@ class <<Compiler
 	  				end
   				}
 				  g.opt(g.rules[name]) if inlined
-          repeat=false if !inlined || (!["lam","term"].include?(name))#we want turn it to on where we can resolve lambdas.
+          repeat=false if !inlined || (!["Lam","AmethystParser_Highligth"].include?(g.name))#we want turn it to on where we can resolve lambdas.
         end
 				DetectCalls.new.parse(:root,[g.getrule(name)]).each{|nm,t| r=g.getrule(nm)
 					 if r && (nm=="seq" || nm=="token")
