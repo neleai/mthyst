@@ -141,12 +141,12 @@ def _Strin_lb__lb__qu__88c8(bind)
 Strin[['"']+bind[1]+['"']]
 
 end
-def __at_appends_975f(bind)
-@appends<< local(bind[1]) if bind[2]; Bind[local(bind[1]),bind[3],bind[2]=='[]']
+def __at_appends_2058(bind)
+@appends<< local(bind[1]) if bind[2]; bind[2]=='[]' ? Append_AST[bind[1],bind[3]] : Bind[local(bind[1]),bind[3]]
 
 end
-def __at_appends_9f26(bind)
-@appends<< local(bind[1]); Append[local(bind[1]),bind[2]]
+def __at_appends_bfac(bind)
+@appends<< local(bind[1]); Append_AST[local(bind[1]),bind[2]]
 
 end
 def __at_ary_eq__lb__rb_(bind)
@@ -180,8 +180,8 @@ end
 def __lp_bind_lb_1_rb__a724(bind)
 (bind[1]==',') || FAIL
 end
-def _a_eq_autova_5b84(bind)
-a=autovar; Seq[Or_AST[{:ary=>bind[1].ary.map{|ands| Seq[{:ary=>[Bind[a,Act["[]"]]]+ands.ary.map{|expr| Append[a,expr]}}]}}],a]
+def _a_eq_autova_7fca(bind)
+a=autovar; Seq[Or_AST[{:ary=>bind[1].ary.map{|ands| Seq[{:ary=>[Bind[a,Act["[]"]]]+ands.ary.map{|expr| Append_AST[a,expr]}}]}}],a]
 
 end
 def _bind_lb_1_rb_(bind)
@@ -215,15 +215,15 @@ class AmethystParser < Amethyst
 end
 
 def parser_compiled_by
-'009939c1cd31b28125feef3a19935cef'
+'20294a5dcd3b249be0ed3e1719c2d47d'
 end
 def parser_source_hash
-'1b39a6878eb54510ed87cc1353bca487'
+'7c6a4dbb84a2c54f0fa3d1a0a8c9feea'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'e0ae56251f2a8297e938812bf435b78c'
+'a695fb9a5ca31fa312cbfc836432535c'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/parser_c"

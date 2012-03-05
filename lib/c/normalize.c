@@ -189,6 +189,63 @@ VALUE create2_Apply(VALUE self ,VALUE name,VALUE clas,VALUE bound,VALUE ary){
 	rb_iv_set(obj3,"@name",name);rb_iv_set(obj3,"@clas",clas);rb_iv_set(obj3,"@bound",bound);rb_iv_set(obj3,"@ary",ary);
 	return normalize_Apply(obj3);
 }
+int hits_Append_AST=0;int miss_Append_AST=0; normalize_cache *cache_Append_AST;
+VALUE normalize_Append_AST(VALUE obj){int i;
+	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;VALUE obj2;
+	VALUE ary=rb_iv_get(obj,"@ary");
+	if (rb_obj_frozen_p(obj)==Qtrue)
+		obj=rb_obj_dup(obj);
+	rb_iv_set(obj,"@name",normalize_el(rb_iv_get(obj,"@name")));hash=11*hash+rb_iv_get(obj,"@name");rb_iv_set(obj,"@exp",normalize_el(rb_iv_get(obj,"@exp")));hash=11*hash+rb_iv_get(obj,"@exp");rb_iv_set(obj,"@ary",normalize_el(rb_iv_get(obj,"@ary")));hash=11*hash+rb_iv_get(obj,"@ary");
+	rb_iv_set(obj,"@hash",LONG2FIX(hash));
+	rb_obj_freeze(obj);
+	hash=hash&((1<<20)-1);
+  while(obj2=cache_Append_AST->ary[hash]){
+	 	if (!els_equal(rb_iv_get(obj,"@name"),rb_iv_get(obj2,"@name"))) goto next;if (!els_equal(rb_iv_get(obj,"@exp"),rb_iv_get(obj2,"@exp"))) goto next;if (!els_equal(rb_iv_get(obj,"@ary"),rb_iv_get(obj2,"@ary"))) goto next;
+	 	hits_Append_AST++;
+	 	return cache_Append_AST->ret[hash];
+	 	next:;
+    hash=(hash+1)&((1<<20)-1);
+  }
+  VALUE obj3=rb_funcall(obj,rb_intern("normalize2"),0);
+	miss_Append_AST++;
+	if (rb_obj_is_kind_of(obj3, rb_obj_class(obj))){
+		int hash3=0;
+	  if (rb_obj_frozen_p(obj3)==Qtrue)
+	    obj3=rb_obj_dup(obj3);
+	  rb_iv_set(obj3,"@name",normalize_el(rb_iv_get(obj3,"@name")));hash3=11*hash3+rb_iv_get(obj3,"@name");rb_iv_set(obj3,"@exp",normalize_el(rb_iv_get(obj3,"@exp")));hash3=11*hash3+rb_iv_get(obj3,"@exp");rb_iv_set(obj3,"@ary",normalize_el(rb_iv_get(obj3,"@ary")));hash3=11*hash3+rb_iv_get(obj3,"@ary");
+  	rb_iv_set(obj3,"@hash",LONG2FIX(hash3));
+    rb_obj_freeze(obj3);    
+		hash3=hash3&((1<<20)-1);
+    while(obj2=cache_Append_AST->ary[hash3]){
+	   	if (!els_equal(rb_iv_get(obj3,"@name"),rb_iv_get(obj2,"@name"))) goto next2;if (!els_equal(rb_iv_get(obj3,"@exp"),rb_iv_get(obj2,"@exp"))) goto next2;if (!els_equal(rb_iv_get(obj3,"@ary"),rb_iv_get(obj2,"@ary"))) goto next2;
+	 	  break;
+      next2:;
+      hash3=(hash3+1)&((1<<20)-1);
+    }
+		cache_Append_AST->ary[hash3]=obj3;
+  	cache_Append_AST->ret[hash3]=obj3;
+	}
+	cache_Append_AST->ary[hash]=obj;
+	cache_Append_AST->ret[hash]=obj3;
+  gc_obj->ary[gc_obj->no++]=obj;
+  gc_obj->ary[gc_obj->no++]=obj3;
+	return obj3;
+}
+VALUE create2_Append_AST(VALUE self ,VALUE name,VALUE exp,VALUE ary){
+	int hash=0;
+	name=normalize_el(name);hash=11*hash+name;exp=normalize_el(exp);hash=11*hash+exp;ary=normalize_el(ary);hash=11*hash+ary;
+	hash=hash&((1<<20)-1);
+	VALUE obj2=cache_Append_AST->ary[hash];
+  if((int)obj2){
+    if (!els_equal(name,rb_iv_get(obj2,"@name"))) goto next;if (!els_equal(exp,rb_iv_get(obj2,"@exp"))) goto next;if (!els_equal(ary,rb_iv_get(obj2,"@ary"))) goto next;
+    hits_Append_AST++;
+    return cache_Append_AST->ret[hash];
+    next:;
+  }
+	VALUE obj3=rb_obj_alloc(rb_const_get(rb_cObject,rb_intern("Append_AST")));
+	rb_iv_set(obj3,"@name",name);rb_iv_set(obj3,"@exp",exp);rb_iv_set(obj3,"@ary",ary);
+	return normalize_Append_AST(obj3);
+}
 int hits_Args=0;int miss_Args=0; normalize_cache *cache_Args;
 VALUE normalize_Args(VALUE obj){int i;
 	int hash=0;int len,len2,len3;VALUE *els,*els2,*els3;VALUE obj2;
@@ -1464,7 +1521,9 @@ cache_Act=normalize_cache_init();
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Apply")),"normalize",normalize_Apply,0);
 	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Apply")),"create2",create2_Apply,4);cache_Args=normalize_cache_init();
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Args")),"normalize",normalize_Args,0);
-	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Args")),"create2",create2_Args,1);cache_Bind=normalize_cache_init();
+	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Args")),"create2",create2_Args,1);cache_Append_AST=normalize_cache_init();
+  rb_define_method(rb_const_get(rb_cObject,rb_intern("Append_AST")),"normalize",normalize_Append_AST,0);
+	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Append_AST")),"create2",create2_Append_AST,3);cache_Bind=normalize_cache_init();
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Bind")),"normalize",normalize_Bind,0);
 	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Bind")),"create2",create2_Bind,2);cache_Bnding=normalize_cache_init();
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Bnding")),"normalize",normalize_Bnding,0);
@@ -1511,5 +1570,5 @@ cache_Act=normalize_cache_init();
 
 }
 void normalize_stats(){
-	fprintf(profile_report,"normalize Act hits: %i miss: %i\n",hits_Act,miss_Act);fprintf(profile_report,"normalize Apply hits: %i miss: %i\n",hits_Apply,miss_Apply);fprintf(profile_report,"normalize Args hits: %i miss: %i\n",hits_Args,miss_Args);fprintf(profile_report,"normalize Bind hits: %i miss: %i\n",hits_Bind,miss_Bind);fprintf(profile_report,"normalize Bnding hits: %i miss: %i\n",hits_Bnding,miss_Bnding);fprintf(profile_report,"normalize CAct hits: %i miss: %i\n",hits_CAct,miss_CAct);fprintf(profile_report,"normalize Comment hits: %i miss: %i\n",hits_Comment,miss_Comment);fprintf(profile_report,"normalize Cut hits: %i miss: %i\n",hits_Cut,miss_Cut);fprintf(profile_report,"normalize Lambda hits: %i miss: %i\n",hits_Lambda,miss_Lambda);fprintf(profile_report,"normalize Global hits: %i miss: %i\n",hits_Global,miss_Global);fprintf(profile_report,"normalize Key hits: %i miss: %i\n",hits_Key,miss_Key);fprintf(profile_report,"normalize Local hits: %i miss: %i\n",hits_Local,miss_Local);fprintf(profile_report,"normalize Lookahead hits: %i miss: %i\n",hits_Lookahead,miss_Lookahead);fprintf(profile_report,"normalize Many hits: %i miss: %i\n",hits_Many,miss_Many);fprintf(profile_report,"normalize Or hits: %i miss: %i\n",hits_Or,miss_Or);fprintf(profile_report,"normalize Pass hits: %i miss: %i\n",hits_Pass,miss_Pass);fprintf(profile_report,"normalize Result hits: %i miss: %i\n",hits_Result,miss_Result);fprintf(profile_report,"normalize Rule hits: %i miss: %i\n",hits_Rule,miss_Rule);fprintf(profile_report,"normalize Seq hits: %i miss: %i\n",hits_Seq,miss_Seq);fprintf(profile_report,"normalize Stop hits: %i miss: %i\n",hits_Stop,miss_Stop);fprintf(profile_report,"normalize Strin hits: %i miss: %i\n",hits_Strin,miss_Strin);fprintf(profile_report,"normalize Switch_Char hits: %i miss: %i\n",hits_Switch_Char,miss_Switch_Char);fprintf(profile_report,"normalize Switch_Clas hits: %i miss: %i\n",hits_Switch_Clas,miss_Switch_Clas);
+	fprintf(profile_report,"normalize Act hits: %i miss: %i\n",hits_Act,miss_Act);fprintf(profile_report,"normalize Apply hits: %i miss: %i\n",hits_Apply,miss_Apply);fprintf(profile_report,"normalize Args hits: %i miss: %i\n",hits_Args,miss_Args);fprintf(profile_report,"normalize Append_AST hits: %i miss: %i\n",hits_Append_AST,miss_Append_AST);fprintf(profile_report,"normalize Bind hits: %i miss: %i\n",hits_Bind,miss_Bind);fprintf(profile_report,"normalize Bnding hits: %i miss: %i\n",hits_Bnding,miss_Bnding);fprintf(profile_report,"normalize CAct hits: %i miss: %i\n",hits_CAct,miss_CAct);fprintf(profile_report,"normalize Comment hits: %i miss: %i\n",hits_Comment,miss_Comment);fprintf(profile_report,"normalize Cut hits: %i miss: %i\n",hits_Cut,miss_Cut);fprintf(profile_report,"normalize Lambda hits: %i miss: %i\n",hits_Lambda,miss_Lambda);fprintf(profile_report,"normalize Global hits: %i miss: %i\n",hits_Global,miss_Global);fprintf(profile_report,"normalize Key hits: %i miss: %i\n",hits_Key,miss_Key);fprintf(profile_report,"normalize Local hits: %i miss: %i\n",hits_Local,miss_Local);fprintf(profile_report,"normalize Lookahead hits: %i miss: %i\n",hits_Lookahead,miss_Lookahead);fprintf(profile_report,"normalize Many hits: %i miss: %i\n",hits_Many,miss_Many);fprintf(profile_report,"normalize Or hits: %i miss: %i\n",hits_Or,miss_Or);fprintf(profile_report,"normalize Pass hits: %i miss: %i\n",hits_Pass,miss_Pass);fprintf(profile_report,"normalize Result hits: %i miss: %i\n",hits_Result,miss_Result);fprintf(profile_report,"normalize Rule hits: %i miss: %i\n",hits_Rule,miss_Rule);fprintf(profile_report,"normalize Seq hits: %i miss: %i\n",hits_Seq,miss_Seq);fprintf(profile_report,"normalize Stop hits: %i miss: %i\n",hits_Stop,miss_Stop);fprintf(profile_report,"normalize Strin hits: %i miss: %i\n",hits_Strin,miss_Strin);fprintf(profile_report,"normalize Switch_Char hits: %i miss: %i\n",hits_Switch_Char,miss_Switch_Char);fprintf(profile_report,"normalize Switch_Clas hits: %i miss: %i\n",hits_Switch_Clas,miss_Switch_Clas);
 }

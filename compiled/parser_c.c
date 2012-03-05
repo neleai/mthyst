@@ -84,8 +84,8 @@ static VALUE sy__Seq_lb_Bind_bbb6;
 static VALUE sy__Seq_lb_Cut_lb__3505;
 static VALUE sy__Strin_lb__lb__dq__b20e;
 static VALUE sy__Strin_lb__lb__qu__88c8;
-static VALUE sy___at_appends_975f;
-static VALUE sy___at_appends_9f26;
+static VALUE sy___at_appends_2058;
+static VALUE sy___at_appends_bfac;
 static VALUE sy___at_ary_eq__lb__rb_;
 static VALUE sy___at_ary_ff69;
 static VALUE sy___at_ary_lt__lt_Ar_59e3;
@@ -96,7 +96,7 @@ static VALUE sy___at_tmp_lt__lt_bi_b81c;
 static VALUE sy___dq__le__dq__pl_bind_567e;
 static VALUE sy___lb_bind_lb_1_rb__6281;
 static VALUE sy___lp_bind_lb_1_rb__a724;
-static VALUE sy__a_eq_autova_5b84;
+static VALUE sy__a_eq_autova_7fca;
 static VALUE sy__bind_lb_1_rb_;
 static VALUE sy__bind_lb_1_rb__dot__7b93;
 static VALUE sy__bind_lb_1_rb__dot__e879;
@@ -1803,7 +1803,7 @@ VALUE AmethystParser_collect(VALUE self ,VALUE a0) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     bind_aset(bind2,1,_ors);
-    it=rb_funcall(self,sy__a_eq_autova_5b84,1,bind2);
+    it=rb_funcall(self,sy__a_eq_autova_7fca,1,bind2);
     _ors=bind_aget(bind2,1);;
     __result=it;;
 
@@ -4005,7 +4005,7 @@ accept3:
                     bind_aset(bind2,1,_name);
                     bind_aset(bind2,2,_append);
                     bind_aset(bind2,3,_from);
-                    it=rb_funcall(self,sy___at_appends_975f,1,bind2);
+                    it=rb_funcall(self,sy___at_appends_2058,1,bind2);
                     _name=bind_aget(bind2,1);;
                     _append=bind_aget(bind2,2);;
                     _from=bind_aget(bind2,3);;
@@ -4096,7 +4096,7 @@ accept5:
                     bind_aset(bind2,1,_name);
                     bind_aset(bind2,2,_append);
                     bind_aset(bind2,3,_from);
-                    it=rb_funcall(self,sy___at_appends_975f,1,bind2);
+                    it=rb_funcall(self,sy___at_appends_2058,1,bind2);
                     _name=bind_aget(bind2,1);;
                     _append=bind_aget(bind2,2);;
                     _from=bind_aget(bind2,3);;
@@ -4163,7 +4163,7 @@ accept5:
                     it=rb_obj_clone(s__rb__0fbd);
                     bind_aset(bind2,1,_name);
                     bind_aset(bind2,2,_from);
-                    it=rb_funcall(self,sy___at_appends_9f26,1,bind2);
+                    it=rb_funcall(self,sy___at_appends_bfac,1,bind2);
                     _name=bind_aget(bind2,1);;
                     _from=bind_aget(bind2,2);;
                     _from=it;;
@@ -4438,7 +4438,7 @@ accept9:
                     bind_aset(bind2,1,_name);
                     bind_aset(bind2,2,_append);
                     bind_aset(bind2,3,_from);
-                    it=rb_funcall(self,sy___at_appends_975f,1,bind2);
+                    it=rb_funcall(self,sy___at_appends_2058,1,bind2);
                     _name=bind_aget(bind2,1);;
                     _append=bind_aget(bind2,2);;
                     _from=bind_aget(bind2,3);;
@@ -4529,7 +4529,7 @@ accept11:
                     bind_aset(bind2,1,_name);
                     bind_aset(bind2,2,_append);
                     bind_aset(bind2,3,_from);
-                    it=rb_funcall(self,sy___at_appends_975f,1,bind2);
+                    it=rb_funcall(self,sy___at_appends_2058,1,bind2);
                     _name=bind_aget(bind2,1);;
                     _append=bind_aget(bind2,2);;
                     _from=bind_aget(bind2,3);;
@@ -4596,7 +4596,7 @@ accept11:
                     it=rb_obj_clone(s__rb__0fbd);
                     bind_aset(bind2,1,_name);
                     bind_aset(bind2,2,_from);
-                    it=rb_funcall(self,sy___at_appends_9f26,1,bind2);
+                    it=rb_funcall(self,sy___at_appends_bfac,1,bind2);
                     _name=bind_aget(bind2,1);;
                     _from=bind_aget(bind2,2);;
                     _from=it;;
@@ -9470,7 +9470,7 @@ alt9_1:
             it=_x_2;
             _ors=it;;
             bind_aset(bind2,1,_ors);
-            it=rb_funcall(self,sy__a_eq_autova_5b84,1,bind2);
+            it=rb_funcall(self,sy__a_eq_autova_7fca,1,bind2);
             _ors=bind_aget(bind2,1);;
             __result_3=it;;
             it=__result_3;
@@ -10081,8 +10081,8 @@ void Init_parser_c() {
     sy__Seq_lb_Cut_lb__3505=rb_intern("_Seq_lb_Cut_lb__3505");
     sy__Strin_lb__lb__dq__b20e=rb_intern("_Strin_lb__lb__dq__b20e");
     sy__Strin_lb__lb__qu__88c8=rb_intern("_Strin_lb__lb__qu__88c8");
-    sy___at_appends_975f=rb_intern("__at_appends_975f");
-    sy___at_appends_9f26=rb_intern("__at_appends_9f26");
+    sy___at_appends_2058=rb_intern("__at_appends_2058");
+    sy___at_appends_bfac=rb_intern("__at_appends_bfac");
     sy___at_ary_eq__lb__rb_=rb_intern("__at_ary_eq__lb__rb_");
     sy___at_ary_ff69=rb_intern("__at_ary_ff69");
     sy___at_ary_lt__lt_Ar_59e3=rb_intern("__at_ary_lt__lt_Ar_59e3");
@@ -10093,7 +10093,7 @@ void Init_parser_c() {
     sy___dq__le__dq__pl_bind_567e=rb_intern("__dq__le__dq__pl_bind_567e");
     sy___lb_bind_lb_1_rb__6281=rb_intern("__lb_bind_lb_1_rb__6281");
     sy___lp_bind_lb_1_rb__a724=rb_intern("__lp_bind_lb_1_rb__a724");
-    sy__a_eq_autova_5b84=rb_intern("_a_eq_autova_5b84");
+    sy__a_eq_autova_7fca=rb_intern("_a_eq_autova_7fca");
     sy__bind_lb_1_rb_=rb_intern("_bind_lb_1_rb_");
     sy__bind_lb_1_rb__dot__7b93=rb_intern("_bind_lb_1_rb__dot__7b93");
     sy__bind_lb_1_rb__dot__e879=rb_intern("_bind_lb_1_rb__dot__e879");
@@ -10148,5 +10148,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('e0ae56251f2a8297e938812bf435b78c')");
+    rb_eval_string("testversionparser('a695fb9a5ca31fa312cbfc836432535c')");
 }

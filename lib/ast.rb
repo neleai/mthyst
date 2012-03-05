@@ -23,7 +23,7 @@ makeclasses(AmethystAST,
 		:Relabel,
     :Contextual_Argument,:Contextual_Return,
 		[:Or,:has_cut],
-		:Seq_AST,:Or_AST
+		:Seq_AST,:Or_AST,[:Append_AST,:name,:exp]
 )
 makeclasses(Switch,:Switch_Char,:Switch_Clas,:Switch_Or)
 class Enter;end;class Append;end;class PureAct;end;class Pred;end;
@@ -124,7 +124,7 @@ norm.puts "
 		}
 	}
 "
-[Act,Apply,Args,Bind,Bnding,CAct,Comment,Cut,Lambda,Global,Key,Local,Lookahead,Many,Or,Pass,Result,Rule,Seq,Stop,Strin,Switch_Char,Switch_Clas,Switch_Or].each{|e| 
+[Act,Apply,Append_AST,Args,Bind,Bnding,CAct,Comment,Cut,Lambda,Global,Key,Local,Lookahead,Many,Or,Pass,Result,Rule,Seq,Stop,Strin,Switch_Char,Switch_Clas,Switch_Or].each{|e| 
 by="[#{e.attributes*","}]"
 by="ary" if by=="[ary]"
 equalize_by(e,by)
@@ -186,7 +186,7 @@ VALUE create2_#{e}(VALUE self #{e.attributes.map{|el| ",VALUE #{el}"}*""}){
 	return normalize_#{e}(obj3);
 }"
 }
-cn=[Act,Apply,Args,Bind,Bnding,CAct,Comment,Cut,Lambda,Global,Key,Local,Lookahead,Many,Or,Pass,Result,Rule,Seq,Stop,Strin,Switch_Char,Switch_Clas]
+cn=[Act,Apply,Args,Append_AST,Bind,Bnding,CAct,Comment,Cut,Lambda,Global,Key,Local,Lookahead,Many,Or,Pass,Result,Rule,Seq,Stop,Strin,Switch_Char,Switch_Clas]
 norm.puts "
 normalize_cache * normalize_cache_init(){
        normalize_cache *b;
@@ -279,6 +279,10 @@ class Bind
 		ary[0]
 	end
 end
+def Append_AST.[](name,exp)
+  Append_AST.create({:name=>name,:exp=>exp})
+end
+
 def Append.[](name,expr)
 	Bind[name,expr,true]
 end

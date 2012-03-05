@@ -14,6 +14,8 @@ puts s.inspect
 
 r= Syntax_Highligth.new.parse(:root,s)
 f=File.new("test.html","w")
+def synchronize_whitespace(s,trans)
+end
 puts r.inspect
 f.puts "<body bgcolor=black> <pre><div style=\"color:white\">"
 f.puts(r)

@@ -2,6 +2,10 @@ $ids=0
 def color_by(text,color)
   "<span style=\"color:#{color}\">#{text}</span>"
 end
+def highligh(text,id)
+  "<span onmouseover='document.getElementById(\"id#{id}\").style.background=\"green\";'
+         onmouseout ='document.getElementById(\"id#{id}\").style.background=\"none\";'>#{text}</span>"
+end
 amethyst AST2Amethyst {
   trans = Or[  trans*:ary  ]            ->     ary*"|"
         | Seq[ trans*:ary  ]            ->     ary*" "
@@ -17,8 +21,7 @@ amethyst Syntax_Highligth {
              ]
 
   trans = Or_AST[  trans*:ary  ]        {
- $ids+=1;"<span id=id#{$ids}>#{ary*"<span onmouseover='document.getElementById(\"id#{$ids}\").style.background=\"green\";' 
-                                   onmouseout ='document.getElementById(\"id#{$ids}\").style.background=\"black\";'>|</span>"}</span>"
+ $ids+=1;"<span id=id#{$ids}>#{ary*highligh("|",$ids)}</span>"
 }
         | Parenthesis[ trans:t ]           -> "(#{t })"
         | Seq[ trans*:ary  ]               -> " #{ary*" "} "
@@ -26,7 +29,7 @@ amethyst Syntax_Highligth {
         | Apply[ [ "seq" ] CAct[.:str] ]   ->  "'#{str}'"
         | Apply[ ["token"] CAct[.:str] ]   -> "\"#{str}\""
         | Apply[ ["regch"]  Act[.:str] ]   -> "&lt;#{str[2...-2]}&gt;"
-        | Apply[ .:name trans2+:args ]     -> color_by(name+"(","blue")+args*color_by(",","blue")+color_by(")","blue")
+        | Apply[ .:name trans2+:args ]     ->  $ids+=1;"<span id=id#{$ids}>"+highligh( color_by(name+"(","blue"),$ids)+args*color_by(",","blue")+highligh(color_by(")","blue"),$ids)+"</span>"
         | Apply[ .:name ]                  -> color_by(name,"blue")
         | Bind[ trans:expr @name:name ]    -> "#{expr}#{color_by(":#{name[0]}","red")}"
 
