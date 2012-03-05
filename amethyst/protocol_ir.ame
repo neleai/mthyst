@@ -15,7 +15,7 @@ amethyst Protocol_IR{
           | Apply[ :name Act*:args]
           | local
           | Act[ @pred (String | variable )*]
-          | Cact[ :ruby_obj ]
+          | CAct[ :ruby_obj ]
 
   variable= local
           | Lambda[expr]

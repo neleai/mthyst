@@ -80,7 +80,7 @@ amethyst AmethystParser_Highligth {
               | '@>'     name:name             -> Contextual_Argument[name]
               | '@<'     name:name             -> Contextual_Return[name] 
   
-  key=withcolor("green",`key2`)
+  key=withcolor("#40a040",`key2`)
 
   name           =  (<_a-zA-Z> <_a-zA-Z0-9>*)[]:{it.join}
   className      =  (    <A-Z> <_a-zA-Z0-9>*)[]:{it.join}

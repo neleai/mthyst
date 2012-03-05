@@ -7,11 +7,10 @@ Compiler::compile("amethyst/#{f}.ame","compiled/#{f}.rb",f)
 require "./compiled/#{f}"
 }
 
-wrap="amethyst Foo{
-  foo=foo|bar:x (bla | as:[foo] 'xxx') baz(4,`a|b`) \"yyy\" <abc> {4+2}
-  bar= foo:bar baz[ aa ] {2+2}=>foo
-}"
-wrap=File.new(ARGV[0]).read
+Dir["amethyst/*.ame"].sort.each{|fi|
+puts fi
+
+wrap=File.new(fi).read
 $colors=Hash.new{|h,k| h[k]=[]}
 
 $group_mark=Hash.new{|h,k| h[k]=[]}
@@ -38,7 +37,9 @@ wrap.size.times{|i|
 
   r<<c
 }
-f=File.new(ARGV[1],"w")
+f=File.new("highligthed/#{File.basename(fi)}.html","w")
 f.print "<body bgcolor=black> <pre><div style=\"color:white\">"
 f.puts(r)
 f.puts "</pre></div></body>"
+
+}
