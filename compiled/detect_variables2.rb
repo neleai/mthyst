@@ -30,12 +30,18 @@ end
 def _Append_lb_s_f381(bind)
 Append[src.name,src.exp]
 end
+def _Enter_lb_sr_4871(bind)
+Enter[src.from,src.to]
+end
 def _Many_dot_cre_6376(bind)
 Many.create({:ary=>[@stop ? bind[1] : Or[bind[1],Stop[]] ] }) 
 end
 def _Or_lb__ti_bind_5a27(bind)
 Or[*bind[1]]
 
+end
+def _Pass_lb_src_99d4(bind)
+Pass[src.from,src.to]
 end
 def _Placehol_6875(bind)
 Placeholder
@@ -187,15 +193,15 @@ end
 
 
 def detect_variables2_compiled_by
-'20294a5dcd3b249be0ed3e1719c2d47d'
+'422c53e68c8e4a46272944df6fb82897'
 end
 def detect_variables2_source_hash
-'7a28d354f2036a6c516855e49ba04b41'
+'6d877ca0a1b48aa3a0d531b189243315'
 end
 def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'5c5c05fbba244acc036e4a8d4ee42d7e'
+'649d3d6e505ebef94d89caa3c05bd8d8'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_variables2_c"

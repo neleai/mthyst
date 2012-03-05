@@ -63,8 +63,8 @@ static VALUE sy__Bind_lb_loc_37df;
 static VALUE sy__Comment_lb__ed6f;
 static VALUE sy__Contextu_32ad;
 static VALUE sy__Contextu_4e8d;
-static VALUE sy__Enter_lb_Ap_7d1f;
-static VALUE sy__Enter_lb_bi_9246;
+static VALUE sy__Enter_AS_06e8;
+static VALUE sy__Enter_AS_3242;
 static VALUE sy__Global_lb_b_0216;
 static VALUE sy__Grammar_dot__a510;
 static VALUE sy__Key_lb_bind_5e9f;
@@ -75,7 +75,7 @@ static VALUE sy__Nested_lb_b_1ac2;
 static VALUE sy__Or_AST_dot_c_19e2;
 static VALUE sy__Or_AST_lb_b_0657;
 static VALUE sy__Parenthe_261b;
-static VALUE sy__Pass_lb_bin_2f93;
+static VALUE sy__Pass_AST_6bd0;
 static VALUE sy__Pred_lb_bin_ae38;
 static VALUE sy__Result_lb__le__a3b4;
 static VALUE sy__Rule_dot_cre_3767;
@@ -4187,7 +4187,7 @@ accept5:
                 _e=it;;
                 bind_aset(bind2,1,_from);
                 bind_aset(bind2,2,_e);
-                it=rb_funcall(self,sy__Pass_lb_bin_2f93,1,bind2);
+                it=rb_funcall(self,sy__Pass_AST_6bd0,1,bind2);
                 _from=bind_aget(bind2,1);;
                 _e=bind_aget(bind2,2);;
                 _from=it;;
@@ -4229,7 +4229,7 @@ accept5:
                 it=rb_obj_clone(s__rb__0fbd);
                 bind_aset(bind2,1,_from);
                 bind_aset(bind2,2,_e);
-                it=rb_funcall(self,sy__Enter_lb_bi_9246,1,bind2);
+                it=rb_funcall(self,sy__Enter_AS_3242,1,bind2);
                 _from=bind_aget(bind2,1);;
                 _e=bind_aget(bind2,2);;
                 _from=it;;
@@ -4620,7 +4620,7 @@ accept11:
                 _e=it;;
                 bind_aset(bind2,1,_from);
                 bind_aset(bind2,2,_e);
-                it=rb_funcall(self,sy__Pass_lb_bin_2f93,1,bind2);
+                it=rb_funcall(self,sy__Pass_AST_6bd0,1,bind2);
                 _from=bind_aget(bind2,1);;
                 _e=bind_aget(bind2,2);;
                 _from=it;;
@@ -4662,7 +4662,7 @@ accept11:
                 it=rb_obj_clone(s__rb__0fbd);
                 bind_aset(bind2,1,_from);
                 bind_aset(bind2,2,_e);
-                it=rb_funcall(self,sy__Enter_lb_bi_9246,1,bind2);
+                it=rb_funcall(self,sy__Enter_AS_3242,1,bind2);
                 _from=bind_aget(bind2,1);;
                 _e=bind_aget(bind2,2);;
                 _from=it;;
@@ -9894,7 +9894,7 @@ alt14_3:
         }
         it=rb_obj_clone(s__rb__0fbd);
         bind_aset(bind2,1,_e);
-        it=rb_funcall(self,sy__Enter_lb_Ap_7d1f,1,bind2);
+        it=rb_funcall(self,sy__Enter_AS_06e8,1,bind2);
         _e=bind_aget(bind2,1);;
         __result=it;;
 
@@ -10060,8 +10060,8 @@ void Init_parser_c() {
     sy__Comment_lb__ed6f=rb_intern("_Comment_lb__ed6f");
     sy__Contextu_32ad=rb_intern("_Contextu_32ad");
     sy__Contextu_4e8d=rb_intern("_Contextu_4e8d");
-    sy__Enter_lb_Ap_7d1f=rb_intern("_Enter_lb_Ap_7d1f");
-    sy__Enter_lb_bi_9246=rb_intern("_Enter_lb_bi_9246");
+    sy__Enter_AS_06e8=rb_intern("_Enter_AS_06e8");
+    sy__Enter_AS_3242=rb_intern("_Enter_AS_3242");
     sy__Global_lb_b_0216=rb_intern("_Global_lb_b_0216");
     sy__Grammar_dot__a510=rb_intern("_Grammar_dot__a510");
     sy__Key_lb_bind_5e9f=rb_intern("_Key_lb_bind_5e9f");
@@ -10072,7 +10072,7 @@ void Init_parser_c() {
     sy__Or_AST_dot_c_19e2=rb_intern("_Or_AST_dot_c_19e2");
     sy__Or_AST_lb_b_0657=rb_intern("_Or_AST_lb_b_0657");
     sy__Parenthe_261b=rb_intern("_Parenthe_261b");
-    sy__Pass_lb_bin_2f93=rb_intern("_Pass_lb_bin_2f93");
+    sy__Pass_AST_6bd0=rb_intern("_Pass_AST_6bd0");
     sy__Pred_lb_bin_ae38=rb_intern("_Pred_lb_bin_ae38");
     sy__Result_lb__le__a3b4=rb_intern("_Result_lb__le__a3b4");
     sy__Rule_dot_cre_3767=rb_intern("_Rule_dot_cre_3767");
@@ -10148,5 +10148,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('a695fb9a5ca31fa312cbfc836432535c')");
+    rb_eval_string("testversionparser('9a43c120ba89e739edae350637552213')");
 }

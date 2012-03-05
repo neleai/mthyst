@@ -62,12 +62,12 @@ def _Contextu_4e8d(bind)
 Contextual_Argument[bind[1]]
 
 end
-def _Enter_lb_Ap_7d1f(bind)
-Enter[Apply["anything"],bind[1]]
+def _Enter_AS_06e8(bind)
+Enter_AST[Apply["anything"],bind[1]]
 
 end
-def _Enter_lb_bi_9246(bind)
-Enter[bind[1],bind[2]]
+def _Enter_AS_3242(bind)
+Enter_AST[bind[1],bind[2]]
 
 end
 def _Global_lb_b_0216(bind)
@@ -107,8 +107,8 @@ end
 def _Parenthe_261b(bind)
 Parenthesis[bind[1]]
 end
-def _Pass_lb_bin_2f93(bind)
-Pass[bind[1],bind[2]] 
+def _Pass_AST_6bd0(bind)
+Pass_AST[bind[1],bind[2]] 
 
 end
 def _Pred_lb_bin_ae38(bind)
@@ -215,15 +215,15 @@ class AmethystParser < Amethyst
 end
 
 def parser_compiled_by
-'20294a5dcd3b249be0ed3e1719c2d47d'
+'422c53e68c8e4a46272944df6fb82897'
 end
 def parser_source_hash
-'7c6a4dbb84a2c54f0fa3d1a0a8c9feea'
+'5e9de11a575325e587469b61b7298838'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'a695fb9a5ca31fa312cbfc836432535c'
+'9a43c120ba89e739edae350637552213'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/parser_c"

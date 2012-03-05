@@ -23,7 +23,7 @@ makeclasses(AmethystAST,
 		:Relabel,
     :Contextual_Argument,:Contextual_Return,
 		[:Or,:has_cut],
-		:Seq_AST,:Or_AST,[:Append_AST,:name,:exp]
+		:Seq_AST,:Or_AST,[:Append_AST,:name,:exp],[:Pass_AST,:from,:to],[:Enter_AST,:from,:to]
 )
 makeclasses(Switch,:Switch_Char,:Switch_Clas,:Switch_Or)
 class Enter;end;class Append;end;class PureAct;end;class Pred;end;
@@ -282,7 +282,12 @@ end
 def Append_AST.[](name,exp)
   Append_AST.create({:name=>name,:exp=>exp})
 end
-
+def Pass_AST.[](from,to)
+  Pass_AST.create(:from=>from,:to=>to)
+end
+def Enter_AST.[](from,to)
+  Enter_AST.create(:from=>from,:to=>to)
+end
 def Append.[](name,expr)
 	Bind[name,expr,true]
 end

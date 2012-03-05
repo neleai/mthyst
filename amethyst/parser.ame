@@ -26,8 +26,8 @@ amethyst AmethystParser {
              | postfixed
 
   postfixed =  term:from 
-                    (~_     (  '=>'     term:e           -> Pass[from,e] 
-                            | '['      expression:e "]" -> Enter[from,e]
+                    (~_     (  '=>'     term:e           -> Pass_AST[from,e] 
+                            | '['      expression:e "]" -> Enter_AST[from,e]
                             | <+*>:one -> Many[from,one=="+"]
                             | '?'      -> Or_AST[from,Apply["empty"]]
                             | ':' '[' (key | name):name ']' ->  @@appends<< local(name); Append_AST[local(name),from]
@@ -46,7 +46,7 @@ amethyst AmethystParser {
         | cases
         | call
         | &<.:> '.'? -> Apply["anything"]
-        | '[' expression:e "]" -> Enter[Apply["anything"],e]
+        | '[' expression:e "]" -> Enter_AST[Apply["anything"],e]
         | key:{Act[it]}
         | host_expr
         | '"'  until('"' ):s -> Apply["token" ,quote(s)]
