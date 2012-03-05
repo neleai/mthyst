@@ -2,9 +2,12 @@ $ids=0
 def color_by(text,color)
   "<span style=\"color:#{color}\">#{text}</span>"
 end
-def highligh(text,id)
-  "<span onmouseover='document.getElementById(\"id#{id}\").style.background=\"green\";'
+def highligh(id,text)
+  "<span onmouseover='document.getElementById(\"id#{id}\").style.background=\"#002020\";'
          onmouseout ='document.getElementById(\"id#{id}\").style.background=\"none\";'>#{text}</span>"
+end
+def highlighted(id,text)
+  "<span id=id#{id}>#{text}</span>"
 end
 amethyst AST2Amethyst {
   trans = Or[  trans*:ary  ]            ->     ary*"|"
@@ -17,21 +20,23 @@ amethyst Syntax_Highligth {
   root = ( Grammar[ {puts @self.inspect} @rules=>[rule*]:rules -> "amethyst #{@name} < #{@parent} {\n #{rules*""} }"
            ] | .)*:{it*""}
   
-  rule = Rule[ {puts @self.inspect} {@body[0]}=>trans:body  -> "#{@name} = #{body}\n"
+  rule = Rule[ {puts @self.inspect} {@body}=>trans:body  -> "#{@name} = #{body}\n"
              ]
 
   trans = Or_AST[  trans*:ary  ]        {
- $ids+=1;"<span id=id#{$ids}>#{ary*highligh("|",$ids)}</span>"
+ $ids+=1;highlighted($ids,"#{ary*highligh($ids,"|")}")
 }
-        | Parenthesis[ trans:t ]           -> "(#{t })"
-        | Seq[ trans*:ary  ]               -> " #{ary*" "} "
+        | Append_AST[ (@exp=>trans):expr @name:name]  -> "#{expr}#{color_by(":[#{name[0]}]","red")}"
+        | Parenthesis[ trans:t ]           -> $ids+=1; highlighted($ids,highligh($ids,"(")+t+ highligh($ids,")"))
+        | Seq[ trans*:ary  ]               -> puts "seq",ary.inspect; " #{ary*" "} "
         | Act[ Args[.*:ary]      ]         -> color_by("{#{ary*""}}","brown")
+        | CAct[ .* ]                       -> "" 
         | Apply[ [ "seq" ] CAct[.:str] ]   ->  "'#{str}'"
         | Apply[ ["token"] CAct[.:str] ]   -> "\"#{str}\""
         | Apply[ ["regch"]  Act[.:str] ]   -> "&lt;#{str[2...-2]}&gt;"
-        | Apply[ .:name trans2+:args ]     ->  $ids+=1;"<span id=id#{$ids}>"+highligh( color_by(name+"(","blue"),$ids)+args*color_by(",","blue")+highligh(color_by(")","blue"),$ids)+"</span>"
+        | Apply[ .:name trans2+:args ]     ->  $ids+=1;highlighted($ids,highligh($ids, color_by(name+"(","blue"))+args*color_by(",","blue")+highligh($ids,color_by(")","blue")))
         | Apply[ .:name ]                  -> color_by(name,"blue")
-        | Bind[ trans:expr @name:name ]    -> "#{expr}#{color_by(":#{name[0]}","red")}"
+        | Bind[ trans:expr @name:name ]    -> expr + (name[0]=="_result" ? "" :  color_by(":#{name[0]}","red"))
 
-  trans2 = Act[ Args[ (Lambda[.:x {x[0]}=>trans:t {color_by("`","yellow")+ "#{t}"+color_by("`","yellow")} ]  | .)*:ary]      ] -> color_by(ary*"","brown")
+  trans2 = Act[ Args[ (Lambda[.:x {x[0]}=>trans:t {$ids+=1;bt=highligh($ids,color_by("`","yellow")); highlighted($ids,"#{bt}#{t}#{bt}")} ]  | .)*:ary]      ] -> color_by(ary*"","brown")
 }
