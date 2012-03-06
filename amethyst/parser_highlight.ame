@@ -25,7 +25,7 @@ amethyst AmethystParser_Highligth {
 "{" rule*:rules "}"  @Grammar
   
   rule = {@@locals=[];@@appends=[];@@bnding=Bnding[]} {@@bnding}:bnding  
-         "" name:name  ruleargs:args "=" expression:body  
+         "" withcolor("red",`name:name`) withcolor("#702020",`ruleargs:args`) "=" expression:body  
           {Bind[local("_result"),body]}:body {@@locals.uniq}:locals {body=Seq[{:ary=>(@@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[body])}]; }   @Rule
 
   
@@ -35,8 +35,8 @@ amethyst AmethystParser_Highligth {
   sequence =  (nr ","? "" prefixed)*:ary  @Seq
   nr = ~("" name argsOpt "=")
 
-  prefixed   = withcolor("yellow",`<&~>:neg`) inline_host_expr:expr-> Pred[expr[0],neg=="~"]
-             | withcolor("yellow",`<&~>:neg`) prefixed:m    -> Lookahead[m,neg=="~"]
+  prefixed   = withcolor("yellow",`<&~>:neg`){$colors[src][pos]="yellow"} inline_host_expr:expr {$colors[src][pos-1]="yellow"} -> Pred[expr[0],neg=="~"]
+             | withcolor("yellow",`<&~>:neg`){$colors[src][pos]="yellow"} prefixed:m            {$colors[src][pos-1]="yellow"} -> Lookahead[m,neg=="~"]
              | postfixed
 
   postfixed =  term:from 
@@ -53,14 +53,14 @@ amethyst AmethystParser_Highligth {
   
   cases = withcolor("red",` className:clas`)  ~'::'                      -> Apply["clas",clas]
         | ((number ('...'|'..') number)[]:{it.join} | number):num -> Apply["member",num.to_s]
-        | '<'  until('>' ):s -> Apply["regch","/["+s+"]/"]
+        | {group_new}:g group_hl(g,` group_mark(g,`'<'`) until(`group_mark(g,`'>'`)`):s `) -> Apply["regch","/["+s+"]/"]
 
   term  = 'nested(' expression:expr ")" -> Nested[expr]
         | 'break' -> Seq[Cut[],Stop[]]
         | cases
-        | withcolor("red",`call`)
+        | call
         | &<.:> '.'? -> Apply["anything"]
-        | withcolor("blue",` '[' expression:e "]"`) -> Enter_AST[Apply["anything"],e]
+        | {group_new}:g group_hl(g,` group_mark(g,`withcolor("blue",` '['`)`) expression:e "" group_mark(g,`withcolor("blue",`']'`)`) `)   -> Enter_AST[Apply["anything"],e]
         | key:{Act[it]}
         | host_expr
         | {group_new}:g group_hl(g,` group_mark(g,`'"'`)  until(`group_mark(g,`'"'`)`):s  `) -> Apply["token" ,quote(s)]
@@ -71,8 +71,8 @@ amethyst AmethystParser_Highligth {
 
   collect(ors) = -> a=autovar; Seq[Or_AST[{:ary=>ors.ary.map{|ands| Seq[{:ary=>[Bind[a,Act["[]"]]]+ands.ary.map{|expr| Append_AST[a,expr]}}]}}],a]
   
-  call = className:klas '::' name:name argsOpt:arg -> Apply[[klas,name],arg]
-       |                     name:name argsOpt:arg -> Apply[name,arg]
+  call = withcolor("red",`className:klas '::' name:name`) withcolor("#702020",` argsOpt:arg`) -> Apply[[klas,name],arg]
+       |               withcolor("red",`name:name`)   withcolor("#702020",`argsOpt:arg`) -> Apply[name,arg]
  
   key2        = '@' className:name             -> Result[{:name=>name}]
               | '@'      name:name argsOpt:arg -> Key[name,arg]
@@ -103,7 +103,7 @@ amethyst AmethystParser_Highligth {
 
   args(o,c) = _args(o,c):r -> Args[{:ary=>([o]+r+[c])}]
 
-  _args(o,c) = seq(o) "" rubyarg*:r seq(c) -> r
+  _args(o,c) = {group_new}:g group_hl(g,` group_mark(g,`seq(o)`) "" rubyarg*:r group_mark(g,`seq(c)`) `) -> r
     
   rubyarg  = {group_new}:g group_hl(g,` group_mark(g,`withcolor("yellow",`'`'`)`) expression:e "" group_mark(g,`withcolor("yellow",`'`'`)`) `)-> Lambda[Bind[local("_result"),e]]
            | args('(',')')  | args('[',']') | args('{','}')
