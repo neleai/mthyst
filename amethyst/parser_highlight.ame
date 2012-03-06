@@ -41,7 +41,7 @@ amethyst AmethystParser_Highligth {
 
   postfixed =  term:from 
                     (~_     ({group_new}:g group_hl(g,` group_mark(g,`withcolor("blue",`'=>'`)`)     term:e  `)         -> Pass_AST[from,e] 
-                            |{group_new}:g group_hl(g,` withcolor("blue",` group_mark(g,`'['`)      expression:e group_mark(g,`"]"`)`)`) -> Enter_AST[from,e]
+                            |{group_new}:g group_hl(g,` withcolor("blue",` group_mark(g,`'['`)`)      expression:e "" withcolor("blue",`group_mark(g,`']'`)`)`) -> Enter_AST[from,e]
                             | withcolor("white",`<+*>:one`) -> Many[from,one=="+"]
                             | withcolor("white",`'?'`)      -> Or_AST[from,Apply["empty"]]
                             | withcolor("orange",`':' '[' (key | name):name ']'`) ->  @@appends<< local(name); Append_AST[local(name),from]
@@ -51,7 +51,7 @@ amethyst AmethystParser_Highligth {
                     ):from  )* {from}
 
   
-  cases = className:clas  ~'::'                      -> Apply["clas",clas]
+  cases = withcolor("red",` className:clas`)  ~'::'                      -> Apply["clas",clas]
         | ((number ('...'|'..') number)[]:{it.join} | number):num -> Apply["member",num.to_s]
         | '<'  until('>' ):s -> Apply["regch","/["+s+"]/"]
 
@@ -66,7 +66,7 @@ amethyst AmethystParser_Highligth {
         | {group_new}:g group_hl(g,` group_mark(g,`'"'`)  until(`group_mark(g,`'"'`)`):s  `) -> Apply["token" ,quote(s)]
         | {group_new}:g group_hl(g,` group_mark(g,`'\''`) until(`group_mark(g,`'\''`)`):s `) -> Apply["seq"   ,quote(s)]
         | withcolor("gray",`'#'  line:s`)        -> Comment[s]
-        | {group_new}:g group_hl(g,` group_mark(g,`'('`) expression:x  group_mark(g,`")"`) ( '[]'  collect(x) | {Parenthesis[x]} )   `)
+        | {group_new}:g group_hl(g,` group_mark(g,`'('`) expression:x  "" group_mark(g,`')'`) ( '[]'  collect(x) | {Parenthesis[x]} )   `)
  
 
   collect(ors) = -> a=autovar; Seq[Or_AST[{:ary=>ors.ary.map{|ands| Seq[{:ary=>[Bind[a,Act["[]"]]]+ands.ary.map{|expr| Append_AST[a,expr]}}]}}],a]
@@ -105,7 +105,7 @@ amethyst AmethystParser_Highligth {
 
   _args(o,c) = seq(o) "" rubyarg*:r seq(c) -> r
     
-  rubyarg  = {group_new}:g group_hl(g,` group_mark(g,`withcolor("yellow",`'`'`)`) expression:e group_mark(g,`withcolor("yellow",`"`"`)`) `)-> Lambda[Bind[local("_result"),e]]
+  rubyarg  = {group_new}:g group_hl(g,` group_mark(g,`withcolor("yellow",`'`'`)`) expression:e "" group_mark(g,`withcolor("yellow",`'`'`)`) `)-> Lambda[Bind[local("_result"),e]]
            | args('(',')')  | args('[',']') | args('{','}')
            | '"' interpolated("\""):s      -> Strin[['"']+s+['"']]
            | <a-z0-9_>:e '<<' -> [e,'<<']
