@@ -1,4 +1,5 @@
 #@Or_AST and @Seq are necessary for collect
+$agram=0
 class AmethystParser < Amethyst
   memoize "name","argsOpt"
   #use_implicit_variables
@@ -173,6 +174,10 @@ end
 def __dq__le__dq__pl_bind_567e(bind)
 "{"+bind[1]+"}"
 end
+def __lb_bind_lb_1_rb__5be3(bind)
+[bind[1],"class #{bind[1].name};end;#{bind[1].name}.new"]
+
+end
 def __lb_bind_lb_1_rb__6281(bind)
 [bind[1],'<<']
 
@@ -204,6 +209,15 @@ end
 def _local_lp_bi_196b(bind)
 local(bind[1]) 
 end
+def _pos_5e0b(bind)
+pos
+end
+def _puts_sp__dq_au_5e84(bind)
+puts "aueton"
+end
+def _x_eq__dq_ameth_2569(bind)
+x="amethyst Anon#{$agram+=1} { expr=#{src[bind[1]..(pos-2)]} }";puts x.inspect;x
+end
 
 end
 
@@ -215,15 +229,15 @@ class AmethystParser < Amethyst
 end
 
 def parser_compiled_by
-'4e9f5075c3d6460913d3b8d5c23503bf'
+'199487c48f4551515daaf669f9a3e225'
 end
 def parser_source_hash
-'9d1609bc8365844f40019a5b39027633'
+'05cd02ad33d407a6268d4957f449fbc4'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'87486cf50be52acc220587fdb2b42b42'
+'163e1a2227c20f745e8fbe2fe6d55472'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/parser_c"

@@ -1,3 +1,6 @@
+
+` foo | bar `
+
 class Tests < Amethyst
   use_implicit_variables
   use_contextual_returns

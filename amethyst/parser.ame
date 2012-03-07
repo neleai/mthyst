@@ -1,12 +1,14 @@
 #@Or_AST and @Seq are necessary for collect
+$agram=0
 class AmethystParser < Amethyst
   memoize "name","argsOpt"
   #use_implicit_variables
 end
 amethyst AmethystParser {
-  file     = ( (~'amethyst'   . )+:{it.join}
+  file     = ( (~'amethyst' ~'`'   . )+:{it.join}
              | grammar
-             | "`" expression "`"
+             | "`" {pos}:oldpos {puts "aueton"} expression:e "`" {x="amethyst Anon#{$agram+=1} { expr=#{src[oldpos..(pos-2)]} }";puts x.inspect;x}=>[ grammar:g ]
+                                                 -> [g,"class #{g.name};end;#{g.name}.new"]
              )*
 
   grammar = "amethyst" "" name:name ("<" "" name  |{"Amethyst"}):parent

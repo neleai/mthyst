@@ -16,9 +16,10 @@ amethyst AmethystParser_Highligth {
   
   group_hl(no,lam)   = {pos}:oldpos apply(lam):r {$group_start[src][oldpos]<<no;$group_end[src][pos]<<no;r}
 
-  file     = ( (~'amethyst'   . )+:{it.join}
+  file     = ( 
+               "`" {@@locals=[];@@append=[];@@bnding=2} expression '`'
+             | (~'amethyst'  ~'`'  . )+:{it.join}
              | grammar
-             | "`" expression '`'
              )*
 
   grammar = withcolor("red",` "amethyst"`) "" name:name ("<" "" name  |{"Amethyst"}):parent  

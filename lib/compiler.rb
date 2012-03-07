@@ -169,6 +169,7 @@ class <<Compiler
 		else
 		e
 		end}.join
+    puts pre.inspect
 		eval("module Foo\n#{pre}\nend") 
 
 		debug_print tree

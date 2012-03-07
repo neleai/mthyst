@@ -2,7 +2,7 @@
 #include "memo.c"
 VALUE cls_Analyze_Variables2;
 VALUE AmethystCore_anything(VALUE self );
-VALUE Analyze_Variables2_flat(VALUE self );
+VALUE Analyze_Variables2_flatten(VALUE self );
 VALUE Analyze_Variables2_itrans(VALUE self );
 VALUE Analyze_Variables2_root(VALUE self );
 VALUE Analyze_Variables2_traverse(VALUE self );
@@ -51,7 +51,7 @@ static VALUE sy__src_dot_pure_41d4;
 static VALUE sy__src_dot_rule_5acf;
 static VALUE sy__src_dot_rule_a719;
 static VALUE sy__vars_eq_bin_7a4d;
-static VALUE sy_flat;
+static VALUE sy_flatten;
 static VALUE sy_root;
 static VALUE sy_traverse;
 static VALUE sy_traverse_item;
@@ -61,7 +61,7 @@ VALUE profile_report_Analyze_Variables2(VALUE self) {
     Data_Get_Struct(self,cstruct,ptr);
     return Qnil;
 }
-VALUE Analyze_Variables2_flat(VALUE self ) {
+VALUE Analyze_Variables2_flatten(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,__result;
     VALUE bind2=bind_new2(16);
@@ -103,7 +103,7 @@ alt2_1:
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
-            it=rb_funcall(self,sy_flat,0);
+            it=rb_funcall(self,sy_flatten,0);
             _autovar_3=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) {
@@ -189,7 +189,7 @@ alt4_1:
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
-            it=rb_funcall(self,sy_flat,0);
+            it=rb_funcall(self,sy_flatten,0);
             _autovar_6=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) {
@@ -1844,7 +1844,7 @@ accept8:
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        it=rb_funcall(self,sy_flat,0);
+        it=rb_funcall(self,sy_flatten,0);
         _a=it;;
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
@@ -3518,12 +3518,12 @@ void Init_detect_variables2_c() {
     sy__src_dot_rule_5acf=rb_intern("_src_dot_rule_5acf");
     sy__src_dot_rule_a719=rb_intern("_src_dot_rule_a719");
     sy__vars_eq_bin_7a4d=rb_intern("_vars_eq_bin_7a4d");
-    sy_flat=rb_intern("flat");
+    sy_flatten=rb_intern("flatten");
     sy_root=rb_intern("root");
     sy_traverse=rb_intern("traverse");
     sy_traverse_item=rb_intern("traverse_item");
     sy_visit=rb_intern("visit");
-    rb_define_method(cls_Analyze_Variables2,"flat",Analyze_Variables2_flat,0);
+    rb_define_method(cls_Analyze_Variables2,"flatten",Analyze_Variables2_flatten,0);
     rb_define_method(cls_Analyze_Variables2,"itrans",Analyze_Variables2_itrans,0);
     rb_define_method(cls_Analyze_Variables2,"root",Analyze_Variables2_root,0);
     rb_define_method(cls_Analyze_Variables2,"traverse",Analyze_Variables2_traverse,0);
@@ -3561,5 +3561,5 @@ void Init_detect_variables2_c() {
     rb_define_method(cls_Resolve_Calls,"traverse",Resolve_Calls_traverse,0);
     rb_define_method(cls_Resolve_Calls,"traverse_item",Resolve_Calls_traverse_item,0);
     rb_define_method(cls_Resolve_Calls,"visit",Resolve_Calls_visit,0);
-    rb_eval_string("testversiondetect_variables2('1830c80447cadae951992099486810dd')");
+    rb_eval_string("testversiondetect_variables2('0ccec9748966773784db2b6ffb7d2573')");
 }

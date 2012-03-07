@@ -1,5 +1,58 @@
 #include "cthyst.h"
 #include "memo.c"
+VALUE cls_Anon1;
+VALUE Anon1_expr(VALUE self );
+static VALUE sy_bar;
+static VALUE sy_foo;
+VALUE profile_report_Anon1(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    return Qnil;
+}
+VALUE Anon1_expr(VALUE self ) {
+    VALUE vals[0];
+    VALUE it ,__result;
+    VALUE bind2=bind_new2(16);
+    int x;
+    VALUE arg0,arg1,arg2,arg3;
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    int oldpos1=ptr->pos;
+    int cut1=0;
+alt1_1:
+    ;
+    it=rb_funcall(self,sy_foo,0);
+    if (it==failobj) {
+        it=failobj;
+        goto alt1_2;
+    }
+    __result=it;;
+
+    ;
+    goto accept1;
+alt1_2:
+    ptr->pos=oldpos1;
+    it=rb_funcall(self,sy_bar,0);
+    if (it==failobj) {
+        it=failobj;
+        goto alt1_3;
+    }
+    __result=it;;
+
+    ;
+    goto accept1;
+alt1_3:
+    ptr->pos=oldpos1;
+    if (1) {
+        it=failobj;
+        goto fail;
+    };
+accept1:
+    ;
+
+fail:
+    return it;
+}
 VALUE cls_Lam;
 VALUE Lam_baz(VALUE self ,VALUE a0);
 VALUE Lam_foo(VALUE self ,VALUE a0);
@@ -632,6 +685,13 @@ fail:
     return it;
 }
 void Init_tests_c() {
+    cls_Anon1=rb_define_class("Anon1",rb_const_get(rb_cObject,rb_intern("Amethyst")));
+    failobj=rb_eval_string("FAIL");
+    rb_define_method(cls_Anon1,"profile_report",profile_report_Anon1,0);
+    sy_bar=rb_intern("bar");
+    sy_foo=rb_intern("foo");
+    rb_define_method(cls_Anon1,"expr",Anon1_expr,0);
+
     cls_Lam=rb_define_class("Lam",rb_const_get(rb_cObject,rb_intern("Amethyst")));
     failobj=rb_eval_string("FAIL");
     rb_define_method(cls_Lam,"profile_report",profile_report_Lam,0);
@@ -683,5 +743,5 @@ void Init_tests_c() {
     rb_define_method(cls_Tests,"s2",Tests_s2,0);
     rb_define_method(cls_Tests,"sw",Tests_sw,0);
     rb_define_method(cls_Tests,"test",Tests_test,0);
-    rb_eval_string("testversiontests('0d32c7be06d8f57626a961fb5cd5fa8b')");
+    rb_eval_string("testversiontests('70a3ed2c670d80d4326f41160f1efbc7')");
 }

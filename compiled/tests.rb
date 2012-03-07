@@ -1,3 +1,10 @@
+class Anon1 < Amethyst
+
+
+end
+class Anon1;end;Anon1.new
+
+
 class Tests < Amethyst
   use_implicit_variables
   use_contextual_returns
@@ -41,15 +48,15 @@ end
 
 
 def tests_compiled_by
-'4e9f5075c3d6460913d3b8d5c23503bf'
+'199487c48f4551515daaf669f9a3e225'
 end
 def tests_source_hash
-'199dce0d5bf20d16a99bd83ba4f1099b'
+'142917f3cce7d427b2253953ef249d2b'
 end
 def testversiontests(r)
  raise "invalid version" if r!=tests_version
 end
 def tests_version
-'0d32c7be06d8f57626a961fb5cd5fa8b'
+'70a3ed2c670d80d4326f41160f1efbc7'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/tests_c"
