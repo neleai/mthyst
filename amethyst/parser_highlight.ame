@@ -107,6 +107,8 @@ amethyst AmethystParser_Highligth {
   _args(o,c) = {group_new}:g group_hl(g,` group_mark(g,`seq(o)`) "" rubyarg*:r group_mark(g,`seq(c)`) `) -> r
     
   rubyarg  = {group_new}:g group_hl(g,` group_mark(g,`withcolor("yellow",`'`'`)`) expression:e "" group_mark(g,`withcolor("yellow",`'`'`)`) `)-> Lambda[Bind[local("_result"),e]]
+           | {group_new}:g group_hl(g,` group_mark(g,`withcolor("yellow",`'(|'`)`) expression:e "" group_mark(g,`withcolor("yellow",`'|)'`)`) `)-> Lambda[Bind[local("_result"),e]]
+
            | args('(',')')  | args('[',']') | args('{','}')
            | '"' interpolated("\""):s      -> Strin[['"']+s+['"']]
            | <a-z0-9_>:e '<<' -> [e,'<<']

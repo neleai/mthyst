@@ -3,7 +3,7 @@ require './lib/amethyst'
 #Amethyst::Settings.debug=2
 #Amethyst::Settings.profiling=true
 #Amethyst::Settings.cflags="-march=core2 -O3" #slower as gcc is limiting factor
-
+$bootstrapping_amethyst=true
 COMPILED.each{|f|
 puts f
 Compiler::compile("amethyst/#{f}.ame","compiled/#{f}.rb",f)

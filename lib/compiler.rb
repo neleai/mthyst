@@ -93,9 +93,10 @@ class <<Compiler
 			g.calls[name].each{|c,t| callg.add(name,c)}
 		}
 #    c=Context_Graph.new
-    names.dup.each{|name|
+    names.dup.each{|name| 
  #     c.arguments=Detect_Contextual_Arguments.new.parse(:root,g.rules[name])
     }
+
 		topo= callg.topo_order
 		#TODO resolve name clashes
 		called=callg.reverse.reachable(names)
