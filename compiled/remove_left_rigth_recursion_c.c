@@ -69,7 +69,8 @@ alt1_1:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -189,7 +190,8 @@ alt3_1:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -318,7 +320,8 @@ alt4_1:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -443,7 +446,8 @@ alt7_1:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -575,7 +579,8 @@ alt7_2:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -716,7 +721,8 @@ alt10_1:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -885,7 +891,8 @@ alt12_1:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -1123,7 +1130,8 @@ success1:
     else {
         VALUE ary;
         if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-        else  ary=rb_funcall(ptr->src,s_to_a,0);
+        else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+        else ary=rb_ary_new3(0);
         ptr->ary2=ary;
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
@@ -1173,7 +1181,8 @@ alt1_1:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -1313,7 +1322,8 @@ alt3_1:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -1459,7 +1469,8 @@ alt4_1:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -1603,7 +1614,8 @@ alt7_1:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -1735,7 +1747,8 @@ alt7_2:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -1953,7 +1966,8 @@ alt10_1:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -2093,7 +2107,8 @@ alt12_1:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -2239,7 +2254,8 @@ alt13_1:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -2383,7 +2399,8 @@ alt16_1:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -2515,7 +2532,8 @@ alt16_2:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -2759,5 +2777,5 @@ void Init_remove_left_rigth_recursion_c() {
     rb_define_method(cls_Remove_Left_Recursion,"first",Remove_Left_Recursion_first,1);
     rb_define_method(cls_Remove_Left_Recursion,"must_empty",Remove_Left_Recursion_must_empty,0);
     rb_define_method(cls_Remove_Left_Recursion,"root",Remove_Left_Recursion_root,0);
-    rb_eval_string("testversionremove_left_rigth_recursion('eab0795f9bc0157cc3443b637181806c')");
+    rb_eval_string("testversionremove_left_rigth_recursion('633cb6addbc1f95a50f5edfebfd550a7')");
 }

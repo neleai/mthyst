@@ -497,7 +497,8 @@ accept2:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -717,7 +718,8 @@ accept5:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -2287,7 +2289,8 @@ alt2_2:
             else {
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+                else ary=rb_ary_new3(0);
                 ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
@@ -2662,7 +2665,8 @@ alt7_3:
             else {
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+                else ary=rb_ary_new3(0);
                 ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
@@ -3067,7 +3071,8 @@ alt12_3:
             else {
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+                else ary=rb_ary_new3(0);
                 ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
@@ -3480,7 +3485,8 @@ VALUE AmethystParser_host_expr(VALUE self ) {
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -5594,7 +5600,8 @@ alt1_1:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -9207,7 +9214,8 @@ VALUE AmethystParser_ruleargs(VALUE self ) {
     else {
         VALUE ary;
         if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-        else  ary=rb_funcall(ptr->src,s_to_a,0);
+        else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+        else ary=rb_ary_new3(0);
         ptr->ary2=ary;
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
@@ -9237,7 +9245,8 @@ alt1_1:
             else {
                 VALUE ary;
                 if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-                else  ary=rb_funcall(ptr->src,s_to_a,0);
+                else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+                else ary=rb_ary_new3(0);
                 ptr->ary2=ary;
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
@@ -10835,5 +10844,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('20f36a05179b285e24483c3d106b5873')");
+    rb_eval_string("testversionparser('184e841f9948ccb829963745663772a0')");
 }

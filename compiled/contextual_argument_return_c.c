@@ -101,7 +101,8 @@ success1:
     else {
         VALUE ary;
         if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-        else  ary=rb_funcall(ptr->src,s_to_a,0);
+        else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+        else ary=rb_ary_new3(0);
         ptr->ary2=ary;
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
@@ -191,7 +192,8 @@ VALUE Add_Contextual_Arguments_traverse(VALUE self ) {
     else {
         VALUE ary;
         if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-        else  ary=rb_funcall(ptr->src,s_to_a,0);
+        else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+        else ary=rb_ary_new3(0);
         ptr->ary2=ary;
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
@@ -308,7 +310,8 @@ alt1_2:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -389,7 +392,8 @@ alt2_2:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -541,7 +545,8 @@ VALUE Add_Contextual_Arguments_visit(VALUE self ) {
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -631,7 +636,8 @@ success1:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -787,7 +793,8 @@ success1:
     else {
         VALUE ary;
         if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-        else  ary=rb_funcall(ptr->src,s_to_a,0);
+        else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+        else ary=rb_ary_new3(0);
         ptr->ary2=ary;
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
@@ -870,7 +877,8 @@ VALUE Add_Contextual_Returns_traverse(VALUE self ) {
     else {
         VALUE ary;
         if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-        else  ary=rb_funcall(ptr->src,s_to_a,0);
+        else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+        else ary=rb_ary_new3(0);
         ptr->ary2=ary;
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
@@ -987,7 +995,8 @@ alt1_2:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -1068,7 +1077,8 @@ alt2_2:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -1220,7 +1230,8 @@ VALUE Add_Contextual_Returns_visit(VALUE self ) {
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -1301,7 +1312,8 @@ success1:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -1438,7 +1450,8 @@ VALUE Detect_Contextual_Arguments_traverse(VALUE self ) {
     else {
         VALUE ary;
         if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-        else  ary=rb_funcall(ptr->src,s_to_a,0);
+        else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+        else ary=rb_ary_new3(0);
         ptr->ary2=ary;
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
@@ -1555,7 +1568,8 @@ alt1_2:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -1636,7 +1650,8 @@ alt2_2:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -1787,7 +1802,8 @@ VALUE Detect_Contextual_Arguments_visit(VALUE self ) {
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -1914,5 +1930,5 @@ void Init_contextual_argument_return_c() {
     rb_define_method(cls_Detect_Contextual_Arguments,"traverse",Detect_Contextual_Arguments_traverse,0);
     rb_define_method(cls_Detect_Contextual_Arguments,"traverse_item",Detect_Contextual_Arguments_traverse_item,0);
     rb_define_method(cls_Detect_Contextual_Arguments,"visit",Detect_Contextual_Arguments_visit,0);
-    rb_eval_string("testversioncontextual_argument_return('20691deef69ca1fac0c621e6ea33f356')");
+    rb_eval_string("testversioncontextual_argument_return('4e267ed835ee53d5240bee97105ea390')");
 }

@@ -75,7 +75,8 @@ VALUE Detect_Implicit_Variables_traverse(VALUE self ) {
     else {
         VALUE ary;
         if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-        else  ary=rb_funcall(ptr->src,s_to_a,0);
+        else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+        else ary=rb_ary_new3(0);
         ptr->ary2=ary;
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
@@ -189,7 +190,8 @@ alt1_2:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -270,7 +272,8 @@ alt2_2:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -411,7 +414,8 @@ VALUE Detect_Implicit_Variables_visit(VALUE self ) {
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -569,7 +573,8 @@ VALUE Add_Implicit_Variables_root(VALUE self ) {
     else {
         VALUE ary;
         if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-        else  ary=rb_funcall(ptr->src,s_to_a,0);
+        else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+        else ary=rb_ary_new3(0);
         ptr->ary2=ary;
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
@@ -653,7 +658,8 @@ VALUE Add_Implicit_Variables_traverse(VALUE self ) {
     else {
         VALUE ary;
         if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-        else  ary=rb_funcall(ptr->src,s_to_a,0);
+        else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+        else ary=rb_ary_new3(0);
         ptr->ary2=ary;
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
@@ -770,7 +776,8 @@ alt1_2:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -851,7 +858,8 @@ alt2_2:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -1009,7 +1017,8 @@ alt1_1:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -1103,7 +1112,8 @@ alt1_2:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -1213,7 +1223,8 @@ accept1:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -1312,7 +1323,8 @@ success3:
         else {
             VALUE ary;
             if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  ary=rb_funcall(ptr->src,s_to_a,0);
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
             ptr->ary2=ary;
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
@@ -1456,5 +1468,5 @@ void Init_implicit_variables_c() {
     rb_define_method(cls_Add_Implicit_Variables,"traverse",Add_Implicit_Variables_traverse,0);
     rb_define_method(cls_Add_Implicit_Variables,"traverse_item",Add_Implicit_Variables_traverse_item,0);
     rb_define_method(cls_Add_Implicit_Variables,"visit",Add_Implicit_Variables_visit,0);
-    rb_eval_string("testversionimplicit_variables('d71653d50292b3e19c6354d416b586a6')");
+    rb_eval_string("testversionimplicit_variables('6f412882b6b4307b341463b022a9215e')");
 }

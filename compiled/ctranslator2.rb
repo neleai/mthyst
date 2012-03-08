@@ -196,9 +196,9 @@ end
 def __dq_class_sp__sh__cf48(bind)
 "class #{bind[1][:grammar]} < #{bind[1][:parent]}\n"
 end
-def __dq_cstruct_99cc(bind)
+def __dq_cstruct_a3c5(bind)
 "cstruct #{bind[1]}=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   #{src.enter ?  "ptr->src=#{bget(src.var)}; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  ary=rb_funcall(ptr->src,s_to_a,0);  ptr->ary2=ary;  ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}" : 
+                   #{src.enter ?  "ptr->src=#{bget(src.var)}; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0); else ary=rb_ary_new3(0);  ptr->ary2=ary;  ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}" : 
                     "ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=#{bget(src.var)};ptr->len=1;"
                    }
                    #{bind[2]}
@@ -401,15 +401,15 @@ end
 
 
 def ctranslator2_compiled_by
-'29947cda8da6d0bf75b2264d699dfddc'
+'65d2321db99745da72fe56c0af7f166b'
 end
 def ctranslator2_source_hash
-'d99ba4c947a0d61ed9cfa778024fc30c'
+'6a7997a7bddf75d67506cfd906af613e'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'515914d8f317730f6f8ffd6ed60651ec'
+'909b9fa5aa70508f05b3d3b16cd85c0d'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"
