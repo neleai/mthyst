@@ -17,8 +17,9 @@ amethyst AmethystParser_Highligth {
   group_hl(no,lam)   = {pos}:oldpos apply(lam):r {$group_start[src][oldpos]<<no;$group_end[src][pos]<<no;r}
 
   file     = ( 
-               "`" {@@locals=[];@@append=[];@@bnding=2} expression '`'
-             | (~'amethyst'  ~'`'  . )+:{it.join}
+               {@@locals=[];@@append=[];@@bnding=2}  {group_new}:g group_hl(g,` group_mark(g,`withcolor("yellow",`'(|'`)`) expression:e  "" group_mark(g,`withcolor("yellow",`'|)'`)`) `)-> Lambda[Bind[local("_result"),e]]
+
+             | (~'amethyst'  ~'(|'  . )+:{it.join}
              | grammar
              )*
 
@@ -30,7 +31,7 @@ amethyst AmethystParser_Highligth {
           {Bind[local("_result"),body]}:body {@@locals.uniq}:locals {body=Seq[{:ary=>(@@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[body])}]; }   @Rule
 
   
-  expression ={group_new}:g group_hl(g,` listOf(`sequence`,`"" group_mark(g,`'|'`)`):ary`) @Or_AST  
+  expression ={group_new}:g group_hl(g,` listOf(`sequence`,`"" group_mark(g,`~'|)' '|'`)`):ary`) @Or_AST  
 
   
   sequence =  (nr ","? "" prefixed)*:ary  @Seq
@@ -107,7 +108,7 @@ amethyst AmethystParser_Highligth {
   _args(o,c) = {group_new}:g group_hl(g,` group_mark(g,`seq(o)`) "" rubyarg*:r group_mark(g,`seq(c)`) `) -> r
     
   rubyarg  = {group_new}:g group_hl(g,` group_mark(g,`withcolor("yellow",`'`'`)`) expression:e "" group_mark(g,`withcolor("yellow",`'`'`)`) `)-> Lambda[Bind[local("_result"),e]]
-           | {group_new}:g group_hl(g,` group_mark(g,`withcolor("yellow",`'(|'`)`) expression:e "" group_mark(g,`withcolor("yellow",`'|)'`)`) `)-> Lambda[Bind[local("_result"),e]]
+           | {group_new}:g group_hl(g,` group_mark(g,`withcolor("yellow",`'(|'`)`) expression:e  "" group_mark(g,`withcolor("yellow",`'|)'`)`) `)-> Lambda[Bind[local("_result"),e]]
 
            | args('(',')')  | args('[',']') | args('{','}')
            | '"' interpolated("\""):s      -> Strin[['"']+s+['"']]
