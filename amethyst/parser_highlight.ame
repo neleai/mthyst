@@ -73,8 +73,8 @@ amethyst AmethystParser_Highligth {
 
   collect(ors) = -> a=autovar; Seq[Or_AST[{:ary=>ors.ary.map{|ands| Seq[{:ary=>[Bind[a,Act["[]"]]]+ands.ary.map{|expr| Append_AST[a,expr]}}]}}],a]
   
-  call = withcolor("red",`className:klas '::' name:name`) withcolor("#702020",` argsOpt:arg`) -> Apply[name,arg]
-       |               withcolor("red",`name:name`)   withcolor("#702020",`argsOpt:arg`) -> Apply[name,arg]
+  call = withcolor("red",`className:klas '::' name:name`) withcolor("#702020",` argsOpt:arg`) lambda? -> Apply[name,arg]
+       |               withcolor("red",`name:name`)   withcolor("#702020",`argsOpt:arg`) lambda? -> Apply[name,arg]
  
   key2        = '@' className:name             -> Result[{:name=>name}]
               | '@'      name:name argsOpt:arg -> Key[name,arg]
@@ -106,10 +106,11 @@ amethyst AmethystParser_Highligth {
   args(o,c) = _args(o,c):r -> Args[{:ary=>([o]+r+[c])}]
 
   _args(o,c) = {group_new}:g group_hl(g,` group_mark(g,`seq(o)`) "" rubyarg*:r group_mark(g,`seq(c)`) `) -> r
-    
-  rubyarg  = {group_new}:g group_hl(g,` group_mark(g,`withcolor("yellow",`'`'`)`) expression:e "" group_mark(g,`withcolor("yellow",`'`'`)`) `)-> Lambda[Bind[local("_result"),e]]
-           | {group_new}:g group_hl(g,` group_mark(g,`withcolor("yellow",`'(|'`)`) expression:e  "" group_mark(g,`withcolor("yellow",`'|)'`)`) `)-> Lambda[Bind[local("_result"),e]]
 
+  lambda   = {group_new}:g group_hl(g,` group_mark(g,`withcolor("yellow",`'`'`)`) expression:e "" group_mark(g,`withcolor("yellow",`'`'`)`) `)-> Lambda[Bind[local("_result"),e]]
+    
+           | {group_new}:g group_hl(g,` group_mark(g,`withcolor("yellow",`'(|'`)`) expression:e  "" group_mark(g,`withcolor("yellow",`'|)'`)`) `)-> Lambda[Bind[local("_result"),e]]
+  rubyarg  = lambda
            | args('(',')')  | args('[',']') | args('{','}')
            | '"' interpolated("\""):s      -> Strin[['"']+s+['"']]
            | <a-z0-9_>:e '<<' -> [e,'<<']
