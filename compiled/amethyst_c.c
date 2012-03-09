@@ -1959,47 +1959,74 @@ fail:
 }
 VALUE Amethyst_replace(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE it ,_exp,_it,__result;
+    VALUE it ,_autovar,_exp,_autovar_2,_it,__result;
     VALUE bind2=bind_new2(16);
     _exp=a0;;
     int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    int oldpos1=ptr->pos;
-    int cut1=0;
+    it=rb_ary_new3(0);
+    _autovar=it;;
+    int stop1=0;
+    while(!stop1) {
+        int oldpos1=ptr->pos;
+        int cut1=0;
 alt1_1:
-    ;
-    it=_exp;
-    arg0=it;
-    it=rb_funcall(self,sy_apply,1,arg0);
-    if (it==failobj) {
-        it=failobj;
-        goto alt1_2;
-    }
-    _it=it;;
+        ;
+        int oldpos2=ptr->pos;
+        int cut2=0;
+alt2_1:
+        ;
+        it=_exp;
+        arg0=it;
+        it=rb_funcall(self,sy_apply,1,arg0);
+        if (it==failobj) {
+            it=failobj;
+            goto alt2_2;
+        }
+        _autovar_2=it;;
 
-    ;
-    goto accept1;
+        ;
+        goto accept2;
+alt2_2:
+        ptr->pos=oldpos2;
+        it=AmethystCore_anything(self );
+        if (it==failobj) {
+            it=failobj;
+            goto alt2_3;
+        }
+        _autovar_2=it;;
+
+        ;
+        goto accept2;
+alt2_3:
+        ptr->pos=oldpos2;
+        if (1) {
+            it=failobj;
+            goto alt1_2;
+        };
+accept2:
+        ;
+        it=AmethystCore_append(self,_autovar,_autovar_2);
+        ;
+        goto accept1;
 alt1_2:
-    ptr->pos=oldpos1;
-    it=AmethystCore_anything(self );
-    if (it==failobj) {
-        it=failobj;
-        goto alt1_3;
-    }
-    _it=it;;
-
-    ;
-    goto accept1;
+        ptr->pos=oldpos1;
+        stop1=1;
+        ;
+        goto accept1;
 alt1_3:
-    ptr->pos=oldpos1;
-    if (1) {
-        it=failobj;
-        goto fail;
-    };
+        ptr->pos=oldpos1;
+        if (1) {
+            it=failobj;
+            goto fail;
+        };
 accept1:
-    ;
+        ;
+    }
+    it=_autovar;
+    _it=it;;
     bind_aset(bind2,1,_it);
     it=rb_funcall(self,sy__bind_lb_1_rb__ti__cfcb,1,bind2);
     _it=bind_aget(bind2,1);;
@@ -2569,5 +2596,5 @@ void Init_amethyst_c() {
     rb_define_method(cls_Amethyst,"upper",Amethyst_upper,0);
     rb_define_method(cls_Amethyst,"word",Amethyst_word,0);
     rb_define_method(cls_Amethyst,"xdigit",Amethyst_xdigit,0);
-    rb_eval_string("testversionamethyst('1d23078d2fe5985ad82982e5b21a3e89')");
+    rb_eval_string("testversionamethyst('fa00556fdaeb2a15560bc6ae38d647cd')");
 }

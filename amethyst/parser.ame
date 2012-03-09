@@ -11,7 +11,7 @@ amethyst AmethystParser {
                                                  -> [g,"class #{g.name};end;#{g.name}.new"]
              )*
 
-  grammar = "amethyst" "" name:name ("<" "" name  |{"Amethyst"}):parent
+  grammar = "amethyst" '_module'?:module "" name:name ("<" "" name  |{"Amethyst"}):parent
 "{" rule*:rules "}"  @Grammar
   
   rule = {@@locals=[];@@appends=[];@@bnding=Bnding[]} {@@bnding}:bnding  

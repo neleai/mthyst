@@ -30,7 +30,7 @@ amethyst Amethyst < AmethystCore {
   listOf(rule,delim) =  apply(rule):[f] (seq(delim) apply(rule))*:[f] -> f
                          | empty -> []
   
-  replace(exp) = (apply(exp) | .):{it*""}
+  replace(exp) = (apply(exp) | .)*:{it*""}
 
 
   fails = &{false}
