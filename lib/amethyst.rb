@@ -14,11 +14,11 @@ class AmethystLambda
 end
 
 class AmethystCore
-	def apply(rule)
+	def apply(rule,*args)
 		if rule.is_a?(String) || rule.is_a?(Symbol)
-			send(rule)
+			send(rule.to_s,*args)
 		else
-			rule.call
+			rule.call(*args)
 		end
 	end
 	def self.parse(rule,input)

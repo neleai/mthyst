@@ -10,8 +10,8 @@ def _Apply_lb__dq_f_3881(bind)
 Apply["fails"]
 
 end
-def _Apply_lb_bi_4b34(bind)
-Apply[bind[1],{:clas=> resolvegrammar($current_grammar_name,bind[1])}] 
+def _Apply_lb_bi_3b85(bind)
+Apply[bind[1],*bind[2],{:clas=> resolvegrammar($current_grammar_name,bind[1])}] 
 
 end
 def _CAct_lb_eva_559c(bind)
@@ -101,15 +101,15 @@ end
 
 
 def normalize_compiled_by
-'6d5719e351f1569470663920f3ee1672'
+'0a23ae0663e5490c5ce62a86a0cd71fe'
 end
 def normalize_source_hash
-'8188790c9ff8ef247b581afed610cfbb'
+'2bdef58326542fc7fe91b74dba6c51b6'
 end
 def testversionnormalize(r)
  raise "invalid version" if r!=normalize_version
 end
 def normalize_version
-'e9993274b2276fe191e6b0ebe2c3bb85'
+'6c34ed38b4b1bed3f1ed1750202dad15'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/normalize_c"

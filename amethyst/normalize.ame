@@ -40,7 +40,7 @@ amethyst Normalize{
 
 
   apply2 = Apply[ ["apply" | "_seq"],Act[Lambda[.:x]] -> x
-                | ["apply"]         ,CAct[.:name] -> Apply[name,{:clas=> resolvegrammar($current_grammar_name,name)}] 
+                | ["apply"]         ,CAct[.:name] .*:args -> Apply[name,*args,{:clas=> resolvegrammar($current_grammar_name,name)}] 
                 | ["_seq"]          ,CAct[ [] ]  -> Placeholder
                 | .* {@self.freeze}
                 ]
