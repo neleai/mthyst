@@ -94,10 +94,6 @@ def _Many_lb_bin_14d1(bind)
 Many[bind[1],bind[2]=="+"]
 
 end
-def _Nested_lb_b_1ac2(bind)
-Nested[bind[1]]
-
-end
 def _Or_AST_dot_c_19e2(bind)
 Or_AST.create( {:ary=>bind[1] })
 end
@@ -226,15 +222,15 @@ class AmethystParser < Amethyst
 end
 
 def parser_compiled_by
-'0a23ae0663e5490c5ce62a86a0cd71fe'
+'a80fd52dfb569af81f2c7a8d6864093a'
 end
 def parser_source_hash
-'099377fb2d8f90e2ca70e464472cc725'
+'9d679cde1d7513cfa44b04c4f392c5f6'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'e8c901e399659d9935f0bb712c499604'
+'e030037b4302c774f81c7f0be138a675'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/parser_c"

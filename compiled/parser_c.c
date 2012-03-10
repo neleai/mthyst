@@ -71,7 +71,6 @@ static VALUE sy__Key_lb_bind_5e9f;
 static VALUE sy__Lambda_lb_B_2c90;
 static VALUE sy__Lookahea_0946;
 static VALUE sy__Many_lb_bin_14d1;
-static VALUE sy__Nested_lb_b_1ac2;
 static VALUE sy__Or_AST_dot_c_19e2;
 static VALUE sy__Or_AST_lb_b_0657;
 static VALUE sy__Parenthe_261b;
@@ -9468,7 +9467,7 @@ fail:
 }
 VALUE AmethystParser_term(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,__result,_expr,_x,_autovar,_autovar_2,__result_2,_s,_x_2,_ors,__result_3,_it,_e;
+    VALUE it ,__result,_x,_autovar,_autovar_2,__result_2,_s,_x_2,_ors,__result_3,_it,_e;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -9551,68 +9550,22 @@ alt1_3:
 accept1:
         ;
         break;
-    case 'n' ... 'n':
+    case UC(34) ... UC(34):
         ;
         int oldpos3=ptr->pos;
         int cut2=0;
 alt2_1:
         ;
-        it=rb_str_new(ptr->str+ptr->pos,1);
-        ptr->pos++;
-        if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='s'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='e'&&ame_curstr2(ptr)[4]=='d'&&ame_curstr2(ptr)[5]=='(')  ptr->pos+=6;
-        else if (1) {
+        it=rb_funcall(self,sy_cases,0);
+        if (it==failobj) {
             it=failobj;
             goto alt2_2;
         }
-        it=rb_funcall(self,sy_expression,0);
-        _expr=it;;
-        it=rb_funcall(self,sy_spaces,0);
-        switch((unsigned char)*ame_curstr2(ptr)) {
-        case UC(0) ... '(':
-            ;
-        case '*' ... UC(255):
-            ;
-            if (1) {
-                it=failobj;
-                goto alt2_2;
-            }
-            break;
-        case ')' ... ')':
-            ;
-            it=rb_str_new(ptr->str+ptr->pos,1);
-            ptr->pos++;
-            break;
-        }
-        bind_aset(bind2,1,_expr);
-        it=rb_funcall(self,sy__Nested_lb_b_1ac2,1,bind2);
-        _expr=bind_aget(bind2,1);;
         __result=it;;
 
         ;
         goto accept3;
 alt2_2:
-        ptr->pos=oldpos3;
-        it=rb_funcall(self,sy_cases,0);
-        if (it==failobj) {
-            it=failobj;
-            goto alt2_3;
-        }
-        __result=it;;
-
-        ;
-        goto accept3;
-alt2_3:
-        ptr->pos=oldpos3;
-        it=rb_funcall(self,sy_call,0);
-        if (it==failobj) {
-            it=failobj;
-            goto alt2_4;
-        }
-        __result=it;;
-
-        ;
-        goto accept3;
-alt2_4:
         ptr->pos=oldpos3;
         int oldpos4=ptr->pos;
         switch((unsigned char)*ame_curstr2(ptr)) {
@@ -9644,7 +9597,7 @@ accept4:
         ptr->pos=oldpos4;
         if (x==0) {
             it=failobj;
-            goto alt2_5;
+            goto alt2_3;
         }
         it=Qnil;
         it=rb_funcall(self,sy__Apply_lb__dq_a_1437,1,bind2);
@@ -9652,72 +9605,8 @@ accept4:
 
         ;
         goto accept3;
-alt2_5:
+alt2_3:
         ptr->pos=oldpos3;
-        if (1) {
-            it=failobj;
-            goto fail;
-        };
-accept3:
-        ;
-        break;
-    case UC(34) ... UC(34):
-        ;
-        int oldpos5=ptr->pos;
-        int cut3=0;
-alt3_1:
-        ;
-        it=rb_funcall(self,sy_cases,0);
-        if (it==failobj) {
-            it=failobj;
-            goto alt3_2;
-        }
-        __result=it;;
-
-        ;
-        goto accept5;
-alt3_2:
-        ptr->pos=oldpos5;
-        int oldpos6=ptr->pos;
-        switch((unsigned char)*ame_curstr2(ptr)) {
-        case UC(0) ... '-':
-            ;
-        case '/' ... '9':
-            ;
-        case ';' ... UC(255):
-            ;
-            if (1) {
-                it=failobj;
-                goto reject3;
-            }
-            break;
-        case '.' ... '.':
-            ;
-        case ':' ... ':':
-            ;
-            it=rb_str_new(ptr->str+ptr->pos,1);
-            ptr->pos++;
-            break;
-        }
-        x=1;
-        goto accept6;
-reject3:
-        x=0;
-accept6:
-        it=Qnil;
-        ptr->pos=oldpos6;
-        if (x==0) {
-            it=failobj;
-            goto alt3_3;
-        }
-        it=Qnil;
-        it=rb_funcall(self,sy__Apply_lb__dq_a_1437,1,bind2);
-        __result=it;;
-
-        ;
-        goto accept5;
-alt3_3:
-        ptr->pos=oldpos5;
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
         it=rb_ary_new3(0);
@@ -9735,34 +9624,34 @@ alt3_3:
                     ;
                 case '#' ... UC(255):
                     ;
-                    int oldpos7=ptr->pos;
-                    int cut4=0;
-alt4_1:
+                    int oldpos5=ptr->pos;
+                    int cut3=0;
+alt3_1:
                     ;
                     it=rb_obj_clone(s__bs__bs__7f81);
                     if (1) {
                         it=failobj;
-                        goto alt4_2;
+                        goto alt3_2;
                     }
                     ;
-                    goto accept7;
-alt4_2:
-                    ptr->pos=oldpos7;
+                    goto accept5;
+alt3_2:
+                    ptr->pos=oldpos5;
                     it=Qnil;
                     ;
-                    goto accept7;
-alt4_3:
-                    ptr->pos=oldpos7;
+                    goto accept5;
+alt3_3:
+                    ptr->pos=oldpos5;
                     if (1) {
                         it=failobj;
-                        goto alt3_4;
+                        goto alt2_4;
                     };
-accept7:
+accept5:
                     ;
                     it=AmethystCore_anything(self );
                     if (it==failobj) {
                         it=failobj;
-                        goto alt3_4;
+                        goto alt2_4;
                     }
                     _autovar=it;;
                     it=AmethystCore_append(self,_x,_autovar);
@@ -9771,7 +9660,7 @@ accept7:
                     ;
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
-                    cut3=1;
+                    cut2=1;
                     stop1=1;
                     break;
                 }
@@ -9796,7 +9685,7 @@ accept7:
                     it=AmethystCore_anything(self );
                     if (it==failobj) {
                         it=failobj;
-                        goto alt3_4;
+                        goto alt2_4;
                     }
                     _autovar=it;;
                     it=AmethystCore_append(self,_x,_autovar);
@@ -9805,7 +9694,7 @@ accept7:
                     ;
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
-                    cut3=1;
+                    cut2=1;
                     stop1=1;
                     break;
                 }
@@ -9824,10 +9713,10 @@ accept7:
         __result=it;;
 
         ;
-        goto accept5;
-alt3_4:
-        ptr->pos=oldpos5;
-        if (cut3) {
+        goto accept3;
+alt2_4:
+        ptr->pos=oldpos3;
+        if (cut2) {
             it=failobj;
             goto fail;
         }
@@ -9835,10 +9724,91 @@ alt3_4:
             it=failobj;
             goto fail;
         };
-accept5:
+accept3:
         ;
         break;
     case '#' ... '#':
+        ;
+        int oldpos6=ptr->pos;
+        int cut4=0;
+alt4_1:
+        ;
+        it=rb_funcall(self,sy_cases,0);
+        if (it==failobj) {
+            it=failobj;
+            goto alt4_2;
+        }
+        __result=it;;
+
+        ;
+        goto accept6;
+alt4_2:
+        ptr->pos=oldpos6;
+        int oldpos7=ptr->pos;
+        switch((unsigned char)*ame_curstr2(ptr)) {
+        case UC(0) ... '-':
+            ;
+        case '/' ... '9':
+            ;
+        case ';' ... UC(255):
+            ;
+            if (1) {
+                it=failobj;
+                goto reject3;
+            }
+            break;
+        case '.' ... '.':
+            ;
+        case ':' ... ':':
+            ;
+            it=rb_str_new(ptr->str+ptr->pos,1);
+            ptr->pos++;
+            break;
+        }
+        x=1;
+        goto accept7;
+reject3:
+        x=0;
+accept7:
+        it=Qnil;
+        ptr->pos=oldpos7;
+        if (x==0) {
+            it=failobj;
+            goto alt4_3;
+        }
+        it=Qnil;
+        it=rb_funcall(self,sy__Apply_lb__dq_a_1437,1,bind2);
+        __result=it;;
+
+        ;
+        goto accept6;
+alt4_3:
+        ptr->pos=oldpos6;
+        it=rb_str_new(ptr->str+ptr->pos,1);
+        ptr->pos++;
+        it=rb_funcall(self,sy_line,0);
+        if (it==failobj) {
+            it=failobj;
+            goto alt4_4;
+        }
+        _s=it;;
+        bind_aset(bind2,1,_s);
+        it=rb_funcall(self,sy__Comment_lb__ed6f,1,bind2);
+        _s=bind_aget(bind2,1);;
+        __result=it;;
+
+        ;
+        goto accept6;
+alt4_4:
+        ptr->pos=oldpos6;
+        if (1) {
+            it=failobj;
+            goto fail;
+        };
+accept6:
+        ;
+        break;
+    case UC(39) ... UC(39):
         ;
         int oldpos8=ptr->pos;
         int cut5=0;
@@ -9897,87 +9867,6 @@ alt5_3:
         ptr->pos=oldpos8;
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
-        it=rb_funcall(self,sy_line,0);
-        if (it==failobj) {
-            it=failobj;
-            goto alt5_4;
-        }
-        _s=it;;
-        bind_aset(bind2,1,_s);
-        it=rb_funcall(self,sy__Comment_lb__ed6f,1,bind2);
-        _s=bind_aget(bind2,1);;
-        __result=it;;
-
-        ;
-        goto accept8;
-alt5_4:
-        ptr->pos=oldpos8;
-        if (1) {
-            it=failobj;
-            goto fail;
-        };
-accept8:
-        ;
-        break;
-    case UC(39) ... UC(39):
-        ;
-        int oldpos10=ptr->pos;
-        int cut6=0;
-alt6_1:
-        ;
-        it=rb_funcall(self,sy_cases,0);
-        if (it==failobj) {
-            it=failobj;
-            goto alt6_2;
-        }
-        __result=it;;
-
-        ;
-        goto accept10;
-alt6_2:
-        ptr->pos=oldpos10;
-        int oldpos11=ptr->pos;
-        switch((unsigned char)*ame_curstr2(ptr)) {
-        case UC(0) ... '-':
-            ;
-        case '/' ... '9':
-            ;
-        case ';' ... UC(255):
-            ;
-            if (1) {
-                it=failobj;
-                goto reject5;
-            }
-            break;
-        case '.' ... '.':
-            ;
-        case ':' ... ':':
-            ;
-            it=rb_str_new(ptr->str+ptr->pos,1);
-            ptr->pos++;
-            break;
-        }
-        x=1;
-        goto accept11;
-reject5:
-        x=0;
-accept11:
-        it=Qnil;
-        ptr->pos=oldpos11;
-        if (x==0) {
-            it=failobj;
-            goto alt6_3;
-        }
-        it=Qnil;
-        it=rb_funcall(self,sy__Apply_lb__dq_a_1437,1,bind2);
-        __result=it;;
-
-        ;
-        goto accept10;
-alt6_3:
-        ptr->pos=oldpos10;
-        it=rb_str_new(ptr->str+ptr->pos,1);
-        ptr->pos++;
         it=rb_ary_new3(0);
         _x=it;;
         it=rb_ary_new3(0);
@@ -9993,34 +9882,34 @@ alt6_3:
                     ;
                 case '(' ... UC(255):
                     ;
-                    int oldpos12=ptr->pos;
-                    int cut7=0;
-alt7_1:
+                    int oldpos10=ptr->pos;
+                    int cut6=0;
+alt6_1:
                     ;
                     it=rb_obj_clone(s__bs__bs__7f81);
                     if (1) {
                         it=failobj;
-                        goto alt7_2;
+                        goto alt6_2;
                     }
                     ;
-                    goto accept12;
-alt7_2:
-                    ptr->pos=oldpos12;
+                    goto accept10;
+alt6_2:
+                    ptr->pos=oldpos10;
                     it=Qnil;
                     ;
-                    goto accept12;
-alt7_3:
-                    ptr->pos=oldpos12;
+                    goto accept10;
+alt6_3:
+                    ptr->pos=oldpos10;
                     if (1) {
                         it=failobj;
-                        goto alt6_4;
+                        goto alt5_4;
                     };
-accept12:
+accept10:
                     ;
                     it=AmethystCore_anything(self );
                     if (it==failobj) {
                         it=failobj;
-                        goto alt6_4;
+                        goto alt5_4;
                     }
                     _autovar=it;;
                     it=AmethystCore_append(self,_x,_autovar);
@@ -10029,7 +9918,7 @@ accept12:
                     ;
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
-                    cut6=1;
+                    cut5=1;
                     stop2=1;
                     break;
                 }
@@ -10054,7 +9943,7 @@ accept12:
                     it=AmethystCore_anything(self );
                     if (it==failobj) {
                         it=failobj;
-                        goto alt6_4;
+                        goto alt5_4;
                     }
                     _autovar=it;;
                     it=AmethystCore_append(self,_x,_autovar);
@@ -10063,7 +9952,7 @@ accept12:
                     ;
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
-                    cut6=1;
+                    cut5=1;
                     stop2=1;
                     break;
                 }
@@ -10082,10 +9971,10 @@ accept12:
         __result=it;;
 
         ;
-        goto accept10;
-alt6_4:
-        ptr->pos=oldpos10;
-        if (cut6) {
+        goto accept8;
+alt5_4:
+        ptr->pos=oldpos8;
+        if (cut5) {
             it=failobj;
             goto fail;
         }
@@ -10093,27 +9982,171 @@ alt6_4:
             it=failobj;
             goto fail;
         };
-accept10:
+accept8:
         ;
         break;
     case '(' ... '(':
         ;
-        int oldpos13=ptr->pos;
-        int cut8=0;
-alt8_1:
+        int oldpos11=ptr->pos;
+        int cut7=0;
+alt7_1:
         ;
         it=rb_funcall(self,sy_cases,0);
         if (it==failobj) {
             it=failobj;
-            goto alt8_2;
+            goto alt7_2;
         }
         __result=it;;
 
         ;
-        goto accept13;
+        goto accept11;
+alt7_2:
+        ptr->pos=oldpos11;
+        int oldpos12=ptr->pos;
+        switch((unsigned char)*ame_curstr2(ptr)) {
+        case UC(0) ... '-':
+            ;
+        case '/' ... '9':
+            ;
+        case ';' ... UC(255):
+            ;
+            if (1) {
+                it=failobj;
+                goto reject5;
+            }
+            break;
+        case '.' ... '.':
+            ;
+        case ':' ... ':':
+            ;
+            it=rb_str_new(ptr->str+ptr->pos,1);
+            ptr->pos++;
+            break;
+        }
+        x=1;
+        goto accept12;
+reject5:
+        x=0;
+accept12:
+        it=Qnil;
+        ptr->pos=oldpos12;
+        if (x==0) {
+            it=failobj;
+            goto alt7_3;
+        }
+        it=Qnil;
+        it=rb_funcall(self,sy__Apply_lb__dq_a_1437,1,bind2);
+        __result=it;;
+
+        ;
+        goto accept11;
+alt7_3:
+        ptr->pos=oldpos11;
+        it=rb_str_new(ptr->str+ptr->pos,1);
+        ptr->pos++;
+        it=rb_funcall(self,sy_expression,0);
+        _x_2=it;;
+        it=rb_funcall(self,sy_spaces,0);
+        switch((unsigned char)*ame_curstr2(ptr)) {
+        case UC(0) ... '(':
+            ;
+        case '*' ... UC(255):
+            ;
+            if (1) {
+                it=failobj;
+                goto alt7_4;
+            }
+            break;
+        case ')' ... ')':
+            ;
+            it=rb_str_new(ptr->str+ptr->pos,1);
+            ptr->pos++;
+            break;
+        }
+        switch((unsigned char)*ame_curstr2(ptr)) {
+        case UC(0) ... 'Z':
+            ;
+        case UC(92) ... UC(255):
+            ;
+            bind_aset(bind2,1,_x_2);
+            it=rb_funcall(self,sy__Parenthe_261b,1,bind2);
+            _x_2=bind_aget(bind2,1);;
+            __result=it;;
+            break;
+        case '[' ... '[':
+            ;
+            int oldpos13=ptr->pos;
+            int cut8=0;
+alt8_1:
+            ;
+            it=rb_str_new(ptr->str+ptr->pos,1);
+            ptr->pos++;
+            if (ame_curstr2(ptr)[0]==']')  ptr->pos+=1;
+            else if (1) {
+                it=failobj;
+                goto alt8_2;
+            }
+            it=_x_2;
+            _ors=it;;
+            bind_aset(bind2,1,_ors);
+            it=rb_funcall(self,sy__a_eq_autova_7fca,1,bind2);
+            _ors=bind_aget(bind2,1);;
+            __result_3=it;;
+            it=__result_3;
+            __result=it;;
+
+            ;
+            goto accept13;
 alt8_2:
-        ptr->pos=oldpos13;
+            ptr->pos=oldpos13;
+            bind_aset(bind2,1,_x_2);
+            it=rb_funcall(self,sy__Parenthe_261b,1,bind2);
+            _x_2=bind_aget(bind2,1);;
+            __result=it;;
+
+            ;
+            goto accept13;
+alt8_3:
+            ptr->pos=oldpos13;
+            if (1) {
+                it=failobj;
+                goto alt7_4;
+            };
+accept13:
+            ;
+            break;
+        }
+        ;
+        goto accept11;
+alt7_4:
+        ptr->pos=oldpos11;
+        if (1) {
+            it=failobj;
+            goto fail;
+        };
+accept11:
+        ;
+        break;
+    case '-' ... '-':
+        ;
+    case '{' ... '{':
+        ;
         int oldpos14=ptr->pos;
+        int cut9=0;
+alt9_1:
+        ;
+        it=rb_funcall(self,sy_cases,0);
+        if (it==failobj) {
+            it=failobj;
+            goto alt9_2;
+        }
+        __result=it;;
+
+        ;
+        goto accept14;
+alt9_2:
+        ptr->pos=oldpos14;
+        int oldpos15=ptr->pos;
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... '-':
             ;
@@ -10135,112 +10168,43 @@ alt8_2:
             break;
         }
         x=1;
-        goto accept14;
+        goto accept15;
 reject6:
         x=0;
-accept14:
+accept15:
         it=Qnil;
-        ptr->pos=oldpos14;
+        ptr->pos=oldpos15;
         if (x==0) {
             it=failobj;
-            goto alt8_3;
+            goto alt9_3;
         }
         it=Qnil;
         it=rb_funcall(self,sy__Apply_lb__dq_a_1437,1,bind2);
         __result=it;;
 
         ;
-        goto accept13;
-alt8_3:
-        ptr->pos=oldpos13;
-        it=rb_str_new(ptr->str+ptr->pos,1);
-        ptr->pos++;
-        it=rb_funcall(self,sy_expression,0);
-        _x_2=it;;
-        it=rb_funcall(self,sy_spaces,0);
-        switch((unsigned char)*ame_curstr2(ptr)) {
-        case UC(0) ... '(':
-            ;
-        case '*' ... UC(255):
-            ;
-            if (1) {
-                it=failobj;
-                goto alt8_4;
-            }
-            break;
-        case ')' ... ')':
-            ;
-            it=rb_str_new(ptr->str+ptr->pos,1);
-            ptr->pos++;
-            break;
-        }
-        switch((unsigned char)*ame_curstr2(ptr)) {
-        case UC(0) ... 'Z':
-            ;
-        case UC(92) ... UC(255):
-            ;
-            bind_aset(bind2,1,_x_2);
-            it=rb_funcall(self,sy__Parenthe_261b,1,bind2);
-            _x_2=bind_aget(bind2,1);;
-            __result=it;;
-            break;
-        case '[' ... '[':
-            ;
-            int oldpos15=ptr->pos;
-            int cut9=0;
-alt9_1:
-            ;
-            it=rb_str_new(ptr->str+ptr->pos,1);
-            ptr->pos++;
-            if (ame_curstr2(ptr)[0]==']')  ptr->pos+=1;
-            else if (1) {
-                it=failobj;
-                goto alt9_2;
-            }
-            it=_x_2;
-            _ors=it;;
-            bind_aset(bind2,1,_ors);
-            it=rb_funcall(self,sy__a_eq_autova_7fca,1,bind2);
-            _ors=bind_aget(bind2,1);;
-            __result_3=it;;
-            it=__result_3;
-            __result=it;;
-
-            ;
-            goto accept15;
-alt9_2:
-            ptr->pos=oldpos15;
-            bind_aset(bind2,1,_x_2);
-            it=rb_funcall(self,sy__Parenthe_261b,1,bind2);
-            _x_2=bind_aget(bind2,1);;
-            __result=it;;
-
-            ;
-            goto accept15;
+        goto accept14;
 alt9_3:
-            ptr->pos=oldpos15;
-            if (1) {
-                it=failobj;
-                goto alt8_4;
-            };
-accept15:
-            ;
-            break;
+        ptr->pos=oldpos14;
+        it=rb_funcall(self,sy_host_expr,0);
+        if (it==failobj) {
+            it=failobj;
+            goto alt9_4;
         }
+        __result=it;;
+
         ;
-        goto accept13;
-alt8_4:
-        ptr->pos=oldpos13;
+        goto accept14;
+alt9_4:
+        ptr->pos=oldpos14;
         if (1) {
             it=failobj;
             goto fail;
         };
-accept13:
+accept14:
         ;
         break;
-    case '-' ... '-':
-        ;
-    case '{' ... '{':
+    case '.' ... '.':
         ;
         int oldpos16=ptr->pos;
         int cut10=0;
@@ -10289,24 +10253,14 @@ accept17:
             it=failobj;
             goto alt10_3;
         }
-        it=Qnil;
+        it=rb_str_new(ptr->str+ptr->pos,1);
+        ptr->pos++;
         it=rb_funcall(self,sy__Apply_lb__dq_a_1437,1,bind2);
         __result=it;;
 
         ;
         goto accept16;
 alt10_3:
-        ptr->pos=oldpos16;
-        it=rb_funcall(self,sy_host_expr,0);
-        if (it==failobj) {
-            it=failobj;
-            goto alt10_4;
-        }
-        __result=it;;
-
-        ;
-        goto accept16;
-alt10_4:
         ptr->pos=oldpos16;
         if (1) {
             it=failobj;
@@ -10315,7 +10269,7 @@ alt10_4:
 accept16:
         ;
         break;
-    case '.' ... '.':
+    case '@' ... '@':
         ;
         int oldpos18=ptr->pos;
         int cut11=0;
@@ -10364,14 +10318,28 @@ accept19:
             it=failobj;
             goto alt11_3;
         }
-        it=rb_str_new(ptr->str+ptr->pos,1);
-        ptr->pos++;
+        it=Qnil;
         it=rb_funcall(self,sy__Apply_lb__dq_a_1437,1,bind2);
         __result=it;;
 
         ;
         goto accept18;
 alt11_3:
+        ptr->pos=oldpos18;
+        it=rb_funcall(self,sy_key,0);
+        if (it==failobj) {
+            it=failobj;
+            goto alt11_4;
+        }
+        _it=it;;
+        bind_aset(bind2,1,_it);
+        it=rb_funcall(self,sy__Act_lb_bind_7d0b,1,bind2);
+        _it=bind_aget(bind2,1);;
+        __result=it;;
+
+        ;
+        goto accept18;
+alt11_4:
         ptr->pos=oldpos18;
         if (1) {
             it=failobj;
@@ -10380,7 +10348,13 @@ alt11_3:
 accept18:
         ;
         break;
-    case '@' ... '@':
+    case 'A' ... 'Z':
+        ;
+    case '_' ... '_':
+        ;
+    case 'a' ... 'a':
+        ;
+    case 'c' ... 'z':
         ;
         int oldpos20=ptr->pos;
         int cut12=0;
@@ -10396,6 +10370,17 @@ alt12_1:
         ;
         goto accept20;
 alt12_2:
+        ptr->pos=oldpos20;
+        it=rb_funcall(self,sy_call,0);
+        if (it==failobj) {
+            it=failobj;
+            goto alt12_3;
+        }
+        __result=it;;
+
+        ;
+        goto accept20;
+alt12_3:
         ptr->pos=oldpos20;
         int oldpos21=ptr->pos;
         switch((unsigned char)*ame_curstr2(ptr)) {
@@ -10427,25 +10412,10 @@ accept21:
         ptr->pos=oldpos21;
         if (x==0) {
             it=failobj;
-            goto alt12_3;
+            goto alt12_4;
         }
         it=Qnil;
         it=rb_funcall(self,sy__Apply_lb__dq_a_1437,1,bind2);
-        __result=it;;
-
-        ;
-        goto accept20;
-alt12_3:
-        ptr->pos=oldpos20;
-        it=rb_funcall(self,sy_key,0);
-        if (it==failobj) {
-            it=failobj;
-            goto alt12_4;
-        }
-        _it=it;;
-        bind_aset(bind2,1,_it);
-        it=rb_funcall(self,sy__Act_lb_bind_7d0b,1,bind2);
-        _it=bind_aget(bind2,1);;
         __result=it;;
 
         ;
@@ -10459,15 +10429,7 @@ alt12_4:
 accept20:
         ;
         break;
-    case 'A' ... 'Z':
-        ;
-    case '_' ... '_':
-        ;
-    case 'a' ... 'a':
-        ;
-    case 'c' ... 'm':
-        ;
-    case 'o' ... 'z':
+    case '[' ... '[':
         ;
         int oldpos22=ptr->pos;
         int cut13=0;
@@ -10483,17 +10445,6 @@ alt13_1:
         ;
         goto accept22;
 alt13_2:
-        ptr->pos=oldpos22;
-        it=rb_funcall(self,sy_call,0);
-        if (it==failobj) {
-            it=failobj;
-            goto alt13_3;
-        }
-        __result=it;;
-
-        ;
-        goto accept22;
-alt13_3:
         ptr->pos=oldpos22;
         int oldpos23=ptr->pos;
         switch((unsigned char)*ame_curstr2(ptr)) {
@@ -10525,10 +10476,43 @@ accept23:
         ptr->pos=oldpos23;
         if (x==0) {
             it=failobj;
-            goto alt13_4;
+            goto alt13_3;
         }
         it=Qnil;
         it=rb_funcall(self,sy__Apply_lb__dq_a_1437,1,bind2);
+        __result=it;;
+
+        ;
+        goto accept22;
+alt13_3:
+        ptr->pos=oldpos22;
+        it=rb_str_new(ptr->str+ptr->pos,1);
+        ptr->pos++;
+        it=rb_funcall(self,sy_expression,0);
+        _e=it;;
+        it=rb_obj_clone(s__rb__0fbd);
+        it=rb_funcall(self,sy_spaces,0);
+        it=rb_obj_clone(s__rb__0fbd);
+        switch((unsigned char)*ame_curstr2(ptr)) {
+        case UC(0) ... UC(92):
+            ;
+        case '^' ... UC(255):
+            ;
+            if (1) {
+                it=failobj;
+                goto alt13_4;
+            }
+            break;
+        case ']' ... ']':
+            ;
+            it=rb_str_new(ptr->str+ptr->pos,1);
+            ptr->pos++;
+            break;
+        }
+        it=rb_obj_clone(s__rb__0fbd);
+        bind_aset(bind2,1,_e);
+        it=rb_funcall(self,sy__Enter_AS_06e8,1,bind2);
+        _e=bind_aget(bind2,1);;
         __result=it;;
 
         ;
@@ -10542,22 +10526,47 @@ alt13_4:
 accept22:
         ;
         break;
-    case '[' ... '[':
+    case 'b' ... 'b':
         ;
         int oldpos24=ptr->pos;
         int cut14=0;
 alt14_1:
         ;
-        it=rb_funcall(self,sy_cases,0);
-        if (it==failobj) {
+        it=rb_str_new(ptr->str+ptr->pos,1);
+        ptr->pos++;
+        if (ame_curstr2(ptr)[0]=='r'&&ame_curstr2(ptr)[1]=='e'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='k')  ptr->pos+=4;
+        else if (1) {
             it=failobj;
             goto alt14_2;
         }
+        it=rb_funcall(self,sy__Seq_lb_Cut_lb__3505,1,bind2);
         __result=it;;
 
         ;
         goto accept24;
 alt14_2:
+        ptr->pos=oldpos24;
+        it=rb_funcall(self,sy_cases,0);
+        if (it==failobj) {
+            it=failobj;
+            goto alt14_3;
+        }
+        __result=it;;
+
+        ;
+        goto accept24;
+alt14_3:
+        ptr->pos=oldpos24;
+        it=rb_funcall(self,sy_call,0);
+        if (it==failobj) {
+            it=failobj;
+            goto alt14_4;
+        }
+        __result=it;;
+
+        ;
+        goto accept24;
+alt14_4:
         ptr->pos=oldpos24;
         int oldpos25=ptr->pos;
         switch((unsigned char)*ame_curstr2(ptr)) {
@@ -10589,7 +10598,7 @@ accept25:
         ptr->pos=oldpos25;
         if (x==0) {
             it=failobj;
-            goto alt14_3;
+            goto alt14_5;
         }
         it=Qnil;
         it=rb_funcall(self,sy__Apply_lb__dq_a_1437,1,bind2);
@@ -10597,135 +10606,13 @@ accept25:
 
         ;
         goto accept24;
-alt14_3:
-        ptr->pos=oldpos24;
-        it=rb_str_new(ptr->str+ptr->pos,1);
-        ptr->pos++;
-        it=rb_funcall(self,sy_expression,0);
-        _e=it;;
-        it=rb_obj_clone(s__rb__0fbd);
-        it=rb_funcall(self,sy_spaces,0);
-        it=rb_obj_clone(s__rb__0fbd);
-        switch((unsigned char)*ame_curstr2(ptr)) {
-        case UC(0) ... UC(92):
-            ;
-        case '^' ... UC(255):
-            ;
-            if (1) {
-                it=failobj;
-                goto alt14_4;
-            }
-            break;
-        case ']' ... ']':
-            ;
-            it=rb_str_new(ptr->str+ptr->pos,1);
-            ptr->pos++;
-            break;
-        }
-        it=rb_obj_clone(s__rb__0fbd);
-        bind_aset(bind2,1,_e);
-        it=rb_funcall(self,sy__Enter_AS_06e8,1,bind2);
-        _e=bind_aget(bind2,1);;
-        __result=it;;
-
-        ;
-        goto accept24;
-alt14_4:
+alt14_5:
         ptr->pos=oldpos24;
         if (1) {
             it=failobj;
             goto fail;
         };
 accept24:
-        ;
-        break;
-    case 'b' ... 'b':
-        ;
-        int oldpos26=ptr->pos;
-        int cut15=0;
-alt15_1:
-        ;
-        it=rb_str_new(ptr->str+ptr->pos,1);
-        ptr->pos++;
-        if (ame_curstr2(ptr)[0]=='r'&&ame_curstr2(ptr)[1]=='e'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='k')  ptr->pos+=4;
-        else if (1) {
-            it=failobj;
-            goto alt15_2;
-        }
-        it=rb_funcall(self,sy__Seq_lb_Cut_lb__3505,1,bind2);
-        __result=it;;
-
-        ;
-        goto accept26;
-alt15_2:
-        ptr->pos=oldpos26;
-        it=rb_funcall(self,sy_cases,0);
-        if (it==failobj) {
-            it=failobj;
-            goto alt15_3;
-        }
-        __result=it;;
-
-        ;
-        goto accept26;
-alt15_3:
-        ptr->pos=oldpos26;
-        it=rb_funcall(self,sy_call,0);
-        if (it==failobj) {
-            it=failobj;
-            goto alt15_4;
-        }
-        __result=it;;
-
-        ;
-        goto accept26;
-alt15_4:
-        ptr->pos=oldpos26;
-        int oldpos27=ptr->pos;
-        switch((unsigned char)*ame_curstr2(ptr)) {
-        case UC(0) ... '-':
-            ;
-        case '/' ... '9':
-            ;
-        case ';' ... UC(255):
-            ;
-            if (1) {
-                it=failobj;
-                goto reject12;
-            }
-            break;
-        case '.' ... '.':
-            ;
-        case ':' ... ':':
-            ;
-            it=rb_str_new(ptr->str+ptr->pos,1);
-            ptr->pos++;
-            break;
-        }
-        x=1;
-        goto accept27;
-reject12:
-        x=0;
-accept27:
-        it=Qnil;
-        ptr->pos=oldpos27;
-        if (x==0) {
-            it=failobj;
-            goto alt15_5;
-        }
-        it=Qnil;
-        it=rb_funcall(self,sy__Apply_lb__dq_a_1437,1,bind2);
-        __result=it;;
-
-        ;
-        goto accept26;
-alt15_5:
-        ptr->pos=oldpos26;
-        if (1) {
-            it=failobj;
-            goto fail;
-        };
-accept26:
         ;
         break;
     }
@@ -10796,7 +10683,6 @@ void Init_parser_c() {
     sy__Lambda_lb_B_2c90=rb_intern("_Lambda_lb_B_2c90");
     sy__Lookahea_0946=rb_intern("_Lookahea_0946");
     sy__Many_lb_bin_14d1=rb_intern("_Many_lb_bin_14d1");
-    sy__Nested_lb_b_1ac2=rb_intern("_Nested_lb_b_1ac2");
     sy__Or_AST_dot_c_19e2=rb_intern("_Or_AST_dot_c_19e2");
     sy__Or_AST_lb_b_0657=rb_intern("_Or_AST_lb_b_0657");
     sy__Parenthe_261b=rb_intern("_Parenthe_261b");
@@ -10881,5 +10767,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"ruleargs",AmethystParser_ruleargs,0);
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('e8c901e399659d9935f0bb712c499604')");
+    rb_eval_string("testversionparser('e030037b4302c774f81c7f0be138a675')");
 }

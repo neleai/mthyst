@@ -18,6 +18,7 @@ VALUE Amethyst_line(VALUE self );
 VALUE Amethyst_listOf(VALUE self ,VALUE a0,VALUE a1);
 VALUE Amethyst_lower(VALUE self );
 VALUE Amethyst_member(VALUE self ,VALUE a0);
+VALUE Amethyst_nested(VALUE self ,VALUE a0,VALUE a1,VALUE a2);
 VALUE Amethyst_newline(VALUE self );
 VALUE Amethyst_nil(VALUE self );
 VALUE Amethyst_number(VALUE self );
@@ -1641,6 +1642,51 @@ VALUE Amethyst_member(VALUE self ,VALUE a0) {
 fail:
     return it;
 }
+VALUE Amethyst_nested(VALUE self ,VALUE a0,VALUE a1,VALUE a2) {
+    VALUE vals[3];
+    VALUE it ,_start,_s,_mid,_end,__result,__result_2;
+    VALUE bind2=bind_new2(16);
+    _start=a0;;
+    _mid=a1;;
+    _end=a2;;
+    int x;
+    VALUE arg0,arg1,arg2,arg3;
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    it=_start;
+    _s=it;;
+    it=_s;
+    arg0=it;
+    it=AmethystCore__seq(self ,arg0);
+    if (it==failobj) {
+        it=failobj;
+        goto fail;
+    }
+    it=_s;
+    it=_mid;
+    arg0=it;
+    it=rb_funcall(self,sy_apply,1,arg0);
+    if (it==failobj) {
+        it=failobj;
+        goto fail;
+    }
+    it=_end;
+    _s=it;;
+    it=_s;
+    arg0=it;
+    it=AmethystCore__seq(self ,arg0);
+    if (it==failobj) {
+        it=failobj;
+        goto fail;
+    }
+    it=_s;
+    __result=it;;
+    it=__result;
+    __result_2=it;;
+
+fail:
+    return it;
+}
 VALUE Amethyst_newline(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result,__result_2;
@@ -2578,6 +2624,7 @@ void Init_amethyst_c() {
     rb_define_method(cls_Amethyst,"listOf",Amethyst_listOf,2);
     rb_define_method(cls_Amethyst,"lower",Amethyst_lower,0);
     rb_define_method(cls_Amethyst,"member",Amethyst_member,1);
+    rb_define_method(cls_Amethyst,"nested",Amethyst_nested,3);
     rb_define_method(cls_Amethyst,"newline",Amethyst_newline,0);
     rb_define_method(cls_Amethyst,"nil",Amethyst_nil,0);
     rb_define_method(cls_Amethyst,"number",Amethyst_number,0);
@@ -2596,5 +2643,5 @@ void Init_amethyst_c() {
     rb_define_method(cls_Amethyst,"upper",Amethyst_upper,0);
     rb_define_method(cls_Amethyst,"word",Amethyst_word,0);
     rb_define_method(cls_Amethyst,"xdigit",Amethyst_xdigit,0);
-    rb_eval_string("testversionamethyst('fa00556fdaeb2a15560bc6ae38d647cd')");
+    rb_eval_string("testversionamethyst('77b01a135ef8ef5cb32f8544aec43bf0')");
 }

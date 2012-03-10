@@ -43,8 +43,7 @@ amethyst AmethystParser {
         | ((number ('...'|'..') number)[]:{it.join} | number):num -> Apply["member",num.to_s]
         | '<'  until('>' ):s -> Apply["regch","/["+s+"]/"]
 
-  term  = 'nested(' expression:expr ")" -> Nested[expr]
-        | 'break' -> Seq[Cut[],Stop[]]
+  term  = 'break' -> Seq[Cut[],Stop[]]
         | cases
         | call
         | &<.:> '.'? -> Apply["anything"]
