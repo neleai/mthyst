@@ -170,12 +170,12 @@ end
 def __dq__le__dq__pl_bind_567e(bind)
 "{"+bind[1]+"}"
 end
-def __lb_bind_lb_1_rb__5be3(bind)
-[bind[1],"class #{bind[1].name};end;#{bind[1].name}.new"]
-
-end
 def __lb_bind_lb_1_rb__6281(bind)
 [bind[1],'<<']
+
+end
+def __lb_bind_lb_1_rb__d433(bind)
+[bind[1],";class #{bind[1].name};end;#{bind[1].name}.new"]
 
 end
 def __lp_bind_lb_1_rb__a724(bind)
@@ -214,7 +214,6 @@ end
 
 end
 
-
 class AmethystParser < Amethyst
 	def local(x)
 		x.is_a?(String) ? (l=Local[x,@bnding];@locals<<l;l) : x
@@ -222,15 +221,15 @@ class AmethystParser < Amethyst
 end
 
 def parser_compiled_by
-'5d57879096342c0ea936aa2523d40712'
+'8c21bb4edb03a2e06ac3817cc4a152bb'
 end
 def parser_source_hash
-'59e9e8c79c5bbce41814dcd406007333'
+'28148e5a5841a534f2ac380d4953afed'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'b480706362ae07c7e9b79ef5958d568c'
+'9ec55ec2f5e7bcbf6a5a0b86a46f620b'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/parser_c"

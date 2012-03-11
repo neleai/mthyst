@@ -15,7 +15,6 @@ end
 
 end
 
-
 class Inliner2 < Traverser_Clone2
 
 def _Seq_lb_src_dot__3406(bind)
@@ -67,9 +66,8 @@ end
 end
 
 
-
 def inliner2_compiled_by
-'5d57879096342c0ea936aa2523d40712'
+'8c21bb4edb03a2e06ac3817cc4a152bb'
 end
 def inliner2_source_hash
 'ccb4238b3948e1d7730b8c07b91b1561'

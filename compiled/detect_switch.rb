@@ -261,8 +261,7 @@ def _lattice_dot__b0f6(bind)
 lattice.top|lattice.bottom
 end
 
-end
-        
+end        
 
 class Minsize_Dataflow < First_Dataflow
 
@@ -312,7 +311,6 @@ end
 
 end
 
-
 class Maxsize_Dataflow < First_Dataflow
 
 def _Compiler_558e(bind)
@@ -361,7 +359,6 @@ end
 
 end
 
-
 class Complexity_Dataflow < First_Dataflow
 
 def _Compiler_558e(bind)
@@ -395,7 +392,6 @@ lattice[bind[1].map{|w| w.value}.max+1]
 end
 
 end
-
 
 class Switch_Char_Dataflow < First_Dataflow
 
@@ -445,7 +441,6 @@ end
 
 end
 
-
 class Switch_Clas_Dataflow < First_Dataflow
 
 def _Compiler_558e(bind)
@@ -492,7 +487,6 @@ lattice[bind[1]]
 end
 
 end
-
 
 
 class Cant_Fail_Dataflow < First_Dataflow
@@ -551,7 +545,6 @@ src.to
 end
 
 end
-
 
 class Detect_First< Traverser_Clone2;   def can_empty?(s);    $sizedf.analyze(s).size==0;  end; end
 
@@ -643,7 +636,6 @@ src.rules=bind[1]
 end
 
 end
-
 
 #TODO we can do unicode almost unchanged but we need test againist first byte of character
 
@@ -742,7 +734,6 @@ end
 
 end
 
-
 class Detect_Switch_Clas < Detect_First
   memoize "traverse"
   use_global_memo
@@ -832,7 +823,6 @@ end
 
 end
 
-
 class Detect_Size < Amethyst
 
 def _Or_dot_creat_49b2(bind)
@@ -861,9 +851,8 @@ end
 
 end
 
-
 def detect_switch_compiled_by
-'5d57879096342c0ea936aa2523d40712'
+'8c21bb4edb03a2e06ac3817cc4a152bb'
 end
 def detect_switch_source_hash
 'db1b99a9478567e449dc48d0774c821b'

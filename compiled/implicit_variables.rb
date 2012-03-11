@@ -15,7 +15,6 @@ end
 
 end
 
-
 class Add_Implicit_Variables < Traverser_Clone2
 
 def __at__contex_160a(bind)
@@ -68,9 +67,8 @@ end
 
 end
 
-
 def implicit_variables_compiled_by
-'5d57879096342c0ea936aa2523d40712'
+'8c21bb4edb03a2e06ac3817cc4a152bb'
 end
 def implicit_variables_source_hash
 '7902bddeb33ad0be079983548a91f729'

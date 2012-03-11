@@ -1,9 +1,3 @@
-class Anon1 < Amethyst
-
-
-end
-class Anon1;end;Anon1.new
-
 
 class Tests < Amethyst
   use_implicit_variables
@@ -22,7 +16,6 @@ bind[1]=Hash.new{|h,k| h[k]=[]}
 end
 
 end
-
 class Tests < Amethyst
 
 def __at__contex_160a(bind)
@@ -46,17 +39,16 @@ end
 
 end
 
-
 def tests_compiled_by
-'5d57879096342c0ea936aa2523d40712'
+'8c21bb4edb03a2e06ac3817cc4a152bb'
 end
 def tests_source_hash
-'142917f3cce7d427b2253953ef249d2b'
+'74a3bdd04045e48934a6da05800d0098'
 end
 def testversiontests(r)
  raise "invalid version" if r!=tests_version
 end
 def tests_version
-'70a3ed2c670d80d4326f41160f1efbc7'
+'0d32c7be06d8f57626a961fb5cd5fa8b'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/tests_c"

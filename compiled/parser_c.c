@@ -94,8 +94,8 @@ static VALUE sy___at_locals_dot__bdc6;
 static VALUE sy___at_locals_eq__4fc1;
 static VALUE sy___at_tmp_lt__lt_bi_b81c;
 static VALUE sy___dq__le__dq__pl_bind_567e;
-static VALUE sy___lb_bind_lb_1_rb__5be3;
 static VALUE sy___lb_bind_lb_1_rb__6281;
+static VALUE sy___lb_bind_lb_1_rb__d433;
 static VALUE sy___lp_bind_lb_1_rb__a724;
 static VALUE sy__a_eq_autova_7fca;
 static VALUE sy__bind_lb_1_rb_;
@@ -2369,7 +2369,7 @@ pass1:
 success1:
             *ptr=oldpass1;
             bind_aset(bind2,1,_g);
-            it=rb_funcall(self,sy___lb_bind_lb_1_rb__5be3,1,bind2);
+            it=rb_funcall(self,sy___lb_bind_lb_1_rb__d433,1,bind2);
             _g=bind_aget(bind2,1);;
             _autovar_5=it;;
 
@@ -2745,7 +2745,7 @@ pass3:
 success3:
             *ptr=oldpass3;
             bind_aset(bind2,1,_g);
-            it=rb_funcall(self,sy___lb_bind_lb_1_rb__5be3,1,bind2);
+            it=rb_funcall(self,sy___lb_bind_lb_1_rb__d433,1,bind2);
             _g=bind_aget(bind2,1);;
             _autovar_5=it;;
 
@@ -3151,7 +3151,7 @@ pass5:
 success5:
             *ptr=oldpass5;
             bind_aset(bind2,1,_g);
-            it=rb_funcall(self,sy___lb_bind_lb_1_rb__5be3,1,bind2);
+            it=rb_funcall(self,sy___lb_bind_lb_1_rb__d433,1,bind2);
             _g=bind_aget(bind2,1);;
             _autovar_5=it;;
 
@@ -10892,8 +10892,8 @@ void Init_parser_c() {
     sy___at_locals_eq__4fc1=rb_intern("__at_locals_eq__4fc1");
     sy___at_tmp_lt__lt_bi_b81c=rb_intern("__at_tmp_lt__lt_bi_b81c");
     sy___dq__le__dq__pl_bind_567e=rb_intern("__dq__le__dq__pl_bind_567e");
-    sy___lb_bind_lb_1_rb__5be3=rb_intern("__lb_bind_lb_1_rb__5be3");
     sy___lb_bind_lb_1_rb__6281=rb_intern("__lb_bind_lb_1_rb__6281");
+    sy___lb_bind_lb_1_rb__d433=rb_intern("__lb_bind_lb_1_rb__d433");
     sy___lp_bind_lb_1_rb__a724=rb_intern("__lp_bind_lb_1_rb__a724");
     sy__a_eq_autova_7fca=rb_intern("_a_eq_autova_7fca");
     sy__bind_lb_1_rb_=rb_intern("_bind_lb_1_rb_");
@@ -10955,5 +10955,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"string_like",AmethystParser_string_like,2);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('b480706362ae07c7e9b79ef5958d568c')");
+    rb_eval_string("testversionparser('9ec55ec2f5e7bcbf6a5a0b86a46f620b')");
 }

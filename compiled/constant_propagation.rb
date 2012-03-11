@@ -93,7 +93,6 @@ end
 
 end
 
-
 class Constant_Traverser < Traverser_Clone2
 
 def _Bind_lb_src_66c4(bind)
@@ -155,9 +154,8 @@ end
 
 end
 
-
 def constant_propagation_compiled_by
-'5d57879096342c0ea936aa2523d40712'
+'8c21bb4edb03a2e06ac3817cc4a152bb'
 end
 def constant_propagation_source_hash
 'afbe0dd7e39b6a400ad015d1d943a0d8'

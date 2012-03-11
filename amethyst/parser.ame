@@ -8,7 +8,7 @@ amethyst AmethystParser {
   file     = ( (~'amethyst' ~'`'   . )+:{it.join}
              | grammar
              | "`" {pos}:oldpos expression:e "`" {x="amethyst Anon#{$agram+=1} { expr=#{src[oldpos..(pos-2)]} }";puts x.inspect;x}=>[ grammar:g ]
-                                                 -> [g,"class #{g.name};end;#{g.name}.new"]
+                                                 -> [g,";class #{g.name};end;#{g.name}.new"]
              )*
 
   grammar = "amethyst" '_module'?:module "" name:name ("<" "" name  |{"Amethyst"}):parent

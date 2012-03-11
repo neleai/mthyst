@@ -140,7 +140,6 @@ end
 
 end
 
-
 class Resolve_Calls < Traverser_Clone2
 
 def __at__contex_160a(bind)
@@ -191,9 +190,8 @@ end
 
 end
 
-
 def detect_variables2_compiled_by
-'5d57879096342c0ea936aa2523d40712'
+'8c21bb4edb03a2e06ac3817cc4a152bb'
 end
 def detect_variables2_source_hash
 '57c4d3a2eeedf4c240f0cc862e9d51d2'

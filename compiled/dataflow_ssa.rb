@@ -205,7 +205,6 @@ end
 
 end
 
-
 class Dead_Code_Deleter3 < Traverser_Clone2
 
 def __at__contex_160a(bind)
@@ -264,7 +263,6 @@ end
 
 end
 
-
 class Forget_SSA < Traverser_Clone2
   memoize "traverse"
   use_global_memo
@@ -297,9 +295,8 @@ end
 
 end
 
-
 def dataflow_ssa_compiled_by
-'5d57879096342c0ea936aa2523d40712'
+'8c21bb4edb03a2e06ac3817cc4a152bb'
 end
 def dataflow_ssa_source_hash
 '82824db11baad047ee9468a9d66deac6'

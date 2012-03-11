@@ -185,6 +185,7 @@ class <<Compiler
       end
     }
     c=c*""
+    rb=rb*""
     GC::enable
 		if !Amethyst::Settings.profiling #oprofile does not like changing binaries
 		hex_digest=Digest::MD5.hexdigest(c)

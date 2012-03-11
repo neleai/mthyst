@@ -51,7 +51,6 @@ end
 
 end
 
-
 class Add_Contextual_Returns < Traverser_Clone2
 
 def _Seq_lb_src(bind)
@@ -98,7 +97,6 @@ end
 
 end
 
-
 # We do following optimalizations
 # Pass contextual arguments only to rules that use them. When none uses we delete relevant definitions.
 
@@ -138,9 +136,8 @@ end
 
 end
 
-
 def contextual_argument_return_compiled_by
-'5d57879096342c0ea936aa2523d40712'
+'8c21bb4edb03a2e06ac3817cc4a152bb'
 end
 def contextual_argument_return_source_hash
 'c58f273fba1da2ca6575be1e452f5976'

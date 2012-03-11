@@ -20,7 +20,6 @@ end
 
 end
 
-
  
 
 class Visitor < Amethyst
@@ -31,9 +30,8 @@ end
 
 end
 
-
 def traverser_compiled_by
-'5d57879096342c0ea936aa2523d40712'
+'8c21bb4edb03a2e06ac3817cc4a152bb'
 end
 def traverser_source_hash
 'c8627489f00dc4fe77fe244f73a261e1'

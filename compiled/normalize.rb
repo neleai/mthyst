@@ -99,9 +99,8 @@ end
 
 end
 
-
 def normalize_compiled_by
-'5d57879096342c0ea936aa2523d40712'
+'8c21bb4edb03a2e06ac3817cc4a152bb'
 end
 def normalize_source_hash
 '2bdef58326542fc7fe91b74dba6c51b6'

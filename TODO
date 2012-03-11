@@ -108,4 +108,4 @@ try speed vs various other parsers.
 
 highligth local variables
 
-invoking rule by rule(text,args)
+invoking rule by rule(text,args) instead _rule(text,args)
