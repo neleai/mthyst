@@ -134,8 +134,7 @@ nary=[]
     i=0
     if  el.is_a?(Bind) && (el.expr.is_a?(Local) || el.expr.is_a?(CAct))
       while true
-        if nary[i].is_a?(Apply) && nary[i].ary.size==1
-        elsif nary[i].is_a?(Act) && !nary[i].ary[0].is_a?(Args)
+        if nary[i].is_a?(Act) && !nary[i].ary[0].is_a?(Args) || nary[i].is_a?(Apply)
           loc=locals_in(nary[i])
           if loc.include?("unknown") || loc.include?(el.name[0]) || (el.expr.is_a?(Local) && loc.include?(el.expr[0]))
             break
@@ -182,10 +181,10 @@ end
 end
 
 def normalize_compiled_by
-'04bb7dae1ab0ca4a8c52179f260deba7'
+'2da7fd7d19163d022687cc5ce027906f'
 end
 def normalize_source_hash
-'ecf45eb9a056adc4590eed588a89d199'
+'6285fdec292b8a3a3fc39036c428af30'
 end
 def testversionnormalize(r)
  raise "invalid version" if r!=normalize_version

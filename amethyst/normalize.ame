@@ -25,8 +25,7 @@ amethyst Normalize{
     i=0
     if  el.is_a?(Bind) && (el.expr.is_a?(Local) || el.expr.is_a?(CAct))
       while true
-        if nary[i].is_a?(Apply) && nary[i].ary.size==1
-        elsif nary[i].is_a?(Act) && !nary[i].ary[0].is_a?(Args)
+        if nary[i].is_a?(Act) && !nary[i].ary[0].is_a?(Args) || nary[i].is_a?(Apply)
           loc=locals_in(nary[i])
           if loc.include?("unknown") || loc.include?(el.name[0]) || (el.expr.is_a?(Local) && loc.include?(el.expr[0]))
             break
