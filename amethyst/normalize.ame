@@ -25,14 +25,16 @@ amethyst Normalize{
     i=0
     if  el.is_a?(Bind) && (el.expr.is_a?(Local) || el.expr.is_a?(CAct))
       while true
-        if nary[i].is_a?(Act) && !nary[i].ary[0].is_a?(Args) || nary[i].is_a?(Apply)
+        if (nary[i].is_a?(Act) && !nary[i].ary[0].is_a?(Args)) || nary[i].is_a?(Apply) || (nary[i].is_a?(Bind) && !(el.expr.is_a?(Local) || el.expr.is_a?(CAct))) #|| nary[i].is_a?(Many)
           loc=locals_in(nary[i])
-          if loc.include?("unknown") || loc.include?(el.name[0]) || (el.expr.is_a?(Local) && loc.include?(el.expr[0]))
+          if loc.include?(el.name[0]) || (el.expr.is_a?(Local) && loc.include?(el.expr[0]))
             break
           end
-          puts el.inspect
-          puts nary[i].inspect
-          puts locals_in(nary[i]).inspect
+          if nary[i].is_a?(Or)
+            puts el.inspect
+            puts nary[i].inspect
+            puts loc.inspect
+          end
         else
           break
         end
@@ -41,10 +43,6 @@ amethyst Normalize{
     end
     nary.insert(i,el)
   }
-#  if ary.inspect!=nary.inspect
-#    puts "before",ary.inspect
-#    puts "after",nary.inspect
-#  end
   nary
 
   }

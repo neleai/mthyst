@@ -134,14 +134,16 @@ nary=[]
     i=0
     if  el.is_a?(Bind) && (el.expr.is_a?(Local) || el.expr.is_a?(CAct))
       while true
-        if nary[i].is_a?(Act) && !nary[i].ary[0].is_a?(Args) || nary[i].is_a?(Apply)
+        if (nary[i].is_a?(Act) && !nary[i].ary[0].is_a?(Args)) || nary[i].is_a?(Apply) || (nary[i].is_a?(Bind) && !(el.expr.is_a?(Local) || el.expr.is_a?(CAct))) #|| nary[i].is_a?(Many)
           loc=locals_in(nary[i])
-          if loc.include?("unknown") || loc.include?(el.name[0]) || (el.expr.is_a?(Local) && loc.include?(el.expr[0]))
+          if loc.include?(el.name[0]) || (el.expr.is_a?(Local) && loc.include?(el.expr[0]))
             break
           end
-          puts el.inspect
-          puts nary[i].inspect
-          puts locals_in(nary[i]).inspect
+          if nary[i].is_a?(Or)
+            puts el.inspect
+            puts nary[i].inspect
+            puts loc.inspect
+          end
         else
           break
         end
@@ -150,10 +152,6 @@ nary=[]
     end
     nary.insert(i,el)
   }
-#  if bind[1].inspect!=nary.inspect
-#    puts "before",bind[1].inspect
-#    puts "after",nary.inspect
-#  end
   nary
 
   
@@ -184,7 +182,7 @@ def normalize_compiled_by
 '2da7fd7d19163d022687cc5ce027906f'
 end
 def normalize_source_hash
-'6285fdec292b8a3a3fc39036c428af30'
+'9a3ade82e58e663edf0eed3f84e31a63'
 end
 def testversionnormalize(r)
  raise "invalid version" if r!=normalize_version
