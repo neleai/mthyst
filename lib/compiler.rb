@@ -146,8 +146,10 @@ class <<Compiler
     GC::disable
 		source=File.new(file).read
 		source_hash=Digest::MD5.hexdigest(source)
-		if !$bootstrapping_amethyst
+		if !$bootstrapping_amethyst #at bootstrap we compare if compilation by new and old compiler give same result. 
       if file2!="amethyst" && file2!="traverser"
+      #TODO we need ast of parent grammars. 
+      #Saving by YAML is to slow so for now we use this hack
         if Dir["compiled/#{file2}.rb"]!=[]
           fil=File.new("compiled/#{file2}.rb").read
           compiled_by=/compiled_by\n.*'([0-9a-f]*)'/.match(fil)[1]
@@ -163,19 +165,16 @@ class <<Compiler
 		CurrentParser.clear
 
 		#todo write this with less ugly code
-		$gr=[]
-		$compiler=self
+		$gr={}
 		$grammars=@grammars
     $glrb={}
     $glinit={}
     $glc={}
     $ctr=AmethystCTranslator
-		gno=0
 		pre =tree.map{|e|
 		if e.is_a? Grammar
-			gno+=1
-			$gr[gno]=e
-			"$compiler.add_grammar($gr[#{gno}])\n$gr[#{gno}].rules=$grammars[$gr[#{gno}].name].rules.map{|h,k| k}\nc,init,rb=$ctr.new.parse(:itrans,[$gr[#{gno}]]);$glc[#{gno}]=c;$glinit[#{gno}]=init;$glrb[#{gno}]=rb;CurrentParser.clear\n"
+			$gr[e.name]=e
+			"Compiler.add_grammar($gr[#{e.name.inspect}])\n$gr[#{e.name.inspect}].rules=$grammars[$gr[#{e.name.inspect}].name].rules.map{|h,k| k}\nc,init,rb=$ctr.new.parse(:itrans,[$gr[#{e.name.inspect}]]);$glc[#{e.name.inspect}]=c;$glinit[#{e.name.inspect}]=init;$glrb[#{e.name.inspect}]=rb;CurrentParser.clear\n"
 		else
 		e
 		end}.join
@@ -184,11 +183,9 @@ class <<Compiler
 
 		debug_print tree
     c,init,rb=[],[],[]
-    gno=0
     tree.map{|e|
       if e.is_a? Grammar
-        gno+=1
-        c<<$glc[gno];rb<<$glrb[gno];init<<$glinit[gno]
+        c<<$glc[e.name];rb<<$glrb[e.name];init<<$glinit[e.name]
       else
         rb<< e
       end
@@ -222,7 +219,7 @@ require File.expand_path(File.dirname(__FILE__))+\"/\#{RUBY_VERSION}/#{file2}_c\
   	}#}
 		end
 	end
-end	
+end
 Compiler::init
 $compiled_by=""
 COMPILED.each{|opt|
