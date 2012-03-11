@@ -1,9 +1,38 @@
+def locals_in(el)
+  if el.is_a?(Local)
+    return [el[0]]
+  elsif el.is_a?(Result)
+    return el.varnames
+  elsif el.is_a?(Act) || el.is_a?(Args) || el.is_a?(Or)
+    loc=[]
+    el.ary.each{|e|
+      loc+=locals_in(e) 
+    }
+    return loc
+  elsif el.is_a? (Key) || el.is_a?(String) || el.is_a?(Global)
+    return []
+  else 
+    return ["unknown"]
+  end
+end
 def defer_acts(ary)
   nary=[]
   ary.reverse.each{|el|
     i=0
     if  el.is_a?(Bind) && (el.expr.is_a?(Local) || el.expr.is_a?(CAct))
-      while nary[i].is_a?(Apply) && nary[i].ary.size==1
+      while true
+        if nary[i].is_a?(Apply) && nary[i].ary.size==1
+        elsif nary[i].is_a?(Act) && !nary[i].ary[0].is_a?(Args) 
+          loc=locals_in(nary[i])
+          if loc.include?("unknown") || loc.include?(el.name[0]) || (el.expr.is_a?(Local) && loc.include?(el.expr[0]))
+            break
+          end
+          puts el.inspect
+          puts nary[i].inspect
+          puts locals_in(nary[i]).inspect
+        else
+          break
+        end
         i+=1
       end
     end
@@ -121,7 +150,7 @@ def normalize_compiled_by
 '9c0dcfd6b8f32588bd845cdd197569bc'
 end
 def normalize_source_hash
-'684a55f16aefb6dd72e518cacf24a0c2'
+'8c6a7b64b6bbadd4777b1d043403bde8'
 end
 def testversionnormalize(r)
  raise "invalid version" if r!=normalize_version
