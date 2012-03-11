@@ -1,4 +1,4 @@
-#@Or_AST and @Seq are necessary for collect
+#@Or_AST and @Seq_AST are necessary for collect
 $agram=0
 class AmethystParser < Amethyst
   memoize "name","argsOpt"
@@ -119,15 +119,15 @@ end
 def _Rule_dot_cre_3767(bind)
 Rule.create( {:args=>bind[3],:bnding=>bind[1],:body=>bind[4],:locals=>bind[5],:name=>bind[2] })
 end
-def _Seq_dot_crea_bfbb(bind)
-Seq.create( {:ary=>bind[1] })
+def _Seq_AST_dot__a126(bind)
+Seq_AST.create( {:ary=>bind[1] })
 end
-def _Seq_lb_Bind_bbb6(bind)
-Seq[Bind[local("it"),bind[1]] , Act[bind[2]] ]
+def _Seq_AST_lb__1817(bind)
+Seq_AST[Cut[],Stop[]]
 
 end
-def _Seq_lb_Cut_lb__3505(bind)
-Seq[Cut[],Stop[]]
+def _Seq_AST_lb__66a7(bind)
+Seq_AST[Bind[local("it"),bind[1]] , Act[bind[2]] ]
 
 end
 def _Strin_lb__lb__dq__b20e(bind)
@@ -181,8 +181,8 @@ end
 def __lp_bind_lb_1_rb__a724(bind)
 (bind[1]==',') || FAIL
 end
-def _a_eq_autova_7fca(bind)
-a=autovar; Seq[Or_AST[{:ary=>bind[1].ary.map{|ands| Seq[{:ary=>[Bind[a,Act["[]"]]]+ands.ary.map{|expr| Append_AST[a,expr]}}]}}],a]
+def _a_eq_autova_57aa(bind)
+a=autovar; Seq_AST[Or_AST[{:ary=>bind[1].ary.map{|ands| Seq_AST[{:ary=>[Bind[a,Act["[]"]]]+ands.ary.map{|expr| Append_AST[a,expr]}}]}}],a]
 
 end
 def _bind_lb_1_rb_(bind)
@@ -196,8 +196,8 @@ def _bind_lb_1_rb__dot__e879(bind)
 bind[1].join
 
 end
-def _bind_lb_1_rb__eq__f15c(bind)
-bind[1]=Seq[{:ary=>(@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[bind[1]])}]; 
+def _bind_lb_1_rb__eq__e198(bind)
+bind[1]=Seq_AST[{:ary=>(@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[bind[1]])}]; 
 end
 def _bind_lb_1_rb__pl__b087(bind)
 bind[1]+[',']
@@ -221,15 +221,15 @@ class AmethystParser < Amethyst
 end
 
 def parser_compiled_by
-'b18e286b671d3ef14ae05ae3af3de425'
+'04bb7dae1ab0ca4a8c52179f260deba7'
 end
 def parser_source_hash
-'28148e5a5841a534f2ac380d4953afed'
+'be8c609881439943a2cd6cb7008451be'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'cf61ffc1f88f066514f561d2c2df85bd'
+'3c95e700d2b4589fe98f68ad59eb7ff9'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/parser_c"

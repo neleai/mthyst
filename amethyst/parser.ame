@@ -1,4 +1,4 @@
-#@Or_AST and @Seq are necessary for collect
+#@Or_AST and @Seq_AST are necessary for collect
 $agram=0
 class AmethystParser < Amethyst
   memoize "name","argsOpt"
@@ -16,11 +16,11 @@ amethyst AmethystParser {
   
   rule = {@@locals=[];@@appends=[];@@bnding=Bnding[]} {@@bnding}:bnding  
          "" name:name  ruleargs:args "=" expression:body  
-          {Bind[local("_result"),body]}:body {@@locals.uniq}:locals {body=Seq[{:ary=>(@@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[body])}]; }   @Rule
+          {Bind[local("_result"),body]}:body {@@locals.uniq}:locals {body=Seq_AST[{:ary=>(@@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[body])}]; }   @Rule
 
   
   expression = listOf(`sequence`,`"|"`):ary @Or_AST  
-  sequence =  (nr ","? "" prefixed)*:ary  @Seq
+  sequence =  (nr ","? "" prefixed)*:ary  @Seq_AST
   nr = ~("" name argsOpt "=")
 
   prefixed   = <&~>:neg inline_host_expr:expr-> Pred[expr[0],neg=="~"]
@@ -34,7 +34,7 @@ amethyst AmethystParser {
                             | '?'      -> Or_AST[from,Apply["empty"]]
                             | ':' '[' (key | name):name ']' ->  @@appends<< local(name); Append_AST[local(name),from]
                             | ':' (  (key | name):name ('[]'?):append -> @@appends<< local(name) if append; append=='[]' ? Append_AST[name,from] : Bind[local(name),from]
-                                  | inline_host_expr:e                      -> Seq[ Bind[local("it"),from] , Act[e] ]
+                                  | inline_host_expr:e                      -> Seq_AST[ Bind[local("it"),from] , Act[e] ]
                                   )
                     ):from  )* {from}
 
@@ -43,7 +43,7 @@ amethyst AmethystParser {
         | ((number ('...'|'..') number)[]:{it.join} | number):num -> Apply["member",num.to_s]
         | string_like('<','>'):s -> Apply["regch","/["+s+"]/"]
 
-  term  = 'break' -> Seq[Cut[],Stop[]]
+  term  = 'break' -> Seq_AST[Cut[],Stop[]]
         | cases
         | call
         | &<.:> '.'? -> Apply["anything"]
@@ -55,7 +55,7 @@ amethyst AmethystParser {
         | '#'  line:s        -> Comment[s]
         | '(' expression:x ")" ( '[]'  collect(x) | {Parenthesis[x]} )
 
-  collect(ors) = -> a=autovar; Seq[Or_AST[{:ary=>ors.ary.map{|ands| Seq[{:ary=>[Bind[a,Act["[]"]]]+ands.ary.map{|expr| Append_AST[a,expr]}}]}}],a]
+  collect(ors) = -> a=autovar; Seq_AST[Or_AST[{:ary=>ors.ary.map{|ands| Seq_AST[{:ary=>[Bind[a,Act["[]"]]]+ands.ary.map{|expr| Append_AST[a,expr]}}]}}],a]
   
   call = className:klas '::' name:name argsOpt:arg (lambda:[arg])? -> Apply[[klas,name],arg]
        |                     name:name argsOpt:arg (lambda:[arg])? -> Apply[name,arg]
