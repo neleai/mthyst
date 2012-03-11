@@ -491,7 +491,6 @@ VALUE Dataflow_traverse(VALUE self ) {
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
-    it=rb_ary_new3(0);
     int stop1=0;
     while(!stop1) {
         int oldpos1=ptr->pos;
@@ -693,7 +692,6 @@ alt2_2:
         }
         it=rb_ary_new3(0);
         _ar=it;;
-        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos3=ptr->pos;
@@ -821,7 +819,6 @@ VALUE Dataflow_vars_in(VALUE self ) {
     bind_aset(bind2,1,_ary);
     it=rb_funcall(self,sy__bind_lb_1_rb__eq__fe02,1,bind2);
     _ary=bind_aget(bind2,1);;
-    it=rb_ary_new3(0);
     int stop1=0;
     while(!stop1) {
         switch(FIX2LONG(rb_hash_aref(switchhash_Dataflow_3,rb_obj_class(ame_curobj2(ptr))))) {
@@ -851,7 +848,6 @@ alt1_1:
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
-            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             it=rb_funcall(self,sy__src_25d9,1,bind2);
             _autovar_2=it;;
@@ -1060,7 +1056,6 @@ alt4_1:
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
-            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             it=rb_funcall(self,sy__src_25d9,1,bind2);
             _autovar_8=it;;
@@ -1131,7 +1126,6 @@ alt5_1:
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
-            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             it=rb_funcall(self,sy__src_25d9,1,bind2);
             _autovar_10=it;;
@@ -1203,7 +1197,6 @@ alt6_1:
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
-            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             it=rb_funcall(self,sy__src_25d9,1,bind2);
             _autovar_12=it;;
@@ -1275,7 +1268,6 @@ alt7_1:
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
-            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             it=rb_funcall(self,sy__src_25d9,1,bind2);
             _autovar_14=it;;
@@ -1346,7 +1338,6 @@ alt8_1:
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
-            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             it=rb_funcall(self,sy__src_25d9,1,bind2);
             _autovar_16=it;;
@@ -1757,7 +1748,6 @@ success4:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=rb_funcall(self,sy_traverse,0);
         if (it==failobj) {
@@ -1782,7 +1772,6 @@ success4:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=rb_funcall(self,sy__bind_end_6e13,1,bind2);
         _autovar_17=it;;
@@ -1842,7 +1831,6 @@ success7:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=rb_funcall(self,sy__ssanum_lp_s_3920,1,bind2);
         _autovar_20=it;;
@@ -2058,7 +2046,6 @@ success11:
         _join=it;;
         it=rb_funcall(self,sy__oldssanu_073d,1,bind2);
         _old=it;;
-        it=rb_ary_new3(0);
         int stop5=0;
         while(!stop5) {
             int oldpos5=ptr->pos;
@@ -2615,7 +2602,6 @@ VALUE Dead_Code_Deleter3_traverse(VALUE self ) {
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
-    it=rb_ary_new3(0);
     int stop1=0;
     while(!stop1) {
         int oldpos1=ptr->pos;
@@ -2817,7 +2803,6 @@ alt2_2:
         }
         it=rb_ary_new3(0);
         _ar=it;;
-        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos3=ptr->pos;
@@ -3549,7 +3534,6 @@ VALUE Forget_SSA_traverse(VALUE self ) {
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
-    it=rb_ary_new3(0);
     int stop1=0;
     while(!stop1) {
         int oldpos1=ptr->pos;
@@ -3754,7 +3738,6 @@ alt2_2:
         }
         it=rb_ary_new3(0);
         _ar=it;;
-        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos3=ptr->pos;
@@ -4061,5 +4044,5 @@ void Init_dataflow_ssa_c() {
     rb_define_method(cls_Forget_SSA,"traverse",Forget_SSA_traverse,0);
     rb_define_method(cls_Forget_SSA,"traverse_item",Forget_SSA_traverse_item,0);
     rb_define_method(cls_Forget_SSA,"visit",Forget_SSA_visit,0);
-    rb_eval_string("testversiondataflow_ssa('968f29d36769a7afe7db03255e3457f5')");
+    rb_eval_string("testversiondataflow_ssa('abb776d319d85a98fc84374385f7c41c')");
 }

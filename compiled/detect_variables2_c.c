@@ -796,7 +796,6 @@ VALUE Analyze_Variables2_traverse(VALUE self ) {
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
-    it=rb_ary_new3(0);
     int stop1=0;
     while(!stop1) {
         int oldpos1=ptr->pos;
@@ -998,7 +997,6 @@ alt2_2:
         }
         it=rb_ary_new3(0);
         _ar=it;;
-        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos3=ptr->pos;
@@ -1180,7 +1178,6 @@ VALUE Analyze_Variables2_visit(VALUE self ) {
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos1=ptr->pos;
@@ -1700,7 +1697,6 @@ success6:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=rb_ary_new3(0);
         int stop3=0;
         while(!stop3) {
             switch(FIX2LONG(rb_hash_aref(switchhash_Analyze_Variables2_6,rb_obj_class(ame_curobj2(ptr))))) {
@@ -1983,7 +1979,6 @@ success8:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=rb_ary_new3(0);
         int stop4=0;
         while(!stop4) {
             int oldpos9=ptr->pos;
@@ -2906,7 +2901,6 @@ VALUE Resolve_Calls_traverse(VALUE self ) {
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
-    it=rb_ary_new3(0);
     int stop1=0;
     while(!stop1) {
         int oldpos1=ptr->pos;
@@ -3108,7 +3102,6 @@ alt2_2:
         }
         it=rb_ary_new3(0);
         _ar=it;;
-        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos3=ptr->pos;
@@ -3612,5 +3605,5 @@ void Init_detect_variables2_c() {
     rb_define_method(cls_Resolve_Calls,"traverse",Resolve_Calls_traverse,0);
     rb_define_method(cls_Resolve_Calls,"traverse_item",Resolve_Calls_traverse_item,0);
     rb_define_method(cls_Resolve_Calls,"visit",Resolve_Calls_visit,0);
-    rb_eval_string("testversiondetect_variables2('d4b4ac3ee1ac3ba60fe4ced6b8f04cfc')");
+    rb_eval_string("testversiondetect_variables2('11e192d39e94ddcc89bd82adec696050')");
 }

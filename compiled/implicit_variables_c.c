@@ -668,7 +668,6 @@ VALUE Add_Implicit_Variables_traverse(VALUE self ) {
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
-    it=rb_ary_new3(0);
     int stop1=0;
     while(!stop1) {
         int oldpos1=ptr->pos;
@@ -870,7 +869,6 @@ alt2_2:
         }
         it=rb_ary_new3(0);
         _ar=it;;
-        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos3=ptr->pos;
@@ -1473,5 +1471,5 @@ void Init_implicit_variables_c() {
     rb_define_method(cls_Add_Implicit_Variables,"traverse",Add_Implicit_Variables_traverse,0);
     rb_define_method(cls_Add_Implicit_Variables,"traverse_item",Add_Implicit_Variables_traverse_item,0);
     rb_define_method(cls_Add_Implicit_Variables,"visit",Add_Implicit_Variables_visit,0);
-    rb_eval_string("testversionimplicit_variables('e10d5f113dfdccedd0d80523b7664adb')");
+    rb_eval_string("testversionimplicit_variables('c705677100d7d6265dae8e6edc9b7b5c')");
 }

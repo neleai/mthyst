@@ -147,10 +147,12 @@ s
         | Act[ {@@bindno=0;@@binds={}}
 								.*:{addcallback(@pred ? ["(",it,") || FAIL"] : it)}:cbno 
 								{@@binds.map{|k,v| "bind_aset(bind2,#{v},#{bget(k)});"}*"" + "it=#{rbcall(cbno,["bind2"])};"+@@binds.map{|k,v|"#{bset(k,"bind_aget(bind2,#{v})")};"}*"" +"#{@pred ? "#{failwhen("it==failobj")};" :"" }"} ]
-        | CAct[.* {ar=*@ccode; 
+        | CAct[.* {if @>bound
+                   ar=*@ccode; 
                    @@header<<ar[0] if ar[0]
                    @@init<<ar[1] if ar[1]
-                   "it=#{ar[2]};"}]
+                   "it=#{ar[2]};"
+                   end}]
 
         | Apply[ ["_find"] {raise "TODO"} ]
 				| Apply[ ["_test_size"] CAct[.:s] ] -> "if(ptr->pos+#{s}>=ptr->len) #{failwhen("1")}"
@@ -161,10 +163,10 @@ s
 				| Apply[ ["advance_clas"] {"it=ptr->ary[ptr->pos];            ;ptr->pos++;"} ]
 
         | Apply[ ["_seq"] CAct[.:s] {"if (#{ary=s.split("");map_index(ary){|i| "ame_curstr2(ptr)[#{i}]==#{Lattice_Char.new.cchar(ary[i])}" }*"&&" })  ptr->pos+=#{s.size}; else #{failwhen("1")}"}]
-        | Apply[ .:name {0}:ii ( trans:aa {ii+=1} {"#{aa} arg#{ii-1}=it;"})*:args @self:app]
+        | Apply[{@>bound=true} .:name {0}:ii ( trans:aa {ii+=1} {"#{aa} arg#{ii-1}=it;"})*:args @self:app]
                  -> r=" #{args*""} it=#{callrule(name,ii)};"; cant_fail?(app) ? r : "#{r} #{failwhen("it==failobj")}"
 
-        | Bind[trans:e {"#{e} #{bset(@name,"it")};\n" } ]
+        | Bind[{@>bound=true} trans:e {"#{e} #{bset(@name,"it")};\n" } ]
         | Seq[ trans*:t {t*""} ]
         | Or[ {label("accept")}:accept {label("oldpos")}:oldpos label("alt"):alt {1}:altno {@@cutlabel}:oldcutlabel {@@cuts}:oldcuts {@@cuts=nil;@@cutlabel=label("cut")}
            {"int #{oldpos}=ptr->pos;int #{@@cutlabel}=0;\n#{alt}_#{altno}:;"}:s

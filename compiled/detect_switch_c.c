@@ -73,7 +73,6 @@ alt1_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
         _autovar_2=it;;
@@ -119,7 +118,6 @@ accept1:
         break;
     case 8/*Apply*/:
         ;
-        it=rb_ary_new3(0);
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
@@ -233,7 +231,6 @@ accept2:
         break;
     case 9/*Bind*/:
         ;
-        it=rb_ary_new3(0);
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
@@ -306,7 +303,6 @@ accept3:
         break;
     case 10/*Many*/:
         ;
-        it=rb_ary_new3(0);
         int oldpos4=ptr->pos;
         int cut4=0;
 alt4_1:
@@ -414,7 +410,6 @@ alt5_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos6=ptr->pos;
@@ -538,7 +533,6 @@ accept5:
         break;
     case 14/*Seq*/:
         ;
-        it=rb_ary_new3(0);
         int oldpos7=ptr->pos;
         int cut7=0;
 alt7_1:
@@ -565,7 +559,6 @@ alt7_1:
         }
         it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
         _val=it;;
-        it=rb_ary_new3(0);
         int stop2=0;
         while(!stop2) {
             int oldpos8=ptr->pos;
@@ -626,7 +619,6 @@ alt9_1:
                 it=failobj;
                 goto alt9_2;
             };
-            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             ;
             goto accept9;
@@ -710,7 +702,6 @@ accept7:
             it=failobj;
             goto fail;
         }
-        it=rb_ary_new3(0);
         it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
         __result=it;;
         break;
@@ -1644,7 +1635,6 @@ alt1_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
         _autovar_2=it;;
@@ -1690,7 +1680,6 @@ accept1:
         break;
     case 8/*Apply*/:
         ;
-        it=rb_ary_new3(0);
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
@@ -1804,7 +1793,6 @@ accept2:
         break;
     case 9/*Bind*/:
         ;
-        it=rb_ary_new3(0);
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
@@ -1877,7 +1865,6 @@ accept3:
         break;
     case 10/*Many*/:
         ;
-        it=rb_ary_new3(0);
         int oldpos4=ptr->pos;
         int cut4=0;
 alt4_1:
@@ -1985,7 +1972,6 @@ alt5_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos6=ptr->pos;
@@ -2109,7 +2095,6 @@ accept5:
         break;
     case 14/*Seq*/:
         ;
-        it=rb_ary_new3(0);
         int oldpos7=ptr->pos;
         int cut7=0;
 alt7_1:
@@ -2136,7 +2121,6 @@ alt7_1:
         }
         it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
         _val=it;;
-        it=rb_ary_new3(0);
         int stop2=0;
         while(!stop2) {
             int oldpos8=ptr->pos;
@@ -2197,7 +2181,6 @@ alt9_1:
                 it=failobj;
                 goto alt9_2;
             };
-            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             ;
             goto accept9;
@@ -2281,7 +2264,6 @@ accept7:
             it=failobj;
             goto fail;
         }
-        it=rb_ary_new3(0);
         it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
         __result=it;;
         break;
@@ -3065,7 +3047,6 @@ alt1_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
         _autovar_2=it;;
@@ -3111,7 +3092,6 @@ accept1:
         break;
     case 8/*Apply*/:
         ;
-        it=rb_ary_new3(0);
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
@@ -3225,7 +3205,6 @@ accept2:
         break;
     case 9/*Bind*/:
         ;
-        it=rb_ary_new3(0);
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
@@ -3298,7 +3277,6 @@ accept3:
         break;
     case 10/*Many*/:
         ;
-        it=rb_ary_new3(0);
         int oldpos4=ptr->pos;
         int cut4=0;
 alt4_1:
@@ -3406,7 +3384,6 @@ alt5_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos6=ptr->pos;
@@ -3530,7 +3507,6 @@ accept5:
         break;
     case 14/*Seq*/:
         ;
-        it=rb_ary_new3(0);
         int oldpos7=ptr->pos;
         int cut7=0;
 alt7_1:
@@ -3557,7 +3533,6 @@ alt7_1:
         }
         it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
         _val=it;;
-        it=rb_ary_new3(0);
         int stop2=0;
         while(!stop2) {
             int oldpos8=ptr->pos;
@@ -3618,7 +3593,6 @@ alt9_1:
                 it=failobj;
                 goto alt9_2;
             };
-            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             ;
             goto accept9;
@@ -3702,7 +3676,6 @@ accept7:
             it=failobj;
             goto fail;
         }
-        it=rb_ary_new3(0);
         it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
         __result=it;;
         break;
@@ -3903,7 +3876,6 @@ accept1:
         break;
     case 1/*Many*/:
         ;
-        it=rb_ary_new3(0);
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
@@ -4009,7 +3981,6 @@ alt3_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos4=ptr->pos;
@@ -4126,7 +4097,6 @@ accept3:
         break;
     case 5/*Seq*/:
         ;
-        it=rb_ary_new3(0);
         int oldpos5=ptr->pos;
         int cut5=0;
 alt5_1:
@@ -4234,7 +4204,6 @@ accept5:
             it=failobj;
             goto fail;
         }
-        it=rb_ary_new3(0);
         it=rb_funcall(self,sy__lattice_lb__6ee3,1,bind2);
         __result=it;;
         break;
@@ -5336,7 +5305,6 @@ alt1_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
         _autovar_2=it;;
@@ -5382,7 +5350,6 @@ accept1:
         break;
     case 8/*Apply*/:
         ;
-        it=rb_ary_new3(0);
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
@@ -5496,7 +5463,6 @@ accept2:
         break;
     case 9/*Bind*/:
         ;
-        it=rb_ary_new3(0);
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
@@ -5569,7 +5535,6 @@ accept3:
         break;
     case 10/*Many*/:
         ;
-        it=rb_ary_new3(0);
         int oldpos4=ptr->pos;
         int cut4=0;
 alt4_1:
@@ -5677,7 +5642,6 @@ alt5_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos6=ptr->pos;
@@ -5801,7 +5765,6 @@ accept5:
         break;
     case 14/*Seq*/:
         ;
-        it=rb_ary_new3(0);
         int oldpos7=ptr->pos;
         int cut7=0;
 alt7_1:
@@ -5828,7 +5791,6 @@ alt7_1:
         }
         it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
         _val=it;;
-        it=rb_ary_new3(0);
         int stop2=0;
         while(!stop2) {
             int oldpos8=ptr->pos;
@@ -5889,7 +5851,6 @@ alt9_1:
                 it=failobj;
                 goto alt9_2;
             };
-            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             ;
             goto accept9;
@@ -5973,7 +5934,6 @@ accept7:
             it=failobj;
             goto fail;
         }
-        it=rb_ary_new3(0);
         it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
         __result=it;;
         break;
@@ -6430,7 +6390,6 @@ alt1_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
         _autovar_2=it;;
@@ -6476,7 +6435,6 @@ accept1:
         break;
     case 8/*Apply*/:
         ;
-        it=rb_ary_new3(0);
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
@@ -6590,7 +6548,6 @@ accept2:
         break;
     case 9/*Bind*/:
         ;
-        it=rb_ary_new3(0);
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
@@ -6663,7 +6620,6 @@ accept3:
         break;
     case 10/*Many*/:
         ;
-        it=rb_ary_new3(0);
         int oldpos4=ptr->pos;
         int cut4=0;
 alt4_1:
@@ -6771,7 +6727,6 @@ alt5_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos6=ptr->pos;
@@ -6895,7 +6850,6 @@ accept5:
         break;
     case 14/*Seq*/:
         ;
-        it=rb_ary_new3(0);
         int oldpos7=ptr->pos;
         int cut7=0;
 alt7_1:
@@ -6922,7 +6876,6 @@ alt7_1:
         }
         it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
         _val=it;;
-        it=rb_ary_new3(0);
         int stop2=0;
         while(!stop2) {
             int oldpos8=ptr->pos;
@@ -6983,7 +6936,6 @@ alt9_1:
                 it=failobj;
                 goto alt9_2;
             };
-            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             ;
             goto accept9;
@@ -7067,7 +7019,6 @@ accept7:
             it=failobj;
             goto fail;
         }
-        it=rb_ary_new3(0);
         it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
         __result=it;;
         break;
@@ -7191,7 +7142,6 @@ alt1_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=rb_funcall(self,sy___lp_src_dot_pre_c6b8,1,bind2);
         if (it==failobj) {
@@ -7410,7 +7360,6 @@ alt4_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=Qnil;
         if (ptr->pos<ptr->len) {
@@ -7522,7 +7471,6 @@ alt7_1:
                     ptr->ary=RARRAY_PTR(ary);
                     ptr->len=RARRAY_LEN(ary);
                 }
-                it=rb_ary_new3(0);
                 int stop2=0;
                 while(!stop2) {
                     switch(FIX2LONG(rb_hash_aref(switchhash_Cant_Fail_Dataflow_3,rb_obj_class(ame_curobj2(ptr))))) {
@@ -7530,7 +7478,6 @@ alt7_1:
                         ;
                         it=ptr->ary[ptr->pos];            ;
                         ptr->pos++;
-                        it=rb_ary_new3(0);
                         ptr->pos=ptr->len;
                         cut7=1;
                         stop2=1;
@@ -7838,7 +7785,6 @@ alt1_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
         _autovar_2=it;;
@@ -7884,7 +7830,6 @@ accept1:
         break;
     case 8/*Apply*/:
         ;
-        it=rb_ary_new3(0);
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
@@ -7998,7 +7943,6 @@ accept2:
         break;
     case 9/*Bind*/:
         ;
-        it=rb_ary_new3(0);
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
@@ -8071,7 +8015,6 @@ accept3:
         break;
     case 10/*Many*/:
         ;
-        it=rb_ary_new3(0);
         int oldpos4=ptr->pos;
         int cut4=0;
 alt4_1:
@@ -8179,7 +8122,6 @@ alt5_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos6=ptr->pos;
@@ -8303,7 +8245,6 @@ accept5:
         break;
     case 14/*Seq*/:
         ;
-        it=rb_ary_new3(0);
         int oldpos7=ptr->pos;
         int cut7=0;
 alt7_1:
@@ -8330,7 +8271,6 @@ alt7_1:
         }
         it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
         _val=it;;
-        it=rb_ary_new3(0);
         int stop2=0;
         while(!stop2) {
             int oldpos8=ptr->pos;
@@ -8391,7 +8331,6 @@ alt9_1:
                 it=failobj;
                 goto alt9_2;
             };
-            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             ;
             goto accept9;
@@ -8475,7 +8414,6 @@ accept7:
             it=failobj;
             goto fail;
         }
-        it=rb_ary_new3(0);
         it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
         __result=it;;
         break;
@@ -8638,7 +8576,6 @@ alt1_1:
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
-    it=rb_ary_new3(0);
     ptr->pos=ptr->len;
     it=rb_funcall(self,sy__src_dot_ary_d5cf,1,bind2);
     _ary=it;;
@@ -8803,7 +8740,6 @@ alt1_2:
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
-    it=rb_ary_new3(0);
     ptr->pos=ptr->len;
     it=rb_funcall(self,sy__src_dot_ary_d5cf,1,bind2);
     _ary=it;;
@@ -10096,7 +10032,6 @@ VALUE Detect_Switch_Char_traverse(VALUE self ) {
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
-    it=rb_ary_new3(0);
     int stop1=0;
     while(!stop1) {
         int oldpos1=ptr->pos;
@@ -10301,7 +10236,6 @@ alt2_2:
         }
         it=rb_ary_new3(0);
         _ar=it;;
-        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos3=ptr->pos;
@@ -10548,7 +10482,6 @@ success2:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=Qnil;
         if (ptr->pos<ptr->len) {
@@ -10870,7 +10803,6 @@ alt1_4:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=rb_funcall(self,sy__first_lp_sr_3298,1,bind2);
         _firs=it;;
@@ -10969,9 +10901,6 @@ accept2:
         it=_autovar_18;
         _items=it;;
         it=Qfalse;
-        it=Qfalse;
-        it=Qfalse;
-        it=Qfalse;
         _aswitch=it;;
         bind_aset(bind2,1,_items);
         bind_aset(bind2,2,_aswitch);
@@ -11035,8 +10964,6 @@ alt3_2:
             ;
             it=rb_funcall(self,sy___lb__lb_Lattic_d322,1,bind2);
             _list=it;;
-            it=c_Lattice_Char;
-            it=c_Switch_Char;
             int oldpos4=ptr->pos;
             int cut4=0;
 alt4_1:
@@ -11061,7 +10988,6 @@ alt4_1:
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
-            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             it=rb_funcall(self,sy__src_dot_ary_d5cf,1,bind2);
             _ary=it;;
@@ -11081,7 +11007,6 @@ success13:
             *ptr=oldpass13;
             it=rb_ary_new3(0);
             _newlist=it;;
-            it=c_Lattice_Char;
             it=c_Lattice_Char;
             _lat=it;;
             bind_aset(bind2,1,_list);
@@ -11145,7 +11070,6 @@ alt4_3:
                 goto alt4_4;
             }
             it=c_Switch_Char;
-            it=c_Switch_Char;
             _cls=it;;
             bind_aset(bind2,1,_cls);
             bind_aset(bind2,2,_list);
@@ -11176,8 +11100,6 @@ accept4:
             ;
             it=rb_funcall(self,sy___lb__lb_Lattic_d322,1,bind2);
             _list=it;;
-            it=c_Lattice_Char;
-            it=c_Switch_Char;
             int oldpos5=ptr->pos;
             int cut5=0;
 alt5_1:
@@ -11216,7 +11138,6 @@ alt5_2:
                 it=failobj;
                 goto alt5_3;
             }
-            it=c_Switch_Char;
             it=c_Switch_Char;
             _cls=it;;
             bind_aset(bind2,1,_cls);
@@ -11391,7 +11312,6 @@ accept6:
             ;
             it=rb_ary_new3(0);
             _prefix=it;;
-            it=c_Switch_Char;
             int oldpos7=ptr->pos;
             int cut7=0;
 alt7_1:
@@ -11441,7 +11361,6 @@ alt7_2:
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
-            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             it=rb_funcall(self,sy__src_dot_ary_d5cf,1,bind2);
             _ary_2=it;;
@@ -11492,7 +11411,6 @@ accept8:
             }
             it=_autovar_32;
             _rest=it;;
-            it=c_Switch_Char;
             it=c_Switch_Char;
             _cls_2=it;;
             bind_aset(bind2,1,_cls_2);
@@ -11572,7 +11490,6 @@ accept7:
             ;
             it=rb_ary_new3(0);
             _prefix=it;;
-            it=c_Switch_Char;
             int oldpos10=ptr->pos;
             int cut10=0;
 alt10_1:
@@ -12192,7 +12109,6 @@ VALUE Detect_Switch_Clas_traverse(VALUE self ) {
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
-    it=rb_ary_new3(0);
     int stop1=0;
     while(!stop1) {
         int oldpos1=ptr->pos;
@@ -12397,7 +12313,6 @@ alt2_2:
         }
         it=rb_ary_new3(0);
         _ar=it;;
-        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos3=ptr->pos;
@@ -12818,7 +12733,6 @@ alt1_3:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=rb_funcall(self,sy__src_25d9,1,bind2);
         arg0=it;
@@ -12923,9 +12837,6 @@ accept2:
         it=_autovar_14;
         _items=it;;
         it=Qfalse;
-        it=Qfalse;
-        it=Qfalse;
-        it=Qfalse;
         _aswitch=it;;
         bind_aset(bind2,1,_items);
         bind_aset(bind2,2,_aswitch);
@@ -12989,8 +12900,6 @@ alt3_2:
             ;
             it=rb_funcall(self,sy___lb__lb_Lattic_62e5,1,bind2);
             _list=it;;
-            it=c_Lattice_Clas;
-            it=c_Switch_Clas;
             int oldpos4=ptr->pos;
             int cut4=0;
 alt4_1:
@@ -13015,7 +12924,6 @@ alt4_1:
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
-            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             it=rb_funcall(self,sy__src_dot_ary_d5cf,1,bind2);
             _ary=it;;
@@ -13035,7 +12943,6 @@ success10:
             *ptr=oldpass10;
             it=rb_ary_new3(0);
             _newlist=it;;
-            it=c_Lattice_Clas;
             it=c_Lattice_Clas;
             _lat=it;;
             bind_aset(bind2,1,_list);
@@ -13099,7 +13006,6 @@ alt4_3:
                 goto alt4_4;
             }
             it=c_Switch_Clas;
-            it=c_Switch_Clas;
             _cls=it;;
             bind_aset(bind2,1,_cls);
             bind_aset(bind2,2,_list);
@@ -13130,8 +13036,6 @@ accept4:
             ;
             it=rb_funcall(self,sy___lb__lb_Lattic_62e5,1,bind2);
             _list=it;;
-            it=c_Lattice_Clas;
-            it=c_Switch_Clas;
             int oldpos5=ptr->pos;
             int cut5=0;
 alt5_1:
@@ -13170,7 +13074,6 @@ alt5_2:
                 it=failobj;
                 goto alt5_3;
             }
-            it=c_Switch_Clas;
             it=c_Switch_Clas;
             _cls=it;;
             bind_aset(bind2,1,_cls);
@@ -13345,7 +13248,6 @@ accept6:
             ;
             it=rb_ary_new3(0);
             _prefix=it;;
-            it=c_Switch_Clas;
             int oldpos7=ptr->pos;
             int cut7=0;
 alt7_1:
@@ -13395,7 +13297,6 @@ alt7_2:
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
-            it=rb_ary_new3(0);
             ptr->pos=ptr->len;
             it=rb_funcall(self,sy__src_dot_ary_d5cf,1,bind2);
             _ary_2=it;;
@@ -13446,7 +13347,6 @@ accept8:
             }
             it=_autovar_28;
             _rest=it;;
-            it=c_Switch_Clas;
             it=c_Switch_Clas;
             _cls_2=it;;
             bind_aset(bind2,1,_cls_2);
@@ -13526,7 +13426,6 @@ accept7:
             ;
             it=rb_ary_new3(0);
             _prefix=it;;
-            it=c_Switch_Clas;
             int oldpos10=ptr->pos;
             int cut10=0;
 alt10_1:
@@ -14873,5 +14772,5 @@ void Init_detect_switch_c() {
     sy_spaces=rb_intern("spaces");
     rb_define_method(cls_Detect_Size,"predicate",Detect_Size_predicate,1);
     rb_define_method(cls_Detect_Size,"predicate2",Detect_Size_predicate2,1);
-    rb_eval_string("testversiondetect_switch('975fbe3f4aeb2d082be9a48e2c29188b')");
+    rb_eval_string("testversiondetect_switch('f30f466c7fa5065c644988c9b2b4d017')");
 }

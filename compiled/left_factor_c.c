@@ -851,7 +851,6 @@ VALUE Left_Factor_traverse(VALUE self ) {
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
-    it=rb_ary_new3(0);
     int stop1=0;
     while(!stop1) {
         int oldpos1=ptr->pos;
@@ -1056,7 +1055,6 @@ alt2_2:
         }
         it=rb_ary_new3(0);
         _ar=it;;
-        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos3=ptr->pos;
@@ -1445,5 +1443,5 @@ void Init_left_factor_c() {
     rb_define_method(cls_Left_Factor,"traverse",Left_Factor_traverse,0);
     rb_define_method(cls_Left_Factor,"traverse_item",Left_Factor_traverse_item,0);
     rb_define_method(cls_Left_Factor,"visit",Left_Factor_visit,0);
-    rb_eval_string("testversionleft_factor('5fe9b5507bbd2ba2159185213c97a71d')");
+    rb_eval_string("testversionleft_factor('171584b24ee225abf40f69478cd4c70a')");
 }

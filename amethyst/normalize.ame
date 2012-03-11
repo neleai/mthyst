@@ -21,19 +21,18 @@ amethyst Normalize{
 
   defer_acts(ary) = {
       nary=[]
+      show=false
   ary.reverse.each{|el|
     i=0
     if  el.is_a?(Bind) && (el.expr.is_a?(Local) || el.expr.is_a?(CAct))
       while true
-        if (nary[i].is_a?(Act) && !nary[i].ary[0].is_a?(Args)) || nary[i].is_a?(Apply) || (nary[i].is_a?(Bind) && !(el.expr.is_a?(Local) || el.expr.is_a?(CAct))) #|| nary[i].is_a?(Many)
+        if (nary[i].is_a?(Act) && !nary[i].ary[0].is_a?(Args)) || nary[i].is_a?(Apply) || (nary[i].is_a?(Bind) && !(el.expr.is_a?(Local) || el.expr.is_a?(CAct))) #|| nary[i].is_a?(Or)
           loc=locals_in(nary[i])
           if loc.include?(el.name[0]) || (el.expr.is_a?(Local) && loc.include?(el.expr[0]))
             break
           end
           if nary[i].is_a?(Or)
-            puts el.inspect
-            puts nary[i].inspect
-            puts loc.inspect
+            show=true
           end
         else
           break
@@ -43,6 +42,10 @@ amethyst Normalize{
     end
     nary.insert(i,el)
   }
+  if show
+    puts "before",ary.inspect
+    puts "after",nary.inspect
+  end
   nary
 
   }

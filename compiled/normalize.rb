@@ -130,19 +130,18 @@ bind[1]<<[bind[2],Bind[bind[3],bind[4]]]
 end
 def _nary_eq__lb__rb_(bind)
 nary=[]
+      show=false
   bind[1].reverse.each{|el|
     i=0
     if  el.is_a?(Bind) && (el.expr.is_a?(Local) || el.expr.is_a?(CAct))
       while true
-        if (nary[i].is_a?(Act) && !nary[i].ary[0].is_a?(Args)) || nary[i].is_a?(Apply) || (nary[i].is_a?(Bind) && !(el.expr.is_a?(Local) || el.expr.is_a?(CAct))) #|| nary[i].is_a?(Many)
+        if (nary[i].is_a?(Act) && !nary[i].ary[0].is_a?(Args)) || nary[i].is_a?(Apply) || (nary[i].is_a?(Bind) && !(el.expr.is_a?(Local) || el.expr.is_a?(CAct))) #|| nary[i].is_a?(Or)
           loc=locals_in(nary[i])
           if loc.include?(el.name[0]) || (el.expr.is_a?(Local) && loc.include?(el.expr[0]))
             break
           end
           if nary[i].is_a?(Or)
-            puts el.inspect
-            puts nary[i].inspect
-            puts loc.inspect
+            show=true
           end
         else
           break
@@ -152,6 +151,10 @@ nary=[]
     end
     nary.insert(i,el)
   }
+  if show
+    puts "before",bind[1].inspect
+    puts "after",nary.inspect
+  end
   nary
 
   
@@ -179,15 +182,15 @@ end
 end
 
 def normalize_compiled_by
-'2da7fd7d19163d022687cc5ce027906f'
+'1cea1e101d4b4dd2ed680b64f0d2309a'
 end
 def normalize_source_hash
-'9a3ade82e58e663edf0eed3f84e31a63'
+'d341376bb1032c64fc756fcaf89c04ce'
 end
 def testversionnormalize(r)
  raise "invalid version" if r!=normalize_version
 end
 def normalize_version
-'a82a857ee3769791e47811cedb67cc9f'
+'3b551818b56c3f6d50a94b5b94363c69'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/normalize_c"

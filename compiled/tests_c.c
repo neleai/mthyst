@@ -277,8 +277,6 @@ accept1:
         break;
     case 'd' ... 'e':
         ;
-        it=i_1;
-        it=i_1;
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
@@ -320,8 +318,6 @@ accept2:
         ;
     case 'a' ... 'c':
         ;
-        it=i_1;
-        it=i_1;
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
@@ -683,5 +679,5 @@ void Init_tests_c() {
     rb_define_method(cls_Tests,"s2",Tests_s2,0);
     rb_define_method(cls_Tests,"sw",Tests_sw,0);
     rb_define_method(cls_Tests,"test",Tests_test,0);
-    rb_eval_string("testversiontests('0d32c7be06d8f57626a961fb5cd5fa8b')");
+    rb_eval_string("testversiontests('b2d4f795a6c2e85d1e16182986405058')");
 }

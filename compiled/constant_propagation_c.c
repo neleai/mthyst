@@ -554,7 +554,6 @@ VALUE Constant_Traverser_consts(VALUE self ) {
     _autovar=bind_aget(bind2,1);;
     it=rb_ary_new3(0);
     _ary=it;;
-    it=rb_ary_new3(0);
     int stop1=0;
     while(!stop1) {
         switch(FIX2LONG(rb_hash_aref(switchhash_Constant_Traverser_2,rb_obj_class(ame_curobj2(ptr))))) {
@@ -591,7 +590,6 @@ alt2_1:
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
-            it=rb_ary_new3(0);
             int stop2=0;
             while(!stop2) {
                 int oldpos3=ptr->pos;
@@ -888,7 +886,6 @@ VALUE Constant_Traverser_traverse(VALUE self ) {
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
-    it=rb_ary_new3(0);
     int stop1=0;
     while(!stop1) {
         int oldpos1=ptr->pos;
@@ -1090,7 +1087,6 @@ alt2_2:
         }
         it=rb_ary_new3(0);
         _ar=it;;
-        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos3=ptr->pos;
@@ -1573,5 +1569,5 @@ void Init_constant_propagation_c() {
     rb_define_method(cls_Constant_Traverser,"traverse",Constant_Traverser_traverse,0);
     rb_define_method(cls_Constant_Traverser,"traverse_item",Constant_Traverser_traverse_item,0);
     rb_define_method(cls_Constant_Traverser,"visit",Constant_Traverser_visit,0);
-    rb_eval_string("testversionconstant_propagation('d05992e65bc5bcbb1c72780a37728267')");
+    rb_eval_string("testversionconstant_propagation('094ca293c5afd332fb59f7ba9eef6630')");
 }

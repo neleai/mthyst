@@ -262,12 +262,6 @@ end
 def _addcallb_2cf7(bind)
 addcallback2(bind[1])
 end
-def _ar_eq__ti_src_dot__efea(bind)
-ar=*src.ccode; 
-                   @header<<ar[0] if ar[0]
-                   @init<<ar[1] if ar[1]
-                   "it=#{ar[2]};"
-end
 def _bind_lb_1_rb_(bind)
 bind[1]
 
@@ -294,6 +288,9 @@ bind[1]=""
                  bind[1]+="memo_fail:  memo_add(ptr->mem,#{memo_no},ptr->src,oldpos,it,ptr->pos,time_old); return it;\n"
                  @profile_report << "if(ptr->mem){fprintf(profile_report,\"memo #{bind[2][:grammar]}::#{bind[2][:rulename]}  hit: %i miss: %i ticks: %i\\n\",((memo_struct *)ptr->mem)->hits[#{memo_no}],((memo_struct *)ptr->mem)->miss[#{memo_no}],((memo_struct *)ptr->mem)->ticks[#{memo_no}]);((memo_struct *)ptr->mem)->hits[#{memo_no}]=0;((memo_struct *)ptr->mem)->miss[#{memo_no}]=0;((memo_struct *)ptr->mem)->ticks[#{memo_no}]=0;}"
                  bind[1]
+end
+def _bind_lb_1_rb__lb__052b(bind)
+bind[1][:bound]=true
 end
 def _bind_lb_1_rb__lb__230a(bind)
 bind[1][:grammar]=src.name;bind[1][:parent]=src.parent
@@ -365,6 +362,14 @@ bind[3]+="fail: return it;\n}"
 bind[3]
 
 end
+def _if_sp_bind_lb__ac06(bind)
+if bind[1][:bound]
+                   ar=*src.ccode; 
+                   @header<<ar[0] if ar[0]
+                   @init<<ar[1] if ar[1]
+                   "it=#{ar[2]};"
+                   end
+end
 def _label_lp__dq_a_f49c(bind)
 label("accept")
 end
@@ -400,15 +405,15 @@ end
 end
 
 def ctranslator2_compiled_by
-'2da7fd7d19163d022687cc5ce027906f'
+'1cea1e101d4b4dd2ed680b64f0d2309a'
 end
 def ctranslator2_source_hash
-'6a7997a7bddf75d67506cfd906af613e'
+'50086fc2c9b186aea4a45a48a8f31460'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'f3f663040b5ec32f292f8ad67eecf0b3'
+'ffec9924a4b6ecf32ac788e1318e256d'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"

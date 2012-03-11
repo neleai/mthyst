@@ -112,7 +112,6 @@ VALUE Detect_Locals_traverse(VALUE self ) {
         ptr->ary=RARRAY_PTR(ary);
         ptr->len=RARRAY_LEN(ary);
     }
-    it=rb_ary_new3(0);
     int stop1=0;
     while(!stop1) {
         int oldpos1=ptr->pos;
@@ -314,7 +313,6 @@ alt2_2:
         }
         it=rb_ary_new3(0);
         _ar=it;;
-        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             int oldpos3=ptr->pos;
@@ -876,7 +874,6 @@ alt3_1:
                         ptr->pos++;
                         it=rb_obj_clone(s__bs__bs__7f81);
                         _s=it;;
-                        it=rb_obj_clone(s__bs__bs__7f81);
                         it=AmethystCore_anything(self );
                         if (it==failobj) {
                             it=failobj;
@@ -954,7 +951,6 @@ alt4_1:
                         ptr->pos++;
                         it=rb_obj_clone(s__bs__bs__7f81);
                         _s=it;;
-                        it=rb_obj_clone(s__bs__bs__7f81);
                         it=AmethystCore_anything(self );
                         if (it==failobj) {
                             it=failobj;
@@ -1138,7 +1134,6 @@ alt6_1:
                         ptr->pos++;
                         it=rb_obj_clone(s__bs__bs__7f81);
                         _s=it;;
-                        it=rb_obj_clone(s__bs__bs__7f81);
                         it=AmethystCore_anything(self );
                         if (it==failobj) {
                             it=failobj;
@@ -1216,7 +1211,6 @@ alt7_1:
                         ptr->pos++;
                         it=rb_obj_clone(s__bs__bs__7f81);
                         _s=it;;
-                        it=rb_obj_clone(s__bs__bs__7f81);
                         it=AmethystCore_anything(self );
                         if (it==failobj) {
                             it=failobj;
@@ -1447,7 +1441,6 @@ alt10_1:
                         ptr->pos++;
                         it=rb_obj_clone(s__bs__bs__7f81);
                         _s=it;;
-                        it=rb_obj_clone(s__bs__bs__7f81);
                         it=AmethystCore_anything(self );
                         if (it==failobj) {
                             it=failobj;
@@ -1525,7 +1518,6 @@ alt11_1:
                         ptr->pos++;
                         it=rb_obj_clone(s__bs__bs__7f81);
                         _s=it;;
-                        it=rb_obj_clone(s__bs__bs__7f81);
                         it=AmethystCore_anything(self );
                         if (it==failobj) {
                             it=failobj;
@@ -3133,7 +3125,6 @@ accept8:
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
-        it=rb_ary_new3(0);
         ptr->pos=ptr->len;
         it=rb_funcall(self,sy__src_dot_free_3d49,1,bind2);
         _autovar_8=it;;
@@ -3376,7 +3367,6 @@ alt2_1:
             }
             it=rb_ary_new3(0);
             _ary=it;;
-            it=rb_ary_new3(0);
             int stop1=0;
             while(!stop1) {
                 int oldpos3=ptr->pos;
@@ -3834,7 +3824,6 @@ VALUE Normalize_or(VALUE self ) {
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             switch(FIX2LONG(rb_hash_aref(switchhash_Normalize_2,rb_obj_class(ame_curobj2(ptr))))) {
@@ -3949,7 +3938,6 @@ alt1_2:
                     it=failobj;
                     goto alt1_3;
                 }
-                it=rb_ary_new3(0);
                 ptr->pos=ptr->len;
                 it=rb_funcall(self,sy__Apply_lb__dq_e_619e,1,bind2);
                 _autovar_4=it;;
@@ -4007,7 +3995,6 @@ alt2_1:
                     ptr->ary=RARRAY_PTR(ary);
                     ptr->len=RARRAY_LEN(ary);
                 }
-                it=rb_ary_new3(0);
                 ptr->pos=ptr->len;
                 it=rb_funcall(self,sy__src_dot_ary_d5cf,1,bind2);
                 _autovar_7=it;;
@@ -4038,7 +4025,6 @@ alt2_2:
                     it=failobj;
                     goto alt2_3;
                 }
-                it=rb_ary_new3(0);
                 ptr->pos=ptr->len;
                 it=rb_funcall(self,sy__Apply_lb__dq_e_619e,1,bind2);
                 _autovar_4=it;;
@@ -4083,7 +4069,6 @@ alt3_1:
                     it=failobj;
                     goto alt3_2;
                 }
-                it=rb_ary_new3(0);
                 ptr->pos=ptr->len;
                 it=rb_funcall(self,sy__Apply_lb__dq_e_619e,1,bind2);
                 _autovar_4=it;;
@@ -4112,7 +4097,6 @@ alt3_2:
                     ptr->ary=RARRAY_PTR(ary);
                     ptr->len=RARRAY_LEN(ary);
                 }
-                it=rb_ary_new3(0);
                 int stop2=0;
                 while(!stop2) {
                     switch(FIX2LONG(rb_hash_aref(switchhash_Normalize_3,rb_obj_class(ame_curobj2(ptr))))) {
@@ -4120,7 +4104,6 @@ alt3_2:
                         ;
                         it=ptr->ary[ptr->pos];            ;
                         ptr->pos++;
-                        it=rb_ary_new3(0);
                         ptr->pos=ptr->len;
                         break;
                     case 1/*Object*/:
@@ -4174,7 +4157,6 @@ pass5:
                 }
 success5:
                 *ptr=oldpass5;
-                it=rb_ary_new3(0);
                 ptr->pos=ptr->len;
                 ;
                 goto accept3;
@@ -4216,7 +4198,6 @@ alt5_1:
                     it=failobj;
                     goto alt5_2;
                 }
-                it=rb_ary_new3(0);
                 ptr->pos=ptr->len;
                 it=rb_funcall(self,sy__Apply_lb__dq_e_619e,1,bind2);
                 _autovar_4=it;;
@@ -4279,14 +4260,12 @@ success1:
         int cut6=0;
 alt6_1:
         ;
-        it=i_0;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
             goto alt6_2;
         }
         _a=it;;
-        it=i_0;
         it=i_0;
         _x=it;;
         bind_aset(bind2,1,_x);
@@ -4305,14 +4284,12 @@ alt6_1:
         goto accept6;
 alt6_2:
         ptr->pos=oldpos6;
-        it=i_1;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
             goto alt6_3;
         }
         _a=it;;
-        it=i_1;
         it=i_1;
         _x=it;;
         bind_aset(bind2,1,_x);
@@ -4414,7 +4391,6 @@ VALUE Normalize_seq2(VALUE self ) {
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=rb_ary_new3(0);
         int stop1=0;
         while(!stop1) {
             switch(FIX2LONG(rb_hash_aref(switchhash_Normalize_5,rb_obj_class(ame_curobj2(ptr))))) {
@@ -4520,7 +4496,6 @@ pass2:
                 }
 success2:
                 *ptr=oldpass2;
-                it=rb_ary_new3(0);
                 ptr->pos=ptr->len;
                 ;
                 goto accept1;
@@ -4586,7 +4561,6 @@ alt2_1:
                     ptr->ary=RARRAY_PTR(ary);
                     ptr->len=RARRAY_LEN(ary);
                 }
-                it=rb_ary_new3(0);
                 ptr->pos=ptr->len;
                 it=rb_funcall(self,sy__src_dot_ary_d5cf,1,bind2);
                 _autovar_7=it;;
@@ -4715,14 +4689,12 @@ success1:
         int cut4=0;
 alt4_1:
         ;
-        it=i_0;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
             goto alt4_2;
         }
         _a=it;;
-        it=i_0;
         it=i_0;
         _x=it;;
         bind_aset(bind2,1,_x);
@@ -4741,14 +4713,12 @@ alt4_1:
         goto accept4;
 alt4_2:
         ptr->pos=oldpos4;
-        it=i_1;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
             goto alt4_3;
         }
         _a=it;;
-        it=i_1;
         it=i_1;
         _x=it;;
         bind_aset(bind2,1,_x);
@@ -5040,5 +5010,5 @@ void Init_normalize_c() {
     rb_define_method(cls_Normalize,"or",Normalize_or,0);
     rb_define_method(cls_Normalize,"seq2",Normalize_seq2,0);
     rb_define_method(cls_Normalize,"switch",Normalize_switch,0);
-    rb_eval_string("testversionnormalize('a82a857ee3769791e47811cedb67cc9f')");
+    rb_eval_string("testversionnormalize('3b551818b56c3f6d50a94b5b94363c69')");
 }
