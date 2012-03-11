@@ -13,6 +13,7 @@ VALUE Amethyst_empty(VALUE self );
 VALUE Amethyst_eof(VALUE self );
 VALUE Amethyst_fails(VALUE self );
 VALUE Amethyst_false(VALUE self );
+VALUE Amethyst_find(VALUE self ,VALUE a0);
 VALUE Amethyst_int(VALUE self );
 VALUE Amethyst_line(VALUE self );
 VALUE Amethyst_listOf(VALUE self ,VALUE a0,VALUE a1);
@@ -399,6 +400,63 @@ VALUE Amethyst_false(VALUE self ) {
     __result=it;;
     it=__result;
     __result_2=it;;
+
+fail:
+    return it;
+}
+VALUE Amethyst_find(VALUE self ,VALUE a0) {
+    VALUE vals[1];
+    VALUE it ,_exp,_e,__result;
+    VALUE bind2=bind_new2(16);
+    _exp=a0;;
+    int x;
+    VALUE arg0,arg1,arg2,arg3;
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    int stop1=0;
+    while(!stop1) {
+        int oldpos1=ptr->pos;
+        int cut1=0;
+alt1_1:
+        ;
+        it=_exp;
+        arg0=it;
+        it=rb_funcall(self,sy_apply,1,arg0);
+        if (it==failobj) {
+            it=failobj;
+            goto alt1_2;
+        }
+        _e=it;;
+        cut1=1;
+        stop1=1;
+        ;
+        goto accept1;
+alt1_2:
+        ptr->pos=oldpos1;
+        if (cut1) {
+            it=failobj;
+            goto fail;
+        }
+        it=AmethystCore_anything(self );
+        if (it==failobj) {
+            it=failobj;
+            goto alt1_3;
+        }
+        ;
+        goto accept1;
+alt1_3:
+        ptr->pos=oldpos1;
+        if (1) {
+            it=failobj;
+            goto fail;
+        };
+accept1:
+        ;
+    }
+    bind_aset(bind2,1,_e);
+    it=rb_funcall(self,sy__bind_lb_1_rb_,1,bind2);
+    _e=bind_aget(bind2,1);;
+    __result=it;;
 
 fail:
     return it;
@@ -2597,6 +2655,7 @@ void Init_amethyst_c() {
     rb_define_method(cls_Amethyst,"eof",Amethyst_eof,0);
     rb_define_method(cls_Amethyst,"fails",Amethyst_fails,0);
     rb_define_method(cls_Amethyst,"false",Amethyst_false,0);
+    rb_define_method(cls_Amethyst,"find",Amethyst_find,1);
     rb_define_method(cls_Amethyst,"int",Amethyst_int,0);
     rb_define_method(cls_Amethyst,"line",Amethyst_line,0);
     rb_define_method(cls_Amethyst,"listOf",Amethyst_listOf,2);
@@ -2621,5 +2680,5 @@ void Init_amethyst_c() {
     rb_define_method(cls_Amethyst,"upper",Amethyst_upper,0);
     rb_define_method(cls_Amethyst,"word",Amethyst_word,0);
     rb_define_method(cls_Amethyst,"xdigit",Amethyst_xdigit,0);
-    rb_eval_string("testversionamethyst('e1479600e8c346e8679d84064dd89b48')");
+    rb_eval_string("testversionamethyst('0a4c6de3a8b5329fece14b67b461244a')");
 }

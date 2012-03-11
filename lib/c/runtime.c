@@ -60,7 +60,7 @@ amethystCore__reverse(VALUE self,VALUE reversed){
 
 VALUE AmethystCore_append(VALUE self,VALUE ary,VALUE el){
 	if (TYPE(ary)!=T_ARRAY){
-	 rb_raise(rb_eArgError,"first argument is not array");
+	 rb_raise(rb_eArgError,"appending to argument which is is not array");
 	}
 	if (TYPE(el)==T_ARRAY){
 		rb_ary_concat(ary,el);

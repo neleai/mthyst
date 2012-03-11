@@ -1156,13 +1156,13 @@ success1:
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        it=Qfalse;
         bind_aset(bind2,1,_autovar_6);
         it=rb_funcall(self,sy___at__contex_160a,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
         bind_aset(bind2,1,_autovar_6);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
+        it=Qfalse;
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
@@ -1297,13 +1297,13 @@ accept1:
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        it=Qfalse;
         bind_aset(bind2,1,_autovar_6);
         it=rb_funcall(self,sy___at__contex_160a,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
         bind_aset(bind2,1,_autovar_6);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
+        it=Qfalse;
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
@@ -1444,13 +1444,13 @@ accept3:
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        it=Qfalse;
         bind_aset(bind2,1,_autovar_6);
         it=rb_funcall(self,sy___at__contex_160a,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
         bind_aset(bind2,1,_autovar_6);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
+        it=Qfalse;
         int oldpos4=ptr->pos;
         int cut4=0;
 alt4_1:
@@ -1581,13 +1581,13 @@ accept4:
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        it=Qfalse;
         bind_aset(bind2,1,_autovar_6);
         it=rb_funcall(self,sy___at__contex_160a,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
         bind_aset(bind2,1,_autovar_6);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
+        it=Qfalse;
         int oldpos6=ptr->pos;
         int cut6=0;
 alt6_1:
@@ -1881,13 +1881,13 @@ accept6:
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        it=Qfalse;
         bind_aset(bind2,1,_autovar_6);
         it=rb_funcall(self,sy___at__contex_160a,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
         bind_aset(bind2,1,_autovar_6);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
+        it=Qfalse;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -1941,13 +1941,13 @@ success3:
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        it=Qtrue;
         bind_aset(bind2,1,_autovar_6);
         it=rb_funcall(self,sy___at__contex_160a,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
         bind_aset(bind2,1,_autovar_6);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
+        it=Qtrue;
         int oldpos10=ptr->pos;
         int cut10=0;
 alt10_1:
@@ -2082,13 +2082,13 @@ accept10:
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        it=Qtrue;
         bind_aset(bind2,1,_autovar_6);
         it=rb_funcall(self,sy___at__contex_160a,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
         bind_aset(bind2,1,_autovar_6);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
+        it=Qtrue;
         int oldpos12=ptr->pos;
         int cut12=0;
 alt12_1:
@@ -2229,13 +2229,13 @@ accept12:
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        it=Qtrue;
         bind_aset(bind2,1,_autovar_6);
         it=rb_funcall(self,sy___at__contex_160a,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
         bind_aset(bind2,1,_autovar_6);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
+        it=Qtrue;
         int oldpos13=ptr->pos;
         int cut13=0;
 alt13_1:
@@ -2366,13 +2366,13 @@ accept13:
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        it=Qtrue;
         bind_aset(bind2,1,_autovar_6);
         it=rb_funcall(self,sy___at__contex_160a,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
         bind_aset(bind2,1,_autovar_6);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
+        it=Qtrue;
         int oldpos15=ptr->pos;
         int cut15=0;
 alt15_1:
@@ -2666,13 +2666,13 @@ accept15:
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        it=Qtrue;
         bind_aset(bind2,1,_autovar_6);
         it=rb_funcall(self,sy___at__contex_160a,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
         bind_aset(bind2,1,_autovar_6);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar_6=bind_aget(bind2,1);;
+        it=Qtrue;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -2777,5 +2777,5 @@ void Init_remove_left_rigth_recursion_c() {
     rb_define_method(cls_Remove_Left_Recursion,"first",Remove_Left_Recursion_first,1);
     rb_define_method(cls_Remove_Left_Recursion,"must_empty",Remove_Left_Recursion_must_empty,0);
     rb_define_method(cls_Remove_Left_Recursion,"root",Remove_Left_Recursion_root,0);
-    rb_eval_string("testversionremove_left_rigth_recursion('633cb6addbc1f95a50f5edfebfd550a7')");
+    rb_eval_string("testversionremove_left_rigth_recursion('b3d8909106bdd99e86ed090492224e15')");
 }

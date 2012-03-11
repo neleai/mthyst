@@ -1,48 +1,52 @@
-def locals_in(el)
-  if el.is_a?(Local)
-    return [el[0]]
-  elsif el.is_a?(Result)
-    return el.varnames
-  elsif el.is_a?(Act) || el.is_a?(Args) || el.is_a?(Or)
-    loc=[]
-    el.ary.each{|e|
-      loc+=locals_in(e) 
-    }
-    return loc
-  elsif el.is_a? (Key) || el.is_a?(String) || el.is_a?(Global)
-    return []
-  else 
-    return ["unknown"]
+def locals_in(e)
+  if !$localsdf
+    $localsdf = Detect_Locals.new
   end
+  $localsdf._analyze([e])
 end
-def defer_acts(ary)
-  nary=[]
-  ary.reverse.each{|el|
-    i=0
-    if  el.is_a?(Bind) && (el.expr.is_a?(Local) || el.expr.is_a?(CAct))
-      while true
-        if nary[i].is_a?(Apply) && nary[i].ary.size==1
-        elsif nary[i].is_a?(Act) && !nary[i].ary[0].is_a?(Args) 
-          loc=locals_in(nary[i])
-          if loc.include?("unknown") || loc.include?(el.name[0]) || (el.expr.is_a?(Local) && loc.include?(el.expr[0]))
-            break
-          end
-          puts el.inspect
-          puts nary[i].inspect
-          puts locals_in(nary[i]).inspect
-        else
-          break
-        end
-        i+=1
-      end
-    end
-    nary.insert(i,el)
-  }
-#  if ary.inspect!=nary.inspect
-#    puts "before",ary.inspect
-#    puts "after",nary.inspect
-#  end
-  nary
+
+class Detect_Locals < Traverser_Clone2
+  memoize "analyze"
+  use_global_memo
+end
+class Detect_Locals < Traverser_Clone2
+
+def __at_locals_ca83(bind)
+@locals
+end
+def __at_locals_eq__545d(bind)
+@locals=[]
+end
+def __at_locals_lt__e5a7(bind)
+@locals<< bind[1]
+end
+def __at_locals_pl__84b1(bind)
+@locals+=bind[1]
+end
+def __lp_src_dot_cla_2024(bind)
+(src.class.attributes).map{|v| src.instance_variable_get("@"+v.to_s) }
+end
+def _bind_lb_1_rb__lt__7b20(bind)
+bind[1]<<bind[2]
+end
+def _bind_lb_1_rb__sp__6af0(bind)
+bind[1] << bind[2]
+end
+def _if_sp_bind_lb__1bed(bind)
+if bind[1]==bind[2]
+						  src
+						else
+							src.class.create2(*bind[2])
+					  end 
+          
+end
+def _src_25d9(bind)
+src
+end
+def _src_dot_varn_13a6(bind)
+src.varnames
+end
+
 end
 
 class Normalize < Amethyst
@@ -76,8 +80,8 @@ def _Placehol_a03d(bind)
 Placeholder
 
 end
-def _Seq_dot_crea_6a9f(bind)
-Seq.create({:ary=>defer_acts(bind[1])})
+def _Seq_dot_crea_0a81(bind)
+Seq.create({:ary=>bind[1]})
 
 end
 def _Seq_lb_Bind_1036(bind)
@@ -124,6 +128,37 @@ end
 def _bind_lb_1_rb__lt__f738(bind)
 bind[1]<<[bind[2],Bind[bind[3],bind[4]]]
 end
+def _nary_eq__lb__rb_(bind)
+nary=[]
+  bind[1].reverse.each{|el|
+    i=0
+    if  el.is_a?(Bind) && (el.expr.is_a?(Local) || el.expr.is_a?(CAct))
+      while true
+        if nary[i].is_a?(Apply) && nary[i].ary.size==1
+        elsif nary[i].is_a?(Act) && !nary[i].ary[0].is_a?(Args)
+          loc=locals_in(nary[i])
+          if loc.include?("unknown") || loc.include?(el.name[0]) || (el.expr.is_a?(Local) && loc.include?(el.expr[0]))
+            break
+          end
+          puts el.inspect
+          puts nary[i].inspect
+          puts locals_in(nary[i]).inspect
+        else
+          break
+        end
+        i+=1
+      end
+    end
+    nary.insert(i,el)
+  }
+#  if bind[1].inspect!=nary.inspect
+#    puts "before",bind[1].inspect
+#    puts "after",nary.inspect
+#  end
+  nary
+
+  
+end
 def _src(bind)
 src
 
@@ -147,15 +182,15 @@ end
 end
 
 def normalize_compiled_by
-'9c0dcfd6b8f32588bd845cdd197569bc'
+'b18e286b671d3ef14ae05ae3af3de425'
 end
 def normalize_source_hash
-'8c6a7b64b6bbadd4777b1d043403bde8'
+'ecf45eb9a056adc4590eed588a89d199'
 end
 def testversionnormalize(r)
  raise "invalid version" if r!=normalize_version
 end
 def normalize_version
-'fb70de60798877e805f68f943df2611a'
+'a82a857ee3769791e47811cedb67cc9f'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/normalize_c"

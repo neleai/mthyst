@@ -1,28 +1,32 @@
-def locals_in(el)
-  if el.is_a?(Local)
-    return [el[0]]
-  elsif el.is_a?(Result)
-    return el.varnames
-  elsif el.is_a?(Act) || el.is_a?(Args) || el.is_a?(Or)
-    loc=[]
-    el.ary.each{|e|
-      loc+=locals_in(e) 
-    }
-    return loc
-  elsif el.is_a? (Key) || el.is_a?(String) || el.is_a?(Global)
-    return []
-  else 
-    return ["unknown"]
+def locals_in(e)
+  if !$localsdf
+    $localsdf = Detect_Locals.new
   end
+  $localsdf._analyze([e])
 end
-def defer_acts(ary)
-  nary=[]
+
+class Detect_Locals < Traverser_Clone2
+  memoize "analyze"
+  use_global_memo
+end
+amethyst Detect_Locals <  Traverser_Clone2 {
+  analyze = {@@locals=[]} traverse_item @@locals
+
+
+  visit = Local[ .:x {@@locals<< x} .* {@self} ]
+        | Result[ .* @varnames:x {@@locals+=x} {@self} ]
+}
+
+amethyst Normalize{
+
+  defer_acts(ary) = {
+      nary=[]
   ary.reverse.each{|el|
     i=0
     if  el.is_a?(Bind) && (el.expr.is_a?(Local) || el.expr.is_a?(CAct))
       while true
         if nary[i].is_a?(Apply) && nary[i].ary.size==1
-        elsif nary[i].is_a?(Act) && !nary[i].ary[0].is_a?(Args) 
+        elsif nary[i].is_a?(Act) && !nary[i].ary[0].is_a?(Args)
           loc=locals_in(nary[i])
           if loc.include?("unknown") || loc.include?(el.name[0]) || (el.expr.is_a?(Local) && loc.include?(el.expr[0]))
             break
@@ -43,9 +47,9 @@ def defer_acts(ary)
 #    puts "after",nary.inspect
 #  end
   nary
-end
 
-amethyst Normalize{
+  }
+
   must_empty = .:e &{must_empty?(e)} {e}
 	cant_fail  = .:e &{cant_fail?(e) } {e}
 
@@ -68,7 +72,7 @@ amethyst Normalize{
               )* ]
              {ary.size}=>( 0 -> Placeholder
                          | 1 -> ary[0]
-                         | . -> Seq.create({:ary=>defer_acts(ary)})
+                         | . defer_acts(ary):ary -> Seq.create({:ary=>ary})
                          )
            
   bind = Bind[ {@name}:name

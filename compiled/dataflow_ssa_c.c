@@ -1918,11 +1918,11 @@ alt3_3:
 accept3:
             ;
         }
-        it=_autovar_22;
-        _t=it;;
         bind_aset(bind2,1,_old);
         it=rb_funcall(self,sy___at_oldssan_e953,1,bind2);
         _old=bind_aget(bind2,1);;
+        it=_autovar_22;
+        _t=it;;
         bind_aset(bind2,1,_t);
         it=rb_funcall(self,sy__Lookahea_2972,1,bind2);
         _t=bind_aget(bind2,1);;
@@ -1999,11 +1999,11 @@ alt4_3:
 accept4:
             ;
         }
-        it=_autovar_26;
-        _t=it;;
         bind_aset(bind2,1,_prev);
         it=rb_funcall(self,sy__many_end_0563,1,bind2);
         _prev=bind_aget(bind2,1);;
+        it=_autovar_26;
+        _t=it;;
         bind_aset(bind2,1,_t);
         it=rb_funcall(self,sy__Many_dot_cre_2107,1,bind2);
         _t=bind_aget(bind2,1);;
@@ -4061,5 +4061,5 @@ void Init_dataflow_ssa_c() {
     rb_define_method(cls_Forget_SSA,"traverse",Forget_SSA_traverse,0);
     rb_define_method(cls_Forget_SSA,"traverse_item",Forget_SSA_traverse_item,0);
     rb_define_method(cls_Forget_SSA,"visit",Forget_SSA_visit,0);
-    rb_eval_string("testversiondataflow_ssa('f03d83a69df9413b703997014c626cb9')");
+    rb_eval_string("testversiondataflow_ssa('968f29d36769a7afe7db03255e3457f5')");
 }

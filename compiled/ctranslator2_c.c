@@ -3342,9 +3342,9 @@ success28:
             bind_aset(bind2,1,_autovar);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
             _autovar=bind_aget(bind2,1);;
+            it=rb_funcall(self,sy___at_faillab_1610,1,bind2);
             it=_reject;
             _word=it;;
-            it=rb_funcall(self,sy___at_faillab_1610,1,bind2);
             bind_aset(bind2,1,_word);
             it=rb_funcall(self,sy___at_faillab_e643,1,bind2);
             _word=bind_aget(bind2,1);;
@@ -3859,8 +3859,6 @@ accept10:
         _rwo=bind_aget(bind2,1);;
         _x_2=bind_aget(bind2,2);;
         __result_2=it;;
-        it=__result_2;
-        _t=it;;
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
@@ -3869,6 +3867,9 @@ accept10:
             it=failobj;
             goto pass36;
         }
+        it=__result_2;
+        _t=it;;
+
         goto success36;
 pass36:
         *ptr=oldpass36;
@@ -4860,13 +4861,13 @@ success44:
         it=rb_funcall(self,sy___dq_switchh_698e,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _sh=it;;
+        bind_aset(bind2,1,_sh);
+        it=rb_funcall(self,sy___at_header_lt__92e2,1,bind2);
+        _sh=bind_aget(bind2,1);;
         it=i_0;
         _ii=it;;
         it=rb_obj_clone(s__d41d);
         _init=it;;
-        bind_aset(bind2,1,_sh);
-        it=rb_funcall(self,sy___at_header_lt__92e2,1,bind2);
-        _sh=bind_aget(bind2,1);;
         bind_aset(bind2,1,_sh);
         it=rb_funcall(self,sy___dq_switch_lp__f722,1,bind2);
         _sh=bind_aget(bind2,1);;
@@ -5220,5 +5221,5 @@ void Init_ctranslator2_c() {
     rb_define_method(cls_AmethystCTranslator,"rbtrans2",AmethystCTranslator_rbtrans2,0);
     rb_define_method(cls_AmethystCTranslator,"rw",AmethystCTranslator_rw,2);
     rb_define_method(cls_AmethystCTranslator,"trans",AmethystCTranslator_trans,0);
-    rb_eval_string("testversionctranslator2('95ec56181e935e7b44c66509b923936a')");
+    rb_eval_string("testversionctranslator2('f3f663040b5ec32f292f8ad67eecf0b3')");
 }
