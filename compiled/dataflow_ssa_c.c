@@ -2427,15 +2427,19 @@ static VALUE sy___lp_;
 static VALUE sy___lp_src_dot_cla_2024;
 static VALUE sy__bind_lb_1_rb__lb__146c;
 static VALUE sy__bind_lb_1_rb__lb__1f9e;
-static VALUE sy__bind_lb_1_rb__lb__6818;
-static VALUE sy__bind_lb_1_rb__lb__8eca;
+static VALUE sy__bind_lb_1_rb__lb__847e;
+static VALUE sy__bind_lb_1_rb__lb__fe85;
 static VALUE sy__bind_lb_1_rb__lt__7b20;
 static VALUE sy__bind_lb_1_rb__sp__6af0;
 static VALUE sy__d_eq_src_dot_du_2b46;
+static VALUE sy__d_eq_src_dot_du_d571;
 static VALUE sy__if_sp_bind_lb__1bed;
 static VALUE sy__src_25d9;
+static VALUE sy__src_dot_body_519e;
+static VALUE sy__src_dot_body_aaae;
 static VALUE sy__src_dot_dup_d768;
 static VALUE sy__src_dot_reac_cd39;
+static VALUE sy__src_dot_to_5e99;
 static VALUE sy_traverse;
 static VALUE sy_traverse_item;
 static VALUE sy_visit;
@@ -2446,7 +2450,7 @@ VALUE profile_report_Dead_Code_Deleter3(VALUE self) {
 }
 VALUE Dead_Code_Deleter3_root(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,__result;
+    VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,_t,_autovar_7,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -2525,15 +2529,47 @@ success1:
     it=rb_funcall(self,sy__bind_lb_1_rb__lb__1f9e,1,bind2);
     _autovar=bind_aget(bind2,1);;
     it=rb_funcall(self,sy__src_dot_reac_cd39,1,bind2);
+    it=rb_funcall(self,sy__src_dot_body_519e,1,bind2);
+    _autovar_5=it;;
+    cstruct oldpass3=*ptr;
+    ptr->pos=ptr->len=0;
+    ptr->ary=NULL;
+    ptr->src=failobj;
+    ptr->ary=alloca(sizeof(VALUE));
+    ptr->ary[0]=_autovar_5;
+    ptr->len=1;
     bind_aset(bind2,1,_autovar);
     it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
     _autovar=bind_aget(bind2,1);;
-    it=rb_funcall(self,sy_traverse,0);
+    it=rb_funcall(self,sy_traverse_item,0);
     if (it==failobj) {
+        it=failobj;
+        goto pass3;
+    }
+    _autovar_6=it;;
+    bind_aset(bind2,1,_autovar);
+    it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+    _autovar=bind_aget(bind2,1);;
+    it=Qnil;
+    if (ptr->pos<ptr->len) {
+        it=failobj;
+        goto pass3;
+    }
+    goto success3;
+pass3:
+    *ptr=oldpass3;
+    if (1) {
         it=failobj;
         goto pass2;
     }
-    _autovar_5=it;;
+success3:
+    *ptr=oldpass3;
+    it=_autovar_6;
+    _t=it;;
+    bind_aset(bind2,1,_t);
+    it=rb_funcall(self,sy__src_dot_body_aaae,1,bind2);
+    _t=bind_aget(bind2,1);;
+    _autovar_7=it;;
     bind_aset(bind2,1,_autovar);
     it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
     _autovar=bind_aget(bind2,1);;
@@ -2551,7 +2587,7 @@ pass2:
     }
 success2:
     *ptr=oldpass2;
-    it=_autovar_5;
+    it=_autovar_7;
     __result=it;;
 
 fail:
@@ -2919,7 +2955,7 @@ fail:
 }
 VALUE Dead_Code_Deleter3_visit(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,_autovar_2,_this,__result,_autovar_3,_autovar_4,_autovar_5,_autovar_6,_autovar_7,_autovar_8,_autovar_9;
+    VALUE it ,_autovar,_autovar_2,_this,__result,_autovar_3,_autovar_4,_autovar_5,_oldb,_autovar_6,_autovar_7,_autovar_8,_autovar_9,_autovar_10,_autovar_11,_t,_autovar_12;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -2928,7 +2964,8 @@ VALUE Dead_Code_Deleter3_visit(VALUE self ) {
     switch(FIX2LONG(rb_hash_aref(switchhash_Dead_Code_Deleter3_2,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Act*/:
     case 1/*CAct*/:
-    case 2/*Result*/:
+    case 2/*Local*/:
+    case 3/*Result*/:
         ;
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_160a,1,bind2);
@@ -3012,7 +3049,7 @@ success1:
         _this=bind_aget(bind2,2);;
         __result=it;;
         break;
-    case 3/*Apply*/:
+    case 4/*Apply*/:
         ;
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_160a,1,bind2);
@@ -3094,7 +3131,7 @@ success2:
         it=_autovar_4;
         __result=it;;
         break;
-    case 4/*Bind*/:
+    case 5/*Bind*/:
         ;
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_160a,1,bind2);
@@ -3153,6 +3190,10 @@ accept3:
             ;
         }
         it=rb_funcall(self,sy__src_25d9,1,bind2);
+        bind_aset(bind2,1,_autovar);
+        it=rb_funcall(self,sy__bind_lb_1_rb__lb__fe85,1,bind2);
+        _autovar=bind_aget(bind2,1);;
+        _oldb=it;;
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy__bind_lb_1_rb__lb__146c,1,bind2);
         _autovar=bind_aget(bind2,1);;
@@ -3213,8 +3254,10 @@ accept4:
             ;
         }
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy__bind_lb_1_rb__lb__8eca,1,bind2);
+        bind_aset(bind2,2,_oldb);
+        it=rb_funcall(self,sy__bind_lb_1_rb__lb__847e,1,bind2);
         _autovar=bind_aget(bind2,1);;
+        _oldb=bind_aget(bind2,2);;
         _autovar_7=it;;
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
@@ -3256,7 +3299,7 @@ success3:
         it=_autovar_8;
         __result=it;;
         break;
-    case 5/*Local*/:
+    case 6/*Pass*/:
         ;
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_160a,1,bind2);
@@ -3284,38 +3327,47 @@ success3:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        int stop5=0;
-        while(!stop5) {
-            int oldpos5=ptr->pos;
-            int cut5=0;
-alt5_1:
-            ;
-            bind_aset(bind2,1,_autovar);
-            it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
-            it=AmethystCore_anything(self );
-            if (it==failobj) {
-                it=failobj;
-                goto alt5_2;
-            }
-            ;
-            goto accept5;
-alt5_2:
-            ptr->pos=oldpos5;
-            stop5=1;
-            ;
-            goto accept5;
-alt5_3:
-            ptr->pos=oldpos5;
-            if (1) {
-                it=failobj;
-                goto pass5;
-            };
-accept5:
-            ;
+        it=rb_funcall(self,sy__src_dot_to_5e99,1,bind2);
+        _autovar_10=it;;
+        cstruct oldpass6=*ptr;
+        ptr->pos=ptr->len=0;
+        ptr->ary=NULL;
+        ptr->src=failobj;
+        ptr->ary=alloca(sizeof(VALUE));
+        ptr->ary[0]=_autovar_10;
+        ptr->len=1;
+        bind_aset(bind2,1,_autovar);
+        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+        _autovar=bind_aget(bind2,1);;
+        it=rb_funcall(self,sy_traverse_item,0);
+        if (it==failobj) {
+            it=failobj;
+            goto pass6;
         }
-        it=rb_funcall(self,sy__src_25d9,1,bind2);
-        _this=it;;
+        _autovar_11=it;;
+        bind_aset(bind2,1,_autovar);
+        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+        _autovar=bind_aget(bind2,1);;
+        it=Qnil;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass6;
+        }
+        goto success6;
+pass6:
+        *ptr=oldpass6;
+        if (1) {
+            it=failobj;
+            goto pass5;
+        }
+success6:
+        *ptr=oldpass6;
+        it=_autovar_11;
+        _t=it;;
+        bind_aset(bind2,1,_t);
+        it=rb_funcall(self,sy__d_eq_src_dot_du_d571,1,bind2);
+        _t=bind_aget(bind2,1);;
+        _autovar_12=it;;
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
@@ -3333,14 +3385,10 @@ pass5:
         }
 success5:
         *ptr=oldpass5;
-        bind_aset(bind2,1,_autovar);
-        bind_aset(bind2,2,_this);
-        it=rb_funcall(self,sy__bind_lb_1_rb__lb__6818,1,bind2);
-        _autovar=bind_aget(bind2,1);;
-        _this=bind_aget(bind2,2);;
+        it=_autovar_12;
         __result=it;;
         break;
-    case 6/*Object*/:
+    case 7/*Object*/:
         ;
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_160a,1,bind2);
@@ -3992,7 +4040,7 @@ void Init_dataflow_ssa_c() {
     rb_define_method(cls_Dead_Code_Deleter3,"profile_report",profile_report_Dead_Code_Deleter3,0);
     switchhash_Dead_Code_Deleter3_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Rule\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_Dead_Code_Deleter3_1);;
-    switchhash_Dead_Code_Deleter3_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=CAct\nnext h[k]=2 if k<=Result\nnext h[k]=3 if k<=Apply\nnext h[k]=4 if k<=Bind\nnext h[k]=5 if k<=Local\nnext h[k]=6 if k<=Object\n}");
+    switchhash_Dead_Code_Deleter3_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=CAct\nnext h[k]=2 if k<=Local\nnext h[k]=3 if k<=Result\nnext h[k]=4 if k<=Apply\nnext h[k]=5 if k<=Bind\nnext h[k]=6 if k<=Pass\nnext h[k]=7 if k<=Object\n}");
     rb_global_variable(&switchhash_Dead_Code_Deleter3_2);;
     switchhash_Dead_Code_Deleter3_3=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}");
     rb_global_variable(&switchhash_Dead_Code_Deleter3_3);;
@@ -4002,15 +4050,19 @@ void Init_dataflow_ssa_c() {
     sy___lp_src_dot_cla_2024=rb_intern("__lp_src_dot_cla_2024");
     sy__bind_lb_1_rb__lb__146c=rb_intern("_bind_lb_1_rb__lb__146c");
     sy__bind_lb_1_rb__lb__1f9e=rb_intern("_bind_lb_1_rb__lb__1f9e");
-    sy__bind_lb_1_rb__lb__6818=rb_intern("_bind_lb_1_rb__lb__6818");
-    sy__bind_lb_1_rb__lb__8eca=rb_intern("_bind_lb_1_rb__lb__8eca");
+    sy__bind_lb_1_rb__lb__847e=rb_intern("_bind_lb_1_rb__lb__847e");
+    sy__bind_lb_1_rb__lb__fe85=rb_intern("_bind_lb_1_rb__lb__fe85");
     sy__bind_lb_1_rb__lt__7b20=rb_intern("_bind_lb_1_rb__lt__7b20");
     sy__bind_lb_1_rb__sp__6af0=rb_intern("_bind_lb_1_rb__sp__6af0");
     sy__d_eq_src_dot_du_2b46=rb_intern("_d_eq_src_dot_du_2b46");
+    sy__d_eq_src_dot_du_d571=rb_intern("_d_eq_src_dot_du_d571");
     sy__if_sp_bind_lb__1bed=rb_intern("_if_sp_bind_lb__1bed");
     sy__src_25d9=rb_intern("_src_25d9");
+    sy__src_dot_body_519e=rb_intern("_src_dot_body_519e");
+    sy__src_dot_body_aaae=rb_intern("_src_dot_body_aaae");
     sy__src_dot_dup_d768=rb_intern("_src_dot_dup_d768");
     sy__src_dot_reac_cd39=rb_intern("_src_dot_reac_cd39");
+    sy__src_dot_to_5e99=rb_intern("_src_dot_to_5e99");
     sy_traverse=rb_intern("traverse");
     sy_traverse_item=rb_intern("traverse_item");
     sy_visit=rb_intern("visit");
@@ -4044,5 +4096,5 @@ void Init_dataflow_ssa_c() {
     rb_define_method(cls_Forget_SSA,"traverse",Forget_SSA_traverse,0);
     rb_define_method(cls_Forget_SSA,"traverse_item",Forget_SSA_traverse_item,0);
     rb_define_method(cls_Forget_SSA,"visit",Forget_SSA_visit,0);
-    rb_eval_string("testversiondataflow_ssa('abb776d319d85a98fc84374385f7c41c')");
+    rb_eval_string("testversiondataflow_ssa('d580ca1195a346a09bafc6258615d977')");
 }

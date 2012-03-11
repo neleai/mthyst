@@ -222,7 +222,7 @@ fail:
 }
 VALUE Tests_de(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,_foo,__result;
+    VALUE it ,_autovar,_foo,_autovar_2,__result,_autovar_3;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -255,7 +255,6 @@ alt1_1:
 alt1_2:
         ptr->pos=oldpos1;
         it=_autovar;
-        it=i_1;
         _foo=it;;
         bind_aset(bind2,1,_foo);
         it=rb_funcall(self,sy__bind_lb_1_rb__pl__0a71,1,bind2);
@@ -277,11 +276,13 @@ accept1:
         break;
     case 'd' ... 'e':
         ;
+        it=i_1;
+        _autovar_2=it;;
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
         ;
-        it=i_1;
+        it=_autovar_2;
         _foo=it;;
         bind_aset(bind2,1,_foo);
         it=rb_funcall(self,sy__bind_lb_1_rb__pl__61a1,1,bind2);
@@ -294,7 +295,7 @@ alt2_1:
         goto accept2;
 alt2_2:
         ptr->pos=oldpos2;
-        it=i_1;
+        it=_autovar_2;
         _foo=it;;
         bind_aset(bind2,1,_foo);
         it=rb_funcall(self,sy__bind_lb_1_rb__pl__0a71,1,bind2);
@@ -318,11 +319,13 @@ accept2:
         ;
     case 'a' ... 'c':
         ;
+        it=i_1;
+        _autovar_3=it;;
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
         ;
-        it=i_1;
+        it=_autovar_3;
         _foo=it;;
         bind_aset(bind2,1,_foo);
         it=rb_funcall(self,sy__bind_lb_1_rb__pl__61a1,1,bind2);
@@ -338,7 +341,7 @@ alt3_1:
         goto accept3;
 alt3_2:
         ptr->pos=oldpos3;
-        it=i_1;
+        it=_autovar_3;
         _foo=it;;
         bind_aset(bind2,1,_foo);
         it=rb_funcall(self,sy__bind_lb_1_rb__pl__0a71,1,bind2);
@@ -679,5 +682,5 @@ void Init_tests_c() {
     rb_define_method(cls_Tests,"s2",Tests_s2,0);
     rb_define_method(cls_Tests,"sw",Tests_sw,0);
     rb_define_method(cls_Tests,"test",Tests_test,0);
-    rb_eval_string("testversiontests('b2d4f795a6c2e85d1e16182986405058')");
+    rb_eval_string("testversiontests('8c802a23c1a8be54dd6f4654ee5da3de')");
 }

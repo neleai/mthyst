@@ -357,7 +357,7 @@ $constno=0
 def cact_add_global(name,expr,wrap)
 	["static VALUE #{name};","#{name}=#{expr};#{gc_mark_var(name)}",wrap]
 end
-[CAct,Result].each{|c|
+[CAct,Result,Local].each{|c|
 	eval("class #{c}
 					def pure;true;end
 	      end")

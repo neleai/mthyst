@@ -40,7 +40,7 @@ end
 end
 
 def tests_compiled_by
-'1cea1e101d4b4dd2ed680b64f0d2309a'
+'e9902402934cdad6b9f95566a7c7c299'
 end
 def tests_source_hash
 '74a3bdd04045e48934a6da05800d0098'
@@ -49,6 +49,6 @@ def testversiontests(r)
  raise "invalid version" if r!=tests_version
 end
 def tests_version
-'b2d4f795a6c2e85d1e16182986405058'
+'8c802a23c1a8be54dd6f4654ee5da3de'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/tests_c"

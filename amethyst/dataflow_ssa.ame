@@ -94,13 +94,13 @@ amethyst Dataflow < Traverser_Clone2 {
 }
 
 amethyst Dead_Code_Deleter3 < Traverser_Clone2{
-    root = @dup=>Rule[ {@>reachable=@reachable} {@reachable=nil;@cfg=nil} traverse]
+    root = @dup=>Rule[ {@>reachable=@reachable} {@reachable=nil;@cfg=nil}  @body=>traverse_item:t {@self.body=t;@self} ]
 
-    visit = (Act|CAct|Result)[@self:this .*] -> (!@>reachable[this] ||(this.pure && !@>bound)) ? Placeholder : this
+    visit = (Act|CAct|Result|Local)[@self:this .*] -> (!@>reachable[this] ||(this.pure && !@>bound)) ? Placeholder : this
           | Apply[.* {d=@dup;#d.bound=@>bound;
                       d.normalize}]
-          | Bind[.* @self:b {@>bound||=@>reachable[@name]} traverse[ .* {@>reachable[@name] ? @self : @expr}]]
-          | Local[.* @self:this ] -> @>reachable[this] ? this : Placeholder
+          | Pass[ @to=>traverse_item:t {d=@dup;d.to=t;d} ]
+          | Bind[.* @self:b {@>bound}:oldb {@>bound||=@>reachable[@name]} traverse[ .* {@>bound=oldb; @>reachable[@name] ? @self : @expr}]]
 }
 
 class Forget_SSA < Traverser_Clone2

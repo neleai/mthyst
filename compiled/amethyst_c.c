@@ -679,6 +679,103 @@ accept2:
             goto accept1;
 alt1_2:
             ptr->pos=oldpos1;
+            if (ame_curstr2(ptr)[0]=='0'&&ame_curstr2(ptr)[1]=='o')  ptr->pos+=2;
+            else if (1) {
+                it=failobj;
+                goto alt1_3;
+            }
+            it=rb_ary_new3(0);
+            _autovar=it;;
+            it=rb_obj_clone(s_0o_6f57);
+            _autovar_2=it;;
+            it=AmethystCore_append(self,_autovar,_autovar_2);
+            it=rb_ary_new3(0);
+            _autovar_3=it;;
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... '/':
+                ;
+            case '8' ... UC(255):
+                ;
+                if (1) {
+                    it=failobj;
+                    goto alt1_3;
+                }
+                break;
+            case '0' ... '7':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                _autovar_4=it;;
+                break;
+            }
+            it=AmethystCore_append(self,_autovar_3,_autovar_4);
+            int stop4=0;
+            while(!stop4) {
+                switch((unsigned char)*ame_curstr2(ptr)) {
+                case UC(0) ... '/':
+                    ;
+                case '8' ... UC(255):
+                    ;
+                    stop4=1;
+                    break;
+                case '0' ... '7':
+                    ;
+                    it=rb_str_new(ptr->str+ptr->pos,1);
+                    ptr->pos++;
+                    _autovar_5=it;;
+                    it=AmethystCore_append(self,_autovar_3,_autovar_5);
+                    break;
+                }
+            }
+            it=_autovar_3;
+            _autovar_6=it;;
+            it=AmethystCore_append(self,_autovar,_autovar_6);
+            ;
+            goto accept1;
+alt1_3:
+            ptr->pos=oldpos1;
+            it=rb_ary_new3(0);
+            _autovar=it;;
+            it=rb_ary_new3(0);
+            _autovar_17=it;;
+            it=rb_str_new(ptr->str+ptr->pos,1);
+            ptr->pos++;
+            _autovar_18=it;;
+            it=AmethystCore_append(self,_autovar_17,_autovar_18);
+            int stop5=0;
+            while(!stop5) {
+                switch((unsigned char)*ame_curstr2(ptr)) {
+                case UC(0) ... '/':
+                    ;
+                case ':' ... UC(255):
+                    ;
+                    stop5=1;
+                    break;
+                case '0' ... '9':
+                    ;
+                    it=rb_str_new(ptr->str+ptr->pos,1);
+                    ptr->pos++;
+                    _autovar_19=it;;
+                    it=AmethystCore_append(self,_autovar_17,_autovar_19);
+                    break;
+                }
+            }
+            it=_autovar_17;
+            _autovar_20=it;;
+            it=AmethystCore_append(self,_autovar,_autovar_20);
+            ;
+            goto accept1;
+alt1_4:
+            ptr->pos=oldpos1;
+            if (1) {
+                it=failobj;
+                goto fail;
+            };
+accept1:
+            ;
+            break;
+        case '1' ... '9':
+            ;
             int oldpos3=ptr->pos;
             int cut3=0;
 alt3_1:
@@ -713,118 +810,6 @@ alt3_1:
                 break;
             }
             it=AmethystCore_append(self,_autovar_3,_autovar_4);
-            int stop4=0;
-            while(!stop4) {
-                switch((unsigned char)*ame_curstr2(ptr)) {
-                case UC(0) ... '/':
-                    ;
-                case '8' ... UC(255):
-                    ;
-                    stop4=1;
-                    break;
-                case '0' ... '7':
-                    ;
-                    it=rb_str_new(ptr->str+ptr->pos,1);
-                    ptr->pos++;
-                    _autovar_5=it;;
-                    it=AmethystCore_append(self,_autovar_3,_autovar_5);
-                    break;
-                }
-            }
-            it=_autovar_3;
-            _autovar_6=it;;
-            it=AmethystCore_append(self,_autovar,_autovar_6);
-            ;
-            goto accept3;
-alt3_2:
-            ptr->pos=oldpos3;
-            it=rb_ary_new3(0);
-            _autovar=it;;
-            it=rb_ary_new3(0);
-            _autovar_17=it;;
-            it=rb_str_new(ptr->str+ptr->pos,1);
-            ptr->pos++;
-            _autovar_18=it;;
-            it=AmethystCore_append(self,_autovar_17,_autovar_18);
-            int stop5=0;
-            while(!stop5) {
-                switch((unsigned char)*ame_curstr2(ptr)) {
-                case UC(0) ... '/':
-                    ;
-                case ':' ... UC(255):
-                    ;
-                    stop5=1;
-                    break;
-                case '0' ... '9':
-                    ;
-                    it=rb_str_new(ptr->str+ptr->pos,1);
-                    ptr->pos++;
-                    _autovar_19=it;;
-                    it=AmethystCore_append(self,_autovar_17,_autovar_19);
-                    break;
-                }
-            }
-            it=_autovar_17;
-            _autovar_20=it;;
-            it=AmethystCore_append(self,_autovar,_autovar_20);
-            ;
-            goto accept3;
-alt3_3:
-            ptr->pos=oldpos3;
-            if (1) {
-                it=failobj;
-                goto alt1_3;
-            };
-accept3:
-            ;
-
-            ;
-            goto accept1;
-alt1_3:
-            ptr->pos=oldpos1;
-            if (1) {
-                it=failobj;
-                goto fail;
-            };
-accept1:
-            ;
-            break;
-        case '1' ... '9':
-            ;
-            int oldpos4=ptr->pos;
-            int cut4=0;
-alt4_1:
-            ;
-            if (ame_curstr2(ptr)[0]=='0'&&ame_curstr2(ptr)[1]=='o')  ptr->pos+=2;
-            else if (1) {
-                it=failobj;
-                goto alt4_2;
-            }
-            it=rb_ary_new3(0);
-            _autovar=it;;
-            it=rb_obj_clone(s_0o_6f57);
-            _autovar_2=it;;
-            it=AmethystCore_append(self,_autovar,_autovar_2);
-            it=rb_ary_new3(0);
-            _autovar_3=it;;
-            switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... '/':
-                ;
-            case '8' ... UC(255):
-                ;
-                if (1) {
-                    it=failobj;
-                    goto alt4_2;
-                }
-                break;
-            case '0' ... '7':
-                ;
-                it=rb_str_new(ptr->str+ptr->pos,1);
-                ptr->pos++;
-                _autovar_4=it;;
-                break;
-            }
-            it=AmethystCore_append(self,_autovar_3,_autovar_4);
             int stop6=0;
             while(!stop6) {
                 switch((unsigned char)*ame_curstr2(ptr)) {
@@ -847,9 +832,9 @@ alt4_1:
             _autovar_6=it;;
             it=AmethystCore_append(self,_autovar,_autovar_6);
             ;
-            goto accept4;
-alt4_2:
-            ptr->pos=oldpos4;
+            goto accept3;
+alt3_2:
+            ptr->pos=oldpos3;
             it=rb_ary_new3(0);
             _autovar=it;;
             it=rb_ary_new3(0);
@@ -880,14 +865,14 @@ alt4_2:
             _autovar_20=it;;
             it=AmethystCore_append(self,_autovar,_autovar_20);
             ;
-            goto accept4;
-alt4_3:
-            ptr->pos=oldpos4;
+            goto accept3;
+alt3_3:
+            ptr->pos=oldpos3;
             if (1) {
                 it=failobj;
                 goto fail;
             };
-accept4:
+accept3:
             ;
             break;
         }
@@ -965,20 +950,20 @@ accept4:
             break;
         case '0' ... '0':
             ;
+            int oldpos4=ptr->pos;
+            int cut4=0;
+alt4_1:
+            ;
+            it=rb_str_new(ptr->str+ptr->pos,1);
+            ptr->pos++;
             int oldpos5=ptr->pos;
             int cut5=0;
 alt5_1:
             ;
-            it=rb_str_new(ptr->str+ptr->pos,1);
-            ptr->pos++;
-            int oldpos6=ptr->pos;
-            int cut6=0;
-alt6_1:
-            ;
             if (ame_curstr2(ptr)[0]=='x')  ptr->pos+=1;
             else if (1) {
                 it=failobj;
-                goto alt6_2;
+                goto alt5_2;
             }
             it=rb_ary_new3(0);
             _autovar=it;;
@@ -998,7 +983,7 @@ alt6_1:
                 ;
                 if (1) {
                     it=failobj;
-                    goto alt6_2;
+                    goto alt5_2;
                 }
                 break;
             case '0' ... '9':
@@ -1043,13 +1028,13 @@ alt6_1:
             _autovar_11=it;;
             it=AmethystCore_append(self,_autovar,_autovar_11);
             ;
-            goto accept6;
-alt6_2:
-            ptr->pos=oldpos6;
+            goto accept5;
+alt5_2:
+            ptr->pos=oldpos5;
             if (ame_curstr2(ptr)[0]=='b')  ptr->pos+=1;
             else if (1) {
                 it=failobj;
-                goto alt6_3;
+                goto alt5_3;
             }
             it=rb_ary_new3(0);
             _autovar=it;;
@@ -1065,7 +1050,7 @@ alt6_2:
                 ;
                 if (1) {
                     it=failobj;
-                    goto alt6_3;
+                    goto alt5_3;
                 }
                 break;
             case '0' ... '1':
@@ -1098,28 +1083,24 @@ alt6_2:
             _autovar_16=it;;
             it=AmethystCore_append(self,_autovar,_autovar_16);
             ;
-            goto accept6;
-alt6_3:
-            ptr->pos=oldpos6;
+            goto accept5;
+alt5_3:
+            ptr->pos=oldpos5;
             if (1) {
                 it=failobj;
-                goto alt5_2;
+                goto alt4_2;
             };
-accept6:
+accept5:
             ;
 
             ;
-            goto accept5;
-alt5_2:
-            ptr->pos=oldpos5;
-            int oldpos7=ptr->pos;
-            int cut7=0;
-alt7_1:
-            ;
+            goto accept4;
+alt4_2:
+            ptr->pos=oldpos4;
             if (ame_curstr2(ptr)[0]=='0'&&ame_curstr2(ptr)[1]=='o')  ptr->pos+=2;
             else if (1) {
                 it=failobj;
-                goto alt7_2;
+                goto alt4_3;
             }
             it=rb_ary_new3(0);
             _autovar=it;;
@@ -1135,7 +1116,7 @@ alt7_1:
                 ;
                 if (1) {
                     it=failobj;
-                    goto alt7_2;
+                    goto alt4_3;
                 }
                 break;
             case '0' ... '7':
@@ -1168,9 +1149,9 @@ alt7_1:
             _autovar_6=it;;
             it=AmethystCore_append(self,_autovar,_autovar_6);
             ;
-            goto accept7;
-alt7_2:
-            ptr->pos=oldpos7;
+            goto accept4;
+alt4_3:
+            ptr->pos=oldpos4;
             it=rb_ary_new3(0);
             _autovar=it;;
             it=rb_ary_new3(0);
@@ -1201,37 +1182,26 @@ alt7_2:
             _autovar_20=it;;
             it=AmethystCore_append(self,_autovar,_autovar_20);
             ;
-            goto accept7;
-alt7_3:
-            ptr->pos=oldpos7;
-            if (1) {
-                it=failobj;
-                goto alt5_3;
-            };
-accept7:
-            ;
-
-            ;
-            goto accept5;
-alt5_3:
-            ptr->pos=oldpos5;
+            goto accept4;
+alt4_4:
+            ptr->pos=oldpos4;
             if (1) {
                 it=failobj;
                 goto fail;
             };
-accept5:
+accept4:
             ;
             break;
         case '1' ... '9':
             ;
-            int oldpos8=ptr->pos;
-            int cut8=0;
-alt8_1:
+            int oldpos6=ptr->pos;
+            int cut6=0;
+alt6_1:
             ;
             if (ame_curstr2(ptr)[0]=='0'&&ame_curstr2(ptr)[1]=='o')  ptr->pos+=2;
             else if (1) {
                 it=failobj;
-                goto alt8_2;
+                goto alt6_2;
             }
             it=rb_ary_new3(0);
             _autovar=it;;
@@ -1247,7 +1217,7 @@ alt8_1:
                 ;
                 if (1) {
                     it=failobj;
-                    goto alt8_2;
+                    goto alt6_2;
                 }
                 break;
             case '0' ... '7':
@@ -1280,9 +1250,9 @@ alt8_1:
             _autovar_6=it;;
             it=AmethystCore_append(self,_autovar,_autovar_6);
             ;
-            goto accept8;
-alt8_2:
-            ptr->pos=oldpos8;
+            goto accept6;
+alt6_2:
+            ptr->pos=oldpos6;
             it=rb_ary_new3(0);
             _autovar=it;;
             it=rb_ary_new3(0);
@@ -1313,14 +1283,14 @@ alt8_2:
             _autovar_20=it;;
             it=AmethystCore_append(self,_autovar,_autovar_20);
             ;
-            goto accept8;
-alt8_3:
-            ptr->pos=oldpos8;
+            goto accept6;
+alt6_3:
+            ptr->pos=oldpos6;
             if (1) {
                 it=failobj;
                 goto fail;
             };
-accept8:
+accept6:
             ;
             break;
         }
@@ -1463,7 +1433,6 @@ alt2_1:
             it=failobj;
             goto alt2_2;
         }
-        it=_s;
         it=_rule;
         arg0=it;
         it=rb_funcall(self,sy_apply,1,arg0);
@@ -1597,7 +1566,6 @@ VALUE Amethyst_nested(VALUE self ,VALUE a0,VALUE a1,VALUE a2) {
         it=failobj;
         goto fail;
     }
-    it=_s;
     it=_mid;
     arg0=it;
     it=rb_funcall(self,sy_apply,1,arg0);
@@ -2243,7 +2211,6 @@ alt1_1:
                 it=failobj;
                 goto alt1_2;
             }
-            it=_s;
             cut1=1;
             stop1=1;
             ;
@@ -2288,7 +2255,6 @@ alt2_1:
                 it=failobj;
                 goto alt2_2;
             }
-            it=_s;
             cut2=1;
             stop1=1;
             ;
@@ -2522,5 +2488,5 @@ void Init_amethyst_c() {
     rb_define_method(cls_Amethyst,"upper",Amethyst_upper,0);
     rb_define_method(cls_Amethyst,"word",Amethyst_word,0);
     rb_define_method(cls_Amethyst,"xdigit",Amethyst_xdigit,0);
-    rb_eval_string("testversionamethyst('accdc1dbc18fbf7f37d4ebe7d35e043d')");
+    rb_eval_string("testversionamethyst('963a8c0877a69701ebd839d6901b26f5')");
 }
