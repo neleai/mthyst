@@ -24,11 +24,11 @@ amethyst AmethystParser_Highligth {
              )*
 
   grammar =  "amethyst" '_module'?  "" name:name ("<" "" name  |{"Amethyst"}):parent  
-"{" rule*:rules "}"  @Grammar
+               "{" rule*:rules "}"  @Grammar
   
   rule = {@@locals=[];@@appends=[];@@bnding=Bnding[]} {@@bnding}:bnding  
          "" withcolor("red",`name:name`) withcolor("#702020",`ruleargs:args`) "=" expression:body  
-          {Bind[local("_result"),body]}:body {@@locals.uniq}:locals {body=Seq[{:ary=>(@@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[body])}]; }   @Rule
+         {Bind[local("_result"),body]}:body {@@locals.uniq}:locals {body=Seq[{:ary=>(@@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[body])}]; }   @Rule
 
   
   expression ={group_new}:g group_hl(g,` listOf(`sequence`,`"" group_mark(g,`~'|)' '|'`)`):ary`) @Or_AST  

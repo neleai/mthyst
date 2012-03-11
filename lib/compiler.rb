@@ -146,9 +146,18 @@ class <<Compiler
     GC::disable
 		source=File.new(file).read
 		source_hash=Digest::MD5.hexdigest(source)
-		if Dir[Amethyst_path+ "/compiled/#{file2}.rb"]!=[] && eval("#{file2}_compiled_by")==$compiled_by && eval("#{file2}_source_hash")==source_hash && Amethyst::Settings.debug<1
-			return unless ["amethyst","traverser"].include? file2 #inheritance
-		end
+		if !$bootstrapping_amethyst
+      if file2!="amethyst" && file2!="traverser"
+        if Dir["compiled/#{file2}.rb"]!=[]
+          fil=File.new("compiled/#{file2}.rb").read
+          compiled_by=/compiled_by\n.*'([0-9a-f]*)'/.match(fil)[1]
+          shash=/source_hash\n.*'([0-9a-f]*)'/.match(fil)[1]
+          if compiled_by==$compiled_by && shash==source_hash
+            return
+          end
+        end
+      end
+ 		end
 		p=AmethystParser.new
 		tree=p.parse(:file,source)
 		CurrentParser.clear

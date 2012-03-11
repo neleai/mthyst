@@ -63,7 +63,7 @@ end
 
 
 def remove_left_rigth_recursion_compiled_by
-'8c21bb4edb03a2e06ac3817cc4a152bb'
+'ec7af8255783a5c0db30b1e782e6bb3f'
 end
 def remove_left_rigth_recursion_source_hash
 '7df03514fffe38a851a13686ca4c4fc0'

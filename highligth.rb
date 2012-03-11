@@ -1,6 +1,6 @@
 require './lib/amethyst'
 #Amethyst::Settings.debug=2
-def parser_highlight_compiled_by; "42";end
+#def parser_highlight_compiled_by; "42";end
 ["amethyst","parser_highlight"].each{|f|
 Compiler::compile("amethyst/#{f}.ame","compiled/#{f}.rb",f)
 
