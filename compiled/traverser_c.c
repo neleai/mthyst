@@ -298,13 +298,14 @@ alt3_3:
 accept3:
             ;
         }
-        it=_ar;
-        _autovar_4=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass2;
         }
+        it=_ar;
+        _autovar_4=it;;
+
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -464,13 +465,14 @@ alt1_3:
 accept1:
         ;
     }
-    it=_autovar_3;
-    _autovar_5=it;;
     it=Qnil;
     if (ptr->pos<ptr->len) {
         it=failobj;
         goto pass2;
     }
+    it=_autovar_3;
+    _autovar_5=it;;
+
     goto success2;
 pass2:
     *ptr=oldpass2;
@@ -480,13 +482,14 @@ pass2:
     }
 success2:
     *ptr=oldpass2;
-    it=_autovar_5;
-    _autovar_6=it;;
     it=Qnil;
     if (ptr->pos<ptr->len) {
         it=failobj;
         goto pass1;
     }
+    it=_autovar_5;
+    _autovar_6=it;;
+
     goto success1;
 pass1:
     *ptr=oldpass1;
@@ -661,13 +664,14 @@ alt3_3:
 accept3:
             ;
         }
-        it=_autovar_4;
-        _autovar_6=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass2;
         }
+        it=_autovar_4;
+        _autovar_6=it;;
+
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -768,5 +772,5 @@ void Init_traverser_c() {
     sy_visit=rb_intern("visit");
     rb_define_method(cls_Visitor,"traverse",Visitor_traverse,0);
     rb_define_method(cls_Visitor,"traverse_item",Visitor_traverse_item,0);
-    rb_eval_string("testversiontraverser('7ca5f1f6f8f36a2d99a9466b8aec9656')");
+    rb_eval_string("testversiontraverser('202166d85afcd6d5f8f00b98b3b9aee3')");
 }

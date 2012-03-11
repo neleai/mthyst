@@ -1,3 +1,21 @@
+def defer_acts(ary)
+  nary=[]
+  ary.reverse.each{|el|
+    i=0
+    if  el.is_a?(Bind) && (el.expr.is_a?(Local) || el.expr.is_a?(CAct))
+      while nary[i].is_a?(Apply) && nary[i].ary.size==1
+        i+=1
+      end
+    end
+    nary.insert(i,el)
+  }
+#  if ary.inspect!=nary.inspect
+#    puts "before",ary.inspect
+#    puts "after",nary.inspect
+#  end
+  nary
+end
+
 class Normalize < Amethyst
 
 def _Act_dot_crea_e434(bind)
@@ -29,8 +47,8 @@ def _Placehol_a03d(bind)
 Placeholder
 
 end
-def _Seq_dot_crea_0a81(bind)
-Seq.create({:ary=>bind[1]})
+def _Seq_dot_crea_6a9f(bind)
+Seq.create({:ary=>defer_acts(bind[1])})
 
 end
 def _Seq_lb_Bind_1036(bind)
@@ -100,15 +118,15 @@ end
 end
 
 def normalize_compiled_by
-'ec7af8255783a5c0db30b1e782e6bb3f'
+'9c0dcfd6b8f32588bd845cdd197569bc'
 end
 def normalize_source_hash
-'2bdef58326542fc7fe91b74dba6c51b6'
+'684a55f16aefb6dd72e518cacf24a0c2'
 end
 def testversionnormalize(r)
  raise "invalid version" if r!=normalize_version
 end
 def normalize_version
-'6c34ed38b4b1bed3f1ed1750202dad15'
+'fb70de60798877e805f68f943df2611a'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/normalize_c"

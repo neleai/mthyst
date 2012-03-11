@@ -250,13 +250,13 @@ accept2:
             it=failobj;
             goto pass1;
         }
-        it=_a;
-        _autovar_4=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass1;
         }
+        it=_a;
+        _autovar_4=it;;
         break;
     }
     goto success1;
@@ -755,13 +755,13 @@ accept1:
             it=failobj;
             goto pass1;
         }
-        it=_bin;
-        _autovar_6=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass1;
         }
+        it=_bin;
+        _autovar_6=it;;
         break;
     }
     goto success1;
@@ -1090,13 +1090,14 @@ alt3_3:
 accept3:
             ;
         }
-        it=_ar;
-        _autovar_4=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass2;
         }
+        it=_ar;
+        _autovar_4=it;;
+
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -1351,13 +1352,14 @@ alt1_3:
         };
 accept1:
         ;
-        it=__result;
-        _autovar_3=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass2;
         }
+        it=__result;
+        _autovar_3=it;;
+
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -1367,13 +1369,14 @@ pass2:
         }
 success2:
         *ptr=oldpass2;
-        it=_autovar_3;
-        _autovar_4=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass1;
         }
+        it=_autovar_3;
+        _autovar_4=it;;
+
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -1442,5 +1445,5 @@ void Init_left_factor_c() {
     rb_define_method(cls_Left_Factor,"traverse",Left_Factor_traverse,0);
     rb_define_method(cls_Left_Factor,"traverse_item",Left_Factor_traverse_item,0);
     rb_define_method(cls_Left_Factor,"visit",Left_Factor_visit,0);
-    rb_eval_string("testversionleft_factor('c7d7e41b7cf2a9ec5ca15a9d3cfefa28')");
+    rb_eval_string("testversionleft_factor('5fe9b5507bbd2ba2159185213c97a71d')");
 }

@@ -2098,7 +2098,6 @@ pass13:
         }
 success13:
         *ptr=oldpass13;
-        it=rb_obj_clone(s_it_eq_Qnil);
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
@@ -2107,6 +2106,7 @@ success13:
             it=failobj;
             goto pass12;
         }
+        it=rb_obj_clone(s_it_eq_Qnil);
         goto success12;
 pass12:
         *ptr=oldpass12;
@@ -2210,7 +2210,6 @@ pass15:
         }
 success15:
         *ptr=oldpass15;
-        it=rb_obj_clone(s_it_eq_rb_st_ee66);
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
@@ -2219,6 +2218,7 @@ success15:
             it=failobj;
             goto pass14;
         }
+        it=rb_obj_clone(s_it_eq_rb_st_ee66);
         goto success14;
 pass14:
         *ptr=oldpass14;
@@ -2322,7 +2322,6 @@ pass17:
         }
 success17:
         *ptr=oldpass17;
-        it=rb_obj_clone(s_it_eq_ptr_mi__gt__d2bb);
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
@@ -2331,6 +2330,7 @@ success17:
             it=failobj;
             goto pass16;
         }
+        it=rb_obj_clone(s_it_eq_ptr_mi__gt__d2bb);
         goto success16;
 pass16:
         *ptr=oldpass16;
@@ -3070,8 +3070,6 @@ accept8:
                 break;
             }
         }
-        it=_autovar_44;
-        _autovar_46=it;;
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
@@ -3080,6 +3078,9 @@ accept8:
             it=failobj;
             goto pass27;
         }
+        it=_autovar_44;
+        _autovar_46=it;;
+
         goto success27;
 pass27:
         *ptr=oldpass27;
@@ -3089,8 +3090,6 @@ pass27:
         }
 success27:
         *ptr=oldpass27;
-        it=_autovar_46;
-        _autovar_47=it;;
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
@@ -3099,6 +3098,9 @@ success27:
             it=failobj;
             goto pass26;
         }
+        it=_autovar_46;
+        _autovar_47=it;;
+
         goto success26;
 pass26:
         *ptr=oldpass26;
@@ -5218,5 +5220,5 @@ void Init_ctranslator2_c() {
     rb_define_method(cls_AmethystCTranslator,"rbtrans2",AmethystCTranslator_rbtrans2,0);
     rb_define_method(cls_AmethystCTranslator,"rw",AmethystCTranslator_rw,2);
     rb_define_method(cls_AmethystCTranslator,"trans",AmethystCTranslator_trans,0);
-    rb_eval_string("testversionctranslator2('909b9fa5aa70508f05b3d3b16cd85c0d')");
+    rb_eval_string("testversionctranslator2('95ec56181e935e7b44c66509b923936a')");
 }

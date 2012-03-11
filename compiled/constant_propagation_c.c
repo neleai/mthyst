@@ -125,13 +125,13 @@ pass3:
             }
 success3:
             *ptr=oldpass3;
-            it=_autovar_4;
-            _autovar_5=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) {
                 it=failobj;
                 goto pass2;
             }
+            it=_autovar_4;
+            _autovar_5=it;;
             break;
         case 1/*Local*/:
             ;
@@ -178,13 +178,13 @@ pass4:
             }
 success4:
             *ptr=oldpass4;
-            it=_autovar_7;
-            _autovar_5=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) {
                 it=failobj;
                 goto pass2;
             }
+            it=_autovar_7;
+            _autovar_5=it;;
             break;
         case 2/*Object*/:
             ;
@@ -1124,13 +1124,14 @@ alt3_3:
 accept3:
             ;
         }
-        it=_ar;
-        _autovar_4=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass2;
         }
+        it=_ar;
+        _autovar_4=it;;
+
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -1572,5 +1573,5 @@ void Init_constant_propagation_c() {
     rb_define_method(cls_Constant_Traverser,"traverse",Constant_Traverser_traverse,0);
     rb_define_method(cls_Constant_Traverser,"traverse_item",Constant_Traverser_traverse_item,0);
     rb_define_method(cls_Constant_Traverser,"visit",Constant_Traverser_visit,0);
-    rb_eval_string("testversionconstant_propagation('848d376a3a6ad66feb38d724271a8c55')");
+    rb_eval_string("testversionconstant_propagation('d05992e65bc5bcbb1c72780a37728267')");
 }

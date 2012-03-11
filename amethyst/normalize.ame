@@ -1,3 +1,21 @@
+def defer_acts(ary)
+  nary=[]
+  ary.reverse.each{|el|
+    i=0
+    if  el.is_a?(Bind) && (el.expr.is_a?(Local) || el.expr.is_a?(CAct))
+      while nary[i].is_a?(Apply) && nary[i].ary.size==1
+        i+=1
+      end
+    end
+    nary.insert(i,el)
+  }
+#  if ary.inspect!=nary.inspect
+#    puts "before",ary.inspect
+#    puts "after",nary.inspect
+#  end
+  nary
+end
+
 amethyst Normalize{
   must_empty = .:e &{must_empty?(e)} {e}
 	cant_fail  = .:e &{cant_fail?(e) } {e}
@@ -21,7 +39,7 @@ amethyst Normalize{
               )* ]
              {ary.size}=>( 0 -> Placeholder
                          | 1 -> ary[0]
-                         | . -> Seq.create({:ary=>ary})
+                         | . -> Seq.create({:ary=>defer_acts(ary)})
                          )
            
   bind = Bind[ {@name}:name

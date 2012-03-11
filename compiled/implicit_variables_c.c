@@ -112,13 +112,14 @@ alt1_3:
 accept1:
         ;
     }
-    it=_autovar_3;
-    _autovar_5=it;;
     it=Qnil;
     if (ptr->pos<ptr->len) {
         it=failobj;
         goto pass2;
     }
+    it=_autovar_3;
+    _autovar_5=it;;
+
     goto success2;
 pass2:
     *ptr=oldpass2;
@@ -128,13 +129,14 @@ pass2:
     }
 success2:
     *ptr=oldpass2;
-    it=_autovar_5;
-    _autovar_6=it;;
     it=Qnil;
     if (ptr->pos<ptr->len) {
         it=failobj;
         goto pass1;
     }
+    it=_autovar_5;
+    _autovar_6=it;;
+
     goto success1;
 pass1:
     *ptr=oldpass1;
@@ -309,13 +311,14 @@ alt3_3:
 accept3:
             ;
         }
-        it=_autovar_4;
-        _autovar_6=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass2;
         }
+        it=_autovar_4;
+        _autovar_6=it;;
+
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -460,13 +463,14 @@ alt1_3:
 accept1:
             ;
         }
-        it=_autovar_2;
-        _autovar_4=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass1;
         }
+        it=_autovar_2;
+        _autovar_4=it;;
+
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -900,13 +904,14 @@ alt3_3:
 accept3:
             ;
         }
-        it=_ar;
-        _autovar_4=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass2;
         }
+        it=_ar;
+        _autovar_4=it;;
+
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -1468,5 +1473,5 @@ void Init_implicit_variables_c() {
     rb_define_method(cls_Add_Implicit_Variables,"traverse",Add_Implicit_Variables_traverse,0);
     rb_define_method(cls_Add_Implicit_Variables,"traverse_item",Add_Implicit_Variables_traverse_item,0);
     rb_define_method(cls_Add_Implicit_Variables,"visit",Add_Implicit_Variables_visit,0);
-    rb_eval_string("testversionimplicit_variables('6f412882b6b4307b341463b022a9215e')");
+    rb_eval_string("testversionimplicit_variables('e10d5f113dfdccedd0d80523b7664adb')");
 }

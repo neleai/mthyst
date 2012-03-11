@@ -406,13 +406,14 @@ alt1_3:
 accept1:
             ;
         }
-        it=_autovar_2;
-        _ary=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass1;
         }
+        it=_autovar_2;
+        _ary=it;;
+
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -726,13 +727,14 @@ alt3_3:
 accept3:
             ;
         }
-        it=_ar;
-        _autovar_4=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass2;
         }
+        it=_ar;
+        _autovar_4=it;;
+
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -1547,13 +1549,14 @@ pass3:
         }
 success3:
         *ptr=oldpass3;
-        it=_autovar_6;
-        _autovar_7=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass2;
         }
+        it=_autovar_6;
+        _autovar_7=it;;
+
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -1712,13 +1715,14 @@ success5:
         bind_aset(bind2,1,_var);
         it=rb_funcall(self,sy__bind_lb_1_rb__dot__ce70,1,bind2);
         _var=bind_aget(bind2,1);;
-        it=_app;
-        _autovar_14=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass4;
         }
+        it=_app;
+        _autovar_14=it;;
+
         goto success4;
 pass4:
         *ptr=oldpass4;
@@ -1796,13 +1800,14 @@ pass8:
         }
 success8:
         *ptr=oldpass8;
-        it=_autovar_17;
-        _autovar_18=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass7;
         }
+        it=_autovar_17;
+        _autovar_18=it;;
+
         goto success7;
 pass7:
         *ptr=oldpass7;
@@ -2357,13 +2362,14 @@ alt6_3:
 accept6:
             ;
         }
-        it=_autovar_41;
-        _var=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass19;
         }
+        it=_autovar_41;
+        _var=it;;
+
         goto success19;
 pass19:
         *ptr=oldpass19;
@@ -2845,13 +2851,14 @@ alt3_3:
 accept3:
             ;
         }
-        it=_ar;
-        _autovar_4=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass2;
         }
+        it=_ar;
+        _autovar_4=it;;
+
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -3241,8 +3248,6 @@ pass4:
         }
 success4:
         *ptr=oldpass4;
-        it=_autovar_7;
-        _autovar_8=it;;
         bind_aset(bind2,1,_autovar);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar=bind_aget(bind2,1);;
@@ -3251,6 +3256,9 @@ success4:
             it=failobj;
             goto pass3;
         }
+        it=_autovar_7;
+        _autovar_8=it;;
+
         goto success3;
 pass3:
         *ptr=oldpass3;
@@ -3780,13 +3788,14 @@ alt3_3:
 accept3:
             ;
         }
-        it=_ar;
-        _autovar_4=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass2;
         }
+        it=_ar;
+        _autovar_4=it;;
+
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -4052,5 +4061,5 @@ void Init_dataflow_ssa_c() {
     rb_define_method(cls_Forget_SSA,"traverse",Forget_SSA_traverse,0);
     rb_define_method(cls_Forget_SSA,"traverse_item",Forget_SSA_traverse_item,0);
     rb_define_method(cls_Forget_SSA,"visit",Forget_SSA_visit,0);
-    rb_eval_string("testversiondataflow_ssa('42d471e7a7871f4754bf9a6389752929')");
+    rb_eval_string("testversiondataflow_ssa('f03d83a69df9413b703997014c626cb9')");
 }

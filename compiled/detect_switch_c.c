@@ -188,13 +188,14 @@ pass3:
         }
 success3:
         *ptr=oldpass3;
-        it=_autovar_5;
-        _autovar_6=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass2;
         }
+        it=_autovar_5;
+        _autovar_6=it;;
+
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -659,13 +660,14 @@ alt8_3:
 accept8:
             ;
         }
-        it=_val;
-        _autovar_17=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass8;
         }
+        it=_val;
+        _autovar_17=it;;
+
         goto success8;
 pass8:
         *ptr=oldpass8;
@@ -703,12 +705,12 @@ accept7:
         break;
     case 15/*Object*/:
         ;
-        it=rb_ary_new3(0);
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
             goto fail;
         }
+        it=rb_ary_new3(0);
         it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
         __result=it;;
         break;
@@ -850,13 +852,14 @@ alt1_3:
 accept1:
             ;
         }
-        it=_autovar_2;
-        _ary=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass1;
         }
+        it=_autovar_2;
+        _ary=it;;
+
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -1119,18 +1122,18 @@ alt2_2:
                 ptr->len=RARRAY_LEN(ary);
             }
             it=rb_funcall(self,sy_spaces,0);
-            int oldpos3=ptr->pos;
-            int cut3=0;
-alt3_1:
-            ;
             switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... 'q':
+            case UC(0) ... '`':
+                ;
+            case 'b' ... 'b':
+                ;
+            case 'd' ... 'q':
                 ;
             case 's' ... UC(255):
                 ;
                 if (1) {
                     it=failobj;
-                    goto alt3_2;
+                    goto pass4;
                 }
                 break;
             case 'r' ... 'r':
@@ -1140,23 +1143,50 @@ alt3_1:
                 if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='g'&&ame_curstr2(ptr)[2]=='c'&&ame_curstr2(ptr)[3]=='h')  ptr->pos+=4;
                 else if (1) {
                     it=failobj;
-                    goto alt3_2;
+                    goto pass4;
                 }
                 break;
-            }
-            ;
-            goto accept3;
+            case 'a' ... 'a':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                int oldpos3=ptr->pos;
+                int cut3=0;
+alt3_1:
+                ;
+                if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
+                else if (1) {
+                    it=failobj;
+                    goto alt3_2;
+                }
+                ;
+                goto accept3;
 alt3_2:
-            ptr->pos=oldpos3;
-            switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... 'b':
-                ;
-            case 'd' ... UC(255):
-                ;
-                if (1) {
+                ptr->pos=oldpos3;
+                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='h'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='r')  ptr->pos+=11;
+                else if (1) {
                     it=failobj;
                     goto alt3_3;
                 }
+                ;
+                goto accept3;
+alt3_3:
+                ptr->pos=oldpos3;
+                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
+                else if (1) {
+                    it=failobj;
+                    goto alt3_4;
+                }
+                ;
+                goto accept3;
+alt3_4:
+                ptr->pos=oldpos3;
+                if (1) {
+                    it=failobj;
+                    goto pass4;
+                };
+accept3:
+                ;
                 break;
             case 'c' ... 'c':
                 ;
@@ -1165,95 +1195,10 @@ alt3_2:
                 if (ame_curstr2(ptr)[0]=='l'&&ame_curstr2(ptr)[1]=='a'&&ame_curstr2(ptr)[2]=='s')  ptr->pos+=3;
                 else if (1) {
                     it=failobj;
-                    goto alt3_3;
+                    goto pass4;
                 }
                 break;
             }
-            ;
-            goto accept3;
-alt3_3:
-            ptr->pos=oldpos3;
-            switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... '`':
-                ;
-            case 'b' ... UC(255):
-                ;
-                if (1) {
-                    it=failobj;
-                    goto alt3_4;
-                }
-                break;
-            case 'a' ... 'a':
-                ;
-                it=rb_str_new(ptr->str+ptr->pos,1);
-                ptr->pos++;
-                if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
-                else if (1) {
-                    it=failobj;
-                    goto alt3_4;
-                }
-                break;
-            }
-            ;
-            goto accept3;
-alt3_4:
-            ptr->pos=oldpos3;
-            switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... '`':
-                ;
-            case 'b' ... UC(255):
-                ;
-                if (1) {
-                    it=failobj;
-                    goto alt3_5;
-                }
-                break;
-            case 'a' ... 'a':
-                ;
-                it=rb_str_new(ptr->str+ptr->pos,1);
-                ptr->pos++;
-                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='h'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='r')  ptr->pos+=11;
-                else if (1) {
-                    it=failobj;
-                    goto alt3_5;
-                }
-                break;
-            }
-            ;
-            goto accept3;
-alt3_5:
-            ptr->pos=oldpos3;
-            switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... '`':
-                ;
-            case 'b' ... UC(255):
-                ;
-                if (1) {
-                    it=failobj;
-                    goto alt3_6;
-                }
-                break;
-            case 'a' ... 'a':
-                ;
-                it=rb_str_new(ptr->str+ptr->pos,1);
-                ptr->pos++;
-                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
-                else if (1) {
-                    it=failobj;
-                    goto alt3_6;
-                }
-                break;
-            }
-            ;
-            goto accept3;
-alt3_6:
-            ptr->pos=oldpos3;
-            if (1) {
-                it=failobj;
-                goto pass4;
-            };
-accept3:
-            ;
             it=Qnil;
             if (ptr->pos<ptr->len) {
                 it=failobj;
@@ -1436,18 +1381,18 @@ alt4_2:
                 ptr->len=RARRAY_LEN(ary);
             }
             it=rb_funcall(self,sy_spaces,0);
-            int oldpos5=ptr->pos;
-            int cut5=0;
-alt5_1:
-            ;
             switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... 'q':
+            case UC(0) ... '`':
+                ;
+            case 'b' ... 'b':
+                ;
+            case 'd' ... 'q':
                 ;
             case 's' ... UC(255):
                 ;
                 if (1) {
                     it=failobj;
-                    goto alt5_2;
+                    goto pass7;
                 }
                 break;
             case 'r' ... 'r':
@@ -1457,23 +1402,50 @@ alt5_1:
                 if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='g'&&ame_curstr2(ptr)[2]=='c'&&ame_curstr2(ptr)[3]=='h')  ptr->pos+=4;
                 else if (1) {
                     it=failobj;
-                    goto alt5_2;
+                    goto pass7;
                 }
                 break;
-            }
-            ;
-            goto accept5;
+            case 'a' ... 'a':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                int oldpos5=ptr->pos;
+                int cut5=0;
+alt5_1:
+                ;
+                if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
+                else if (1) {
+                    it=failobj;
+                    goto alt5_2;
+                }
+                ;
+                goto accept5;
 alt5_2:
-            ptr->pos=oldpos5;
-            switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... 'b':
-                ;
-            case 'd' ... UC(255):
-                ;
-                if (1) {
+                ptr->pos=oldpos5;
+                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='h'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='r')  ptr->pos+=11;
+                else if (1) {
                     it=failobj;
                     goto alt5_3;
                 }
+                ;
+                goto accept5;
+alt5_3:
+                ptr->pos=oldpos5;
+                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
+                else if (1) {
+                    it=failobj;
+                    goto alt5_4;
+                }
+                ;
+                goto accept5;
+alt5_4:
+                ptr->pos=oldpos5;
+                if (1) {
+                    it=failobj;
+                    goto pass7;
+                };
+accept5:
+                ;
                 break;
             case 'c' ... 'c':
                 ;
@@ -1482,95 +1454,10 @@ alt5_2:
                 if (ame_curstr2(ptr)[0]=='l'&&ame_curstr2(ptr)[1]=='a'&&ame_curstr2(ptr)[2]=='s')  ptr->pos+=3;
                 else if (1) {
                     it=failobj;
-                    goto alt5_3;
+                    goto pass7;
                 }
                 break;
             }
-            ;
-            goto accept5;
-alt5_3:
-            ptr->pos=oldpos5;
-            switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... '`':
-                ;
-            case 'b' ... UC(255):
-                ;
-                if (1) {
-                    it=failobj;
-                    goto alt5_4;
-                }
-                break;
-            case 'a' ... 'a':
-                ;
-                it=rb_str_new(ptr->str+ptr->pos,1);
-                ptr->pos++;
-                if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
-                else if (1) {
-                    it=failobj;
-                    goto alt5_4;
-                }
-                break;
-            }
-            ;
-            goto accept5;
-alt5_4:
-            ptr->pos=oldpos5;
-            switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... '`':
-                ;
-            case 'b' ... UC(255):
-                ;
-                if (1) {
-                    it=failobj;
-                    goto alt5_5;
-                }
-                break;
-            case 'a' ... 'a':
-                ;
-                it=rb_str_new(ptr->str+ptr->pos,1);
-                ptr->pos++;
-                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='h'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='r')  ptr->pos+=11;
-                else if (1) {
-                    it=failobj;
-                    goto alt5_5;
-                }
-                break;
-            }
-            ;
-            goto accept5;
-alt5_5:
-            ptr->pos=oldpos5;
-            switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... '`':
-                ;
-            case 'b' ... UC(255):
-                ;
-                if (1) {
-                    it=failobj;
-                    goto alt5_6;
-                }
-                break;
-            case 'a' ... 'a':
-                ;
-                it=rb_str_new(ptr->str+ptr->pos,1);
-                ptr->pos++;
-                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
-                else if (1) {
-                    it=failobj;
-                    goto alt5_6;
-                }
-                break;
-            }
-            ;
-            goto accept5;
-alt5_6:
-            ptr->pos=oldpos5;
-            if (1) {
-                it=failobj;
-                goto pass7;
-            };
-accept5:
-            ;
             it=Qnil;
             if (ptr->pos<ptr->len) {
                 it=failobj;
@@ -1872,13 +1759,14 @@ pass3:
         }
 success3:
         *ptr=oldpass3;
-        it=_autovar_5;
-        _autovar_6=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass2;
         }
+        it=_autovar_5;
+        _autovar_6=it;;
+
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -2343,13 +2231,14 @@ alt8_3:
 accept8:
             ;
         }
-        it=_val;
-        _autovar_17=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass8;
         }
+        it=_val;
+        _autovar_17=it;;
+
         goto success8;
 pass8:
         *ptr=oldpass8;
@@ -2387,12 +2276,12 @@ accept7:
         break;
     case 15/*Object*/:
         ;
-        it=rb_ary_new3(0);
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
             goto fail;
         }
+        it=rb_ary_new3(0);
         it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
         __result=it;;
         break;
@@ -2654,18 +2543,18 @@ alt2_2:
                 ptr->len=RARRAY_LEN(ary);
             }
             it=rb_funcall(self,sy_spaces,0);
-            int oldpos3=ptr->pos;
-            int cut3=0;
-alt3_1:
-            ;
             switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... 'q':
+            case UC(0) ... '`':
+                ;
+            case 'b' ... 'b':
+                ;
+            case 'd' ... 'q':
                 ;
             case 's' ... UC(255):
                 ;
                 if (1) {
                     it=failobj;
-                    goto alt3_2;
+                    goto pass4;
                 }
                 break;
             case 'r' ... 'r':
@@ -2675,23 +2564,50 @@ alt3_1:
                 if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='g'&&ame_curstr2(ptr)[2]=='c'&&ame_curstr2(ptr)[3]=='h')  ptr->pos+=4;
                 else if (1) {
                     it=failobj;
-                    goto alt3_2;
+                    goto pass4;
                 }
                 break;
-            }
-            ;
-            goto accept3;
+            case 'a' ... 'a':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                int oldpos3=ptr->pos;
+                int cut3=0;
+alt3_1:
+                ;
+                if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
+                else if (1) {
+                    it=failobj;
+                    goto alt3_2;
+                }
+                ;
+                goto accept3;
 alt3_2:
-            ptr->pos=oldpos3;
-            switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... 'b':
-                ;
-            case 'd' ... UC(255):
-                ;
-                if (1) {
+                ptr->pos=oldpos3;
+                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='h'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='r')  ptr->pos+=11;
+                else if (1) {
                     it=failobj;
                     goto alt3_3;
                 }
+                ;
+                goto accept3;
+alt3_3:
+                ptr->pos=oldpos3;
+                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
+                else if (1) {
+                    it=failobj;
+                    goto alt3_4;
+                }
+                ;
+                goto accept3;
+alt3_4:
+                ptr->pos=oldpos3;
+                if (1) {
+                    it=failobj;
+                    goto pass4;
+                };
+accept3:
+                ;
                 break;
             case 'c' ... 'c':
                 ;
@@ -2700,95 +2616,10 @@ alt3_2:
                 if (ame_curstr2(ptr)[0]=='l'&&ame_curstr2(ptr)[1]=='a'&&ame_curstr2(ptr)[2]=='s')  ptr->pos+=3;
                 else if (1) {
                     it=failobj;
-                    goto alt3_3;
+                    goto pass4;
                 }
                 break;
             }
-            ;
-            goto accept3;
-alt3_3:
-            ptr->pos=oldpos3;
-            switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... '`':
-                ;
-            case 'b' ... UC(255):
-                ;
-                if (1) {
-                    it=failobj;
-                    goto alt3_4;
-                }
-                break;
-            case 'a' ... 'a':
-                ;
-                it=rb_str_new(ptr->str+ptr->pos,1);
-                ptr->pos++;
-                if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
-                else if (1) {
-                    it=failobj;
-                    goto alt3_4;
-                }
-                break;
-            }
-            ;
-            goto accept3;
-alt3_4:
-            ptr->pos=oldpos3;
-            switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... '`':
-                ;
-            case 'b' ... UC(255):
-                ;
-                if (1) {
-                    it=failobj;
-                    goto alt3_5;
-                }
-                break;
-            case 'a' ... 'a':
-                ;
-                it=rb_str_new(ptr->str+ptr->pos,1);
-                ptr->pos++;
-                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='h'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='r')  ptr->pos+=11;
-                else if (1) {
-                    it=failobj;
-                    goto alt3_5;
-                }
-                break;
-            }
-            ;
-            goto accept3;
-alt3_5:
-            ptr->pos=oldpos3;
-            switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... '`':
-                ;
-            case 'b' ... UC(255):
-                ;
-                if (1) {
-                    it=failobj;
-                    goto alt3_6;
-                }
-                break;
-            case 'a' ... 'a':
-                ;
-                it=rb_str_new(ptr->str+ptr->pos,1);
-                ptr->pos++;
-                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
-                else if (1) {
-                    it=failobj;
-                    goto alt3_6;
-                }
-                break;
-            }
-            ;
-            goto accept3;
-alt3_6:
-            ptr->pos=oldpos3;
-            if (1) {
-                it=failobj;
-                goto pass4;
-            };
-accept3:
-            ;
             it=Qnil;
             if (ptr->pos<ptr->len) {
                 it=failobj;
@@ -2971,18 +2802,18 @@ alt4_2:
                 ptr->len=RARRAY_LEN(ary);
             }
             it=rb_funcall(self,sy_spaces,0);
-            int oldpos5=ptr->pos;
-            int cut5=0;
-alt5_1:
-            ;
             switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... 'q':
+            case UC(0) ... '`':
+                ;
+            case 'b' ... 'b':
+                ;
+            case 'd' ... 'q':
                 ;
             case 's' ... UC(255):
                 ;
                 if (1) {
                     it=failobj;
-                    goto alt5_2;
+                    goto pass7;
                 }
                 break;
             case 'r' ... 'r':
@@ -2992,23 +2823,50 @@ alt5_1:
                 if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='g'&&ame_curstr2(ptr)[2]=='c'&&ame_curstr2(ptr)[3]=='h')  ptr->pos+=4;
                 else if (1) {
                     it=failobj;
-                    goto alt5_2;
+                    goto pass7;
                 }
                 break;
-            }
-            ;
-            goto accept5;
+            case 'a' ... 'a':
+                ;
+                it=rb_str_new(ptr->str+ptr->pos,1);
+                ptr->pos++;
+                int oldpos5=ptr->pos;
+                int cut5=0;
+alt5_1:
+                ;
+                if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
+                else if (1) {
+                    it=failobj;
+                    goto alt5_2;
+                }
+                ;
+                goto accept5;
 alt5_2:
-            ptr->pos=oldpos5;
-            switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... 'b':
-                ;
-            case 'd' ... UC(255):
-                ;
-                if (1) {
+                ptr->pos=oldpos5;
+                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='h'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='r')  ptr->pos+=11;
+                else if (1) {
                     it=failobj;
                     goto alt5_3;
                 }
+                ;
+                goto accept5;
+alt5_3:
+                ptr->pos=oldpos5;
+                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
+                else if (1) {
+                    it=failobj;
+                    goto alt5_4;
+                }
+                ;
+                goto accept5;
+alt5_4:
+                ptr->pos=oldpos5;
+                if (1) {
+                    it=failobj;
+                    goto pass7;
+                };
+accept5:
+                ;
                 break;
             case 'c' ... 'c':
                 ;
@@ -3017,95 +2875,10 @@ alt5_2:
                 if (ame_curstr2(ptr)[0]=='l'&&ame_curstr2(ptr)[1]=='a'&&ame_curstr2(ptr)[2]=='s')  ptr->pos+=3;
                 else if (1) {
                     it=failobj;
-                    goto alt5_3;
+                    goto pass7;
                 }
                 break;
             }
-            ;
-            goto accept5;
-alt5_3:
-            ptr->pos=oldpos5;
-            switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... '`':
-                ;
-            case 'b' ... UC(255):
-                ;
-                if (1) {
-                    it=failobj;
-                    goto alt5_4;
-                }
-                break;
-            case 'a' ... 'a':
-                ;
-                it=rb_str_new(ptr->str+ptr->pos,1);
-                ptr->pos++;
-                if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
-                else if (1) {
-                    it=failobj;
-                    goto alt5_4;
-                }
-                break;
-            }
-            ;
-            goto accept5;
-alt5_4:
-            ptr->pos=oldpos5;
-            switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... '`':
-                ;
-            case 'b' ... UC(255):
-                ;
-                if (1) {
-                    it=failobj;
-                    goto alt5_5;
-                }
-                break;
-            case 'a' ... 'a':
-                ;
-                it=rb_str_new(ptr->str+ptr->pos,1);
-                ptr->pos++;
-                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='h'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='r')  ptr->pos+=11;
-                else if (1) {
-                    it=failobj;
-                    goto alt5_5;
-                }
-                break;
-            }
-            ;
-            goto accept5;
-alt5_5:
-            ptr->pos=oldpos5;
-            switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... '`':
-                ;
-            case 'b' ... UC(255):
-                ;
-                if (1) {
-                    it=failobj;
-                    goto alt5_6;
-                }
-                break;
-            case 'a' ... 'a':
-                ;
-                it=rb_str_new(ptr->str+ptr->pos,1);
-                ptr->pos++;
-                if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
-                else if (1) {
-                    it=failobj;
-                    goto alt5_6;
-                }
-                break;
-            }
-            ;
-            goto accept5;
-alt5_6:
-            ptr->pos=oldpos5;
-            if (1) {
-                it=failobj;
-                goto pass7;
-            };
-accept5:
-            ;
             it=Qnil;
             if (ptr->pos<ptr->len) {
                 it=failobj;
@@ -3407,13 +3180,14 @@ pass3:
         }
 success3:
         *ptr=oldpass3;
-        it=_autovar_5;
-        _autovar_6=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass2;
         }
+        it=_autovar_5;
+        _autovar_6=it;;
+
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -3878,13 +3652,14 @@ alt8_3:
 accept8:
             ;
         }
-        it=_val;
-        _autovar_17=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass8;
         }
+        it=_val;
+        _autovar_17=it;;
+
         goto success8;
 pass8:
         *ptr=oldpass8;
@@ -3922,12 +3697,12 @@ accept7:
         break;
     case 15/*Object*/:
         ;
-        it=rb_ary_new3(0);
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
             goto fail;
         }
+        it=rb_ary_new3(0);
         it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
         __result=it;;
         break;
@@ -4081,13 +3856,14 @@ pass2:
         }
 success2:
         *ptr=oldpass2;
-        it=_autovar_3;
-        _v=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass1;
         }
+        it=_autovar_3;
+        _v=it;;
+
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -4406,13 +4182,14 @@ alt6_3:
 accept6:
             ;
         }
-        it=_autovar_9;
-        _v=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass6;
         }
+        it=_autovar_9;
+        _v=it;;
+
         goto success6;
 pass6:
         *ptr=oldpass6;
@@ -4452,12 +4229,12 @@ accept5:
         break;
     case 6/*Object*/:
         ;
-        it=rb_ary_new3(0);
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
             goto fail;
         }
+        it=rb_ary_new3(0);
         it=rb_funcall(self,sy__lattice_lb__6ee3,1,bind2);
         __result=it;;
         break;
@@ -5674,13 +5451,14 @@ pass3:
         }
 success3:
         *ptr=oldpass3;
-        it=_autovar_5;
-        _autovar_6=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass2;
         }
+        it=_autovar_5;
+        _autovar_6=it;;
+
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -6145,13 +5923,14 @@ alt8_3:
 accept8:
             ;
         }
-        it=_val;
-        _autovar_17=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass8;
         }
+        it=_val;
+        _autovar_17=it;;
+
         goto success8;
 pass8:
         *ptr=oldpass8;
@@ -6189,12 +5968,12 @@ accept7:
         break;
     case 15/*Object*/:
         ;
-        it=rb_ary_new3(0);
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
             goto fail;
         }
+        it=rb_ary_new3(0);
         it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
         __result=it;;
         break;
@@ -6766,13 +6545,14 @@ pass3:
         }
 success3:
         *ptr=oldpass3;
-        it=_autovar_5;
-        _autovar_6=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass2;
         }
+        it=_autovar_5;
+        _autovar_6=it;;
+
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -7237,13 +7017,14 @@ alt8_3:
 accept8:
             ;
         }
-        it=_val;
-        _autovar_17=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass8;
         }
+        it=_val;
+        _autovar_17=it;;
+
         goto success8;
 pass8:
         *ptr=oldpass8;
@@ -7281,12 +7062,12 @@ accept7:
         break;
     case 15/*Object*/:
         ;
-        it=rb_ary_new3(0);
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
             goto fail;
         }
+        it=rb_ary_new3(0);
         it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
         __result=it;;
         break;
@@ -7506,10 +7287,6 @@ alt2_1:
             ptr->len=RARRAY_LEN(ary);
         }
         it=rb_funcall(self,sy_spaces,0);
-        int oldpos3=ptr->pos;
-        int cut3=0;
-alt3_1:
-        ;
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... '`':
             ;
@@ -7517,55 +7294,43 @@ alt3_1:
             ;
             if (1) {
                 it=failobj;
-                goto alt3_2;
+                goto pass3;
             }
             break;
         case 'a' ... 'a':
             ;
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
+            int oldpos3=ptr->pos;
+            int cut3=0;
+alt3_1:
+            ;
             if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='h'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='r')  ptr->pos+=11;
             else if (1) {
                 it=failobj;
                 goto alt3_2;
             }
-            break;
-        }
-        ;
-        goto accept3;
+            ;
+            goto accept3;
 alt3_2:
-        ptr->pos=oldpos3;
-        switch((unsigned char)*ame_curstr2(ptr)) {
-        case UC(0) ... '`':
-            ;
-        case 'b' ... UC(255):
-            ;
-            if (1) {
-                it=failobj;
-                goto alt3_3;
-            }
-            break;
-        case 'a' ... 'a':
-            ;
-            it=rb_str_new(ptr->str+ptr->pos,1);
-            ptr->pos++;
+            ptr->pos=oldpos3;
             if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
             else if (1) {
                 it=failobj;
                 goto alt3_3;
             }
+            ;
+            goto accept3;
+alt3_3:
+            ptr->pos=oldpos3;
+            if (1) {
+                it=failobj;
+                goto pass3;
+            };
+accept3:
+            ;
             break;
         }
-        ;
-        goto accept3;
-alt3_3:
-        ptr->pos=oldpos3;
-        if (1) {
-            it=failobj;
-            goto pass3;
-        };
-accept3:
-        ;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -7873,13 +7638,14 @@ accept8:
                 break;
             }
         }
-        it=_autovar_6;
-        _ary=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass5;
         }
+        it=_autovar_6;
+        _ary=it;;
+
         goto success5;
 pass5:
         *ptr=oldpass5;
@@ -7975,13 +7741,14 @@ pass8:
         }
 success8:
         *ptr=oldpass8;
-        it=_autovar_11;
-        _autovar_12=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass7;
         }
+        it=_autovar_11;
+        _autovar_12=it;;
+
         goto success7;
 pass7:
         *ptr=oldpass7;
@@ -8186,13 +7953,14 @@ pass3:
         }
 success3:
         *ptr=oldpass3;
-        it=_autovar_5;
-        _autovar_6=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass2;
         }
+        it=_autovar_5;
+        _autovar_6=it;;
+
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -8657,13 +8425,14 @@ alt8_3:
 accept8:
             ;
         }
-        it=_val;
-        _autovar_17=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass8;
         }
+        it=_val;
+        _autovar_17=it;;
+
         goto success8;
 pass8:
         *ptr=oldpass8;
@@ -8701,12 +8470,12 @@ accept7:
         break;
     case 15/*Object*/:
         ;
-        it=rb_ary_new3(0);
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
             goto fail;
         }
+        it=rb_ary_new3(0);
         it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
         __result=it;;
         break;
@@ -9639,13 +9408,14 @@ alt1_3:
 accept1:
             ;
         }
-        it=_autovar_3;
-        _autovar_5=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass1;
         }
+        it=_autovar_3;
+        _autovar_5=it;;
+
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -9742,18 +9512,16 @@ VALUE Detect_First_string_only(VALUE self ) {
             ptr->len=RARRAY_LEN(ary);
         }
         it=rb_funcall(self,sy_spaces,0);
-        int oldpos1=ptr->pos;
-        int cut1=0;
-alt1_1:
-        ;
         switch((unsigned char)*ame_curstr2(ptr)) {
-        case UC(0) ... 'q':
+        case UC(0) ... '^':
+            ;
+        case '`' ... 'q':
             ;
         case 's' ... UC(255):
             ;
             if (1) {
                 it=failobj;
-                goto alt1_2;
+                goto pass2;
             }
             break;
         case 'r' ... 'r':
@@ -9763,22 +9531,7 @@ alt1_1:
             if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='g'&&ame_curstr2(ptr)[2]=='c'&&ame_curstr2(ptr)[3]=='h')  ptr->pos+=4;
             else if (1) {
                 it=failobj;
-                goto alt1_2;
-            }
-            break;
-        }
-        ;
-        goto accept1;
-alt1_2:
-        ptr->pos=oldpos1;
-        switch((unsigned char)*ame_curstr2(ptr)) {
-        case UC(0) ... '^':
-            ;
-        case '`' ... UC(255):
-            ;
-            if (1) {
-                it=failobj;
-                goto alt1_3;
+                goto pass2;
             }
             break;
         case '_' ... '_':
@@ -9788,20 +9541,10 @@ alt1_2:
             if (ame_curstr2(ptr)[0]=='s'&&ame_curstr2(ptr)[1]=='e'&&ame_curstr2(ptr)[2]=='q')  ptr->pos+=3;
             else if (1) {
                 it=failobj;
-                goto alt1_3;
+                goto pass2;
             }
             break;
         }
-        ;
-        goto accept1;
-alt1_3:
-        ptr->pos=oldpos1;
-        if (1) {
-            it=failobj;
-            goto pass2;
-        };
-accept1:
-        ;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -9820,40 +9563,41 @@ success2:
         _autovar_3=it;;
         int stop1=0;
         while(!stop1) {
-            int oldpos2=ptr->pos;
-            int cut2=0;
-alt2_1:
+            int oldpos1=ptr->pos;
+            int cut1=0;
+alt1_1:
             ;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
-                goto alt2_2;
+                goto alt1_2;
             }
             _autovar_4=it;;
             it=AmethystCore_append(self,_autovar_3,_autovar_4);
             ;
-            goto accept2;
-alt2_2:
-            ptr->pos=oldpos2;
+            goto accept1;
+alt1_2:
+            ptr->pos=oldpos1;
             stop1=1;
             ;
-            goto accept2;
-alt2_3:
-            ptr->pos=oldpos2;
+            goto accept1;
+alt1_3:
+            ptr->pos=oldpos1;
             if (1) {
                 it=failobj;
                 goto pass1;
             };
-accept2:
+accept1:
             ;
         }
-        it=_autovar_3;
-        _autovar_5=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass1;
         }
+        it=_autovar_3;
+        _autovar_5=it;;
+
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -10591,13 +10335,14 @@ alt3_3:
 accept3:
             ;
         }
-        it=_ar;
-        _autovar_4=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass2;
         }
+        it=_ar;
+        _autovar_4=it;;
+
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -11419,13 +11164,13 @@ alt4_4:
             };
 accept4:
             ;
-            it=__result_2;
-            _autovar_24=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) {
                 it=failobj;
                 goto pass12;
             }
+            it=__result_2;
+            _autovar_24=it;;
             break;
         case 1/*Object*/:
             ;
@@ -11491,13 +11236,13 @@ alt5_3:
             };
 accept5:
             ;
-            it=__result_2;
-            _autovar_24=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) {
                 it=failobj;
                 goto pass12;
             }
+            it=__result_2;
+            _autovar_24=it;;
             break;
         }
         goto success12;
@@ -11509,13 +11254,14 @@ pass12:
         }
 success12:
         *ptr=oldpass12;
-        it=_autovar_24;
-        _autovar_25=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass11;
         }
+        it=_autovar_24;
+        _autovar_25=it;;
+
         goto success11;
 pass11:
         *ptr=oldpass11;
@@ -11814,13 +11560,13 @@ alt7_4:
             };
 accept7:
             ;
-            it=__result_3;
-            _autovar_36=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) {
                 it=failobj;
                 goto pass16;
             }
+            it=__result_3;
+            _autovar_36=it;;
             break;
         case 1/*Object*/:
             ;
@@ -11906,13 +11652,13 @@ alt10_3:
             };
 accept10:
             ;
-            it=__result_3;
-            _autovar_36=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) {
                 it=failobj;
                 goto pass16;
             }
+            it=__result_3;
+            _autovar_36=it;;
             break;
         }
         goto success16;
@@ -11924,13 +11670,14 @@ pass16:
         }
 success16:
         *ptr=oldpass16;
-        it=_autovar_36;
-        _autovar_37=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass15;
         }
+        it=_autovar_36;
+        _autovar_37=it;;
+
         goto success15;
 pass15:
         *ptr=oldpass15;
@@ -11940,13 +11687,14 @@ pass15:
         }
 success15:
         *ptr=oldpass15;
-        it=_autovar_37;
-        _autovar_38=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass14;
         }
+        it=_autovar_37;
+        _autovar_38=it;;
+
         goto success14;
 pass14:
         *ptr=oldpass14;
@@ -12683,13 +12431,14 @@ alt3_3:
 accept3:
             ;
         }
-        it=_ar;
-        _autovar_4=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass2;
         }
+        it=_ar;
+        _autovar_4=it;;
+
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -13369,13 +13118,13 @@ alt4_4:
             };
 accept4:
             ;
-            it=__result_2;
-            _autovar_20=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) {
                 it=failobj;
                 goto pass9;
             }
+            it=__result_2;
+            _autovar_20=it;;
             break;
         case 1/*Object*/:
             ;
@@ -13441,13 +13190,13 @@ alt5_3:
             };
 accept5:
             ;
-            it=__result_2;
-            _autovar_20=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) {
                 it=failobj;
                 goto pass9;
             }
+            it=__result_2;
+            _autovar_20=it;;
             break;
         }
         goto success9;
@@ -13459,13 +13208,14 @@ pass9:
         }
 success9:
         *ptr=oldpass9;
-        it=_autovar_20;
-        _autovar_21=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass8;
         }
+        it=_autovar_20;
+        _autovar_21=it;;
+
         goto success8;
 pass8:
         *ptr=oldpass8;
@@ -13764,13 +13514,13 @@ alt7_4:
             };
 accept7:
             ;
-            it=__result_3;
-            _autovar_32=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) {
                 it=failobj;
                 goto pass13;
             }
+            it=__result_3;
+            _autovar_32=it;;
             break;
         case 1/*Object*/:
             ;
@@ -13856,13 +13606,13 @@ alt10_3:
             };
 accept10:
             ;
-            it=__result_3;
-            _autovar_32=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) {
                 it=failobj;
                 goto pass13;
             }
+            it=__result_3;
+            _autovar_32=it;;
             break;
         }
         goto success13;
@@ -13874,13 +13624,14 @@ pass13:
         }
 success13:
         *ptr=oldpass13;
-        it=_autovar_32;
-        _autovar_33=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass12;
         }
+        it=_autovar_32;
+        _autovar_33=it;;
+
         goto success12;
 pass12:
         *ptr=oldpass12;
@@ -13890,13 +13641,14 @@ pass12:
         }
 success12:
         *ptr=oldpass12;
-        it=_autovar_33;
-        _autovar_34=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass11;
         }
+        it=_autovar_33;
+        _autovar_34=it;;
+
         goto success11;
 pass11:
         *ptr=oldpass11;
@@ -14034,13 +13786,13 @@ success2:
         *ptr=oldpass2;
         it=rb_funcall(self,sy___sh_lowleve_46e8,1,bind2);
         __result=it;;
-        it=__result;
-        _autovar_3=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass1;
         }
+        it=__result;
+        _autovar_3=it;;
         break;
     case 1/*Or*/:
         ;
@@ -14154,13 +13906,14 @@ alt1_3:
 accept1:
             ;
         }
-        it=_autovar_5;
-        _ary=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass3;
         }
+        it=_autovar_5;
+        _ary=it;;
+
         goto success3;
 pass3:
         *ptr=oldpass3;
@@ -14174,13 +13927,13 @@ success3:
         it=rb_funcall(self,sy__Or_dot_creat_49b2,1,bind2);
         _ary=bind_aget(bind2,1);;
         __result=it;;
-        it=__result;
-        _autovar_3=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass1;
         }
+        it=__result;
+        _autovar_3=it;;
         break;
     case 2/*Seq*/:
         ;
@@ -14301,13 +14054,14 @@ alt2_3:
 accept2:
             ;
         }
-        it=_autovar_8;
-        _ary=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass5;
         }
+        it=_autovar_8;
+        _ary=it;;
+
         goto success5;
 pass5:
         *ptr=oldpass5;
@@ -14321,13 +14075,13 @@ success5:
         it=rb_funcall(self,sy__Seq_dot_crea_bfbb,1,bind2);
         _ary=bind_aget(bind2,1);;
         __result=it;;
-        it=__result;
-        _autovar_3=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass1;
         }
+        it=__result;
+        _autovar_3=it;;
         break;
     case 3/*Object*/:
         ;
@@ -14542,13 +14296,14 @@ alt1_3:
 accept1:
             ;
         }
-        it=_autovar_3;
-        _ary=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass2;
         }
+        it=_autovar_3;
+        _ary=it;;
+
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -14676,13 +14431,14 @@ alt2_3:
 accept2:
             ;
         }
-        it=_autovar_8;
-        _ary=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass4;
         }
+        it=_autovar_8;
+        _ary=it;;
+
         goto success4;
 pass4:
         *ptr=oldpass4;
@@ -15117,5 +14873,5 @@ void Init_detect_switch_c() {
     sy_spaces=rb_intern("spaces");
     rb_define_method(cls_Detect_Size,"predicate",Detect_Size_predicate,1);
     rb_define_method(cls_Detect_Size,"predicate2",Detect_Size_predicate2,1);
-    rb_eval_string("testversiondetect_switch('f4aac32232bcc8ca6280faf2093ab936')");
+    rb_eval_string("testversiondetect_switch('975fbe3f4aeb2d082be9a48e2c29188b')");
 }

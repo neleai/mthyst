@@ -506,17 +506,6 @@ alt1_3:
             goto accept1;
 alt1_4:
             ptr->pos=oldpos1;
-            it=_autovar;
-            _autovar_2=it;;
-            it=rb_ary_new3(0);
-            if (1) {
-                it=failobj;
-                goto alt1_5;
-            }
-            ;
-            goto accept1;
-alt1_5:
-            ptr->pos=oldpos1;
             if (1) {
                 it=failobj;
                 goto fail;
@@ -906,9 +895,9 @@ accept3:
         break;
     case '-' ... '-':
         ;
-        it=rb_obj_clone(s__mi__336d);
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
+        it=rb_obj_clone(s__mi__336d);
         it=rb_obj_clone(s__mi__336d);
         it=rb_ary_new3(0);
         it=rb_ary_new3(0);
@@ -1001,17 +990,6 @@ alt4_3:
             ;
             goto accept4;
 alt4_4:
-            ptr->pos=oldpos4;
-            it=_autovar;
-            _autovar_2=it;;
-            it=rb_ary_new3(0);
-            if (1) {
-                it=failobj;
-                goto alt4_5;
-            }
-            ;
-            goto accept4;
-alt4_5:
             ptr->pos=oldpos4;
             if (1) {
                 it=failobj;
@@ -2643,5 +2621,5 @@ void Init_amethyst_c() {
     rb_define_method(cls_Amethyst,"upper",Amethyst_upper,0);
     rb_define_method(cls_Amethyst,"word",Amethyst_word,0);
     rb_define_method(cls_Amethyst,"xdigit",Amethyst_xdigit,0);
-    rb_eval_string("testversionamethyst('77b01a135ef8ef5cb32f8544aec43bf0')");
+    rb_eval_string("testversionamethyst('e1479600e8c346e8679d84064dd89b48')");
 }

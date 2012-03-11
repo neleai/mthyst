@@ -1,9 +1,11 @@
 persistence
-optimizer simplifying =>[ ] to []
 make AmethystModule +include to mimic ruby module
 parser to produce literal tree and convert to abstract tree
 make position handling explicit as in amethyst/position.ame
 
+
+optimize pass when value is only read by anything
+simplify =>Class[ sth ] pattern
 
 bind cut to corresponding or
 Add id of cut to or
@@ -33,6 +35,7 @@ pseudoprocedures
 
 serialization
 incremental compilation
+assumptions
 
 support for provable refactorization and migrations
 
@@ -55,20 +58,17 @@ default arguments?
 rewrite rigth recursion by futures
 like reversing single linked list
 
-assumptions
 
 dataflows to calculate bitmasks and test by (chars|both =ones|both) where ones are bits that must be 1 and both bits than can be 0 or 1
 indexing from end
 integrate regch with llmatch
 
-pass for objects that dont need ary(convention not using .?)
-
-switch for ints,true,false,nil
+switch for ints,true,false,nil    # no use case yet
 
 recognize block-scoped locals
 recognize local=
 
-paralelize compilation
+paralelize compilation   # how log for testing purposes?
 
 separate dataflow and dead code elimination
 
@@ -96,7 +96,6 @@ left factor inside normalization of or
 
 local DCE?
 
-simplify =>Class[ sth ] pattern
 
 as pass Apply takes only locals as arguments.
 
