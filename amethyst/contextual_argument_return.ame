@@ -1,8 +1,8 @@
 amethyst Add_Contextual_Arguments < Traverser_Clone2{
   root  = @dup=>Rule[ {@>g=Global["_context_arguments"];@>a=autovar} {@self}:s {@@context_arg=false}
                       traverse:t 
-                      {t=t.dup; 
-                       t.body=Seq[Act[[@>g,"||={};",@>a,"=",@>g,".dup"]],t.body] 
+                      {t=t.dup;a2=autovar;a3=autovar 
+                       t.body=Seq[Act[[@>g,"||={};",a2,"=",@>g,";",@>a,"=",@>g,".dup"]],Bind[a3,t.body],Act[[@>g,"=",a2,";",a3]]] 
                        @@context_arg ? t : s
                       }]
 

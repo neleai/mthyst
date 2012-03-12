@@ -4,8 +4,11 @@ def _Seq_lb_Act_lb__84b5(bind)
 Seq[Act[[bind[1][:g],"=",bind[1][:a]]],bind[2]]
 
 end
-def __at__contex_160a(bind)
-@_context_arguments||={};bind[1]=@_context_arguments.dup
+def __at__contex_5f56(bind)
+@_context_arguments||={};bind[1]=@_context_arguments;bind[2]=@_context_arguments.dup
+end
+def __at__contex_cdb3(bind)
+@_context_arguments=bind[1];bind[2]
 end
 def __at__contex_d6d5(bind)
 @_context_arguments=bind[1]
@@ -19,9 +22,9 @@ end
 def __lp_src_dot_cla_2024(bind)
 (src.class.attributes).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
-def _bind_lb_1_rb__eq__de89(bind)
-bind[1]=bind[1].dup; 
-                       bind[1].body=Seq[Act[[bind[2][:g],"||={};",bind[2][:a],"=",bind[2][:g],".dup"]],bind[1].body] 
+def _bind_lb_1_rb__eq__9326(bind)
+bind[1]=bind[1].dup;a2=autovar;a3=autovar 
+                       bind[1].body=Seq[Act[[bind[2][:g],"||={};",a2,"=",bind[2][:g],";",bind[2][:a],"=",bind[2][:g],".dup"]],Bind[a3,bind[1].body],Act[[bind[2][:g],"=",a2,";",a3]]] 
                        @context_arg ? bind[1] : bind[3]
                       
 end
@@ -56,8 +59,11 @@ class Add_Contextual_Returns < Traverser_Clone2
 def _Seq_lb_src(bind)
 Seq[src,Act[[Global["contextual_return"],".each{|k,v| ",bind[1][:a],"[k]+=v};",Global["contextual_return"],"=nil"]]]
 end
-def __at__contex_160a(bind)
-@_context_arguments||={};bind[1]=@_context_arguments.dup
+def __at__contex_5f56(bind)
+@_context_arguments||={};bind[1]=@_context_arguments;bind[2]=@_context_arguments.dup
+end
+def __at__contex_cdb3(bind)
+@_context_arguments=bind[1];bind[2]
 end
 def __at__contex_d6d5(bind)
 @_context_arguments=bind[1]
@@ -137,15 +143,15 @@ end
 end
 
 def contextual_argument_return_compiled_by
-'e9902402934cdad6b9f95566a7c7c299'
+'f65a17c295b7d86e3c5585f39694c7a1'
 end
 def contextual_argument_return_source_hash
-'c58f273fba1da2ca6575be1e452f5976'
+'a2491f2bf1c1051b1b770fcb7c2ce273'
 end
 def testversioncontextual_argument_return(r)
  raise "invalid version" if r!=contextual_argument_return_version
 end
 def contextual_argument_return_version
-'0b53e6ef3de55cb2bc5b92f8c882f3ff'
+'a6772c03f97202f1cbc0110cd2cf8bf5'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/contextual_argument_return_c"

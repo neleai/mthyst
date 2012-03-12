@@ -100,7 +100,7 @@ amethyst Dead_Code_Deleter3 < Traverser_Clone2{
           | Apply[.* {d=@dup;#d.bound=@>bound;
                       d.normalize}]
           | Pass[ @to=>traverse_item:t {d=@dup;d.to=t;d} ]
-          | Bind[.* @self:b {@>bound}:oldb {@>bound||=@>reachable[@name]} traverse[ .* {@>bound=oldb; @>reachable[@name] ? @self : @expr}]]
+          | Bind[.* @self:b {@>bound||=@>reachable[@name]} traverse[ .* {@>reachable[@name] ? @self : @expr}]]
 }
 
 class Forget_SSA < Traverser_Clone2

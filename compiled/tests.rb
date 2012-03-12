@@ -18,8 +18,11 @@ end
 end
 class Tests < Amethyst
 
-def __at__contex_160a(bind)
-@_context_arguments||={};bind[1]=@_context_arguments.dup
+def __at__contex_5f56(bind)
+@_context_arguments||={};bind[1]=@_context_arguments;bind[2]=@_context_arguments.dup
+end
+def __at__contex_cdb3(bind)
+@_context_arguments=bind[1];bind[2]
 end
 def _bind_lb_1_rb__eq__58f9(bind)
 bind[1]=bind[2];bind.reset;bind[2]=bind[1]
@@ -40,7 +43,7 @@ end
 end
 
 def tests_compiled_by
-'e9902402934cdad6b9f95566a7c7c299'
+'f65a17c295b7d86e3c5585f39694c7a1'
 end
 def tests_source_hash
 '74a3bdd04045e48934a6da05800d0098'
@@ -49,6 +52,6 @@ def testversiontests(r)
  raise "invalid version" if r!=tests_version
 end
 def tests_version
-'8c802a23c1a8be54dd6f4654ee5da3de'
+'621d27b38e2ed3f46c3e82eb1652ead8'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/tests_c"

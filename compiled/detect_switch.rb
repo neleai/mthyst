@@ -589,8 +589,11 @@ class Detect_First < Traverser_Clone2
 def _Seq_lb__ti__lp_bi_a321(bind)
 Seq[*(bind[1]+bind[2])]
 end
-def __at__contex_160a(bind)
-@_context_arguments||={};bind[1]=@_context_arguments.dup
+def __at__contex_5f56(bind)
+@_context_arguments||={};bind[1]=@_context_arguments;bind[2]=@_context_arguments.dup
+end
+def __at__contex_cdb3(bind)
+@_context_arguments=bind[1];bind[2]
 end
 def __at__contex_d6d5(bind)
 @_context_arguments=bind[1]
@@ -651,8 +654,11 @@ end
 def _Seq_lb__ti__lp_bi_a321(bind)
 Seq[*(bind[1]+bind[2])]
 end
-def __at__contex_160a(bind)
-@_context_arguments||={};bind[1]=@_context_arguments.dup
+def __at__contex_5f56(bind)
+@_context_arguments||={};bind[1]=@_context_arguments;bind[2]=@_context_arguments.dup
+end
+def __at__contex_cdb3(bind)
+@_context_arguments=bind[1];bind[2]
 end
 def __at__contex_d6d5(bind)
 @_context_arguments=bind[1]
@@ -749,8 +755,11 @@ end
 def _Switch_C_63f7(bind)
 Switch_Clas[[Lattice_Clas[bind[1]],Apply["advance_clas"]],[Lattice_Clas[Object],Apply["fails"]]].freeze 
 end
-def __at__contex_160a(bind)
-@_context_arguments||={};bind[1]=@_context_arguments.dup
+def __at__contex_5f56(bind)
+@_context_arguments||={};bind[1]=@_context_arguments;bind[2]=@_context_arguments.dup
+end
+def __at__contex_cdb3(bind)
+@_context_arguments=bind[1];bind[2]
 end
 def __at__contex_d6d5(bind)
 @_context_arguments=bind[1]
@@ -852,7 +861,7 @@ end
 end
 
 def detect_switch_compiled_by
-'e9902402934cdad6b9f95566a7c7c299'
+'f65a17c295b7d86e3c5585f39694c7a1'
 end
 def detect_switch_source_hash
 'db1b99a9478567e449dc48d0774c821b'
@@ -861,6 +870,6 @@ def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'f30f466c7fa5065c644988c9b2b4d017'
+'772ce0a0623905db46f0c2275304da41'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

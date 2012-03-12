@@ -85,8 +85,11 @@ def _Switch_O_5445(bind)
 Switch_Or.create(:ary=>bind[1].map{|k| [nil,k]})
 
 end
-def __at__contex_160a(bind)
-@_context_arguments||={};bind[1]=@_context_arguments.dup
+def __at__contex_5f56(bind)
+@_context_arguments||={};bind[1]=@_context_arguments;bind[2]=@_context_arguments.dup
+end
+def __at__contex_cdb3(bind)
+@_context_arguments=bind[1];bind[2]
 end
 def __at__contex_d6d5(bind)
 @_context_arguments=bind[1]
@@ -207,8 +210,11 @@ end
 
 class Dead_Code_Deleter3 < Traverser_Clone2
 
-def __at__contex_160a(bind)
-@_context_arguments||={};bind[1]=@_context_arguments.dup
+def __at__contex_5f56(bind)
+@_context_arguments||={};bind[1]=@_context_arguments;bind[2]=@_context_arguments.dup
+end
+def __at__contex_cdb3(bind)
+@_context_arguments=bind[1];bind[2]
 end
 def __at__contex_d6d5(bind)
 @_context_arguments=bind[1]
@@ -226,11 +232,8 @@ end
 def _bind_lb_1_rb__lb__1f9e(bind)
 bind[1][:reachable]=src.reachable
 end
-def _bind_lb_1_rb__lb__847e(bind)
-bind[1][:bound]=bind[2]; bind[1][:reachable][src.name] ? src : src.expr
-end
-def _bind_lb_1_rb__lb__fe85(bind)
-bind[1][:bound]
+def _bind_lb_1_rb__lb__8eca(bind)
+bind[1][:reachable][src.name] ? src : src.expr
 end
 def _bind_lb_1_rb__lt__7b20(bind)
 bind[1]<<bind[2]
@@ -307,15 +310,15 @@ end
 end
 
 def dataflow_ssa_compiled_by
-'e9902402934cdad6b9f95566a7c7c299'
+'f65a17c295b7d86e3c5585f39694c7a1'
 end
 def dataflow_ssa_source_hash
-'08e12068aa2ad57c96f3871ef9cffc01'
+'0bcdc0282bc2db5fe3be8ea5730aec5d'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'d580ca1195a346a09bafc6258615d977'
+'3ade4f18b8901b02c8e416c91dbb2b15'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/dataflow_ssa_c"

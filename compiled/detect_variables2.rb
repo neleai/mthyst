@@ -50,8 +50,11 @@ def _Seq_lb__ti_bin_1174(bind)
 Seq[*bind[1]]
 
 end
-def __at__contex_160a(bind)
-@_context_arguments||={};bind[1]=@_context_arguments.dup
+def __at__contex_5f56(bind)
+@_context_arguments||={};bind[1]=@_context_arguments;bind[2]=@_context_arguments.dup
+end
+def __at__contex_cdb3(bind)
+@_context_arguments=bind[1];bind[2]
 end
 def __at__contex_d6d5(bind)
 @_context_arguments=bind[1]
@@ -142,8 +145,11 @@ end
 
 class Resolve_Calls < Traverser_Clone2
 
-def __at__contex_160a(bind)
-@_context_arguments||={};bind[1]=@_context_arguments.dup
+def __at__contex_5f56(bind)
+@_context_arguments||={};bind[1]=@_context_arguments;bind[2]=@_context_arguments.dup
+end
+def __at__contex_cdb3(bind)
+@_context_arguments=bind[1];bind[2]
 end
 def __at__contex_d6d5(bind)
 @_context_arguments=bind[1]
@@ -191,7 +197,7 @@ end
 end
 
 def detect_variables2_compiled_by
-'e9902402934cdad6b9f95566a7c7c299'
+'f65a17c295b7d86e3c5585f39694c7a1'
 end
 def detect_variables2_source_hash
 '57c4d3a2eeedf4c240f0cc862e9d51d2'
@@ -200,6 +206,6 @@ def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'11e192d39e94ddcc89bd82adec696050'
+'8ed193f4f0486d38f13a7bd811aa08c4'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_variables2_c"

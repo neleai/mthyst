@@ -16,8 +16,11 @@ def _Seq_lb_bind_f95b(bind)
 Seq[bind[1],bind[2]]
 
 end
-def __at__contex_160a(bind)
-@_context_arguments||={};bind[1]=@_context_arguments.dup
+def __at__contex_5f56(bind)
+@_context_arguments||={};bind[1]=@_context_arguments;bind[2]=@_context_arguments.dup
+end
+def __at__contex_cdb3(bind)
+@_context_arguments=bind[1];bind[2]
 end
 def __at__contex_d6d5(bind)
 @_context_arguments=bind[1]
@@ -63,7 +66,7 @@ end
 
 
 def remove_left_rigth_recursion_compiled_by
-'e9902402934cdad6b9f95566a7c7c299'
+'f65a17c295b7d86e3c5585f39694c7a1'
 end
 def remove_left_rigth_recursion_source_hash
 '7df03514fffe38a851a13686ca4c4fc0'
@@ -72,6 +75,6 @@ def testversionremove_left_rigth_recursion(r)
  raise "invalid version" if r!=remove_left_rigth_recursion_version
 end
 def remove_left_rigth_recursion_version
-'67c48c9dcee0f1faceeed7b044e0e653'
+'9d4bddce9cba06fca9a2924f8ced05bd'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/remove_left_rigth_recursion_c"

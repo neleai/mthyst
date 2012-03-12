@@ -20,8 +20,11 @@ class Inliner2 < Traverser_Clone2
 def _Seq_lb_src_dot__3406(bind)
 Seq[src.body,Local["_result",src.bnding]]
 end
-def __at__contex_160a(bind)
-@_context_arguments||={};bind[1]=@_context_arguments.dup
+def __at__contex_5f56(bind)
+@_context_arguments||={};bind[1]=@_context_arguments;bind[2]=@_context_arguments.dup
+end
+def __at__contex_cdb3(bind)
+@_context_arguments=bind[1];bind[2]
 end
 def __at__contex_d6d5(bind)
 @_context_arguments=bind[1]
@@ -67,7 +70,7 @@ end
 
 
 def inliner2_compiled_by
-'e9902402934cdad6b9f95566a7c7c299'
+'f65a17c295b7d86e3c5585f39694c7a1'
 end
 def inliner2_source_hash
 'ccb4238b3948e1d7730b8c07b91b1561'
@@ -76,6 +79,6 @@ def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version
 end
 def inliner2_version
-'c44a83a82c04cfe829c6011189f02192'
+'ab4ccc555f9c6b5826aa880c22add55d'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/inliner2_c"

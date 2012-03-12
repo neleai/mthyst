@@ -87,8 +87,11 @@ end
 $classlabels=Hash.new(0)
 class AmethystCTranslator < Amethyst
 
-def __at__contex_160a(bind)
-@_context_arguments||={};bind[1]=@_context_arguments.dup
+def __at__contex_5f56(bind)
+@_context_arguments||={};bind[1]=@_context_arguments;bind[2]=@_context_arguments.dup
+end
+def __at__contex_cdb3(bind)
+@_context_arguments=bind[1];bind[2]
 end
 def __at__contex_d6d5(bind)
 @_context_arguments=bind[1]
@@ -401,7 +404,7 @@ end
 end
 
 def ctranslator2_compiled_by
-'e9902402934cdad6b9f95566a7c7c299'
+'f65a17c295b7d86e3c5585f39694c7a1'
 end
 def ctranslator2_source_hash
 'ad4a01f6d52d92cd5997cc35f9a5d753'
@@ -410,6 +413,6 @@ def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'5f88245de0ad3469c66550515dfa3ea6'
+'0aecccdb65c261c5ee09d146bd611015'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"

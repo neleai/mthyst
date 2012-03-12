@@ -17,8 +17,11 @@ end
 
 class Add_Implicit_Variables < Traverser_Clone2
 
-def __at__contex_160a(bind)
-@_context_arguments||={};bind[1]=@_context_arguments.dup
+def __at__contex_5f56(bind)
+@_context_arguments||={};bind[1]=@_context_arguments;bind[2]=@_context_arguments.dup
+end
+def __at__contex_cdb3(bind)
+@_context_arguments=bind[1];bind[2]
 end
 def __at__contex_d6d5(bind)
 @_context_arguments=bind[1]
@@ -68,7 +71,7 @@ end
 end
 
 def implicit_variables_compiled_by
-'e9902402934cdad6b9f95566a7c7c299'
+'f65a17c295b7d86e3c5585f39694c7a1'
 end
 def implicit_variables_source_hash
 '7902bddeb33ad0be079983548a91f729'
@@ -77,6 +80,6 @@ def testversionimplicit_variables(r)
  raise "invalid version" if r!=implicit_variables_version
 end
 def implicit_variables_version
-'c705677100d7d6265dae8e6edc9b7b5c'
+'12ed496a6256ee5e7d68572210571c12'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/implicit_variables_c"

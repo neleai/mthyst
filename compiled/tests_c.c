@@ -153,7 +153,8 @@ static VALUE s_b_92eb;
 static VALUE s_c_4a8a;
 static VALUE s_d_8277;
 static VALUE s_g_b2f5;
-static VALUE sy___at__contex_160a;
+static VALUE sy___at__contex_5f56;
+static VALUE sy___at__contex_cdb3;
 static VALUE sy__bind_lb_1_rb__eq__58f9;
 static VALUE sy__bind_lb_1_rb__lb__6e1f;
 static VALUE sy__bind_lb_1_rb__pl__0a71;
@@ -203,20 +204,27 @@ fail:
 }
 VALUE Tests_context(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,__result;
+    VALUE it ,_autovar,_autovar_2,__result,_autovar_3;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     bind_aset(bind2,1,_autovar);
-    it=rb_funcall(self,sy___at__contex_160a,1,bind2);
+    bind_aset(bind2,2,_autovar_2);
+    it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
     _autovar=bind_aget(bind2,1);;
-    bind_aset(bind2,1,_autovar);
+    _autovar_2=bind_aget(bind2,2);;
+    bind_aset(bind2,1,_autovar_2);
     it=rb_funcall(self,sy__bind_lb_1_rb__lb__6e1f,1,bind2);
-    _autovar=bind_aget(bind2,1);;
+    _autovar_2=bind_aget(bind2,1);;
     __result=it;;
-
+    _autovar_3=it;;
+    bind_aset(bind2,1,_autovar);
+    bind_aset(bind2,2,_autovar_3);
+    it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+    _autovar=bind_aget(bind2,1);;
+    _autovar_3=bind_aget(bind2,2);;
 fail:
     return it;
 }
@@ -663,7 +671,8 @@ void Init_tests_c() {
     rb_global_variable(&s_d_8277);
     s_g_b2f5=rb_str_new2("g");
     rb_global_variable(&s_g_b2f5);
-    sy___at__contex_160a=rb_intern("__at__contex_160a");
+    sy___at__contex_5f56=rb_intern("__at__contex_5f56");
+    sy___at__contex_cdb3=rb_intern("__at__contex_cdb3");
     sy__bind_lb_1_rb__eq__58f9=rb_intern("_bind_lb_1_rb__eq__58f9");
     sy__bind_lb_1_rb__lb__6e1f=rb_intern("_bind_lb_1_rb__lb__6e1f");
     sy__bind_lb_1_rb__pl__0a71=rb_intern("_bind_lb_1_rb__pl__0a71");
@@ -682,5 +691,5 @@ void Init_tests_c() {
     rb_define_method(cls_Tests,"s2",Tests_s2,0);
     rb_define_method(cls_Tests,"sw",Tests_sw,0);
     rb_define_method(cls_Tests,"test",Tests_test,0);
-    rb_eval_string("testversiontests('8c802a23c1a8be54dd6f4654ee5da3de')");
+    rb_eval_string("testversiontests('621d27b38e2ed3f46c3e82eb1652ead8')");
 }

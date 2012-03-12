@@ -46,7 +46,8 @@ static VALUE s_pass_1a1d;
 static VALUE s_ptr_mi__gt_pos_db4c;
 static VALUE s_success_260c;
 static VALUE s_switch_lp__lp__a839;
-static VALUE sy___at__contex_160a;
+static VALUE sy___at__contex_5f56;
+static VALUE sy___at__contex_cdb3;
 static VALUE sy___at__contex_d6d5;
 static VALUE sy___at_bindno_eq__e294;
 static VALUE sy___at_binds_dot_m_9a36;
@@ -190,7 +191,7 @@ fail:
 }
 VALUE AmethystCTranslator_addlambda(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,_lambd,_rwo,_word,_body,_x,__result;
+    VALUE it ,_autovar,_autovar_2,_lambd,_rwo,_word,_body,_x,__result,_autovar_3;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -216,15 +217,17 @@ VALUE AmethystCTranslator_addlambda(VALUE self ) {
     case 16/*Switch_Clas*/:
         ;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at__contex_160a,1,bind2);
+        bind_aset(bind2,2,_autovar_2);
+        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        bind_aset(bind2,1,_autovar);
+        _autovar_2=bind_aget(bind2,2);;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___dq__sh__le_bind_lb__8a62,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         _lambd=it;;
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=rb_funcall(self,sy___at_faillab_1610,1,bind2);
         _rwo=it;;
         it=rb_obj_clone(s_fail_e111);
@@ -232,9 +235,9 @@ VALUE AmethystCTranslator_addlambda(VALUE self ) {
         bind_aset(bind2,1,_word);
         it=rb_funcall(self,sy___at_faillab_e643,1,bind2);
         _word=bind_aget(bind2,1);;
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=rb_funcall(self,sy_trans,0);
         if (it==failobj) {
             it=failobj;
@@ -248,37 +251,45 @@ VALUE AmethystCTranslator_addlambda(VALUE self ) {
         _rwo=bind_aget(bind2,1);;
         _x=bind_aget(bind2,2);;
         bind_aset(bind2,1,_lambd);
-        bind_aset(bind2,2,_autovar);
+        bind_aset(bind2,2,_autovar_2);
         bind_aset(bind2,3,_body);
         it=rb_funcall(self,sy__h_eq__dq_VALUE_481e,1,bind2);
         _lambd=bind_aget(bind2,1);;
-        _autovar=bind_aget(bind2,2);;
+        _autovar_2=bind_aget(bind2,2);;
         _body=bind_aget(bind2,3);;
         bind_aset(bind2,1,_lambd);
         it=rb_funcall(self,sy___dq_Amethys_2ed8,1,bind2);
         _lambd=bind_aget(bind2,1);;
         __result=it;;
+        _autovar_3=it;;
+        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,2,_autovar_3);
+        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        _autovar=bind_aget(bind2,1);;
+        _autovar_3=bind_aget(bind2,2);;
         break;
     case 17/*Object*/:
         ;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at__contex_160a,1,bind2);
+        bind_aset(bind2,2,_autovar_2);
+        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        bind_aset(bind2,1,_autovar);
+        _autovar_2=bind_aget(bind2,2);;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___dq__sh__le_bind_lb__8a62,1,bind2);
-        _autovar=bind_aget(bind2,1);;
-        bind_aset(bind2,1,_autovar);
+        _autovar_2=bind_aget(bind2,1);;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=rb_funcall(self,sy___at_faillab_1610,1,bind2);
         it=rb_obj_clone(s_fail_e111);
         _word=it;;
         bind_aset(bind2,1,_word);
         it=rb_funcall(self,sy___at_faillab_e643,1,bind2);
         _word=bind_aget(bind2,1);;
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         if (1) {
             it=failobj;
             goto fail;
@@ -440,44 +451,46 @@ fail:
 }
 VALUE AmethystCTranslator_rbcode(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,_s,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_k,_v,_autovar_6,_x,__result;
+    VALUE it ,_autovar,_autovar_2,_s,_autovar_3,_autovar_4,_autovar_5,_autovar_6,_k,_v,_autovar_7,_x,__result,_autovar_8;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     bind_aset(bind2,1,_autovar);
-    it=rb_funcall(self,sy___at__contex_160a,1,bind2);
+    bind_aset(bind2,2,_autovar_2);
+    it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
     _autovar=bind_aget(bind2,1);;
-    bind_aset(bind2,1,_autovar);
+    _autovar_2=bind_aget(bind2,2);;
+    bind_aset(bind2,1,_autovar_2);
     it=rb_funcall(self,sy___dq_class_sp__sh__cf48,1,bind2);
-    _autovar=bind_aget(bind2,1);;
+    _autovar_2=bind_aget(bind2,1);;
     _s=it;;
     bind_aset(bind2,1,_s);
     it=rb_funcall(self,sy__bind_lb_1_rb__lt__acb7,1,bind2);
     _s=bind_aget(bind2,1);;
     it=rb_funcall(self,sy___at_callbac_2d11,1,bind2);
-    _autovar_2=it;;
+    _autovar_3=it;;
     cstruct oldpass1=*ptr;
     ptr->pos=ptr->len=0;
     ptr->ary=NULL;
     ptr->src=failobj;
     ptr->ary=alloca(sizeof(VALUE));
-    ptr->ary[0]=_autovar_2;
+    ptr->ary[0]=_autovar_3;
     ptr->len=1;
-    bind_aset(bind2,1,_autovar);
+    bind_aset(bind2,1,_autovar_2);
     it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-    _autovar=bind_aget(bind2,1);;
+    _autovar_2=bind_aget(bind2,1);;
     it=AmethystCore_anything(self );
     if (it==failobj) {
         it=failobj;
         goto pass1;
     }
-    _autovar_3=it;;
+    _autovar_4=it;;
     cstruct oldpass2=*ptr;
     ptr->pos=ptr->len=0;
     ptr->ary=NULL;
-    ptr->src=_autovar_3;
+    ptr->src=_autovar_4;
     if(TYPE(ptr->src)==T_STRING) {
         ptr->str=RSTRING_PTR(ptr->src);
         ptr->len=RSTRING_LEN(ptr->src);
@@ -492,26 +505,26 @@ VALUE AmethystCTranslator_rbcode(VALUE self ) {
         ptr->len=RARRAY_LEN(ary);
     }
     it=rb_ary_new3(0);
-    _autovar_4=it;;
+    _autovar_5=it;;
     int stop1=0;
     while(!stop1) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
         ;
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
             goto alt1_2;
         }
-        _autovar_5=it;;
+        _autovar_6=it;;
         cstruct oldpass3=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_5;
+        ptr->src=_autovar_6;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -525,27 +538,27 @@ alt1_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
             goto pass3;
         }
         _k=it;;
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
             goto pass3;
         }
         _v=it;;
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -565,8 +578,8 @@ success3:
         it=rb_funcall(self,sy___dq_def_sp__sh__le_b_b73d,1,bind2);
         _k=bind_aget(bind2,1);;
         _v=bind_aget(bind2,2);;
-        _autovar_6=it;;
-        it=AmethystCore_append(self,_autovar_4,_autovar_6);
+        _autovar_7=it;;
+        it=AmethystCore_append(self,_autovar_5,_autovar_7);
         ;
         goto accept1;
 alt1_2:
@@ -583,11 +596,11 @@ alt1_3:
 accept1:
         ;
     }
-    it=_autovar_4;
+    it=_autovar_5;
     _x=it;;
-    bind_aset(bind2,1,_autovar);
+    bind_aset(bind2,1,_autovar_2);
     it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-    _autovar=bind_aget(bind2,1);;
+    _autovar_2=bind_aget(bind2,1);;
     it=Qnil;
     if (ptr->pos<ptr->len) {
         it=failobj;
@@ -602,9 +615,9 @@ pass2:
     }
 success2:
     *ptr=oldpass2;
-    bind_aset(bind2,1,_autovar);
+    bind_aset(bind2,1,_autovar_2);
     it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-    _autovar=bind_aget(bind2,1);;
+    _autovar_2=bind_aget(bind2,1);;
     it=Qnil;
     if (ptr->pos<ptr->len) {
         it=failobj;
@@ -628,7 +641,12 @@ success1:
     it=rb_funcall(self,sy__bind_lb_1_rb__pl__916b,1,bind2);
     _s=bind_aget(bind2,1);;
     __result=it;;
-
+    _autovar_8=it;;
+    bind_aset(bind2,1,_autovar);
+    bind_aset(bind2,2,_autovar_8);
+    it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+    _autovar=bind_aget(bind2,1);;
+    _autovar_8=bind_aget(bind2,2);;
 fail:
     return it;
 }
@@ -1260,7 +1278,7 @@ fail:
 }
 VALUE AmethystCTranslator_trans(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_a,_x,_y,__result,_autovar_5,_autovar_6,_autovar_7,_it,_cbno,_autovar_8,_autovar_9,_autovar_10,_autovar_11,_autovar_12,_autovar_13,_autovar_14,_autovar_15,_autovar_16,_s,_autovar_17,_autovar_18,_autovar_19,_autovar_20,_autovar_21,_autovar_22,_autovar_23,_autovar_24,_autovar_25,_autovar_26,_autovar_27,_autovar_28,_autovar_29,_autovar_30,_autovar_31,_autovar_32,_autovar_33,_name,_ii,_autovar_34,_aa,_autovar_35,_args,_app,_autovar_36,_e,_autovar_37,_autovar_38,_autovar_39,_autovar_40,_autovar_41,_autovar_42,_autovar_43,_autovar_44,_autovar_45,_autovar_46,_autovar_47,_t,_rbcode,_init,_autovar_48,_autovar_49,_autovar_50,_autovar_51,_accept,_reject,_oldpos,_word,_rwo,_x_2,_autovar_52,_autovar_53,_autovar_54,_autovar_55,_autovar_56,_autovar_57,_autovar_58,_autovar_59,_autovar_60,_oldstops,_oldstoplabel,_autovar_61,_autovar_62,__result_2,_autovar_63,_alt,_altno,_oldcutlabel,_oldcuts,_autovar_64,_autovar_65,_pass,_oldpass,_success,_autovar_66,_autovar_67,_to,_autovar_68,_autovar_69,_autovar_70,_autovar_71,_body,_autovar_72,_autovar_73,_autovar_74,_autovar_75,_autovar_76,_autovar_77,_autovar_78,_autovar_79,_c,_autovar_80,_autovar_81,_sh,_autovar_82,_autovar_83;
+    VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_a,_x,_y,__result,_autovar_6,_autovar_7,_autovar_8,_autovar_9,_it,_cbno,_autovar_10,_autovar_11,_autovar_12,_autovar_13,_autovar_14,_autovar_15,_autovar_16,_autovar_17,_autovar_18,_s,_autovar_19,_autovar_20,_autovar_21,_autovar_22,_autovar_23,_autovar_24,_autovar_25,_autovar_26,_autovar_27,_autovar_28,_autovar_29,_autovar_30,_autovar_31,_autovar_32,_autovar_33,_autovar_34,_autovar_35,_name,_ii,_autovar_36,_aa,_autovar_37,_args,_app,_autovar_38,_e,_autovar_39,_autovar_40,_autovar_41,_autovar_42,_autovar_43,_autovar_44,_autovar_45,_autovar_46,_autovar_47,_autovar_48,_autovar_49,_t,_rbcode,_init,_autovar_50,_autovar_51,_autovar_52,_autovar_53,_accept,_reject,_oldpos,_word,_rwo,_x_2,_autovar_54,_autovar_55,_autovar_56,_autovar_57,_autovar_58,_autovar_59,_autovar_60,_autovar_61,_autovar_62,_oldstops,_oldstoplabel,_autovar_63,_autovar_64,__result_2,_autovar_65,_alt,_altno,_oldcutlabel,_oldcuts,_autovar_66,_autovar_67,_pass,_oldpass,_success,_autovar_68,_autovar_69,_to,_autovar_70,_autovar_71,_autovar_72,_autovar_73,_body,_autovar_74,_autovar_75,_autovar_76,_autovar_77,_autovar_78,_autovar_79,_autovar_80,_autovar_81,_c,_autovar_82,_autovar_83,_sh,_autovar_84,_autovar_85;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -1270,26 +1288,28 @@ VALUE AmethystCTranslator_trans(VALUE self ) {
     case 0/*Act*/:
         ;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at__contex_160a,1,bind2);
+        bind_aset(bind2,2,_autovar_2);
+        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        bind_aset(bind2,1,_autovar);
+        _autovar_2=bind_aget(bind2,2);;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        _autovar_2=it;;
-        it=_autovar_2;
         _autovar_3=it;;
+        it=_autovar_3;
+        _autovar_4=it;;
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
         ;
-        it=_autovar_3;
-        _autovar_4=it;;
+        it=_autovar_4;
+        _autovar_5=it;;
         cstruct oldpass1=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_4;
+        ptr->src=_autovar_5;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -1303,9 +1323,9 @@ alt1_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -1319,43 +1339,43 @@ alt1_1:
             it=failobj;
             goto pass1;
         };
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
             goto pass1;
         }
         _x=it;;
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
             goto pass1;
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
             goto pass1;
         }
         _y=it;;
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
             goto pass1;
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -1376,17 +1396,18 @@ success1:
         _x=bind_aget(bind2,1);;
         _y=bind_aget(bind2,2);;
         __result=it;;
+        _autovar_6=it;;
 
         ;
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
-        it=_autovar_3;
-        _autovar_5=it;;
+        it=_autovar_4;
+        _autovar_7=it;;
         cstruct oldpass2=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_5;
+        ptr->src=_autovar_7;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -1402,23 +1423,23 @@ alt1_2:
         }
         it=rb_funcall(self,sy___at_bindno_eq__e294,1,bind2);
         it=rb_ary_new3(0);
-        _autovar_6=it;;
+        _autovar_8=it;;
         int stop1=0;
         while(!stop1) {
             int oldpos2=ptr->pos;
             int cut2=0;
 alt2_1:
             ;
-            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt2_2;
             }
-            _autovar_7=it;;
-            it=AmethystCore_append(self,_autovar_6,_autovar_7);
+            _autovar_9=it;;
+            it=AmethystCore_append(self,_autovar_8,_autovar_9);
             ;
             goto accept2;
 alt2_2:
@@ -1435,7 +1456,7 @@ alt2_3:
 accept2:
             ;
         }
-        it=_autovar_6;
+        it=_autovar_8;
         _it=it;;
         bind_aset(bind2,1,_it);
         it=rb_funcall(self,sy__addcallb_0461,1,bind2);
@@ -1444,10 +1465,10 @@ accept2:
         bind_aset(bind2,1,_cbno);
         it=rb_funcall(self,sy___at_binds_dot_m_9a36,1,bind2);
         _cbno=bind_aget(bind2,1);;
-        _autovar_8=it;;
-        bind_aset(bind2,1,_autovar);
+        _autovar_10=it;;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -1462,8 +1483,9 @@ pass2:
         }
 success2:
         *ptr=oldpass2;
-        it=_autovar_8;
+        it=_autovar_10;
         __result=it;;
+        _autovar_6=it;;
 
         ;
         goto accept1;
@@ -1475,30 +1497,37 @@ alt1_3:
         };
 accept1:
         ;
+        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,2,_autovar_6);
+        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        _autovar=bind_aget(bind2,1);;
+        _autovar_6=bind_aget(bind2,2);;
         break;
     case 1/*Apply*/:
         ;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at__contex_160a,1,bind2);
+        bind_aset(bind2,2,_autovar_2);
+        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        bind_aset(bind2,1,_autovar);
+        _autovar_2=bind_aget(bind2,2);;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        _autovar_9=it;;
-        it=_autovar_9;
-        _autovar_10=it;;
+        _autovar_11=it;;
+        it=_autovar_11;
+        _autovar_12=it;;
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
         ;
-        it=_autovar_10;
-        _autovar_11=it;;
+        it=_autovar_12;
+        _autovar_13=it;;
         cstruct oldpass3=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_11;
+        ptr->src=_autovar_13;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -1512,19 +1541,19 @@ alt3_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
             goto pass3;
         }
-        _autovar_12=it;;
+        _autovar_14=it;;
         cstruct oldpass4=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_12;
+        ptr->src=_autovar_14;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -1538,9 +1567,9 @@ alt3_1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=rb_funcall(self,sy_spaces,0);
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... '^':
@@ -1563,9 +1592,9 @@ alt3_1:
             }
             break;
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -1581,10 +1610,10 @@ pass4:
 success4:
         *ptr=oldpass4;
         it=rb_funcall(self,sy__raise_sp__dq_T_0ab1,1,bind2);
-        _autovar_13=it;;
-        bind_aset(bind2,1,_autovar);
+        _autovar_15=it;;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -1599,19 +1628,20 @@ pass3:
         }
 success3:
         *ptr=oldpass3;
-        it=_autovar_13;
+        it=_autovar_15;
         __result=it;;
+        _autovar_6=it;;
 
         ;
         goto accept3;
 alt3_2:
         ptr->pos=oldpos3;
-        it=_autovar_10;
-        _autovar_14=it;;
+        it=_autovar_12;
+        _autovar_16=it;;
         cstruct oldpass5=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_14;
+        ptr->src=_autovar_16;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -1625,19 +1655,19 @@ alt3_2:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
             goto pass5;
         }
-        _autovar_15=it;;
+        _autovar_17=it;;
         cstruct oldpass6=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_15;
+        ptr->src=_autovar_17;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -1651,9 +1681,9 @@ alt3_2:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=rb_funcall(self,sy_spaces,0);
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... '^':
@@ -1676,9 +1706,9 @@ alt3_2:
             }
             break;
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -1693,15 +1723,15 @@ pass6:
         }
 success6:
         *ptr=oldpass6;
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_5,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*CAct*/:
             ;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
-            _autovar_16=it;;
+            _autovar_18=it;;
             break;
         case 1/*Object*/:
             ;
@@ -1714,7 +1744,7 @@ success6:
         cstruct oldpass7=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_16;
+        ptr->src=_autovar_18;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -1728,18 +1758,18 @@ success6:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
             goto pass7;
         }
         _s=it;;
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -1754,9 +1784,9 @@ pass7:
         }
 success7:
         *ptr=oldpass7;
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -1775,17 +1805,18 @@ success5:
         it=rb_funcall(self,sy___dq_if_lp_ptr_mi__19f0,1,bind2);
         _s=bind_aget(bind2,1);;
         __result=it;;
+        _autovar_6=it;;
 
         ;
         goto accept3;
 alt3_3:
         ptr->pos=oldpos3;
-        it=_autovar_10;
-        _autovar_17=it;;
+        it=_autovar_12;
+        _autovar_19=it;;
         cstruct oldpass8=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_17;
+        ptr->src=_autovar_19;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -1799,19 +1830,19 @@ alt3_3:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
             goto pass8;
         }
-        _autovar_18=it;;
+        _autovar_20=it;;
         cstruct oldpass9=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_18;
+        ptr->src=_autovar_20;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -1825,9 +1856,9 @@ alt3_3:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=rb_funcall(self,sy_spaces,0);
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... 'e':
@@ -1850,9 +1881,9 @@ alt3_3:
             }
             break;
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -1868,10 +1899,10 @@ pass9:
 success9:
         *ptr=oldpass9;
         it=rb_funcall(self,sy___dq__sh__le_failw_5360,1,bind2);
-        _autovar_19=it;;
-        bind_aset(bind2,1,_autovar);
+        _autovar_21=it;;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -1886,19 +1917,20 @@ pass8:
         }
 success8:
         *ptr=oldpass8;
-        it=_autovar_19;
+        it=_autovar_21;
         __result=it;;
+        _autovar_6=it;;
 
         ;
         goto accept3;
 alt3_4:
         ptr->pos=oldpos3;
-        it=_autovar_10;
-        _autovar_20=it;;
+        it=_autovar_12;
+        _autovar_22=it;;
         cstruct oldpass10=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_20;
+        ptr->src=_autovar_22;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -1912,19 +1944,19 @@ alt3_4:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
             goto pass10;
         }
-        _autovar_21=it;;
+        _autovar_23=it;;
         cstruct oldpass11=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_21;
+        ptr->src=_autovar_23;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -1938,9 +1970,9 @@ alt3_4:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=rb_funcall(self,sy_spaces,0);
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... 'd':
@@ -1963,9 +1995,9 @@ alt3_4:
             }
             break;
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -1981,10 +2013,10 @@ pass11:
 success11:
         *ptr=oldpass11;
         it=rb_funcall(self,sy___dq_it_eq_Qnil_a6d5,1,bind2);
-        _autovar_22=it;;
-        bind_aset(bind2,1,_autovar);
+        _autovar_24=it;;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -1999,19 +2031,20 @@ pass10:
         }
 success10:
         *ptr=oldpass10;
-        it=_autovar_22;
+        it=_autovar_24;
         __result=it;;
+        _autovar_6=it;;
 
         ;
         goto accept3;
 alt3_5:
         ptr->pos=oldpos3;
-        it=_autovar_10;
-        _autovar_23=it;;
+        it=_autovar_12;
+        _autovar_25=it;;
         cstruct oldpass12=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_23;
+        ptr->src=_autovar_25;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -2025,19 +2058,19 @@ alt3_5:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
             goto pass12;
         }
-        _autovar_24=it;;
+        _autovar_26=it;;
         cstruct oldpass13=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_24;
+        ptr->src=_autovar_26;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -2051,9 +2084,9 @@ alt3_5:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=rb_funcall(self,sy_spaces,0);
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... 'd':
@@ -2076,9 +2109,9 @@ alt3_5:
             }
             break;
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -2093,9 +2126,9 @@ pass13:
         }
 success13:
         *ptr=oldpass13;
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -2112,17 +2145,18 @@ success12:
         *ptr=oldpass12;
         it=rb_obj_clone(s_it_eq_Qnil);
         __result=it;;
+        _autovar_6=it;;
 
         ;
         goto accept3;
 alt3_6:
         ptr->pos=oldpos3;
-        it=_autovar_10;
-        _autovar_25=it;;
+        it=_autovar_12;
+        _autovar_27=it;;
         cstruct oldpass14=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_25;
+        ptr->src=_autovar_27;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -2136,19 +2170,19 @@ alt3_6:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
             goto pass14;
         }
-        _autovar_26=it;;
+        _autovar_28=it;;
         cstruct oldpass15=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_26;
+        ptr->src=_autovar_28;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -2162,9 +2196,9 @@ alt3_6:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=rb_funcall(self,sy_spaces,0);
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... '`':
@@ -2187,9 +2221,9 @@ alt3_6:
             }
             break;
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -2204,9 +2238,9 @@ pass15:
         }
 success15:
         *ptr=oldpass15;
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -2223,17 +2257,18 @@ success14:
         *ptr=oldpass14;
         it=rb_obj_clone(s_it_eq_rb_st_ee66);
         __result=it;;
+        _autovar_6=it;;
 
         ;
         goto accept3;
 alt3_7:
         ptr->pos=oldpos3;
-        it=_autovar_10;
-        _autovar_27=it;;
+        it=_autovar_12;
+        _autovar_29=it;;
         cstruct oldpass16=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_27;
+        ptr->src=_autovar_29;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -2247,19 +2282,19 @@ alt3_7:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
             goto pass16;
         }
-        _autovar_28=it;;
+        _autovar_30=it;;
         cstruct oldpass17=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_28;
+        ptr->src=_autovar_30;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -2273,9 +2308,9 @@ alt3_7:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=rb_funcall(self,sy_spaces,0);
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... '`':
@@ -2298,9 +2333,9 @@ alt3_7:
             }
             break;
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -2315,9 +2350,9 @@ pass17:
         }
 success17:
         *ptr=oldpass17;
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -2334,17 +2369,18 @@ success16:
         *ptr=oldpass16;
         it=rb_obj_clone(s_it_eq_ptr_mi__gt__d2bb);
         __result=it;;
+        _autovar_6=it;;
 
         ;
         goto accept3;
 alt3_8:
         ptr->pos=oldpos3;
-        it=_autovar_10;
-        _autovar_29=it;;
+        it=_autovar_12;
+        _autovar_31=it;;
         cstruct oldpass18=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_29;
+        ptr->src=_autovar_31;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -2358,19 +2394,19 @@ alt3_8:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
             goto pass18;
         }
-        _autovar_30=it;;
+        _autovar_32=it;;
         cstruct oldpass19=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_30;
+        ptr->src=_autovar_32;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -2384,9 +2420,9 @@ alt3_8:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=rb_funcall(self,sy_spaces,0);
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... '^':
@@ -2409,9 +2445,9 @@ alt3_8:
             }
             break;
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -2426,15 +2462,15 @@ pass19:
         }
 success19:
         *ptr=oldpass19;
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_6,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*CAct*/:
             ;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
-            _autovar_31=it;;
+            _autovar_33=it;;
             break;
         case 1/*Object*/:
             ;
@@ -2447,7 +2483,7 @@ success19:
         cstruct oldpass20=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_31;
+        ptr->src=_autovar_33;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -2461,18 +2497,18 @@ success19:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
             goto pass20;
         }
         _s=it;;
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -2490,10 +2526,10 @@ success20:
         bind_aset(bind2,1,_s);
         it=rb_funcall(self,sy___dq_if_sp__lp__sh__le_a_1643,1,bind2);
         _s=bind_aget(bind2,1);;
-        _autovar_32=it;;
-        bind_aset(bind2,1,_autovar);
+        _autovar_34=it;;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -2508,19 +2544,20 @@ pass18:
         }
 success18:
         *ptr=oldpass18;
-        it=_autovar_32;
+        it=_autovar_34;
         __result=it;;
+        _autovar_6=it;;
 
         ;
         goto accept3;
 alt3_9:
         ptr->pos=oldpos3;
-        it=_autovar_10;
-        _autovar_33=it;;
+        it=_autovar_12;
+        _autovar_35=it;;
         cstruct oldpass21=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_33;
+        ptr->src=_autovar_35;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -2534,9 +2571,9 @@ alt3_9:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -2546,7 +2583,7 @@ alt3_9:
         it=i_0;
         _ii=it;;
         it=rb_ary_new3(0);
-        _autovar_34=it;;
+        _autovar_36=it;;
         int stop2=0;
         while(!stop2) {
             switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_7,rb_obj_class(ame_curobj2(ptr))))) {
@@ -2572,9 +2609,9 @@ alt3_9:
                 int cut4=0;
 alt4_1:
                 ;
-                bind_aset(bind2,1,_autovar);
+                bind_aset(bind2,1,_autovar_2);
                 it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-                _autovar=bind_aget(bind2,1);;
+                _autovar_2=bind_aget(bind2,1);;
                 it=rb_funcall(self,sy_trans,0);
                 if (it==failobj) {
                     it=failobj;
@@ -2589,8 +2626,8 @@ alt4_1:
                 it=rb_funcall(self,sy___dq__sh__le_bind_lb__3bec,1,bind2);
                 _aa=bind_aget(bind2,1);;
                 _ii=bind_aget(bind2,2);;
-                _autovar_35=it;;
-                it=AmethystCore_append(self,_autovar_34,_autovar_35);
+                _autovar_37=it;;
+                it=AmethystCore_append(self,_autovar_36,_autovar_37);
                 ;
                 goto accept4;
 alt4_2:
@@ -2613,9 +2650,9 @@ accept4:
                 int cut5=0;
 alt5_1:
                 ;
-                bind_aset(bind2,1,_autovar);
+                bind_aset(bind2,1,_autovar_2);
                 it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-                _autovar=bind_aget(bind2,1);;
+                _autovar_2=bind_aget(bind2,1);;
                 if (1) {
                     it=failobj;
                     goto alt5_2;
@@ -2638,13 +2675,13 @@ accept5:
                 break;
             }
         }
-        it=_autovar_34;
+        it=_autovar_36;
         _args=it;;
         it=rb_funcall(self,sy__src_25d9,1,bind2);
         _app=it;;
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -2669,6 +2706,7 @@ success21:
         _ii=bind_aget(bind2,3);;
         _app=bind_aget(bind2,4);;
         __result=it;;
+        _autovar_6=it;;
 
         ;
         goto accept3;
@@ -2680,22 +2718,29 @@ alt3_10:
         };
 accept3:
         ;
+        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,2,_autovar_6);
+        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        _autovar=bind_aget(bind2,1);;
+        _autovar_6=bind_aget(bind2,2);;
         break;
     case 2/*Bind*/:
         ;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at__contex_160a,1,bind2);
+        bind_aset(bind2,2,_autovar_2);
+        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        bind_aset(bind2,1,_autovar);
+        _autovar_2=bind_aget(bind2,2);;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        _autovar_36=it;;
+        _autovar_38=it;;
         cstruct oldpass22=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_36;
+        ptr->src=_autovar_38;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -2728,9 +2773,9 @@ accept3:
         case 15/*Switch_Char*/:
         case 16/*Switch_Clas*/:
             ;
-            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             it=rb_funcall(self,sy_trans,0);
             if (it==failobj) {
                 it=failobj;
@@ -2740,10 +2785,10 @@ accept3:
             bind_aset(bind2,1,_e);
             it=rb_funcall(self,sy___dq__sh__le_bind_lb__9cfd,1,bind2);
             _e=bind_aget(bind2,1);;
-            _autovar_37=it;;
-            bind_aset(bind2,1,_autovar);
+            _autovar_39=it;;
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             it=Qnil;
             if (ptr->pos<ptr->len) {
                 it=failobj;
@@ -2752,9 +2797,9 @@ accept3:
             break;
         case 17/*Object*/:
             ;
-            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             if (1) {
                 it=failobj;
                 goto pass22;
@@ -2770,24 +2815,32 @@ pass22:
         }
 success22:
         *ptr=oldpass22;
-        it=_autovar_37;
+        it=_autovar_39;
         __result=it;;
+        _autovar_6=it;;
+        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,2,_autovar_6);
+        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        _autovar=bind_aget(bind2,1);;
+        _autovar_6=bind_aget(bind2,2);;
         break;
     case 3/*CAct*/:
         ;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at__contex_160a,1,bind2);
+        bind_aset(bind2,2,_autovar_2);
+        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        bind_aset(bind2,1,_autovar);
+        _autovar_2=bind_aget(bind2,2);;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        _autovar_38=it;;
+        _autovar_40=it;;
         cstruct oldpass23=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_38;
+        ptr->src=_autovar_40;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -2807,9 +2860,9 @@ success22:
             int cut6=0;
 alt6_1:
             ;
-            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -2832,10 +2885,10 @@ accept6:
             ;
         }
         it=rb_funcall(self,sy__ar_eq__ti_src_dot__1348,1,bind2);
-        _autovar_39=it;;
-        bind_aset(bind2,1,_autovar);
+        _autovar_41=it;;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -2850,24 +2903,32 @@ pass23:
         }
 success23:
         *ptr=oldpass23;
-        it=_autovar_39;
+        it=_autovar_41;
         __result=it;;
+        _autovar_6=it;;
+        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,2,_autovar_6);
+        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        _autovar=bind_aget(bind2,1);;
+        _autovar_6=bind_aget(bind2,2);;
         break;
     case 4/*Cut*/:
         ;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at__contex_160a,1,bind2);
+        bind_aset(bind2,2,_autovar_2);
+        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        bind_aset(bind2,1,_autovar);
+        _autovar_2=bind_aget(bind2,2);;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        _autovar_40=it;;
+        _autovar_42=it;;
         cstruct oldpass24=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_40;
+        ptr->src=_autovar_42;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -2881,13 +2942,13 @@ success23:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -2904,63 +2965,27 @@ success24:
         *ptr=oldpass24;
         it=rb_funcall(self,sy___at_cuts_eq_tr_13c6,1,bind2);
         __result=it;;
+        _autovar_6=it;;
+        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,2,_autovar_6);
+        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        _autovar=bind_aget(bind2,1);;
+        _autovar_6=bind_aget(bind2,2);;
         break;
     case 5/*Grammar*/:
         ;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at__contex_160a,1,bind2);
+        bind_aset(bind2,2,_autovar_2);
+        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        bind_aset(bind2,1,_autovar);
+        _autovar_2=bind_aget(bind2,2);;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        _autovar_41=it;;
-        cstruct oldpass25=*ptr;
-        ptr->pos=ptr->len=0;
-        ptr->ary=NULL;
-        ptr->src=_autovar_41;
-        if(TYPE(ptr->src)==T_STRING) {
-            ptr->str=RSTRING_PTR(ptr->src);
-            ptr->len=RSTRING_LEN(ptr->src);
-        }
-        else {
-            VALUE ary;
-            if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
-            else ary=rb_ary_new3(0);
-            ptr->ary2=ary;
-            ptr->ary=RARRAY_PTR(ary);
-            ptr->len=RARRAY_LEN(ary);
-        }
-        bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy__bind_lb_1_rb__lb__230a,1,bind2);
-        _autovar=bind_aget(bind2,1);;
-        it=rb_funcall(self,sy___at_lambdas_ecda,1,bind2);
-        it=rb_funcall(self,sy___at_defs_eq__lb__rb__3b51,1,bind2);
-        it=rb_funcall(self,sy___at_faillab_8142,1,bind2);
-        it=rb_funcall(self,sy___at_callbac_e37c,1,bind2);
-        it=rb_funcall(self,sy___at_header_eq__7aa9,1,bind2);
-        it=rb_funcall(self,sy___at_init_eq__lb__rb__47da,1,bind2);
-        it=rb_funcall(self,sy__src_dot_rule_5acf,1,bind2);
-        _autovar_42=it;;
-        cstruct oldpass26=*ptr;
-        ptr->pos=ptr->len=0;
-        ptr->ary=NULL;
-        ptr->src=failobj;
-        ptr->ary=alloca(sizeof(VALUE));
-        ptr->ary[0]=_autovar_42;
-        ptr->len=1;
-        bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
-        it=AmethystCore_anything(self );
-        if (it==failobj) {
-            it=failobj;
-            goto pass26;
-        }
         _autovar_43=it;;
-        cstruct oldpass27=*ptr;
+        cstruct oldpass25=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ptr->src=_autovar_43;
@@ -2977,8 +3002,52 @@ success24:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        it=rb_ary_new3(0);
+        bind_aset(bind2,1,_autovar_2);
+        it=rb_funcall(self,sy__bind_lb_1_rb__lb__230a,1,bind2);
+        _autovar_2=bind_aget(bind2,1);;
+        it=rb_funcall(self,sy___at_lambdas_ecda,1,bind2);
+        it=rb_funcall(self,sy___at_defs_eq__lb__rb__3b51,1,bind2);
+        it=rb_funcall(self,sy___at_faillab_8142,1,bind2);
+        it=rb_funcall(self,sy___at_callbac_e37c,1,bind2);
+        it=rb_funcall(self,sy___at_header_eq__7aa9,1,bind2);
+        it=rb_funcall(self,sy___at_init_eq__lb__rb__47da,1,bind2);
+        it=rb_funcall(self,sy__src_dot_rule_5acf,1,bind2);
         _autovar_44=it;;
+        cstruct oldpass26=*ptr;
+        ptr->pos=ptr->len=0;
+        ptr->ary=NULL;
+        ptr->src=failobj;
+        ptr->ary=alloca(sizeof(VALUE));
+        ptr->ary[0]=_autovar_44;
+        ptr->len=1;
+        bind_aset(bind2,1,_autovar_2);
+        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+        _autovar_2=bind_aget(bind2,1);;
+        it=AmethystCore_anything(self );
+        if (it==failobj) {
+            it=failobj;
+            goto pass26;
+        }
+        _autovar_45=it;;
+        cstruct oldpass27=*ptr;
+        ptr->pos=ptr->len=0;
+        ptr->ary=NULL;
+        ptr->src=_autovar_45;
+        if(TYPE(ptr->src)==T_STRING) {
+            ptr->str=RSTRING_PTR(ptr->src);
+            ptr->len=RSTRING_LEN(ptr->src);
+        }
+        else {
+            VALUE ary;
+            if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
+            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
+            else ary=rb_ary_new3(0);
+            ptr->ary2=ary;
+            ptr->ary=RARRAY_PTR(ary);
+            ptr->len=RARRAY_LEN(ary);
+        }
+        it=rb_ary_new3(0);
+        _autovar_46=it;;
         int stop4=0;
         while(!stop4) {
             switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_9,rb_obj_class(ame_curobj2(ptr))))) {
@@ -3004,16 +3073,16 @@ success24:
                 int cut7=0;
 alt7_1:
                 ;
-                bind_aset(bind2,1,_autovar);
+                bind_aset(bind2,1,_autovar_2);
                 it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-                _autovar=bind_aget(bind2,1);;
+                _autovar_2=bind_aget(bind2,1);;
                 it=rb_funcall(self,sy_trans,0);
                 if (it==failobj) {
                     it=failobj;
                     goto alt7_2;
                 }
-                _autovar_45=it;;
-                it=AmethystCore_append(self,_autovar_44,_autovar_45);
+                _autovar_47=it;;
+                it=AmethystCore_append(self,_autovar_46,_autovar_47);
                 ;
                 goto accept7;
 alt7_2:
@@ -3036,9 +3105,9 @@ accept7:
                 int cut8=0;
 alt8_1:
                 ;
-                bind_aset(bind2,1,_autovar);
+                bind_aset(bind2,1,_autovar_2);
                 it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-                _autovar=bind_aget(bind2,1);;
+                _autovar_2=bind_aget(bind2,1);;
                 if (1) {
                     it=failobj;
                     goto alt8_2;
@@ -3061,16 +3130,16 @@ accept8:
                 break;
             }
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass27;
         }
-        it=_autovar_44;
-        _autovar_46=it;;
+        it=_autovar_46;
+        _autovar_48=it;;
 
         goto success27;
 pass27:
@@ -3081,16 +3150,16 @@ pass27:
         }
 success27:
         *ptr=oldpass27;
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass26;
         }
-        it=_autovar_46;
-        _autovar_47=it;;
+        it=_autovar_48;
+        _autovar_49=it;;
 
         goto success26;
 pass26:
@@ -3101,11 +3170,11 @@ pass26:
         }
 success26:
         *ptr=oldpass26;
-        it=_autovar_47;
+        it=_autovar_49;
         _t=it;;
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=rb_funcall(self,sy_rbcode,0);
         if (it==failobj) {
             it=failobj;
@@ -3117,18 +3186,18 @@ success26:
         bind_aset(bind2,1,_s);
         bind_aset(bind2,2,_t);
         bind_aset(bind2,3,_init);
-        bind_aset(bind2,4,_autovar);
+        bind_aset(bind2,4,_autovar_2);
         bind_aset(bind2,5,_rbcode);
         it=rb_funcall(self,sy__bind_lb_1_rb__lt__8b76,1,bind2);
         _s=bind_aget(bind2,1);;
         _t=bind_aget(bind2,2);;
         _init=bind_aget(bind2,3);;
-        _autovar=bind_aget(bind2,4);;
+        _autovar_2=bind_aget(bind2,4);;
         _rbcode=bind_aget(bind2,5);;
-        _autovar_48=it;;
-        bind_aset(bind2,1,_autovar);
+        _autovar_50=it;;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -3143,24 +3212,32 @@ pass25:
         }
 success25:
         *ptr=oldpass25;
-        it=_autovar_48;
+        it=_autovar_50;
         __result=it;;
+        _autovar_6=it;;
+        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,2,_autovar_6);
+        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        _autovar=bind_aget(bind2,1);;
+        _autovar_6=bind_aget(bind2,2);;
         break;
     case 6/*Local*/:
         ;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at__contex_160a,1,bind2);
+        bind_aset(bind2,2,_autovar_2);
+        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        bind_aset(bind2,1,_autovar);
+        _autovar_2=bind_aget(bind2,2);;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        _autovar_49=it;;
+        _autovar_51=it;;
         cstruct oldpass28=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_49;
+        ptr->src=_autovar_51;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -3180,9 +3257,9 @@ success25:
             int cut9=0;
 alt9_1:
             ;
-            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -3205,10 +3282,10 @@ accept9:
             ;
         }
         it=rb_funcall(self,sy___dq_it_eq__sh__le_bg_281f,1,bind2);
-        _autovar_50=it;;
-        bind_aset(bind2,1,_autovar);
+        _autovar_52=it;;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -3223,24 +3300,32 @@ pass28:
         }
 success28:
         *ptr=oldpass28;
-        it=_autovar_50;
+        it=_autovar_52;
         __result=it;;
+        _autovar_6=it;;
+        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,2,_autovar_6);
+        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        _autovar=bind_aget(bind2,1);;
+        _autovar_6=bind_aget(bind2,2);;
         break;
     case 7/*Lookahead*/:
         ;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at__contex_160a,1,bind2);
+        bind_aset(bind2,2,_autovar_2);
+        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        bind_aset(bind2,1,_autovar);
+        _autovar_2=bind_aget(bind2,2);;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        _autovar_51=it;;
+        _autovar_53=it;;
         cstruct oldpass29=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_51;
+        ptr->src=_autovar_53;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -3279,9 +3364,9 @@ success28:
             _reject=it;;
             it=rb_funcall(self,sy__label_lp__dq_o_c187,1,bind2);
             _oldpos=it;;
-            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             it=_reject;
             _word=it;;
             it=rb_funcall(self,sy___at_faillab_1610,1,bind2);
@@ -3289,9 +3374,9 @@ success28:
             bind_aset(bind2,1,_word);
             it=rb_funcall(self,sy___at_faillab_e643,1,bind2);
             _word=bind_aget(bind2,1);;
-            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             it=rb_funcall(self,sy_trans,0);
             if (it==failobj) {
                 it=failobj;
@@ -3313,10 +3398,10 @@ success28:
             _t=bind_aget(bind2,2);;
             _accept=bind_aget(bind2,3);;
             _reject=bind_aget(bind2,4);;
-            _autovar_52=it;;
-            bind_aset(bind2,1,_autovar);
+            _autovar_54=it;;
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             it=Qnil;
             if (ptr->pos<ptr->len) {
                 it=failobj;
@@ -3329,18 +3414,18 @@ success28:
             it=rb_funcall(self,sy__label_lp__dq_r_95b2,1,bind2);
             _reject=it;;
             it=rb_funcall(self,sy__label_lp__dq_o_c187,1,bind2);
-            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             it=rb_funcall(self,sy___at_faillab_1610,1,bind2);
             it=_reject;
             _word=it;;
             bind_aset(bind2,1,_word);
             it=rb_funcall(self,sy___at_faillab_e643,1,bind2);
             _word=bind_aget(bind2,1);;
-            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             if (1) {
                 it=failobj;
                 goto pass29;
@@ -3356,32 +3441,40 @@ pass29:
         }
 success29:
         *ptr=oldpass29;
-        it=_autovar_52;
+        it=_autovar_54;
         __result=it;;
+        _autovar_6=it;;
+        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,2,_autovar_6);
+        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        _autovar=bind_aget(bind2,1);;
+        _autovar_6=bind_aget(bind2,2);;
         break;
     case 8/*Many*/:
         ;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at__contex_160a,1,bind2);
+        bind_aset(bind2,2,_autovar_2);
+        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        bind_aset(bind2,1,_autovar);
+        _autovar_2=bind_aget(bind2,2);;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        _autovar_53=it;;
-        it=_autovar_53;
-        _autovar_54=it;;
+        _autovar_55=it;;
+        it=_autovar_55;
+        _autovar_56=it;;
         int oldpos10=ptr->pos;
         int cut10=0;
 alt10_1:
         ;
-        it=_autovar_54;
-        _autovar_55=it;;
+        it=_autovar_56;
+        _autovar_57=it;;
         cstruct oldpass30=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_55;
+        ptr->src=_autovar_57;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -3398,16 +3491,16 @@ alt10_1:
         switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_11,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*Or*/:
             ;
-            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
-            _autovar_56=it;;
+            _autovar_58=it;;
             cstruct oldpass31=*ptr;
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
-            ptr->src=_autovar_56;
+            ptr->src=_autovar_58;
             if(TYPE(ptr->src)==T_STRING) {
                 ptr->str=RSTRING_PTR(ptr->src);
                 ptr->len=RSTRING_LEN(ptr->src);
@@ -3424,16 +3517,16 @@ alt10_1:
             switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_12,rb_obj_class(ame_curobj2(ptr))))) {
             case 0/*Apply*/:
                 ;
-                bind_aset(bind2,1,_autovar);
+                bind_aset(bind2,1,_autovar_2);
                 it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-                _autovar=bind_aget(bind2,1);;
+                _autovar_2=bind_aget(bind2,1);;
                 it=ptr->ary[ptr->pos];            ;
                 ptr->pos++;
-                _autovar_57=it;;
+                _autovar_59=it;;
                 cstruct oldpass32=*ptr;
                 ptr->pos=ptr->len=0;
                 ptr->ary=NULL;
-                ptr->src=_autovar_57;
+                ptr->src=_autovar_59;
                 if(TYPE(ptr->src)==T_STRING) {
                     ptr->str=RSTRING_PTR(ptr->src);
                     ptr->len=RSTRING_LEN(ptr->src);
@@ -3447,19 +3540,19 @@ alt10_1:
                     ptr->ary=RARRAY_PTR(ary);
                     ptr->len=RARRAY_LEN(ary);
                 }
-                bind_aset(bind2,1,_autovar);
+                bind_aset(bind2,1,_autovar_2);
                 it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-                _autovar=bind_aget(bind2,1);;
+                _autovar_2=bind_aget(bind2,1);;
                 it=AmethystCore_anything(self );
                 if (it==failobj) {
                     it=failobj;
                     goto pass32;
                 }
-                _autovar_58=it;;
+                _autovar_60=it;;
                 cstruct oldpass33=*ptr;
                 ptr->pos=ptr->len=0;
                 ptr->ary=NULL;
-                ptr->src=_autovar_58;
+                ptr->src=_autovar_60;
                 if(TYPE(ptr->src)==T_STRING) {
                     ptr->str=RSTRING_PTR(ptr->src);
                     ptr->len=RSTRING_LEN(ptr->src);
@@ -3473,9 +3566,9 @@ alt10_1:
                     ptr->ary=RARRAY_PTR(ary);
                     ptr->len=RARRAY_LEN(ary);
                 }
-                bind_aset(bind2,1,_autovar);
+                bind_aset(bind2,1,_autovar_2);
                 it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-                _autovar=bind_aget(bind2,1);;
+                _autovar_2=bind_aget(bind2,1);;
                 it=rb_funcall(self,sy_spaces,0);
                 switch((unsigned char)*ame_curstr2(ptr)) {
                 case UC(0) ... '`':
@@ -3498,9 +3591,9 @@ alt10_1:
                     }
                     break;
                 }
-                bind_aset(bind2,1,_autovar);
+                bind_aset(bind2,1,_autovar_2);
                 it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-                _autovar=bind_aget(bind2,1);;
+                _autovar_2=bind_aget(bind2,1);;
                 it=Qnil;
                 if (ptr->pos<ptr->len) {
                     it=failobj;
@@ -3515,9 +3608,9 @@ pass33:
                 }
 success33:
                 *ptr=oldpass33;
-                bind_aset(bind2,1,_autovar);
+                bind_aset(bind2,1,_autovar_2);
                 it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-                _autovar=bind_aget(bind2,1);;
+                _autovar_2=bind_aget(bind2,1);;
                 it=Qnil;
                 if (ptr->pos<ptr->len) {
                     it=failobj;
@@ -3532,15 +3625,15 @@ pass32:
                 }
 success32:
                 *ptr=oldpass32;
-                bind_aset(bind2,1,_autovar);
+                bind_aset(bind2,1,_autovar_2);
                 it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-                _autovar=bind_aget(bind2,1);;
+                _autovar_2=bind_aget(bind2,1);;
                 switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_13,rb_obj_class(ame_curobj2(ptr))))) {
                 case 0/*Stop*/:
                     ;
                     it=ptr->ary[ptr->pos];            ;
                     ptr->pos++;
-                    _autovar_59=it;;
+                    _autovar_61=it;;
                     break;
                 case 1/*Object*/:
                     ;
@@ -3553,7 +3646,7 @@ success32:
                 cstruct oldpass34=*ptr;
                 ptr->pos=ptr->len=0;
                 ptr->ary=NULL;
-                ptr->src=_autovar_59;
+                ptr->src=_autovar_61;
                 if(TYPE(ptr->src)==T_STRING) {
                     ptr->str=RSTRING_PTR(ptr->src);
                     ptr->len=RSTRING_LEN(ptr->src);
@@ -3567,13 +3660,13 @@ success32:
                     ptr->ary=RARRAY_PTR(ary);
                     ptr->len=RARRAY_LEN(ary);
                 }
-                bind_aset(bind2,1,_autovar);
+                bind_aset(bind2,1,_autovar_2);
                 it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-                _autovar=bind_aget(bind2,1);;
+                _autovar_2=bind_aget(bind2,1);;
                 it=Qnil;
-                bind_aset(bind2,1,_autovar);
+                bind_aset(bind2,1,_autovar_2);
                 it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-                _autovar=bind_aget(bind2,1);;
+                _autovar_2=bind_aget(bind2,1);;
                 it=Qnil;
                 if (ptr->pos<ptr->len) {
                     it=failobj;
@@ -3588,9 +3681,9 @@ pass34:
                 }
 success34:
                 *ptr=oldpass34;
-                bind_aset(bind2,1,_autovar);
+                bind_aset(bind2,1,_autovar_2);
                 it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-                _autovar=bind_aget(bind2,1);;
+                _autovar_2=bind_aget(bind2,1);;
                 it=Qnil;
                 if (ptr->pos<ptr->len) {
                     it=failobj;
@@ -3599,9 +3692,9 @@ success34:
                 break;
             case 1/*Object*/:
                 ;
-                bind_aset(bind2,1,_autovar);
+                bind_aset(bind2,1,_autovar_2);
                 it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-                _autovar=bind_aget(bind2,1);;
+                _autovar_2=bind_aget(bind2,1);;
                 if (1) {
                     it=failobj;
                     goto pass31;
@@ -3617,9 +3710,9 @@ pass31:
             }
 success31:
             *ptr=oldpass31;
-            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             it=Qnil;
             if (ptr->pos<ptr->len) {
                 it=failobj;
@@ -3628,9 +3721,9 @@ success31:
             break;
         case 1/*Object*/:
             ;
-            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             if (1) {
                 it=failobj;
                 goto pass30;
@@ -3648,17 +3741,18 @@ success30:
         *ptr=oldpass30;
         it=rb_obj_clone(s_ptr_mi__gt_pos_db4c);
         __result=it;;
+        _autovar_6=it;;
 
         ;
         goto accept10;
 alt10_2:
         ptr->pos=oldpos10;
-        it=_autovar_54;
-        _autovar_60=it;;
+        it=_autovar_56;
+        _autovar_62=it;;
         cstruct oldpass35=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_60;
+        ptr->src=_autovar_62;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -3697,9 +3791,9 @@ alt10_2:
             _oldstoplabel=it;;
             it=rb_funcall(self,sy___at_stops_eq_n_588d,1,bind2);
             it=rb_funcall(self,sy___at_stoplab_a14e,1,bind2);
-            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             it=rb_funcall(self,sy_trans,0);
             if (it==failobj) {
                 it=failobj;
@@ -3715,10 +3809,10 @@ alt10_2:
             _t=bind_aget(bind2,2);;
             _oldstops=bind_aget(bind2,3);;
             _oldstoplabel=bind_aget(bind2,4);;
-            _autovar_61=it;;
-            bind_aset(bind2,1,_autovar);
+            _autovar_63=it;;
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             it=Qnil;
             if (ptr->pos<ptr->len) {
                 it=failobj;
@@ -3731,9 +3825,9 @@ alt10_2:
             it=rb_funcall(self,sy___at_stoplab_2ba4,1,bind2);
             it=rb_funcall(self,sy___at_stops_eq_n_588d,1,bind2);
             it=rb_funcall(self,sy___at_stoplab_a14e,1,bind2);
-            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             if (1) {
                 it=failobj;
                 goto pass35;
@@ -3749,8 +3843,9 @@ pass35:
         }
 success35:
         *ptr=oldpass35;
-        it=_autovar_61;
+        it=_autovar_63;
         __result=it;;
+        _autovar_6=it;;
 
         ;
         goto accept10;
@@ -3762,22 +3857,29 @@ alt10_3:
         };
 accept10:
         ;
+        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,2,_autovar_6);
+        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        _autovar=bind_aget(bind2,1);;
+        _autovar_6=bind_aget(bind2,2);;
         break;
     case 9/*Memo*/:
         ;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at__contex_160a,1,bind2);
+        bind_aset(bind2,2,_autovar_2);
+        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        bind_aset(bind2,1,_autovar);
+        _autovar_2=bind_aget(bind2,2);;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        _autovar_62=it;;
+        _autovar_64=it;;
         cstruct oldpass36=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_62;
+        ptr->src=_autovar_64;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -3791,9 +3893,9 @@ accept10:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=rb_funcall(self,sy___at_faillab_1610,1,bind2);
         _rwo=it;;
         it=rb_obj_clone(s_memo_fai_3620);
@@ -3820,9 +3922,9 @@ accept10:
         case 15/*Switch_Char*/:
         case 16/*Switch_Clas*/:
             ;
-            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             it=rb_funcall(self,sy_trans,0);
             if (it==failobj) {
                 it=failobj;
@@ -3832,9 +3934,9 @@ accept10:
             break;
         case 17/*Object*/:
             ;
-            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             if (1) {
                 it=failobj;
                 goto pass36;
@@ -3847,9 +3949,9 @@ accept10:
         _rwo=bind_aget(bind2,1);;
         _x_2=bind_aget(bind2,2);;
         __result_2=it;;
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -3868,29 +3970,37 @@ pass36:
 success36:
         *ptr=oldpass36;
         bind_aset(bind2,1,_s);
-        bind_aset(bind2,2,_autovar);
+        bind_aset(bind2,2,_autovar_2);
         bind_aset(bind2,3,_t);
         it=rb_funcall(self,sy__bind_lb_1_rb__eq__83f5,1,bind2);
         _s=bind_aget(bind2,1);;
-        _autovar=bind_aget(bind2,2);;
+        _autovar_2=bind_aget(bind2,2);;
         _t=bind_aget(bind2,3);;
         __result=it;;
+        _autovar_6=it;;
+        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,2,_autovar_6);
+        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        _autovar=bind_aget(bind2,1);;
+        _autovar_6=bind_aget(bind2,2);;
         break;
     case 10/*Or*/:
         ;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at__contex_160a,1,bind2);
+        bind_aset(bind2,2,_autovar_2);
+        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        bind_aset(bind2,1,_autovar);
+        _autovar_2=bind_aget(bind2,2);;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        _autovar_63=it;;
+        _autovar_65=it;;
         cstruct oldpass37=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_63;
+        ptr->src=_autovar_65;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -3908,9 +4018,9 @@ success36:
         _accept=it;;
         it=rb_funcall(self,sy__label_lp__dq_o_c187,1,bind2);
         _oldpos=it;;
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=rb_obj_clone(s_alt_3482);
         arg0=it;
         it=rb_funcall(self,sy_label,1,arg0);
@@ -3960,9 +4070,9 @@ success36:
 alt11_1:
                 ;
                 int oldpos12=ptr->pos;
-                bind_aset(bind2,1,_autovar);
+                bind_aset(bind2,1,_autovar_2);
                 it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-                _autovar=bind_aget(bind2,1);;
+                _autovar_2=bind_aget(bind2,1);;
                 it=AmethystCore_anything(self );
                 if (it==failobj) {
                     it=failobj;
@@ -3982,9 +4092,9 @@ accept12:
                 bind_aset(bind2,1,_altno);
                 it=rb_funcall(self,sy__bind_lb_1_rb__pl__891b,1,bind2);
                 _altno=bind_aget(bind2,1);;
-                bind_aset(bind2,1,_autovar);
+                bind_aset(bind2,1,_autovar_2);
                 it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-                _autovar=bind_aget(bind2,1);;
+                _autovar_2=bind_aget(bind2,1);;
                 bind_aset(bind2,1,_alt);
                 bind_aset(bind2,2,_altno);
                 it=rb_funcall(self,sy___dq__sh__le_bind_lb__9630,1,bind2);
@@ -3996,9 +4106,9 @@ accept12:
                 bind_aset(bind2,1,_word);
                 it=rb_funcall(self,sy___at_faillab_e643,1,bind2);
                 _word=bind_aget(bind2,1);;
-                bind_aset(bind2,1,_autovar);
+                bind_aset(bind2,1,_autovar_2);
                 it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-                _autovar=bind_aget(bind2,1);;
+                _autovar_2=bind_aget(bind2,1);;
                 it=rb_funcall(self,sy_trans,0);
                 if (it==failobj) {
                     it=failobj;
@@ -4053,9 +4163,9 @@ accept11:
 alt12_1:
                 ;
                 int oldpos14=ptr->pos;
-                bind_aset(bind2,1,_autovar);
+                bind_aset(bind2,1,_autovar_2);
                 it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-                _autovar=bind_aget(bind2,1);;
+                _autovar_2=bind_aget(bind2,1);;
                 it=AmethystCore_anything(self );
                 if (it==failobj) {
                     it=failobj;
@@ -4075,9 +4185,9 @@ accept14:
                 bind_aset(bind2,1,_altno);
                 it=rb_funcall(self,sy__bind_lb_1_rb__pl__891b,1,bind2);
                 _altno=bind_aget(bind2,1);;
-                bind_aset(bind2,1,_autovar);
+                bind_aset(bind2,1,_autovar_2);
                 it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-                _autovar=bind_aget(bind2,1);;
+                _autovar_2=bind_aget(bind2,1);;
                 bind_aset(bind2,1,_alt);
                 bind_aset(bind2,2,_altno);
                 it=rb_funcall(self,sy___dq__sh__le_bind_lb__9630,1,bind2);
@@ -4088,9 +4198,9 @@ accept14:
                 bind_aset(bind2,1,_word);
                 it=rb_funcall(self,sy___at_faillab_e643,1,bind2);
                 _word=bind_aget(bind2,1);;
-                bind_aset(bind2,1,_autovar);
+                bind_aset(bind2,1,_autovar_2);
                 it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-                _autovar=bind_aget(bind2,1);;
+                _autovar_2=bind_aget(bind2,1);;
                 if (1) {
                     it=failobj;
                     goto alt12_2;
@@ -4122,10 +4232,10 @@ accept13:
         _oldcuts=bind_aget(bind2,2);;
         _s=bind_aget(bind2,3);;
         _accept=bind_aget(bind2,4);;
-        _autovar_64=it;;
-        bind_aset(bind2,1,_autovar);
+        _autovar_66=it;;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -4140,24 +4250,32 @@ pass37:
         }
 success37:
         *ptr=oldpass37;
-        it=_autovar_64;
+        it=_autovar_66;
         __result=it;;
+        _autovar_6=it;;
+        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,2,_autovar_6);
+        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        _autovar=bind_aget(bind2,1);;
+        _autovar_6=bind_aget(bind2,2);;
         break;
     case 11/*Pass*/:
         ;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at__contex_160a,1,bind2);
+        bind_aset(bind2,2,_autovar_2);
+        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        bind_aset(bind2,1,_autovar);
+        _autovar_2=bind_aget(bind2,2);;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        _autovar_65=it;;
+        _autovar_67=it;;
         cstruct oldpass38=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_65;
+        ptr->src=_autovar_67;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -4171,9 +4289,9 @@ success37:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=rb_obj_clone(s_pass_1a1d);
         arg0=it;
         it=rb_funcall(self,sy_label,1,arg0);
@@ -4182,9 +4300,9 @@ success37:
             goto pass38;
         }
         _pass=it;;
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=rb_obj_clone(s_oldpass_6559);
         arg0=it;
         it=rb_funcall(self,sy_label,1,arg0);
@@ -4193,9 +4311,9 @@ success37:
             goto pass38;
         }
         _oldpass=it;;
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=rb_obj_clone(s_success_260c);
         arg0=it;
         it=rb_funcall(self,sy_label,1,arg0);
@@ -4204,9 +4322,9 @@ success37:
             goto pass38;
         }
         _success=it;;
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=_pass;
         _word=it;;
         it=rb_funcall(self,sy___at_faillab_1610,1,bind2);
@@ -4215,13 +4333,13 @@ success37:
         it=rb_funcall(self,sy___at_faillab_e643,1,bind2);
         _word=bind_aget(bind2,1);;
         it=rb_funcall(self,sy__src_dot_to_5e99,1,bind2);
-        _autovar_66=it;;
+        _autovar_68=it;;
         cstruct oldpass39=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ptr->src=failobj;
         ptr->ary=alloca(sizeof(VALUE));
-        ptr->ary[0]=_autovar_66;
+        ptr->ary[0]=_autovar_68;
         ptr->len=1;
         switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_17,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*Act*/:
@@ -4242,18 +4360,18 @@ success37:
         case 15/*Switch_Char*/:
         case 16/*Switch_Clas*/:
             ;
-            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             it=rb_funcall(self,sy_trans,0);
             if (it==failobj) {
                 it=failobj;
                 goto pass39;
             }
-            _autovar_67=it;;
-            bind_aset(bind2,1,_autovar);
+            _autovar_69=it;;
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             it=Qnil;
             if (ptr->pos<ptr->len) {
                 it=failobj;
@@ -4262,9 +4380,9 @@ success37:
             break;
         case 17/*Object*/:
             ;
-            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             if (1) {
                 it=failobj;
                 goto pass39;
@@ -4280,7 +4398,7 @@ pass39:
         }
 success39:
         *ptr=oldpass39;
-        it=_autovar_67;
+        it=_autovar_69;
         _to=it;;
         _x_2=it;;
         bind_aset(bind2,1,_rwo);
@@ -4297,10 +4415,10 @@ success39:
         _to=bind_aget(bind2,2);;
         _success=bind_aget(bind2,3);;
         _pass=bind_aget(bind2,4);;
-        _autovar_68=it;;
-        bind_aset(bind2,1,_autovar);
+        _autovar_70=it;;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -4315,24 +4433,32 @@ pass38:
         }
 success38:
         *ptr=oldpass38;
-        it=_autovar_68;
+        it=_autovar_70;
         __result=it;;
+        _autovar_6=it;;
+        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,2,_autovar_6);
+        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        _autovar=bind_aget(bind2,1);;
+        _autovar_6=bind_aget(bind2,2);;
         break;
     case 12/*Rule*/:
         ;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at__contex_160a,1,bind2);
+        bind_aset(bind2,2,_autovar_2);
+        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        bind_aset(bind2,1,_autovar);
+        _autovar_2=bind_aget(bind2,2);;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        _autovar_69=it;;
+        _autovar_71=it;;
         cstruct oldpass40=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_69;
+        ptr->src=_autovar_71;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -4348,21 +4474,21 @@ success38:
         }
         it=rb_funcall(self,sy__src_dot_name_80f3,1,bind2);
         _name=it;;
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         bind_aset(bind2,2,_name);
         it=rb_funcall(self,sy__bind_lb_1_rb__lb__ff72,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         _name=bind_aget(bind2,2);;
         bind_aset(bind2,1,_name);
         it=rb_funcall(self,sy___lp_Current_39be,1,bind2);
         _name=bind_aget(bind2,1);;
-        _autovar_70=it;;
+        _autovar_72=it;;
         cstruct oldpass41=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ptr->src=failobj;
         ptr->ary=alloca(sizeof(VALUE));
-        ptr->ary[0]=_autovar_70;
+        ptr->ary[0]=_autovar_72;
         ptr->len=1;
         switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_18,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*Act*/:
@@ -4383,18 +4509,18 @@ success38:
         case 15/*Switch_Char*/:
         case 16/*Switch_Clas*/:
             ;
-            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             it=rb_funcall(self,sy_trans,0);
             if (it==failobj) {
                 it=failobj;
                 goto pass41;
             }
-            _autovar_71=it;;
-            bind_aset(bind2,1,_autovar);
+            _autovar_73=it;;
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             it=Qnil;
             if (ptr->pos<ptr->len) {
                 it=failobj;
@@ -4403,9 +4529,9 @@ success38:
             break;
         case 17/*Object*/:
             ;
-            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             if (1) {
                 it=failobj;
                 goto pass41;
@@ -4421,21 +4547,21 @@ pass41:
         }
 success41:
         *ptr=oldpass41;
-        it=_autovar_71;
+        it=_autovar_73;
         _body=it;;
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         bind_aset(bind2,2,_name);
         bind_aset(bind2,3,_s);
         bind_aset(bind2,4,_body);
         it=rb_funcall(self,sy__h_eq__dq_VALUE_c5fb,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         _name=bind_aget(bind2,2);;
         _s=bind_aget(bind2,3);;
         _body=bind_aget(bind2,4);;
-        _autovar_72=it;;
-        bind_aset(bind2,1,_autovar);
+        _autovar_74=it;;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -4450,24 +4576,32 @@ pass40:
         }
 success40:
         *ptr=oldpass40;
-        it=_autovar_72;
+        it=_autovar_74;
         __result=it;;
+        _autovar_6=it;;
+        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,2,_autovar_6);
+        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        _autovar=bind_aget(bind2,1);;
+        _autovar_6=bind_aget(bind2,2);;
         break;
     case 13/*Seq*/:
         ;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at__contex_160a,1,bind2);
+        bind_aset(bind2,2,_autovar_2);
+        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        bind_aset(bind2,1,_autovar);
+        _autovar_2=bind_aget(bind2,2);;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        _autovar_73=it;;
+        _autovar_75=it;;
         cstruct oldpass42=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_73;
+        ptr->src=_autovar_75;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -4482,7 +4616,7 @@ success40:
             ptr->len=RARRAY_LEN(ary);
         }
         it=rb_ary_new3(0);
-        _autovar_74=it;;
+        _autovar_76=it;;
         int stop7=0;
         while(!stop7) {
             switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_19,rb_obj_class(ame_curobj2(ptr))))) {
@@ -4508,16 +4642,16 @@ success40:
                 int cut13=0;
 alt13_1:
                 ;
-                bind_aset(bind2,1,_autovar);
+                bind_aset(bind2,1,_autovar_2);
                 it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-                _autovar=bind_aget(bind2,1);;
+                _autovar_2=bind_aget(bind2,1);;
                 it=rb_funcall(self,sy_trans,0);
                 if (it==failobj) {
                     it=failobj;
                     goto alt13_2;
                 }
-                _autovar_75=it;;
-                it=AmethystCore_append(self,_autovar_74,_autovar_75);
+                _autovar_77=it;;
+                it=AmethystCore_append(self,_autovar_76,_autovar_77);
                 ;
                 goto accept15;
 alt13_2:
@@ -4540,9 +4674,9 @@ accept15:
                 int cut14=0;
 alt14_1:
                 ;
-                bind_aset(bind2,1,_autovar);
+                bind_aset(bind2,1,_autovar_2);
                 it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-                _autovar=bind_aget(bind2,1);;
+                _autovar_2=bind_aget(bind2,1);;
                 if (1) {
                     it=failobj;
                     goto alt14_2;
@@ -4565,15 +4699,15 @@ accept16:
                 break;
             }
         }
-        it=_autovar_74;
+        it=_autovar_76;
         _t=it;;
         bind_aset(bind2,1,_t);
         it=rb_funcall(self,sy__bind_lb_1_rb__ti__cfcb,1,bind2);
         _t=bind_aget(bind2,1);;
-        _autovar_76=it;;
-        bind_aset(bind2,1,_autovar);
+        _autovar_78=it;;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -4588,24 +4722,32 @@ pass42:
         }
 success42:
         *ptr=oldpass42;
-        it=_autovar_76;
+        it=_autovar_78;
         __result=it;;
+        _autovar_6=it;;
+        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,2,_autovar_6);
+        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        _autovar=bind_aget(bind2,1);;
+        _autovar_6=bind_aget(bind2,2);;
         break;
     case 14/*Stop*/:
         ;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at__contex_160a,1,bind2);
+        bind_aset(bind2,2,_autovar_2);
+        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        bind_aset(bind2,1,_autovar);
+        _autovar_2=bind_aget(bind2,2);;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        _autovar_77=it;;
+        _autovar_79=it;;
         cstruct oldpass43=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_77;
+        ptr->src=_autovar_79;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -4619,13 +4761,13 @@ success42:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -4642,22 +4784,30 @@ success43:
         *ptr=oldpass43;
         it=rb_funcall(self,sy___at_stops_eq_t_c6ab,1,bind2);
         __result=it;;
+        _autovar_6=it;;
+        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,2,_autovar_6);
+        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        _autovar=bind_aget(bind2,1);;
+        _autovar_6=bind_aget(bind2,2);;
         break;
     case 15/*Switch_Char*/:
         ;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at__contex_160a,1,bind2);
+        bind_aset(bind2,2,_autovar_2);
+        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        bind_aset(bind2,1,_autovar);
+        _autovar_2=bind_aget(bind2,2);;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        _autovar_78=it;;
+        _autovar_80=it;;
         cstruct oldpass44=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_78;
+        ptr->src=_autovar_80;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -4679,19 +4829,19 @@ success43:
             int cut15=0;
 alt15_1:
             ;
-            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt15_2;
             }
-            _autovar_79=it;;
+            _autovar_81=it;;
             cstruct oldpass45=*ptr;
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
-            ptr->src=_autovar_79;
+            ptr->src=_autovar_81;
             if(TYPE(ptr->src)==T_STRING) {
                 ptr->str=RSTRING_PTR(ptr->src);
                 ptr->len=RSTRING_LEN(ptr->src);
@@ -4705,18 +4855,18 @@ alt15_1:
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
-            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
                 goto pass45;
             }
             _c=it;;
-            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_20,rb_obj_class(ame_curobj2(ptr))))) {
             case 0/*Act*/:
             case 1/*Apply*/:
@@ -4751,9 +4901,9 @@ alt15_1:
                 }
                 break;
             }
-            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             it=Qnil;
             if (ptr->pos<ptr->len) {
                 it=failobj;
@@ -4794,10 +4944,10 @@ accept17:
         bind_aset(bind2,1,_s);
         it=rb_funcall(self,sy__bind_lb_1_rb__pl__4db9,1,bind2);
         _s=bind_aget(bind2,1);;
-        _autovar_80=it;;
-        bind_aset(bind2,1,_autovar);
+        _autovar_82=it;;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -4812,24 +4962,32 @@ pass44:
         }
 success44:
         *ptr=oldpass44;
-        it=_autovar_80;
+        it=_autovar_82;
         __result=it;;
+        _autovar_6=it;;
+        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,2,_autovar_6);
+        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        _autovar=bind_aget(bind2,1);;
+        _autovar_6=bind_aget(bind2,2);;
         break;
     case 16/*Switch_Clas*/:
         ;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at__contex_160a,1,bind2);
+        bind_aset(bind2,2,_autovar_2);
+        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        bind_aset(bind2,1,_autovar);
+        _autovar_2=bind_aget(bind2,2);;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        _autovar_81=it;;
+        _autovar_83=it;;
         cstruct oldpass46=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_81;
+        ptr->src=_autovar_83;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -4843,9 +5001,9 @@ success44:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___dq_switchh_698e,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         _sh=it;;
         bind_aset(bind2,1,_sh);
         it=rb_funcall(self,sy___at_header_lt__92e2,1,bind2);
@@ -4864,19 +5022,19 @@ success44:
             int cut16=0;
 alt16_1:
             ;
-            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt16_2;
             }
-            _autovar_82=it;;
+            _autovar_84=it;;
             cstruct oldpass47=*ptr;
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
-            ptr->src=_autovar_82;
+            ptr->src=_autovar_84;
             if(TYPE(ptr->src)==T_STRING) {
                 ptr->str=RSTRING_PTR(ptr->src);
                 ptr->len=RSTRING_LEN(ptr->src);
@@ -4890,18 +5048,18 @@ alt16_1:
                 ptr->ary=RARRAY_PTR(ary);
                 ptr->len=RARRAY_LEN(ary);
             }
-            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
                 goto pass47;
             }
             _c=it;;
-            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             switch(FIX2LONG(rb_hash_aref(switchhash_AmethystCTranslator_21,rb_obj_class(ame_curobj2(ptr))))) {
             case 0/*Act*/:
             case 1/*Apply*/:
@@ -4936,9 +5094,9 @@ alt16_1:
                 }
                 break;
             }
-            bind_aset(bind2,1,_autovar);
+            bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar=bind_aget(bind2,1);;
+            _autovar_2=bind_aget(bind2,1);;
             it=Qnil;
             if (ptr->pos<ptr->len) {
                 it=failobj;
@@ -4991,10 +5149,10 @@ accept18:
         bind_aset(bind2,1,_s);
         it=rb_funcall(self,sy__bind_lb_1_rb__pl__4db9,1,bind2);
         _s=bind_aget(bind2,1);;
-        _autovar_83=it;;
-        bind_aset(bind2,1,_autovar);
+        _autovar_85=it;;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -5009,17 +5167,25 @@ pass46:
         }
 success46:
         *ptr=oldpass46;
-        it=_autovar_83;
+        it=_autovar_85;
         __result=it;;
+        _autovar_6=it;;
+        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,2,_autovar_6);
+        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        _autovar=bind_aget(bind2,1);;
+        _autovar_6=bind_aget(bind2,2);;
         break;
     case 17/*Object*/:
         ;
         bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at__contex_160a,1,bind2);
+        bind_aset(bind2,2,_autovar_2);
+        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
-        bind_aset(bind2,1,_autovar);
+        _autovar_2=bind_aget(bind2,2);;
+        bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,1);;
         if (1) {
             it=failobj;
             goto fail;
@@ -5105,7 +5271,8 @@ void Init_ctranslator2_c() {
     rb_global_variable(&switchhash_AmethystCTranslator_8);;
     switchhash_AmethystCTranslator_9=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Apply\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=CAct\nnext h[k]=4 if k<=Cut\nnext h[k]=5 if k<=Grammar\nnext h[k]=6 if k<=Local\nnext h[k]=7 if k<=Lookahead\nnext h[k]=8 if k<=Many\nnext h[k]=9 if k<=Memo\nnext h[k]=10 if k<=Or\nnext h[k]=11 if k<=Pass\nnext h[k]=12 if k<=Rule\nnext h[k]=13 if k<=Seq\nnext h[k]=14 if k<=Stop\nnext h[k]=15 if k<=Switch_Char\nnext h[k]=16 if k<=Switch_Clas\nnext h[k]=17 if k<=Object\n}");
     rb_global_variable(&switchhash_AmethystCTranslator_9);;
-    sy___at__contex_160a=rb_intern("__at__contex_160a");
+    sy___at__contex_5f56=rb_intern("__at__contex_5f56");
+    sy___at__contex_cdb3=rb_intern("__at__contex_cdb3");
     sy___at__contex_d6d5=rb_intern("__at__contex_d6d5");
     sy___at_bindno_eq__e294=rb_intern("__at_bindno_eq__e294");
     sy___at_binds_dot_m_9a36=rb_intern("__at_binds_dot_m_9a36");
@@ -5206,5 +5373,5 @@ void Init_ctranslator2_c() {
     rb_define_method(cls_AmethystCTranslator,"rbtrans2",AmethystCTranslator_rbtrans2,0);
     rb_define_method(cls_AmethystCTranslator,"rw",AmethystCTranslator_rw,2);
     rb_define_method(cls_AmethystCTranslator,"trans",AmethystCTranslator_trans,0);
-    rb_eval_string("testversionctranslator2('5f88245de0ad3469c66550515dfa3ea6')");
+    rb_eval_string("testversionctranslator2('0aecccdb65c261c5ee09d146bd611015')");
 }
