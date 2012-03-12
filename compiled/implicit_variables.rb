@@ -1,5 +1,8 @@
 class Detect_Implicit_Variables < Visitor
-
+def self.root(*args);self.new.parse(:root,*args);end
+def self.traverse(*args);self.new.parse(:traverse,*args);end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
+def self.visit(*args);self.new.parse(:visit,*args);end
 def __at_vars_a187(bind)
 @vars
 end
@@ -16,7 +19,10 @@ end
 end
 
 class Add_Implicit_Variables < Traverser_Clone2
-
+def self.root(*args);self.new.parse(:root,*args);end
+def self.traverse(*args);self.new.parse(:traverse,*args);end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
+def self.visit(*args);self.new.parse(:visit,*args);end
 def __at__contex_5f56(bind)
 @_context_arguments||={};bind[1]=@_context_arguments;bind[2]=@_context_arguments.dup
 end
@@ -71,7 +77,7 @@ end
 end
 
 def implicit_variables_compiled_by
-'086973cf9a09db51fdd3787ea2f5dd4d'
+'93ad2f3280096e1e9d81553e1d42c826'
 end
 def implicit_variables_source_hash
 '7902bddeb33ad0be079983548a91f729'

@@ -20,26 +20,26 @@ class Gram
 		debug_print(r)
 		dce=[ Dataflow, Dead_Code_Deleter3,Forget_SSA]
 		[dce].flatten.each{|o|
-     	r=o.new._root(r)
+     	r=o.root(r)
 			debug_print(r)
 		}
 		
-		[Dataflow].each{|p| r=p.new._root(r)}
+		[Dataflow].each{|p| r=p.root(r)}
 		withtime(Constant_Propagator){
       r=r.dup
 			c=Constant_Propagator.new
-			c._root([r.cfg])
+			c.parse(:root,[r.cfg])
 			r.consts=c.analyze2
       r.freeze
       debug_print(r)
 		}
 		[Constant_Traverser,Forget_SSA].each{|p| 
-			r=p.new._root(r)
+			r=p.root(r)
 			debug_print(r)			
 		}
 		
  		[ dce,	 Left_Factor,	 dce].flatten.each{|o|
-			r=o.new._root(r)
+			r=o.root(r)
 			debug_print(r)
 		}
     @rules[r.name]=r 
@@ -80,21 +80,21 @@ class <<Compiler
 		names=g.rules.map{|name,code| name}
 		names.each{|name|
 			if CurrentParser[:implicit_variables]
-        freq=Detect_Implicit_Variables.new._root(g.rules[name])
-        g.rules[name]=Add_Implicit_Variables.new._root([freq,g.rules[name]])
+        freq=Detect_Implicit_Variables.root(g.rules[name])
+        g.rules[name]=Add_Implicit_Variables.root([freq,g.rules[name]])
       end
-      g.rules[name]=Analyze_Variables2.new._root(g.rules[name])
-      g.rules[name]=Add_Contextual_Arguments.new._root(g.rules[name])
-      g.rules[name]=Add_Contextual_Returns.new._root(g.rules[name]) if CurrentParser[:contextual_returns]
-	  	g.rules[name]=Resolve_Calls.new._root([g,g.rules[name]])
+      g.rules[name]=Analyze_Variables2.root(g.rules[name])
+      g.rules[name]=Add_Contextual_Arguments.root(g.rules[name])
+      g.rules[name]=Add_Contextual_Returns.root(g.rules[name]) if CurrentParser[:contextual_returns]
+	  	g.rules[name]=Resolve_Calls.root([g,g.rules[name]])
 		}
 		names.dup.each{|name| #update callgraph
-			g.calls[name]=DetectCalls.new._root([g.getrule(name)])
+			g.calls[name]=DetectCalls.root([g.getrule(name)])
 			g.calls[name].each{|c,t| callg.add(name,c)}
 		}
 #    c=Context_Graph.new
     names.dup.each{|name| 
- #     c.arguments=Detect_Contextual_Arguments.new._root(g.rules[name])
+ #     c.arguments=Detect_Contextual_Arguments.root(g.rules[name])
     }
 
 		topo= callg.topo_order
@@ -108,7 +108,7 @@ class <<Compiler
 		$rules=g.rules
 		topo.each{|name|if g.rules[name] && called[name]
 				if g.calls[name] && g.calls[name].include?(name)
-					g.rules[name]=Remove_Left_Recursion.new._root([g.rules[name]])
+					g.rules[name]=Remove_Left_Recursion.root([g.rules[name]])
 				end
 				g.opt(g.rules[name])
 		end}
@@ -116,13 +116,13 @@ class <<Compiler
         repeat=true
         while repeat
 				  inlined=false
-          g.calls[name]=DetectCalls.new._root([g.getrule(name)])
+          g.calls[name]=DetectCalls.root([g.getrule(name)])
 			  	g.calls[name].each{|nm,v|
 				  	r=g.getrule(nm)
 			  		if r && nm!=name
 					  	if complexity(r)>10
                 puts "inlined #{nm} in #{name}"
-		            g.rules[name]=Inliner2.new._root([g.getrule(nm), g.rules[name]])
+		            g.rules[name]=Inliner2.root([g.getrule(nm), g.rules[name]])
 			  				inlined=true
 		  				end
 	  				end
@@ -130,15 +130,15 @@ class <<Compiler
 				  g.opt(g.rules[name]) if inlined
           repeat=false if !inlined || (!["Lam","AmethystParser_Highligth"].include?(g.name))#we want turn it to on where we can resolve lambdas.
         end
-				DetectCalls.new._root([g.getrule(name)]).each{|nm,t| r=g.getrule(nm)
+				DetectCalls.root([g.getrule(name)]).each{|nm,t| r=g.getrule(nm)
 					 if r && (nm=="seq" || nm=="token")
-            g.rules[name]=Inliner2.new._root([g.getrule(nm), g.rules[name]])
+            g.rules[name]=Inliner2.root([g.getrule(nm), g.rules[name]])
            end
 				}
 		end}
 		topo.each{|name|if g.rules[name] && called[name]
 				#TODO separately as in inherited it dont have to be true
-		    [ds,dc].each{|o| g.rules[name]=o._root(g.rules[name])}
+		    [ds,dc].each{|o| g.rules[name]=o.parse(:root,g.rules[name])}
 				g.opt(g.rules[name])	
 		end}
 	end

@@ -1,5 +1,5 @@
 $test_lambda = (class Anon1 < Amethyst
-
+def self.expr(*args);self.new.parse(:expr,*args);end
 def __do_passit_eq__fc0a(bind)
 $passit=bind[1];eval("_result=$passit",@bind)
 end
@@ -14,7 +14,9 @@ class Tests < Amethyst
   use_contextual_returns
 end
 class Lam < Amethyst
-
+def self.baz(*args);self.new.parse(:baz,*args);end
+def self.foo(*args);self.new.parse(:foo,*args);end
+def self.lam(*args);self.new.parse(:lam,*args);end
 def __at_context_0dcc(bind)
 @contextual_return.each{|k,v| bind[1][k]+=v};@contextual_return=nil
 end
@@ -27,7 +29,14 @@ end
 
 end
 class Tests < Amethyst
-
+def self.abc(*args);self.new.parse(:abc,*args);end
+def self.context(*args);self.new.parse(:context,*args);end
+def self.de(*args);self.new.parse(:de,*args);end
+def self.foo(*args);self.new.parse(:foo,*args);end
+def self.gh(*args);self.new.parse(:gh,*args);end
+def self.s2(*args);self.new.parse(:s2,*args);end
+def self.sw(*args);self.new.parse(:sw,*args);end
+def self.test(*args);self.new.parse(:test,*args);end
 def __at__contex_5f56(bind)
 @_context_arguments||={};bind[1]=@_context_arguments;bind[2]=@_context_arguments.dup
 end
@@ -53,7 +62,7 @@ end
 end
 
 def tests_compiled_by
-'086973cf9a09db51fdd3787ea2f5dd4d'
+'93ad2f3280096e1e9d81553e1d42c826'
 end
 def tests_source_hash
 '710cdaae439c570560b264e46ed5958b'

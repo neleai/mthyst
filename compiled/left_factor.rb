@@ -11,7 +11,14 @@ class Left_Factor < Traverser_Clone2
 end
 
 class Left_Factor < Traverser_Clone2
-
+def self.binds(*args);self.new.parse(:binds,*args);end
+def self.factor(*args);self.new.parse(:factor,*args);end
+def self.first(*args);self.new.parse(:first,*args);end
+def self.rest(*args);self.new.parse(:rest,*args);end
+def self.root(*args);self.new.parse(:root,*args);end
+def self.traverse(*args);self.new.parse(:traverse,*args);end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
+def self.visit(*args);self.new.parse(:visit,*args);end
 def _Bind_lb_src_66c4(bind)
 Bind[src.name,bind[1]]
 end
@@ -64,7 +71,7 @@ end
 end
 
 def left_factor_compiled_by
-'086973cf9a09db51fdd3787ea2f5dd4d'
+'93ad2f3280096e1e9d81553e1d42c826'
 end
 def left_factor_source_hash
 'cec6a4e793cc0036d9ff7a336cb4230b'

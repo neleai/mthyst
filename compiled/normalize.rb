@@ -2,7 +2,7 @@ def locals_in(e)
   if !$localsdf
     $localsdf = Detect_Locals.new
   end
-  $localsdf._analyze([e])
+  $localsdf.parse(:analyze,[e])
 end
 
 class Detect_Locals < Traverser_Clone2
@@ -10,7 +10,10 @@ class Detect_Locals < Traverser_Clone2
   use_global_memo
 end
 class Detect_Locals < Traverser_Clone2
-
+def self.analyze(*args);self.new.parse(:analyze,*args);end
+def self.traverse(*args);self.new.parse(:traverse,*args);end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
+def self.visit(*args);self.new.parse(:visit,*args);end
 def __at_locals_ca83(bind)
 @locals
 end
@@ -50,7 +53,15 @@ end
 end
 
 class Normalize < Amethyst
-
+def self.act(*args);self.new.parse(:act,*args);end
+def self.apply2(*args);self.new.parse(:apply2,*args);end
+def self.bind(*args);self.new.parse(:bind,*args);end
+def self.cant_fail(*args);self.new.parse(:cant_fail,*args);end
+def self.defer_acts(*args);self.new.parse(:defer_acts,*args);end
+def self.must_empty(*args);self.new.parse(:must_empty,*args);end
+def self.or(*args);self.new.parse(:or,*args);end
+def self.seq2(*args);self.new.parse(:seq2,*args);end
+def self.switch(*args);self.new.parse(:switch,*args);end
 def _Act_dot_crea_e434(bind)
 Act.create(src,{:pure=>true}).freeze 
 end
@@ -182,10 +193,10 @@ end
 end
 
 def normalize_compiled_by
-'086973cf9a09db51fdd3787ea2f5dd4d'
+'93ad2f3280096e1e9d81553e1d42c826'
 end
 def normalize_source_hash
-'d341376bb1032c64fc756fcaf89c04ce'
+'de56fa36ed790082afab134ca495b925'
 end
 def testversionnormalize(r)
  raise "invalid version" if r!=normalize_version

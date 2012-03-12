@@ -23,7 +23,12 @@ def connectstring(ary)
 end
 
 class Analyze_Variables2 < Traverser_Clone2
-
+def self.flatten(*args);self.new.parse(:flatten,*args);end
+def self.itrans(*args);self.new.parse(:itrans,*args);end
+def self.root(*args);self.new.parse(:root,*args);end
+def self.traverse(*args);self.new.parse(:traverse,*args);end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
+def self.visit(*args);self.new.parse(:visit,*args);end
 def _Act_lb_bind_4ccd(bind)
 Act[bind[1],bind[2],bind[3]]
 end
@@ -144,7 +149,10 @@ end
 end
 
 class Resolve_Calls < Traverser_Clone2
-
+def self.root(*args);self.new.parse(:root,*args);end
+def self.traverse(*args);self.new.parse(:traverse,*args);end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
+def self.visit(*args);self.new.parse(:visit,*args);end
 def __at__contex_5f56(bind)
 @_context_arguments||={};bind[1]=@_context_arguments;bind[2]=@_context_arguments.dup
 end
@@ -197,7 +205,7 @@ end
 end
 
 def detect_variables2_compiled_by
-'086973cf9a09db51fdd3787ea2f5dd4d'
+'93ad2f3280096e1e9d81553e1d42c826'
 end
 def detect_variables2_source_hash
 '57c4d3a2eeedf4c240f0cc862e9d51d2'

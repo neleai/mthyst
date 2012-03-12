@@ -30,9 +30,6 @@ class AmethystCore
 	def self.parse(rule,input)
 		self.new.parse(rule,input)
 	end
-  def method_missing(name,*args)
-    parse(name.to_s[1..-1],*args)
-  end
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/Ame.so"
 

@@ -69,7 +69,8 @@ end
 
 
 class Constant_Propagator < Amethyst
-
+def self.root(*args);self.new.parse(:root,*args);end
+def self.step(*args);self.new.parse(:step,*args);end
 def _Constant_8840(bind)
 ConstantLattice[src]
 end
@@ -94,7 +95,11 @@ end
 end
 
 class Constant_Traverser < Traverser_Clone2
-
+def self.consts(*args);self.new.parse(:consts,*args);end
+def self.root(*args);self.new.parse(:root,*args);end
+def self.traverse(*args);self.new.parse(:traverse,*args);end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
+def self.visit(*args);self.new.parse(:visit,*args);end
 def _Bind_lb_src_66c4(bind)
 Bind[src.name,bind[1]]
 end
@@ -158,7 +163,7 @@ end
 end
 
 def constant_propagation_compiled_by
-'086973cf9a09db51fdd3787ea2f5dd4d'
+'93ad2f3280096e1e9d81553e1d42c826'
 end
 def constant_propagation_source_hash
 'afbe0dd7e39b6a400ad015d1d943a0d8'

@@ -1,5 +1,8 @@
 class DetectCalls < Visitor
-
+def self.root(*args);self.new.parse(:root,*args);end
+def self.traverse(*args);self.new.parse(:traverse,*args);end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
+def self.visit(*args);self.new.parse(:visit,*args);end
 def __at_calls_7f81(bind)
 @calls
 end
@@ -16,7 +19,10 @@ end
 end
 
 class Inliner2 < Traverser_Clone2
-
+def self.root(*args);self.new.parse(:root,*args);end
+def self.traverse(*args);self.new.parse(:traverse,*args);end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
+def self.visit(*args);self.new.parse(:visit,*args);end
 def _Seq_lb_src_dot__3406(bind)
 Seq[src.body,Local["_result",src.bnding]]
 end
@@ -70,7 +76,7 @@ end
 
 
 def inliner2_compiled_by
-'086973cf9a09db51fdd3787ea2f5dd4d'
+'93ad2f3280096e1e9d81553e1d42c826'
 end
 def inliner2_source_hash
 'ccb4238b3948e1d7730b8c07b91b1561'

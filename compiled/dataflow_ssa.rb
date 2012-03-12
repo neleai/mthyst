@@ -62,7 +62,12 @@ class Dataflow < Traverser_Clone2
   use_global_memo
 end
 class Dataflow < Traverser_Clone2
-
+def self.root(*args);self.new.parse(:root,*args);end
+def self.switch(*args);self.new.parse(:switch,*args);end
+def self.traverse(*args);self.new.parse(:traverse,*args);end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
+def self.vars_in(*args);self.new.parse(:vars_in,*args);end
+def self.visit(*args);self.new.parse(:visit,*args);end
 def _Act_lb_bind_7d8f(bind)
 Act[bind[1],src.pred]
 end
@@ -209,7 +214,10 @@ end
 end
 
 class Dead_Code_Deleter3 < Traverser_Clone2
-
+def self.root(*args);self.new.parse(:root,*args);end
+def self.traverse(*args);self.new.parse(:traverse,*args);end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
+def self.visit(*args);self.new.parse(:visit,*args);end
 def __at__contex_5f56(bind)
 @_context_arguments||={};bind[1]=@_context_arguments;bind[2]=@_context_arguments.dup
 end
@@ -282,7 +290,10 @@ class Forget_SSA < Traverser_Clone2
   use_global_memo
 end
 class Forget_SSA < Traverser_Clone2
-
+def self.root(*args);self.new.parse(:root,*args);end
+def self.traverse(*args);self.new.parse(:traverse,*args);end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
+def self.visit(*args);self.new.parse(:visit,*args);end
 def __lp_src_dot_cla_2024(bind)
 (src.class.attributes).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
@@ -310,7 +321,7 @@ end
 end
 
 def dataflow_ssa_compiled_by
-'086973cf9a09db51fdd3787ea2f5dd4d'
+'93ad2f3280096e1e9d81553e1d42c826'
 end
 def dataflow_ssa_source_hash
 '0bcdc0282bc2db5fe3be8ea5730aec5d'

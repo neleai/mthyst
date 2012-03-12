@@ -1,5 +1,6 @@
 class Traverser_Clone2 < Amethyst
-
+def self.traverse(*args);self.new.parse(:traverse,*args);end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
 def __lp_src_dot_cla_2024(bind)
 (src.class.attributes).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
@@ -23,7 +24,8 @@ end
  
 
 class Visitor < Amethyst
-
+def self.traverse(*args);self.new.parse(:traverse,*args);end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
 def __lp_src_dot_ins_a413(bind)
 (src.instance_variables).map{|v| src.instance_variable_get(v)}
 end
@@ -31,7 +33,7 @@ end
 end
 
 def traverser_compiled_by
-'086973cf9a09db51fdd3787ea2f5dd4d'
+'93ad2f3280096e1e9d81553e1d42c826'
 end
 def traverser_source_hash
 'c8627489f00dc4fe77fe244f73a261e1'

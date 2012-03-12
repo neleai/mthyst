@@ -86,7 +86,14 @@ def gc_mark_var(v)
 end
 $classlabels=Hash.new(0)
 class AmethystCTranslator < Amethyst
-
+def self.addcallback(*args);self.new.parse(:addcallback,*args);end
+def self.addlambda(*args);self.new.parse(:addlambda,*args);end
+def self.itrans(*args);self.new.parse(:itrans,*args);end
+def self.rbcode(*args);self.new.parse(:rbcode,*args);end
+def self.rbtrans(*args);self.new.parse(:rbtrans,*args);end
+def self.rbtrans2(*args);self.new.parse(:rbtrans2,*args);end
+def self.rw(*args);self.new.parse(:rw,*args);end
+def self.trans(*args);self.new.parse(:trans,*args);end
 def __at__contex_5f56(bind)
 @_context_arguments||={};bind[1]=@_context_arguments;bind[2]=@_context_arguments.dup
 end
@@ -323,8 +330,8 @@ end
 def _bind_lb_1_rb__lt__98f3(bind)
 bind[1]<<bind[2][0];bind[3]<<bind[2][1];bind[4]<<bind[2][2]
 end
-def _bind_lb_1_rb__lt__acb7(bind)
-bind[1]<<@defs*"\n";bind[1]<<"\n"
+def _bind_lb_1_rb__lt__e3c6(bind)
+bind[1]<<@defs.sort*"\n";bind[1]<<"\n"
 end
 def _bind_lb_1_rb__pl__1b5e(bind)
 bind[1]+=bind[2]*""
@@ -359,9 +366,10 @@ h="VALUE #{bind[1]}(VALUE self,VALUE bind)"
                  @defmethods<<"rb_define_method(cls_#{bind[2][:grammar]},\"#{bind[1]}\",#{bind[1]},1);"
                  @lambdas<< h+"{VALUE vals[0]; /*todo unify with rule and get args*/ cstruct *ptr; int x;VALUE it;VALUE arg0,arg1,arg2,arg3;\n#{bind[3]}\nreturn it;\nfail: return failobj; }" 
 end
-def _h_eq__dq_VALUE_c5fb(bind)
+def _h_eq__dq_VALUE_ae76(bind)
 h="VALUE #{bind[1][:grammar]}_#{bind[2]}(VALUE self #{map_index(src.args){|i| ",VALUE a#{i}"}*""})" 
             @header<<h+";"
+            @defs<< "def self.#{bind[2]}(*args);self.new.parse(:#{bind[2]},*args);end"
             @defmethods<< "rb_define_method(cls_#{bind[1][:grammar]},\"#{src.name}\",#{bind[1][:grammar]}_#{src.name},#{src.args.size});"
 						bind[3]=h+"{VALUE vals[#{src.args.size}]; VALUE it #{@locls.map{|k,v| ",_#{k}"}*""};VALUE bind2=bind_new2(16); #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);"
 bind[3]+="#{bind[4]}\n" 
@@ -404,15 +412,15 @@ end
 end
 
 def ctranslator2_compiled_by
-'086973cf9a09db51fdd3787ea2f5dd4d'
+'93ad2f3280096e1e9d81553e1d42c826'
 end
 def ctranslator2_source_hash
-'ad4a01f6d52d92cd5997cc35f9a5d753'
+'efb76880081fc9af8a02e63b58a9a15b'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'0aecccdb65c261c5ee09d146bd611015'
+'f656b94d3946fdb001750b57d52c2fad'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"

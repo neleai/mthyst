@@ -1,7 +1,9 @@
 #todo bind.reset to reset locals
 
 class Remove_Left_Recursion < Traverser_Clone2
-
+def self.first(*args);self.new.parse(:first,*args);end
+def self.must_empty(*args);self.new.parse(:must_empty,*args);end
+def self.root(*args);self.new.parse(:root,*args);end
 def _Bind_lb_src_66c4(bind)
 Bind[src.name,bind[1]]
 end
@@ -66,7 +68,7 @@ end
 
 
 def remove_left_rigth_recursion_compiled_by
-'086973cf9a09db51fdd3787ea2f5dd4d'
+'93ad2f3280096e1e9d81553e1d42c826'
 end
 def remove_left_rigth_recursion_source_hash
 '7df03514fffe38a851a13686ca4c4fc0'

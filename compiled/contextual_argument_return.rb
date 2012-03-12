@@ -1,5 +1,8 @@
 class Add_Contextual_Arguments < Traverser_Clone2
-
+def self.root(*args);self.new.parse(:root,*args);end
+def self.traverse(*args);self.new.parse(:traverse,*args);end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
+def self.visit(*args);self.new.parse(:visit,*args);end
 def _Seq_lb_Act_lb__84b5(bind)
 Seq[Act[[bind[1][:g],"=",bind[1][:a]]],bind[2]]
 
@@ -55,7 +58,10 @@ end
 end
 
 class Add_Contextual_Returns < Traverser_Clone2
-
+def self.root(*args);self.new.parse(:root,*args);end
+def self.traverse(*args);self.new.parse(:traverse,*args);end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
+def self.visit(*args);self.new.parse(:visit,*args);end
 def _Seq_lb_src(bind)
 Seq[src,Act[[Global["contextual_return"],".each{|k,v| ",bind[1][:a],"[k]+=v};",Global["contextual_return"],"=nil"]]]
 end
@@ -112,7 +118,10 @@ class Context_Graph
 end
 
 class Detect_Contextual_Arguments < Traverser_Clone2
-
+def self.root(*args);self.new.parse(:root,*args);end
+def self.traverse(*args);self.new.parse(:traverse,*args);end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
+def self.visit(*args);self.new.parse(:visit,*args);end
 def __at_argumen_a3fb(bind)
 @arguments.uniq.sort
 end
@@ -143,7 +152,7 @@ end
 end
 
 def contextual_argument_return_compiled_by
-'086973cf9a09db51fdd3787ea2f5dd4d'
+'93ad2f3280096e1e9d81553e1d42c826'
 end
 def contextual_argument_return_source_hash
 'a2491f2bf1c1051b1b770fcb7c2ce273'

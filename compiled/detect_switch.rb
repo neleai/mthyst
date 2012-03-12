@@ -218,7 +218,11 @@ class Switch_Char_Dataflow < First_Dataflow
 end
 
 class First_Dataflow < Amethyst
-
+def self.first(*args);self.new.parse(:first,*args);end
+def self.getvalue(*args);self.new.parse(:getvalue,*args);end
+def self.root(*args);self.new.parse(:root,*args);end
+def self.switch(*args);self.new.parse(:switch,*args);end
+def self.value(*args);self.new.parse(:value,*args);end
 def _Compiler_558e(bind)
 Compiler.grammars[src.clas].rules[bind[1]].body
 end
@@ -264,7 +268,9 @@ end
 end        
 
 class Minsize_Dataflow < First_Dataflow
-
+def self.first(*args);self.new.parse(:first,*args);end
+def self.first_Minsize_Dataflow(*args);self.new.parse(:first_Minsize_Dataflow,*args);end
+def self.getvalue(*args);self.new.parse(:getvalue,*args);end
 def _Compiler_558e(bind)
 Compiler.grammars[src.clas].rules[bind[1]].body
 end
@@ -312,7 +318,9 @@ end
 end
 
 class Maxsize_Dataflow < First_Dataflow
-
+def self.first(*args);self.new.parse(:first,*args);end
+def self.first_Maxsize_Dataflow(*args);self.new.parse(:first_Maxsize_Dataflow,*args);end
+def self.getvalue(*args);self.new.parse(:getvalue,*args);end
 def _Compiler_558e(bind)
 Compiler.grammars[src.clas].rules[bind[1]].body
 end
@@ -360,7 +368,8 @@ end
 end
 
 class Complexity_Dataflow < First_Dataflow
-
+def self.first(*args);self.new.parse(:first,*args);end
+def self.getvalue(*args);self.new.parse(:getvalue,*args);end
 def _Compiler_558e(bind)
 Compiler.grammars[src.clas].rules[bind[1]].body
 end
@@ -394,7 +403,9 @@ end
 end
 
 class Switch_Char_Dataflow < First_Dataflow
-
+def self.first(*args);self.new.parse(:first,*args);end
+def self.first_Switch_Char_Dataflow(*args);self.new.parse(:first_Switch_Char_Dataflow,*args);end
+def self.getvalue(*args);self.new.parse(:getvalue,*args);end
 def _Compiler_558e(bind)
 Compiler.grammars[src.clas].rules[bind[1]].body
 end
@@ -442,7 +453,9 @@ end
 end
 
 class Switch_Clas_Dataflow < First_Dataflow
-
+def self.first(*args);self.new.parse(:first,*args);end
+def self.first_Switch_Clas_Dataflow(*args);self.new.parse(:first_Switch_Clas_Dataflow,*args);end
+def self.getvalue(*args);self.new.parse(:getvalue,*args);end
 def _Compiler_558e(bind)
 Compiler.grammars[src.clas].rules[bind[1]].body
 end
@@ -490,7 +503,9 @@ end
 
 
 class Cant_Fail_Dataflow < First_Dataflow
-
+def self.first(*args);self.new.parse(:first,*args);end
+def self.first_Cant_Fail_Dataflow(*args);self.new.parse(:first_Cant_Fail_Dataflow,*args);end
+def self.getvalue(*args);self.new.parse(:getvalue,*args);end
 def _Compiler_558e(bind)
 Compiler.grammars[src.clas].rules[bind[1]].body
 end
@@ -585,7 +600,14 @@ class Detect_Switch_Clas < Detect_First
 end
 
 class Detect_First < Traverser_Clone2
-
+def self.cant_fail(*args);self.new.parse(:cant_fail,*args);end
+def self.combine_or(*args);self.new.parse(:combine_or,*args);end
+def self.combine_seq(*args);self.new.parse(:combine_seq,*args);end
+def self.itrans(*args);self.new.parse(:itrans,*args);end
+def self.must_empty(*args);self.new.parse(:must_empty,*args);end
+def self.object_only(*args);self.new.parse(:object_only,*args);end
+def self.root(*args);self.new.parse(:root,*args);end
+def self.string_only(*args);self.new.parse(:string_only,*args);end
 def _Seq_lb__ti__lp_bi_a321(bind)
 Seq[*(bind[1]+bind[2])]
 end
@@ -647,7 +669,11 @@ class Detect_Switch_Char < Detect_First
   use_global_memo
 end
 class Detect_Switch_Char < Detect_First
-
+def self.itrans(*args);self.new.parse(:itrans,*args);end
+def self.root(*args);self.new.parse(:root,*args);end
+def self.traverse(*args);self.new.parse(:traverse,*args);end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
+def self.visit(*args);self.new.parse(:visit,*args);end
 def _Or_lb__ti_bind_d486(bind)
 Or[*bind[1]]
 end
@@ -745,7 +771,11 @@ class Detect_Switch_Clas < Detect_First
   use_global_memo
 end
 class Detect_Switch_Clas < Detect_First
-
+def self.itrans(*args);self.new.parse(:itrans,*args);end
+def self.root(*args);self.new.parse(:root,*args);end
+def self.traverse(*args);self.new.parse(:traverse,*args);end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
+def self.visit(*args);self.new.parse(:visit,*args);end
 def _Or_lb__ti_bind_d486(bind)
 Or[*bind[1]]
 end
@@ -833,7 +863,8 @@ end
 end
 
 class Detect_Size < Amethyst
-
+def self.predicate(*args);self.new.parse(:predicate,*args);end
+def self.predicate2(*args);self.new.parse(:predicate2,*args);end
 def _Or_dot_creat_49b2(bind)
 Or.create( {:ary=>bind[1] })
 end
@@ -861,7 +892,7 @@ end
 end
 
 def detect_switch_compiled_by
-'086973cf9a09db51fdd3787ea2f5dd4d'
+'93ad2f3280096e1e9d81553e1d42c826'
 end
 def detect_switch_source_hash
 'db1b99a9478567e449dc48d0774c821b'
