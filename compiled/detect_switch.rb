@@ -617,9 +617,6 @@ end
 def __at__contex_cdb3(bind)
 @_context_arguments=bind[1];bind[2]
 end
-def __at__contex_d6d5(bind)
-@_context_arguments=bind[1]
-end
 def __do_rules_eq__le__ab16(bind)
 $rules={};src.rules.each{|r| $rules[r.name]=r}
 end
@@ -685,9 +682,6 @@ def __at__contex_5f56(bind)
 end
 def __at__contex_cdb3(bind)
 @_context_arguments=bind[1];bind[2]
-end
-def __at__contex_d6d5(bind)
-@_context_arguments=bind[1]
 end
 def __do_rules_eq__le__ab16(bind)
 $rules={};src.rules.each{|r| $rules[r.name]=r}
@@ -791,9 +785,6 @@ end
 def __at__contex_cdb3(bind)
 @_context_arguments=bind[1];bind[2]
 end
-def __at__contex_d6d5(bind)
-@_context_arguments=bind[1]
-end
 def __do_rules_eq__le__ab16(bind)
 $rules={};src.rules.each{|r| $rules[r.name]=r}
 end
@@ -892,7 +883,7 @@ end
 end
 
 def detect_switch_compiled_by
-'93ad2f3280096e1e9d81553e1d42c826'
+'198c36d34da4d34a36f909d90bfa66b9'
 end
 def detect_switch_source_hash
 'db1b99a9478567e449dc48d0774c821b'
@@ -901,6 +892,6 @@ def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'772ce0a0623905db46f0c2275304da41'
+'9da72c4c0e57838937d0c13ff351dbce'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

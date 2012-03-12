@@ -7,7 +7,7 @@ amethyst Add_Contextual_Arguments < Traverser_Clone2{
                       }]
 
   visit = Contextual_Argument[.:name {@@context_arg=true; [@>a,"[:",name,"]"] } ]
-        | Apply[ traverse:t .* ] -> Seq[Act[[@>g,"=",@>a]],t]
+        | Apply[ &{@@cargs[@ary[0]]} traverse:t .* ] -> Seq[Act[[@>g,"=",@>a]],t]
 }
 
 amethyst Add_Contextual_Returns < Traverser_Clone2{
@@ -32,5 +32,5 @@ end
 amethyst Detect_Contextual_Arguments < Traverser_Clone2 {
   root = {@@arguments=[]} traverse {@@arguments.uniq.sort}
 
-  visit = Contextual_Argument[ .:@@arguments[] ]
+  visit = Contextual_Argument[ .:x { @@arguments<<x } ]
 }

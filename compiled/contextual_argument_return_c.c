@@ -15,6 +15,7 @@ static VALUE sy___at__contex_cdb3;
 static VALUE sy___at__contex_d6d5;
 static VALUE sy___at_context_25cc;
 static VALUE sy___at_context_54ee;
+static VALUE sy___lp__at_cargs_lb__e1d6;
 static VALUE sy___lp_src_dot_cla_2024;
 static VALUE sy__bind_lb_1_rb__eq__9326;
 static VALUE sy__bind_lb_1_rb__lb__6ab8;
@@ -56,15 +57,9 @@ VALUE Add_Contextual_Arguments_root(VALUE self ) {
     switch(FIX2LONG(rb_hash_aref(switchhash_Add_Contextual_Arguments_1,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Rule*/:
         ;
-        bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar_2=bind_aget(bind2,1);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar_4=it;;
-        bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -73,9 +68,6 @@ VALUE Add_Contextual_Arguments_root(VALUE self ) {
         break;
     case 1/*Object*/:
         ;
-        bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar_2=bind_aget(bind2,1);;
         if (1) {
             it=failobj;
             goto pass1;
@@ -133,9 +125,6 @@ success1:
     _autovar_2=bind_aget(bind2,2);;
     _s=bind_aget(bind2,3);;
     _autovar_6=it;;
-    bind_aset(bind2,1,_autovar_2);
-    it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-    _autovar_2=bind_aget(bind2,1);;
     it=Qnil;
     if (ptr->pos<ptr->len) {
         it=failobj;
@@ -537,9 +526,6 @@ VALUE Add_Contextual_Arguments_visit(VALUE self ) {
         it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_2=bind_aget(bind2,2);;
-        bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar_2=bind_aget(bind2,1);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar_3=it;;
@@ -560,6 +546,11 @@ VALUE Add_Contextual_Arguments_visit(VALUE self ) {
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
+        it=rb_funcall(self,sy___lp__at_cargs_lb__e1d6,1,bind2);
+        if (it==failobj) {
+            it=failobj;
+            goto pass1;
+        };
         bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
@@ -569,39 +560,7 @@ VALUE Add_Contextual_Arguments_visit(VALUE self ) {
             goto pass1;
         }
         _t=it;;
-        int stop1=0;
-        while(!stop1) {
-            int oldpos1=ptr->pos;
-            int cut1=0;
-alt1_1:
-            ;
-            bind_aset(bind2,1,_autovar_2);
-            it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            it=AmethystCore_anything(self );
-            if (it==failobj) {
-                it=failobj;
-                goto alt1_2;
-            }
-            ;
-            goto accept1;
-alt1_2:
-            ptr->pos=oldpos1;
-            stop1=1;
-            ;
-            goto accept1;
-alt1_3:
-            ptr->pos=oldpos1;
-            if (1) {
-                it=failobj;
-                goto pass1;
-            };
-accept1:
-            ;
-        }
-        bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar_2=bind_aget(bind2,1);;
+        ptr->pos=ptr->len;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -636,9 +595,6 @@ success1:
         it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_2=bind_aget(bind2,2);;
-        bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar_2=bind_aget(bind2,1);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar_5=it;;
@@ -659,9 +615,6 @@ success1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar_2=bind_aget(bind2,1);;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -674,9 +627,6 @@ success1:
         _autovar_2=bind_aget(bind2,1);;
         _name=bind_aget(bind2,2);;
         _autovar_6=it;;
-        bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -707,9 +657,6 @@ success2:
         it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_2=bind_aget(bind2,2);;
-        bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar_2=bind_aget(bind2,1);;
         if (1) {
             it=failobj;
             goto fail;
@@ -773,15 +720,9 @@ VALUE Add_Contextual_Returns_root(VALUE self ) {
     switch(FIX2LONG(rb_hash_aref(switchhash_Add_Contextual_Returns_1,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Rule*/:
         ;
-        bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar_2=bind_aget(bind2,1);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar_4=it;;
-        bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -790,9 +731,6 @@ VALUE Add_Contextual_Returns_root(VALUE self ) {
         break;
     case 1/*Object*/:
         ;
-        bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar_2=bind_aget(bind2,1);;
         if (1) {
             it=failobj;
             goto pass1;
@@ -839,9 +777,6 @@ success1:
         goto pass2;
     }
     _t=it;;
-    bind_aset(bind2,1,_autovar_2);
-    it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-    _autovar_2=bind_aget(bind2,1);;
     it=Qnil;
     if (ptr->pos<ptr->len) {
         it=failobj;
@@ -1247,9 +1182,6 @@ VALUE Add_Contextual_Returns_visit(VALUE self ) {
         it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_2=bind_aget(bind2,2);;
-        bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar_2=bind_aget(bind2,1);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar_3=it;;
@@ -1270,43 +1202,11 @@ VALUE Add_Contextual_Returns_visit(VALUE self ) {
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        int stop1=0;
-        while(!stop1) {
-            int oldpos1=ptr->pos;
-            int cut1=0;
-alt1_1:
-            ;
-            bind_aset(bind2,1,_autovar_2);
-            it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            it=AmethystCore_anything(self );
-            if (it==failobj) {
-                it=failobj;
-                goto alt1_2;
-            }
-            ;
-            goto accept1;
-alt1_2:
-            ptr->pos=oldpos1;
-            stop1=1;
-            ;
-            goto accept1;
-alt1_3:
-            ptr->pos=oldpos1;
-            if (1) {
-                it=failobj;
-                goto pass1;
-            };
-accept1:
-            ;
-        }
+        ptr->pos=ptr->len;
         bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy__Seq_lb_src,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
         _autovar_4=it;;
-        bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -1337,9 +1237,6 @@ success1:
         it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_2=bind_aget(bind2,2);;
-        bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar_2=bind_aget(bind2,1);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar_6=it;;
@@ -1360,18 +1257,12 @@ success1:
             ptr->ary=RARRAY_PTR(ary);
             ptr->len=RARRAY_LEN(ary);
         }
-        bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar_2=bind_aget(bind2,1);;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
             goto pass2;
         }
         _name=it;;
-        bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -1406,9 +1297,6 @@ success2:
         it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_2=bind_aget(bind2,2);;
-        bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
-        _autovar_2=bind_aget(bind2,1);;
         if (1) {
             it=failobj;
             goto fail;
@@ -1428,7 +1316,7 @@ VALUE switchhash_Detect_Contextual_Arguments_1;
 VALUE switchhash_Detect_Contextual_Arguments_2;
 static VALUE sy___at_argumen_a3fb;
 static VALUE sy___at_argumen_c331;
-static VALUE sy___at_argumen_d057;
+static VALUE sy___at_argumen_ef46;
 static VALUE sy___lp_src_dot_cla_2024;
 static VALUE sy__bind_lb_1_rb__lt__7b20;
 static VALUE sy__bind_lb_1_rb__sp__6af0;
@@ -1823,7 +1711,7 @@ fail:
 }
 VALUE Detect_Contextual_Arguments_visit(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,_autovar_2,_autovar_3,_arguments,_autovar_4,__result;
+    VALUE it ,_autovar,_x,_autovar_2,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -1832,18 +1720,13 @@ VALUE Detect_Contextual_Arguments_visit(VALUE self ) {
     switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Contextual_Arguments_1,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Contextual_Argument*/:
         ;
-        it=rb_ary_new3(0);
-        _autovar=it;;
-        bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at_argumen_d057,1,bind2);
-        _autovar=bind_aget(bind2,1);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        _autovar_2=it;;
+        _autovar=it;;
         cstruct oldpass1=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_2;
+        ptr->src=_autovar;
         if(TYPE(ptr->src)==T_STRING) {
             ptr->str=RSTRING_PTR(ptr->src);
             ptr->len=RSTRING_LEN(ptr->src);
@@ -1862,16 +1745,16 @@ VALUE Detect_Contextual_Arguments_visit(VALUE self ) {
             it=failobj;
             goto pass1;
         }
-        _autovar_3=it;;
-        it=AmethystCore_append(self,_arguments,_autovar_3);
+        _x=it;;
+        bind_aset(bind2,1,_x);
+        it=rb_funcall(self,sy___at_argumen_ef46,1,bind2);
+        _x=bind_aget(bind2,1);;
+        _autovar_2=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass1;
         }
-        it=_autovar_3;
-        _autovar_4=it;;
-
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -1881,16 +1764,11 @@ pass1:
         }
 success1:
         *ptr=oldpass1;
-        it=_autovar_4;
+        it=_autovar_2;
         __result=it;;
         break;
     case 1/*Object*/:
         ;
-        it=rb_ary_new3(0);
-        _autovar=it;;
-        bind_aset(bind2,1,_autovar);
-        it=rb_funcall(self,sy___at_argumen_d057,1,bind2);
-        _autovar=bind_aget(bind2,1);;
         if (1) {
             it=failobj;
             goto fail;
@@ -1916,6 +1794,7 @@ void Init_contextual_argument_return_c() {
     sy___at__contex_d6d5=rb_intern("__at__contex_d6d5");
     sy___at_context_25cc=rb_intern("__at_context_25cc");
     sy___at_context_54ee=rb_intern("__at_context_54ee");
+    sy___lp__at_cargs_lb__e1d6=rb_intern("__lp__at_cargs_lb__e1d6");
     sy___lp_src_dot_cla_2024=rb_intern("__lp_src_dot_cla_2024");
     sy__bind_lb_1_rb__eq__9326=rb_intern("_bind_lb_1_rb__eq__9326");
     sy__bind_lb_1_rb__lb__6ab8=rb_intern("_bind_lb_1_rb__lb__6ab8");
@@ -1970,7 +1849,7 @@ void Init_contextual_argument_return_c() {
     rb_global_variable(&switchhash_Detect_Contextual_Arguments_2);;
     sy___at_argumen_a3fb=rb_intern("__at_argumen_a3fb");
     sy___at_argumen_c331=rb_intern("__at_argumen_c331");
-    sy___at_argumen_d057=rb_intern("__at_argumen_d057");
+    sy___at_argumen_ef46=rb_intern("__at_argumen_ef46");
     sy___lp_src_dot_cla_2024=rb_intern("__lp_src_dot_cla_2024");
     sy__bind_lb_1_rb__lt__7b20=rb_intern("_bind_lb_1_rb__lt__7b20");
     sy__bind_lb_1_rb__sp__6af0=rb_intern("_bind_lb_1_rb__sp__6af0");
@@ -1982,5 +1861,5 @@ void Init_contextual_argument_return_c() {
     rb_define_method(cls_Detect_Contextual_Arguments,"traverse",Detect_Contextual_Arguments_traverse,0);
     rb_define_method(cls_Detect_Contextual_Arguments,"traverse_item",Detect_Contextual_Arguments_traverse_item,0);
     rb_define_method(cls_Detect_Contextual_Arguments,"visit",Detect_Contextual_Arguments_visit,0);
-    rb_eval_string("testversioncontextual_argument_return('a6772c03f97202f1cbc0110cd2cf8bf5')");
+    rb_eval_string("testversioncontextual_argument_return('8ebebcff8980f4127c28ed5b4560ecc6')");
 }

@@ -22,6 +22,9 @@ end
 def __at_context_54ee(bind)
 @context_arg=true; [bind[1][:a],"[:",bind[2],"]"] 
 end
+def __lp__at_cargs_lb__e1d6(bind)
+(@cargs[src.ary[0]]) || FAIL
+end
 def __lp_src_dot_cla_2024(bind)
 (src.class.attributes).map{|v| src.instance_variable_get("@"+v.to_s) }
 end
@@ -128,8 +131,8 @@ end
 def __at_argumen_c331(bind)
 @arguments=[]
 end
-def __at_argumen_d057(bind)
-@arguments=bind[1]
+def __at_argumen_ef46(bind)
+@arguments<<bind[1] 
 end
 def __lp_src_dot_cla_2024(bind)
 (src.class.attributes).map{|v| src.instance_variable_get("@"+v.to_s) }
@@ -152,15 +155,15 @@ end
 end
 
 def contextual_argument_return_compiled_by
-'93ad2f3280096e1e9d81553e1d42c826'
+'198c36d34da4d34a36f909d90bfa66b9'
 end
 def contextual_argument_return_source_hash
-'a2491f2bf1c1051b1b770fcb7c2ce273'
+'41fb6470b55cad10b0dc6bec8b707e0d'
 end
 def testversioncontextual_argument_return(r)
  raise "invalid version" if r!=contextual_argument_return_version
 end
 def contextual_argument_return_version
-'a6772c03f97202f1cbc0110cd2cf8bf5'
+'8ebebcff8980f4127c28ed5b4560ecc6'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/contextual_argument_return_c"

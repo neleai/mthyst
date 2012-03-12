@@ -84,8 +84,6 @@ class <<Compiler
         g.rules[name]=Add_Implicit_Variables.root([freq,g.rules[name]])
       end
       g.rules[name]=Analyze_Variables2.root(g.rules[name])
-      g.rules[name]=Add_Contextual_Arguments.root(g.rules[name])
-      g.rules[name]=Add_Contextual_Returns.root(g.rules[name]) if CurrentParser[:contextual_returns]
 	  	g.rules[name]=Resolve_Calls.root([g,g.rules[name]])
 		}
 		names.dup.each{|name| #update callgraph
@@ -93,8 +91,15 @@ class <<Compiler
 			g.calls[name].each{|c,t| callg.add(name,c)}
 		}
 #    c=Context_Graph.new
+    cargs=[]
     names.dup.each{|name| 
- #     c.arguments=Detect_Contextual_Arguments.root(g.rules[name])
+     cargs<<name if Detect_Contextual_Arguments.root(g.rules[name])!=[]
+    }
+    names.each{|name|
+      aca=Add_Contextual_Arguments.new
+      aca.instance_variable_set(:@cargs, callg.reverse.reachable(cargs))
+      g.rules[name]=aca.parse(:root,g.rules[name])
+      g.rules[name]=Add_Contextual_Returns.root(g.rules[name]) if CurrentParser[:contextual_returns]
     }
 
 		topo= callg.topo_order

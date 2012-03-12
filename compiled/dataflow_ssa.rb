@@ -96,9 +96,6 @@ end
 def __at__contex_cdb3(bind)
 @_context_arguments=bind[1];bind[2]
 end
-def __at__contex_d6d5(bind)
-@_context_arguments=bind[1]
-end
 def __at_marked_lt__59bb(bind)
 @marked<<src
 end
@@ -321,7 +318,7 @@ end
 end
 
 def dataflow_ssa_compiled_by
-'93ad2f3280096e1e9d81553e1d42c826'
+'198c36d34da4d34a36f909d90bfa66b9'
 end
 def dataflow_ssa_source_hash
 '0bcdc0282bc2db5fe3be8ea5730aec5d'
@@ -330,6 +327,6 @@ def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version
 end
 def dataflow_ssa_version
-'3ade4f18b8901b02c8e416c91dbb2b15'
+'699bc95168e6c19b17fa7e893f45b326'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/dataflow_ssa_c"
