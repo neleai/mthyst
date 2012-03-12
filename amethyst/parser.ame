@@ -5,7 +5,7 @@ class AmethystParser < Amethyst
   #use_implicit_variables
 end
 amethyst AmethystParser {
-  file     = ( (~'amethyst' ~'`'   . )+:{it.join}
+  file     = ( (~'amethyst' ~'`'   . )
              | grammar
              | "`" {pos}:oldpos expression:e "`" {x="amethyst Anon#{$agram+=1} { expr=#{src[oldpos..(pos-2)]} }";puts x.inspect;x}=>[ grammar:g ]
                                                  -> [g,";class #{g.name};end;#{g.name}.new"]
