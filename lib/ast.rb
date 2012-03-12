@@ -263,7 +263,8 @@ class Bind
 	def self.[](name,expr,append=nil)
 		if append
 	    a=autovar
-    	return Seq[Bind[a,expr],PureAct[Args["_append(",name,",",a,")"]],a]
+      return Seq[Bind[a,expr],PureAct[Args["_append(",name,",",a,")"]],a] if name.is_a?(Local)
+    	return Seq[Bind[a,expr],Act[Args["_append(",name,",",a,")"]],a]
 	  end
 		if name.is_a?(Local)
 			Bind.create2(name,[expr])

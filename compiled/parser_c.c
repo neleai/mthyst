@@ -83,8 +83,8 @@ static VALUE sy__Seq_AST_lb__1817;
 static VALUE sy__Seq_AST_lb__66a7;
 static VALUE sy__Strin_lb__lb__dq__b20e;
 static VALUE sy__Strin_lb__lb__qu__88c8;
-static VALUE sy___at_appends_2058;
-static VALUE sy___at_appends_bfac;
+static VALUE sy___at_appends_8ee7;
+static VALUE sy___at_appends_d29d;
 static VALUE sy___at_ary_eq__lb__rb_;
 static VALUE sy___at_ary_ff69;
 static VALUE sy___at_ary_lt__lt_Ar_59e3;
@@ -3673,7 +3673,7 @@ accept2:
                     bind_aset(bind2,1,_name);
                     bind_aset(bind2,2,_append);
                     bind_aset(bind2,3,_from);
-                    it=rb_funcall(self,sy___at_appends_2058,1,bind2);
+                    it=rb_funcall(self,sy___at_appends_d29d,1,bind2);
                     _name=bind_aget(bind2,1);;
                     _append=bind_aget(bind2,2);;
                     _from=bind_aget(bind2,3);;
@@ -3739,7 +3739,7 @@ accept3:
                     bind_aset(bind2,1,_name);
                     bind_aset(bind2,2,_append);
                     bind_aset(bind2,3,_from);
-                    it=rb_funcall(self,sy___at_appends_2058,1,bind2);
+                    it=rb_funcall(self,sy___at_appends_d29d,1,bind2);
                     _name=bind_aget(bind2,1);;
                     _append=bind_aget(bind2,2);;
                     _from=bind_aget(bind2,3);;
@@ -3804,7 +3804,7 @@ accept3:
                     }
                     bind_aset(bind2,1,_name);
                     bind_aset(bind2,2,_from);
-                    it=rb_funcall(self,sy___at_appends_bfac,1,bind2);
+                    it=rb_funcall(self,sy___at_appends_8ee7,1,bind2);
                     _name=bind_aget(bind2,1);;
                     _from=bind_aget(bind2,2);;
                     _from=it;;
@@ -4051,7 +4051,7 @@ accept6:
                     bind_aset(bind2,1,_name);
                     bind_aset(bind2,2,_append);
                     bind_aset(bind2,3,_from);
-                    it=rb_funcall(self,sy___at_appends_2058,1,bind2);
+                    it=rb_funcall(self,sy___at_appends_d29d,1,bind2);
                     _name=bind_aget(bind2,1);;
                     _append=bind_aget(bind2,2);;
                     _from=bind_aget(bind2,3);;
@@ -4117,7 +4117,7 @@ accept7:
                     bind_aset(bind2,1,_name);
                     bind_aset(bind2,2,_append);
                     bind_aset(bind2,3,_from);
-                    it=rb_funcall(self,sy___at_appends_2058,1,bind2);
+                    it=rb_funcall(self,sy___at_appends_d29d,1,bind2);
                     _name=bind_aget(bind2,1);;
                     _append=bind_aget(bind2,2);;
                     _from=bind_aget(bind2,3);;
@@ -4182,7 +4182,7 @@ accept7:
                     }
                     bind_aset(bind2,1,_name);
                     bind_aset(bind2,2,_from);
-                    it=rb_funcall(self,sy___at_appends_bfac,1,bind2);
+                    it=rb_funcall(self,sy___at_appends_8ee7,1,bind2);
                     _name=bind_aget(bind2,1);;
                     _from=bind_aget(bind2,2);;
                     _from=it;;
@@ -8787,8 +8787,8 @@ void Init_parser_c() {
     sy__Seq_AST_lb__66a7=rb_intern("_Seq_AST_lb__66a7");
     sy__Strin_lb__lb__dq__b20e=rb_intern("_Strin_lb__lb__dq__b20e");
     sy__Strin_lb__lb__qu__88c8=rb_intern("_Strin_lb__lb__qu__88c8");
-    sy___at_appends_2058=rb_intern("__at_appends_2058");
-    sy___at_appends_bfac=rb_intern("__at_appends_bfac");
+    sy___at_appends_8ee7=rb_intern("__at_appends_8ee7");
+    sy___at_appends_d29d=rb_intern("__at_appends_d29d");
     sy___at_ary_eq__lb__rb_=rb_intern("__at_ary_eq__lb__rb_");
     sy___at_ary_ff69=rb_intern("__at_ary_ff69");
     sy___at_ary_lt__lt_Ar_59e3=rb_intern("__at_ary_lt__lt_Ar_59e3");
@@ -8861,5 +8861,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"string_like",AmethystParser_string_like,2);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('a565f26ed60667fe7fcee46cd4027fa7')");
+    rb_eval_string("testversionparser('4fffa452ebcdc61c28dc5c050b97eaaa')");
 }

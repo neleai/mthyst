@@ -33,8 +33,8 @@ amethyst AmethystParser {
                             | '['      expression:e "]" -> Enter_AST[from,e]
                             | <+*>:one -> Many[from,one=="+"]
                             | '?'      -> Or_AST[from,Apply["empty"]]
-                            | ':' '[' (key | name):name ']' ->  @@appends<< local(name); Append_AST[local(name),from]
-                            | ':' (  (key | name):name ('[]'?):append -> @@appends<< local(name) if append; append=='[]' ? Append_AST[name,from] : Bind[local(name),from]
+                            | ':' '[' (key | name):name ']' ->  @@appends<< local(name) if local(name).is_a?(Local); Append_AST[local(name),from]
+                            | ':' (  (key | name):name ('[]'?):append -> @@appends<< local(name) if append && local(name).is_a?(Local); append=='[]' ? Append_AST[name,from] : Bind[local(name),from]
                                   | inline_host_expr:e                      -> Seq_AST[ Bind[local("it"),from] , Act[e] ]
                                   )
                     ):from  )* {from}

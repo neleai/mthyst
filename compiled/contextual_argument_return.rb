@@ -125,14 +125,14 @@ def self.root(*args);self.new.parse(:root,*args);end
 def self.traverse(*args);self.new.parse(:traverse,*args);end
 def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
 def self.visit(*args);self.new.parse(:visit,*args);end
+def __append_lp__6b01(bind)
+_append(@arguments,bind[1])
+end
 def __at_argumen_a3fb(bind)
 @arguments.uniq.sort
 end
 def __at_argumen_c331(bind)
 @arguments=[]
-end
-def __at_argumen_ef46(bind)
-@arguments<<bind[1] 
 end
 def __lp_src_dot_cla_2024(bind)
 (src.class.attributes).map{|v| src.instance_variable_get("@"+v.to_s) }
@@ -155,15 +155,15 @@ end
 end
 
 def contextual_argument_return_compiled_by
-'198c36d34da4d34a36f909d90bfa66b9'
+'72312884b8caa80d7b2c3233654d2ee5'
 end
 def contextual_argument_return_source_hash
-'41fb6470b55cad10b0dc6bec8b707e0d'
+'ef9aae4fa1826d0ea9aab1f42210fb57'
 end
 def testversioncontextual_argument_return(r)
  raise "invalid version" if r!=contextual_argument_return_version
 end
 def contextual_argument_return_version
-'8ebebcff8980f4127c28ed5b4560ecc6'
+'74c17939990bc712b1e840fa46a54e83'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/contextual_argument_return_c"

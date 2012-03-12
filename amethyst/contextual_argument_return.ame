@@ -32,5 +32,5 @@ end
 amethyst Detect_Contextual_Arguments < Traverser_Clone2 {
   root = {@@arguments=[]} traverse {@@arguments.uniq.sort}
 
-  visit = Contextual_Argument[ .:x { @@arguments<<x } ]
+  visit = Contextual_Argument[ .:[@@arguments] ]
 }
