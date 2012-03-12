@@ -9,6 +9,14 @@ $gno=0
 def group_new
   $gno+=1
 end
+
+def map_colors(str,src,offset)
+  $colors[str].each_with_index{|v,i| $colors[src][i+offset]=v}
+  $group_mark[str].each_with_index{|v,i| $group_mark[src][i+offset]=v}
+  $group_start[str].each{|i,a| $group_start[src][i+offset]+= a}
+  $group_end[str].each{|i,a| $group_end[src][i+offset]+=a}
+end
+
 amethyst AmethystParser_Highligth {
   withcolor(color,lam) = {pos}:oldpos apply(lam):r {oldpos.upto(pos-1){|i| $colors[src][i]||=color};r}
   
@@ -129,7 +137,7 @@ amethyst AmethystParser_Highligth {
   
   inline_host_expr = withcolor("brown",`_args('{','}'):r`) {Act[Args[{:ary=>r}]]}
   host_expr = inline_host_expr 
-            | withcolor("brown",`'->' line:s`)   {"{"+s+"}"}=>[ inline_host_expr ]  
+            | {pos}:p withcolor("brown",`'->' line:s`) {""}:r  {r="{"+s+"}"}=>[ inline_host_expr:ret ]  {map_colors(r,src,p+1) ; ret}
 
 }
 
