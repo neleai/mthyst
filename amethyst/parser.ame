@@ -6,8 +6,9 @@ class AmethystParser < Amethyst
 end
 amethyst AmethystParser {
   file     = (  grammar
-             | {pos}:oldpos {@@locals=[];@@appends=[];@@bnding=Bnding[]}  lambda {x="amethyst Anon#{$agram+=1} { expr=#{src[(oldpos+2)..(pos-3)]} }";puts x.inspect;x}=>[ grammar:g ]
-                                                 -> [g,";class #{g.name};end;#{g.name}.new"]
+             | {pos}:oldpos {@@locals=[];@@appends=[];@@bnding=Bnding[]}  lambda {x="amethyst Anon#{$agram+=1} { expr=#{src[(oldpos+2)..(pos-3)]} }";puts x.inspect;x}=>[ grammar:g ] 
+                {g.rules[0].body=Seq_AST[g.rules[0].body,Act[g.rules[0].locals.map{|el| ["$passit=",el,";eval(\"#{el[0]}=$passit\",@bind)"] }]]}
+                                                 -> [g,";class #{g.name};end;ame_lambda(#{g.name},binding)"]
              | (~'amethyst' ~'(|'   . )
              )*
 

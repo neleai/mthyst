@@ -4,6 +4,12 @@ $: << Amethyst_path
 	require Amethyst_path+"/lib/#{r}"
 }
 
+def ame_lambda(cls,bind)
+  c=cls.new
+  c.instance_variable_set(:@bind,bind)
+  c
+end
+
 class AmethystLambda
 	def initialize(call,parser,bind)
 		@call,@parser,@bind=call,parser,bind
