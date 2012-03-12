@@ -5,13 +5,13 @@ class AmethystParser < Amethyst
   #use_implicit_variables
 end
 amethyst AmethystParser {
-  file     = ( (~'amethyst' ~'`'   . )
-             | grammar
-             | "`" {pos}:oldpos expression:e "`" {x="amethyst Anon#{$agram+=1} { expr=#{src[oldpos..(pos-2)]} }";puts x.inspect;x}=>[ grammar:g ]
+  file     = (  grammar
+             | {pos}:oldpos {@@locals=[];@@appends=[];@@bnding=Bnding[]} lambda {x="amethyst Anon#{$agram+=1} { expr=#{src[(oldpos+1)..(pos-2)]} }";puts x.inspect;x}=>[ grammar:g ]
                                                  -> [g,";class #{g.name};end;#{g.name}.new"]
+             | (~'amethyst' ~'(|'   . )
              )*
 
-  grammar = "amethyst" '_module'?:module "" name:name ("<" "" name  |{"Amethyst"}):parent
+  grammar = 'amethyst' '_module'?:module "" name:name ("<" "" name  |{"Amethyst"}):parent
 "{" rule*:rules "}"  @Grammar
   
   rule = {@@locals=[];@@appends=[];@@bnding=Bnding[]} {@@bnding}:bnding  
