@@ -170,8 +170,8 @@ end
 def __dq__le__dq__pl_bind_567e(bind)
 "{"+bind[1]+"}"
 end
-def __lb_bind_lb_1_rb__1b3d(bind)
-[bind[1],";class #{bind[1].name};end;ame_lambda(#{bind[1].name},binding)"]
+def __lb__dq__lp__dq_(bind)
+["(",bind[1],";class #{bind[1].name};end;ame_lambda(#{bind[1].name},binding))"]
 
 end
 def __lb_bind_lb_1_rb__6281(bind)
@@ -192,8 +192,8 @@ end
 def _bind_lb_1_rb__dot__7b93(bind)
 bind[1].join
 end
-def _bind_lb_1_rb__dot__cd4a(bind)
-bind[1].rules[0].body=Seq_AST[bind[1].rules[0].body,Act[bind[1].rules[0].locals.map{|el| ["$passit=",el,";eval(\"#{el[0]}=$passit\",@bind)"] }]]
+def _bind_lb_1_rb__dot__a01f(bind)
+bind[1].rules[0].body=Seq_AST[Act[bind[1].rules[0].locals.map{|el| [el,"=eval(\"#{el[0]}=#{el[0]}\",@bind)"] }],bind[1].rules[0].body,Act[bind[1].rules[0].locals.map{|el| ["$passit=",el,";eval(\"#{el[0]}=$passit\",@bind)"] }]]
 end
 def _bind_lb_1_rb__dot__e879(bind)
 bind[1].join
@@ -224,15 +224,15 @@ class AmethystParser < Amethyst
 end
 
 def parser_compiled_by
-'585c72eba1045fdc8aa2e29a78566bde'
+'086973cf9a09db51fdd3787ea2f5dd4d'
 end
 def parser_source_hash
-'a31c572e72f29d95f09e745a6f4d65b3'
+'f37309102c2f863288fd939cf1595543'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'197b051328e6a9ef9ce8459677a4545b'
+'a565f26ed60667fe7fcee46cd4027fa7'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/parser_c"

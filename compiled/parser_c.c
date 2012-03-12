@@ -93,13 +93,13 @@ static VALUE sy___at_locals_dot__bdc6;
 static VALUE sy___at_locals_eq__4fc1;
 static VALUE sy___at_tmp_lt__lt_bi_b81c;
 static VALUE sy___dq__le__dq__pl_bind_567e;
-static VALUE sy___lb_bind_lb_1_rb__1b3d;
+static VALUE sy___lb__dq__lp__dq_;
 static VALUE sy___lb_bind_lb_1_rb__6281;
 static VALUE sy___lp_bind_lb_1_rb__a724;
 static VALUE sy__a_eq_autova_57aa;
 static VALUE sy__bind_lb_1_rb_;
 static VALUE sy__bind_lb_1_rb__dot__7b93;
-static VALUE sy__bind_lb_1_rb__dot__cd4a;
+static VALUE sy__bind_lb_1_rb__dot__a01f;
 static VALUE sy__bind_lb_1_rb__dot__e879;
 static VALUE sy__bind_lb_1_rb__eq__e198;
 static VALUE sy__bind_lb_1_rb__pl__b087;
@@ -1980,10 +1980,10 @@ pass1:
 success1:
             *ptr=oldpass1;
             bind_aset(bind2,1,_g);
-            it=rb_funcall(self,sy__bind_lb_1_rb__dot__cd4a,1,bind2);
+            it=rb_funcall(self,sy__bind_lb_1_rb__dot__a01f,1,bind2);
             _g=bind_aget(bind2,1);;
             bind_aset(bind2,1,_g);
-            it=rb_funcall(self,sy___lb_bind_lb_1_rb__1b3d,1,bind2);
+            it=rb_funcall(self,sy___lb__dq__lp__dq_,1,bind2);
             _g=bind_aget(bind2,1);;
             _autovar_2=it;;
 
@@ -8797,13 +8797,13 @@ void Init_parser_c() {
     sy___at_locals_eq__4fc1=rb_intern("__at_locals_eq__4fc1");
     sy___at_tmp_lt__lt_bi_b81c=rb_intern("__at_tmp_lt__lt_bi_b81c");
     sy___dq__le__dq__pl_bind_567e=rb_intern("__dq__le__dq__pl_bind_567e");
-    sy___lb_bind_lb_1_rb__1b3d=rb_intern("__lb_bind_lb_1_rb__1b3d");
+    sy___lb__dq__lp__dq_=rb_intern("__lb__dq__lp__dq_");
     sy___lb_bind_lb_1_rb__6281=rb_intern("__lb_bind_lb_1_rb__6281");
     sy___lp_bind_lb_1_rb__a724=rb_intern("__lp_bind_lb_1_rb__a724");
     sy__a_eq_autova_57aa=rb_intern("_a_eq_autova_57aa");
     sy__bind_lb_1_rb_=rb_intern("_bind_lb_1_rb_");
     sy__bind_lb_1_rb__dot__7b93=rb_intern("_bind_lb_1_rb__dot__7b93");
-    sy__bind_lb_1_rb__dot__cd4a=rb_intern("_bind_lb_1_rb__dot__cd4a");
+    sy__bind_lb_1_rb__dot__a01f=rb_intern("_bind_lb_1_rb__dot__a01f");
     sy__bind_lb_1_rb__dot__e879=rb_intern("_bind_lb_1_rb__dot__e879");
     sy__bind_lb_1_rb__eq__e198=rb_intern("_bind_lb_1_rb__eq__e198");
     sy__bind_lb_1_rb__pl__b087=rb_intern("_bind_lb_1_rb__pl__b087");
@@ -8861,5 +8861,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"string_like",AmethystParser_string_like,2);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('197b051328e6a9ef9ce8459677a4545b')");
+    rb_eval_string("testversionparser('a565f26ed60667fe7fcee46cd4027fa7')");
 }

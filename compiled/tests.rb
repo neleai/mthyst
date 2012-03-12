@@ -1,3 +1,13 @@
+$test_lambda = (class Anon1 < Amethyst
+
+def __do_passit_eq__fc0a(bind)
+$passit=bind[1];eval("_result=$passit",@bind)
+end
+def _bind_lb_1_rb__eq__afc0(bind)
+bind[1]=eval("_result=_result",@bind)
+end
+
+end;class Anon1;end;ame_lambda(Anon1,binding))
 
 class Tests < Amethyst
   use_implicit_variables
@@ -43,15 +53,15 @@ end
 end
 
 def tests_compiled_by
-'df338f494311d9fef4d66c14b8d23514'
+'086973cf9a09db51fdd3787ea2f5dd4d'
 end
 def tests_source_hash
-'74a3bdd04045e48934a6da05800d0098'
+'710cdaae439c570560b264e46ed5958b'
 end
 def testversiontests(r)
  raise "invalid version" if r!=tests_version
 end
 def tests_version
-'621d27b38e2ed3f46c3e82eb1652ead8'
+'0e73ed7dde5a8065de84e494e79ba10a'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/tests_c"

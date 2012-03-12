@@ -1,5 +1,70 @@
 #include "cthyst.h"
 #include "memo.c"
+VALUE cls_Anon1;
+VALUE Anon1_expr(VALUE self );
+static VALUE s_a_0cc1;
+static VALUE s_b_92eb;
+static VALUE sy___do_passit_eq__fc0a;
+static VALUE sy__bind_lb_1_rb__eq__afc0;
+static VALUE sy_token;
+VALUE profile_report_Anon1(VALUE self) {
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    return Qnil;
+}
+VALUE Anon1_expr(VALUE self ) {
+    VALUE vals[0];
+    VALUE it ,__result;
+    VALUE bind2=bind_new2(16);
+    int x;
+    VALUE arg0,arg1,arg2,arg3;
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    bind_aset(bind2,1,__result);
+    it=rb_funcall(self,sy__bind_lb_1_rb__eq__afc0,1,bind2);
+    __result=bind_aget(bind2,1);;
+    int oldpos1=ptr->pos;
+    int cut1=0;
+alt1_1:
+    ;
+    it=rb_obj_clone(s_a_0cc1);
+    arg0=it;
+    it=rb_funcall(self,sy_token,1,arg0);
+    if (it==failobj) {
+        it=failobj;
+        goto alt1_2;
+    }
+    __result=it;;
+
+    ;
+    goto accept1;
+alt1_2:
+    ptr->pos=oldpos1;
+    it=rb_obj_clone(s_b_92eb);
+    arg0=it;
+    it=rb_funcall(self,sy_token,1,arg0);
+    if (it==failobj) {
+        it=failobj;
+        goto alt1_3;
+    }
+    __result=it;;
+
+    ;
+    goto accept1;
+alt1_3:
+    ptr->pos=oldpos1;
+    if (1) {
+        it=failobj;
+        goto fail;
+    };
+accept1:
+    ;
+    bind_aset(bind2,1,__result);
+    it=rb_funcall(self,sy___do_passit_eq__fc0a,1,bind2);
+    __result=bind_aget(bind2,1);;
+fail:
+    return it;
+}
 VALUE cls_Lam;
 VALUE Lam_baz(VALUE self ,VALUE a0);
 VALUE Lam_foo(VALUE self ,VALUE a0);
@@ -639,6 +704,18 @@ fail:
     return it;
 }
 void Init_tests_c() {
+    cls_Anon1=rb_define_class("Anon1",rb_const_get(rb_cObject,rb_intern("Amethyst")));
+    failobj=rb_eval_string("FAIL");
+    rb_define_method(cls_Anon1,"profile_report",profile_report_Anon1,0);
+    s_a_0cc1=rb_str_new2("a");
+    rb_global_variable(&s_a_0cc1);
+    s_b_92eb=rb_str_new2("b");
+    rb_global_variable(&s_b_92eb);
+    sy___do_passit_eq__fc0a=rb_intern("__do_passit_eq__fc0a");
+    sy__bind_lb_1_rb__eq__afc0=rb_intern("_bind_lb_1_rb__eq__afc0");
+    sy_token=rb_intern("token");
+    rb_define_method(cls_Anon1,"expr",Anon1_expr,0);
+
     cls_Lam=rb_define_class("Lam",rb_const_get(rb_cObject,rb_intern("Amethyst")));
     failobj=rb_eval_string("FAIL");
     rb_define_method(cls_Lam,"profile_report",profile_report_Lam,0);
@@ -691,5 +768,5 @@ void Init_tests_c() {
     rb_define_method(cls_Tests,"s2",Tests_s2,0);
     rb_define_method(cls_Tests,"sw",Tests_sw,0);
     rb_define_method(cls_Tests,"test",Tests_test,0);
-    rb_eval_string("testversiontests('621d27b38e2ed3f46c3e82eb1652ead8')");
+    rb_eval_string("testversiontests('0e73ed7dde5a8065de84e494e79ba10a')");
 }
