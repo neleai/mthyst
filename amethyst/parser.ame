@@ -6,7 +6,7 @@ class AmethystParser < Amethyst
 end
 amethyst AmethystParser {
   file     = (  grammar
-             | {pos}:oldpos {@@locals=[];@@appends=[];@@bnding=Bnding[]} lambda {x="amethyst Anon#{$agram+=1} { expr=#{src[(oldpos+1)..(pos-2)]} }";puts x.inspect;x}=>[ grammar:g ]
+             | {pos}:oldpos {@@locals=[];@@appends=[];@@bnding=Bnding[]}  lambda {x="amethyst Anon#{$agram+=1} { expr=#{src[(oldpos+2)..(pos-3)]} }";puts x.inspect;x}=>[ grammar:g ]
                                                  -> [g,";class #{g.name};end;#{g.name}.new"]
              | (~'amethyst' ~'(|'   . )
              )*
@@ -19,7 +19,7 @@ amethyst AmethystParser {
           {Bind[local("_result"),body]}:body {@@locals.uniq}:locals {body=Seq_AST[{:ary=>(@@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[body])}]; }   @Rule
 
   
-  expression = listOf(`sequence`,`"|"`):ary @Or_AST  
+  expression = listOf(`sequence`,`"|" ~')'`):ary @Or_AST  
   sequence =  (nr ","? "" prefixed)*:ary  @Seq_AST
   nr = ~("" name argsOpt "=")
 

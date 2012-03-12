@@ -104,7 +104,7 @@ static VALUE sy__bind_lb_1_rb__eq__e198;
 static VALUE sy__bind_lb_1_rb__pl__b087;
 static VALUE sy__local_lp_bi_196b;
 static VALUE sy__pos_5e0b;
-static VALUE sy__x_eq__dq_ameth_9f8c;
+static VALUE sy__x_eq__dq_ameth_1b26;
 static VALUE sy_argsOpt;
 static VALUE sy_call;
 static VALUE sy_cases;
@@ -1689,6 +1689,39 @@ alt1_1:
             it=failobj;
             goto alt1_2;
         }
+        int oldpos2=ptr->pos;
+        int cut2=0;
+alt2_1:
+        ;
+        if (ame_curstr2(ptr)[0]==')')  ptr->pos+=1;
+        else if (1) {
+            it=failobj;
+            goto alt2_2;
+        }
+        cut2=1;
+        if (1) {
+            it=failobj;
+            goto alt2_2;
+        }
+        ;
+        goto accept2;
+alt2_2:
+        ptr->pos=oldpos2;
+        if (cut2) {
+            it=failobj;
+            goto alt1_2;
+        }
+        it=Qnil;
+        ;
+        goto accept2;
+alt2_3:
+        ptr->pos=oldpos2;
+        if (1) {
+            it=failobj;
+            goto alt1_2;
+        };
+accept2:
+        ;
         it=rb_funcall(self,sy_sequence,0);
         _autovar_3=it;;
         it=AmethystCore_append(self,_autovar_2,_autovar_3);
@@ -1864,7 +1897,7 @@ alt5_1:
                 goto alt5_2;
             }
             bind_aset(bind2,1,_oldpos);
-            it=rb_funcall(self,sy__x_eq__dq_ameth_9f8c,1,bind2);
+            it=rb_funcall(self,sy__x_eq__dq_ameth_1b26,1,bind2);
             _oldpos=bind_aget(bind2,1);;
             _autovar_3=it;;
             cstruct oldpass1=*ptr;
@@ -8771,7 +8804,7 @@ void Init_parser_c() {
     sy__bind_lb_1_rb__pl__b087=rb_intern("_bind_lb_1_rb__pl__b087");
     sy__local_lp_bi_196b=rb_intern("_local_lp_bi_196b");
     sy__pos_5e0b=rb_intern("_pos_5e0b");
-    sy__x_eq__dq_ameth_9f8c=rb_intern("_x_eq__dq_ameth_9f8c");
+    sy__x_eq__dq_ameth_1b26=rb_intern("_x_eq__dq_ameth_1b26");
     sy_argsOpt=rb_intern("argsOpt");
     sy_call=rb_intern("call");
     sy_cases=rb_intern("cases");
@@ -8823,5 +8856,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"string_like",AmethystParser_string_like,2);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('a8dd5c31c6ae60d25d0f0fbcce445cf9')");
+    rb_eval_string("testversionparser('3ed106e2e3bb01a8af366bc0c087f557')");
 }
