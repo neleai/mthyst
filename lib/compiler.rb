@@ -149,6 +149,9 @@ class <<Compiler
     grammar.rules=g.rules.map{|h,k| k}
     c,init,rb=AmethystCTranslator.new.parse(:itrans,[grammar])
     $glc[g.name]=c;$glinit[g.name]=init;$glrb[g.name]=rb
+    File.open("compiled/#{g.name}.rb" ,"w"){|f| f.puts rb}
+    File.open("compiled/#{g.name}_c.c","w"){|f| f.puts init;f.puts c}
+
     CurrentParser.clear
 	end
 	def compile(file,out,file2)
@@ -194,7 +197,7 @@ class <<Compiler
     c,init,rb=[],[],[]
     tree.map{|e|
       if e.is_a? Grammar
-        c<<$glc[e.name];rb<<$glrb[e.name];init<<$glinit[e.name]
+        c<<$glc[e.name];rb<<"require 'compiled/#{e.name}.rb'";init<<$glinit[e.name]
       else
         rb<< e
       end
