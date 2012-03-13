@@ -1,12 +1,15 @@
 #include "cthyst.h"
 #include "memo.c"
 VALUE cls_Anon1;
+VALUE AmethystCore_anything(VALUE self );
 VALUE Anon1_expr(VALUE self );
+VALUE Anon1_init(VALUE self );
 static VALUE s_a_0cc1;
 static VALUE s_b_92eb;
+static VALUE sy___at_bind_eq_bi_6dcc;
 static VALUE sy___do_passit_eq__fc0a;
 static VALUE sy__bind_lb_1_rb__eq__afc0;
-static VALUE sy_token;
+static VALUE sy_spaces;
 VALUE profile_report_Anon1(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -14,7 +17,7 @@ VALUE profile_report_Anon1(VALUE self) {
 }
 VALUE Anon1_expr(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,__result;
+    VALUE it ,__result,__result_2,__result_3;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -23,45 +26,65 @@ VALUE Anon1_expr(VALUE self ) {
     bind_aset(bind2,1,__result);
     it=rb_funcall(self,sy__bind_lb_1_rb__eq__afc0,1,bind2);
     __result=bind_aget(bind2,1);;
-    int oldpos1=ptr->pos;
-    int cut1=0;
-alt1_1:
-    ;
-    it=rb_obj_clone(s_a_0cc1);
-    arg0=it;
-    it=rb_funcall(self,sy_token,1,arg0);
-    if (it==failobj) {
-        it=failobj;
-        goto alt1_2;
+    it=rb_funcall(self,sy_spaces,0);
+    switch((unsigned char)*ame_curstr2(ptr)) {
+    case UC(0) ... '`':
+        ;
+    case 'c' ... UC(255):
+        ;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
+        break;
+    case 'a' ... 'a':
+        ;
+        it=rb_str_new(ptr->str+ptr->pos,1);
+        ptr->pos++;
+        it=rb_obj_clone(s_a_0cc1);
+        __result_2=it;;
+        it=__result_2;
+        __result_3=it;;
+        it=__result_3;
+        __result=it;;
+        break;
+    case 'b' ... 'b':
+        ;
+        it=rb_str_new(ptr->str+ptr->pos,1);
+        ptr->pos++;
+        it=rb_obj_clone(s_b_92eb);
+        __result_2=it;;
+        it=__result_2;
+        __result_3=it;;
+        it=__result_3;
+        __result=it;;
+        break;
     }
-    __result=it;;
-
-    ;
-    goto accept1;
-alt1_2:
-    ptr->pos=oldpos1;
-    it=rb_obj_clone(s_b_92eb);
-    arg0=it;
-    it=rb_funcall(self,sy_token,1,arg0);
-    if (it==failobj) {
-        it=failobj;
-        goto alt1_3;
-    }
-    __result=it;;
-
-    ;
-    goto accept1;
-alt1_3:
-    ptr->pos=oldpos1;
-    if (1) {
-        it=failobj;
-        goto fail;
-    };
-accept1:
-    ;
     bind_aset(bind2,1,__result);
     it=rb_funcall(self,sy___do_passit_eq__fc0a,1,bind2);
     __result=bind_aget(bind2,1);;
+fail:
+    return it;
+}
+VALUE Anon1_init(VALUE self ) {
+    VALUE vals[0];
+    VALUE it ,_autovar,__result;
+    VALUE bind2=bind_new2(16);
+    int x;
+    VALUE arg0,arg1,arg2,arg3;
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    it=AmethystCore_anything(self );
+    if (it==failobj) {
+        it=failobj;
+        goto fail;
+    }
+    _autovar=it;;
+    bind_aset(bind2,1,_autovar);
+    it=rb_funcall(self,sy___at_bind_eq_bi_6dcc,1,bind2);
+    _autovar=bind_aget(bind2,1);;
+    __result=it;;
+
 fail:
     return it;
 }
@@ -213,8 +236,6 @@ VALUE Tests_test(VALUE self );
 static VALUE i_1;
 static VALUE i_3;
 static VALUE i_42;
-static VALUE s_a_0cc1;
-static VALUE s_b_92eb;
 static VALUE s_c_4a8a;
 static VALUE s_d_8277;
 static VALUE s_g_b2f5;
@@ -228,8 +249,7 @@ static VALUE sy__foo_pl_bar_ac93;
 static VALUE sy_abc;
 static VALUE sy_bar;
 static VALUE sy_foo;
-static VALUE sy_seq;
-static VALUE sy_token;
+static VALUE sy_spaces;
 VALUE profile_report_Tests(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -513,7 +533,7 @@ fail:
 }
 VALUE Tests_s2(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,__result;
+    VALUE it ,__result,__result_2;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -524,16 +544,12 @@ VALUE Tests_s2(VALUE self ) {
         ;
     case 'c' ... 'c':
         ;
-    case 'g' ... UC(255):
+    case 'h' ... UC(255):
         ;
-        it=rb_obj_clone(s_g_b2f5);
-        arg0=it;
-        it=rb_funcall(self,sy_seq,1,arg0);
-        if (it==failobj) {
+        if (1) {
             it=failobj;
             goto fail;
         }
-        __result=it;;
         break;
     case 'd' ... 'f':
         ;
@@ -542,39 +558,20 @@ VALUE Tests_s2(VALUE self ) {
         it=i_3;
         __result=it;;
         break;
-    case 'a' ... 'b':
+    case 'g' ... 'g':
         ;
-        int oldpos1=ptr->pos;
-        int cut1=0;
-alt1_1:
+        it=rb_str_new(ptr->str+ptr->pos,1);
+        ptr->pos++;
+        it=rb_obj_clone(s_g_b2f5);
+        __result_2=it;;
+        it=__result_2;
+        __result=it;;
+        break;
+    case 'a' ... 'b':
         ;
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
         __result=it;;
-
-        ;
-        goto accept1;
-alt1_2:
-        ptr->pos=oldpos1;
-        it=rb_obj_clone(s_g_b2f5);
-        arg0=it;
-        it=rb_funcall(self,sy_seq,1,arg0);
-        if (it==failobj) {
-            it=failobj;
-            goto alt1_3;
-        }
-        __result=it;;
-
-        ;
-        goto accept1;
-alt1_3:
-        ptr->pos=oldpos1;
-        if (1) {
-            it=failobj;
-            goto fail;
-        };
-accept1:
-        ;
         break;
     }
 fail:
@@ -582,81 +579,59 @@ fail:
 }
 VALUE Tests_sw(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,__result;
+    VALUE it ,__result,__result_2;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    int oldpos1=ptr->pos;
-    int cut1=0;
-alt1_1:
-    ;
-    int oldpos2=ptr->pos;
-    int cut2=0;
-alt2_1:
-    ;
-    it=rb_obj_clone(s_a_0cc1);
-    arg0=it;
-    it=rb_funcall(self,sy_seq,1,arg0);
-    if (it==failobj) {
-        it=failobj;
-        goto alt2_2;
+    switch((unsigned char)*ame_curstr2(ptr)) {
+    case UC(0) ... '`':
+        ;
+    case 'c' ... 'c':
+        ;
+    case 'e' ... UC(255):
+        ;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
+        break;
+    case 'd' ... 'd':
+        ;
+        it=rb_str_new(ptr->str+ptr->pos,1);
+        ptr->pos++;
+        it=rb_obj_clone(s_d_8277);
+        __result=it;;
+        it=__result;
+        __result_2=it;;
+        break;
+    case 'a' ... 'b':
+        ;
+        it=rb_str_new(ptr->str+ptr->pos,1);
+        ptr->pos++;
+        switch((unsigned char)*ame_curstr2(ptr)) {
+        case UC(0) ... 'b':
+            ;
+        case 'd' ... UC(255):
+            ;
+            if (1) {
+                it=failobj;
+                goto fail;
+            }
+            break;
+        case 'c' ... 'c':
+            ;
+            it=rb_str_new(ptr->str+ptr->pos,1);
+            ptr->pos++;
+            break;
+        }
+        it=rb_obj_clone(s_c_4a8a);
+        __result=it;;
+        it=__result;
+        __result_2=it;;
+        break;
     }
-    ;
-    goto accept2;
-alt2_2:
-    ptr->pos=oldpos2;
-    it=rb_obj_clone(s_b_92eb);
-    arg0=it;
-    it=rb_funcall(self,sy_seq,1,arg0);
-    if (it==failobj) {
-        it=failobj;
-        goto alt2_3;
-    }
-    ;
-    goto accept2;
-alt2_3:
-    ptr->pos=oldpos2;
-    if (1) {
-        it=failobj;
-        goto alt1_2;
-    };
-accept2:
-    ;
-    it=rb_obj_clone(s_c_4a8a);
-    arg0=it;
-    it=rb_funcall(self,sy_seq,1,arg0);
-    if (it==failobj) {
-        it=failobj;
-        goto alt1_2;
-    }
-    __result=it;;
-
-    ;
-    goto accept1;
-alt1_2:
-    ptr->pos=oldpos1;
-    it=rb_obj_clone(s_d_8277);
-    arg0=it;
-    it=rb_funcall(self,sy_seq,1,arg0);
-    if (it==failobj) {
-        it=failobj;
-        goto alt1_3;
-    }
-    __result=it;;
-
-    ;
-    goto accept1;
-alt1_3:
-    ptr->pos=oldpos1;
-    if (1) {
-        it=failobj;
-        goto fail;
-    };
-accept1:
-    ;
-
 fail:
     return it;
 }
@@ -672,12 +647,22 @@ VALUE Tests_test(VALUE self ) {
     int cut1=0;
 alt1_1:
     ;
-    it=rb_obj_clone(s_a_0cc1);
-    arg0=it;
-    it=rb_funcall(self,sy_token,1,arg0);
-    if (it==failobj) {
-        it=failobj;
-        goto alt1_2;
+    it=rb_funcall(self,sy_spaces,0);
+    switch((unsigned char)*ame_curstr2(ptr)) {
+    case UC(0) ... '`':
+        ;
+    case 'b' ... UC(255):
+        ;
+        if (1) {
+            it=failobj;
+            goto alt1_2;
+        }
+        break;
+    case 'a' ... 'a':
+        ;
+        it=rb_str_new(ptr->str+ptr->pos,1);
+        ptr->pos++;
+        break;
     }
     it=i_1;
     __result=it;;
@@ -711,10 +696,12 @@ void Init_tests_c() {
     rb_global_variable(&s_a_0cc1);
     s_b_92eb=rb_str_new2("b");
     rb_global_variable(&s_b_92eb);
+    sy___at_bind_eq_bi_6dcc=rb_intern("__at_bind_eq_bi_6dcc");
     sy___do_passit_eq__fc0a=rb_intern("__do_passit_eq__fc0a");
     sy__bind_lb_1_rb__eq__afc0=rb_intern("_bind_lb_1_rb__eq__afc0");
-    sy_token=rb_intern("token");
+    sy_spaces=rb_intern("spaces");
     rb_define_method(cls_Anon1,"expr",Anon1_expr,0);
+    rb_define_method(cls_Anon1,"init",Anon1_init,0);
 
     cls_Lam=rb_define_class("Lam",rb_const_get(rb_cObject,rb_intern("Amethyst")));
     failobj=rb_eval_string("FAIL");
@@ -738,10 +725,6 @@ void Init_tests_c() {
     i_42=rb_funcall(rb_str_new2("42"),rb_intern("to_i"),0);
     rb_global_variable(&i_42);
     rb_define_method(cls_Tests,"profile_report",profile_report_Tests,0);
-    s_a_0cc1=rb_str_new2("a");
-    rb_global_variable(&s_a_0cc1);
-    s_b_92eb=rb_str_new2("b");
-    rb_global_variable(&s_b_92eb);
     s_c_4a8a=rb_str_new2("c");
     rb_global_variable(&s_c_4a8a);
     s_d_8277=rb_str_new2("d");
@@ -758,8 +741,7 @@ void Init_tests_c() {
     sy_abc=rb_intern("abc");
     sy_bar=rb_intern("bar");
     sy_foo=rb_intern("foo");
-    sy_seq=rb_intern("seq");
-    sy_token=rb_intern("token");
+    sy_spaces=rb_intern("spaces");
     rb_define_method(cls_Tests,"abc",Tests_abc,0);
     rb_define_method(cls_Tests,"context",Tests_context,0);
     rb_define_method(cls_Tests,"de",Tests_de,0);
@@ -768,5 +750,5 @@ void Init_tests_c() {
     rb_define_method(cls_Tests,"s2",Tests_s2,0);
     rb_define_method(cls_Tests,"sw",Tests_sw,0);
     rb_define_method(cls_Tests,"test",Tests_test,0);
-    rb_eval_string("testversiontests('0e73ed7dde5a8065de84e494e79ba10a')");
+    rb_eval_string("testversiontests('c82d3c3ce54088244ee516849c22a69c')");
 }

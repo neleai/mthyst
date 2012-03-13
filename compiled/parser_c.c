@@ -106,7 +106,7 @@ static VALUE sy__bind_lb_1_rb__eq__e198;
 static VALUE sy__bind_lb_1_rb__pl__b087;
 static VALUE sy__local_lp_bi_196b;
 static VALUE sy__pos_5e0b;
-static VALUE sy__x_eq__dq_ameth_1b26;
+static VALUE sy__x_eq__dq_ameth_733c;
 static VALUE sy_argsOpt;
 static VALUE sy_call;
 static VALUE sy_cases;
@@ -1899,7 +1899,7 @@ alt5_1:
                 goto alt5_2;
             }
             bind_aset(bind2,1,_oldpos);
-            it=rb_funcall(self,sy__x_eq__dq_ameth_1b26,1,bind2);
+            it=rb_funcall(self,sy__x_eq__dq_ameth_733c,1,bind2);
             _oldpos=bind_aget(bind2,1);;
             _autovar_3=it;;
             cstruct oldpass1=*ptr;
@@ -9039,7 +9039,7 @@ void Init_parser_c() {
     sy__bind_lb_1_rb__pl__b087=rb_intern("_bind_lb_1_rb__pl__b087");
     sy__local_lp_bi_196b=rb_intern("_local_lp_bi_196b");
     sy__pos_5e0b=rb_intern("_pos_5e0b");
-    sy__x_eq__dq_ameth_1b26=rb_intern("_x_eq__dq_ameth_1b26");
+    sy__x_eq__dq_ameth_733c=rb_intern("_x_eq__dq_ameth_733c");
     sy_argsOpt=rb_intern("argsOpt");
     sy_call=rb_intern("call");
     sy_cases=rb_intern("cases");
@@ -9091,5 +9091,5 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"string_like",AmethystParser_string_like,2);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('aee96862c24244e51819192a7672c0c7')");
+    rb_eval_string("testversionparser('a29bb43c652a868ecf25c0789863f218')");
 }

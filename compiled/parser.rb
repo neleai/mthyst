@@ -240,8 +240,8 @@ end
 def _pos_5e0b(bind)
 pos
 end
-def _x_eq__dq_ameth_1b26(bind)
-x="amethyst Anon#{$agram+=1} { expr=#{src[(bind[1]+2)..(pos-3)]} }";puts x.inspect;x
+def _x_eq__dq_ameth_733c(bind)
+x="amethyst Anon#{$agram+=1} { expr=#{src[(bind[1]+2)..(pos-3)]}\ninit=.:@@bind }";puts x.inspect;x
 end
 
 end
@@ -254,15 +254,15 @@ class AmethystParser < Amethyst
 end
 
 def parser_compiled_by
-'5aedbe9d2248e4c81dc555367893ac30'
+'6836af5fdb0d1e998e37f567683dec2f'
 end
 def parser_source_hash
-'c14b0dba5c1c88ea71a615d8aa9d258d'
+'040b7fca97c439c3a5c591eb9d0baf0b'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'aee96862c24244e51819192a7672c0c7'
+'a29bb43c652a868ecf25c0789863f218'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/parser_c"

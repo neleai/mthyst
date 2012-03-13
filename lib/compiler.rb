@@ -1,7 +1,7 @@
 CurrentParser={}
 require 'digest'
 require 'set'
-COMPILED=["tests","amethyst","traverser","detect_variables2","parser","dataflow_ssa","inliner2","normalize",
+COMPILED=["amethyst","tests","traverser","detect_variables2","parser","dataflow_ssa","inliner2","normalize",
 "detect_switch","left_factor","constant_propagation","ctranslator2","implicit_variables","remove_left_rigth_recursion","contextual_argument_return"]
 def debug_print(t)
 	puts t.inspect if Amethyst::Settings.debug>1
@@ -146,6 +146,10 @@ class <<Compiler
 		    [ds,dc].each{|o| g.rules[name]=o.parse(:root,g.rules[name])}
 				g.opt(g.rules[name])	
 		end}
+    grammar.rules=g.rules.map{|h,k| k}
+    c,init,rb=AmethystCTranslator.new.parse(:itrans,[grammar])
+    $glc[g.name]=c;$glinit[g.name]=init;$glrb[g.name]=rb
+    CurrentParser.clear
 	end
 	def compile(file,out,file2)
     GC::disable
@@ -179,7 +183,7 @@ class <<Compiler
 		pre =tree.map{|e|
 		if e.is_a? Grammar
 			$gr[e.name]=e
-			"Compiler.add_grammar($gr[#{e.name.inspect}])\n$gr[#{e.name.inspect}].rules=$grammars[$gr[#{e.name.inspect}].name].rules.map{|h,k| k}\nc,init,rb=$ctr.new.parse(:itrans,[$gr[#{e.name.inspect}]]);$glc[#{e.name.inspect}]=c;$glinit[#{e.name.inspect}]=init;$glrb[#{e.name.inspect}]=rb;CurrentParser.clear\n"
+			"Compiler.add_grammar($gr[#{e.name.inspect}])\n"
 		else
 		e
 		end}.join

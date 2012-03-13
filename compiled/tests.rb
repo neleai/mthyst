@@ -1,5 +1,9 @@
 $test_lambda = (class Anon1 < Amethyst
 def self.expr(*args);self.new.parse(:expr,*args);end
+def self.init(*args);self.new.parse(:init,*args);end
+def __at_bind_eq_bi_6dcc(bind)
+@bind=bind[1]
+end
 def __do_passit_eq__fc0a(bind)
 $passit=bind[1];eval("_result=$passit",@bind)
 end
@@ -62,7 +66,7 @@ end
 end
 
 def tests_compiled_by
-'5aedbe9d2248e4c81dc555367893ac30'
+'6836af5fdb0d1e998e37f567683dec2f'
 end
 def tests_source_hash
 '710cdaae439c570560b264e46ed5958b'
@@ -71,6 +75,6 @@ def testversiontests(r)
  raise "invalid version" if r!=tests_version
 end
 def tests_version
-'0e73ed7dde5a8065de84e494e79ba10a'
+'c82d3c3ce54088244ee516849c22a69c'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/tests_c"

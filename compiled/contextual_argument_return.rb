@@ -155,7 +155,7 @@ end
 end
 
 def contextual_argument_return_compiled_by
-'5aedbe9d2248e4c81dc555367893ac30'
+'6836af5fdb0d1e998e37f567683dec2f'
 end
 def contextual_argument_return_source_hash
 'ef9aae4fa1826d0ea9aab1f42210fb57'

@@ -7,6 +7,7 @@ $: << Amethyst_path
 def ame_lambda(cls,bind)
   c=cls.new
   c.instance_variable_set(:@bind,bind)
+  #c.parse(:init,[bind])
   c
 end
 
@@ -23,7 +24,12 @@ class AmethystCore
 	def apply(rule,*args)
 		if rule.is_a?(String) || rule.is_a?(Symbol)
 			send(rule.to_s,*args)
-		else
+		elsif rule.is_a?(Amethyst)
+      rule.src=src;rule.pos=pos
+      r=rule.expr
+      self.pos=rule.pos
+      r
+    else
 			rule.call(*args)
 		end
 	end
