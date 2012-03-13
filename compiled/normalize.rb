@@ -25,4 +25,3 @@ end
 def normalize_version
 '0d4a51a6e4928409a8461f4ddf43d337'
 end
-require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/normalize_c"

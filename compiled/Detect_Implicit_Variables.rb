@@ -17,3 +17,4 @@ def __lp_src_dot_ins_a413(bind)
 end
 
 end
+require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/Detect_Implicit_Variables_c"

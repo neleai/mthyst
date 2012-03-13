@@ -14,4 +14,3 @@ end
 def implicit_variables_version
 '4fc14c7adf1f33171ab854c91c0e1a53'
 end
-require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/implicit_variables_c"

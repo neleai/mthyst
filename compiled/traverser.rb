@@ -16,4 +16,3 @@ end
 def traverser_version
 '722520936da7b9a80b500c17df65e641'
 end
-require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/traverser_c"

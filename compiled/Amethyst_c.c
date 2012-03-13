@@ -2408,7 +2408,7 @@ VALUE Amethyst_xdigit(VALUE self ) {
 fail:
     return it;
 }
-void Init_amethyst_c() {
+void Init_Amethyst_c() {
     cls_Amethyst=rb_define_class("Amethyst",rb_const_get(rb_cObject,rb_intern("AmethystCore")));
     failobj=rb_eval_string("FAIL");
     rb_define_method(cls_Amethyst,"profile_report",profile_report_Amethyst,0);
@@ -2488,5 +2488,4 @@ void Init_amethyst_c() {
     rb_define_method(cls_Amethyst,"upper",Amethyst_upper,0);
     rb_define_method(cls_Amethyst,"word",Amethyst_word,0);
     rb_define_method(cls_Amethyst,"xdigit",Amethyst_xdigit,0);
-    rb_eval_string("testversionamethyst('963a8c0877a69701ebd839d6901b26f5')");
 }

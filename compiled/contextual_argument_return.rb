@@ -24,4 +24,3 @@ end
 def contextual_argument_return_version
 '74c17939990bc712b1e840fa46a54e83'
 end
-require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/contextual_argument_return_c"

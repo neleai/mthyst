@@ -74,3 +74,4 @@ self.profile_report;bind[1]
 end
 
 end
+require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/Amethyst_c"

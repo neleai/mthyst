@@ -53,3 +53,4 @@ super_name="#{bind[1][:name]}_#{bind[1][:grammar].name}"
 end
 
 end
+require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/Resolve_Calls_c"

@@ -149,8 +149,24 @@ class <<Compiler
     grammar.rules=g.rules.map{|h,k| k}
     c,init,rb=AmethystCTranslator.new.parse(:itrans,[grammar])
     $glc[g.name]=c;$glinit[g.name]=init;$glrb[g.name]=rb
-    File.open("compiled/#{g.name}.rb" ,"w"){|f| f.puts rb}
-    File.open("compiled/#{g.name}_c.c","w"){|f| f.puts init;f.puts c}
+    hex_digest=Digest::MD5.hexdigest(c*"")
+    File.open("compiled/#{g.name}.rb" ,"w"){|f| 
+      f.puts rb
+      f.puts "require File.expand_path(File.dirname(__FILE__))+\"/\#{RUBY_VERSION}/#{g.name}_c\""
+    }
+    File.open("compiled/#{g.name}_c.c","w"){|f| 
+      f.puts "#include \"cthyst.h\""
+      f.puts "#include \"memo.c\""
+      f.puts c
+      f.puts "void Init_#{g.name}_c(){ #{init*""} }" #rb_eval_string(\"testversion#{file2}('#{hex_digest}')\");}"
+    }
+	  withtime("c"){ #todo get flags portable not just 1.9.1 on x64
+      `astyle compiled/#{g.name}_c.c`
+	  	`cd compiled;gcc -I. -I/usr/include/ruby-1.9.1/x86_64-linux -I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -fPIC -fno-strict-aliasing -g -g #{Amethyst::Settings.cflags} -fPIC -c #{g.name}_c.c -o #{g.name}_c.o`
+		  `cd compiled;gcc -shared -o 1.9.3/#{g.name}_c.so #{g.name}_c.o -L. -L/usr/lib -L. -rdynamic -Wl,-export-dynamic -lruby-1.9.1 -lpthread -lrt -ldl -lcrypt -lm -lc`
+ 			`rm compiled/#{g.name}_c.o` 
+    }
+    
 
     CurrentParser.clear
 	end
@@ -207,28 +223,9 @@ class <<Compiler
     GC::enable
 		if !Amethyst::Settings.profiling #oprofile does not like changing binaries
 		hex_digest=Digest::MD5.hexdigest(c)
-		File.open("compiled/#{file2}_c.c","w"){|f|
-    f.puts "#include \"cthyst.h\""
-    f.puts "#include \"memo.c\""
-    f.puts c
-    f.puts "void Init_#{file2}_c(){ #{init*""} rb_eval_string(\"testversion#{file2}('#{hex_digest}')\");}"
-    }
     File.open("compiled/#{file2}.rb","w"){|f| f.puts rb; 
-      f.puts "\ndef #{file2}_compiled_by\n'#{$compiled_by}'\nend\ndef #{file2}_source_hash\n'#{source_hash}'\nend\ndef testversion#{file2}(r)\n raise \"invalid version\" if r!=#{file2}_version\nend\ndef #{file2}_version\n'#{hex_digest}'\nend
-require File.expand_path(File.dirname(__FILE__))+\"/\#{RUBY_VERSION}/#{file2}_c\""}
+      f.puts "\ndef #{file2}_compiled_by\n'#{$compiled_by}'\nend\ndef #{file2}_source_hash\n'#{source_hash}'\nend\ndef testversion#{file2}(r)\n raise \"invalid version\" if r!=#{file2}_version\nend\ndef #{file2}_version\n'#{hex_digest}'\nend"}
 		#fork{#makes time measurement more difficult disabled for now
-	  withtime("c"){ #todo get flags portable not just 1.8 on x64
-			`astyle compiled/#{file2}_c.c`
-			if Amethyst::Settings.compile_for.include?("1_9_3")
-				`cd compiled;gcc -I. -I/usr/include/ruby-1.9.1/x86_64-linux -I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -fPIC -fno-strict-aliasing -g -g #{Amethyst::Settings.cflags} -fPIC -c #{file2}_c.c -o #{file2}_c.o`
-				`cd compiled;gcc -shared -o 1.9.3/#{file2}_c.so #{file2}_c.o -L. -L/usr/lib -L. -rdynamic -Wl,-export-dynamic -lruby-1.9.1 -lpthread -lrt -ldl -lcrypt -lm -lc`
-			end
-			if Amethyst::Settings.compile_for.include?("1_8_7")
-		    `cd compiled;gcc -I. -I/usr/lib/ruby/1.8/x86_64-linux -I/usr/lib/ruby/1.8/x86_64-linux -I.   -fPIC -fno-strict-aliasing -g -g #{Amethyst::Settings.cflags}  -fPIC   -c #{file2}_c.c`
-		    `cd compiled;gcc -shared -o 1.8.7/#{file2}_c.so #{file2}_c.o -L. -L/usr/lib -L.  -rdynamic -Wl,-export-dynamic -lruby1.8  -lpthread -lrt -ldl -lcrypt -lm   -lc`
-				`rm compiled/#{file2}_c.o`
-			end
-  	}#}
 		end
 	end
 end

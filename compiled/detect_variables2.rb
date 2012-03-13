@@ -38,4 +38,3 @@ end
 def detect_variables2_version
 'f2b7ab4442ed18aea3f3501cf9f96a1a'
 end
-require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_variables2_c"

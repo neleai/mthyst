@@ -12,4 +12,3 @@ end
 def amethyst_version
 '963a8c0877a69701ebd839d6901b26f5'
 end
-require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/amethyst_c"

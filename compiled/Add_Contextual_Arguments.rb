@@ -59,3 +59,4 @@ src.dup
 end
 
 end
+require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/Add_Contextual_Arguments_c"

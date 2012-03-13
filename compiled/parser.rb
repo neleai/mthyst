@@ -25,4 +25,3 @@ end
 def parser_version
 'a29bb43c652a868ecf25c0789863f218'
 end
-require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/parser_c"

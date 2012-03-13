@@ -65,3 +65,4 @@ src.dup
 end
 
 end
+require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/Constant_Traverser_c"

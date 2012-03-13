@@ -19,4 +19,3 @@ end
 def tests_version
 'c82d3c3ce54088244ee516849c22a69c'
 end
-require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/tests_c"

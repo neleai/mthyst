@@ -8942,7 +8942,7 @@ accept23:
 fail:
     return it;
 }
-void Init_parser_c() {
+void Init_AmethystParser_c() {
     cls_AmethystParser=rb_define_class("AmethystParser",rb_const_get(rb_cObject,rb_intern("Amethyst")));
     failobj=rb_eval_string("FAIL");
     rb_define_method(cls_AmethystParser,"profile_report",profile_report_AmethystParser,0);
@@ -9091,5 +9091,4 @@ void Init_parser_c() {
     rb_define_method(cls_AmethystParser,"sequence",AmethystParser_sequence,0);
     rb_define_method(cls_AmethystParser,"string_like",AmethystParser_string_like,2);
     rb_define_method(cls_AmethystParser,"term",AmethystParser_term,0);
-    rb_eval_string("testversionparser('a29bb43c652a868ecf25c0789863f218')");
 }

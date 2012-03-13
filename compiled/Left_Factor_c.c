@@ -1398,7 +1398,7 @@ success1:
 fail:
     return it;
 }
-void Init_left_factor_c() {
+void Init_Left_Factor_c() {
     cls_Left_Factor=rb_define_class("Left_Factor",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2")));
     failobj=rb_eval_string("FAIL");
     mem_Left_Factor=memo_init();
@@ -1443,5 +1443,4 @@ void Init_left_factor_c() {
     rb_define_method(cls_Left_Factor,"traverse",Left_Factor_traverse,0);
     rb_define_method(cls_Left_Factor,"traverse_item",Left_Factor_traverse_item,0);
     rb_define_method(cls_Left_Factor,"visit",Left_Factor_visit,0);
-    rb_eval_string("testversionleft_factor('171584b24ee225abf40f69478cd4c70a')");
 }

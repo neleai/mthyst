@@ -84,4 +84,3 @@ end
 def constant_propagation_version
 'a95aaee92634aedfd4839546a1dac0e5'
 end
-require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/constant_propagation_c"

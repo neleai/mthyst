@@ -83,4 +83,3 @@ end
 def dataflow_ssa_version
 '699bc95168e6c19b17fa7e893f45b326'
 end
-require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/dataflow_ssa_c"

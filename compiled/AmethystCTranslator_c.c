@@ -4785,7 +4785,7 @@ success46:
 fail:
     return it;
 }
-void Init_ctranslator2_c() {
+void Init_AmethystCTranslator_c() {
     cls_AmethystCTranslator=rb_define_class("AmethystCTranslator",rb_const_get(rb_cObject,rb_intern("Amethyst")));
     failobj=rb_eval_string("FAIL");
     i_0=rb_funcall(rb_str_new2("0"),rb_intern("to_i"),0);
@@ -4967,5 +4967,4 @@ void Init_ctranslator2_c() {
     rb_define_method(cls_AmethystCTranslator,"rbtrans2",AmethystCTranslator_rbtrans2,0);
     rb_define_method(cls_AmethystCTranslator,"rw",AmethystCTranslator_rw,2);
     rb_define_method(cls_AmethystCTranslator,"trans",AmethystCTranslator_trans,0);
-    rb_eval_string("testversionctranslator2('11f33afb2a7ff1bbd66ee9f4a2f1cf1e')");
 }

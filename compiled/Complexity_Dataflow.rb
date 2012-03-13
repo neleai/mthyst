@@ -32,3 +32,4 @@ lattice[bind[1].map{|w| w.value}.max+1]
 end
 
 end
+require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/Complexity_Dataflow_c"

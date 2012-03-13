@@ -300,4 +300,3 @@ end
 def detect_switch_version
 '9da72c4c0e57838937d0c13ff351dbce'
 end
-require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/detect_switch_c"

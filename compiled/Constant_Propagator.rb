@@ -23,3 +23,4 @@ src
 end
 
 end
+require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/Constant_Propagator_c"

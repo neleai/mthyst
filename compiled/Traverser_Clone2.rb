@@ -20,3 +20,4 @@ if bind[1]==bind[2]
 end
 
 end
+require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/Traverser_Clone2_c"

@@ -123,3 +123,4 @@ vars=bind[1][:locals].select{|aa| Object.const_get(src.name).attributes.include?
 end
 
 end
+require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/Analyze_Variables2_c"

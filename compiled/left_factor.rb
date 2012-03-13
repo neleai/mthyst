@@ -24,4 +24,3 @@ end
 def left_factor_version
 '171584b24ee225abf40f69478cd4c70a'
 end
-require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/left_factor_c"

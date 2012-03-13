@@ -40,3 +40,4 @@ src.varnames
 end
 
 end
+require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/Detect_Locals_c"

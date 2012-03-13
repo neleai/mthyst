@@ -46,3 +46,4 @@ lattice[bind[1]]
 end
 
 end
+require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/Switch_Clas_Dataflow_c"

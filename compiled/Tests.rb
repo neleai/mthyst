@@ -30,3 +30,4 @@ foo+bar
 end
 
 end
+require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/Tests_c"

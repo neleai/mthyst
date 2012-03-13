@@ -13,3 +13,4 @@ bind[1]=Hash.new{|h,k| h[k]=[]}
 end
 
 end
+require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/Lam_c"

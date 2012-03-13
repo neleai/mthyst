@@ -47,3 +47,4 @@ lattice.top|lattice.bottom
 end
 
 end
+require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/First_Dataflow_c"

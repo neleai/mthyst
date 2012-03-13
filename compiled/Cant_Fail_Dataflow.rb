@@ -56,3 +56,4 @@ src.to
 end
 
 end
+require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/Cant_Fail_Dataflow_c"

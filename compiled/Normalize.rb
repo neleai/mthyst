@@ -137,3 +137,4 @@ src.name
 end
 
 end
+require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/Normalize_c"

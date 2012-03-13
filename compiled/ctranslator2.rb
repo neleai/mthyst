@@ -99,4 +99,3 @@ end
 def ctranslator2_version
 '11f33afb2a7ff1bbd66ee9f4a2f1cf1e'
 end
-require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/ctranslator2_c"

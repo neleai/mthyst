@@ -69,3 +69,4 @@ src.to
 end
 
 end
+require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/Dead_Code_Deleter3_c"

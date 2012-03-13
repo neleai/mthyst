@@ -57,3 +57,4 @@ src.expr
 end
 
 end
+require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/Left_Factor_c"

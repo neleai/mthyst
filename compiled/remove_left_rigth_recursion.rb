@@ -16,4 +16,3 @@ end
 def remove_left_rigth_recursion_version
 'a829d385201f8763f9fc9077f33112d6'
 end
-require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/remove_left_rigth_recursion_c"
