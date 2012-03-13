@@ -23,5 +23,5 @@ def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'a29bb43c652a868ecf25c0789863f218'
+''
 end

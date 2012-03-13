@@ -14,5 +14,5 @@ def testversiontraverser(r)
  raise "invalid version" if r!=traverser_version
 end
 def traverser_version
-'722520936da7b9a80b500c17df65e641'
+''
 end

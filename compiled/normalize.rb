@@ -23,5 +23,5 @@ def testversionnormalize(r)
  raise "invalid version" if r!=normalize_version
 end
 def normalize_version
-'0d4a51a6e4928409a8461f4ddf43d337'
+''
 end

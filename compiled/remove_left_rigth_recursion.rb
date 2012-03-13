@@ -14,5 +14,5 @@ def testversionremove_left_rigth_recursion(r)
  raise "invalid version" if r!=remove_left_rigth_recursion_version
 end
 def remove_left_rigth_recursion_version
-'a829d385201f8763f9fc9077f33112d6'
+''
 end

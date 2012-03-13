@@ -17,5 +17,5 @@ def testversiontests(r)
  raise "invalid version" if r!=tests_version
 end
 def tests_version
-'c82d3c3ce54088244ee516849c22a69c'
+''
 end

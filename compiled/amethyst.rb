@@ -10,5 +10,5 @@ def testversionamethyst(r)
  raise "invalid version" if r!=amethyst_version
 end
 def amethyst_version
-'963a8c0877a69701ebd839d6901b26f5'
+''
 end

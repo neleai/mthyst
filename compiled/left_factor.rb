@@ -22,5 +22,5 @@ def testversionleft_factor(r)
  raise "invalid version" if r!=left_factor_version
 end
 def left_factor_version
-'171584b24ee225abf40f69478cd4c70a'
+''
 end

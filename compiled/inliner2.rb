@@ -13,5 +13,5 @@ def testversioninliner2(r)
  raise "invalid version" if r!=inliner2_version
 end
 def inliner2_version
-'664a986d86c1b86a1b1e8e6661f81746'
+''
 end

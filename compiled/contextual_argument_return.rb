@@ -22,5 +22,5 @@ def testversioncontextual_argument_return(r)
  raise "invalid version" if r!=contextual_argument_return_version
 end
 def contextual_argument_return_version
-'74c17939990bc712b1e840fa46a54e83'
+''
 end

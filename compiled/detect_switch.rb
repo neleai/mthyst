@@ -298,5 +298,5 @@ def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
 end
 def detect_switch_version
-'9da72c4c0e57838937d0c13ff351dbce'
+''
 end

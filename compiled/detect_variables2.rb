@@ -36,5 +36,5 @@ def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
 end
 def detect_variables2_version
-'f2b7ab4442ed18aea3f3501cf9f96a1a'
+''
 end

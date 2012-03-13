@@ -97,5 +97,5 @@ def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version
 end
 def ctranslator2_version
-'11f33afb2a7ff1bbd66ee9f4a2f1cf1e'
+''
 end

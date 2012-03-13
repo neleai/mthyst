@@ -148,7 +148,6 @@ class <<Compiler
 		end}
     grammar.rules=g.rules.map{|h,k| k}
     c,init,rb=AmethystCTranslator.new.parse(:itrans,[grammar])
-    $glc[g.name]=c;$glinit[g.name]=init;$glrb[g.name]=rb
     hex_digest=Digest::MD5.hexdigest(c*"")
     File.open("compiled/#{g.name}.rb" ,"w"){|f| 
       f.puts rb
@@ -160,12 +159,15 @@ class <<Compiler
       f.puts c
       f.puts "void Init_#{g.name}_c(){ #{init*""} }" #rb_eval_string(\"testversion#{file2}('#{hex_digest}')\");}"
     }
+
+		if !Amethyst::Settings.profiling #oprofile does not like changing binaries
 	  withtime("c"){ #todo get flags portable not just 1.9.1 on x64
       `astyle compiled/#{g.name}_c.c`
 	  	`cd compiled;gcc -I. -I/usr/include/ruby-1.9.1/x86_64-linux -I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -fPIC -fno-strict-aliasing -g -g #{Amethyst::Settings.cflags} -fPIC -c #{g.name}_c.c -o #{g.name}_c.o`
 		  `cd compiled;gcc -shared -o 1.9.3/#{g.name}_c.so #{g.name}_c.o -L. -L/usr/lib -L. -rdynamic -Wl,-export-dynamic -lruby-1.9.1 -lpthread -lrt -ldl -lcrypt -lm -lc`
  			`rm compiled/#{g.name}_c.o` 
     }
+    end
     
 
     CurrentParser.clear
@@ -192,14 +194,8 @@ class <<Compiler
 		tree=p.parse(:file,source)
 		CurrentParser.clear
 
-		#todo write this with less ugly code
 		$gr={}
-		$grammars=@grammars
-    $glrb={}
-    $glinit={}
-    $glc={}
-    $ctr=AmethystCTranslator
-		pre =tree.map{|e|
+		pre =tree.map{|e| #TODO When not bootstraping we want this be rb file we output
 		if e.is_a? Grammar
 			$gr[e.name]=e
 			"Compiler.add_grammar($gr[#{e.name.inspect}])\n"
@@ -213,20 +209,16 @@ class <<Compiler
     c,init,rb=[],[],[]
     tree.map{|e|
       if e.is_a? Grammar
-        c<<$glc[e.name];rb<<"require 'compiled/#{e.name}.rb'";init<<$glinit[e.name]
+        rb<<"require 'compiled/#{e.name}.rb'"
       else
         rb<< e
       end
     }
-    c=c*""
     rb=rb*""
     GC::enable
-		if !Amethyst::Settings.profiling #oprofile does not like changing binaries
-		hex_digest=Digest::MD5.hexdigest(c)
+		hex_digest=""#Digest::MD5.hexdigest(c)
     File.open("compiled/#{file2}.rb","w"){|f| f.puts rb; 
       f.puts "\ndef #{file2}_compiled_by\n'#{$compiled_by}'\nend\ndef #{file2}_source_hash\n'#{source_hash}'\nend\ndef testversion#{file2}(r)\n raise \"invalid version\" if r!=#{file2}_version\nend\ndef #{file2}_version\n'#{hex_digest}'\nend"}
-		#fork{#makes time measurement more difficult disabled for now
-		end
 	end
 end
 Compiler::init

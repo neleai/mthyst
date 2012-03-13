@@ -12,5 +12,5 @@ def testversionimplicit_variables(r)
  raise "invalid version" if r!=implicit_variables_version
 end
 def implicit_variables_version
-'4fc14c7adf1f33171ab854c91c0e1a53'
+''
 end

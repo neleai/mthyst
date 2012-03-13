@@ -82,5 +82,5 @@ def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version
 end
 def constant_propagation_version
-'a95aaee92634aedfd4839546a1dac0e5'
+''
 end
