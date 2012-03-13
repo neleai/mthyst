@@ -164,8 +164,8 @@ def _Strin_lb__lb__qu__88c8(bind)
 Strin[['"']+bind[1]+['"']]
 
 end
-def __at_appends_8ee7(bind)
-@appends<< local(bind[1]) if local(bind[1]).is_a?(Local); Append_AST[local(bind[1]),bind[2]]
+def __at_appends_b984(bind)
+@appends<< bind[1] if bind[1].is_a?(Local); Append_AST[bind[1],bind[2]]
 
 end
 def __at_appends_d29d(bind)
@@ -225,6 +225,9 @@ def _bind_lb_1_rb__dot__e879(bind)
 bind[1].join
 
 end
+def _bind_lb_1_rb__eq__a882(bind)
+bind[1]=local(bind[1])
+end
 def _bind_lb_1_rb__eq__e198(bind)
 bind[1]=Seq_AST[{:ary=>(@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[bind[1]])}]; 
 end
@@ -245,20 +248,21 @@ end
 
 class AmethystParser < Amethyst
 	def local(x)
+    return Args[*x] if x.is_a?(Array)
 		x.is_a?(String) ? (l=Local[x,@bnding];@locals<<l;l) : x
 	end
 end
 
 def parser_compiled_by
-'72312884b8caa80d7b2c3233654d2ee5'
+'5aedbe9d2248e4c81dc555367893ac30'
 end
 def parser_source_hash
-'c14aaa6c871fa520b6ac9bd6bb69b3f2'
+'c14b0dba5c1c88ea71a615d8aa9d258d'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
 end
 def parser_version
-'4fffa452ebcdc61c28dc5c050b97eaaa'
+'aee96862c24244e51819192a7672c0c7'
 end
 require File.expand_path(File.dirname(__FILE__))+"/#{RUBY_VERSION}/parser_c"
