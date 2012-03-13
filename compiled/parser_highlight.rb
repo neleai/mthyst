@@ -21,14 +21,14 @@ require 'compiled/AmethystParser_Highligth.rb'
 
 
 def parser_highlight_compiled_by
-'6836af5fdb0d1e998e37f567683dec2f'
+'d41d8cd98f00b204e9800998ecf8427e'
 end
 def parser_highlight_source_hash
-'777d6295b859b3ef62e7f87c92aee08d'
+'95611768f496c5130b61f2342560d732'
 end
 def testversionparser_highlight(r)
  raise "invalid version" if r!=parser_highlight_version
 end
 def parser_highlight_version
-'903fa36149d6011961776a68cc04c34a'
+''
 end

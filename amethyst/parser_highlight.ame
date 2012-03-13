@@ -25,7 +25,7 @@ amethyst AmethystParser_Highligth {
   group_hl(no,lam)   = {pos}:oldpos apply(lam):r {$group_start[src][oldpos]<<no;$group_end[src][pos]<<no;r}
 
   file     = ( 
-               {@@locals=[];@@append=[];@@bnding=2}  {group_new}:g group_hl(g,` group_mark(g,`withcolor("yellow",`'(|'`)`) expression:e  "" group_mark(g,`withcolor("yellow",`'|)'`)`) `)-> Lambda[Bind[local("_result"),e]]
+               {@@locals=[];@@append=[];@@bnding=2}  {group_new}:g group_hl(g)(| group_mark(g)(|withcolor("yellow")(|'(|'|)|) expression:e  "" group_mark(g)(|withcolor("yellow")(|'|)'|)|) |)-> Lambda[Bind[local("_result"),e]]
 
              | (~'amethyst'  ~'(|'  . )+:{it.join}
              | grammar
@@ -35,54 +35,54 @@ amethyst AmethystParser_Highligth {
                "{" rule*:rules "}"  @Grammar
   
   rule = {@@locals=[];@@appends=[];@@bnding=Bnding[]} {@@bnding}:bnding  
-         "" withcolor("red",`name:name`) withcolor("#702020",`ruleargs:args`) "=" expression:body  
+         "" withcolor("red")(|name:name|) withcolor("#702020")(|ruleargs:args|) "=" expression:body  
          {Bind[local("_result"),body]}:body {@@locals.uniq}:locals {body=Seq[{:ary=>(@@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[body])}]; }   @Rule
 
   
-  expression ={group_new}:g group_hl(g,` listOf(`sequence`,`"" group_mark(g,`~'|)' '|'`)`):ary`) @Or_AST  
+  expression ={group_new}:g group_hl(g)(| listOf((|sequence|),(|"" group_mark(g)(|~'|)' '|'|)|)):ary|) @Or_AST  
 
   
   sequence =  (nr ","? "" prefixed)*:ary  @Seq
   nr = ~("" name argsOpt "=")
 
-  prefixed   = withcolor("yellow",`<&~>:neg`){$colors[src][pos]="yellow"} inline_host_expr:expr {$colors[src][pos-1]="yellow"} -> Pred[expr[0],neg=="~"]
-             | withcolor("yellow",`<&~>:neg`){$colors[src][pos]="yellow"} prefixed:m            {$colors[src][pos-1]="yellow"} -> Lookahead[m,neg=="~"]
+  prefixed   = withcolor("yellow")(|<&~>:neg|){$colors[src][pos]="yellow"} inline_host_expr:expr {$colors[src][pos-1]="yellow"} -> Pred[expr[0],neg=="~"]
+             | withcolor("yellow")(|<&~>:neg|){$colors[src][pos]="yellow"} prefixed:m            {$colors[src][pos-1]="yellow"} -> Lookahead[m,neg=="~"]
              | postfixed
 
   postfixed =  term:from 
-                    (~_     ({group_new}:g group_hl(g,` group_mark(g,`withcolor("blue",`'=>'`)`)     term:e  `)         -> Pass_AST[from,e] 
-                            |{group_new}:g group_hl(g,` withcolor("blue",` group_mark(g,`'['`)`)      expression:e "" withcolor("blue",`group_mark(g,`']'`)`)`) -> Enter_AST[from,e]
-                            | withcolor("white",`<+*>:one`) -> Many[from,one=="+"]
-                            | withcolor("white",`'?'`)      -> Or_AST[from,Apply["empty"]]
-                            | withcolor("orange",`':' '[' (key | name):name ']'`) ->  @@appends<< local(name); Append_AST[local(name),from]
-                            | withcolor("orange",`':'`) ( withcolor("orange",` (key | name):name ('[]'?):append`)  -> @@appends<< local(name) if append; append=='[]' ? Append_AST[name,from] : Bind[local(name),from]
+                    (~_     ({group_new}:g group_hl(g)(| group_mark(g)(|withcolor("blue")(|'=>'|)|)     term:e  |)         -> Pass_AST[from,e] 
+                            |{group_new}:g group_hl(g)(| withcolor("blue")(| group_mark(g)(|'['|)|)      expression:e "" withcolor("blue")(|group_mark(g)(|']'|)|)|) -> Enter_AST[from,e]
+                            | withcolor("white")(|<+*>:one|) -> Many[from,one=="+"]
+                            | withcolor("white")(|'?'|)      -> Or_AST[from,Apply["empty"]]
+                            | withcolor("orange")(|':' '[' (key | name):name ']'|) ->  @@appends<< local(name); Append_AST[local(name),from]
+                            | withcolor("orange")(|':'|) ( withcolor("orange")(| (key | name):name ('[]'?):append|)  -> @@appends<< local(name) if append; append=='[]' ? Append_AST[name,from] : Bind[local(name),from]
                                   | inline_host_expr:e                      -> Seq[ Bind[local("it"),from] , Act[e] ]
                                   ) 
                     ):from  )* {from}
 
   
-  cases = withcolor("red",` className:clas`)  ~'::'                      -> Apply["clas",clas]
+  cases = withcolor("red")(| className:clas|)  ~'::'                      -> Apply["clas",clas]
         | ((number ('...'|'..') number)[]:{it.join} | number):num -> Apply["member",num.to_s]
-        | {group_new}:g group_hl(g,` group_mark(g,`'<'`) until(`group_mark(g,`'>'`)`):s `) -> Apply["regch","/["+s+"]/"]
+        | {group_new}:g group_hl(g)(| group_mark(g)(|'<'|) until((| group_mark(g)(|'>'|) |)):s |) -> Apply["regch","/["+s+"]/"]
 
   term  = 'nested(' expression:expr ")" -> Nested[expr]
         | 'break' -> Seq[Cut[],Stop[]]
         | cases
         | call
         | &<.:> '.'? -> Apply["anything"]
-        | {group_new}:g group_hl(g,` group_mark(g,`withcolor("blue",` '['`)`) expression:e "" group_mark(g,`withcolor("blue",`']'`)`) `)   -> Enter_AST[Apply["anything"],e]
+        | {group_new}:g group_hl(g)(| group_mark(g)(|withcolor("blue")(| '['|)|) expression:e "" group_mark(g)(|withcolor("blue")(|']'|)|) |)   -> Enter_AST[Apply["anything"],e]
         | key:{Act[it]}
         | host_expr
-        | {group_new}:g group_hl(g,` group_mark(g,`'"'`)  until(`group_mark(g,`'"'`)`):s  `) -> Apply["token" ,quote(s)]
-        | {group_new}:g group_hl(g,` group_mark(g,`'\''`) until(`group_mark(g,`'\''`)`):s `) -> Apply["seq"   ,quote(s)]
-        | withcolor("gray",`'#'  line:s`)        -> Comment[s]
-        | {group_new}:g group_hl(g,` group_mark(g,`'('`) expression:x  "" group_mark(g,`')'`) ( '[]'  collect(x) | {Parenthesis[x]} )   `)
+        | {group_new}:g group_hl(g)(| group_mark(g)(|'"'|)  until((|group_mark(g)(|'"'|)|)):s  |) -> Apply["token" ,quote(s)]
+        | {group_new}:g group_hl(g)(| group_mark(g)(|'\''|) until((|group_mark(g)(|'\''|)|)):s |) -> Apply["seq"   ,quote(s)]
+        | withcolor("gray")(|'#'  line:s|)        -> Comment[s]
+        | {group_new}:g group_hl(g)(| group_mark(g)(|'('|) expression:x  "" group_mark(g)(|')'|) ( '[]'  collect(x) | {Parenthesis[x]} )   |)
  
 
   collect(ors) = -> a=autovar; Seq[Or_AST[{:ary=>ors.ary.map{|ands| Seq[{:ary=>[Bind[a,Act["[]"]]]+ands.ary.map{|expr| Append_AST[a,expr]}}]}}],a]
   
-  call = withcolor("red",`className:klas '::' name:name`) withcolor("#702020",` argsOpt:arg`) lambda? -> Apply[name,arg]
-       |               withcolor("red",`name:name`)   withcolor("#702020",`argsOpt:arg`) lambda? -> Apply[name,arg]
+  call = withcolor("red")(|className:klas '::' name:name|) withcolor("#702020")(| argsOpt:arg|) lambda? -> Apply[name,arg]
+       |               withcolor("red")(|name:name|)   withcolor("#702020")(|argsOpt:arg|) lambda? -> Apply[name,arg]
  
   key2        = '@' className:name             -> Result[{:name=>name}]
               | '@'      name:name argsOpt:arg -> Key[name,arg]
@@ -90,7 +90,7 @@ amethyst AmethystParser_Highligth {
               | '@>'     name:name             -> Contextual_Argument[name]
               | '@<'     name:name             -> Contextual_Return[name] 
   
-  key=withcolor("#40a040",`key2`)
+  key=withcolor("#40a040")(|key2|)
 
   name           =  (<_a-zA-Z> <_a-zA-Z0-9>*)[]:{it.join}
   className      =  (    <A-Z> <_a-zA-Z0-9>*)[]:{it.join}
@@ -113,11 +113,11 @@ amethyst AmethystParser_Highligth {
 
   args(o,c) = _args(o,c):r -> Args[{:ary=>([o]+r+[c])}]
 
-  _args(o,c) = {group_new}:g group_hl(g,` group_mark(g,`seq(o)`) "" rubyarg*:r group_mark(g,`seq(c)`) `) -> r
+  _args(o,c) = {group_new}:g group_hl(g)(| group_mark(g)(|seq(o)|) "" rubyarg*:r group_mark(g)(|seq(c)|) |) -> r
 
-  lambda   = {group_new}:g group_hl(g,` group_mark(g,`withcolor("yellow",`'`'`)`) expression:e "" group_mark(g,`withcolor("yellow",`'`'`)`) `)-> Lambda[Bind[local("_result"),e]]
+  lambda   = {group_new}:g group_hl(g)(| group_mark(g)(|withcolor("yellow")(|'`'|)|) expression:e "" group_mark(g)(|withcolor("yellow")(|'`'|)|) |)-> Lambda[Bind[local("_result"),e]]
     
-           | {group_new}:g group_hl(g,` group_mark(g,`withcolor("yellow",`'(|'`)`) expression:e  "" group_mark(g,`withcolor("yellow",`'|)'`)`) `)-> Lambda[Bind[local("_result"),e]]
+           | {group_new}:g group_hl(g)(| group_mark(g)(|withcolor("yellow")(|'(|'|)|) expression:e  "" group_mark(g)(|withcolor("yellow")(|'|)'|)|) |)-> Lambda[Bind[local("_result"),e]]
   rubyarg  = lambda
            | args('(',')')  | args('[',']') | args('{','}')
            | '"' interpolated("\""):s      -> Strin[['"']+s+['"']]
@@ -135,9 +135,9 @@ amethyst AmethystParser_Highligth {
              )* -> x
 
   
-  inline_host_expr = withcolor("brown",`_args('{','}'):r`) {Act[Args[{:ary=>r}]]}
+  inline_host_expr = withcolor("brown")(|_args('{','}'):r|) {Act[Args[{:ary=>r}]]}
   host_expr = inline_host_expr 
-            | {pos}:p withcolor("brown",`'->' line:s`) {""}:r  {r="{"+s+"}"}=>[ inline_host_expr:ret ]  {map_colors(r,src,p+1) ; ret}
+            | {pos}:p withcolor("brown")(|'->' line:s|) {""}:r  {r="{"+s+"}"}=>[ inline_host_expr:ret ]  {map_colors(r,src,p+1) ; ret}
 
 }
 
