@@ -106,7 +106,6 @@ class <<Compiler
 		#TODO resolve name clashes
 		called=callg.reverse.reachable(names)
 		called.each{|name,v| g.rules[name]=g.getrule(name)}
-    called.each{|name,v| g.rules[name]=Resolve_Calls.root([g,g.rules[name]])}
 		puts called.inspect;
 		
 		ds=Detect_Switch_Char.new;ds.instance_variable_set(:@name,grammar.name)
@@ -142,6 +141,8 @@ class <<Compiler
            end
 				}
 		end}
+
+    called.each{|name,v| g.rules[name]=Resolve_Calls.root([g,g.rules[name]])}
 		topo.each{|name|if g.rules[name] && called[name]
 				#TODO separately as in inherited it dont have to be true
 		    [ds,dc].each{|o| g.rules[name]=o.parse(:root,g.rules[name])}
