@@ -54,8 +54,8 @@ amethyst AmethystParser_Highligth {
                             |{group_new}:g group_hl(g)(| withcolor("blue")(| group_mark(g)(|'['|)|)      expression:e "" withcolor("blue")(|group_mark(g)(|']'|)|)|) -> Enter_AST[from,e]
                             | withcolor("white")(|<+*>:one|) -> Many[from,one=="+"]
                             | withcolor("white")(|'?'|)      -> Or_AST[from,Apply["empty"]]
-                            | withcolor("orange")(|':' '[' (key | name):name ']'|) ->  @@appends<< local(name); Append_AST[local(name),from]
-                            | withcolor("orange")(|':'|) ( withcolor("orange")(| (key | name):name ('[]'?):append|)  -> @@appends<< local(name) if append; append=='[]' ? Append_AST[name,from] : Bind[local(name),from]
+                            | withcolor("orange")(| withcolor("orange")(|':' '['|) (key | withcolor("#40a040")(|name|)):name ']'|) ->  @@appends<< local(name); Append_AST[local(name),from]
+                            | withcolor("orange")(|':'|) ( withcolor("orange")(| (key | withcolor("#40a040")(|name|)):name ('[]'?):append|)  -> @@appends<< local(name) if append; append=='[]' ? Append_AST[name,from] : Bind[local(name),from]
                                   | inline_host_expr:e                      -> Seq[ Bind[local("it"),from] , Act[e] ]
                                   ) 
                     ):from  )* {from}
@@ -124,7 +124,7 @@ amethyst AmethystParser_Highligth {
            | <a-z0-9_>:e '<<' -> [e,'<<']
            | '\'' until("'" ):s  -> Strin[["'"+s+"'"]]
            | ('...' | '..')
-           | ( ":@":[n] | <$.:>:[n] )? ~_ name:[n] -> n.join
+           | ( ":@":[n] | <$.:>:[n] )? ~_ ( withcolor("#40a040")(| name:[n] &{@@locals.include?(Local[n.join,@@bnding])} |) | name:[n] )-> n.join
            | key
            | <^`'"(){}\[\]>
 
