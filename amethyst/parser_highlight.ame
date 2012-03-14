@@ -25,7 +25,7 @@ amethyst AmethystParser_Highligth {
   group_hl(no,lam)   = {pos}:oldpos apply(lam):r {$group_start[src][oldpos]<<no;$group_end[src][pos]<<no;r}
 
   file     = ( 
-               {@@locals=[];@@append=[];@@bnding=2}  {group_new}:g group_hl(g)(| group_mark(g)(|withcolor("yellow")(|'(|'|)|) expression:e  "" group_mark(g)(|withcolor("yellow")(|'|)'|)|) |)-> Lambda[Bind[local("_result"),e]]
+               {@@locals=[];@@append=[];@@bnding=2;local("it")}  {group_new}:g group_hl(g)(| group_mark(g)(|withcolor("yellow")(|'(|'|)|) expression:e  "" group_mark(g)(|withcolor("yellow")(|'|)'|)|) |)-> Lambda[Bind[local("_result"),e]]
 
              | (~'amethyst'  ~'(|'  . )+:{it.join}
              | grammar
@@ -34,7 +34,7 @@ amethyst AmethystParser_Highligth {
   grammar =  "amethyst" '_module'?  "" name:name ("<" "" name  |{"Amethyst"}):parent  
                "{" rule*:rules "}"  @Grammar
   
-  rule = {@@locals=[];@@appends=[];@@bnding=Bnding[]} {@@bnding}:bnding  
+  rule = {@@locals=[];@@appends=[];@@bnding=Bnding[];local("it")} {@@bnding}:bnding  
          "" withcolor("red")(|name:name|) withcolor("#702020")(|ruleargs:args|) "=" expression:body  
          {Bind[local("_result"),body]}:body {@@locals.uniq}:locals {body=Seq[{:ary=>(@@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[body])}]; }   @Rule
 
