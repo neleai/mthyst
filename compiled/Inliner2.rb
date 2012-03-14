@@ -1,8 +1,8 @@
 class Inliner2 < Traverser_Clone2
-def self.root(*args);self.new.parse(:root,*args);end
-def self.traverse(*args);self.new.parse(:traverse,*args);end
-def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
-def self.visit(*args);self.new.parse(:visit,*args);end
+def self.root(*args);self.new.parse(:root,*args);end;def self._selector_root;Inliner2;end
+def self.traverse(*args);self.new.parse(:traverse,*args);end;def self._selector_traverse;Inliner2;end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end;def self._selector_traverse_item;Inliner2;end
+def self.visit(*args);self.new.parse(:visit,*args);end;def self._selector_visit;Inliner2;end
 def _Seq_lb_src_dot__3406(bind)
 Seq[src.body,Local["_result",src.bnding]]
 end

@@ -1,8 +1,8 @@
 class Detect_Locals < Traverser_Clone2
-def self.analyze(*args);self.new.parse(:analyze,*args);end
-def self.traverse(*args);self.new.parse(:traverse,*args);end
-def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
-def self.visit(*args);self.new.parse(:visit,*args);end
+def self.analyze(*args);self.new.parse(:analyze,*args);end;def self._selector_analyze;Detect_Locals;end
+def self.traverse(*args);self.new.parse(:traverse,*args);end;def self._selector_traverse;Detect_Locals;end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end;def self._selector_traverse_item;Detect_Locals;end
+def self.visit(*args);self.new.parse(:visit,*args);end;def self._selector_visit;Detect_Locals;end
 def __at_locals_ca83(bind)
 @locals
 end

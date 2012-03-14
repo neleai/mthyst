@@ -1,9 +1,9 @@
 class Detect_Switch_Clas < Detect_First
-def self.itrans(*args);self.new.parse(:itrans,*args);end
-def self.root(*args);self.new.parse(:root,*args);end
-def self.traverse(*args);self.new.parse(:traverse,*args);end
-def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
-def self.visit(*args);self.new.parse(:visit,*args);end
+def self.itrans(*args);self.new.parse(:itrans,*args);end;def self._selector_itrans;Detect_Switch_Clas;end
+def self.root(*args);self.new.parse(:root,*args);end;def self._selector_root;Detect_Switch_Clas;end
+def self.traverse(*args);self.new.parse(:traverse,*args);end;def self._selector_traverse;Detect_Switch_Clas;end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end;def self._selector_traverse_item;Detect_Switch_Clas;end
+def self.visit(*args);self.new.parse(:visit,*args);end;def self._selector_visit;Detect_Switch_Clas;end
 def _Or_lb__ti_bind_d486(bind)
 Or[*bind[1]]
 end

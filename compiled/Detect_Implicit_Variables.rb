@@ -1,8 +1,8 @@
 class Detect_Implicit_Variables < Visitor
-def self.root(*args);self.new.parse(:root,*args);end
-def self.traverse(*args);self.new.parse(:traverse,*args);end
-def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
-def self.visit(*args);self.new.parse(:visit,*args);end
+def self.root(*args);self.new.parse(:root,*args);end;def self._selector_root;Detect_Implicit_Variables;end
+def self.traverse(*args);self.new.parse(:traverse,*args);end;def self._selector_traverse;Detect_Implicit_Variables;end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end;def self._selector_traverse_item;Detect_Implicit_Variables;end
+def self.visit(*args);self.new.parse(:visit,*args);end;def self._selector_visit;Detect_Implicit_Variables;end
 def __at_vars_a187(bind)
 @vars
 end

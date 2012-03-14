@@ -1,9 +1,9 @@
 class Constant_Traverser < Traverser_Clone2
-def self.consts(*args);self.new.parse(:consts,*args);end
-def self.root(*args);self.new.parse(:root,*args);end
-def self.traverse(*args);self.new.parse(:traverse,*args);end
-def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
-def self.visit(*args);self.new.parse(:visit,*args);end
+def self.consts(*args);self.new.parse(:consts,*args);end;def self._selector_consts;Constant_Traverser;end
+def self.root(*args);self.new.parse(:root,*args);end;def self._selector_root;Constant_Traverser;end
+def self.traverse(*args);self.new.parse(:traverse,*args);end;def self._selector_traverse;Constant_Traverser;end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end;def self._selector_traverse_item;Constant_Traverser;end
+def self.visit(*args);self.new.parse(:visit,*args);end;def self._selector_visit;Constant_Traverser;end
 def _Bind_lb_src_66c4(bind)
 Bind[src.name,bind[1]]
 end

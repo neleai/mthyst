@@ -1,6 +1,6 @@
 class Detect_Size < Amethyst
-def self.predicate(*args);self.new.parse(:predicate,*args);end
-def self.predicate2(*args);self.new.parse(:predicate2,*args);end
+def self.predicate(*args);self.new.parse(:predicate,*args);end;def self._selector_predicate;Detect_Size;end
+def self.predicate2(*args);self.new.parse(:predicate2,*args);end;def self._selector_predicate2;Detect_Size;end
 def _Or_dot_creat_49b2(bind)
 Or.create( {:ary=>bind[1] })
 end

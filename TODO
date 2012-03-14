@@ -15,8 +15,11 @@ dataflow for pureness (alias analysis with trackable host language)
 
 documentation
 
+rules that use lambda access bind otherwise use local variables
 unify lambda+rule in ctranslator2
 analysis what closures can be saved on stack
+
+
 rewrite using backtracking,repeat until...
 continuation passing style
 
@@ -106,3 +109,6 @@ try speed vs various other parsers.
 
 highligth local variables
 
+dataflow compute first 8 characters
+
+parametrize traverser and visitor

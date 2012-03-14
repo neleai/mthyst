@@ -1,7 +1,7 @@
 class Lam < Amethyst
-def self.baz(*args);self.new.parse(:baz,*args);end
-def self.foo(*args);self.new.parse(:foo,*args);end
-def self.lam(*args);self.new.parse(:lam,*args);end
+def self.baz(*args);self.new.parse(:baz,*args);end;def self._selector_baz;Lam;end
+def self.foo(*args);self.new.parse(:foo,*args);end;def self._selector_foo;Lam;end
+def self.lam(*args);self.new.parse(:lam,*args);end;def self._selector_lam;Lam;end
 def __at_context_0dcc(bind)
 @contextual_return.each{|k,v| bind[1][k]+=v};@contextual_return=nil
 end

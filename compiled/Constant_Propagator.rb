@@ -1,6 +1,6 @@
 class Constant_Propagator < Amethyst
-def self.root(*args);self.new.parse(:root,*args);end
-def self.step(*args);self.new.parse(:step,*args);end
+def self.root(*args);self.new.parse(:root,*args);end;def self._selector_root;Constant_Propagator;end
+def self.step(*args);self.new.parse(:step,*args);end;def self._selector_step;Constant_Propagator;end
 def _Constant_8840(bind)
 ConstantLattice[src]
 end

@@ -1,7 +1,7 @@
 class Minsize_Dataflow < First_Dataflow
-def self.first(*args);self.new.parse(:first,*args);end
-def self.first_Minsize_Dataflow(*args);self.new.parse(:first_Minsize_Dataflow,*args);end
-def self.getvalue(*args);self.new.parse(:getvalue,*args);end
+def self.first(*args);self.new.parse(:first,*args);end;def self._selector_first;Minsize_Dataflow;end
+def self.first_Minsize_Dataflow(*args);self.new.parse(:first_Minsize_Dataflow,*args);end;def self._selector_first_Minsize_Dataflow;Minsize_Dataflow;end
+def self.getvalue(*args);self.new.parse(:getvalue,*args);end;def self._selector_getvalue;Minsize_Dataflow;end
 def _Compiler_558e(bind)
 Compiler.grammars[src.clas].rules[bind[1]].body
 end

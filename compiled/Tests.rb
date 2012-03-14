@@ -1,12 +1,12 @@
 class Tests < Amethyst
-def self.abc(*args);self.new.parse(:abc,*args);end
-def self.context(*args);self.new.parse(:context,*args);end
-def self.de(*args);self.new.parse(:de,*args);end
-def self.foo(*args);self.new.parse(:foo,*args);end
-def self.gh(*args);self.new.parse(:gh,*args);end
-def self.s2(*args);self.new.parse(:s2,*args);end
-def self.sw(*args);self.new.parse(:sw,*args);end
-def self.test(*args);self.new.parse(:test,*args);end
+def self.abc(*args);self.new.parse(:abc,*args);end;def self._selector_abc;Tests;end
+def self.context(*args);self.new.parse(:context,*args);end;def self._selector_context;Tests;end
+def self.de(*args);self.new.parse(:de,*args);end;def self._selector_de;Tests;end
+def self.foo(*args);self.new.parse(:foo,*args);end;def self._selector_foo;Tests;end
+def self.gh(*args);self.new.parse(:gh,*args);end;def self._selector_gh;Tests;end
+def self.s2(*args);self.new.parse(:s2,*args);end;def self._selector_s2;Tests;end
+def self.sw(*args);self.new.parse(:sw,*args);end;def self._selector_sw;Tests;end
+def self.test(*args);self.new.parse(:test,*args);end;def self._selector_test;Tests;end
 def __at__contex_5f56(bind)
 @_context_arguments||={};bind[1]=@_context_arguments;bind[2]=@_context_arguments.dup
 end

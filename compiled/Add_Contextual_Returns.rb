@@ -1,8 +1,8 @@
 class Add_Contextual_Returns < Traverser_Clone2
-def self.root(*args);self.new.parse(:root,*args);end
-def self.traverse(*args);self.new.parse(:traverse,*args);end
-def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
-def self.visit(*args);self.new.parse(:visit,*args);end
+def self.root(*args);self.new.parse(:root,*args);end;def self._selector_root;Add_Contextual_Returns;end
+def self.traverse(*args);self.new.parse(:traverse,*args);end;def self._selector_traverse;Add_Contextual_Returns;end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end;def self._selector_traverse_item;Add_Contextual_Returns;end
+def self.visit(*args);self.new.parse(:visit,*args);end;def self._selector_visit;Add_Contextual_Returns;end
 def _Seq_lb_src(bind)
 Seq[src,Act[[Global["contextual_return"],".each{|k,v| ",bind[1][:a],"[k]+=v};",Global["contextual_return"],"=nil"]]]
 end

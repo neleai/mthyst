@@ -1,12 +1,12 @@
 class Left_Factor < Traverser_Clone2
-def self.binds(*args);self.new.parse(:binds,*args);end
-def self.factor(*args);self.new.parse(:factor,*args);end
-def self.first(*args);self.new.parse(:first,*args);end
-def self.rest(*args);self.new.parse(:rest,*args);end
-def self.root(*args);self.new.parse(:root,*args);end
-def self.traverse(*args);self.new.parse(:traverse,*args);end
-def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
-def self.visit(*args);self.new.parse(:visit,*args);end
+def self.binds(*args);self.new.parse(:binds,*args);end;def self._selector_binds;Left_Factor;end
+def self.factor(*args);self.new.parse(:factor,*args);end;def self._selector_factor;Left_Factor;end
+def self.first(*args);self.new.parse(:first,*args);end;def self._selector_first;Left_Factor;end
+def self.rest(*args);self.new.parse(:rest,*args);end;def self._selector_rest;Left_Factor;end
+def self.root(*args);self.new.parse(:root,*args);end;def self._selector_root;Left_Factor;end
+def self.traverse(*args);self.new.parse(:traverse,*args);end;def self._selector_traverse;Left_Factor;end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end;def self._selector_traverse_item;Left_Factor;end
+def self.visit(*args);self.new.parse(:visit,*args);end;def self._selector_visit;Left_Factor;end
 def _Bind_lb_src_66c4(bind)
 Bind[src.name,bind[1]]
 end

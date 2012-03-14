@@ -1,8 +1,8 @@
 class DetectCalls < Visitor
-def self.root(*args);self.new.parse(:root,*args);end
-def self.traverse(*args);self.new.parse(:traverse,*args);end
-def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
-def self.visit(*args);self.new.parse(:visit,*args);end
+def self.root(*args);self.new.parse(:root,*args);end;def self._selector_root;DetectCalls;end
+def self.traverse(*args);self.new.parse(:traverse,*args);end;def self._selector_traverse;DetectCalls;end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end;def self._selector_traverse_item;DetectCalls;end
+def self.visit(*args);self.new.parse(:visit,*args);end;def self._selector_visit;DetectCalls;end
 def __at_calls_7f81(bind)
 @calls
 end

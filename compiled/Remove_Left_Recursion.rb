@@ -1,7 +1,7 @@
 class Remove_Left_Recursion < Traverser_Clone2
-def self.first(*args);self.new.parse(:first,*args);end
-def self.must_empty(*args);self.new.parse(:must_empty,*args);end
-def self.root(*args);self.new.parse(:root,*args);end
+def self.first(*args);self.new.parse(:first,*args);end;def self._selector_first;Remove_Left_Recursion;end
+def self.must_empty(*args);self.new.parse(:must_empty,*args);end;def self._selector_must_empty;Remove_Left_Recursion;end
+def self.root(*args);self.new.parse(:root,*args);end;def self._selector_root;Remove_Left_Recursion;end
 def _Bind_lb_src_66c4(bind)
 Bind[src.name,bind[1]]
 end

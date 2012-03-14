@@ -1,7 +1,7 @@
 class Switch_Char_Dataflow < First_Dataflow
-def self.first(*args);self.new.parse(:first,*args);end
-def self.first_Switch_Char_Dataflow(*args);self.new.parse(:first_Switch_Char_Dataflow,*args);end
-def self.getvalue(*args);self.new.parse(:getvalue,*args);end
+def self.first(*args);self.new.parse(:first,*args);end;def self._selector_first;Switch_Char_Dataflow;end
+def self.first_Switch_Char_Dataflow(*args);self.new.parse(:first_Switch_Char_Dataflow,*args);end;def self._selector_first_Switch_Char_Dataflow;Switch_Char_Dataflow;end
+def self.getvalue(*args);self.new.parse(:getvalue,*args);end;def self._selector_getvalue;Switch_Char_Dataflow;end
 def _Compiler_558e(bind)
 Compiler.grammars[src.clas].rules[bind[1]].body
 end

@@ -1,39 +1,39 @@
 class Amethyst < AmethystCore
-def self._(*args);self.new.parse(:_,*args);end
-def self.alnum(*args);self.new.parse(:alnum,*args);end
-def self.alpha(*args);self.new.parse(:alpha,*args);end
-def self.char(*args);self.new.parse(:char,*args);end
-def self.clas(*args);self.new.parse(:clas,*args);end
-def self.digit(*args);self.new.parse(:digit,*args);end
-def self.empty(*args);self.new.parse(:empty,*args);end
-def self.eof(*args);self.new.parse(:eof,*args);end
-def self.fails(*args);self.new.parse(:fails,*args);end
-def self.false(*args);self.new.parse(:false,*args);end
-def self.find(*args);self.new.parse(:find,*args);end
-def self.int(*args);self.new.parse(:int,*args);end
-def self.line(*args);self.new.parse(:line,*args);end
-def self.listOf(*args);self.new.parse(:listOf,*args);end
-def self.lower(*args);self.new.parse(:lower,*args);end
-def self.member(*args);self.new.parse(:member,*args);end
-def self.nested(*args);self.new.parse(:nested,*args);end
-def self.newline(*args);self.new.parse(:newline,*args);end
-def self.nil(*args);self.new.parse(:nil,*args);end
-def self.number(*args);self.new.parse(:number,*args);end
-def self.parse(*args);self.new.parse(:parse,*args);end
-def self.range_ex(*args);self.new.parse(:range_ex,*args);end
-def self.range_in(*args);self.new.parse(:range_in,*args);end
-def self.regch(*args);self.new.parse(:regch,*args);end
-def self.replace(*args);self.new.parse(:replace,*args);end
-def self.reverse(*args);self.new.parse(:reverse,*args);end
-def self.seq(*args);self.new.parse(:seq,*args);end
-def self.space(*args);self.new.parse(:space,*args);end
-def self.spaces(*args);self.new.parse(:spaces,*args);end
-def self.token(*args);self.new.parse(:token,*args);end
-def self.true(*args);self.new.parse(:true,*args);end
-def self.until(*args);self.new.parse(:until,*args);end
-def self.upper(*args);self.new.parse(:upper,*args);end
-def self.word(*args);self.new.parse(:word,*args);end
-def self.xdigit(*args);self.new.parse(:xdigit,*args);end
+def self._(*args);self.new.parse(:_,*args);end;def self._selector__;Amethyst;end
+def self.alnum(*args);self.new.parse(:alnum,*args);end;def self._selector_alnum;Amethyst;end
+def self.alpha(*args);self.new.parse(:alpha,*args);end;def self._selector_alpha;Amethyst;end
+def self.char(*args);self.new.parse(:char,*args);end;def self._selector_char;Amethyst;end
+def self.clas(*args);self.new.parse(:clas,*args);end;def self._selector_clas;Amethyst;end
+def self.digit(*args);self.new.parse(:digit,*args);end;def self._selector_digit;Amethyst;end
+def self.empty(*args);self.new.parse(:empty,*args);end;def self._selector_empty;Amethyst;end
+def self.eof(*args);self.new.parse(:eof,*args);end;def self._selector_eof;Amethyst;end
+def self.fails(*args);self.new.parse(:fails,*args);end;def self._selector_fails;Amethyst;end
+def self.false(*args);self.new.parse(:false,*args);end;def self._selector_false;Amethyst;end
+def self.find(*args);self.new.parse(:find,*args);end;def self._selector_find;Amethyst;end
+def self.int(*args);self.new.parse(:int,*args);end;def self._selector_int;Amethyst;end
+def self.line(*args);self.new.parse(:line,*args);end;def self._selector_line;Amethyst;end
+def self.listOf(*args);self.new.parse(:listOf,*args);end;def self._selector_listOf;Amethyst;end
+def self.lower(*args);self.new.parse(:lower,*args);end;def self._selector_lower;Amethyst;end
+def self.member(*args);self.new.parse(:member,*args);end;def self._selector_member;Amethyst;end
+def self.nested(*args);self.new.parse(:nested,*args);end;def self._selector_nested;Amethyst;end
+def self.newline(*args);self.new.parse(:newline,*args);end;def self._selector_newline;Amethyst;end
+def self.nil(*args);self.new.parse(:nil,*args);end;def self._selector_nil;Amethyst;end
+def self.number(*args);self.new.parse(:number,*args);end;def self._selector_number;Amethyst;end
+def self.parse(*args);self.new.parse(:parse,*args);end;def self._selector_parse;Amethyst;end
+def self.range_ex(*args);self.new.parse(:range_ex,*args);end;def self._selector_range_ex;Amethyst;end
+def self.range_in(*args);self.new.parse(:range_in,*args);end;def self._selector_range_in;Amethyst;end
+def self.regch(*args);self.new.parse(:regch,*args);end;def self._selector_regch;Amethyst;end
+def self.replace(*args);self.new.parse(:replace,*args);end;def self._selector_replace;Amethyst;end
+def self.reverse(*args);self.new.parse(:reverse,*args);end;def self._selector_reverse;Amethyst;end
+def self.seq(*args);self.new.parse(:seq,*args);end;def self._selector_seq;Amethyst;end
+def self.space(*args);self.new.parse(:space,*args);end;def self._selector_space;Amethyst;end
+def self.spaces(*args);self.new.parse(:spaces,*args);end;def self._selector_spaces;Amethyst;end
+def self.token(*args);self.new.parse(:token,*args);end;def self._selector_token;Amethyst;end
+def self.true(*args);self.new.parse(:true,*args);end;def self._selector_true;Amethyst;end
+def self.until(*args);self.new.parse(:until,*args);end;def self._selector_until;Amethyst;end
+def self.upper(*args);self.new.parse(:upper,*args);end;def self._selector_upper;Amethyst;end
+def self.word(*args);self.new.parse(:word,*args);end;def self._selector_word;Amethyst;end
+def self.xdigit(*args);self.new.parse(:xdigit,*args);end;def self._selector_xdigit;Amethyst;end
 def __at_rev(bind)
 @rev||=Hash.new{|h,k| h[k]=k.reverse }
 end

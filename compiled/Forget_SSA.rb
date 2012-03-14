@@ -1,8 +1,8 @@
 class Forget_SSA < Traverser_Clone2
-def self.root(*args);self.new.parse(:root,*args);end
-def self.traverse(*args);self.new.parse(:traverse,*args);end
-def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
-def self.visit(*args);self.new.parse(:visit,*args);end
+def self.root(*args);self.new.parse(:root,*args);end;def self._selector_root;Forget_SSA;end
+def self.traverse(*args);self.new.parse(:traverse,*args);end;def self._selector_traverse;Forget_SSA;end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end;def self._selector_traverse_item;Forget_SSA;end
+def self.visit(*args);self.new.parse(:visit,*args);end;def self._selector_visit;Forget_SSA;end
 def __lp_src_dot_cla_2024(bind)
 (src.class.attributes).map{|v| src.instance_variable_get("@"+v.to_s) }
 end

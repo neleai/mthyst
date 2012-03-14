@@ -1,10 +1,10 @@
 class Analyze_Variables2 < Traverser_Clone2
-def self.flatten(*args);self.new.parse(:flatten,*args);end
-def self.itrans(*args);self.new.parse(:itrans,*args);end
-def self.root(*args);self.new.parse(:root,*args);end
-def self.traverse(*args);self.new.parse(:traverse,*args);end
-def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
-def self.visit(*args);self.new.parse(:visit,*args);end
+def self.flatten(*args);self.new.parse(:flatten,*args);end;def self._selector_flatten;Analyze_Variables2;end
+def self.itrans(*args);self.new.parse(:itrans,*args);end;def self._selector_itrans;Analyze_Variables2;end
+def self.root(*args);self.new.parse(:root,*args);end;def self._selector_root;Analyze_Variables2;end
+def self.traverse(*args);self.new.parse(:traverse,*args);end;def self._selector_traverse;Analyze_Variables2;end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end;def self._selector_traverse_item;Analyze_Variables2;end
+def self.visit(*args);self.new.parse(:visit,*args);end;def self._selector_visit;Analyze_Variables2;end
 def _Act_lb_bind_4ccd(bind)
 Act[bind[1],bind[2],bind[3]]
 end

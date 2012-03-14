@@ -1,7 +1,7 @@
 class Maxsize_Dataflow < First_Dataflow
-def self.first(*args);self.new.parse(:first,*args);end
-def self.first_Maxsize_Dataflow(*args);self.new.parse(:first_Maxsize_Dataflow,*args);end
-def self.getvalue(*args);self.new.parse(:getvalue,*args);end
+def self.first(*args);self.new.parse(:first,*args);end;def self._selector_first;Maxsize_Dataflow;end
+def self.first_Maxsize_Dataflow(*args);self.new.parse(:first_Maxsize_Dataflow,*args);end;def self._selector_first_Maxsize_Dataflow;Maxsize_Dataflow;end
+def self.getvalue(*args);self.new.parse(:getvalue,*args);end;def self._selector_getvalue;Maxsize_Dataflow;end
 def _Compiler_558e(bind)
 Compiler.grammars[src.clas].rules[bind[1]].body
 end

@@ -1,12 +1,12 @@
 class Detect_First < Traverser_Clone2
-def self.cant_fail(*args);self.new.parse(:cant_fail,*args);end
-def self.combine_or(*args);self.new.parse(:combine_or,*args);end
-def self.combine_seq(*args);self.new.parse(:combine_seq,*args);end
-def self.itrans(*args);self.new.parse(:itrans,*args);end
-def self.must_empty(*args);self.new.parse(:must_empty,*args);end
-def self.object_only(*args);self.new.parse(:object_only,*args);end
-def self.root(*args);self.new.parse(:root,*args);end
-def self.string_only(*args);self.new.parse(:string_only,*args);end
+def self.cant_fail(*args);self.new.parse(:cant_fail,*args);end;def self._selector_cant_fail;Detect_First;end
+def self.combine_or(*args);self.new.parse(:combine_or,*args);end;def self._selector_combine_or;Detect_First;end
+def self.combine_seq(*args);self.new.parse(:combine_seq,*args);end;def self._selector_combine_seq;Detect_First;end
+def self.itrans(*args);self.new.parse(:itrans,*args);end;def self._selector_itrans;Detect_First;end
+def self.must_empty(*args);self.new.parse(:must_empty,*args);end;def self._selector_must_empty;Detect_First;end
+def self.object_only(*args);self.new.parse(:object_only,*args);end;def self._selector_object_only;Detect_First;end
+def self.root(*args);self.new.parse(:root,*args);end;def self._selector_root;Detect_First;end
+def self.string_only(*args);self.new.parse(:string_only,*args);end;def self._selector_string_only;Detect_First;end
 def _Seq_lb__ti__lp_bi_a321(bind)
 Seq[*(bind[1]+bind[2])]
 end

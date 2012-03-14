@@ -1,6 +1,6 @@
 class Anon1 < Amethyst
-def self.expr(*args);self.new.parse(:expr,*args);end
-def self.init(*args);self.new.parse(:init,*args);end
+def self.expr(*args);self.new.parse(:expr,*args);end;def self._selector_expr;Anon1;end
+def self.init(*args);self.new.parse(:init,*args);end;def self._selector_init;Anon1;end
 def __at_bind_eq_bi_6dcc(bind)
 @bind=bind[1]
 end

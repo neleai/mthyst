@@ -1,31 +1,31 @@
 class AmethystParser < Amethyst
-def self._args(*args);self.new.parse(:_args,*args);end
-def self.args(*args);self.new.parse(:args,*args);end
-def self.argsOpt(*args);self.new.parse(:argsOpt,*args);end
-def self.call(*args);self.new.parse(:call,*args);end
-def self.cases(*args);self.new.parse(:cases,*args);end
-def self.className(*args);self.new.parse(:className,*args);end
-def self.collect(*args);self.new.parse(:collect,*args);end
-def self.expression(*args);self.new.parse(:expression,*args);end
-def self.file(*args);self.new.parse(:file,*args);end
-def self.grammar(*args);self.new.parse(:grammar,*args);end
-def self.host_expr(*args);self.new.parse(:host_expr,*args);end
-def self.inline_host_expr(*args);self.new.parse(:inline_host_expr,*args);end
-def self.interpolated(*args);self.new.parse(:interpolated,*args);end
-def self.key(*args);self.new.parse(:key,*args);end
-def self.lambda(*args);self.new.parse(:lambda,*args);end
-def self.name(*args);self.new.parse(:name,*args);end
-def self.nr(*args);self.new.parse(:nr,*args);end
-def self.postfixed(*args);self.new.parse(:postfixed,*args);end
-def self.prefixed(*args);self.new.parse(:prefixed,*args);end
-def self.procargs(*args);self.new.parse(:procargs,*args);end
-def self.procargs2(*args);self.new.parse(:procargs2,*args);end
-def self.rubyarg(*args);self.new.parse(:rubyarg,*args);end
-def self.rule(*args);self.new.parse(:rule,*args);end
-def self.ruleargs(*args);self.new.parse(:ruleargs,*args);end
-def self.sequence(*args);self.new.parse(:sequence,*args);end
-def self.string_like(*args);self.new.parse(:string_like,*args);end
-def self.term(*args);self.new.parse(:term,*args);end
+def self._args(*args);self.new.parse(:_args,*args);end;def self._selector__args;AmethystParser;end
+def self.args(*args);self.new.parse(:args,*args);end;def self._selector_args;AmethystParser;end
+def self.argsOpt(*args);self.new.parse(:argsOpt,*args);end;def self._selector_argsOpt;AmethystParser;end
+def self.call(*args);self.new.parse(:call,*args);end;def self._selector_call;AmethystParser;end
+def self.cases(*args);self.new.parse(:cases,*args);end;def self._selector_cases;AmethystParser;end
+def self.className(*args);self.new.parse(:className,*args);end;def self._selector_className;AmethystParser;end
+def self.collect(*args);self.new.parse(:collect,*args);end;def self._selector_collect;AmethystParser;end
+def self.expression(*args);self.new.parse(:expression,*args);end;def self._selector_expression;AmethystParser;end
+def self.file(*args);self.new.parse(:file,*args);end;def self._selector_file;AmethystParser;end
+def self.grammar(*args);self.new.parse(:grammar,*args);end;def self._selector_grammar;AmethystParser;end
+def self.host_expr(*args);self.new.parse(:host_expr,*args);end;def self._selector_host_expr;AmethystParser;end
+def self.inline_host_expr(*args);self.new.parse(:inline_host_expr,*args);end;def self._selector_inline_host_expr;AmethystParser;end
+def self.interpolated(*args);self.new.parse(:interpolated,*args);end;def self._selector_interpolated;AmethystParser;end
+def self.key(*args);self.new.parse(:key,*args);end;def self._selector_key;AmethystParser;end
+def self.lambda(*args);self.new.parse(:lambda,*args);end;def self._selector_lambda;AmethystParser;end
+def self.name(*args);self.new.parse(:name,*args);end;def self._selector_name;AmethystParser;end
+def self.nr(*args);self.new.parse(:nr,*args);end;def self._selector_nr;AmethystParser;end
+def self.postfixed(*args);self.new.parse(:postfixed,*args);end;def self._selector_postfixed;AmethystParser;end
+def self.prefixed(*args);self.new.parse(:prefixed,*args);end;def self._selector_prefixed;AmethystParser;end
+def self.procargs(*args);self.new.parse(:procargs,*args);end;def self._selector_procargs;AmethystParser;end
+def self.procargs2(*args);self.new.parse(:procargs2,*args);end;def self._selector_procargs2;AmethystParser;end
+def self.rubyarg(*args);self.new.parse(:rubyarg,*args);end;def self._selector_rubyarg;AmethystParser;end
+def self.rule(*args);self.new.parse(:rule,*args);end;def self._selector_rule;AmethystParser;end
+def self.ruleargs(*args);self.new.parse(:ruleargs,*args);end;def self._selector_ruleargs;AmethystParser;end
+def self.sequence(*args);self.new.parse(:sequence,*args);end;def self._selector_sequence;AmethystParser;end
+def self.string_like(*args);self.new.parse(:string_like,*args);end;def self._selector_string_like;AmethystParser;end
+def self.term(*args);self.new.parse(:term,*args);end;def self._selector_term;AmethystParser;end
 def _Act_lb_Args_23b1(bind)
 Act[Args[{:ary=>bind[1]}]]
 end

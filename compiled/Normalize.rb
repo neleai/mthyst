@@ -1,13 +1,13 @@
 class Normalize < Amethyst
-def self.act(*args);self.new.parse(:act,*args);end
-def self.apply2(*args);self.new.parse(:apply2,*args);end
-def self.bind(*args);self.new.parse(:bind,*args);end
-def self.cant_fail(*args);self.new.parse(:cant_fail,*args);end
-def self.defer_acts(*args);self.new.parse(:defer_acts,*args);end
-def self.must_empty(*args);self.new.parse(:must_empty,*args);end
-def self.or(*args);self.new.parse(:or,*args);end
-def self.seq2(*args);self.new.parse(:seq2,*args);end
-def self.switch(*args);self.new.parse(:switch,*args);end
+def self.act(*args);self.new.parse(:act,*args);end;def self._selector_act;Normalize;end
+def self.apply2(*args);self.new.parse(:apply2,*args);end;def self._selector_apply2;Normalize;end
+def self.bind(*args);self.new.parse(:bind,*args);end;def self._selector_bind;Normalize;end
+def self.cant_fail(*args);self.new.parse(:cant_fail,*args);end;def self._selector_cant_fail;Normalize;end
+def self.defer_acts(*args);self.new.parse(:defer_acts,*args);end;def self._selector_defer_acts;Normalize;end
+def self.must_empty(*args);self.new.parse(:must_empty,*args);end;def self._selector_must_empty;Normalize;end
+def self.or(*args);self.new.parse(:or,*args);end;def self._selector_or;Normalize;end
+def self.seq2(*args);self.new.parse(:seq2,*args);end;def self._selector_seq2;Normalize;end
+def self.switch(*args);self.new.parse(:switch,*args);end;def self._selector_switch;Normalize;end
 def _Act_dot_crea_e434(bind)
 Act.create(src,{:pure=>true}).freeze 
 end

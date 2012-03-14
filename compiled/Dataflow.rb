@@ -1,10 +1,10 @@
 class Dataflow < Traverser_Clone2
-def self.root(*args);self.new.parse(:root,*args);end
-def self.switch(*args);self.new.parse(:switch,*args);end
-def self.traverse(*args);self.new.parse(:traverse,*args);end
-def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
-def self.vars_in(*args);self.new.parse(:vars_in,*args);end
-def self.visit(*args);self.new.parse(:visit,*args);end
+def self.root(*args);self.new.parse(:root,*args);end;def self._selector_root;Dataflow;end
+def self.switch(*args);self.new.parse(:switch,*args);end;def self._selector_switch;Dataflow;end
+def self.traverse(*args);self.new.parse(:traverse,*args);end;def self._selector_traverse;Dataflow;end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end;def self._selector_traverse_item;Dataflow;end
+def self.vars_in(*args);self.new.parse(:vars_in,*args);end;def self._selector_vars_in;Dataflow;end
+def self.visit(*args);self.new.parse(:visit,*args);end;def self._selector_visit;Dataflow;end
 def _Act_lb_bind_7d8f(bind)
 Act[bind[1],src.pred]
 end

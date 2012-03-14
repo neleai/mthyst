@@ -1,8 +1,8 @@
 class Detect_Contextual_Arguments < Traverser_Clone2
-def self.root(*args);self.new.parse(:root,*args);end
-def self.traverse(*args);self.new.parse(:traverse,*args);end
-def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
-def self.visit(*args);self.new.parse(:visit,*args);end
+def self.root(*args);self.new.parse(:root,*args);end;def self._selector_root;Detect_Contextual_Arguments;end
+def self.traverse(*args);self.new.parse(:traverse,*args);end;def self._selector_traverse;Detect_Contextual_Arguments;end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end;def self._selector_traverse_item;Detect_Contextual_Arguments;end
+def self.visit(*args);self.new.parse(:visit,*args);end;def self._selector_visit;Detect_Contextual_Arguments;end
 def __append_lp__6b01(bind)
 _append(@arguments,bind[1])
 end

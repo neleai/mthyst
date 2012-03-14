@@ -1,8 +1,8 @@
 class Resolve_Calls < Traverser_Clone2
-def self.root(*args);self.new.parse(:root,*args);end
-def self.traverse(*args);self.new.parse(:traverse,*args);end
-def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end
-def self.visit(*args);self.new.parse(:visit,*args);end
+def self.root(*args);self.new.parse(:root,*args);end;def self._selector_root;Resolve_Calls;end
+def self.traverse(*args);self.new.parse(:traverse,*args);end;def self._selector_traverse;Resolve_Calls;end
+def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end;def self._selector_traverse_item;Resolve_Calls;end
+def self.visit(*args);self.new.parse(:visit,*args);end;def self._selector_visit;Resolve_Calls;end
 def __at__contex_5f56(bind)
 @_context_arguments||={};bind[1]=@_context_arguments;bind[2]=@_context_arguments.dup
 end

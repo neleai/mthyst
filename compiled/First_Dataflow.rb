@@ -1,9 +1,9 @@
 class First_Dataflow < Amethyst
-def self.first(*args);self.new.parse(:first,*args);end
-def self.getvalue(*args);self.new.parse(:getvalue,*args);end
-def self.root(*args);self.new.parse(:root,*args);end
-def self.switch(*args);self.new.parse(:switch,*args);end
-def self.value(*args);self.new.parse(:value,*args);end
+def self.first(*args);self.new.parse(:first,*args);end;def self._selector_first;First_Dataflow;end
+def self.getvalue(*args);self.new.parse(:getvalue,*args);end;def self._selector_getvalue;First_Dataflow;end
+def self.root(*args);self.new.parse(:root,*args);end;def self._selector_root;First_Dataflow;end
+def self.switch(*args);self.new.parse(:switch,*args);end;def self._selector_switch;First_Dataflow;end
+def self.value(*args);self.new.parse(:value,*args);end;def self._selector_value;First_Dataflow;end
 def _Compiler_558e(bind)
 Compiler.grammars[src.clas].rules[bind[1]].body
 end
