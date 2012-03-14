@@ -168,8 +168,9 @@ class <<Compiler
  			`rm compiled/#{g.name}_c.o` 
     }
     end
-    
-
+    if !$bootstrapping_amethyst
+      require "compiled/#{g.name}.rb" 
+    end
     CurrentParser.clear
 	end
 	def compile(file,out,file2)
@@ -203,7 +204,8 @@ class <<Compiler
 		e
 		end}.join
     puts pre.inspect
-		eval("module Foo\n#{pre}\nend") 
+    pre="module Foo\n#{pre}\nend" if $bootstrapping_amethyst
+		eval(pre) 
 
 		debug_print tree
     c,init,rb=[],[],[]

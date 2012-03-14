@@ -289,7 +289,7 @@ require 'compiled/Detect_Switch_Clas.rb'
 require 'compiled/Detect_Size.rb'
 
 def detect_switch_compiled_by
-'6836af5fdb0d1e998e37f567683dec2f'
+'d41d8cd98f00b204e9800998ecf8427e'
 end
 def detect_switch_source_hash
 'db1b99a9478567e449dc48d0774c821b'

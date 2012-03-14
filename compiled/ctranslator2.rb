@@ -88,7 +88,7 @@ $classlabels=Hash.new(0)
 require 'compiled/AmethystCTranslator.rb'
 
 def ctranslator2_compiled_by
-'6836af5fdb0d1e998e37f567683dec2f'
+'d41d8cd98f00b204e9800998ecf8427e'
 end
 def ctranslator2_source_hash
 '6fe88d767c51147740e44773dbccf066'

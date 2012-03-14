@@ -869,6 +869,11 @@ alt1_1:
         }
         it=rb_funcall(self,sy_argsOpt,0);
         _arg=it;;
+        int oldpos2=ptr->pos;
+        int cut2=0;
+alt2_1:
+        ;
+        it=rb_funcall(self,sy_spaces,0);
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... UC(39):
             ;
@@ -876,15 +881,14 @@ alt1_1:
             ;
         case 'a' ... UC(255):
             ;
-            it=Qnil;
+            if (1) {
+                it=failobj;
+                goto alt2_2;
+            }
             break;
         case '(' ... '(':
             ;
         case '`' ... '`':
-            ;
-            int oldpos2=ptr->pos;
-            int cut2=0;
-alt2_1:
             ;
             it=rb_funcall(self,sy_lambda,0);
             if (it==failobj) {
@@ -892,24 +896,24 @@ alt2_1:
                 goto alt2_2;
             }
             _autovar=it;;
-            it=AmethystCore_append(self,_arg,_autovar);
-            ;
-            goto accept2;
-alt2_2:
-            ptr->pos=oldpos2;
-            it=Qnil;
-            ;
-            goto accept2;
-alt2_3:
-            ptr->pos=oldpos2;
-            if (1) {
-                it=failobj;
-                goto alt1_2;
-            };
-accept2:
-            ;
             break;
         }
+        it=AmethystCore_append(self,_arg,_autovar);
+        ;
+        goto accept2;
+alt2_2:
+        ptr->pos=oldpos2;
+        it=Qnil;
+        ;
+        goto accept2;
+alt2_3:
+        ptr->pos=oldpos2;
+        if (1) {
+            it=failobj;
+            goto alt1_2;
+        };
+accept2:
+        ;
         bind_aset(bind2,1,_klas);
         bind_aset(bind2,2,_name);
         bind_aset(bind2,3,_arg);
@@ -931,6 +935,11 @@ alt1_2:
         _name=it;;
         it=rb_funcall(self,sy_argsOpt,0);
         _arg=it;;
+        int oldpos3=ptr->pos;
+        int cut3=0;
+alt3_1:
+        ;
+        it=rb_funcall(self,sy_spaces,0);
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... UC(39):
             ;
@@ -938,15 +947,14 @@ alt1_2:
             ;
         case 'a' ... UC(255):
             ;
-            it=Qnil;
+            if (1) {
+                it=failobj;
+                goto alt3_2;
+            }
             break;
         case '(' ... '(':
             ;
         case '`' ... '`':
-            ;
-            int oldpos3=ptr->pos;
-            int cut3=0;
-alt3_1:
             ;
             it=rb_funcall(self,sy_lambda,0);
             if (it==failobj) {
@@ -954,24 +962,24 @@ alt3_1:
                 goto alt3_2;
             }
             _autovar_2=it;;
-            it=AmethystCore_append(self,_arg,_autovar_2);
-            ;
-            goto accept3;
-alt3_2:
-            ptr->pos=oldpos3;
-            it=Qnil;
-            ;
-            goto accept3;
-alt3_3:
-            ptr->pos=oldpos3;
-            if (1) {
-                it=failobj;
-                goto alt1_3;
-            };
-accept3:
-            ;
             break;
         }
+        it=AmethystCore_append(self,_arg,_autovar_2);
+        ;
+        goto accept3;
+alt3_2:
+        ptr->pos=oldpos3;
+        it=Qnil;
+        ;
+        goto accept3;
+alt3_3:
+        ptr->pos=oldpos3;
+        if (1) {
+            it=failobj;
+            goto alt1_3;
+        };
+accept3:
+        ;
         bind_aset(bind2,1,_name);
         bind_aset(bind2,2,_arg);
         it=rb_funcall(self,sy__Apply_lb_bi_9146,1,bind2);
@@ -1002,6 +1010,11 @@ accept1:
         _name=it;;
         it=rb_funcall(self,sy_argsOpt,0);
         _arg=it;;
+        int oldpos4=ptr->pos;
+        int cut4=0;
+alt4_1:
+        ;
+        it=rb_funcall(self,sy_spaces,0);
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... UC(39):
             ;
@@ -1009,15 +1022,14 @@ accept1:
             ;
         case 'a' ... UC(255):
             ;
-            it=Qnil;
+            if (1) {
+                it=failobj;
+                goto alt4_2;
+            }
             break;
         case '(' ... '(':
             ;
         case '`' ... '`':
-            ;
-            int oldpos4=ptr->pos;
-            int cut4=0;
-alt4_1:
             ;
             it=rb_funcall(self,sy_lambda,0);
             if (it==failobj) {
@@ -1025,24 +1037,24 @@ alt4_1:
                 goto alt4_2;
             }
             _autovar_2=it;;
-            it=AmethystCore_append(self,_arg,_autovar_2);
-            ;
-            goto accept4;
-alt4_2:
-            ptr->pos=oldpos4;
-            it=Qnil;
-            ;
-            goto accept4;
-alt4_3:
-            ptr->pos=oldpos4;
-            if (1) {
-                it=failobj;
-                goto fail;
-            };
-accept4:
-            ;
             break;
         }
+        it=AmethystCore_append(self,_arg,_autovar_2);
+        ;
+        goto accept4;
+alt4_2:
+        ptr->pos=oldpos4;
+        it=Qnil;
+        ;
+        goto accept4;
+alt4_3:
+        ptr->pos=oldpos4;
+        if (1) {
+            it=failobj;
+            goto fail;
+        };
+accept4:
+        ;
         bind_aset(bind2,1,_name);
         bind_aset(bind2,2,_arg);
         it=rb_funcall(self,sy__Apply_lb_bi_9146,1,bind2);

@@ -8,7 +8,7 @@ require 'compiled/Lam.rb'
 require 'compiled/Tests.rb'
 
 def tests_compiled_by
-'6836af5fdb0d1e998e37f567683dec2f'
+'d41d8cd98f00b204e9800998ecf8427e'
 end
 def tests_source_hash
 '710cdaae439c570560b264e46ed5958b'

@@ -73,7 +73,7 @@ require 'compiled/Constant_Propagator.rb'
 require 'compiled/Constant_Traverser.rb'
 
 def constant_propagation_compiled_by
-'6836af5fdb0d1e998e37f567683dec2f'
+'d41d8cd98f00b204e9800998ecf8427e'
 end
 def constant_propagation_source_hash
 'afbe0dd7e39b6a400ad015d1d943a0d8'

@@ -14,10 +14,10 @@ class AmethystParser < Amethyst
 end
 
 def parser_compiled_by
-'6836af5fdb0d1e998e37f567683dec2f'
+'d41d8cd98f00b204e9800998ecf8427e'
 end
 def parser_source_hash
-'040b7fca97c439c3a5c591eb9d0baf0b'
+'a18ccb0d3e196d0ee1819568223eeed2'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version
