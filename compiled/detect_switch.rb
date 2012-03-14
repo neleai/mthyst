@@ -238,9 +238,8 @@ def can_empty?(el);    $sizedf.analyze(el).size==0;  end
 def must_empty?(s);  $maxsize_df.analyze(s).size==0; end
 def cant_fail?(s);   $cant_fail_df.analyze(s).value;  end
 
-class Detect_Switch_Char < Detect_First
-  def initialize
-    if !$sizedf  
+def init_dataflows
+    if !$sizedf
       $sizedf    =Minsize_Dataflow.new;      $sizedf.parse(:root,[])
       $maxsize_df=Maxsize_Dataflow.new;      $maxsize_df.parse(:root,[])
       $cant_fail_df =Cant_Fail_Dataflow.new;       $cant_fail_df.parse(:root,[])
@@ -248,23 +247,20 @@ class Detect_Switch_Char < Detect_First
     if !$switchdf_char
       $switchdf_char=Switch_Char_Dataflow.new;     $switchdf_char.parse(:root,[])
     end
-  end
+    if !$switchdf_clas
+      $switchdf_clas=Switch_Clas_Dataflow.new
+      $switchdf_clas.parse(:root,[])
+    end
+
+end
+
+class Detect_Switch_Char < Detect_First
   def first(s)
     $switchdf_char.analyze(s)
   end
 end
 
 class Detect_Switch_Clas < Detect_First
-  def initialize
-    if !$sizedf  
-      $sizedf=Minsize_Dataflow.new
-      $sizedf.parse(:root,[])
-    end
-    if !$switchdf_clas
-      $switchdf_clas=Switch_Clas_Dataflow.new
-      $switchdf_clas.parse(:root,[])
-    end
-  end
   def first(s)
     $switchdf_clas.analyze(s)
   end
@@ -292,7 +288,7 @@ def detect_switch_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def detect_switch_source_hash
-'db1b99a9478567e449dc48d0774c821b'
+'03d748f0232d2039fa44781167f8a9dd'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
