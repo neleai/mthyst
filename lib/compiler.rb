@@ -7,8 +7,9 @@ def debug_print(t)
 	puts t.inspect if Amethyst::Settings.debug>1
 end
 class Gram
-	attr_accessor :name,:parent,:rules,:calls,:callgraph
+	attr_accessor :rules,:calls,:callgraph
 	def initialize(grammar)
+    @gram=eval(grammar.name)
 		@name,@parent=grammar.name,grammar.parent
 		@rules={}
 		@calls={}
@@ -16,6 +17,8 @@ class Gram
 			@rules[r.name]=r
 		}
 	end
+  def name;    @gram.to_s           ;  end
+  def parent;  @gram.superclass.to_s;  end
 	def opt(r)
 		debug_print(r)
 		dce=[ Dataflow, Dead_Code_Deleter3,Forget_SSA]
@@ -208,6 +211,7 @@ class <<Compiler
 		pre =tree.map{|e| #TODO When not bootstraping we want this be rb file we output
 		if e.is_a? Grammar
 			$gr[e.name]=e
+      Object.class_eval("class #{e.name} < #{e.parent};end")
 			"Compiler.add_grammar($gr[#{e.name.inspect}])\n"
 		else
 		e

@@ -2,7 +2,7 @@
 #
 class AmethystParser_Highligth < Amethyst
 	def local(x)
-		x.is_a?(String) ? (l=Local[x,@bnding];@locals<<l;l) : x
+  	x.is_a?(String) ? (l=Local[x,@bnding];@locals<<l;l) : x
 	end
 end
 $gno=0

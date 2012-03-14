@@ -2,7 +2,7 @@
 #
 class AmethystParser_Highligth < Amethyst
 	def local(x)
-		x.is_a?(String) ? (l=Local[x,@bnding];@locals<<l;l) : x
+  	x.is_a?(String) ? (l=Local[x,@bnding];@locals<<l;l) : x
 	end
 end
 $gno=0
@@ -24,7 +24,7 @@ def parser_highlight_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def parser_highlight_source_hash
-'95611768f496c5130b61f2342560d732'
+'c8cd499aa99f2641daacfac62dea6529'
 end
 def testversionparser_highlight(r)
  raise "invalid version" if r!=parser_highlight_version
