@@ -87,7 +87,7 @@ class <<Compiler
 	  	g.rules[name]=Resolve_Calls.root([g,g.rules[name]])
 		}
 		names.dup.each{|name| #update callgraph
-			g.calls[name]=DetectCalls.root([g.getrule(name)])
+			g.calls[name]=DetectCalls.root([g.rules[name]])
 			g.calls[name].each{|c,t| callg.add(name,c)}
 		}
 #    c=Context_Graph.new
@@ -128,13 +128,13 @@ class <<Compiler
         repeat=true                                  
         while repeat
 				  inlined=false
-          g.calls[name]=DetectCalls.root([g.getrule(name)])
+          g.calls[name]=DetectCalls.root([g.rules[name]])
 			  	g.calls[name].each{|nm,v|
 				  	r=g.getrule(nm)
 			  		if r && nm!=name
 					  	if complexity(r)>10
                 puts "inlined #{nm} in #{name}"
-		            g.rules[name]=Inliner2.root([g.getrule(nm), g.rules[name]])
+		            g.rules[name]=Inliner2.root([r, g.rules[name]])
 			  				inlined=true
 		  				end
 	  				end
@@ -142,9 +142,9 @@ class <<Compiler
 				  g.opt(g.rules[name]) if inlined
           repeat=false if !inlined || (!["Lam","AmethystParser_Highligth"].include?(g.name))#we want turn it to on where we can resolve lambdas.
         end
-				DetectCalls.root([g.getrule(name)]).each{|nm,t| r=g.getrule(nm)
+				DetectCalls.root([g.rules[name]]).each{|nm,t| r=g.getrule(nm)
 					 if r && (nm=="seq" || nm=="token")
-            g.rules[name]=Inliner2.root([g.getrule(nm), g.rules[name]])
+            g.rules[name]=Inliner2.root([r, g.rules[name]])
            end
 				}
 		end}
