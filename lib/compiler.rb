@@ -105,7 +105,8 @@ class <<Compiler
 		topo= callg.topo_order
 		#TODO resolve name clashes
 		called=callg.reverse.reachable(names)
-		called.each{|k,v| g.rules[k]=g.getrule(k)}
+		called.each{|name,v| g.rules[name]=g.getrule(name)}
+    called.each{|name,v| g.rules[name]=Resolve_Calls.root([g,g.rules[name]])}
 		puts called.inspect;
 		
 		ds=Detect_Switch_Char.new;ds.instance_variable_set(:@name,grammar.name)
