@@ -18,7 +18,7 @@ class Gram
 		}
 	end
   def name;    @gram.to_s           ;  end
-  def parent;  @gram.superclass.to_s;  end
+  def parent;  @gram.ancestors[1].to_s;  end
 	def opt(r)
 		debug_print(r)
 		dce=[ Dataflow, Dead_Code_Deleter3,Forget_SSA]
