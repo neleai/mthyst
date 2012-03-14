@@ -117,8 +117,15 @@ class <<Compiler
 				end
 				g.opt(g.rules[name])
 		end}
-		topo.each{|name|if g.rules[name] && called[name]
-        repeat=true
+    #TODO compute by dataflow resolving parameters
+    #      - seq and apply parameter is resolving
+    #      - parameter of rule is resolving if
+    #        it influences argument of application that is 
+    #        resolving or influences semantic predicate.
+    #
+    #      We want all parametrizations that are resolving
+		topo.each{|name|if g.rules[name] && called[name] 
+        repeat=true                                  
         while repeat
 				  inlined=false
           g.calls[name]=DetectCalls.root([g.getrule(name)])
