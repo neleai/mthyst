@@ -26,7 +26,8 @@ class AmethystCore
 		if rule.is_a?(String) || rule.is_a?(Symbol)
 			send(rule.to_s,*args)
 		elsif rule.is_a?(Amethyst)
-      rule.src=src;rule.pos=pos
+      #TODO setsrc initialization
+      rule.src=src;rule.pos=pos;
       r=rule.expr
       self.pos=rule.pos
       r

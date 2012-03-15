@@ -8,9 +8,19 @@ VALUE ame_setlenrb(VALUE self,VALUE val){return INT2FIX(ame_setlen(self,FIX2INT(
 VALUE ame_setposrb(VALUE self,VALUE val){return INT2FIX(ame_setpos(self,FIX2INT(val)));}
 VALUE ame_getlenrb(VALUE self){return INT2FIX(ame_getlen(self));}
 
-VALUE AmethystCore__seq(VALUE self,VALUE str){
-	cstruct  *ptr;
-  Data_Get_Struct(self,cstruct,ptr);
+VALUE ame_setsrc2(VALUE self,VALUE val){  cstruct *ptr;  Data_Get_Struct(self,cstruct,ptr);
+  ptr->src=val; 
+  if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);
+  } else { VALUE ary;    
+    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    
+    else if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0); 
+    else ary=rb_ary_new3(0);  
+    ptr->ary2=ary;  ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);
+  }
+  return Qnil;
+}
+
+VALUE AmethystCore__seq(VALUE self,VALUE str){	cstruct  *ptr;  Data_Get_Struct(self,cstruct,ptr);
 	int len=RSTRING_LEN(str);
 	if (TYPE(ptr->src)==T_STRING){
 		if (strncmp(ptr->str+ptr->pos,RSTRING_PTR(str),len)) 
@@ -156,7 +166,7 @@ void Init_Ame(VALUE self){
 	rb_define_method(amecore,"pos",ame_getposrb,0);
 	rb_define_method(amecore,"len=",ame_setlenrb,1);
 	rb_define_method(amecore,"len",ame_getlenrb,0);
-	rb_define_method(amecore,"src=",ame_setsrc,1);
+	rb_define_method(amecore,"src=",ame_setsrc2,1);
 	rb_define_method(amecore,"src",ame_getsrc,0);
 	
 	rb_define_method(amecore,"_seq",AmethystCore__seq,1);

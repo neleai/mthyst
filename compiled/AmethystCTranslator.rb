@@ -119,9 +119,9 @@ end
 def __dq_class_sp__sh__cf48(bind)
 "class #{bind[1][:grammar]} < #{bind[1][:parent]}\n"
 end
-def __dq_cstruct_a3c5(bind)
+def __dq_cstruct_48c2(bind)
 "cstruct #{bind[1]}=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
-                   #{src.enter ?  "ptr->src=#{bget(src.var)}; if(TYPE(ptr->src)==T_STRING) {ptr->str=RSTRING_PTR(ptr->src);ptr->len=RSTRING_LEN(ptr->src);} else { VALUE ary;    if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;    else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0); else ary=rb_ary_new3(0);  ptr->ary2=ary;  ptr->ary=RARRAY_PTR(ary);    ptr->len=RARRAY_LEN(ary);}" : 
+                   #{src.enter ?  "ame_setsrc2(self,#{bget(src.var)});" : 
                     "ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=#{bget(src.var)};ptr->len=1;"
                    }
                    #{bind[2]}

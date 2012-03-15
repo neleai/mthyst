@@ -1,4 +1,5 @@
-pattern = (| 'a'| 'b' |)
-text = "abc"
-puts Amethyst.find(text,pattern) #->"a"
+pattern = (|  'a'| 'b' |)
+text = "aba"
+puts puts pattern.parse(:expr,"b") #-> b
 puts puts pattern.parse(:expr,text) #-> FAIL
+puts Amethyst.find(text,pattern) #->"a"

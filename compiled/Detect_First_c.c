@@ -95,20 +95,7 @@ alt1_1:
     cstruct oldpass1=*ptr;
     ptr->pos=ptr->len=0;
     ptr->ary=NULL;
-    ptr->src=_autovar;
-    if(TYPE(ptr->src)==T_STRING) {
-        ptr->str=RSTRING_PTR(ptr->src);
-        ptr->len=RSTRING_LEN(ptr->src);
-    }
-    else {
-        VALUE ary;
-        if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-        else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
-        else ary=rb_ary_new3(0);
-        ptr->ary2=ary;
-        ptr->ary=RARRAY_PTR(ary);
-        ptr->len=RARRAY_LEN(ary);
-    }
+    ame_setsrc2(self,_autovar);
     ptr->pos=ptr->len;
     it=rb_funcall(self,sy__src_dot_ary_d5cf,1,bind2);
     _ary=it;;
@@ -259,20 +246,7 @@ alt1_2:
     cstruct oldpass1=*ptr;
     ptr->pos=ptr->len=0;
     ptr->ary=NULL;
-    ptr->src=_autovar;
-    if(TYPE(ptr->src)==T_STRING) {
-        ptr->str=RSTRING_PTR(ptr->src);
-        ptr->len=RSTRING_LEN(ptr->src);
-    }
-    else {
-        VALUE ary;
-        if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-        else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
-        else ary=rb_ary_new3(0);
-        ptr->ary2=ary;
-        ptr->ary=RARRAY_PTR(ary);
-        ptr->len=RARRAY_LEN(ary);
-    }
+    ame_setsrc2(self,_autovar);
     ptr->pos=ptr->len;
     it=rb_funcall(self,sy__src_dot_ary_d5cf,1,bind2);
     _ary=it;;
@@ -426,20 +400,7 @@ alt2_1:
             cstruct oldpass1=*ptr;
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
-            ptr->src=_autovar_4;
-            if(TYPE(ptr->src)==T_STRING) {
-                ptr->str=RSTRING_PTR(ptr->src);
-                ptr->len=RSTRING_LEN(ptr->src);
-            }
-            else {
-                VALUE ary;
-                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-                else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
-                else ary=rb_ary_new3(0);
-                ptr->ary2=ary;
-                ptr->ary=RARRAY_PTR(ary);
-                ptr->len=RARRAY_LEN(ary);
-            }
+            ame_setsrc2(self,_autovar_4);
             bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy__bind_lb_1_rb__lb__fa06,1,bind2);
             _autovar_2=bind_aget(bind2,1);;
@@ -462,20 +423,7 @@ alt2_1:
             cstruct oldpass3=*ptr;
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
-            ptr->src=_autovar_6;
-            if(TYPE(ptr->src)==T_STRING) {
-                ptr->str=RSTRING_PTR(ptr->src);
-                ptr->len=RSTRING_LEN(ptr->src);
-            }
-            else {
-                VALUE ary;
-                if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-                else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
-                else ary=rb_ary_new3(0);
-                ptr->ary2=ary;
-                ptr->ary=RARRAY_PTR(ary);
-                ptr->len=RARRAY_LEN(ary);
-            }
+            ame_setsrc2(self,_autovar_6);
             it=rb_ary_new3(0);
             _autovar_7=it;;
             int stop2=0;
@@ -493,20 +441,7 @@ alt3_1:
                     cstruct oldpass4=*ptr;
                     ptr->pos=ptr->len=0;
                     ptr->ary=NULL;
-                    ptr->src=_autovar_8;
-                    if(TYPE(ptr->src)==T_STRING) {
-                        ptr->str=RSTRING_PTR(ptr->src);
-                        ptr->len=RSTRING_LEN(ptr->src);
-                    }
-                    else {
-                        VALUE ary;
-                        if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-                        else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
-                        else ary=rb_ary_new3(0);
-                        ptr->ary2=ary;
-                        ptr->ary=RARRAY_PTR(ary);
-                        ptr->len=RARRAY_LEN(ary);
-                    }
+                    ame_setsrc2(self,_autovar_8);
                     it=rb_funcall(self,sy_root,0);
                     if (it==failobj) {
                         it=failobj;
@@ -729,20 +664,7 @@ VALUE Detect_First_object_only(VALUE self ) {
         cstruct oldpass1=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar;
-        if(TYPE(ptr->src)==T_STRING) {
-            ptr->str=RSTRING_PTR(ptr->src);
-            ptr->len=RSTRING_LEN(ptr->src);
-        }
-        else {
-            VALUE ary;
-            if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
-            else ary=rb_ary_new3(0);
-            ptr->ary2=ary;
-            ptr->ary=RARRAY_PTR(ary);
-            ptr->len=RARRAY_LEN(ary);
-        }
+        ame_setsrc2(self,_autovar);
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -752,20 +674,7 @@ VALUE Detect_First_object_only(VALUE self ) {
         cstruct oldpass2=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_2;
-        if(TYPE(ptr->src)==T_STRING) {
-            ptr->str=RSTRING_PTR(ptr->src);
-            ptr->len=RSTRING_LEN(ptr->src);
-        }
-        else {
-            VALUE ary;
-            if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
-            else ary=rb_ary_new3(0);
-            ptr->ary2=ary;
-            ptr->ary=RARRAY_PTR(ary);
-            ptr->len=RARRAY_LEN(ary);
-        }
+        ame_setsrc2(self,_autovar_2);
         it=rb_funcall(self,sy_spaces,0);
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... 'b':
@@ -899,20 +808,7 @@ VALUE Detect_First_string_only(VALUE self ) {
         cstruct oldpass1=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar;
-        if(TYPE(ptr->src)==T_STRING) {
-            ptr->str=RSTRING_PTR(ptr->src);
-            ptr->len=RSTRING_LEN(ptr->src);
-        }
-        else {
-            VALUE ary;
-            if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
-            else ary=rb_ary_new3(0);
-            ptr->ary2=ary;
-            ptr->ary=RARRAY_PTR(ary);
-            ptr->len=RARRAY_LEN(ary);
-        }
+        ame_setsrc2(self,_autovar);
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -922,20 +818,7 @@ VALUE Detect_First_string_only(VALUE self ) {
         cstruct oldpass2=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ptr->src=_autovar_2;
-        if(TYPE(ptr->src)==T_STRING) {
-            ptr->str=RSTRING_PTR(ptr->src);
-            ptr->len=RSTRING_LEN(ptr->src);
-        }
-        else {
-            VALUE ary;
-            if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-            else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
-            else ary=rb_ary_new3(0);
-            ptr->ary2=ary;
-            ptr->ary=RARRAY_PTR(ary);
-            ptr->len=RARRAY_LEN(ary);
-        }
+        ame_setsrc2(self,_autovar_2);
         it=rb_funcall(self,sy_spaces,0);
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... '^':

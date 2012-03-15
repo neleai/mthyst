@@ -1747,20 +1747,7 @@ VALUE Amethyst_parse(VALUE self ,VALUE a0,VALUE a1,VALUE a2) {
     cstruct oldpass1=*ptr;
     ptr->pos=ptr->len=0;
     ptr->ary=NULL;
-    ptr->src=_autovar;
-    if(TYPE(ptr->src)==T_STRING) {
-        ptr->str=RSTRING_PTR(ptr->src);
-        ptr->len=RSTRING_LEN(ptr->src);
-    }
-    else {
-        VALUE ary;
-        if (TYPE(ptr->src)==T_ARRAY) ary=ptr->src;
-        else  if (rb_respond_to(ptr->src,s_to_a)) ary=rb_funcall(ptr->src,s_to_a,0);
-        else ary=rb_ary_new3(0);
-        ptr->ary2=ary;
-        ptr->ary=RARRAY_PTR(ary);
-        ptr->len=RARRAY_LEN(ary);
-    }
+    ame_setsrc2(self,_autovar);
     bind_aset(bind2,1,_rule);
     bind_aset(bind2,2,_args);
     it=rb_funcall(self,sy__apply_lp_bi_f480,1,bind2);

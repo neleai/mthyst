@@ -27,6 +27,7 @@ VALUE failobj;
 //you need this declaration, with implicit it will crash
 VALUE AmethystCore_anything(VALUE self);
 VALUE AmethystCore__seq(VALUE self,VALUE str);
+VALUE ame_setsrc2(VALUE self,VALUE src);
 typedef struct memo_struct memo_struct;
 typedef struct{
   VALUE src;
