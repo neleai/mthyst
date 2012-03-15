@@ -3,3 +3,7 @@ text = "aba"
 puts puts pattern.parse(:expr,"b") #-> b
 puts puts pattern.parse(:expr,text) #-> FAIL
 puts Amethyst.find(text,pattern) #->"a"
+
+x=y=nil
+(| int:x "+" int:y |).match("2+2")
+puts x+y # -> 4

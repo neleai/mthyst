@@ -4,10 +4,11 @@ $: << Amethyst_path
 	require Amethyst_path+"/lib/#{r}"
 }
 
-def ame_lambda(cls,bind)
+
+
+def ame_lambda(cls,bind)#represented as annonymous grammar
   c=cls.new
-  c.instance_variable_set(:@bind,bind)
-  #c.parse(:init,[bind])
+  c.parse(:init,[bind])
   c
 end
 
@@ -38,6 +39,8 @@ class AmethystCore
 	def self.parse(rule,input)
 		self.new.parse(rule,input)
 	end
+  
+  def match(t);    parse(:expr,t);  end
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/Ame.so"
 

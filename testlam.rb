@@ -1,6 +1,6 @@
 require './lib/amethyst'
 ["amethyst","parser"].each{|f|
-Compiler::compile("amethyst/#{f}.ame","compiled/#{f}.rb",f)
+Compiler::compile("amethyst/#{f}.ame",f)
 require "compiled/#{f}.rb"
 }
 puts AmethystParser.new.parse(:file,"aa (| \"x\" |)").inspect

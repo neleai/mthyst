@@ -98,8 +98,8 @@ static VALUE sy___lb_bind_lb_1_rb__6281;
 static VALUE sy___lp_bind_lb_1_rb__a724;
 static VALUE sy__a_eq_autova_57aa;
 static VALUE sy__bind_lb_1_rb_;
+static VALUE sy__bind_lb_1_rb__dot__4688;
 static VALUE sy__bind_lb_1_rb__dot__7b93;
-static VALUE sy__bind_lb_1_rb__dot__a01f;
 static VALUE sy__bind_lb_1_rb__dot__e879;
 static VALUE sy__bind_lb_1_rb__eq__a882;
 static VALUE sy__bind_lb_1_rb__eq__e198;
@@ -1954,7 +1954,7 @@ pass1:
 success1:
             *ptr=oldpass1;
             bind_aset(bind2,1,_g);
-            it=rb_funcall(self,sy__bind_lb_1_rb__dot__a01f,1,bind2);
+            it=rb_funcall(self,sy__bind_lb_1_rb__dot__4688,1,bind2);
             _g=bind_aget(bind2,1);;
             bind_aset(bind2,1,_g);
             it=rb_funcall(self,sy___lb__dq__lp__dq_,1,bind2);
@@ -8952,8 +8952,8 @@ void Init_AmethystParser_c() {
     sy___lp_bind_lb_1_rb__a724=rb_intern("__lp_bind_lb_1_rb__a724");
     sy__a_eq_autova_57aa=rb_intern("_a_eq_autova_57aa");
     sy__bind_lb_1_rb_=rb_intern("_bind_lb_1_rb_");
+    sy__bind_lb_1_rb__dot__4688=rb_intern("_bind_lb_1_rb__dot__4688");
     sy__bind_lb_1_rb__dot__7b93=rb_intern("_bind_lb_1_rb__dot__7b93");
-    sy__bind_lb_1_rb__dot__a01f=rb_intern("_bind_lb_1_rb__dot__a01f");
     sy__bind_lb_1_rb__dot__e879=rb_intern("_bind_lb_1_rb__dot__e879");
     sy__bind_lb_1_rb__eq__a882=rb_intern("_bind_lb_1_rb__eq__a882");
     sy__bind_lb_1_rb__eq__e198=rb_intern("_bind_lb_1_rb__eq__e198");

@@ -4,11 +4,11 @@ def self.init(*args);self.new.parse(:init,*args);end;def self._selector_init;Ano
 def __at_bind_eq_bi_6dcc(bind)
 @bind=bind[1]
 end
-def __do_passit_eq__fc0a(bind)
-$passit=bind[1];eval("_result=$passit",@bind)
+def __do_passit_eq__5012(bind)
+$passit=bind[1];eval("_result=$passit",@bind);
 end
-def _bind_lb_1_rb__eq__afc0(bind)
-bind[1]=eval("_result=_result",@bind)
+def _bind_lb_1_rb__eq__91ac(bind)
+bind[1]=eval("_result=_result",@bind);
 end
 
 end
