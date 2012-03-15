@@ -4,6 +4,10 @@ def cc_compile_file(file)
       `cd #{Amethyst_path}/compiled;gcc -shared -o 1.9.3/#{file}_c.so #{file}_c.o -L. -L/usr/lib -L. -rdynamic -Wl,-export-dynamic -lruby-1.9.1 -lpthread -lrt -ldl -lcrypt -lm -lc`
       `rm #{Amethyst_path}/compiled/#{file}_c.o` 
 end
+$ruby_binary="ruby1.9.1"
+
+Amethyst_path=File.expand_path(File.dirname(__FILE__))
+
 class AmethystCore;end
 class Amethyst < AmethystCore	
 	class Settings;
