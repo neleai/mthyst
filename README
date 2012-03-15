@@ -1,14 +1,20 @@
 amethyst(mthyst) is ruby top-down parser generator
 
+# Currently compiling is bit ad-hoc
+# We currently support only ruby1.9
+# you may need to change settings file to specify what ruby you compile with
+# changing to command what extconf uses should work.
+ 
 #For initial build type
-reset    
+./reset    
 
+#a use cases can be found in doc directory.
 
-#then feel free to change grammars. Recompiling is done by
-ruby bootstrap
-#if your grammar does not compile write reset again to restore at state at last commit
+#If you wish to change amethyst then recompiling is done by
+ruby1.9.1 bootstrap
+#if your grammar does not compile run reset.rb to restore to state at last commit
 
 #For improving speed we look at profile output. You need to install and run oprofile. Run script
 compiled/anotate #to get anotated source and assembly after you ran oprofile.
 
-When you have astyle installed generated c files will be formatted with it
+#When you have astyle installed generated c files will be formatted with it
