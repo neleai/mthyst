@@ -52,6 +52,9 @@ end
 def __lp_false_rp__sp__c3c5(bind)
 (false) || FAIL
 end
+def _apply_lp_bi_f480(bind)
+apply(bind[1],*bind[2])
+end
 def _bind_lb_1_rb_(bind)
 bind[1]
 

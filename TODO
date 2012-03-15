@@ -112,4 +112,4 @@ dataflow compute first 8 characters
 
 parametrize traverser and visitor
 
-variable number of arguments
+support variable number of arguments etc

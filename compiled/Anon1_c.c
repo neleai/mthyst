@@ -9,7 +9,7 @@ static VALUE s_b_92eb;
 static VALUE sy___at_bind_eq_bi_6dcc;
 static VALUE sy___do_passit_eq__fc0a;
 static VALUE sy__bind_lb_1_rb__eq__afc0;
-static VALUE sy_spaces;
+static VALUE sy_seq;
 VALUE profile_report_Anon1(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -17,7 +17,7 @@ VALUE profile_report_Anon1(VALUE self) {
 }
 VALUE Anon1_expr(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,__result,__result_2,__result_3;
+    VALUE it ,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -26,40 +26,42 @@ VALUE Anon1_expr(VALUE self ) {
     bind_aset(bind2,1,__result);
     it=rb_funcall(self,sy__bind_lb_1_rb__eq__afc0,1,bind2);
     __result=bind_aget(bind2,1);;
-    it=rb_funcall(self,sy_spaces,0);
-    switch((unsigned char)*ame_curstr2(ptr)) {
-    case UC(0) ... '`':
-        ;
-    case 'c' ... UC(255):
-        ;
-        if (1) {
-            it=failobj;
-            goto fail;
-        }
-        break;
-    case 'a' ... 'a':
-        ;
-        it=rb_str_new(ptr->str+ptr->pos,1);
-        ptr->pos++;
-        it=rb_obj_clone(s_a_0cc1);
-        __result_2=it;;
-        it=__result_2;
-        __result_3=it;;
-        it=__result_3;
-        __result=it;;
-        break;
-    case 'b' ... 'b':
-        ;
-        it=rb_str_new(ptr->str+ptr->pos,1);
-        ptr->pos++;
-        it=rb_obj_clone(s_b_92eb);
-        __result_2=it;;
-        it=__result_2;
-        __result_3=it;;
-        it=__result_3;
-        __result=it;;
-        break;
+    int oldpos1=ptr->pos;
+    int cut1=0;
+alt1_1:
+    ;
+    it=rb_obj_clone(s_a_0cc1);
+    arg0=it;
+    it=rb_funcall(self,sy_seq,1,arg0);
+    if (it==failobj) {
+        it=failobj;
+        goto alt1_2;
     }
+    __result=it;;
+
+    ;
+    goto accept1;
+alt1_2:
+    ptr->pos=oldpos1;
+    it=rb_obj_clone(s_b_92eb);
+    arg0=it;
+    it=rb_funcall(self,sy_seq,1,arg0);
+    if (it==failobj) {
+        it=failobj;
+        goto alt1_3;
+    }
+    __result=it;;
+
+    ;
+    goto accept1;
+alt1_3:
+    ptr->pos=oldpos1;
+    if (1) {
+        it=failobj;
+        goto fail;
+    };
+accept1:
+    ;
     bind_aset(bind2,1,__result);
     it=rb_funcall(self,sy___do_passit_eq__fc0a,1,bind2);
     __result=bind_aget(bind2,1);;
@@ -99,7 +101,7 @@ void Init_Anon1_c() {
     sy___at_bind_eq_bi_6dcc=rb_intern("__at_bind_eq_bi_6dcc");
     sy___do_passit_eq__fc0a=rb_intern("__do_passit_eq__fc0a");
     sy__bind_lb_1_rb__eq__afc0=rb_intern("_bind_lb_1_rb__eq__afc0");
-    sy_spaces=rb_intern("spaces");
+    sy_seq=rb_intern("seq");
     rb_define_method(cls_Anon1,"expr",Anon1_expr,0);
     rb_define_method(cls_Anon1,"init",Anon1_init,0);
 }

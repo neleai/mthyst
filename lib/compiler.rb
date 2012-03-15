@@ -216,8 +216,8 @@ class <<Compiler
 		else
 		e
 		end}.join
-    puts pre.inspect
     pre="module Foo\n#{pre}\nend" if $bootstrapping_amethyst
+    puts pre.inspect
 		eval(pre) 
 
 		debug_print tree
@@ -248,8 +248,8 @@ $compiled_by=Digest::MD5.hexdigest($compiled_by)
 $normalize=Normalize.new;
 class Amethyst
 	alias_method :parse2,:parse
-	def parse(rule,obj)
-		withtime(self.class){	parse2(rule,obj) }
+	def parse(rule,obj,*args)
+		withtime(self.class){	parse2(rule,obj,args) }
 	end
 end
 

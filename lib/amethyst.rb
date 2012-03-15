@@ -22,6 +22,7 @@ end
 
 class AmethystCore
 	def apply(rule,*args)
+
 		if rule.is_a?(String) || rule.is_a?(Symbol)
 			send(rule.to_s,*args)
 		elsif rule.is_a?(Amethyst)

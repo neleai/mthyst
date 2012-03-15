@@ -1,4 +1,3 @@
-$test_lambda = (| "a" | "b" |)
 
 class Tests < Amethyst
   use_implicit_variables

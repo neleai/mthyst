@@ -191,7 +191,7 @@ def __dq__le__dq__pl_bind_567e(bind)
 "{"+bind[1]+"}"
 end
 def __lb__dq__lp__dq_(bind)
-["(",bind[1],";class #{bind[1].name};end;ame_lambda(#{bind[1].name},binding))"]
+["(",bind[1],";ame_lambda(#{bind[1].name},binding))"]
 
 end
 def __lb_bind_lb_1_rb__6281(bind)

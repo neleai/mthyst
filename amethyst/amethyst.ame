@@ -30,7 +30,7 @@ amethyst Amethyst < AmethystCore {
   listOf(rule,delim) =  apply(rule):[f] (seq(delim) apply(rule))*:[f] -> f
                          | empty -> []
   
-  find(exp)    = (apply(exp):e break | .)* -> e
+  find(exp)    = (apply(exp):e break | .)* .* -> e
   replace(exp) = (apply(exp)         | .)*:{it*""}
 
 
@@ -50,7 +50,7 @@ amethyst Amethyst < AmethystCore {
 
 	reverse(l) = {@@rev||=Hash.new{|h,k| h[k]=k.reverse }} _reverse(@@rev[@self]) apply(l):rev _reverse(@@rev[@self]) {rev} #TODO array reversal likewise
   
-  parse(rule,obj) = {obj}[apply(rule):r {self.profile_report;r}]
+  parse(rule,obj,args) = {obj}[ {apply(rule,*args)}:r {self.profile_report;r}]
 
   nested(start,mid,end) = seq(start) apply(mid) seq(end)
 }
