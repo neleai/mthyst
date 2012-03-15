@@ -1,14 +1,12 @@
-#@Or_AST and @Seq are necessary for collect
-#
+
+
+require File.expand_path(File.dirname(__FILE__))+'/AmethystParser_Highligth.rb'
+
 class AmethystParser_Highligth < Amethyst
-	def local(x)
-  	x.is_a?(String) ? (l=Local[x,@bnding];@locals<<l;l) : x
-	end
+  def local(x);    x.is_a?(String) ? (l=Local[x,@bnding];@locals<<l;l) : x;  end
 end
 $gno=0
-def group_new
-  $gno+=1
-end
+def group_new;  $gno+=1; end
 
 def map_colors(str,src,offset)
   $colors[str].each_with_index{|v,i| $colors[src][i+offset]=v}
@@ -17,14 +15,11 @@ def map_colors(str,src,offset)
   $group_end[str].each{|i,a| $group_end[src][i+offset]+=a}
 end
 
-require 'compiled/AmethystParser_Highligth.rb'
-
-
 def parser_highlight_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def parser_highlight_source_hash
-'165ed3dcf8d49d0a33dfb443037f1c71'
+'29a47f39a05fe5f70667281dfbef3a84'
 end
 def testversionparser_highlight(r)
  raise "invalid version" if r!=parser_highlight_version

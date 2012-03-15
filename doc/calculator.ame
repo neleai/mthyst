@@ -10,4 +10,4 @@ amethyst Calculator {
           | "(" addexpr:x ")"       -> x
           | int
 }
-Calculator.calculate("2-4+2*2--2")
+puts Calculator.calculate("2-4+2*2--2")

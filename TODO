@@ -109,6 +109,7 @@ try speed vs various other parsers.
 
 
 dataflow compute first 8 characters
+also destructure and access arrays
 
 parametrize traverser and visitor
 
