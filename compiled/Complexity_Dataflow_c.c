@@ -4,18 +4,17 @@ VALUE cls_Complexity_Dataflow;
 VALUE AmethystCore_anything(VALUE self );
 VALUE Complexity_Dataflow_first(VALUE self );
 VALUE Complexity_Dataflow_getvalue(VALUE self ,VALUE a0);
+VALUE First_Dataflow_switch(VALUE self );
+VALUE First_Dataflow_value(VALUE self );
 VALUE switchhash_Complexity_Dataflow_1;
-static VALUE sy__Compiler_558e;
-static VALUE sy___at_vis_eq_bin_8b89;
-static VALUE sy___lp_Compile_7f7b;
-static VALUE sy__lattice_lb__11f0;
-static VALUE sy__lattice_lb__5911;
-static VALUE sy__lattice_lb__6ee3;
-static VALUE sy__lattice_lb__ba7e;
-static VALUE sy__lattice_lb__f621;
-static VALUE sy_first;
-static VALUE sy_switch;
-static VALUE sy_value;
+static VALUE sy_Complexity_Dataflow_Compiler_558e;
+static VALUE sy_Complexity_Dataflow__at_vis_eq_bin_8b89;
+static VALUE sy_Complexity_Dataflow__lp_Compile_7f7b;
+static VALUE sy_Complexity_Dataflow_lattice_lb__11f0;
+static VALUE sy_Complexity_Dataflow_lattice_lb__5911;
+static VALUE sy_Complexity_Dataflow_lattice_lb__6ee3;
+static VALUE sy_Complexity_Dataflow_lattice_lb__ba7e;
+static VALUE sy_Complexity_Dataflow_lattice_lb__f621;
 VALUE profile_report_Complexity_Dataflow(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -50,14 +49,14 @@ alt1_1:
         }
         _name=it;;
         bind_aset(bind2,1,_name);
-        it=rb_funcall(self,sy___lp_Compile_7f7b,1,bind2);
+        it=rb_funcall(self,sy_Complexity_Dataflow__lp_Compile_7f7b,1,bind2);
         _name=bind_aget(bind2,1);;
         if (it==failobj) {
             it=failobj;
             goto pass1;
         };
         bind_aset(bind2,1,_name);
-        it=rb_funcall(self,sy__Compiler_558e,1,bind2);
+        it=rb_funcall(self,sy_Complexity_Dataflow_Compiler_558e,1,bind2);
         _name=bind_aget(bind2,1);;
         _autovar_2=it;;
         cstruct oldpass2=*ptr;
@@ -67,7 +66,7 @@ alt1_1:
         ptr->ary=alloca(sizeof(VALUE));
         ptr->ary[0]=_autovar_2;
         ptr->len=1;
-        it=rb_funcall(self,sy_value,0);
+        it=First_Dataflow_value(self );
         if (it==failobj) {
             it=failobj;
             goto pass2;
@@ -105,7 +104,7 @@ pass1:
 success1:
         *ptr=oldpass1;
         bind_aset(bind2,1,_v);
-        it=rb_funcall(self,sy__lattice_lb__ba7e,1,bind2);
+        it=rb_funcall(self,sy_Complexity_Dataflow_lattice_lb__ba7e,1,bind2);
         _v=bind_aget(bind2,1);;
         __result=it;;
 
@@ -118,7 +117,7 @@ alt1_2:
             it=failobj;
             goto alt1_3;
         }
-        it=rb_funcall(self,sy__lattice_lb__6ee3,1,bind2);
+        it=rb_funcall(self,sy_Complexity_Dataflow_lattice_lb__6ee3,1,bind2);
         __result=it;;
 
         ;
@@ -145,7 +144,7 @@ alt2_1:
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_4);
-        it=rb_funcall(self,sy_value,0);
+        it=First_Dataflow_value(self );
         if (it==failobj) {
             it=failobj;
             goto pass3;
@@ -166,7 +165,7 @@ pass3:
 success3:
         *ptr=oldpass3;
         bind_aset(bind2,1,_v);
-        it=rb_funcall(self,sy__lattice_lb__11f0,1,bind2);
+        it=rb_funcall(self,sy_Complexity_Dataflow_lattice_lb__11f0,1,bind2);
         _v=bind_aget(bind2,1);;
         __result=it;;
 
@@ -179,7 +178,7 @@ alt2_2:
             it=failobj;
             goto alt2_3;
         }
-        it=rb_funcall(self,sy__lattice_lb__6ee3,1,bind2);
+        it=rb_funcall(self,sy_Complexity_Dataflow_lattice_lb__6ee3,1,bind2);
         __result=it;;
 
         ;
@@ -203,7 +202,7 @@ accept2:
         int cut3=0;
 alt3_1:
         ;
-        it=rb_funcall(self,sy_switch,0);
+        it=First_Dataflow_switch(self );
         if (it==failobj) {
             it=failobj;
             goto alt3_2;
@@ -234,7 +233,7 @@ alt4_1:
                 it=failobj;
                 goto pass5;
             }
-            it=rb_funcall(self,sy_value,0);
+            it=First_Dataflow_value(self );
             if (it==failobj) {
                 it=failobj;
                 goto pass5;
@@ -287,7 +286,7 @@ pass4:
 success4:
         *ptr=oldpass4;
         bind_aset(bind2,1,_v);
-        it=rb_funcall(self,sy__lattice_lb__f621,1,bind2);
+        it=rb_funcall(self,sy_Complexity_Dataflow_lattice_lb__f621,1,bind2);
         _v=bind_aget(bind2,1);;
         __result=it;;
 
@@ -300,7 +299,7 @@ alt3_2:
             it=failobj;
             goto alt3_3;
         }
-        it=rb_funcall(self,sy__lattice_lb__6ee3,1,bind2);
+        it=rb_funcall(self,sy_Complexity_Dataflow_lattice_lb__6ee3,1,bind2);
         __result=it;;
 
         ;
@@ -335,7 +334,7 @@ alt5_1:
             int cut6=0;
 alt6_1:
             ;
-            it=rb_funcall(self,sy_value,0);
+            it=First_Dataflow_value(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt6_2;
@@ -376,7 +375,7 @@ pass6:
 success6:
         *ptr=oldpass6;
         bind_aset(bind2,1,_v);
-        it=rb_funcall(self,sy__lattice_lb__5911,1,bind2);
+        it=rb_funcall(self,sy_Complexity_Dataflow_lattice_lb__5911,1,bind2);
         _v=bind_aget(bind2,1);;
         __result=it;;
 
@@ -389,7 +388,7 @@ alt5_2:
             it=failobj;
             goto alt5_3;
         }
-        it=rb_funcall(self,sy__lattice_lb__6ee3,1,bind2);
+        it=rb_funcall(self,sy_Complexity_Dataflow_lattice_lb__6ee3,1,bind2);
         __result=it;;
 
         ;
@@ -410,7 +409,7 @@ accept5:
             it=failobj;
             goto fail;
         }
-        it=rb_funcall(self,sy__lattice_lb__6ee3,1,bind2);
+        it=rb_funcall(self,sy_Complexity_Dataflow_lattice_lb__6ee3,1,bind2);
         __result=it;;
         break;
     }
@@ -427,7 +426,7 @@ VALUE Complexity_Dataflow_getvalue(VALUE self ,VALUE a0) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     bind_aset(bind2,1,_v);
-    it=rb_funcall(self,sy___at_vis_eq_bin_8b89,1,bind2);
+    it=rb_funcall(self,sy_Complexity_Dataflow__at_vis_eq_bin_8b89,1,bind2);
     _v=bind_aget(bind2,1);;
     _autovar=it;;
     cstruct oldpass1=*ptr;
@@ -437,7 +436,7 @@ VALUE Complexity_Dataflow_getvalue(VALUE self ,VALUE a0) {
     ptr->ary=alloca(sizeof(VALUE));
     ptr->ary[0]=_autovar;
     ptr->len=1;
-    it=rb_funcall(self,sy_first,0);
+    it=Complexity_Dataflow_first(self );
     if (it==failobj) {
         it=failobj;
         goto pass1;
@@ -469,17 +468,14 @@ void Init_Complexity_Dataflow_c() {
     rb_define_method(cls_Complexity_Dataflow,"profile_report",profile_report_Complexity_Dataflow,0);
     switchhash_Complexity_Dataflow_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Many\nnext h[k]=2 if k<=Or\nnext h[k]=3 if k<=Switch_Char\nnext h[k]=4 if k<=Switch_Clas\nnext h[k]=5 if k<=Seq\nnext h[k]=6 if k<=Object\n}");
     rb_global_variable(&switchhash_Complexity_Dataflow_1);;
-    sy__Compiler_558e=rb_intern("_Compiler_558e");
-    sy___at_vis_eq_bin_8b89=rb_intern("__at_vis_eq_bin_8b89");
-    sy___lp_Compile_7f7b=rb_intern("__lp_Compile_7f7b");
-    sy__lattice_lb__11f0=rb_intern("_lattice_lb__11f0");
-    sy__lattice_lb__5911=rb_intern("_lattice_lb__5911");
-    sy__lattice_lb__6ee3=rb_intern("_lattice_lb__6ee3");
-    sy__lattice_lb__ba7e=rb_intern("_lattice_lb__ba7e");
-    sy__lattice_lb__f621=rb_intern("_lattice_lb__f621");
-    sy_first=rb_intern("first");
-    sy_switch=rb_intern("switch");
-    sy_value=rb_intern("value");
+    sy_Complexity_Dataflow_Compiler_558e=rb_intern("Complexity_Dataflow_Compiler_558e");
+    sy_Complexity_Dataflow__at_vis_eq_bin_8b89=rb_intern("Complexity_Dataflow__at_vis_eq_bin_8b89");
+    sy_Complexity_Dataflow__lp_Compile_7f7b=rb_intern("Complexity_Dataflow__lp_Compile_7f7b");
+    sy_Complexity_Dataflow_lattice_lb__11f0=rb_intern("Complexity_Dataflow_lattice_lb__11f0");
+    sy_Complexity_Dataflow_lattice_lb__5911=rb_intern("Complexity_Dataflow_lattice_lb__5911");
+    sy_Complexity_Dataflow_lattice_lb__6ee3=rb_intern("Complexity_Dataflow_lattice_lb__6ee3");
+    sy_Complexity_Dataflow_lattice_lb__ba7e=rb_intern("Complexity_Dataflow_lattice_lb__ba7e");
+    sy_Complexity_Dataflow_lattice_lb__f621=rb_intern("Complexity_Dataflow_lattice_lb__f621");
     rb_define_method(cls_Complexity_Dataflow,"first",Complexity_Dataflow_first,0);
     rb_define_method(cls_Complexity_Dataflow,"getvalue",Complexity_Dataflow_getvalue,1);
 }

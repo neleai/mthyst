@@ -6,12 +6,12 @@ VALUE Constant_Propagator_root(VALUE self );
 VALUE Constant_Propagator_step(VALUE self ,VALUE a0);
 VALUE switchhash_Constant_Propagator_1;
 VALUE switchhash_Constant_Propagator_2;
-static VALUE sy__Constant_8840;
-static VALUE sy__Constant_bf42;
-static VALUE sy__Constant_db03;
-static VALUE sy___at_depend_eq__07a9;
-static VALUE sy__a_eq_Consta_2e1d;
-static VALUE sy__src_25d9;
+static VALUE sy_Constant_Propagator_Constant_8840;
+static VALUE sy_Constant_Propagator_Constant_bf42;
+static VALUE sy_Constant_Propagator_Constant_db03;
+static VALUE sy_Constant_Propagator__at_depend_eq__07a9;
+static VALUE sy_Constant_Propagator_a_eq_Consta_2e1d;
+static VALUE sy_Constant_Propagator_src_25d9;
 static VALUE sy_valof;
 VALUE profile_report_Constant_Propagator(VALUE self) {
     cstruct *ptr;
@@ -33,7 +33,7 @@ VALUE Constant_Propagator_root(VALUE self ) {
     }
     _it=it;;
     bind_aset(bind2,1,_it);
-    it=rb_funcall(self,sy___at_depend_eq__07a9,1,bind2);
+    it=rb_funcall(self,sy_Constant_Propagator__at_depend_eq__07a9,1,bind2);
     _it=bind_aget(bind2,1);;
     __result=it;;
 
@@ -83,7 +83,7 @@ alt1_1:
             ptr->ary=NULL;
             ame_setsrc2(self,_autovar_3);
             ptr->pos=ptr->len;
-            it=rb_funcall(self,sy__Constant_8840,1,bind2);
+            it=rb_funcall(self,sy_Constant_Propagator_Constant_8840,1,bind2);
             _autovar_4=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) {
@@ -117,7 +117,7 @@ success3:
             ptr->ary=NULL;
             ame_setsrc2(self,_autovar_6);
             ptr->pos=ptr->len;
-            it=rb_funcall(self,sy__src_25d9,1,bind2);
+            it=rb_funcall(self,sy_Constant_Propagator_src_25d9,1,bind2);
             arg0=it;
             it=rb_funcall(self,sy_valof,1,arg0);
             if (it==failobj) {
@@ -176,7 +176,7 @@ alt1_2:
             it=failobj;
             goto alt1_3;
         }
-        it=rb_funcall(self,sy__Constant_bf42,1,bind2);
+        it=rb_funcall(self,sy_Constant_Propagator_Constant_bf42,1,bind2);
         _autovar_8=it;;
 
         ;
@@ -248,7 +248,7 @@ alt2_2:
             it=failobj;
             goto alt2_3;
         }
-        it=rb_funcall(self,sy__Constant_bf42,1,bind2);
+        it=rb_funcall(self,sy_Constant_Propagator_Constant_bf42,1,bind2);
         _autovar_8=it;;
 
         ;
@@ -281,10 +281,10 @@ alt3_1:
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_11);
         ptr->pos=ptr->len;
-        it=rb_funcall(self,sy__src_25d9,1,bind2);
+        it=rb_funcall(self,sy_Constant_Propagator_src_25d9,1,bind2);
         _val=it;;
         bind_aset(bind2,1,_val);
-        it=rb_funcall(self,sy__Constant_db03,1,bind2);
+        it=rb_funcall(self,sy_Constant_Propagator_Constant_db03,1,bind2);
         _val=bind_aget(bind2,1);;
         _autovar_12=it;;
         it=Qnil;
@@ -313,7 +313,7 @@ alt3_2:
             it=failobj;
             goto alt3_3;
         }
-        it=rb_funcall(self,sy__Constant_bf42,1,bind2);
+        it=rb_funcall(self,sy_Constant_Propagator_Constant_bf42,1,bind2);
         _autovar_8=it;;
 
         ;
@@ -347,7 +347,7 @@ alt4_1:
         ame_setsrc2(self,_autovar_13);
         ptr->pos=ptr->len;
         bind_aset(bind2,1,_el);
-        it=rb_funcall(self,sy__a_eq_Consta_2e1d,1,bind2);
+        it=rb_funcall(self,sy_Constant_Propagator_a_eq_Consta_2e1d,1,bind2);
         _el=bind_aget(bind2,1);;
         _autovar_14=it;;
         it=Qnil;
@@ -376,7 +376,7 @@ alt4_2:
             it=failobj;
             goto alt4_3;
         }
-        it=rb_funcall(self,sy__Constant_bf42,1,bind2);
+        it=rb_funcall(self,sy_Constant_Propagator_Constant_bf42,1,bind2);
         _autovar_8=it;;
 
         ;
@@ -402,7 +402,7 @@ accept4:
             it=failobj;
             goto pass1;
         }
-        it=rb_funcall(self,sy__Constant_bf42,1,bind2);
+        it=rb_funcall(self,sy_Constant_Propagator_Constant_bf42,1,bind2);
         _autovar_8=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
@@ -434,12 +434,12 @@ void Init_Constant_Propagator_c() {
     rb_global_variable(&switchhash_Constant_Propagator_1);;
     switchhash_Constant_Propagator_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Lambda\nnext h[k]=1 if k<=Local\nnext h[k]=2 if k<=Object\n}");
     rb_global_variable(&switchhash_Constant_Propagator_2);;
-    sy__Constant_8840=rb_intern("_Constant_8840");
-    sy__Constant_bf42=rb_intern("_Constant_bf42");
-    sy__Constant_db03=rb_intern("_Constant_db03");
-    sy___at_depend_eq__07a9=rb_intern("__at_depend_eq__07a9");
-    sy__a_eq_Consta_2e1d=rb_intern("_a_eq_Consta_2e1d");
-    sy__src_25d9=rb_intern("_src_25d9");
+    sy_Constant_Propagator_Constant_8840=rb_intern("Constant_Propagator_Constant_8840");
+    sy_Constant_Propagator_Constant_bf42=rb_intern("Constant_Propagator_Constant_bf42");
+    sy_Constant_Propagator_Constant_db03=rb_intern("Constant_Propagator_Constant_db03");
+    sy_Constant_Propagator__at_depend_eq__07a9=rb_intern("Constant_Propagator__at_depend_eq__07a9");
+    sy_Constant_Propagator_a_eq_Consta_2e1d=rb_intern("Constant_Propagator_a_eq_Consta_2e1d");
+    sy_Constant_Propagator_src_25d9=rb_intern("Constant_Propagator_src_25d9");
     sy_valof=rb_intern("valof");
     rb_define_method(cls_Constant_Propagator,"root",Constant_Propagator_root,0);
     rb_define_method(cls_Constant_Propagator,"step",Constant_Propagator_step,1);

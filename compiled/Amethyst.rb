@@ -34,45 +34,45 @@ def self.until(*args);self.new.parse(:until,*args);end;def self._selector_until;
 def self.upper(*args);self.new.parse(:upper,*args);end;def self._selector_upper;Amethyst;end
 def self.word(*args);self.new.parse(:word,*args);end;def self._selector_word;Amethyst;end
 def self.xdigit(*args);self.new.parse(:xdigit,*args);end;def self._selector_xdigit;Amethyst;end
-def __at_rev(bind)
+def Amethyst__at_rev(bind)
 @rev||=Hash.new{|h,k| h[k]=k.reverse }
 end
-def __at_rev_lb_src_704d(bind)
+def Amethyst__at_rev_lb_src_704d(bind)
 @rev[src]
 end
-def __lp_bind_lb_1_rb__a948(bind)
+def Amethyst__lp_bind_lb_1_rb__a948(bind)
 (bind[1].is_a? String ) || FAIL
 end
-def __lp_bind_lb_1_rb__abc3(bind)
+def Amethyst__lp_bind_lb_1_rb__abc3(bind)
 (bind[1] === bind[2]) || FAIL
 end
-def __lp_bind_lb_1_rb__afaa(bind)
+def Amethyst__lp_bind_lb_1_rb__afaa(bind)
 (bind[1]+bind[2]*"").to_i
 end
-def __lp_false_rp__sp__c3c5(bind)
+def Amethyst__lp_false_rp__sp__c3c5(bind)
 (false) || FAIL
 end
-def _apply_lp_bi_f480(bind)
+def Amethyst_apply_lp_bi_f480(bind)
 apply(bind[1],*bind[2])
 end
-def _bind_lb_1_rb_(bind)
+def Amethyst_bind_lb_1_rb_(bind)
 bind[1]
 
 end
-def _bind_lb_1_rb__dot__03c2(bind)
+def Amethyst_bind_lb_1_rb__dot__03c2(bind)
 bind[1].. bind[2]
 end
-def _bind_lb_1_rb__dot__c3ef(bind)
+def Amethyst_bind_lb_1_rb__dot__c3ef(bind)
 bind[1]...bind[2]
 end
-def _bind_lb_1_rb__dot__e879(bind)
+def Amethyst_bind_lb_1_rb__dot__e879(bind)
 bind[1].join
 
 end
-def _bind_lb_1_rb__ti__cfcb(bind)
+def Amethyst_bind_lb_1_rb__ti__cfcb(bind)
 bind[1]*""
 end
-def _self_dot_pro_8089(bind)
+def Amethyst_self_dot_pro_8089(bind)
 self.profile_report;bind[1]
 end
 

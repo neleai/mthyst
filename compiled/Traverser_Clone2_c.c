@@ -5,12 +5,10 @@ VALUE AmethystCore_anything(VALUE self );
 VALUE Traverser_Clone2_traverse(VALUE self );
 VALUE Traverser_Clone2_traverse_item(VALUE self );
 VALUE switchhash_Traverser_Clone2_1;
-static VALUE sy___lp_src_dot_cla_2024;
-static VALUE sy__bind_lb_1_rb__lt__7b20;
-static VALUE sy__bind_lb_1_rb__sp__6af0;
-static VALUE sy__if_sp_bind_lb__1bed;
-static VALUE sy_traverse;
-static VALUE sy_traverse_item;
+static VALUE sy_Traverser_Clone2__lp_src_dot_cla_2024;
+static VALUE sy_Traverser_Clone2_bind_lb_1_rb__lt__7b20;
+static VALUE sy_Traverser_Clone2_bind_lb_1_rb__sp__6af0;
+static VALUE sy_Traverser_Clone2_if_sp_bind_lb__1bed;
 static VALUE sy_visit;
 VALUE profile_report_Traverser_Clone2(VALUE self) {
     cstruct *ptr;
@@ -28,7 +26,7 @@ VALUE Traverser_Clone2_traverse(VALUE self ) {
     ptr->pos=ptr->len;
     it=rb_ary_new3(0);
     _nvars=it;;
-    it=rb_funcall(self,sy___lp_src_dot_cla_2024,1,bind2);
+    it=rb_funcall(self,sy_Traverser_Clone2__lp_src_dot_cla_2024,1,bind2);
     _ivars=it;;
     it=_ivars;
     _autovar=it;;
@@ -55,7 +53,7 @@ VALUE Traverser_Clone2_traverse(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=rb_funcall(self,sy_traverse_item,0);
+        it=Traverser_Clone2_traverse_item(self );
         if (it==failobj) {
             it=failobj;
             goto alt1_2;
@@ -63,7 +61,7 @@ alt1_1:
         _it=it;;
         bind_aset(bind2,1,_nvars);
         bind_aset(bind2,2,_it);
-        it=rb_funcall(self,sy__bind_lb_1_rb__sp__6af0,1,bind2);
+        it=rb_funcall(self,sy_Traverser_Clone2_bind_lb_1_rb__sp__6af0,1,bind2);
         _nvars=bind_aget(bind2,1);;
         _it=bind_aget(bind2,2);;
         ;
@@ -112,7 +110,7 @@ success1:
     *ptr=oldpass1;
     bind_aset(bind2,1,_ivars);
     bind_aset(bind2,2,_nvars);
-    it=rb_funcall(self,sy__if_sp_bind_lb__1bed,1,bind2);
+    it=rb_funcall(self,sy_Traverser_Clone2_if_sp_bind_lb__1bed,1,bind2);
     _ivars=bind_aget(bind2,1);;
     _nvars=bind_aget(bind2,2);;
     __result=it;;
@@ -153,7 +151,7 @@ alt1_2:
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar);
-        it=rb_funcall(self,sy_traverse,0);
+        it=Traverser_Clone2_traverse(self );
         if (it==failobj) {
             it=failobj;
             goto pass1;
@@ -230,7 +228,7 @@ alt2_2:
             int cut3=0;
 alt3_1:
             ;
-            it=rb_funcall(self,sy_traverse_item,0);
+            it=Traverser_Clone2_traverse_item(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt3_2;
@@ -238,7 +236,7 @@ alt3_1:
             _it=it;;
             bind_aset(bind2,1,_ar);
             bind_aset(bind2,2,_it);
-            it=rb_funcall(self,sy__bind_lb_1_rb__lt__7b20,1,bind2);
+            it=rb_funcall(self,sy_Traverser_Clone2_bind_lb_1_rb__lt__7b20,1,bind2);
             _ar=bind_aget(bind2,1);;
             _it=bind_aget(bind2,2);;
             ;
@@ -344,12 +342,10 @@ void Init_Traverser_Clone2_c() {
     rb_define_method(cls_Traverser_Clone2,"profile_report",profile_report_Traverser_Clone2,0);
     switchhash_Traverser_Clone2_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}");
     rb_global_variable(&switchhash_Traverser_Clone2_1);;
-    sy___lp_src_dot_cla_2024=rb_intern("__lp_src_dot_cla_2024");
-    sy__bind_lb_1_rb__lt__7b20=rb_intern("_bind_lb_1_rb__lt__7b20");
-    sy__bind_lb_1_rb__sp__6af0=rb_intern("_bind_lb_1_rb__sp__6af0");
-    sy__if_sp_bind_lb__1bed=rb_intern("_if_sp_bind_lb__1bed");
-    sy_traverse=rb_intern("traverse");
-    sy_traverse_item=rb_intern("traverse_item");
+    sy_Traverser_Clone2__lp_src_dot_cla_2024=rb_intern("Traverser_Clone2__lp_src_dot_cla_2024");
+    sy_Traverser_Clone2_bind_lb_1_rb__lt__7b20=rb_intern("Traverser_Clone2_bind_lb_1_rb__lt__7b20");
+    sy_Traverser_Clone2_bind_lb_1_rb__sp__6af0=rb_intern("Traverser_Clone2_bind_lb_1_rb__sp__6af0");
+    sy_Traverser_Clone2_if_sp_bind_lb__1bed=rb_intern("Traverser_Clone2_if_sp_bind_lb__1bed");
     sy_visit=rb_intern("visit");
     rb_define_method(cls_Traverser_Clone2,"traverse",Traverser_Clone2_traverse,0);
     rb_define_method(cls_Traverser_Clone2,"traverse_item",Traverser_Clone2_traverse_item,0);

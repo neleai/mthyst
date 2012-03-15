@@ -105,7 +105,7 @@ amethyst AmethystCTranslator {
            {s+=x*""}
            {s+="\nend"; s}
   
-  trans =  Grammar[ {@>grammar=@name;@>parent=@parent} {@@lambdas=[] ;@@rcallbacks={};@@cbhash={}} {@@defs=[];@@defmethods=[];@@profile_report=[]} {@@faillabel="fail"} {@@callbacks={}} {@@header=[]} {@@init=[]} @rules=>[trans*]:t rbcode:rbcode
+  trans =  Grammar[ {@>grammar=@@grammar=@name;@>parent=@parent} {@@lambdas=[] ;@@rcallbacks={};@@cbhash={}} {@@defs=[];@@defmethods=[];@@profile_report=[]} {@@faillabel="fail"} {@@callbacks={}} {@@header=[]} {@@init=[]} @rules=>[trans*]:t rbcode:rbcode
             { "VALUE cls_#{@name};\n" }:s
             { s<<@@header.uniq.sort*"\n"+"\n"
 							s<<"\n memo_struct *mem_#{@name}=NULL;VALUE memo_val_#{@name};" if CurrentParser[:memoize]

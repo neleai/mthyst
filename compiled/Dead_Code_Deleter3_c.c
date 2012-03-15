@@ -12,28 +12,25 @@ VALUE switchhash_Dead_Code_Deleter3_3;
 VALUE switchhash_Dead_Code_Deleter3_4;
 VALUE switchhash_Dead_Code_Deleter3_5;
 VALUE switchhash_Dead_Code_Deleter3_6;
-static VALUE sy___at__contex_5f56;
-static VALUE sy___at__contex_cdb3;
-static VALUE sy___at__contex_d6d5;
-static VALUE sy___lp_;
-static VALUE sy___lp_src_dot_cla_2024;
-static VALUE sy__bind_lb_1_rb__lb__146c;
-static VALUE sy__bind_lb_1_rb__lb__1f9e;
-static VALUE sy__bind_lb_1_rb__lb__8eca;
-static VALUE sy__bind_lb_1_rb__lt__7b20;
-static VALUE sy__bind_lb_1_rb__sp__6af0;
-static VALUE sy__d_eq_src_dot_du_2b46;
-static VALUE sy__d_eq_src_dot_du_d571;
-static VALUE sy__if_sp_bind_lb__1bed;
-static VALUE sy__src_25d9;
-static VALUE sy__src_dot_body_519e;
-static VALUE sy__src_dot_body_aaae;
-static VALUE sy__src_dot_dup_d768;
-static VALUE sy__src_dot_reac_cd39;
-static VALUE sy__src_dot_to_5e99;
-static VALUE sy_traverse;
-static VALUE sy_traverse_item;
-static VALUE sy_visit;
+static VALUE sy_Dead_Code_Deleter3__at__contex_5f56;
+static VALUE sy_Dead_Code_Deleter3__at__contex_cdb3;
+static VALUE sy_Dead_Code_Deleter3__at__contex_d6d5;
+static VALUE sy_Dead_Code_Deleter3__lp_;
+static VALUE sy_Dead_Code_Deleter3__lp_src_dot_cla_2024;
+static VALUE sy_Dead_Code_Deleter3_bind_lb_1_rb__lb__146c;
+static VALUE sy_Dead_Code_Deleter3_bind_lb_1_rb__lb__1f9e;
+static VALUE sy_Dead_Code_Deleter3_bind_lb_1_rb__lb__8eca;
+static VALUE sy_Dead_Code_Deleter3_bind_lb_1_rb__lt__7b20;
+static VALUE sy_Dead_Code_Deleter3_bind_lb_1_rb__sp__6af0;
+static VALUE sy_Dead_Code_Deleter3_d_eq_src_dot_du_2b46;
+static VALUE sy_Dead_Code_Deleter3_d_eq_src_dot_du_d571;
+static VALUE sy_Dead_Code_Deleter3_if_sp_bind_lb__1bed;
+static VALUE sy_Dead_Code_Deleter3_src_25d9;
+static VALUE sy_Dead_Code_Deleter3_src_dot_body_519e;
+static VALUE sy_Dead_Code_Deleter3_src_dot_body_aaae;
+static VALUE sy_Dead_Code_Deleter3_src_dot_dup_d768;
+static VALUE sy_Dead_Code_Deleter3_src_dot_reac_cd39;
+static VALUE sy_Dead_Code_Deleter3_src_dot_to_5e99;
 VALUE profile_report_Dead_Code_Deleter3(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -49,10 +46,10 @@ VALUE Dead_Code_Deleter3_root(VALUE self ) {
     Data_Get_Struct(self,cstruct,ptr);
     bind_aset(bind2,1,_autovar);
     bind_aset(bind2,2,_autovar_2);
-    it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
+    it=rb_funcall(self,sy_Dead_Code_Deleter3__at__contex_5f56,1,bind2);
     _autovar=bind_aget(bind2,1);;
     _autovar_2=bind_aget(bind2,2);;
-    it=rb_funcall(self,sy__src_dot_dup_d768,1,bind2);
+    it=rb_funcall(self,sy_Dead_Code_Deleter3_src_dot_dup_d768,1,bind2);
     _autovar_3=it;;
     cstruct oldpass1=*ptr;
     ptr->pos=ptr->len=0;
@@ -97,10 +94,10 @@ success1:
     ptr->ary=NULL;
     ame_setsrc2(self,_autovar_5);
     bind_aset(bind2,1,_autovar_2);
-    it=rb_funcall(self,sy__bind_lb_1_rb__lb__1f9e,1,bind2);
+    it=rb_funcall(self,sy_Dead_Code_Deleter3_bind_lb_1_rb__lb__1f9e,1,bind2);
     _autovar_2=bind_aget(bind2,1);;
-    it=rb_funcall(self,sy__src_dot_reac_cd39,1,bind2);
-    it=rb_funcall(self,sy__src_dot_body_519e,1,bind2);
+    it=rb_funcall(self,sy_Dead_Code_Deleter3_src_dot_reac_cd39,1,bind2);
+    it=rb_funcall(self,sy_Dead_Code_Deleter3_src_dot_body_519e,1,bind2);
     _autovar_6=it;;
     cstruct oldpass3=*ptr;
     ptr->pos=ptr->len=0;
@@ -110,9 +107,9 @@ success1:
     ptr->ary[0]=_autovar_6;
     ptr->len=1;
     bind_aset(bind2,1,_autovar_2);
-    it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+    it=rb_funcall(self,sy_Dead_Code_Deleter3__at__contex_d6d5,1,bind2);
     _autovar_2=bind_aget(bind2,1);;
-    it=rb_funcall(self,sy_traverse_item,0);
+    it=Dead_Code_Deleter3_traverse_item(self );
     if (it==failobj) {
         it=failobj;
         goto pass3;
@@ -135,7 +132,7 @@ success3:
     it=_autovar_7;
     _t=it;;
     bind_aset(bind2,1,_t);
-    it=rb_funcall(self,sy__src_dot_body_aaae,1,bind2);
+    it=rb_funcall(self,sy_Dead_Code_Deleter3_src_dot_body_aaae,1,bind2);
     _t=bind_aget(bind2,1);;
     _autovar_8=it;;
     it=Qnil;
@@ -157,7 +154,7 @@ success2:
     _autovar_9=it;;
     bind_aset(bind2,1,_autovar);
     bind_aset(bind2,2,_autovar_9);
-    it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+    it=rb_funcall(self,sy_Dead_Code_Deleter3__at__contex_cdb3,1,bind2);
     _autovar=bind_aget(bind2,1);;
     _autovar_9=bind_aget(bind2,2);;
 fail:
@@ -174,7 +171,7 @@ VALUE Dead_Code_Deleter3_traverse(VALUE self ) {
     ptr->pos=ptr->len;
     it=rb_ary_new3(0);
     _nvars=it;;
-    it=rb_funcall(self,sy___lp_src_dot_cla_2024,1,bind2);
+    it=rb_funcall(self,sy_Dead_Code_Deleter3__lp_src_dot_cla_2024,1,bind2);
     _ivars=it;;
     it=_ivars;
     _autovar=it;;
@@ -201,7 +198,7 @@ VALUE Dead_Code_Deleter3_traverse(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=rb_funcall(self,sy_traverse_item,0);
+        it=Dead_Code_Deleter3_traverse_item(self );
         if (it==failobj) {
             it=failobj;
             goto alt1_2;
@@ -209,7 +206,7 @@ alt1_1:
         _it=it;;
         bind_aset(bind2,1,_nvars);
         bind_aset(bind2,2,_it);
-        it=rb_funcall(self,sy__bind_lb_1_rb__sp__6af0,1,bind2);
+        it=rb_funcall(self,sy_Dead_Code_Deleter3_bind_lb_1_rb__sp__6af0,1,bind2);
         _nvars=bind_aget(bind2,1);;
         _it=bind_aget(bind2,2);;
         ;
@@ -258,7 +255,7 @@ success1:
     *ptr=oldpass1;
     bind_aset(bind2,1,_ivars);
     bind_aset(bind2,2,_nvars);
-    it=rb_funcall(self,sy__if_sp_bind_lb__1bed,1,bind2);
+    it=rb_funcall(self,sy_Dead_Code_Deleter3_if_sp_bind_lb__1bed,1,bind2);
     _ivars=bind_aget(bind2,1);;
     _nvars=bind_aget(bind2,2);;
     __result=it;;
@@ -290,7 +287,7 @@ VALUE Dead_Code_Deleter3_traverse_item(VALUE self ) {
             int cut1=0;
 alt1_1:
             ;
-            it=rb_funcall(self,sy_visit,0);
+            it=Dead_Code_Deleter3_visit(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt1_2;
@@ -308,7 +305,7 @@ alt1_2:
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
             ame_setsrc2(self,_autovar);
-            it=rb_funcall(self,sy_traverse,0);
+            it=Dead_Code_Deleter3_traverse(self );
             if (it==failobj) {
                 it=failobj;
                 goto pass1;
@@ -366,7 +363,7 @@ alt2_1:
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
             ame_setsrc2(self,_autovar);
-            it=rb_funcall(self,sy_traverse,0);
+            it=Dead_Code_Deleter3_traverse(self );
             if (it==failobj) {
                 it=failobj;
                 goto pass2;
@@ -428,7 +425,7 @@ accept2:
             int cut3=0;
 alt3_1:
             ;
-            it=rb_funcall(self,sy_visit,0);
+            it=Dead_Code_Deleter3_visit(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt3_2;
@@ -454,7 +451,7 @@ alt3_2:
                 int cut4=0;
 alt4_1:
                 ;
-                it=rb_funcall(self,sy_traverse_item,0);
+                it=Dead_Code_Deleter3_traverse_item(self );
                 if (it==failobj) {
                     it=failobj;
                     goto alt4_2;
@@ -462,7 +459,7 @@ alt4_1:
                 _it=it;;
                 bind_aset(bind2,1,_ar);
                 bind_aset(bind2,2,_it);
-                it=rb_funcall(self,sy__bind_lb_1_rb__lt__7b20,1,bind2);
+                it=rb_funcall(self,sy_Dead_Code_Deleter3_bind_lb_1_rb__lt__7b20,1,bind2);
                 _ar=bind_aget(bind2,1);;
                 _it=bind_aget(bind2,2);;
                 ;
@@ -544,7 +541,7 @@ alt5_1:
                 int cut6=0;
 alt6_1:
                 ;
-                it=rb_funcall(self,sy_traverse_item,0);
+                it=Dead_Code_Deleter3_traverse_item(self );
                 if (it==failobj) {
                     it=failobj;
                     goto alt6_2;
@@ -552,7 +549,7 @@ alt6_1:
                 _it=it;;
                 bind_aset(bind2,1,_ar);
                 bind_aset(bind2,2,_it);
-                it=rb_funcall(self,sy__bind_lb_1_rb__lt__7b20,1,bind2);
+                it=rb_funcall(self,sy_Dead_Code_Deleter3_bind_lb_1_rb__lt__7b20,1,bind2);
                 _ar=bind_aget(bind2,1);;
                 _it=bind_aget(bind2,2);;
                 ;
@@ -630,7 +627,7 @@ accept5:
             int cut7=0;
 alt7_1:
             ;
-            it=rb_funcall(self,sy_visit,0);
+            it=Dead_Code_Deleter3_visit(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt7_2;
@@ -690,7 +687,7 @@ VALUE Dead_Code_Deleter3_visit(VALUE self ) {
         ;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
+        it=rb_funcall(self,sy_Dead_Code_Deleter3__at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_2=bind_aget(bind2,2);;
         it=ptr->ary[ptr->pos];            ;
@@ -700,7 +697,7 @@ VALUE Dead_Code_Deleter3_visit(VALUE self ) {
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_3);
-        it=rb_funcall(self,sy__src_25d9,1,bind2);
+        it=rb_funcall(self,sy_Dead_Code_Deleter3_src_25d9,1,bind2);
         _this=it;;
         ptr->pos=ptr->len;
         it=Qnil;
@@ -719,14 +716,14 @@ success1:
         *ptr=oldpass1;
         bind_aset(bind2,1,_autovar_2);
         bind_aset(bind2,2,_this);
-        it=rb_funcall(self,sy___lp_,1,bind2);
+        it=rb_funcall(self,sy_Dead_Code_Deleter3__lp_,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
         _this=bind_aget(bind2,2);;
         __result=it;;
         _autovar_4=it;;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_4);
-        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        it=rb_funcall(self,sy_Dead_Code_Deleter3__at__contex_cdb3,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_4=bind_aget(bind2,2);;
         break;
@@ -734,7 +731,7 @@ success1:
         ;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
+        it=rb_funcall(self,sy_Dead_Code_Deleter3__at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_2=bind_aget(bind2,2);;
         it=ptr->ary[ptr->pos];            ;
@@ -746,7 +743,7 @@ success1:
         ame_setsrc2(self,_autovar_5);
         ptr->pos=ptr->len;
         bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy__d_eq_src_dot_du_2b46,1,bind2);
+        it=rb_funcall(self,sy_Dead_Code_Deleter3_d_eq_src_dot_du_2b46,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
         _autovar_6=it;;
         it=Qnil;
@@ -768,7 +765,7 @@ success2:
         _autovar_4=it;;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_4);
-        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        it=rb_funcall(self,sy_Dead_Code_Deleter3__at__contex_cdb3,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_4=bind_aget(bind2,2);;
         break;
@@ -776,7 +773,7 @@ success2:
         ;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
+        it=rb_funcall(self,sy_Dead_Code_Deleter3__at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_2=bind_aget(bind2,2);;
         it=ptr->ary[ptr->pos];            ;
@@ -787,14 +784,14 @@ success2:
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_7);
         ptr->pos=ptr->len;
-        it=rb_funcall(self,sy__src_25d9,1,bind2);
+        it=rb_funcall(self,sy_Dead_Code_Deleter3_src_25d9,1,bind2);
         bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy__bind_lb_1_rb__lb__146c,1,bind2);
+        it=rb_funcall(self,sy_Dead_Code_Deleter3_bind_lb_1_rb__lb__146c,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
         bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy_Dead_Code_Deleter3__at__contex_d6d5,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
-        it=rb_funcall(self,sy_traverse,0);
+        it=Dead_Code_Deleter3_traverse(self );
         if (it==failobj) {
             it=failobj;
             goto pass3;
@@ -806,7 +803,7 @@ success2:
         ame_setsrc2(self,_autovar_8);
         ptr->pos=ptr->len;
         bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy__bind_lb_1_rb__lb__8eca,1,bind2);
+        it=rb_funcall(self,sy_Dead_Code_Deleter3_bind_lb_1_rb__lb__8eca,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
         _autovar_9=it;;
         it=Qnil;
@@ -845,7 +842,7 @@ success3:
         _autovar_4=it;;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_4);
-        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        it=rb_funcall(self,sy_Dead_Code_Deleter3__at__contex_cdb3,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_4=bind_aget(bind2,2);;
         break;
@@ -853,7 +850,7 @@ success3:
         ;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
+        it=rb_funcall(self,sy_Dead_Code_Deleter3__at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_2=bind_aget(bind2,2);;
         it=ptr->ary[ptr->pos];            ;
@@ -863,7 +860,7 @@ success3:
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_11);
-        it=rb_funcall(self,sy__src_dot_to_5e99,1,bind2);
+        it=rb_funcall(self,sy_Dead_Code_Deleter3_src_dot_to_5e99,1,bind2);
         _autovar_12=it;;
         cstruct oldpass6=*ptr;
         ptr->pos=ptr->len=0;
@@ -873,9 +870,9 @@ success3:
         ptr->ary[0]=_autovar_12;
         ptr->len=1;
         bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy_Dead_Code_Deleter3__at__contex_d6d5,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
-        it=rb_funcall(self,sy_traverse_item,0);
+        it=Dead_Code_Deleter3_traverse_item(self );
         if (it==failobj) {
             it=failobj;
             goto pass6;
@@ -898,7 +895,7 @@ success6:
         it=_autovar_13;
         _t=it;;
         bind_aset(bind2,1,_t);
-        it=rb_funcall(self,sy__d_eq_src_dot_du_d571,1,bind2);
+        it=rb_funcall(self,sy_Dead_Code_Deleter3_d_eq_src_dot_du_d571,1,bind2);
         _t=bind_aget(bind2,1);;
         _autovar_14=it;;
         it=Qnil;
@@ -920,7 +917,7 @@ success5:
         _autovar_4=it;;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_4);
-        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        it=rb_funcall(self,sy_Dead_Code_Deleter3__at__contex_cdb3,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_4=bind_aget(bind2,2);;
         break;
@@ -928,7 +925,7 @@ success5:
         ;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
+        it=rb_funcall(self,sy_Dead_Code_Deleter3__at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_2=bind_aget(bind2,2);;
         if (1) {
@@ -956,28 +953,25 @@ void Init_Dead_Code_Deleter3_c() {
     rb_global_variable(&switchhash_Dead_Code_Deleter3_5);;
     switchhash_Dead_Code_Deleter3_6=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Apply\nnext h[k]=2 if k<=Bind\nnext h[k]=3 if k<=CAct\nnext h[k]=4 if k<=Local\nnext h[k]=5 if k<=Pass\nnext h[k]=6 if k<=Result\nnext h[k]=7 if k<=Object\n}");
     rb_global_variable(&switchhash_Dead_Code_Deleter3_6);;
-    sy___at__contex_5f56=rb_intern("__at__contex_5f56");
-    sy___at__contex_cdb3=rb_intern("__at__contex_cdb3");
-    sy___at__contex_d6d5=rb_intern("__at__contex_d6d5");
-    sy___lp_=rb_intern("__lp_");
-    sy___lp_src_dot_cla_2024=rb_intern("__lp_src_dot_cla_2024");
-    sy__bind_lb_1_rb__lb__146c=rb_intern("_bind_lb_1_rb__lb__146c");
-    sy__bind_lb_1_rb__lb__1f9e=rb_intern("_bind_lb_1_rb__lb__1f9e");
-    sy__bind_lb_1_rb__lb__8eca=rb_intern("_bind_lb_1_rb__lb__8eca");
-    sy__bind_lb_1_rb__lt__7b20=rb_intern("_bind_lb_1_rb__lt__7b20");
-    sy__bind_lb_1_rb__sp__6af0=rb_intern("_bind_lb_1_rb__sp__6af0");
-    sy__d_eq_src_dot_du_2b46=rb_intern("_d_eq_src_dot_du_2b46");
-    sy__d_eq_src_dot_du_d571=rb_intern("_d_eq_src_dot_du_d571");
-    sy__if_sp_bind_lb__1bed=rb_intern("_if_sp_bind_lb__1bed");
-    sy__src_25d9=rb_intern("_src_25d9");
-    sy__src_dot_body_519e=rb_intern("_src_dot_body_519e");
-    sy__src_dot_body_aaae=rb_intern("_src_dot_body_aaae");
-    sy__src_dot_dup_d768=rb_intern("_src_dot_dup_d768");
-    sy__src_dot_reac_cd39=rb_intern("_src_dot_reac_cd39");
-    sy__src_dot_to_5e99=rb_intern("_src_dot_to_5e99");
-    sy_traverse=rb_intern("traverse");
-    sy_traverse_item=rb_intern("traverse_item");
-    sy_visit=rb_intern("visit");
+    sy_Dead_Code_Deleter3__at__contex_5f56=rb_intern("Dead_Code_Deleter3__at__contex_5f56");
+    sy_Dead_Code_Deleter3__at__contex_cdb3=rb_intern("Dead_Code_Deleter3__at__contex_cdb3");
+    sy_Dead_Code_Deleter3__at__contex_d6d5=rb_intern("Dead_Code_Deleter3__at__contex_d6d5");
+    sy_Dead_Code_Deleter3__lp_=rb_intern("Dead_Code_Deleter3__lp_");
+    sy_Dead_Code_Deleter3__lp_src_dot_cla_2024=rb_intern("Dead_Code_Deleter3__lp_src_dot_cla_2024");
+    sy_Dead_Code_Deleter3_bind_lb_1_rb__lb__146c=rb_intern("Dead_Code_Deleter3_bind_lb_1_rb__lb__146c");
+    sy_Dead_Code_Deleter3_bind_lb_1_rb__lb__1f9e=rb_intern("Dead_Code_Deleter3_bind_lb_1_rb__lb__1f9e");
+    sy_Dead_Code_Deleter3_bind_lb_1_rb__lb__8eca=rb_intern("Dead_Code_Deleter3_bind_lb_1_rb__lb__8eca");
+    sy_Dead_Code_Deleter3_bind_lb_1_rb__lt__7b20=rb_intern("Dead_Code_Deleter3_bind_lb_1_rb__lt__7b20");
+    sy_Dead_Code_Deleter3_bind_lb_1_rb__sp__6af0=rb_intern("Dead_Code_Deleter3_bind_lb_1_rb__sp__6af0");
+    sy_Dead_Code_Deleter3_d_eq_src_dot_du_2b46=rb_intern("Dead_Code_Deleter3_d_eq_src_dot_du_2b46");
+    sy_Dead_Code_Deleter3_d_eq_src_dot_du_d571=rb_intern("Dead_Code_Deleter3_d_eq_src_dot_du_d571");
+    sy_Dead_Code_Deleter3_if_sp_bind_lb__1bed=rb_intern("Dead_Code_Deleter3_if_sp_bind_lb__1bed");
+    sy_Dead_Code_Deleter3_src_25d9=rb_intern("Dead_Code_Deleter3_src_25d9");
+    sy_Dead_Code_Deleter3_src_dot_body_519e=rb_intern("Dead_Code_Deleter3_src_dot_body_519e");
+    sy_Dead_Code_Deleter3_src_dot_body_aaae=rb_intern("Dead_Code_Deleter3_src_dot_body_aaae");
+    sy_Dead_Code_Deleter3_src_dot_dup_d768=rb_intern("Dead_Code_Deleter3_src_dot_dup_d768");
+    sy_Dead_Code_Deleter3_src_dot_reac_cd39=rb_intern("Dead_Code_Deleter3_src_dot_reac_cd39");
+    sy_Dead_Code_Deleter3_src_dot_to_5e99=rb_intern("Dead_Code_Deleter3_src_dot_to_5e99");
     rb_define_method(cls_Dead_Code_Deleter3,"root",Dead_Code_Deleter3_root,0);
     rb_define_method(cls_Dead_Code_Deleter3,"traverse",Dead_Code_Deleter3_traverse,0);
     rb_define_method(cls_Dead_Code_Deleter3,"traverse_item",Dead_Code_Deleter3_traverse_item,0);

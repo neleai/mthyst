@@ -2,34 +2,32 @@
 #include "memo.c"
 VALUE cls_Cant_Fail_Dataflow;
 VALUE AmethystCore_anything(VALUE self );
+VALUE Amethyst_spaces(VALUE self );
 VALUE Cant_Fail_Dataflow_first(VALUE self );
 VALUE Cant_Fail_Dataflow_first_Cant_Fail_Dataflow(VALUE self );
 VALUE Cant_Fail_Dataflow_getvalue(VALUE self ,VALUE a0);
+VALUE First_Dataflow_switch(VALUE self );
+VALUE First_Dataflow_value(VALUE self );
 VALUE switchhash_Cant_Fail_Dataflow_1;
 VALUE switchhash_Cant_Fail_Dataflow_2;
 VALUE switchhash_Cant_Fail_Dataflow_3;
 VALUE switchhash_Cant_Fail_Dataflow_4;
-static VALUE sy__Compiler_558e;
-static VALUE sy___at_vis_eq_bin_8b89;
-static VALUE sy___d41d;
-static VALUE sy___lp_;
-static VALUE sy___lp_Compile_7f7b;
-static VALUE sy___lp_src_dot_pre_c6b8;
-static VALUE sy__bind_lb_1_rb_;
-static VALUE sy__bind_lb_1_rb__dot__159a;
-static VALUE sy__bind_lb_1_rb__dot__a37c;
-static VALUE sy__bind_lb_1_rb__dot__c5d5;
-static VALUE sy__lattice_dot__3340;
-static VALUE sy__lattice_dot__4869;
-static VALUE sy__lattice_dot__5a9e;
-static VALUE sy__lattice_dot__b0f6;
-static VALUE sy__lattice_lb__0ff9;
-static VALUE sy__src_dot_to_5e99;
-static VALUE sy_first;
-static VALUE sy_first_Cant_Fail_Dataflow;
-static VALUE sy_spaces;
-static VALUE sy_switch;
-static VALUE sy_value;
+static VALUE sy_Cant_Fail_Dataflow_Compiler_558e;
+static VALUE sy_Cant_Fail_Dataflow__at_vis_eq_bin_8b89;
+static VALUE sy_Cant_Fail_Dataflow__d41d;
+static VALUE sy_Cant_Fail_Dataflow__lp_;
+static VALUE sy_Cant_Fail_Dataflow__lp_Compile_7f7b;
+static VALUE sy_Cant_Fail_Dataflow__lp_src_dot_pre_c6b8;
+static VALUE sy_Cant_Fail_Dataflow_bind_lb_1_rb_;
+static VALUE sy_Cant_Fail_Dataflow_bind_lb_1_rb__dot__159a;
+static VALUE sy_Cant_Fail_Dataflow_bind_lb_1_rb__dot__a37c;
+static VALUE sy_Cant_Fail_Dataflow_bind_lb_1_rb__dot__c5d5;
+static VALUE sy_Cant_Fail_Dataflow_lattice_dot__3340;
+static VALUE sy_Cant_Fail_Dataflow_lattice_dot__4869;
+static VALUE sy_Cant_Fail_Dataflow_lattice_dot__5a9e;
+static VALUE sy_Cant_Fail_Dataflow_lattice_dot__b0f6;
+static VALUE sy_Cant_Fail_Dataflow_lattice_lb__0ff9;
+static VALUE sy_Cant_Fail_Dataflow_src_dot_to_5e99;
 VALUE profile_report_Cant_Fail_Dataflow(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -58,7 +56,7 @@ alt1_1:
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar);
         ptr->pos=ptr->len;
-        it=rb_funcall(self,sy___lp_src_dot_pre_c6b8,1,bind2);
+        it=rb_funcall(self,sy_Cant_Fail_Dataflow__lp_src_dot_pre_c6b8,1,bind2);
         if (it==failobj) {
             it=failobj;
             goto pass1;
@@ -77,14 +75,14 @@ pass1:
         }
 success1:
         *ptr=oldpass1;
-        it=rb_funcall(self,sy__lattice_dot__4869,1,bind2);
+        it=rb_funcall(self,sy_Cant_Fail_Dataflow_lattice_dot__4869,1,bind2);
         __result=it;;
 
         ;
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
-        it=rb_funcall(self,sy_first_Cant_Fail_Dataflow,0);
+        it=Cant_Fail_Dataflow_first_Cant_Fail_Dataflow(self );
         if (it==failobj) {
             it=failobj;
             goto alt1_3;
@@ -125,7 +123,7 @@ alt2_1:
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_3);
-        it=rb_funcall(self,sy_spaces,0);
+        it=Amethyst_spaces(self );
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... '`':
             ;
@@ -198,14 +196,14 @@ pass2:
         }
 success2:
         *ptr=oldpass2;
-        it=rb_funcall(self,sy__lattice_dot__3340,1,bind2);
+        it=rb_funcall(self,sy_Cant_Fail_Dataflow_lattice_dot__3340,1,bind2);
         __result=it;;
 
         ;
         goto accept2;
 alt2_2:
         ptr->pos=oldpos2;
-        it=rb_funcall(self,sy_first_Cant_Fail_Dataflow,0);
+        it=Cant_Fail_Dataflow_first_Cant_Fail_Dataflow(self );
         if (it==failobj) {
             it=failobj;
             goto alt2_3;
@@ -251,14 +249,14 @@ pass4:
         }
 success4:
         *ptr=oldpass4;
-        it=rb_funcall(self,sy__lattice_dot__4869,1,bind2);
+        it=rb_funcall(self,sy_Cant_Fail_Dataflow_lattice_dot__4869,1,bind2);
         __result=it;;
 
         ;
         goto accept4;
 alt4_2:
         ptr->pos=oldpos4;
-        it=rb_funcall(self,sy_first_Cant_Fail_Dataflow,0);
+        it=Cant_Fail_Dataflow_first_Cant_Fail_Dataflow(self );
         if (it==failobj) {
             it=failobj;
             goto alt4_3;
@@ -380,7 +378,7 @@ alt7_3:
                 };
 accept7:
                 ;
-                it=rb_funcall(self,sy_value,0);
+                it=First_Dataflow_value(self );
                 if (it==failobj) {
                     it=failobj;
                     goto alt6_2;
@@ -410,7 +408,7 @@ accept6:
 alt8_1:
                 ;
                 it=Qnil;
-                it=rb_funcall(self,sy_value,0);
+                it=First_Dataflow_value(self );
                 if (it==failobj) {
                     it=failobj;
                     goto alt8_2;
@@ -453,7 +451,7 @@ pass5:
 success5:
         *ptr=oldpass5;
         bind_aset(bind2,1,_ary);
-        it=rb_funcall(self,sy__lattice_lb__0ff9,1,bind2);
+        it=rb_funcall(self,sy_Cant_Fail_Dataflow_lattice_lb__0ff9,1,bind2);
         _ary=bind_aget(bind2,1);;
         __result=it;;
 
@@ -465,7 +463,7 @@ alt5_2:
             it=failobj;
             goto fail;
         }
-        it=rb_funcall(self,sy_first_Cant_Fail_Dataflow,0);
+        it=Cant_Fail_Dataflow_first_Cant_Fail_Dataflow(self );
         if (it==failobj) {
             it=failobj;
             goto alt5_3;
@@ -496,7 +494,7 @@ alt9_1:
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_9);
-        it=rb_funcall(self,sy__src_dot_to_5e99,1,bind2);
+        it=rb_funcall(self,sy_Cant_Fail_Dataflow_src_dot_to_5e99,1,bind2);
         _autovar_10=it;;
         cstruct oldpass8=*ptr;
         ptr->pos=ptr->len=0;
@@ -505,7 +503,7 @@ alt9_1:
         ptr->ary=alloca(sizeof(VALUE));
         ptr->ary[0]=_autovar_10;
         ptr->len=1;
-        it=rb_funcall(self,sy_value,0);
+        it=First_Dataflow_value(self );
         if (it==failobj) {
             it=failobj;
             goto pass8;
@@ -549,7 +547,7 @@ success7:
         goto accept9;
 alt9_2:
         ptr->pos=oldpos9;
-        it=rb_funcall(self,sy_first_Cant_Fail_Dataflow,0);
+        it=Cant_Fail_Dataflow_first_Cant_Fail_Dataflow(self );
         if (it==failobj) {
             it=failobj;
             goto alt9_3;
@@ -569,7 +567,7 @@ accept9:
         break;
     case 5/*Object*/:
         ;
-        it=rb_funcall(self,sy_first_Cant_Fail_Dataflow,0);
+        it=Cant_Fail_Dataflow_first_Cant_Fail_Dataflow(self );
         if (it==failobj) {
             it=failobj;
             goto fail;
@@ -610,7 +608,7 @@ alt1_1:
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar);
         ptr->pos=ptr->len;
-        it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
+        it=rb_funcall(self,sy_Cant_Fail_Dataflow_lattice_dot__5a9e,1,bind2);
         _autovar_2=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
@@ -638,7 +636,7 @@ alt1_2:
             it=failobj;
             goto alt1_3;
         }
-        it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
+        it=rb_funcall(self,sy_Cant_Fail_Dataflow_lattice_dot__b0f6,1,bind2);
         __result=it;;
 
         ;
@@ -672,14 +670,14 @@ alt2_1:
         }
         _name=it;;
         bind_aset(bind2,1,_name);
-        it=rb_funcall(self,sy___lp_Compile_7f7b,1,bind2);
+        it=rb_funcall(self,sy_Cant_Fail_Dataflow__lp_Compile_7f7b,1,bind2);
         _name=bind_aget(bind2,1);;
         if (it==failobj) {
             it=failobj;
             goto pass2;
         };
         bind_aset(bind2,1,_name);
-        it=rb_funcall(self,sy__Compiler_558e,1,bind2);
+        it=rb_funcall(self,sy_Cant_Fail_Dataflow_Compiler_558e,1,bind2);
         _name=bind_aget(bind2,1);;
         _autovar_4=it;;
         cstruct oldpass3=*ptr;
@@ -689,7 +687,7 @@ alt2_1:
         ptr->ary=alloca(sizeof(VALUE));
         ptr->ary[0]=_autovar_4;
         ptr->len=1;
-        it=rb_funcall(self,sy_value,0);
+        it=First_Dataflow_value(self );
         if (it==failobj) {
             it=failobj;
             goto pass3;
@@ -738,7 +736,7 @@ alt2_2:
             it=failobj;
             goto alt2_3;
         }
-        it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
+        it=rb_funcall(self,sy_Cant_Fail_Dataflow_lattice_dot__b0f6,1,bind2);
         __result=it;;
 
         ;
@@ -765,7 +763,7 @@ alt3_1:
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_7);
-        it=rb_funcall(self,sy_value,0);
+        it=First_Dataflow_value(self );
         if (it==failobj) {
             it=failobj;
             goto pass4;
@@ -797,7 +795,7 @@ alt3_2:
             it=failobj;
             goto alt3_3;
         }
-        it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
+        it=rb_funcall(self,sy_Cant_Fail_Dataflow_lattice_dot__b0f6,1,bind2);
         __result=it;;
 
         ;
@@ -824,14 +822,14 @@ alt4_1:
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_9);
-        it=rb_funcall(self,sy_value,0);
+        it=First_Dataflow_value(self );
         if (it==failobj) {
             it=failobj;
             goto pass5;
         }
         _val=it;;
         bind_aset(bind2,1,_val);
-        it=rb_funcall(self,sy__bind_lb_1_rb_,1,bind2);
+        it=rb_funcall(self,sy_Cant_Fail_Dataflow_bind_lb_1_rb_,1,bind2);
         _val=bind_aget(bind2,1);;
         _autovar_10=it;;
         it=Qnil;
@@ -860,7 +858,7 @@ alt4_2:
             it=failobj;
             goto alt4_3;
         }
-        it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
+        it=rb_funcall(self,sy_Cant_Fail_Dataflow_lattice_dot__b0f6,1,bind2);
         __result=it;;
 
         ;
@@ -884,7 +882,7 @@ accept4:
         int cut5=0;
 alt5_1:
         ;
-        it=rb_funcall(self,sy_switch,0);
+        it=First_Dataflow_switch(self );
         if (it==failobj) {
             it=failobj;
             goto alt5_2;
@@ -916,7 +914,7 @@ alt6_1:
                 goto pass7;
             }
             _p=it;;
-            it=rb_funcall(self,sy_value,0);
+            it=First_Dataflow_value(self );
             if (it==failobj) {
                 it=failobj;
                 goto pass7;
@@ -924,7 +922,7 @@ alt6_1:
             _v=it;;
             bind_aset(bind2,1,_p);
             bind_aset(bind2,2,_v);
-            it=rb_funcall(self,sy__bind_lb_1_rb__dot__c5d5,1,bind2);
+            it=rb_funcall(self,sy_Cant_Fail_Dataflow_bind_lb_1_rb__dot__c5d5,1,bind2);
             _p=bind_aget(bind2,1);;
             _v=bind_aget(bind2,2);;
             _autovar_13=it;;
@@ -975,7 +973,7 @@ pass6:
 success6:
         *ptr=oldpass6;
         bind_aset(bind2,1,_vals);
-        it=rb_funcall(self,sy__bind_lb_1_rb__dot__a37c,1,bind2);
+        it=rb_funcall(self,sy_Cant_Fail_Dataflow_bind_lb_1_rb__dot__a37c,1,bind2);
         _vals=bind_aget(bind2,1);;
         __result=it;;
 
@@ -988,7 +986,7 @@ alt5_2:
             it=failobj;
             goto alt5_3;
         }
-        it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
+        it=rb_funcall(self,sy_Cant_Fail_Dataflow_lattice_dot__b0f6,1,bind2);
         __result=it;;
 
         ;
@@ -1015,7 +1013,7 @@ alt7_1:
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_14);
-        it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
+        it=rb_funcall(self,sy_Cant_Fail_Dataflow_lattice_dot__5a9e,1,bind2);
         _val=it;;
         int stop2=0;
         while(!stop2) {
@@ -1038,7 +1036,7 @@ alt8_1:
             ptr->ary=alloca(sizeof(VALUE));
             ptr->ary[0]=_autovar_15;
             ptr->len=1;
-            it=rb_funcall(self,sy_value,0);
+            it=First_Dataflow_value(self );
             if (it==failobj) {
                 it=failobj;
                 goto pass9;
@@ -1062,7 +1060,7 @@ success9:
             _nev=it;;
             bind_aset(bind2,1,_val);
             bind_aset(bind2,2,_nev);
-            it=rb_funcall(self,sy__bind_lb_1_rb__dot__159a,1,bind2);
+            it=rb_funcall(self,sy_Cant_Fail_Dataflow_bind_lb_1_rb__dot__159a,1,bind2);
             _val=bind_aget(bind2,1);;
             _nev=bind_aget(bind2,2);;
             _val=it;;
@@ -1071,7 +1069,7 @@ success9:
 alt9_1:
             ;
             bind_aset(bind2,1,_el);
-            it=rb_funcall(self,sy___lp_,1,bind2);
+            it=rb_funcall(self,sy_Cant_Fail_Dataflow__lp_,1,bind2);
             _el=bind_aget(bind2,1);;
             if (it==failobj) {
                 it=failobj;
@@ -1082,7 +1080,7 @@ alt9_1:
             goto accept9;
 alt9_2:
             ptr->pos=oldpos9;
-            it=rb_funcall(self,sy___d41d,1,bind2);
+            it=rb_funcall(self,sy_Cant_Fail_Dataflow__d41d,1,bind2);
             ;
             goto accept9;
 alt9_3:
@@ -1139,7 +1137,7 @@ alt7_2:
             it=failobj;
             goto alt7_3;
         }
-        it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
+        it=rb_funcall(self,sy_Cant_Fail_Dataflow_lattice_dot__b0f6,1,bind2);
         __result=it;;
 
         ;
@@ -1160,7 +1158,7 @@ accept7:
             it=failobj;
             goto fail;
         }
-        it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
+        it=rb_funcall(self,sy_Cant_Fail_Dataflow_lattice_dot__b0f6,1,bind2);
         __result=it;;
         break;
     }
@@ -1177,7 +1175,7 @@ VALUE Cant_Fail_Dataflow_getvalue(VALUE self ,VALUE a0) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     bind_aset(bind2,1,_v);
-    it=rb_funcall(self,sy___at_vis_eq_bin_8b89,1,bind2);
+    it=rb_funcall(self,sy_Cant_Fail_Dataflow__at_vis_eq_bin_8b89,1,bind2);
     _v=bind_aget(bind2,1);;
     _autovar=it;;
     cstruct oldpass1=*ptr;
@@ -1187,7 +1185,7 @@ VALUE Cant_Fail_Dataflow_getvalue(VALUE self ,VALUE a0) {
     ptr->ary=alloca(sizeof(VALUE));
     ptr->ary[0]=_autovar;
     ptr->len=1;
-    it=rb_funcall(self,sy_first,0);
+    it=Cant_Fail_Dataflow_first(self );
     if (it==failobj) {
         it=failobj;
         goto pass1;
@@ -1225,27 +1223,22 @@ void Init_Cant_Fail_Dataflow_c() {
     rb_global_variable(&switchhash_Cant_Fail_Dataflow_3);;
     switchhash_Cant_Fail_Dataflow_4=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=CAct\nnext h[k]=2 if k<=Cut\nnext h[k]=3 if k<=Local\nnext h[k]=4 if k<=Lookahead\nnext h[k]=5 if k<=Pass\nnext h[k]=6 if k<=Result\nnext h[k]=7 if k<=Stop\nnext h[k]=8 if k<=Apply\nnext h[k]=9 if k<=Bind\nnext h[k]=10 if k<=Many\nnext h[k]=11 if k<=Or\nnext h[k]=12 if k<=Switch_Char\nnext h[k]=13 if k<=Switch_Clas\nnext h[k]=14 if k<=Seq\nnext h[k]=15 if k<=Object\n}");
     rb_global_variable(&switchhash_Cant_Fail_Dataflow_4);;
-    sy__Compiler_558e=rb_intern("_Compiler_558e");
-    sy___at_vis_eq_bin_8b89=rb_intern("__at_vis_eq_bin_8b89");
-    sy___d41d=rb_intern("__d41d");
-    sy___lp_=rb_intern("__lp_");
-    sy___lp_Compile_7f7b=rb_intern("__lp_Compile_7f7b");
-    sy___lp_src_dot_pre_c6b8=rb_intern("__lp_src_dot_pre_c6b8");
-    sy__bind_lb_1_rb_=rb_intern("_bind_lb_1_rb_");
-    sy__bind_lb_1_rb__dot__159a=rb_intern("_bind_lb_1_rb__dot__159a");
-    sy__bind_lb_1_rb__dot__a37c=rb_intern("_bind_lb_1_rb__dot__a37c");
-    sy__bind_lb_1_rb__dot__c5d5=rb_intern("_bind_lb_1_rb__dot__c5d5");
-    sy__lattice_dot__3340=rb_intern("_lattice_dot__3340");
-    sy__lattice_dot__4869=rb_intern("_lattice_dot__4869");
-    sy__lattice_dot__5a9e=rb_intern("_lattice_dot__5a9e");
-    sy__lattice_dot__b0f6=rb_intern("_lattice_dot__b0f6");
-    sy__lattice_lb__0ff9=rb_intern("_lattice_lb__0ff9");
-    sy__src_dot_to_5e99=rb_intern("_src_dot_to_5e99");
-    sy_first=rb_intern("first");
-    sy_first_Cant_Fail_Dataflow=rb_intern("first_Cant_Fail_Dataflow");
-    sy_spaces=rb_intern("spaces");
-    sy_switch=rb_intern("switch");
-    sy_value=rb_intern("value");
+    sy_Cant_Fail_Dataflow_Compiler_558e=rb_intern("Cant_Fail_Dataflow_Compiler_558e");
+    sy_Cant_Fail_Dataflow__at_vis_eq_bin_8b89=rb_intern("Cant_Fail_Dataflow__at_vis_eq_bin_8b89");
+    sy_Cant_Fail_Dataflow__d41d=rb_intern("Cant_Fail_Dataflow__d41d");
+    sy_Cant_Fail_Dataflow__lp_=rb_intern("Cant_Fail_Dataflow__lp_");
+    sy_Cant_Fail_Dataflow__lp_Compile_7f7b=rb_intern("Cant_Fail_Dataflow__lp_Compile_7f7b");
+    sy_Cant_Fail_Dataflow__lp_src_dot_pre_c6b8=rb_intern("Cant_Fail_Dataflow__lp_src_dot_pre_c6b8");
+    sy_Cant_Fail_Dataflow_bind_lb_1_rb_=rb_intern("Cant_Fail_Dataflow_bind_lb_1_rb_");
+    sy_Cant_Fail_Dataflow_bind_lb_1_rb__dot__159a=rb_intern("Cant_Fail_Dataflow_bind_lb_1_rb__dot__159a");
+    sy_Cant_Fail_Dataflow_bind_lb_1_rb__dot__a37c=rb_intern("Cant_Fail_Dataflow_bind_lb_1_rb__dot__a37c");
+    sy_Cant_Fail_Dataflow_bind_lb_1_rb__dot__c5d5=rb_intern("Cant_Fail_Dataflow_bind_lb_1_rb__dot__c5d5");
+    sy_Cant_Fail_Dataflow_lattice_dot__3340=rb_intern("Cant_Fail_Dataflow_lattice_dot__3340");
+    sy_Cant_Fail_Dataflow_lattice_dot__4869=rb_intern("Cant_Fail_Dataflow_lattice_dot__4869");
+    sy_Cant_Fail_Dataflow_lattice_dot__5a9e=rb_intern("Cant_Fail_Dataflow_lattice_dot__5a9e");
+    sy_Cant_Fail_Dataflow_lattice_dot__b0f6=rb_intern("Cant_Fail_Dataflow_lattice_dot__b0f6");
+    sy_Cant_Fail_Dataflow_lattice_lb__0ff9=rb_intern("Cant_Fail_Dataflow_lattice_lb__0ff9");
+    sy_Cant_Fail_Dataflow_src_dot_to_5e99=rb_intern("Cant_Fail_Dataflow_src_dot_to_5e99");
     rb_define_method(cls_Cant_Fail_Dataflow,"first",Cant_Fail_Dataflow_first,0);
     rb_define_method(cls_Cant_Fail_Dataflow,"first_Cant_Fail_Dataflow",Cant_Fail_Dataflow_first_Cant_Fail_Dataflow,0);
     rb_define_method(cls_Cant_Fail_Dataflow,"getvalue",Cant_Fail_Dataflow_getvalue,1);

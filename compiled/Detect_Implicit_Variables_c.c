@@ -11,13 +11,10 @@ VALUE switchhash_Detect_Implicit_Variables_2;
 VALUE switchhash_Detect_Implicit_Variables_3;
 VALUE switchhash_Detect_Implicit_Variables_4;
 VALUE switchhash_Detect_Implicit_Variables_5;
-static VALUE sy___at_vars_a187;
-static VALUE sy___at_vars_eq_Ha_dec8;
-static VALUE sy___at_vars_lb_bi_edce;
-static VALUE sy___lp_src_dot_ins_a413;
-static VALUE sy_traverse;
-static VALUE sy_traverse_item;
-static VALUE sy_visit;
+static VALUE sy_Detect_Implicit_Variables__at_vars_a187;
+static VALUE sy_Detect_Implicit_Variables__at_vars_eq_Ha_dec8;
+static VALUE sy_Detect_Implicit_Variables__at_vars_lb_bi_edce;
+static VALUE sy_Detect_Implicit_Variables__lp_src_dot_ins_a413;
 VALUE profile_report_Detect_Implicit_Variables(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -31,13 +28,13 @@ VALUE Detect_Implicit_Variables_root(VALUE self ) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    it=rb_funcall(self,sy___at_vars_eq_Ha_dec8,1,bind2);
-    it=rb_funcall(self,sy_traverse,0);
+    it=rb_funcall(self,sy_Detect_Implicit_Variables__at_vars_eq_Ha_dec8,1,bind2);
+    it=Detect_Implicit_Variables_traverse(self );
     if (it==failobj) {
         it=failobj;
         goto fail;
     }
-    it=rb_funcall(self,sy___at_vars_a187,1,bind2);
+    it=rb_funcall(self,sy_Detect_Implicit_Variables__at_vars_a187,1,bind2);
     __result=it;;
 
 fail:
@@ -52,7 +49,7 @@ VALUE Detect_Implicit_Variables_traverse(VALUE self ) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     ptr->pos=ptr->len;
-    it=rb_funcall(self,sy___lp_src_dot_ins_a413,1,bind2);
+    it=rb_funcall(self,sy_Detect_Implicit_Variables__lp_src_dot_ins_a413,1,bind2);
     _autovar=it;;
     cstruct oldpass1=*ptr;
     ptr->pos=ptr->len=0;
@@ -79,7 +76,7 @@ VALUE Detect_Implicit_Variables_traverse(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=rb_funcall(self,sy_traverse_item,0);
+        it=Detect_Implicit_Variables_traverse_item(self );
         if (it==failobj) {
             it=failobj;
             goto alt1_2;
@@ -160,7 +157,7 @@ VALUE Detect_Implicit_Variables_traverse_item(VALUE self ) {
             int cut1=0;
 alt1_1:
             ;
-            it=rb_funcall(self,sy_visit,0);
+            it=Detect_Implicit_Variables_visit(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt1_2;
@@ -178,7 +175,7 @@ alt1_2:
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
             ame_setsrc2(self,_autovar);
-            it=rb_funcall(self,sy_traverse,0);
+            it=Detect_Implicit_Variables_traverse(self );
             if (it==failobj) {
                 it=failobj;
                 goto pass1;
@@ -236,7 +233,7 @@ alt2_1:
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
             ame_setsrc2(self,_autovar);
-            it=rb_funcall(self,sy_traverse,0);
+            it=Detect_Implicit_Variables_traverse(self );
             if (it==failobj) {
                 it=failobj;
                 goto pass2;
@@ -292,7 +289,7 @@ accept2:
             int cut3=0;
 alt3_1:
             ;
-            it=rb_funcall(self,sy_visit,0);
+            it=Detect_Implicit_Variables_visit(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt3_2;
@@ -318,7 +315,7 @@ alt3_2:
                 int cut4=0;
 alt4_1:
                 ;
-                it=rb_funcall(self,sy_traverse_item,0);
+                it=Detect_Implicit_Variables_traverse_item(self );
                 if (it==failobj) {
                     it=failobj;
                     goto alt4_2;
@@ -404,7 +401,7 @@ alt5_1:
                 int cut6=0;
 alt6_1:
                 ;
-                it=rb_funcall(self,sy_traverse_item,0);
+                it=Detect_Implicit_Variables_traverse_item(self );
                 if (it==failobj) {
                     it=failobj;
                     goto alt6_2;
@@ -480,7 +477,7 @@ accept5:
             int cut7=0;
 alt7_1:
             ;
-            it=rb_funcall(self,sy_visit,0);
+            it=Detect_Implicit_Variables_visit(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt7_2;
@@ -549,7 +546,7 @@ VALUE Detect_Implicit_Variables_visit(VALUE self ) {
         }
         _name=it;;
         bind_aset(bind2,1,_name);
-        it=rb_funcall(self,sy___at_vars_lb_bi_edce,1,bind2);
+        it=rb_funcall(self,sy_Detect_Implicit_Variables__at_vars_lb_bi_edce,1,bind2);
         _name=bind_aget(bind2,1);;
         it=rb_ary_new3(0);
         _autovar_2=it;;
@@ -627,13 +624,10 @@ void Init_Detect_Implicit_Variables_c() {
     rb_global_variable(&switchhash_Detect_Implicit_Variables_4);;
     switchhash_Detect_Implicit_Variables_5=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_Detect_Implicit_Variables_5);;
-    sy___at_vars_a187=rb_intern("__at_vars_a187");
-    sy___at_vars_eq_Ha_dec8=rb_intern("__at_vars_eq_Ha_dec8");
-    sy___at_vars_lb_bi_edce=rb_intern("__at_vars_lb_bi_edce");
-    sy___lp_src_dot_ins_a413=rb_intern("__lp_src_dot_ins_a413");
-    sy_traverse=rb_intern("traverse");
-    sy_traverse_item=rb_intern("traverse_item");
-    sy_visit=rb_intern("visit");
+    sy_Detect_Implicit_Variables__at_vars_a187=rb_intern("Detect_Implicit_Variables__at_vars_a187");
+    sy_Detect_Implicit_Variables__at_vars_eq_Ha_dec8=rb_intern("Detect_Implicit_Variables__at_vars_eq_Ha_dec8");
+    sy_Detect_Implicit_Variables__at_vars_lb_bi_edce=rb_intern("Detect_Implicit_Variables__at_vars_lb_bi_edce");
+    sy_Detect_Implicit_Variables__lp_src_dot_ins_a413=rb_intern("Detect_Implicit_Variables__lp_src_dot_ins_a413");
     rb_define_method(cls_Detect_Implicit_Variables,"root",Detect_Implicit_Variables_root,0);
     rb_define_method(cls_Detect_Implicit_Variables,"traverse",Detect_Implicit_Variables_traverse,0);
     rb_define_method(cls_Detect_Implicit_Variables,"traverse_item",Detect_Implicit_Variables_traverse_item,0);

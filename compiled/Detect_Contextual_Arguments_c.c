@@ -11,16 +11,13 @@ VALUE switchhash_Detect_Contextual_Arguments_2;
 VALUE switchhash_Detect_Contextual_Arguments_3;
 VALUE switchhash_Detect_Contextual_Arguments_4;
 VALUE switchhash_Detect_Contextual_Arguments_5;
-static VALUE sy___append_lp__6b01;
-static VALUE sy___at_argumen_a3fb;
-static VALUE sy___at_argumen_c331;
-static VALUE sy___lp_src_dot_cla_2024;
-static VALUE sy__bind_lb_1_rb__lt__7b20;
-static VALUE sy__bind_lb_1_rb__sp__6af0;
-static VALUE sy__if_sp_bind_lb__1bed;
-static VALUE sy_traverse;
-static VALUE sy_traverse_item;
-static VALUE sy_visit;
+static VALUE sy_Detect_Contextual_Arguments__append_lp__6b01;
+static VALUE sy_Detect_Contextual_Arguments__at_argumen_a3fb;
+static VALUE sy_Detect_Contextual_Arguments__at_argumen_c331;
+static VALUE sy_Detect_Contextual_Arguments__lp_src_dot_cla_2024;
+static VALUE sy_Detect_Contextual_Arguments_bind_lb_1_rb__lt__7b20;
+static VALUE sy_Detect_Contextual_Arguments_bind_lb_1_rb__sp__6af0;
+static VALUE sy_Detect_Contextual_Arguments_if_sp_bind_lb__1bed;
 VALUE profile_report_Detect_Contextual_Arguments(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -34,13 +31,13 @@ VALUE Detect_Contextual_Arguments_root(VALUE self ) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    it=rb_funcall(self,sy___at_argumen_c331,1,bind2);
-    it=rb_funcall(self,sy_traverse,0);
+    it=rb_funcall(self,sy_Detect_Contextual_Arguments__at_argumen_c331,1,bind2);
+    it=Detect_Contextual_Arguments_traverse(self );
     if (it==failobj) {
         it=failobj;
         goto fail;
     }
-    it=rb_funcall(self,sy___at_argumen_a3fb,1,bind2);
+    it=rb_funcall(self,sy_Detect_Contextual_Arguments__at_argumen_a3fb,1,bind2);
     __result=it;;
 
 fail:
@@ -57,7 +54,7 @@ VALUE Detect_Contextual_Arguments_traverse(VALUE self ) {
     ptr->pos=ptr->len;
     it=rb_ary_new3(0);
     _nvars=it;;
-    it=rb_funcall(self,sy___lp_src_dot_cla_2024,1,bind2);
+    it=rb_funcall(self,sy_Detect_Contextual_Arguments__lp_src_dot_cla_2024,1,bind2);
     _ivars=it;;
     it=_ivars;
     _autovar=it;;
@@ -84,7 +81,7 @@ VALUE Detect_Contextual_Arguments_traverse(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=rb_funcall(self,sy_traverse_item,0);
+        it=Detect_Contextual_Arguments_traverse_item(self );
         if (it==failobj) {
             it=failobj;
             goto alt1_2;
@@ -92,7 +89,7 @@ alt1_1:
         _it=it;;
         bind_aset(bind2,1,_nvars);
         bind_aset(bind2,2,_it);
-        it=rb_funcall(self,sy__bind_lb_1_rb__sp__6af0,1,bind2);
+        it=rb_funcall(self,sy_Detect_Contextual_Arguments_bind_lb_1_rb__sp__6af0,1,bind2);
         _nvars=bind_aget(bind2,1);;
         _it=bind_aget(bind2,2);;
         ;
@@ -141,7 +138,7 @@ success1:
     *ptr=oldpass1;
     bind_aset(bind2,1,_ivars);
     bind_aset(bind2,2,_nvars);
-    it=rb_funcall(self,sy__if_sp_bind_lb__1bed,1,bind2);
+    it=rb_funcall(self,sy_Detect_Contextual_Arguments_if_sp_bind_lb__1bed,1,bind2);
     _ivars=bind_aget(bind2,1);;
     _nvars=bind_aget(bind2,2);;
     __result=it;;
@@ -167,7 +164,7 @@ VALUE Detect_Contextual_Arguments_traverse_item(VALUE self ) {
             int cut1=0;
 alt1_1:
             ;
-            it=rb_funcall(self,sy_visit,0);
+            it=Detect_Contextual_Arguments_visit(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt1_2;
@@ -185,7 +182,7 @@ alt1_2:
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
             ame_setsrc2(self,_autovar);
-            it=rb_funcall(self,sy_traverse,0);
+            it=Detect_Contextual_Arguments_traverse(self );
             if (it==failobj) {
                 it=failobj;
                 goto pass1;
@@ -243,7 +240,7 @@ alt2_1:
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
             ame_setsrc2(self,_autovar);
-            it=rb_funcall(self,sy_traverse,0);
+            it=Detect_Contextual_Arguments_traverse(self );
             if (it==failobj) {
                 it=failobj;
                 goto pass2;
@@ -299,7 +296,7 @@ accept2:
             int cut3=0;
 alt3_1:
             ;
-            it=rb_funcall(self,sy_visit,0);
+            it=Detect_Contextual_Arguments_visit(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt3_2;
@@ -325,7 +322,7 @@ alt3_2:
                 int cut4=0;
 alt4_1:
                 ;
-                it=rb_funcall(self,sy_traverse_item,0);
+                it=Detect_Contextual_Arguments_traverse_item(self );
                 if (it==failobj) {
                     it=failobj;
                     goto alt4_2;
@@ -333,7 +330,7 @@ alt4_1:
                 _it=it;;
                 bind_aset(bind2,1,_ar);
                 bind_aset(bind2,2,_it);
-                it=rb_funcall(self,sy__bind_lb_1_rb__lt__7b20,1,bind2);
+                it=rb_funcall(self,sy_Detect_Contextual_Arguments_bind_lb_1_rb__lt__7b20,1,bind2);
                 _ar=bind_aget(bind2,1);;
                 _it=bind_aget(bind2,2);;
                 ;
@@ -415,7 +412,7 @@ alt5_1:
                 int cut6=0;
 alt6_1:
                 ;
-                it=rb_funcall(self,sy_traverse_item,0);
+                it=Detect_Contextual_Arguments_traverse_item(self );
                 if (it==failobj) {
                     it=failobj;
                     goto alt6_2;
@@ -423,7 +420,7 @@ alt6_1:
                 _it=it;;
                 bind_aset(bind2,1,_ar);
                 bind_aset(bind2,2,_it);
-                it=rb_funcall(self,sy__bind_lb_1_rb__lt__7b20,1,bind2);
+                it=rb_funcall(self,sy_Detect_Contextual_Arguments_bind_lb_1_rb__lt__7b20,1,bind2);
                 _ar=bind_aget(bind2,1);;
                 _it=bind_aget(bind2,2);;
                 ;
@@ -495,7 +492,7 @@ accept5:
             int cut7=0;
 alt7_1:
             ;
-            it=rb_funcall(self,sy_visit,0);
+            it=Detect_Contextual_Arguments_visit(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt7_2;
@@ -564,7 +561,7 @@ VALUE Detect_Contextual_Arguments_visit(VALUE self ) {
         }
         _autovar_2=it;;
         bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___append_lp__6b01,1,bind2);
+        it=rb_funcall(self,sy_Detect_Contextual_Arguments__append_lp__6b01,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
@@ -611,16 +608,13 @@ void Init_Detect_Contextual_Arguments_c() {
     rb_global_variable(&switchhash_Detect_Contextual_Arguments_4);;
     switchhash_Detect_Contextual_Arguments_5=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Contextual_Argument\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_Detect_Contextual_Arguments_5);;
-    sy___append_lp__6b01=rb_intern("__append_lp__6b01");
-    sy___at_argumen_a3fb=rb_intern("__at_argumen_a3fb");
-    sy___at_argumen_c331=rb_intern("__at_argumen_c331");
-    sy___lp_src_dot_cla_2024=rb_intern("__lp_src_dot_cla_2024");
-    sy__bind_lb_1_rb__lt__7b20=rb_intern("_bind_lb_1_rb__lt__7b20");
-    sy__bind_lb_1_rb__sp__6af0=rb_intern("_bind_lb_1_rb__sp__6af0");
-    sy__if_sp_bind_lb__1bed=rb_intern("_if_sp_bind_lb__1bed");
-    sy_traverse=rb_intern("traverse");
-    sy_traverse_item=rb_intern("traverse_item");
-    sy_visit=rb_intern("visit");
+    sy_Detect_Contextual_Arguments__append_lp__6b01=rb_intern("Detect_Contextual_Arguments__append_lp__6b01");
+    sy_Detect_Contextual_Arguments__at_argumen_a3fb=rb_intern("Detect_Contextual_Arguments__at_argumen_a3fb");
+    sy_Detect_Contextual_Arguments__at_argumen_c331=rb_intern("Detect_Contextual_Arguments__at_argumen_c331");
+    sy_Detect_Contextual_Arguments__lp_src_dot_cla_2024=rb_intern("Detect_Contextual_Arguments__lp_src_dot_cla_2024");
+    sy_Detect_Contextual_Arguments_bind_lb_1_rb__lt__7b20=rb_intern("Detect_Contextual_Arguments_bind_lb_1_rb__lt__7b20");
+    sy_Detect_Contextual_Arguments_bind_lb_1_rb__sp__6af0=rb_intern("Detect_Contextual_Arguments_bind_lb_1_rb__sp__6af0");
+    sy_Detect_Contextual_Arguments_if_sp_bind_lb__1bed=rb_intern("Detect_Contextual_Arguments_if_sp_bind_lb__1bed");
     rb_define_method(cls_Detect_Contextual_Arguments,"root",Detect_Contextual_Arguments_root,0);
     rb_define_method(cls_Detect_Contextual_Arguments,"traverse",Detect_Contextual_Arguments_traverse,0);
     rb_define_method(cls_Detect_Contextual_Arguments,"traverse_item",Detect_Contextual_Arguments_traverse_item,0);

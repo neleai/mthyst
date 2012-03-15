@@ -11,19 +11,16 @@ VALUE switchhash_Detect_Locals_2;
 VALUE switchhash_Detect_Locals_3;
 VALUE switchhash_Detect_Locals_4;
 VALUE switchhash_Detect_Locals_5;
-static VALUE sy___at_locals_ca83;
-static VALUE sy___at_locals_eq__545d;
-static VALUE sy___at_locals_lt__e5a7;
-static VALUE sy___at_locals_pl__84b1;
-static VALUE sy___lp_src_dot_cla_2024;
-static VALUE sy__bind_lb_1_rb__lt__7b20;
-static VALUE sy__bind_lb_1_rb__sp__6af0;
-static VALUE sy__if_sp_bind_lb__1bed;
-static VALUE sy__src_25d9;
-static VALUE sy__src_dot_varn_13a6;
-static VALUE sy_traverse;
-static VALUE sy_traverse_item;
-static VALUE sy_visit;
+static VALUE sy_Detect_Locals__at_locals_ca83;
+static VALUE sy_Detect_Locals__at_locals_eq__545d;
+static VALUE sy_Detect_Locals__at_locals_lt__e5a7;
+static VALUE sy_Detect_Locals__at_locals_pl__84b1;
+static VALUE sy_Detect_Locals__lp_src_dot_cla_2024;
+static VALUE sy_Detect_Locals_bind_lb_1_rb__lt__7b20;
+static VALUE sy_Detect_Locals_bind_lb_1_rb__sp__6af0;
+static VALUE sy_Detect_Locals_if_sp_bind_lb__1bed;
+static VALUE sy_Detect_Locals_src_25d9;
+static VALUE sy_Detect_Locals_src_dot_varn_13a6;
 
 memo_struct *mem_Detect_Locals=NULL;
 VALUE memo_val_Detect_Locals;
@@ -55,13 +52,13 @@ VALUE Detect_Locals_analyze(VALUE self ) {
         return time_old.result;
     }
     int oldpos=ptr->pos;
-    it=rb_funcall(self,sy___at_locals_eq__545d,1,bind2);
-    it=rb_funcall(self,sy_traverse_item,0);
+    it=rb_funcall(self,sy_Detect_Locals__at_locals_eq__545d,1,bind2);
+    it=Detect_Locals_traverse_item(self );
     if (it==failobj) {
         it=failobj;
         goto memo_fail;
     }
-    it=rb_funcall(self,sy___at_locals_ca83,1,bind2);
+    it=rb_funcall(self,sy_Detect_Locals__at_locals_ca83,1,bind2);
     __result=it;;
 memo_fail:
     memo_add(ptr->mem,117,ptr->src,oldpos,it,ptr->pos,time_old);
@@ -81,7 +78,7 @@ VALUE Detect_Locals_traverse(VALUE self ) {
     ptr->pos=ptr->len;
     it=rb_ary_new3(0);
     _nvars=it;;
-    it=rb_funcall(self,sy___lp_src_dot_cla_2024,1,bind2);
+    it=rb_funcall(self,sy_Detect_Locals__lp_src_dot_cla_2024,1,bind2);
     _ivars=it;;
     it=_ivars;
     _autovar=it;;
@@ -108,7 +105,7 @@ VALUE Detect_Locals_traverse(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=rb_funcall(self,sy_traverse_item,0);
+        it=Detect_Locals_traverse_item(self );
         if (it==failobj) {
             it=failobj;
             goto alt1_2;
@@ -116,7 +113,7 @@ alt1_1:
         _it=it;;
         bind_aset(bind2,1,_nvars);
         bind_aset(bind2,2,_it);
-        it=rb_funcall(self,sy__bind_lb_1_rb__sp__6af0,1,bind2);
+        it=rb_funcall(self,sy_Detect_Locals_bind_lb_1_rb__sp__6af0,1,bind2);
         _nvars=bind_aget(bind2,1);;
         _it=bind_aget(bind2,2);;
         ;
@@ -165,7 +162,7 @@ success1:
     *ptr=oldpass1;
     bind_aset(bind2,1,_ivars);
     bind_aset(bind2,2,_nvars);
-    it=rb_funcall(self,sy__if_sp_bind_lb__1bed,1,bind2);
+    it=rb_funcall(self,sy_Detect_Locals_if_sp_bind_lb__1bed,1,bind2);
     _ivars=bind_aget(bind2,1);;
     _nvars=bind_aget(bind2,2);;
     __result=it;;
@@ -192,7 +189,7 @@ VALUE Detect_Locals_traverse_item(VALUE self ) {
             int cut1=0;
 alt1_1:
             ;
-            it=rb_funcall(self,sy_visit,0);
+            it=Detect_Locals_visit(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt1_2;
@@ -210,7 +207,7 @@ alt1_2:
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
             ame_setsrc2(self,_autovar);
-            it=rb_funcall(self,sy_traverse,0);
+            it=Detect_Locals_traverse(self );
             if (it==failobj) {
                 it=failobj;
                 goto pass1;
@@ -268,7 +265,7 @@ alt2_1:
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
             ame_setsrc2(self,_autovar);
-            it=rb_funcall(self,sy_traverse,0);
+            it=Detect_Locals_traverse(self );
             if (it==failobj) {
                 it=failobj;
                 goto pass2;
@@ -325,7 +322,7 @@ accept2:
             int cut3=0;
 alt3_1:
             ;
-            it=rb_funcall(self,sy_visit,0);
+            it=Detect_Locals_visit(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt3_2;
@@ -351,7 +348,7 @@ alt3_2:
                 int cut4=0;
 alt4_1:
                 ;
-                it=rb_funcall(self,sy_traverse_item,0);
+                it=Detect_Locals_traverse_item(self );
                 if (it==failobj) {
                     it=failobj;
                     goto alt4_2;
@@ -359,7 +356,7 @@ alt4_1:
                 _it=it;;
                 bind_aset(bind2,1,_ar);
                 bind_aset(bind2,2,_it);
-                it=rb_funcall(self,sy__bind_lb_1_rb__lt__7b20,1,bind2);
+                it=rb_funcall(self,sy_Detect_Locals_bind_lb_1_rb__lt__7b20,1,bind2);
                 _ar=bind_aget(bind2,1);;
                 _it=bind_aget(bind2,2);;
                 ;
@@ -441,7 +438,7 @@ alt5_1:
                 int cut6=0;
 alt6_1:
                 ;
-                it=rb_funcall(self,sy_traverse_item,0);
+                it=Detect_Locals_traverse_item(self );
                 if (it==failobj) {
                     it=failobj;
                     goto alt6_2;
@@ -449,7 +446,7 @@ alt6_1:
                 _it=it;;
                 bind_aset(bind2,1,_ar);
                 bind_aset(bind2,2,_it);
-                it=rb_funcall(self,sy__bind_lb_1_rb__lt__7b20,1,bind2);
+                it=rb_funcall(self,sy_Detect_Locals_bind_lb_1_rb__lt__7b20,1,bind2);
                 _ar=bind_aget(bind2,1);;
                 _it=bind_aget(bind2,2);;
                 ;
@@ -522,7 +519,7 @@ accept5:
             int cut7=0;
 alt7_1:
             ;
-            it=rb_funcall(self,sy_visit,0);
+            it=Detect_Locals_visit(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt7_2;
@@ -591,10 +588,10 @@ VALUE Detect_Locals_visit(VALUE self ) {
         }
         _x=it;;
         bind_aset(bind2,1,_x);
-        it=rb_funcall(self,sy___at_locals_lt__e5a7,1,bind2);
+        it=rb_funcall(self,sy_Detect_Locals__at_locals_lt__e5a7,1,bind2);
         _x=bind_aget(bind2,1);;
         ptr->pos=ptr->len;
-        it=rb_funcall(self,sy__src_25d9,1,bind2);
+        it=rb_funcall(self,sy_Detect_Locals_src_25d9,1,bind2);
         _autovar_2=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
@@ -623,12 +620,12 @@ success1:
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_3);
         ptr->pos=ptr->len;
-        it=rb_funcall(self,sy__src_dot_varn_13a6,1,bind2);
+        it=rb_funcall(self,sy_Detect_Locals_src_dot_varn_13a6,1,bind2);
         _x=it;;
         bind_aset(bind2,1,_x);
-        it=rb_funcall(self,sy___at_locals_pl__84b1,1,bind2);
+        it=rb_funcall(self,sy_Detect_Locals__at_locals_pl__84b1,1,bind2);
         _x=bind_aget(bind2,1);;
-        it=rb_funcall(self,sy__src_25d9,1,bind2);
+        it=rb_funcall(self,sy_Detect_Locals_src_25d9,1,bind2);
         _autovar_4=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
@@ -675,19 +672,16 @@ void Init_Detect_Locals_c() {
     rb_global_variable(&switchhash_Detect_Locals_4);;
     switchhash_Detect_Locals_5=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Local\nnext h[k]=1 if k<=Result\nnext h[k]=2 if k<=Object\n}");
     rb_global_variable(&switchhash_Detect_Locals_5);;
-    sy___at_locals_ca83=rb_intern("__at_locals_ca83");
-    sy___at_locals_eq__545d=rb_intern("__at_locals_eq__545d");
-    sy___at_locals_lt__e5a7=rb_intern("__at_locals_lt__e5a7");
-    sy___at_locals_pl__84b1=rb_intern("__at_locals_pl__84b1");
-    sy___lp_src_dot_cla_2024=rb_intern("__lp_src_dot_cla_2024");
-    sy__bind_lb_1_rb__lt__7b20=rb_intern("_bind_lb_1_rb__lt__7b20");
-    sy__bind_lb_1_rb__sp__6af0=rb_intern("_bind_lb_1_rb__sp__6af0");
-    sy__if_sp_bind_lb__1bed=rb_intern("_if_sp_bind_lb__1bed");
-    sy__src_25d9=rb_intern("_src_25d9");
-    sy__src_dot_varn_13a6=rb_intern("_src_dot_varn_13a6");
-    sy_traverse=rb_intern("traverse");
-    sy_traverse_item=rb_intern("traverse_item");
-    sy_visit=rb_intern("visit");
+    sy_Detect_Locals__at_locals_ca83=rb_intern("Detect_Locals__at_locals_ca83");
+    sy_Detect_Locals__at_locals_eq__545d=rb_intern("Detect_Locals__at_locals_eq__545d");
+    sy_Detect_Locals__at_locals_lt__e5a7=rb_intern("Detect_Locals__at_locals_lt__e5a7");
+    sy_Detect_Locals__at_locals_pl__84b1=rb_intern("Detect_Locals__at_locals_pl__84b1");
+    sy_Detect_Locals__lp_src_dot_cla_2024=rb_intern("Detect_Locals__lp_src_dot_cla_2024");
+    sy_Detect_Locals_bind_lb_1_rb__lt__7b20=rb_intern("Detect_Locals_bind_lb_1_rb__lt__7b20");
+    sy_Detect_Locals_bind_lb_1_rb__sp__6af0=rb_intern("Detect_Locals_bind_lb_1_rb__sp__6af0");
+    sy_Detect_Locals_if_sp_bind_lb__1bed=rb_intern("Detect_Locals_if_sp_bind_lb__1bed");
+    sy_Detect_Locals_src_25d9=rb_intern("Detect_Locals_src_25d9");
+    sy_Detect_Locals_src_dot_varn_13a6=rb_intern("Detect_Locals_src_dot_varn_13a6");
     rb_define_method(cls_Detect_Locals,"analyze",Detect_Locals_analyze,0);
     rb_define_method(cls_Detect_Locals,"traverse",Detect_Locals_traverse,0);
     rb_define_method(cls_Detect_Locals,"traverse_item",Detect_Locals_traverse_item,0);

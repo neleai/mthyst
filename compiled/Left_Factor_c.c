@@ -3,8 +3,11 @@
 VALUE cls_Left_Factor;
 VALUE AmethystCore_anything(VALUE self );
 VALUE Left_Factor_binds(VALUE self ,VALUE a0,VALUE a1);
+VALUE Left_Factor_binds(VALUE self ,VALUE,VALUE);
 VALUE Left_Factor_factor(VALUE self ,VALUE a0,VALUE a1,VALUE a2);
+VALUE Left_Factor_factor(VALUE self ,VALUE,VALUE,VALUE);
 VALUE Left_Factor_first(VALUE self ,VALUE a0);
+VALUE Left_Factor_first(VALUE self ,VALUE);
 VALUE Left_Factor_rest(VALUE self ,VALUE a0,VALUE a1);
 VALUE Left_Factor_root(VALUE self );
 VALUE Left_Factor_traverse(VALUE self );
@@ -18,26 +21,20 @@ VALUE switchhash_Left_Factor_5;
 VALUE switchhash_Left_Factor_6;
 VALUE switchhash_Left_Factor_7;
 VALUE switchhash_Left_Factor_8;
-static VALUE sy__Bind_lb_src_66c4;
-static VALUE sy__Or_lb__ti__lp_bin_849e;
-static VALUE sy__Seq_lb__lb_bin_4ce0;
-static VALUE sy___lb_bind_lb_1_rb__1906;
-static VALUE sy___lp_bind_lb_1_rb__34a7;
-static VALUE sy___lp_bind_lb_1_rb__b868;
-static VALUE sy___lp_src_dot_cla_2024;
-static VALUE sy__bind_lb_1_rb__lt__7b20;
-static VALUE sy__bind_lb_1_rb__pl__4651;
-static VALUE sy__bind_lb_1_rb__pl__4c53;
-static VALUE sy__bind_lb_1_rb__sp__6af0;
-static VALUE sy__first_lp_bi_150a;
-static VALUE sy__if_sp_bind_lb__1bed;
-static VALUE sy__src_dot_expr_ef77;
-static VALUE sy_binds;
-static VALUE sy_factor;
-static VALUE sy_first;
-static VALUE sy_traverse;
-static VALUE sy_traverse_item;
-static VALUE sy_visit;
+static VALUE sy_Left_Factor_Bind_lb_src_66c4;
+static VALUE sy_Left_Factor_Or_lb__ti__lp_bin_849e;
+static VALUE sy_Left_Factor_Seq_lb__lb_bin_4ce0;
+static VALUE sy_Left_Factor__lb_bind_lb_1_rb__1906;
+static VALUE sy_Left_Factor__lp_bind_lb_1_rb__34a7;
+static VALUE sy_Left_Factor__lp_bind_lb_1_rb__b868;
+static VALUE sy_Left_Factor__lp_src_dot_cla_2024;
+static VALUE sy_Left_Factor_bind_lb_1_rb__lt__7b20;
+static VALUE sy_Left_Factor_bind_lb_1_rb__pl__4651;
+static VALUE sy_Left_Factor_bind_lb_1_rb__pl__4c53;
+static VALUE sy_Left_Factor_bind_lb_1_rb__sp__6af0;
+static VALUE sy_Left_Factor_first_lp_bi_150a;
+static VALUE sy_Left_Factor_if_sp_bind_lb__1bed;
+static VALUE sy_Left_Factor_src_dot_expr_ef77;
 
 memo_struct *mem_Left_Factor=NULL;
 VALUE memo_val_Left_Factor;
@@ -86,18 +83,18 @@ alt1_1:
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_2);
         ptr->pos=ptr->len;
-        it=rb_funcall(self,sy__src_dot_expr_ef77,1,bind2);
+        it=rb_funcall(self,sy_Left_Factor_src_dot_expr_ef77,1,bind2);
         arg0=it;
         it=_a;
         arg1=it;
-        it=rb_funcall(self,sy_binds,2,arg0,arg1);
+        it=Left_Factor_binds(self ,arg0,arg1);
         if (it==failobj) {
             it=failobj;
             goto pass2;
         }
         _nexp=it;;
         bind_aset(bind2,1,_nexp);
-        it=rb_funcall(self,sy__Bind_lb_src_66c4,1,bind2);
+        it=rb_funcall(self,sy_Left_Factor_Bind_lb_src_66c4,1,bind2);
         _nexp=bind_aget(bind2,1);;
         _autovar_3=it;;
         it=Qnil;
@@ -169,7 +166,7 @@ alt2_1:
         arg0=it;
         it=_a;
         arg1=it;
-        it=rb_funcall(self,sy_binds,2,arg0,arg1);
+        it=Left_Factor_binds(self ,arg0,arg1);
         if (it==failobj) {
             it=failobj;
             goto pass3;
@@ -278,7 +275,7 @@ alt2_1:
     ;
     bind_aset(bind2,1,_start);
     bind_aset(bind2,2,_next);
-    it=rb_funcall(self,sy___lp_bind_lb_1_rb__34a7,1,bind2);
+    it=rb_funcall(self,sy_Left_Factor__lp_bind_lb_1_rb__34a7,1,bind2);
     _start=bind_aget(bind2,1);;
     _next=bind_aget(bind2,2);;
     if (it==failobj) {
@@ -291,11 +288,11 @@ alt2_1:
     arg1=it;
     bind_aset(bind2,1,_cur);
     bind_aset(bind2,2,_next);
-    it=rb_funcall(self,sy__bind_lb_1_rb__pl__4651,1,bind2);
+    it=rb_funcall(self,sy_Left_Factor_bind_lb_1_rb__pl__4651,1,bind2);
     _cur=bind_aget(bind2,1);;
     _next=bind_aget(bind2,2);;
     arg2=it;
-    it=rb_funcall(self,sy_factor,3,arg0,arg1,arg2);
+    it=Left_Factor_factor(self ,arg0,arg1,arg2);
     if (it==failobj) {
         it=failobj;
         goto alt2_2;
@@ -308,7 +305,7 @@ alt2_2:
     ptr->pos=oldpos2;
     bind_aset(bind2,1,_start);
     bind_aset(bind2,2,_next);
-    it=rb_funcall(self,sy___lp_bind_lb_1_rb__b868,1,bind2);
+    it=rb_funcall(self,sy_Left_Factor__lp_bind_lb_1_rb__b868,1,bind2);
     _start=bind_aget(bind2,1);;
     _next=bind_aget(bind2,2);;
     if (it==failobj) {
@@ -317,19 +314,19 @@ alt2_2:
     };
     bind_aset(bind2,1,_prev);
     bind_aset(bind2,2,_cur);
-    it=rb_funcall(self,sy__bind_lb_1_rb__pl__4c53,1,bind2);
+    it=rb_funcall(self,sy_Left_Factor_bind_lb_1_rb__pl__4c53,1,bind2);
     _prev=bind_aget(bind2,1);;
     _cur=bind_aget(bind2,2);;
     arg0=it;
     bind_aset(bind2,1,_next);
-    it=rb_funcall(self,sy__first_lp_bi_150a,1,bind2);
+    it=rb_funcall(self,sy_Left_Factor_first_lp_bi_150a,1,bind2);
     _next=bind_aget(bind2,1);;
     arg1=it;
     bind_aset(bind2,1,_next);
-    it=rb_funcall(self,sy___lb_bind_lb_1_rb__1906,1,bind2);
+    it=rb_funcall(self,sy_Left_Factor__lb_bind_lb_1_rb__1906,1,bind2);
     _next=bind_aget(bind2,1);;
     arg2=it;
-    it=rb_funcall(self,sy_factor,3,arg0,arg1,arg2);
+    it=Left_Factor_factor(self ,arg0,arg1,arg2);
     if (it==failobj) {
         it=failobj;
         goto alt2_3;
@@ -358,7 +355,7 @@ alt1_2:
     }
     bind_aset(bind2,1,_prev);
     bind_aset(bind2,2,_cur);
-    it=rb_funcall(self,sy__Or_lb__ti__lp_bin_849e,1,bind2);
+    it=rb_funcall(self,sy_Left_Factor_Or_lb__ti__lp_bin_849e,1,bind2);
     _prev=bind_aget(bind2,1);;
     _cur=bind_aget(bind2,2);;
     __result=it;;
@@ -410,9 +407,9 @@ alt1_1:
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_2);
         ptr->pos=ptr->len;
-        it=rb_funcall(self,sy__src_dot_expr_ef77,1,bind2);
+        it=rb_funcall(self,sy_Left_Factor_src_dot_expr_ef77,1,bind2);
         arg0=it;
-        it=rb_funcall(self,sy_first,1,arg0);
+        it=Left_Factor_first(self ,arg0);
         if (it==failobj) {
             it=failobj;
             goto pass2;
@@ -484,7 +481,7 @@ alt2_1:
         ptr->pos=ptr->len;
         it=_f;
         arg0=it;
-        it=rb_funcall(self,sy_first,1,arg0);
+        it=Left_Factor_first(self ,arg0);
         if (it==failobj) {
             it=failobj;
             goto pass3;
@@ -637,7 +634,7 @@ accept2:
         _it=it;;
         bind_aset(bind2,1,_bin);
         bind_aset(bind2,2,_it);
-        it=rb_funcall(self,sy__Seq_lb__lb_bin_4ce0,1,bind2);
+        it=rb_funcall(self,sy_Left_Factor_Seq_lb__lb_bin_4ce0,1,bind2);
         _bin=bind_aget(bind2,1);;
         _it=bind_aget(bind2,2);;
         _autovar_5=it;;
@@ -725,7 +722,7 @@ VALUE Left_Factor_root(VALUE self ) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    it=rb_funcall(self,sy_traverse,0);
+    it=Left_Factor_traverse(self );
     if (it==failobj) {
         it=failobj;
         goto fail;
@@ -755,7 +752,7 @@ VALUE Left_Factor_traverse(VALUE self ) {
     ptr->pos=ptr->len;
     it=rb_ary_new3(0);
     _nvars=it;;
-    it=rb_funcall(self,sy___lp_src_dot_cla_2024,1,bind2);
+    it=rb_funcall(self,sy_Left_Factor__lp_src_dot_cla_2024,1,bind2);
     _ivars=it;;
     it=_ivars;
     _autovar=it;;
@@ -782,7 +779,7 @@ VALUE Left_Factor_traverse(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=rb_funcall(self,sy_traverse_item,0);
+        it=Left_Factor_traverse_item(self );
         if (it==failobj) {
             it=failobj;
             goto alt1_2;
@@ -790,7 +787,7 @@ alt1_1:
         _it=it;;
         bind_aset(bind2,1,_nvars);
         bind_aset(bind2,2,_it);
-        it=rb_funcall(self,sy__bind_lb_1_rb__sp__6af0,1,bind2);
+        it=rb_funcall(self,sy_Left_Factor_bind_lb_1_rb__sp__6af0,1,bind2);
         _nvars=bind_aget(bind2,1);;
         _it=bind_aget(bind2,2);;
         ;
@@ -839,7 +836,7 @@ success1:
     *ptr=oldpass1;
     bind_aset(bind2,1,_ivars);
     bind_aset(bind2,2,_nvars);
-    it=rb_funcall(self,sy__if_sp_bind_lb__1bed,1,bind2);
+    it=rb_funcall(self,sy_Left_Factor_if_sp_bind_lb__1bed,1,bind2);
     _ivars=bind_aget(bind2,1);;
     _nvars=bind_aget(bind2,2);;
     __result=it;;
@@ -868,7 +865,7 @@ VALUE Left_Factor_traverse_item(VALUE self ) {
             int cut1=0;
 alt1_1:
             ;
-            it=rb_funcall(self,sy_visit,0);
+            it=Left_Factor_visit(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt1_2;
@@ -886,7 +883,7 @@ alt1_2:
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
             ame_setsrc2(self,_autovar);
-            it=rb_funcall(self,sy_traverse,0);
+            it=Left_Factor_traverse(self );
             if (it==failobj) {
                 it=failobj;
                 goto pass1;
@@ -944,7 +941,7 @@ alt2_1:
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
             ame_setsrc2(self,_autovar);
-            it=rb_funcall(self,sy_traverse,0);
+            it=Left_Factor_traverse(self );
             if (it==failobj) {
                 it=failobj;
                 goto pass2;
@@ -1000,7 +997,7 @@ accept2:
             int cut3=0;
 alt3_1:
             ;
-            it=rb_funcall(self,sy_visit,0);
+            it=Left_Factor_visit(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt3_2;
@@ -1026,7 +1023,7 @@ alt3_2:
                 int cut4=0;
 alt4_1:
                 ;
-                it=rb_funcall(self,sy_traverse_item,0);
+                it=Left_Factor_traverse_item(self );
                 if (it==failobj) {
                     it=failobj;
                     goto alt4_2;
@@ -1034,7 +1031,7 @@ alt4_1:
                 _it=it;;
                 bind_aset(bind2,1,_ar);
                 bind_aset(bind2,2,_it);
-                it=rb_funcall(self,sy__bind_lb_1_rb__lt__7b20,1,bind2);
+                it=rb_funcall(self,sy_Left_Factor_bind_lb_1_rb__lt__7b20,1,bind2);
                 _ar=bind_aget(bind2,1);;
                 _it=bind_aget(bind2,2);;
                 ;
@@ -1116,7 +1113,7 @@ alt5_1:
                 int cut6=0;
 alt6_1:
                 ;
-                it=rb_funcall(self,sy_traverse_item,0);
+                it=Left_Factor_traverse_item(self );
                 if (it==failobj) {
                     it=failobj;
                     goto alt6_2;
@@ -1124,7 +1121,7 @@ alt6_1:
                 _it=it;;
                 bind_aset(bind2,1,_ar);
                 bind_aset(bind2,2,_it);
-                it=rb_funcall(self,sy__bind_lb_1_rb__lt__7b20,1,bind2);
+                it=rb_funcall(self,sy_Left_Factor_bind_lb_1_rb__lt__7b20,1,bind2);
                 _ar=bind_aget(bind2,1);;
                 _it=bind_aget(bind2,2);;
                 ;
@@ -1196,7 +1193,7 @@ accept5:
             int cut7=0;
 alt7_1:
             ;
-            it=rb_funcall(self,sy_visit,0);
+            it=Left_Factor_visit(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt7_2;
@@ -1258,7 +1255,7 @@ VALUE Left_Factor_visit(VALUE self ) {
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar);
-        it=rb_funcall(self,sy_traverse,0);
+        it=Left_Factor_traverse(self );
         if (it==failobj) {
             it=failobj;
             goto pass1;
@@ -1275,11 +1272,11 @@ VALUE Left_Factor_visit(VALUE self ) {
         }
         _x=it;;
         bind_aset(bind2,1,_x);
-        it=rb_funcall(self,sy___lb_bind_lb_1_rb__1906,1,bind2);
+        it=rb_funcall(self,sy_Left_Factor__lb_bind_lb_1_rb__1906,1,bind2);
         _x=bind_aget(bind2,1);;
         _cur=it;;
         bind_aset(bind2,1,_x);
-        it=rb_funcall(self,sy__first_lp_bi_150a,1,bind2);
+        it=rb_funcall(self,sy_Left_Factor_first_lp_bi_150a,1,bind2);
         _x=bind_aget(bind2,1);;
         _start=it;;
         it=rb_ary_new3(0);
@@ -1300,7 +1297,7 @@ alt2_1:
         ;
         bind_aset(bind2,1,_start);
         bind_aset(bind2,2,_next);
-        it=rb_funcall(self,sy___lp_bind_lb_1_rb__34a7,1,bind2);
+        it=rb_funcall(self,sy_Left_Factor__lp_bind_lb_1_rb__34a7,1,bind2);
         _start=bind_aget(bind2,1);;
         _next=bind_aget(bind2,2);;
         if (it==failobj) {
@@ -1313,11 +1310,11 @@ alt2_1:
         arg1=it;
         bind_aset(bind2,1,_cur);
         bind_aset(bind2,2,_next);
-        it=rb_funcall(self,sy__bind_lb_1_rb__pl__4651,1,bind2);
+        it=rb_funcall(self,sy_Left_Factor_bind_lb_1_rb__pl__4651,1,bind2);
         _cur=bind_aget(bind2,1);;
         _next=bind_aget(bind2,2);;
         arg2=it;
-        it=rb_funcall(self,sy_factor,3,arg0,arg1,arg2);
+        it=Left_Factor_factor(self ,arg0,arg1,arg2);
         if (it==failobj) {
             it=failobj;
             goto alt2_2;
@@ -1330,7 +1327,7 @@ alt2_2:
         ptr->pos=oldpos2;
         bind_aset(bind2,1,_start);
         bind_aset(bind2,2,_next);
-        it=rb_funcall(self,sy___lp_bind_lb_1_rb__b868,1,bind2);
+        it=rb_funcall(self,sy_Left_Factor__lp_bind_lb_1_rb__b868,1,bind2);
         _start=bind_aget(bind2,1);;
         _next=bind_aget(bind2,2);;
         if (it==failobj) {
@@ -1339,19 +1336,19 @@ alt2_2:
         };
         bind_aset(bind2,1,_prev);
         bind_aset(bind2,2,_cur);
-        it=rb_funcall(self,sy__bind_lb_1_rb__pl__4c53,1,bind2);
+        it=rb_funcall(self,sy_Left_Factor_bind_lb_1_rb__pl__4c53,1,bind2);
         _prev=bind_aget(bind2,1);;
         _cur=bind_aget(bind2,2);;
         arg0=it;
         bind_aset(bind2,1,_next);
-        it=rb_funcall(self,sy__first_lp_bi_150a,1,bind2);
+        it=rb_funcall(self,sy_Left_Factor_first_lp_bi_150a,1,bind2);
         _next=bind_aget(bind2,1);;
         arg1=it;
         bind_aset(bind2,1,_next);
-        it=rb_funcall(self,sy___lb_bind_lb_1_rb__1906,1,bind2);
+        it=rb_funcall(self,sy_Left_Factor__lb_bind_lb_1_rb__1906,1,bind2);
         _next=bind_aget(bind2,1);;
         arg2=it;
-        it=rb_funcall(self,sy_factor,3,arg0,arg1,arg2);
+        it=Left_Factor_factor(self ,arg0,arg1,arg2);
         if (it==failobj) {
             it=failobj;
             goto alt2_3;
@@ -1380,7 +1377,7 @@ alt1_2:
         }
         bind_aset(bind2,1,_prev);
         bind_aset(bind2,2,_cur);
-        it=rb_funcall(self,sy__Or_lb__ti__lp_bin_849e,1,bind2);
+        it=rb_funcall(self,sy_Left_Factor_Or_lb__ti__lp_bin_849e,1,bind2);
         _prev=bind_aget(bind2,1);;
         _cur=bind_aget(bind2,2);;
         __result=it;;
@@ -1466,26 +1463,20 @@ void Init_Left_Factor_c() {
     rb_global_variable(&switchhash_Left_Factor_7);;
     switchhash_Left_Factor_8=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Or\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_Left_Factor_8);;
-    sy__Bind_lb_src_66c4=rb_intern("_Bind_lb_src_66c4");
-    sy__Or_lb__ti__lp_bin_849e=rb_intern("_Or_lb__ti__lp_bin_849e");
-    sy__Seq_lb__lb_bin_4ce0=rb_intern("_Seq_lb__lb_bin_4ce0");
-    sy___lb_bind_lb_1_rb__1906=rb_intern("__lb_bind_lb_1_rb__1906");
-    sy___lp_bind_lb_1_rb__34a7=rb_intern("__lp_bind_lb_1_rb__34a7");
-    sy___lp_bind_lb_1_rb__b868=rb_intern("__lp_bind_lb_1_rb__b868");
-    sy___lp_src_dot_cla_2024=rb_intern("__lp_src_dot_cla_2024");
-    sy__bind_lb_1_rb__lt__7b20=rb_intern("_bind_lb_1_rb__lt__7b20");
-    sy__bind_lb_1_rb__pl__4651=rb_intern("_bind_lb_1_rb__pl__4651");
-    sy__bind_lb_1_rb__pl__4c53=rb_intern("_bind_lb_1_rb__pl__4c53");
-    sy__bind_lb_1_rb__sp__6af0=rb_intern("_bind_lb_1_rb__sp__6af0");
-    sy__first_lp_bi_150a=rb_intern("_first_lp_bi_150a");
-    sy__if_sp_bind_lb__1bed=rb_intern("_if_sp_bind_lb__1bed");
-    sy__src_dot_expr_ef77=rb_intern("_src_dot_expr_ef77");
-    sy_binds=rb_intern("binds");
-    sy_factor=rb_intern("factor");
-    sy_first=rb_intern("first");
-    sy_traverse=rb_intern("traverse");
-    sy_traverse_item=rb_intern("traverse_item");
-    sy_visit=rb_intern("visit");
+    sy_Left_Factor_Bind_lb_src_66c4=rb_intern("Left_Factor_Bind_lb_src_66c4");
+    sy_Left_Factor_Or_lb__ti__lp_bin_849e=rb_intern("Left_Factor_Or_lb__ti__lp_bin_849e");
+    sy_Left_Factor_Seq_lb__lb_bin_4ce0=rb_intern("Left_Factor_Seq_lb__lb_bin_4ce0");
+    sy_Left_Factor__lb_bind_lb_1_rb__1906=rb_intern("Left_Factor__lb_bind_lb_1_rb__1906");
+    sy_Left_Factor__lp_bind_lb_1_rb__34a7=rb_intern("Left_Factor__lp_bind_lb_1_rb__34a7");
+    sy_Left_Factor__lp_bind_lb_1_rb__b868=rb_intern("Left_Factor__lp_bind_lb_1_rb__b868");
+    sy_Left_Factor__lp_src_dot_cla_2024=rb_intern("Left_Factor__lp_src_dot_cla_2024");
+    sy_Left_Factor_bind_lb_1_rb__lt__7b20=rb_intern("Left_Factor_bind_lb_1_rb__lt__7b20");
+    sy_Left_Factor_bind_lb_1_rb__pl__4651=rb_intern("Left_Factor_bind_lb_1_rb__pl__4651");
+    sy_Left_Factor_bind_lb_1_rb__pl__4c53=rb_intern("Left_Factor_bind_lb_1_rb__pl__4c53");
+    sy_Left_Factor_bind_lb_1_rb__sp__6af0=rb_intern("Left_Factor_bind_lb_1_rb__sp__6af0");
+    sy_Left_Factor_first_lp_bi_150a=rb_intern("Left_Factor_first_lp_bi_150a");
+    sy_Left_Factor_if_sp_bind_lb__1bed=rb_intern("Left_Factor_if_sp_bind_lb__1bed");
+    sy_Left_Factor_src_dot_expr_ef77=rb_intern("Left_Factor_src_dot_expr_ef77");
     rb_define_method(cls_Left_Factor,"binds",Left_Factor_binds,2);
     rb_define_method(cls_Left_Factor,"factor",Left_Factor_factor,3);
     rb_define_method(cls_Left_Factor,"first",Left_Factor_first,1);

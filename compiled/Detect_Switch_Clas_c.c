@@ -2,6 +2,10 @@
 #include "memo.c"
 VALUE cls_Detect_Switch_Clas;
 VALUE AmethystCore_anything(VALUE self );
+VALUE Amethyst_spaces(VALUE self );
+VALUE Detect_First_combine_or(VALUE self ,VALUE,VALUE,VALUE);
+VALUE Detect_First_combine_seq(VALUE self ,VALUE,VALUE);
+VALUE Detect_First_must_empty(VALUE self );
 VALUE Detect_Switch_Clas_itrans(VALUE self );
 VALUE Detect_Switch_Clas_root(VALUE self );
 VALUE Detect_Switch_Clas_traverse(VALUE self );
@@ -20,40 +24,32 @@ VALUE switchhash_Detect_Switch_Clas_8;
 VALUE switchhash_Detect_Switch_Clas_9;
 static VALUE c_Lattice_Clas;
 static VALUE c_Switch_Clas;
-static VALUE sy__Or_lb__ti_bind_d486;
-static VALUE sy__Seq_lb__ti__lp_bi_a321;
-static VALUE sy__Switch_C_63f7;
-static VALUE sy___at__contex_5f56;
-static VALUE sy___at__contex_cdb3;
-static VALUE sy___do_rules_eq__le__ab16;
-static VALUE sy___lb__lb_Lattic_62e5;
-static VALUE sy___lp_2;
-static VALUE sy___lp_;
-static VALUE sy___lp_src_dot_cla_2024;
-static VALUE sy__bind_lb_1_rb__dot__642a;
-static VALUE sy__bind_lb_1_rb__dot__76da;
-static VALUE sy__bind_lb_1_rb__dot__a482;
-static VALUE sy__bind_lb_1_rb__lb__0f18;
-static VALUE sy__bind_lb_1_rb__lb__75a5;
-static VALUE sy__bind_lb_1_rb__lb__fa06;
-static VALUE sy__bind_lb_1_rb__lt__7b20;
-static VALUE sy__bind_lb_1_rb__pl__4651;
-static VALUE sy__bind_lb_1_rb__sp__6af0;
-static VALUE sy__c_eq_Switch_4e5f;
-static VALUE sy__if_sp_bind_lb__1bed;
-static VALUE sy__src_25d9;
-static VALUE sy__src_dot_ary_d5cf;
-static VALUE sy__src_dot_rule_5acf;
-static VALUE sy__src_dot_rule_a719;
-static VALUE sy_combine_or;
-static VALUE sy_combine_seq;
+static VALUE sy_Detect_Switch_Clas_Or_lb__ti_bind_d486;
+static VALUE sy_Detect_Switch_Clas_Seq_lb__ti__lp_bi_a321;
+static VALUE sy_Detect_Switch_Clas_Switch_C_63f7;
+static VALUE sy_Detect_Switch_Clas__at__contex_5f56;
+static VALUE sy_Detect_Switch_Clas__at__contex_cdb3;
+static VALUE sy_Detect_Switch_Clas__do_rules_eq__le__ab16;
+static VALUE sy_Detect_Switch_Clas__lb__lb_Lattic_62e5;
+static VALUE sy_Detect_Switch_Clas__lp_2;
+static VALUE sy_Detect_Switch_Clas__lp_;
+static VALUE sy_Detect_Switch_Clas__lp_src_dot_cla_2024;
+static VALUE sy_Detect_Switch_Clas_bind_lb_1_rb__dot__642a;
+static VALUE sy_Detect_Switch_Clas_bind_lb_1_rb__dot__76da;
+static VALUE sy_Detect_Switch_Clas_bind_lb_1_rb__dot__a482;
+static VALUE sy_Detect_Switch_Clas_bind_lb_1_rb__lb__0f18;
+static VALUE sy_Detect_Switch_Clas_bind_lb_1_rb__lb__75a5;
+static VALUE sy_Detect_Switch_Clas_bind_lb_1_rb__lb__fa06;
+static VALUE sy_Detect_Switch_Clas_bind_lb_1_rb__lt__7b20;
+static VALUE sy_Detect_Switch_Clas_bind_lb_1_rb__pl__4651;
+static VALUE sy_Detect_Switch_Clas_bind_lb_1_rb__sp__6af0;
+static VALUE sy_Detect_Switch_Clas_c_eq_Switch_4e5f;
+static VALUE sy_Detect_Switch_Clas_if_sp_bind_lb__1bed;
+static VALUE sy_Detect_Switch_Clas_src_25d9;
+static VALUE sy_Detect_Switch_Clas_src_dot_ary_d5cf;
+static VALUE sy_Detect_Switch_Clas_src_dot_rule_5acf;
+static VALUE sy_Detect_Switch_Clas_src_dot_rule_a719;
 static VALUE sy_first;
-static VALUE sy_must_empty;
-static VALUE sy_root;
-static VALUE sy_spaces;
-static VALUE sy_traverse;
-static VALUE sy_traverse_item;
-static VALUE sy_visit;
 
 memo_struct *mem_Detect_Switch_Clas=NULL;
 VALUE memo_val_Detect_Switch_Clas;
@@ -78,7 +74,7 @@ VALUE Detect_Switch_Clas_itrans(VALUE self ) {
     Data_Get_Struct(self,cstruct,ptr);
     bind_aset(bind2,1,_autovar);
     bind_aset(bind2,2,_autovar_2);
-    it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
+    it=rb_funcall(self,sy_Detect_Switch_Clas__at__contex_5f56,1,bind2);
     _autovar=bind_aget(bind2,1);;
     _autovar_2=bind_aget(bind2,2);;
     it=rb_ary_new3(0);
@@ -104,10 +100,10 @@ alt2_1:
             ptr->ary=NULL;
             ame_setsrc2(self,_autovar_4);
             bind_aset(bind2,1,_autovar_2);
-            it=rb_funcall(self,sy__bind_lb_1_rb__lb__fa06,1,bind2);
+            it=rb_funcall(self,sy_Detect_Switch_Clas_bind_lb_1_rb__lb__fa06,1,bind2);
             _autovar_2=bind_aget(bind2,1);;
-            it=rb_funcall(self,sy___do_rules_eq__le__ab16,1,bind2);
-            it=rb_funcall(self,sy__src_dot_rule_5acf,1,bind2);
+            it=rb_funcall(self,sy_Detect_Switch_Clas__do_rules_eq__le__ab16,1,bind2);
+            it=rb_funcall(self,sy_Detect_Switch_Clas_src_dot_rule_5acf,1,bind2);
             _autovar_5=it;;
             cstruct oldpass2=*ptr;
             ptr->pos=ptr->len=0;
@@ -144,7 +140,7 @@ alt3_1:
                     ptr->pos=ptr->len=0;
                     ptr->ary=NULL;
                     ame_setsrc2(self,_autovar_8);
-                    it=rb_funcall(self,sy_root,0);
+                    it=Detect_Switch_Clas_root(self );
                     if (it==failobj) {
                         it=failobj;
                         goto pass4;
@@ -221,9 +217,9 @@ pass2:
 success2:
             *ptr=oldpass2;
             bind_aset(bind2,1,_rules);
-            it=rb_funcall(self,sy__src_dot_rule_a719,1,bind2);
+            it=rb_funcall(self,sy_Detect_Switch_Clas_src_dot_rule_a719,1,bind2);
             _rules=bind_aget(bind2,1);;
-            it=rb_funcall(self,sy__src_25d9,1,bind2);
+            it=rb_funcall(self,sy_Detect_Switch_Clas_src_25d9,1,bind2);
             _autovar_11=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) {
@@ -316,7 +312,7 @@ accept4:
     _autovar_13=it;;
     bind_aset(bind2,1,_autovar);
     bind_aset(bind2,2,_autovar_13);
-    it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+    it=rb_funcall(self,sy_Detect_Switch_Clas__at__contex_cdb3,1,bind2);
     _autovar=bind_aget(bind2,1);;
     _autovar_13=bind_aget(bind2,2);;
 fail:
@@ -330,7 +326,7 @@ VALUE Detect_Switch_Clas_root(VALUE self ) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    it=rb_funcall(self,sy_traverse,0);
+    it=Detect_Switch_Clas_traverse(self );
     if (it==failobj) {
         it=failobj;
         goto fail;
@@ -360,7 +356,7 @@ VALUE Detect_Switch_Clas_traverse(VALUE self ) {
     ptr->pos=ptr->len;
     it=rb_ary_new3(0);
     _nvars=it;;
-    it=rb_funcall(self,sy___lp_src_dot_cla_2024,1,bind2);
+    it=rb_funcall(self,sy_Detect_Switch_Clas__lp_src_dot_cla_2024,1,bind2);
     _ivars=it;;
     it=_ivars;
     _autovar=it;;
@@ -387,7 +383,7 @@ VALUE Detect_Switch_Clas_traverse(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=rb_funcall(self,sy_traverse_item,0);
+        it=Detect_Switch_Clas_traverse_item(self );
         if (it==failobj) {
             it=failobj;
             goto alt1_2;
@@ -395,7 +391,7 @@ alt1_1:
         _it=it;;
         bind_aset(bind2,1,_nvars);
         bind_aset(bind2,2,_it);
-        it=rb_funcall(self,sy__bind_lb_1_rb__sp__6af0,1,bind2);
+        it=rb_funcall(self,sy_Detect_Switch_Clas_bind_lb_1_rb__sp__6af0,1,bind2);
         _nvars=bind_aget(bind2,1);;
         _it=bind_aget(bind2,2);;
         ;
@@ -444,7 +440,7 @@ success1:
     *ptr=oldpass1;
     bind_aset(bind2,1,_ivars);
     bind_aset(bind2,2,_nvars);
-    it=rb_funcall(self,sy__if_sp_bind_lb__1bed,1,bind2);
+    it=rb_funcall(self,sy_Detect_Switch_Clas_if_sp_bind_lb__1bed,1,bind2);
     _ivars=bind_aget(bind2,1);;
     _nvars=bind_aget(bind2,2);;
     __result=it;;
@@ -475,7 +471,7 @@ VALUE Detect_Switch_Clas_traverse_item(VALUE self ) {
             int cut1=0;
 alt1_1:
             ;
-            it=rb_funcall(self,sy_visit,0);
+            it=Detect_Switch_Clas_visit(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt1_2;
@@ -493,7 +489,7 @@ alt1_2:
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
             ame_setsrc2(self,_autovar);
-            it=rb_funcall(self,sy_traverse,0);
+            it=Detect_Switch_Clas_traverse(self );
             if (it==failobj) {
                 it=failobj;
                 goto pass1;
@@ -551,7 +547,7 @@ alt2_1:
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
             ame_setsrc2(self,_autovar);
-            it=rb_funcall(self,sy_traverse,0);
+            it=Detect_Switch_Clas_traverse(self );
             if (it==failobj) {
                 it=failobj;
                 goto pass2;
@@ -609,7 +605,7 @@ accept2:
             int cut3=0;
 alt3_1:
             ;
-            it=rb_funcall(self,sy_visit,0);
+            it=Detect_Switch_Clas_visit(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt3_2;
@@ -635,7 +631,7 @@ alt3_2:
                 int cut4=0;
 alt4_1:
                 ;
-                it=rb_funcall(self,sy_traverse_item,0);
+                it=Detect_Switch_Clas_traverse_item(self );
                 if (it==failobj) {
                     it=failobj;
                     goto alt4_2;
@@ -643,7 +639,7 @@ alt4_1:
                 _it=it;;
                 bind_aset(bind2,1,_ar);
                 bind_aset(bind2,2,_it);
-                it=rb_funcall(self,sy__bind_lb_1_rb__lt__7b20,1,bind2);
+                it=rb_funcall(self,sy_Detect_Switch_Clas_bind_lb_1_rb__lt__7b20,1,bind2);
                 _ar=bind_aget(bind2,1);;
                 _it=bind_aget(bind2,2);;
                 ;
@@ -725,7 +721,7 @@ alt5_1:
                 int cut6=0;
 alt6_1:
                 ;
-                it=rb_funcall(self,sy_traverse_item,0);
+                it=Detect_Switch_Clas_traverse_item(self );
                 if (it==failobj) {
                     it=failobj;
                     goto alt6_2;
@@ -733,7 +729,7 @@ alt6_1:
                 _it=it;;
                 bind_aset(bind2,1,_ar);
                 bind_aset(bind2,2,_it);
-                it=rb_funcall(self,sy__bind_lb_1_rb__lt__7b20,1,bind2);
+                it=rb_funcall(self,sy_Detect_Switch_Clas_bind_lb_1_rb__lt__7b20,1,bind2);
                 _ar=bind_aget(bind2,1);;
                 _it=bind_aget(bind2,2);;
                 ;
@@ -807,7 +803,7 @@ accept5:
             int cut7=0;
 alt7_1:
             ;
-            it=rb_funcall(self,sy_visit,0);
+            it=Detect_Switch_Clas_visit(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt7_2;
@@ -889,7 +885,7 @@ alt1_1:
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_5);
-        it=rb_funcall(self,sy_spaces,0);
+        it=Amethyst_spaces(self );
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... 'b':
             ;
@@ -974,7 +970,7 @@ pass3:
 success3:
         *ptr=oldpass3;
         bind_aset(bind2,1,_clas);
-        it=rb_funcall(self,sy__Switch_C_63f7,1,bind2);
+        it=rb_funcall(self,sy_Detect_Switch_Clas_Switch_C_63f7,1,bind2);
         _clas=bind_aget(bind2,1);;
         _autovar_7=it;;
         it=Qnil;
@@ -1014,7 +1010,7 @@ alt1_2:
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_9);
-        it=rb_funcall(self,sy_spaces,0);
+        it=Amethyst_spaces(self );
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... 'e':
             ;
@@ -1050,7 +1046,7 @@ pass5:
         }
 success5:
         *ptr=oldpass5;
-        it=rb_funcall(self,sy__src_25d9,1,bind2);
+        it=rb_funcall(self,sy_Detect_Switch_Clas_src_25d9,1,bind2);
         _autovar_10=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
@@ -1080,7 +1076,7 @@ alt1_3:
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_11);
         ptr->pos=ptr->len;
-        it=rb_funcall(self,sy__src_25d9,1,bind2);
+        it=rb_funcall(self,sy_Detect_Switch_Clas_src_25d9,1,bind2);
         arg0=it;
         it=rb_funcall(self,sy_first,1,arg0);
         if (it==failobj) {
@@ -1089,14 +1085,14 @@ alt1_3:
         }
         _firs=it;;
         bind_aset(bind2,1,_firs);
-        it=rb_funcall(self,sy___lp_,1,bind2);
+        it=rb_funcall(self,sy_Detect_Switch_Clas__lp_,1,bind2);
         _firs=bind_aget(bind2,1);;
         if (it==failobj) {
             it=failobj;
             goto pass6;
         };
         bind_aset(bind2,1,_firs);
-        it=rb_funcall(self,sy__c_eq_Switch_4e5f,1,bind2);
+        it=rb_funcall(self,sy_Detect_Switch_Clas_c_eq_Switch_4e5f,1,bind2);
         _firs=bind_aget(bind2,1);;
         _autovar_12=it;;
         it=Qnil;
@@ -1144,7 +1140,7 @@ accept1:
             int cut2=0;
 alt2_1:
             ;
-            it=rb_funcall(self,sy_traverse_item,0);
+            it=Detect_Switch_Clas_traverse_item(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt2_2;
@@ -1173,7 +1169,7 @@ accept2:
         _aswitch=it;;
         bind_aset(bind2,1,_items);
         bind_aset(bind2,2,_aswitch);
-        it=rb_funcall(self,sy__bind_lb_1_rb__dot__76da,1,bind2);
+        it=rb_funcall(self,sy_Detect_Switch_Clas_bind_lb_1_rb__dot__76da,1,bind2);
         _items=bind_aget(bind2,1);;
         _aswitch=bind_aget(bind2,2);;
         int oldpos3=ptr->pos;
@@ -1181,14 +1177,14 @@ accept2:
 alt3_1:
         ;
         bind_aset(bind2,1,_aswitch);
-        it=rb_funcall(self,sy___lp_2,1,bind2);
+        it=rb_funcall(self,sy_Detect_Switch_Clas__lp_2,1,bind2);
         _aswitch=bind_aget(bind2,1);;
         if (it==failobj) {
             it=failobj;
             goto alt3_2;
         };
         bind_aset(bind2,1,_items);
-        it=rb_funcall(self,sy__Or_lb__ti_bind_d486,1,bind2);
+        it=rb_funcall(self,sy_Detect_Switch_Clas_Or_lb__ti_bind_d486,1,bind2);
         _items=bind_aget(bind2,1);;
         _autovar_16=it;;
 
@@ -1218,7 +1214,7 @@ alt3_2:
         switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Switch_Clas_4,rb_obj_class(ame_curobj2(ptr))))) {
         case 0/*Switch_Clas*/:
             ;
-            it=rb_funcall(self,sy___lb__lb_Lattic_62e5,1,bind2);
+            it=rb_funcall(self,sy_Detect_Switch_Clas__lb__lb_Lattic_62e5,1,bind2);
             _list=it;;
             int oldpos4=ptr->pos;
             int cut4=0;
@@ -1232,7 +1228,7 @@ alt4_1:
             ptr->ary=NULL;
             ame_setsrc2(self,_autovar_19);
             ptr->pos=ptr->len;
-            it=rb_funcall(self,sy__src_dot_ary_d5cf,1,bind2);
+            it=rb_funcall(self,sy_Detect_Switch_Clas_src_dot_ary_d5cf,1,bind2);
             _ary=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) {
@@ -1256,7 +1252,7 @@ success10:
             bind_aset(bind2,2,_ary);
             bind_aset(bind2,3,_newlist);
             bind_aset(bind2,4,_lat);
-            it=rb_funcall(self,sy__bind_lb_1_rb__dot__642a,1,bind2);
+            it=rb_funcall(self,sy_Detect_Switch_Clas_bind_lb_1_rb__dot__642a,1,bind2);
             _list=bind_aget(bind2,1);;
             _ary=bind_aget(bind2,2);;
             _newlist=bind_aget(bind2,3);;
@@ -1267,7 +1263,7 @@ success10:
             arg1=it;
             it=_newlist;
             arg2=it;
-            it=rb_funcall(self,sy_combine_or,3,arg0,arg1,arg2);
+            it=Detect_First_combine_or(self ,arg0,arg1,arg2);
             if (it==failobj) {
                 it=failobj;
                 goto alt4_2;
@@ -1286,7 +1282,7 @@ alt4_2:
             _n=it;;
             bind_aset(bind2,1,_list);
             bind_aset(bind2,2,_n);
-            it=rb_funcall(self,sy__bind_lb_1_rb__dot__a482,1,bind2);
+            it=rb_funcall(self,sy_Detect_Switch_Clas_bind_lb_1_rb__dot__a482,1,bind2);
             _list=bind_aget(bind2,1);;
             _n=bind_aget(bind2,2);;
             _newlist=it;;
@@ -1296,7 +1292,7 @@ alt4_2:
             arg1=it;
             it=_newlist;
             arg2=it;
-            it=rb_funcall(self,sy_combine_or,3,arg0,arg1,arg2);
+            it=Detect_First_combine_or(self ,arg0,arg1,arg2);
             if (it==failobj) {
                 it=failobj;
                 goto alt4_3;
@@ -1316,7 +1312,7 @@ alt4_3:
             _cls=it;;
             bind_aset(bind2,1,_cls);
             bind_aset(bind2,2,_list);
-            it=rb_funcall(self,sy__bind_lb_1_rb__lb__0f18,1,bind2);
+            it=rb_funcall(self,sy_Detect_Switch_Clas_bind_lb_1_rb__lb__0f18,1,bind2);
             _cls=bind_aget(bind2,1);;
             _list=bind_aget(bind2,2);;
             __result_2=it;;
@@ -1341,7 +1337,7 @@ accept4:
             break;
         case 1/*Object*/:
             ;
-            it=rb_funcall(self,sy___lb__lb_Lattic_62e5,1,bind2);
+            it=rb_funcall(self,sy_Detect_Switch_Clas__lb__lb_Lattic_62e5,1,bind2);
             _list=it;;
             int oldpos5=ptr->pos;
             int cut5=0;
@@ -1355,7 +1351,7 @@ alt5_1:
             _n=it;;
             bind_aset(bind2,1,_list);
             bind_aset(bind2,2,_n);
-            it=rb_funcall(self,sy__bind_lb_1_rb__dot__a482,1,bind2);
+            it=rb_funcall(self,sy_Detect_Switch_Clas_bind_lb_1_rb__dot__a482,1,bind2);
             _list=bind_aget(bind2,1);;
             _n=bind_aget(bind2,2);;
             _newlist=it;;
@@ -1365,7 +1361,7 @@ alt5_1:
             arg1=it;
             it=_newlist;
             arg2=it;
-            it=rb_funcall(self,sy_combine_or,3,arg0,arg1,arg2);
+            it=Detect_First_combine_or(self ,arg0,arg1,arg2);
             if (it==failobj) {
                 it=failobj;
                 goto alt5_2;
@@ -1385,7 +1381,7 @@ alt5_2:
             _cls=it;;
             bind_aset(bind2,1,_cls);
             bind_aset(bind2,2,_list);
-            it=rb_funcall(self,sy__bind_lb_1_rb__lb__0f18,1,bind2);
+            it=rb_funcall(self,sy_Detect_Switch_Clas_bind_lb_1_rb__lb__0f18,1,bind2);
             _cls=bind_aget(bind2,1);;
             _list=bind_aget(bind2,2);;
             __result_2=it;;
@@ -1482,7 +1478,7 @@ success7:
             int cut6=0;
 alt6_1:
             ;
-            it=rb_funcall(self,sy_traverse_item,0);
+            it=Detect_Switch_Clas_traverse_item(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt6_2;
@@ -1533,7 +1529,7 @@ accept6:
             int cut7=0;
 alt7_1:
             ;
-            it=rb_funcall(self,sy_must_empty,0);
+            it=Detect_First_must_empty(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt7_2;
@@ -1543,11 +1539,11 @@ alt7_1:
             arg0=it;
             bind_aset(bind2,1,_prefix);
             bind_aset(bind2,2,_s);
-            it=rb_funcall(self,sy__bind_lb_1_rb__pl__4651,1,bind2);
+            it=rb_funcall(self,sy_Detect_Switch_Clas_bind_lb_1_rb__pl__4651,1,bind2);
             _prefix=bind_aget(bind2,1);;
             _s=bind_aget(bind2,2);;
             arg1=it;
-            it=rb_funcall(self,sy_combine_seq,2,arg0,arg1);
+            it=Detect_First_combine_seq(self ,arg0,arg1);
             if (it==failobj) {
                 it=failobj;
                 goto alt7_2;
@@ -1566,7 +1562,7 @@ alt7_2:
             ptr->ary=NULL;
             ame_setsrc2(self,_autovar_27);
             ptr->pos=ptr->len;
-            it=rb_funcall(self,sy__src_dot_ary_d5cf,1,bind2);
+            it=rb_funcall(self,sy_Detect_Switch_Clas_src_dot_ary_d5cf,1,bind2);
             _ary_2=it;;
             it=Qnil;
             if (ptr->pos<ptr->len) {
@@ -1621,7 +1617,7 @@ accept8:
             bind_aset(bind2,2,_ary_2);
             bind_aset(bind2,3,_prefix);
             bind_aset(bind2,4,_rest);
-            it=rb_funcall(self,sy__bind_lb_1_rb__lb__75a5,1,bind2);
+            it=rb_funcall(self,sy_Detect_Switch_Clas_bind_lb_1_rb__lb__75a5,1,bind2);
             _cls_2=bind_aget(bind2,1);;
             _ary_2=bind_aget(bind2,2);;
             _prefix=bind_aget(bind2,3);;
@@ -1667,7 +1663,7 @@ accept9:
             _ary_2=it;;
             bind_aset(bind2,1,_prefix);
             bind_aset(bind2,2,_ary_2);
-            it=rb_funcall(self,sy__Seq_lb__ti__lp_bi_a321,1,bind2);
+            it=rb_funcall(self,sy_Detect_Switch_Clas_Seq_lb__ti__lp_bi_a321,1,bind2);
             _prefix=bind_aget(bind2,1);;
             _ary_2=bind_aget(bind2,2);;
             __result_3=it;;
@@ -1698,7 +1694,7 @@ accept7:
             int cut10=0;
 alt10_1:
             ;
-            it=rb_funcall(self,sy_must_empty,0);
+            it=Detect_First_must_empty(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt10_2;
@@ -1708,11 +1704,11 @@ alt10_1:
             arg0=it;
             bind_aset(bind2,1,_prefix);
             bind_aset(bind2,2,_s);
-            it=rb_funcall(self,sy__bind_lb_1_rb__pl__4651,1,bind2);
+            it=rb_funcall(self,sy_Detect_Switch_Clas_bind_lb_1_rb__pl__4651,1,bind2);
             _prefix=bind_aget(bind2,1);;
             _s=bind_aget(bind2,2);;
             arg1=it;
-            it=rb_funcall(self,sy_combine_seq,2,arg0,arg1);
+            it=Detect_First_combine_seq(self ,arg0,arg1);
             if (it==failobj) {
                 it=failobj;
                 goto alt10_2;
@@ -1758,7 +1754,7 @@ accept11:
             _ary_2=it;;
             bind_aset(bind2,1,_prefix);
             bind_aset(bind2,2,_ary_2);
-            it=rb_funcall(self,sy__Seq_lb__ti__lp_bi_a321,1,bind2);
+            it=rb_funcall(self,sy_Detect_Switch_Clas_Seq_lb__ti__lp_bi_a321,1,bind2);
             _prefix=bind_aget(bind2,1);;
             _ary_2=bind_aget(bind2,2);;
             __result_3=it;;
@@ -1872,40 +1868,32 @@ void Init_Detect_Switch_Clas_c() {
     rb_global_variable(&switchhash_Detect_Switch_Clas_8);;
     switchhash_Detect_Switch_Clas_9=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Or\nnext h[k]=2 if k<=Seq\nnext h[k]=3 if k<=Object\n}");
     rb_global_variable(&switchhash_Detect_Switch_Clas_9);;
-    sy__Or_lb__ti_bind_d486=rb_intern("_Or_lb__ti_bind_d486");
-    sy__Seq_lb__ti__lp_bi_a321=rb_intern("_Seq_lb__ti__lp_bi_a321");
-    sy__Switch_C_63f7=rb_intern("_Switch_C_63f7");
-    sy___at__contex_5f56=rb_intern("__at__contex_5f56");
-    sy___at__contex_cdb3=rb_intern("__at__contex_cdb3");
-    sy___do_rules_eq__le__ab16=rb_intern("__do_rules_eq__le__ab16");
-    sy___lb__lb_Lattic_62e5=rb_intern("__lb__lb_Lattic_62e5");
-    sy___lp_2=rb_intern("__lp_2");
-    sy___lp_=rb_intern("__lp_");
-    sy___lp_src_dot_cla_2024=rb_intern("__lp_src_dot_cla_2024");
-    sy__bind_lb_1_rb__dot__642a=rb_intern("_bind_lb_1_rb__dot__642a");
-    sy__bind_lb_1_rb__dot__76da=rb_intern("_bind_lb_1_rb__dot__76da");
-    sy__bind_lb_1_rb__dot__a482=rb_intern("_bind_lb_1_rb__dot__a482");
-    sy__bind_lb_1_rb__lb__0f18=rb_intern("_bind_lb_1_rb__lb__0f18");
-    sy__bind_lb_1_rb__lb__75a5=rb_intern("_bind_lb_1_rb__lb__75a5");
-    sy__bind_lb_1_rb__lb__fa06=rb_intern("_bind_lb_1_rb__lb__fa06");
-    sy__bind_lb_1_rb__lt__7b20=rb_intern("_bind_lb_1_rb__lt__7b20");
-    sy__bind_lb_1_rb__pl__4651=rb_intern("_bind_lb_1_rb__pl__4651");
-    sy__bind_lb_1_rb__sp__6af0=rb_intern("_bind_lb_1_rb__sp__6af0");
-    sy__c_eq_Switch_4e5f=rb_intern("_c_eq_Switch_4e5f");
-    sy__if_sp_bind_lb__1bed=rb_intern("_if_sp_bind_lb__1bed");
-    sy__src_25d9=rb_intern("_src_25d9");
-    sy__src_dot_ary_d5cf=rb_intern("_src_dot_ary_d5cf");
-    sy__src_dot_rule_5acf=rb_intern("_src_dot_rule_5acf");
-    sy__src_dot_rule_a719=rb_intern("_src_dot_rule_a719");
-    sy_combine_or=rb_intern("combine_or");
-    sy_combine_seq=rb_intern("combine_seq");
+    sy_Detect_Switch_Clas_Or_lb__ti_bind_d486=rb_intern("Detect_Switch_Clas_Or_lb__ti_bind_d486");
+    sy_Detect_Switch_Clas_Seq_lb__ti__lp_bi_a321=rb_intern("Detect_Switch_Clas_Seq_lb__ti__lp_bi_a321");
+    sy_Detect_Switch_Clas_Switch_C_63f7=rb_intern("Detect_Switch_Clas_Switch_C_63f7");
+    sy_Detect_Switch_Clas__at__contex_5f56=rb_intern("Detect_Switch_Clas__at__contex_5f56");
+    sy_Detect_Switch_Clas__at__contex_cdb3=rb_intern("Detect_Switch_Clas__at__contex_cdb3");
+    sy_Detect_Switch_Clas__do_rules_eq__le__ab16=rb_intern("Detect_Switch_Clas__do_rules_eq__le__ab16");
+    sy_Detect_Switch_Clas__lb__lb_Lattic_62e5=rb_intern("Detect_Switch_Clas__lb__lb_Lattic_62e5");
+    sy_Detect_Switch_Clas__lp_2=rb_intern("Detect_Switch_Clas__lp_2");
+    sy_Detect_Switch_Clas__lp_=rb_intern("Detect_Switch_Clas__lp_");
+    sy_Detect_Switch_Clas__lp_src_dot_cla_2024=rb_intern("Detect_Switch_Clas__lp_src_dot_cla_2024");
+    sy_Detect_Switch_Clas_bind_lb_1_rb__dot__642a=rb_intern("Detect_Switch_Clas_bind_lb_1_rb__dot__642a");
+    sy_Detect_Switch_Clas_bind_lb_1_rb__dot__76da=rb_intern("Detect_Switch_Clas_bind_lb_1_rb__dot__76da");
+    sy_Detect_Switch_Clas_bind_lb_1_rb__dot__a482=rb_intern("Detect_Switch_Clas_bind_lb_1_rb__dot__a482");
+    sy_Detect_Switch_Clas_bind_lb_1_rb__lb__0f18=rb_intern("Detect_Switch_Clas_bind_lb_1_rb__lb__0f18");
+    sy_Detect_Switch_Clas_bind_lb_1_rb__lb__75a5=rb_intern("Detect_Switch_Clas_bind_lb_1_rb__lb__75a5");
+    sy_Detect_Switch_Clas_bind_lb_1_rb__lb__fa06=rb_intern("Detect_Switch_Clas_bind_lb_1_rb__lb__fa06");
+    sy_Detect_Switch_Clas_bind_lb_1_rb__lt__7b20=rb_intern("Detect_Switch_Clas_bind_lb_1_rb__lt__7b20");
+    sy_Detect_Switch_Clas_bind_lb_1_rb__pl__4651=rb_intern("Detect_Switch_Clas_bind_lb_1_rb__pl__4651");
+    sy_Detect_Switch_Clas_bind_lb_1_rb__sp__6af0=rb_intern("Detect_Switch_Clas_bind_lb_1_rb__sp__6af0");
+    sy_Detect_Switch_Clas_c_eq_Switch_4e5f=rb_intern("Detect_Switch_Clas_c_eq_Switch_4e5f");
+    sy_Detect_Switch_Clas_if_sp_bind_lb__1bed=rb_intern("Detect_Switch_Clas_if_sp_bind_lb__1bed");
+    sy_Detect_Switch_Clas_src_25d9=rb_intern("Detect_Switch_Clas_src_25d9");
+    sy_Detect_Switch_Clas_src_dot_ary_d5cf=rb_intern("Detect_Switch_Clas_src_dot_ary_d5cf");
+    sy_Detect_Switch_Clas_src_dot_rule_5acf=rb_intern("Detect_Switch_Clas_src_dot_rule_5acf");
+    sy_Detect_Switch_Clas_src_dot_rule_a719=rb_intern("Detect_Switch_Clas_src_dot_rule_a719");
     sy_first=rb_intern("first");
-    sy_must_empty=rb_intern("must_empty");
-    sy_root=rb_intern("root");
-    sy_spaces=rb_intern("spaces");
-    sy_traverse=rb_intern("traverse");
-    sy_traverse_item=rb_intern("traverse_item");
-    sy_visit=rb_intern("visit");
     rb_define_method(cls_Detect_Switch_Clas,"itrans",Detect_Switch_Clas_itrans,0);
     rb_define_method(cls_Detect_Switch_Clas,"root",Detect_Switch_Clas_root,0);
     rb_define_method(cls_Detect_Switch_Clas,"traverse",Detect_Switch_Clas_traverse,0);

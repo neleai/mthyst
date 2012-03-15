@@ -12,24 +12,21 @@ VALUE switchhash_Add_Contextual_Arguments_3;
 VALUE switchhash_Add_Contextual_Arguments_4;
 VALUE switchhash_Add_Contextual_Arguments_5;
 VALUE switchhash_Add_Contextual_Arguments_6;
-static VALUE sy__Seq_lb_Act_lb__84b5;
-static VALUE sy___at__contex_5f56;
-static VALUE sy___at__contex_cdb3;
-static VALUE sy___at__contex_d6d5;
-static VALUE sy___at_context_25cc;
-static VALUE sy___at_context_54ee;
-static VALUE sy___lp__at_cargs_lb__e1d6;
-static VALUE sy___lp_src_dot_cla_2024;
-static VALUE sy__bind_lb_1_rb__eq__9326;
-static VALUE sy__bind_lb_1_rb__lb__6ab8;
-static VALUE sy__bind_lb_1_rb__lt__7b20;
-static VALUE sy__bind_lb_1_rb__sp__6af0;
-static VALUE sy__if_sp_bind_lb__1bed;
-static VALUE sy__src_25d9;
-static VALUE sy__src_dot_dup_d768;
-static VALUE sy_traverse;
-static VALUE sy_traverse_item;
-static VALUE sy_visit;
+static VALUE sy_Add_Contextual_Arguments_Seq_lb_Act_lb__84b5;
+static VALUE sy_Add_Contextual_Arguments__at__contex_5f56;
+static VALUE sy_Add_Contextual_Arguments__at__contex_cdb3;
+static VALUE sy_Add_Contextual_Arguments__at__contex_d6d5;
+static VALUE sy_Add_Contextual_Arguments__at_context_25cc;
+static VALUE sy_Add_Contextual_Arguments__at_context_54ee;
+static VALUE sy_Add_Contextual_Arguments__lp__at_cargs_lb__e1d6;
+static VALUE sy_Add_Contextual_Arguments__lp_src_dot_cla_2024;
+static VALUE sy_Add_Contextual_Arguments_bind_lb_1_rb__eq__9326;
+static VALUE sy_Add_Contextual_Arguments_bind_lb_1_rb__lb__6ab8;
+static VALUE sy_Add_Contextual_Arguments_bind_lb_1_rb__lt__7b20;
+static VALUE sy_Add_Contextual_Arguments_bind_lb_1_rb__sp__6af0;
+static VALUE sy_Add_Contextual_Arguments_if_sp_bind_lb__1bed;
+static VALUE sy_Add_Contextual_Arguments_src_25d9;
+static VALUE sy_Add_Contextual_Arguments_src_dot_dup_d768;
 VALUE profile_report_Add_Contextual_Arguments(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -45,10 +42,10 @@ VALUE Add_Contextual_Arguments_root(VALUE self ) {
     Data_Get_Struct(self,cstruct,ptr);
     bind_aset(bind2,1,_autovar);
     bind_aset(bind2,2,_autovar_2);
-    it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
+    it=rb_funcall(self,sy_Add_Contextual_Arguments__at__contex_5f56,1,bind2);
     _autovar=bind_aget(bind2,1);;
     _autovar_2=bind_aget(bind2,2);;
-    it=rb_funcall(self,sy__src_dot_dup_d768,1,bind2);
+    it=rb_funcall(self,sy_Add_Contextual_Arguments_src_dot_dup_d768,1,bind2);
     _autovar_3=it;;
     cstruct oldpass1=*ptr;
     ptr->pos=ptr->len=0;
@@ -93,15 +90,15 @@ success1:
     ptr->ary=NULL;
     ame_setsrc2(self,_autovar_5);
     bind_aset(bind2,1,_autovar_2);
-    it=rb_funcall(self,sy__bind_lb_1_rb__lb__6ab8,1,bind2);
+    it=rb_funcall(self,sy_Add_Contextual_Arguments_bind_lb_1_rb__lb__6ab8,1,bind2);
     _autovar_2=bind_aget(bind2,1);;
-    it=rb_funcall(self,sy__src_25d9,1,bind2);
+    it=rb_funcall(self,sy_Add_Contextual_Arguments_src_25d9,1,bind2);
     _s=it;;
-    it=rb_funcall(self,sy___at_context_25cc,1,bind2);
+    it=rb_funcall(self,sy_Add_Contextual_Arguments__at_context_25cc,1,bind2);
     bind_aset(bind2,1,_autovar_2);
-    it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+    it=rb_funcall(self,sy_Add_Contextual_Arguments__at__contex_d6d5,1,bind2);
     _autovar_2=bind_aget(bind2,1);;
-    it=rb_funcall(self,sy_traverse,0);
+    it=Add_Contextual_Arguments_traverse(self );
     if (it==failobj) {
         it=failobj;
         goto pass2;
@@ -110,7 +107,7 @@ success1:
     bind_aset(bind2,1,_t);
     bind_aset(bind2,2,_autovar_2);
     bind_aset(bind2,3,_s);
-    it=rb_funcall(self,sy__bind_lb_1_rb__eq__9326,1,bind2);
+    it=rb_funcall(self,sy_Add_Contextual_Arguments_bind_lb_1_rb__eq__9326,1,bind2);
     _t=bind_aget(bind2,1);;
     _autovar_2=bind_aget(bind2,2);;
     _s=bind_aget(bind2,3);;
@@ -134,7 +131,7 @@ success2:
     _autovar_7=it;;
     bind_aset(bind2,1,_autovar);
     bind_aset(bind2,2,_autovar_7);
-    it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+    it=rb_funcall(self,sy_Add_Contextual_Arguments__at__contex_cdb3,1,bind2);
     _autovar=bind_aget(bind2,1);;
     _autovar_7=bind_aget(bind2,2);;
 fail:
@@ -151,7 +148,7 @@ VALUE Add_Contextual_Arguments_traverse(VALUE self ) {
     ptr->pos=ptr->len;
     it=rb_ary_new3(0);
     _nvars=it;;
-    it=rb_funcall(self,sy___lp_src_dot_cla_2024,1,bind2);
+    it=rb_funcall(self,sy_Add_Contextual_Arguments__lp_src_dot_cla_2024,1,bind2);
     _ivars=it;;
     it=_ivars;
     _autovar=it;;
@@ -178,7 +175,7 @@ VALUE Add_Contextual_Arguments_traverse(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=rb_funcall(self,sy_traverse_item,0);
+        it=Add_Contextual_Arguments_traverse_item(self );
         if (it==failobj) {
             it=failobj;
             goto alt1_2;
@@ -186,7 +183,7 @@ alt1_1:
         _it=it;;
         bind_aset(bind2,1,_nvars);
         bind_aset(bind2,2,_it);
-        it=rb_funcall(self,sy__bind_lb_1_rb__sp__6af0,1,bind2);
+        it=rb_funcall(self,sy_Add_Contextual_Arguments_bind_lb_1_rb__sp__6af0,1,bind2);
         _nvars=bind_aget(bind2,1);;
         _it=bind_aget(bind2,2);;
         ;
@@ -235,7 +232,7 @@ success1:
     *ptr=oldpass1;
     bind_aset(bind2,1,_ivars);
     bind_aset(bind2,2,_nvars);
-    it=rb_funcall(self,sy__if_sp_bind_lb__1bed,1,bind2);
+    it=rb_funcall(self,sy_Add_Contextual_Arguments_if_sp_bind_lb__1bed,1,bind2);
     _ivars=bind_aget(bind2,1);;
     _nvars=bind_aget(bind2,2);;
     __result=it;;
@@ -262,7 +259,7 @@ VALUE Add_Contextual_Arguments_traverse_item(VALUE self ) {
             int cut1=0;
 alt1_1:
             ;
-            it=rb_funcall(self,sy_visit,0);
+            it=Add_Contextual_Arguments_visit(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt1_2;
@@ -280,7 +277,7 @@ alt1_2:
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
             ame_setsrc2(self,_autovar);
-            it=rb_funcall(self,sy_traverse,0);
+            it=Add_Contextual_Arguments_traverse(self );
             if (it==failobj) {
                 it=failobj;
                 goto pass1;
@@ -338,7 +335,7 @@ alt2_1:
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
             ame_setsrc2(self,_autovar);
-            it=rb_funcall(self,sy_traverse,0);
+            it=Add_Contextual_Arguments_traverse(self );
             if (it==failobj) {
                 it=failobj;
                 goto pass2;
@@ -395,7 +392,7 @@ accept2:
             int cut3=0;
 alt3_1:
             ;
-            it=rb_funcall(self,sy_visit,0);
+            it=Add_Contextual_Arguments_visit(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt3_2;
@@ -421,7 +418,7 @@ alt3_2:
                 int cut4=0;
 alt4_1:
                 ;
-                it=rb_funcall(self,sy_traverse_item,0);
+                it=Add_Contextual_Arguments_traverse_item(self );
                 if (it==failobj) {
                     it=failobj;
                     goto alt4_2;
@@ -429,7 +426,7 @@ alt4_1:
                 _it=it;;
                 bind_aset(bind2,1,_ar);
                 bind_aset(bind2,2,_it);
-                it=rb_funcall(self,sy__bind_lb_1_rb__lt__7b20,1,bind2);
+                it=rb_funcall(self,sy_Add_Contextual_Arguments_bind_lb_1_rb__lt__7b20,1,bind2);
                 _ar=bind_aget(bind2,1);;
                 _it=bind_aget(bind2,2);;
                 ;
@@ -511,7 +508,7 @@ alt5_1:
                 int cut6=0;
 alt6_1:
                 ;
-                it=rb_funcall(self,sy_traverse_item,0);
+                it=Add_Contextual_Arguments_traverse_item(self );
                 if (it==failobj) {
                     it=failobj;
                     goto alt6_2;
@@ -519,7 +516,7 @@ alt6_1:
                 _it=it;;
                 bind_aset(bind2,1,_ar);
                 bind_aset(bind2,2,_it);
-                it=rb_funcall(self,sy__bind_lb_1_rb__lt__7b20,1,bind2);
+                it=rb_funcall(self,sy_Add_Contextual_Arguments_bind_lb_1_rb__lt__7b20,1,bind2);
                 _ar=bind_aget(bind2,1);;
                 _it=bind_aget(bind2,2);;
                 ;
@@ -592,7 +589,7 @@ accept5:
             int cut7=0;
 alt7_1:
             ;
-            it=rb_funcall(self,sy_visit,0);
+            it=Add_Contextual_Arguments_visit(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt7_2;
@@ -649,7 +646,7 @@ VALUE Add_Contextual_Arguments_visit(VALUE self ) {
         ;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
+        it=rb_funcall(self,sy_Add_Contextual_Arguments__at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_2=bind_aget(bind2,2);;
         it=ptr->ary[ptr->pos];            ;
@@ -659,15 +656,15 @@ VALUE Add_Contextual_Arguments_visit(VALUE self ) {
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_3);
-        it=rb_funcall(self,sy___lp__at_cargs_lb__e1d6,1,bind2);
+        it=rb_funcall(self,sy_Add_Contextual_Arguments__lp__at_cargs_lb__e1d6,1,bind2);
         if (it==failobj) {
             it=failobj;
             goto pass1;
         };
         bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy_Add_Contextual_Arguments__at__contex_d6d5,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
-        it=rb_funcall(self,sy_traverse,0);
+        it=Add_Contextual_Arguments_traverse(self );
         if (it==failobj) {
             it=failobj;
             goto pass1;
@@ -690,14 +687,14 @@ success1:
         *ptr=oldpass1;
         bind_aset(bind2,1,_autovar_2);
         bind_aset(bind2,2,_t);
-        it=rb_funcall(self,sy__Seq_lb_Act_lb__84b5,1,bind2);
+        it=rb_funcall(self,sy_Add_Contextual_Arguments_Seq_lb_Act_lb__84b5,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
         _t=bind_aget(bind2,2);;
         __result=it;;
         _autovar_4=it;;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_4);
-        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        it=rb_funcall(self,sy_Add_Contextual_Arguments__at__contex_cdb3,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_4=bind_aget(bind2,2);;
         break;
@@ -705,7 +702,7 @@ success1:
         ;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
+        it=rb_funcall(self,sy_Add_Contextual_Arguments__at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_2=bind_aget(bind2,2);;
         it=ptr->ary[ptr->pos];            ;
@@ -723,7 +720,7 @@ success1:
         _name=it;;
         bind_aset(bind2,1,_autovar_2);
         bind_aset(bind2,2,_name);
-        it=rb_funcall(self,sy___at_context_54ee,1,bind2);
+        it=rb_funcall(self,sy_Add_Contextual_Arguments__at_context_54ee,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
         _name=bind_aget(bind2,2);;
         _autovar_6=it;;
@@ -746,7 +743,7 @@ success2:
         _autovar_4=it;;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_4);
-        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        it=rb_funcall(self,sy_Add_Contextual_Arguments__at__contex_cdb3,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_4=bind_aget(bind2,2);;
         break;
@@ -754,7 +751,7 @@ success2:
         ;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
+        it=rb_funcall(self,sy_Add_Contextual_Arguments__at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_2=bind_aget(bind2,2);;
         if (1) {
@@ -782,24 +779,21 @@ void Init_Add_Contextual_Arguments_c() {
     rb_global_variable(&switchhash_Add_Contextual_Arguments_5);;
     switchhash_Add_Contextual_Arguments_6=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Contextual_Argument\nnext h[k]=2 if k<=Object\n}");
     rb_global_variable(&switchhash_Add_Contextual_Arguments_6);;
-    sy__Seq_lb_Act_lb__84b5=rb_intern("_Seq_lb_Act_lb__84b5");
-    sy___at__contex_5f56=rb_intern("__at__contex_5f56");
-    sy___at__contex_cdb3=rb_intern("__at__contex_cdb3");
-    sy___at__contex_d6d5=rb_intern("__at__contex_d6d5");
-    sy___at_context_25cc=rb_intern("__at_context_25cc");
-    sy___at_context_54ee=rb_intern("__at_context_54ee");
-    sy___lp__at_cargs_lb__e1d6=rb_intern("__lp__at_cargs_lb__e1d6");
-    sy___lp_src_dot_cla_2024=rb_intern("__lp_src_dot_cla_2024");
-    sy__bind_lb_1_rb__eq__9326=rb_intern("_bind_lb_1_rb__eq__9326");
-    sy__bind_lb_1_rb__lb__6ab8=rb_intern("_bind_lb_1_rb__lb__6ab8");
-    sy__bind_lb_1_rb__lt__7b20=rb_intern("_bind_lb_1_rb__lt__7b20");
-    sy__bind_lb_1_rb__sp__6af0=rb_intern("_bind_lb_1_rb__sp__6af0");
-    sy__if_sp_bind_lb__1bed=rb_intern("_if_sp_bind_lb__1bed");
-    sy__src_25d9=rb_intern("_src_25d9");
-    sy__src_dot_dup_d768=rb_intern("_src_dot_dup_d768");
-    sy_traverse=rb_intern("traverse");
-    sy_traverse_item=rb_intern("traverse_item");
-    sy_visit=rb_intern("visit");
+    sy_Add_Contextual_Arguments_Seq_lb_Act_lb__84b5=rb_intern("Add_Contextual_Arguments_Seq_lb_Act_lb__84b5");
+    sy_Add_Contextual_Arguments__at__contex_5f56=rb_intern("Add_Contextual_Arguments__at__contex_5f56");
+    sy_Add_Contextual_Arguments__at__contex_cdb3=rb_intern("Add_Contextual_Arguments__at__contex_cdb3");
+    sy_Add_Contextual_Arguments__at__contex_d6d5=rb_intern("Add_Contextual_Arguments__at__contex_d6d5");
+    sy_Add_Contextual_Arguments__at_context_25cc=rb_intern("Add_Contextual_Arguments__at_context_25cc");
+    sy_Add_Contextual_Arguments__at_context_54ee=rb_intern("Add_Contextual_Arguments__at_context_54ee");
+    sy_Add_Contextual_Arguments__lp__at_cargs_lb__e1d6=rb_intern("Add_Contextual_Arguments__lp__at_cargs_lb__e1d6");
+    sy_Add_Contextual_Arguments__lp_src_dot_cla_2024=rb_intern("Add_Contextual_Arguments__lp_src_dot_cla_2024");
+    sy_Add_Contextual_Arguments_bind_lb_1_rb__eq__9326=rb_intern("Add_Contextual_Arguments_bind_lb_1_rb__eq__9326");
+    sy_Add_Contextual_Arguments_bind_lb_1_rb__lb__6ab8=rb_intern("Add_Contextual_Arguments_bind_lb_1_rb__lb__6ab8");
+    sy_Add_Contextual_Arguments_bind_lb_1_rb__lt__7b20=rb_intern("Add_Contextual_Arguments_bind_lb_1_rb__lt__7b20");
+    sy_Add_Contextual_Arguments_bind_lb_1_rb__sp__6af0=rb_intern("Add_Contextual_Arguments_bind_lb_1_rb__sp__6af0");
+    sy_Add_Contextual_Arguments_if_sp_bind_lb__1bed=rb_intern("Add_Contextual_Arguments_if_sp_bind_lb__1bed");
+    sy_Add_Contextual_Arguments_src_25d9=rb_intern("Add_Contextual_Arguments_src_25d9");
+    sy_Add_Contextual_Arguments_src_dot_dup_d768=rb_intern("Add_Contextual_Arguments_src_dot_dup_d768");
     rb_define_method(cls_Add_Contextual_Arguments,"root",Add_Contextual_Arguments_root,0);
     rb_define_method(cls_Add_Contextual_Arguments,"traverse",Add_Contextual_Arguments_traverse,0);
     rb_define_method(cls_Add_Contextual_Arguments,"traverse_item",Add_Contextual_Arguments_traverse_item,0);

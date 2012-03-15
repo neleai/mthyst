@@ -2,19 +2,19 @@
 #include "memo.c"
 VALUE cls_Detect_Size;
 VALUE AmethystCore_anything(VALUE self );
+VALUE Amethyst_spaces(VALUE self );
 VALUE Detect_Size_predicate(VALUE self ,VALUE a0);
 VALUE Detect_Size_predicate2(VALUE self ,VALUE a0);
+VALUE Detect_Size_predicate2(VALUE self ,VALUE);
 VALUE switchhash_Detect_Size_1;
 VALUE switchhash_Detect_Size_2;
-static VALUE sy__Or_dot_creat_49b2;
-static VALUE sy__Seq_dot_crea_bfbb;
-static VALUE sy___lb_bind_lb_1_rb__2d76;
-static VALUE sy___sh_lowleve_46e8;
-static VALUE sy__bind_lb_1_rb__eq__28f0;
-static VALUE sy__bind_lb_1_rb__gt__f573;
-static VALUE sy__minsize_lp__01f0;
-static VALUE sy_predicate2;
-static VALUE sy_spaces;
+static VALUE sy_Detect_Size_Or_dot_creat_49b2;
+static VALUE sy_Detect_Size_Seq_dot_crea_bfbb;
+static VALUE sy_Detect_Size__lb_bind_lb_1_rb__2d76;
+static VALUE sy_Detect_Size__sh_lowleve_46e8;
+static VALUE sy_Detect_Size_bind_lb_1_rb__eq__28f0;
+static VALUE sy_Detect_Size_bind_lb_1_rb__gt__f573;
+static VALUE sy_Detect_Size_minsize_lp__01f0;
 VALUE profile_report_Detect_Size(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -36,7 +36,7 @@ VALUE Detect_Size_predicate(VALUE self ,VALUE a0) {
     }
     _el=it;;
     bind_aset(bind2,1,_el);
-    it=rb_funcall(self,sy__minsize_lp__01f0,1,bind2);
+    it=rb_funcall(self,sy_Detect_Size_minsize_lp__01f0,1,bind2);
     _el=bind_aget(bind2,1);;
     _msize=it;;
     it=_el;
@@ -53,7 +53,7 @@ VALUE Detect_Size_predicate(VALUE self ,VALUE a0) {
         ;
         bind_aset(bind2,1,_s);
         bind_aset(bind2,2,_msize);
-        it=rb_funcall(self,sy___lb_bind_lb_1_rb__2d76,1,bind2);
+        it=rb_funcall(self,sy_Detect_Size__lb_bind_lb_1_rb__2d76,1,bind2);
         _s=bind_aget(bind2,1);;
         _msize=bind_aget(bind2,2);;
         it=ptr->ary[ptr->pos];            ;
@@ -63,7 +63,7 @@ VALUE Detect_Size_predicate(VALUE self ,VALUE a0) {
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_2);
-        it=rb_funcall(self,sy_spaces,0);
+        it=Amethyst_spaces(self );
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... '`':
             ;
@@ -99,7 +99,7 @@ pass2:
         }
 success2:
         *ptr=oldpass2;
-        it=rb_funcall(self,sy___sh_lowleve_46e8,1,bind2);
+        it=rb_funcall(self,sy_Detect_Size__sh_lowleve_46e8,1,bind2);
         __result=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
@@ -113,7 +113,7 @@ success2:
         ;
         bind_aset(bind2,1,_s);
         bind_aset(bind2,2,_msize);
-        it=rb_funcall(self,sy___lb_bind_lb_1_rb__2d76,1,bind2);
+        it=rb_funcall(self,sy_Detect_Size__lb_bind_lb_1_rb__2d76,1,bind2);
         _s=bind_aget(bind2,1);;
         _msize=bind_aget(bind2,2);;
         _s_2=it;;
@@ -141,7 +141,7 @@ alt1_1:
             }
             _el=it;;
             bind_aset(bind2,1,_el);
-            it=rb_funcall(self,sy__minsize_lp__01f0,1,bind2);
+            it=rb_funcall(self,sy_Detect_Size_minsize_lp__01f0,1,bind2);
             _el=bind_aget(bind2,1);;
             _msize=it;;
             it=_el;
@@ -155,11 +155,11 @@ alt1_1:
             ptr->len=1;
             bind_aset(bind2,1,_s);
             bind_aset(bind2,2,_msize);
-            it=rb_funcall(self,sy___lb_bind_lb_1_rb__2d76,1,bind2);
+            it=rb_funcall(self,sy_Detect_Size__lb_bind_lb_1_rb__2d76,1,bind2);
             _s=bind_aget(bind2,1);;
             _msize=bind_aget(bind2,2);;
             arg0=it;
-            it=rb_funcall(self,sy_predicate2,1,arg0);
+            it=Detect_Size_predicate2(self ,arg0);
             if (it==failobj) {
                 it=failobj;
                 goto pass4;
@@ -184,7 +184,7 @@ success4:
             bind_aset(bind2,1,_msize);
             bind_aset(bind2,2,_s);
             bind_aset(bind2,3,_el);
-            it=rb_funcall(self,sy__bind_lb_1_rb__gt__f573,1,bind2);
+            it=rb_funcall(self,sy_Detect_Size_bind_lb_1_rb__gt__f573,1,bind2);
             _msize=bind_aget(bind2,1);;
             _s=bind_aget(bind2,2);;
             _el=bind_aget(bind2,3);;
@@ -226,7 +226,7 @@ pass3:
 success3:
         *ptr=oldpass3;
         bind_aset(bind2,1,_ary);
-        it=rb_funcall(self,sy__Or_dot_creat_49b2,1,bind2);
+        it=rb_funcall(self,sy_Detect_Size_Or_dot_creat_49b2,1,bind2);
         _ary=bind_aget(bind2,1);;
         __result=it;;
         it=Qnil;
@@ -241,7 +241,7 @@ success3:
         ;
         bind_aset(bind2,1,_s);
         bind_aset(bind2,2,_msize);
-        it=rb_funcall(self,sy___lb_bind_lb_1_rb__2d76,1,bind2);
+        it=rb_funcall(self,sy_Detect_Size__lb_bind_lb_1_rb__2d76,1,bind2);
         _s=bind_aget(bind2,1);;
         _msize=bind_aget(bind2,2);;
         _s_2=it;;
@@ -269,7 +269,7 @@ alt2_1:
             }
             _el=it;;
             bind_aset(bind2,1,_el);
-            it=rb_funcall(self,sy__minsize_lp__01f0,1,bind2);
+            it=rb_funcall(self,sy_Detect_Size_minsize_lp__01f0,1,bind2);
             _el=bind_aget(bind2,1);;
             _msize=it;;
             it=_el;
@@ -283,11 +283,11 @@ alt2_1:
             ptr->len=1;
             bind_aset(bind2,1,_s);
             bind_aset(bind2,2,_msize);
-            it=rb_funcall(self,sy___lb_bind_lb_1_rb__2d76,1,bind2);
+            it=rb_funcall(self,sy_Detect_Size__lb_bind_lb_1_rb__2d76,1,bind2);
             _s=bind_aget(bind2,1);;
             _msize=bind_aget(bind2,2);;
             arg0=it;
-            it=rb_funcall(self,sy_predicate2,1,arg0);
+            it=Detect_Size_predicate2(self ,arg0);
             if (it==failobj) {
                 it=failobj;
                 goto pass6;
@@ -312,7 +312,7 @@ success6:
             bind_aset(bind2,1,_msize);
             bind_aset(bind2,2,_s);
             bind_aset(bind2,3,_el);
-            it=rb_funcall(self,sy__bind_lb_1_rb__gt__f573,1,bind2);
+            it=rb_funcall(self,sy_Detect_Size_bind_lb_1_rb__gt__f573,1,bind2);
             _msize=bind_aget(bind2,1);;
             _s=bind_aget(bind2,2);;
             _el=bind_aget(bind2,3);;
@@ -321,7 +321,7 @@ success6:
             _el_2=it;;
             bind_aset(bind2,1,_s_2);
             bind_aset(bind2,2,_el_2);
-            it=rb_funcall(self,sy__bind_lb_1_rb__eq__28f0,1,bind2);
+            it=rb_funcall(self,sy_Detect_Size_bind_lb_1_rb__eq__28f0,1,bind2);
             _s_2=bind_aget(bind2,1);;
             _el_2=bind_aget(bind2,2);;
             it=_el_2;
@@ -361,7 +361,7 @@ pass5:
 success5:
         *ptr=oldpass5;
         bind_aset(bind2,1,_ary);
-        it=rb_funcall(self,sy__Seq_dot_crea_bfbb,1,bind2);
+        it=rb_funcall(self,sy_Detect_Size_Seq_dot_crea_bfbb,1,bind2);
         _ary=bind_aget(bind2,1);;
         __result=it;;
         it=Qnil;
@@ -376,7 +376,7 @@ success5:
         ;
         bind_aset(bind2,1,_s);
         bind_aset(bind2,2,_msize);
-        it=rb_funcall(self,sy___lb_bind_lb_1_rb__2d76,1,bind2);
+        it=rb_funcall(self,sy_Detect_Size__lb_bind_lb_1_rb__2d76,1,bind2);
         _s=bind_aget(bind2,1);;
         _msize=bind_aget(bind2,2);;
         if (1) {
@@ -399,7 +399,7 @@ success1:
     bind_aset(bind2,1,_msize);
     bind_aset(bind2,2,_s);
     bind_aset(bind2,3,_el);
-    it=rb_funcall(self,sy__bind_lb_1_rb__gt__f573,1,bind2);
+    it=rb_funcall(self,sy_Detect_Size_bind_lb_1_rb__gt__f573,1,bind2);
     _msize=bind_aget(bind2,1);;
     _s=bind_aget(bind2,2);;
     _el=bind_aget(bind2,3);;
@@ -427,7 +427,7 @@ VALUE Detect_Size_predicate2(VALUE self ,VALUE a0) {
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar);
-        it=rb_funcall(self,sy_spaces,0);
+        it=Amethyst_spaces(self );
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... '`':
             ;
@@ -463,7 +463,7 @@ pass1:
         }
 success1:
         *ptr=oldpass1;
-        it=rb_funcall(self,sy___sh_lowleve_46e8,1,bind2);
+        it=rb_funcall(self,sy_Detect_Size__sh_lowleve_46e8,1,bind2);
         __result=it;;
         break;
     case 1/*Or*/:
@@ -492,7 +492,7 @@ alt1_1:
             }
             _el=it;;
             bind_aset(bind2,1,_el);
-            it=rb_funcall(self,sy__minsize_lp__01f0,1,bind2);
+            it=rb_funcall(self,sy_Detect_Size_minsize_lp__01f0,1,bind2);
             _el=bind_aget(bind2,1);;
             _msize=it;;
             it=_el;
@@ -506,11 +506,11 @@ alt1_1:
             ptr->len=1;
             bind_aset(bind2,1,_s_2);
             bind_aset(bind2,2,_msize);
-            it=rb_funcall(self,sy___lb_bind_lb_1_rb__2d76,1,bind2);
+            it=rb_funcall(self,sy_Detect_Size__lb_bind_lb_1_rb__2d76,1,bind2);
             _s_2=bind_aget(bind2,1);;
             _msize=bind_aget(bind2,2);;
             arg0=it;
-            it=rb_funcall(self,sy_predicate2,1,arg0);
+            it=Detect_Size_predicate2(self ,arg0);
             if (it==failobj) {
                 it=failobj;
                 goto pass3;
@@ -535,7 +535,7 @@ success3:
             bind_aset(bind2,1,_msize);
             bind_aset(bind2,2,_s_2);
             bind_aset(bind2,3,_el);
-            it=rb_funcall(self,sy__bind_lb_1_rb__gt__f573,1,bind2);
+            it=rb_funcall(self,sy_Detect_Size_bind_lb_1_rb__gt__f573,1,bind2);
             _msize=bind_aget(bind2,1);;
             _s_2=bind_aget(bind2,2);;
             _el=bind_aget(bind2,3);;
@@ -577,7 +577,7 @@ pass2:
 success2:
         *ptr=oldpass2;
         bind_aset(bind2,1,_ary);
-        it=rb_funcall(self,sy__Or_dot_creat_49b2,1,bind2);
+        it=rb_funcall(self,sy_Detect_Size_Or_dot_creat_49b2,1,bind2);
         _ary=bind_aget(bind2,1);;
         __result=it;;
         break;
@@ -607,7 +607,7 @@ alt2_1:
             }
             _el=it;;
             bind_aset(bind2,1,_el);
-            it=rb_funcall(self,sy__minsize_lp__01f0,1,bind2);
+            it=rb_funcall(self,sy_Detect_Size_minsize_lp__01f0,1,bind2);
             _el=bind_aget(bind2,1);;
             _msize=it;;
             it=_el;
@@ -621,11 +621,11 @@ alt2_1:
             ptr->len=1;
             bind_aset(bind2,1,_s_2);
             bind_aset(bind2,2,_msize);
-            it=rb_funcall(self,sy___lb_bind_lb_1_rb__2d76,1,bind2);
+            it=rb_funcall(self,sy_Detect_Size__lb_bind_lb_1_rb__2d76,1,bind2);
             _s_2=bind_aget(bind2,1);;
             _msize=bind_aget(bind2,2);;
             arg0=it;
-            it=rb_funcall(self,sy_predicate2,1,arg0);
+            it=Detect_Size_predicate2(self ,arg0);
             if (it==failobj) {
                 it=failobj;
                 goto pass5;
@@ -650,7 +650,7 @@ success5:
             bind_aset(bind2,1,_msize);
             bind_aset(bind2,2,_s_2);
             bind_aset(bind2,3,_el);
-            it=rb_funcall(self,sy__bind_lb_1_rb__gt__f573,1,bind2);
+            it=rb_funcall(self,sy_Detect_Size_bind_lb_1_rb__gt__f573,1,bind2);
             _msize=bind_aget(bind2,1);;
             _s_2=bind_aget(bind2,2);;
             _el=bind_aget(bind2,3);;
@@ -659,7 +659,7 @@ success5:
             _el_2=it;;
             bind_aset(bind2,1,_s);
             bind_aset(bind2,2,_el_2);
-            it=rb_funcall(self,sy__bind_lb_1_rb__eq__28f0,1,bind2);
+            it=rb_funcall(self,sy_Detect_Size_bind_lb_1_rb__eq__28f0,1,bind2);
             _s=bind_aget(bind2,1);;
             _el_2=bind_aget(bind2,2);;
             it=_el_2;
@@ -699,7 +699,7 @@ pass4:
 success4:
         *ptr=oldpass4;
         bind_aset(bind2,1,_ary);
-        it=rb_funcall(self,sy__Seq_dot_crea_bfbb,1,bind2);
+        it=rb_funcall(self,sy_Detect_Size_Seq_dot_crea_bfbb,1,bind2);
         _ary=bind_aget(bind2,1);;
         __result=it;;
         break;
@@ -722,15 +722,13 @@ void Init_Detect_Size_c() {
     rb_global_variable(&switchhash_Detect_Size_1);;
     switchhash_Detect_Size_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Or\nnext h[k]=2 if k<=Seq\nnext h[k]=3 if k<=Object\n}");
     rb_global_variable(&switchhash_Detect_Size_2);;
-    sy__Or_dot_creat_49b2=rb_intern("_Or_dot_creat_49b2");
-    sy__Seq_dot_crea_bfbb=rb_intern("_Seq_dot_crea_bfbb");
-    sy___lb_bind_lb_1_rb__2d76=rb_intern("__lb_bind_lb_1_rb__2d76");
-    sy___sh_lowleve_46e8=rb_intern("__sh_lowleve_46e8");
-    sy__bind_lb_1_rb__eq__28f0=rb_intern("_bind_lb_1_rb__eq__28f0");
-    sy__bind_lb_1_rb__gt__f573=rb_intern("_bind_lb_1_rb__gt__f573");
-    sy__minsize_lp__01f0=rb_intern("_minsize_lp__01f0");
-    sy_predicate2=rb_intern("predicate2");
-    sy_spaces=rb_intern("spaces");
+    sy_Detect_Size_Or_dot_creat_49b2=rb_intern("Detect_Size_Or_dot_creat_49b2");
+    sy_Detect_Size_Seq_dot_crea_bfbb=rb_intern("Detect_Size_Seq_dot_crea_bfbb");
+    sy_Detect_Size__lb_bind_lb_1_rb__2d76=rb_intern("Detect_Size__lb_bind_lb_1_rb__2d76");
+    sy_Detect_Size__sh_lowleve_46e8=rb_intern("Detect_Size__sh_lowleve_46e8");
+    sy_Detect_Size_bind_lb_1_rb__eq__28f0=rb_intern("Detect_Size_bind_lb_1_rb__eq__28f0");
+    sy_Detect_Size_bind_lb_1_rb__gt__f573=rb_intern("Detect_Size_bind_lb_1_rb__gt__f573");
+    sy_Detect_Size_minsize_lp__01f0=rb_intern("Detect_Size_minsize_lp__01f0");
     rb_define_method(cls_Detect_Size,"predicate",Detect_Size_predicate,1);
     rb_define_method(cls_Detect_Size,"predicate2",Detect_Size_predicate2,1);
 }

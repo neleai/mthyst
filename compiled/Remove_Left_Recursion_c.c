@@ -3,32 +3,31 @@
 VALUE cls_Remove_Left_Recursion;
 VALUE AmethystCore_anything(VALUE self );
 VALUE Remove_Left_Recursion_first(VALUE self ,VALUE a0);
+VALUE Remove_Left_Recursion_first(VALUE self ,VALUE);
 VALUE Remove_Left_Recursion_must_empty(VALUE self );
 VALUE Remove_Left_Recursion_root(VALUE self );
 VALUE switchhash_Remove_Left_Recursion_1;
 VALUE switchhash_Remove_Left_Recursion_2;
 VALUE switchhash_Remove_Left_Recursion_3;
 VALUE switchhash_Remove_Left_Recursion_4;
-static VALUE sy__Bind_lb_src_66c4;
-static VALUE sy__Or_lb_bind_lb__3169;
-static VALUE sy__Seq_lb_bind_e0fb;
-static VALUE sy__Seq_lb_bind_f95b;
-static VALUE sy___at__contex_5f56;
-static VALUE sy___at__contex_cdb3;
-static VALUE sy___at__contex_d6d5;
-static VALUE sy___at_left_re_c85d;
-static VALUE sy___at_result_eq__b6ab;
-static VALUE sy___lp_bind_lb_1_rb__5b9e;
-static VALUE sy___lp_must_em_43e9;
-static VALUE sy__bind_lb_1_rb__dot__44a5;
-static VALUE sy__bind_lb_1_rb__eq__56ab;
-static VALUE sy__bind_lb_1_rb__lb__fa06;
-static VALUE sy__bind_lb_1_rb__sp__4ee5;
-static VALUE sy__bind_lb_1_rb__sp__c213;
-static VALUE sy__src_25d9;
-static VALUE sy__src_dot_body_519e;
-static VALUE sy_first;
-static VALUE sy_must_empty;
+static VALUE sy_Remove_Left_Recursion_Bind_lb_src_66c4;
+static VALUE sy_Remove_Left_Recursion_Or_lb_bind_lb__3169;
+static VALUE sy_Remove_Left_Recursion_Seq_lb_bind_e0fb;
+static VALUE sy_Remove_Left_Recursion_Seq_lb_bind_f95b;
+static VALUE sy_Remove_Left_Recursion__at__contex_5f56;
+static VALUE sy_Remove_Left_Recursion__at__contex_cdb3;
+static VALUE sy_Remove_Left_Recursion__at__contex_d6d5;
+static VALUE sy_Remove_Left_Recursion__at_left_re_c85d;
+static VALUE sy_Remove_Left_Recursion__at_result_eq__b6ab;
+static VALUE sy_Remove_Left_Recursion__lp_bind_lb_1_rb__5b9e;
+static VALUE sy_Remove_Left_Recursion__lp_must_em_43e9;
+static VALUE sy_Remove_Left_Recursion_bind_lb_1_rb__dot__44a5;
+static VALUE sy_Remove_Left_Recursion_bind_lb_1_rb__eq__56ab;
+static VALUE sy_Remove_Left_Recursion_bind_lb_1_rb__lb__fa06;
+static VALUE sy_Remove_Left_Recursion_bind_lb_1_rb__sp__4ee5;
+static VALUE sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213;
+static VALUE sy_Remove_Left_Recursion_src_25d9;
+static VALUE sy_Remove_Left_Recursion_src_dot_body_519e;
 VALUE profile_report_Remove_Left_Recursion(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -48,7 +47,7 @@ VALUE Remove_Left_Recursion_first(VALUE self ,VALUE a0) {
         ;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_2=bind_aget(bind2,2);;
         int oldpos1=ptr->pos;
@@ -63,14 +62,14 @@ alt1_1:
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_3);
         bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___lp_bind_lb_1_rb__5b9e,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__lp_bind_lb_1_rb__5b9e,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
         if (it==failobj) {
             it=failobj;
             goto pass1;
         };
         ptr->pos=ptr->len;
-        it=rb_funcall(self,sy___at_left_re_c85d,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at_left_re_c85d,1,bind2);
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -86,7 +85,7 @@ pass1:
 success1:
         *ptr=oldpass1;
         bind_aset(bind2,1,_follow);
-        it=rb_funcall(self,sy__bind_lb_1_rb__sp__4ee5,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__4ee5,1,bind2);
         _follow=bind_aget(bind2,1);;
         __result=it;;
         _autovar_4=it;;
@@ -103,7 +102,7 @@ alt1_2:
         _x=it;;
         bind_aset(bind2,1,_follow);
         bind_aset(bind2,2,_x);
-        it=rb_funcall(self,sy__bind_lb_1_rb__sp__c213,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213,1,bind2);
         _follow=bind_aget(bind2,1);;
         _x=bind_aget(bind2,2);;
         __result=it;;
@@ -121,7 +120,7 @@ accept1:
         ;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_4);
-        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_cdb3,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_4=bind_aget(bind2,2);;
         break;
@@ -129,7 +128,7 @@ accept1:
         ;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_2=bind_aget(bind2,2);;
         int oldpos2=ptr->pos;
@@ -157,11 +156,11 @@ alt2_1:
         ptr->ary[0]=_autovar_6;
         ptr->len=1;
         bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_d6d5,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
         it=_follow;
         arg0=it;
-        it=rb_funcall(self,sy_first,1,arg0);
+        it=Remove_Left_Recursion_first(self ,arg0);
         if (it==failobj) {
             it=failobj;
             goto pass3;
@@ -184,7 +183,7 @@ success3:
         it=_autovar_7;
         _expr=it;;
         bind_aset(bind2,1,_expr);
-        it=rb_funcall(self,sy__Bind_lb_src_66c4,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_Bind_lb_src_66c4,1,bind2);
         _expr=bind_aget(bind2,1);;
         _autovar_8=it;;
         it=Qnil;
@@ -217,7 +216,7 @@ alt2_2:
         _x=it;;
         bind_aset(bind2,1,_follow);
         bind_aset(bind2,2,_x);
-        it=rb_funcall(self,sy__bind_lb_1_rb__sp__c213,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213,1,bind2);
         _follow=bind_aget(bind2,1);;
         _x=bind_aget(bind2,2);;
         __result=it;;
@@ -235,7 +234,7 @@ accept2:
         ;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_4);
-        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_cdb3,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_4=bind_aget(bind2,2);;
         break;
@@ -243,7 +242,7 @@ accept2:
         ;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_2=bind_aget(bind2,2);;
         int oldpos3=ptr->pos;
@@ -266,11 +265,11 @@ alt3_1:
 alt4_1:
             ;
             bind_aset(bind2,1,_autovar_2);
-            it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+            it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_d6d5,1,bind2);
             _autovar_2=bind_aget(bind2,1);;
             it=_follow;
             arg0=it;
-            it=rb_funcall(self,sy_first,1,arg0);
+            it=Remove_Left_Recursion_first(self ,arg0);
             if (it==failobj) {
                 it=failobj;
                 goto alt4_2;
@@ -311,7 +310,7 @@ pass4:
 success4:
         *ptr=oldpass4;
         bind_aset(bind2,1,_ary);
-        it=rb_funcall(self,sy__Or_lb_bind_lb__3169,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_Or_lb_bind_lb__3169,1,bind2);
         _ary=bind_aget(bind2,1);;
         __result=it;;
         _autovar_4=it;;
@@ -328,7 +327,7 @@ alt3_2:
         _x=it;;
         bind_aset(bind2,1,_follow);
         bind_aset(bind2,2,_x);
-        it=rb_funcall(self,sy__bind_lb_1_rb__sp__c213,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213,1,bind2);
         _follow=bind_aget(bind2,1);;
         _x=bind_aget(bind2,2);;
         __result=it;;
@@ -346,7 +345,7 @@ accept3:
         ;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_4);
-        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_cdb3,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_4=bind_aget(bind2,2);;
         break;
@@ -354,7 +353,7 @@ accept3:
         ;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_2=bind_aget(bind2,2);;
         int oldpos5=ptr->pos;
@@ -376,7 +375,7 @@ alt6_1:
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_14);
-        it=rb_funcall(self,sy_must_empty,0);
+        it=Remove_Left_Recursion_must_empty(self );
         if (it==failobj) {
             it=failobj;
             goto pass5;
@@ -416,7 +415,7 @@ accept7:
         it=_autovar_15;
         _rest=it;;
         bind_aset(bind2,1,_rest);
-        it=rb_funcall(self,sy__Seq_lb_bind_e0fb,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_Seq_lb_bind_e0fb,1,bind2);
         _rest=bind_aget(bind2,1);;
         _autovar_17=it;;
         cstruct oldpass6=*ptr;
@@ -427,11 +426,11 @@ accept7:
         ptr->ary[0]=_autovar_17;
         ptr->len=1;
         bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_d6d5,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
         it=_follow;
         arg0=it;
-        it=rb_funcall(self,sy_first,1,arg0);
+        it=Remove_Left_Recursion_first(self ,arg0);
         if (it==failobj) {
             it=failobj;
             goto pass6;
@@ -470,7 +469,7 @@ success5:
         *ptr=oldpass5;
         bind_aset(bind2,1,_first);
         bind_aset(bind2,2,_rest);
-        it=rb_funcall(self,sy__Seq_lb_bind_f95b,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_Seq_lb_bind_f95b,1,bind2);
         _first=bind_aget(bind2,1);;
         _rest=bind_aget(bind2,2);;
         __result=it;;
@@ -487,11 +486,11 @@ alt6_2:
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_19);
         bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_d6d5,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
         it=_follow;
         arg0=it;
-        it=rb_funcall(self,sy_first,1,arg0);
+        it=Remove_Left_Recursion_first(self ,arg0);
         if (it==failobj) {
             it=failobj;
             goto pass7;
@@ -547,7 +546,7 @@ success7:
         *ptr=oldpass7;
         bind_aset(bind2,1,_first);
         bind_aset(bind2,2,_rest);
-        it=rb_funcall(self,sy__Seq_lb_bind_f95b,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_Seq_lb_bind_f95b,1,bind2);
         _first=bind_aget(bind2,1);;
         _rest=bind_aget(bind2,2);;
         __result=it;;
@@ -576,7 +575,7 @@ alt5_2:
         _x=it;;
         bind_aset(bind2,1,_follow);
         bind_aset(bind2,2,_x);
-        it=rb_funcall(self,sy__bind_lb_1_rb__sp__c213,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213,1,bind2);
         _follow=bind_aget(bind2,1);;
         _x=bind_aget(bind2,2);;
         __result=it;;
@@ -594,7 +593,7 @@ accept5:
         ;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_4);
-        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_cdb3,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_4=bind_aget(bind2,2);;
         break;
@@ -602,7 +601,7 @@ accept5:
         ;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_2=bind_aget(bind2,2);;
         it=AmethystCore_anything(self );
@@ -613,14 +612,14 @@ accept5:
         _x=it;;
         bind_aset(bind2,1,_follow);
         bind_aset(bind2,2,_x);
-        it=rb_funcall(self,sy__bind_lb_1_rb__sp__c213,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213,1,bind2);
         _follow=bind_aget(bind2,1);;
         _x=bind_aget(bind2,2);;
         __result=it;;
         _autovar_4=it;;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_4);
-        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_cdb3,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_4=bind_aget(bind2,2);;
         break;
@@ -643,7 +642,7 @@ VALUE Remove_Left_Recursion_must_empty(VALUE self ) {
     }
     _e=it;;
     bind_aset(bind2,1,_e);
-    it=rb_funcall(self,sy___lp_must_em_43e9,1,bind2);
+    it=rb_funcall(self,sy_Remove_Left_Recursion__lp_must_em_43e9,1,bind2);
     _e=bind_aget(bind2,1);;
     if (it==failobj) {
         it=failobj;
@@ -665,7 +664,7 @@ VALUE Remove_Left_Recursion_root(VALUE self ) {
     Data_Get_Struct(self,cstruct,ptr);
     bind_aset(bind2,1,_autovar);
     bind_aset(bind2,2,_autovar_2);
-    it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
+    it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_5f56,1,bind2);
     _autovar=bind_aget(bind2,1);;
     _autovar_2=bind_aget(bind2,2);;
     it=AmethystCore_anything(self );
@@ -675,7 +674,7 @@ VALUE Remove_Left_Recursion_root(VALUE self ) {
     }
     _a=it;;
     bind_aset(bind2,1,_a);
-    it=rb_funcall(self,sy__bind_lb_1_rb__dot__44a5,1,bind2);
+    it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__dot__44a5,1,bind2);
     _a=bind_aget(bind2,1);;
     _autovar_3=it;;
     cstruct oldpass1=*ptr;
@@ -721,11 +720,11 @@ success1:
     ptr->ary=NULL;
     ame_setsrc2(self,_autovar_5);
     bind_aset(bind2,1,_autovar_2);
-    it=rb_funcall(self,sy__bind_lb_1_rb__lb__fa06,1,bind2);
+    it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__lb__fa06,1,bind2);
     _autovar_2=bind_aget(bind2,1);;
-    it=rb_funcall(self,sy___at_result_eq__b6ab,1,bind2);
-    it=rb_funcall(self,sy__src_dot_body_519e,1,bind2);
-    it=rb_funcall(self,sy__src_dot_body_519e,1,bind2);
+    it=rb_funcall(self,sy_Remove_Left_Recursion__at_result_eq__b6ab,1,bind2);
+    it=rb_funcall(self,sy_Remove_Left_Recursion_src_dot_body_519e,1,bind2);
+    it=rb_funcall(self,sy_Remove_Left_Recursion_src_dot_body_519e,1,bind2);
     _autovar_6=it;;
     cstruct oldpass3=*ptr;
     ptr->pos=ptr->len=0;
@@ -738,11 +737,11 @@ success1:
     case 0/*Apply*/:
         ;
         bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_d6d5,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
         bind_aset(bind2,1,_autovar_7);
         bind_aset(bind2,2,_autovar_8);
-        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_5f56,1,bind2);
         _autovar_7=bind_aget(bind2,1);;
         _autovar_8=bind_aget(bind2,2);;
         int oldpos1=ptr->pos;
@@ -757,14 +756,14 @@ alt1_1:
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_9);
         bind_aset(bind2,1,_autovar_8);
-        it=rb_funcall(self,sy___lp_bind_lb_1_rb__5b9e,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__lp_bind_lb_1_rb__5b9e,1,bind2);
         _autovar_8=bind_aget(bind2,1);;
         if (it==failobj) {
             it=failobj;
             goto pass4;
         };
         ptr->pos=ptr->len;
-        it=rb_funcall(self,sy___at_left_re_c85d,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at_left_re_c85d,1,bind2);
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -782,7 +781,7 @@ success4:
         it=Qfalse;
         _follow=it;;
         bind_aset(bind2,1,_follow);
-        it=rb_funcall(self,sy__bind_lb_1_rb__sp__4ee5,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__4ee5,1,bind2);
         _follow=bind_aget(bind2,1);;
         __result=it;;
         _autovar_10=it;;
@@ -801,7 +800,7 @@ alt1_2:
         _follow=it;;
         bind_aset(bind2,1,_follow);
         bind_aset(bind2,2,_x);
-        it=rb_funcall(self,sy__bind_lb_1_rb__sp__c213,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213,1,bind2);
         _follow=bind_aget(bind2,1);;
         _x=bind_aget(bind2,2);;
         __result=it;;
@@ -819,7 +818,7 @@ accept1:
         ;
         bind_aset(bind2,1,_autovar_7);
         bind_aset(bind2,2,_autovar_10);
-        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_cdb3,1,bind2);
         _autovar_7=bind_aget(bind2,1);;
         _autovar_10=bind_aget(bind2,2);;
         it=Qnil;
@@ -833,11 +832,11 @@ accept1:
     case 1/*Bind*/:
         ;
         bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_d6d5,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
         bind_aset(bind2,1,_autovar_7);
         bind_aset(bind2,2,_autovar_8);
-        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_5f56,1,bind2);
         _autovar_7=bind_aget(bind2,1);;
         _autovar_8=bind_aget(bind2,2);;
         int oldpos2=ptr->pos;
@@ -865,11 +864,11 @@ alt2_1:
         ptr->ary[0]=_autovar_13;
         ptr->len=1;
         bind_aset(bind2,1,_autovar_8);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_d6d5,1,bind2);
         _autovar_8=bind_aget(bind2,1);;
         it=Qfalse;
         arg0=it;
-        it=rb_funcall(self,sy_first,1,arg0);
+        it=Remove_Left_Recursion_first(self ,arg0);
         if (it==failobj) {
             it=failobj;
             goto pass6;
@@ -892,7 +891,7 @@ success6:
         it=_autovar_14;
         _expr=it;;
         bind_aset(bind2,1,_expr);
-        it=rb_funcall(self,sy__Bind_lb_src_66c4,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_Bind_lb_src_66c4,1,bind2);
         _expr=bind_aget(bind2,1);;
         _autovar_15=it;;
         it=Qnil;
@@ -927,7 +926,7 @@ alt2_2:
         _follow=it;;
         bind_aset(bind2,1,_follow);
         bind_aset(bind2,2,_x);
-        it=rb_funcall(self,sy__bind_lb_1_rb__sp__c213,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213,1,bind2);
         _follow=bind_aget(bind2,1);;
         _x=bind_aget(bind2,2);;
         __result=it;;
@@ -945,7 +944,7 @@ accept2:
         ;
         bind_aset(bind2,1,_autovar_7);
         bind_aset(bind2,2,_autovar_10);
-        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_cdb3,1,bind2);
         _autovar_7=bind_aget(bind2,1);;
         _autovar_10=bind_aget(bind2,2);;
         it=Qnil;
@@ -959,11 +958,11 @@ accept2:
     case 2/*Or*/:
         ;
         bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_d6d5,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
         bind_aset(bind2,1,_autovar_7);
         bind_aset(bind2,2,_autovar_8);
-        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_5f56,1,bind2);
         _autovar_7=bind_aget(bind2,1);;
         _autovar_8=bind_aget(bind2,2);;
         int oldpos3=ptr->pos;
@@ -986,11 +985,11 @@ alt3_1:
 alt4_1:
             ;
             bind_aset(bind2,1,_autovar_8);
-            it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+            it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_d6d5,1,bind2);
             _autovar_8=bind_aget(bind2,1);;
             it=Qfalse;
             arg0=it;
-            it=rb_funcall(self,sy_first,1,arg0);
+            it=Remove_Left_Recursion_first(self ,arg0);
             if (it==failobj) {
                 it=failobj;
                 goto alt4_2;
@@ -1031,7 +1030,7 @@ pass7:
 success7:
         *ptr=oldpass7;
         bind_aset(bind2,1,_ary);
-        it=rb_funcall(self,sy__Or_lb_bind_lb__3169,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_Or_lb_bind_lb__3169,1,bind2);
         _ary=bind_aget(bind2,1);;
         __result=it;;
         _autovar_10=it;;
@@ -1050,7 +1049,7 @@ alt3_2:
         _follow=it;;
         bind_aset(bind2,1,_follow);
         bind_aset(bind2,2,_x);
-        it=rb_funcall(self,sy__bind_lb_1_rb__sp__c213,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213,1,bind2);
         _follow=bind_aget(bind2,1);;
         _x=bind_aget(bind2,2);;
         __result=it;;
@@ -1068,7 +1067,7 @@ accept3:
         ;
         bind_aset(bind2,1,_autovar_7);
         bind_aset(bind2,2,_autovar_10);
-        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_cdb3,1,bind2);
         _autovar_7=bind_aget(bind2,1);;
         _autovar_10=bind_aget(bind2,2);;
         it=Qnil;
@@ -1082,11 +1081,11 @@ accept3:
     case 3/*Seq*/:
         ;
         bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_d6d5,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
         bind_aset(bind2,1,_autovar_7);
         bind_aset(bind2,2,_autovar_8);
-        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_5f56,1,bind2);
         _autovar_7=bind_aget(bind2,1);;
         _autovar_8=bind_aget(bind2,2);;
         int oldpos5=ptr->pos;
@@ -1110,7 +1109,7 @@ alt6_1:
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_22);
-        it=rb_funcall(self,sy_must_empty,0);
+        it=Remove_Left_Recursion_must_empty(self );
         if (it==failobj) {
             it=failobj;
             goto pass8;
@@ -1150,7 +1149,7 @@ accept7:
         it=_autovar_23;
         _rest=it;;
         bind_aset(bind2,1,_rest);
-        it=rb_funcall(self,sy__Seq_lb_bind_e0fb,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_Seq_lb_bind_e0fb,1,bind2);
         _rest=bind_aget(bind2,1);;
         _autovar_25=it;;
         cstruct oldpass9=*ptr;
@@ -1161,11 +1160,11 @@ accept7:
         ptr->ary[0]=_autovar_25;
         ptr->len=1;
         bind_aset(bind2,1,_autovar_8);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_d6d5,1,bind2);
         _autovar_8=bind_aget(bind2,1);;
         it=Qfalse;
         arg0=it;
-        it=rb_funcall(self,sy_first,1,arg0);
+        it=Remove_Left_Recursion_first(self ,arg0);
         if (it==failobj) {
             it=failobj;
             goto pass9;
@@ -1204,7 +1203,7 @@ success8:
         *ptr=oldpass8;
         bind_aset(bind2,1,_first);
         bind_aset(bind2,2,_rest);
-        it=rb_funcall(self,sy__Seq_lb_bind_f95b,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_Seq_lb_bind_f95b,1,bind2);
         _first=bind_aget(bind2,1);;
         _rest=bind_aget(bind2,2);;
         __result=it;;
@@ -1221,11 +1220,11 @@ alt6_2:
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_27);
         bind_aset(bind2,1,_autovar_8);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_d6d5,1,bind2);
         _autovar_8=bind_aget(bind2,1);;
         it=Qfalse;
         arg0=it;
-        it=rb_funcall(self,sy_first,1,arg0);
+        it=Remove_Left_Recursion_first(self ,arg0);
         if (it==failobj) {
             it=failobj;
             goto pass10;
@@ -1281,7 +1280,7 @@ success10:
         *ptr=oldpass10;
         bind_aset(bind2,1,_first);
         bind_aset(bind2,2,_rest);
-        it=rb_funcall(self,sy__Seq_lb_bind_f95b,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_Seq_lb_bind_f95b,1,bind2);
         _first=bind_aget(bind2,1);;
         _rest=bind_aget(bind2,2);;
         __result=it;;
@@ -1312,7 +1311,7 @@ alt5_2:
         _follow=it;;
         bind_aset(bind2,1,_follow);
         bind_aset(bind2,2,_x);
-        it=rb_funcall(self,sy__bind_lb_1_rb__sp__c213,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213,1,bind2);
         _follow=bind_aget(bind2,1);;
         _x=bind_aget(bind2,2);;
         __result=it;;
@@ -1330,7 +1329,7 @@ accept5:
         ;
         bind_aset(bind2,1,_autovar_7);
         bind_aset(bind2,2,_autovar_10);
-        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_cdb3,1,bind2);
         _autovar_7=bind_aget(bind2,1);;
         _autovar_10=bind_aget(bind2,2);;
         it=Qnil;
@@ -1344,11 +1343,11 @@ accept5:
     case 4/*Object*/:
         ;
         bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_d6d5,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
         bind_aset(bind2,1,_autovar_7);
         bind_aset(bind2,2,_autovar_8);
-        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_5f56,1,bind2);
         _autovar_7=bind_aget(bind2,1);;
         _autovar_8=bind_aget(bind2,2);;
         it=AmethystCore_anything(self );
@@ -1361,14 +1360,14 @@ accept5:
         _follow=it;;
         bind_aset(bind2,1,_follow);
         bind_aset(bind2,2,_x);
-        it=rb_funcall(self,sy__bind_lb_1_rb__sp__c213,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213,1,bind2);
         _follow=bind_aget(bind2,1);;
         _x=bind_aget(bind2,2);;
         __result=it;;
         _autovar_10=it;;
         bind_aset(bind2,1,_autovar_7);
         bind_aset(bind2,2,_autovar_10);
-        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_cdb3,1,bind2);
         _autovar_7=bind_aget(bind2,1);;
         _autovar_10=bind_aget(bind2,2);;
         it=Qnil;
@@ -1391,7 +1390,7 @@ success3:
     *ptr=oldpass3;
     it=_autovar_11;
     _first_2=it;;
-    it=rb_funcall(self,sy__src_dot_body_519e,1,bind2);
+    it=rb_funcall(self,sy_Remove_Left_Recursion_src_dot_body_519e,1,bind2);
     _autovar_30=it;;
     cstruct oldpass11=*ptr;
     ptr->pos=ptr->len=0;
@@ -1404,11 +1403,11 @@ success3:
     case 0/*Apply*/:
         ;
         bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_d6d5,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
         bind_aset(bind2,1,_autovar_7);
         bind_aset(bind2,2,_autovar_8);
-        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_5f56,1,bind2);
         _autovar_7=bind_aget(bind2,1);;
         _autovar_8=bind_aget(bind2,2);;
         int oldpos9=ptr->pos;
@@ -1423,14 +1422,14 @@ alt9_1:
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_9);
         bind_aset(bind2,1,_autovar_8);
-        it=rb_funcall(self,sy___lp_bind_lb_1_rb__5b9e,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__lp_bind_lb_1_rb__5b9e,1,bind2);
         _autovar_8=bind_aget(bind2,1);;
         if (it==failobj) {
             it=failobj;
             goto pass12;
         };
         ptr->pos=ptr->len;
-        it=rb_funcall(self,sy___at_left_re_c85d,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at_left_re_c85d,1,bind2);
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -1448,7 +1447,7 @@ success12:
         it=Qtrue;
         _follow=it;;
         bind_aset(bind2,1,_follow);
-        it=rb_funcall(self,sy__bind_lb_1_rb__sp__4ee5,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__4ee5,1,bind2);
         _follow=bind_aget(bind2,1);;
         __result=it;;
         _autovar_10=it;;
@@ -1467,7 +1466,7 @@ alt9_2:
         _follow=it;;
         bind_aset(bind2,1,_follow);
         bind_aset(bind2,2,_x);
-        it=rb_funcall(self,sy__bind_lb_1_rb__sp__c213,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213,1,bind2);
         _follow=bind_aget(bind2,1);;
         _x=bind_aget(bind2,2);;
         __result=it;;
@@ -1485,7 +1484,7 @@ accept9:
         ;
         bind_aset(bind2,1,_autovar_7);
         bind_aset(bind2,2,_autovar_10);
-        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_cdb3,1,bind2);
         _autovar_7=bind_aget(bind2,1);;
         _autovar_10=bind_aget(bind2,2);;
         it=Qnil;
@@ -1499,11 +1498,11 @@ accept9:
     case 1/*Bind*/:
         ;
         bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_d6d5,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
         bind_aset(bind2,1,_autovar_7);
         bind_aset(bind2,2,_autovar_8);
-        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_5f56,1,bind2);
         _autovar_7=bind_aget(bind2,1);;
         _autovar_8=bind_aget(bind2,2);;
         int oldpos10=ptr->pos;
@@ -1531,11 +1530,11 @@ alt10_1:
         ptr->ary[0]=_autovar_13;
         ptr->len=1;
         bind_aset(bind2,1,_autovar_8);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_d6d5,1,bind2);
         _autovar_8=bind_aget(bind2,1);;
         it=Qtrue;
         arg0=it;
-        it=rb_funcall(self,sy_first,1,arg0);
+        it=Remove_Left_Recursion_first(self ,arg0);
         if (it==failobj) {
             it=failobj;
             goto pass14;
@@ -1558,7 +1557,7 @@ success14:
         it=_autovar_14;
         _expr=it;;
         bind_aset(bind2,1,_expr);
-        it=rb_funcall(self,sy__Bind_lb_src_66c4,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_Bind_lb_src_66c4,1,bind2);
         _expr=bind_aget(bind2,1);;
         _autovar_15=it;;
         it=Qnil;
@@ -1593,7 +1592,7 @@ alt10_2:
         _follow=it;;
         bind_aset(bind2,1,_follow);
         bind_aset(bind2,2,_x);
-        it=rb_funcall(self,sy__bind_lb_1_rb__sp__c213,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213,1,bind2);
         _follow=bind_aget(bind2,1);;
         _x=bind_aget(bind2,2);;
         __result=it;;
@@ -1611,7 +1610,7 @@ accept10:
         ;
         bind_aset(bind2,1,_autovar_7);
         bind_aset(bind2,2,_autovar_10);
-        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_cdb3,1,bind2);
         _autovar_7=bind_aget(bind2,1);;
         _autovar_10=bind_aget(bind2,2);;
         it=Qnil;
@@ -1625,11 +1624,11 @@ accept10:
     case 2/*Or*/:
         ;
         bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_d6d5,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
         bind_aset(bind2,1,_autovar_7);
         bind_aset(bind2,2,_autovar_8);
-        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_5f56,1,bind2);
         _autovar_7=bind_aget(bind2,1);;
         _autovar_8=bind_aget(bind2,2);;
         int oldpos11=ptr->pos;
@@ -1652,11 +1651,11 @@ alt11_1:
 alt12_1:
             ;
             bind_aset(bind2,1,_autovar_8);
-            it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+            it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_d6d5,1,bind2);
             _autovar_8=bind_aget(bind2,1);;
             it=Qtrue;
             arg0=it;
-            it=rb_funcall(self,sy_first,1,arg0);
+            it=Remove_Left_Recursion_first(self ,arg0);
             if (it==failobj) {
                 it=failobj;
                 goto alt12_2;
@@ -1697,7 +1696,7 @@ pass15:
 success15:
         *ptr=oldpass15;
         bind_aset(bind2,1,_ary);
-        it=rb_funcall(self,sy__Or_lb_bind_lb__3169,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_Or_lb_bind_lb__3169,1,bind2);
         _ary=bind_aget(bind2,1);;
         __result=it;;
         _autovar_10=it;;
@@ -1716,7 +1715,7 @@ alt11_2:
         _follow=it;;
         bind_aset(bind2,1,_follow);
         bind_aset(bind2,2,_x);
-        it=rb_funcall(self,sy__bind_lb_1_rb__sp__c213,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213,1,bind2);
         _follow=bind_aget(bind2,1);;
         _x=bind_aget(bind2,2);;
         __result=it;;
@@ -1734,7 +1733,7 @@ accept11:
         ;
         bind_aset(bind2,1,_autovar_7);
         bind_aset(bind2,2,_autovar_10);
-        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_cdb3,1,bind2);
         _autovar_7=bind_aget(bind2,1);;
         _autovar_10=bind_aget(bind2,2);;
         it=Qnil;
@@ -1748,11 +1747,11 @@ accept11:
     case 3/*Seq*/:
         ;
         bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_d6d5,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
         bind_aset(bind2,1,_autovar_7);
         bind_aset(bind2,2,_autovar_8);
-        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_5f56,1,bind2);
         _autovar_7=bind_aget(bind2,1);;
         _autovar_8=bind_aget(bind2,2);;
         int oldpos13=ptr->pos;
@@ -1776,7 +1775,7 @@ alt14_1:
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_22);
-        it=rb_funcall(self,sy_must_empty,0);
+        it=Remove_Left_Recursion_must_empty(self );
         if (it==failobj) {
             it=failobj;
             goto pass16;
@@ -1816,7 +1815,7 @@ accept15:
         it=_autovar_23;
         _rest=it;;
         bind_aset(bind2,1,_rest);
-        it=rb_funcall(self,sy__Seq_lb_bind_e0fb,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_Seq_lb_bind_e0fb,1,bind2);
         _rest=bind_aget(bind2,1);;
         _autovar_25=it;;
         cstruct oldpass17=*ptr;
@@ -1827,11 +1826,11 @@ accept15:
         ptr->ary[0]=_autovar_25;
         ptr->len=1;
         bind_aset(bind2,1,_autovar_8);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_d6d5,1,bind2);
         _autovar_8=bind_aget(bind2,1);;
         it=Qtrue;
         arg0=it;
-        it=rb_funcall(self,sy_first,1,arg0);
+        it=Remove_Left_Recursion_first(self ,arg0);
         if (it==failobj) {
             it=failobj;
             goto pass17;
@@ -1870,7 +1869,7 @@ success16:
         *ptr=oldpass16;
         bind_aset(bind2,1,_first);
         bind_aset(bind2,2,_rest);
-        it=rb_funcall(self,sy__Seq_lb_bind_f95b,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_Seq_lb_bind_f95b,1,bind2);
         _first=bind_aget(bind2,1);;
         _rest=bind_aget(bind2,2);;
         __result=it;;
@@ -1887,11 +1886,11 @@ alt14_2:
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_27);
         bind_aset(bind2,1,_autovar_8);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_d6d5,1,bind2);
         _autovar_8=bind_aget(bind2,1);;
         it=Qtrue;
         arg0=it;
-        it=rb_funcall(self,sy_first,1,arg0);
+        it=Remove_Left_Recursion_first(self ,arg0);
         if (it==failobj) {
             it=failobj;
             goto pass18;
@@ -1947,7 +1946,7 @@ success18:
         *ptr=oldpass18;
         bind_aset(bind2,1,_first);
         bind_aset(bind2,2,_rest);
-        it=rb_funcall(self,sy__Seq_lb_bind_f95b,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_Seq_lb_bind_f95b,1,bind2);
         _first=bind_aget(bind2,1);;
         _rest=bind_aget(bind2,2);;
         __result=it;;
@@ -1978,7 +1977,7 @@ alt13_2:
         _follow=it;;
         bind_aset(bind2,1,_follow);
         bind_aset(bind2,2,_x);
-        it=rb_funcall(self,sy__bind_lb_1_rb__sp__c213,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213,1,bind2);
         _follow=bind_aget(bind2,1);;
         _x=bind_aget(bind2,2);;
         __result=it;;
@@ -1996,7 +1995,7 @@ accept13:
         ;
         bind_aset(bind2,1,_autovar_7);
         bind_aset(bind2,2,_autovar_10);
-        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_cdb3,1,bind2);
         _autovar_7=bind_aget(bind2,1);;
         _autovar_10=bind_aget(bind2,2);;
         it=Qnil;
@@ -2010,11 +2009,11 @@ accept13:
     case 4/*Object*/:
         ;
         bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_d6d5,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
         bind_aset(bind2,1,_autovar_7);
         bind_aset(bind2,2,_autovar_8);
-        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_5f56,1,bind2);
         _autovar_7=bind_aget(bind2,1);;
         _autovar_8=bind_aget(bind2,2);;
         it=AmethystCore_anything(self );
@@ -2027,14 +2026,14 @@ accept13:
         _follow=it;;
         bind_aset(bind2,1,_follow);
         bind_aset(bind2,2,_x);
-        it=rb_funcall(self,sy__bind_lb_1_rb__sp__c213,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213,1,bind2);
         _follow=bind_aget(bind2,1);;
         _x=bind_aget(bind2,2);;
         __result=it;;
         _autovar_10=it;;
         bind_aset(bind2,1,_autovar_7);
         bind_aset(bind2,2,_autovar_10);
-        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_cdb3,1,bind2);
         _autovar_7=bind_aget(bind2,1);;
         _autovar_10=bind_aget(bind2,2);;
         it=Qnil;
@@ -2060,11 +2059,11 @@ success11:
     bind_aset(bind2,1,_a);
     bind_aset(bind2,2,_first_2);
     bind_aset(bind2,3,_follow_2);
-    it=rb_funcall(self,sy__bind_lb_1_rb__eq__56ab,1,bind2);
+    it=rb_funcall(self,sy_Remove_Left_Recursion_bind_lb_1_rb__eq__56ab,1,bind2);
     _a=bind_aget(bind2,1);;
     _first_2=bind_aget(bind2,2);;
     _follow_2=bind_aget(bind2,3);;
-    it=rb_funcall(self,sy__src_25d9,1,bind2);
+    it=rb_funcall(self,sy_Remove_Left_Recursion_src_25d9,1,bind2);
     _autovar_34=it;;
     it=Qnil;
     if (ptr->pos<ptr->len) {
@@ -2085,7 +2084,7 @@ success2:
     _autovar_35=it;;
     bind_aset(bind2,1,_autovar);
     bind_aset(bind2,2,_autovar_35);
-    it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+    it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_cdb3,1,bind2);
     _autovar=bind_aget(bind2,1);;
     _autovar_35=bind_aget(bind2,2);;
 fail:
@@ -2103,26 +2102,24 @@ void Init_Remove_Left_Recursion_c() {
     rb_global_variable(&switchhash_Remove_Left_Recursion_3);;
     switchhash_Remove_Left_Recursion_4=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Bind\nnext h[k]=2 if k<=Or\nnext h[k]=3 if k<=Seq\nnext h[k]=4 if k<=Object\n}");
     rb_global_variable(&switchhash_Remove_Left_Recursion_4);;
-    sy__Bind_lb_src_66c4=rb_intern("_Bind_lb_src_66c4");
-    sy__Or_lb_bind_lb__3169=rb_intern("_Or_lb_bind_lb__3169");
-    sy__Seq_lb_bind_e0fb=rb_intern("_Seq_lb_bind_e0fb");
-    sy__Seq_lb_bind_f95b=rb_intern("_Seq_lb_bind_f95b");
-    sy___at__contex_5f56=rb_intern("__at__contex_5f56");
-    sy___at__contex_cdb3=rb_intern("__at__contex_cdb3");
-    sy___at__contex_d6d5=rb_intern("__at__contex_d6d5");
-    sy___at_left_re_c85d=rb_intern("__at_left_re_c85d");
-    sy___at_result_eq__b6ab=rb_intern("__at_result_eq__b6ab");
-    sy___lp_bind_lb_1_rb__5b9e=rb_intern("__lp_bind_lb_1_rb__5b9e");
-    sy___lp_must_em_43e9=rb_intern("__lp_must_em_43e9");
-    sy__bind_lb_1_rb__dot__44a5=rb_intern("_bind_lb_1_rb__dot__44a5");
-    sy__bind_lb_1_rb__eq__56ab=rb_intern("_bind_lb_1_rb__eq__56ab");
-    sy__bind_lb_1_rb__lb__fa06=rb_intern("_bind_lb_1_rb__lb__fa06");
-    sy__bind_lb_1_rb__sp__4ee5=rb_intern("_bind_lb_1_rb__sp__4ee5");
-    sy__bind_lb_1_rb__sp__c213=rb_intern("_bind_lb_1_rb__sp__c213");
-    sy__src_25d9=rb_intern("_src_25d9");
-    sy__src_dot_body_519e=rb_intern("_src_dot_body_519e");
-    sy_first=rb_intern("first");
-    sy_must_empty=rb_intern("must_empty");
+    sy_Remove_Left_Recursion_Bind_lb_src_66c4=rb_intern("Remove_Left_Recursion_Bind_lb_src_66c4");
+    sy_Remove_Left_Recursion_Or_lb_bind_lb__3169=rb_intern("Remove_Left_Recursion_Or_lb_bind_lb__3169");
+    sy_Remove_Left_Recursion_Seq_lb_bind_e0fb=rb_intern("Remove_Left_Recursion_Seq_lb_bind_e0fb");
+    sy_Remove_Left_Recursion_Seq_lb_bind_f95b=rb_intern("Remove_Left_Recursion_Seq_lb_bind_f95b");
+    sy_Remove_Left_Recursion__at__contex_5f56=rb_intern("Remove_Left_Recursion__at__contex_5f56");
+    sy_Remove_Left_Recursion__at__contex_cdb3=rb_intern("Remove_Left_Recursion__at__contex_cdb3");
+    sy_Remove_Left_Recursion__at__contex_d6d5=rb_intern("Remove_Left_Recursion__at__contex_d6d5");
+    sy_Remove_Left_Recursion__at_left_re_c85d=rb_intern("Remove_Left_Recursion__at_left_re_c85d");
+    sy_Remove_Left_Recursion__at_result_eq__b6ab=rb_intern("Remove_Left_Recursion__at_result_eq__b6ab");
+    sy_Remove_Left_Recursion__lp_bind_lb_1_rb__5b9e=rb_intern("Remove_Left_Recursion__lp_bind_lb_1_rb__5b9e");
+    sy_Remove_Left_Recursion__lp_must_em_43e9=rb_intern("Remove_Left_Recursion__lp_must_em_43e9");
+    sy_Remove_Left_Recursion_bind_lb_1_rb__dot__44a5=rb_intern("Remove_Left_Recursion_bind_lb_1_rb__dot__44a5");
+    sy_Remove_Left_Recursion_bind_lb_1_rb__eq__56ab=rb_intern("Remove_Left_Recursion_bind_lb_1_rb__eq__56ab");
+    sy_Remove_Left_Recursion_bind_lb_1_rb__lb__fa06=rb_intern("Remove_Left_Recursion_bind_lb_1_rb__lb__fa06");
+    sy_Remove_Left_Recursion_bind_lb_1_rb__sp__4ee5=rb_intern("Remove_Left_Recursion_bind_lb_1_rb__sp__4ee5");
+    sy_Remove_Left_Recursion_bind_lb_1_rb__sp__c213=rb_intern("Remove_Left_Recursion_bind_lb_1_rb__sp__c213");
+    sy_Remove_Left_Recursion_src_25d9=rb_intern("Remove_Left_Recursion_src_25d9");
+    sy_Remove_Left_Recursion_src_dot_body_519e=rb_intern("Remove_Left_Recursion_src_dot_body_519e");
     rb_define_method(cls_Remove_Left_Recursion,"first",Remove_Left_Recursion_first,1);
     rb_define_method(cls_Remove_Left_Recursion,"must_empty",Remove_Left_Recursion_must_empty,0);
     rb_define_method(cls_Remove_Left_Recursion,"root",Remove_Left_Recursion_root,0);

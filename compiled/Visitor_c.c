@@ -5,9 +5,7 @@ VALUE AmethystCore_anything(VALUE self );
 VALUE Visitor_traverse(VALUE self );
 VALUE Visitor_traverse_item(VALUE self );
 VALUE switchhash_Visitor_1;
-static VALUE sy___lp_src_dot_ins_a413;
-static VALUE sy_traverse;
-static VALUE sy_traverse_item;
+static VALUE sy_Visitor__lp_src_dot_ins_a413;
 static VALUE sy_visit;
 VALUE profile_report_Visitor(VALUE self) {
     cstruct *ptr;
@@ -23,7 +21,7 @@ VALUE Visitor_traverse(VALUE self ) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     ptr->pos=ptr->len;
-    it=rb_funcall(self,sy___lp_src_dot_ins_a413,1,bind2);
+    it=rb_funcall(self,sy_Visitor__lp_src_dot_ins_a413,1,bind2);
     _autovar=it;;
     cstruct oldpass1=*ptr;
     ptr->pos=ptr->len=0;
@@ -50,7 +48,7 @@ VALUE Visitor_traverse(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=rb_funcall(self,sy_traverse_item,0);
+        it=Visitor_traverse_item(self );
         if (it==failobj) {
             it=failobj;
             goto alt1_2;
@@ -146,7 +144,7 @@ alt1_2:
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar);
-        it=rb_funcall(self,sy_traverse,0);
+        it=Visitor_traverse(self );
         if (it==failobj) {
             it=failobj;
             goto pass1;
@@ -223,7 +221,7 @@ alt2_2:
             int cut3=0;
 alt3_1:
             ;
-            it=rb_funcall(self,sy_traverse_item,0);
+            it=Visitor_traverse_item(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt3_2;
@@ -333,9 +331,7 @@ void Init_Visitor_c() {
     rb_define_method(cls_Visitor,"profile_report",profile_report_Visitor,0);
     switchhash_Visitor_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}");
     rb_global_variable(&switchhash_Visitor_1);;
-    sy___lp_src_dot_ins_a413=rb_intern("__lp_src_dot_ins_a413");
-    sy_traverse=rb_intern("traverse");
-    sy_traverse_item=rb_intern("traverse_item");
+    sy_Visitor__lp_src_dot_ins_a413=rb_intern("Visitor__lp_src_dot_ins_a413");
     sy_visit=rb_intern("visit");
     rb_define_method(cls_Visitor,"traverse",Visitor_traverse,0);
     rb_define_method(cls_Visitor,"traverse_item",Visitor_traverse_item,0);

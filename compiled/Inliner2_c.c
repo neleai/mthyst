@@ -13,23 +13,20 @@ VALUE switchhash_Inliner2_4;
 VALUE switchhash_Inliner2_5;
 VALUE switchhash_Inliner2_6;
 VALUE switchhash_Inliner2_7;
-static VALUE sy__Seq_lb_src_dot__3406;
-static VALUE sy___at__contex_5f56;
-static VALUE sy___at__contex_cdb3;
-static VALUE sy___at__contex_d6d5;
-static VALUE sy___at_name_eq_bi_118d;
-static VALUE sy___lp_bind_lb_1_rb__709e;
-static VALUE sy___lp_src_dot_cla_2024;
-static VALUE sy__bind_lb_1_rb__lt__7b20;
-static VALUE sy__bind_lb_1_rb__sp__6af0;
-static VALUE sy__body_eq_bin_3feb;
-static VALUE sy__if_sp_bind_lb__1bed;
-static VALUE sy__src_dot_args_2df5;
-static VALUE sy__src_dot_loca_1df0;
-static VALUE sy__src_dot_name_80f3;
-static VALUE sy_traverse;
-static VALUE sy_traverse_item;
-static VALUE sy_visit;
+static VALUE sy_Inliner2_Seq_lb_src_dot__3406;
+static VALUE sy_Inliner2__at__contex_5f56;
+static VALUE sy_Inliner2__at__contex_cdb3;
+static VALUE sy_Inliner2__at__contex_d6d5;
+static VALUE sy_Inliner2__at_name_eq_bi_118d;
+static VALUE sy_Inliner2__lp_bind_lb_1_rb__709e;
+static VALUE sy_Inliner2__lp_src_dot_cla_2024;
+static VALUE sy_Inliner2_bind_lb_1_rb__lt__7b20;
+static VALUE sy_Inliner2_bind_lb_1_rb__sp__6af0;
+static VALUE sy_Inliner2_body_eq_bin_3feb;
+static VALUE sy_Inliner2_if_sp_bind_lb__1bed;
+static VALUE sy_Inliner2_src_dot_args_2df5;
+static VALUE sy_Inliner2_src_dot_loca_1df0;
+static VALUE sy_Inliner2_src_dot_name_80f3;
 VALUE profile_report_Inliner2(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -45,7 +42,7 @@ VALUE Inliner2_root(VALUE self ) {
     Data_Get_Struct(self,cstruct,ptr);
     bind_aset(bind2,1,_autovar);
     bind_aset(bind2,2,_autovar_2);
-    it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
+    it=rb_funcall(self,sy_Inliner2__at__contex_5f56,1,bind2);
     _autovar=bind_aget(bind2,1);;
     _autovar_2=bind_aget(bind2,2);;
     it=AmethystCore_anything(self );
@@ -104,12 +101,12 @@ success1:
     ptr->pos=ptr->len=0;
     ptr->ary=NULL;
     ame_setsrc2(self,_autovar_5);
-    it=rb_funcall(self,sy__src_dot_name_80f3,1,bind2);
+    it=rb_funcall(self,sy_Inliner2_src_dot_name_80f3,1,bind2);
     _name=it;;
-    it=rb_funcall(self,sy__src_dot_args_2df5,1,bind2);
+    it=rb_funcall(self,sy_Inliner2_src_dot_args_2df5,1,bind2);
     _args=it;;
-    it=rb_funcall(self,sy__src_dot_loca_1df0,1,bind2);
-    it=rb_funcall(self,sy__Seq_lb_src_dot__3406,1,bind2);
+    it=rb_funcall(self,sy_Inliner2_src_dot_loca_1df0,1,bind2);
+    it=rb_funcall(self,sy_Inliner2_Seq_lb_src_dot__3406,1,bind2);
     _body=it;;
     it=Qnil;
     if (ptr->pos<ptr->len) {
@@ -129,7 +126,7 @@ success2:
     bind_aset(bind2,2,_autovar_2);
     bind_aset(bind2,3,_args);
     bind_aset(bind2,4,_body);
-    it=rb_funcall(self,sy___at_name_eq_bi_118d,1,bind2);
+    it=rb_funcall(self,sy_Inliner2__at_name_eq_bi_118d,1,bind2);
     _name=bind_aget(bind2,1);;
     _autovar_2=bind_aget(bind2,2);;
     _args=bind_aget(bind2,3);;
@@ -179,9 +176,9 @@ success3:
     ptr->ary=NULL;
     ame_setsrc2(self,_autovar_8);
     bind_aset(bind2,1,_autovar_2);
-    it=rb_funcall(self,sy___at__contex_d6d5,1,bind2);
+    it=rb_funcall(self,sy_Inliner2__at__contex_d6d5,1,bind2);
     _autovar_2=bind_aget(bind2,1);;
-    it=rb_funcall(self,sy_traverse,0);
+    it=Inliner2_traverse(self );
     if (it==failobj) {
         it=failobj;
         goto pass4;
@@ -206,7 +203,7 @@ success4:
     _autovar_10=it;;
     bind_aset(bind2,1,_autovar);
     bind_aset(bind2,2,_autovar_10);
-    it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+    it=rb_funcall(self,sy_Inliner2__at__contex_cdb3,1,bind2);
     _autovar=bind_aget(bind2,1);;
     _autovar_10=bind_aget(bind2,2);;
 fail:
@@ -223,7 +220,7 @@ VALUE Inliner2_traverse(VALUE self ) {
     ptr->pos=ptr->len;
     it=rb_ary_new3(0);
     _nvars=it;;
-    it=rb_funcall(self,sy___lp_src_dot_cla_2024,1,bind2);
+    it=rb_funcall(self,sy_Inliner2__lp_src_dot_cla_2024,1,bind2);
     _ivars=it;;
     it=_ivars;
     _autovar=it;;
@@ -250,7 +247,7 @@ VALUE Inliner2_traverse(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=rb_funcall(self,sy_traverse_item,0);
+        it=Inliner2_traverse_item(self );
         if (it==failobj) {
             it=failobj;
             goto alt1_2;
@@ -258,7 +255,7 @@ alt1_1:
         _it=it;;
         bind_aset(bind2,1,_nvars);
         bind_aset(bind2,2,_it);
-        it=rb_funcall(self,sy__bind_lb_1_rb__sp__6af0,1,bind2);
+        it=rb_funcall(self,sy_Inliner2_bind_lb_1_rb__sp__6af0,1,bind2);
         _nvars=bind_aget(bind2,1);;
         _it=bind_aget(bind2,2);;
         ;
@@ -307,7 +304,7 @@ success1:
     *ptr=oldpass1;
     bind_aset(bind2,1,_ivars);
     bind_aset(bind2,2,_nvars);
-    it=rb_funcall(self,sy__if_sp_bind_lb__1bed,1,bind2);
+    it=rb_funcall(self,sy_Inliner2_if_sp_bind_lb__1bed,1,bind2);
     _ivars=bind_aget(bind2,1);;
     _nvars=bind_aget(bind2,2);;
     __result=it;;
@@ -333,7 +330,7 @@ VALUE Inliner2_traverse_item(VALUE self ) {
             int cut1=0;
 alt1_1:
             ;
-            it=rb_funcall(self,sy_visit,0);
+            it=Inliner2_visit(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt1_2;
@@ -351,7 +348,7 @@ alt1_2:
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
             ame_setsrc2(self,_autovar);
-            it=rb_funcall(self,sy_traverse,0);
+            it=Inliner2_traverse(self );
             if (it==failobj) {
                 it=failobj;
                 goto pass1;
@@ -409,7 +406,7 @@ alt2_1:
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
             ame_setsrc2(self,_autovar);
-            it=rb_funcall(self,sy_traverse,0);
+            it=Inliner2_traverse(self );
             if (it==failobj) {
                 it=failobj;
                 goto pass2;
@@ -465,7 +462,7 @@ accept2:
             int cut3=0;
 alt3_1:
             ;
-            it=rb_funcall(self,sy_visit,0);
+            it=Inliner2_visit(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt3_2;
@@ -491,7 +488,7 @@ alt3_2:
                 int cut4=0;
 alt4_1:
                 ;
-                it=rb_funcall(self,sy_traverse_item,0);
+                it=Inliner2_traverse_item(self );
                 if (it==failobj) {
                     it=failobj;
                     goto alt4_2;
@@ -499,7 +496,7 @@ alt4_1:
                 _it=it;;
                 bind_aset(bind2,1,_ar);
                 bind_aset(bind2,2,_it);
-                it=rb_funcall(self,sy__bind_lb_1_rb__lt__7b20,1,bind2);
+                it=rb_funcall(self,sy_Inliner2_bind_lb_1_rb__lt__7b20,1,bind2);
                 _ar=bind_aget(bind2,1);;
                 _it=bind_aget(bind2,2);;
                 ;
@@ -581,7 +578,7 @@ alt5_1:
                 int cut6=0;
 alt6_1:
                 ;
-                it=rb_funcall(self,sy_traverse_item,0);
+                it=Inliner2_traverse_item(self );
                 if (it==failobj) {
                     it=failobj;
                     goto alt6_2;
@@ -589,7 +586,7 @@ alt6_1:
                 _it=it;;
                 bind_aset(bind2,1,_ar);
                 bind_aset(bind2,2,_it);
-                it=rb_funcall(self,sy__bind_lb_1_rb__lt__7b20,1,bind2);
+                it=rb_funcall(self,sy_Inliner2_bind_lb_1_rb__lt__7b20,1,bind2);
                 _ar=bind_aget(bind2,1);;
                 _it=bind_aget(bind2,2);;
                 ;
@@ -661,7 +658,7 @@ accept5:
             int cut7=0;
 alt7_1:
             ;
-            it=rb_funcall(self,sy_visit,0);
+            it=Inliner2_visit(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt7_2;
@@ -718,7 +715,7 @@ VALUE Inliner2_visit(VALUE self ) {
         ;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
+        it=rb_funcall(self,sy_Inliner2__at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_2=bind_aget(bind2,2);;
         it=ptr->ary[ptr->pos];            ;
@@ -735,7 +732,7 @@ VALUE Inliner2_visit(VALUE self ) {
         }
         _name=it;;
         bind_aset(bind2,1,_name);
-        it=rb_funcall(self,sy___lp_bind_lb_1_rb__709e,1,bind2);
+        it=rb_funcall(self,sy_Inliner2__lp_bind_lb_1_rb__709e,1,bind2);
         _name=bind_aget(bind2,1);;
         if (it==failobj) {
             it=failobj;
@@ -791,14 +788,14 @@ success1:
         *ptr=oldpass1;
         bind_aset(bind2,1,_autovar_2);
         bind_aset(bind2,2,_args);
-        it=rb_funcall(self,sy__body_eq_bin_3feb,1,bind2);
+        it=rb_funcall(self,sy_Inliner2_body_eq_bin_3feb,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
         _args=bind_aget(bind2,2);;
         __result=it;;
         _autovar_6=it;;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_6);
-        it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+        it=rb_funcall(self,sy_Inliner2__at__contex_cdb3,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_6=bind_aget(bind2,2);;
         break;
@@ -806,7 +803,7 @@ success1:
         ;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_2);
-        it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
+        it=rb_funcall(self,sy_Inliner2__at__contex_5f56,1,bind2);
         _autovar=bind_aget(bind2,1);;
         _autovar_2=bind_aget(bind2,2);;
         if (1) {
@@ -836,23 +833,20 @@ void Init_Inliner2_c() {
     rb_global_variable(&switchhash_Inliner2_6);;
     switchhash_Inliner2_7=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_Inliner2_7);;
-    sy__Seq_lb_src_dot__3406=rb_intern("_Seq_lb_src_dot__3406");
-    sy___at__contex_5f56=rb_intern("__at__contex_5f56");
-    sy___at__contex_cdb3=rb_intern("__at__contex_cdb3");
-    sy___at__contex_d6d5=rb_intern("__at__contex_d6d5");
-    sy___at_name_eq_bi_118d=rb_intern("__at_name_eq_bi_118d");
-    sy___lp_bind_lb_1_rb__709e=rb_intern("__lp_bind_lb_1_rb__709e");
-    sy___lp_src_dot_cla_2024=rb_intern("__lp_src_dot_cla_2024");
-    sy__bind_lb_1_rb__lt__7b20=rb_intern("_bind_lb_1_rb__lt__7b20");
-    sy__bind_lb_1_rb__sp__6af0=rb_intern("_bind_lb_1_rb__sp__6af0");
-    sy__body_eq_bin_3feb=rb_intern("_body_eq_bin_3feb");
-    sy__if_sp_bind_lb__1bed=rb_intern("_if_sp_bind_lb__1bed");
-    sy__src_dot_args_2df5=rb_intern("_src_dot_args_2df5");
-    sy__src_dot_loca_1df0=rb_intern("_src_dot_loca_1df0");
-    sy__src_dot_name_80f3=rb_intern("_src_dot_name_80f3");
-    sy_traverse=rb_intern("traverse");
-    sy_traverse_item=rb_intern("traverse_item");
-    sy_visit=rb_intern("visit");
+    sy_Inliner2_Seq_lb_src_dot__3406=rb_intern("Inliner2_Seq_lb_src_dot__3406");
+    sy_Inliner2__at__contex_5f56=rb_intern("Inliner2__at__contex_5f56");
+    sy_Inliner2__at__contex_cdb3=rb_intern("Inliner2__at__contex_cdb3");
+    sy_Inliner2__at__contex_d6d5=rb_intern("Inliner2__at__contex_d6d5");
+    sy_Inliner2__at_name_eq_bi_118d=rb_intern("Inliner2__at_name_eq_bi_118d");
+    sy_Inliner2__lp_bind_lb_1_rb__709e=rb_intern("Inliner2__lp_bind_lb_1_rb__709e");
+    sy_Inliner2__lp_src_dot_cla_2024=rb_intern("Inliner2__lp_src_dot_cla_2024");
+    sy_Inliner2_bind_lb_1_rb__lt__7b20=rb_intern("Inliner2_bind_lb_1_rb__lt__7b20");
+    sy_Inliner2_bind_lb_1_rb__sp__6af0=rb_intern("Inliner2_bind_lb_1_rb__sp__6af0");
+    sy_Inliner2_body_eq_bin_3feb=rb_intern("Inliner2_body_eq_bin_3feb");
+    sy_Inliner2_if_sp_bind_lb__1bed=rb_intern("Inliner2_if_sp_bind_lb__1bed");
+    sy_Inliner2_src_dot_args_2df5=rb_intern("Inliner2_src_dot_args_2df5");
+    sy_Inliner2_src_dot_loca_1df0=rb_intern("Inliner2_src_dot_loca_1df0");
+    sy_Inliner2_src_dot_name_80f3=rb_intern("Inliner2_src_dot_name_80f3");
     rb_define_method(cls_Inliner2,"root",Inliner2_root,0);
     rb_define_method(cls_Inliner2,"traverse",Inliner2_traverse,0);
     rb_define_method(cls_Inliner2,"traverse_item",Inliner2_traverse_item,0);

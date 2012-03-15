@@ -9,23 +9,20 @@ VALUE First_Dataflow_switch(VALUE self );
 VALUE First_Dataflow_value(VALUE self );
 VALUE switchhash_First_Dataflow_1;
 VALUE switchhash_First_Dataflow_2;
-static VALUE sy__Compiler_558e;
-static VALUE sy__Switch_O_5445;
-static VALUE sy___at_vis_eq_bin_8b89;
-static VALUE sy___d41d;
-static VALUE sy___lp_;
-static VALUE sy___lp_Compile_7f7b;
-static VALUE sy__bind_lb_1_rb_;
-static VALUE sy__bind_lb_1_rb__dot__159a;
-static VALUE sy__bind_lb_1_rb__dot__a37c;
-static VALUE sy__bind_lb_1_rb__dot__c5d5;
-static VALUE sy__depends_lp__7463;
-static VALUE sy__lattice_dot__5a9e;
-static VALUE sy__lattice_dot__b0f6;
+static VALUE sy_First_Dataflow_Compiler_558e;
+static VALUE sy_First_Dataflow_Switch_O_5445;
+static VALUE sy_First_Dataflow__at_vis_eq_bin_8b89;
+static VALUE sy_First_Dataflow__d41d;
+static VALUE sy_First_Dataflow__lp_;
+static VALUE sy_First_Dataflow__lp_Compile_7f7b;
+static VALUE sy_First_Dataflow_bind_lb_1_rb_;
+static VALUE sy_First_Dataflow_bind_lb_1_rb__dot__159a;
+static VALUE sy_First_Dataflow_bind_lb_1_rb__dot__a37c;
+static VALUE sy_First_Dataflow_bind_lb_1_rb__dot__c5d5;
+static VALUE sy_First_Dataflow_depends_lp__7463;
+static VALUE sy_First_Dataflow_lattice_dot__5a9e;
+static VALUE sy_First_Dataflow_lattice_dot__b0f6;
 static VALUE sy_analyze;
-static VALUE sy_first;
-static VALUE sy_switch;
-static VALUE sy_value;
 VALUE profile_report_First_Dataflow(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -61,7 +58,7 @@ alt1_1:
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar);
         ptr->pos=ptr->len;
-        it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
+        it=rb_funcall(self,sy_First_Dataflow_lattice_dot__5a9e,1,bind2);
         _autovar_2=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
@@ -89,7 +86,7 @@ alt1_2:
             it=failobj;
             goto alt1_3;
         }
-        it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
+        it=rb_funcall(self,sy_First_Dataflow_lattice_dot__b0f6,1,bind2);
         __result=it;;
 
         ;
@@ -123,14 +120,14 @@ alt2_1:
         }
         _name=it;;
         bind_aset(bind2,1,_name);
-        it=rb_funcall(self,sy___lp_Compile_7f7b,1,bind2);
+        it=rb_funcall(self,sy_First_Dataflow__lp_Compile_7f7b,1,bind2);
         _name=bind_aget(bind2,1);;
         if (it==failobj) {
             it=failobj;
             goto pass2;
         };
         bind_aset(bind2,1,_name);
-        it=rb_funcall(self,sy__Compiler_558e,1,bind2);
+        it=rb_funcall(self,sy_First_Dataflow_Compiler_558e,1,bind2);
         _name=bind_aget(bind2,1);;
         _autovar_4=it;;
         cstruct oldpass3=*ptr;
@@ -140,7 +137,7 @@ alt2_1:
         ptr->ary=alloca(sizeof(VALUE));
         ptr->ary[0]=_autovar_4;
         ptr->len=1;
-        it=rb_funcall(self,sy_value,0);
+        it=First_Dataflow_value(self );
         if (it==failobj) {
             it=failobj;
             goto pass3;
@@ -189,7 +186,7 @@ alt2_2:
             it=failobj;
             goto alt2_3;
         }
-        it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
+        it=rb_funcall(self,sy_First_Dataflow_lattice_dot__b0f6,1,bind2);
         __result=it;;
 
         ;
@@ -216,7 +213,7 @@ alt3_1:
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_7);
-        it=rb_funcall(self,sy_value,0);
+        it=First_Dataflow_value(self );
         if (it==failobj) {
             it=failobj;
             goto pass4;
@@ -248,7 +245,7 @@ alt3_2:
             it=failobj;
             goto alt3_3;
         }
-        it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
+        it=rb_funcall(self,sy_First_Dataflow_lattice_dot__b0f6,1,bind2);
         __result=it;;
 
         ;
@@ -275,14 +272,14 @@ alt4_1:
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_9);
-        it=rb_funcall(self,sy_value,0);
+        it=First_Dataflow_value(self );
         if (it==failobj) {
             it=failobj;
             goto pass5;
         }
         _val=it;;
         bind_aset(bind2,1,_val);
-        it=rb_funcall(self,sy__bind_lb_1_rb_,1,bind2);
+        it=rb_funcall(self,sy_First_Dataflow_bind_lb_1_rb_,1,bind2);
         _val=bind_aget(bind2,1);;
         _autovar_10=it;;
         it=Qnil;
@@ -311,7 +308,7 @@ alt4_2:
             it=failobj;
             goto alt4_3;
         }
-        it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
+        it=rb_funcall(self,sy_First_Dataflow_lattice_dot__b0f6,1,bind2);
         __result=it;;
 
         ;
@@ -335,7 +332,7 @@ accept4:
         int cut5=0;
 alt5_1:
         ;
-        it=rb_funcall(self,sy_switch,0);
+        it=First_Dataflow_switch(self );
         if (it==failobj) {
             it=failobj;
             goto alt5_2;
@@ -367,7 +364,7 @@ alt6_1:
                 goto pass7;
             }
             _p=it;;
-            it=rb_funcall(self,sy_value,0);
+            it=First_Dataflow_value(self );
             if (it==failobj) {
                 it=failobj;
                 goto pass7;
@@ -375,7 +372,7 @@ alt6_1:
             _v=it;;
             bind_aset(bind2,1,_p);
             bind_aset(bind2,2,_v);
-            it=rb_funcall(self,sy__bind_lb_1_rb__dot__c5d5,1,bind2);
+            it=rb_funcall(self,sy_First_Dataflow_bind_lb_1_rb__dot__c5d5,1,bind2);
             _p=bind_aget(bind2,1);;
             _v=bind_aget(bind2,2);;
             _autovar_13=it;;
@@ -426,7 +423,7 @@ pass6:
 success6:
         *ptr=oldpass6;
         bind_aset(bind2,1,_vals);
-        it=rb_funcall(self,sy__bind_lb_1_rb__dot__a37c,1,bind2);
+        it=rb_funcall(self,sy_First_Dataflow_bind_lb_1_rb__dot__a37c,1,bind2);
         _vals=bind_aget(bind2,1);;
         __result=it;;
 
@@ -439,7 +436,7 @@ alt5_2:
             it=failobj;
             goto alt5_3;
         }
-        it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
+        it=rb_funcall(self,sy_First_Dataflow_lattice_dot__b0f6,1,bind2);
         __result=it;;
 
         ;
@@ -466,7 +463,7 @@ alt7_1:
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_14);
-        it=rb_funcall(self,sy__lattice_dot__5a9e,1,bind2);
+        it=rb_funcall(self,sy_First_Dataflow_lattice_dot__5a9e,1,bind2);
         _val=it;;
         int stop2=0;
         while(!stop2) {
@@ -489,7 +486,7 @@ alt8_1:
             ptr->ary=alloca(sizeof(VALUE));
             ptr->ary[0]=_autovar_15;
             ptr->len=1;
-            it=rb_funcall(self,sy_value,0);
+            it=First_Dataflow_value(self );
             if (it==failobj) {
                 it=failobj;
                 goto pass9;
@@ -513,7 +510,7 @@ success9:
             _nev=it;;
             bind_aset(bind2,1,_val);
             bind_aset(bind2,2,_nev);
-            it=rb_funcall(self,sy__bind_lb_1_rb__dot__159a,1,bind2);
+            it=rb_funcall(self,sy_First_Dataflow_bind_lb_1_rb__dot__159a,1,bind2);
             _val=bind_aget(bind2,1);;
             _nev=bind_aget(bind2,2);;
             _val=it;;
@@ -522,7 +519,7 @@ success9:
 alt9_1:
             ;
             bind_aset(bind2,1,_el);
-            it=rb_funcall(self,sy___lp_,1,bind2);
+            it=rb_funcall(self,sy_First_Dataflow__lp_,1,bind2);
             _el=bind_aget(bind2,1);;
             if (it==failobj) {
                 it=failobj;
@@ -533,7 +530,7 @@ alt9_1:
             goto accept9;
 alt9_2:
             ptr->pos=oldpos9;
-            it=rb_funcall(self,sy___d41d,1,bind2);
+            it=rb_funcall(self,sy_First_Dataflow__d41d,1,bind2);
             ;
             goto accept9;
 alt9_3:
@@ -590,7 +587,7 @@ alt7_2:
             it=failobj;
             goto alt7_3;
         }
-        it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
+        it=rb_funcall(self,sy_First_Dataflow_lattice_dot__b0f6,1,bind2);
         __result=it;;
 
         ;
@@ -611,7 +608,7 @@ accept7:
             it=failobj;
             goto fail;
         }
-        it=rb_funcall(self,sy__lattice_dot__b0f6,1,bind2);
+        it=rb_funcall(self,sy_First_Dataflow_lattice_dot__b0f6,1,bind2);
         __result=it;;
         break;
     }
@@ -628,7 +625,7 @@ VALUE First_Dataflow_getvalue(VALUE self ,VALUE a0) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     bind_aset(bind2,1,_v);
-    it=rb_funcall(self,sy___at_vis_eq_bin_8b89,1,bind2);
+    it=rb_funcall(self,sy_First_Dataflow__at_vis_eq_bin_8b89,1,bind2);
     _v=bind_aget(bind2,1);;
     _autovar=it;;
     cstruct oldpass1=*ptr;
@@ -638,7 +635,7 @@ VALUE First_Dataflow_getvalue(VALUE self ,VALUE a0) {
     ptr->ary=alloca(sizeof(VALUE));
     ptr->ary[0]=_autovar;
     ptr->len=1;
-    it=rb_funcall(self,sy_first,0);
+    it=First_Dataflow_first(self );
     if (it==failobj) {
         it=failobj;
         goto pass1;
@@ -757,7 +754,7 @@ pass1:
 success1:
         *ptr=oldpass1;
         bind_aset(bind2,1,_ary);
-        it=rb_funcall(self,sy__Switch_O_5445,1,bind2);
+        it=rb_funcall(self,sy_First_Dataflow_Switch_O_5445,1,bind2);
         _ary=bind_aget(bind2,1);;
         __result=it;;
         break;
@@ -794,7 +791,7 @@ VALUE First_Dataflow_value(VALUE self ) {
     }
     _x=it;;
     bind_aset(bind2,1,_x);
-    it=rb_funcall(self,sy__depends_lp__7463,1,bind2);
+    it=rb_funcall(self,sy_First_Dataflow_depends_lp__7463,1,bind2);
     _x=bind_aget(bind2,1);;
     __result=it;;
 
@@ -809,23 +806,20 @@ void Init_First_Dataflow_c() {
     rb_global_variable(&switchhash_First_Dataflow_1);;
     switchhash_First_Dataflow_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Or\nnext h[k]=1 if k<=Switch_Char\nnext h[k]=2 if k<=Switch_Clas\nnext h[k]=3 if k<=Object\n}");
     rb_global_variable(&switchhash_First_Dataflow_2);;
-    sy__Compiler_558e=rb_intern("_Compiler_558e");
-    sy__Switch_O_5445=rb_intern("_Switch_O_5445");
-    sy___at_vis_eq_bin_8b89=rb_intern("__at_vis_eq_bin_8b89");
-    sy___d41d=rb_intern("__d41d");
-    sy___lp_=rb_intern("__lp_");
-    sy___lp_Compile_7f7b=rb_intern("__lp_Compile_7f7b");
-    sy__bind_lb_1_rb_=rb_intern("_bind_lb_1_rb_");
-    sy__bind_lb_1_rb__dot__159a=rb_intern("_bind_lb_1_rb__dot__159a");
-    sy__bind_lb_1_rb__dot__a37c=rb_intern("_bind_lb_1_rb__dot__a37c");
-    sy__bind_lb_1_rb__dot__c5d5=rb_intern("_bind_lb_1_rb__dot__c5d5");
-    sy__depends_lp__7463=rb_intern("_depends_lp__7463");
-    sy__lattice_dot__5a9e=rb_intern("_lattice_dot__5a9e");
-    sy__lattice_dot__b0f6=rb_intern("_lattice_dot__b0f6");
+    sy_First_Dataflow_Compiler_558e=rb_intern("First_Dataflow_Compiler_558e");
+    sy_First_Dataflow_Switch_O_5445=rb_intern("First_Dataflow_Switch_O_5445");
+    sy_First_Dataflow__at_vis_eq_bin_8b89=rb_intern("First_Dataflow__at_vis_eq_bin_8b89");
+    sy_First_Dataflow__d41d=rb_intern("First_Dataflow__d41d");
+    sy_First_Dataflow__lp_=rb_intern("First_Dataflow__lp_");
+    sy_First_Dataflow__lp_Compile_7f7b=rb_intern("First_Dataflow__lp_Compile_7f7b");
+    sy_First_Dataflow_bind_lb_1_rb_=rb_intern("First_Dataflow_bind_lb_1_rb_");
+    sy_First_Dataflow_bind_lb_1_rb__dot__159a=rb_intern("First_Dataflow_bind_lb_1_rb__dot__159a");
+    sy_First_Dataflow_bind_lb_1_rb__dot__a37c=rb_intern("First_Dataflow_bind_lb_1_rb__dot__a37c");
+    sy_First_Dataflow_bind_lb_1_rb__dot__c5d5=rb_intern("First_Dataflow_bind_lb_1_rb__dot__c5d5");
+    sy_First_Dataflow_depends_lp__7463=rb_intern("First_Dataflow_depends_lp__7463");
+    sy_First_Dataflow_lattice_dot__5a9e=rb_intern("First_Dataflow_lattice_dot__5a9e");
+    sy_First_Dataflow_lattice_dot__b0f6=rb_intern("First_Dataflow_lattice_dot__b0f6");
     sy_analyze=rb_intern("analyze");
-    sy_first=rb_intern("first");
-    sy_switch=rb_intern("switch");
-    sy_value=rb_intern("value");
     rb_define_method(cls_First_Dataflow,"first",First_Dataflow_first,0);
     rb_define_method(cls_First_Dataflow,"getvalue",First_Dataflow_getvalue,1);
     rb_define_method(cls_First_Dataflow,"root",First_Dataflow_root,0);

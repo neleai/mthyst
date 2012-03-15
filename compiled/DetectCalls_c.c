@@ -12,13 +12,10 @@ VALUE switchhash_DetectCalls_3;
 VALUE switchhash_DetectCalls_4;
 VALUE switchhash_DetectCalls_5;
 VALUE switchhash_DetectCalls_6;
-static VALUE sy___at_calls_7f81;
-static VALUE sy___at_calls_eq__le__39e9;
-static VALUE sy___at_calls_lb_b_e709;
-static VALUE sy___lp_src_dot_ins_a413;
-static VALUE sy_traverse;
-static VALUE sy_traverse_item;
-static VALUE sy_visit;
+static VALUE sy_DetectCalls__at_calls_7f81;
+static VALUE sy_DetectCalls__at_calls_eq__le__39e9;
+static VALUE sy_DetectCalls__at_calls_lb_b_e709;
+static VALUE sy_DetectCalls__lp_src_dot_ins_a413;
 VALUE profile_report_DetectCalls(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -42,13 +39,13 @@ VALUE DetectCalls_root(VALUE self ) {
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar);
-        it=rb_funcall(self,sy___at_calls_eq__le__39e9,1,bind2);
-        it=rb_funcall(self,sy_traverse,0);
+        it=rb_funcall(self,sy_DetectCalls__at_calls_eq__le__39e9,1,bind2);
+        it=DetectCalls_traverse(self );
         if (it==failobj) {
             it=failobj;
             goto pass1;
         }
-        it=rb_funcall(self,sy___at_calls_7f81,1,bind2);
+        it=rb_funcall(self,sy_DetectCalls__at_calls_7f81,1,bind2);
         _autovar_2=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
@@ -87,7 +84,7 @@ VALUE DetectCalls_traverse(VALUE self ) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     ptr->pos=ptr->len;
-    it=rb_funcall(self,sy___lp_src_dot_ins_a413,1,bind2);
+    it=rb_funcall(self,sy_DetectCalls__lp_src_dot_ins_a413,1,bind2);
     _autovar=it;;
     cstruct oldpass1=*ptr;
     ptr->pos=ptr->len=0;
@@ -114,7 +111,7 @@ VALUE DetectCalls_traverse(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        it=rb_funcall(self,sy_traverse_item,0);
+        it=DetectCalls_traverse_item(self );
         if (it==failobj) {
             it=failobj;
             goto alt1_2;
@@ -195,7 +192,7 @@ VALUE DetectCalls_traverse_item(VALUE self ) {
             int cut1=0;
 alt1_1:
             ;
-            it=rb_funcall(self,sy_visit,0);
+            it=DetectCalls_visit(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt1_2;
@@ -213,7 +210,7 @@ alt1_2:
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
             ame_setsrc2(self,_autovar);
-            it=rb_funcall(self,sy_traverse,0);
+            it=DetectCalls_traverse(self );
             if (it==failobj) {
                 it=failobj;
                 goto pass1;
@@ -271,7 +268,7 @@ alt2_1:
             ptr->pos=ptr->len=0;
             ptr->ary=NULL;
             ame_setsrc2(self,_autovar);
-            it=rb_funcall(self,sy_traverse,0);
+            it=DetectCalls_traverse(self );
             if (it==failobj) {
                 it=failobj;
                 goto pass2;
@@ -327,7 +324,7 @@ accept2:
             int cut3=0;
 alt3_1:
             ;
-            it=rb_funcall(self,sy_visit,0);
+            it=DetectCalls_visit(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt3_2;
@@ -353,7 +350,7 @@ alt3_2:
                 int cut4=0;
 alt4_1:
                 ;
-                it=rb_funcall(self,sy_traverse_item,0);
+                it=DetectCalls_traverse_item(self );
                 if (it==failobj) {
                     it=failobj;
                     goto alt4_2;
@@ -439,7 +436,7 @@ alt5_1:
                 int cut6=0;
 alt6_1:
                 ;
-                it=rb_funcall(self,sy_traverse_item,0);
+                it=DetectCalls_traverse_item(self );
                 if (it==failobj) {
                     it=failobj;
                     goto alt6_2;
@@ -515,7 +512,7 @@ accept5:
             int cut7=0;
 alt7_1:
             ;
-            it=rb_funcall(self,sy_visit,0);
+            it=DetectCalls_visit(self );
             if (it==failobj) {
                 it=failobj;
                 goto alt7_2;
@@ -615,7 +612,7 @@ accept1:
             ;
         }
         bind_aset(bind2,1,_name);
-        it=rb_funcall(self,sy___at_calls_lb_b_e709,1,bind2);
+        it=rb_funcall(self,sy_DetectCalls__at_calls_lb_b_e709,1,bind2);
         _name=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
@@ -664,13 +661,10 @@ void Init_DetectCalls_c() {
     rb_global_variable(&switchhash_DetectCalls_5);;
     switchhash_DetectCalls_6=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_DetectCalls_6);;
-    sy___at_calls_7f81=rb_intern("__at_calls_7f81");
-    sy___at_calls_eq__le__39e9=rb_intern("__at_calls_eq__le__39e9");
-    sy___at_calls_lb_b_e709=rb_intern("__at_calls_lb_b_e709");
-    sy___lp_src_dot_ins_a413=rb_intern("__lp_src_dot_ins_a413");
-    sy_traverse=rb_intern("traverse");
-    sy_traverse_item=rb_intern("traverse_item");
-    sy_visit=rb_intern("visit");
+    sy_DetectCalls__at_calls_7f81=rb_intern("DetectCalls__at_calls_7f81");
+    sy_DetectCalls__at_calls_eq__le__39e9=rb_intern("DetectCalls__at_calls_eq__le__39e9");
+    sy_DetectCalls__at_calls_lb_b_e709=rb_intern("DetectCalls__at_calls_lb_b_e709");
+    sy_DetectCalls__lp_src_dot_ins_a413=rb_intern("DetectCalls__lp_src_dot_ins_a413");
     rb_define_method(cls_DetectCalls,"root",DetectCalls_root,0);
     rb_define_method(cls_DetectCalls,"traverse",DetectCalls_traverse,0);
     rb_define_method(cls_DetectCalls,"traverse_item",DetectCalls_traverse_item,0);

@@ -57,11 +57,10 @@ end
 def resolvegrammar(grammar,name)
 	#TODO add header
 	return "AmethystCore" if name=="anything" || name=="_seq"
-	while true
-		return nil if !Compiler.grammars[grammar]
-		return grammar if Compiler.grammars[grammar].rules[name]
-		grammar=Compiler.grammars[grammar].parent
-	end
+  eval(grammar).ancestors.each{|g|grammar=g.to_s
+		return grammar if Compiler.grammars[grammar] && Compiler.grammars[grammar].rules[name]
+  }
+  return nil
 end
 class Compiler
 end

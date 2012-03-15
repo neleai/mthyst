@@ -1,6 +1,7 @@
 #include "cthyst.h"
 #include "memo.c"
 VALUE cls_Tests;
+VALUE Amethyst_spaces(VALUE self );
 VALUE Tests_abc(VALUE self );
 VALUE Tests_context(VALUE self );
 VALUE Tests_de(VALUE self );
@@ -15,17 +16,14 @@ static VALUE i_42;
 static VALUE s_c_4a8a;
 static VALUE s_d_8277;
 static VALUE s_g_b2f5;
-static VALUE sy___at__contex_5f56;
-static VALUE sy___at__contex_cdb3;
-static VALUE sy__bind_lb_1_rb__eq__58f9;
-static VALUE sy__bind_lb_1_rb__lb__6e1f;
-static VALUE sy__bind_lb_1_rb__pl__0a71;
-static VALUE sy__bind_lb_1_rb__pl__61a1;
-static VALUE sy__foo_pl_bar_ac93;
-static VALUE sy_abc;
+static VALUE sy_Tests__at__contex_5f56;
+static VALUE sy_Tests__at__contex_cdb3;
+static VALUE sy_Tests_bind_lb_1_rb__eq__58f9;
+static VALUE sy_Tests_bind_lb_1_rb__lb__6e1f;
+static VALUE sy_Tests_bind_lb_1_rb__pl__0a71;
+static VALUE sy_Tests_bind_lb_1_rb__pl__61a1;
+static VALUE sy_Tests_foo_pl_bar_ac93;
 static VALUE sy_bar;
-static VALUE sy_foo;
-static VALUE sy_spaces;
 VALUE profile_report_Tests(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -73,17 +71,17 @@ VALUE Tests_context(VALUE self ) {
     Data_Get_Struct(self,cstruct,ptr);
     bind_aset(bind2,1,_autovar);
     bind_aset(bind2,2,_autovar_2);
-    it=rb_funcall(self,sy___at__contex_5f56,1,bind2);
+    it=rb_funcall(self,sy_Tests__at__contex_5f56,1,bind2);
     _autovar=bind_aget(bind2,1);;
     _autovar_2=bind_aget(bind2,2);;
     bind_aset(bind2,1,_autovar_2);
-    it=rb_funcall(self,sy__bind_lb_1_rb__lb__6e1f,1,bind2);
+    it=rb_funcall(self,sy_Tests_bind_lb_1_rb__lb__6e1f,1,bind2);
     _autovar_2=bind_aget(bind2,1);;
     __result=it;;
     _autovar_3=it;;
     bind_aset(bind2,1,_autovar);
     bind_aset(bind2,2,_autovar_3);
-    it=rb_funcall(self,sy___at__contex_cdb3,1,bind2);
+    it=rb_funcall(self,sy_Tests__at__contex_cdb3,1,bind2);
     _autovar=bind_aget(bind2,1);;
     _autovar_3=bind_aget(bind2,2);;
 fail:
@@ -113,7 +111,7 @@ alt1_1:
         it=_autovar;
         _foo=it;;
         bind_aset(bind2,1,_foo);
-        it=rb_funcall(self,sy__bind_lb_1_rb__pl__61a1,1,bind2);
+        it=rb_funcall(self,sy_Tests_bind_lb_1_rb__pl__61a1,1,bind2);
         _foo=bind_aget(bind2,1);;
         if (1) {
             it=failobj;
@@ -126,7 +124,7 @@ alt1_2:
         it=_autovar;
         _foo=it;;
         bind_aset(bind2,1,_foo);
-        it=rb_funcall(self,sy__bind_lb_1_rb__pl__0a71,1,bind2);
+        it=rb_funcall(self,sy_Tests_bind_lb_1_rb__pl__0a71,1,bind2);
         _foo=bind_aget(bind2,1);;
         if (1) {
             it=failobj;
@@ -154,7 +152,7 @@ alt2_1:
         it=_autovar_2;
         _foo=it;;
         bind_aset(bind2,1,_foo);
-        it=rb_funcall(self,sy__bind_lb_1_rb__pl__61a1,1,bind2);
+        it=rb_funcall(self,sy_Tests_bind_lb_1_rb__pl__61a1,1,bind2);
         _foo=bind_aget(bind2,1);;
         if (1) {
             it=failobj;
@@ -167,7 +165,7 @@ alt2_2:
         it=_autovar_2;
         _foo=it;;
         bind_aset(bind2,1,_foo);
-        it=rb_funcall(self,sy__bind_lb_1_rb__pl__0a71,1,bind2);
+        it=rb_funcall(self,sy_Tests_bind_lb_1_rb__pl__0a71,1,bind2);
         _foo=bind_aget(bind2,1);;
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
@@ -197,9 +195,9 @@ alt3_1:
         it=_autovar_3;
         _foo=it;;
         bind_aset(bind2,1,_foo);
-        it=rb_funcall(self,sy__bind_lb_1_rb__pl__61a1,1,bind2);
+        it=rb_funcall(self,sy_Tests_bind_lb_1_rb__pl__61a1,1,bind2);
         _foo=bind_aget(bind2,1);;
-        it=rb_funcall(self,sy_abc,0);
+        it=Tests_abc(self );
         if (it==failobj) {
             it=failobj;
             goto alt3_2;
@@ -213,7 +211,7 @@ alt3_2:
         it=_autovar_3;
         _foo=it;;
         bind_aset(bind2,1,_foo);
-        it=rb_funcall(self,sy__bind_lb_1_rb__pl__0a71,1,bind2);
+        it=rb_funcall(self,sy_Tests_bind_lb_1_rb__pl__0a71,1,bind2);
         _foo=bind_aget(bind2,1);;
         if (1) {
             it=failobj;
@@ -247,13 +245,13 @@ VALUE Tests_foo(VALUE self ) {
         it=failobj;
         goto fail;
     }
-    it=rb_funcall(self,sy__foo_pl_bar_ac93,1,bind2);
+    it=rb_funcall(self,sy_Tests_foo_pl_bar_ac93,1,bind2);
     __result=it;;
     int stop1=0;
     while(!stop1) {
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,__result);
-        it=rb_funcall(self,sy__bind_lb_1_rb__eq__58f9,1,bind2);
+        it=rb_funcall(self,sy_Tests_bind_lb_1_rb__eq__58f9,1,bind2);
         _autovar=bind_aget(bind2,1);;
         __result=bind_aget(bind2,2);;
         it=__result;
@@ -274,7 +272,7 @@ VALUE Tests_gh(VALUE self ) {
     int cut1=0;
 alt1_1:
     ;
-    it=rb_funcall(self,sy_foo,0);
+    it=Tests_foo(self );
     if (it==failobj) {
         it=failobj;
         goto alt1_2;
@@ -423,7 +421,7 @@ VALUE Tests_test(VALUE self ) {
     int cut1=0;
 alt1_1:
     ;
-    it=rb_funcall(self,sy_spaces,0);
+    it=Amethyst_spaces(self );
     switch((unsigned char)*ame_curstr2(ptr)) {
     case UC(0) ... '`':
         ;
@@ -480,17 +478,14 @@ void Init_Tests_c() {
     rb_global_variable(&s_d_8277);
     s_g_b2f5=rb_str_new2("g");
     rb_global_variable(&s_g_b2f5);
-    sy___at__contex_5f56=rb_intern("__at__contex_5f56");
-    sy___at__contex_cdb3=rb_intern("__at__contex_cdb3");
-    sy__bind_lb_1_rb__eq__58f9=rb_intern("_bind_lb_1_rb__eq__58f9");
-    sy__bind_lb_1_rb__lb__6e1f=rb_intern("_bind_lb_1_rb__lb__6e1f");
-    sy__bind_lb_1_rb__pl__0a71=rb_intern("_bind_lb_1_rb__pl__0a71");
-    sy__bind_lb_1_rb__pl__61a1=rb_intern("_bind_lb_1_rb__pl__61a1");
-    sy__foo_pl_bar_ac93=rb_intern("_foo_pl_bar_ac93");
-    sy_abc=rb_intern("abc");
+    sy_Tests__at__contex_5f56=rb_intern("Tests__at__contex_5f56");
+    sy_Tests__at__contex_cdb3=rb_intern("Tests__at__contex_cdb3");
+    sy_Tests_bind_lb_1_rb__eq__58f9=rb_intern("Tests_bind_lb_1_rb__eq__58f9");
+    sy_Tests_bind_lb_1_rb__lb__6e1f=rb_intern("Tests_bind_lb_1_rb__lb__6e1f");
+    sy_Tests_bind_lb_1_rb__pl__0a71=rb_intern("Tests_bind_lb_1_rb__pl__0a71");
+    sy_Tests_bind_lb_1_rb__pl__61a1=rb_intern("Tests_bind_lb_1_rb__pl__61a1");
+    sy_Tests_foo_pl_bar_ac93=rb_intern("Tests_foo_pl_bar_ac93");
     sy_bar=rb_intern("bar");
-    sy_foo=rb_intern("foo");
-    sy_spaces=rb_intern("spaces");
     rb_define_method(cls_Tests,"abc",Tests_abc,0);
     rb_define_method(cls_Tests,"context",Tests_context,0);
     rb_define_method(cls_Tests,"de",Tests_de,0);
