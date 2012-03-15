@@ -61,15 +61,15 @@ class Dataflow < Traverser_Clone2
   memoize "root"
   use_global_memo
 end
-require 'compiled/Dataflow.rb'
+require File.expand_path(File.dirname(__FILE__))+'/Dataflow.rb'
 
-require 'compiled/Dead_Code_Deleter3.rb'
+require File.expand_path(File.dirname(__FILE__))+'/Dead_Code_Deleter3.rb'
 
 class Forget_SSA < Traverser_Clone2
   memoize "traverse"
   use_global_memo
 end
-require 'compiled/Forget_SSA.rb'
+require File.expand_path(File.dirname(__FILE__))+'/Forget_SSA.rb'
 
 def dataflow_ssa_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'

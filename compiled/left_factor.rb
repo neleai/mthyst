@@ -10,7 +10,7 @@ class Left_Factor < Traverser_Clone2
   end
 end
 
-require 'compiled/Left_Factor.rb'
+require File.expand_path(File.dirname(__FILE__))+'/Left_Factor.rb'
 
 def left_factor_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'

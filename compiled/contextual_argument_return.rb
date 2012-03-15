@@ -1,6 +1,6 @@
-require 'compiled/Add_Contextual_Arguments.rb'
+require File.expand_path(File.dirname(__FILE__))+'/Add_Contextual_Arguments.rb'
 
-require 'compiled/Add_Contextual_Returns.rb'
+require File.expand_path(File.dirname(__FILE__))+'/Add_Contextual_Returns.rb'
 
 # We do following optimalizations
 # Pass contextual arguments only to rules that use them. When none uses we delete relevant definitions.
@@ -10,7 +10,7 @@ require 'compiled/Add_Contextual_Returns.rb'
 class Context_Graph
 end
 
-require 'compiled/Detect_Contextual_Arguments.rb'
+require File.expand_path(File.dirname(__FILE__))+'/Detect_Contextual_Arguments.rb'
 
 def contextual_argument_return_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'

@@ -85,7 +85,7 @@ def gc_mark_var(v)
 	"rb_global_variable(&#{v});"
 end
 $classlabels=Hash.new(0)
-require 'compiled/AmethystCTranslator.rb'
+require File.expand_path(File.dirname(__FILE__))+'/AmethystCTranslator.rb'
 
 def ctranslator2_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'

@@ -9,9 +9,9 @@ class Detect_Locals < Traverser_Clone2
   memoize "analyze"
   use_global_memo
 end
-require 'compiled/Detect_Locals.rb'
+require File.expand_path(File.dirname(__FILE__))+'/Detect_Locals.rb'
 
-require 'compiled/Normalize.rb'
+require File.expand_path(File.dirname(__FILE__))+'/Normalize.rb'
 
 def normalize_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'

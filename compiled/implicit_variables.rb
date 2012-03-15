@@ -1,6 +1,6 @@
-require 'compiled/Detect_Implicit_Variables.rb'
+require File.expand_path(File.dirname(__FILE__))+'/Detect_Implicit_Variables.rb'
 
-require 'compiled/Add_Implicit_Variables.rb'
+require File.expand_path(File.dirname(__FILE__))+'/Add_Implicit_Variables.rb'
 
 def implicit_variables_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'

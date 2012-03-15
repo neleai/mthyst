@@ -160,11 +160,11 @@ class <<Compiler
     grammar.rules=g.rules.map{|h,k| k}
     c,init,rb=AmethystCTranslator.new.parse(:itrans,[grammar])
     hex_digest=Digest::MD5.hexdigest(c*"")
-    File.open("compiled/#{g.name}.rb" ,"w"){|f| 
+    File.open(Amethyst_path+"/compiled/#{g.name}.rb" ,"w"){|f| 
       f.puts rb
       f.puts "require File.expand_path(File.dirname(__FILE__))+\"/\#{RUBY_VERSION}/#{g.name}_c\""
     }
-    File.open("compiled/#{g.name}_c.c","w"){|f| 
+    File.open(Amethyst_path+"/compiled/#{g.name}_c.c","w"){|f| 
       f.puts "#include \"cthyst.h\""
       f.puts "#include \"memo.c\""
       f.puts c
@@ -173,14 +173,14 @@ class <<Compiler
 
 		if !Amethyst::Settings.profiling #oprofile does not like changing binaries
 	  withtime("c"){ #todo get flags portable not just 1.9.1 on x64
-      `astyle compiled/#{g.name}_c.c`
-	  	`cd compiled;gcc -I. -I/usr/include/ruby-1.9.1/x86_64-linux -I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -fPIC -fno-strict-aliasing -g -g #{Amethyst::Settings.cflags} -fPIC -c #{g.name}_c.c -o #{g.name}_c.o`
-		  `cd compiled;gcc -shared -o 1.9.3/#{g.name}_c.so #{g.name}_c.o -L. -L/usr/lib -L. -rdynamic -Wl,-export-dynamic -lruby-1.9.1 -lpthread -lrt -ldl -lcrypt -lm -lc`
- 			`rm compiled/#{g.name}_c.o` 
+      `astyle #{Amethyst_path}/compiled/#{g.name}_c.c`
+	  	`cd #{Amethyst_path}/compiled;gcc -I. -I/usr/include/ruby-1.9.1/x86_64-linux -I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -fPIC -fno-strict-aliasing -g -g #{Amethyst::Settings.cflags} -fPIC -c #{g.name}_c.c -o #{g.name}_c.o`
+		  `cd #{Amethyst_path}/compiled;gcc -shared -o 1.9.3/#{g.name}_c.so #{g.name}_c.o -L. -L/usr/lib -L. -rdynamic -Wl,-export-dynamic -lruby-1.9.1 -lpthread -lrt -ldl -lcrypt -lm -lc`
+ 			`rm #{Amethyst_path}/compiled/#{g.name}_c.o` 
     }
     end
     if !$bootstrapping_amethyst
-      require "compiled/#{g.name}.rb" 
+      require Amethyst_path+"/compiled/#{g.name}.rb" 
     end
     CurrentParser.clear
 	end
@@ -192,11 +192,12 @@ class <<Compiler
       if file2!="amethyst" && file2!="traverser"
       #TODO we need ast of parent grammars. 
       #Saving by YAML is to slow so for now we use this hack
-        if Dir["compiled/#{file2}.rb"]!=[]
-          fil=File.new("compiled/#{file2}.rb").read
+        if Dir[Amethyst_path+"/compiled/#{file2}.rb"]!=[]
+          fil=File.new(Amethyst_path+"/compiled/#{file2}.rb").read
           compiled_by=/compiled_by\n.*'([0-9a-f]*)'/.match(fil)[1]
           shash=/source_hash\n.*'([0-9a-f]*)'/.match(fil)[1]
           if compiled_by==$compiled_by && shash==source_hash
+            require Amethyst_path+"/compiled/#{file2}.rb" 
             return
           end
         end
@@ -223,7 +224,7 @@ class <<Compiler
     c,init,rb=[],[],[]
     tree.map{|e|
       if e.is_a? Grammar
-        rb<<"require 'compiled/#{e.name}.rb'"
+        rb<<"require File.expand_path(File.dirname(__FILE__))+'/#{e.name}.rb'"
       else
         rb<< e
       end
@@ -231,7 +232,7 @@ class <<Compiler
     rb=rb*""
     GC::enable
 		hex_digest=""#Digest::MD5.hexdigest(c)
-    File.open("compiled/#{file2}.rb","w"){|f| f.puts rb; 
+    File.open("#{Amethyst_path}/compiled/#{file2}.rb","w"){|f| f.puts rb; 
       f.puts "\ndef #{file2}_compiled_by\n'#{$compiled_by}'\nend\ndef #{file2}_source_hash\n'#{source_hash}'\nend\ndef testversion#{file2}(r)\n raise \"invalid version\" if r!=#{file2}_version\nend\ndef #{file2}_version\n'#{hex_digest}'\nend"}
 	end
 end

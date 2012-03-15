@@ -217,20 +217,20 @@ class Switch_Char_Dataflow < First_Dataflow
   end
 end
 
-require 'compiled/First_Dataflow.rb'        
+require File.expand_path(File.dirname(__FILE__))+'/First_Dataflow.rb'        
 
-require 'compiled/Minsize_Dataflow.rb'
+require File.expand_path(File.dirname(__FILE__))+'/Minsize_Dataflow.rb'
 
-require 'compiled/Maxsize_Dataflow.rb'
+require File.expand_path(File.dirname(__FILE__))+'/Maxsize_Dataflow.rb'
 
-require 'compiled/Complexity_Dataflow.rb'
+require File.expand_path(File.dirname(__FILE__))+'/Complexity_Dataflow.rb'
 
-require 'compiled/Switch_Char_Dataflow.rb'
+require File.expand_path(File.dirname(__FILE__))+'/Switch_Char_Dataflow.rb'
 
-require 'compiled/Switch_Clas_Dataflow.rb'
+require File.expand_path(File.dirname(__FILE__))+'/Switch_Clas_Dataflow.rb'
 
 
-require 'compiled/Cant_Fail_Dataflow.rb'
+require File.expand_path(File.dirname(__FILE__))+'/Cant_Fail_Dataflow.rb'
 
 class Detect_First< Traverser_Clone2;   def can_empty?(s);    $sizedf.analyze(s).size==0;  end; end
 
@@ -266,7 +266,7 @@ class Detect_Switch_Clas < Detect_First
   end
 end
 
-require 'compiled/Detect_First.rb'
+require File.expand_path(File.dirname(__FILE__))+'/Detect_First.rb'
 
 #TODO we can do unicode almost unchanged but we need test againist first byte of character
 
@@ -274,15 +274,15 @@ class Detect_Switch_Char < Detect_First
   memoize "traverse"
   use_global_memo
 end
-require 'compiled/Detect_Switch_Char.rb'
+require File.expand_path(File.dirname(__FILE__))+'/Detect_Switch_Char.rb'
 
 class Detect_Switch_Clas < Detect_First
   memoize "traverse"
   use_global_memo
 end
-require 'compiled/Detect_Switch_Clas.rb'
+require File.expand_path(File.dirname(__FILE__))+'/Detect_Switch_Clas.rb'
 
-require 'compiled/Detect_Size.rb'
+require File.expand_path(File.dirname(__FILE__))+'/Detect_Size.rb'
 
 def detect_switch_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'

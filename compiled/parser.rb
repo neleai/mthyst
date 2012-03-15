@@ -4,7 +4,7 @@ class AmethystParser < Amethyst
   memoize "name","argsOpt"
   #use_implicit_variables
 end
-require 'compiled/AmethystParser.rb'
+require File.expand_path(File.dirname(__FILE__))+'/AmethystParser.rb'
 
 class AmethystParser < Amethyst
 	def local(x)

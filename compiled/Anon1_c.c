@@ -6,9 +6,9 @@ VALUE Anon1_expr(VALUE self );
 VALUE Anon1_init(VALUE self );
 static VALUE s_a_0cc1;
 static VALUE s_b_92eb;
-static VALUE sy___at_bind_eq_bi_6dcc;
-static VALUE sy___do_passit_eq__5012;
-static VALUE sy__bind_lb_1_rb__eq__91ac;
+static VALUE sy_Anon1__at_bind_eq_bi_6dcc;
+static VALUE sy_Anon1__do_passit_eq__5012;
+static VALUE sy_Anon1_bind_lb_1_rb__eq__91ac;
 static VALUE sy_seq;
 VALUE profile_report_Anon1(VALUE self) {
     cstruct *ptr;
@@ -24,7 +24,7 @@ VALUE Anon1_expr(VALUE self ) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     bind_aset(bind2,1,__result);
-    it=rb_funcall(self,sy__bind_lb_1_rb__eq__91ac,1,bind2);
+    it=rb_funcall(self,sy_Anon1_bind_lb_1_rb__eq__91ac,1,bind2);
     __result=bind_aget(bind2,1);;
     int oldpos1=ptr->pos;
     int cut1=0;
@@ -63,7 +63,7 @@ alt1_3:
 accept1:
     ;
     bind_aset(bind2,1,__result);
-    it=rb_funcall(self,sy___do_passit_eq__5012,1,bind2);
+    it=rb_funcall(self,sy_Anon1__do_passit_eq__5012,1,bind2);
     __result=bind_aget(bind2,1);;
 fail:
     return it;
@@ -83,7 +83,7 @@ VALUE Anon1_init(VALUE self ) {
     }
     _autovar=it;;
     bind_aset(bind2,1,_autovar);
-    it=rb_funcall(self,sy___at_bind_eq_bi_6dcc,1,bind2);
+    it=rb_funcall(self,sy_Anon1__at_bind_eq_bi_6dcc,1,bind2);
     _autovar=bind_aget(bind2,1);;
     __result=it;;
 
@@ -98,9 +98,9 @@ void Init_Anon1_c() {
     rb_global_variable(&s_a_0cc1);
     s_b_92eb=rb_str_new2("b");
     rb_global_variable(&s_b_92eb);
-    sy___at_bind_eq_bi_6dcc=rb_intern("__at_bind_eq_bi_6dcc");
-    sy___do_passit_eq__5012=rb_intern("__do_passit_eq__5012");
-    sy__bind_lb_1_rb__eq__91ac=rb_intern("_bind_lb_1_rb__eq__91ac");
+    sy_Anon1__at_bind_eq_bi_6dcc=rb_intern("Anon1__at_bind_eq_bi_6dcc");
+    sy_Anon1__do_passit_eq__5012=rb_intern("Anon1__do_passit_eq__5012");
+    sy_Anon1_bind_lb_1_rb__eq__91ac=rb_intern("Anon1_bind_lb_1_rb__eq__91ac");
     sy_seq=rb_intern("seq");
     rb_define_method(cls_Anon1,"expr",Anon1_expr,0);
     rb_define_method(cls_Anon1,"init",Anon1_init,0);

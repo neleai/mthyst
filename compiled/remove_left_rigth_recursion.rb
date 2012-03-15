@@ -1,6 +1,6 @@
 #todo bind.reset to reset locals
 
-require 'compiled/Remove_Left_Recursion.rb'
+require File.expand_path(File.dirname(__FILE__))+'/Remove_Left_Recursion.rb'
 
 
 

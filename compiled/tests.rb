@@ -3,8 +3,8 @@ class Tests < Amethyst
   use_implicit_variables
   use_contextual_returns
 end
-require 'compiled/Lam.rb'
-require 'compiled/Tests.rb'
+require File.expand_path(File.dirname(__FILE__))+'/Lam.rb'
+require File.expand_path(File.dirname(__FILE__))+'/Tests.rb'
 
 def tests_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'

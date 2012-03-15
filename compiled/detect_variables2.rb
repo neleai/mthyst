@@ -22,9 +22,9 @@ def connectstring(ary)
   r
 end
 
-require 'compiled/Analyze_Variables2.rb'
+require File.expand_path(File.dirname(__FILE__))+'/Analyze_Variables2.rb'
 
-require 'compiled/Resolve_Calls.rb'
+require File.expand_path(File.dirname(__FILE__))+'/Resolve_Calls.rb'
 
 def detect_variables2_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'

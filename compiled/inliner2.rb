@@ -1,6 +1,6 @@
-require 'compiled/DetectCalls.rb'
+require File.expand_path(File.dirname(__FILE__))+'/DetectCalls.rb'
 
-require 'compiled/Inliner2.rb'
+require File.expand_path(File.dirname(__FILE__))+'/Inliner2.rb'
 
 
 def inliner2_compiled_by

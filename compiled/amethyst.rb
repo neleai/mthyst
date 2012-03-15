@@ -1,4 +1,4 @@
-require 'compiled/Amethyst.rb'
+require File.expand_path(File.dirname(__FILE__))+'/Amethyst.rb'
 
 def amethyst_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'

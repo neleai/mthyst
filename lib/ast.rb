@@ -44,7 +44,11 @@ def equalize_by(clas,args)
 					end
     end")
 end
-norm=File.new("lib/c/normalize.c","w");
+if $bootstrapping_amethyst
+  norm=File.new("lib/c/normalize.c","w");
+else
+  norm=File.new("/dev/null","w")
+end
 norm.puts "
 #include \"ruby.h\"
 #include <stdio.h>

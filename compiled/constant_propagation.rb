@@ -68,9 +68,9 @@ class Constant_Propagator < Amethyst
 end
 
 
-require 'compiled/Constant_Propagator.rb'
+require File.expand_path(File.dirname(__FILE__))+'/Constant_Propagator.rb'
 
-require 'compiled/Constant_Traverser.rb'
+require File.expand_path(File.dirname(__FILE__))+'/Constant_Traverser.rb'
 
 def constant_propagation_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
