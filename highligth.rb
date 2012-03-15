@@ -9,7 +9,7 @@ require "./compiled/#{f}"
 Dir["amethyst/*.ame"].sort.each{|fi|
 puts fi
 
-wrap=File.new(fi).read
+wrap=File.new(fi).read.gsub("\t","  ")
 $colors=Hash.new{|h,k| h[k]=[]}
 
 $group_mark=Hash.new{|h,k| h[k]=[]}

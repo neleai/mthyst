@@ -173,10 +173,7 @@ class <<Compiler
 
 		if !Amethyst::Settings.profiling #oprofile does not like changing binaries
 	  withtime("c"){ #todo get flags portable not just 1.9.1 on x64
-      `astyle #{Amethyst_path}/compiled/#{g.name}_c.c`
-	  	`cd #{Amethyst_path}/compiled;gcc -I. -I/usr/include/ruby-1.9.1/x86_64-linux -I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -fPIC -fno-strict-aliasing -g -g #{Amethyst::Settings.cflags} -fPIC -c #{g.name}_c.c -o #{g.name}_c.o`
-		  `cd #{Amethyst_path}/compiled;gcc -shared -o 1.9.3/#{g.name}_c.so #{g.name}_c.o -L. -L/usr/lib -L. -rdynamic -Wl,-export-dynamic -lruby-1.9.1 -lpthread -lrt -ldl -lcrypt -lm -lc`
- 			`rm #{Amethyst_path}/compiled/#{g.name}_c.o` 
+      cc_compile_file(g.name)
     }
     end
     if !$bootstrapping_amethyst

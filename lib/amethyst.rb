@@ -44,12 +44,6 @@ class AmethystCore
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/Ame.so"
 
-class Amethyst < AmethystCore	
-	class Settings;
-	end;	class <<Settings
-		attr_accessor :profiling,:compile_for,:cflags,:debug
-	end
-end
 require Amethyst_path+"/settings.rb"
 
 require 'lib/compiler'
