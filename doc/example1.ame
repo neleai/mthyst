@@ -1,0 +1,4 @@
+pattern = (| 'a'| 'b' |)
+text = "abc"
+Amethyst.find(text,pattern) #->"a"
+puts pattern.expr(text) #-> FAIL

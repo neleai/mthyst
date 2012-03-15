@@ -185,7 +185,7 @@ class <<Compiler
     end
     CurrentParser.clear
 	end
-	def compile(file,out,file2)
+	def compile(file,file2)
     GC::disable
 		source=File.new(file).read
 		source_hash=Digest::MD5.hexdigest(source)

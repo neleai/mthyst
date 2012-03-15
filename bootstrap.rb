@@ -6,7 +6,7 @@ require './lib/amethyst'
 $bootstrapping_amethyst=true
 COMPILED.each{|f|
 puts f
-Compiler::compile("amethyst/#{f}.ame","compiled/#{f}.rb",f)
+Compiler::compile("amethyst/#{f}.ame",f)
 }
 Process.waitall
 totaltime

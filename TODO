@@ -111,3 +111,5 @@ try speed vs various other parsers.
 dataflow compute first 8 characters
 
 parametrize traverser and visitor
+
+variable number of arguments
