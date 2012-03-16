@@ -23,9 +23,13 @@ amethyst AmethystParser {
          "" name:name
          "["
             ( 
-                    ","? "" (name):k ( ':' expression:e -> Pass[Apply["anything"],e]
-                               | '=' rubyarg:r    -> Or[Apply["anything"],Act[Args[r]]] 
-                               | -> Apply["anything"]
+                    ","? "" (     name:k -> Apply["anything"]
+                            | '@' name:k -> Act[Key[k]]
+                            | '*' name:k -> Many[Apply["anything"]]
+                            ):what
+                               ( ':' expression:e -> Pass[what,e]
+                               | '=' rubyarg:r    -> Or[what,Act[Args[r]]] 
+                               | -> what
                                ):{Bind[local(k),it]}
               
             )*:arg

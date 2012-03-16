@@ -30,6 +30,10 @@ def self.term(*args);self.new.parse(:term,*args);end;def self._selector_term;Ame
 def AmethystParser_Act_lb_Args_23b1(bind)
 Act[Args[{:ary=>bind[1]}]]
 end
+def AmethystParser_Act_lb_Key_lb__162d(bind)
+Act[Key[bind[1]]]
+
+end
 def AmethystParser_Act_lb_bind_7d0b(bind)
 Act[bind[1]]
 end
@@ -114,6 +118,10 @@ def AmethystParser_Lookahea_0946(bind)
 Lookahead[bind[1],bind[2]=="~"]
 
 end
+def AmethystParser_Many_lb_App_cfb8(bind)
+Many[Apply["anything"]]
+
+end
 def AmethystParser_Many_lb_bin_14d1(bind)
 Many[bind[1],bind[2]=="+"]
 
@@ -125,8 +133,8 @@ def AmethystParser_Or_AST_lb_b_0657(bind)
 Or_AST[bind[1],Apply["empty"]]
 
 end
-def AmethystParser_Or_lb_Apply_0e40(bind)
-Or[Apply["anything"],Act[Args[bind[1]]]] 
+def AmethystParser_Or_lb_bind_lb__4ac3(bind)
+Or[bind[1],Act[Args[bind[2]]]] 
 
 end
 def AmethystParser_Parenthe_261b(bind)
@@ -136,8 +144,8 @@ def AmethystParser_Pass_AST_6bd0(bind)
 Pass_AST[bind[1],bind[2]] 
 
 end
-def AmethystParser_Pass_lb_App_4720(bind)
-Pass[Apply["anything"],bind[1]]
+def AmethystParser_Pass_lb_bin_4984(bind)
+Pass[bind[1],bind[2]]
 
 end
 def AmethystParser_Pred_lb_bin_ae38(bind)
