@@ -1,9 +1,7 @@
 require './lib/amethyst'
 #Amethyst::Settings.debug=2
 ["amethyst","parser_highlight"].each{|f|
-Compiler::compile("amethyst/#{f}.ame",f)
-
-require "./compiled/#{f}"
+Compiler::compile("amethyst/#{f}.ame")
 }
 
 Dir["amethyst/*.ame"].sort.each{|fi|

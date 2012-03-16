@@ -1,0 +1,7 @@
+amethyst Evaluator {
+  eval = plus[ eval*:x ] -> x.map(:+)
+       | (Times | Multiply)[ eval*:x ] -> x.map(:*)
+       | Numeric
+  plus = Add
+       | Substract[ .:first .*:rest] -> Add[first,*rest.map{|i| -i} ]
+}

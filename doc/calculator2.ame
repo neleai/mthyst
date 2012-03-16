@@ -1,0 +1,21 @@
+["Add","Substract","Multiply","Divide"]
+class Add < AmethystAST
+attribute :x,:y
+end
+# Amethyst_AST create method rougthy does following
+# Add.create(hash)
+# a=Add.new
+# a.x=hash[:x]
+# a.y=hash[:y]
+# ... for each defined attribute.
+amethyst Calculator {
+calculate = addexpr
+addexpr = addexpr:x "+" mulexpr:y @Add
+| addexpr:x "-" mulexpr:y @Substract
+| mulexpr
+mulexpr = mulexpr:x "*" int:y @Multiply
+| mulexpr:x "/" int:y @Divide
+| "(" addexpr:x ")" -> x
+| int
+}
+Calculator.calculate("2-4+2*2--2")
