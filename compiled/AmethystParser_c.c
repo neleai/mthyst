@@ -2402,12 +2402,38 @@ accept2:
                 int cut3=0;
 alt3_1:
                 ;
+                int oldpos4=ptr->pos;
+                int cut4=0;
+alt4_1:
+                ;
                 it=AmethystParser_rule(self );
                 if (it==failobj) {
                     it=failobj;
-                    goto alt3_2;
+                    goto alt4_2;
                 }
                 _autovar_2=it;;
+
+                ;
+                goto accept4;
+alt4_2:
+                ptr->pos=oldpos4;
+                it=AmethystParser_rule2(self );
+                if (it==failobj) {
+                    it=failobj;
+                    goto alt4_3;
+                }
+                _autovar_2=it;;
+
+                ;
+                goto accept4;
+alt4_3:
+                ptr->pos=oldpos4;
+                if (1) {
+                    it=failobj;
+                    goto alt3_2;
+                };
+accept4:
+                ;
                 it=AmethystCore_append(self,_autovar,_autovar_2);
                 ;
                 goto accept3;

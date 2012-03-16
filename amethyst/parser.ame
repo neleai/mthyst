@@ -13,7 +13,7 @@ amethyst AmethystParser {
              )*
 
   grammar = 'amethyst' '_module'?:module "" name:name ("<" "" name  |{"Amethyst"}):parent
-"{" rule*:rules "}"  @Grammar
+"{" (rule|rule2)*:rules "}"  @Grammar
  
   rule = {@@locals=[];@@appends=[];@@bnding=Bnding[]} {@@bnding}:bnding  
          "" name:name  ruleargs:args "=" expression:body  
