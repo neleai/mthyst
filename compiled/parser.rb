@@ -1,7 +1,7 @@
 #@Or_AST and @Seq_AST are necessary for collect
 $agram=0
 class AmethystParser < Amethyst
-  memoize "name","argsOpt"
+  memoize "name","argsOpt","rule"
   #use_implicit_variables
 end
 require File.expand_path(File.dirname(__FILE__))+'/AmethystParser.rb'
@@ -17,7 +17,7 @@ def parser_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def parser_source_hash
-'87233e89cf805e22f0972c776f927ccd'
+'eba030e5a08853911d54506b0fd10d0d'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version

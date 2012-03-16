@@ -1,7 +1,7 @@
 #@Or_AST and @Seq_AST are necessary for collect
 $agram=0
 class AmethystParser < Amethyst
-  memoize "name","argsOpt"
+  memoize "name","argsOpt","rule"
   #use_implicit_variables
 end
 amethyst AmethystParser {
@@ -37,7 +37,21 @@ amethyst AmethystParser {
   
   expression = listOf(`sequence`,`"|" ~')'`):ary @Or_AST  
   sequence =  (nr ","? "" prefixed)*:ary  @Seq_AST
-  nr = ~("" name argsOpt "=")
+  nr = ~( "" name:name
+         ("("
+            (
+                    ","? "" (     name:k
+                            | '@' name:k 
+                            | '*' name:k
+                            ):what
+                               ( ':' expression:e
+                               | '=' rubyarg:r    
+                               | -> what
+                               )
+
+            )*
+          ")"
+          | {nil}) "=" )
 
   prefixed   = <&~>:neg inline_host_expr:expr-> Pred[expr[0],neg=="~"]
              | <&~>:neg prefixed:m    -> Lookahead[m,neg=="~"]

@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env ruby1.9.1
 require './settings'
 Dir["compiled/*.rb"].each{|f|  fn = File.basename(f)[0..-4]
   puts fn
