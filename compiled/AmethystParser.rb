@@ -69,8 +69,8 @@ def AmethystParser_Args_lb__le__co_a_9abe(bind)
 Args[{:ary=>([bind[1]]+bind[2]+[bind[3]])}]
 
 end
-def AmethystParser_Bind_lb_bin_8a31(bind)
-Bind[bind[1],bind[2]]
+def AmethystParser_Bind_lb_loc_2146(bind)
+Bind[local(bind[1]),bind[2]]
 end
 def AmethystParser_Bind_lb_loc_37df(bind)
 Bind[local("_result"),bind[1]]
@@ -240,8 +240,8 @@ end
 def AmethystParser_bind_lb_1_rb__eq__a882(bind)
 bind[1]=local(bind[1])
 end
-def AmethystParser_bind_lb_1_rb__eq__bf97(bind)
-bind[1]=Seq_AST[{:ary=>(Enter[Act[local("_args")],bind[2]]+@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[bind[1]])}]; 
+def AmethystParser_bind_lb_1_rb__eq__dc33(bind)
+bind[1]=Seq_AST[{:ary=>([Enter[Act[local("_args")],bind[2]]]+@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[bind[1]])}]; 
 end
 def AmethystParser_bind_lb_1_rb__eq__e198(bind)
 bind[1]=Seq_AST[{:ary=>(@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[bind[1]])}]; 
