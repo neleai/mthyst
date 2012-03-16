@@ -22,7 +22,6 @@ def self.procargs(*args);self.new.parse(:procargs,*args);end;def self._selector_
 def self.procargs2(*args);self.new.parse(:procargs2,*args);end;def self._selector_procargs2;AmethystParser;end
 def self.rubyarg(*args);self.new.parse(:rubyarg,*args);end;def self._selector_rubyarg;AmethystParser;end
 def self.rule(*args);self.new.parse(:rule,*args);end;def self._selector_rule;AmethystParser;end
-def self.rule2(*args);self.new.parse(:rule2,*args);end;def self._selector_rule2;AmethystParser;end
 def self.ruleargs(*args);self.new.parse(:ruleargs,*args);end;def self._selector_ruleargs;AmethystParser;end
 def self.sequence(*args);self.new.parse(:sequence,*args);end;def self._selector_sequence;AmethystParser;end
 def self.string_like(*args);self.new.parse(:string_like,*args);end;def self._selector_string_like;AmethystParser;end
@@ -143,9 +142,6 @@ end
 def AmethystParser_Rule_dot_cre_113e(bind)
 Rule.create( {:args=>bind[5],:bnding=>bind[1],:body=>bind[4],:locals=>bind[6],:name=>bind[3],:varargs=>bind[2] })
 end
-def AmethystParser_Rule_dot_cre_3767(bind)
-Rule.create( {:args=>bind[3],:bnding=>bind[1],:body=>bind[4],:locals=>bind[5],:name=>bind[2] })
-end
 def AmethystParser_Seq_AST_dot__a126(bind)
 Seq_AST.create( {:ary=>bind[1] })
 end
@@ -227,21 +223,17 @@ bind[1].join
 
 end
 def AmethystParser_bind_lb_1_rb__eq__1ef8(bind)
-puts "bind"
 bind[1]=true;Pass[bind[2],bind[3]]
 
 end
 def AmethystParser_bind_lb_1_rb__eq__45d1(bind)
-puts "many"
 bind[1]=true  ; Many[Apply["anything"]]
 
 end
 def AmethystParser_bind_lb_1_rb__eq__9a0b(bind)
-puts "var",bind[2]
 bind[1]= bind[2] ? Seq_AST[{:ary=>([Enter[Act[["Arguments[#{bind[3].inspect},*",local("_args"),"]"]],bind[4]]]+@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[bind[1]])}] : Seq_AST[{:ary=>(@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[bind[1]])}]; 
 end
 def AmethystParser_bind_lb_1_rb__eq__a03a(bind)
-
 bind[1]=true;Or[bind[2],Act[Args[bind[3]]]] 
 
 end
@@ -251,9 +243,6 @@ end
 def AmethystParser_bind_lb_1_rb__eq__e193(bind)
 bind[1]=true  ; Act[Key[bind[2]]]
 
-end
-def AmethystParser_bind_lb_1_rb__eq__e198(bind)
-bind[1]=Seq_AST[{:ary=>(@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[bind[1]])}]; 
 end
 def AmethystParser_bind_lb_1_rb__lt__f8a3(bind)
 bind[1]<<local(bind[2]); Apply["anything"]

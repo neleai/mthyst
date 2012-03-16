@@ -13,15 +13,12 @@ amethyst AmethystParser {
              )*
 
   grammar = 'amethyst' '_module'?:module "" name:name ("<" "" name  |{"Amethyst"}):parent
-"{" (rule|rule2)*:rules "}"  @Grammar
+"{" (rule)*:rules "}"  @Grammar
  
-  rule = {@@locals=[];@@appends=[];@@bnding=Bnding[]} {@@bnding}:bnding  
-         "" name:name  ruleargs:args "=" expression:body  
-          {Bind[local("_result"),body]}:body {@@locals.uniq}:locals {body=Seq_AST[{:ary=>(@@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[body])}]; }   @Rule
 
-  rule2 = {@@locals=[];@@appends=[];@@bnding=Bnding[]} {@@bnding}:bnding {false}:varargs {[]}:arg2
+  rule = {@@locals=[];@@appends=[];@@bnding=Bnding[]} {@@bnding}:bnding {false}:varargs {[]}:arg2
          "" name:name
-         "["
+         ("("
             ( 
                     ","? "" (     name:k -> arg2<<local(k); Apply["anything"]
                             | '@' name:k -> varargs=true  ; Act[Key[k]]
@@ -33,7 +30,8 @@ amethyst AmethystParser {
                                ):{Bind[local(k),it]}
               
             )*:arg
-         "]" "=" expression:body
+          ")"
+          | {nil}) "=" expression:body
           {varargs ? [local("_args")] : arg2}:args
           {Bind[local("_result"),body]}:body {@@locals.uniq}:locals {body= varargs ? Seq_AST[{:ary=>([Enter[Act[["Arguments[#{name.inspect},*",local("_args"),"]"]],arg]]+@@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[body])}] : Seq_AST[{:ary=>(@@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[body])}]; }   @Rule
   
