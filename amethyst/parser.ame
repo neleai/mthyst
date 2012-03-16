@@ -14,11 +14,22 @@ amethyst AmethystParser {
 
   grammar = 'amethyst' '_module'?:module "" name:name ("<" "" name  |{"Amethyst"}):parent
 "{" rule*:rules "}"  @Grammar
-  
+ 
   rule = {@@locals=[];@@appends=[];@@bnding=Bnding[]} {@@bnding}:bnding  
          "" name:name  ruleargs:args "=" expression:body  
           {Bind[local("_result"),body]}:body {@@locals.uniq}:locals {body=Seq_AST[{:ary=>(@@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[body])}]; }   @Rule
 
+  rule2 = {@@locals=[];@@appends=[];@@bnding=Bnding[]} {@@bnding}:bnding 
+         "" name:name
+         "["
+            ( 
+              (@name | name) ':' expression
+              (@name | name) '=' rubyarg
+              (@name | name)
+              
+            )*
+         "]" "=" expression:body
+          {Bind[local("_result"),body]}:body {@@locals.uniq}:locals {body=Seq_AST[{:ary=>(@@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[body])}]; }   @Rule2
   
   expression = listOf(`sequence`,`"|" ~')'`):ary @Or_AST  
   sequence =  (nr ","? "" prefixed)*:ary  @Seq_AST
