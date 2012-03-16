@@ -156,11 +156,11 @@ def AmethystParser_Result_lb__le__a3b4(bind)
 Result[{:name=>bind[1]}]
 
 end
+def AmethystParser_Rule_dot_cre_113e(bind)
+Rule.create( {:args=>bind[5],:bnding=>bind[1],:body=>bind[4],:locals=>bind[6],:name=>bind[3],:varargs=>bind[2] })
+end
 def AmethystParser_Rule_dot_cre_3767(bind)
 Rule.create( {:args=>bind[3],:bnding=>bind[1],:body=>bind[4],:locals=>bind[5],:name=>bind[2] })
-end
-def AmethystParser_Rule_dot_cre_3833(bind)
-Rule.create( {:args=>bind[4],:bnding=>bind[1],:body=>bind[3],:locals=>bind[5],:name=>bind[2] })
 end
 def AmethystParser_Seq_AST_dot__a126(bind)
 Seq_AST.create( {:ary=>bind[1] })

@@ -1,7 +1,7 @@
 
 makeclasses(AmethystAST,
     [:Grammar,:name,:parent,:rules],
-    [:Rule,:name,:args,:locals,:body,:cfg,:reachable,:bnding,:consts],
+    [:Rule,:name,:args,:locals,:body,:cfg,:reachable,:bnding,:consts,:varargs],
     [:Apply,:name,:clas,:bound],
     [:Bind,:name],
     [:Many],

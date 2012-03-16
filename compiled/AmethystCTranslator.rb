@@ -279,11 +279,11 @@ h="VALUE #{bind[1]}(VALUE self,VALUE bind)"
                  @defmethods<<"rb_define_method(cls_#{bind[2][:grammar]},\"#{bind[1]}\",#{bind[1]},1);"
                  @lambdas<< h+"{VALUE vals[0]; /*todo unify with rule and get args*/ cstruct *ptr; int x;VALUE it;VALUE arg0,arg1,arg2,arg3;\n#{bind[3]}\nreturn it;\nfail: return failobj; }" 
 end
-def AmethystCTranslator_h_eq__dq_VALUE_e790(bind)
+def AmethystCTranslator_h_eq__dq_VALUE_ef56(bind)
 h="VALUE #{bind[1][:grammar]}_#{bind[2]}(VALUE self #{map_index(src.args){|i| ",VALUE a#{i}"}*""})" 
             @header<<h+";"
             @defs<< "def self.#{bind[2]}(*args);self.new.parse(:#{bind[2]},*args);end;def self._selector_#{bind[2]};#{bind[1][:grammar]};end"
-            @defmethods<< "rb_define_method(cls_#{bind[1][:grammar]},\"#{src.name}\",#{bind[1][:grammar]}_#{src.name},#{src.args.size});"
+            @defmethods<< "rb_define_method(cls_#{bind[1][:grammar]},\"#{src.name}\",#{bind[1][:grammar]}_#{src.name},#{src.varargs ? -2 : src.args.size});"
 						bind[3]=h+"{VALUE vals[#{src.args.size}]; VALUE it #{@locls.map{|k,v| ",_#{k}"}*""};VALUE bind2=bind_new2(16); #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);"
 bind[3]+="#{bind[4]}\n" 
 bind[3]+="fail: return it;\n}"

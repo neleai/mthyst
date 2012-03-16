@@ -19,7 +19,7 @@ amethyst AmethystParser {
          "" name:name  ruleargs:args "=" expression:body  
           {Bind[local("_result"),body]}:body {@@locals.uniq}:locals {body=Seq_AST[{:ary=>(@@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[body])}]; }   @Rule
 
-  rule2 = {@@locals=[];@@appends=[];@@bnding=Bnding[]} {@@bnding}:bnding 
+  rule2 = {@@locals=[];@@appends=[];@@bnding=Bnding[]} {@@bnding}:bnding {true}:varargs
          "" name:name
          "["
             ( 

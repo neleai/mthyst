@@ -125,7 +125,7 @@ amethyst AmethystCTranslator {
           { h="VALUE #{@>grammar}_#{name}(VALUE self #{map_index(@args){|i| ",VALUE a#{i}"}*""})" 
             @@header<<h+";"
             @@defs<< "def self.#{name}(*args);self.new.parse(:#{name},*args);end;def self._selector_#{name};#{@>grammar};end"
-            @@defmethods<< "rb_define_method(cls_#{@>grammar},\"#{@name}\",#{@>grammar}_#{@name},#{@args.size});"
+            @@defmethods<< "rb_define_method(cls_#{@>grammar},\"#{@name}\",#{@>grammar}_#{@name},#{@varargs ? -2 : @args.size});"
 						s=h+"{VALUE vals[#{@args.size}]; VALUE it #{@@locls.map{|k,v| ",_#{k}"}*""};VALUE bind2=bind_new2(16); #{map_index(@args){|i| bset(@args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);"
 s+="#{body}\n" 
 s+="fail: return it;\n}"
