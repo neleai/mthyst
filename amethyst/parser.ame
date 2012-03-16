@@ -19,23 +19,23 @@ amethyst AmethystParser {
          "" name:name  ruleargs:args "=" expression:body  
           {Bind[local("_result"),body]}:body {@@locals.uniq}:locals {body=Seq_AST[{:ary=>(@@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[body])}]; }   @Rule
 
-  rule2 = {@@locals=[];@@appends=[];@@bnding=Bnding[]} {@@bnding}:bnding {true}:varargs
+  rule2 = {@@locals=[];@@appends=[];@@bnding=Bnding[]} {@@bnding}:bnding {false}:varargs {[]}:arg2
          "" name:name
          "["
             ( 
-                    ","? "" (     name:k -> Apply["anything"]
-                            | '@' name:k -> Act[Key[k]]
-                            | '*' name:k -> Many[Apply["anything"]]
+                    ","? "" (     name:k -> arg2<<local(k); Apply["anything"]
+                            | '@' name:k -> varargs=true  ; Act[Key[k]]
+                            | '*' name:k -> varargs=true  ; Many[Apply["anything"]]
                             ):what
-                               ( ':' expression:e -> Pass[what,e]
-                               | '=' rubyarg:r    -> Or[what,Act[Args[r]]] 
+                               ( ':' expression:e -> varargs=true;Pass[what,e]
+                               | '=' rubyarg:r    -> varargs=true;Or[what,Act[Args[r]]] 
                                | -> what
                                ):{Bind[local(k),it]}
               
             )*:arg
          "]" "=" expression:body
-          {[local("_args")]}:args
-          {Bind[local("_result"),body]}:body {@@locals.uniq}:locals {body=Seq_AST[{:ary=>([Enter[Act[["Arguments[#{name.inspect},*",local("_args"),"]"]],arg]]+@@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[body])}]; }   @Rule
+          {varargs ? [local("_args")] : arg2}:args
+          {Bind[local("_result"),body]}:body {@@locals.uniq}:locals {body= varargs ? Seq_AST[{:ary=>([Enter[Act[["Arguments[#{name.inspect},*",local("_args"),"]"]],arg]]+@@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[body])}] : Seq_AST[{:ary=>(@@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[body])}]; }   @Rule
   
   expression = listOf(`sequence`,`"|" ~')'`):ary @Or_AST  
   sequence =  (nr ","? "" prefixed)*:ary  @Seq_AST
