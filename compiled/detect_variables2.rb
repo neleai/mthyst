@@ -30,7 +30,7 @@ def detect_variables2_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def detect_variables2_source_hash
-'57c4d3a2eeedf4c240f0cc862e9d51d2'
+'dc6e64a6a70762710ca738167e3baa02'
 end
 def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version

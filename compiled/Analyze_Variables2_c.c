@@ -43,6 +43,7 @@ static VALUE sy_Analyze_Variables2_bind_lb_1_rb__lb__9337;
 static VALUE sy_Analyze_Variables2_bind_lb_1_rb__lb__eb3a;
 static VALUE sy_Analyze_Variables2_bind_lb_1_rb__lt__7b20;
 static VALUE sy_Analyze_Variables2_bind_lb_1_rb__sp__6af0;
+static VALUE sy_Analyze_Variables2_cls_eq_Obje_d8f9;
 static VALUE sy_Analyze_Variables2_connects_04d2;
 static VALUE sy_Analyze_Variables2_d_eq_src_dot_du_2c72;
 static VALUE sy_Analyze_Variables2_if_sp_bind_lb__1bed;
@@ -54,7 +55,6 @@ static VALUE sy_Analyze_Variables2_src_dot_pred_56d4;
 static VALUE sy_Analyze_Variables2_src_dot_pure_41d4;
 static VALUE sy_Analyze_Variables2_src_dot_rule_5acf;
 static VALUE sy_Analyze_Variables2_src_dot_rule_a719;
-static VALUE sy_Analyze_Variables2_vars_eq_bin_7a4d;
 VALUE profile_report_Analyze_Variables2(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -2077,7 +2077,7 @@ success19:
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_43);
         bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy_Analyze_Variables2_vars_eq_bin_7a4d,1,bind2);
+        it=rb_funcall(self,sy_Analyze_Variables2_cls_eq_Obje_d8f9,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
         _autovar_44=it;;
         it=Qnil;
@@ -2360,6 +2360,7 @@ void Init_Analyze_Variables2_c() {
     sy_Analyze_Variables2_bind_lb_1_rb__lb__eb3a=rb_intern("Analyze_Variables2_bind_lb_1_rb__lb__eb3a");
     sy_Analyze_Variables2_bind_lb_1_rb__lt__7b20=rb_intern("Analyze_Variables2_bind_lb_1_rb__lt__7b20");
     sy_Analyze_Variables2_bind_lb_1_rb__sp__6af0=rb_intern("Analyze_Variables2_bind_lb_1_rb__sp__6af0");
+    sy_Analyze_Variables2_cls_eq_Obje_d8f9=rb_intern("Analyze_Variables2_cls_eq_Obje_d8f9");
     sy_Analyze_Variables2_connects_04d2=rb_intern("Analyze_Variables2_connects_04d2");
     sy_Analyze_Variables2_d_eq_src_dot_du_2c72=rb_intern("Analyze_Variables2_d_eq_src_dot_du_2c72");
     sy_Analyze_Variables2_if_sp_bind_lb__1bed=rb_intern("Analyze_Variables2_if_sp_bind_lb__1bed");
@@ -2371,7 +2372,6 @@ void Init_Analyze_Variables2_c() {
     sy_Analyze_Variables2_src_dot_pure_41d4=rb_intern("Analyze_Variables2_src_dot_pure_41d4");
     sy_Analyze_Variables2_src_dot_rule_5acf=rb_intern("Analyze_Variables2_src_dot_rule_5acf");
     sy_Analyze_Variables2_src_dot_rule_a719=rb_intern("Analyze_Variables2_src_dot_rule_a719");
-    sy_Analyze_Variables2_vars_eq_bin_7a4d=rb_intern("Analyze_Variables2_vars_eq_bin_7a4d");
     rb_define_method(cls_Analyze_Variables2,"flatten",Analyze_Variables2_flatten,0);
     rb_define_method(cls_Analyze_Variables2,"itrans",Analyze_Variables2_itrans,0);
     rb_define_method(cls_Analyze_Variables2,"root",Analyze_Variables2_root,0);

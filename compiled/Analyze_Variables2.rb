@@ -80,6 +80,9 @@ end
 def Analyze_Variables2_bind_lb_1_rb__sp__6af0(bind)
 bind[1] << bind[2]
 end
+def Analyze_Variables2_cls_eq_Obje_d8f9(bind)
+cls=Object.const_get(src.name); vars=bind[1][:locals].select{|aa| !cls.respond_to?(:attributes) || cls.attributes.include?(aa[0].to_sym)}.uniq ;Result[{:name=>src.name,:vars=>vars,:varnames=>vars.map{|v| v[0]}}]
+end
 def Analyze_Variables2_connects_04d2(bind)
 connectstring(bind[1].flatten)
 end
@@ -117,9 +120,6 @@ src.rules
 end
 def Analyze_Variables2_src_dot_rule_a719(bind)
 src.rules=bind[1]
-end
-def Analyze_Variables2_vars_eq_bin_7a4d(bind)
-vars=bind[1][:locals].select{|aa| Object.const_get(src.name).attributes.include? aa[0].to_sym}.uniq ;Result[{:name=>src.name,:vars=>vars,:varnames=>vars.map{|v| v[0]}}]
 end
 
 end

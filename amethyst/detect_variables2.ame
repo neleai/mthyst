@@ -29,7 +29,7 @@ traverse[.* {d=@dup;d.locals=nil;d.freeze} ] ]
 
   visit = Args[ traverse[(Lambda[traverse] |.)* {@ary.map{|aa| @>variables[aa] }}=>[flatten:a]  {connectstring(a.flatten)}:ary  {(ary.size==1&&(ary[0].is_a?(Local)||ary[0].is_a?(Global)||ary[0].is_a?(Key))) ? ary[0] : Args[*ary]}]]
         | Act[ @pred:pred @pure:pure traverse[.* @ary=>[(&{!pred} Local| Args[ .*:ary {Act[ary,pred,pure]}])] ] ]
-        | Result[ {vars=@>locals.select{|aa| Object.const_get(@name).attributes.include? aa[0].to_sym}.uniq ;Result[{:name=>@name,:vars=>vars,:varnames=>vars.map{|v| v[0]}}]}]
+        | Result[ {cls=Object.const_get(@name); vars=@>locals.select{|aa| !cls.respond_to?(:attributes) || cls.attributes.include?(aa[0].to_sym)}.uniq ;Result[{:name=>@name,:vars=>vars,:varnames=>vars.map{|v| v[0]}}]}]
         | Comment[.*{Placeholder}]
 				| Seq_AST[traverse_item*:ary] -> Seq[*ary]
 				| Seq[traverse_item*:ary] -> Seq[*ary]
