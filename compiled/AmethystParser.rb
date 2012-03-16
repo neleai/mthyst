@@ -22,6 +22,7 @@ def self.procargs(*args);self.new.parse(:procargs,*args);end;def self._selector_
 def self.procargs2(*args);self.new.parse(:procargs2,*args);end;def self._selector_procargs2;AmethystParser;end
 def self.rubyarg(*args);self.new.parse(:rubyarg,*args);end;def self._selector_rubyarg;AmethystParser;end
 def self.rule(*args);self.new.parse(:rule,*args);end;def self._selector_rule;AmethystParser;end
+def self.rule2(*args);self.new.parse(:rule2,*args);end;def self._selector_rule2;AmethystParser;end
 def self.ruleargs(*args);self.new.parse(:ruleargs,*args);end;def self._selector_ruleargs;AmethystParser;end
 def self.sequence(*args);self.new.parse(:sequence,*args);end;def self._selector_sequence;AmethystParser;end
 def self.string_like(*args);self.new.parse(:string_like,*args);end;def self._selector_string_like;AmethystParser;end
@@ -67,6 +68,9 @@ end
 def AmethystParser_Args_lb__le__co_a_9abe(bind)
 Args[{:ary=>([bind[1]]+bind[2]+[bind[3]])}]
 
+end
+def AmethystParser_Bind_lb_bin_8a31(bind)
+Bind[bind[1],bind[2]]
 end
 def AmethystParser_Bind_lb_loc_37df(bind)
 Bind[local("_result"),bind[1]]
@@ -121,11 +125,19 @@ def AmethystParser_Or_AST_lb_b_0657(bind)
 Or_AST[bind[1],Apply["empty"]]
 
 end
+def AmethystParser_Or_lb_Apply_0e40(bind)
+Or[Apply["anything"],Act[Args[bind[1]]]] 
+
+end
 def AmethystParser_Parenthe_261b(bind)
 Parenthesis[bind[1]]
 end
 def AmethystParser_Pass_AST_6bd0(bind)
 Pass_AST[bind[1],bind[2]] 
+
+end
+def AmethystParser_Pass_lb_App_4720(bind)
+Pass[Apply["anything"],bind[1]]
 
 end
 def AmethystParser_Pred_lb_bin_ae38(bind)
@@ -138,6 +150,9 @@ Result[{:name=>bind[1]}]
 end
 def AmethystParser_Rule_dot_cre_3767(bind)
 Rule.create( {:args=>bind[3],:bnding=>bind[1],:body=>bind[4],:locals=>bind[5],:name=>bind[2] })
+end
+def AmethystParser_Rule_dot_cre_3833(bind)
+Rule.create( {:args=>bind[4],:bnding=>bind[1],:body=>bind[3],:locals=>bind[5],:name=>bind[2] })
 end
 def AmethystParser_Seq_AST_dot__a126(bind)
 Seq_AST.create( {:ary=>bind[1] })
@@ -198,6 +213,9 @@ def AmethystParser__lb_bind_lb_1_rb__6281(bind)
 [bind[1],'<<']
 
 end
+def AmethystParser__lb_local_lp__dq__38a7(bind)
+[local("_args")]
+end
 def AmethystParser__lp_bind_lb_1_rb__a724(bind)
 (bind[1]==',') || FAIL
 end
@@ -221,6 +239,9 @@ bind[1].join
 end
 def AmethystParser_bind_lb_1_rb__eq__a882(bind)
 bind[1]=local(bind[1])
+end
+def AmethystParser_bind_lb_1_rb__eq__bf97(bind)
+bind[1]=Seq_AST[{:ary=>(Enter[Act[local("_args")],bind[2]]+@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[bind[1]])}]; 
 end
 def AmethystParser_bind_lb_1_rb__eq__e198(bind)
 bind[1]=Seq_AST[{:ary=>(@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[bind[1]])}]; 
