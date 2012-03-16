@@ -35,7 +35,7 @@ amethyst AmethystParser {
             )*:arg
          "]" "=" expression:body
           {[local("_args")]}:args
-          {Bind[local("_result"),body]}:body {@@locals.uniq}:locals {body=Seq_AST[{:ary=>([Enter[Act[local("_args")],arg]]+@@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[body])}]; }   @Rule
+          {Bind[local("_result"),body]}:body {@@locals.uniq}:locals {body=Seq_AST[{:ary=>([Enter[Act[["Arguments[#{name.inspect},*",local("_args"),"]"]],arg]]+@@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[body])}]; }   @Rule
   
   expression = listOf(`sequence`,`"|" ~')'`):ary @Or_AST  
   sequence =  (nr ","? "" prefixed)*:ary  @Seq_AST
