@@ -40,9 +40,6 @@ end
 def Remove_Left_Recursion_bind_lb_1_rb__dot__44a5(bind)
 bind[1].dup
 end
-def Remove_Left_Recursion_bind_lb_1_rb__eq__56ab(bind)
-bind[1]=autovar;src.body = Seq[bind[2],Many[Seq[Act[Args[bind[1],"=",@result,";bind.reset;",@result,"=",bind[1]]],bind[3]]]] if @left_rec
-end
 def Remove_Left_Recursion_bind_lb_1_rb__lb__fa06(bind)
 bind[1][:name]=src.name
 end
@@ -56,6 +53,9 @@ bind[1] ? Apply["fails"] : bind[2]
 end
 def Remove_Left_Recursion_src_25d9(bind)
 src
+end
+def Remove_Left_Recursion_src_dot_body_0dd0(bind)
+src.body = Seq[bind[1],Many[Or[Seq[Act[[].map{|l| [l,"=nil;"]}.flatten ],bind[2]],Stop[]]],Act[[";",@result]]] if @left_rec
 end
 def Remove_Left_Recursion_src_dot_body_519e(bind)
 src.body

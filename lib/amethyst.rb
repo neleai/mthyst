@@ -1,4 +1,5 @@
-Amethyst_path=File.expand_path(File.dirname(__FILE__)+"/..")
+amethyst_path=File.expand_path(File.dirname(__FILE__)+"/..")
+require amethyst_path+"/settings.rb"
 $: << Amethyst_path
 ['graph','utils','flatarray','ast'].each{|r|
 	require Amethyst_path+"/lib/#{r}"
@@ -44,6 +45,5 @@ class AmethystCore
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/Ame.so"
 
-require Amethyst_path+"/settings.rb"
 
 require 'lib/compiler'

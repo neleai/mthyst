@@ -7,14 +7,17 @@ def self.gh(*args);self.new.parse(:gh,*args);end;def self._selector_gh;Tests;end
 def self.s2(*args);self.new.parse(:s2,*args);end;def self._selector_s2;Tests;end
 def self.sw(*args);self.new.parse(:sw,*args);end;def self._selector_sw;Tests;end
 def self.test(*args);self.new.parse(:test,*args);end;def self._selector_test;Tests;end
+def Tests_(bind)
+;bind[1]
+end
 def Tests__at__contex_5f56(bind)
 @_context_arguments||={};bind[1]=@_context_arguments;bind[2]=@_context_arguments.dup
 end
 def Tests__at__contex_cdb3(bind)
 @_context_arguments=bind[1];bind[2]
 end
-def Tests_bind_lb_1_rb__eq__58f9(bind)
-bind[1]=bind[2];bind.reset;bind[2]=bind[1]
+def Tests__d41d(bind)
+
 end
 def Tests_bind_lb_1_rb__lb__6e1f(bind)
 bind[1][:a]=32;puts 32

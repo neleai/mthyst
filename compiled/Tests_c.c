@@ -16,9 +16,10 @@ static VALUE i_42;
 static VALUE s_c_4a8a;
 static VALUE s_d_8277;
 static VALUE s_g_b2f5;
+static VALUE sy_Tests_;
 static VALUE sy_Tests__at__contex_5f56;
 static VALUE sy_Tests__at__contex_cdb3;
-static VALUE sy_Tests_bind_lb_1_rb__eq__58f9;
+static VALUE sy_Tests__d41d;
 static VALUE sy_Tests_bind_lb_1_rb__lb__6e1f;
 static VALUE sy_Tests_bind_lb_1_rb__pl__0a71;
 static VALUE sy_Tests_bind_lb_1_rb__pl__61a1;
@@ -234,7 +235,7 @@ fail:
 }
 VALUE Tests_foo(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,__result,_autovar;
+    VALUE it ,__result;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -249,14 +250,13 @@ VALUE Tests_foo(VALUE self ) {
     __result=it;;
     int stop1=0;
     while(!stop1) {
-        bind_aset(bind2,1,_autovar);
-        bind_aset(bind2,2,__result);
-        it=rb_funcall(self,sy_Tests_bind_lb_1_rb__eq__58f9,1,bind2);
-        _autovar=bind_aget(bind2,1);;
-        __result=bind_aget(bind2,2);;
+        it=rb_funcall(self,sy_Tests__d41d,1,bind2);
         it=__result;
         __result=it;;
     }
+    bind_aset(bind2,1,__result);
+    it=rb_funcall(self,sy_Tests_,1,bind2);
+    __result=bind_aget(bind2,1);;
 fail:
     return it;
 }
@@ -478,9 +478,10 @@ void Init_Tests_c() {
     rb_global_variable(&s_d_8277);
     s_g_b2f5=rb_str_new2("g");
     rb_global_variable(&s_g_b2f5);
+    sy_Tests_=rb_intern("Tests_");
     sy_Tests__at__contex_5f56=rb_intern("Tests__at__contex_5f56");
     sy_Tests__at__contex_cdb3=rb_intern("Tests__at__contex_cdb3");
-    sy_Tests_bind_lb_1_rb__eq__58f9=rb_intern("Tests_bind_lb_1_rb__eq__58f9");
+    sy_Tests__d41d=rb_intern("Tests__d41d");
     sy_Tests_bind_lb_1_rb__lb__6e1f=rb_intern("Tests_bind_lb_1_rb__lb__6e1f");
     sy_Tests_bind_lb_1_rb__pl__0a71=rb_intern("Tests_bind_lb_1_rb__pl__0a71");
     sy_Tests_bind_lb_1_rb__pl__61a1=rb_intern("Tests_bind_lb_1_rb__pl__61a1");

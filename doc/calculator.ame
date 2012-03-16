@@ -1,13 +1,13 @@
-amethyst Calculator {
+ amethyst Calculator {
   calculate = addexpr
 
   addexpr = addexpr:x "+" mulexpr:y -> x+y
           | addexpr:x "-" mulexpr:y -> x-y
-          | mulexpr
+          | mulexpr:x 
 
   mulexpr = mulexpr:x "*" int:y     -> x*y
           | mulexpr:x "/" int:y     -> x/y
           | "(" addexpr:x ")"       -> x
-          | int
+          | int:x 
 }
 puts Calculator.calculate("2-4+2*2--2")
