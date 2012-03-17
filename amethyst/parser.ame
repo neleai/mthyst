@@ -20,14 +20,12 @@ amethyst AmethystParser {
          "" name:name
          ("("
             ( 
-                    ","? "" (     name:k -> arg2<<local(k); Apply["anything"]
-                            | '@' name:k -> varargs=true  ; Act[Key[k]]
-                            | '*' name:k -> varargs=true  ; Many[Apply["anything"]]
+                    ","? "" (     name:k -> arg2<<local(k); Or_AST[Pred[Args[Key[k,[]]]], Apply["anything"]]
+                            | '*' name:k -> varargs=true  ; Or_AST[Pred[Args[Key[k,[]]]], Many[Apply["anything"]]]
                             ):what
-                               ( ':' postfixed:e -> varargs=true;Pass[what,e]
-                               | '=' rubyarg:r    -> varargs=true;Or[what,Act[Args[r]]] 
-                               | -> what
-                               ):{Bind[local(k),it]}
+                            ( '=' rubyarg:r   {varargs=true;what=Or_AST[what,Act[Args[r]]]} )?
+                            ( ':' postfixed:e {varargs=true;what=Pass[what,e]}          )?
+                            -> Bind[local(k),what]
               
             )*:arg
           ")"

@@ -1,6 +1,6 @@
  amethyst Arguments_test {
-   rule2( x y ) = {[x,y]}
-   rule3( x,y=3 ) = {[ x,y]}
-   rule4( x,*y ) = {[ x,y]}
-  rule5( _:[ .:x .:y ],z ) = {[ x,y]}
+   rule2( x y ) = {[ x,y ]}
+   rule3( x,y=3 ) = {[ x,y ]}
+   rule4( x,*y ) = {[ x,y ]}
+   rule5( _:[ .:x .:y ],z ) = {[ x,y ]}
 }

@@ -42,6 +42,7 @@ class AmethystCore
 	end
   
   def match(t);    parse(:expr,t);  end
+  alias_method :=~,:match
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/Ame.so"
 

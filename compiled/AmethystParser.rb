@@ -68,11 +68,12 @@ def AmethystParser_Args_lb__le__co_a_9abe(bind)
 Args[{:ary=>([bind[1]]+bind[2]+[bind[3]])}]
 
 end
-def AmethystParser_Bind_lb_loc_2146(bind)
-Bind[local(bind[1]),bind[2]]
-end
 def AmethystParser_Bind_lb_loc_37df(bind)
 Bind[local("_result"),bind[1]]
+end
+def AmethystParser_Bind_lb_loc_5836(bind)
+Bind[local(bind[1]),bind[2]]
+
 end
 def AmethystParser_Comment_lb__ed6f(bind)
 Comment[bind[1]]
@@ -222,30 +223,24 @@ def AmethystParser_bind_lb_1_rb__dot__e879(bind)
 bind[1].join
 
 end
-def AmethystParser_bind_lb_1_rb__eq__1ef8(bind)
-bind[1]=true;Pass[bind[2],bind[3]]
-
+def AmethystParser_bind_lb_1_rb__eq__3c5b(bind)
+bind[1]=true;bind[2]=Pass[bind[2],bind[3]]
 end
-def AmethystParser_bind_lb_1_rb__eq__45d1(bind)
-bind[1]=true  ; Many[Apply["anything"]]
+def AmethystParser_bind_lb_1_rb__eq__4e2f(bind)
+bind[1]=true  ; Or_AST[Pred[Args[Key[bind[2],[]]]], Many[Apply["anything"]]]
 
 end
 def AmethystParser_bind_lb_1_rb__eq__9a0b(bind)
 bind[1]= bind[2] ? Seq_AST[{:ary=>([Enter[Act[["Arguments[#{bind[3].inspect},*",local("_args"),"]"]],bind[4]]]+@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[bind[1]])}] : Seq_AST[{:ary=>(@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[bind[1]])}]; 
 end
-def AmethystParser_bind_lb_1_rb__eq__a03a(bind)
-bind[1]=true;Or[bind[2],Act[Args[bind[3]]]] 
-
-end
 def AmethystParser_bind_lb_1_rb__eq__a882(bind)
 bind[1]=local(bind[1])
 end
-def AmethystParser_bind_lb_1_rb__eq__e193(bind)
-bind[1]=true  ; Act[Key[bind[2]]]
-
+def AmethystParser_bind_lb_1_rb__eq__c77b(bind)
+bind[1]=true;bind[2]=Or_AST[bind[2],Act[Args[bind[3]]]]
 end
-def AmethystParser_bind_lb_1_rb__lt__f8a3(bind)
-bind[1]<<local(bind[2]); Apply["anything"]
+def AmethystParser_bind_lb_1_rb__lt__798b(bind)
+bind[1]<<local(bind[2]); Or_AST[Pred[Args[Key[bind[2],[]]]], Apply["anything"]]
 
 end
 def AmethystParser_bind_lb_1_rb__pl__b087(bind)

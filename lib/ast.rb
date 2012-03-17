@@ -29,16 +29,17 @@ makeclasses(Switch,:Switch_Char,:Switch_Clas,:Switch_Or)
 class Enter;end;class Append;end;class PureAct;end;class Pred;end;
 
 class Arguments
-  attr_accessor :name,:ary,:_hash
+  attr_accessor :method_name,:ary,:_hash
   def self.[](name,*a)
-    @name=name
     ar=self.new
+    ar.method_name=name
+    ar._hash={}
     ar._hash=a.pop if a[-1].is_a?(Hash)
     ar.ary=a
     ar
   end
   def method_missing(k)
-    @hash[k]
+    @_hash[k]
   end
   def to_a
     ary
