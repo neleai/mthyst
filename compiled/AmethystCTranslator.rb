@@ -179,9 +179,6 @@ end
 def AmethystCTranslator__lp_bind_lb_1_rb__dbc9(bind)
 (bind[1]=="_append(") || FAIL
 end
-def AmethystCTranslator_addcallb_0461(bind)
-addcallback(src.pred ? ["(",bind[1],") || FAIL"] : bind[1])
-end
 def AmethystCTranslator_addcallb_2cf7(bind)
 addcallback2(bind[1])
 end
@@ -314,6 +311,9 @@ src
 end
 def AmethystCTranslator_src_dot_name_80f3(bind)
 src.name
+end
+def AmethystCTranslator_src_dot_pred_90f1(bind)
+src.pred ? ["(",bind[1],") || FAIL"] : bind[1]
 end
 def AmethystCTranslator_src_dot_rule_5acf(bind)
 src.rules
