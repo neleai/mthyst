@@ -86,8 +86,8 @@ amethyst AmethystParser {
 
   collect(ors) = -> a=autovar; Seq_AST[Or_AST[{:ary=>ors.ary.map{|ands| Seq_AST[{:ary=>[Bind[a,Act["[]"]]]+ands.ary.map{|expr| Append_AST[a,expr]}}]}}],a]
   
-  call = className:klas '::' name:name argsOpt:arg ("" lambda:[arg])? -> Apply[[klas,name],arg]
-       |                     name:name argsOpt:arg ("" lambda:[arg])? -> Apply[name,arg]
+  call = ( className:k '::' name:n ->[k,n]
+         |                  name          ):name argsOpt:arg ( lambda:[arg])?  ->Apply[name,arg]
  
   key         = '@' className:name             -> Result[{:name=>name}]
               | '@'      name:name argsOpt:arg -> Key[name,arg]
@@ -101,7 +101,8 @@ amethyst AmethystParser {
   ruleargs = (argsOpt)=>[ Args[ :name {local(name) }]* ]
   
   
-  argsOpt = ~_  _args('(',')'):r { r+[',']}=>[procargs] 
+  argsOpt = lambda:l -> [l]
+          |~_  _args('(',')'):r { r+[',']}=>[procargs] 
           | {[]}
 
   procargs = {@@ary=[];@@tmp=[]}

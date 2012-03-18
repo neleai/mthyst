@@ -56,10 +56,6 @@ def AmethystParser_Apply_lb__dq_t_e958(bind)
 Apply["token" ,quote(bind[1])]
 
 end
-def AmethystParser_Apply_lb__lb_b_099b(bind)
-Apply[[bind[1],bind[2]],bind[3]]
-
-end
 def AmethystParser_Apply_lb_bi_9146(bind)
 Apply[bind[1],bind[2]]
 
@@ -200,6 +196,14 @@ def AmethystParser__lb__dq__lp__dq_(bind)
 end
 def AmethystParser__lb_bind_lb_1_rb__6281(bind)
 [bind[1],'<<']
+
+end
+def AmethystParser__lb_bind_lb_1_rb__c1c8(bind)
+[bind[1],bind[2]]
+
+end
+def AmethystParser__lb_bind_lb_1_rb__f4d6(bind)
+[bind[1]]
 
 end
 def AmethystParser__lp_bind_lb_1_rb__a724(bind)

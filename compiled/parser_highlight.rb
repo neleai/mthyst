@@ -19,7 +19,7 @@ def parser_highlight_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def parser_highlight_source_hash
-'29a47f39a05fe5f70667281dfbef3a84'
+'fddadbeae97a9d6fd470c9d3f9f6ab5b'
 end
 def testversionparser_highlight(r)
  raise "invalid version" if r!=parser_highlight_version

@@ -41,15 +41,14 @@ amethyst AmethystParser_Highligth {
                             | withcolor("orange")(|':'|) ( withcolor("orange")(| (key | withcolor("#40a040")(|name|)):name ('[]'?):append|)  -> @@appends<< local(name) if append; append=='[]' ? Append_AST[name,from] : Bind[local(name),from]
                                   | inline_host_expr:e                      -> Seq[ Bind[local("it"),from] , Act[e] ]
                                   ) 
-                    ):from  )* {from}
+                            ):from  )* {from}
 
   
   cases = withcolor("red")(| className:clas|)  ~'::'                      -> Apply["clas",clas]
         | ((number ('...'|'..') number)[]:{it.join} | number):num -> Apply["member",num.to_s]
-        | {group_new}:g group_hl(g)(| group_mark(g)(|'<'|) until((| group_mark(g)(|'>'|) |)):s |) -> Apply["regch","/["+s+"]/"]
+        | {group_new}:g group_hl(g)(| group_mark(g)(|'<'|) until(| group_mark(g)(|'>'|) |):s |) -> Apply["regch","/["+s+"]/"]
 
-  term  = 'nested(' expression:expr ")" -> Nested[expr]
-        | 'break' -> Seq[Cut[],Stop[]]
+  term  = 'break' -> Seq[Cut[],Stop[]]
         | cases
         | call
         | &<.:> '.'? -> Apply["anything"]
