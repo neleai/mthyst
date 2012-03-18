@@ -49,16 +49,13 @@ class Gram
 	end
 	def getrule(name)
 		grammar=resolvegrammar(self.name,name)
-		return nil if grammar=="AmethystCore"
 		return Compiler.grammars[grammar].rules[name] if grammar
 		return nil
 	end
 end
 def resolvegrammar(grammar,name)
-	#TODO add header
-	return "AmethystCore" if name=="anything" || name=="_seq"
   eval(grammar).ancestors.each{|g|grammar=g.to_s
-		return grammar if Compiler.grammars[grammar] && Compiler.grammars[grammar].rules[name]
+		return grammar if Compiler.grammars[grammar] && Compiler.grammars[grammar].rules.key?(name)
   }
   return nil
 end
@@ -69,7 +66,13 @@ class <<Compiler
 	def init
 		@grammars={}
 	end
-	def complexity(r) # todo compute
+  def add_foreign_grammar(name,rules)
+    g=Gram.new(Grammar[{:name=>name,:rules=>[]}])
+    g.callgraph=callg=Oriented_Graph.new
+    g.rules=Hash[*rules.map{|k| [k,nil]}.flatten]
+    @grammars[name]=g
+  end
+	def complexity(r) # TODO compute
 		return 1000000 if r.args.size>0  && (! ["regch","clas"].include?(r.name))
 		return 100 if  ["char","space"].include?(r.name)
 		return 0
@@ -92,7 +95,6 @@ class <<Compiler
 			g.calls[name]=DetectCalls.root([g.rules[name]])
 			g.calls[name].each{|c,t| callg.add(name,c)}
 		}
-#    c=Context_Graph.new
     cargs=[]
     names.dup.each{|name| 
      cargs<<name if Detect_Contextual_Arguments.root(g.rules[name])!=[]
@@ -153,7 +155,7 @@ class <<Compiler
 
     called.each{|name,v| g.rules[name]=Resolve_Calls.root([g,g.rules[name]])}
 		topo.each{|name|if g.rules[name] && called[name]
-				#TODO separately as in inherited it dont have to be true
+				#TODO optimize separately as in inherited it dont have to be true
 		    [ds,dc].each{|o| g.rules[name]=o.parse(:root,g.rules[name])}
 				g.opt(g.rules[name])	
 		end}
@@ -172,9 +174,7 @@ class <<Compiler
     }
 
 		if !Amethyst::Settings.profiling #oprofile does not like changing binaries
-	  withtime("c"){ #todo get flags portable not just 1.9.1 on x64
-      cc_compile_file(g.name)
-    }
+	  withtime("c"){ cc_compile_file(g.name) }
     end
     if !@bootstrapping_amethyst
       require Amethyst_path+"/compiled/#{g.name}.rb" 
@@ -184,7 +184,7 @@ class <<Compiler
 	def compile(file,bootstrap=false)
     @bootstrapping_amethyst=bootstrap
     file2=File.basename(file)[0..-5]
-    GC::disable
+    GC::disable # Doing GC took 30% time
 		source=File.new(file).read
 		source_hash=Digest::MD5.hexdigest(source)
 		if !@bootstrapping_amethyst #at bootstrap we compare if compilation by new and old compiler give same result. 
@@ -253,3 +253,4 @@ class Amethyst
 end
 
 init_dataflows
+Compiler.add_foreign_grammar("AmethystCore",["_seq","anything"])
