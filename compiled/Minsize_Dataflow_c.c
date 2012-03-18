@@ -157,23 +157,9 @@ alt2_2:
             switch((unsigned char)*ame_curstr2(ptr)) {
             case UC(0) ... '`':
                 ;
-            case 'b' ... 'b':
-                ;
-            case 'd' ... 'q':
-                ;
-            case 's' ... UC(255):
+            case 'b' ... UC(255):
                 ;
                 if (1) {
-                    it=failobj;
-                    goto pass4;
-                }
-                break;
-            case 'r' ... 'r':
-                ;
-                it=rb_str_new(ptr->str+ptr->pos,1);
-                ptr->pos++;
-                if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='g'&&ame_curstr2(ptr)[2]=='c'&&ame_curstr2(ptr)[3]=='h')  ptr->pos+=4;
-                else if (1) {
                     it=failobj;
                     goto pass4;
                 }
@@ -219,16 +205,6 @@ alt3_4:
                 };
 accept3:
                 ;
-                break;
-            case 'c' ... 'c':
-                ;
-                it=rb_str_new(ptr->str+ptr->pos,1);
-                ptr->pos++;
-                if (ame_curstr2(ptr)[0]=='l'&&ame_curstr2(ptr)[1]=='a'&&ame_curstr2(ptr)[2]=='s')  ptr->pos+=3;
-                else if (1) {
-                    it=failobj;
-                    goto pass4;
-                }
                 break;
             }
             it=Qnil;
@@ -377,23 +353,9 @@ alt4_2:
             switch((unsigned char)*ame_curstr2(ptr)) {
             case UC(0) ... '`':
                 ;
-            case 'b' ... 'b':
-                ;
-            case 'd' ... 'q':
-                ;
-            case 's' ... UC(255):
+            case 'b' ... UC(255):
                 ;
                 if (1) {
-                    it=failobj;
-                    goto pass7;
-                }
-                break;
-            case 'r' ... 'r':
-                ;
-                it=rb_str_new(ptr->str+ptr->pos,1);
-                ptr->pos++;
-                if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='g'&&ame_curstr2(ptr)[2]=='c'&&ame_curstr2(ptr)[3]=='h')  ptr->pos+=4;
-                else if (1) {
                     it=failobj;
                     goto pass7;
                 }
@@ -439,16 +401,6 @@ alt5_4:
                 };
 accept5:
                 ;
-                break;
-            case 'c' ... 'c':
-                ;
-                it=rb_str_new(ptr->str+ptr->pos,1);
-                ptr->pos++;
-                if (ame_curstr2(ptr)[0]=='l'&&ame_curstr2(ptr)[1]=='a'&&ame_curstr2(ptr)[2]=='s')  ptr->pos+=3;
-                else if (1) {
-                    it=failobj;
-                    goto pass7;
-                }
                 break;
             }
             it=Qnil;

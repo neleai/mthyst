@@ -118,3 +118,5 @@ support variable number of arguments etc
 compile to c at background
 
 origin tracking string
+
+slice analysis

@@ -171,51 +171,32 @@ VALUE AmethystParser__args(VALUE self ,VALUE a0,VALUE a1) {
     _autovar=it;;
     int stop1=0;
     while(!stop1) {
-        switch((unsigned char)*ame_curstr2(ptr)) {
-        case UC(0) ... '(':
-            ;
-        case '*' ... UC(92):
-            ;
-        case '^' ... '|':
-            ;
-        case '~' ... UC(255):
-            ;
-            int oldpos1=ptr->pos;
-            int cut1=0;
+        int oldpos1=ptr->pos;
+        int cut1=0;
 alt1_1:
-            ;
-            it=AmethystParser_rubyarg(self );
-            if (it==failobj) {
-                it=failobj;
-                goto alt1_2;
-            }
-            _autovar_2=it;;
-            it=AmethystCore_append(self,_autovar,_autovar_2);
-            ;
-            goto accept1;
-alt1_2:
-            ptr->pos=oldpos1;
-            stop1=1;
-            ;
-            goto accept1;
-alt1_3:
-            ptr->pos=oldpos1;
-            if (1) {
-                it=failobj;
-                goto fail;
-            };
-accept1:
-            ;
-            break;
-        case ')' ... ')':
-            ;
-        case ']' ... ']':
-            ;
-        case '}' ... '}':
-            ;
-            stop1=1;
-            break;
+        ;
+        it=AmethystParser_rubyarg(self );
+        if (it==failobj) {
+            it=failobj;
+            goto alt1_2;
         }
+        _autovar_2=it;;
+        it=AmethystCore_append(self,_autovar,_autovar_2);
+        ;
+        goto accept1;
+alt1_2:
+        ptr->pos=oldpos1;
+        stop1=1;
+        ;
+        goto accept1;
+alt1_3:
+        ptr->pos=oldpos1;
+        if (1) {
+            it=failobj;
+            goto fail;
+        };
+accept1:
+        ;
     }
     it=_c;
     _s=it;;
@@ -264,51 +245,32 @@ VALUE AmethystParser_args(VALUE self ,VALUE a0,VALUE a1) {
     _autovar=it;;
     int stop1=0;
     while(!stop1) {
-        switch((unsigned char)*ame_curstr2(ptr)) {
-        case UC(0) ... '(':
-            ;
-        case '*' ... UC(92):
-            ;
-        case '^' ... '|':
-            ;
-        case '~' ... UC(255):
-            ;
-            int oldpos1=ptr->pos;
-            int cut1=0;
+        int oldpos1=ptr->pos;
+        int cut1=0;
 alt1_1:
-            ;
-            it=AmethystParser_rubyarg(self );
-            if (it==failobj) {
-                it=failobj;
-                goto alt1_2;
-            }
-            _autovar_2=it;;
-            it=AmethystCore_append(self,_autovar,_autovar_2);
-            ;
-            goto accept1;
-alt1_2:
-            ptr->pos=oldpos1;
-            stop1=1;
-            ;
-            goto accept1;
-alt1_3:
-            ptr->pos=oldpos1;
-            if (1) {
-                it=failobj;
-                goto fail;
-            };
-accept1:
-            ;
-            break;
-        case ')' ... ')':
-            ;
-        case ']' ... ']':
-            ;
-        case '}' ... '}':
-            ;
-            stop1=1;
-            break;
+        ;
+        it=AmethystParser_rubyarg(self );
+        if (it==failobj) {
+            it=failobj;
+            goto alt1_2;
         }
+        _autovar_2=it;;
+        it=AmethystCore_append(self,_autovar,_autovar_2);
+        ;
+        goto accept1;
+alt1_2:
+        ptr->pos=oldpos1;
+        stop1=1;
+        ;
+        goto accept1;
+alt1_3:
+        ptr->pos=oldpos1;
+        if (1) {
+            it=failobj;
+            goto fail;
+        };
+accept1:
+        ;
     }
     it=_c_2;
     _s=it;;
@@ -392,51 +354,32 @@ alt1_1:
         _autovar=it;;
         int stop1=0;
         while(!stop1) {
-            switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... '(':
-                ;
-            case '*' ... UC(92):
-                ;
-            case '^' ... '|':
-                ;
-            case '~' ... UC(255):
-                ;
-                int oldpos2=ptr->pos;
-                int cut2=0;
+            int oldpos2=ptr->pos;
+            int cut2=0;
 alt2_1:
-                ;
-                it=AmethystParser_rubyarg(self );
-                if (it==failobj) {
-                    it=failobj;
-                    goto alt2_2;
-                }
-                _autovar_2=it;;
-                it=AmethystCore_append(self,_autovar,_autovar_2);
-                ;
-                goto accept2;
-alt2_2:
-                ptr->pos=oldpos2;
-                stop1=1;
-                ;
-                goto accept2;
-alt2_3:
-                ptr->pos=oldpos2;
-                if (1) {
-                    it=failobj;
-                    goto alt1_2;
-                };
-accept2:
-                ;
-                break;
-            case ')' ... ')':
-                ;
-            case ']' ... ']':
-                ;
-            case '}' ... '}':
-                ;
-                stop1=1;
-                break;
+            ;
+            it=AmethystParser_rubyarg(self );
+            if (it==failobj) {
+                it=failobj;
+                goto alt2_2;
             }
+            _autovar_2=it;;
+            it=AmethystCore_append(self,_autovar,_autovar_2);
+            ;
+            goto accept2;
+alt2_2:
+            ptr->pos=oldpos2;
+            stop1=1;
+            ;
+            goto accept2;
+alt2_3:
+            ptr->pos=oldpos2;
+            if (1) {
+                it=failobj;
+                goto alt1_2;
+            };
+accept2:
+            ;
         }
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... '(':
@@ -601,51 +544,32 @@ accept4:
         _autovar=it;;
         int stop2=0;
         while(!stop2) {
-            switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... '(':
-                ;
-            case '*' ... UC(92):
-                ;
-            case '^' ... '|':
-                ;
-            case '~' ... UC(255):
-                ;
-                int oldpos5=ptr->pos;
-                int cut5=0;
+            int oldpos5=ptr->pos;
+            int cut5=0;
 alt5_1:
-                ;
-                it=AmethystParser_rubyarg(self );
-                if (it==failobj) {
-                    it=failobj;
-                    goto alt5_2;
-                }
-                _autovar_2=it;;
-                it=AmethystCore_append(self,_autovar,_autovar_2);
-                ;
-                goto accept5;
-alt5_2:
-                ptr->pos=oldpos5;
-                stop2=1;
-                ;
-                goto accept5;
-alt5_3:
-                ptr->pos=oldpos5;
-                if (1) {
-                    it=failobj;
-                    goto alt3_2;
-                };
-accept5:
-                ;
-                break;
-            case ')' ... ')':
-                ;
-            case ']' ... ']':
-                ;
-            case '}' ... '}':
-                ;
-                stop2=1;
-                break;
+            ;
+            it=AmethystParser_rubyarg(self );
+            if (it==failobj) {
+                it=failobj;
+                goto alt5_2;
             }
+            _autovar_2=it;;
+            it=AmethystCore_append(self,_autovar,_autovar_2);
+            ;
+            goto accept5;
+alt5_2:
+            ptr->pos=oldpos5;
+            stop2=1;
+            ;
+            goto accept5;
+alt5_3:
+            ptr->pos=oldpos5;
+            if (1) {
+                it=failobj;
+                goto alt3_2;
+            };
+accept5:
+            ;
         }
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... '(':
@@ -2617,51 +2541,32 @@ VALUE AmethystParser_inline_host_expr(VALUE self ) {
         _autovar=it;;
         int stop1=0;
         while(!stop1) {
-            switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... '(':
-                ;
-            case '*' ... UC(92):
-                ;
-            case '^' ... '|':
-                ;
-            case '~' ... UC(255):
-                ;
-                int oldpos1=ptr->pos;
-                int cut1=0;
+            int oldpos1=ptr->pos;
+            int cut1=0;
 alt1_1:
-                ;
-                it=AmethystParser_rubyarg(self );
-                if (it==failobj) {
-                    it=failobj;
-                    goto alt1_2;
-                }
-                _autovar_2=it;;
-                it=AmethystCore_append(self,_autovar,_autovar_2);
-                ;
-                goto accept1;
-alt1_2:
-                ptr->pos=oldpos1;
-                stop1=1;
-                ;
-                goto accept1;
-alt1_3:
-                ptr->pos=oldpos1;
-                if (1) {
-                    it=failobj;
-                    goto fail;
-                };
-accept1:
-                ;
-                break;
-            case ')' ... ')':
-                ;
-            case ']' ... ']':
-                ;
-            case '}' ... '}':
-                ;
-                stop1=1;
-                break;
+            ;
+            it=AmethystParser_rubyarg(self );
+            if (it==failobj) {
+                it=failobj;
+                goto alt1_2;
             }
+            _autovar_2=it;;
+            it=AmethystCore_append(self,_autovar,_autovar_2);
+            ;
+            goto accept1;
+alt1_2:
+            ptr->pos=oldpos1;
+            stop1=1;
+            ;
+            goto accept1;
+alt1_3:
+            ptr->pos=oldpos1;
+            if (1) {
+                it=failobj;
+                goto fail;
+            };
+accept1:
+            ;
         }
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... '|':
@@ -2795,51 +2700,32 @@ alt2_2:
             _autovar_2=it;;
             int stop2=0;
             while(!stop2) {
-                switch((unsigned char)*ame_curstr2(ptr)) {
-                case UC(0) ... '(':
-                    ;
-                case '*' ... UC(92):
-                    ;
-                case '^' ... '|':
-                    ;
-                case '~' ... UC(255):
-                    ;
-                    int oldpos3=ptr->pos;
-                    int cut3=0;
+                int oldpos3=ptr->pos;
+                int cut3=0;
 alt3_1:
-                    ;
-                    it=AmethystParser_rubyarg(self );
-                    if (it==failobj) {
-                        it=failobj;
-                        goto alt3_2;
-                    }
-                    _autovar_3=it;;
-                    it=AmethystCore_append(self,_autovar_2,_autovar_3);
-                    ;
-                    goto accept3;
-alt3_2:
-                    ptr->pos=oldpos3;
-                    stop2=1;
-                    ;
-                    goto accept3;
-alt3_3:
-                    ptr->pos=oldpos3;
-                    if (1) {
-                        it=failobj;
-                        goto alt2_3;
-                    };
-accept3:
-                    ;
-                    break;
-                case ')' ... ')':
-                    ;
-                case ']' ... ']':
-                    ;
-                case '}' ... '}':
-                    ;
-                    stop2=1;
-                    break;
+                ;
+                it=AmethystParser_rubyarg(self );
+                if (it==failobj) {
+                    it=failobj;
+                    goto alt3_2;
                 }
+                _autovar_3=it;;
+                it=AmethystCore_append(self,_autovar_2,_autovar_3);
+                ;
+                goto accept3;
+alt3_2:
+                ptr->pos=oldpos3;
+                stop2=1;
+                ;
+                goto accept3;
+alt3_3:
+                ptr->pos=oldpos3;
+                if (1) {
+                    it=failobj;
+                    goto alt2_3;
+                };
+accept3:
+                ;
             }
             switch((unsigned char)*ame_curstr2(ptr)) {
             case UC(0) ... '|':
@@ -5271,51 +5157,32 @@ alt4_1:
         _autovar_3=it;;
         int stop1=0;
         while(!stop1) {
-            switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... '(':
-                ;
-            case '*' ... UC(92):
-                ;
-            case '^' ... '|':
-                ;
-            case '~' ... UC(255):
-                ;
-                int oldpos5=ptr->pos;
-                int cut5=0;
+            int oldpos5=ptr->pos;
+            int cut5=0;
 alt5_1:
-                ;
-                it=AmethystParser_rubyarg(self );
-                if (it==failobj) {
-                    it=failobj;
-                    goto alt5_2;
-                }
-                _autovar_4=it;;
-                it=AmethystCore_append(self,_autovar_3,_autovar_4);
-                ;
-                goto accept5;
-alt5_2:
-                ptr->pos=oldpos5;
-                stop1=1;
-                ;
-                goto accept5;
-alt5_3:
-                ptr->pos=oldpos5;
-                if (1) {
-                    it=failobj;
-                    goto alt4_2;
-                };
-accept5:
-                ;
-                break;
-            case ')' ... ')':
-                ;
-            case ']' ... ']':
-                ;
-            case '}' ... '}':
-                ;
-                stop1=1;
-                break;
+            ;
+            it=AmethystParser_rubyarg(self );
+            if (it==failobj) {
+                it=failobj;
+                goto alt5_2;
             }
+            _autovar_4=it;;
+            it=AmethystCore_append(self,_autovar_3,_autovar_4);
+            ;
+            goto accept5;
+alt5_2:
+            ptr->pos=oldpos5;
+            stop1=1;
+            ;
+            goto accept5;
+alt5_3:
+            ptr->pos=oldpos5;
+            if (1) {
+                it=failobj;
+                goto alt4_2;
+            };
+accept5:
+            ;
         }
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... '|':
@@ -5556,51 +5423,32 @@ alt9_1:
                 _autovar_3=it;;
                 int stop3=0;
                 while(!stop3) {
-                    switch((unsigned char)*ame_curstr2(ptr)) {
-                    case UC(0) ... '(':
-                        ;
-                    case '*' ... UC(92):
-                        ;
-                    case '^' ... '|':
-                        ;
-                    case '~' ... UC(255):
-                        ;
-                        int oldpos10=ptr->pos;
-                        int cut10=0;
+                    int oldpos10=ptr->pos;
+                    int cut10=0;
 alt10_1:
-                        ;
-                        it=AmethystParser_rubyarg(self );
-                        if (it==failobj) {
-                            it=failobj;
-                            goto alt10_2;
-                        }
-                        _autovar_4=it;;
-                        it=AmethystCore_append(self,_autovar_3,_autovar_4);
-                        ;
-                        goto accept10;
-alt10_2:
-                        ptr->pos=oldpos10;
-                        stop3=1;
-                        ;
-                        goto accept10;
-alt10_3:
-                        ptr->pos=oldpos10;
-                        if (1) {
-                            it=failobj;
-                            goto alt9_2;
-                        };
-accept10:
-                        ;
-                        break;
-                    case ')' ... ')':
-                        ;
-                    case ']' ... ']':
-                        ;
-                    case '}' ... '}':
-                        ;
-                        stop3=1;
-                        break;
+                    ;
+                    it=AmethystParser_rubyarg(self );
+                    if (it==failobj) {
+                        it=failobj;
+                        goto alt10_2;
                     }
+                    _autovar_4=it;;
+                    it=AmethystCore_append(self,_autovar_3,_autovar_4);
+                    ;
+                    goto accept10;
+alt10_2:
+                    ptr->pos=oldpos10;
+                    stop3=1;
+                    ;
+                    goto accept10;
+alt10_3:
+                    ptr->pos=oldpos10;
+                    if (1) {
+                        it=failobj;
+                        goto alt9_2;
+                    };
+accept10:
+                    ;
                 }
                 switch((unsigned char)*ame_curstr2(ptr)) {
                 case UC(0) ... '|':
@@ -6264,51 +6112,32 @@ alt19_2:
         _autovar_3=it;;
         int stop5=0;
         while(!stop5) {
-            switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... '(':
-                ;
-            case '*' ... UC(92):
-                ;
-            case '^' ... '|':
-                ;
-            case '~' ... UC(255):
-                ;
-                int oldpos20=ptr->pos;
-                int cut20=0;
+            int oldpos20=ptr->pos;
+            int cut20=0;
 alt20_1:
-                ;
-                it=AmethystParser_rubyarg(self );
-                if (it==failobj) {
-                    it=failobj;
-                    goto alt20_2;
-                }
-                _autovar_4=it;;
-                it=AmethystCore_append(self,_autovar_3,_autovar_4);
-                ;
-                goto accept20;
-alt20_2:
-                ptr->pos=oldpos20;
-                stop5=1;
-                ;
-                goto accept20;
-alt20_3:
-                ptr->pos=oldpos20;
-                if (1) {
-                    it=failobj;
-                    goto alt19_3;
-                };
-accept20:
-                ;
-                break;
-            case ')' ... ')':
-                ;
-            case ']' ... ']':
-                ;
-            case '}' ... '}':
-                ;
-                stop5=1;
-                break;
+            ;
+            it=AmethystParser_rubyarg(self );
+            if (it==failobj) {
+                it=failobj;
+                goto alt20_2;
             }
+            _autovar_4=it;;
+            it=AmethystCore_append(self,_autovar_3,_autovar_4);
+            ;
+            goto accept20;
+alt20_2:
+            ptr->pos=oldpos20;
+            stop5=1;
+            ;
+            goto accept20;
+alt20_3:
+            ptr->pos=oldpos20;
+            if (1) {
+                it=failobj;
+                goto alt19_3;
+            };
+accept20:
+            ;
         }
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... '(':
@@ -7214,51 +7043,32 @@ alt35_1:
         _autovar_3=it;;
         int stop6=0;
         while(!stop6) {
-            switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... '(':
-                ;
-            case '*' ... UC(92):
-                ;
-            case '^' ... '|':
-                ;
-            case '~' ... UC(255):
-                ;
-                int oldpos36=ptr->pos;
-                int cut36=0;
+            int oldpos36=ptr->pos;
+            int cut36=0;
 alt36_1:
-                ;
-                it=AmethystParser_rubyarg(self );
-                if (it==failobj) {
-                    it=failobj;
-                    goto alt36_2;
-                }
-                _autovar_4=it;;
-                it=AmethystCore_append(self,_autovar_3,_autovar_4);
-                ;
-                goto accept36;
-alt36_2:
-                ptr->pos=oldpos36;
-                stop6=1;
-                ;
-                goto accept36;
-alt36_3:
-                ptr->pos=oldpos36;
-                if (1) {
-                    it=failobj;
-                    goto alt35_2;
-                };
-accept36:
-                ;
-                break;
-            case ')' ... ')':
-                ;
-            case ']' ... ']':
-                ;
-            case '}' ... '}':
-                ;
-                stop6=1;
-                break;
+            ;
+            it=AmethystParser_rubyarg(self );
+            if (it==failobj) {
+                it=failobj;
+                goto alt36_2;
             }
+            _autovar_4=it;;
+            it=AmethystCore_append(self,_autovar_3,_autovar_4);
+            ;
+            goto accept36;
+alt36_2:
+            ptr->pos=oldpos36;
+            stop6=1;
+            ;
+            goto accept36;
+alt36_3:
+            ptr->pos=oldpos36;
+            if (1) {
+                it=failobj;
+                goto alt35_2;
+            };
+accept36:
+            ;
         }
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... UC(92):

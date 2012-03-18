@@ -239,7 +239,7 @@ amethyst First_Dataflow {
 
 amethyst Minsize_Dataflow < First_Dataflow {
   first = Apply[( ["_seq"] CAct[.:str] {lattice[str.size]} 
-                | ["regch" | "clas" | "anything" | "advance_char" | "advance_clas"] .* {lattice[1]}
+                | ["anything" | "advance_char" | "advance_clas"] .* {lattice[1]}
                 | ["fails"] {lattice.top}
                 )]
         | super
@@ -247,7 +247,7 @@ amethyst Minsize_Dataflow < First_Dataflow {
 
 amethyst Maxsize_Dataflow < First_Dataflow {
   first = Apply[( ["_seq"] CAct[.:str] {lattice[str.size]} 
-                | ["regch" | "clas" | "anything" | "advance_char" | "advance_clas"] .* {lattice[1]}
+                | ["anything" | "advance_char" | "advance_clas"] .* {lattice[1]}
                 | ["fails"] {lattice.top}
                 )]
         | super
