@@ -176,17 +176,18 @@ class <<Compiler
       cc_compile_file(g.name)
     }
     end
-    if !$bootstrapping_amethyst
+    if !@bootstrapping_amethyst
       require Amethyst_path+"/compiled/#{g.name}.rb" 
     end
     CurrentParser.clear
 	end
-	def compile(file)
+	def compile(file,bootstrap=false)
+    @bootstrapping_amethyst=bootstrap
     file2=File.basename(file)[0..-5]
     GC::disable
 		source=File.new(file).read
 		source_hash=Digest::MD5.hexdigest(source)
-		if !$bootstrapping_amethyst #at bootstrap we compare if compilation by new and old compiler give same result. 
+		if !@bootstrapping_amethyst #at bootstrap we compare if compilation by new and old compiler give same result. 
       if file2!="amethyst" && file2!="traverser"
       #TODO we need ast of parent grammars. 
       #Saving by YAML is to slow so for now we use this hack
@@ -214,7 +215,7 @@ class <<Compiler
 		else
 		e
 		end}.join
-    pre="module Foo\n#{pre}\nend" if $bootstrapping_amethyst
+    pre="module Foo\n#{pre}\nend" if @bootstrapping_amethyst
     puts pre.inspect
 		eval(pre) 
 
