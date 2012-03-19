@@ -69,7 +69,6 @@ VALUE Detect_Switch_Char_itrans(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,_autovar_7,_autovar_8,_autovar_9,_autovar_10,_rules,_autovar_11,_autovar_12,__result,_autovar_13;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -323,7 +322,6 @@ VALUE Detect_Switch_Char_root(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -341,7 +339,6 @@ VALUE Detect_Switch_Char_traverse(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_nvars,_ivars,_autovar,_autovar_2,_it,__result;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -456,7 +453,6 @@ VALUE Detect_Switch_Char_traverse_item(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result,_autovar,_autovar_2,_autovar_3,_ar,_it,_autovar_4;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -852,7 +848,6 @@ VALUE Detect_Switch_Char_visit(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,_firs,_autovar_7,__result,_autovar_8,_autovar_9,_autovar_10,_str,_autovar_11,_autovar_12,_autovar_13,_autovar_14,_autovar_15,_autovar_16,_autovar_17,_autovar_18,_autovar_19,_items,_aswitch,_autovar_20,_autovar_21,_autovar_22,_list,_autovar_23,_ary,_newlist,_lat,__result_2,_n,_cls,_autovar_24,_autovar_25,_autovar_26,_autovar_27,_autovar_28,_autovar_29,_autovar_30,_prefix,_s,__result_3,_autovar_31,_ary_2,_autovar_32,_autovar_33,_rest,_cls_2,_autovar_34,_autovar_35,_autovar_36,_autovar_37,_autovar_38;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);

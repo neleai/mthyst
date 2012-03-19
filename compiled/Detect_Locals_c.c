@@ -39,7 +39,6 @@ VALUE Detect_Locals_analyze(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -71,7 +70,6 @@ VALUE Detect_Locals_traverse(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_nvars,_ivars,_autovar,_autovar_2,_it,__result;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -174,7 +172,6 @@ VALUE Detect_Locals_traverse_item(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result,_autovar,_autovar_2,_autovar_3,_ar,_it,_autovar_4;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -567,7 +564,6 @@ VALUE Detect_Locals_visit(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_x,_autovar_2,__result,_autovar_3,_autovar_4;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);

@@ -34,7 +34,6 @@ VALUE Tests_abc(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -66,7 +65,6 @@ VALUE Tests_context(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,__result,_autovar_3;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -92,7 +90,6 @@ VALUE Tests_de(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_foo,_autovar_2,__result,_autovar_3;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -237,7 +234,6 @@ VALUE Tests_foo(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -264,7 +260,6 @@ VALUE Tests_gh(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -309,7 +304,6 @@ VALUE Tests_s2(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result,__result_2;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -355,7 +349,6 @@ VALUE Tests_sw(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result,__result_2;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -413,7 +406,6 @@ VALUE Tests_test(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);

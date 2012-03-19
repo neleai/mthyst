@@ -143,8 +143,8 @@ end
 def AmethystCTranslator__dq_int_sp__sh__le_b_0b60(bind)
 "int #{bind[1]}=ptr->pos;int #{@cutlabel}=0;\n#{bind[2]}_#{bind[3]}:;"
 end
-def AmethystCTranslator__dq_int_sp__sh__le_b_c039(bind)
-"int #{bind[1]}=ptr->pos;\n #{bind[2]} x=1; goto #{bind[3]};  #{bind[4]}: x=0; #{bind[3]}: it=Qnil; ptr->pos=#{bind[1]}; #{failwhen("x==0")}"
+def AmethystCTranslator__dq_int_sp__sh__le_b_f6cd(bind)
+"int #{bind[1]}=ptr->pos;\n #{bind[2]} it=Qnil; goto #{bind[3]};  #{bind[4]}: it=failobj; #{bind[3]}: ptr->pos=#{bind[1]}; #{failwhen("it==failobj")}"
 end
 def AmethystCTranslator__dq_it_eq_Amet_82ce(bind)
 "it=AmethystCore_append(self,#{bget(bind[1])},#{bget(bind[2])});"
@@ -270,22 +270,22 @@ end
 def AmethystCTranslator_bind_lb_1_rb__ti__cfcb(bind)
 bind[1]*""
 end
-def AmethystCTranslator_h_eq__dq_VALUE_481e(bind)
-h="VALUE #{bind[1]}(VALUE self,VALUE bind)"
-                 @header<<h+";"
-                 @defmethods<<"rb_define_method(cls_#{bind[2][:grammar]},\"#{bind[1]}\",#{bind[1]},1);"
-                 @lambdas<< h+"{VALUE vals[0]; /*todo unify with rule and get args*/ cstruct *ptr; int x;VALUE it;VALUE arg0,arg1,arg2,arg3;\n#{bind[3]}\nreturn it;\nfail: return failobj; }" 
-end
-def AmethystCTranslator_h_eq__dq_VALUE_ef56(bind)
+def AmethystCTranslator_h_eq__dq_VALUE_8b47(bind)
 h="VALUE #{bind[1][:grammar]}_#{bind[2]}(VALUE self #{map_index(src.args){|i| ",VALUE a#{i}"}*""})" 
             @header<<h+";"
             @defs<< "def self.#{bind[2]}(*args);self.new.parse(:#{bind[2]},*args);end;def self._selector_#{bind[2]};#{bind[1][:grammar]};end"
             @defmethods<< "rb_define_method(cls_#{bind[1][:grammar]},\"#{src.name}\",#{bind[1][:grammar]}_#{src.name},#{src.varargs ? -2 : src.args.size});"
-						bind[3]=h+"{VALUE vals[#{src.args.size}]; VALUE it #{@locls.map{|k,v| ",_#{k}"}*""};VALUE bind2=bind_new2(16); #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}*""} int x;VALUE arg0,arg1,arg2,arg3; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);"
+						bind[3]=h+"{VALUE vals[#{src.args.size}]; VALUE it #{@locls.map{|k,v| ",_#{k}"}*""};VALUE bind2=bind_new2(16); #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}*""} VALUE arg0,arg1,arg2,arg3; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);"
 bind[3]+="#{bind[4]}\n" 
 bind[3]+="fail: return it;\n}"
 bind[3]
 
+end
+def AmethystCTranslator_h_eq__dq_VALUE_f15a(bind)
+h="VALUE #{bind[1]}(VALUE self,VALUE bind)"
+                 @header<<h+";"
+                 @defmethods<<"rb_define_method(cls_#{bind[2][:grammar]},\"#{bind[1]}\",#{bind[1]},1);"
+                 @lambdas<< h+"{VALUE vals[0]; /*todo unify with rule and get args*/ cstruct *ptr; VALUE it;VALUE arg0,arg1,arg2,arg3;\n#{bind[3]}\nreturn it;\nfail: return failobj; }" 
 end
 def AmethystCTranslator_label_lp__dq_a_f49c(bind)
 label("accept")

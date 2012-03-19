@@ -25,7 +25,6 @@ VALUE Detect_Size_predicate(VALUE self ,VALUE a0) {
     VALUE it ,_el,_msize,_autovar,_s,_autovar_2,__result,_autovar_3,_s_2,_autovar_4,_autovar_5,__result_2,_autovar_6,_ary,_autovar_7,_autovar_8,_el_2,_autovar_9;
     VALUE bind2=bind_new2(16);
     _s=a0;;
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -413,7 +412,6 @@ VALUE Detect_Size_predicate2(VALUE self ,VALUE a0) {
     VALUE it ,_autovar,__result,_autovar_2,_autovar_3,_s,_s_2,_el,_msize,_autovar_4,_autovar_5,__result_2,_autovar_6,_ary,_autovar_7,_autovar_8,_el_2,_autovar_9;
     VALUE bind2=bind_new2(16);
     _s=a0;;
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);

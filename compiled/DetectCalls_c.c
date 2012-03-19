@@ -25,7 +25,6 @@ VALUE DetectCalls_root(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,__result;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -79,7 +78,6 @@ VALUE DetectCalls_traverse(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,__result;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -178,7 +176,6 @@ VALUE DetectCalls_traverse_item(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -560,7 +557,6 @@ VALUE DetectCalls_visit(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_name,_autovar_2,_autovar_3,_autovar_4,__result;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);

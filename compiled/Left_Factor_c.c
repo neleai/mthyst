@@ -55,7 +55,6 @@ VALUE Left_Factor_binds(VALUE self ,VALUE a0,VALUE a1) {
     VALUE bind2=bind_new2(16);
     _s=a0;;
     _a=a1;;
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -255,7 +254,6 @@ VALUE Left_Factor_factor(VALUE self ,VALUE a0,VALUE a1,VALUE a2) {
     _prev=a0;;
     _start=a1;;
     _cur=a2;;
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -379,7 +377,6 @@ VALUE Left_Factor_first(VALUE self ,VALUE a0) {
     VALUE it ,_s,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_f,_autovar_6,__result;
     VALUE bind2=bind_new2(16);
     _s=a0;;
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -567,7 +564,6 @@ VALUE Left_Factor_rest(VALUE self ,VALUE a0,VALUE a1) {
     VALUE bind2=bind_new2(16);
     _s=a0;;
     _bin=a1;;
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -718,7 +714,6 @@ VALUE Left_Factor_root(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -736,7 +731,6 @@ VALUE Left_Factor_traverse(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_nvars,_ivars,_autovar,_autovar_2,_it,__result;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -851,7 +845,6 @@ VALUE Left_Factor_traverse_item(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result,_autovar,_autovar_2,_autovar_3,_ar,_it,_autovar_4;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -1241,7 +1234,6 @@ VALUE Left_Factor_visit(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_x,_cur,_start,_prev,_next,__result,_autovar_3,_autovar_4,__result_2;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);

@@ -77,7 +77,7 @@ static VALUE sy_AmethystCTranslator__dq_def_sp__sh__le_b_b73d;
 static VALUE sy_AmethystCTranslator__dq_if_lp_ptr_mi__19f0;
 static VALUE sy_AmethystCTranslator__dq_if_sp__lp__sh__le_a_1643;
 static VALUE sy_AmethystCTranslator__dq_int_sp__sh__le_b_0b60;
-static VALUE sy_AmethystCTranslator__dq_int_sp__sh__le_b_c039;
+static VALUE sy_AmethystCTranslator__dq_int_sp__sh__le_b_f6cd;
 static VALUE sy_AmethystCTranslator__dq_it_eq_Amet_82ce;
 static VALUE sy_AmethystCTranslator__dq_it_eq_Qnil_a6d5;
 static VALUE sy_AmethystCTranslator__dq_it_eq__sh__le_bg_281f;
@@ -108,8 +108,8 @@ static VALUE sy_AmethystCTranslator_bind_lb_1_rb__pl__891b;
 static VALUE sy_AmethystCTranslator_bind_lb_1_rb__pl__916b;
 static VALUE sy_AmethystCTranslator_bind_lb_1_rb__pl__9a26;
 static VALUE sy_AmethystCTranslator_bind_lb_1_rb__ti__cfcb;
-static VALUE sy_AmethystCTranslator_h_eq__dq_VALUE_481e;
-static VALUE sy_AmethystCTranslator_h_eq__dq_VALUE_ef56;
+static VALUE sy_AmethystCTranslator_h_eq__dq_VALUE_8b47;
+static VALUE sy_AmethystCTranslator_h_eq__dq_VALUE_f15a;
 static VALUE sy_AmethystCTranslator_label_lp__dq_a_f49c;
 static VALUE sy_AmethystCTranslator_label_lp__dq_o_c187;
 static VALUE sy_AmethystCTranslator_label_lp__dq_r_95b2;
@@ -133,7 +133,6 @@ VALUE AmethystCTranslator_addcallback(VALUE self ,VALUE a0) {
     VALUE it ,_s,_autovar,_autovar_2,__result;
     VALUE bind2=bind_new2(16);
     _s=a0;;
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -176,7 +175,6 @@ VALUE AmethystCTranslator_addlambda(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_lambd,_rwo,_word,_body,_x,__result,_autovar_3;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -214,7 +212,7 @@ VALUE AmethystCTranslator_addlambda(VALUE self ) {
     bind_aset(bind2,1,_lambd);
     bind_aset(bind2,2,_autovar_2);
     bind_aset(bind2,3,_body);
-    it=rb_funcall(self,sy_AmethystCTranslator_h_eq__dq_VALUE_481e,1,bind2);
+    it=rb_funcall(self,sy_AmethystCTranslator_h_eq__dq_VALUE_f15a,1,bind2);
     _lambd=bind_aget(bind2,1);;
     _autovar_2=bind_aget(bind2,2);;
     _body=bind_aget(bind2,3);;
@@ -235,7 +233,6 @@ VALUE AmethystCTranslator_itrans(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_ruby,_c,_init,_c_2,__result,_autovar,_it,__result_2;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -385,7 +382,6 @@ VALUE AmethystCTranslator_rbcode(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_s,_autovar_3,_autovar_4,_autovar_5,_autovar_6,_k,_v,_autovar_7,_x,__result,_autovar_8;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -540,7 +536,6 @@ VALUE AmethystCTranslator_rbtrans(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,__result,_autovar_3,_autovar_4,_autovar_5,_name,_autovar_6,_args,_autovar_7,_autovar_8,_autovar_9,_autovar_10,_autovar_11,_autovar_12;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -965,7 +960,6 @@ VALUE AmethystCTranslator_rbtrans2(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_it,__result;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -1016,7 +1010,6 @@ VALUE AmethystCTranslator_rw(VALUE self ,VALUE a0,VALUE a1) {
     VALUE bind2=bind_new2(16);
     _word=a0;;
     _prc=a1;;
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -1047,7 +1040,6 @@ VALUE AmethystCTranslator_trans(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,_a,_x,_y,__result,_autovar_7,_autovar_8,_autovar_9,_autovar_10,_it,_s,_autovar_11,_autovar_12,__result_2,_cbno,_autovar_13,_autovar_14,_autovar_15,_autovar_16,_autovar_17,_autovar_18,_autovar_19,_autovar_20,_autovar_21,_autovar_22,_s_2,_autovar_23,_autovar_24,_autovar_25,_autovar_26,_autovar_27,_autovar_28,_autovar_29,_autovar_30,_autovar_31,_autovar_32,_autovar_33,_autovar_34,_autovar_35,_autovar_36,_autovar_37,_autovar_38,_autovar_39,_name,_ii,_autovar_40,_aa,_autovar_41,_args,_app,_autovar_42,_e,_autovar_43,_autovar_44,_autovar_45,_autovar_46,_autovar_47,_autovar_48,_autovar_49,_autovar_50,_autovar_51,_autovar_52,_autovar_53,_t,_rbcode,_init,_autovar_54,_autovar_55,_autovar_56,_autovar_57,_accept,_reject,_oldpos,_word,_rwo,_x_2,_autovar_58,_autovar_59,_autovar_60,_autovar_61,_autovar_62,_autovar_63,_autovar_64,_autovar_65,_autovar_66,_autovar_67,_oldstops,_oldstoplabel,_autovar_68,_autovar_69,__result_3,_autovar_70,_alt,_altno,_oldcutlabel,_oldcuts,_autovar_71,_autovar_72,_pass,_oldpass,_success,_autovar_73,_autovar_74,_to,_autovar_75,_autovar_76,_autovar_77,_autovar_78,_body,_autovar_79,_autovar_80,_autovar_81,_autovar_82,_autovar_83,_autovar_84,_autovar_85,_autovar_86,_c,_autovar_87,_autovar_88,_sh,_autovar_89,_autovar_90;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -2448,7 +2440,7 @@ success29:
         bind_aset(bind2,2,_t);
         bind_aset(bind2,3,_accept);
         bind_aset(bind2,4,_reject);
-        it=rb_funcall(self,sy_AmethystCTranslator__dq_int_sp__sh__le_b_c039,1,bind2);
+        it=rb_funcall(self,sy_AmethystCTranslator__dq_int_sp__sh__le_b_f6cd,1,bind2);
         _oldpos=bind_aget(bind2,1);;
         _t=bind_aget(bind2,2);;
         _accept=bind_aget(bind2,3);;
@@ -2855,14 +2847,13 @@ alt7_1:
                 it=failobj;
                 goto reject1;
             }
-            x=1;
+            it=Qnil;
             goto accept8;
 reject1:
-            x=0;
+            it=failobj;
 accept8:
-            it=Qnil;
             ptr->pos=oldpos8;
-            if (x==0) {
+            if (it==failobj) {
                 it=failobj;
                 goto alt7_2;
             }
@@ -3142,7 +3133,7 @@ success42:
         bind_aset(bind2,2,_name);
         bind_aset(bind2,3,_s_2);
         bind_aset(bind2,4,_body);
-        it=rb_funcall(self,sy_AmethystCTranslator_h_eq__dq_VALUE_ef56,1,bind2);
+        it=rb_funcall(self,sy_AmethystCTranslator_h_eq__dq_VALUE_8b47,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
         _name=bind_aget(bind2,2);;
         _s_2=bind_aget(bind2,3);;
@@ -3643,7 +3634,7 @@ void Init_AmethystCTranslator_c() {
     sy_AmethystCTranslator__dq_if_lp_ptr_mi__19f0=rb_intern("AmethystCTranslator__dq_if_lp_ptr_mi__19f0");
     sy_AmethystCTranslator__dq_if_sp__lp__sh__le_a_1643=rb_intern("AmethystCTranslator__dq_if_sp__lp__sh__le_a_1643");
     sy_AmethystCTranslator__dq_int_sp__sh__le_b_0b60=rb_intern("AmethystCTranslator__dq_int_sp__sh__le_b_0b60");
-    sy_AmethystCTranslator__dq_int_sp__sh__le_b_c039=rb_intern("AmethystCTranslator__dq_int_sp__sh__le_b_c039");
+    sy_AmethystCTranslator__dq_int_sp__sh__le_b_f6cd=rb_intern("AmethystCTranslator__dq_int_sp__sh__le_b_f6cd");
     sy_AmethystCTranslator__dq_it_eq_Amet_82ce=rb_intern("AmethystCTranslator__dq_it_eq_Amet_82ce");
     sy_AmethystCTranslator__dq_it_eq_Qnil_a6d5=rb_intern("AmethystCTranslator__dq_it_eq_Qnil_a6d5");
     sy_AmethystCTranslator__dq_it_eq__sh__le_bg_281f=rb_intern("AmethystCTranslator__dq_it_eq__sh__le_bg_281f");
@@ -3674,8 +3665,8 @@ void Init_AmethystCTranslator_c() {
     sy_AmethystCTranslator_bind_lb_1_rb__pl__916b=rb_intern("AmethystCTranslator_bind_lb_1_rb__pl__916b");
     sy_AmethystCTranslator_bind_lb_1_rb__pl__9a26=rb_intern("AmethystCTranslator_bind_lb_1_rb__pl__9a26");
     sy_AmethystCTranslator_bind_lb_1_rb__ti__cfcb=rb_intern("AmethystCTranslator_bind_lb_1_rb__ti__cfcb");
-    sy_AmethystCTranslator_h_eq__dq_VALUE_481e=rb_intern("AmethystCTranslator_h_eq__dq_VALUE_481e");
-    sy_AmethystCTranslator_h_eq__dq_VALUE_ef56=rb_intern("AmethystCTranslator_h_eq__dq_VALUE_ef56");
+    sy_AmethystCTranslator_h_eq__dq_VALUE_8b47=rb_intern("AmethystCTranslator_h_eq__dq_VALUE_8b47");
+    sy_AmethystCTranslator_h_eq__dq_VALUE_f15a=rb_intern("AmethystCTranslator_h_eq__dq_VALUE_f15a");
     sy_AmethystCTranslator_label_lp__dq_a_f49c=rb_intern("AmethystCTranslator_label_lp__dq_a_f49c");
     sy_AmethystCTranslator_label_lp__dq_o_c187=rb_intern("AmethystCTranslator_label_lp__dq_o_c187");
     sy_AmethystCTranslator_label_lp__dq_r_95b2=rb_intern("AmethystCTranslator_label_lp__dq_r_95b2");

@@ -155,7 +155,6 @@ VALUE AmethystParser__args(VALUE self ,VALUE a0,VALUE a1) {
     VALUE bind2=bind_new2(16);
     _o=a0;;
     _c=a1;;
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -225,7 +224,6 @@ VALUE AmethystParser_args(VALUE self ,VALUE a0,VALUE a1) {
     VALUE bind2=bind_new2(16);
     _o=a0;;
     _c=a1;;
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -307,7 +305,6 @@ VALUE AmethystParser_argsOpt(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_r,__result,_r_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,__result_2,_l;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -859,7 +856,6 @@ VALUE AmethystParser_call(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_k,_n,_name,_arg,_autovar,__result;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -1084,7 +1080,6 @@ VALUE AmethystParser_cases(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_s,_x,_autovar,_autovar_2,__result,__result_2,_s_2,__result_3,_autovar_3,_autovar_4,__result_4,_autovar_5,_autovar_6,_it,_num,_clas;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -1605,7 +1600,6 @@ VALUE AmethystParser_className(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_it,__result;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -1678,7 +1672,6 @@ VALUE AmethystParser_collect(VALUE self ,VALUE a0) {
     VALUE it ,_ors,__result;
     VALUE bind2=bind_new2(16);
     _ors=a0;;
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -1694,7 +1687,6 @@ VALUE AmethystParser_expression(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_f,_autovar,_autovar_2,_autovar_3,_autovar_4,__result,_ary,__result_2;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -1794,7 +1786,6 @@ VALUE AmethystParser_file(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_oldpos,_autovar_3,_autovar_4,_g,__result;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -2248,7 +2239,6 @@ VALUE AmethystParser_grammar(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_name,_parent,_autovar,_autovar_2,_rules,__result;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -2519,7 +2509,6 @@ VALUE AmethystParser_host_expr(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result,_s,_autovar,_autovar_2,_autovar_3,_autovar_4;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -2642,7 +2631,6 @@ VALUE AmethystParser_inline_host_expr(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_r,__result,_r_2,__result_2;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -2730,7 +2718,6 @@ VALUE AmethystParser_interpolated(VALUE self ,VALUE a0) {
     VALUE it ,_x,_e,_s,_autovar,_autovar_2,_autovar_3,_r,__result,_r_2,_o,_c,__result_2,_autovar_4,_autovar_5,__result_3;
     VALUE bind2=bind_new2(16);
     _e=a0;;
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -2975,7 +2962,6 @@ VALUE AmethystParser_key(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_name,__result,_arg;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -3223,7 +3209,6 @@ VALUE AmethystParser_lambda(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_e,__result;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -3313,7 +3298,6 @@ VALUE AmethystParser_name(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_it,__result;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -3407,7 +3391,6 @@ VALUE AmethystParser_nr(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_s,_s_2,_what,__result;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -3807,7 +3790,6 @@ VALUE AmethystParser_postfixed(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_from,_one,_e,_name,_autovar,_autovar_2,_autovar_3,_autovar_4,__result;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -5096,7 +5078,6 @@ VALUE AmethystParser_prefixed(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result,_autovar,_neg,_expr,_m;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -5218,7 +5199,6 @@ VALUE AmethystParser_procargs(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_c,__result;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -5278,7 +5258,6 @@ VALUE AmethystParser_procargs2(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,__result,_a;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -5394,7 +5373,6 @@ VALUE AmethystParser_rubyarg(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_n,_autovar,_autovar_2,__result,_autovar_3,_autovar_4,_r,__result_2,_r_2,_o,_c,__result_3,_x,_autovar_5,_autovar_6,_autovar_7,__result_4,_s,_autovar_8,_x_2,_autovar_9,_autovar_10,__result_5,__result_6,__result_7,_e;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -7856,7 +7834,6 @@ VALUE AmethystParser_rule(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_bnding,_varargs,_arg2,_name,_s,_s_2,_autovar,_k,_what,_r,_e,_autovar_2,_arg,_body,_args,_locals,__result;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -8287,7 +8264,6 @@ VALUE AmethystParser_ruleargs(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_name,_autovar_5,_autovar_6,_autovar_7,_autovar_8,__result;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -8421,7 +8397,6 @@ VALUE AmethystParser_sequence(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_ary,__result;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -8514,7 +8489,6 @@ VALUE AmethystParser_string_like(VALUE self ,VALUE a0,VALUE a1) {
     VALUE bind2=bind_new2(16);
     _start=a0;;
     _end=a1;;
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -8644,7 +8618,6 @@ VALUE AmethystParser_term(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result,_x,_autovar,_autovar_2,__result_2,__result_3,_s,_x_2,_ors,__result_4,_it,_e;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -8699,14 +8672,13 @@ alt1_2:
             ptr->pos++;
             break;
         }
-        x=1;
+        it=Qnil;
         goto accept2;
 reject1:
-        x=0;
+        it=failobj;
 accept2:
-        it=Qnil;
         ptr->pos=oldpos2;
-        if (x==0) {
+        if (it==failobj) {
             it=failobj;
             goto alt1_3;
         }
@@ -8763,14 +8735,13 @@ alt2_2:
             ptr->pos++;
             break;
         }
-        x=1;
+        it=Qnil;
         goto accept4;
 reject2:
-        x=0;
+        it=failobj;
 accept4:
-        it=Qnil;
         ptr->pos=oldpos4;
-        if (x==0) {
+        if (it==failobj) {
             it=failobj;
             goto alt2_3;
         }
@@ -8913,14 +8884,13 @@ alt3_2:
             ptr->pos++;
             break;
         }
-        x=1;
+        it=Qnil;
         goto accept6;
 reject3:
-        x=0;
+        it=failobj;
 accept6:
-        it=Qnil;
         ptr->pos=oldpos6;
-        if (x==0) {
+        if (it==failobj) {
             it=failobj;
             goto alt3_3;
         }
@@ -8994,14 +8964,13 @@ alt4_2:
             ptr->pos++;
             break;
         }
-        x=1;
+        it=Qnil;
         goto accept8;
 reject4:
-        x=0;
+        it=failobj;
 accept8:
-        it=Qnil;
         ptr->pos=oldpos8;
-        if (x==0) {
+        if (it==failobj) {
             it=failobj;
             goto alt4_3;
         }
@@ -9144,14 +9113,13 @@ alt5_2:
             ptr->pos++;
             break;
         }
-        x=1;
+        it=Qnil;
         goto accept10;
 reject5:
-        x=0;
+        it=failobj;
 accept10:
-        it=Qnil;
         ptr->pos=oldpos10;
-        if (x==0) {
+        if (it==failobj) {
             it=failobj;
             goto alt5_3;
         }
@@ -9288,14 +9256,13 @@ alt7_2:
             ptr->pos++;
             break;
         }
-        x=1;
+        it=Qnil;
         goto accept13;
 reject6:
-        x=0;
+        it=failobj;
 accept13:
-        it=Qnil;
         ptr->pos=oldpos13;
-        if (x==0) {
+        if (it==failobj) {
             it=failobj;
             goto alt7_3;
         }
@@ -9363,14 +9330,13 @@ alt8_2:
             ptr->pos++;
             break;
         }
-        x=1;
+        it=Qnil;
         goto accept15;
 reject7:
-        x=0;
+        it=failobj;
 accept15:
-        it=Qnil;
         ptr->pos=oldpos15;
-        if (x==0) {
+        if (it==failobj) {
             it=failobj;
             goto alt8_3;
         }
@@ -9447,14 +9413,13 @@ alt10_2:
             ptr->pos++;
             break;
         }
-        x=1;
+        it=Qnil;
         goto accept18;
 reject8:
-        x=0;
+        it=failobj;
 accept18:
-        it=Qnil;
         ptr->pos=oldpos18;
-        if (x==0) {
+        if (it==failobj) {
             it=failobj;
             goto alt10_3;
         }
@@ -9543,14 +9508,13 @@ alt11_3:
             ptr->pos++;
             break;
         }
-        x=1;
+        it=Qnil;
         goto accept20;
 reject9:
-        x=0;
+        it=failobj;
 accept20:
-        it=Qnil;
         ptr->pos=oldpos20;
-        if (x==0) {
+        if (it==failobj) {
             it=failobj;
             goto alt11_4;
         }
@@ -9607,14 +9571,13 @@ alt12_2:
             ptr->pos++;
             break;
         }
-        x=1;
+        it=Qnil;
         goto accept22;
 reject10:
-        x=0;
+        it=failobj;
 accept22:
-        it=Qnil;
         ptr->pos=oldpos22;
-        if (x==0) {
+        if (it==failobj) {
             it=failobj;
             goto alt12_3;
         }
@@ -9726,14 +9689,13 @@ alt13_4:
             ptr->pos++;
             break;
         }
-        x=1;
+        it=Qnil;
         goto accept24;
 reject11:
-        x=0;
+        it=failobj;
 accept24:
-        it=Qnil;
         ptr->pos=oldpos24;
-        if (x==0) {
+        if (it==failobj) {
             it=failobj;
             goto alt13_5;
         }

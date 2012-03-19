@@ -37,7 +37,6 @@ VALUE Cant_Fail_Dataflow_first(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,__result,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,_autovar_7,_autovar_8,_ary,_autovar_9,_autovar_10,_autovar_11,_autovar_12;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -582,7 +581,6 @@ VALUE Cant_Fail_Dataflow_first_Cant_Fail_Dataflow(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,__result,_autovar_3,_name,_autovar_4,_autovar_5,_autovar_6,_autovar_7,_autovar_8,_autovar_9,_val,_autovar_10,_vals,_autovar_11,_autovar_12,_p,_v,_autovar_13,_autovar_14,_el,_autovar_15,_autovar_16,_nev,_autovar_17;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -1170,7 +1168,6 @@ VALUE Cant_Fail_Dataflow_getvalue(VALUE self ,VALUE a0) {
     VALUE it ,_v,_autovar,_autovar_2,__result;
     VALUE bind2=bind_new2(16);
     _v=a0;;
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);

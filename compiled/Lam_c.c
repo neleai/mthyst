@@ -19,7 +19,6 @@ VALUE Lam_baz(VALUE self ,VALUE a0) {
     VALUE it ,_autovar,_x,__result;
     VALUE bind2=bind_new2(16);
     _x=a0;;
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -48,7 +47,6 @@ VALUE Lam_foo(VALUE self ,VALUE a0) {
     VALUE it ,_autovar,_x,__result;
     VALUE bind2=bind_new2(16);
     _x=a0;;
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -76,7 +74,6 @@ VALUE Lam_lam(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar,_autovar_2,_autovar_3,__result;
     VALUE bind2=bind_new2(16);
-    int x;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
