@@ -62,6 +62,9 @@ end
 def Amethyst_bind_lb_1_rb__dot__03c2(bind)
 bind[1].. bind[2]
 end
+def Amethyst_bind_lb_1_rb__dot__1371(bind)
+bind[1].concat(bind[2])
+end
 def Amethyst_bind_lb_1_rb__dot__c3ef(bind)
 bind[1]...bind[2]
 end

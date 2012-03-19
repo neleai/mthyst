@@ -57,6 +57,7 @@ static VALUE sy_Amethyst__lp_false_rp__sp__c3c5;
 static VALUE sy_Amethyst_apply_lp_bi_f480;
 static VALUE sy_Amethyst_bind_lb_1_rb_;
 static VALUE sy_Amethyst_bind_lb_1_rb__dot__03c2;
+static VALUE sy_Amethyst_bind_lb_1_rb__dot__1371;
 static VALUE sy_Amethyst_bind_lb_1_rb__dot__c3ef;
 static VALUE sy_Amethyst_bind_lb_1_rb__dot__e879;
 static VALUE sy_Amethyst_bind_lb_1_rb__ti__cfcb;
@@ -1455,7 +1456,11 @@ accept2:
     }
     it=_autovar_2;
     _autovar_4=it;;
-    it=AmethystCore_append(self,_f,_autovar_4);
+    bind_aset(bind2,1,_f);
+    bind_aset(bind2,2,_autovar_4);
+    it=rb_funcall(self,sy_Amethyst_bind_lb_1_rb__dot__1371,1,bind2);
+    _f=bind_aget(bind2,1);;
+    _autovar_4=bind_aget(bind2,2);;
     bind_aset(bind2,1,_f);
     it=rb_funcall(self,sy_Amethyst_bind_lb_1_rb_,1,bind2);
     _f=bind_aget(bind2,1);;
@@ -2422,6 +2427,7 @@ void Init_Amethyst_c() {
     sy_Amethyst_apply_lp_bi_f480=rb_intern("Amethyst_apply_lp_bi_f480");
     sy_Amethyst_bind_lb_1_rb_=rb_intern("Amethyst_bind_lb_1_rb_");
     sy_Amethyst_bind_lb_1_rb__dot__03c2=rb_intern("Amethyst_bind_lb_1_rb__dot__03c2");
+    sy_Amethyst_bind_lb_1_rb__dot__1371=rb_intern("Amethyst_bind_lb_1_rb__dot__1371");
     sy_Amethyst_bind_lb_1_rb__dot__c3ef=rb_intern("Amethyst_bind_lb_1_rb__dot__c3ef");
     sy_Amethyst_bind_lb_1_rb__dot__e879=rb_intern("Amethyst_bind_lb_1_rb__dot__e879");
     sy_Amethyst_bind_lb_1_rb__ti__cfcb=rb_intern("Amethyst_bind_lb_1_rb__ti__cfcb");

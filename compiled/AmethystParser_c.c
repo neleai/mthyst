@@ -109,6 +109,7 @@ static VALUE sy_AmethystParser__lb_bind_lb_1_rb__f4d6;
 static VALUE sy_AmethystParser__lp_bind_lb_1_rb__a724;
 static VALUE sy_AmethystParser_a_eq_autova_57aa;
 static VALUE sy_AmethystParser_bind_lb_1_rb_;
+static VALUE sy_AmethystParser_bind_lb_1_rb__dot__1371;
 static VALUE sy_AmethystParser_bind_lb_1_rb__dot__4688;
 static VALUE sy_AmethystParser_bind_lb_1_rb__dot__7b93;
 static VALUE sy_AmethystParser_bind_lb_1_rb__dot__e879;
@@ -1770,7 +1771,11 @@ accept1:
     }
     it=_autovar_2;
     _autovar_4=it;;
-    it=AmethystCore_append(self,_f,_autovar_4);
+    bind_aset(bind2,1,_f);
+    bind_aset(bind2,2,_autovar_4);
+    it=rb_funcall(self,sy_AmethystParser_bind_lb_1_rb__dot__1371,1,bind2);
+    _f=bind_aget(bind2,1);;
+    _autovar_4=bind_aget(bind2,2);;
     bind_aset(bind2,1,_f);
     it=rb_funcall(self,sy_AmethystParser_bind_lb_1_rb_,1,bind2);
     _f=bind_aget(bind2,1);;
@@ -9851,6 +9856,7 @@ void Init_AmethystParser_c() {
     sy_AmethystParser__lp_bind_lb_1_rb__a724=rb_intern("AmethystParser__lp_bind_lb_1_rb__a724");
     sy_AmethystParser_a_eq_autova_57aa=rb_intern("AmethystParser_a_eq_autova_57aa");
     sy_AmethystParser_bind_lb_1_rb_=rb_intern("AmethystParser_bind_lb_1_rb_");
+    sy_AmethystParser_bind_lb_1_rb__dot__1371=rb_intern("AmethystParser_bind_lb_1_rb__dot__1371");
     sy_AmethystParser_bind_lb_1_rb__dot__4688=rb_intern("AmethystParser_bind_lb_1_rb__dot__4688");
     sy_AmethystParser_bind_lb_1_rb__dot__7b93=rb_intern("AmethystParser_bind_lb_1_rb__dot__7b93");
     sy_AmethystParser_bind_lb_1_rb__dot__e879=rb_intern("AmethystParser_bind_lb_1_rb__dot__e879");

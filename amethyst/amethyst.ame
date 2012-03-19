@@ -27,7 +27,7 @@ amethyst Amethyst < AmethystCore {
   until(e) = ( seq(e) break 
              | ('\\':[x])? .:[x]
              )* -> x.join
-  listOf(rule,delim) =  apply(rule):[f] (seq(delim) apply(rule))*:[f] -> f
+  listOf(rule,delim) =  apply(rule):[f] (seq(delim) apply(rule))*:[*f] -> f
                          | empty -> []
   
   find(exp)    = (apply(exp):e break | .)* .* -> e

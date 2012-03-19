@@ -224,6 +224,9 @@ def AmethystParser_bind_lb_1_rb_(bind)
 bind[1]
 
 end
+def AmethystParser_bind_lb_1_rb__dot__1371(bind)
+bind[1].concat(bind[2])
+end
 def AmethystParser_bind_lb_1_rb__dot__4688(bind)
 bind[1].rules[0].body=Seq_AST[Act[bind[1].rules[0].locals.map{|el| [el,"=eval(\"#{el[0]}=#{el[0]}\",@bind);"] }],bind[1].rules[0].body,Act[bind[1].rules[0].locals.map{|el| ["$passit=",el,";eval(\"#{el[0]}=$passit\",@bind);"] }]]
 end
