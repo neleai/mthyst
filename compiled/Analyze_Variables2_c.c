@@ -21,6 +21,7 @@ VALUE switchhash_Analyze_Variables2_8;
 VALUE switchhash_Analyze_Variables2_9;
 static VALUE sy_Analyze_Variables2_Act_lb_bind_4ccd;
 static VALUE sy_Analyze_Variables2_Append_lb_s_f381;
+static VALUE sy_Analyze_Variables2_Concat_lb_s_ba37;
 static VALUE sy_Analyze_Variables2_Enter_lb_sr_4871;
 static VALUE sy_Analyze_Variables2_Many_dot_cre_6376;
 static VALUE sy_Analyze_Variables2_Or_lb__ti_bind_5a27;
@@ -741,15 +742,16 @@ VALUE Analyze_Variables2_traverse_item(VALUE self ) {
         case 1/*Append_AST*/:
         case 2/*Args*/:
         case 3/*Comment*/:
-        case 4/*Enter_AST*/:
-        case 5/*Many*/:
-        case 6/*Or_AST*/:
-        case 7/*Parenthesis*/:
-        case 8/*Pass_AST*/:
-        case 9/*Result*/:
-        case 10/*Seq*/:
-        case 11/*Seq_AST*/:
-        case 12/*Stop*/:
+        case 4/*Concat_AST*/:
+        case 5/*Enter_AST*/:
+        case 6/*Many*/:
+        case 7/*Or_AST*/:
+        case 8/*Parenthesis*/:
+        case 9/*Pass_AST*/:
+        case 10/*Result*/:
+        case 11/*Seq*/:
+        case 12/*Seq_AST*/:
+        case 13/*Stop*/:
             ;
             int oldpos1=ptr->pos;
             int cut1=0;
@@ -818,7 +820,7 @@ alt1_4:
 accept1:
             ;
             break;
-        case 13/*Object*/:
+        case 14/*Object*/:
             ;
             int oldpos2=ptr->pos;
             int cut2=0;
@@ -885,15 +887,16 @@ accept2:
         case 1/*Append_AST*/:
         case 2/*Args*/:
         case 3/*Comment*/:
-        case 4/*Enter_AST*/:
-        case 5/*Many*/:
-        case 6/*Or_AST*/:
-        case 7/*Parenthesis*/:
-        case 8/*Pass_AST*/:
-        case 9/*Result*/:
-        case 10/*Seq*/:
-        case 11/*Seq_AST*/:
-        case 12/*Stop*/:
+        case 4/*Concat_AST*/:
+        case 5/*Enter_AST*/:
+        case 6/*Many*/:
+        case 7/*Or_AST*/:
+        case 8/*Parenthesis*/:
+        case 9/*Pass_AST*/:
+        case 10/*Result*/:
+        case 11/*Seq*/:
+        case 12/*Seq_AST*/:
+        case 13/*Stop*/:
             ;
             int oldpos3=ptr->pos;
             int cut3=0;
@@ -994,7 +997,7 @@ alt3_4:
 accept3:
             ;
             break;
-        case 13/*Object*/:
+        case 14/*Object*/:
             ;
             int oldpos5=ptr->pos;
             int cut5=0;
@@ -1093,15 +1096,16 @@ accept5:
         case 1/*Append_AST*/:
         case 2/*Args*/:
         case 3/*Comment*/:
-        case 4/*Enter_AST*/:
-        case 5/*Many*/:
-        case 6/*Or_AST*/:
-        case 7/*Parenthesis*/:
-        case 8/*Pass_AST*/:
-        case 9/*Result*/:
-        case 10/*Seq*/:
-        case 11/*Seq_AST*/:
-        case 12/*Stop*/:
+        case 4/*Concat_AST*/:
+        case 5/*Enter_AST*/:
+        case 6/*Many*/:
+        case 7/*Or_AST*/:
+        case 8/*Parenthesis*/:
+        case 9/*Pass_AST*/:
+        case 10/*Result*/:
+        case 11/*Seq*/:
+        case 12/*Seq_AST*/:
+        case 13/*Stop*/:
             ;
             int oldpos7=ptr->pos;
             int cut7=0;
@@ -1136,7 +1140,7 @@ alt7_3:
 accept7:
             ;
             break;
-        case 13/*Object*/:
+        case 14/*Object*/:
             ;
             it=AmethystCore_anything(self );
             if (it==failobj) {
@@ -1153,7 +1157,7 @@ fail:
 }
 VALUE Analyze_Variables2_visit(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,_autovar_2,_autovar_3,_pred,_pure,_autovar_4,_autovar_5,_autovar_6,_autovar_7,_autovar_8,_autovar_9,_ary,_autovar_10,_autovar_11,_autovar_12,_autovar_13,_autovar_14,__result,_autovar_15,_autovar_16,_autovar_17,_autovar_18,_autovar_19,_autovar_20,_autovar_21,_autovar_22,_autovar_23,_autovar_24,_a,_autovar_25,_autovar_26,_autovar_27,_autovar_28,_autovar_29,_autovar_30,_autovar_31,_autovar_32,_autovar_33,_oldstop,_ary2,_ret,_autovar_34,_autovar_35,_autovar_36,_autovar_37,_autovar_38,_autovar_39,_autovar_40,_autovar_41,_autovar_42,_autovar_43,_autovar_44,_autovar_45,_autovar_46,_autovar_47,_autovar_48,_autovar_49,_autovar_50,_autovar_51,_autovar_52;
+    VALUE it ,_autovar,_autovar_2,_autovar_3,_pred,_pure,_autovar_4,_autovar_5,_autovar_6,_autovar_7,_autovar_8,_autovar_9,_ary,_autovar_10,_autovar_11,_autovar_12,_autovar_13,_autovar_14,__result,_autovar_15,_autovar_16,_autovar_17,_autovar_18,_autovar_19,_autovar_20,_autovar_21,_autovar_22,_autovar_23,_autovar_24,_a,_autovar_25,_autovar_26,_autovar_27,_autovar_28,_autovar_29,_autovar_30,_autovar_31,_autovar_32,_autovar_33,_autovar_34,_autovar_35,_autovar_36,_autovar_37,_oldstop,_ary2,_ret,_autovar_38,_autovar_39,_autovar_40,_autovar_41,_autovar_42,_autovar_43,_autovar_44,_autovar_45,_autovar_46,_autovar_47,_autovar_48,_autovar_49,_autovar_50,_autovar_51,_autovar_52,_autovar_53,_autovar_54,_autovar_55,_autovar_56;
     VALUE bind2=bind_new2(16);
     int x;
     VALUE arg0,arg1,arg2,arg3;
@@ -1744,7 +1748,7 @@ success13:
         _autovar=bind_aget(bind2,1);;
         _autovar_15=bind_aget(bind2,2);;
         break;
-    case 4/*Enter_AST*/:
+    case 4/*Concat_AST*/:
         ;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_2);
@@ -1758,7 +1762,7 @@ success13:
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_29);
-        it=rb_funcall(self,sy_Analyze_Variables2_Enter_lb_sr_4871,1,bind2);
+        it=rb_funcall(self,sy_Analyze_Variables2_Concat_lb_s_ba37,1,bind2);
         _autovar_30=it;;
         cstruct oldpass15=*ptr;
         ptr->pos=ptr->len=0;
@@ -1813,7 +1817,7 @@ success14:
         _autovar=bind_aget(bind2,1);;
         _autovar_15=bind_aget(bind2,2);;
         break;
-    case 5/*Many*/:
+    case 5/*Enter_AST*/:
         ;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_2);
@@ -1827,30 +1831,43 @@ success14:
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_33);
-        it=rb_funcall(self,sy_Analyze_Variables2__at_stop_8c46,1,bind2);
-        _oldstop=it;;
-        it=rb_funcall(self,sy_Analyze_Variables2__at_stop_eq_fa_620e,1,bind2);
+        it=rb_funcall(self,sy_Analyze_Variables2_Enter_lb_sr_4871,1,bind2);
+        _autovar_34=it;;
+        cstruct oldpass17=*ptr;
+        ptr->pos=ptr->len=0;
+        ptr->ary=NULL;
+        ame_setsrc2(self,_autovar_34);
         bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy_Analyze_Variables2__at__contex_d6d5,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
-        it=Analyze_Variables2_traverse_item(self );
+        it=Analyze_Variables2_traverse(self );
         if (it==failobj) {
+            it=failobj;
+            goto pass17;
+        }
+        _autovar_35=it;;
+        it=Qnil;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass17;
+        }
+        goto success17;
+pass17:
+        *ptr=oldpass17;
+        if (1) {
             it=failobj;
             goto pass16;
         }
-        _ary2=it;;
-        bind_aset(bind2,1,_ary2);
-        it=rb_funcall(self,sy_Analyze_Variables2_Many_dot_cre_6376,1,bind2);
-        _ary2=bind_aget(bind2,1);;
-        _ret=it;;
-        bind_aset(bind2,1,_oldstop);
-        it=rb_funcall(self,sy_Analyze_Variables2__at_stop_eq_bi_5f9f,1,bind2);
-        _oldstop=bind_aget(bind2,1);;
+success17:
+        *ptr=oldpass17;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass16;
         }
+        it=_autovar_35;
+        _autovar_36=it;;
+
         goto success16;
 pass16:
         *ptr=oldpass16;
@@ -1860,9 +1877,7 @@ pass16:
         }
 success16:
         *ptr=oldpass16;
-        bind_aset(bind2,1,_ret);
-        it=rb_funcall(self,sy_Analyze_Variables2_bind_lb_1_rb_,1,bind2);
-        _ret=bind_aget(bind2,1);;
+        it=_autovar_36;
         __result=it;;
         _autovar_15=it;;
         bind_aset(bind2,1,_autovar);
@@ -1871,83 +1886,7 @@ success16:
         _autovar=bind_aget(bind2,1);;
         _autovar_15=bind_aget(bind2,2);;
         break;
-    case 6/*Or_AST*/:
-        ;
-        bind_aset(bind2,1,_autovar);
-        bind_aset(bind2,2,_autovar_2);
-        it=rb_funcall(self,sy_Analyze_Variables2__at__contex_5f56,1,bind2);
-        _autovar=bind_aget(bind2,1);;
-        _autovar_2=bind_aget(bind2,2);;
-        it=ptr->ary[ptr->pos];            ;
-        ptr->pos++;
-        _autovar_34=it;;
-        cstruct oldpass17=*ptr;
-        ptr->pos=ptr->len=0;
-        ptr->ary=NULL;
-        ame_setsrc2(self,_autovar_34);
-        it=rb_ary_new3(0);
-        _autovar_35=it;;
-        int stop3=0;
-        while(!stop3) {
-            int oldpos5=ptr->pos;
-            int cut5=0;
-alt5_1:
-            ;
-            bind_aset(bind2,1,_autovar_2);
-            it=rb_funcall(self,sy_Analyze_Variables2__at__contex_d6d5,1,bind2);
-            _autovar_2=bind_aget(bind2,1);;
-            it=Analyze_Variables2_traverse_item(self );
-            if (it==failobj) {
-                it=failobj;
-                goto alt5_2;
-            }
-            _autovar_36=it;;
-            it=AmethystCore_append(self,_autovar_35,_autovar_36);
-            ;
-            goto accept5;
-alt5_2:
-            ptr->pos=oldpos5;
-            stop3=1;
-            ;
-            goto accept5;
-alt5_3:
-            ptr->pos=oldpos5;
-            if (1) {
-                it=failobj;
-                goto pass17;
-            };
-accept5:
-            ;
-        }
-        it=Qnil;
-        if (ptr->pos<ptr->len) {
-            it=failobj;
-            goto pass17;
-        }
-        it=_autovar_35;
-        _ary=it;;
-
-        goto success17;
-pass17:
-        *ptr=oldpass17;
-        if (1) {
-            it=failobj;
-            goto fail;
-        }
-success17:
-        *ptr=oldpass17;
-        bind_aset(bind2,1,_ary);
-        it=rb_funcall(self,sy_Analyze_Variables2_Or_lb__ti_bind_5a27,1,bind2);
-        _ary=bind_aget(bind2,1);;
-        __result=it;;
-        _autovar_15=it;;
-        bind_aset(bind2,1,_autovar);
-        bind_aset(bind2,2,_autovar_15);
-        it=rb_funcall(self,sy_Analyze_Variables2__at__contex_cdb3,1,bind2);
-        _autovar=bind_aget(bind2,1);;
-        _autovar_15=bind_aget(bind2,2);;
-        break;
-    case 7/*Parenthesis*/:
+    case 6/*Many*/:
         ;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_2);
@@ -1961,6 +1900,9 @@ success17:
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_37);
+        it=rb_funcall(self,sy_Analyze_Variables2__at_stop_8c46,1,bind2);
+        _oldstop=it;;
+        it=rb_funcall(self,sy_Analyze_Variables2__at_stop_eq_fa_620e,1,bind2);
         bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy_Analyze_Variables2__at__contex_d6d5,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
@@ -1969,7 +1911,14 @@ success17:
             it=failobj;
             goto pass18;
         }
-        _autovar_38=it;;
+        _ary2=it;;
+        bind_aset(bind2,1,_ary2);
+        it=rb_funcall(self,sy_Analyze_Variables2_Many_dot_cre_6376,1,bind2);
+        _ary2=bind_aget(bind2,1);;
+        _ret=it;;
+        bind_aset(bind2,1,_oldstop);
+        it=rb_funcall(self,sy_Analyze_Variables2__at_stop_eq_bi_5f9f,1,bind2);
+        _oldstop=bind_aget(bind2,1);;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
@@ -1984,7 +1933,9 @@ pass18:
         }
 success18:
         *ptr=oldpass18;
-        it=_autovar_38;
+        bind_aset(bind2,1,_ret);
+        it=rb_funcall(self,sy_Analyze_Variables2_bind_lb_1_rb_,1,bind2);
+        _ret=bind_aget(bind2,1);;
         __result=it;;
         _autovar_15=it;;
         bind_aset(bind2,1,_autovar);
@@ -1993,7 +1944,7 @@ success18:
         _autovar=bind_aget(bind2,1);;
         _autovar_15=bind_aget(bind2,2);;
         break;
-    case 8/*Pass_AST*/:
+    case 7/*Or_AST*/:
         ;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_2);
@@ -2002,47 +1953,52 @@ success18:
         _autovar_2=bind_aget(bind2,2);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        _autovar_39=it;;
+        _autovar_38=it;;
         cstruct oldpass19=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ame_setsrc2(self,_autovar_39);
-        it=rb_funcall(self,sy_Analyze_Variables2_Pass_lb_src_99d4,1,bind2);
-        _autovar_40=it;;
-        cstruct oldpass20=*ptr;
-        ptr->pos=ptr->len=0;
-        ptr->ary=NULL;
-        ame_setsrc2(self,_autovar_40);
-        bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy_Analyze_Variables2__at__contex_d6d5,1,bind2);
-        _autovar_2=bind_aget(bind2,1);;
-        it=Analyze_Variables2_traverse(self );
-        if (it==failobj) {
-            it=failobj;
-            goto pass20;
+        ame_setsrc2(self,_autovar_38);
+        it=rb_ary_new3(0);
+        _autovar_39=it;;
+        int stop3=0;
+        while(!stop3) {
+            int oldpos5=ptr->pos;
+            int cut5=0;
+alt5_1:
+            ;
+            bind_aset(bind2,1,_autovar_2);
+            it=rb_funcall(self,sy_Analyze_Variables2__at__contex_d6d5,1,bind2);
+            _autovar_2=bind_aget(bind2,1);;
+            it=Analyze_Variables2_traverse_item(self );
+            if (it==failobj) {
+                it=failobj;
+                goto alt5_2;
+            }
+            _autovar_40=it;;
+            it=AmethystCore_append(self,_autovar_39,_autovar_40);
+            ;
+            goto accept5;
+alt5_2:
+            ptr->pos=oldpos5;
+            stop3=1;
+            ;
+            goto accept5;
+alt5_3:
+            ptr->pos=oldpos5;
+            if (1) {
+                it=failobj;
+                goto pass19;
+            };
+accept5:
+            ;
         }
-        _autovar_41=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
-            goto pass20;
-        }
-        goto success20;
-pass20:
-        *ptr=oldpass20;
-        if (1) {
-            it=failobj;
             goto pass19;
         }
-success20:
-        *ptr=oldpass20;
-        it=Qnil;
-        if (ptr->pos<ptr->len) {
-            it=failobj;
-            goto pass19;
-        }
-        it=_autovar_41;
-        _autovar_42=it;;
+        it=_autovar_39;
+        _ary=it;;
 
         goto success19;
 pass19:
@@ -2053,6 +2009,54 @@ pass19:
         }
 success19:
         *ptr=oldpass19;
+        bind_aset(bind2,1,_ary);
+        it=rb_funcall(self,sy_Analyze_Variables2_Or_lb__ti_bind_5a27,1,bind2);
+        _ary=bind_aget(bind2,1);;
+        __result=it;;
+        _autovar_15=it;;
+        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,2,_autovar_15);
+        it=rb_funcall(self,sy_Analyze_Variables2__at__contex_cdb3,1,bind2);
+        _autovar=bind_aget(bind2,1);;
+        _autovar_15=bind_aget(bind2,2);;
+        break;
+    case 8/*Parenthesis*/:
+        ;
+        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,2,_autovar_2);
+        it=rb_funcall(self,sy_Analyze_Variables2__at__contex_5f56,1,bind2);
+        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,2);;
+        it=ptr->ary[ptr->pos];            ;
+        ptr->pos++;
+        _autovar_41=it;;
+        cstruct oldpass20=*ptr;
+        ptr->pos=ptr->len=0;
+        ptr->ary=NULL;
+        ame_setsrc2(self,_autovar_41);
+        bind_aset(bind2,1,_autovar_2);
+        it=rb_funcall(self,sy_Analyze_Variables2__at__contex_d6d5,1,bind2);
+        _autovar_2=bind_aget(bind2,1);;
+        it=Analyze_Variables2_traverse_item(self );
+        if (it==failobj) {
+            it=failobj;
+            goto pass20;
+        }
+        _autovar_42=it;;
+        it=Qnil;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass20;
+        }
+        goto success20;
+pass20:
+        *ptr=oldpass20;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
+success20:
+        *ptr=oldpass20;
         it=_autovar_42;
         __result=it;;
         _autovar_15=it;;
@@ -2062,7 +2066,7 @@ success19:
         _autovar=bind_aget(bind2,1);;
         _autovar_15=bind_aget(bind2,2);;
         break;
-    case 9/*Result*/:
+    case 9/*Pass_AST*/:
         ;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_2);
@@ -2076,15 +2080,43 @@ success19:
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_43);
-        bind_aset(bind2,1,_autovar_2);
-        it=rb_funcall(self,sy_Analyze_Variables2_cls_eq_Obje_d8f9,1,bind2);
-        _autovar_2=bind_aget(bind2,1);;
+        it=rb_funcall(self,sy_Analyze_Variables2_Pass_lb_src_99d4,1,bind2);
         _autovar_44=it;;
+        cstruct oldpass22=*ptr;
+        ptr->pos=ptr->len=0;
+        ptr->ary=NULL;
+        ame_setsrc2(self,_autovar_44);
+        bind_aset(bind2,1,_autovar_2);
+        it=rb_funcall(self,sy_Analyze_Variables2__at__contex_d6d5,1,bind2);
+        _autovar_2=bind_aget(bind2,1);;
+        it=Analyze_Variables2_traverse(self );
+        if (it==failobj) {
+            it=failobj;
+            goto pass22;
+        }
+        _autovar_45=it;;
+        it=Qnil;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass22;
+        }
+        goto success22;
+pass22:
+        *ptr=oldpass22;
+        if (1) {
+            it=failobj;
+            goto pass21;
+        }
+success22:
+        *ptr=oldpass22;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
             goto pass21;
         }
+        it=_autovar_45;
+        _autovar_46=it;;
+
         goto success21;
 pass21:
         *ptr=oldpass21;
@@ -2094,7 +2126,7 @@ pass21:
         }
 success21:
         *ptr=oldpass21;
-        it=_autovar_44;
+        it=_autovar_46;
         __result=it;;
         _autovar_15=it;;
         bind_aset(bind2,1,_autovar);
@@ -2103,7 +2135,7 @@ success21:
         _autovar=bind_aget(bind2,1);;
         _autovar_15=bind_aget(bind2,2);;
         break;
-    case 10/*Seq*/:
+    case 10/*Result*/:
         ;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_2);
@@ -2112,13 +2144,54 @@ success21:
         _autovar_2=bind_aget(bind2,2);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        _autovar_45=it;;
-        cstruct oldpass22=*ptr;
+        _autovar_47=it;;
+        cstruct oldpass23=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ame_setsrc2(self,_autovar_45);
+        ame_setsrc2(self,_autovar_47);
+        bind_aset(bind2,1,_autovar_2);
+        it=rb_funcall(self,sy_Analyze_Variables2_cls_eq_Obje_d8f9,1,bind2);
+        _autovar_2=bind_aget(bind2,1);;
+        _autovar_48=it;;
+        it=Qnil;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass23;
+        }
+        goto success23;
+pass23:
+        *ptr=oldpass23;
+        if (1) {
+            it=failobj;
+            goto fail;
+        }
+success23:
+        *ptr=oldpass23;
+        it=_autovar_48;
+        __result=it;;
+        _autovar_15=it;;
+        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,2,_autovar_15);
+        it=rb_funcall(self,sy_Analyze_Variables2__at__contex_cdb3,1,bind2);
+        _autovar=bind_aget(bind2,1);;
+        _autovar_15=bind_aget(bind2,2);;
+        break;
+    case 11/*Seq*/:
+        ;
+        bind_aset(bind2,1,_autovar);
+        bind_aset(bind2,2,_autovar_2);
+        it=rb_funcall(self,sy_Analyze_Variables2__at__contex_5f56,1,bind2);
+        _autovar=bind_aget(bind2,1);;
+        _autovar_2=bind_aget(bind2,2);;
+        it=ptr->ary[ptr->pos];            ;
+        ptr->pos++;
+        _autovar_49=it;;
+        cstruct oldpass24=*ptr;
+        ptr->pos=ptr->len=0;
+        ptr->ary=NULL;
+        ame_setsrc2(self,_autovar_49);
         it=rb_ary_new3(0);
-        _autovar_46=it;;
+        _autovar_50=it;;
         int stop4=0;
         while(!stop4) {
             int oldpos6=ptr->pos;
@@ -2133,8 +2206,8 @@ alt6_1:
                 it=failobj;
                 goto alt6_2;
             }
-            _autovar_47=it;;
-            it=AmethystCore_append(self,_autovar_46,_autovar_47);
+            _autovar_51=it;;
+            it=AmethystCore_append(self,_autovar_50,_autovar_51);
             ;
             goto accept6;
 alt6_2:
@@ -2146,7 +2219,7 @@ alt6_3:
             ptr->pos=oldpos6;
             if (1) {
                 it=failobj;
-                goto pass22;
+                goto pass24;
             };
 accept6:
             ;
@@ -2154,20 +2227,20 @@ accept6:
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
-            goto pass22;
+            goto pass24;
         }
-        it=_autovar_46;
+        it=_autovar_50;
         _ary=it;;
 
-        goto success22;
-pass22:
-        *ptr=oldpass22;
+        goto success24;
+pass24:
+        *ptr=oldpass24;
         if (1) {
             it=failobj;
             goto fail;
         }
-success22:
-        *ptr=oldpass22;
+success24:
+        *ptr=oldpass24;
         bind_aset(bind2,1,_ary);
         it=rb_funcall(self,sy_Analyze_Variables2_Seq_lb__ti_bin_1174,1,bind2);
         _ary=bind_aget(bind2,1);;
@@ -2179,7 +2252,7 @@ success22:
         _autovar=bind_aget(bind2,1);;
         _autovar_15=bind_aget(bind2,2);;
         break;
-    case 11/*Seq_AST*/:
+    case 12/*Seq_AST*/:
         ;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_2);
@@ -2188,13 +2261,13 @@ success22:
         _autovar_2=bind_aget(bind2,2);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        _autovar_48=it;;
-        cstruct oldpass23=*ptr;
+        _autovar_52=it;;
+        cstruct oldpass25=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ame_setsrc2(self,_autovar_48);
+        ame_setsrc2(self,_autovar_52);
         it=rb_ary_new3(0);
-        _autovar_49=it;;
+        _autovar_53=it;;
         int stop5=0;
         while(!stop5) {
             int oldpos7=ptr->pos;
@@ -2209,8 +2282,8 @@ alt7_1:
                 it=failobj;
                 goto alt7_2;
             }
-            _autovar_50=it;;
-            it=AmethystCore_append(self,_autovar_49,_autovar_50);
+            _autovar_54=it;;
+            it=AmethystCore_append(self,_autovar_53,_autovar_54);
             ;
             goto accept7;
 alt7_2:
@@ -2222,7 +2295,7 @@ alt7_3:
             ptr->pos=oldpos7;
             if (1) {
                 it=failobj;
-                goto pass23;
+                goto pass25;
             };
 accept7:
             ;
@@ -2230,20 +2303,20 @@ accept7:
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
-            goto pass23;
+            goto pass25;
         }
-        it=_autovar_49;
+        it=_autovar_53;
         _ary=it;;
 
-        goto success23;
-pass23:
-        *ptr=oldpass23;
+        goto success25;
+pass25:
+        *ptr=oldpass25;
         if (1) {
             it=failobj;
             goto fail;
         }
-success23:
-        *ptr=oldpass23;
+success25:
+        *ptr=oldpass25;
         bind_aset(bind2,1,_ary);
         it=rb_funcall(self,sy_Analyze_Variables2_Seq_lb__ti_bin_1174,1,bind2);
         _ary=bind_aget(bind2,1);;
@@ -2255,7 +2328,7 @@ success23:
         _autovar=bind_aget(bind2,1);;
         _autovar_15=bind_aget(bind2,2);;
         break;
-    case 12/*Stop*/:
+    case 13/*Stop*/:
         ;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_2);
@@ -2264,28 +2337,28 @@ success23:
         _autovar_2=bind_aget(bind2,2);;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
-        _autovar_51=it;;
-        cstruct oldpass24=*ptr;
+        _autovar_55=it;;
+        cstruct oldpass26=*ptr;
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
-        ame_setsrc2(self,_autovar_51);
+        ame_setsrc2(self,_autovar_55);
         it=rb_funcall(self,sy_Analyze_Variables2__at_stop_eq_tr_52d4,1,bind2);
-        _autovar_52=it;;
+        _autovar_56=it;;
         it=Qnil;
         if (ptr->pos<ptr->len) {
             it=failobj;
-            goto pass24;
+            goto pass26;
         }
-        goto success24;
-pass24:
-        *ptr=oldpass24;
+        goto success26;
+pass26:
+        *ptr=oldpass26;
         if (1) {
             it=failobj;
             goto fail;
         }
-success24:
-        *ptr=oldpass24;
-        it=_autovar_52;
+success26:
+        *ptr=oldpass26;
+        it=_autovar_56;
         __result=it;;
         _autovar_15=it;;
         bind_aset(bind2,1,_autovar);
@@ -2294,7 +2367,7 @@ success24:
         _autovar=bind_aget(bind2,1);;
         _autovar_15=bind_aget(bind2,2);;
         break;
-    case 13/*Object*/:
+    case 14/*Object*/:
         ;
         bind_aset(bind2,1,_autovar);
         bind_aset(bind2,2,_autovar_2);
@@ -2314,9 +2387,9 @@ void Init_Analyze_Variables2_c() {
     cls_Analyze_Variables2=rb_define_class("Analyze_Variables2",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2")));
     failobj=rb_eval_string("FAIL");
     rb_define_method(cls_Analyze_Variables2,"profile_report",profile_report_Analyze_Variables2,0);
-    switchhash_Analyze_Variables2_10=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Append_AST\nnext h[k]=2 if k<=Args\nnext h[k]=3 if k<=Comment\nnext h[k]=4 if k<=Enter_AST\nnext h[k]=5 if k<=Many\nnext h[k]=6 if k<=Or_AST\nnext h[k]=7 if k<=Parenthesis\nnext h[k]=8 if k<=Pass_AST\nnext h[k]=9 if k<=Result\nnext h[k]=10 if k<=Seq\nnext h[k]=11 if k<=Seq_AST\nnext h[k]=12 if k<=Stop\nnext h[k]=13 if k<=Object\n}");
+    switchhash_Analyze_Variables2_10=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Append_AST\nnext h[k]=2 if k<=Args\nnext h[k]=3 if k<=Comment\nnext h[k]=4 if k<=Concat_AST\nnext h[k]=5 if k<=Enter_AST\nnext h[k]=6 if k<=Many\nnext h[k]=7 if k<=Or_AST\nnext h[k]=8 if k<=Parenthesis\nnext h[k]=9 if k<=Pass_AST\nnext h[k]=10 if k<=Result\nnext h[k]=11 if k<=Seq\nnext h[k]=12 if k<=Seq_AST\nnext h[k]=13 if k<=Stop\nnext h[k]=14 if k<=Object\n}");
     rb_global_variable(&switchhash_Analyze_Variables2_10);;
-    switchhash_Analyze_Variables2_11=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Append_AST\nnext h[k]=2 if k<=Args\nnext h[k]=3 if k<=Comment\nnext h[k]=4 if k<=Enter_AST\nnext h[k]=5 if k<=Many\nnext h[k]=6 if k<=Or_AST\nnext h[k]=7 if k<=Parenthesis\nnext h[k]=8 if k<=Pass_AST\nnext h[k]=9 if k<=Result\nnext h[k]=10 if k<=Seq\nnext h[k]=11 if k<=Seq_AST\nnext h[k]=12 if k<=Stop\nnext h[k]=13 if k<=Object\n}");
+    switchhash_Analyze_Variables2_11=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Append_AST\nnext h[k]=2 if k<=Args\nnext h[k]=3 if k<=Comment\nnext h[k]=4 if k<=Concat_AST\nnext h[k]=5 if k<=Enter_AST\nnext h[k]=6 if k<=Many\nnext h[k]=7 if k<=Or_AST\nnext h[k]=8 if k<=Parenthesis\nnext h[k]=9 if k<=Pass_AST\nnext h[k]=10 if k<=Result\nnext h[k]=11 if k<=Seq\nnext h[k]=12 if k<=Seq_AST\nnext h[k]=13 if k<=Stop\nnext h[k]=14 if k<=Object\n}");
     rb_global_variable(&switchhash_Analyze_Variables2_11);;
     switchhash_Analyze_Variables2_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Grammar\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_Analyze_Variables2_1);;
@@ -2324,7 +2397,7 @@ void Init_Analyze_Variables2_c() {
     rb_global_variable(&switchhash_Analyze_Variables2_2);;
     switchhash_Analyze_Variables2_3=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Rule\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_Analyze_Variables2_3);;
-    switchhash_Analyze_Variables2_4=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Append_AST\nnext h[k]=2 if k<=Args\nnext h[k]=3 if k<=Comment\nnext h[k]=4 if k<=Enter_AST\nnext h[k]=5 if k<=Many\nnext h[k]=6 if k<=Or_AST\nnext h[k]=7 if k<=Parenthesis\nnext h[k]=8 if k<=Pass_AST\nnext h[k]=9 if k<=Result\nnext h[k]=10 if k<=Seq\nnext h[k]=11 if k<=Seq_AST\nnext h[k]=12 if k<=Stop\nnext h[k]=13 if k<=Object\n}");
+    switchhash_Analyze_Variables2_4=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Append_AST\nnext h[k]=2 if k<=Args\nnext h[k]=3 if k<=Comment\nnext h[k]=4 if k<=Concat_AST\nnext h[k]=5 if k<=Enter_AST\nnext h[k]=6 if k<=Many\nnext h[k]=7 if k<=Or_AST\nnext h[k]=8 if k<=Parenthesis\nnext h[k]=9 if k<=Pass_AST\nnext h[k]=10 if k<=Result\nnext h[k]=11 if k<=Seq\nnext h[k]=12 if k<=Seq_AST\nnext h[k]=13 if k<=Stop\nnext h[k]=14 if k<=Object\n}");
     rb_global_variable(&switchhash_Analyze_Variables2_4);;
     switchhash_Analyze_Variables2_5=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Args\nnext h[k]=1 if k<=Local\nnext h[k]=2 if k<=Object\n}");
     rb_global_variable(&switchhash_Analyze_Variables2_5);;
@@ -2334,10 +2407,11 @@ void Init_Analyze_Variables2_c() {
     rb_global_variable(&switchhash_Analyze_Variables2_7);;
     switchhash_Analyze_Variables2_8=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=AmethystAST\nnext h[k]=1 if k<=Array\nnext h[k]=2 if k<=Object\n}");
     rb_global_variable(&switchhash_Analyze_Variables2_8);;
-    switchhash_Analyze_Variables2_9=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Append_AST\nnext h[k]=2 if k<=Args\nnext h[k]=3 if k<=Comment\nnext h[k]=4 if k<=Enter_AST\nnext h[k]=5 if k<=Many\nnext h[k]=6 if k<=Or_AST\nnext h[k]=7 if k<=Parenthesis\nnext h[k]=8 if k<=Pass_AST\nnext h[k]=9 if k<=Result\nnext h[k]=10 if k<=Seq\nnext h[k]=11 if k<=Seq_AST\nnext h[k]=12 if k<=Stop\nnext h[k]=13 if k<=Object\n}");
+    switchhash_Analyze_Variables2_9=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Act\nnext h[k]=1 if k<=Append_AST\nnext h[k]=2 if k<=Args\nnext h[k]=3 if k<=Comment\nnext h[k]=4 if k<=Concat_AST\nnext h[k]=5 if k<=Enter_AST\nnext h[k]=6 if k<=Many\nnext h[k]=7 if k<=Or_AST\nnext h[k]=8 if k<=Parenthesis\nnext h[k]=9 if k<=Pass_AST\nnext h[k]=10 if k<=Result\nnext h[k]=11 if k<=Seq\nnext h[k]=12 if k<=Seq_AST\nnext h[k]=13 if k<=Stop\nnext h[k]=14 if k<=Object\n}");
     rb_global_variable(&switchhash_Analyze_Variables2_9);;
     sy_Analyze_Variables2_Act_lb_bind_4ccd=rb_intern("Analyze_Variables2_Act_lb_bind_4ccd");
     sy_Analyze_Variables2_Append_lb_s_f381=rb_intern("Analyze_Variables2_Append_lb_s_f381");
+    sy_Analyze_Variables2_Concat_lb_s_ba37=rb_intern("Analyze_Variables2_Concat_lb_s_ba37");
     sy_Analyze_Variables2_Enter_lb_sr_4871=rb_intern("Analyze_Variables2_Enter_lb_sr_4871");
     sy_Analyze_Variables2_Many_dot_cre_6376=rb_intern("Analyze_Variables2_Many_dot_cre_6376");
     sy_Analyze_Variables2_Or_lb__ti_bind_5a27=rb_intern("Analyze_Variables2_Or_lb__ti_bind_5a27");

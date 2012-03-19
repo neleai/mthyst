@@ -162,6 +162,10 @@ def AmethystParser_Strin_lb__lb__qu__88c8(bind)
 Strin[['"']+bind[1]+['"']]
 
 end
+def AmethystParser__at_appends_36ee(bind)
+@appends<< bind[1] if bind[1].is_a?(Local); Concat_AST[bind[1],bind[2]]
+
+end
 def AmethystParser__at_appends_b984(bind)
 @appends<< bind[1] if bind[1].is_a?(Local); Append_AST[bind[1],bind[2]]
 

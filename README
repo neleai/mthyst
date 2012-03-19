@@ -1,4 +1,5 @@
-amethyst(mthyst) is ruby top-down parser generator
+amethyst(mthyst) is ruby top-down parser generator and tool for pattern matching
+A description can be found at http://kam.mff.cuni.cz/~ondra/amethyst/chap2.pdf
 
 # Currently compiling is bit ad-hoc
 # We currently support only ruby1.9
@@ -6,7 +7,7 @@ amethyst(mthyst) is ruby top-down parser generator
 # changing to command what extconf uses should work.
  
 #For initial build type
-./reset    
+ruby1.9.1 reset.rb
 
 #a use cases can be found in doc directory.
 

@@ -91,6 +91,7 @@ static VALUE sy_AmethystParser_Seq_AST_lb__1817;
 static VALUE sy_AmethystParser_Seq_AST_lb__66a7;
 static VALUE sy_AmethystParser_Strin_lb__lb__dq__b20e;
 static VALUE sy_AmethystParser_Strin_lb__lb__qu__88c8;
+static VALUE sy_AmethystParser__at_appends_36ee;
 static VALUE sy_AmethystParser__at_appends_b984;
 static VALUE sy_AmethystParser__at_ary_eq__lb__rb_;
 static VALUE sy_AmethystParser__at_ary_ff69;
@@ -4106,7 +4107,7 @@ accept4:
                     _name=bind_aget(bind2,1);;
                     bind_aset(bind2,1,_name);
                     bind_aset(bind2,2,_from);
-                    it=rb_funcall(self,sy_AmethystParser__at_appends_b984,1,bind2);
+                    it=rb_funcall(self,sy_AmethystParser__at_appends_36ee,1,bind2);
                     _name=bind_aget(bind2,1);;
                     _from=bind_aget(bind2,2);;
                     _from=it;;
@@ -4753,7 +4754,7 @@ accept14:
                     _name=bind_aget(bind2,1);;
                     bind_aset(bind2,1,_name);
                     bind_aset(bind2,2,_from);
-                    it=rb_funcall(self,sy_AmethystParser__at_appends_b984,1,bind2);
+                    it=rb_funcall(self,sy_AmethystParser__at_appends_36ee,1,bind2);
                     _name=bind_aget(bind2,1);;
                     _from=bind_aget(bind2,2);;
                     _from=it;;
@@ -9832,6 +9833,7 @@ void Init_AmethystParser_c() {
     sy_AmethystParser_Seq_AST_lb__66a7=rb_intern("AmethystParser_Seq_AST_lb__66a7");
     sy_AmethystParser_Strin_lb__lb__dq__b20e=rb_intern("AmethystParser_Strin_lb__lb__dq__b20e");
     sy_AmethystParser_Strin_lb__lb__qu__88c8=rb_intern("AmethystParser_Strin_lb__lb__qu__88c8");
+    sy_AmethystParser__at_appends_36ee=rb_intern("AmethystParser__at_appends_36ee");
     sy_AmethystParser__at_appends_b984=rb_intern("AmethystParser__at_appends_b984");
     sy_AmethystParser__at_ary_eq__lb__rb_=rb_intern("AmethystParser__at_ary_eq__lb__rb_");
     sy_AmethystParser__at_ary_ff69=rb_intern("AmethystParser__at_ary_ff69");

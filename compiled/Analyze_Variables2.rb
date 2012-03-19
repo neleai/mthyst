@@ -11,6 +11,9 @@ end
 def Analyze_Variables2_Append_lb_s_f381(bind)
 Append[src.name,src.exp]
 end
+def Analyze_Variables2_Concat_lb_s_ba37(bind)
+Concat[src.name,src.exp]
+end
 def Analyze_Variables2_Enter_lb_sr_4871(bind)
 Enter[src.from,src.to]
 end

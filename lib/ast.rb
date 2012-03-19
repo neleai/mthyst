@@ -23,10 +23,10 @@ makeclasses(AmethystAST,
 		:Relabel,
     :Contextual_Argument,:Contextual_Return,
 		[:Or,:has_cut],
-		:Seq_AST,:Or_AST,[:Append_AST,:name,:exp],[:Pass_AST,:from,:to],[:Enter_AST,:from,:to]
+		:Seq_AST,:Or_AST,[:Concat_AST,:name,:exp],[:Append_AST,:name,:exp],[:Pass_AST,:from,:to],[:Enter_AST,:from,:to]
 )
 makeclasses(Switch,:Switch_Char,:Switch_Clas,:Switch_Or)
-class Enter;end;class Append;end;class PureAct;end;class Pred;end;
+class Enter;end;class Append;end;class PureAct;end;class Pred;end;class Concat;end #needed only for Class.[] operator
 
 class Arguments
   attr_accessor :method_name,:ary,:_hash
@@ -46,6 +46,11 @@ class Arguments
   end
 end
 
+if $bootstrapping_amethyst
+  norm=File.new("lib/c/normalize.c","w");
+else
+  norm=File.new("/dev/null","w")
+end
 def equalize_by(clas,args)
   eval("$hash_#{clas}={}
     class #{clas}\n
@@ -61,11 +66,6 @@ def equalize_by(clas,args)
 						#{clas}.create(*args).normalize
 					end
     end")
-end
-if $bootstrapping_amethyst
-  norm=File.new("lib/c/normalize.c","w");
-else
-  norm=File.new("/dev/null","w")
 end
 norm.puts "
 #include \"ruby.h\"
@@ -146,7 +146,9 @@ norm.puts "
 		}
 	}
 "
-[Act,Apply,Append_AST,Args,Bind,Bnding,CAct,Comment,Cut,Lambda,Global,Key,Local,Lookahead,Many,Or,Pass,Result,Rule,Seq,Stop,Strin,Switch_Char,Switch_Clas,Switch_Or].each{|e| 
+cn=[Act,Apply,Append_AST,Args,Bind,Bnding,CAct,Comment,Cut,Lambda,Global,Key,Local,Lookahead,Many,Or,Pass,Result,Rule,Seq,Stop,Strin,Switch_Char,Switch_Clas]
+
+cn.each{|e| 
 by="[#{e.attributes*","}]"
 by="ary" if by=="[ary]"
 equalize_by(e,by)
@@ -208,7 +210,6 @@ VALUE create2_#{e}(VALUE self #{e.attributes.map{|el| ",VALUE #{el}"}*""}){
 	return normalize_#{e}(obj3);
 }"
 }
-cn=[Act,Apply,Args,Append_AST,Bind,Bnding,CAct,Comment,Cut,Lambda,Global,Key,Local,Lookahead,Many,Or,Pass,Result,Rule,Seq,Stop,Strin,Switch_Char,Switch_Clas]
 norm.puts "
 normalize_cache * normalize_cache_init(){
        normalize_cache *b;
@@ -282,7 +283,11 @@ def Pass.[](from,to,enter=nil)
 end
 
 class Bind
-	def self.[](name,expr,append=nil)
+	def self.[](name,expr,append=nil,concat=nil)
+    if concat
+      a=autovar
+      return Seq[Bind[a,expr],PureAct[Args[name,".concat(",a,")"]],a]
+    end
 		if append
 	    a=autovar
       return Seq[Bind[a,expr],PureAct[Args["_append(",name,",",a,")"]],a] if name.is_a?(Local)
@@ -302,6 +307,10 @@ class Bind
 		ary[0]
 	end
 end
+def Concat_AST.[](name,exp)
+  Concat_AST.create({:name=>name,:exp=>exp})
+end
+
 def Append_AST.[](name,exp)
   Append_AST.create({:name=>name,:exp=>exp})
 end
@@ -313,6 +322,9 @@ def Enter_AST.[](from,to)
 end
 def Append.[](name,expr)
 	Bind[name,expr,true]
+end
+def Concat.[](name,expr)
+  Bind[name,expr,false,true]
 end
 
 def Many.[](expr,many1=nil)
