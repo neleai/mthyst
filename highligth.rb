@@ -28,7 +28,7 @@ wrap.size.times{|i|
   end
   c="<span style=\"color:#{$colors[wrap][i]}\">#{c}</span>" if $colors[wrap][i]
   c="<span onmouseover='document.getElementById(\"id#{$group_mark[wrap][i]}\").style.background=\"#002020\";'
-         onmouseout ='document.getElementById(\"id#{$group_mark[wrap][i]}\").style.background=\"none\";'>#{c}</span>" if $group_mark[wrap][i]
+         onmouseout ='document.getElementById(\"id#{$group_mark[wrap][i]}\").style.background=\"none\";' onclick='fnSelect(\"id#{$group_mark[wrap][i]}\")'>#{c}</span>" if $group_mark[wrap][i]
   $group_start[wrap][i].each{|el| c="<span id=\"id#{el}\">#{c}"}
   $group_end  [wrap][i].each{|el| c="</span>#{c}"}
 
@@ -36,6 +36,29 @@ wrap.size.times{|i|
 }
 f=File.new("highligthed/#{File.basename(fi)}.html","w")
 f.print "<body bgcolor=black> <pre><div style=\"color:white\">"
+f.print "
+<script type=\"text/javascript\">
+  function fnSelect(objId) {
+    fnDeSelect();
+    if (document.selection) {
+    var range = document.body.createTextRange();
+          range.moveToElementText(document.getElementById(objId));
+    range.select();
+    }
+    else if (window.getSelection) {
+    var range = document.createRange();
+    range.selectNode(document.getElementById(objId));
+    window.getSelection().addRange(range);
+    }
+  }
+
+  function fnDeSelect() {
+    if (document.selection) document.selection.empty(); 
+    else if (window.getSelection)
+                window.getSelection().removeAllRanges();
+  }
+  </script>
+"
 f.puts(r)
 f.puts "</pre></div></body>"
 

@@ -6,7 +6,7 @@ class AmethystParser < Amethyst
 end
 amethyst AmethystParser {
   file     = (  grammar
-             | {pos}:oldpos {@@locals=[];@@appends=[];@@bnding=Bnding[]}  lambda {x="amethyst Anon#{$agram+=1} { expr=#{src[(oldpos+2)..(pos-3)]}\ninit=.:@@bind }";puts x.inspect;x}=>[ grammar:g ] 
+             | {pos}:oldpos {@@locals=[];@@appends=[];@@bnding=Bnding[]}  lambda {"amethyst Anon#{$agram+=1} { expr=#{src[(oldpos+2)..(pos-3)]}\ninit=.:@@bind }"}=>[ grammar:g ] 
                 {g.rules[0].body=Seq_AST[Act[g.rules[0].locals.map{|el| [el,"=eval(\"#{el[0]}=#{el[0]}\",@bind);"] }],g.rules[0].body,Act[g.rules[0].locals.map{|el| ["$passit=",el,";eval(\"#{el[0]}=$passit\",@bind);"] }]]}
                                                  -> ["(",g,";ame_lambda(#{g.name},binding))"]
              | (~'amethyst' ~'(|'   . )
@@ -60,11 +60,13 @@ amethyst AmethystParser {
                     (~_     (  '=>'     term:e           -> Pass_AST[from,e] 
                             | '['      expression:e "]" -> Enter_AST[from,e]
                             | <+*>:one -> Many[from,one=="+"]
+                            | '?=' inline_host_expr:e -> Or_AST[from,e]
                             | '?'      -> Or_AST[from,Apply["empty"]]
-                            | ':' '['(name | rubyarg*):name ']' {name=local(name)} ->  @@appends<< name if name.is_a?(Local); Append_AST[name,from]
-                            | ':' (  (key | name):name ('[]'?):append -> @@appends<< local(name) if append && local(name).is_a?(Local); append=='[]' ? Append_AST[name,from] : Bind[local(name),from]
-                                  | inline_host_expr:e                      -> Seq_AST[ Bind[local("it"),from] , Act[e] ]
-                                  )
+                            | ':' '[*'(name | rubyarg*):name ']' {name=local(name)} ->  @@appends<< name if name.is_a?(Local); Append_AST[name,from]
+                            | ':' '['(name | rubyarg*):name  ']' {name=local(name)} ->  @@appends<< name if name.is_a?(Local); Append_AST[name,from]
+                            | ':'  (  (key | name):name   ->          Bind[local(name),from]
+                                   |  inline_host_expr:e  -> Seq_AST[ Bind[local("it"),from] , Act[e] ]
+                                   )
                     ):from  )* {from}
 
   

@@ -121,6 +121,10 @@ def AmethystParser_Or_AST_lb_b_0657(bind)
 Or_AST[bind[1],Apply["empty"]]
 
 end
+def AmethystParser_Or_AST_lb_b_3220(bind)
+Or_AST[bind[1],bind[2]]
+
+end
 def AmethystParser_Parenthe_261b(bind)
 Parenthesis[bind[1]]
 end
@@ -162,10 +166,6 @@ def AmethystParser__at_appends_b984(bind)
 @appends<< bind[1] if bind[1].is_a?(Local); Append_AST[bind[1],bind[2]]
 
 end
-def AmethystParser__at_appends_d29d(bind)
-@appends<< local(bind[1]) if bind[2] && local(bind[1]).is_a?(Local); bind[2]=='[]' ? Append_AST[bind[1],bind[3]] : Bind[local(bind[1]),bind[3]]
-
-end
 def AmethystParser__at_ary_eq__lb__rb_(bind)
 @ary=[];@tmp=[]
 end
@@ -189,6 +189,9 @@ def AmethystParser__at_tmp_lt__lt_bi_b81c(bind)
 end
 def AmethystParser__dq__le__dq__pl_bind_567e(bind)
 "{"+bind[1]+"}"
+end
+def AmethystParser__dq_amethys_673b(bind)
+"amethyst Anon#{$agram+=1} { expr=#{src[(bind[1]+2)..(pos-3)]}\ninit=.:@@bind }"
 end
 def AmethystParser__lb__dq__lp__dq_(bind)
 ["(",bind[1],";ame_lambda(#{bind[1].name},binding))"]
@@ -258,9 +261,6 @@ local(bind[1])
 end
 def AmethystParser_pos_5e0b(bind)
 pos
-end
-def AmethystParser_x_eq__dq_ameth_733c(bind)
-x="amethyst Anon#{$agram+=1} { expr=#{src[(bind[1]+2)..(pos-3)]}\ninit=.:@@bind }";puts x.inspect;x
 end
 
 end

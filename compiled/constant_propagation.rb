@@ -76,7 +76,7 @@ def constant_propagation_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def constant_propagation_source_hash
-'afbe0dd7e39b6a400ad015d1d943a0d8'
+'9eb05773aacc2226217c183b77ce5cc2'
 end
 def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version

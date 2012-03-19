@@ -83,7 +83,8 @@ amethyst AmethystParser_Highligth {
   ruleargs = (argsOpt)=>[ Args[ :name {local(name) }]* ]
   
   
-  argsOpt = ~_  _args('(',')'):r { r+[',']}=>[procargs] 
+  argsOpt = lambda
+          | ~_  _args('(',')'):r { r+[',']}=>[procargs] 
           | {[]}
 
   procargs = {@@ary=[];@@tmp=[]}
