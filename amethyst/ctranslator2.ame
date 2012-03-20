@@ -221,6 +221,7 @@ s
                {""}:pre {""}:ap {@@locals_changed.each{|k,v| if v> oldl[k]
                pre+="VALUE #{rev}#{desc(k)}=rb_funcall(#{bget(k)},rb_intern(\"dup\"),0);";ap+=bset(k,"#{rev}#{desc(k)}")
                end}}
+               {pre,ap="","" if $disable_persistence}
                {"#{pre} #{t}\n;goto #{acc};#{rev}:; #{ap} goto #{@@faillabel}; #{acc}:;\n"}
   
  

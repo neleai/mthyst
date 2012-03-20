@@ -106,7 +106,6 @@ VALUE Tests_de(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        VALUE revert1foo=rb_funcall(_foo,rb_intern("dup"),0);
         it=_autovar;
         _foo=it;;
         bind_aset(bind2,1,_foo);
@@ -120,7 +119,6 @@ alt1_1:
         goto accept2;
 revert1:
         ;
-        _foo=revert1foo;
         goto alt1_2;
 accept2:
         ;
@@ -129,7 +127,6 @@ accept2:
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
-        VALUE revert2foo=rb_funcall(_foo,rb_intern("dup"),0);
         it=_autovar;
         _foo=it;;
         bind_aset(bind2,1,_foo);
@@ -143,7 +140,6 @@ alt1_2:
         goto accept3;
 revert2:
         ;
-        _foo=revert2foo;
         goto alt1_3;
 accept3:
         ;
@@ -167,7 +163,6 @@ accept1:
         int cut2=0;
 alt2_1:
         ;
-        VALUE revert3foo=rb_funcall(_foo,rb_intern("dup"),0);
         it=_autovar_2;
         _foo=it;;
         bind_aset(bind2,1,_foo);
@@ -181,7 +176,6 @@ alt2_1:
         goto accept5;
 revert3:
         ;
-        _foo=revert3foo;
         goto alt2_2;
 accept5:
         ;
@@ -190,8 +184,6 @@ accept5:
         goto accept4;
 alt2_2:
         ptr->pos=oldpos2;
-        VALUE revert4foo=rb_funcall(_foo,rb_intern("dup"),0);
-        VALUE revert4_result=rb_funcall(__result,rb_intern("dup"),0);
         it=_autovar_2;
         _foo=it;;
         bind_aset(bind2,1,_foo);
@@ -205,8 +197,6 @@ alt2_2:
         goto accept6;
 revert4:
         ;
-        _foo=revert4foo;
-        __result=revert4_result;
         goto alt2_3;
 accept6:
         ;
@@ -232,8 +222,6 @@ accept4:
         int cut3=0;
 alt3_1:
         ;
-        VALUE revert5foo=rb_funcall(_foo,rb_intern("dup"),0);
-        VALUE revert5_result=rb_funcall(__result,rb_intern("dup"),0);
         it=_autovar_3;
         _foo=it;;
         bind_aset(bind2,1,_foo);
@@ -250,8 +238,6 @@ alt3_1:
         goto accept8;
 revert5:
         ;
-        _foo=revert5foo;
-        __result=revert5_result;
         goto alt3_2;
 accept8:
         ;
@@ -260,7 +246,6 @@ accept8:
         goto accept7;
 alt3_2:
         ptr->pos=oldpos3;
-        VALUE revert6foo=rb_funcall(_foo,rb_intern("dup"),0);
         it=_autovar_3;
         _foo=it;;
         bind_aset(bind2,1,_foo);
@@ -274,7 +259,6 @@ alt3_2:
         goto accept9;
 revert6:
         ;
-        _foo=revert6foo;
         goto alt3_3;
 accept9:
         ;
@@ -331,7 +315,6 @@ VALUE Tests_gh(VALUE self ) {
     int cut1=0;
 alt1_1:
     ;
-    VALUE revert1_result=rb_funcall(__result,rb_intern("dup"),0);
     it=Tests_foo(self );
     if (it==failobj) {
         it=failobj;
@@ -343,7 +326,6 @@ alt1_1:
     goto accept2;
 revert1:
     ;
-    __result=revert1_result;
     goto alt1_2;
 accept2:
     ;
@@ -352,7 +334,6 @@ accept2:
     goto accept1;
 alt1_2:
     ptr->pos=oldpos1;
-    VALUE revert2_result=rb_funcall(__result,rb_intern("dup"),0);
     cut1=1;
     it=i_42;
     __result=it;;
@@ -361,7 +342,6 @@ alt1_2:
     goto accept3;
 revert2:
     ;
-    __result=revert2_result;
     goto alt1_3;
 accept3:
     ;
@@ -497,7 +477,6 @@ VALUE Tests_test(VALUE self ) {
     int cut1=0;
 alt1_1:
     ;
-    VALUE revert1_result=rb_funcall(__result,rb_intern("dup"),0);
     it=Amethyst_spaces(self );
     switch((unsigned char)*ame_curstr2(ptr)) {
     case UC(0) ... '`':
@@ -522,7 +501,6 @@ alt1_1:
     goto accept2;
 revert1:
     ;
-    __result=revert1_result;
     goto alt1_2;
 accept2:
     ;
@@ -531,7 +509,6 @@ accept2:
     goto accept1;
 alt1_2:
     ptr->pos=oldpos1;
-    VALUE revert2_result=rb_funcall(__result,rb_intern("dup"),0);
     it=i_42;
     __result=it;;
 
@@ -539,7 +516,6 @@ alt1_2:
     goto accept3;
 revert2:
     ;
-    __result=revert2_result;
     goto alt1_3;
 accept3:
     ;

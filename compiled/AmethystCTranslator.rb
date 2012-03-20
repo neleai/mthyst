@@ -205,6 +205,9 @@ def AmethystCTranslator_bind_lb_1_rb_(bind)
 bind[1]
 
 end
+def AmethystCTranslator_bind_lb_1_rb_2(bind)
+bind[1],bind[2]="","" if $disable_persistence
+end
 def AmethystCTranslator_bind_lb_1_rb__dot__1364(bind)
 bind[1].ary.each{|al| bind[2]+="next h[k]=#{bind[3]} if k<=#{al}\\n";bind[4]+="case #{bind[3]}/*#{al}*/:";bind[3]+=1}
 end

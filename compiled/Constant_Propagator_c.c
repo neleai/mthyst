@@ -63,13 +63,6 @@ VALUE Constant_Propagator_step(VALUE self ,VALUE a0) {
         int cut1=0;
 alt1_1:
         ;
-        VALUE revert1autovar_2=rb_funcall(_autovar_2,rb_intern("dup"),0);
-        VALUE revert1autovar_3=rb_funcall(_autovar_3,rb_intern("dup"),0);
-        VALUE revert1autovar_4=rb_funcall(_autovar_4,rb_intern("dup"),0);
-        VALUE revert1autovar_5=rb_funcall(_autovar_5,rb_intern("dup"),0);
-        VALUE revert1autovar_6=rb_funcall(_autovar_6,rb_intern("dup"),0);
-        VALUE revert1autovar_7=rb_funcall(_autovar_7,rb_intern("dup"),0);
-        VALUE revert1autovar_8=rb_funcall(_autovar_8,rb_intern("dup"),0);
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar_2=it;;
@@ -176,13 +169,6 @@ success2:
         goto accept2;
 revert1:
         ;
-        _autovar_2=revert1autovar_2;
-        _autovar_3=revert1autovar_3;
-        _autovar_4=revert1autovar_4;
-        _autovar_5=revert1autovar_5;
-        _autovar_6=revert1autovar_6;
-        _autovar_7=revert1autovar_7;
-        _autovar_8=revert1autovar_8;
         goto alt1_2;
 accept2:
         ;
@@ -191,7 +177,6 @@ accept2:
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
-        VALUE revert2autovar_8=rb_funcall(_autovar_8,rb_intern("dup"),0);
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -204,7 +189,6 @@ alt1_2:
         goto accept3;
 revert2:
         ;
-        _autovar_8=revert2autovar_8;
         goto alt1_3;
 accept3:
         ;
@@ -231,10 +215,6 @@ accept1:
         int cut2=0;
 alt2_1:
         ;
-        VALUE revert3autovar_8=rb_funcall(_autovar_8,rb_intern("dup"),0);
-        VALUE revert3autovar_9=rb_funcall(_autovar_9,rb_intern("dup"),0);
-        VALUE revert3expr=rb_funcall(_expr,rb_intern("dup"),0);
-        VALUE revert3autovar_10=rb_funcall(_autovar_10,rb_intern("dup"),0);
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar_9=it;;
@@ -277,10 +257,6 @@ success5:
         goto accept5;
 revert3:
         ;
-        _autovar_8=revert3autovar_8;
-        _autovar_9=revert3autovar_9;
-        _expr=revert3expr;
-        _autovar_10=revert3autovar_10;
         goto alt2_2;
 accept5:
         ;
@@ -289,7 +265,6 @@ accept5:
         goto accept4;
 alt2_2:
         ptr->pos=oldpos2;
-        VALUE revert4autovar_8=rb_funcall(_autovar_8,rb_intern("dup"),0);
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -302,7 +277,6 @@ alt2_2:
         goto accept6;
 revert4:
         ;
-        _autovar_8=revert4autovar_8;
         goto alt2_3;
 accept6:
         ;
@@ -329,10 +303,6 @@ accept4:
         int cut3=0;
 alt3_1:
         ;
-        VALUE revert5autovar_8=rb_funcall(_autovar_8,rb_intern("dup"),0);
-        VALUE revert5autovar_11=rb_funcall(_autovar_11,rb_intern("dup"),0);
-        VALUE revert5val=rb_funcall(_val,rb_intern("dup"),0);
-        VALUE revert5autovar_12=rb_funcall(_autovar_12,rb_intern("dup"),0);
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar_11=it;;
@@ -368,10 +338,6 @@ success6:
         goto accept8;
 revert5:
         ;
-        _autovar_8=revert5autovar_8;
-        _autovar_11=revert5autovar_11;
-        _val=revert5val;
-        _autovar_12=revert5autovar_12;
         goto alt3_2;
 accept8:
         ;
@@ -380,7 +346,6 @@ accept8:
         goto accept7;
 alt3_2:
         ptr->pos=oldpos3;
-        VALUE revert6autovar_8=rb_funcall(_autovar_8,rb_intern("dup"),0);
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -393,7 +358,6 @@ alt3_2:
         goto accept9;
 revert6:
         ;
-        _autovar_8=revert6autovar_8;
         goto alt3_3;
 accept9:
         ;
@@ -420,10 +384,6 @@ accept7:
         int cut4=0;
 alt4_1:
         ;
-        VALUE revert7autovar_8=rb_funcall(_autovar_8,rb_intern("dup"),0);
-        VALUE revert7autovar_13=rb_funcall(_autovar_13,rb_intern("dup"),0);
-        VALUE revert7el=rb_funcall(_el,rb_intern("dup"),0);
-        VALUE revert7autovar_14=rb_funcall(_autovar_14,rb_intern("dup"),0);
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar_13=it;;
@@ -457,10 +417,6 @@ success7:
         goto accept11;
 revert7:
         ;
-        _autovar_8=revert7autovar_8;
-        _autovar_13=revert7autovar_13;
-        _el=revert7el;
-        _autovar_14=revert7autovar_14;
         goto alt4_2;
 accept11:
         ;
@@ -469,7 +425,6 @@ accept11:
         goto accept10;
 alt4_2:
         ptr->pos=oldpos4;
-        VALUE revert8autovar_8=rb_funcall(_autovar_8,rb_intern("dup"),0);
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -482,7 +437,6 @@ alt4_2:
         goto accept12;
 revert8:
         ;
-        _autovar_8=revert8autovar_8;
         goto alt4_3;
 accept12:
         ;

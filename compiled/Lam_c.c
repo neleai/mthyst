@@ -104,7 +104,6 @@ accept2:
     goto accept1;
 alt1_2:
     ptr->pos=oldpos1;
-    VALUE revert2autovar_3=rb_funcall(_autovar_3,rb_intern("dup"),0);
     bind_aset(bind2,1,_autovar_3);
     it=rb_funcall(self,sy_Lam_bind_lb_1_rb__eq__f4b0,1,bind2);
     _autovar_3=bind_aget(bind2,1);;
@@ -119,7 +118,6 @@ alt1_2:
     goto accept3;
 revert2:
     ;
-    _autovar_3=revert2autovar_3;
     goto alt1_3;
 accept3:
     ;

@@ -96,6 +96,7 @@ static VALUE sy_AmethystCTranslator__lp_bind_lb_1_rb__d1fd;
 static VALUE sy_AmethystCTranslator__lp_bind_lb_1_rb__dbc9;
 static VALUE sy_AmethystCTranslator_addcallb_2cf7;
 static VALUE sy_AmethystCTranslator_ar_eq__ti_src_dot__1348;
+static VALUE sy_AmethystCTranslator_bind_lb_1_rb_2;
 static VALUE sy_AmethystCTranslator_bind_lb_1_rb_;
 static VALUE sy_AmethystCTranslator_bind_lb_1_rb__dot__1364;
 static VALUE sy_AmethystCTranslator_bind_lb_1_rb__eq__7d1a;
@@ -273,9 +274,6 @@ VALUE AmethystCTranslator_itrans(VALUE self ) {
             int cut1=0;
 alt1_1:
             ;
-            VALUE revert1c_2=rb_funcall(_c_2,rb_intern("dup"),0);
-            VALUE revert1_result=rb_funcall(__result,rb_intern("dup"),0);
-            VALUE revert1autovar=rb_funcall(_autovar,rb_intern("dup"),0);
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -300,9 +298,6 @@ alt1_1:
             goto accept2;
 revert1:
             ;
-            _c_2=revert1c_2;
-            __result=revert1_result;
-            _autovar=revert1autovar;
             goto alt1_2;
 accept2:
             ;
@@ -311,10 +306,6 @@ accept2:
             goto accept1;
 alt1_2:
             ptr->pos=oldpos1;
-            VALUE revert2ruby=rb_funcall(_ruby,rb_intern("dup"),0);
-            VALUE revert2c=rb_funcall(_c,rb_intern("dup"),0);
-            VALUE revert2init=rb_funcall(_init,rb_intern("dup"),0);
-            VALUE revert2it=rb_funcall(_it,rb_intern("dup"),0);
             it=AmethystCTranslator_trans(self );
             if (it==failobj) {
                 it=failobj;
@@ -334,10 +325,6 @@ alt1_2:
             goto accept3;
 revert2:
             ;
-            _ruby=revert2ruby;
-            _c=revert2c;
-            _init=revert2init;
-            _it=revert2it;
             goto alt1_3;
 accept3:
             ;
@@ -372,9 +359,6 @@ accept1:
             int cut2=0;
 alt2_1:
             ;
-            VALUE revert4c_2=rb_funcall(_c_2,rb_intern("dup"),0);
-            VALUE revert4_result=rb_funcall(__result,rb_intern("dup"),0);
-            VALUE revert4autovar=rb_funcall(_autovar,rb_intern("dup"),0);
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -399,9 +383,6 @@ alt2_1:
             goto accept6;
 revert4:
             ;
-            _c_2=revert4c_2;
-            __result=revert4_result;
-            _autovar=revert4autovar;
             goto alt2_2;
 accept6:
             ;
@@ -504,6 +485,11 @@ VALUE AmethystCTranslator_persistent(VALUE self ) {
     _rev=bind_aget(bind2,3);;
     _ap=bind_aget(bind2,4);;
     bind_aset(bind2,1,_pre);
+    bind_aset(bind2,2,_ap);
+    it=rb_funcall(self,sy_AmethystCTranslator_bind_lb_1_rb_2,1,bind2);
+    _pre=bind_aget(bind2,1);;
+    _ap=bind_aget(bind2,2);;
+    bind_aset(bind2,1,_pre);
     bind_aset(bind2,2,_t);
     bind_aset(bind2,3,_acc);
     bind_aset(bind2,4,_rev);
@@ -565,10 +551,6 @@ VALUE AmethystCTranslator_rbcode(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        VALUE revert1autovar_6=rb_funcall(_autovar_6,rb_intern("dup"),0);
-        VALUE revert1k=rb_funcall(_k,rb_intern("dup"),0);
-        VALUE revert1v=rb_funcall(_v,rb_intern("dup"),0);
-        VALUE revert1autovar_7=rb_funcall(_autovar_7,rb_intern("dup"),0);
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -616,10 +598,6 @@ success3:
         goto accept2;
 revert1:
         ;
-        _autovar_6=revert1autovar_6;
-        _k=revert1k;
-        _v=revert1v;
-        _autovar_7=revert1autovar_7;
         goto alt1_2;
 accept2:
         ;
@@ -711,9 +689,6 @@ VALUE AmethystCTranslator_rbtrans(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        VALUE revert1autovar=rb_funcall(_autovar,rb_intern("dup"),0);
-        VALUE revert1autovar_2=rb_funcall(_autovar_2,rb_intern("dup"),0);
-        VALUE revert1_result=rb_funcall(__result,rb_intern("dup"),0);
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar=it;;
@@ -744,9 +719,6 @@ success1:
         goto accept2;
 revert1:
         ;
-        _autovar=revert1autovar;
-        _autovar_2=revert1autovar_2;
-        __result=revert1_result;
         goto alt1_2;
 accept2:
         ;
@@ -755,7 +727,6 @@ accept2:
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
-        VALUE revert2_result=rb_funcall(__result,rb_intern("dup"),0);
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -767,7 +738,6 @@ alt1_2:
         goto accept3;
 revert2:
         ;
-        __result=revert2_result;
         goto alt1_3;
 accept3:
         ;
@@ -789,9 +759,6 @@ accept1:
         int cut2=0;
 alt2_1:
         ;
-        VALUE revert3_result=rb_funcall(__result,rb_intern("dup"),0);
-        VALUE revert3autovar_3=rb_funcall(_autovar_3,rb_intern("dup"),0);
-        VALUE revert3autovar_4=rb_funcall(_autovar_4,rb_intern("dup"),0);
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar_3=it;;
@@ -822,9 +789,6 @@ success2:
         goto accept5;
 revert3:
         ;
-        __result=revert3_result;
-        _autovar_3=revert3autovar_3;
-        _autovar_4=revert3autovar_4;
         goto alt2_2;
 accept5:
         ;
@@ -833,7 +797,6 @@ accept5:
         goto accept4;
 alt2_2:
         ptr->pos=oldpos2;
-        VALUE revert4_result=rb_funcall(__result,rb_intern("dup"),0);
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -845,7 +808,6 @@ alt2_2:
         goto accept6;
 revert4:
         ;
-        __result=revert4_result;
         goto alt2_3;
 accept6:
         ;
@@ -867,9 +829,6 @@ accept4:
         int cut3=0;
 alt3_1:
         ;
-        VALUE revert5_result=rb_funcall(__result,rb_intern("dup"),0);
-        VALUE revert5autovar_5=rb_funcall(_autovar_5,rb_intern("dup"),0);
-        VALUE revert5name=rb_funcall(_name,rb_intern("dup"),0);
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar_5=it;;
@@ -906,9 +865,6 @@ success3:
         goto accept8;
 revert5:
         ;
-        __result=revert5_result;
-        _autovar_5=revert5autovar_5;
-        _name=revert5name;
         goto alt3_2;
 accept8:
         ;
@@ -917,7 +873,6 @@ accept8:
         goto accept7;
 alt3_2:
         ptr->pos=oldpos3;
-        VALUE revert6_result=rb_funcall(__result,rb_intern("dup"),0);
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -929,7 +884,6 @@ alt3_2:
         goto accept9;
 revert6:
         ;
-        __result=revert6_result;
         goto alt3_3;
 accept9:
         ;
@@ -951,10 +905,6 @@ accept7:
         int cut4=0;
 alt4_1:
         ;
-        VALUE revert7_result=rb_funcall(__result,rb_intern("dup"),0);
-        VALUE revert7name=rb_funcall(_name,rb_intern("dup"),0);
-        VALUE revert7autovar_6=rb_funcall(_autovar_6,rb_intern("dup"),0);
-        VALUE revert7args=rb_funcall(_args,rb_intern("dup"),0);
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar_6=it;;
@@ -999,10 +949,6 @@ success4:
         goto accept11;
 revert7:
         ;
-        __result=revert7_result;
-        _name=revert7name;
-        _autovar_6=revert7autovar_6;
-        _args=revert7args;
         goto alt4_2;
 accept11:
         ;
@@ -1011,7 +957,6 @@ accept11:
         goto accept10;
 alt4_2:
         ptr->pos=oldpos4;
-        VALUE revert8_result=rb_funcall(__result,rb_intern("dup"),0);
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -1023,7 +968,6 @@ alt4_2:
         goto accept12;
 revert8:
         ;
-        __result=revert8_result;
         goto alt4_3;
 accept12:
         ;
@@ -1045,9 +989,6 @@ accept10:
         int cut5=0;
 alt5_1:
         ;
-        VALUE revert9_result=rb_funcall(__result,rb_intern("dup"),0);
-        VALUE revert9autovar_7=rb_funcall(_autovar_7,rb_intern("dup"),0);
-        VALUE revert9autovar_8=rb_funcall(_autovar_8,rb_intern("dup"),0);
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar_7=it;;
@@ -1082,9 +1023,6 @@ success5:
         goto accept14;
 revert9:
         ;
-        __result=revert9_result;
-        _autovar_7=revert9autovar_7;
-        _autovar_8=revert9autovar_8;
         goto alt5_2;
 accept14:
         ;
@@ -1093,7 +1031,6 @@ accept14:
         goto accept13;
 alt5_2:
         ptr->pos=oldpos5;
-        VALUE revert10_result=rb_funcall(__result,rb_intern("dup"),0);
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -1105,7 +1042,6 @@ alt5_2:
         goto accept15;
 revert10:
         ;
-        __result=revert10_result;
         goto alt5_3;
 accept15:
         ;
@@ -1127,9 +1063,6 @@ accept13:
         int cut6=0;
 alt6_1:
         ;
-        VALUE revert11_result=rb_funcall(__result,rb_intern("dup"),0);
-        VALUE revert11autovar_9=rb_funcall(_autovar_9,rb_intern("dup"),0);
-        VALUE revert11autovar_10=rb_funcall(_autovar_10,rb_intern("dup"),0);
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar_9=it;;
@@ -1161,9 +1094,6 @@ success6:
         goto accept17;
 revert11:
         ;
-        __result=revert11_result;
-        _autovar_9=revert11autovar_9;
-        _autovar_10=revert11autovar_10;
         goto alt6_2;
 accept17:
         ;
@@ -1172,7 +1102,6 @@ accept17:
         goto accept16;
 alt6_2:
         ptr->pos=oldpos6;
-        VALUE revert12_result=rb_funcall(__result,rb_intern("dup"),0);
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -1184,7 +1113,6 @@ alt6_2:
         goto accept18;
 revert12:
         ;
-        __result=revert12_result;
         goto alt6_3;
 accept18:
         ;
@@ -1206,9 +1134,6 @@ accept16:
         int cut7=0;
 alt7_1:
         ;
-        VALUE revert13_result=rb_funcall(__result,rb_intern("dup"),0);
-        VALUE revert13autovar_11=rb_funcall(_autovar_11,rb_intern("dup"),0);
-        VALUE revert13autovar_12=rb_funcall(_autovar_12,rb_intern("dup"),0);
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar_11=it;;
@@ -1239,9 +1164,6 @@ success7:
         goto accept20;
 revert13:
         ;
-        __result=revert13_result;
-        _autovar_11=revert13autovar_11;
-        _autovar_12=revert13autovar_12;
         goto alt7_2;
 accept20:
         ;
@@ -1250,7 +1172,6 @@ accept20:
         goto accept19;
 alt7_2:
         ptr->pos=oldpos7;
-        VALUE revert14_result=rb_funcall(__result,rb_intern("dup"),0);
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -1262,7 +1183,6 @@ alt7_2:
         goto accept21;
 revert14:
         ;
-        __result=revert14_result;
         goto alt7_3;
 accept21:
         ;
@@ -1306,7 +1226,6 @@ VALUE AmethystCTranslator_rbtrans2(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        VALUE revert1autovar_2=rb_funcall(_autovar_2,rb_intern("dup"),0);
         it=AmethystCTranslator_rbtrans(self );
         if (it==failobj) {
             it=failobj;
@@ -1318,7 +1237,6 @@ alt1_1:
         goto accept2;
 revert1:
         ;
-        _autovar_2=revert1autovar_2;
         goto alt1_2;
 accept2:
         ;
@@ -1415,12 +1333,6 @@ VALUE AmethystCTranslator_trans(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        VALUE revert1autovar_6=rb_funcall(_autovar_6,rb_intern("dup"),0);
-        VALUE revert1a=rb_funcall(_a,rb_intern("dup"),0);
-        VALUE revert1x=rb_funcall(_x,rb_intern("dup"),0);
-        VALUE revert1y=rb_funcall(_y,rb_intern("dup"),0);
-        VALUE revert1_result=rb_funcall(__result,rb_intern("dup"),0);
-        VALUE revert1autovar_7=rb_funcall(_autovar_7,rb_intern("dup"),0);
         it=_autovar_5;
         _autovar_6=it;;
         cstruct oldpass1=*ptr;
@@ -1506,12 +1418,6 @@ success1:
         goto accept2;
 revert1:
         ;
-        _autovar_6=revert1autovar_6;
-        _a=revert1a;
-        _x=revert1x;
-        _y=revert1y;
-        __result=revert1_result;
-        _autovar_7=revert1autovar_7;
         goto alt1_2;
 accept2:
         ;
@@ -1520,19 +1426,6 @@ accept2:
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
-        VALUE revert2autovar_2=rb_funcall(_autovar_2,rb_intern("dup"),0);
-        VALUE revert2_result=rb_funcall(__result,rb_intern("dup"),0);
-        VALUE revert2autovar_7=rb_funcall(_autovar_7,rb_intern("dup"),0);
-        VALUE revert2autovar_8=rb_funcall(_autovar_8,rb_intern("dup"),0);
-        VALUE revert2autovar_9=rb_funcall(_autovar_9,rb_intern("dup"),0);
-        VALUE revert2autovar_10=rb_funcall(_autovar_10,rb_intern("dup"),0);
-        VALUE revert2it=rb_funcall(_it,rb_intern("dup"),0);
-        VALUE revert2s=rb_funcall(_s,rb_intern("dup"),0);
-        VALUE revert2autovar_11=rb_funcall(_autovar_11,rb_intern("dup"),0);
-        VALUE revert2autovar_12=rb_funcall(_autovar_12,rb_intern("dup"),0);
-        VALUE revert2_result_2=rb_funcall(__result_2,rb_intern("dup"),0);
-        VALUE revert2cbno=rb_funcall(_cbno,rb_intern("dup"),0);
-        VALUE revert2autovar_13=rb_funcall(_autovar_13,rb_intern("dup"),0);
         it=_autovar_5;
         _autovar_8=it;;
         cstruct oldpass2=*ptr;
@@ -1548,7 +1441,6 @@ alt1_2:
             int cut2=0;
 alt2_1:
             ;
-            VALUE revert3autovar_10=rb_funcall(_autovar_10,rb_intern("dup"),0);
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -1560,7 +1452,6 @@ alt2_1:
             goto accept5;
 revert3:
             ;
-            _autovar_10=revert3autovar_10;
             goto alt2_2;
 accept5:
             ;
@@ -1657,19 +1548,6 @@ success2:
         goto accept3;
 revert2:
         ;
-        _autovar_2=revert2autovar_2;
-        __result=revert2_result;
-        _autovar_7=revert2autovar_7;
-        _autovar_8=revert2autovar_8;
-        _autovar_9=revert2autovar_9;
-        _autovar_10=revert2autovar_10;
-        _it=revert2it;
-        _s=revert2s;
-        _autovar_11=revert2autovar_11;
-        _autovar_12=revert2autovar_12;
-        __result_2=revert2_result_2;
-        _cbno=revert2cbno;
-        _autovar_13=revert2autovar_13;
         goto alt1_3;
 accept3:
         ;
@@ -1708,11 +1586,6 @@ accept1:
         int cut3=0;
 alt3_1:
         ;
-        VALUE revert5_result=rb_funcall(__result,rb_intern("dup"),0);
-        VALUE revert5autovar_7=rb_funcall(_autovar_7,rb_intern("dup"),0);
-        VALUE revert5autovar_17=rb_funcall(_autovar_17,rb_intern("dup"),0);
-        VALUE revert5autovar_18=rb_funcall(_autovar_18,rb_intern("dup"),0);
-        VALUE revert5autovar_19=rb_funcall(_autovar_19,rb_intern("dup"),0);
         it=_autovar_16;
         _autovar_17=it;;
         cstruct oldpass4=*ptr;
@@ -1789,11 +1662,6 @@ success4:
         goto accept8;
 revert5:
         ;
-        __result=revert5_result;
-        _autovar_7=revert5autovar_7;
-        _autovar_17=revert5autovar_17;
-        _autovar_18=revert5autovar_18;
-        _autovar_19=revert5autovar_19;
         goto alt3_2;
 accept8:
         ;
@@ -1802,12 +1670,6 @@ accept8:
         goto accept7;
 alt3_2:
         ptr->pos=oldpos3;
-        VALUE revert6_result=rb_funcall(__result,rb_intern("dup"),0);
-        VALUE revert6autovar_7=rb_funcall(_autovar_7,rb_intern("dup"),0);
-        VALUE revert6autovar_20=rb_funcall(_autovar_20,rb_intern("dup"),0);
-        VALUE revert6autovar_21=rb_funcall(_autovar_21,rb_intern("dup"),0);
-        VALUE revert6autovar_22=rb_funcall(_autovar_22,rb_intern("dup"),0);
-        VALUE revert6s_2=rb_funcall(_s_2,rb_intern("dup"),0);
         it=_autovar_16;
         _autovar_20=it;;
         cstruct oldpass6=*ptr;
@@ -1923,12 +1785,6 @@ success6:
         goto accept9;
 revert6:
         ;
-        __result=revert6_result;
-        _autovar_7=revert6autovar_7;
-        _autovar_20=revert6autovar_20;
-        _autovar_21=revert6autovar_21;
-        _autovar_22=revert6autovar_22;
-        _s_2=revert6s_2;
         goto alt3_3;
 accept9:
         ;
@@ -1937,11 +1793,6 @@ accept9:
         goto accept7;
 alt3_3:
         ptr->pos=oldpos3;
-        VALUE revert7_result=rb_funcall(__result,rb_intern("dup"),0);
-        VALUE revert7autovar_7=rb_funcall(_autovar_7,rb_intern("dup"),0);
-        VALUE revert7autovar_23=rb_funcall(_autovar_23,rb_intern("dup"),0);
-        VALUE revert7autovar_24=rb_funcall(_autovar_24,rb_intern("dup"),0);
-        VALUE revert7autovar_25=rb_funcall(_autovar_25,rb_intern("dup"),0);
         it=_autovar_16;
         _autovar_23=it;;
         cstruct oldpass9=*ptr;
@@ -2018,11 +1869,6 @@ success9:
         goto accept10;
 revert7:
         ;
-        __result=revert7_result;
-        _autovar_7=revert7autovar_7;
-        _autovar_23=revert7autovar_23;
-        _autovar_24=revert7autovar_24;
-        _autovar_25=revert7autovar_25;
         goto alt3_4;
 accept10:
         ;
@@ -2031,11 +1877,6 @@ accept10:
         goto accept7;
 alt3_4:
         ptr->pos=oldpos3;
-        VALUE revert8_result=rb_funcall(__result,rb_intern("dup"),0);
-        VALUE revert8autovar_7=rb_funcall(_autovar_7,rb_intern("dup"),0);
-        VALUE revert8autovar_26=rb_funcall(_autovar_26,rb_intern("dup"),0);
-        VALUE revert8autovar_27=rb_funcall(_autovar_27,rb_intern("dup"),0);
-        VALUE revert8autovar_28=rb_funcall(_autovar_28,rb_intern("dup"),0);
         it=_autovar_16;
         _autovar_26=it;;
         cstruct oldpass11=*ptr;
@@ -2112,11 +1953,6 @@ success11:
         goto accept11;
 revert8:
         ;
-        __result=revert8_result;
-        _autovar_7=revert8autovar_7;
-        _autovar_26=revert8autovar_26;
-        _autovar_27=revert8autovar_27;
-        _autovar_28=revert8autovar_28;
         goto alt3_5;
 accept11:
         ;
@@ -2125,10 +1961,6 @@ accept11:
         goto accept7;
 alt3_5:
         ptr->pos=oldpos3;
-        VALUE revert9_result=rb_funcall(__result,rb_intern("dup"),0);
-        VALUE revert9autovar_7=rb_funcall(_autovar_7,rb_intern("dup"),0);
-        VALUE revert9autovar_29=rb_funcall(_autovar_29,rb_intern("dup"),0);
-        VALUE revert9autovar_30=rb_funcall(_autovar_30,rb_intern("dup"),0);
         it=_autovar_16;
         _autovar_29=it;;
         cstruct oldpass13=*ptr;
@@ -2203,10 +2035,6 @@ success13:
         goto accept12;
 revert9:
         ;
-        __result=revert9_result;
-        _autovar_7=revert9autovar_7;
-        _autovar_29=revert9autovar_29;
-        _autovar_30=revert9autovar_30;
         goto alt3_6;
 accept12:
         ;
@@ -2215,10 +2043,6 @@ accept12:
         goto accept7;
 alt3_6:
         ptr->pos=oldpos3;
-        VALUE revert10_result=rb_funcall(__result,rb_intern("dup"),0);
-        VALUE revert10autovar_7=rb_funcall(_autovar_7,rb_intern("dup"),0);
-        VALUE revert10autovar_31=rb_funcall(_autovar_31,rb_intern("dup"),0);
-        VALUE revert10autovar_32=rb_funcall(_autovar_32,rb_intern("dup"),0);
         it=_autovar_16;
         _autovar_31=it;;
         cstruct oldpass15=*ptr;
@@ -2293,10 +2117,6 @@ success15:
         goto accept13;
 revert10:
         ;
-        __result=revert10_result;
-        _autovar_7=revert10autovar_7;
-        _autovar_31=revert10autovar_31;
-        _autovar_32=revert10autovar_32;
         goto alt3_7;
 accept13:
         ;
@@ -2305,10 +2125,6 @@ accept13:
         goto accept7;
 alt3_7:
         ptr->pos=oldpos3;
-        VALUE revert11_result=rb_funcall(__result,rb_intern("dup"),0);
-        VALUE revert11autovar_7=rb_funcall(_autovar_7,rb_intern("dup"),0);
-        VALUE revert11autovar_33=rb_funcall(_autovar_33,rb_intern("dup"),0);
-        VALUE revert11autovar_34=rb_funcall(_autovar_34,rb_intern("dup"),0);
         it=_autovar_16;
         _autovar_33=it;;
         cstruct oldpass17=*ptr;
@@ -2383,10 +2199,6 @@ success17:
         goto accept14;
 revert11:
         ;
-        __result=revert11_result;
-        _autovar_7=revert11autovar_7;
-        _autovar_33=revert11autovar_33;
-        _autovar_34=revert11autovar_34;
         goto alt3_8;
 accept14:
         ;
@@ -2395,13 +2207,6 @@ accept14:
         goto accept7;
 alt3_8:
         ptr->pos=oldpos3;
-        VALUE revert12_result=rb_funcall(__result,rb_intern("dup"),0);
-        VALUE revert12autovar_7=rb_funcall(_autovar_7,rb_intern("dup"),0);
-        VALUE revert12s_2=rb_funcall(_s_2,rb_intern("dup"),0);
-        VALUE revert12autovar_35=rb_funcall(_autovar_35,rb_intern("dup"),0);
-        VALUE revert12autovar_36=rb_funcall(_autovar_36,rb_intern("dup"),0);
-        VALUE revert12autovar_37=rb_funcall(_autovar_37,rb_intern("dup"),0);
-        VALUE revert12autovar_38=rb_funcall(_autovar_38,rb_intern("dup"),0);
         it=_autovar_16;
         _autovar_35=it;;
         cstruct oldpass19=*ptr;
@@ -2519,13 +2324,6 @@ success19:
         goto accept15;
 revert12:
         ;
-        __result=revert12_result;
-        _autovar_7=revert12autovar_7;
-        _s_2=revert12s_2;
-        _autovar_35=revert12autovar_35;
-        _autovar_36=revert12autovar_36;
-        _autovar_37=revert12autovar_37;
-        _autovar_38=revert12autovar_38;
         goto alt3_9;
 accept15:
         ;
@@ -2534,17 +2332,6 @@ accept15:
         goto accept7;
 alt3_9:
         ptr->pos=oldpos3;
-        VALUE revert13autovar_2=rb_funcall(_autovar_2,rb_intern("dup"),0);
-        VALUE revert13_result=rb_funcall(__result,rb_intern("dup"),0);
-        VALUE revert13autovar_7=rb_funcall(_autovar_7,rb_intern("dup"),0);
-        VALUE revert13autovar_39=rb_funcall(_autovar_39,rb_intern("dup"),0);
-        VALUE revert13name=rb_funcall(_name,rb_intern("dup"),0);
-        VALUE revert13ii=rb_funcall(_ii,rb_intern("dup"),0);
-        VALUE revert13autovar_40=rb_funcall(_autovar_40,rb_intern("dup"),0);
-        VALUE revert13aa=rb_funcall(_aa,rb_intern("dup"),0);
-        VALUE revert13autovar_41=rb_funcall(_autovar_41,rb_intern("dup"),0);
-        VALUE revert13args=rb_funcall(_args,rb_intern("dup"),0);
-        VALUE revert13app=rb_funcall(_app,rb_intern("dup"),0);
         it=_autovar_16;
         _autovar_39=it;;
         cstruct oldpass22=*ptr;
@@ -2567,10 +2354,6 @@ alt3_9:
             int cut4=0;
 alt4_1:
             ;
-            VALUE revert14autovar_2=rb_funcall(_autovar_2,rb_intern("dup"),0);
-            VALUE revert14ii=rb_funcall(_ii,rb_intern("dup"),0);
-            VALUE revert14aa=rb_funcall(_aa,rb_intern("dup"),0);
-            VALUE revert14autovar_41=rb_funcall(_autovar_41,rb_intern("dup"),0);
             bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy_AmethystCTranslator__at__contex_d6d5,1,bind2);
             _autovar_2=bind_aget(bind2,1);;
@@ -2594,10 +2377,6 @@ alt4_1:
             goto accept18;
 revert14:
             ;
-            _autovar_2=revert14autovar_2;
-            _ii=revert14ii;
-            _aa=revert14aa;
-            _autovar_41=revert14autovar_41;
             goto alt4_2;
 accept18:
             ;
@@ -2660,17 +2439,6 @@ success22:
         goto accept16;
 revert13:
         ;
-        _autovar_2=revert13autovar_2;
-        __result=revert13_result;
-        _autovar_7=revert13autovar_7;
-        _autovar_39=revert13autovar_39;
-        _name=revert13name;
-        _ii=revert13ii;
-        _autovar_40=revert13autovar_40;
-        _aa=revert13aa;
-        _autovar_41=revert13autovar_41;
-        _args=revert13args;
-        _app=revert13app;
         goto alt3_10;
 accept16:
         ;
@@ -2869,8 +2637,6 @@ success25:
             int cut5=0;
 alt5_1:
             ;
-            VALUE revert16autovar_2=rb_funcall(_autovar_2,rb_intern("dup"),0);
-            VALUE revert16autovar_51=rb_funcall(_autovar_51,rb_intern("dup"),0);
             bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy_AmethystCTranslator__at__contex_d6d5,1,bind2);
             _autovar_2=bind_aget(bind2,1);;
@@ -2885,8 +2651,6 @@ alt5_1:
             goto accept21;
 revert16:
             ;
-            _autovar_2=revert16autovar_2;
-            _autovar_51=revert16autovar_51;
             goto alt5_2;
 accept21:
             ;
@@ -3127,13 +2891,6 @@ success30:
         int cut6=0;
 alt6_1:
         ;
-        VALUE revert18_result=rb_funcall(__result,rb_intern("dup"),0);
-        VALUE revert18autovar_7=rb_funcall(_autovar_7,rb_intern("dup"),0);
-        VALUE revert18autovar_62=rb_funcall(_autovar_62,rb_intern("dup"),0);
-        VALUE revert18autovar_63=rb_funcall(_autovar_63,rb_intern("dup"),0);
-        VALUE revert18autovar_64=rb_funcall(_autovar_64,rb_intern("dup"),0);
-        VALUE revert18autovar_65=rb_funcall(_autovar_65,rb_intern("dup"),0);
-        VALUE revert18autovar_66=rb_funcall(_autovar_66,rb_intern("dup"),0);
         it=_autovar_61;
         _autovar_62=it;;
         cstruct oldpass31=*ptr;
@@ -3308,13 +3065,6 @@ success31:
         goto accept24;
 revert18:
         ;
-        __result=revert18_result;
-        _autovar_7=revert18autovar_7;
-        _autovar_62=revert18autovar_62;
-        _autovar_63=revert18autovar_63;
-        _autovar_64=revert18autovar_64;
-        _autovar_65=revert18autovar_65;
-        _autovar_66=revert18autovar_66;
         goto alt6_2;
 accept24:
         ;
@@ -3323,15 +3073,6 @@ accept24:
         goto accept23;
 alt6_2:
         ptr->pos=oldpos6;
-        VALUE revert19autovar_2=rb_funcall(_autovar_2,rb_intern("dup"),0);
-        VALUE revert19_result=rb_funcall(__result,rb_intern("dup"),0);
-        VALUE revert19autovar_7=rb_funcall(_autovar_7,rb_intern("dup"),0);
-        VALUE revert19s_2=rb_funcall(_s_2,rb_intern("dup"),0);
-        VALUE revert19t=rb_funcall(_t,rb_intern("dup"),0);
-        VALUE revert19autovar_67=rb_funcall(_autovar_67,rb_intern("dup"),0);
-        VALUE revert19oldstops=rb_funcall(_oldstops,rb_intern("dup"),0);
-        VALUE revert19oldstoplabel=rb_funcall(_oldstoplabel,rb_intern("dup"),0);
-        VALUE revert19autovar_68=rb_funcall(_autovar_68,rb_intern("dup"),0);
         it=_autovar_61;
         _autovar_67=it;;
         cstruct oldpass36=*ptr;
@@ -3385,15 +3126,6 @@ success36:
         goto accept25;
 revert19:
         ;
-        _autovar_2=revert19autovar_2;
-        __result=revert19_result;
-        _autovar_7=revert19autovar_7;
-        _s_2=revert19s_2;
-        _t=revert19t;
-        _autovar_67=revert19autovar_67;
-        _oldstops=revert19oldstops;
-        _oldstoplabel=revert19oldstoplabel;
-        _autovar_68=revert19autovar_68;
         goto alt6_3;
 accept25:
         ;
@@ -3529,17 +3261,6 @@ success37:
             int cut7=0;
 alt7_1:
             ;
-            VALUE revert20_result=rb_funcall(__result,rb_intern("dup"),0);
-            VALUE revert20s_2=rb_funcall(_s_2,rb_intern("dup"),0);
-            VALUE revert20t=rb_funcall(_t,rb_intern("dup"),0);
-            VALUE revert20accept=rb_funcall(_accept,rb_intern("dup"),0);
-            VALUE revert20oldpos=rb_funcall(_oldpos,rb_intern("dup"),0);
-            VALUE revert20word=rb_funcall(_word,rb_intern("dup"),0);
-            VALUE revert20rwo=rb_funcall(_rwo,rb_intern("dup"),0);
-            VALUE revert20x_2=rb_funcall(_x_2,rb_intern("dup"),0);
-            VALUE revert20_result_3=rb_funcall(__result_3,rb_intern("dup"),0);
-            VALUE revert20alt=rb_funcall(_alt,rb_intern("dup"),0);
-            VALUE revert20altno=rb_funcall(_altno,rb_intern("dup"),0);
             int oldpos8=ptr->pos;
             it=AmethystCore_anything(self );
             if (it==failobj) {
@@ -3612,17 +3333,6 @@ accept28:
             goto accept27;
 revert20:
             ;
-            __result=revert20_result;
-            _s_2=revert20s_2;
-            _t=revert20t;
-            _accept=revert20accept;
-            _oldpos=revert20oldpos;
-            _word=revert20word;
-            _rwo=revert20rwo;
-            _x_2=revert20x_2;
-            __result_3=revert20_result_3;
-            _alt=revert20alt;
-            _altno=revert20altno;
             goto alt7_2;
 accept27:
             ;
@@ -3914,8 +3624,6 @@ success41:
             int cut8=0;
 alt8_1:
             ;
-            VALUE revert23autovar_2=rb_funcall(_autovar_2,rb_intern("dup"),0);
-            VALUE revert23autovar_82=rb_funcall(_autovar_82,rb_intern("dup"),0);
             bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy_AmethystCTranslator__at__contex_d6d5,1,bind2);
             _autovar_2=bind_aget(bind2,1);;
@@ -3930,8 +3638,6 @@ alt8_1:
             goto accept32;
 revert23:
             ;
-            _autovar_2=revert23autovar_2;
-            _autovar_82=revert23autovar_82;
             goto alt8_2;
 accept32:
             ;
@@ -4049,11 +3755,6 @@ success44:
             int cut9=0;
 alt9_1:
             ;
-            VALUE revert25autovar_2=rb_funcall(_autovar_2,rb_intern("dup"),0);
-            VALUE revert25s_2=rb_funcall(_s_2,rb_intern("dup"),0);
-            VALUE revert25t=rb_funcall(_t,rb_intern("dup"),0);
-            VALUE revert25autovar_86=rb_funcall(_autovar_86,rb_intern("dup"),0);
-            VALUE revert25c=rb_funcall(_c,rb_intern("dup"),0);
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -4104,11 +3805,6 @@ success46:
             goto accept35;
 revert25:
             ;
-            _autovar_2=revert25autovar_2;
-            _s_2=revert25s_2;
-            _t=revert25t;
-            _autovar_86=revert25autovar_86;
-            _c=revert25c;
             goto alt9_2;
 accept35:
             ;
@@ -4199,13 +3895,6 @@ success45:
             int cut10=0;
 alt10_1:
             ;
-            VALUE revert27autovar_2=rb_funcall(_autovar_2,rb_intern("dup"),0);
-            VALUE revert27s_2=rb_funcall(_s_2,rb_intern("dup"),0);
-            VALUE revert27ii=rb_funcall(_ii,rb_intern("dup"),0);
-            VALUE revert27t=rb_funcall(_t,rb_intern("dup"),0);
-            VALUE revert27init=rb_funcall(_init,rb_intern("dup"),0);
-            VALUE revert27c=rb_funcall(_c,rb_intern("dup"),0);
-            VALUE revert27autovar_89=rb_funcall(_autovar_89,rb_intern("dup"),0);
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -4263,13 +3952,6 @@ success48:
             goto accept38;
 revert27:
             ;
-            _autovar_2=revert27autovar_2;
-            _s_2=revert27s_2;
-            _ii=revert27ii;
-            _t=revert27t;
-            _init=revert27init;
-            _c=revert27c;
-            _autovar_89=revert27autovar_89;
             goto alt10_2;
 accept38:
             ;
@@ -4460,6 +4142,7 @@ void Init_AmethystCTranslator_c() {
     sy_AmethystCTranslator__lp_bind_lb_1_rb__dbc9=rb_intern("AmethystCTranslator__lp_bind_lb_1_rb__dbc9");
     sy_AmethystCTranslator_addcallb_2cf7=rb_intern("AmethystCTranslator_addcallb_2cf7");
     sy_AmethystCTranslator_ar_eq__ti_src_dot__1348=rb_intern("AmethystCTranslator_ar_eq__ti_src_dot__1348");
+    sy_AmethystCTranslator_bind_lb_1_rb_2=rb_intern("AmethystCTranslator_bind_lb_1_rb_2");
     sy_AmethystCTranslator_bind_lb_1_rb_=rb_intern("AmethystCTranslator_bind_lb_1_rb_");
     sy_AmethystCTranslator_bind_lb_1_rb__dot__1364=rb_intern("AmethystCTranslator_bind_lb_1_rb__dot__1364");
     sy_AmethystCTranslator_bind_lb_1_rb__eq__7d1a=rb_intern("AmethystCTranslator_bind_lb_1_rb__eq__7d1a");

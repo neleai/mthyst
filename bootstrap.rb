@@ -3,6 +3,7 @@ require './lib/amethyst'
 #Amethyst::Settings.debug=2
 #Amethyst::Settings.profiling=true
 #Amethyst::Settings.cflags="-march=core2 -O3" #slower as gcc is limiting factor
+$disable_persistence=true # persistence slows compiler by 15%
 COMPILED.each{|f|
 puts f
 Compiler::compile("amethyst/#{f}.ame",true)

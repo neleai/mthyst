@@ -44,16 +44,6 @@ VALUE Switch_Clas_Dataflow_first(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        VALUE revert1autovar=rb_funcall(_autovar,rb_intern("dup"),0);
-        VALUE revert1autovar_2=rb_funcall(_autovar_2,rb_intern("dup"),0);
-        VALUE revert1autovar_3=rb_funcall(_autovar_3,rb_intern("dup"),0);
-        VALUE revert1autovar_4=rb_funcall(_autovar_4,rb_intern("dup"),0);
-        VALUE revert1autovar_5=rb_funcall(_autovar_5,rb_intern("dup"),0);
-        VALUE revert1autovar_6=rb_funcall(_autovar_6,rb_intern("dup"),0);
-        VALUE revert1cls=rb_funcall(_cls,rb_intern("dup"),0);
-        VALUE revert1_result=rb_funcall(__result,rb_intern("dup"),0);
-        VALUE revert1autovar_7=rb_funcall(_autovar_7,rb_intern("dup"),0);
-        VALUE revert1autovar_8=rb_funcall(_autovar_8,rb_intern("dup"),0);
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar=it;;
@@ -65,11 +55,6 @@ alt1_1:
         int cut2=0;
 alt2_1:
         ;
-        VALUE revert2autovar_4=rb_funcall(_autovar_4,rb_intern("dup"),0);
-        VALUE revert2autovar_5=rb_funcall(_autovar_5,rb_intern("dup"),0);
-        VALUE revert2autovar_6=rb_funcall(_autovar_6,rb_intern("dup"),0);
-        VALUE revert2cls=rb_funcall(_cls,rb_intern("dup"),0);
-        VALUE revert2_result=rb_funcall(__result,rb_intern("dup"),0);
         it=_autovar_3;
         _autovar_4=it;;
         cstruct oldpass1=*ptr;
@@ -193,11 +178,6 @@ success1:
         goto accept4;
 revert2:
         ;
-        _autovar_4=revert2autovar_4;
-        _autovar_5=revert2autovar_5;
-        _autovar_6=revert2autovar_6;
-        _cls=revert2cls;
-        __result=revert2_result;
         goto alt2_2;
 accept4:
         ;
@@ -206,9 +186,6 @@ accept4:
         goto accept3;
 alt2_2:
         ptr->pos=oldpos2;
-        VALUE revert3_result=rb_funcall(__result,rb_intern("dup"),0);
-        VALUE revert3autovar_7=rb_funcall(_autovar_7,rb_intern("dup"),0);
-        VALUE revert3autovar_8=rb_funcall(_autovar_8,rb_intern("dup"),0);
         it=_autovar_3;
         _autovar_7=it;;
         cstruct oldpass4=*ptr;
@@ -282,9 +259,6 @@ success4:
         goto accept5;
 revert3:
         ;
-        __result=revert3_result;
-        _autovar_7=revert3autovar_7;
-        _autovar_8=revert3autovar_8;
         goto alt2_3;
 accept5:
         ;
@@ -304,16 +278,6 @@ accept3:
         goto accept2;
 revert1:
         ;
-        _autovar=revert1autovar;
-        _autovar_2=revert1autovar_2;
-        _autovar_3=revert1autovar_3;
-        _autovar_4=revert1autovar_4;
-        _autovar_5=revert1autovar_5;
-        _autovar_6=revert1autovar_6;
-        _cls=revert1cls;
-        __result=revert1_result;
-        _autovar_7=revert1autovar_7;
-        _autovar_8=revert1autovar_8;
         goto alt1_2;
 accept2:
         ;
@@ -322,7 +286,6 @@ accept2:
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
-        VALUE revert4_result=rb_funcall(__result,rb_intern("dup"),0);
         it=Switch_Clas_Dataflow_first_Switch_Clas_Dataflow(self );
         if (it==failobj) {
             it=failobj;
@@ -334,7 +297,6 @@ alt1_2:
         goto accept6;
 revert4:
         ;
-        __result=revert4_result;
         goto alt1_3;
 accept6:
         ;
@@ -384,9 +346,6 @@ VALUE Switch_Clas_Dataflow_first_Switch_Clas_Dataflow(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        VALUE revert1autovar=rb_funcall(_autovar,rb_intern("dup"),0);
-        VALUE revert1autovar_2=rb_funcall(_autovar_2,rb_intern("dup"),0);
-        VALUE revert1_result=rb_funcall(__result,rb_intern("dup"),0);
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar=it;;
@@ -418,9 +377,6 @@ success1:
         goto accept2;
 revert1:
         ;
-        _autovar=revert1autovar;
-        _autovar_2=revert1autovar_2;
-        __result=revert1_result;
         goto alt1_2;
 accept2:
         ;
@@ -429,7 +385,6 @@ accept2:
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
-        VALUE revert2_result=rb_funcall(__result,rb_intern("dup"),0);
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -442,7 +397,6 @@ alt1_2:
         goto accept3;
 revert2:
         ;
-        __result=revert2_result;
         goto alt1_3;
 accept3:
         ;
@@ -464,12 +418,6 @@ accept1:
         int cut2=0;
 alt2_1:
         ;
-        VALUE revert3_result=rb_funcall(__result,rb_intern("dup"),0);
-        VALUE revert3autovar_3=rb_funcall(_autovar_3,rb_intern("dup"),0);
-        VALUE revert3name=rb_funcall(_name,rb_intern("dup"),0);
-        VALUE revert3autovar_4=rb_funcall(_autovar_4,rb_intern("dup"),0);
-        VALUE revert3autovar_5=rb_funcall(_autovar_5,rb_intern("dup"),0);
-        VALUE revert3autovar_6=rb_funcall(_autovar_6,rb_intern("dup"),0);
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar_3=it;;
@@ -501,26 +449,16 @@ alt2_1:
         ptr->ary=alloca(sizeof(VALUE));
         ptr->ary[0]=_autovar_4;
         ptr->len=1;
-        switch((unsigned char)*ame_curstr2(ptr)) {
-        case UC(0) ... UC(255):
-            ;
-            it=First_Dataflow_value(self );
-            if (it==failobj) {
-                it=failobj;
-                goto pass3;
-            }
-            _autovar_5=it;;
-            it=Qnil;
-            if (ptr->pos<ptr->len) {
-                it=failobj;
-                goto pass3;
-            }
-            break;
-            if (1) {
-                it=failobj;
-                goto pass3;
-            }
-            break;
+        it=First_Dataflow_value(self );
+        if (it==failobj) {
+            it=failobj;
+            goto pass3;
+        }
+        _autovar_5=it;;
+        it=Qnil;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass3;
         }
         goto success3;
 pass3:
@@ -555,12 +493,6 @@ success2:
         goto accept5;
 revert3:
         ;
-        __result=revert3_result;
-        _autovar_3=revert3autovar_3;
-        _name=revert3name;
-        _autovar_4=revert3autovar_4;
-        _autovar_5=revert3autovar_5;
-        _autovar_6=revert3autovar_6;
         goto alt2_2;
 accept5:
         ;
@@ -569,7 +501,6 @@ accept5:
         goto accept4;
 alt2_2:
         ptr->pos=oldpos2;
-        VALUE revert4_result=rb_funcall(__result,rb_intern("dup"),0);
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -582,7 +513,6 @@ alt2_2:
         goto accept6;
 revert4:
         ;
-        __result=revert4_result;
         goto alt2_3;
 accept6:
         ;
@@ -604,9 +534,6 @@ accept4:
         int cut3=0;
 alt3_1:
         ;
-        VALUE revert5_result=rb_funcall(__result,rb_intern("dup"),0);
-        VALUE revert5autovar_7=rb_funcall(_autovar_7,rb_intern("dup"),0);
-        VALUE revert5autovar_8=rb_funcall(_autovar_8,rb_intern("dup"),0);
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar_7=it;;
@@ -614,26 +541,16 @@ alt3_1:
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_7);
-        switch((unsigned char)*ame_curstr2(ptr)) {
-        case UC(0) ... UC(255):
-            ;
-            it=First_Dataflow_value(self );
-            if (it==failobj) {
-                it=failobj;
-                goto pass4;
-            }
-            _autovar_8=it;;
-            it=Qnil;
-            if (ptr->pos<ptr->len) {
-                it=failobj;
-                goto pass4;
-            }
-            break;
-            if (1) {
-                it=failobj;
-                goto pass4;
-            }
-            break;
+        it=First_Dataflow_value(self );
+        if (it==failobj) {
+            it=failobj;
+            goto pass4;
+        }
+        _autovar_8=it;;
+        it=Qnil;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass4;
         }
         goto success4;
 pass4:
@@ -651,9 +568,6 @@ success4:
         goto accept8;
 revert5:
         ;
-        __result=revert5_result;
-        _autovar_7=revert5autovar_7;
-        _autovar_8=revert5autovar_8;
         goto alt3_2;
 accept8:
         ;
@@ -662,7 +576,6 @@ accept8:
         goto accept7;
 alt3_2:
         ptr->pos=oldpos3;
-        VALUE revert6_result=rb_funcall(__result,rb_intern("dup"),0);
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -675,7 +588,6 @@ alt3_2:
         goto accept9;
 revert6:
         ;
-        __result=revert6_result;
         goto alt3_3;
 accept9:
         ;
@@ -697,10 +609,6 @@ accept7:
         int cut4=0;
 alt4_1:
         ;
-        VALUE revert7_result=rb_funcall(__result,rb_intern("dup"),0);
-        VALUE revert7autovar_9=rb_funcall(_autovar_9,rb_intern("dup"),0);
-        VALUE revert7val=rb_funcall(_val,rb_intern("dup"),0);
-        VALUE revert7autovar_10=rb_funcall(_autovar_10,rb_intern("dup"),0);
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar_9=it;;
@@ -708,30 +616,20 @@ alt4_1:
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_9);
-        switch((unsigned char)*ame_curstr2(ptr)) {
-        case UC(0) ... UC(255):
-            ;
-            it=First_Dataflow_value(self );
-            if (it==failobj) {
-                it=failobj;
-                goto pass5;
-            }
-            _val=it;;
-            bind_aset(bind2,1,_val);
-            it=rb_funcall(self,sy_Switch_Clas_Dataflow_bind_lb_1_rb_,1,bind2);
-            _val=bind_aget(bind2,1);;
-            _autovar_10=it;;
-            it=Qnil;
-            if (ptr->pos<ptr->len) {
-                it=failobj;
-                goto pass5;
-            }
-            break;
-            if (1) {
-                it=failobj;
-                goto pass5;
-            }
-            break;
+        it=First_Dataflow_value(self );
+        if (it==failobj) {
+            it=failobj;
+            goto pass5;
+        }
+        _val=it;;
+        bind_aset(bind2,1,_val);
+        it=rb_funcall(self,sy_Switch_Clas_Dataflow_bind_lb_1_rb_,1,bind2);
+        _val=bind_aget(bind2,1);;
+        _autovar_10=it;;
+        it=Qnil;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass5;
         }
         goto success5;
 pass5:
@@ -749,10 +647,6 @@ success5:
         goto accept11;
 revert7:
         ;
-        __result=revert7_result;
-        _autovar_9=revert7autovar_9;
-        _val=revert7val;
-        _autovar_10=revert7autovar_10;
         goto alt4_2;
 accept11:
         ;
@@ -761,7 +655,6 @@ accept11:
         goto accept10;
 alt4_2:
         ptr->pos=oldpos4;
-        VALUE revert8_result=rb_funcall(__result,rb_intern("dup"),0);
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -774,7 +667,6 @@ alt4_2:
         goto accept12;
 revert8:
         ;
-        __result=revert8_result;
         goto alt4_3;
 accept12:
         ;
@@ -800,13 +692,6 @@ accept10:
         int cut5=0;
 alt5_1:
         ;
-        VALUE revert9_result=rb_funcall(__result,rb_intern("dup"),0);
-        VALUE revert9vals=rb_funcall(_vals,rb_intern("dup"),0);
-        VALUE revert9autovar_11=rb_funcall(_autovar_11,rb_intern("dup"),0);
-        VALUE revert9autovar_12=rb_funcall(_autovar_12,rb_intern("dup"),0);
-        VALUE revert9p=rb_funcall(_p,rb_intern("dup"),0);
-        VALUE revert9v=rb_funcall(_v,rb_intern("dup"),0);
-        VALUE revert9autovar_13=rb_funcall(_autovar_13,rb_intern("dup"),0);
         it=First_Dataflow_switch(self );
         if (it==failobj) {
             it=failobj;
@@ -823,10 +708,6 @@ alt5_1:
             int cut6=0;
 alt6_1:
             ;
-            VALUE revert10autovar_12=rb_funcall(_autovar_12,rb_intern("dup"),0);
-            VALUE revert10p=rb_funcall(_p,rb_intern("dup"),0);
-            VALUE revert10v=rb_funcall(_v,rb_intern("dup"),0);
-            VALUE revert10autovar_13=rb_funcall(_autovar_13,rb_intern("dup"),0);
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -843,22 +724,12 @@ alt6_1:
                 goto pass7;
             }
             _p=it;;
-            switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... UC(255):
-                ;
-                it=First_Dataflow_value(self );
-                if (it==failobj) {
-                    it=failobj;
-                    goto pass7;
-                }
-                _v=it;;
-                break;
-                if (1) {
-                    it=failobj;
-                    goto pass7;
-                }
-                break;
+            it=First_Dataflow_value(self );
+            if (it==failobj) {
+                it=failobj;
+                goto pass7;
             }
+            _v=it;;
             bind_aset(bind2,1,_p);
             bind_aset(bind2,2,_v);
             it=rb_funcall(self,sy_Switch_Clas_Dataflow_bind_lb_1_rb__dot__c5d5,1,bind2);
@@ -885,10 +756,6 @@ success7:
             goto accept16;
 revert10:
             ;
-            _autovar_12=revert10autovar_12;
-            _p=revert10p;
-            _v=revert10v;
-            _autovar_13=revert10autovar_13;
             goto alt6_2;
 accept16:
             ;
@@ -940,13 +807,6 @@ success6:
         goto accept14;
 revert9:
         ;
-        __result=revert9_result;
-        _vals=revert9vals;
-        _autovar_11=revert9autovar_11;
-        _autovar_12=revert9autovar_12;
-        _p=revert9p;
-        _v=revert9v;
-        _autovar_13=revert9autovar_13;
         goto alt5_2;
 accept14:
         ;
@@ -955,7 +815,6 @@ accept14:
         goto accept13;
 alt5_2:
         ptr->pos=oldpos5;
-        VALUE revert12_result=rb_funcall(__result,rb_intern("dup"),0);
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -968,7 +827,6 @@ alt5_2:
         goto accept18;
 revert12:
         ;
-        __result=revert12_result;
         goto alt5_3;
 accept18:
         ;
@@ -990,14 +848,6 @@ accept13:
         int cut7=0;
 alt7_1:
         ;
-        VALUE revert13_result=rb_funcall(__result,rb_intern("dup"),0);
-        VALUE revert13val=rb_funcall(_val,rb_intern("dup"),0);
-        VALUE revert13autovar_14=rb_funcall(_autovar_14,rb_intern("dup"),0);
-        VALUE revert13el=rb_funcall(_el,rb_intern("dup"),0);
-        VALUE revert13autovar_15=rb_funcall(_autovar_15,rb_intern("dup"),0);
-        VALUE revert13autovar_16=rb_funcall(_autovar_16,rb_intern("dup"),0);
-        VALUE revert13nev=rb_funcall(_nev,rb_intern("dup"),0);
-        VALUE revert13autovar_17=rb_funcall(_autovar_17,rb_intern("dup"),0);
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar_14=it;;
@@ -1013,11 +863,6 @@ alt7_1:
             int cut8=0;
 alt8_1:
             ;
-            VALUE revert14val=rb_funcall(_val,rb_intern("dup"),0);
-            VALUE revert14el=rb_funcall(_el,rb_intern("dup"),0);
-            VALUE revert14autovar_15=rb_funcall(_autovar_15,rb_intern("dup"),0);
-            VALUE revert14autovar_16=rb_funcall(_autovar_16,rb_intern("dup"),0);
-            VALUE revert14nev=rb_funcall(_nev,rb_intern("dup"),0);
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -1033,26 +878,16 @@ alt8_1:
             ptr->ary=alloca(sizeof(VALUE));
             ptr->ary[0]=_autovar_15;
             ptr->len=1;
-            switch((unsigned char)*ame_curstr2(ptr)) {
-            case UC(0) ... UC(255):
-                ;
-                it=First_Dataflow_value(self );
-                if (it==failobj) {
-                    it=failobj;
-                    goto pass9;
-                }
-                _autovar_16=it;;
-                it=Qnil;
-                if (ptr->pos<ptr->len) {
-                    it=failobj;
-                    goto pass9;
-                }
-                break;
-                if (1) {
-                    it=failobj;
-                    goto pass9;
-                }
-                break;
+            it=First_Dataflow_value(self );
+            if (it==failobj) {
+                it=failobj;
+                goto pass9;
+            }
+            _autovar_16=it;;
+            it=Qnil;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass9;
             }
             goto success9;
 pass9:
@@ -1075,7 +910,6 @@ success9:
             int cut9=0;
 alt9_1:
             ;
-            VALUE revert15el=rb_funcall(_el,rb_intern("dup"),0);
             bind_aset(bind2,1,_el);
             it=rb_funcall(self,sy_Switch_Clas_Dataflow__lp_,1,bind2);
             _el=bind_aget(bind2,1);;
@@ -1088,7 +922,6 @@ alt9_1:
             goto accept24;
 revert15:
             ;
-            _el=revert15el;
             goto alt9_2;
 accept24:
             ;
@@ -1121,11 +954,6 @@ accept23:
             goto accept22;
 revert14:
             ;
-            _val=revert14val;
-            _el=revert14el;
-            _autovar_15=revert14autovar_15;
-            _autovar_16=revert14autovar_16;
-            _nev=revert14nev;
             goto alt8_2;
 accept22:
             ;
@@ -1178,14 +1006,6 @@ success8:
         goto accept20;
 revert13:
         ;
-        __result=revert13_result;
-        _val=revert13val;
-        _autovar_14=revert13autovar_14;
-        _el=revert13el;
-        _autovar_15=revert13autovar_15;
-        _autovar_16=revert13autovar_16;
-        _nev=revert13nev;
-        _autovar_17=revert13autovar_17;
         goto alt7_2;
 accept20:
         ;
@@ -1194,7 +1014,6 @@ accept20:
         goto accept19;
 alt7_2:
         ptr->pos=oldpos7;
-        VALUE revert18_result=rb_funcall(__result,rb_intern("dup"),0);
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -1207,7 +1026,6 @@ alt7_2:
         goto accept27;
 revert18:
         ;
-        __result=revert18_result;
         goto alt7_3;
 accept27:
         ;
