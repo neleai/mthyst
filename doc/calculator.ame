@@ -1,4 +1,4 @@
- amethyst Calculator {
+amethyst Calculator {
   calculate = addexpr
 
   addexpr = addexpr:x "+" mulexpr:y -> x+y

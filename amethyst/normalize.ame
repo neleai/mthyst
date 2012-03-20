@@ -2,7 +2,7 @@ def locals_in(e)
   if !$localsdf
     $localsdf = Detect_Locals.new
   end
-  $localsdf.parse(:analyze,[e])
+  $localsdf.parse(:analyze,[e]).uniq
 end
 
 class Detect_Locals < Traverser_Clone2

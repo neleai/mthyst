@@ -2,7 +2,7 @@
 
 amethyst Remove_Left_Recursion < Traverser_Clone2 {
   root =  .:a  {a.dup}=>Rule[ {@>name=@name} {@@result=Local["_result",@bnding]} @body:oldbody (@body=>first(false)):first (@body=>first(true)):follow
-                {@body = Seq[first,Many[Or[Seq[Act[[].map{|l| [l,"=nil;"]}.flatten ],follow],Stop[]]],Act[[";",@@result]]] if @@left_rec}
+                {@body = Seq[first,Many[Or[Seq[Act[Args[locals_in(oldbody).map{|l| (l=="_result") ? [] : [Local[l,@bnding],"=nil;"]}.flatten ]],follow],Stop[]]],Act[[";",@@result]]] if @@left_rec}
                 {@self}
               ]
 

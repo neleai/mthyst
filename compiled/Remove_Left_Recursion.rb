@@ -54,11 +54,11 @@ end
 def Remove_Left_Recursion_src_25d9(bind)
 src
 end
-def Remove_Left_Recursion_src_dot_body_0dd0(bind)
-src.body = Seq[bind[1],Many[Or[Seq[Act[[].map{|l| [l,"=nil;"]}.flatten ],bind[2]],Stop[]]],Act[[";",@result]]] if @left_rec
-end
 def Remove_Left_Recursion_src_dot_body_519e(bind)
 src.body
+end
+def Remove_Left_Recursion_src_dot_body_b6af(bind)
+src.body = Seq[bind[1],Many[Or[Seq[Act[Args[locals_in(bind[2]).map{|l| (l=="_result") ? [] : [Local[l,src.bnding],"=nil;"]}.flatten ]],bind[3]],Stop[]]],Act[[";",@result]]] if @left_rec
 end
 
 end
