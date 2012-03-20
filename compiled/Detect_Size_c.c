@@ -131,6 +131,13 @@ success2:
             int cut1=0;
 alt1_1:
             ;
+            VALUE lalt12el=_el;
+            VALUE lalt12msize=_msize;
+            VALUE lalt12autovar=_autovar;
+            VALUE lalt12s=_s;
+            VALUE lalt12autovar_3=_autovar_3;
+            VALUE lalt12_result_2=__result_2;
+            VALUE lalt12autovar_6=_autovar_6;
             it=_s_2;
             _s=it;;
             it=AmethystCore_anything(self );
@@ -194,11 +201,32 @@ success4:
             ;
             goto accept1;
 alt1_2:
+            _el=lalt12el;
+            _msize=lalt12msize;
+            _autovar=lalt12autovar;
+            _s=lalt12s;
+            _autovar_3=lalt12autovar_3;
+            __result_2=lalt12_result_2;
+            _autovar_6=lalt12autovar_6;
             ptr->pos=oldpos1;
+            VALUE lalt13el=_el;
+            VALUE lalt13msize=_msize;
+            VALUE lalt13autovar=_autovar;
+            VALUE lalt13s=_s;
+            VALUE lalt13autovar_3=_autovar_3;
+            VALUE lalt13_result_2=__result_2;
+            VALUE lalt13autovar_6=_autovar_6;
             stop1=1;
             ;
             goto accept1;
 alt1_3:
+            _el=lalt13el;
+            _msize=lalt13msize;
+            _autovar=lalt13autovar;
+            _s=lalt13s;
+            _autovar_3=lalt13autovar_3;
+            __result_2=lalt13_result_2;
+            _autovar_6=lalt13autovar_6;
             ptr->pos=oldpos1;
             if (1) {
                 it=failobj;
@@ -259,6 +287,15 @@ success3:
             int cut2=0;
 alt2_1:
             ;
+            VALUE lalt22el=_el;
+            VALUE lalt22msize=_msize;
+            VALUE lalt22autovar=_autovar;
+            VALUE lalt22s=_s;
+            VALUE lalt22autovar_3=_autovar_3;
+            VALUE lalt22s_2=_s_2;
+            VALUE lalt22_result_2=__result_2;
+            VALUE lalt22el_2=_el_2;
+            VALUE lalt22autovar_9=_autovar_9;
             it=_s_2;
             _s=it;;
             it=AmethystCore_anything(self );
@@ -329,11 +366,38 @@ success6:
             ;
             goto accept2;
 alt2_2:
+            _el=lalt22el;
+            _msize=lalt22msize;
+            _autovar=lalt22autovar;
+            _s=lalt22s;
+            _autovar_3=lalt22autovar_3;
+            _s_2=lalt22s_2;
+            __result_2=lalt22_result_2;
+            _el_2=lalt22el_2;
+            _autovar_9=lalt22autovar_9;
             ptr->pos=oldpos2;
+            VALUE lalt23el=_el;
+            VALUE lalt23msize=_msize;
+            VALUE lalt23autovar=_autovar;
+            VALUE lalt23s=_s;
+            VALUE lalt23autovar_3=_autovar_3;
+            VALUE lalt23s_2=_s_2;
+            VALUE lalt23_result_2=__result_2;
+            VALUE lalt23el_2=_el_2;
+            VALUE lalt23autovar_9=_autovar_9;
             stop2=1;
             ;
             goto accept2;
 alt2_3:
+            _el=lalt23el;
+            _msize=lalt23msize;
+            _autovar=lalt23autovar;
+            _s=lalt23s;
+            _autovar_3=lalt23autovar_3;
+            _s_2=lalt23s_2;
+            __result_2=lalt23_result_2;
+            _el_2=lalt23el_2;
+            _autovar_9=lalt23autovar_9;
             ptr->pos=oldpos2;
             if (1) {
                 it=failobj;
@@ -481,6 +545,13 @@ success1:
             int cut1=0;
 alt1_1:
             ;
+            VALUE lalt12el=_el;
+            VALUE lalt12msize=_msize;
+            VALUE lalt12autovar_4=_autovar_4;
+            VALUE lalt12s_2=_s_2;
+            VALUE lalt12autovar_5=_autovar_5;
+            VALUE lalt12_result_2=__result_2;
+            VALUE lalt12autovar_6=_autovar_6;
             it=_s;
             _s_2=it;;
             it=AmethystCore_anything(self );
@@ -544,11 +615,32 @@ success3:
             ;
             goto accept1;
 alt1_2:
+            _el=lalt12el;
+            _msize=lalt12msize;
+            _autovar_4=lalt12autovar_4;
+            _s_2=lalt12s_2;
+            _autovar_5=lalt12autovar_5;
+            __result_2=lalt12_result_2;
+            _autovar_6=lalt12autovar_6;
             ptr->pos=oldpos1;
+            VALUE lalt13el=_el;
+            VALUE lalt13msize=_msize;
+            VALUE lalt13autovar_4=_autovar_4;
+            VALUE lalt13s_2=_s_2;
+            VALUE lalt13autovar_5=_autovar_5;
+            VALUE lalt13_result_2=__result_2;
+            VALUE lalt13autovar_6=_autovar_6;
             stop1=1;
             ;
             goto accept1;
 alt1_3:
+            _el=lalt13el;
+            _msize=lalt13msize;
+            _autovar_4=lalt13autovar_4;
+            _s_2=lalt13s_2;
+            _autovar_5=lalt13autovar_5;
+            __result_2=lalt13_result_2;
+            _autovar_6=lalt13autovar_6;
             ptr->pos=oldpos1;
             if (1) {
                 it=failobj;
@@ -596,6 +688,15 @@ success2:
             int cut2=0;
 alt2_1:
             ;
+            VALUE lalt22el=_el;
+            VALUE lalt22msize=_msize;
+            VALUE lalt22autovar_4=_autovar_4;
+            VALUE lalt22s_2=_s_2;
+            VALUE lalt22autovar_5=_autovar_5;
+            VALUE lalt22s=_s;
+            VALUE lalt22_result_2=__result_2;
+            VALUE lalt22el_2=_el_2;
+            VALUE lalt22autovar_9=_autovar_9;
             it=_s;
             _s_2=it;;
             it=AmethystCore_anything(self );
@@ -666,11 +767,38 @@ success5:
             ;
             goto accept2;
 alt2_2:
+            _el=lalt22el;
+            _msize=lalt22msize;
+            _autovar_4=lalt22autovar_4;
+            _s_2=lalt22s_2;
+            _autovar_5=lalt22autovar_5;
+            _s=lalt22s;
+            __result_2=lalt22_result_2;
+            _el_2=lalt22el_2;
+            _autovar_9=lalt22autovar_9;
             ptr->pos=oldpos2;
+            VALUE lalt23el=_el;
+            VALUE lalt23msize=_msize;
+            VALUE lalt23autovar_4=_autovar_4;
+            VALUE lalt23s_2=_s_2;
+            VALUE lalt23autovar_5=_autovar_5;
+            VALUE lalt23s=_s;
+            VALUE lalt23_result_2=__result_2;
+            VALUE lalt23el_2=_el_2;
+            VALUE lalt23autovar_9=_autovar_9;
             stop2=1;
             ;
             goto accept2;
 alt2_3:
+            _el=lalt23el;
+            _msize=lalt23msize;
+            _autovar_4=lalt23autovar_4;
+            _s_2=lalt23s_2;
+            _autovar_5=lalt23autovar_5;
+            _s=lalt23s;
+            __result_2=lalt23_result_2;
+            _el_2=lalt23el_2;
+            _autovar_9=lalt23autovar_9;
             ptr->pos=oldpos2;
             if (1) {
                 it=failobj;

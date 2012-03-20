@@ -34,6 +34,12 @@ VALUE Complexity_Dataflow_first(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
+        VALUE lalt12autovar=_autovar;
+        VALUE lalt12name=_name;
+        VALUE lalt12autovar_2=_autovar_2;
+        VALUE lalt12autovar_3=_autovar_3;
+        VALUE lalt12v=_v;
+        VALUE lalt12_result=__result;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar=it;;
@@ -110,7 +116,19 @@ success1:
         ;
         goto accept1;
 alt1_2:
+        _autovar=lalt12autovar;
+        _name=lalt12name;
+        _autovar_2=lalt12autovar_2;
+        _autovar_3=lalt12autovar_3;
+        _v=lalt12v;
+        __result=lalt12_result;
         ptr->pos=oldpos1;
+        VALUE lalt13autovar=_autovar;
+        VALUE lalt13name=_name;
+        VALUE lalt13autovar_2=_autovar_2;
+        VALUE lalt13autovar_3=_autovar_3;
+        VALUE lalt13v=_v;
+        VALUE lalt13_result=__result;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -122,6 +140,12 @@ alt1_2:
         ;
         goto accept1;
 alt1_3:
+        _autovar=lalt13autovar;
+        _name=lalt13name;
+        _autovar_2=lalt13autovar_2;
+        _autovar_3=lalt13autovar_3;
+        _v=lalt13v;
+        __result=lalt13_result;
         ptr->pos=oldpos1;
         if (1) {
             it=failobj;
@@ -136,6 +160,9 @@ accept1:
         int cut2=0;
 alt2_1:
         ;
+        VALUE lalt22v=_v;
+        VALUE lalt22_result=__result;
+        VALUE lalt22autovar_4=_autovar_4;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar_4=it;;
@@ -171,7 +198,13 @@ success3:
         ;
         goto accept2;
 alt2_2:
+        _v=lalt22v;
+        __result=lalt22_result;
+        _autovar_4=lalt22autovar_4;
         ptr->pos=oldpos2;
+        VALUE lalt23v=_v;
+        VALUE lalt23_result=__result;
+        VALUE lalt23autovar_4=_autovar_4;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -183,6 +216,9 @@ alt2_2:
         ;
         goto accept2;
 alt2_3:
+        _v=lalt23v;
+        __result=lalt23_result;
+        _autovar_4=lalt23autovar_4;
         ptr->pos=oldpos2;
         if (1) {
             it=failobj;
@@ -201,6 +237,11 @@ accept2:
         int cut3=0;
 alt3_1:
         ;
+        VALUE lalt32v=_v;
+        VALUE lalt32_result=__result;
+        VALUE lalt32autovar_5=_autovar_5;
+        VALUE lalt32autovar_6=_autovar_6;
+        VALUE lalt32autovar_7=_autovar_7;
         it=First_Dataflow_switch(self );
         if (it==failobj) {
             it=failobj;
@@ -217,6 +258,8 @@ alt3_1:
             int cut4=0;
 alt4_1:
             ;
+            VALUE lalt42autovar_6=_autovar_6;
+            VALUE lalt42autovar_7=_autovar_7;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -257,11 +300,17 @@ success5:
             ;
             goto accept4;
 alt4_2:
+            _autovar_6=lalt42autovar_6;
+            _autovar_7=lalt42autovar_7;
             ptr->pos=oldpos4;
+            VALUE lalt43autovar_6=_autovar_6;
+            VALUE lalt43autovar_7=_autovar_7;
             stop1=1;
             ;
             goto accept4;
 alt4_3:
+            _autovar_6=lalt43autovar_6;
+            _autovar_7=lalt43autovar_7;
             ptr->pos=oldpos4;
             if (1) {
                 it=failobj;
@@ -292,7 +341,17 @@ success4:
         ;
         goto accept3;
 alt3_2:
+        _v=lalt32v;
+        __result=lalt32_result;
+        _autovar_5=lalt32autovar_5;
+        _autovar_6=lalt32autovar_6;
+        _autovar_7=lalt32autovar_7;
         ptr->pos=oldpos3;
+        VALUE lalt33v=_v;
+        VALUE lalt33_result=__result;
+        VALUE lalt33autovar_5=_autovar_5;
+        VALUE lalt33autovar_6=_autovar_6;
+        VALUE lalt33autovar_7=_autovar_7;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -304,6 +363,11 @@ alt3_2:
         ;
         goto accept3;
 alt3_3:
+        _v=lalt33v;
+        __result=lalt33_result;
+        _autovar_5=lalt33autovar_5;
+        _autovar_6=lalt33autovar_6;
+        _autovar_7=lalt33autovar_7;
         ptr->pos=oldpos3;
         if (1) {
             it=failobj;
@@ -318,6 +382,11 @@ accept3:
         int cut5=0;
 alt5_1:
         ;
+        VALUE lalt52v=_v;
+        VALUE lalt52_result=__result;
+        VALUE lalt52autovar_8=_autovar_8;
+        VALUE lalt52autovar_9=_autovar_9;
+        VALUE lalt52autovar_10=_autovar_10;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar_8=it;;
@@ -333,6 +402,7 @@ alt5_1:
             int cut6=0;
 alt6_1:
             ;
+            VALUE lalt62autovar_10=_autovar_10;
             it=First_Dataflow_value(self );
             if (it==failobj) {
                 it=failobj;
@@ -343,11 +413,14 @@ alt6_1:
             ;
             goto accept6;
 alt6_2:
+            _autovar_10=lalt62autovar_10;
             ptr->pos=oldpos6;
+            VALUE lalt63autovar_10=_autovar_10;
             stop2=1;
             ;
             goto accept6;
 alt6_3:
+            _autovar_10=lalt63autovar_10;
             ptr->pos=oldpos6;
             if (1) {
                 it=failobj;
@@ -381,7 +454,17 @@ success6:
         ;
         goto accept5;
 alt5_2:
+        _v=lalt52v;
+        __result=lalt52_result;
+        _autovar_8=lalt52autovar_8;
+        _autovar_9=lalt52autovar_9;
+        _autovar_10=lalt52autovar_10;
         ptr->pos=oldpos5;
+        VALUE lalt53v=_v;
+        VALUE lalt53_result=__result;
+        VALUE lalt53autovar_8=_autovar_8;
+        VALUE lalt53autovar_9=_autovar_9;
+        VALUE lalt53autovar_10=_autovar_10;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -393,6 +476,11 @@ alt5_2:
         ;
         goto accept5;
 alt5_3:
+        _v=lalt53v;
+        __result=lalt53_result;
+        _autovar_8=lalt53autovar_8;
+        _autovar_9=lalt53autovar_9;
+        _autovar_10=lalt53autovar_10;
         ptr->pos=oldpos5;
         if (1) {
             it=failobj;

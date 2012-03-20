@@ -96,6 +96,7 @@ alt1_1:
     goto accept1;
 alt1_2:
     ptr->pos=oldpos1;
+    VALUE lalt13autovar_3=_autovar_3;
     bind_aset(bind2,1,_autovar_3);
     it=rb_funcall(self,sy_Lam_bind_lb_1_rb__eq__f4b0,1,bind2);
     _autovar_3=bind_aget(bind2,1);;
@@ -109,6 +110,7 @@ alt1_2:
     ;
     goto accept1;
 alt1_3:
+    _autovar_3=lalt13autovar_3;
     ptr->pos=oldpos1;
     if (1) {
         it=failobj;

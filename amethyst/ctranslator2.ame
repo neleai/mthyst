@@ -105,7 +105,7 @@ amethyst AmethystCTranslator {
            {s+=x*""}
            {s+="\nend"; s}
   
-  trans =  Grammar[ {@>grammar=@@grammar=@name;@>parent=@parent} {@@lambdas=[] ;@@rcallbacks={};@@cbhash={}} {@@defs=[];@@defmethods=[];@@profile_report=[]} {@@faillabel="fail"} {@@callbacks={}} {@@header=[]} {@@init=[]} @rules=>[trans*]:t rbcode:rbcode
+  trans =  Grammar[ {@>grammar=@@grammar=@name;@>parent=@parent} {@@lambdas=[] ;@@rcallbacks={};@@cbhash={};@@locals_changed=Hash.new(0)} {@@defs=[];@@defmethods=[];@@profile_report=[]} {@@faillabel="fail"} {@@callbacks={}} {@@header=[]} {@@init=[]} @rules=>[trans*]:t rbcode:rbcode
             { "VALUE cls_#{@name};\n" }:s
             { s<<@@header.uniq.sort*"\n"+"\n"
 							s<<"\n memo_struct *mem_#{@name}=NULL;VALUE memo_val_#{@name};" if CurrentParser[:memoize]
@@ -147,7 +147,7 @@ s
         | Act[ .:a &{a=="_append("} Local:x . Local:y  . ] -> "it=AmethystCore_append(self,#{bget(x)},#{bget(y)});"
         | Act[ {@@bindno=0;@@binds={}}
 								.*:it addcallback(@pred ? ["(",it,") || FAIL"] : it):cbno 
-								{@@binds.map{|k,v| "bind_aset(bind2,#{v},#{bget(k)});"}*"" + "it=#{rbcall(cbno,["bind2"])};"+@@binds.map{|k,v|"#{bset(k,"bind_aget(bind2,#{v})")};"}*"" +"#{@pred ? "#{failwhen("it==failobj")};" :"" }"} ]
+								{@@binds.map{|k,v| @@locals_changed[k]+=1; "bind_aset(bind2,#{v},#{bget(k)});"}*"" + "it=#{rbcall(cbno,["bind2"])};"+@@binds.map{|k,v|"#{bset(k,"bind_aget(bind2,#{v})")};"}*"" +"#{@pred ? "#{failwhen("it==failobj")};" :"" }"} ]
         | CAct[.* {ar=*@ccode; 
                    @@header<<ar[0] if ar[0]
                    @@init<<ar[1] if ar[1]
@@ -166,13 +166,16 @@ s
         | Apply[ .:name {0}:ii ( trans:aa {ii+=1} {"#{aa} arg#{ii-1}=it;"})*:args @self:app]
                  -> r=" #{args*""} it=#{callrule(name,ii)};"; cant_fail?(app) ? r : "#{r} #{failwhen("it==failobj")}"
 
-        | Bind[ trans:e {"#{e} #{bset(@name,"it")};\n" } ]
+        | Bind[ trans:e {"#{e} #{@@locals_changed[@name]+=1; bset(@name,"it")};\n" } ]
         | Seq[ trans*:t {t*""} ]
-        | Or[ {label("accept")}:accept {label("oldpos")}:oldpos label("alt"):alt {1}:altno {@@cutlabel}:oldcutlabel {@@cuts}:oldcuts {@@cuts=nil;@@cutlabel=label("cut")}
+        | Or[ {label("accept")}:accept {@@locals_changed.clone}:oldlocals_changed {label("oldpos")}:oldpos label("alt"):alt {1}:altno {@@cutlabel}:oldcutlabel {@@cuts}:oldcuts {@@cuts=nil;@@cutlabel=label("cut")}
            {"int #{oldpos}=ptr->pos;int #{@@cutlabel}=0;\n#{alt}_#{altno}:;"}:s
            ( &(.) {altno+=1}  rw("#{alt}_#{altno}",`trans`):t 
-             {s+="#{t}\n;goto #{accept};\n"} 
-             {s+="#{alt}_#{altno}: ptr->pos=#{oldpos};#{@@cuts ? (@@cuts=nil;failwhen(@@cutlabel)): ""}"}  
+             {""}:pre {""}:ap {@@locals_changed.each{|k,v| if v> oldlocals_changed[k]
+              pre+="VALUE l#{alt}#{altno}#{desc(k)}=#{bget(k)};";ap+=bset(k,"l#{alt}#{altno}#{desc(k)}")
+             end}}
+             {s+="#{pre} #{t}\n;goto #{accept};\n"} 
+             {s+="#{alt}_#{altno}: #{ap} ptr->pos=#{oldpos};#{@@cuts ? (@@cuts=nil;failwhen(@@cutlabel)): ""}"}  
            )*
            {@@cutlabel=oldcutlabel;@@cuts=oldcuts;s+"#{failwhen(1)};\n #{accept}:;\n"}
           ]

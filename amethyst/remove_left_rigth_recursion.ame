@@ -1,4 +1,6 @@
-#todo reset locals
+#removing by Paull algorithm
+
+#TODO iteration
 
 amethyst Remove_Left_Recursion < Traverser_Clone2 {
   root =  .:a  {a.dup}=>Rule[ {@>name=@name} {@@result=Local["_result",@bnding]} @body:oldbody (@body=>first(false)):first (@body=>first(true)):follow

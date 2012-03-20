@@ -106,6 +106,7 @@ VALUE Tests_de(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
+        VALUE lalt12foo=_foo;
         it=_autovar;
         _foo=it;;
         bind_aset(bind2,1,_foo);
@@ -118,7 +119,9 @@ alt1_1:
         ;
         goto accept1;
 alt1_2:
+        _foo=lalt12foo;
         ptr->pos=oldpos1;
+        VALUE lalt13foo=_foo;
         it=_autovar;
         _foo=it;;
         bind_aset(bind2,1,_foo);
@@ -131,6 +134,7 @@ alt1_2:
         ;
         goto accept1;
 alt1_3:
+        _foo=lalt13foo;
         ptr->pos=oldpos1;
         if (1) {
             it=failobj;
@@ -147,6 +151,7 @@ accept1:
         int cut2=0;
 alt2_1:
         ;
+        VALUE lalt22foo=_foo;
         it=_autovar_2;
         _foo=it;;
         bind_aset(bind2,1,_foo);
@@ -159,7 +164,10 @@ alt2_1:
         ;
         goto accept2;
 alt2_2:
+        _foo=lalt22foo;
         ptr->pos=oldpos2;
+        VALUE lalt23foo=_foo;
+        VALUE lalt23_result=__result;
         it=_autovar_2;
         _foo=it;;
         bind_aset(bind2,1,_foo);
@@ -172,6 +180,8 @@ alt2_2:
         ;
         goto accept2;
 alt2_3:
+        _foo=lalt23foo;
+        __result=lalt23_result;
         ptr->pos=oldpos2;
         if (1) {
             it=failobj;
@@ -190,6 +200,8 @@ accept2:
         int cut3=0;
 alt3_1:
         ;
+        VALUE lalt32foo=_foo;
+        VALUE lalt32_result=__result;
         it=_autovar_3;
         _foo=it;;
         bind_aset(bind2,1,_foo);
@@ -205,7 +217,11 @@ alt3_1:
         ;
         goto accept3;
 alt3_2:
+        _foo=lalt32foo;
+        __result=lalt32_result;
         ptr->pos=oldpos3;
+        VALUE lalt33foo=_foo;
+        VALUE lalt33_result=__result;
         it=_autovar_3;
         _foo=it;;
         bind_aset(bind2,1,_foo);
@@ -218,6 +234,8 @@ alt3_2:
         ;
         goto accept3;
 alt3_3:
+        _foo=lalt33foo;
+        __result=lalt33_result;
         ptr->pos=oldpos3;
         if (1) {
             it=failobj;
@@ -267,6 +285,7 @@ VALUE Tests_gh(VALUE self ) {
     int cut1=0;
 alt1_1:
     ;
+    VALUE lalt12_result=__result;
     it=Tests_foo(self );
     if (it==failobj) {
         it=failobj;
@@ -277,7 +296,9 @@ alt1_1:
     ;
     goto accept1;
 alt1_2:
+    __result=lalt12_result;
     ptr->pos=oldpos1;
+    VALUE lalt13_result=__result;
     cut1=1;
     it=i_42;
     __result=it;;
@@ -285,6 +306,7 @@ alt1_2:
     ;
     goto accept1;
 alt1_3:
+    __result=lalt13_result;
     ptr->pos=oldpos1;
     if (cut1) {
         it=failobj;
@@ -413,6 +435,7 @@ VALUE Tests_test(VALUE self ) {
     int cut1=0;
 alt1_1:
     ;
+    VALUE lalt12_result=__result;
     it=Amethyst_spaces(self );
     switch((unsigned char)*ame_curstr2(ptr)) {
     case UC(0) ... '`':
@@ -436,13 +459,16 @@ alt1_1:
     ;
     goto accept1;
 alt1_2:
+    __result=lalt12_result;
     ptr->pos=oldpos1;
+    VALUE lalt13_result=__result;
     it=i_42;
     __result=it;;
 
     ;
     goto accept1;
 alt1_3:
+    __result=lalt13_result;
     ptr->pos=oldpos1;
     if (1) {
         it=failobj;

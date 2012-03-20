@@ -103,6 +103,8 @@ VALUE Detect_Locals_traverse(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
+        VALUE lalt12nvars=_nvars;
+        VALUE lalt12it=_it;
         it=Detect_Locals_traverse_item(self );
         if (it==failobj) {
             it=failobj;
@@ -117,11 +119,17 @@ alt1_1:
         ;
         goto accept1;
 alt1_2:
+        _nvars=lalt12nvars;
+        _it=lalt12it;
         ptr->pos=oldpos1;
+        VALUE lalt13nvars=_nvars;
+        VALUE lalt13it=_it;
         stop1=1;
         ;
         goto accept1;
 alt1_3:
+        _nvars=lalt13nvars;
+        _it=lalt13it;
         ptr->pos=oldpos1;
         if (1) {
             it=failobj;
@@ -186,6 +194,7 @@ VALUE Detect_Locals_traverse_item(VALUE self ) {
             int cut1=0;
 alt1_1:
             ;
+            VALUE lalt12_result=__result;
             it=Detect_Locals_visit(self );
             if (it==failobj) {
                 it=failobj;
@@ -196,7 +205,11 @@ alt1_1:
             ;
             goto accept1;
 alt1_2:
+            __result=lalt12_result;
             ptr->pos=oldpos1;
+            VALUE lalt13_result=__result;
+            VALUE lalt13autovar=_autovar;
+            VALUE lalt13autovar_2=_autovar_2;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar=it;;
@@ -230,7 +243,13 @@ success1:
             ;
             goto accept1;
 alt1_3:
+            __result=lalt13_result;
+            _autovar=lalt13autovar;
+            _autovar_2=lalt13autovar_2;
             ptr->pos=oldpos1;
+            VALUE lalt14_result=__result;
+            VALUE lalt14autovar=_autovar;
+            VALUE lalt14autovar_2=_autovar_2;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -241,6 +260,9 @@ alt1_3:
             ;
             goto accept1;
 alt1_4:
+            __result=lalt14_result;
+            _autovar=lalt14autovar;
+            _autovar_2=lalt14autovar_2;
             ptr->pos=oldpos1;
             if (1) {
                 it=failobj;
@@ -255,6 +277,9 @@ accept1:
             int cut2=0;
 alt2_1:
             ;
+            VALUE lalt22_result=__result;
+            VALUE lalt22autovar=_autovar;
+            VALUE lalt22autovar_2=_autovar_2;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar=it;;
@@ -288,7 +313,13 @@ success2:
             ;
             goto accept2;
 alt2_2:
+            __result=lalt22_result;
+            _autovar=lalt22autovar;
+            _autovar_2=lalt22autovar_2;
             ptr->pos=oldpos2;
+            VALUE lalt23_result=__result;
+            VALUE lalt23autovar=_autovar;
+            VALUE lalt23autovar_2=_autovar_2;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -299,6 +330,9 @@ alt2_2:
             ;
             goto accept2;
 alt2_3:
+            __result=lalt23_result;
+            _autovar=lalt23autovar;
+            _autovar_2=lalt23autovar_2;
             ptr->pos=oldpos2;
             if (1) {
                 it=failobj;
@@ -319,6 +353,7 @@ accept2:
             int cut3=0;
 alt3_1:
             ;
+            VALUE lalt32_result=__result;
             it=Detect_Locals_visit(self );
             if (it==failobj) {
                 it=failobj;
@@ -329,7 +364,13 @@ alt3_1:
             ;
             goto accept3;
 alt3_2:
+            __result=lalt32_result;
             ptr->pos=oldpos3;
+            VALUE lalt33_result=__result;
+            VALUE lalt33autovar_3=_autovar_3;
+            VALUE lalt33ar=_ar;
+            VALUE lalt33it=_it;
+            VALUE lalt33autovar_4=_autovar_4;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar_3=it;;
@@ -345,6 +386,8 @@ alt3_2:
                 int cut4=0;
 alt4_1:
                 ;
+                VALUE lalt42ar=_ar;
+                VALUE lalt42it=_it;
                 it=Detect_Locals_traverse_item(self );
                 if (it==failobj) {
                     it=failobj;
@@ -359,11 +402,17 @@ alt4_1:
                 ;
                 goto accept4;
 alt4_2:
+                _ar=lalt42ar;
+                _it=lalt42it;
                 ptr->pos=oldpos4;
+                VALUE lalt43ar=_ar;
+                VALUE lalt43it=_it;
                 stop1=1;
                 ;
                 goto accept4;
 alt4_3:
+                _ar=lalt43ar;
+                _it=lalt43it;
                 ptr->pos=oldpos4;
                 if (1) {
                     it=failobj;
@@ -395,7 +444,17 @@ success3:
             ;
             goto accept3;
 alt3_3:
+            __result=lalt33_result;
+            _autovar_3=lalt33autovar_3;
+            _ar=lalt33ar;
+            _it=lalt33it;
+            _autovar_4=lalt33autovar_4;
             ptr->pos=oldpos3;
+            VALUE lalt34_result=__result;
+            VALUE lalt34autovar_3=_autovar_3;
+            VALUE lalt34ar=_ar;
+            VALUE lalt34it=_it;
+            VALUE lalt34autovar_4=_autovar_4;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -406,6 +465,11 @@ alt3_3:
             ;
             goto accept3;
 alt3_4:
+            __result=lalt34_result;
+            _autovar_3=lalt34autovar_3;
+            _ar=lalt34ar;
+            _it=lalt34it;
+            _autovar_4=lalt34autovar_4;
             ptr->pos=oldpos3;
             if (1) {
                 it=failobj;
@@ -420,6 +484,11 @@ accept3:
             int cut5=0;
 alt5_1:
             ;
+            VALUE lalt52_result=__result;
+            VALUE lalt52autovar_3=_autovar_3;
+            VALUE lalt52ar=_ar;
+            VALUE lalt52it=_it;
+            VALUE lalt52autovar_4=_autovar_4;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar_3=it;;
@@ -435,6 +504,8 @@ alt5_1:
                 int cut6=0;
 alt6_1:
                 ;
+                VALUE lalt62ar=_ar;
+                VALUE lalt62it=_it;
                 it=Detect_Locals_traverse_item(self );
                 if (it==failobj) {
                     it=failobj;
@@ -449,11 +520,17 @@ alt6_1:
                 ;
                 goto accept6;
 alt6_2:
+                _ar=lalt62ar;
+                _it=lalt62it;
                 ptr->pos=oldpos6;
+                VALUE lalt63ar=_ar;
+                VALUE lalt63it=_it;
                 stop2=1;
                 ;
                 goto accept6;
 alt6_3:
+                _ar=lalt63ar;
+                _it=lalt63it;
                 ptr->pos=oldpos6;
                 if (1) {
                     it=failobj;
@@ -485,7 +562,17 @@ success4:
             ;
             goto accept5;
 alt5_2:
+            __result=lalt52_result;
+            _autovar_3=lalt52autovar_3;
+            _ar=lalt52ar;
+            _it=lalt52it;
+            _autovar_4=lalt52autovar_4;
             ptr->pos=oldpos5;
+            VALUE lalt53_result=__result;
+            VALUE lalt53autovar_3=_autovar_3;
+            VALUE lalt53ar=_ar;
+            VALUE lalt53it=_it;
+            VALUE lalt53autovar_4=_autovar_4;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -496,6 +583,11 @@ alt5_2:
             ;
             goto accept5;
 alt5_3:
+            __result=lalt53_result;
+            _autovar_3=lalt53autovar_3;
+            _ar=lalt53ar;
+            _it=lalt53it;
+            _autovar_4=lalt53autovar_4;
             ptr->pos=oldpos5;
             if (1) {
                 it=failobj;
@@ -516,6 +608,7 @@ accept5:
             int cut7=0;
 alt7_1:
             ;
+            VALUE lalt72_result=__result;
             it=Detect_Locals_visit(self );
             if (it==failobj) {
                 it=failobj;
@@ -526,7 +619,9 @@ alt7_1:
             ;
             goto accept7;
 alt7_2:
+            __result=lalt72_result;
             ptr->pos=oldpos7;
+            VALUE lalt73_result=__result;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -537,6 +632,7 @@ alt7_2:
             ;
             goto accept7;
 alt7_3:
+            __result=lalt73_result;
             ptr->pos=oldpos7;
             if (1) {
                 it=failobj;
