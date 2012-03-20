@@ -31,7 +31,7 @@ VALUE profile_report_Add_Contextual_Returns(VALUE self) {
 }
 VALUE Add_Contextual_Returns_root(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_t,__result,_autovar_6;
+    VALUE it ,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_autovar_4=Qnil,_autovar_5=Qnil,_t=Qnil,__result=Qnil,_autovar_6=Qnil;
     VALUE bind2=bind_new2(16);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
@@ -128,7 +128,7 @@ fail:
 }
 VALUE Add_Contextual_Returns_traverse(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_nvars,_ivars,_autovar,_autovar_2,_it,__result;
+    VALUE it ,_nvars=Qnil,_ivars=Qnil,_autovar=Qnil,_autovar_2=Qnil,_it=Qnil,__result=Qnil;
     VALUE bind2=bind_new2(16);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
@@ -163,8 +163,8 @@ VALUE Add_Contextual_Returns_traverse(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        VALUE lrevert1nvars=_nvars;
-        VALUE lrevert1it=_it;
+        VALUE revert1nvars=rb_funcall(_nvars,rb_intern("dup"),0);
+        VALUE revert1it=rb_funcall(_it,rb_intern("dup"),0);
         it=Add_Contextual_Returns_traverse_item(self );
         if (it==failobj) {
             it=failobj;
@@ -180,8 +180,8 @@ alt1_1:
         goto accept2;
 revert1:
         ;
-        _nvars=lrevert1nvars;
-        _it=lrevert1it;
+        _nvars=revert1nvars;
+        _it=revert1it;
         goto alt1_2;
 accept2:
         ;
@@ -250,7 +250,7 @@ fail:
 }
 VALUE Add_Contextual_Returns_traverse_item(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,__result,_autovar,_autovar_2,_autovar_3,_ar,_it,_autovar_4;
+    VALUE it ,__result=Qnil,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_ar=Qnil,_it=Qnil,_autovar_4=Qnil;
     VALUE bind2=bind_new2(16);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
@@ -266,7 +266,7 @@ VALUE Add_Contextual_Returns_traverse_item(VALUE self ) {
             int cut1=0;
 alt1_1:
             ;
-            VALUE lrevert1_result=__result;
+            VALUE revert1_result=rb_funcall(__result,rb_intern("dup"),0);
             it=Add_Contextual_Returns_visit(self );
             if (it==failobj) {
                 it=failobj;
@@ -278,7 +278,7 @@ alt1_1:
             goto accept2;
 revert1:
             ;
-            __result=lrevert1_result;
+            __result=revert1_result;
             goto alt1_2;
 accept2:
             ;
@@ -287,9 +287,9 @@ accept2:
             goto accept1;
 alt1_2:
             ptr->pos=oldpos1;
-            VALUE lrevert2_result=__result;
-            VALUE lrevert2autovar=_autovar;
-            VALUE lrevert2autovar_2=_autovar_2;
+            VALUE revert2_result=rb_funcall(__result,rb_intern("dup"),0);
+            VALUE revert2autovar=rb_funcall(_autovar,rb_intern("dup"),0);
+            VALUE revert2autovar_2=rb_funcall(_autovar_2,rb_intern("dup"),0);
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar=it;;
@@ -324,9 +324,9 @@ success1:
             goto accept3;
 revert2:
             ;
-            __result=lrevert2_result;
-            _autovar=lrevert2autovar;
-            _autovar_2=lrevert2autovar_2;
+            __result=revert2_result;
+            _autovar=revert2autovar;
+            _autovar_2=revert2autovar_2;
             goto alt1_3;
 accept3:
             ;
@@ -335,7 +335,7 @@ accept3:
             goto accept1;
 alt1_3:
             ptr->pos=oldpos1;
-            VALUE lrevert3_result=__result;
+            VALUE revert3_result=rb_funcall(__result,rb_intern("dup"),0);
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -347,7 +347,7 @@ alt1_3:
             goto accept4;
 revert3:
             ;
-            __result=lrevert3_result;
+            __result=revert3_result;
             goto alt1_4;
 accept4:
             ;
@@ -369,9 +369,9 @@ accept1:
             int cut2=0;
 alt2_1:
             ;
-            VALUE lrevert4_result=__result;
-            VALUE lrevert4autovar=_autovar;
-            VALUE lrevert4autovar_2=_autovar_2;
+            VALUE revert4_result=rb_funcall(__result,rb_intern("dup"),0);
+            VALUE revert4autovar=rb_funcall(_autovar,rb_intern("dup"),0);
+            VALUE revert4autovar_2=rb_funcall(_autovar_2,rb_intern("dup"),0);
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar=it;;
@@ -406,9 +406,9 @@ success2:
             goto accept6;
 revert4:
             ;
-            __result=lrevert4_result;
-            _autovar=lrevert4autovar;
-            _autovar_2=lrevert4autovar_2;
+            __result=revert4_result;
+            _autovar=revert4autovar;
+            _autovar_2=revert4autovar_2;
             goto alt2_2;
 accept6:
             ;
@@ -417,7 +417,7 @@ accept6:
             goto accept5;
 alt2_2:
             ptr->pos=oldpos2;
-            VALUE lrevert5_result=__result;
+            VALUE revert5_result=rb_funcall(__result,rb_intern("dup"),0);
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -429,7 +429,7 @@ alt2_2:
             goto accept7;
 revert5:
             ;
-            __result=lrevert5_result;
+            __result=revert5_result;
             goto alt2_3;
 accept7:
             ;
@@ -457,7 +457,7 @@ accept5:
             int cut3=0;
 alt3_1:
             ;
-            VALUE lrevert6_result=__result;
+            VALUE revert6_result=rb_funcall(__result,rb_intern("dup"),0);
             it=Add_Contextual_Returns_visit(self );
             if (it==failobj) {
                 it=failobj;
@@ -469,7 +469,7 @@ alt3_1:
             goto accept9;
 revert6:
             ;
-            __result=lrevert6_result;
+            __result=revert6_result;
             goto alt3_2;
 accept9:
             ;
@@ -478,11 +478,11 @@ accept9:
             goto accept8;
 alt3_2:
             ptr->pos=oldpos3;
-            VALUE lrevert7_result=__result;
-            VALUE lrevert7autovar_3=_autovar_3;
-            VALUE lrevert7ar=_ar;
-            VALUE lrevert7it=_it;
-            VALUE lrevert7autovar_4=_autovar_4;
+            VALUE revert7_result=rb_funcall(__result,rb_intern("dup"),0);
+            VALUE revert7autovar_3=rb_funcall(_autovar_3,rb_intern("dup"),0);
+            VALUE revert7ar=rb_funcall(_ar,rb_intern("dup"),0);
+            VALUE revert7it=rb_funcall(_it,rb_intern("dup"),0);
+            VALUE revert7autovar_4=rb_funcall(_autovar_4,rb_intern("dup"),0);
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar_3=it;;
@@ -498,8 +498,8 @@ alt3_2:
                 int cut4=0;
 alt4_1:
                 ;
-                VALUE lrevert8ar=_ar;
-                VALUE lrevert8it=_it;
+                VALUE revert8ar=rb_funcall(_ar,rb_intern("dup"),0);
+                VALUE revert8it=rb_funcall(_it,rb_intern("dup"),0);
                 it=Add_Contextual_Returns_traverse_item(self );
                 if (it==failobj) {
                     it=failobj;
@@ -515,8 +515,8 @@ alt4_1:
                 goto accept12;
 revert8:
                 ;
-                _ar=lrevert8ar;
-                _it=lrevert8it;
+                _ar=revert8ar;
+                _it=revert8it;
                 goto alt4_2;
 accept12:
                 ;
@@ -569,11 +569,11 @@ success3:
             goto accept10;
 revert7:
             ;
-            __result=lrevert7_result;
-            _autovar_3=lrevert7autovar_3;
-            _ar=lrevert7ar;
-            _it=lrevert7it;
-            _autovar_4=lrevert7autovar_4;
+            __result=revert7_result;
+            _autovar_3=revert7autovar_3;
+            _ar=revert7ar;
+            _it=revert7it;
+            _autovar_4=revert7autovar_4;
             goto alt3_3;
 accept10:
             ;
@@ -582,7 +582,7 @@ accept10:
             goto accept8;
 alt3_3:
             ptr->pos=oldpos3;
-            VALUE lrevert10_result=__result;
+            VALUE revert10_result=rb_funcall(__result,rb_intern("dup"),0);
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -594,7 +594,7 @@ alt3_3:
             goto accept14;
 revert10:
             ;
-            __result=lrevert10_result;
+            __result=revert10_result;
             goto alt3_4;
 accept14:
             ;
@@ -616,11 +616,11 @@ accept8:
             int cut5=0;
 alt5_1:
             ;
-            VALUE lrevert11_result=__result;
-            VALUE lrevert11autovar_3=_autovar_3;
-            VALUE lrevert11ar=_ar;
-            VALUE lrevert11it=_it;
-            VALUE lrevert11autovar_4=_autovar_4;
+            VALUE revert11_result=rb_funcall(__result,rb_intern("dup"),0);
+            VALUE revert11autovar_3=rb_funcall(_autovar_3,rb_intern("dup"),0);
+            VALUE revert11ar=rb_funcall(_ar,rb_intern("dup"),0);
+            VALUE revert11it=rb_funcall(_it,rb_intern("dup"),0);
+            VALUE revert11autovar_4=rb_funcall(_autovar_4,rb_intern("dup"),0);
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar_3=it;;
@@ -636,8 +636,8 @@ alt5_1:
                 int cut6=0;
 alt6_1:
                 ;
-                VALUE lrevert12ar=_ar;
-                VALUE lrevert12it=_it;
+                VALUE revert12ar=rb_funcall(_ar,rb_intern("dup"),0);
+                VALUE revert12it=rb_funcall(_it,rb_intern("dup"),0);
                 it=Add_Contextual_Returns_traverse_item(self );
                 if (it==failobj) {
                     it=failobj;
@@ -653,8 +653,8 @@ alt6_1:
                 goto accept18;
 revert12:
                 ;
-                _ar=lrevert12ar;
-                _it=lrevert12it;
+                _ar=revert12ar;
+                _it=revert12it;
                 goto alt6_2;
 accept18:
                 ;
@@ -707,11 +707,11 @@ success4:
             goto accept16;
 revert11:
             ;
-            __result=lrevert11_result;
-            _autovar_3=lrevert11autovar_3;
-            _ar=lrevert11ar;
-            _it=lrevert11it;
-            _autovar_4=lrevert11autovar_4;
+            __result=revert11_result;
+            _autovar_3=revert11autovar_3;
+            _ar=revert11ar;
+            _it=revert11it;
+            _autovar_4=revert11autovar_4;
             goto alt5_2;
 accept16:
             ;
@@ -720,7 +720,7 @@ accept16:
             goto accept15;
 alt5_2:
             ptr->pos=oldpos5;
-            VALUE lrevert14_result=__result;
+            VALUE revert14_result=rb_funcall(__result,rb_intern("dup"),0);
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -732,7 +732,7 @@ alt5_2:
             goto accept20;
 revert14:
             ;
-            __result=lrevert14_result;
+            __result=revert14_result;
             goto alt5_3;
 accept20:
             ;
@@ -760,7 +760,7 @@ accept15:
             int cut7=0;
 alt7_1:
             ;
-            VALUE lrevert15_result=__result;
+            VALUE revert15_result=rb_funcall(__result,rb_intern("dup"),0);
             it=Add_Contextual_Returns_visit(self );
             if (it==failobj) {
                 it=failobj;
@@ -772,7 +772,7 @@ alt7_1:
             goto accept22;
 revert15:
             ;
-            __result=lrevert15_result;
+            __result=revert15_result;
             goto alt7_2;
 accept22:
             ;
@@ -781,7 +781,7 @@ accept22:
             goto accept21;
 alt7_2:
             ptr->pos=oldpos7;
-            VALUE lrevert16_result=__result;
+            VALUE revert16_result=rb_funcall(__result,rb_intern("dup"),0);
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -793,7 +793,7 @@ alt7_2:
             goto accept23;
 revert16:
             ;
-            __result=lrevert16_result;
+            __result=revert16_result;
             goto alt7_3;
 accept23:
             ;
@@ -826,7 +826,7 @@ fail:
 }
 VALUE Add_Contextual_Returns_visit(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,__result,_autovar_5,_autovar_6,_name;
+    VALUE it ,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_autovar_4=Qnil,__result=Qnil,_autovar_5=Qnil,_autovar_6=Qnil,_name=Qnil;
     VALUE bind2=bind_new2(16);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;

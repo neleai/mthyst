@@ -130,3 +130,8 @@ class String
 #		self[0]
 #	end
 end
+
+def true.dup;true;end
+def false.dup;false;end
+def nil.dup;nil;end
+class Fixnum;def dup;self;end;end

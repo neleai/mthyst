@@ -32,7 +32,7 @@ VALUE profile_report_Tests(VALUE self) {
 }
 VALUE Tests_abc(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,__result;
+    VALUE it ,__result=Qnil;
     VALUE bind2=bind_new2(16);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
@@ -63,7 +63,7 @@ fail:
 }
 VALUE Tests_context(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,_autovar_2,__result,_autovar_3;
+    VALUE it ,_autovar=Qnil,_autovar_2=Qnil,__result=Qnil,_autovar_3=Qnil;
     VALUE bind2=bind_new2(16);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
@@ -88,7 +88,7 @@ fail:
 }
 VALUE Tests_de(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,_foo,_autovar_2,__result,_autovar_3;
+    VALUE it ,_autovar=Qnil,_foo=Qnil,_autovar_2=Qnil,__result=Qnil,_autovar_3=Qnil;
     VALUE bind2=bind_new2(16);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
@@ -106,7 +106,7 @@ VALUE Tests_de(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        VALUE lrevert1foo=_foo;
+        VALUE revert1foo=rb_funcall(_foo,rb_intern("dup"),0);
         it=_autovar;
         _foo=it;;
         bind_aset(bind2,1,_foo);
@@ -120,7 +120,7 @@ alt1_1:
         goto accept2;
 revert1:
         ;
-        _foo=lrevert1foo;
+        _foo=revert1foo;
         goto alt1_2;
 accept2:
         ;
@@ -129,7 +129,7 @@ accept2:
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
-        VALUE lrevert2foo=_foo;
+        VALUE revert2foo=rb_funcall(_foo,rb_intern("dup"),0);
         it=_autovar;
         _foo=it;;
         bind_aset(bind2,1,_foo);
@@ -143,7 +143,7 @@ alt1_2:
         goto accept3;
 revert2:
         ;
-        _foo=lrevert2foo;
+        _foo=revert2foo;
         goto alt1_3;
 accept3:
         ;
@@ -167,7 +167,7 @@ accept1:
         int cut2=0;
 alt2_1:
         ;
-        VALUE lrevert3foo=_foo;
+        VALUE revert3foo=rb_funcall(_foo,rb_intern("dup"),0);
         it=_autovar_2;
         _foo=it;;
         bind_aset(bind2,1,_foo);
@@ -181,7 +181,7 @@ alt2_1:
         goto accept5;
 revert3:
         ;
-        _foo=lrevert3foo;
+        _foo=revert3foo;
         goto alt2_2;
 accept5:
         ;
@@ -190,8 +190,8 @@ accept5:
         goto accept4;
 alt2_2:
         ptr->pos=oldpos2;
-        VALUE lrevert4foo=_foo;
-        VALUE lrevert4_result=__result;
+        VALUE revert4foo=rb_funcall(_foo,rb_intern("dup"),0);
+        VALUE revert4_result=rb_funcall(__result,rb_intern("dup"),0);
         it=_autovar_2;
         _foo=it;;
         bind_aset(bind2,1,_foo);
@@ -205,8 +205,8 @@ alt2_2:
         goto accept6;
 revert4:
         ;
-        _foo=lrevert4foo;
-        __result=lrevert4_result;
+        _foo=revert4foo;
+        __result=revert4_result;
         goto alt2_3;
 accept6:
         ;
@@ -232,8 +232,8 @@ accept4:
         int cut3=0;
 alt3_1:
         ;
-        VALUE lrevert5foo=_foo;
-        VALUE lrevert5_result=__result;
+        VALUE revert5foo=rb_funcall(_foo,rb_intern("dup"),0);
+        VALUE revert5_result=rb_funcall(__result,rb_intern("dup"),0);
         it=_autovar_3;
         _foo=it;;
         bind_aset(bind2,1,_foo);
@@ -250,8 +250,8 @@ alt3_1:
         goto accept8;
 revert5:
         ;
-        _foo=lrevert5foo;
-        __result=lrevert5_result;
+        _foo=revert5foo;
+        __result=revert5_result;
         goto alt3_2;
 accept8:
         ;
@@ -260,7 +260,7 @@ accept8:
         goto accept7;
 alt3_2:
         ptr->pos=oldpos3;
-        VALUE lrevert6foo=_foo;
+        VALUE revert6foo=rb_funcall(_foo,rb_intern("dup"),0);
         it=_autovar_3;
         _foo=it;;
         bind_aset(bind2,1,_foo);
@@ -274,7 +274,7 @@ alt3_2:
         goto accept9;
 revert6:
         ;
-        _foo=lrevert6foo;
+        _foo=revert6foo;
         goto alt3_3;
 accept9:
         ;
@@ -296,7 +296,7 @@ fail:
 }
 VALUE Tests_foo(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,__result;
+    VALUE it ,__result=Qnil;
     VALUE bind2=bind_new2(16);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
@@ -322,7 +322,7 @@ fail:
 }
 VALUE Tests_gh(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,__result;
+    VALUE it ,__result=Qnil;
     VALUE bind2=bind_new2(16);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
@@ -331,7 +331,7 @@ VALUE Tests_gh(VALUE self ) {
     int cut1=0;
 alt1_1:
     ;
-    VALUE lrevert1_result=__result;
+    VALUE revert1_result=rb_funcall(__result,rb_intern("dup"),0);
     it=Tests_foo(self );
     if (it==failobj) {
         it=failobj;
@@ -343,7 +343,7 @@ alt1_1:
     goto accept2;
 revert1:
     ;
-    __result=lrevert1_result;
+    __result=revert1_result;
     goto alt1_2;
 accept2:
     ;
@@ -352,7 +352,7 @@ accept2:
     goto accept1;
 alt1_2:
     ptr->pos=oldpos1;
-    VALUE lrevert2_result=__result;
+    VALUE revert2_result=rb_funcall(__result,rb_intern("dup"),0);
     cut1=1;
     it=i_42;
     __result=it;;
@@ -361,7 +361,7 @@ alt1_2:
     goto accept3;
 revert2:
     ;
-    __result=lrevert2_result;
+    __result=revert2_result;
     goto alt1_3;
 accept3:
     ;
@@ -386,7 +386,7 @@ fail:
 }
 VALUE Tests_s2(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,__result,__result_2;
+    VALUE it ,__result=Qnil,__result_2=Qnil;
     VALUE bind2=bind_new2(16);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
@@ -431,7 +431,7 @@ fail:
 }
 VALUE Tests_sw(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,__result,__result_2;
+    VALUE it ,__result=Qnil,__result_2=Qnil;
     VALUE bind2=bind_new2(16);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
@@ -488,7 +488,7 @@ fail:
 }
 VALUE Tests_test(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,__result;
+    VALUE it ,__result=Qnil;
     VALUE bind2=bind_new2(16);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
@@ -497,7 +497,7 @@ VALUE Tests_test(VALUE self ) {
     int cut1=0;
 alt1_1:
     ;
-    VALUE lrevert1_result=__result;
+    VALUE revert1_result=rb_funcall(__result,rb_intern("dup"),0);
     it=Amethyst_spaces(self );
     switch((unsigned char)*ame_curstr2(ptr)) {
     case UC(0) ... '`':
@@ -522,7 +522,7 @@ alt1_1:
     goto accept2;
 revert1:
     ;
-    __result=lrevert1_result;
+    __result=revert1_result;
     goto alt1_2;
 accept2:
     ;
@@ -531,7 +531,7 @@ accept2:
     goto accept1;
 alt1_2:
     ptr->pos=oldpos1;
-    VALUE lrevert2_result=__result;
+    VALUE revert2_result=rb_funcall(__result,rb_intern("dup"),0);
     it=i_42;
     __result=it;;
 
@@ -539,7 +539,7 @@ alt1_2:
     goto accept3;
 revert2:
     ;
-    __result=lrevert2_result;
+    __result=revert2_result;
     goto alt1_3;
 accept3:
     ;

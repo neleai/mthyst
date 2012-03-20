@@ -16,7 +16,7 @@ VALUE profile_report_Lam(VALUE self) {
 }
 VALUE Lam_baz(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE it ,_autovar,_x,__result;
+    VALUE it ,_autovar=Qnil,_x=Qnil,__result=Qnil;
     VALUE bind2=bind_new2(16);
     _x=a0;;
     VALUE arg0,arg1,arg2,arg3;
@@ -44,7 +44,7 @@ fail:
 }
 VALUE Lam_foo(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE it ,_autovar,_x,__result;
+    VALUE it ,_autovar=Qnil,_x=Qnil,__result=Qnil;
     VALUE bind2=bind_new2(16);
     _x=a0;;
     VALUE arg0,arg1,arg2,arg3;
@@ -72,7 +72,7 @@ fail:
 }
 VALUE Lam_lam(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,_autovar_2,_autovar_3,__result;
+    VALUE it ,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,__result=Qnil;
     VALUE bind2=bind_new2(16);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
@@ -104,7 +104,7 @@ accept2:
     goto accept1;
 alt1_2:
     ptr->pos=oldpos1;
-    VALUE lrevert2autovar_3=_autovar_3;
+    VALUE revert2autovar_3=rb_funcall(_autovar_3,rb_intern("dup"),0);
     bind_aset(bind2,1,_autovar_3);
     it=rb_funcall(self,sy_Lam_bind_lb_1_rb__eq__f4b0,1,bind2);
     _autovar_3=bind_aget(bind2,1);;
@@ -119,7 +119,7 @@ alt1_2:
     goto accept3;
 revert2:
     ;
-    _autovar_3=lrevert2autovar_3;
+    _autovar_3=revert2autovar_3;
     goto alt1_3;
 accept3:
     ;

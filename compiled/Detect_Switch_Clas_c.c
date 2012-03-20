@@ -66,7 +66,7 @@ VALUE profile_report_Detect_Switch_Clas(VALUE self) {
 }
 VALUE Detect_Switch_Clas_itrans(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,_autovar_7,_autovar_8,_autovar_9,_autovar_10,_rules,_autovar_11,_autovar_12,__result,_autovar_13;
+    VALUE it ,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_autovar_4=Qnil,_autovar_5=Qnil,_autovar_6=Qnil,_autovar_7=Qnil,_autovar_8=Qnil,_autovar_9=Qnil,_autovar_10=Qnil,_rules=Qnil,_autovar_11=Qnil,_autovar_12=Qnil,__result=Qnil,_autovar_13=Qnil;
     VALUE bind2=bind_new2(16);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
@@ -87,32 +87,32 @@ VALUE Detect_Switch_Clas_itrans(VALUE self ) {
             int cut1=0;
 alt1_1:
             ;
-            VALUE lrevert1autovar_2=_autovar_2;
-            VALUE lrevert1autovar_4=_autovar_4;
-            VALUE lrevert1autovar_5=_autovar_5;
-            VALUE lrevert1autovar_6=_autovar_6;
-            VALUE lrevert1autovar_7=_autovar_7;
-            VALUE lrevert1autovar_8=_autovar_8;
-            VALUE lrevert1autovar_9=_autovar_9;
-            VALUE lrevert1autovar_10=_autovar_10;
-            VALUE lrevert1rules=_rules;
-            VALUE lrevert1autovar_11=_autovar_11;
-            VALUE lrevert1autovar_12=_autovar_12;
+            VALUE revert1autovar_2=rb_funcall(_autovar_2,rb_intern("dup"),0);
+            VALUE revert1autovar_4=rb_funcall(_autovar_4,rb_intern("dup"),0);
+            VALUE revert1autovar_5=rb_funcall(_autovar_5,rb_intern("dup"),0);
+            VALUE revert1autovar_6=rb_funcall(_autovar_6,rb_intern("dup"),0);
+            VALUE revert1autovar_7=rb_funcall(_autovar_7,rb_intern("dup"),0);
+            VALUE revert1autovar_8=rb_funcall(_autovar_8,rb_intern("dup"),0);
+            VALUE revert1autovar_9=rb_funcall(_autovar_9,rb_intern("dup"),0);
+            VALUE revert1autovar_10=rb_funcall(_autovar_10,rb_intern("dup"),0);
+            VALUE revert1rules=rb_funcall(_rules,rb_intern("dup"),0);
+            VALUE revert1autovar_11=rb_funcall(_autovar_11,rb_intern("dup"),0);
+            VALUE revert1autovar_12=rb_funcall(_autovar_12,rb_intern("dup"),0);
             int oldpos2=ptr->pos;
             int cut2=0;
 alt2_1:
             ;
-            VALUE lrevert2autovar_2=_autovar_2;
-            VALUE lrevert2autovar_4=_autovar_4;
-            VALUE lrevert2autovar_5=_autovar_5;
-            VALUE lrevert2autovar_6=_autovar_6;
-            VALUE lrevert2autovar_7=_autovar_7;
-            VALUE lrevert2autovar_8=_autovar_8;
-            VALUE lrevert2autovar_9=_autovar_9;
-            VALUE lrevert2autovar_10=_autovar_10;
-            VALUE lrevert2rules=_rules;
-            VALUE lrevert2autovar_11=_autovar_11;
-            VALUE lrevert2autovar_12=_autovar_12;
+            VALUE revert2autovar_2=rb_funcall(_autovar_2,rb_intern("dup"),0);
+            VALUE revert2autovar_4=rb_funcall(_autovar_4,rb_intern("dup"),0);
+            VALUE revert2autovar_5=rb_funcall(_autovar_5,rb_intern("dup"),0);
+            VALUE revert2autovar_6=rb_funcall(_autovar_6,rb_intern("dup"),0);
+            VALUE revert2autovar_7=rb_funcall(_autovar_7,rb_intern("dup"),0);
+            VALUE revert2autovar_8=rb_funcall(_autovar_8,rb_intern("dup"),0);
+            VALUE revert2autovar_9=rb_funcall(_autovar_9,rb_intern("dup"),0);
+            VALUE revert2autovar_10=rb_funcall(_autovar_10,rb_intern("dup"),0);
+            VALUE revert2rules=rb_funcall(_rules,rb_intern("dup"),0);
+            VALUE revert2autovar_11=rb_funcall(_autovar_11,rb_intern("dup"),0);
+            VALUE revert2autovar_12=rb_funcall(_autovar_12,rb_intern("dup"),0);
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar_4=it;;
@@ -154,9 +154,9 @@ alt2_1:
                     int cut3=0;
 alt3_1:
                     ;
-                    VALUE lrevert3autovar_8=_autovar_8;
-                    VALUE lrevert3autovar_9=_autovar_9;
-                    VALUE lrevert3autovar_10=_autovar_10;
+                    VALUE revert3autovar_8=rb_funcall(_autovar_8,rb_intern("dup"),0);
+                    VALUE revert3autovar_9=rb_funcall(_autovar_9,rb_intern("dup"),0);
+                    VALUE revert3autovar_10=rb_funcall(_autovar_10,rb_intern("dup"),0);
                     it=ptr->ary[ptr->pos];            ;
                     ptr->pos++;
                     _autovar_8=it;;
@@ -191,9 +191,9 @@ success4:
                     goto accept6;
 revert3:
                     ;
-                    _autovar_8=lrevert3autovar_8;
-                    _autovar_9=lrevert3autovar_9;
-                    _autovar_10=lrevert3autovar_10;
+                    _autovar_8=revert3autovar_8;
+                    _autovar_9=revert3autovar_9;
+                    _autovar_10=revert3autovar_10;
                     goto alt3_2;
 accept6:
                     ;
@@ -285,17 +285,17 @@ success1:
             goto accept4;
 revert2:
             ;
-            _autovar_2=lrevert2autovar_2;
-            _autovar_4=lrevert2autovar_4;
-            _autovar_5=lrevert2autovar_5;
-            _autovar_6=lrevert2autovar_6;
-            _autovar_7=lrevert2autovar_7;
-            _autovar_8=lrevert2autovar_8;
-            _autovar_9=lrevert2autovar_9;
-            _autovar_10=lrevert2autovar_10;
-            _rules=lrevert2rules;
-            _autovar_11=lrevert2autovar_11;
-            _autovar_12=lrevert2autovar_12;
+            _autovar_2=revert2autovar_2;
+            _autovar_4=revert2autovar_4;
+            _autovar_5=revert2autovar_5;
+            _autovar_6=revert2autovar_6;
+            _autovar_7=revert2autovar_7;
+            _autovar_8=revert2autovar_8;
+            _autovar_9=revert2autovar_9;
+            _autovar_10=revert2autovar_10;
+            _rules=revert2rules;
+            _autovar_11=revert2autovar_11;
+            _autovar_12=revert2autovar_12;
             goto alt2_2;
 accept4:
             ;
@@ -304,7 +304,7 @@ accept4:
             goto accept3;
 alt2_2:
             ptr->pos=oldpos2;
-            VALUE lrevert5autovar_12=_autovar_12;
+            VALUE revert5autovar_12=rb_funcall(_autovar_12,rb_intern("dup"),0);
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -316,7 +316,7 @@ alt2_2:
             goto accept8;
 revert5:
             ;
-            _autovar_12=lrevert5autovar_12;
+            _autovar_12=revert5autovar_12;
             goto alt2_3;
 accept8:
             ;
@@ -336,17 +336,17 @@ accept3:
             goto accept2;
 revert1:
             ;
-            _autovar_2=lrevert1autovar_2;
-            _autovar_4=lrevert1autovar_4;
-            _autovar_5=lrevert1autovar_5;
-            _autovar_6=lrevert1autovar_6;
-            _autovar_7=lrevert1autovar_7;
-            _autovar_8=lrevert1autovar_8;
-            _autovar_9=lrevert1autovar_9;
-            _autovar_10=lrevert1autovar_10;
-            _rules=lrevert1rules;
-            _autovar_11=lrevert1autovar_11;
-            _autovar_12=lrevert1autovar_12;
+            _autovar_2=revert1autovar_2;
+            _autovar_4=revert1autovar_4;
+            _autovar_5=revert1autovar_5;
+            _autovar_6=revert1autovar_6;
+            _autovar_7=revert1autovar_7;
+            _autovar_8=revert1autovar_8;
+            _autovar_9=revert1autovar_9;
+            _autovar_10=revert1autovar_10;
+            _rules=revert1rules;
+            _autovar_11=revert1autovar_11;
+            _autovar_12=revert1autovar_12;
             goto alt1_2;
 accept2:
             ;
@@ -381,7 +381,7 @@ accept1:
             int cut4=0;
 alt4_1:
             ;
-            VALUE lrevert7autovar_12=_autovar_12;
+            VALUE revert7autovar_12=rb_funcall(_autovar_12,rb_intern("dup"),0);
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -393,7 +393,7 @@ alt4_1:
             goto accept11;
 revert7:
             ;
-            _autovar_12=lrevert7autovar_12;
+            _autovar_12=revert7autovar_12;
             goto alt4_2;
 accept11:
             ;
@@ -437,7 +437,7 @@ fail:
 }
 VALUE Detect_Switch_Clas_root(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,__result;
+    VALUE it ,__result=Qnil;
     VALUE bind2=bind_new2(16);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
@@ -454,7 +454,7 @@ fail:
 }
 VALUE Detect_Switch_Clas_traverse(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_nvars,_ivars,_autovar,_autovar_2,_it,__result;
+    VALUE it ,_nvars=Qnil,_ivars=Qnil,_autovar=Qnil,_autovar_2=Qnil,_it=Qnil,__result=Qnil;
     VALUE bind2=bind_new2(16);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
@@ -498,8 +498,8 @@ VALUE Detect_Switch_Clas_traverse(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        VALUE lrevert1nvars=_nvars;
-        VALUE lrevert1it=_it;
+        VALUE revert1nvars=rb_funcall(_nvars,rb_intern("dup"),0);
+        VALUE revert1it=rb_funcall(_it,rb_intern("dup"),0);
         it=Detect_Switch_Clas_traverse_item(self );
         if (it==failobj) {
             it=failobj;
@@ -515,8 +515,8 @@ alt1_1:
         goto accept2;
 revert1:
         ;
-        _nvars=lrevert1nvars;
-        _it=lrevert1it;
+        _nvars=revert1nvars;
+        _it=revert1it;
         goto alt1_2;
 accept2:
         ;
@@ -588,7 +588,7 @@ fail:
 }
 VALUE Detect_Switch_Clas_traverse_item(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,__result,_autovar,_autovar_2,_autovar_3,_ar,_it,_autovar_4;
+    VALUE it ,__result=Qnil,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_ar=Qnil,_it=Qnil,_autovar_4=Qnil;
     VALUE bind2=bind_new2(16);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
@@ -605,7 +605,7 @@ VALUE Detect_Switch_Clas_traverse_item(VALUE self ) {
             int cut1=0;
 alt1_1:
             ;
-            VALUE lrevert1_result=__result;
+            VALUE revert1_result=rb_funcall(__result,rb_intern("dup"),0);
             it=Detect_Switch_Clas_visit(self );
             if (it==failobj) {
                 it=failobj;
@@ -617,7 +617,7 @@ alt1_1:
             goto accept2;
 revert1:
             ;
-            __result=lrevert1_result;
+            __result=revert1_result;
             goto alt1_2;
 accept2:
             ;
@@ -626,9 +626,9 @@ accept2:
             goto accept1;
 alt1_2:
             ptr->pos=oldpos1;
-            VALUE lrevert2_result=__result;
-            VALUE lrevert2autovar=_autovar;
-            VALUE lrevert2autovar_2=_autovar_2;
+            VALUE revert2_result=rb_funcall(__result,rb_intern("dup"),0);
+            VALUE revert2autovar=rb_funcall(_autovar,rb_intern("dup"),0);
+            VALUE revert2autovar_2=rb_funcall(_autovar_2,rb_intern("dup"),0);
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar=it;;
@@ -663,9 +663,9 @@ success1:
             goto accept3;
 revert2:
             ;
-            __result=lrevert2_result;
-            _autovar=lrevert2autovar;
-            _autovar_2=lrevert2autovar_2;
+            __result=revert2_result;
+            _autovar=revert2autovar;
+            _autovar_2=revert2autovar_2;
             goto alt1_3;
 accept3:
             ;
@@ -674,7 +674,7 @@ accept3:
             goto accept1;
 alt1_3:
             ptr->pos=oldpos1;
-            VALUE lrevert3_result=__result;
+            VALUE revert3_result=rb_funcall(__result,rb_intern("dup"),0);
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -686,7 +686,7 @@ alt1_3:
             goto accept4;
 revert3:
             ;
-            __result=lrevert3_result;
+            __result=revert3_result;
             goto alt1_4;
 accept4:
             ;
@@ -708,9 +708,9 @@ accept1:
             int cut2=0;
 alt2_1:
             ;
-            VALUE lrevert4_result=__result;
-            VALUE lrevert4autovar=_autovar;
-            VALUE lrevert4autovar_2=_autovar_2;
+            VALUE revert4_result=rb_funcall(__result,rb_intern("dup"),0);
+            VALUE revert4autovar=rb_funcall(_autovar,rb_intern("dup"),0);
+            VALUE revert4autovar_2=rb_funcall(_autovar_2,rb_intern("dup"),0);
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar=it;;
@@ -745,9 +745,9 @@ success2:
             goto accept6;
 revert4:
             ;
-            __result=lrevert4_result;
-            _autovar=lrevert4autovar;
-            _autovar_2=lrevert4autovar_2;
+            __result=revert4_result;
+            _autovar=revert4autovar;
+            _autovar_2=revert4autovar_2;
             goto alt2_2;
 accept6:
             ;
@@ -756,7 +756,7 @@ accept6:
             goto accept5;
 alt2_2:
             ptr->pos=oldpos2;
-            VALUE lrevert5_result=__result;
+            VALUE revert5_result=rb_funcall(__result,rb_intern("dup"),0);
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -768,7 +768,7 @@ alt2_2:
             goto accept7;
 revert5:
             ;
-            __result=lrevert5_result;
+            __result=revert5_result;
             goto alt2_3;
 accept7:
             ;
@@ -797,7 +797,7 @@ accept5:
             int cut3=0;
 alt3_1:
             ;
-            VALUE lrevert6_result=__result;
+            VALUE revert6_result=rb_funcall(__result,rb_intern("dup"),0);
             it=Detect_Switch_Clas_visit(self );
             if (it==failobj) {
                 it=failobj;
@@ -809,7 +809,7 @@ alt3_1:
             goto accept9;
 revert6:
             ;
-            __result=lrevert6_result;
+            __result=revert6_result;
             goto alt3_2;
 accept9:
             ;
@@ -818,11 +818,11 @@ accept9:
             goto accept8;
 alt3_2:
             ptr->pos=oldpos3;
-            VALUE lrevert7_result=__result;
-            VALUE lrevert7autovar_3=_autovar_3;
-            VALUE lrevert7ar=_ar;
-            VALUE lrevert7it=_it;
-            VALUE lrevert7autovar_4=_autovar_4;
+            VALUE revert7_result=rb_funcall(__result,rb_intern("dup"),0);
+            VALUE revert7autovar_3=rb_funcall(_autovar_3,rb_intern("dup"),0);
+            VALUE revert7ar=rb_funcall(_ar,rb_intern("dup"),0);
+            VALUE revert7it=rb_funcall(_it,rb_intern("dup"),0);
+            VALUE revert7autovar_4=rb_funcall(_autovar_4,rb_intern("dup"),0);
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar_3=it;;
@@ -838,8 +838,8 @@ alt3_2:
                 int cut4=0;
 alt4_1:
                 ;
-                VALUE lrevert8ar=_ar;
-                VALUE lrevert8it=_it;
+                VALUE revert8ar=rb_funcall(_ar,rb_intern("dup"),0);
+                VALUE revert8it=rb_funcall(_it,rb_intern("dup"),0);
                 it=Detect_Switch_Clas_traverse_item(self );
                 if (it==failobj) {
                     it=failobj;
@@ -855,8 +855,8 @@ alt4_1:
                 goto accept12;
 revert8:
                 ;
-                _ar=lrevert8ar;
-                _it=lrevert8it;
+                _ar=revert8ar;
+                _it=revert8it;
                 goto alt4_2;
 accept12:
                 ;
@@ -909,11 +909,11 @@ success3:
             goto accept10;
 revert7:
             ;
-            __result=lrevert7_result;
-            _autovar_3=lrevert7autovar_3;
-            _ar=lrevert7ar;
-            _it=lrevert7it;
-            _autovar_4=lrevert7autovar_4;
+            __result=revert7_result;
+            _autovar_3=revert7autovar_3;
+            _ar=revert7ar;
+            _it=revert7it;
+            _autovar_4=revert7autovar_4;
             goto alt3_3;
 accept10:
             ;
@@ -922,7 +922,7 @@ accept10:
             goto accept8;
 alt3_3:
             ptr->pos=oldpos3;
-            VALUE lrevert10_result=__result;
+            VALUE revert10_result=rb_funcall(__result,rb_intern("dup"),0);
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -934,7 +934,7 @@ alt3_3:
             goto accept14;
 revert10:
             ;
-            __result=lrevert10_result;
+            __result=revert10_result;
             goto alt3_4;
 accept14:
             ;
@@ -956,11 +956,11 @@ accept8:
             int cut5=0;
 alt5_1:
             ;
-            VALUE lrevert11_result=__result;
-            VALUE lrevert11autovar_3=_autovar_3;
-            VALUE lrevert11ar=_ar;
-            VALUE lrevert11it=_it;
-            VALUE lrevert11autovar_4=_autovar_4;
+            VALUE revert11_result=rb_funcall(__result,rb_intern("dup"),0);
+            VALUE revert11autovar_3=rb_funcall(_autovar_3,rb_intern("dup"),0);
+            VALUE revert11ar=rb_funcall(_ar,rb_intern("dup"),0);
+            VALUE revert11it=rb_funcall(_it,rb_intern("dup"),0);
+            VALUE revert11autovar_4=rb_funcall(_autovar_4,rb_intern("dup"),0);
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar_3=it;;
@@ -976,8 +976,8 @@ alt5_1:
                 int cut6=0;
 alt6_1:
                 ;
-                VALUE lrevert12ar=_ar;
-                VALUE lrevert12it=_it;
+                VALUE revert12ar=rb_funcall(_ar,rb_intern("dup"),0);
+                VALUE revert12it=rb_funcall(_it,rb_intern("dup"),0);
                 it=Detect_Switch_Clas_traverse_item(self );
                 if (it==failobj) {
                     it=failobj;
@@ -993,8 +993,8 @@ alt6_1:
                 goto accept18;
 revert12:
                 ;
-                _ar=lrevert12ar;
-                _it=lrevert12it;
+                _ar=revert12ar;
+                _it=revert12it;
                 goto alt6_2;
 accept18:
                 ;
@@ -1047,11 +1047,11 @@ success4:
             goto accept16;
 revert11:
             ;
-            __result=lrevert11_result;
-            _autovar_3=lrevert11autovar_3;
-            _ar=lrevert11ar;
-            _it=lrevert11it;
-            _autovar_4=lrevert11autovar_4;
+            __result=revert11_result;
+            _autovar_3=revert11autovar_3;
+            _ar=revert11ar;
+            _it=revert11it;
+            _autovar_4=revert11autovar_4;
             goto alt5_2;
 accept16:
             ;
@@ -1060,7 +1060,7 @@ accept16:
             goto accept15;
 alt5_2:
             ptr->pos=oldpos5;
-            VALUE lrevert14_result=__result;
+            VALUE revert14_result=rb_funcall(__result,rb_intern("dup"),0);
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -1072,7 +1072,7 @@ alt5_2:
             goto accept20;
 revert14:
             ;
-            __result=lrevert14_result;
+            __result=revert14_result;
             goto alt5_3;
 accept20:
             ;
@@ -1101,7 +1101,7 @@ accept15:
             int cut7=0;
 alt7_1:
             ;
-            VALUE lrevert15_result=__result;
+            VALUE revert15_result=rb_funcall(__result,rb_intern("dup"),0);
             it=Detect_Switch_Clas_visit(self );
             if (it==failobj) {
                 it=failobj;
@@ -1113,7 +1113,7 @@ alt7_1:
             goto accept22;
 revert15:
             ;
-            __result=lrevert15_result;
+            __result=revert15_result;
             goto alt7_2;
 accept22:
             ;
@@ -1122,7 +1122,7 @@ accept22:
             goto accept21;
 alt7_2:
             ptr->pos=oldpos7;
-            VALUE lrevert16_result=__result;
+            VALUE revert16_result=rb_funcall(__result,rb_intern("dup"),0);
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -1134,7 +1134,7 @@ alt7_2:
             goto accept23;
 revert16:
             ;
-            __result=lrevert16_result;
+            __result=revert16_result;
             goto alt7_3;
 accept23:
             ;
@@ -1167,7 +1167,7 @@ fail:
 }
 VALUE Detect_Switch_Clas_visit(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_autovar,_autovar_2,_autovar_3,_autovar_4,_autovar_5,_autovar_6,_clas,_autovar_7,__result,_autovar_8,_autovar_9,_autovar_10,_autovar_11,_firs,_autovar_12,_autovar_13,_autovar_14,_autovar_15,_items,_aswitch,_autovar_16,_autovar_17,_autovar_18,_list,_autovar_19,_ary,_newlist,_lat,__result_2,_n,_cls,_autovar_20,_autovar_21,_autovar_22,_autovar_23,_autovar_24,_autovar_25,_autovar_26,_prefix,_s,__result_3,_autovar_27,_ary_2,_autovar_28,_autovar_29,_rest,_cls_2,_autovar_30,_autovar_31,_autovar_32,_autovar_33,_autovar_34;
+    VALUE it ,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_autovar_4=Qnil,_autovar_5=Qnil,_autovar_6=Qnil,_clas=Qnil,_autovar_7=Qnil,__result=Qnil,_autovar_8=Qnil,_autovar_9=Qnil,_autovar_10=Qnil,_autovar_11=Qnil,_firs=Qnil,_autovar_12=Qnil,_autovar_13=Qnil,_autovar_14=Qnil,_autovar_15=Qnil,_items=Qnil,_aswitch=Qnil,_autovar_16=Qnil,_autovar_17=Qnil,_autovar_18=Qnil,_list=Qnil,_autovar_19=Qnil,_ary=Qnil,_newlist=Qnil,_lat=Qnil,__result_2=Qnil,_n=Qnil,_cls=Qnil,_autovar_20=Qnil,_autovar_21=Qnil,_autovar_22=Qnil,_autovar_23=Qnil,_autovar_24=Qnil,_autovar_25=Qnil,_autovar_26=Qnil,_prefix=Qnil,_s=Qnil,__result_3=Qnil,_autovar_27=Qnil,_ary_2=Qnil,_autovar_28=Qnil,_autovar_29=Qnil,_rest=Qnil,_cls_2=Qnil,_autovar_30=Qnil,_autovar_31=Qnil,_autovar_32=Qnil,_autovar_33=Qnil,_autovar_34=Qnil;
     VALUE bind2=bind_new2(16);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
@@ -1186,12 +1186,12 @@ VALUE Detect_Switch_Clas_visit(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        VALUE lrevert1autovar_4=_autovar_4;
-        VALUE lrevert1autovar_5=_autovar_5;
-        VALUE lrevert1autovar_6=_autovar_6;
-        VALUE lrevert1clas=_clas;
-        VALUE lrevert1autovar_7=_autovar_7;
-        VALUE lrevert1_result=__result;
+        VALUE revert1autovar_4=rb_funcall(_autovar_4,rb_intern("dup"),0);
+        VALUE revert1autovar_5=rb_funcall(_autovar_5,rb_intern("dup"),0);
+        VALUE revert1autovar_6=rb_funcall(_autovar_6,rb_intern("dup"),0);
+        VALUE revert1clas=rb_funcall(_clas,rb_intern("dup"),0);
+        VALUE revert1autovar_7=rb_funcall(_autovar_7,rb_intern("dup"),0);
+        VALUE revert1_result=rb_funcall(__result,rb_intern("dup"),0);
         it=_autovar_3;
         _autovar_4=it;;
         cstruct oldpass1=*ptr;
@@ -1317,12 +1317,12 @@ success1:
         goto accept2;
 revert1:
         ;
-        _autovar_4=lrevert1autovar_4;
-        _autovar_5=lrevert1autovar_5;
-        _autovar_6=lrevert1autovar_6;
-        _clas=lrevert1clas;
-        _autovar_7=lrevert1autovar_7;
-        __result=lrevert1_result;
+        _autovar_4=revert1autovar_4;
+        _autovar_5=revert1autovar_5;
+        _autovar_6=revert1autovar_6;
+        _clas=revert1clas;
+        _autovar_7=revert1autovar_7;
+        __result=revert1_result;
         goto alt1_2;
 accept2:
         ;
@@ -1331,10 +1331,10 @@ accept2:
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
-        VALUE lrevert2_result=__result;
-        VALUE lrevert2autovar_8=_autovar_8;
-        VALUE lrevert2autovar_9=_autovar_9;
-        VALUE lrevert2autovar_10=_autovar_10;
+        VALUE revert2_result=rb_funcall(__result,rb_intern("dup"),0);
+        VALUE revert2autovar_8=rb_funcall(_autovar_8,rb_intern("dup"),0);
+        VALUE revert2autovar_9=rb_funcall(_autovar_9,rb_intern("dup"),0);
+        VALUE revert2autovar_10=rb_funcall(_autovar_10,rb_intern("dup"),0);
         it=_autovar_3;
         _autovar_8=it;;
         cstruct oldpass4=*ptr;
@@ -1410,10 +1410,10 @@ success4:
         goto accept3;
 revert2:
         ;
-        __result=lrevert2_result;
-        _autovar_8=lrevert2autovar_8;
-        _autovar_9=lrevert2autovar_9;
-        _autovar_10=lrevert2autovar_10;
+        __result=revert2_result;
+        _autovar_8=revert2autovar_8;
+        _autovar_9=revert2autovar_9;
+        _autovar_10=revert2autovar_10;
         goto alt1_3;
 accept3:
         ;
@@ -1422,10 +1422,10 @@ accept3:
         goto accept1;
 alt1_3:
         ptr->pos=oldpos1;
-        VALUE lrevert3_result=__result;
-        VALUE lrevert3autovar_11=_autovar_11;
-        VALUE lrevert3firs=_firs;
-        VALUE lrevert3autovar_12=_autovar_12;
+        VALUE revert3_result=rb_funcall(__result,rb_intern("dup"),0);
+        VALUE revert3autovar_11=rb_funcall(_autovar_11,rb_intern("dup"),0);
+        VALUE revert3firs=rb_funcall(_firs,rb_intern("dup"),0);
+        VALUE revert3autovar_12=rb_funcall(_autovar_12,rb_intern("dup"),0);
         it=_autovar_3;
         _autovar_11=it;;
         cstruct oldpass6=*ptr;
@@ -1473,10 +1473,10 @@ success6:
         goto accept4;
 revert3:
         ;
-        __result=lrevert3_result;
-        _autovar_11=lrevert3autovar_11;
-        _firs=lrevert3firs;
-        _autovar_12=lrevert3autovar_12;
+        __result=revert3_result;
+        _autovar_11=revert3autovar_11;
+        _firs=revert3firs;
+        _autovar_12=revert3autovar_12;
         goto alt1_4;
 accept4:
         ;
@@ -1509,7 +1509,7 @@ accept1:
             int cut2=0;
 alt2_1:
             ;
-            VALUE lrevert4autovar_15=_autovar_15;
+            VALUE revert4autovar_15=rb_funcall(_autovar_15,rb_intern("dup"),0);
             it=Detect_Switch_Clas_traverse_item(self );
             if (it==failobj) {
                 it=failobj;
@@ -1521,7 +1521,7 @@ alt2_1:
             goto accept6;
 revert4:
             ;
-            _autovar_15=lrevert4autovar_15;
+            _autovar_15=revert4autovar_15;
             goto alt2_2;
 accept6:
             ;
@@ -1563,9 +1563,9 @@ accept5:
         int cut3=0;
 alt3_1:
         ;
-        VALUE lrevert6items=_items;
-        VALUE lrevert6aswitch=_aswitch;
-        VALUE lrevert6autovar_16=_autovar_16;
+        VALUE revert6items=rb_funcall(_items,rb_intern("dup"),0);
+        VALUE revert6aswitch=rb_funcall(_aswitch,rb_intern("dup"),0);
+        VALUE revert6autovar_16=rb_funcall(_autovar_16,rb_intern("dup"),0);
         bind_aset(bind2,1,_aswitch);
         it=rb_funcall(self,sy_Detect_Switch_Clas__lp_2,1,bind2);
         _aswitch=bind_aget(bind2,1);;
@@ -1582,9 +1582,9 @@ alt3_1:
         goto accept9;
 revert6:
         ;
-        _items=lrevert6items;
-        _aswitch=lrevert6aswitch;
-        _autovar_16=lrevert6autovar_16;
+        _items=revert6items;
+        _aswitch=revert6aswitch;
+        _autovar_16=revert6autovar_16;
         goto alt3_2;
 accept9:
         ;
@@ -1593,19 +1593,19 @@ accept9:
         goto accept8;
 alt3_2:
         ptr->pos=oldpos3;
-        VALUE lrevert7autovar_16=_autovar_16;
-        VALUE lrevert7autovar_17=_autovar_17;
-        VALUE lrevert7autovar_18=_autovar_18;
-        VALUE lrevert7list=_list;
-        VALUE lrevert7autovar_19=_autovar_19;
-        VALUE lrevert7ary=_ary;
-        VALUE lrevert7newlist=_newlist;
-        VALUE lrevert7lat=_lat;
-        VALUE lrevert7_result_2=__result_2;
-        VALUE lrevert7n=_n;
-        VALUE lrevert7cls=_cls;
-        VALUE lrevert7autovar_20=_autovar_20;
-        VALUE lrevert7autovar_21=_autovar_21;
+        VALUE revert7autovar_16=rb_funcall(_autovar_16,rb_intern("dup"),0);
+        VALUE revert7autovar_17=rb_funcall(_autovar_17,rb_intern("dup"),0);
+        VALUE revert7autovar_18=rb_funcall(_autovar_18,rb_intern("dup"),0);
+        VALUE revert7list=rb_funcall(_list,rb_intern("dup"),0);
+        VALUE revert7autovar_19=rb_funcall(_autovar_19,rb_intern("dup"),0);
+        VALUE revert7ary=rb_funcall(_ary,rb_intern("dup"),0);
+        VALUE revert7newlist=rb_funcall(_newlist,rb_intern("dup"),0);
+        VALUE revert7lat=rb_funcall(_lat,rb_intern("dup"),0);
+        VALUE revert7_result_2=rb_funcall(__result_2,rb_intern("dup"),0);
+        VALUE revert7n=rb_funcall(_n,rb_intern("dup"),0);
+        VALUE revert7cls=rb_funcall(_cls,rb_intern("dup"),0);
+        VALUE revert7autovar_20=rb_funcall(_autovar_20,rb_intern("dup"),0);
+        VALUE revert7autovar_21=rb_funcall(_autovar_21,rb_intern("dup"),0);
         it=_items;
         _autovar_17=it;;
         cstruct oldpass8=*ptr;
@@ -1634,12 +1634,12 @@ alt3_2:
             int cut4=0;
 alt4_1:
             ;
-            VALUE lrevert8list=_list;
-            VALUE lrevert8autovar_19=_autovar_19;
-            VALUE lrevert8ary=_ary;
-            VALUE lrevert8newlist=_newlist;
-            VALUE lrevert8lat=_lat;
-            VALUE lrevert8_result_2=__result_2;
+            VALUE revert8list=rb_funcall(_list,rb_intern("dup"),0);
+            VALUE revert8autovar_19=rb_funcall(_autovar_19,rb_intern("dup"),0);
+            VALUE revert8ary=rb_funcall(_ary,rb_intern("dup"),0);
+            VALUE revert8newlist=rb_funcall(_newlist,rb_intern("dup"),0);
+            VALUE revert8lat=rb_funcall(_lat,rb_intern("dup"),0);
+            VALUE revert8_result_2=rb_funcall(__result_2,rb_intern("dup"),0);
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar_19=it;;
@@ -1694,12 +1694,12 @@ success10:
             goto accept12;
 revert8:
             ;
-            _list=lrevert8list;
-            _autovar_19=lrevert8autovar_19;
-            _ary=lrevert8ary;
-            _newlist=lrevert8newlist;
-            _lat=lrevert8lat;
-            __result_2=lrevert8_result_2;
+            _list=revert8list;
+            _autovar_19=revert8autovar_19;
+            _ary=revert8ary;
+            _newlist=revert8newlist;
+            _lat=revert8lat;
+            __result_2=revert8_result_2;
             goto alt4_2;
 accept12:
             ;
@@ -1708,10 +1708,10 @@ accept12:
             goto accept11;
 alt4_2:
             ptr->pos=oldpos4;
-            VALUE lrevert9list=_list;
-            VALUE lrevert9newlist=_newlist;
-            VALUE lrevert9_result_2=__result_2;
-            VALUE lrevert9n=_n;
+            VALUE revert9list=rb_funcall(_list,rb_intern("dup"),0);
+            VALUE revert9newlist=rb_funcall(_newlist,rb_intern("dup"),0);
+            VALUE revert9_result_2=rb_funcall(__result_2,rb_intern("dup"),0);
+            VALUE revert9n=rb_funcall(_n,rb_intern("dup"),0);
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -1741,10 +1741,10 @@ alt4_2:
             goto accept13;
 revert9:
             ;
-            _list=lrevert9list;
-            _newlist=lrevert9newlist;
-            __result_2=lrevert9_result_2;
-            _n=lrevert9n;
+            _list=revert9list;
+            _newlist=revert9newlist;
+            __result_2=revert9_result_2;
+            _n=revert9n;
             goto alt4_3;
 accept13:
             ;
@@ -1753,9 +1753,9 @@ accept13:
             goto accept11;
 alt4_3:
             ptr->pos=oldpos4;
-            VALUE lrevert10list=_list;
-            VALUE lrevert10_result_2=__result_2;
-            VALUE lrevert10cls=_cls;
+            VALUE revert10list=rb_funcall(_list,rb_intern("dup"),0);
+            VALUE revert10_result_2=rb_funcall(__result_2,rb_intern("dup"),0);
+            VALUE revert10cls=rb_funcall(_cls,rb_intern("dup"),0);
             it=Qnil;
             if (ptr->pos<ptr->len) {
                 it=failobj;
@@ -1774,9 +1774,9 @@ alt4_3:
             goto accept14;
 revert10:
             ;
-            _list=lrevert10list;
-            __result_2=lrevert10_result_2;
-            _cls=lrevert10cls;
+            _list=revert10list;
+            __result_2=revert10_result_2;
+            _cls=revert10cls;
             goto alt4_4;
 accept14:
             ;
@@ -1807,10 +1807,10 @@ accept11:
             int cut5=0;
 alt5_1:
             ;
-            VALUE lrevert11list=_list;
-            VALUE lrevert11newlist=_newlist;
-            VALUE lrevert11_result_2=__result_2;
-            VALUE lrevert11n=_n;
+            VALUE revert11list=rb_funcall(_list,rb_intern("dup"),0);
+            VALUE revert11newlist=rb_funcall(_newlist,rb_intern("dup"),0);
+            VALUE revert11_result_2=rb_funcall(__result_2,rb_intern("dup"),0);
+            VALUE revert11n=rb_funcall(_n,rb_intern("dup"),0);
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -1840,10 +1840,10 @@ alt5_1:
             goto accept16;
 revert11:
             ;
-            _list=lrevert11list;
-            _newlist=lrevert11newlist;
-            __result_2=lrevert11_result_2;
-            _n=lrevert11n;
+            _list=revert11list;
+            _newlist=revert11newlist;
+            __result_2=revert11_result_2;
+            _n=revert11n;
             goto alt5_2;
 accept16:
             ;
@@ -1852,9 +1852,9 @@ accept16:
             goto accept15;
 alt5_2:
             ptr->pos=oldpos5;
-            VALUE lrevert12list=_list;
-            VALUE lrevert12_result_2=__result_2;
-            VALUE lrevert12cls=_cls;
+            VALUE revert12list=rb_funcall(_list,rb_intern("dup"),0);
+            VALUE revert12_result_2=rb_funcall(__result_2,rb_intern("dup"),0);
+            VALUE revert12cls=rb_funcall(_cls,rb_intern("dup"),0);
             it=Qnil;
             if (ptr->pos<ptr->len) {
                 it=failobj;
@@ -1873,9 +1873,9 @@ alt5_2:
             goto accept17;
 revert12:
             ;
-            _list=lrevert12list;
-            __result_2=lrevert12_result_2;
-            _cls=lrevert12cls;
+            _list=revert12list;
+            __result_2=revert12_result_2;
+            _cls=revert12cls;
             goto alt5_3;
 accept17:
             ;
@@ -1932,19 +1932,19 @@ success8:
         goto accept10;
 revert7:
         ;
-        _autovar_16=lrevert7autovar_16;
-        _autovar_17=lrevert7autovar_17;
-        _autovar_18=lrevert7autovar_18;
-        _list=lrevert7list;
-        _autovar_19=lrevert7autovar_19;
-        _ary=lrevert7ary;
-        _newlist=lrevert7newlist;
-        _lat=lrevert7lat;
-        __result_2=lrevert7_result_2;
-        _n=lrevert7n;
-        _cls=lrevert7cls;
-        _autovar_20=lrevert7autovar_20;
-        _autovar_21=lrevert7autovar_21;
+        _autovar_16=revert7autovar_16;
+        _autovar_17=revert7autovar_17;
+        _autovar_18=revert7autovar_18;
+        _list=revert7list;
+        _autovar_19=revert7autovar_19;
+        _ary=revert7ary;
+        _newlist=revert7newlist;
+        _lat=revert7lat;
+        __result_2=revert7_result_2;
+        _n=revert7n;
+        _cls=revert7cls;
+        _autovar_20=revert7autovar_20;
+        _autovar_21=revert7autovar_21;
         goto alt3_3;
 accept10:
         ;
@@ -1993,7 +1993,7 @@ success7:
             int cut6=0;
 alt6_1:
             ;
-            VALUE lrevert13autovar_24=_autovar_24;
+            VALUE revert13autovar_24=rb_funcall(_autovar_24,rb_intern("dup"),0);
             it=Detect_Switch_Clas_traverse_item(self );
             if (it==failobj) {
                 it=failobj;
@@ -2005,7 +2005,7 @@ alt6_1:
             goto accept19;
 revert13:
             ;
-            _autovar_24=lrevert13autovar_24;
+            _autovar_24=revert13autovar_24;
             goto alt6_2;
 accept19:
             ;
@@ -2053,397 +2053,398 @@ accept18:
         ptr->pos=ptr->len=0;
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_26);
-        switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Switch_Clas_5,rb_obj_class(ame_curobj2(ptr))))) {
-        case 0/*Switch_Clas*/:
+        switch((unsigned char)*ame_curstr2(ptr)) {
+        case UC(0) ... UC(255):
             ;
             it=rb_ary_new3(0);
             _prefix=it;;
-            int oldpos7=ptr->pos;
-            int cut7=0;
+            switch((unsigned char)*ame_curstr2(ptr)) {
+            case UC(0) ... UC(255):
+                ;
+                switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Switch_Clas_5,rb_obj_class(ame_curobj2(ptr))))) {
+                case 0/*Switch_Clas*/:
+                    ;
+                    int oldpos7=ptr->pos;
+                    int cut7=0;
 alt7_1:
-            ;
-            VALUE lrevert15prefix=_prefix;
-            VALUE lrevert15s=_s;
-            VALUE lrevert15_result_3=__result_3;
-            it=Detect_First_must_empty(self );
-            if (it==failobj) {
-                it=failobj;
-                goto revert15;
-            }
-            _s=it;;
-            it=c_Switch_Clas;
-            arg0=it;
-            bind_aset(bind2,1,_prefix);
-            bind_aset(bind2,2,_s);
-            it=rb_funcall(self,sy_Detect_Switch_Clas_bind_lb_1_rb__pl__4651,1,bind2);
-            _prefix=bind_aget(bind2,1);;
-            _s=bind_aget(bind2,2);;
-            arg1=it;
-            it=Detect_First_combine_seq(self ,arg0,arg1);
-            if (it==failobj) {
-                it=failobj;
-                goto revert15;
-            }
-            __result_3=it;;
+                    ;
+                    VALUE revert15prefix=rb_funcall(_prefix,rb_intern("dup"),0);
+                    VALUE revert15s=rb_funcall(_s,rb_intern("dup"),0);
+                    VALUE revert15_result_3=rb_funcall(__result_3,rb_intern("dup"),0);
+                    it=Detect_First_must_empty(self );
+                    if (it==failobj) {
+                        it=failobj;
+                        goto revert15;
+                    }
+                    _s=it;;
+                    it=c_Switch_Clas;
+                    arg0=it;
+                    bind_aset(bind2,1,_prefix);
+                    bind_aset(bind2,2,_s);
+                    it=rb_funcall(self,sy_Detect_Switch_Clas_bind_lb_1_rb__pl__4651,1,bind2);
+                    _prefix=bind_aget(bind2,1);;
+                    _s=bind_aget(bind2,2);;
+                    arg1=it;
+                    it=Detect_First_combine_seq(self ,arg0,arg1);
+                    if (it==failobj) {
+                        it=failobj;
+                        goto revert15;
+                    }
+                    __result_3=it;;
 
-            ;
-            goto accept22;
+                    ;
+                    goto accept22;
 revert15:
-            ;
-            _prefix=lrevert15prefix;
-            _s=lrevert15s;
-            __result_3=lrevert15_result_3;
-            goto alt7_2;
+                    ;
+                    _prefix=revert15prefix;
+                    _s=revert15s;
+                    __result_3=revert15_result_3;
+                    goto alt7_2;
 accept22:
-            ;
+                    ;
 
-            ;
-            goto accept21;
+                    ;
+                    goto accept21;
 alt7_2:
-            ptr->pos=oldpos7;
-            VALUE lrevert16prefix=_prefix;
-            VALUE lrevert16_result_3=__result_3;
-            VALUE lrevert16autovar_27=_autovar_27;
-            VALUE lrevert16ary_2=_ary_2;
-            VALUE lrevert16autovar_28=_autovar_28;
-            VALUE lrevert16autovar_29=_autovar_29;
-            VALUE lrevert16rest=_rest;
-            VALUE lrevert16cls_2=_cls_2;
-            it=ptr->ary[ptr->pos];            ;
-            ptr->pos++;
-            _autovar_27=it;;
-            cstruct oldpass14=*ptr;
-            ptr->pos=ptr->len=0;
-            ptr->ary=NULL;
-            ame_setsrc2(self,_autovar_27);
-            ptr->pos=ptr->len;
-            it=rb_funcall(self,sy_Detect_Switch_Clas_src_dot_ary_d5cf,1,bind2);
-            _ary_2=it;;
-            it=Qnil;
-            if (ptr->pos<ptr->len) {
-                it=failobj;
-                goto pass14;
-            }
-            goto success14;
+                    ptr->pos=oldpos7;
+                    VALUE revert16prefix=rb_funcall(_prefix,rb_intern("dup"),0);
+                    VALUE revert16_result_3=rb_funcall(__result_3,rb_intern("dup"),0);
+                    VALUE revert16autovar_27=rb_funcall(_autovar_27,rb_intern("dup"),0);
+                    VALUE revert16ary_2=rb_funcall(_ary_2,rb_intern("dup"),0);
+                    VALUE revert16autovar_28=rb_funcall(_autovar_28,rb_intern("dup"),0);
+                    VALUE revert16autovar_29=rb_funcall(_autovar_29,rb_intern("dup"),0);
+                    VALUE revert16rest=rb_funcall(_rest,rb_intern("dup"),0);
+                    VALUE revert16cls_2=rb_funcall(_cls_2,rb_intern("dup"),0);
+                    it=ptr->ary[ptr->pos];            ;
+                    ptr->pos++;
+                    _autovar_27=it;;
+                    cstruct oldpass14=*ptr;
+                    ptr->pos=ptr->len=0;
+                    ptr->ary=NULL;
+                    ame_setsrc2(self,_autovar_27);
+                    ptr->pos=ptr->len;
+                    it=rb_funcall(self,sy_Detect_Switch_Clas_src_dot_ary_d5cf,1,bind2);
+                    _ary_2=it;;
+                    it=Qnil;
+                    if (ptr->pos<ptr->len) {
+                        it=failobj;
+                        goto pass14;
+                    }
+                    goto success14;
 pass14:
-            *ptr=oldpass14;
-            if (1) {
-                it=failobj;
-                goto revert16;
-            }
+                    *ptr=oldpass14;
+                    if (1) {
+                        it=failobj;
+                        goto revert16;
+                    }
 success14:
-            *ptr=oldpass14;
-            it=rb_ary_new3(0);
-            _autovar_28=it;;
-            int stop3=0;
-            while(!stop3) {
-                int oldpos8=ptr->pos;
-                int cut8=0;
+                    *ptr=oldpass14;
+                    it=rb_ary_new3(0);
+                    _autovar_28=it;;
+                    int stop3=0;
+                    while(!stop3) {
+                        int oldpos8=ptr->pos;
+                        int cut8=0;
 alt8_1:
-                ;
-                VALUE lrevert17autovar_29=_autovar_29;
-                it=AmethystCore_anything(self );
-                if (it==failobj) {
-                    it=failobj;
-                    goto revert17;
-                }
-                _autovar_29=it;;
-                it=AmethystCore_append(self,_autovar_28,_autovar_29);
-                ;
-                goto accept25;
+                        ;
+                        VALUE revert17autovar_29=rb_funcall(_autovar_29,rb_intern("dup"),0);
+                        it=AmethystCore_anything(self );
+                        if (it==failobj) {
+                            it=failobj;
+                            goto revert17;
+                        }
+                        _autovar_29=it;;
+                        it=AmethystCore_append(self,_autovar_28,_autovar_29);
+                        ;
+                        goto accept25;
 revert17:
-                ;
-                _autovar_29=lrevert17autovar_29;
-                goto alt8_2;
+                        ;
+                        _autovar_29=revert17autovar_29;
+                        goto alt8_2;
 accept25:
-                ;
+                        ;
 
-                ;
-                goto accept24;
+                        ;
+                        goto accept24;
 alt8_2:
-                ptr->pos=oldpos8;
-                stop3=1;
-                ;
-                goto accept26;
+                        ptr->pos=oldpos8;
+                        stop3=1;
+                        ;
+                        goto accept26;
 revert18:
-                ;
-                goto alt8_3;
+                        ;
+                        goto alt8_3;
 accept26:
-                ;
+                        ;
 
-                ;
-                goto accept24;
+                        ;
+                        goto accept24;
 alt8_3:
-                ptr->pos=oldpos8;
-                if (1) {
-                    it=failobj;
-                    goto revert16;
-                };
+                        ptr->pos=oldpos8;
+                        if (1) {
+                            it=failobj;
+                            goto revert16;
+                        };
 accept24:
-                ;
-            }
-            it=_autovar_28;
-            _rest=it;;
-            it=c_Switch_Clas;
-            _cls_2=it;;
-            bind_aset(bind2,1,_cls_2);
-            bind_aset(bind2,2,_ary_2);
-            bind_aset(bind2,3,_prefix);
-            bind_aset(bind2,4,_rest);
-            it=rb_funcall(self,sy_Detect_Switch_Clas_bind_lb_1_rb__lb__75a5,1,bind2);
-            _cls_2=bind_aget(bind2,1);;
-            _ary_2=bind_aget(bind2,2);;
-            _prefix=bind_aget(bind2,3);;
-            _rest=bind_aget(bind2,4);;
-            __result_3=it;;
+                        ;
+                    }
+                    it=_autovar_28;
+                    _rest=it;;
+                    it=c_Switch_Clas;
+                    _cls_2=it;;
+                    bind_aset(bind2,1,_cls_2);
+                    bind_aset(bind2,2,_ary_2);
+                    bind_aset(bind2,3,_prefix);
+                    bind_aset(bind2,4,_rest);
+                    it=rb_funcall(self,sy_Detect_Switch_Clas_bind_lb_1_rb__lb__75a5,1,bind2);
+                    _cls_2=bind_aget(bind2,1);;
+                    _ary_2=bind_aget(bind2,2);;
+                    _prefix=bind_aget(bind2,3);;
+                    _rest=bind_aget(bind2,4);;
+                    __result_3=it;;
 
-            ;
-            goto accept23;
+                    ;
+                    goto accept23;
 revert16:
-            ;
-            _prefix=lrevert16prefix;
-            __result_3=lrevert16_result_3;
-            _autovar_27=lrevert16autovar_27;
-            _ary_2=lrevert16ary_2;
-            _autovar_28=lrevert16autovar_28;
-            _autovar_29=lrevert16autovar_29;
-            _rest=lrevert16rest;
-            _cls_2=lrevert16cls_2;
-            goto alt7_3;
+                    ;
+                    _prefix=revert16prefix;
+                    __result_3=revert16_result_3;
+                    _autovar_27=revert16autovar_27;
+                    _ary_2=revert16ary_2;
+                    _autovar_28=revert16autovar_28;
+                    _autovar_29=revert16autovar_29;
+                    _rest=revert16rest;
+                    _cls_2=revert16cls_2;
+                    goto alt7_3;
 accept23:
-            ;
+                    ;
 
-            ;
-            goto accept21;
+                    ;
+                    goto accept21;
 alt7_3:
-            ptr->pos=oldpos7;
-            VALUE lrevert19prefix=_prefix;
-            VALUE lrevert19_result_3=__result_3;
-            VALUE lrevert19ary_2=_ary_2;
-            VALUE lrevert19autovar_30=_autovar_30;
-            VALUE lrevert19autovar_31=_autovar_31;
-            it=rb_ary_new3(0);
-            _autovar_30=it;;
-            int stop4=0;
-            while(!stop4) {
-                int oldpos9=ptr->pos;
-                int cut9=0;
+                    ptr->pos=oldpos7;
+                    VALUE revert19prefix=rb_funcall(_prefix,rb_intern("dup"),0);
+                    VALUE revert19_result_3=rb_funcall(__result_3,rb_intern("dup"),0);
+                    VALUE revert19ary_2=rb_funcall(_ary_2,rb_intern("dup"),0);
+                    VALUE revert19autovar_30=rb_funcall(_autovar_30,rb_intern("dup"),0);
+                    VALUE revert19autovar_31=rb_funcall(_autovar_31,rb_intern("dup"),0);
+                    it=rb_ary_new3(0);
+                    _autovar_30=it;;
+                    int stop4=0;
+                    while(!stop4) {
+                        int oldpos9=ptr->pos;
+                        int cut9=0;
 alt9_1:
-                ;
-                VALUE lrevert20autovar_31=_autovar_31;
-                it=AmethystCore_anything(self );
-                if (it==failobj) {
-                    it=failobj;
-                    goto revert20;
-                }
-                _autovar_31=it;;
-                it=AmethystCore_append(self,_autovar_30,_autovar_31);
-                ;
-                goto accept29;
+                        ;
+                        VALUE revert20autovar_31=rb_funcall(_autovar_31,rb_intern("dup"),0);
+                        it=AmethystCore_anything(self );
+                        if (it==failobj) {
+                            it=failobj;
+                            goto revert20;
+                        }
+                        _autovar_31=it;;
+                        it=AmethystCore_append(self,_autovar_30,_autovar_31);
+                        ;
+                        goto accept29;
 revert20:
-                ;
-                _autovar_31=lrevert20autovar_31;
-                goto alt9_2;
+                        ;
+                        _autovar_31=revert20autovar_31;
+                        goto alt9_2;
 accept29:
-                ;
+                        ;
 
-                ;
-                goto accept28;
+                        ;
+                        goto accept28;
 alt9_2:
-                ptr->pos=oldpos9;
-                stop4=1;
-                ;
-                goto accept30;
+                        ptr->pos=oldpos9;
+                        stop4=1;
+                        ;
+                        goto accept30;
 revert21:
-                ;
-                goto alt9_3;
+                        ;
+                        goto alt9_3;
 accept30:
-                ;
+                        ;
 
-                ;
-                goto accept28;
+                        ;
+                        goto accept28;
 alt9_3:
-                ptr->pos=oldpos9;
-                if (1) {
-                    it=failobj;
-                    goto revert19;
-                };
+                        ptr->pos=oldpos9;
+                        if (1) {
+                            it=failobj;
+                            goto revert19;
+                        };
 accept28:
-                ;
-            }
-            it=_autovar_30;
-            _ary_2=it;;
-            bind_aset(bind2,1,_prefix);
-            bind_aset(bind2,2,_ary_2);
-            it=rb_funcall(self,sy_Detect_Switch_Clas_Seq_lb__ti__lp_bi_a321,1,bind2);
-            _prefix=bind_aget(bind2,1);;
-            _ary_2=bind_aget(bind2,2);;
-            __result_3=it;;
+                        ;
+                    }
+                    it=_autovar_30;
+                    _ary_2=it;;
+                    bind_aset(bind2,1,_prefix);
+                    bind_aset(bind2,2,_ary_2);
+                    it=rb_funcall(self,sy_Detect_Switch_Clas_Seq_lb__ti__lp_bi_a321,1,bind2);
+                    _prefix=bind_aget(bind2,1);;
+                    _ary_2=bind_aget(bind2,2);;
+                    __result_3=it;;
 
-            ;
-            goto accept27;
+                    ;
+                    goto accept27;
 revert19:
-            ;
-            _prefix=lrevert19prefix;
-            __result_3=lrevert19_result_3;
-            _ary_2=lrevert19ary_2;
-            _autovar_30=lrevert19autovar_30;
-            _autovar_31=lrevert19autovar_31;
-            goto alt7_4;
+                    ;
+                    _prefix=revert19prefix;
+                    __result_3=revert19_result_3;
+                    _ary_2=revert19ary_2;
+                    _autovar_30=revert19autovar_30;
+                    _autovar_31=revert19autovar_31;
+                    goto alt7_4;
 accept27:
-            ;
+                    ;
 
-            ;
-            goto accept21;
+                    ;
+                    goto accept21;
 alt7_4:
-            ptr->pos=oldpos7;
-            if (1) {
-                it=failobj;
-                goto pass13;
-            };
+                    ptr->pos=oldpos7;
+                    if (1) {
+                        it=failobj;
+                        goto pass13;
+                    };
 accept21:
-            ;
-            it=Qnil;
-            if (ptr->pos<ptr->len) {
-                it=failobj;
-                goto pass13;
-            }
-            it=__result_3;
-            _autovar_32=it;;
-            break;
-        case 1/*Object*/:
-            ;
-            it=rb_ary_new3(0);
-            _prefix=it;;
-            int oldpos10=ptr->pos;
-            int cut10=0;
+                    ;
+                    break;
+                case 1/*Object*/:
+                    ;
+                    int oldpos10=ptr->pos;
+                    int cut10=0;
 alt10_1:
-            ;
-            VALUE lrevert22prefix=_prefix;
-            VALUE lrevert22s=_s;
-            VALUE lrevert22_result_3=__result_3;
-            it=Detect_First_must_empty(self );
-            if (it==failobj) {
-                it=failobj;
-                goto revert22;
-            }
-            _s=it;;
-            it=c_Switch_Clas;
-            arg0=it;
-            bind_aset(bind2,1,_prefix);
-            bind_aset(bind2,2,_s);
-            it=rb_funcall(self,sy_Detect_Switch_Clas_bind_lb_1_rb__pl__4651,1,bind2);
-            _prefix=bind_aget(bind2,1);;
-            _s=bind_aget(bind2,2);;
-            arg1=it;
-            it=Detect_First_combine_seq(self ,arg0,arg1);
-            if (it==failobj) {
-                it=failobj;
-                goto revert22;
-            }
-            __result_3=it;;
+                    ;
+                    VALUE revert22prefix=rb_funcall(_prefix,rb_intern("dup"),0);
+                    VALUE revert22s=rb_funcall(_s,rb_intern("dup"),0);
+                    VALUE revert22_result_3=rb_funcall(__result_3,rb_intern("dup"),0);
+                    it=Detect_First_must_empty(self );
+                    if (it==failobj) {
+                        it=failobj;
+                        goto revert22;
+                    }
+                    _s=it;;
+                    it=c_Switch_Clas;
+                    arg0=it;
+                    bind_aset(bind2,1,_prefix);
+                    bind_aset(bind2,2,_s);
+                    it=rb_funcall(self,sy_Detect_Switch_Clas_bind_lb_1_rb__pl__4651,1,bind2);
+                    _prefix=bind_aget(bind2,1);;
+                    _s=bind_aget(bind2,2);;
+                    arg1=it;
+                    it=Detect_First_combine_seq(self ,arg0,arg1);
+                    if (it==failobj) {
+                        it=failobj;
+                        goto revert22;
+                    }
+                    __result_3=it;;
 
-            ;
-            goto accept32;
+                    ;
+                    goto accept32;
 revert22:
-            ;
-            _prefix=lrevert22prefix;
-            _s=lrevert22s;
-            __result_3=lrevert22_result_3;
-            goto alt10_2;
+                    ;
+                    _prefix=revert22prefix;
+                    _s=revert22s;
+                    __result_3=revert22_result_3;
+                    goto alt10_2;
 accept32:
-            ;
+                    ;
 
-            ;
-            goto accept31;
+                    ;
+                    goto accept31;
 alt10_2:
-            ptr->pos=oldpos10;
-            VALUE lrevert23prefix=_prefix;
-            VALUE lrevert23_result_3=__result_3;
-            VALUE lrevert23ary_2=_ary_2;
-            VALUE lrevert23autovar_30=_autovar_30;
-            VALUE lrevert23autovar_31=_autovar_31;
-            it=rb_ary_new3(0);
-            _autovar_30=it;;
-            int stop5=0;
-            while(!stop5) {
-                int oldpos11=ptr->pos;
-                int cut11=0;
+                    ptr->pos=oldpos10;
+                    VALUE revert23prefix=rb_funcall(_prefix,rb_intern("dup"),0);
+                    VALUE revert23_result_3=rb_funcall(__result_3,rb_intern("dup"),0);
+                    VALUE revert23ary_2=rb_funcall(_ary_2,rb_intern("dup"),0);
+                    VALUE revert23autovar_30=rb_funcall(_autovar_30,rb_intern("dup"),0);
+                    VALUE revert23autovar_31=rb_funcall(_autovar_31,rb_intern("dup"),0);
+                    it=rb_ary_new3(0);
+                    _autovar_30=it;;
+                    int stop5=0;
+                    while(!stop5) {
+                        int oldpos11=ptr->pos;
+                        int cut11=0;
 alt11_1:
-                ;
-                VALUE lrevert24autovar_31=_autovar_31;
-                it=AmethystCore_anything(self );
-                if (it==failobj) {
-                    it=failobj;
-                    goto revert24;
-                }
-                _autovar_31=it;;
-                it=AmethystCore_append(self,_autovar_30,_autovar_31);
-                ;
-                goto accept35;
+                        ;
+                        VALUE revert24autovar_31=rb_funcall(_autovar_31,rb_intern("dup"),0);
+                        it=AmethystCore_anything(self );
+                        if (it==failobj) {
+                            it=failobj;
+                            goto revert24;
+                        }
+                        _autovar_31=it;;
+                        it=AmethystCore_append(self,_autovar_30,_autovar_31);
+                        ;
+                        goto accept35;
 revert24:
-                ;
-                _autovar_31=lrevert24autovar_31;
-                goto alt11_2;
+                        ;
+                        _autovar_31=revert24autovar_31;
+                        goto alt11_2;
 accept35:
-                ;
+                        ;
 
-                ;
-                goto accept34;
+                        ;
+                        goto accept34;
 alt11_2:
-                ptr->pos=oldpos11;
-                stop5=1;
-                ;
-                goto accept36;
+                        ptr->pos=oldpos11;
+                        stop5=1;
+                        ;
+                        goto accept36;
 revert25:
-                ;
-                goto alt11_3;
+                        ;
+                        goto alt11_3;
 accept36:
-                ;
+                        ;
 
-                ;
-                goto accept34;
+                        ;
+                        goto accept34;
 alt11_3:
-                ptr->pos=oldpos11;
-                if (1) {
-                    it=failobj;
-                    goto revert23;
-                };
+                        ptr->pos=oldpos11;
+                        if (1) {
+                            it=failobj;
+                            goto revert23;
+                        };
 accept34:
-                ;
-            }
-            it=_autovar_30;
-            _ary_2=it;;
-            bind_aset(bind2,1,_prefix);
-            bind_aset(bind2,2,_ary_2);
-            it=rb_funcall(self,sy_Detect_Switch_Clas_Seq_lb__ti__lp_bi_a321,1,bind2);
-            _prefix=bind_aget(bind2,1);;
-            _ary_2=bind_aget(bind2,2);;
-            __result_3=it;;
+                        ;
+                    }
+                    it=_autovar_30;
+                    _ary_2=it;;
+                    bind_aset(bind2,1,_prefix);
+                    bind_aset(bind2,2,_ary_2);
+                    it=rb_funcall(self,sy_Detect_Switch_Clas_Seq_lb__ti__lp_bi_a321,1,bind2);
+                    _prefix=bind_aget(bind2,1);;
+                    _ary_2=bind_aget(bind2,2);;
+                    __result_3=it;;
 
-            ;
-            goto accept33;
+                    ;
+                    goto accept33;
 revert23:
-            ;
-            _prefix=lrevert23prefix;
-            __result_3=lrevert23_result_3;
-            _ary_2=lrevert23ary_2;
-            _autovar_30=lrevert23autovar_30;
-            _autovar_31=lrevert23autovar_31;
-            goto alt10_3;
+                    ;
+                    _prefix=revert23prefix;
+                    __result_3=revert23_result_3;
+                    _ary_2=revert23ary_2;
+                    _autovar_30=revert23autovar_30;
+                    _autovar_31=revert23autovar_31;
+                    goto alt10_3;
 accept33:
-            ;
+                    ;
 
-            ;
-            goto accept31;
+                    ;
+                    goto accept31;
 alt10_3:
-            ptr->pos=oldpos10;
-            if (1) {
-                it=failobj;
-                goto pass13;
-            };
+                    ptr->pos=oldpos10;
+                    if (1) {
+                        it=failobj;
+                        goto pass13;
+                    };
 accept31:
-            ;
+                    ;
+                    break;
+                }
+                break;
+            }
             it=Qnil;
             if (ptr->pos<ptr->len) {
                 it=failobj;

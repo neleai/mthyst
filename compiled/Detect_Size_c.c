@@ -22,7 +22,7 @@ VALUE profile_report_Detect_Size(VALUE self) {
 }
 VALUE Detect_Size_predicate(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE it ,_el,_msize,_autovar,_s,_autovar_2,__result,_autovar_3,_s_2,_autovar_4,_autovar_5,__result_2,_autovar_6,_ary,_autovar_7,_autovar_8,_el_2,_autovar_9;
+    VALUE it ,_el=Qnil,_msize=Qnil,_autovar=Qnil,_s=Qnil,_autovar_2=Qnil,__result=Qnil,_autovar_3=Qnil,_s_2=Qnil,_autovar_4=Qnil,_autovar_5=Qnil,__result_2=Qnil,_autovar_6=Qnil,_ary=Qnil,_autovar_7=Qnil,_autovar_8=Qnil,_el_2=Qnil,_autovar_9=Qnil;
     VALUE bind2=bind_new2(16);
     _s=a0;;
     VALUE arg0,arg1,arg2,arg3;
@@ -131,13 +131,13 @@ success2:
             int cut1=0;
 alt1_1:
             ;
-            VALUE lrevert1el=_el;
-            VALUE lrevert1msize=_msize;
-            VALUE lrevert1autovar=_autovar;
-            VALUE lrevert1s=_s;
-            VALUE lrevert1autovar_3=_autovar_3;
-            VALUE lrevert1_result_2=__result_2;
-            VALUE lrevert1autovar_6=_autovar_6;
+            VALUE revert1el=rb_funcall(_el,rb_intern("dup"),0);
+            VALUE revert1msize=rb_funcall(_msize,rb_intern("dup"),0);
+            VALUE revert1autovar=rb_funcall(_autovar,rb_intern("dup"),0);
+            VALUE revert1s=rb_funcall(_s,rb_intern("dup"),0);
+            VALUE revert1autovar_3=rb_funcall(_autovar_3,rb_intern("dup"),0);
+            VALUE revert1_result_2=rb_funcall(__result_2,rb_intern("dup"),0);
+            VALUE revert1autovar_6=rb_funcall(_autovar_6,rb_intern("dup"),0);
             it=_s_2;
             _s=it;;
             it=AmethystCore_anything(self );
@@ -202,13 +202,13 @@ success4:
             goto accept2;
 revert1:
             ;
-            _el=lrevert1el;
-            _msize=lrevert1msize;
-            _autovar=lrevert1autovar;
-            _s=lrevert1s;
-            _autovar_3=lrevert1autovar_3;
-            __result_2=lrevert1_result_2;
-            _autovar_6=lrevert1autovar_6;
+            _el=revert1el;
+            _msize=revert1msize;
+            _autovar=revert1autovar;
+            _s=revert1s;
+            _autovar_3=revert1autovar_3;
+            __result_2=revert1_result_2;
+            _autovar_6=revert1autovar_6;
             goto alt1_2;
 accept2:
             ;
@@ -289,15 +289,15 @@ success3:
             int cut2=0;
 alt2_1:
             ;
-            VALUE lrevert3el=_el;
-            VALUE lrevert3msize=_msize;
-            VALUE lrevert3autovar=_autovar;
-            VALUE lrevert3s=_s;
-            VALUE lrevert3autovar_3=_autovar_3;
-            VALUE lrevert3s_2=_s_2;
-            VALUE lrevert3_result_2=__result_2;
-            VALUE lrevert3el_2=_el_2;
-            VALUE lrevert3autovar_9=_autovar_9;
+            VALUE revert3el=rb_funcall(_el,rb_intern("dup"),0);
+            VALUE revert3msize=rb_funcall(_msize,rb_intern("dup"),0);
+            VALUE revert3autovar=rb_funcall(_autovar,rb_intern("dup"),0);
+            VALUE revert3s=rb_funcall(_s,rb_intern("dup"),0);
+            VALUE revert3autovar_3=rb_funcall(_autovar_3,rb_intern("dup"),0);
+            VALUE revert3s_2=rb_funcall(_s_2,rb_intern("dup"),0);
+            VALUE revert3_result_2=rb_funcall(__result_2,rb_intern("dup"),0);
+            VALUE revert3el_2=rb_funcall(_el_2,rb_intern("dup"),0);
+            VALUE revert3autovar_9=rb_funcall(_autovar_9,rb_intern("dup"),0);
             it=_s_2;
             _s=it;;
             it=AmethystCore_anything(self );
@@ -369,15 +369,15 @@ success6:
             goto accept5;
 revert3:
             ;
-            _el=lrevert3el;
-            _msize=lrevert3msize;
-            _autovar=lrevert3autovar;
-            _s=lrevert3s;
-            _autovar_3=lrevert3autovar_3;
-            _s_2=lrevert3s_2;
-            __result_2=lrevert3_result_2;
-            _el_2=lrevert3el_2;
-            _autovar_9=lrevert3autovar_9;
+            _el=revert3el;
+            _msize=revert3msize;
+            _autovar=revert3autovar;
+            _s=revert3s;
+            _autovar_3=revert3autovar_3;
+            _s_2=revert3s_2;
+            __result_2=revert3_result_2;
+            _el_2=revert3el_2;
+            _autovar_9=revert3autovar_9;
             goto alt2_2;
 accept5:
             ;
@@ -473,7 +473,7 @@ fail:
 }
 VALUE Detect_Size_predicate2(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE it ,_autovar,__result,_autovar_2,_autovar_3,_s,_s_2,_el,_msize,_autovar_4,_autovar_5,__result_2,_autovar_6,_ary,_autovar_7,_autovar_8,_el_2,_autovar_9;
+    VALUE it ,_autovar=Qnil,__result=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_s=Qnil,_s_2=Qnil,_el=Qnil,_msize=Qnil,_autovar_4=Qnil,_autovar_5=Qnil,__result_2=Qnil,_autovar_6=Qnil,_ary=Qnil,_autovar_7=Qnil,_autovar_8=Qnil,_el_2=Qnil,_autovar_9=Qnil;
     VALUE bind2=bind_new2(16);
     _s=a0;;
     VALUE arg0,arg1,arg2,arg3;
@@ -545,13 +545,13 @@ success1:
             int cut1=0;
 alt1_1:
             ;
-            VALUE lrevert1el=_el;
-            VALUE lrevert1msize=_msize;
-            VALUE lrevert1autovar_4=_autovar_4;
-            VALUE lrevert1s_2=_s_2;
-            VALUE lrevert1autovar_5=_autovar_5;
-            VALUE lrevert1_result_2=__result_2;
-            VALUE lrevert1autovar_6=_autovar_6;
+            VALUE revert1el=rb_funcall(_el,rb_intern("dup"),0);
+            VALUE revert1msize=rb_funcall(_msize,rb_intern("dup"),0);
+            VALUE revert1autovar_4=rb_funcall(_autovar_4,rb_intern("dup"),0);
+            VALUE revert1s_2=rb_funcall(_s_2,rb_intern("dup"),0);
+            VALUE revert1autovar_5=rb_funcall(_autovar_5,rb_intern("dup"),0);
+            VALUE revert1_result_2=rb_funcall(__result_2,rb_intern("dup"),0);
+            VALUE revert1autovar_6=rb_funcall(_autovar_6,rb_intern("dup"),0);
             it=_s;
             _s_2=it;;
             it=AmethystCore_anything(self );
@@ -616,13 +616,13 @@ success3:
             goto accept2;
 revert1:
             ;
-            _el=lrevert1el;
-            _msize=lrevert1msize;
-            _autovar_4=lrevert1autovar_4;
-            _s_2=lrevert1s_2;
-            _autovar_5=lrevert1autovar_5;
-            __result_2=lrevert1_result_2;
-            _autovar_6=lrevert1autovar_6;
+            _el=revert1el;
+            _msize=revert1msize;
+            _autovar_4=revert1autovar_4;
+            _s_2=revert1s_2;
+            _autovar_5=revert1autovar_5;
+            __result_2=revert1_result_2;
+            _autovar_6=revert1autovar_6;
             goto alt1_2;
 accept2:
             ;
@@ -690,15 +690,15 @@ success2:
             int cut2=0;
 alt2_1:
             ;
-            VALUE lrevert3el=_el;
-            VALUE lrevert3msize=_msize;
-            VALUE lrevert3autovar_4=_autovar_4;
-            VALUE lrevert3s_2=_s_2;
-            VALUE lrevert3autovar_5=_autovar_5;
-            VALUE lrevert3s=_s;
-            VALUE lrevert3_result_2=__result_2;
-            VALUE lrevert3el_2=_el_2;
-            VALUE lrevert3autovar_9=_autovar_9;
+            VALUE revert3el=rb_funcall(_el,rb_intern("dup"),0);
+            VALUE revert3msize=rb_funcall(_msize,rb_intern("dup"),0);
+            VALUE revert3autovar_4=rb_funcall(_autovar_4,rb_intern("dup"),0);
+            VALUE revert3s_2=rb_funcall(_s_2,rb_intern("dup"),0);
+            VALUE revert3autovar_5=rb_funcall(_autovar_5,rb_intern("dup"),0);
+            VALUE revert3s=rb_funcall(_s,rb_intern("dup"),0);
+            VALUE revert3_result_2=rb_funcall(__result_2,rb_intern("dup"),0);
+            VALUE revert3el_2=rb_funcall(_el_2,rb_intern("dup"),0);
+            VALUE revert3autovar_9=rb_funcall(_autovar_9,rb_intern("dup"),0);
             it=_s;
             _s_2=it;;
             it=AmethystCore_anything(self );
@@ -770,15 +770,15 @@ success5:
             goto accept5;
 revert3:
             ;
-            _el=lrevert3el;
-            _msize=lrevert3msize;
-            _autovar_4=lrevert3autovar_4;
-            _s_2=lrevert3s_2;
-            _autovar_5=lrevert3autovar_5;
-            _s=lrevert3s;
-            __result_2=lrevert3_result_2;
-            _el_2=lrevert3el_2;
-            _autovar_9=lrevert3autovar_9;
+            _el=revert3el;
+            _msize=revert3msize;
+            _autovar_4=revert3autovar_4;
+            _s_2=revert3s_2;
+            _autovar_5=revert3autovar_5;
+            _s=revert3s;
+            __result_2=revert3_result_2;
+            _el_2=revert3el_2;
+            _autovar_9=revert3autovar_9;
             goto alt2_2;
 accept5:
             ;
