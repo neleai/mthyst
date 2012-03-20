@@ -168,14 +168,11 @@ s
 
         | Bind[ trans:e {"#{e} #{@@locals_changed[@name]+=1; bset(@name,"it")};\n" } ]
         | Seq[ trans*:t {t*""} ]
-        | Or[ {label("accept")}:accept {@@locals_changed.clone}:oldlocals_changed {label("oldpos")}:oldpos label("alt"):alt {1}:altno {@@cutlabel}:oldcutlabel {@@cuts}:oldcuts {@@cuts=nil;@@cutlabel=label("cut")}
+        | Or[ {label("accept")}:accept {label("oldpos")}:oldpos label("alt"):alt {1}:altno {@@cutlabel}:oldcutlabel {@@cuts}:oldcuts {@@cuts=nil;@@cutlabel=label("cut")}
            {"int #{oldpos}=ptr->pos;int #{@@cutlabel}=0;\n#{alt}_#{altno}:;"}:s
-           ( &(.) {altno+=1}  rw("#{alt}_#{altno}",`trans`):t 
-             {""}:pre {""}:ap {@@locals_changed.each{|k,v| if v> oldlocals_changed[k]
-              pre+="VALUE l#{alt}#{altno}#{desc(k)}=#{bget(k)};";ap+=bset(k,"l#{alt}#{altno}#{desc(k)}")
-             end}}
-             {s+="#{pre} #{t}\n;goto #{accept};\n"} 
-             {s+="#{alt}_#{altno}: #{ap} ptr->pos=#{oldpos};#{@@cuts ? (@@cuts=nil;failwhen(@@cutlabel)): ""}"}  
+           ( &(.) {altno+=1}  rw("#{alt}_#{altno}",`persistent`):t
+             {s+="#{t}\n;goto #{accept};\n"}
+             {s+="#{alt}_#{altno}: ptr->pos=#{oldpos};#{@@cuts ? (@@cuts=nil;failwhen(@@cutlabel)): ""}"}
            )*
            {@@cutlabel=oldcutlabel;@@cuts=oldcuts;s+"#{failwhen(1)};\n #{accept}:;\n"}
           ]
@@ -190,7 +187,7 @@ s
               ]
         | Stop[] {@@stops=true; @@stoplabel? "#{@@stoplabel}=1;" : ""}
         | Lookahead[ {label("accept")}:accept {label("reject")}:reject {label("oldpos")}:oldpos 
-                     rw(reject,`trans:t`) 
+                     rw(reject,`persistent:t`) 
                      {"int #{oldpos}=ptr->pos;\n #{t} it=Qnil; goto #{accept};  #{reject}: it=failobj; #{accept}: ptr->pos=#{oldpos}; #{failwhen("it==failobj")}"} ]
         | Local[ .* { "it=#{bget(@self)};" } ]
         | Pass[ label("pass"):pass label("oldpass"):oldpass label("success"):success
@@ -219,7 +216,14 @@ s
                        {s+"}"}
                      ]
 
+  persistent = label("revert"):rev label("accept"):acc {@@locals_changed.clone}:oldl  
+               rw(rev)(|trans|):t 
+               {""}:pre {""}:ap {@@locals_changed.each{|k,v| if v> oldl[k]
+               pre+="VALUE l#{rev}#{desc(k)}=#{bget(k)};";ap+=bset(k,"l#{rev}#{desc(k)}")
+               end}}
+               {"#{pre} #{t}\n;goto #{acc};#{rev}:; #{ap} goto #{@@faillabel}; #{acc}:;\n"}
   
+ 
   addlambda =  {"#{@>grammar}_#{@>rulename}_#{label("lambda")}"}:lambd  rw('fail',`trans:body`)
                { h="VALUE #{lambd}(VALUE self,VALUE bind)"
                  @@header<<h+";"

@@ -79,16 +79,16 @@ VALUE Analyze_Variables2_flatten(VALUE self ) {
             int cut1=0;
 alt1_1:
             ;
-            VALUE lalt12autovar_2=_autovar_2;
-            VALUE lalt12autovar_3=_autovar_3;
-            VALUE lalt12autovar_4=_autovar_4;
+            VALUE lrevert1autovar_2=_autovar_2;
+            VALUE lrevert1autovar_3=_autovar_3;
+            VALUE lrevert1autovar_4=_autovar_4;
             int oldpos2=ptr->pos;
             int cut2=0;
 alt2_1:
             ;
-            VALUE lalt22autovar_2=_autovar_2;
-            VALUE lalt22autovar_3=_autovar_3;
-            VALUE lalt22autovar_4=_autovar_4;
+            VALUE lrevert2autovar_2=_autovar_2;
+            VALUE lrevert2autovar_3=_autovar_3;
+            VALUE lrevert2autovar_4=_autovar_4;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar_2=it;;
@@ -108,7 +108,7 @@ pass1:
             *ptr=oldpass1;
             if (1) {
                 it=failobj;
-                goto alt2_2;
+                goto revert2;
             }
 success1:
             *ptr=oldpass1;
@@ -116,53 +116,75 @@ success1:
             _autovar_4=it;;
 
             ;
-            goto accept2;
+            goto accept4;
+revert2:
+            ;
+            _autovar_2=lrevert2autovar_2;
+            _autovar_3=lrevert2autovar_3;
+            _autovar_4=lrevert2autovar_4;
+            goto alt2_2;
+accept4:
+            ;
+
+            ;
+            goto accept3;
 alt2_2:
-            _autovar_2=lalt22autovar_2;
-            _autovar_3=lalt22autovar_3;
-            _autovar_4=lalt22autovar_4;
             ptr->pos=oldpos2;
-            VALUE lalt23autovar_2=_autovar_2;
-            VALUE lalt23autovar_3=_autovar_3;
-            VALUE lalt23autovar_4=_autovar_4;
+            VALUE lrevert3autovar_4=_autovar_4;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
-                goto alt2_3;
+                goto revert3;
             }
             _autovar_4=it;;
 
             ;
-            goto accept2;
+            goto accept5;
+revert3:
+            ;
+            _autovar_4=lrevert3autovar_4;
+            goto alt2_3;
+accept5:
+            ;
+
+            ;
+            goto accept3;
 alt2_3:
-            _autovar_2=lalt23autovar_2;
-            _autovar_3=lalt23autovar_3;
-            _autovar_4=lalt23autovar_4;
             ptr->pos=oldpos2;
             if (1) {
                 it=failobj;
-                goto alt1_2;
+                goto revert1;
             };
-accept2:
+accept3:
             ;
             it=AmethystCore_append(self,_autovar,_autovar_4);
             ;
+            goto accept2;
+revert1:
+            ;
+            _autovar_2=lrevert1autovar_2;
+            _autovar_3=lrevert1autovar_3;
+            _autovar_4=lrevert1autovar_4;
+            goto alt1_2;
+accept2:
+            ;
+
+            ;
             goto accept1;
 alt1_2:
-            _autovar_2=lalt12autovar_2;
-            _autovar_3=lalt12autovar_3;
-            _autovar_4=lalt12autovar_4;
             ptr->pos=oldpos1;
-            VALUE lalt13autovar_2=_autovar_2;
-            VALUE lalt13autovar_3=_autovar_3;
-            VALUE lalt13autovar_4=_autovar_4;
             stop1=1;
+            ;
+            goto accept6;
+revert4:
+            ;
+            goto alt1_3;
+accept6:
+            ;
+
             ;
             goto accept1;
 alt1_3:
-            _autovar_2=lalt13autovar_2;
-            _autovar_3=lalt13autovar_3;
-            _autovar_4=lalt13autovar_4;
             ptr->pos=oldpos1;
             if (1) {
                 it=failobj;
@@ -177,16 +199,16 @@ accept1:
             int cut3=0;
 alt3_1:
             ;
-            VALUE lalt32autovar_4=_autovar_4;
-            VALUE lalt32autovar_5=_autovar_5;
-            VALUE lalt32autovar_6=_autovar_6;
+            VALUE lrevert5autovar_4=_autovar_4;
+            VALUE lrevert5autovar_5=_autovar_5;
+            VALUE lrevert5autovar_6=_autovar_6;
             int oldpos4=ptr->pos;
             int cut4=0;
 alt4_1:
             ;
-            VALUE lalt42autovar_4=_autovar_4;
-            VALUE lalt42autovar_5=_autovar_5;
-            VALUE lalt42autovar_6=_autovar_6;
+            VALUE lrevert6autovar_4=_autovar_4;
+            VALUE lrevert6autovar_5=_autovar_5;
+            VALUE lrevert6autovar_6=_autovar_6;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar_5=it;;
@@ -206,7 +228,7 @@ pass2:
             *ptr=oldpass2;
             if (1) {
                 it=failobj;
-                goto alt4_2;
+                goto revert6;
             }
 success2:
             *ptr=oldpass2;
@@ -214,59 +236,81 @@ success2:
             _autovar_4=it;;
 
             ;
-            goto accept4;
+            goto accept10;
+revert6:
+            ;
+            _autovar_4=lrevert6autovar_4;
+            _autovar_5=lrevert6autovar_5;
+            _autovar_6=lrevert6autovar_6;
+            goto alt4_2;
+accept10:
+            ;
+
+            ;
+            goto accept9;
 alt4_2:
-            _autovar_4=lalt42autovar_4;
-            _autovar_5=lalt42autovar_5;
-            _autovar_6=lalt42autovar_6;
             ptr->pos=oldpos4;
-            VALUE lalt43autovar_4=_autovar_4;
-            VALUE lalt43autovar_5=_autovar_5;
-            VALUE lalt43autovar_6=_autovar_6;
+            VALUE lrevert7autovar_4=_autovar_4;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
-                goto alt4_3;
+                goto revert7;
             }
             _autovar_4=it;;
 
             ;
-            goto accept4;
+            goto accept11;
+revert7:
+            ;
+            _autovar_4=lrevert7autovar_4;
+            goto alt4_3;
+accept11:
+            ;
+
+            ;
+            goto accept9;
 alt4_3:
-            _autovar_4=lalt43autovar_4;
-            _autovar_5=lalt43autovar_5;
-            _autovar_6=lalt43autovar_6;
             ptr->pos=oldpos4;
             if (1) {
                 it=failobj;
-                goto alt3_2;
+                goto revert5;
             };
-accept4:
+accept9:
             ;
             it=AmethystCore_append(self,_autovar,_autovar_4);
             ;
-            goto accept3;
+            goto accept8;
+revert5:
+            ;
+            _autovar_4=lrevert5autovar_4;
+            _autovar_5=lrevert5autovar_5;
+            _autovar_6=lrevert5autovar_6;
+            goto alt3_2;
+accept8:
+            ;
+
+            ;
+            goto accept7;
 alt3_2:
-            _autovar_4=lalt32autovar_4;
-            _autovar_5=lalt32autovar_5;
-            _autovar_6=lalt32autovar_6;
             ptr->pos=oldpos3;
-            VALUE lalt33autovar_4=_autovar_4;
-            VALUE lalt33autovar_5=_autovar_5;
-            VALUE lalt33autovar_6=_autovar_6;
             stop1=1;
             ;
-            goto accept3;
+            goto accept12;
+revert8:
+            ;
+            goto alt3_3;
+accept12:
+            ;
+
+            ;
+            goto accept7;
 alt3_3:
-            _autovar_4=lalt33autovar_4;
-            _autovar_5=lalt33autovar_5;
-            _autovar_6=lalt33autovar_6;
             ptr->pos=oldpos3;
             if (1) {
                 it=failobj;
                 goto fail;
             };
-accept3:
+accept7:
             ;
             break;
         case 2/*Object*/:
@@ -275,31 +319,45 @@ accept3:
             int cut5=0;
 alt5_1:
             ;
-            VALUE lalt52autovar_4=_autovar_4;
+            VALUE lrevert9autovar_4=_autovar_4;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
-                goto alt5_2;
+                goto revert9;
             }
             _autovar_4=it;;
             it=AmethystCore_append(self,_autovar,_autovar_4);
             ;
-            goto accept5;
+            goto accept14;
+revert9:
+            ;
+            _autovar_4=lrevert9autovar_4;
+            goto alt5_2;
+accept14:
+            ;
+
+            ;
+            goto accept13;
 alt5_2:
-            _autovar_4=lalt52autovar_4;
             ptr->pos=oldpos5;
-            VALUE lalt53autovar_4=_autovar_4;
             stop1=1;
             ;
-            goto accept5;
+            goto accept15;
+revert10:
+            ;
+            goto alt5_3;
+accept15:
+            ;
+
+            ;
+            goto accept13;
 alt5_3:
-            _autovar_4=lalt53autovar_4;
             ptr->pos=oldpos5;
             if (1) {
                 it=failobj;
                 goto fail;
             };
-accept5:
+accept13:
             ;
             break;
         }
@@ -328,30 +386,30 @@ VALUE Analyze_Variables2_itrans(VALUE self ) {
             int cut1=0;
 alt1_1:
             ;
-            VALUE lalt12autovar_2=_autovar_2;
-            VALUE lalt12autovar_3=_autovar_3;
-            VALUE lalt12autovar_4=_autovar_4;
-            VALUE lalt12autovar_5=_autovar_5;
-            VALUE lalt12autovar_6=_autovar_6;
-            VALUE lalt12autovar_7=_autovar_7;
-            VALUE lalt12autovar_8=_autovar_8;
-            VALUE lalt12rules=_rules;
-            VALUE lalt12autovar_9=_autovar_9;
-            VALUE lalt12autovar_10=_autovar_10;
+            VALUE lrevert1autovar_2=_autovar_2;
+            VALUE lrevert1autovar_3=_autovar_3;
+            VALUE lrevert1autovar_4=_autovar_4;
+            VALUE lrevert1autovar_5=_autovar_5;
+            VALUE lrevert1autovar_6=_autovar_6;
+            VALUE lrevert1autovar_7=_autovar_7;
+            VALUE lrevert1autovar_8=_autovar_8;
+            VALUE lrevert1rules=_rules;
+            VALUE lrevert1autovar_9=_autovar_9;
+            VALUE lrevert1autovar_10=_autovar_10;
             int oldpos2=ptr->pos;
             int cut2=0;
 alt2_1:
             ;
-            VALUE lalt22autovar_2=_autovar_2;
-            VALUE lalt22autovar_3=_autovar_3;
-            VALUE lalt22autovar_4=_autovar_4;
-            VALUE lalt22autovar_5=_autovar_5;
-            VALUE lalt22autovar_6=_autovar_6;
-            VALUE lalt22autovar_7=_autovar_7;
-            VALUE lalt22autovar_8=_autovar_8;
-            VALUE lalt22rules=_rules;
-            VALUE lalt22autovar_9=_autovar_9;
-            VALUE lalt22autovar_10=_autovar_10;
+            VALUE lrevert2autovar_2=_autovar_2;
+            VALUE lrevert2autovar_3=_autovar_3;
+            VALUE lrevert2autovar_4=_autovar_4;
+            VALUE lrevert2autovar_5=_autovar_5;
+            VALUE lrevert2autovar_6=_autovar_6;
+            VALUE lrevert2autovar_7=_autovar_7;
+            VALUE lrevert2autovar_8=_autovar_8;
+            VALUE lrevert2rules=_rules;
+            VALUE lrevert2autovar_9=_autovar_9;
+            VALUE lrevert2autovar_10=_autovar_10;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar_2=it;;
@@ -389,9 +447,9 @@ alt2_1:
                     int cut3=0;
 alt3_1:
                     ;
-                    VALUE lalt32autovar_6=_autovar_6;
-                    VALUE lalt32autovar_7=_autovar_7;
-                    VALUE lalt32autovar_8=_autovar_8;
+                    VALUE lrevert3autovar_6=_autovar_6;
+                    VALUE lrevert3autovar_7=_autovar_7;
+                    VALUE lrevert3autovar_8=_autovar_8;
                     it=ptr->ary[ptr->pos];            ;
                     ptr->pos++;
                     _autovar_6=it;;
@@ -415,7 +473,7 @@ pass4:
                     *ptr=oldpass4;
                     if (1) {
                         it=failobj;
-                        goto alt3_2;
+                        goto revert3;
                     }
 success4:
                     *ptr=oldpass4;
@@ -423,28 +481,38 @@ success4:
                     _autovar_8=it;;
                     it=AmethystCore_append(self,_autovar_5,_autovar_8);
                     ;
-                    goto accept3;
+                    goto accept6;
+revert3:
+                    ;
+                    _autovar_6=lrevert3autovar_6;
+                    _autovar_7=lrevert3autovar_7;
+                    _autovar_8=lrevert3autovar_8;
+                    goto alt3_2;
+accept6:
+                    ;
+
+                    ;
+                    goto accept5;
 alt3_2:
-                    _autovar_6=lalt32autovar_6;
-                    _autovar_7=lalt32autovar_7;
-                    _autovar_8=lalt32autovar_8;
                     ptr->pos=oldpos3;
-                    VALUE lalt33autovar_6=_autovar_6;
-                    VALUE lalt33autovar_7=_autovar_7;
-                    VALUE lalt33autovar_8=_autovar_8;
                     stop2=1;
                     ;
-                    goto accept3;
+                    goto accept7;
+revert4:
+                    ;
+                    goto alt3_3;
+accept7:
+                    ;
+
+                    ;
+                    goto accept5;
 alt3_3:
-                    _autovar_6=lalt33autovar_6;
-                    _autovar_7=lalt33autovar_7;
-                    _autovar_8=lalt33autovar_8;
                     ptr->pos=oldpos3;
                     if (1) {
                         it=failobj;
                         goto pass3;
                     };
-accept3:
+accept5:
                     ;
                     break;
                 case 1/*Object*/:
@@ -499,7 +567,7 @@ pass1:
             *ptr=oldpass1;
             if (1) {
                 it=failobj;
-                goto alt2_2;
+                goto revert2;
             }
 success1:
             *ptr=oldpass1;
@@ -507,95 +575,89 @@ success1:
             _autovar_10=it;;
 
             ;
-            goto accept2;
+            goto accept4;
+revert2:
+            ;
+            _autovar_2=lrevert2autovar_2;
+            _autovar_3=lrevert2autovar_3;
+            _autovar_4=lrevert2autovar_4;
+            _autovar_5=lrevert2autovar_5;
+            _autovar_6=lrevert2autovar_6;
+            _autovar_7=lrevert2autovar_7;
+            _autovar_8=lrevert2autovar_8;
+            _rules=lrevert2rules;
+            _autovar_9=lrevert2autovar_9;
+            _autovar_10=lrevert2autovar_10;
+            goto alt2_2;
+accept4:
+            ;
+
+            ;
+            goto accept3;
 alt2_2:
-            _autovar_2=lalt22autovar_2;
-            _autovar_3=lalt22autovar_3;
-            _autovar_4=lalt22autovar_4;
-            _autovar_5=lalt22autovar_5;
-            _autovar_6=lalt22autovar_6;
-            _autovar_7=lalt22autovar_7;
-            _autovar_8=lalt22autovar_8;
-            _rules=lalt22rules;
-            _autovar_9=lalt22autovar_9;
-            _autovar_10=lalt22autovar_10;
             ptr->pos=oldpos2;
-            VALUE lalt23autovar_2=_autovar_2;
-            VALUE lalt23autovar_3=_autovar_3;
-            VALUE lalt23autovar_4=_autovar_4;
-            VALUE lalt23autovar_5=_autovar_5;
-            VALUE lalt23autovar_6=_autovar_6;
-            VALUE lalt23autovar_7=_autovar_7;
-            VALUE lalt23autovar_8=_autovar_8;
-            VALUE lalt23rules=_rules;
-            VALUE lalt23autovar_9=_autovar_9;
-            VALUE lalt23autovar_10=_autovar_10;
+            VALUE lrevert5autovar_10=_autovar_10;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
-                goto alt2_3;
+                goto revert5;
             }
             _autovar_10=it;;
 
             ;
-            goto accept2;
+            goto accept8;
+revert5:
+            ;
+            _autovar_10=lrevert5autovar_10;
+            goto alt2_3;
+accept8:
+            ;
+
+            ;
+            goto accept3;
 alt2_3:
-            _autovar_2=lalt23autovar_2;
-            _autovar_3=lalt23autovar_3;
-            _autovar_4=lalt23autovar_4;
-            _autovar_5=lalt23autovar_5;
-            _autovar_6=lalt23autovar_6;
-            _autovar_7=lalt23autovar_7;
-            _autovar_8=lalt23autovar_8;
-            _rules=lalt23rules;
-            _autovar_9=lalt23autovar_9;
-            _autovar_10=lalt23autovar_10;
             ptr->pos=oldpos2;
             if (1) {
                 it=failobj;
-                goto alt1_2;
+                goto revert1;
             };
-accept2:
+accept3:
             ;
             it=AmethystCore_append(self,_autovar,_autovar_10);
             ;
+            goto accept2;
+revert1:
+            ;
+            _autovar_2=lrevert1autovar_2;
+            _autovar_3=lrevert1autovar_3;
+            _autovar_4=lrevert1autovar_4;
+            _autovar_5=lrevert1autovar_5;
+            _autovar_6=lrevert1autovar_6;
+            _autovar_7=lrevert1autovar_7;
+            _autovar_8=lrevert1autovar_8;
+            _rules=lrevert1rules;
+            _autovar_9=lrevert1autovar_9;
+            _autovar_10=lrevert1autovar_10;
+            goto alt1_2;
+accept2:
+            ;
+
+            ;
             goto accept1;
 alt1_2:
-            _autovar_2=lalt12autovar_2;
-            _autovar_3=lalt12autovar_3;
-            _autovar_4=lalt12autovar_4;
-            _autovar_5=lalt12autovar_5;
-            _autovar_6=lalt12autovar_6;
-            _autovar_7=lalt12autovar_7;
-            _autovar_8=lalt12autovar_8;
-            _rules=lalt12rules;
-            _autovar_9=lalt12autovar_9;
-            _autovar_10=lalt12autovar_10;
             ptr->pos=oldpos1;
-            VALUE lalt13autovar_2=_autovar_2;
-            VALUE lalt13autovar_3=_autovar_3;
-            VALUE lalt13autovar_4=_autovar_4;
-            VALUE lalt13autovar_5=_autovar_5;
-            VALUE lalt13autovar_6=_autovar_6;
-            VALUE lalt13autovar_7=_autovar_7;
-            VALUE lalt13autovar_8=_autovar_8;
-            VALUE lalt13rules=_rules;
-            VALUE lalt13autovar_9=_autovar_9;
-            VALUE lalt13autovar_10=_autovar_10;
             stop1=1;
+            ;
+            goto accept9;
+revert6:
+            ;
+            goto alt1_3;
+accept9:
+            ;
+
             ;
             goto accept1;
 alt1_3:
-            _autovar_2=lalt13autovar_2;
-            _autovar_3=lalt13autovar_3;
-            _autovar_4=lalt13autovar_4;
-            _autovar_5=lalt13autovar_5;
-            _autovar_6=lalt13autovar_6;
-            _autovar_7=lalt13autovar_7;
-            _autovar_8=lalt13autovar_8;
-            _rules=lalt13rules;
-            _autovar_9=lalt13autovar_9;
-            _autovar_10=lalt13autovar_10;
             ptr->pos=oldpos1;
             if (1) {
                 it=failobj;
@@ -610,31 +672,45 @@ accept1:
             int cut4=0;
 alt4_1:
             ;
-            VALUE lalt42autovar_10=_autovar_10;
+            VALUE lrevert7autovar_10=_autovar_10;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
-                goto alt4_2;
+                goto revert7;
             }
             _autovar_10=it;;
             it=AmethystCore_append(self,_autovar,_autovar_10);
             ;
-            goto accept4;
+            goto accept11;
+revert7:
+            ;
+            _autovar_10=lrevert7autovar_10;
+            goto alt4_2;
+accept11:
+            ;
+
+            ;
+            goto accept10;
 alt4_2:
-            _autovar_10=lalt42autovar_10;
             ptr->pos=oldpos4;
-            VALUE lalt43autovar_10=_autovar_10;
             stop1=1;
             ;
-            goto accept4;
+            goto accept12;
+revert8:
+            ;
+            goto alt4_3;
+accept12:
+            ;
+
+            ;
+            goto accept10;
 alt4_3:
-            _autovar_10=lalt43autovar_10;
             ptr->pos=oldpos4;
             if (1) {
                 it=failobj;
                 goto fail;
             };
-accept4:
+accept10:
             ;
             break;
         }
@@ -805,12 +881,12 @@ VALUE Analyze_Variables2_traverse(VALUE self ) {
         int cut1=0;
 alt1_1:
         ;
-        VALUE lalt12nvars=_nvars;
-        VALUE lalt12it=_it;
+        VALUE lrevert1nvars=_nvars;
+        VALUE lrevert1it=_it;
         it=Analyze_Variables2_traverse_item(self );
         if (it==failobj) {
             it=failobj;
-            goto alt1_2;
+            goto revert1;
         }
         _it=it;;
         bind_aset(bind2,1,_nvars);
@@ -819,19 +895,31 @@ alt1_1:
         _nvars=bind_aget(bind2,1);;
         _it=bind_aget(bind2,2);;
         ;
+        goto accept2;
+revert1:
+        ;
+        _nvars=lrevert1nvars;
+        _it=lrevert1it;
+        goto alt1_2;
+accept2:
+        ;
+
+        ;
         goto accept1;
 alt1_2:
-        _nvars=lalt12nvars;
-        _it=lalt12it;
         ptr->pos=oldpos1;
-        VALUE lalt13nvars=_nvars;
-        VALUE lalt13it=_it;
         stop1=1;
+        ;
+        goto accept3;
+revert2:
+        ;
+        goto alt1_3;
+accept3:
+        ;
+
         ;
         goto accept1;
 alt1_3:
-        _nvars=lalt13nvars;
-        _it=lalt13it;
         ptr->pos=oldpos1;
         if (1) {
             it=failobj;
@@ -908,22 +996,30 @@ VALUE Analyze_Variables2_traverse_item(VALUE self ) {
             int cut1=0;
 alt1_1:
             ;
-            VALUE lalt12_result=__result;
+            VALUE lrevert1_result=__result;
             it=Analyze_Variables2_visit(self );
             if (it==failobj) {
                 it=failobj;
-                goto alt1_2;
+                goto revert1;
             }
             __result=it;;
 
             ;
+            goto accept2;
+revert1:
+            ;
+            __result=lrevert1_result;
+            goto alt1_2;
+accept2:
+            ;
+
+            ;
             goto accept1;
 alt1_2:
-            __result=lalt12_result;
             ptr->pos=oldpos1;
-            VALUE lalt13_result=__result;
-            VALUE lalt13autovar=_autovar;
-            VALUE lalt13autovar_2=_autovar_2;
+            VALUE lrevert2_result=__result;
+            VALUE lrevert2autovar=_autovar;
+            VALUE lrevert2autovar_2=_autovar_2;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar=it;;
@@ -947,7 +1043,7 @@ pass1:
             *ptr=oldpass1;
             if (1) {
                 it=failobj;
-                goto alt1_3;
+                goto revert2;
             }
 success1:
             *ptr=oldpass1;
@@ -955,28 +1051,40 @@ success1:
             __result=it;;
 
             ;
+            goto accept3;
+revert2:
+            ;
+            __result=lrevert2_result;
+            _autovar=lrevert2autovar;
+            _autovar_2=lrevert2autovar_2;
+            goto alt1_3;
+accept3:
+            ;
+
+            ;
             goto accept1;
 alt1_3:
-            __result=lalt13_result;
-            _autovar=lalt13autovar;
-            _autovar_2=lalt13autovar_2;
             ptr->pos=oldpos1;
-            VALUE lalt14_result=__result;
-            VALUE lalt14autovar=_autovar;
-            VALUE lalt14autovar_2=_autovar_2;
+            VALUE lrevert3_result=__result;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
-                goto alt1_4;
+                goto revert3;
             }
             __result=it;;
 
             ;
+            goto accept4;
+revert3:
+            ;
+            __result=lrevert3_result;
+            goto alt1_4;
+accept4:
+            ;
+
+            ;
             goto accept1;
 alt1_4:
-            __result=lalt14_result;
-            _autovar=lalt14autovar;
-            _autovar_2=lalt14autovar_2;
             ptr->pos=oldpos1;
             if (1) {
                 it=failobj;
@@ -991,9 +1099,9 @@ accept1:
             int cut2=0;
 alt2_1:
             ;
-            VALUE lalt22_result=__result;
-            VALUE lalt22autovar=_autovar;
-            VALUE lalt22autovar_2=_autovar_2;
+            VALUE lrevert4_result=__result;
+            VALUE lrevert4autovar=_autovar;
+            VALUE lrevert4autovar_2=_autovar_2;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar=it;;
@@ -1017,7 +1125,7 @@ pass2:
             *ptr=oldpass2;
             if (1) {
                 it=failobj;
-                goto alt2_2;
+                goto revert4;
             }
 success2:
             *ptr=oldpass2;
@@ -1025,34 +1133,46 @@ success2:
             __result=it;;
 
             ;
-            goto accept2;
+            goto accept6;
+revert4:
+            ;
+            __result=lrevert4_result;
+            _autovar=lrevert4autovar;
+            _autovar_2=lrevert4autovar_2;
+            goto alt2_2;
+accept6:
+            ;
+
+            ;
+            goto accept5;
 alt2_2:
-            __result=lalt22_result;
-            _autovar=lalt22autovar;
-            _autovar_2=lalt22autovar_2;
             ptr->pos=oldpos2;
-            VALUE lalt23_result=__result;
-            VALUE lalt23autovar=_autovar;
-            VALUE lalt23autovar_2=_autovar_2;
+            VALUE lrevert5_result=__result;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
-                goto alt2_3;
+                goto revert5;
             }
             __result=it;;
 
             ;
-            goto accept2;
+            goto accept7;
+revert5:
+            ;
+            __result=lrevert5_result;
+            goto alt2_3;
+accept7:
+            ;
+
+            ;
+            goto accept5;
 alt2_3:
-            __result=lalt23_result;
-            _autovar=lalt23autovar;
-            _autovar_2=lalt23autovar_2;
             ptr->pos=oldpos2;
             if (1) {
                 it=failobj;
                 goto fail;
             };
-accept2:
+accept5:
             ;
             break;
         }
@@ -1079,24 +1199,32 @@ accept2:
             int cut3=0;
 alt3_1:
             ;
-            VALUE lalt32_result=__result;
+            VALUE lrevert6_result=__result;
             it=Analyze_Variables2_visit(self );
             if (it==failobj) {
                 it=failobj;
-                goto alt3_2;
+                goto revert6;
             }
             __result=it;;
 
             ;
-            goto accept3;
+            goto accept9;
+revert6:
+            ;
+            __result=lrevert6_result;
+            goto alt3_2;
+accept9:
+            ;
+
+            ;
+            goto accept8;
 alt3_2:
-            __result=lalt32_result;
             ptr->pos=oldpos3;
-            VALUE lalt33_result=__result;
-            VALUE lalt33autovar_3=_autovar_3;
-            VALUE lalt33ar=_ar;
-            VALUE lalt33it=_it;
-            VALUE lalt33autovar_4=_autovar_4;
+            VALUE lrevert7_result=__result;
+            VALUE lrevert7autovar_3=_autovar_3;
+            VALUE lrevert7ar=_ar;
+            VALUE lrevert7it=_it;
+            VALUE lrevert7autovar_4=_autovar_4;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar_3=it;;
@@ -1112,12 +1240,12 @@ alt3_2:
                 int cut4=0;
 alt4_1:
                 ;
-                VALUE lalt42ar=_ar;
-                VALUE lalt42it=_it;
+                VALUE lrevert8ar=_ar;
+                VALUE lrevert8it=_it;
                 it=Analyze_Variables2_traverse_item(self );
                 if (it==failobj) {
                     it=failobj;
-                    goto alt4_2;
+                    goto revert8;
                 }
                 _it=it;;
                 bind_aset(bind2,1,_ar);
@@ -1126,25 +1254,37 @@ alt4_1:
                 _ar=bind_aget(bind2,1);;
                 _it=bind_aget(bind2,2);;
                 ;
-                goto accept4;
+                goto accept12;
+revert8:
+                ;
+                _ar=lrevert8ar;
+                _it=lrevert8it;
+                goto alt4_2;
+accept12:
+                ;
+
+                ;
+                goto accept11;
 alt4_2:
-                _ar=lalt42ar;
-                _it=lalt42it;
                 ptr->pos=oldpos4;
-                VALUE lalt43ar=_ar;
-                VALUE lalt43it=_it;
                 stop1=1;
                 ;
-                goto accept4;
+                goto accept13;
+revert9:
+                ;
+                goto alt4_3;
+accept13:
+                ;
+
+                ;
+                goto accept11;
 alt4_3:
-                _ar=lalt43ar;
-                _it=lalt43it;
                 ptr->pos=oldpos4;
                 if (1) {
                     it=failobj;
                     goto pass3;
                 };
-accept4:
+accept11:
                 ;
             }
             it=Qnil;
@@ -1160,7 +1300,7 @@ pass3:
             *ptr=oldpass3;
             if (1) {
                 it=failobj;
-                goto alt3_3;
+                goto revert7;
             }
 success3:
             *ptr=oldpass3;
@@ -1168,40 +1308,48 @@ success3:
             __result=it;;
 
             ;
-            goto accept3;
+            goto accept10;
+revert7:
+            ;
+            __result=lrevert7_result;
+            _autovar_3=lrevert7autovar_3;
+            _ar=lrevert7ar;
+            _it=lrevert7it;
+            _autovar_4=lrevert7autovar_4;
+            goto alt3_3;
+accept10:
+            ;
+
+            ;
+            goto accept8;
 alt3_3:
-            __result=lalt33_result;
-            _autovar_3=lalt33autovar_3;
-            _ar=lalt33ar;
-            _it=lalt33it;
-            _autovar_4=lalt33autovar_4;
             ptr->pos=oldpos3;
-            VALUE lalt34_result=__result;
-            VALUE lalt34autovar_3=_autovar_3;
-            VALUE lalt34ar=_ar;
-            VALUE lalt34it=_it;
-            VALUE lalt34autovar_4=_autovar_4;
+            VALUE lrevert10_result=__result;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
-                goto alt3_4;
+                goto revert10;
             }
             __result=it;;
 
             ;
-            goto accept3;
+            goto accept14;
+revert10:
+            ;
+            __result=lrevert10_result;
+            goto alt3_4;
+accept14:
+            ;
+
+            ;
+            goto accept8;
 alt3_4:
-            __result=lalt34_result;
-            _autovar_3=lalt34autovar_3;
-            _ar=lalt34ar;
-            _it=lalt34it;
-            _autovar_4=lalt34autovar_4;
             ptr->pos=oldpos3;
             if (1) {
                 it=failobj;
                 goto fail;
             };
-accept3:
+accept8:
             ;
             break;
         case 14/*Object*/:
@@ -1210,11 +1358,11 @@ accept3:
             int cut5=0;
 alt5_1:
             ;
-            VALUE lalt52_result=__result;
-            VALUE lalt52autovar_3=_autovar_3;
-            VALUE lalt52ar=_ar;
-            VALUE lalt52it=_it;
-            VALUE lalt52autovar_4=_autovar_4;
+            VALUE lrevert11_result=__result;
+            VALUE lrevert11autovar_3=_autovar_3;
+            VALUE lrevert11ar=_ar;
+            VALUE lrevert11it=_it;
+            VALUE lrevert11autovar_4=_autovar_4;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar_3=it;;
@@ -1230,12 +1378,12 @@ alt5_1:
                 int cut6=0;
 alt6_1:
                 ;
-                VALUE lalt62ar=_ar;
-                VALUE lalt62it=_it;
+                VALUE lrevert12ar=_ar;
+                VALUE lrevert12it=_it;
                 it=Analyze_Variables2_traverse_item(self );
                 if (it==failobj) {
                     it=failobj;
-                    goto alt6_2;
+                    goto revert12;
                 }
                 _it=it;;
                 bind_aset(bind2,1,_ar);
@@ -1244,25 +1392,37 @@ alt6_1:
                 _ar=bind_aget(bind2,1);;
                 _it=bind_aget(bind2,2);;
                 ;
-                goto accept6;
+                goto accept18;
+revert12:
+                ;
+                _ar=lrevert12ar;
+                _it=lrevert12it;
+                goto alt6_2;
+accept18:
+                ;
+
+                ;
+                goto accept17;
 alt6_2:
-                _ar=lalt62ar;
-                _it=lalt62it;
                 ptr->pos=oldpos6;
-                VALUE lalt63ar=_ar;
-                VALUE lalt63it=_it;
                 stop2=1;
                 ;
-                goto accept6;
+                goto accept19;
+revert13:
+                ;
+                goto alt6_3;
+accept19:
+                ;
+
+                ;
+                goto accept17;
 alt6_3:
-                _ar=lalt63ar;
-                _it=lalt63it;
                 ptr->pos=oldpos6;
                 if (1) {
                     it=failobj;
                     goto pass4;
                 };
-accept6:
+accept17:
                 ;
             }
             it=Qnil;
@@ -1278,7 +1438,7 @@ pass4:
             *ptr=oldpass4;
             if (1) {
                 it=failobj;
-                goto alt5_2;
+                goto revert11;
             }
 success4:
             *ptr=oldpass4;
@@ -1286,40 +1446,48 @@ success4:
             __result=it;;
 
             ;
-            goto accept5;
+            goto accept16;
+revert11:
+            ;
+            __result=lrevert11_result;
+            _autovar_3=lrevert11autovar_3;
+            _ar=lrevert11ar;
+            _it=lrevert11it;
+            _autovar_4=lrevert11autovar_4;
+            goto alt5_2;
+accept16:
+            ;
+
+            ;
+            goto accept15;
 alt5_2:
-            __result=lalt52_result;
-            _autovar_3=lalt52autovar_3;
-            _ar=lalt52ar;
-            _it=lalt52it;
-            _autovar_4=lalt52autovar_4;
             ptr->pos=oldpos5;
-            VALUE lalt53_result=__result;
-            VALUE lalt53autovar_3=_autovar_3;
-            VALUE lalt53ar=_ar;
-            VALUE lalt53it=_it;
-            VALUE lalt53autovar_4=_autovar_4;
+            VALUE lrevert14_result=__result;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
-                goto alt5_3;
+                goto revert14;
             }
             __result=it;;
 
             ;
-            goto accept5;
+            goto accept20;
+revert14:
+            ;
+            __result=lrevert14_result;
+            goto alt5_3;
+accept20:
+            ;
+
+            ;
+            goto accept15;
 alt5_3:
-            __result=lalt53_result;
-            _autovar_3=lalt53autovar_3;
-            _ar=lalt53ar;
-            _it=lalt53it;
-            _autovar_4=lalt53autovar_4;
             ptr->pos=oldpos5;
             if (1) {
                 it=failobj;
                 goto fail;
             };
-accept5:
+accept15:
             ;
             break;
         }
@@ -1346,37 +1514,53 @@ accept5:
             int cut7=0;
 alt7_1:
             ;
-            VALUE lalt72_result=__result;
+            VALUE lrevert15_result=__result;
             it=Analyze_Variables2_visit(self );
             if (it==failobj) {
                 it=failobj;
-                goto alt7_2;
+                goto revert15;
             }
             __result=it;;
 
             ;
-            goto accept7;
+            goto accept22;
+revert15:
+            ;
+            __result=lrevert15_result;
+            goto alt7_2;
+accept22:
+            ;
+
+            ;
+            goto accept21;
 alt7_2:
-            __result=lalt72_result;
             ptr->pos=oldpos7;
-            VALUE lalt73_result=__result;
+            VALUE lrevert16_result=__result;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
-                goto alt7_3;
+                goto revert16;
             }
             __result=it;;
 
             ;
-            goto accept7;
+            goto accept23;
+revert16:
+            ;
+            __result=lrevert16_result;
+            goto alt7_3;
+accept23:
+            ;
+
+            ;
+            goto accept21;
 alt7_3:
-            __result=lalt73_result;
             ptr->pos=oldpos7;
             if (1) {
                 it=failobj;
                 goto fail;
             };
-accept7:
+accept21:
             ;
             break;
         case 14/*Object*/:
@@ -1460,31 +1644,39 @@ VALUE Analyze_Variables2_visit(VALUE self ) {
             int cut1=0;
 alt1_1:
             ;
-            VALUE lalt12pred=_pred;
+            VALUE lrevert1pred=_pred;
             bind_aset(bind2,1,_pred);
             it=rb_funcall(self,sy_Analyze_Variables2__lp_,1,bind2);
             _pred=bind_aget(bind2,1);;
             if (it==failobj) {
                 it=failobj;
-                goto alt1_2;
+                goto revert1;
             };
             if (1) {
                 it=failobj;
-                goto alt1_2;
+                goto revert1;
             }
+            ;
+            goto accept2;
+revert1:
+            ;
+            _pred=lrevert1pred;
+            goto alt1_2;
+accept2:
+            ;
+
             ;
             goto accept1;
 alt1_2:
-            _pred=lalt12pred;
             ptr->pos=oldpos1;
-            VALUE lalt13pred=_pred;
-            VALUE lalt13pure=_pure;
-            VALUE lalt13autovar_7=_autovar_7;
-            VALUE lalt13autovar_8=_autovar_8;
-            VALUE lalt13autovar_9=_autovar_9;
-            VALUE lalt13ary=_ary;
-            VALUE lalt13autovar_10=_autovar_10;
-            VALUE lalt13autovar_11=_autovar_11;
+            VALUE lrevert2pred=_pred;
+            VALUE lrevert2pure=_pure;
+            VALUE lrevert2autovar_7=_autovar_7;
+            VALUE lrevert2autovar_8=_autovar_8;
+            VALUE lrevert2autovar_9=_autovar_9;
+            VALUE lrevert2ary=_ary;
+            VALUE lrevert2autovar_10=_autovar_10;
+            VALUE lrevert2autovar_11=_autovar_11;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar_7=it;;
@@ -1500,31 +1692,45 @@ alt1_2:
                 int cut2=0;
 alt2_1:
                 ;
-                VALUE lalt22autovar_9=_autovar_9;
+                VALUE lrevert3autovar_9=_autovar_9;
                 it=AmethystCore_anything(self );
                 if (it==failobj) {
                     it=failobj;
-                    goto alt2_2;
+                    goto revert3;
                 }
                 _autovar_9=it;;
                 it=AmethystCore_append(self,_autovar_8,_autovar_9);
                 ;
-                goto accept2;
+                goto accept5;
+revert3:
+                ;
+                _autovar_9=lrevert3autovar_9;
+                goto alt2_2;
+accept5:
+                ;
+
+                ;
+                goto accept4;
 alt2_2:
-                _autovar_9=lalt22autovar_9;
                 ptr->pos=oldpos2;
-                VALUE lalt23autovar_9=_autovar_9;
                 stop1=1;
                 ;
-                goto accept2;
+                goto accept6;
+revert4:
+                ;
+                goto alt2_3;
+accept6:
+                ;
+
+                ;
+                goto accept4;
 alt2_3:
-                _autovar_9=lalt23autovar_9;
                 ptr->pos=oldpos2;
                 if (1) {
                     it=failobj;
                     goto pass5;
                 };
-accept2:
+accept4:
                 ;
             }
             it=_autovar_8;
@@ -1547,7 +1753,7 @@ pass5:
             *ptr=oldpass5;
             if (1) {
                 it=failobj;
-                goto alt1_3;
+                goto revert2;
             }
 success5:
             *ptr=oldpass5;
@@ -1555,16 +1761,24 @@ success5:
             _autovar_11=it;;
 
             ;
+            goto accept3;
+revert2:
+            ;
+            _pred=lrevert2pred;
+            _pure=lrevert2pure;
+            _autovar_7=lrevert2autovar_7;
+            _autovar_8=lrevert2autovar_8;
+            _autovar_9=lrevert2autovar_9;
+            _ary=lrevert2ary;
+            _autovar_10=lrevert2autovar_10;
+            _autovar_11=lrevert2autovar_11;
+            goto alt1_3;
+accept3:
+            ;
+
+            ;
             goto accept1;
 alt1_3:
-            _pred=lalt13pred;
-            _pure=lalt13pure;
-            _autovar_7=lalt13autovar_7;
-            _autovar_8=lalt13autovar_8;
-            _autovar_9=lalt13autovar_9;
-            _ary=lalt13ary;
-            _autovar_10=lalt13autovar_10;
-            _autovar_11=lalt13autovar_11;
             ptr->pos=oldpos1;
             if (1) {
                 it=failobj;
@@ -1785,8 +1999,8 @@ success6:
                 int cut3=0;
 alt3_1:
                 ;
-                VALUE lalt32autovar_2=_autovar_2;
-                VALUE lalt32autovar_22=_autovar_22;
+                VALUE lrevert5autovar_2=_autovar_2;
+                VALUE lrevert5autovar_22=_autovar_22;
                 it=ptr->ary[ptr->pos];            ;
                 ptr->pos++;
                 _autovar_22=it;;
@@ -1812,44 +2026,60 @@ pass10:
                 *ptr=oldpass10;
                 if (1) {
                     it=failobj;
-                    goto alt3_2;
+                    goto revert5;
                 }
 success10:
                 *ptr=oldpass10;
 
                 ;
-                goto accept3;
+                goto accept8;
+revert5:
+                ;
+                _autovar_2=lrevert5autovar_2;
+                _autovar_22=lrevert5autovar_22;
+                goto alt3_2;
+accept8:
+                ;
+
+                ;
+                goto accept7;
 alt3_2:
-                _autovar_2=lalt32autovar_2;
-                _autovar_22=lalt32autovar_22;
                 ptr->pos=oldpos3;
-                VALUE lalt33autovar_2=_autovar_2;
-                VALUE lalt33autovar_22=_autovar_22;
                 it=AmethystCore_anything(self );
                 if (it==failobj) {
                     it=failobj;
-                    goto alt3_3;
+                    goto revert6;
                 }
                 ;
-                goto accept3;
+                goto accept9;
+revert6:
+                ;
+                goto alt3_3;
+accept9:
+                ;
+
+                ;
+                goto accept7;
 alt3_3:
-                _autovar_2=lalt33autovar_2;
-                _autovar_22=lalt33autovar_22;
                 ptr->pos=oldpos3;
-                VALUE lalt34autovar_2=_autovar_2;
-                VALUE lalt34autovar_22=_autovar_22;
                 stop2=1;
                 ;
-                goto accept3;
+                goto accept10;
+revert7:
+                ;
+                goto alt3_4;
+accept10:
+                ;
+
+                ;
+                goto accept7;
 alt3_4:
-                _autovar_2=lalt34autovar_2;
-                _autovar_22=lalt34autovar_22;
                 ptr->pos=oldpos3;
                 if (1) {
                     it=failobj;
                     goto pass9;
                 };
-accept3:
+accept7:
                 ;
                 break;
             case 1/*Object*/:
@@ -1861,22 +2091,38 @@ alt4_1:
                 it=AmethystCore_anything(self );
                 if (it==failobj) {
                     it=failobj;
-                    goto alt4_2;
+                    goto revert8;
                 }
                 ;
-                goto accept4;
+                goto accept12;
+revert8:
+                ;
+                goto alt4_2;
+accept12:
+                ;
+
+                ;
+                goto accept11;
 alt4_2:
                 ptr->pos=oldpos4;
                 stop2=1;
                 ;
-                goto accept4;
+                goto accept13;
+revert9:
+                ;
+                goto alt4_3;
+accept13:
+                ;
+
+                ;
+                goto accept11;
 alt4_3:
                 ptr->pos=oldpos4;
                 if (1) {
                     it=failobj;
                     goto pass9;
                 };
-accept4:
+accept11:
                 ;
                 break;
             }
@@ -2238,38 +2484,50 @@ success18:
             int cut5=0;
 alt5_1:
             ;
-            VALUE lalt52autovar_2=_autovar_2;
-            VALUE lalt52autovar_40=_autovar_40;
+            VALUE lrevert10autovar_2=_autovar_2;
+            VALUE lrevert10autovar_40=_autovar_40;
             bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy_Analyze_Variables2__at__contex_d6d5,1,bind2);
             _autovar_2=bind_aget(bind2,1);;
             it=Analyze_Variables2_traverse_item(self );
             if (it==failobj) {
                 it=failobj;
-                goto alt5_2;
+                goto revert10;
             }
             _autovar_40=it;;
             it=AmethystCore_append(self,_autovar_39,_autovar_40);
             ;
-            goto accept5;
+            goto accept15;
+revert10:
+            ;
+            _autovar_2=lrevert10autovar_2;
+            _autovar_40=lrevert10autovar_40;
+            goto alt5_2;
+accept15:
+            ;
+
+            ;
+            goto accept14;
 alt5_2:
-            _autovar_2=lalt52autovar_2;
-            _autovar_40=lalt52autovar_40;
             ptr->pos=oldpos5;
-            VALUE lalt53autovar_2=_autovar_2;
-            VALUE lalt53autovar_40=_autovar_40;
             stop3=1;
             ;
-            goto accept5;
+            goto accept16;
+revert11:
+            ;
+            goto alt5_3;
+accept16:
+            ;
+
+            ;
+            goto accept14;
 alt5_3:
-            _autovar_2=lalt53autovar_2;
-            _autovar_40=lalt53autovar_40;
             ptr->pos=oldpos5;
             if (1) {
                 it=failobj;
                 goto pass19;
             };
-accept5:
+accept14:
             ;
         }
         it=Qnil;
@@ -2478,38 +2736,50 @@ success23:
             int cut6=0;
 alt6_1:
             ;
-            VALUE lalt62autovar_2=_autovar_2;
-            VALUE lalt62autovar_51=_autovar_51;
+            VALUE lrevert12autovar_2=_autovar_2;
+            VALUE lrevert12autovar_51=_autovar_51;
             bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy_Analyze_Variables2__at__contex_d6d5,1,bind2);
             _autovar_2=bind_aget(bind2,1);;
             it=Analyze_Variables2_traverse_item(self );
             if (it==failobj) {
                 it=failobj;
-                goto alt6_2;
+                goto revert12;
             }
             _autovar_51=it;;
             it=AmethystCore_append(self,_autovar_50,_autovar_51);
             ;
-            goto accept6;
+            goto accept18;
+revert12:
+            ;
+            _autovar_2=lrevert12autovar_2;
+            _autovar_51=lrevert12autovar_51;
+            goto alt6_2;
+accept18:
+            ;
+
+            ;
+            goto accept17;
 alt6_2:
-            _autovar_2=lalt62autovar_2;
-            _autovar_51=lalt62autovar_51;
             ptr->pos=oldpos6;
-            VALUE lalt63autovar_2=_autovar_2;
-            VALUE lalt63autovar_51=_autovar_51;
             stop4=1;
             ;
-            goto accept6;
+            goto accept19;
+revert13:
+            ;
+            goto alt6_3;
+accept19:
+            ;
+
+            ;
+            goto accept17;
 alt6_3:
-            _autovar_2=lalt63autovar_2;
-            _autovar_51=lalt63autovar_51;
             ptr->pos=oldpos6;
             if (1) {
                 it=failobj;
                 goto pass24;
             };
-accept6:
+accept17:
             ;
         }
         it=Qnil;
@@ -2562,38 +2832,50 @@ success24:
             int cut7=0;
 alt7_1:
             ;
-            VALUE lalt72autovar_2=_autovar_2;
-            VALUE lalt72autovar_54=_autovar_54;
+            VALUE lrevert14autovar_2=_autovar_2;
+            VALUE lrevert14autovar_54=_autovar_54;
             bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy_Analyze_Variables2__at__contex_d6d5,1,bind2);
             _autovar_2=bind_aget(bind2,1);;
             it=Analyze_Variables2_traverse_item(self );
             if (it==failobj) {
                 it=failobj;
-                goto alt7_2;
+                goto revert14;
             }
             _autovar_54=it;;
             it=AmethystCore_append(self,_autovar_53,_autovar_54);
             ;
-            goto accept7;
+            goto accept21;
+revert14:
+            ;
+            _autovar_2=lrevert14autovar_2;
+            _autovar_54=lrevert14autovar_54;
+            goto alt7_2;
+accept21:
+            ;
+
+            ;
+            goto accept20;
 alt7_2:
-            _autovar_2=lalt72autovar_2;
-            _autovar_54=lalt72autovar_54;
             ptr->pos=oldpos7;
-            VALUE lalt73autovar_2=_autovar_2;
-            VALUE lalt73autovar_54=_autovar_54;
             stop5=1;
             ;
-            goto accept7;
+            goto accept22;
+revert15:
+            ;
+            goto alt7_3;
+accept22:
+            ;
+
+            ;
+            goto accept20;
 alt7_3:
-            _autovar_2=lalt73autovar_2;
-            _autovar_54=lalt73autovar_54;
             ptr->pos=oldpos7;
             if (1) {
                 it=failobj;
                 goto pass25;
             };
-accept7:
+accept20:
             ;
         }
         it=Qnil;

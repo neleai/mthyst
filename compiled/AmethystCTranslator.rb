@@ -2,6 +2,7 @@ class AmethystCTranslator < Amethyst
 def self.addcallback(*args);self.new.parse(:addcallback,*args);end;def self._selector_addcallback;AmethystCTranslator;end
 def self.addlambda(*args);self.new.parse(:addlambda,*args);end;def self._selector_addlambda;AmethystCTranslator;end
 def self.itrans(*args);self.new.parse(:itrans,*args);end;def self._selector_itrans;AmethystCTranslator;end
+def self.persistent(*args);self.new.parse(:persistent,*args);end;def self._selector_persistent;AmethystCTranslator;end
 def self.rbcode(*args);self.new.parse(:rbcode,*args);end;def self._selector_rbcode;AmethystCTranslator;end
 def self.rbtrans(*args);self.new.parse(:rbtrans,*args);end;def self._selector_rbtrans;AmethystCTranslator;end
 def self.rbtrans2(*args);self.new.parse(:rbtrans2,*args);end;def self._selector_rbtrans2;AmethystCTranslator;end
@@ -76,10 +77,10 @@ end
 def AmethystCTranslator__at_locals__1adc(bind)
 @locals_changed.clone
 end
-def AmethystCTranslator__at_locals__b783(bind)
+def AmethystCTranslator__at_locals__c70e(bind)
 @locals_changed.each{|k,v| if v> bind[1][k]
-              bind[2]+="VALUE l#{bind[3]}#{bind[4]}#{desc(k)}=#{bget(k)};";bind[5]+=bset(k,"l#{bind[3]}#{bind[4]}#{desc(k)}")
-             end}
+               bind[2]+="VALUE l#{bind[3]}#{desc(k)}=#{bget(k)};";bind[4]+=bset(k,"l#{bind[3]}#{desc(k)}")
+               end}
 end
 def AmethystCTranslator__at_stoplab_2ba4(bind)
 @stoplabel
@@ -117,6 +118,9 @@ def AmethystCTranslator__dq__sh__le_bind_lb__8a62(bind)
 end
 def AmethystCTranslator__dq__sh__le_bind_lb__9630(bind)
 "#{bind[1]}_#{bind[2]}"
+end
+def AmethystCTranslator__dq__sh__le_bind_lb__bfa0(bind)
+"#{bind[1]} #{bind[2]}\n;goto #{bind[3]};#{bind[4]}:; #{bind[5]} goto #{@faillabel}; #{bind[3]}:;\n"
 end
 def AmethystCTranslator__dq__sh__le_failw_5360(bind)
 "#{failwhen("1")}"
@@ -251,9 +255,6 @@ end
 def AmethystCTranslator_bind_lb_1_rb__lt__e3c6(bind)
 bind[1]<<@defs.sort*"\n";bind[1]<<"\n"
 end
-def AmethystCTranslator_bind_lb_1_rb__pl__1395(bind)
-bind[1]+="#{bind[2]} #{bind[3]}\n;goto #{bind[4]};\n"
-end
 def AmethystCTranslator_bind_lb_1_rb__pl__1b5e(bind)
 bind[1]+=bind[2]*""
 end
@@ -262,6 +263,9 @@ bind[1]+="; #{bind[2]} break;\n"
 end
 def AmethystCTranslator_bind_lb_1_rb__pl__252c(bind)
 bind[1]+=bind[2].cases() + " #{bind[3]} break;\n"
+end
+def AmethystCTranslator_bind_lb_1_rb__pl__4da1(bind)
+bind[1]+="#{bind[2]}\n;goto #{bind[3]};\n"
 end
 def AmethystCTranslator_bind_lb_1_rb__pl__4db9(bind)
 bind[1]+"}"
@@ -272,8 +276,8 @@ end
 def AmethystCTranslator_bind_lb_1_rb__pl__916b(bind)
 bind[1]+="\nend"; bind[1]
 end
-def AmethystCTranslator_bind_lb_1_rb__pl__df80(bind)
-bind[1]+="#{bind[2]}_#{bind[3]}: #{bind[4]} ptr->pos=#{bind[5]};#{@cuts ? (@cuts=nil;failwhen(@cutlabel)): ""}"
+def AmethystCTranslator_bind_lb_1_rb__pl__9a26(bind)
+bind[1]+="#{bind[2]}_#{bind[3]}: ptr->pos=#{bind[4]};#{@cuts ? (@cuts=nil;failwhen(@cutlabel)): ""}"
 end
 def AmethystCTranslator_bind_lb_1_rb__ti__cfcb(bind)
 bind[1]*""
