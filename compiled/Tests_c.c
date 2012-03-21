@@ -33,7 +33,7 @@ VALUE profile_report_Tests(VALUE self) {
 VALUE Tests_abc(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(0);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -64,7 +64,7 @@ fail:
 VALUE Tests_context(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar=Qnil,_autovar_2=Qnil,__result=Qnil,_autovar_3=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(2);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -89,7 +89,7 @@ fail:
 VALUE Tests_de(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar=Qnil,_foo=Qnil,_autovar_2=Qnil,__result=Qnil,_autovar_3=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(1);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -281,7 +281,7 @@ fail:
 VALUE Tests_foo(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(1);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -307,7 +307,7 @@ fail:
 VALUE Tests_gh(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(0);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -367,7 +367,7 @@ fail:
 VALUE Tests_s2(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result=Qnil,__result_2=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(0);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -412,7 +412,7 @@ fail:
 VALUE Tests_sw(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result=Qnil,__result_2=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(0);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -469,7 +469,7 @@ fail:
 VALUE Tests_test(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(0);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);

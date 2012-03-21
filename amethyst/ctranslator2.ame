@@ -66,6 +66,7 @@ class AmethystCTranslator < Amethyst
   def resetlabels
     @labels=Hash.new(0)
     @binds={};@bindno=0
+    @maxbind=0
   end
   def label(s)
     @labels[s]+=1
@@ -133,7 +134,7 @@ amethyst AmethystCTranslator {
             @@header<<h+";"
             @@defs<< "def self.#{name}(*args);self.new.parse(:#{name},*args);end;def self._selector_#{name};#{@>grammar};end"
             @@defmethods<< "rb_define_method(cls_#{@>grammar},\"#{@name}\",#{@>grammar}_#{@name},#{@varargs ? -2 : @args.size});"
-						s=h+"{VALUE vals[#{@args.size}]; VALUE it #{@@withlambda ? "" : (@@locls.map{|k,v| ",_#{k}=Qnil"}*"")};VALUE bind2=#{@@withlambda ? "bind_new3(#{@@bindno})" : "bind_new2(16)"}; #{map_index(@args){|i| bset(@args[i],"a#{i}")+";"}*""} VALUE arg0,arg1,arg2,arg3; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);"
+						s=h+"{VALUE vals[#{@args.size}]; VALUE it #{@@withlambda ? "" : (@@locls.map{|k,v| ",_#{k}=Qnil"}*"")};VALUE bind2=#{@@withlambda ? "bind_new3(#{@@bindno})" : "bind_new2(#{@@maxbind})"}; #{map_index(@args){|i| bset(@args[i],"a#{i}")+";"}*""} VALUE arg0,arg1,arg2,arg3; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);"
 s+="#{body}\n" 
 s+="fail: return it;\n}"
 s
@@ -153,8 +154,12 @@ s
                  s}
         | Act[ .:a &{a=="_append("} Local:x . Local:y  . ] -> "it=AmethystCore_append(self,#{bget(x)},#{bget(y)});"
         | Act[ { @@bindno,@@binds=0,{} if !@@withlambda}
-								.*:it addcallback(@pred ? ["(",it,") || FAIL"] : it):cbno 
-								{@@binds.map{|k,v| @@locals_changed[k]+=1; "bind_aset(bind2,#{v},#{bget(k)});"}*"" + "it=#{rbcall(cbno,["bind2"])};"+@@binds.map{|k,v|"#{bset(k,"bind_aget(bind2,#{v})")};"}*"" +"#{@pred ? "#{failwhen("it==failobj")};" :"" }"}:x {@@withlambda ? "it=#{rbcall(cbno,["bind2"])};" : x} ]
+								.*:it addcallback(@pred ? ["(",it,") || FAIL"] : it):cbno
+                { @@binds.map{|k,v| @@locals_changed[k]+=1}; @@maxbind=[@@maxbind,@@binds.size].max }
+                {s= "it=#{rbcall(cbno,["bind2"])};" }:s
+								{s=  (@@binds.map{|k,v|"bind_aset(bind2,#{v},#{bget(k)});"  }*"")+s if !@@withlambda}
+                {s=s+(@@binds.map{|k,v|"#{bset(k,"bind_aget(bind2,#{v})")};"}*"")   if !@@withlambda}
+                {  s+(@pred ? "#{failwhen("it==failobj")};" : "")                                   } ]
         | CAct[.* {ar=*@ccode; 
                    @@header<<ar[0] if ar[0]
                    @@init<<ar[1] if ar[1]

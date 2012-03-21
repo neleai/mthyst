@@ -68,7 +68,7 @@ VALUE profile_report_Detect_Switch_Char(VALUE self) {
 VALUE Detect_Switch_Char_itrans(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_autovar_4=Qnil,_autovar_5=Qnil,_autovar_6=Qnil,_autovar_7=Qnil,_autovar_8=Qnil,_autovar_9=Qnil,_autovar_10=Qnil,_rules=Qnil,_autovar_11=Qnil,_autovar_12=Qnil,__result=Qnil,_autovar_13=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(2);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -385,7 +385,7 @@ fail:
 VALUE Detect_Switch_Char_root(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(0);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -402,7 +402,7 @@ fail:
 VALUE Detect_Switch_Char_traverse(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_nvars=Qnil,_ivars=Qnil,_autovar=Qnil,_autovar_2=Qnil,_it=Qnil,__result=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(2);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -532,7 +532,7 @@ fail:
 VALUE Detect_Switch_Char_traverse_item(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result=Qnil,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_ar=Qnil,_it=Qnil,_autovar_4=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(2);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -1055,7 +1055,7 @@ fail:
 VALUE Detect_Switch_Char_visit(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_autovar_4=Qnil,_autovar_5=Qnil,_autovar_6=Qnil,_firs=Qnil,_autovar_7=Qnil,__result=Qnil,_autovar_8=Qnil,_autovar_9=Qnil,_autovar_10=Qnil,_str=Qnil,_autovar_11=Qnil,_autovar_12=Qnil,_autovar_13=Qnil,_autovar_14=Qnil,_autovar_15=Qnil,_autovar_16=Qnil,_autovar_17=Qnil,_autovar_18=Qnil,_autovar_19=Qnil,_items=Qnil,_aswitch=Qnil,_autovar_20=Qnil,_autovar_21=Qnil,_autovar_22=Qnil,_list=Qnil,_autovar_23=Qnil,_ary=Qnil,_newlist=Qnil,_lat=Qnil,__result_2=Qnil,_n=Qnil,_cls=Qnil,_autovar_24=Qnil,_autovar_25=Qnil,_autovar_26=Qnil,_autovar_27=Qnil,_autovar_28=Qnil,_autovar_29=Qnil,_autovar_30=Qnil,_prefix=Qnil,_s=Qnil,__result_3=Qnil,_autovar_31=Qnil,_ary_2=Qnil,_autovar_32=Qnil,_autovar_33=Qnil,_rest=Qnil,_cls_2=Qnil,_autovar_34=Qnil,_autovar_35=Qnil,_autovar_36=Qnil,_autovar_37=Qnil,_autovar_38=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(4);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);

@@ -35,7 +35,7 @@ VALUE profile_report_Resolve_Calls(VALUE self) {
 VALUE Resolve_Calls_root(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_autovar_4=Qnil,_autovar_5=Qnil,_autovar_6=Qnil,__result=Qnil,_autovar_7=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(2);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -118,7 +118,7 @@ fail:
 VALUE Resolve_Calls_traverse(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_nvars=Qnil,_ivars=Qnil,_autovar=Qnil,_autovar_2=Qnil,_it=Qnil,__result=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(2);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -236,7 +236,7 @@ fail:
 VALUE Resolve_Calls_traverse_item(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result=Qnil,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_ar=Qnil,_it=Qnil,_autovar_4=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(2);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -753,7 +753,7 @@ fail:
 VALUE Resolve_Calls_visit(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_autovar_4=Qnil,_autovar_5=Qnil,_autovar_6=Qnil,_autovar_7=Qnil,_autovar_8=Qnil,__result=Qnil,_autovar_9=Qnil,_autovar_10=Qnil,_name=Qnil,_autovar_11=Qnil,_autovar_12=Qnil,_autovar_13=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(2);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);

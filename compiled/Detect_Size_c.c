@@ -23,7 +23,7 @@ VALUE profile_report_Detect_Size(VALUE self) {
 VALUE Detect_Size_predicate(VALUE self ,VALUE a0) {
     VALUE vals[1];
     VALUE it ,_el=Qnil,_msize=Qnil,_autovar=Qnil,_s=Qnil,_autovar_2=Qnil,__result=Qnil,_autovar_3=Qnil,_s_2=Qnil,_autovar_4=Qnil,_autovar_5=Qnil,__result_2=Qnil,_autovar_6=Qnil,_ary=Qnil,_autovar_7=Qnil,_autovar_8=Qnil,_el_2=Qnil,_autovar_9=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(3);
     _s=a0;;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
@@ -442,7 +442,7 @@ fail:
 VALUE Detect_Size_predicate2(VALUE self ,VALUE a0) {
     VALUE vals[1];
     VALUE it ,_autovar=Qnil,__result=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_s=Qnil,_s_2=Qnil,_el=Qnil,_msize=Qnil,_autovar_4=Qnil,_autovar_5=Qnil,__result_2=Qnil,_autovar_6=Qnil,_ary=Qnil,_autovar_7=Qnil,_autovar_8=Qnil,_el_2=Qnil,_autovar_9=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(3);
     _s=a0;;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;

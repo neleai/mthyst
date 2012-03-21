@@ -21,8 +21,8 @@ end
 def AmethystCTranslator__at_bindno(bind)
 @bindno,@binds=0,{} if !@withlambda
 end
-def AmethystCTranslator__at_binds_dot_m_06de(bind)
-@binds.map{|k,v| @locals_changed[k]+=1; "bind_aset(bind2,#{v},#{bget(k)});"}*"" + "it=#{rbcall(bind[1],["bind2"])};"+@binds.map{|k,v|"#{bset(k,"bind_aget(bind2,#{v})")};"}*"" +"#{src.pred ? "#{failwhen("it==failobj")};" :"" }"
+def AmethystCTranslator__at_binds_dot_m_1d69(bind)
+@binds.map{|k,v| @locals_changed[k]+=1}; @maxbind=[@maxbind,@binds.size].max 
 end
 def AmethystCTranslator__at_callbac_2d11(bind)
 @callbacks.to_a.sort
@@ -100,9 +100,6 @@ def AmethystCTranslator__at_stops_eq_t_c6ab(bind)
 end
 def AmethystCTranslator__at_withlam_51d6(bind)
 @withlambda=true 
-end
-def AmethystCTranslator__at_withlam_9b55(bind)
-@withlambda ? "it=#{rbcall(bind[1],["bind2"])};" : bind[2]
 end
 def AmethystCTranslator__at_withlam_c8fb(bind)
 @withlambda=false
@@ -224,6 +221,12 @@ end
 def AmethystCTranslator_bind_lb_1_rb__dot__1364(bind)
 bind[1].ary.each{|al| bind[2]+="next h[k]=#{bind[3]} if k<=#{al}\\n";bind[4]+="case #{bind[3]}/*#{al}*/:";bind[3]+=1}
 end
+def AmethystCTranslator_bind_lb_1_rb__eq__24d5(bind)
+bind[1]=  (@binds.map{|k,v|"bind_aset(bind2,#{v},#{bget(k)});"  }*"")+bind[1] if !@withlambda
+end
+def AmethystCTranslator_bind_lb_1_rb__eq__59c9(bind)
+bind[1]=bind[1]+(@binds.map{|k,v|"#{bset(k,"bind_aget(bind2,#{v})")};"}*"")   if !@withlambda
+end
 def AmethystCTranslator_bind_lb_1_rb__eq__7d1a(bind)
 bind[1]="int #{@stoplabel}=0; while(!#{@stoplabel}){ #{bind[2]} } "
 									@stops=bind[3]; @stoplabel=bind[4]
@@ -243,6 +246,9 @@ bind[1]=""
                  bind[1]+="memo_fail:  memo_add(ptr->mem,#{memo_no},ptr->src,oldpos,it,ptr->pos,time_old); return it;\n"
                  @profile_report << "if(ptr->mem){fprintf(profile_report,\"memo #{bind[2][:grammar]}::#{bind[2][:rulename]}  hit: %i miss: %i ticks: %i\\n\",((memo_struct *)ptr->mem)->hits[#{memo_no}],((memo_struct *)ptr->mem)->miss[#{memo_no}],((memo_struct *)ptr->mem)->ticks[#{memo_no}]);((memo_struct *)ptr->mem)->hits[#{memo_no}]=0;((memo_struct *)ptr->mem)->miss[#{memo_no}]=0;((memo_struct *)ptr->mem)->ticks[#{memo_no}]=0;}"
                  bind[1]
+end
+def AmethystCTranslator_bind_lb_1_rb__eq__b577(bind)
+bind[1]= "it=#{rbcall(bind[2],["bind2"])};" 
 end
 def AmethystCTranslator_bind_lb_1_rb__lb__c392(bind)
 bind[1][:grammar]=@grammar=src.name;bind[1][:parent]=src.parent
@@ -271,6 +277,9 @@ end
 def AmethystCTranslator_bind_lb_1_rb__lt__e3c6(bind)
 bind[1]<<@defs.sort*"\n";bind[1]<<"\n"
 end
+def AmethystCTranslator_bind_lb_1_rb__pl__135a(bind)
+bind[1]+(src.pred ? "#{failwhen("it==failobj")};" : "")                                   
+end
 def AmethystCTranslator_bind_lb_1_rb__pl__1b5e(bind)
 bind[1]+=bind[2]*""
 end
@@ -298,22 +307,22 @@ end
 def AmethystCTranslator_bind_lb_1_rb__ti__cfcb(bind)
 bind[1]*""
 end
-def AmethystCTranslator_h_eq__dq_VALUE_00eb(bind)
-h="VALUE #{bind[1][:grammar]}_#{bind[2]}(VALUE self #{map_index(src.args){|i| ",VALUE a#{i}"}*""})" 
-            @header<<h+";"
-            @defs<< "def self.#{bind[2]}(*args);self.new.parse(:#{bind[2]},*args);end;def self._selector_#{bind[2]};#{bind[1][:grammar]};end"
-            @defmethods<< "rb_define_method(cls_#{bind[1][:grammar]},\"#{src.name}\",#{bind[1][:grammar]}_#{src.name},#{src.varargs ? -2 : src.args.size});"
-						bind[3]=h+"{VALUE vals[#{src.args.size}]; VALUE it #{@withlambda ? "" : (@locls.map{|k,v| ",_#{k}=Qnil"}*"")};VALUE bind2=#{@withlambda ? "bind_new3(#{@bindno})" : "bind_new2(16)"}; #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}*""} VALUE arg0,arg1,arg2,arg3; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);"
-bind[3]+="#{bind[4]}\n" 
-bind[3]+="fail: return it;\n}"
-bind[3]
-
-end
 def AmethystCTranslator_h_eq__dq_VALUE_920b(bind)
 h="VALUE #{bind[1]}(VALUE self,VALUE bind2,VALUE args)"
                  @header<<h+";"
                  @defmethods<<"rb_define_method(cls_#{bind[2][:grammar]},\"#{bind[1]}\",#{bind[1]},2);"
                  @lambdas<< h+"{VALUE vals[0];  /*todo unify with rule and get args*/ cstruct *ptr; VALUE it;VALUE arg0,arg1,arg2,arg3;\n#{bind[3]}\nreturn it;\nfail: return failobj; }" 
+end
+def AmethystCTranslator_h_eq__dq_VALUE_976a(bind)
+h="VALUE #{bind[1][:grammar]}_#{bind[2]}(VALUE self #{map_index(src.args){|i| ",VALUE a#{i}"}*""})" 
+            @header<<h+";"
+            @defs<< "def self.#{bind[2]}(*args);self.new.parse(:#{bind[2]},*args);end;def self._selector_#{bind[2]};#{bind[1][:grammar]};end"
+            @defmethods<< "rb_define_method(cls_#{bind[1][:grammar]},\"#{src.name}\",#{bind[1][:grammar]}_#{src.name},#{src.varargs ? -2 : src.args.size});"
+						bind[3]=h+"{VALUE vals[#{src.args.size}]; VALUE it #{@withlambda ? "" : (@locls.map{|k,v| ",_#{k}=Qnil"}*"")};VALUE bind2=#{@withlambda ? "bind_new3(#{@bindno})" : "bind_new2(#{@maxbind})"}; #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}*""} VALUE arg0,arg1,arg2,arg3; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);"
+bind[3]+="#{bind[4]}\n" 
+bind[3]+="fail: return it;\n}"
+bind[3]
+
 end
 def AmethystCTranslator_label_lp__dq_a_f49c(bind)
 label("accept")

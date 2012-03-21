@@ -21,7 +21,7 @@ VALUE profile_report_Constant_Propagator(VALUE self) {
 VALUE Constant_Propagator_root(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_it=Qnil,__result=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(1);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -42,7 +42,7 @@ fail:
 VALUE Constant_Propagator_step(VALUE self ,VALUE a0) {
     VALUE vals[1];
     VALUE it ,_el=Qnil,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_autovar_4=Qnil,_autovar_5=Qnil,_autovar_6=Qnil,_autovar_7=Qnil,_autovar_8=Qnil,_autovar_9=Qnil,_expr=Qnil,_autovar_10=Qnil,_autovar_11=Qnil,_val=Qnil,_autovar_12=Qnil,_autovar_13=Qnil,_autovar_14=Qnil,__result=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(1);
     _el=a0;;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;

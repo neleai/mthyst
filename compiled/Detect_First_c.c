@@ -43,7 +43,7 @@ VALUE profile_report_Detect_First(VALUE self) {
 VALUE Detect_First_cant_fail(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_e=Qnil,__result=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(1);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -69,7 +69,7 @@ fail:
 VALUE Detect_First_combine_or(VALUE self ,VALUE a0,VALUE a1,VALUE a2) {
     VALUE vals[3];
     VALUE it ,_cls=Qnil,_autovar=Qnil,_ary=Qnil,_newlist=Qnil,_list=Qnil,_lat=Qnil,__result=Qnil,_n=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(4);
     _cls=a0;;
     _lat=a1;;
     _list=a2;;
@@ -219,7 +219,7 @@ fail:
 VALUE Detect_First_combine_seq(VALUE self ,VALUE a0,VALUE a1) {
     VALUE vals[2];
     VALUE it ,_s=Qnil,_cls=Qnil,_prefix=Qnil,__result=Qnil,_autovar=Qnil,_ary=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_rest=Qnil,_autovar_4=Qnil,_autovar_5=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(4);
     _cls=a0;;
     _prefix=a1;;
     VALUE arg0,arg1,arg2,arg3;
@@ -444,7 +444,7 @@ fail:
 VALUE Detect_First_itrans(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_autovar_4=Qnil,_autovar_5=Qnil,_autovar_6=Qnil,_autovar_7=Qnil,_autovar_8=Qnil,_autovar_9=Qnil,_autovar_10=Qnil,_rules=Qnil,_autovar_11=Qnil,_autovar_12=Qnil,__result=Qnil,_autovar_13=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(2);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -761,7 +761,7 @@ fail:
 VALUE Detect_First_must_empty(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_e=Qnil,__result=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(1);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -787,7 +787,7 @@ fail:
 VALUE Detect_First_object_only(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_autovar_4=Qnil,_autovar_5=Qnil,__result=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(0);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -928,7 +928,7 @@ fail:
 VALUE Detect_First_root(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(0);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -945,7 +945,7 @@ fail:
 VALUE Detect_First_string_only(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_autovar_4=Qnil,_autovar_5=Qnil,__result=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(0);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);

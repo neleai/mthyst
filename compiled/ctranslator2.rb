@@ -66,6 +66,7 @@ class AmethystCTranslator < Amethyst
   def resetlabels
     @labels=Hash.new(0)
     @binds={};@bindno=0
+    @maxbind=0
   end
   def label(s)
     @labels[s]+=1
@@ -98,7 +99,7 @@ def ctranslator2_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def ctranslator2_source_hash
-'7f1952a34f64b68c2d50db4af9a7efa7'
+'75e8b79ee73840ac2c597436b28b4e7a'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version

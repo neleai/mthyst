@@ -23,7 +23,7 @@ VALUE profile_report_Complexity_Dataflow(VALUE self) {
 VALUE Complexity_Dataflow_first(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar=Qnil,_name=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_v=Qnil,__result=Qnil,_autovar_4=Qnil,_autovar_5=Qnil,_autovar_6=Qnil,_autovar_7=Qnil,_autovar_8=Qnil,_autovar_9=Qnil,_autovar_10=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(1);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -514,7 +514,7 @@ fail:
 VALUE Complexity_Dataflow_getvalue(VALUE self ,VALUE a0) {
     VALUE vals[1];
     VALUE it ,_v=Qnil,_autovar=Qnil,_autovar_2=Qnil,__result=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(1);
     _v=a0;;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;

@@ -36,7 +36,7 @@ VALUE profile_report_Remove_Left_Recursion(VALUE self) {
 VALUE Remove_Left_Recursion_first(VALUE self ,VALUE a0) {
     VALUE vals[1];
     VALUE it ,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_follow=Qnil,__result=Qnil,_autovar_4=Qnil,_x=Qnil,_autovar_5=Qnil,_autovar_6=Qnil,_autovar_7=Qnil,_expr=Qnil,_autovar_8=Qnil,_autovar_9=Qnil,_autovar_10=Qnil,_autovar_11=Qnil,_ary=Qnil,_autovar_12=Qnil,_autovar_13=Qnil,_autovar_14=Qnil,_first=Qnil,_autovar_15=Qnil,_autovar_16=Qnil,_rest=Qnil,_autovar_17=Qnil,_autovar_18=Qnil,_autovar_19=Qnil,_autovar_20=Qnil,_autovar_21=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(2);
     _follow=a0;;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
@@ -757,7 +757,7 @@ fail:
 VALUE Remove_Left_Recursion_must_empty(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_e=Qnil,__result=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(1);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -783,7 +783,7 @@ fail:
 VALUE Remove_Left_Recursion_root(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar=Qnil,_autovar_2=Qnil,_a=Qnil,_autovar_3=Qnil,_autovar_4=Qnil,_autovar_5=Qnil,_oldbody=Qnil,_autovar_6=Qnil,_autovar_7=Qnil,_autovar_8=Qnil,_autovar_9=Qnil,_follow=Qnil,__result=Qnil,_autovar_10=Qnil,_x=Qnil,_autovar_11=Qnil,_autovar_12=Qnil,_autovar_13=Qnil,_autovar_14=Qnil,_expr=Qnil,_autovar_15=Qnil,_autovar_16=Qnil,_autovar_17=Qnil,_autovar_18=Qnil,_ary=Qnil,_autovar_19=Qnil,_autovar_20=Qnil,_autovar_21=Qnil,_autovar_22=Qnil,_first=Qnil,_autovar_23=Qnil,_autovar_24=Qnil,_rest=Qnil,_autovar_25=Qnil,_autovar_26=Qnil,_autovar_27=Qnil,_autovar_28=Qnil,_autovar_29=Qnil,_first_2=Qnil,_autovar_30=Qnil,_autovar_31=Qnil,_autovar_32=Qnil,_autovar_33=Qnil,_follow_2=Qnil,_autovar_34=Qnil,__result_2=Qnil,_autovar_35=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(3);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);

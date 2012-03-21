@@ -52,7 +52,7 @@ VALUE profile_report_Left_Factor(VALUE self) {
 VALUE Left_Factor_binds(VALUE self ,VALUE a0,VALUE a1) {
     VALUE vals[2];
     VALUE it ,_s=Qnil,_autovar=Qnil,_autovar_2=Qnil,_a=Qnil,_nexp=Qnil,_autovar_3=Qnil,_autovar_4=Qnil,_autovar_5=Qnil,_f=Qnil,_autovar_6=Qnil,__result=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(1);
     _s=a0;;
     _a=a1;;
     VALUE arg0,arg1,arg2,arg3;
@@ -282,7 +282,7 @@ fail:
 VALUE Left_Factor_factor(VALUE self ,VALUE a0,VALUE a1,VALUE a2) {
     VALUE vals[3];
     VALUE it ,_next=Qnil,_start=Qnil,_prev=Qnil,_cur=Qnil,__result=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(2);
     _prev=a0;;
     _start=a1;;
     _cur=a2;;
@@ -439,7 +439,7 @@ fail:
 VALUE Left_Factor_first(VALUE self ,VALUE a0) {
     VALUE vals[1];
     VALUE it ,_s=Qnil,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_autovar_4=Qnil,_autovar_5=Qnil,_f=Qnil,_autovar_6=Qnil,__result=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(0);
     _s=a0;;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
@@ -657,7 +657,7 @@ fail:
 VALUE Left_Factor_rest(VALUE self ,VALUE a0,VALUE a1) {
     VALUE vals[2];
     VALUE it ,_s=Qnil,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_autovar_4=Qnil,_it=Qnil,_bin=Qnil,_autovar_5=Qnil,_autovar_6=Qnil,__result=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(2);
     _s=a0;;
     _bin=a1;;
     VALUE arg0,arg1,arg2,arg3;
@@ -841,7 +841,7 @@ fail:
 VALUE Left_Factor_root(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(0);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -858,7 +858,7 @@ fail:
 VALUE Left_Factor_traverse(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_nvars=Qnil,_ivars=Qnil,_autovar=Qnil,_autovar_2=Qnil,_it=Qnil,__result=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(2);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -988,7 +988,7 @@ fail:
 VALUE Left_Factor_traverse_item(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result=Qnil,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_ar=Qnil,_it=Qnil,_autovar_4=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(2);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -1505,7 +1505,7 @@ fail:
 VALUE Left_Factor_visit(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar=Qnil,_autovar_2=Qnil,_x=Qnil,_cur=Qnil,_start=Qnil,_prev=Qnil,_next=Qnil,__result=Qnil,_autovar_3=Qnil,_autovar_4=Qnil,__result_2=Qnil;
-    VALUE bind2=bind_new2(16);
+    VALUE bind2=bind_new2(2);
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
