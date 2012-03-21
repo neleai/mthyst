@@ -1,9 +1,4 @@
-def lambdas_in(e)
-  if !$lambdasdf
-    $lambdasdf = Detect_Lambda.new
-  end
-  $lambdasdf.parse(:analyze,[e])
-end
+dataflow_def("lambdas_in","Detect_Lambda","@df")
 
 class Detect_Lambda < Traverser_Clone2
   memoize "analyze"
@@ -11,7 +6,9 @@ class Detect_Lambda < Traverser_Clone2
 end
 
 amethyst Detect_Lambda <  Traverser_Clone2 {
-  analyze = {@@lambdas=[]} traverse_item @@lambdas
+  root = empty
+
+  analyze = {@@lambdas=[]} {e}=>traverse_item @@lambdas
 
   visit = Lambda[ .* {@@lambdas<<self} {@self} ]
 }

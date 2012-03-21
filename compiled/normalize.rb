@@ -1,9 +1,4 @@
-def lambdas_in(e)
-  if !$lambdasdf
-    $lambdasdf = Detect_Lambda.new
-  end
-  $lambdasdf.parse(:analyze,[e])
-end
+dataflow_def("lambdas_in","Detect_Lambda","@df")
 
 class Detect_Lambda < Traverser_Clone2
   memoize "analyze"
@@ -31,7 +26,7 @@ def normalize_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def normalize_source_hash
-'176cb08faa05f90095375c587710b7da'
+'a878c67b1618e2068c02095f0091fb71'
 end
 def testversionnormalize(r)
  raise "invalid version" if r!=normalize_version
