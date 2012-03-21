@@ -19,7 +19,7 @@ VALUE Lam_baz(VALUE self ,VALUE a0) {
     VALUE it ,_autovar=Qnil,_x=Qnil,__result=Qnil;
     VALUE bind2=bind_new2(1);
     _x=a0;;
-    VALUE arg0,arg1,arg2,arg3;
+    VALUE arg0;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     bind_aset(bind2,1,_autovar);
@@ -47,7 +47,7 @@ VALUE Lam_foo(VALUE self ,VALUE a0) {
     VALUE it ,_autovar=Qnil,_x=Qnil,__result=Qnil;
     VALUE bind2=bind_new2(1);
     _x=a0;;
-    VALUE arg0,arg1,arg2,arg3;
+    VALUE arg0;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     bind_aset(bind2,1,_autovar);
@@ -74,7 +74,6 @@ VALUE Lam_lam(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,__result=Qnil;
     VALUE bind2=bind_new2(1);
-    VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     bind_aset(bind2,1,_autovar);

@@ -83,6 +83,9 @@ def AmethystCTranslator__at_locals__6b00(bind)
                bind[2]+="VALUE #{bind[3]}#{desc(k)}=rb_funcall(#{bget(k)},rb_intern(\"dup\"),0);";bind[4]+=bset(k,"#{bind[3]}#{desc(k)}")
                end}
 end
+def AmethystCTranslator__at_maxargs_25d8(bind)
+@maxargs=[@maxargs,bind[1]].max
+end
 def AmethystCTranslator__at_stoplab_2ba4(bind)
 @stoplabel
 end
@@ -307,22 +310,22 @@ end
 def AmethystCTranslator_bind_lb_1_rb__ti__cfcb(bind)
 bind[1]*""
 end
+def AmethystCTranslator_h_eq__dq_VALUE_0d5c(bind)
+h="VALUE #{bind[1][:grammar]}_#{bind[2]}(VALUE self #{map_index(src.args){|i| ",VALUE a#{i}"}*""})" 
+            @header<<h+";"
+            @defs<< "def self.#{bind[2]}(*args);self.new.parse(:#{bind[2]},*args);end;def self._selector_#{bind[2]};#{bind[1][:grammar]};end"
+            @defmethods<< "rb_define_method(cls_#{bind[1][:grammar]},\"#{src.name}\",#{bind[1][:grammar]}_#{src.name},#{src.varargs ? -2 : src.args.size});"
+						bind[3]=h+"{VALUE vals[#{src.args.size}]; VALUE it #{@withlambda ? "" : (@locls.map{|k,v| ",_#{k}=Qnil"}*"")};VALUE bind2=#{@withlambda ? "bind_new3(#{@bindno})" : "bind_new2(#{@maxbind})"}; #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}*""} #{@maxargs.times.map{|i| "VALUE arg#{i};"}*""} cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);"
+bind[3]+="#{bind[4]}\n" 
+bind[3]+="fail: return it;\n}"
+bind[3]
+
+end
 def AmethystCTranslator_h_eq__dq_VALUE_920b(bind)
 h="VALUE #{bind[1]}(VALUE self,VALUE bind2,VALUE args)"
                  @header<<h+";"
                  @defmethods<<"rb_define_method(cls_#{bind[2][:grammar]},\"#{bind[1]}\",#{bind[1]},2);"
                  @lambdas<< h+"{VALUE vals[0];  /*todo unify with rule and get args*/ cstruct *ptr; VALUE it;VALUE arg0,arg1,arg2,arg3;\n#{bind[3]}\nreturn it;\nfail: return failobj; }" 
-end
-def AmethystCTranslator_h_eq__dq_VALUE_976a(bind)
-h="VALUE #{bind[1][:grammar]}_#{bind[2]}(VALUE self #{map_index(src.args){|i| ",VALUE a#{i}"}*""})" 
-            @header<<h+";"
-            @defs<< "def self.#{bind[2]}(*args);self.new.parse(:#{bind[2]},*args);end;def self._selector_#{bind[2]};#{bind[1][:grammar]};end"
-            @defmethods<< "rb_define_method(cls_#{bind[1][:grammar]},\"#{src.name}\",#{bind[1][:grammar]}_#{src.name},#{src.varargs ? -2 : src.args.size});"
-						bind[3]=h+"{VALUE vals[#{src.args.size}]; VALUE it #{@withlambda ? "" : (@locls.map{|k,v| ",_#{k}=Qnil"}*"")};VALUE bind2=#{@withlambda ? "bind_new3(#{@bindno})" : "bind_new2(#{@maxbind})"}; #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}*""} VALUE arg0,arg1,arg2,arg3; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);"
-bind[3]+="#{bind[4]}\n" 
-bind[3]+="fail: return it;\n}"
-bind[3]
-
 end
 def AmethystCTranslator_label_lp__dq_a_f49c(bind)
 label("accept")

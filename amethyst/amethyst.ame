@@ -1,5 +1,7 @@
 amethyst Amethyst < AmethystCore {
 
+  else=.
+
   eof= ~.
 
   empty = -> nil

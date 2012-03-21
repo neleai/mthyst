@@ -66,7 +66,7 @@ class AmethystCTranslator < Amethyst
   def resetlabels
     @labels=Hash.new(0)
     @binds={};@bindno=0
-    @maxbind=0
+    @maxbind=0;@maxargs=0
   end
   def label(s)
     @labels[s]+=1
@@ -134,7 +134,7 @@ amethyst AmethystCTranslator {
             @@header<<h+";"
             @@defs<< "def self.#{name}(*args);self.new.parse(:#{name},*args);end;def self._selector_#{name};#{@>grammar};end"
             @@defmethods<< "rb_define_method(cls_#{@>grammar},\"#{@name}\",#{@>grammar}_#{@name},#{@varargs ? -2 : @args.size});"
-						s=h+"{VALUE vals[#{@args.size}]; VALUE it #{@@withlambda ? "" : (@@locls.map{|k,v| ",_#{k}=Qnil"}*"")};VALUE bind2=#{@@withlambda ? "bind_new3(#{@@bindno})" : "bind_new2(#{@@maxbind})"}; #{map_index(@args){|i| bset(@args[i],"a#{i}")+";"}*""} VALUE arg0,arg1,arg2,arg3; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);"
+						s=h+"{VALUE vals[#{@args.size}]; VALUE it #{@@withlambda ? "" : (@@locls.map{|k,v| ",_#{k}=Qnil"}*"")};VALUE bind2=#{@@withlambda ? "bind_new3(#{@@bindno})" : "bind_new2(#{@@maxbind})"}; #{map_index(@args){|i| bset(@args[i],"a#{i}")+";"}*""} #{@@maxargs.times.map{|i| "VALUE arg#{i};"}*""} cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);"
 s+="#{body}\n" 
 s+="fail: return it;\n}"
 s
@@ -175,7 +175,7 @@ s
 				| Apply[ ["advance_clas"] {"it=ptr->ary[ptr->pos];            ;ptr->pos++;"} ]
 
         | Apply[ ["_seq"] CAct[.:s] {"if (#{ary=s.split("");map_index(ary){|i| "ame_curstr2(ptr)[#{i}]==#{Lattice_Char.new.cchar(ary[i])}" }*"&&" })  ptr->pos+=#{s.size}; else #{failwhen("1")}"}]
-        | Apply[ .:name {0}:ii ( trans:aa {ii+=1} {"#{aa} arg#{ii-1}=it;"})*:args @self:app]
+        | Apply[ .:name {0}:ii ( trans:aa {ii+=1} {"#{aa} arg#{ii-1}=it;"})*:args @self:app]  {@@maxargs=[@@maxargs,ii].max}
                  -> r=" #{args*""} it=#{callrule(name,ii)};"; cant_fail?(app) ? r : "#{r} #{failwhen("it==failobj")}"
 
         | Bind[ trans:e {"#{e} #{@@locals_changed[@name]+=1; bset(@name,"it")};\n" } ]

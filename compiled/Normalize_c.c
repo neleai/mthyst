@@ -72,7 +72,7 @@ VALUE Normalize_act(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_autovar_4=Qnil,_autovar_5=Qnil,_s=Qnil,__result=Qnil;
     VALUE bind2=bind_new2(0);
-    VALUE arg0,arg1,arg2,arg3;
+    VALUE arg0;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     switch(FIX2LONG(rb_hash_aref(switchhash_Normalize_13,rb_obj_class(ame_curobj2(ptr))))) {
@@ -1264,7 +1264,6 @@ VALUE Normalize_apply2(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_autovar_4=Qnil,_autovar_5=Qnil,_autovar_6=Qnil,_autovar_7=Qnil,_x=Qnil,_autovar_8=Qnil,_autovar_9=Qnil,_autovar_10=Qnil,_autovar_11=Qnil,_autovar_12=Qnil,_name=Qnil,_autovar_13=Qnil,_autovar_14=Qnil,_args=Qnil,_autovar_15=Qnil,_autovar_16=Qnil,_autovar_17=Qnil,_autovar_18=Qnil,_autovar_19=Qnil,__result=Qnil;
     VALUE bind2=bind_new2(2);
-    VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     switch(FIX2LONG(rb_hash_aref(switchhash_Normalize_10,rb_obj_class(ame_curobj2(ptr))))) {
@@ -2671,7 +2670,6 @@ VALUE Normalize_bind(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_autovar_4=Qnil,_autovar_5=Qnil,_name=Qnil,_autovar_6=Qnil,_ary=Qnil,_autovar_7=Qnil,_p=Qnil,_a=Qnil,_autovar_8=Qnil,_autovar_9=Qnil,_autovar_10=Qnil,_autovar_11=Qnil,_autovar_12=Qnil,_first=Qnil,_last=Qnil,_autovar_13=Qnil,_autovar_14=Qnil,__result=Qnil;
     VALUE bind2=bind_new2(4);
-    VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     switch(FIX2LONG(rb_hash_aref(switchhash_Normalize_6,rb_obj_class(ame_curobj2(ptr))))) {
@@ -3225,7 +3223,6 @@ VALUE Normalize_cant_fail(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_e=Qnil,__result=Qnil;
     VALUE bind2=bind_new2(1);
-    VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     it=AmethystCore_anything(self );
@@ -3252,7 +3249,6 @@ VALUE Normalize_defer_acts(VALUE self ,VALUE a0) {
     VALUE it ,_ary=Qnil,__result=Qnil;
     VALUE bind2=bind_new2(1);
     _ary=a0;;
-    VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     bind_aset(bind2,1,_ary);
@@ -3267,7 +3263,6 @@ VALUE Normalize_must_empty(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_e=Qnil,__result=Qnil;
     VALUE bind2=bind_new2(1);
-    VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     it=AmethystCore_anything(self );
@@ -3293,7 +3288,7 @@ VALUE Normalize_or(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_ary=Qnil,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_autovar_4=Qnil,_autovar_5=Qnil,_autovar_6=Qnil,_autovar_7=Qnil,_autovar_8=Qnil,_autovar_9=Qnil,_autovar_10=Qnil,_autovar_11=Qnil,_autovar_12=Qnil,_a=Qnil,_x=Qnil,_autovar_13=Qnil,__result=Qnil;
     VALUE bind2=bind_new2(2);
-    VALUE arg0,arg1,arg2,arg3;
+    VALUE arg0;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     switch(FIX2LONG(rb_hash_aref(switchhash_Normalize_1,rb_obj_class(ame_curobj2(ptr))))) {
@@ -3972,7 +3967,7 @@ VALUE Normalize_seq2(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_ary=Qnil,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_autovar_4=Qnil,_autovar_5=Qnil,_autovar_6=Qnil,_autovar_7=Qnil,_autovar_8=Qnil,_autovar_9=Qnil,_autovar_10=Qnil,_a=Qnil,_x=Qnil,_autovar_11=Qnil,_ary_2=Qnil,__result=Qnil,__result_2=Qnil;
     VALUE bind2=bind_new2(2);
-    VALUE arg0,arg1,arg2,arg3;
+    VALUE arg0;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     switch(FIX2LONG(rb_hash_aref(switchhash_Normalize_4,rb_obj_class(ame_curobj2(ptr))))) {
@@ -4486,7 +4481,6 @@ VALUE Normalize_switch(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_ary=Qnil,__result=Qnil;
     VALUE bind2=bind_new2(1);
-    VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     switch(FIX2LONG(rb_hash_aref(switchhash_Normalize_9,rb_obj_class(ame_curobj2(ptr))))) {

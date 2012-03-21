@@ -30,7 +30,6 @@ VALUE Detect_Lambda_analyze(VALUE self ,VALUE a0) {
     VALUE it ,_e=Qnil,_autovar=Qnil,__result=Qnil;
     VALUE bind2=bind_new2(0);
     _e=a0;;
-    VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     it=rb_funcall(self,sy_Detect_Lambda__at_lambdas_1b6c,1,bind2);
@@ -72,7 +71,6 @@ VALUE Detect_Lambda_root(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result=Qnil;
     VALUE bind2=bind_new2(0);
-    VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     it=Qnil;
@@ -85,7 +83,6 @@ VALUE Detect_Lambda_traverse(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_nvars=Qnil,_ivars=Qnil,_autovar=Qnil,_autovar_2=Qnil,_it=Qnil,__result=Qnil;
     VALUE bind2=bind_new2(2);
-    VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     ptr->pos=ptr->len;
@@ -203,7 +200,6 @@ VALUE Detect_Lambda_traverse_item(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result=Qnil,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_ar=Qnil,_it=Qnil,_autovar_4=Qnil;
     VALUE bind2=bind_new2(2);
-    VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Lambda_2,rb_obj_class(ame_curobj2(ptr))))) {
@@ -720,7 +716,6 @@ VALUE Detect_Lambda_visit(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar=Qnil,_autovar_2=Qnil,__result=Qnil;
     VALUE bind2=bind_new2(0);
-    VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Lambda_1,rb_obj_class(ame_curobj2(ptr))))) {

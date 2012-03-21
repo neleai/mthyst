@@ -25,7 +25,7 @@ VALUE Detect_Size_predicate(VALUE self ,VALUE a0) {
     VALUE it ,_el=Qnil,_msize=Qnil,_autovar=Qnil,_s=Qnil,_autovar_2=Qnil,__result=Qnil,_autovar_3=Qnil,_s_2=Qnil,_autovar_4=Qnil,_autovar_5=Qnil,__result_2=Qnil,_autovar_6=Qnil,_ary=Qnil,_autovar_7=Qnil,_autovar_8=Qnil,_el_2=Qnil,_autovar_9=Qnil;
     VALUE bind2=bind_new2(3);
     _s=a0;;
-    VALUE arg0,arg1,arg2,arg3;
+    VALUE arg0;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     it=AmethystCore_anything(self );
@@ -444,7 +444,7 @@ VALUE Detect_Size_predicate2(VALUE self ,VALUE a0) {
     VALUE it ,_autovar=Qnil,__result=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_s=Qnil,_s_2=Qnil,_el=Qnil,_msize=Qnil,_autovar_4=Qnil,_autovar_5=Qnil,__result_2=Qnil,_autovar_6=Qnil,_ary=Qnil,_autovar_7=Qnil,_autovar_8=Qnil,_el_2=Qnil,_autovar_9=Qnil;
     VALUE bind2=bind_new2(3);
     _s=a0;;
-    VALUE arg0,arg1,arg2,arg3;
+    VALUE arg0;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Size_2,rb_obj_class(ame_curobj2(ptr))))) {

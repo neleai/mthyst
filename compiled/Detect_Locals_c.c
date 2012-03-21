@@ -39,7 +39,6 @@ VALUE Detect_Locals_analyze(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result=Qnil;
     VALUE bind2=bind_new2(0);
-    VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     if (ptr->mem==NULL) {
@@ -70,7 +69,6 @@ VALUE Detect_Locals_traverse(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_nvars=Qnil,_ivars=Qnil,_autovar=Qnil,_autovar_2=Qnil,_it=Qnil,__result=Qnil;
     VALUE bind2=bind_new2(2);
-    VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     ptr->pos=ptr->len;
@@ -188,7 +186,6 @@ VALUE Detect_Locals_traverse_item(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result=Qnil,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_ar=Qnil,_it=Qnil,_autovar_4=Qnil;
     VALUE bind2=bind_new2(2);
-    VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Locals_2,rb_obj_class(ame_curobj2(ptr))))) {
@@ -708,7 +705,6 @@ VALUE Detect_Locals_visit(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar=Qnil,_x=Qnil,_autovar_2=Qnil,__result=Qnil,_autovar_3=Qnil,_autovar_4=Qnil;
     VALUE bind2=bind_new2(1);
-    VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Locals_1,rb_obj_class(ame_curobj2(ptr))))) {

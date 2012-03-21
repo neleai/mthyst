@@ -44,7 +44,6 @@ VALUE Detect_First_cant_fail(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_e=Qnil,__result=Qnil;
     VALUE bind2=bind_new2(1);
-    VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     it=AmethystCore_anything(self );
@@ -73,7 +72,9 @@ VALUE Detect_First_combine_or(VALUE self ,VALUE a0,VALUE a1,VALUE a2) {
     _cls=a0;;
     _lat=a1;;
     _list=a2;;
-    VALUE arg0,arg1,arg2,arg3;
+    VALUE arg0;
+    VALUE arg1;
+    VALUE arg2;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     int oldpos1=ptr->pos;
@@ -222,7 +223,8 @@ VALUE Detect_First_combine_seq(VALUE self ,VALUE a0,VALUE a1) {
     VALUE bind2=bind_new2(4);
     _cls=a0;;
     _prefix=a1;;
-    VALUE arg0,arg1,arg2,arg3;
+    VALUE arg0;
+    VALUE arg1;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     int oldpos1=ptr->pos;
@@ -445,7 +447,6 @@ VALUE Detect_First_itrans(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_autovar_4=Qnil,_autovar_5=Qnil,_autovar_6=Qnil,_autovar_7=Qnil,_autovar_8=Qnil,_autovar_9=Qnil,_autovar_10=Qnil,_rules=Qnil,_autovar_11=Qnil,_autovar_12=Qnil,__result=Qnil,_autovar_13=Qnil;
     VALUE bind2=bind_new2(2);
-    VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     bind_aset(bind2,1,_autovar);
@@ -762,7 +763,6 @@ VALUE Detect_First_must_empty(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_e=Qnil,__result=Qnil;
     VALUE bind2=bind_new2(1);
-    VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     it=AmethystCore_anything(self );
@@ -788,7 +788,6 @@ VALUE Detect_First_object_only(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_autovar_4=Qnil,_autovar_5=Qnil,__result=Qnil;
     VALUE bind2=bind_new2(0);
-    VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     switch(FIX2LONG(rb_hash_aref(switchhash_Detect_First_4,rb_obj_class(ame_curobj2(ptr))))) {
@@ -929,7 +928,6 @@ VALUE Detect_First_root(VALUE self ) {
     VALUE vals[0];
     VALUE it ,__result=Qnil;
     VALUE bind2=bind_new2(0);
-    VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     it=Traverser_Clone2_traverse(self );
@@ -946,7 +944,6 @@ VALUE Detect_First_string_only(VALUE self ) {
     VALUE vals[0];
     VALUE it ,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_autovar_4=Qnil,_autovar_5=Qnil,__result=Qnil;
     VALUE bind2=bind_new2(0);
-    VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     switch(FIX2LONG(rb_hash_aref(switchhash_Detect_First_3,rb_obj_class(ame_curobj2(ptr))))) {
