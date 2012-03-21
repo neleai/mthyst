@@ -18,8 +18,8 @@ end
 def AmethystCTranslator__at__contex_d6d5(bind)
 @_context_arguments=bind[1]
 end
-def AmethystCTranslator__at_bindno_eq__e294(bind)
-@bindno=0;@binds={}
+def AmethystCTranslator__at_bindno(bind)
+@bindno,@binds=0,{} if !@withlambda
 end
 def AmethystCTranslator__at_binds_dot_m_06de(bind)
 @binds.map{|k,v| @locals_changed[k]+=1; "bind_aset(bind2,#{v},#{bget(k)});"}*"" + "it=#{rbcall(bind[1],["bind2"])};"+@binds.map{|k,v|"#{bset(k,"bind_aget(bind2,#{v})")};"}*"" +"#{src.pred ? "#{failwhen("it==failobj")};" :"" }"
@@ -100,6 +100,9 @@ def AmethystCTranslator__at_stops_eq_t_c6ab(bind)
 end
 def AmethystCTranslator__at_withlam_51d6(bind)
 @withlambda=true 
+end
+def AmethystCTranslator__at_withlam_9b55(bind)
+@withlambda ? "it=#{rbcall(bind[1],["bind2"])};" : bind[2]
 end
 def AmethystCTranslator__at_withlam_c8fb(bind)
 @withlambda=false
@@ -295,22 +298,22 @@ end
 def AmethystCTranslator_bind_lb_1_rb__ti__cfcb(bind)
 bind[1]*""
 end
-def AmethystCTranslator_h_eq__dq_VALUE_da3a(bind)
+def AmethystCTranslator_h_eq__dq_VALUE_00eb(bind)
 h="VALUE #{bind[1][:grammar]}_#{bind[2]}(VALUE self #{map_index(src.args){|i| ",VALUE a#{i}"}*""})" 
             @header<<h+";"
             @defs<< "def self.#{bind[2]}(*args);self.new.parse(:#{bind[2]},*args);end;def self._selector_#{bind[2]};#{bind[1][:grammar]};end"
             @defmethods<< "rb_define_method(cls_#{bind[1][:grammar]},\"#{src.name}\",#{bind[1][:grammar]}_#{src.name},#{src.varargs ? -2 : src.args.size});"
-						bind[3]=h+"{VALUE vals[#{src.args.size}]; VALUE it #{@withlambda ? ", gbind=bind_new3(#{@bindno2});" : (@locls.map{|k,v| ",_#{k}=Qnil"}*"")};VALUE bind2=bind_new2(16); #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}*""} VALUE arg0,arg1,arg2,arg3; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);"
+						bind[3]=h+"{VALUE vals[#{src.args.size}]; VALUE it #{@withlambda ? "" : (@locls.map{|k,v| ",_#{k}=Qnil"}*"")};VALUE bind2=#{@withlambda ? "bind_new3(#{@bindno})" : "bind_new2(16)"}; #{map_index(src.args){|i| bset(src.args[i],"a#{i}")+";"}*""} VALUE arg0,arg1,arg2,arg3; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);"
 bind[3]+="#{bind[4]}\n" 
 bind[3]+="fail: return it;\n}"
 bind[3]
 
 end
-def AmethystCTranslator_h_eq__dq_VALUE_dbf8(bind)
-h="VALUE #{bind[1]}(VALUE self,VALUE gbind)"
+def AmethystCTranslator_h_eq__dq_VALUE_9bae(bind)
+h="VALUE #{bind[1]}(VALUE self,VALUE bind2)"
                  @header<<h+";"
                  @defmethods<<"rb_define_method(cls_#{bind[2][:grammar]},\"#{bind[1]}\",#{bind[1]},1);"
-                 @lambdas<< h+"{VALUE vals[0]; VALUE bind2=bind_new2(16); /*todo unify with rule and get args*/ cstruct *ptr; VALUE it;VALUE arg0,arg1,arg2,arg3;\n#{bind[3]}\nreturn it;\nfail: return failobj; }" 
+                 @lambdas<< h+"{VALUE vals[0];  /*todo unify with rule and get args*/ cstruct *ptr; VALUE it;VALUE arg0,arg1,arg2,arg3;\n#{bind[3]}\nreturn it;\nfail: return failobj; }" 
 end
 def AmethystCTranslator_label_lp__dq_a_f49c(bind)
 label("accept")
@@ -320,9 +323,6 @@ label("oldpos")
 end
 def AmethystCTranslator_label_lp__dq_r_95b2(bind)
 label("reject")
-end
-def AmethystCTranslator_puts_sp_bin_b744(bind)
-puts bind[1].inspect
 end
 def AmethystCTranslator_r_eq__dq__sp__sh__le_bi_917c(bind)
 r=" #{bind[1]*""} it=#{callrule(bind[2],bind[3])};"; cant_fail?(bind[4]) ? r : "#{r} #{failwhen("it==failobj")}"

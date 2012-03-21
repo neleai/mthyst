@@ -1,0 +1,5 @@
+amethyst Closure{
+  lambda = {puts 32}
+  test = {1;(|lambda|)}:x  apply(x) {puts 42;puts x.inspect}
+}
+Closure.test("")
