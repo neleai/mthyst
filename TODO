@@ -120,3 +120,5 @@ compile to c at background
 origin tracking string
 
 slice analysis
+
+arguments to Lambda( "it" reads first argument)

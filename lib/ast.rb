@@ -3,11 +3,12 @@ def dataflow_def(name,clas,code)
   o=("
      def #{name}(el)
       if !#{dn}
-        #{dn}=#{clas}.new;#{dn}.parse(:root,[])
+        #{dn}=Object.const_get(#{clas.inspect}).new;#{dn}.parse(:root,[])
       end
       #{code.gsub("@df","#{dn}.analyze(el)")}
      end
     ")
+  puts o
   eval(o)
 end
 

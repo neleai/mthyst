@@ -286,34 +286,10 @@ amethyst Cant_Fail_Dataflow < First_Dataflow{
 				| super
 }
 
-class Detect_First< Traverser_Clone2;   def can_empty?(s);    $sizedf.analyze(s).size==0;  end; end
 
 dataflow_def("can_empty?","Minsize_Dataflow","@df.size==0")
 dataflow_def("must_empty?","Maxsize_Dataflow","@df.size==0")
 dataflow_def("cant_fail?","Cant_Fail_Dataflow","@df.value")
-
-def init_dataflows
-    if !$switchdf_char
-      $switchdf_char=Switch_Char_Dataflow.new;     $switchdf_char.parse(:root,[])
-    end
-    if !$switchdf_clas
-      $switchdf_clas=Switch_Clas_Dataflow.new
-      $switchdf_clas.parse(:root,[])
-    end
-
-end
-
-class Detect_Switch_Char < Detect_First
-  def first(s)
-    $switchdf_char.analyze(s)
-  end
-end
-
-class Detect_Switch_Clas < Detect_First
-  def first(s)
-    $switchdf_clas.analyze(s)
-  end
-end
 
 amethyst Detect_First < Traverser_Clone2 {
   itrans =   (Grammar[ {@>name=@name} {$rules={};@rules.each{|r| $rules[r.name]=r}} @rules=>[ Rule[root]*:rules ] {@rules=rules} @self] | .)*
@@ -340,6 +316,27 @@ amethyst Detect_First < Traverser_Clone2 {
                            combine_or(cls,lat,newlist)
                   | eof {cls[{:ary=>list.map{|p,a| [p,Or[*a]]}}]}
 }
+
+
+class Detect_Switch_Char < Detect_First
+  def first(s)
+    if !$switchdf_char
+      $switchdf_char=Switch_Char_Dataflow.new;     $switchdf_char.parse(:root,[])
+    end
+    $switchdf_char.analyze(s)
+  end
+end
+
+class Detect_Switch_Clas < Detect_First
+  def first(s)
+    if !$switchdf_clas
+      $switchdf_clas=Switch_Clas_Dataflow.new      $switchdf_clas.parse(:root,[])
+    end
+    $switchdf_clas.analyze(s)
+  end
+end
+
+
 
 #TODO we can do unicode almost unchanged but we need test againist first byte of character
 

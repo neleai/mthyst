@@ -232,36 +232,33 @@ require File.expand_path(File.dirname(__FILE__))+'/Switch_Clas_Dataflow.rb'
 
 require File.expand_path(File.dirname(__FILE__))+'/Cant_Fail_Dataflow.rb'
 
-class Detect_First< Traverser_Clone2;   def can_empty?(s);    $sizedf.analyze(s).size==0;  end; end
 
 dataflow_def("can_empty?","Minsize_Dataflow","@df.size==0")
 dataflow_def("must_empty?","Maxsize_Dataflow","@df.size==0")
 dataflow_def("cant_fail?","Cant_Fail_Dataflow","@df.value")
 
-def init_dataflows
-    if !$switchdf_char
-      $switchdf_char=Switch_Char_Dataflow.new;     $switchdf_char.parse(:root,[])
-    end
-    if !$switchdf_clas
-      $switchdf_clas=Switch_Clas_Dataflow.new
-      $switchdf_clas.parse(:root,[])
-    end
+require File.expand_path(File.dirname(__FILE__))+'/Detect_First.rb'
 
-end
 
 class Detect_Switch_Char < Detect_First
   def first(s)
+    if !$switchdf_char
+      $switchdf_char=Switch_Char_Dataflow.new;     $switchdf_char.parse(:root,[])
+    end
     $switchdf_char.analyze(s)
   end
 end
 
 class Detect_Switch_Clas < Detect_First
   def first(s)
+    if !$switchdf_clas
+      $switchdf_clas=Switch_Clas_Dataflow.new      $switchdf_clas.parse(:root,[])
+    end
     $switchdf_clas.analyze(s)
   end
 end
 
-require File.expand_path(File.dirname(__FILE__))+'/Detect_First.rb'
+
 
 #TODO we can do unicode almost unchanged but we need test againist first byte of character
 
@@ -283,7 +280,7 @@ def detect_switch_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def detect_switch_source_hash
-'9f734226b0bbae1c8d5383ad8b5fa7a5'
+'71f736ff7d81927301a67cd474b56be7'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
