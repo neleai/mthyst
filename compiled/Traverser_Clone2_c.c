@@ -2,6 +2,7 @@
 #include "memo.c"
 VALUE cls_Traverser_Clone2;
 VALUE AmethystCore_anything(VALUE self );
+VALUE Traverser_Clone2_root(VALUE self );
 VALUE Traverser_Clone2_traverse(VALUE self );
 VALUE Traverser_Clone2_traverse_item(VALUE self );
 VALUE switchhash_Traverser_Clone2_1;
@@ -14,6 +15,19 @@ VALUE profile_report_Traverser_Clone2(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     return Qnil;
+}
+VALUE Traverser_Clone2_root(VALUE self ) {
+    VALUE vals[0];
+    VALUE it ,__result=Qnil;
+    VALUE bind2=bind_new2(16);
+    VALUE arg0,arg1,arg2,arg3;
+    cstruct *ptr;
+    Data_Get_Struct(self,cstruct,ptr);
+    it=Qnil;
+    __result=it;;
+
+fail:
+    return it;
 }
 VALUE Traverser_Clone2_traverse(VALUE self ) {
     VALUE vals[0];
@@ -441,6 +455,7 @@ void Init_Traverser_Clone2_c() {
     sy_Traverser_Clone2_bind_lb_1_rb__sp__6af0=rb_intern("Traverser_Clone2_bind_lb_1_rb__sp__6af0");
     sy_Traverser_Clone2_if_sp_bind_lb__1bed=rb_intern("Traverser_Clone2_if_sp_bind_lb__1bed");
     sy_visit=rb_intern("visit");
+    rb_define_method(cls_Traverser_Clone2,"root",Traverser_Clone2_root,0);
     rb_define_method(cls_Traverser_Clone2,"traverse",Traverser_Clone2_traverse,0);
     rb_define_method(cls_Traverser_Clone2,"traverse_item",Traverser_Clone2_traverse_item,0);
 }

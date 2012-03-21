@@ -330,7 +330,7 @@ end
 class Detect_Switch_Clas < Detect_First
   def first(s)
     if !$switchdf_clas
-      $switchdf_clas=Switch_Clas_Dataflow.new      $switchdf_clas.parse(:root,[])
+      $switchdf_clas=Switch_Clas_Dataflow.new;      $switchdf_clas.parse(:root,[])
     end
     $switchdf_clas.analyze(s)
   end

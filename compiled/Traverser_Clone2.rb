@@ -1,4 +1,5 @@
 class Traverser_Clone2 < Amethyst
+def self.root(*args);self.new.parse(:root,*args);end;def self._selector_root;Traverser_Clone2;end
 def self.traverse(*args);self.new.parse(:traverse,*args);end;def self._selector_traverse;Traverser_Clone2;end
 def self.traverse_item(*args);self.new.parse(:traverse_item,*args);end;def self._selector_traverse_item;Traverser_Clone2;end
 def Traverser_Clone2__lp_src_dot_cla_2024(bind)

@@ -252,5 +252,4 @@ class Amethyst
 	end
 end
 
-init_dataflows
 Compiler.add_foreign_grammar("AmethystCore",["_seq","anything"])

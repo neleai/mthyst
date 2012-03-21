@@ -252,7 +252,7 @@ end
 class Detect_Switch_Clas < Detect_First
   def first(s)
     if !$switchdf_clas
-      $switchdf_clas=Switch_Clas_Dataflow.new      $switchdf_clas.parse(:root,[])
+      $switchdf_clas=Switch_Clas_Dataflow.new;      $switchdf_clas.parse(:root,[])
     end
     $switchdf_clas.analyze(s)
   end
@@ -280,7 +280,7 @@ def detect_switch_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def detect_switch_source_hash
-'71f736ff7d81927301a67cd474b56be7'
+'2ae5e5b6410a71395909d93fa0b8427f'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
