@@ -1,8 +1,8 @@
 dataflow_def("lambdas_in","Detect_Lambda","@df")
 
 class Detect_Lambda < Traverser_Clone2
-  memoize "analyze"
-  use_global_memo
+#  memoize "analyze"
+#  use_global_memo
 end
 
 amethyst Detect_Lambda <  Traverser_Clone2 {
@@ -10,7 +10,7 @@ amethyst Detect_Lambda <  Traverser_Clone2 {
 
   analyze(e) = {@@lambdas=[]} {e}=>traverse_item @@lambdas
 
-  visit = Lambda[ .* {@@lambdas<<self} {@self} ]
+  visit = Lambda[ .* {@@lambdas<<@self} {@self} ]
 }
 
 def locals_in(e)

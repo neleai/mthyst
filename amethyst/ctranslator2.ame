@@ -34,15 +34,22 @@ class AmethystCTranslator < Amethyst
 		@locls[a]=s
 		return a 
   end
-  def bget(s)
-    cm=s[0]
-    s=desc(s)
-		return "_#{s}"
+  def bno(s)
+    return @binds2[s] if @binds2[s]
+    @bindno2+=1
+    @binds2[s]=@bindno2
   end
-  def bset(s,e)
-    cm=s[0]
-    s=desc(s)
-		"_#{s}=#{e};"
+  def bget(s2)
+    s=desc(s2)
+    if @withlambda    ; return "bind_aget(gbind,#{bno(s2)})"
+    else              ; return "_#{s}"
+    end
+  end
+  def bset(s2,e)
+    s=desc(s2)
+		if @withlambda    ; return "bind_aset(gbind,#{bno(s2)},#{e});"
+    else              ; return "_#{s}=#{e};"
+    end
   end
   def rbbget(s)
 		return "bind[#{@binds[s]}]" if @binds[s]
@@ -59,6 +66,7 @@ class AmethystCTranslator < Amethyst
   end
   def resetlabels
     @labels=Hash.new(0)
+    @binds2={};@bindno2=0
   end
   def label(s)
     @labels[s]+=1
@@ -126,7 +134,7 @@ amethyst AmethystCTranslator {
             @@header<<h+";"
             @@defs<< "def self.#{name}(*args);self.new.parse(:#{name},*args);end;def self._selector_#{name};#{@>grammar};end"
             @@defmethods<< "rb_define_method(cls_#{@>grammar},\"#{@name}\",#{@>grammar}_#{@name},#{@varargs ? -2 : @args.size});"
-						s=h+"{VALUE vals[#{@args.size}]; VALUE it #{@@locls.map{|k,v| ",_#{k}=Qnil"}*""};VALUE bind2=bind_new2(16); #{map_index(@args){|i| bset(@args[i],"a#{i}")+";"}*""} VALUE arg0,arg1,arg2,arg3; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);"
+						s=h+"{VALUE vals[#{@args.size}]; VALUE it #{@@withlambda ? ", gbind=bind_new3(#{@@bindno2});" : (@@locls.map{|k,v| ",_#{k}=Qnil"}*"")};VALUE bind2=bind_new2(16); #{map_index(@args){|i| bset(@args[i],"a#{i}")+";"}*""} VALUE arg0,arg1,arg2,arg3; cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);"
 s+="#{body}\n" 
 s+="fail: return it;\n}"
 s
@@ -216,8 +224,8 @@ s
                        {s+"}"}
                      ]
 
-  ruletrans(body) = &{lambdas_in(body)!=[]} {body}=>trans
-                  | {body}=>trans
+  ruletrans(body) ={puts body.inspect} &{lambdas_in(body)!=[]} {@@withlambda=true } {body}=>trans
+                  |                         {@@withlambda=false} {body}=>trans
   
 
              # Could be improved by running dead code elimination to delete unnecessary assignments.
@@ -231,10 +239,10 @@ s
   
  
   addlambda =  {"#{@>grammar}_#{@>rulename}_#{label("lambda")}"}:lambd  rw('fail',`trans:body`)
-               { h="VALUE #{lambd}(VALUE self,VALUE bind)"
+               { h="VALUE #{lambd}(VALUE self,VALUE gbind)"
                  @@header<<h+";"
                  @@defmethods<<"rb_define_method(cls_#{@>grammar},\"#{lambd}\",#{lambd},1);"
-                 @@lambdas<< h+"{VALUE vals[0]; /*todo unify with rule and get args*/ cstruct *ptr; VALUE it;VALUE arg0,arg1,arg2,arg3;\n#{body}\nreturn it;\nfail: return failobj; }" }
+                 @@lambdas<< h+"{VALUE vals[0]; VALUE bind2=bind_new2(16); /*todo unify with rule and get args*/ cstruct *ptr; VALUE it;VALUE arg0,arg1,arg2,arg3;\n#{body}\nreturn it;\nfail: return failobj; }" }
                {"AmethystLambda.new(:#{lambd},self,bind)" }
 
 

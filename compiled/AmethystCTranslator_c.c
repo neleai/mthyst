@@ -68,6 +68,8 @@ static VALUE sy_AmethystCTranslator__at_stoplab_a14e;
 static VALUE sy_AmethystCTranslator__at_stops_e2b4;
 static VALUE sy_AmethystCTranslator__at_stops_eq_n_588d;
 static VALUE sy_AmethystCTranslator__at_stops_eq_t_c6ab;
+static VALUE sy_AmethystCTranslator__at_withlam_51d6;
+static VALUE sy_AmethystCTranslator__at_withlam_c8fb;
 static VALUE sy_AmethystCTranslator__dq_Amethys_2ed8;
 static VALUE sy_AmethystCTranslator__dq_VALUE_sp_c_8bbf;
 static VALUE sy_AmethystCTranslator__dq__at__sh__le_bind_3d2b;
@@ -117,11 +119,12 @@ static VALUE sy_AmethystCTranslator_bind_lb_1_rb__pl__891b;
 static VALUE sy_AmethystCTranslator_bind_lb_1_rb__pl__916b;
 static VALUE sy_AmethystCTranslator_bind_lb_1_rb__pl__9a26;
 static VALUE sy_AmethystCTranslator_bind_lb_1_rb__ti__cfcb;
-static VALUE sy_AmethystCTranslator_h_eq__dq_VALUE_bfaf;
-static VALUE sy_AmethystCTranslator_h_eq__dq_VALUE_f15a;
+static VALUE sy_AmethystCTranslator_h_eq__dq_VALUE_da3a;
+static VALUE sy_AmethystCTranslator_h_eq__dq_VALUE_dbf8;
 static VALUE sy_AmethystCTranslator_label_lp__dq_a_f49c;
 static VALUE sy_AmethystCTranslator_label_lp__dq_o_c187;
 static VALUE sy_AmethystCTranslator_label_lp__dq_r_95b2;
+static VALUE sy_AmethystCTranslator_puts_sp_bin_b744;
 static VALUE sy_AmethystCTranslator_r_eq__dq__sp__sh__le_bi_917c;
 static VALUE sy_AmethystCTranslator_raise_sp__dq_T_0ab1;
 static VALUE sy_AmethystCTranslator_rbbget_lp_s_68a8;
@@ -221,7 +224,7 @@ VALUE AmethystCTranslator_addlambda(VALUE self ) {
     bind_aset(bind2,1,_lambd);
     bind_aset(bind2,2,_autovar_2);
     bind_aset(bind2,3,_body);
-    it=rb_funcall(self,sy_AmethystCTranslator_h_eq__dq_VALUE_f15a,1,bind2);
+    it=rb_funcall(self,sy_AmethystCTranslator_h_eq__dq_VALUE_dbf8,1,bind2);
     _lambd=bind_aget(bind2,1);;
     _autovar_2=bind_aget(bind2,2);;
     _body=bind_aget(bind2,3);;
@@ -1290,12 +1293,16 @@ VALUE AmethystCTranslator_ruletrans(VALUE self ,VALUE a0) {
 alt1_1:
     ;
     bind_aset(bind2,1,_body);
+    it=rb_funcall(self,sy_AmethystCTranslator_puts_sp_bin_b744,1,bind2);
+    _body=bind_aget(bind2,1);;
+    bind_aset(bind2,1,_body);
     it=rb_funcall(self,sy_AmethystCTranslator__lp_lambdas_374a,1,bind2);
     _body=bind_aget(bind2,1);;
     if (it==failobj) {
         it=failobj;
         goto revert1;
     };
+    it=rb_funcall(self,sy_AmethystCTranslator__at_withlam_51d6,1,bind2);
     it=_body;
     _autovar=it;;
     cstruct oldpass1=*ptr;
@@ -1340,6 +1347,7 @@ accept2:
     goto accept1;
 alt1_2:
     ptr->pos=oldpos1;
+    it=rb_funcall(self,sy_AmethystCTranslator__at_withlam_c8fb,1,bind2);
     it=_body;
     _autovar_3=it;;
     cstruct oldpass2=*ptr;
@@ -3666,12 +3674,16 @@ success39:
 alt8_1:
         ;
         bind_aset(bind2,1,_body_2);
+        it=rb_funcall(self,sy_AmethystCTranslator_puts_sp_bin_b744,1,bind2);
+        _body_2=bind_aget(bind2,1);;
+        bind_aset(bind2,1,_body_2);
         it=rb_funcall(self,sy_AmethystCTranslator__lp_lambdas_374a,1,bind2);
         _body_2=bind_aget(bind2,1);;
         if (it==failobj) {
             it=failobj;
             goto revert23;
         };
+        it=rb_funcall(self,sy_AmethystCTranslator__at_withlam_51d6,1,bind2);
         it=_body_2;
         _autovar_77=it;;
         cstruct oldpass42=*ptr;
@@ -3716,6 +3728,7 @@ accept32:
         goto accept31;
 alt8_2:
         ptr->pos=oldpos9;
+        it=rb_funcall(self,sy_AmethystCTranslator__at_withlam_c8fb,1,bind2);
         it=_body_2;
         _autovar_79=it;;
         cstruct oldpass43=*ptr;
@@ -3772,7 +3785,7 @@ accept31:
         bind_aset(bind2,2,_name);
         bind_aset(bind2,3,_s_2);
         bind_aset(bind2,4,_body);
-        it=rb_funcall(self,sy_AmethystCTranslator_h_eq__dq_VALUE_bfaf,1,bind2);
+        it=rb_funcall(self,sy_AmethystCTranslator_h_eq__dq_VALUE_da3a,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
         _name=bind_aget(bind2,2);;
         _s_2=bind_aget(bind2,3);;
@@ -4312,6 +4325,8 @@ void Init_AmethystCTranslator_c() {
     sy_AmethystCTranslator__at_stops_e2b4=rb_intern("AmethystCTranslator__at_stops_e2b4");
     sy_AmethystCTranslator__at_stops_eq_n_588d=rb_intern("AmethystCTranslator__at_stops_eq_n_588d");
     sy_AmethystCTranslator__at_stops_eq_t_c6ab=rb_intern("AmethystCTranslator__at_stops_eq_t_c6ab");
+    sy_AmethystCTranslator__at_withlam_51d6=rb_intern("AmethystCTranslator__at_withlam_51d6");
+    sy_AmethystCTranslator__at_withlam_c8fb=rb_intern("AmethystCTranslator__at_withlam_c8fb");
     sy_AmethystCTranslator__dq_Amethys_2ed8=rb_intern("AmethystCTranslator__dq_Amethys_2ed8");
     sy_AmethystCTranslator__dq_VALUE_sp_c_8bbf=rb_intern("AmethystCTranslator__dq_VALUE_sp_c_8bbf");
     sy_AmethystCTranslator__dq__at__sh__le_bind_3d2b=rb_intern("AmethystCTranslator__dq__at__sh__le_bind_3d2b");
@@ -4361,11 +4376,12 @@ void Init_AmethystCTranslator_c() {
     sy_AmethystCTranslator_bind_lb_1_rb__pl__916b=rb_intern("AmethystCTranslator_bind_lb_1_rb__pl__916b");
     sy_AmethystCTranslator_bind_lb_1_rb__pl__9a26=rb_intern("AmethystCTranslator_bind_lb_1_rb__pl__9a26");
     sy_AmethystCTranslator_bind_lb_1_rb__ti__cfcb=rb_intern("AmethystCTranslator_bind_lb_1_rb__ti__cfcb");
-    sy_AmethystCTranslator_h_eq__dq_VALUE_bfaf=rb_intern("AmethystCTranslator_h_eq__dq_VALUE_bfaf");
-    sy_AmethystCTranslator_h_eq__dq_VALUE_f15a=rb_intern("AmethystCTranslator_h_eq__dq_VALUE_f15a");
+    sy_AmethystCTranslator_h_eq__dq_VALUE_da3a=rb_intern("AmethystCTranslator_h_eq__dq_VALUE_da3a");
+    sy_AmethystCTranslator_h_eq__dq_VALUE_dbf8=rb_intern("AmethystCTranslator_h_eq__dq_VALUE_dbf8");
     sy_AmethystCTranslator_label_lp__dq_a_f49c=rb_intern("AmethystCTranslator_label_lp__dq_a_f49c");
     sy_AmethystCTranslator_label_lp__dq_o_c187=rb_intern("AmethystCTranslator_label_lp__dq_o_c187");
     sy_AmethystCTranslator_label_lp__dq_r_95b2=rb_intern("AmethystCTranslator_label_lp__dq_r_95b2");
+    sy_AmethystCTranslator_puts_sp_bin_b744=rb_intern("AmethystCTranslator_puts_sp_bin_b744");
     sy_AmethystCTranslator_r_eq__dq__sp__sh__le_bi_917c=rb_intern("AmethystCTranslator_r_eq__dq__sp__sh__le_bi_917c");
     sy_AmethystCTranslator_raise_sp__dq_T_0ab1=rb_intern("AmethystCTranslator_raise_sp__dq_T_0ab1");
     sy_AmethystCTranslator_rbbget_lp_s_68a8=rb_intern("AmethystCTranslator_rbbget_lp_s_68a8");

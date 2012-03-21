@@ -14,24 +14,15 @@ VALUE switchhash_Detect_Lambda_4;
 VALUE switchhash_Detect_Lambda_5;
 static VALUE sy_Detect_Lambda__at_lambdas_16e0;
 static VALUE sy_Detect_Lambda__at_lambdas_1b6c;
-static VALUE sy_Detect_Lambda__at_lambdas_b523;
+static VALUE sy_Detect_Lambda__at_lambdas_307c;
 static VALUE sy_Detect_Lambda__lp_src_dot_cla_2024;
 static VALUE sy_Detect_Lambda_bind_lb_1_rb__lt__7b20;
 static VALUE sy_Detect_Lambda_bind_lb_1_rb__sp__6af0;
 static VALUE sy_Detect_Lambda_if_sp_bind_lb__1bed;
 static VALUE sy_Detect_Lambda_src_25d9;
-
-memo_struct *mem_Detect_Lambda=NULL;
-VALUE memo_val_Detect_Lambda;
 VALUE profile_report_Detect_Lambda(VALUE self) {
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    if(ptr->mem) {
-        fprintf(profile_report,"memo Detect_Lambda::analyze  hit: %i miss: %i ticks: %i\n",((memo_struct *)ptr->mem)->hits[117],((memo_struct *)ptr->mem)->miss[117],((memo_struct *)ptr->mem)->ticks[117]);
-        ((memo_struct *)ptr->mem)->hits[117]=0;
-        ((memo_struct *)ptr->mem)->miss[117]=0;
-        ((memo_struct *)ptr->mem)->ticks[117]=0;
-    }
     return Qnil;
 }
 VALUE Detect_Lambda_analyze(VALUE self ,VALUE a0) {
@@ -42,15 +33,6 @@ VALUE Detect_Lambda_analyze(VALUE self ,VALUE a0) {
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    if (ptr->mem==NULL) {
-        ptr->mem=mem_Detect_Lambda;
-    }
-    time_struct time_old=memo_get(ptr->mem,117,ptr->src,ptr->pos);
-    if (time_old.pos!=-1) {
-        ptr->pos=time_old.pos;
-        return time_old.result;
-    }
-    int oldpos=ptr->pos;
     it=rb_funcall(self,sy_Detect_Lambda__at_lambdas_1b6c,1,bind2);
     it=_e;
     _autovar=it;;
@@ -76,15 +58,12 @@ pass1:
     *ptr=oldpass1;
     if (1) {
         it=failobj;
-        goto memo_fail;
+        goto fail;
     }
 success1:
     *ptr=oldpass1;
     it=rb_funcall(self,sy_Detect_Lambda__at_lambdas_16e0,1,bind2);
     __result=it;;
-memo_fail:
-    memo_add(ptr->mem,117,ptr->src,oldpos,it,ptr->pos,time_old);
-    return it;
 
 fail:
     return it;
@@ -755,7 +734,7 @@ VALUE Detect_Lambda_visit(VALUE self ) {
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar);
         ptr->pos=ptr->len;
-        it=rb_funcall(self,sy_Detect_Lambda__at_lambdas_b523,1,bind2);
+        it=rb_funcall(self,sy_Detect_Lambda__at_lambdas_307c,1,bind2);
         it=rb_funcall(self,sy_Detect_Lambda_src_25d9,1,bind2);
         _autovar_2=it;;
         it=Qnil;
@@ -789,9 +768,6 @@ fail:
 void Init_Detect_Lambda_c() {
     cls_Detect_Lambda=rb_define_class("Detect_Lambda",rb_const_get(rb_cObject,rb_intern("Traverser_Clone2")));
     failobj=rb_eval_string("FAIL");
-    mem_Detect_Lambda=memo_init();
-    memo_val_Detect_Lambda=Data_Wrap_Struct(rb_cObject,memo_mark,memo_free,mem_Detect_Lambda);
-    rb_global_variable(&memo_val_Detect_Lambda);
     rb_define_method(cls_Detect_Lambda,"profile_report",profile_report_Detect_Lambda,0);
     switchhash_Detect_Lambda_1=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Lambda\nnext h[k]=1 if k<=Object\n}");
     rb_global_variable(&switchhash_Detect_Lambda_1);;
@@ -805,7 +781,7 @@ void Init_Detect_Lambda_c() {
     rb_global_variable(&switchhash_Detect_Lambda_5);;
     sy_Detect_Lambda__at_lambdas_16e0=rb_intern("Detect_Lambda__at_lambdas_16e0");
     sy_Detect_Lambda__at_lambdas_1b6c=rb_intern("Detect_Lambda__at_lambdas_1b6c");
-    sy_Detect_Lambda__at_lambdas_b523=rb_intern("Detect_Lambda__at_lambdas_b523");
+    sy_Detect_Lambda__at_lambdas_307c=rb_intern("Detect_Lambda__at_lambdas_307c");
     sy_Detect_Lambda__lp_src_dot_cla_2024=rb_intern("Detect_Lambda__lp_src_dot_cla_2024");
     sy_Detect_Lambda_bind_lb_1_rb__lt__7b20=rb_intern("Detect_Lambda_bind_lb_1_rb__lt__7b20");
     sy_Detect_Lambda_bind_lb_1_rb__sp__6af0=rb_intern("Detect_Lambda_bind_lb_1_rb__sp__6af0");

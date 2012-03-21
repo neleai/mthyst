@@ -34,15 +34,22 @@ class AmethystCTranslator < Amethyst
 		@locls[a]=s
 		return a 
   end
-  def bget(s)
-    cm=s[0]
-    s=desc(s)
-		return "_#{s}"
+  def bno(s)
+    return @binds2[s] if @binds2[s]
+    @bindno2+=1
+    @binds2[s]=@bindno2
   end
-  def bset(s,e)
-    cm=s[0]
-    s=desc(s)
-		"_#{s}=#{e};"
+  def bget(s2)
+    s=desc(s2)
+    if @withlambda    ; return "bind_aget(gbind,#{bno(s2)})"
+    else              ; return "_#{s}"
+    end
+  end
+  def bset(s2,e)
+    s=desc(s2)
+		if @withlambda    ; return "bind_aset(gbind,#{bno(s2)},#{e});"
+    else              ; return "_#{s}=#{e};"
+    end
   end
   def rbbget(s)
 		return "bind[#{@binds[s]}]" if @binds[s]
@@ -59,6 +66,7 @@ class AmethystCTranslator < Amethyst
   end
   def resetlabels
     @labels=Hash.new(0)
+    @binds2={};@bindno2=0
   end
   def label(s)
     @labels[s]+=1
@@ -91,7 +99,7 @@ def ctranslator2_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def ctranslator2_source_hash
-'09b91d67c817cc4740e88d6c6794fc23'
+'e217fcd69c53b57d9c759535158fbc30'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version

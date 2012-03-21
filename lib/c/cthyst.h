@@ -75,7 +75,7 @@ static inline VALUE bind_new(VALUE clas,VALUE size){
   return o;
 }
 extern VALUE bindcls;
-//static inline VALUE bind_new2(long size){return bind_new(bindcls,LONG2FIX(size));}
+static inline VALUE bind_new3(long size){return bind_new(bindcls,LONG2FIX(size));}
 #define bind_new2(siz) Qnil; bind_struct _bind; _bind.size=siz; _bind.ary=alloca(siz*sizeof(VALUE));bind2=Data_Wrap_Struct(bindcls,0,0,&_bind);
 static inline VALUE bind_aset(VALUE self,long no,VALUE val){
   bind_struct* ptr;

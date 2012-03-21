@@ -10,8 +10,8 @@ end
 def Detect_Lambda__at_lambdas_1b6c(bind)
 @lambdas=[]
 end
-def Detect_Lambda__at_lambdas_b523(bind)
-@lambdas<<self
+def Detect_Lambda__at_lambdas_307c(bind)
+@lambdas<<src
 end
 def Detect_Lambda__lp_src_dot_cla_2024(bind)
 (src.class.attributes).map{|v| src.instance_variable_get("@"+v.to_s) }
