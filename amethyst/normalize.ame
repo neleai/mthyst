@@ -8,7 +8,7 @@ end
 amethyst Detect_Lambda <  Traverser_Clone2 {
   root = empty
 
-  analyze = {@@lambdas=[]} {e}=>traverse_item @@lambdas
+  analyze(e) = {@@lambdas=[]} {e}=>traverse_item @@lambdas
 
   visit = Lambda[ .* {@@lambdas<<self} {@self} ]
 }

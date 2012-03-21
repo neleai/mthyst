@@ -91,7 +91,7 @@ def ctranslator2_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def ctranslator2_source_hash
-'aedfd5c85a05a38678628e2085bcb629'
+'09b91d67c817cc4740e88d6c6794fc23'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version

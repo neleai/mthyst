@@ -6,6 +6,7 @@ def self.persistent(*args);self.new.parse(:persistent,*args);end;def self._selec
 def self.rbcode(*args);self.new.parse(:rbcode,*args);end;def self._selector_rbcode;AmethystCTranslator;end
 def self.rbtrans(*args);self.new.parse(:rbtrans,*args);end;def self._selector_rbtrans;AmethystCTranslator;end
 def self.rbtrans2(*args);self.new.parse(:rbtrans2,*args);end;def self._selector_rbtrans2;AmethystCTranslator;end
+def self.ruletrans(*args);self.new.parse(:ruletrans,*args);end;def self._selector_ruletrans;AmethystCTranslator;end
 def self.rw(*args);self.new.parse(:rw,*args);end;def self._selector_rw;AmethystCTranslator;end
 def self.trans(*args);self.new.parse(:trans,*args);end;def self._selector_trans;AmethystCTranslator;end
 def AmethystCTranslator__at__contex_5f56(bind)
@@ -190,6 +191,9 @@ def AmethystCTranslator__lp_bind_lb_1_rb__d1fd(bind)
 end
 def AmethystCTranslator__lp_bind_lb_1_rb__dbc9(bind)
 (bind[1]=="_append(") || FAIL
+end
+def AmethystCTranslator__lp_lambdas_374a(bind)
+(lambdas_in(bind[1])!=[]) || FAIL
 end
 def AmethystCTranslator_addcallb_2cf7(bind)
 addcallback2(bind[1])

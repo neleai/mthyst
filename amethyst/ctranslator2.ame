@@ -121,7 +121,7 @@ amethyst AmethystCTranslator {
                    "
               [s,init,rbcode] } ]
 
-         |  Rule[@name:name {@>rulename=name; Local.resetnumbering;resetlabels;@@locls={}} {(CurrentParser[:memoize] && ((CurrentParser[:memoize]==:all)||CurrentParser[:memoize].include?(name))) ? Memo[@body] : @body}=>trans:body  
+         |  Rule[@name:name {@>rulename=name; Local.resetnumbering;resetlabels;@@locls={}} {(CurrentParser[:memoize] && ((CurrentParser[:memoize]==:all)||CurrentParser[:memoize].include?(name))) ? Memo[@body] : @body}:body ruletrans(body):body  
           { h="VALUE #{@>grammar}_#{name}(VALUE self #{map_index(@args){|i| ",VALUE a#{i}"}*""})" 
             @@header<<h+";"
             @@defs<< "def self.#{name}(*args);self.new.parse(:#{name},*args);end;def self._selector_#{name};#{@>grammar};end"
@@ -215,6 +215,10 @@ s
                        {@@init  <<"#{sh}=rb_eval_string(\"Hash.new{|h,k|#{init}}\");#{gc_mark_var(sh)};"}
                        {s+"}"}
                      ]
+
+  ruletrans(body) = &{lambdas_in(body)!=[]} {body}=>trans
+                  | {body}=>trans
+  
 
              # Could be improved by running dead code elimination to delete unnecessary assignments.
   persistent = label("revert"):rev label("accept"):acc {@@locals_changed.clone}:oldl  

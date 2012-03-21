@@ -1,3 +1,10 @@
+def lambdas_in(el)
+      if !$dflambdas_in
+        $dflambdas_in=Object.const_get("Detect_Lambda").new;$dflambdas_in.parse(:root,[])
+      end
+      $dflambdas_in.analyze(el)
+end
+
 def dataflow_def(name,clas,code)
   dn="$df#{name.gsub("?","_qst")}"
   o=("

@@ -2,7 +2,7 @@
 #include "memo.c"
 VALUE cls_Detect_Lambda;
 VALUE AmethystCore_anything(VALUE self );
-VALUE Detect_Lambda_analyze(VALUE self );
+VALUE Detect_Lambda_analyze(VALUE self ,VALUE a0);
 VALUE Detect_Lambda_root(VALUE self );
 VALUE Detect_Lambda_traverse(VALUE self );
 VALUE Detect_Lambda_traverse_item(VALUE self );
@@ -18,7 +18,6 @@ static VALUE sy_Detect_Lambda__at_lambdas_b523;
 static VALUE sy_Detect_Lambda__lp_src_dot_cla_2024;
 static VALUE sy_Detect_Lambda_bind_lb_1_rb__lt__7b20;
 static VALUE sy_Detect_Lambda_bind_lb_1_rb__sp__6af0;
-static VALUE sy_Detect_Lambda_e_e167;
 static VALUE sy_Detect_Lambda_if_sp_bind_lb__1bed;
 static VALUE sy_Detect_Lambda_src_25d9;
 
@@ -35,10 +34,11 @@ VALUE profile_report_Detect_Lambda(VALUE self) {
     }
     return Qnil;
 }
-VALUE Detect_Lambda_analyze(VALUE self ) {
-    VALUE vals[0];
-    VALUE it ,_autovar=Qnil,__result=Qnil;
+VALUE Detect_Lambda_analyze(VALUE self ,VALUE a0) {
+    VALUE vals[1];
+    VALUE it ,_e=Qnil,_autovar=Qnil,__result=Qnil;
     VALUE bind2=bind_new2(16);
+    _e=a0;;
     VALUE arg0,arg1,arg2,arg3;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
@@ -52,7 +52,7 @@ VALUE Detect_Lambda_analyze(VALUE self ) {
     }
     int oldpos=ptr->pos;
     it=rb_funcall(self,sy_Detect_Lambda__at_lambdas_1b6c,1,bind2);
-    it=rb_funcall(self,sy_Detect_Lambda_e_e167,1,bind2);
+    it=_e;
     _autovar=it;;
     cstruct oldpass1=*ptr;
     ptr->pos=ptr->len=0;
@@ -809,10 +809,9 @@ void Init_Detect_Lambda_c() {
     sy_Detect_Lambda__lp_src_dot_cla_2024=rb_intern("Detect_Lambda__lp_src_dot_cla_2024");
     sy_Detect_Lambda_bind_lb_1_rb__lt__7b20=rb_intern("Detect_Lambda_bind_lb_1_rb__lt__7b20");
     sy_Detect_Lambda_bind_lb_1_rb__sp__6af0=rb_intern("Detect_Lambda_bind_lb_1_rb__sp__6af0");
-    sy_Detect_Lambda_e_e167=rb_intern("Detect_Lambda_e_e167");
     sy_Detect_Lambda_if_sp_bind_lb__1bed=rb_intern("Detect_Lambda_if_sp_bind_lb__1bed");
     sy_Detect_Lambda_src_25d9=rb_intern("Detect_Lambda_src_25d9");
-    rb_define_method(cls_Detect_Lambda,"analyze",Detect_Lambda_analyze,0);
+    rb_define_method(cls_Detect_Lambda,"analyze",Detect_Lambda_analyze,1);
     rb_define_method(cls_Detect_Lambda,"root",Detect_Lambda_root,0);
     rb_define_method(cls_Detect_Lambda,"traverse",Detect_Lambda_traverse,0);
     rb_define_method(cls_Detect_Lambda,"traverse_item",Detect_Lambda_traverse_item,0);

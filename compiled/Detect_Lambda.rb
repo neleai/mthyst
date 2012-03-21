@@ -22,9 +22,6 @@ end
 def Detect_Lambda_bind_lb_1_rb__sp__6af0(bind)
 bind[1] << bind[2]
 end
-def Detect_Lambda_e_e167(bind)
-e
-end
 def Detect_Lambda_if_sp_bind_lb__1bed(bind)
 if bind[1]==bind[2]
 						  src
