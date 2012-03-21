@@ -238,9 +238,9 @@ s
   
  
   addlambda =  {"#{@>grammar}_#{@>rulename}_#{label("lambda")}"}:lambd  rw('fail',`trans:body`)
-               { h="VALUE #{lambd}(VALUE self,VALUE bind2)"
+               { h="VALUE #{lambd}(VALUE self,VALUE bind2,VALUE args)"
                  @@header<<h+";"
-                 @@defmethods<<"rb_define_method(cls_#{@>grammar},\"#{lambd}\",#{lambd},1);"
+                 @@defmethods<<"rb_define_method(cls_#{@>grammar},\"#{lambd}\",#{lambd},2);"
                  @@lambdas<< h+"{VALUE vals[0];  /*todo unify with rule and get args*/ cstruct *ptr; VALUE it;VALUE arg0,arg1,arg2,arg3;\n#{body}\nreturn it;\nfail: return failobj; }" }
                {"AmethystLambda.new(:#{lambd},self,bind)" }
 

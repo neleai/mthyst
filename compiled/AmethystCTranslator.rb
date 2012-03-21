@@ -309,10 +309,10 @@ bind[3]+="fail: return it;\n}"
 bind[3]
 
 end
-def AmethystCTranslator_h_eq__dq_VALUE_9bae(bind)
-h="VALUE #{bind[1]}(VALUE self,VALUE bind2)"
+def AmethystCTranslator_h_eq__dq_VALUE_920b(bind)
+h="VALUE #{bind[1]}(VALUE self,VALUE bind2,VALUE args)"
                  @header<<h+";"
-                 @defmethods<<"rb_define_method(cls_#{bind[2][:grammar]},\"#{bind[1]}\",#{bind[1]},1);"
+                 @defmethods<<"rb_define_method(cls_#{bind[2][:grammar]},\"#{bind[1]}\",#{bind[1]},2);"
                  @lambdas<< h+"{VALUE vals[0];  /*todo unify with rule and get args*/ cstruct *ptr; VALUE it;VALUE arg0,arg1,arg2,arg3;\n#{bind[3]}\nreturn it;\nfail: return failobj; }" 
 end
 def AmethystCTranslator_label_lp__dq_a_f49c(bind)

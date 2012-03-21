@@ -17,14 +17,13 @@ class AmethystLambda
 	def initialize(call,parser,bind)
 		@call,@parser,@bind=call,parser,bind
 	end
-	def call
-		@parser.send(@call,@bind)
+	def call(*args)
+		@parser.send(@call,@bind,args)
 	end
 end
 
 class AmethystCore
 	def apply(rule,*args)
-    puts rule.inspect
 		if rule.is_a?(String) || rule.is_a?(Symbol)
 			send(rule.to_s,*args)
 		elsif rule.is_a?(Amethyst)
