@@ -216,6 +216,7 @@ s
                        {s+"}"}
                      ]
 
+             # Could be improved by running dead code elimination to delete unnecessary assignments.
   persistent = label("revert"):rev label("accept"):acc {@@locals_changed.clone}:oldl  
                rw(rev)(|trans|):t 
                {""}:pre {""}:ap {@@locals_changed.each{|k,v| if v> oldl[k]

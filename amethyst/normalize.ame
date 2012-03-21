@@ -1,3 +1,21 @@
+def lambdas_in(e)
+  if !$lambdasdf
+    $lambdasdf = Detect_Lambda.new
+  end
+  $lambdasdf.parse(:analyze,[e])
+end
+
+class Detect_Lambda < Traverser_Clone2
+  memoize "analyze"
+  use_global_memo
+end
+
+amethyst Detect_Lambda <  Traverser_Clone2 {
+  analyze = {@@lambdas=[]} traverse_item @@lambdas
+
+  visit = Lambda[ .* {@@lambdas<<self} {@self} ]
+}
+
 def locals_in(e)
   if !$localsdf
     $localsdf = Detect_Locals.new

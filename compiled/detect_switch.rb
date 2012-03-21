@@ -234,16 +234,11 @@ require File.expand_path(File.dirname(__FILE__))+'/Cant_Fail_Dataflow.rb'
 
 class Detect_First< Traverser_Clone2;   def can_empty?(s);    $sizedf.analyze(s).size==0;  end; end
 
-def can_empty?(el);    $sizedf.analyze(el).size==0;  end
-def must_empty?(s);  $maxsize_df.analyze(s).size==0; end
-def cant_fail?(s);   $cant_fail_df.analyze(s).value;  end
+dataflow_def("can_empty?","Minsize_Dataflow","@df.size==0")
+dataflow_def("must_empty?","Maxsize_Dataflow","@df.size==0")
+dataflow_def("cant_fail?","Cant_Fail_Dataflow","@df.value")
 
 def init_dataflows
-    if !$sizedf
-      $sizedf    =Minsize_Dataflow.new;      $sizedf.parse(:root,[])
-      $maxsize_df=Maxsize_Dataflow.new;      $maxsize_df.parse(:root,[])
-      $cant_fail_df =Cant_Fail_Dataflow.new;       $cant_fail_df.parse(:root,[])
-    end
     if !$switchdf_char
       $switchdf_char=Switch_Char_Dataflow.new;     $switchdf_char.parse(:root,[])
     end
@@ -288,7 +283,7 @@ def detect_switch_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def detect_switch_source_hash
-'c0b8783385895174685f68274d2dd62a'
+'9f734226b0bbae1c8d5383ad8b5fa7a5'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version

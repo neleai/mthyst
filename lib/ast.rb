@@ -1,3 +1,15 @@
+def dataflow_def(name,clas,code)
+  dn="$df#{name.gsub("?","_qst")}"
+  o=("
+     def #{name}(el)
+      if !#{dn}
+        #{dn}=#{clas}.new;#{dn}.parse(:root,[])
+      end
+      #{code.gsub("@df","#{dn}.analyze(el)")}
+     end
+    ")
+  eval(o)
+end
 
 makeclasses(AmethystAST,
     [:Grammar,:name,:parent,:rules],

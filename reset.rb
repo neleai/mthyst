@@ -2,9 +2,9 @@
 require './settings'
 Dir["compiled/*.rb"].each{|f|  fn = File.basename(f)[0..-4]
   puts fn
+  `git checkout compiled/#{fn}.rb`
   if Dir["compiled/#{fn}_c.c"]!=[]
     `git checkout compiled/#{fn}_c.c`
-    `git checkout compiled/#{fn}.rb`
     cc_compile_file(fn) 
   end
 }
