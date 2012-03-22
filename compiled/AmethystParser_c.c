@@ -36,6 +36,8 @@ VALUE Amethyst_number(VALUE self );
 VALUE Amethyst_spaces(VALUE self );
 VALUE switchhash_AmethystParser_1;
 VALUE switchhash_AmethystParser_2;
+static VALUE c_Append_AST;
+static VALUE c_Concat_AST;
 static VALUE s_Amethyst_fe41;
 static VALUE s__at__518e;
 static VALUE s__bs__bs__7f81;
@@ -91,8 +93,7 @@ static VALUE sy_AmethystParser_Seq_AST_lb__1817;
 static VALUE sy_AmethystParser_Seq_AST_lb__66a7;
 static VALUE sy_AmethystParser_Strin_lb__lb__dq__b20e;
 static VALUE sy_AmethystParser_Strin_lb__lb__qu__88c8;
-static VALUE sy_AmethystParser__at_appends_36ee;
-static VALUE sy_AmethystParser__at_appends_b984;
+static VALUE sy_AmethystParser__at_appends_6209;
 static VALUE sy_AmethystParser__at_ary_eq__lb__rb_;
 static VALUE sy_AmethystParser__at_ary_ff69;
 static VALUE sy_AmethystParser__at_ary_lt__lt_Ar_59e3;
@@ -4681,8 +4682,8 @@ fail:
 }
 VALUE AmethystParser_postfixed(VALUE self ) {
     VALUE vals[0];
-    VALUE it ,_from=Qnil,_one=Qnil,_e=Qnil,_name=Qnil,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_autovar_4=Qnil,__result=Qnil;
-    VALUE bind2=bind_new2(2);
+    VALUE it ,_from=Qnil,_one=Qnil,_e=Qnil,_name=Qnil,_concat=Qnil,_autovar=Qnil,_autovar_2=Qnil,__result=Qnil;
+    VALUE bind2=bind_new2(3);
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
     it=AmethystParser_term(self );
@@ -4808,14 +4809,21 @@ alt1_1:
                     ;
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
-                    int oldpos2=ptr->pos;
-                    int cut2=0;
-alt2_1:
-                    ;
-                    if (ame_curstr2(ptr)[0]=='*')  ptr->pos+=1;
-                    else if (1) {
-                        it=failobj;
-                        goto revert2;
+                    switch((unsigned char)*ame_curstr2(ptr)) {
+                    case UC(0) ... ')':
+                        ;
+                    case '+' ... UC(255):
+                        ;
+                        it=c_Append_AST;
+                        _concat=it;;
+                        break;
+                    case '*' ... '*':
+                        ;
+                        it=rb_str_new(ptr->str+ptr->pos,1);
+                        ptr->pos++;
+                        it=c_Concat_AST;
+                        _concat=it;;
+                        break;
                     }
                     switch((unsigned char)*ame_curstr2(ptr)) {
                     case UC(0) ... '@':
@@ -4839,47 +4847,47 @@ alt2_1:
                                 ;
                             case '~' ... UC(255):
                                 ;
-                                int oldpos3=ptr->pos;
-                                int cut3=0;
-alt3_1:
+                                int oldpos2=ptr->pos;
+                                int cut2=0;
+alt2_1:
                                 ;
                                 it=AmethystParser_rubyarg(self );
                                 if (it==failobj) {
                                     it=failobj;
-                                    goto revert3;
+                                    goto revert2;
                                 }
                                 _autovar_2=it;;
                                 it=AmethystCore_append(self,_autovar,_autovar_2);
                                 ;
-                                goto accept6;
-revert3:
+                                goto accept4;
+revert2:
                                 ;
-                                goto alt3_2;
-accept6:
+                                goto alt2_2;
+accept4:
                                 ;
 
                                 ;
-                                goto accept5;
-alt3_2:
-                                ptr->pos=oldpos3;
+                                goto accept3;
+alt2_2:
+                                ptr->pos=oldpos2;
                                 stop2=1;
                                 ;
-                                goto accept7;
-revert4:
+                                goto accept5;
+revert3:
                                 ;
-                                goto alt3_3;
-accept7:
+                                goto alt2_3;
+accept5:
                                 ;
 
                                 ;
-                                goto accept5;
-alt3_3:
-                                ptr->pos=oldpos3;
+                                goto accept3;
+alt2_3:
+                                ptr->pos=oldpos2;
                                 if (1) {
                                     it=failobj;
-                                    goto revert2;
+                                    goto revert1;
                                 };
-accept5:
+accept3:
                                 ;
                                 break;
                             case ')' ... ')':
@@ -4901,29 +4909,29 @@ accept5:
                         ;
                     case 'a' ... 'z':
                         ;
-                        int oldpos4=ptr->pos;
-                        int cut4=0;
-alt4_1:
+                        int oldpos3=ptr->pos;
+                        int cut3=0;
+alt3_1:
                         ;
                         it=AmethystParser_name(self );
                         if (it==failobj) {
                             it=failobj;
-                            goto revert5;
+                            goto revert4;
                         }
                         _name=it;;
 
                         ;
-                        goto accept9;
-revert5:
+                        goto accept7;
+revert4:
                         ;
-                        goto alt4_2;
-accept9:
+                        goto alt3_2;
+accept7:
                         ;
 
                         ;
-                        goto accept8;
-alt4_2:
-                        ptr->pos=oldpos4;
+                        goto accept6;
+alt3_2:
+                        ptr->pos=oldpos3;
                         it=rb_ary_new3(0);
                         _autovar=it;;
                         int stop3=0;
@@ -4937,47 +4945,47 @@ alt4_2:
                                 ;
                             case '~' ... UC(255):
                                 ;
-                                int oldpos5=ptr->pos;
-                                int cut5=0;
-alt5_1:
+                                int oldpos4=ptr->pos;
+                                int cut4=0;
+alt4_1:
                                 ;
                                 it=AmethystParser_rubyarg(self );
                                 if (it==failobj) {
                                     it=failobj;
-                                    goto revert7;
+                                    goto revert6;
                                 }
                                 _autovar_2=it;;
                                 it=AmethystCore_append(self,_autovar,_autovar_2);
                                 ;
-                                goto accept12;
-revert7:
+                                goto accept10;
+revert6:
                                 ;
-                                goto alt5_2;
-accept12:
+                                goto alt4_2;
+accept10:
                                 ;
 
                                 ;
-                                goto accept11;
-alt5_2:
-                                ptr->pos=oldpos5;
+                                goto accept9;
+alt4_2:
+                                ptr->pos=oldpos4;
                                 stop3=1;
                                 ;
-                                goto accept13;
-revert8:
+                                goto accept11;
+revert7:
                                 ;
-                                goto alt5_3;
-accept13:
+                                goto alt4_3;
+accept11:
                                 ;
 
                                 ;
-                                goto accept11;
-alt5_3:
-                                ptr->pos=oldpos5;
+                                goto accept9;
+alt4_3:
+                                ptr->pos=oldpos4;
                                 if (1) {
                                     it=failobj;
-                                    goto revert6;
+                                    goto revert5;
                                 };
-accept11:
+accept9:
                                 ;
                                 break;
                             case ')' ... ')':
@@ -4994,256 +5002,22 @@ accept11:
                         _name=it;;
 
                         ;
-                        goto accept10;
-revert6:
-                        ;
-                        goto alt4_3;
-accept10:
-                        ;
-
-                        ;
                         goto accept8;
-alt4_3:
-                        ptr->pos=oldpos4;
-                        if (1) {
-                            it=failobj;
-                            goto revert2;
-                        };
+revert5:
+                        ;
+                        goto alt3_3;
 accept8:
                         ;
-                        break;
-                    }
-                    switch((unsigned char)*ame_curstr2(ptr)) {
-                    case UC(0) ... UC(92):
+
                         ;
-                    case '^' ... UC(255):
-                        ;
+                        goto accept6;
+alt3_3:
+                        ptr->pos=oldpos3;
                         if (1) {
                             it=failobj;
-                            goto revert2;
-                        }
-                        break;
-                    case ']' ... ']':
-                        ;
-                        it=rb_str_new(ptr->str+ptr->pos,1);
-                        ptr->pos++;
-                        break;
-                    }
-                    bind_aset(bind2,1,_name);
-                    it=rb_funcall(self,sy_AmethystParser_bind_lb_1_rb__eq__a882,1,bind2);
-                    _name=bind_aget(bind2,1);;
-                    bind_aset(bind2,1,_name);
-                    bind_aset(bind2,2,_from);
-                    it=rb_funcall(self,sy_AmethystParser__at_appends_36ee,1,bind2);
-                    _name=bind_aget(bind2,1);;
-                    _from=bind_aget(bind2,2);;
-                    _from=it;;
-
-                    ;
-                    goto accept4;
-revert2:
-                    ;
-                    goto alt2_2;
-accept4:
-                    ;
-
-                    ;
-                    goto accept3;
-alt2_2:
-                    ptr->pos=oldpos2;
-                    switch((unsigned char)*ame_curstr2(ptr)) {
-                    case UC(0) ... '@':
-                        ;
-                    case '[' ... '^':
-                        ;
-                    case '`' ... '`':
-                        ;
-                    case '{' ... UC(255):
-                        ;
-                        it=rb_ary_new3(0);
-                        _autovar_3=it;;
-                        int stop4=0;
-                        while(!stop4) {
-                            switch((unsigned char)*ame_curstr2(ptr)) {
-                            case UC(0) ... '(':
-                                ;
-                            case '*' ... UC(92):
-                                ;
-                            case '^' ... '|':
-                                ;
-                            case '~' ... UC(255):
-                                ;
-                                int oldpos6=ptr->pos;
-                                int cut6=0;
-alt6_1:
-                                ;
-                                it=AmethystParser_rubyarg(self );
-                                if (it==failobj) {
-                                    it=failobj;
-                                    goto revert10;
-                                }
-                                _autovar_4=it;;
-                                it=AmethystCore_append(self,_autovar_3,_autovar_4);
-                                ;
-                                goto accept16;
-revert10:
-                                ;
-                                goto alt6_2;
-accept16:
-                                ;
-
-                                ;
-                                goto accept15;
-alt6_2:
-                                ptr->pos=oldpos6;
-                                stop4=1;
-                                ;
-                                goto accept17;
-revert11:
-                                ;
-                                goto alt6_3;
-accept17:
-                                ;
-
-                                ;
-                                goto accept15;
-alt6_3:
-                                ptr->pos=oldpos6;
-                                if (1) {
-                                    it=failobj;
-                                    goto revert9;
-                                };
-accept15:
-                                ;
-                                break;
-                            case ')' ... ')':
-                                ;
-                            case ']' ... ']':
-                                ;
-                            case '}' ... '}':
-                                ;
-                                stop4=1;
-                                break;
-                            }
-                        }
-                        it=_autovar_3;
-                        _name=it;;
-                        break;
-                    case 'A' ... 'Z':
-                        ;
-                    case '_' ... '_':
-                        ;
-                    case 'a' ... 'z':
-                        ;
-                        int oldpos7=ptr->pos;
-                        int cut7=0;
-alt7_1:
-                        ;
-                        it=AmethystParser_name(self );
-                        if (it==failobj) {
-                            it=failobj;
-                            goto revert12;
-                        }
-                        _name=it;;
-
-                        ;
-                        goto accept19;
-revert12:
-                        ;
-                        goto alt7_2;
-accept19:
-                        ;
-
-                        ;
-                        goto accept18;
-alt7_2:
-                        ptr->pos=oldpos7;
-                        it=rb_ary_new3(0);
-                        _autovar_3=it;;
-                        int stop5=0;
-                        while(!stop5) {
-                            switch((unsigned char)*ame_curstr2(ptr)) {
-                            case UC(0) ... '(':
-                                ;
-                            case '*' ... UC(92):
-                                ;
-                            case '^' ... '|':
-                                ;
-                            case '~' ... UC(255):
-                                ;
-                                int oldpos8=ptr->pos;
-                                int cut8=0;
-alt8_1:
-                                ;
-                                it=AmethystParser_rubyarg(self );
-                                if (it==failobj) {
-                                    it=failobj;
-                                    goto revert14;
-                                }
-                                _autovar_4=it;;
-                                it=AmethystCore_append(self,_autovar_3,_autovar_4);
-                                ;
-                                goto accept22;
-revert14:
-                                ;
-                                goto alt8_2;
-accept22:
-                                ;
-
-                                ;
-                                goto accept21;
-alt8_2:
-                                ptr->pos=oldpos8;
-                                stop5=1;
-                                ;
-                                goto accept23;
-revert15:
-                                ;
-                                goto alt8_3;
-accept23:
-                                ;
-
-                                ;
-                                goto accept21;
-alt8_3:
-                                ptr->pos=oldpos8;
-                                if (1) {
-                                    it=failobj;
-                                    goto revert13;
-                                };
-accept21:
-                                ;
-                                break;
-                            case ')' ... ')':
-                                ;
-                            case ']' ... ']':
-                                ;
-                            case '}' ... '}':
-                                ;
-                                stop5=1;
-                                break;
-                            }
-                        }
-                        it=_autovar_3;
-                        _name=it;;
-
-                        ;
-                        goto accept20;
-revert13:
-                        ;
-                        goto alt7_3;
-accept20:
-                        ;
-
-                        ;
-                        goto accept18;
-alt7_3:
-                        ptr->pos=oldpos7;
-                        if (1) {
-                            it=failobj;
-                            goto revert9;
+                            goto revert1;
                         };
-accept18:
+accept6:
                         ;
                         break;
                     }
@@ -5254,7 +5028,7 @@ accept18:
                         ;
                         if (1) {
                             it=failobj;
-                            goto revert9;
+                            goto revert1;
                         }
                         break;
                     case ']' ... ']':
@@ -5267,30 +5041,13 @@ accept18:
                     it=rb_funcall(self,sy_AmethystParser_bind_lb_1_rb__eq__a882,1,bind2);
                     _name=bind_aget(bind2,1);;
                     bind_aset(bind2,1,_name);
-                    bind_aset(bind2,2,_from);
-                    it=rb_funcall(self,sy_AmethystParser__at_appends_b984,1,bind2);
+                    bind_aset(bind2,2,_concat);
+                    bind_aset(bind2,3,_from);
+                    it=rb_funcall(self,sy_AmethystParser__at_appends_6209,1,bind2);
                     _name=bind_aget(bind2,1);;
-                    _from=bind_aget(bind2,2);;
+                    _concat=bind_aget(bind2,2);;
+                    _from=bind_aget(bind2,3);;
                     _from=it;;
-
-                    ;
-                    goto accept14;
-revert9:
-                    ;
-                    goto alt2_3;
-accept14:
-                    ;
-
-                    ;
-                    goto accept3;
-alt2_3:
-                    ptr->pos=oldpos2;
-                    if (1) {
-                        it=failobj;
-                        goto revert1;
-                    };
-accept3:
-                    ;
                     break;
                 }
                 break;
@@ -5320,14 +5077,14 @@ accept3:
                 ;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
-                int oldpos9=ptr->pos;
-                int cut9=0;
-alt9_1:
+                int oldpos5=ptr->pos;
+                int cut5=0;
+alt5_1:
                 ;
                 if (ame_curstr2(ptr)[0]=='=')  ptr->pos+=1;
                 else if (1) {
                     it=failobj;
-                    goto revert16;
+                    goto revert8;
                 }
                 switch((unsigned char)*ame_curstr2(ptr)) {
                 case UC(0) ... 'z':
@@ -5336,7 +5093,7 @@ alt9_1:
                     ;
                     if (1) {
                         it=failobj;
-                        goto revert16;
+                        goto revert8;
                     }
                     break;
                 case '{' ... '{':
@@ -5344,7 +5101,7 @@ alt9_1:
                     it=AmethystParser_inline_host_expr(self );
                     if (it==failobj) {
                         it=failobj;
-                        goto revert16;
+                        goto revert8;
                     }
                     _e=it;;
                     break;
@@ -5357,39 +5114,39 @@ alt9_1:
                 _from=it;;
 
                 ;
-                goto accept25;
-revert16:
+                goto accept13;
+revert8:
                 ;
-                goto alt9_2;
-accept25:
+                goto alt5_2;
+accept13:
                 ;
 
                 ;
-                goto accept24;
-alt9_2:
-                ptr->pos=oldpos9;
+                goto accept12;
+alt5_2:
+                ptr->pos=oldpos5;
                 bind_aset(bind2,1,_from);
                 it=rb_funcall(self,sy_AmethystParser_Or_AST_lb_b_0657,1,bind2);
                 _from=bind_aget(bind2,1);;
                 _from=it;;
 
                 ;
-                goto accept26;
-revert17:
+                goto accept14;
+revert9:
                 ;
-                goto alt9_3;
-accept26:
+                goto alt5_3;
+accept14:
                 ;
 
                 ;
-                goto accept24;
-alt9_3:
-                ptr->pos=oldpos9;
+                goto accept12;
+alt5_3:
+                ptr->pos=oldpos5;
                 if (1) {
                     it=failobj;
                     goto revert1;
                 };
-accept24:
+accept12:
                 ;
                 break;
             case '[' ... '[':
@@ -5437,11 +5194,11 @@ alt1_2:
             ptr->pos=oldpos1;
             stop1=1;
             ;
-            goto accept27;
-revert18:
+            goto accept15;
+revert10:
             ;
             goto alt1_3;
-accept27:
+accept15:
             ;
 
             ;
@@ -5461,58 +5218,58 @@ accept1:
             ;
         case ' ' ... ' ':
             ;
-            int oldpos10=ptr->pos;
-            int cut10=0;
-alt10_1:
+            int oldpos6=ptr->pos;
+            int cut6=0;
+alt6_1:
             ;
-            int oldpos11=ptr->pos;
-            int cut11=0;
-alt11_1:
+            int oldpos7=ptr->pos;
+            int cut7=0;
+alt7_1:
             ;
             it=Amethyst__(self );
             if (it==failobj) {
                 it=failobj;
-                goto revert20;
+                goto revert12;
             }
-            cut11=1;
+            cut7=1;
             if (1) {
                 it=failobj;
-                goto revert20;
+                goto revert12;
             }
             ;
-            goto accept31;
-revert20:
+            goto accept19;
+revert12:
             ;
-            goto alt11_2;
-accept31:
+            goto alt7_2;
+accept19:
             ;
 
             ;
-            goto accept30;
-alt11_2:
-            ptr->pos=oldpos11;
-            if (cut11) {
+            goto accept18;
+alt7_2:
+            ptr->pos=oldpos7;
+            if (cut7) {
                 it=failobj;
-                goto revert19;
+                goto revert11;
             }
             it=Qnil;
             ;
-            goto accept32;
-revert21:
+            goto accept20;
+revert13:
             ;
-            goto alt11_3;
-accept32:
+            goto alt7_3;
+accept20:
             ;
 
             ;
-            goto accept30;
-alt11_3:
-            ptr->pos=oldpos11;
+            goto accept18;
+alt7_3:
+            ptr->pos=oldpos7;
             if (1) {
                 it=failobj;
-                goto revert19;
+                goto revert11;
             };
-accept30:
+accept18:
             ;
             switch((unsigned char)*ame_curstr2(ptr)) {
             case UC(0) ... ')':
@@ -5529,7 +5286,7 @@ accept30:
                 ;
                 if (1) {
                     it=failobj;
-                    goto revert19;
+                    goto revert11;
                 }
                 break;
             case '*' ... '+':
@@ -5559,7 +5316,7 @@ accept30:
                     ;
                     if (1) {
                         it=failobj;
-                        goto revert19;
+                        goto revert11;
                     }
                     break;
                 case '{' ... '{':
@@ -5567,7 +5324,7 @@ accept30:
                     it=AmethystParser_inline_host_expr(self );
                     if (it==failobj) {
                         it=failobj;
-                        goto revert19;
+                        goto revert11;
                     }
                     _e=it;;
                     bind_aset(bind2,1,_from);
@@ -5582,7 +5339,7 @@ accept30:
                     it=AmethystParser_key(self );
                     if (it==failobj) {
                         it=failobj;
-                        goto revert19;
+                        goto revert11;
                     }
                     _name=it;;
                     bind_aset(bind2,1,_name);
@@ -5601,7 +5358,7 @@ accept30:
                     it=AmethystParser_name(self );
                     if (it==failobj) {
                         it=failobj;
-                        goto revert19;
+                        goto revert11;
                     }
                     _name=it;;
                     bind_aset(bind2,1,_name);
@@ -5615,14 +5372,21 @@ accept30:
                     ;
                     it=rb_str_new(ptr->str+ptr->pos,1);
                     ptr->pos++;
-                    int oldpos12=ptr->pos;
-                    int cut12=0;
-alt12_1:
-                    ;
-                    if (ame_curstr2(ptr)[0]=='*')  ptr->pos+=1;
-                    else if (1) {
-                        it=failobj;
-                        goto revert22;
+                    switch((unsigned char)*ame_curstr2(ptr)) {
+                    case UC(0) ... ')':
+                        ;
+                    case '+' ... UC(255):
+                        ;
+                        it=c_Append_AST;
+                        _concat=it;;
+                        break;
+                    case '*' ... '*':
+                        ;
+                        it=rb_str_new(ptr->str+ptr->pos,1);
+                        ptr->pos++;
+                        it=c_Concat_AST;
+                        _concat=it;;
+                        break;
                     }
                     switch((unsigned char)*ame_curstr2(ptr)) {
                     case UC(0) ... '@':
@@ -5635,8 +5399,8 @@ alt12_1:
                         ;
                         it=rb_ary_new3(0);
                         _autovar=it;;
-                        int stop6=0;
-                        while(!stop6) {
+                        int stop4=0;
+                        while(!stop4) {
                             switch((unsigned char)*ame_curstr2(ptr)) {
                             case UC(0) ... '(':
                                 ;
@@ -5646,47 +5410,47 @@ alt12_1:
                                 ;
                             case '~' ... UC(255):
                                 ;
-                                int oldpos13=ptr->pos;
-                                int cut13=0;
-alt13_1:
+                                int oldpos8=ptr->pos;
+                                int cut8=0;
+alt8_1:
                                 ;
                                 it=AmethystParser_rubyarg(self );
                                 if (it==failobj) {
                                     it=failobj;
-                                    goto revert23;
+                                    goto revert14;
                                 }
                                 _autovar_2=it;;
                                 it=AmethystCore_append(self,_autovar,_autovar_2);
                                 ;
-                                goto accept36;
-revert23:
+                                goto accept22;
+revert14:
                                 ;
-                                goto alt13_2;
-accept36:
-                                ;
-
-                                ;
-                                goto accept35;
-alt13_2:
-                                ptr->pos=oldpos13;
-                                stop6=1;
-                                ;
-                                goto accept37;
-revert24:
-                                ;
-                                goto alt13_3;
-accept37:
+                                goto alt8_2;
+accept22:
                                 ;
 
                                 ;
-                                goto accept35;
-alt13_3:
-                                ptr->pos=oldpos13;
+                                goto accept21;
+alt8_2:
+                                ptr->pos=oldpos8;
+                                stop4=1;
+                                ;
+                                goto accept23;
+revert15:
+                                ;
+                                goto alt8_3;
+accept23:
+                                ;
+
+                                ;
+                                goto accept21;
+alt8_3:
+                                ptr->pos=oldpos8;
                                 if (1) {
                                     it=failobj;
-                                    goto revert22;
+                                    goto revert11;
                                 };
-accept35:
+accept21:
                                 ;
                                 break;
                             case ')' ... ')':
@@ -5695,7 +5459,7 @@ accept35:
                                 ;
                             case '}' ... '}':
                                 ;
-                                stop6=1;
+                                stop4=1;
                                 break;
                             }
                         }
@@ -5708,33 +5472,33 @@ accept35:
                         ;
                     case 'a' ... 'z':
                         ;
-                        int oldpos14=ptr->pos;
-                        int cut14=0;
-alt14_1:
+                        int oldpos9=ptr->pos;
+                        int cut9=0;
+alt9_1:
                         ;
                         it=AmethystParser_name(self );
                         if (it==failobj) {
                             it=failobj;
-                            goto revert25;
+                            goto revert16;
                         }
                         _name=it;;
 
                         ;
-                        goto accept39;
-revert25:
+                        goto accept25;
+revert16:
                         ;
-                        goto alt14_2;
-accept39:
+                        goto alt9_2;
+accept25:
                         ;
 
                         ;
-                        goto accept38;
-alt14_2:
-                        ptr->pos=oldpos14;
+                        goto accept24;
+alt9_2:
+                        ptr->pos=oldpos9;
                         it=rb_ary_new3(0);
                         _autovar=it;;
-                        int stop7=0;
-                        while(!stop7) {
+                        int stop5=0;
+                        while(!stop5) {
                             switch((unsigned char)*ame_curstr2(ptr)) {
                             case UC(0) ... '(':
                                 ;
@@ -5744,47 +5508,47 @@ alt14_2:
                                 ;
                             case '~' ... UC(255):
                                 ;
-                                int oldpos15=ptr->pos;
-                                int cut15=0;
-alt15_1:
+                                int oldpos10=ptr->pos;
+                                int cut10=0;
+alt10_1:
                                 ;
                                 it=AmethystParser_rubyarg(self );
                                 if (it==failobj) {
                                     it=failobj;
-                                    goto revert27;
+                                    goto revert18;
                                 }
                                 _autovar_2=it;;
                                 it=AmethystCore_append(self,_autovar,_autovar_2);
                                 ;
-                                goto accept42;
-revert27:
+                                goto accept28;
+revert18:
                                 ;
-                                goto alt15_2;
-accept42:
-                                ;
-
-                                ;
-                                goto accept41;
-alt15_2:
-                                ptr->pos=oldpos15;
-                                stop7=1;
-                                ;
-                                goto accept43;
-revert28:
-                                ;
-                                goto alt15_3;
-accept43:
+                                goto alt10_2;
+accept28:
                                 ;
 
                                 ;
-                                goto accept41;
-alt15_3:
-                                ptr->pos=oldpos15;
+                                goto accept27;
+alt10_2:
+                                ptr->pos=oldpos10;
+                                stop5=1;
+                                ;
+                                goto accept29;
+revert19:
+                                ;
+                                goto alt10_3;
+accept29:
+                                ;
+
+                                ;
+                                goto accept27;
+alt10_3:
+                                ptr->pos=oldpos10;
                                 if (1) {
                                     it=failobj;
-                                    goto revert26;
+                                    goto revert17;
                                 };
-accept41:
+accept27:
                                 ;
                                 break;
                             case ')' ... ')':
@@ -5793,7 +5557,7 @@ accept41:
                                 ;
                             case '}' ... '}':
                                 ;
-                                stop7=1;
+                                stop5=1;
                                 break;
                             }
                         }
@@ -5801,22 +5565,22 @@ accept41:
                         _name=it;;
 
                         ;
-                        goto accept40;
-revert26:
+                        goto accept26;
+revert17:
                         ;
-                        goto alt14_3;
-accept40:
+                        goto alt9_3;
+accept26:
                         ;
 
                         ;
-                        goto accept38;
-alt14_3:
-                        ptr->pos=oldpos14;
+                        goto accept24;
+alt9_3:
+                        ptr->pos=oldpos9;
                         if (1) {
                             it=failobj;
-                            goto revert22;
+                            goto revert11;
                         };
-accept38:
+accept24:
                         ;
                         break;
                     }
@@ -5827,7 +5591,7 @@ accept38:
                         ;
                         if (1) {
                             it=failobj;
-                            goto revert22;
+                            goto revert11;
                         }
                         break;
                     case ']' ... ']':
@@ -5840,264 +5604,13 @@ accept38:
                     it=rb_funcall(self,sy_AmethystParser_bind_lb_1_rb__eq__a882,1,bind2);
                     _name=bind_aget(bind2,1);;
                     bind_aset(bind2,1,_name);
-                    bind_aset(bind2,2,_from);
-                    it=rb_funcall(self,sy_AmethystParser__at_appends_36ee,1,bind2);
+                    bind_aset(bind2,2,_concat);
+                    bind_aset(bind2,3,_from);
+                    it=rb_funcall(self,sy_AmethystParser__at_appends_6209,1,bind2);
                     _name=bind_aget(bind2,1);;
-                    _from=bind_aget(bind2,2);;
+                    _concat=bind_aget(bind2,2);;
+                    _from=bind_aget(bind2,3);;
                     _from=it;;
-
-                    ;
-                    goto accept34;
-revert22:
-                    ;
-                    goto alt12_2;
-accept34:
-                    ;
-
-                    ;
-                    goto accept33;
-alt12_2:
-                    ptr->pos=oldpos12;
-                    switch((unsigned char)*ame_curstr2(ptr)) {
-                    case UC(0) ... '@':
-                        ;
-                    case '[' ... '^':
-                        ;
-                    case '`' ... '`':
-                        ;
-                    case '{' ... UC(255):
-                        ;
-                        it=rb_ary_new3(0);
-                        _autovar_3=it;;
-                        int stop8=0;
-                        while(!stop8) {
-                            switch((unsigned char)*ame_curstr2(ptr)) {
-                            case UC(0) ... '(':
-                                ;
-                            case '*' ... UC(92):
-                                ;
-                            case '^' ... '|':
-                                ;
-                            case '~' ... UC(255):
-                                ;
-                                int oldpos16=ptr->pos;
-                                int cut16=0;
-alt16_1:
-                                ;
-                                it=AmethystParser_rubyarg(self );
-                                if (it==failobj) {
-                                    it=failobj;
-                                    goto revert30;
-                                }
-                                _autovar_4=it;;
-                                it=AmethystCore_append(self,_autovar_3,_autovar_4);
-                                ;
-                                goto accept46;
-revert30:
-                                ;
-                                goto alt16_2;
-accept46:
-                                ;
-
-                                ;
-                                goto accept45;
-alt16_2:
-                                ptr->pos=oldpos16;
-                                stop8=1;
-                                ;
-                                goto accept47;
-revert31:
-                                ;
-                                goto alt16_3;
-accept47:
-                                ;
-
-                                ;
-                                goto accept45;
-alt16_3:
-                                ptr->pos=oldpos16;
-                                if (1) {
-                                    it=failobj;
-                                    goto revert29;
-                                };
-accept45:
-                                ;
-                                break;
-                            case ')' ... ')':
-                                ;
-                            case ']' ... ']':
-                                ;
-                            case '}' ... '}':
-                                ;
-                                stop8=1;
-                                break;
-                            }
-                        }
-                        it=_autovar_3;
-                        _name=it;;
-                        break;
-                    case 'A' ... 'Z':
-                        ;
-                    case '_' ... '_':
-                        ;
-                    case 'a' ... 'z':
-                        ;
-                        int oldpos17=ptr->pos;
-                        int cut17=0;
-alt17_1:
-                        ;
-                        it=AmethystParser_name(self );
-                        if (it==failobj) {
-                            it=failobj;
-                            goto revert32;
-                        }
-                        _name=it;;
-
-                        ;
-                        goto accept49;
-revert32:
-                        ;
-                        goto alt17_2;
-accept49:
-                        ;
-
-                        ;
-                        goto accept48;
-alt17_2:
-                        ptr->pos=oldpos17;
-                        it=rb_ary_new3(0);
-                        _autovar_3=it;;
-                        int stop9=0;
-                        while(!stop9) {
-                            switch((unsigned char)*ame_curstr2(ptr)) {
-                            case UC(0) ... '(':
-                                ;
-                            case '*' ... UC(92):
-                                ;
-                            case '^' ... '|':
-                                ;
-                            case '~' ... UC(255):
-                                ;
-                                int oldpos18=ptr->pos;
-                                int cut18=0;
-alt18_1:
-                                ;
-                                it=AmethystParser_rubyarg(self );
-                                if (it==failobj) {
-                                    it=failobj;
-                                    goto revert34;
-                                }
-                                _autovar_4=it;;
-                                it=AmethystCore_append(self,_autovar_3,_autovar_4);
-                                ;
-                                goto accept52;
-revert34:
-                                ;
-                                goto alt18_2;
-accept52:
-                                ;
-
-                                ;
-                                goto accept51;
-alt18_2:
-                                ptr->pos=oldpos18;
-                                stop9=1;
-                                ;
-                                goto accept53;
-revert35:
-                                ;
-                                goto alt18_3;
-accept53:
-                                ;
-
-                                ;
-                                goto accept51;
-alt18_3:
-                                ptr->pos=oldpos18;
-                                if (1) {
-                                    it=failobj;
-                                    goto revert33;
-                                };
-accept51:
-                                ;
-                                break;
-                            case ')' ... ')':
-                                ;
-                            case ']' ... ']':
-                                ;
-                            case '}' ... '}':
-                                ;
-                                stop9=1;
-                                break;
-                            }
-                        }
-                        it=_autovar_3;
-                        _name=it;;
-
-                        ;
-                        goto accept50;
-revert33:
-                        ;
-                        goto alt17_3;
-accept50:
-                        ;
-
-                        ;
-                        goto accept48;
-alt17_3:
-                        ptr->pos=oldpos17;
-                        if (1) {
-                            it=failobj;
-                            goto revert29;
-                        };
-accept48:
-                        ;
-                        break;
-                    }
-                    switch((unsigned char)*ame_curstr2(ptr)) {
-                    case UC(0) ... UC(92):
-                        ;
-                    case '^' ... UC(255):
-                        ;
-                        if (1) {
-                            it=failobj;
-                            goto revert29;
-                        }
-                        break;
-                    case ']' ... ']':
-                        ;
-                        it=rb_str_new(ptr->str+ptr->pos,1);
-                        ptr->pos++;
-                        break;
-                    }
-                    bind_aset(bind2,1,_name);
-                    it=rb_funcall(self,sy_AmethystParser_bind_lb_1_rb__eq__a882,1,bind2);
-                    _name=bind_aget(bind2,1);;
-                    bind_aset(bind2,1,_name);
-                    bind_aset(bind2,2,_from);
-                    it=rb_funcall(self,sy_AmethystParser__at_appends_b984,1,bind2);
-                    _name=bind_aget(bind2,1);;
-                    _from=bind_aget(bind2,2);;
-                    _from=it;;
-
-                    ;
-                    goto accept44;
-revert29:
-                    ;
-                    goto alt12_3;
-accept44:
-                    ;
-
-                    ;
-                    goto accept33;
-alt12_3:
-                    ptr->pos=oldpos12;
-                    if (1) {
-                        it=failobj;
-                        goto revert19;
-                    };
-accept33:
-                    ;
                     break;
                 }
                 break;
@@ -6108,12 +5621,12 @@ accept33:
                 if (ame_curstr2(ptr)[0]=='>')  ptr->pos+=1;
                 else if (1) {
                     it=failobj;
-                    goto revert19;
+                    goto revert11;
                 }
                 it=AmethystParser_term(self );
                 if (it==failobj) {
                     it=failobj;
-                    goto revert19;
+                    goto revert11;
                 }
                 _e=it;;
                 bind_aset(bind2,1,_from);
@@ -6127,14 +5640,14 @@ accept33:
                 ;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
-                int oldpos19=ptr->pos;
-                int cut19=0;
-alt19_1:
+                int oldpos11=ptr->pos;
+                int cut11=0;
+alt11_1:
                 ;
                 if (ame_curstr2(ptr)[0]=='=')  ptr->pos+=1;
                 else if (1) {
                     it=failobj;
-                    goto revert36;
+                    goto revert20;
                 }
                 switch((unsigned char)*ame_curstr2(ptr)) {
                 case UC(0) ... 'z':
@@ -6143,7 +5656,7 @@ alt19_1:
                     ;
                     if (1) {
                         it=failobj;
-                        goto revert36;
+                        goto revert20;
                     }
                     break;
                 case '{' ... '{':
@@ -6151,7 +5664,7 @@ alt19_1:
                     it=AmethystParser_inline_host_expr(self );
                     if (it==failobj) {
                         it=failobj;
-                        goto revert36;
+                        goto revert20;
                     }
                     _e=it;;
                     break;
@@ -6164,39 +5677,39 @@ alt19_1:
                 _from=it;;
 
                 ;
-                goto accept55;
-revert36:
+                goto accept31;
+revert20:
                 ;
-                goto alt19_2;
-accept55:
+                goto alt11_2;
+accept31:
                 ;
 
                 ;
-                goto accept54;
-alt19_2:
-                ptr->pos=oldpos19;
+                goto accept30;
+alt11_2:
+                ptr->pos=oldpos11;
                 bind_aset(bind2,1,_from);
                 it=rb_funcall(self,sy_AmethystParser_Or_AST_lb_b_0657,1,bind2);
                 _from=bind_aget(bind2,1);;
                 _from=it;;
 
                 ;
-                goto accept56;
-revert37:
+                goto accept32;
+revert21:
                 ;
-                goto alt19_3;
-accept56:
+                goto alt11_3;
+accept32:
                 ;
 
                 ;
-                goto accept54;
-alt19_3:
-                ptr->pos=oldpos19;
+                goto accept30;
+alt11_3:
+                ptr->pos=oldpos11;
                 if (1) {
                     it=failobj;
-                    goto revert19;
+                    goto revert11;
                 };
-accept54:
+accept30:
                 ;
                 break;
             case '[' ... '[':
@@ -6213,7 +5726,7 @@ accept54:
                     ;
                     if (1) {
                         it=failobj;
-                        goto revert19;
+                        goto revert11;
                     }
                     break;
                 case ']' ... ']':
@@ -6231,35 +5744,35 @@ accept54:
                 break;
             }
             ;
-            goto accept29;
-revert19:
+            goto accept17;
+revert11:
             ;
-            goto alt10_2;
-accept29:
+            goto alt6_2;
+accept17:
             ;
 
             ;
-            goto accept28;
-alt10_2:
-            ptr->pos=oldpos10;
+            goto accept16;
+alt6_2:
+            ptr->pos=oldpos6;
             stop1=1;
             ;
-            goto accept57;
-revert38:
+            goto accept33;
+revert22:
             ;
-            goto alt10_3;
-accept57:
+            goto alt6_3;
+accept33:
             ;
 
             ;
-            goto accept28;
-alt10_3:
-            ptr->pos=oldpos10;
+            goto accept16;
+alt6_3:
+            ptr->pos=oldpos6;
             if (1) {
                 it=failobj;
                 goto fail;
             };
-accept28:
+accept16:
             ;
             break;
         }
@@ -12211,6 +11724,10 @@ fail:
 void Init_AmethystParser_c() {
     cls_AmethystParser=rb_define_class("AmethystParser",rb_const_get(rb_cObject,rb_intern("Amethyst")));
     failobj=rb_eval_string("FAIL");
+    c_Append_AST=rb_const_get(rb_cObject, rb_intern("Append_AST"));
+    rb_global_variable(&c_Append_AST);
+    c_Concat_AST=rb_const_get(rb_cObject, rb_intern("Concat_AST"));
+    rb_global_variable(&c_Concat_AST);
     rb_define_method(cls_AmethystParser,"profile_report",profile_report_AmethystParser,0);
     s_Amethyst_fe41=rb_str_new2("Amethyst");
     rb_global_variable(&s_Amethyst_fe41);
@@ -12290,8 +11807,7 @@ void Init_AmethystParser_c() {
     sy_AmethystParser_Seq_AST_lb__66a7=rb_intern("AmethystParser_Seq_AST_lb__66a7");
     sy_AmethystParser_Strin_lb__lb__dq__b20e=rb_intern("AmethystParser_Strin_lb__lb__dq__b20e");
     sy_AmethystParser_Strin_lb__lb__qu__88c8=rb_intern("AmethystParser_Strin_lb__lb__qu__88c8");
-    sy_AmethystParser__at_appends_36ee=rb_intern("AmethystParser__at_appends_36ee");
-    sy_AmethystParser__at_appends_b984=rb_intern("AmethystParser__at_appends_b984");
+    sy_AmethystParser__at_appends_6209=rb_intern("AmethystParser__at_appends_6209");
     sy_AmethystParser__at_ary_eq__lb__rb_=rb_intern("AmethystParser__at_ary_eq__lb__rb_");
     sy_AmethystParser__at_ary_ff69=rb_intern("AmethystParser__at_ary_ff69");
     sy_AmethystParser__at_ary_lt__lt_Ar_59e3=rb_intern("AmethystParser__at_ary_lt__lt_Ar_59e3");

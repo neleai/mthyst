@@ -62,8 +62,8 @@ amethyst AmethystParser {
                             | <+*>:one -> Many[from,one=="+"]
                             | '?=' inline_host_expr:e -> Or_AST[from,e]
                             | '?'      -> Or_AST[from,Apply["empty"]]
-                            | ':' '[*'(name | rubyarg*):name ']' {name=local(name)} ->  @@appends<< name if name.is_a?(Local); Concat_AST[name,from]
-                            | ':' '['(name | rubyarg*):name  ']' {name=local(name)} ->  @@appends<< name if name.is_a?(Local); Append_AST[name,from]
+                            | ':' '[' ('*' {Concat_AST} | {Append_AST}):concat (name | rubyarg*):name  ']' 
+                                       {name=local(name)} ->  @@appends<< name if name.is_a?(Local); concat[name,from]
                             | ':'  (  (key | name):name   ->          Bind[local(name),from]
                                    |  inline_host_expr:e  -> Seq_AST[ Bind[local("it"),from] , Act[e] ]
                                    )
