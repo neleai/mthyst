@@ -44,10 +44,6 @@ def AmethystParser_Apply_lb__dq_m_2ec1(bind)
 Apply["member",bind[1].to_s]
 
 end
-def AmethystParser_Apply_lb__dq_r_269c(bind)
-Apply["regch","/["+bind[1]+"]/"]
-
-end
 def AmethystParser_Apply_lb__dq_s_9322(bind)
 Apply["seq"   ,quote(bind[1])]
 
@@ -123,6 +119,10 @@ Or_AST[bind[1],Apply["empty"]]
 end
 def AmethystParser_Or_AST_lb_b_3220(bind)
 Or_AST[bind[1],bind[2]]
+
+end
+def AmethystParser_Or_lb_Apply_cdcd(bind)
+Or[Apply["regch","/["+bind[1]*""+"]/"],*bind[2]]
 
 end
 def AmethystParser_Parenthe_261b(bind)

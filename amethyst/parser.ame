@@ -72,7 +72,11 @@ amethyst AmethystParser {
   
   cases = className:clas  ~'::'                      -> Apply["clas",clas]
         | ((number ('...'|'..') number)[]:{it.join} | number):num -> Apply["member",num.to_s]
-        | string_like('<','>'):s -> Apply["regch","/["+s+"]/"]
+        | '<' ( '>' break
+              | '<' expression:[e] '>'
+              | ('\\':[s])? .:[s]
+              )*
+          -> Or[Apply["regch","/["+s*""+"]/"],*e]
 
   term  = 'break' -> Seq_AST[Cut[],Stop[]]
         | cases
