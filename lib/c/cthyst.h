@@ -20,9 +20,9 @@ VALUE failobj;
 
 //Ommited check to allow gcc optimize
 #undef Data_Get_Struct
-#define Data_Get_Struct(obj,type,sval) do {\
-    sval = (type*)DATA_PTR(obj);\
-} while (0)
+#define Data_Get_Struct(obj,type,sval) sval = (type*)DATA_PTR(obj);
+
+extern VALUE gargs;extern int gargno;
 
 //you need this declaration, with implicit it will crash
 VALUE AmethystCore_anything(VALUE self);

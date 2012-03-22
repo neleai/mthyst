@@ -8,7 +8,7 @@ $: << Amethyst_path
 
 
 def ame_lambda(cls,bind)#represented as annonymous grammar
-  c=cls.new
+  c=cls.new  #TODO anonymous class to construct ordinary lambda.
   c.parse(:init,[bind])
   c
 end
@@ -44,6 +44,5 @@ class AmethystCore
   alias_method :=~,:match
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/Ame.so"
-
 
 require 'lib/compiler'

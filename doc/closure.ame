@@ -1,6 +1,6 @@
 amethyst Closure{
   lambda = { (| {z||0}:z {puts z+=1} |) }
-
+ 
   test = lambda:x  apply(x) apply(x) {puts 42;puts x.inspect}
 }
 Closure.test("")

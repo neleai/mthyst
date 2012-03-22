@@ -246,7 +246,7 @@ s
                { h="VALUE #{lambd}(VALUE self,VALUE bind2,VALUE args)"
                  @@header<<h+";"
                  @@defmethods<<"rb_define_method(cls_#{@>grammar},\"#{lambd}\",#{lambd},2);"
-                 @@lambdas<< h+"{VALUE vals[0];  /*todo unify with rule and get args*/ cstruct *ptr; VALUE it;VALUE arg0,arg1,arg2,arg3;\n#{body}\nreturn it;\nfail: return failobj; }" }
+                 @@lambdas<< h+"{VALUE vals[0];  cstruct *ptr; VALUE it; #{@@maxargs.times.map{|i| "VALUE arg#{i};"}*""} VALUE oldgargs=gargs;int oldgargno=gargno;gargs=args;gargno=0; \n#{body}\nfail: gargs=oldgargs; gargno=oldgargno; return it;\n }" }
                {"AmethystLambda.new(:#{lambd},self,bind)" }
 
 
