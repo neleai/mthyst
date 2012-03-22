@@ -19,6 +19,9 @@ def Add_Contextual_Returns__lb_bind_lb_1_rb__1469(bind)
 [bind[1][:a],"[:#{bind[2]}]"]
 
 end
+def Add_Contextual_Returns__lp__at_cargs_lb__e1d6(bind)
+(@cargs[src.ary[0]]) || FAIL
+end
 def Add_Contextual_Returns__lp_src_dot_cla_2024(bind)
 (src.class.attributes).map{|v| src.instance_variable_get("@"+v.to_s) }
 end

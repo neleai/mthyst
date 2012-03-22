@@ -17,7 +17,7 @@ root = @dup=>Rule[ {@>a=autovar} traverse:t ]
                                           t}                            
   
 
-  visit = Apply[ .*  {Seq[@self,Act[[Global["contextual_return"],".each{|k,v| ",@>a,"[k]+=v};",Global["contextual_return"],"=nil"]]]} ]
+  visit = Apply[ .* &{@@cargs[@ary[0]]} {Seq[@self,Act[[Global["contextual_return"],".each{|k,v| ",@>a,"[k]+=v};",Global["contextual_return"],"=nil"]]]} ]
         | Contextual_Return[ .:name ] ->  [@>a,"[:#{name}]"]
 }
 

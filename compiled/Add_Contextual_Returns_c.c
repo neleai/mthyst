@@ -17,6 +17,7 @@ static VALUE sy_Add_Contextual_Returns__at__contex_5f56;
 static VALUE sy_Add_Contextual_Returns__at__contex_cdb3;
 static VALUE sy_Add_Contextual_Returns__at__contex_d6d5;
 static VALUE sy_Add_Contextual_Returns__lb_bind_lb_1_rb__1469;
+static VALUE sy_Add_Contextual_Returns__lp__at_cargs_lb__e1d6;
 static VALUE sy_Add_Contextual_Returns__lp_src_dot_cla_2024;
 static VALUE sy_Add_Contextual_Returns_bind_lb_1_rb__eq__e05f;
 static VALUE sy_Add_Contextual_Returns_bind_lb_1_rb__lb__ec72;
@@ -783,6 +784,11 @@ VALUE Add_Contextual_Returns_visit(VALUE self ) {
         ptr->ary=NULL;
         ame_setsrc2(self,_autovar_3);
         ptr->pos=ptr->len;
+        it=rb_funcall(self,sy_Add_Contextual_Returns__lp__at_cargs_lb__e1d6,1,bind2);
+        if (it==failobj) {
+            it=failobj;
+            goto pass1;
+        };
         bind_aset(bind2,1,_autovar_2);
         it=rb_funcall(self,sy_Add_Contextual_Returns_Seq_lb_src,1,bind2);
         _autovar_2=bind_aget(bind2,1);;
@@ -894,6 +900,7 @@ void Init_Add_Contextual_Returns_c() {
     sy_Add_Contextual_Returns__at__contex_cdb3=rb_intern("Add_Contextual_Returns__at__contex_cdb3");
     sy_Add_Contextual_Returns__at__contex_d6d5=rb_intern("Add_Contextual_Returns__at__contex_d6d5");
     sy_Add_Contextual_Returns__lb_bind_lb_1_rb__1469=rb_intern("Add_Contextual_Returns__lb_bind_lb_1_rb__1469");
+    sy_Add_Contextual_Returns__lp__at_cargs_lb__e1d6=rb_intern("Add_Contextual_Returns__lp__at_cargs_lb__e1d6");
     sy_Add_Contextual_Returns__lp_src_dot_cla_2024=rb_intern("Add_Contextual_Returns__lp_src_dot_cla_2024");
     sy_Add_Contextual_Returns_bind_lb_1_rb__eq__e05f=rb_intern("Add_Contextual_Returns_bind_lb_1_rb__eq__e05f");
     sy_Add_Contextual_Returns_bind_lb_1_rb__lb__ec72=rb_intern("Add_Contextual_Returns_bind_lb_1_rb__lb__ec72");

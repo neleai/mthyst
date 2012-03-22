@@ -95,14 +95,16 @@ class <<Compiler
 			g.calls[name]=DetectCalls.root([g.rules[name]])
 			g.calls[name].each{|c,t| callg.add(name,c)}
 		}
-    [Detect_Contextual_Arguments,Detect_Contextual_Return
-    ].each{|d|
+    det_add={Detect_Contextual_Arguments=>Add_Contextual_Arguments,Detect_Contextual_Return=>Add_Contextual_Returns}
+    [Detect_Contextual_Arguments,Detect_Contextual_Return].each{|d|
       cargs=names.dup.select{|name|  d.root(g.rules[name])!=[] }
-      cargs.each{|name| aca=nil;
-        if d==Detect_Contextual_Arguments ;  aca=Add_Contextual_Arguments.new ;aca.instance_variable_set(:@cargs, callg.reverse.reachable(cargs))
-        else                              ;  aca=Add_Contextual_Return.   new ;aca.instance_variable_set(:@cargs, callg.        reachable(cargs))
-        end
+      cargs=callg.reachable(cargs).map{|k,v| k} & callg.reverse.reachable(cargs).map{|k,v| k}  if d==Detect_Contextual_Return
+      cargs.each{|name| 
+        aca=det_add[d].new ;aca.instance_variable_set(:@cargs, callg.reverse.reachable(cargs))
+        puts cargs.inspect
+        puts g.rules[name].inspect
         g.rules[name]=aca.parse(:root,g.rules[name])
+        puts g.rules[name].inspect
       }
     }
 

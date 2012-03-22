@@ -15,7 +15,7 @@ def contextual_argument_return_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def contextual_argument_return_source_hash
-'eb03744c8fdc998447c6010da64830a6'
+'ba4813b777dd21be24acb4f76cbf0eaf'
 end
 def testversioncontextual_argument_return(r)
  raise "invalid version" if r!=contextual_argument_return_version

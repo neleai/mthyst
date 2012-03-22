@@ -1,3 +1,4 @@
 require '../lib/amethyst'
 #Amethyst::Settings.debug=2
-Compiler::compile("example1.ame")
+ame= File.basename(__FILE__)[0..-4]+".ame"
+Compiler::compile(ame)
