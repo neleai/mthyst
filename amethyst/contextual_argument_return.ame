@@ -26,8 +26,11 @@ root = @dup=>Rule[ {@>a=autovar} traverse:t ]
 
 # With contextual returns situation is similar. We can delete definitions that are not used. We dont have to merge first contextual return.
 
-class Context_Graph
-end
+amethyst Detect_Contextual_Return < Traverser_Clone2 {
+  root = {@@returns=[]} traverse {@@returns.uniq.sort}
+
+  visit = Contextual_Return[ .:[@@returns] ]
+}
 
 amethyst Detect_Contextual_Arguments < Traverser_Clone2 {
   root = {@@arguments=[]} traverse {@@arguments.uniq.sort}

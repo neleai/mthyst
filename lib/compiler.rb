@@ -95,15 +95,15 @@ class <<Compiler
 			g.calls[name]=DetectCalls.root([g.rules[name]])
 			g.calls[name].each{|c,t| callg.add(name,c)}
 		}
-    cargs=[]
-    names.dup.each{|name| 
-     cargs<<name if Detect_Contextual_Arguments.root(g.rules[name])!=[]
-    }
-    names.each{|name|
-      aca=Add_Contextual_Arguments.new
-      aca.instance_variable_set(:@cargs, callg.reverse.reachable(cargs))
-      g.rules[name]=aca.parse(:root,g.rules[name])
-      g.rules[name]=Add_Contextual_Returns.root(g.rules[name]) if CurrentParser[:contextual_returns]
+    [Detect_Contextual_Arguments,Detect_Contextual_Return
+    ].each{|d|
+      cargs=names.dup.select{|name|  d.root(g.rules[name])!=[] }
+      cargs.each{|name| aca=nil;
+        if d==Detect_Contextual_Arguments ;  aca=Add_Contextual_Arguments.new ;aca.instance_variable_set(:@cargs, callg.reverse.reachable(cargs))
+        else                              ;  aca=Add_Contextual_Return.   new ;aca.instance_variable_set(:@cargs, callg.        reachable(cargs))
+        end
+        g.rules[name]=aca.parse(:root,g.rules[name])
+      }
     }
 
 		topo= callg.topo_order

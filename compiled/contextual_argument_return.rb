@@ -7,8 +7,7 @@ require File.expand_path(File.dirname(__FILE__))+'/Add_Contextual_Returns.rb'
 
 # With contextual returns situation is similar. We can delete definitions that are not used. We dont have to merge first contextual return.
 
-class Context_Graph
-end
+require File.expand_path(File.dirname(__FILE__))+'/Detect_Contextual_Return.rb'
 
 require File.expand_path(File.dirname(__FILE__))+'/Detect_Contextual_Arguments.rb'
 
@@ -16,7 +15,7 @@ def contextual_argument_return_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def contextual_argument_return_source_hash
-'ef9aae4fa1826d0ea9aab1f42210fb57'
+'eb03744c8fdc998447c6010da64830a6'
 end
 def testversioncontextual_argument_return(r)
  raise "invalid version" if r!=contextual_argument_return_version
