@@ -52,8 +52,7 @@ amethyst AmethystParser {
           ")"
           | {nil}) "=" )
 
-  prefixed   = <&~>:neg inline_host_expr:expr-> Pred[expr[0],neg=="~"]
-             | <&~>:neg prefixed:m    -> Lookahead[m,neg=="~"]
+  prefixed   =  <&~>:neg ~"{" prefixed:m    -> Lookahead[m,neg=="~"]
              | postfixed
 
   postfixed =  term:from 
@@ -146,7 +145,8 @@ amethyst AmethystParser {
              )* -> x
 
   
-  inline_host_expr = _args('{','}'):r {Act[Args[{:ary=>r}]]}
+  inline_host_expr = <&~>:neg inline_host_expr:expr-> Pred[expr[0],neg=="~"]
+                   | _args('{','}'):r {Act[Args[{:ary=>r}]]}
   host_expr = inline_host_expr 
             | '->' line:s   {"{"+s+"}"}=>[ inline_host_expr ]  
 
