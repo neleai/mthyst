@@ -1,6 +1,5 @@
 amethyst Amethyst < AmethystCore {
-
-  else=.
+  if(x)=&{x}
 
   eof= ~.
 

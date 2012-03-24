@@ -5,12 +5,12 @@ def self.alpha(*args);self.new.parse(:alpha,*args);end;def self._selector_alpha;
 def self.char(*args);self.new.parse(:char,*args);end;def self._selector_char;Amethyst;end
 def self.clas(*args);self.new.parse(:clas,*args);end;def self._selector_clas;Amethyst;end
 def self.digit(*args);self.new.parse(:digit,*args);end;def self._selector_digit;Amethyst;end
-def self.else(*args);self.new.parse(:else,*args);end;def self._selector_else;Amethyst;end
 def self.empty(*args);self.new.parse(:empty,*args);end;def self._selector_empty;Amethyst;end
 def self.eof(*args);self.new.parse(:eof,*args);end;def self._selector_eof;Amethyst;end
 def self.fails(*args);self.new.parse(:fails,*args);end;def self._selector_fails;Amethyst;end
 def self.false(*args);self.new.parse(:false,*args);end;def self._selector_false;Amethyst;end
 def self.find(*args);self.new.parse(:find,*args);end;def self._selector_find;Amethyst;end
+def self.if(*args);self.new.parse(:if,*args);end;def self._selector_if;Amethyst;end
 def self.int(*args);self.new.parse(:int,*args);end;def self._selector_int;Amethyst;end
 def self.line(*args);self.new.parse(:line,*args);end;def self._selector_line;Amethyst;end
 def self.listOf(*args);self.new.parse(:listOf,*args);end;def self._selector_listOf;Amethyst;end
@@ -40,6 +40,9 @@ def Amethyst__at_rev(bind)
 end
 def Amethyst__at_rev_lb_src_704d(bind)
 @rev[src]
+end
+def Amethyst__lp_bind_lb_1_rb__a521(bind)
+(bind[1]) || FAIL
 end
 def Amethyst__lp_bind_lb_1_rb__a948(bind)
 (bind[1].is_a? String ) || FAIL
