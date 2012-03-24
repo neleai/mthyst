@@ -60,7 +60,7 @@ VALUE Lam_lam(VALUE self ) {
     int oldpos1=ptr->pos;
     int cut1=0;
 alt1_1:
-    ;
+    ptr->branches+=2;
     it=rb_funcall(self,sy_bar,0);
     if (it==failobj) {
         it=failobj;
@@ -77,9 +77,11 @@ accept2:
     ;
 
     ;
+    ptr->branches-=2;
     goto accept1;
 alt1_2:
     ptr->pos=oldpos1;
+    ptr->branches-=1;
     it=Lam_lam(self );
     __result_2=it;;
     it=__result_2;
@@ -94,9 +96,11 @@ accept3:
     ;
 
     ;
+    ptr->branches-=1;
     goto accept1;
 alt1_3:
     ptr->pos=oldpos1;
+    ptr->branches-=1;
     if (1) {
         it=failobj;
         goto fail;

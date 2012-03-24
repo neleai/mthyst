@@ -162,8 +162,8 @@ end
 def AmethystCTranslator__dq_if_sp__lp__sh__le_a_1643(bind)
 "if (#{ary=bind[1].split("");map_index(ary){|i| "ame_curstr2(ptr)[#{i}]==#{Lattice_Char.new.cchar(ary[i])}" }*"&&" })  ptr->pos+=#{bind[1].size}; else #{failwhen("1")}"
 end
-def AmethystCTranslator__dq_int_sp__sh__le_b_0b60(bind)
-"int #{bind[1]}=ptr->pos;int #{@cutlabel}=0;\n#{bind[2]}_#{bind[3]}:;"
+def AmethystCTranslator__dq_int_sp__sh__le_b_903e(bind)
+"int #{bind[1]}=ptr->pos;int #{@cutlabel}=0;\n#{bind[2]}_#{bind[3]}:ptr->branches+=#{src.ary.size};"
 end
 def AmethystCTranslator__dq_int_sp__sh__le_b_f6cd(bind)
 "int #{bind[1]}=ptr->pos;\n #{bind[2]} it=Qnil; goto #{bind[3]};  #{bind[4]}: it=failobj; #{bind[3]}: ptr->pos=#{bind[1]}; #{failwhen("it==failobj")}"
@@ -292,20 +292,20 @@ end
 def AmethystCTranslator_bind_lb_1_rb__pl__252c(bind)
 bind[1]+=bind[2].cases() + " #{bind[3]} break;\n"
 end
-def AmethystCTranslator_bind_lb_1_rb__pl__4da1(bind)
-bind[1]+="#{bind[2]}\n;goto #{bind[3]};\n"
-end
 def AmethystCTranslator_bind_lb_1_rb__pl__4db9(bind)
 bind[1]+"}"
+end
+def AmethystCTranslator_bind_lb_1_rb__pl__5bd9(bind)
+bind[1]+="#{bind[2]}\n;ptr->branches-=#{bind[3]+2-bind[4]}; goto #{bind[5]};\n"
+end
+def AmethystCTranslator_bind_lb_1_rb__pl__87db(bind)
+bind[1]+="#{bind[2]}_#{bind[3]}: ptr->pos=#{bind[4]};#{@cuts ? (@cuts=nil;"if(#{@cutlabel}){ptr->branches-=#{bind[5]-bind[3]};it=failobj;goto #{@faillabel};}") : ""}ptr->branches-=1;"
 end
 def AmethystCTranslator_bind_lb_1_rb__pl__891b(bind)
 bind[1]+=1
 end
 def AmethystCTranslator_bind_lb_1_rb__pl__916b(bind)
 bind[1]+="\nend"; bind[1]
-end
-def AmethystCTranslator_bind_lb_1_rb__pl__9a26(bind)
-bind[1]+="#{bind[2]}_#{bind[3]}: ptr->pos=#{bind[4]};#{@cuts ? (@cuts=nil;failwhen(@cutlabel)): ""}"
 end
 def AmethystCTranslator_bind_lb_1_rb__ti__cfcb(bind)
 bind[1]*""
@@ -348,6 +348,9 @@ rbbget(src)
 end
 def AmethystCTranslator_src_25d9(bind)
 src
+end
+def AmethystCTranslator_src_dot_ary_dot__286c(bind)
+src.ary.size
 end
 def AmethystCTranslator_src_dot_name_80f3(bind)
 src.name

@@ -63,7 +63,7 @@ VALUE Traverser_Clone2_traverse(VALUE self ) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
-        ;
+        ptr->branches+=2;
         it=Traverser_Clone2_traverse_item(self );
         if (it==failobj) {
             it=failobj;
@@ -84,9 +84,11 @@ accept2:
         ;
 
         ;
+        ptr->branches-=2;
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
+        ptr->branches-=1;
         stop1=1;
         ;
         goto accept3;
@@ -97,9 +99,11 @@ accept3:
         ;
 
         ;
+        ptr->branches-=1;
         goto accept1;
 alt1_3:
         ptr->pos=oldpos1;
+        ptr->branches-=1;
         if (1) {
             it=failobj;
             goto pass2;
@@ -157,7 +161,7 @@ VALUE Traverser_Clone2_traverse_item(VALUE self ) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
-        ;
+        ptr->branches+=3;
         it=rb_funcall(self,sy_visit,0);
         if (it==failobj) {
             it=failobj;
@@ -174,9 +178,11 @@ accept2:
         ;
 
         ;
+        ptr->branches-=3;
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
+        ptr->branches-=1;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar=it;;
@@ -216,9 +222,11 @@ accept3:
         ;
 
         ;
+        ptr->branches-=2;
         goto accept1;
 alt1_3:
         ptr->pos=oldpos1;
+        ptr->branches-=1;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -235,9 +243,11 @@ accept4:
         ;
 
         ;
+        ptr->branches-=1;
         goto accept1;
 alt1_4:
         ptr->pos=oldpos1;
+        ptr->branches-=1;
         if (1) {
             it=failobj;
             goto fail;
@@ -250,7 +260,7 @@ accept1:
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
-        ;
+        ptr->branches+=3;
         it=rb_funcall(self,sy_visit,0);
         if (it==failobj) {
             it=failobj;
@@ -267,9 +277,11 @@ accept6:
         ;
 
         ;
+        ptr->branches-=3;
         goto accept5;
 alt2_2:
         ptr->pos=oldpos2;
+        ptr->branches-=1;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar_3=it;;
@@ -284,7 +296,7 @@ alt2_2:
             int oldpos3=ptr->pos;
             int cut3=0;
 alt3_1:
-            ;
+            ptr->branches+=2;
             it=Traverser_Clone2_traverse_item(self );
             if (it==failobj) {
                 it=failobj;
@@ -305,9 +317,11 @@ accept9:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept8;
 alt3_2:
             ptr->pos=oldpos3;
+            ptr->branches-=1;
             stop1=1;
             ;
             goto accept10;
@@ -318,9 +332,11 @@ accept10:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept8;
 alt3_3:
             ptr->pos=oldpos3;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto pass2;
@@ -357,9 +373,11 @@ accept7:
         ;
 
         ;
+        ptr->branches-=2;
         goto accept5;
 alt2_3:
         ptr->pos=oldpos2;
+        ptr->branches-=1;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -376,9 +394,11 @@ accept11:
         ;
 
         ;
+        ptr->branches-=1;
         goto accept5;
 alt2_4:
         ptr->pos=oldpos2;
+        ptr->branches-=1;
         if (1) {
             it=failobj;
             goto fail;
@@ -391,7 +411,7 @@ accept5:
         int oldpos4=ptr->pos;
         int cut4=0;
 alt4_1:
-        ;
+        ptr->branches+=2;
         it=rb_funcall(self,sy_visit,0);
         if (it==failobj) {
             it=failobj;
@@ -408,9 +428,11 @@ accept13:
         ;
 
         ;
+        ptr->branches-=2;
         goto accept12;
 alt4_2:
         ptr->pos=oldpos4;
+        ptr->branches-=1;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -427,9 +449,11 @@ accept14:
         ;
 
         ;
+        ptr->branches-=1;
         goto accept12;
 alt4_3:
         ptr->pos=oldpos4;
+        ptr->branches-=1;
         if (1) {
             it=failobj;
             goto fail;

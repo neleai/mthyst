@@ -242,7 +242,7 @@ VALUE Inliner2_traverse(VALUE self ) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
-        ;
+        ptr->branches+=2;
         it=Inliner2_traverse_item(self );
         if (it==failobj) {
             it=failobj;
@@ -263,9 +263,11 @@ accept2:
         ;
 
         ;
+        ptr->branches-=2;
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
+        ptr->branches-=1;
         stop1=1;
         ;
         goto accept3;
@@ -276,9 +278,11 @@ accept3:
         ;
 
         ;
+        ptr->branches-=1;
         goto accept1;
 alt1_3:
         ptr->pos=oldpos1;
+        ptr->branches-=1;
         if (1) {
             it=failobj;
             goto pass2;
@@ -339,7 +343,7 @@ VALUE Inliner2_traverse_item(VALUE self ) {
             int oldpos1=ptr->pos;
             int cut1=0;
 alt1_1:
-            ;
+            ptr->branches+=3;
             it=Inliner2_visit(self );
             if (it==failobj) {
                 it=failobj;
@@ -356,9 +360,11 @@ accept2:
             ;
 
             ;
+            ptr->branches-=3;
             goto accept1;
 alt1_2:
             ptr->pos=oldpos1;
+            ptr->branches-=1;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar=it;;
@@ -398,9 +404,11 @@ accept3:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept1;
 alt1_3:
             ptr->pos=oldpos1;
+            ptr->branches-=1;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -417,9 +425,11 @@ accept4:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept1;
 alt1_4:
             ptr->pos=oldpos1;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto fail;
@@ -432,7 +442,7 @@ accept1:
             int oldpos2=ptr->pos;
             int cut2=0;
 alt2_1:
-            ;
+            ptr->branches+=2;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar=it;;
@@ -472,9 +482,11 @@ accept6:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept5;
 alt2_2:
             ptr->pos=oldpos2;
+            ptr->branches-=1;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -491,9 +503,11 @@ accept7:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept5;
 alt2_3:
             ptr->pos=oldpos2;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto fail;
@@ -511,7 +525,7 @@ accept5:
             int oldpos3=ptr->pos;
             int cut3=0;
 alt3_1:
-            ;
+            ptr->branches+=3;
             it=Inliner2_visit(self );
             if (it==failobj) {
                 it=failobj;
@@ -528,9 +542,11 @@ accept9:
             ;
 
             ;
+            ptr->branches-=3;
             goto accept8;
 alt3_2:
             ptr->pos=oldpos3;
+            ptr->branches-=1;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar_3=it;;
@@ -545,7 +561,7 @@ alt3_2:
                 int oldpos4=ptr->pos;
                 int cut4=0;
 alt4_1:
-                ;
+                ptr->branches+=2;
                 it=Inliner2_traverse_item(self );
                 if (it==failobj) {
                     it=failobj;
@@ -566,9 +582,11 @@ accept12:
                 ;
 
                 ;
+                ptr->branches-=2;
                 goto accept11;
 alt4_2:
                 ptr->pos=oldpos4;
+                ptr->branches-=1;
                 stop1=1;
                 ;
                 goto accept13;
@@ -579,9 +597,11 @@ accept13:
                 ;
 
                 ;
+                ptr->branches-=1;
                 goto accept11;
 alt4_3:
                 ptr->pos=oldpos4;
+                ptr->branches-=1;
                 if (1) {
                     it=failobj;
                     goto pass3;
@@ -618,9 +638,11 @@ accept10:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept8;
 alt3_3:
             ptr->pos=oldpos3;
+            ptr->branches-=1;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -637,9 +659,11 @@ accept14:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept8;
 alt3_4:
             ptr->pos=oldpos3;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto fail;
@@ -652,7 +676,7 @@ accept8:
             int oldpos5=ptr->pos;
             int cut5=0;
 alt5_1:
-            ;
+            ptr->branches+=2;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar_3=it;;
@@ -667,7 +691,7 @@ alt5_1:
                 int oldpos6=ptr->pos;
                 int cut6=0;
 alt6_1:
-                ;
+                ptr->branches+=2;
                 it=Inliner2_traverse_item(self );
                 if (it==failobj) {
                     it=failobj;
@@ -688,9 +712,11 @@ accept18:
                 ;
 
                 ;
+                ptr->branches-=2;
                 goto accept17;
 alt6_2:
                 ptr->pos=oldpos6;
+                ptr->branches-=1;
                 stop2=1;
                 ;
                 goto accept19;
@@ -701,9 +727,11 @@ accept19:
                 ;
 
                 ;
+                ptr->branches-=1;
                 goto accept17;
 alt6_3:
                 ptr->pos=oldpos6;
+                ptr->branches-=1;
                 if (1) {
                     it=failobj;
                     goto pass4;
@@ -740,9 +768,11 @@ accept16:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept15;
 alt5_2:
             ptr->pos=oldpos5;
+            ptr->branches-=1;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -759,9 +789,11 @@ accept20:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept15;
 alt5_3:
             ptr->pos=oldpos5;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto fail;
@@ -779,7 +811,7 @@ accept15:
             int oldpos7=ptr->pos;
             int cut7=0;
 alt7_1:
-            ;
+            ptr->branches+=2;
             it=Inliner2_visit(self );
             if (it==failobj) {
                 it=failobj;
@@ -796,9 +828,11 @@ accept22:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept21;
 alt7_2:
             ptr->pos=oldpos7;
+            ptr->branches-=1;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -815,9 +849,11 @@ accept23:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept21;
 alt7_3:
             ptr->pos=oldpos7;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto fail;
@@ -881,7 +917,7 @@ VALUE Inliner2_visit(VALUE self ) {
             int oldpos1=ptr->pos;
             int cut1=0;
 alt1_1:
-            ;
+            ptr->branches+=2;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -898,9 +934,11 @@ accept2:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept1;
 alt1_2:
             ptr->pos=oldpos1;
+            ptr->branches-=1;
             stop1=1;
             ;
             goto accept3;
@@ -911,9 +949,11 @@ accept3:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept1;
 alt1_3:
             ptr->pos=oldpos1;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto pass1;

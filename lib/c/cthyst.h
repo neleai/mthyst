@@ -34,6 +34,7 @@ typedef struct{
 	char *str;VALUE *ary;VALUE ary2;
   int pos;int len;
 	memo_struct *mem;VALUE memgc;
+  int branches,discard;
 } cstruct;
 extern ID s_ary_get,s_to_a;
 #define ACCESSOR(type,name) \

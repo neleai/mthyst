@@ -42,7 +42,7 @@ VALUE Minsize_Dataflow_first(VALUE self ) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
-        ;
+        ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar=it;;
@@ -66,7 +66,7 @@ alt1_1:
             int oldpos2=ptr->pos;
             int cut2=0;
 alt2_1:
-            ;
+            ptr->branches+=3;
             it=_autovar_4;
             _autovar_5=it;;
             cstruct oldpass2=*ptr;
@@ -150,9 +150,11 @@ accept4:
             ;
 
             ;
+            ptr->branches-=3;
             goto accept3;
 alt2_2:
             ptr->pos=oldpos2;
+            ptr->branches-=1;
             it=_autovar_4;
             _autovar_8=it;;
             cstruct oldpass4=*ptr;
@@ -177,7 +179,7 @@ alt2_2:
                 int oldpos3=ptr->pos;
                 int cut3=0;
 alt3_1:
-                ;
+                ptr->branches+=3;
                 if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
                 else if (1) {
                     it=failobj;
@@ -192,9 +194,11 @@ accept7:
                 ;
 
                 ;
+                ptr->branches-=3;
                 goto accept6;
 alt3_2:
                 ptr->pos=oldpos3;
+                ptr->branches-=1;
                 if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='h'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='r')  ptr->pos+=11;
                 else if (1) {
                     it=failobj;
@@ -209,9 +213,11 @@ accept8:
                 ;
 
                 ;
+                ptr->branches-=2;
                 goto accept6;
 alt3_3:
                 ptr->pos=oldpos3;
+                ptr->branches-=1;
                 if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
                 else if (1) {
                     it=failobj;
@@ -226,9 +232,11 @@ accept9:
                 ;
 
                 ;
+                ptr->branches-=1;
                 goto accept6;
 alt3_4:
                 ptr->pos=oldpos3;
+                ptr->branches-=1;
                 if (1) {
                     it=failobj;
                     goto pass4;
@@ -264,9 +272,11 @@ accept5:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept3;
 alt2_3:
             ptr->pos=oldpos2;
+            ptr->branches-=1;
             it=_autovar_4;
             _autovar_9=it;;
             cstruct oldpass5=*ptr;
@@ -321,9 +331,11 @@ accept10:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept3;
 alt2_4:
             ptr->pos=oldpos2;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto pass1;
@@ -338,7 +350,7 @@ accept3:
             int oldpos4=ptr->pos;
             int cut4=0;
 alt4_1:
-            ;
+            ptr->branches+=3;
             it=_autovar_10;
             _autovar_5=it;;
             cstruct oldpass6=*ptr;
@@ -394,9 +406,11 @@ accept12:
             ;
 
             ;
+            ptr->branches-=3;
             goto accept11;
 alt4_2:
             ptr->pos=oldpos4;
+            ptr->branches-=1;
             it=_autovar_10;
             _autovar_8=it;;
             cstruct oldpass7=*ptr;
@@ -421,7 +435,7 @@ alt4_2:
                 int oldpos5=ptr->pos;
                 int cut5=0;
 alt5_1:
-                ;
+                ptr->branches+=3;
                 if (ame_curstr2(ptr)[0]=='n'&&ame_curstr2(ptr)[1]=='y'&&ame_curstr2(ptr)[2]=='t'&&ame_curstr2(ptr)[3]=='h'&&ame_curstr2(ptr)[4]=='i'&&ame_curstr2(ptr)[5]=='n'&&ame_curstr2(ptr)[6]=='g')  ptr->pos+=7;
                 else if (1) {
                     it=failobj;
@@ -436,9 +450,11 @@ accept15:
                 ;
 
                 ;
+                ptr->branches-=3;
                 goto accept14;
 alt5_2:
                 ptr->pos=oldpos5;
+                ptr->branches-=1;
                 if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='h'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='r')  ptr->pos+=11;
                 else if (1) {
                     it=failobj;
@@ -453,9 +469,11 @@ accept16:
                 ;
 
                 ;
+                ptr->branches-=2;
                 goto accept14;
 alt5_3:
                 ptr->pos=oldpos5;
+                ptr->branches-=1;
                 if (ame_curstr2(ptr)[0]=='d'&&ame_curstr2(ptr)[1]=='v'&&ame_curstr2(ptr)[2]=='a'&&ame_curstr2(ptr)[3]=='n'&&ame_curstr2(ptr)[4]=='c'&&ame_curstr2(ptr)[5]=='e'&&ame_curstr2(ptr)[6]=='_'&&ame_curstr2(ptr)[7]=='c'&&ame_curstr2(ptr)[8]=='l'&&ame_curstr2(ptr)[9]=='a'&&ame_curstr2(ptr)[10]=='s')  ptr->pos+=11;
                 else if (1) {
                     it=failobj;
@@ -470,9 +488,11 @@ accept17:
                 ;
 
                 ;
+                ptr->branches-=1;
                 goto accept14;
 alt5_4:
                 ptr->pos=oldpos5;
+                ptr->branches-=1;
                 if (1) {
                     it=failobj;
                     goto pass7;
@@ -508,9 +528,11 @@ accept13:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept11;
 alt4_3:
             ptr->pos=oldpos4;
+            ptr->branches-=1;
             it=_autovar_10;
             _autovar_9=it;;
             cstruct oldpass8=*ptr;
@@ -565,9 +587,11 @@ accept18:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept11;
 alt4_4:
             ptr->pos=oldpos4;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto pass1;
@@ -602,9 +626,11 @@ accept2:
         ;
 
         ;
+        ptr->branches-=2;
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
+        ptr->branches-=1;
         it=Minsize_Dataflow_first_Minsize_Dataflow(self );
         if (it==failobj) {
             it=failobj;
@@ -621,9 +647,11 @@ accept19:
         ;
 
         ;
+        ptr->branches-=1;
         goto accept1;
 alt1_3:
         ptr->pos=oldpos1;
+        ptr->branches-=1;
         if (1) {
             it=failobj;
             goto fail;
@@ -663,7 +691,7 @@ VALUE Minsize_Dataflow_first_Minsize_Dataflow(VALUE self ) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
-        ;
+        ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar=it;;
@@ -700,9 +728,11 @@ accept2:
         ;
 
         ;
+        ptr->branches-=2;
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
+        ptr->branches-=1;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -720,9 +750,11 @@ accept3:
         ;
 
         ;
+        ptr->branches-=1;
         goto accept1;
 alt1_3:
         ptr->pos=oldpos1;
+        ptr->branches-=1;
         if (1) {
             it=failobj;
             goto fail;
@@ -735,7 +767,7 @@ accept1:
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
-        ;
+        ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar_3=it;;
@@ -816,9 +848,11 @@ accept5:
         ;
 
         ;
+        ptr->branches-=2;
         goto accept4;
 alt2_2:
         ptr->pos=oldpos2;
+        ptr->branches-=1;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -836,9 +870,11 @@ accept6:
         ;
 
         ;
+        ptr->branches-=1;
         goto accept4;
 alt2_3:
         ptr->pos=oldpos2;
+        ptr->branches-=1;
         if (1) {
             it=failobj;
             goto fail;
@@ -851,7 +887,7 @@ accept4:
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
-        ;
+        ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar_7=it;;
@@ -891,9 +927,11 @@ accept8:
         ;
 
         ;
+        ptr->branches-=2;
         goto accept7;
 alt3_2:
         ptr->pos=oldpos3;
+        ptr->branches-=1;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -911,9 +949,11 @@ accept9:
         ;
 
         ;
+        ptr->branches-=1;
         goto accept7;
 alt3_3:
         ptr->pos=oldpos3;
+        ptr->branches-=1;
         if (1) {
             it=failobj;
             goto fail;
@@ -926,7 +966,7 @@ accept7:
         int oldpos4=ptr->pos;
         int cut4=0;
 alt4_1:
-        ;
+        ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar_9=it;;
@@ -970,9 +1010,11 @@ accept11:
         ;
 
         ;
+        ptr->branches-=2;
         goto accept10;
 alt4_2:
         ptr->pos=oldpos4;
+        ptr->branches-=1;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -990,9 +1032,11 @@ accept12:
         ;
 
         ;
+        ptr->branches-=1;
         goto accept10;
 alt4_3:
         ptr->pos=oldpos4;
+        ptr->branches-=1;
         if (1) {
             it=failobj;
             goto fail;
@@ -1009,7 +1053,7 @@ accept10:
         int oldpos5=ptr->pos;
         int cut5=0;
 alt5_1:
-        ;
+        ptr->branches+=2;
         it=First_Dataflow_switch(self );
         if (it==failobj) {
             it=failobj;
@@ -1025,7 +1069,7 @@ alt5_1:
             int oldpos6=ptr->pos;
             int cut6=0;
 alt6_1:
-            ;
+            ptr->branches+=2;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -1079,9 +1123,11 @@ accept16:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept15;
 alt6_2:
             ptr->pos=oldpos6;
+            ptr->branches-=1;
             stop1=1;
             ;
             goto accept17;
@@ -1092,9 +1138,11 @@ accept17:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept15;
 alt6_3:
             ptr->pos=oldpos6;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto pass6;
@@ -1130,9 +1178,11 @@ accept14:
         ;
 
         ;
+        ptr->branches-=2;
         goto accept13;
 alt5_2:
         ptr->pos=oldpos5;
+        ptr->branches-=1;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -1150,9 +1200,11 @@ accept18:
         ;
 
         ;
+        ptr->branches-=1;
         goto accept13;
 alt5_3:
         ptr->pos=oldpos5;
+        ptr->branches-=1;
         if (1) {
             it=failobj;
             goto fail;
@@ -1165,7 +1217,7 @@ accept13:
         int oldpos7=ptr->pos;
         int cut7=0;
 alt7_1:
-        ;
+        ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar_14=it;;
@@ -1180,7 +1232,7 @@ alt7_1:
             int oldpos8=ptr->pos;
             int cut8=0;
 alt8_1:
-            ;
+            ptr->branches+=2;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -1227,7 +1279,7 @@ success9:
             int oldpos9=ptr->pos;
             int cut9=0;
 alt9_1:
-            ;
+            ptr->branches+=2;
             bind_aset(bind2,1,_el);
             it=rb_funcall(self,sy_Minsize_Dataflow__lp_,1,bind2);
             _el=bind_aget(bind2,1);;
@@ -1245,9 +1297,11 @@ accept24:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept23;
 alt9_2:
             ptr->pos=oldpos9;
+            ptr->branches-=1;
             it=rb_funcall(self,sy_Minsize_Dataflow__d41d,1,bind2);
             ;
             goto accept25;
@@ -1258,9 +1312,11 @@ accept25:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept23;
 alt9_3:
             ptr->pos=oldpos9;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto revert14;
@@ -1277,9 +1333,11 @@ accept22:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept21;
 alt8_2:
             ptr->pos=oldpos8;
+            ptr->branches-=1;
             stop2=1;
             ;
             goto accept26;
@@ -1290,9 +1348,11 @@ accept26:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept21;
 alt8_3:
             ptr->pos=oldpos8;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto pass8;
@@ -1329,9 +1389,11 @@ accept20:
         ;
 
         ;
+        ptr->branches-=2;
         goto accept19;
 alt7_2:
         ptr->pos=oldpos7;
+        ptr->branches-=1;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -1349,9 +1411,11 @@ accept27:
         ;
 
         ;
+        ptr->branches-=1;
         goto accept19;
 alt7_3:
         ptr->pos=oldpos7;
+        ptr->branches-=1;
         if (1) {
             it=failobj;
             goto fail;

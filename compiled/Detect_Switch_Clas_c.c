@@ -85,11 +85,11 @@ VALUE Detect_Switch_Clas_itrans(VALUE self ) {
             int oldpos1=ptr->pos;
             int cut1=0;
 alt1_1:
-            ;
+            ptr->branches+=2;
             int oldpos2=ptr->pos;
             int cut2=0;
 alt2_1:
-            ;
+            ptr->branches+=2;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar_4=it;;
@@ -130,7 +130,7 @@ alt2_1:
                     int oldpos3=ptr->pos;
                     int cut3=0;
 alt3_1:
-                    ;
+                    ptr->branches+=2;
                     it=ptr->ary[ptr->pos];            ;
                     ptr->pos++;
                     _autovar_8=it;;
@@ -170,9 +170,11 @@ accept6:
                     ;
 
                     ;
+                    ptr->branches-=2;
                     goto accept5;
 alt3_2:
                     ptr->pos=oldpos3;
+                    ptr->branches-=1;
                     stop2=1;
                     ;
                     goto accept7;
@@ -183,9 +185,11 @@ accept7:
                     ;
 
                     ;
+                    ptr->branches-=1;
                     goto accept5;
 alt3_3:
                     ptr->pos=oldpos3;
+                    ptr->branches-=1;
                     if (1) {
                         it=failobj;
                         goto pass3;
@@ -261,9 +265,11 @@ accept4:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept3;
 alt2_2:
             ptr->pos=oldpos2;
+            ptr->branches-=1;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -280,9 +286,11 @@ accept8:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept3;
 alt2_3:
             ptr->pos=oldpos2;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto revert1;
@@ -299,9 +307,11 @@ accept2:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept1;
 alt1_2:
             ptr->pos=oldpos1;
+            ptr->branches-=1;
             stop1=1;
             ;
             goto accept9;
@@ -312,9 +322,11 @@ accept9:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept1;
 alt1_3:
             ptr->pos=oldpos1;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto fail;
@@ -327,7 +339,7 @@ accept1:
             int oldpos4=ptr->pos;
             int cut4=0;
 alt4_1:
-            ;
+            ptr->branches+=2;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -344,9 +356,11 @@ accept11:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept10;
 alt4_2:
             ptr->pos=oldpos4;
+            ptr->branches-=1;
             stop1=1;
             ;
             goto accept12;
@@ -357,9 +371,11 @@ accept12:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept10;
 alt4_3:
             ptr->pos=oldpos4;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto fail;
@@ -440,7 +456,7 @@ VALUE Detect_Switch_Clas_traverse(VALUE self ) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
-        ;
+        ptr->branches+=2;
         it=Detect_Switch_Clas_traverse_item(self );
         if (it==failobj) {
             it=failobj;
@@ -461,9 +477,11 @@ accept2:
         ;
 
         ;
+        ptr->branches-=2;
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
+        ptr->branches-=1;
         stop1=1;
         ;
         goto accept3;
@@ -474,9 +492,11 @@ accept3:
         ;
 
         ;
+        ptr->branches-=1;
         goto accept1;
 alt1_3:
         ptr->pos=oldpos1;
+        ptr->branches-=1;
         if (1) {
             it=failobj;
             goto pass2;
@@ -542,7 +562,7 @@ VALUE Detect_Switch_Clas_traverse_item(VALUE self ) {
             int oldpos1=ptr->pos;
             int cut1=0;
 alt1_1:
-            ;
+            ptr->branches+=3;
             it=Detect_Switch_Clas_visit(self );
             if (it==failobj) {
                 it=failobj;
@@ -559,9 +579,11 @@ accept2:
             ;
 
             ;
+            ptr->branches-=3;
             goto accept1;
 alt1_2:
             ptr->pos=oldpos1;
+            ptr->branches-=1;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar=it;;
@@ -601,9 +623,11 @@ accept3:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept1;
 alt1_3:
             ptr->pos=oldpos1;
+            ptr->branches-=1;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -620,9 +644,11 @@ accept4:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept1;
 alt1_4:
             ptr->pos=oldpos1;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto fail;
@@ -635,7 +661,7 @@ accept1:
             int oldpos2=ptr->pos;
             int cut2=0;
 alt2_1:
-            ;
+            ptr->branches+=2;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar=it;;
@@ -675,9 +701,11 @@ accept6:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept5;
 alt2_2:
             ptr->pos=oldpos2;
+            ptr->branches-=1;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -694,9 +722,11 @@ accept7:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept5;
 alt2_3:
             ptr->pos=oldpos2;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto fail;
@@ -716,7 +746,7 @@ accept5:
             int oldpos3=ptr->pos;
             int cut3=0;
 alt3_1:
-            ;
+            ptr->branches+=3;
             it=Detect_Switch_Clas_visit(self );
             if (it==failobj) {
                 it=failobj;
@@ -733,9 +763,11 @@ accept9:
             ;
 
             ;
+            ptr->branches-=3;
             goto accept8;
 alt3_2:
             ptr->pos=oldpos3;
+            ptr->branches-=1;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar_3=it;;
@@ -750,7 +782,7 @@ alt3_2:
                 int oldpos4=ptr->pos;
                 int cut4=0;
 alt4_1:
-                ;
+                ptr->branches+=2;
                 it=Detect_Switch_Clas_traverse_item(self );
                 if (it==failobj) {
                     it=failobj;
@@ -771,9 +803,11 @@ accept12:
                 ;
 
                 ;
+                ptr->branches-=2;
                 goto accept11;
 alt4_2:
                 ptr->pos=oldpos4;
+                ptr->branches-=1;
                 stop1=1;
                 ;
                 goto accept13;
@@ -784,9 +818,11 @@ accept13:
                 ;
 
                 ;
+                ptr->branches-=1;
                 goto accept11;
 alt4_3:
                 ptr->pos=oldpos4;
+                ptr->branches-=1;
                 if (1) {
                     it=failobj;
                     goto pass3;
@@ -823,9 +859,11 @@ accept10:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept8;
 alt3_3:
             ptr->pos=oldpos3;
+            ptr->branches-=1;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -842,9 +880,11 @@ accept14:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept8;
 alt3_4:
             ptr->pos=oldpos3;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto fail;
@@ -857,7 +897,7 @@ accept8:
             int oldpos5=ptr->pos;
             int cut5=0;
 alt5_1:
-            ;
+            ptr->branches+=2;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar_3=it;;
@@ -872,7 +912,7 @@ alt5_1:
                 int oldpos6=ptr->pos;
                 int cut6=0;
 alt6_1:
-                ;
+                ptr->branches+=2;
                 it=Detect_Switch_Clas_traverse_item(self );
                 if (it==failobj) {
                     it=failobj;
@@ -893,9 +933,11 @@ accept18:
                 ;
 
                 ;
+                ptr->branches-=2;
                 goto accept17;
 alt6_2:
                 ptr->pos=oldpos6;
+                ptr->branches-=1;
                 stop2=1;
                 ;
                 goto accept19;
@@ -906,9 +948,11 @@ accept19:
                 ;
 
                 ;
+                ptr->branches-=1;
                 goto accept17;
 alt6_3:
                 ptr->pos=oldpos6;
+                ptr->branches-=1;
                 if (1) {
                     it=failobj;
                     goto pass4;
@@ -945,9 +989,11 @@ accept16:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept15;
 alt5_2:
             ptr->pos=oldpos5;
+            ptr->branches-=1;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -964,9 +1010,11 @@ accept20:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept15;
 alt5_3:
             ptr->pos=oldpos5;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto fail;
@@ -986,7 +1034,7 @@ accept15:
             int oldpos7=ptr->pos;
             int cut7=0;
 alt7_1:
-            ;
+            ptr->branches+=2;
             it=Detect_Switch_Clas_visit(self );
             if (it==failobj) {
                 it=failobj;
@@ -1003,9 +1051,11 @@ accept22:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept21;
 alt7_2:
             ptr->pos=oldpos7;
+            ptr->branches-=1;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -1022,9 +1072,11 @@ accept23:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept21;
 alt7_3:
             ptr->pos=oldpos7;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto fail;
@@ -1069,7 +1121,7 @@ VALUE Detect_Switch_Clas_visit(VALUE self ) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
-        ;
+        ptr->branches+=3;
         it=_autovar_3;
         _autovar_4=it;;
         cstruct oldpass1=*ptr;
@@ -1200,9 +1252,11 @@ accept2:
         ;
 
         ;
+        ptr->branches-=3;
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
+        ptr->branches-=1;
         it=_autovar_3;
         _autovar_8=it;;
         cstruct oldpass4=*ptr;
@@ -1283,9 +1337,11 @@ accept3:
         ;
 
         ;
+        ptr->branches-=2;
         goto accept1;
 alt1_3:
         ptr->pos=oldpos1;
+        ptr->branches-=1;
         it=_autovar_3;
         _autovar_11=it;;
         cstruct oldpass6=*ptr;
@@ -1338,9 +1394,11 @@ accept4:
         ;
 
         ;
+        ptr->branches-=1;
         goto accept1;
 alt1_4:
         ptr->pos=oldpos1;
+        ptr->branches-=1;
         if (1) {
             it=failobj;
             goto fail;
@@ -1364,7 +1422,7 @@ accept1:
             int oldpos2=ptr->pos;
             int cut2=0;
 alt2_1:
-            ;
+            ptr->branches+=2;
             it=Detect_Switch_Clas_traverse_item(self );
             if (it==failobj) {
                 it=failobj;
@@ -1381,9 +1439,11 @@ accept6:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept5;
 alt2_2:
             ptr->pos=oldpos2;
+            ptr->branches-=1;
             stop1=1;
             ;
             goto accept7;
@@ -1394,9 +1454,11 @@ accept7:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept5;
 alt2_3:
             ptr->pos=oldpos2;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto pass7;
@@ -1416,7 +1478,7 @@ accept5:
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
-        ;
+        ptr->branches+=2;
         bind_aset(bind2,1,_aswitch);
         it=rb_funcall(self,sy_Detect_Switch_Clas__lp_2,1,bind2);
         _aswitch=bind_aget(bind2,1);;
@@ -1438,9 +1500,11 @@ accept9:
         ;
 
         ;
+        ptr->branches-=2;
         goto accept8;
 alt3_2:
         ptr->pos=oldpos3;
+        ptr->branches-=1;
         it=_items;
         _autovar_17=it;;
         cstruct oldpass8=*ptr;
@@ -1468,7 +1532,7 @@ alt3_2:
             int oldpos4=ptr->pos;
             int cut4=0;
 alt4_1:
-            ;
+            ptr->branches+=3;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar_19=it;;
@@ -1528,9 +1592,11 @@ accept12:
             ;
 
             ;
+            ptr->branches-=3;
             goto accept11;
 alt4_2:
             ptr->pos=oldpos4;
+            ptr->branches-=1;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -1565,9 +1631,11 @@ accept13:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept11;
 alt4_3:
             ptr->pos=oldpos4;
+            ptr->branches-=1;
             it=Qnil;
             if (ptr->pos<ptr->len) {
                 it=failobj;
@@ -1591,9 +1659,11 @@ accept14:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept11;
 alt4_4:
             ptr->pos=oldpos4;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto pass9;
@@ -1615,7 +1685,7 @@ accept11:
             int oldpos5=ptr->pos;
             int cut5=0;
 alt5_1:
-            ;
+            ptr->branches+=2;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -1650,9 +1720,11 @@ accept16:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept15;
 alt5_2:
             ptr->pos=oldpos5;
+            ptr->branches-=1;
             it=Qnil;
             if (ptr->pos<ptr->len) {
                 it=failobj;
@@ -1676,9 +1748,11 @@ accept17:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept15;
 alt5_3:
             ptr->pos=oldpos5;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto pass9;
@@ -1732,9 +1806,11 @@ accept10:
         ;
 
         ;
+        ptr->branches-=1;
         goto accept8;
 alt3_3:
         ptr->pos=oldpos3;
+        ptr->branches-=1;
         if (1) {
             it=failobj;
             goto pass7;
@@ -1774,7 +1850,7 @@ success7:
             int oldpos6=ptr->pos;
             int cut6=0;
 alt6_1:
-            ;
+            ptr->branches+=2;
             it=Detect_Switch_Clas_traverse_item(self );
             if (it==failobj) {
                 it=failobj;
@@ -1791,9 +1867,11 @@ accept19:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept18;
 alt6_2:
             ptr->pos=oldpos6;
+            ptr->branches-=1;
             stop2=1;
             ;
             goto accept20;
@@ -1804,9 +1882,11 @@ accept20:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept18;
 alt6_3:
             ptr->pos=oldpos6;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto pass11;
@@ -1841,7 +1921,7 @@ accept18:
             int oldpos7=ptr->pos;
             int cut7=0;
 alt7_1:
-            ;
+            ptr->branches+=3;
             it=Detect_First_must_empty(self );
             if (it==failobj) {
                 it=failobj;
@@ -1872,9 +1952,11 @@ accept22:
             ;
 
             ;
+            ptr->branches-=3;
             goto accept21;
 alt7_2:
             ptr->pos=oldpos7;
+            ptr->branches-=1;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar_27=it;;
@@ -1906,7 +1988,7 @@ success14:
                 int oldpos8=ptr->pos;
                 int cut8=0;
 alt8_1:
-                ;
+                ptr->branches+=2;
                 it=AmethystCore_anything(self );
                 if (it==failobj) {
                     it=failobj;
@@ -1923,9 +2005,11 @@ accept25:
                 ;
 
                 ;
+                ptr->branches-=2;
                 goto accept24;
 alt8_2:
                 ptr->pos=oldpos8;
+                ptr->branches-=1;
                 stop3=1;
                 ;
                 goto accept26;
@@ -1936,9 +2020,11 @@ accept26:
                 ;
 
                 ;
+                ptr->branches-=1;
                 goto accept24;
 alt8_3:
                 ptr->pos=oldpos8;
+                ptr->branches-=1;
                 if (1) {
                     it=failobj;
                     goto revert16;
@@ -1970,9 +2056,11 @@ accept23:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept21;
 alt7_3:
             ptr->pos=oldpos7;
+            ptr->branches-=1;
             it=rb_ary_new3(0);
             _autovar_30=it;;
             int stop4=0;
@@ -1980,7 +2068,7 @@ alt7_3:
                 int oldpos9=ptr->pos;
                 int cut9=0;
 alt9_1:
-                ;
+                ptr->branches+=2;
                 it=AmethystCore_anything(self );
                 if (it==failobj) {
                     it=failobj;
@@ -1997,9 +2085,11 @@ accept29:
                 ;
 
                 ;
+                ptr->branches-=2;
                 goto accept28;
 alt9_2:
                 ptr->pos=oldpos9;
+                ptr->branches-=1;
                 stop4=1;
                 ;
                 goto accept30;
@@ -2010,9 +2100,11 @@ accept30:
                 ;
 
                 ;
+                ptr->branches-=1;
                 goto accept28;
 alt9_3:
                 ptr->pos=oldpos9;
+                ptr->branches-=1;
                 if (1) {
                     it=failobj;
                     goto revert19;
@@ -2038,9 +2130,11 @@ accept27:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept21;
 alt7_4:
             ptr->pos=oldpos7;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto pass13;
@@ -2062,7 +2156,7 @@ accept21:
             int oldpos10=ptr->pos;
             int cut10=0;
 alt10_1:
-            ;
+            ptr->branches+=2;
             it=Detect_First_must_empty(self );
             if (it==failobj) {
                 it=failobj;
@@ -2093,9 +2187,11 @@ accept32:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept31;
 alt10_2:
             ptr->pos=oldpos10;
+            ptr->branches-=1;
             it=rb_ary_new3(0);
             _autovar_30=it;;
             int stop5=0;
@@ -2103,7 +2199,7 @@ alt10_2:
                 int oldpos11=ptr->pos;
                 int cut11=0;
 alt11_1:
-                ;
+                ptr->branches+=2;
                 it=AmethystCore_anything(self );
                 if (it==failobj) {
                     it=failobj;
@@ -2120,9 +2216,11 @@ accept35:
                 ;
 
                 ;
+                ptr->branches-=2;
                 goto accept34;
 alt11_2:
                 ptr->pos=oldpos11;
+                ptr->branches-=1;
                 stop5=1;
                 ;
                 goto accept36;
@@ -2133,9 +2231,11 @@ accept36:
                 ;
 
                 ;
+                ptr->branches-=1;
                 goto accept34;
 alt11_3:
                 ptr->pos=oldpos11;
+                ptr->branches-=1;
                 if (1) {
                     it=failobj;
                     goto revert23;
@@ -2161,9 +2261,11 @@ accept33:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept31;
 alt10_3:
             ptr->pos=oldpos10;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto pass13;

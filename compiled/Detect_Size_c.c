@@ -130,7 +130,7 @@ success2:
             int oldpos1=ptr->pos;
             int cut1=0;
 alt1_1:
-            ;
+            ptr->branches+=2;
             it=_s_2;
             _s=it;;
             it=AmethystCore_anything(self );
@@ -200,9 +200,11 @@ accept2:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept1;
 alt1_2:
             ptr->pos=oldpos1;
+            ptr->branches-=1;
             stop1=1;
             ;
             goto accept3;
@@ -213,9 +215,11 @@ accept3:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept1;
 alt1_3:
             ptr->pos=oldpos1;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto pass3;
@@ -274,7 +278,7 @@ success3:
             int oldpos2=ptr->pos;
             int cut2=0;
 alt2_1:
-            ;
+            ptr->branches+=2;
             it=_s_2;
             _s=it;;
             it=AmethystCore_anything(self );
@@ -351,9 +355,11 @@ accept5:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept4;
 alt2_2:
             ptr->pos=oldpos2;
+            ptr->branches-=1;
             stop2=1;
             ;
             goto accept6;
@@ -364,9 +370,11 @@ accept6:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept4;
 alt2_3:
             ptr->pos=oldpos2;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto pass5;
@@ -512,7 +520,7 @@ success1:
             int oldpos1=ptr->pos;
             int cut1=0;
 alt1_1:
-            ;
+            ptr->branches+=2;
             it=_s;
             _s_2=it;;
             it=AmethystCore_anything(self );
@@ -582,9 +590,11 @@ accept2:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept1;
 alt1_2:
             ptr->pos=oldpos1;
+            ptr->branches-=1;
             stop1=1;
             ;
             goto accept3;
@@ -595,9 +605,11 @@ accept3:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept1;
 alt1_3:
             ptr->pos=oldpos1;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto pass2;
@@ -643,7 +655,7 @@ success2:
             int oldpos2=ptr->pos;
             int cut2=0;
 alt2_1:
-            ;
+            ptr->branches+=2;
             it=_s;
             _s_2=it;;
             it=AmethystCore_anything(self );
@@ -720,9 +732,11 @@ accept5:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept4;
 alt2_2:
             ptr->pos=oldpos2;
+            ptr->branches-=1;
             stop2=1;
             ;
             goto accept6;
@@ -733,9 +747,11 @@ accept6:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept4;
 alt2_3:
             ptr->pos=oldpos2;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto pass4;

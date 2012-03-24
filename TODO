@@ -120,3 +120,5 @@ also destructure and access arrays
 slice analysis
 
 arguments to Lambda( "it" reads first argument)
+
+memory usage

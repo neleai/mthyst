@@ -102,7 +102,7 @@ VALUE Tests_de(VALUE self ) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
-        ;
+        ptr->branches+=2;
         it=_autovar;
         _foo=it;;
         bind_aset(bind2,1,_foo);
@@ -121,9 +121,11 @@ accept2:
         ;
 
         ;
+        ptr->branches-=2;
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
+        ptr->branches-=1;
         it=_autovar;
         _foo=it;;
         bind_aset(bind2,1,_foo);
@@ -142,9 +144,11 @@ accept3:
         ;
 
         ;
+        ptr->branches-=1;
         goto accept1;
 alt1_3:
         ptr->pos=oldpos1;
+        ptr->branches-=1;
         if (1) {
             it=failobj;
             goto fail;
@@ -159,7 +163,7 @@ accept1:
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
-        ;
+        ptr->branches+=2;
         it=_autovar_2;
         _foo=it;;
         bind_aset(bind2,1,_foo);
@@ -178,9 +182,11 @@ accept5:
         ;
 
         ;
+        ptr->branches-=2;
         goto accept4;
 alt2_2:
         ptr->pos=oldpos2;
+        ptr->branches-=1;
         it=_autovar_2;
         _foo=it;;
         bind_aset(bind2,1,_foo);
@@ -199,9 +205,11 @@ accept6:
         ;
 
         ;
+        ptr->branches-=1;
         goto accept4;
 alt2_3:
         ptr->pos=oldpos2;
+        ptr->branches-=1;
         if (1) {
             it=failobj;
             goto fail;
@@ -218,7 +226,7 @@ accept4:
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
-        ;
+        ptr->branches+=2;
         it=_autovar_3;
         _foo=it;;
         bind_aset(bind2,1,_foo);
@@ -240,9 +248,11 @@ accept8:
         ;
 
         ;
+        ptr->branches-=2;
         goto accept7;
 alt3_2:
         ptr->pos=oldpos3;
+        ptr->branches-=1;
         it=_autovar_3;
         _foo=it;;
         bind_aset(bind2,1,_foo);
@@ -261,9 +271,11 @@ accept9:
         ;
 
         ;
+        ptr->branches-=1;
         goto accept7;
 alt3_3:
         ptr->pos=oldpos3;
+        ptr->branches-=1;
         if (1) {
             it=failobj;
             goto fail;
@@ -309,7 +321,7 @@ VALUE Tests_gh(VALUE self ) {
     int oldpos1=ptr->pos;
     int cut1=0;
 alt1_1:
-    ;
+    ptr->branches+=2;
     it=Tests_foo(self );
     if (it==failobj) {
         it=failobj;
@@ -326,9 +338,11 @@ accept2:
     ;
 
     ;
+    ptr->branches-=2;
     goto accept1;
 alt1_2:
     ptr->pos=oldpos1;
+    ptr->branches-=1;
     cut1=1;
     it=i_42;
     __result=it;;
@@ -342,13 +356,16 @@ accept3:
     ;
 
     ;
+    ptr->branches-=1;
     goto accept1;
 alt1_3:
     ptr->pos=oldpos1;
-    if (cut1) {
+    if(cut1) {
+        ptr->branches-=-1;
         it=failobj;
         goto fail;
     }
+    ptr->branches-=1;
     if (1) {
         it=failobj;
         goto fail;
@@ -468,7 +485,7 @@ VALUE Tests_test(VALUE self ) {
     int oldpos1=ptr->pos;
     int cut1=0;
 alt1_1:
-    ;
+    ptr->branches+=2;
     it=Amethyst_spaces(self );
     switch((unsigned char)*ame_curstr2(ptr)) {
     case UC(0) ... '`':
@@ -498,9 +515,11 @@ accept2:
     ;
 
     ;
+    ptr->branches-=2;
     goto accept1;
 alt1_2:
     ptr->pos=oldpos1;
+    ptr->branches-=1;
     it=i_42;
     __result=it;;
 
@@ -513,9 +532,11 @@ accept3:
     ;
 
     ;
+    ptr->branches-=1;
     goto accept1;
 alt1_3:
     ptr->pos=oldpos1;
+    ptr->branches-=1;
     if (1) {
         it=failobj;
         goto fail;

@@ -32,7 +32,7 @@ VALUE Complexity_Dataflow_first(VALUE self ) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
-        ;
+        ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar=it;;
@@ -115,9 +115,11 @@ accept2:
         ;
 
         ;
+        ptr->branches-=2;
         goto accept1;
 alt1_2:
         ptr->pos=oldpos1;
+        ptr->branches-=1;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -135,9 +137,11 @@ accept3:
         ;
 
         ;
+        ptr->branches-=1;
         goto accept1;
 alt1_3:
         ptr->pos=oldpos1;
+        ptr->branches-=1;
         if (1) {
             it=failobj;
             goto fail;
@@ -150,7 +154,7 @@ accept1:
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
-        ;
+        ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar_4=it;;
@@ -192,9 +196,11 @@ accept5:
         ;
 
         ;
+        ptr->branches-=2;
         goto accept4;
 alt2_2:
         ptr->pos=oldpos2;
+        ptr->branches-=1;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -212,9 +218,11 @@ accept6:
         ;
 
         ;
+        ptr->branches-=1;
         goto accept4;
 alt2_3:
         ptr->pos=oldpos2;
+        ptr->branches-=1;
         if (1) {
             it=failobj;
             goto fail;
@@ -231,7 +239,7 @@ accept4:
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
-        ;
+        ptr->branches+=2;
         it=First_Dataflow_switch(self );
         if (it==failobj) {
             it=failobj;
@@ -247,7 +255,7 @@ alt3_1:
             int oldpos4=ptr->pos;
             int cut4=0;
 alt4_1:
-            ;
+            ptr->branches+=2;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
@@ -294,9 +302,11 @@ accept10:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept9;
 alt4_2:
             ptr->pos=oldpos4;
+            ptr->branches-=1;
             stop1=1;
             ;
             goto accept11;
@@ -307,9 +317,11 @@ accept11:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept9;
 alt4_3:
             ptr->pos=oldpos4;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto pass4;
@@ -345,9 +357,11 @@ accept8:
         ;
 
         ;
+        ptr->branches-=2;
         goto accept7;
 alt3_2:
         ptr->pos=oldpos3;
+        ptr->branches-=1;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -365,9 +379,11 @@ accept12:
         ;
 
         ;
+        ptr->branches-=1;
         goto accept7;
 alt3_3:
         ptr->pos=oldpos3;
+        ptr->branches-=1;
         if (1) {
             it=failobj;
             goto fail;
@@ -380,7 +396,7 @@ accept7:
         int oldpos5=ptr->pos;
         int cut5=0;
 alt5_1:
-        ;
+        ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar_8=it;;
@@ -395,7 +411,7 @@ alt5_1:
             int oldpos6=ptr->pos;
             int cut6=0;
 alt6_1:
-            ;
+            ptr->branches+=2;
             it=First_Dataflow_value(self );
             if (it==failobj) {
                 it=failobj;
@@ -412,9 +428,11 @@ accept16:
             ;
 
             ;
+            ptr->branches-=2;
             goto accept15;
 alt6_2:
             ptr->pos=oldpos6;
+            ptr->branches-=1;
             stop2=1;
             ;
             goto accept17;
@@ -425,9 +443,11 @@ accept17:
             ;
 
             ;
+            ptr->branches-=1;
             goto accept15;
 alt6_3:
             ptr->pos=oldpos6;
+            ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto pass6;
@@ -466,9 +486,11 @@ accept14:
         ;
 
         ;
+        ptr->branches-=2;
         goto accept13;
 alt5_2:
         ptr->pos=oldpos5;
+        ptr->branches-=1;
         it=AmethystCore_anything(self );
         if (it==failobj) {
             it=failobj;
@@ -486,9 +508,11 @@ accept18:
         ;
 
         ;
+        ptr->branches-=1;
         goto accept13;
 alt5_3:
         ptr->pos=oldpos5;
+        ptr->branches-=1;
         if (1) {
             it=failobj;
             goto fail;
