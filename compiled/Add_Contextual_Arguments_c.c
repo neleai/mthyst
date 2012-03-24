@@ -58,11 +58,6 @@ VALUE Add_Contextual_Arguments_root(VALUE self ) {
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar_4=it;;
-        it=Qnil;
-        if (ptr->pos<ptr->len) {
-            it=failobj;
-            goto pass1;
-        }
         break;
     case 1/*Object*/:
         ;
@@ -110,11 +105,7 @@ success1:
     _autovar_2=bind_aget(bind2,2);;
     _s=bind_aget(bind2,3);;
     _autovar_6=it;;
-    it=Qnil;
-    if (ptr->pos<ptr->len) {
-        it=failobj;
-        goto pass2;
-    }
+
     goto success2;
 pass2:
     *ptr=oldpass2;
@@ -219,11 +210,6 @@ alt1_3:
 accept1:
         ;
     }
-    it=Qnil;
-    if (ptr->pos<ptr->len) {
-        it=failobj;
-        goto pass2;
-    }
     goto success2;
 pass2:
     *ptr=oldpass2;
@@ -233,11 +219,7 @@ pass2:
     }
 success2:
     *ptr=oldpass2;
-    it=Qnil;
-    if (ptr->pos<ptr->len) {
-        it=failobj;
-        goto pass1;
-    }
+
     goto success1;
 pass1:
     *ptr=oldpass1;
@@ -309,11 +291,7 @@ alt1_2:
                 goto pass1;
             }
             _autovar_2=it;;
-            it=Qnil;
-            if (ptr->pos<ptr->len) {
-                it=failobj;
-                goto pass1;
-            }
+
             goto success1;
 pass1:
             *ptr=oldpass1;
@@ -388,11 +366,7 @@ alt2_1:
                 goto pass2;
             }
             _autovar_2=it;;
-            it=Qnil;
-            if (ptr->pos<ptr->len) {
-                it=failobj;
-                goto pass2;
-            }
+
             goto success2;
 pass2:
             *ptr=oldpass2;
@@ -459,7 +433,7 @@ accept5:
             int cut3=0;
 alt3_1:
             if(!ptr->branches)ptr->discard=ptr->pos;
-            ptr->branches+=3;
+            ptr->branches+=2;
             it=Add_Contextual_Arguments_visit(self );
             if (it==failobj) {
                 it=failobj;
@@ -476,7 +450,7 @@ accept9:
             ;
 
             ;
-            ptr->branches-=3;
+            ptr->branches-=2;
             goto accept8;
 alt3_2:
             ptr->pos=oldpos3;
@@ -544,11 +518,6 @@ alt4_3:
 accept11:
                 ;
             }
-            it=Qnil;
-            if (ptr->pos<ptr->len) {
-                it=failobj;
-                goto pass3;
-            }
             it=_ar;
             _autovar_4=it;;
 
@@ -573,30 +542,9 @@ accept10:
             ;
 
             ;
-            ptr->branches-=2;
+            ptr->branches-=1;
             goto accept8;
 alt3_3:
-            ptr->pos=oldpos3;
-            ptr->branches-=1;
-            it=AmethystCore_anything(self );
-            if (it==failobj) {
-                it=failobj;
-                goto revert10;
-            }
-            __result=it;;
-
-            ;
-            goto accept14;
-revert10:
-            ;
-            goto alt3_4;
-accept14:
-            ;
-
-            ;
-            ptr->branches-=1;
-            goto accept8;
-alt3_4:
             ptr->pos=oldpos3;
             ptr->branches-=1;
             if (1) {
@@ -608,11 +556,6 @@ accept8:
             break;
         case 2/*Object*/:
             ;
-            int oldpos5=ptr->pos;
-            int cut5=0;
-alt5_1:
-            if(!ptr->branches)ptr->discard=ptr->pos;
-            ptr->branches+=2;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
             _autovar_3=it;;
@@ -624,15 +567,15 @@ alt5_1:
             _ar=it;;
             int stop2=0;
             while(!stop2) {
-                int oldpos6=ptr->pos;
-                int cut6=0;
-alt6_1:
+                int oldpos5=ptr->pos;
+                int cut5=0;
+alt5_1:
                 if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=2;
                 it=Add_Contextual_Arguments_traverse_item(self );
                 if (it==failobj) {
                     it=failobj;
-                    goto revert12;
+                    goto revert10;
                 }
                 _it=it;;
                 bind_aset(bind2,1,_ar);
@@ -641,45 +584,40 @@ alt6_1:
                 _ar=bind_aget(bind2,1);;
                 _it=bind_aget(bind2,2);;
                 ;
-                goto accept18;
-revert12:
+                goto accept15;
+revert10:
                 ;
-                goto alt6_2;
-accept18:
+                goto alt5_2;
+accept15:
                 ;
 
                 ;
                 ptr->branches-=2;
-                goto accept17;
-alt6_2:
-                ptr->pos=oldpos6;
+                goto accept14;
+alt5_2:
+                ptr->pos=oldpos5;
                 ptr->branches-=1;
                 stop2=1;
                 ;
-                goto accept19;
-revert13:
+                goto accept16;
+revert11:
                 ;
-                goto alt6_3;
-accept19:
+                goto alt5_3;
+accept16:
                 ;
 
                 ;
                 ptr->branches-=1;
-                goto accept17;
-alt6_3:
-                ptr->pos=oldpos6;
+                goto accept14;
+alt5_3:
+                ptr->pos=oldpos5;
                 ptr->branches-=1;
                 if (1) {
                     it=failobj;
                     goto pass4;
                 };
-accept17:
+accept14:
                 ;
-            }
-            it=Qnil;
-            if (ptr->pos<ptr->len) {
-                it=failobj;
-                goto pass4;
             }
             it=_ar;
             _autovar_4=it;;
@@ -689,54 +627,12 @@ pass4:
             *ptr=oldpass4;
             if (1) {
                 it=failobj;
-                goto revert11;
+                goto fail;
             }
 success4:
             *ptr=oldpass4;
             it=_autovar_4;
             __result=it;;
-
-            ;
-            goto accept16;
-revert11:
-            ;
-            goto alt5_2;
-accept16:
-            ;
-
-            ;
-            ptr->branches-=2;
-            goto accept15;
-alt5_2:
-            ptr->pos=oldpos5;
-            ptr->branches-=1;
-            it=AmethystCore_anything(self );
-            if (it==failobj) {
-                it=failobj;
-                goto revert14;
-            }
-            __result=it;;
-
-            ;
-            goto accept20;
-revert14:
-            ;
-            goto alt5_3;
-accept20:
-            ;
-
-            ;
-            ptr->branches-=1;
-            goto accept15;
-alt5_3:
-            ptr->pos=oldpos5;
-            ptr->branches-=1;
-            if (1) {
-                it=failobj;
-                goto fail;
-            };
-accept15:
-            ;
             break;
         }
         break;
@@ -746,58 +642,58 @@ accept15:
         case 0/*Apply*/:
         case 1/*Contextual_Argument*/:
             ;
-            int oldpos7=ptr->pos;
-            int cut7=0;
-alt7_1:
+            int oldpos6=ptr->pos;
+            int cut6=0;
+alt6_1:
             if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=Add_Contextual_Arguments_visit(self );
             if (it==failobj) {
                 it=failobj;
-                goto revert15;
+                goto revert12;
             }
             __result=it;;
 
             ;
-            goto accept22;
-revert15:
+            goto accept18;
+revert12:
             ;
-            goto alt7_2;
-accept22:
+            goto alt6_2;
+accept18:
             ;
 
             ;
             ptr->branches-=2;
-            goto accept21;
-alt7_2:
-            ptr->pos=oldpos7;
+            goto accept17;
+alt6_2:
+            ptr->pos=oldpos6;
             ptr->branches-=1;
             it=AmethystCore_anything(self );
             if (it==failobj) {
                 it=failobj;
-                goto revert16;
+                goto revert13;
             }
             __result=it;;
 
             ;
-            goto accept23;
-revert16:
+            goto accept19;
+revert13:
             ;
-            goto alt7_3;
-accept23:
+            goto alt6_3;
+accept19:
             ;
 
             ;
             ptr->branches-=1;
-            goto accept21;
-alt7_3:
-            ptr->pos=oldpos7;
+            goto accept17;
+alt6_3:
+            ptr->pos=oldpos6;
             ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto fail;
             };
-accept21:
+accept17:
             ;
             break;
         case 2/*Object*/:
@@ -851,11 +747,6 @@ VALUE Add_Contextual_Arguments_visit(VALUE self ) {
         }
         _t=it;;
         ptr->pos=ptr->len;
-        it=Qnil;
-        if (ptr->pos<ptr->len) {
-            it=failobj;
-            goto pass1;
-        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -904,11 +795,7 @@ success1:
         _autovar_2=bind_aget(bind2,1);;
         _name=bind_aget(bind2,2);;
         _autovar_6=it;;
-        it=Qnil;
-        if (ptr->pos<ptr->len) {
-            it=failobj;
-            goto pass2;
-        }
+
         goto success2;
 pass2:
         *ptr=oldpass2;

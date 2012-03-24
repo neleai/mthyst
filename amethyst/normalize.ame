@@ -108,7 +108,7 @@ amethyst Normalize{
 
   apply2 = Apply[ ["apply" | "_seq"],Act[Lambda[.:x]] -> x
                 | ["apply"]         ,CAct[.:name] .*:args -> Apply[name,*args,{:clas=> resolvegrammar($current_grammar_name,name)}] 
-                | ["_seq"]          ,CAct[ [] ]  -> Placeholder
+                | ["_seq"]          ,CAct[ [eof] ] -> Placeholder
                 | .* {@self.freeze}
                 ]
 
@@ -118,8 +118,8 @@ amethyst Normalize{
                      |  "true"|"false"|"nil"
                      | '"'  (<"> break| '\\' . | .)*
                      | '\'' (<'> break| '\\' . | .)*
-                     )  
-                    "" ] -> CAct[eval(@ary[0])]
+                     ) "" eof  
+                    ] -> CAct[eval(@ary[0])]
             | Lambda[ .* {Act.create(@self,{:pure=>true}).freeze }]
             | Act | CAct | Local
             ):x eof {x}]

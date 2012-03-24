@@ -90,11 +90,6 @@ alt1_3:
 accept1:
         ;
     }
-    it=Qnil;
-    if (ptr->pos<ptr->len) {
-        it=failobj;
-        goto pass2;
-    }
     it=_autovar_3;
     _autovar_5=it;;
 
@@ -107,11 +102,6 @@ pass2:
     }
 success2:
     *ptr=oldpass2;
-    it=Qnil;
-    if (ptr->pos<ptr->len) {
-        it=failobj;
-        goto pass1;
-    }
     it=_autovar_5;
     _autovar_6=it;;
 
@@ -178,11 +168,7 @@ alt1_2:
             goto pass1;
         }
         _autovar_2=it;;
-        it=Qnil;
-        if (ptr->pos<ptr->len) {
-            it=failobj;
-            goto pass1;
-        }
+
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -243,7 +229,7 @@ accept1:
         int cut2=0;
 alt2_1:
         if(!ptr->branches)ptr->discard=ptr->pos;
-        ptr->branches+=3;
+        ptr->branches+=2;
         it=rb_funcall(self,sy_visit,0);
         if (it==failobj) {
             it=failobj;
@@ -260,7 +246,7 @@ accept6:
         ;
 
         ;
-        ptr->branches-=3;
+        ptr->branches-=2;
         goto accept5;
 alt2_2:
         ptr->pos=oldpos2;
@@ -324,11 +310,6 @@ alt3_3:
 accept8:
             ;
         }
-        it=Qnil;
-        if (ptr->pos<ptr->len) {
-            it=failobj;
-            goto pass2;
-        }
         it=_autovar_4;
         _autovar_6=it;;
 
@@ -353,30 +334,9 @@ accept7:
         ;
 
         ;
-        ptr->branches-=2;
+        ptr->branches-=1;
         goto accept5;
 alt2_3:
-        ptr->pos=oldpos2;
-        ptr->branches-=1;
-        it=AmethystCore_anything(self );
-        if (it==failobj) {
-            it=failobj;
-            goto revert8;
-        }
-        __result=it;;
-
-        ;
-        goto accept11;
-revert8:
-        ;
-        goto alt2_4;
-accept11:
-        ;
-
-        ;
-        ptr->branches-=1;
-        goto accept5;
-alt2_4:
         ptr->pos=oldpos2;
         ptr->branches-=1;
         if (1) {
@@ -396,6 +356,27 @@ alt4_1:
         it=rb_funcall(self,sy_visit,0);
         if (it==failobj) {
             it=failobj;
+            goto revert8;
+        }
+        __result=it;;
+
+        ;
+        goto accept12;
+revert8:
+        ;
+        goto alt4_2;
+accept12:
+        ;
+
+        ;
+        ptr->branches-=2;
+        goto accept11;
+alt4_2:
+        ptr->pos=oldpos4;
+        ptr->branches-=1;
+        it=AmethystCore_anything(self );
+        if (it==failobj) {
+            it=failobj;
             goto revert9;
         }
         __result=it;;
@@ -404,34 +385,13 @@ alt4_1:
         goto accept13;
 revert9:
         ;
-        goto alt4_2;
+        goto alt4_3;
 accept13:
         ;
 
         ;
-        ptr->branches-=2;
-        goto accept12;
-alt4_2:
-        ptr->pos=oldpos4;
         ptr->branches-=1;
-        it=AmethystCore_anything(self );
-        if (it==failobj) {
-            it=failobj;
-            goto revert10;
-        }
-        __result=it;;
-
-        ;
-        goto accept14;
-revert10:
-        ;
-        goto alt4_3;
-accept14:
-        ;
-
-        ;
-        ptr->branches-=1;
-        goto accept12;
+        goto accept11;
 alt4_3:
         ptr->pos=oldpos4;
         ptr->branches-=1;
@@ -439,7 +399,7 @@ alt4_3:
             it=failobj;
             goto fail;
         };
-accept12:
+accept11:
         ;
         break;
     }

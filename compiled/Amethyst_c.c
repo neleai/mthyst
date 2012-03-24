@@ -2009,11 +2009,7 @@ VALUE Amethyst_parse(VALUE self ,VALUE a0,VALUE a1,VALUE a2) {
     it=rb_funcall(self,sy_Amethyst_self_dot_pro_8089,1,bind2);
     _r=bind_aget(bind2,1);;
     _autovar_2=it;;
-    it=Qnil;
-    if (ptr->pos<ptr->len) {
-        it=failobj;
-        goto pass1;
-    }
+
     goto success1;
 pass1:
     *ptr=oldpass1;

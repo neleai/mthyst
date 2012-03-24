@@ -299,7 +299,8 @@ end
 
 def Pass.[](from,to,enter=nil)
 	a,r=autovar,autovar
-	Seq[Bind[a,from], Pass.create({:to=>Seq[Bind[r,to],Apply["eof"]],:var=>a,:enter=>enter}).normalize,r]
+	Seq[Bind[a,from], Pass.create({:to=>Seq[Bind[r,to]],:var=>a,:enter=>enter}).normalize,r]
+
 end
 
 class Bind

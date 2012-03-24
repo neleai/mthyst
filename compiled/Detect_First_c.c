@@ -97,11 +97,7 @@ alt1_1:
     ptr->pos=ptr->len;
     it=rb_funcall(self,sy_Detect_First_src_dot_ary_d5cf,1,bind2);
     _ary=it;;
-    it=Qnil;
-    if (ptr->pos<ptr->len) {
-        it=failobj;
-        goto pass1;
-    }
+
     goto success1;
 pass1:
     *ptr=oldpass1;
@@ -285,11 +281,7 @@ alt1_2:
     ptr->pos=ptr->len;
     it=rb_funcall(self,sy_Detect_First_src_dot_ary_d5cf,1,bind2);
     _ary=it;;
-    it=Qnil;
-    if (ptr->pos<ptr->len) {
-        it=failobj;
-        goto pass1;
-    }
+
     goto success1;
 pass1:
     *ptr=oldpass1;
@@ -546,11 +538,7 @@ alt3_1:
                         goto pass4;
                     }
                     _autovar_9=it;;
-                    it=Qnil;
-                    if (ptr->pos<ptr->len) {
-                        it=failobj;
-                        goto pass4;
-                    }
+
                     goto success4;
 pass4:
                     *ptr=oldpass4;
@@ -605,11 +593,6 @@ accept5:
                     break;
                 }
             }
-            it=Qnil;
-            if (ptr->pos<ptr->len) {
-                it=failobj;
-                goto pass3;
-            }
             it=_autovar_7;
             _rules=it;;
 
@@ -622,11 +605,7 @@ pass3:
             }
 success3:
             *ptr=oldpass3;
-            it=Qnil;
-            if (ptr->pos<ptr->len) {
-                it=failobj;
-                goto pass2;
-            }
+
             goto success2;
 pass2:
             *ptr=oldpass2;
@@ -641,11 +620,7 @@ success2:
             _rules=bind_aget(bind2,1);;
             it=rb_funcall(self,sy_Detect_First_src_25d9,1,bind2);
             _autovar_11=it;;
-            it=Qnil;
-            if (ptr->pos<ptr->len) {
-                it=failobj;
-                goto pass1;
-            }
+
             goto success1;
 pass1:
             *ptr=oldpass1;
@@ -872,11 +847,6 @@ VALUE Detect_First_object_only(VALUE self ) {
             }
             break;
         }
-        it=Qnil;
-        if (ptr->pos<ptr->len) {
-            it=failobj;
-            goto pass2;
-        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -937,11 +907,6 @@ alt1_3:
             };
 accept1:
             ;
-        }
-        it=Qnil;
-        if (ptr->pos<ptr->len) {
-            it=failobj;
-            goto pass1;
         }
         it=_autovar_3;
         _autovar_5=it;;
@@ -1045,11 +1010,6 @@ VALUE Detect_First_string_only(VALUE self ) {
             }
             break;
         }
-        it=Qnil;
-        if (ptr->pos<ptr->len) {
-            it=failobj;
-            goto pass2;
-        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -1110,11 +1070,6 @@ alt1_3:
             };
 accept1:
             ;
-        }
-        it=Qnil;
-        if (ptr->pos<ptr->len) {
-            it=failobj;
-            goto pass1;
         }
         it=_autovar_3;
         _autovar_5=it;;

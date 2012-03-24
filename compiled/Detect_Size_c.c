@@ -88,11 +88,6 @@ VALUE Detect_Size_predicate(VALUE self ,VALUE a0) {
             }
             break;
         }
-        it=Qnil;
-        if (ptr->pos<ptr->len) {
-            it=failobj;
-            goto pass2;
-        }
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -104,11 +99,6 @@ success2:
         *ptr=oldpass2;
         it=rb_funcall(self,sy_Detect_Size__sh_lowleve_46e8,1,bind2);
         __result=it;;
-        it=Qnil;
-        if (ptr->pos<ptr->len) {
-            it=failobj;
-            goto pass1;
-        }
         it=__result;
         _autovar_3=it;;
         break;
@@ -174,11 +164,6 @@ alt1_1:
                     goto pass4;
                 }
                 _autovar_3=it;;
-                it=Qnil;
-                if (ptr->pos<ptr->len) {
-                    it=failobj;
-                    goto pass4;
-                }
                 break;
             case 3/*Object*/:
                 ;
@@ -246,11 +231,6 @@ alt1_3:
 accept1:
             ;
         }
-        it=Qnil;
-        if (ptr->pos<ptr->len) {
-            it=failobj;
-            goto pass3;
-        }
         it=_autovar_5;
         _ary=it;;
 
@@ -267,11 +247,6 @@ success3:
         it=rb_funcall(self,sy_Detect_Size_Or_dot_creat_49b2,1,bind2);
         _ary=bind_aget(bind2,1);;
         __result=it;;
-        it=Qnil;
-        if (ptr->pos<ptr->len) {
-            it=failobj;
-            goto pass1;
-        }
         it=__result;
         _autovar_3=it;;
         break;
@@ -337,11 +312,6 @@ alt2_1:
                     goto pass6;
                 }
                 _autovar_3=it;;
-                it=Qnil;
-                if (ptr->pos<ptr->len) {
-                    it=failobj;
-                    goto pass6;
-                }
                 break;
             case 3/*Object*/:
                 ;
@@ -416,11 +386,6 @@ alt2_3:
 accept4:
             ;
         }
-        it=Qnil;
-        if (ptr->pos<ptr->len) {
-            it=failobj;
-            goto pass5;
-        }
         it=_autovar_8;
         _ary=it;;
 
@@ -437,11 +402,6 @@ success5:
         it=rb_funcall(self,sy_Detect_Size_Seq_dot_crea_bfbb,1,bind2);
         _ary=bind_aget(bind2,1);;
         __result=it;;
-        it=Qnil;
-        if (ptr->pos<ptr->len) {
-            it=failobj;
-            goto pass1;
-        }
         it=__result;
         _autovar_3=it;;
         break;
@@ -521,11 +481,6 @@ VALUE Detect_Size_predicate2(VALUE self ,VALUE a0) {
             }
             break;
         }
-        it=Qnil;
-        if (ptr->pos<ptr->len) {
-            it=failobj;
-            goto pass1;
-        }
         goto success1;
 pass1:
         *ptr=oldpass1;
@@ -594,11 +549,6 @@ alt1_1:
                     goto pass3;
                 }
                 _autovar_5=it;;
-                it=Qnil;
-                if (ptr->pos<ptr->len) {
-                    it=failobj;
-                    goto pass3;
-                }
                 break;
             case 3/*Object*/:
                 ;
@@ -665,11 +615,6 @@ alt1_3:
             };
 accept1:
             ;
-        }
-        it=Qnil;
-        if (ptr->pos<ptr->len) {
-            it=failobj;
-            goto pass2;
         }
         it=_autovar_3;
         _ary=it;;
@@ -744,11 +689,6 @@ alt2_1:
                     goto pass5;
                 }
                 _autovar_5=it;;
-                it=Qnil;
-                if (ptr->pos<ptr->len) {
-                    it=failobj;
-                    goto pass5;
-                }
                 break;
             case 3/*Object*/:
                 ;
@@ -822,11 +762,6 @@ alt2_3:
             };
 accept4:
             ;
-        }
-        it=Qnil;
-        if (ptr->pos<ptr->len) {
-            it=failobj;
-            goto pass4;
         }
         it=_autovar_8;
         _ary=it;;

@@ -552,11 +552,7 @@ accept3:
         ame_setsrc2(self,_autovar_4);
         it=AmethystParser_procargs(self );
         _autovar_5=it;;
-        it=Qnil;
-        if (ptr->pos<ptr->len) {
-            it=failobj;
-            goto pass2;
-        }
+
         goto success2;
 pass2:
         *ptr=oldpass2;
@@ -566,11 +562,6 @@ pass2:
         }
 success2:
         *ptr=oldpass2;
-        it=Qnil;
-        if (ptr->pos<ptr->len) {
-            it=failobj;
-            goto pass1;
-        }
         it=_autovar_5;
         _autovar_6=it;;
 
@@ -794,11 +785,7 @@ accept10:
         ame_setsrc2(self,_autovar_4);
         it=AmethystParser_procargs(self );
         _autovar_5=it;;
-        it=Qnil;
-        if (ptr->pos<ptr->len) {
-            it=failobj;
-            goto pass4;
-        }
+
         goto success4;
 pass4:
         *ptr=oldpass4;
@@ -808,11 +795,6 @@ pass4:
         }
 success4:
         *ptr=oldpass4;
-        it=Qnil;
-        if (ptr->pos<ptr->len) {
-            it=failobj;
-            goto pass3;
-        }
         it=_autovar_5;
         _autovar_6=it;;
 
@@ -1067,11 +1049,7 @@ accept19:
         ame_setsrc2(self,_autovar_4);
         it=AmethystParser_procargs(self );
         _autovar_5=it;;
-        it=Qnil;
-        if (ptr->pos<ptr->len) {
-            it=failobj;
-            goto pass6;
-        }
+
         goto success6;
 pass6:
         *ptr=oldpass6;
@@ -1081,11 +1059,6 @@ pass6:
         }
 success6:
         *ptr=oldpass6;
-        it=Qnil;
-        if (ptr->pos<ptr->len) {
-            it=failobj;
-            goto pass5;
-        }
         it=_autovar_5;
         _autovar_6=it;;
 
@@ -2690,11 +2663,6 @@ alt5_1:
                     goto pass2;
                 }
                 _g=it;;
-                it=Qnil;
-                if (ptr->pos<ptr->len) {
-                    it=failobj;
-                    goto pass2;
-                }
                 break;
             }
             goto success2;
@@ -2706,11 +2674,7 @@ pass2:
             }
 success2:
             *ptr=oldpass2;
-            it=Qnil;
-            if (ptr->pos<ptr->len) {
-                it=failobj;
-                goto pass1;
-            }
+
             goto success1;
 pass1:
             *ptr=oldpass1;
@@ -3538,11 +3502,6 @@ VALUE AmethystParser_host_expr(VALUE self ) {
                 goto pass2;
             }
             _autovar_3=it;;
-            it=Qnil;
-            if (ptr->pos<ptr->len) {
-                it=failobj;
-                goto pass2;
-            }
             break;
         }
         goto success2;
@@ -3554,11 +3513,6 @@ pass2:
         }
 success2:
         *ptr=oldpass2;
-        it=Qnil;
-        if (ptr->pos<ptr->len) {
-            it=failobj;
-            goto pass1;
-        }
         it=_autovar_3;
         _autovar_4=it;;
 
@@ -6579,11 +6533,6 @@ VALUE AmethystParser_procargs2(VALUE self ) {
     switch(FIX2LONG(rb_hash_aref(switchhash_AmethystParser_2,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Args*/:
         ;
-        int oldpos1=ptr->pos;
-        int cut1=0;
-alt1_1:
-        if(!ptr->branches)ptr->discard=ptr->pos;
-        ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
         _autovar=it;;
@@ -6595,58 +6544,53 @@ alt1_1:
         _autovar_2=it;;
         int stop1=0;
         while(!stop1) {
-            int oldpos2=ptr->pos;
-            int cut2=0;
-alt2_1:
+            int oldpos1=ptr->pos;
+            int cut1=0;
+alt1_1:
             if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=AmethystParser_procargs2(self );
             if (it==failobj) {
                 it=failobj;
-                goto revert2;
+                goto revert1;
             }
             _autovar_3=it;;
             it=AmethystCore_append(self,_autovar_2,_autovar_3);
             ;
-            goto accept4;
-revert2:
+            goto accept2;
+revert1:
             ;
-            goto alt2_2;
-accept4:
+            goto alt1_2;
+accept2:
             ;
 
             ;
             ptr->branches-=2;
-            goto accept3;
-alt2_2:
-            ptr->pos=oldpos2;
+            goto accept1;
+alt1_2:
+            ptr->pos=oldpos1;
             ptr->branches-=1;
             stop1=1;
             ;
-            goto accept5;
-revert3:
+            goto accept3;
+revert2:
             ;
-            goto alt2_3;
-accept5:
+            goto alt1_3;
+accept3:
             ;
 
             ;
             ptr->branches-=1;
-            goto accept3;
-alt2_3:
-            ptr->pos=oldpos2;
+            goto accept1;
+alt1_3:
+            ptr->pos=oldpos1;
             ptr->branches-=1;
             if (1) {
                 it=failobj;
                 goto pass1;
             };
-accept3:
+accept1:
             ;
-        }
-        it=Qnil;
-        if (ptr->pos<ptr->len) {
-            it=failobj;
-            goto pass1;
         }
         it=_autovar_2;
         _autovar_4=it;;
@@ -6656,58 +6600,12 @@ pass1:
         *ptr=oldpass1;
         if (1) {
             it=failobj;
-            goto revert1;
+            goto fail;
         }
 success1:
         *ptr=oldpass1;
         it=_autovar_4;
         __result=it;;
-
-        ;
-        goto accept2;
-revert1:
-        ;
-        goto alt1_2;
-accept2:
-        ;
-
-        ;
-        ptr->branches-=2;
-        goto accept1;
-alt1_2:
-        ptr->pos=oldpos1;
-        ptr->branches-=1;
-        it=AmethystCore_anything(self );
-        if (it==failobj) {
-            it=failobj;
-            goto revert4;
-        }
-        _a=it;;
-        bind_aset(bind2,1,_a);
-        it=rb_funcall(self,sy_AmethystParser__at_tmp_lt__lt_bi_b81c,1,bind2);
-        _a=bind_aget(bind2,1);;
-        __result=it;;
-
-        ;
-        goto accept6;
-revert4:
-        ;
-        goto alt1_3;
-accept6:
-        ;
-
-        ;
-        ptr->branches-=1;
-        goto accept1;
-alt1_3:
-        ptr->pos=oldpos1;
-        ptr->branches-=1;
-        if (1) {
-            it=failobj;
-            goto fail;
-        };
-accept1:
-        ;
         break;
     case 1/*Object*/:
         ;
@@ -10768,11 +10666,7 @@ alt1_1:
             it=rb_funcall(self,sy_AmethystParser_local_lp_bi_196b,1,bind2);
             _name=bind_aget(bind2,1);;
             _autovar_5=it;;
-            it=Qnil;
-            if (ptr->pos<ptr->len) {
-                it=failobj;
-                goto pass3;
-            }
+
             goto success3;
 pass3:
             *ptr=oldpass3;
@@ -10827,11 +10721,6 @@ accept1:
             break;
         }
     }
-    it=Qnil;
-    if (ptr->pos<ptr->len) {
-        it=failobj;
-        goto pass2;
-    }
     it=_autovar_3;
     _autovar_7=it;;
 
@@ -10844,11 +10733,6 @@ pass2:
     }
 success2:
     *ptr=oldpass2;
-    it=Qnil;
-    if (ptr->pos<ptr->len) {
-        it=failobj;
-        goto pass1;
-    }
     it=_autovar_7;
     _autovar_8=it;;
 
