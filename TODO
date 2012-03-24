@@ -44,9 +44,6 @@ support for provable refactorization and migrations
 
 functor for case insensivity
 
-copy propagation, expression variables
-Constant propagation also do value numbering to register renaming scheme.
-
 extract cc from makefile for portability
 
 UTF8
@@ -56,8 +53,6 @@ grammar not necessary
 flatarray class
 done but too slow to use
 
-default arguments?
-
 rewrite rigth recursion by futures
 like reversing single linked list
 
@@ -65,6 +60,7 @@ like reversing single linked list
 dataflows to calculate bitmasks and test by (chars|both =ones|both) where ones are bits that must be 1 and both bits than can be 0 or 1
 indexing from end
 integrate regch with llmatch
+dataflow compute first 8 characters
 
 switch for ints,true,false,nil    # no use case yet
 
@@ -79,6 +75,8 @@ separate dataflow and dead code elimination
 predicated inlining
 inlining concrete and general form
 can use overaproximation from more general form?
+copy propagation, expression variables
+Constant propagation also do value numbering to register renaming scheme.
 
 cache dataflow data with objects
 
@@ -92,10 +90,6 @@ as constant propagation?
 
 at class level use one hash for determining class numbers? perhaps slower with inheritance
 
-labels use hash of body do decrease changes
-
-apply["success"] instead of placeholder?
-
 left factor inside normalization of or
 
 local DCE?
@@ -108,17 +102,10 @@ ask classes directly about properties
 
 try speed vs various other parsers.
 
-
-dataflow compute first 8 characters
-
 parametrize traverser and visitor
-
-
-origin tracking string
 
 also destructure and access arrays
 slice analysis
 
-arguments to Lambda( "it" reads first argument)
-
-memory usage
+origin tracking string
+buffers

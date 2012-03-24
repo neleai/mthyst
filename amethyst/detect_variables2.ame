@@ -57,6 +57,6 @@ amethyst Resolve_Calls < Traverser_Clone2 {
                     @>grammar.rules[super_name].name=super_name
                     Apply[super_name]
               }]
-        | Apply[ Array:name {a=Apply[name[1],{:clas=>resolvegrammar(Compiler.grammars[name[0]],name[1])}]} ]
-        | Apply[     .:name {a=Apply[name,   {:clas=>resolvegrammar(@>grammar.name,name)}];a} ]
+        | Apply[ Array:name .*:args {Apply[name[1],*args,{:clas=>resolvegrammar(Compiler.grammars[name[0]],name[1])}]} ]
+        | Apply[     .:name .*:args {Apply[name,   *args,{:clas=>resolvegrammar(@>grammar.name,name)}]} ]
 }
