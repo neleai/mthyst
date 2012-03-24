@@ -312,6 +312,7 @@ VALUE Amethyst_eof(VALUE self ) {
     int oldpos1=ptr->pos;
     int cut1=0;
 alt1_1:
+    if(!ptr->branches)ptr->discard=ptr->pos;
     ptr->branches+=2;
     it=AmethystCore_anything(self );
     if (it==failobj) {
@@ -429,6 +430,7 @@ VALUE Amethyst_find(VALUE self ,VALUE a0) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=_exp;
         arg0=it;
@@ -567,12 +569,14 @@ VALUE Amethyst_int(VALUE self ) {
             int oldpos1=ptr->pos;
             int cut1=0;
 alt1_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=3;
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
             int oldpos2=ptr->pos;
             int cut2=0;
 alt2_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             if (ame_curstr2(ptr)[0]=='x')  ptr->pos+=1;
             else if (1) {
@@ -861,6 +865,7 @@ accept1:
             int oldpos3=ptr->pos;
             int cut3=0;
 alt3_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             if (ame_curstr2(ptr)[0]=='0'&&ame_curstr2(ptr)[1]=='o')  ptr->pos+=2;
             else if (1) {
@@ -1055,12 +1060,14 @@ accept8:
             int oldpos4=ptr->pos;
             int cut4=0;
 alt4_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=3;
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
             int oldpos5=ptr->pos;
             int cut5=0;
 alt5_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             if (ame_curstr2(ptr)[0]=='x')  ptr->pos+=1;
             else if (1) {
@@ -1349,6 +1356,7 @@ accept11:
             int oldpos6=ptr->pos;
             int cut6=0;
 alt6_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             if (ame_curstr2(ptr)[0]=='0'&&ame_curstr2(ptr)[1]=='o')  ptr->pos+=2;
             else if (1) {
@@ -1513,6 +1521,7 @@ VALUE Amethyst_line(VALUE self ) {
             int oldpos1=ptr->pos;
             int cut1=0;
 alt1_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=Amethyst_newline(self );
             if (it==failobj) {
@@ -1596,6 +1605,7 @@ VALUE Amethyst_listOf(VALUE self ,VALUE a0,VALUE a1) {
     int oldpos1=ptr->pos;
     int cut1=0;
 alt1_1:
+    if(!ptr->branches)ptr->discard=ptr->pos;
     ptr->branches+=2;
     it=_rule;
     arg0=it;
@@ -1613,6 +1623,7 @@ alt1_1:
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=_delim;
         _s=it;;
@@ -1853,6 +1864,7 @@ VALUE Amethyst_newline(VALUE self ) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         if (ame_curstr2(ptr)[0]==UC(10))  ptr->pos+=1;
         else if (1) {
@@ -2138,10 +2150,12 @@ VALUE Amethyst_replace(VALUE self ,VALUE a0) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=_exp;
         arg0=it;
@@ -2451,6 +2465,7 @@ VALUE Amethyst_until(VALUE self ,VALUE a0) {
             int oldpos1=ptr->pos;
             int cut1=0;
 alt1_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=_e;
             _s=it;;
@@ -2516,6 +2531,7 @@ accept1:
             int oldpos2=ptr->pos;
             int cut2=0;
 alt2_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=_e;
             _s=it;;

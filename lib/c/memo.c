@@ -19,7 +19,7 @@ static memo_struct *memo_init(){
 }
 static int memo_hash(int rule,int src,int pos,int cap){return (src+rule*pos)&(cap-1);}
 
-typedef struct {long time;long saved;VALUE result;int pos;} time_struct;
+typedef struct {long time;long saved;VALUE result;int pos;int discard;} time_struct;
 time_struct timestamp;
 
 static time_struct memo_get(memo_struct *m,int rule,VALUE src,int pos){
@@ -58,7 +58,7 @@ static void memo_add(memo_struct *m,int rule,VALUE src,int pos,VALUE val,int new
   m->size++;
   if (2*m->size > m->capacity) {
     elem_struct *resized=calloc(sizeof(elem_struct),2*m->capacity);
-    for (i=0;i<m->capacity;i++) if (m->els[i].rule) resized[memo_hash(m->els[i].rule,m->els[i].src,m->els[i].pos,2*m->capacity)]=m->els[i];
+    for (i=0;i<m->capacity;i++) if (m->els[i].rule&& !(m->els[i].src==src&&m->els[i].pos<time_old.discard)) resized[memo_hash(m->els[i].rule,m->els[i].src,m->els[i].pos,2*m->capacity)]=m->els[i];
     free(m->els);
     m->els=resized;
     m->capacity=2*m->capacity;

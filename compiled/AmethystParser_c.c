@@ -176,6 +176,7 @@ VALUE AmethystParser__args(VALUE self ,VALUE a0,VALUE a1) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=AmethystParser_rubyarg(self );
         if (it==failobj) {
@@ -269,6 +270,7 @@ VALUE AmethystParser_args(VALUE self ,VALUE a0,VALUE a1) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=AmethystParser_rubyarg(self );
         if (it==failobj) {
@@ -374,6 +376,7 @@ VALUE AmethystParser_argsOpt(VALUE self ) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=Qnil;
         switch((unsigned char)*ame_curstr2(ptr)) {
@@ -400,6 +403,7 @@ alt1_1:
             int oldpos2=ptr->pos;
             int cut2=0;
 alt2_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=AmethystParser_rubyarg(self );
             if (it==failobj) {
@@ -570,6 +574,7 @@ accept1:
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=3;
         it=AmethystParser_lambda(self );
         if (it==failobj) {
@@ -621,6 +626,7 @@ alt3_2:
             int oldpos4=ptr->pos;
             int cut4=0;
 alt4_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=AmethystParser_rubyarg(self );
             if (it==failobj) {
@@ -793,10 +799,12 @@ accept7:
         int oldpos5=ptr->pos;
         int cut5=0;
 alt5_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         int oldpos6=ptr->pos;
         int cut6=0;
 alt6_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=Amethyst__(self );
         if (it==failobj) {
@@ -872,6 +880,7 @@ accept16:
             int oldpos7=ptr->pos;
             int cut7=0;
 alt7_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=AmethystParser_rubyarg(self );
             if (it==failobj) {
@@ -1037,6 +1046,8 @@ accept14:
         break;
     }
 memo_fail:
+    if(!ptr->branches)ptr->discard=ptr->pos;
+    time_old.discard=ptr->discard;
     memo_add(ptr->mem,119,ptr->src,oldpos,it,ptr->pos,time_old);
     return it;
 
@@ -1068,6 +1079,7 @@ VALUE AmethystParser_call(VALUE self ) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=AmethystParser_className(self );
         if (it==failobj) {
@@ -1190,6 +1202,7 @@ accept1:
             int oldpos2=ptr->pos;
             int cut2=0;
 alt2_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=AmethystParser_lambda(self );
             if (it==failobj) {
@@ -1270,6 +1283,7 @@ accept4:
             int oldpos3=ptr->pos;
             int cut3=0;
 alt3_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=AmethystParser_lambda(self );
             if (it==failobj) {
@@ -1380,6 +1394,7 @@ VALUE AmethystParser_cases(VALUE self ) {
                 int oldpos1=ptr->pos;
                 int cut1=0;
 alt1_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=2;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
@@ -1493,10 +1508,12 @@ accept1:
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=rb_ary_new3(0);
         _autovar_4=it;;
@@ -1524,6 +1541,7 @@ alt3_1:
             int oldpos4=ptr->pos;
             int cut4=0;
 alt4_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             if (ame_curstr2(ptr)[0]=='.'&&ame_curstr2(ptr)[1]=='.')  ptr->pos+=2;
             else if (1) {
@@ -1708,6 +1726,7 @@ alt2_2:
                 int oldpos5=ptr->pos;
                 int cut5=0;
 alt5_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=2;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
@@ -1846,6 +1865,7 @@ accept4:
         int oldpos6=ptr->pos;
         int cut6=0;
 alt6_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=AmethystParser_className(self );
         if (it==failobj) {
@@ -1865,6 +1885,7 @@ alt6_1:
             int oldpos7=ptr->pos;
             int cut7=0;
 alt7_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
@@ -1973,6 +1994,7 @@ alt6_2:
                 int oldpos8=ptr->pos;
                 int cut8=0;
 alt8_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=2;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
@@ -2209,6 +2231,7 @@ VALUE AmethystParser_expression(VALUE self ) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=Amethyst_spaces(self );
         if (ame_curstr2(ptr)[0]=='|')  ptr->pos+=1;
@@ -2219,6 +2242,7 @@ alt1_1:
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         if (ame_curstr2(ptr)[0]==')')  ptr->pos+=1;
         else if (1) {
@@ -2350,10 +2374,12 @@ VALUE AmethystParser_file(VALUE self ) {
             int oldpos1=ptr->pos;
             int cut1=0;
 alt1_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             int oldpos2=ptr->pos;
             int cut2=0;
 alt2_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=rb_funcall(self,sy_AmethystParser_pos_5e0b,1,bind2);
             it=rb_funcall(self,sy_AmethystParser__at_locals_eq__4fc1,1,bind2);
@@ -2388,6 +2414,7 @@ alt2_2:
                 int oldpos3=ptr->pos;
                 int cut3=0;
 alt3_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=2;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
@@ -2514,10 +2541,12 @@ accept1:
             int oldpos4=ptr->pos;
             int cut4=0;
 alt4_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             int oldpos5=ptr->pos;
             int cut5=0;
 alt5_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=rb_funcall(self,sy_AmethystParser_pos_5e0b,1,bind2);
             _oldpos=it;;
@@ -2631,6 +2660,7 @@ alt5_2:
                 int oldpos6=ptr->pos;
                 int cut6=0;
 alt6_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=2;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
@@ -2755,10 +2785,12 @@ accept10:
             int oldpos7=ptr->pos;
             int cut7=0;
 alt7_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             int oldpos8=ptr->pos;
             int cut8=0;
 alt8_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=3;
             it=AmethystParser_grammar(self );
             if (it==failobj) {
@@ -2804,6 +2836,7 @@ alt8_3:
             int oldpos9=ptr->pos;
             int cut9=0;
 alt9_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
@@ -2869,6 +2902,7 @@ accept25:
                 int oldpos10=ptr->pos;
                 int cut10=0;
 alt10_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=2;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
@@ -3033,6 +3067,7 @@ VALUE AmethystParser_grammar(VALUE self ) {
             int oldpos1=ptr->pos;
             int cut1=0;
 alt1_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
@@ -3110,6 +3145,7 @@ accept1:
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=Amethyst_spaces(self );
         switch((unsigned char)*ame_curstr2(ptr)) {
@@ -3247,6 +3283,7 @@ accept4:
                 int oldpos3=ptr->pos;
                 int cut3=0;
 alt3_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=2;
                 it=AmethystParser_rule(self );
                 if (it==failobj) {
@@ -3474,6 +3511,7 @@ VALUE AmethystParser_inline_host_expr(VALUE self ) {
             int oldpos1=ptr->pos;
             int cut1=0;
 alt1_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=AmethystParser_rubyarg(self );
             if (it==failobj) {
@@ -3573,6 +3611,7 @@ VALUE AmethystParser_interpolated(VALUE self ,VALUE a0) {
             int oldpos1=ptr->pos;
             int cut1=0;
 alt1_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=_e;
             _s=it;;
@@ -3638,6 +3677,7 @@ accept1:
             int oldpos2=ptr->pos;
             int cut2=0;
 alt2_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=3;
             it=_e;
             _s=it;;
@@ -3684,6 +3724,7 @@ alt2_2:
                 int oldpos3=ptr->pos;
                 int cut3=0;
 alt3_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=2;
                 it=AmethystParser_rubyarg(self );
                 if (it==failobj) {
@@ -3815,6 +3856,7 @@ accept4:
             int oldpos4=ptr->pos;
             int cut4=0;
 alt4_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=_e;
             _s=it;;
@@ -3912,6 +3954,7 @@ VALUE AmethystParser_key(VALUE self ) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=4;
         switch((unsigned char)*ame_curstr2(ptr)) {
         case UC(0) ... '@':
@@ -3932,6 +3975,7 @@ alt1_1:
             int oldpos2=ptr->pos;
             int cut2=0;
 alt2_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=AmethystParser_className(self );
             if (it==failobj) {
@@ -4369,6 +4413,8 @@ VALUE AmethystParser_name(VALUE self ) {
         break;
     }
 memo_fail:
+    if(!ptr->branches)ptr->discard=ptr->pos;
+    time_old.discard=ptr->discard;
     memo_add(ptr->mem,117,ptr->src,oldpos,it,ptr->pos,time_old);
     return it;
 
@@ -4385,6 +4431,7 @@ VALUE AmethystParser_nr(VALUE self ) {
     int oldpos1=ptr->pos;
     int cut1=0;
 alt1_1:
+    if(!ptr->branches)ptr->discard=ptr->pos;
     ptr->branches+=2;
     it=Amethyst_spaces(self );
     switch((unsigned char)*ame_curstr2(ptr)) {
@@ -4417,6 +4464,7 @@ alt1_1:
     int oldpos2=ptr->pos;
     int cut2=0;
 alt2_1:
+    if(!ptr->branches)ptr->discard=ptr->pos;
     ptr->branches+=2;
     it=Amethyst_spaces(self );
     it=rb_obj_clone(s__lp__84c4);
@@ -4435,10 +4483,12 @@ alt2_1:
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         int oldpos4=ptr->pos;
         int cut4=0;
 alt4_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=Amethyst_spaces(self );
         switch((unsigned char)*ame_curstr2(ptr)) {
@@ -4613,6 +4663,7 @@ accept7:
             int oldpos5=ptr->pos;
             int cut5=0;
 alt5_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
@@ -4667,6 +4718,7 @@ accept10:
             int oldpos6=ptr->pos;
             int cut6=0;
 alt6_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
@@ -4921,6 +4973,7 @@ VALUE AmethystParser_postfixed(VALUE self ) {
             int oldpos1=ptr->pos;
             int cut1=0;
 alt1_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=Qnil;
             switch((unsigned char)*ame_curstr2(ptr)) {
@@ -4960,6 +5013,7 @@ alt1_1:
                 int oldpos2=ptr->pos;
                 int cut2=0;
 alt2_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=2;
                 if (ame_curstr2(ptr)[0]=='[')  ptr->pos+=1;
                 else if (1) {
@@ -5007,6 +5061,7 @@ alt2_1:
                             int oldpos3=ptr->pos;
                             int cut3=0;
 alt3_1:
+                            if(!ptr->branches)ptr->discard=ptr->pos;
                             ptr->branches+=2;
                             it=AmethystParser_rubyarg(self );
                             if (it==failobj) {
@@ -5073,6 +5128,7 @@ accept5:
                     int oldpos4=ptr->pos;
                     int cut4=0;
 alt4_1:
+                    if(!ptr->branches)ptr->discard=ptr->pos;
                     ptr->branches+=2;
                     it=AmethystParser_name(self );
                     if (it==failobj) {
@@ -5111,6 +5167,7 @@ alt4_2:
                             int oldpos5=ptr->pos;
                             int cut5=0;
 alt5_1:
+                            if(!ptr->branches)ptr->discard=ptr->pos;
                             ptr->branches+=2;
                             it=AmethystParser_rubyarg(self );
                             if (it==failobj) {
@@ -5346,6 +5403,7 @@ accept3:
                 int oldpos6=ptr->pos;
                 int cut6=0;
 alt6_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=2;
                 if (ame_curstr2(ptr)[0]=='=')  ptr->pos+=1;
                 else if (1) {
@@ -5495,10 +5553,12 @@ accept1:
             int oldpos7=ptr->pos;
             int cut7=0;
 alt7_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             int oldpos8=ptr->pos;
             int cut8=0;
 alt8_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=Amethyst__(self );
             if (it==failobj) {
@@ -5587,6 +5647,7 @@ accept21:
                 int oldpos9=ptr->pos;
                 int cut9=0;
 alt9_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=2;
                 if (ame_curstr2(ptr)[0]=='[')  ptr->pos+=1;
                 else if (1) {
@@ -5634,6 +5695,7 @@ alt9_1:
                             int oldpos10=ptr->pos;
                             int cut10=0;
 alt10_1:
+                            if(!ptr->branches)ptr->discard=ptr->pos;
                             ptr->branches+=2;
                             it=AmethystParser_rubyarg(self );
                             if (it==failobj) {
@@ -5700,6 +5762,7 @@ accept26:
                     int oldpos11=ptr->pos;
                     int cut11=0;
 alt11_1:
+                    if(!ptr->branches)ptr->discard=ptr->pos;
                     ptr->branches+=2;
                     it=AmethystParser_name(self );
                     if (it==failobj) {
@@ -5738,6 +5801,7 @@ alt11_2:
                             int oldpos12=ptr->pos;
                             int cut12=0;
 alt12_1:
+                            if(!ptr->branches)ptr->discard=ptr->pos;
                             ptr->branches+=2;
                             it=AmethystParser_rubyarg(self );
                             if (it==failobj) {
@@ -5973,6 +6037,7 @@ accept24:
                 int oldpos13=ptr->pos;
                 int cut13=0;
 alt13_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=2;
                 if (ame_curstr2(ptr)[0]=='=')  ptr->pos+=1;
                 else if (1) {
@@ -6148,6 +6213,7 @@ VALUE AmethystParser_prefixed(VALUE self ) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
@@ -6155,6 +6221,7 @@ alt1_1:
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=_autovar;
         _neg=it;;
@@ -6293,6 +6360,7 @@ VALUE AmethystParser_procargs(VALUE self ) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=3;
         it=AmethystCore_anything(self );
         if (it==failobj) {
@@ -6381,6 +6449,7 @@ VALUE AmethystParser_procargs2(VALUE self ) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -6396,6 +6465,7 @@ alt1_1:
             int oldpos2=ptr->pos;
             int cut2=0;
 alt2_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=AmethystParser_procargs2(self );
             if (it==failobj) {
@@ -6557,10 +6627,12 @@ VALUE AmethystParser_rubyarg(VALUE self ) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=Amethyst_spaces(self );
         switch((unsigned char)*ame_curstr2(ptr)) {
@@ -6642,6 +6714,7 @@ accept3:
             int oldpos3=ptr->pos;
             int cut3=0;
 alt3_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=Amethyst__(self );
             if (it==failobj) {
@@ -6775,6 +6848,7 @@ accept1:
         int oldpos4=ptr->pos;
         int cut4=0;
 alt4_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
@@ -6786,6 +6860,7 @@ alt4_1:
             int oldpos5=ptr->pos;
             int cut5=0;
 alt5_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=AmethystParser_rubyarg(self );
             if (it==failobj) {
@@ -6886,6 +6961,7 @@ alt4_2:
         int oldpos6=ptr->pos;
         int cut6=0;
 alt6_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=Amethyst_spaces(self );
         switch((unsigned char)*ame_curstr2(ptr)) {
@@ -6967,6 +7043,7 @@ accept16:
             int oldpos7=ptr->pos;
             int cut7=0;
 alt7_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=Amethyst__(self );
             if (it==failobj) {
@@ -7082,6 +7159,7 @@ accept10:
         int oldpos8=ptr->pos;
         int cut8=0;
 alt8_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
@@ -7117,6 +7195,7 @@ alt8_1:
                 int oldpos9=ptr->pos;
                 int cut9=0;
 alt9_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=2;
                 it=rb_str_new(ptr->str+ptr->pos,1);
                 ptr->pos++;
@@ -7133,6 +7212,7 @@ alt9_1:
                     int oldpos10=ptr->pos;
                     int cut10=0;
 alt10_1:
+                    if(!ptr->branches)ptr->discard=ptr->pos;
                     ptr->branches+=2;
                     it=AmethystParser_rubyarg(self );
                     if (it==failobj) {
@@ -7309,6 +7389,7 @@ alt8_2:
         int oldpos11=ptr->pos;
         int cut11=0;
 alt11_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=Amethyst_spaces(self );
         switch((unsigned char)*ame_curstr2(ptr)) {
@@ -7390,6 +7471,7 @@ accept31:
             int oldpos12=ptr->pos;
             int cut12=0;
 alt12_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=Amethyst__(self );
             if (it==failobj) {
@@ -7507,10 +7589,12 @@ accept22:
         int oldpos13=ptr->pos;
         int cut13=0;
 alt13_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         int oldpos14=ptr->pos;
         int cut14=0;
 alt14_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=Amethyst_spaces(self );
         switch((unsigned char)*ame_curstr2(ptr)) {
@@ -7595,6 +7679,7 @@ accept39:
             int oldpos15=ptr->pos;
             int cut15=0;
 alt15_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=Amethyst__(self );
             if (it==failobj) {
@@ -7728,6 +7813,7 @@ accept37:
         int oldpos16=ptr->pos;
         int cut16=0;
 alt16_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
@@ -7829,6 +7915,7 @@ alt16_2:
         int oldpos17=ptr->pos;
         int cut17=0;
 alt17_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=Amethyst_spaces(self );
         switch((unsigned char)*ame_curstr2(ptr)) {
@@ -7910,6 +7997,7 @@ accept49:
             int oldpos18=ptr->pos;
             int cut18=0;
 alt18_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=Amethyst__(self );
             if (it==failobj) {
@@ -8025,6 +8113,7 @@ accept46:
         int oldpos19=ptr->pos;
         int cut19=0;
 alt19_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=3;
         it=AmethystParser_lambda(self );
         if (it==failobj) {
@@ -8057,6 +8146,7 @@ alt19_2:
             int oldpos20=ptr->pos;
             int cut20=0;
 alt20_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=AmethystParser_rubyarg(self );
             if (it==failobj) {
@@ -8157,6 +8247,7 @@ alt19_3:
         int oldpos21=ptr->pos;
         int cut21=0;
 alt21_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=Amethyst_spaces(self );
         switch((unsigned char)*ame_curstr2(ptr)) {
@@ -8238,6 +8329,7 @@ accept62:
             int oldpos22=ptr->pos;
             int cut22=0;
 alt22_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=Amethyst__(self );
             if (it==failobj) {
@@ -8357,6 +8449,7 @@ accept55:
         int oldpos23=ptr->pos;
         int cut23=0;
 alt23_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=Amethyst_spaces(self );
         switch((unsigned char)*ame_curstr2(ptr)) {
@@ -8438,6 +8531,7 @@ accept68:
             int oldpos24=ptr->pos;
             int cut24=0;
 alt24_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=Amethyst__(self );
             if (it==failobj) {
@@ -8532,12 +8626,14 @@ accept71:
         int oldpos25=ptr->pos;
         int cut25=0;
 alt25_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=3;
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
         int oldpos26=ptr->pos;
         int cut26=0;
 alt26_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         if (ame_curstr2(ptr)[0]=='.'&&ame_curstr2(ptr)[1]=='.')  ptr->pos+=2;
         else if (1) {
@@ -8611,6 +8707,7 @@ alt25_2:
         int oldpos27=ptr->pos;
         int cut27=0;
 alt27_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=Amethyst_spaces(self );
         switch((unsigned char)*ame_curstr2(ptr)) {
@@ -8695,6 +8792,7 @@ accept80:
             int oldpos28=ptr->pos;
             int cut28=0;
 alt28_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=Amethyst__(self );
             if (it==failobj) {
@@ -8832,6 +8930,7 @@ accept74:
         int oldpos29=ptr->pos;
         int cut29=0;
 alt29_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=3;
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
@@ -8879,6 +8978,7 @@ alt29_2:
         int oldpos30=ptr->pos;
         int cut30=0;
 alt30_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=Amethyst_spaces(self );
         switch((unsigned char)*ame_curstr2(ptr)) {
@@ -8960,6 +9060,7 @@ accept90:
             int oldpos31=ptr->pos;
             int cut31=0;
 alt31_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=Amethyst__(self );
             if (it==failobj) {
@@ -9093,10 +9194,12 @@ accept87:
         int oldpos32=ptr->pos;
         int cut32=0;
 alt32_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=3;
         int oldpos33=ptr->pos;
         int cut33=0;
 alt33_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=Amethyst_spaces(self );
         switch((unsigned char)*ame_curstr2(ptr)) {
@@ -9178,6 +9281,7 @@ accept99:
             int oldpos34=ptr->pos;
             int cut34=0;
 alt34_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=Amethyst__(self );
             if (it==failobj) {
@@ -9332,6 +9436,7 @@ accept97:
         int oldpos35=ptr->pos;
         int cut35=0;
 alt35_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
@@ -9343,6 +9448,7 @@ alt35_1:
             int oldpos36=ptr->pos;
             int cut36=0;
 alt36_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=AmethystParser_rubyarg(self );
             if (it==failobj) {
@@ -9443,6 +9549,7 @@ alt35_2:
         int oldpos37=ptr->pos;
         int cut37=0;
 alt37_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=Amethyst_spaces(self );
         switch((unsigned char)*ame_curstr2(ptr)) {
@@ -9524,6 +9631,7 @@ accept113:
             int oldpos38=ptr->pos;
             int cut38=0;
 alt38_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=Amethyst__(self );
             if (it==failobj) {
@@ -9639,6 +9747,7 @@ accept107:
         int oldpos39=ptr->pos;
         int cut39=0;
 alt39_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=AmethystParser_lambda(self );
         if (it==failobj) {
@@ -9664,6 +9773,7 @@ alt39_2:
         int oldpos40=ptr->pos;
         int cut40=0;
 alt40_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=Amethyst_spaces(self );
         switch((unsigned char)*ame_curstr2(ptr)) {
@@ -9745,6 +9855,7 @@ accept122:
             int oldpos41=ptr->pos;
             int cut41=0;
 alt41_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=Amethyst__(self );
             if (it==failobj) {
@@ -9913,6 +10024,7 @@ VALUE AmethystParser_rule(VALUE self ) {
     int oldpos1=ptr->pos;
     int cut1=0;
 alt1_1:
+    if(!ptr->branches)ptr->discard=ptr->pos;
     ptr->branches+=2;
     it=Amethyst_spaces(self );
     it=rb_obj_clone(s__lp__84c4);
@@ -9933,10 +10045,12 @@ alt1_1:
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=Amethyst_spaces(self );
         switch((unsigned char)*ame_curstr2(ptr)) {
@@ -10084,6 +10198,7 @@ accept5:
             int oldpos4=ptr->pos;
             int cut4=0;
 alt4_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
@@ -10173,6 +10288,7 @@ accept8:
             int oldpos5=ptr->pos;
             int cut5=0;
 alt5_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
@@ -10381,6 +10497,8 @@ accept1:
     _locals=bind_aget(bind2,6);;
     __result=it;;
 memo_fail:
+    if(!ptr->branches)ptr->discard=ptr->pos;
+    time_old.discard=ptr->discard;
     memo_add(ptr->mem,115,ptr->src,oldpos,it,ptr->pos,time_old);
     return it;
 
@@ -10422,6 +10540,7 @@ VALUE AmethystParser_ruleargs(VALUE self ) {
             int oldpos1=ptr->pos;
             int cut1=0;
 alt1_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
@@ -10552,6 +10671,7 @@ VALUE AmethystParser_sequence(VALUE self ) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=AmethystParser_nr(self );
         if (it==failobj) {
@@ -10561,6 +10681,7 @@ alt1_1:
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=Amethyst_spaces(self );
         switch((unsigned char)*ame_curstr2(ptr)) {
@@ -10700,6 +10821,7 @@ VALUE AmethystParser_string_like(VALUE self ,VALUE a0,VALUE a1) {
             int oldpos1=ptr->pos;
             int cut1=0;
 alt1_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=_e;
             _s=it;;
@@ -10765,6 +10887,7 @@ accept1:
             int oldpos2=ptr->pos;
             int cut2=0;
 alt2_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=_e;
             _s=it;;
@@ -10865,6 +10988,7 @@ VALUE AmethystParser_term(VALUE self ) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=AmethystParser_cases(self );
         if (it==failobj) {
@@ -10955,6 +11079,7 @@ accept1:
         int oldpos3=ptr->pos;
         int cut2=0;
 alt2_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=3;
         it=AmethystParser_cases(self );
         if (it==failobj) {
@@ -11142,6 +11267,7 @@ accept6:
         int oldpos5=ptr->pos;
         int cut3=0;
 alt3_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=3;
         it=AmethystParser_cases(self );
         if (it==failobj) {
@@ -11259,6 +11385,7 @@ accept12:
         int oldpos7=ptr->pos;
         int cut4=0;
 alt4_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=3;
         it=AmethystParser_cases(self );
         if (it==failobj) {
@@ -11446,6 +11573,7 @@ accept18:
         int oldpos9=ptr->pos;
         int cut5=0;
 alt5_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=3;
         it=AmethystParser_cases(self );
         if (it==failobj) {
@@ -11560,6 +11688,7 @@ alt5_3:
             int oldpos11=ptr->pos;
             int cut6=0;
 alt6_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=rb_str_new(ptr->str+ptr->pos,1);
             ptr->pos++;
@@ -11646,6 +11775,7 @@ accept24:
         int oldpos12=ptr->pos;
         int cut7=0;
 alt7_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=3;
         it=AmethystParser_cases(self );
         if (it==failobj) {
@@ -11757,6 +11887,7 @@ accept33:
         int oldpos14=ptr->pos;
         int cut8=0;
 alt8_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=AmethystParser_cases(self );
         if (it==failobj) {
@@ -11820,6 +11951,7 @@ accept42:
         int oldpos16=ptr->pos;
         int cut9=0;
 alt9_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;
@@ -11887,6 +12019,7 @@ accept39:
         int oldpos17=ptr->pos;
         int cut10=0;
 alt10_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=3;
         it=AmethystParser_cases(self );
         if (it==failobj) {
@@ -12008,6 +12141,7 @@ accept47:
         int oldpos19=ptr->pos;
         int cut11=0;
 alt11_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=3;
         it=AmethystParser_cases(self );
         if (it==failobj) {
@@ -12119,6 +12253,7 @@ accept53:
         int oldpos21=ptr->pos;
         int cut12=0;
 alt12_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=3;
         it=AmethystParser_cases(self );
         if (it==failobj) {
@@ -12249,6 +12384,7 @@ accept59:
         int oldpos23=ptr->pos;
         int cut13=0;
 alt13_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=4;
         it=rb_str_new(ptr->str+ptr->pos,1);
         ptr->pos++;

@@ -102,6 +102,7 @@ VALUE Tests_de(VALUE self ) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=_autovar;
         _foo=it;;
@@ -163,6 +164,7 @@ accept1:
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=_autovar_2;
         _foo=it;;
@@ -226,6 +228,7 @@ accept4:
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=_autovar_3;
         _foo=it;;
@@ -321,6 +324,7 @@ VALUE Tests_gh(VALUE self ) {
     int oldpos1=ptr->pos;
     int cut1=0;
 alt1_1:
+    if(!ptr->branches)ptr->discard=ptr->pos;
     ptr->branches+=2;
     it=Tests_foo(self );
     if (it==failobj) {
@@ -485,6 +489,7 @@ VALUE Tests_test(VALUE self ) {
     int oldpos1=ptr->pos;
     int cut1=0;
 alt1_1:
+    if(!ptr->branches)ptr->discard=ptr->pos;
     ptr->branches+=2;
     it=Amethyst_spaces(self );
     switch((unsigned char)*ame_curstr2(ptr)) {

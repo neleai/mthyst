@@ -86,10 +86,12 @@ VALUE Detect_Switch_Char_itrans(VALUE self ) {
             int oldpos1=ptr->pos;
             int cut1=0;
 alt1_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             int oldpos2=ptr->pos;
             int cut2=0;
 alt2_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
@@ -131,6 +133,7 @@ alt2_1:
                     int oldpos3=ptr->pos;
                     int cut3=0;
 alt3_1:
+                    if(!ptr->branches)ptr->discard=ptr->pos;
                     ptr->branches+=2;
                     it=ptr->ary[ptr->pos];            ;
                     ptr->pos++;
@@ -340,6 +343,7 @@ accept1:
             int oldpos4=ptr->pos;
             int cut4=0;
 alt4_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=AmethystCore_anything(self );
             if (it==failobj) {
@@ -457,6 +461,7 @@ VALUE Detect_Switch_Char_traverse(VALUE self ) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=Detect_Switch_Char_traverse_item(self );
         if (it==failobj) {
@@ -540,6 +545,8 @@ success1:
     _nvars=bind_aget(bind2,2);;
     __result=it;;
 memo_fail:
+    if(!ptr->branches)ptr->discard=ptr->pos;
+    time_old.discard=ptr->discard;
     memo_add(ptr->mem,119,ptr->src,oldpos,it,ptr->pos,time_old);
     return it;
 
@@ -563,6 +570,7 @@ VALUE Detect_Switch_Char_traverse_item(VALUE self ) {
             int oldpos1=ptr->pos;
             int cut1=0;
 alt1_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=3;
             it=Detect_Switch_Char_visit(self );
             if (it==failobj) {
@@ -662,6 +670,7 @@ accept1:
             int oldpos2=ptr->pos;
             int cut2=0;
 alt2_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
@@ -747,6 +756,7 @@ accept5:
             int oldpos3=ptr->pos;
             int cut3=0;
 alt3_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=3;
             it=Detect_Switch_Char_visit(self );
             if (it==failobj) {
@@ -783,6 +793,7 @@ alt3_2:
                 int oldpos4=ptr->pos;
                 int cut4=0;
 alt4_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=2;
                 it=Detect_Switch_Char_traverse_item(self );
                 if (it==failobj) {
@@ -898,6 +909,7 @@ accept8:
             int oldpos5=ptr->pos;
             int cut5=0;
 alt5_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
@@ -913,6 +925,7 @@ alt5_1:
                 int oldpos6=ptr->pos;
                 int cut6=0;
 alt6_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=2;
                 it=Detect_Switch_Char_traverse_item(self );
                 if (it==failobj) {
@@ -1035,6 +1048,7 @@ accept15:
             int oldpos7=ptr->pos;
             int cut7=0;
 alt7_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=Detect_Switch_Char_visit(self );
             if (it==failobj) {
@@ -1122,6 +1136,7 @@ VALUE Detect_Switch_Char_visit(VALUE self ) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=4;
         it=_autovar_3;
         _autovar_4=it;;
@@ -1535,6 +1550,7 @@ accept1:
             int oldpos2=ptr->pos;
             int cut2=0;
 alt2_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=Detect_Switch_Char_traverse_item(self );
             if (it==failobj) {
@@ -1591,6 +1607,7 @@ accept6:
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         bind_aset(bind2,1,_aswitch);
         it=rb_funcall(self,sy_Detect_Switch_Char__lp_2,1,bind2);
@@ -1645,6 +1662,7 @@ alt3_2:
             int oldpos4=ptr->pos;
             int cut4=0;
 alt4_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=3;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
@@ -1798,6 +1816,7 @@ accept12:
             int oldpos5=ptr->pos;
             int cut5=0;
 alt5_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=AmethystCore_anything(self );
             if (it==failobj) {
@@ -1963,6 +1982,7 @@ success10:
             int oldpos6=ptr->pos;
             int cut6=0;
 alt6_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=Detect_Switch_Char_traverse_item(self );
             if (it==failobj) {
@@ -2034,6 +2054,7 @@ accept19:
             int oldpos7=ptr->pos;
             int cut7=0;
 alt7_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=3;
             it=Detect_First_must_empty(self );
             if (it==failobj) {
@@ -2101,6 +2122,7 @@ success17:
                 int oldpos8=ptr->pos;
                 int cut8=0;
 alt8_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=2;
                 it=AmethystCore_anything(self );
                 if (it==failobj) {
@@ -2181,6 +2203,7 @@ alt7_3:
                 int oldpos9=ptr->pos;
                 int cut9=0;
 alt9_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=2;
                 it=AmethystCore_anything(self );
                 if (it==failobj) {
@@ -2269,6 +2292,7 @@ accept22:
             int oldpos10=ptr->pos;
             int cut10=0;
 alt10_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=Detect_First_must_empty(self );
             if (it==failobj) {
@@ -2312,6 +2336,7 @@ alt10_2:
                 int oldpos11=ptr->pos;
                 int cut11=0;
 alt11_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=2;
                 it=AmethystCore_anything(self );
                 if (it==failobj) {

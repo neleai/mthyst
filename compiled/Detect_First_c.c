@@ -80,6 +80,7 @@ VALUE Detect_First_combine_or(VALUE self ,VALUE a0,VALUE a1,VALUE a2) {
     int oldpos1=ptr->pos;
     int cut1=0;
 alt1_1:
+    if(!ptr->branches)ptr->discard=ptr->pos;
     ptr->branches+=3;
     it=_cls;
     arg0=it;
@@ -236,6 +237,7 @@ VALUE Detect_First_combine_seq(VALUE self ,VALUE a0,VALUE a1) {
     int oldpos1=ptr->pos;
     int cut1=0;
 alt1_1:
+    if(!ptr->branches)ptr->discard=ptr->pos;
     ptr->branches+=3;
     it=Detect_First_must_empty(self );
     if (it==failobj) {
@@ -308,6 +310,7 @@ success1:
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=AmethystCore_anything(self );
         if (it==failobj) {
@@ -386,6 +389,7 @@ alt1_3:
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=AmethystCore_anything(self );
         if (it==failobj) {
@@ -484,10 +488,12 @@ VALUE Detect_First_itrans(VALUE self ) {
             int oldpos1=ptr->pos;
             int cut1=0;
 alt1_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             int oldpos2=ptr->pos;
             int cut2=0;
 alt2_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
@@ -529,6 +535,7 @@ alt2_1:
                     int oldpos3=ptr->pos;
                     int cut3=0;
 alt3_1:
+                    if(!ptr->branches)ptr->discard=ptr->pos;
                     ptr->branches+=2;
                     it=ptr->ary[ptr->pos];            ;
                     ptr->pos++;
@@ -738,6 +745,7 @@ accept1:
             int oldpos4=ptr->pos;
             int cut4=0;
 alt4_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=AmethystCore_anything(self );
             if (it==failobj) {
@@ -889,6 +897,7 @@ success2:
             int oldpos1=ptr->pos;
             int cut1=0;
 alt1_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=AmethystCore_anything(self );
             if (it==failobj) {
@@ -1061,6 +1070,7 @@ success2:
             int oldpos1=ptr->pos;
             int cut1=0;
 alt1_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=AmethystCore_anything(self );
             if (it==failobj) {

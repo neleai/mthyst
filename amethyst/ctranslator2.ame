@@ -149,7 +149,7 @@ s
                  memo_no=Compiler.grammars[@>grammar].memo_inc
                  s+="time_struct time_old=memo_get(ptr->mem,#{memo_no},ptr->src,ptr->pos); if (time_old.pos!=-1) {ptr->pos=time_old.pos;return time_old.result;} int oldpos=ptr->pos;"
                  s+=t
-                 s+="memo_fail:  memo_add(ptr->mem,#{memo_no},ptr->src,oldpos,it,ptr->pos,time_old); return it;\n"
+                 s+="memo_fail:if(!ptr->branches)ptr->discard=ptr->pos;time_old.discard=ptr->discard; memo_add(ptr->mem,#{memo_no},ptr->src,oldpos,it,ptr->pos,time_old); return it;\n"
                  @@profile_report << "if(ptr->mem){fprintf(profile_report,\"memo #{@>grammar}::#{@>rulename}  hit: %i miss: %i ticks: %i\\n\",((memo_struct *)ptr->mem)->hits[#{memo_no}],((memo_struct *)ptr->mem)->miss[#{memo_no}],((memo_struct *)ptr->mem)->ticks[#{memo_no}]);((memo_struct *)ptr->mem)->hits[#{memo_no}]=0;((memo_struct *)ptr->mem)->miss[#{memo_no}]=0;((memo_struct *)ptr->mem)->ticks[#{memo_no}]=0;}"
                  s}
         | Act[ .:a &{a=="_append("} Local:x . Local:y  . ] -> "it=AmethystCore_append(self,#{bget(x)},#{bget(y)});"
@@ -181,7 +181,7 @@ s
         | Bind[ trans:e {"#{e} #{@@locals_changed[@name]+=1; bset(@name,"it")};\n" } ]
         | Seq[ trans*:t {t*""} ]
         | Or[ {label("accept")}:accept {label("oldpos")}:oldpos label("alt"):alt {1}:altno {@@cutlabel}:oldcutlabel {@@cuts}:oldcuts {@@cuts=nil;@@cutlabel=label("cut")}
-           {"int #{oldpos}=ptr->pos;int #{@@cutlabel}=0;\n#{alt}_#{altno}:ptr->branches+=#{@ary.size};"}:s {@ary.size}:tot_alt 
+           {"int #{oldpos}=ptr->pos;int #{@@cutlabel}=0;\n#{alt}_#{altno}:if(!ptr->branches)ptr->discard=ptr->pos; ptr->branches+=#{@ary.size};"}:s {@ary.size}:tot_alt 
            ( &(.) {altno+=1}  rw("#{alt}_#{altno}",`persistent`):t
              {s+="#{t}\n;ptr->branches-=#{tot_alt+2-altno}; goto #{accept};\n"}
              {s+="#{alt}_#{altno}: ptr->pos=#{oldpos};#{@@cuts ? (@@cuts=nil;"if(#{@@cutlabel}){ptr->branches-=#{tot_alt-altno};it=failobj;goto #{@@faillabel};}") : ""}ptr->branches-=1;"}

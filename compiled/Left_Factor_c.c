@@ -74,6 +74,7 @@ VALUE Left_Factor_binds(VALUE self ,VALUE a0,VALUE a1) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -167,6 +168,7 @@ accept1:
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -303,6 +305,7 @@ VALUE Left_Factor_factor(VALUE self ,VALUE a0,VALUE a1,VALUE a2) {
     int oldpos1=ptr->pos;
     int cut1=0;
 alt1_1:
+    if(!ptr->branches)ptr->discard=ptr->pos;
     ptr->branches+=2;
     it=AmethystCore_anything(self );
     if (it==failobj) {
@@ -313,6 +316,7 @@ alt1_1:
     int oldpos2=ptr->pos;
     int cut2=0;
 alt2_1:
+    if(!ptr->branches)ptr->discard=ptr->pos;
     ptr->branches+=2;
     bind_aset(bind2,1,_start);
     bind_aset(bind2,2,_next);
@@ -478,6 +482,7 @@ VALUE Left_Factor_first(VALUE self ,VALUE a0) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -564,6 +569,7 @@ accept1:
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -704,6 +710,7 @@ VALUE Left_Factor_rest(VALUE self ,VALUE a0,VALUE a1) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -724,6 +731,7 @@ alt1_1:
             int oldpos2=ptr->pos;
             int cut2=0;
 alt2_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=AmethystCore_anything(self );
             if (it==failobj) {
@@ -932,6 +940,7 @@ VALUE Left_Factor_traverse(VALUE self ) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=Left_Factor_traverse_item(self );
         if (it==failobj) {
@@ -1015,6 +1024,8 @@ success1:
     _nvars=bind_aget(bind2,2);;
     __result=it;;
 memo_fail:
+    if(!ptr->branches)ptr->discard=ptr->pos;
+    time_old.discard=ptr->discard;
     memo_add(ptr->mem,117,ptr->src,oldpos,it,ptr->pos,time_old);
     return it;
 
@@ -1036,6 +1047,7 @@ VALUE Left_Factor_traverse_item(VALUE self ) {
             int oldpos1=ptr->pos;
             int cut1=0;
 alt1_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=3;
             it=Left_Factor_visit(self );
             if (it==failobj) {
@@ -1135,6 +1147,7 @@ accept1:
             int oldpos2=ptr->pos;
             int cut2=0;
 alt2_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
@@ -1218,6 +1231,7 @@ accept5:
             int oldpos3=ptr->pos;
             int cut3=0;
 alt3_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=3;
             it=Left_Factor_visit(self );
             if (it==failobj) {
@@ -1254,6 +1268,7 @@ alt3_2:
                 int oldpos4=ptr->pos;
                 int cut4=0;
 alt4_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=2;
                 it=Left_Factor_traverse_item(self );
                 if (it==failobj) {
@@ -1369,6 +1384,7 @@ accept8:
             int oldpos5=ptr->pos;
             int cut5=0;
 alt5_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
@@ -1384,6 +1400,7 @@ alt5_1:
                 int oldpos6=ptr->pos;
                 int cut6=0;
 alt6_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=2;
                 it=Left_Factor_traverse_item(self );
                 if (it==failobj) {
@@ -1504,6 +1521,7 @@ accept15:
             int oldpos7=ptr->pos;
             int cut7=0;
 alt7_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=Left_Factor_visit(self );
             if (it==failobj) {
@@ -1617,6 +1635,7 @@ VALUE Left_Factor_visit(VALUE self ) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=AmethystCore_anything(self );
         if (it==failobj) {
@@ -1627,6 +1646,7 @@ alt1_1:
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         bind_aset(bind2,1,_start);
         bind_aset(bind2,2,_next);

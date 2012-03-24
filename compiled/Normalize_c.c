@@ -154,11 +154,13 @@ success2:
                 int oldpos1=ptr->pos;
                 int cut1=0;
 alt1_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=3;
                 it=Amethyst_spaces(self );
                 int oldpos2=ptr->pos;
                 int cut2=0;
 alt2_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=2;
                 switch((unsigned char)*ame_curstr2(ptr)) {
                 case UC(0) ... 'Z':
@@ -311,6 +313,7 @@ alt1_2:
                         int oldpos3=ptr->pos;
                         int cut3=0;
 alt3_1:
+                        if(!ptr->branches)ptr->discard=ptr->pos;
                         ptr->branches+=2;
                         it=rb_str_new(ptr->str+ptr->pos,1);
                         ptr->pos++;
@@ -419,6 +422,7 @@ alt1_3:
                         int oldpos4=ptr->pos;
                         int cut4=0;
 alt4_1:
+                        if(!ptr->branches)ptr->discard=ptr->pos;
                         ptr->branches+=2;
                         it=rb_str_new(ptr->str+ptr->pos,1);
                         ptr->pos++;
@@ -511,6 +515,7 @@ accept1:
                 int oldpos5=ptr->pos;
                 int cut5=0;
 alt5_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=5;
                 it=Amethyst_spaces(self );
                 switch((unsigned char)*ame_curstr2(ptr)) {
@@ -663,6 +668,7 @@ alt5_4:
                         int oldpos6=ptr->pos;
                         int cut6=0;
 alt6_1:
+                        if(!ptr->branches)ptr->discard=ptr->pos;
                         ptr->branches+=2;
                         it=rb_str_new(ptr->str+ptr->pos,1);
                         ptr->pos++;
@@ -771,6 +777,7 @@ alt5_5:
                         int oldpos7=ptr->pos;
                         int cut7=0;
 alt7_1:
+                        if(!ptr->branches)ptr->discard=ptr->pos;
                         ptr->branches+=2;
                         it=rb_str_new(ptr->str+ptr->pos,1);
                         ptr->pos++;
@@ -861,6 +868,7 @@ accept14:
                 int oldpos8=ptr->pos;
                 int cut8=0;
 alt8_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=5;
                 it=Amethyst_spaces(self );
                 switch((unsigned char)*ame_curstr2(ptr)) {
@@ -926,6 +934,7 @@ alt8_2:
                         int oldpos9=ptr->pos;
                         int cut9=0;
 alt9_1:
+                        if(!ptr->branches)ptr->discard=ptr->pos;
                         ptr->branches+=2;
                         it=rb_str_new(ptr->str+ptr->pos,1);
                         ptr->pos++;
@@ -1082,6 +1091,7 @@ alt8_4:
                         int oldpos10=ptr->pos;
                         int cut10=0;
 alt10_1:
+                        if(!ptr->branches)ptr->discard=ptr->pos;
                         ptr->branches+=2;
                         it=rb_str_new(ptr->str+ptr->pos,1);
                         ptr->pos++;
@@ -1190,6 +1200,7 @@ alt8_5:
                         int oldpos11=ptr->pos;
                         int cut11=0;
 alt11_1:
+                        if(!ptr->branches)ptr->discard=ptr->pos;
                         ptr->branches+=2;
                         it=rb_str_new(ptr->str+ptr->pos,1);
                         ptr->pos++;
@@ -1343,6 +1354,7 @@ VALUE Normalize_apply2(VALUE self ) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=AmethystCore_anything(self );
         if (it==failobj) {
@@ -1360,6 +1372,7 @@ alt1_1:
             int oldpos2=ptr->pos;
             int cut2=0;
 alt2_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=3;
             it=_autovar_4;
             _autovar_5=it;;
@@ -1628,6 +1641,7 @@ accept3:
             int oldpos3=ptr->pos;
             int cut3=0;
 alt3_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=3;
             it=_autovar_11;
             _autovar_5=it;;
@@ -1777,6 +1791,7 @@ success9:
                 int oldpos4=ptr->pos;
                 int cut4=0;
 alt4_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=2;
                 it=AmethystCore_anything(self );
                 if (it==failobj) {
@@ -1963,6 +1978,7 @@ accept7:
             int oldpos5=ptr->pos;
             int cut5=0;
 alt5_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=3;
             it=_autovar_17;
             _autovar_5=it;;
@@ -2112,6 +2128,7 @@ success15:
                 int oldpos6=ptr->pos;
                 int cut6=0;
 alt6_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=2;
                 it=AmethystCore_anything(self );
                 if (it==failobj) {
@@ -2253,6 +2270,7 @@ accept14:
             int oldpos7=ptr->pos;
             int cut7=0;
 alt7_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=3;
             it=_autovar_18;
             _autovar_5=it;;
@@ -2505,6 +2523,7 @@ accept21:
             int oldpos8=ptr->pos;
             int cut8=0;
 alt8_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=3;
             it=_autovar_19;
             _autovar_5=it;;
@@ -2795,6 +2814,7 @@ VALUE Normalize_bind(VALUE self ) {
             int oldpos1=ptr->pos;
             int cut1=0;
 alt1_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
@@ -2925,6 +2945,7 @@ accept1:
             int oldpos2=ptr->pos;
             int cut2=0;
 alt2_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=Normalize_switch(self );
             if (it==failobj) {
@@ -2943,6 +2964,7 @@ alt2_1:
                 int oldpos3=ptr->pos;
                 int cut3=0;
 alt3_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=2;
                 it=AmethystCore_anything(self );
                 if (it==failobj) {
@@ -3102,6 +3124,7 @@ accept4:
             int oldpos4=ptr->pos;
             int cut4=0;
 alt4_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
@@ -3124,6 +3147,7 @@ alt4_1:
                 int oldpos5=ptr->pos;
                 int cut5=0;
 alt5_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=2;
                 it=AmethystCore_anything(self );
                 if (it==failobj) {
@@ -3437,6 +3461,7 @@ VALUE Normalize_or(VALUE self ) {
                 int oldpos1=ptr->pos;
                 int cut1=0;
 alt1_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=4;
                 it=ptr->ary[ptr->pos];            ;
                 ptr->pos++;
@@ -3593,6 +3618,7 @@ accept1:
                 int oldpos2=ptr->pos;
                 int cut2=0;
 alt2_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=4;
                 it=ptr->ary[ptr->pos];            ;
                 ptr->pos++;
@@ -3707,6 +3733,7 @@ accept6:
                 int oldpos3=ptr->pos;
                 int cut3=0;
 alt3_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=4;
                 it=rb_funcall(self,sy_Normalize_Placehol_6875,1,bind2);
                 arg0=it;
@@ -3754,6 +3781,7 @@ alt3_2:
                         int oldpos4=ptr->pos;
                         int cut4=0;
 alt4_1:
+                        if(!ptr->branches)ptr->discard=ptr->pos;
                         ptr->branches+=2;
                         it=Normalize_cant_fail(self );
                         if (it==failobj) {
@@ -3883,6 +3911,7 @@ accept11:
                 int oldpos5=ptr->pos;
                 int cut5=0;
 alt5_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=3;
                 it=rb_funcall(self,sy_Normalize_Placehol_6875,1,bind2);
                 arg0=it;
@@ -3988,12 +4017,14 @@ success1:
         int oldpos6=ptr->pos;
         int cut6=0;
 alt6_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=_autovar_11;
         _autovar_12=it;;
         int oldpos7=ptr->pos;
         int cut7=0;
 alt7_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=_autovar_12;
         _a=it;;
@@ -4158,6 +4189,7 @@ VALUE Normalize_seq2(VALUE self ) {
                 int oldpos1=ptr->pos;
                 int cut1=0;
 alt1_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=4;
                 it=ptr->ary[ptr->pos];            ;
                 ptr->pos++;
@@ -4313,6 +4345,7 @@ accept1:
                 int oldpos2=ptr->pos;
                 int cut2=0;
 alt2_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=4;
                 it=ptr->ary[ptr->pos];            ;
                 ptr->pos++;
@@ -4423,6 +4456,7 @@ accept6:
                 int oldpos3=ptr->pos;
                 int cut3=0;
 alt3_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=3;
                 it=rb_funcall(self,sy_Normalize_Placehol_6875,1,bind2);
                 arg0=it;
@@ -4524,12 +4558,14 @@ success1:
         int oldpos4=ptr->pos;
         int cut4=0;
 alt4_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=_autovar_9;
         _autovar_10=it;;
         int oldpos5=ptr->pos;
         int cut5=0;
 alt5_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=_autovar_10;
         _a=it;;
@@ -4698,6 +4734,7 @@ VALUE Normalize_switch(VALUE self ) {
             int oldpos1=ptr->pos;
             int cut1=0;
 alt1_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=AmethystCore_anything(self );
             if (it==failobj) {

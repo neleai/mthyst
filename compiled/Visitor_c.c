@@ -45,6 +45,7 @@ VALUE Visitor_traverse(VALUE self ) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=Visitor_traverse_item(self );
         if (it==failobj) {
@@ -141,6 +142,7 @@ VALUE Visitor_traverse_item(VALUE self ) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=3;
         it=rb_funcall(self,sy_visit,0);
         if (it==failobj) {
@@ -240,6 +242,7 @@ accept1:
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=3;
         it=rb_funcall(self,sy_visit,0);
         if (it==failobj) {
@@ -276,6 +279,7 @@ alt2_2:
             int oldpos3=ptr->pos;
             int cut3=0;
 alt3_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=Visitor_traverse_item(self );
             if (it==failobj) {
@@ -387,6 +391,7 @@ accept5:
         int oldpos4=ptr->pos;
         int cut4=0;
 alt4_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=rb_funcall(self,sy_visit,0);
         if (it==failobj) {

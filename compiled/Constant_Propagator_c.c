@@ -61,6 +61,7 @@ VALUE Constant_Propagator_step(VALUE self ,VALUE a0) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -217,6 +218,7 @@ accept1:
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -309,6 +311,7 @@ accept4:
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -394,6 +397,7 @@ accept7:
         int oldpos4=ptr->pos;
         int cut4=0;
 alt4_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;

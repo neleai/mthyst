@@ -149,6 +149,7 @@ VALUE Resolve_Calls_traverse(VALUE self ) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=Resolve_Calls_traverse_item(self );
         if (it==failobj) {
@@ -250,6 +251,7 @@ VALUE Resolve_Calls_traverse_item(VALUE self ) {
             int oldpos1=ptr->pos;
             int cut1=0;
 alt1_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=3;
             it=Resolve_Calls_visit(self );
             if (it==failobj) {
@@ -349,6 +351,7 @@ accept1:
             int oldpos2=ptr->pos;
             int cut2=0;
 alt2_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
@@ -432,6 +435,7 @@ accept5:
             int oldpos3=ptr->pos;
             int cut3=0;
 alt3_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=3;
             it=Resolve_Calls_visit(self );
             if (it==failobj) {
@@ -468,6 +472,7 @@ alt3_2:
                 int oldpos4=ptr->pos;
                 int cut4=0;
 alt4_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=2;
                 it=Resolve_Calls_traverse_item(self );
                 if (it==failobj) {
@@ -583,6 +588,7 @@ accept8:
             int oldpos5=ptr->pos;
             int cut5=0;
 alt5_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=ptr->ary[ptr->pos];            ;
             ptr->pos++;
@@ -598,6 +604,7 @@ alt5_1:
                 int oldpos6=ptr->pos;
                 int cut6=0;
 alt6_1:
+                if(!ptr->branches)ptr->discard=ptr->pos;
                 ptr->branches+=2;
                 it=Resolve_Calls_traverse_item(self );
                 if (it==failobj) {
@@ -718,6 +725,7 @@ accept15:
             int oldpos7=ptr->pos;
             int cut7=0;
 alt7_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=Resolve_Calls_visit(self );
             if (it==failobj) {
@@ -807,6 +815,7 @@ VALUE Resolve_Calls_visit(VALUE self ) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=3;
         it=_autovar_5;
         _autovar_6=it;;

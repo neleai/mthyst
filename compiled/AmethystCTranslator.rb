@@ -162,8 +162,8 @@ end
 def AmethystCTranslator__dq_if_sp__lp__sh__le_a_1643(bind)
 "if (#{ary=bind[1].split("");map_index(ary){|i| "ame_curstr2(ptr)[#{i}]==#{Lattice_Char.new.cchar(ary[i])}" }*"&&" })  ptr->pos+=#{bind[1].size}; else #{failwhen("1")}"
 end
-def AmethystCTranslator__dq_int_sp__sh__le_b_903e(bind)
-"int #{bind[1]}=ptr->pos;int #{@cutlabel}=0;\n#{bind[2]}_#{bind[3]}:ptr->branches+=#{src.ary.size};"
+def AmethystCTranslator__dq_int_sp__sh__le_b_51ce(bind)
+"int #{bind[1]}=ptr->pos;int #{@cutlabel}=0;\n#{bind[2]}_#{bind[3]}:if(!ptr->branches)ptr->discard=ptr->pos; ptr->branches+=#{src.ary.size};"
 end
 def AmethystCTranslator__dq_int_sp__sh__le_b_f6cd(bind)
 "int #{bind[1]}=ptr->pos;\n #{bind[2]} it=Qnil; goto #{bind[3]};  #{bind[4]}: it=failobj; #{bind[3]}: ptr->pos=#{bind[1]}; #{failwhen("it==failobj")}"
@@ -236,7 +236,7 @@ bind[1]="int #{@stoplabel}=0; while(!#{@stoplabel}){ #{bind[2]} } "
 									bind[1]
 								
 end
-def AmethystCTranslator_bind_lb_1_rb__eq__83f5(bind)
+def AmethystCTranslator_bind_lb_1_rb__eq__8c08(bind)
 bind[1]=""
                  if CurrentParser[:global_memo]
                    bind[1]+="if (ptr->mem==NULL){ptr->mem=mem_#{bind[2][:grammar]};}" 
@@ -246,7 +246,7 @@ bind[1]=""
                  memo_no=Compiler.grammars[bind[2][:grammar]].memo_inc
                  bind[1]+="time_struct time_old=memo_get(ptr->mem,#{memo_no},ptr->src,ptr->pos); if (time_old.pos!=-1) {ptr->pos=time_old.pos;return time_old.result;} int oldpos=ptr->pos;"
                  bind[1]+=bind[3]
-                 bind[1]+="memo_fail:  memo_add(ptr->mem,#{memo_no},ptr->src,oldpos,it,ptr->pos,time_old); return it;\n"
+                 bind[1]+="memo_fail:if(!ptr->branches)ptr->discard=ptr->pos;time_old.discard=ptr->discard; memo_add(ptr->mem,#{memo_no},ptr->src,oldpos,it,ptr->pos,time_old); return it;\n"
                  @profile_report << "if(ptr->mem){fprintf(profile_report,\"memo #{bind[2][:grammar]}::#{bind[2][:rulename]}  hit: %i miss: %i ticks: %i\\n\",((memo_struct *)ptr->mem)->hits[#{memo_no}],((memo_struct *)ptr->mem)->miss[#{memo_no}],((memo_struct *)ptr->mem)->ticks[#{memo_no}]);((memo_struct *)ptr->mem)->hits[#{memo_no}]=0;((memo_struct *)ptr->mem)->miss[#{memo_no}]=0;((memo_struct *)ptr->mem)->ticks[#{memo_no}]=0;}"
                  bind[1]
 end

@@ -47,6 +47,7 @@ VALUE First_Dataflow_first(VALUE self ) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -123,6 +124,7 @@ accept1:
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -243,6 +245,7 @@ accept4:
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -322,6 +325,7 @@ accept7:
         int oldpos4=ptr->pos;
         int cut4=0;
 alt4_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -409,6 +413,7 @@ accept10:
         int oldpos5=ptr->pos;
         int cut5=0;
 alt5_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=First_Dataflow_switch(self );
         if (it==failobj) {
@@ -425,6 +430,7 @@ alt5_1:
             int oldpos6=ptr->pos;
             int cut6=0;
 alt6_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=AmethystCore_anything(self );
             if (it==failobj) {
@@ -573,6 +579,7 @@ accept13:
         int oldpos7=ptr->pos;
         int cut7=0;
 alt7_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -588,6 +595,7 @@ alt7_1:
             int oldpos8=ptr->pos;
             int cut8=0;
 alt8_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=AmethystCore_anything(self );
             if (it==failobj) {
@@ -635,6 +643,7 @@ success9:
             int oldpos9=ptr->pos;
             int cut9=0;
 alt9_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             bind_aset(bind2,1,_el);
             it=rb_funcall(self,sy_First_Dataflow__lp_,1,bind2);
@@ -885,6 +894,7 @@ VALUE First_Dataflow_switch(VALUE self ) {
             int oldpos1=ptr->pos;
             int cut1=0;
 alt1_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=AmethystCore_anything(self );
             if (it==failobj) {

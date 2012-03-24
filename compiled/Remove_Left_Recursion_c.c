@@ -52,6 +52,7 @@ VALUE Remove_Left_Recursion_first(VALUE self ,VALUE a0) {
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -153,6 +154,7 @@ accept1:
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -287,6 +289,7 @@ accept4:
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -302,6 +305,7 @@ alt3_1:
             int oldpos4=ptr->pos;
             int cut4=0;
 alt4_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             bind_aset(bind2,1,_autovar_2);
             it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_d6d5,1,bind2);
@@ -438,6 +442,7 @@ accept7:
         int oldpos5=ptr->pos;
         int cut5=0;
 alt5_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -447,6 +452,7 @@ alt5_1:
         int oldpos6=ptr->pos;
         int cut6=0;
 alt6_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=_autovar_13;
         _autovar_14=it;;
@@ -467,6 +473,7 @@ alt6_1:
             int oldpos7=ptr->pos;
             int cut7=0;
 alt7_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=AmethystCore_anything(self );
             if (it==failobj) {
@@ -612,6 +619,7 @@ alt6_2:
             int oldpos8=ptr->pos;
             int cut8=0;
 alt8_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=AmethystCore_anything(self );
             if (it==failobj) {
@@ -904,6 +912,7 @@ success1:
         int oldpos1=ptr->pos;
         int cut1=0;
 alt1_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -1019,6 +1028,7 @@ accept1:
         int oldpos2=ptr->pos;
         int cut2=0;
 alt2_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -1165,6 +1175,7 @@ accept4:
         int oldpos3=ptr->pos;
         int cut3=0;
 alt3_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -1180,6 +1191,7 @@ alt3_1:
             int oldpos4=ptr->pos;
             int cut4=0;
 alt4_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             bind_aset(bind2,1,_autovar_8);
             it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_d6d5,1,bind2);
@@ -1328,6 +1340,7 @@ accept7:
         int oldpos5=ptr->pos;
         int cut5=0;
 alt5_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -1339,6 +1352,7 @@ alt5_1:
         int oldpos6=ptr->pos;
         int cut6=0;
 alt6_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=_autovar_21;
         _autovar_22=it;;
@@ -1359,6 +1373,7 @@ alt6_1:
             int oldpos7=ptr->pos;
             int cut7=0;
 alt7_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=AmethystCore_anything(self );
             if (it==failobj) {
@@ -1504,6 +1519,7 @@ alt6_2:
             int oldpos8=ptr->pos;
             int cut8=0;
 alt8_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=AmethystCore_anything(self );
             if (it==failobj) {
@@ -1730,6 +1746,7 @@ success3:
         int oldpos9=ptr->pos;
         int cut9=0;
 alt9_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -1845,6 +1862,7 @@ accept25:
         int oldpos10=ptr->pos;
         int cut10=0;
 alt10_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -1991,6 +2009,7 @@ accept28:
         int oldpos11=ptr->pos;
         int cut11=0;
 alt11_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -2006,6 +2025,7 @@ alt11_1:
             int oldpos12=ptr->pos;
             int cut12=0;
 alt12_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             bind_aset(bind2,1,_autovar_8);
             it=rb_funcall(self,sy_Remove_Left_Recursion__at__contex_d6d5,1,bind2);
@@ -2154,6 +2174,7 @@ accept31:
         int oldpos13=ptr->pos;
         int cut13=0;
 alt13_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=ptr->ary[ptr->pos];            ;
         ptr->pos++;
@@ -2165,6 +2186,7 @@ alt13_1:
         int oldpos14=ptr->pos;
         int cut14=0;
 alt14_1:
+        if(!ptr->branches)ptr->discard=ptr->pos;
         ptr->branches+=2;
         it=_autovar_33;
         _autovar_22=it;;
@@ -2185,6 +2207,7 @@ alt14_1:
             int oldpos15=ptr->pos;
             int cut15=0;
 alt15_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=AmethystCore_anything(self );
             if (it==failobj) {
@@ -2330,6 +2353,7 @@ alt14_2:
             int oldpos16=ptr->pos;
             int cut16=0;
 alt16_1:
+            if(!ptr->branches)ptr->discard=ptr->pos;
             ptr->branches+=2;
             it=AmethystCore_anything(self );
             if (it==failobj) {

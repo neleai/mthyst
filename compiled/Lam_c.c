@@ -60,6 +60,7 @@ VALUE Lam_lam(VALUE self ) {
     int oldpos1=ptr->pos;
     int cut1=0;
 alt1_1:
+    if(!ptr->branches)ptr->discard=ptr->pos;
     ptr->branches+=2;
     it=rb_funcall(self,sy_bar,0);
     if (it==failobj) {
