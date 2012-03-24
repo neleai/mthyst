@@ -585,6 +585,11 @@ accept21:
             it=failobj;
             goto pass5;
         }
+        it=Qnil;
+        if (ptr->pos<ptr->len) {
+            it=failobj;
+            goto pass5;
+        }
         it=_autovar_6;
         _ary=it;;
 
@@ -878,6 +883,7 @@ alt2_1:
             goto pass2;
         }
         _name=it;;
+        ptr->pos=ptr->len;
         bind_aset(bind2,1,_name);
         it=rb_funcall(self,sy_Cant_Fail_Dataflow__lp_Compile_7f7b,1,bind2);
         _name=bind_aget(bind2,1);;

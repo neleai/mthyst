@@ -8,6 +8,10 @@ VALUE Detect_Size_predicate2(VALUE self ,VALUE a0);
 VALUE Detect_Size_predicate2(VALUE self ,VALUE);
 VALUE switchhash_Detect_Size_1;
 VALUE switchhash_Detect_Size_2;
+VALUE switchhash_Detect_Size_3;
+VALUE switchhash_Detect_Size_4;
+VALUE switchhash_Detect_Size_5;
+VALUE switchhash_Detect_Size_6;
 static VALUE sy_Detect_Size_Or_dot_creat_49b2;
 static VALUE sy_Detect_Size_Seq_dot_crea_bfbb;
 static VALUE sy_Detect_Size__lb_bind_lb_1_rb__2d76;
@@ -153,22 +157,36 @@ alt1_1:
             ptr->ary=alloca(sizeof(VALUE));
             ptr->ary[0]=_autovar;
             ptr->len=1;
-            bind_aset(bind2,1,_s);
-            bind_aset(bind2,2,_msize);
-            it=rb_funcall(self,sy_Detect_Size__lb_bind_lb_1_rb__2d76,1,bind2);
-            _s=bind_aget(bind2,1);;
-            _msize=bind_aget(bind2,2);;
-            arg0=it;
-            it=Detect_Size_predicate2(self ,arg0);
-            if (it==failobj) {
-                it=failobj;
-                goto pass4;
-            }
-            _autovar_3=it;;
-            it=Qnil;
-            if (ptr->pos<ptr->len) {
-                it=failobj;
-                goto pass4;
+            switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Size_2,rb_obj_class(ame_curobj2(ptr))))) {
+            case 0/*Apply*/:
+            case 1/*Or*/:
+            case 2/*Seq*/:
+                ;
+                bind_aset(bind2,1,_s);
+                bind_aset(bind2,2,_msize);
+                it=rb_funcall(self,sy_Detect_Size__lb_bind_lb_1_rb__2d76,1,bind2);
+                _s=bind_aget(bind2,1);;
+                _msize=bind_aget(bind2,2);;
+                arg0=it;
+                it=Detect_Size_predicate2(self ,arg0);
+                if (it==failobj) {
+                    it=failobj;
+                    goto pass4;
+                }
+                _autovar_3=it;;
+                it=Qnil;
+                if (ptr->pos<ptr->len) {
+                    it=failobj;
+                    goto pass4;
+                }
+                break;
+            case 3/*Object*/:
+                ;
+                if (1) {
+                    it=failobj;
+                    goto pass4;
+                }
+                break;
             }
             goto success4;
 pass4:
@@ -302,22 +320,36 @@ alt2_1:
             ptr->ary=alloca(sizeof(VALUE));
             ptr->ary[0]=_autovar;
             ptr->len=1;
-            bind_aset(bind2,1,_s);
-            bind_aset(bind2,2,_msize);
-            it=rb_funcall(self,sy_Detect_Size__lb_bind_lb_1_rb__2d76,1,bind2);
-            _s=bind_aget(bind2,1);;
-            _msize=bind_aget(bind2,2);;
-            arg0=it;
-            it=Detect_Size_predicate2(self ,arg0);
-            if (it==failobj) {
-                it=failobj;
-                goto pass6;
-            }
-            _autovar_3=it;;
-            it=Qnil;
-            if (ptr->pos<ptr->len) {
-                it=failobj;
-                goto pass6;
+            switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Size_3,rb_obj_class(ame_curobj2(ptr))))) {
+            case 0/*Apply*/:
+            case 1/*Or*/:
+            case 2/*Seq*/:
+                ;
+                bind_aset(bind2,1,_s);
+                bind_aset(bind2,2,_msize);
+                it=rb_funcall(self,sy_Detect_Size__lb_bind_lb_1_rb__2d76,1,bind2);
+                _s=bind_aget(bind2,1);;
+                _msize=bind_aget(bind2,2);;
+                arg0=it;
+                it=Detect_Size_predicate2(self ,arg0);
+                if (it==failobj) {
+                    it=failobj;
+                    goto pass6;
+                }
+                _autovar_3=it;;
+                it=Qnil;
+                if (ptr->pos<ptr->len) {
+                    it=failobj;
+                    goto pass6;
+                }
+                break;
+            case 3/*Object*/:
+                ;
+                if (1) {
+                    it=failobj;
+                    goto pass6;
+                }
+                break;
             }
             goto success6;
 pass6:
@@ -457,7 +489,7 @@ VALUE Detect_Size_predicate2(VALUE self ,VALUE a0) {
     VALUE arg0;
     cstruct *ptr;
     Data_Get_Struct(self,cstruct,ptr);
-    switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Size_2,rb_obj_class(ame_curobj2(ptr))))) {
+    switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Size_4,rb_obj_class(ame_curobj2(ptr))))) {
     case 0/*Apply*/:
         ;
         it=ptr->ary[ptr->pos];            ;
@@ -545,22 +577,36 @@ alt1_1:
             ptr->ary=alloca(sizeof(VALUE));
             ptr->ary[0]=_autovar_4;
             ptr->len=1;
-            bind_aset(bind2,1,_s_2);
-            bind_aset(bind2,2,_msize);
-            it=rb_funcall(self,sy_Detect_Size__lb_bind_lb_1_rb__2d76,1,bind2);
-            _s_2=bind_aget(bind2,1);;
-            _msize=bind_aget(bind2,2);;
-            arg0=it;
-            it=Detect_Size_predicate2(self ,arg0);
-            if (it==failobj) {
-                it=failobj;
-                goto pass3;
-            }
-            _autovar_5=it;;
-            it=Qnil;
-            if (ptr->pos<ptr->len) {
-                it=failobj;
-                goto pass3;
+            switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Size_5,rb_obj_class(ame_curobj2(ptr))))) {
+            case 0/*Apply*/:
+            case 1/*Or*/:
+            case 2/*Seq*/:
+                ;
+                bind_aset(bind2,1,_s_2);
+                bind_aset(bind2,2,_msize);
+                it=rb_funcall(self,sy_Detect_Size__lb_bind_lb_1_rb__2d76,1,bind2);
+                _s_2=bind_aget(bind2,1);;
+                _msize=bind_aget(bind2,2);;
+                arg0=it;
+                it=Detect_Size_predicate2(self ,arg0);
+                if (it==failobj) {
+                    it=failobj;
+                    goto pass3;
+                }
+                _autovar_5=it;;
+                it=Qnil;
+                if (ptr->pos<ptr->len) {
+                    it=failobj;
+                    goto pass3;
+                }
+                break;
+            case 3/*Object*/:
+                ;
+                if (1) {
+                    it=failobj;
+                    goto pass3;
+                }
+                break;
             }
             goto success3;
 pass3:
@@ -681,22 +727,36 @@ alt2_1:
             ptr->ary=alloca(sizeof(VALUE));
             ptr->ary[0]=_autovar_4;
             ptr->len=1;
-            bind_aset(bind2,1,_s_2);
-            bind_aset(bind2,2,_msize);
-            it=rb_funcall(self,sy_Detect_Size__lb_bind_lb_1_rb__2d76,1,bind2);
-            _s_2=bind_aget(bind2,1);;
-            _msize=bind_aget(bind2,2);;
-            arg0=it;
-            it=Detect_Size_predicate2(self ,arg0);
-            if (it==failobj) {
-                it=failobj;
-                goto pass5;
-            }
-            _autovar_5=it;;
-            it=Qnil;
-            if (ptr->pos<ptr->len) {
-                it=failobj;
-                goto pass5;
+            switch(FIX2LONG(rb_hash_aref(switchhash_Detect_Size_6,rb_obj_class(ame_curobj2(ptr))))) {
+            case 0/*Apply*/:
+            case 1/*Or*/:
+            case 2/*Seq*/:
+                ;
+                bind_aset(bind2,1,_s_2);
+                bind_aset(bind2,2,_msize);
+                it=rb_funcall(self,sy_Detect_Size__lb_bind_lb_1_rb__2d76,1,bind2);
+                _s_2=bind_aget(bind2,1);;
+                _msize=bind_aget(bind2,2);;
+                arg0=it;
+                it=Detect_Size_predicate2(self ,arg0);
+                if (it==failobj) {
+                    it=failobj;
+                    goto pass5;
+                }
+                _autovar_5=it;;
+                it=Qnil;
+                if (ptr->pos<ptr->len) {
+                    it=failobj;
+                    goto pass5;
+                }
+                break;
+            case 3/*Object*/:
+                ;
+                if (1) {
+                    it=failobj;
+                    goto pass5;
+                }
+                break;
             }
             goto success5;
 pass5:
@@ -804,6 +864,14 @@ void Init_Detect_Size_c() {
     rb_global_variable(&switchhash_Detect_Size_1);;
     switchhash_Detect_Size_2=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Or\nnext h[k]=2 if k<=Seq\nnext h[k]=3 if k<=Object\n}");
     rb_global_variable(&switchhash_Detect_Size_2);;
+    switchhash_Detect_Size_3=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Or\nnext h[k]=2 if k<=Seq\nnext h[k]=3 if k<=Object\n}");
+    rb_global_variable(&switchhash_Detect_Size_3);;
+    switchhash_Detect_Size_4=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Or\nnext h[k]=2 if k<=Seq\nnext h[k]=3 if k<=Object\n}");
+    rb_global_variable(&switchhash_Detect_Size_4);;
+    switchhash_Detect_Size_5=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Or\nnext h[k]=2 if k<=Seq\nnext h[k]=3 if k<=Object\n}");
+    rb_global_variable(&switchhash_Detect_Size_5);;
+    switchhash_Detect_Size_6=rb_eval_string("Hash.new{|h,k|next h[k]=0 if k<=Apply\nnext h[k]=1 if k<=Or\nnext h[k]=2 if k<=Seq\nnext h[k]=3 if k<=Object\n}");
+    rb_global_variable(&switchhash_Detect_Size_6);;
     sy_Detect_Size_Or_dot_creat_49b2=rb_intern("Detect_Size_Or_dot_creat_49b2");
     sy_Detect_Size_Seq_dot_crea_bfbb=rb_intern("Detect_Size_Seq_dot_crea_bfbb");
     sy_Detect_Size__lb_bind_lb_1_rb__2d76=rb_intern("Detect_Size__lb_bind_lb_1_rb__2d76");

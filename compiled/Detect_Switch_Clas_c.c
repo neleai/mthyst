@@ -1958,10 +1958,6 @@ alt7_1:
             _s=bind_aget(bind2,2);;
             arg1=it;
             it=Detect_First_combine_seq(self ,arg0,arg1);
-            if (it==failobj) {
-                it=failobj;
-                goto revert15;
-            }
             __result_3=it;;
 
             ;
@@ -2196,10 +2192,6 @@ alt10_1:
             _s=bind_aget(bind2,2);;
             arg1=it;
             it=Detect_First_combine_seq(self ,arg0,arg1);
-            if (it==failobj) {
-                it=failobj;
-                goto revert22;
-            }
             __result_3=it;;
 
             ;

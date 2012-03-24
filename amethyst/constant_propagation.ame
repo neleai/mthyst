@@ -75,9 +75,9 @@ amethyst Constant_Propagator{
                                depend.reverse.edges[el].each{|e| a=a+valof(e)}
                                a}]
                    | Bind[.:expr valof(expr)]
-                   |  Act[ Local[.* valof(@self)]
+                   |  Act[(Local[.* valof(@self)]
                          | Lambda[.*{ConstantLattice[@self]}]
-                         ]
+                         ):x eof {x}]
                    | CAct[ .* @self:val {ConstantLattice[val]}]
                    | . {ConstantLattice[Top]}
                    )

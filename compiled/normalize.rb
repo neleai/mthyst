@@ -26,7 +26,7 @@ def normalize_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def normalize_source_hash
-'8412e91bd6cf029d6aad21049b231158'
+'70c10cca1afb5e383e5b2794eeeaa3fb'
 end
 def testversionnormalize(r)
  raise "invalid version" if r!=normalize_version

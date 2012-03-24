@@ -225,7 +225,7 @@ amethyst First_Dataflow {
   first = switch[ [ .:p  value:v {p.is_a?(lattice)? p & v : v}:[vals] ]* ] -> vals.inject(:|)
         | Seq[{lattice.bottom}:val (.:el {el}=>value:nev {val.seqjoin(nev)}:val  (~{can_empty?(el)} .* | {}) )*    {val}]
         | Many[value:val {val|lattice.bottom} ]
-        | Apply[ :name &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name].body}=>value ]
+        | Apply[ :name .* &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name].body}=>value ]
         | Bind[ value] 
         | (Act|CAct|Local|Result|Cut|Stop|Pass|Lookahead)[.* {lattice.bottom} ]
         | .:el {lattice.top|lattice.bottom}
@@ -254,7 +254,7 @@ amethyst Maxsize_Dataflow < First_Dataflow {
 }
 
 amethyst Complexity_Dataflow < First_Dataflow {
-  first = Apply[ :name &{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name].body}=>value:v ] -> lattice[2*v.value]
+  first = Apply[ :name  .*&{Compiler.grammars[@clas]&&Compiler.grammars[@clas].rules[name]}  { Compiler.grammars[@clas].rules[name].body}=>value:v ] -> lattice[2*v.value]
         | Many[ value:v ]            -> lattice[20*v.value]
         | Seq[ value*:v ]            -> lattice[v.map{|w| w.value}.inject(:+)]
         | switch[ [ . value:[v] ]* ] -> lattice[v.map{|w| w.value}.max+1]
@@ -282,7 +282,7 @@ amethyst Cant_Fail_Dataflow < First_Dataflow{
 				| Lookahead[.* ]       -> lattice.top
 				| Apply[ ["advance_char" | "advance_clas"] ] -> lattice.bottom
 				| Pass[ @to=>value ]
-				| Or[ (~(Cut | Seq[ (Cut .* break | .)* ]) value)*:ary   ] -> lattice[ary.map{|e|e.value}.inject(:|)]
+				| Or[ (~(Cut | Seq[ (Cut .* break | .)* ]) value)*:ary  eof ] -> lattice[ary.map{|e|e.value}.inject(:|)]
 				| super
 }
 

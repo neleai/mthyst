@@ -280,7 +280,7 @@ def detect_switch_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def detect_switch_source_hash
-'2ae5e5b6410a71395909d93fa0b8427f'
+'21ec41c9fb257e88f0acf280953e5797'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version

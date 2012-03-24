@@ -788,6 +788,7 @@ alt2_1:
             goto pass2;
         }
         _name=it;;
+        ptr->pos=ptr->len;
         bind_aset(bind2,1,_name);
         it=rb_funcall(self,sy_Maxsize_Dataflow__lp_Compile_7f7b,1,bind2);
         _name=bind_aget(bind2,1);;

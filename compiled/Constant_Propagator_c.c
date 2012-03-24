@@ -40,7 +40,7 @@ fail:
 }
 VALUE Constant_Propagator_step(VALUE self ,VALUE a0) {
     VALUE vals[1];
-    VALUE it ,_el=Qnil,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_autovar_4=Qnil,_autovar_5=Qnil,_autovar_6=Qnil,_autovar_7=Qnil,_autovar_8=Qnil,_autovar_9=Qnil,_expr=Qnil,_autovar_10=Qnil,_autovar_11=Qnil,_val=Qnil,_autovar_12=Qnil,_autovar_13=Qnil,_autovar_14=Qnil,__result=Qnil;
+    VALUE it ,_el=Qnil,_autovar=Qnil,_autovar_2=Qnil,_autovar_3=Qnil,_autovar_4=Qnil,_x=Qnil,_autovar_5=Qnil,_autovar_6=Qnil,_autovar_7=Qnil,_autovar_8=Qnil,_autovar_9=Qnil,_expr=Qnil,_autovar_10=Qnil,_autovar_11=Qnil,_val=Qnil,_autovar_12=Qnil,_autovar_13=Qnil,_autovar_14=Qnil,__result=Qnil;
     VALUE bind2=bind_new2(1);
     _el=a0;;
     VALUE arg0;
@@ -102,7 +102,14 @@ success3:
                 it=failobj;
                 goto pass2;
             }
+            it=Qnil;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass2;
+            }
             it=_autovar_4;
+            _x=it;;
+            it=_x;
             _autovar_5=it;;
             break;
         case 1/*Local*/:
@@ -142,7 +149,14 @@ success4:
                 it=failobj;
                 goto pass2;
             }
+            it=Qnil;
+            if (ptr->pos<ptr->len) {
+                it=failobj;
+                goto pass2;
+            }
             it=_autovar_7;
+            _x=it;;
+            it=_x;
             _autovar_5=it;;
             break;
         case 2/*Object*/:

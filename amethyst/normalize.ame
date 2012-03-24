@@ -94,12 +94,13 @@ amethyst Normalize{
              ( Apply[ ["fails"] {@self} ]
              | switch[ {[]}:ary [.:p .:a {ary<<[p,Bind[name,a]]} ]* {@self.class[{:ary=>ary}]} ] 
              | Seq[.+:ary] {Seq[ary[0...-1]]}:first {ary[-1]}:last
-               {last}=>( (Comment|Cut|Stop) -> Seq[Bind[name,first],last]
-                       | .                  -> Seq[first,Bind[name,last]]
+               {last}=>( noresult -> Seq[Bind[name,first],last]
+                       | .        -> Seq[first,Bind[name,last]]
                        )
              | . -> @self
              ) ]       
 
+  noresult = Comment | Cut | Stop | Apply[ ["eof"] ] 
   
   switch = Switch_Char | Switch_Clas
          | Or[.*:ary] -> Switch_Or.create(:ary=>ary.map{|k| [nil,k]})
@@ -111,7 +112,7 @@ amethyst Normalize{
                 | .* {@self.freeze}
                 ]
 
-  act =  Act[ String[("[]"                  
+  act =  Act[(String[("[]"                  
                      |  number                    
                      |  <A-Z> <A-Za-z0-9_>* &{eval(@self).is_a?(Class)}
                      |  "true"|"false"|"nil"
@@ -121,5 +122,5 @@ amethyst Normalize{
                     "" ] -> CAct[eval(@ary[0])]
             | Lambda[ .* {Act.create(@self,{:pure=>true}).freeze }]
             | Act | CAct | Local
-            ]
+            ):x eof {x}]
 }
