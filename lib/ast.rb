@@ -15,7 +15,6 @@ def dataflow_def(name,clas,code)
       #{code.gsub("@df","#{dn}.analyze(el)")}
      end
     ")
-  puts o
   eval(o)
 end
 
