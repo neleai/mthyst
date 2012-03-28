@@ -238,21 +238,11 @@ require File.expand_path(File.dirname(__FILE__))+'/Detect_First.rb'
 
 
 class Detect_Switch_Char < Detect_First
-  def first(s)
-    if !$switchdf_char
-      $switchdf_char=Switch_Char_Dataflow.new;     $switchdf_char.parse(:root,[])
-    end
-    $switchdf_char.analyze(s)
-  end
+  def first(s); first_char(s); end
 end
 
 class Detect_Switch_Clas < Detect_First
-  def first(s)
-    if !$switchdf_clas
-      $switchdf_clas=Switch_Clas_Dataflow.new;      $switchdf_clas.parse(:root,[])
-    end
-    $switchdf_clas.analyze(s)
-  end
+  def first(s); first_clas(s); end  
 end
 
 
@@ -277,7 +267,7 @@ def detect_switch_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def detect_switch_source_hash
-'b73967152d4cbef3ba76b3686d914164'
+'1c587b8f4bd51783c6ecc98bc4fe3785'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version

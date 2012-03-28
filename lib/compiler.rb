@@ -7,8 +7,11 @@ def debug_print(t)
 	puts t.inspect if Amethyst::Settings.debug>1
 end
 
-dataflow_def("min_size","Minsize_Dataflow","@df")
-dataflow_def("max_size","Maxsize_Dataflow","@df")
+dataflow_def("min_size","Minsize_Dataflow","@df.size")
+dataflow_def("max_size","Maxsize_Dataflow","@df.size")
+dataflow_def("first_char","Switch_Char_Dataflow","@df")
+dataflow_def("first_clas","Switch_Clas_Dataflow","@df")
+
 
 dataflow_def("can_empty?","Minsize_Dataflow","@df.size==0")
 dataflow_def("must_empty?","Maxsize_Dataflow","@df.size==0")
