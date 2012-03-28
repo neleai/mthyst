@@ -42,6 +42,10 @@ class AmethystCore
   
   def match(t);    parse(:expr,t);  end
   alias_method :=~,:match
+
+  def string_from_to(oldpos,newpos)
+    src[oldpos...newpos]
+  end
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/Ame.so"
 

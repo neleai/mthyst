@@ -38,7 +38,11 @@ amethyst Amethyst < AmethystCore {
   fails = &{false}
 
   token(s) = spaces seq(s)
+
   seq(s) = _seq(s) {s}
+
+  #now slow  
+  #seq(s) = {pos}:oldpos _seq(s) {string_from_to(oldpos,pos);}
   
   member(x) = .:a &{x === a} {a}
   true = member(true) false = member(false)  nil = member(nil) 
