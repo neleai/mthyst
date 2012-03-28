@@ -78,7 +78,7 @@ static VALUE sy_AmethystCTranslator__at_init_eq__lb__rb__47da;
 static VALUE sy_AmethystCTranslator__at_init_sp__sp__lt__aac8;
 static VALUE sy_AmethystCTranslator__at_lambdas_8894;
 static VALUE sy_AmethystCTranslator__at_locals__1adc;
-static VALUE sy_AmethystCTranslator__at_locals__6b00;
+static VALUE sy_AmethystCTranslator__at_locals__3b8a;
 static VALUE sy_AmethystCTranslator__at_maxargs_25d8;
 static VALUE sy_AmethystCTranslator__at_stoplab_2ba4;
 static VALUE sy_AmethystCTranslator__at_stoplab_a14e;
@@ -583,7 +583,7 @@ VALUE AmethystCTranslator_persistent(VALUE self ) {
     bind_aset(bind2,2,_pre);
     bind_aset(bind2,3,_rev);
     bind_aset(bind2,4,_ap);
-    it=rb_funcall(self,sy_AmethystCTranslator__at_locals__6b00,1,bind2);
+    it=rb_funcall(self,sy_AmethystCTranslator__at_locals__3b8a,1,bind2);
     _oldl=bind_aget(bind2,1);;
     _pre=bind_aget(bind2,2);;
     _rev=bind_aget(bind2,3);;
@@ -4664,7 +4664,7 @@ void Init_AmethystCTranslator_c() {
     sy_AmethystCTranslator__at_init_sp__sp__lt__aac8=rb_intern("AmethystCTranslator__at_init_sp__sp__lt__aac8");
     sy_AmethystCTranslator__at_lambdas_8894=rb_intern("AmethystCTranslator__at_lambdas_8894");
     sy_AmethystCTranslator__at_locals__1adc=rb_intern("AmethystCTranslator__at_locals__1adc");
-    sy_AmethystCTranslator__at_locals__6b00=rb_intern("AmethystCTranslator__at_locals__6b00");
+    sy_AmethystCTranslator__at_locals__3b8a=rb_intern("AmethystCTranslator__at_locals__3b8a");
     sy_AmethystCTranslator__at_maxargs_25d8=rb_intern("AmethystCTranslator__at_maxargs_25d8");
     sy_AmethystCTranslator__at_stoplab_2ba4=rb_intern("AmethystCTranslator__at_stoplab_2ba4");
     sy_AmethystCTranslator__at_stoplab_a14e=rb_intern("AmethystCTranslator__at_stoplab_a14e");

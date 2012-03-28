@@ -78,9 +78,9 @@ end
 def AmethystCTranslator__at_locals__1adc(bind)
 @locals_changed.clone
 end
-def AmethystCTranslator__at_locals__6b00(bind)
+def AmethystCTranslator__at_locals__3b8a(bind)
 @locals_changed.each{|k,v| if v> bind[1][k]
-               bind[2]+="VALUE #{bind[3]}#{desc(k)}=rb_funcall(#{bget(k)},rb_intern(\"dup\"),0);";bind[4]+=bset(k,"#{bind[3]}#{desc(k)}")
+               bind[2]+="VALUE #{bind[3]}#{desc(k)}=#{bget(k)};";bind[4]+=bset(k,"#{bind[3]}#{desc(k)}")
                end}
 end
 def AmethystCTranslator__at_maxargs_25d8(bind)

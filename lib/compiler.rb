@@ -110,6 +110,7 @@ class <<Compiler
 
 		topo= callg.topo_order
 		#TODO resolve name clashes
+    #TODO recursive 
 		called=callg.reverse.reachable(names)
 		called.each{|name,v| g.rules[name]=g.getrule(name)}
 		puts called.inspect;

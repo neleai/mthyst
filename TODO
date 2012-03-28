@@ -73,6 +73,7 @@ compile to c at background
 separate dataflow and dead code elimination
 
 predicated inlining
+parametrization 
 inlining concrete and general form
 can use overaproximation from more general form?
 copy propagation, expression variables
@@ -109,3 +110,5 @@ slice analysis
 
 origin tracking string
 buffers
+
+memoization use write-back cache.

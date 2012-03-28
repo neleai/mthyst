@@ -236,7 +236,7 @@ s
   persistent = label("revert"):rev label("accept"):acc {@@locals_changed.clone}:oldl  
                rw(rev)(|trans|):t 
                {""}:pre {""}:ap {@@locals_changed.each{|k,v| if v> oldl[k]
-               pre+="VALUE #{rev}#{desc(k)}=rb_funcall(#{bget(k)},rb_intern(\"dup\"),0);";ap+=bset(k,"#{rev}#{desc(k)}")
+               pre+="VALUE #{rev}#{desc(k)}=#{bget(k)};";ap+=bset(k,"#{rev}#{desc(k)}")
                end}}
                {pre,ap="","" if $disable_persistence}
                {"#{pre} #{t}\n;goto #{acc};#{rev}:; #{ap} goto #{@@faillabel}; #{acc}:;\n"}
