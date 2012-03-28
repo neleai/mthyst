@@ -287,9 +287,6 @@ amethyst Cant_Fail_Dataflow < First_Dataflow{
 }
 
 
-dataflow_def("can_empty?","Minsize_Dataflow","@df.size==0")
-dataflow_def("must_empty?","Maxsize_Dataflow","@df.size==0")
-dataflow_def("cant_fail?","Cant_Fail_Dataflow","@df.value")
 
 amethyst Detect_First < Traverser_Clone2 {
   itrans =   (Grammar[ {@>name=@name} {$rules={};@rules.each{|r| $rules[r.name]=r}} @rules=>[ Rule[root]*:rules ] {@rules=rules} @self] | .)*

@@ -233,9 +233,6 @@ require File.expand_path(File.dirname(__FILE__))+'/Switch_Clas_Dataflow.rb'
 require File.expand_path(File.dirname(__FILE__))+'/Cant_Fail_Dataflow.rb'
 
 
-dataflow_def("can_empty?","Minsize_Dataflow","@df.size==0")
-dataflow_def("must_empty?","Maxsize_Dataflow","@df.size==0")
-dataflow_def("cant_fail?","Cant_Fail_Dataflow","@df.value")
 
 require File.expand_path(File.dirname(__FILE__))+'/Detect_First.rb'
 
@@ -280,7 +277,7 @@ def detect_switch_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def detect_switch_source_hash
-'21ec41c9fb257e88f0acf280953e5797'
+'b73967152d4cbef3ba76b3686d914164'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version
