@@ -1,0 +1,18 @@
+class Position_value_numbering < Amethyst
+  def merge_or(p)
+    p.uniq
+  end
+end
+
+amethyst Position_value_numbering {
+
+  value(pos) = .:exp callback(pos,exp) {exp}=>(
+                 Seq[ (value(pos):pos)*  ] -> pos
+               | Or[  (value(pos)*):p    ] -> merge_or(p)
+               | Apply[ ["anything"] ]       -> pos[-1].is_a?(Numeric) ? pos[0...-1]+[pos[-1]+1] : pos+[1]
+               | .:x -> pos+[x]
+               )
+
+
+  callback(pos,exp) = -> puts pos.inspect,exp.inspect
+}
