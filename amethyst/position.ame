@@ -9,8 +9,10 @@ amethyst Position_value_numbering {
   value(pos) = .:exp callback(pos,exp) {exp}=>(
                  Seq[ (value(pos):pos)*  ] -> pos
                | Or[  (value(pos)*):p    ] -> merge_or(p)
-               | Apply[ ["anything"] ]       -> pos[-1].is_a?(Numeric) ? pos[0...-1]+[pos[-1]+1] : pos+[1]
-               | .:x -> pos+[x]
+               | Many[ .:e &{must_empty?(e)} {e}=>value(pos) ] -> pos
+               | Many[ value(pos+[@self,0]) ]
+               | .:x &{min_size(x)==max_size(x)} -> pos[0...-1]+[pos[-1]+min_size(x)]
+               | .:x -> pos+[x,0]
                )
 
 
