@@ -127,9 +127,9 @@ class <<Compiler
 		called=callg.reverse.reachable(names)
 		called.each{|name,v| g.rules[name]=g.getrule(name)}
 		puts called.inspect;
-		
-		ds=Detect_Switch_Char.new;ds.instance_variable_set(:@name,grammar.name)
-		dc=Detect_Switch_Clas.new;dc.instance_variable_set(:@name,grammar.name)
+	  switches=[Detect_Switch_Char,Detect_Switch_Clas].map{|sw2|
+      sw=sw2.new;sw.instance_variable_set(:@name,grammar.name);sw
+    } 
 		$rules=g.rules
 		topo.each{|name|if g.rules[name] && called[name]
 				if g.calls[name] && g.calls[name].include?(name)
@@ -172,7 +172,7 @@ class <<Compiler
     called.each{|name,v| g.rules[name]=Resolve_Calls.root([g,g.rules[name]])}
 		topo.each{|name|if g.rules[name] && called[name]
 				#TODO optimize separately as in inherited it dont have to be true
-		    [ds,dc].each{|o| g.rules[name]=o.parse(:root,g.rules[name])}
+		    switches.each{|o| g.rules[name]=o.parse(:root,g.rules[name])}
 				g.opt(g.rules[name])	
 		end}
     grammar.rules=g.rules.map{|h,k| k}
