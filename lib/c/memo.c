@@ -14,7 +14,7 @@ static memo_struct *memo_init(){
   m->capacity=512;
 	m->hits=calloc(sizeof(int)*256,1);	m->miss=calloc(sizeof(int)*256,1);m->ticks=calloc(sizeof(int)*256,1);
   m->cache=(elem_struct *) calloc(sizeof(elem_struct),CACHE_SIZE);
-	m->els=  (elem_struct *) calloc(sizeof(elem_struct),m->capacity);
+	m->els  =(elem_struct *) calloc(sizeof(elem_struct),m->capacity);
 	return m;
 }
 static int memo_hash(int rule,int src,int pos,int cap){return (src+rule*pos)&(cap-1);}

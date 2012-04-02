@@ -177,25 +177,27 @@ class <<Compiler
 		end}
     grammar.rules=g.rules.map{|h,k| k}
     c,init,rb=AmethystCTranslator.new.parse(:itrans,[grammar])
+    CurrentParser.clear
     hex_digest=Digest::MD5.hexdigest(c*"")
     File.open(Amethyst_path+"/compiled/#{g.name}.rb" ,"w"){|f| 
       f.puts rb
       f.puts "require File.expand_path(File.dirname(__FILE__))+\"/\#{RUBY_VERSION}/#{g.name}_c\""
     }
-    File.open(Amethyst_path+"/compiled/#{g.name}_c.c","w"){|f| 
-      f.puts "#include \"cthyst.h\""
-      f.puts "#include \"memo.c\""
-      f.puts c
-      f.puts "void Init_#{g.name}_c(){ #{init*""} }" #rb_eval_string(\"testversion#{file2}('#{hex_digest}')\");}"
-    }
-
-		if !Amethyst::Settings.profiling #oprofile does not like changing binaries
-	  withtime("c"){ cc_compile_file(g.name) }
+    code = "#include \"cthyst.h\"
+#include \"memo.c\"
+#{c*""}
+void Init_#{g.name}_c(){ #{init*""} }\n"
+    c_filename = Amethyst_path+"/compiled/#{g.name}_c.c"
+    f=File.open(c_filename,"r"); oldcode=f.read; f.close
+    
+if code!=oldcode
+    puts "code",code.size,oldcode.size
+      File.open(c_filename,"w"){|f| f.print(code) }
+  	  withtime("c"){ cc_compile_file(g.name) }
     end
     if !@bootstrapping_amethyst
       require Amethyst_path+"/compiled/#{g.name}.rb" 
     end
-    CurrentParser.clear
 	end
 	def compile(file,bootstrap=false)
     @bootstrapping_amethyst=bootstrap

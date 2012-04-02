@@ -297,9 +297,11 @@ def Enter.[](from,to)
 end
 
 def Pass.[](from,to,enter=nil)
-	a,r=autovar,autovar
-	Seq[Bind[a,from], Pass.create({:to=>Seq[Bind[r,to]],:var=>a,:enter=>enter}).normalize,r]
 
+	a,r=autovar,autovar
+	r=Seq[Bind[a,from], Pass.create({:to=>Seq[Bind[r,to]],:var=>a,:enter=>enter}).normalize,r]
+  puts r.inspect
+  r
 end
 
 class Bind

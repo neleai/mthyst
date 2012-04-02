@@ -2,7 +2,7 @@ def cc_compile_file(file)
       if Dir["#{Amethyst_path}/compiled/#{RUBY_VERSION}"]==[]
         `mkdir "#{Amethyst_path}/compiled/#{RUBY_VERSION}`
       end
-      `astyle #{Amethyst_path}/compiled/#{file}_c.c`
+#      `astyle #{Amethyst_path}/compiled/#{file}_c.c`
       `cd #{Amethyst_path}/compiled;gcc -I. -I/usr/include/ruby-1.9.1/x86_64-linux -I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -fPIC -fno-strict-aliasing -g -g #{Amethyst::Settings.cflags} -fPIC -c #{file}_c.c -o #{file}_c.o`
       `cd #{Amethyst_path}/compiled;gcc -shared -o #{RUBY_VERSION}/#{file}_c.so #{file}_c.o -L. -L/usr/lib -L. -rdynamic -Wl,-export-dynamic -lruby-1.9.1 -lpthread -lrt -ldl -lcrypt -lm -lc`
       `rm #{Amethyst_path}/compiled/#{file}_c.o` 
