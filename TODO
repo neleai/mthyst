@@ -4,9 +4,6 @@ parser to produce literal tree and convert to abstract tree
 make position handling explicit as in amethyst/position.ame
 
 
-optimize pass when value is only read by anything
-simplify =>Class[ sth ] pattern
-
 bind cut to corresponding or
 Add id of cut to or
 
@@ -105,8 +102,10 @@ try speed vs various other parsers.
 
 parametrize traverser and visitor
 
-also destructure and access arrays
+optimize pass when value is only read by anything
+simplify =>Class[ sth ] pattern
 slice analysis
+also destructure and access arrays
 
 origin tracking string
 buffers

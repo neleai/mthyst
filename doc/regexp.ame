@@ -1,0 +1,18 @@
+amethyst Regexp2Amethyst {
+  root = choice
+
+  choice=sequence
+  choice    = listOf('sequence','|'):ary  @Or_AST
+  
+  sequence  = postfixed*:ary              @Seq_AST
+
+  postfixed = atom:a (<?+*>:m {RegModifier[a,m]} | {a})
+ 
+  atom      = ~eof 
+            ( '(' choice:c ')' -> c
+            | '[' ( ']' break
+            | .:[ary] )*       -> Apply["regch",ary]
+            | <^|()?+*>:c      -> Apply["seq",c]
+            )
+
+}

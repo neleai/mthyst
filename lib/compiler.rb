@@ -188,8 +188,11 @@ class <<Compiler
 #{c*""}
 void Init_#{g.name}_c(){ #{init*""} }\n"
     c_filename = Amethyst_path+"/compiled/#{g.name}_c.c"
-    f=File.open(c_filename,"r"); oldcode=f.read; f.close
-    
+    if File.exists?(c_filename)
+      f=File.open(c_filename,"r"); oldcode=f.read; f.close
+    else
+      oldcode=""
+    end
 if code!=oldcode
     puts "code",code.size,oldcode.size
       File.open(c_filename,"w"){|f| f.print(code) }
