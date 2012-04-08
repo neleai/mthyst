@@ -64,7 +64,6 @@ def Normalize__lp_cant_fa_17ef(bind)
 (cant_fail?(bind[1]) ) || FAIL
 end
 def Normalize__lp_eval_lp_sr_3f78(bind)
-puts src.inspect
 (eval(src).is_a?(Class)) || FAIL
 end
 def Normalize__lp_must_em_43e9(bind)

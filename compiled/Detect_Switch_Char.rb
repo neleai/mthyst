@@ -28,8 +28,15 @@ end
 def Detect_Switch_Char__lp_2(bind)
 (!bind[1]) || FAIL
 end
+def Detect_Switch_Char__lp_bind_lb_1_rb__c400(bind)
+(bind[1].name==bind[2]) || FAIL
+end
 def Detect_Switch_Char__lp_src_dot_cla_2024(bind)
 (src.class.attributes).map{|v| src.instance_variable_get("@"+v.to_s) }
+end
+def Detect_Switch_Char_bind_lb_1_rb_(bind)
+bind[1]
+
 end
 def Detect_Switch_Char_bind_lb_1_rb__dot__642a(bind)
 bind[1].each{|p,a| bind[2].each{|p2,a2| bind[3] << [p&p2,a+[a2]] if p&p2!=bind[4].bottom}}

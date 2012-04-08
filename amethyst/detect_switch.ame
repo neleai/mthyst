@@ -289,6 +289,8 @@ amethyst Cant_Fail_Dataflow < First_Dataflow{
 
 
 amethyst Detect_First < Traverser_Clone2 {
+  _apply(n) = Apply:x &{x.name==n} -> x
+
   itrans =   (Grammar[ {@>name=@name} {$rules={};@rules.each{|r| $rules[r.name]=r}} @rules=>[ Rule[root]*:rules ] {@rules=rules} @self] | .)*
 
   root = traverse
@@ -332,10 +334,10 @@ class Detect_Switch_Char < Detect_First
   use_global_memo
 end
 amethyst Detect_Switch_Char < Detect_First {
-  visit = Apply[ ["regch"] Act[.*] {first(@self)}:firs {s=Switch_Char[{:ary=>[[firs,Apply["advance_char"]],[~firs,Apply["fails"]]]}]}]
-        | Apply[ ["_seq"] CAct[.:str] 
+  visit = _apply("regch")[. Act[.*] {first(@self)}:firs {s=Switch_Char[{:ary=>[[firs,Apply["advance_char"]],[~firs,Apply["fails"]]]}]}]
+        | _apply("_seq" )[. CAct[.:str] 
                   {first(@self)}:firs {s=Switch_Char[{:ary=>[[firs,Seq[Apply["advance_char"],Apply["_seq",CAct[str[1..-1]]]]],[~firs,Apply["fails"]]]}]}]
-        | Apply[ ["fails"] {@self} ]
+        | _apply("fails")
         | Apply[ .*  {first(@self)}:firs &{!can_empty?(@self) && firs!=Lattice_Char.top} {s=Switch_Char[{:ary=>[[firs,@self],[~firs,Apply["fails"]]]}] }]
 #       | Many[ traverse:t first(t):firs &{!can_empty?(@self) && firs!=Lattice_Char.top} {s=Switch_Char[{:ary=>[[firs,Many[t]],[~firs,Apply["empty"]]]}] }]
         | Seq[ traverse_item*=>[combine_seq(Switch_Char,[])] ]

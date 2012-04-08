@@ -1,4 +1,5 @@
 class Detect_First < Traverser_Clone2
+def self._apply(*args);self.new.parse(:_apply,*args);end;def self._selector__apply;Detect_First;end
 def self.cant_fail(*args);self.new.parse(:cant_fail,*args);end;def self._selector_cant_fail;Detect_First;end
 def self.combine_or(*args);self.new.parse(:combine_or,*args);end;def self._selector_combine_or;Detect_First;end
 def self.combine_seq(*args);self.new.parse(:combine_seq,*args);end;def self._selector_combine_seq;Detect_First;end
@@ -19,11 +20,18 @@ end
 def Detect_First__do_rules_eq__le__ab16(bind)
 $rules={};src.rules.each{|r| $rules[r.name]=r}
 end
+def Detect_First__lp_bind_lb_1_rb__c400(bind)
+(bind[1].name==bind[2]) || FAIL
+end
 def Detect_First__lp_cant_fa_17ef(bind)
 (cant_fail?(bind[1]) ) || FAIL
 end
 def Detect_First__lp_must_em_43e9(bind)
 (must_empty?(bind[1])) || FAIL
+end
+def Detect_First_bind_lb_1_rb_(bind)
+bind[1]
+
 end
 def Detect_First_bind_lb_1_rb__dot__642a(bind)
 bind[1].each{|p,a| bind[2].each{|p2,a2| bind[3] << [p&p2,a+[a2]] if p&p2!=bind[4].bottom}}
