@@ -4,6 +4,11 @@ class Trigrams < Amethyst
   l1.each{|e1| l2.each{|e2| a<<(e1+e2).reverse[0...3].reverse}}
   a.sort.uniq
  end
+ def expand_lattice(l)
+    r=[]
+    l.ary.each{|b,e| b.upto(e){|m| r<<m.chr}}
+    r
+ end
 end
 amethyst Trigrams {
   root = trigrams([""])
@@ -11,6 +16,6 @@ amethyst Trigrams {
   trigrams(prev) = Seq_AST[ ({puts prev.inspect;} trigrams(prev):prev )* ] -> prev
                  | Or_AST[({puts prev.inspect;puts ary.inspect} trigrams(prev):[ary])* ] -> ary.sort.uniq
                  | Apply[ ["seq"] Act[.:s]] -> seq_join(prev,[s])
-                 | Apply[ ["regch"] .* ] -> prev
-                 | RegModifier[ trigrams([""]):new  .:m ] -> n= seq_join(prev,((m=="*"?[""]:[])+new+seq_join(new,new)+seq_join(new,seq_join(new,new))))
+                 | Apply[ ["regch"] .* {first_char(@self)}:s ] -> seq_join(prev,expand_lattice(s))
+                 | RegModifier[ trigrams([""]):new  .:m ] -> n= seq_join(prev,((m=="*"?[""]:[])+new+seq_join(new,new)+seq_join(new,seq_join(new,new))));puts n.inspect;n.sort.uniq
 } 

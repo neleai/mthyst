@@ -11,7 +11,9 @@ amethyst Regexp2Amethyst {
   atom      = ~eof 
             ( '(' choice:c ')' -> c
             | '[' ( ']' break
-            | .:[ary] )*       -> Apply["regch",ary]
+                  | ('\\':[s])? .:[s]
+                  )* -> Apply["regch","/["+s*""+"]/"]
+
             | <^|()?+*>:c      -> Apply["seq",c]
             )
 

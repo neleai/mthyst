@@ -47,6 +47,7 @@ makeclasses(AmethystAST,
 makeclasses(Switch,:Switch_Char,:Switch_Clas,:Switch_Or)
 class Enter;end;class Append;end;class PureAct;end;class Pred;end;class Concat;end #needed only for Class.[] operator
 
+
 class Arguments
   attr_accessor :method_name,:ary,:_hash
   def self.[](name,*a)

@@ -1,12 +1,13 @@
 #include "../../compiled/cthyst.h"
+#include "interpreter.h"
 FILE * profile_report;
 // write declarations to cthyst.h as without them call from other .so will crash
 VALUE amecore;VALUE bindcls;VALUE failobj;
 ID s_src,s_input,s_call,s_ary_get;
 ID s_to_a;
-VALUE ame_setlenrb(VALUE self,VALUE val){return INT2FIX(ame_setlen(self,FIX2INT(val)));}
-VALUE ame_setposrb(VALUE self,VALUE val){return INT2FIX(ame_setpos(self,FIX2INT(val)));}
-VALUE ame_getlenrb(VALUE self){return INT2FIX(ame_getlen(self));}
+static VALUE ame_setlenrb(VALUE self,VALUE val){return INT2FIX(ame_setlen(self,FIX2INT(val)));}
+static VALUE ame_setposrb(VALUE self,VALUE val){return INT2FIX(ame_setpos(self,FIX2INT(val)));}
+static VALUE ame_getlenrb(VALUE self){return INT2FIX(ame_getlen(self));}
 
 VALUE ame_setsrc2(VALUE self,VALUE val){  cstruct *ptr;  Data_Get_Struct(self,cstruct,ptr);
   ptr->src=val; 
@@ -156,7 +157,7 @@ void Init_Ame(VALUE self){
 	amecore=rb_define_class("AmethystCore",rb_cObject);
 	rb_define_singleton_method(amecore,"new",ame_new,0);
 	rb_define_singleton_method(amecore,"report_normalize",report_normalize,0);
-
+  rb_define_singleton_method(amecore,"__init_interpreter",init_interpreter,0);
 	rb_define_method(amecore,"pos=",ame_setposrb,1);
 	rb_define_method(amecore,"pos",ame_getposrb,0);
 	rb_define_method(amecore,"len=",ame_setlenrb,1);

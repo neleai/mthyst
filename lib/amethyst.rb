@@ -48,5 +48,5 @@ class AmethystCore
   end
 end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/Ame.so"
-
+AmethystCore.__init_interpreter
 require 'lib/compiler'
