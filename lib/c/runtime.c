@@ -111,7 +111,7 @@ typedef struct {
 } bind_cache;
 bind_cache * bind_cache_init(){
        bind_cache *b;
-       b=malloc(sizeof(bind_cache));
+       b=calloc(sizeof(bind_cache),1);
        b->ary=calloc(1<<20,sizeof(VALUE));
        b->res=calloc(1<<20,sizeof(VALUE));
 

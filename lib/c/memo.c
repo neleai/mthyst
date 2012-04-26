@@ -9,7 +9,7 @@ typedef struct memo_struct {
 } memo_struct;
 
 static memo_struct *memo_init(){
-	memo_struct *m=malloc(sizeof(memo_struct));
+	memo_struct *m=calloc(sizeof(memo_struct),1);
   m->size=0;
   m->capacity=512;
 	m->hits=calloc(sizeof(int)*256,1);	m->miss=calloc(sizeof(int)*256,1);m->ticks=calloc(sizeof(int)*256,1);

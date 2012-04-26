@@ -1503,7 +1503,7 @@ VALUE create2_Switch_Or(VALUE self ,VALUE ary){
 
 normalize_cache * normalize_cache_init(){
        normalize_cache *b;
-       b=malloc(sizeof(normalize_cache));
+       b=calloc(sizeof(normalize_cache),1);
        b->ary=calloc(1<<20,sizeof(VALUE));
        b->ret=calloc(1<<20,sizeof(VALUE));
 
@@ -1564,7 +1564,7 @@ cache_Act=normalize_cache_init();
 	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Switch_Char")),"create2",create2_Switch_Char,1);cache_Switch_Clas=normalize_cache_init();
   rb_define_method(rb_const_get(rb_cObject,rb_intern("Switch_Clas")),"normalize",normalize_Switch_Clas,0);
 	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern("Switch_Clas")),"create2",create2_Switch_Clas,1);
-  gc_obj=malloc(sizeof(gc_objs));gc_obj->ary=calloc(1<<20,sizeof(VALUE));gc_obj->no=0;
+  gc_obj=calloc(sizeof(gc_objs),1);gc_obj->ary=calloc(1<<20,sizeof(VALUE));gc_obj->no=0;
 	gc_cache=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,gc_obj);
 	rb_global_variable(&gc_cache);
 

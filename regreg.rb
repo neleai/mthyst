@@ -1,4 +1,5 @@
 require './lib/amethyst'
+Compiler::compile('regreg.ame')
 def parseexp(expr)
   wrap= "amethyst Foo { exp = #{expr} }"
   rule= AmethystParser.new._file(wrap)[0].rules[0]
