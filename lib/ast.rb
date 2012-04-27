@@ -233,7 +233,7 @@ VALUE create2_#{e}(VALUE self #{e.attributes.map{|el| ",VALUE #{el}"}*""}){
 norm.puts "
 normalize_cache * normalize_cache_init(){
        normalize_cache *b;
-       b=malloc(sizeof(normalize_cache));
+       b=calloc(sizeof(normalize_cache),1);
        b->ary=calloc(1<<20,sizeof(VALUE));
        b->ret=calloc(1<<20,sizeof(VALUE));
 
@@ -250,7 +250,7 @@ void init_normalize(){
 	rb_define_singleton_method(rb_const_get(rb_cObject,rb_intern(\"#{e}\")),\"create2\",create2_#{e},#{e.attributes.size});"
 
 }*""}
-  gc_obj=malloc(sizeof(gc_objs));gc_obj->ary=calloc(1<<20,sizeof(VALUE));gc_obj->no=0;
+  gc_obj=calloc(sizeof(gc_objs),1);gc_obj->ary=calloc(1<<20,sizeof(VALUE));gc_obj->no=0;
 	gc_cache=Data_Wrap_Struct(rb_cObject,normalize_cache_mark,normalize_cache_free,gc_obj);
 	rb_global_variable(&gc_cache);
 
