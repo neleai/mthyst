@@ -139,7 +139,7 @@ s+="#{body}\n"
 s+="fail: return it;\n}"
 s
 } ]
-        | Memo[ rw('memo_fail',`trans`):t ] 
+        | Memo[ rw('memo_fail',(|trans|)):t ] 
                 {s=""
                  if CurrentParser[:global_memo]
                    s+="if (ptr->mem==NULL){ptr->mem=mem_#{@>grammar};}" 
@@ -182,7 +182,7 @@ s
         | Seq[ trans*:t {t*""} ]
         | Or[ {label("accept")}:accept {label("oldpos")}:oldpos label("alt"):alt {1}:altno {@@cutlabel}:oldcutlabel {@@cuts}:oldcuts {@@cuts=nil;@@cutlabel=label("cut")}
            {"int #{oldpos}=ptr->pos;int #{@@cutlabel}=0;\n#{alt}_#{altno}:if(!ptr->branches)ptr->discard=ptr->pos; ptr->branches+=#{@ary.size};"}:s {@ary.size}:tot_alt 
-           ( &(.) {altno+=1}  rw("#{alt}_#{altno}",`persistent`):t
+           ( &(.) {altno+=1}  rw("#{alt}_#{altno}",(|persistent|)):t
              {s+="#{t}\n;ptr->branches-=#{tot_alt+2-altno}; goto #{accept};\n"}
              {s+="#{alt}_#{altno}: ptr->pos=#{oldpos};#{@@cuts ? (@@cuts=nil;"if(#{@@cutlabel}){ptr->branches-=#{tot_alt-altno};it=failobj;goto #{@@faillabel};}") : ""}ptr->branches-=1;"}
            )*
@@ -199,11 +199,11 @@ s
               ]
         | Stop[] {@@stops=true; @@stoplabel? "#{@@stoplabel}=1;" : ""}
         | Lookahead[ {label("accept")}:accept {label("reject")}:reject {label("oldpos")}:oldpos 
-                     rw(reject,`persistent:t`) 
+                     rw(reject,(|persistent:t|))
                      {"int #{oldpos}=ptr->pos;\n #{t} it=Qnil; goto #{accept};  #{reject}: it=failobj; #{accept}: ptr->pos=#{oldpos}; #{failwhen("it==failobj")}"} ]
         | Local[ .* { "it=#{bget(@self)};" } ]
         | Pass[ label("pass"):pass label("oldpass"):oldpass label("success"):success
-                rw(pass,`@to=>trans:to`)
+                rw(pass,(|@to=>trans:to|))
                 { "cstruct #{oldpass}=*ptr; ptr->pos=ptr->len=0; ptr->ary=NULL;
                    #{@enter ?  "ame_setsrc2(self,#{bget(@var)});" : 
                     "ptr->src=failobj;ptr->ary=alloca(sizeof(VALUE));ptr->ary[0]=#{bget(@var)};ptr->len=1;"
@@ -242,7 +242,7 @@ s
                {"#{pre} #{t}\n;goto #{acc};#{rev}:; #{ap} goto #{@@faillabel}; #{acc}:;\n"}
   
  
-  addlambda =  {"#{@>grammar}_#{@>rulename}_#{label("lambda")}"}:lambd  rw('fail',`trans:body`)
+  addlambda =  {"#{@>grammar}_#{@>rulename}_#{label("lambda")}"}:lambd  rw('fail',(|trans:body|))
                { h="VALUE #{lambd}(VALUE self,VALUE bind2,VALUE args)"
                  @@header<<h+";"
                  @@defmethods<<"rb_define_method(cls_#{@>grammar},\"#{lambd}\",#{lambd},2);"
