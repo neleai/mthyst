@@ -6,7 +6,7 @@ end
 amethyst Lam{
   foo(x) = apply(x)
   baz(x) = apply(x)
-  lam = foo(`bar | baz(`lam`)`)
+  lam = foo((|bar | baz((|lam|))|))
 }
 amethyst Tests{
   sw = (('a' |'b') 'c'

@@ -33,7 +33,7 @@ amethyst AmethystParser {
           {varargs ? [local("_args")] : arg2}:args
           {Bind[local("_result"),body]}:body {@@locals.uniq}:locals {body= varargs ? Seq_AST[{:ary=>([Enter[Act[["Arguments[#{name.inspect},*",local("_args"),"]"]],arg]]+@@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[body])}] : Seq_AST[{:ary=>(@@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[body])}]; }   @Rule
   
-  expression = listOf(`sequence`,`"|" ~')'|"else"`):ary @Or_AST  
+  expression = listOf((|sequence|),(|"|" ~')'|"else"|)):ary @Or_AST  
   
   sequence =  (nr ","? "" lookaheads)*:ary  @Seq_AST
 
@@ -127,8 +127,7 @@ amethyst AmethystParser {
 
   _args(o,c) = seq(o) "" rubyarg*:r seq(c) -> r
   
-  lambda   = '`' expression:e "`" -> Lambda[Bind[local("_result"),e]]
-           | '(|' expression:e "|)" -> Lambda[Bind[local("_result"),e]]
+  lambda   = '(|' expression:e "|)" -> Lambda[Bind[local("_result"),e]]
 
   
   rubyarg  = lambda
@@ -139,7 +138,7 @@ amethyst AmethystParser {
            | ('...' | '..')
            | ( ":@":[n] | <$.:>:[n] )? ~_ name:[n] -> n.join
            | key
-           | <^`'"(){}\[\]>
+           | <^'"(){}\[\]>
 
   
   interpolated(e) =  ( seq(e) break 
