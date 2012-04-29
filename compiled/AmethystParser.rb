@@ -163,10 +163,6 @@ def AmethystParser_Strin_lb__lb__qu__88c8(bind)
 Strin[['"']+bind[1]+['"']]
 
 end
-def AmethystParser__at_appends_6209(bind)
-@appends<< bind[1] if bind[1].is_a?(Local); bind[2][bind[1],bind[3]]
-
-end
 def AmethystParser__at_ary_eq__lb__rb_(bind)
 @ary=[];@tmp=[]
 end
@@ -248,11 +244,12 @@ end
 def AmethystParser_bind_lb_1_rb__eq__9a0b(bind)
 bind[1]= bind[2] ? Seq_AST[{:ary=>([Enter[Act[["Arguments[#{bind[3].inspect},*",local("_args"),"]"]],bind[4]]]+@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[bind[1]])}] : Seq_AST[{:ary=>(@appends.uniq.map{|a| Bind[a,Act["[]"]]}+[bind[1]])}]; 
 end
-def AmethystParser_bind_lb_1_rb__eq__a882(bind)
-bind[1]=local(bind[1])
-end
 def AmethystParser_bind_lb_1_rb__eq__c77b(bind)
 bind[1]=true;bind[2]=Or_AST[bind[2],Act[Args[bind[3]]]]
+end
+def AmethystParser_bind_lb_1_rb__eq__cf3e(bind)
+bind[1]=local(bind[1]); @appends<< bind[1] if bind[1].is_a?(Local); (bind[2]=='*' ? Concat_AST : Append_AST)[bind[1],bind[3]]
+
 end
 def AmethystParser_bind_lb_1_rb__lt__798b(bind)
 bind[1]<<local(bind[2]); Or_AST[Pred[Args[Key[bind[2],[]]]], Apply["anything"]]
