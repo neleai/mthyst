@@ -14,6 +14,7 @@ def self.inline_host_expr(*args);self.new.parse(:inline_host_expr,*args);end;def
 def self.interpolated(*args);self.new.parse(:interpolated,*args);end;def self._selector_interpolated;AmethystParser;end
 def self.key(*args);self.new.parse(:key,*args);end;def self._selector_key;AmethystParser;end
 def self.lambda(*args);self.new.parse(:lambda,*args);end;def self._selector_lambda;AmethystParser;end
+def self.lookaheads(*args);self.new.parse(:lookaheads,*args);end;def self._selector_lookaheads;AmethystParser;end
 def self.name(*args);self.new.parse(:name,*args);end;def self._selector_name;AmethystParser;end
 def self.nr(*args);self.new.parse(:nr,*args);end;def self._selector_nr;AmethystParser;end
 def self.postfixed(*args);self.new.parse(:postfixed,*args);end;def self._selector_postfixed;AmethystParser;end
@@ -222,6 +223,10 @@ bind[1]
 end
 def AmethystParser_bind_lb_1_rb__dot__1371(bind)
 bind[1].concat(bind[2])
+end
+def AmethystParser_bind_lb_1_rb__dot__4673(bind)
+bind[1].size>1 ? Seq_AST.create({:ary=>(bind[1][0...-1].map{|e| Lookahead[e]}+[bind[1][-1]])}) : bind[1][-1]
+
 end
 def AmethystParser_bind_lb_1_rb__dot__4688(bind)
 bind[1].rules[0].body=Seq_AST[Act[bind[1].rules[0].locals.map{|el| [el,"=eval(\"#{el[0]}=#{el[0]}\",@bind);"] }],bind[1].rules[0].body,Act[bind[1].rules[0].locals.map{|el| ["$passit=",el,";eval(\"#{el[0]}=$passit\",@bind);"] }]]
