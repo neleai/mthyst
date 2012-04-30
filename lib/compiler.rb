@@ -224,7 +224,6 @@ if code!=oldcode
       end
  		end
 		tree=AmethystParser.file(source)
-    puts tree.inspect
     if tree==FAIL
       repair_errors(file,source)
     end
