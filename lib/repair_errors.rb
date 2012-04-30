@@ -3,10 +3,10 @@ end
 def repair_errors(file,source)
   puts "parsing #{file} failed."
   parens=Error_Recovery.parenthness(source)
-  parens=Error_Recovery.rm_matching_pairs(parens)
-  parens=Error_Recovery.rm_matching_pairs(parens)
-  parens=Error_Recovery.rm_matching_pairs(parens)
-
+  begin
+    lastsize=parens.size
+    parens=Error_Recovery.rm_matching_pairs(parens)
+  end while parens.size<lastsize
   puts parens.inspect
   
   exit

@@ -4,7 +4,7 @@ class Tests < Amethyst
   use_contextual_returns
 end
 amethyst Lam{
-  foo(x) = apply(x)
+  foo(x) = apply(x))
   baz(x) = apply(x)
   lam = foo((|bar | baz((|lam|))|))
 }
