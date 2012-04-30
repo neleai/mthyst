@@ -1,7 +1,7 @@
 CurrentParser={}
 require 'digest'
 require 'set'
-COMPILED=["amethyst","tests","traverser","detect_variables2","parser","dataflow_ssa","inliner2","normalize",
+COMPILED=["amethyst","tests","traverser","detect_variables2","parser","dataflow_ssa","inliner2","normalize","error_recovery",
 "detect_switch","left_factor","constant_propagation","ctranslator2","implicit_variables","remove_left_rigth_recursion","contextual_argument_return"]
 def debug_print(t)
 	puts t.inspect if Amethyst::Settings.debug>1
@@ -223,8 +223,11 @@ if code!=oldcode
         end
       end
  		end
-		p=AmethystParser.new
-		tree=p.parse(:file,source)
+		tree=AmethystParser.file(source)
+    puts tree.inspect
+    if tree==FAIL
+      repair_errors(file,source)
+    end
 		CurrentParser.clear
 
 		$gr={}

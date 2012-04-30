@@ -783,7 +783,7 @@ alt7_2: ptr->pos=oldpos7;ptr->branches-=1; stop1=1;
 alt7_3: ptr->pos=oldpos7;ptr->branches-=1;if (1){it=failobj;goto fail;};
  accept19:;
  break;
-} } it=_autovar; __result=it;;
+} } it=Qnil;if (ptr->pos<ptr->len){it=failobj;goto fail;}it=_autovar; __result=it;;
 
 fail: return it;
 }

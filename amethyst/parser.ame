@@ -10,7 +10,7 @@ amethyst AmethystParser {
                 {g.rules[0].body=Seq_AST[Act[g.rules[0].locals.map{|el| [el,"=eval(\"#{el[0]}=#{el[0]}\",@bind);"] }],g.rules[0].body,Act[g.rules[0].locals.map{|el| ["$passit=",el,";eval(\"#{el[0]}=$passit\",@bind);"] }]]}
                                                  -> ["(",g,";ame_lambda(#{g.name},binding))"]
              | (~'amethyst' ~'(|'   . )
-             )*
+             )* eof
 
   grammar = 'amethyst' '_module'?:module "" name:name ("<" "" name  |{"Amethyst"}):parent
 "{" (rule)*:rules "}"  @Grammar

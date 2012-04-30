@@ -17,7 +17,7 @@ def parser_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def parser_source_hash
-'461c2f007c65c00660ca88be3e6d2267'
+'6b6c8866b215214f6b4813277917fdaf'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version

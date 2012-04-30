@@ -1,7 +1,7 @@
 amethyst_path=File.expand_path(File.dirname(__FILE__)+"/..")
 require amethyst_path+"/settings.rb"
 $: << Amethyst_path
-['graph','utils','flatarray','ast'].each{|r|
+['graph','utils','flatarray','ast','repair_errors'].each{|r|
 	require Amethyst_path+"/lib/#{r}"
 }
 
