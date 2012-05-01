@@ -1,4 +1,5 @@
 #@Or_AST and @Seq_AST are necessary for collect
+
 $agram=0
 class AmethystParser < Amethyst
   memoize "name","argsOpt","rule"
@@ -17,7 +18,7 @@ def parser_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def parser_source_hash
-'6b6c8866b215214f6b4813277917fdaf'
+'076dd20570d98f47879ef08c912d6907'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version

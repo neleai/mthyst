@@ -240,8 +240,13 @@ if code!=oldcode
 		end}.join
     pre="module Foo\n#{pre}\nend" if @bootstrapping_amethyst
     puts pre.inspect
-		eval(pre) 
-
+    tev="#{file}_tmp.rb"
+    f=File.new(tev,"w")
+    f.puts(pre)
+    f.close
+    require tev
+    File.unlink(tev)
+    
 		debug_print tree
     c,init,rb=[],[],[]
     tree.map{|e|

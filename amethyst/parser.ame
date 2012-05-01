@@ -1,4 +1,5 @@
 #@Or_AST and @Seq_AST are necessary for collect
+
 $agram=0
 class AmethystParser < Amethyst
   memoize "name","argsOpt","rule"
