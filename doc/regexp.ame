@@ -2,7 +2,7 @@ amethyst Regexp2Amethyst {
   root = choice
 
   choice=sequence
-  choice    = listOf('sequence','|'):ary  @Or_AST
+  choice    = listOf((|sequence|),'|'):ary  @Or_AST
   
   sequence  = postfixed*:ary              @Seq_AST
 

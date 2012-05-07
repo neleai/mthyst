@@ -111,3 +111,7 @@ origin tracking string
 buffers
 
 memoization use write-back cache.
+
+do not use apply, use lambdas and match instead
+
+implement eval
