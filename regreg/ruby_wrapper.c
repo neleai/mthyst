@@ -28,7 +28,8 @@ rule* getrule(char *name) {
 
 
 VALUE callback(void **closure,void *arg) {
-    return Qnil;
+    VALUE clos=rb_funcall(rb_const_get(rb_cObject,rb_intern("Closure")),rb_intern("new"),0);
+    return rb_funcall(clos,rb_intern(arg),0);
 }
 
 
@@ -67,6 +68,7 @@ exp * trans(VALUE exp2) {
         exp_act e;
         e.varc=0;
         e.fn=callback;
+        e.arg=trans(rb_iv_get(exp2,"@arg"));
         return normalize_act(&e);
     }
     else if (typetest(exp2,"Rseq")) {

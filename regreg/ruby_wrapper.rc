@@ -27,7 +27,8 @@ rule* getrule(char *name){
 
 
 VALUE callback(void **closure,void *arg){
-  return Qnil;
+  VALUE clos=rb_funcall(rb_const_get(rb_cObject,rb_intern("Closure")),rb_intern("new"),0);
+  return rb_funcall(clos,rb_intern(arg),0);
 }
 
 
@@ -40,7 +41,7 @@ exp * trans(VALUE exp2){int i;
     return (exp *)normalize_array(ary,RARRAY_LEN(exp2));} 
   else if (typetest(exp2,"Rcall" )) { char *name=trans(rb_iv_get(exp2,"@name")); exp_call e; e.locals=trans(rb_iv_get(exp2,"@locals")); e.body=getrule(name)->body; e.argc=0; return (exp *) normalize_call(&e);}
   else if (typetest(exp2,"Rrule" )) { char *name=trans(rb_iv_get(exp2,"@name")); exp *body=trans(rb_iv_get(exp2,"@body")); rule *r=getrule(name); r->body->body=body; return r->body;}
-  else if (typetest(exp2,"Ract"   )) { exp_act e; e.varc=0; e.fn=callback; return normalize_act(&e);}
+  else if (typetest(exp2,"Ract"   )) { exp_act e; e.varc=0; e.fn=callback; e.arg=trans(rb_iv_get(exp2,"@arg")); return normalize_act(&e);}
   <%=
     $nodes.map{|n,a| "else if (typetest(exp2,\"R#{n}\")){
                         exp_#{n} e;

@@ -16,11 +16,11 @@ amethyst Amethyst2RegReg {
         | Apply[ .:name eof ] -> Rcall.create(:name=>name)
         | Many[ trans:e ]     -> Rmany.create({:stops=>1,:body=>e})
         | Stop[ ]             -> Rstop.create({:stops=>1})
-        | Act[ String["_append("] ]   -> Ract.create(:exp=>'nul')
-        | Act[ transrb*:cb  ]         -> Ract.create(:exp=>addcb(cb.join))
+        | Act[ String["_append("] ]   -> Ract.create(:arg=>'nul')
+        | Act[ transrb*:cb  ]         -> Ract.create(:arg=>addcb(cb.join))
         | Bind[ @name:n trans:t ]     -> RSeq[t,Rbind.create({:var=>localnumber(n.ary)})]
-        | CAct[   ]           -> Ract.create(:exp=>'nul')
-        | Local[  ]           -> Ract.create(:exp=>'nul')
+        | CAct[   ]           -> Ract.create(:arg=>'nul')
+        | Local[  ]           -> Ract.create(:arg=>'nul')
         | .:x -> puts "f",x.inspect;raise "unrecognized"
 
   transrb = Local[ { "closure[#{localnumber(@ary)}]" } ]

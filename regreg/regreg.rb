@@ -1,4 +1,4 @@
-require '../diamond/amethyst/lib/amethyst'
+require '../lib/amethyst'
 require './RegReg'
 require './types'
 
