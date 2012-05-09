@@ -1,0 +1,156 @@
+<% require './types.rb' %>
+#include "stackmachine.h"
+<%=
+   $nodes.map{|n,a|
+              "
+               exp *make_#{n}(#{a.map{|k,v| "#{k} #{v}"}*","}){exp_#{n} *e=malloc(sizeof(exp_#{n}));e->tp=TP_#{n}; #{a.map{|k,v|"e->#{v}=#{v};"}*""} return (exp *) e;}\n"
+  }*""
+%>
+<%
+  def push_exp(e)
+    "*(exp **) stack_match =(exp *) #{e};stack_match += sizeof(exp *); *stack_match = #{e}->tp; stack_match+=1;"
+  end 
+  def push_cont(t,c)
+    "*(exp **)a.cont=#{c};a.cont+=sizeof(exp*);*a.cont=#{t};a.cont+=1;"
+  end
+  def cont_call
+    "memcpy(stack_match,a.cont-st_siz,st_siz);stack_match+=st_siz;a.cont-=st_siz;"
+  end
+%>
+
+void *match(exp* e,Args a){
+  Result r;
+  char *stack_match=malloc(1000000);
+  stack_match+=st_siz; *(stack_match-1)=FINISH;
+  a.cont+=st_siz;*(a.cont-1)=FINISH;
+  <%=push_exp("e")%>
+  while(1){
+      switch(*(stack_match-1)){
+<%=
+  $arg_tp.map{|t,v| "case RESTORE_#{v}:
+      stack_match-=sizeof(#{t})+1;
+      a.#{v}=*(#{t}*)stack_match;
+      break;
+    "}*""+
+      $res_tp.map{|t,v| "case RESTORE_#{v}:
+      stack_match-=sizeof(#{t})+1;
+      r.#{v}=*(#{t}*)stack_match;
+      break;
+    "}*""
+ %> 
+<%=
+  def ecase(tp,body)
+    "case TP_#{tp}: { stack_match-=st_siz;
+          exp_#{tp} *e=*(exp_#{tp}**)stack_match;
+          #{body}
+          break;}"
+  end
+
+  ecase("seq","SAVE_cont;
+              #{push_cont("e->tail->tp","e->tail")}
+              #{push_exp("e->head")}")+
+  ecase("char","
+          if (*a.str==*e->str){
+            SAVE_str
+            a.str+=1;
+            #{cont_call()}
+          } else FAIL;")+
+  ecase("act","
+          int i;for(i=0;i<e->varc;i++){
+            *(void **)stack_match=a.closure[e->vars[i]];stack_match+=sizeof(void *);
+            *(long *)stack_match =e->vars[i];           stack_match+=sizeof(long);
+            *stack_match=bind_restore;                  stack_match+=1;
+          }
+          void*(*fn)() =e->fn;
+          a.closure[0]=fn(a.closure,e->arg);
+          #{cont_call()}
+  ")+
+  ecase("stop","
+          SAVE_stops
+          a.stops|=e->stop;
+          #{cont_call()}")+
+  ecase("make_lambda","
+    lambda_s *l=malloc(sizeof(lambda_s));
+    l->body=e->body;l->closure=a.closure;
+    r.returned=(void *) l;
+  ")+
+  ecase("use_lambda","
+    SAVE_closure;
+    lambda_s *l=r.returned;
+    a.closure=l->closure;
+    #{push_exp("l->body")}
+  ")+
+  ecase("call","
+    /*We currently do not garbage collect closures as they can be used by lambdas.
+      There are several improvements possible depending on garbage collection.
+      First is that we allocate closure on stack and maintain list of lambdas 
+      constructed by current rule. When rule returns we copy closure to stack based 
+      one and update lambda pointers. When we know that lambda is dead we can skip 
+      constructing closure, but this depends on garbage collector/running analysis to 
+      decide if this can happen.*/
+    SAVE_closure
+    void **closure=malloc(sizeof(void*)*e->locals);
+    int i;for(i=0;i<e->argc;i++) closure[e->ato[i]]=a.closure[e->afrom[i]];
+    a.closure=closure;
+    #{push_exp("e->body->body")}
+  ")+
+  ecase("nested","
+    *stack_match=nested_end; stack_match+=1;
+    #{push_exp("e->body")}
+  ")+
+  ecase("enter","
+    SAVE_str;
+    a.str=r.returned;
+    #{push_exp("e->to")}
+  ")+
+  ecase("bind","
+    *(void **)stack_match=a.closure[e->var];stack_match+=sizeof(void *);
+    *(long *)stack_match =e->var;           stack_match+=sizeof(long);
+    *stack_match=bind_restore;              stack_match+=1;
+    a.closure[e->var]=r.returned;
+  ")+
+  ecase("many","
+         if (e->stop & a.stops){
+           SAVE_stops
+           a.stops=a.stops&(~e->stop);
+           #{cont_call()}
+         }else{
+           #{push_cont("e->tp","e")}
+           #{push_exp("e->ex")}
+         }")+
+  ecase("return","
+    r.state= e->state;
+  ")+
+  ecase("switch","
+                  #{push_exp("e")};*(stack_match-1)=switch2;
+                  #{push_exp("e->head")};
+")
+%>
+         case switch2:stack_match-=st_siz; exp_switch *e=*(exp_switch **)stack_match;
+           <%=push_exp("e->alts[r.state]")%>
+           break;
+         case bind_restore:stack_match-=sizeof(void*)+sizeof(long)+1;
+           a.closure[*(long*)(stack_match+sizeof(void*))]=*(void **)stack_match;
+           break;
+         case nested_end: 
+          if (r.state) {
+            <%=cont_call()%>
+          } else {
+            FAIL;
+          }
+         case FINISH:
+           return r.returned;
+       }
+  }
+}
+void *match2(exp *e,char *s){
+  Args a;
+  a.cont =malloc(1000000);
+  a.closure=malloc(100);
+  a.str=s;
+  return match(e,a);
+}
+int main(){
+  exp* e=make_seq(make_char("a"),make_char("b"));
+  match2(e,"abc");
+}

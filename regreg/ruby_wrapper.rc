@@ -1,0 +1,66 @@
+<% require 'types.rb' %>
+#include "ruby.h"
+#include "stackmachine.h"
+#define RETURN NULL
+VALUE RegReg;
+int typetest(VALUE e,char *cl){
+  return rb_obj_is_kind_of(e,rb_const_get(rb_cObject,rb_intern(cl)))==Qtrue;
+}
+
+typedef struct rule{
+  char *name;
+  exp_rule *body;
+  struct rule *next;
+}rule;
+rule* rules; 
+rule* getrule(char *name){
+  rule *r;
+  for (r=rules;r;r=r->next)
+    if (!strcmp(name,r->name)) return r;
+  r=calloc(sizeof(rule),1);
+  r->body=calloc(sizeof(exp_rule),1);r->body->tp=TP_rule;
+  r->name=strdup(name);
+  r->next=rules;
+  rules=r;
+  return r;
+}
+
+
+VALUE callback(void **closure,void *arg){
+  return Qnil;
+}
+
+
+exp * trans(VALUE exp2){int i;
+  if      (typetest(exp2,"Fixnum")) { return (exp *)FIX2LONG(exp2); }
+  else if (exp2==Qnil             ) { return NULL;                  }
+  else if (typetest(exp2,"String")) { return (exp *)normalize_string(RSTRING_PTR(exp2)); }
+  else if (typetest(exp2,"Array" )) { exp **ary=malloc(sizeof(exp*)*RARRAY_LEN(exp2));   
+    for(i=0;i<RARRAY_LEN(exp2);i++) ary[i]=trans(RARRAY_PTR(exp2)[i]);
+    return (exp *)normalize_array(ary,RARRAY_LEN(exp2));} 
+  else if (typetest(exp2,"Rcall" )) { char *name=trans(rb_iv_get(exp2,"@name")); exp_call e; e.locals=trans(rb_iv_get(exp2,"@locals")); e.body=getrule(name)->body; e.argc=0; return (exp *) normalize_call(&e);}
+  else if (typetest(exp2,"Rrule" )) { char *name=trans(rb_iv_get(exp2,"@name")); exp *body=trans(rb_iv_get(exp2,"@body")); rule *r=getrule(name); r->body->body=body; return r->body;}
+  else if (typetest(exp2,"Ract"   )) { exp_act e; e.varc=0; e.fn=callback; return normalize_act(&e);}
+  <%=
+    $nodes.map{|n,a| "else if (typetest(exp2,\"R#{n}\")){
+                        exp_#{n} e;
+                        #{a.map{|t,v| "e.#{v}=(#{t}) trans(rb_iv_get(exp2,\"@#{v}\"));"}
+                      } return (exp *) normalize_#{n}(&e);}\n"}*""
+  %>
+}
+VALUE translate(VALUE self,VALUE exp2){
+  exp *e=trans(exp2);
+  return Qnil;
+}
+VALUE rb_match(VALUE self,VALUE exp2,VALUE str){
+  exp *e=trans(exp2);
+  char *str2=RSTRING_PTR(str);
+  match2(e,str2);
+  return Qnil;
+}
+void Init_RegReg(){
+  RegReg=rb_define_class("RegReg",rb_cObject);
+  rb_define_singleton_method(RegReg,"translate",translate,1);
+  rb_define_singleton_method(RegReg,"match",rb_match,2);
+  init_nodes();
+}

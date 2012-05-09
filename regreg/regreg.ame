@@ -1,0 +1,29 @@
+class Amethyst2RegReg < Amethyst
+  def localnumber(name)
+    @locals||=["_result"]
+    @locals << name if !@locals.index(name[0])
+    @locals.index(name[0]) 
+  end
+end
+amethyst Amethyst2RegReg {
+  trans = Seq[ trans:head eof ] -> head
+        | Seq[ trans:head .*:tail ({Seq[*tail]}=>trans):tail ] -> Rseq.create({:head=>head,:tail=>tail})
+        | Or[ trans:head eof ] -> head
+        | Or[ trans:head .*:tail  ({ Or[*tail]}=>trans):tail ] -> Rswitch.create({:head=>head,:alts=>[tail,nil]})
+        | Lookahead[ trans:e ] -> Rswitch.create({:head=>e,:alts=>[Rcall.create({:name=>"fail"}),Rcall.create({:name=>"empty"})]})
+        | Apply[ ["nested"] CAct[ .:start ] CAct[ .:middle ] CAct[ .:end ] ] -> Rnested.create({:ary=>RSeq[Rcall.create({:name=>start}),RSeq[:head=>Rcall.create({:name=>middle}),:tail=>Rcall.create({:name=>end})]]})
+        | Apply[ ["seq"] CAct[ .:s ] ] -> Rchar.create({:str=>s})
+        | Apply[ .:name eof ] -> Rcall.create(:name=>name)
+        | Many[ trans:e ]     -> Rmany.create({:stops=>1,:body=>e})
+        | Stop[ ]             -> Rstop.create({:stops=>1})
+        | Act[ String["_append("] ]   -> Ract.create(:exp=>'nul')
+        | Act[ transrb*:cb  ]         -> Ract.create(:exp=>addcb(cb.join))
+        | Bind[ @name:n trans:t ]     -> RSeq[t,Rbind.create({:var=>localnumber(n.ary)})]
+        | CAct[   ]           -> Ract.create(:exp=>'nul')
+        | Local[  ]           -> Ract.create(:exp=>'nul')
+        | .:x -> puts "f",x.inspect;raise "unrecognized"
+
+  transrb = Local[ { "closure[#{localnumber(@ary)}]" } ]
+          | Key[ .:name ] -> "@#{name}"
+          | .
+}

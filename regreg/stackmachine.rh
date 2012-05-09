@@ -1,0 +1,44 @@
+<% require './types.rb' %>
+<%= ["stdio","stdlib","string"].map{|e|"#include <#{e}.h>\n"}*""%>
+typedef struct{
+<%=
+ $arg_tp.map{|t,v| "#{t} #{v};\n"}*""
+%> } Args;
+
+<%=
+  $arg_tp.map{|t,v| cnst "RESTORE_#{v}"}*""+
+  $arg_tp.map{|t,v| "#define SAVE_#{v} *(#{t}*)stack_match=a.#{v};stack_match+=sizeof(#{t});*stack_match=RESTORE_#{v};stack_match++;\n" }*""
+%>
+typedef struct{
+<%=
+ $res_tp.map{|t,v| "#{t} #{v};\n"}*""
+%> } Result;
+<%=
+  $res_tp.map{|t,v| cnst "RESTORE_#{v}"}*""+
+  $res_tp.map{|t,v| "#define SAVE_#{v} *(#{t}*)stack_match=r.#{v};stack_match+=sizeof(#{t});*stack_match=RESTORE_#{v};stack_match++;\n" }*""
+%>
+<%=   $nodes.map{|n,a|
+               cnst("TP_#{n}")}*"" %>
+
+<%=cnst("FINISH","switch2","bind_restore","nested_end","closure_end")%>
+typedef struct{ char tp;
+
+} exp;
+<%=
+   $nodes.map{|n,a|
+              "typedef struct{ char tp;
+                #{a.map{|k,v| "#{k} #{v};"}*"\n"}
+               } exp_#{n}; exp_#{n}* normalize_#{n}(exp_#{n}*o); exp *make_#{n}(#{a.map{|k,v| "#{k} #{v}"}*","});\n"}*"" %>
+char *normalize_string(char *c);
+exp **normalize_array(exp **a,long size);
+
+
+typedef struct{
+  exp *body;
+  void **closure;
+} lambda_s;
+
+#define FAIL r.state=0
+
+static const int st_siz=sizeof(exp*)+1;
+
