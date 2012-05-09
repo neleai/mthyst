@@ -117,6 +117,7 @@ FILE *debug;
 
 void *match(exp* e,Args a) {
     Result r;
+    r.state=0;
     char *stack_match=malloc(1000000);
     stack_match+=st_siz;
     *(stack_match-1)=FINISH;
