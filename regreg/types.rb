@@ -11,7 +11,7 @@ $nodes=  [["seq",[["exp*","head"],["exp*","tail"]]],
    ["make_lambda",[["exp*","body"]]],
    ["use_lambda",[["long" ,"placeholder"]]],
    ["return",[["long","state"]]],
-   ["rule",[["char *","name"],["exp *","body"]]],
+   ["rule",[["char *","name"],["exp *","body"],["long","locals"]]],
    ["enter",[["exp*","to"]]],
    ["call",[["char *","name"],["exp_rule*","body"],["long","argc"],["long *","afrom"],["long *","ato"],["long","locals"]]],
    ["char",[["char *","str"]]]]

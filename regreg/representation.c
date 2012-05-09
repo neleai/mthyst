@@ -168,11 +168,12 @@ exp_return *normalize_return(exp_return *o) {
 exp_rule *normalize_rule(exp_rule *o) {
     int i;
     for(i=0; i<nodes_rule_no; i++) {
-        if (nodes_rule[i].name==o->name&&nodes_rule[i].body==o->body) return &nodes_rule[i];
+        if (nodes_rule[i].name==o->name&&nodes_rule[i].body==o->body&&nodes_rule[i].locals==o->locals) return &nodes_rule[i];
     }
     nodes_rule[nodes_rule_no].tp=TP_rule;
     nodes_rule[nodes_rule_no].name=o->name;
     nodes_rule[nodes_rule_no].body=o->body;
+    nodes_rule[nodes_rule_no].locals=o->locals;
     nodes_rule_no+=1;
     return &nodes_rule[nodes_rule_no-1];
 }
@@ -336,6 +337,7 @@ void inspect_exp(exp *e) {
         fprintf(debug," name: %s",e2->name);
         fprintf(debug," body:");
         inspect_exp(e2->body);
+        fprintf(debug," locals: %i",e2->locals);
         fprintf(debug,"]");
         break;
     }

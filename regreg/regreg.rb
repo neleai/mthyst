@@ -43,11 +43,16 @@ def parseexp(expr)
   #add_grammar("amethyst Foo { exp = #{expr} }")
 end
 def add_grammar(g)
-  grammar=AmethystParser.file(g)[0].rules
+  puts g.inspect
+  rules=AmethystParser.file(g)[0].rules
+  puts rules.inspect
   rules=rules.map{|r| Analyze_Variables2.root(r)}
-  Amethyst2RegReg.trans(rules)
+  puts rules.inspect
+  RegReg.translate(Amethyst2RegReg.trans(rules))
 end
-
+def add_rule(r)
+  add_grammar("amethyst Foo { #{r} }")
+end
 $anon_rules=0
 def match(exp,s)
   $anon_rules+=1
@@ -59,20 +64,23 @@ expr= "'a'|'b' {abc}"
 expr=parseexp(expr)
 puts expr.inspect
 
-t=RRule["empty",parseexp("{nil}")]
-RegReg.translate(t)
-  t=RRule["fail",Rreturn.create({:state=>0})]
+#t=RRule["empty",parseexp("{nil}")]
+#RegReg.translate(t)
+add_rule("empty={nil}")
+t=RRule["fail",Rreturn.create({:state=>0})]
 RegReg.translate(t)
 
-t=RRule["foo",parseexp("{puts '42';42} 'a' ('a'|'b'|'c') 'c' ")]
-puts t.inspect
-RegReg.translate(t)
+add_rule("foo={puts '42';42} 'a' ('a'|'b'|'c') 'c'")
+#t=RRule["foo",parseexp("{puts '42';42} 'a' ('a'|'b'|'c') 'c' ")]
+#puts t.inspect
+#RegReg.translate(t)
+
 puts RegReg.match(parseexp("foo"),"abc")
 t=RRule["ac",parseexp("'a' 'c' {puts 'ac';42}")]
 RegReg.translate(t)
 t=RRule["bc",parseexp("'b' 'c' {puts 'b'}")]
 RegReg.translate(t)
-t=RRule["cc",parseexp("ac:x {puts @x+1}|bc|ac")]
+t=RRule["cc",parseexp("ac:x {puts 1+1}|bc|ac")]
 puts t.inspect
 RegReg.translate(t)
 

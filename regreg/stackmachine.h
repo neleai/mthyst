@@ -127,9 +127,10 @@ typedef struct {
     char tp;
     char * name;
     exp * body;
+    long locals;
 } exp_rule;
 exp_rule* normalize_rule(exp_rule*o);
-exp *make_rule(char * name,exp * body);
+exp *make_rule(char * name,exp * body,long locals);
 typedef struct {
     char tp;
     exp* to;

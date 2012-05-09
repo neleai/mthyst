@@ -145,6 +145,7 @@ exp * trans(VALUE exp2) {
         e.tp=TP_rule;
         e.name=(char *) trans(rb_iv_get(exp2,"@name"));
         e.body=(exp *) trans(rb_iv_get(exp2,"@body"));
+        e.locals=(long) trans(rb_iv_get(exp2,"@locals"));
         return (exp *) normalize_rule(&e);
     }
     else if (typetest(exp2,"Renter")) {

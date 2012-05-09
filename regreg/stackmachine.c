@@ -77,11 +77,12 @@ exp *make_return(long state) {
     return (exp *) e;
 }
 
-exp *make_rule(char * name,exp * body) {
+exp *make_rule(char * name,exp * body,long locals) {
     exp_rule *e=malloc(sizeof(exp_rule));
     e->tp=TP_rule;
     e->name=name;
     e->body=body;
+    e->locals=locals;
     return (exp *) e;
 }
 
@@ -285,7 +286,7 @@ void *match(exp* e,Args a) {
               decide if this can happen.*/
             fprintf(debug,"calling %s\n",e->name);
             SAVE_closure
-            void **closure=malloc(sizeof(void*)*e->locals);
+            void **closure=malloc(sizeof(void*)*e->body->locals);
             int i;
             for(i=0; i<e->argc; i++) closure[e->ato[i]]=a.closure[e->afrom[i]];
             a.closure=closure;
