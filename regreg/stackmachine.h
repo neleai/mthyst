@@ -73,17 +73,17 @@ exp_switch* normalize_switch(exp_switch*o);
 exp *make_switch(exp* head,exp ** alts);
 typedef struct {
     char tp;
-    long stop;
+    long stops;
     exp * body;
 } exp_many;
 exp_many* normalize_many(exp_many*o);
-exp *make_many(long stop,exp * body);
+exp *make_many(long stops,exp * body);
 typedef struct {
     char tp;
-    long stop;
+    long stops;
 } exp_stop;
 exp_stop* normalize_stop(exp_stop*o);
-exp *make_stop(long stop);
+exp *make_stop(long stops);
 typedef struct {
     char tp;
     long var;

@@ -91,14 +91,14 @@ exp * trans(VALUE exp2) {
     else if (typetest(exp2,"Rmany")) {
         exp_many e;
         e.tp=TP_many;
-        e.stop=(long) trans(rb_iv_get(exp2,"@stop"));
+        e.stops=(long) trans(rb_iv_get(exp2,"@stops"));
         e.body=(exp *) trans(rb_iv_get(exp2,"@body"));
         return (exp *) normalize_many(&e);
     }
     else if (typetest(exp2,"Rstop")) {
         exp_stop e;
         e.tp=TP_stop;
-        e.stop=(long) trans(rb_iv_get(exp2,"@stop"));
+        e.stops=(long) trans(rb_iv_get(exp2,"@stops"));
         return (exp *) normalize_stop(&e);
     }
     else if (typetest(exp2,"Rbind")) {

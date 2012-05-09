@@ -17,18 +17,18 @@ exp *make_switch(exp* head,exp ** alts) {
     return (exp *) e;
 }
 
-exp *make_many(long stop,exp * body) {
+exp *make_many(long stops,exp * body) {
     exp_many *e=malloc(sizeof(exp_many));
     e->tp=TP_many;
-    e->stop=stop;
+    e->stops=stops;
     e->body=body;
     return (exp *) e;
 }
 
-exp *make_stop(long stop) {
+exp *make_stop(long stops) {
     exp_stop *e=malloc(sizeof(exp_stop));
     e->tp=TP_stop;
-    e->stop=stop;
+    e->stops=stops;
     return (exp *) e;
 }
 
@@ -232,7 +232,7 @@ void *match(exp* e,Args a) {
             fprintf(debug,"\n");
 
             SAVE_stops
-            a.stops|=e->stop;
+            a.stops|=e->stops;
             memcpy(stack_match,a.cont-st_siz,st_siz);
             stack_match+=st_siz;
             a.cont-=st_siz;
@@ -352,9 +352,9 @@ void *match(exp* e,Args a) {
             inspect_exp(e);
             fprintf(debug,"\n");
 
-            if (e->stop & a.stops) {
+            if (e->stops & a.stops) {
                 SAVE_stops
-                a.stops=a.stops&(~e->stop);
+                a.stops=a.stops&(~e->stops);
                 memcpy(stack_match,a.cont-st_siz,st_siz);
                 stack_match+=st_siz;
                 a.cont-=st_siz;

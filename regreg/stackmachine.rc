@@ -75,7 +75,7 @@ void *match(exp* e,Args a){
   ")+
   ecase("stop","
           SAVE_stops
-          a.stops|=e->stop;
+          a.stops|=e->stops;
           #{cont_call()}")+
   ecase("make_lambda","
     lambda_s *l=malloc(sizeof(lambda_s));
@@ -119,9 +119,9 @@ void *match(exp* e,Args a){
     a.closure[e->var]=r.returned;
   ")+
   ecase("many","
-         if (e->stop & a.stops){
+         if (e->stops & a.stops){
            SAVE_stops
-           a.stops=a.stops&(~e->stop);
+           a.stops=a.stops&(~e->stops);
            #{cont_call()}
          }else{
            #{push_cont("e->tp","e")}

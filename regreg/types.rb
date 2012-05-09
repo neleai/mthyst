@@ -3,8 +3,8 @@ def cnst(*names); names.map{|name|"#define #{name} #{$nums+=1}\n"}*"";end
 
 $nodes=  [["seq",[["exp*","head"],["exp*","tail"]]],
    ["switch",[["exp*","head"],["exp **","alts"]]],
-   ["many",[["long","stop"],["exp *","body"]]],
-   ["stop",[["long","stop"]]],
+   ["many",[["long","stops"],["exp *","body"]]],
+   ["stop",[["long","stops"]]],
    ["bind",[["long","var"]]],
    ["nested",[["exp*","body"]]],
    ["act",[["long","varc"],["long *","vars"],["void *","fn"],["void *","arg"]]],

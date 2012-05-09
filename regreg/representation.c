@@ -84,10 +84,10 @@ exp_switch *normalize_switch(exp_switch *o) {
 exp_many *normalize_many(exp_many *o) {
     int i;
     for(i=0; i<nodes_many_no; i++) {
-        if (nodes_many[i].stop==o->stop&&nodes_many[i].body==o->body) return &nodes_many[i];
+        if (nodes_many[i].stops==o->stops&&nodes_many[i].body==o->body) return &nodes_many[i];
     }
     nodes_many[nodes_many_no].tp=TP_many;
-    nodes_many[nodes_many_no].stop=o->stop;
+    nodes_many[nodes_many_no].stops=o->stops;
     nodes_many[nodes_many_no].body=o->body;
     nodes_many_no+=1;
     return &nodes_many[nodes_many_no-1];
@@ -95,10 +95,10 @@ exp_many *normalize_many(exp_many *o) {
 exp_stop *normalize_stop(exp_stop *o) {
     int i;
     for(i=0; i<nodes_stop_no; i++) {
-        if (nodes_stop[i].stop==o->stop) return &nodes_stop[i];
+        if (nodes_stop[i].stops==o->stops) return &nodes_stop[i];
     }
     nodes_stop[nodes_stop_no].tp=TP_stop;
-    nodes_stop[nodes_stop_no].stop=o->stop;
+    nodes_stop[nodes_stop_no].stops=o->stops;
     nodes_stop_no+=1;
     return &nodes_stop[nodes_stop_no-1];
 }
@@ -252,9 +252,9 @@ void inspect_exp(exp *e) {
     case TP_seq: {
         exp_seq *e2=(exp_seq *)e;
         fprintf(debug,"seq[");
-        fprintf(debug,"head:");
+        fprintf(debug," head:");
         inspect_exp(e2->head);
-        fprintf(debug,"tail:");
+        fprintf(debug," tail:");
         inspect_exp(e2->tail);
         fprintf(debug,"]");
         break;
@@ -262,9 +262,9 @@ void inspect_exp(exp *e) {
     case TP_switch: {
         exp_switch *e2=(exp_switch *)e;
         fprintf(debug,"switch[");
-        fprintf(debug,"head:");
+        fprintf(debug," head:");
         inspect_exp(e2->head);
-        fprintf(debug,"alts: [");
+        fprintf(debug," alts: [");
         inspect_exp(e2->alts[0]);
         fprintf(debug,"]");
         fprintf(debug,"]");
@@ -273,8 +273,8 @@ void inspect_exp(exp *e) {
     case TP_many: {
         exp_many *e2=(exp_many *)e;
         fprintf(debug,"many[");
-        fprintf(debug,"stop: %i",e2->stop);
-        fprintf(debug,"body:");
+        fprintf(debug," stops: %i",e2->stops);
+        fprintf(debug," body:");
         inspect_exp(e2->body);
         fprintf(debug,"]");
         break;
@@ -282,21 +282,21 @@ void inspect_exp(exp *e) {
     case TP_stop: {
         exp_stop *e2=(exp_stop *)e;
         fprintf(debug,"stop[");
-        fprintf(debug,"stop: %i",e2->stop);
+        fprintf(debug," stops: %i",e2->stops);
         fprintf(debug,"]");
         break;
     }
     case TP_bind: {
         exp_bind *e2=(exp_bind *)e;
         fprintf(debug,"bind[");
-        fprintf(debug,"var: %i",e2->var);
+        fprintf(debug," var: %i",e2->var);
         fprintf(debug,"]");
         break;
     }
     case TP_nested: {
         exp_nested *e2=(exp_nested *)e;
         fprintf(debug,"nested[");
-        fprintf(debug,"body:");
+        fprintf(debug," body:");
         inspect_exp(e2->body);
         fprintf(debug,"]");
         break;
@@ -304,14 +304,14 @@ void inspect_exp(exp *e) {
     case TP_act: {
         exp_act *e2=(exp_act *)e;
         fprintf(debug,"act[");
-        fprintf(debug,"varc: %i",e2->varc);
+        fprintf(debug," varc: %i",e2->varc);
         fprintf(debug,"]");
         break;
     }
     case TP_make_lambda: {
         exp_make_lambda *e2=(exp_make_lambda *)e;
         fprintf(debug,"make_lambda[");
-        fprintf(debug,"body:");
+        fprintf(debug," body:");
         inspect_exp(e2->body);
         fprintf(debug,"]");
         break;
@@ -319,22 +319,22 @@ void inspect_exp(exp *e) {
     case TP_use_lambda: {
         exp_use_lambda *e2=(exp_use_lambda *)e;
         fprintf(debug,"use_lambda[");
-        fprintf(debug,"placeholder: %i",e2->placeholder);
+        fprintf(debug," placeholder: %i",e2->placeholder);
         fprintf(debug,"]");
         break;
     }
     case TP_return: {
         exp_return *e2=(exp_return *)e;
         fprintf(debug,"return[");
-        fprintf(debug,"state: %i",e2->state);
+        fprintf(debug," state: %i",e2->state);
         fprintf(debug,"]");
         break;
     }
     case TP_rule: {
         exp_rule *e2=(exp_rule *)e;
         fprintf(debug,"rule[");
-        fprintf(debug,"name: %s",e2->name);
-        fprintf(debug,"body:");
+        fprintf(debug," name: %s",e2->name);
+        fprintf(debug," body:");
         inspect_exp(e2->body);
         fprintf(debug,"]");
         break;
@@ -342,7 +342,7 @@ void inspect_exp(exp *e) {
     case TP_enter: {
         exp_enter *e2=(exp_enter *)e;
         fprintf(debug,"enter[");
-        fprintf(debug,"to:");
+        fprintf(debug," to:");
         inspect_exp(e2->to);
         fprintf(debug,"]");
         break;
@@ -350,18 +350,18 @@ void inspect_exp(exp *e) {
     case TP_call: {
         exp_call *e2=(exp_call *)e;
         fprintf(debug,"call[");
-        fprintf(debug,"name: %s",e2->name);
-        fprintf(debug,"body:");
+        fprintf(debug," name: %s",e2->name);
+        fprintf(debug," body:");
         inspect_exp(e2->body);
-        fprintf(debug,"argc: %i",e2->argc);
-        fprintf(debug,"locals: %i",e2->locals);
+        fprintf(debug," argc: %i",e2->argc);
+        fprintf(debug," locals: %i",e2->locals);
         fprintf(debug,"]");
         break;
     }
     case TP_char: {
         exp_char *e2=(exp_char *)e;
         fprintf(debug,"char[");
-        fprintf(debug,"str: %s",e2->str);
+        fprintf(debug," str: %s",e2->str);
         fprintf(debug,"]");
         break;
     }
