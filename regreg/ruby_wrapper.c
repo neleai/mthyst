@@ -92,7 +92,7 @@ exp * trans(VALUE exp2) {
         exp_many e;
         e.tp=TP_many;
         e.stop=(long) trans(rb_iv_get(exp2,"@stop"));
-        e.ex=(exp *) trans(rb_iv_get(exp2,"@ex"));
+        e.body=(exp *) trans(rb_iv_get(exp2,"@body"));
         return (exp *) normalize_many(&e);
     }
     else if (typetest(exp2,"Rstop")) {

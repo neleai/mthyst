@@ -31,11 +31,13 @@ void *match(exp* e,Args a){
       switch(*(stack_match-1)){
 <%=
   $arg_tp.map{|t,v| "case RESTORE_#{v}:
+      fprintf(debug, \"restoring a.#{v}\\n\");
       stack_match-=sizeof(#{t})+1;
       a.#{v}=*(#{t}*)stack_match;
       break;
     "}*""+
       $res_tp.map{|t,v| "case RESTORE_#{v}:
+      fprintf(debug, \"restoring r.#{v}\\n\");
       stack_match-=sizeof(#{t})+1;
       r.#{v}=*(#{t}*)stack_match;
       break;
@@ -45,6 +47,7 @@ void *match(exp* e,Args a){
   def ecase(tp,body)
     "case TP_#{tp}: { stack_match-=st_siz;
           exp_#{tp} *e=*(exp_#{tp}**)stack_match;
+          fprintf(debug, \"match \"); inspect_exp(e);fprintf(debug,\"\\n\");
           #{body}
           break;}"
   end
@@ -122,7 +125,7 @@ void *match(exp* e,Args a){
            #{cont_call()}
          }else{
            #{push_cont("e->tp","e")}
-           #{push_exp("e->ex")}
+           #{push_exp("e->body")}
          }")+
   ecase("return","
     r.state= e->state;
@@ -154,6 +157,7 @@ void *match2(exp *e,char *s){
   a.cont =malloc(1000000);
   a.closure=malloc(100);
   a.str=s;
+  a.stops=0;
   return match(e,a);
 }
 

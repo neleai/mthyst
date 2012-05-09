@@ -74,10 +74,10 @@ exp *make_switch(exp* head,exp ** alts);
 typedef struct {
     char tp;
     long stop;
-    exp * ex;
+    exp * body;
 } exp_many;
 exp_many* normalize_many(exp_many*o);
-exp *make_many(long stop,exp * ex);
+exp *make_many(long stop,exp * body);
 typedef struct {
     char tp;
     long stop;
