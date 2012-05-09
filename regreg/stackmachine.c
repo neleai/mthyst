@@ -112,6 +112,8 @@ exp *make_char(char * str) {
 
 
 
+FILE *debug;
+
 void *match(exp* e,Args a) {
     Result r;
     char *stack_match=malloc(1000000);
@@ -173,6 +175,7 @@ void *match(exp* e,Args a) {
             exp_char *e=*(exp_char**)stack_match;
 
             if (*a.str==*e->str) {
+                fprintf(debug,"character %s\n",e->str);
                 SAVE_str
                 a.str+=1;
                 memcpy(stack_match,a.cont-st_siz,st_siz);
@@ -379,7 +382,4 @@ void *match2(exp *e,char *s) {
     a.str=s;
     return match(e,a);
 }
-int main() {
-    exp* e=make_seq(make_char("a"),make_char("b"));
-    match2(e,"abc");
-}
+

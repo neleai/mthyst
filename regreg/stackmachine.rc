@@ -18,6 +18,8 @@
   end
 %>
 
+FILE *debug;
+
 void *match(exp* e,Args a){
   Result r;
   char *stack_match=malloc(1000000);
@@ -51,6 +53,7 @@ void *match(exp* e,Args a){
               #{push_exp("e->head")}")+
   ecase("char","
           if (*a.str==*e->str){
+            fprintf(debug,\"character %s\\n\",e->str);
             SAVE_str
             a.str+=1;
             #{cont_call()}
@@ -150,7 +153,4 @@ void *match2(exp *e,char *s){
   a.str=s;
   return match(e,a);
 }
-int main(){
-  exp* e=make_seq(make_char("a"),make_char("b"));
-  match2(e,"abc");
-}
+

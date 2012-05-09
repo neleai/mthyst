@@ -58,7 +58,9 @@ VALUE rb_match(VALUE self,VALUE exp2,VALUE str){
   char *str2=RSTRING_PTR(str);
   return match2(e,str2);
 }
+extern FILE * debug;
 void Init_RegReg(){
+  debug=fopen("log","w");
   RegReg=rb_define_class("RegReg",rb_cObject);
   rb_define_singleton_method(RegReg,"translate",translate,1);
   rb_define_singleton_method(RegReg,"match",rb_match,2);
