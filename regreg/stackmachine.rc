@@ -117,6 +117,7 @@ void *match(exp* e,Args a){
     *(long *)stack_match =e->var;           stack_match+=sizeof(long);
     *stack_match=bind_restore;              stack_match+=1;
     a.closure[e->var]=r.returned;
+    #{cont_call()}
   ")+
   ecase("many","
          if (e->stops & a.stops){

@@ -342,6 +342,9 @@ void *match(exp* e,Args a) {
             *stack_match=bind_restore;
             stack_match+=1;
             a.closure[e->var]=r.returned;
+            memcpy(stack_match,a.cont-st_siz,st_siz);
+            stack_match+=st_siz;
+            a.cont-=st_siz;
 
             break;
         }
