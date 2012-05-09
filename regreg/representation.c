@@ -246,3 +246,124 @@ void init_nodes() {
     nodes_char=malloc(10000);
     nodes_char_no=0;
 }
+
+void inspect_exp(exp *e) {
+    switch(e->tp) {
+    case TP_seq: {
+        exp_seq *e2=(exp_seq *)e;
+        printf("seq[");
+        printf("head:");
+        inspect_exp(e2->head);
+        printf("tail:");
+        inspect_exp(e2->tail);
+        printf("]");
+        break;
+    }
+    case TP_switch: {
+        exp_switch *e2=(exp_switch *)e;
+        printf("switch[");
+        printf("head:");
+        inspect_exp(e2->head);
+        printf("alts: [");
+        inspect_exp(e2->alts[0]);
+        printf("]");
+        printf("]");
+        break;
+    }
+    case TP_many: {
+        exp_many *e2=(exp_many *)e;
+        printf("many[");
+        printf("stop: %i",e2->stop);
+        printf("ex:");
+        inspect_exp(e2->ex);
+        printf("]");
+        break;
+    }
+    case TP_stop: {
+        exp_stop *e2=(exp_stop *)e;
+        printf("stop[");
+        printf("stop: %i",e2->stop);
+        printf("]");
+        break;
+    }
+    case TP_bind: {
+        exp_bind *e2=(exp_bind *)e;
+        printf("bind[");
+        printf("var: %i",e2->var);
+        printf("]");
+        break;
+    }
+    case TP_nested: {
+        exp_nested *e2=(exp_nested *)e;
+        printf("nested[");
+        printf("body:");
+        inspect_exp(e2->body);
+        printf("]");
+        break;
+    }
+    case TP_act: {
+        exp_act *e2=(exp_act *)e;
+        printf("act[");
+        printf("varc: %i",e2->varc);
+        printf("]");
+        break;
+    }
+    case TP_make_lambda: {
+        exp_make_lambda *e2=(exp_make_lambda *)e;
+        printf("make_lambda[");
+        printf("body:");
+        inspect_exp(e2->body);
+        printf("]");
+        break;
+    }
+    case TP_use_lambda: {
+        exp_use_lambda *e2=(exp_use_lambda *)e;
+        printf("use_lambda[");
+        printf("placeholder: %i",e2->placeholder);
+        printf("]");
+        break;
+    }
+    case TP_return: {
+        exp_return *e2=(exp_return *)e;
+        printf("return[");
+        printf("state: %i",e2->state);
+        printf("]");
+        break;
+    }
+    case TP_rule: {
+        exp_rule *e2=(exp_rule *)e;
+        printf("rule[");
+        printf("name: %s",e2->name);
+        printf("body:");
+        inspect_exp(e2->body);
+        printf("]");
+        break;
+    }
+    case TP_enter: {
+        exp_enter *e2=(exp_enter *)e;
+        printf("enter[");
+        printf("to:");
+        inspect_exp(e2->to);
+        printf("]");
+        break;
+    }
+    case TP_call: {
+        exp_call *e2=(exp_call *)e;
+        printf("call[");
+        printf("name: %s",e2->name);
+        printf("body:");
+        inspect_exp(e2->body);
+        printf("argc: %i",e2->argc);
+        printf("locals: %i",e2->locals);
+        printf("]");
+        break;
+    }
+    case TP_char: {
+        exp_char *e2=(exp_char *)e;
+        printf("char[");
+        printf("str: %s",e2->str);
+        printf("]");
+        break;
+    }
+    }
+}

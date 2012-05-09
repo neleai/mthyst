@@ -7,13 +7,13 @@ $nodes=  [["seq",[["exp*","head"],["exp*","tail"]]],
    ["stop",[["long","stop"]]],
    ["bind",[["long","var"]]],
    ["nested",[["exp*","body"]]],
-   ["act",[["long","varc"],["long *","vars"],["void *","fn"],["void*","arg"]]],
+   ["act",[["long","varc"],["long *","vars"],["void *","fn"],["void *","arg"]]],
    ["make_lambda",[["exp*","body"]]],
    ["use_lambda",[["long" ,"placeholder"]]],
    ["return",[["long","state"]]],
    ["rule",[["char *","name"],["exp *","body"]]],
    ["enter",[["exp*","to"]]],
-   ["call",[["char *","name"],["exp_rule*","body"],["long","argc"],["long*","afrom"],["long *","ato"],["long","locals"]]],
+   ["call",[["char *","name"],["exp_rule*","body"],["long","argc"],["long *","afrom"],["long *","ato"],["long","locals"]]],
    ["char",[["char *","str"]]]]
 
 $arg_tp=[["char*","str"],["long","stops"],["void**","closure"],["char *","cont"]]

@@ -101,10 +101,10 @@ typedef struct {
     long varc;
     long * vars;
     void * fn;
-    void* arg;
+    void * arg;
 } exp_act;
 exp_act* normalize_act(exp_act*o);
-exp *make_act(long varc,long * vars,void * fn,void* arg);
+exp *make_act(long varc,long * vars,void * fn,void * arg);
 typedef struct {
     char tp;
     exp* body;
@@ -141,12 +141,12 @@ typedef struct {
     char * name;
     exp_rule* body;
     long argc;
-    long* afrom;
+    long * afrom;
     long * ato;
     long locals;
 } exp_call;
 exp_call* normalize_call(exp_call*o);
-exp *make_call(char * name,exp_rule* body,long argc,long* afrom,long * ato,long locals);
+exp *make_call(char * name,exp_rule* body,long argc,long * afrom,long * ato,long locals);
 typedef struct {
     char tp;
     char * str;

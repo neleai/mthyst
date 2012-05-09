@@ -25,3 +25,18 @@ void init_nodes(){
   nodes_array=malloc(10000);nodes_array_size=malloc(10000);nodes_array_no=0;
   <%= $nodes.map{|n,a| "nodes_#{n}=malloc(10000);nodes_#{n}_no=0;"}*"" %>
 }
+
+void inspect_exp(exp *e){
+  switch(e->tp){
+    <%=
+$nodes.map{|n,a| "case TP_#{n}: {exp_#{n} *e2=(exp_#{n} *)e; printf(\"#{n}[\"); #{a.map{|t,v| case t
+  when "long";   "printf(\"#{v}: %i\",e2->#{v});"
+  when "char *"; "printf(\"#{v}: %s\",e2->#{v});"
+  when "long *"; ""
+  when "void *"; ""
+  when "exp **"; "printf(\"#{v}: [\"); inspect_exp(e2->#{v}[0]); printf(\"]\");"
+  else "printf(\"#{v}:\"); inspect_exp(e2->#{v});"
+  end}} printf(\"]\"); break;}"}*""
+ %> 
+  }
+}

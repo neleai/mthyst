@@ -46,7 +46,7 @@ exp *make_nested(exp* body) {
     return (exp *) e;
 }
 
-exp *make_act(long varc,long * vars,void * fn,void* arg) {
+exp *make_act(long varc,long * vars,void * fn,void * arg) {
     exp_act *e=malloc(sizeof(exp_act));
     e->tp=TP_act;
     e->varc=varc;
@@ -92,7 +92,7 @@ exp *make_enter(exp* to) {
     return (exp *) e;
 }
 
-exp *make_call(char * name,exp_rule* body,long argc,long* afrom,long * ato,long locals) {
+exp *make_call(char * name,exp_rule* body,long argc,long * afrom,long * ato,long locals) {
     exp_call *e=malloc(sizeof(exp_call));
     e->tp=TP_call;
     e->name=name;
