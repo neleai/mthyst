@@ -138,6 +138,7 @@ exp_enter* normalize_enter(exp_enter*o);
 exp *make_enter(exp* to);
 typedef struct {
     char tp;
+    char * name;
     exp_rule* body;
     long argc;
     long* afrom;
@@ -145,7 +146,7 @@ typedef struct {
     long locals;
 } exp_call;
 exp_call* normalize_call(exp_call*o);
-exp *make_call(exp_rule* body,long argc,long* afrom,long * ato,long locals);
+exp *make_call(char * name,exp_rule* body,long argc,long* afrom,long * ato,long locals);
 typedef struct {
     char tp;
     char * str;

@@ -13,7 +13,7 @@ $nodes=  [["seq",[["exp*","head"],["exp*","tail"]]],
    ["return",[["long","state"]]],
    ["rule",[["char *","name"],["exp *","body"]]],
    ["enter",[["exp*","to"]]],
-   ["call",[["exp_rule*","body"],["long","argc"],["long*","afrom"],["long *","ato"],["long","locals"]]],
+   ["call",[["char *","name"],["exp_rule*","body"],["long","argc"],["long*","afrom"],["long *","ato"],["long","locals"]]],
    ["char",[["char *","str"]]]]
 
 $arg_tp=[["char*","str"],["long","stops"],["void**","closure"],["char *","cont"]]
@@ -26,5 +26,20 @@ class RegRegAST
     hash.map{|k,v| n.instance_variable_set("@#{k}",v)}
     n
   end
+end
+class Rchar < RegRegAST
+  def inspect
+    "RChar[#{@str}]"
+  end
+end
+class Rseq < RegRegAST
+  def inspect
+    "Rseq[#{@head.inspect},#{@tail.inspect}]"
+  end
+end
+class Rbind < RegRegAST
+  def inspect
+    "Rbind[#{@var}]"
+  end 
 end
 $nodes.each{|n,a| eval("class R#{n} < RegRegAST;end")}

@@ -17,9 +17,11 @@ long nodes_array_no;
 exp ** normalize_array(exp **array,long size) {
     int i,j;
     for(i=0; i<nodes_array_no; i++) {
-        if(size!=nodes_array_size[i])continue;
-        for(j=0; j<size; j++) if (nodes_array[i][j]!=array[j]) continue;
+        if(size!=nodes_array_size[i]) goto next;
+        for(j=0; j<size; j++) if (nodes_array[i][j]!=array[j]) goto next;
         return nodes_array[i];
+next:
+        ;
     }
     nodes_array[nodes_array_no]=array;
     nodes_array_size[nodes_array_no]=size;
@@ -187,9 +189,10 @@ exp_enter *normalize_enter(exp_enter *o) {
 exp_call *normalize_call(exp_call *o) {
     int i;
     for(i=0; i<nodes_call_no; i++) {
-        if (nodes_call[i].body==o->body&&nodes_call[i].argc==o->argc&&nodes_call[i].afrom==o->afrom&&nodes_call[i].ato==o->ato&&nodes_call[i].locals==o->locals) return nodes_call;
+        if (nodes_call[i].name==o->name&&nodes_call[i].body==o->body&&nodes_call[i].argc==o->argc&&nodes_call[i].afrom==o->afrom&&nodes_call[i].ato==o->ato&&nodes_call[i].locals==o->locals) return nodes_call;
     }
     nodes_call[nodes_call_no].tp=TP_call;
+    nodes_call[nodes_call_no].name=o->name;
     nodes_call[nodes_call_no].body=o->body;
     nodes_call[nodes_call_no].argc=o->argc;
     nodes_call[nodes_call_no].afrom=o->afrom;
@@ -210,20 +213,36 @@ exp_char *normalize_char(exp_char *o) {
 }
 void init_nodes() {
     nodes_string=malloc(10000);
+    nodes_string_no=0;
     nodes_array=malloc(10000);
     nodes_array_size=malloc(10000);
+    nodes_array_no=0;
     nodes_seq=malloc(10000);
+    nodes_seq_no=0;
     nodes_switch=malloc(10000);
+    nodes_switch_no=0;
     nodes_many=malloc(10000);
+    nodes_many_no=0;
     nodes_stop=malloc(10000);
+    nodes_stop_no=0;
     nodes_bind=malloc(10000);
+    nodes_bind_no=0;
     nodes_nested=malloc(10000);
+    nodes_nested_no=0;
     nodes_act=malloc(10000);
+    nodes_act_no=0;
     nodes_make_lambda=malloc(10000);
+    nodes_make_lambda_no=0;
     nodes_use_lambda=malloc(10000);
+    nodes_use_lambda_no=0;
     nodes_return=malloc(10000);
+    nodes_return_no=0;
     nodes_rule=malloc(10000);
+    nodes_rule_no=0;
     nodes_enter=malloc(10000);
+    nodes_enter_no=0;
     nodes_call=malloc(10000);
+    nodes_call_no=0;
     nodes_char=malloc(10000);
+    nodes_char_no=0;
 }

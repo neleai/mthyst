@@ -92,9 +92,10 @@ exp *make_enter(exp* to) {
     return (exp *) e;
 }
 
-exp *make_call(exp_rule* body,long argc,long* afrom,long * ato,long locals) {
+exp *make_call(char * name,exp_rule* body,long argc,long* afrom,long * ato,long locals) {
     exp_call *e=malloc(sizeof(exp_call));
     e->tp=TP_call;
+    e->name=name;
     e->body=body;
     e->argc=argc;
     e->afrom=afrom;
@@ -174,8 +175,9 @@ void *match(exp* e,Args a) {
             stack_match-=st_siz;
             exp_char *e=*(exp_char**)stack_match;
 
+
+            fprintf(debug,"character %s on %s\n",e->str,a.str);
             if (*a.str==*e->str) {
-                fprintf(debug,"character %s\n",e->str);
                 SAVE_str
                 a.str+=1;
                 memcpy(stack_match,a.cont-st_siz,st_siz);
@@ -252,6 +254,7 @@ void *match(exp* e,Args a) {
               one and update lambda pointers. When we know that lambda is dead we can skip
               constructing closure, but this depends on garbage collector/running analysis to
               decide if this can happen.*/
+            fprintf(debug,"calling %s\n",e->name);
             SAVE_closure
             void **closure=malloc(sizeof(void*)*e->locals);
             int i;

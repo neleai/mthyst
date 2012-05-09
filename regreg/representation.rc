@@ -9,7 +9,7 @@ char * normalize_string(char *s){ int i;
 }
 exp ***nodes_array; long *nodes_array_size; long nodes_array_no;
 exp ** normalize_array(exp **array,long size){ int i,j;
-  for(i=0;i<nodes_array_no;i++){ if(size!=nodes_array_size[i])continue; for(j=0;j<size;j++) if (nodes_array[i][j]!=array[j]) continue; return nodes_array[i];}
+  for(i=0;i<nodes_array_no;i++){ if(size!=nodes_array_size[i]) goto next; for(j=0;j<size;j++) if (nodes_array[i][j]!=array[j]) goto next; return nodes_array[i];next:;}
   nodes_array[nodes_array_no]=array; nodes_array_size[nodes_array_no]=size;
   nodes_array_no+=1;
   return nodes_array[nodes_array_no-1];
@@ -21,7 +21,7 @@ exp ** normalize_array(exp **array,long size){ int i,j;
   for(i=0;i<nodes_#{n}_no;i++){ if (#{a.map{|t,v| "nodes_#{n}[i].#{v}==o->#{v}"}*"&&"}) return nodes_#{n}; }
   nodes_#{n}[nodes_#{n}_no].tp=TP_#{n};#{a.map{|t,v| "nodes_#{n}[nodes_#{n}_no].#{v}=o->#{v};"}*""}  nodes_#{n}_no+=1; return &nodes_#{n}[nodes_#{n}_no-1];} " }*""%>
 void init_nodes(){
-  nodes_string=malloc(10000);
-  nodes_array=malloc(10000);nodes_array_size=malloc(10000);
-  <%= $nodes.map{|n,a| "nodes_#{n}=malloc(10000);"}*"" %>
+  nodes_string=malloc(10000);nodes_string_no=0;
+  nodes_array=malloc(10000);nodes_array_size=malloc(10000);nodes_array_no=0;
+  <%= $nodes.map{|n,a| "nodes_#{n}=malloc(10000);nodes_#{n}_no=0;"}*"" %>
 }

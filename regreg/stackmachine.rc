@@ -52,8 +52,9 @@ void *match(exp* e,Args a){
               #{push_cont("e->tail->tp","e->tail")}
               #{push_exp("e->head")}")+
   ecase("char","
+          
+          fprintf(debug,\"character %s on %s\\n\",e->str,a.str);
           if (*a.str==*e->str){
-            fprintf(debug,\"character %s\\n\",e->str);
             SAVE_str
             a.str+=1;
             #{cont_call()}
@@ -91,6 +92,7 @@ void *match(exp* e,Args a){
       one and update lambda pointers. When we know that lambda is dead we can skip 
       constructing closure, but this depends on garbage collector/running analysis to 
       decide if this can happen.*/
+    fprintf(debug,\"calling %s\\n\",e->name);
     SAVE_closure
     void **closure=malloc(sizeof(void*)*e->locals);
     int i;for(i=0;i<e->argc;i++) closure[e->ato[i]]=a.closure[e->afrom[i]];

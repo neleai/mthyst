@@ -52,6 +52,8 @@ exp * trans(VALUE exp2) {
     else if (typetest(exp2,"Rcall" )) {
         char *name=trans(rb_iv_get(exp2,"@name"));
         exp_call e;
+        e.tp=TP_call;
+        e.name=name;
         e.locals=trans(rb_iv_get(exp2,"@locals"));
         e.body=getrule(name)->body;
         e.argc=0;
@@ -66,6 +68,7 @@ exp * trans(VALUE exp2) {
     }
     else if (typetest(exp2,"Ract"   )) {
         exp_act e;
+        e.tp=TP_act;
         e.varc=0;
         e.fn=callback;
         e.arg=trans(rb_iv_get(exp2,"@arg"));
@@ -73,39 +76,46 @@ exp * trans(VALUE exp2) {
     }
     else if (typetest(exp2,"Rseq")) {
         exp_seq e;
+        e.tp=TP_seq;
         e.head=(exp*) trans(rb_iv_get(exp2,"@head"));
         e.tail=(exp*) trans(rb_iv_get(exp2,"@tail"));
         return (exp *) normalize_seq(&e);
     }
     else if (typetest(exp2,"Rswitch")) {
         exp_switch e;
+        e.tp=TP_switch;
         e.head=(exp*) trans(rb_iv_get(exp2,"@head"));
         e.alts=(exp **) trans(rb_iv_get(exp2,"@alts"));
         return (exp *) normalize_switch(&e);
     }
     else if (typetest(exp2,"Rmany")) {
         exp_many e;
+        e.tp=TP_many;
         e.stop=(long) trans(rb_iv_get(exp2,"@stop"));
         e.ex=(exp *) trans(rb_iv_get(exp2,"@ex"));
         return (exp *) normalize_many(&e);
     }
     else if (typetest(exp2,"Rstop")) {
         exp_stop e;
+        e.tp=TP_stop;
         e.stop=(long) trans(rb_iv_get(exp2,"@stop"));
         return (exp *) normalize_stop(&e);
     }
     else if (typetest(exp2,"Rbind")) {
         exp_bind e;
+        e.tp=TP_bind;
         e.var=(long) trans(rb_iv_get(exp2,"@var"));
         return (exp *) normalize_bind(&e);
     }
     else if (typetest(exp2,"Rnested")) {
         exp_nested e;
+        e.tp=TP_nested;
         e.body=(exp*) trans(rb_iv_get(exp2,"@body"));
         return (exp *) normalize_nested(&e);
     }
     else if (typetest(exp2,"Ract")) {
         exp_act e;
+        e.tp=TP_act;
         e.varc=(long) trans(rb_iv_get(exp2,"@varc"));
         e.vars=(long *) trans(rb_iv_get(exp2,"@vars"));
         e.fn=(void *) trans(rb_iv_get(exp2,"@fn"));
@@ -114,32 +124,39 @@ exp * trans(VALUE exp2) {
     }
     else if (typetest(exp2,"Rmake_lambda")) {
         exp_make_lambda e;
+        e.tp=TP_make_lambda;
         e.body=(exp*) trans(rb_iv_get(exp2,"@body"));
         return (exp *) normalize_make_lambda(&e);
     }
     else if (typetest(exp2,"Ruse_lambda")) {
         exp_use_lambda e;
+        e.tp=TP_use_lambda;
         e.placeholder=(long) trans(rb_iv_get(exp2,"@placeholder"));
         return (exp *) normalize_use_lambda(&e);
     }
     else if (typetest(exp2,"Rreturn")) {
         exp_return e;
+        e.tp=TP_return;
         e.state=(long) trans(rb_iv_get(exp2,"@state"));
         return (exp *) normalize_return(&e);
     }
     else if (typetest(exp2,"Rrule")) {
         exp_rule e;
+        e.tp=TP_rule;
         e.name=(char *) trans(rb_iv_get(exp2,"@name"));
         e.body=(exp *) trans(rb_iv_get(exp2,"@body"));
         return (exp *) normalize_rule(&e);
     }
     else if (typetest(exp2,"Renter")) {
         exp_enter e;
+        e.tp=TP_enter;
         e.to=(exp*) trans(rb_iv_get(exp2,"@to"));
         return (exp *) normalize_enter(&e);
     }
     else if (typetest(exp2,"Rcall")) {
         exp_call e;
+        e.tp=TP_call;
+        e.name=(char *) trans(rb_iv_get(exp2,"@name"));
         e.body=(exp_rule*) trans(rb_iv_get(exp2,"@body"));
         e.argc=(long) trans(rb_iv_get(exp2,"@argc"));
         e.afrom=(long*) trans(rb_iv_get(exp2,"@afrom"));
@@ -149,6 +166,7 @@ exp * trans(VALUE exp2) {
     }
     else if (typetest(exp2,"Rchar")) {
         exp_char e;
+        e.tp=TP_char;
         e.str=(char *) trans(rb_iv_get(exp2,"@str"));
         return (exp *) normalize_char(&e);
     }
