@@ -11,7 +11,7 @@ amethyst Amethyst2RegReg {
         | Or[ trans:head eof ] -> head
         | Or[ trans:head .*:tail  ({ Or[*tail]}=>trans):tail ] -> Rswitch.create({:head=>head,:alts=>[tail,nil]})
         | Lookahead[ trans:e ] -> Rswitch.create({:head=>e,:alts=>[Rcall.create({:name=>"fail"}),Rcall.create({:name=>"empty"})]})
-        | Apply[ ["nested"] CAct[ .:start ] CAct[ .:middle ] CAct[ .:end ] ] -> Rnested.create({:ary=>RSeq[Rcall.create({:name=>start}),RSeq[:head=>Rcall.create({:name=>middle}),:tail=>Rcall.create({:name=>end})]]})
+        | Apply[ ["nested"] CAct[ .:start ] CAct[ .:middle ] CAct[ .:end ] ] -> Rnested.create({:body=>RSeq[Rcall.create({:name=>start}),Rcall.create({:name=>middle}),Rcall.create({:name=>end})]})
         | Apply[ ["seq"] CAct[ .:s ] ] -> Rchar.create({:str=>s})
         | Apply[ .:name eof ] -> Rcall.create(:name=>name)
         | Many[ trans:e ]     -> Rmany.create({:stops=>1,:body=>e})
