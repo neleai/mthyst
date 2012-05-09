@@ -74,19 +74,11 @@ add_rule("foo={puts '42';42} 'a' ('a'|'b'|'c') 'c'")
 #t=RRule["foo",parseexp("{puts '42';42} 'a' ('a'|'b'|'c') 'c' ")]
 #puts t.inspect
 #RegReg.translate(t)
-
 puts RegReg.match(parseexp("foo"),"abc")
-t=RRule["ac",parseexp("'a' 'c' {puts 'ac';42}")]
-RegReg.translate(t)
-t=RRule["bc",parseexp("'b' 'c' {puts 'b'}")]
-RegReg.translate(t)
-t=RRule["cc",parseexp("ac:x {puts 1+1}|bc|ac")]
-puts t.inspect
-RegReg.translate(t)
-
-t=RRule["a",parseexp("'a'")]
-puts t.inspect
-RegReg.translate(t)
+add_rule("ac= 'a' 'c' {puts 'ac';42}")
+add_rule("bc= 'b' 'c' {puts 'b'}")
+add_rule("cc= ac:x {puts 1+1}|bc|ac")
+add_rule("a='a'")
 puts RegReg.match(parseexp("cc"),"acb")
 
 puts "lookahead"
