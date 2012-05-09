@@ -195,7 +195,7 @@ void *match(exp* e,Args a) {
                 stack_match+=1;
             }
             void*(*fn)() =e->fn;
-            a.closure[0]=fn(a.closure,e->arg);
+            r.returned=fn(a.closure,e->arg);
             memcpy(stack_match,a.cont-st_siz,st_siz);
             stack_match+=st_siz;
             a.cont-=st_siz;

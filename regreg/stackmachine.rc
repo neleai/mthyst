@@ -62,7 +62,7 @@ void *match(exp* e,Args a){
             *stack_match=bind_restore;                  stack_match+=1;
           }
           void*(*fn)() =e->fn;
-          a.closure[0]=fn(a.closure,e->arg);
+          r.returned=fn(a.closure,e->arg);
           #{cont_call()}
   ")+
   ecase("stop","

@@ -56,8 +56,7 @@ VALUE translate(VALUE self,VALUE exp2){
 VALUE rb_match(VALUE self,VALUE exp2,VALUE str){
   exp *e=trans(exp2);
   char *str2=RSTRING_PTR(str);
-  match2(e,str2);
-  return Qnil;
+  return match2(e,str2);
 }
 void Init_RegReg(){
   RegReg=rb_define_class("RegReg",rb_cObject);
