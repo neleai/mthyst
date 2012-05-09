@@ -62,7 +62,7 @@ long nodes_char_no;
 exp_seq *normalize_seq(exp_seq *o) {
     int i;
     for(i=0; i<nodes_seq_no; i++) {
-        if (nodes_seq[i].head==o->head&&nodes_seq[i].tail==o->tail) return nodes_seq;
+        if (nodes_seq[i].head==o->head&&nodes_seq[i].tail==o->tail) return &nodes_seq[i];
     }
     nodes_seq[nodes_seq_no].tp=TP_seq;
     nodes_seq[nodes_seq_no].head=o->head;
@@ -73,7 +73,7 @@ exp_seq *normalize_seq(exp_seq *o) {
 exp_switch *normalize_switch(exp_switch *o) {
     int i;
     for(i=0; i<nodes_switch_no; i++) {
-        if (nodes_switch[i].head==o->head&&nodes_switch[i].alts==o->alts) return nodes_switch;
+        if (nodes_switch[i].head==o->head&&nodes_switch[i].alts==o->alts) return &nodes_switch[i];
     }
     nodes_switch[nodes_switch_no].tp=TP_switch;
     nodes_switch[nodes_switch_no].head=o->head;
@@ -84,7 +84,7 @@ exp_switch *normalize_switch(exp_switch *o) {
 exp_many *normalize_many(exp_many *o) {
     int i;
     for(i=0; i<nodes_many_no; i++) {
-        if (nodes_many[i].stop==o->stop&&nodes_many[i].ex==o->ex) return nodes_many;
+        if (nodes_many[i].stop==o->stop&&nodes_many[i].ex==o->ex) return &nodes_many[i];
     }
     nodes_many[nodes_many_no].tp=TP_many;
     nodes_many[nodes_many_no].stop=o->stop;
@@ -95,7 +95,7 @@ exp_many *normalize_many(exp_many *o) {
 exp_stop *normalize_stop(exp_stop *o) {
     int i;
     for(i=0; i<nodes_stop_no; i++) {
-        if (nodes_stop[i].stop==o->stop) return nodes_stop;
+        if (nodes_stop[i].stop==o->stop) return &nodes_stop[i];
     }
     nodes_stop[nodes_stop_no].tp=TP_stop;
     nodes_stop[nodes_stop_no].stop=o->stop;
@@ -105,7 +105,7 @@ exp_stop *normalize_stop(exp_stop *o) {
 exp_bind *normalize_bind(exp_bind *o) {
     int i;
     for(i=0; i<nodes_bind_no; i++) {
-        if (nodes_bind[i].var==o->var) return nodes_bind;
+        if (nodes_bind[i].var==o->var) return &nodes_bind[i];
     }
     nodes_bind[nodes_bind_no].tp=TP_bind;
     nodes_bind[nodes_bind_no].var=o->var;
@@ -115,7 +115,7 @@ exp_bind *normalize_bind(exp_bind *o) {
 exp_nested *normalize_nested(exp_nested *o) {
     int i;
     for(i=0; i<nodes_nested_no; i++) {
-        if (nodes_nested[i].body==o->body) return nodes_nested;
+        if (nodes_nested[i].body==o->body) return &nodes_nested[i];
     }
     nodes_nested[nodes_nested_no].tp=TP_nested;
     nodes_nested[nodes_nested_no].body=o->body;
@@ -125,7 +125,7 @@ exp_nested *normalize_nested(exp_nested *o) {
 exp_act *normalize_act(exp_act *o) {
     int i;
     for(i=0; i<nodes_act_no; i++) {
-        if (nodes_act[i].varc==o->varc&&nodes_act[i].vars==o->vars&&nodes_act[i].fn==o->fn&&nodes_act[i].arg==o->arg) return nodes_act;
+        if (nodes_act[i].varc==o->varc&&nodes_act[i].vars==o->vars&&nodes_act[i].fn==o->fn&&nodes_act[i].arg==o->arg) return &nodes_act[i];
     }
     nodes_act[nodes_act_no].tp=TP_act;
     nodes_act[nodes_act_no].varc=o->varc;
@@ -138,7 +138,7 @@ exp_act *normalize_act(exp_act *o) {
 exp_make_lambda *normalize_make_lambda(exp_make_lambda *o) {
     int i;
     for(i=0; i<nodes_make_lambda_no; i++) {
-        if (nodes_make_lambda[i].body==o->body) return nodes_make_lambda;
+        if (nodes_make_lambda[i].body==o->body) return &nodes_make_lambda[i];
     }
     nodes_make_lambda[nodes_make_lambda_no].tp=TP_make_lambda;
     nodes_make_lambda[nodes_make_lambda_no].body=o->body;
@@ -148,7 +148,7 @@ exp_make_lambda *normalize_make_lambda(exp_make_lambda *o) {
 exp_use_lambda *normalize_use_lambda(exp_use_lambda *o) {
     int i;
     for(i=0; i<nodes_use_lambda_no; i++) {
-        if (nodes_use_lambda[i].placeholder==o->placeholder) return nodes_use_lambda;
+        if (nodes_use_lambda[i].placeholder==o->placeholder) return &nodes_use_lambda[i];
     }
     nodes_use_lambda[nodes_use_lambda_no].tp=TP_use_lambda;
     nodes_use_lambda[nodes_use_lambda_no].placeholder=o->placeholder;
@@ -158,7 +158,7 @@ exp_use_lambda *normalize_use_lambda(exp_use_lambda *o) {
 exp_return *normalize_return(exp_return *o) {
     int i;
     for(i=0; i<nodes_return_no; i++) {
-        if (nodes_return[i].state==o->state) return nodes_return;
+        if (nodes_return[i].state==o->state) return &nodes_return[i];
     }
     nodes_return[nodes_return_no].tp=TP_return;
     nodes_return[nodes_return_no].state=o->state;
@@ -168,7 +168,7 @@ exp_return *normalize_return(exp_return *o) {
 exp_rule *normalize_rule(exp_rule *o) {
     int i;
     for(i=0; i<nodes_rule_no; i++) {
-        if (nodes_rule[i].name==o->name&&nodes_rule[i].body==o->body) return nodes_rule;
+        if (nodes_rule[i].name==o->name&&nodes_rule[i].body==o->body) return &nodes_rule[i];
     }
     nodes_rule[nodes_rule_no].tp=TP_rule;
     nodes_rule[nodes_rule_no].name=o->name;
@@ -179,7 +179,7 @@ exp_rule *normalize_rule(exp_rule *o) {
 exp_enter *normalize_enter(exp_enter *o) {
     int i;
     for(i=0; i<nodes_enter_no; i++) {
-        if (nodes_enter[i].to==o->to) return nodes_enter;
+        if (nodes_enter[i].to==o->to) return &nodes_enter[i];
     }
     nodes_enter[nodes_enter_no].tp=TP_enter;
     nodes_enter[nodes_enter_no].to=o->to;
@@ -189,7 +189,7 @@ exp_enter *normalize_enter(exp_enter *o) {
 exp_call *normalize_call(exp_call *o) {
     int i;
     for(i=0; i<nodes_call_no; i++) {
-        if (nodes_call[i].name==o->name&&nodes_call[i].body==o->body&&nodes_call[i].argc==o->argc&&nodes_call[i].afrom==o->afrom&&nodes_call[i].ato==o->ato&&nodes_call[i].locals==o->locals) return nodes_call;
+        if (nodes_call[i].name==o->name&&nodes_call[i].body==o->body&&nodes_call[i].argc==o->argc&&nodes_call[i].afrom==o->afrom&&nodes_call[i].ato==o->ato&&nodes_call[i].locals==o->locals) return &nodes_call[i];
     }
     nodes_call[nodes_call_no].tp=TP_call;
     nodes_call[nodes_call_no].name=o->name;
@@ -204,7 +204,7 @@ exp_call *normalize_call(exp_call *o) {
 exp_char *normalize_char(exp_char *o) {
     int i;
     for(i=0; i<nodes_char_no; i++) {
-        if (nodes_char[i].str==o->str) return nodes_char;
+        if (nodes_char[i].str==o->str) return &nodes_char[i];
     }
     nodes_char[nodes_char_no].tp=TP_char;
     nodes_char[nodes_char_no].str=o->str;

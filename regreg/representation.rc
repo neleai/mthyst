@@ -18,7 +18,7 @@ exp ** normalize_array(exp **array,long size){ int i,j;
 <% require 'types.rb'%>
 <%= $nodes.map{|n,a| "exp_#{n} *nodes_#{n};long nodes_#{n}_no;\n"}*"" %>
 <%= $nodes.map{|n,a| "exp_#{n} *normalize_#{n}(exp_#{n} *o){int i;
-  for(i=0;i<nodes_#{n}_no;i++){ if (#{a.map{|t,v| "nodes_#{n}[i].#{v}==o->#{v}"}*"&&"}) return nodes_#{n}; }
+  for(i=0;i<nodes_#{n}_no;i++){ if (#{a.map{|t,v| "nodes_#{n}[i].#{v}==o->#{v}"}*"&&"}) return &nodes_#{n}[i]; }
   nodes_#{n}[nodes_#{n}_no].tp=TP_#{n};#{a.map{|t,v| "nodes_#{n}[nodes_#{n}_no].#{v}=o->#{v};"}*""}  nodes_#{n}_no+=1; return &nodes_#{n}[nodes_#{n}_no-1];} " }*""%>
 void init_nodes(){
   nodes_string=malloc(10000);nodes_string_no=0;

@@ -39,8 +39,8 @@ exp * trans(VALUE exp2){int i;
   else if (typetest(exp2,"Array" )) { exp **ary=malloc(sizeof(exp*)*RARRAY_LEN(exp2));   
     for(i=0;i<RARRAY_LEN(exp2);i++) ary[i]=trans(RARRAY_PTR(exp2)[i]);
     return (exp *)normalize_array(ary,RARRAY_LEN(exp2));} 
-  else if (typetest(exp2,"Rcall" )) { char *name=trans(rb_iv_get(exp2,"@name")); exp_call e;e.tp=TP_call; e.name=name; e.locals=trans(rb_iv_get(exp2,"@locals")); e.body=getrule(name)->body; e.argc=0; return (exp *) normalize_call(&e);}
-  else if (typetest(exp2,"Rrule" )) { char *name=trans(rb_iv_get(exp2,"@name")); exp *body=trans(rb_iv_get(exp2,"@body")); rule *r=getrule(name); r->body->body=body; return r->body;}
+  else if (typetest(exp2,"Rcall" )) { char *name=(char *)trans(rb_iv_get(exp2,"@name")); exp_call e;e.tp=TP_call; e.name=name; e.locals=(long)trans(rb_iv_get(exp2,"@locals")); e.body=getrule(name)->body; e.argc=0; return (exp *) normalize_call(&e);}
+  else if (typetest(exp2,"Rrule" )) { char *name=(char *)trans(rb_iv_get(exp2,"@name")); exp *body=trans(rb_iv_get(exp2,"@body")); rule *r=getrule(name); r->body->body=body; return (exp*)r->body;}
   else if (typetest(exp2,"Ract"   )) { exp_act e; e.tp=TP_act; e.varc=0; e.fn=callback; e.arg=trans(rb_iv_get(exp2,"@arg")); return normalize_act(&e);}
   <%=
     $nodes.map{|n,a| "else if (typetest(exp2,\"R#{n}\")){

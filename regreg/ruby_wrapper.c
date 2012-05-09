@@ -50,21 +50,21 @@ exp * trans(VALUE exp2) {
         return (exp *)normalize_array(ary,RARRAY_LEN(exp2));
     }
     else if (typetest(exp2,"Rcall" )) {
-        char *name=trans(rb_iv_get(exp2,"@name"));
+        char *name=(char *)trans(rb_iv_get(exp2,"@name"));
         exp_call e;
         e.tp=TP_call;
         e.name=name;
-        e.locals=trans(rb_iv_get(exp2,"@locals"));
+        e.locals=(long)trans(rb_iv_get(exp2,"@locals"));
         e.body=getrule(name)->body;
         e.argc=0;
         return (exp *) normalize_call(&e);
     }
     else if (typetest(exp2,"Rrule" )) {
-        char *name=trans(rb_iv_get(exp2,"@name"));
+        char *name=(char *)trans(rb_iv_get(exp2,"@name"));
         exp *body=trans(rb_iv_get(exp2,"@body"));
         rule *r=getrule(name);
         r->body->body=body;
-        return r->body;
+        return (exp*)r->body;
     }
     else if (typetest(exp2,"Ract"   )) {
         exp_act e;
