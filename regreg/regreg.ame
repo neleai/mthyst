@@ -1,8 +1,8 @@
 class Amethyst2RegReg < Amethyst
   def localnumber(name)
-    @locals||=["_result"]
-    @locals << name[0] if !@locals.index(name[0])
-    @locals.index(name[0]) 
+    @locals||=[]
+    @locals << name if !@locals.index(name)
+    @locals.index(name) 
   end
 end
 amethyst Amethyst2RegReg {
