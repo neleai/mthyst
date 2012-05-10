@@ -26,9 +26,8 @@ rule* getrule(char *name){
 }
 
 
-VALUE callback(void **closure,void *arg){
-  VALUE clos=rb_funcall(rb_const_get(rb_cObject,rb_intern("Closure")),rb_intern("new"),0);
-  return rb_funcall(clos,rb_intern(arg),0);
+VALUE callback(void **closure,void *extra,void *arg){
+  return rb_funcall(extra,rb_intern(arg),0);
 }
 
 
@@ -56,7 +55,7 @@ VALUE translate(VALUE self,VALUE exp2){
 VALUE rb_match(VALUE self,VALUE exp2,VALUE str){
   exp *e=trans(exp2);
   char *str2=RSTRING_PTR(str);
-  return match2(e,str2);
+  return match2(e,rb_funcall(rb_const_get(rb_cObject,rb_intern("Closure")),rb_intern("new"),0),str2);
 }
 extern FILE * debug;
 void Init_RegReg(){

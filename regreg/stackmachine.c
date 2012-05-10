@@ -114,9 +114,10 @@ exp *make_char(char * str) {
 
 
 FILE *debug;
-void *match(exp* e,Args a) {
+void *match(exp* e,void *extra,Args a) {
     Result r;
     Global gl;
+    gl.extra=extra;
     r.state=0;
     char   *stack_match=malloc(1000000);
     gl.stack_cont=malloc(1000000);
@@ -233,7 +234,7 @@ void *match(exp* e,Args a) {
                 stack_match+=1;
             }
             void*(*fn)() =e->fn;
-            r.returned=fn(a.closure,e->arg);
+            r.returned=fn(a.closure,gl.extra,e->arg);
             memcpy(stack_match,a.cont,st_siz);
             stack_match+=st_siz;
             a.cont=a.cont->previous;
@@ -448,12 +449,12 @@ void *match(exp* e,Args a) {
         }
     }
 }
-void *match2(exp *e,char *s) {
+void *match2(exp *e,void *extra,char *s) {
     Args a;
     a.cont;
     a.closure=malloc(100);
     a.str=s;
     a.stops=0;
-    return match(e,a);
+    return match(e,extra,a);
 }
 
