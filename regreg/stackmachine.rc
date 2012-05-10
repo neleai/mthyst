@@ -11,7 +11,7 @@
     "*(exp **) stack_match =(exp *) #{e};stack_match += sizeof(exp *); *stack_match = #{e}->tp; stack_match+=1;"
   end 
   def push_cont(t,c)
-    "stack_cont->tp=#{t};stack_cont->e=#{c};stack_cont->previous=a.cont;  a.cont=stack_cont; stack_cont+=1;"
+    "gl.stack_cont->tp=#{t};gl.stack_cont->e=#{c};gl.stack_cont->previous=a.cont;  a.cont=gl.stack_cont; gl.stack_cont+=1;"
   end
   def cont_call
     "memcpy(stack_match,a.cont,st_siz);stack_match+=st_siz;a.cont=a.cont->previous;"
@@ -20,29 +20,28 @@
 
 FILE *debug;
 void *match(exp* e,Args a){
-  Result r;
+  Result r; Global gl;
   r.state=0;
   char   *stack_match=malloc(1000000);
-  t_cont *stack_cont=malloc(1000000);
-  char *o_stack_match=stack_match; t_cont *o_stack_cont=stack_cont;
+  gl.stack_cont=malloc(1000000);
+  char *o_stack_match=stack_match; t_cont *o_stack_cont=gl.stack_cont;
   stack_match+=st_siz; *(stack_match-1)=FINISH;
-  a.cont=stack_cont; stack_cont->tp=FINISH;stack_cont+=1;
+  a.cont=gl.stack_cont; gl.stack_cont->tp=FINISH;gl.stack_cont+=1;
   <%=push_exp("e")%>
   while(1){
       switch(*(stack_match-1)){
 <%=
-  $arg_tp.map{|t,v| "case RESTORE_a_#{v}:
-      fprintf(debug, \"restoring a.#{v}\\n\");
+  def restore_a(sc,args)
+  args.map{|t,v| "case RESTORE_#{sc}_#{v}:
+      fprintf(debug, \"restoring #{sc}.#{v}\\n\");
       stack_match-=sizeof(#{t})+1;
-      a.#{v}=*(#{t}*)stack_match;
-      break;
-    "}*""+
-      $res_tp.map{|t,v| "case RESTORE_r_#{v}:
-      fprintf(debug, \"restoring r.#{v}\\n\");
-      stack_match-=sizeof(#{t})+1;
-      r.#{v}=*(#{t}*)stack_match;
+      #{sc}.#{v}=*(#{t}*)stack_match;
       break;
     "}*""
+  end
+  restore_a("a",$arg_tp)+
+  restore_a("r",$res_tp)+
+  restore_a("gl",$glob_tp)
  %> 
 <%=
   def ecase(tp,body)
@@ -53,7 +52,7 @@ void *match(exp* e,Args a){
           break;}"
   end
 
-  ecase("seq","SAVE_a_cont;
+  ecase("seq","SAVE_a_cont;SAVE_gl_stack_cont;
               #{push_cont("e->tail->tp","e->tail")}
               #{push_exp("e->head")}")+
   ecase("char","
@@ -126,6 +125,7 @@ void *match(exp* e,Args a){
            a.stops=a.stops&(~e->stops);
            #{cont_call()}
          }else{
+           SAVE_gl_stack_cont;
            #{push_cont("e->tp","e")}
            #{push_exp("e->body")}
          }")+

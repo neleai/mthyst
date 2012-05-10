@@ -116,16 +116,17 @@ exp *make_char(char * str) {
 FILE *debug;
 void *match(exp* e,Args a) {
     Result r;
+    Global gl;
     r.state=0;
     char   *stack_match=malloc(1000000);
-    t_cont *stack_cont=malloc(1000000);
+    gl.stack_cont=malloc(1000000);
     char *o_stack_match=stack_match;
-    t_cont *o_stack_cont=stack_cont;
+    t_cont *o_stack_cont=gl.stack_cont;
     stack_match+=st_siz;
     *(stack_match-1)=FINISH;
-    a.cont=stack_cont;
-    stack_cont->tp=FINISH;
-    stack_cont+=1;
+    a.cont=gl.stack_cont;
+    gl.stack_cont->tp=FINISH;
+    gl.stack_cont+=1;
     *(exp **) stack_match =(exp *) e;
     stack_match += sizeof(exp *);
     *stack_match = e->tp;
@@ -167,6 +168,16 @@ void *match(exp* e,Args a) {
             stack_match-=sizeof(void*)+1;
             r.returned=*(void**)stack_match;
             break;
+        case RESTORE_gl_stack_cont:
+            fprintf(debug, "restoring gl.stack_cont\n");
+            stack_match-=sizeof(t_cont *)+1;
+            gl.stack_cont=*(t_cont **)stack_match;
+            break;
+        case RESTORE_gl_extra:
+            fprintf(debug, "restoring gl.extra\n");
+            stack_match-=sizeof(void *)+1;
+            gl.extra=*(void **)stack_match;
+            break;
 
         case TP_seq: {
             stack_match-=st_siz;
@@ -175,11 +186,12 @@ void *match(exp* e,Args a) {
             inspect_exp(e);
             fprintf(debug,"\n");
             SAVE_a_cont;
-            stack_cont->tp=e->tail->tp;
-            stack_cont->e=e->tail;
-            stack_cont->previous=a.cont;
-            a.cont=stack_cont;
-            stack_cont+=1;
+            SAVE_gl_stack_cont;
+            gl.stack_cont->tp=e->tail->tp;
+            gl.stack_cont->e=e->tail;
+            gl.stack_cont->previous=a.cont;
+            a.cont=gl.stack_cont;
+            gl.stack_cont+=1;
             *(exp **) stack_match =(exp *) e->head;
             stack_match += sizeof(exp *);
             *stack_match = e->head->tp;
@@ -366,11 +378,12 @@ void *match(exp* e,Args a) {
                 stack_match+=st_siz;
                 a.cont=a.cont->previous;
             } else {
-                stack_cont->tp=e->tp;
-                stack_cont->e=e;
-                stack_cont->previous=a.cont;
-                a.cont=stack_cont;
-                stack_cont+=1;
+                SAVE_gl_stack_cont;
+                gl.stack_cont->tp=e->tp;
+                gl.stack_cont->e=e;
+                gl.stack_cont->previous=a.cont;
+                a.cont=gl.stack_cont;
+                gl.stack_cont+=1;
                 *(exp **) stack_match =(exp *) e->body;
                 stack_match += sizeof(exp *);
                 *stack_match = e->body->tp;
