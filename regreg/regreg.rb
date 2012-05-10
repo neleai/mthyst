@@ -81,7 +81,8 @@ add_rule("ac= 'a' 'c' {puts 'ac';42}")
 add_rule("bc= 'b' 'c' {puts 'b'}")
 add_rule("cc= ac:x {puts x+1}|bc|ac")
 add_rule("a='a'")
-add_rule("par(x,y,z)= a:f {f+x+y+z}")
+add_rule("par(x,y,z)= {0+1}:f {f+x+y+z}")
+add_rule("partest= {0+1}:a par(1+0,2+0,3+0):z {puts z}")
 puts RegReg.match(parseexp("cc"),"acb")
 
 puts "lookahead"
@@ -96,6 +97,9 @@ puts RegReg.match(parseexp("(a {@x||=0;@x+=1;puts @x})* 'b' 'c'{42} " ),"aaaabc"
 puts "nested iteration"
 #puts RegReg.match(parseexp("('a'* 'b'| a)*"),"a"*100)
 puts RegReg.match(parseexp("( ( (a* 'b'| a)* 'b' | a)* 'b' )* 'b'"),'a'*10)
+
+puts "parametrized"
+puts RegReg.match(parseexp("partest"),"abc")
 
 puts "nested"
 puts RegReg.match(parseexp("nested('foo','foo','foo')"),"abc")
