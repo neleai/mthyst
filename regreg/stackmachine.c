@@ -185,6 +185,7 @@ void *match(exp* e,void *extra,Args a) {
             fprintf(debug, "match ");
             inspect_exp(e);
             fprintf(debug,"\n");
+
             SAVE_a_cont;
             SAVE_gl_stack_cont;
             gl.stack_cont->tp=e->tail->tp;
@@ -204,11 +205,11 @@ void *match(exp* e,void *extra,Args a) {
             fprintf(debug, "match ");
             inspect_exp(e);
             fprintf(debug,"\n");
+            SAVE_a_str;
 
 
             fprintf(debug,"character %s on %s\n",e->str,a.str);
             if (*a.str==*e->str) {
-                SAVE_a_str
                 a.str+=1;
                 memcpy(stack_match,a.cont,st_siz);
                 stack_match+=st_siz;
@@ -222,6 +223,7 @@ void *match(exp* e,void *extra,Args a) {
             fprintf(debug, "match ");
             inspect_exp(e);
             fprintf(debug,"\n");
+            SAVE_r_returned;
 
             int i;
             for(i=0; i<e->varc; i++) {
@@ -247,8 +249,8 @@ void *match(exp* e,void *extra,Args a) {
             fprintf(debug, "match ");
             inspect_exp(e);
             fprintf(debug,"\n");
+            SAVE_a_stops;
 
-            SAVE_a_stops
             a.stops|=e->stops;
             memcpy(stack_match,a.cont,st_siz);
             stack_match+=st_siz;
@@ -261,6 +263,7 @@ void *match(exp* e,void *extra,Args a) {
             fprintf(debug, "match ");
             inspect_exp(e);
             fprintf(debug,"\n");
+
 
             lambda_s *l=malloc(sizeof(lambda_s));
             l->body=e->body;
@@ -275,8 +278,8 @@ void *match(exp* e,void *extra,Args a) {
             fprintf(debug, "match ");
             inspect_exp(e);
             fprintf(debug,"\n");
-
             SAVE_a_closure;
+
             lambda_s *l=r.returned;
             a.closure=l->closure;
             *(exp **) stack_match =(exp *) l->body;
@@ -292,6 +295,7 @@ void *match(exp* e,void *extra,Args a) {
             fprintf(debug, "match ");
             inspect_exp(e);
             fprintf(debug,"\n");
+            SAVE_a_closure;
 
             /*We currently do not garbage collect closures as they can be used by lambdas.
               There are several improvements possible depending on garbage collection.
@@ -301,7 +305,6 @@ void *match(exp* e,void *extra,Args a) {
               constructing closure, but this depends on garbage collector/running analysis to
               decide if this can happen.*/
             fprintf(debug,"calling %s\n",e->name);
-            SAVE_a_closure
             gl.stack_cont->tp=call_end;
             gl.stack_cont->e=a.closure;
             gl.stack_cont->previous=a.cont;
@@ -326,6 +329,7 @@ void *match(exp* e,void *extra,Args a) {
             inspect_exp(e);
             fprintf(debug,"\n");
 
+
             *stack_match=nested_end;
             stack_match+=1;
             *(exp **) stack_match =(exp *) e->body;
@@ -341,8 +345,8 @@ void *match(exp* e,void *extra,Args a) {
             fprintf(debug, "match ");
             inspect_exp(e);
             fprintf(debug,"\n");
-
             SAVE_a_str;
+
             a.str=r.returned;
             *(exp **) stack_match =(exp *) e->to;
             stack_match += sizeof(exp *);
@@ -357,6 +361,7 @@ void *match(exp* e,void *extra,Args a) {
             fprintf(debug, "match ");
             inspect_exp(e);
             fprintf(debug,"\n");
+
 
             fprintf(debug,"saving %i %i\n",a.closure[e->var],e->var);
             *(void **)stack_match=a.closure[e->var];
@@ -378,9 +383,9 @@ void *match(exp* e,void *extra,Args a) {
             fprintf(debug, "match ");
             inspect_exp(e);
             fprintf(debug,"\n");
+            SAVE_a_stops;
 
             if (e->stops & a.stops) {
-                SAVE_a_stops
                 a.stops=a.stops&(~e->stops);
                 memcpy(stack_match,a.cont,st_siz);
                 stack_match+=st_siz;
@@ -406,6 +411,7 @@ void *match(exp* e,void *extra,Args a) {
             inspect_exp(e);
             fprintf(debug,"\n");
 
+
             r.state= e->state;
 
             break;
@@ -416,6 +422,7 @@ void *match(exp* e,void *extra,Args a) {
             fprintf(debug, "match ");
             inspect_exp(e);
             fprintf(debug,"\n");
+
 
             *(exp **) stack_match =(exp *) e;
             stack_match += sizeof(exp *);

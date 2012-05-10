@@ -45,10 +45,15 @@ void *match(exp* e,void *extra,Args a){
   restore_a("gl",$glob_tp)
  %> 
 <%=
+  $revert=[]
+  def set(var)
+    $revert<<var;var
+  end
   def ecase(tp,body)
     "case TP_#{tp}: { stack_match-=st_siz;
           exp_#{tp} *e=*(exp_#{tp}**)stack_match;
           fprintf(debug, \"match \"); inspect_exp(e);fprintf(debug,\"\\n\");
+          #{$revert.map{|r| "SAVE_#{r.gsub(".","_")};"}*""}#{$revert=[];""}
           #{body}
           break;}"
   end
@@ -59,8 +64,7 @@ void *match(exp* e,void *extra,Args a){
   ecase("char","
           
           fprintf(debug,\"character %s on %s\\n\",e->str,a.str);
-          if (*a.str==*e->str){
-            SAVE_a_str
+          if (*#{set("a.str")}==*e->str){
             a.str+=1;
             #{cont_call()}
           } else FAIL;")+
@@ -72,12 +76,11 @@ void *match(exp* e,void *extra,Args a){
             *stack_match=bind_restore;                  stack_match+=1;
           }
           void*(*fn)() =e->fn;
-          r.returned=fn(a.closure,gl.extra,e->arg);
+          #{set("r.returned")}=fn(a.closure,gl.extra,e->arg);
           #{cont_call()}
   ")+
   ecase("stop","
-          SAVE_a_stops
-          a.stops|=e->stops;
+          #{set("a.stops")}|=e->stops;
           #{cont_call()}")+
   ecase("make_lambda","
     lambda_s *l=malloc(sizeof(lambda_s));
@@ -85,9 +88,8 @@ void *match(exp* e,void *extra,Args a){
     r.returned=(void *) l;
   ")+
   ecase("use_lambda","
-    SAVE_a_closure;
     lambda_s *l=r.returned;
-    a.closure=l->closure;
+    #{set("a.closure")}=l->closure;
     #{push_exp("l->body")}
   ")+
   ecase("call","
@@ -99,13 +101,12 @@ void *match(exp* e,void *extra,Args a){
       constructing closure, but this depends on garbage collector/running analysis to 
       decide if this can happen.*/
     fprintf(debug,\"calling %s\\n\",e->name);
-    SAVE_a_closure
     #{push_cont("call_end","a.closure")};
     void **closure=malloc(sizeof(void*)*e->body->locals);
     int i;
     fprintf(debug,\"new closure %i\\n\",e->body->locals);
     for(i=0;i<e->argc;i++) closure[i]=a.closure[e->afrom[i]];    
-    a.closure=closure;
+    #{set("a.closure")}=closure;
     #{push_exp("e->body->body")}
   ")+
   ecase("nested","
@@ -113,8 +114,7 @@ void *match(exp* e,void *extra,Args a){
     #{push_exp("e->body")}
   ")+
   ecase("enter","
-    SAVE_a_str;
-    a.str=r.returned;
+    #{set("a.str")}=r.returned;
     #{push_exp("e->to")}
   ")+
   ecase("bind","
@@ -127,8 +127,7 @@ void *match(exp* e,void *extra,Args a){
   ")+
   ecase("many","
          if (e->stops & a.stops){
-           SAVE_a_stops
-           a.stops=a.stops&(~e->stops);
+           #{set("a.stops")}=a.stops&(~e->stops);
            #{cont_call()}
          }else{
            SAVE_gl_stack_cont;
