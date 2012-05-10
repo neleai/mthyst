@@ -1,7 +1,7 @@
 class Amethyst2RegReg < Amethyst
   def localnumber(name)
     @locals||=["_result"]
-    @locals << name if !@locals.index(name[0])
+    @locals << name[0] if !@locals.index(name[0])
     @locals.index(name[0]) 
   end
 end
@@ -22,7 +22,7 @@ amethyst Amethyst2RegReg {
         | Local[  ]           -> Ract.create(:arg=>'nul')
         | .:x -> puts "f",x.inspect;raise "unrecognized"
 
-  transrb = Local[ { "closure[#{localnumber(@ary)}]" } ]
+  transrb = Local[ { "local(#{localnumber(@ary)})" } ]
           | Key[ .:name ] -> "@#{name}"
           | .
 }

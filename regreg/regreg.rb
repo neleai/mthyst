@@ -10,6 +10,7 @@ end
 $closureno=0
 def addcb(s)
   $closureno+=1;
+  puts s.inspect
   eval("class Closure;def cb#{$closureno};#{s};end;end")
   "cb#{$closureno}"
 end
@@ -77,7 +78,7 @@ add_rule("foo={puts '42';42} 'a' ('a'|'b'|'c') 'c'")
 puts RegReg.match(parseexp("foo"),"abc")
 add_rule("ac= 'a' 'c' {puts 'ac';42}")
 add_rule("bc= 'b' 'c' {puts 'b'}")
-add_rule("cc= ac:x {puts 1+1}|bc|ac")
+add_rule("cc= ac:x {puts x+1}|bc|ac")
 add_rule("a='a'")
 puts RegReg.match(parseexp("cc"),"acb")
 
