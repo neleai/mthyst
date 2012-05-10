@@ -190,14 +190,13 @@ exp_enter *normalize_enter(exp_enter *o) {
 exp_call *normalize_call(exp_call *o) {
     int i;
     for(i=0; i<nodes_call_no; i++) {
-        if (nodes_call[i].name==o->name&&nodes_call[i].body==o->body&&nodes_call[i].argc==o->argc&&nodes_call[i].afrom==o->afrom&&nodes_call[i].ato==o->ato) return &nodes_call[i];
+        if (nodes_call[i].name==o->name&&nodes_call[i].body==o->body&&nodes_call[i].argc==o->argc&&nodes_call[i].afrom==o->afrom) return &nodes_call[i];
     }
     nodes_call[nodes_call_no].tp=TP_call;
     nodes_call[nodes_call_no].name=o->name;
     nodes_call[nodes_call_no].body=o->body;
     nodes_call[nodes_call_no].argc=o->argc;
     nodes_call[nodes_call_no].afrom=o->afrom;
-    nodes_call[nodes_call_no].ato=o->ato;
     nodes_call_no+=1;
     return &nodes_call[nodes_call_no-1];
 }

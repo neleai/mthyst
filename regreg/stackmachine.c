@@ -93,14 +93,13 @@ exp *make_enter(exp* to) {
     return (exp *) e;
 }
 
-exp *make_call(char * name,exp_rule* body,long argc,long * afrom,long * ato) {
+exp *make_call(char * name,exp_rule* body,long argc,long * afrom) {
     exp_call *e=malloc(sizeof(exp_call));
     e->tp=TP_call;
     e->name=name;
     e->body=body;
     e->argc=argc;
     e->afrom=afrom;
-    e->ato=ato;
     return (exp *) e;
 }
 
@@ -311,7 +310,7 @@ void *match(exp* e,void *extra,Args a) {
             void **closure=malloc(sizeof(void*)*e->body->locals);
             int i;
             fprintf(debug,"new closure %i\n",e->body->locals);
-            for(i=0; i<e->argc; i++) closure[e->ato[i]]=a.closure[e->afrom[i]];
+            for(i=0; i<e->argc; i++) closure[i]=a.closure[e->afrom[i]];
             a.closure=closure;
             *(exp **) stack_match =(exp *) e->body->body;
             stack_match += sizeof(exp *);

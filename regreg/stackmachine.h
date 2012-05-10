@@ -161,10 +161,9 @@ typedef struct {
     exp_rule* body;
     long argc;
     long * afrom;
-    long * ato;
 } exp_call;
 exp_call* normalize_call(exp_call*o);
-exp *make_call(char * name,exp_rule* body,long argc,long * afrom,long * ato);
+exp *make_call(char * name,exp_rule* body,long argc,long * afrom);
 typedef struct {
     char tp;
     char * str;

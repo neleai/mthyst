@@ -65,8 +65,8 @@ exp * trans(VALUE exp2) {
         e.tp=TP_call;
         e.name=name;
         e.body=getrule(name)->body;
-        e.argc=0;
-        e.afrom=e.ato=NULL;
+        e.argc=trans(rb_iv_get(exp2,"@argc"));
+        e.afrom=trans(rb_iv_get(exp2,"@afrom"));
         return (exp *) normalize_call(&e);
     }
     else if (typetest(exp2,"Rrule" )) {
@@ -173,7 +173,6 @@ exp * trans(VALUE exp2) {
         e.body=(exp_rule*) trans(rb_iv_get(exp2,"@body"));
         e.argc=(long) trans(rb_iv_get(exp2,"@argc"));
         e.afrom=(long *) trans(rb_iv_get(exp2,"@afrom"));
-        e.ato=(long *) trans(rb_iv_get(exp2,"@ato"));
         return (exp *) normalize_call(&e);
     }
     else if (typetest(exp2,"Rchar")) {
