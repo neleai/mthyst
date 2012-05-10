@@ -9,13 +9,15 @@ class Amethyst2RegReg < Amethyst
   end
 end
 amethyst Amethyst2RegReg {
-  trans = Rule[ {@@locals=["_result"];@@stops=1} @body=>trans:body @name:name ] ->puts @@locals.inspect; Rrule.create({:name=>name,:locals=>@@locals.size,:body=>body})
+  trans = Rule[ {@@locals=@args.map{|ar|ar.ary};@@stops=1} @body=>trans:body @name:name ] ->puts @@locals.inspect; Rrule.create({:name=>name,:locals=>@@locals.size,:body=>body})
         | Seq[ trans:head (.+:tail ({Seq[*tail]}=>trans):tail)? ] -> tail ? Rseq.create({:head=>head,:tail=>tail}) : head
         | Or[ trans:head  (.+:tail ({ Or[*tail]}=>trans):tail)? ] -> tail ? Rswitch.create({:head=>head,:alts=>[tail,nil]}) : head
         | Lookahead[ trans:e ] -> Rswitch.create({:head=>e,:alts=>[rcall("fail"),rcall("empty")]})
         | Apply[ ["nested"] CAct[ .:start ] CAct[ .:middle ] CAct[ .:end ] ] -> Rnested.create({:body=>RSeq[rcall(start),rcall(middle),rcall(end)]})
         | Apply[ ["seq"] CAct[ .:s ] ] -> Rchar.create({:str=>s})
-        | Apply[ .:name eof ] -> rcall(name)
+        | Apply[ .:name {[]}:arg {[]}:aact
+                        ( .:x {autovar}:a {arg<<localnumber(a.ary)} {Bind[a,x]}=>trans:[aact] )* 
+               ] -> RSeq[*(aact+[Rcall.create(:name=>name,:argc=>arg.size,:afrom=>arg)])]
         | Many[ {@@stops||=1;@@stops*=2} trans:e {@@stops/=2} ]     -> Rmany.create({:stops=>@@stops,:body=>e})
         | Stop[ ]                                       -> Rstop.create({:stops=>@@stops/2})
         | Act[ String["_append("] ]   -> Ract.create(:arg=>'nul')

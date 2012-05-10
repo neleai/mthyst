@@ -81,6 +81,7 @@ add_rule("ac= 'a' 'c' {puts 'ac';42}")
 add_rule("bc= 'b' 'c' {puts 'b'}")
 add_rule("cc= ac:x {puts x+1}|bc|ac")
 add_rule("a='a'")
+add_rule("par(x,y,z)= a:f {f+x+y+z}")
 puts RegReg.match(parseexp("cc"),"acb")
 
 puts "lookahead"
