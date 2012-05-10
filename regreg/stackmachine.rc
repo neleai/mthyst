@@ -34,7 +34,7 @@ void *match(exp* e,void *extra,Args a){
 <%=
   def restore_a(sc,args)
   args.map{|t,v| "case RESTORE_#{sc}_#{v}:
-      fprintf(debug, \"restoring #{sc}.#{v}\\n\");
+      if (#{v=="closure" ? "1" : "0"}) fprintf(debug, \"restoring #{sc}.#{v}\\n\");
       stack_match-=sizeof(#{t})+1;
       #{sc}.#{v}=*(#{t}*)stack_match;
       break;
@@ -66,6 +66,7 @@ void *match(exp* e,void *extra,Args a){
           } else FAIL;")+
   ecase("act","
           int i;for(i=0;i<e->varc;i++){
+            fprintf(debug,\"saving %i %i\\n\",a.closure[e->vars[i]],e->vars[i]);
             *(void **)stack_match=a.closure[e->vars[i]];stack_match+=sizeof(void *);
             *(long *)stack_match =e->vars[i];           stack_match+=sizeof(long);
             *stack_match=bind_restore;                  stack_match+=1;
@@ -99,8 +100,11 @@ void *match(exp* e,void *extra,Args a){
       decide if this can happen.*/
     fprintf(debug,\"calling %s\\n\",e->name);
     SAVE_a_closure
+    #{push_cont("call_end","a.closure")};
     void **closure=malloc(sizeof(void*)*e->body->locals);
-    int i;for(i=0;i<e->argc;i++) closure[e->ato[i]]=a.closure[e->afrom[i]];
+    int i;
+    fprintf(debug,\"new closure %i\\n\",e->body->locals);
+    for(i=0;i<e->argc;i++) closure[e->ato[i]]=a.closure[e->afrom[i]];    
     a.closure=closure;
     #{push_exp("e->body->body")}
   ")+
@@ -114,6 +118,7 @@ void *match(exp* e,void *extra,Args a){
     #{push_exp("e->to")}
   ")+
   ecase("bind","
+    fprintf(debug,\"saving %i %i\\n\",a.closure[e->var],e->var);
     *(void **)stack_match=a.closure[e->var];stack_match+=sizeof(void *);
     *(long *)stack_match =e->var;           stack_match+=sizeof(long);
     *stack_match=bind_restore;              stack_match+=1;
@@ -144,14 +149,22 @@ void *match(exp* e,void *extra,Args a){
           }
            break;
          case bind_restore:stack_match-=sizeof(void*)+sizeof(long)+1;
+           fprintf(debug,"restoring %i %i\n",*(void **)stack_match,*(long*)(stack_match+sizeof(void*)));
            a.closure[*(long*)(stack_match+sizeof(void*))]=*(void **)stack_match;
            break;
-         case nested_end: 
+         case nested_end:
+          stack_match-=1; 
           if (r.state) {
             <%=cont_call()%>
           } else {
             FAIL;
           }
+          break;
+         case call_end:
+          stack_match-=sizeof(void**)+1;
+          a.closure=*(void***) stack_match;
+          <%= cont_call()%>
+          break;
          case FINISH:
            free(o_stack_cont);
            free(o_stack_match);

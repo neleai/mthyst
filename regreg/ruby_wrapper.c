@@ -80,8 +80,8 @@ exp * trans(VALUE exp2) {
     else if (typetest(exp2,"Ract"   )) {
         exp_act e;
         e.tp=TP_act;
-        e.varc=0;
-        e.vars=NULL;
+        e.varc=trans(rb_iv_get(exp2,"@varc"));
+        e.vars=trans(rb_iv_get(exp2,"@vars"));
         e.fn=callback;
         e.arg=trans(rb_iv_get(exp2,"@arg"));
         return normalize_act(&e);
@@ -131,7 +131,7 @@ exp * trans(VALUE exp2) {
         e.varc=(long) trans(rb_iv_get(exp2,"@varc"));
         e.vars=(long *) trans(rb_iv_get(exp2,"@vars"));
         e.fn=(void *) trans(rb_iv_get(exp2,"@fn"));
-        e.arg=(void *) trans(rb_iv_get(exp2,"@arg"));
+        e.arg=(char *) trans(rb_iv_get(exp2,"@arg"));
         return (exp *) normalize_act(&e);
     }
     else if (typetest(exp2,"Rmake_lambda")) {

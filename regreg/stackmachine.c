@@ -46,7 +46,7 @@ exp *make_nested(exp* body) {
     return (exp *) e;
 }
 
-exp *make_act(long varc,long * vars,void * fn,void * arg) {
+exp *make_act(long varc,long * vars,void * fn,char * arg) {
     exp_act *e=malloc(sizeof(exp_act));
     e->tp=TP_act;
     e->varc=varc;
@@ -135,47 +135,47 @@ void *match(exp* e,void *extra,Args a) {
     while(1) {
         switch(*(stack_match-1)) {
         case RESTORE_a_str:
-            fprintf(debug, "restoring a.str\n");
+            if (0) fprintf(debug, "restoring a.str\n");
             stack_match-=sizeof(char*)+1;
             a.str=*(char**)stack_match;
             break;
         case RESTORE_a_stops:
-            fprintf(debug, "restoring a.stops\n");
+            if (0) fprintf(debug, "restoring a.stops\n");
             stack_match-=sizeof(long)+1;
             a.stops=*(long*)stack_match;
             break;
         case RESTORE_a_closure:
-            fprintf(debug, "restoring a.closure\n");
+            if (1) fprintf(debug, "restoring a.closure\n");
             stack_match-=sizeof(void**)+1;
             a.closure=*(void***)stack_match;
             break;
         case RESTORE_a_cont:
-            fprintf(debug, "restoring a.cont\n");
+            if (0) fprintf(debug, "restoring a.cont\n");
             stack_match-=sizeof(t_cont *)+1;
             a.cont=*(t_cont **)stack_match;
             break;
         case RESTORE_r_rstr:
-            fprintf(debug, "restoring r.rstr\n");
+            if (0) fprintf(debug, "restoring r.rstr\n");
             stack_match-=sizeof(char*)+1;
             r.rstr=*(char**)stack_match;
             break;
         case RESTORE_r_state:
-            fprintf(debug, "restoring r.state\n");
+            if (0) fprintf(debug, "restoring r.state\n");
             stack_match-=sizeof(long)+1;
             r.state=*(long*)stack_match;
             break;
         case RESTORE_r_returned:
-            fprintf(debug, "restoring r.returned\n");
+            if (0) fprintf(debug, "restoring r.returned\n");
             stack_match-=sizeof(void*)+1;
             r.returned=*(void**)stack_match;
             break;
         case RESTORE_gl_stack_cont:
-            fprintf(debug, "restoring gl.stack_cont\n");
+            if (0) fprintf(debug, "restoring gl.stack_cont\n");
             stack_match-=sizeof(t_cont *)+1;
             gl.stack_cont=*(t_cont **)stack_match;
             break;
         case RESTORE_gl_extra:
-            fprintf(debug, "restoring gl.extra\n");
+            if (0) fprintf(debug, "restoring gl.extra\n");
             stack_match-=sizeof(void *)+1;
             gl.extra=*(void **)stack_match;
             break;
@@ -226,6 +226,7 @@ void *match(exp* e,void *extra,Args a) {
 
             int i;
             for(i=0; i<e->varc; i++) {
+                fprintf(debug,"saving %i %i\n",a.closure[e->vars[i]],e->vars[i]);
                 *(void **)stack_match=a.closure[e->vars[i]];
                 stack_match+=sizeof(void *);
                 *(long *)stack_match =e->vars[i];
@@ -302,8 +303,14 @@ void *match(exp* e,void *extra,Args a) {
               decide if this can happen.*/
             fprintf(debug,"calling %s\n",e->name);
             SAVE_a_closure
+            gl.stack_cont->tp=call_end;
+            gl.stack_cont->e=a.closure;
+            gl.stack_cont->previous=a.cont;
+            a.cont=gl.stack_cont;
+            gl.stack_cont+=1;;
             void **closure=malloc(sizeof(void*)*e->body->locals);
             int i;
+            fprintf(debug,"new closure %i\n",e->body->locals);
             for(i=0; i<e->argc; i++) closure[e->ato[i]]=a.closure[e->afrom[i]];
             a.closure=closure;
             *(exp **) stack_match =(exp *) e->body->body;
@@ -352,6 +359,7 @@ void *match(exp* e,void *extra,Args a) {
             inspect_exp(e);
             fprintf(debug,"\n");
 
+            fprintf(debug,"saving %i %i\n",a.closure[e->var],e->var);
             *(void **)stack_match=a.closure[e->var];
             stack_match+=sizeof(void *);
             *(long *)stack_match =e->var;
@@ -434,9 +442,11 @@ void *match(exp* e,void *extra,Args a) {
             break;
         case bind_restore:
             stack_match-=sizeof(void*)+sizeof(long)+1;
+            fprintf(debug,"restoring %i %i\n",*(void **)stack_match,*(long*)(stack_match+sizeof(void*)));
             a.closure[*(long*)(stack_match+sizeof(void*))]=*(void **)stack_match;
             break;
         case nested_end:
+            stack_match-=1;
             if (r.state) {
                 memcpy(stack_match,a.cont,st_siz);
                 stack_match+=st_siz;
@@ -444,6 +454,14 @@ void *match(exp* e,void *extra,Args a) {
             } else {
                 FAIL;
             }
+            break;
+        case call_end:
+            stack_match-=sizeof(void**)+1;
+            a.closure=*(void***) stack_match;
+            memcpy(stack_match,a.cont,st_siz);
+            stack_match+=st_siz;
+            a.cont=a.cont->previous;
+            break;
         case FINISH:
             free(o_stack_cont);
             free(o_stack_match);

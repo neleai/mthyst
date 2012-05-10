@@ -6,7 +6,7 @@ class Amethyst2RegReg < Amethyst
   end
 end
 amethyst Amethyst2RegReg {
-  trans = Rule[ {@@locals=["_result"];@@stops=1} @body=>trans:body @name:name ] -> Rrule.create({:name=>name,:locals=>@@locals.size,:body=>body})
+  trans = Rule[ {@@locals=["_result"];@@stops=1} @body=>trans:body @name:name ] ->puts @@locals.inspect; Rrule.create({:name=>name,:locals=>@@locals.size,:body=>body})
         | Seq[ trans:head (.+:tail ({Seq[*tail]}=>trans):tail)? ] -> tail ? Rseq.create({:head=>head,:tail=>tail}) : head
         | Or[ trans:head  (.+:tail ({ Or[*tail]}=>trans):tail)? ] -> tail ? Rswitch.create({:head=>head,:alts=>[tail,nil]}) : head
         | Lookahead[ trans:e ] -> Rswitch.create({:head=>e,:alts=>[Rcall.create({:name=>"fail"}),Rcall.create({:name=>"empty"})]})
@@ -16,13 +16,13 @@ amethyst Amethyst2RegReg {
         | Many[ {@@stops||=1;@@stops*=2} trans:e {@@stops/=2} ]     -> Rmany.create({:stops=>@@stops,:body=>e})
         | Stop[ ]                                       -> Rstop.create({:stops=>@@stops/2})
         | Act[ String["_append("] ]   -> Ract.create(:arg=>'nul')
-        | Act[ transrb*:cb  ]         -> Ract.create(:arg=>addcb(cb.join))
+        | Act[ {@@varsin=[]}  transrb*:cb  ]         -> puts @@varsin.inspect;  Ract.create(:arg=>addcb(cb.join),:varc=>@@varsin.uniq.size,:vars=>@@varsin.uniq)
         | Bind[ @name:n trans:t ]     -> RSeq[t,Rbind.create({:var=>localnumber(n.ary)})]
         | CAct[   ]           -> Ract.create(:arg=>'nul')
         | Local[  ]           -> Ract.create(:arg=>'nul')
         | .:x -> puts "f",x.inspect;raise "unrecognized"
 
-  transrb = Local[ { "local(#{localnumber(@ary)})" } ]
+  transrb = Local[ {@@varsin<<localnumber(@ary); "local(#{localnumber(@ary)})" } ]
           | Key[ .:name ] -> "@#{name}"
           | .
 }

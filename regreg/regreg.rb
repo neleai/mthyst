@@ -49,7 +49,8 @@ def add_grammar(g)
   puts rules.inspect
   rules=rules.map{|r| Analyze_Variables2.root(r)}
   puts rules.inspect
-  RegReg.translate(Amethyst2RegReg.trans(rules))
+  RegReg.translate(r=Amethyst2RegReg.trans(rules))
+  puts r.inspect
 end
 def add_rule(r)
   add_grammar("amethyst Foo { #{r} }")

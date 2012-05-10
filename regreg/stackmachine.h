@@ -73,6 +73,7 @@ typedef struct Result {
 #define bind_restore 26
 #define nested_end 27
 #define closure_end 28
+#define call_end 29
 
 typedef struct {
     char tp;
@@ -118,10 +119,10 @@ typedef struct {
     long varc;
     long * vars;
     void * fn;
-    void * arg;
+    char * arg;
 } exp_act;
 exp_act* normalize_act(exp_act*o);
-exp *make_act(long varc,long * vars,void * fn,void * arg);
+exp *make_act(long varc,long * vars,void * fn,char * arg);
 typedef struct {
     char tp;
     exp* body;

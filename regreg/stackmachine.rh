@@ -27,7 +27,7 @@ typedef struct t_cont {
 <%=   $nodes.map{|n,a|
                cnst("TP_#{n}")}*"" %>
 
-<%=cnst("FINISH","switch2","bind_restore","nested_end","closure_end")%>
+<%=cnst("FINISH","switch2","bind_restore","nested_end","closure_end","call_end")%>
 <%=
    $nodes.map{|n,a|
               "typedef struct{ char tp;
