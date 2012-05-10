@@ -54,15 +54,16 @@ exp * trans(VALUE exp2) {
         exp_call e;
         e.tp=TP_call;
         e.name=name;
-        e.locals=(long)trans(rb_iv_get(exp2,"@locals"));
         e.body=getrule(name)->body;
         e.argc=0;
+        e.afrom=e.ato=NULL;
         return (exp *) normalize_call(&e);
     }
     else if (typetest(exp2,"Rrule" )) {
         char *name=(char *)trans(rb_iv_get(exp2,"@name"));
         exp *body=trans(rb_iv_get(exp2,"@body"));
         rule *r=getrule(name);
+        r->body->locals=(long)trans(rb_iv_get(exp2,"@locals"));
         r->body->body=body;
         return (exp*)r->body;
     }
@@ -70,6 +71,7 @@ exp * trans(VALUE exp2) {
         exp_act e;
         e.tp=TP_act;
         e.varc=0;
+        e.vars=NULL;
         e.fn=callback;
         e.arg=trans(rb_iv_get(exp2,"@arg"));
         return normalize_act(&e);
@@ -162,7 +164,6 @@ exp * trans(VALUE exp2) {
         e.argc=(long) trans(rb_iv_get(exp2,"@argc"));
         e.afrom=(long *) trans(rb_iv_get(exp2,"@afrom"));
         e.ato=(long *) trans(rb_iv_get(exp2,"@ato"));
-        e.locals=(long) trans(rb_iv_get(exp2,"@locals"));
         return (exp *) normalize_call(&e);
     }
     else if (typetest(exp2,"Rchar")) {

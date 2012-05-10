@@ -190,7 +190,7 @@ exp_enter *normalize_enter(exp_enter *o) {
 exp_call *normalize_call(exp_call *o) {
     int i;
     for(i=0; i<nodes_call_no; i++) {
-        if (nodes_call[i].name==o->name&&nodes_call[i].body==o->body&&nodes_call[i].argc==o->argc&&nodes_call[i].afrom==o->afrom&&nodes_call[i].ato==o->ato&&nodes_call[i].locals==o->locals) return &nodes_call[i];
+        if (nodes_call[i].name==o->name&&nodes_call[i].body==o->body&&nodes_call[i].argc==o->argc&&nodes_call[i].afrom==o->afrom&&nodes_call[i].ato==o->ato) return &nodes_call[i];
     }
     nodes_call[nodes_call_no].tp=TP_call;
     nodes_call[nodes_call_no].name=o->name;
@@ -198,7 +198,6 @@ exp_call *normalize_call(exp_call *o) {
     nodes_call[nodes_call_no].argc=o->argc;
     nodes_call[nodes_call_no].afrom=o->afrom;
     nodes_call[nodes_call_no].ato=o->ato;
-    nodes_call[nodes_call_no].locals=o->locals;
     nodes_call_no+=1;
     return &nodes_call[nodes_call_no-1];
 }
@@ -356,7 +355,6 @@ void inspect_exp(exp *e) {
         fprintf(debug," body:");
         inspect_exp(e2->body);
         fprintf(debug," argc: %i",e2->argc);
-        fprintf(debug," locals: %i",e2->locals);
         fprintf(debug,"]");
         break;
     }

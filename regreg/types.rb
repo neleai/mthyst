@@ -13,7 +13,7 @@ $nodes=  [["seq",[["exp*","head"],["exp*","tail"]]],
    ["return",[["long","state"]]],
    ["rule",[["char *","name"],["exp *","body"],["long","locals"]]],
    ["enter",[["exp*","to"]]],
-   ["call",[["char *","name"],["exp_rule*","body"],["long","argc"],["long *","afrom"],["long *","ato"],["long","locals"]]],
+   ["call",[["char *","name"],["exp_rule*","body"],["long","argc"],["long *","afrom"],["long *","ato"]]],
    ["char",[["char *","str"]]]]
 
 $arg_tp=[["char*","str"],["long","stops"],["void**","closure"],["char *","cont"]]

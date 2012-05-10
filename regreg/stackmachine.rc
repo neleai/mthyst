@@ -24,6 +24,8 @@ void *match(exp* e,Args a){
   Result r;
   r.state=0;
   char *stack_match=malloc(1000000);
+  a.cont=malloc(1000000);
+  char *o_stack_match=stack_match, *o_cont=a.cont;
   stack_match+=st_siz; *(stack_match-1)=FINISH;
   a.cont+=st_siz;*(a.cont-1)=FINISH;
   <%=push_exp("e")%>
@@ -149,13 +151,15 @@ void *match(exp* e,Args a){
             FAIL;
           }
          case FINISH:
+           free(o_cont);
+           free(o_stack_match);
            return r.returned;
        }
   }
 }
 void *match2(exp *e,char *s){
   Args a;
-  a.cont =malloc(1000000);
+  a.cont;
   a.closure=malloc(100);
   a.str=s;
   a.stops=0;

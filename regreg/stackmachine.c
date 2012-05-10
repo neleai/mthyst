@@ -93,7 +93,7 @@ exp *make_enter(exp* to) {
     return (exp *) e;
 }
 
-exp *make_call(char * name,exp_rule* body,long argc,long * afrom,long * ato,long locals) {
+exp *make_call(char * name,exp_rule* body,long argc,long * afrom,long * ato) {
     exp_call *e=malloc(sizeof(exp_call));
     e->tp=TP_call;
     e->name=name;
@@ -101,7 +101,6 @@ exp *make_call(char * name,exp_rule* body,long argc,long * afrom,long * ato,long
     e->argc=argc;
     e->afrom=afrom;
     e->ato=ato;
-    e->locals=locals;
     return (exp *) e;
 }
 
@@ -120,6 +119,8 @@ void *match(exp* e,Args a) {
     Result r;
     r.state=0;
     char *stack_match=malloc(1000000);
+    a.cont=malloc(1000000);
+    char *o_stack_match=stack_match, *o_cont=a.cont;
     stack_match+=st_siz;
     *(stack_match-1)=FINISH;
     a.cont+=st_siz;
@@ -425,13 +426,15 @@ void *match(exp* e,Args a) {
                 FAIL;
             }
         case FINISH:
+            free(o_cont);
+            free(o_stack_match);
             return r.returned;
         }
     }
 }
 void *match2(exp *e,char *s) {
     Args a;
-    a.cont =malloc(1000000);
+    a.cont;
     a.closure=malloc(100);
     a.str=s;
     a.stops=0;
