@@ -41,6 +41,10 @@ VALUE callback(void **closure,VALUE extra,void *arg) {
     c->cl=closure;
     return rb_funcall(extra,rb_intern(arg),0);
 }
+VALUE bind_callback(void **closure,VALUE extra,long arg) {
+    closure[arg]=closure[0];
+    return closure[0];
+}
 
 
 exp * trans(VALUE exp2) {
@@ -86,6 +90,7 @@ exp * trans(VALUE exp2) {
         e.arg=trans(rb_iv_get(exp2,"@arg"));
         return normalize_act(&e);
     }
+//  else if (typetest(exp2,"Rbind")) { exp_act e; e.tp=TP_act; e.varc=1;e.vars=malloc(sizeof(long));e.vars[0]=trans(rb_iv_get(exp2,"@var")); e.fn=bind_callback; e.arg=e.vars[0]; return normalize_act(&e);}
     else if (typetest(exp2,"Rseq")) {
         exp_seq e;
         e.tp=TP_seq;
