@@ -16,7 +16,7 @@ $nodes=  [["seq",[["exp*","head"],["exp*","tail"]]],
    ["call",[["char *","name"],["exp_rule*","body"],["long","argc"],["long *","afrom"],["long *","ato"]]],
    ["char",[["char *","str"]]]]
 
-$arg_tp=[["char*","str"],["long","stops"],["void**","closure"],["char *","cont"]]
+$arg_tp=[["char*","str"],["long","stops"],["void**","closure"],["t_cont *","cont"]]
 
 $res_tp=[["char*","rstr"],["long","state"],["void*","returned"]]
 

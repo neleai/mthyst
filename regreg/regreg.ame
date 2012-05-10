@@ -6,15 +6,15 @@ class Amethyst2RegReg < Amethyst
   end
 end
 amethyst Amethyst2RegReg {
-  trans = Rule[ {@@locals=["_result"]} @body=>trans:body @name:name ] -> Rrule.create({:name=>name,:locals=>@@locals.size,:body=>body})
+  trans = Rule[ {@@locals=["_result"];@@stops=1} @body=>trans:body @name:name ] -> Rrule.create({:name=>name,:locals=>@@locals.size,:body=>body})
         | Seq[ trans:head (.+:tail ({Seq[*tail]}=>trans):tail)? ] -> tail ? Rseq.create({:head=>head,:tail=>tail}) : head
         | Or[ trans:head  (.+:tail ({ Or[*tail]}=>trans):tail)? ] -> tail ? Rswitch.create({:head=>head,:alts=>[tail,nil]}) : head
         | Lookahead[ trans:e ] -> Rswitch.create({:head=>e,:alts=>[Rcall.create({:name=>"fail"}),Rcall.create({:name=>"empty"})]})
         | Apply[ ["nested"] CAct[ .:start ] CAct[ .:middle ] CAct[ .:end ] ] -> Rnested.create({:body=>RSeq[Rcall.create({:name=>start}),Rcall.create({:name=>middle}),Rcall.create({:name=>end})]})
         | Apply[ ["seq"] CAct[ .:s ] ] -> Rchar.create({:str=>s})
         | Apply[ .:name eof ] -> Rcall.create(:name=>name)
-        | Many[ trans:e ]     -> Rmany.create({:stops=>1,:body=>e})
-        | Stop[ ]             -> Rstop.create({:stops=>1})
+        | Many[ {@@stops||=1;@@stops*=2} trans:e {@@stops/=2} ]     -> Rmany.create({:stops=>@@stops,:body=>e})
+        | Stop[ ]                                       -> Rstop.create({:stops=>@@stops/2})
         | Act[ String["_append("] ]   -> Ract.create(:arg=>'nul')
         | Act[ transrb*:cb  ]         -> Ract.create(:arg=>addcb(cb.join))
         | Bind[ @name:n trans:t ]     -> RSeq[t,Rbind.create({:var=>localnumber(n.ary)})]

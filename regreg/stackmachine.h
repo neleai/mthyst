@@ -3,11 +3,23 @@
 #include <stdlib.h>
 #include <string.h>
 
+
+typedef struct {
+    char tp;
+
+} exp;
+
+typedef struct t_cont {
+    exp *e;
+    char tp;
+    struct t_cont *previous;
+} t_cont;
+
 typedef struct {
     char* str;
     long stops;
     void** closure;
-    char * cont;
+    t_cont * cont;
 } Args;
 
 #define RESTORE_str 1
@@ -17,7 +29,7 @@ typedef struct {
 #define SAVE_str *(char**)stack_match=a.str;stack_match+=sizeof(char*);*stack_match=RESTORE_str;stack_match++;
 #define SAVE_stops *(long*)stack_match=a.stops;stack_match+=sizeof(long);*stack_match=RESTORE_stops;stack_match++;
 #define SAVE_closure *(void***)stack_match=a.closure;stack_match+=sizeof(void**);*stack_match=RESTORE_closure;stack_match++;
-#define SAVE_cont *(char **)stack_match=a.cont;stack_match+=sizeof(char *);*stack_match=RESTORE_cont;stack_match++;
+#define SAVE_cont *(t_cont **)stack_match=a.cont;stack_match+=sizeof(t_cont *);*stack_match=RESTORE_cont;stack_match++;
 
 typedef struct {
     char* rstr;
@@ -53,10 +65,6 @@ typedef struct {
 #define nested_end 25
 #define closure_end 26
 
-typedef struct {
-    char tp;
-
-} exp;
 typedef struct {
     char tp;
     exp* head;

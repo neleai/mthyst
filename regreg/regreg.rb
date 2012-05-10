@@ -91,7 +91,8 @@ puts "iteration"
 puts RegReg.match(parseexp("(a {@x||=0;@x+=1;puts @x})* 'b' 'c'{42} " ),"aaaabc")
 
 puts "nested iteration"
-#puts RegReg.match(parseexp("( ( (a* 'b'| a)* 'b' | a)* 'b' )* 'b'"),'a'*700)
+#puts RegReg.match(parseexp("('a'* 'b'| a)*"),"a"*100)
+puts RegReg.match(parseexp("( ( (a* 'b'| a)* 'b' | a)* 'b' )* 'b'"),'a'*10)
 
 puts "nested"
 puts RegReg.match(parseexp("nested('foo','foo','foo')"),"abc")

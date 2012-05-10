@@ -1,5 +1,16 @@
 <% require './types.rb' %>
 <%= ["stdio","stdlib","string"].map{|e|"#include <#{e}.h>\n"}*""%>
+
+typedef struct{ char tp;
+
+} exp;
+
+typedef struct t_cont {
+  exp *e;
+  char tp;
+  struct t_cont *previous;
+} t_cont;
+
 typedef struct{
 <%=
  $arg_tp.map{|t,v| "#{t} #{v};\n"}*""
@@ -21,9 +32,6 @@ typedef struct{
                cnst("TP_#{n}")}*"" %>
 
 <%=cnst("FINISH","switch2","bind_restore","nested_end","closure_end")%>
-typedef struct{ char tp;
-
-} exp;
 <%=
    $nodes.map{|n,a|
               "typedef struct{ char tp;

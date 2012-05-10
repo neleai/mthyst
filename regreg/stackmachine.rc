@@ -11,23 +11,22 @@
     "*(exp **) stack_match =(exp *) #{e};stack_match += sizeof(exp *); *stack_match = #{e}->tp; stack_match+=1;"
   end 
   def push_cont(t,c)
-    "*(exp **)a.cont=#{c};a.cont+=sizeof(exp*);*a.cont=#{t};a.cont+=1;"
+    "stack_cont->tp=#{t};stack_cont->e=#{c};stack_cont->previous=a.cont;  a.cont=stack_cont; stack_cont+=1;"
   end
   def cont_call
-    "memcpy(stack_match,a.cont-st_siz,st_siz);stack_match+=st_siz;a.cont-=st_siz;"
+    "memcpy(stack_match,a.cont,st_siz);stack_match+=st_siz;a.cont=a.cont->previous;"
   end
 %>
 
 FILE *debug;
-
 void *match(exp* e,Args a){
   Result r;
   r.state=0;
-  char *stack_match=malloc(1000000);
-  a.cont=malloc(1000000);
-  char *o_stack_match=stack_match, *o_cont=a.cont;
+  char   *stack_match=malloc(1000000);
+  t_cont *stack_cont=malloc(1000000);
+  char *o_stack_match=stack_match; t_cont *o_stack_cont=stack_cont;
   stack_match+=st_siz; *(stack_match-1)=FINISH;
-  a.cont+=st_siz;*(a.cont-1)=FINISH;
+  a.cont=stack_cont; stack_cont->tp=FINISH;stack_cont+=1;
   <%=push_exp("e")%>
   while(1){
       switch(*(stack_match-1)){
@@ -151,7 +150,7 @@ void *match(exp* e,Args a){
             FAIL;
           }
          case FINISH:
-           free(o_cont);
+           free(o_stack_cont);
            free(o_stack_match);
            return r.returned;
        }

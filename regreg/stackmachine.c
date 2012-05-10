@@ -114,17 +114,18 @@ exp *make_char(char * str) {
 
 
 FILE *debug;
-
 void *match(exp* e,Args a) {
     Result r;
     r.state=0;
-    char *stack_match=malloc(1000000);
-    a.cont=malloc(1000000);
-    char *o_stack_match=stack_match, *o_cont=a.cont;
+    char   *stack_match=malloc(1000000);
+    t_cont *stack_cont=malloc(1000000);
+    char *o_stack_match=stack_match;
+    t_cont *o_stack_cont=stack_cont;
     stack_match+=st_siz;
     *(stack_match-1)=FINISH;
-    a.cont+=st_siz;
-    *(a.cont-1)=FINISH;
+    a.cont=stack_cont;
+    stack_cont->tp=FINISH;
+    stack_cont+=1;
     *(exp **) stack_match =(exp *) e;
     stack_match += sizeof(exp *);
     *stack_match = e->tp;
@@ -148,8 +149,8 @@ void *match(exp* e,Args a) {
             break;
         case RESTORE_cont:
             fprintf(debug, "restoring a.cont\n");
-            stack_match-=sizeof(char *)+1;
-            a.cont=*(char **)stack_match;
+            stack_match-=sizeof(t_cont *)+1;
+            a.cont=*(t_cont **)stack_match;
             break;
         case RESTORE_rstr:
             fprintf(debug, "restoring r.rstr\n");
@@ -174,10 +175,11 @@ void *match(exp* e,Args a) {
             inspect_exp(e);
             fprintf(debug,"\n");
             SAVE_cont;
-            *(exp **)a.cont=e->tail;
-            a.cont+=sizeof(exp*);
-            *a.cont=e->tail->tp;
-            a.cont+=1;
+            stack_cont->tp=e->tail->tp;
+            stack_cont->e=e->tail;
+            stack_cont->previous=a.cont;
+            a.cont=stack_cont;
+            stack_cont+=1;
             *(exp **) stack_match =(exp *) e->head;
             stack_match += sizeof(exp *);
             *stack_match = e->head->tp;
@@ -196,9 +198,9 @@ void *match(exp* e,Args a) {
             if (*a.str==*e->str) {
                 SAVE_str
                 a.str+=1;
-                memcpy(stack_match,a.cont-st_siz,st_siz);
+                memcpy(stack_match,a.cont,st_siz);
                 stack_match+=st_siz;
-                a.cont-=st_siz;
+                a.cont=a.cont->previous;
             } else FAIL;
             break;
         }
@@ -220,9 +222,9 @@ void *match(exp* e,Args a) {
             }
             void*(*fn)() =e->fn;
             r.returned=fn(a.closure,e->arg);
-            memcpy(stack_match,a.cont-st_siz,st_siz);
+            memcpy(stack_match,a.cont,st_siz);
             stack_match+=st_siz;
-            a.cont-=st_siz;
+            a.cont=a.cont->previous;
 
             break;
         }
@@ -235,9 +237,9 @@ void *match(exp* e,Args a) {
 
             SAVE_stops
             a.stops|=e->stops;
-            memcpy(stack_match,a.cont-st_siz,st_siz);
+            memcpy(stack_match,a.cont,st_siz);
             stack_match+=st_siz;
-            a.cont-=st_siz;
+            a.cont=a.cont->previous;
             break;
         }
         case TP_make_lambda: {
@@ -344,9 +346,9 @@ void *match(exp* e,Args a) {
             *stack_match=bind_restore;
             stack_match+=1;
             a.closure[e->var]=r.returned;
-            memcpy(stack_match,a.cont-st_siz,st_siz);
+            memcpy(stack_match,a.cont,st_siz);
             stack_match+=st_siz;
-            a.cont-=st_siz;
+            a.cont=a.cont->previous;
 
             break;
         }
@@ -360,14 +362,15 @@ void *match(exp* e,Args a) {
             if (e->stops & a.stops) {
                 SAVE_stops
                 a.stops=a.stops&(~e->stops);
-                memcpy(stack_match,a.cont-st_siz,st_siz);
+                memcpy(stack_match,a.cont,st_siz);
                 stack_match+=st_siz;
-                a.cont-=st_siz;
+                a.cont=a.cont->previous;
             } else {
-                *(exp **)a.cont=e;
-                a.cont+=sizeof(exp*);
-                *a.cont=e->tp;
-                a.cont+=1;
+                stack_cont->tp=e->tp;
+                stack_cont->e=e;
+                stack_cont->previous=a.cont;
+                a.cont=stack_cont;
+                stack_cont+=1;
                 *(exp **) stack_match =(exp *) e->body;
                 stack_match += sizeof(exp *);
                 *stack_match = e->body->tp;
@@ -419,14 +422,14 @@ void *match(exp* e,Args a) {
             break;
         case nested_end:
             if (r.state) {
-                memcpy(stack_match,a.cont-st_siz,st_siz);
+                memcpy(stack_match,a.cont,st_siz);
                 stack_match+=st_siz;
-                a.cont-=st_siz;
+                a.cont=a.cont->previous;
             } else {
                 FAIL;
             }
         case FINISH:
-            free(o_cont);
+            free(o_stack_cont);
             free(o_stack_match);
             return r.returned;
         }
