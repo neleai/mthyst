@@ -173,6 +173,11 @@ void *match(exp* e,void *extra,Args a) {
             stack_match-=sizeof(t_cont *)+1;
             gl.stack_cont=*(t_cont **)stack_match;
             break;
+        case RESTORE_gl_stack_closure:
+            if (0) fprintf(debug, "restoring gl.stack_closure\n");
+            stack_match-=sizeof(void ***)+1;
+            gl.stack_closure=*(void ****)stack_match;
+            break;
         case RESTORE_gl_extra:
             if (0) fprintf(debug, "restoring gl.extra\n");
             stack_match-=sizeof(void *)+1;

@@ -32,48 +32,51 @@ typedef struct Args {
 #define SAVE_a_cont *(t_cont **)stack_match=a.cont;stack_match+=sizeof(t_cont *);*stack_match=RESTORE_a_cont;stack_match++;
 typedef struct Global {
     t_cont * stack_cont;
+    void *** stack_closure;
     void * extra;
 } Global;
 #define RESTORE_gl_stack_cont 5
-#define RESTORE_gl_extra 6
+#define RESTORE_gl_stack_closure 6
+#define RESTORE_gl_extra 7
 #define SAVE_gl_stack_cont *(t_cont **)stack_match=gl.stack_cont;stack_match+=sizeof(t_cont *);*stack_match=RESTORE_gl_stack_cont;stack_match++;
+#define SAVE_gl_stack_closure *(void ****)stack_match=gl.stack_closure;stack_match+=sizeof(void ***);*stack_match=RESTORE_gl_stack_closure;stack_match++;
 #define SAVE_gl_extra *(void **)stack_match=gl.extra;stack_match+=sizeof(void *);*stack_match=RESTORE_gl_extra;stack_match++;
 typedef struct Result {
     char* rstr;
     long state;
     void* returned;
 } Result;
-#define RESTORE_r_rstr 7
-#define RESTORE_r_state 8
-#define RESTORE_r_returned 9
+#define RESTORE_r_rstr 8
+#define RESTORE_r_state 9
+#define RESTORE_r_returned 10
 #define SAVE_r_rstr *(char**)stack_match=r.rstr;stack_match+=sizeof(char*);*stack_match=RESTORE_r_rstr;stack_match++;
 #define SAVE_r_state *(long*)stack_match=r.state;stack_match+=sizeof(long);*stack_match=RESTORE_r_state;stack_match++;
 #define SAVE_r_returned *(void**)stack_match=r.returned;stack_match+=sizeof(void*);*stack_match=RESTORE_r_returned;stack_match++;
 
 
 
-#define TP_seq 10
-#define TP_switch 11
-#define TP_many 12
-#define TP_stop 13
-#define TP_bind 14
-#define TP_nested 15
-#define TP_act 16
-#define TP_make_lambda 17
-#define TP_use_lambda 18
-#define TP_return 19
-#define TP_rule 20
-#define TP_enter 21
-#define TP_call 22
-#define TP_char 23
+#define TP_seq 11
+#define TP_switch 12
+#define TP_many 13
+#define TP_stop 14
+#define TP_bind 15
+#define TP_nested 16
+#define TP_act 17
+#define TP_make_lambda 18
+#define TP_use_lambda 19
+#define TP_return 20
+#define TP_rule 21
+#define TP_enter 22
+#define TP_call 23
+#define TP_char 24
 
 
-#define FINISH 24
-#define switch2 25
-#define bind_restore 26
-#define nested_end 27
-#define closure_end 28
-#define call_end 29
+#define FINISH 25
+#define switch2 26
+#define bind_restore 27
+#define nested_end 28
+#define closure_end 29
+#define call_end 30
 
 typedef struct {
     char tp;

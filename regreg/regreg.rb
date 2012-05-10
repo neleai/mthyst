@@ -6,6 +6,11 @@ class Closure
   def nul
    nil
   end
+  def _append(a,e)
+    a||=[]
+    a<<e
+    a
+  end
 end
 $closureno=0
 def addcb(s)

@@ -1,1 +1,6 @@
 closure on stack and move to heap lazily.
+
+memoization
+
+contextual arguments and returns
+

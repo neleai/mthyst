@@ -20,7 +20,6 @@ amethyst Amethyst2RegReg {
                ] -> RSeq[*(aact+[Rcall.create(:name=>name,:argc=>arg.size,:afrom=>arg)])]
         | Many[ {@@stops||=1;@@stops*=2} trans:e {@@stops/=2} ]     -> Rmany.create({:stops=>@@stops,:body=>e})
         | Stop[ ]                                       -> Rstop.create({:stops=>@@stops/2})
-        | Act[ String["_append("] ]   -> Ract.create(:arg=>'nul')
         | Act[ {@@varsin=[]}  transrb*:cb  ]         -> puts @@varsin.inspect;  Ract.create(:arg=>addcb(cb.join),:varc=>@@varsin.uniq.size,:vars=>@@varsin.uniq)
         | Bind[ @name:n trans:t ]     -> RSeq[t,Rbind.create({:var=>localnumber(n.ary)})]
         | CAct[   ]           -> Ract.create(:arg=>'nul')
