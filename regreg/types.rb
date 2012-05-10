@@ -18,6 +18,8 @@ $nodes=  [["seq",[["exp*","head"],["exp*","tail"]]],
 
 $arg_tp=[["char*","str"],["long","stops"],["void**","closure"],["t_cont *","cont"]]
 
+$glob_tp= [["t_cont *","stack_cont"],["void *","extra"]]
+
 $res_tp=[["char*","rstr"],["long","state"],["void*","returned"]]
 
 class RegRegAST

@@ -132,37 +132,37 @@ void *match(exp* e,Args a) {
     stack_match+=1;
     while(1) {
         switch(*(stack_match-1)) {
-        case RESTORE_str:
+        case RESTORE_a_str:
             fprintf(debug, "restoring a.str\n");
             stack_match-=sizeof(char*)+1;
             a.str=*(char**)stack_match;
             break;
-        case RESTORE_stops:
+        case RESTORE_a_stops:
             fprintf(debug, "restoring a.stops\n");
             stack_match-=sizeof(long)+1;
             a.stops=*(long*)stack_match;
             break;
-        case RESTORE_closure:
+        case RESTORE_a_closure:
             fprintf(debug, "restoring a.closure\n");
             stack_match-=sizeof(void**)+1;
             a.closure=*(void***)stack_match;
             break;
-        case RESTORE_cont:
+        case RESTORE_a_cont:
             fprintf(debug, "restoring a.cont\n");
             stack_match-=sizeof(t_cont *)+1;
             a.cont=*(t_cont **)stack_match;
             break;
-        case RESTORE_rstr:
+        case RESTORE_r_rstr:
             fprintf(debug, "restoring r.rstr\n");
             stack_match-=sizeof(char*)+1;
             r.rstr=*(char**)stack_match;
             break;
-        case RESTORE_state:
+        case RESTORE_r_state:
             fprintf(debug, "restoring r.state\n");
             stack_match-=sizeof(long)+1;
             r.state=*(long*)stack_match;
             break;
-        case RESTORE_returned:
+        case RESTORE_r_returned:
             fprintf(debug, "restoring r.returned\n");
             stack_match-=sizeof(void*)+1;
             r.returned=*(void**)stack_match;
@@ -174,7 +174,7 @@ void *match(exp* e,Args a) {
             fprintf(debug, "match ");
             inspect_exp(e);
             fprintf(debug,"\n");
-            SAVE_cont;
+            SAVE_a_cont;
             stack_cont->tp=e->tail->tp;
             stack_cont->e=e->tail;
             stack_cont->previous=a.cont;
@@ -196,7 +196,7 @@ void *match(exp* e,Args a) {
 
             fprintf(debug,"character %s on %s\n",e->str,a.str);
             if (*a.str==*e->str) {
-                SAVE_str
+                SAVE_a_str
                 a.str+=1;
                 memcpy(stack_match,a.cont,st_siz);
                 stack_match+=st_siz;
@@ -235,7 +235,7 @@ void *match(exp* e,Args a) {
             inspect_exp(e);
             fprintf(debug,"\n");
 
-            SAVE_stops
+            SAVE_a_stops
             a.stops|=e->stops;
             memcpy(stack_match,a.cont,st_siz);
             stack_match+=st_siz;
@@ -263,7 +263,7 @@ void *match(exp* e,Args a) {
             inspect_exp(e);
             fprintf(debug,"\n");
 
-            SAVE_closure;
+            SAVE_a_closure;
             lambda_s *l=r.returned;
             a.closure=l->closure;
             *(exp **) stack_match =(exp *) l->body;
@@ -288,7 +288,7 @@ void *match(exp* e,Args a) {
               constructing closure, but this depends on garbage collector/running analysis to
               decide if this can happen.*/
             fprintf(debug,"calling %s\n",e->name);
-            SAVE_closure
+            SAVE_a_closure
             void **closure=malloc(sizeof(void*)*e->body->locals);
             int i;
             for(i=0; i<e->argc; i++) closure[e->ato[i]]=a.closure[e->afrom[i]];
@@ -323,7 +323,7 @@ void *match(exp* e,Args a) {
             inspect_exp(e);
             fprintf(debug,"\n");
 
-            SAVE_str;
+            SAVE_a_str;
             a.str=r.returned;
             *(exp **) stack_match =(exp *) e->to;
             stack_match += sizeof(exp *);
@@ -360,7 +360,7 @@ void *match(exp* e,Args a) {
             fprintf(debug,"\n");
 
             if (e->stops & a.stops) {
-                SAVE_stops
+                SAVE_a_stops
                 a.stops=a.stops&(~e->stops);
                 memcpy(stack_match,a.cont,st_siz);
                 stack_match+=st_siz;

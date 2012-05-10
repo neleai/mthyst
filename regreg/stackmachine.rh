@@ -11,23 +11,19 @@ typedef struct t_cont {
   struct t_cont *previous;
 } t_cont;
 
-typedef struct{
-<%=
- $arg_tp.map{|t,v| "#{t} #{v};\n"}*""
-%> } Args;
 
 <%=
-  $arg_tp.map{|t,v| cnst "RESTORE_#{v}"}*""+
-  $arg_tp.map{|t,v| "#define SAVE_#{v} *(#{t}*)stack_match=a.#{v};stack_match+=sizeof(#{t});*stack_match=RESTORE_#{v};stack_match++;\n" }*""
-%>
-typedef struct{
-<%=
- $res_tp.map{|t,v| "#{t} #{v};\n"}*""
-%> } Result;
-<%=
-  $res_tp.map{|t,v| cnst "RESTORE_#{v}"}*""+
-  $res_tp.map{|t,v| "#define SAVE_#{v} *(#{t}*)stack_match=r.#{v};stack_match+=sizeof(#{t});*stack_match=RESTORE_#{v};stack_match++;\n" }*""
-%>
+  def make_struct(name,sc, args)
+    "typedef struct #{name} { #{args.map{|t,v| "#{t} #{v};\n"}*"" } } #{name};"+
+    args.map{|t,v| cnst "RESTORE_#{sc}_#{v}"}*""+
+    args.map{|t,v| "#define SAVE_#{sc}_#{v} *(#{t}*)stack_match=#{sc}.#{v};stack_match+=sizeof(#{t});*stack_match=RESTORE_#{sc}_#{v};stack_match++;\n"}*""
+  end
+  make_struct("Args","a",$arg_tp)+
+  make_struct("Global","gl",$glob_tp)+
+  make_struct("Result","r",$res_tp)
+%> 
+
+
 <%=   $nodes.map{|n,a|
                cnst("TP_#{n}")}*"" %>
 

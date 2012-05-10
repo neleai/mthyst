@@ -15,55 +15,64 @@ typedef struct t_cont {
     struct t_cont *previous;
 } t_cont;
 
-typedef struct {
+
+typedef struct Args {
     char* str;
     long stops;
     void** closure;
     t_cont * cont;
 } Args;
-
-#define RESTORE_str 1
-#define RESTORE_stops 2
-#define RESTORE_closure 3
-#define RESTORE_cont 4
-#define SAVE_str *(char**)stack_match=a.str;stack_match+=sizeof(char*);*stack_match=RESTORE_str;stack_match++;
-#define SAVE_stops *(long*)stack_match=a.stops;stack_match+=sizeof(long);*stack_match=RESTORE_stops;stack_match++;
-#define SAVE_closure *(void***)stack_match=a.closure;stack_match+=sizeof(void**);*stack_match=RESTORE_closure;stack_match++;
-#define SAVE_cont *(t_cont **)stack_match=a.cont;stack_match+=sizeof(t_cont *);*stack_match=RESTORE_cont;stack_match++;
-
-typedef struct {
+#define RESTORE_a_str 1
+#define RESTORE_a_stops 2
+#define RESTORE_a_closure 3
+#define RESTORE_a_cont 4
+#define SAVE_a_str *(char**)stack_match=a.str;stack_match+=sizeof(char*);*stack_match=RESTORE_a_str;stack_match++;
+#define SAVE_a_stops *(long*)stack_match=a.stops;stack_match+=sizeof(long);*stack_match=RESTORE_a_stops;stack_match++;
+#define SAVE_a_closure *(void***)stack_match=a.closure;stack_match+=sizeof(void**);*stack_match=RESTORE_a_closure;stack_match++;
+#define SAVE_a_cont *(t_cont **)stack_match=a.cont;stack_match+=sizeof(t_cont *);*stack_match=RESTORE_a_cont;stack_match++;
+typedef struct Global {
+    t_cont * stack_cont;
+    void * extra;
+} Global;
+#define RESTORE_gl_stack_cont 5
+#define RESTORE_gl_extra 6
+#define SAVE_gl_stack_cont *(t_cont **)stack_match=gl.stack_cont;stack_match+=sizeof(t_cont *);*stack_match=RESTORE_gl_stack_cont;stack_match++;
+#define SAVE_gl_extra *(void **)stack_match=gl.extra;stack_match+=sizeof(void *);*stack_match=RESTORE_gl_extra;stack_match++;
+typedef struct Result {
     char* rstr;
     long state;
     void* returned;
 } Result;
-#define RESTORE_rstr 5
-#define RESTORE_state 6
-#define RESTORE_returned 7
-#define SAVE_rstr *(char**)stack_match=r.rstr;stack_match+=sizeof(char*);*stack_match=RESTORE_rstr;stack_match++;
-#define SAVE_state *(long*)stack_match=r.state;stack_match+=sizeof(long);*stack_match=RESTORE_state;stack_match++;
-#define SAVE_returned *(void**)stack_match=r.returned;stack_match+=sizeof(void*);*stack_match=RESTORE_returned;stack_match++;
-
-#define TP_seq 8
-#define TP_switch 9
-#define TP_many 10
-#define TP_stop 11
-#define TP_bind 12
-#define TP_nested 13
-#define TP_act 14
-#define TP_make_lambda 15
-#define TP_use_lambda 16
-#define TP_return 17
-#define TP_rule 18
-#define TP_enter 19
-#define TP_call 20
-#define TP_char 21
+#define RESTORE_r_rstr 7
+#define RESTORE_r_state 8
+#define RESTORE_r_returned 9
+#define SAVE_r_rstr *(char**)stack_match=r.rstr;stack_match+=sizeof(char*);*stack_match=RESTORE_r_rstr;stack_match++;
+#define SAVE_r_state *(long*)stack_match=r.state;stack_match+=sizeof(long);*stack_match=RESTORE_r_state;stack_match++;
+#define SAVE_r_returned *(void**)stack_match=r.returned;stack_match+=sizeof(void*);*stack_match=RESTORE_r_returned;stack_match++;
 
 
-#define FINISH 22
-#define switch2 23
-#define bind_restore 24
-#define nested_end 25
-#define closure_end 26
+
+#define TP_seq 10
+#define TP_switch 11
+#define TP_many 12
+#define TP_stop 13
+#define TP_bind 14
+#define TP_nested 15
+#define TP_act 16
+#define TP_make_lambda 17
+#define TP_use_lambda 18
+#define TP_return 19
+#define TP_rule 20
+#define TP_enter 21
+#define TP_call 22
+#define TP_char 23
+
+
+#define FINISH 24
+#define switch2 25
+#define bind_restore 26
+#define nested_end 27
+#define closure_end 28
 
 typedef struct {
     char tp;
