@@ -139,7 +139,9 @@ void *match(exp* e,void *extra,Args a){
 ")
 %>
          case switch2:stack_match-=st_siz; exp_switch *e=*(exp_switch **)stack_match;
+          if (e->alts[r.state]){
            <%=push_exp("e->alts[r.state]")%>
+          }
            break;
          case bind_restore:stack_match-=sizeof(void*)+sizeof(long)+1;
            a.closure[*(long*)(stack_match+sizeof(void*))]=*(void **)stack_match;

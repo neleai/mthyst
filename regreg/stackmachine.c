@@ -425,10 +425,12 @@ void *match(exp* e,void *extra,Args a) {
         case switch2:
             stack_match-=st_siz;
             exp_switch *e=*(exp_switch **)stack_match;
-            *(exp **) stack_match =(exp *) e->alts[r.state];
-            stack_match += sizeof(exp *);
-            *stack_match = e->alts[r.state]->tp;
-            stack_match+=1;
+            if (e->alts[r.state]) {
+                *(exp **) stack_match =(exp *) e->alts[r.state];
+                stack_match += sizeof(exp *);
+                *stack_match = e->alts[r.state]->tp;
+                stack_match+=1;
+            }
             break;
         case bind_restore:
             stack_match-=sizeof(void*)+sizeof(long)+1;
