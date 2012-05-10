@@ -22,7 +22,7 @@ amethyst Amethyst2RegReg {
         | Stop[ ]                                       -> Rstop.create({:stops=>@@stops/2})
         | Act[ {@@varsin=[]}  transrb*:cb  ]         -> puts @@varsin.inspect;  Ract.create(:arg=>addcb(cb.join),:varc=>@@varsin.uniq.size,:vars=>@@varsin.uniq)
         | Bind[ @name:n trans:t ]     -> RSeq[t,Rbind.create({:var=>localnumber(n.ary)})]
-        | CAct[   ]           -> Ract.create(:arg=>'nul')
+        | CAct[ .:e  ] {Act["(#{e.inspect})"]}=>trans
         | Local[  ]           -> Ract.create(:arg=>'nul')
         | .:x -> puts "f",x.inspect;raise "unrecognized"
 

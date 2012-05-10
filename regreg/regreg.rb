@@ -7,7 +7,6 @@ class Closure
    nil
   end
   def _append(a,e)
-    a||=[]
     a<<e
     a
   end
