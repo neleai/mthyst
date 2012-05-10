@@ -25,8 +25,19 @@ rule* getrule(char *name){
   return r;
 }
 
+typedef struct{
+  void **cl;
+} closures;
+VALUE get_local(VALUE self,VALUE no){
+  closures *c;
+  Data_Get_Struct(self,closures,c);
+  return (VALUE) c->cl[FIX2INT(no)];
+}
 
-VALUE callback(void **closure,void *extra,void *arg){
+VALUE callback(void **closure,VALUE extra,void *arg){
+  closures *c;
+  Data_Get_Struct(extra,closures,c);
+  c->cl=closure;
   return rb_funcall(extra,rb_intern(arg),0);
 }
 
@@ -52,10 +63,14 @@ VALUE translate(VALUE self,VALUE exp2){
   exp *e=trans(exp2);
   return Qnil;
 }
+
+VALUE cls_Closure;
 VALUE rb_match(VALUE self,VALUE exp2,VALUE str){
   exp *e=trans(exp2);
   char *str2=RSTRING_PTR(str);
-  return match2(e,rb_funcall(rb_const_get(rb_cObject,rb_intern("Closure")),rb_intern("new"),0),str2);
+  closures *c=malloc(sizeof(closures));
+  VALUE extra=  Data_Wrap_Struct(cls_Closure,NULL,NULL,c);
+  return match2(e,(void *)extra,str2);
 }
 extern FILE * debug;
 void Init_RegReg(){
@@ -64,4 +79,6 @@ void Init_RegReg(){
   rb_define_singleton_method(RegReg,"translate",translate,1);
   rb_define_singleton_method(RegReg,"match",rb_match,2);
   init_nodes();
+  cls_Closure=rb_define_class("Closure",rb_cObject);
+  rb_define_method(cls_Closure,"local",get_local,1);
 }
