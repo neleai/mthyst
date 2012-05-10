@@ -11,6 +11,7 @@
     "*(exp **) stack_match =(exp *) #{e};stack_match += sizeof(exp *); *stack_match = #{e}->tp; stack_match+=1;"
   end 
   def push_cont(t,c)
+    $revert<<"gl.stack_cont"
     "gl.stack_cont->tp=#{t};gl.stack_cont->e=#{c};gl.stack_cont->previous=a.cont;  a.cont=gl.stack_cont; gl.stack_cont+=1;"
   end
   def cont_call
@@ -53,12 +54,12 @@ void *match(exp* e,void *extra,Args a){
     "case TP_#{tp}: { stack_match-=st_siz;
           exp_#{tp} *e=*(exp_#{tp}**)stack_match;
           fprintf(debug, \"match \"); inspect_exp(e);fprintf(debug,\"\\n\");
-          #{$revert.map{|r| "SAVE_#{r.gsub(".","_")};"}*""}#{$revert=[];""}
+          #{$revert.uniq.sort.map{|r| "SAVE_#{r.gsub(".","_")};"}*""}#{$revert=[];""}
           #{body}
           break;}"
   end
 
-  ecase("seq","SAVE_a_cont;SAVE_gl_stack_cont;
+  ecase("seq","SAVE_a_cont
               #{push_cont("e->tail->tp","e->tail")}
               #{push_exp("e->head")}")+
   ecase("char","
@@ -130,7 +131,6 @@ void *match(exp* e,void *extra,Args a){
            #{set("a.stops")}=a.stops&(~e->stops);
            #{cont_call()}
          }else{
-           SAVE_gl_stack_cont;
            #{push_cont("e->tp","e")}
            #{push_exp("e->body")}
          }")+

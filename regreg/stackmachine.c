@@ -185,9 +185,8 @@ void *match(exp* e,void *extra,Args a) {
             fprintf(debug, "match ");
             inspect_exp(e);
             fprintf(debug,"\n");
-
-            SAVE_a_cont;
             SAVE_gl_stack_cont;
+            SAVE_a_cont
             gl.stack_cont->tp=e->tail->tp;
             gl.stack_cont->e=e->tail;
             gl.stack_cont->previous=a.cont;
@@ -296,6 +295,7 @@ void *match(exp* e,void *extra,Args a) {
             inspect_exp(e);
             fprintf(debug,"\n");
             SAVE_a_closure;
+            SAVE_gl_stack_cont;
 
             /*We currently do not garbage collect closures as they can be used by lambdas.
               There are several improvements possible depending on garbage collection.
@@ -384,6 +384,7 @@ void *match(exp* e,void *extra,Args a) {
             inspect_exp(e);
             fprintf(debug,"\n");
             SAVE_a_stops;
+            SAVE_gl_stack_cont;
 
             if (e->stops & a.stops) {
                 a.stops=a.stops&(~e->stops);
@@ -391,7 +392,6 @@ void *match(exp* e,void *extra,Args a) {
                 stack_match+=st_siz;
                 a.cont=a.cont->previous;
             } else {
-                SAVE_gl_stack_cont;
                 gl.stack_cont->tp=e->tp;
                 gl.stack_cont->e=e;
                 gl.stack_cont->previous=a.cont;
