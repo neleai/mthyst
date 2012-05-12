@@ -46,7 +46,7 @@ exp *make_nested(exp* body) {
     return (exp *) e;
 }
 
-exp *make_act(long varc,long * vars,void * fn,char * arg) {
+exp *make_act(long varc,long * vars,void * fn,void * arg) {
     exp_act *e=malloc(sizeof(exp_act));
     e->tp=TP_act;
     e->varc=varc;
@@ -372,17 +372,6 @@ void *match(exp* e,void *extra,Args a) {
             fprintf(debug,"\n");
 
 
-            fprintf(debug,"saving %i %i\n",a.closure[e->var],e->var);
-            *(void **)stack_match=a.closure[e->var];
-            stack_match+=sizeof(void *);
-            *(long *)stack_match =e->var;
-            stack_match+=sizeof(long);
-            *stack_match=bind_restore;
-            stack_match+=1;
-            a.closure[e->var]=r.returned;
-            memcpy(stack_match,a.cont,st_siz);
-            stack_match+=st_siz;
-            a.cont=a.cont->previous;
 
             break;
         }

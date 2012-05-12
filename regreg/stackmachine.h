@@ -122,10 +122,10 @@ typedef struct {
     long varc;
     long * vars;
     void * fn;
-    char * arg;
+    void * arg;
 } exp_act;
 exp_act* normalize_act(exp_act*o);
-exp *make_act(long varc,long * vars,void * fn,char * arg);
+exp *make_act(long varc,long * vars,void * fn,void * arg);
 typedef struct {
     char tp;
     exp* body;

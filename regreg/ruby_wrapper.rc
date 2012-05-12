@@ -57,7 +57,7 @@ exp * trans(VALUE exp2){int i;
   else if (typetest(exp2,"Rcall" )) { char *name=(char *)trans(rb_iv_get(exp2,"@name")); exp_call e;e.tp=TP_call; e.name=name; e.body=getrule(name)->body; e.argc=trans(rb_iv_get(exp2,"@argc")); e.afrom=trans(rb_iv_get(exp2,"@afrom")); return (exp *) normalize_call(&e);}
   else if (typetest(exp2,"Rrule" )) { char *name=(char *)trans(rb_iv_get(exp2,"@name")); exp *body=trans(rb_iv_get(exp2,"@body")); rule *r=getrule(name); r->body->locals=(long)trans(rb_iv_get(exp2,"@locals")); r->body->body=body; return (exp*)r->body;}
   else if (typetest(exp2,"Ract"   )) { exp_act e; e.tp=TP_act; e.varc=trans(rb_iv_get(exp2,"@varc")); e.vars=trans(rb_iv_get(exp2,"@vars")); e.fn=callback; e.arg=trans(rb_iv_get(exp2,"@arg")); return normalize_act(&e);}
-//  else if (typetest(exp2,"Rbind")) { exp_act e; e.tp=TP_act; e.varc=1;e.vars=malloc(sizeof(long));e.vars[0]=trans(rb_iv_get(exp2,"@var")); e.fn=bind_callback; e.arg=e.vars[0]; return normalize_act(&e);}
+  else if (typetest(exp2,"Rbind")) { exp_act e; e.tp=TP_act; e.varc=1;e.vars=malloc(sizeof(long));e.vars[0]=trans(rb_iv_get(exp2,"@var")); e.fn=bind_callback; e.arg=e.vars[0]; return normalize_act(&e);}
   <%=
     $nodes.map{|n,a| "else if (typetest(exp2,\"R#{n}\")){
                         exp_#{n} e; e.tp=TP_#{n};

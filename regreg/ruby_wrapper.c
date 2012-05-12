@@ -91,7 +91,16 @@ exp * trans(VALUE exp2) {
         e.arg=trans(rb_iv_get(exp2,"@arg"));
         return normalize_act(&e);
     }
-//  else if (typetest(exp2,"Rbind")) { exp_act e; e.tp=TP_act; e.varc=1;e.vars=malloc(sizeof(long));e.vars[0]=trans(rb_iv_get(exp2,"@var")); e.fn=bind_callback; e.arg=e.vars[0]; return normalize_act(&e);}
+    else if (typetest(exp2,"Rbind")) {
+        exp_act e;
+        e.tp=TP_act;
+        e.varc=1;
+        e.vars=malloc(sizeof(long));
+        e.vars[0]=trans(rb_iv_get(exp2,"@var"));
+        e.fn=bind_callback;
+        e.arg=e.vars[0];
+        return normalize_act(&e);
+    }
     else if (typetest(exp2,"Rseq")) {
         exp_seq e;
         e.tp=TP_seq;
@@ -137,7 +146,7 @@ exp * trans(VALUE exp2) {
         e.varc=(long) trans(rb_iv_get(exp2,"@varc"));
         e.vars=(long *) trans(rb_iv_get(exp2,"@vars"));
         e.fn=(void *) trans(rb_iv_get(exp2,"@fn"));
-        e.arg=(char *) trans(rb_iv_get(exp2,"@arg"));
+        e.arg=(void *) trans(rb_iv_get(exp2,"@arg"));
         return (exp *) normalize_act(&e);
     }
     else if (typetest(exp2,"Rmake_lambda")) {

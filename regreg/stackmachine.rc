@@ -121,13 +121,7 @@ void *match(exp* e,void *extra,Args a){
     #{push_exp("e->to")}
   ")+
   ecase("bind","
-    fprintf(debug,\"saving %i %i\\n\",a.closure[e->var],e->var);
-    *(void **)stack_match=a.closure[e->var];stack_match+=sizeof(void *);
-    *(long *)stack_match =e->var;           stack_match+=sizeof(long);
-    *stack_match=bind_restore;              stack_match+=1;
-    a.closure[e->var]=r.returned;
-    #{cont_call()}
-  ")+
+      ")+
   ecase("many","
          if (e->stops & a.stops){
            #{set("a.stops")}=a.stops&(~e->stops);

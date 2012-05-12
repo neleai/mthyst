@@ -304,7 +304,6 @@ void inspect_exp(exp *e) {
         exp_act *e2=(exp_act *)e;
         fprintf(debug,"act[");
         fprintf(debug," varc: %i",e2->varc);
-        fprintf(debug," arg: %s",e2->arg);
         fprintf(debug,"]");
         break;
     }
