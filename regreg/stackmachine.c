@@ -320,7 +320,7 @@ void *match(exp* e,void *extra,Args a) {
             void **closure=malloc(sizeof(void*)*e->body->locals);
             int i;
             fprintf(debug,"new closure %i\n",e->body->locals);
-            for(i=0; i<e->argc; i++) closure[i]=a.closure[e->afrom[i]];
+            for(i=0; i<e->argc; i++) closure[i+1]=a.closure[e->afrom[i]];
             a.closure=closure;
             *(exp **) stack_match =(exp *) e->body->body;
             stack_match += sizeof(exp *);

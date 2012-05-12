@@ -9,7 +9,7 @@ class Amethyst2RegReg < Amethyst
   end
 end
 amethyst Amethyst2RegReg {
-  trans = Rule[ {@@locals=@args.clone;@@stops=1} @body=>trans:body @name:name ] ->puts @@locals.inspect; Rrule.create({:name=>name,:locals=>@@locals.size,:body=>body})
+  trans = Rule[ {@@locals=[Local["_result",@bnding]]+@args;@@stops=1} @body=>trans:body @name:name ] ->puts @@locals.inspect;Rrule.create({:name=>name,:locals=>@@locals.size,:body=>body})
         | Seq[ trans:head (.+:tail ({Seq[*tail]}=>trans):tail)? ] -> tail ? Rseq.create({:head=>head,:tail=>tail}) : head
         | Or[ trans:head  (.+:tail ({ Or[*tail]}=>trans):tail)? ] -> tail ? Rswitch.create({:head=>head,:alts=>[tail,nil]}) : head
         | Lookahead[ trans:e ] -> Rswitch.create({:head=>e,:alts=>[rcall("fail"),rcall("empty")]})
