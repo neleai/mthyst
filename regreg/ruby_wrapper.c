@@ -39,7 +39,8 @@ VALUE callback(void **closure,VALUE extra,void *arg) {
     closures *c;
     Data_Get_Struct(extra,closures,c);
     c->cl=closure;
-    return rb_funcall(extra,rb_intern(arg),0);
+    closure[0]=rb_funcall(extra,rb_intern(arg),0);
+    return Qnil;
 }
 VALUE bind_callback(void **closure,VALUE extra,long arg) {
     closure[arg]=closure[0];

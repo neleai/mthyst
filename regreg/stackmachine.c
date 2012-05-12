@@ -241,7 +241,9 @@ void *match(exp* e,void *extra,Args a) {
                 stack_match+=1;
             }
             void*(*fn)() =e->fn;
-            r.returned=fn(a.closure,gl.extra,e->arg);
+            a.closure[0]=r.returned;
+            fn(a.closure,gl.extra,e->arg);
+            r.returned=a.closure[0];
             memcpy(stack_match,a.cont,st_siz);
             stack_match+=st_siz;
             a.cont=a.cont->previous;

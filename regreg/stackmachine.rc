@@ -77,7 +77,9 @@ void *match(exp* e,void *extra,Args a){
             *stack_match=bind_restore;                  stack_match+=1;
           }
           void*(*fn)() =e->fn;
-          #{set("r.returned")}=fn(a.closure,gl.extra,e->arg);
+          a.closure[0]=r.returned;
+          fn(a.closure,gl.extra,e->arg);
+          #{set("r.returned")}=a.closure[0];
           #{cont_call()}
   ")+
   ecase("stop","
