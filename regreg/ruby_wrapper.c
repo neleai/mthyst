@@ -218,8 +218,7 @@ VALUE rb_match(VALUE self,VALUE exp2,VALUE str) {
     char *str2=RSTRING_PTR(str);
     closures *c=malloc(sizeof(closures));
     VALUE extra=  Data_Wrap_Struct(cls_Closure,NULL,NULL,c);
-    void **args=malloc(sizeof(void *)*10);
-    return match2(e,(void *)extra,args,str2);
+    return match2(e,(void *)extra,malloc(100),str2);
 }
 extern FILE * debug;
 void Init_RegReg() {
