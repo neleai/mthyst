@@ -35,7 +35,7 @@ void *match(exp* e,void *extra,Args a){
 <%=
   def restore_a(sc,args)
   args.map{|t,v| "case RESTORE_#{sc}_#{v}:
-      if (#{v=="closure" ? "1" : "0"}) fprintf(debug, \"restoring #{sc}.#{v}\\n\");
+//      if (#{v=="closure" ? "1" : "0"}) fprintf(debug, \"restoring #{sc}.#{v}\\n\");
       stack_match-=sizeof(#{t})+1;
       #{sc}.#{v}=*(#{t}*)stack_match;
       break;
@@ -53,7 +53,7 @@ void *match(exp* e,void *extra,Args a){
   def ecase(tp,body)
     "case TP_#{tp}: { stack_match-=st_siz;
           exp_#{tp} *e=*(exp_#{tp}**)stack_match;
-          fprintf(debug, \"match \"); inspect_exp(e);fprintf(debug,\"\\n\");
+//          fprintf(debug, \"match \"); inspect_exp(e);fprintf(debug,\"\\n\");
           #{$revert.uniq.sort.map{|r| "SAVE_#{r.gsub(".","_")};"}*""}#{$revert=[];""}
           #{body}
           break;}"
@@ -64,14 +64,14 @@ void *match(exp* e,void *extra,Args a){
               #{push_exp("e->head")}")+
   ecase("char","
           
-          fprintf(debug,\"character %s on %s\\n\",e->str,a.str);
+//          fprintf(debug,\"character %s on %s\\n\",e->str,a.str);
           if (*#{set("a.str")}==*e->str){
             a.str+=1;
             #{cont_call()}
           } else FAIL;")+
   ecase("act","
           int i;for(i=0;i<e->varc;i++){
-            fprintf(debug,\"saving %i %i\\n\",a.closure[e->vars[i]],e->vars[i]);
+//            fprintf(debug,\"saving %i %i\\n\",a.closure[e->vars[i]],e->vars[i]);
             *(void **)stack_match=a.closure[e->vars[i]];stack_match+=sizeof(void *);
             *(long *)stack_match =e->vars[i];           stack_match+=sizeof(long);
             *stack_match=bind_restore;                  stack_match+=1;
@@ -103,11 +103,11 @@ void *match(exp* e,void *extra,Args a){
       one and update lambda pointers. When we know that lambda is dead we can skip 
       constructing closure, but this depends on garbage collector/running analysis to 
       decide if this can happen.*/
-    fprintf(debug,\"calling %s\\n\",e->name);
+//    fprintf(debug,\"calling %s\\n\",e->name);
     #{push_cont("call_end","a.closure")};
     void **closure=malloc(sizeof(void*)*e->body->locals);
     int i;
-    fprintf(debug,\"new closure %i\\n\",e->body->locals);
+//    fprintf(debug,\"new closure %i\\n\",e->body->locals);
     for(i=0;i<e->argc;i++) closure[i+1]=a.closure[e->afrom[i]];    
     #{set("a.closure")}=closure;
     #{push_exp("e->body->body")}
@@ -145,7 +145,7 @@ void *match(exp* e,void *extra,Args a){
           }
            break;
          case bind_restore:stack_match-=sizeof(void*)+sizeof(long)+1;
-           fprintf(debug,"restoring %i %i\n",*(void **)stack_match,*(long*)(stack_match+sizeof(void*)));
+//           fprintf(debug,"restoring %i %i\n",*(void **)stack_match,*(long*)(stack_match+sizeof(void*)));
            a.closure[*(long*)(stack_match+sizeof(void*))]=*(void **)stack_match;
            break;
          case nested_end:
