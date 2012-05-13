@@ -372,6 +372,7 @@ void *match(exp* e,void *extra,Args a) {
             fprintf(debug,"\n");
 
 
+            exit(42);
 
             break;
         }
@@ -474,10 +475,10 @@ void *match(exp* e,void *extra,Args a) {
         }
     }
 }
-void *match2(exp *e,void *extra,char *s) {
+void *match2(exp *e,void *extra,void **closure,char *s) {
     Args a;
     a.cont;
-    a.closure=malloc(100);
+    a.closure=closure;
     a.str=s;
     a.stops=0;
     return match(e,extra,a);

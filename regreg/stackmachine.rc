@@ -121,6 +121,7 @@ void *match(exp* e,void *extra,Args a){
     #{push_exp("e->to")}
   ")+
   ecase("bind","
+        exit(42);
       ")+
   ecase("many","
          if (e->stops & a.stops){
@@ -167,10 +168,10 @@ void *match(exp* e,void *extra,Args a){
        }
   }
 }
-void *match2(exp *e,void *extra,char *s){
+void *match2(exp *e,void *extra,void **closure,char *s){
   Args a;
   a.cont;
-  a.closure=malloc(100);
+  a.closure=closure;
   a.str=s;
   a.stops=0;
   return match(e,extra,a);

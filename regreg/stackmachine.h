@@ -186,4 +186,4 @@ typedef struct {
 #define FAIL r.state=0
 
 static const int st_siz=sizeof(exp*)+1;
-void *match2(exp *e,void *extra,char *str);
+void *match2(exp *e,void *extra,void **closure,char *str);

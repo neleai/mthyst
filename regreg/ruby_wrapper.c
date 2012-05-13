@@ -46,6 +46,15 @@ VALUE bind_callback(void **closure,VALUE extra,long arg) {
     closure[arg]=closure[0];
     return closure[0];
 }
+VALUE cls_lambda;
+VALUE wrap_lambda(void **closure,VALUE extra,long arg) {
+    closure[0]=Data_Wrap_Struct(cls_lambda,NULL,NULL,closure[0]);
+}
+VALUE unwrap_lambda(void **closure,VALUE extra,long arg) {
+    lambda_s *l;
+    Data_Get_Struct(closure[0],lambda_s,l);
+    closure[0]=l;
+}
 
 
 exp * trans(VALUE exp2) {
@@ -209,12 +218,14 @@ VALUE rb_match(VALUE self,VALUE exp2,VALUE str) {
     char *str2=RSTRING_PTR(str);
     closures *c=malloc(sizeof(closures));
     VALUE extra=  Data_Wrap_Struct(cls_Closure,NULL,NULL,c);
-    return match2(e,(void *)extra,str2);
+    void **args=malloc(sizeof(void *)*10);
+    return match2(e,(void *)extra,args,str2);
 }
 extern FILE * debug;
 void Init_RegReg() {
     debug=fopen("log","w");
     RegReg=rb_define_class("RegReg",rb_cObject);
+    cls_lambda=rb_define_class("RegReg_Lambda",rb_cObject);
     rb_define_singleton_method(RegReg,"translate",translate,1);
     rb_define_singleton_method(RegReg,"match",rb_match,2);
     init_nodes();
