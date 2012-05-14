@@ -12,21 +12,22 @@ char * normalize_string(char *s) {
     nodes_string[nodes_string_no-1]=strdup(s);
     return nodes_string[nodes_string_no-1];
 }
-array **nodes_array;
+array *nodes_array;
 long nodes_array_no;
 array * normalize_array(array *a) {
     int i,j;
     for(i=0; i<nodes_array_no; i++) {
-        if(a->size!=nodes_array[i]->size) goto next;
-        for(j=0; j<a->size; j++) if (nodes_array[i]->ary[j]!=a->ary[j]) goto next;
-        return nodes_array[i];
+        if(a->size!=nodes_array[i].size) goto next;
+        for(j=0; j<a->size; j++) if (nodes_array[i].ary[j]!=a->ary[j]) goto next;
+        return &nodes_array[i];
 next:
         ;
     }
     nodes_array_no+=1;
-    if(!(nodes_array_no&(nodes_array_no-1))) nodes_array=realloc(nodes_array,2*sizeof(array *)*nodes_array_no);
-    nodes_array[nodes_array_no-1]=a;
-    return nodes_array[nodes_array_no-1];
+    nodes_array[nodes_array_no-1].ary=malloc(a->size*sizeof(void*));
+    for(i=0; i<a->size; i++)  nodes_array[nodes_array_no-1].ary[i]=a->ary[i];
+    nodes_array[nodes_array_no-1].size=a->size;
+    return &nodes_array[nodes_array_no-1];
 }
 
 
@@ -60,8 +61,6 @@ exp_char *nodes_char;
 long nodes_char_no;
 exp_finish *nodes_finish;
 long nodes_finish_no;
-exp_call_finished *nodes_call_finished;
-long nodes_call_finished_no;
 exp_call_conted *nodes_call_conted;
 long nodes_call_conted_no;
 
@@ -283,20 +282,6 @@ exp_finish *normalize_finish(exp_finish *o) {
     nodes_finish_no+=1;
     return &nodes_finish[nodes_finish_no-1];
 }
-exp_call_finished *normalize_call_finished(exp_call_finished *o) {
-    int i;
-    for(i=0; i<nodes_call_finished_no; i++) {
-        if (1 && nodes_call_finished[i].closure==o->closure) return &nodes_call_finished[i];
-    }
-    if (nodes_call_finished_no>=1000000) {
-        printf("TODO reallocation");
-        exit(42);
-    }
-    nodes_call_finished[nodes_call_finished_no].tp=TP_call_finished;
-    nodes_call_finished[nodes_call_finished_no].closure=o->closure;
-    nodes_call_finished_no+=1;
-    return &nodes_call_finished[nodes_call_finished_no-1];
-}
 exp_call_conted *normalize_call_conted(exp_call_conted *o) {
     int i;
     for(i=0; i<nodes_call_conted_no; i++) {
@@ -314,7 +299,7 @@ exp_call_conted *normalize_call_conted(exp_call_conted *o) {
 void init_nodes() {
     nodes_string=NULL;
     nodes_string_no=0;
-    nodes_array=NULL;
+    nodes_array=malloc(1000000*sizeof(array));
     nodes_array_no=0;
     nodes_seq=malloc(1000000*sizeof(exp_seq));
     nodes_seq_no=0;
@@ -346,8 +331,6 @@ void init_nodes() {
     nodes_char_no=0;
     nodes_finish=malloc(1000000*sizeof(exp_finish));
     nodes_finish_no=0;
-    nodes_call_finished=malloc(1000000*sizeof(exp_call_finished));
-    nodes_call_finished_no=0;
     nodes_call_conted=malloc(1000000*sizeof(exp_call_conted));
     nodes_call_conted_no=0;
 }

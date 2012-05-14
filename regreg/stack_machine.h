@@ -206,13 +206,6 @@ typedef struct {
     char tp;
     exp *forget;
     struct closure_s* closure;
-} exp_call_finished;
-exp_call_finished* normalize_call_finished(exp_call_finished*o);
-exp *make_call_finished(struct closure_s* closure);
-typedef struct {
-    char tp;
-    exp *forget;
-    struct closure_s* closure;
 } exp_call_conted;
 exp_call_conted* normalize_call_conted(exp_call_conted*o);
 exp *make_call_conted(struct closure_s* closure);

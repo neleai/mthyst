@@ -75,10 +75,11 @@ stack_body('many',"#{revert_a('stops')} if (e->stops & a.stops){
            #{push_cont_exp("e")}
            #{push_exp("e->body")}
          }")
-stack_body('call',"#{revert_a('cont')} #{push_exp('call_finished(a.closure)')} #{push_cont_exp('call_conted(a.closure)')} struct closure_s *c=a.closure; a.closure=calloc(sizeof(struct closure_s),1); a.closure->size=e->body->locals;a.closure->ary=calloc(sizeof(void*),a.closure->size); 
+stack_def('call_finished',[["exp_call_conted *","e"]])
+stack_body('call',"#{revert_a('cont')} exp *fin=call_conted(a.closure); #{stack_push('call_finished','fin')} #{push_cont_exp('fin')} struct closure_s *c=a.closure; a.closure=calloc(sizeof(struct closure_s),1); a.closure->size=e->body->locals;a.closure->ary=calloc(sizeof(void*),a.closure->size); 
 int i; for(i=0;i<e->args->size;i++) a.closure->ary[i+1]=c->ary[(long) e->args->ary[i]];
 #{push_exp('e->body->body')}")
-stack_body('call_finished',"e->closure->ary[0]=a.closure->ary[0]; a.closure=e->closure;")
+stack_body('call_finished',"e->closure->ary[0]=a.closure->ary[0]; free(a.closure); a.closure=e->closure;free(e);")
 stack_body('call_conted',"#{revert_a('closure')} e->closure->ary[0]=a.closure->ary[0]; a.closure=e->closure;#{cont_call()}")
 
 stack_def('nested_end',[])
@@ -96,12 +97,6 @@ no=0;$argh.map{|n,_|no+=1; f.puts"#define TP_#{n} #{no}"}*""
 <%=$stackstructs*"" %>
 void fail(){}
 
-exp * call_finished(struct closure_s * c){
-  exp_call_finished * e=calloc(sizeof(exp_call_finished),1);e->tp=TP_call_finished;
-  e->forget=NULL;
-  e->closure=c;
-  return e;
-}
 exp * call_conted(struct closure_s * c){
   exp_call_conted * e=calloc(sizeof(exp_call_conted),1);e->tp=TP_call_conted;
   e->forget=NULL;
@@ -132,13 +127,16 @@ void *match(exp *e,void *extra,Args a){
 
 void *match2(exp *e,void *extra,char *s){
   Args a;
-  a.cont;
-  a.closure=calloc(sizeof(struct closure_s),1);
+  struct closure_s *cl;
+  cl=a.closure=calloc(sizeof(struct closure_s),1);
   a.closure->size=12;
   a.closure->ary=malloc(100);
   a.str=s;
   a.stops=0;
-  return match(e,extra,a);
+  void *r= match(e,extra,a);
+  free(cl->ary);
+  free(cl);
+  return r;
 }
 
 

@@ -87,11 +87,13 @@ exp * trans(VALUE exp2) {
         return (exp *)normalize_string(RSTRING_PTR(exp2));
     }
     else if (typetest(exp2,"Array" )) {
-        array *a=malloc(sizeof(array));
-        a->size=RARRAY_LEN(exp2);
-        a->ary=malloc(sizeof(exp*)*a->size);
-        for(i=0; i<a->size; i++) a->ary[i]=trans(RARRAY_PTR(exp2)[i]);
-        return (exp *)normalize_array(a);
+        array a;
+        a.size=RARRAY_LEN(exp2);
+        a.ary=malloc(sizeof(exp*)*a.size);
+        for(i=0; i<a.size; i++) a.ary[i]=trans(RARRAY_PTR(exp2)[i]);
+        exp *ex=(exp *)normalize_array(&a);
+        free(a.ary);
+        return ex;
     }
     else if (typetest(exp2,"Rcall" )) {
         char *name=(char *)trans(rb_iv_get(exp2,"@name"));
@@ -248,13 +250,6 @@ exp * trans(VALUE exp2) {
         e.tp=TP_finish;
         e.forget=(exp*) trans(rb_iv_get(exp2,"@forget"));
         return (exp *) normalize_finish(&e);
-    }
-    else if (typetest(exp2,"Rcall_finished")) {
-        exp_call_finished e;
-        e.tp=TP_call_finished;
-        e.forget=(exp*) trans(rb_iv_get(exp2,"@forget"));
-        e.closure=(struct closure_s*) trans(rb_iv_get(exp2,"@closure"));
-        return (exp *) normalize_call_finished(&e);
     }
     else if (typetest(exp2,"Rcall_conted")) {
         exp_call_conted e;

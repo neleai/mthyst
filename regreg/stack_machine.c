@@ -103,10 +103,6 @@ struct s_arg_finish {
     char type;
     exp_finish* e;
 };
-struct s_arg_call_finished {
-    char type;
-    exp_call_finished* e;
-};
 struct s_arg_call_conted {
     char type;
     exp_call_conted* e;
@@ -115,18 +111,15 @@ struct s_arg_switch2 {
     char type;
     exp_switch* e;
 };
+struct s_arg_call_finished {
+    char type;
+    exp_call_conted * e;
+};
 struct s_arg_nested_end {
     char type;
 };
 void fail() {}
 
-exp * call_finished(struct closure_s * c) {
-    exp_call_finished * e=calloc(sizeof(exp_call_finished),1);
-    e->tp=TP_call_finished;
-    e->forget=NULL;
-    e->closure=c;
-    return e;
-}
 exp * call_conted(struct closure_s * c) {
     exp_call_conted * e=calloc(sizeof(exp_call_conted),1);
     e->tp=TP_call_conted;
@@ -447,13 +440,15 @@ void *match(exp *e,void *extra,Args a) {
                 struct s_arg_revert_a_cont *s=(struct s_arg_revert_a_cont *)call_stack;
                 s->type=TP_revert_a_cont;
                 s->cont=a.cont;
-            } {
-                call_stack-=sizeof(struct s_arg_exp); ;
-                struct s_arg_exp *s=(struct s_arg_exp *)call_stack;
-                s->type=call_finished(a.closure)->tp;
-                s->e=call_finished(a.closure);
+            }
+            exp *fin=call_conted(a.closure);
+            {
+                call_stack-=sizeof(struct s_arg_call_finished);
+                struct s_arg_call_finished *s=(struct s_arg_call_finished *)call_stack;
+                s->type=TP_call_finished;
+                s->e=fin;
             } {struct cont_s *n=calloc(sizeof(struct cont_s),1);
-                n->e=call_conted(a.closure);
+                n->e=fin;
                 n->previous=a.cont;
                 if(n->e->forget) {
                     exp_seq es;
@@ -483,10 +478,12 @@ void *match(exp *e,void *extra,Args a) {
         }
         case TP_call_finished: {
             struct s_arg_call_finished *s=(struct s_arg_call_finished *)call_stack;
-            exp_call_finished* e=s->e;
+            exp_call_conted * e=s->e;
             call_stack+=sizeof(struct s_arg_call_finished);
             e->closure->ary[0]=a.closure->ary[0];
+            free(a.closure);
             a.closure=e->closure;
+            free(e);
             break;
         }
         case TP_call_conted: {
@@ -564,13 +561,16 @@ void *match(exp *e,void *extra,Args a) {
 
 void *match2(exp *e,void *extra,char *s) {
     Args a;
-    a.cont;
-    a.closure=calloc(sizeof(struct closure_s),1);
+    struct closure_s *cl;
+    cl=a.closure=calloc(sizeof(struct closure_s),1);
     a.closure->size=12;
     a.closure->ary=malloc(100);
     a.str=s;
     a.stops=0;
-    return match(e,extra,a);
+    void *r= match(e,extra,a);
+    free(cl->ary);
+    free(cl);
+    return r;
 }
 
 

@@ -79,9 +79,9 @@ exp * trans(VALUE exp2){int i;
   if      (typetest(exp2,"Fixnum")) { return (exp *)FIX2LONG(exp2); }
   else if (exp2==Qnil             ) { return NULL;                  }
   else if (typetest(exp2,"String")) { return (exp *)normalize_string(RSTRING_PTR(exp2)); }
-  else if (typetest(exp2,"Array" )) { array *a=malloc(sizeof(array)); a->size=RARRAY_LEN(exp2); a->ary=malloc(sizeof(exp*)*a->size);
-    for(i=0;i<a->size;i++) a->ary[i]=trans(RARRAY_PTR(exp2)[i]);
-    return (exp *)normalize_array(a);} 
+  else if (typetest(exp2,"Array" )) { array a; a.size=RARRAY_LEN(exp2); a.ary=malloc(sizeof(exp*)*a.size);
+    for(i=0;i<a.size;i++) a.ary[i]=trans(RARRAY_PTR(exp2)[i]);
+    exp *ex=(exp *)normalize_array(&a);free(a.ary);return ex;} 
   else if (typetest(exp2,"Rcall" )) { char *name=(char *)trans(rb_iv_get(exp2,"@name")); exp_call e;e.tp=TP_call; e.name=name; e.body=getrule(name)->body; e.args=trans(rb_iv_get(exp2,"@args")); return (exp *) normalize_call(&e);}
   else if (typetest(exp2,"Rrule" )) {  <%=init_exp('rule')%> rule *r=getrule(e.name); r->body->locals=e.locals; r->body->name=e.name; r->body->body=e.body; return (exp*)r->body;}
   else if (typetest(exp2,"Ract"   )) { <%=init_exp('act')%> e.fn=callback;  return normalize_act(&e);}

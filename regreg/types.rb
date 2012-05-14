@@ -16,7 +16,6 @@ $nodes=  [["seq",[["exp*","head"],["exp*","tail"]]],
    ["call",[["char *","name"],["exp_rule*","body"],["array*","args"]]],
    ["char",[["char *","str"]]],
    ["finish",[]],
-   ["call_finished",[["struct closure_s*","closure"]]],
    ["call_conted",[["struct closure_s*","closure"]]]]
 $arg_tp=[["char*","str"],["long","stops"],["struct closure_s*","closure"],["struct cont_s *","cont"]]
 
