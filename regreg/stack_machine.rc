@@ -77,10 +77,10 @@ stack_body('many',"#{revert_a('stops')} if (e->stops & a.stops){
            #{push_exp("e->body")}
          }")
 stack_def('call_finished',[["exp_call_conted *","e"]])
-stack_body('call'," exp *fin=call_conted(a.closure); #{push_cont_exp('fin')} #{stack_push('call_finished','fin')} struct closure_s *c=a.closure; a.closure=calloc(sizeof(struct closure_s),1); a.closure->size=e->body->locals;a.closure->ary=calloc(sizeof(void*),a.closure->size); 
+stack_body('call'," exp *fin=call_conted(a.closure); #{push_cont_exp('fin')} #{stack_push('call_finished','fin')} struct closure_s *c=a.closure; a.closure=++closures; a.closure->size=e->body->locals;a.closure->ary=calloc(sizeof(void*),a.closure->size); 
 int i; for(i=0;i<e->args->size;i++) a.closure->ary[i+1]=c->ary[(long) e->args->ary[i]];
 #{push_exp('e->body->body')}")
-stack_body('call_finished',"e->closure->ary[0]=a.closure->ary[0]; free(a.closure->ary); free(a.closure); a.closure=e->closure;free(e);")
+stack_body('call_finished',"e->closure->ary[0]=a.closure->ary[0]; free(a.closure->ary); closures=a.closure-1; a.closure=e->closure;free(e);")
 stack_body('call_conted',"#{revert_a('closure')} e->closure->ary[0]=a.closure->ary[0]; a.closure=e->closure;#{cont_call()}")
 
 stack_def('nested_end',[])
@@ -113,7 +113,7 @@ void *match(exp *e,void *extra,Args a){
   gl.extra=extra;
   char *call_stack,*call_stack_start;
   call_stack_start=malloc(1000000);call_stack=call_stack_start+1000000;
-  struct closure_s *closures = malloc(1000000),*closures_start;closures_start=closures;
+  struct closure_s *closures = malloc(1000000*sizeof(struct closure_s)),*closures_start;closures_start=closures;
   struct cont_s    *conts    = malloc(1000000*sizeof(struct cont_s)),*conts_start   ;conts_start   =conts;  
   <%=push_exp("finish") %>
   <%=push_cont_exp("finish")%>

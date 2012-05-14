@@ -143,7 +143,7 @@ void *match(exp *e,void *extra,Args a) {
     char *call_stack,*call_stack_start;
     call_stack_start=malloc(1000000);
     call_stack=call_stack_start+1000000;
-    struct closure_s *closures = malloc(1000000),*closures_start;
+    struct closure_s *closures = malloc(1000000*sizeof(struct closure_s)),*closures_start;
     closures_start=closures;
     struct cont_s    *conts    = malloc(1000000*sizeof(struct cont_s)),*conts_start   ;
     conts_start   =conts;
@@ -482,7 +482,7 @@ void *match(exp *e,void *extra,Args a) {
                 s->e=fin;
             }
             struct closure_s *c=a.closure;
-            a.closure=calloc(sizeof(struct closure_s),1);
+            a.closure=++closures;
             a.closure->size=e->body->locals;
             a.closure->ary=calloc(sizeof(void*),a.closure->size);
             int i;
@@ -501,7 +501,7 @@ void *match(exp *e,void *extra,Args a) {
             call_stack+=sizeof(struct s_arg_call_finished);
             e->closure->ary[0]=a.closure->ary[0];
             free(a.closure->ary);
-            free(a.closure);
+            closures=a.closure-1;
             a.closure=e->closure;
             free(e);
             break;
