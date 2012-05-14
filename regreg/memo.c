@@ -19,6 +19,7 @@ static memo_s memo_get(Global *g,char *str,exp *e, exp *memo){int i;
       return memos[i].set;
   }
   memo_s not_present;
+  not_present.returned=0;
   not_present.state=-1;
   return not_present;
 }
