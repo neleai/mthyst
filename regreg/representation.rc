@@ -1,5 +1,5 @@
 #include "ruby.h"
-#include "stackmachine.h"
+#include "stack_machine.h"
 char **nodes_string; long nodes_string_no;
 char * normalize_string(char *s){ int i;
   for(i=0;i<nodes_string_no;i++){ if (!strcmp(s,nodes_string[i])) return nodes_string[i];}
@@ -7,10 +7,10 @@ char * normalize_string(char *s){ int i;
   nodes_string[nodes_string_no-1]=strdup(s);
   return nodes_string[nodes_string_no-1];
 }
-exp ***nodes_array; long *nodes_array_size; long nodes_array_no;
-exp ** normalize_array(exp **array,long size){ int i,j;
-  for(i=0;i<nodes_array_no;i++){ if(size!=nodes_array_size[i]) goto next; for(j=0;j<size;j++) if (nodes_array[i][j]!=array[j]) goto next; return nodes_array[i];next:;}
-  nodes_array[nodes_array_no]=array; nodes_array_size[nodes_array_no]=size;
+array **nodes_array; long nodes_array_no;
+array * normalize_array(array *a){ int i,j;
+  for(i=0;i<nodes_array_no;i++){ if(a->size!=nodes_array[i]->size) goto next; for(j=0;j<a->size;j++) if (nodes_array[i]->ary[j]!=a->ary[j]) goto next; return nodes_array[i];next:;}
+  nodes_array[nodes_array_no]=a;
   nodes_array_no+=1;
   return nodes_array[nodes_array_no-1];
 }
@@ -18,25 +18,11 @@ exp ** normalize_array(exp **array,long size){ int i,j;
 <% require 'types.rb'%>
 <%= $nodes.map{|n,a| "exp_#{n} *nodes_#{n};long nodes_#{n}_no;\n"}*"" %>
 <%= $nodes.map{|n,a| "exp_#{n} *normalize_#{n}(exp_#{n} *o){int i;
-  for(i=0;i<nodes_#{n}_no;i++){ if (#{a.map{|t,v| "nodes_#{n}[i].#{v}==o->#{v}"}*"&&"}) return &nodes_#{n}[i]; }
+  for(i=0;i<nodes_#{n}_no;i++){ if (1 #{a.map{|t,v| "&& nodes_#{n}[i].#{v}==o->#{v}"}}) return &nodes_#{n}[i]; }
   nodes_#{n}[nodes_#{n}_no].tp=TP_#{n};#{a.map{|t,v| "nodes_#{n}[nodes_#{n}_no].#{v}=o->#{v};"}*""}  nodes_#{n}_no+=1; return &nodes_#{n}[nodes_#{n}_no-1];} " }*""%>
 void init_nodes(){
   nodes_string=malloc(10000);nodes_string_no=0;
-  nodes_array=malloc(10000);nodes_array_size=malloc(10000);nodes_array_no=0;
+  nodes_array=malloc(10000);nodes_array_no=0;
   <%= $nodes.map{|n,a| "nodes_#{n}=malloc(10000);nodes_#{n}_no=0;"}*"" %>
 }
-extern FILE * debug;
-void inspect_exp(exp *e){
-  switch(e->tp){
-    <%=
-$nodes.map{|n,a| "case TP_#{n}: {exp_#{n} *e2=(exp_#{n} *)e; fprintf(debug,\"#{n}[\"); #{a.map{|t,v| case t
-  when "long";   "fprintf(debug,\" #{v}: %i\",e2->#{v});"
-  when "char *"; "fprintf(debug,\" #{v}: %s\",e2->#{v});"
-  when "long *"; ""
-  when "void *"; ""
-  when "exp **"; "fprintf(debug,\" #{v}: [\"); inspect_exp(e2->#{v}[0]); fprintf(debug,\"]\");"
-  else "fprintf(debug,\" #{v}:\"); inspect_exp(e2->#{v});"
-  end}} fprintf(debug,\"]\"); break;}"}*""
- %> 
-  }
-}
+

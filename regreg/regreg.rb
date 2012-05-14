@@ -61,7 +61,9 @@ def add_rule(r)
 end
 $anon_rules=0
 def match(exp,s)
-  RegReg.match(parseexp(exp),s)
+  $anon_rules+=1
+  add_grammar("amethyst Foo { anon#{$anon_rules} = #{exp} }")
+  RegReg.match_rule("anon#{$anon_rules}",s)
 end
 
 expr= "'a'|'b' {abc}"
@@ -78,30 +80,30 @@ add_rule("foo={puts '42';42} 'a' ('a'|'b'|'c') 'c'")
 #t=RRule["foo",parseexp("{puts '42';42} 'a' ('a'|'b'|'c') 'c' ")]
 #puts t.inspect
 #RegReg.translate(t)
-puts match("foo","abc")
+puts RegReg.match(parseexp("foo"),"abc")
 add_rule("ac= 'a' 'c' {puts 'ac';42}")
 add_rule("bc= 'b' 'c' {puts 'b'}")
 add_rule("cc= ac:x {puts x+1}|bc|ac")
 add_rule("a='a'")
 add_rule("par(x,y,z)= {0+1}:f {f+x+y+z}")
 add_rule("partest= {0+1}:a par(1+0,2+0,3+0):z {puts z}")
-puts match("cc","acb")
+puts RegReg.match(parseexp("cc"),"acb")
 
 puts "lookahead"
-puts match("&('a' 'b') 'a' {puts 'wont happen'}","ac")
+puts RegReg.match(parseexp("&('a' 'b') 'a' {puts 'wont happen'}"),"ac")
 
 puts 'memo'
-puts match("cc 'c' | cc | cc | cc | cc","acb")
+puts RegReg.match(parseexp("cc 'c' | cc | cc | cc | cc"),"acb")
 
 puts "iteration"
-puts match("(a {@x||=0;@x+=1;puts @x})* 'b' 'c'{42} " ,"aaaabc")
+puts RegReg.match(parseexp("(a {@x||=0;@x+=1;puts @x})* 'b' 'c'{42} " ),"aaaabc")
 
 puts "nested iteration"
-#puts match("('a'* 'b'| a)*"),"a"*100)
-puts match("( ( (a* 'b'| a)* 'b' | a)* 'b' )* 'b'",'a'*10)
+#puts RegReg.match(parseexp("('a'* 'b'| a)*"),"a"*100)
+puts RegReg.match(parseexp("( ( (a* 'b'| a)* 'b' | a)* 'b' )* 'b'"),'a'*10)
 
 puts "parametrized"
-puts match("partest","abc")
+puts RegReg.match(parseexp("partest"),"abc")
 
 puts "nested"
-puts match("nested('foo','foo','foo')","abc")
+puts RegReg.match(parseexp("nested('foo','foo','foo')"),"abc")

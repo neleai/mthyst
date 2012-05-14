@@ -2,7 +2,7 @@
 #include "stackmachine.h"
 
 exp *make_seq(exp* head,exp* tail) {
-    exp_seq *e=malloc(sizeof(exp_seq));
+    exp_seq *e=calloc(sizeof(exp_seq),1);
     e->tp=TP_seq;
     e->head=head;
     e->tail=tail;
@@ -10,7 +10,7 @@ exp *make_seq(exp* head,exp* tail) {
 }
 
 exp *make_switch(exp* head,exp ** alts) {
-    exp_switch *e=malloc(sizeof(exp_switch));
+    exp_switch *e=calloc(sizeof(exp_switch),1);
     e->tp=TP_switch;
     e->head=head;
     e->alts=alts;
@@ -18,7 +18,7 @@ exp *make_switch(exp* head,exp ** alts) {
 }
 
 exp *make_many(long stops,exp * body) {
-    exp_many *e=malloc(sizeof(exp_many));
+    exp_many *e=calloc(sizeof(exp_many),1);
     e->tp=TP_many;
     e->stops=stops;
     e->body=body;
@@ -26,28 +26,28 @@ exp *make_many(long stops,exp * body) {
 }
 
 exp *make_stop(long stops) {
-    exp_stop *e=malloc(sizeof(exp_stop));
+    exp_stop *e=calloc(sizeof(exp_stop),1);
     e->tp=TP_stop;
     e->stops=stops;
     return (exp *) e;
 }
 
 exp *make_bind(long var) {
-    exp_bind *e=malloc(sizeof(exp_bind));
+    exp_bind *e=calloc(sizeof(exp_bind),1);
     e->tp=TP_bind;
     e->var=var;
     return (exp *) e;
 }
 
 exp *make_nested(exp* body) {
-    exp_nested *e=malloc(sizeof(exp_nested));
+    exp_nested *e=calloc(sizeof(exp_nested),1);
     e->tp=TP_nested;
     e->body=body;
     return (exp *) e;
 }
 
 exp *make_act(long varc,long * vars,void * fn,void * arg) {
-    exp_act *e=malloc(sizeof(exp_act));
+    exp_act *e=calloc(sizeof(exp_act),1);
     e->tp=TP_act;
     e->varc=varc;
     e->vars=vars;
@@ -57,28 +57,28 @@ exp *make_act(long varc,long * vars,void * fn,void * arg) {
 }
 
 exp *make_make_lambda(exp* body) {
-    exp_make_lambda *e=malloc(sizeof(exp_make_lambda));
+    exp_make_lambda *e=calloc(sizeof(exp_make_lambda),1);
     e->tp=TP_make_lambda;
     e->body=body;
     return (exp *) e;
 }
 
 exp *make_use_lambda(long placeholder) {
-    exp_use_lambda *e=malloc(sizeof(exp_use_lambda));
+    exp_use_lambda *e=calloc(sizeof(exp_use_lambda),1);
     e->tp=TP_use_lambda;
     e->placeholder=placeholder;
     return (exp *) e;
 }
 
 exp *make_return(long state) {
-    exp_return *e=malloc(sizeof(exp_return));
+    exp_return *e=calloc(sizeof(exp_return),1);
     e->tp=TP_return;
     e->state=state;
     return (exp *) e;
 }
 
 exp *make_rule(char * name,exp * body,long locals) {
-    exp_rule *e=malloc(sizeof(exp_rule));
+    exp_rule *e=calloc(sizeof(exp_rule),1);
     e->tp=TP_rule;
     e->name=name;
     e->body=body;
@@ -87,14 +87,14 @@ exp *make_rule(char * name,exp * body,long locals) {
 }
 
 exp *make_enter(exp* to) {
-    exp_enter *e=malloc(sizeof(exp_enter));
+    exp_enter *e=calloc(sizeof(exp_enter),1);
     e->tp=TP_enter;
     e->to=to;
     return (exp *) e;
 }
 
 exp *make_call(char * name,exp_rule* body,long argc,long * afrom) {
-    exp_call *e=malloc(sizeof(exp_call));
+    exp_call *e=calloc(sizeof(exp_call),1);
     e->tp=TP_call;
     e->name=name;
     e->body=body;
@@ -104,9 +104,27 @@ exp *make_call(char * name,exp_rule* body,long argc,long * afrom) {
 }
 
 exp *make_char(char * str) {
-    exp_char *e=malloc(sizeof(exp_char));
+    exp_char *e=calloc(sizeof(exp_char),1);
     e->tp=TP_char;
     e->str=str;
+    return (exp *) e;
+}
+
+exp *make_finish() {
+    exp_finish *e=calloc(sizeof(exp_finish),1);
+    e->tp=TP_finish;
+    return (exp *) e;
+}
+
+exp *make_call_finished() {
+    exp_call_finished *e=calloc(sizeof(exp_call_finished),1);
+    e->tp=TP_call_finished;
+    return (exp *) e;
+}
+
+exp *make_call_conted() {
+    exp_call_conted *e=calloc(sizeof(exp_call_conted),1);
+    e->tp=TP_call_conted;
     return (exp *) e;
 }
 
@@ -118,8 +136,8 @@ void *match(exp* e,void *extra,Args a) {
     Global gl;
     gl.extra=extra;
     r.state=0;
-    char   *stack_match=malloc(1000000);
-    gl.stack_cont=malloc(1000000);
+    char   *stack_match=calloc(1000000,1);
+    gl.stack_cont=calloc(1000000,1);
     char *o_stack_match=stack_match;
     t_cont *o_stack_cont=gl.stack_cont;
     stack_match+=st_siz;
@@ -262,7 +280,7 @@ void *match(exp* e,void *extra,Args a) {
 //          fprintf(debug, "match "); inspect_exp(e);fprintf(debug,"\n");
 
 
-            lambda_s *l=malloc(sizeof(lambda_s));
+            lambda_s *l=calloc(sizeof(lambda_s),1);
             l->body=e->body;
             l->closure=a.closure;
             r.returned=(void *) l;
@@ -305,7 +323,7 @@ void *match(exp* e,void *extra,Args a) {
             gl.stack_cont->previous=a.cont;
             a.cont=gl.stack_cont;
             gl.stack_cont+=1;;
-            void **closure=malloc(sizeof(void*)*e->body->locals);
+            void **closure=make_closure(e->body->locals);
             int i;
 //    fprintf(debug,"new closure %i\n",e->body->locals);
             for(i=0; i<e->argc; i++) closure[i+1]=a.closure[e->afrom[i]];

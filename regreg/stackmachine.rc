@@ -3,7 +3,7 @@
 <%=
    $nodes.map{|n,a|
               "
-               exp *make_#{n}(#{a.map{|k,v| "#{k} #{v}"}*","}){exp_#{n} *e=malloc(sizeof(exp_#{n}));e->tp=TP_#{n}; #{a.map{|k,v|"e->#{v}=#{v};"}*""} return (exp *) e;}\n"
+               exp *make_#{n}(#{a.map{|k,v| "#{k} #{v}"}*","}){exp_#{n} *e=calloc(sizeof(exp_#{n}),1);e->tp=TP_#{n}; #{a.map{|k,v|"e->#{v}=#{v};"}*""} return (exp *) e;}\n"
   }*""
 %>
 <%
@@ -24,8 +24,8 @@ void *match(exp* e,void *extra,Args a){
   Result r; Global gl;
   gl.extra=extra;
   r.state=0;
-  char   *stack_match=malloc(1000000);
-  gl.stack_cont=malloc(1000000);
+  char   *stack_match=calloc(1000000,1);
+  gl.stack_cont=calloc(1000000,1);
   char *o_stack_match=stack_match; t_cont *o_stack_cont=gl.stack_cont;
   stack_match+=st_siz; *(stack_match-1)=FINISH;
   a.cont=gl.stack_cont; gl.stack_cont->tp=FINISH;gl.stack_cont+=1;
@@ -86,7 +86,7 @@ void *match(exp* e,void *extra,Args a){
           #{set("a.stops")}|=e->stops;
           #{cont_call()}")+
   ecase("make_lambda","
-    lambda_s *l=malloc(sizeof(lambda_s));
+    lambda_s *l=calloc(sizeof(lambda_s),1);
     l->body=e->body;l->closure=a.closure;
     r.returned=(void *) l;
   ")+
@@ -105,7 +105,7 @@ void *match(exp* e,void *extra,Args a){
       decide if this can happen.*/
 //    fprintf(debug,\"calling %s\\n\",e->name);
     #{push_cont("call_end","a.closure")};
-    void **closure=malloc(sizeof(void*)*e->body->locals);
+    void **closure=make_closure(e->body->locals);
     int i;
 //    fprintf(debug,\"new closure %i\\n\",e->body->locals);
     for(i=0;i<e->argc;i++) closure[i+1]=a.closure[e->afrom[i]];    

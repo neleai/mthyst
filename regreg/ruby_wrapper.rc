@@ -1,11 +1,13 @@
 <% require 'types.rb' %>
 #include "ruby.h"
-#include "stackmachine.h"
+#include "stack_machine.h"
 #define RETURN NULL
 VALUE RegReg;
 int typetest(VALUE e,char *cl){
   return rb_obj_is_kind_of(e,rb_const_get(rb_cObject,rb_intern(cl)))==Qtrue;
 }
+
+VALUE closures_gc;
 
 typedef struct rule{
   char *name;
@@ -25,25 +27,40 @@ rule* getrule(char *name){
   return r;
 }
 
+
+
 typedef struct{
   void **cl;
+  long size;
 } closures;
+void cl_mark(closures *c){ int i;
+  for(i=0;i<c->size;i++)rb_gc_mark(c->cl[i]);
+}
+
+void ** make_closure(long size){
+  closures *w=calloc(sizeof(closures),1);
+  w->size=size;
+  w->cl=calloc(sizeof(void *)*size,1);
+  rb_ary_push(closures_gc,Data_Wrap_Struct(rb_cObject,cl_mark,NULL,w));
+  return w->cl;
+}
+
 VALUE get_local(VALUE self,VALUE no){
   closures *c;
   Data_Get_Struct(self,closures,c);
   return (VALUE) c->cl[FIX2INT(no)];
 }
 
-VALUE callback(void **closure,VALUE extra,void *arg){
+long callback(struct closure_s *closure,VALUE extra,void *arg){
   closures *c;
   Data_Get_Struct(extra,closures,c);
-  c->cl=closure;
-  closure[0]=rb_funcall(extra,rb_intern(arg),0);
-  return Qnil;
+  c->cl=closure->ary;
+  closure->ary[0]=rb_funcall(extra,rb_intern(arg),0);
+  return 1;
 }
-VALUE bind_callback(void **closure,VALUE extra,long arg){
-  closure[arg]=closure[0];
-  return closure[0];
+long bind_callback(struct closure_s *closure,VALUE extra,long arg){
+  closure->ary[arg]=closure->ary[0];
+  return 1;
 }
 VALUE cls_lambda;
 VALUE wrap_lambda(void **closure,VALUE extra,long arg){
@@ -55,23 +72,23 @@ VALUE unwrap_lambda(void **closure,VALUE extra,long arg){
   closure[0]=l;
 }
 
+<%
 
+%>
 exp * trans(VALUE exp2){int i;
   if      (typetest(exp2,"Fixnum")) { return (exp *)FIX2LONG(exp2); }
   else if (exp2==Qnil             ) { return NULL;                  }
   else if (typetest(exp2,"String")) { return (exp *)normalize_string(RSTRING_PTR(exp2)); }
-  else if (typetest(exp2,"Array" )) { exp **ary=malloc(sizeof(exp*)*RARRAY_LEN(exp2));   
-    for(i=0;i<RARRAY_LEN(exp2);i++) ary[i]=trans(RARRAY_PTR(exp2)[i]);
-    return (exp *)normalize_array(ary,RARRAY_LEN(exp2));} 
-  else if (typetest(exp2,"Rcall" )) { char *name=(char *)trans(rb_iv_get(exp2,"@name")); exp_call e;e.tp=TP_call; e.name=name; e.body=getrule(name)->body; e.argc=trans(rb_iv_get(exp2,"@argc")); e.afrom=trans(rb_iv_get(exp2,"@afrom")); return (exp *) normalize_call(&e);}
-  else if (typetest(exp2,"Rrule" )) { char *name=(char *)trans(rb_iv_get(exp2,"@name")); exp *body=trans(rb_iv_get(exp2,"@body")); rule *r=getrule(name); r->body->locals=(long)trans(rb_iv_get(exp2,"@locals")); r->body->body=body; return (exp*)r->body;}
-  else if (typetest(exp2,"Ract"   )) { exp_act e; e.tp=TP_act; e.varc=trans(rb_iv_get(exp2,"@varc")); e.vars=trans(rb_iv_get(exp2,"@vars")); e.fn=callback; e.arg=trans(rb_iv_get(exp2,"@arg")); return normalize_act(&e);}
-  else if (typetest(exp2,"Rbind")) { exp_act e; e.tp=TP_act; e.varc=1;e.vars=malloc(sizeof(long));e.vars[0]=trans(rb_iv_get(exp2,"@var")); e.fn=bind_callback; e.arg=e.vars[0]; return normalize_act(&e);}
+  else if (typetest(exp2,"Array" )) { array *a=malloc(sizeof(array)); a->size=RARRAY_LEN(exp2); a->ary=malloc(sizeof(exp*)*a->size);
+    for(i=0;i<a->size;i++) a->ary[i]=trans(RARRAY_PTR(exp2)[i]);
+    return (exp *)normalize_array(a);} 
+  else if (typetest(exp2,"Rcall" )) { char *name=(char *)trans(rb_iv_get(exp2,"@name")); exp_call e;e.tp=TP_call; e.name=name; e.body=getrule(name)->body; e.args=trans(rb_iv_get(exp2,"@args")); return (exp *) normalize_call(&e);}
+  else if (typetest(exp2,"Rrule" )) {  <%=init_exp('rule')%> rule *r=getrule(e.name); r->body->locals=e.locals; r->body->name=e.name; r->body->body=e.body; return (exp*)r->body;}
+  else if (typetest(exp2,"Ract"   )) { <%=init_exp('act')%> e.fn=callback;  return normalize_act(&e);}
+  else if (typetest(exp2,"Rbind")) {   <%=init_exp('act')%> e.fn=bind_callback; e.arg=e.vars->ary[0]; return normalize_act(&e);}
   <%=
     $nodes.map{|n,a| "else if (typetest(exp2,\"R#{n}\")){
-                        exp_#{n} e; e.tp=TP_#{n};
-                        #{a.map{|t,v| "e.#{v}=(#{t}) trans(rb_iv_get(exp2,\"@#{v}\"));"}
-                      } return (exp *) normalize_#{n}(&e);}\n"}*""
+                                  #{init_exp(n)}  return (exp *) normalize_#{n}(&e);}\n"}*""
   %>
 }
 VALUE translate(VALUE self,VALUE exp2){
@@ -85,16 +102,17 @@ VALUE rb_match(VALUE self,VALUE exp2,VALUE str){
   char *str2=RSTRING_PTR(str);
   closures *c=malloc(sizeof(closures));
   VALUE extra=  Data_Wrap_Struct(cls_Closure,NULL,NULL,c);
-  return match2(e,(void *)extra,malloc(100),str2);
+  return match2(e,(void *)extra,str2);
 }
-extern FILE * debug;
 void Init_RegReg(){
-  debug=fopen("log","w");
+  rb_global_variable(&closures_gc);
+  closures_gc=rb_ary_new2(0);
   RegReg=rb_define_class("RegReg",rb_cObject);
   cls_lambda=rb_define_class("RegReg_Lambda",rb_cObject);
   rb_define_singleton_method(RegReg,"translate",translate,1);
   rb_define_singleton_method(RegReg,"match",rb_match,2);
   init_nodes();
+  init_stack_machine();
   cls_Closure=rb_define_class("Closure",rb_cObject);
   rb_define_method(cls_Closure,"local",get_local,1);
 }

@@ -1,15 +1,31 @@
 <% require './types.rb' %>
 <%= ["stdio","stdlib","string"].map{|e|"#include <#{e}.h>\n"}*""%>
-
-typedef struct{ char tp;
-
+#include "defs.h"
+typedef struct exp{ char tp;  struct exp * forget;
 } exp;
+typedef void * (*pfn)();
 
-typedef struct t_cont {
+
+struct closure_s{
+  long size;
+  void **ary;
+};
+struct cont_s{
   exp *e;
-  char tp;
-  struct t_cont *previous;
-} t_cont;
+  struct cont_s * previous;  
+  exp *cont_memo;
+};
+
+typedef struct{
+  long state;
+  void *returned;
+} memo_s;
+typedef memo_s (*pfn_mem)();
+
+typedef struct {
+  long size;
+  exp **ary;
+} array;
 
 void **make_closure(long l);
 <%=
@@ -24,17 +40,15 @@ void **make_closure(long l);
 %> 
 
 
-<%=   $nodes.map{|n,a|
-               cnst("TP_#{n}")}*"" %>
 
-<%=cnst("FINISH","switch2","bind_restore","nested_end","closure_end","call_end")%>
 <%=
    $nodes.map{|n,a|
               "typedef struct{ char tp;
+                exp *forget;
                 #{a.map{|k,v| "#{k} #{v};"}*"\n"}
                } exp_#{n}; exp_#{n}* normalize_#{n}(exp_#{n}*o); exp *make_#{n}(#{a.map{|k,v| "#{k} #{v}"}*","});\n"}*"" %>
 char *normalize_string(char *c);
-exp **normalize_array(exp **a,long size);
+array* normalize_array(array *a);
 
 
 typedef struct{
@@ -42,7 +56,6 @@ typedef struct{
   void **closure;
 } lambda_s;
 
-#define FAIL r.state=0
 
 static const int st_siz=sizeof(exp*)+1;
-void *match2(exp *e,void *extra,void **closure,char *str);
+void *match2(exp *e,void *extra,char *str);
