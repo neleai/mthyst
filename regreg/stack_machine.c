@@ -103,6 +103,14 @@ struct s_arg_char {
     char type;
     exp_char* e;
 };
+struct s_arg_head {
+    char type;
+    exp_head* e;
+};
+struct s_arg_advance {
+    char type;
+    exp_advance* e;
+};
 struct s_arg_finish {
     char type;
     exp_finish* e;
@@ -345,6 +353,26 @@ void *match(exp *e,void *extra,Args a) {
             else {
                 fail();
             }
+            break;
+        }
+        case TP_head: {
+            struct s_arg_head *s=(struct s_arg_head *)call_stack;
+            exp_head* e=s->e;
+            call_stack+=sizeof(struct s_arg_head);
+            a.closure->ary[0]=gl.head(a.str);
+            break;
+        }
+        case TP_advance: {
+            struct s_arg_advance *s=(struct s_arg_advance *)call_stack;
+            exp_advance* e=s->e;
+            call_stack+=sizeof(struct s_arg_advance);
+            {
+                call_stack-=sizeof(struct s_arg_revert_a_str);
+                struct s_arg_revert_a_str *s=(struct s_arg_revert_a_str *)call_stack;
+                s->type=TP_revert_a_str;
+                s->str=a.str;
+            }
+            a.str=gl.advance(a.str);
             break;
         }
         case TP_finish: {

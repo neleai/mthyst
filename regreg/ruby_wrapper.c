@@ -248,6 +248,18 @@ exp * trans(VALUE exp2) {
         e.str=(char *) trans(rb_iv_get(exp2,"@str"));
         return (exp *) normalize_char(&e);
     }
+    else if (typetest(exp2,"Rhead")) {
+        exp_head e;
+        e.tp=TP_head;
+        e.forget=(exp*) trans(rb_iv_get(exp2,"@forget"));
+        return (exp *) normalize_head(&e);
+    }
+    else if (typetest(exp2,"Radvance")) {
+        exp_advance e;
+        e.tp=TP_advance;
+        e.forget=(exp*) trans(rb_iv_get(exp2,"@forget"));
+        return (exp *) normalize_advance(&e);
+    }
     else if (typetest(exp2,"Rfinish")) {
         exp_finish e;
         e.tp=TP_finish;

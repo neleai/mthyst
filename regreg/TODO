@@ -1,6 +1,4 @@
 closure on stack and move to heap lazily.
 
-memoization as module
-
 contextual arguments and returns
 

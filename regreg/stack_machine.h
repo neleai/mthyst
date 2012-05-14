@@ -168,6 +168,20 @@ typedef struct {
     char tp;
     exp *forget;
 
+} exp_head;
+exp_head* normalize_head(exp_head*o);
+exp *make_head();
+typedef struct {
+    char tp;
+    exp *forget;
+
+} exp_advance;
+exp_advance* normalize_advance(exp_advance*o);
+exp *make_advance();
+typedef struct {
+    char tp;
+    exp *forget;
+
 } exp_finish;
 exp_finish* normalize_finish(exp_finish*o);
 exp *make_finish();

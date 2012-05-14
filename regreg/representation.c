@@ -59,6 +59,10 @@ exp_call *nodes_call;
 long nodes_call_no;
 exp_char *nodes_char;
 long nodes_char_no;
+exp_head *nodes_head;
+long nodes_head_no;
+exp_advance *nodes_advance;
+long nodes_advance_no;
 exp_finish *nodes_finish;
 long nodes_finish_no;
 exp_call_conted *nodes_call_conted;
@@ -269,6 +273,32 @@ exp_char *normalize_char(exp_char *o) {
     nodes_char_no+=1;
     return &nodes_char[nodes_char_no-1];
 }
+exp_head *normalize_head(exp_head *o) {
+    int i;
+    for(i=0; i<nodes_head_no; i++) {
+        if (1 ) return &nodes_head[i];
+    }
+    if (nodes_head_no>=1000000) {
+        printf("TODO reallocation");
+        exit(42);
+    }
+    nodes_head[nodes_head_no].tp=TP_head;
+    nodes_head_no+=1;
+    return &nodes_head[nodes_head_no-1];
+}
+exp_advance *normalize_advance(exp_advance *o) {
+    int i;
+    for(i=0; i<nodes_advance_no; i++) {
+        if (1 ) return &nodes_advance[i];
+    }
+    if (nodes_advance_no>=1000000) {
+        printf("TODO reallocation");
+        exit(42);
+    }
+    nodes_advance[nodes_advance_no].tp=TP_advance;
+    nodes_advance_no+=1;
+    return &nodes_advance[nodes_advance_no-1];
+}
 exp_finish *normalize_finish(exp_finish *o) {
     int i;
     for(i=0; i<nodes_finish_no; i++) {
@@ -329,6 +359,10 @@ void init_nodes() {
     nodes_call_no=0;
     nodes_char=malloc(1000000*sizeof(exp_char));
     nodes_char_no=0;
+    nodes_head=malloc(1000000*sizeof(exp_head));
+    nodes_head_no=0;
+    nodes_advance=malloc(1000000*sizeof(exp_advance));
+    nodes_advance_no=0;
     nodes_finish=malloc(1000000*sizeof(exp_finish));
     nodes_finish_no=0;
     nodes_call_conted=malloc(1000000*sizeof(exp_call_conted));
