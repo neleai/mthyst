@@ -123,12 +123,14 @@ void fail() {}
 exp * call_finished(struct closure_s * c) {
     exp_call_finished * e=calloc(sizeof(exp_call_finished),1);
     e->tp=TP_call_finished;
+    e->forget=NULL;
     e->closure=c;
     return e;
 }
 exp * call_conted(struct closure_s * c) {
     exp_call_conted * e=calloc(sizeof(exp_call_conted),1);
     e->tp=TP_call_conted;
+    e->forget=NULL;
     e->closure=c;
     return e;
 }
@@ -164,7 +166,8 @@ void *match(exp *e,void *extra,Args a) {
             n->cont_memo=normalize_seq(&es);
         }
         else {
-            n->cont_memo=a.cont->cont_memo;
+            if (n->e==finish) n->cont_memo=finish;
+            else n->cont_memo=a.cont->cont_memo;
         }
         a.cont=n;
     }
@@ -255,7 +258,8 @@ void *match(exp *e,void *extra,Args a) {
                     n->cont_memo=normalize_seq(&es);
                 }
                 else {
-                    n->cont_memo=a.cont->cont_memo;
+                    if (n->e==finish) n->cont_memo=finish;
+                    else n->cont_memo=a.cont->cont_memo;
                 }
                 a.cont=n;
             }
@@ -420,7 +424,8 @@ void *match(exp *e,void *extra,Args a) {
                         n->cont_memo=normalize_seq(&es);
                     }
                     else {
-                        n->cont_memo=a.cont->cont_memo;
+                        if (n->e==finish) n->cont_memo=finish;
+                        else n->cont_memo=a.cont->cont_memo;
                     }
                     a.cont=n;
                 }
@@ -457,7 +462,8 @@ void *match(exp *e,void *extra,Args a) {
                     n->cont_memo=normalize_seq(&es);
                 }
                 else {
-                    n->cont_memo=a.cont->cont_memo;
+                    if (n->e==finish) n->cont_memo=finish;
+                    else n->cont_memo=a.cont->cont_memo;
                 }
                 a.cont=n;
             }

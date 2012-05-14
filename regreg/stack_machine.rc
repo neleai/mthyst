@@ -50,7 +50,7 @@ def push_exp(e)
 end
 def push_cont_exp(e)
    "{struct cont_s *n=calloc(sizeof(struct cont_s),1); n->e=#{e}; n->previous=a.cont;
-     if(n->e->forget) { exp_seq es; es.head=e->forget; es.tail=a.cont->cont_memo; n->cont_memo=normalize_seq(&es); } else { n->cont_memo=a.cont->cont_memo;}
+     if(n->e->forget) { exp_seq es; es.head=e->forget; es.tail=a.cont->cont_memo; n->cont_memo=normalize_seq(&es); } else { if (n->e==finish) n->cont_memo=finish; else n->cont_memo=a.cont->cont_memo;}
      a.cont=n;}"
 end
 def cont_call
@@ -98,11 +98,13 @@ void fail(){}
 
 exp * call_finished(struct closure_s * c){
   exp_call_finished * e=calloc(sizeof(exp_call_finished),1);e->tp=TP_call_finished;
+  e->forget=NULL;
   e->closure=c;
   return e;
 }
 exp * call_conted(struct closure_s * c){
   exp_call_conted * e=calloc(sizeof(exp_call_conted),1);e->tp=TP_call_conted;
+  e->forget=NULL;
   e->closure=c;
   return e;
 }
