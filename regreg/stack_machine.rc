@@ -49,9 +49,9 @@ def push_exp(e)
   "{call_stack-=sizeof(struct s_arg_exp); ;struct s_arg_exp *s=(struct s_arg_exp *)call_stack;s->type=#{e}->tp;s->e=#{e};}"
 end
 stack_def('cont_ended',[['struct cont_s *','cnt']])
-stack_body('cont_ended',"a.cont=cnt->previous;free(cnt);")
+stack_body('cont_ended',"a.cont=cnt->previous;conts=cnt-1;")
 def push_cont_exp(e)
-   "{struct cont_s *n=calloc(sizeof(struct cont_s),1); n->e=#{e}; n->previous=a.cont;
+   "{struct cont_s *n=++conts; n->e=#{e}; n->previous=a.cont;
      if(n->e->forget) { exp_seq es; es.head=e->forget; es.tail=a.cont->cont_memo; n->cont_memo=normalize_seq(&es); } else { if (n->e==finish) n->cont_memo=finish; else n->cont_memo=a.cont->cont_memo;}
      a.cont=n; #{stack_push('cont_ended','n')}}"
 end
@@ -80,7 +80,7 @@ stack_def('call_finished',[["exp_call_conted *","e"]])
 stack_body('call'," exp *fin=call_conted(a.closure); #{push_cont_exp('fin')} #{stack_push('call_finished','fin')} struct closure_s *c=a.closure; a.closure=calloc(sizeof(struct closure_s),1); a.closure->size=e->body->locals;a.closure->ary=calloc(sizeof(void*),a.closure->size); 
 int i; for(i=0;i<e->args->size;i++) a.closure->ary[i+1]=c->ary[(long) e->args->ary[i]];
 #{push_exp('e->body->body')}")
-stack_body('call_finished',"e->closure->ary[0]=a.closure->ary[0]; free(a.closure); a.closure=e->closure;free(e);")
+stack_body('call_finished',"e->closure->ary[0]=a.closure->ary[0]; free(a.closure->ary); free(a.closure); a.closure=e->closure;free(e);")
 stack_body('call_conted',"#{revert_a('closure')} e->closure->ary[0]=a.closure->ary[0]; a.closure=e->closure;#{cont_call()}")
 
 stack_def('nested_end',[])
@@ -114,7 +114,7 @@ void *match(exp *e,void *extra,Args a){
   char *call_stack,*call_stack_start;
   call_stack_start=malloc(1000000);call_stack=call_stack_start+1000000;
   struct closure_s *closures = malloc(1000000),*closures_start;closures_start=closures;
-  struct cont_s    *conts    = malloc(1000000),*conts_start   ;conts_start   =conts;  
+  struct cont_s    *conts    = malloc(1000000*sizeof(struct cont_s)),*conts_start   ;conts_start   =conts;  
   <%=push_exp("finish") %>
   <%=push_cont_exp("finish")%>
   <%=push_exp("e") %>

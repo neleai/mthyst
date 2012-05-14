@@ -270,7 +270,7 @@ VALUE rb_match(VALUE self,VALUE exp2,VALUE str) {
     exp *e=trans(exp2);
     char *str2=RSTRING_PTR(str);
     closures *c=malloc(sizeof(closures));
-    VALUE extra=  Data_Wrap_Struct(cls_Closure,NULL,NULL,c);
+    VALUE extra=  Data_Wrap_Struct(cls_Closure,NULL,free,c);
     return match2(e,(void *)extra,str2);
 }
 void Init_RegReg() {

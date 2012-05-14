@@ -145,7 +145,7 @@ void *match(exp *e,void *extra,Args a) {
     call_stack=call_stack_start+1000000;
     struct closure_s *closures = malloc(1000000),*closures_start;
     closures_start=closures;
-    struct cont_s    *conts    = malloc(1000000),*conts_start   ;
+    struct cont_s    *conts    = malloc(1000000*sizeof(struct cont_s)),*conts_start   ;
     conts_start   =conts;
     {
         call_stack-=sizeof(struct s_arg_exp); ;
@@ -153,7 +153,7 @@ void *match(exp *e,void *extra,Args a) {
         s->type=finish->tp;
         s->e=finish;
     }
-    {   struct cont_s *n=calloc(sizeof(struct cont_s),1);
+    {   struct cont_s *n=++conts;
         n->e=finish;
         n->previous=a.cont;
         if(n->e->forget) {
@@ -241,14 +241,14 @@ void *match(exp *e,void *extra,Args a) {
             struct cont_s * cnt=s->cnt;
             call_stack+=sizeof(struct s_arg_cont_ended);
             a.cont=cnt->previous;
-            free(cnt);
+            conts=cnt-1;
             break;
         }
         case TP_seq: {
             struct s_arg_seq *s=(struct s_arg_seq *)call_stack;
             exp_seq* e=s->e;
             call_stack+=sizeof(struct s_arg_seq);
-            {   struct cont_s *n=calloc(sizeof(struct cont_s),1);
+            {   struct cont_s *n=++conts;
                 n->e=e->tail;
                 n->previous=a.cont;
                 if(n->e->forget) {
@@ -419,7 +419,7 @@ void *match(exp *e,void *extra,Args a) {
                 }
                 a.cont=a.cont->previous;
             } else {
-                {   struct cont_s *n=calloc(sizeof(struct cont_s),1);
+                {   struct cont_s *n=++conts;
                     n->e=e;
                     n->previous=a.cont;
                     if(n->e->forget) {
@@ -455,7 +455,7 @@ void *match(exp *e,void *extra,Args a) {
             call_stack+=sizeof(struct s_arg_call);
             exp *fin=call_conted(a.closure);
             {
-                struct cont_s *n=calloc(sizeof(struct cont_s),1);
+                struct cont_s *n=++conts;
                 n->e=fin;
                 n->previous=a.cont;
                 if(n->e->forget) {
@@ -500,6 +500,7 @@ void *match(exp *e,void *extra,Args a) {
             exp_call_conted * e=s->e;
             call_stack+=sizeof(struct s_arg_call_finished);
             e->closure->ary[0]=a.closure->ary[0];
+            free(a.closure->ary);
             free(a.closure);
             a.closure=e->closure;
             free(e);
