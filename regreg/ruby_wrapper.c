@@ -69,10 +69,10 @@ long wrap_lambda(struct closure_s * closure,VALUE extra,long arg) {
     closure->ary[0]=Data_Wrap_Struct(cls_lambda,NULL,NULL,closure->ary[0]);
     return 1;
 }
-VALUE unwrap_lambda(void **closure,VALUE extra,long arg) {
+VALUE unwrap_lambda(struct closure_s *closure,VALUE extra,long arg) {
     lambda_s *l;
-    Data_Get_Struct(closure[0],lambda_s,l);
-    closure[0]=l;
+    Data_Get_Struct(closure->ary[1],lambda_s,l);
+    closure->ary[0]=l;
 }
 
 
@@ -127,6 +127,7 @@ exp * trans(VALUE exp2) {
         e.arg=(void *) trans(rb_iv_get(exp2,"@arg"));
         e.fn=callback;
         if (!strcmp(e.arg,"wrap_lambda")) e.fn=wrap_lambda;
+        else if (!strcmp(e.arg,"unwrap_lambda")) e.fn=unwrap_lambda;
         return normalize_act(&e);
     }
     else if (typetest(exp2,"Rbind")) {

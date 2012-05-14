@@ -87,7 +87,10 @@ stack_def('nested_end',[])
 stack_body('nested',"#{stack_push('nested_end')} #{push_exp('e->body')}")
 stack_body('nested_end',"long st=r.state;r.state=0;if (st) {#{cont_call}} else { fail(); }")
 stack_body('return',"#{revert_r('state')} r.state= e->state;")
+stack_def('lambda_finished',[["exp_call_conted *","e"]])
 stack_body('make_lambda',"lambda_s *l=malloc(sizeof(lambda_s)); l->body=e->body; l->closure=a.closure; a.closure->ary[0]=l;#{cont_call}")
+stack_body('use_lambda',"exp *fin=call_conted(a.closure); #{push_cont_exp('fin')} #{stack_push('lambda_finished','fin')} lambda_s *l=a.closure->ary[0]; a.closure=l->closure; #{push_exp('l->body')} ")
+stack_body('lambda_finished',"e->closure->ary[0]=a.closure->ary[0]; a.closure=e->closure;free(e);")
 %>
 
 <%

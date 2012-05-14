@@ -122,6 +122,10 @@ struct s_arg_call_finished {
 struct s_arg_nested_end {
     char type;
 };
+struct s_arg_lambda_finished {
+    char type;
+    exp_call_conted * e;
+};
 void fail() {}
 
 exp * call_conted(struct closure_s * c) {
@@ -590,6 +594,57 @@ void *match(exp *e,void *extra,Args a) {
                 s->e=a.cont->e;
             }
             a.cont=a.cont->previous;
+            break;
+        }
+        case TP_use_lambda: {
+            struct s_arg_use_lambda *s=(struct s_arg_use_lambda *)call_stack;
+            exp_use_lambda* e=s->e;
+            call_stack+=sizeof(struct s_arg_use_lambda);
+            exp *fin=call_conted(a.closure);
+            {
+                struct cont_s *n=++conts;
+                n->e=fin;
+                n->previous=a.cont;
+                if(n->e->forget) {
+                    exp_seq es;
+                    es.head=e->forget;
+                    es.tail=a.cont->cont_memo;
+                    n->cont_memo=normalize_seq(&es);
+                }
+                else {
+                    if (n->e==finish) n->cont_memo=finish;
+                    else n->cont_memo=a.cont->cont_memo;
+                }
+                a.cont=n;
+                {
+                    call_stack-=sizeof(struct s_arg_cont_ended);
+                    struct s_arg_cont_ended *s=(struct s_arg_cont_ended *)call_stack;
+                    s->type=TP_cont_ended;
+                    s->cnt=n;
+                }
+            } {
+                call_stack-=sizeof(struct s_arg_lambda_finished);
+                struct s_arg_lambda_finished *s=(struct s_arg_lambda_finished *)call_stack;
+                s->type=TP_lambda_finished;
+                s->e=fin;
+            }
+            lambda_s *l=a.closure->ary[0];
+            a.closure=l->closure;
+            {
+                call_stack-=sizeof(struct s_arg_exp); ;
+                struct s_arg_exp *s=(struct s_arg_exp *)call_stack;
+                s->type=l->body->tp;
+                s->e=l->body;
+            }
+            break;
+        }
+        case TP_lambda_finished: {
+            struct s_arg_lambda_finished *s=(struct s_arg_lambda_finished *)call_stack;
+            exp_call_conted * e=s->e;
+            call_stack+=sizeof(struct s_arg_lambda_finished);
+            e->closure->ary[0]=a.closure->ary[0];
+            a.closure=e->closure;
+            free(e);
             break;
         }
         }

@@ -75,7 +75,8 @@ puts expr.inspect
 add_rule("empty={nil}")
 t=RRule["fail",Rreturn.create({:state=>0})]
 RegReg.translate(t)
-
+t=RRule["call",RSeq[Ract.create(:vars=>[],:arg=>"unwrap_lambda"),Ruse_lambda.create({})]]
+RegReg.translate(t)
 add_rule("foo={puts '42';42} 'a' ('a'|'b'|'c') 'c'")
 #t=RRule["foo",parseexp("{puts '42';42} 'a' ('a'|'b'|'c') 'c' ")]
 #puts t.inspect
@@ -109,4 +110,4 @@ puts "nested"
 puts RegReg.match(parseexp("nested('foo','foo','foo')"),"abc")
 
 puts "lambda"
-puts RegReg.match(parseexp("{(|foo foo|)}:l "),"abc")
+puts RegReg.match(parseexp("{(|foo foo|)}:l call(l)"),"abc")
