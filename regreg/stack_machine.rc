@@ -39,7 +39,7 @@ end
   }
   }
   def revert_a(name);    stack_push("revert_a_#{name}","a.#{name}")  ;end
-  def revert_r(name);    stack_push("revert_r_#{name}","r.#{name}");  end
+  def revert_r(name);    stack_push("revert_r_#{name}","r.#{name}")  ;end
 %>
 <%
 %>
@@ -48,10 +48,12 @@ $stackstructs<<"struct s_arg_exp{char type; exp *e;};"
 def push_exp(e)
   "{call_stack-=sizeof(struct s_arg_exp); ;struct s_arg_exp *s=(struct s_arg_exp *)call_stack;s->type=#{e}->tp;s->e=#{e};}"
 end
+stack_def('cont_ended',[['struct cont_s *','cnt']])
+stack_body('cont_ended',"a.cont=cnt->previous;free(cnt);")
 def push_cont_exp(e)
    "{struct cont_s *n=calloc(sizeof(struct cont_s),1); n->e=#{e}; n->previous=a.cont;
      if(n->e->forget) { exp_seq es; es.head=e->forget; es.tail=a.cont->cont_memo; n->cont_memo=normalize_seq(&es); } else { if (n->e==finish) n->cont_memo=finish; else n->cont_memo=a.cont->cont_memo;}
-     a.cont=n;}"
+     a.cont=n; #{stack_push('cont_ended','n')}}"
 end
 def cont_call
   "#{push_exp('a.cont->e')} a.cont=a.cont->previous;"
@@ -59,7 +61,7 @@ end
 $nodes.each{|n,a|
   stack_def(n,[["exp_#{n}*","e"]])
 }
-stack_body('seq',"#{revert_a('cont')} #{push_exp('e->head')};#{push_cont_exp('e->tail')}")
+stack_body('seq',"#{push_cont_exp('e->tail')} #{push_exp('e->head')};")
 stack_def('switch2',[["exp_switch*","e"]])
 stack_body('switch',"#{stack_push('switch2','e')} memo_s mem=gl.memo_get(&gl,a.str,e->head,a.cont->cont_memo); if(mem.state!=-1) { r.state=mem.state; } else { #{push_exp('e->head')};} gl.alternatives+=1;")
 stack_body('switch2',"memo_s mem; mem.state=r.state; gl.memo_set(&gl,a.str,e->head,a.cont->cont_memo,mem); if (e->alts->ary[r.state]){ #{push_exp('e->alts->ary[r.state]')} gl.alternatives-=1; }")
@@ -71,12 +73,11 @@ stack_body('many',"#{revert_a('stops')} if (e->stops & a.stops){
            a.stops=a.stops&(~e->stops);
            #{cont_call()}
          }else{
-           #{revert_a('cont')}
            #{push_cont_exp("e")}
            #{push_exp("e->body")}
          }")
 stack_def('call_finished',[["exp_call_conted *","e"]])
-stack_body('call',"#{revert_a('cont')} exp *fin=call_conted(a.closure); #{stack_push('call_finished','fin')} #{push_cont_exp('fin')} struct closure_s *c=a.closure; a.closure=calloc(sizeof(struct closure_s),1); a.closure->size=e->body->locals;a.closure->ary=calloc(sizeof(void*),a.closure->size); 
+stack_body('call'," exp *fin=call_conted(a.closure); #{push_cont_exp('fin')} #{stack_push('call_finished','fin')} struct closure_s *c=a.closure; a.closure=calloc(sizeof(struct closure_s),1); a.closure->size=e->body->locals;a.closure->ary=calloc(sizeof(void*),a.closure->size); 
 int i; for(i=0;i<e->args->size;i++) a.closure->ary[i+1]=c->ary[(long) e->args->ary[i]];
 #{push_exp('e->body->body')}")
 stack_body('call_finished',"e->closure->ary[0]=a.closure->ary[0]; free(a.closure); a.closure=e->closure;free(e);")

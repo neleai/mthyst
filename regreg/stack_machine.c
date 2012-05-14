@@ -43,6 +43,10 @@ struct s_arg_exp {
     char type;
     exp *e;
 };
+struct s_arg_cont_ended {
+    char type;
+    struct cont_s * cnt;
+};
 struct s_arg_seq {
     char type;
     exp_seq* e;
@@ -163,6 +167,12 @@ void *match(exp *e,void *extra,Args a) {
             else n->cont_memo=a.cont->cont_memo;
         }
         a.cont=n;
+        {
+            call_stack-=sizeof(struct s_arg_cont_ended);
+            struct s_arg_cont_ended *s=(struct s_arg_cont_ended *)call_stack;
+            s->type=TP_cont_ended;
+            s->cnt=n;
+        }
     }
     {
         call_stack-=sizeof(struct s_arg_exp); ;
@@ -226,21 +236,18 @@ void *match(exp *e,void *extra,Args a) {
             r.state=state;
             break;
         }
+        case TP_cont_ended: {
+            struct s_arg_cont_ended *s=(struct s_arg_cont_ended *)call_stack;
+            struct cont_s * cnt=s->cnt;
+            call_stack+=sizeof(struct s_arg_cont_ended);
+            a.cont=cnt->previous;
+            free(cnt);
+            break;
+        }
         case TP_seq: {
             struct s_arg_seq *s=(struct s_arg_seq *)call_stack;
             exp_seq* e=s->e;
             call_stack+=sizeof(struct s_arg_seq);
-            {
-                call_stack-=sizeof(struct s_arg_revert_a_cont);
-                struct s_arg_revert_a_cont *s=(struct s_arg_revert_a_cont *)call_stack;
-                s->type=TP_revert_a_cont;
-                s->cont=a.cont;
-            } {
-                call_stack-=sizeof(struct s_arg_exp); ;
-                struct s_arg_exp *s=(struct s_arg_exp *)call_stack;
-                s->type=e->head->tp;
-                s->e=e->head;
-            };
             {   struct cont_s *n=calloc(sizeof(struct cont_s),1);
                 n->e=e->tail;
                 n->previous=a.cont;
@@ -255,7 +262,18 @@ void *match(exp *e,void *extra,Args a) {
                     else n->cont_memo=a.cont->cont_memo;
                 }
                 a.cont=n;
-            }
+                {
+                    call_stack-=sizeof(struct s_arg_cont_ended);
+                    struct s_arg_cont_ended *s=(struct s_arg_cont_ended *)call_stack;
+                    s->type=TP_cont_ended;
+                    s->cnt=n;
+                }
+            } {
+                call_stack-=sizeof(struct s_arg_exp); ;
+                struct s_arg_exp *s=(struct s_arg_exp *)call_stack;
+                s->type=e->head->tp;
+                s->e=e->head;
+            };
             break;
         }
         case TP_switch: {
@@ -401,12 +419,6 @@ void *match(exp *e,void *extra,Args a) {
                 }
                 a.cont=a.cont->previous;
             } else {
-                {
-                    call_stack-=sizeof(struct s_arg_revert_a_cont);
-                    struct s_arg_revert_a_cont *s=(struct s_arg_revert_a_cont *)call_stack;
-                    s->type=TP_revert_a_cont;
-                    s->cont=a.cont;
-                }
                 {   struct cont_s *n=calloc(sizeof(struct cont_s),1);
                     n->e=e;
                     n->previous=a.cont;
@@ -421,6 +433,12 @@ void *match(exp *e,void *extra,Args a) {
                         else n->cont_memo=a.cont->cont_memo;
                     }
                     a.cont=n;
+                    {
+                        call_stack-=sizeof(struct s_arg_cont_ended);
+                        struct s_arg_cont_ended *s=(struct s_arg_cont_ended *)call_stack;
+                        s->type=TP_cont_ended;
+                        s->cnt=n;
+                    }
                 }
                 {
                     call_stack-=sizeof(struct s_arg_exp); ;
@@ -435,19 +453,9 @@ void *match(exp *e,void *extra,Args a) {
             struct s_arg_call *s=(struct s_arg_call *)call_stack;
             exp_call* e=s->e;
             call_stack+=sizeof(struct s_arg_call);
-            {
-                call_stack-=sizeof(struct s_arg_revert_a_cont);
-                struct s_arg_revert_a_cont *s=(struct s_arg_revert_a_cont *)call_stack;
-                s->type=TP_revert_a_cont;
-                s->cont=a.cont;
-            }
             exp *fin=call_conted(a.closure);
             {
-                call_stack-=sizeof(struct s_arg_call_finished);
-                struct s_arg_call_finished *s=(struct s_arg_call_finished *)call_stack;
-                s->type=TP_call_finished;
-                s->e=fin;
-            } {struct cont_s *n=calloc(sizeof(struct cont_s),1);
+                struct cont_s *n=calloc(sizeof(struct cont_s),1);
                 n->e=fin;
                 n->previous=a.cont;
                 if(n->e->forget) {
@@ -461,6 +469,17 @@ void *match(exp *e,void *extra,Args a) {
                     else n->cont_memo=a.cont->cont_memo;
                 }
                 a.cont=n;
+                {
+                    call_stack-=sizeof(struct s_arg_cont_ended);
+                    struct s_arg_cont_ended *s=(struct s_arg_cont_ended *)call_stack;
+                    s->type=TP_cont_ended;
+                    s->cnt=n;
+                }
+            } {
+                call_stack-=sizeof(struct s_arg_call_finished);
+                struct s_arg_call_finished *s=(struct s_arg_call_finished *)call_stack;
+                s->type=TP_call_finished;
+                s->e=fin;
             }
             struct closure_s *c=a.closure;
             a.closure=calloc(sizeof(struct closure_s),1);
