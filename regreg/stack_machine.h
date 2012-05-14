@@ -39,14 +39,6 @@ typedef struct Args {
     struct closure_s* closure;
     struct cont_s * cont;
 } Args;
-#define RESTORE_a_str 1
-#define RESTORE_a_stops 2
-#define RESTORE_a_closure 3
-#define RESTORE_a_cont 4
-#define SAVE_a_str *(char**)stack_match=a.str;stack_match+=sizeof(char*);*stack_match=RESTORE_a_str;stack_match++;
-#define SAVE_a_stops *(long*)stack_match=a.stops;stack_match+=sizeof(long);*stack_match=RESTORE_a_stops;stack_match++;
-#define SAVE_a_closure *(struct closure_s**)stack_match=a.closure;stack_match+=sizeof(struct closure_s*);*stack_match=RESTORE_a_closure;stack_match++;
-#define SAVE_a_cont *(struct cont_s **)stack_match=a.cont;stack_match+=sizeof(struct cont_s *);*stack_match=RESTORE_a_cont;stack_match++;
 typedef struct Global {
     struct cont_s ** stack_cont;
     void *** stack_closure;
@@ -58,33 +50,10 @@ typedef struct Global {
     pfn head;
     long alternatives;
 } Global;
-#define RESTORE_gl_stack_cont 5
-#define RESTORE_gl_stack_closure 6
-#define RESTORE_gl_extra 7
-#define RESTORE_gl_memo_extra 8
-#define RESTORE_gl_memo_get 9
-#define RESTORE_gl_memo_set 10
-#define RESTORE_gl_advance 11
-#define RESTORE_gl_head 12
-#define RESTORE_gl_alternatives 13
-#define SAVE_gl_stack_cont *(struct cont_s ***)stack_match=gl.stack_cont;stack_match+=sizeof(struct cont_s **);*stack_match=RESTORE_gl_stack_cont;stack_match++;
-#define SAVE_gl_stack_closure *(void ****)stack_match=gl.stack_closure;stack_match+=sizeof(void ***);*stack_match=RESTORE_gl_stack_closure;stack_match++;
-#define SAVE_gl_extra *(void **)stack_match=gl.extra;stack_match+=sizeof(void *);*stack_match=RESTORE_gl_extra;stack_match++;
-#define SAVE_gl_memo_extra *(void **)stack_match=gl.memo_extra;stack_match+=sizeof(void *);*stack_match=RESTORE_gl_memo_extra;stack_match++;
-#define SAVE_gl_memo_get *(pfn_mem*)stack_match=gl.memo_get;stack_match+=sizeof(pfn_mem);*stack_match=RESTORE_gl_memo_get;stack_match++;
-#define SAVE_gl_memo_set *(pfn*)stack_match=gl.memo_set;stack_match+=sizeof(pfn);*stack_match=RESTORE_gl_memo_set;stack_match++;
-#define SAVE_gl_advance *(pfn*)stack_match=gl.advance;stack_match+=sizeof(pfn);*stack_match=RESTORE_gl_advance;stack_match++;
-#define SAVE_gl_head *(pfn*)stack_match=gl.head;stack_match+=sizeof(pfn);*stack_match=RESTORE_gl_head;stack_match++;
-#define SAVE_gl_alternatives *(long*)stack_match=gl.alternatives;stack_match+=sizeof(long);*stack_match=RESTORE_gl_alternatives;stack_match++;
 typedef struct Result {
     char* rstr;
     long state;
 } Result;
-#define RESTORE_r_rstr 14
-#define RESTORE_r_state 15
-#define SAVE_r_rstr *(char**)stack_match=r.rstr;stack_match+=sizeof(char*);*stack_match=RESTORE_r_rstr;stack_match++;
-#define SAVE_r_state *(long*)stack_match=r.state;stack_match+=sizeof(long);*stack_match=RESTORE_r_state;stack_match++;
-
 
 
 
