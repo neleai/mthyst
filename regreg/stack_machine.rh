@@ -53,7 +53,7 @@ array* normalize_array(array *a);
 
 typedef struct{
   exp *body;
-  void **closure;
+  struct closure_s * closure;
 } lambda_s;
 
 

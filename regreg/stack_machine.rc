@@ -87,6 +87,7 @@ stack_def('nested_end',[])
 stack_body('nested',"#{stack_push('nested_end')} #{push_exp('e->body')}")
 stack_body('nested_end',"long st=r.state;r.state=0;if (st) {#{cont_call}} else { fail(); }")
 stack_body('return',"#{revert_r('state')} r.state= e->state;")
+stack_body('make_lambda',"lambda_s *l=malloc(sizeof(lambda_s)); l->body=e->body; l->closure=a.closure; a.closure->ary[0]=l;#{cont_call}")
 %>
 
 <%

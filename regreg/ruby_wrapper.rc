@@ -63,8 +63,9 @@ long bind_callback(struct closure_s *closure,VALUE extra,long arg){
   return 1;
 }
 VALUE cls_lambda;
-VALUE wrap_lambda(void **closure,VALUE extra,long arg){
-  closure[0]=Data_Wrap_Struct(cls_lambda,NULL,NULL,closure[0]);
+long wrap_lambda(struct closure_s * closure,VALUE extra,long arg){
+  closure->ary[0]=Data_Wrap_Struct(cls_lambda,NULL,NULL,closure->ary[0]);
+  return 1;
 }
 VALUE unwrap_lambda(void **closure,VALUE extra,long arg){
   lambda_s *l;
@@ -84,7 +85,7 @@ exp * trans(VALUE exp2){int i;
     exp *ex=(exp *)normalize_array(&a);free(a.ary);return ex;} 
   else if (typetest(exp2,"Rcall" )) { char *name=(char *)trans(rb_iv_get(exp2,"@name")); exp_call e;e.tp=TP_call; e.name=name; e.body=getrule(name)->body; e.args=trans(rb_iv_get(exp2,"@args")); return (exp *) normalize_call(&e);}
   else if (typetest(exp2,"Rrule" )) {  <%=init_exp('rule')%> rule *r=getrule(e.name); r->body->locals=e.locals; r->body->name=e.name; r->body->body=e.body; return (exp*)r->body;}
-  else if (typetest(exp2,"Ract"   )) { <%=init_exp('act')%> e.fn=callback;  return normalize_act(&e);}
+  else if (typetest(exp2,"Ract"   )) { <%=init_exp('act')%> e.fn=callback; if (!strcmp(e.arg,"wrap_lambda")) e.fn=wrap_lambda; return normalize_act(&e);}
   else if (typetest(exp2,"Rbind")) {   <%=init_exp('act')%> e.fn=bind_callback; e.arg=e.vars->ary[0]; return normalize_act(&e);}
   <%=
     $nodes.map{|n,a| "else if (typetest(exp2,\"R#{n}\")){

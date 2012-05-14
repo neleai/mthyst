@@ -575,6 +575,23 @@ void *match(exp *e,void *extra,Args a) {
             r.state= e->state;
             break;
         }
+        case TP_make_lambda: {
+            struct s_arg_make_lambda *s=(struct s_arg_make_lambda *)call_stack;
+            exp_make_lambda* e=s->e;
+            call_stack+=sizeof(struct s_arg_make_lambda);
+            lambda_s *l=malloc(sizeof(lambda_s));
+            l->body=e->body;
+            l->closure=a.closure;
+            a.closure->ary[0]=l;
+            {
+                call_stack-=sizeof(struct s_arg_exp); ;
+                struct s_arg_exp *s=(struct s_arg_exp *)call_stack;
+                s->type=a.cont->e->tp;
+                s->e=a.cont->e;
+            }
+            a.cont=a.cont->previous;
+            break;
+        }
         }
     }
 }

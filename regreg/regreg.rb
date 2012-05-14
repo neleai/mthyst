@@ -107,3 +107,6 @@ puts RegReg.match(parseexp("partest"),"abc")
 
 puts "nested"
 puts RegReg.match(parseexp("nested('foo','foo','foo')"),"abc")
+
+puts "lambda"
+puts RegReg.match(parseexp("{(|foo foo|)}:l "),"abc")
