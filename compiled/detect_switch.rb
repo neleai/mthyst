@@ -195,7 +195,7 @@ class Switch_Char_Dataflow < First_Dataflow
     lattice[[s,s]]
   end
   def regchar(s)
-    return ~regchar("/["+s[3...-2]+"]/") if s[2]==?^ 
+    return ~(regchar("/["+s[3...-2]+"]/")|Lattice_Char[[0,0]]) if s[2]==?^ 
     chars=[]
     s=s[2...-2]
     i=0
@@ -267,7 +267,7 @@ def detect_switch_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def detect_switch_source_hash
-'8a281c411e100b0e13729c580d40d0ac'
+'987b08c0f2787c94bf86176844f268b4'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version

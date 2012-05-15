@@ -1,0 +1,7 @@
+amethyst Scanf2Ame {
+  convert = atom*:s -> s.join
+  atom = _+ -> ' ""'
+       | <^%\r\n\s\t\0>+:s -> " '#{s.join}'"
+       | '%'
+}
+puts Scanf2Ame.convert("abc  de%s")

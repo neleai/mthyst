@@ -195,7 +195,7 @@ class Switch_Char_Dataflow < First_Dataflow
     lattice[[s,s]]
   end
   def regchar(s)
-    return ~regchar("/["+s[3...-2]+"]/") if s[2]==?^ 
+    return ~(regchar("/["+s[3...-2]+"]/")|Lattice_Char[[0,0]]) if s[2]==?^ 
     chars=[]
     s=s[2...-2]
     i=0
