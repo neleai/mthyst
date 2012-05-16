@@ -6,7 +6,7 @@ makeclasses(AmethystAST,
   :RegModifier,
   :RegChars 
 )
-ame= File.basename(__FILE__)[0..-4]+".ame"
+ame='./'+File.basename(__FILE__)[0..-4]+".ame"
 #Compiler::compile("../amethyst/amethyst.ame")
 Compiler::compile('regexp.ame')
 Compiler::compile(ame)

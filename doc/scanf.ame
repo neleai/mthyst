@@ -1,20 +1,28 @@
 amethyst Scanf2Ame {
-  convert = atom*:s -> s.join
+  convert = atom*:s -> (@@need_position ? "{pos}:startpos" : "")+s.join
   atom = _+ -> ' ""'
-       | <^%\r\n\s\t>+:s -> " '#{s.join.gsub("'","\\\\'")}'"
-       | '%' '*'? 'a'? ('h' | 'hh' | 'j' | 'l' | 'L' | 'q' | 't' | 'z' )?
-             ( '%'    -> " '%'"
-             | 'i'    -> " int"
-             | 'o'    -> " int_base(8)"
-             | 'd'    -> " int_base(10)"
-             | <xX>   -> " int_base(16)"
-             | <efgE> -> " float"
-             | 's'    -> " until(| _ |)"
-             | 'c'    -> " ."
-             | 'p'    -> " not_supported"
-             | 'n'    -> " TODO"
-             | '[' until(']'):s -> " until(| <^#{s.gsub("<","\\<").gsub(">","\\>")}> |)"
+       | (<^%\r\n\s\t> | '%%' {'%'})+:s -> " '#{s.join.gsub("'","\\\\'")}'" 
+       | '%' ( '*' prefixed:p -> p
+             | int:i '$' prefixed:p -> "#{p}:{ary[#{i-1}]=it}"
+             | prefixed:p           -> "#{p}:[ary]"
              )
+
+
+  prefixed = 
+ 'a'? ('h' | 'hh' | 'j' | 'l' | 'L' | 'q' | 't' | 'z' )? (int:i conversion:c -> "limit_chars(#{i})(|#{c}|)"
+                                                         | conversion )
+
+  conversion =    'i'    -> " int"
+                | 'o'    -> " int_base(8)"
+                | 'd'    -> " int_base(10)"
+                | <xX>   -> " int_base(16)"
+                | <efgE> -> " float"
+                | 's'    -> " until(| _ |)"
+                | 'c'    -> " ."
+                | 'p'    -> raise " not_supported"
+                | 'n'    -> @@need_position=true; "{pos-startpos}"
+                | '[' until(']'):s -> " until(| <^#{s.gsub("<","\\<").gsub(">","\\>")}> |)"
+
 }
 def convert_scanf(f); puts "#{f.inspect}   ->  #{Scanf2Ame.convert(f)}"; end
 
