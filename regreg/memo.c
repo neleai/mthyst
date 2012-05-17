@@ -36,3 +36,6 @@ void use_memo(Global *g){
   g->memo_set=memo_set;
   g->memo_get=memo_get;
 }
+void free_memo(Global *g){
+  free(memos);
+}

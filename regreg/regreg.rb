@@ -101,7 +101,7 @@ puts RegReg.match(parseexp("(a {@x||=0;@x+=1;puts @x})* 'b' 'c'{42} " ),"aaaabc"
 
 puts "nested iteration"
 #puts RegReg.match(parseexp("('a'* 'b'| a)*"),"a"*100)
-puts RegReg.match(parseexp("( ( (a* 'b'| a)* 'b' | a)* 'b' )* 'b'"),'a'*2000)
+puts RegReg.match(parseexp("( ( (a* 'b'| a)* 'b' | a)* 'b' )* 'b'"),'a'*500)
 
 puts "parametrized"
 puts RegReg.match(parseexp("partest"),"abc")

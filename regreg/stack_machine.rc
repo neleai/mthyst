@@ -48,10 +48,13 @@ $stackstructs<<"struct s_arg_exp{char type; exp *e;};"
 def push_exp(e)
   "{call_stack-=sizeof(struct s_arg_exp); ;struct s_arg_exp *s=(struct s_arg_exp *)call_stack;s->type=#{e}->tp;s->e=#{e};}"
 end
+stack_def('stack_dealloc',[["long","size"]])
+stack_body('stack_dealloc',"call_stack+=size;")
+def stack_alloc(e,size);"call_stack-=#{size};#{e}=call_stack; #{stack_push('stack_dealloc',size)};"; end
 stack_def('cont_ended',[['struct cont_s *','cnt']])
-stack_body('cont_ended',"a.cont=cnt->previous;conts=cnt-1;")
+stack_body('cont_ended',"a.cont=cnt->previous;")
 def push_cont_exp(e)
-   "{struct cont_s *n=++conts; n->e=#{e}; n->previous=a.cont;
+   "{struct cont_s *n; #{stack_alloc('n','sizeof(struct cont_s)')} n->e=#{e}; n->previous=a.cont;
      if(n->e->forget) { exp_seq es; es.head=e->forget; es.tail=a.cont->cont_memo; n->cont_memo=normalize_seq(&es); } else { if (n->e==finish) n->cont_memo=finish; else n->cont_memo=a.cont->cont_memo;}
      a.cont=n; #{stack_push('cont_ended','n')}}"
 end
@@ -61,6 +64,8 @@ end
 $nodes.each{|n,a|
   stack_def(n,[["exp_#{n}*","e"]])
 }
+
+
 stack_body('seq',"#{push_cont_exp('e->tail')} #{push_exp('e->head')};")
 stack_def('switch2',[["exp_switch*","e"]])
 stack_body('switch',"#{stack_push('switch2','e')} memo_s mem=gl.memo_get(&gl,a.str,e->head,a.cont->cont_memo); if(mem.state!=-1) { r.state=mem.state; } else { #{push_exp('e->head')};} gl.alternatives+=1;")
@@ -68,7 +73,7 @@ stack_body('switch2',"memo_s mem; mem.state=r.state; gl.memo_set(&gl,a.str,e->he
 stack_body('char',"void *(*head)()=gl.head;void *(*advance)()=gl.advance;  if ((char) head(a.str)==*e->str) { #{revert_a('str')} a.str=advance(a.str); #{cont_call} } else { fail(); }" )
 stack_body('head',"a.closure->ary[0]=gl.head(a.str);")
 stack_body('advance',"#{revert_a('str')} a.str=gl.advance(a.str);")
-stack_body('finish', "free(call_stack_start);free(closures_start);free(conts_start); return a.closure->ary[0];")
+stack_body('finish', "free(call_stack_start); free_memo(&gl); return a.closure->ary[0];")
 stack_body('act',"{int i; for(i=0;i<e->vars->size;i++){#{stack_push('revert_local','e->vars->ary[i]','a.closure->ary[(long)e->vars->ary[i]]')}}} long(*fn)() =e->fn;if(fn(a.closure,gl.extra,e->arg)){#{cont_call}}")
 stack_body('stop',"#{revert_a('stops')} a.stops|=e->stops; #{cont_call}" )
 stack_body('many',"#{revert_a('stops')} if (e->stops & a.stops){
@@ -79,10 +84,10 @@ stack_body('many',"#{revert_a('stops')} if (e->stops & a.stops){
            #{push_exp("e->body")}
          }")
 stack_def('call_finished',[["exp_call_conted *","e"]])
-stack_body('call'," exp *fin=call_conted(a.closure); #{push_cont_exp('fin')} #{stack_push('call_finished','fin')} struct closure_s *c=a.closure; a.closure=++closures; a.closure->size=e->body->locals;a.closure->ary=calloc(sizeof(void*),a.closure->size); 
+stack_body('call'," exp *fin=call_conted(a.closure,&call_stack); #{push_cont_exp('fin')} #{stack_push('call_finished','fin')} struct closure_s *c=a.closure; #{stack_alloc('a.closure','sizeof(struct closure_s)')}; a.closure->size=e->body->locals;#{stack_alloc('a.closure->ary','sizeof(void*)*a.closure->size')}; 
 int i; for(i=0;i<e->args->size;i++) a.closure->ary[i+1]=c->ary[(long) e->args->ary[i]];
 #{push_exp('e->body->body')}")
-stack_body('call_finished',"e->closure->ary[0]=a.closure->ary[0]; free(a.closure->ary); closures=a.closure-1; a.closure=e->closure;free(e);")
+stack_body('call_finished',"e->closure->ary[0]=a.closure->ary[0]; a.closure=e->closure;")
 stack_body('call_conted',"#{revert_a('closure')} e->closure->ary[0]=a.closure->ary[0]; a.closure=e->closure;#{cont_call()}")
 
 stack_def('nested_end',[])
@@ -91,8 +96,8 @@ stack_body('nested_end',"long st=r.state;r.state=0;if (st) {#{cont_call}} else {
 stack_body('return',"#{revert_r('state')} r.state= e->state;")
 stack_def('lambda_finished',[["exp_call_conted *","e"]])
 stack_body('make_lambda',"lambda_s *l=malloc(sizeof(lambda_s)); l->body=e->body; l->closure=a.closure; a.closure->ary[0]=l;#{cont_call}")
-stack_body('use_lambda',"exp *fin=call_conted(a.closure); #{push_cont_exp('fin')} #{stack_push('lambda_finished','fin')} lambda_s *l=a.closure->ary[0]; a.closure=l->closure; #{push_exp('l->body')} ")
-stack_body('lambda_finished',"e->closure->ary[0]=a.closure->ary[0]; a.closure=e->closure;free(e);")
+stack_body('use_lambda',"exp *fin=call_conted(a.closure,&call_stack); #{push_cont_exp('fin')} #{stack_push('lambda_finished','fin')} lambda_s *l=a.closure->ary[0]; a.closure=l->closure; #{push_exp('l->body')} ")
+stack_body('lambda_finished',"e->closure->ary[0]=a.closure->ary[0]; a.closure=e->closure;")
 %>
 
 <%
@@ -104,10 +109,13 @@ no=0;$argh.map{|n,_|no+=1; f.puts"#define TP_#{n} #{no}"}*""
 <%=$stackstructs*"" %>
 void fail(){}
 
-exp * call_conted(struct closure_s * c){
-  exp_call_conted * e=calloc(sizeof(exp_call_conted),1);e->tp=TP_call_conted;
+static inline exp * call_conted(struct closure_s * c,char **cs){
+  char * call_stack=*cs;
+  exp_call_conted * e; <%= stack_alloc('e','sizeof(exp_call_conted)') %>
+  e->tp=TP_call_conted;
   e->forget=NULL;
   e->closure=c;
+  *cs=call_stack;
   return e;
 }
 
@@ -119,8 +127,6 @@ void *match(exp *e,void *extra,Args a){
   gl.extra=extra;
   char *call_stack,*call_stack_start;
   call_stack_start=malloc(1000000);call_stack=call_stack_start+1000000;
-  struct closure_s *closures = malloc(1000000*sizeof(struct closure_s)),*closures_start;closures_start=closures;
-  struct cont_s    *conts    = malloc(1000000*sizeof(struct cont_s)),*conts_start   ;conts_start   =conts;  
   <%=push_exp("finish") %>
   <%=push_cont_exp("finish")%>
   <%=push_exp("e") %>

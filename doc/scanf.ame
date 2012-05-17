@@ -9,7 +9,8 @@ amethyst Scanf2Ame {
 
 
   prefixed = 
- 'a'? ('h' | 'hh' | 'j' | 'l' | 'L' | 'q' | 't' | 'z' )? (int:i conversion:c -> "limit_chars(#{i})(|#{c}|)"
+ 'a'? ('h' | 'hh' | 'j' | 'l' | 'L' | 'q' | 't' | 'z' )? ( int:i 'c'          -> "limit_chars(#{i})(| .* |)"
+                                                         | int:i conversion:c -> "limit_chars(#{i})(|#{c}|)"
                                                          | conversion )
 
   conversion =    'i'    -> " int"
