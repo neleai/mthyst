@@ -55,7 +55,7 @@ long callback(struct closure_s *closure,VALUE extra,void *arg){
   closures *c;
   Data_Get_Struct(extra,closures,c);
   c->cl=closure->ary;
-  closure->ary[0]=rb_funcall(extra,rb_intern(arg),0);
+  closure->ary[0]=(void *) rb_funcall(extra,rb_intern(arg),0);
   return 1;
 }
 long bind_callback(struct closure_s *closure,VALUE extra,long arg){
@@ -64,7 +64,7 @@ long bind_callback(struct closure_s *closure,VALUE extra,long arg){
 }
 VALUE cls_lambda;
 long wrap_lambda(struct closure_s * closure,VALUE extra,long arg){
-  closure->ary[0]=Data_Wrap_Struct(cls_lambda,NULL,NULL,closure->ary[0]);
+  closure->ary[0]=(void *) Data_Wrap_Struct(cls_lambda,NULL,NULL,closure->ary[0]);
   return 1;
 }
 VALUE unwrap_lambda(struct closure_s *closure,VALUE extra,long arg){
@@ -83,7 +83,7 @@ exp * trans(VALUE exp2){int i;
   else if (typetest(exp2,"Array" )) { array a; a.size=RARRAY_LEN(exp2); a.ary=malloc(sizeof(exp*)*a.size);
     for(i=0;i<a.size;i++) a.ary[i]=trans(RARRAY_PTR(exp2)[i]);
     exp *ex=(exp *)normalize_array(&a);free(a.ary);return ex;} 
-  else if (typetest(exp2,"Rcall" )) { char *name=(char *)trans(rb_iv_get(exp2,"@name")); exp_call e;e.tp=TP_call; e.name=name; e.body=getrule(name)->body; e.args=trans(rb_iv_get(exp2,"@args")); return (exp *) normalize_call(&e);}
+  else if (typetest(exp2,"Rcall" )) {  <%=init_exp('call')%>  e.body=getrule(e.name)->body; return (exp *) normalize_call(&e);}
   else if (typetest(exp2,"Rrule" )) {  <%=init_exp('rule')%> rule *r=getrule(e.name); r->body->locals=e.locals; r->body->name=e.name; r->body->body=e.body; return (exp*)r->body;}
   else if (typetest(exp2,"Ract"   )) { <%=init_exp('act')%> e.fn=callback; if (!strcmp(e.arg,"wrap_lambda")) e.fn=wrap_lambda; else if (!strcmp(e.arg,"unwrap_lambda")) e.fn=unwrap_lambda; return normalize_act(&e);}
   else if (typetest(exp2,"Rbind")) {   <%=init_exp('act')%> e.fn=bind_callback; e.arg=e.vars->ary[0]; return normalize_act(&e);}

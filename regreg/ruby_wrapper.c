@@ -57,7 +57,7 @@ long callback(struct closure_s *closure,VALUE extra,void *arg) {
     closures *c;
     Data_Get_Struct(extra,closures,c);
     c->cl=closure->ary;
-    closure->ary[0]=rb_funcall(extra,rb_intern(arg),0);
+    closure->ary[0]=(void *) rb_funcall(extra,rb_intern(arg),0);
     return 1;
 }
 long bind_callback(struct closure_s *closure,VALUE extra,long arg) {
@@ -66,7 +66,7 @@ long bind_callback(struct closure_s *closure,VALUE extra,long arg) {
 }
 VALUE cls_lambda;
 long wrap_lambda(struct closure_s * closure,VALUE extra,long arg) {
-    closure->ary[0]=Data_Wrap_Struct(cls_lambda,NULL,NULL,closure->ary[0]);
+    closure->ary[0]=(void *) Data_Wrap_Struct(cls_lambda,NULL,NULL,closure->ary[0]);
     return 1;
 }
 VALUE unwrap_lambda(struct closure_s *closure,VALUE extra,long arg) {
@@ -97,12 +97,13 @@ exp * trans(VALUE exp2) {
         return ex;
     }
     else if (typetest(exp2,"Rcall" )) {
-        char *name=(char *)trans(rb_iv_get(exp2,"@name"));
         exp_call e;
         e.tp=TP_call;
-        e.name=name;
-        e.body=getrule(name)->body;
-        e.args=trans(rb_iv_get(exp2,"@args"));
+        e.forget=(exp*) trans(rb_iv_get(exp2,"@forget"));
+        e.name=(char *) trans(rb_iv_get(exp2,"@name"));
+        e.body=(exp_rule*) trans(rb_iv_get(exp2,"@body"));
+        e.args=(array*) trans(rb_iv_get(exp2,"@args"));
+        e.body=getrule(e.name)->body;
         return (exp *) normalize_call(&e);
     }
     else if (typetest(exp2,"Rrule" )) {
