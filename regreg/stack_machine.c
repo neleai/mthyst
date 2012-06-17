@@ -144,7 +144,7 @@ static inline exp * call_conted(struct closure_s * c,char **cs) {
     char * call_stack=*cs;
     exp_call_conted * e;
     call_stack-=sizeof(exp_call_conted);
-    e=call_stack;
+    e=(exp_call_conted*) call_stack;
     {
         call_stack-=sizeof(struct s_arg_stack_dealloc);
         struct s_arg_stack_dealloc *s=(struct s_arg_stack_dealloc *)call_stack;
@@ -155,7 +155,7 @@ static inline exp * call_conted(struct closure_s * c,char **cs) {
     e->forget=NULL;
     e->closure=c;
     *cs=call_stack;
-    return e;
+    return (exp*) e;
 }
 
 static exp * finish;
@@ -177,7 +177,7 @@ void *match(exp *e,void *extra,Args a) {
     }
     {   struct cont_s *n;
         call_stack-=sizeof(struct cont_s);
-        n=call_stack;
+        n=(struct cont_s*) call_stack;
         {
             call_stack-=sizeof(struct s_arg_stack_dealloc);
             struct s_arg_stack_dealloc *s=(struct s_arg_stack_dealloc *)call_stack;
@@ -286,7 +286,7 @@ void *match(exp *e,void *extra,Args a) {
             call_stack+=sizeof(struct s_arg_seq);
             {   struct cont_s *n;
                 call_stack-=sizeof(struct cont_s);
-                n=call_stack;
+                n=(struct cont_s*) call_stack;
                 {
                     call_stack-=sizeof(struct s_arg_stack_dealloc);
                     struct s_arg_stack_dealloc *s=(struct s_arg_stack_dealloc *)call_stack;
@@ -484,7 +484,7 @@ void *match(exp *e,void *extra,Args a) {
             } else {
                 {   struct cont_s *n;
                     call_stack-=sizeof(struct cont_s);
-                    n=call_stack;
+                    n=(struct cont_s*) call_stack;
                     {
                         call_stack-=sizeof(struct s_arg_stack_dealloc);
                         struct s_arg_stack_dealloc *s=(struct s_arg_stack_dealloc *)call_stack;
@@ -528,7 +528,7 @@ void *match(exp *e,void *extra,Args a) {
             {
                 struct cont_s *n;
                 call_stack-=sizeof(struct cont_s);
-                n=call_stack;
+                n=(struct cont_s*) call_stack;
                 {
                     call_stack-=sizeof(struct s_arg_stack_dealloc);
                     struct s_arg_stack_dealloc *s=(struct s_arg_stack_dealloc *)call_stack;
@@ -562,7 +562,7 @@ void *match(exp *e,void *extra,Args a) {
             }
             struct closure_s *c=a.closure;
             call_stack-=sizeof(struct closure_s);
-            a.closure=call_stack;
+            a.closure=(struct closure_s*) call_stack;
             {
                 call_stack-=sizeof(struct s_arg_stack_dealloc);
                 struct s_arg_stack_dealloc *s=(struct s_arg_stack_dealloc *)call_stack;
@@ -571,7 +571,7 @@ void *match(exp *e,void *extra,Args a) {
             };;
             a.closure->size=e->body->locals;
             call_stack-=sizeof(void*)*a.closure->size;
-            a.closure->ary=call_stack;
+            a.closure->ary= call_stack;
             {
                 call_stack-=sizeof(struct s_arg_stack_dealloc);
                 struct s_arg_stack_dealloc *s=(struct s_arg_stack_dealloc *)call_stack;
@@ -690,7 +690,7 @@ void *match(exp *e,void *extra,Args a) {
             {
                 struct cont_s *n;
                 call_stack-=sizeof(struct cont_s);
-                n=call_stack;
+                n=(struct cont_s*) call_stack;
                 {
                     call_stack-=sizeof(struct s_arg_stack_dealloc);
                     struct s_arg_stack_dealloc *s=(struct s_arg_stack_dealloc *)call_stack;
