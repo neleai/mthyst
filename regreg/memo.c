@@ -24,7 +24,7 @@ static memo_s memo_get(Global *g,char *str,exp *e, exp *memo){int i;
   return not_present;
 }
 static void *head(char *str){
-  return *str;
+  return (void*) (*str);
 }
 static void *advance(char *str){
   return str+1;
@@ -33,8 +33,8 @@ void use_memo(Global *g){
   memos=NULL;memo_no=0;
   g->advance=advance;
   g->head=head;
-  g->memo_set=memo_set;
-  g->memo_get=memo_get;
+  g->memo_set=(pfn) memo_set;
+  g->memo_get=      memo_get;
 }
 void free_memo(Global *g){
   free(memos);
