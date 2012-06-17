@@ -36,7 +36,7 @@ typedef struct {
 } closures;
 void cl_mark(closures *c) {
     int i;
-    for(i=0; i<c->size; i++)rb_gc_mark(c->cl[i]);
+    for(i=0; i<c->size; i++)rb_gc_mark((VALUE) c->cl[i]);
 }
 
 void ** make_closure(long size) {
@@ -129,7 +129,7 @@ exp * trans(VALUE exp2) {
         e.fn=callback;
         if (!strcmp(e.arg,"wrap_lambda")) e.fn=wrap_lambda;
         else if (!strcmp(e.arg,"unwrap_lambda")) e.fn=unwrap_lambda;
-        return normalize_act(&e);
+        return (exp*) normalize_act(&e);
     }
     else if (typetest(exp2,"Rbind")) {
         exp_act e;
@@ -140,7 +140,7 @@ exp * trans(VALUE exp2) {
         e.arg=(void *) trans(rb_iv_get(exp2,"@arg"));
         e.fn=bind_callback;
         e.arg=e.vars->ary[0];
-        return normalize_act(&e);
+        return (exp*) normalize_act(&e);
     }
     else if (typetest(exp2,"Rseq")) {
         exp_seq e;
@@ -287,7 +287,7 @@ VALUE rb_match(VALUE self,VALUE exp2,VALUE str) {
     char *str2=RSTRING_PTR(str);
     closures *c=malloc(sizeof(closures));
     VALUE extra=  Data_Wrap_Struct(cls_Closure,NULL,free,c);
-    return match2(e,(void *)extra,str2);
+    return (VALUE) match2(e,(void *)extra,str2);
 }
 void Init_RegReg() {
     rb_global_variable(&closures_gc);

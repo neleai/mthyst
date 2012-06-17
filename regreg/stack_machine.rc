@@ -50,12 +50,12 @@ def push_exp(e)
 end
 stack_def('stack_dealloc',[["long","size"]])
 stack_body('stack_dealloc',"call_stack+=size;")
-def stack_alloc(e,size,cast="");"call_stack-=#{size};#{e}=#{cast} call_stack; #{stack_push('stack_dealloc',size)};"; end
-def stack_alloc_tp(e,tp); stack_alloc(e,"sizeof(#{tp})","(#{tp}*)");end
+def stack_alloc(e,size,cast="");"call_stack-=#{size};#{e}=(#{cast}) call_stack; #{stack_push('stack_dealloc',size)};"; end
+def stack_alloc_tp(e,tp); stack_alloc(e,"sizeof(#{tp})","#{tp}*");end
 stack_def('cont_ended',[['struct cont_s *','cnt']])
 stack_body('cont_ended',"a.cont=cnt->previous;")
 def push_cont_exp(e)
-   "{struct cont_s *n; #{stack_alloc_tp('n','struct cont_s')} n->e=#{e}; n->previous=a.cont;
+   "{struct cont_s *n; #{stack_alloc_tp('n','struct cont_s')} n->e=(exp*) #{e}; n->previous=a.cont;
      if(n->e->forget) { exp_seq es; es.head=e->forget; es.tail=a.cont->cont_memo; n->cont_memo=(exp*) normalize_seq(&es); } else { if (n->e==finish) n->cont_memo=finish; else n->cont_memo=a.cont->cont_memo;}
      a.cont=n; #{stack_push('cont_ended','n')}}"
 end
@@ -85,7 +85,7 @@ stack_body('many',"#{revert_a('stops')} if (e->stops & a.stops){
            #{push_exp("e->body")}
          }")
 stack_def('call_finished',[["exp_call_conted *","e"]])
-stack_body('call'," exp *fin=call_conted(a.closure,&call_stack); #{push_cont_exp('fin')} #{stack_push('call_finished','fin')} struct closure_s *c=a.closure; #{stack_alloc_tp('a.closure','struct closure_s')}; a.closure->size=e->body->locals;#{stack_alloc('a.closure->ary','sizeof(void*)*a.closure->size')}; 
+stack_body('call'," exp *fin=(exp*) call_conted(a.closure,&call_stack); #{push_cont_exp('fin')} #{stack_push('call_finished','fin')} struct closure_s *c=a.closure; #{stack_alloc_tp('a.closure','struct closure_s')}; a.closure->size=e->body->locals;#{stack_alloc('a.closure->ary','sizeof(void*)*a.closure->size','void**')}; 
 int i; for(i=0;i<e->args->size;i++) a.closure->ary[i+1]=c->ary[(long) e->args->ary[i]];
 #{push_exp('e->body->body')}")
 stack_body('call_finished',"e->closure->ary[0]=a.closure->ary[0]; a.closure=e->closure;")

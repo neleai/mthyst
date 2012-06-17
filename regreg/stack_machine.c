@@ -184,7 +184,7 @@ void *match(exp *e,void *extra,Args a) {
             s->type=TP_stack_dealloc;
             s->size=sizeof(struct cont_s);
         };
-        n->e=finish;
+        n->e=(exp*) finish;
         n->previous=a.cont;
         if(n->e->forget) {
             exp_seq es;
@@ -293,7 +293,7 @@ void *match(exp *e,void *extra,Args a) {
                     s->type=TP_stack_dealloc;
                     s->size=sizeof(struct cont_s);
                 };
-                n->e=e->tail;
+                n->e=(exp*) e->tail;
                 n->previous=a.cont;
                 if(n->e->forget) {
                     exp_seq es;
@@ -491,7 +491,7 @@ void *match(exp *e,void *extra,Args a) {
                         s->type=TP_stack_dealloc;
                         s->size=sizeof(struct cont_s);
                     };
-                    n->e=e;
+                    n->e=(exp*) e;
                     n->previous=a.cont;
                     if(n->e->forget) {
                         exp_seq es;
@@ -524,7 +524,7 @@ void *match(exp *e,void *extra,Args a) {
             struct s_arg_call *s=(struct s_arg_call *)call_stack;
             exp_call* e=s->e;
             call_stack+=sizeof(struct s_arg_call);
-            exp *fin=call_conted(a.closure,&call_stack);
+            exp *fin=(exp*) call_conted(a.closure,&call_stack);
             {
                 struct cont_s *n;
                 call_stack-=sizeof(struct cont_s);
@@ -535,7 +535,7 @@ void *match(exp *e,void *extra,Args a) {
                     s->type=TP_stack_dealloc;
                     s->size=sizeof(struct cont_s);
                 };
-                n->e=fin;
+                n->e=(exp*) fin;
                 n->previous=a.cont;
                 if(n->e->forget) {
                     exp_seq es;
@@ -571,7 +571,7 @@ void *match(exp *e,void *extra,Args a) {
             };;
             a.closure->size=e->body->locals;
             call_stack-=sizeof(void*)*a.closure->size;
-            a.closure->ary= call_stack;
+            a.closure->ary=(void**) call_stack;
             {
                 call_stack-=sizeof(struct s_arg_stack_dealloc);
                 struct s_arg_stack_dealloc *s=(struct s_arg_stack_dealloc *)call_stack;
@@ -697,7 +697,7 @@ void *match(exp *e,void *extra,Args a) {
                     s->type=TP_stack_dealloc;
                     s->size=sizeof(struct cont_s);
                 };
-                n->e=fin;
+                n->e=(exp*) fin;
                 n->previous=a.cont;
                 if(n->e->forget) {
                     exp_seq es;

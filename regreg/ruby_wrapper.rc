@@ -34,7 +34,7 @@ typedef struct{
   long size;
 } closures;
 void cl_mark(closures *c){ int i;
-  for(i=0;i<c->size;i++)rb_gc_mark(c->cl[i]);
+  for(i=0;i<c->size;i++)rb_gc_mark((VALUE) c->cl[i]);
 }
 
 void ** make_closure(long size){
@@ -85,8 +85,8 @@ exp * trans(VALUE exp2){int i;
     exp *ex=(exp *)normalize_array(&a);free(a.ary);return ex;} 
   else if (typetest(exp2,"Rcall" )) {  <%=init_exp('call')%>  e.body=getrule(e.name)->body; return (exp *) normalize_call(&e);}
   else if (typetest(exp2,"Rrule" )) {  <%=init_exp('rule')%> rule *r=getrule(e.name); r->body->locals=e.locals; r->body->name=e.name; r->body->body=e.body; return (exp*)r->body;}
-  else if (typetest(exp2,"Ract"   )) { <%=init_exp('act')%> e.fn=callback; if (!strcmp(e.arg,"wrap_lambda")) e.fn=wrap_lambda; else if (!strcmp(e.arg,"unwrap_lambda")) e.fn=unwrap_lambda; return normalize_act(&e);}
-  else if (typetest(exp2,"Rbind")) {   <%=init_exp('act')%> e.fn=bind_callback; e.arg=e.vars->ary[0]; return normalize_act(&e);}
+  else if (typetest(exp2,"Ract"   )) { <%=init_exp('act')%> e.fn=callback; if (!strcmp(e.arg,"wrap_lambda")) e.fn=wrap_lambda; else if (!strcmp(e.arg,"unwrap_lambda")) e.fn=unwrap_lambda; return (exp*) normalize_act(&e);}
+  else if (typetest(exp2,"Rbind")) {   <%=init_exp('act')%> e.fn=bind_callback; e.arg=e.vars->ary[0]; return (exp*) normalize_act(&e);}
   <%=
     $nodes.map{|n,a| "else if (typetest(exp2,\"R#{n}\")){
                                   #{init_exp(n)}  return (exp *) normalize_#{n}(&e);}\n"}*""
@@ -103,7 +103,7 @@ VALUE rb_match(VALUE self,VALUE exp2,VALUE str){
   char *str2=RSTRING_PTR(str);
   closures *c=malloc(sizeof(closures));
   VALUE extra=  Data_Wrap_Struct(cls_Closure,NULL,free,c);
-  return match2(e,(void *)extra,str2);
+  return (VALUE) match2(e,(void *)extra,str2);
 }
 void Init_RegReg(){
   rb_global_variable(&closures_gc);
