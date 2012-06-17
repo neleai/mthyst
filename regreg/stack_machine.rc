@@ -75,7 +75,7 @@ stack_body('char',"void *(*head)()=gl.head;void *(*advance)()=gl.advance;  if ((
 stack_body('head',"a.closure->ary[0]=gl.head(a.str);")
 stack_body('advance',"#{revert_a('str')} a.str=gl.advance(a.str);")
 stack_body('finish', "free(call_stack_start); free_memo(&gl); return a.closure->ary[0];")
-stack_body('act',"{int i; for(i=0;i<e->vars->size;i++){#{stack_push('revert_local','e->vars->ary[i]','a.closure->ary[(long)e->vars->ary[i]]')}}} long(*fn)() =e->fn;if(fn(a.closure,gl.extra,e->arg)){#{cont_call}}")
+stack_body('act',"{int i; for(i=0;i<e->vars->size;i++){#{stack_push('revert_local','(long) e->vars->ary[i]','a.closure->ary[(long)e->vars->ary[i]]')}}} long(*fn)() =e->fn;if(fn(a.closure,gl.extra,e->arg)){#{cont_call}}")
 stack_body('stop',"#{revert_a('stops')} a.stops|=e->stops; #{cont_call}" )
 stack_body('many',"#{revert_a('stops')} if (e->stops & a.stops){
            a.stops=a.stops&(~e->stops);

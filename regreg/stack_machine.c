@@ -426,7 +426,7 @@ void *match(exp *e,void *extra,Args a) {
                         call_stack-=sizeof(struct s_arg_revert_local);
                         struct s_arg_revert_local *s=(struct s_arg_revert_local *)call_stack;
                         s->type=TP_revert_local;
-                        s->no=e->vars->ary[i];
+                        s->no=(long) e->vars->ary[i];
                         s->var=a.closure->ary[(long)e->vars->ary[i]];
                     }
                 }
