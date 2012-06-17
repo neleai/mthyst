@@ -85,7 +85,7 @@ stack_body('many',"#{revert_a('stops')} if (e->stops & a.stops){
            #{push_exp("e->body")}
          }")
 stack_def('call_finished',[["exp_call_conted *","e"]])
-stack_body('call'," exp *fin=(exp*) call_conted(a.closure,&call_stack); #{push_cont_exp('fin')} #{stack_push('call_finished','fin')} struct closure_s *c=a.closure; #{stack_alloc_tp('a.closure','struct closure_s')}; a.closure->size=e->body->locals;#{stack_alloc('a.closure->ary','sizeof(void*)*a.closure->size','void**')}; 
+stack_body('call'," exp_call_conted *fin= (exp_call_conted*) call_conted(a.closure,&call_stack); #{push_cont_exp('fin')} #{stack_push('call_finished','fin')} struct closure_s *c=a.closure; #{stack_alloc_tp('a.closure','struct closure_s')}; a.closure->size=e->body->locals;#{stack_alloc('a.closure->ary','sizeof(void*)*a.closure->size','void**')}; 
 int i; for(i=0;i<e->args->size;i++) a.closure->ary[i+1]=c->ary[(long) e->args->ary[i]];
 #{push_exp('e->body->body')}")
 stack_body('call_finished',"e->closure->ary[0]=a.closure->ary[0]; a.closure=e->closure;")

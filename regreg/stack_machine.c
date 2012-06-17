@@ -524,7 +524,7 @@ void *match(exp *e,void *extra,Args a) {
             struct s_arg_call *s=(struct s_arg_call *)call_stack;
             exp_call* e=s->e;
             call_stack+=sizeof(struct s_arg_call);
-            exp *fin=(exp*) call_conted(a.closure,&call_stack);
+            exp_call_conted *fin= (exp_call_conted*) call_conted(a.closure,&call_stack);
             {
                 struct cont_s *n;
                 call_stack-=sizeof(struct cont_s);
