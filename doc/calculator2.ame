@@ -1,7 +1,4 @@
-["Add","Substract","Multiply","Divide"]
-class Add < AmethystAST
-attribute :x,:y
-end
+makeclasses(AmethystAST,["Add",:x,:y],["Substract",:x,:y],["Multiply",:x,:y],["Divide",:x,:y])
 # Amethyst_AST create method rougthy does following
 # Add.create(hash)
 # a=Add.new
@@ -18,4 +15,9 @@ mulexpr = mulexpr:x "*" int:y @Multiply
 | "(" addexpr:x ")" -> x
 | int
 }
-Calculator.calculate("2-4+2*2--2")
+print Calculator.calculate("2-4+2*2--2").inspect
+#-> Substract[{:x=>
+#                 Add[{:x=>Substract[{:x=>2, :y=>4}], 
+#                      :y=>Multiply[{:x=>2, :y=>2}]}], 
+#               :y=>-2}]
+

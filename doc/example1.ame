@@ -1,9 +1,9 @@
 pattern = (|  'a'| 'b' |)
 text = "aba"
-puts puts pattern.parse(:expr,"b") #-> b
-puts puts pattern.parse(:expr,text) #-> FAIL
-puts Amethyst.find(text,pattern) #->"a"
+print pattern.parse(:expr,"b") #-> b
+print pattern.parse(:expr,text) #-> FAIL
+print Amethyst.find(text,pattern) #->"a"
 
 x=y=nil
 (| int:x "+" int:y |).match("2+2")
-puts x+y # -> 4
+print x+y # -> 4

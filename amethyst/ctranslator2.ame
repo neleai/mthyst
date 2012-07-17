@@ -94,7 +94,7 @@ def gc_mark_var(v)
 end
 $classlabels=Hash.new(0)
 amethyst AmethystCTranslator {
-  itrans = {[]}:ruby {[]}:c {[]}:init  ( char:[ruby]  | trans:{c<<it[0];init<<it[1];ruby<<it[2]} )* -> [c,init,ruby]
+  itrans = {[]}:ruby {[]}:c {[]}:init  ( String:[ruby]  | trans:{c<<it[0];init<<it[1];ruby<<it[2]} )* -> [c,init,ruby]
   
   rbtrans = Local[.* {rbbget(@self)}]
           | Args[rbtrans2]
@@ -248,7 +248,6 @@ s
                  @@defmethods<<"rb_define_method(cls_#{@>grammar},\"#{lambd}\",#{lambd},2);"
                  @@lambdas<< h+"{VALUE vals[0];  cstruct *ptr; VALUE it; #{@@maxargs.times.map{|i| "VALUE arg#{i};"}*""} VALUE oldgargs=gargs;int oldgargno=gargno;gargs=args;gargno=0; \n#{body}\nfail: gargs=oldgargs; gargno=oldgargno; return it;\n }" }
                {"AmethystLambda.new(:#{lambd},self,bind)" }
-
 
   rw(word,prc) = {@@faillabel}:rwo {@@faillabel=word } apply(prc):x {@@faillabel=rwo; x }
   

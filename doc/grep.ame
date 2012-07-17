@@ -1,1 +1,1 @@
-puts Amethyst.replace("fooobars",(| ("foo" |"bar"):{it.upcase} |))
+print Amethyst.replace("fooobars",(| ("foo" |"bar"):{it.upcase} |))

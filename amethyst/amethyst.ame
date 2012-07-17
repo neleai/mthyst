@@ -5,8 +5,6 @@ amethyst Amethyst < AmethystCore {
 
   empty = -> nil
 
-  char= .:c &{c.is_a? String } -> c
-
   newline =  '\r\n' | '\r' | '\n'
   line = (newline break | .)*:{it*""}
 
@@ -31,7 +29,7 @@ amethyst Amethyst < AmethystCore {
   listOf(rule,delim) =  apply(rule):[f] (seq(delim) apply(rule))*:[*f] -> f
                          | empty -> []
   
-  find(exp)    = (apply(exp):e break | .)* .* -> e
+  find(exp)    = (  seq(exp):e break | .)* .* -> e
   replace(exp) = (apply(exp)         | .)*:{it*""}
 
 

@@ -25,6 +25,8 @@ amethyst Scanf2Ame {
                 | '[' until(']'):s -> " until(| <^#{s.gsub("<","\\<").gsub(">","\\>")}> |)"
 
 }
-def convert_scanf(f); puts "#{f.inspect}   ->  #{Scanf2Ame.convert(f)}"; end
+def convert_scanf(f) 
+  print "#{f.inspect}   ->  #{Scanf2Ame.convert(f)}"
+end
 
 convert_scanf("abc ' de%s %[abc] ")

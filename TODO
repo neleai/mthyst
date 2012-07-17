@@ -115,3 +115,5 @@ memoization use write-back cache.
 do not use apply, use lambdas and match instead
 
 implement eval
+
+complition by server with unix socket

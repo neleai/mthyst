@@ -191,9 +191,6 @@ end
 def AmethystCTranslator__lp_Current_39be(bind)
 (CurrentParser[:memoize] && ((CurrentParser[:memoize]==:all)||CurrentParser[:memoize].include?(bind[1]))) ? Memo[src.body] : src.body
 end
-def AmethystCTranslator__lp_bind_lb_1_rb__a948(bind)
-(bind[1].is_a? String ) || FAIL
-end
 def AmethystCTranslator__lp_bind_lb_1_rb__d1fd(bind)
 (bind[1]=="self") ? "src" : "src.#{bind[1]}#{bind[2]!="" ? "(#{bind[2]})":""}"
 
@@ -215,10 +212,6 @@ ar=*src.ccode;
                    
 end
 def AmethystCTranslator_bind_lb_1_rb_(bind)
-bind[1]
-
-end
-def AmethystCTranslator_bind_lb_1_rb_2(bind)
 bind[1],bind[2]="","" if $disable_persistence
 end
 def AmethystCTranslator_bind_lb_1_rb__dot__1364(bind)

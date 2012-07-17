@@ -2,7 +2,6 @@ class Amethyst < AmethystCore
 def self._(*args);self.new.parse(:_,*args);end;def self._selector__;Amethyst;end
 def self.alnum(*args);self.new.parse(:alnum,*args);end;def self._selector_alnum;Amethyst;end
 def self.alpha(*args);self.new.parse(:alpha,*args);end;def self._selector_alpha;Amethyst;end
-def self.char(*args);self.new.parse(:char,*args);end;def self._selector_char;Amethyst;end
 def self.clas(*args);self.new.parse(:clas,*args);end;def self._selector_clas;Amethyst;end
 def self.digit(*args);self.new.parse(:digit,*args);end;def self._selector_digit;Amethyst;end
 def self.empty(*args);self.new.parse(:empty,*args);end;def self._selector_empty;Amethyst;end
@@ -43,9 +42,6 @@ def Amethyst__at_rev_lb_src_704d(bind)
 end
 def Amethyst__lp_bind_lb_1_rb__a521(bind)
 (bind[1]) || FAIL
-end
-def Amethyst__lp_bind_lb_1_rb__a948(bind)
-(bind[1].is_a? String ) || FAIL
 end
 def Amethyst__lp_bind_lb_1_rb__abc3(bind)
 (bind[1] === bind[2]) || FAIL

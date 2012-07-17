@@ -7,7 +7,6 @@ makeclasses(AmethystAST,
   :RegChars 
 )
 ame='./'+File.basename(__FILE__)[0..-4]+".ame"
-#Compiler::compile("../amethyst/amethyst.ame")
-Compiler::compile("./"+ame)
+Amethyst::file("./"+ame)
 
 puts Regexp2Amethyst.root("abc|de(fg)*[hi]+").inspect

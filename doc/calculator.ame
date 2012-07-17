@@ -11,3 +11,4 @@ amethyst Calculator {
            | int:x 
 }
 puts Calculator.calculate("2-4+2*2--2")
+#->  4

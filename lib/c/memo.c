@@ -1,12 +1,13 @@
+#include "cthyst.h"
 #include <ruby.h>
 #define CACHE_SIZE 512
 VALUE not_present;
 typedef struct {
 	int rule;VALUE src;int pos;VALUE val;int newpos;
 } elem_struct;
-typedef struct memo_struct {
+struct memo_struct {
 		elem_struct *els;int *hits, *miss,*ticks;elem_struct *cache;int size;int capacity;
-} memo_struct;
+};
 
 static memo_struct *memo_init(){
 	memo_struct *m=calloc(sizeof(memo_struct),1);

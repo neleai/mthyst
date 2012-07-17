@@ -1,3 +1,5 @@
+#ifndef INCLUDED_CTHYST_H
+#define INCLUDED_CTHYST_H
 #include "ruby.h"
 #include <stdio.h>
 extern FILE * profile_report;
@@ -88,6 +90,6 @@ static inline VALUE bind_aget(VALUE self,long no){
   Data_Get_Struct(self,bind_struct,ptr);
   return ptr->ary[no];
 }
-VALUE bind_asetrb(VALUE self,VALUE no,VALUE val){return bind_aset(self,FIX2LONG(no),val);}
-VALUE bind_agetrb(VALUE self,VALUE no){return bind_aget(self,FIX2LONG(no));}
-
+static VALUE bind_asetrb(VALUE self,VALUE no,VALUE val){return bind_aset(self,FIX2LONG(no),val);}
+static VALUE bind_agetrb(VALUE self,VALUE no){return bind_aget(self,FIX2LONG(no));}
+#endif

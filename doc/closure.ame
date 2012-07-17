@@ -3,4 +3,4 @@ amethyst Closure{
  
   test = lambda:x  apply(x) apply(x) {puts 42;puts x.inspect}
 }
-Closure.test("")
+print Closure.test("")

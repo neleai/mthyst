@@ -1,10 +1,8 @@
 def cc_compile_file(file)
-      if Dir["#{Amethyst_path}/compiled/#{RUBY_VERSION}"]==[]
-        `mkdir "#{Amethyst_path}/compiled/#{RUBY_VERSION}`
-      end
+
 #      `astyle #{Amethyst_path}/compiled/#{file}_c.c`
-      `cd #{Amethyst_path}/compiled;gcc -I. -I/usr/include/ruby-1.9.1/x86_64-linux -I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -fPIC -fno-strict-aliasing -g -g #{Amethyst::Settings.cflags} -fPIC -c #{file}_c.c -o #{file}_c.o`
-      `cd #{Amethyst_path}/compiled;gcc -shared -o #{RUBY_VERSION}/#{file}_c.so #{file}_c.o -L. -L/usr/lib -L. -rdynamic -Wl,-export-dynamic -lruby-1.9.1 -lpthread -lrt -ldl -lcrypt -lm -lc`
+      `cd #{Amethyst_path}/compiled;#{Amethyst::Settings.compile} -c #{file}_c.c -o #{file}_c.o`
+      `cd #{Amethyst_path}/compiled;#{Amethyst::Settings.link} -o #{RUBY_VERSION}/#{file}_c.so #{file}_c.o`
       `rm #{Amethyst_path}/compiled/#{file}_c.o` 
 end
 $ruby_binary="ruby1.9.1"
@@ -15,7 +13,7 @@ class AmethystCore;end
 class Amethyst < AmethystCore	
 	class Settings;
 	end;	class <<Settings
-		attr_accessor :profiling,:compile_for,:cflags,:debug
+		attr_accessor :profiling,:compile_for,:cflags,:debug,:compile,:link
 	end
 end
 
@@ -38,4 +36,3 @@ Amethyst::Settings.profiling=false
 Amethyst::Settings.compile_for=["1_9_3"]
 Amethyst::Settings.cflags="-march=core2 "
 Amethyst::Settings.debug=1
-

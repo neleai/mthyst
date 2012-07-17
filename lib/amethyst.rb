@@ -1,5 +1,7 @@
 amethyst_path=File.expand_path(File.dirname(__FILE__)+"/..")
 require amethyst_path+"/settings.rb"
+require Amethyst_path+"/compiled/#{RUBY_VERSION}/cflags.rb"
+
 $: << Amethyst_path
 ['graph','utils','flatarray','ast','repair_errors'].each{|r|
 	require Amethyst_path+"/lib/#{r}"
@@ -50,3 +52,28 @@ end
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/Ame.so"
 AmethystCore.__init_interpreter
 require 'lib/compiler'
+
+require 'rubygems'
+require 'gpgme'
+#TODO verify signatures.
+require 'net/http'
+class << Amethyst
+  def pull(name)
+    project,version=name.split(":")
+    #  TODO create repository 
+    localfn= Amethyst_path+"/repository/#{name}.ame"
+    if !File.exists?(localfn)
+      repository_server= "kam.mff.cuni.cz"
+      repository_path  = "/~ondra/amethyst_repository/#{project}/#{version}.ame"
+      Net::HTTP.start(repository_server) { |http|
+        resp = http.get(repository_path)
+        f=File.new(localfn)
+        f.print resp.body
+      }
+    end
+    Compiler::compile(localfn)
+  end
+  def file(name)
+    Compiler::compile(name)
+  end
+end
