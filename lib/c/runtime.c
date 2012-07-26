@@ -128,9 +128,16 @@ VALUE report_normalize(VALUE self){
 	normalize_stats();
 	return Qnil;
 }
+
+/*TODO thread safe*/
 VALUE ame_lamarg(){
  return rb_ary_entry(gargs,gargno++); 
 }
+VALUE ame_all_lamarg(){
+ return gargs; 
+}
+
+
 
 extern bind_cache *cache_Array;VALUE cache_Array_gc;
 extern bind_cache *cache_String;VALUE cache_String_gc;
@@ -165,6 +172,7 @@ void Init_Ame(VALUE self){
 	rb_define_method(amecore,"src=",ame_setsrc2,1);
 	rb_define_method(amecore,"src",ame_getsrc,0);
 	rb_define_method(amecore,"__",ame_lamarg,0);
+	rb_define_method(amecore,"arguments",ame_all_lamarg,0);
 	rb_define_method(amecore,"_seq",AmethystCore__seq,1);
 	rb_define_method(amecore,"anything",AmethystCore_anything,0);
 	rb_define_method(amecore,"_append",AmethystCore_append,2);
