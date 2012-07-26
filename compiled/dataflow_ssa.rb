@@ -1,4 +1,4 @@
-class Dataflow < Traverser_Clone2
+class Make_SSA < Traverser_Clone2
   attr_accessor :ssanums,:oldssanums,:edges
   def initialize
     @edges=Oriented_Graph.new
@@ -57,11 +57,11 @@ class Local
 end
 
 
-class Dataflow < Traverser_Clone2
+class Make_SSA < Traverser_Clone2
   memoize "root"
   use_global_memo
 end
-require File.expand_path(File.dirname(__FILE__))+'/Dataflow.rb'
+require File.expand_path(File.dirname(__FILE__))+'/Make_SSA.rb'
 
 require File.expand_path(File.dirname(__FILE__))+'/Dead_Code_Deleter3.rb'
 
@@ -75,7 +75,7 @@ def dataflow_ssa_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def dataflow_ssa_source_hash
-'0bcdc0282bc2db5fe3be8ea5730aec5d'
+'aa370e4d95e1e2b9cdae54a07b3afbd3'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version

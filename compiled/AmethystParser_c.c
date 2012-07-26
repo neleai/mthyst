@@ -1048,12 +1048,12 @@ case '|' ... '|':; it=rb_str_new(ptr->str+ptr->pos,1);ptr->pos++;if (ame_curstr2
 }
 fail: return it;
 }
-VALUE AmethystParser_lookaheads(VALUE self ){VALUE vals[0]; VALUE it ,_s=Qnil,_autovar=Qnil,_autovar_2=Qnil,__result=Qnil;VALUE bind2=bind_new2(1);   cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);it=rb_ary_new3(0); _s=it;;
+VALUE AmethystParser_lookaheads(VALUE self ){VALUE vals[0]; VALUE it ,_s=Qnil,_autovar=Qnil,_autovar_2=Qnil,__result=Qnil;VALUE bind2=bind_new2(1);   cstruct *ptr; Data_Get_Struct(self,cstruct,ptr);  it=Amethyst_spaces(self );it=rb_ary_new3(0); _s=it;;
   it=AmethystParser_prefixed(self ); if (it==failobj){it=failobj;goto fail;} _autovar=it;;
 it=AmethystCore_append(self,_s,_autovar);int stop1=0; while(!stop1){ int oldpos1=ptr->pos;int cut1=0;
 alt1_1:if(!ptr->branches)ptr->discard=ptr->pos; ptr->branches+=2;   it=Amethyst_spaces(self );switch((unsigned char)*ame_curstr2(ptr)){case UC(0) ... '%':;case UC(39) ... UC(255):; if (1){it=failobj;goto revert1;} break;
 case '&' ... '&':; it=rb_str_new(ptr->str+ptr->pos,1);ptr->pos++;if (ame_curstr2(ptr)[0]=='&')  ptr->pos+=1; else if (1){it=failobj;goto revert1;} break;
-}  it=AmethystParser_prefixed(self ); if (it==failobj){it=failobj;goto revert1;} _autovar_2=it;;
+}  it=Amethyst_spaces(self );  it=AmethystParser_prefixed(self ); if (it==failobj){it=failobj;goto revert1;} _autovar_2=it;;
 it=AmethystCore_append(self,_s,_autovar_2);
 ;goto accept2;revert1:;  goto alt1_2; accept2:;
 
@@ -2313,7 +2313,7 @@ alt2_2: ptr->pos=oldpos2;ptr->branches-=1; it=Qnil;
 ;ptr->branches-=1; goto accept3;
 alt2_3: ptr->pos=oldpos2;ptr->branches-=1;if (1){it=failobj;goto revert1;};
  accept3:;
-  it=Amethyst_spaces(self );  it=AmethystParser_lookaheads(self ); if (it==failobj){it=failobj;goto revert1;} _autovar_2=it;;
+  it=AmethystParser_lookaheads(self ); if (it==failobj){it=failobj;goto revert1;} _autovar_2=it;;
 it=AmethystCore_append(self,_autovar,_autovar_2);
 ;goto accept2;revert1:;  goto alt1_2; accept2:;
 

@@ -1,0 +1,21 @@
+amethyst ArgTest {
+ foo1 = {@>name="foo"} foo2 {print @>name} #prints foo
+ foo2 = foo3
+ foo3 = {@>name=@>name+"bar"} foo4 {print @>name} #prints foobar
+ foo4 = {print @>name} #prints foobar
+}
+
+ArgTest.foo1("")
+
+amethyst RetTest {
+ foo1 = foo2 {print @<names.inspect} #prints ["foo","bar","baz"]
+ foo2 = foo3
+ foo3 = foo4 suppress bar
+ foo4 = { @<names << "foo" }
+ suppress = sup {@<names=[]}
+ sup = { @<names << "suppressed" }
+ bar = { @<names << "bar" } baz
+ baz = { @<names << "baz" }
+}
+
+RetTest.foo1("")

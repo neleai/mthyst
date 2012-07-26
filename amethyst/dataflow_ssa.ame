@@ -1,4 +1,4 @@
-class Dataflow < Traverser_Clone2
+class Make_SSA < Traverser_Clone2
   attr_accessor :ssanums,:oldssanums,:edges
   def initialize
     @edges=Oriented_Graph.new
@@ -57,11 +57,11 @@ class Local
 end
 
 
-class Dataflow < Traverser_Clone2
+class Make_SSA < Traverser_Clone2
   memoize "root"
   use_global_memo
 end
-amethyst Dataflow < Traverser_Clone2 {
+amethyst Make_SSA < Traverser_Clone2 {
   root =  @dup=>Rule[ {@>bnding=@bnding} @args=>[traverse_item*:var] {var.each{|v| @@marked<<ssanum(v)};@args=var} ({Seq[@body,Act[Local["_result",@bnding]]]}=>traverse_item):body {@body=Seq[body.ary[0..-2]]} {@reachable=@@edges.reverse.reachable(@@marked+[ssanum(body[-1])]); @cfg=@@edges; } {@self.freeze} ]
   
   visit = Apply[  traverse_item*:t {Apply[*(t+[{:clas=>@clas}])]}:app {app}=>[vars_in:var] {var.each{|v| @@marked<<ssanum(v)}} {app} ]

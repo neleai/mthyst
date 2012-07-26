@@ -1,0 +1,11 @@
+class Person
+attr_accessor :name,:surname,:salary,:address
+end
+class Addresss
+attr_accessor :city,:state
+end
+amethyst Hello {
+parse = Person[ @address=>Address[ @city:city ]
+{"Hello "+@name+" from "+city}
+]
+}

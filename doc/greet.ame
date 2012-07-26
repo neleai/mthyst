@@ -1,0 +1,11 @@
+class Greet < Amethyst
+  use_implicit_variables
+end
+amethyst Greet {
+  person = name surname parent? parent?  
+}
+
+#when a unbound rule can be matched exactly once we assign its result to its name.
+#When it can occur multiple times unbounded we
+#collect them to plular array. So example is translated to
+

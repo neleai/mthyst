@@ -1,0 +1,17 @@
+amethyst Foo {
+  foo = {42 }
+}
+amethyst_module Mod {
+  foo = super:x { 2*x }
+}
+amethyst_module Baz {
+  baz = {"baz"}
+}
+class Bar < Foo
+  include Mod
+end
+amethyst Bar < Foo {
+  foo = super:x {x+1}
+  bar = Baz::baz
+}
+

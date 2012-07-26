@@ -34,13 +34,13 @@ class Gram
   def parent;  @gram.ancestors[1].to_s;  end
 	def opt(r)
 		debug_print(r)
-		dce=[ Dataflow, Dead_Code_Deleter3,Forget_SSA]
+		dce=[ Make_SSA, Dead_Code_Deleter3,Forget_SSA]
 		[dce].flatten.each{|o|
      	r=o.root(r)
 			debug_print(r)
 		}
 		
-		[Dataflow].each{|p| r=p.root(r)}
+		[Make_SSA].each{|p| r=p.root(r)}
 		withtime(Constant_Propagator){
       r=r.dup
 			c=Constant_Propagator.new

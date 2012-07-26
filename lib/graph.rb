@@ -47,4 +47,7 @@ class Oriented_Graph
 			@edges.clone.each{|v,a| topo_order2(v,r,o)}
 		o
 	end
+  def delete_all_edges_to(v)
+    # TODO
+  end
 end

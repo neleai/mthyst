@@ -1,0 +1,4 @@
+amethyst Vovels {
+  vowels = <aeiou>
+  nested = <<vovels>0-9>
+}

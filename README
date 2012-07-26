@@ -1,5 +1,6 @@
-amethyst(mthyst) is ruby top-down parser generator and tool for pattern matching
-A description can be found at http://kam.mff.cuni.cz/~ondra/amethyst/chap2.pdf
+# amethyst(mthyst) is ruby top-down parser generator and tool for pattern matching
+# A description can be found at http://kam.mff.cuni.cz/~ondra/amethyst/chap2.pdf
+# This version of amethyst is not thread safe.
 
 # Currently a supported architecture is x85_64 linux.
  
