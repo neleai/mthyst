@@ -16,9 +16,9 @@ def self.key(*args);self.new.parse(:key,*args);end;def self._selector_key;Amethy
 def self.lambda(*args);self.new.parse(:lambda,*args);end;def self._selector_lambda;AmethystParser;end
 def self.lookaheads(*args);self.new.parse(:lookaheads,*args);end;def self._selector_lookaheads;AmethystParser;end
 def self.name(*args);self.new.parse(:name,*args);end;def self._selector_name;AmethystParser;end
+def self.neg_lahead(*args);self.new.parse(:neg_lahead,*args);end;def self._selector_neg_lahead;AmethystParser;end
 def self.nr(*args);self.new.parse(:nr,*args);end;def self._selector_nr;AmethystParser;end
 def self.postfixed(*args);self.new.parse(:postfixed,*args);end;def self._selector_postfixed;AmethystParser;end
-def self.prefixed(*args);self.new.parse(:prefixed,*args);end;def self._selector_prefixed;AmethystParser;end
 def self.procargs(*args);self.new.parse(:procargs,*args);end;def self._selector_procargs;AmethystParser;end
 def self.procargs2(*args);self.new.parse(:procargs2,*args);end;def self._selector_procargs2;AmethystParser;end
 def self.rubyarg(*args);self.new.parse(:rubyarg,*args);end;def self._selector_rubyarg;AmethystParser;end
@@ -103,8 +103,8 @@ def AmethystParser_Lambda_lb_B_2c90(bind)
 Lambda[Bind[local("_result"),bind[1]]]
 
 end
-def AmethystParser_Lookahea_0946(bind)
-Lookahead[bind[1],bind[2]=="~"]
+def AmethystParser_Lookahea_6d03(bind)
+Lookahead[bind[1],true]
 
 end
 def AmethystParser_Many_lb_bin_14d1(bind)

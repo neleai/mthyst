@@ -182,7 +182,7 @@ s
         | Seq[ trans*:t {t*""} ]
         | Or[ {label("accept")}:accept {label("oldpos")}:oldpos label("alt"):alt {1}:altno {@@cutlabel}:oldcutlabel {@@cuts}:oldcuts {@@cuts=nil;@@cutlabel=label("cut")}
            {"int #{oldpos}=ptr->pos;int #{@@cutlabel}=0;\n#{alt}_#{altno}:if(!ptr->branches)ptr->discard=ptr->pos; ptr->branches+=#{@ary.size};"}:s {@ary.size}:tot_alt 
-           ( &(.) {altno+=1}  rw("#{alt}_#{altno}",(|persistent|)):t
+           ( . & ({altno+=1}  rw("#{alt}_#{altno}",(|persistent|)):t)
              {s+="#{t}\n;ptr->branches-=#{tot_alt+2-altno}; goto #{accept};\n"}
              {s+="#{alt}_#{altno}: ptr->pos=#{oldpos};#{@@cuts ? (@@cuts=nil;"if(#{@@cutlabel}){ptr->branches-=#{tot_alt-altno};it=failobj;goto #{@@faillabel};}") : ""}ptr->branches-=1;"}
            )*

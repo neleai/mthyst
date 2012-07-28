@@ -38,7 +38,10 @@ amethyst AmethystParser {
   
   sequence =  (nr ","? lookaheads)*:ary  @Seq_AST
 
-  lookaheads = "" prefixed:[s] ("&&" "" prefixed:[s])* -> s.size>1 ? Seq_AST.create({:ary=>(s[0...-1].map{|e| Lookahead[e]}+[s[-1]])}) : s[-1]
+  lookaheads = "" neg_lahead:[s] ("&" ~"{" "" neg_lahead:[s])* -> s.size>1 ? Seq_AST.create({:ary=>(s[0...-1].map{|e| Lookahead[e]}+[s[-1]])}) : s[-1]
+
+  neg_lahead = '~' ~"{" neg_lahead:m    -> Lookahead[m,true]
+             | postfixed
   
   nr = ~( "" name:name
          ("("
@@ -56,8 +59,6 @@ amethyst AmethystParser {
           ")"
           | {nil}) "=" )
 
-  prefixed   =  <&~>:neg ~"{" prefixed:m    -> Lookahead[m,neg=="~"]
-             | postfixed
 
   postfixed =  term:from 
                     (~_     (  '=>'     term:e           -> Pass_AST[from,e] 
@@ -84,7 +85,7 @@ amethyst AmethystParser {
   term  = 'break' -> Seq_AST[Cut[],Stop[]]
         | cases
         | call
-        | <.:> && '.'? -> Apply["anything"]
+        | <.:> & '.'? -> Apply["anything"]
         | '[' expression:e "]" -> Enter_AST[Apply["anything"],e]
         | key:{Act[it]}
         | host_expr
