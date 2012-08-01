@@ -596,24 +596,13 @@ VALUE AmethystParser_expression(VALUE self ){VALUE vals[0]; VALUE it ,_f=Qnil,_a
   it=AmethystParser_sequence(self ); _autovar=it;;
 it=AmethystCore_append(self,_f,_autovar);it=rb_ary_new3(0); _autovar_2=it;;
 int stop1=0; while(!stop1){ int oldpos1=ptr->pos;int cut1=0;
-alt1_1:if(!ptr->branches)ptr->discard=ptr->pos; ptr->branches+=2;   it=Amethyst_spaces(self );int oldpos2=ptr->pos;int cut2=0;
-alt2_1:if(!ptr->branches)ptr->discard=ptr->pos; ptr->branches+=2; if (ame_curstr2(ptr)[0]=='|')  ptr->pos+=1; else if (1){it=failobj;goto revert2;}int oldpos3=ptr->pos;int cut3=0;
-alt3_1:if(!ptr->branches)ptr->discard=ptr->pos; ptr->branches+=2; if (ame_curstr2(ptr)[0]==')')  ptr->pos+=1; else if (1){it=failobj;goto revert3;}cut3=1;if (1){it=failobj;goto revert3;}
-;goto accept6;revert3:;  goto alt3_2; accept6:;
-
-;ptr->branches-=2; goto accept5;
-alt3_2: ptr->pos=oldpos3;if(cut3){ptr->branches-=0;it=failobj;goto revert2;}ptr->branches-=1; it=Qnil;
-;goto accept7;revert4:;  goto alt3_3; accept7:;
-
-;ptr->branches-=1; goto accept5;
-alt3_3: ptr->pos=oldpos3;ptr->branches-=1;if (1){it=failobj;goto revert2;};
- accept5:;
-
+alt1_1:if(!ptr->branches)ptr->discard=ptr->pos; ptr->branches+=2;   it=Amethyst_spaces(self );if (ame_curstr2(ptr)[0]=='|')  ptr->pos+=1; else if (1){it=failobj;goto revert1;}int oldpos2=ptr->pos;int cut2=0;
+alt2_1:if(!ptr->branches)ptr->discard=ptr->pos; ptr->branches+=2; if (ame_curstr2(ptr)[0]==')')  ptr->pos+=1; else if (1){it=failobj;goto revert2;}cut2=1;if (1){it=failobj;goto revert2;}
 ;goto accept4;revert2:;  goto alt2_2; accept4:;
 
 ;ptr->branches-=2; goto accept3;
-alt2_2: ptr->pos=oldpos2;ptr->branches-=1; if (ame_curstr2(ptr)[0]=='e'&&ame_curstr2(ptr)[1]=='l'&&ame_curstr2(ptr)[2]=='s'&&ame_curstr2(ptr)[3]=='e')  ptr->pos+=4; else if (1){it=failobj;goto revert5;}
-;goto accept8;revert5:;  goto alt2_3; accept8:;
+alt2_2: ptr->pos=oldpos2;if(cut2){ptr->branches-=0;it=failobj;goto revert1;}ptr->branches-=1; it=Qnil;
+;goto accept5;revert3:;  goto alt2_3; accept5:;
 
 ;ptr->branches-=1; goto accept3;
 alt2_3: ptr->pos=oldpos2;ptr->branches-=1;if (1){it=failobj;goto revert1;};
@@ -624,7 +613,7 @@ it=AmethystCore_append(self,_autovar_2,_autovar_3);
 
 ;ptr->branches-=2; goto accept1;
 alt1_2: ptr->pos=oldpos1;ptr->branches-=1; stop1=1;
-;goto accept9;revert6:;  goto alt1_3; accept9:;
+;goto accept6;revert4:;  goto alt1_3; accept6:;
 
 ;ptr->branches-=1; goto accept1;
 alt1_3: ptr->pos=oldpos1;ptr->branches-=1;if (1){it=failobj;goto fail;};

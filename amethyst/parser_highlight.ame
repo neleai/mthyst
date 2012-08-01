@@ -10,7 +10,7 @@ amethyst AmethystParser_Highligth {
   file     = ( 
                {@@locals=[];@@append=[];@@bnding=2;local("it")}  {group_new}:g group_hl(g)(| group_mark(g)(|withcolor("yellow")(|'(|'|)|) expression:e  "" group_mark(g)(|withcolor("yellow")(|'|)'|)|) |)-> Lambda[Bind[local("_result"),e]]
 
-             | (~'amethyst'  ~'(|'  . )+:{it.join}
+             | (~'amethyst '  ~'(|'  . )+:{it.join}
              | grammar
              )*
 
@@ -51,7 +51,7 @@ amethyst AmethystParser_Highligth {
   term  = 'break' -> Seq[Cut[],Stop[]]
         | cases
         | call
-        | <.:> && '.'? -> Apply["anything"]
+        | <.:> & '.'? -> Apply["anything"]
         | {group_new}:g group_hl(g)(| group_mark(g)(|withcolor("blue")(| '['|)|) expression:e "" group_mark(g)(|withcolor("blue")(|']'|)|) |)   -> Enter_AST[Apply["anything"],e]
         | key:{Act[it]}
         | host_expr
