@@ -1,0 +1,13 @@
+
+
+An memoization module for dynamic parsing.
+
+An memoization module with interface for ruby
+is in the file
+
+memoize.c 
+
+To compile this wrapper run 
+ruby extconf.rb
+
+For usage see example example.rb 

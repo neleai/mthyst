@@ -1,0 +1,36 @@
+amethyst Dynamic {
+  init = { @@memoized={}; @@rightmost=0}
+  
+  memo(rule) = {id(rule,src,pos)}:id 
+               {pos}:oldpos 
+               {@@rightmost}:oldright 
+               {pos}:@@rightmost
+              (if(!memoized[id]) 
+                 (apply(rule) | {"failed"}):result                  
+                 { memoized[id]=Memo[pos-oldpos,@@rightmost-oldpos,result] }
+               | -> nil
+              )
+               { pos=oldpos+memoized[id].advance
+                 @@rightmost=max(oldright,pos+memoized[id].rm_advance)
+               }
+              (if(memoized[id].result=="failed")
+                 fail
+               | -> memoized[id].result
+              )
+
+  . = if(pos>=len) fail
+    | {@@rightmost=max(@@rightmost,pos);pos=pos+1} -> src[pos-1]
+
+}
+class Memo
+  attr_accessor :advance,:radvance,:result
+  def self.[](advance,radvance,result)
+    m=Memo.new
+    m.advance,m.radvance,m.result=advance,radvance,result
+    m
+  end
+end
+def max(a,b)
+  [a,b].max
+end
+
