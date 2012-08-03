@@ -1,3 +1,5 @@
+# Copyright (C) Ondrej Bilka <neleai@seznam.cz> 2012
+
 #@Or_AST and @Seq_AST are necessary for collect
 
 $agram=0
@@ -18,7 +20,7 @@ def parser_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def parser_source_hash
-'039febaa0c027ebcef4c98cf7fbbfd8f'
+'ddbfa33d515e510b012e2d31550b206f'
 end
 def testversionparser(r)
  raise "invalid version" if r!=parser_version

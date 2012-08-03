@@ -1,3 +1,4 @@
+/* Copyright (C) Ondrej Bilka <neleai@seznam.cz> 2012 */
 #include "cthyst.h"
 #include <ruby.h>
 #define CACHE_SIZE 512

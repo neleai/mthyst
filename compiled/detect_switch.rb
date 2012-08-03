@@ -1,3 +1,4 @@
+# Copyright (C) Ondrej Bilka <neleai@seznam.cz> 2012
 
 $hash_Lattice_Minsize={}
 class Lattice_Minsize
@@ -267,7 +268,7 @@ def detect_switch_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def detect_switch_source_hash
-'987b08c0f2787c94bf86176844f268b4'
+'86ea752c554e50fabd7ee8868121f569'
 end
 def testversiondetect_switch(r)
  raise "invalid version" if r!=detect_switch_version

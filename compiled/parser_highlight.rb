@@ -1,3 +1,4 @@
+# Copyright (C) Ondrej Bilka <neleai@seznam.cz> 2012
 
 
 require File.expand_path(File.dirname(__FILE__))+'/AmethystParser_Highligth.rb'
@@ -19,7 +20,7 @@ def parser_highlight_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def parser_highlight_source_hash
-'327c09662eccc06337241d6b952a4425'
+'26433ae5419e25702fb5c40e72915190'
 end
 def testversionparser_highlight(r)
  raise "invalid version" if r!=parser_highlight_version

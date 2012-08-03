@@ -1,3 +1,5 @@
+# Copyright (C) Ondrej Bilka <neleai@seznam.cz> 2012
+
 class Gram
   def memo_no
     if !@memo_no
@@ -99,7 +101,7 @@ def ctranslator2_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def ctranslator2_source_hash
-'eafab6eb48717b1b4f8b89f9b7d41aec'
+'5f7409d5295cfb045a88b55d0ffcc637'
 end
 def testversionctranslator2(r)
  raise "invalid version" if r!=ctranslator2_version

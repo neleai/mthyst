@@ -1,3 +1,4 @@
+/* Copyright (C) Ondrej Bilka <neleai@seznam.cz> 2012 */
 #include "ruby.h"
 #include <stdlib.h>
 #include <stdio.h>

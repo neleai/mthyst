@@ -1,3 +1,5 @@
+# Copyright (C) Ondrej Bilka <neleai@seznam.cz> 2012 
+
 amethyst_path=File.expand_path(File.dirname(__FILE__)+"/..")
 require amethyst_path+"/settings.rb"
 require Amethyst_path+"/compiled/#{RUBY_VERSION}/cflags.rb"

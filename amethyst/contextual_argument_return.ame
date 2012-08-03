@@ -1,3 +1,5 @@
+# Copyright (C) Ondrej Bilka <neleai@seznam.cz> 2012
+
 amethyst Add_Contextual_Arguments < Traverser_Clone2{
   root  = @dup=>Rule[ {@>g=Global["_context_arguments"];@>a=autovar} {@self}:s {@@context_arg=false}
                       traverse:t 

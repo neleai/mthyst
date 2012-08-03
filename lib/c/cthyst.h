@@ -1,3 +1,4 @@
+/* Copyright (C) Ondrej Bilka <neleai@seznam.cz> 2012 */
 #ifndef INCLUDED_CTHYST_H
 #define INCLUDED_CTHYST_H
 #include "ruby.h"

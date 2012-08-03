@@ -1,3 +1,5 @@
+# Copyright (C) Ondrej Bilka <neleai@seznam.cz> 2012 
+
 class Oriented_Graph
 	attr_accessor :edges,:redges
 	def initialize

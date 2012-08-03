@@ -1,4 +1,4 @@
-
+/* Copyright (C) Ondrej Bilka <neleai@seznam.cz> 2012 */
 #include "ruby.h"
 #include <stdio.h>
 extern FILE * profile_report;

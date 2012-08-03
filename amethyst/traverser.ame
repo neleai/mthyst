@@ -1,3 +1,5 @@
+# Copyright (C) Ondrej Bilka <neleai@seznam.cz> 2012
+
 amethyst Traverser_Clone2 {
   root=empty  
 

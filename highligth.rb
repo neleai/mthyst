@@ -1,3 +1,5 @@
+# Copyright (C) Ondrej Bilka <neleai@seznam.cz> 2012 
+
 require './lib/amethyst'
 #Amethyst::Settings.debug=2
 ["amethyst","parser_highlight"].each{|f|

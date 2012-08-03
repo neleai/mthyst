@@ -1,3 +1,5 @@
+# Copyright (C) Ondrej Bilka <neleai@seznam.cz> 2012 
+
 def leterize(s)
 	trans={"."=>"dot","+"=>"pl","-"=>"mi","*"=>"ti","/"=>"di","="=>"eq","<" => "lt",">"=>"gt","$"=>"do","@"=>"at","("=>"lp",")"=>"rp","["=>"lb","]"=>"rb",":"=>"co","\\"=>"bs"," "=>"sp","`"=>"bq","{"=>"le","}"=>"re","~"=>"td","'"=>"qu","\""=>"dq","#"=>"sh"}
 	s2=""

@@ -1,3 +1,5 @@
+# Copyright (C) Ondrej Bilka <neleai@seznam.cz> 2012
+
 dataflow_def("lambdas_in","Detect_Lambda","@df")
 
 class Detect_Lambda < Traverser_Clone2

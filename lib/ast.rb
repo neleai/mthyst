@@ -1,3 +1,5 @@
+# Copyright (C) Ondrej Bilka <neleai@seznam.cz> 2012 
+
 def lambdas_in(el)
       if !$dflambdas_in
         $dflambdas_in=Object.const_get("Detect_Lambda").new;$dflambdas_in.parse(:root,[])

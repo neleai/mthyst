@@ -1,0 +1,50 @@
+# Copyright (C) Ondrej Bilka <neleai@seznam.cz> 2012
+
+amethyst Dataflow {
+  value =  .:x  {depends(x);@@vals[x]}
+
+  root = .:x analyze(x)
+   
+  getvalue(v) = {@@vis=v; v}=>visit
+} 
+
+class Dataflow < Amethyst
+  def value(e)
+    @active={}
+    @activea=[e]
+    while el=@activea.pop
+      @active.delete(el)
+      @depend.delete_all_edges_to(el)
+
+      val=getvalue(el)
+      val=lattice_join(val,@vals[el])
+      if val > @vals[el]
+        @vals[el]=val
+        @depend.edges[el].each{|d| addactive(d)}
+      end
+    end
+    @vals[e]
+  end
+
+  def depends(e)
+    @depend.add(e,@vis) if !@depend.edges[e].include?(@vis)
+    if !@visited[e]
+      @visited[e]=true
+      addactive(e)
+    end
+  end
+
+  def addactive(e)
+    if !@active[e]
+      @active[e]=true
+      @activea<<e
+    end
+  end
+
+  def initialize
+    @depend=Oriented_Graph.new
+    @vals=Hash.new(lattice_bottom)
+    @visited={}
+  end
+end
+

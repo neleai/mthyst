@@ -1,3 +1,5 @@
+# Copyright (C) Ondrej Bilka <neleai@seznam.cz> 2012
+
 #removing by Paull algorithm
 
 #TODO iteration
@@ -10,7 +12,7 @@ def remove_left_rigth_recursion_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def remove_left_rigth_recursion_source_hash
-'78baf8b88e6821121e56fd1c778b2694'
+'c0b5604833c0e22793da3e932fe463ba'
 end
 def testversionremove_left_rigth_recursion(r)
  raise "invalid version" if r!=remove_left_rigth_recursion_version

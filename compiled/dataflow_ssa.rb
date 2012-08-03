@@ -1,3 +1,5 @@
+# Copyright (C) Ondrej Bilka <neleai@seznam.cz> 2012
+
 class Make_SSA < Traverser_Clone2
   attr_accessor :ssanums,:oldssanums,:edges
   def initialize
@@ -75,7 +77,7 @@ def dataflow_ssa_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def dataflow_ssa_source_hash
-'aa370e4d95e1e2b9cdae54a07b3afbd3'
+'07c89757be1e80ffa3e78b3a684c0e02'
 end
 def testversiondataflow_ssa(r)
  raise "invalid version" if r!=dataflow_ssa_version

@@ -1,3 +1,5 @@
+# Copyright (C) Ondrej Bilka <neleai@seznam.cz> 2012
+
 Top=Consts.new("Top")
 Bottom=Consts.new("Bottom")
 
@@ -76,7 +78,7 @@ def constant_propagation_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def constant_propagation_source_hash
-'6d4ca4a757dbdbe5be798d70d6293443'
+'e2dc7d3a95adf957a18c5ec288acc12c'
 end
 def testversionconstant_propagation(r)
  raise "invalid version" if r!=constant_propagation_version

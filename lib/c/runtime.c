@@ -1,3 +1,4 @@
+/* Copyright (C) Ondrej Bilka <neleai@seznam.cz> 2012 */
 #include "../../compiled/cthyst.h"
 #include "interpreter.h"
 FILE * profile_report;

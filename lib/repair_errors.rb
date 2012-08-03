@@ -1,3 +1,5 @@
+# Copyright (C) Ondrej Bilka <neleai@seznam.cz> 2012 
+
 def rm_matching_pairs(parens)
   begin
     lastsize=parens.size

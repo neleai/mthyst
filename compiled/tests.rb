@@ -1,3 +1,4 @@
+# Copyright (C) Ondrej Bilka <neleai@seznam.cz> 2012
 
 class Tests < Amethyst
   use_implicit_variables
@@ -10,7 +11,7 @@ def tests_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def tests_source_hash
-'c722469e4560ffe9811a29c95b3ede2a'
+'6aad58e48e6ba8dbc487db4343ce439b'
 end
 def testversiontests(r)
  raise "invalid version" if r!=tests_version

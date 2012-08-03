@@ -1,3 +1,5 @@
+# Copyright (C) Ondrej Bilka <neleai@seznam.cz> 2012
+
 dataflow_def("lambdas_in","Detect_Lambda","@df")
 
 class Detect_Lambda < Traverser_Clone2
@@ -26,7 +28,7 @@ def normalize_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def normalize_source_hash
-'7a8c80b9c31abb1160176e243d5627fe'
+'cad58fb917a406934994328dc2a5e3bc'
 end
 def testversionnormalize(r)
  raise "invalid version" if r!=normalize_version

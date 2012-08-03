@@ -1,3 +1,5 @@
+# Copyright (C) Ondrej Bilka <neleai@seznam.cz> 2012
+
 #This converts syntax tree to our immediate reprezentation. It
 #
 # - finds local variables
@@ -30,7 +32,7 @@ def detect_variables2_compiled_by
 'd41d8cd98f00b204e9800998ecf8427e'
 end
 def detect_variables2_source_hash
-'e564fcc40507afe0c788e81c06f2868a'
+'f7795955bc1e67dbc64ee0ff70fcc239'
 end
 def testversiondetect_variables2(r)
  raise "invalid version" if r!=detect_variables2_version
