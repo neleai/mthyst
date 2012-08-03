@@ -1,7 +1,7 @@
 amethyst Combinators {
   plus(x,y) = -> (| seq(x)    seq(y) |)
   or(x,y)   = -> (| seq(x) |  seq(y) |)
-  and(x,y)  = -> (| seq(x) && seq(y) |)
+  and(x,y)  = -> (| seq(x) &  seq(y) |)
   not(x)    = -> (| ~seq(x)          |)
   star(x)   = -> (| seq(x)*          |)
 }
