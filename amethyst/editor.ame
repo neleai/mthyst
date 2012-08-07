@@ -1,0 +1,3 @@
+amethyst Editor_Expressions {
+  i = &{ puts "#{@src[@pos,20]} (y/n)"; STDIN.getc=='y'}
+}
