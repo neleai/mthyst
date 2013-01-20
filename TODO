@@ -116,4 +116,6 @@ do not use apply, use lambdas and match instead
 
 implement eval
 
-complition by server with unix socket
+compilation by server with unix socket
+
+find picks unique prefix and matches it by two-way algorithm
