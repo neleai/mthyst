@@ -4,7 +4,7 @@
 #include "ruby.h"
 #include <stdio.h>
 extern FILE * profile_report;
-VALUE failobj;
+extern VALUE failobj;
 #define BSET(s,e) rb_hash_aset(bind,ID2SYM(rb_intern( #s )), e )
 #define BGET(s)   rb_hash_aref(bind,ID2SYM(rb_intern( #s )))
 #define ISET(s,e) rb_ivar_set(self,rb_intern("@" #s), e)
