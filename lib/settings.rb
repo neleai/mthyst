@@ -2,7 +2,7 @@
 
 def cc_compile_file(file)
 
-#      `astyle #{Amethyst_path}/compiled/#{file}_c.c`
+      `uncrustify -c --no-backup/#{Amethyst_path}/uncrustify.cfg #{Amethyst_path}/compiled/#{file}_c.c`
       `cd #{Amethyst_path}/compiled;#{Amethyst::Settings.compile} -c #{file}_c.c -o #{file}_c.o`
       `cd #{Amethyst_path}/compiled;#{Amethyst::Settings.link} -o #{RUBY_VERSION}/#{file}_c.so #{file}_c.o`
       `rm #{Amethyst_path}/compiled/#{file}_c.o` 

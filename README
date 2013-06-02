@@ -17,4 +17,4 @@ ruby1.9.1 bootstrap
 # For improving speed we look at profile output. You need to install and run oprofile. Run script
 compiled/anotate #to get anotated source and assembly after you ran oprofile.
 
-# If you have astyle installed generated c files will be formatted with astyle.
+# If you have uncrustify installed generated c files will be formatted with astyle according to uncrustify.cfg file.
